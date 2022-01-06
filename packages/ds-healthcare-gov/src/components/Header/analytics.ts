@@ -1,7 +1,7 @@
 import { headerSendsAnalytics } from '../flags';
 import { sendLinkEvent } from '@cmsgov/design-system';
 
-export function sendHeaderEvent(linkText, linkUrl) {
+export function sendHeaderEvent(linkText: string, linkUrl?: string) {
   if (headerSendsAnalytics()) {
     sendLinkEvent({
       event_name: 'header_click',

@@ -1,39 +1,19 @@
 import InlineLinkLists from './InlineLinkLists';
 import LogosRow from './LogosRow';
-import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
-import { withTranslation } from 'react-i18next';
+import { Language } from '../i18n';
+import { useTranslation } from 'react-i18next';
 
-const _Footer = function (props) {
-  const classes = classnames(
-    'hc-c-footer ds-u-fill--gray-lightest ds-u-padding-y--5',
-    props.className
-  );
-
-  return (
-    <footer className={classes} role="contentinfo">
-      {props.footerTop}
-      <InlineLinkLists t={props.t} primaryDomain={props.primaryDomain} />
-      <LogosRow t={props.t} />
-    </footer>
-  );
-};
-
-_Footer.defaultProps = {
-  initialLanguage: 'en',
-};
-
-/* eslint-disable react/no-unused-prop-types */
-_Footer.propTypes = {
+export interface FooterProps {
   /**
    * Additional classes to be added to the root `<footer>` element.
    */
-  className: PropTypes.string,
+  className?: string;
   /**
    * The language the footer will render as.
    */
-  initialLanguage: PropTypes.oneOf(['en', 'es']),
+  initialLanguage: Language;
   /**
    * The primary, or root domain where the majority of footer links should be
    * hosted.  By default, links render with relative paths, but providing this
@@ -49,12 +29,31 @@ _Footer.propTypes = {
    * `https://localhelp.healthcare.gov/topics` when it should direct the user to
    * `https://healthcare.gov/topics`.
    */
-  primaryDomain: PropTypes.string,
+  primaryDomain?: string;
   /**
    * Element to be added to display content for top footer section changes
    */
-  footerTop: PropTypes.node,
+  footerTop?: React.ReactNode;
+}
+
+export const Footer = (props: FooterProps) => {
+  const { t } = useTranslation(props.initialLanguage);
+  const classes = classnames(
+    'hc-c-footer ds-u-fill--gray-lightest ds-u-padding-y--5',
+    props.className
+  );
+
+  return (
+    <footer className={classes} role="contentinfo">
+      {props.footerTop}
+      <InlineLinkLists t={t} primaryDomain={props.primaryDomain} />
+      <LogosRow t={t} />
+    </footer>
+  );
 };
 
-export const Footer = withTranslation()(_Footer);
+Footer.defaultProps = {
+  initialLanguage: 'en',
+} as FooterProps;
+
 export default Footer;

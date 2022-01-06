@@ -2,7 +2,7 @@ import { Button, Dialog } from '@cmsgov/design-system';
 import { getPrivacySettings, setPrivacySettings } from './privacySettings';
 import PrivacySettingsTable from './PrivacySettingsTable';
 import React, { useState } from 'react';
-import { withTranslation } from 'react-i18next';
+import { TFunction } from 'react-i18next';
 
 const privacySettingConfigs = [
   { settingsKey: 'c3', translationKey: 'advertising' },
@@ -12,10 +12,10 @@ const privacySettingConfigs = [
 
 interface PrivacySettingsDialogProps {
   onExit: () => void;
-  t: (key: string) => string;
+  t: TFunction;
 }
 
-const _PrivacySettingsDialog = (props: PrivacySettingsDialogProps) => {
+export const PrivacySettingsDialog = (props: PrivacySettingsDialogProps) => {
   const [localPrivacySettings, setLocalPrivacySettings] = useState(getPrivacySettings());
 
   function setPrivacySetting(settingsKey: string, value: string) {
@@ -42,6 +42,7 @@ const _PrivacySettingsDialog = (props: PrivacySettingsDialogProps) => {
       title={t('privacy.dialogTitle')}
       size="full"
       closeButtonSize="small"
+      // @ts-ignore: TODO: We probably shouldn't be using secondary here, as it's supposed to be deprecated
       closeButtonVariation="secondary"
       actionsClassName="ds-u-text-align--right"
       actions={
@@ -62,5 +63,4 @@ const _PrivacySettingsDialog = (props: PrivacySettingsDialogProps) => {
   );
 };
 
-export const PrivacySettingsDialog = withTranslation()(_PrivacySettingsDialog);
 export default PrivacySettingsDialog;

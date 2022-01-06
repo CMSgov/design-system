@@ -1,6 +1,13 @@
-import { mount, shallow } from 'enzyme';
+import '@testing-library/jest-dom';
 import ActionMenu from './ActionMenu';
 import React from 'react';
+import { fireEvent, render, screen } from '@testing-library/react';
+
+const t = (key) => key;
+
+function renderComponent(props = {}) {
+  return render(<ActionMenu t={t} locale="en" links={[]} {...props} />);
+}
 
 describe('ActionMenu', function () {
   const handleMenuToggleClick = jest.fn();
@@ -10,57 +17,51 @@ describe('ActionMenu', function () {
   });
 
   describe('logged-in version', () => {
-    function component(props = {}) {
-      return (
-        <ActionMenu
-          loggedIn
-          firstName="John"
-          onMenuToggleClick={handleMenuToggleClick}
-          links={[]}
-          {...props}
-        />
-      );
+    function renderLoggedIn(props = {}) {
+      return renderComponent({
+        loggedIn: true,
+        firstName: 'John',
+        onMenuToggleClick: handleMenuToggleClick,
+        links: [],
+        ...props,
+      });
     }
+
     it('renders logged-in version', () => {
-      expect(mount(component())).toMatchSnapshot();
+      const { asFragment } = renderLoggedIn();
+      expect(asFragment()).toMatchSnapshot();
     });
 
     it('set aria-expanded to true', () => {
-      expect(mount(component({ open: true }))).toMatchSnapshot();
+      const { asFragment } = renderLoggedIn({ open: true });
+      expect(asFragment()).toMatchSnapshot();
     });
 
     it('calls onMenuToggleClick', () => {
-      const wrapper = mount(component());
-      const button = wrapper.find('Button');
-
-      button.simulate('click');
-
+      renderLoggedIn();
+      fireEvent.click(screen.getByRole('button'));
       expect(handleMenuToggleClick.mock.calls.length).toBe(1);
     });
   });
 
   describe('logged-out version', () => {
-    /* eslint-disable react/no-multi-comp */
-    function component(props = {}) {
-      return (
-        <ActionMenu
-          loggedIn={false}
-          locale="en"
-          onMenuToggleClick={handleMenuToggleClick}
-          links={[
-            {
-              label: 'label',
-              href: 'href',
-            },
-          ]}
-          {...props}
-        />
-      );
+    function renderLoggedOut(props = {}) {
+      return renderComponent({
+        loggedIn: false,
+        onMenuToggleClick: handleMenuToggleClick,
+        links: [
+          {
+            label: 'label',
+            href: 'href',
+          },
+        ],
+        ...props,
+      });
     }
-    /* eslint-enable */
 
     it('renders logged-out version', () => {
-      expect(mount(component())).toMatchSnapshot();
+      const { asFragment } = renderLoggedOut();
+      expect(asFragment()).toMatchSnapshot();
     });
   });
 
@@ -71,83 +72,60 @@ describe('ActionMenu', function () {
       };
     });
 
-    function getMenuButton(wrapper, loggedIn) {
-      return wrapper
-        .dive()
-        .find(loggedIn ? 'LoggedInActionMenu' : 'LoggedOutActionMenu')
-        .dive()
-        .find('MenuButton')
-        .dive()
-        .find('Button');
+    function renderForAnalytics(props = {}) {
+      return renderComponent({
+        onMenuToggleClick: handleMenuToggleClick,
+        ...props,
+      });
     }
 
     it('sends analytics event when logged-out action menu link clicked', () => {
-      const wrapper = shallow(
-        <ActionMenu
-          loggedIn={false}
-          locale="en"
-          onMenuToggleClick={handleMenuToggleClick}
-          links={[
-            {
-              label: 'ZOMBO',
-              href: 'https://www.zombo.com',
-            },
-          ]}
-        />
-      );
-      wrapper.dive().find('LoggedOutActionMenu').dive().find('a').simulate('click');
+      renderForAnalytics({
+        links: [
+          {
+            label: 'ZOMBO',
+            href: 'https://www.zombo.com',
+          },
+        ],
+      });
+      fireEvent.click(screen.getByText('ZOMBO'));
       expect(window.utag.link.mock.calls[0][0]).toMatchSnapshot();
     });
 
     it('sends analytics event when logged-out menu opened', () => {
-      const wrapper = shallow(
-        <ActionMenu
-          loggedIn={false}
-          locale="en"
-          onMenuToggleClick={handleMenuToggleClick}
-          links={[{ label: 'label', href: 'href' }]}
-        />
-      );
-      getMenuButton(wrapper).simulate('click');
+      renderForAnalytics({
+        links: [{ label: 'label', href: 'href' }],
+      });
+      fireEvent.click(screen.getByRole('button'));
       expect(window.utag.link.mock.calls[0][0]).toMatchSnapshot();
       expect(handleMenuToggleClick).toHaveBeenCalled();
     });
 
     it('sends analytics event when logged-out menu closed', () => {
-      const wrapper = shallow(
-        <ActionMenu
-          loggedIn={false}
-          open
-          locale="en"
-          onMenuToggleClick={handleMenuToggleClick}
-          links={[{ label: 'label', href: 'href' }]}
-        />
-      );
-      getMenuButton(wrapper).simulate('click');
+      renderForAnalytics({
+        open: true,
+        links: [{ label: 'label', href: 'href' }],
+      });
+      fireEvent.click(screen.getByRole('button'));
       expect(window.utag.link.mock.calls[0][0]).toMatchSnapshot();
       expect(handleMenuToggleClick).toHaveBeenCalled();
     });
 
     it('sends analytics event when logged-in menu opened', () => {
-      const wrapper = shallow(
-        <ActionMenu loggedIn locale="en" onMenuToggleClick={handleMenuToggleClick} links={[]} />
-      );
-      getMenuButton(wrapper, true).simulate('click');
+      renderForAnalytics({
+        loggedIn: true,
+      });
+      fireEvent.click(screen.getByRole('button'));
       expect(window.utag.link.mock.calls[0][0]).toMatchSnapshot();
       expect(handleMenuToggleClick).toHaveBeenCalled();
     });
 
     it('sends analytics event when logged-in menu closed', () => {
-      const wrapper = shallow(
-        <ActionMenu
-          loggedIn
-          open
-          locale="en"
-          onMenuToggleClick={handleMenuToggleClick}
-          links={[]}
-        />
-      );
-      getMenuButton(wrapper, true).simulate('click');
+      renderForAnalytics({
+        open: true,
+        loggedIn: true,
+      });
+      fireEvent.click(screen.getByRole('button'));
       expect(window.utag.link.mock.calls[0][0]).toMatchSnapshot();
       expect(handleMenuToggleClick).toHaveBeenCalled();
     });

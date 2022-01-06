@@ -1,18 +1,11 @@
-import { Button as CoreButton } from '@cmsgov/design-system';
-import {
-  ButtonVariation,
-  ButtonProps,
-} from '@cmsgov/design-system/dist/types/Button';
+import React from 'react';
+import { ButtonVariation, ButtonProps as CoreButtonProps } from '@cmsgov/design-system';
 
-interface Button extends CoreButton {
+type ButtonProps = CoreButtonProps & {
   variation?: ButtonVariation | 'secondary';
-}
+};
 
-type OmitProps = 'size';
-
-export class Button extends React.Component<
-  Omit<React.HTMLProps<HTMLButtonElement>, OmitProps> & ButtonProps,
-  any
-> {
+// eslint-disable-next-line react/prefer-stateless-function
+export declare class Button extends React.PureComponent<ButtonProps> {
   render(): JSX.Element;
 }

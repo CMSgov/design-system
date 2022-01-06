@@ -1,12 +1,15 @@
+import { TFunction } from 'i18next';
+import { Language } from '../i18n';
+
 /**
  * Returns a link pointing to the opposite locale
- * @param {Function} translate - i18n translator
- * @param {String} locale
- * @param {String} switchLocaleLink - overrides the default locale link
- * @param {String} subpath
- * @returns {Object}
  */
-export default function (t, locale, subpath = '', switchLocaleLink) {
+export default function localeLink(
+  t: TFunction,
+  locale: Language,
+  subpath = '',
+  switchLocaleLink?: string
+) {
   const defaultLocaleLink =
     locale === 'es'
       ? `https://www.healthcare.gov/${subpath}`
