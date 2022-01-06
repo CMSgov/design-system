@@ -42,7 +42,7 @@ export interface AriaModalProps {
    * and refer to DOM nodes within it (e.g. `document.getElementById(..)`),
    * without ruining your server-side rendering.
    */
-  getApplicationNode?(): Node | Element;
+  getApplicationNode?(): Node | Element | null | undefined;
 
   /**
    * By default, styles are applied inline to the dialog and underlay
