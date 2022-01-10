@@ -40,6 +40,12 @@ $drawer-toggle-space: 0;
   display: block;
   font-weight: $drawer-toggle-font-weight;
   padding: $drawer-toggle-space;
+
+  /* stylelint-disable scss/media-feature-value-dollar-variable */
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    padding: $spacer-half $spacer-2;
+  }
+  /* stylelint-enable scss/media-feature-value-dollar-variable */
 }
 
 .ds-c-drawer__toggle--inline {
