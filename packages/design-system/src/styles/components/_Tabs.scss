@@ -101,6 +101,12 @@
       border-color: $color-gray-lighter;
       color: $color-gray-dark;
     }
+
+    /* stylelint-disable scss/media-feature-value-dollar-variable */
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      color: GrayText;
+    }
+    /* stylelint-enable scss/media-feature-value-dollar-variable */
   }
 
   &:hover {
