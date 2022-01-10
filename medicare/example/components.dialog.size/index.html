@@ -42,8 +42,27 @@
         <button
           class="dialog-close-btn ds-c-button ds-c-button--transparent ds-c-dialog__close"
           aria-label="Close modal dialog"
+          type="button"
         >
-          Close
+          <svg
+            aria-labelledby="icon-1__title"
+            aria-hidden="true"
+            class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin"
+            focusable="false"
+            id="icon-1"
+            role="img"
+            viewBox="-2 -2 18 18"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title id="icon-1__title">Close</title>
+            <path
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-width="2"
+              d="M0 13.0332964L13.0332964 0M13.0332964 13.0332964L0 0"
+            ></path>
+          </svg>
         </button>
       </header>
       <main role="main">
@@ -61,24 +80,24 @@
   </div>
 </div>
 <!--
-const dialog = document.getElementById('dialog');
-  const dialogHeading = document.getElementById('dialog-heading');
-  const dialogWrap = document.getElementById('dialog-wrap');
-
-  document.querySelectorAll('.dialog-open-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      dialog.classList.add(btn.dataset.type);
-      dialogHeading.textContent = btn.dataset.heading;
-      dialogWrap.classList.remove('ds-u-display--none');
+  const dialog = document.getElementById('dialog');
+    const dialogHeading = document.getElementById('dialog-heading');
+    const dialogWrap = document.getElementById('dialog-wrap');
+  
+    document.querySelectorAll('.dialog-open-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        dialog.classList.add(btn.dataset.type);
+        dialogHeading.textContent = btn.dataset.heading;
+        dialogWrap.classList.remove('ds-u-display--none');
+      });
     });
-  });
-  document.querySelectorAll('.dialog-close-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      dialog.className = 'ds-c-dialog';
-      dialogWrap.classList.add('ds-u-display--none');
+    document.querySelectorAll('.dialog-close-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        dialog.className = 'ds-c-dialog';
+        dialogWrap.classList.add('ds-u-display--none');
+      });
     });
-  });
--->
+  -->
 
   <script type="text/javascript" src="/design-system/medicare/example.js"></script>
 </body>
