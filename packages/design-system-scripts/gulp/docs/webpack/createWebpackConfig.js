@@ -29,7 +29,7 @@ module.exports = async function createWebpackConfig(sourceDir, docsDir, options)
     entry,
     output: {
       path: distPath,
-      publicPath: '/',
+      publicPath: options.rootPath,
       filename: '[name].js',
     },
     module: {
