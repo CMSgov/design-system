@@ -44,16 +44,24 @@ class PageBlock extends React.PureComponent {
 
   description() {
     if (this.props.description) {
-      /* eslint-disable react/no-danger */
-      return (
-        <div
-          className="c-page-block-description ds-u-margin-top--2 ds-u-measure--wide"
-          dangerouslySetInnerHTML={{
-            __html: this.props.description,
-          }}
-        />
-      );
-      /* eslint-enable react/no-danger */
+      if (typeof this.props.description === 'string') {
+        /* eslint-disable react/no-danger */
+        return (
+          <div
+            className="c-page-block-description ds-u-margin-top--2 ds-u-measure--wide"
+            dangerouslySetInnerHTML={{
+              __html: this.props.description,
+            }}
+          />
+        );
+        /* eslint-enable react/no-danger */
+      } else {
+        return (
+          <div className="c-page-block-description ds-u-margin-top--2 ds-u-measure--wide">
+            {this.props.description}
+          </div>
+        );
+      }
     }
   }
 
