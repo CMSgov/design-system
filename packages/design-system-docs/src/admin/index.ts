@@ -1,6 +1,6 @@
 import CMS from 'netlify-cms-app';
-import GuidancePagePreview from './preview-templates/GuidancePagePreview';
+import BasicPagePreview from './preview-templates/BasicPagePreview';
 
 CMS.init();
-CMS.registerPreviewTemplate('guidelines', GuidancePagePreview);
 CMS.registerPreviewStyle(`${process.env.rootPath}/index.css`);
+CMS.registerPreviewTemplate('guidelines', BasicPagePreview);
