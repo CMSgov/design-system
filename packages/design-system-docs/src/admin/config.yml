@@ -1,7 +1,8 @@
 publish_mode: editorial_workflow
 
 backend:
-  name: git-gateway
+  name: github
+  repo: CMSgov/design-system
   branch: master
   commit_messages:
     create: "Create {{collection}} “{{slug}}”"
