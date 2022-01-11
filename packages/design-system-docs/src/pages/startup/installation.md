@@ -2,12 +2,12 @@
 title: Installation
 weight: 0
 ---
+![](/images/storybook-logo.png)
 
 How you implement the design system depends on the needs of your project and your workstyle. We highly recommend implementing the design system with `npm`, as it allows you to easily update the design system version, but we also provide a direct download if `npm` will not work for you or your project.
 
-- [Install the `{{npm}}` package]({{root}}/startup/installation/#install-using-npm) if your project uses `npm` for package management.
-
-- [Download the design system]({{root}}/startup/installation/#download-zip) if you are not familiar with `npm` and package management.
+* [Install the `{{npm}}` package]({{root}}/startup/installation/#install-using-npm) if your project uses `npm` for package management.
+* [Download the design system]({{root}}/startup/installation/#download-zip) if you are not familiar with `npm` and package management.
 
 ## Install using npm
 
@@ -21,11 +21,11 @@ yarn add {{npm}}@latest
 
 The [{{npm}}](https://www.npmjs.com/package/{{npm}}) package includes:
 
-- Pre-compiled SCSS files
-- Compiled CSS files
-- Compiled React components (CommonJS and ES modules)
-- Typescript definition files
-- Fonts and image
+* Pre-compiled SCSS files
+* Compiled CSS files
+* Compiled React components (CommonJS and ES modules)
+* Typescript definition files
+* Fonts and image
 
 ### Package file structure
 
