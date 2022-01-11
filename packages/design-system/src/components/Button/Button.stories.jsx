@@ -2,6 +2,7 @@ import React from 'react';
 
 import Button from './Button';
 import { NextIcon } from '../Icons';
+import Spinner from '../Spinner/Spinner';
 
 export default {
   title: 'Components/Button',
@@ -30,26 +31,7 @@ export default {
     },
   },
   args: {
-    children: 'You button text here',
-  },
-  parameters: {
-    backgrounds: {
-      default: 'light',
-      values: [
-        {
-          name: 'light',
-          value: '#fff',
-        },
-        {
-          name: 'Hcgov dark',
-          value: '#112e51',
-        },
-        {
-          name: 'Mgov dark',
-          value: '#146a5d',
-        },
-      ],
-    },
+    children: 'Your button text here',
   },
 };
 
@@ -71,4 +53,14 @@ IconButton.args = {
       Button with icon <NextIcon />{' '}
     </>
   ),
+};
+
+export const SpinnerButton = Template.bind({});
+SpinnerButton.args = {
+  children: (
+    <>
+      <Spinner /> Loading...
+    </>
+  ),
+  variation: 'primary',
 };

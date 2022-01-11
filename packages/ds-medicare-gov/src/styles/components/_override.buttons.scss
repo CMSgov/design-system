@@ -1,4 +1,3 @@
-/* stylelint-disable */
 // Default (tertiarty) outline button
 .ds-c-button,
 .ds-c-button:visited {
@@ -19,37 +18,8 @@
     color: $color-primary-alt-darkest;
   }
 
-  &:focus,
-  &.ds-c-button--focus {
-    box-shadow: 0 0 0 4px $focus-choice-color-highlight, 0 0 0 2px $focus-choice-color;
-    color: $color-primary-alt-dark;
-    // hide chrome blue outline
-    outline: none;
-  }
-
   &.ds-c-button--transparent {
     border-color: transparent;
-    background-color: transparent;
-    text-decoration-thickness: $link-underline-height;
-    text-underline-offset: $link-underline-offset;
-    &:hover,
-    &.ds-c-button--hover {
-      text-decoration-thickness: $link-underline-height-hover;
-    }
-    &:active,
-    &.ds-c-button--active {
-      text-decoration-thickness: $link-underline-height-hover;
-    }
-    &:focus,
-    &.ds-c-button--focus {
-      text-decoration-thickness: $link-underline-height-hover;
-    }
-    &:disabled,
-    &.ds-c-button--disabled {
-      background-color: $color-gray-lighter;
-      border-color: transparent;
-      color: $color-gray-dark;
-    }
   }
 
   svg {
@@ -77,12 +47,6 @@
 
     &:hover,
     &.ds-c-button--hover {
-      border-color: rgba($color-white, 0.8);
-      color: rgba($color-white, 0.8);
-    }
-
-    &:focus,
-    &.ds-c-button--focus {
       border-color: rgba($color-white, 0.8);
       color: rgba($color-white, 0.8);
     }
@@ -139,10 +103,6 @@
 
   &:focus,
   &.ds-c-button--focus {
-    background-color: $button-primary-bg;
-    border-color: $focus-choice-color;
-    color: $color-white;
-
     // Ensure active and hover styles can be used with focus
     &:hover,
     &.ds-c-button--hover {
@@ -153,46 +113,44 @@
       background-color: $button-primary-bg--active;
     }
   }
+}
 
-  // Primary white solid inverse button
-  &.ds-c-button--inverse,
-  &.ds-c-button--inverse:visited {
+// Primary white solid inverse button
+.ds-c-button--primary.ds-c-button--inverse,
+.ds-c-button--primary.ds-c-button--inverse:visited {
+  background-color: $color-white;
+  border-color: $color-gray-dark;
+  color: $color-gray-dark;
+
+  &:hover,
+  &.ds-c-button--hover {
     background-color: $color-white;
-    border-color: $color-gray-dark;
+    border-color: rgba($color-gray-dark, 0.8);
+    color: rgba($color-gray-dark, 0.8);
+  }
+
+  &:active,
+  &.ds-c-button--active {
+    border-color: rgba($color-gray-dark, 0.6);
+    color: rgba($color-gray-dark, 0.6);
+  }
+  &:focus,
+  &.ds-c-button--focus {
+    background-color: $color-white;
+    border-color: rgba($color-gray-dark, 0.8);
+    color: rgba($color-gray-dark, 0.8);
+  }
+  &:disabled,
+  &.ds-c-button--disabled {
+    background-color: $color-gray-lighter;
+    border-color: transparent;
     color: $color-gray-dark;
+  }
 
-    &:hover,
-    &.ds-c-button--hover {
-      background-color: $color-white;
-      border-color: rgba($color-gray-dark, 0.8);
-      color: rgba($color-gray-dark, 0.8);
-    }
-
-    &:focus,
-    &.ds-c-button--focus {
-      background-color: $color-white;
-      border-color: rgba($color-gray-dark, 0.8);
-      color: rgba($color-gray-dark, 0.8);
-    }
-
-    &:active,
-    &.ds-c-button--active {
-      border-color: rgba($color-gray-dark, 0.6);
-      color: rgba($color-gray-dark, 0.6);
-    }
-
-    &:disabled,
-    &.ds-c-button--disabled {
-      background-color: $color-gray-lighter;
-      border-color: transparent;
-      color: $color-gray-dark;
-    }
-
-    &.ds-c-button--transparent {
-      background-color: transparent;
-      border-color: transparent;
-      color: $color-white;
-    }
+  &.ds-c-button--transparent {
+    background-color: transparent;
+    border-color: transparent;
+    color: $color-white;
   }
 }
 
@@ -220,9 +178,6 @@
 
   &:focus,
   &.ds-c-button--focus {
-    border-color: $focus-choice-color;
-    background-color: $color-primary-alt;
-
     // Ensure active and hover styles can be used with focus
     &:hover,
     &.ds-c-button--hover {
@@ -234,7 +189,6 @@
     }
   }
 }
-/* stylelint-enable */
 
 // Big (landing page) button
 .ds-c-button--big {

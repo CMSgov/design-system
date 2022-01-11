@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { translate } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 
 /**
  * Instead of coming to the Marketplace and seeing all plans that
@@ -26,4 +26,4 @@ DeConsumerMessage.propTypes = {
   deBrokerName: PropTypes.string,
 };
 
-export default translate()(DeConsumerMessage);
+export default withTranslation()(DeConsumerMessage);

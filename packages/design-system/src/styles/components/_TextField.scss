@@ -25,11 +25,7 @@
   }
 
   &:focus {
-    @if $ds-include-focus-styles {
-      @include focus-styles;
-    } @else {
-      box-shadow: 0 0 3px $color-focus, 0 0 7px $color-focus;
-    }
+    @include focus-styles;
   }
 }
 

@@ -7,7 +7,7 @@ import React from 'react';
 import { SkipNav } from '@cmsgov/design-system';
 import classnames from 'classnames';
 import defaultMenuLinks from './defaultMenuLinks';
-import { translate } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 
 export const VARIATION_NAMES = {
   LOGGED_IN: 'logged-in',
@@ -128,6 +128,7 @@ export class _Header extends React.Component {
         />
 
         {this.props.deConsumer && <DeConsumerMessage deBrokerName={this.props.deBrokerName} />}
+        {this.props.headerBottom}
       </header>
     );
   }
@@ -247,7 +248,11 @@ _Header.propTypes = {
    * the `defaultMenuLinks` method or the links provided by the `links` prop.
    */
   submenuBottom: PropTypes.node,
+  /**
+   * Element added to display content on Header bottom section
+   */
+  headerBottom: PropTypes.node,
 };
 
-export const Header = translate()(_Header);
+export const Header = withTranslation()(_Header);
 export default Header;

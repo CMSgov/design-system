@@ -15,12 +15,10 @@ select.ds-c-field {
     background-image: none;
   }
 
-  @if $ds-include-focus-styles {
-    // Removes inner outline on select elements in Firefox.
-    &:-moz-focusring {
-      color: transparent;
-      text-shadow: 0 0 0 #000;
-    }
+  // Removes inner outline on select elements in Firefox.
+  &:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
   }
 }
 
