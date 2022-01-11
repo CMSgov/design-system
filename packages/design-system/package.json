@@ -29,7 +29,7 @@
     "core-js": "^3.6.5",
     "downshift": "^3.2.10",
     "ev-emitter": "^1.1.1",
-    "focus-trap-react": "^6.0.0",
+    "focus-trap-react": "^8.9.0",
     "lodash": "^4.17.21",
     "prop-types": "^15.7.2",
     "react-aria-modal": "^2.11.1",
