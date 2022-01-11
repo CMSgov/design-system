@@ -36,6 +36,7 @@ Object {
         </Button>
       </header>
       <main
+        className="ds-c-dialog__body"
         role="main"
       >
         <div
@@ -154,6 +155,7 @@ exports[`Dialog renders react-aria-modal 1`] = `
                     </button>
                   </header>
                   <main
+                    class="ds-c-dialog__body"
                     role="main"
                   >
                     <div
@@ -286,6 +288,7 @@ exports[`Dialog renders react-aria-modal 1`] = `
                     </Button>
                   </header>
                   <main
+                    className="ds-c-dialog__body"
                     role="main"
                   >
                     <div
@@ -346,6 +349,7 @@ Object {
         </Button>
       </header>
       <main
+        className="ds-c-dialog__body"
         role="main"
       >
         <div
