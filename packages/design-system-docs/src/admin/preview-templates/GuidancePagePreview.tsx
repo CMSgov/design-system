@@ -5,7 +5,11 @@ import { PreviewTemplateComponentProps } from 'netlify-cms-core';
 const GuidancePagePreview = ({ entry, widgetFor }: PreviewTemplateComponentProps) => {
   const title = entry.getIn(['data', 'title']);
   const body = widgetFor('body');
-  return <Page view="guidance" header={title} description={body} />;
+  return (
+    <div className="ds-base">
+      <Page header={title} description={body} />
+    </div>
+  );
 };
 
 export default GuidancePagePreview;
