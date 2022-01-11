@@ -15,7 +15,9 @@
   "dependencies": {
     "@cmsgov/design-system": "^2.13.0",
     "classnames": "^2.2.5",
+    "html-webpack-plugin": "^4.5.0",
     "lodash": "^4.17.19",
+    "netlify-cms-app": "^2.15.63",
     "prismjs": "^1.11.0",
     "prop-types": "^15.7.2",
     "query-string": "^5.1.1",
