@@ -1,4 +1,5 @@
 /* eslint-disable filenames/match-exported */
+const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
@@ -65,6 +66,14 @@ module.exports = async function createWebpackConfig(sourceDir, docsDir, options)
         filename: path.join('admin', 'index.html'),
         excludeChunks: ['index', 'example'],
         minify: false,
+      }),
+      new CopyPlugin({
+        patterns: [
+          {
+            from: path.resolve(docs[0], 'src', 'admin', 'config.yml'),
+            to: path.join('admin', 'config.yml'),
+          },
+        ],
       }),
     ],
     resolve: {

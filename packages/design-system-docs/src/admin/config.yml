@@ -11,8 +11,8 @@ backend:
     deleteMedia: "[skip ci] Delete “{{path}}”"
 
 local_backend: true
-media_folder: static/img
-public_folder: /img
+media_folder: images
+public_folder: /images
 
 collections:
   - name: "guidelines"
