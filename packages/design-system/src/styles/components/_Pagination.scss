@@ -82,6 +82,8 @@ $pagination-page-count-color: $color-gray;
 
     /* stylelint-disable scss/media-feature-value-dollar-variable */
     @media (-ms-high-contrast: active), (forced-colors: active) {
+      border-color: GrayText;
+      color: GrayText;
       padding: $spacer-half $spacer-2;
     }
     /* stylelint-enable scss/media-feature-value-dollar-variable */
