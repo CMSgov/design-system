@@ -25,6 +25,17 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
 
+  - name: "startup"
+    label: "Getting started"
+    folder: "packages/design-system-docs/src/pages/startup"
+    create: true
+    slug: "{{slug}}"
+    sortable_fields: ['weight']
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Order", name: "weight", widget: "number" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
   # From example site, this is how we can configure individual pages that have uique structures
   # - name: "pages"
   #   label: "Pages"
