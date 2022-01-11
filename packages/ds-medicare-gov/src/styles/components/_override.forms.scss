@@ -82,54 +82,6 @@ legend[id^='datefield_label'] {
   display: none;
 }
 
-// Choice label
-.ds-c-choice + label {
-  min-height: 32px;
-  padding-left: $spacer-5;
-}
-
-// Choice checkbox/radio background
-.ds-c-choice + label::before {
-  // Because the min-height is larger than $choice-size, we need to manually adjust the
-  // checkbox/radio background and icon
-  top: 3px;
-}
-
-// Choice checkbox/radio icon
-.ds-c-choice + label::after {
-  height: 4px;
-  left: 5px;
-  // Includes additional 3px spacing to account for the min-height
-  top: 10px;
-  width: 9px;
-}
-
-.ds-c-choice:not(:disabled) + label:hover {
-  &::before {
-    border-color: $choice-checked-background-color;
-  }
-}
-
-// Size variants
-.ds-c-choice--small {
-  + label {
-    min-height: 24px;
-    padding-left: $spacer-4;
-
-    &::before {
-      top: 2px;
-    }
-
-    &::after {
-      border-width: 0 0 3px 3px;
-      height: 3px;
-      left: 5px;
-      top: 8px;
-      width: 7px;
-    }
-  }
-}
-
 // Alignment of $ icon for the currency field
 .ds-c-field--currency {
   padding-left: $spacer-3;

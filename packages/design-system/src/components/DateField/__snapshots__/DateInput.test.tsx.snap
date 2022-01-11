@@ -1,55 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DateInput has custom yearMax and yearMin 1`] = `
-<div
-  className="ds-c-datefield__container ds-l-form-row"
->
-  <TextField
-    aria-describedby="1"
-    className="ds-l-col--auto"
-    fieldClassName="ds-c-field--month"
-    inputRef={[Function]}
-    label="Month"
-    labelClassName="ds-c-datefield__label"
-    name="month"
-    numeric={true}
-    type="text"
-  />
-  <span
-    className="ds-c-datefield__separator"
-  >
-    /
-  </span>
-  <TextField
-    aria-describedby="1"
-    className="ds-l-col--auto"
-    fieldClassName="ds-c-field--day"
-    inputRef={[Function]}
-    label="Day"
-    labelClassName="ds-c-datefield__label"
-    name="day"
-    numeric={true}
-    type="text"
-  />
-  <span
-    className="ds-c-datefield__separator"
-  >
-    /
-  </span>
-  <TextField
-    aria-describedby="1"
-    className="ds-l-col--auto"
-    fieldClassName="ds-c-field--year"
-    inputRef={[Function]}
-    label="year"
-    labelClassName="ds-c-datefield__label"
-    name="Year"
-    numeric={true}
-    type="text"
-  />
-</div>
-`;
-
 exports[`DateInput has invalid day 1`] = `
 <div
   className="ds-c-datefield__container ds-l-form-row"

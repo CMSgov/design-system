@@ -5,6 +5,7 @@ $drawer-background-color: $color-background;
 $drawer-box-shadow: -2px 0 0 $border-color;
 $drawer-space: $spacer-2;
 $drawer-animation-timing: $animation-speed-2;
+$drawer-elevation: 500;
 
 // Header vars
 $drawer-header-background-color: $color-gray-lightest;
@@ -53,6 +54,7 @@ $drawer-toggle-space: 0;
   position: fixed;
   right: 0;
   top: 0;
+  z-index: $drawer-elevation;
 
   @media (min-width: $width-md) {
     animation: slideInDrawer $drawer-animation-timing ease-in-out both; // slide in from the right
