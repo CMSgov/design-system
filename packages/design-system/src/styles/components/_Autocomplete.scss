@@ -56,8 +56,8 @@ $autocomplete-list-border: $autocomplete-list-border-width $autocomplete-list-bo
 
   /* stylelint-disable scss/media-feature-value-dollar-variable */
   @media (-ms-high-contrast: active), (forced-colors: active) {
-    background-color: CanvasText;
-    color: Canvas;
+    background-color: WindowText;
+    color: Window;
     -ms-high-contrast-adjust: none;
   }
   /* stylelint-enable scss/media-feature-value-dollar-variable */
