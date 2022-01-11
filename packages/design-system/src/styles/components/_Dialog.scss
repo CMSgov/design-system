@@ -34,6 +34,12 @@ $dialog-spacer: $spacer-4;
   padding-bottom: $spacer-1;
 }
 
+.ds-c-dialog__body {
+  overflow-wrap: break-word;
+  // IE fallback
+  word-wrap: break-word;
+}
+
 .ds-c-dialog__actions {
   margin-top: $spacer-3;
 }
