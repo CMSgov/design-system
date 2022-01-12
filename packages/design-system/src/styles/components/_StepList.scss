@@ -64,8 +64,8 @@ $current-step-color: $color-primary !default;
 
     /* stylelint-disable scss/media-feature-value-dollar-variable */
     @media (-ms-high-contrast: active), (forced-colors: active) {
-      border-color: WindowText;
-      color: WindowText;
+      border-color: GrayText;
+      color: GrayText;
       -ms-high-contrast-adjust: none;
     }
     /* stylelint-enable scss/media-feature-value-dollar-variable */
