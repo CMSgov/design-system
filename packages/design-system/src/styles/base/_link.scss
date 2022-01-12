@@ -37,17 +37,9 @@ $link-underline-offset: auto !default;
     text-decoration-color: $link-hover-color;
     text-decoration-thickness: $link-underline-height-hover;
   }
-
-  @if $ds-include-focus-styles {
-    &:focus,
-    &:focus:visited {
-      @include focus-styles;
-    }
-  } @else {
-    &:focus {
-      color: $link-hover-color;
-      text-decoration-color: $link-hover-color;
-    }
+  &:focus,
+  &:focus:visited {
+    @include focus-styles-link;
   }
 
   &:active {
@@ -77,16 +69,10 @@ $link-underline-offset: auto !default;
   }
 
   /* stylelint-disable selector-max-specificity */
-  @if $ds-include-focus-styles {
-    &:focus,
-    &:focus:visited {
-      @include focus-styles;
-    }
-  } @else {
-    &:focus {
-      color: $link-inverse-hover-color;
-      text-decoration-color: $link-inverse-hover-color;
-    }
+  &:focus,
+  &:focus:visited {
+    @include focus-styles-link;
+    color: $link-color;
   }
   /* stylelint-enable selector-max-specificity */
 
@@ -97,6 +83,7 @@ $link-underline-offset: auto !default;
 }
 
 // Rename to ds-link
+a,
 .ds-c-link {
   @extend %link;
 }
@@ -105,26 +92,15 @@ $link-underline-offset: auto !default;
   @extend %link-inverse;
 }
 
-@if $ds-include-base-html-rulesets {
-  // <a> is the only base HTML element in the design system that
-  // has a style declaration. In all other cases, styles are applied using a
-  // namespaced class name. This selector isn't scoped under .ds-base, since that
-  // would cause the selector's specificity to be higher than most other component
-  // selectors (i.e. ds-c-button), necessitating overly specific selectors anytime
-  // a developer wanted to change an anchor's color property.
-  a {
-    @extend %link;
-  }
-  // Change color of links that are descendants of '.ds-base--inverse'
-  //
-  // Fix TODO: Because this selector's specificity is higher than most components,
-  // changing inverse links will require unusually specific selectors
-  //
-  // Specifically exclude '.ds-c-button' because this is most likely case where
-  // a inverse link element will have other styles applied
-  // Also exclude '.ds-c-tooltip__trigger-link' as we need to set
-  // text decoration styles for the tooltip trigger links
-  .ds-base--inverse a:not(.ds-c-button):not(.ds-c-tooltip__trigger-link) {
-    @extend %link-inverse;
-  }
+// Change color of links that are descendants of '.ds-base--inverse'
+//
+// Fix TODO: Because this selector's specificity is higher than most components,
+// changing inverse links will require unusually specific selectors
+//
+// Specifically exclude '.ds-c-button' because this is most likely case where
+// a inverse link element will have other styles applied
+// Also exclude '.ds-c-tooltip__trigger-link' as we need to set
+// text decoration styles for the tooltip trigger links
+.ds-base--inverse a:not(.ds-c-button):not(.ds-c-tooltip__trigger-link) {
+  @extend %link-inverse;
 }

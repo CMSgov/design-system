@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['@cmsgov/eslint-config-design-system'],
+  extends: ['@cmsgov/eslint-config-design-system', 'plugin:storybook/recommended'],
   rules: {
     // Avoid exploits. If you need dangerouslySetInnerHTML, then temporarily
     // disable this rule in the script rather than removing it from here.
@@ -16,12 +16,14 @@ module.exports = {
         // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-use-before-define.md#how-to-use
         'no-use-before-define': 'off',
         '@typescript-eslint/no-use-before-define': ['error'],
+        '@typescript-eslint/ban-ts-comment': 'off',
       },
     },
     {
       files: ['*.stories.jsx'],
       rules: {
         'react/prop-types': 'off',
+        'react/no-multi-comp': 'off',
       },
     },
   ],

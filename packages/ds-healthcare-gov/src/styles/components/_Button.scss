@@ -15,7 +15,10 @@
     border-color: transparent;
     color: $color-white;
   }
-
+  &:focus,
+  &.ds-c-button--focus {
+    background-color: $bg-color;
+  }
   &:hover,
   &.ds-c-button--hover {
     background-color: $hover-color;

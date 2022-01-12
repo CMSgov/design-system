@@ -45,6 +45,11 @@ class HeaderExample extends React.PureComponent {
   render() {
     const { locale } = this.state;
     const wrapperClassNames = 'ds-u-padding--1';
+    const HeaderBottomMessage = (
+      <div className="color-primary-alt-light ds-u-padding-y--2">
+        <div className="ds-l-container">Add content here for Header Bottom section</div>
+      </div>
+    );
 
     const SampleLearnSubmenu = () => (
       <div className="ds-u-display--flex">
@@ -74,6 +79,13 @@ class HeaderExample extends React.PureComponent {
           loggedIn
           deConsumer
           deBrokerName="Acme Co."
+          initialLanguage={locale}
+          links={customLinks}
+        />
+        <h6 className="preview__label">Header - Bottom</h6>
+        <Header
+          loggedIn
+          headerBottom={HeaderBottomMessage}
           initialLanguage={locale}
           links={customLinks}
         />

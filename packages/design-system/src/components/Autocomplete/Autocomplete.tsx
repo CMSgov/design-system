@@ -278,7 +278,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, any> {
     });
   }
 
-  render(): React.ReactNode {
+  render() {
     const {
       ariaClearLabel,
       clearInputText,

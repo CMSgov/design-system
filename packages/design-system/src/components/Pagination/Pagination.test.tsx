@@ -1,4 +1,3 @@
-import './matchMedia.mock';
 import { mount, shallow } from 'enzyme';
 import Pagination from './Pagination';
 import React from 'react';

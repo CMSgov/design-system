@@ -98,7 +98,7 @@ export class Select extends React.PureComponent<
     }
   }
 
-  render(): React.ReactNode {
+  render() {
     // Select specific props
     const {
       ariaLabel,

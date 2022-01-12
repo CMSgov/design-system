@@ -76,7 +76,7 @@ export interface ChoiceProps {
    */
   name: string;
   onBlur?: (...args: any[]) => any;
-  onChange?: (...args: any[]) => any;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => any;
   /**
    * Sets the type to render `checkbox` fields or `radio` buttons
    */
@@ -188,7 +188,7 @@ export class Choice extends React.PureComponent<
     }
   }
 
-  render(): React.ReactNode {
+  render() {
     const {
       checkedChildren,
       children,

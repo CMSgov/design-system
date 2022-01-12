@@ -121,7 +121,7 @@ export class Mask extends React.PureComponent<MaskProps, any> {
     }
   }
 
-  render(): React.ReactNode {
+  render() {
     const { mask } = this.props;
     const field = this.field();
 

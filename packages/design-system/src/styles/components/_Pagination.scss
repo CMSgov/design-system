@@ -62,16 +62,31 @@ $pagination-page-count-color: $color-gray;
   .ds-c-pagination__nav {
     flex: 0 0 auto;
     text-decoration: none;
+
     &:hover {
       text-decoration-thickness: 3px;
       text-underline-offset: 5px;
     }
+
+    /* stylelint-disable scss/media-feature-value-dollar-variable */
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      padding: $spacer-half $spacer-2;
+    }
+    /* stylelint-enable scss/media-feature-value-dollar-variable */
   }
   .ds-c-pagination__nav--disabled {
     border: 1px solid transparent;
     color: $pagination-nav-disabled-color;
     line-height: 1.3;
     padding: 8px 0;
+
+    /* stylelint-disable scss/media-feature-value-dollar-variable */
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      border-color: GrayText;
+      color: GrayText;
+      padding: $spacer-half $spacer-2;
+    }
+    /* stylelint-enable scss/media-feature-value-dollar-variable */
   }
   .ds-c-pagination__nav--img-container {
     display: inline-block;
@@ -80,9 +95,14 @@ $pagination-page-count-color: $color-gray;
     vertical-align: middle;
     width: 20px;
   }
-
   .ds-c-pagination__nav--image {
     height: 18px;
     width: 18px;
   }
+
+  /* stylelint-disable scss/media-feature-value-dollar-variable */
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    align-items: center;
+  }
+  /* stylelint-enable scss/media-feature-value-dollar-variable */
 }

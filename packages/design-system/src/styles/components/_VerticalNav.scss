@@ -5,11 +5,9 @@
   color: $color-primary;
   text-decoration: none;
 }
-@if $ds-include-focus-styles {
-  %nav-item-focus {
-    @include focus-styles;
-    @include focus-styles-position;
-  }
+%nav-item-focus {
+  @include focus-styles;
+  @include focus-styles-position;
 }
 
 .ds-c-vertical-nav {
@@ -48,11 +46,9 @@
   &:hover {
     @extend %nav-item-hover;
   }
-  @if $ds-include-focus-styles {
-    &:focus,
-    &.ds-c-vertical-nav__label--current:focus {
-      @extend %nav-item-focus;
-    }
+  &:focus,
+  &.ds-c-vertical-nav__label--current:focus {
+    @extend %nav-item-focus;
   }
 }
 
@@ -61,30 +57,28 @@
 .ds-c-vertical-nav__label--parent {
   appearance: none;
   background-color: transparent;
-  background-image: url('#{$image-path}/arrow-down.svg');
-  background-position: right $spacer-1 center;
-  background-repeat: no-repeat;
-  background-size: $font-size-sm;
   border-bottom: 0; // Clear <button> borders (border-left is already set)
   border-radius: 0; // Remove default browser radius in Chrome
   border-right: 0;
   border-top: 0;
   cursor: pointer;
-  padding-right: $spacer-5; // Creates space for icon
+  display: flex;
+  justify-content: space-between;
   width: 100%;
 
-  &[aria-expanded='true'] {
-    background-image: url('#{$image-path}/arrow-up.svg');
+  &:hover {
+    @extend %nav-item-hover;
   }
-  @if $ds-include-focus-styles {
-    &:hover {
-      @extend %nav-item-hover;
-    }
 
-    &:focus,
-    &.ds-c-vertical-nav__label--current:focus {
-      @extend %nav-item-focus;
-    }
+  &:focus,
+  &.ds-c-vertical-nav__label--current:focus {
+    @extend %nav-item-focus;
+  }
+
+  .ds-c-icon {
+    color: $color-base;
+    height: $font-size-md;
+    width: $font-size-md;
   }
 }
 
