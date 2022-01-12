@@ -2,6 +2,26 @@
 
 $badge-font-size-big: $base-font-size;
 
+@mixin badge-high-contrast-mode-remove-color() {
+  /* stylelint-disable scss/media-feature-value-dollar-variable */
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    background-color: windowText;
+    color: window;
+    -ms-high-contrast-adjust: none;
+  }
+  /* stylelint-enable scss/media-feature-value-dollar-variable */
+}
+
+@mixin badge-high-contrast-mode-label($label) {
+  /* stylelint-disable scss/media-feature-value-dollar-variable */
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    &::before {
+      content: $label + ': ';
+    }
+  }
+  /* stylelint-enable scss/media-feature-value-dollar-variable */
+}
+
 .ds-c-badge {
   background-color: $color-gray;
   border-radius: $border-radius-pill;
@@ -15,6 +35,8 @@ $badge-font-size-big: $base-font-size;
   &:only-of-type {
     margin-right: 0;
   }
+
+  @include badge-high-contrast-mode-remove-color;
 }
 
 .ds-c-badge--big {
@@ -23,17 +45,29 @@ $badge-font-size-big: $base-font-size;
 
 .ds-c-badge--info {
   background-color: $color-primary;
+
+  @include badge-high-contrast-mode-remove-color;
+  @include badge-high-contrast-mode-label('Notice');
 }
 
 .ds-c-badge--success {
   background-color: $color-success;
+
+  @include badge-high-contrast-mode-remove-color;
+  @include badge-high-contrast-mode-label('Success');
 }
 
 .ds-c-badge--warn {
   background-color: $color-warn;
   color: $color-base;
+
+  @include badge-high-contrast-mode-remove-color;
+  @include badge-high-contrast-mode-label('Warning');
 }
 
 .ds-c-badge--alert {
   background-color: $color-error;
+
+  @include badge-high-contrast-mode-remove-color;
+  @include badge-high-contrast-mode-label('Alert');
 }
