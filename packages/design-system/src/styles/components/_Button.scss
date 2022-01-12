@@ -62,6 +62,15 @@
     border-color: $color-gray-lighter;
     color: $color-gray-lighter;
     pointer-events: none;
+
+    /* stylelint-disable */
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      &:is(a) {
+        border-color: GrayText !important;
+        color: GrayText !important;
+      }
+    }
+    /* stylelint-enable */
   }
 }
 
@@ -123,6 +132,19 @@
     color: $color-gray-dark;
     text-decoration: none;
   }
+
+  /* stylelint-disable declaration-property-value-blacklist, scss/media-feature-value-dollar-variable */
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    &:hover {
+      text-decoration: none;
+    }
+
+    &[disabled] {
+      cursor: not-allowed;
+      pointer-events: initial;
+    }
+  }
+  /* stylelint-enable declaration-property-value-blacklist, scss/media-feature-value-dollar-variable */
 }
 
 /**
