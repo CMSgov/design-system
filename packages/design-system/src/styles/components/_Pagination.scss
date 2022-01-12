@@ -100,6 +100,7 @@ $pagination-page-count-color: $color-gray;
 
     /* stylelint-disable scss/media-feature-value-dollar-variable, max-nesting-depth */
     @media (-ms-high-contrast: active), (forced-colors: active) {
+      align-self: center;
       border: 0;
       padding: $spacer-half $spacer-2;
 
