@@ -98,7 +98,7 @@ $pagination-page-count-color: $color-gray;
       text-underline-offset: 5px;
     }
 
-    /* stylelint-disable scss/media-feature-value-dollar-variable, max-nesting-depth */
+    /* stylelint-disable */
     @media (-ms-high-contrast: active), (forced-colors: active) {
       align-self: center;
       border: 0;
@@ -111,11 +111,20 @@ $pagination-page-count-color: $color-gray;
         text-underline-offset: 5px;
 
         &:hover {
+          background-color: Window;
           text-decoration: none;
+        }
+
+        &:focus {
+          box-shadow: none;
+        }
+
+        &:focus:hover {
+          outline-color: LinkText;
         }
       }
     }
-    /* stylelint-enable scss/media-feature-value-dollar-variable, max-nesting-depth */
+    /* stylelint-enable */
   }
   .ds-c-pagination__nav--disabled {
     border: 1px solid transparent;

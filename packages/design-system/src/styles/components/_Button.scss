@@ -5,6 +5,44 @@
   --deprecated: 'WARNING: Use .ds-c-button or .ds-c-button--primary instead';
 }
 
+@mixin high-contrast-button-hover() {
+  &:hover,
+  &.ds-c-button--hover,
+  &:hover &:focus,
+  &.ds-c-button--hover &.ds-c-button--focus {
+    background-color: ButtonText;
+    color: ButtonFace;
+    -ms-high-contrast-adjust: none;
+  }
+
+  &:hover:is(a),
+  &.ds-c-button--hover:is(a),
+  &:hover:is(a) &:focus,
+  &.ds-c-button--hover:is(a) &.ds-c-button--focus {
+    background-color: LinkText;
+  }
+}
+
+@mixin high-contrast-button-active() {
+  &:active,
+  &.ds-c-button--active {
+    border-width: 2px;
+  }
+}
+
+@mixin high-contrast-button-disable() {
+  &:disabled,
+  &.ds-c-button--disabled {
+    border-color: GrayText;
+    color: GrayText;
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    pointer-events: all;
+  }
+}
+
 .ds-c-button,
 .ds-c-button:visited {
   appearance: none;
@@ -23,7 +61,6 @@
   text-decoration: none;
 
   /* stylelint-disable selector-max-specificity */
-
   &:hover,
   &.ds-c-button--hover,
   &:hover &:focus,
@@ -38,6 +75,7 @@
     @include focus-styles;
     text-decoration: none;
   }
+
   // Removes inner outline on buttons in Firefox.
   &::-moz-focus-inner {
     border: 0;
@@ -62,16 +100,15 @@
     border-color: $color-gray-lighter;
     color: $color-gray-lighter;
     pointer-events: none;
-
-    /* stylelint-disable */
-    @media (-ms-high-contrast: active), (forced-colors: active) {
-      &:is(a) {
-        border-color: GrayText !important;
-        color: GrayText !important;
-      }
-    }
-    /* stylelint-enable */
   }
+
+  /* stylelint-disable scss/media-feature-value-dollar-variable */
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    @include high-contrast-button-hover;
+    @include high-contrast-button-active;
+    @include high-contrast-button-disable;
+  }
+  /* stylelint-enable scss/media-feature-value-dollar-variable */
 }
 
 .ds-c-button > svg {
@@ -133,18 +170,26 @@
     text-decoration: none;
   }
 
-  /* stylelint-disable declaration-property-value-blacklist, scss/media-feature-value-dollar-variable */
+  /* stylelint-disable */
   @media (-ms-high-contrast: active), (forced-colors: active) {
-    &:hover {
+    border-color: Window;
+
+    &:hover,
+    &.ds-c-button--hover {
+      background-color: Window;
+      color: ButtonText;
       text-decoration: none;
     }
 
-    &[disabled] {
-      cursor: not-allowed;
-      pointer-events: initial;
+    &:hover:is(a),
+    &.ds-c-button--hover:is(a) {
+      background-color: Window;
+      color: LinkText;
     }
+
+    @include high-contrast-button-disable;
   }
-  /* stylelint-enable declaration-property-value-blacklist, scss/media-feature-value-dollar-variable */
+  /* stylelint-enable */
 }
 
 /**
@@ -173,6 +218,7 @@
     border-color: rgba($border-color-inverse, 0.6);
     color: rgba($color-base-inverse, 0.6);
   }
+
   // Make sure active overrides focus styles
   &:active:focus,
   &.ds-c-button--active:focus {
@@ -293,5 +339,13 @@ $button-color-variants: (
       color: $color-gray-dark;
       pointer-events: none;
     }
+
+    /* stylelint-disable scss/media-feature-value-dollar-variable */
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      @include high-contrast-button-hover;
+      @include high-contrast-button-active;
+      @include high-contrast-button-disable;
+    }
+    /* stylelint-enable scss/media-feature-value-dollar-variable */
   }
 }
