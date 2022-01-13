@@ -17,16 +17,16 @@ Presently, the inconsistency of design rules between the DSM, Designers making a
 
 > Design tokens are all the values needed to construct and maintain a design system — spacing, color, typography, object styles, animation, etc. — represented as data. These can represent anything defined by design: a color as a RGB value, an opacity as a number, an animation ease as Bezier coordinates. They’re used in place of hard-coded values in order to ensure flexibility and unity across all product experiences. - [Adobe Spectrum](https://spectrum.adobe.com/page/design-tokens/)
 
-Design tokens can be codified in many ways using a variety of data storage formats. Since the CMSWDS is implemented in Javascript/Typescript, we can utilize the modularity and type safety of Typescript to manage the current set of styles.
+Design tokens can be codified in many ways using a variety of data storage formats. Since the CMSDS is implemented in Javascript/Typescript, we can utilize the modularity and type safety of Typescript to manage the current set of styles.
 
 A design token solution is needed in which:
 
 1. The set of design tokens remain finite and equal
-2. The set of design tokens maintain consistency between application (DSM, Sketch, React and other future platforms such as iOS, Android, Web Components)
+2. The set of design tokens maintain consistency between application (DS Docs Site, Sketch, React and other future platforms such as new inherited design systems, or projects utilizing new technologies like Web Components)
 3. The set of design tokens can be transposed, updated and extended easily and quickly across all systems at once
 4. The set of design tokens can be versioned and changes in that system can be tracked and monitored
 
-By deciding on a [Single Source Of Truth](https://en.wikipedia.org/wiki/Single_source_of_truth) (SSOT) for our design rules, we can organize and transform them for any system which utilizes them. The design tokens, stored in our codebase and transpilable to any format can be our source of truth for the CMSWDS.
+By deciding on a [Single Source Of Truth](https://en.wikipedia.org/wiki/Single_source_of_truth) (SSOT) for our design rules, we can organize and transform them for any system which utilizes them. The design tokens, stored in our codebase and transpilable to any format can be our source of truth for the CMSDS.
 
 ## Benefits
 
@@ -46,20 +46,20 @@ There are few to no risks involved in implementing a token system. Implementatio
 
 **An outline for how this process could be rolled out for our current system:**
 
-1. A subset of the total token library along with helpers will be created in Typescript and will live in the CMSWDS repository within the packages folder. The following tasks could be completed over the course of two development sprints. This subset will include:
+1. A subset of the total token library along with helpers will be created in Typescript and will live in the CMSDS repository within the packages folder. The following tasks could be completed over the course of two development sprints. This subset will include:
 
    - The full set of colors used by each system represented in a typescript module.
    - Naming convention determined with collaboration with the design team.
    - Type definitions for colors and color format transform helper functions.
    - _Theme_ typescript modules defined for Core, Hc.goc and M.gov which define Sass variable outputs that map token values to the current color definitions
-   - A webpack/grunt build script which can be implemented in the current build process toolchain to compile these modules into Sass style variables to be imported into each package.
+   - Build scripts which can be implemented in the current build process toolchain to compile these modules into Sass style variables to be imported into each package.
    - A set of tests scripts to validate data integrity and compare the variable output to the current variable settings to ensure data parity.
 
-2. Once this concept has been validated and released, work on other token types can progress with: measure, spacing, font, animation and other values, utilizing this toolkit. One set of tokens can be ported at a time, broken up into single-sprint long tasks.
+2. A build tool will be developed to export tokens from the token library to Sketch variables which can be imported by designers to ensure they are working with the correct set of values. If the choice to support other design tools ever occurs, a new export process would be architecturally easy to implement for almost any API. This could be done over the course of one development sprint.
+ 
+4. Once this concept has been validated and released, work on other token types can progress with: measure, spacing, font, animation and other values, utilizing this toolkit. One set of tokens can be ported at a time, broken up into single-sprint long tasks.
 
-3. A build tool will be developed to export tokens from the token library to Sketch variables which can be imported by designers to ensure they are working with the correct set of values. If the choice to support other design tools ever occurs, a new export process would be architecturally easy to implement for almost any API. This could be done over the course of one development sprint.
-
-4. A tool to generate documentation would be created from the token build task. This could be another option in our existing site docs, filed under "Design Tokens." Component level variables could be included on the doc pages for each component. This could be done over the course of two development sprints.
+5. A tool to generate documentation would be created from the token build task. This could be another option in our existing site docs, filed under "Design Tokens." Component level variables could be included on the doc pages for each component. This could be done over the course of two development sprints.
 
 ## Conclusion
 
