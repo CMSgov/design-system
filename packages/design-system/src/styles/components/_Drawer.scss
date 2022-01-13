@@ -5,6 +5,7 @@ $drawer-background-color: $color-background;
 $drawer-box-shadow: -2px 0 0 $border-color;
 $drawer-space: $spacer-2;
 $drawer-animation-timing: $animation-speed-2;
+$drawer-elevation: 500;
 
 // Header vars
 $drawer-header-background-color: $color-gray-lightest;
@@ -39,6 +40,12 @@ $drawer-toggle-space: 0;
   display: block;
   font-weight: $drawer-toggle-font-weight;
   padding: $drawer-toggle-space;
+
+  /* stylelint-disable scss/media-feature-value-dollar-variable */
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    padding: $spacer-half $spacer-2;
+  }
+  /* stylelint-enable scss/media-feature-value-dollar-variable */
 }
 
 .ds-c-drawer__toggle--inline {
@@ -53,6 +60,7 @@ $drawer-toggle-space: 0;
   position: fixed;
   right: 0;
   top: 0;
+  z-index: $drawer-elevation;
 
   @media (min-width: $width-md) {
     animation: slideInDrawer $drawer-animation-timing ease-in-out both; // slide in from the right
@@ -62,6 +70,12 @@ $drawer-toggle-space: 0;
   @media (min-width: $width-xl) {
     max-width: $measure-base;
   }
+
+  /* stylelint-disable scss/media-feature-value-dollar-variable */
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    border-left: 2px solid WindowText;
+  }
+  /* stylelint-enable scss/media-feature-value-dollar-variable */
 }
 
 .ds-c-drawer__window {

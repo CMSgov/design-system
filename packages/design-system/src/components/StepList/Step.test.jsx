@@ -81,7 +81,7 @@ describe('Step', () => {
 
     const completed = wrapper.find('.ds-c-step__completed-text');
     expect(completed.length).toEqual(1);
-    expect(completed.text()).toEqual('Completed!');
+    expect(completed.text()).toEqual('<CheckIcon />Completed!');
 
     const editLink = wrapper.find('.ds-c-step__actions').find('StepLink');
     expect(editLink.length).toEqual(1);
@@ -105,7 +105,7 @@ describe('Step', () => {
 
     const completed = wrapper.find('.ds-c-step__completed-text');
     expect(completed.length).toEqual(1);
-    expect(completed.text()).toEqual('Completed!');
+    expect(completed.text()).toEqual('<CheckIcon />Completed!');
 
     const editLink = wrapper.find('.ds-c-step__actions').find('StepLink');
     expect(editLink.length).toEqual(0);
