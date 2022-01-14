@@ -1,0 +1,17 @@
+{
+  "include": ["src/*"],
+  "compilerOptions": {
+    "target": "es2015",
+    "rootDir": "./",
+    "outDir": "./dist",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "strictFunctionTypes": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "skipLibCheck": true
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "design-system-tokens",
+  "version": "1.0.0",
+  "description": "CMSWDS Design System Tokens",
+  "main": "index.ts",
+  "license": "MIT"
+}
