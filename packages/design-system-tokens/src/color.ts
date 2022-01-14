@@ -1,10 +1,12 @@
-import { Tokens } from './token'
+import { Tokens, Token } from './token'
 
 /*
  * types for color token definitions
  */
 type ColorSignature = `${string}-${number}${number}${number}` | string
 type ColorVal = `#${string}`
+
+type ColorToken = Token<ColorSignature, ColorVal>
 
 /*
  * CMSDS Color Tokens, organized by hue
