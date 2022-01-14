@@ -13,9 +13,11 @@ function replaceTemplateTags(content: string) {
 
 const BasicPagePreview = (props: PreviewTemplateComponentProps) => {
   const title = props.entry.getIn(['data', 'title']);
-  // const entryWithBodyUpdates = props.entry.updateIn(['data', 'body'],replaceTemplateTags)
-  // const body = props.widgetFor('body', undefined, entryWithBodyUpdates);
   const body = props.widgetFor('body');
+
+  // This would work if our page-rendering components were refactored to handle raw markdown
+  // const body = replaceTemplateTags(props.entry.getIn(['data', 'body']));
+
   return (
     <div className="ds-base">
       <Page header={title} description={body} />
