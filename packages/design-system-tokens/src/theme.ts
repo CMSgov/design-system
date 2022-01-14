@@ -3,16 +3,16 @@ import { Color, Spacing } from './'
 
 const coreTheme = {
   'color': [
-    { sig: 'black' },
-    { sig: 'white' },
-    { sig: 'grey-100', alias: 'primary-grey' },
-    { sig: 'grey-400', rename: 'primary-text' },
+    { name: 'black' },
+    { name: 'white' },
+    { name: 'grey-100', alias: 'primary-grey' },
+    { name: 'grey-400', rename: 'primary-text' },
   ],
   'font': [
-    { sig: 'Helvetica-neue', rename: 'primary-font' },
-    { sig: 'Open-Sans Regular', rename: 'secondary-font' },
+    { name: 'Helvetica-neue', rename: 'primary-font' },
+    { name: 'Open-Sans Regular', rename: 'secondary-font' },
   ],
-  'spacing': { sig: 'all', prefix: 'spacer-' }
+  'spacing': { name: 'all', prefix: 'spacer-' }
 }
 
 const createTheme = (t: Tokens[]) : Tokens | null => {

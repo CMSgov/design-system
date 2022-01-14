@@ -1,60 +1,60 @@
-import { Tokens, Token } from './token'
-
 /*
  * types for color token definitions
  */
-type ColorSignature = `${string}-${number}${number}${number}` | string
-type ColorVal = `#${string}`
-
-type ColorToken = Token<ColorSignature, ColorVal>
+interface ColorToken {
+  readonly [index: string]: `#${string}` | ColorToken
+}
 
 /*
  * CMSDS Color Tokens, organized by hue
  */
-const ColorTokens: Tokens<ColorSignature,ColorVal> = [
+const Colors: ColorToken = {
   // singletons
-  {sig: 'white',    val: '#FFFFFF', type: 'color'},
-  {sig: 'black',    val: '#000000', type: 'color'},
-  // grey 
-  {sig: 'grey-000', val: '#111111', type: 'color'},
-  {sig: 'grey-100', val: '#333333', type: 'color'},
-  {sig: 'grey-200', val: '#555555', type: 'color'},
-  {sig: 'grey-300', val: '#777777', type: 'color'},
-  {sig: 'grey-400', val: '#999999', type: 'color'},
-  {sig: 'grey-500', val: '#AAAAAA', type: 'color'},
-  {sig: 'grey-600', val: '#CCCCCC', type: 'color'},
-]
+  white: '#FFFFFF',
+  black: '#000000',
+
+  // gray 
+  gray: {
+    _000: '#111111',
+    _100: '#333333',
+    _200: '#555555',
+    _300: '#777777',
+    _400: '#999999',
+    _500: '#AAAAAA',
+    _600: '#CCCCCC',
+  },
+}
 
 /*
- * returns a single hex value from a token signature
+ * returns a single hex value from a token namenature
  */
-const getHex = (sig: ColorSignature) : string => { 
-  let result = ColorTokens.filter(s => s.sig === sig)
+const getHex = (t: ColorToken) : string => { 
+  let result = Colors.filter((k:string) => k === t)
   return result[0].val
 }
 
 /*
- * returns an rgb color value from a token signature
+ * returns an rgb color value from a token namenature
  */
-const getRgb = (sig: ColorSignature) : string => {
-  console.log(sig)
+const getRgb = (name: ColorName) : string => {
+  console.log(name)
   return ''
 }
 
 /*
- * returns an hsl color value from a token signature
+ * returns an hsl color value from a token namenature
  */
-const getHsl = (sig: ColorSignature) : string => {
-  console.log(sig)
+const getHsl = (name: ColorName) : string => {
+  console.log(name)
   return ''
 }
 
 /*
  * returns an array of sass variables with an optional prefix string
- * format is '$prefix-signature: hex value'
+ * format is '$prefix-namenature: hex value'
  */
 const exportSass = (prefix: string) : string[] => {
-  return ColorTokens.map((e) => { return `$${prefix}${e.sig}: ${e.val}` })
+  return ColorTokens.map((e) => { return `$${prefix}${e.name}: ${e.val}` })
 }
 
 const Color = {
