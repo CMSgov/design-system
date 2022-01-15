@@ -29,7 +29,7 @@ module.exports = async function createWebpackConfig(sourceDir, docsDir, options)
     entry,
     output: {
       path: distPath,
-      publicPath: options.rootPath,
+      publicPath: '/',
       filename: '[name].js',
     },
     module: {
@@ -61,10 +61,11 @@ module.exports = async function createWebpackConfig(sourceDir, docsDir, options)
         },
       }),
       new HtmlWebpackPlugin({
-        inject: true,
+        publicPath: options.rootPath ? `/${options.rootPath}` : 'auto',
         template: path.resolve(docs[0], 'src', 'admin', 'index.html'),
         filename: path.join('admin', 'index.html'),
         excludeChunks: ['index', 'example'],
+        inject: true,
         minify: false,
       }),
       new CopyPlugin({
