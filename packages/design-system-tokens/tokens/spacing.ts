@@ -1,6 +1,6 @@
-import { Types } from '.'
+import * as Token from '.'
 
-const makeSpacers = <T extends Types.SpacingValues>(value: T) => { return value }
+const makeSpacers = <T extends Token.Types.SpacingValues>(value: T) => { return value }
 
 const Spacing  = makeSpacers({
   'spacer-half': '4px',
