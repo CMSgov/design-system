@@ -21,7 +21,7 @@ $badge-font-size-big: $base-font-size;
       }
     }
     @if ($label-es != null) {
-      [lang='es'] & {
+      [lang^='es'] & {
         &::before {
           content: $label-es + ': ';
         }
