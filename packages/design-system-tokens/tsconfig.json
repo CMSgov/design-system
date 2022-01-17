@@ -1,5 +1,9 @@
 {
-  "include": ["src/*"],
+  "include": [
+    "src/*.ts",
+    "node_modules",
+    "tests/*.ts"
+  ],
   "compilerOptions": {
     "target": "es2015",
     "rootDir": "./",
