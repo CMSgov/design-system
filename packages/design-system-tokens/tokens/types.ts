@@ -7,6 +7,6 @@ export type HexValues = {
 }
 
 export type Theme = {
-  color: HexValues
-  spacing: SpacingValues
+  readonly color: HexValues
+  readonly spacing: SpacingValues
 }
