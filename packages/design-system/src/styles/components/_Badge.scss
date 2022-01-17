@@ -12,14 +12,23 @@ $badge-font-size-big: $base-font-size;
   /* stylelint-enable scss/media-feature-value-dollar-variable */
 }
 
-@mixin badge-high-contrast-mode-label($label) {
-  /* stylelint-disable scss/media-feature-value-dollar-variable */
+@mixin badge-high-contrast-mode-label($label-en, $label-es: null) {
+  /* stylelint-disable */
   @media (-ms-high-contrast: active), (forced-colors: active) {
-    &::before {
-      content: $label + ': ';
+    [lang^='en'] & {
+      &::before {
+        content: $label-en + ': ';
+      }
+    }
+    @if ($label-es != null) {
+      [lang='es'] & {
+        &::before {
+          content: $label-es + ': ';
+        }
+      }
     }
   }
-  /* stylelint-enable scss/media-feature-value-dollar-variable */
+  /* stylelint-enable */
 }
 
 .ds-c-badge {
