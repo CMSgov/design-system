@@ -4,6 +4,7 @@ backend:
   name: github
   repo: CMSgov/design-system
   branch: master
+  base_url: https://api.netlify.com
   commit_messages:
     create: "Create {{collection}} “{{slug}}”"
     update: "Update {{collection}} “{{slug}}”"
