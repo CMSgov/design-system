@@ -102,8 +102,5 @@
     "react": ">=16.0.0",
     "react-dom": ">=16.0.0",
     "stylelint": ">=13.0.0"
-  },
-  "devDependencies": {
-    "babel-plugin-typescript-to-proptypes": "^1.4.2"
   }
 }
