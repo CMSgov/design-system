@@ -1,8 +1,11 @@
 import * as Token from '.'
 
+export const TOKEN_TYPE = 'spacing'
+
 const makeSpacers = <T extends Token.Types.SpacingValues>(value: T) => { return value }
 
 const Spacing  = makeSpacers({
+  'spacer-none': '0px',
   'spacer-half': '4px',
   'spacer-1': '8px',
   'spacer-2': '16px',
