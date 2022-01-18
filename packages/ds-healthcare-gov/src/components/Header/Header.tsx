@@ -232,7 +232,7 @@ const Header = (props: HeaderProps) => {
         submenuBottom={props.submenuBottom}
       />
 
-      {props.deConsumer && <DeConsumerMessage deBrokerName={props.deBrokerName} />}
+      {props.deConsumer && <DeConsumerMessage t={t} deBrokerName={props.deBrokerName} />}
       {props.headerBottom}
     </header>
   );
