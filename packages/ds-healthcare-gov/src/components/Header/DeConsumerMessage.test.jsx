@@ -2,7 +2,7 @@ import DeConsumerMessage from './DeConsumerMessage';
 import React from 'react';
 import { shallow } from 'enzyme';
 
-const t = (key) => key;
+const t = (key, data) => key + (data ? ` | ${JSON.stringify(data)}` : '');
 
 describe('DeConsumerMessage', function () {
   it('renders message with broker name', () => {

@@ -7,7 +7,7 @@ exports[`DeConsumerMessage renders message with broker name 1`] = `
   <div
     className="ds-l-container"
   >
-    header.deConsumerMessage
+    header.deConsumerMessage | {"brokerName":"Acme Co."}
   </div>
 </div>
 `;
@@ -19,7 +19,7 @@ exports[`DeConsumerMessage renders message with fallback broker name 1`] = `
   <div
     className="ds-l-container"
   >
-    header.deConsumerMessage
+    header.deConsumerMessage | {"brokerName":"header.deBrokerNameFallback"}
   </div>
 </div>
 `;
