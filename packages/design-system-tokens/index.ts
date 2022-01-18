@@ -11,16 +11,18 @@ async function tsToScss(file: string): Promise<string[]> {
   const tsData = await import(file);
 
   for (const [k, v] of Object.entries(tsData.default.color)) {
-    c += `$${k}: ${v}\n`;
+    c += `$${k}: ${v};\n`;
   }
   for (const [k, v] of Object.entries(tsData.default.spacing)) {
-    s += `$${k}: ${v}\n`;
+    s += `$${k}: ${v};\n`;
   }
 
   return [c, s];
 }
 
 function main() {
+  if (!fs.existsSync('./dist')) fs.mkdirSync('./dist');
+
   // first two args are not needed
   const args = process.argv.slice(2);
   if (args.length <= 0) {
