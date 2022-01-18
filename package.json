@@ -17,7 +17,6 @@
     "build-docs:healthcare": "yarn cmsds build-docs --config cmsds.healthcare.config.js",
     "build-docs:medicare": "yarn cmsds build-docs --config cmsds.medicare.config.js",
     "release": "./release.sh",
-    "publish-release": "./publish.sh",
     "precommit": "lint-staged",
     "test": "yarn test:unit && yarn test:a11y",
     "test:unit": "yarn cmsds test ./packages --filePath",
