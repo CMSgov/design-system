@@ -12,25 +12,6 @@ $badge-font-size-big: $base-font-size;
   /* stylelint-enable scss/media-feature-value-dollar-variable */
 }
 
-@mixin badge-high-contrast-mode-label($label-en, $label-es: null) {
-  /* stylelint-disable */
-  @media (-ms-high-contrast: active), (forced-colors: active) {
-    [lang^='en'] & {
-      &::before {
-        content: $label-en + ': ';
-      }
-    }
-    @if ($label-es != null) {
-      [lang^='es'] & {
-        &::before {
-          content: $label-es + ': ';
-        }
-      }
-    }
-  }
-  /* stylelint-enable */
-}
-
 .ds-c-badge {
   background-color: $color-gray;
   border-radius: $border-radius-pill;
@@ -56,14 +37,14 @@ $badge-font-size-big: $base-font-size;
   background-color: $color-primary;
 
   @include badge-high-contrast-mode-remove-color;
-  @include badge-high-contrast-mode-label('Notice');
+  @include high-contrast-mode-label-add('Notice');
 }
 
 .ds-c-badge--success {
   background-color: $color-success;
 
   @include badge-high-contrast-mode-remove-color;
-  @include badge-high-contrast-mode-label('Success');
+  @include high-contrast-mode-label-add('Success');
 }
 
 .ds-c-badge--warn {
@@ -71,12 +52,12 @@ $badge-font-size-big: $base-font-size;
   color: $color-base;
 
   @include badge-high-contrast-mode-remove-color;
-  @include badge-high-contrast-mode-label('Warning');
+  @include high-contrast-mode-label-add('Warning');
 }
 
 .ds-c-badge--alert {
   background-color: $color-error;
 
   @include badge-high-contrast-mode-remove-color;
-  @include badge-high-contrast-mode-label('Alert');
+  @include high-contrast-mode-label-add('Alert');
 }

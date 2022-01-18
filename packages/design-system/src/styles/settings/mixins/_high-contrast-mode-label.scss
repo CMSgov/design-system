@@ -1,0 +1,31 @@
+@mixin high-contrast-mode-label-add($label-en, $label-es: null) {
+  /* stylelint-disable */
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    [lang^='en'] & {
+      &::before {
+        content: $label-en + ': ';
+      }
+    }
+    @if ($label-es != null) {
+      [lang^='es'] & {
+        &::before {
+          content: $label-es + ': ';
+        }
+      }
+    }
+  }
+  /* stylelint-enable */
+}
+
+@mixin high-contrast-mode-label-remove() {
+  /* stylelint-disable */
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    [lang^='en'] &,
+    [lang='es'] & {
+      &::before {
+        content: '';
+      }
+    }
+  }
+  /* stylelint-enable */
+}
