@@ -88,11 +88,6 @@ $alert-link-color-focus: $color-primary-darkest;
   @include high-contrast-mode-label-add('Notice');
 }
 
-// Conditionally remove prefix if heading is present
-.ds-c-alert__heading + .ds-c-alert__text:first-of-type {
-  @include high-contrast-mode-label-remove;
-}
-
 .ds-c-alert__text {
   margin-bottom: 0;
   margin-top: 0;
@@ -139,4 +134,9 @@ $alert-link-color-focus: $color-primary-darkest;
   .ds-c-alert__heading {
     @include high-contrast-mode-label-add('Success');
   }
+}
+
+// Conditionally remove prefix if heading is present
+.ds-c-alert__heading + .ds-c-alert__text:first-of-type {
+  @include high-contrast-mode-label-remove;
 }
