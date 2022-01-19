@@ -41,12 +41,31 @@ $accordion-header-font-family: $font-sans;
   text-align: left;
   text-decoration: none;
   width: 100%;
+
   &:hover {
     background-color: $accordion-header-bg-hover-color;
   }
+
   &:focus {
     @include focus-styles;
   }
+
+  /* stylelint-disable */
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    -ms-high-contrast-adjust: none;
+    background-color: LinkText;
+    color: window;
+
+    &:hover,
+    &:focus {
+      -ms-high-contrast-adjust: none;
+      background-color: window;
+      color: LinkText;
+      outline-offset: -4px;
+      outline: 4px solid LinkText;
+    }
+  }
+  /* stylelint-enable */
 
   .ds-c-icon {
     flex-shrink: 0;
