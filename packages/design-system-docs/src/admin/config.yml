@@ -1,11 +1,11 @@
 publish_mode: editorial_workflow
 
 backend:
-  name: git-gateway
-  base_url: https://naughty-benz-6d7e02.netlify.app
-  gateway_url: https://naughty-benz-6d7e02.netlify.app/.netlify/git
-  identity_url: https://naughty-benz-6d7e02.netlify.app/.netlify/identity
-  site_domain: naughty-benz-6d7e02.netlify.app
+  name: github
+  base_url: https://api.netlify.com
+  gateway_url: https://api.netlify.com/.netlify/git
+  identity_url: https://api.netlify.com/.netlify/identity
+  site_domain: api.netlify.com
   repo: CMSgov/design-system
   branch: master
   commit_messages:
