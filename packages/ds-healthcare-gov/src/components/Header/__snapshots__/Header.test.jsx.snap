@@ -60,8 +60,9 @@ exports[`Header renders Direct Enrollment banner 1`] = `
     }
     open={false}
   />
-  <Component
+  <DeConsumerMessage
     deBrokerName="Foo"
+    t={[Function]}
   />
 </header>
 `;
