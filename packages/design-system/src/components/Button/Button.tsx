@@ -1,7 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 
-export type ButtonComponent = React.ReactElement<any> | any | ((...args: any[]) => any);
+export type CustomButtonComponentType = React.ComponentType<any> | React.FC;
+export type ButtonComponentType = React.ElementType<any> | CustomButtonComponentType;
 export type ButtonSize = 'small' | 'big';
 export type ButtonType = 'button' | 'submit';
 /**
@@ -10,7 +11,7 @@ export type ButtonType = 'button' | 'submit';
  */
 export type ButtonVariation = 'primary' | 'danger' | 'success' | 'transparent';
 
-type CommonButtonProps<T> = {
+type CommonButtonProps<T extends ButtonComponentType> = {
   /**
    * Label text or HTML
    */
@@ -26,6 +27,11 @@ type CommonButtonProps<T> = {
    */
   component?: T;
   disabled?: boolean;
+  /**
+   * When provided the root component will render as an `<a>` element
+   * rather than `button`.
+   */
+  href?: string; // Still optional because it's optional on the anchor tag
   /**
    * Access a reference to the `button` or `a` element
    */
@@ -55,27 +61,18 @@ type CommonButtonProps<T> = {
 
 type OmitProps = 'children' | 'className' | 'onClick' | 'ref' | 'size' | 'type' | 'href';
 
-type LinkButtonProps = CommonButtonProps<'a'> &
-  Omit<React.ComponentPropsWithRef<'a'>, OmitProps> & {
-    /**
-     * When provided the root component will render as an `<a>` element
-     * rather than `button`.
-     */
-    href?: string; // Still optional because it's optional on the anchor tag
-  };
+export type ButtonProps<T extends ButtonComponentType> = CommonButtonProps<T> &
+  (T extends React.ElementType ? Omit<React.ComponentPropsWithRef<T>, OmitProps> : unknown);
 
-type ButtonButtonProps = CommonButtonProps<'button'> &
-  Omit<React.ComponentPropsWithRef<'button'>, OmitProps>;
-
-export type ButtonProps = CommonButtonProps<ButtonComponent> | LinkButtonProps | ButtonButtonProps;
-
-export class Button extends React.PureComponent<ButtonProps> {
+export class Button<T extends ButtonComponentType = 'button'> extends React.PureComponent<
+  ButtonProps<T>
+> {
   static defaultProps = {
     type: 'button',
     component: 'button',
   };
 
-  constructor(props: ButtonProps) {
+  constructor(props: ButtonProps<T>) {
     super(props);
 
     if (process.env.NODE_ENV !== 'production') {
@@ -125,7 +122,7 @@ export class Button extends React.PureComponent<ButtonProps> {
       attrs.onClick = this.handleClick;
     }
 
-    if (component !== 'button' || (this.props as LinkButtonProps).href) {
+    if (component !== 'button' || this.props.href) {
       // Assume `component` is not a <button> and remove <button> specific attributes
       attrs.role = 'button';
       delete attrs.disabled;
@@ -135,12 +132,15 @@ export class Button extends React.PureComponent<ButtonProps> {
     return attrs;
   }
 
-  componentType(): string {
+  componentType(): ButtonComponentType {
     let component = this.props.component;
 
-    if (component === 'button' && (this.props as LinkButtonProps).href) {
-      // If `href` is provided and a custom component is not, we render `<a>` instead
-      component = 'a';
+    // If props.component is 'button', it is not a custom React component. In cases
+    // where the user didn't specify a custom component and did include an href, we
+    // want to use `<a>` for our element.
+    if (component === 'button' && this.props.href) {
+      // Need to assert any for TypeScript because T is technically 'button'
+      component = 'a' as any;
     }
     return component;
   }
@@ -185,7 +185,7 @@ export class Button extends React.PureComponent<ButtonProps> {
     return (
       <ComponentType
         ref={this.props.inputRef}
-        onKeyPress={this.componentType() === 'a' ? this.handleKeyPress : undefined}
+        onKeyPress={ComponentType === 'a' ? this.handleKeyPress : undefined}
         {...attrs}
       >
         {this.props.children}

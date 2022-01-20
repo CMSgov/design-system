@@ -11,7 +11,7 @@ const defaultProps = {
   children: 'Foo',
 };
 
-function renderButton(props: Partial<ButtonProps> = {}) {
+function renderButton(props: Partial<ButtonProps<any>> = {}) {
   return shallow(<Button {...defaultProps} {...props} />);
 }
 
