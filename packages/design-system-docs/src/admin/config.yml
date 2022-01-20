@@ -2,10 +2,10 @@ publish_mode: editorial_workflow
 
 backend:
   name: git-gateway
-  base_url: https://hungry-mccarthy-99ee22.netlify.app
-  gateway_url: https://hungry-mccarthy-99ee22.netlify.app/.netlify/git
-  identity_url: https://hungry-mccarthy-99ee22.netlify.app/.netlify/identity
-  site_domain: hungry-mccarthy-99ee22.netlify.app
+  base_url: https://naughty-benz-6d7e02.netlify.app
+  gateway_url: https://naughty-benz-6d7e02.netlify.app/.netlify/git
+  identity_url: https://naughty-benz-6d7e02.netlify.app/.netlify/identity
+  site_domain: naughty-benz-6d7e02.netlify.app
   repo: CMSgov/design-system
   branch: master
   commit_messages:
