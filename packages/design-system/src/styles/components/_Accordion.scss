@@ -61,8 +61,8 @@ $accordion-header-font-family: $font-sans;
       -ms-high-contrast-adjust: none;
       background-color: window;
       color: LinkText;
-      outline-offset: -4px;
-      outline: 4px solid LinkText;
+      outline-offset: -$spacer-half;
+      outline: $spacer-half solid LinkText;
     }
   }
   /* stylelint-enable */
@@ -95,7 +95,7 @@ $accordion-header-font-family: $font-sans;
 
 .ds-c-accordion--bordered {
   .ds-c-accordion__content {
-    border: 4px solid $accordion-border-color;
+    border: $spacer-half solid $accordion-border-color;
     border-top: 0;
     padding: $spacer-2 $spacer-2;
   }
