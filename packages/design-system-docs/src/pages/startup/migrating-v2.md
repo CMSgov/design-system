@@ -2,7 +2,6 @@
 title: Migrating to v2
 weight: 11
 ---
-
 The CMS Design System v2 release introduces several breaking changes, and this migration guide outlines high-level steps to upgrade. See the [release notes](https://github.com/CMSgov/design-system/releases/tag/core-2.0.0) for a detailed list of changes.
 
 ## NPM packages
@@ -35,8 +34,8 @@ Usage of [child design system]({{root}}/startup/child-design-systems/) NPM packa
 
 The 2 child design system packages are:
 
-- @cmsgov/ds-healthcare-gov
-- @cmsgov/medicare-site-package
+* @cmsgov/ds-healthcare-gov
+* @cmsgov/medicare-site-package
 
 Old usage:
 
@@ -126,3 +125,7 @@ When we decided to publish our new NPM packages for this release, we chose to st
 With this major release, we are correcting past inconsistencies and unifying our versioning across NPM packages, our Sketch library, and product communication. Because we still have the same Github repo and release notes, we will be adopting a new naming convention for our release tags going forward; the version number will be prefixed with `core-` (i.e. `core-2.0.0`).
 
 This was a difficult decision to make, but we believe this will make things more consistent and simpler going forward.
+
+
+
+Some extra content!
