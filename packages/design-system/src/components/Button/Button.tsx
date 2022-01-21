@@ -64,134 +64,104 @@ type OmitProps = 'children' | 'className' | 'onClick' | 'ref' | 'size' | 'type' 
 export type ButtonProps<T extends ButtonComponentType> = CommonButtonProps<T> &
   (T extends React.ElementType ? Omit<React.ComponentPropsWithRef<T>, OmitProps> : unknown);
 
-export class Button<T extends ButtonComponentType = 'button'> extends React.PureComponent<
-  ButtonProps<T>
-> {
-  static defaultProps = {
-    type: 'button',
-    component: 'button',
-  };
-
-  constructor(props: ButtonProps<T>) {
-    super(props);
-
-    if (process.env.NODE_ENV !== 'production') {
-      if (props.inverse) {
-        console.warn(
-          `[Deprecated]: Please remove the 'inverse' prop in <Button>, use 'inversed' instead. This prop has been renamed and will be removed in a future release.`
-        );
-      }
-      if (props.variation === 'danger') {
-        console.warn(
-          `[Deprecated]: Please remove the 'danger' variation prop in <Button>. This prop has will be removed in a future release.`
-        );
-      }
+export const Button = <T extends ButtonComponentType = 'button'>(props: ButtonProps<T>) => {
+  if (process.env.NODE_ENV !== 'production') {
+    if (props.inverse) {
+      console.warn(
+        `[Deprecated]: Please remove the 'inverse' prop in <Button>, use 'inversed' instead. This prop has been renamed and will be removed in a future release.`
+      );
     }
-
-    this.handleClick = this.handleClick.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
+    if (props.variation === 'danger') {
+      console.warn(
+        `[Deprecated]: Please remove the 'danger' variation prop in <Button>. This prop has will be removed in a future release.`
+      );
+    }
   }
 
-  // Get an object of props to pass to the rendered <Button> component
-  attrs(): any {
-    /**
-     * Since any number of arbitrary props can be passed into this component, we
-     * use a destructuring assignment to get only the props we want to pass to the
-     * rendered HTML element. For example, the "variation" prop is used to generate
-     * the classNames, but doesn't need to be passed to the rendered component, so
-     * we omit it here so that it's not included in the props object.
-     */
-    const {
-      className,
-      component,
-      inputRef,
-      inversed,
-      inverse,
-      onClick,
-      size,
-      variation,
-      ...props
-    } = this.props;
-
-    const attrs: any = {
-      className: this.classNames(),
-      ...props,
-    };
-
-    if (this.props.onClick) {
-      attrs.onClick = this.handleClick;
+  function handleClick(e: React.MouseEvent | React.KeyboardEvent): void {
+    if (!props.disabled && props.onClick) {
+      props.onClick(e);
     }
-
-    if (component !== 'button' || this.props.href) {
-      // Assume `component` is not a <button> and remove <button> specific attributes
-      attrs.role = 'button';
-      delete attrs.disabled;
-      delete attrs.type;
-    }
-
-    return attrs;
   }
 
-  componentType(): ButtonComponentType {
-    let component = this.props.component;
-
-    // If props.component is 'button', it is not a custom React component. In cases
-    // where the user didn't specify a custom component and did include an href, we
-    // want to use `<a>` for our element.
-    if (component === 'button' && this.props.href) {
-      // Need to assert any for TypeScript because T is technically 'button'
-      component = 'a' as any;
-    }
-    return component;
-  }
-
-  classNames(): string {
-    const variationClass = this.props.variation && `ds-c-button--${this.props.variation}`;
-
-    const disabledClass =
-      this.props.disabled && this.componentType() !== 'button' && 'ds-c-button--disabled';
-
-    const sizeClass = this.props.size && `ds-c-button--${this.props.size}`;
-
-    const inverseClass = (this.props.inversed || this.props.inverse) && 'ds-c-button--inverse';
-
-    return classNames(
-      'ds-c-button',
-      disabledClass,
-      variationClass,
-      inverseClass,
-      sizeClass,
-      this.props.className
-    );
-  }
-
-  handleKeyPress(e: React.KeyboardEvent): void {
+  function handleKeyPress(e: React.KeyboardEvent): void {
     // Trigger onClick on space key event for `<a>` elements
     if (e.key === ' ') {
-      this.handleClick(e);
+      handleClick(e);
     }
   }
 
-  handleClick(e: React.MouseEvent | React.KeyboardEvent): void {
-    if (!this.props.disabled && this.props.onClick) {
-      this.props.onClick(e);
-    }
+  /**
+   * Since any number of arbitrary props can be passed into this component, we
+   * use a destructuring assignment to get only the props we want to pass to the
+   * rendered HTML element. For example, the "variation" prop is used to generate
+   * the classNames, but doesn't need to be passed to the rendered component, so
+   * we omit it here so that it's not included in the props object.
+   */
+  const {
+    className,
+    component,
+    inputRef,
+    inversed,
+    inverse,
+    onClick,
+    size,
+    variation,
+    ...otherProps
+  } = props;
+
+  let ComponentType = component;
+  // If props.component is 'button', it is not a custom React component. In cases
+  // where the user didn't specify a custom component and did include an href, we
+  // want to use `<a>` for our element.
+  if (ComponentType === 'button' && props.href) {
+    // Need to assert any for TypeScript because T is technically 'button'
+    ComponentType = 'a' as any;
   }
 
-  public render() {
-    const attrs = this.attrs();
-    const ComponentType = this.componentType();
+  const variationClass = variation && `ds-c-button--${variation}`;
+  const disabledClass = props.disabled && ComponentType !== 'button' && 'ds-c-button--disabled';
+  const sizeClass = size && `ds-c-button--${size}`;
+  const inverseClass = (inversed || inverse) && 'ds-c-button--inverse';
+  const allClassNames = classNames(
+    'ds-c-button',
+    disabledClass,
+    variationClass,
+    inverseClass,
+    sizeClass,
+    className
+  );
 
-    return (
-      <ComponentType
-        ref={this.props.inputRef}
-        onKeyPress={ComponentType === 'a' ? this.handleKeyPress : undefined}
-        {...attrs}
-      >
-        {this.props.children}
-      </ComponentType>
-    );
+  const attrs: any = {
+    className: allClassNames,
+    ...otherProps,
+  };
+
+  if (props.onClick) {
+    attrs.onClick = handleClick;
   }
-}
+
+  if (component !== 'button' || props.href) {
+    // Assume `component` is not a <button> and remove <button> specific attributes
+    attrs.role = 'button';
+    delete attrs.disabled;
+    delete attrs.type;
+  }
+
+  return (
+    <ComponentType
+      ref={inputRef}
+      onKeyPress={ComponentType === 'a' ? handleKeyPress : undefined}
+      {...attrs}
+    >
+      {props.children}
+    </ComponentType>
+  );
+};
+
+Button.defaultProps = {
+  type: 'button',
+  component: 'button',
+};
 
 export default Button;
