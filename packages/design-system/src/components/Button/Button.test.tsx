@@ -1,9 +1,14 @@
-import Button, { ButtonProps } from './Button';
+import Button, { ButtonProps, ButtonComponentType } from './Button';
 import React from 'react';
 import { shallow } from 'enzyme';
 
-const Link = (props) => {
-  /* eslint-disable-next-line react/prop-types */
+interface LinkProps {
+  children: React.ReactNode;
+  type: 'submit';
+  to: 'string';
+}
+
+const Link = (props: LinkProps) => {
   return <div {...props}>{props.children}</div>;
 };
 
@@ -11,7 +16,7 @@ const defaultProps = {
   children: 'Foo',
 };
 
-function renderButton(props: Partial<ButtonProps<any>> = {}) {
+function renderButton(props: Partial<ButtonProps> = {}) {
   return shallow(<Button {...defaultProps} {...props} />);
 }
 
