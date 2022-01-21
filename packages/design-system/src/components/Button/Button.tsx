@@ -68,10 +68,12 @@ type OtherTypeButtonProps<T extends ButtonComponentType> = CommonButtonProps & {
 //     href?: undefined | null;
 //   }
 // >;
-export type ButtonProps<T extends ButtonComponentType> = Merge<
-  Omit<React.ComponentPropsWithRef<T>, 'href'>,
-  LinkTypeButtonProps | DefaultButtonTypeButtonProps | OtherTypeButtonProps<T>
->;
+type OmitProps = 'children' | 'className' | 'onClick' | 'ref' | 'size' | 'type' | 'href';
+export type ButtonProps<T extends ButtonComponentType> = Omit<
+  React.ComponentPropsWithRef<T>,
+  OmitProps
+> &
+  (LinkTypeButtonProps | DefaultButtonTypeButtonProps | OtherTypeButtonProps<T>);
 
 // export type ButtonProps<T extends ButtonComponentType> = Merge<CommonButtonProps<T>, React.ComponentPropsWithRef<T>>;
 
