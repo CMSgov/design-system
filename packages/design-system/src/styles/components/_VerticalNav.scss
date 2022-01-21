@@ -33,7 +33,7 @@
 
 .ds-c-vertical-nav__label,
 .ds-c-vertical-nav__label:visited {
-  border-left: 4px solid transparent;
+  border-left: $spacer-half solid transparent;
   color: $color-base;
   display: block;
   font-family: $font-sans; // necessary for <button>
@@ -50,6 +50,14 @@
   &.ds-c-vertical-nav__label--current:focus {
     @extend %nav-item-focus;
   }
+}
+
+.ds-c-vertical-nav__label--current.ds-c-vertical-nav__label--parent {
+  /* stylelint-disable scss/media-feature-value-dollar-variable */
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    color: window; // Allows parent nav to be legible without obscuring child and grandchild links
+  }
+  /* stylelint-enable scss/media-feature-value-dollar-variable */
 }
 
 // Subnav toggle
@@ -75,6 +83,24 @@
     @extend %nav-item-focus;
   }
 
+  /* stylelint-disable scss/media-feature-value-dollar-variable */
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    /* stylelint-disable order/properties-alphabetical-order */
+    -ms-high-contrast-adjust: none;
+    background-color: LinkText;
+
+    &:hover,
+    &:focus {
+      -ms-high-contrast-adjust: none;
+      background-color: window;
+      color: LinkText;
+      outline: $spacer-half solid LinkText;
+      outline-offset: -$spacer-half;
+      /* stylelint-enable order/properties-alphabetical-order */
+    }
+  }
+  /* stylelint-enable scss/media-feature-value-dollar-variable */
+
   .ds-c-icon {
     color: $color-base;
     height: $font-size-md;
@@ -87,6 +113,12 @@
   border-left-color: $color-primary;
   color: $color-primary;
   font-weight: $font-bold;
+
+  /* stylelint-disable scss/media-feature-value-dollar-variable */
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    border-left-color: WindowText;
+  }
+  /* stylelint-enable scss/media-feature-value-dollar-variable */
 }
 
 .ds-c-vertical-nav__subnav {
@@ -100,9 +132,39 @@
 
   .ds-c-vertical-nav__label--current {
     border-color: transparent;
+
+    /* stylelint-disable scss/media-feature-value-dollar-variable */
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      border-color: WindowText;
+    }
+    /* stylelint-enable scss/media-feature-value-dollar-variable */
   }
 
   .ds-c-vertical-nav__subnav .ds-c-vertical-nav__label {
     padding-left: $spacer-4;
   }
 }
+
+/* stylelint-disable */
+.ds-c-vertical-nav__subnav {
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    margin-left: $spacer-2;
+    width: calc(100% - $spacer-2);
+  }
+}
+
+.ds-c-vertical-nav__subnav .ds-c-vertical-nav__item:last-of-type {
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    border-top: 1px solid LinkText;
+  }
+}
+
+.ds-c-vertical-nav__subnav
+  .ds-c-vertical-nav__item
+  .ds-c-vertical-nav__subnav
+  .ds-c-vertical-nav__item:last-of-type {
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    border-top: 0;
+  }
+}
+/* stylelint-enable */
