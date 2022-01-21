@@ -4,14 +4,13 @@ import classNames from 'classnames';
 export type CustomButtonComponentType = React.ComponentType<any> | React.FC;
 export type ButtonComponentType = React.ElementType<any> | CustomButtonComponentType;
 export type ButtonSize = 'small' | 'big';
-export type ButtonType = 'button' | 'submit';
 /**
  * A string corresponding to the button-component variation classes.
  * The danger variation is deprecated and will be removed in a future release.
  */
 export type ButtonVariation = 'primary' | 'danger' | 'success' | 'transparent';
 
-type CommonButtonProps<T extends ButtonComponentType> = {
+type CommonButtonProps = {
   /**
    * Label text or HTML
    */
@@ -21,17 +20,7 @@ type CommonButtonProps<T extends ButtonComponentType> = {
    * Useful for adding utility classes.
    */
   className?: string;
-  /**
-   * When provided, this will render the passed in component. This is useful when
-   * integrating with React Router's `<Link>` or using your own custom component.
-   */
-  component?: T;
   disabled?: boolean;
-  /**
-   * When provided the root component will render as an `<a>` element
-   * rather than `button`.
-   */
-  href?: string; // Still optional because it's optional on the anchor tag
   /**
    * Access a reference to the `button` or `a` element
    */
@@ -49,22 +38,46 @@ type CommonButtonProps<T extends ButtonComponentType> = {
   onClick?: (...args: any[]) => any;
   size?: ButtonSize;
   /**
-   * Button [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type) attribute
-   */
-  type?: ButtonType;
-  /**
    * A string corresponding to the button-component variation classes.
    * The `'danger'` variation is deprecated and will be removed in a future release.
    */
   variation?: ButtonVariation;
 };
 
-type OmitProps = 'children' | 'className' | 'onClick' | 'ref' | 'size' | 'type' | 'href';
+type Merge<M, N> = Omit<M, Extract<keyof M, keyof N>> & N;
 
-export type ButtonProps<T extends ButtonComponentType> = CommonButtonProps<T> &
-  (T extends React.ElementType ? Omit<React.ComponentPropsWithRef<T>, OmitProps> : unknown);
+type LinkTypeButtonProps = Merge<
+  React.ComponentPropsWithRef<'a'>,
+  CommonButtonProps & {
+    component?: 'a';
+    href: string;
+  }
+>;
+type DefaultButtonTypeButtonProps = Merge<
+  React.ComponentPropsWithRef<'button'>,
+  CommonButtonProps & {
+    component?: 'button';
+    href?: undefined | null;
+  }
+>;
+type OtherTypeButtonProps<T extends ButtonComponentType> = Merge<
+  React.ComponentPropsWithRef<T>,
+  CommonButtonProps & {
+    component: T;
+    href?: undefined | null;
+  }
+>;
+export type ButtonProps<T extends ButtonComponentType> =
+  | LinkTypeButtonProps
+  | DefaultButtonTypeButtonProps
+  | OtherTypeButtonProps<T>;
 
-export const Button = <T extends ButtonComponentType = 'button'>(props: ButtonProps<T>) => {
+// export type ButtonProps<T extends ButtonComponentType> = Merge<CommonButtonProps<T>, React.ComponentPropsWithRef<T>>;
+
+// export type ButtonProps<T extends ButtonComponentType> = CommonButtonProps<T> &
+//   (T extends React.ElementType ? Omit<React.ComponentPropsWithRef<T>, OmitProps> : unknown);
+
+export const Button = <T extends ButtonComponentType>(props: ButtonProps<T>) => {
   if (process.env.NODE_ENV !== 'production') {
     if (props.inverse) {
       console.warn(
@@ -110,14 +123,7 @@ export const Button = <T extends ButtonComponentType = 'button'>(props: ButtonPr
     ...otherProps
   } = props;
 
-  let ComponentType = component;
-  // If props.component is 'button', it is not a custom React component. In cases
-  // where the user didn't specify a custom component and did include an href, we
-  // want to use `<a>` for our element.
-  if (ComponentType === 'button' && props.href) {
-    // Need to assert any for TypeScript because T is technically 'button'
-    ComponentType = 'a' as any;
-  }
+  const ComponentType = props.component ?? (props.href ? 'a' : 'button');
 
   const variationClass = variation && `ds-c-button--${variation}`;
   const disabledClass = props.disabled && ComponentType !== 'button' && 'ds-c-button--disabled';
@@ -145,7 +151,6 @@ export const Button = <T extends ButtonComponentType = 'button'>(props: ButtonPr
     // Assume `component` is not a <button> and remove <button> specific attributes
     attrs.role = 'button';
     delete attrs.disabled;
-    delete attrs.type;
   }
 
   return (
@@ -157,11 +162,6 @@ export const Button = <T extends ButtonComponentType = 'button'>(props: ButtonPr
       {props.children}
     </ComponentType>
   );
-};
-
-Button.defaultProps = {
-  type: 'button',
-  component: 'button',
 };
 
 export default Button;
