@@ -46,31 +46,32 @@ type CommonButtonProps = {
 
 type Merge<M, N> = Omit<M, Extract<keyof M, keyof N>> & N;
 
-type LinkTypeButtonProps = Merge<
-  React.ComponentPropsWithRef<'a'>,
-  CommonButtonProps & {
-    component?: 'a';
-    href: string;
-  }
+type LinkTypeButtonProps = CommonButtonProps & {
+  component?: 'a';
+  href: string;
+};
+type DefaultButtonTypeButtonProps = CommonButtonProps & {
+  component?: 'button';
+  href?: undefined | null;
+};
+type OtherTypeButtonProps<T extends ButtonComponentType> = CommonButtonProps & {
+  component: T;
+  href?: undefined | null;
+};
+// type NonAnchorButtonComponentType =
+//   | CustomButtonComponentType
+//   | React.ElementType<Exclude<string, 'a' | 'button'>>;
+// type OtherTypeButtonProps<T extends NonAnchorButtonComponentType> = Merge<
+//   React.ComponentPropsWithRef<Exclude<T, 'a' | 'button'>>,
+//   CommonButtonProps & {
+//     component: T;
+//     href?: undefined | null;
+//   }
+// >;
+export type ButtonProps<T extends ButtonComponentType> = Merge<
+  Omit<React.ComponentPropsWithRef<T>, 'href'>,
+  LinkTypeButtonProps | DefaultButtonTypeButtonProps | OtherTypeButtonProps<T>
 >;
-type DefaultButtonTypeButtonProps = Merge<
-  React.ComponentPropsWithRef<'button'>,
-  CommonButtonProps & {
-    component?: 'button';
-    href?: undefined | null;
-  }
->;
-type OtherTypeButtonProps<T extends ButtonComponentType> = Merge<
-  React.ComponentPropsWithRef<T>,
-  CommonButtonProps & {
-    component: T;
-    href?: undefined | null;
-  }
->;
-export type ButtonProps<T extends ButtonComponentType> =
-  | LinkTypeButtonProps
-  | DefaultButtonTypeButtonProps
-  | OtherTypeButtonProps<T>;
 
 // export type ButtonProps<T extends ButtonComponentType> = Merge<CommonButtonProps<T>, React.ComponentPropsWithRef<T>>;
 
