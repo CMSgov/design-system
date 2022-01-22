@@ -44,41 +44,25 @@ type CommonButtonProps = {
   variation?: ButtonVariation;
 };
 
-type Merge<M, N> = Omit<M, Extract<keyof M, keyof N>> & N;
+type OmitProps = 'children' | 'className' | 'onClick' | 'ref' | 'size' | 'type' | 'href';
+type PropsOf<T extends ButtonComponentType> = Omit<React.ComponentPropsWithRef<T>, OmitProps>;
 
-type LinkTypeButtonProps = CommonButtonProps & {
+type LinkTypeButtonProps = {
   component?: 'a';
   href: string;
 };
-type DefaultButtonTypeButtonProps = CommonButtonProps & {
+type DefaultButtonTypeButtonProps = {
   component?: 'button';
   href?: undefined | null;
 };
-type OtherTypeButtonProps<T extends ButtonComponentType> = CommonButtonProps & {
+type OtherTypeButtonProps<T extends ButtonComponentType> = {
   component: T;
   href?: undefined | null;
 };
-// type NonAnchorButtonComponentType =
-//   | CustomButtonComponentType
-//   | React.ElementType<Exclude<string, 'a' | 'button'>>;
-// type OtherTypeButtonProps<T extends NonAnchorButtonComponentType> = Merge<
-//   React.ComponentPropsWithRef<Exclude<T, 'a' | 'button'>>,
-//   CommonButtonProps & {
-//     component: T;
-//     href?: undefined | null;
-//   }
-// >;
-type OmitProps = 'children' | 'className' | 'onClick' | 'ref' | 'size' | 'type' | 'href';
-export type ButtonProps<T extends ButtonComponentType> = Omit<
-  React.ComponentPropsWithRef<T>,
-  OmitProps
-> &
+
+export type ButtonProps<T extends ButtonComponentType> = PropsOf<T> &
+  CommonButtonProps &
   (LinkTypeButtonProps | DefaultButtonTypeButtonProps | OtherTypeButtonProps<T>);
-
-// export type ButtonProps<T extends ButtonComponentType> = Merge<CommonButtonProps<T>, React.ComponentPropsWithRef<T>>;
-
-// export type ButtonProps<T extends ButtonComponentType> = CommonButtonProps<T> &
-//   (T extends React.ElementType ? Omit<React.ComponentPropsWithRef<T>, OmitProps> : unknown);
 
 export const Button = <T extends ButtonComponentType>(props: ButtonProps<T>) => {
   if (process.env.NODE_ENV !== 'production') {
