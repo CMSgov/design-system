@@ -1,8 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
 
-export type CustomButtonComponentType = React.ComponentType<any> | React.FC;
-export type ButtonComponentType = React.ElementType<any> | CustomButtonComponentType;
 export type ButtonSize = 'small' | 'big';
 /**
  * A string corresponding to the button-component variation classes.
@@ -47,6 +45,12 @@ type CommonButtonProps = {
 type OmitProps = 'children' | 'className' | 'onClick' | 'ref' | 'size' | 'type' | 'href';
 type PropsOf<T extends ButtonComponentType> = Omit<React.ComponentPropsWithRef<T>, OmitProps>;
 
+export type CustomButtonComponentType = React.ComponentType<any> | React.FC;
+export type ButtonComponentType = React.ElementType<any> | CustomButtonComponentType;
+export type NonAnchorButtonComponentType =
+  | CustomButtonComponentType
+  | React.ElementType<Exclude<string, 'a' | 'button'>>;
+
 type LinkTypeButtonProps = {
   component?: 'a';
   href: string;
@@ -55,14 +59,18 @@ type DefaultButtonTypeButtonProps = {
   component?: 'button';
   href?: undefined | null;
 };
-type OtherTypeButtonProps<T extends ButtonComponentType> = {
+type OtherTypeButtonProps<T extends NonAnchorButtonComponentType> = {
   component: T;
   href?: undefined | null;
 };
 
 export type ButtonProps<T extends ButtonComponentType> = PropsOf<T> &
   CommonButtonProps &
-  (LinkTypeButtonProps | DefaultButtonTypeButtonProps | OtherTypeButtonProps<T>);
+  (
+    | LinkTypeButtonProps
+    | DefaultButtonTypeButtonProps
+    | (T extends NonAnchorButtonComponentType ? OtherTypeButtonProps<T> : never)
+  );
 
 export const Button = <T extends ButtonComponentType>(props: ButtonProps<T>) => {
   if (process.env.NODE_ENV !== 'production') {
