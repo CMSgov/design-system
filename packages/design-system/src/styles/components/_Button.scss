@@ -101,14 +101,6 @@
     color: $color-gray-lighter;
     pointer-events: none;
   }
-
-  /* stylelint-disable scss/media-feature-value-dollar-variable */
-  @media (-ms-high-contrast: active), (forced-colors: active) {
-    @include high-contrast-button-hover;
-    @include high-contrast-button-active;
-    @include high-contrast-button-disable;
-  }
-  /* stylelint-enable scss/media-feature-value-dollar-variable */
 }
 
 .ds-c-button > svg {
@@ -169,27 +161,6 @@
     color: $color-gray-dark;
     text-decoration: none;
   }
-
-  /* stylelint-disable */
-  @media (-ms-high-contrast: active), (forced-colors: active) {
-    border-color: Window;
-
-    &:hover,
-    &.ds-c-button--hover {
-      background-color: Window;
-      color: ButtonText;
-      text-decoration: none;
-    }
-
-    &:hover:is(a),
-    &.ds-c-button--hover:is(a) {
-      background-color: Window;
-      color: LinkText;
-    }
-
-    @include high-contrast-button-disable;
-  }
-  /* stylelint-enable */
 }
 
 /**
@@ -339,13 +310,33 @@ $button-color-variants: (
       color: $color-gray-dark;
       pointer-events: none;
     }
-
-    /* stylelint-disable scss/media-feature-value-dollar-variable */
-    @media (-ms-high-contrast: active), (forced-colors: active) {
-      @include high-contrast-button-hover;
-      @include high-contrast-button-active;
-      @include high-contrast-button-disable;
-    }
-    /* stylelint-enable scss/media-feature-value-dollar-variable */
   }
 }
+
+/* stylelint-disable scss/media-feature-value-dollar-variable, selector-max-specificity */
+@media (-ms-high-contrast: active), (forced-colors: active) {
+  .ds-c-button {
+    text-decoration: none;
+
+    &:not(:disabled, .ds-c-button--disabled):is(:hover, .ds-c-button--hover, :active, .ds-c-button--active) {
+      text-decoration: underline;
+    }
+
+    &:is(:disabled, .ds-c-button--disabled) {
+      border-color: GrayText;
+      color: GrayText;
+      cursor: not-allowed;
+      pointer-events: all;
+    }
+
+    &.ds-c-button--transparent {
+      border: 0;
+      text-decoration: underline;
+
+      &:not(:disabled, .ds-c-button--disabled):is(:hover, .ds-c-button--hover, :active, .ds-c-button--active) {
+        text-decoration: none;
+      }
+    }
+  }
+}
+/* stylelint-enable scss/media-feature-value-dollar-variable, selector-max-specificity */
