@@ -10,7 +10,7 @@ export type ButtonSize = 'small' | 'big';
  */
 export type ButtonVariation = 'primary' | 'danger' | 'success' | 'transparent';
 
-type CommonButtonProps = {
+type CommonButtonProps<T extends ButtonComponentType> = {
   /**
    * Label text or HTML
    */
@@ -24,7 +24,7 @@ type CommonButtonProps = {
    * When provided, this will render the passed in component. This is useful when
    * integrating with React Router's `<Link>` or using your own custom component.
    */
-  component?: ButtonComponentType;
+  component?: T;
   disabled?: boolean;
   /**
    * Button [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type) attribute
@@ -68,10 +68,10 @@ type OtherProps<T extends ButtonComponentType> = Omit<
   // the possibly custom component type `T`
   Extend<React.HTMLAttributes<HTMLElement>, React.ComponentPropsWithRef<T>>,
   // And omit any properties that we're defining on our own `CommonButtonProps`
-  keyof CommonButtonProps
+  keyof CommonButtonProps<T>
 >;
 
-export type ButtonProps<T extends ButtonComponentType> = CommonButtonProps & OtherProps<T>;
+export type ButtonProps<T extends ButtonComponentType> = CommonButtonProps<T> & OtherProps<T>;
 
 export const Button = <T extends ButtonComponentType>(props: ButtonProps<T>) => {
   if (process.env.NODE_ENV !== 'production') {
