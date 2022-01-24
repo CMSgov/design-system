@@ -5,44 +5,6 @@
   --deprecated: 'WARNING: Use .ds-c-button or .ds-c-button--primary instead';
 }
 
-@mixin high-contrast-button-hover() {
-  &:hover,
-  &.ds-c-button--hover,
-  &:hover &:focus,
-  &.ds-c-button--hover &.ds-c-button--focus {
-    background-color: ButtonText;
-    color: ButtonFace;
-    -ms-high-contrast-adjust: none;
-  }
-
-  &:hover:is(a),
-  &.ds-c-button--hover:is(a),
-  &:hover:is(a) &:focus,
-  &.ds-c-button--hover:is(a) &.ds-c-button--focus {
-    background-color: LinkText;
-  }
-}
-
-@mixin high-contrast-button-active() {
-  &:active,
-  &.ds-c-button--active {
-    border-width: 2px;
-  }
-}
-
-@mixin high-contrast-button-disable() {
-  &:disabled,
-  &.ds-c-button--disabled {
-    border-color: GrayText;
-    color: GrayText;
-  }
-
-  &[disabled] {
-    cursor: not-allowed;
-    pointer-events: all;
-  }
-}
-
 .ds-c-button,
 .ds-c-button:visited {
   appearance: none;
