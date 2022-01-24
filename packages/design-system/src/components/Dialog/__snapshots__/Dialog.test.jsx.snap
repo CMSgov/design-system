@@ -127,6 +127,7 @@ exports[`Dialog renders react-aria-modal 1`] = `
                     <button
                       aria-label="Close modal dialog"
                       class="ds-c-button ds-c-button--transparent ds-c-dialog__close"
+                      type="button"
                     >
                       <svg
                         aria-hidden="true"
@@ -246,6 +247,7 @@ exports[`Dialog renders react-aria-modal 1`] = `
                         aria-label="Close modal dialog"
                         className="ds-c-button ds-c-button--transparent ds-c-dialog__close"
                         onClick={[Function]}
+                        type="button"
                       >
                         <CloseIcon>
                           <SvgIcon

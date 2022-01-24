@@ -23,6 +23,7 @@ exports[`HelpDrawer renders a snapshot 1`] = `
         aria-label="Close help drawer"
         className="ds-c-button ds-c-button--small ds-c-drawer__close-button"
         onClick={[Function]}
+        type="button"
       >
         Close
       </button>

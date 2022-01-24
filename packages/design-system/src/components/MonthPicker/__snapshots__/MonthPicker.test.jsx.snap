@@ -21,6 +21,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
       aria-pressed={false}
       className="ds-c-button ds-c-button--small ds-c-month-picker__button"
       onClick={[Function]}
+      type="button"
     >
       Select all
     </button>
@@ -28,6 +29,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
       aria-pressed={true}
       className="ds-c-button ds-c-button--small ds-c-month-picker__button"
       onClick={[Function]}
+      type="button"
     >
       Clear all
     </button>

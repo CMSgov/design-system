@@ -89,6 +89,7 @@ exports[`ActionMenu logged-in version renders logged-in version 1`] = `
         aria-expanded="false"
         aria-label="header.openMenu"
         class="ds-c-button ds-c-button--small hc-c-action-menu-button ds-u-sm-margin-left--2"
+        type="button"
       >
         <svg
           aria-hidden="true"
@@ -135,6 +136,7 @@ exports[`ActionMenu logged-in version set aria-expanded to true 1`] = `
         aria-expanded="true"
         aria-label="header.closeMenu"
         class="ds-c-button ds-c-button--small hc-c-action-menu-button ds-u-sm-margin-left--2"
+        type="button"
       >
         <svg
           aria-hidden="true"
@@ -193,6 +195,7 @@ exports[`ActionMenu logged-out version renders logged-out version 1`] = `
         aria-expanded="false"
         aria-label="header.openMenu"
         class="ds-c-button ds-c-button--small hc-c-action-menu-button ds-u-sm-margin-left--2 ds-u-display--inline-block ds-u-sm-display--none"
+        type="button"
       >
         <svg
           aria-hidden="true"
