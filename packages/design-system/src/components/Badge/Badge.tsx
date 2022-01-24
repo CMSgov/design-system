@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 
 export type BadgeSize = 'big';
@@ -33,8 +33,38 @@ export const Badge: React.FC<React.ComponentPropsWithRef<'span'> & BadgeProps> =
   const variationClass = variation && `ds-c-badge--${variation}`;
   const classes = classNames('ds-c-badge', variationClass, sizeClasses[size], className);
 
+  const HighContrastModeLabel = {
+    info: 'Notice',
+    success: 'Success',
+    warn: 'Warning',
+    alert: 'Alert',
+  };
+
+  const [isHighContrastMode, setIsHighContrastMode] = useState(false);
+  useEffect(() => {
+    if (window) {
+      const media = window.matchMedia('(-ms-high-contrast: active)');
+
+      if (media.matches !== isHighContrastMode) {
+        setIsHighContrastMode(media.matches);
+      }
+
+      const listener = () => {
+        setIsHighContrastMode(media.matches);
+      };
+
+      media.addEventListener('load', listener);
+      return () => media.removeEventListener('load', listener);
+    } else {
+      setIsHighContrastMode(true);
+    }
+  }, [isHighContrastMode]);
+
   return (
     <span className={classes} {...others}>
+      {isHighContrastMode && HighContrastModeLabel[variation] && (
+        <span>{HighContrastModeLabel[variation]}: </span>
+      )}
       {children}
     </span>
   );
