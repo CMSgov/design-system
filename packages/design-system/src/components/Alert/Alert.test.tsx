@@ -115,26 +115,32 @@ describe('Alert', function () {
 
     it('sends analytics event tracking', () => {
       render({ variation: 'warn' });
-      expect(tealiumMock).toBeCalledWith({
-        ga_eventType: 'cmsds',
-        ga_eventValue: '',
-        ...defaultEvent,
-      });
+      setTimeout(() => {
+        expect(tealiumMock).toBeCalledWith({
+          ga_eventType: 'cmsds',
+          ga_eventValue: '',
+          ...defaultEvent,
+        });
+      }, 0);
     });
 
     it('disables analytics event tracking', () => {
       render({ heading: 'dialog heading', variation: 'error', analytics: false });
-      expect(tealiumMock).not.toBeCalled();
+      setTimeout(() => {
+        expect(tealiumMock).not.toBeCalled();
+      }, 0);
     });
 
     it('overrides analytics event tracking', () => {
       render({ variation: 'success', analyticsLabelOverride: 'other heading' });
-      expect(tealiumMock).toBeCalledWith(
-        expect.objectContaining({
-          ga_eventLabel: 'other heading',
-          heading: 'other heading',
-        })
-      );
+      setTimeout(() => {
+        expect(tealiumMock).toBeCalledWith(
+          expect.objectContaining({
+            ga_eventLabel: 'other heading',
+            heading: 'other heading',
+          })
+        );
+      }, 0);
     });
   });
 });

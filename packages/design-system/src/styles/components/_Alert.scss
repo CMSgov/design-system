@@ -99,3 +99,11 @@ $alert-link-color-focus: $color-primary-darkest;
   background-color: $color-success-lightest;
   border-color: $color-success;
 }
+
+.ds-c-alert--heading__hcm {
+  display: flex;
+
+  .ds-c-alert__heading {
+    margin-left: 0.5rem;
+  }
+}

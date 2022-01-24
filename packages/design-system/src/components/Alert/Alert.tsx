@@ -1,5 +1,5 @@
 import { EVENT_CATEGORY, MAX_LENGTH, sendLinkEvent } from '../analytics/SendAnalytics';
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { alertSendsAnalytics } from '../flags';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
@@ -69,42 +69,32 @@ export interface AlertProps {
 // Omit props that we override with values from the Alert
 type OmitAlertProps = 'role' | 'children' | 'className' | 'ref';
 
-export class Alert extends React.PureComponent<
-  Omit<React.ComponentPropsWithRef<'div'>, OmitAlertProps> & AlertProps,
-  any
-> {
-  static defaultProps = {
-    role: 'region',
-    headingLevel: '2',
-  };
+export const Alert = (props: AlertProps) => {
+  const alertTextRef = useRef(null);
+  const focusRef = useRef(null);
+  const headingId = props.headingId || uniqueId('alert_');
 
-  constructor(props: AlertProps) {
-    super(props);
-    this.alertTextRef = null;
-    this.focusRef = null;
-    this.headingId = this.props.headingId || uniqueId('alert_');
-
-    if (process.env.NODE_ENV !== 'production') {
-      if (!props.heading && !props.children) {
-        console.warn(
-          `Empty <Alert> components are not allowed, please use the 'heading' prop or include children.`
-        );
-      }
+  if (process.env.NODE_ENV !== 'production') {
+    if (!props.heading && !props.children) {
+      console.warn(
+        `Empty <Alert> components are not allowed, please use the 'heading' prop or include children.`
+      );
     }
   }
 
-  componentDidMount(): void {
+  const [isHighContrastMode, setIsHighContrastMode] = useState(false);
+  useEffect(() => {
     // Automatically set focus on alert element when `autoFocus` prop is used
-    if (this.props.autoFocus && this.focusRef) {
-      this.focusRef.focus();
+    if (props.autoFocus && focusRef.current) {
+      focusRef.current.focus();
     }
 
-    const { analytics, analyticsLabelOverride, variation } = this.props;
+    const { analytics, analyticsLabelOverride, variation } = props;
 
     if (alertSendsAnalytics() && analytics !== false) {
       /* Send analytics event for `error`, `warn`, `success` alert variations */
       if (variation) {
-        const heading = this.props.heading || this.props.children;
+        const heading = props.heading || props.children;
         let eventHeadingText;
 
         if (analyticsLabelOverride) {
@@ -113,9 +103,10 @@ export class Alert extends React.PureComponent<
           eventHeadingText = heading.substring(0, MAX_LENGTH);
         } else {
           const eventHeadingTextElement =
-            (this.alertTextRef &&
-              this.alertTextRef.getElementsByClassName('ds-c-alert__heading')[0]) ||
-            (this.alertTextRef && this.alertTextRef.getElementsByClassName('ds-c-alert__body')[0]);
+            (alertTextRef.current &&
+              alertTextRef.current.getElementsByClassName('ds-c-alert__heading')[0]) ||
+            (alertTextRef.current &&
+              alertTextRef.current.getElementsByClassName('ds-c-alert__body')[0]);
           eventHeadingText =
             eventHeadingTextElement && eventHeadingTextElement.textContent
               ? eventHeadingTextElement.textContent.substring(0, MAX_LENGTH)
@@ -133,30 +124,43 @@ export class Alert extends React.PureComponent<
         });
       }
     }
-  }
 
-  // Alert class properties
-  alertTextRef: any;
-  focusRef: any;
-  headingId: string;
-  eventHeadingText: string;
+    if (window) {
+      const media = window.matchMedia('(-ms-high-contrast: active)');
 
-  heading(): React.ReactElement | void {
-    const { headingLevel, heading } = this.props;
+      if (media.matches !== isHighContrastMode) {
+        setIsHighContrastMode(media.matches);
+      }
+
+      const listener = () => {
+        setIsHighContrastMode(media.matches);
+      };
+
+      media.addEventListener('load', listener);
+      return () => media.removeEventListener('load', listener);
+    } else {
+      setIsHighContrastMode(true);
+    }
+  }, [isHighContrastMode]);
+
+  function heading(): React.ReactElement | void {
+    const { headingLevel, heading } = props;
     const Heading = `h${headingLevel}`;
     if (heading) {
       const headingProps = {
         className: 'ds-c-alert__heading',
-        id: this.headingId,
+        id: headingId,
       };
       return React.createElement(Heading, headingProps, heading);
     }
   }
 
   // getting proper icon for alert variation
-  getIcon(): React.ReactElement | null {
+  // eslint-disable-next-line react/no-multi-comp
+  const getIcon = (): React.ReactElement | null => {
     const iconClass = 'ds-c-alert__icon';
-    const { hideIcon, variation } = this.props;
+    // eslint-disable-next-line react/prop-types
+    const { hideIcon, variation } = props;
     if (hideIcon) {
       return null;
     }
@@ -171,59 +175,70 @@ export class Alert extends React.PureComponent<
       default:
         return <InfoCircleIcon className={iconClass} />;
     }
-  }
+  };
 
-  render(): JSX.Element {
-    const {
-      children,
-      className,
-      autoFocus,
-      heading,
-      headingId,
-      headingLevel,
-      hideIcon,
-      alertRef,
-      role,
-      variation,
-      weight,
-      analytics,
-      ...alertProps
-    } = this.props;
+  const {
+    alertRef,
+    autoFocus,
+    className,
+    children,
+    hideIcon,
+    role,
+    weight,
+    variation,
+    ...alertProps
+  } = props;
 
-    const classes = classNames(
-      'ds-c-alert',
-      hideIcon && 'ds-c-alert--hide-icon',
-      variation && `ds-c-alert--${variation}`,
-      weight && `ds-c-alert--${weight}`,
-      className
-    );
+  const highContrastModeLabel = {
+    success: 'Success',
+    warn: 'Warning',
+    error: 'Error',
+  };
 
-    return (
-      <div
-        className={classes}
-        /* eslint-disable no-return-assign */
-        ref={(ref) => {
-          this.alertTextRef = ref;
-          if (autoFocus) {
-            this.focusRef = ref;
-          } else if (alertRef) {
-            alertRef(ref);
-          }
-        }}
-        /* eslint-enable no-return-assign */
-        tabIndex={alertRef || autoFocus ? -1 : null}
-        role={role}
-        aria-labelledby={heading ? this.headingId : undefined}
-        {...alertProps}
-      >
-        {this.getIcon()}
-        <div className="ds-c-alert__body">
-          {this.heading()}
-          {children}
-        </div>
+  const classes = classNames(
+    'ds-c-alert',
+    hideIcon && 'ds-c-alert--hide-icon',
+    variation && `ds-c-alert--${variation}`,
+    weight && `ds-c-alert--${weight}`,
+    className
+  );
+
+  return (
+    <div
+      className={classes}
+      /* eslint-disable no-return-assign */
+      ref={(ref) => {
+        alertTextRef.current = ref;
+        if (autoFocus) {
+          focusRef.current = ref;
+        } else if (alertRef) {
+          alertRef(ref);
+        }
+      }}
+      /* eslint-enable no-return-assign */
+      tabIndex={alertRef || autoFocus ? -1 : null}
+      role={role}
+      aria-labelledby={heading ? headingId : undefined}
+      {...alertProps}
+    >
+      {getIcon()}
+      <div className="ds-c-alert__body">
+        {isHighContrastMode && hideIcon && heading ? (
+          <div className="ds-c-alert__heading ds-c-alert--heading__hcm">
+            {variation ? highContrastModeLabel[variation] : 'Notice'}: {heading()}
+          </div>
+        ) : (
+          heading()
+        )}
+        {children}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
+Alert.defaultProps = {
+  role: 'region',
+  headingLevel: '2',
+};
 
 export default Alert;
