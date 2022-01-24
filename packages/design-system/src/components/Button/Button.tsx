@@ -1,8 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-export type CustomButtonComponentType = React.ComponentType<any> | React.FC;
-export type ButtonComponentType = React.ElementType<any> | CustomButtonComponentType;
+export type ButtonComponentType = React.ElementType<any> | React.ComponentType<any>;
 export type ButtonSize = 'small' | 'big';
 /**
  * A string corresponding to the button-component variation classes.
