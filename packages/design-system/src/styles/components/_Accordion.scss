@@ -41,12 +41,31 @@ $accordion-header-font-family: $font-sans;
   text-align: left;
   text-decoration: none;
   width: 100%;
+
   &:hover {
     background-color: $accordion-header-bg-hover-color;
   }
+
   &:focus {
     @include focus-styles;
   }
+
+  /* stylelint-disable */
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    -ms-high-contrast-adjust: none;
+    background-color: LinkText;
+    color: window;
+
+    &:hover,
+    &:focus {
+      -ms-high-contrast-adjust: none;
+      background-color: window;
+      color: LinkText;
+      outline-offset: -$spacer-half;
+      outline: $spacer-half solid LinkText;
+    }
+  }
+  /* stylelint-enable */
 
   .ds-c-icon {
     flex-shrink: 0;
@@ -76,7 +95,7 @@ $accordion-header-font-family: $font-sans;
 
 .ds-c-accordion--bordered {
   .ds-c-accordion__content {
-    border: 4px solid $accordion-border-color;
+    border: $spacer-half solid $accordion-border-color;
     border-top: 0;
     padding: $spacer-2 $spacer-2;
   }
