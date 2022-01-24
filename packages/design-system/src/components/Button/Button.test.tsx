@@ -20,7 +20,6 @@ describe('Button', () => {
   it('renders as button', () => {
     const wrapper = shallow(<Button {...defaultProps} />);
     expect(wrapper.is('button')).toBe(true);
-    expect(wrapper.prop('type')).toBe('button');
     expect(wrapper).toMatchSnapshot();
   });
 

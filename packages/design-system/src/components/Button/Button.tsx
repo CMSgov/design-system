@@ -118,7 +118,7 @@ export const Button = <T extends ButtonComponentType>(props: ButtonProps<T>) => 
     ...otherProps
   } = props;
 
-  const ComponentType = props.component ?? (props.href ? 'a' : 'button');
+  const ComponentType = component ?? (props.href ? 'a' : 'button');
 
   const variationClass = variation && `ds-c-button--${variation}`;
   const disabledClass = props.disabled && ComponentType !== 'button' && 'ds-c-button--disabled';
@@ -142,10 +142,11 @@ export const Button = <T extends ButtonComponentType>(props: ButtonProps<T>) => 
     attrs.onClick = handleClick;
   }
 
-  if (component !== 'button' || props.href) {
+  if (ComponentType !== 'button') {
     // Assume `component` is not a <button> and remove <button> specific attributes
     attrs.role = 'button';
     delete attrs.disabled;
+    delete attrs.type;
   }
 
   return (
