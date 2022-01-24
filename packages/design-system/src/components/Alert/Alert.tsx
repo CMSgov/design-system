@@ -1,31 +1,14 @@
-import { EVENT_CATEGORY, MAX_LENGTH, sendAnalyticsEvent } from '../analytics/SendAnalytics';
+import { EVENT_CATEGORY, MAX_LENGTH, sendLinkEvent } from '../analytics/SendAnalytics';
 import React from 'react';
 import { alertSendsAnalytics } from '../flags';
 import classNames from 'classnames';
-import get from 'lodash/get';
-import uniqueId from 'lodash.uniqueid';
+import uniqueId from 'lodash/uniqueId';
+import { InfoCircleIcon, AlertCircleIcon, WarningIcon, CheckCircleIcon } from '../Icons';
 
-// Omit props that we override with values from the ChoiceList
-type OmitAlertProps = 'role';
-
-/* eslint-disable camelcase */
-// disable linting since prop names must be in snake case for integration with Blast
-export interface AnalyticsEventShape {
-  event_name: string;
-  event_type: string;
-  ga_eventAction: string;
-  ga_eventCategory: string;
-  ga_eventLabel: string;
-  ga_eventType?: string;
-  ga_eventValue?: string;
-  heading: string;
-  type: string;
-}
-/* eslint-enable camelcase */
-
-interface AnalyticsObjectShape {
-  onComponentDidMount?: boolean | AnalyticsEventShape;
-}
+export type AlertHeadingLevel = '1' | '2' | '3' | '4' | '5' | '6';
+export type AlertRole = 'alert' | 'alertdialog' | 'region' | 'status';
+export type AlertVariation = 'error' | 'warn' | 'success';
+export type AlertWeight = 'lightweight';
 
 export interface AlertProps {
   /**
@@ -33,14 +16,15 @@ export interface AlertProps {
    */
   alertRef?: (...args: any[]) => any;
   /**
-   * Analytics events tracking is enabled by default.
-   * The `analytics` prop is an object of events that is either a nested `objects` with key-value
-   * pairs, or `boolean` for disabling the event tracking. To disable an event tracking, set the
-   * event object value to `false`.
-   * When an event is triggered, the object value is populated and sent to google analytics
-   * if `window.utag` instance is loaded.
+   * Analytics events tracking is enabled by default. Set this value to `false` to disable tracking for this component instance.
    */
-  analytics?: AnalyticsObjectShape;
+  analytics?: boolean;
+  /**
+   * An override for the dynamic content sent to analytics services. By default this content comes from the heading.
+   *
+   * In cases where this component’s heading may contain **sensitive information**, use this prop to override what is sent to analytics.
+   */
+  analyticsLabelOverride?: string;
   /**
    * Sets the focus on Alert during the first mount
    */
@@ -61,7 +45,7 @@ export interface AlertProps {
   /**
    * Heading type to override default `<h2>`.
    */
-  headingLevel?: '1' | '2' | '3' | '4' | '5' | '6';
+  headingLevel?: AlertHeadingLevel;
   /**
    * Boolean to hide the `Alert` icon
    */
@@ -69,29 +53,23 @@ export interface AlertProps {
   /**
    * ARIA `role`, defaults to 'region'
    */
-  role?: 'alert' | 'alertdialog' | 'region' | 'status';
+  role?: AlertRole;
+  /**
+   * A string corresponding to the `Alert` weight classes (`lightweight`)
+   */
+  weight?: AlertWeight;
   /**
    * A string corresponding to the `Alert` variation classes (`error`, `warn`, `success`)
    */
-  variation?: 'error' | 'warn' | 'success';
+  variation?: AlertVariation;
 
   [key: string]: any;
 }
 
-// Default analytics object
-const defaultAnalytics = (heading = '', variation = '') => ({
-  onComponentDidMount: {
-    event_name: 'alert_impression',
-    event_type: EVENT_CATEGORY.uiInteraction,
-    ga_eventAction: 'alert impression',
-    ga_eventCategory: EVENT_CATEGORY.uiComponents,
-    ga_eventLabel: heading,
-    heading: heading,
-    type: variation,
-  },
-});
+// Omit props that we override with values from the Alert
+type OmitAlertProps = 'role' | 'children' | 'className' | 'ref';
 
-export class Alert extends React.Component<
+export class Alert extends React.PureComponent<
   Omit<React.ComponentPropsWithRef<'div'>, OmitAlertProps> & AlertProps,
   any
 > {
@@ -105,7 +83,6 @@ export class Alert extends React.Component<
     this.alertTextRef = null;
     this.focusRef = null;
     this.headingId = this.props.headingId || uniqueId('alert_');
-    this.eventHeadingText = '';
 
     if (process.env.NODE_ENV !== 'production') {
       if (!props.heading && !props.children) {
@@ -122,29 +99,38 @@ export class Alert extends React.Component<
       this.focusRef.focus();
     }
 
-    if (alertSendsAnalytics()) {
-      const eventAction = 'onComponentDidMount';
-      const eventHeading: string | React.ReactNode = this.props.heading || this.props.children;
+    const { analytics, analyticsLabelOverride, variation } = this.props;
 
+    if (alertSendsAnalytics() && analytics !== false) {
       /* Send analytics event for `error`, `warn`, `success` alert variations */
-      if (this.props.variation) {
-        if (typeof eventHeading === 'string') {
-          this.eventHeadingText = eventHeading.substring(0, MAX_LENGTH);
+      if (variation) {
+        const heading = this.props.heading || this.props.children;
+        let eventHeadingText;
+
+        if (analyticsLabelOverride) {
+          eventHeadingText = analyticsLabelOverride;
+        } else if (typeof heading === 'string') {
+          eventHeadingText = heading.substring(0, MAX_LENGTH);
         } else {
           const eventHeadingTextElement =
             (this.alertTextRef &&
               this.alertTextRef.getElementsByClassName('ds-c-alert__heading')[0]) ||
             (this.alertTextRef && this.alertTextRef.getElementsByClassName('ds-c-alert__body')[0]);
-          this.eventHeadingText =
+          eventHeadingText =
             eventHeadingTextElement && eventHeadingTextElement.textContent
               ? eventHeadingTextElement.textContent.substring(0, MAX_LENGTH)
               : '';
         }
 
-        sendAnalyticsEvent(
-          get(this.props.analytics, eventAction),
-          get(defaultAnalytics(this.eventHeadingText, this.props.variation), eventAction)
-        );
+        sendLinkEvent({
+          event_name: 'alert_impression',
+          event_type: EVENT_CATEGORY.uiInteraction,
+          ga_eventAction: 'alert impression',
+          ga_eventCategory: EVENT_CATEGORY.uiComponents,
+          ga_eventLabel: eventHeadingText,
+          heading: eventHeadingText,
+          type: variation,
+        });
       }
     }
   }
@@ -167,6 +153,26 @@ export class Alert extends React.Component<
     }
   }
 
+  // getting proper icon for alert variation
+  getIcon(): React.ReactElement | null {
+    const iconClass = 'ds-c-alert__icon';
+    const { hideIcon, variation } = this.props;
+    if (hideIcon) {
+      return null;
+    }
+
+    switch (variation) {
+      case 'error':
+        return <AlertCircleIcon className={iconClass} />;
+      case 'success':
+        return <CheckCircleIcon className={iconClass} />;
+      case 'warn':
+        return <WarningIcon className={iconClass} />;
+      default:
+        return <InfoCircleIcon className={iconClass} />;
+    }
+  }
+
   render(): JSX.Element {
     const {
       children,
@@ -179,6 +185,7 @@ export class Alert extends React.Component<
       alertRef,
       role,
       variation,
+      weight,
       analytics,
       ...alertProps
     } = this.props;
@@ -187,6 +194,7 @@ export class Alert extends React.Component<
       'ds-c-alert',
       hideIcon && 'ds-c-alert--hide-icon',
       variation && `ds-c-alert--${variation}`,
+      weight && `ds-c-alert--${weight}`,
       className
     );
 
@@ -208,6 +216,7 @@ export class Alert extends React.Component<
         aria-labelledby={heading ? this.headingId : undefined}
         {...alertProps}
       >
+        {this.getIcon()}
         <div className="ds-c-alert__body">
           {this.heading()}
           {children}

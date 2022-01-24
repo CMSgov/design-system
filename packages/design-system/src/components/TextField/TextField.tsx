@@ -10,10 +10,11 @@ import pick from 'lodash/pick';
 export { unmaskValue } from './maskHelpers';
 
 export type TextFieldDefaultValue = string | number;
-
+export type TextFieldMask = 'currency' | 'phone' | 'ssn' | 'zip';
 export type TextFieldRows = number | string;
-
+export type TextFieldSize = 'small' | 'medium';
 export type TextFieldValue = string | number;
+export type TextFieldErrorPlacement = 'top' | 'bottom';
 
 export interface TextFieldProps {
   /**
@@ -39,7 +40,7 @@ export interface TextFieldProps {
   /**
    * Location of the error message relative to the field input
    */
-  errorPlacement?: 'top' | 'bottom';
+  errorPlacement?: TextFieldErrorPlacement;
   /**
    * Additional classes to be added to the field element
    */
@@ -85,14 +86,14 @@ export interface TextFieldProps {
    * you expect to be entered. Depending on the mask, the
    * field's appearance and functionality may be affected.
    */
-  mask?: 'currency' | 'phone' | 'ssn' | 'zip';
+  mask?: TextFieldMask;
   /**
    * Whether or not the text field is a multiline text field
    */
   multiline?: boolean;
   name: string;
   /**
-   * Sets `inputMode`, `type`, and `pattern` to improve accessiblity and consistency for number fields. Use this prop instead of `type="number"`, see [here](https://technology.blog.gov.uk/2020/02/24/why-the-gov-uk-design-system-team-changed-the-input-type-for-numbers/) for more information.
+   * Sets `inputMode`, `type`, and `pattern` to improve accessibility and consistency for number fields. Use this prop instead of `type="number"`, see [here](https://technology.blog.gov.uk/2020/02/24/why-the-gov-uk-design-system-team-changed-the-input-type-for-numbers/) for more information.
    */
   numeric?: boolean;
   onBlur?: (...args: any[]) => any;
@@ -109,7 +110,7 @@ export interface TextFieldProps {
   /**
    * Set the max-width of the input either to `'small'` or `'medium'`.
    */
-  size?: 'small' | 'medium';
+  size?: TextFieldSize;
   /**
    * HTML `input` [type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#<input>_types) attribute. If you are using `type=number` please use the numeric prop instead.
    */
@@ -154,7 +155,7 @@ export class TextField extends React.PureComponent<
     }
   }
 
-  render(): React.ReactNode {
+  render() {
     const containerProps = pick(this.props, FormControlPropKeys);
     const inputOnlyProps = omit(this.props, FormControlPropKeys);
 

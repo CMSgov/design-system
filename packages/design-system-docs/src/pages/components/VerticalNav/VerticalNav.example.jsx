@@ -16,10 +16,11 @@ Link.propTypes = { children: PropTypes.node };
 ReactDOM.render(
   <VerticalNav
     selectedId="team"
+    ariaNavLabel="Primary"
     items={[
       {
         label: 'Parent link',
-        url: 'javascript:void(0);',
+        url: '#!',
         id: 'parentlink1',
       },
       {
@@ -29,7 +30,7 @@ ReactDOM.render(
           {
             id: 'childlink1',
             label: 'Child link',
-            url: 'javascript:void(0);',
+            url: '#!',
           },
           {
             label: 'Child link',
@@ -39,12 +40,12 @@ ReactDOM.render(
               {
                 id: 'grandchildlink1',
                 label: 'Grandchild link',
-                url: 'javascript:void(0);',
+                url: '#!',
               },
               {
                 id: 'grandchildlink2',
                 label: 'Grandchild link',
-                url: 'javascript:void(0);',
+                url: '#!',
                 selected: true,
               },
             ],
@@ -52,13 +53,13 @@ ReactDOM.render(
           {
             id: 'childlink3',
             label: 'Child link',
-            url: 'javascript:void(0);',
+            url: '#!',
           },
         ],
       },
       {
         label: 'Parent link',
-        url: 'javascript:void(0);',
+        url: '#!',
         id: 'parentlink2',
       },
     ]}

@@ -1,17 +1,22 @@
 {
   "name": "@cmsgov/design-system-scripts",
-  "version": "2.7.1",
+  "version": "3.0.0-beta.1",
   "publishConfig": {
     "access": "public",
     "tag": "latest"
   },
   "description": "Scripts for developing and distributing the CMS Design System and child design systems",
-  "repository": "CMSgov/design-system",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CMSgov/design-system",
+    "directory": "packages/design-system-scripts"
+  },
   "license": "SEE LICENSE IN LICENSE.md",
   "bin": {
     "cmsds": "./cli.js"
   },
   "dependencies": {
+    "@axe-core/webdriverjs": "^4.2.2",
     "@babel/core": "^7.8.4",
     "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/plugin-transform-object-assign": "^7.10.4",
@@ -21,14 +26,15 @@
     "@babel/register": "^7.8.4",
     "@testing-library/jest-dom": "^5.10.1",
     "@testing-library/react": "^10.3.0",
+    "@testing-library/react-hooks": "^3.2.1",
+    "@testing-library/user-event": "^13.5.0",
     "autoprefixer": "9.6.0",
-    "axe-webdriverjs": "^2.3.0",
     "babel-loader": "^8.0.0",
     "babel-plugin-inline-react-svg": "^1.1.2",
     "browser-sync": "2.26.7",
     "bytes": "3.1.0",
     "chalk": "^2.4.2",
-    "chromedriver": "91.0.0",
+    "chromedriver": "^97.0.0",
     "cli-table2": "^0.2.0",
     "colors": "1.3.3",
     "cssnano": "4.1.10",
@@ -36,8 +42,8 @@
     "del": "^3.0.0",
     "ejs": "2.6.2",
     "enzyme": "3.10.0",
-    "enzyme-adapter-react-16": "1.14.0",
-    "enzyme-to-json": "3.3.5",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "enzyme-to-json": "3.6.2",
     "fancy-log": "^1.3.3",
     "front-matter": "^2.3.0",
     "glob": "7.1.4",
@@ -48,7 +54,7 @@
     "gulp-changed-in-place": "^2.3.0",
     "gulp-count": "^1.0.0",
     "gulp-eslint": "^6.0.0",
-    "gulp-if": "^2.0.2",
+    "gulp-if": "^3.0.0",
     "gulp-merge-json": "^1.2.0",
     "gulp-postcss": "8.0.0",
     "gulp-prettier": "^3.0.0",
@@ -68,22 +74,24 @@
     "node-notifier": "8.0.1",
     "node-sass": "4.14.1",
     "postcss-import": "^11.1.0",
-    "prismjs": "1.24.0",
-    "react-app-polyfill": "^1.0.6",
-    "react-docgen": "4.1.1",
-    "react-docgen-typescript": "^1.18.0",
-    "react-test-renderer": "16.8.6",
+    "prismjs": "1.25.0",
+    "react": "16.14.0",
+    "react-app-polyfill": "^2.0.0",
+    "react-docgen": "^5.4.0",
+    "react-docgen-typescript": "^2.2.1",
+    "react-dom": "16.14.0",
+    "react-test-renderer": "16.14.0",
     "regenerator-runtime": "^0.13.5",
     "replace-ext": "^1.0.0",
-    "selenium-webdriver": "4.0.0-alpha.7",
+    "selenium-webdriver": "4.1.0",
     "static-server": "^2.2.1",
-    "through2": "^2.0.3",
+    "through2": "^4.0.2",
     "ts-loader": "^6.2.1",
     "tsconfig-paths-webpack-plugin": "^3.2.0",
-    "typescript": "^3.8.3",
+    "typescript": "^4.5.4",
     "webpack": "^4.42.1",
     "webpack-dev-middleware": "^3.7.2",
-    "webpack-hot-middleware": "2.25.0",
+    "webpack-hot-middleware": "^2.25.1",
     "yargs": "^11.0.0"
   },
   "peerDependencies": {
@@ -94,8 +102,5 @@
     "react": ">=16.0.0",
     "react-dom": ">=16.0.0",
     "stylelint": ">=13.0.0"
-  },
-  "devDependencies": {
-    "babel-plugin-typescript-to-proptypes": "^1.4.2"
   }
 }

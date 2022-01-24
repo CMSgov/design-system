@@ -20,102 +20,6 @@
   ],
   "scenarios": [
     {
-      "label": "CMSDS",
-      "referenceUrl": "https://design.cms.gov",
-      "url": "http://localhost:3000",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Getting Started - Installation",
-      "referenceUrl": "https://design.cms.gov/startup/installation/",
-      "url": "http://localhost:3000/startup/installation/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Getting Started - Using Sass/CSS",
-      "referenceUrl": "https://design.cms.gov/startup/sass-and-css/",
-      "url": "http://localhost:3000/startup/sass-and-css/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Getting Started - Using components",
-      "referenceUrl": "https://design.cms.gov/startup/components/",
-      "url": "http://localhost:3000/startup/components/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Getting Started - Theming",
-      "referenceUrl": "https://design.cms.gov/startup/theming/",
-      "url": "http://localhost:3000/startup/theming/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Getting Started - Child Design Systems",
-      "referenceUrl": "https://design.cms.gov/startup/child-design-systems/",
-      "url": "http://localhost:3000/startup/child-design-systems/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Getting Started - Examples",
-      "referenceUrl": "https://design.cms.gov/startup/examples/",
-      "url": "http://localhost:3000/startup/examples/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Getting Started - Migrating to v2",
-      "referenceUrl": "https://design.cms.gov/startup/migrating-v2/",
-      "url": "http://localhost:3000/startup/migrating-v2/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Guidelines - Accessibility",
-      "referenceUrl": "https://design.cms.gov/guidelines/accessibility/",
-      "url": "http://localhost:3000/guidelines/accessibility/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Guidelines - Code conventions",
-      "referenceUrl": "https://design.cms.gov/guidelines/code-conventions/",
-      "url": "http://localhost:3000/guidelines/code-conventions/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Guidelines - Component maturity",
-      "referenceUrl": "https://design.cms.gov/guidelines/component-maturity/",
-      "url": "http://localhost:3000/guidelines/component-maturity/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Guidelines - Forms",
-      "referenceUrl": "https://design.cms.gov/guidelines/forms/",
-      "url": "http://localhost:3000/guidelines/forms/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Guidelines - Internationalization",
-      "referenceUrl": "https://design.cms.gov/guidelines/i18n/",
-      "url": "http://localhost:3000/guidelines/i18n/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Guidelines - Responsive design",
-      "referenceUrl": "https://design.cms.gov/guidelines/responsive/",
-      "url": "http://localhost:3000/guidelines/responsive/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Guidelines - Browser support",
-      "referenceUrl": "https://design.cms.gov/guidelines/browser-support/",
-      "url": "http://localhost:3000/guidelines/browser-support/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Styles - Base",
-      "referenceUrl": "https://design.cms.gov/styles/base/",
-      "url": "http://localhost:3000/styles/base/",
-      "removeSelectors": ["#frame"]
-    },
-    {
       "label": "CMSDS - Styles - Base - Default",
       "referenceUrl": "https://design.cms.gov/example/styles.base/",
       "url": "http://localhost:3000/example/styles.base/",
@@ -125,12 +29,6 @@
       "label": "CMSDS - Styles - Base - Inverse",
       "referenceUrl": "https://design.cms.gov/example/styles.base..ds-base--inverse/",
       "url": "http://localhost:3000/example/styles.base..ds-base--inverse/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Styles - Color",
-      "referenceUrl": "https://design.cms.gov/styles/color/",
-      "url": "http://localhost:3000/styles/color/",
       "removeSelectors": ["#frame"]
     },
     {
@@ -158,18 +56,6 @@
       "removeSelectors": ["#frame"]
     },
     {
-      "label": "CMSDS - Styles - Color - Primary",
-      "referenceUrl": "https://design.cms.gov/example/styles.color.primary/",
-      "url": "http://localhost:3000/example/styles.color.primary/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Styles - Icons",
-      "referenceUrl": "https://design.cms.gov/styles/icons/",
-      "url": "http://localhost:3000/styles/icons/",
-      "removeSelectors": ["#frame"]
-    },
-    {
       "label": "CMSDS - Styles - Icons - Alert",
       "referenceUrl": "https://design.cms.gov/example/styles.icons.alert/",
       "url": "http://localhost:3000/example/styles.icons.alert/",
@@ -188,21 +74,15 @@
       "removeSelectors": ["#frame"]
     },
     {
-      "label": "CMSDS - Styles - Spacing",
-      "referenceUrl": "https://design.cms.gov/styles/spacing/",
-      "url": "http://localhost:3000/styles/spacing/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Styles - Typography",
-      "referenceUrl": "https://design.cms.gov/styles/typography/",
-      "url": "http://localhost:3000/styles/typography/",
-      "removeSelectors": ["#frame"]
-    },
-    {
       "label": "CMSDS - Styles - Typography - Default",
       "referenceUrl": "https://design.cms.gov/example/styles.typography/",
       "url": "http://localhost:3000/example/styles.typography/",
+      "removeSelectors": ["#frame"]
+    },
+    {
+      "label": "CMSDS - Styles - Typography - Links",
+      "referenceUrl": "https://design.cms.gov/example/styles.typography.body/",
+      "url": "http://localhost:3000/example/styles.typography.body/",
       "removeSelectors": ["#frame"]
     },
     {
@@ -218,28 +98,9 @@
       "removeSelectors": ["#frame"]
     },
     {
-      "label": "CMSDS - Styles - Typography - Default",
-      "referenceUrl": "https://design.cms.gov/example/styles.typography/",
-      "url": "http://localhost:3000/example/styles.typography/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS Utilities",
-      "referenceUrl": "https://design.cms.gov/utilities/overview",
-      "url": "http://localhost:3000/utilities/overview/",
-      "removeSelectors": ["#frame"]
-    },
-    {
       "label": "CMSDS Utilities - Default",
       "referenceUrl": "https://design.cms.gov/example/utilities.overview/",
       "url": "http://localhost:3000/example/utilities.overview//",
-      "removeSelectors": ["#frame"]
-    },
-
-    {
-      "label": "CMSDS - Utilities - Layout Grid",
-      "referenceUrl": "https://design.cms.gov/utilities/grid/",
-      "url": "http://localhost:3000/utilities/grid/",
       "removeSelectors": ["#frame"]
     },
     {
@@ -291,21 +152,9 @@
       "removeSelectors": ["#frame"]
     },
     {
-      "label": "CMSDS - Utilities - Background Color",
-      "referenceUrl": "https://design.cms.gov/utilities/background-color/",
-      "url": "http://localhost:3000/utilities/background-color/",
-      "removeSelectors": ["#frame"]
-    },
-    {
       "label": "CMSDS - Utilities - Background Color - Default",
       "referenceUrl": "https://design.cms.gov/example/utilities.background-color/",
       "url": "http://localhost:3000/example/utilities.background-color/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Utilities - Border",
-      "referenceUrl": "https://design.cms.gov/utilities/border/",
-      "url": "http://localhost:3000/utilities/border/",
       "removeSelectors": ["#frame"]
     },
     {
@@ -321,21 +170,9 @@
       "removeSelectors": ["#frame"]
     },
     {
-      "label": "CMSDS - Utilities - Border Radius",
-      "referenceUrl": "https://design.cms.gov/utilities/border-radius/",
-      "url": "http://localhost:3000/utilities/border-radius/",
-      "removeSelectors": ["#frame"]
-    },
-    {
       "label": "CMSDS - Utilities - Border Radius - Default",
       "referenceUrl": "https://design.cms.gov/example/utilities.border-radius/",
       "url": "http://localhost:3000/example/utilities.border-radius/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Utilities - Text color",
-      "referenceUrl": "https://design.cms.gov/utilities/text-color/",
-      "url": "http://localhost:3000/utilities/text-color/",
       "removeSelectors": ["#frame"]
     },
     {
@@ -348,12 +185,6 @@
       "label": "CMSDS - Utilities - Text color - Inherit",
       "referenceUrl": "https://design.cms.gov/example/utilities.text-color.inherit/",
       "url": "http://localhost:3000/example/utilities.text-color.inherit/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Utilities - Display/Visibility",
-      "referenceUrl": "https://design.cms.gov/utilities/display-visibility/",
-      "url": "http://localhost:3000/utilities/display-visibility/",
       "removeSelectors": ["#frame"]
     },
     {
@@ -372,12 +203,6 @@
       "label": "CMSDS - Utilities - Display/Visibility - Responsive",
       "referenceUrl": "https://design.cms.gov/example/utilities.display-visibility.responsive",
       "url": "http://localhost:3000/example/utilities.display-visibility.responsive",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Utilities - Flexbox",
-      "referenceUrl": "https://design.cms.gov/utilities/flexbox/",
-      "url": "http://localhost:3000/utilities/flexbox/",
       "removeSelectors": ["#frame"]
     },
     {
@@ -411,12 +236,6 @@
       "removeSelectors": ["#frame"]
     },
     {
-      "label": "CMSDS - Utilities - Float",
-      "referenceUrl": "https://design.cms.gov/utilities/float/",
-      "url": "http://localhost:3000/utilities/float/",
-      "removeSelectors": ["#frame"]
-    },
-    {
       "label": "CMSDS - Utilities - Float - Default",
       "referenceUrl": "https://design.cms.gov/example/utilities.float/",
       "url": "http://localhost:3000/example/utilities.float/",
@@ -435,21 +254,9 @@
       "removeSelectors": ["#frame"]
     },
     {
-      "label": "CMSDS - Utilities - Font Family",
-      "referenceUrl": "https://design.cms.gov/utilities/font-family/",
-      "url": "http://localhost:3000/utilities/font-family/",
-      "removeSelectors": ["#frame"]
-    },
-    {
       "label": "CMSDS - Utilities - Font Family - Default",
       "referenceUrl": "https://design.cms.gov/example/utilities.font-family/",
       "url": "http://localhost:3000/example/utilities.font-family/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Utilities - Font Size",
-      "referenceUrl": "https://design.cms.gov/utilities/font-size/",
-      "url": "http://localhost:3000/utilities/font-size/",
       "removeSelectors": ["#frame"]
     },
     {
@@ -465,21 +272,9 @@
       "removeSelectors": ["#frame"]
     },
     {
-      "label": "CMSDS - Utilities - Font Style",
-      "referenceUrl": "https://design.cms.gov/utilities/font-style/",
-      "url": "http://localhost:3000/utilities/font-style/",
-      "removeSelectors": ["#frame"]
-    },
-    {
       "label": "CMSDS - Utilities - Font Style - Default",
       "referenceUrl": "https://design.cms.gov/example/utilities.font-style/",
       "url": "http://localhost:3000/example/utilities.font-style/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Utilities - Font Weight",
-      "referenceUrl": "https://design.cms.gov/utilities/font-weight/",
-      "url": "http://localhost:3000/utilities/font-weight/",
       "removeSelectors": ["#frame"]
     },
     {
@@ -489,21 +284,9 @@
       "removeSelectors": ["#frame"]
     },
     {
-      "label": "CMSDS - Utilities - Line Height",
-      "referenceUrl": "https://design.cms.gov/utilities/line-height/",
-      "url": "http://localhost:3000/utilities/line-height/",
-      "removeSelectors": ["#frame"]
-    },
-    {
       "label": "CMSDS - Utilities - Line Height - Default",
       "referenceUrl": "https://design.cms.gov/example/utilities.line-height/",
       "url": "http://localhost:3000/example/utilities.line-height/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Utilities - Margin",
-      "referenceUrl": "https://design.cms.gov/utilities/margin/",
-      "url": "http://localhost:3000/utilities/margin/",
       "removeSelectors": ["#frame"]
     },
     {
@@ -519,33 +302,15 @@
       "removeSelectors": ["#frame"]
     },
     {
-      "label": "CMSDS - Utilities - Measure",
-      "referenceUrl": "https://design.cms.gov/utilities/measure/",
-      "url": "http://localhost:3000/utilities/measure/",
-      "removeSelectors": ["#frame"]
-    },
-    {
       "label": "CMSDS - Utilities - Measure - Default",
       "referenceUrl": "https://design.cms.gov/example/utilities.measure/",
       "url": "http://localhost:3000/example/utilities.measure/",
       "removeSelectors": ["#frame"]
     },
     {
-      "label": "CMSDS - Utilities - Overflow",
-      "referenceUrl": "https://design.cms.gov/utilities/overflow/",
-      "url": "http://localhost:3000/utilities/overflow/",
-      "removeSelectors": ["#frame"]
-    },
-    {
       "label": "CMSDS - Utilities - Overflow - Default",
       "referenceUrl": "https://design.cms.gov/example/utilities.overflow/",
       "url": "http://localhost:3000/example/utilities.overflow/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Utilities - Padding",
-      "referenceUrl": "https://design.cms.gov/utilities/padding/",
-      "url": "http://localhost:3000/utilities/padding/",
       "removeSelectors": ["#frame"]
     },
     {
@@ -561,12 +326,6 @@
       "removeSelectors": ["#frame"]
     },
     {
-      "label": "CMSDS - Utilities - Text Alignment",
-      "referenceUrl": "https://design.cms.gov/utilities/text-align/",
-      "url": "http://localhost:3000/utilities/text-align/",
-      "removeSelectors": ["#frame"]
-    },
-    {
       "label": "CMSDS - Utilities - Text Alignment - Default",
       "referenceUrl": "https://design.cms.gov/example/utilities.text-align/",
       "url": "http://localhost:3000/example/utilities.text-align/",
@@ -579,21 +338,9 @@
       "removeSelectors": ["#frame"]
     },
     {
-      "label": "CMSDS - Utilities - Text Decoration",
-      "referenceUrl": "https://design.cms.gov/utilities/text-decoration/",
-      "url": "http://localhost:3000/utilities/text-decoration/",
-      "removeSelectors": ["#frame"]
-    },
-    {
       "label": "CMSDS - Utilities - Text Decoration - Default",
       "referenceUrl": "https://design.cms.gov/example/utilities.text-decoration/",
       "url": "http://localhost:3000/example/utilities.text-decoration/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Utilities - Text Transform",
-      "referenceUrl": "https://design.cms.gov/utilities/text-transform/",
-      "url": "http://localhost:3000/utilities/text-transform/",
       "removeSelectors": ["#frame"]
     },
     {
@@ -603,21 +350,9 @@
       "removeSelectors": ["#frame"]
     },
     {
-      "label": "CMSDS - Utilities - Truncate",
-      "referenceUrl": "https://design.cms.gov/utilities/truncate/",
-      "url": "http://localhost:3000/utilities/truncate/",
-      "removeSelectors": ["#frame"]
-    },
-    {
       "label": "CMSDS - Utilities - Truncate - Default",
       "referenceUrl": "https://design.cms.gov/example/utilities.truncate/",
       "url": "http://localhost:3000/example/utilities.truncate/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Utilities - Vertical Align",
-      "referenceUrl": "https://design.cms.gov/utilities/vertical-align/",
-      "url": "http://localhost:3000/utilities/vertical-align/",
       "removeSelectors": ["#frame"]
     },
     {
@@ -627,21 +362,9 @@
       "removeSelectors": ["#frame"]
     },
     {
-      "label": "CMSDS - Utilities - Word Break",
-      "referenceUrl": "https://design.cms.gov/utilities/word-break/",
-      "url": "http://localhost:3000/utilities/word-break/",
-      "removeSelectors": ["#frame"]
-    },
-    {
       "label": "CMSDS - Utilities - Word Break - Default",
       "referenceUrl": "https://design.cms.gov/example/utilities.word-break/",
       "url": "http://localhost:3000/example/utilities.word-break/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Components - Accordion",
-      "referenceUrl": "https://design.cms.gov/components/accordion/",
-      "url": "http://localhost:3000/components/accordion/",
       "removeSelectors": ["#frame"]
     },
     {
@@ -654,12 +377,6 @@
       "label": "CMSDS - Components - Accordion - React",
       "referenceUrl": "https://design.cms.gov/example/components.accordion.react/",
       "url": "http://localhost:3000/example/components.accordion.react/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Components - Alert",
-      "referenceUrl": "https://design.cms.gov/components/alert/",
-      "url": "http://localhost:3000/components/alert/",
       "removeSelectors": ["#frame"]
     },
     {
@@ -681,21 +398,9 @@
       "removeSelectors": ["#frame"]
     },
     {
-      "label": "CMSDS - Components - Autocomplete",
-      "referenceUrl": "https://design.cms.gov/components/autocomplete/",
-      "url": "http://localhost:3000/components/autocomplete/",
-      "removeSelectors": ["#frame"]
-    },
-    {
       "label": "CMSDS - Components - Autocomplete - React",
       "referenceUrl": "https://design.cms.gov/example/components.autocomplete.react/",
       "url": "http://localhost:3000/example/components.autocomplete.react/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Components - Badge",
-      "referenceUrl": "https://design.cms.gov/components/badge/",
-      "url": "http://localhost:3000/components/badge/",
       "removeSelectors": ["#frame"]
     },
     {
@@ -708,12 +413,6 @@
       "label": "CMSDS - Components - Badge - React",
       "referenceUrl": "https://design.cms.gov/example/components.badge.react/",
       "url": "http://localhost:3000/example/components.badge.react/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Components - Button",
-      "referenceUrl": "https://design.cms.gov/components/button/",
-      "url": "http://localhost:3000/components/button/",
       "removeSelectors": ["#frame"]
     },
     {
@@ -741,12 +440,6 @@
       "removeSelectors": ["#frame"]
     },
     {
-      "label": "CMSDS - Components - Checkbox & Radio",
-      "referenceUrl": "https://design.cms.gov/components/choice/",
-      "url": "http://localhost:3000/components/choice/",
-      "removeSelectors": ["#frame"]
-    },
-    {
       "label": "CMSDS - Components - Checkbox & Radio - Default",
       "referenceUrl": "https://design.cms.gov/example/components.choice/",
       "url": "http://localhost:3000/example/components.choice/",
@@ -765,12 +458,6 @@
       "removeSelectors": ["#frame"]
     },
     {
-      "label": "CMSDS - Components - Datefield",
-      "referenceUrl": "https://design.cms.gov/components/date-field/",
-      "url": "http://localhost:3000/components/date-field/",
-      "removeSelectors": ["#frame"]
-    },
-    {
       "label": "CMSDS - Components - Datefield - Default",
       "referenceUrl": "https://design.cms.gov/example/components.date-field/",
       "url": "http://localhost:3000/example/components.date-field/",
@@ -780,12 +467,6 @@
       "label": "CMSDS - Components - Datefield - React",
       "referenceUrl": "https://design.cms.gov/example/components.date-field.react/",
       "url": "http://localhost:3000/example/components.date-field.react/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Components - Dropdown",
-      "referenceUrl": "https://design.cms.gov/components/dropdown/",
-      "url": "http://localhost:3000/components/dropdown/",
       "removeSelectors": ["#frame"]
     },
     {
@@ -801,12 +482,6 @@
       "removeSelectors": ["#frame"]
     },
     {
-      "label": "CMSDS - Components - Filter Chip",
-      "referenceUrl": "https://design.cms.gov/components/filterchip/",
-      "url": "http://localhost:3000/components/filterchip/",
-      "removeSelectors": ["#frame"]
-    },
-    {
       "label": "CMSDS - Components - Filter Chip - Default",
       "referenceUrl": "https://design.cms.gov/example/components.filterchip/",
       "url": "http://localhost:3000/example/components.filterchip/",
@@ -816,12 +491,6 @@
       "label": "CMSDS - Components - Filter Chip - React",
       "referenceUrl": "https://design.cms.gov/example/components.filterchip.react/",
       "url": "http://localhost:3000/example/components.filterchip.react/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Components - Form label & legend",
-      "referenceUrl": "https://design.cms.gov/components/form-label",
-      "url": "http://localhost:3000/components/form-label",
       "removeSelectors": ["#frame"]
     },
     {
@@ -837,12 +506,6 @@
       "removeSelectors": ["#frame"]
     },
     {
-      "label": "CMSDS - Components - Help drawer",
-      "referenceUrl": "https://design.cms.gov/components/help-drawer/",
-      "url": "http://localhost:3000/components/help-drawer/",
-      "removeSelectors": ["#frame"]
-    },
-    {
       "label": "CMSDS - Components - Help drawer - Default",
       "referenceUrl": "https://design.cms.gov/example/components.help-drawer/",
       "url": "http://localhost:3000/example/components.help-drawer/",
@@ -855,33 +518,15 @@
       "removeSelectors": ["#frame"]
     },
     {
-      "label": "CMSDS - Components - List",
-      "referenceUrl": "https://design.cms.gov/components/list/",
-      "url": "http://localhost:3000/components/list/",
-      "removeSelectors": ["#frame"]
-    },
-    {
       "label": "CMSDS - Components - List - Default",
       "referenceUrl": "https://design.cms.gov/example/components.list/",
       "url": "http://localhost:3000/example/components.list/",
       "removeSelectors": ["#frame"]
     },
     {
-      "label": "CMSDS - Components - Masked Field",
-      "referenceUrl": "https://design.cms.gov/components/masked-field/",
-      "url": "http://localhost:3000/components/masked-field/",
-      "removeSelectors": ["#frame"]
-    },
-    {
       "label": "CMSDS - Components - Masked Field - React",
       "referenceUrl": "https://design.cms.gov/example/components.masked-field.react/",
       "url": "http://localhost:3000/example/components.masked-field.react/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Components - Modal Dialog",
-      "referenceUrl": "https://design.cms.gov/components/dialog/",
-      "url": "http://localhost:3000/components/dialog/",
       "removeSelectors": ["#frame"]
     },
     {
@@ -903,33 +548,15 @@
       "removeSelectors": ["#frame"]
     },
     {
-      "label": "CMSDS - Components - Month Picker",
-      "referenceUrl": "https://design.cms.gov/components/month-picker/",
-      "url": "http://localhost:3000/components/month-picker/",
-      "removeSelectors": ["#frame"]
-    },
-    {
       "label": "CMSDS - Components - Month Picker - React",
       "referenceUrl": "https://design.cms.gov/example/components.month-picker.react/",
       "url": "http://localhost:3000/example/components.month-picker.react/",
       "removeSelectors": ["#frame"]
     },
     {
-      "label": "CMSDS - Components - Skipnav",
-      "referenceUrl": "https://design.cms.gov/components/skip-nav/",
-      "url": "http://localhost:3000/components/skip-nav/",
-      "removeSelectors": ["#frame"]
-    },
-    {
       "label": "CMSDS - Components - Skipnav - Default",
       "referenceUrl": "https://design.cms.gov/example/components.skip-nav/",
       "url": "http://localhost:3000/example/components.skip-nav/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Components - Spinner",
-      "referenceUrl": "https://design.cms.gov/components/spinner/",
-      "url": "http://localhost:3000/components/spinner/",
       "removeSelectors": ["#frame"]
     },
     {
@@ -961,12 +588,6 @@
       "misMatchThreshold": "0.5"
     },
     {
-      "label": "CMSDS - Components - Table",
-      "referenceUrl": "https://design.cms.gov/components/table/",
-      "url": "http://localhost:3000/components/table/",
-      "removeSelectors": ["#frame"]
-    },
-    {
       "label": "CMSDS - Components - Table - Default",
       "referenceUrl": "https://design.cms.gov/example/components.table/",
       "url": "http://localhost:3000/example/components.table/",
@@ -985,12 +606,6 @@
       "removeSelectors": ["#frame"]
     },
     {
-      "label": "CMSDS - Components - Tabs",
-      "referenceUrl": "https://design.cms.gov/components/tabs/",
-      "url": "http://localhost:3000/components/tabs/",
-      "removeSelectors": ["#frame"]
-    },
-    {
       "label": "CMSDS - Components - Tabs - Default",
       "referenceUrl": "https://design.cms.gov/example/components.tabs/",
       "url": "http://localhost:3000/example/components.tabs/",
@@ -1000,12 +615,6 @@
       "label": "CMSDS - Components - Tabs - React",
       "referenceUrl": "https://design.cms.gov/example/components.tabs.react-tabs/",
       "url": "http://localhost:3000/example/components.tabs.react-tabs/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Components - Textfield",
-      "referenceUrl": "https://design.cms.gov/components/text-field/",
-      "url": "http://localhost:3000/components/text-field/",
       "removeSelectors": ["#frame"]
     },
     {
@@ -1021,12 +630,6 @@
       "removeSelectors": ["#frame"]
     },
     {
-      "label": "CMSDS - Components - Vertical Navigation",
-      "referenceUrl": "https://design.cms.gov/components/vertical-nav/",
-      "url": "http://localhost:3000/components/vertical-nav/",
-      "removeSelectors": ["#frame"]
-    },
-    {
       "label": "CMSDS - Components - Vertical Navigation - Default",
       "referenceUrl": "https://design.cms.gov/example/components.vertical-nav/",
       "url": "http://localhost:3000/example/components.vertical-nav/",
@@ -1039,27 +642,9 @@
       "removeSelectors": ["#frame"]
     },
     {
-      "label": "CMSDS - Patterns - Overview",
-      "referenceUrl": "https://design.cms.gov/patterns/overview/",
-      "url": "http://localhost:3000/patterns/overview/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Patterns - Documentation Page",
-      "referenceUrl": "https://design.cms.gov/patterns/documentation-page/",
-      "url": "http://localhost:3000/patterns/documentation-page/",
-      "removeSelectors": ["#frame"]
-    },
-    {
       "label": "CMSDS - Patterns - Documentation Page - Default",
       "referenceUrl": "https://design.cms.gov/example/patterns.documentation-page/",
       "url": "http://localhost:3000/example/patterns.documentation-page/",
-      "removeSelectors": ["#frame"]
-    },
-    {
-      "label": "CMSDS - Patterns - Review",
-      "referenceUrl": "https://design.cms.gov/patterns/review/",
-      "url": "http://localhost:3000/patterns/review/",
       "removeSelectors": ["#frame"]
     },
     {
@@ -1075,12 +660,6 @@
       "removeSelectors": ["#frame"]
     },
     {
-      "label": "CMSDS - Patterns - Step List",
-      "referenceUrl": "https://design.cms.gov/patterns/step-list/",
-      "url": "http://localhost:3000/patterns/step-list/",
-      "removeSelectors": ["#frame"]
-    },
-    {
       "label": "CMSDS - Patterns - Step List - Default",
       "referenceUrl": "https://design.cms.gov/example/patterns.step-list/",
       "url": "http://localhost:3000/example/patterns.step-list/",
@@ -1093,15 +672,27 @@
       "removeSelectors": ["#frame"]
     },
     {
-      "label": "CMSDS - Patterns - External Link",
-      "referenceUrl": "https://design.cms.gov/patterns/external-link/",
-      "url": "http://localhost:3000/patterns/external-link/",
-      "removeSelectors": ["#frame"]
-    },
-    {
       "label": "CMSDS - Patterns - External Link - React",
       "referenceUrl": "https://design.cms.gov/example/patterns.external-link.react/",
       "url": "http://localhost:3000/example/patterns.external-link.react/",
+      "removeSelectors": ["#frame"]
+    },
+    {
+      "label": "CMSDS - Components - FilterChip - React",
+      "referenceUrl": "https://design.cms.gov/example/components.filterchip.react/",
+      "url": "http://localhost:3000/example/components.filterchip.react/",
+      "removeSelectors": ["#frame"]
+    },
+    {
+      "label": "CMSDS - Components - FilterChip - Default",
+      "referenceUrl": "https://design.cms.gov/example/components.filterchip/",
+      "url": "http://localhost:3000/example/components.filterchip/",
+      "removeSelectors": ["#frame"]
+    },
+    {
+      "label": "CMSDS - Components - Tooltip - React",
+      "referenceUrl": "https://design.cms.gov/example/components.tooltip.tooltip/",
+      "url": "http://localhost:3000/example/components.tooltip.tooltip/",
       "removeSelectors": ["#frame"]
     }
   ],

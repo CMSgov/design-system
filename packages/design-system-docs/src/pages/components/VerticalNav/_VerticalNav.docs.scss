@@ -17,7 +17,7 @@ A `VerticalNav` component accepts list items as a JSON object and includes addit
 
 @react-example VerticalNav.example.jsx
 
-@react-props VerticalNav.jsx
+@react-props VerticalNav.tsx
 
 Style guide: components.vertical-nav.VerticalNav
 */
@@ -25,7 +25,7 @@ Style guide: components.vertical-nav.VerticalNav
 /*
 `<VerticalNavItem>`
 
-@react-props VerticalNavItem.jsx
+@react-props VerticalNavItem.tsx
 
 Style guide: components.vertical-nav.VerticalNavItem
 */
@@ -58,8 +58,10 @@ if you're using the React components.
 - If your navigation list is longer than 3 items, consider using a skip navigation link. This allows screen reader and keyboard users to skip to the main content area(s).
 - If a skip navigation link is not an option, consider using:
   * A valid, descriptive page header
-  * Landmark regions like `<header>`, `<nav>`, `<main>`, `<aside>`, `<footer>`
-  * A `role` attribute like `<div role="navigation">`
+  * Landmark regions like `<header>`, `<main>`, `<aside>`, `<footer>`
+- When naming the optional `ariaNavLabel` prop, keep in mind:
+    * This prop is necessary only when there is more than one nav element on a page.
+    * Don't include the word "Menu" in the label. Most screen readers will announce that information already. Instead, provide more context to what's in the menu and/or its location. Like "Main" or "Social".
 
 ### Related patterns
 

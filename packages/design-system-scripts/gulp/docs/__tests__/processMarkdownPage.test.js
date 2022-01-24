@@ -110,7 +110,9 @@ Guidance`;
         expect(section.header).toBe('---');
         expect(section.description.trim()).toBe('<p>Guidance</p>');
         expect(section.reference).toMatch(/[a-z]\.guidance$/);
-        expect(section.referenceURI).toMatch(/[a-z]\/guidance$/);
+        // Another instance where both slashes are needed for windows compatibility
+        // eslint-disable-next-line no-useless-escape
+        expect(section.referenceURI).toMatch(/[a-z][\\\/]guidance$/);
       });
     });
   });

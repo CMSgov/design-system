@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HelpDrawerToggle renders a button 1`] = `
+<DrawerToggle
+  className="ds-c-help-drawer__toggle"
+  drawerOpen={false}
+  inline={false}
+  showDrawer={[MockFunction]}
+>
+  <p>
+    content
+  </p>
+   
+</DrawerToggle>
+`;

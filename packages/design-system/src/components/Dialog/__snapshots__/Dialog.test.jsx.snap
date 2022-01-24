@@ -31,10 +31,12 @@ Object {
           type="button"
           variation="danger"
         >
+          <CloseIcon />
           No thank you. I don't like saving money
         </Button>
       </header>
       <main
+        className="ds-c-dialog__body"
         role="main"
       >
         <div
@@ -53,6 +55,7 @@ exports[`Dialog renders react-aria-modal 1`] = `
   ariaCloseLabel="Close modal dialog"
   closeButtonText="Close"
   closeButtonVariation="transparent"
+  closeIcon={<CloseIcon />}
   escapeExitDisabled={false}
   escapeExits={true}
   getApplicationNode={
@@ -128,10 +131,31 @@ exports[`Dialog renders react-aria-modal 1`] = `
                       class="ds-c-button ds-c-button--transparent ds-c-dialog__close"
                       type="button"
                     >
+                      <svg
+                        aria-hidden="true"
+                        aria-labelledby="icon-1__title"
+                        class="ds-c-icon ds-c-icon--close "
+                        focusable="false"
+                        id="icon-1"
+                        role="img"
+                        viewBox="0 0 16 16"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <title
+                          id="icon-1__title"
+                        >
+                          Close
+                        </title>
+                        <path
+                          d="M14.647 11.213c.235.235.353.521.353.858 0 .337-.118.624-.353.859l-1.717 1.717a1.17 1.17 0 01-.86.354c-.336 0-.622-.118-.857-.354l-3.714-3.712-3.712 3.712A1.166 1.166 0 012.93 15c-.337 0-.622-.118-.859-.354L.353 12.93A1.165 1.165 0 010 12.07c0-.337.117-.623.353-.858L4.065 7.5.353 3.789A1.168 1.168 0 010 2.929c0-.336.117-.622.353-.857L2.07.353C2.307.118 2.592 0 2.93 0c.337 0 .623.118.858.353L7.5 4.065 11.213.353c.235-.235.521-.353.857-.353.337 0 .623.118.86.353l1.717 1.719c.235.235.353.521.353.857 0 .338-.118.623-.353.86L10.935 7.5l3.712 3.712z"
+                          fill-rule="evenodd"
+                        />
+                      </svg>
                       Close
                     </button>
                   </header>
                   <main
+                    class="ds-c-dialog__body"
                     role="main"
                   >
                     <div
@@ -229,11 +253,42 @@ exports[`Dialog renders react-aria-modal 1`] = `
                         onClick={[Function]}
                         type="button"
                       >
+                        <CloseIcon>
+                          <SvgIcon
+                            ariaHidden={true}
+                            className="ds-c-icon--close "
+                            inversed={false}
+                            title="Close"
+                            viewBox="0 0 16 16"
+                          >
+                            <svg
+                              aria-hidden={true}
+                              aria-labelledby="icon-1__title"
+                              className="ds-c-icon ds-c-icon--close "
+                              focusable={false}
+                              id="icon-1"
+                              role="img"
+                              viewBox="0 0 16 16"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <title
+                                id="icon-1__title"
+                              >
+                                Close
+                              </title>
+                              <path
+                                d="M14.647 11.213c.235.235.353.521.353.858 0 .337-.118.624-.353.859l-1.717 1.717a1.17 1.17 0 01-.86.354c-.336 0-.622-.118-.857-.354l-3.714-3.712-3.712 3.712A1.166 1.166 0 012.93 15c-.337 0-.622-.118-.859-.354L.353 12.93A1.165 1.165 0 010 12.07c0-.337.117-.623.353-.858L4.065 7.5.353 3.789A1.168 1.168 0 010 2.929c0-.336.117-.622.353-.857L2.07.353C2.307.118 2.592 0 2.93 0c.337 0 .623.118.858.353L7.5 4.065 11.213.353c.235-.235.521-.353.857-.353.337 0 .623.118.86.353l1.717 1.719c.235.235.353.521.353.857 0 .338-.118.623-.353.86L10.935 7.5l3.712 3.712z"
+                                fillRule="evenodd"
+                              />
+                            </svg>
+                          </SvgIcon>
+                        </CloseIcon>
                         Close
                       </button>
                     </Button>
                   </header>
                   <main
+                    className="ds-c-dialog__body"
                     role="main"
                   >
                     <div
@@ -289,10 +344,12 @@ Object {
           type="button"
           variation="transparent"
         >
+          <CloseIcon />
           Close
         </Button>
       </header>
       <main
+        className="ds-c-dialog__body"
         role="main"
       >
         <div

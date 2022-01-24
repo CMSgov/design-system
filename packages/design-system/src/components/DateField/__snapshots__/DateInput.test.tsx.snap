@@ -1,58 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DateInput has custom yearMax and yearMin 1`] = `
-<div
-  className="ds-l-form-row ds-u-align-items--end"
->
-  <TextField
-    aria-describedby="1"
-    className="ds-l-col--auto"
-    fieldClassName="ds-c-field--month"
-    inputRef={[Function]}
-    label="Month"
-    labelClassName="ds-c-datefield__label"
-    name="month"
-    numeric={true}
-    type="text"
-  />
-  <span
-    className="ds-c-datefield__separator"
-  >
-    /
-  </span>
-  <TextField
-    aria-describedby="1"
-    className="ds-l-col--auto"
-    fieldClassName="ds-c-field--day"
-    inputRef={[Function]}
-    label="Day"
-    labelClassName="ds-c-datefield__label"
-    name="day"
-    numeric={true}
-    type="text"
-  />
-  <span
-    className="ds-c-datefield__separator"
-  >
-    /
-  </span>
-  <TextField
-    aria-describedby="1"
-    className="ds-l-col--auto"
-    fieldClassName="ds-c-field--year"
-    inputRef={[Function]}
-    label="year"
-    labelClassName="ds-c-datefield__label"
-    name="Year"
-    numeric={true}
-    type="text"
-  />
-</div>
-`;
-
 exports[`DateInput has invalid day 1`] = `
 <div
-  className="ds-l-form-row ds-u-align-items--end"
+  className="ds-c-datefield__container ds-l-form-row"
 >
   <TextField
     aria-describedby="1"
@@ -103,7 +53,7 @@ exports[`DateInput has invalid day 1`] = `
 
 exports[`DateInput has invalid month 1`] = `
 <div
-  className="ds-l-form-row ds-u-align-items--end"
+  className="ds-c-datefield__container ds-l-form-row"
 >
   <TextField
     aria-describedby="1"
@@ -154,7 +104,7 @@ exports[`DateInput has invalid month 1`] = `
 
 exports[`DateInput has invalid year 1`] = `
 <div
-  className="ds-l-form-row ds-u-align-items--end"
+  className="ds-c-datefield__container ds-l-form-row"
 >
   <TextField
     aria-describedby="1"
@@ -205,7 +155,7 @@ exports[`DateInput has invalid year 1`] = `
 
 exports[`DateInput is disabled 1`] = `
 <div
-  className="ds-l-form-row ds-u-align-items--end"
+  className="ds-c-datefield__container ds-l-form-row"
 >
   <TextField
     aria-describedby="1"
@@ -258,7 +208,7 @@ exports[`DateInput is disabled 1`] = `
 
 exports[`DateInput is inversed 1`] = `
 <div
-  className="ds-l-form-row ds-u-align-items--end"
+  className="ds-c-datefield__container ds-l-form-row"
 >
   <TextField
     aria-describedby="1"
@@ -311,7 +261,7 @@ exports[`DateInput is inversed 1`] = `
 
 exports[`DateInput renders with all defaultProps 1`] = `
 <div
-  className="ds-l-form-row ds-u-align-items--end"
+  className="ds-c-datefield__container ds-l-form-row"
 >
   <TextField
     aria-describedby="1"

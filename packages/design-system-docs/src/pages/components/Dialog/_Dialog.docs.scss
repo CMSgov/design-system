@@ -28,124 +28,9 @@ Style guide: components.dialog.size
 
 @react-example Dialog.example.jsx
 
-@react-props Dialog.jsx
+@react-props Dialog.tsx
 
 Style guide: components.dialog.react
-*/
-
-/*
-Analytics props
-
-<table class="ds-c-table ds-c-table--compact">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="ds-u-font-weight--bold">onComponentDidMount</code></td>
-      <td><code>bool, or object</code></td>
-      <td>
-        <p>Track modal dialog opened event</p>
-      </td>
-    </tr>
-    <tr>
-      <td><code class="ds-u-font-weight--bold">onComponentWillUnmount</code></td>
-      <td><code>bool, or object</code></td>
-      <td>
-        <p>Track modal dialog closed event</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<h4>Analytics event object</h4>
-
-<table class="ds-c-table ds-c-table--compact">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="ds-u-font-weight--bold">event_name</code></td>
-      <td><code>string</code></td>
-      <td>onComponentDidMount: <code>'modal_impression'</code>, or onComponentWillUnmount: <code>'modal_closed'</code></td>
-      <td>
-        <p>When provided, override text to display as the event name</p>
-      </td>
-    </tr>
-    <tr>
-      <td><code class="ds-u-font-weight--bold">event_type</code></td>
-      <td><code>string</code></td>
-      <td><code>'ui interaction'</code></td>
-      <td>
-        <p>When provided, override text to display as the event type</p>
-      </td>
-    </tr>
-    <tr>
-      <td><code class="ds-u-font-weight--bold">ga_eventAction</code></td>
-      <td><code>string</code></td>
-      <td>onComponentDidMount: <code>'modal impression'</code>, or onComponentWillUnmount: <code>'closed modal'</code></td>
-      <td>
-        <p>When provided, override text to display as the event action</p>
-      </td>
-    </tr>
-    <tr>
-      <td><code class="ds-u-font-weight--bold">ga_eventCategory</code></td>
-      <td><code>string</code></td>
-      <td><code>'ui components'</code></td>
-      <td>
-        <p>When provided, override text to display as the event category</p>
-      </td>
-    </tr>
-    <tr>
-      <td><code class="ds-u-font-weight--bold">ga_eventLabel</code></td>
-      <td><code>string</code></td>
-      <td>Dialog prop: <code>heading or title</code></td>
-      <td>
-        <p>When provided, override text to display as the event label</p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code class="ds-u-font-weight--bold">ga_eventType</code>
-      </td>
-      <td><code>string</code></td>
-      <td>cmsds</td>
-      <td>
-        <p>When provided, override text to display as the event type</p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code class="ds-u-font-weight--bold">ga_eventValue</code>
-      </td>
-      <td><code>string</code></td>
-      <td></td>
-      <td>
-        <p>When provided, override text to display as the event value</p>
-      </td>
-    </tr>
-    <tr>
-      <td><code class="ds-u-font-weight--bold">heading</code></td>
-      <td><code>string</code></td>
-      <td>Dialog prop: <code>heading or title</code></td>
-      <td>
-        <p>When provided, override text to display as the heading</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-Style guide: components.dialog.analytics
 */
 
 /*
@@ -192,7 +77,7 @@ Google Analytics
 
 ### Enable event tracking
 
-- Import and set the `setDialogSendsAnalytics` feature flag to `true` in your application's entry file:
+Import and set the `setDialogSendsAnalytics` feature flag to `true` in your application's entry file:
 
 ```JSX
 import { setDialogSendsAnalytics } from "@cmsgov/<design-system-package>";
@@ -202,20 +87,14 @@ On applications where the page has `utag` loaded, the data goes to Tealium which
 
 ### Disable event tracking
 
-- Pass the `onComponentDidMount` prop set to `false` to the component:
-- Pass the `onComponentWillUnmount` prop set to `false` to the component:
+For the `analytics` prop, pass the value `false` to the component to disable analytics tracking for a singular component instance
 
 ```JSX
-analytics={
-  {
-    onComponentDidMount: {false},
-    onComponentWillUnmount: {false}
-  }
-}
+analytics={false}
 ```
 ### Override  event tracking
 
-- Pass changes via any of the [available analytics props](#components.alert.analytics).
+A custom heading value can be sent for an analytics event by using the prop `analyticsLabelOverride`. It is recommended that this value be used to prevent sensitive personal information from being passed to analytics trackers.
 
 Style guide: components.dialog.guidance-analytics
 */

@@ -4,9 +4,13 @@ import React from 'react';
 import classNames from 'classnames';
 import pick from 'lodash/pick';
 
+export type ChoiceListSize = 'small';
+export type ChoiceListType = 'checkbox' | 'radio';
+export type ChoiceListErrorPlacement = 'top' | 'bottom';
+
 // Omit props that we override with values from the ChoiceList
 type OmitChoiceProp = 'inversed' | 'name' | 'onBlur' | 'onChange' | 'size' | 'type' | 'inputRef';
-type ChoiceProps = Omit<ChoiceComponentProps, OmitChoiceProp>;
+export type ChoiceProps = Omit<ChoiceComponentProps, OmitChoiceProp>;
 
 export interface ChoiceListProps {
   /**
@@ -29,7 +33,7 @@ export interface ChoiceListProps {
   /**
    * Location of the error message relative to the field input
    */
-  errorPlacement?: 'top' | 'bottom';
+  errorPlacement?: ChoiceListErrorPlacement;
   /**
    * Additional hint text to display
    */
@@ -72,11 +76,11 @@ export interface ChoiceListProps {
   /**
    * Sets the size of the checkbox or radio button
    */
-  size?: 'small';
+  size?: ChoiceListSize;
   /**
    * Sets the type to render `checkbox` fields or `radio` buttons
    */
-  type: 'checkbox' | 'radio';
+  type: ChoiceListType;
 }
 
 export class ChoiceList extends React.PureComponent<ChoiceListProps, any> {
@@ -124,7 +128,7 @@ export class ChoiceList extends React.PureComponent<ChoiceListProps, any> {
     }, 20);
   }
 
-  render(): React.ReactNode {
+  render() {
     const containerProps = pick(this.props, FormControlPropKeys);
 
     const choices = this.props.choices.map((choiceProps) => {

@@ -1,11 +1,25 @@
 @import '../settings/index.scss';
 
+$review-space: $spacer-2;
+
 .ds-c-review {
   border-bottom: 2px solid $border-color;
   display: flex;
   justify-content: space-between;
   padding-bottom: 16px;
   padding-top: 16px;
+
+  /* stylelint-disable scss/media-feature-value-dollar-variable */
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    a:hover {
+      text-decoration: none;
+    }
+  }
+  /* stylelint-enable scss/media-feature-value-dollar-variable */
+}
+
+.ds-c-review__content {
+  margin-right: $review-space;
 }
 
 .ds-c-review:last-of-type {

@@ -1,0 +1,50 @@
+.ds-c-icon {
+  display: inline-block;
+  fill: currentColor;
+  flex-shrink: 0;
+  font-size: $base-font-size;
+  height: 1.5em;
+  stroke: currentColor;
+  stroke-width: 0;
+  vertical-align: middle;
+  width: 1.5em;
+}
+
+// Icon color variations
+.ds-c-icon-color--primary {
+  color: $color-primary;
+}
+
+.ds-c-icon-color--inverse {
+  color: $color-white;
+}
+
+.ds-c-icon-color--error {
+  color: $color-error;
+}
+
+.ds-c-icon-color--warn {
+  color: $color-warn;
+}
+
+.ds-c-icon-color--success {
+  color: $color-success;
+}
+
+// Specific icon variations
+
+.ds-c-icon--arrow-up {
+  transform: rotate(-90deg);
+}
+
+.ds-c-icon--arrow-left {
+  transform: rotate(180deg);
+}
+
+.ds-c-icon--arrow-down {
+  transform: rotate(90deg);
+}
+
+.ds-c-icon--pdf__text {
+  fill: $color-white;
+}

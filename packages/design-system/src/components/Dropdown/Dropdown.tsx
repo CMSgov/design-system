@@ -5,6 +5,14 @@ import { errorPlacementDefault } from '../flags';
 import omit from 'lodash/omit';
 import pick from 'lodash/pick';
 
+export type DropdownDefaultValue = number | string;
+export interface DropdownOptions {
+  label: React.ReactNode;
+  value: number | string;
+}
+export type DropdownSize = 'small' | 'medium';
+export type DropdownValue = number | string;
+export type DropdownErrorPlacement = 'top' | 'bottom';
 export interface DropdownProps {
   /**
    * Adds `aria-label` attribute. When using `aria-label`, `label` should be empty string.
@@ -22,7 +30,7 @@ export interface DropdownProps {
    * Sets the initial selected state. Use this for an uncontrolled component;
    * otherwise, use the `value` property.
    */
-  defaultValue?: number | string;
+  defaultValue?: DropdownDefaultValue;
   /**
    * Disables the entire field.
    */
@@ -35,7 +43,7 @@ export interface DropdownProps {
   /**
    * Location of the error message relative to the field input
    */
-  errorPlacement?: 'top' | 'bottom';
+  errorPlacement?: DropdownErrorPlacement;
   /**
    * Additional classes to be added to the select element
    */
@@ -75,10 +83,7 @@ export interface DropdownProps {
   /**
    * The list of options to be rendered. Provide an empty list if using custom options via the `children` prop.
    */
-  options: {
-    label: React.ReactNode;
-    value: number | string;
-  }[];
+  options: DropdownOptions[];
   onBlur?: (...args: any[]) => any;
   onChange?: (...args: any[]) => any;
   /**
@@ -88,12 +93,12 @@ export interface DropdownProps {
   /**
    * If the component renders a select, set the max-width of the input either to `'small'` or `'medium'`.
    */
-  size?: 'small' | 'medium';
+  size?: DropdownSize;
   /**
    * Sets the field's `value`. Use this in combination with `onChange`
    * for a controlled component; otherwise, set `defaultValue`.
    */
-  value?: number | string;
+  value?: DropdownValue;
 }
 
 type OmitProps =
@@ -132,7 +137,7 @@ export class Dropdown extends React.PureComponent<
     }
   }
 
-  render(): React.ReactNode {
+  render() {
     const containerProps = pick(this.props, FormControlPropKeys);
     const inputOnlyProps = omit(this.props, FormControlPropKeys);
 

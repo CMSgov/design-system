@@ -1,6 +1,9 @@
 import { maskValue, unmaskValue } from './maskHelpers';
 import React from 'react';
 
+// TODO: Remove `maskValue` and `unmaskValue` exports with next major release (v3.x.x)
+export { maskValue, unmaskValue };
+
 const maskPattern = {
   phone: '[0-9-]*',
   ssn: '[0-9-*]*',
@@ -118,7 +121,7 @@ export class Mask extends React.PureComponent<MaskProps, any> {
     }
   }
 
-  render(): React.ReactNode {
+  render() {
     const { mask } = this.props;
     const field = this.field();
 

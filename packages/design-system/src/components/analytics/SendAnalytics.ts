@@ -1,4 +1,3 @@
-import merge from 'lodash/merge';
 /**
  * Functions for sending events to Tealium/Google Analytics
  * Based on HRA Tool & SEP screener & Coverage Tools analytics service:
@@ -7,28 +6,17 @@ import merge from 'lodash/merge';
  * - coverage-tools-frontend/src/helpers/objectUtilities.ts
  */
 
-/* Extend the global Window interface to fix ts error TS2339 */
-declare global {
-  interface Window {
-    utag?: {
-      link: (params: AnalyticsPayload) => void;
-    };
-  }
+export interface UtagObject {
+  link: (params: AnalyticsEvent) => void;
 }
 
-type EventType = 'link';
-const MAX_RETRIES = 3;
-const TIMEOUT = 300;
-
-/* eslint-disable camelcase */
-export interface AnalyticsPayload {
-  ga_eventAction: string;
-  ga_eventCategory: string;
-  ga_eventLabel: string;
-  ga_eventType: string;
-  ga_eventValue: string;
-  [additional_props: string]: unknown;
+export interface UtagContainer {
+  utag?: UtagObject;
 }
+
+export type EventType = 'link';
+
+export const MAX_LENGTH = 100;
 
 export const EVENT_CATEGORY = {
   contentTools: 'content tools',
@@ -36,9 +24,8 @@ export const EVENT_CATEGORY = {
   uiInteraction: 'ui interaction',
 };
 
-export const MAX_LENGTH = 100;
-
-interface AnalyticsEventProps {
+/* eslint-disable camelcase */
+export interface AnalyticsEvent {
   ga_eventAction: string;
   ga_eventCategory: string;
   ga_eventLabel: string;
@@ -47,50 +34,44 @@ interface AnalyticsEventProps {
   [additional_props: string]: unknown;
 }
 
-export function sendAnalytics(event: EventType, props: AnalyticsPayload, retry = 0): string {
-  if (window.utag && window.utag[event]) {
+const MAX_RETRIES = 3;
+const TIMEOUT = 300;
+
+export function sendAnalytics(
+  eventType: EventType,
+  event: Required<AnalyticsEvent>,
+  retry = 0
+): string {
+  // If we were to define this on the window object using `declare global { interface Window { utag: ... } }`
+  // that type definition of window.utag can conflict with downstream declarations. This happened before, and
+  // our fix is to only have a local type so we can get some type-checking without risk of conflicts. This
+  // feature of TypeScript is well intentioned (because if you're using globals, you want to make sure every
+  // module agrees on what they are), but in reality this type definition could vary in trivial ways but
+  // break a build.
+  const utag = ((window as any) as UtagContainer).utag;
+
+  if (utag && utag[eventType]) {
     try {
-      window.utag[event](props);
-      return `Tealium event sent: ${props.ga_eventCategory} - ${props.ga_eventAction} - ${props.ga_eventLabel}`;
+      utag[eventType](event);
+      return `Tealium event sent: ${event.ga_eventCategory} - ${event.ga_eventAction} - ${event.ga_eventLabel}`;
     } catch (e) {
       return `Error sending event to Tealium ${e}`;
     }
   } else {
     if (++retry <= MAX_RETRIES) {
-      setTimeout(() => sendAnalytics(event, props, retry), retry * TIMEOUT);
+      setTimeout(() => sendAnalytics(eventType, event, retry), retry * TIMEOUT);
     } else {
       return `Tealium event max retries reached`;
     }
   }
 }
 
-export function sendAnalyticsEvent(
-  overrides: boolean | Record<string, unknown>,
-  defaultPayload: AnalyticsEventProps
-): string {
-  const analyticsDisabled = overrides === false;
-  if (window.utag && !analyticsDisabled) {
-    const mergedPayload = merge(defaultPayload, overrides);
-    const {
-      ga_eventAction,
-      ga_eventCategory,
-      ga_eventLabel,
-      ga_eventType = 'cmsds', // default value
-      ga_eventValue = '', // default value
-      ...other_props
-    } = mergedPayload;
-    const payload: AnalyticsPayload = {
-      ga_eventAction,
-      ga_eventCategory,
-      ga_eventLabel,
-      ga_eventType,
-      ga_eventValue,
-      ...other_props,
-    };
-    return sendAnalytics('link', payload);
-  } else {
-    return '';
-  }
+export function sendLinkEvent(payload: AnalyticsEvent) {
+  return sendAnalytics('link', {
+    ga_eventType: 'cmsds', // default value
+    ga_eventValue: '', // default value
+    ...payload,
+  });
 }
 /* eslint-enable camelcase */
 

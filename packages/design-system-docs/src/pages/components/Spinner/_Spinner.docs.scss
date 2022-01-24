@@ -23,16 +23,16 @@ Use inside buttons
 
 Markup:
 <button class="ds-c-button">
-  <span class="ds-c-spinner ds-c-spinner--small" aria-valuetext="Loading" role="progressbar"></span> Loading
+  <span class="ds-c-spinner ds-c-spinner--small" role="status"></span> Loading
 </button>
 <button class="ds-c-button ds-c-button--primary">
-  <span class="ds-c-spinner ds-c-spinner--small ds-c-spinner--inverse" aria-valuetext="Loading" role="progressbar"></span> Loading
+  <span class="ds-c-spinner ds-c-spinner--small ds-c-spinner--inverse" role="status"></span> Loading
 </button>
 <button class="ds-c-button ds-c-button--outline ds-c-button--big">
-  <span class="ds-c-spinner" aria-valuetext="Loading" role="progressbar"></span> Big button
+  <span class="ds-c-spinner" role="status"></span> Big button
 </button>
 <button class="ds-c-button ds-c-button--success ds-c-button--big">
-  <span class="ds-c-spinner" aria-valuetext="Loading" role="progressbar"></span> Big green button
+  <span class="ds-c-spinner" role="status"></span> Big green button
 </button>
 
 Style guide: components.spinner.buttons
@@ -47,13 +47,13 @@ Markup:
 <div class="ds-u-fill--background-inverse ds-u-color--base-inverse ds-u-padding--2" style="position: relative">
   <p>{{lorem-l}}</p>
   <div class="ds-u-display--flex ds-u-justify-content--center ds-u-align-items--center" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0">
-    <span class="ds-c-spinner ds-c-spinner--filled" aria-valuetext="Loading" role="progressbar"></span>
+    <span class="ds-c-spinner ds-c-spinner--filled" role="status"><span class="ds-u-visibility--screen-reader">Loading</span></span>
   </div>
 </div>
 <div class="ds-u-padding--2" style="position: relative">
   <p>{{lorem-l}}</p>
   <div class="ds-u-display--flex ds-u-justify-content--center ds-u-align-items--center" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0">
-    <span class="ds-c-spinner ds-c-spinner--filled ds-u-fill--background-inverse ds-u-color--base-inverse" aria-valuetext="Loading" role="progressbar"></span>
+    <span class="ds-c-spinner ds-c-spinner--filled ds-c-spinner--inverse" role="status"><span class="ds-u-visibility--screen-reader">Loading</span></span>
   </div>
 </div>
 

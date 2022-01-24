@@ -1,4 +1,4 @@
-import Button from './Button';
+import Button, { ButtonProps } from './Button';
 import React from 'react';
 import { shallow } from 'enzyme';
 
@@ -7,31 +7,35 @@ const Link = (props) => {
   return <div {...props}>{props.children}</div>;
 };
 
-describe('Button', () => {
-  const buttonText = 'Foo';
+const defaultProps = {
+  children: 'Foo',
+};
 
+function renderButton(props: Partial<ButtonProps> = {}) {
+  return shallow(<Button {...defaultProps} {...props} />);
+}
+
+describe('Button', () => {
   it('renders as button', () => {
-    const wrapper = shallow(<Button>{buttonText}</Button>);
+    const wrapper = renderButton();
     expect(wrapper.is('button')).toBe(true);
     expect(wrapper.prop('type')).toBe('button');
     expect(wrapper).toMatchSnapshot();
   });
 
   it('renders as submit button', () => {
-    const props = { type: 'submit' };
-    const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
+    const wrapper = renderButton({ type: 'submit' });
     expect(wrapper.is('button')).toBe(true);
     expect(wrapper.prop('type')).toBe('submit');
     expect(wrapper).toMatchSnapshot();
   });
 
   it('renders as an anchor with custom prop', () => {
-    const props = {
+    const wrapper = renderButton({
       href: '/example',
       target: '_blank',
       type: 'submit',
-    };
-    const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
+    });
     expect(wrapper.is('a')).toBe(true);
     expect(wrapper.prop('href')).toBe('/example');
     expect(wrapper.prop('target')).toBe('_blank');
@@ -40,49 +44,43 @@ describe('Button', () => {
   });
 
   it('renders as a Link', () => {
-    const props = {
+    const wrapper = renderButton({
       component: Link,
       type: 'submit',
-    };
-    const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
+    });
     expect(wrapper.is('Link')).toBe(true);
     expect(wrapper.hasClass('ds-c-button')).toBe(true);
-    expect(wrapper.render().text()).toBe(buttonText);
+    expect(wrapper.render().text()).toBe(defaultProps.children);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('renders disabled Link correctly', () => {
-    const props = {
+    const wrapper = renderButton({
       href: 'javascript:void(0)',
       disabled: true,
-    };
-    const wrapper = shallow(<Button {...props}>Link button</Button>);
+      children: 'Link button',
+    });
     expect(wrapper.prop('disabled')).not.toBe(true);
     expect(wrapper.hasClass('ds-c-button--disabled')).toBe(true);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('applies additional classes', () => {
-    const props = { className: 'foobar' };
-    const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
+    const wrapper = renderButton({ className: 'foobar' });
     expect(wrapper.hasClass('foobar')).toBe(true);
     expect(wrapper.hasClass('ds-c-button')).toBe(true);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('applies variation classes', () => {
-    const props = { variation: 'primary' };
-    const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
-
+    const wrapper = renderButton({ variation: 'primary' });
     expect(wrapper.hasClass('ds-c-button')).toBe(true);
     expect(wrapper.hasClass('ds-c-button--primary')).toBe(true);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('applies size classes', () => {
-    const props = { size: 'small' };
-    const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
-
+    const wrapper = renderButton({ size: 'small' });
     expect(wrapper.hasClass('ds-c-button')).toBe(true);
     expect(wrapper.hasClass('ds-c-button--small')).toBe(true);
     expect(wrapper).toMatchSnapshot();
@@ -91,8 +89,7 @@ describe('Button', () => {
   it('applies disabled class', () => {
     const onClick = jest.fn();
     const disabled = true;
-    const props = { onClick, disabled };
-    const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
+    const wrapper = renderButton({ onClick, disabled });
     wrapper.simulate('click');
 
     expect(wrapper.prop('disabled')).toBe(disabled);
@@ -102,13 +99,11 @@ describe('Button', () => {
   });
 
   it('applies disabled, inverse, and variation classes together', () => {
-    const props = {
+    const wrapper = renderButton({
       disabled: true,
       inversed: true,
       variation: 'transparent',
-    };
-    const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
-
+    });
     expect(wrapper.hasClass('ds-c-button--transparent')).toBe(true);
     expect(wrapper.hasClass('ds-c-button--inverse')).toBe(true);
     expect(wrapper.prop('disabled')).toBe(true);
@@ -117,12 +112,10 @@ describe('Button', () => {
   });
 
   it('applies inversed to default/transparent variations', () => {
-    const props = {
+    const wrapper = renderButton({
       inversed: true,
       variation: 'transparent',
-    };
-    const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
-
+    });
     expect(wrapper.hasClass('ds-c-button--inverse')).toBe(true);
     expect(wrapper.hasClass('ds-c-button--transparent')).toBe(true);
     expect(wrapper).toMatchSnapshot();

@@ -2,16 +2,28 @@
 const yargs = require('yargs');
 const { logIntroduction } = require('./gulp/common/logUtil');
 const path = require('path');
-// TODO, clean up script parameters to use the CMSDS config better
-const configFile = require(path.resolve(process.cwd(), 'cmsds.config.js'));
-const configDefaults = require('./configDefaults');
-const config = { ...configDefaults, ...configFile };
+
+const defaultConfigPath = 'cmsds.config.js';
+
+function getConfig() {
+  // TODO, clean up script parameters to use the CMSDS config better
+  const configFile = require(path.resolve(process.cwd(), yargs.argv.config || defaultConfigPath));
+  const configDefaults = require('./configDefaults');
+  const config = { ...configDefaults, ...configFile };
+  return config;
+}
+const config = getConfig();
 
 // The yargs library actually made it so you have to access `.argv` at the end
 // or else it won't do anything. Not sure what the reasoning there was.
 // eslint-disable-next-line no-unused-expressions
 yargs
   .usage('Usage: $0 <command> [options]')
+  .option('config', {
+    desc: 'The relative path to the CMSDS config file',
+    type: 'boolean',
+    default: defaultConfigPath,
+  })
   .command({
     command: '*',
     handler: () => {
@@ -161,8 +173,8 @@ yargs
     },
   })
   .command({
-    command: 'test:e2e <directory>',
-    desc: 'Runs e2e tests in a directory.',
+    command: 'test:a11y <directory>',
+    desc: 'Runs a11y tests in a directory.',
     builder: (yargs) => {
       yargs
         .positional('directory', {
@@ -171,12 +183,13 @@ yargs
           demandOption: true,
         })
         .option('skipBuild', {
-          desc: 'Use this flag to skip rebuilding the documentation site before running e2e tests.',
+          desc:
+            'Use this flag to skip rebuilding the documentation site before running a11y tests.',
           type: 'boolean',
           default: false,
         })
         .option('headless', {
-          desc: 'Runs e2e tests with headless chrome browser testing.',
+          desc: 'Runs a11y tests with headless chrome browser testing.',
           type: 'boolean',
           default: true,
         })
@@ -189,13 +202,24 @@ yargs
     },
     handler: async (argv) => {
       const { run } = require('jest');
-      const e2eConfig = require('./jest/e2e.config.js');
+      const a11yConfig = require('./jest/a11y.config.js');
 
       process.env.NODE_ENV = 'test';
       process.env.BUILD_PATH = argv.buildPath;
       process.env.SKIP_BUILD = argv.skipBuild;
       process.env.HEADLESS = argv.headless;
-      run(['--config', JSON.stringify(e2eConfig(argv.directory))]);
+
+      if (config.monorepo && !config.core) {
+        // TODO: This is really ugly, but soon we'll decouple browser tests from the
+        // docs site entirely, and a lot of this code can be deleted.
+        const command =
+          config.rootPath === 'design-system/healthcare'
+            ? 'build-docs:healthcare'
+            : 'build-docs:medicare';
+        process.env.BUILD_COMMAND = `yarn ${command} --skipLatest --ignoreRootPath`;
+      }
+
+      run(['--config', JSON.stringify(a11yConfig(argv.directory))]);
     },
   })
   .command({

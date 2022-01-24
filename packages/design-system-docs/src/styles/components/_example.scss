@@ -36,6 +36,15 @@
   margin-top: $spacer-3;
   padding: $spacer-2;
 }
+
+.example--autocomplete {
+  .ds-c-autocomplete__search-all.ds-c-autocomplete__list-item--active {
+    a {
+      color: $color-white;
+      text-decoration-color: $color-white;
+    }
+  }
+}
 // stylelint-enable
 
 // Visualize grid layout

@@ -1,6 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 
+export type SpinnerSize = 'small' | 'big';
+
 export interface SpinnerProps {
   /**
    * The text announced to screen readers
@@ -26,24 +28,28 @@ export interface SpinnerProps {
   /**
    * Smaller or larger variant
    */
-  size?: 'small' | 'big';
+  size?: SpinnerSize;
 }
 
 export const Spinner: React.FunctionComponent<SpinnerProps> = (props: SpinnerProps) => {
   const className = classNames(
     'ds-c-spinner',
     props.size && `ds-c-spinner--${props.size}`,
-    props.inversed && 'ds-u-fill--background-inverse ds-u-color--base-inverse',
+    props.inversed && 'ds-c-spinner--inverse',
     props.filled && 'ds-c-spinner--filled',
     props.className
   );
 
-  return <span className={className} aria-valuetext={props['aria-valuetext']} role={props.role} />;
+  return (
+    <span className={className} role={props.role}>
+      <span className="ds-u-visibility--screen-reader">{props['aria-valuetext']}</span>
+    </span>
+  );
 };
 
 Spinner.defaultProps = {
   'aria-valuetext': 'Loading',
-  role: 'progressbar',
+  role: 'status',
 };
 
 export default Spinner;

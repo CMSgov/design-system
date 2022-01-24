@@ -1,6 +1,6 @@
-import { sendAnalyticsEvent } from './SendAnalytics';
+import { UtagContainer, sendLinkEvent } from './SendAnalytics';
 
-describe('sendAnalyticsEvent', () => {
+describe('sendLinkEvent', () => {
   const gaEventProps = {
     ga_eventType: 'cmsds',
     ga_eventCategory: 'test category',
@@ -12,15 +12,15 @@ describe('sendAnalyticsEvent', () => {
   describe('without utag instance', () => {
     it('does nothing if window.utag does not exist', () => {
       const mock = jest.fn();
-      window.utag = undefined;
-      sendAnalyticsEvent({}, gaEventProps);
+      ((window as any) as UtagContainer).utag = undefined;
+      sendLinkEvent(gaEventProps);
       expect(mock).not.toHaveBeenCalled();
     });
   });
 
   describe('with Utag instance', () => {
     beforeEach(() => {
-      window.utag = {
+      ((window as any) as UtagContainer).utag = {
         link: jest.fn(),
       };
     });
@@ -29,23 +29,9 @@ describe('sendAnalyticsEvent', () => {
       jest.resetAllMocks();
     });
 
-    it('calls window.utag.link with default props', () => {
-      sendAnalyticsEvent({}, gaEventProps);
-      expect(window.utag?.link).toHaveBeenCalledWith(gaEventProps);
-    });
-
-    it('calls window.utag.link with extra props', () => {
-      const gaEventExtraProps = {
-        ga_eventType: 'cmsds',
-        ga_eventCategory: 'test category',
-        ga_eventAction: 'test action',
-        ga_eventLabel: 'test label',
-        ga_eventValue: 'test value',
-        ga_extraProps1: 'test extra props 1',
-        ga_extraProps2: 'test extra props 2',
-      };
-      sendAnalyticsEvent(gaEventExtraProps, gaEventProps);
-      expect(window.utag?.link).toHaveBeenCalledWith(gaEventExtraProps);
+    it('calls window.utag.link with event', () => {
+      sendLinkEvent(gaEventProps);
+      expect(((window as any) as UtagContainer).utag?.link).toHaveBeenCalledWith(gaEventProps);
     });
   });
 
@@ -54,26 +40,24 @@ describe('sendAnalyticsEvent', () => {
       jest.resetAllMocks();
     });
     it('catches errors on failed sendEvent', () => {
-      window.utag = {
+      ((window as any) as UtagContainer).utag = {
         link: jest.fn(() => {
           // eslint-disable-next-line no-throw-literal
           throw 'test event';
         }),
       };
-      expect(sendAnalyticsEvent({}, gaEventProps)).toBe(
-        'Error sending event to Tealium test event'
-      );
+      expect(sendLinkEvent(gaEventProps)).toBe('Error sending event to Tealium test event');
     });
 
     it('retries on missing utag.link', () => {
       const mock = jest.fn();
       jest.useFakeTimers();
 
-      window.utag = { link: undefined };
-      sendAnalyticsEvent({}, gaEventProps);
+      ((window as any) as UtagContainer).utag = { link: undefined };
+      sendLinkEvent(gaEventProps);
       expect(mock).not.toHaveBeenCalled();
 
-      window.utag = { link: mock };
+      ((window as any) as UtagContainer).utag = { link: mock };
       jest.runAllTimers();
       expect(mock).toHaveBeenCalled();
     });
@@ -81,8 +65,8 @@ describe('sendAnalyticsEvent', () => {
     it('stops retry eventually', () => {
       jest.useFakeTimers();
 
-      window.utag = { link: undefined };
-      expect(sendAnalyticsEvent({}, gaEventProps)).toBe(undefined);
+      ((window as any) as UtagContainer).utag = { link: undefined };
+      expect(sendLinkEvent(gaEventProps)).toBe(undefined);
 
       jest.runAllTimers();
       jest.runAllTimers();

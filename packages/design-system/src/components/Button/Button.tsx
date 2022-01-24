@@ -1,7 +1,16 @@
 import React from 'react';
 import classNames from 'classnames';
 
-export interface ButtonProps {
+export type ButtonComponent = React.ReactElement<any> | any | ((...args: any[]) => any);
+export type ButtonSize = 'small' | 'big';
+export type ButtonType = 'button' | 'submit';
+/**
+ * A string corresponding to the button-component variation classes.
+ * The danger variation is deprecated and will be removed in a future release.
+ */
+export type ButtonVariation = 'primary' | 'danger' | 'success' | 'transparent';
+
+type CommonButtonProps<T> = {
   /**
    * Label text or HTML
    */
@@ -15,13 +24,8 @@ export interface ButtonProps {
    * When provided, this will render the passed in component. This is useful when
    * integrating with React Router's `<Link>` or using your own custom component.
    */
-  component?: React.ReactElement<any> | any | ((...args: any[]) => any);
+  component?: T;
   disabled?: boolean;
-  /**
-   * When provided the root component will render as an `<a>` element
-   * rather than `button`.
-   */
-  href?: string;
   /**
    * Access a reference to the `button` or `a` element
    */
@@ -37,23 +41,35 @@ export interface ButtonProps {
    * Not called when the button is disabled.
    */
   onClick?: (...args: any[]) => any;
-  size?: 'small' | 'big';
+  size?: ButtonSize;
   /**
    * Button [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type) attribute
    */
-  type?: 'button' | 'submit';
+  type?: ButtonType;
   /**
    * A string corresponding to the button-component variation classes.
    * The `'danger'` variation is deprecated and will be removed in a future release.
    */
-  variation?: 'primary' | 'danger' | 'success' | 'transparent';
-}
+  variation?: ButtonVariation;
+};
 
-type OmitProps = 'children' | 'className' | 'onClick' | 'ref' | 'size' | 'type';
+type OmitProps = 'children' | 'className' | 'onClick' | 'ref' | 'size' | 'type' | 'href';
 
-export default class Button extends React.PureComponent<
-  Omit<React.ComponentPropsWithRef<'button' | 'a'>, OmitProps> & ButtonProps
-> {
+type LinkButtonProps = CommonButtonProps<'a'> &
+  Omit<React.ComponentPropsWithRef<'a'>, OmitProps> & {
+    /**
+     * When provided the root component will render as an `<a>` element
+     * rather than `button`.
+     */
+    href?: string; // Still optional because it's optional on the anchor tag
+  };
+
+type ButtonButtonProps = CommonButtonProps<'button'> &
+  Omit<React.ComponentPropsWithRef<'button'>, OmitProps>;
+
+export type ButtonProps = CommonButtonProps<ButtonComponent> | LinkButtonProps | ButtonButtonProps;
+
+export class Button extends React.PureComponent<ButtonProps> {
   static defaultProps = {
     type: 'button',
     component: 'button',
@@ -109,7 +125,7 @@ export default class Button extends React.PureComponent<
       attrs.onClick = this.handleClick;
     }
 
-    if (component !== 'button' || this.props.href) {
+    if (component !== 'button' || (this.props as LinkButtonProps).href) {
       // Assume `component` is not a <button> and remove <button> specific attributes
       attrs.role = 'button';
       delete attrs.disabled;
@@ -122,7 +138,7 @@ export default class Button extends React.PureComponent<
   componentType(): string {
     let component = this.props.component;
 
-    if (component === 'button' && this.props.href) {
+    if (component === 'button' && (this.props as LinkButtonProps).href) {
       // If `href` is provided and a custom component is not, we render `<a>` instead
       component = 'a';
     }
@@ -162,7 +178,7 @@ export default class Button extends React.PureComponent<
     }
   }
 
-  public render(): React.ReactNode {
+  public render() {
     const attrs = this.attrs();
     const ComponentType = this.componentType();
 
@@ -177,3 +193,5 @@ export default class Button extends React.PureComponent<
     );
   }
 }
+
+export default Button;

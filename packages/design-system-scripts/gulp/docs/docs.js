@@ -32,7 +32,7 @@ module.exports = {
     await generatePages(sourceDir, docsDir, options);
     await compileDocsSass(docsDir, options);
     await runWebpackStatically(sourceDir, docsDir, options);
-    logTask('✅ ', 'Docs generation succeeded');
+    logTask('✅ ', 'Docs generation succeeded', true);
     log('');
   },
   generatePages,

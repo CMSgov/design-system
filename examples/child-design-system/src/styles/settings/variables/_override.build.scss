@@ -5,9 +5,3 @@
 // Paths to images and fonts relative from the SCSS entry point
 $font-path: './fonts';
 $image-path: './images';
-
-// Set $ds-include-base-html-rulesets to enable applying styles directly to HTML elements (i.e. <a>)
-$ds-include-base-html-rulesets: true;
-
-// Set $ds-include-focus-styles to enable the CMSDS focus styles.
-$ds-include-focus-styles: true;
