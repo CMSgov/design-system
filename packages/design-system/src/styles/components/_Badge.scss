@@ -37,14 +37,12 @@ $badge-font-size-big: $base-font-size;
   background-color: $color-primary;
 
   @include badge-high-contrast-mode-remove-color;
-  @include high-contrast-mode-label-add('Notice');
 }
 
 .ds-c-badge--success {
   background-color: $color-success;
 
   @include badge-high-contrast-mode-remove-color;
-  @include high-contrast-mode-label-add('Success');
 }
 
 .ds-c-badge--warn {
@@ -52,12 +50,10 @@ $badge-font-size-big: $base-font-size;
   color: $color-base;
 
   @include badge-high-contrast-mode-remove-color;
-  @include high-contrast-mode-label-add('Warning');
 }
 
 .ds-c-badge--alert {
   background-color: $color-error;
 
   @include badge-high-contrast-mode-remove-color;
-  @include high-contrast-mode-label-add('Alert');
 }
