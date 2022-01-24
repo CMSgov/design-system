@@ -25,6 +25,21 @@
   visibility: hidden !important;
 }
 
+.ds-u-visibility--high-contrast {
+  display: none !important;
+
+  /* stylelint-disable */
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    [lang^='en'] & {
+      display: inline !important;
+    }
+    [lang^='es'] & {
+      display: inline !important;
+    }
+  }
+  /* stylelint-enable */
+}
+
 .ds-u-visibility--visible {
   visibility: visible !important;
 }
