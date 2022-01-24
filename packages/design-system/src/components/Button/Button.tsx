@@ -1,6 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 
+export type CustomButtonComponentType = React.ComponentType<any> | React.FC;
+export type ButtonComponentType = React.ElementType<any> | CustomButtonComponentType;
 export type ButtonSize = 'small' | 'big';
 /**
  * A string corresponding to the button-component variation classes.
@@ -18,7 +20,16 @@ type CommonButtonProps = {
    * Useful for adding utility classes.
    */
   className?: string;
+  /**
+   * When provided, this will render the passed in component. This is useful when
+   * integrating with React Router's `<Link>` or using your own custom component.
+   */
+  component?: ButtonComponentType;
   disabled?: boolean;
+  /**
+   * Button [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type) attribute
+   */
+  href?: string;
   /**
    * Access a reference to the `button` or `a` element
    */
@@ -42,35 +53,25 @@ type CommonButtonProps = {
   variation?: ButtonVariation;
 };
 
-type OmitProps = 'children' | 'className' | 'onClick' | 'ref' | 'size' | 'type' | 'href';
-type PropsOf<T extends ButtonComponentType> = Omit<React.ComponentPropsWithRef<T>, OmitProps>;
+// Collect all the additional properties that one could supply to a button component
+// that will be passed down to whatever element or component is being used. This is
+// generally permissive in order to keep the typing simple at the expense of being
+// more accurate. `OtherProps` is generic so that we can extract any props from a
+// custom component that is being passed in. I'm trying to keep most of the complexity
+// in this section and leave the `ButtonProps` definition simpler. - PW
+//
+// Extend is a utility type that works like `Object.assign` where properties defined
+// on the latter type `N` override properties defined on the former type `M`
+type Extend<M, N> = Omit<M, Extract<keyof M, keyof N>> & N;
+type OtherProps<T extends ButtonComponentType> = Omit<
+  // Get all possible HTML attributes and override with any more specific props from
+  // the possibly custom component type `T`
+  Extend<React.HTMLAttributes<HTMLElement>, React.ComponentPropsWithRef<T>>,
+  // And omit any properties that we're defining on our own `CommonButtonProps`
+  keyof CommonButtonProps
+>;
 
-export type CustomButtonComponentType = React.ComponentType<any> | React.FC;
-export type ButtonComponentType = React.ElementType<any> | CustomButtonComponentType;
-export type NonAnchorButtonComponentType =
-  | CustomButtonComponentType
-  | React.ElementType<Exclude<string, 'a' | 'button'>>;
-
-type LinkTypeButtonProps = {
-  component?: 'a';
-  href: string;
-};
-type DefaultButtonTypeButtonProps = {
-  component?: 'button';
-  href?: undefined | null;
-};
-type OtherTypeButtonProps<T extends NonAnchorButtonComponentType> = {
-  component: T;
-  href?: undefined | null;
-};
-
-export type ButtonProps<T extends ButtonComponentType> = PropsOf<T> &
-  CommonButtonProps &
-  (
-    | LinkTypeButtonProps
-    | DefaultButtonTypeButtonProps
-    | (T extends NonAnchorButtonComponentType ? OtherTypeButtonProps<T> : never)
-  );
+export type ButtonProps<T extends ButtonComponentType> = CommonButtonProps & OtherProps<T>;
 
 export const Button = <T extends ButtonComponentType>(props: ButtonProps<T>) => {
   if (process.env.NODE_ENV !== 'production') {
