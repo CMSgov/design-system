@@ -1,8 +1,8 @@
-import Button, { ButtonProps, ButtonComponentType } from '../Button/Button';
+import Button, { ButtonProps } from '../Button/Button';
 import React, { useEffect, useRef } from 'react';
 import classNames from 'classnames';
 
-export type DrawerToggleProps<T extends ButtonComponentType> = ButtonProps<T> & {
+export type DrawerToggleProps = ButtonProps & {
   /**
    * Determines if Drawer is open or closed.
    * This value is used to re-focus the toggle that opened the drawer when the drawer closes.
@@ -30,14 +30,14 @@ export type DrawerToggleProps<T extends ButtonComponentType> = ButtonProps<T> & 
 /**
  * A link that triggers the visibility of a drawer
  */
-export const DrawerToggle = <T extends ButtonComponentType>({
+export const DrawerToggle = ({
   className,
   children,
   inline,
   showDrawer,
   drawerOpen,
   ...others
-}: DrawerToggleProps<T>): React.ReactElement => {
+}: DrawerToggleProps): React.ReactElement => {
   const buttonRef = useRef(null);
 
   useEffect(() => {
