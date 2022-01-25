@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/design-system-scripts",
-  "version": "2.13.0",
+  "version": "3.0.0-beta.1",
   "publishConfig": {
     "access": "public",
     "tag": "latest"
@@ -34,7 +34,7 @@
     "browser-sync": "2.26.7",
     "bytes": "3.1.0",
     "chalk": "^2.4.2",
-    "chromedriver": "^95.0.0",
+    "chromedriver": "^97.0.0",
     "cli-table2": "^0.2.0",
     "colors": "1.3.3",
     "cssnano": "4.1.10",
@@ -43,7 +43,7 @@
     "ejs": "2.6.2",
     "enzyme": "3.10.0",
     "enzyme-adapter-react-16": "^1.15.6",
-    "enzyme-to-json": "3.3.5",
+    "enzyme-to-json": "3.6.2",
     "fancy-log": "^1.3.3",
     "front-matter": "^2.3.0",
     "glob": "7.1.4",
@@ -102,8 +102,5 @@
     "react": ">=16.0.0",
     "react-dom": ">=16.0.0",
     "stylelint": ">=13.0.0"
-  },
-  "devDependencies": {
-    "babel-plugin-typescript-to-proptypes": "^1.4.2"
   }
 }
