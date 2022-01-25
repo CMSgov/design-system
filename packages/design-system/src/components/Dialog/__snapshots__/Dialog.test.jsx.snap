@@ -27,8 +27,6 @@ Object {
         <Button
           aria-label="Close modal dialog"
           className="ds-c-dialog__close"
-          component="button"
-          type="button"
           variation="danger"
         >
           <CloseIcon />
@@ -240,9 +238,7 @@ exports[`Dialog renders react-aria-modal 1`] = `
                     <Button
                       aria-label="Close modal dialog"
                       className="ds-c-dialog__close"
-                      component="button"
                       onClick={[MockFunction]}
-                      type="button"
                       variation="transparent"
                     >
                       <button
@@ -337,8 +333,6 @@ Object {
         <Button
           aria-label="Close modal dialog"
           className="ds-c-dialog__close"
-          component="button"
-          type="button"
           variation="transparent"
         >
           <CloseIcon />

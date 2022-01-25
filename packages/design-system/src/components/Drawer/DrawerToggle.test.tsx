@@ -3,19 +3,11 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 const defaultProps = {
+  children: <p>content</p>,
   drawerOpen: false,
   inline: false,
   showDrawer: jest.fn(),
 };
-
-function renderDrawerToggle(props: Partial<DrawerToggleProps> = {}) {
-  const wrapper = shallow(
-    <DrawerToggle {...defaultProps} {...props}>
-      <p>content</p>
-    </DrawerToggle>
-  );
-  return { wrapper };
-}
 
 describe('DrawerToggle', () => {
   beforeEach(() => {
@@ -23,33 +15,33 @@ describe('DrawerToggle', () => {
   });
 
   it('renders a button', () => {
-    const { wrapper } = renderDrawerToggle();
+    const wrapper = shallow(<DrawerToggle {...defaultProps} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('calls showDrawer() on toggle click', () => {
-    const { wrapper } = renderDrawerToggle();
+    const wrapper = shallow(<DrawerToggle {...defaultProps} />);
     const toggle = wrapper.find('Button');
     toggle.simulate('click');
     expect(defaultProps.showDrawer).toHaveBeenCalled();
   });
 
   it('applies inline display style via inline prop', () => {
-    const { wrapper } = renderDrawerToggle({ inline: true });
+    const wrapper = shallow(<DrawerToggle {...defaultProps} {...{ inline: true }} />);
     const toggle = wrapper.find('Button');
     expect(toggle.hasClass('ds-c-drawer__toggle--inline')).toBe(true);
   });
 
   it('applies custom class via className prop', () => {
     const className = 'test-class';
-    const { wrapper } = renderDrawerToggle({ className });
+    const wrapper = shallow(<DrawerToggle {...defaultProps} {...{ className }} />);
     const toggle = wrapper.find('Button');
     expect(toggle.props().className).toContain(className);
   });
 
   it('passes through extra props', () => {
     const ariaLabel = 'test';
-    const { wrapper } = renderDrawerToggle({ 'aria-label': ariaLabel });
+    const wrapper = shallow(<DrawerToggle {...defaultProps} {...{ 'aria-label': ariaLabel }} />);
     const toggle = wrapper.find('Button');
     expect(toggle.props()['aria-label']).toBe(ariaLabel);
   });

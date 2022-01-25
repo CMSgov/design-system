@@ -3,10 +3,8 @@
 exports[`DrawerToggle renders a button 1`] = `
 <Button
   className="ds-c-drawer__toggle"
-  component="button"
   inputRef={[Function]}
   onClick={[MockFunction]}
-  type="button"
   variation="transparent"
 >
   <p>
