@@ -2,13 +2,16 @@ import Button, { ButtonProps, ButtonComponentType } from './Button';
 import React from 'react';
 import { shallow } from 'enzyme';
 
-interface LinkProps {
-  children: React.ReactNode;
-  type: 'submit';
-  to: string;
+function mockWarn(testFunction: () => void) {
+  const original = console.warn;
+  const mock = jest.fn();
+  console.warn = mock;
+  testFunction();
+  console.warn = original;
+  return mock;
 }
 
-const Link = (props: LinkProps) => {
+const Link = (props: any) => {
   return <div {...props}>{props.children}</div>;
 };
 
@@ -49,20 +52,21 @@ describe('Button', () => {
   });
 
   it('renders as a custom Link component', () => {
-    const wrapper = shallow(
-      <Button
-        {...defaultProps}
-        {...{
-          component: Link,
-          type: 'submit',
-          to: 'anywhere',
-        }}
-      />
-    );
-    expect(wrapper.is('Link')).toBe(true);
-    expect(wrapper.hasClass('ds-c-button')).toBe(true);
-    expect(wrapper.render().text()).toBe(defaultProps.children);
-    expect(wrapper).toMatchSnapshot();
+    mockWarn(() => {
+      const wrapper = shallow(
+        <Button
+          {...defaultProps}
+          component={Link}
+          type="submit"
+          // @ts-ignore: This custom prop isn't supported
+          to="anywhere"
+        />
+      );
+      expect(wrapper.is('Link')).toBe(true);
+      expect(wrapper.hasClass('ds-c-button')).toBe(true);
+      expect(wrapper.render().text()).toBe(defaultProps.children);
+      expect(wrapper).toMatchSnapshot();
+    });
   });
 
   it('renders disabled link correctly', () => {
@@ -145,5 +149,22 @@ describe('Button', () => {
     expect(wrapper.hasClass('ds-c-button--inverse')).toBe(true);
     expect(wrapper.hasClass('ds-c-button--transparent')).toBe(true);
     expect(wrapper).toMatchSnapshot();
+  });
+
+  it('prints deprecation warning for "component" prop', () => {
+    const mock = mockWarn(() => {
+      shallow(
+        <Button
+          {...defaultProps}
+          component={Link}
+          type="submit"
+          // @ts-ignore: This custom prop isn't supported
+          to="anywhere"
+        />
+      );
+    });
+    expect(mock).toHaveBeenCalledWith(
+      "[Deprecated]: Please remove the 'component' prop in <Button>. This prop will be removed in a future release."
+    );
   });
 });

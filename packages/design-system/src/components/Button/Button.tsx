@@ -102,7 +102,7 @@ export const Button = ({
     }
     if (component) {
       console.warn(
-        `[Deprecated]: Please remove the 'component' prop in <Button>. This prop will be removed in a future release.`
+        "[Deprecated]: Please remove the 'component' prop in <Button>. This prop will be removed in a future release."
       );
     }
   }
