@@ -65,8 +65,8 @@ type CommonButtonProps = {
 // we are deprecating that prop because it's not actually needed and creates
 // unnecessary complexity that we have to maintain.
 type OtherProps = Omit<
-  // All possible HTML attributes
-  React.HTMLAttributes<HTMLElement>,
+  // All other props that could be passed to buttons or anchors
+  React.ComponentPropsWithRef<'button'> & React.ComponentPropsWithRef<'a'>,
   // Omit any properties that we're defining on our own `CommonButtonProps`
   keyof CommonButtonProps
 >;
