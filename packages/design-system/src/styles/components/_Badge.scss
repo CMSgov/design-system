@@ -2,25 +2,14 @@
 
 $badge-font-size-big: $base-font-size;
 
-.ds-c-badge--big {
-  font-size: $badge-font-size-big;
-}
-
-.ds-c-badge--info {
-  background-color: $color-primary;
-}
-
-.ds-c-badge--success {
-  background-color: $color-success;
-}
-
-.ds-c-badge--warn {
-  background-color: $color-warn;
-  color: $color-base;
-}
-
-.ds-c-badge--alert {
-  background-color: $color-error;
+@mixin badge-high-contrast-mode-remove-color() {
+  /* stylelint-disable scss/media-feature-value-dollar-variable */
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    background-color: windowText;
+    color: window;
+    -ms-high-contrast-adjust: none;
+  }
+  /* stylelint-enable scss/media-feature-value-dollar-variable */
 }
 
 .ds-c-badge {
@@ -37,11 +26,34 @@ $badge-font-size-big: $base-font-size;
     margin-right: 0;
   }
 
-  /* stylelint-disable scss/media-feature-value-dollar-variable */
-  @media (-ms-high-contrast: active), (forced-colors: active) {
-    background-color: windowText;
-    color: window;
-    -ms-high-contrast-adjust: none;
-  }
-  /* stylelint-enable scss/media-feature-value-dollar-variable */
+  @include badge-high-contrast-mode-remove-color;
+}
+
+.ds-c-badge--big {
+  font-size: $badge-font-size-big;
+}
+
+.ds-c-badge--info {
+  background-color: $color-primary;
+
+  @include badge-high-contrast-mode-remove-color;
+}
+
+.ds-c-badge--success {
+  background-color: $color-success;
+
+  @include badge-high-contrast-mode-remove-color;
+}
+
+.ds-c-badge--warn {
+  background-color: $color-warn;
+  color: $color-base;
+
+  @include badge-high-contrast-mode-remove-color;
+}
+
+.ds-c-badge--alert {
+  background-color: $color-error;
+
+  @include badge-high-contrast-mode-remove-color;
 }
