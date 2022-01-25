@@ -20,8 +20,9 @@ type CommonButtonProps = {
    */
   className?: string;
   /**
-   * When provided, this will render the passed in component. This is useful when
-   * integrating with React Router's `<Link>` or using your own custom component.
+   * @hide-prop [Deprecated] Support for rendering custom components will be removed
+   * in the next major version. If you need to use React components like react-router
+   * `Link`, try wrapping this component instead.
    */
   component?: ButtonComponentType;
   disabled?: boolean;
@@ -96,7 +97,12 @@ export const Button = ({
     }
     if (variation === 'danger') {
       console.warn(
-        `[Deprecated]: Please remove the 'danger' variation prop in <Button>. This prop has will be removed in a future release.`
+        `[Deprecated]: Please remove the 'danger' variation prop in <Button>. This prop will be removed in a future release.`
+      );
+    }
+    if (component) {
+      console.warn(
+        `[Deprecated]: Please remove the 'component' prop in <Button>. This prop will be removed in a future release.`
       );
     }
   }
