@@ -26,7 +26,8 @@ type CommonButtonProps<T extends ButtonComponentType> = {
   component?: T;
   disabled?: boolean;
   /**
-   * Button [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type) attribute
+   * When provided the root component will render as an `<a>` element
+   * rather than `button`.
    */
   href?: string;
   /**
