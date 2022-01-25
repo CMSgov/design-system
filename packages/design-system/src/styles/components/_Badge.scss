@@ -12,25 +12,6 @@ $badge-font-size-big: $base-font-size;
   /* stylelint-enable scss/media-feature-value-dollar-variable */
 }
 
-@mixin badge-high-contrast-mode-label($label-en, $label-es: null) {
-  /* stylelint-disable */
-  @media (-ms-high-contrast: active), (forced-colors: active) {
-    [lang^='en'] & {
-      &::before {
-        content: $label-en + ': ';
-      }
-    }
-    @if ($label-es != null) {
-      [lang^='es'] & {
-        &::before {
-          content: $label-es + ': ';
-        }
-      }
-    }
-  }
-  /* stylelint-enable */
-}
-
 .ds-c-badge {
   background-color: $color-gray;
   border-radius: $border-radius-pill;
@@ -45,6 +26,22 @@ $badge-font-size-big: $base-font-size;
     margin-right: 0;
   }
 
+  > span {
+    /* stylelint-disable scss/media-feature-value-dollar-variable, declaration-property-value-blacklist */
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      border: none;
+      clip: auto;
+      height: auto;
+      overflow: visible;
+      padding: 0;
+      position: relative;
+      width: auto;
+      // Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1241631
+      word-wrap: normal;
+    }
+    /* stylelint-enable scss/media-feature-value-dollar-variable, declaration-property-value-blacklist */
+  }
+
   @include badge-high-contrast-mode-remove-color;
 }
 
@@ -56,14 +53,12 @@ $badge-font-size-big: $base-font-size;
   background-color: $color-primary;
 
   @include badge-high-contrast-mode-remove-color;
-  @include badge-high-contrast-mode-label('Notice');
 }
 
 .ds-c-badge--success {
   background-color: $color-success;
 
   @include badge-high-contrast-mode-remove-color;
-  @include badge-high-contrast-mode-label('Success');
 }
 
 .ds-c-badge--warn {
@@ -71,12 +66,10 @@ $badge-font-size-big: $base-font-size;
   color: $color-base;
 
   @include badge-high-contrast-mode-remove-color;
-  @include badge-high-contrast-mode-label('Warning');
 }
 
 .ds-c-badge--alert {
   background-color: $color-error;
 
   @include badge-high-contrast-mode-remove-color;
-  @include badge-high-contrast-mode-label('Alert');
 }
