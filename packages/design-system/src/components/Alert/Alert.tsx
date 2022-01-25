@@ -141,6 +141,12 @@ export class Alert extends React.PureComponent<
   headingId: string;
   eventHeadingText: string;
 
+  a11yLabel = {
+    error: 'Alert',
+    warn: 'Warning',
+    success: 'Success',
+  };
+
   heading(): React.ReactElement | void {
     const { headingLevel, heading } = this.props;
     const Heading = `h${headingLevel}`;
@@ -218,7 +224,19 @@ export class Alert extends React.PureComponent<
       >
         {this.getIcon()}
         <div className="ds-c-alert__body">
-          {this.heading()}
+          {heading ? (
+            <div className="ds-c-alert__header ds-c-alert__heading">
+              <span className="ds-c-alert__a11y-label ds-u-visibility--screen-reader">
+                {variation ? this.a11yLabel[variation] : 'Notice'}:{' '}
+              </span>
+              {this.heading()}
+            </div>
+          ) : (
+            <span className="ds-c-alert__a11y-label ds-u-visibility--screen-reader">
+              {variation ? this.a11yLabel[variation] : 'Notice'}:{' '}
+            </span>
+          )}
+
           {children}
         </div>
       </div>

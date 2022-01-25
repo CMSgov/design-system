@@ -21,12 +21,12 @@ describe('Alert', function () {
     expect(wrapper.hasClass('ds-c-alert')).toBe(true);
     expect(wrapper.prop('role')).toBe('region');
     expect($body.length).toBe(1);
-    expect($body.text()).toBe(text);
+    expect($body.text()).toContain(text);
   });
 
   it('renders a heading', () => {
     const { props, wrapper } = render({ heading: 'Error' });
-    const $heading = wrapper.render().find('.ds-c-alert__heading');
+    const $heading = wrapper.render().find('.ds-c-alert__heading').last();
 
     expect($heading.length).toBe(1);
     expect($heading.text()).toBe(props.heading);
