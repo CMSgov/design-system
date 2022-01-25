@@ -1,8 +1,12 @@
 import React from 'react';
 import DrawerToggle, { DrawerToggleProps } from '../Drawer/DrawerToggle';
 import classNames from 'classnames';
+import { ButtonComponentType } from '../Button/Button';
 
-export type HelpDrawerToggleProps = Omit<DrawerToggleProps, 'drawerOpen'> & {
+export type HelpDrawerToggleProps<T extends ButtonComponentType> = Omit<
+  DrawerToggleProps<T>,
+  'drawerOpen'
+> & {
   /**
    * Whether or not the Help Drawer controlled by this toggle is open or closed.
    * This value is used to re-focus the toggle that opened the drawer when the drawer closes.
@@ -18,14 +22,14 @@ export type HelpDrawerToggleProps = Omit<DrawerToggleProps, 'drawerOpen'> & {
  * A link that triggers the visibility of a help drawer
  */
 
-export const HelpDrawerToggle = ({
+export const HelpDrawerToggle = <T extends ButtonComponentType>({
   children,
   className,
   showDrawer,
   helpDrawerOpen,
   icon,
   ...others
-}: HelpDrawerToggleProps) => (
+}: HelpDrawerToggleProps<T>) => (
   <DrawerToggle
     className={classNames(className, 'ds-c-help-drawer__toggle')}
     drawerOpen={helpDrawerOpen}
