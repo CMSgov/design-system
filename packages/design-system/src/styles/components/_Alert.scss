@@ -46,6 +46,13 @@ $alert-link-color-focus: $color-primary-darkest;
     }
   }
 
+  /* stylelint-disable */
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    border: 1px solid windowText;
+    border-left-size: $alert-bar-size;
+  }
+  /* stylelint-enable */
+
   &.ds-c-alert--lightweight {
     background-color: $color-white;
   }
@@ -112,4 +119,12 @@ $alert-link-color-focus: $color-primary-darkest;
 .ds-c-alert--success {
   background-color: $color-success-lightest;
   border-color: $color-success;
+}
+
+.ds-c-alert--heading__hcm {
+  display: flex;
+
+  .ds-c-alert__heading {
+    margin-left: 0.5rem;
+  }
 }
