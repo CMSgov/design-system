@@ -33,7 +33,6 @@
   border-radius: 0;
   border-top: 1px solid $border-color;
   color: $color-base;
-  cursor: pointer;
   display: inline-block;
   font-size: $font-size-sm;
   font-weight: $font-bold;
@@ -100,30 +99,10 @@
     /* stylelint-enable */
   }
 
-  &[aria-disabled='true'] {
-    background-color: $color-gray-lighter;
-    border-color: $color-gray-lighter;
-    color: $color-gray-dark;
-    pointer-events: none;
-
-    &:hover,
-    &:active,
-    &:focus {
-      background-color: $color-gray-lighter;
-      border-color: $color-gray-lighter;
-      color: $color-gray-dark;
-    }
-
-    /* stylelint-disable scss/media-feature-value-dollar-variable */
-    @media (-ms-high-contrast: active), (forced-colors: active) {
-      color: GrayText;
-    }
-    /* stylelint-enable scss/media-feature-value-dollar-variable */
-  }
-
   &:hover {
     color: $color-primary;
   }
+
   /* stylelint-disable max-nesting-depth */
   &:focus {
     @include focus-styles;
@@ -133,6 +112,19 @@
 
   &:active {
     color: $color-primary-darker;
+  }
+
+  &[aria-disabled='true'] {
+    background-color: $color-gray-lighter;
+    border-color: $color-gray-lighter;
+    color: $color-gray-dark;
+
+    /* stylelint-disable scss/media-feature-value-dollar-variable */
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      color: GrayText;
+      cursor: not-allowed;
+    }
+    /* stylelint-enable scss/media-feature-value-dollar-variable */
   }
 
   // SVG icons
