@@ -1,8 +1,24 @@
 import { request } from '@octokit/request';
 import Table from 'cli-table3';
 import chalk from 'chalk';
+import yargs from 'yargs';
 
-const accessToken = process.argv[3];
+const designSystemPackageNames = [
+  '@cmsgov/design-system',
+  '@cmsgov/ds-healthcare-gov',
+  '@cmsgov/ds-medicare-gov',
+  '@cmsgov/design-system-core',
+];
+
+const argv = yargs
+  .option('token', {
+    alias: 't',
+    type: 'string',
+    description: 'GitHub Enterprise personal access token',
+  })
+  .help().argv;
+
+const accessToken = argv.token;
 
 // PR is a Github pull request.
 interface Dependent {
@@ -45,11 +61,12 @@ async function findPackageVersions(packageName: string) {
     const packageData = JSON.parse(fileResponse.data);
     const version =
       packageData.dependencies?.[packageName] ?? packageData.devDependencies?.[packageName];
+
+    // Only if we find the package key in the dependencies is this a valid result. Examples
+    // A common false positive is repos that use other design systems with the string
+    // "design-system" in the package name. Unfortunately the GitHub code-search API doesn't
+    // allow us to search strings the include characters like `@` and `/`
     if (version) {
-      // Only if we find the package key in the dependencies is this a valid result. Examples
-      // A common false positive is repos that use other design systems with the string
-      // "design-system" in the package name. Unfortunately the GitHub code-search API doesn't
-      // allow us to search strings the include characters like `@` and `/`
       dependents.push({
         repo: item.repository.full_name,
         filePath: item.path,
@@ -81,12 +98,7 @@ function printTables(packages: string[], packageDependents: Dependent[][]) {
 }
 
 async function main() {
-  const packages = [
-    '@cmsgov/design-system',
-    '@cmsgov/ds-healthcare-gov',
-    '@cmsgov/ds-medicare-gov',
-    '@cmsgov/design-system-core',
-  ];
+  const packages = designSystemPackageNames;
   let packageDependents: Dependent[][];
 
   try {
