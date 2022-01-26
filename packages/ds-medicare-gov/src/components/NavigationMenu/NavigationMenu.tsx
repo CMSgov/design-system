@@ -50,7 +50,11 @@ export default class NavigationMenu extends React.PureComponent<
             onClick={this.toggleMenu}
             variation="transparent"
           >
-            {this.state.menuOpen ? <Close /> : <MenuIconThin className="ds-c-icon-color--primary" />}
+            {this.state.menuOpen ? (
+              <Close />
+            ) : (
+              <MenuIconThin className="ds-c-icon-color--primary" />
+            )}
           </Button>
         </div>
         <nav role="navigation" id="menu-container" aria-labelledby={this.id} className={navClasses}>
