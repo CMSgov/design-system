@@ -21,12 +21,12 @@ describe('Alert', function () {
     expect(wrapper.hasClass('ds-c-alert')).toBe(true);
     expect(wrapper.prop('role')).toBe('region');
     expect($body.length).toBe(1);
-    expect($body.text()).toBe(text);
+    expect($body.text()).toContain(text);
   });
 
   it('renders a heading', () => {
     const { props, wrapper } = render({ heading: 'Error' });
-    const $heading = wrapper.render().find('.ds-c-alert__heading');
+    const $heading = wrapper.render().find('.ds-c-alert__heading').last();
 
     expect($heading.length).toBe(1);
     expect($heading.text()).toBe(props.heading);
@@ -115,32 +115,26 @@ describe('Alert', function () {
 
     it('sends analytics event tracking', () => {
       render({ variation: 'warn' });
-      setTimeout(() => {
-        expect(tealiumMock).toBeCalledWith({
-          ga_eventType: 'cmsds',
-          ga_eventValue: '',
-          ...defaultEvent,
-        });
-      }, 0);
+      expect(tealiumMock).toBeCalledWith({
+        ga_eventType: 'cmsds',
+        ga_eventValue: '',
+        ...defaultEvent,
+      });
     });
 
     it('disables analytics event tracking', () => {
       render({ heading: 'dialog heading', variation: 'error', analytics: false });
-      setTimeout(() => {
-        expect(tealiumMock).not.toBeCalled();
-      }, 0);
+      expect(tealiumMock).not.toBeCalled();
     });
 
     it('overrides analytics event tracking', () => {
       render({ variation: 'success', analyticsLabelOverride: 'other heading' });
-      setTimeout(() => {
-        expect(tealiumMock).toBeCalledWith(
-          expect.objectContaining({
-            ga_eventLabel: 'other heading',
-            heading: 'other heading',
-          })
-        );
-      }, 0);
+      expect(tealiumMock).toBeCalledWith(
+        expect.objectContaining({
+          ga_eventLabel: 'other heading',
+          heading: 'other heading',
+        })
+      );
     });
   });
 });
