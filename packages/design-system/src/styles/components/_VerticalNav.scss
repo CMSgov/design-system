@@ -148,7 +148,7 @@
 /* stylelint-disable */
 .ds-c-vertical-nav__subnav {
   @media (-ms-high-contrast: active), (forced-colors: active) {
-    margin-left: $spacer-2; // Slight indent
+    margin-left: $spacer-2;
     width: calc(100% - $spacer-2);
   }
 }
