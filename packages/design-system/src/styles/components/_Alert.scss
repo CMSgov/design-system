@@ -58,6 +58,29 @@ $alert-link-color-focus: $color-primary-darkest;
   }
 }
 
+.ds-c-alert__a11y-label {
+  margin-right: 0.5rem;
+
+  /* stylelint-disable */
+  // !important needed to overwrite screen reader utility styles
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    border: none !important;
+    clip: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    position: relative !important;
+    width: auto !important;
+    // Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1241631
+    word-wrap: normal !important;
+  }
+  /* stylelint-enable */
+}
+
+.ds-c-alert__header {
+  display: flex;
+}
+
 .ds-c-alert__icon {
   font-size: $font-size-lg;
   margin-left: $spacer-1;
