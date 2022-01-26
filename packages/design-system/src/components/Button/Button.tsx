@@ -9,7 +9,7 @@ export type ButtonSize = 'small' | 'big';
  */
 export type ButtonVariation = 'primary' | 'danger' | 'success' | 'transparent';
 
-type CommonButtonProps<T extends ButtonComponentType> = {
+type CommonButtonProps = {
   /**
    * Label text or HTML
    */
@@ -20,10 +20,11 @@ type CommonButtonProps<T extends ButtonComponentType> = {
    */
   className?: string;
   /**
-   * When provided, this will render the passed in component. This is useful when
-   * integrating with React Router's `<Link>` or using your own custom component.
+   * @hide-prop [Deprecated] Support for rendering custom components will be removed
+   * in the next major version. If you need to use React components like react-router
+   * `Link`, try wrapping this component instead.
    */
-  component?: T;
+  component?: ButtonComponentType;
   disabled?: boolean;
   /**
    * When provided the root component will render as an `<a>` element
@@ -60,24 +61,20 @@ type CommonButtonProps<T extends ButtonComponentType> = {
 // Collect all the additional properties that one could supply to a button component
 // that will be passed down to whatever element or component is being used. This is
 // generally permissive in order to keep the typing simple at the expense of being
-// more accurate. `OtherProps` is generic so that we can extract any props from a
-// custom component that is being passed in. I'm trying to keep most of the complexity
-// in this section and leave the `ButtonProps` definition simpler. - PW
-//
-// Extend is a utility type that works like `Object.assign` where properties defined
-// on the latter type `N` override properties defined on the former type `M`
-type Extend<M, N> = Omit<M, Extract<keyof M, keyof N>> & N;
-type OtherProps<T extends ButtonComponentType> = Omit<
-  // Get all possible HTML attributes and override with any more specific props from
-  // the possibly custom component type `T`
-  Extend<React.HTMLAttributes<HTMLElement>, React.ComponentPropsWithRef<T>>,
-  // And omit any properties that we're defining on our own `CommonButtonProps`
-  keyof CommonButtonProps<T>
+// more accurate. In a previous version of this, `OtherProps` was generic so that we
+// could extract any props from a custom component that is being passed in; however,
+// we are deprecating that prop because it's not actually needed and creates
+// unnecessary complexity that we have to maintain.
+type OtherProps = Omit<
+  // All other props that could be passed to buttons or anchors
+  React.ComponentPropsWithRef<'button'> & React.ComponentPropsWithRef<'a'>,
+  // Omit any properties that we're defining on our own `CommonButtonProps`
+  keyof CommonButtonProps
 >;
 
-export type ButtonProps<T extends ButtonComponentType> = CommonButtonProps<T> & OtherProps<T>;
+export type ButtonProps = CommonButtonProps & OtherProps;
 
-export const Button = <T extends ButtonComponentType>({
+export const Button = ({
   children,
   className,
   component,
@@ -91,7 +88,7 @@ export const Button = <T extends ButtonComponentType>({
   variation,
   type = 'button',
   ...otherProps
-}: ButtonProps<T>) => {
+}: ButtonProps) => {
   if (process.env.NODE_ENV !== 'production') {
     if (inverse) {
       console.warn(
@@ -100,7 +97,12 @@ export const Button = <T extends ButtonComponentType>({
     }
     if (variation === 'danger') {
       console.warn(
-        `[Deprecated]: Please remove the 'danger' variation prop in <Button>. This prop has will be removed in a future release.`
+        `[Deprecated]: Please remove the 'danger' variation prop in <Button>. This prop will be removed in a future release.`
+      );
+    }
+    if (component) {
+      console.warn(
+        "[Deprecated]: Please remove the 'component' prop in <Button>. This prop will be removed in a future release."
       );
     }
   }
