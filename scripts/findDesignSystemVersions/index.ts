@@ -2,6 +2,7 @@ import { request } from '@octokit/request';
 import Table from 'cli-table3';
 import chalk from 'chalk';
 import yargs from 'yargs';
+import dotenv from 'dotenv';
 
 const designSystemPackageNames = [
   '@cmsgov/design-system',
@@ -18,7 +19,18 @@ const argv = yargs
   })
   .help().argv;
 
-const accessToken = argv.token;
+dotenv.config();
+
+const accessToken = argv.token ?? process.env.GHE_ACCESS_TOKEN;
+if (!accessToken) {
+  console.error(
+    chalk.red(
+      'A GitHub Enterprise personal access token is required. Please provide this as an argument or assign it to GHE_ACCESS_TOKEN in a .env file.'
+    )
+  );
+  yargs.showHelp();
+  process.exit(1);
+}
 
 // PR is a Github pull request.
 interface Dependent {
