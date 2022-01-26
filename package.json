@@ -36,7 +36,8 @@
     "build-storybook:medicare": "STORYBOOK_DS=mgov build-storybook -o storybook-static/medicare",
     "gh-pages": "yarn gh-pages:healthcare && yarn gh-pages:medicare",
     "gh-pages:healthcare": "yarn build-docs:healthcare && gh-pages -d './packages/ds-healthcare-gov/docs/dist' --dest 'healthcare'",
-    "gh-pages:medicare": "yarn build-docs:medicare && gh-pages -d './packages/ds-medicare-gov/docs/dist' --dest 'medicare'"
+    "gh-pages:medicare": "yarn build-docs:medicare && gh-pages -d './packages/ds-medicare-gov/docs/dist' --dest 'medicare'",
+    "scan-versions": "ts-node scripts/findDesignSystemVersions/index.ts"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
