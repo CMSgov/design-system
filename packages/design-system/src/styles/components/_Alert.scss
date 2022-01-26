@@ -48,10 +48,8 @@ $alert-link-color-focus: $color-primary-darkest;
 
   /* stylelint-disable */
   @media (-ms-high-contrast: active), (forced-colors: active) {
-    border-top: 1px solid windowText;
-    border-right: 1px solid windowText;
-    border-bottom: 1px solid windowText;
-    border-left: $alert-bar-size solid windowText;
+    border: 1px solid windowText;
+    border-left-size: $alert-bar-size;
   }
   /* stylelint-enable */
 
