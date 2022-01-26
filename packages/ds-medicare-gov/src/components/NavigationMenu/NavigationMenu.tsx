@@ -1,7 +1,8 @@
 import { Button } from '@cmsgov/design-system';
-import { Close, Hamburger } from '../Icons';
+import { Close } from '../Icons';
 import React from 'react';
 import uniqueId from 'lodash/uniqueId';
+import { MenuIconThin } from '@cmsgov/design-system';
 
 export interface NavigationMenuProps {
   alwaysShowMenuButton?: boolean;
@@ -49,7 +50,7 @@ export default class NavigationMenu extends React.PureComponent<
             onClick={this.toggleMenu}
             variation="transparent"
           >
-            {this.state.menuOpen ? <Close /> : <Hamburger />}
+            {this.state.menuOpen ? <Close /> : <MenuIconThin className="ds-c-icon-color--primary" />}
           </Button>
         </div>
         <nav role="navigation" id="menu-container" aria-labelledby={this.id} className={navClasses}>
