@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { RefObject } from 'react';
 import classNames from 'classnames';
 
 export type ButtonComponentType = React.ElementType<any> | React.ComponentType<any>;
@@ -8,6 +8,8 @@ export type ButtonSize = 'small' | 'big';
  * The danger variation is deprecated and will be removed in a future release.
  */
 export type ButtonVariation = 'primary' | 'danger' | 'success' | 'transparent';
+
+export type ButtonRef = RefObject<any> | ((...args: any[]) => any);
 
 type CommonButtonProps = {
   /**
@@ -34,7 +36,7 @@ type CommonButtonProps = {
   /**
    * Access a reference to the `button` or `a` element
    */
-  inputRef?: (...args: any[]) => any;
+  inputRef?: ButtonRef;
   /**
    * @hide-prop [Deprecated] Use inversed instead
    */
