@@ -7,6 +7,7 @@ const accessToken = process.argv[3];
 // PR is a Github pull request.
 interface Dependent {
   repo: string;
+  filePath: string;
   packageName: string;
   version: string;
 }
@@ -49,7 +50,12 @@ async function findPackageVersions(packageName: string) {
       // A common false positive is repos that use other design systems with the string
       // "design-system" in the package name. Unfortunately the GitHub code-search API doesn't
       // allow us to search strings the include characters like `@` and `/`
-      dependents.push({ repo: item.repository.full_name, packageName, version });
+      dependents.push({
+        repo: item.repository.full_name,
+        filePath: item.path,
+        packageName,
+        version,
+      });
     }
   }
 
@@ -60,7 +66,7 @@ async function findDesignSystemVersions(packages: string[]) {
   return Promise.all(packages.map(findPackageVersions));
 }
 
-// function printCsv(dependents: Dependent[]) {}
+// function printCsv(dependents: Dependent[]) {} print all data to one CSV table
 
 function printTables(packages: string[], packageDependents: Dependent[][]) {
   for (let i = 0; i < packages.length; i++) {
