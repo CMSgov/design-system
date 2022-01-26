@@ -32,7 +32,6 @@ if (!accessToken) {
   process.exit(1);
 }
 
-// PR is a Github pull request.
 interface Dependent {
   repo: string;
   filePath: string;
@@ -41,20 +40,20 @@ interface Dependent {
 }
 
 async function findPackageVersions(packageName: string) {
-  // connect to github
+  // There are two types of requests that we need to set up for GitHub
   const baseUrl = 'https://github.cms.gov/api/v3';
+  const authorization = 'token ' + accessToken;
   const apiRequest = request.defaults({
     baseUrl,
     headers: {
-      authorization: 'token ' + accessToken,
+      authorization,
       accept: 'application/vnd.github.v3.text-match+json',
     },
   });
-
   const requestFile = request.defaults({
     baseUrl,
     headers: {
-      authorization: 'token ' + accessToken,
+      authorization,
       accept: 'application/vnd.github.v3.raw',
     },
   });
