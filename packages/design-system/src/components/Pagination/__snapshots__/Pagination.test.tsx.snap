@@ -48,10 +48,8 @@ exports[`Pagination should render component 1`] = `
   <Button
     aria-label="Previous Page"
     className="ds-c-pagination__nav"
-    component="button"
     href="/test"
     onClick={[Function]}
-    type="button"
     variation="transparent"
   >
     <span
@@ -90,10 +88,8 @@ exports[`Pagination should render component 1`] = `
   <Button
     aria-label="Next Page"
     className="ds-c-pagination__nav"
-    component="button"
     href="/test"
     onClick={[Function]}
-    type="button"
     variation="transparent"
   >
     Next
@@ -117,10 +113,8 @@ exports[`Pagination with compact prop enabled should render compact variant 1`] 
   <Button
     aria-label="Previous Page"
     className="ds-c-pagination__nav"
-    component="button"
     href="/test"
     onClick={[Function]}
-    type="button"
     variation="transparent"
   >
     <span
@@ -148,10 +142,8 @@ exports[`Pagination with compact prop enabled should render compact variant 1`] 
   <Button
     aria-label="Next Page"
     className="ds-c-pagination__nav"
-    component="button"
     href="/test"
     onClick={[Function]}
-    type="button"
     variation="transparent"
   >
     Next

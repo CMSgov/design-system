@@ -4,6 +4,7 @@ import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 
 const defaultProps = {
+  children: <p>content</p>,
   drawerOpen: false,
   inline: false,
   showDrawer: jest.fn(),
@@ -16,7 +17,6 @@ function renderDrawerToggle(props: Partial<DrawerToggleProps> = {}) {
     </DrawerToggle>
   );
 }
-
 describe('DrawerToggle', () => {
   beforeEach(() => {
     defaultProps.showDrawer.mockClear();
