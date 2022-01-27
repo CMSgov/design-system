@@ -41,3 +41,4 @@ node_modules
 /.vscode
 
 storybook-static/
+coverage/
