@@ -1,7 +1,6 @@
 import Drawer from './Drawer';
 import React from 'react';
-import renderer from 'react-test-renderer';
-import { shallow } from 'enzyme';
+import { render, fireEvent, screen } from '@testing-library/react';
 
 const defaultProps = {
   footerBody: (
@@ -15,34 +14,62 @@ const defaultProps = {
   heading: 'Drawer title',
 };
 
-function renderDrawer(props) {
-  props = Object.assign({}, defaultProps, props);
-  const wrapper = shallow(
+function renderDrawer(overwriteProps = {}) {
+  const props = Object.assign({}, defaultProps, overwriteProps);
+  return render(
     <Drawer {...props}>
       <p>content</p>
     </Drawer>
   );
-  return { props, wrapper };
 }
 
 describe('Drawer', () => {
-  it('calls props.onCloseClick on close button click', () => {
-    const onCloseClick = jest.fn();
-    const { wrapper } = renderDrawer({ onCloseClick });
-    const closeBtn = wrapper.find('Button');
-    closeBtn.simulate('click');
-    expect(onCloseClick).toHaveBeenCalled();
+  describe('onCloseClick', () => {
+    it('calls onCloseClick on close button click', () => {
+      const onCloseClick = jest.fn();
+      renderDrawer({ onCloseClick });
+      fireEvent.click(screen.getByText('Close'));
+
+      expect(onCloseClick).toHaveBeenCalled();
+    });
+
+    it('should handle `esc` with focus trap enabled', () => {
+      const onCloseClick = jest.fn();
+      renderDrawer({ onCloseClick, hasFocusTrap: true });
+      fireEvent.keyDown(document, { code: 'Escape' });
+
+      expect(onCloseClick).toHaveBeenCalled();
+    });
+
+    it('should not call onCloseClick for other key presses', () => {
+      const onCloseClick = jest.fn();
+      renderDrawer({ onCloseClick, hasFocusTrap: true });
+      fireEvent.keyDown(document, { code: 'a' });
+
+      expect(onCloseClick).not.toHaveBeenCalled();
+    });
   });
 
-  it('renders a snapshot', () => {
-    const tree = renderer
-      .create(
-        <Drawer {...defaultProps}>
-          <p>content</p>
-        </Drawer>
-      )
-      .toJSON();
+  it('removes event listener on unmount', () => {
+    const onCloseClick = jest.fn();
+    const { unmount } = renderDrawer({ onCloseClick, hasFocusTrap: true });
+    unmount();
+    fireEvent.keyDown(document, { code: 'Escape' });
 
-    expect(tree).toMatchSnapshot();
+    expect(onCloseClick).not.toHaveBeenCalled();
+  });
+
+  describe('renders a snapshot', () => {
+    it('without focus trap', () => {
+      const { asFragment } = renderDrawer();
+
+      expect(asFragment()).toMatchSnapshot();
+    });
+
+    it('with focus trap', () => {
+      const { asFragment } = renderDrawer({ hasFocusTrap: true });
+
+      expect(asFragment()).toMatchSnapshot();
+    });
   });
 });
