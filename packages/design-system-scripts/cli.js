@@ -154,7 +154,7 @@ yargs
         .option('collectCoverage', {
           desc: 'outputs test coverage data',
           type: 'boolean',
-          default: true
+          default: true,
         });
     },
     handler: async (argv) => {
