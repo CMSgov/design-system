@@ -150,6 +150,11 @@ yargs
           alias: 'w',
           type: 'boolean',
           default: false,
+        })
+        .option('collectCoverage', {
+          desc: 'outputs test coverage data',
+          type: 'boolean',
+          default: true,
         });
     },
     handler: async (argv) => {
