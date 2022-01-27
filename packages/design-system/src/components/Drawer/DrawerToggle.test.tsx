@@ -1,6 +1,6 @@
 import DrawerToggle, { DrawerToggleProps } from './DrawerToggle';
 import React from 'react';
-import { shallow } from 'enzyme';
+// import { shallow } from 'enzyme';
 import { render, fireEvent, screen } from '@testing-library/react';
 
 const defaultProps = {
@@ -10,40 +10,57 @@ const defaultProps = {
   showDrawer: jest.fn(),
 };
 
+function renderDrawerToggle(props: Partial<DrawerToggleProps> = {}) {
+  return render(
+    <DrawerToggle {...defaultProps} {...props}>
+      <p>content</p>
+    </DrawerToggle>
+  );
+}
 describe('DrawerToggle', () => {
   beforeEach(() => {
     defaultProps.showDrawer.mockClear();
   });
 
   it('renders a button', () => {
-    const wrapper = shallow(<DrawerToggle {...defaultProps} />);
-    expect(wrapper).toMatchSnapshot();
+    const { asFragment } = renderDrawerToggle();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('calls showDrawer() on toggle click', () => {
-    const wrapper = shallow(<DrawerToggle {...defaultProps} />);
-    const toggle = wrapper.find('Button');
-    toggle.simulate('click');
+    renderDrawerToggle();
+    fireEvent.click(screen.getByRole('button'));
     expect(defaultProps.showDrawer).toHaveBeenCalled();
   });
 
   it('applies inline display style via inline prop', () => {
-    const wrapper = shallow(<DrawerToggle {...defaultProps} {...{ inline: true }} />);
-    const toggle = wrapper.find('Button');
-    expect(toggle.hasClass('ds-c-drawer__toggle--inline')).toBe(true);
+    renderDrawerToggle({ inline: true });
+    const toggle = screen.getByRole('button');
+    expect(toggle.classList.contains('ds-c-drawer__toggle--inline')).toBe(true);
   });
 
   it('applies custom class via className prop', () => {
     const className = 'test-class';
-    const wrapper = shallow(<DrawerToggle {...defaultProps} {...{ className }} />);
-    const toggle = wrapper.find('Button');
-    expect(toggle.props().className).toContain(className);
+    renderDrawerToggle({ className });
+    const toggle = screen.getByRole('button');
+    expect(toggle.classList).toContain(className);
   });
 
   it('passes through extra props', () => {
     const ariaLabel = 'test';
-    const wrapper = shallow(<DrawerToggle {...defaultProps} {...{ 'aria-label': ariaLabel }} />);
-    const toggle = wrapper.find('Button');
-    expect(toggle.props()['aria-label']).toBe(ariaLabel);
+    renderDrawerToggle({ 'aria-label': ariaLabel });
+    const toggle = screen.getByRole('button');
+    expect(toggle.getAttribute('aria-label')).toBe(ariaLabel);
+  });
+
+  it('focuses button when drawer is closed', () => {
+    const { rerender } = renderDrawerToggle({ drawerOpen: true });
+    rerender(
+      <DrawerToggle {...defaultProps} drawerOpen={false}>
+        <p>content</p>
+      </DrawerToggle>
+    );
+    const toggle = screen.getByRole('button');
+    expect(toggle).toEqual(document.activeElement);
   });
 });
