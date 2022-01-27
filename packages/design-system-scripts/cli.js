@@ -150,6 +150,11 @@ yargs
           alias: 'w',
           type: 'boolean',
           default: false,
+        })
+        .option('collectCoverage', {
+          desc: 'outputs test coverage data',
+          type: 'boolean',
+          default: true
         });
     },
     handler: async (argv) => {
@@ -163,6 +168,7 @@ yargs
         ...(argv.updateSnapshot ? ['--updateSnapshot'] : []),
         ...(argv.watch ? ['--watch'] : []),
         ...(argv.filePath ? [argv.filePath] : []),
+        ...(argv.collectCoverage ? ['--collectCoverage'] : []),
       ]);
     },
   })
