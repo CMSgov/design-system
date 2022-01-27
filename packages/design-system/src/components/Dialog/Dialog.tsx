@@ -409,7 +409,7 @@ export const Dialog = (props: DialogProps) => {
             }
           </Button>
         </header>
-        <main role="main">
+        <main role="main" className="ds-c-dialog__body">
           <div id="dialog-content">{children}</div>
         </main>
         {actions && (

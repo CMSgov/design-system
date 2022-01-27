@@ -34,6 +34,12 @@ $dialog-spacer: $spacer-4;
   padding-bottom: $spacer-1;
 }
 
+.ds-c-dialog__body {
+  overflow-wrap: break-word;
+  // IE fallback
+  word-wrap: break-word;
+}
+
 .ds-c-dialog__actions {
   margin-top: $spacer-3;
 }
@@ -46,6 +52,12 @@ $dialog-spacer: $spacer-4;
     font-size: 13px;
     margin-right: 4px;
   }
+
+  /* stylelint-disable scss/media-feature-value-dollar-variable */
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    padding: $spacer-half $spacer-2;
+  }
+  /* stylelint-enable scss/media-feature-value-dollar-variable */
 }
 
 .ds-c-dialog-wrap {

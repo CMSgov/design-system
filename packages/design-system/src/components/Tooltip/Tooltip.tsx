@@ -10,7 +10,7 @@ import CSSTransition from 'react-transition-group/CSSTransition';
 import FocusTrap from 'focus-trap-react';
 import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import classNames from 'classnames';
-import { createPopper } from '@popperjs/core';
+import { createPopper, Placement } from '@popperjs/core';
 import uniqueId from 'lodash/uniqueId';
 
 export interface TooltipProps {
@@ -62,7 +62,7 @@ export interface TooltipProps {
   /**
    * Placement of the tooltip body relative to the trigger. See the [`popperjs` docs](https://popper.js.org/docs/v2/constructors/#options) for more info.
    */
-  placement?: 'auto' | 'bottom' | 'top' | 'right' | 'left';
+  placement?: Placement;
   /**
    * `maxWidth` styling applied to the tooltip body
    */
