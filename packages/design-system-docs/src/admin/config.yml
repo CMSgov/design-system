@@ -39,7 +39,7 @@ collections:
       - { label: "Order", name: "weight", widget: "number" }
       - { label: "Body", name: "body", widget: "markdown" }
 
-  # From example site, this is how we can configure individual pages that have uique structures
+  # From example site, this is how we can configure individual pages that have unique structures
   # - name: "pages"
   #   label: "Pages"
   #   files:
