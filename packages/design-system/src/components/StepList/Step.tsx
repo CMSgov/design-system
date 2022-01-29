@@ -30,9 +30,9 @@ export interface StepProps {
   editText: string;
   resumeText: string;
   startText: string;
-  actionsLabelText?: string;
-  descriptionLabelText?: string;
-  substepsLabelText?: string;
+  actionsLabelText: string;
+  descriptionLabelText: string;
+  substepsLabelText: string;
 }
 
 export const Step = ({ step, ...props }: StepProps) => {
