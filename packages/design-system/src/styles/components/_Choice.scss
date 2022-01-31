@@ -107,6 +107,17 @@ $ds-c-inset-border-width: $spacer-half;
       background-color: $choice-disabled-background-color;
       border-color: $choice-disabled-border-color;
     }
+
+    /* stylelint-disable */
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      color: GrayText;
+
+      &::before {
+        background-color: Window;
+        border-color: GrayText;
+      }
+    }
+    /* stylelint-enable */
   }
 
   // Focused choice

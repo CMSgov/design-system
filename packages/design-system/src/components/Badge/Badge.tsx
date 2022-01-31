@@ -33,8 +33,18 @@ export const Badge: React.FC<React.ComponentPropsWithRef<'span'> & BadgeProps> =
   const variationClass = variation && `ds-c-badge--${variation}`;
   const classes = classNames('ds-c-badge', variationClass, sizeClasses[size], className);
 
+  const a11yLabel = {
+    info: 'Notice',
+    success: 'Success',
+    warn: 'Warning',
+    alert: 'Alert',
+  };
+
   return (
     <span className={classes} {...others}>
+      {a11yLabel[variation] && (
+        <span className="ds-u-visibility--screen-reader">{a11yLabel[variation]}: </span>
+      )}
       {children}
     </span>
   );
