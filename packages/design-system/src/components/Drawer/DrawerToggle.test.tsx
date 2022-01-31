@@ -1,6 +1,7 @@
 import DrawerToggle, { DrawerToggleProps } from './DrawerToggle';
 import React from 'react';
 import { shallow } from 'enzyme';
+import { render, fireEvent, screen } from '@testing-library/react';
 
 const defaultProps = {
   children: <p>content</p>,

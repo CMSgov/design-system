@@ -23,7 +23,6 @@
   text-decoration: none;
 
   /* stylelint-disable selector-max-specificity */
-
   &:hover,
   &.ds-c-button--hover,
   &:hover &:focus,
@@ -38,6 +37,7 @@
     @include focus-styles;
     text-decoration: none;
   }
+
   // Removes inner outline on buttons in Firefox.
   &::-moz-focus-inner {
     border: 0;
@@ -151,6 +151,7 @@
     border-color: rgba($border-color-inverse, 0.6);
     color: rgba($color-base-inverse, 0.6);
   }
+
   // Make sure active overrides focus styles
   &:active:focus,
   &.ds-c-button--active:focus {
@@ -273,3 +274,50 @@ $button-color-variants: (
     }
   }
 }
+
+/* stylelint-disable */
+@media (-ms-high-contrast: active), (forced-colors: active) {
+  .ds-c-button {
+    &:hover,
+    &.ds-c-button--hover,
+    &:active,
+    &.ds-c-button--active {
+      text-decoration: underline;
+    }
+
+    &:disabled,
+    &.ds-c-button--disabled {
+      border-color: GrayText;
+      color: GrayText;
+    }
+
+    &:is(button:disabled) {
+      cursor: not-allowed;
+      pointer-events: initial;
+    }
+
+    &,
+    &:disabled,
+    &.ds-c-button--disabled {
+      text-decoration: none;
+    }
+
+    &.ds-c-button--transparent {
+      border: 0;
+
+      &:hover,
+      &.ds-c-button--hover,
+      &:active,
+      &.ds-c-button--active {
+        text-decoration: none;
+      }
+
+      &,
+      &:disabled,
+      &.ds-c-button--disabled {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+/* stylelint-enable */

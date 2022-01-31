@@ -42,17 +42,12 @@
     "@types/webpack": "^4.41.6",
     "@typescript-eslint/eslint-plugin": "^2.21.0",
     "@typescript-eslint/parser": "^2.21.0",
-    "babel-plugin-typescript-to-proptypes": "^2.0.0",
-    "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-config-react": "^1.1.7",
     "eslint-plugin-compat": "^3.5.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.18.3",
-    "eslint-plugin-react-hooks": "^2.4.0",
-    "lint-staged": "^10.0.8",
-    "prettier": "^2.0.5",
-    "stylelint": "^13.3.2"
+    "eslint-plugin-react-hooks": "^2.4.0"
   }
 }

@@ -168,6 +168,7 @@ yargs
         ...(argv.updateSnapshot ? ['--updateSnapshot'] : []),
         ...(argv.watch ? ['--watch'] : []),
         ...(argv.filePath ? [argv.filePath] : []),
+        ...(argv.collectCoverage ? ['--collectCoverage'] : []),
       ]);
     },
   })

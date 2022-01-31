@@ -58,10 +58,10 @@ export const Drawer = (props: DrawerProps) => {
   }
 
   useEffect(() => {
-    if (props.hasFocusTrap) document.addEventListener('keydown', (evt) => handleEscapeKey(evt));
+    if (props.hasFocusTrap) document.addEventListener('keydown', handleEscapeKey);
     if (headingRef) headingRef.current.focus();
 
-    return () => document.removeEventListener('keydown', (evt) => handleEscapeKey(evt));
+    return () => document.removeEventListener('keydown', handleEscapeKey);
   }, []);
 
   const Heading = `h${props.headingLevel}` as const;
