@@ -26,6 +26,22 @@ $badge-font-size-big: $base-font-size;
     margin-right: 0;
   }
 
+  > span {
+    /* stylelint-disable scss/media-feature-value-dollar-variable, declaration-property-value-blacklist */
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      border: none;
+      clip: auto;
+      height: auto;
+      overflow: visible;
+      padding: 0;
+      position: relative;
+      width: auto;
+      // Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1241631
+      word-wrap: normal;
+    }
+    /* stylelint-enable scss/media-feature-value-dollar-variable, declaration-property-value-blacklist */
+  }
+
   @include badge-high-contrast-mode-remove-color;
 }
 

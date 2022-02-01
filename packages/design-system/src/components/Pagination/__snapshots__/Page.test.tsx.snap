@@ -4,10 +4,8 @@ exports[`Page should render interactive el if not current 1`] = `
 <li>
   <Button
     aria-label="page 1"
-    component="button"
     href="/#1"
     onClick={[MockFunction]}
-    type="button"
     variation="transparent"
   >
     1

@@ -56,7 +56,7 @@ There are few to no risks involved in implementing a token system. Implementatio
    - A set of tests scripts to validate data integrity and compare the variable output to the current variable settings to ensure data parity.
 
 2. A build tool will be developed to export tokens from the token library to Sketch variables which can be imported by designers to ensure they are working with the correct set of values. If the choice to support other design tools ever occurs, a new export process would be architecturally easy to implement for almost any API. This could be done over the course of one development sprint.
- 
+
 3. Once this concept has been validated and released, work on other token types can progress with: measure, spacing, font, animation and other values, utilizing this toolkit. One set of tokens can be ported at a time, broken up into single-sprint long tasks.
 
 4. A tool to generate documentation would be created from the token build task. This could be another option in our existing site docs, filed under "Design Tokens." Component level variables could be included on the doc pages for each component. This could be done over the course of two development sprints.

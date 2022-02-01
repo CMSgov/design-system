@@ -9,7 +9,7 @@ $pagination-overflow-color: $color-gray;
 $pagination-page-count-color: $color-gray;
 
 .ds-c-pagination {
-  align-items: end;
+  align-items: flex-end;
   display: flex;
   justify-content: space-between;
   ul {
