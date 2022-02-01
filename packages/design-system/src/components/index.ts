@@ -12,6 +12,7 @@ export * from './FilterChip';
 export * from './FormControl';
 export * from './FormLabel';
 export * from './HelpDrawer';
+export * from './IdleTimeout';
 export * from './InlineError';
 export * from './MonthPicker';
 export * from './Pagination';
