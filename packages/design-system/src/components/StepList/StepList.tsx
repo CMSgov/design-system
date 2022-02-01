@@ -23,48 +23,59 @@ export interface StepListProps {
    * clicked. The step's `href` property will be passed as a parameter.
    */
   onStepLinkClick?: StepLinkProps['onClick'];
-  completedText: string;
-  editText: string;
-  resumeText: string;
-  startText: string;
+  completedText?: string;
+  editText?: string;
+  resumeText?: string;
+  startText?: string;
   /**
    * A template string for the aria-label describing a step's actions where
    * the substring `%{step}` is replaced with that step's `heading`.
    */
-  actionsLabelText: string;
+  actionsLabelText?: string;
   /**
    * A template string for the aria-label for a step's description where
    * the substring `%{step}` is replaced with that step's `heading`.
    */
-  descriptionLabelText: string;
+  descriptionLabelText?: string;
   /**
    * A template string for the aria-label describing a step's substeps where
    * the substring `%{step}` is replaced with that step's `heading`.
    */
-  substepsLabelText: string;
+  substepsLabelText?: string;
 }
 
-export const StepList = ({ steps, ...props }: StepListProps) => (
+export const StepList = ({
+  steps,
+  component,
+  showSubSubSteps = false,
+  completedText = 'Completed',
+  editText = 'Edit',
+  resumeText = 'Resume',
+  startText = 'Start',
+  actionsLabelText = 'Primary actions for %{step}',
+  descriptionLabelText = 'Description for %{step}',
+  substepsLabelText = 'Secondary actions for %{step}',
+  ...otherProps
+}: StepListProps) => (
   <ol className="ds-c-step-list">
     {steps.map((step, i) => (
       <Step
-        step={{ ...step, ...{ component: props.component || step.component } }}
+        step={{ ...step, ...{ component: component || step.component } }}
         key={step.id || i}
-        {...props}
+        {...{
+          showSubSubSteps,
+          completedText,
+          editText,
+          resumeText,
+          startText,
+          actionsLabelText,
+          descriptionLabelText,
+          substepsLabelText,
+          ...otherProps,
+        }}
       />
     ))}
   </ol>
 );
-
-StepList.defaultProps = {
-  showSubSubSteps: false,
-  completedText: 'Completed',
-  editText: 'Edit',
-  resumeText: 'Resume',
-  startText: 'Start',
-  actionsLabelText: 'Primary actions for %{step}',
-  descriptionLabelText: 'Description for %{step}',
-  substepsLabelText: 'Secondary actions for %{step}',
-};
 
 export default StepList;
