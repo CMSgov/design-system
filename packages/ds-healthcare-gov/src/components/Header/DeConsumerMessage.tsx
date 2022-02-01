@@ -2,7 +2,7 @@ import React from 'react';
 import { TFunction } from 'react-i18next';
 
 interface DeConsumerMessageProps {
-  deBrokerName: string;
+  deBrokerName?: string;
   /**
    * @hide-props
    */
