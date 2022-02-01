@@ -30,7 +30,7 @@ JavaScript coding guidelines are enforced using [Nava's ESLint ruleset](https://
 - Build components that are safe to render server-side. This means components must be pure functions of their `props` and `state`, and you only have access to a subset of lifecycle methods:
   - `getInitialState()`
   - `getDefaultProps()`
-  - `componentWillMount()`
+  - `componentDidMount()`
   - `render()`
 - Each component is exported twice, to support different ways developers might import it:
   - A named export. For example: `export function Button(props) {`
