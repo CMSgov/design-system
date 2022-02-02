@@ -13,14 +13,16 @@ export default {
       control: { type: 'text' },
       type: { name: 'string', required: true },
     },
-    component: {
-      control: false,
-    },
     disabled: {
       control: { type: 'boolean' },
     },
     // hiding deprecated props
     inverse: {
+      table: {
+        disable: true,
+      },
+    },
+    component: {
       table: {
         disable: true,
       },

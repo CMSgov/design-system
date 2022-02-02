@@ -1,8 +1,8 @@
 import React from 'react';
-import { TFunction, withTranslation } from 'react-i18next';
+import { TFunction } from 'react-i18next';
 
 interface DeConsumerMessageProps {
-  deBrokerName: string;
+  deBrokerName?: string;
   /**
    * @hide-props
    */
@@ -28,4 +28,4 @@ const DeConsumerMessage = (props: DeConsumerMessageProps) => {
   );
 };
 
-export default withTranslation()(DeConsumerMessage);
+export default DeConsumerMessage;
