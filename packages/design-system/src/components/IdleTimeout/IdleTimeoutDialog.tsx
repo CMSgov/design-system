@@ -6,10 +6,6 @@ import { Button } from '../Button';
 
 export interface IdleTimeoutDialogProps {
   /**
-   * The text for the 'close' button on the warning dialog
-   */
-  closeDialogText: string;
-  /**
    * The text for the 'continue session' button in warning dialog.
    */
   continueSessionText: string;
@@ -31,10 +27,6 @@ export interface IdleTimeoutDialogProps {
    */
   message: string;
   /**
-   * Optional function that is called when the warning dialog's close button is clicked
-   */
-  onClose: (...args: any[]) => any;
-  /**
    * Optional function that is called when the user chooses to keep the session alive.
    * The IdleTimeout component will reset the countdown internally.
    */
@@ -51,13 +43,11 @@ export interface IdleTimeoutDialogProps {
 }
 
 const IdleTimeoutDialog = ({
-  closeDialogText,
   continueSessionText,
   heading,
   endSessionButtonText,
   endSessionRedirectUrl,
   message,
-  onClose,
   onSessionContinue,
   onSessionForcedEnd,
   showSessionEndButton,
@@ -83,9 +73,8 @@ const IdleTimeoutDialog = ({
       dialogId="session-timeout-dialog"
       escapeExits={false}
       heading={heading}
-      closeButtonText={closeDialogText}
       actions={renderDialogActions()}
-      onExit={onClose}
+      hideCloseButton
     >
       <div dangerouslySetInnerHTML={{ __html: message }} />
     </Dialog>

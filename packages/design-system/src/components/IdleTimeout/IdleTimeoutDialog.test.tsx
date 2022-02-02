@@ -4,11 +4,9 @@ import { render, fireEvent } from '@testing-library/react';
 
 describe('IdleTimeoutDialog', () => {
   const defaultProps = {
-    closeDialogText: 'Close',
     continueSessionText: 'Continue session',
     heading: 'Are you still there?',
     message: 'Your session is ending',
-    onClose: jest.fn(),
     onSessionContinue: jest.fn(),
     endSessionButtonText: 'Logout',
   };

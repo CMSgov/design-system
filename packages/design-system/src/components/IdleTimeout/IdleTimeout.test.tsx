@@ -34,8 +34,16 @@ describe('Idle Timeout', () => {
   });
 
   describe('timeout countdown', () => {
-    // user explicitly says "keep session"
-    xit('should reset countdown if user opts for that', () => {});
+    it('should reset countdown if user opts for that', () => {
+      const { getByText, queryByRole } = renderIdleTimeout();
+      jest.advanceTimersByTime(timeTilWarningShown);
+      const keepSessionBtn = getByText('Continue session');
+      fireEvent.click(keepSessionBtn);
+      const dialogEl = queryByRole('alertdialog');
+      expect(dialogEl).toBeNull();
+      jest.advanceTimersByTime(timeTilWarningShown);
+      expect(dialogEl).toBeDefined();
+    });
 
     it('warning element should be visible at set warning time', () => {
       const { queryByTestId } = renderIdleTimeout();
@@ -101,5 +109,15 @@ describe('Idle Timeout', () => {
     );
   });
 
-  xit('should replace token in message every minute', () => {});
+  it('should replace token in message every minute', () => {
+    const message = 'Your session will end in <timeToTimeout>.';
+    const { getByRole } = renderIdleTimeout({ message });
+    jest.advanceTimersByTime(timeTilWarningShown);
+    const dialogBodyText = getByRole('main');
+    expect(dialogBodyText.textContent).toEqual('Your session will end in 3 minutes.');
+    jest.advanceTimersByTime(60000);
+    expect(dialogBodyText.textContent).toEqual('Your session will end in 2 minutes.');
+    jest.advanceTimersByTime(60000);
+    expect(dialogBodyText.textContent).toEqual('Your session will end in 1 minute.');
+  });
 });
