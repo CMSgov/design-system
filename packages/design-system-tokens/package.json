@@ -12,5 +12,6 @@
     "test": "ts-node ./tests/test.ts",
     "build": "ts-node ./index.ts",
     "clean": "rm -f dist/*"
-  }
+  },
+  "dependencies": {}
 }

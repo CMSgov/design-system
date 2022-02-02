@@ -3,6 +3,22 @@ import * as path from 'path';
 
 const OUTPUT_DIR = './dist';
 
+function getAllFiles(dirPath: string, arrayOfFiles: string[]) {
+  let files = fs.readdirSync(dirPath)
+
+  arrayOfFiles = arrayOfFiles || []
+
+  files.forEach(function(file) {
+    if (fs.statSync(dirPath + "/" + file).isDirectory()) {
+      arrayOfFiles = getAllFiles(dirPath + "/" + file, arrayOfFiles)
+    } else {
+      arrayOfFiles.push(path.join(dirPath, "/", file))
+    }
+  })
+
+  return arrayOfFiles
+}
+
 async function loadTheme(file: string) {
   const tsData = await import(`${file}`).catch((error) => {
     console.error(error);
@@ -37,12 +53,14 @@ const build = async (themeModule: string, outputType: string) => {
 export const cli = () => {
   if (!fs.existsSync('./dist')) fs.mkdirSync('./dist');
 
+  const themeFiles = getAllFiles('./brands/', []);
+  console.log(themeFiles)
+
   const help = (error: string) => {
     console.log(` error: ${error}`);
     console.log('-------------------------------------------------------------');
-    console.log(' usage :: yarn build:themeName outputType');
-    console.log('          where themeName is the name of the theme file name');
-    console.log('          and outputType is one of: scss or sketch');
+    console.log(' usage :: yarn build outputType');
+    console.log('          where outputType is one of: scss or sketch');
     console.log('-------------------------------------------------------------');
     process.exit(1);
   };
