@@ -1,11 +1,11 @@
 /*
  * CMSDS Color Tokens, organized by hue
  */
-import * as Token from '.'
+import * as Types from '../lib/types'
 
 export const TOKEN_TYPE = 'color'
 
-const makeColors = <T extends Token.Types.HexValues>(value: T) => { return value }
+const makeColors = <T extends Types.HexColorToken>(value: T) => { return value }
 
 const Color = makeColors({
   // singletons
