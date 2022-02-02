@@ -5,9 +5,8 @@
     "tests/*.ts"
   ],
   "compilerOptions": {
-    "target": "es2015",
-    "rootDir": "./",
-    "outDir": "./dist",
+    "module": "CommonJS",
+    "target": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "esModuleInterop": true,
