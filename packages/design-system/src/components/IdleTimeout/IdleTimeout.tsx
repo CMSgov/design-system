@@ -1,7 +1,6 @@
 /* eslint-disable react/no-multi-comp */
 import React, { useState, useEffect } from 'react';
 import IdleTimeoutDialog from './IdleTimeoutDialog';
-import TimeoutManager from './TimeoutManager';
 
 export interface IdleTimeoutProps {
   /**
@@ -82,15 +81,56 @@ const IdleTimeout = ({
   };
 
   const formattedDialogMessage = replaceMessageTokens(timeToWarning);
-  const [hideWarning, setHideWarning] = useState<boolean>(false);
+  if (timeToWarning > timeToTimeout) {
+    console.error(
+      'Error in TimeoutManager component. `timeToWarning` is greater or equal to `timeToTimeout`'
+    );
+  }
+  // convert minutes to milliseconds
+  const msToTimeout = timeToTimeout * 60000;
+  const msToWarning = (timeToTimeout - timeToWarning) * 60000;
+  const [timeoutTimerId, setTimeoutTimer] = useState<NodeJS.Timeout>(null);
+  const [warningTimerId, setWarningTimer] = useState<NodeJS.Timeout>(null);
+  const [showWarning, setShowWarning] = useState<boolean>(false);
+
+  const handleTimeout = () => {
+    onTimeout();
+    setShowWarning(false);
+  };
+
+  const handleWarningTimeout = () => {
+    setShowWarning(true);
+    // update message every minute with new countdown?
+  };
+
+  const setTimeouts = () => {
+    const timerId: NodeJS.Timeout = setTimeout(handleTimeout, msToTimeout);
+    setTimeoutTimer(timerId);
+
+    const warningTimerId: NodeJS.Timeout = setTimeout(handleWarningTimeout, msToWarning);
+    setWarningTimer(warningTimerId);
+  };
+
+  const clearTimeouts = () => {
+    clearTimeout(timeoutTimerId);
+    clearTimeout(warningTimerId);
+  };
+
+  useEffect(() => {
+    setTimeouts();
+
+    return () => {
+      clearTimeouts();
+    };
+  }, []);
 
   const handleOnClose = () => {
     // and maybe do something with timers? idk
     console.log('handleOnClose');
-    setHideWarning(true);
     if (onClose) {
       onClose();
     }
+    setShowWarning(false);
   };
 
   const handleSessionContinue = () => {
@@ -100,7 +140,7 @@ const IdleTimeout = ({
     if (onSessionContinue) {
       onSessionContinue();
     }
-    setHideWarning(true);
+    setShowWarning(false);
   };
 
   const handleSessionForcedEnd = () => {
@@ -108,30 +148,26 @@ const IdleTimeout = ({
     // when session is ended via dialog, cancel timers in timeout manager
     if (onSessionForcedEnd) {
       onSessionForcedEnd();
+    } else {
+      onTimeout();
     }
+    setShowWarning(false);
   };
 
-  return (
-    <TimeoutManager
-      onTimeout={onTimeout}
-      timeToTimeout={timeToTimeout}
-      timeToWarning={timeToWarning}
-      hideWarning={hideWarning}
-    >
-      <IdleTimeoutDialog
-        closeDialogText={closeDialogText}
-        continueSessionText={continueSessionText}
-        heading={heading}
-        endSessionButtonText={endSessionButtonText}
-        endSessionRedirectUrl={endSessionRedirectUrl}
-        message={formattedDialogMessage}
-        onClose={handleOnClose}
-        onSessionContinue={handleSessionContinue}
-        onSessionForcedEnd={handleSessionForcedEnd}
-        showSessionEndButton={showSessionEndButton}
-      />
-    </TimeoutManager>
-  );
+  return showWarning ? (
+    <IdleTimeoutDialog
+      closeDialogText={closeDialogText}
+      continueSessionText={continueSessionText}
+      heading={heading}
+      endSessionButtonText={endSessionButtonText}
+      endSessionRedirectUrl={endSessionRedirectUrl}
+      message={formattedDialogMessage}
+      onClose={handleOnClose}
+      onSessionContinue={handleSessionContinue}
+      onSessionForcedEnd={handleSessionForcedEnd}
+      showSessionEndButton={showSessionEndButton}
+    />
+  ) : null;
 };
 
 export default IdleTimeout;
