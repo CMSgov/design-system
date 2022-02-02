@@ -1,13 +1,88 @@
 /*
 Layout grid
 
-Use the flexible grid system to structure and align content. The grid is responsive, powered by flexbox, and based on a twelve-column grid system.
+Use the layout grid for organizing space, text, images, and other elements used in design. Following a grid while designing user interfaces (UI) provides a consistent design across various screen sizes and supports UX designers to manage spacing and alignment between various elements. It ensure pixel-perfect designs are created and handed off to engineers for implementation without adding rework later.
 
-The grid consists of three distinct pieces:
+The design system utilizes a responsive 12-column layout grid.
 
-- **Containers** add a maximum width and centers the content
-- **Rows** enable the flexbox layout and contains the columns
-- **Columns** determine the number of columns an item will span across, out of a possible 12 per row.
+## Terms
+<div class="ds-l-row">
+    <div class="ds-l-col--6 ds-u-margin-bottom--2">
+     <b>Columns</b>
+        <img alt="12 wide blue columns on a white background. Screenshot." src="{{root}}/images/columns.png" class="ds-u-border--1" />
+        <span class="ds-u-font-size--sm">There are 12 columns in the responsive grid. Column widths change with the size of the grid.</span>
+    </div>
+    <div class="ds-l-col--6 ds-u-margin-bottom--2">
+     <b>Gutters</b>
+        <img alt="11 thin dark blue columns placed in between 12 light blue columns. Screenshot." src="{{root}}/images/gutters.png" class="ds-u-border--1" />
+        <span class="ds-u-font-size--sm">Gutters are the gaps between columns. Gutter widths are a fixed value of 16px (<code>$spacer-2</code>).</span>
+    </div>
+</div>
+<div class="ds-l-row">
+    <div class="ds-l-col--6 ds-u-margin-bottom--2">
+    <b>Grid margins</b>
+        <img alt="2 thin dark blue columns placed to the immediate left and right of 12 light blue columns. Screenshot." src="{{root}}/images/grid-margins.png" class="ds-u-border--1" />
+        <span class="ds-u-font-size--sm">Gutter margins are the outer margins of the grid. From 0-543px the grid margins are 16px (<code>$spacer-2</code>) from 544px (small breakpoint) and up the grid margins are 32px (<code>$spacer-4</code>).</span>
+    </div>
+    <div class="ds-l-col--6 ds-u-margin-bottom--2">
+    <b>Layout regions</b>
+        <img alt="Large blue rectangles stretching through light blue grid columns to demonstrate how to create regions. The first row has two equal width regions and the second row has three equal width regions. Screenshot." src="{{root}}/images/layout-regions.png" class="ds-u-border--1" />
+        <span class="ds-u-font-size--sm">Areas of the layout that contain the content. Layout regions can span any number of columns and resize with the grid.</span>
+    </div>
+</div>
+
+**The grid consists of three distinct pieces:**
+
+1. **Containers** add a maximum width and centers the content
+1. **Rows** enable the flexbox layout and contains the columns
+1. **Columns** determine the number of columns an item will span across, out of a possible 12 per row.
+
+## Breakpoints
+
+The grid system utilizes breakpoints to adapt designs at various viewport sizes.
+
+<table class="ds-c-table">
+<thead>
+<tr>
+<th>Prefix</th>
+<th>Breakpoint</th>
+<th>Sass variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td><code>min-width(0px)</code></td>
+<td><code>$width-xs</code></td>
+<td>Viewports <code>0px</code> and wider</td>
+</tr>
+<tr>
+<td><code>sm</code></td>
+<td><code>min-width(544px)</code></td>
+<td><code>$width-sm</code></td>
+<td>Viewports <code>544px</code> and wider</td>
+</tr>
+<tr>
+<td><code>md</code></td>
+<td><code>min-width(768px)</code></td>
+<td><code>$width-md</code></td>
+<td>Viewports <code>768px</code> and wider</td>
+</tr>
+<tr>
+<td><code>lg</code></td>
+<td><code>min-width(1024px)</code></td>
+<td><code>$width-lg</code></td>
+<td>Viewports <code>1024px</code> and wider</td>
+</tr>
+<tr>
+<td><code>xl</code></td>
+<td><code>min-width(1280px)</code></td>
+<td><code>$width-xl</code></td>
+<td>Viewports <code>1280px</code> and wider</td>
+</tr>
+</tbody>
+</table>
 
 @weight -1
 
@@ -25,7 +100,9 @@ Style guide: utilities.grid.default
 */
 
 /*
-Specifying number of columns
+Column spanning
+
+Layout regions can span any number of columns and are separated by the grid gutter. Layouts can change at any of the designated breakpoints.
 
 Specify the number of columns (1-12) to span using `.ds-l-col--*` classes. These classes will span `*` columns. So, if you want two elements that each span half the row, you would use `.ds-l-col--6`
 
@@ -54,6 +131,8 @@ Style guide: utilities.grid.nested
 
 /*
 Offsetting columns
+
+The page content does not always need to span across 12 columns; it can occupy a smaller region in the center of the page. This example shows an 8-column layout region with an offset of 2 columns on both sides.
 
 Offset columns using the [margin auto utility class]({{root}}/utilities/margin):
 
@@ -107,9 +186,16 @@ Style guide: utilities.grid.responsive
 /*
 ---
 
+### Best practices
+
+- Choose a single grid system for the entire site.
+- Consider small screens as part of the design process and create layouts that adapt or change to accommodate various viewport sizes as needed.
+- Use layout regions to section page content.
+- Grid gutters are there to create spacing between the layout regions. Do not extend the layout regions into the gutters.
+
 ### When to use
 
-- Almost always use a grid layout — visitors can read more quickly on pages that use grids. Choose a single grid system for your entire site.
+- Use to place UI elements into consistent responsive columns and page layouts.
 
 ### When to consider alternatives
 
@@ -124,6 +210,9 @@ Style guide: utilities.grid.responsive
 
 - Low-vision users should be able to increase the size of the text by up to 200 percent without breaking the layout.
 - The DOM order and visual presentation of content should be consistent, in order to not break keyboard navigation. This means you should avoid changing the flexbox `order` property of the grid columns.
+- Consider the main goal, purpose, and user task of the page/workflow when deciding which page content area to span and ensure the layout supports user who many have cognitive delay or low literacy.
+- Follow the grid consistently to help support the brain while skimming and scanning and reduce cognitive load when trying to make sense of an inconsistently layout experience.
+- Ensure primary interaction elements like call to action buttons appear in similar location to reduce the amount of time it takes users to select thees elements and reduced the time to locate these elements.
 
 ### Customization
 
