@@ -1,8 +1,7 @@
 /* eslint-disable react/no-multi-comp */
-/* eslint-disable react/no-danger */
-import React from 'react';
-import { Dialog } from '../Dialog';
-import { Button } from '../Button';
+import React, { useState, useEffect } from 'react';
+import IdleTimeoutDialog from './IdleTimeoutDialog';
+import TimeoutManager from './TimeoutManager';
 
 export interface IdleTimeoutProps {
   /**
@@ -21,6 +20,10 @@ export interface IdleTimeoutProps {
    * The text for the button that ends the session in warning dialog.
    */
   endSessionButtonText?: string;
+  /**
+   *
+   */
+  endSessionRedirectUrl?: string;
   /**
    * The message text for the warning dialog.
    * Note that using the token `<timeToTimeout>` will be replaced in the message text with the number of minutes until timeout.
@@ -63,6 +66,7 @@ const IdleTimeout = ({
   continueSessionText = 'Continue session',
   heading = 'Are you still there?',
   endSessionButtonText = 'Logout',
+  endSessionRedirectUrl = '/logout',
   message = 'You’ve been inactive for a while. <br/>Your session will end in <timeToTimeout>. <br/><br/>Select "Continue session" below if you want more time.',
   onClose,
   onSessionContinue,
@@ -78,56 +82,55 @@ const IdleTimeout = ({
   };
 
   const formattedDialogMessage = replaceMessageTokens(timeToWarning);
+  const [hideWarning, setHideWarning] = useState<boolean>(false);
 
-  const handleContinueSession = () => {
-    // reset countdown timer
-    if (onSessionContinue) {
-      onSessionContinue();
-    }
-  };
-
-  const handleEndSession = () => {
-    if (onSessionForcedEnd) {
-      // TODO: figure out if any params should be passed back to the app
-      onSessionForcedEnd();
-    } else if (onTimeout) {
-      onTimeout();
-    }
-  };
-
-  const handleDialogClose = () => {
+  const handleOnClose = () => {
+    // and maybe do something with timers? idk
+    console.log('handleOnClose');
+    setHideWarning(true);
     if (onClose) {
       onClose();
     }
   };
 
-  const renderDialogActions = () => {
-    return (
-      <>
-        <Button variation="primary" onClick={handleContinueSession}>
-          {continueSessionText}
-        </Button>
-        {showSessionEndButton ? (
-          <Button variation="transparent" href="/logout" onClick={handleEndSession}>
-            {endSessionButtonText}
-          </Button>
-        ) : null}
-      </>
-    );
+  const handleSessionContinue = () => {
+    console.log('handleSessionContinue');
+    // when session continues from dialog, reset timers in timeout manager
+    // also bubble up to app
+    if (onSessionContinue) {
+      onSessionContinue();
+    }
+    setHideWarning(true);
+  };
+
+  const handleSessionForcedEnd = () => {
+    // bubble up to app
+    // when session is ended via dialog, cancel timers in timeout manager
+    if (onSessionForcedEnd) {
+      onSessionForcedEnd();
+    }
   };
 
   return (
-    <Dialog
-      alert
-      dialogId="session-timeout-dialog"
-      escapeExits={false}
-      heading={heading}
-      closeButtonText={closeDialogText}
-      actions={renderDialogActions()}
-      onExit={handleDialogClose}
+    <TimeoutManager
+      onTimeout={onTimeout}
+      timeToTimeout={timeToTimeout}
+      timeToWarning={timeToWarning}
+      hideWarning={hideWarning}
     >
-      <div dangerouslySetInnerHTML={{ __html: formattedDialogMessage }} />
-    </Dialog>
+      <IdleTimeoutDialog
+        closeDialogText={closeDialogText}
+        continueSessionText={continueSessionText}
+        heading={heading}
+        endSessionButtonText={endSessionButtonText}
+        endSessionRedirectUrl={endSessionRedirectUrl}
+        message={formattedDialogMessage}
+        onClose={handleOnClose}
+        onSessionContinue={handleSessionContinue}
+        onSessionForcedEnd={handleSessionForcedEnd}
+        showSessionEndButton={showSessionEndButton}
+      />
+    </TimeoutManager>
   );
 };
 

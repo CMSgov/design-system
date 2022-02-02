@@ -7,16 +7,7 @@ export interface TimeoutManagerProps {
    * Elements to display for a warning that session is about to expire.
    */
   children: React.ReactNode;
-  /**
-   * Optional function that is called when the user chooses to keep the session alive.
-   * The IdleTimeout component will reset the countdown internally.
-   */
-  onSessionContinue?: (...args: any[]) => any;
-  /**
-   * Optional function that is called when the session is manually ended by user.
-   * If not provided, the behavior of `onTimeout` will be used.
-   */
-  onSessionForcedEnd?: (...args: any[]) => any;
+  hideWarning?: boolean;
   /**
    * Function that is called when the timeout countdown reaches zero.
    */
@@ -33,8 +24,7 @@ export interface TimeoutManagerProps {
 
 const TimeoutManager = ({
   children,
-  onSessionContinue,
-  onSessionForcedEnd,
+  hideWarning,
   onTimeout,
   timeToTimeout,
   timeToWarning,
@@ -53,6 +43,7 @@ const TimeoutManager = ({
 
   const handleTimeout = () => {
     onTimeout();
+    setShowWarning(false);
   };
 
   const handleWarningTimeout = () => {
@@ -80,6 +71,10 @@ const TimeoutManager = ({
       clearTimeouts();
     };
   }, []);
+
+  useEffect(() => {
+    setShowWarning(!hideWarning);
+  }, [hideWarning]);
 
   const resetTimeouts = () => {
     clearTimeouts();

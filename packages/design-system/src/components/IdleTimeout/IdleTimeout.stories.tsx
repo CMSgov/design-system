@@ -15,6 +15,15 @@ export default {
   },
 };
 
-const Template = ({ ...args }) => <IdleTimeout {...args} />;
+const Template = ({ ...args }) => (
+  <IdleTimeout
+    timeToTimeout={3}
+    onTimeout={() => {
+      console.log('onTimeout');
+    }}
+    {...args}
+    timeToWarning={2}
+  />
+);
 
 export const Default = Template.bind({});

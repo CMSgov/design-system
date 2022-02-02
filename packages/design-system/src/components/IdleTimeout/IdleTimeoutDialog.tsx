@@ -1,4 +1,5 @@
 /* eslint-disable react/no-multi-comp */
+/* eslint-disable react/no-danger */
 import React from 'react';
 import { Dialog } from '../Dialog';
 import { Button } from '../Button';
@@ -86,7 +87,7 @@ const IdleTimeoutDialog = ({
       actions={renderDialogActions()}
       onExit={onClose}
     >
-      {message}
+      <div dangerouslySetInnerHTML={{ __html: message }} />
     </Dialog>
   );
 };
