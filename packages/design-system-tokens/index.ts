@@ -1,10 +1,9 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import * as Types from './lib/types';
 
 const OUTPUT_DIR = './dist';
 
-async function loadTheme(file: string): Promise<Types.Theme> {
+async function loadTheme(file: string) {
   const tsData = await import(`${file}`).catch((error) => {
     console.error(error);
     process.exit(1);
@@ -12,42 +11,56 @@ async function loadTheme(file: string): Promise<Types.Theme> {
   return tsData.default;
 }
 
-export const build = () => {
+const build = async (themeModule: string, outputType: string) => {
+  if (outputType === 'scss') {
+    await loadTheme(themeModule).then((theme) => {
+      Object.keys(theme.tokens).forEach((k) => {
+        const fn = `${OUTPUT_DIR}/${theme.name}-${k}.scss`;
+        let vars = '';
+
+        Object.entries(theme.tokens[k]).forEach(([t, v]) => {
+          vars += `$${t}: ${v};\n`;
+        });
+
+        try {
+          fs.writeFileSync(fn, vars);
+          console.log(`:: wrote ${fn}`);
+        } catch (err) {
+          console.error(`There was an issue writing to ${fn}: ${err}`);
+        }
+      });
+    });
+  } // scss output
+  return 0;
+};
+
+export const cli = () => {
   if (!fs.existsSync('./dist')) fs.mkdirSync('./dist');
 
+  const help = (error: string) => {
+    console.log(` error: ${error}`);
+    console.log('-------------------------------------------------------------');
+    console.log(' usage :: yarn build:themeName outputType');
+    console.log('          where themeName is the name of the theme file name');
+    console.log('          and outputType is one of: scss or sketch');
+    console.log('-------------------------------------------------------------');
+    process.exit(1);
+  };
+
   const args = process.argv.slice(2);
-  if (args.length <= 0) {
-    console.log('usage: yarn build:themeName outputType');
-    console.log('where themeName is the name of the theme file name');
-    console.log('and outputType is one of: scss or sketch');
-    return 0;
-  }
+  if (args.length <= 0 || args[1] !== ('scss' || 'sketch')) help('invalid outputType');
 
   const input = args[0];
   const outputType = args[1];
   const inputName = path.parse(input).name;
   const inputPath = path.parse(input).dir;
-  const inputAsImport = './' + inputPath + '/' + inputName;
+  const themeModuleFilepath = './' + inputPath + '/' + inputName;
 
-  if (outputType === 'scss') {
-    return loadTheme(inputAsImport).then((fd) => {
-      console.log(Object.keys(fd.tokens.color));
-      // fs.writeFile(`${OUTPUT_DIR}/${inputName}-color.scss`, fd[0], (err): void => {
-      //   if (err)
-      //     console.error(
-      //       `There was an issue writing to ${OUTPUT_DIR}/${inputName}-color.scss: ${err}`
-      //     );
-      // });
-      // fs.writeFile(`${OUTPUT_DIR}/${inputName}-spacing.scss`, fd[1], (err): void => {
-      //   if (err)
-      //     console.error(
-      //       `There was an issue writing to ${OUTPUT_DIR}/${inputName}-spacing.scss: ${err}`
-      //     );
-      // });
-    });
+  if (!fs.existsSync(input)) {
+    help('file does not exist or is of improper type');
+  } else {
+    build(themeModuleFilepath, outputType);
   }
-
-  return 1;
 };
 
-build();
+cli();
