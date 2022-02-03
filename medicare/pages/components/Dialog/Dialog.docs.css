@@ -1,0 +1,20 @@
+/*
+Modal dialog
+
+Markup: dialog.example.html
+
+Style guide: components.dialog
+*/
+/*
+Dialog size variants
+
+Apply one of the size modifier classes to the `ds-c-dialog` element to change the dialog width.
+- `.ds-c-dialog--narrow`
+- `.ds-c-dialog--wide`
+- `.ds-c-dialog--full`
+
+Markup: dialog-size.example.html
+
+Style guide: components.dialog.size
+*/
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicGFnZXMvY29tcG9uZW50cy9EaWFsb2cvRGlhbG9nLmRvY3MuY3NzIiwic291cmNlcyI6WyJwYWdlcy9jb21wb25lbnRzL0RpYWxvZy9EaWFsb2cuZG9jcy5zY3NzIl0sInNvdXJjZXNDb250ZW50IjpbIi8qXG5Nb2RhbCBkaWFsb2dcblxuTWFya3VwOiBkaWFsb2cuZXhhbXBsZS5odG1sXG5cblN0eWxlIGd1aWRlOiBjb21wb25lbnRzLmRpYWxvZ1xuKi9cblxuLypcbkRpYWxvZyBzaXplIHZhcmlhbnRzXG5cbkFwcGx5IG9uZSBvZiB0aGUgc2l6ZSBtb2RpZmllciBjbGFzc2VzIHRvIHRoZSBgZHMtYy1kaWFsb2dgIGVsZW1lbnQgdG8gY2hhbmdlIHRoZSBkaWFsb2cgd2lkdGguXG4tIGAuZHMtYy1kaWFsb2ctLW5hcnJvd2Bcbi0gYC5kcy1jLWRpYWxvZy0td2lkZWBcbi0gYC5kcy1jLWRpYWxvZy0tZnVsbGBcblxuTWFya3VwOiBkaWFsb2ctc2l6ZS5leGFtcGxlLmh0bWxcblxuU3R5bGUgZ3VpZGU6IGNvbXBvbmVudHMuZGlhbG9nLnNpemVcbiovXG4iXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7OztFQU1FO0FBRUY7Ozs7Ozs7Ozs7O0VBV0UifQ== */

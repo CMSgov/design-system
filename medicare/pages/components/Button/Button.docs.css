@@ -1,0 +1,95 @@
+@charset "UTF-8";
+/*
+Button
+
+@uswds https://designsystem.digital.gov/components/buttons
+
+<p class="ds-text--lead">Action buttons allow people to take actions from a current state to a future state. They are promises to the user; they must deliver the promise they offer by doing what the button says it would do.</p>
+
+- PRIMARY CTA is TEAL - Use for the priority action that we want users to take. These actions are required for the user to move to the next step in the user flow (example: Enroll).
+- SECONDARY CTA is NAVY - Use for actions available but not the primary action we want users to take (example: Plan Details). There doesn't have to be a primary button on the page to use the secondary button.
+- TERTIARY CTA is OUTLINE BUTTON with the color that matches the other CTA on the page - Use for actions available but do not take priority over a primary or secondary CTAs (example: Cancel). For example: If primary button is teal, tertiary button has teal outline.
+- Outline CTAs are not used alone - They must be paired with either a primary or secondary CTA.
+- Exception: CTA over background hero image on landing pages.
+- Lower priority actions are links - Refer to link styling guidelines under Typography.
+- Landing Page Button - This larger button is ONLY used in the hero image of landing pages.
+
+<p>View more guidance and design assets at <a href="https://cms.invisionapp.com/dsm/cms/medicare">Medicare.gov DSM</a>.</p>
+
+<h3>Button classes</h3>
+<ul>
+<li><b>Mobile buttons</b> - Consider using full-width buttons on mobile devices. This will help improve the click range for both left or right-handed users. Use the class <code>mds-c-button--mobile-full-width</code> to apply full-width for mobile and the <a href="/utilities/margin/">responsive margin classes</a> to adjust margins on mobile.</li>
+<li><b>Hiding buttons on print</b> - Hide buttons when printing to avoid unnecessary content for printed material. Use the <code>ds-u-visibility--hidden-print</code> class to hide buttons or any other elements on print. Refer to the <a href="/utilities/display-visibility/">display/visibility utilities</a> for more information.</li>
+</ul>
+
+Markup: button.example.html
+
+Style guide: components.button
+*/
+/*
+`<Button>`
+
+The `Button` component accepts its text as children (AKA inner HTML), which
+means you can also pass in HTML or custom components. This gives you a lot of
+flexibility and supports a variety of advanced use cases. The most common use
+case would be passing in an SVG icon along with the text.
+
+In addition to the supported props listed, you can also pass in additional
+props, which will be passed to the rendered root component. For example,
+you could pass in a `target` prop to pass to the rendered anchor element.
+
+@react-example Button.example.tsx
+
+@react-props Button.tsx
+
+Style guide: components.button.react
+*/
+/*
+---
+*/
+/*
+Design Guidelines
+
+<ul>
+<li>Action buttons do NOT include icons. </li>
+<li>Exception: Can include icons in buttons in mobile for CTAs outlining functionality. Examples: Filter, Sort, Map, and Menu. </li>
+<li>Other exceptions require advance and separate approval than mock-ups by product teams. See "Exception process" in Foundations.</li>
+<li>Buttons use title case. Example: Join Plan or Find Doctors.</li>
+<li>Note that clickable cards are sentence case. See that component for more information.</li>
+</ul>
+
+When pairing 2 CTAs:
+<ul>
+<li>In forms/decision trees: Have the preferred action be on the right. Example: Back/Next or Cancel/Submit.</li>
+<li>All other cases: Have the preferred action be on the left. Example: Create Account/Return to Home or Change My Account/Stop Easy Pay.</li>
+</ul>
+
+<h2>Content Guidelines</h2>
+
+<ul>
+<li>Describe what will happen, not the current state. <i>Example: Start Over.</i></li>
+<li>CTA buttons always start with an action verb that describes the main thing users will be able to do once selected.</li>
+<li>Pair it with a noun to help it be more clear. <i>Example: Change Password or Add Drug.</i></li>
+<li>If in a form, it can be just the action verb if it's navigating between steps. <i>Example: Cancel, Back, Next, Submit.</i></li>
+<li>Use the least amount of words possible (no more than 4).</li>
+<li>Use title case for CTA buttons.</li>
+</ul>
+
+Get more content guidelines by going to the buttons page in the <a href="https://cms.invisionapp.com/dsm/cms/medicare">Medicare.gov DSM</a>.
+
+<h2>Accessibility</h2>
+
+<ul>
+<li>Buttons should display a visible focus state when users tab to them.</li>
+<li>Create a button with a <code>button</code> or <code>a</code> element to retain the native click functionality. Avoid using <code>&lt;div&gt;</code> or <code>&lt;img&gt;</code> tags to create buttons. Screen readers don't automatically know either is a usable button.</li>
+<li>When styling links to look like buttons, remember that screen readers handle links slightly differently than they do buttons. Pressing the <code>Space</code> key triggers a button, but pressing the <code>Enter</code> key triggers a link.</li>
+<li>Dimmed or unavailable buttons should have the <code>disabled</code> attribute applied. This removes native click and keypress events from the button. It also prevents automated scanners from logging a low contrast error. Finally, it announces the button as "dimmed" or "disabled" to screen readers, offering users additional context.</li>
+<li>Disabled buttons - Don’t disable buttons, unless there’s a good reason to.</li>
+<li>If you do disable a button, make sure it receives the disabled styling. A button element will automatically be styled as a disabled button when it has the disabled HTML attribute, but an a element will need to have the .ds-c-button--disabled class applied to it.</li>
+</ul>
+
+<p>View more guidance <a href="https://design.cms.gov/components/button/">CMS Design System</a>.</p>
+
+Style guide: components.button.guidance
+*/
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicGFnZXMvY29tcG9uZW50cy9CdXR0b24vQnV0dG9uLmRvY3MuY3NzIiwic291cmNlcyI6WyJwYWdlcy9jb21wb25lbnRzL0J1dHRvbi9CdXR0b24uZG9jcy5zY3NzIl0sInNvdXJjZXNDb250ZW50IjpbIi8qXG5CdXR0b25cblxuQHVzd2RzIGh0dHBzOi8vZGVzaWduc3lzdGVtLmRpZ2l0YWwuZ292L2NvbXBvbmVudHMvYnV0dG9uc1xuXG48cCBjbGFzcz1cImRzLXRleHQtLWxlYWRcIj5BY3Rpb24gYnV0dG9ucyBhbGxvdyBwZW9wbGUgdG8gdGFrZSBhY3Rpb25zIGZyb20gYSBjdXJyZW50IHN0YXRlIHRvIGEgZnV0dXJlIHN0YXRlLiBUaGV5IGFyZSBwcm9taXNlcyB0byB0aGUgdXNlcjsgdGhleSBtdXN0IGRlbGl2ZXIgdGhlIHByb21pc2UgdGhleSBvZmZlciBieSBkb2luZyB3aGF0IHRoZSBidXR0b24gc2F5cyBpdCB3b3VsZCBkby48L3A+XG5cbi0gUFJJTUFSWSBDVEEgaXMgVEVBTCAtIFVzZSBmb3IgdGhlIHByaW9yaXR5IGFjdGlvbiB0aGF0IHdlIHdhbnQgdXNlcnMgdG8gdGFrZS4gVGhlc2UgYWN0aW9ucyBhcmUgcmVxdWlyZWQgZm9yIHRoZSB1c2VyIHRvIG1vdmUgdG8gdGhlIG5leHQgc3RlcCBpbiB0aGUgdXNlciBmbG93IChleGFtcGxlOiBFbnJvbGwpLlxuLSBTRUNPTkRBUlkgQ1RBIGlzIE5BVlkgLSBVc2UgZm9yIGFjdGlvbnMgYXZhaWxhYmxlIGJ1dCBub3QgdGhlIHByaW1hcnkgYWN0aW9uIHdlIHdhbnQgdXNlcnMgdG8gdGFrZSAoZXhhbXBsZTogUGxhbiBEZXRhaWxzKS4gVGhlcmUgZG9lc24ndCBoYXZlIHRvIGJlIGEgcHJpbWFyeSBidXR0b24gb24gdGhlIHBhZ2UgdG8gdXNlIHRoZSBzZWNvbmRhcnkgYnV0dG9uLlxuLSBURVJUSUFSWSBDVEEgaXMgT1VUTElORSBCVVRUT04gd2l0aCB0aGUgY29sb3IgdGhhdCBtYXRjaGVzIHRoZSBvdGhlciBDVEEgb24gdGhlIHBhZ2UgLSBVc2UgZm9yIGFjdGlvbnMgYXZhaWxhYmxlIGJ1dCBkbyBub3QgdGFrZSBwcmlvcml0eSBvdmVyIGEgcHJpbWFyeSBvciBzZWNvbmRhcnkgQ1RBcyAoZXhhbXBsZTogQ2FuY2VsKS4gRm9yIGV4YW1wbGU6IElmIHByaW1hcnkgYnV0dG9uIGlzIHRlYWwsIHRlcnRpYXJ5IGJ1dHRvbiBoYXMgdGVhbCBvdXRsaW5lLlxuLSBPdXRsaW5lIENUQXMgYXJlIG5vdCB1c2VkIGFsb25lIC0gVGhleSBtdXN0IGJlIHBhaXJlZCB3aXRoIGVpdGhlciBhIHByaW1hcnkgb3Igc2Vjb25kYXJ5IENUQS5cbi0gRXhjZXB0aW9uOiBDVEEgb3ZlciBiYWNrZ3JvdW5kIGhlcm8gaW1hZ2Ugb24gbGFuZGluZyBwYWdlcy5cbi0gTG93ZXIgcHJpb3JpdHkgYWN0aW9ucyBhcmUgbGlua3MgLSBSZWZlciB0byBsaW5rIHN0eWxpbmcgZ3VpZGVsaW5lcyB1bmRlciBUeXBvZ3JhcGh5LlxuLSBMYW5kaW5nIFBhZ2UgQnV0dG9uIC0gVGhpcyBsYXJnZXIgYnV0dG9uIGlzIE9OTFkgdXNlZCBpbiB0aGUgaGVybyBpbWFnZSBvZiBsYW5kaW5nIHBhZ2VzLlxuXG48cD5WaWV3IG1vcmUgZ3VpZGFuY2UgYW5kIGRlc2lnbiBhc3NldHMgYXQgPGEgaHJlZj1cImh0dHBzOi8vY21zLmludmlzaW9uYXBwLmNvbS9kc20vY21zL21lZGljYXJlXCI+TWVkaWNhcmUuZ292IERTTTwvYT4uPC9wPlxuXG48aDM+QnV0dG9uIGNsYXNzZXM8L2gzPlxuPHVsPlxuPGxpPjxiPk1vYmlsZSBidXR0b25zPC9iPiAtIENvbnNpZGVyIHVzaW5nIGZ1bGwtd2lkdGggYnV0dG9ucyBvbiBtb2JpbGUgZGV2aWNlcy4gVGhpcyB3aWxsIGhlbHAgaW1wcm92ZSB0aGUgY2xpY2sgcmFuZ2UgZm9yIGJvdGggbGVmdCBvciByaWdodC1oYW5kZWQgdXNlcnMuIFVzZSB0aGUgY2xhc3MgPGNvZGU+bWRzLWMtYnV0dG9uLS1tb2JpbGUtZnVsbC13aWR0aDwvY29kZT4gdG8gYXBwbHkgZnVsbC13aWR0aCBmb3IgbW9iaWxlIGFuZCB0aGUgPGEgaHJlZj1cIi91dGlsaXRpZXMvbWFyZ2luL1wiPnJlc3BvbnNpdmUgbWFyZ2luIGNsYXNzZXM8L2E+IHRvIGFkanVzdCBtYXJnaW5zIG9uIG1vYmlsZS48L2xpPlxuPGxpPjxiPkhpZGluZyBidXR0b25zIG9uIHByaW50PC9iPiAtIEhpZGUgYnV0dG9ucyB3aGVuIHByaW50aW5nIHRvIGF2b2lkIHVubmVjZXNzYXJ5IGNvbnRlbnQgZm9yIHByaW50ZWQgbWF0ZXJpYWwuIFVzZSB0aGUgPGNvZGU+ZHMtdS12aXNpYmlsaXR5LS1oaWRkZW4tcHJpbnQ8L2NvZGU+IGNsYXNzIHRvIGhpZGUgYnV0dG9ucyBvciBhbnkgb3RoZXIgZWxlbWVudHMgb24gcHJpbnQuIFJlZmVyIHRvIHRoZSA8YSBocmVmPVwiL3V0aWxpdGllcy9kaXNwbGF5LXZpc2liaWxpdHkvXCI+ZGlzcGxheS92aXNpYmlsaXR5IHV0aWxpdGllczwvYT4gZm9yIG1vcmUgaW5mb3JtYXRpb24uPC9saT5cbjwvdWw+XG5cbk1hcmt1cDogYnV0dG9uLmV4YW1wbGUuaHRtbFxuXG5TdHlsZSBndWlkZTogY29tcG9uZW50cy5idXR0b25cbiovXG5cbi8qXG5gPEJ1dHRvbj5gXG5cblRoZSBgQnV0dG9uYCBjb21wb25lbnQgYWNjZXB0cyBpdHMgdGV4dCBhcyBjaGlsZHJlbiAoQUtBIGlubmVyIEhUTUwpLCB3aGljaFxubWVhbnMgeW91IGNhbiBhbHNvIHBhc3MgaW4gSFRNTCBvciBjdXN0b20gY29tcG9uZW50cy4gVGhpcyBnaXZlcyB5b3UgYSBsb3Qgb2ZcbmZsZXhpYmlsaXR5IGFuZCBzdXBwb3J0cyBhIHZhcmlldHkgb2YgYWR2YW5jZWQgdXNlIGNhc2VzLiBUaGUgbW9zdCBjb21tb24gdXNlXG5jYXNlIHdvdWxkIGJlIHBhc3NpbmcgaW4gYW4gU1ZHIGljb24gYWxvbmcgd2l0aCB0aGUgdGV4dC5cblxuSW4gYWRkaXRpb24gdG8gdGhlIHN1cHBvcnRlZCBwcm9wcyBsaXN0ZWQsIHlvdSBjYW4gYWxzbyBwYXNzIGluIGFkZGl0aW9uYWxcbnByb3BzLCB3aGljaCB3aWxsIGJlIHBhc3NlZCB0byB0aGUgcmVuZGVyZWQgcm9vdCBjb21wb25lbnQuIEZvciBleGFtcGxlLFxueW91IGNvdWxkIHBhc3MgaW4gYSBgdGFyZ2V0YCBwcm9wIHRvIHBhc3MgdG8gdGhlIHJlbmRlcmVkIGFuY2hvciBlbGVtZW50LlxuXG5AcmVhY3QtZXhhbXBsZSBCdXR0b24uZXhhbXBsZS50c3hcblxuQHJlYWN0LXByb3BzIEJ1dHRvbi50c3hcblxuU3R5bGUgZ3VpZGU6IGNvbXBvbmVudHMuYnV0dG9uLnJlYWN0XG4qL1xuXG4vKlxuLS0tXG4qL1xuXG4vKlxuRGVzaWduIEd1aWRlbGluZXNcblxuPHVsPlxuPGxpPkFjdGlvbiBidXR0b25zIGRvIE5PVCBpbmNsdWRlIGljb25zLiA8L2xpPlxuPGxpPkV4Y2VwdGlvbjogQ2FuIGluY2x1ZGUgaWNvbnMgaW4gYnV0dG9ucyBpbiBtb2JpbGUgZm9yIENUQXMgb3V0bGluaW5nIGZ1bmN0aW9uYWxpdHkuIEV4YW1wbGVzOiBGaWx0ZXIsIFNvcnQsIE1hcCwgYW5kIE1lbnUuIDwvbGk+XG48bGk+T3RoZXIgZXhjZXB0aW9ucyByZXF1aXJlIGFkdmFuY2UgYW5kIHNlcGFyYXRlIGFwcHJvdmFsIHRoYW4gbW9jay11cHMgYnkgcHJvZHVjdCB0ZWFtcy4gU2VlIFwiRXhjZXB0aW9uIHByb2Nlc3NcIiBpbiBGb3VuZGF0aW9ucy48L2xpPlxuPGxpPkJ1dHRvbnMgdXNlIHRpdGxlIGNhc2UuIEV4YW1wbGU6IEpvaW4gUGxhbiBvciBGaW5kIERvY3RvcnMuPC9saT5cbjxsaT5Ob3RlIHRoYXQgY2xpY2thYmxlIGNhcmRzIGFyZSBzZW50ZW5jZSBjYXNlLiBTZWUgdGhhdCBjb21wb25lbnQgZm9yIG1vcmUgaW5mb3JtYXRpb24uPC9saT5cbjwvdWw+XG5cbldoZW4gcGFpcmluZyAyIENUQXM6XG48dWw+XG48bGk+SW4gZm9ybXMvZGVjaXNpb24gdHJlZXM6IEhhdmUgdGhlIHByZWZlcnJlZCBhY3Rpb24gYmUgb24gdGhlIHJpZ2h0LiBFeGFtcGxlOiBCYWNrL05leHQgb3IgQ2FuY2VsL1N1Ym1pdC48L2xpPlxuPGxpPkFsbCBvdGhlciBjYXNlczogSGF2ZSB0aGUgcHJlZmVycmVkIGFjdGlvbiBiZSBvbiB0aGUgbGVmdC4gRXhhbXBsZTogQ3JlYXRlIEFjY291bnQvUmV0dXJuIHRvIEhvbWUgb3IgQ2hhbmdlIE15IEFjY291bnQvU3RvcCBFYXN5IFBheS48L2xpPlxuPC91bD5cblxuPGgyPkNvbnRlbnQgR3VpZGVsaW5lczwvaDI+XG5cbjx1bD5cbjxsaT5EZXNjcmliZSB3aGF0IHdpbGwgaGFwcGVuLCBub3QgdGhlIGN1cnJlbnQgc3RhdGUuIDxpPkV4YW1wbGU6IFN0YXJ0IE92ZXIuPC9pPjwvbGk+XG48bGk+Q1RBIGJ1dHRvbnMgYWx3YXlzIHN0YXJ0IHdpdGggYW4gYWN0aW9uIHZlcmIgdGhhdCBkZXNjcmliZXMgdGhlIG1haW4gdGhpbmcgdXNlcnMgd2lsbCBiZSBhYmxlIHRvIGRvIG9uY2Ugc2VsZWN0ZWQuPC9saT5cbjxsaT5QYWlyIGl0IHdpdGggYSBub3VuIHRvIGhlbHAgaXQgYmUgbW9yZSBjbGVhci4gPGk+RXhhbXBsZTogQ2hhbmdlIFBhc3N3b3JkIG9yIEFkZCBEcnVnLjwvaT48L2xpPlxuPGxpPklmIGluIGEgZm9ybSwgaXQgY2FuIGJlIGp1c3QgdGhlIGFjdGlvbiB2ZXJiIGlmIGl0J3MgbmF2aWdhdGluZyBiZXR3ZWVuIHN0ZXBzLiA8aT5FeGFtcGxlOiBDYW5jZWwsIEJhY2ssIE5leHQsIFN1Ym1pdC48L2k+PC9saT5cbjxsaT5Vc2UgdGhlIGxlYXN0IGFtb3VudCBvZiB3b3JkcyBwb3NzaWJsZSAobm8gbW9yZSB0aGFuIDQpLjwvbGk+XG48bGk+VXNlIHRpdGxlIGNhc2UgZm9yIENUQSBidXR0b25zLjwvbGk+XG48L3VsPlxuXG5HZXQgbW9yZSBjb250ZW50IGd1aWRlbGluZXMgYnkgZ29pbmcgdG8gdGhlIGJ1dHRvbnMgcGFnZSBpbiB0aGUgPGEgaHJlZj1cImh0dHBzOi8vY21zLmludmlzaW9uYXBwLmNvbS9kc20vY21zL21lZGljYXJlXCI+TWVkaWNhcmUuZ292IERTTTwvYT4uXG5cbjxoMj5BY2Nlc3NpYmlsaXR5PC9oMj5cblxuPHVsPlxuPGxpPkJ1dHRvbnMgc2hvdWxkIGRpc3BsYXkgYSB2aXNpYmxlIGZvY3VzIHN0YXRlIHdoZW4gdXNlcnMgdGFiIHRvIHRoZW0uPC9saT5cbjxsaT5DcmVhdGUgYSBidXR0b24gd2l0aCBhIDxjb2RlPmJ1dHRvbjwvY29kZT4gb3IgPGNvZGU+YTwvY29kZT4gZWxlbWVudCB0byByZXRhaW4gdGhlIG5hdGl2ZSBjbGljayBmdW5jdGlvbmFsaXR5LiBBdm9pZCB1c2luZyA8Y29kZT4mbHQ7ZGl2Jmd0OzwvY29kZT4gb3IgPGNvZGU+Jmx0O2ltZyZndDs8L2NvZGU+IHRhZ3MgdG8gY3JlYXRlIGJ1dHRvbnMuIFNjcmVlbiByZWFkZXJzIGRvbid0IGF1dG9tYXRpY2FsbHkga25vdyBlaXRoZXIgaXMgYSB1c2FibGUgYnV0dG9uLjwvbGk+XG48bGk+V2hlbiBzdHlsaW5nIGxpbmtzIHRvIGxvb2sgbGlrZSBidXR0b25zLCByZW1lbWJlciB0aGF0IHNjcmVlbiByZWFkZXJzIGhhbmRsZSBsaW5rcyBzbGlnaHRseSBkaWZmZXJlbnRseSB0aGFuIHRoZXkgZG8gYnV0dG9ucy4gUHJlc3NpbmcgdGhlIDxjb2RlPlNwYWNlPC9jb2RlPiBrZXkgdHJpZ2dlcnMgYSBidXR0b24sIGJ1dCBwcmVzc2luZyB0aGUgPGNvZGU+RW50ZXI8L2NvZGU+IGtleSB0cmlnZ2VycyBhIGxpbmsuPC9saT5cbjxsaT5EaW1tZWQgb3IgdW5hdmFpbGFibGUgYnV0dG9ucyBzaG91bGQgaGF2ZSB0aGUgPGNvZGU+ZGlzYWJsZWQ8L2NvZGU+IGF0dHJpYnV0ZSBhcHBsaWVkLiBUaGlzIHJlbW92ZXMgbmF0aXZlIGNsaWNrIGFuZCBrZXlwcmVzcyBldmVudHMgZnJvbSB0aGUgYnV0dG9uLiBJdCBhbHNvIHByZXZlbnRzIGF1dG9tYXRlZCBzY2FubmVycyBmcm9tIGxvZ2dpbmcgYSBsb3cgY29udHJhc3QgZXJyb3IuIEZpbmFsbHksIGl0IGFubm91bmNlcyB0aGUgYnV0dG9uIGFzIFwiZGltbWVkXCIgb3IgXCJkaXNhYmxlZFwiIHRvIHNjcmVlbiByZWFkZXJzLCBvZmZlcmluZyB1c2VycyBhZGRpdGlvbmFsIGNvbnRleHQuPC9saT5cbjxsaT5EaXNhYmxlZCBidXR0b25zIC0gRG9u4oCZdCBkaXNhYmxlIGJ1dHRvbnMsIHVubGVzcyB0aGVyZeKAmXMgYSBnb29kIHJlYXNvbiB0by48L2xpPlxuPGxpPklmIHlvdSBkbyBkaXNhYmxlIGEgYnV0dG9uLCBtYWtlIHN1cmUgaXQgcmVjZWl2ZXMgdGhlIGRpc2FibGVkIHN0eWxpbmcuIEEgYnV0dG9uIGVsZW1lbnQgd2lsbCBhdXRvbWF0aWNhbGx5IGJlIHN0eWxlZCBhcyBhIGRpc2FibGVkIGJ1dHRvbiB3aGVuIGl0IGhhcyB0aGUgZGlzYWJsZWQgSFRNTCBhdHRyaWJ1dGUsIGJ1dCBhbiBhIGVsZW1lbnQgd2lsbCBuZWVkIHRvIGhhdmUgdGhlIC5kcy1jLWJ1dHRvbi0tZGlzYWJsZWQgY2xhc3MgYXBwbGllZCB0byBpdC48L2xpPlxuPC91bD5cblxuPHA+VmlldyBtb3JlIGd1aWRhbmNlIDxhIGhyZWY9XCJodHRwczovL2Rlc2lnbi5jbXMuZ292L2NvbXBvbmVudHMvYnV0dG9uL1wiPkNNUyBEZXNpZ24gU3lzdGVtPC9hPi48L3A+XG5cblN0eWxlIGd1aWRlOiBjb21wb25lbnRzLmJ1dHRvbi5ndWlkYW5jZVxuKi9cbiJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUE7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0VBMEJFO0FBRUY7Ozs7Ozs7Ozs7Ozs7Ozs7O0VBaUJFO0FBRUY7O0VBRUU7QUFFRjs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7RUE0Q0UifQ== */

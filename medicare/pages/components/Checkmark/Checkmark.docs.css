@@ -1,0 +1,56 @@
+/*
+Checkmark Icon
+
+<div class="ds-c-alert ds-c-alert--error">
+    <div class="ds-c-alert__body">
+      <h2 class="ds-c-alert__heading">Deprecation Notice</h2>
+      <p class="ds-c-alert__text">
+        This component has been marked as 'deprecated' and will be removed in a future release. Please use the component `CheckIcon` with CSS class 'ds-c-icon-color--primary' instead.
+        See details for `CheckIcon` on the <a href="https://cmsgov.github.io/design-system/medicare/components/icon/">Icons page</a>
+      </p>
+    </div>
+</div>
+
+Markup:
+<svg
+  width="24px"
+  height="24px"
+  viewBox="0 0 24 24"
+  version="1.1"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlnsXlink="http://www.w3.org/1999/xlink"
+>
+  <title>Close</title>
+  <g
+    stroke="none"
+    strokeWidth="1"
+    fill="none"
+    fillRule="evenodd"
+  >
+    <g
+      id="Icons/yes"
+      stroke="none"
+      strokeWidth="1"
+      fill="none"
+      fillRule="evenodd"
+    >
+      <path
+        d="M8.79288749,19.6213326 L2.29288115,13.1213263 C1.90237295,12.7308181 1.90237295,12.0976534 2.29288115,11.7071062 L3.70706221,10.292886 C4.09757041,9.90233877 4.73077415,9.90233877 5.12128235,10.292886 L9.5,14.6715622 L18.8787177,5.29288115 C19.2692258,4.90237295 19.9024296,4.90237295 20.2929378,5.29288115 L21.7071189,6.70710128 C22.097627,7.09760947 22.097627,7.73077415 21.7071189,8.12132141 L10.2071076,19.6213717 C9.81656037,20.0118799 9.18339569,20.0118799 8.79288749,19.6213326 L8.79288749,19.6213326 Z"
+        fill="#146A5D"
+      ></path>
+    </g>
+  </g>
+</svg>
+
+Style guide: components.checkmark-icon
+*/
+/*
+`<Checkmark>`
+
+@react-example Checkmark.example.tsx
+
+@react-props Checkmark.tsx
+
+Style guide: components.checkmark-icon.react
+*/
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicGFnZXMvY29tcG9uZW50cy9DaGVja21hcmsvQ2hlY2ttYXJrLmRvY3MuY3NzIiwic291cmNlcyI6WyJwYWdlcy9jb21wb25lbnRzL0NoZWNrbWFyay9DaGVja21hcmsuZG9jcy5zY3NzIl0sInNvdXJjZXNDb250ZW50IjpbIi8qXG5DaGVja21hcmsgSWNvblxuXG48ZGl2IGNsYXNzPVwiZHMtYy1hbGVydCBkcy1jLWFsZXJ0LS1lcnJvclwiPlxuICAgIDxkaXYgY2xhc3M9XCJkcy1jLWFsZXJ0X19ib2R5XCI+XG4gICAgICA8aDIgY2xhc3M9XCJkcy1jLWFsZXJ0X19oZWFkaW5nXCI+RGVwcmVjYXRpb24gTm90aWNlPC9oMj5cbiAgICAgIDxwIGNsYXNzPVwiZHMtYy1hbGVydF9fdGV4dFwiPlxuICAgICAgICBUaGlzIGNvbXBvbmVudCBoYXMgYmVlbiBtYXJrZWQgYXMgJ2RlcHJlY2F0ZWQnIGFuZCB3aWxsIGJlIHJlbW92ZWQgaW4gYSBmdXR1cmUgcmVsZWFzZS4gUGxlYXNlIHVzZSB0aGUgY29tcG9uZW50IGBDaGVja0ljb25gIHdpdGggQ1NTIGNsYXNzICdkcy1jLWljb24tY29sb3ItLXByaW1hcnknIGluc3RlYWQuXG4gICAgICAgIFNlZSBkZXRhaWxzIGZvciBgQ2hlY2tJY29uYCBvbiB0aGUgPGEgaHJlZj1cImh0dHBzOi8vY21zZ292LmdpdGh1Yi5pby9kZXNpZ24tc3lzdGVtL21lZGljYXJlL2NvbXBvbmVudHMvaWNvbi9cIj5JY29ucyBwYWdlPC9hPlxuICAgICAgPC9wPlxuICAgIDwvZGl2PlxuPC9kaXY+XG5cbk1hcmt1cDpcbjxzdmdcbiAgd2lkdGg9XCIyNHB4XCJcbiAgaGVpZ2h0PVwiMjRweFwiXG4gIHZpZXdCb3g9XCIwIDAgMjQgMjRcIlxuICB2ZXJzaW9uPVwiMS4xXCJcbiAgeG1sbnM9XCJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Z1wiXG4gIHhtbG5zWGxpbms9XCJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rXCJcbj5cbiAgPHRpdGxlPkNsb3NlPC90aXRsZT5cbiAgPGdcbiAgICBzdHJva2U9XCJub25lXCJcbiAgICBzdHJva2VXaWR0aD1cIjFcIlxuICAgIGZpbGw9XCJub25lXCJcbiAgICBmaWxsUnVsZT1cImV2ZW5vZGRcIlxuICA+XG4gICAgPGdcbiAgICAgIGlkPVwiSWNvbnMveWVzXCJcbiAgICAgIHN0cm9rZT1cIm5vbmVcIlxuICAgICAgc3Ryb2tlV2lkdGg9XCIxXCJcbiAgICAgIGZpbGw9XCJub25lXCJcbiAgICAgIGZpbGxSdWxlPVwiZXZlbm9kZFwiXG4gICAgPlxuICAgICAgPHBhdGhcbiAgICAgICAgZD1cIk04Ljc5Mjg4NzQ5LDE5LjYyMTMzMjYgTDIuMjkyODgxMTUsMTMuMTIxMzI2MyBDMS45MDIzNzI5NSwxMi43MzA4MTgxIDEuOTAyMzcyOTUsMTIuMDk3NjUzNCAyLjI5Mjg4MTE1LDExLjcwNzEwNjIgTDMuNzA3MDYyMjEsMTAuMjkyODg2IEM0LjA5NzU3MDQxLDkuOTAyMzM4NzcgNC43MzA3NzQxNSw5LjkwMjMzODc3IDUuMTIxMjgyMzUsMTAuMjkyODg2IEw5LjUsMTQuNjcxNTYyMiBMMTguODc4NzE3Nyw1LjI5Mjg4MTE1IEMxOS4yNjkyMjU4LDQuOTAyMzcyOTUgMTkuOTAyNDI5Niw0LjkwMjM3Mjk1IDIwLjI5MjkzNzgsNS4yOTI4ODExNSBMMjEuNzA3MTE4OSw2LjcwNzEwMTI4IEMyMi4wOTc2MjcsNy4wOTc2MDk0NyAyMi4wOTc2MjcsNy43MzA3NzQxNSAyMS43MDcxMTg5LDguMTIxMzIxNDEgTDEwLjIwNzEwNzYsMTkuNjIxMzcxNyBDOS44MTY1NjAzNywyMC4wMTE4Nzk5IDkuMTgzMzk1NjksMjAuMDExODc5OSA4Ljc5Mjg4NzQ5LDE5LjYyMTMzMjYgTDguNzkyODg3NDksMTkuNjIxMzMyNiBaXCJcbiAgICAgICAgZmlsbD1cIiMxNDZBNURcIlxuICAgICAgPjwvcGF0aD5cbiAgICA8L2c+XG4gIDwvZz5cbjwvc3ZnPlxuXG5TdHlsZSBndWlkZTogY29tcG9uZW50cy5jaGVja21hcmstaWNvblxuKi9cblxuLypcbmA8Q2hlY2ttYXJrPmBcblxuQHJlYWN0LWV4YW1wbGUgQ2hlY2ttYXJrLmV4YW1wbGUudHN4XG5cbkByZWFjdC1wcm9wcyBDaGVja21hcmsudHN4XG5cblN0eWxlIGd1aWRlOiBjb21wb25lbnRzLmNoZWNrbWFyay1pY29uLnJlYWN0XG4qL1xuIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7RUE2Q0U7QUFFRjs7Ozs7Ozs7RUFRRSJ9 */
