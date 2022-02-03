@@ -171,6 +171,7 @@
 .ds-c-vertical-nav .ds-c-vertical-nav__item {
   @media (-ms-high-contrast: active), (forced-colors: active) {
     border-top: 1px solid LinkText;
+    border-bottom: 1px solid LinkText;
   }
 }
 
