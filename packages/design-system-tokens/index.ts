@@ -1,9 +1,10 @@
 import * as fs from 'fs';
-import buildSass from './buildsass';
+import { tokenExporter } from './lib/utility';
 
 const OUTPUT_DIR = './dist';
 
 ((): void => {
+
   if (!fs.existsSync('./dist')) fs.mkdirSync('./dist');
 
   const help = (error: string) => {
@@ -22,17 +23,9 @@ const OUTPUT_DIR = './dist';
   const contentType = args[0];
   const exportType = args[1];
 
-  if (contentType === 'themes') {
-    switch (exportType) {
-      case 'scss':
-        buildSass.themes(OUTPUT_DIR);
-        break;
-    }
-  } else if (contentType === 'tokens') {
-    switch (exportType) {
-      case 'scss':
-        buildSass.tokens(OUTPUT_DIR);
-        break;
-    }
-  }
+  tokenExporter(contentType, exportType, OUTPUT_DIR).then(res => {
+    process.exit(res);
+  });
+
+
 })();

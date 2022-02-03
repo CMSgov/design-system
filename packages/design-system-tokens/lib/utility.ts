@@ -18,8 +18,10 @@ export const HexToRgb = (hex: Types.HexValue): Types.RGBValue | null => {
   return null;
 };
 
-export const loadTheme = async (file: string): Promise<Types.ImportTypes> => {
-  const tsData = await import(`${file}`).catch((error) => {
+
+
+export const loadTSData = async (file: string): Promise<Types.ImportTypes> => {
+  const tsData = await import(`../${file}`).catch((error) => {
     console.error(error);
     process.exit(1);
   });
@@ -40,3 +42,63 @@ export const getAllFiles = (dirPath: string, arrayOfFiles: string[]): string[] =
   });
   return arrayOfFiles;
 };
+
+const exportScss = async(fd: {}[]): Promise<number> => {
+  return 1
+}
+
+const exportSketch = async(fd: {}[]): Promise<number> => {
+  return 0
+}
+
+
+// search out all availible token files in a path and build them
+//
+export const collectFiles = (inPath: string) => {
+  const af = getAllFiles(inPath, []);
+  const fd = [{}];
+
+  af.forEach((mod) => {
+
+    // strip extension and set export filename based on directory
+    // filenames are created based on inPath, their directory and
+    // the subdirectory they are under.
+    // 
+    // ie: brands/core/red -> core-red.scss
+    //     tokens/spacing --> tokens-spacing.scss
+    //
+    const moduleImportName = mod.replace(/\..+$/, '');
+    const parentDirectoryName = path.dirname(mod).split(path.sep).pop();
+    const fileBaseName = path.parse(mod).name;
+    const exportFileName = `${parentDirectoryName}-${fileBaseName}`;
+
+    if (fileBaseName === 'index') return;
+
+    fd.push({
+      m: moduleImportName,
+      pd: parentDirectoryName,
+      bn: fileBaseName,
+      efn: exportFileName
+    });
+  });
+
+  return fd;
+};
+
+export const tokenExporter = async (
+  contentType: string,
+  exportType: string,
+  outPath: string
+  ): Promise<number> => {
+
+    const fileData = contentType === 'tokens'
+      ? collectFiles('tokens')
+      : collectFiles('brands');
+
+    if (exportType === 'scss')
+        return exportScss(fileData)
+    if (exportType === 'sketch')
+        return exportSketch(fileData)
+
+    return 1;
+}
