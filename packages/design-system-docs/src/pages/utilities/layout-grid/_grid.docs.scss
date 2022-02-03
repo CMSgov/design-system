@@ -1,7 +1,7 @@
 /*
 Layout grid
 
-Use the layout grid for organizing space, text, images, and other elements used in design. Following a grid while designing user interfaces (UI) provides a consistent design across various screen sizes and supports UX designers to manage spacing and alignment between various elements. It ensure pixel-perfect designs are created and handed off to engineers for implementation without adding rework later.
+Use the layout grid for organizing space, text, images, and other elements used in design. Following a grid while designing user interfaces (UI) provides consistent design across various screen sizes. 
 
 The design system utilizes a responsive 12-column layout grid.
 
@@ -34,8 +34,8 @@ The design system utilizes a responsive 12-column layout grid.
 **The grid consists of three distinct pieces:**
 
 1. **Containers** add a maximum width and centers the content
-1. **Rows** enable the flexbox layout and contains the columns
-1. **Columns** determine the number of columns an item will span across, out of a possible 12 per row.
+1. **Rows** enable layout and contains the columns
+1. **Columns** determine the number of columns an item will span across, out of a possible 12 per row
 
 ## Breakpoints
 
