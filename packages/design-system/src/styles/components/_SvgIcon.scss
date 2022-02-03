@@ -24,6 +24,12 @@
 // Icon color variations
 .ds-c-icon-color--primary {
   color: $color-primary;
+
+  /* stylelint-disable scss/media-feature-value-dollar-variable */
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    color: WindowText;
+  }
+  /* stylelint-enable scss/media-feature-value-dollar-variable */
 }
 
 .ds-c-icon-color--inverse {
