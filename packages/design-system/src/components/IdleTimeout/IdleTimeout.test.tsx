@@ -6,7 +6,7 @@ import { render, fireEvent } from '@testing-library/react';
 describe('Idle Timeout', () => {
   const onTimeout = jest.fn();
 
-  const renderIdleTimeout = (overrideProps) => {
+  const renderIdleTimeout = (overrideProps?) => {
     return render(<IdleTimeout timeToTimeout={5} onTimeout={onTimeout} {...overrideProps} />);
   };
   describe('timeout countdown', () => {
@@ -57,26 +57,19 @@ describe('Idle Timeout', () => {
     });
   });
 
-  it('should replace token in message', () => {
-    const message = 'Your session will end in <timeToTimeout>.';
-    const { getByRole } = renderIdleTimeout({ message });
-    const dialogBodyText = getByRole('main');
-    expect(dialogBodyText.textContent).toEqual('Your session will end in 5 minutes.');
-  });
-
-  it('should adjust message for singular minute vs multiple', () => {
-    const message = 'Your session will end in <timeToTimeout>.';
-    const { getByRole } = renderIdleTimeout({ message, timeToWarning: 1 });
-    const dialogBodyText = getByRole('main');
-    expect(dialogBodyText.textContent).toEqual('Your session will end in 1 minute.');
-  });
-
-  it('should replace multiple token instances in message', () => {
-    const message = 'Your session will end in <timeToTimeout>. <timeToTimeout> until session ends';
-    const { getByRole } = renderIdleTimeout({ message });
+  it('default formateMessage should replace time in message', () => {
+    const { getByRole } = renderIdleTimeout();
     const dialogBodyText = getByRole('main');
     expect(dialogBodyText.textContent).toEqual(
-      'Your session will end in 5 minutes. 5 minutes until session ends'
+      `You've been inactive for a while.Your session will end in 5 minutes.Select "Continue session" below if you want more time.`
+    );
+  });
+
+  it('default formateMessage should adjust message for singular minute vs multiple', () => {
+    const { getByRole } = renderIdleTimeout({ timeToWarning: 1 });
+    const dialogBodyText = getByRole('main');
+    expect(dialogBodyText.textContent).toEqual(
+      `You've been inactive for a while.Your session will end in 1 minute.Select "Continue session" below if you want more time.`
     );
   });
 

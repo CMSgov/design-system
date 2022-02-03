@@ -22,10 +22,10 @@ export interface IdleTimeoutProps {
    */
   endSessionButtonText?: string;
   /**
-   * The message text for the warning dialog.
-   * Note that using the token `<timeToTimeout>` will be replaced in the message text with the number of minutes until timeout.
+   * A formatting function that returns the string to be used in the warning modal
+   * The formatting function is provided the timeTilTimeout (in minutes).
    */
-  message?: string;
+  formatMessage?: (timeTilTimeout: number) => string | React.ReactNode;
   /**
    * Optional function that is called when the warning dialog's close button is clicked
    */
@@ -58,12 +58,31 @@ export interface IdleTimeoutProps {
   timeToWarning?: number;
 }
 
+const defaultMessageFormatter = (timeTilTimeout: number): React.ReactNode => {
+  const unitOfTime = timeTilTimeout === 1 ? 'minute' : 'minutes';
+
+  return (
+    <p>
+      You&apos;ve been inactive for a while.
+      <br />
+      Your session will end in{' '}
+      <strong>
+        {timeTilTimeout} {unitOfTime}
+      </strong>
+      .
+      <br />
+      <br />
+      Select &quot;Continue session&quot; below if you want more time.
+    </p>
+  );
+};
+
 const IdleTimeout = ({
   closeDialogText = 'Close',
   continueSessionText = 'Continue session',
   heading = 'Are you still there?',
   endSessionButtonText = 'Logout',
-  message = 'You’ve been inactive for a while. <br/>Your session will end in <timeToTimeout>. <br/><br/>Select "Continue session" below if you want more time.',
+  formatMessage = defaultMessageFormatter,
   onClose,
   onSessionContinue,
   onSessionForcedEnd,
@@ -72,13 +91,6 @@ const IdleTimeout = ({
   timeToTimeout,
   timeToWarning = 5,
 }: IdleTimeoutProps) => {
-  const replaceMessageTokens = (timeUntil: number) => {
-    const unitOfTime = timeUntil === 1 ? 'minute' : 'minutes';
-    return message.replace(/<timeToTimeout>/gi, `<strong>${timeUntil} ${unitOfTime}</strong>`);
-  };
-
-  const formattedDialogMessage = replaceMessageTokens(timeToWarning);
-
   const handleContinueSession = () => {
     // reset countdown timer
     if (onSessionContinue) {
@@ -126,7 +138,7 @@ const IdleTimeout = ({
       actions={renderDialogActions()}
       onExit={handleDialogClose}
     >
-      <div dangerouslySetInnerHTML={{ __html: formattedDialogMessage }} />
+      {formatMessage(timeToWarning)}
     </Dialog>
   );
 };
