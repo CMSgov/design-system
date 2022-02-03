@@ -7,28 +7,17 @@ import IdleTimeoutDialog from './IdleTimeoutDialog';
 export default {
   title: 'Components/Idle Timeout',
   component: IdleTimeout,
-  argTypes: {},
-  args: {
-    timeToTimeout: 3,
-    timeToWarning: 2,
-    onTimeout: () => {
-      console.log('onTimeout');
-    },
-  },
 };
 
-const Template = ({ ...args }) => (
+export const Default = () => (
   <IdleTimeout
-    timeToTimeout={3}
+    timeToTimeout={2}
     onTimeout={() => {
       console.log('onTimeout');
     }}
-    {...args}
     timeToWarning={2}
   />
 );
-
-export const Default = Template.bind({});
 export const ViewDialog = () => (
   <IdleTimeoutDialog
     continueSessionText="Continue Session"

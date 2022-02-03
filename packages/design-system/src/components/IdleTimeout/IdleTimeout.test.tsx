@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import React from 'react';
 import IdleTimeout from './IdleTimeout';
-import { render, fireEvent, waitFor } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 describe('Idle Timeout', () => {
   const onTimeout = jest.fn();
@@ -21,7 +21,9 @@ describe('Idle Timeout', () => {
   });
 
   afterEach(() => {
+    jest.clearAllTimers();
     jest.useRealTimers();
+    jest.resetAllMocks();
   });
 
   it('should error if timeToWarning is greater than timeToTimeout', () => {
@@ -53,9 +55,29 @@ describe('Idle Timeout', () => {
       expect(warningEl).toBeDefined();
     });
 
-    xit('should reset countdown if mouse moves', () => {});
+    it('should reset countdown if mouse moves', () => {
+      const setTimeoutSpy = jest.spyOn(window, 'setTimeout');
+      const clearTimeoutSpy = jest.spyOn(window, 'clearTimeout');
+      renderIdleTimeout();
+      fireEvent.mouseMove(document);
+      expect(clearTimeoutSpy).toHaveBeenCalledTimes(2);
+      expect(setTimeoutSpy).toHaveBeenCalledTimes(4);
 
-    xit('should reset countdown if key is pressed', () => {});
+      setTimeoutSpy.mockRestore();
+      clearTimeoutSpy.mockRestore();
+    });
+
+    it('should reset countdown if key is pressed', () => {
+      const setTimeoutSpy = jest.spyOn(window, 'setTimeout');
+      const clearTimeoutSpy = jest.spyOn(window, 'clearTimeout');
+      renderIdleTimeout();
+      fireEvent.keyPress(document);
+      expect(clearTimeoutSpy).toHaveBeenCalledTimes(2);
+      expect(setTimeoutSpy).toHaveBeenCalledTimes(4);
+
+      setTimeoutSpy.mockRestore();
+      clearTimeoutSpy.mockRestore();
+    });
 
     it('should call onTimeout when countdown ends', () => {
       renderIdleTimeout();
@@ -119,5 +141,27 @@ describe('Idle Timeout', () => {
     expect(dialogBodyText.textContent).toEqual('Your session will end in 2 minutes.');
     jest.advanceTimersByTime(60000);
     expect(dialogBodyText.textContent).toEqual('Your session will end in 1 minute.');
+  });
+
+  xit('should cleanup timers on unmount', () => {
+    const { unmount, queryByRole } = renderIdleTimeout();
+    const spy = jest.spyOn(window, 'clearTimeout');
+    unmount();
+    jest.advanceTimersByTime(timeTilWarningShown);
+    const dialogEl = queryByRole('alertdialog');
+    expect(dialogEl).toBeNull();
+    expect(spy).toHaveBeenCalledTimes(4);
+    spy.mockRestore();
+  });
+
+  xit('should cleanup event listeners on unmount', () => {
+    const { unmount, queryByRole } = renderIdleTimeout();
+    const spy = jest.spyOn(document, 'removeEventListener');
+    unmount();
+    jest.advanceTimersByTime(timeTilWarningShown);
+    const dialogEl = queryByRole('alertdialog');
+    expect(dialogEl).toBeNull();
+    expect(spy).toHaveBeenCalledTimes(2);
+    spy.mockRestore();
   });
 });

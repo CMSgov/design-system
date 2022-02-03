@@ -1,4 +1,5 @@
 /* eslint-disable react/no-multi-comp */
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import React, { useState, useEffect } from 'react';
 import IdleTimeoutDialog from './IdleTimeoutDialog';
 
@@ -86,6 +87,7 @@ const IdleTimeout = ({
     replaceMessageTokens(timeToWarning)
   );
 
+  // cleanup timeouts & intervals
   const clearTimeouts = () => {
     clearTimeout(timeoutTimerId);
     clearTimeout(warningTimerId);
@@ -94,14 +96,19 @@ const IdleTimeout = ({
     }
   };
 
+  // when the countdown for the session ends, clean up, call callback & close modal
   const handleTimeout = () => {
     clearTimeouts();
+    removeEventListeners();
     onTimeout();
     setShowWarning(false);
   };
 
+  // when it's time to warn the user about idleness,
+  // set an interval that updates the modal message
   const handleWarningTimeout = () => {
     setShowWarning(true);
+    removeEventListeners();
     let timeTilTimeout = timeToWarning - 1;
     const intervalId = setInterval(() => {
       setFormattedDialogMessage(replaceMessageTokens(timeTilTimeout));
@@ -118,18 +125,30 @@ const IdleTimeout = ({
     setWarningTimer(warningTimerId);
   };
 
-  useEffect(() => {
-    setTimeouts();
-
-    return () => {
-      clearTimeouts();
-    };
-  }, []);
-
   const resetTimeouts = () => {
     clearTimeouts();
     setTimeouts();
   };
+
+  const removeEventListeners = () => {
+    document.removeEventListener('mousemove', resetTimeouts);
+    document.removeEventListener('keypress', resetTimeouts);
+  };
+
+  const addEventListeners = () => {
+    document.addEventListener('mousemove', resetTimeouts);
+    document.addEventListener('keypress', resetTimeouts);
+  };
+
+  useEffect(() => {
+    setTimeouts();
+    addEventListeners();
+
+    return () => {
+      clearTimeouts();
+      removeEventListeners();
+    };
+  }, []);
 
   const handleSessionContinue = () => {
     if (onSessionContinue) {
@@ -137,6 +156,7 @@ const IdleTimeout = ({
     }
     setShowWarning(false);
     resetTimeouts();
+    addEventListeners();
   };
 
   const handleSessionForcedEnd = () => {
@@ -146,6 +166,7 @@ const IdleTimeout = ({
       onTimeout();
     }
     clearTimeouts();
+    removeEventListeners();
     setShowWarning(false);
   };
 
