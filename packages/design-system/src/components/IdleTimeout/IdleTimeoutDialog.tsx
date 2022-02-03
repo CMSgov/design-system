@@ -1,5 +1,4 @@
 /* eslint-disable react/no-multi-comp */
-/* eslint-disable react/no-danger */
 import React from 'react';
 import { Dialog } from '../Dialog';
 import { Button } from '../Button';
@@ -25,7 +24,7 @@ export interface IdleTimeoutDialogProps {
    * The message text for the warning dialog.
    * Note that using the token `<timeToTimeout>` will be replaced in the message text with the number of minutes until timeout.
    */
-  message: string;
+  message: string | React.ReactNode;
   /**
    * Optional function that is called when the user chooses to keep the session alive.
    * The IdleTimeout component will reset the countdown internally.
@@ -76,7 +75,7 @@ const IdleTimeoutDialog = ({
       actions={renderDialogActions()}
       hideCloseButton
     >
-      <div dangerouslySetInnerHTML={{ __html: message }} />
+      {message}
     </Dialog>
   );
 };

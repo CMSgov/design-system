@@ -105,42 +105,34 @@ describe('Idle Timeout', () => {
     });
   });
 
-  it('should replace token in message', () => {
-    const message = 'Your session will end in <timeToTimeout>.';
-    const { getByRole } = renderIdleTimeout({ message });
-    jest.advanceTimersByTime(timeTilWarningShown);
-    const dialogBodyText = getByRole('main');
-    expect(dialogBodyText.textContent).toEqual('Your session will end in 3 minutes.');
-  });
-
-  it('should adjust message for singular minute vs multiple', () => {
-    const message = 'Your session will end in <timeToTimeout>.';
-    const { getByRole } = renderIdleTimeout({ message, timeToWarning: 1 });
-    jest.advanceTimersByTime((defaultProps.timeToTimeout - 1) * 60000);
-    const dialogBodyText = getByRole('main');
-    expect(dialogBodyText.textContent).toEqual('Your session will end in 1 minute.');
-  });
-
-  it('should replace multiple token instances in message', () => {
-    const message = 'Your session will end in <timeToTimeout>. <timeToTimeout> until session ends';
-    const { getByRole } = renderIdleTimeout({ message });
+  it('default formatMessage should replace time in message', () => {
+    const { getByRole } = renderIdleTimeout();
     jest.advanceTimersByTime(timeTilWarningShown);
     const dialogBodyText = getByRole('main');
     expect(dialogBodyText.textContent).toEqual(
-      'Your session will end in 3 minutes. 3 minutes until session ends'
+      `You've been inactive for a while.Your session will end in 3 minutes.Select "Continue session" below if you want more time.`
+    );
+  });
+
+  it('default formatMessage should adjust message for singular minute vs multiple', () => {
+    const { getByRole } = renderIdleTimeout({ timeToWarning: 1 });
+    jest.advanceTimersByTime((defaultProps.timeToTimeout - 1) * 60000);
+    const dialogBodyText = getByRole('main');
+    expect(dialogBodyText.textContent).toEqual(
+      `You've been inactive for a while.Your session will end in 1 minute.Select "Continue session" below if you want more time.`
     );
   });
 
   it('should replace token in message every minute', () => {
-    const message = 'Your session will end in <timeToTimeout>.';
-    const { getByRole } = renderIdleTimeout({ message });
+    const formatMessage = (time) => `Your session will end in ${time}.`;
+    const { getByRole } = renderIdleTimeout({ formatMessage });
     jest.advanceTimersByTime(timeTilWarningShown);
     const dialogBodyText = getByRole('main');
-    expect(dialogBodyText.textContent).toEqual('Your session will end in 3 minutes.');
+    expect(dialogBodyText.textContent).toEqual('Your session will end in 3.');
     jest.advanceTimersByTime(60000);
-    expect(dialogBodyText.textContent).toEqual('Your session will end in 2 minutes.');
+    expect(dialogBodyText.textContent).toEqual('Your session will end in 2.');
     jest.advanceTimersByTime(60000);
-    expect(dialogBodyText.textContent).toEqual('Your session will end in 1 minute.');
+    expect(dialogBodyText.textContent).toEqual('Your session will end in 1.');
   });
 
   xit('should cleanup timers on unmount', () => {

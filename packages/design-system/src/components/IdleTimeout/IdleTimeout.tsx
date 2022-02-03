@@ -21,10 +21,10 @@ export interface IdleTimeoutProps {
    */
   endSessionRedirectUrl?: string;
   /**
-   * The message text for the warning dialog.
-   * Note that using the token `<timeToTimeout>` will be replaced in the message text with the number of minutes until timeout.
+   * A formatting function that returns the string to be used in the warning modal
+   * The formatting function is provided the timeTilTimeout (in minutes).
    */
-  message?: string;
+  formatMessage?: (timeTilTimeout: number) => string | React.ReactNode;
   /**
    * Optional function that is called when the user chooses to keep the session alive.
    * The IdleTimeout component will reset the countdown internally.
@@ -53,12 +53,31 @@ export interface IdleTimeoutProps {
   timeToWarning?: number;
 }
 
+const defaultMessageFormatter = (timeTilTimeout: number): React.ReactNode => {
+  const unitOfTime = timeTilTimeout === 1 ? 'minute' : 'minutes';
+
+  return (
+    <p>
+      You&apos;ve been inactive for a while.
+      <br />
+      Your session will end in{' '}
+      <strong>
+        {timeTilTimeout} {unitOfTime}
+      </strong>
+      .
+      <br />
+      <br />
+      Select &quot;Continue session&quot; below if you want more time.
+    </p>
+  );
+};
+
 const IdleTimeout = ({
   continueSessionText = 'Continue session',
   heading = 'Are you still there?',
   endSessionButtonText = 'Logout',
   endSessionRedirectUrl = '/logout',
-  message = 'You’ve been inactive for a while. <br/>Your session will end in <timeToTimeout>. <br/><br/>Select "Continue session" below if you want more time.',
+  formatMessage = defaultMessageFormatter,
   onSessionContinue,
   onSessionForcedEnd,
   onTimeout,
@@ -66,11 +85,6 @@ const IdleTimeout = ({
   timeToTimeout,
   timeToWarning = 5,
 }: IdleTimeoutProps) => {
-  const replaceMessageTokens = (timeUntil: number): string => {
-    const unitOfTime = timeUntil === 1 ? 'minute' : 'minutes';
-    return message.replace(/<timeToTimeout>/gi, `<strong>${timeUntil} ${unitOfTime}</strong>`);
-  };
-
   if (timeToWarning > timeToTimeout) {
     console.error(
       'Error in TimeoutManager component. `timeToWarning` is greater or equal to `timeToTimeout`'
@@ -83,9 +97,7 @@ const IdleTimeout = ({
   const [warningTimerId, setWarningTimer] = useState<NodeJS.Timeout>(null);
   const [warningIntervalId, setWarningIntervalId] = useState<NodeJS.Timeout>(null);
   const [showWarning, setShowWarning] = useState<boolean>(false);
-  const [formattedDialogMessage, setFormattedDialogMessage] = useState<string>(
-    replaceMessageTokens(timeToWarning)
-  );
+  const [timeInWarning, setTimeInWarning] = useState<number>(timeToWarning);
 
   // cleanup timeouts & intervals
   const clearTimeouts = () => {
@@ -111,7 +123,7 @@ const IdleTimeout = ({
     removeEventListeners();
     let timeTilTimeout = timeToWarning - 1;
     const intervalId = setInterval(() => {
-      setFormattedDialogMessage(replaceMessageTokens(timeTilTimeout));
+      setTimeInWarning(timeTilTimeout);
       timeTilTimeout--;
     }, 60000);
     setWarningIntervalId(intervalId);
@@ -151,6 +163,7 @@ const IdleTimeout = ({
   }, []);
 
   const handleSessionContinue = () => {
+    // reset countdown timer
     if (onSessionContinue) {
       onSessionContinue();
     }
@@ -176,7 +189,7 @@ const IdleTimeout = ({
       heading={heading}
       endSessionButtonText={endSessionButtonText}
       endSessionRedirectUrl={endSessionRedirectUrl}
-      message={formattedDialogMessage}
+      message={formatMessage(timeInWarning)}
       onSessionContinue={handleSessionContinue}
       onSessionForcedEnd={handleSessionForcedEnd}
       showSessionEndButton={showSessionEndButton}
