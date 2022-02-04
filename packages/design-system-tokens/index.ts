@@ -1,35 +1,26 @@
 import * as fs from 'fs';
 import * as u from './lib/utility';
-import exportScss from './lib/token-to-sass'
+import exportScss from './lib/exportScss';
 
 const OUTPUT_DIR = './dist';
 
 // main token export function, returns a promise with a number to describe
 // the exit status (0 success, 1 failure) of the operation performed
 //
-const tokenExporter = (
-  contentType: string,
-  exportType: string,
-  outPath: string
-  ): number => {
+const tokenExporter = (contentType: string, exportType: string, outPath: string): number => {
+  const fileData = contentType === 'tokens' ? u.collectFiles('tokens') : u.collectFiles('brands');
 
-    const fileData = contentType === 'tokens'
-      ? u.collectFiles('tokens')
-      : u.collectFiles('brands');
-
-      switch (exportType) {
-        case 'scss':
-          return exportScss(fileData, outPath)
-        default: 
-          return 0
-      }
-    // if (exportType === 'sketch')
-    //     return exportSketch(fileData, outPath)
-}
-
+  switch (exportType) {
+    case 'scss':
+      return exportScss(fileData, outPath);
+    default:
+      return 0;
+  }
+  // if (exportType === 'sketch')
+  //     return exportSketch(fileData, outPath)
+};
 
 ((): void => {
-
   if (!fs.existsSync('./dist')) fs.mkdirSync('./dist');
 
   const help = (error: string) => {
@@ -50,8 +41,7 @@ const tokenExporter = (
   const contentType = args[0];
   const exportType = args[1];
 
-  const res = tokenExporter(contentType, exportType, OUTPUT_DIR)
+  const res = tokenExporter(contentType, exportType, OUTPUT_DIR);
 
-  process.exit(res)
-
+  process.exit(res);
 })();

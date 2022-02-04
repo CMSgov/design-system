@@ -5,7 +5,8 @@ const makeTheme = <T extends Types.ThemeTokens>(value: T) => {
   return value;
 };
 
-const ThemeTokens = makeTheme({
+const DefaultTheme = makeTheme({
+  description: 'Default CMSDS Core Theme',
   color: {
     'color-white': Tokens.color.white,
     'color-black': Tokens.color.black,
@@ -14,4 +15,4 @@ const ThemeTokens = makeTheme({
   spacing: { ...Tokens.spacing },
 });
 
-export default ThemeTokens
+export default DefaultTheme;
