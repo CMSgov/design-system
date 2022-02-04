@@ -7,22 +7,24 @@ const OUTPUT_DIR = './dist';
 // main token export function, returns a promise with a number to describe
 // the exit status (0 success, 1 failure) of the operation performed
 //
-const tokenExporter = async (
+const tokenExporter = (
   contentType: string,
   exportType: string,
   outPath: string
-  ): Promise<number> => {
+  ): number => {
 
     const fileData = contentType === 'tokens'
       ? u.collectFiles('tokens')
       : u.collectFiles('brands');
 
-    if (exportType === 'scss')
-        return exportScss(fileData, outPath)
+      switch (exportType) {
+        case 'scss':
+          return exportScss(fileData, outPath)
+        default: 
+          return 0
+      }
     // if (exportType === 'sketch')
     //     return exportSketch(fileData, outPath)
-
-    return 1;
 }
 
 
@@ -41,13 +43,15 @@ const tokenExporter = async (
   };
 
   const args = process.argv.slice(2);
-  if (args.length <= 0 || args[1] !== ('scss' || 'sketch')) help('invalid outputType');
+  if (args.length <= 0) help('no arguments provided');
+  if (!['themes', 'tokens'].includes(args[0])) help('must be themes or tokens');
+  if (!['scss', 'sketch'].includes(args[1])) help('missing ouptut type, should be scss or sketch');
 
   const contentType = args[0];
   const exportType = args[1];
 
-  tokenExporter(contentType, exportType, OUTPUT_DIR).then(res => {
-    process.exit(res);
-  });
+  const res = tokenExporter(contentType, exportType, OUTPUT_DIR)
+
+  process.exit(res)
 
 })();

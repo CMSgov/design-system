@@ -1,5 +1,4 @@
 import * as fs from 'fs';
-import * as u from './utility';
 import * as Types from './types';
 
 // Takes an array of file descriptors with the properties:
@@ -11,36 +10,30 @@ import * as Types from './types';
 // }
 // and writes their imported data to filesystem
 //
-export const exportScss = async(fd: Types.FileDescriptor[], outPath: string): Promise<number> => {
+export const exportScss = (fd: Types.FileDescriptor[], outPath: string): number => {
   fd.forEach((m) => {
-    exportScssFile(m.m, m.bn, outPath)
-  });
-  return 0
-}
+    let md = require(`../${m.m}`)
 
-export const exportScssFile = (mod: string, filename: string, outputPath: string): number => {
-  u.loadTSData(mod).then((m: Types.ImportTypes) => {
+    // if does not contain top level theme def one loop, otherwise 2
 
-    Object.keys(m).forEach((k) => {
-      const fn = `${outputPath}/${filename}-${k}.scss`;
+    Object.keys(md.default).forEach((k) => {
+      const fn = `${outPath}/${m.bn}-${k}.scss`;
       let vars = '';
 
-      Object.entries(m[k]).forEach(([t, v]) => {
+      Object.entries(md.default[k]).forEach(([t, v]) => {
         vars += `$${t}: ${v};\n`;
       });
 
       try {
         fs.writeFileSync(fn, vars);
         console.log(`:: wrote ${fn}`);
-        return 0
       } catch (err) {
         console.error(`There was an issue writing to ${fn}: ${err}`);
-        return 1
+        process.exit(1)
       }
     });
-
   });
-  return 1
+  return 0
 }
 
 export default exportScss

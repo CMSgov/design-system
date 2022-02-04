@@ -22,17 +22,6 @@ export const HexToRgb = (hex: Types.HexValue): Types.RGBValue | null => {
   return null;
 };
 
-// asynchronously loads a ts module given a filename, returns a promise with
-// the default export of that import
-//
-export const loadTSData = async (file: string): Promise<Types.ImportTypes> => {
-  const tsData = await import(`../${file}`).catch((error) => {
-    console.error(error);
-    process.exit(1);
-  });
-  return tsData.default;
-};
-
 // given a directory path string and an empty string array, returns a
 // string array containing all files under the given path
 //
