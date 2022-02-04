@@ -22,5 +22,16 @@ export type ThemeTokens = {
   readonly spacing: SpacingToken;
 };
 
+export type FileDescriptor = {
+  //   m: moduleImportName,
+  m: string,
+  //   pd: parentDirectoryName,
+  pd: string,
+  //   bn: fileBaseName,
+  bn: string,
+  //   efn: exportFileName
+  efn: string,
+};
+
 export type ValueOf<T> = T[keyof T];
 export type ImportTypes = ValueOf<ImportCall>;

@@ -2,11 +2,15 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as Types from './types';
 
+// converts an rgb string 'rgb(15,24,128)' to a hex value '#0819A9'
+//
 export const RgbToHex = (r: number, g: number, b: number): Types.HexValue => {
   const hex = ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
   return `#${hex}`;
 };
 
+// converts a hex string '#F3G1AA' to an rgb value string 'rgb(142, 24, 89)'
+//
 export const HexToRgb = (hex: Types.HexValue): Types.RGBValue | null => {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   if (result) {
@@ -18,8 +22,9 @@ export const HexToRgb = (hex: Types.HexValue): Types.RGBValue | null => {
   return null;
 };
 
-
-
+// asynchronously loads a ts module given a filename, returns a promise with
+// the default export of that import
+//
 export const loadTSData = async (file: string): Promise<Types.ImportTypes> => {
   const tsData = await import(`../${file}`).catch((error) => {
     console.error(error);
@@ -28,6 +33,9 @@ export const loadTSData = async (file: string): Promise<Types.ImportTypes> => {
   return tsData.default;
 };
 
+// given a directory path string and an empty string array, returns a
+// string array containing all files under the given path
+//
 export const getAllFiles = (dirPath: string, arrayOfFiles: string[]): string[] => {
   const files = fs.readdirSync(dirPath);
 
@@ -43,20 +51,12 @@ export const getAllFiles = (dirPath: string, arrayOfFiles: string[]): string[] =
   return arrayOfFiles;
 };
 
-const exportScss = async(fd: {}[]): Promise<number> => {
-  return 1
-}
-
-const exportSketch = async(fd: {}[]): Promise<number> => {
-  return 0
-}
-
-
-// search out all availible token files in a path and build them
+// search out all availible modules under a path and return an 
+// array of objects which contains file descriptors for each file
 //
 export const collectFiles = (inPath: string) => {
   const af = getAllFiles(inPath, []);
-  const fd = [{}];
+  const fd: Types.FileDescriptor[] = [];
 
   af.forEach((mod) => {
 
@@ -76,7 +76,7 @@ export const collectFiles = (inPath: string) => {
 
     fd.push({
       m: moduleImportName,
-      pd: parentDirectoryName,
+      pd: parentDirectoryName || '',
       bn: fileBaseName,
       efn: exportFileName
     });
@@ -85,20 +85,3 @@ export const collectFiles = (inPath: string) => {
   return fd;
 };
 
-export const tokenExporter = async (
-  contentType: string,
-  exportType: string,
-  outPath: string
-  ): Promise<number> => {
-
-    const fileData = contentType === 'tokens'
-      ? collectFiles('tokens')
-      : collectFiles('brands');
-
-    if (exportType === 'scss')
-        return exportScss(fileData)
-    if (exportType === 'sketch')
-        return exportSketch(fileData)
-
-    return 1;
-}
