@@ -1,114 +1,83 @@
-// Generic
-$color-white: #fff !default;
-$color-base: #212121 !default;
-$color-black: #000 !default;
-
-$color-gray-dark: #323a45 !default;
-$color-gray: #5b616b !default;
-$color-gray-medium: #757575 !default;
-$color-gray-light: #aeb0b5 !default;
-$color-gray-lighter: #d6d7d9 !default;
-$color-gray-lightest: #f1f1f1 !default;
-
-$color-gray-warm-dark: #494440 !default;
-$color-gray-warm-light: #e4e2e0 !default;
-$color-gray-cool-light: #dce4ef !default;
-
-$color-primary: #0071bc !default;
-$color-primary-darker: #205493 !default;
-$color-primary-darkest: #112e51 !default;
-
-$color-primary-alt: #02bfe7 !default;
-$color-primary-alt-dark: #00a6d2 !default;
-$color-primary-alt-darkest: #046b99 !default;
-$color-primary-alt-light: #9bdaf1 !default;
-$color-primary-alt-lightest: #e1f3f8 !default;
-
-$color-red: #e31c3d !default;
-$color-red-dark: #cd2026 !default;
-$color-red-darker: #b31e22 !default;
-$color-red-darkest: #981b1e !default;
-$color-red-light: #e59393 !default;
-$color-red-lighter: #f5adb9 !default;
-$color-red-lightest: #f9dede !default;
-
-$color-gold: #fdb81e !default;
-$color-gold-dark: #e4a61b !default;
-$color-gold-darker: #ca9318 !default;
-$color-gold-darkest: #b18115 !default;
-$color-gold-light: #f9c642 !default;
-$color-gold-lighter: #fad980 !default;
-$color-gold-lightest: #fff1d2 !default;
-
-$color-green: #2e8540 !default;
-$color-green-dark: #2a7a3b !default;
-$color-green-darker: #266e35 !default;
-$color-green-darkest: #174320 !default;
-$color-green-light: #4aa564 !default;
-$color-green-lighter: #94bfa2 !default;
-$color-green-lightest: #e7f4e4 !default;
-
-$color-cool-blue: #205493 !default;
-$color-cool-blue-light: #4773aa !default;
-$color-cool-blue-lighter: #8ba6ca !default;
-$color-cool-blue-lightest: #dce4ef !default;
-
-// Status
-$color-error: $color-red !default;
-$color-error-dark: $color-red-dark !default;
-$color-error-darker: $color-red-darker !default;
-$color-error-darkest: $color-red-darkest !default;
-$color-error-light: $color-red-light !default;
-$color-error-lighter: $color-red-lighter !default;
-$color-error-lightest: $color-red-lightest !default;
-
-$color-warn: $color-gold !default;
-$color-warn-dark: $color-gold-dark !default;
-$color-warn-darker: $color-gold-darker !default;
-$color-warn-darkest: $color-gold-darkest !default;
-$color-warn-light: $color-gold-light !default;
-$color-warn-lighter: $color-gold-lighter !default;
-$color-warn-lightest: $color-gold-lightest !default;
-
-$color-success: $color-green !default;
-$color-success-dark: $color-green-dark !default;
-$color-success-darker: $color-green-darker !default;
-$color-success-darkest: $color-green-darkest !default;
-$color-success-light: $color-green-light !default;
-$color-success-lighter: $color-green-lighter !default;
-$color-success-lightest: $color-green-lightest !default;
-
-// Text
-$color-muted: $color-gray !default;
-$color-base-inverse: $color-white !default;
-$color-muted-inverse: #bac5cf !default;
-
-// Default focus styles
-$color-focus: #3e94cf !default;
-$color-focus-inverse: #59bcff !default;
-
-// More robust focus styles - To deprecate
-$focus-color: #ffde11 !default;
-$focus-color-inverse: #ffde11 !default;
-$focus-border-inverse: #8f7c00 !default;
-$focus-shadow: inset 0 0 0 1px $color-base;
-$focus-shadow-inverse: inset 0 0 0 1px $color-base !default;
-$focus-shadow-link: 0 3px $color-base !default;
-$focus-shadow-link-inverse: 0 3px $focus-border-inverse !default;
-
-// Focus colors
-$color-focus-light: #fff !default;
-$color-focus-dark: #bd13b8 !default;
-
-$color-visited: #4c2c92 !default;
-
-// Background
-$color-background: $color-white !default;
-$color-background-inverse: $color-primary-darkest !default;
-$color-background-dialog-mask: rgba($color-black, 0.5) !default;
-$color-background-dialog: $color-white !default;
-
-// Border
-$border-color: $color-gray-lighter !default;
-$border-color-dark: $color-gray-dark !default;
-$border-color-inverse: $color-white !default;
+$color-white: #fff;
+$color-base: #262626;
+$color-black: #000;
+$color-gray-dark: #404040;
+$color-gray: #5a5a5a;
+$color-gray-medium: #737373;
+$color-gray-light: #a6a6a6;
+$color-gray-lighter: #d9d9d9;
+$color-gray-lightest: #f2f2f2;
+$color-gray-warm-dark: #5a5a5a;
+$color-gray-warm-light: #f2f2f2;
+$color-gray-cool-light: #e6f1f8;
+$color-primary: #0071bc;
+$color-primary-darker: #004f84;
+$color-primary-darkest: #00395e;
+$color-primary-alt: #02bfe7;
+$color-primary-alt-dark: #0186a2;
+$color-primary-alt-darkest: #016074;
+$color-primary-alt-light: #4ed2ee;
+$color-primary-alt-lightest: #e6f9fd;
+$color-red: #e31c3d;
+$color-red-dark: #cc1937;
+$color-red-darker: #9f142b;
+$color-red-darkest: #720e1f;
+$color-red-light: #e63350;
+$color-red-lighter: #f18e9e;
+$color-red-lightest: #fce8ec;
+$color-gold: #f8c41f;
+$color-gold-dark: #dfb01c;
+$color-gold-darker: #ae8916;
+$color-gold-darkest: #7c6210;
+$color-gold-light: #f9ca35;
+$color-gold-lighter: #fce28f;
+$color-gold-lightest: #fef9e9;
+$color-green: #12890e;
+$color-green-dark: #107b0d;
+$color-green-darker: #0d600a;
+$color-green-darkest: #094507;
+$color-green-light: #2a9526;
+$color-green-lighter: #89c487;
+$color-green-lightest: #e7f3e7;
+$color-cool-blue: #2b6891;
+$color-cool-blue-light: #3e94cf;
+$color-cool-blue-lighter: #78b4dd;
+$color-cool-blue-lightest: #ecf4fa;
+$color-muted-inverse: #c0c0c0;
+$color-focus: #3e94cf;
+$color-focus-inverse: #4ed2ee;
+$focus-color: #fad662;
+$focus-color-inverse: #fad662;
+$focus-border-inverse: #7c6210;
+$color-focus-light: #fff;
+$color-focus-dark: #bd13b8;
+$color-visited: #4c2c92;
+$color-error: #e31c3d;
+$color-error-dark: #cc1937;
+$color-error-darker: #9f142b;
+$color-error-darkest: #720e1f;
+$color-error-light: #e63350;
+$color-error-lighter: #f18e9e;
+$color-error-lightest: #fce8ec;
+$color-warn: #f8c41f;
+$color-warn-dark: #dfb01c;
+$color-warn-darker: #ae8916;
+$color-warn-darkest: #7c6210;
+$color-warn-light: #f9ca35;
+$color-warn-lighter: #fce28f;
+$color-warn-lightest: #fef9e9;
+$color-success: #12890e;
+$color-success-dark: #107b0d;
+$color-success-darker: #0d600a;
+$color-success-darkest: #094507;
+$color-success-light: #2a9526;
+$color-success-lighter: #89c487;
+$color-success-lightest: #e7f3e7;
+$color-muted: #5a5a5a;
+$color-base-inverse: #fff;
+$color-background: #fff;
+$color-background-inverse: #00395e;
+$color-background-dialog: #fff;
+$border-color: #d9d9d9;
+$border-color-dark: #404040;
+$border-color-inverse: #fff;
