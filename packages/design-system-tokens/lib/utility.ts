@@ -40,19 +40,18 @@ export const getAllFiles = (dirPath: string, arrayOfFiles: string[]): string[] =
   return arrayOfFiles;
 };
 
-// search out all availible modules under a path and return an 
+// search out all availible modules under a path and return an
 // array of objects which contains file descriptors for each file
 //
-export const collectFiles = (inPath: string) => {
+export const collectFiles = (inPath: string): Types.FileDescriptor[] => {
   const af = getAllFiles(inPath, []);
   const fd: Types.FileDescriptor[] = [];
 
   af.forEach((mod) => {
-
     // strip extension and set export filename based on directory
     // filenames are created based on inPath, their directory and
     // the subdirectory they are under.
-    // 
+    //
     // ie: brands/core/red -> core-red.scss
     //     tokens/spacing --> tokens-spacing.scss
     //
@@ -67,10 +66,9 @@ export const collectFiles = (inPath: string) => {
       m: moduleImportName,
       pd: parentDirectoryName || '',
       bn: fileBaseName,
-      efn: exportFileName
+      efn: exportFileName,
     });
   });
 
   return fd;
 };
-

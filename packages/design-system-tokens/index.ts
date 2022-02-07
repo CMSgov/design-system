@@ -2,46 +2,50 @@ import * as fs from 'fs';
 import * as u from './lib/utility';
 import exportScss from './lib/exportScss';
 
-const OUTPUT_DIR = './dist';
+const OUTPUT_PATH = './dist';
+const INPUT_TYPES = ['brands', 'tokens'];
+const EXPORT_TYPES = ['scss', 'sketch'];
 
-// main token export function, returns a promise with a number to describe
-// the exit status (0 success, 1 failure) of the operation performed
+// main token export function, returns exit status (0 success, 1 failure)
 //
-const tokenExporter = (contentType: string, exportType: string, outPath: string): number => {
-  const fileData = contentType === 'tokens' ? u.collectFiles('tokens') : u.collectFiles('brands');
+const tokenExporter = (inputType: string, exportType: string): number => {
+
+  const fileData = u.collectFiles(inputType);
 
   switch (exportType) {
     case 'scss':
-      return exportScss(fileData, outPath);
+      return exportScss(fileData, OUTPUT_PATH);
     default:
       return 0;
   }
-  // if (exportType === 'sketch')
-  //     return exportSketch(fileData, outPath)
+  // TODO: implement sketch exporting
+  //  return exportSketch(fileData, outPath)
 };
 
-((): void => {
-  if (!fs.existsSync('./dist')) fs.mkdirSync('./dist');
+(() => {
+  // create dist output path if it does not exist
+  if (!fs.existsSync(OUTPUT_PATH)) fs.mkdirSync(OUTPUT_PATH);
 
   const help = (error: string) => {
-    console.log(` error: ${error}`);
+    console.log(`\n error: ${error}`);
     console.log('-------------------------------------------------------------');
-    console.log(' usage :: yarn build themes outputType // export themes');
-    console.log(' usage :: yarn build tokens outputType // export main tokens');
-    console.log('          where outputType is one of: scss, sketch');
-    console.log('-------------------------------------------------------------');
+    console.log(' usage : yarn build input_type output_type');
+    console.log(`         where input_type can be ${INPUT_TYPES}`);
+    console.log(`         and output_type can be ${EXPORT_TYPES}`);
+    console.log('-------------------------------------------------------------\n');
     process.exit(1);
   };
 
+  // throw away first two entries in process.argv
   const args = process.argv.slice(2);
   if (args.length <= 0) help('no arguments provided');
-  if (!['themes', 'tokens'].includes(args[0])) help('must be themes or tokens');
-  if (!['scss', 'sketch'].includes(args[1])) help('missing ouptut type, should be scss or sketch');
+  if (!INPUT_TYPES.includes(args[0])) help(`valid import types are: ${INPUT_TYPES}`);
+  if (!EXPORT_TYPES.includes(args[1])) help(`valid export types are: ${EXPORT_TYPES}`);
 
-  const contentType = args[0];
+  const inputType = args[0];
   const exportType = args[1];
 
-  const res = tokenExporter(contentType, exportType, OUTPUT_DIR);
+  const res = tokenExporter(inputType, exportType);
 
   process.exit(res);
 })();
