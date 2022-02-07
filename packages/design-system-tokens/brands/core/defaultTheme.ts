@@ -10,7 +10,7 @@ const DefaultTheme = makeTheme({
   color: {
     'color-white': Tokens.color.white,
     'color-black': Tokens.color.black,
-    'color-gray': Tokens.color['color-neutral-500'],
+    'color-gray': Tokens.color['granite-500'],
   },
   spacing: { ...Tokens.spacing },
 });
