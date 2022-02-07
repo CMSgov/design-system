@@ -1,6 +1,8 @@
-import * as Types from '../lib/types'
+import * as Types from '../lib/types';
 
-const makeSpacers = <T extends Types.SpacingToken>(value: T) => { return value }
+const makeSpacers = <T extends Types.SpacingToken>(value: T) => {
+  return value;
+};
 
 const spacing = makeSpacers({
   'spacer-none': '0px',
@@ -12,6 +14,6 @@ const spacing = makeSpacers({
   'spacer-5': '40px',
   'spacer-6': '48px',
   'spacer-7': '56px',
-})
+});
 
-export default spacing
+export default spacing;

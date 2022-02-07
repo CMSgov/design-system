@@ -9,7 +9,6 @@ const EXPORT_TYPES = ['scss', 'sketch'];
 // main token export function, returns exit status (0 success, 1 failure)
 //
 const tokenExporter = (inputType: string, exportType: string): number => {
-
   const fileData = u.collectFiles(inputType);
 
   switch (exportType) {
