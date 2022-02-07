@@ -1,6 +1,6 @@
 # Find Design System Versions Tool
 
-This tool gathers the versions of our design systems currently being used the CMS-WDS organization on github.cms.gov.
+This tool gathers the versions of our design systems currently being used in the CMS-WDS organization on github.cms.gov.
 
 You can run this tool from the root of the repository directory with the following command:
 
@@ -10,13 +10,7 @@ yarn scan-versions
 
 ## Setup
 
-First, you'll need to create a personal access token through GitHub Enterprise.
-
-In the top right of CMS github, click your user icon > Settings.
-Choose Developer Settings in the left menu.
-Choose personal access tokens.
-
-Generate a new token.
+First, you'll need to create a personal access token through GitHub Enterprise. Here are the [instructions for creating a token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) on github.com.
 
 This token can either be stored in a `.env` file or passed to the tool through the command line.
 
