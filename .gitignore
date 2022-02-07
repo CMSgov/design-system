@@ -42,4 +42,3 @@ node_modules
 
 storybook-static/
 packages/coverage/
-packages/index.ts
