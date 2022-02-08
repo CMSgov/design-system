@@ -146,8 +146,12 @@ describe('Idle Timeout', () => {
     showWarning();
     const dialogBodyText = getByRole('main');
     expect(dialogBodyText.textContent).toEqual('Your session will end in 3.');
+    // have to advance Date.now() and also retrigger the checkStatus interval
+    mockTime(1643991720);
     jest.advanceTimersByTime(60000);
     expect(dialogBodyText.textContent).toEqual('Your session will end in 2.');
+    // have to advance Date.now() and also retrigger the checkStatus interval
+    mockTime(1644051720);
     jest.advanceTimersByTime(60000);
     expect(dialogBodyText.textContent).toEqual('Your session will end in 1.');
   });

@@ -105,16 +105,12 @@ const IdleTimeout = ({
   const msToTimeout = timeToTimeout * 60000;
   const msToWarning = (timeToTimeout - timeToWarning) * 60000;
   const [checkStatusTime, setCheckStatusTime] = useState<number>(null);
-  const [warningIntervalId, setWarningIntervalId] = useState<ReturnType<typeof setTimeout>>(null);
   const [showWarning, setShowWarning] = useState<boolean>(false);
   const [timeInWarning, setTimeInWarning] = useState<number>(timeToWarning);
 
   // cleanup timeouts & intervals
   const clearTimeouts = () => {
     setCheckStatusTime(null);
-    if (warningIntervalId) {
-      clearInterval(warningIntervalId);
-    }
   };
 
   // when the countdown for the session ends, clean up, call callback & close modal
@@ -130,12 +126,6 @@ const IdleTimeout = ({
   const handleWarningTimeout = () => {
     setShowWarning(true);
     removeEventListeners();
-    let timeTilTimeout = timeToWarning - 1;
-    const intervalId = setInterval(() => {
-      setTimeInWarning(timeTilTimeout);
-      timeTilTimeout--;
-    }, 60000);
-    setWarningIntervalId(intervalId);
   };
 
   const setTimeoutCookies = () => {
@@ -165,13 +155,18 @@ const IdleTimeout = ({
   };
 
   const checkWarningStatus = () => {
-    const warningTime = localStorage.getItem(timeoutWarningCookieName);
-    const timeoutTime = localStorage.getItem(timeoutCookieName);
+    const warningTime = Number(localStorage.getItem(timeoutWarningCookieName));
+    const timeoutTime = Number(localStorage.getItem(timeoutCookieName));
+    const now = Date.now();
 
-    if (Date.now() >= Number(timeoutTime)) {
+    if (now >= Number(timeoutTime)) {
       handleTimeout();
-    } else if (!showWarning && Date.now() >= Number(warningTime)) {
+    } else if (!showWarning && now >= warningTime) {
       handleWarningTimeout();
+    } else if (showWarning && now >= warningTime) {
+      // if the warning is showing, update the timeInWarning variable (in minutes)
+      const minutesLeft = Math.ceil((timeoutTime - now) / 60000);
+      setTimeInWarning(minutesLeft);
     }
   };
 
