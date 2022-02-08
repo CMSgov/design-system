@@ -1,9 +1,9 @@
 /*
  * CMSDS Color Tokens, organized by hue
  */
-import * as Types from '../lib/types';
+import { HexColorTokens } from '../lib/types';
 
-const makeColors = <T extends Types.HexColorTokens>(value: T) => {
+const makeColors = <T extends HexColorTokens>(value: T) => {
   return value;
 };
 

@@ -1,5 +1,5 @@
-import * as fs from 'fs';
-import * as u from './lib/utility';
+import fs from 'fs';
+import { getFileDescriptors } from './lib/utility';
 import exportScss from './lib/exportScss';
 
 const OUTPUT_PATH = 'dist';
@@ -8,7 +8,7 @@ const EXPORT_TYPES = ['scss', 'sketch'];
 
 // main token export function, returns exit status (0 success, 1 failure)
 const tokenExporter = (inputType: string, exportType: string): number => {
-  const fileData = u.getFileDescriptors(inputType);
+  const fileData = getFileDescriptors(inputType);
 
   switch (exportType) {
     case 'scss':

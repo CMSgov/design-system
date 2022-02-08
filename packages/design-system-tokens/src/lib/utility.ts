@@ -1,15 +1,15 @@
-import * as fs from 'fs';
-import * as path from 'path';
-import * as Types from './types';
+import fs from 'fs';
+import path from 'path';
+import { HexValue, RGBValue, FileDescriptor } from './types';
 
 // converts an rgb string 'rgb(15,24,128)' to a hex value '#0819A9'
-export const rgbToHex = (r: number, g: number, b: number): Types.HexValue => {
+export const rgbToHex = (r: number, g: number, b: number): HexValue => {
   const hex = ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
   return `#${hex}`;
 };
 
 // converts a hex string '#F3G1AA' to an rgb value string 'rgb(142, 24, 89)'
-export const hexToRgb = (hex: Types.HexValue): Types.RGBValue | null => {
+export const hexToRgb = (hex: HexValue): RGBValue | null => {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   if (result) {
     const r = parseInt(result[1], 16);
@@ -43,10 +43,10 @@ export const getAllFiles = (dirPath: string, arrayOfFiles: string[]): string[] =
  * search out all availible modules under a path and return an
  * array of objects which contains file descriptors for each file
  */
-export const getFileDescriptors = (inPath: string): Types.FileDescriptor[] => {
+export const getFileDescriptors = (inPath: string): FileDescriptor[] => {
   const root = `${process.cwd()}/src`;
   const af = getAllFiles(`${root}/${inPath}`, []);
-  const fd: Types.FileDescriptor[] = [];
+  const fd: FileDescriptor[] = [];
 
   af.forEach((mod) => {
     /*

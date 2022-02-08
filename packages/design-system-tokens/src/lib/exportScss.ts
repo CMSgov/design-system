@@ -1,5 +1,5 @@
-import * as fs from 'fs';
-import * as Types from './types';
+import fs from 'fs';
+import { FileDescriptor } from './types';
 
 const tokenFormat = (k: string, v: string | unknown) => {
   return `$${k}: ${v};\n`;
@@ -26,7 +26,7 @@ const writeScss = (filename: string, vars: string) => {
  * }
  * and writes their imported data to filesystem
  */
-export const exportScss = (fd: Types.FileDescriptor[], outPath: string): number => {
+export const exportScss = (fd: FileDescriptor[], outPath: string): number => {
   fd.forEach((m) => {
     /*
      * doing this asynchronously with import() makes this code needlessly complex

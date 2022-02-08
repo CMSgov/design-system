@@ -1,6 +1,9 @@
-import * as Types from '../lib/types';
+/*
+ * CMSDS Spacing Tokens
+ */
+import { SpacingTokens } from '../lib/types';
 
-const makeSpacers = <T extends Types.SpacingTokens>(value: T) => {
+const makeSpacers = <T extends SpacingTokens>(value: T) => {
   return value;
 };
 
