@@ -18,11 +18,11 @@ export interface IdleTimeoutProps {
    */
   endSessionButtonText?: string;
   /**
-   *
+   * The url to redirect to if the 'end session' option is chosen in warning dialog.
    */
   endSessionRedirectUrl?: string;
   /**
-   * A formatting function that returns the string to be used in the warning modal
+   * A formatting function that returns the string to be used in the warning modal.
    * The formatting function is provided the timeTilTimeout (in minutes).
    */
   formatMessage?: (timeTilTimeout: number) => string | React.ReactNode;
@@ -41,7 +41,7 @@ export interface IdleTimeoutProps {
    */
   onTimeout: (...args: any[]) => any;
   /**
-   * Describes if the button to manually end session should be shown
+   * Describes if the button to manually end session should be shown in the warning dialog.
    */
   showSessionEndButton?: boolean;
   /**
@@ -49,7 +49,7 @@ export interface IdleTimeoutProps {
    */
   timeToTimeout: number;
   /**
-   * Defines the time (in minutes) until the warning message is shown. The default is 5 minutes.
+   * Defines the time (in minutes) before the timeout occurs when the warning dialog will be shown.
    */
   timeToWarning?: number;
 }

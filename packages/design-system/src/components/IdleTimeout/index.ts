@@ -1,2 +1,2 @@
-export * from './IdleTimeout';
-export * from './IdleTimeoutDialog';
+export { default as IdleTimeout } from './IdleTimeout';
+export { default as IdleTimeoutDialog } from './IdleTimeoutDialog';
