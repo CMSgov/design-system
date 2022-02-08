@@ -9,7 +9,7 @@ export default {
   component: IdleTimeout,
 };
 
-export const Default = () => (
+export const Default = (): JSX.Element => (
   <IdleTimeout
     timeToTimeout={2}
     onTimeout={() => {
@@ -18,13 +18,13 @@ export const Default = () => (
     timeToWarning={2}
   />
 );
-export const ViewDialog = () => (
+export const ViewDialog = (): JSX.Element => (
   <IdleTimeoutDialog
     continueSessionText="Continue Session"
     heading="Are you still there?"
     endSessionButtonText="Logout"
     endSessionRedirectUrl="#"
-    message='You’ve been inactive for a while. <br/>Your session will end in <strong>2 minutes</strong>. <br/><br/>Select "Continue session" below if you want more time.'
+    message='You’ve been inactive for a while. Your session will end in 2 minutes. Select "Continue session" below if you want more time.'
     onSessionContinue={() => {}}
     onSessionForcedEnd={() => {}}
     showSessionEndButton

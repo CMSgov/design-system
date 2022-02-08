@@ -24,3 +24,15 @@ window.matchMedia = (query) => ({
 });
 
 window.scroll = () => {};
+
+const localStorageMock = (function () {
+  return {
+    getItem: jest.fn((itemName) => (itemName === 'CMS_DS_TIMEOUT' ? 1644111720 : 1643931720)),
+    setItem: jest.fn(),
+    clear: jest.fn(),
+  };
+})();
+
+Object.defineProperty(window, 'localStorage', {
+  value: localStorageMock,
+});

@@ -1,6 +1,7 @@
 /* eslint-disable react/no-multi-comp */
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import React, { useState, useEffect } from 'react';
+import useInterval from './useInterval';
 import IdleTimeoutDialog from './IdleTimeoutDialog';
 
 export interface IdleTimeoutProps {
@@ -72,6 +73,10 @@ const defaultMessageFormatter = (timeTilTimeout: number): React.ReactNode => {
   );
 };
 
+// names for local storage variables
+const timeoutCookieName = 'CMS_DS_TIMEOUT';
+const timeoutWarningCookieName = 'CMS_DS_WARNING';
+
 const IdleTimeout = ({
   continueSessionText = 'Continue session',
   heading = 'Are you still there?',
@@ -84,7 +89,7 @@ const IdleTimeout = ({
   showSessionEndButton = false,
   timeToTimeout,
   timeToWarning = 5,
-}: IdleTimeoutProps) => {
+}: IdleTimeoutProps): JSX.Element => {
   if (timeToWarning > timeToTimeout) {
     console.error(
       'Error in TimeoutManager component. `timeToWarning` is greater or equal to `timeToTimeout`'
@@ -93,16 +98,14 @@ const IdleTimeout = ({
   // convert minutes to milliseconds
   const msToTimeout = timeToTimeout * 60000;
   const msToWarning = (timeToTimeout - timeToWarning) * 60000;
-  const [timeoutTimerId, setTimeoutTimer] = useState<NodeJS.Timeout>(null);
-  const [warningTimerId, setWarningTimer] = useState<NodeJS.Timeout>(null);
+  const [checkStatusTime, setCheckStatusTime] = useState<number>(null);
   const [warningIntervalId, setWarningIntervalId] = useState<NodeJS.Timeout>(null);
   const [showWarning, setShowWarning] = useState<boolean>(false);
   const [timeInWarning, setTimeInWarning] = useState<number>(timeToWarning);
 
   // cleanup timeouts & intervals
   const clearTimeouts = () => {
-    clearTimeout(timeoutTimerId);
-    clearTimeout(warningTimerId);
+    setCheckStatusTime(null);
     if (warningIntervalId) {
       clearInterval(warningIntervalId);
     }
@@ -129,17 +132,20 @@ const IdleTimeout = ({
     setWarningIntervalId(intervalId);
   };
 
-  const setTimeouts = () => {
-    const timerId: NodeJS.Timeout = setTimeout(handleTimeout, msToTimeout);
-    setTimeoutTimer(timerId);
+  const setTimeoutCookies = () => {
+    const timeoutTime = Date.now() + msToTimeout;
+    const warningTime = Date.now() + msToWarning;
+    localStorage.setItem(timeoutCookieName, timeoutTime.toString());
+    localStorage.setItem(timeoutWarningCookieName, warningTime.toString());
 
-    const warningTimerId: NodeJS.Timeout = setTimeout(handleWarningTimeout, msToWarning);
-    setWarningTimer(warningTimerId);
+    if (checkStatusTime === null) {
+      setCheckStatusTime(30000);
+    }
   };
 
   const resetTimeouts = () => {
     clearTimeouts();
-    setTimeouts();
+    setTimeoutCookies();
   };
 
   const removeEventListeners = () => {
@@ -152,9 +158,21 @@ const IdleTimeout = ({
     document.addEventListener('keypress', resetTimeouts);
   };
 
+  const checkWarningStatus = () => {
+    const warningTime = localStorage.getItem(timeoutWarningCookieName);
+    const timeoutTime = localStorage.getItem(timeoutCookieName);
+
+    if (Date.now() >= Number(timeoutTime)) {
+      handleTimeout();
+    } else if (!showWarning && Date.now() >= Number(warningTime)) {
+      handleWarningTimeout();
+    }
+  };
+
   useEffect(() => {
-    setTimeouts();
+    setTimeoutCookies();
     addEventListeners();
+    checkWarningStatus();
 
     return () => {
       clearTimeouts();
@@ -162,8 +180,9 @@ const IdleTimeout = ({
     };
   }, []);
 
+  useInterval(checkWarningStatus, checkStatusTime);
+
   const handleSessionContinue = () => {
-    // reset countdown timer
     if (onSessionContinue) {
       onSessionContinue();
     }
