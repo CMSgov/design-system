@@ -13,6 +13,12 @@ $dialog-spacer: $spacer-4;
   text-align: left;
   vertical-align: middle;
   width: 95%; // provide space for the background layer to peek through
+
+  /* stylelint-disable */
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    outline: $spacer-2 solid WindowText;
+  }
+  /* stylelint-enable */
 }
 
 .ds-c-dialog--narrow {
@@ -51,13 +57,21 @@ $dialog-spacer: $spacer-4;
   .ds-c-icon {
     font-size: 13px;
     margin-right: 4px;
+
+    /* stylelint-disable */
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      path {
+        fill: ButtonText;
+      }
+    }
+    /* stylelint-enable */
   }
 
-  /* stylelint-disable scss/media-feature-value-dollar-variable */
+  /* stylelint-disable */
   @media (-ms-high-contrast: active), (forced-colors: active) {
     padding: $spacer-half $spacer-2;
   }
-  /* stylelint-enable scss/media-feature-value-dollar-variable */
+  /* stylelint-enable */
 }
 
 .ds-c-dialog-wrap {
