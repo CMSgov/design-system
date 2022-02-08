@@ -107,6 +107,18 @@ const color = makeColors({
   'spring-800': '#094507',
   'spring-900': '#052904',
   'spring-1000': '#020e01',
+  // teal - mgov
+  'teal-50': '#e8f0ef',
+  'teal-100': '#b9d2ce',
+  'teal-200': '#8ab5ae',
+  'teal-300': '#5b978e',
+  'teal-400': '#2c796d',
+  'teal-500': '#146A5D',
+  'teal-600': '#125f54',
+  'teal-700': '#0e4a41',
+  'teal-800': '#0a352f',
+  'teal-900': '#06201c',
+  'teal-1000': '#020b09',
   // rose - core
   'rose-50': '#fce8ec',
   'rose-100': '#f7bbc5',
