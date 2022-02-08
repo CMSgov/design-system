@@ -49,6 +49,7 @@ const ignoredComponents = [
   'VerticalNavItem',
   'VerticalNavItemLabel',
   'maskHelpers',
+  'useInterval',
 ];
 
 const additionalModules = ['maskValue', 'unmaskValue'];

@@ -2,7 +2,7 @@
 import React from 'react';
 import IdleTimeout from './IdleTimeout';
 import { render, fireEvent } from '@testing-library/react';
-import { mockTime, restoreTime } from '../__tests__/mockTime';
+import { mockTime, restoreTime } from './utilities/mockTime';
 
 describe('Idle Timeout', () => {
   const ADVANCE_TIMER_MS = 30000;
@@ -47,6 +47,18 @@ describe('Idle Timeout', () => {
   });
 
   describe('timeout countdown', () => {
+    it('should reset countdown if mouse moves', () => {
+      renderIdleTimeout();
+      fireEvent.mouseMove(document);
+      expect(localStorage.setItem).toHaveBeenCalledTimes(4);
+    });
+
+    it('should reset countdown if key is pressed', () => {
+      renderIdleTimeout();
+      fireEvent.keyPress(document);
+      expect(localStorage.setItem).toHaveBeenCalledTimes(4);
+    });
+
     it('should set timeout time in local storage', () => {
       renderIdleTimeout();
       expect(localStorage.setItem).toHaveBeenCalled();
@@ -81,18 +93,6 @@ describe('Idle Timeout', () => {
       expect(warningEl).toBeNull();
       jest.advanceTimersByTime(timeTilWarningShown);
       expect(warningEl).toBeDefined();
-    });
-
-    it('should reset countdown if mouse moves', () => {
-      renderIdleTimeout();
-      fireEvent.mouseMove(document);
-      expect(localStorage.setItem).toHaveBeenCalledTimes(4);
-    });
-
-    it('should reset countdown if key is pressed', () => {
-      renderIdleTimeout();
-      fireEvent.keyPress(document);
-      expect(localStorage.setItem).toHaveBeenCalledTimes(4);
     });
 
     it('should call onTimeout when countdown ends', () => {

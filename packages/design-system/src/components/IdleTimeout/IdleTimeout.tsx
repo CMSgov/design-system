@@ -54,6 +54,11 @@ export interface IdleTimeoutProps {
   timeToWarning?: number;
 }
 
+/**
+ *
+ * @param timeTilTimeout {number} time in minutes until timeout occurs
+ * @returns {string | ReactNode}
+ */
 const defaultMessageFormatter = (timeTilTimeout: number): React.ReactNode => {
   const unitOfTime = timeTilTimeout === 1 ? 'minute' : 'minutes';
 
@@ -180,6 +185,7 @@ const IdleTimeout = ({
     };
   }, []);
 
+  // setup interval to check status every 30 seconds
   useInterval(checkWarningStatus, checkStatusTime);
 
   const handleSessionContinue = () => {
