@@ -19,7 +19,7 @@ export interface IdleTimeoutDialogProps {
   /**
    *
    */
-  endSessionRedirectUrl?: string;
+  endSessionUrl?: string;
   /**
    * The message text for the warning dialog.
    * Note that using the token `<timeToTimeout>` will be replaced in the message text with the number of minutes until timeout.
@@ -45,12 +45,12 @@ const IdleTimeoutDialog = ({
   continueSessionText,
   heading,
   endSessionButtonText,
-  endSessionRedirectUrl,
+  endSessionUrl,
   message,
   onSessionContinue,
   onSessionForcedEnd,
   showSessionEndButton,
-}: IdleTimeoutDialogProps) => {
+}: IdleTimeoutDialogProps): React.ReactElement => {
   const renderDialogActions = () => {
     return (
       <>
@@ -58,7 +58,7 @@ const IdleTimeoutDialog = ({
           {continueSessionText}
         </Button>
         {showSessionEndButton ? (
-          <Button variation="transparent" href={endSessionRedirectUrl} onClick={onSessionForcedEnd}>
+          <Button variation="transparent" href={endSessionUrl} onClick={onSessionForcedEnd}>
             {endSessionButtonText}
           </Button>
         ) : null}

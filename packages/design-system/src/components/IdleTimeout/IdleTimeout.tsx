@@ -20,7 +20,7 @@ export interface IdleTimeoutProps {
   /**
    *
    */
-  endSessionRedirectUrl?: string;
+  endSessionUrl?: string;
   /**
    * A formatting function that returns the string to be used in the warning modal
    * The formatting function is provided the timeTilTimeout (in minutes).
@@ -86,7 +86,7 @@ const IdleTimeout = ({
   continueSessionText = 'Continue session',
   heading = 'Are you still there?',
   endSessionButtonText = 'Logout',
-  endSessionRedirectUrl = '/logout',
+  endSessionUrl = '/logout',
   formatMessage = defaultMessageFormatter,
   onSessionContinue,
   onSessionForcedEnd,
@@ -100,11 +100,12 @@ const IdleTimeout = ({
       'Error in TimeoutManager component. `timeToWarning` is greater or equal to `timeToTimeout`'
     );
   }
+  const MS_BETWEEN_STATUS_CHECKS = 30000;
   // convert minutes to milliseconds
   const msToTimeout = timeToTimeout * 60000;
   const msToWarning = (timeToTimeout - timeToWarning) * 60000;
   const [checkStatusTime, setCheckStatusTime] = useState<number>(null);
-  const [warningIntervalId, setWarningIntervalId] = useState<NodeJS.Timeout>(null);
+  const [warningIntervalId, setWarningIntervalId] = useState<ReturnType<typeof setTimeout>>(null);
   const [showWarning, setShowWarning] = useState<boolean>(false);
   const [timeInWarning, setTimeInWarning] = useState<number>(timeToWarning);
 
@@ -144,7 +145,7 @@ const IdleTimeout = ({
     localStorage.setItem(timeoutWarningCookieName, warningTime.toString());
 
     if (checkStatusTime === null) {
-      setCheckStatusTime(30000);
+      setCheckStatusTime(MS_BETWEEN_STATUS_CHECKS);
     }
   };
 
@@ -213,7 +214,7 @@ const IdleTimeout = ({
       continueSessionText={continueSessionText}
       heading={heading}
       endSessionButtonText={endSessionButtonText}
-      endSessionRedirectUrl={endSessionRedirectUrl}
+      endSessionUrl={endSessionUrl}
       message={formatMessage(timeInWarning)}
       onSessionContinue={handleSessionContinue}
       onSessionForcedEnd={handleSessionForcedEnd}

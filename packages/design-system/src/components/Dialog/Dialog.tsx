@@ -400,7 +400,7 @@ export const Dialog = (props: DialogProps) => {
               </h1>
             )
           }
-          {hideCloseButton ? null : (
+          {hideCloseButton && (
             <Button
               aria-label={ariaCloseLabel}
               className="ds-c-dialog__close"
