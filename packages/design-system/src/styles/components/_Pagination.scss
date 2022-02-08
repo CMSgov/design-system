@@ -151,5 +151,13 @@ $pagination-page-count-color: $color-gray;
   .ds-c-pagination__nav--image {
     height: 18px;
     width: 18px;
+
+    /* stylelint-disable */
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      path {
+        fill: LinkText;
+      }
+    }
+    /* stylelint-enable */
   }
 }
