@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import useInterval from './useInterval';
 import IdleTimeoutDialog from './IdleTimeoutDialog';
+import { checkPassiveSupport } from './utilities/checkPassive';
 
 export interface IdleTimeoutProps {
   /**
@@ -150,8 +151,10 @@ const IdleTimeout = ({
   };
 
   const addEventListeners = () => {
-    document.addEventListener('mousemove', resetTimeouts);
-    document.addEventListener('keypress', resetTimeouts);
+    const passiveSupported = checkPassiveSupport();
+    const options = passiveSupported ? { passive: true } : false;
+    document.addEventListener('mousemove', resetTimeouts, options);
+    document.addEventListener('keypress', resetTimeouts, options);
   };
 
   const checkWarningStatus = () => {
