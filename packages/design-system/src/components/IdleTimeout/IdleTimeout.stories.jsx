@@ -4,6 +4,7 @@ import React from 'react';
 import IdleTimeout from './IdleTimeout';
 import IdleTimeoutDialog from './IdleTimeoutDialog';
 import { Title, Subtitle, Description, ArgsTable, PRIMARY_STORY } from '@storybook/addon-docs';
+import { useArgs } from '@storybook/client-api';
 
 const DocsPage = () => (
   <>
@@ -33,7 +34,10 @@ export default {
   },
 };
 
-const Template = ({ ...args }) => <IdleTimeout {...args} />;
+const Template = ({ ...args }) => {
+  const [{ timeToTimeout, timeToWarning }] = useArgs({ timeToTimeout: 2, timeToWarning: 1 });
+  return <IdleTimeout timeToTimeout={timeToTimeout} timeToWarning={timeToWarning} {...args} />;
+};
 
 export const Default = Template.bind({});
 
