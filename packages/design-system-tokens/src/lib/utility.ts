@@ -74,3 +74,14 @@ export const getFileDescriptors = (inPath: string): FileDescriptor[] => {
 
   return fd;
 };
+
+// writes a file to filename with content vars
+export const writeFile = (filename: string, vars: string) => {
+  try {
+    fs.writeFileSync(filename, vars);
+    console.log(`:: wrote ${filename}`);
+  } catch (err) {
+    console.error(`There was an issue writing to ${filename}: ${err}`);
+    process.exit(1);
+  }
+};

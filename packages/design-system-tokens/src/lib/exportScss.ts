@@ -1,18 +1,8 @@
-import fs from 'fs';
 import { FileDescriptor } from './types';
+import { writeFile } from './utility';
 
 const tokenFormat = (k: string, v: string | unknown) => {
   return `$${k}: ${v};\n`;
-};
-
-const writeScss = (filename: string, vars: string) => {
-  try {
-    fs.writeFileSync(filename, vars);
-    console.log(`:: wrote ${filename}`);
-  } catch (err) {
-    console.error(`There was an issue writing to ${filename}: ${err}`);
-    process.exit(1);
-  }
 };
 
 /*
@@ -48,7 +38,7 @@ export const exportScss = (fd: FileDescriptor[], outPath: string): number => {
           vars += tokenFormat(t, v);
         });
 
-        writeScss(filename, vars);
+        writeFile(filename, vars);
       });
     } else {
       // it's a token file
@@ -59,7 +49,7 @@ export const exportScss = (fd: FileDescriptor[], outPath: string): number => {
         vars += tokenFormat(t, v);
       });
 
-      writeScss(filename, vars);
+      writeFile(filename, vars);
     }
   });
   return 0;
