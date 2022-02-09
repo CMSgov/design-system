@@ -1,10 +1,11 @@
 import fs from 'fs';
 import { getFileDescriptors } from './lib/utility';
 import exportScss from './lib/exportScss';
+import exportCsv from './lib/exportCsv';
 
 const OUTPUT_PATH = 'dist';
 const INPUT_TYPES = ['themes', 'tokens'];
-const EXPORT_TYPES = ['scss'];
+const EXPORT_TYPES = ['scss', 'csv'];
 
 // main token export function, returns exit status (0 success, 1 failure)
 const tokenExporter = (inputType: string, exportType: string): number => {
@@ -13,6 +14,8 @@ const tokenExporter = (inputType: string, exportType: string): number => {
   switch (exportType) {
     case 'scss':
       return exportScss(fileData, OUTPUT_PATH);
+    case 'csv':
+      return exportCsv(fileData, OUTPUT_PATH);
     default:
       return 0;
   }
