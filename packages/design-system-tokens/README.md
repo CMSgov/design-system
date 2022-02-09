@@ -28,10 +28,10 @@ Folder structure is as follows:
     yarn build inputType outputType
 
     inputTypes: tokens (all tokens), themes (all themes)
-    outputTypes: scss (Sass)
+    outputTypes: scss (Sass), csv (comma separated values)
 
 As future exporters are added they will be listed in this document. Currently planned are options
-to export W3C developing token standard JSON, CSV and YAML.
+to export W3C developing token standard JSON and YAML.
 
 ## Sketch Utilization
 
