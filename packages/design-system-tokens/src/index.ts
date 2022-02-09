@@ -4,7 +4,7 @@ import exportScss from './lib/exportScss';
 
 const OUTPUT_PATH = 'dist';
 const INPUT_TYPES = ['themes', 'tokens'];
-const EXPORT_TYPES = ['scss', 'sketch'];
+const EXPORT_TYPES = ['scss'];
 
 // main token export function, returns exit status (0 success, 1 failure)
 const tokenExporter = (inputType: string, exportType: string): number => {
@@ -16,8 +16,6 @@ const tokenExporter = (inputType: string, exportType: string): number => {
     default:
       return 0;
   }
-  // TODO: implement sketch exporting
-  //  return exportSketch(fileData, outPath)
 };
 
 (() => {
