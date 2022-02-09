@@ -27,7 +27,7 @@ window.scroll = () => {};
 
 const localStorageMock = (function () {
   return {
-    getItem: jest.fn((itemName) => (itemName === 'CMS_DS_TIMEOUT' ? 1644111720 : 1643931720)),
+    getItem: jest.fn((itemName) => (itemName === 'CMS_DS_IT_LAST_ACTIVE' ? 1643811720 : null)),
     setItem: jest.fn(),
     clear: jest.fn(),
   };

@@ -7,6 +7,7 @@ import { mockTime, restoreTime } from './utilities/mockTime';
 describe('Idle Timeout', () => {
   const ADVANCE_TIMER_MS = 30000;
   const WARNING_DATETIME = 1643931720;
+  const TIMEOUT_DATETIME = 1644111720;
   const onTimeout = jest.fn();
   const defaultProps = {
     timeToTimeout: 5,
@@ -19,8 +20,9 @@ describe('Idle Timeout', () => {
     return render(<IdleTimeout {...defaultProps} {...overrideProps} />);
   };
 
-  const showWarning = () => {
-    mockTime(WARNING_DATETIME); // set Date.now() to be warning time
+  const showWarning = (advanceTimeTo?: number) => {
+    const nextTime = advanceTimeTo || WARNING_DATETIME;
+    mockTime(nextTime); // set Date.now() to be warning time
     jest.advanceTimersByTime(ADVANCE_TIMER_MS); // trigger next status check in component
   };
 
@@ -50,28 +52,22 @@ describe('Idle Timeout', () => {
     it('should reset countdown if mouse moves', () => {
       renderIdleTimeout();
       fireEvent.mouseMove(document);
-      expect(localStorage.setItem).toHaveBeenCalledTimes(4);
+      expect(localStorage.setItem).toHaveBeenCalledTimes(2);
     });
 
     it('should reset countdown if key is pressed', () => {
       renderIdleTimeout();
       fireEvent.keyPress(document);
-      expect(localStorage.setItem).toHaveBeenCalledTimes(4);
+      expect(localStorage.setItem).toHaveBeenCalledTimes(2);
     });
 
-    it('should set timeout time in local storage', () => {
-      renderIdleTimeout();
-      expect(localStorage.setItem).toHaveBeenCalled();
-      expect(localStorage.setItem).toHaveBeenNthCalledWith(1, 'CMS_DS_TIMEOUT', '1644111720');
-    });
-
-    it('should set warning time in local storage', () => {
+    it('should set time since last active in local storage', () => {
       renderIdleTimeout();
       expect(localStorage.setItem).toHaveBeenCalled();
       expect(localStorage.setItem).toHaveBeenNthCalledWith(
-        2,
-        'CMS_DS_WARNING',
-        WARNING_DATETIME.toString()
+        1,
+        'CMS_DS_IT_LAST_ACTIVE',
+        '1643811720'
       );
     });
 
@@ -97,7 +93,7 @@ describe('Idle Timeout', () => {
 
     it('should call onTimeout when countdown ends', () => {
       renderIdleTimeout();
-      mockTime(1644111720);
+      mockTime(TIMEOUT_DATETIME);
       jest.advanceTimersByTime(defaultProps.timeToTimeout * 30000);
       expect(defaultProps.onTimeout).toHaveBeenCalled();
     });
@@ -133,27 +129,11 @@ describe('Idle Timeout', () => {
 
   it('default formatMessage should adjust message for singular minute vs multiple', () => {
     const { getByRole } = renderIdleTimeout({ timeToWarning: 1 });
-    showWarning();
+    showWarning(1644051720);
     const dialogBodyText = getByRole('main');
     expect(dialogBodyText.textContent).toEqual(
       `You've been inactive for a while.Your session will end in 1 minute.Select "Continue session" below if you want more time.`
     );
-  });
-
-  it('should replace token in message every minute', () => {
-    const formatMessage = (time) => `Your session will end in ${time}.`;
-    const { getByRole } = renderIdleTimeout({ formatMessage });
-    showWarning();
-    const dialogBodyText = getByRole('main');
-    expect(dialogBodyText.textContent).toEqual('Your session will end in 3.');
-    // have to advance Date.now() and also retrigger the checkStatus interval
-    mockTime(1643991720);
-    jest.advanceTimersByTime(60000);
-    expect(dialogBodyText.textContent).toEqual('Your session will end in 2.');
-    // have to advance Date.now() and also retrigger the checkStatus interval
-    mockTime(1644051720);
-    jest.advanceTimersByTime(60000);
-    expect(dialogBodyText.textContent).toEqual('Your session will end in 1.');
   });
 
   it('should cleanup timers on unmount', () => {
@@ -165,12 +145,28 @@ describe('Idle Timeout', () => {
     spy.mockRestore();
   });
 
-  it('should cleanup event listeners on unmount', () => {
-    const removeListenerSpy = jest.spyOn(document, 'removeEventListener');
-    const { unmount } = renderIdleTimeout();
-    unmount();
-    expect(removeListenerSpy).toHaveBeenCalledTimes(2);
-    expect(removeListenerSpy).toHaveBeenNthCalledWith(1, 'mousemove', expect.anything());
-    expect(removeListenerSpy).toHaveBeenNthCalledWith(2, 'keypress', expect.anything());
+  describe('clean up event listeners', () => {
+    it('should cleanup event listeners on unmount', () => {
+      const removeListenerSpy = jest.spyOn(document, 'removeEventListener');
+      const { unmount } = renderIdleTimeout();
+      unmount();
+      expect(removeListenerSpy).toHaveBeenCalledTimes(2);
+      expect(removeListenerSpy).toHaveBeenNthCalledWith(1, 'mousemove', expect.anything());
+      expect(removeListenerSpy).toHaveBeenNthCalledWith(2, 'keypress', expect.anything());
+    });
+
+    it('should not reset countdown if mouse moves after unmount', () => {
+      const { unmount } = renderIdleTimeout();
+      unmount();
+      fireEvent.mouseMove(document);
+      expect(localStorage.setItem).toHaveBeenCalledTimes(1);
+    });
+
+    it('should not reset countdown if key is pressed after unmount', () => {
+      const { unmount } = renderIdleTimeout();
+      unmount();
+      fireEvent.keyPress(document);
+      expect(localStorage.setItem).toHaveBeenCalledTimes(1);
+    });
   });
 });
