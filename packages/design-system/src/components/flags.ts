@@ -17,10 +17,6 @@ const flags: flagsType = {
   DISPLAY_INLINE_ERROR_ICON: false,
 };
 
-export function getInlineErrorIconDisplay(): boolean {
-  return flags.DISPLAY_INLINE_ERROR_ICON;
-}
-
 export function setInlineErrorIconDisplay(value: boolean): void {
   flags.DISPLAY_INLINE_ERROR_ICON = value;
 }

@@ -1,6 +1,5 @@
 import React from 'react';
 import classNames from 'classnames';
-import { getInlineErrorIconDisplay } from '../flags';
 import AlertCircleIcon from '../Icons/AlertCircleIcon';
 
 /**
@@ -11,7 +10,6 @@ import AlertCircleIcon from '../Icons/AlertCircleIcon';
 interface InlineErrorProps {
   children?: React.ReactNode;
   className?: string;
-  displayErrorIcon?: boolean;
   id?: string;
   inversed?: boolean;
 }
@@ -19,12 +17,9 @@ interface InlineErrorProps {
 export function InlineError({
   children,
   className,
-  displayErrorIcon,
   id,
   inversed,
 }: InlineErrorProps): React.ReactElement {
-  const displayIcon = displayErrorIcon || getInlineErrorIconDisplay();
-
   const classes = classNames(
     'ds-c-inline-error',
     'ds-c-field__error-message',
@@ -35,7 +30,7 @@ export function InlineError({
 
   return (
     <span className={classes} id={id} role="alert">
-      {displayIcon && <AlertCircleIcon viewBox={viewbox} />}
+      <AlertCircleIcon viewBox={viewbox} />
       {children}
     </span>
   );
