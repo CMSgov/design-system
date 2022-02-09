@@ -6,6 +6,9 @@ exports[`InlineError renders inline error 1`] = `
   id="error1"
   role="alert"
 >
+  <AlertCircleIcon
+    viewBox="36 -12 186 186"
+  />
   Error message
 </span>
 `;
@@ -16,6 +19,9 @@ exports[`InlineError renders inverse error 1`] = `
   id="error1"
   role="alert"
 >
+  <AlertCircleIcon
+    viewBox="36 -12 186 186"
+  />
   Error message
 </span>
 `;
