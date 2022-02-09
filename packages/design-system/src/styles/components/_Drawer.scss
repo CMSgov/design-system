@@ -41,11 +41,11 @@ $drawer-toggle-space: 0;
   font-weight: $drawer-toggle-font-weight;
   padding: $drawer-toggle-space;
 
-  /* stylelint-disable scss/media-feature-value-dollar-variable */
+  /* stylelint-disable */
   @media (-ms-high-contrast: active), (forced-colors: active) {
     padding: $spacer-half $spacer-2;
   }
-  /* stylelint-enable scss/media-feature-value-dollar-variable */
+  /* stylelint-enable */
 }
 
 .ds-c-drawer__toggle--inline {
@@ -71,11 +71,12 @@ $drawer-toggle-space: 0;
     max-width: $measure-base;
   }
 
-  /* stylelint-disable scss/media-feature-value-dollar-variable */
+  /* stylelint-disable */
   @media (-ms-high-contrast: active), (forced-colors: active) {
-    border-left: 2px solid WindowText;
+    border: 1px solid WindowText;
+    border-left: $spacer-3 solid WindowText;
   }
-  /* stylelint-enable scss/media-feature-value-dollar-variable */
+  /* stylelint-enable */
 }
 
 .ds-c-drawer__window {
@@ -101,6 +102,12 @@ $drawer-toggle-space: 0;
   @supports (display: flex) {
     flex: 0 0 auto;
   }
+
+  /* stylelint-disable */
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    border-bottom: 1px solid ButtonText;
+  }
+  /* stylelint-enable */
 }
 
 .ds-c-drawer__header-heading {
@@ -139,6 +146,12 @@ $drawer-toggle-space: 0;
   @supports (display: flex) {
     flex: 1 1 auto;
   }
+
+  /* stylelint-disable */
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    border-top: 1px solid ButtonText;
+  }
+  /* stylelint-enable */
 }
 
 /* Help drawer footer */
