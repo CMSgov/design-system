@@ -1,8 +1,8 @@
 import { FileDescriptor } from './types';
 import { writeFile } from './utility';
 
-const tokenFormat = (k: string, v: string | unknown) => {
-  return `$${k}: ${v};\n`;
+const tokenFormat = (name: string, value: string | unknown) => {
+  return `$${name}: ${value};\n`;
 };
 
 /*
@@ -16,37 +16,37 @@ const tokenFormat = (k: string, v: string | unknown) => {
  * }
  * and writes their imported data to filesystem
  */
-export const exportScss = (fd: FileDescriptor[], outPath: string): number => {
-  fd.forEach((m) => {
+export const exportScss = (fileDescriptors: FileDescriptor[], outPath: string): number => {
+  fileDescriptors.forEach((file) => {
     /*
      * doing this asynchronously with import() makes this code needlessly complex
      * so ignoring this particular linting error here to allow named require.
      * which runs synchronously.
      */
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const md = require(`${m.moduleImportName}`);
+    const importedModule = require(`${file.moduleImportName}`);
 
     // theme files have a description prop token files do not
-    if (md.default.description !== undefined) {
-      Object.keys(md.default).forEach((k) => {
-        if (k === 'description') return;
+    if (importedModule.default.description !== undefined) {
+      Object.keys(importedModule.default).forEach((key) => {
+        if (key === 'description') return;
 
-        const filename = `${outPath}/${m.fileBaseName}-${k}.scss`;
+        const filename = `${outPath}/${file.fileBaseName}-${key}.scss`;
         let vars = '';
 
-        Object.entries(md.default[k]).forEach(([t, v]) => {
-          vars += tokenFormat(t, v);
+        Object.entries(importedModule.default[key]).forEach(([name, value]) => {
+          vars += tokenFormat(name, value);
         });
 
         writeFile(filename, vars);
       });
     } else {
       // it's a token file
-      const filename = `${outPath}/tokens-${m.fileBaseName}.scss`;
+      const filename = `${outPath}/tokens-${file.fileBaseName}.scss`;
       let vars = '';
 
-      Object.entries(md.default).forEach(([t, v]) => {
-        vars += tokenFormat(t, v);
+      Object.entries(importedModule.default).forEach(([name, value]) => {
+        vars += tokenFormat(name, value);
       });
 
       writeFile(filename, vars);

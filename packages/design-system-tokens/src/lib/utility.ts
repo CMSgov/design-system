@@ -45,10 +45,10 @@ export const getAllFiles = (dirPath: string, arrayOfFiles: string[]): string[] =
  */
 export const getFileDescriptors = (inPath: string): FileDescriptor[] => {
   const root = `${process.cwd()}/src`;
-  const af = getAllFiles(`${root}/${inPath}`, []);
-  const fd: FileDescriptor[] = [];
+  const allFiles = getAllFiles(`${root}/${inPath}`, []);
+  const fileDescriptors: FileDescriptor[] = [];
 
-  af.forEach((mod) => {
+  allFiles.forEach((mod) => {
     /*
      * strip extension and set export filename based on directory
      * filenames are created based on inPath, their directory and
@@ -64,7 +64,7 @@ export const getFileDescriptors = (inPath: string): FileDescriptor[] => {
 
     if (fileBaseName === 'index') return;
 
-    fd.push({
+    fileDescriptors.push({
       moduleImportName: moduleImportName,
       parentDirectoryName: parentDirectoryName || '',
       fileBaseName: fileBaseName,
@@ -72,7 +72,7 @@ export const getFileDescriptors = (inPath: string): FileDescriptor[] => {
     });
   });
 
-  return fd;
+  return fileDescriptors;
 };
 
 // writes a file to filename with content vars

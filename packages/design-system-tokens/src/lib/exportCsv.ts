@@ -1,8 +1,8 @@
 import { FileDescriptor } from './types';
 import { writeFile } from './utility';
 
-const tokenFormat = (t: string, k: string, v: string | unknown) => {
-  return `${t},${k},${v}\r\n`;
+const tokenFormat = (tokenType: string, name: string, value: string | unknown) => {
+  return `${tokenType},${name},${value}\r\n`;
 };
 
 /*
@@ -11,40 +11,40 @@ const tokenFormat = (t: string, k: string, v: string | unknown) => {
  * with headers
  */
 export const exportCsv = (fd: FileDescriptor[], outPath: string): number => {
-  fd.forEach((m) => {
+  fd.forEach((file) => {
     /*
      * doing this asynchronously with import() makes this code needlessly complex
      * so ignoring this particular linting error here to allow named require.
      * which runs synchronously.
      */
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const md = require(`${m.moduleImportName}`);
+    const importedModule = require(`${file.moduleImportName}`);
 
     // theme files have a description prop token files do not
-    if (md.default.description !== undefined) {
-      Object.keys(md.default).forEach((k) => {
-        if (k === 'description') return;
+    if (importedModule.default.description !== undefined) {
+      Object.keys(importedModule.default).forEach((key) => {
+        if (key === 'description') return;
 
-        const filename = `${outPath}/${m.exportFileName}-${k}.csv`;
+        const filename = `${outPath}/${file.exportFileName}-${key}.csv`;
 
         // write header
         let vars = `theme,key,value\r\n`;
 
-        Object.entries(md.default[k]).forEach(([t, v]) => {
-          vars += tokenFormat(m.fileBaseName, t, v);
+        Object.entries(importedModule.default[key]).forEach(([name, value]) => {
+          vars += tokenFormat(file.fileBaseName, name, value);
         });
 
         writeFile(filename, vars);
       });
     } else {
       // it's a token file
-      const filename = `${outPath}/${m.exportFileName}.csv`;
+      const filename = `${outPath}/${file.exportFileName}.csv`;
 
       // write header
       let vars = `type,key,value\r\n`;
 
-      Object.entries(md.default).forEach(([t, v]) => {
-        vars += tokenFormat(m.fileBaseName, t, v);
+      Object.entries(importedModule.default).forEach(([name, value]) => {
+        vars += tokenFormat(file.fileBaseName, name, value);
       });
 
       writeFile(filename, vars);
