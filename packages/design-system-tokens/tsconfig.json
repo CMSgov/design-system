@@ -1,5 +1,5 @@
 {
-  "include": ["src/*.ts", "node_modules", "tests/*.ts"],
+  "include": ["src/tokens/*.ts"],
   "compilerOptions": {
     "module": "CommonJS",
     "target": "es6",
