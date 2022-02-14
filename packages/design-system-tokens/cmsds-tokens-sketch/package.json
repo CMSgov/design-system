@@ -28,5 +28,6 @@
     "ts-loader": "^8.0.0",
     "typescript": "^4.0.2"
   },
-  "author": "Forrest Baer <forrest@forrestbaer.com>"
+  "author": "Forrest Baer <forrest@forrestbaer.com>",
+  "dependencies": {}
 }
