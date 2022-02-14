@@ -62,15 +62,24 @@ $tooltip-background-color: $color-background !default;
   @extend %trigger-underline-styles;
   color: $color-primary;
   padding: 0;
+
+  /* stylelint-disable */
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    color: ButtonText;
+  }
+  /* stylelint-enable */
 }
 
-// stylelint-disable-next-line selector-class-pattern
+/* stylelint-disable */
 .ds-base--inverse .ds-c-tooltip__trigger-link {
   @extend %link-inverse;
   @extend %trigger-underline-styles;
-}
 
-// stylelint-enable selector-no-qualifying-type
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    color: ButtonText;
+  }
+}
+/* stylelint-enable */
 
 // Tooltip arrow
 .ds-c-tooltip__arrow {

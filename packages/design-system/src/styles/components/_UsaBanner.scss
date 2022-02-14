@@ -155,6 +155,12 @@ $usa-caret-icon-size: 10px;
 
   &.ds-c-icon--lock-circle {
     color: #719f2a;
+
+    /* stylelint-disable scss/media-feature-value-dollar-variable */
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      color: WindowText;
+    }
+    /* stylelint-enable scss/media-feature-value-dollar-variable */
   }
 }
 
@@ -162,9 +168,18 @@ $usa-caret-icon-size: 10px;
   height: 1.5ex;
   vertical-align: inherit;
   width: 1.5ex * 52 / 64;
+
   path {
     fill: currentColor;
   }
+
+  /* stylelint-disable scss/media-feature-value-dollar-variable */
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    path {
+      fill: WindowText;
+    }
+  }
+  /* stylelint-enable scss/media-feature-value-dollar-variable */
 }
 
 .ds-c-usa-banner__media-img {
