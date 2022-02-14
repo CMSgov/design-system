@@ -136,6 +136,22 @@ describe('Idle Timeout', () => {
     );
   });
 
+  it('should replace token in message every minute', () => {
+    const formatMessage = (time) => `Your session will end in ${time}.`;
+    const { getByRole } = renderIdleTimeout({ formatMessage });
+    showWarning();
+    const dialogBodyText = getByRole('main');
+    expect(dialogBodyText.textContent).toEqual('Your session will end in 3.');
+    // have to advance Date.now() and also retrigger the checkStatus interval
+    mockTime(1643991720);
+    jest.advanceTimersByTime(60000);
+    expect(dialogBodyText.textContent).toEqual('Your session will end in 2.');
+    // have to advance Date.now() and also retrigger the checkStatus interval
+    mockTime(1644051720);
+    jest.advanceTimersByTime(60000);
+    expect(dialogBodyText.textContent).toEqual('Your session will end in 1.');
+  });
+
   it('should cleanup timers on unmount', () => {
     const { unmount } = renderIdleTimeout();
     const spy = jest.spyOn(window, 'clearInterval');

@@ -106,6 +106,7 @@ const IdleTimeout = ({
   const msToWarning = (timeToTimeout - timeToWarning) * 60000;
   const [checkStatusTime, setCheckStatusTime] = useState<number>(null);
   const [showWarning, setShowWarning] = useState<boolean>(false);
+  const [timeInWarning, setTimeInWarning] = useState<number>(timeToWarning);
 
   // cleanup timeouts & intervals
   const clearTimeouts = () => {
@@ -163,6 +164,10 @@ const IdleTimeout = ({
     } else if (!showWarning && msSinceLastActive >= msToWarning) {
       removeEventListeners();
       handleWarningTimeout();
+    } else if (showWarning && msSinceLastActive >= msToWarning) {
+      // if the warning is showing, update the timeInWarning variable (in minutes)
+      const minutesLeft = Math.ceil((msToTimeout - msSinceLastActive) / 60000);
+      setTimeInWarning(minutesLeft);
     } else if (showWarning && msSinceLastActive < msToWarning) {
       // if another tab updates the last active time, hide current warning modal
       setShowWarning(false);
@@ -171,8 +176,9 @@ const IdleTimeout = ({
 
   useEffect(() => {
     setTimeoutCookies();
-    checkWarningStatus();
+    // event listeners have to be added before status check in case they are removed in status check
     addEventListeners();
+    checkWarningStatus();
 
     return () => {
       clearTimeouts();
@@ -203,23 +209,13 @@ const IdleTimeout = ({
     setShowWarning(false);
   };
 
-  const getTimeTilTimeout = () => {
-    const lastActiveTime = Number(localStorage.getItem(lastActiveCookieName));
-    const now = Date.now();
-    const msSinceLastActive = now - lastActiveTime;
-
-    // if the warning is showing, update the timeInWarning variable (in minutes)
-    const minutesLeft = Math.ceil((msToTimeout - msSinceLastActive) / 60000);
-    return minutesLeft;
-  };
-
   return showWarning ? (
     <IdleTimeoutDialog
       continueSessionText={continueSessionText}
       heading={heading}
       endSessionButtonText={endSessionButtonText}
       endSessionUrl={endSessionUrl}
-      message={formatMessage(getTimeTilTimeout())}
+      message={formatMessage(timeInWarning)}
       onSessionContinue={handleSessionContinue}
       onSessionForcedEnd={handleSessionForcedEnd}
       showSessionEndButton={showSessionEndButton}
