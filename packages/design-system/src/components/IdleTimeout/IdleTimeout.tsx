@@ -1,14 +1,11 @@
 /* eslint-disable react/no-multi-comp */
-/* eslint-disable react/no-danger */
-import React from 'react';
-import { Dialog } from '../Dialog';
-import { Button } from '../Button';
+/* eslint-disable @typescript-eslint/no-use-before-define */
+import React, { useState, useEffect, useCallback } from 'react';
+import useInterval from './useInterval';
+import IdleTimeoutDialog from './IdleTimeoutDialog';
+import { checkPassiveSupport } from './utilities/checkPassive';
 
 export interface IdleTimeoutProps {
-  /**
-   * The text for the 'close' button on the warning dialog
-   */
-  closeDialogText?: string;
   /**
    * The text for the 'continue session' button in warning dialog.
    */
@@ -22,14 +19,14 @@ export interface IdleTimeoutProps {
    */
   endSessionButtonText?: string;
   /**
+   *
+   */
+  endSessionUrl?: string;
+  /**
    * A formatting function that returns the string to be used in the warning modal
    * The formatting function is provided the timeTilTimeout (in minutes).
    */
   formatMessage?: (timeTilTimeout: number) => string | React.ReactNode;
-  /**
-   * Optional function that is called when the warning dialog's close button is clicked
-   */
-  onClose?: (...args: any[]) => any;
   /**
    * Optional function that is called when the user chooses to keep the session alive.
    * The IdleTimeout component will reset the countdown internally.
@@ -58,6 +55,11 @@ export interface IdleTimeoutProps {
   timeToWarning?: number;
 }
 
+/**
+ *
+ * @param timeTilTimeout {number} time in minutes until timeout occurs
+ * @returns {string | ReactNode}
+ */
 const defaultMessageFormatter = (timeTilTimeout: number): React.ReactNode => {
   const unitOfTime = timeTilTimeout === 1 ? 'minute' : 'minutes';
 
@@ -77,70 +79,148 @@ const defaultMessageFormatter = (timeTilTimeout: number): React.ReactNode => {
   );
 };
 
+// local storage variable name
+const lastActiveCookieName = 'CMS_DS_IT_LAST_ACTIVE';
+
 const IdleTimeout = ({
-  closeDialogText = 'Close',
   continueSessionText = 'Continue session',
   heading = 'Are you still there?',
   endSessionButtonText = 'Logout',
+  endSessionUrl = '/logout',
   formatMessage = defaultMessageFormatter,
-  onClose,
   onSessionContinue,
   onSessionForcedEnd,
   onTimeout,
   showSessionEndButton = false,
   timeToTimeout,
   timeToWarning = 5,
-}: IdleTimeoutProps) => {
-  const handleContinueSession = () => {
-    // reset countdown timer
+}: IdleTimeoutProps): JSX.Element => {
+  if (timeToWarning > timeToTimeout) {
+    console.error(
+      'Error in TimeoutManager component. `timeToWarning` is greater or equal to `timeToTimeout`'
+    );
+  }
+  const MS_BETWEEN_STATUS_CHECKS = 30000;
+  // convert minutes to milliseconds
+  const msToTimeout = timeToTimeout * 60000;
+  const msToWarning = (timeToTimeout - timeToWarning) * 60000;
+  const [checkStatusTime, setCheckStatusTime] = useState<number>(null);
+  const [showWarning, setShowWarning] = useState<boolean>(false);
+  const [timeInWarning, setTimeInWarning] = useState<number>(timeToWarning);
+
+  // cleanup timeouts & intervals
+  const clearTimeouts = () => {
+    setCheckStatusTime(null);
+  };
+
+  // when the countdown for the session ends, clean up, call callback & close modal
+  const handleTimeout = () => {
+    clearTimeouts();
+    removeEventListeners();
+    onTimeout();
+    setShowWarning(false);
+  };
+
+  // when it's time to warn the user about idleness,
+  // set an interval that updates the modal message
+  const handleWarningTimeout = () => {
+    removeEventListeners();
+    setShowWarning(true);
+  };
+
+  const setTimeoutCookies = () => {
+    localStorage.setItem(lastActiveCookieName, Date.now().toString());
+
+    if (checkStatusTime === null) {
+      setCheckStatusTime(MS_BETWEEN_STATUS_CHECKS);
+    }
+  };
+
+  // have to useCallback so that the function can be removed properly from event listeners
+  const resetTimeouts = useCallback(() => {
+    clearTimeouts();
+    setTimeoutCookies();
+  }, []);
+
+  const removeEventListeners = () => {
+    document.removeEventListener('mousemove', resetTimeouts);
+    document.removeEventListener('keypress', resetTimeouts);
+  };
+
+  const addEventListeners = () => {
+    const passiveSupported = checkPassiveSupport();
+    const options = passiveSupported ? { passive: true } : false;
+    document.addEventListener('mousemove', resetTimeouts, options);
+    document.addEventListener('keypress', resetTimeouts, options);
+  };
+
+  const checkWarningStatus = () => {
+    const lastActiveTime = Number(localStorage.getItem(lastActiveCookieName));
+    const now = Date.now();
+    const msSinceLastActive = now - lastActiveTime;
+
+    if (msSinceLastActive >= msToTimeout) {
+      handleTimeout();
+    } else if (!showWarning && msSinceLastActive >= msToWarning) {
+      removeEventListeners();
+      handleWarningTimeout();
+    } else if (showWarning && msSinceLastActive >= msToWarning) {
+      // if the warning is showing, update the timeInWarning variable (in minutes)
+      const minutesLeft = Math.ceil((msToTimeout - msSinceLastActive) / 60000);
+      setTimeInWarning(minutesLeft);
+    } else if (showWarning && msSinceLastActive < msToWarning) {
+      // if another tab updates the last active time, hide current warning modal
+      setShowWarning(false);
+    }
+  };
+
+  useEffect(() => {
+    setTimeoutCookies();
+    // event listeners have to be added before status check in case they are removed in status check
+    addEventListeners();
+    checkWarningStatus();
+
+    return () => {
+      clearTimeouts();
+      removeEventListeners();
+    };
+  }, []);
+
+  // setup interval to check status every 30 seconds
+  useInterval(checkWarningStatus, checkStatusTime);
+
+  const handleSessionContinue = () => {
     if (onSessionContinue) {
       onSessionContinue();
     }
+    setShowWarning(false);
+    resetTimeouts();
+    addEventListeners();
   };
 
-  const handleEndSession = () => {
+  const handleSessionForcedEnd = () => {
     if (onSessionForcedEnd) {
-      // TODO: figure out if any params should be passed back to the app
       onSessionForcedEnd();
-    } else if (onTimeout) {
+    } else {
       onTimeout();
     }
+    clearTimeouts();
+    removeEventListeners();
+    setShowWarning(false);
   };
 
-  const handleDialogClose = () => {
-    if (onClose) {
-      onClose();
-    }
-  };
-
-  const renderDialogActions = () => {
-    return (
-      <>
-        <Button variation="primary" onClick={handleContinueSession}>
-          {continueSessionText}
-        </Button>
-        {showSessionEndButton ? (
-          <Button variation="transparent" href="/logout" onClick={handleEndSession}>
-            {endSessionButtonText}
-          </Button>
-        ) : null}
-      </>
-    );
-  };
-
-  return (
-    <Dialog
-      alert
-      dialogId="session-timeout-dialog"
-      escapeExits={false}
+  return showWarning ? (
+    <IdleTimeoutDialog
+      continueSessionText={continueSessionText}
       heading={heading}
-      closeButtonText={closeDialogText}
-      actions={renderDialogActions()}
-      onExit={handleDialogClose}
-    >
-      {formatMessage(timeToWarning)}
-    </Dialog>
-  );
+      endSessionButtonText={endSessionButtonText}
+      endSessionUrl={endSessionUrl}
+      message={formatMessage(timeInWarning)}
+      onSessionContinue={handleSessionContinue}
+      onSessionForcedEnd={handleSessionForcedEnd}
+      showSessionEndButton={showSessionEndButton}
+    />
+  ) : null;
 };
 
 export default IdleTimeout;
