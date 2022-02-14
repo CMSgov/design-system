@@ -6,15 +6,15 @@ import { mockTime, restoreTime } from './utilities/mockTime';
 
 describe('Idle Timeout', () => {
   const ADVANCE_TIMER_MS = 30000;
-  const WARNING_DATETIME = 1643931720;
-  const TIMEOUT_DATETIME = 1644111720;
+  const WARNING_DATETIME = 1643991720; // start time + (3 * 60000ms) (3 minutes)
+  const TIMEOUT_DATETIME = 1644111720; // start time + (5 * 60000ms) (3 minutes)
   const onTimeout = jest.fn();
   const defaultProps = {
     timeToTimeout: 5,
     timeToWarning: 3,
     onTimeout,
   };
-  const timeTilWarningShown = (defaultProps.timeToTimeout - defaultProps.timeToWarning) * 60000;
+  const timeTilWarningShown = defaultProps.timeToWarning * 60000;
 
   const renderIdleTimeout = (overrideProps?) => {
     return render(<IdleTimeout {...defaultProps} {...overrideProps} />);
@@ -123,13 +123,13 @@ describe('Idle Timeout', () => {
     showWarning();
     const dialogBodyText = getByRole('main');
     expect(dialogBodyText.textContent).toEqual(
-      `You've been inactive for a while.Your session will end in 3 minutes.Select "Continue session" below if you want more time.`
+      `You've been inactive for a while.Your session will end in 2 minutes.Select "Continue session" below if you want more time.`
     );
   });
 
   it('default formatMessage should adjust message for singular minute vs multiple', () => {
-    const { getByRole } = renderIdleTimeout({ timeToWarning: 1 });
-    showWarning(1644051720);
+    const { getByRole } = renderIdleTimeout({ timeToWarning: 4 });
+    showWarning(1644051720); // start time + (4 * 60000ms) (4 minutes)
     const dialogBodyText = getByRole('main');
     expect(dialogBodyText.textContent).toEqual(
       `You've been inactive for a while.Your session will end in 1 minute.Select "Continue session" below if you want more time.`
@@ -138,8 +138,8 @@ describe('Idle Timeout', () => {
 
   it('should replace token in message every minute', () => {
     const formatMessage = (time) => `Your session will end in ${time}.`;
-    const { getByRole } = renderIdleTimeout({ formatMessage });
-    showWarning();
+    const { getByRole } = renderIdleTimeout({ formatMessage, timeToWarning: 2 });
+    showWarning(1643931720);
     const dialogBodyText = getByRole('main');
     expect(dialogBodyText.textContent).toEqual('Your session will end in 3.');
     // have to advance Date.now() and also retrigger the checkStatus interval
