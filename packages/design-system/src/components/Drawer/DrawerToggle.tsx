@@ -1,6 +1,7 @@
 import Button, { ButtonProps } from '../Button/Button';
 import React, { useEffect, useRef } from 'react';
 import classNames from 'classnames';
+import usePrevious from './usePrevious';
 
 export type DrawerToggleProps = ButtonProps & {
   /**
@@ -39,9 +40,11 @@ export const DrawerToggle = ({
   ...others
 }: DrawerToggleProps): React.ReactElement => {
   const buttonRef = useRef(null);
+  const prevDrawerOpenProp = usePrevious(drawerOpen);
 
   useEffect(() => {
-    if (!drawerOpen && buttonRef.current) {
+    // if drawer was open but now closed, focus the toggle
+    if (prevDrawerOpenProp && !drawerOpen && buttonRef.current) {
       buttonRef.current.focus();
     }
   }, [drawerOpen]);

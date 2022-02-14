@@ -53,7 +53,7 @@ describe('DrawerToggle', () => {
     expect(toggle.getAttribute('aria-label')).toBe(ariaLabel);
   });
 
-  it('focuses button when drawer is closed', () => {
+  it('focuses button when drawer goes from open to closed', () => {
     const { rerender } = renderDrawerToggle({ drawerOpen: true });
     rerender(
       <DrawerToggle {...defaultProps} drawerOpen={false}>
@@ -62,5 +62,11 @@ describe('DrawerToggle', () => {
     );
     const toggle = screen.getByRole('button');
     expect(toggle).toEqual(document.activeElement);
+  });
+
+  it('does not focus button when drawer in initialized to close', () => {
+    renderDrawerToggle({ drawerOpen: false });
+    const toggle = screen.getByRole('button');
+    expect(toggle).not.toEqual(document.activeElement);
   });
 });
