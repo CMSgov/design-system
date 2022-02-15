@@ -71,6 +71,14 @@ $accordion-header-font-family: $font-sans;
     flex-shrink: 0;
     height: 1.25em;
     width: 1.25em;
+
+    /* stylelint-disable */
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      path {
+        fill: Window;
+      }
+    }
+    /* stylelint-enable */
   }
 }
 
