@@ -50,9 +50,9 @@ export interface IdleTimeoutProps {
    */
   timeToTimeout: number;
   /**
-   * Defines the amount of minutes of idle activity that will trigger the warning message. The default is 5 minutes.
+   * Defines the amount of minutes of idle activity that will trigger the warning message.
    */
-  timeToWarning?: number;
+  timeToWarning: number;
 }
 
 /**
@@ -93,7 +93,7 @@ const IdleTimeout = ({
   onTimeout,
   showSessionEndButton = false,
   timeToTimeout,
-  timeToWarning = 5,
+  timeToWarning,
 }: IdleTimeoutProps): JSX.Element => {
   if (timeToWarning > timeToTimeout) {
     console.error(
@@ -106,7 +106,9 @@ const IdleTimeout = ({
   const msToWarning = timeToWarning * 60000;
   const [checkStatusTime, setCheckStatusTime] = useState<number>(null);
   const [showWarning, setShowWarning] = useState<boolean>(false);
-  const [timeInWarning, setTimeInWarning] = useState<number>(timeToTimeout - timeToWarning);
+  const [timeInWarning, setTimeInWarning] = useState<number>(
+    Math.ceil(timeToTimeout - timeToWarning)
+  );
 
   // cleanup timeouts & intervals
   const clearTimeouts = () => {
@@ -187,7 +189,7 @@ const IdleTimeout = ({
   }, []);
 
   useEffect(() => {
-    setTimeInWarning(timeToTimeout - timeToWarning);
+    setTimeInWarning(Math.ceil(timeToTimeout - timeToWarning));
     resetTimeouts();
   }, [timeToWarning, timeToTimeout]);
 
