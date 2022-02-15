@@ -186,6 +186,11 @@ const IdleTimeout = ({
     };
   }, []);
 
+  useEffect(() => {
+    setTimeInWarning(timeToTimeout - timeToWarning);
+    resetTimeouts();
+  }, [timeToWarning, timeToTimeout]);
+
   // setup interval to check status every 30 seconds
   useInterval(checkWarningStatus, checkStatusTime);
 

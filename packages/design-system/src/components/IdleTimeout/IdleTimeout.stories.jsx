@@ -35,7 +35,7 @@ export default {
 };
 
 const Template = ({ ...args }) => {
-  const [{ timeToTimeout, timeToWarning }] = useArgs({ timeToTimeout: 2, timeToWarning: 0.5 });
+  const [{ timeToTimeout, timeToWarning }] = useArgs();
   return (
     <>
       <p>Idle Timeout modal will show after {timeToWarning} minutes of inactivity.</p>

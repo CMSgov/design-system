@@ -52,13 +52,13 @@ describe('Idle Timeout', () => {
     it('should reset countdown if mouse moves', () => {
       renderIdleTimeout();
       fireEvent.mouseMove(document);
-      expect(localStorage.setItem).toHaveBeenCalledTimes(2);
+      expect(localStorage.setItem).toHaveBeenCalledTimes(3);
     });
 
     it('should reset countdown if key is pressed', () => {
       renderIdleTimeout();
       fireEvent.keyPress(document);
-      expect(localStorage.setItem).toHaveBeenCalledTimes(2);
+      expect(localStorage.setItem).toHaveBeenCalledTimes(3);
     });
 
     it('should set time since last active in local storage', () => {
@@ -118,6 +118,34 @@ describe('Idle Timeout', () => {
     });
   });
 
+  it('should reset timeouts if timeToTimeout changes', () => {
+    const { rerender } = renderIdleTimeout();
+    rerender(<IdleTimeout {...defaultProps} timeToTimeout={10} />);
+    expect(localStorage.setItem).toHaveBeenCalledTimes(3);
+  });
+
+  it('should reset timeouts if timeToWarning changes', () => {
+    const { rerender } = renderIdleTimeout();
+    rerender(<IdleTimeout {...defaultProps} timeToWarning={4} />);
+    expect(localStorage.setItem).toHaveBeenCalledTimes(3);
+  });
+
+  it('should update message time if timeToTimeout changes', () => {
+    const formatMessage = jest.fn();
+    const { rerender } = renderIdleTimeout({ formatMessage });
+    rerender(<IdleTimeout {...defaultProps} timeToTimeout={10} formatMessage={formatMessage} />);
+    showWarning();
+    expect(formatMessage).toHaveBeenNthCalledWith(1, 7);
+  });
+
+  it('should update message time if timeToWarning changes', () => {
+    const formatMessage = jest.fn();
+    const { rerender } = renderIdleTimeout({ formatMessage });
+    rerender(<IdleTimeout {...defaultProps} timeToWarning={4} formatMessage={formatMessage} />);
+    showWarning(1644051720); // start time + (4 * 60000ms) (4 minutes)
+    expect(formatMessage).toHaveBeenNthCalledWith(1, 1);
+  });
+
   it('default formatMessage should replace time in message', () => {
     const { getByRole } = renderIdleTimeout();
     showWarning();
@@ -175,14 +203,14 @@ describe('Idle Timeout', () => {
       const { unmount } = renderIdleTimeout();
       unmount();
       fireEvent.mouseMove(document);
-      expect(localStorage.setItem).toHaveBeenCalledTimes(1);
+      expect(localStorage.setItem).toHaveBeenCalledTimes(2);
     });
 
     it('should not reset countdown if key is pressed after unmount', () => {
       const { unmount } = renderIdleTimeout();
       unmount();
       fireEvent.keyPress(document);
-      expect(localStorage.setItem).toHaveBeenCalledTimes(1);
+      expect(localStorage.setItem).toHaveBeenCalledTimes(2);
     });
   });
 });
