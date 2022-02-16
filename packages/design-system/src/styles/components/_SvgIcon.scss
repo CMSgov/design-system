@@ -8,11 +8,28 @@
   stroke-width: 0;
   vertical-align: middle;
   width: 1.5em;
+
+  /* stylelint-disable */
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    fill: WindowText;
+
+    path {
+      fill: WindowText;
+      stroke: WindowText;
+    }
+  }
+  /* stylelint-enable */
 }
 
 // Icon color variations
 .ds-c-icon-color--primary {
   color: $color-primary;
+
+  /* stylelint-disable scss/media-feature-value-dollar-variable */
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    color: WindowText;
+  }
+  /* stylelint-enable scss/media-feature-value-dollar-variable */
 }
 
 .ds-c-icon-color--inverse {
@@ -47,4 +64,54 @@
 
 .ds-c-icon--pdf__text {
   fill: $color-white;
+
+  /* stylelint-disable */
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    fill: Window !important;
+  }
+  /* stylelint-enable */
+}
+
+.ds-c-icon--star {
+  /* stylelint-disable */
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    path {
+      fill: Window;
+      stroke: WindowText;
+    }
+  }
+  /* stylelint-enable */
+}
+
+.ds-c-icon--star-filled {
+  /* stylelint-disable */
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    path {
+      fill: WindowText;
+      stroke: WindowText;
+    }
+  }
+  /* stylelint-enable */
+}
+
+.ds-c-icon--usa-flag {
+  /* stylelint-disable */
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    -ms-high-contrast-adjust: none;
+
+    path:nth-of-type(1),
+    path:nth-of-type(5) {
+      fill: #ffffff;
+    }
+
+    path:nth-of-type(2),
+    path:nth-of-type(4) {
+      fill: #db3e1f;
+    }
+
+    path:nth-of-type(3) {
+      fill: #1e33b1;
+    }
+  }
+  /* stylelint-enable */
 }

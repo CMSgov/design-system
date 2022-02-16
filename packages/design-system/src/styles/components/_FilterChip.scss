@@ -75,11 +75,27 @@ $filter-chip-border-radius: $border-radius-pill !default;
     position: relative;
     top: ($filter-chip-icon-container-size - 2 - $filter-chip-icon-size) / 2;
     width: $filter-chip-icon-size;
+
+    /* stylelint-disable */
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      path {
+        fill: ButtonText;
+      }
+    }
+    /* stylelint-enable */
   }
 
   .ds-c-icon--close-thin {
     height: $filter-chip-icon-size + 2;
     width: $filter-chip-icon-size + 2;
+
+    /* stylelint-disable */
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      path {
+        stroke: ButtonText !important;
+      }
+    }
+    /* stylelint-enable */
   }
 
   .ds-c-filter-chip__button:active &,

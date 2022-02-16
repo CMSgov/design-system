@@ -105,6 +105,14 @@
     color: $color-base;
     height: $font-size-md;
     width: $font-size-md;
+
+    /* stylelint-disable */
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      path {
+        fill: Window;
+      }
+    }
+    /* stylelint-enable */
   }
 }
 
@@ -163,6 +171,16 @@
 .ds-c-vertical-nav .ds-c-vertical-nav__item {
   @media (-ms-high-contrast: active), (forced-colors: active) {
     border-top: 1px solid LinkText;
+    border-bottom: 1px solid LinkText;
+  }
+}
+
+.ds-c-vertical-nav__subnav .ds-c-vertical-nav__label {
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
   }
 }
 /* stylelint-enable */

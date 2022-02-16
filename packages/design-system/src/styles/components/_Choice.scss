@@ -42,6 +42,13 @@ $ds-c-inset-border-width: $spacer-half;
     position: absolute;
     top: 0;
     width: $choice-size;
+
+    /* stylelint-disable */
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      // background-color: window;
+      border-color: ButtonText;
+    }
+    /* stylelint-enable */
   }
 
   // Checkmark icon
@@ -65,7 +72,15 @@ $ds-c-inset-border-width: $spacer-half;
   // Choice radio button
   &[type='radio'] + label::before {
     border-radius: 100%;
+
+    /* stylelint-disable */
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      -ms-high-contrast-adjust: none;
+      background-color: window;
+    }
+    /* stylelint-enable */
   }
+
   &[type='radio'] + label::after {
     background-color: $choice-checked-border-color;
     border: 0;
@@ -75,10 +90,25 @@ $ds-c-inset-border-width: $spacer-half;
     top: 5px;
     transform: none;
     width: $choice-radio-button-size;
+
+    /* stylelint-disable */
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      -ms-high-contrast-adjust: none;
+      background-color: WindowText;
+    }
+    /* stylelint-enable */
   }
+
   &:checked[type='radio'] + label::before {
     background-color: $color-white;
+
+    /* stylelint-disable */
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      background-color: window;
+    }
+    /* stylelint-enable */
   }
+
   // Errored choice
   @if $ds-include-choice-error-highlight {
     &.ds-c-choice--error + label::before {
@@ -91,6 +121,12 @@ $ds-c-inset-border-width: $spacer-half;
     &::before {
       background-color: $choice-checked-background-color;
       border-color: $choice-checked-border-color;
+
+      /* stylelint-disable */
+      @media (-ms-high-contrast: active), (forced-colors: active) {
+        border-color: ButtonText;
+      }
+      /* stylelint-enable */
     }
 
     &::after {
@@ -197,6 +233,12 @@ $ds-c-inset-border-width: $spacer-half;
 
 .ds-c-choice:checked:focus + label::before {
   border-color: $color-primary-darker;
+
+  /* stylelint-disable */
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    border-color: window;
+  }
+  /* stylelint-enable */
 }
 
 // TODO: rename to .ds-c-choice__checked-child

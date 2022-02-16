@@ -1,8 +1,9 @@
 /* eslint-disable react/no-multi-comp */
 /* eslint-disable @typescript-eslint/no-use-before-define */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import useInterval from './useInterval';
 import IdleTimeoutDialog from './IdleTimeoutDialog';
+import { checkPassiveSupport } from './utilities/checkPassive';
 
 export interface IdleTimeoutProps {
   /**
@@ -18,7 +19,12 @@ export interface IdleTimeoutProps {
    */
   endSessionButtonText?: string;
   /**
-   * The url to redirect to if the 'end session' option is chosen in warning dialog.
+   *
+   */
+  endSessionUrl?: string;
+  /**
+   * A formatting function that returns the string to be used in the warning modal
+   * The formatting function is provided the timeTilTimeout (in minutes).
    */
   endSessionRedirectUrl?: string;
   /**
@@ -49,9 +55,9 @@ export interface IdleTimeoutProps {
    */
   timeToTimeout: number;
   /**
-   * Defines the time (in minutes) before the timeout occurs when the warning dialog will be shown.
+   * Defines the amount of minutes of idle activity that will trigger the warning message.
    */
-  timeToWarning?: number;
+  timeToWarning: number;
 }
 
 /**
@@ -78,42 +84,40 @@ const defaultMessageFormatter = (timeTilTimeout: number): React.ReactNode => {
   );
 };
 
-// names for local storage variables
-const timeoutCookieName = 'CMS_DS_TIMEOUT';
-const timeoutWarningCookieName = 'CMS_DS_WARNING';
+// local storage variable name
+const lastActiveCookieName = 'CMS_DS_IT_LAST_ACTIVE';
 
 const IdleTimeout = ({
   continueSessionText = 'Continue session',
   heading = 'Are you still there?',
   endSessionButtonText = 'Logout',
-  endSessionRedirectUrl = '/logout',
+  endSessionUrl = '/logout',
   formatMessage = defaultMessageFormatter,
   onSessionContinue,
   onSessionForcedEnd,
   onTimeout,
   showSessionEndButton = false,
   timeToTimeout,
-  timeToWarning = 5,
+  timeToWarning,
 }: IdleTimeoutProps): JSX.Element => {
   if (timeToWarning > timeToTimeout) {
     console.error(
       'Error in TimeoutManager component. `timeToWarning` is greater or equal to `timeToTimeout`'
     );
   }
+  const MS_BETWEEN_STATUS_CHECKS = 30000;
   // convert minutes to milliseconds
   const msToTimeout = timeToTimeout * 60000;
-  const msToWarning = (timeToTimeout - timeToWarning) * 60000;
+  const msToWarning = timeToWarning * 60000;
   const [checkStatusTime, setCheckStatusTime] = useState<number>(null);
-  const [warningIntervalId, setWarningIntervalId] = useState<NodeJS.Timeout>(null);
   const [showWarning, setShowWarning] = useState<boolean>(false);
-  const [timeInWarning, setTimeInWarning] = useState<number>(timeToWarning);
+  const [timeInWarning, setTimeInWarning] = useState<number>(
+    Math.ceil(timeToTimeout - timeToWarning)
+  );
 
   // cleanup timeouts & intervals
   const clearTimeouts = () => {
     setCheckStatusTime(null);
-    if (warningIntervalId) {
-      clearInterval(warningIntervalId);
-    }
   };
 
   // when the countdown for the session ends, clean up, call callback & close modal
@@ -127,31 +131,23 @@ const IdleTimeout = ({
   // when it's time to warn the user about idleness,
   // set an interval that updates the modal message
   const handleWarningTimeout = () => {
-    setShowWarning(true);
     removeEventListeners();
-    let timeTilTimeout = timeToWarning - 1;
-    const intervalId = setInterval(() => {
-      setTimeInWarning(timeTilTimeout);
-      timeTilTimeout--;
-    }, 60000);
-    setWarningIntervalId(intervalId);
+    setShowWarning(true);
   };
 
   const setTimeoutCookies = () => {
-    const timeoutTime = Date.now() + msToTimeout;
-    const warningTime = Date.now() + msToWarning;
-    localStorage.setItem(timeoutCookieName, timeoutTime.toString());
-    localStorage.setItem(timeoutWarningCookieName, warningTime.toString());
+    localStorage.setItem(lastActiveCookieName, Date.now().toString());
 
     if (checkStatusTime === null) {
-      setCheckStatusTime(30000);
+      setCheckStatusTime(MS_BETWEEN_STATUS_CHECKS);
     }
   };
 
-  const resetTimeouts = () => {
+  // have to useCallback so that the function can be removed properly from event listeners
+  const resetTimeouts = useCallback(() => {
     clearTimeouts();
     setTimeoutCookies();
-  };
+  }, []);
 
   const removeEventListeners = () => {
     document.removeEventListener('mousemove', resetTimeouts);
@@ -159,23 +155,35 @@ const IdleTimeout = ({
   };
 
   const addEventListeners = () => {
-    document.addEventListener('mousemove', resetTimeouts);
-    document.addEventListener('keypress', resetTimeouts);
+    const passiveSupported = checkPassiveSupport();
+    const options = passiveSupported ? { passive: true } : false;
+    document.addEventListener('mousemove', resetTimeouts, options);
+    document.addEventListener('keypress', resetTimeouts, options);
   };
 
   const checkWarningStatus = () => {
-    const warningTime = localStorage.getItem(timeoutWarningCookieName);
-    const timeoutTime = localStorage.getItem(timeoutCookieName);
+    const lastActiveTime = Number(localStorage.getItem(lastActiveCookieName));
+    const now = Date.now();
+    const msSinceLastActive = now - lastActiveTime;
 
-    if (Date.now() >= Number(timeoutTime)) {
+    if (msSinceLastActive >= msToTimeout) {
       handleTimeout();
-    } else if (!showWarning && Date.now() >= Number(warningTime)) {
+    } else if (!showWarning && msSinceLastActive >= msToWarning) {
+      removeEventListeners();
       handleWarningTimeout();
+    } else if (showWarning && msSinceLastActive >= msToWarning) {
+      // if the warning is showing, update the timeInWarning variable (in minutes)
+      const minutesLeft = Math.ceil((msToTimeout - msSinceLastActive) / 60000);
+      setTimeInWarning(minutesLeft);
+    } else if (showWarning && msSinceLastActive < msToWarning) {
+      // if another tab updates the last active time, hide current warning modal
+      setShowWarning(false);
     }
   };
 
   useEffect(() => {
     setTimeoutCookies();
+    // event listeners have to be added before status check in case they are removed in status check
     addEventListeners();
     checkWarningStatus();
 
@@ -184,6 +192,11 @@ const IdleTimeout = ({
       removeEventListeners();
     };
   }, []);
+
+  useEffect(() => {
+    setTimeInWarning(Math.ceil(timeToTimeout - timeToWarning));
+    resetTimeouts();
+  }, [timeToWarning, timeToTimeout]);
 
   // setup interval to check status every 30 seconds
   useInterval(checkWarningStatus, checkStatusTime);
@@ -213,7 +226,7 @@ const IdleTimeout = ({
       continueSessionText={continueSessionText}
       heading={heading}
       endSessionButtonText={endSessionButtonText}
-      endSessionRedirectUrl={endSessionRedirectUrl}
+      endSessionUrl={endSessionUrl}
       message={formatMessage(timeInWarning)}
       onSessionContinue={handleSessionContinue}
       onSessionForcedEnd={handleSessionForcedEnd}
