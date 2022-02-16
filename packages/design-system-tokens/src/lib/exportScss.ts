@@ -24,7 +24,7 @@ export const exportScss = (fileDescriptors: FileDescriptor[], outPath: string): 
       Object.keys(importedModule.default).forEach((key) => {
         if (key === 'description') return;
 
-        const filename = `${outPath}/${file.fileBaseName}-${key}.scss`;
+        const filename = `${outPath}/${file.parentDirectoryName}-${file.fileBaseName}-${key}.scss`;
         let vars = '';
 
         Object.entries(importedModule.default[key]).forEach(([name, value]) => {
