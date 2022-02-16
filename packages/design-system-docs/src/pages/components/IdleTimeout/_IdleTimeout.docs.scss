@@ -19,6 +19,10 @@ Style guide: components.idleTimeout.react
 /*
 ---
 
+### Related patterns
+
+- [Dialog]({{root}}/components/dialog)
+
 ### When to use
 
 - Use the IdleTimeout for authenticated sessions to force logout after a set amount of time
