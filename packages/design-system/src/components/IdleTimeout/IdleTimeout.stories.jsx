@@ -27,7 +27,7 @@ export default {
   argTypes: {},
   args: {
     timeToTimeout: 2,
-    timeToWarning: 2,
+    timeToWarning: 0.5,
     onTimeout: () => {
       console.log('onTimeout');
     },
@@ -35,8 +35,13 @@ export default {
 };
 
 const Template = ({ ...args }) => {
-  const [{ timeToTimeout, timeToWarning }] = useArgs({ timeToTimeout: 2, timeToWarning: 1 });
-  return <IdleTimeout timeToTimeout={timeToTimeout} timeToWarning={timeToWarning} {...args} />;
+  const [{ timeToTimeout, timeToWarning }] = useArgs();
+  return (
+    <>
+      <p>Idle Timeout modal will show after {timeToWarning} minutes of inactivity.</p>
+      <IdleTimeout timeToTimeout={timeToTimeout} timeToWarning={timeToWarning} {...args} />
+    </>
+  );
 };
 
 export const Default = Template.bind({});

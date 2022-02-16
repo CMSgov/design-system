@@ -5,16 +5,17 @@ import { render, fireEvent } from '@testing-library/react';
 import { mockTime, restoreTime } from './utilities/mockTime';
 
 describe('Idle Timeout', () => {
+  const MOCK_START_TIME = 1643811720; // setting starting date time to 2/22/2022 2:22
   const ADVANCE_TIMER_MS = 30000;
-  const WARNING_DATETIME = 1643931720;
-  const TIMEOUT_DATETIME = 1644111720;
   const onTimeout = jest.fn();
   const defaultProps = {
     timeToTimeout: 5,
     timeToWarning: 3,
     onTimeout,
   };
-  const timeTilWarningShown = (defaultProps.timeToTimeout - defaultProps.timeToWarning) * 60000;
+  const timeTilWarningShown = defaultProps.timeToWarning * 60000;
+  const WARNING_DATETIME = MOCK_START_TIME + defaultProps.timeToWarning * 60000; // date time when warning should appear
+  const TIMEOUT_DATETIME = MOCK_START_TIME + defaultProps.timeToTimeout * 60000; // date time when timeout should occur
 
   const renderIdleTimeout = (overrideProps?) => {
     return render(<IdleTimeout {...defaultProps} {...overrideProps} />);
@@ -28,8 +29,8 @@ describe('Idle Timeout', () => {
 
   beforeEach(() => {
     jest.useFakeTimers();
-    // setting starting date time to 2/22/2022 2:22
-    mockTime(1643811720);
+    // setting start time for consistent tests
+    mockTime(MOCK_START_TIME);
   });
 
   afterEach(() => {
@@ -52,13 +53,13 @@ describe('Idle Timeout', () => {
     it('should reset countdown if mouse moves', () => {
       renderIdleTimeout();
       fireEvent.mouseMove(document);
-      expect(localStorage.setItem).toHaveBeenCalledTimes(2);
+      expect(localStorage.setItem).toHaveBeenCalledTimes(3);
     });
 
     it('should reset countdown if key is pressed', () => {
       renderIdleTimeout();
       fireEvent.keyPress(document);
-      expect(localStorage.setItem).toHaveBeenCalledTimes(2);
+      expect(localStorage.setItem).toHaveBeenCalledTimes(3);
     });
 
     it('should set time since last active in local storage', () => {
@@ -118,18 +119,46 @@ describe('Idle Timeout', () => {
     });
   });
 
+  it('should reset timeouts if timeToTimeout changes', () => {
+    const { rerender } = renderIdleTimeout();
+    rerender(<IdleTimeout {...defaultProps} timeToTimeout={10} />);
+    expect(localStorage.setItem).toHaveBeenCalledTimes(3);
+  });
+
+  it('should reset timeouts if timeToWarning changes', () => {
+    const { rerender } = renderIdleTimeout();
+    rerender(<IdleTimeout {...defaultProps} timeToWarning={4} />);
+    expect(localStorage.setItem).toHaveBeenCalledTimes(3);
+  });
+
+  it('should update message time if timeToTimeout changes', () => {
+    const formatMessage = jest.fn();
+    const { rerender } = renderIdleTimeout({ formatMessage });
+    rerender(<IdleTimeout {...defaultProps} timeToTimeout={10} formatMessage={formatMessage} />);
+    showWarning();
+    expect(formatMessage).toHaveBeenNthCalledWith(1, 7);
+  });
+
+  it('should update message time if timeToWarning changes', () => {
+    const formatMessage = jest.fn();
+    const { rerender } = renderIdleTimeout({ formatMessage });
+    rerender(<IdleTimeout {...defaultProps} timeToWarning={4} formatMessage={formatMessage} />);
+    showWarning(1644051720); // start time + (4 * 60000ms) (4 minutes)
+    expect(formatMessage).toHaveBeenNthCalledWith(1, 1);
+  });
+
   it('default formatMessage should replace time in message', () => {
     const { getByRole } = renderIdleTimeout();
     showWarning();
     const dialogBodyText = getByRole('main');
     expect(dialogBodyText.textContent).toEqual(
-      `You've been inactive for a while.Your session will end in 3 minutes.Select "Continue session" below if you want more time.`
+      `You've been inactive for a while.Your session will end in 2 minutes.Select "Continue session" below if you want more time.`
     );
   });
 
   it('default formatMessage should adjust message for singular minute vs multiple', () => {
-    const { getByRole } = renderIdleTimeout({ timeToWarning: 1 });
-    showWarning(1644051720);
+    const { getByRole } = renderIdleTimeout({ timeToWarning: 4 });
+    showWarning(MOCK_START_TIME + 4 * 60000); // setting time to match timeToWarning in this test
     const dialogBodyText = getByRole('main');
     expect(dialogBodyText.textContent).toEqual(
       `You've been inactive for a while.Your session will end in 1 minute.Select "Continue session" below if you want more time.`
@@ -138,16 +167,16 @@ describe('Idle Timeout', () => {
 
   it('should replace token in message every minute', () => {
     const formatMessage = (time) => `Your session will end in ${time}.`;
-    const { getByRole } = renderIdleTimeout({ formatMessage });
-    showWarning();
+    const { getByRole } = renderIdleTimeout({ formatMessage, timeToWarning: 2 });
+    showWarning(MOCK_START_TIME + 2 * 60000);
     const dialogBodyText = getByRole('main');
     expect(dialogBodyText.textContent).toEqual('Your session will end in 3.');
     // have to advance Date.now() and also retrigger the checkStatus interval
-    mockTime(1643991720);
+    mockTime(MOCK_START_TIME + 3 * 60000);
     jest.advanceTimersByTime(60000);
     expect(dialogBodyText.textContent).toEqual('Your session will end in 2.');
     // have to advance Date.now() and also retrigger the checkStatus interval
-    mockTime(1644051720);
+    mockTime(MOCK_START_TIME + 4 * 60000);
     jest.advanceTimersByTime(60000);
     expect(dialogBodyText.textContent).toEqual('Your session will end in 1.');
   });
@@ -175,14 +204,14 @@ describe('Idle Timeout', () => {
       const { unmount } = renderIdleTimeout();
       unmount();
       fireEvent.mouseMove(document);
-      expect(localStorage.setItem).toHaveBeenCalledTimes(1);
+      expect(localStorage.setItem).toHaveBeenCalledTimes(2);
     });
 
     it('should not reset countdown if key is pressed after unmount', () => {
       const { unmount } = renderIdleTimeout();
       unmount();
       fireEvent.keyPress(document);
-      expect(localStorage.setItem).toHaveBeenCalledTimes(1);
+      expect(localStorage.setItem).toHaveBeenCalledTimes(2);
     });
   });
 });

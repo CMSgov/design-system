@@ -50,9 +50,9 @@ export interface IdleTimeoutProps {
    */
   timeToTimeout: number;
   /**
-   * Defines the time (in minutes) until the warning message is shown. The default is 5 minutes.
+   * Defines the amount of minutes of idle activity that will trigger the warning message.
    */
-  timeToWarning?: number;
+  timeToWarning: number;
 }
 
 /**
@@ -93,7 +93,7 @@ const IdleTimeout = ({
   onTimeout,
   showSessionEndButton = false,
   timeToTimeout,
-  timeToWarning = 5,
+  timeToWarning,
 }: IdleTimeoutProps): JSX.Element => {
   if (timeToWarning > timeToTimeout) {
     console.error(
@@ -103,10 +103,12 @@ const IdleTimeout = ({
   const MS_BETWEEN_STATUS_CHECKS = 30000;
   // convert minutes to milliseconds
   const msToTimeout = timeToTimeout * 60000;
-  const msToWarning = (timeToTimeout - timeToWarning) * 60000;
+  const msToWarning = timeToWarning * 60000;
   const [checkStatusTime, setCheckStatusTime] = useState<number>(null);
   const [showWarning, setShowWarning] = useState<boolean>(false);
-  const [timeInWarning, setTimeInWarning] = useState<number>(timeToWarning);
+  const [timeInWarning, setTimeInWarning] = useState<number>(
+    Math.ceil(timeToTimeout - timeToWarning)
+  );
 
   // cleanup timeouts & intervals
   const clearTimeouts = () => {
@@ -185,6 +187,11 @@ const IdleTimeout = ({
       removeEventListeners();
     };
   }, []);
+
+  useEffect(() => {
+    setTimeInWarning(Math.ceil(timeToTimeout - timeToWarning));
+    resetTimeouts();
+  }, [timeToWarning, timeToTimeout]);
 
   // setup interval to check status every 30 seconds
   useInterval(checkWarningStatus, checkStatusTime);
