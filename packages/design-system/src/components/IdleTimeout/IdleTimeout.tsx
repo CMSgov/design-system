@@ -19,14 +19,9 @@ export interface IdleTimeoutProps {
    */
   endSessionButtonText?: string;
   /**
-   *
+   * The URL to direct to when the user intentionally ends the session.
    */
   endSessionUrl?: string;
-  /**
-   * A formatting function that returns the string to be used in the warning modal
-   * The formatting function is provided the timeTilTimeout (in minutes).
-   */
-  endSessionRedirectUrl?: string;
   /**
    * A formatting function that returns the string to be used in the warning modal.
    * The formatting function is provided the timeTilTimeout (in minutes).
