@@ -41,7 +41,7 @@ export interface IdleTimeoutDialogProps {
   showSessionEndButton?: boolean;
 }
 
-const IdleTimeoutDialog = ({
+export const IdleTimeoutDialog = ({
   continueSessionText,
   heading,
   endSessionButtonText,

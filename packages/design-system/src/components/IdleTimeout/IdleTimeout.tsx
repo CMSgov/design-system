@@ -82,7 +82,7 @@ const defaultMessageFormatter = (timeTilTimeout: number): React.ReactNode => {
 // local storage variable name
 const lastActiveCookieName = 'CMS_DS_IT_LAST_ACTIVE';
 
-const IdleTimeout = ({
+export const IdleTimeout = ({
   continueSessionText = 'Continue session',
   heading = 'Are you still there?',
   endSessionButtonText = 'Logout',

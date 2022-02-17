@@ -1,7 +1,7 @@
 /*
 Idle Timeout
 
-A component that counts down to the end of a session (behind the scenes) and shows a warning message at a set time.
+A component that counts down to the end of a session (behind the scenes) and shows a warning message after a set amount of time of inactivity.
 
 Style guide: components.idleTimeout
 */
@@ -25,7 +25,7 @@ Style guide: components.idleTimeout.react
 
 ### When to use
 
-- Use the IdleTimeout for authenticated sessions to force logout after a set amount of time
+- Use the IdleTimeout for authenticated sessions to force logout after a set amount of time on inactivity
 
 Style guide: components.idleTimeout.guidance
 */
