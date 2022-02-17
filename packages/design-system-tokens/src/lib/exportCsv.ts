@@ -25,7 +25,7 @@ export const exportCsv = (fileDescriptors: FileDescriptor[], outPath: string): n
       Object.keys(importedModule.default).forEach((key) => {
         if (key === 'description') return;
 
-        const filename = `${outPath}/${file.parentDirectoryName}-${file.exportFileName}-${key}.csv`;
+        const filename = `${outPath}/${file.exportFileName}-${key}.csv`;
 
         // write header
         let vars = `theme,key,value\r\n`;

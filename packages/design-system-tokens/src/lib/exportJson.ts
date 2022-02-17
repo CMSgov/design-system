@@ -7,6 +7,7 @@ import { writeFile } from './utility';
  */
 export const exportJson = (fileDescriptors: FileDescriptor[], outPath: string): number => {
   let filename = '';
+  let isTheme = false;
   const tokenOutput: string | any = {};
 
   fileDescriptors.forEach((file) => {
@@ -24,15 +25,17 @@ export const exportJson = (fileDescriptors: FileDescriptor[], outPath: string): 
 
     // theme files have a description prop token files do not
     if (importedModule.default.description !== undefined) {
+      isTheme = true;
       tokenOutput.tokenType = 'theme';
-      filename = `${outPath}/${file.fileBaseName}.tokens.json`;
+      filename = `${outPath}/${file.parentDirectoryName}-${file.fileBaseName}.tokens.json`;
+      writeFile(filename, JSON.stringify(tokenOutput, null, 4));
     } else {
       // it's a token file
       tokenOutput.tokenType = 'tokens';
       filename = `${outPath}/cmsds.tokens.json`;
     }
   });
-  writeFile(filename, JSON.stringify(tokenOutput, null, 4));
+  if (!isTheme) writeFile(filename, JSON.stringify(tokenOutput, null, 4));
   return 0;
 };
 
