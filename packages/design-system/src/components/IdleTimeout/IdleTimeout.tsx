@@ -19,11 +19,11 @@ export interface IdleTimeoutProps {
    */
   endSessionButtonText?: string;
   /**
-   *
+   * The URL to direct to when the user intentionally ends the session.
    */
   endSessionUrl?: string;
   /**
-   * A formatting function that returns the string to be used in the warning modal
+   * A formatting function that returns the string to be used in the warning modal.
    * The formatting function is provided the timeTilTimeout (in minutes).
    */
   formatMessage?: (timeTilTimeout: number) => string | React.ReactNode;
@@ -42,7 +42,7 @@ export interface IdleTimeoutProps {
    */
   onTimeout: (...args: any[]) => any;
   /**
-   * Describes if the button to manually end session should be shown
+   * Describes if the button to manually end session should be shown in the warning dialog.
    */
   showSessionEndButton?: boolean;
   /**
@@ -82,7 +82,7 @@ const defaultMessageFormatter = (timeTilTimeout: number): React.ReactNode => {
 // local storage variable name
 const lastActiveCookieName = 'CMS_DS_IT_LAST_ACTIVE';
 
-const IdleTimeout = ({
+export const IdleTimeout = ({
   continueSessionText = 'Continue session',
   heading = 'Are you still there?',
   endSessionButtonText = 'Logout',
