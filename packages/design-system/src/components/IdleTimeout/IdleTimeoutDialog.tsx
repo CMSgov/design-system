@@ -26,7 +26,7 @@ export interface IdleTimeoutDialogProps {
    */
   message: string | React.ReactNode;
   /**
-   * Optional function that is called when the user chooses to keep the session alive.
+   * Function that is called when the user chooses to keep the session alive.
    * The IdleTimeout component will reset the countdown internally.
    */
   onSessionContinue: (...args: any[]) => any;

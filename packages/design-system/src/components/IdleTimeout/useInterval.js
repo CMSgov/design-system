@@ -1,6 +1,12 @@
 import { useEffect, useRef } from 'react';
 
-// https://overreacted.io/making-setinterval-declarative-with-react-hooks/
+/**
+ *  useInterval is a custom hook to get useEffect and intervals to work together
+ *
+ * When trying to implement setInterval in a useEffect that happens onMount, the effect would only have the value of a prop or state variable on first render
+ * This custom hook is to ensure that the callback of setInterval receives updated props
+ * @see https://overreacted.io/making-setinterval-declarative-with-react-hooks/
+ * */
 function useInterval(callback, delay) {
   const savedCallback = useRef();
 

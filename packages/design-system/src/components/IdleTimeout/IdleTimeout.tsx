@@ -100,7 +100,7 @@ export const IdleTimeout = ({
       'Error in TimeoutManager component. `timeToWarning` is greater or equal to `timeToTimeout`'
     );
   }
-  const MS_BETWEEN_STATUS_CHECKS = 30000;
+  const msBetweenStatusChecks = 30000;
   // convert minutes to milliseconds
   const msToTimeout = timeToTimeout * 60000;
   const msToWarning = timeToWarning * 60000;
@@ -134,7 +134,7 @@ export const IdleTimeout = ({
     localStorage.setItem(lastActiveCookieName, Date.now().toString());
 
     if (checkStatusTime === null) {
-      setCheckStatusTime(MS_BETWEEN_STATUS_CHECKS);
+      setCheckStatusTime(msBetweenStatusChecks);
     }
   };
 
