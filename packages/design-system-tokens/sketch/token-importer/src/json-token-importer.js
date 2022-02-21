@@ -14,11 +14,18 @@ const getTokensPage = (doc) => {
   return tokenPage;
 };
 
+/*
+ * split tokens into groups based on root name
+ * and store in tokens submenu, returns array
+ * of Sketch Swatches
+ */
 const makeColorSwatches = (tokens) => {
   const swatches = [];
   for (const [key, value] of Object.entries(tokens.color)) {
+    let colorName = key.match(/(^[A-Za-z]+-?[A-Za-z]+?)-\d+$/);
+    colorName = colorName === null ? (colorName = '') : colorName[1] + '/';
     const currentSwatch = sketch.Swatch.from({
-      name: key,
+      name: `tokens/${colorName}${key}`,
       color: value,
     });
     swatches.push(currentSwatch);
@@ -39,7 +46,7 @@ const createTokenPage = (doc) => {
 
 // const colorSwatches = makeColorSwatches(tokens.color);
 
-export default function (context) {
+export default function () {
   let tokenData = {};
 
   const jsonFile = dialog.showOpenDialogSync({
@@ -57,15 +64,16 @@ export default function (context) {
   }
 
   const colorSwatches = makeColorSwatches(tokenData);
-  console.log(colorSwatches);
+  const doc = sketch.getSelectedDocument();
 
-  const doc = sketch.fromNative(context.document);
+  doc.swatches = [];
+  colorSwatches.forEach((swatch) => {
+    doc.swatches.push(swatch);
+  });
 
   const tokenPage = getTokensPage(doc);
   if (!tokenPage) {
     createTokenPage(doc);
     sketch.UI.message('token page created');
   }
-
-  return 1;
 }
