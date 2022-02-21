@@ -127,6 +127,15 @@ const DefaultTheme = makeTheme({
     'border-color-inverse': color.white,
   },
   spacing: { ...spacing },
+  // placeholder for now to satisfy typing
+  components: [
+    {
+      button: {
+        'button-style-example': color.white,
+        'button-spacing-top': spacing['spacer-2'],
+      },
+    },
+  ],
 });
 
 export default DefaultTheme;
