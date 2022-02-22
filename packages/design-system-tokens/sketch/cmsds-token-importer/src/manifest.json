@@ -3,7 +3,7 @@
   "icon": "icon.png",
   "commands": [
     {
-      "name": "Import Token JSON",
+      "name": "Import Design System Token JSON",
       "identifier": "json-token-importer",
       "script": "./json-token-importer.js"
     }
