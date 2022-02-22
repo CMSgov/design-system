@@ -1,5 +1,5 @@
 # build artifacts
-token-importer.sketchplugin
+*.sketchplugin
 
 # npm
 node_modules
