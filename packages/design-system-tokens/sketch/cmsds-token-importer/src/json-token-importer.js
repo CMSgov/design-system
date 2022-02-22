@@ -57,8 +57,12 @@ export default function () {
   });
 
   if (jsonFile) {
-    const importedFile = readFileSync(jsonFile[0]);
-    tokenData = JSON.parse(importedFile);
+    try {
+      const importedFile = readFileSync(jsonFile[0]);
+      tokenData = JSON.parse(importedFile);
+    } catch (err) {
+      console.error(err);
+    }
   } else {
     sketch.UI.alert('Importing Error', 'Could not open selected file.');
   }
