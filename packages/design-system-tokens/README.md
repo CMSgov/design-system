@@ -7,6 +7,7 @@ Folder structure is as follows:
     ├── README.md                       -- this file
     ├── dist                            -- exported file directory
     ├── package.json                    -- npm dependencies
+    ├── sketch                          -- sketch plugin directory
     ├── src
     │   ├── index.ts                    -- command line functionality
     │   ├── lib
@@ -28,10 +29,7 @@ Folder structure is as follows:
     yarn build inputType outputType
 
     inputTypes: tokens (all tokens), themes (all themes)
-    outputTypes: scss (Sass), csv (comma separated values)
-
-As future exporters are added they will be listed in this document. Currently planned are options
-to export W3C developing token standard JSON and YAML.
+    outputTypes: scss (Sass), csv (comma separated values), json (for sketch import or general use)
 
 ## Sketch Utilization
 

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://raw.githubusercontent.com/sketch-hq/SketchAPI/develop/docs/sketch-plugin-manifest-schema.json",
+  "icon": "icon.png",
+  "commands": [
+    {
+      "name": "Import Design System Token JSON",
+      "identifier": "json-token-importer",
+      "script": "./json-token-importer.js"
+    }
+  ],
+  "menu": {
+    "title": "CMSDS Tokens",
+    "items": [
+      "json-token-importer"
+    ]
+  }
+}
