@@ -10,8 +10,8 @@ const tokenFormat = (tokenType: string, name: string, value: string | unknown) =
  * and writes their imported data to filesystem as a comma separated document (csv)
  * with headers
  */
-export const exportCsv = (fd: FileDescriptor[], outPath: string): number => {
-  fd.forEach((file) => {
+export const exportCsv = (fileDescriptors: FileDescriptor[], outPath: string): number => {
+  fileDescriptors.forEach((file) => {
     /*
      * doing this asynchronously with import() makes this code needlessly complex
      * so ignoring this particular linting error here to allow named require.

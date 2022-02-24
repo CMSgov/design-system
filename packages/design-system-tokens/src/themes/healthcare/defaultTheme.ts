@@ -6,7 +6,7 @@ const makeTheme = <T extends ThemeTokens>(value: T) => {
 };
 
 const DefaultTheme = makeTheme({
-  description: 'Default CMSDS Core Theme',
+  description: 'Default Healthcare.gov Theme',
   color: {
     'color-white': color.white,
     'color-base': color['granite-900'],
@@ -20,14 +20,18 @@ const DefaultTheme = makeTheme({
     'color-gray-warm-dark': color['granite-700'],
     'color-gray-warm-light': color['granite-50'], // same as lightest?
     'color-gray-cool-light': color['ocean-50'],
-    'color-primary': color['ocean-500'],
-    'color-primary-darker': color['ocean-700'],
-    'color-primary-darkest': color['ocean-800'],
-    'color-primary-alt': color['sky-500'],
-    'color-primary-alt-dark': color['sky-700'],
-    'color-primary-alt-darkest': color['sky-800'],
-    'color-primary-alt-light': color['sky-300'],
-    'color-primary-alt-lightest': color['sky-50'],
+    'color-primary': color['sapphire-500'],
+    'color-primary-darker': color['sapphire-600'],
+    'color-primary-darkest': color['sapphire-700'],
+    'color-primary-alt': color['dark-sky-500'],
+    'color-primary-alt-dark': color['dark-sky-600'],
+    'color-primary-alt-darkest': color['dark-sky-800'],
+    'color-primary-alt-light': color['dark-sky-300'],
+    'color-primary-alt-lightest': color['dark-sky-50'],
+    'color-secondary': color['crimson-500'],
+    'color-secondary-dark': color['crimson-700'],
+    'color-secondary-light': color['crimson-300'],
+    'color-secondary-lightest': color['crimson-50'],
     'color-red': color['rose-500'],
     'color-red-dark': color['rose-600'],
     'color-red-darker': color['rose-700'],
@@ -46,7 +50,7 @@ const DefaultTheme = makeTheme({
     'color-green-dark': color['spring-600'],
     'color-green-darker': color['spring-700'],
     'color-green-darkest': color['spring-800'],
-    'color-green-light': color['spring-400'],
+    'color-green-light': color['spring-700'], // darker instead of lighter?
     'color-green-lighter': color['spring-200'],
     'color-green-lightest': color['spring-50'],
     'color-cool-blue': color['dark-sky-700'],
