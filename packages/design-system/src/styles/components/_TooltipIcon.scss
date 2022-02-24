@@ -8,6 +8,12 @@
   position: relative;
   vertical-align: middle;
   width: $tooltip-icon-container-size;
+
+  /* stylelint-disable scss/media-feature-value-dollar-variable */
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    border-color: Window;
+  }
+  /* stylelint-enable scss/media-feature-value-dollar-variable */
 }
 
 // SVG icon styles/positioning
@@ -24,6 +30,14 @@
   text-align: center;
   top: 0;
   width: $tooltip-icon-size;
+
+  /* stylelint-disable scss/media-feature-value-dollar-variable */
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    path {
+      fill: ButtonText;
+    }
+  }
+  /* stylelint-enable scss/media-feature-value-dollar-variable */
 }
 
 // Add border style when tooltip is activated in addition to on hover
