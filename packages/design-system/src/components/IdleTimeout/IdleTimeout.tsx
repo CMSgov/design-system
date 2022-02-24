@@ -46,7 +46,7 @@ export interface IdleTimeoutProps {
    */
   showSessionEndButton?: boolean;
   /**
-   * Defines the time (in minutes) until the session is timed out
+   * Defines the amount of minutes of idle activity until the session is timed out
    */
   timeToTimeout: number;
   /**
@@ -201,6 +201,7 @@ export const IdleTimeout = ({
       onSessionContinue();
     }
     setShowWarning(false);
+    setTimeInWarning(Math.ceil(timeToTimeout - timeToWarning));
     resetTimeouts();
     addEventListeners();
   };
