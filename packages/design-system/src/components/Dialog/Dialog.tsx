@@ -259,10 +259,6 @@ export interface DialogProps extends AriaModalProps {
    */
   heading?: React.ReactNode;
   /**
-   * Describes if close button is hidden. Defaults to 'false'
-   */
-  hideCloseButton?: boolean;
-  /**
    * The Dialog's size parameter.
    */
   size?: DialogSize;
@@ -355,7 +351,6 @@ export const Dialog = (props: DialogProps) => {
     escapeExitDisabled,
     headerClassName,
     heading,
-    hideCloseButton,
     onExit,
     size,
     title,
@@ -400,21 +395,19 @@ export const Dialog = (props: DialogProps) => {
               </h1>
             )
           }
-          {!hideCloseButton && (
-            <Button
-              aria-label={ariaCloseLabel}
-              className="ds-c-dialog__close"
-              onClick={onExit}
-              size={closeButtonSize}
-              variation={closeButtonVariation}
-            >
-              {closeIcon}
-              {
-                // TODO: remove closeText support once fully deprecated
-                closeText || closeButtonText
-              }
-            </Button>
-          )}
+          <Button
+            aria-label={ariaCloseLabel}
+            className="ds-c-dialog__close"
+            onClick={onExit}
+            size={closeButtonSize}
+            variation={closeButtonVariation}
+          >
+            {closeIcon}
+            {
+              // TODO: remove closeText support once fully deprecated
+              closeText || closeButtonText
+            }
+          </Button>
         </header>
         <main role="main" className="ds-c-dialog__body">
           <div id="dialog-content">{children}</div>

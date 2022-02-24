@@ -7,6 +7,10 @@ import { checkPassiveSupport } from './utilities/checkPassive';
 
 export interface IdleTimeoutProps {
   /**
+   *  The text for the dialog's 'close' button
+   */
+  closeButtonText?: string;
+  /**
    * The text for the 'continue session' button in warning dialog.
    */
   continueSessionText?: string;
@@ -28,7 +32,7 @@ export interface IdleTimeoutProps {
    */
   formatMessage?: (timeTilTimeout: number) => string | React.ReactNode;
   /**
-   * Optional function that is called when the user chooses to keep the session alive.
+   * Optional function that is called when the user chooses to keep the session alive. Either through the 'continue session' button or the 'close' button
    * The IdleTimeout component will reset the countdown internally.
    */
   onSessionContinue?: (...args: any[]) => any;
@@ -83,6 +87,7 @@ const defaultMessageFormatter = (timeTilTimeout: number): React.ReactNode => {
 const lastActiveCookieName = 'CMS_DS_IT_LAST_ACTIVE';
 
 export const IdleTimeout = ({
+  closeButtonText = 'Close',
   continueSessionText = 'Continue session',
   heading = 'Are you still there?',
   endSessionButtonText = 'Logout',
@@ -227,6 +232,8 @@ export const IdleTimeout = ({
       onSessionContinue={handleSessionContinue}
       onSessionForcedEnd={handleSessionForcedEnd}
       showSessionEndButton={showSessionEndButton}
+      closeButtonText={closeButtonText}
+      onClose={handleSessionContinue}
     />
   ) : null;
 };
