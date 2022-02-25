@@ -36,22 +36,22 @@ describe('<PrivacySettingsDialog />', function () {
     const { setPrivacySettings } = require('./privacySettings');
     const onExit = jest.fn();
     renderComponent({ onExit });
-    const checkboxes = screen.getAllByRole('checkbox');
+    const radios = screen.getAllByRole('radio');
 
-    function getSettingCheckboxes(name) {
-      return checkboxes.filter((checkbox) => checkbox.name === `cookie-${name}`);
+    function getSettingRadios(name) {
+      return radios.filter((radio) => radio.name === `cookie-${name}`);
     }
 
     function getSettingValue(name) {
-      const checkbox = getSettingCheckboxes(name).find((checkbox) => checkbox.checked);
-      return checkbox.value;
+      const radio = getSettingRadios(name).find((radio) => radio.checked);
+      return radio.value;
     }
 
     expect(getSettingValue('c2')).toEqual('0');
     expect(getSettingValue('c3')).toEqual('0');
     expect(getSettingValue('c4')).toEqual('1');
 
-    const allow = getSettingCheckboxes('c3').find((checkbox) => checkbox.value === '1');
+    const allow = getSettingRadios('c3').find((radio) => radio.value === '1');
     fireEvent.click(allow);
     fireEvent.click(screen.getByRole('button', { name: 'privacy.save' }));
 
