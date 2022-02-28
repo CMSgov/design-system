@@ -53,6 +53,7 @@ export const ViewDialog = () => (
     endSessionButtonText="Logout"
     endSessionUrl="#"
     message='You’ve been inactive for a while. Your session will end in 2 minutes. Select "Continue session" below if you want more time.'
+    onClose={() => {}}
     onSessionContinue={() => {}}
     onSessionForcedEnd={() => {}}
     showSessionEndButton
