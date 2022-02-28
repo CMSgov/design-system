@@ -62,13 +62,19 @@ export const IdleTimeoutDialog = ({
   showSessionEndButton,
 }: IdleTimeoutDialogProps): React.ReactElement => {
   const renderDialogActions = () => {
+    const continueSessionButtonClasses = showSessionEndButton ? 'ds-u-margin-right--1' : null;
+
     return (
       <>
-        <Button variation="primary" onClick={onSessionContinue}>
+        <Button
+          variation="primary"
+          className={continueSessionButtonClasses}
+          onClick={onSessionContinue}
+        >
           {continueSessionText}
         </Button>
         {showSessionEndButton ? (
-          <Button variation="transparent" href={endSessionUrl} onClick={onSessionForcedEnd}>
+          <Button href={endSessionUrl} onClick={onSessionForcedEnd}>
             {endSessionButtonText}
           </Button>
         ) : null}
