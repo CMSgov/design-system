@@ -83,6 +83,26 @@ describe('Idle Timeout', () => {
       expect(dialogEl).toBeDefined();
     });
 
+    it('should reset countdown if user opts to close modal', () => {
+      const { getByLabelText, queryByRole } = renderIdleTimeout();
+      showWarning();
+      const keepSessionBtn = getByLabelText('Close modal dialog');
+      fireEvent.click(keepSessionBtn);
+      const dialogEl = queryByRole('alertdialog');
+      expect(dialogEl).toBeNull();
+      jest.advanceTimersByTime(timeTilWarningShown);
+      expect(dialogEl).toBeDefined();
+    });
+
+    it('should call onSessionContinue if user opts to close modal', () => {
+      const onSessionContinue = jest.fn();
+      const { getByLabelText } = renderIdleTimeout({ onSessionContinue });
+      showWarning();
+      const keepSessionBtn = getByLabelText('Close modal dialog');
+      fireEvent.click(keepSessionBtn);
+      expect(onSessionContinue).toHaveBeenCalled();
+    });
+
     it('warning element should be visible at set warning time', () => {
       const { queryByTestId } = renderIdleTimeout();
       showWarning();
