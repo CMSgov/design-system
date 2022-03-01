@@ -2,6 +2,11 @@
   $breakpoint-large-min: $width-md;
   $breakpoint-small-max: $breakpoint-large-min - 1;
 
+  td:last-child {
+    // Avoid text wrapping on the radio buttons
+    min-width: 132px;
+  }
+
   @media screen and (max-width: $breakpoint-small-max) {
     &,
     tbody {

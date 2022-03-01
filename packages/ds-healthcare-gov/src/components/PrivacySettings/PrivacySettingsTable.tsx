@@ -33,7 +33,7 @@ export const PrivacySettingsTable = (props: PrivacySettingsTableProps) => {
     const label = <span className="ds-u-visibility--screen-reader">{category}</span>;
     return (
       <ChoiceList
-        type="checkbox"
+        type="radio"
         choices={choices}
         onChange={(event) => {
           setPrivacySetting(settingsKey, event.target.value);
