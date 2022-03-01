@@ -9,6 +9,9 @@
 # Code editors
 *.sublime-*
 
+# Environment configuration
+.env
+
 # Logs
 logs
 *.log
