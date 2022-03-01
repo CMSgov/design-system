@@ -143,10 +143,13 @@ $pagination-page-count-color: $color-gray;
   }
   .ds-c-pagination__nav--img-container {
     display: inline-block;
-    height: 24px;
-    margin-left: 4px;
-    vertical-align: middle;
-    width: 20px;
+    vertical-align: text-top;
+    &-next {
+      margin-left: $spacer-half;
+    }
+    &-previous {
+      margin-right: $spacer-half;
+    }
   }
   .ds-c-pagination__nav--image {
     height: 18px;
