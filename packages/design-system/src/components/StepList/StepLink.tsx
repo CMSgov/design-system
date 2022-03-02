@@ -1,5 +1,12 @@
 import React from 'react';
 
+export interface StepLinkComponentProps {
+  href?: string;
+  onClick: (event: React.SyntheticEvent<any>) => any;
+  className?: string;
+  children: React.ReactNode;
+}
+
 export interface StepLinkProps {
   /**
    * Label text or HTML.
@@ -10,7 +17,7 @@ export interface StepLinkProps {
   screenReaderText?: string;
   className?: string;
   onClick?: (href?: string, stepId?: string) => any;
-  component?: React.ComponentType | keyof JSX.IntrinsicElements;
+  component?: React.ComponentType<StepLinkComponentProps> | keyof JSX.IntrinsicElements;
 }
 
 export const StepLink = (props: StepLinkProps) => {
