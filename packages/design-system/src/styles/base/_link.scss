@@ -77,6 +77,7 @@ $link-underline-offset: auto !default;
   /* stylelint-enable selector-max-specificity */
 
   &:active {
+    background-color: transparent;
     color: $link-inverse-active-color;
     outline: 0 none;
   }
