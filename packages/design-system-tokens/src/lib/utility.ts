@@ -21,11 +21,21 @@ export const hexToRgb = (hex: HexValue): RGBValue | null => {
 };
 
 // flattens an object while maintaining tree information
-export const flatten = (obj: Record<string, any>, prefix = '', res: Record<string, any> = {}) =>
+export const flatten = (
+  obj: Record<string, any>,
+  prefix = '',
+  res: Record<string, any> = {},
+  delim = '.',
+  prefixCategory = false
+) =>
   Object.entries(obj).reduce((r, [key, val]) => {
     const k = `${prefix}${key}`;
     if (typeof val === 'object') {
-      flatten(val, `${k}.`, r);
+      if (prefixCategory) {
+        flatten(val, `${k}${delim}`, r, delim);
+      } else {
+        flatten(val, ``, r, delim);
+      }
     } else {
       res[k] = val;
     }

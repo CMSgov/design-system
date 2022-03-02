@@ -96,10 +96,9 @@ const DefaultTheme = makeTheme({
   spacing: { ...spacing },
   // placeholder for now to satisfy typing
   components: {
-    button: {
-      'button-style-example': color.white,
-      'button-spacing-top': spacing['spacer-2'],
-    },
+    'button-style-example': color.white,
+    'button-spacing-top': spacing['spacer-2'],
+    'dropdown-padding-left': spacing['spacer-4'],
   },
 });
 

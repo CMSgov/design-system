@@ -7,16 +7,12 @@ const makeFonts = <T extends FontTokens>(value: T) => {
   return value;
 };
 
-const fonts = makeFonts({
+const font = makeFonts({
   family: {
-    sans: {
-      'open-sans': '"Open Sans", Helvetica, sans-serif',
-      rubik: '"Rubik", sans-serif',
-      montserrat: '"Montserrat", sans-serif',
-    },
-    serif: {
-      bitter: 'Bitter, Georgia, serif',
-    },
+    'open-sans': '"Open Sans", Helvetica, sans-serif',
+    rubik: '"Rubik", sans-serif',
+    montserrat: '"Montserrat", sans-serif',
+    bitter: 'Bitter, Georgia, serif',
   },
   size: {
     base: '16px',
@@ -47,4 +43,4 @@ const fonts = makeFonts({
   },
 });
 
-export default fonts;
+export default font;

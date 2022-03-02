@@ -15,7 +15,7 @@ export type HexColorTokens = {
 };
 
 export type FontTokens = {
-  readonly family: { [key: string]: { [key: string]: string } };
+  readonly family: { [key: string]: string };
   readonly size: { [key: string]: PxValue };
   readonly lineHeight: { [key: string]: `${number}` };
   readonly weight: { [key: string]: `${number}` };
@@ -27,15 +27,11 @@ export type Theme = {
   readonly tokens: ThemeTokens;
 };
 
-export type Component = {
-  readonly [key: string]: AllTokenValues;
-};
-
 export type ThemeTokens = {
   readonly description: string;
   readonly color: HexColorTokens;
   readonly spacing: SpacingTokens;
-  readonly components: Component;
+  readonly components: AllTokenValues;
 };
 
 export type FileDescriptor = {

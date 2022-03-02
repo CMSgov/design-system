@@ -21,9 +21,7 @@ export const exportCsv = (fileDescriptors: FileDescriptor[], outPath: string): n
      */
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const importedModule = require(`${file.moduleImportName}`);
-    const flattenedModule = flatten(importedModule.default);
-
-    // theme files have a description prop token files do not
+    const flattenedModule = flatten(importedModule.default, '', {}, '-', true);
     const filename = `${outPath}/${file.exportFileName}.csv`;
 
     // write header
