@@ -20,6 +20,18 @@ export const hexToRgb = (hex: HexValue): RGBValue | null => {
   return null;
 };
 
+// flattens an object while maintaining tree information
+export const flatten = (obj: Record<string, any>, prefix = '', res: Record<string, any> = {}) =>
+  Object.entries(obj).reduce((r, [key, val]) => {
+    const k = `${prefix}${key}`;
+    if (typeof val === 'object') {
+      flatten(val, `${k}.`, r);
+    } else {
+      res[k] = val;
+    }
+    return r;
+  }, res);
+
 /*
  * given a directory path string and an empty string array, returns a
  * string array containing all files under the given path

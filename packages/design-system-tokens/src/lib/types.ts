@@ -35,7 +35,7 @@ export type ThemeTokens = {
   readonly description: string;
   readonly color: HexColorTokens;
   readonly spacing: SpacingTokens;
-  readonly components: Component[];
+  readonly components: Component;
 };
 
 export type FileDescriptor = {

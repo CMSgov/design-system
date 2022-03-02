@@ -1,7 +1,9 @@
 import { FileDescriptor } from './types';
-import { writeFile } from './utility';
+import { flatten, writeFile } from './utility';
 
 const tokenFormat = (tokenType: string, name: string, value: string | unknown) => {
+  // double quote strings with commas in them
+  if (typeof value === 'string' && value.indexOf(',') > 0) value = `""${value}""`;
   return `${tokenType},${name},${value}\r\n`;
 };
 
@@ -19,36 +21,19 @@ export const exportCsv = (fileDescriptors: FileDescriptor[], outPath: string): n
      */
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const importedModule = require(`${file.moduleImportName}`);
+    const flattenedModule = flatten(importedModule.default);
 
     // theme files have a description prop token files do not
-    if (importedModule.default.description !== undefined) {
-      Object.keys(importedModule.default).forEach((key) => {
-        if (key === 'description') return;
+    const filename = `${outPath}/${file.exportFileName}.csv`;
 
-        const filename = `${outPath}/${file.exportFileName}-${key}.csv`;
+    // write header
+    let vars = `id,key,value\r\n`;
 
-        // write header
-        let vars = `theme,key,value\r\n`;
+    Object.entries(flattenedModule).forEach(([name, value]) => {
+      vars += tokenFormat(file.fileBaseName, name, value);
+    });
 
-        Object.entries(importedModule.default[key]).forEach(([name, value]) => {
-          vars += tokenFormat(file.fileBaseName, name, value);
-        });
-
-        writeFile(filename, vars);
-      });
-    } else {
-      // it's a token file
-      const filename = `${outPath}/${file.exportFileName}.csv`;
-
-      // write header
-      let vars = `type,key,value\r\n`;
-
-      Object.entries(importedModule.default).forEach(([name, value]) => {
-        vars += tokenFormat(file.fileBaseName, name, value);
-      });
-
-      writeFile(filename, vars);
-    }
+    writeFile(filename, vars);
   });
   return 0;
 };

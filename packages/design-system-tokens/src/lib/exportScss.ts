@@ -39,6 +39,7 @@ export const exportScss = (fileDescriptors: FileDescriptor[], outPath: string): 
       let vars = '';
 
       Object.entries(importedModule.default).forEach(([name, value]) => {
+        //
         vars += tokenFormat(name, value);
       });
 

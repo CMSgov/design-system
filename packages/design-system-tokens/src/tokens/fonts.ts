@@ -11,6 +11,8 @@ const fonts = makeFonts({
   family: {
     sans: {
       'open-sans': '"Open Sans", Helvetica, sans-serif',
+      rubik: '"Rubik", sans-serif',
+      montserrat: '"Montserrat", sans-serif',
     },
     serif: {
       bitter: 'Bitter, Georgia, serif',

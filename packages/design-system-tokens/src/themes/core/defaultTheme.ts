@@ -95,14 +95,12 @@ const DefaultTheme = makeTheme({
   },
   spacing: { ...spacing },
   // placeholder for now to satisfy typing
-  components: [
-    {
-      button: {
-        'button-style-example': color.white,
-        'button-spacing-top': spacing['spacer-2'],
-      },
+  components: {
+    button: {
+      'button-style-example': color.white,
+      'button-spacing-top': spacing['spacer-2'],
     },
-  ],
+  },
 });
 
 export default DefaultTheme;
