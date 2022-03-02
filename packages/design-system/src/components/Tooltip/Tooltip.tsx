@@ -12,6 +12,9 @@ import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import classNames from 'classnames';
 import { createPopper, Placement } from '@popperjs/core';
 import uniqueId from 'lodash/uniqueId';
+import { Button } from '../Button';
+import { CloseIconThin } from '../Icons';
+import usePrevious from '../utilities/usePrevious';
 
 export interface TooltipProps {
   /**
@@ -79,6 +82,18 @@ export interface TooltipProps {
    * `zIndex` styling applied to the tooltip body
    */
   zIndex?: number;
+  /**
+   * Heading for the tooltip content. This will show above 'title' content and inline with 'closeButton' if closeButton is set
+   */
+  contentHeading?: React.ReactNode;
+  /**
+   * Determines if close button is shown in tooltip. It is recommended that the close button is only used if `dialog=true`
+   */
+  showCloseButton?: boolean;
+  /**
+   * Configurable text for the aria-label of the tooltip's close button
+   */
+  closeButtonLabel?: string;
 }
 
 export const Tooltip = (props: TooltipProps) => {
@@ -97,6 +112,7 @@ export const Tooltip = (props: TooltipProps) => {
   const [active, setActive] = useState<boolean>(false);
   const [isHover, setIsHover] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
+  const prevActiveStateVar = usePrevious(active);
 
   const handleEscapeKey = (event: KeyboardEvent) => {
     const ESCAPE_KEY = 27;
@@ -112,6 +128,12 @@ export const Tooltip = (props: TooltipProps) => {
       if (!clickedTooltip && !clickedTrigger) {
         setActive(false);
       }
+    }
+  };
+
+  const handleCloseButtonClick = () => {
+    if (active && (props.dialog || isMobile)) {
+      setActive(false);
     }
   };
 
@@ -160,6 +182,13 @@ export const Tooltip = (props: TooltipProps) => {
       props.onOpen && props.onOpen();
     } else {
       props.onClose && props.onClose();
+
+      // if tooltip goes from active to inactive and is the dialog version, focus the trigger
+      if (prevActiveStateVar && (props.dialog || isMobile) && props.showCloseButton) {
+        if (triggerElement && triggerElement.current) {
+          triggerElement.current.focus();
+        }
+      }
     }
   }, [active]);
 
@@ -188,6 +217,9 @@ export const Tooltip = (props: TooltipProps) => {
       title,
       transitionDuration,
       zIndex,
+      showCloseButton,
+      closeButtonLabel,
+      contentHeading,
       ...others
     } = props;
 
@@ -238,11 +270,14 @@ export const Tooltip = (props: TooltipProps) => {
 
   const renderContent = (props: TooltipProps): React.ReactElement => {
     const {
+      closeButtonLabel,
       dialog,
+      contentHeading,
       inversed,
       interactiveBorder,
       placement,
       maxWidth,
+      showCloseButton,
       title,
       transitionDuration,
       zIndex,
@@ -270,7 +305,27 @@ export const Tooltip = (props: TooltipProps) => {
         {...eventHandlers}
       >
         <span className="ds-c-tooltip__arrow" data-popper-arrow />
-        <div className="ds-c-tooltip__content ds-base">{title}</div>
+        <div className="ds-c-tooltip__content ds-base">
+          <div
+            className={classNames('ds-c-tooltip__header', {
+              'ds-c-tooltip__header--right': !contentHeading,
+            })}
+          >
+            {contentHeading}
+            {showCloseButton && (
+              <Button
+                variation="transparent"
+                size="small"
+                className="ds-c-tooltip__close-button"
+                onClick={handleCloseButtonClick}
+                aria-label={closeButtonLabel || 'Close'}
+              >
+                <CloseIconThin />
+              </Button>
+            )}
+          </div>
+          {title}
+        </div>
         {!dialog && (
           <span className="ds-c-tooltip__interactive-border" style={interactiveBorderStyle} />
         )}

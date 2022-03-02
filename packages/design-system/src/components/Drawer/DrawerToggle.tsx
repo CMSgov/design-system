@@ -1,7 +1,7 @@
 import Button, { ButtonProps } from '../Button/Button';
 import React, { useEffect, useRef } from 'react';
 import classNames from 'classnames';
-import usePrevious from './usePrevious';
+import usePrevious from '../utilities/usePrevious';
 
 export type DrawerToggleProps = ButtonProps & {
   /**

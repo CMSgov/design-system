@@ -80,3 +80,17 @@ InteractiveContent.args = {
   ),
   children: 'Tooltip with interactive content',
 };
+
+export const TooltipWithCloseButton = Template.bind({});
+TooltipWithCloseButton.args = {
+  dialog: true,
+  title: (
+    <>
+      Entering your Social Security Number helps the plan confirm with your state that you have
+      Medicaid.
+    </>
+  ),
+  children: 'Tooltip trigger',
+  contentHeading: 'Really long Heading for tooltip',
+  showCloseButton: true,
+};

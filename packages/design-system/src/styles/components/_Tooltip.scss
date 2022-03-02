@@ -14,6 +14,8 @@ $tooltip-text-color: $color-base !default;
 $tooltip-font-size: $base-font-size !default;
 $tooltip-background-color: $color-background !default;
 
+$tooltip-close-min-width: 32px !default;
+
 %trigger-reset-styles {
   // override user agent button styles
   background: none;
@@ -115,6 +117,22 @@ $tooltip-background-color: $color-background !default;
   &:last-child {
     margin-bottom: 0;
   }
+}
+
+.ds-c-tooltip__header {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: $spacer-1;
+
+  .ds-c-tooltip__close-button {
+    // IE11 fix
+    min-width: $tooltip-close-min-width;
+  }
+}
+
+.ds-c-tooltip__header--right {
+  justify-content: flex-end;
 }
 
 // The invisible area around the tooltip container that keeps the tooltip visible on hover
