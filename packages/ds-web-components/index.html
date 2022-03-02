@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="./node_modules/@cmsgov/design-system/dist/css/index.css" />
+    <title>DS Web Components | Sandbox</title>
+  </head>
+  <body>
+    <h1>DS Web Components</h1>
+
+    <section id="alerts">
+      <h2>Alert</h2>
+
+      <div style="display: grid; gap: 1ch">
+        <wds-alert heading="Success status" variation="success">
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            <a href="https://design.cms.gov/components/alert/">I am a test link.</a> Laudantium
+            veritatis illum nam illo mollitia nulla temporibus dignissimos consequuntur, facere
+            voluptatibus accusamus animi earum officiis quos magni odit voluptates, explicabo ipsum.
+          </p>
+        </wds-alert>
+
+        <!-- Prop types will show warning for using 'info' - expected -->
+        <wds-alert heading="Informative status" variation="info">
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium veritatis illum nam
+            illo mollitia nulla temporibus dignissimos consequuntur, facere voluptatibus accusamus
+            animi earum officiis quos magni odit voluptates, explicabo ipsum.
+          </p>
+        </wds-alert>
+        <wds-alert heading="Warning status" variation="warn">
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium veritatis illum nam
+            illo mollitia nulla temporibus dignissimos consequuntur, facere voluptatibus accusamus
+            animi earum officiis quos magni odit voluptates, explicabo ipsum.
+          </p>
+        </wds-alert>
+        <wds-alert heading="Error status" variation="error">
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium veritatis illum nam
+            illo mollitia nulla temporibus dignissimos consequuntur, facere voluptatibus accusamus
+            animi earum officiis quos magni odit voluptates, explicabo ipsum.
+          </p>
+        </wds-alert>
+      </div>
+    </section>
+
+    <section id="buttons">
+      <h2>Button</h2>
+    </section>
+
+    <section id="choice-list">
+      <h2>Choice List</h2>
+    </section>
+
+    <section id="text-input">
+      <h2>Text Input</h2>
+    </section>
+
+    <script type="module" src="/main.ts"></script>
+  </body>
+</html>
