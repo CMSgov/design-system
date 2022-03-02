@@ -41,8 +41,6 @@ export const PrivacySettingsDialog = (props: PrivacySettingsDialogProps) => {
       {...dialogProps}
       heading={t('privacy.dialogTitle')}
       size="full"
-      closeButtonVariation="transparent"
-      actionsClassName="ds-u-text-align--right"
       actions={
         <Button variation="primary" onClick={savePrivacySettings}>
           {t('privacy.save')}
