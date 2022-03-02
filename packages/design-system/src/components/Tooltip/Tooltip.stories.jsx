@@ -93,4 +93,5 @@ TooltipWithCloseButton.args = {
   children: 'Tooltip trigger',
   contentHeading: 'Really long Heading for tooltip',
   showCloseButton: true,
+  className: 'ds-c-button',
 };
