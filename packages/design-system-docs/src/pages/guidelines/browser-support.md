@@ -6,6 +6,8 @@ The {{name}} follows the [2% rule](https://gds.blog.gov.uk/2012/01/25/support-fo
 
 The CMSDS is designed to be compatible with different operating systems and browser versions in order to provide a broad range of support. [Progressive enhancement and graceful degredation](https://www.w3.org/wiki/Graceful_degradation_versus_progressive_enhancement) methodologies are used to accomplish this.
 
-
-
 JK, Internet Explorer forever!
+
+Internet Explorer forever!
+
+Internet Explorer forever!
