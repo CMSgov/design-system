@@ -153,6 +153,85 @@ exports[`Tooltip renders inverse tooltip 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Tooltip tooltip with close renders heading element 1`] = `null`;
+exports[`Tooltip tooltip with close renders heading element 1`] = `
+<div
+  aria-hidden="false"
+  class="ds-c-tooltip ds-c-tooltip-enter ds-c-tooltip-enter-active"
+  data-placement="top"
+  id="trigger_13"
+  role="dialog"
+  style="max-width: 300px; z-index: 9999;"
+  tabindex="-1"
+>
+  <span
+    class="ds-c-tooltip__arrow"
+    data-popper-arrow="true"
+  />
+  <div
+    class="ds-c-tooltip__content ds-base"
+  >
+    <div
+      class="ds-c-tooltip__header"
+    >
+      Tooltip heading content
+    </div>
+    Tooltip body content
+  </div>
+</div>
+`;
 
-exports[`Tooltip tooltip with close renders heading element and close button 1`] = `null`;
+exports[`Tooltip tooltip with close renders heading element and close button 1`] = `
+<div
+  aria-hidden="false"
+  class="ds-c-tooltip ds-c-tooltip-enter ds-c-tooltip-enter-active"
+  data-placement="top"
+  id="trigger_16"
+  role="dialog"
+  style="max-width: 300px; z-index: 9999;"
+  tabindex="-1"
+>
+  <span
+    class="ds-c-tooltip__arrow"
+    data-popper-arrow="true"
+  />
+  <div
+    class="ds-c-tooltip__content ds-base"
+  >
+    <div
+      class="ds-c-tooltip__header"
+    >
+      Tooltip heading content
+      <button
+        aria-label="Close"
+        class="ds-c-button ds-c-button--transparent ds-c-button--small ds-c-tooltip__close-button"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          aria-labelledby="icon-18__title"
+          class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin "
+          focusable="false"
+          id="icon-18"
+          role="img"
+          viewBox="-2 -2 18 18"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title
+            id="icon-18__title"
+          >
+            Close
+          </title>
+          <path
+            d="M0 13.0332964L13.0332964 0M13.0332964 13.0332964L0 0"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-width="2"
+          />
+        </svg>
+      </button>
+    </div>
+    Tooltip body content
+  </div>
+</div>
+`;

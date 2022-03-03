@@ -55,20 +55,24 @@ describe('Tooltip', function () {
     });
 
     it('renders heading element', () => {
-      const { queryByRole } = renderTooltip({
+      const { queryByRole, getByLabelText } = renderTooltip({
         dialog: true,
         contentHeading: 'Tooltip heading content',
       });
+      const tooltipTrigger = getByLabelText(triggerAriaLabelText);
+      fireEvent.click(tooltipTrigger);
       const contentEl = queryByRole('dialog');
       expect(contentEl).toMatchSnapshot();
     });
 
     it('renders heading element and close button', () => {
-      const { queryByRole } = renderTooltip({
+      const { queryByRole, getByLabelText } = renderTooltip({
         dialog: true,
         contentHeading: 'Tooltip heading content',
         showCloseButton: true,
       });
+      const tooltipTrigger = getByLabelText(triggerAriaLabelText);
+      fireEvent.click(tooltipTrigger);
       const contentEl = queryByRole('dialog');
       expect(contentEl).toMatchSnapshot();
     });
