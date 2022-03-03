@@ -5,10 +5,12 @@ import TooltipIcon from './TooltipIcon';
 
 jest.mock('@popperjs/core');
 
+const triggerAriaLabelText = 'tooltip trigger';
 const defaultProps = {
   children: <TooltipIcon />,
   className: 'ds-c-tooltip__trigger-icon',
   title: 'Tooltip body content',
+  ariaLabel: triggerAriaLabelText,
 };
 
 function renderTooltip(customProps = {}) {
@@ -18,8 +20,9 @@ function renderTooltip(customProps = {}) {
 
 describe('Tooltip', function () {
   it('renders default trigger icon', () => {
-    const { asFragment } = renderTooltip();
-    expect(asFragment()).toMatchSnapshot();
+    const { queryByLabelText } = renderTooltip();
+    const triggerEl = queryByLabelText(triggerAriaLabelText);
+    expect(triggerEl).toMatchSnapshot();
   });
 
   it('renders inverse tooltip', () => {
@@ -28,38 +31,46 @@ describe('Tooltip', function () {
   });
 
   it('renders custom trigger component', () => {
-    const { asFragment } = renderTooltip({
+    const { queryByLabelText } = renderTooltip({
       component: 'a',
     });
-    expect(asFragment()).toMatchSnapshot();
+    const triggerEl = queryByLabelText(triggerAriaLabelText);
+    expect(triggerEl).toMatchSnapshot();
   });
 
   it('renders dialog tooltip', () => {
-    const { asFragment } = renderTooltip({ dialog: true });
-    expect(asFragment()).toMatchSnapshot();
+    const { queryByRole, getByLabelText } = renderTooltip({ dialog: true });
+    const tooltipTrigger = getByLabelText(triggerAriaLabelText);
+    fireEvent.click(tooltipTrigger);
+    const contentEl = queryByRole('dialog');
+    expect(contentEl).not.toBeNull();
+    expect(contentEl).toMatchSnapshot();
   });
 
   describe('tooltip with close', () => {
     it('renders a close button', () => {
-      const { asFragment } = renderTooltip({ dialog: true, showCloseButton: true });
-      expect(asFragment()).toMatchSnapshot();
+      const { getByLabelText } = renderTooltip({ dialog: true, showCloseButton: true });
+      const closeButton = getByLabelText('Close', { selector: 'button' });
+      expect(closeButton).toBeDefined();
     });
 
     it('renders heading element', () => {
-      const { asFragment } = renderTooltip({
+      const { queryByRole } = renderTooltip({
         dialog: true,
         contentHeading: 'Tooltip heading content',
       });
-      expect(asFragment()).toMatchSnapshot();
+      const contentEl = queryByRole('dialog');
+      expect(contentEl).toMatchSnapshot();
     });
 
     it('renders heading element and close button', () => {
-      const { asFragment } = renderTooltip({
+      const { queryByRole } = renderTooltip({
         dialog: true,
         contentHeading: 'Tooltip heading content',
         showCloseButton: true,
       });
-      expect(asFragment()).toMatchSnapshot();
+      const contentEl = queryByRole('dialog');
+      expect(contentEl).toMatchSnapshot();
     });
 
     it('should call onClose when close button is clicked', () => {
@@ -68,10 +79,8 @@ describe('Tooltip', function () {
         dialog: true,
         showCloseButton: true,
         onClose,
-        ariaLabel: 'tooltip trigger',
       });
-      const tooltipTrigger = getByLabelText('tooltip trigger');
-      console.log(tooltipTrigger);
+      const tooltipTrigger = getByLabelText(triggerAriaLabelText);
       fireEvent.click(tooltipTrigger);
       const closeButton = getByLabelText('Close', { selector: 'button' });
       fireEvent.click(closeButton);
@@ -82,9 +91,8 @@ describe('Tooltip', function () {
       const { getByLabelText, queryByRole } = renderTooltip({
         dialog: true,
         showCloseButton: true,
-        ariaLabel: 'tooltip trigger',
       });
-      const tooltipTrigger = getByLabelText('tooltip trigger');
+      const tooltipTrigger = getByLabelText(triggerAriaLabelText);
       fireEvent.click(tooltipTrigger);
       const closeButton = getByLabelText('Close', { selector: 'button' });
       fireEvent.click(closeButton);
@@ -96,9 +104,8 @@ describe('Tooltip', function () {
       const { getByLabelText } = renderTooltip({
         dialog: true,
         showCloseButton: true,
-        ariaLabel: 'tooltip trigger',
       });
-      const tooltipTrigger = getByLabelText('tooltip trigger');
+      const tooltipTrigger = getByLabelText(triggerAriaLabelText);
       fireEvent.click(tooltipTrigger);
       const closeButton = getByLabelText('Close', { selector: 'button' });
       fireEvent.click(closeButton);
