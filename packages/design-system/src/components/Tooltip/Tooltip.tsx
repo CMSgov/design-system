@@ -30,13 +30,22 @@ export interface TooltipProps {
    */
   children: React.ReactNode;
   /**
+   * Classes applied to the tooltip trigger
+   */
+  className?: string;
+  /**
+   * Configurable text for the aria-label of the tooltip's close button
+   */
+  closeButtonLabel?: string;
+  /**
    * When provided, will render the passed in component for the tooltip trigger. Typically will be a `button`, `a`, or rarely an `input` element.
    */
   component?: React.ReactElement<any> | any | ((...args: any[]) => any);
   /**
-   * Classes applied to the tooltip trigger
+   * Heading for the tooltip content. This will show above 'title' content and inline with 'closeButton' if closeButton is set
    */
-  className?: string;
+  contentHeading?: React.ReactNode;
+
   /**
    * Tooltip that behaves like a dialog, i.e. a tooltip that only appears on click, traps focus, and contains interactive content. For more information, see Deque's [tooltip dialog documentation](https://dequeuniversity.com/library/aria/tooltip-dialog)
    */
@@ -71,6 +80,10 @@ export interface TooltipProps {
    */
   maxWidth?: string;
   /**
+   * Determines if close button is shown in tooltip. It is recommended that the close button is only used if `dialog=true`
+   */
+  showCloseButton?: boolean;
+  /**
    * Content inside the tooltip body or popover. If contains interactive elements use the `dialog` prop.
    */
   title: React.ReactNode;
@@ -82,18 +95,6 @@ export interface TooltipProps {
    * `zIndex` styling applied to the tooltip body
    */
   zIndex?: number;
-  /**
-   * Heading for the tooltip content. This will show above 'title' content and inline with 'closeButton' if closeButton is set
-   */
-  contentHeading?: React.ReactNode;
-  /**
-   * Determines if close button is shown in tooltip. It is recommended that the close button is only used if `dialog=true`
-   */
-  showCloseButton?: boolean;
-  /**
-   * Configurable text for the aria-label of the tooltip's close button
-   */
-  closeButtonLabel?: string;
 }
 
 export const Tooltip = (props: TooltipProps) => {
@@ -306,24 +307,26 @@ export const Tooltip = (props: TooltipProps) => {
       >
         <span className="ds-c-tooltip__arrow" data-popper-arrow />
         <div className="ds-c-tooltip__content ds-base">
-          <div
-            className={classNames('ds-c-tooltip__header', {
-              'ds-c-tooltip__header--right': !contentHeading,
-            })}
-          >
-            {contentHeading}
-            {showCloseButton && (
-              <Button
-                variation="transparent"
-                size="small"
-                className="ds-c-tooltip__close-button"
-                onClick={handleCloseButtonClick}
-                aria-label={closeButtonLabel || 'Close'}
-              >
-                <CloseIconThin />
-              </Button>
-            )}
-          </div>
+          {contentHeading || showCloseButton ? (
+            <div
+              className={classNames('ds-c-tooltip__header', {
+                'ds-c-tooltip__header--right': !contentHeading,
+              })}
+            >
+              {contentHeading}
+              {showCloseButton && (
+                <Button
+                  variation="transparent"
+                  size="small"
+                  className="ds-c-tooltip__close-button"
+                  onClick={handleCloseButtonClick}
+                  aria-label={closeButtonLabel || 'Close'}
+                >
+                  <CloseIconThin />
+                </Button>
+              )}
+            </div>
+          ) : null}
           {title}
         </div>
         {!dialog && (
