@@ -1,10 +1,12 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Alert as AlertReact } from '@cmsgov/design-system/dist/components/Alert';
+// import './Alert.scss';
 
 export class Alert extends HTMLElement {
   mountPoint: HTMLDivElement;
-  heading: string;
+  heading?: string;
+  variation?: 'error' | 'warn' | 'success';
 
   createAlert(heading, variation) {
     return React.createElement(AlertReact, { heading, variation }, React.createElement('slot'));
