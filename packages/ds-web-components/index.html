@@ -55,6 +55,16 @@
 
     <section id="choice-list">
       <h2>Choice List</h2>
+
+      <wds-choice type="checkbox" />
+      <wds-choice type="radio" />
+
+      <wds-choice-list
+        label="Checkbox example"
+        type="checkbox"
+        name="checkboxes_1"
+        hint="Hint text here."
+      />
     </section>
 
     <section id="text-input">
@@ -62,5 +72,20 @@
     </section>
 
     <script type="module" src="/main.ts"></script>
+
+    <script>
+      const choices = [
+        { label: 'Choice 1', value: 'A', defaultChecked: true },
+        { label: 'Choice 2', value: 'B' },
+        { label: 'Disabled choice 3', value: 'C', disabled: true },
+      ];
+
+      function choiceBuilder(arr) {
+        arr.map(a => <wds-choice label="a.label" value="a.value" disabled) />;
+      }
+
+      const CL = document.querySelector('wds-choice-list[name="checkboxes_1"]')
+      console.log(CL)
+    </script>
   </body>
 </html>
