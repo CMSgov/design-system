@@ -53,7 +53,7 @@ if [ "$DELETE_LAST" = true ]; then
     git tag -d $TAGS
     git push origin --delete $TAGS
     git push origin --delete $CURRENT_BRANCH
-    git checkout master
+    git checkout -
     git branch -D $CURRENT_BRANCH
   fi
   exit 0
