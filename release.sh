@@ -23,19 +23,17 @@ EXTRA_OPTS=()
 # Parse options
 while [[ $# -gt 0 ]]
 do
-    key="$1"
-
-    case $key in
-        -u|--undo)
-            DELETE_LAST=true
-            shift # past argument
-            ;;
-        *)
-            # unknown option
-            EXTRA_OPTS+=("$1") # save it in an array for later
-            shift # past argument
-            ;;
-    esac
+  case "$1" in
+    -u|--undo)
+      DELETE_LAST=true
+      shift # past argument
+      ;;
+    *)
+      # unknown option
+      EXTRA_OPTS+=("$1") # save it in an array for later
+      shift # past argument
+      ;;
+  esac
 done
 
 git fetch --tags
