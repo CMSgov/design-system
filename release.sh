@@ -44,10 +44,11 @@ if [ "$DELETE_LAST" = true ]; then
   echo ""
   echo "${PACKAGE_VERSIONS}"
   echo ""
-  read -p "Are you sure want to continue? (y/n)" -n 1 -r
-  echo ""
-  if [[ ! $REPLY =~ ^[Yy]$ ]]
+  read -p "Are you sure want to continue? (y/n) " -n 1 -r
+  echo
+  if [[ $REPLY =~ ^[Yy]$ ]]
   then
+    echo "${GREEN}Undoing last release...${NC}"
     CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
     git tag -d $TAGS
     git push origin --delete $TAGS
