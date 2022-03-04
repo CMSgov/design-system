@@ -3,18 +3,35 @@ export type RGBValue = `rgb(${number},${number},${number})`;
 export type RGBAValue = `rgba(${number},${number},${number},${number})`;
 export type PxValue = `${number}px`;
 export type ExValue = `${string}ex`;
+export type PercentageValue = `${string}%`;
 
-export type AllTokenValues = SpacingTokens | HexColorTokens;
+export type AllTokenValues = SpacingTokens | HexColorTokens | PxValue;
 
-export type SpacingTokens = {
+export type AnimationTokens = {
+  readonly [key: string]: string | number;
+}
+
+export interface BorderRadiusTokens {
+  readonly [key: `radius-${string}`]: PercentageValue | PxValue;
+}
+
+export interface SpacingTokens {
   readonly [key: `spacer-${string}`]: PxValue;
 };
 
-export type HexColorTokens = {
+export interface ShadowTokens {
+  readonly [key: `shadow-${string}`]: string;
+}
+
+export type TimeTokens = {
+  readonly [key: `duration-${string}`]: number;
+}
+
+export interface HexColorTokens {
   readonly [key: string]: HexValue;
 };
 
-export type FontTokens = {
+export interface FontTokens {
   readonly family: { [key: string]: string };
   readonly size: { [key: string]: PxValue };
   readonly lineHeight: { [key: string]: `${number}` };
@@ -22,19 +39,20 @@ export type FontTokens = {
   readonly measure: { [key: string]: ExValue };
 };
 
-export type Theme = {
+export interface Theme {
   readonly name: string;
   readonly tokens: ThemeTokens;
 };
 
-export type ThemeTokens = {
+export interface ThemeTokens {
   readonly description: string;
   readonly color: HexColorTokens;
   readonly spacing: SpacingTokens;
   readonly components: AllTokenValues;
+  shadows: ShadowTokens;
 };
 
-export type FileDescriptor = {
+export interface FileDescriptor {
   moduleImportName: string;
   parentDirectoryName: string;
   fileBaseName: string;

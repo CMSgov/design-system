@@ -5,7 +5,7 @@ const makeTheme = <T extends ThemeTokens>(value: T) => {
   return value;
 };
 
-const DefaultTheme = makeTheme({
+let DefaultTheme = makeTheme({
   description: 'Default CMSDS Core Theme',
   color: {
     'color-white': color.white,
@@ -100,6 +100,14 @@ const DefaultTheme = makeTheme({
     'button-spacing-top': spacing['spacer-2'],
     'dropdown-padding-left': spacing['spacer-4'],
   },
+  shadows: {}
 });
+
+DefaultTheme.shadows = { 
+  'focus-shadow': `inset 0 0 0 1px ${DefaultTheme.color['color-base']}`,
+  'focus-shadow-inverse': `inset 0 0 0 1px ${DefaultTheme.color['color-base']}`,
+  'focus-shadow-link': `0 3px ${DefaultTheme.color['color-base']}`,
+  'focus-shadow-link-inverse': `0 3px ${DefaultTheme.color['focus-border-inverse']}`, 
+}
 
 export default DefaultTheme;
