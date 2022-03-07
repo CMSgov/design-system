@@ -26,9 +26,9 @@ export const exportJson = (fileDescriptors: FileDescriptor[], outPath: string): 
     // theme files have a description prop token files do not
     if (importedModule.default.description !== undefined) {
       isTheme = true;
-      tokenOutput.tokenType = 'theme';
+      tokenOutput[`${file.fileBaseName}`].tokenType = 'theme';
       filename = `${outPath}/${file.parentDirectoryName}-${file.fileBaseName}.tokens.json`;
-      writeFile(filename, JSON.stringify(tokenOutput, null, 4));
+      writeFile(filename, JSON.stringify(tokenOutput[`${file.fileBaseName}`], null, 4));
     } else {
       // it's a token file
       tokenOutput.tokenType = 'tokens';

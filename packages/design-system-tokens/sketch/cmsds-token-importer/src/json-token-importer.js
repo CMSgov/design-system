@@ -4,6 +4,9 @@ import { readFileSync } from '@skpm/fs';
 
 const TOKENS_PAGE_NAME = 'CMSDS Design Tokens';
 
+/*
+ * Return index of tokens page for use by plugin
+ */
 const getTokensPage = (doc) => {
   let tokenPage = null;
   doc.pages.forEach((page, index) => {
@@ -19,9 +22,9 @@ const getTokensPage = (doc) => {
  * and store in tokens submenu, returns array
  * of Sketch Swatches
  */
-const makeColorSwatches = (tokens) => {
+const makeColorSwatches = (colorTokens) => {
   const swatches = [];
-  for (const [key, value] of Object.entries(tokens.color)) {
+  for (const [key, value] of Object.entries(colorTokens)) {
     let colorName = key.match(/(^[A-Za-z]+-?[A-Za-z]+?)-\d+$/);
     colorName = colorName === null ? (colorName = '') : colorName[1] + '/';
     const currentSwatch = sketch.Swatch.from({
@@ -33,6 +36,60 @@ const makeColorSwatches = (tokens) => {
   return swatches;
 };
 
+/*
+ * create layer styles based on component values
+ * TODO: when first set of layer stlyes (buttons) are created
+ * this can be fully tested out & completed
+ */
+const makeLayerStyles = (componentVals) => {
+  const layerStyles = [];
+  for (const [key, value] of Object.entries(componentVals)) {
+    console.log(key, value);
+    const layerStyle = {
+      // layerstyle API:
+      // opacity: number,
+      // fills: Fill[],
+      // borders: Border[],
+      // borderOptions: BorderOptions,
+      // shadows: Shadow[],
+    };
+    layerStyles.push(layerStyle);
+  }
+  return layerStyles;
+};
+
+/*
+ * create text styles based on component values
+ * TODO: when first set of text stlyes (buttons) are created
+ * this can be fully tested out & completed
+ */
+const makeTextStyles = (componentVals) => {
+  const textStyles = [];
+  for (const [key, value] of Object.entries(componentVals)) {
+    console.log(key, value);
+    const textStyle = {
+      // textStyle API
+      // alignment: Alignment,
+      // verticalAlignment: VerticalAlignment,
+      // kerning: number/null,
+      // lineHeight: number/null,
+      // paragraphSpacing: number,
+      // textColor: rgba hex-string,
+      // fontSize: number,
+      // textTransform: 'none' | 'uppercase' | 'lowercase',
+      // fontFamily: string,
+      // fontWeight: number,
+      // fontStyle: 'italic' | undefined,
+    };
+    textStyles.push(textStyle);
+  }
+  return textStyles;
+};
+
+/*
+ * Create CMSDS Token example page if it doesn't already exist
+ * TODO: Populate page with token examples based on layer stlyes
+ */
 const createTokenPage = (doc) => {
   let tokenPage = getTokensPage(doc);
 
@@ -43,8 +100,6 @@ const createTokenPage = (doc) => {
     });
   }
 };
-
-// const colorSwatches = makeColorSwatches(tokens.color);
 
 export default function () {
   let tokenData = {};
@@ -67,10 +122,31 @@ export default function () {
     sketch.UI.alert('Importing Error', 'Could not open selected file.');
   }
 
-  const colorSwatches = makeColorSwatches(tokenData);
   const doc = sketch.getSelectedDocument();
-
   doc.swatches = [];
+
+  /*
+   * Theme imports should generate layer styles as well
+   * TODO: when first set of component styles are created (buttons)
+   * this will be updated to import / test those
+   */
+  if (jsonFile.tokenType === 'theme') {
+    const componentLayerStyles = makeLayerStyles(jsonFile.components);
+    const componentTextStyles = makeTextStyles(jsonFile.components);
+
+    componentLayerStyles.forEach((layerStyle) => {
+      doc.sharedLayerStyles = [];
+      // doc.sharedLayerStyles.push(layerStyle)
+      console.log(layerStyle);
+    });
+    componentTextStyles.forEach((textStyle) => {
+      doc.sharedTextStyles = [];
+      // doc.sharedTextStyles.push(layerStyle)
+      console.log(textStyle);
+    });
+  }
+
+  const colorSwatches = makeColorSwatches(tokenData.color);
   colorSwatches.forEach((swatch) => {
     doc.swatches.push(swatch);
   });
