@@ -9,25 +9,29 @@ export type AllTokenValues = SpacingTokens | HexColorTokens | PxValue;
 
 export type AnimationTokens = {
   readonly [key: string]: string | number;
-}
+};
 
-export interface BorderRadiusTokens {
+export type BorderRadiusTokens = {
   readonly [key: `radius-${string}`]: PercentageValue | PxValue;
-}
+};
 
-export interface SpacingTokens {
+export type MediaWidthTokens = {
+  readonly [key: `width-${string}`]: PxValue;
+};
+
+export type SpacingTokens = {
   readonly [key: `spacer-${string}`]: PxValue;
 };
 
-export interface ShadowTokens {
+export type ShadowTokens = {
   readonly [key: `shadow-${string}`]: string;
-}
+};
 
 export type TimeTokens = {
   readonly [key: `duration-${string}`]: number;
-}
+};
 
-export interface HexColorTokens {
+export type HexColorTokens = {
   readonly [key: string]: HexValue;
 };
 
@@ -37,12 +41,12 @@ export interface FontTokens {
   readonly lineHeight: { [key: string]: `${number}` };
   readonly weight: { [key: string]: `${number}` };
   readonly measure: { [key: string]: ExValue };
-};
+}
 
 export interface Theme {
   readonly name: string;
   readonly tokens: ThemeTokens;
-};
+}
 
 export interface ThemeTokens {
   readonly description: string;
@@ -50,11 +54,15 @@ export interface ThemeTokens {
   readonly spacing: SpacingTokens;
   readonly components: AllTokenValues;
   shadows: ShadowTokens;
-};
+}
 
 export interface FileDescriptor {
   moduleImportName: string;
   parentDirectoryName: string;
   fileBaseName: string;
   exportFileName: string;
+}
+
+export type zIndexTokens = {
+  readonly [key: `z-${string}`]: number;
 };
