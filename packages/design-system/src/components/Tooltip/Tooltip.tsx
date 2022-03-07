@@ -230,7 +230,6 @@ export const Tooltip = (props: TooltipProps) => {
       'ds-c-tooltip__trigger--inverse': inversed,
     });
     const linkTriggerOverrides = {
-      role: TriggerComponent === 'a' ? 'button' : undefined,
       tabIndex: TriggerComponent === 'a' ? 0 : undefined,
     };
     const eventHandlers = dialog
