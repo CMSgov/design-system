@@ -12,13 +12,13 @@ const makeColors = <T extends HexColorTokens>(value: T) => {
 const color = makeColors({
   // singletons
   white: '#FFFFFF',
-  'white-alpha-80': hexOpacity('FFFFFF', 80),
-  'white-alpha-50': hexOpacity('FFFFFF', 50),
-  'white-alpha-25': hexOpacity('FFFFFF', 25),
+  'white-alpha-80': hexOpacity('#FFFFFF', 80),
+  'white-alpha-50': hexOpacity('#FFFFFF', 50),
+  'white-alpha-25': hexOpacity('#FFFFFF', 25),
   black: '#000000',
-  'black-alpha-80': hexOpacity('000000', 80),
-  'black-alpha-50': hexOpacity('000000', 50),
-  'black-alpha-25': hexOpacity('000000', 25),
+  'black-alpha-80': hexOpacity('#000000', 80),
+  'black-alpha-50': hexOpacity('#000000', 50),
+  'black-alpha-25': hexOpacity('#000000', 25),
   // granite - neutral
   'granite-50': '#f2f2f2',
   'granite-100': '#d9d9d9',

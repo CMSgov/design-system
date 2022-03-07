@@ -113,12 +113,14 @@ export const rgbToHex = (r: number, g: number, b: number): HexValue => {
  * 2%	      05	5
  * 1%	      03	3
  * 0%	      00	0
+ *
+ * transforms a hex value to an 8 char hex value with opacity given as a number from 0 to 1
  */
-export const hexOpacity = (hexVal: string, opacity: number): HexValue => {
+export const hexOpacity = (hexVal: HexValue, opacity: number): HexValue => {
   const alpha = Math.round(opacity * 255);
   const alphaHex = (alpha + 0x10000).toString(16).substr(-2).toUpperCase();
-  return `#${hexVal}${alphaHex}`
-}
+  return `${hexVal}${alphaHex}`;
+};
 
 // converts a hex string '#F3G1AA' to an rgb value string 'rgb(142, 24, 89)'
 export const hexToRgb = (hex: HexValue): RGBValue | null => {
