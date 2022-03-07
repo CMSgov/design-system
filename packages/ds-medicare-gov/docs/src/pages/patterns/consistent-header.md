@@ -4,9 +4,9 @@ usage: |
   The Consistent Header is a shared component available for all of medicage.gov. The header has two main states and three screen size ranges. The information below provides guidance for the various versions of the header so you can easily integrate it into any experience.
 ---
 
-For detailed information on the header contents, see [this Confluence page](https://confluence.cms.gov/display/MAX/%5BMAX%5D+Consistent+Header+Contents).
+For detailed information on the header contents, see [this Confluence page](https://confluence.cms.gov/display/MAX/Consistent+Header+Contents).
 
-For guidance on how to use the consistent header in a variety of scenarios, see the [Additional Guidelines](https://cms.invisionapp.com/dsm/cms/medicare/nav/build/asset/componentContainers/5fa15ef85296b21c9eb14293/tab/design%20guidelines?mode=preview).
+For guidance on how to use the consistent header in a variety of scenarios, see the [Additional Guidelines](https://cms.invisionapp.com/dsm/cms/mgov-design-system/nav/5fa7da3f7044bd0018240ddb/asset/5fa15ef85296b21c9eb14293/tab/design?mode=preview).
 
 ### Usage
 
