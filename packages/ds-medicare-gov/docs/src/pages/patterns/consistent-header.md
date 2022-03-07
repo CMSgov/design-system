@@ -62,7 +62,7 @@ The following example shows what the div element should look like before importi
 
 Implementers should load the JavaScript and CSS files programmatically from the asset-manifest.json in order to get the latest versions whenever they become available. Here's an example of how to do that in the imp environment, using jQuery.
 
-````
+`````
 loadFilesFromManifest('https://frontend.imp.medicare.gov/', 'asset-manifest.json');
 
 //Gets and parses the entrypoints node of the asset manifest file
@@ -103,7 +103,7 @@ function importCSSFile(url) {
 
 	var head = document.head;
 	head.insertBefore(cssElement, head.childNodes[0]);
-}```
+}````
 
 
 ### Breakpoints
@@ -122,4 +122,4 @@ The Consistent Header has two breakpoints and three versions. At the lower range
     - Nothing else is needed on the translation front beyond the lang and lang-toggle-link
 - Is there anything that teams need to do to ensure the proper authenticated\unauth header is displayed to the user?
     - No, there should not be anything that needs to be done from an integration standpoint for the header know the auth\unauth status of the user and this display the proper version of the header.
-````
+`````
