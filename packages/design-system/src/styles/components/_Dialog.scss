@@ -52,11 +52,11 @@ $dialog-spacer: $spacer-4;
 
 .ds-c-dialog__close {
   margin-left: auto;
-  padding: 0 0 0 (12px + $spacer-1);
+  padding: 0 $spacer-1 0 $spacer-half;
 
   .ds-c-icon {
     font-size: 13px;
-    margin-right: 4px;
+    margin: 0 $spacer-half;
 
     /* stylelint-disable */
     @media (-ms-high-contrast: active), (forced-colors: active) {
