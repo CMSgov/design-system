@@ -19,36 +19,28 @@ Style guide: patterns.external-link.react
 */
 
 /*
-Analytics props
-
-- Refer to [Modal dialog]({{root}}/components/dialog) for details of the Analytics props
-
-Style guide: patterns.external-link.analytics
-*/
-
-/*
 ---
 
 Use this pattern when the user is in the middle of a task or application to let them know that the action they are taking will move them away from the current site and or process. This serves as a warning where the user can then decide to remain where they are in the application or process.
 
-### Learn more
+**Any non .gov and .mil links will be treated as external whether they belong to a government agency or not, no exceptions**
 
 - [CMS policy on external links](https://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/PolicyforLinkingtoOutsideWebsites.html)
 - [CMS external link disclaimer](https://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/External-Link-Disclaimer.html)
-*/
 
-/*
----
 
 ### Related patterns
 
 - [Modal dialog]({{root}}/components/dialog)
 
 Style guide: patterns.external-link.guidance
+
 */
 
 /*
-Google Analytics
+ Google Analytics
+
+- Refer to [Modal dialog]({{root}}/components/dialog) for details of the Analytics props
 
 **Analytics event tracking is disabled by default.**
 
