@@ -134,27 +134,16 @@ export const hexToRgb = (hex: HexValue): RGBValue | null => {
   return null;
 };
 
-// flattens an object while maintaining tree information
-export const flatten = (
-  obj: Record<string, any>,
-  prefix = '',
-  res: Record<string, any> = {},
-  delim = '.',
-  prefixCategory = false
-) =>
-  Object.entries(obj).reduce((r, [key, val]) => {
-    const k = `${prefix}${key}`;
+// flattens an object into one dimension
+export const flatten = (obj: Record<string, any>, initialObject: Record<string, any> = {}) =>
+  Object.entries(obj).reduce((accumulator, [key, val]) => {
     if (typeof val === 'object') {
-      if (prefixCategory) {
-        flatten(val, `${k}${delim}`, r, delim);
-      } else {
-        flatten(val, ``, r, delim);
-      }
+      flatten(val, accumulator);
     } else {
-      res[k] = val;
+      initialObject[key] = val;
     }
-    return r;
-  }, res);
+    return accumulator;
+  }, initialObject);
 
 /*
  * given a directory path string and an empty string array, returns a

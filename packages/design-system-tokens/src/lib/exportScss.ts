@@ -5,9 +5,10 @@ const tokenFormat = (name: string, value: string | unknown) => {
   return `$${name}: ${value};\n`;
 };
 
-const setVars = (items: Record<string, any>) => {
+const setVars = (items: Record<string, any>, filename: string) => {
   let vars = '';
   Object.entries(items).forEach(([name, value]) => {
+    name = `${filename}-${name}`;
     vars += tokenFormat(name, value);
   });
   return vars;
@@ -36,12 +37,13 @@ export const exportScss = (fileDescriptors: FileDescriptor[], outPath: string): 
       Object.entries(importedModule.default).forEach(([key]) => {
         if (key === 'description') return;
 
-        const tokenItems = flatten(importedModule.default[key], '', {}, '-', false);
-        output += setVars(tokenItems);
+        const tokenItems = flatten(importedModule.default[key]);
+        output += setVars(tokenItems, key);
       });
     } else {
-      const tokens = flatten(importedModule.default, '', {}, '-', true);
-      output = setVars(tokens);
+      // some token values have nested objects, like fonts
+      const tokens = flatten(importedModule.default);
+      output = setVars(tokens, file.fileBaseName);
     }
 
     writeFile(filename, output);

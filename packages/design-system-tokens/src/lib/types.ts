@@ -36,11 +36,7 @@ export type HexColorTokens = {
 };
 
 export interface FontTokens {
-  readonly family: { [key: string]: string };
-  readonly size: { [key: string]: PxValue };
-  readonly lineHeight: { [key: string]: `${number}` };
-  readonly weight: { [key: string]: `${number}` };
-  readonly measure: { [key: string]: ExValue };
+  readonly [key: string]: string | number;
 }
 
 export interface Theme {
@@ -51,7 +47,7 @@ export interface Theme {
 export interface ThemeTokens {
   readonly description: string;
   readonly color: HexColorTokens;
-  readonly spacing: SpacingTokens;
+  readonly spacer: SpacingTokens;
   readonly components: AllTokenValues;
   shadows: ShadowTokens;
 }

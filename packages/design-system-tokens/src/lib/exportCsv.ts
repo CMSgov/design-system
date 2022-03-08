@@ -1,10 +1,19 @@
 import { FileDescriptor } from './types';
 import { flatten, writeFile } from './utility';
 
-const tokenFormat = (tokenType: string, name: string, value: string | unknown) => {
+const tokenFormat = (name: string, value: string | unknown) => {
   // double quote strings with commas in them
-  if (typeof value === 'string' && value.indexOf(',') > 0) value = `""${value}""`;
-  return `${tokenType},${name},${value}\r\n`;
+  if (typeof value === 'string' && value.includes(',')) value = `""${value}""`;
+  return `${name},${value}\r\n`;
+};
+
+const setVars = (items: Record<string, any>, filename: string) => {
+  let vars = '';
+  Object.entries(items).forEach(([name, value]) => {
+    name = `${filename}-${name}`;
+    vars += tokenFormat(name, value);
+  });
+  return vars;
 };
 
 /*
@@ -20,18 +29,27 @@ export const exportCsv = (fileDescriptors: FileDescriptor[], outPath: string): n
      * which runs synchronously.
      */
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const importedModule = require(`${file.moduleImportName}`);
-    const flattenedModule = flatten(importedModule.default, '', {}, '-', true);
+    const importedModule = require(file.moduleImportName);
     const filename = `${outPath}/${file.exportFileName}.csv`;
+    let output = `key,value\r\n`;
+    let type = 'tokens';
 
-    // write header
-    let vars = `id,key,value\r\n`;
+    if (importedModule.default.description) type = 'theme';
 
-    Object.entries(flattenedModule).forEach(([name, value]) => {
-      vars += tokenFormat(file.fileBaseName, name, value);
-    });
+    if (type === 'theme') {
+      Object.entries(importedModule.default).forEach(([key]) => {
+        if (key === 'description') return;
 
-    writeFile(filename, vars);
+        const tokenItems = flatten(importedModule.default[key]);
+        output += setVars(tokenItems, key);
+      });
+    } else {
+      // some token values have nested objects, like fonts
+      const tokens = flatten(importedModule.default);
+      output += setVars(tokens, file.fileBaseName);
+    }
+
+    writeFile(filename, output);
   });
   return 0;
 };

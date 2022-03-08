@@ -7,7 +7,7 @@ const makeMediaWidths = <T extends MediaWidthTokens>(value: T) => {
   return value;
 };
 
-const mediaWidths = makeMediaWidths({
+const media = makeMediaWidths({
   'width-xs': '0px',
   'width-sm': '544px',
   'width-md': '768px',
@@ -15,4 +15,4 @@ const mediaWidths = makeMediaWidths({
   'width-xl': '1280px',
 });
 
-export default mediaWidths;
+export default media;

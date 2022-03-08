@@ -8,11 +8,11 @@ const makezIndex = <T extends zIndexTokens>(value: T) => {
 };
 
 const zIndex = makezIndex({
-  'z-deepdive': -99999,
-  'z-default': 1,
-  'z-dialog': 1000,
-  'z-popup': 6000,
-  'z-spinner': 9050,
+  deepdive: -99999,
+  default: 1,
+  dialog: 1000,
+  popup: 6000,
+  spinner: 9050,
 });
 
 export default zIndex;
