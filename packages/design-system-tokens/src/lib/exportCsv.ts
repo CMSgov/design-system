@@ -44,7 +44,6 @@ export const exportCsv = (fileDescriptors: FileDescriptor[], outPath: string): n
         output += setVars(tokenItems, key);
       });
     } else {
-      // some token values have nested objects, like fonts
       const tokens = flatten(importedModule.default);
       output += setVars(tokens, file.fileBaseName);
     }

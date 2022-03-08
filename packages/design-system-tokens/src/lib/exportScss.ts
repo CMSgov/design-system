@@ -41,7 +41,6 @@ export const exportScss = (fileDescriptors: FileDescriptor[], outPath: string): 
         output += setVars(tokenItems, key);
       });
     } else {
-      // some token values have nested objects, like fonts
       const tokens = flatten(importedModule.default);
       output = setVars(tokens, file.fileBaseName);
     }
