@@ -28,10 +28,8 @@ export const exportScss = (fileDescriptors: FileDescriptor[], outPath: string): 
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const importedModule = require(`${file.moduleImportName}`);
     const filename = `${outPath}/${file.exportFileName}.scss`;
+    const type = importedModule.default.description ? 'theme' : 'tokens';
     let output = '';
-    let type = 'tokens';
-
-    if (importedModule.default.description) type = 'theme';
 
     if (type === 'theme') {
       Object.entries(importedModule.default).forEach(([key]) => {

@@ -17,7 +17,7 @@ export const exportJson = (fileDescriptors: FileDescriptor[], outPath: string): 
      * which runs synchronously.
      */
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const importedModule = require(`${file.moduleImportName}`);
+    const importedModule = require(file.moduleImportName);
 
     tokenOutput[file.fileBaseName] = {
       ...importedModule.default,
@@ -28,7 +28,7 @@ export const exportJson = (fileDescriptors: FileDescriptor[], outPath: string): 
       isTheme = true;
       tokenOutput[`${file.fileBaseName}`].tokenType = 'theme';
       filename = `${outPath}/${file.parentDirectoryName}-${file.fileBaseName}.tokens.json`;
-      writeFile(filename, JSON.stringify(tokenOutput[`${file.fileBaseName}`], null, 4));
+      writeFile(filename, JSON.stringify(tokenOutput[file.fileBaseName], null, 4));
     } else {
       // it's a token file
       tokenOutput.tokenType = 'tokens';
