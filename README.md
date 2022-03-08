@@ -72,25 +72,20 @@ These scripts can all be run from the root level of the repo:
   - `yarn test:a11y:medicare` to run the Medicare.gov Design System's accessibility tests
 - `yarn update-snapshots`
   - Updates [Jest snapshots](http://facebook.github.io/jest/docs/en/snapshot-testing.html)
+- `yarn loki test`
+  - Runs visual regression tests using [loki](https://storybook.js.org/addons/loki). See [Visual regression testing](#visual-regression-testing) section below for details.
+  - Must be running Storybook simultaneously to use this command in development
+  - `yarn loki update` updates reference screenshots used for visual regression testing. Update these only when we expect the visual changes
 - `yarn lint`
   - Runs just the linting portion of the tests
 - `yarn release`
   - Bumps package versions and tags a release commit. Read our [Release Process guide](/guides/RELEASE-PROCESS.md) for more info.
-- `yarn publish-release`
-  - Publishes npm packages. Read our [Release Process guide](/guides/RELEASE-PROCESS.md) for more info.
 
 ### Visual regression testing
 
-In addition to unit and a11y tests, we're using [backstopJS](https://github.com/garris/BackstopJS) for visual regression testing. Here's how to run the tests.
+We use [loki](https://storybook.js.org/addons/loki) to test our components for visual regressions. It uses our existing Storybook stories, taking screenshots of them within a docker container and comparing those screenshots with ones previously taken and committed to version control.
 
-- Install backstopJS `yarn install`
-- Run the site locally `yarn start`
-- In a new terminal window run the backstop tests `backstop test`
-  - This will test the local CMSDS documentation site against the CMSDS production documentation site
-- After the tests run an html report will open in your browser showing passed and failed tests
-- When introducing a visual change, run `backstop approve` to commit new reference files after confirming the change with `backstop test`
-
-**Note:** Use `backstop reference` to update and replace all reference files.
+To run the loki tests locally, you must be running Storybook at the same time. To do this, start Storybook in one terminal window with `yarn storybook`, and then in another terminal window run `yarn loki test`. When updating reference screenshots, use `yarn loki update`. (We only wan to update references when we expect the visual changes detected.)
 
 ## Design Assets
 
