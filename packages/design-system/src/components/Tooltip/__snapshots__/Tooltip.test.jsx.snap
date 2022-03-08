@@ -1,245 +1,236 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tooltip renders custom trigger component 1`] = `
-<div
-  className="ds-c-tooltip__container"
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
+<a
+  aria-describedby="trigger_5"
+  aria-label="tooltip trigger"
+  class="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
+  tabindex="0"
 >
-  <a
-    aria-describedby="trigger_3"
-    className="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onTouchStart={[Function]}
-    role="button"
-    tabIndex={0}
+  <span
+    class="ds-c-tooltip-icon__container"
   >
-    <TooltipIcon />
-  </a>
-  <CSSTransition
-    classNames="ds-c-tooltip"
-    in={false}
-    timeout={250}
-  >
-    <div
-      aria-hidden={true}
-      className="ds-c-tooltip"
-      data-placement="top"
-      id="trigger_3"
-      onBlur={[Function]}
-      role="tooltip"
-      style={
-        Object {
-          "maxWidth": "300px",
-          "zIndex": 9999,
-        }
-      }
-      tabIndex={null}
+    <svg
+      aria-hidden="true"
+      aria-labelledby="icon-6__title"
+      class="ds-c-icon ds-c-icon--info-circle-thin ds-c-tooltip-icon"
+      focusable="false"
+      id="icon-6"
+      role="img"
+      viewBox="0 0 16 16"
+      xmlns="http://www.w3.org/2000/svg"
     >
-      <span
-        className="ds-c-tooltip__arrow"
-        data-popper-arrow={true}
-      />
-      <div
-        className="ds-c-tooltip__content ds-base"
+      <title
+        id="icon-6__title"
       >
-        Tooltip body content
-      </div>
-      <span
-        className="ds-c-tooltip__interactive-border"
-        style={
-          Object {
-            "border": "15px solid transparent",
-            "left": "-15px",
-            "top": "-15px",
-            "zIndex": -999,
-          }
-        }
+        Information
+      </title>
+      <path
+        d="M8 16c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm1-3.7V6.4H7v5.9h2zM7 4.9c0 .6.3.9 1 .9s1-.3 1-.9c0-.3-.1-.5-.2-.7-.2-.1-.5-.2-.8-.2-.3 0-.6.1-.8.2-.1.2-.2.4-.2.7z"
+        fill-rule="nonzero"
       />
-    </div>
-  </CSSTransition>
-</div>
+    </svg>
+  </span>
+</a>
 `;
 
 exports[`Tooltip renders default trigger icon 1`] = `
-<div
-  className="ds-c-tooltip__container"
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
+<button
+  aria-describedby="trigger_1"
+  aria-label="tooltip trigger"
+  class="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
+  type="button"
 >
-  <button
-    aria-describedby="trigger_1"
-    className="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onTouchStart={[Function]}
-    type="button"
+  <span
+    class="ds-c-tooltip-icon__container"
   >
-    <TooltipIcon />
-  </button>
-  <CSSTransition
-    classNames="ds-c-tooltip"
-    in={false}
-    timeout={250}
-  >
-    <div
-      aria-hidden={true}
-      className="ds-c-tooltip"
-      data-placement="top"
-      id="trigger_1"
-      onBlur={[Function]}
-      role="tooltip"
-      style={
-        Object {
-          "maxWidth": "300px",
-          "zIndex": 9999,
-        }
-      }
-      tabIndex={null}
+    <svg
+      aria-hidden="true"
+      aria-labelledby="icon-2__title"
+      class="ds-c-icon ds-c-icon--info-circle-thin ds-c-tooltip-icon"
+      focusable="false"
+      id="icon-2"
+      role="img"
+      viewBox="0 0 16 16"
+      xmlns="http://www.w3.org/2000/svg"
     >
-      <span
-        className="ds-c-tooltip__arrow"
-        data-popper-arrow={true}
-      />
-      <div
-        className="ds-c-tooltip__content ds-base"
+      <title
+        id="icon-2__title"
       >
-        Tooltip body content
-      </div>
-      <span
-        className="ds-c-tooltip__interactive-border"
-        style={
-          Object {
-            "border": "15px solid transparent",
-            "left": "-15px",
-            "top": "-15px",
-            "zIndex": -999,
-          }
-        }
+        Information
+      </title>
+      <path
+        d="M8 16c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm1-3.7V6.4H7v5.9h2zM7 4.9c0 .6.3.9 1 .9s1-.3 1-.9c0-.3-.1-.5-.2-.7-.2-.1-.5-.2-.8-.2-.3 0-.6.1-.8.2-.1.2-.2.4-.2.7z"
+        fill-rule="nonzero"
       />
-    </div>
-  </CSSTransition>
-</div>
+    </svg>
+  </span>
+</button>
 `;
 
 exports[`Tooltip renders dialog tooltip 1`] = `
 <div
-  className="ds-c-tooltip__container"
+  aria-hidden="false"
+  class="ds-c-tooltip ds-c-tooltip-enter ds-c-tooltip-enter-active"
+  data-placement="top"
+  id="trigger_7"
+  role="dialog"
+  style="max-width: 300px; z-index: 9999;"
+  tabindex="-1"
 >
-  <button
-    className="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
-    onClick={[Function]}
-    onTouchStart={[Function]}
-    type="button"
+  <span
+    class="ds-c-tooltip__arrow"
+    data-popper-arrow="true"
+  />
+  <div
+    class="ds-c-tooltip__content ds-base"
   >
-    <TooltipIcon />
-  </button>
-  <CSSTransition
-    classNames="ds-c-tooltip"
-    in={false}
-    timeout={250}
-  >
-    <FocusTrap
-      _createFocusTrap={[Function]}
-      active={false}
-      focusTrapOptions={
-        Object {
-          "clickOutsideDeactivates": true,
-          "initialFocus": [Function],
-        }
-      }
-      paused={false}
-    >
-      <div
-        aria-hidden={true}
-        className="ds-c-tooltip"
-        data-placement="top"
-        id="trigger_4"
-        role="dialog"
-        style={
-          Object {
-            "maxWidth": "300px",
-            "zIndex": 9999,
-          }
-        }
-        tabIndex={-1}
-      >
-        <span
-          className="ds-c-tooltip__arrow"
-          data-popper-arrow={true}
-        />
-        <div
-          className="ds-c-tooltip__content ds-base"
-        >
-          Tooltip body content
-        </div>
-      </div>
-    </FocusTrap>
-  </CSSTransition>
+    Tooltip body content
+  </div>
 </div>
 `;
 
 exports[`Tooltip renders inverse tooltip 1`] = `
-<div
-  className="ds-c-tooltip__container"
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
->
-  <button
-    aria-describedby="trigger_2"
-    className="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon ds-c-tooltip__trigger--inverse"
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onTouchStart={[Function]}
-    type="button"
+<DocumentFragment>
+  <div
+    class="ds-c-tooltip__container"
   >
-    <TooltipIcon />
-  </button>
-  <CSSTransition
-    classNames="ds-c-tooltip"
-    in={false}
-    timeout={250}
-  >
-    <div
-      aria-hidden={true}
-      className="ds-c-tooltip ds-c-tooltip--inverse"
-      data-placement="top"
-      id="trigger_2"
-      onBlur={[Function]}
-      role="tooltip"
-      style={
-        Object {
-          "maxWidth": "300px",
-          "zIndex": 9999,
-        }
-      }
-      tabIndex={null}
+    <button
+      aria-describedby="trigger_3"
+      aria-label="tooltip trigger"
+      class="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon ds-c-tooltip__trigger--inverse"
+      type="button"
     >
       <span
-        className="ds-c-tooltip__arrow"
-        data-popper-arrow={true}
+        class="ds-c-tooltip-icon__container"
+      >
+        <svg
+          aria-hidden="true"
+          aria-labelledby="icon-4__title"
+          class="ds-c-icon ds-c-icon--info-circle-thin ds-c-tooltip-icon"
+          focusable="false"
+          id="icon-4"
+          role="img"
+          viewBox="0 0 16 16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title
+            id="icon-4__title"
+          >
+            Information
+          </title>
+          <path
+            d="M8 16c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm1-3.7V6.4H7v5.9h2zM7 4.9c0 .6.3.9 1 .9s1-.3 1-.9c0-.3-.1-.5-.2-.7-.2-.1-.5-.2-.8-.2-.3 0-.6.1-.8.2-.1.2-.2.4-.2.7z"
+            fill-rule="nonzero"
+          />
+        </svg>
+      </span>
+    </button>
+    <div
+      aria-hidden="true"
+      class="ds-c-tooltip ds-c-tooltip--inverse"
+      data-placement="top"
+      id="trigger_3"
+      role="tooltip"
+      style="max-width: 300px; z-index: 9999;"
+    >
+      <span
+        class="ds-c-tooltip__arrow"
+        data-popper-arrow="true"
       />
       <div
-        className="ds-c-tooltip__content ds-base"
+        class="ds-c-tooltip__content ds-base"
       >
         Tooltip body content
       </div>
       <span
-        className="ds-c-tooltip__interactive-border"
-        style={
-          Object {
-            "border": "15px solid transparent",
-            "left": "-15px",
-            "top": "-15px",
-            "zIndex": -999,
-          }
-        }
+        class="ds-c-tooltip__interactive-border"
+        style="left: -15px; top: -15px; border: 15px solid transparent; z-index: -999;"
       />
     </div>
-  </CSSTransition>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Tooltip tooltip with close renders heading element 1`] = `
+<div
+  aria-hidden="false"
+  class="ds-c-tooltip ds-c-tooltip-enter ds-c-tooltip-enter-active"
+  data-placement="top"
+  id="trigger_13"
+  role="dialog"
+  style="max-width: 300px; z-index: 9999;"
+  tabindex="-1"
+>
+  <span
+    class="ds-c-tooltip__arrow"
+    data-popper-arrow="true"
+  />
+  <div
+    class="ds-c-tooltip__content ds-base"
+  >
+    <div
+      class="ds-c-tooltip__header"
+    >
+      Tooltip heading content
+    </div>
+    Tooltip body content
+  </div>
+</div>
+`;
+
+exports[`Tooltip tooltip with close renders heading element and close button 1`] = `
+<div
+  aria-hidden="false"
+  class="ds-c-tooltip ds-c-tooltip-enter ds-c-tooltip-enter-active"
+  data-placement="top"
+  id="trigger_16"
+  role="dialog"
+  style="max-width: 300px; z-index: 9999;"
+  tabindex="-1"
+>
+  <span
+    class="ds-c-tooltip__arrow"
+    data-popper-arrow="true"
+  />
+  <div
+    class="ds-c-tooltip__content ds-base"
+  >
+    <div
+      class="ds-c-tooltip__header"
+    >
+      Tooltip heading content
+      <button
+        aria-label="Close"
+        class="ds-c-button ds-c-button--transparent ds-c-button--small ds-c-tooltip__close-button"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          aria-labelledby="icon-18__title"
+          class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin "
+          focusable="false"
+          id="icon-18"
+          role="img"
+          viewBox="-2 -2 18 18"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title
+            id="icon-18__title"
+          >
+            Close
+          </title>
+          <path
+            d="M0 13.0332964L13.0332964 0M13.0332964 13.0332964L0 0"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-width="2"
+          />
+        </svg>
+      </button>
+    </div>
+    Tooltip body content
+  </div>
 </div>
 `;
