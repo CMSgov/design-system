@@ -134,14 +134,12 @@ export default function () {
     const componentLayerStyles = makeLayerStyles(jsonFile.components);
     const componentTextStyles = makeTextStyles(jsonFile.components);
 
-    componentLayerStyles.forEach((layerStyle) => {
-      doc.sharedLayerStyles = [];
-      // doc.sharedLayerStyles.push(layerStyle)
+    doc.sharedLayerStyles = componentLayerStyles.map((layerStyle) => {
+      // return layerStyle computation
       console.log(layerStyle);
     });
-    componentTextStyles.forEach((textStyle) => {
-      doc.sharedTextStyles = [];
-      // doc.sharedTextStyles.push(layerStyle)
+    doc.sharedTextStyles = componentTextStyles.map((textStyle) => {
+      // return textStyle computation
       console.log(textStyle);
     });
   }
