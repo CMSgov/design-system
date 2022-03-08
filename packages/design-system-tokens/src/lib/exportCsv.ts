@@ -1,8 +1,19 @@
 import { FileDescriptor } from './types';
-import { writeFile } from './utility';
+import { flatten, writeFile } from './utility';
 
-const tokenFormat = (tokenType: string, name: string, value: string | unknown) => {
-  return `${tokenType},${name},${value}\r\n`;
+const tokenFormat = (name: string, value: string | unknown) => {
+  // double quote strings with commas in them
+  if (typeof value === 'string' && value.includes(',')) value = `""${value}""`;
+  return `${name},${value}\r\n`;
+};
+
+const setVars = (items: Record<string, any>, filename: string) => {
+  let vars = '';
+  Object.entries(items).forEach(([name, value]) => {
+    name = `${filename}-${name}`;
+    vars += tokenFormat(name, value);
+  });
+  return vars;
 };
 
 /*
@@ -18,37 +29,26 @@ export const exportCsv = (fileDescriptors: FileDescriptor[], outPath: string): n
      * which runs synchronously.
      */
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const importedModule = require(`${file.moduleImportName}`);
+    const importedModule = require(file.moduleImportName);
+    const filename = `${outPath}/${file.exportFileName}.csv`;
+    let output = `key,value\r\n`;
+    let type = 'tokens';
 
-    // theme files have a description prop token files do not
-    if (importedModule.default.description !== undefined) {
-      Object.keys(importedModule.default).forEach((key) => {
+    if (importedModule.default.description) type = 'theme';
+
+    if (type === 'theme') {
+      Object.entries(importedModule.default).forEach(([key]) => {
         if (key === 'description') return;
 
-        const filename = `${outPath}/${file.exportFileName}-${key}.csv`;
-
-        // write header
-        let vars = `theme,key,value\r\n`;
-
-        Object.entries(importedModule.default[key]).forEach(([name, value]) => {
-          vars += tokenFormat(file.fileBaseName, name, value);
-        });
-
-        writeFile(filename, vars);
+        const tokenItems = flatten(importedModule.default[key]);
+        output += setVars(tokenItems, key);
       });
     } else {
-      // it's a token file
-      const filename = `${outPath}/${file.exportFileName}.csv`;
-
-      // write header
-      let vars = `type,key,value\r\n`;
-
-      Object.entries(importedModule.default).forEach(([name, value]) => {
-        vars += tokenFormat(file.fileBaseName, name, value);
-      });
-
-      writeFile(filename, vars);
+      const tokens = flatten(importedModule.default);
+      output += setVars(tokens, file.fileBaseName);
     }
+
+    writeFile(filename, output);
   });
   return 0;
 };

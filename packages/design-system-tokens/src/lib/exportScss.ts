@@ -1,8 +1,17 @@
 import { FileDescriptor } from './types';
-import { writeFile } from './utility';
+import { flatten, writeFile } from './utility';
 
 const tokenFormat = (name: string, value: string | unknown) => {
   return `$${name}: ${value};\n`;
+};
+
+const setVars = (items: Record<string, any>, filename: string) => {
+  let vars = '';
+  Object.entries(items).forEach(([name, value]) => {
+    name = `${filename}-${name}`;
+    vars += tokenFormat(name, value);
+  });
+  return vars;
 };
 
 /*
@@ -18,32 +27,23 @@ export const exportScss = (fileDescriptors: FileDescriptor[], outPath: string): 
      */
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const importedModule = require(`${file.moduleImportName}`);
+    const filename = `${outPath}/${file.exportFileName}.scss`;
+    const type = importedModule.default.description ? 'theme' : 'tokens';
+    let output = '';
 
-    // theme files have a description prop token files do not
-    if (importedModule.default.description !== undefined) {
-      Object.keys(importedModule.default).forEach((key) => {
+    if (type === 'theme') {
+      Object.entries(importedModule.default).forEach(([key]) => {
         if (key === 'description') return;
 
-        const filename = `${outPath}/${file.parentDirectoryName}-${file.fileBaseName}-${key}.scss`;
-        let vars = '';
-
-        Object.entries(importedModule.default[key]).forEach(([name, value]) => {
-          vars += tokenFormat(name, value);
-        });
-
-        writeFile(filename, vars);
+        const tokenItems = flatten(importedModule.default[key]);
+        output += setVars(tokenItems, key);
       });
     } else {
-      // it's a token file
-      const filename = `${outPath}/tokens-${file.fileBaseName}.scss`;
-      let vars = '';
-
-      Object.entries(importedModule.default).forEach(([name, value]) => {
-        vars += tokenFormat(name, value);
-      });
-
-      writeFile(filename, vars);
+      const tokens = flatten(importedModule.default);
+      output = setVars(tokens, file.fileBaseName);
     }
+
+    writeFile(filename, output);
   });
   return 0;
 };
