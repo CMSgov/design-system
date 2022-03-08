@@ -10,6 +10,7 @@ import {
   CloseIcon,
   CloseIconThin,
   DownloadIcon,
+  ExternalLinkIcon,
   ImageIcon,
   InfoCircleIcon,
   InfoCircleIconThin,
@@ -86,6 +87,11 @@ const iconData = [
     defaultTitle: 'Download',
     component: <DownloadIcon />,
     name: 'DownloadIcon',
+  },
+  {
+    defaultTitle: 'External Link',
+    component: <ExternalLinkIcon />,
+    name: 'ExternalLinkIcon',
   },
   {
     defaultTitle: 'Image',

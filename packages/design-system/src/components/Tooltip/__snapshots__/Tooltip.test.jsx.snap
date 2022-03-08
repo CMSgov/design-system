@@ -5,7 +5,6 @@ exports[`Tooltip renders custom trigger component 1`] = `
   aria-describedby="trigger_5"
   aria-label="tooltip trigger"
   class="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
-  role="button"
   tabindex="0"
 >
   <span
