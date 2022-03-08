@@ -49,8 +49,12 @@ export interface ThemeTokens {
   readonly color: HexColorTokens;
   readonly spacer: SpacingTokens;
   readonly components: AllTokenValues;
-  shadows: ShadowTokens;
+  readonly shadow: ShadowTokens;
 }
+
+export const makeTheme = <T extends ThemeTokens>(value: T) => {
+  return value;
+};
 
 export interface FileDescriptor {
   moduleImportName: string;
