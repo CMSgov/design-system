@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { HexValue, RGBValue, FileDescriptor, PercentageValue } from './types';
+import { HexValue, RGBValue, RGBAValue, FileDescriptor } from './types';
 
 // converts an rgb string 'rgb(15,24,128)' to a hex value '#0819A9'
 export const rgbToHex = (r: number, g: number, b: number): HexValue => {
@@ -8,25 +8,31 @@ export const rgbToHex = (r: number, g: number, b: number): HexValue => {
   return `#${hex}`;
 };
 
-/*
- * transforms a hex value to an 8 char hex value with opacity given as a number from 0 to 1
- */
+// transforms a hex value to an 8 char hex value with opacity given as a number
 export const hexOpacity = (hexVal: HexValue, opacity: number): HexValue => {
-  const alpha = Math.round(opacity * 255);
-  const alphaHex = (alpha + 0x10000).toString(16).substr(-2).toUpperCase();
-  return `${hexVal}${alphaHex}`;
+  const percent = Math.max(0, Math.min(100, opacity));
+  const intVal = Math.round((percent / 100) * 255);
+  const hexOpacity = intVal.toString(16).toUpperCase();
+  return `${hexVal}${hexOpacity}`;
 };
 
-// converts a hex string '#F3G1AA' to an rgb value string 'rgb(142, 24, 89)'
-export const hexToRgb = (hex: HexValue): RGBValue | null => {
+/*
+ * converts a hex string '#F3G1AA' to an rgb value string 'rgb(142, 24, 89)'
+ * if an optional opacity value is passed the rgba value will be returned
+ */
+export const hexToRgb = (hex: HexValue, opacity = 100): RGBValue | RGBAValue => {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   if (result) {
     const r = parseInt(result[1], 16);
     const g = parseInt(result[2], 16);
     const b = parseInt(result[3], 16);
-    return `rgb(${r},${g},${b})`;
+    const rgb: RGBValue | RGBAValue =
+      opacity > 100 ? `rgb(${r},${g},${b})` : `rgba(${r},${g},${b},${opacity})`;
+    return rgb;
   }
-  return null;
+  // should never happen with type checks, but will return near-black if there was an error
+  // with the conversion, somewhat unique value, 1,1,1 can be checked for to detect errors
+  return 'rgb(1,1,1)';
 };
 
 // flattens an object into one dimension

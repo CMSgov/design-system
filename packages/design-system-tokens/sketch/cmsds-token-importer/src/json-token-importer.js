@@ -25,7 +25,7 @@ const getTokensPage = (doc) => {
 const makeColorSwatches = (colorTokens) => {
   const swatches = [];
   for (const [key, value] of Object.entries(colorTokens)) {
-    let colorName = key.match(/(^[A-Za-z]+-?[A-Za-z]+?)-\d+$/);
+    let colorName = key.match(/(^[A-Za-z]+-?[A-Za-z]+?)-?\d+?$/);
     colorName = colorName === null ? (colorName = '') : colorName[1] + '/';
     const currentSwatch = sketch.Swatch.from({
       name: `tokens/${colorName}${key}`,

@@ -9,7 +9,6 @@
     "typescript": "^4.5.4"
   },
   "scripts": {
-    "test": "ts-node ./tests/test.ts",
     "build": "ts-node ./src/index.ts",
     "clean": "rm -f dist/*"
   },

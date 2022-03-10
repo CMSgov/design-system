@@ -1,14 +1,10 @@
 /*
  * CMSDS Time Tokens
  */
-import { TimeTokens } from '../lib/types';
-
-const makeTime = <T extends TimeTokens>(value: T) => {
-  return value;
-};
+import { makeTimeTypes } from '../lib/types';
 
 // in seconds
-const time = makeTime({
+const time = makeTimeTypes({
   'duration-instantly': 0,
   'duration-immediately': 0.05,
   'duration-faster': 0.25,
