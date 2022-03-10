@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/ds-healthcare-gov",
-  "version": "7.1.0-beta.1",
+  "version": "7.1.0",
   "publishConfig": {
     "tag": "latest",
     "access": "public"
@@ -20,7 +20,7 @@
     "src"
   ],
   "dependencies": {
-    "@cmsgov/design-system": "^3.1.0-beta.1",
+    "@cmsgov/design-system": "^3.1.0",
     "@types/js-cookie": "^2.2.7",
     "@types/react": "^17.0.10",
     "@types/react-dom": "^17.0.10",
@@ -34,8 +34,8 @@
     "@babel/plugin-proposal-class-properties": "^7.10.1",
     "@babel/plugin-transform-object-assign": "^7.10.4",
     "@babel/preset-typescript": "^7.15.0",
-    "@cmsgov/design-system-docs": "^3.1.0-beta.1",
-    "@cmsgov/design-system-scripts": "^3.1.0-beta.1",
+    "@cmsgov/design-system-docs": "^3.1.0",
+    "@cmsgov/design-system-scripts": "^3.1.0",
     "@cmsgov/eslint-config-design-system": "2.0.0",
     "@cmsgov/stylelint-config-design-system": "2.0.0",
     "babel-eslint": "^10.1.0",
