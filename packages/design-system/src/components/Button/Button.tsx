@@ -151,7 +151,6 @@ export const Button = ({
   if (ComponentType !== 'button') {
     // Assume `component` is not a custom component rendering a <button>
     // and remove <button> specific attributes
-    attrs.role = 'button';
     delete attrs.disabled;
     delete attrs.type;
   }

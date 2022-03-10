@@ -1,11 +1,20 @@
 import fs from 'fs';
 import path from 'path';
-import { HexValue, RGBValue, FileDescriptor } from './types';
+import { HexValue, RGBValue, FileDescriptor, PercentageValue } from './types';
 
 // converts an rgb string 'rgb(15,24,128)' to a hex value '#0819A9'
 export const rgbToHex = (r: number, g: number, b: number): HexValue => {
   const hex = ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
   return `#${hex}`;
+};
+
+/*
+ * transforms a hex value to an 8 char hex value with opacity given as a number from 0 to 1
+ */
+export const hexOpacity = (hexVal: HexValue, opacity: number): HexValue => {
+  const alpha = Math.round(opacity * 255);
+  const alphaHex = (alpha + 0x10000).toString(16).substr(-2).toUpperCase();
+  return `${hexVal}${alphaHex}`;
 };
 
 // converts a hex string '#F3G1AA' to an rgb value string 'rgb(142, 24, 89)'
@@ -19,6 +28,17 @@ export const hexToRgb = (hex: HexValue): RGBValue | null => {
   }
   return null;
 };
+
+// flattens an object into one dimension
+export const flatten = (obj: Record<string, any>, initialObject: Record<string, any> = {}) =>
+  Object.entries(obj).reduce((accumulator, [key, val]) => {
+    if (typeof val === 'object') {
+      flatten(val, accumulator);
+    } else {
+      initialObject[key] = val;
+    }
+    return accumulator;
+  }, initialObject);
 
 /*
  * given a directory path string and an empty string array, returns a

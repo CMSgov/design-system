@@ -9,6 +9,9 @@ export default {
   args: {
     href: '#main',
   },
+  parameters: {
+    loki: { skip: true },
+  },
 };
 
 const Template = ({ data, ...args }) => <SkipNav {...args} />;
