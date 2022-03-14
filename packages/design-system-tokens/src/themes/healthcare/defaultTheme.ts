@@ -1,9 +1,9 @@
 import { color, spacer } from '../../tokens';
-import { makeTheme, HexColorTokens } from '../../lib/types';
+import { makeThemeTypes, ColorTokens } from '../../lib/types';
 
 const description = 'Default Healthcare.gov Theme';
 
-const themeColors: HexColorTokens = {
+const themeColors: ColorTokens = {
   white: color.white,
   base: color['granite-900'],
   black: color.black,
@@ -107,7 +107,7 @@ const shadow = {
   'focus-link-inverse': `0 3px ${themeColors['focus-border-inverse']}`,
 };
 
-const DefaultTheme = makeTheme({
+const DefaultTheme = makeThemeTypes({
   description,
   color: themeColors,
   spacer,

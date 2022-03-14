@@ -19,6 +19,10 @@ export type MediaWidthTokens = {
   readonly [key: `width-${string}`]: PxValue;
 };
 
+export type ColorTokens = {
+  readonly [key: string | symbol]: HexValue | RGBValue | RGBAValue;
+};
+
 export type SpacingTokens = {
   readonly [key: `spacer-${string}`]: PxValue;
 };
@@ -29,10 +33,6 @@ export type ShadowTokens = {
 
 export type TimeTokens = {
   readonly [key: `duration-${string}`]: number;
-};
-
-export type ColorTokens = {
-  readonly [key: string]: HexValue;
 };
 
 export interface FontTokens {
@@ -46,10 +46,10 @@ export interface Theme {
 
 export interface ThemeTokens {
   readonly description: string;
-  readonly colors: ColorTokens;
-  readonly spacers: SpacingTokens;
+  readonly color: ColorTokens;
+  readonly spacer: SpacingTokens;
   readonly components: AllTokenValues;
-  readonly shadows: ShadowTokens;
+  readonly shadow: ShadowTokens;
 }
 
 export const makeAnimationTypes = <T extends AnimationTokens>(value: T) => {
