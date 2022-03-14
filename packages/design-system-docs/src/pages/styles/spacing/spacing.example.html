@@ -1,0 +1,79 @@
+<table class="ds-c-table ds-c-table--compact ds-c-sm-table--stacked">
+  <thead>
+    <tr role="row">
+      <th>Variable</th>
+      <th>Value</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tr>
+    <td><code>$spacer-half</code></td>
+    <td><code>4px</code></td>
+    <td>
+      <div class="ds-u-fill--primary-alt" style="height: 4px"></div>
+    </td>
+  </tr>
+  <tr>
+    <td><code>$spacer-1</code></td>
+    <td><code>8px</code></td>
+    <td>
+      <div class="ds-u-fill--primary-alt" style="height: 8px"></div>
+    </td>
+  </tr>
+  <tr>
+    <td><code>$spacer-2</code></td>
+    <td><code>16px</code></td>
+    <td>
+      <div class="ds-u-fill--primary-alt" style="height: 16px"></div>
+    </td>
+  </tr>
+  <tr>
+    <td><code>$spacer-3</code></td>
+    <td><code>24px</code></td>
+    <td>
+      <div class="ds-u-fill--primary-alt" style="height: 24px"></div>
+    </td>
+  </tr>
+  <tr>
+    <td><code>$spacer-4</code></td>
+    <td><code>32px</code></td>
+    <td>
+      <div class="ds-u-fill--primary-alt" style="height: 32px"></div>
+    </td>
+  </tr>
+  <tr>
+    <td><code>$spacer-5</code></td>
+    <td><code>40px</code></td>
+    <td>
+      <div class="ds-u-fill--primary-alt" style="height: 40px"></div>
+    </td>
+  </tr>
+  <tr>
+    <td><code>$spacer-6</code></td>
+    <td><code>48px</code></td>
+    <td>
+      <div class="ds-u-fill--primary-alt" style="height: 48px"></div>
+    </td>
+  </tr>
+  <tr>
+    <td><code>$spacer-7</code></td>
+    <td><code>56px</code></td>
+    <td>
+      <div class="ds-u-fill--primary-alt" style="height: 56px"></div>
+    </td>
+  </tr>
+</table>
+
+<!-- <% var tokens = [ '', '$spacer-1', '$spacer-2', '$spacer-3', '$spacer-4', '$spacer-5',
+'$spacer-6', '$spacer-7' ]; -%>
+<% var pixels = [ '4', '8', '16', '24', '32', '40','48', '56' ]; -%>
+<div class="">
+  <% tokens.forEach(token => { -%>
+   
+  <article class="ds-u-margin-bottom--1">
+    <code><%= token %></code>
+    <% pixels.forEach(pixel => { -%> <code><%= pixel %>px</code> <% }) -%>
+  </article>
+ 
+  <% }) -%>
+</div> -->
