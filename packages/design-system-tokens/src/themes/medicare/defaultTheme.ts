@@ -39,7 +39,7 @@ const themeColors: ColorTokens = {
   'primary-alt': color['lapis-500'],
   'primary-alt-dark': color['lapis-700'],
   'primary-alt-darker': color['lapis-800'],
-  'primary-alt-darkest': color['sky-900'],
+  'primary-alt-darkest': color['lapis-900'],
   'primary-alt-light': color['lapis-300'],
   'primary-alt-lightest': color['lapis-100'],
   secondary: color['lapis-500'],
@@ -72,12 +72,8 @@ const themeColors: ColorTokens = {
 };
 
 const components = {};
-
 const shadow = {
-  focus: `inset 0 0 0 1px ${themeColors.base}`,
-  'focus-inverse': `inset 0 0 0 1px ${themeColors.base}`,
-  'focus-link': `0 3px ${themeColors.base}`,
-  'focus-link-inverse': `0 3px ${themeColors['focus-border-inverse']}`,
+  'box-card': '0 2px 3px 0 rgba(50, 50, 50, 0.23)',
 };
 
 const DefaultTheme = makeThemeTypes({

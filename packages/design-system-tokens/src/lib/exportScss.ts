@@ -5,11 +5,19 @@ const tokenFormat = (name: string, value: string | unknown) => {
   return `$${name}: ${value};\n`;
 };
 
-const setVars = (items: Record<string, any>, filename: string) => {
+const tokenFormatDefault = (name: string, value: string | unknown) => {
+  return `$${name}: ${value} !default;\n`;
+};
+
+const setVars = (
+  items: Record<string, any>,
+  filename: string,
+  formatter: (name: string, value: string) => string = tokenFormat
+) => {
   let vars = '';
   Object.entries(items).forEach(([name, value]) => {
     name = `${filename}-${name}`;
-    vars += tokenFormat(name, value);
+    vars += formatter(name, value);
   });
   return vars;
 };
@@ -36,6 +44,14 @@ export const exportScss = (fileDescriptors: FileDescriptor[], outPath: string): 
         if (key === 'description') return;
 
         const tokenItems = flatten(importedModule.default[key]);
+        /*
+         * core scss needs the !default attribute added to every style to
+         * allow for overriding in medicare, TODO: get all systems on the
+         * same page and remove this
+         */
+        if (file.parentDirectoryName === 'core') {
+          output += setVars(tokenItems, key, tokenFormatDefault);
+        }
         output += setVars(tokenItems, key);
       });
     } else {

@@ -12,7 +12,7 @@ export const rgbToHex = (r: number, g: number, b: number): HexValue => {
 export const hexOpacity = (hexVal: HexValue, opacity: number): HexValue => {
   const percent = Math.max(0, Math.min(100, opacity));
   const intVal = Math.round((percent / 100) * 255);
-  const hexOpacity = intVal.toString(16).toUpperCase();
+  const hexOpacity = intVal.toString(16).toUpperCase().padStart(2, '0');
   return `${hexVal}${hexOpacity}`;
 };
 
@@ -56,11 +56,11 @@ export const hexToRgbArray = (hex: HexValue): number[] => {
  */
 export const rgb2lab = (rgb: number[]): number[] => {
   let r = rgb[0] / 255;
-    let g = rgb[1] / 255;
-    let b = rgb[2] / 255;
-    let x;
-    let y;
-    let z;
+  let g = rgb[1] / 255;
+  let b = rgb[2] / 255;
+  let x;
+  let y;
+  let z;
   r = r > 0.04045 ? Math.pow((r + 0.055) / 1.055, 2.4) : r / 12.92;
   g = g > 0.04045 ? Math.pow((g + 0.055) / 1.055, 2.4) : g / 12.92;
   b = b > 0.04045 ? Math.pow((b + 0.055) / 1.055, 2.4) : b / 12.92;

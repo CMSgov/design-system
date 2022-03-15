@@ -1,30 +1,20 @@
 $color-primary: #046791;
-$color-primary-darker: darken($color-primary, 5%);
-$color-primary-darkest: darken($color-primary, 15%);
-
+$color-primary-darker: #045d83;
+$color-primary-darkest: #034866;
 $color-primary-alt: #3e94cf;
-$color-primary-alt-lightest: #cfeffc;
-
-$color-gray-lightest: #f7f7f7;
-
-$color-green: #12890e;
-$color-green-light: #0d5e0b;
-$color-green-lighter: #94bfa2;
-$color-green-lightest: #e7f4e3;
-// The variables $color-green-dark and $color-green-darker don't exist in the
-// Design System, but $color-success-dark and $color-success-darker do.
-$color-success-dark: darken($color-green, 3%);
-$color-success-darker: darken($color-green, 6%);
-
-$color-warn: #f8c41f;
-//color-warn-light exists in the Design System, but is named $color-warn-lighter
-$color-warn-light: #fad980;
-
+$color-primary-alt-lightest: #c0e9fb;
 $color-secondary: #b20000;
-$color-secondary-dark: #8d0000;
-$color-secondary-light: #e59393;
-$color-secondary-lightest: #f8dddd;
-
-// Focus colors
+$color-secondary-dark: #7d0000;
+$color-secondary-light: #f18e9e;
+$color-secondary-lightest: #fce8ec;
+$color-gray-lightest: #f2f2f2;
+$color-green: #12890e;
+$color-green-light: #0d600a;
+$color-green-lighter: #89c487;
+$color-green-lightest: #e7f3e7;
 $color-focus-light: #fff;
-$color-focus-dark: #dd3603;
+$color-focus-dark: #e63350;
+$color-warn: #f8c41f;
+$color-warn-light: #f9ca35;
+$color-success-dark: #107b0d;
+$color-success-darker: #0d600a;

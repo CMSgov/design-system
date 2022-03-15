@@ -1,5 +1,6 @@
 import { color } from '../../tokens';
 import { makeThemeTypes, ColorTokens } from '../../lib/types';
+import { hexOpacity } from '../../lib/utility';
 
 const description = 'Default CMSDS Core Theme';
 
@@ -90,7 +91,8 @@ const themeColors: ColorTokens = {
   'focus-shadow': color['granite-900'],
   'focus-shadow-inverse': color['granite-900'],
   'focus-shadow-link': color['granite-900'],
-  'focus-shadow-link-inverse': color['goldenrod-700'],
+  'focus-shadow-link-inverse': color['goldenrod-800'],
+  'background-dialog-mask': hexOpacity('#000000', 50),
 };
 
 const components = {};
@@ -99,7 +101,12 @@ const shadow = {
   focus: `inset 0 0 0 1px ${themeColors.base}`,
   'focus-inverse': `inset 0 0 0 1px ${themeColors.base}`,
   'focus-link': `0 3px ${themeColors.base}`,
-  'focus-link-inverse': `03px ${themeColors['focus-border-inverse']}`,
+  'focus-link-inverse': `0 3px ${themeColors['focus-border-inverse']}`,
+  'base-offset-x': '2px',
+  'base-offset-y': '2px',
+  'base-blur-radius': '4px',
+  'base-color': hexOpacity('#000000', 25),
+  base: '2px 2px 4px',
 };
 
 const DefaultTheme = makeThemeTypes({
