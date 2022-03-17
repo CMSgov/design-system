@@ -51,8 +51,9 @@ export const exportScss = (fileDescriptors: FileDescriptor[], outPath: string): 
          */
         if (file.parentDirectoryName === 'core') {
           output += setVars(tokenItems, key, tokenFormatDefault);
+        } else {
+          output += setVars(tokenItems, key);
         }
-        output += setVars(tokenItems, key);
       });
     } else {
       const tokens = flatten(importedModule.default);
