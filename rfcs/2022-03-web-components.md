@@ -19,12 +19,43 @@ Building custom, reusable elements would allow CMS Design System components to b
 
 With the hypothesis that the team wanted to wrap our current React components and export them as Web Components, the team explored several options.
 
-### Vanilla Components
+### Browser Native Web Components
+
+For this part of our discovery, we sought to wrap two of our React components within native Web Components to evaluate if it was possible, impacted our performance, or interferred with accessibility in any way. Failure of any one of these three requirements would result in a hard pass for this technology.
+
+Alert and ChoiceList were identified as good test cases; Alert was chosen for its simplicity, while ChoiceList offered more complex considerations with event handling, lifecycle methods, and element nesting.
+
+Today, all major browsers natively support Web Components, with Safari having spotty support for a handful of its APIs (these APIs are more enhancements than core functionality). And it might go without saying, but IE doesn't support Web Components in any fashion. However, there is a [polyfill](https://github.com/webcomponents/polyfills) available to address browser outages.
+
+As with any new technology, there is a learning curve when first diving into writing Web Components. This is further compounded by our task of wrapping our pre-existing React components within a web component. While [React documentation says it is fully compatible with Web Components](https://reactjs.org/docs/web-components.html), they also note
+
+> **Most people who use React don’t use Web Components**, but you may want to, especially if you are using third-party UI components that are written using Web Components.
+
+While several projects were found using Web Components within React, it was honestly pretty tough finding examples of the inverse.
+
+Before I get into the difficulties I encountered, I was able to wrap our React Alert inside a Web Component (turning it into a 1MB component!)and it seemed to work well with assistive technologies, but wrapping our React ChoiceList component proved way more difficult given how that component is built and how it expects data to be passed to it.
+
+Because the Alert was indicating some pretty severe performance concerns, we ended this experiment before completing the ChoiceList work.
 
 #### Issues Encountered
 
-- Each component bundles React as part of its exported JS. This creates an inflated bundle size for even the smallest components.
-- Properties / Attribute data structures. React props can accept different data structures that Web Component attributes to not support. The component APIs would need to change in order to support both.
+Early on in the project, I struggled in the basic scaffolding of a React/Web Component, specifically in figuring out how to import our React component into its resepctive Web Component file and in applying the correct styling for said component.
+
+**Rendering React inside a Web Component**
+
+To correctly render a React component within a Web Component, I needed to import both React and ReactDOM alongside the UI component - and that was for a simple, barebones conversion of the Alert. That doesn't account for any additional packages I'd need to handle other React-specific stuff, like synthetic events.
+
+There were also Typescript headaches here where it seemed like I needed to create some kind of global definition file and redefine the typings of our Web Component.
+
+**Applying styles to a Web Component**
+
+Applying our design system CSS proved to be incredibly annoying. Having followed our [Design System's startup guide for using CSS](https://design.cms.gov/startup/sass-and-css/) and ensuring the ShadowDOM was disabled in our Web Components, I expected the component to just work and I was a fool.
+
+I discovered when working with native Web Components, there's a hydration step that needs to happen on the component that causes the CSS to sort of "detach" from the styles applied within, resulting in an ugly component. The only way I could get around this was to import our CSS into each Web Component, and because our styles aren't split up by component that meant I needed to import **all the CSS** into each component.
+
+I should note, these styles didn't include our web fonts, so it's very likely that would be another thing I'd need to import per component.
+
+**tldr; these components were chonky.**
 
 ### Preact
 
