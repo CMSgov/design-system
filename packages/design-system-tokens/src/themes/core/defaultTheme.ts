@@ -80,7 +80,7 @@ const themeColors: ColorTokens = {
   'success-lighter': color['spring-200'],
   'success-lightest': color['spring-50'],
   muted: color['granite-700'],
-  'muted-inverse': color['lapis-100'],
+  'muted-inverse': color['lapis-50'],
   'base-inverse': color.white,
   background: color.white,
   'background-inverse': color['ocean-800'],

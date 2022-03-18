@@ -10,7 +10,8 @@
   },
   "scripts": {
     "build": "ts-node ./src/index.ts",
-    "clean": "rm -f dist/*"
+    "clean": "rm -f dist/*",
+    "dist": "./src/copy_themes.sh"
   },
   "dependencies": {}
 }

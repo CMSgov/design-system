@@ -74,7 +74,7 @@ export const rgb2lab = (rgb: number[]): number[] => {
 };
 
 /*
- * deltaE uses the 1994 implementation of the DeltaE function to compute the euclidian
+ * rgbArrayDiff uses the 1994 implementation of the DeltaE function to compute the euclidian
  * difference between two rgb values provided as an array of rgb values 0 - 255.
  * returns a value of 1-100 which is the perceptual difference between the two colors.
  *
@@ -85,7 +85,7 @@ export const rgb2lab = (rgb: number[]): number[] => {
  *  100    - Colors are exact opposite
  *
  */
-export const deltaE = (rgbA: number[], rgbB: number[]): number => {
+export const rgbArrayDiff = (rgbA: number[], rgbB: number[]): number => {
   const labA = rgb2lab(rgbA);
   const labB = rgb2lab(rgbB);
   const deltaL = labA[0] - labB[0];
@@ -139,8 +139,10 @@ export const getAllFiles = (dirPath: string, arrayOfFiles: string[]): string[] =
  * search out all availible modules under a path and return an
  * array of objects which contains file descriptors for each file
  */
-export const getFileDescriptors = (inPath: string): FileDescriptor[] => {
-  const root = `${process.cwd()}/src`;
+export const getFileDescriptors = (
+  inPath: string,
+  root = `${process.cwd()}/src`
+): FileDescriptor[] => {
   const allFiles = getAllFiles(`${root}/${inPath}`, []);
   const fileDescriptors: FileDescriptor[] = [];
 
