@@ -5,10 +5,10 @@ const description = 'Default Healthcare.gov Theme';
 
 const themeColors: ColorTokens = {
   primary: color['sapphire-500'],
-  'primary-darker': color['sapphire-600'],
-  'primary-darkest': color['sapphire-700'],
+  'primary-darker': color['sapphire-500'],
+  'primary-darkest': color['sapphire-600'],
   'primary-alt': color['dark-sky-500'],
-  'primary-alt-lightest': color['cerulean-100'],
+  'primary-alt-lightest': color['cerulean-50'],
   secondary: color['crimson-500'],
   'secondary-dark': color['crimson-700'],
   'secondary-light': color['rose-200'],
