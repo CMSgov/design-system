@@ -21,6 +21,7 @@ Folder structure is as follows:
     │   └── yarn.lock
     ├── src
     │   ├── index.ts                    -- command line functionality
+    │   ├── copy_themes.sh              -- shell script to copy themes to child systems
     │   ├── lib
     │   │   ├── exportCsv.ts            -- CSV file exporter
     │   │   ├── exportJson.ts           -- JSON file exporter
@@ -55,6 +56,7 @@ Folder structure is as follows:
     outputTypes: `scss` (Sass), `csv` (comma separated values), `json` (for sketch import or general use)
 
     `yarn clean` - clean dist directory
+    `yarn dist` - copy themes from dist directory to appropriate settings folder for child systems
 
 ## Sketch Utilization
 
