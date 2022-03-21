@@ -141,7 +141,7 @@ exports[`ActionMenu logged-in version set aria-expanded to true 1`] = `
         <svg
           aria-hidden="true"
           aria-labelledby="icon-2__title"
-          class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin "
+          class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin ds-u-margin-right--1"
           focusable="false"
           id="icon-2"
           role="img"
