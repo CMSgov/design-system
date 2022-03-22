@@ -1,13 +1,9 @@
 /*
  * CMSDS Z-Index Tokens
  */
-import { zIndexTokens } from '../lib/types';
+import { makeZindexTypes } from '../lib/types';
 
-const makezIndex = <T extends zIndexTokens>(value: T) => {
-  return value;
-};
-
-const zIndex = makezIndex({
+const zIndex = makeZindexTypes({
   deepdive: -99999,
   default: 1,
   dialog: 1000,

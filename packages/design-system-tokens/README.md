@@ -5,32 +5,61 @@ These folders contain all that is needed to generate and utilize the CMSDS Desig
 Folder structure is as follows:
 
     ├── README.md                       -- this file
-    ├── dist                            -- exported file directory
-    ├── package.json                    -- npm dependencies
-    ├── sketch                          -- sketch plugin directory
+    ├── dist                            -- exported files
+    ├── package.json                    -- yarn/npm dependencies
+    ├── sketch/cmsds-token-importer     -- sketch plugin directory
+    │   ├── README.md
+    │   ├── assets
+    │   │   └── icon.png                -- token plugin icon
+    │   ├── package.json
+    │   ├── sketch-assets
+    │   │   └── icons.sketch            -- needed by plugin, not used
+    │   ├── sketchtool                  -- command line tool for sketch plugins
+    │   ├── src
+    │   │   ├── json-token-importer.js  -- sketch token importer plugin code
+    │   │   └── manifest.json           -- commands for plugin dropdown
+    │   └── yarn.lock
     ├── src
     │   ├── index.ts                    -- command line functionality
+    │   ├── copy_themes.sh              -- shell script to copy themes to child systems
     │   ├── lib
-    │   │   ├── exportScss.tsr          -- sass (scss) file exporter
+    │   │   ├── exportCsv.ts            -- CSV file exporter
+    │   │   ├── exportJson.ts           -- JSON file exporter
+    │   │   ├── exportScss.ts           -- Sass (scss) file exporter
     │   │   ├── types.ts                -- typescript type definitions
     │   │   └── utility.ts              -- helper functions
-    │   ├── themes
-    │   │   └── core                    -- themes organized by package name
-    │   │       └── defaultTheme.ts     -- package default theme
-    │   └── tokens
-    │       ├── color.ts                -- color tokens
-    │       ├── index.ts                -- all token exports
-    │       └── spacing.ts              -- spacing tokens
+    │   ├── themes                      -- themes organized by package name
+    │   │   ├── core
+    │   │   │   └── defaultTheme.ts
+    │   │   ├── healthcare
+    │   │   │   └── defaultTheme.ts
+    │   │   └── medicare
+    │   │       └── defaultTheme.ts
+    │   └── tokens                      -- tokens by type
+    │       ├── animation.ts
+    │       ├── color.ts
+    │       ├── font.ts
+    │       ├── index.ts
+    │       ├── media.ts
+    │       ├── radius.ts
+    │       ├── spacer.ts
+    │       ├── time.ts
+    │       └── zIndex.ts
     └── tsconfig.json                   -- typescript configuration
 
 ## How to use
 
-    yarn install
-    yarn build inputType outputType
+    `yarn install`
+    `yarn build inputType outputType`
 
-    inputTypes: tokens (all tokens), themes (all themes)
-    outputTypes: scss (Sass), csv (comma separated values), json (for sketch import or general use)
+    inputTypes: `tokens` (all tokens), `themes` (all themes)
+    outputTypes: `scss` (Sass), `csv` (comma separated values), `json` (for sketch import or general use)
+
+    `yarn clean` - clean dist directory
+    `yarn dist` - copy themes from dist directory to appropriate settings folder for child systems
 
 ## Sketch Utilization
 
-A plugin will be made availiable here for Sketch to import token data in the coming weeks.
+    The sketch plugin should generally only be used by the design team to import tokens into
+    the main CMSDS libraries when libraries change. Instructions for use of the plugin are
+    in the [cmsds-sketch-plugin](./sketch/cmsds-token-importer/README.md) folder.
