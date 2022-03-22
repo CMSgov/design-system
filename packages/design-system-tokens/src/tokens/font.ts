@@ -1,13 +1,9 @@
 /*
  * CMSDS Font Tokens
  */
-import { FontTokens } from '../lib/types';
+import { makeFontTypes } from '../lib/types';
 
-const makeFonts = <T extends FontTokens>(value: T) => {
-  return value;
-};
-
-const font = makeFonts({
+const font = makeFontTypes({
   'family-open-sans': '"Open Sans", Helvetica, sans-serif',
   'family-rubik': '"Rubik", sans-serif',
   'family-montserrat': '"Montserrat", sans-serif',

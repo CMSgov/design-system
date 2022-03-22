@@ -1,13 +1,9 @@
 /*
  * CMSDS Spacing Tokens
  */
-import { SpacingTokens } from '../lib/types';
+import { makeSpacingTypes } from '../lib/types';
 
-const makeSpacers = <T extends SpacingTokens>(value: T) => {
-  return value;
-};
-
-const spacer = makeSpacers({
+const spacer = makeSpacingTypes({
   none: '0px',
   half: '4px',
   '1': '8px',

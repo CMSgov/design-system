@@ -1,116 +1,39 @@
-import { color, spacer } from '../../tokens';
-import { makeTheme, HexColorTokens } from '../../lib/types';
+import { color } from '../../tokens';
+import { makeThemeTypes, ColorTokens } from '../../lib/types';
 
 const description = 'Default Healthcare.gov Theme';
 
-const themeColors: HexColorTokens = {
-  white: color.white,
-  base: color['granite-900'],
-  black: color.black,
-  'gray-dark': color['granite-800'],
-  gray: color['granite-700'],
-  'gray-medium': color['granite-600'],
-  'gray-light': color['granite-300'],
-  'gray-lighter': color['granite-100'],
-  'gray-lightest': color['granite-50'],
-  'gray-warm-dark': color['granite-700'],
-  'gray-warm-light': color['granite-50'], // same as lightest?
-  'gray-cool-light': color['ocean-50'],
+const themeColors: ColorTokens = {
   primary: color['sapphire-500'],
-  'primary-darker': color['sapphire-600'],
-  'primary-darkest': color['sapphire-700'],
+  'primary-darker': color['sapphire-500'],
+  'primary-darkest': color['sapphire-600'],
   'primary-alt': color['dark-sky-500'],
-  'primary-alt-dark': color['dark-sky-600'],
-  'primary-alt-darkest': color['dark-sky-800'],
-  'primary-alt-light': color['dark-sky-300'],
-  'primary-alt-lightest': color['dark-sky-50'],
+  'primary-alt-lightest': color['cerulean-50'],
   secondary: color['crimson-500'],
   'secondary-dark': color['crimson-700'],
-  'secondary-light': color['crimson-300'],
-  'secondary-lightest': color['crimson-50'],
-  red: color['rose-500'],
-  'red-dark': color['rose-600'],
-  'red-darker': color['rose-700'],
-  'red-darkest': color['rose-800'],
-  'red-light': color['rose-400'],
-  'red-lighter': color['rose-200'],
-  'red-lightest': color['rose-50'],
-  gold: color['goldenrod-500'],
-  'gold-dark': color['goldenrod-600'],
-  'gold-darker': color['goldenrod-700'],
-  'gold-darkest': color['goldenrod-800'],
-  'gold-light': color['goldenrod-400'],
-  'gold-lighter': color['goldenrod-200'],
-  'gold-lightest': color['goldenrod-50'],
+  'secondary-light': color['rose-200'],
+  'secondary-lightest': color['rose-50'],
+  'gray-lightest': color['granite-50'],
   green: color['spring-500'],
-  'green-dark': color['spring-600'],
-  'green-darker': color['spring-700'],
-  'green-darkest': color['spring-800'],
-  'green-light': color['spring-700'], // darker instead of lighter?
+  'green-light': color['spring-700'],
   'green-lighter': color['spring-200'],
   'green-lightest': color['spring-50'],
-  'cool-blue': color['dark-sky-700'],
-  'cool-blue-light': color['dark-sky-500'],
-  'cool-blue-lighter': color['dark-sky-300'],
-  'cool-blue-lightest': color['dark-sky-50'],
-  'muted-inverse': color['granite-200'],
-  focus: color['dark-sky-500'],
-  'focus-inverse': color['sky-300'],
-  'focus-color': color['goldenrod-300'],
-  'focus-color-inverse': color['goldenrod-300'],
-  'focus-border-inverse': color['goldenrod-800'],
   'focus-light': color.white,
-  'focus-dark': color['orchid-500'],
-  visited: color['windsor-500'],
-  // below all reference colors used above, possible remapping in scss
-  error: color['rose-500'],
-  'error-dark': color['rose-600'],
-  'error-darker': color['rose-700'],
-  'error-darkest': color['rose-800'],
-  'error-light': color['rose-400'],
-  'error-lighter': color['rose-200'],
-  'error-lightest': color['rose-50'],
+  'focus-dark': color['rose-400'],
   warn: color['goldenrod-500'],
-  'warn-dark': color['goldenrod-600'],
-  'warn-darker': color['goldenrod-700'],
-  'warn-darkest': color['goldenrod-800'],
   'warn-light': color['goldenrod-400'],
-  'warn-lighter': color['goldenrod-200'],
-  'warn-lightest': color['goldenrod-50'],
-  success: color['spring-500'],
   'success-dark': color['spring-600'],
   'success-darker': color['spring-700'],
-  'success-darkest': color['spring-800'],
-  'success-light': color['spring-400'],
-  'success-lighter': color['spring-200'],
-  'success-lightest': color['spring-50'],
-  muted: color['granite-700'],
-  'base-inverse': color.white,
-  background: color.white,
-  'background-inverse': color['ocean-800'],
-  'background-dialog': color.white,
-  'border-color': color['granite-100'],
-  'border-color-dark': color['granite-800'],
-  'border-color-inverse': color.white,
 };
 
-const components = {
-  'button-style-example': color.white,
-  'button-spacing-top': spacer['2'],
-  'dropdown-padding-left': spacer['4'],
-};
+const components = {};
 
-const shadow = {
-  focus: `inset 0 0 0 1px ${themeColors.base}`,
-  'focus-inverse': `inset 0 0 0 1px ${themeColors.base}`,
-  'focus-link': `0 3px ${themeColors.base}`,
-  'focus-link-inverse': `0 3px ${themeColors['focus-border-inverse']}`,
-};
+const shadow = {};
 
-const DefaultTheme = makeTheme({
+const DefaultTheme = makeThemeTypes({
   description,
   color: themeColors,
-  spacer,
+  spacer: {},
   components,
   shadow,
 });

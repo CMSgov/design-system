@@ -1,0 +1,15 @@
+// these variables are reference names for backwards compatibility with
+// pre token work, should be deprecated as soon as possible, when deprecated
+// values with extra -color declarations can be shortened as a part of that
+// process
+
+$border-color: $color-border-color;
+$border-color-dark: $color-border-color-dark;
+$border-color-inverse: $color-border-color-inverse;
+$focus-color: $color-focus-color;
+$focus-color-inverse: $color-focus-color-inverse;
+$focus-border-inverse: $color-focus-border-inverse;
+$focus-shadow: $shadow-focus;
+$focus-shadow-inverse: $shadow-focus-inverse;
+$focus-shadow-link: $shadow-focus-link;
+$focus-shadow-link-inverse: $shadow-focus-link-inverse;
