@@ -159,28 +159,28 @@ $tooltip-close-min-width: 32px !default;
 // Tooltip transition styles
 // http://reactcommunity.org/react-transition-group/css-transition
 .ds-c-tooltip-enter {
-  display: block;
+  display: inline-block;
   opacity: 0;
 }
 
 .ds-c-tooltip-enter-active {
-  display: block;
+  display: inline-block;
   opacity: 1;
   transition: opacity $animation-speed-1;
 }
 
 .ds-c-tooltip-enter-done {
-  display: block;
+  display: inline-block;
   opacity: 1;
 }
 
 .ds-c-tooltip-exit {
-  display: block;
+  display: inline-block;
   opacity: 1;
 }
 
 .ds-c-tooltip-exit-active {
-  display: block;
+  display: inline-block;
   opacity: 0;
   transition: opacity $animation-speed-1;
 }
