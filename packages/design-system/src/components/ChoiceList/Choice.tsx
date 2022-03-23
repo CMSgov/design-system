@@ -121,12 +121,6 @@ export class Choice extends React.PureComponent<
       // to track when the value has changed. This can then be used
       // to identify when to toggle the visibility of (un)checkedChildren
       this.state = { checked: this.props.defaultChecked };
-
-      // Event emitters are only relevant for uncontrolled radio buttons
-      if (this.props.type === 'radio') {
-        this.uncheckEventName = `${this.props.name}-uncheck`;
-        dsChoiceEmitter.on(this.uncheckEventName, this.handleUncheck);
-      }
     } else {
       this.isControlled = true;
     }
@@ -138,6 +132,14 @@ export class Choice extends React.PureComponent<
       //    `[Deprecated]: Please remove the 'children' prop in <Choice>, use 'label' instead. This prop has been renamed and will be removed in a future release.`
       //  );
       // }
+    }
+  }
+
+  componentDidMount(): void {
+    // Event emitters are only relevant for uncontrolled radio buttons
+    if (!this.isControlled && this.props.type === 'radio') {
+      this.uncheckEventName = `${this.props.name}-uncheck`;
+      dsChoiceEmitter.on(this.uncheckEventName, this.handleUncheck);
     }
   }
 
