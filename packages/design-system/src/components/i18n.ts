@@ -34,21 +34,22 @@ const resources = {
   },
 } as const;
 
-const i18nInstance = i18n
-  .createInstance(
-    {
-      interpolation: {
-        escapeValue: false, // React doesn't need this
-      },
-      lng: 'en',
-      resources,
-    },
-    function (err) {
-      if (err) {
-        throw new Error(err);
-      }
-    }
-  )
-  .use(LanguageDetector);
+const i18nInstance = i18n.createInstance();
 
+i18nInstance.use(LanguageDetector).init(
+  {
+    interpolation: {
+      escapeValue: false, // React doesn't need this
+    },
+    // lng: 'en',
+    resources,
+  },
+  function (err) {
+    if (err) {
+      throw new Error(err);
+    }
+  }
+);
+
+export { i18nInstance as i18n };
 export default i18nInstance;
