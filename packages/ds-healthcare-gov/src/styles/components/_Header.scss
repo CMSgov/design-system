@@ -61,6 +61,10 @@ $header-background-color: $color-background;
       opacity: 0.6;
     }
   }
+
+  &:visited:not(:active):not(:hover) {
+    color: $color-primary;
+  }
 }
 
 /*
@@ -162,6 +166,12 @@ Header dropdown menu - Shared across header variations
     display: block;
     padding: $spacer-1;
     text-decoration: none;
+  }
+}
+
+.hc-c-menu__link {
+  &:visited:not(:active):not(:hover) {
+    color: $color-primary;
   }
 }
 

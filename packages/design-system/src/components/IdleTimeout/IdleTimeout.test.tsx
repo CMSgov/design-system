@@ -171,7 +171,7 @@ describe('Idle Timeout', () => {
     const { getByRole } = renderIdleTimeout();
     showWarning();
     const dialogBodyText = getByRole('main');
-    expect(dialogBodyText.textContent).toEqual(
+    expect(dialogBodyText.firstChild.textContent).toEqual(
       `You've been inactive for a while.Your session will end in 2 minutes.Select "Continue session" below if you want more time.`
     );
   });
@@ -180,7 +180,7 @@ describe('Idle Timeout', () => {
     const { getByRole } = renderIdleTimeout({ timeToWarning: 4 });
     showWarning(MOCK_START_TIME + 4 * 60000); // setting time to match timeToWarning in this test
     const dialogBodyText = getByRole('main');
-    expect(dialogBodyText.textContent).toEqual(
+    expect(dialogBodyText.firstChild.textContent).toEqual(
       `You've been inactive for a while.Your session will end in 1 minute.Select "Continue session" below if you want more time.`
     );
   });
@@ -190,15 +190,15 @@ describe('Idle Timeout', () => {
     const { getByRole } = renderIdleTimeout({ formatMessage, timeToWarning: 2 });
     showWarning(MOCK_START_TIME + 2 * 60000);
     const dialogBodyText = getByRole('main');
-    expect(dialogBodyText.textContent).toEqual('Your session will end in 3.');
+    expect(dialogBodyText.firstChild.textContent).toEqual('Your session will end in 3.');
     // have to advance Date.now() and also retrigger the checkStatus interval
     mockTime(MOCK_START_TIME + 3 * 60000);
     jest.advanceTimersByTime(60000);
-    expect(dialogBodyText.textContent).toEqual('Your session will end in 2.');
+    expect(dialogBodyText.firstChild.textContent).toEqual('Your session will end in 2.');
     // have to advance Date.now() and also retrigger the checkStatus interval
     mockTime(MOCK_START_TIME + 4 * 60000);
     jest.advanceTimersByTime(60000);
-    expect(dialogBodyText.textContent).toEqual('Your session will end in 1.');
+    expect(dialogBodyText.firstChild.textContent).toEqual('Your session will end in 1.');
   });
 
   it('should cleanup timers on unmount', () => {

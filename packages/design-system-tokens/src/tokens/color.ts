@@ -2,14 +2,10 @@
  * CMSDS Color Tokens, organized by hue
  */
 
-import { HexColorTokens } from '../lib/types';
+import { makeColorTypes } from '../lib/types';
 import { hexOpacity } from '../lib/utility';
 
-const makeColors = <T extends HexColorTokens>(value: T) => {
-  return value;
-};
-
-const color = makeColors({
+const color = makeColorTypes({
   // singletons
   white: '#FFFFFF',
   'white-alpha-80': hexOpacity('#FFFFFF', 80),

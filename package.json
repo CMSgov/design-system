@@ -38,7 +38,8 @@
     "gh-pages": "yarn gh-pages:healthcare && yarn gh-pages:medicare",
     "gh-pages:healthcare": "yarn build-docs:healthcare && gh-pages -d './packages/ds-healthcare-gov/docs/dist' --dest 'healthcare'",
     "gh-pages:medicare": "yarn build-docs:medicare && gh-pages -d './packages/ds-medicare-gov/docs/dist' --dest 'medicare'",
-    "scan-versions": "ts-node scripts/findDesignSystemVersions/index.ts"
+    "scan-versions": "ts-node scripts/findDesignSystemVersions/index.ts",
+    "token:dist": "yarn --cwd ./packages/design-system-tokens build themes scss && yarn --cwd ./packages/design-system-tokens dist"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
@@ -50,7 +51,7 @@
     "@storybook/preset-scss": "^1.0.3",
     "@storybook/react": "^6.4.9",
     "@storybook/theming": "^6.4.9",
-    "@types/node": "^17.0.12",
+    "@types/node": "^17.0.22",
     "@typescript-eslint/eslint-plugin": "^4.11.0",
     "@typescript-eslint/parser": "^4.11.0",
     "@whitespace/storybook-addon-html": "^5.0.0",
