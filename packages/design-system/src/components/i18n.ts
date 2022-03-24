@@ -36,5 +36,9 @@ export function getLanguage(): Language {
   return i18nInstance.language as Language;
 }
 
+export function setLanguage(...args: Parameters<typeof i18nInstance.changeLanguage>) {
+  return i18nInstance.changeLanguage(...args);
+}
+
 export { i18nInstance as i18n };
 export default i18nInstance;
