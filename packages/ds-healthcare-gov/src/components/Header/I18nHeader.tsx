@@ -18,9 +18,5 @@ const I18nHeader = (props: HeaderProps) => (
   </I18nextProvider>
 );
 
-I18nHeader.defaultProps = {
-  initialLanguage: 'en',
-};
-
 export default I18nHeader;
 export { I18nHeader as Header };

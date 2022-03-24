@@ -3,8 +3,7 @@ import DeConsumerMessage from './DeConsumerMessage';
 import Logo from '../Logo/Logo';
 import Menu from './Menu';
 import React, { useState } from 'react';
-import { Language } from '../i18n';
-import { SkipNav } from '@cmsgov/design-system';
+import { Language, SkipNav, getLanguage } from '@cmsgov/design-system';
 import classnames from 'classnames';
 import defaultMenuLinks from './defaultMenuLinks';
 import { useTranslation } from 'react-i18next';
@@ -135,7 +134,7 @@ export const VARIATION_NAMES = {
  */
 const Header = (props: HeaderProps) => {
   const [openMenu, setOpenMenu] = useState(false);
-  const { t } = useTranslation(props.initialLanguage);
+  const { t } = useTranslation(props.initialLanguage ?? 'healthcare');
 
   /**
    * Determines which variation of the header should be displayed,
@@ -183,7 +182,7 @@ const Header = (props: HeaderProps) => {
   const hasCustomLinks = !!props.links;
   const defaultLinksForVariation = defaultMenuLinks(
     t,
-    props.initialLanguage,
+    props.initialLanguage ?? getLanguage(),
     props.deConsumer,
     props.subpath,
     props.primaryDomain,
@@ -210,7 +209,7 @@ const Header = (props: HeaderProps) => {
             href={props.primaryDomain ? props.primaryDomain : '/'}
             className="hc-c-logo-link ds-l-col ds-l-col--auto"
           >
-            <Logo locale={props.initialLanguage} />
+            <Logo locale={props.initialLanguage ?? getLanguage()} />
           </a>
 
           <ActionMenu
@@ -239,7 +238,6 @@ const Header = (props: HeaderProps) => {
 };
 
 Header.defaultProps = {
-  initialLanguage: 'en',
   skipNavHref: '#main',
 };
 

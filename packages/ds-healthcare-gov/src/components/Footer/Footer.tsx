@@ -13,7 +13,7 @@ export interface FooterProps {
   /**
    * The language the footer will render as.
    */
-  initialLanguage: Language;
+  initialLanguage?: Language;
   /**
    * The primary, or root domain where the majority of footer links should be
    * hosted.  By default, links render with relative paths, but providing this
@@ -37,7 +37,7 @@ export interface FooterProps {
 }
 
 export const Footer = (props: FooterProps) => {
-  const { t } = useTranslation(props.initialLanguage);
+  const { t } = useTranslation(props.initialLanguage ?? 'healthcare');
   const classes = classnames(
     'hc-c-footer ds-u-fill--gray-lightest ds-u-padding-y--5',
     props.className
@@ -51,9 +51,5 @@ export const Footer = (props: FooterProps) => {
     </footer>
   );
 };
-
-Footer.defaultProps = {
-  initialLanguage: 'en',
-} as FooterProps;
 
 export default Footer;

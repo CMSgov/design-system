@@ -32,5 +32,9 @@ i18nInstance.use(LanguageDetector).init(
   }
 );
 
+export function getLanguage(): Language {
+  return i18nInstance.language as Language;
+}
+
 export { i18nInstance as i18n };
 export default i18nInstance;
