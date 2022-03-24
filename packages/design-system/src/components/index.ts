@@ -30,3 +30,4 @@ export * from './Icons';
 
 export * from './analytics';
 export * from './flags';
+export * from './i18n';
