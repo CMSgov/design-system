@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
-import { I18nextProvider, useTranslation } from 'react-i18next';
 import i18n from '../i18n';
+import { I18nextProvider, useTranslation } from 'react-i18next';
 
 export type BadgeSize = 'big';
 export type BadgeVariation = 'info' | 'success' | 'warn' | 'alert';

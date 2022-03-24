@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
+import i18n, { getLanguage, Language } from '../i18n';
+import { I18nextProvider, useTranslation } from 'react-i18next';
 import {
   LockCircleIcon,
   LockIcon,
@@ -11,8 +13,6 @@ import {
   ArrowIcon,
   CloseIconThin,
 } from '../Icons';
-import EnglishTranslations from '../locale/en.json';
-import SpanishTranslations from '../locale/es.json';
 
 export type LocaleLanguage = 'en' | 'es';
 
@@ -28,16 +28,20 @@ export interface UsaBannerProps {
   /**
    * The language the USA Banner will be presented in.
    */
-  locale?: LocaleLanguage;
+  locale?: Language;
 }
 
-export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBannerProps) => {
+export const UnwrappedUsaBanner: React.FunctionComponent<UsaBannerProps> = (
+  props: UsaBannerProps
+) => {
   const [isBannerOpen, setBannerOpen] = useState<boolean>(false);
   const [shouldRenderMobileView, setShouldRenderMobileView] = useState<boolean>(false);
-  const t = props.locale === 'es' ? SpanishTranslations.usaBanner : EnglishTranslations.usaBanner;
-  const langProp = props.locale === 'es' ? 'es' : null;
   const classes = classNames('ds-c-usa-banner', props.className);
   const id = props.id || uniqueId('gov-banner_');
+  // TODO: This is not necessary anymore after the `locale` prop is removed
+  const i18nNamespace =
+    props.locale && props.locale !== getLanguage() ? `${props.locale}:usaBanner` : 'usaBanner';
+  const { t } = useTranslation(i18nNamespace);
 
   useEffect(() => {
     let media;
@@ -77,10 +81,10 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
           title={locale === 'es' ? 'U.S. Bandera' : 'U.S. Flag'}
         />
         <p className="ds-c-usa-banner__header-text">
-          <span>{t.bannerText}</span>
+          <span>{t('bannerText')}</span>
           {!isBannerOpen && (
             <span className="ds-c-usa-banner__cta-wrapper">
-              <span className="ds-c-usa-banner__button-text">{t.bannerActionText}</span>
+              <span className="ds-c-usa-banner__button-text">{t('bannerActionText')}</span>
               <ArrowIcon direction="down" className="ds-c-usa-banner__action-icon" />
             </span>
           )}
@@ -104,7 +108,7 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
           title={locale === 'es' ? 'U.S. Bandera' : 'U.S. Flag'}
         />
         <p className="ds-c-usa-banner__header-text">
-          <span>{t.bannerText}</span>
+          <span>{t('bannerText')}</span>
 
           <button
             onClick={toggleBanner}
@@ -112,7 +116,7 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
             aria-expanded={isBannerOpen}
             aria-controls={id}
           >
-            <span className="ds-c-usa-banner__button-text">{t.bannerActionText}</span>
+            <span className="ds-c-usa-banner__button-text">{t('bannerActionText')}</span>
 
             <ArrowIcon
               direction={isBannerOpen ? 'up' : 'down'}
@@ -125,7 +129,7 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
   };
 
   return (
-    <section className={classes} aria-label={t.bannerLabel} lang={langProp}>
+    <section className={classes} aria-label={t('bannerLabel')}>
       <header
         className={classNames('ds-c-usa-banner__header', {
           'ds-c-usa-banner__header--expanded': isBannerOpen,
@@ -142,27 +146,27 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
               ariaHidden
             />
             <p className="ds-c-usa-banner__media-body">
-              <strong>{t.domainHeaderText}</strong>
+              <strong>{t('domainHeaderText')}</strong>
               <br />
-              {t.domainAText}
-              <strong> {t.govText} </strong>
-              {t.domainText}
+              {t('domainAText')}
+              <strong> {t('govText')} </strong>
+              {t('domainText')}
             </p>
           </div>
           <div className="ds-c-usa-banner__guidance">
             <LockCircleIcon className="ds-c-usa-banner__icon" ariaHidden />
             <p className="ds-c-usa-banner__media-body">
-              <strong>{t.httpsHeaderText}</strong>
+              <strong>{t('httpsHeaderText')}</strong>
               <br />
-              {t.httpsAText}
-              <strong> {t.httpsLockText} </strong> ({' '}
+              {t('httpsAText')}
+              <strong> {t('httpsLockText')} </strong> ({' '}
               <LockIcon
                 className="ds-c-usa-banner__lock-image"
                 title={props.locale === 'es' ? 'candado' : 'lock'}
               />{' '}
-              ) {t.httpsOrText}
-              <strong> {t.httpsText} </strong>
-              {t.httpsDetailText}
+              ) {t('httpsOrText')}
+              <strong> {t('httpsText')} </strong>
+              {t('httpsDetailText')}
             </p>
           </div>
         </div>
@@ -171,8 +175,19 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
   );
 };
 
-UsaBanner.defaultProps = {
-  locale: 'en',
-};
+/**
+ * A container component responsible for passing an instance
+ * of i18next to all child components using react-i18next's
+ * `withTranslation` HOC. Note that we use I18nextProvider in order
+ * to avoid conflicts with other apps using react-i18next.
+ * See https://github.com/i18next/react-i18next/issues/382 for
+ * more context on why we need to do it this way.
+ */
+// eslint-disable-next-line react/no-multi-comp
+export const UsaBanner = (props: UsaBannerProps) => (
+  <I18nextProvider i18n={i18n}>
+    <UnwrappedUsaBanner {...props} />
+  </I18nextProvider>
+);
 
 export default UsaBanner;
