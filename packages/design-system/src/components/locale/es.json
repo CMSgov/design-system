@@ -1,4 +1,16 @@
 {
+  "alert": {
+    "defaultLabel": "SPANISH_Notice",
+    "error": "SPANISH_Alert",
+    "success": "SPANISH_Success",
+    "warn": "SPANISH_Warning"
+  },
+  "badge": {
+    "alert": "SPANISH_Alert",
+    "info": "SPANISH_Notice",
+    "success": "SPANISH_Success",
+    "warn": "SPANISH_Warning"
+  },
   "usaBanner": {
     "bannerLabel": "Sitio web oficial del gobierno",
     "bannerText": "Un sitio oficial del Gobierno de Estados Unidos",

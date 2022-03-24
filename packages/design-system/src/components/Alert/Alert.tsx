@@ -4,6 +4,8 @@ import { alertSendsAnalytics } from '../flags';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
 import { InfoCircleIcon, AlertCircleIcon, WarningIcon, CheckCircleIcon } from '../Icons';
+import { I18nextProvider, WithTranslationProps, withTranslation } from 'react-i18next';
+import i18n from '../i18n';
 
 export type AlertHeadingLevel = '1' | '2' | '3' | '4' | '5' | '6';
 export type AlertRole = 'alert' | 'alertdialog' | 'region' | 'status';
@@ -69,11 +71,11 @@ export interface AlertProps {
 // Omit props that we override with values from the Alert
 type OmitAlertProps = 'role' | 'children' | 'className' | 'ref';
 
-export class Alert extends React.PureComponent<
-  Omit<React.ComponentPropsWithRef<'div'>, OmitAlertProps> & AlertProps,
+export class _Alert extends React.PureComponent<
+  Omit<React.ComponentPropsWithRef<'div'>, OmitAlertProps> & AlertProps & WithTranslationProps,
   any
 > {
-  static defaultProps = {
+  static defaultProps: AlertProps = {
     role: 'region',
     headingLevel: '2',
   };
@@ -141,12 +143,6 @@ export class Alert extends React.PureComponent<
   headingId: string;
   eventHeadingText: string;
 
-  a11yLabel = {
-    error: 'Alert',
-    warn: 'Warning',
-    success: 'Success',
-  };
-
   heading(): React.ReactElement | void {
     const { headingLevel, heading } = this.props;
     const Heading = `h${headingLevel}`;
@@ -193,6 +189,8 @@ export class Alert extends React.PureComponent<
       variation,
       weight,
       analytics,
+      t,
+      i18n,
       ...alertProps
     } = this.props;
 
@@ -202,6 +200,12 @@ export class Alert extends React.PureComponent<
       variation && `ds-c-alert--${variation}`,
       weight && `ds-c-alert--${weight}`,
       className
+    );
+
+    const a11yLabel = (
+      <span className="ds-c-alert__a11y-label ds-u-visibility--screen-reader">
+        {t(variation ?? 'defaultLabel')}:{' '}
+      </span>
     );
 
     return (
@@ -226,22 +230,34 @@ export class Alert extends React.PureComponent<
         <div className="ds-c-alert__body">
           {heading ? (
             <div className="ds-c-alert__header ds-c-alert__heading">
-              <span className="ds-c-alert__a11y-label ds-u-visibility--screen-reader">
-                {variation ? this.a11yLabel[variation] : 'Notice'}:{' '}
-              </span>
+              {a11yLabel}
               {this.heading()}
             </div>
           ) : (
-            <span className="ds-c-alert__a11y-label ds-u-visibility--screen-reader">
-              {variation ? this.a11yLabel[variation] : 'Notice'}:{' '}
-            </span>
+            a11yLabel
           )}
-
           {children}
         </div>
       </div>
     );
   }
 }
+
+const AlertWithTranslation = withTranslation('alert')(_Alert);
+
+/**
+ * A container component responsible for passing an instance
+ * of i18next to all child components using react-i18next's
+ * `withTranslation` HOC. Note that we use I18nextProvider in order
+ * to avoid conflicts with other apps using react-i18next.
+ * See https://github.com/i18next/react-i18next/issues/382 for
+ * more context on why we need to do it this way.
+ */
+// eslint-disable-next-line react/no-multi-comp
+export const Alert = (props: AlertProps) => (
+  <I18nextProvider i18n={i18n}>
+    <AlertWithTranslation {...props} />
+  </I18nextProvider>
+);
 
 export default Alert;

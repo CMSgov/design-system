@@ -1,4 +1,16 @@
 {
+  "alert": {
+    "defaultLabel": "Notice",
+    "error": "Alert",
+    "success": "Success",
+    "warn": "Warning"
+  },
+  "badge": {
+    "alert": "Alert",
+    "info": "Notice",
+    "success": "Success",
+    "warn": "Warning"
+  },
   "usaBanner": {
     "bannerLabel": "Official government website",
     "bannerText": "An official website of the United States government",
