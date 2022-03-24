@@ -20,14 +20,9 @@ i18n.addResourceBundle('en', 'en', en, true);
 i18n.addResourceBundle('en', 'es', es, true);
 i18n.addResourceBundle('es', 'es', es, true);
 i18n.addResourceBundle('es', 'en', en, true);
+// This is what we'll keep long term:
 i18n.addResourceBundle('en', 'healthcare', en);
 i18n.addResourceBundle('es', 'healthcare', es);
-// Object.keys(en).forEach((key: string) => {
-//   i18n.addResourceBundle('en', key, en[key], true);
-// });
-// Object.keys(es).forEach((key: string) => {
-//   i18n.addResourceBundle('es', key, es[key], true);
-// });
 
 export { i18n, Language };
 export default i18n;
