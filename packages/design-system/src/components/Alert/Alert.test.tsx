@@ -81,6 +81,28 @@ describe('Alert', function () {
     expect(alert).toBeInTheDocument();
   });
 
+  describe('a11y labels', () => {
+    it('renders default a11y label', () => {
+      renderAlert();
+      expect(screen.getByText('defaultLabel:')).toBeInTheDocument();
+    });
+
+    it('renders error a11y label', () => {
+      renderAlert({ variation: 'error' });
+      expect(screen.getByText('error:')).toBeInTheDocument();
+    });
+
+    it('renders success a11y label', () => {
+      renderAlert({ variation: 'success' });
+      expect(screen.getByText('success:')).toBeInTheDocument();
+    });
+
+    it('renders warn a11y label', () => {
+      renderAlert({ variation: 'warn' });
+      expect(screen.getByText('warn:')).toBeInTheDocument();
+    });
+  });
+
   describe('Analytics event tracking', () => {
     let tealiumMock;
     const defaultEvent = {
