@@ -186,6 +186,7 @@ export class _Alert extends React.PureComponent<
       analytics,
       t,
       i18n,
+      analyticsLabelOverride,
       ...alertProps
     } = this.props;
 
