@@ -1,5 +1,5 @@
-@import '../settings/index.scss';
-@import '../base/link.scss';
+@import "../settings/index.scss";
+@import "../base/link.scss";
 
 $tooltip-icon-size: 16px !default;
 $tooltip-arrow-size: 8px !default;
@@ -84,7 +84,7 @@ $tooltip-close-min-width: 32px !default;
 
   &::after {
     background: $tooltip-background-color;
-    content: '';
+    content: "";
     height: $tooltip-arrow-size;
     left: 50%;
     position: absolute;
@@ -152,28 +152,28 @@ $tooltip-close-min-width: 32px !default;
 // Tooltip transition styles
 // http://reactcommunity.org/react-transition-group/css-transition
 .ds-c-tooltip-enter {
-  display: block;
+  display: inline-block;
   opacity: 0;
 }
 
 .ds-c-tooltip-enter-active {
-  display: block;
+  display: inline-block;
   opacity: 1;
   transition: opacity $animation-speed-1;
 }
 
 .ds-c-tooltip-enter-done {
-  display: block;
+  display: inline-block;
   opacity: 1;
 }
 
 .ds-c-tooltip-exit {
-  display: block;
+  display: inline-block;
   opacity: 1;
 }
 
 .ds-c-tooltip-exit-active {
-  display: block;
+  display: inline-block;
   opacity: 0;
   transition: opacity $animation-speed-1;
 }
@@ -184,7 +184,7 @@ $tooltip-close-min-width: 32px !default;
 }
 
 // Tooltip arrow positioning based on placement of trigger
-.ds-c-tooltip[data-popper-placement^='top'] .ds-c-tooltip__arrow {
+.ds-c-tooltip[data-popper-placement^="top"] .ds-c-tooltip__arrow {
   top: 100%;
   &::after {
     border-bottom: $tooltip-border-width solid $tooltip-border-color;
@@ -194,7 +194,7 @@ $tooltip-close-min-width: 32px !default;
   }
 }
 
-.ds-c-tooltip[data-popper-placement^='bottom'] .ds-c-tooltip__arrow {
+.ds-c-tooltip[data-popper-placement^="bottom"] .ds-c-tooltip__arrow {
   top: -$tooltip-arrow-size;
   &::after {
     border-left: $tooltip-border-width solid $tooltip-border-color;
@@ -204,7 +204,7 @@ $tooltip-close-min-width: 32px !default;
   }
 }
 
-.ds-c-tooltip[data-popper-placement^='left'] .ds-c-tooltip__arrow {
+.ds-c-tooltip[data-popper-placement^="left"] .ds-c-tooltip__arrow {
   right: -$tooltip-arrow-size;
   &::after {
     border-right: $tooltip-border-width solid $tooltip-border-color;
@@ -214,7 +214,7 @@ $tooltip-close-min-width: 32px !default;
   }
 }
 
-.ds-c-tooltip[data-popper-placement^='right'] .ds-c-tooltip__arrow {
+.ds-c-tooltip[data-popper-placement^="right"] .ds-c-tooltip__arrow {
   left: -$tooltip-arrow-size;
   &::after {
     border-bottom: $tooltip-border-width solid $tooltip-border-color;
