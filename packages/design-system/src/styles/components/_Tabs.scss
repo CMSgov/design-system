@@ -16,7 +16,6 @@
   padding: $spacer-3;
 
   &[aria-hidden='true'] {
-    /* stylelint-disable declaration-no-important */
     display: none !important;
   }
 }
@@ -86,7 +85,6 @@
       transform: scale3d(1, 1, 1);
     }
 
-    /* stylelint-disable */
     @media (-ms-high-contrast: active), (forced-colors: active) {
       border-color: windowText;
       border-bottom-color: window;
@@ -96,19 +94,16 @@
         background-color: windowText;
       }
     }
-    /* stylelint-enable */
   }
 
   &:hover {
     color: $color-primary;
   }
 
-  /* stylelint-disable max-nesting-depth */
   &:focus {
     @include focus-styles;
     @include focus-styles-position;
   }
-  /* stylelint-enable max-nesting-depth */
 
   &:active {
     color: $color-primary-darker;
@@ -119,12 +114,10 @@
     border-color: $color-gray-lighter;
     color: $color-gray-dark;
 
-    /* stylelint-disable scss/media-feature-value-dollar-variable */
     @media (-ms-high-contrast: active), (forced-colors: active) {
       color: GrayText;
       cursor: not-allowed;
     }
-    /* stylelint-enable scss/media-feature-value-dollar-variable */
   }
 
   // SVG icons

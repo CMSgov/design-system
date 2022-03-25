@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
 import HelpDrawer, { HelpDrawerProps } from './HelpDrawer';
 import React from 'react';
 import renderer from 'react-test-renderer';
@@ -61,7 +60,7 @@ describe('HelpDrawer', () => {
     beforeEach(() => {
       setHelpDrawerSendsAnalytics(true);
       tealiumMock = jest.fn();
-      ((window as any) as UtagContainer).utag = {
+      (window as any as UtagContainer).utag = {
         link: tealiumMock,
       };
     });

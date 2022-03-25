@@ -345,7 +345,6 @@ export class Autocomplete extends React.Component<AutocompleteProps, any> {
             aria-owns={null}
             className={rootClassName}
             // role has to be null to overwrite Downshift
-            // eslint-disable-next-line jsx-a11y/aria-role
             role={null}
           >
             {this.renderChildren(getInputProps, isOpen)}

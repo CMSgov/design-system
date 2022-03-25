@@ -92,7 +92,7 @@ Unit tests need a `setupTests.js` file to be defined in your design system sourc
 
 ### Configuring linting
 
-CMSDS scripts provide a lint script to enforce linter and formatting rules with `prettier`, `eslint` and `stylelint`. All three are easily configurable via their respective config files. The CMSDS team also provides recommended config via the [`@cmsgov/eslint-config-design-system`](http://npmjs.com/package/@cmsgov/eslint-config-design-system) and [`@cmsgov/stylelint-config-design-system`](http://npmjs.com/package/@cmsgov/stylelint-config-design-system) packages.
+CMSDS scripts provide a lint script to enforce linter and formatting rules with `prettier`, `eslint` and `stylelint`. All three are easily configurable via their respective config files.
 
 The CMSDS lint script is also configurable to turn off any of the three linters/formatters. For example, if you aren't interested in using `stylelint`, simply pass the `--disableStylelint` option to the lint script. Run `yarn cmsds lint --help` to see the lint script options for more information.
 

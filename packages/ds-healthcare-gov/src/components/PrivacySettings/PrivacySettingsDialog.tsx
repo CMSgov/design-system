@@ -47,7 +47,6 @@ export const PrivacySettingsDialog = (props: PrivacySettingsDialogProps) => {
         </Button>
       }
     >
-      {/* eslint-disable-next-line react/no-danger */}
       <p dangerouslySetInnerHTML={{ __html: t('privacy.introText') }} />
 
       <PrivacySettingsTable

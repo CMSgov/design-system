@@ -1,4 +1,3 @@
-/* eslint-disable react/no-multi-comp */
 import React, { useState, useRef } from 'react';
 import Tab from './Tab';
 import TabPanel from './TabPanel';

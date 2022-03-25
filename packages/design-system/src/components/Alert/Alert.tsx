@@ -207,7 +207,6 @@ export class Alert extends React.PureComponent<
     return (
       <div
         className={classes}
-        /* eslint-disable no-return-assign */
         ref={(ref) => {
           this.alertTextRef = ref;
           if (autoFocus) {
@@ -216,7 +215,6 @@ export class Alert extends React.PureComponent<
             alertRef(ref);
           }
         }}
-        /* eslint-enable no-return-assign */
         tabIndex={alertRef || autoFocus ? -1 : null}
         role={role}
         aria-labelledby={heading ? this.headingId : undefined}

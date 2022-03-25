@@ -33,7 +33,6 @@ export const exportScss = (fileDescriptors: FileDescriptor[], outPath: string): 
      * so ignoring this particular linting error here to allow named require.
      * which runs synchronously.
      */
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
     const importedModule = require(`${file.moduleImportName}`);
     const filename = `${outPath}/${file.exportFileName}.scss`;
     const type = importedModule.default.description ? 'theme' : 'tokens';

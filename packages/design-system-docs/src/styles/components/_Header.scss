@@ -1,4 +1,3 @@
-/* stylelint-disable declaration-no-important */
 .c-header__title {
   // Fix TODO: !important is needed here because `.ds-base--inverse a` is too specific of a selector
   text-decoration: none !important;
@@ -6,4 +5,3 @@
     color: $color-base-inverse !important;
   }
 }
-/* stylelint-enable declaration-no-important */

@@ -54,7 +54,7 @@ async function runStylelint(dir, fix, ignorePatterns, failAfterError) {
           fix,
           failAfterError,
           reporters: [{ formatter: 'string', console: true }],
-          syntax: 'scss',
+          customSyntax: 'scss',
         })
       )
       .pipe(gulp.dest(dir))

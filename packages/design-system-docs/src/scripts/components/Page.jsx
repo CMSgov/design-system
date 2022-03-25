@@ -6,7 +6,6 @@ import PageBlock from './PageBlock';
 import PageHeader from './PageHeader';
 import PropTypes from 'prop-types';
 import React from 'react';
-/* eslint-disable sort-imports */
 
 function isGuidanceSection(section) {
   return Boolean(section.reference.match(/\.guidance([a-z-_]+)?$/i));

@@ -1,4 +1,3 @@
-/* eslint-disable react/no-danger */
 import { SvgIcon } from '@design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';

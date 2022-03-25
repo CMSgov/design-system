@@ -1,4 +1,3 @@
-/* eslint-disable */
 const i18next = jest.genMockFromModule('react-i18next');
 const React = require('react');
 

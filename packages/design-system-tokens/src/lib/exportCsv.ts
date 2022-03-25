@@ -28,7 +28,6 @@ export const exportCsv = (fileDescriptors: FileDescriptor[], outPath: string): n
      * so ignoring this particular linting error here to allow named require.
      * which runs synchronously.
      */
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
     const importedModule = require(file.moduleImportName);
     const filename = `${outPath}/${file.exportFileName}.csv`;
     let output = `key,value\r\n`;

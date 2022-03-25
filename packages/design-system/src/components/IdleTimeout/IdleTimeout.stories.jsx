@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
-/* eslint-disable react/no-multi-comp */
 import React from 'react';
 import IdleTimeout from './IdleTimeout';
 import IdleTimeoutDialog from './IdleTimeoutDialog';
