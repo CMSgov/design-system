@@ -100,13 +100,9 @@ export const UnwrappedUsaBanner: React.FunctionComponent<UsaBannerProps> = (
 
   // on larger screens, only cta needs to be clickable
   const renderHeaderContent = (t) => {
-    const { locale } = props;
     return (
       <>
-        <UsaFlagIcon
-          className="ds-c-usa-banner__header-flag"
-          title={locale === 'es' ? 'U.S. Bandera' : 'U.S. Flag'}
-        />
+        <UsaFlagIcon className="ds-c-usa-banner__header-flag" title={t('flagIconTitle')} />
         <p className="ds-c-usa-banner__header-text">
           <span>{t('bannerText')}</span>
 
@@ -160,11 +156,8 @@ export const UnwrappedUsaBanner: React.FunctionComponent<UsaBannerProps> = (
               <br />
               {t('httpsAText')}
               <strong> {t('httpsLockText')} </strong> ({' '}
-              <LockIcon
-                className="ds-c-usa-banner__lock-image"
-                title={props.locale === 'es' ? 'candado' : 'lock'}
-              />{' '}
-              ) {t('httpsOrText')}
+              <LockIcon className="ds-c-usa-banner__lock-image" title={t('httpsLockText')} /> ){' '}
+              {t('httpsOrText')}
               <strong> {t('httpsText')} </strong>
               {t('httpsDetailText')}
             </p>
