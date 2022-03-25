@@ -30,6 +30,7 @@
     "lint:eslint": "npx eslint ./packages/",
     "lint:stylelint": "npx stylelint ./packages/**/*.scss --custom-formatter=node_modules/stylelint-formatter-pretty",
     "type-check": "yarn tsc --noEmit",
+    "prettier": "npx prettier -c 'packages/**/*.{js,jsx,tsx,scss,html,md,mdx,json}'",
     "prepare": "husky install",
     "storybook": "STORYBOOK_DS=core start-storybook -p 6006",
     "storybook:healthcare": "STORYBOOK_DS=hcgov start-storybook -p 6006",

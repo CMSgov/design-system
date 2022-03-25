@@ -8,8 +8,9 @@ module.exports = {
   reportNeedlessDisables: true,
   reportInvalidScopeDisables: true,
   rules: {
-    'function-no-unknown': null,
     'at-rule-no-unknown': null,
+    'declaration-no-important': true,
+    'function-no-unknown': null,
     'no-descending-specificity': null,
     'scss/at-extend-no-missing-placeholder': null,
     'scss/at-import-no-partial-leading-underscore': true,
