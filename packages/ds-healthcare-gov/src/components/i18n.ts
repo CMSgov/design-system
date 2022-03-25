@@ -20,6 +20,7 @@ i18n.addResourceBundle('en', 'en', en, true);
 i18n.addResourceBundle('en', 'es', es, true);
 i18n.addResourceBundle('es', 'es', es, true);
 i18n.addResourceBundle('es', 'en', en, true);
+
 // This is what we'll keep long term:
 i18n.addResourceBundle('en', 'healthcare', en);
 i18n.addResourceBundle('es', 'healthcare', es);

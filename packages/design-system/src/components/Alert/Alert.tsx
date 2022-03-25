@@ -75,11 +75,6 @@ export class _Alert extends React.PureComponent<
   Omit<React.ComponentPropsWithRef<'div'>, OmitAlertProps> & AlertProps & WithTranslationProps,
   any
 > {
-  static defaultProps: AlertProps = {
-    role: 'region',
-    headingLevel: '2',
-  };
-
   constructor(props: AlertProps) {
     super(props);
     this.alertTextRef = null;
@@ -259,5 +254,10 @@ export const Alert = (props: AlertProps) => (
     <AlertWithTranslation {...props} />
   </I18nextProvider>
 );
+
+Alert.defaultProps = {
+  role: 'region',
+  headingLevel: '2',
+};
 
 export default Alert;
