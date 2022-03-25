@@ -26,7 +26,7 @@
     "update-snapshots": "yarn cmsds test ./packages --updateSnapshot",
     "test-coverage": "yarn cmsds test ./packages --collectCoverage",
     "posttest": "yarn lint",
-    "lint": "yarn cmsds lint ./ --ignorePatterns '**/node_modules/**' '**/dist/**' '**/helpers/**' '**/__tests__/**' 'tmp/**' '**/types/**' 'examples/create-react-app-typescript/**' 'examples/create-react-app/**' 'storybook-static/**' 'packages/coverage/**' 'packages/design-system-tokens/src/lib/types.ts'",
+    "lint": "yarn lint:stylelint && yarn lint:eslint",
     "lint:eslint": "npx eslint ./packages/",
     "lint:stylelint": "npx stylelint ./packages/**/*.scss --custom-formatter=node_modules/stylelint-formatter-pretty",
     "type-check": "yarn tsc --noEmit",
