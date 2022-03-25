@@ -6,5 +6,6 @@ i18next.use = jest.fn(() => i18next);
 i18next.init = jest.fn();
 i18next.addResourceBundle = jest.fn();
 i18next.changeLanguage = jest.fn();
+i18next.language = 'en';
 
 export default i18next;
