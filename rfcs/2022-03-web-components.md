@@ -94,7 +94,7 @@ Neither of these libraries are setup to import React components and export them 
 
 It is possible to create new Web Components through one of the methods explored above. However, this route requires a much larger effort and would lead to the eventual deprecation of our current React components.
 
-## Questions and Requested Feedback
+## Ongoing Questions
 
 - Is it worth the investment to develop Web Components using Lit or Stencil?
 - Who would these Web Components benefit?
