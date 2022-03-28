@@ -9,7 +9,6 @@ const defaultProps = {
     </div>
   ),
   footerTitle: 'Footer title',
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   onCloseClick: () => {},
   heading: 'Drawer title',
 };

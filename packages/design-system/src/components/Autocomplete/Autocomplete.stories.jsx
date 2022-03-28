@@ -1,5 +1,3 @@
-/* eslint-disable react/no-multi-comp */
-/* eslint-disable react/display-name */
 import React from 'react';
 import Autocomplete from './Autocomplete';
 import TextField from '../TextField/TextField';
@@ -59,8 +57,7 @@ const Template = (args) => {
 export const LabeledList = Template.bind({});
 LabeledList.args = {
   textField: {
-    hint:
-      'Type c then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
+    hint: 'Type c then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
     label: 'Labeled list',
   },
   label: 'Select from the options below:',

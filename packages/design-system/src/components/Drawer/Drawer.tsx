@@ -66,7 +66,6 @@ export const Drawer = (props: DrawerProps) => {
 
   const Heading = `h${props.headingLevel}` as const;
 
-  /* eslint-disable jsx-a11y/no-noninteractive-tabindex, react/no-danger */
   const drawerMarkup = (
     <div
       aria-labelledby={id.current}

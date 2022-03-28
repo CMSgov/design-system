@@ -7,11 +7,9 @@ const defaultProps = {
   component: 'div',
   labelComponent: 'label',
   errorPlacement: 'top',
-  /* eslint-disable */
   render: ({ id, labelId, setRef }) => {
     return <input id={id} aria-describedby={labelId} ref={setRef} />;
   },
-  /* eslint-enable */
 };
 
 function render(customProps = {}, deep = false) {

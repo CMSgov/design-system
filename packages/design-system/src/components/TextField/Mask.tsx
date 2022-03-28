@@ -58,7 +58,7 @@ export class Mask extends React.PureComponent<MaskProps, any> {
       // state and mask this new value.
       if (unmaskValue(fieldProps.value, mask) !== unmaskValue(this.state.value, mask)) {
         const value = maskValue(fieldProps.value || '', mask);
-        this.setState({ value }); // eslint-disable-line react/no-did-update-set-state
+        this.setState({ value });
       }
     }
   }

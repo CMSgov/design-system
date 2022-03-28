@@ -269,7 +269,6 @@ export interface DialogProps extends AriaModalProps {
   /**
    * Allow additional AriaModal props to be passed to Dialog
    */
-  // eslint-disable-next-line camelcase
   additional_props?: AriaModalProps;
 }
 
@@ -368,7 +367,6 @@ export const Dialog = (props: DialogProps) => {
   // TODO: remove after deprecating 'escapeExitDiabled' prop
   const escapeExitsProp = escapeExitDisabled ? !escapeExitDisabled : escapeExits;
 
-  /* eslint-disable jsx-a11y/no-redundant-roles */
   return (
     <AriaModal
       dialogClass={dialogClassNames}
@@ -417,7 +415,6 @@ export const Dialog = (props: DialogProps) => {
       </div>
     </AriaModal>
   );
-  /* eslint-enable jsx-a11y/no-redundant-roles */
 };
 
 Dialog.defaultProps = {

@@ -90,12 +90,6 @@ CMSDS scripts provide scripts to run unit tests and e2e tests with Jest. If you 
 
 Unit tests need a `setupTests.js` file to be defined in your design system source folder. This file is run before each test file via Jest's `setupFilesAfterEnv` config option](https://jestjs.io/docs/en/configuration#setupfilesafterenv-array), and is used to configure your tests. CMSDS scripts supports 2 options for component testing by default, either [Enzyme](https://enzymejs.github.io/enzyme/) or [React Testing Library](https://testing-library.com/).
 
-### Configuring linting
-
-CMSDS scripts provide a lint script to enforce linter and formatting rules with `prettier`, `eslint` and `stylelint`. All three are easily configurable via their respective config files. The CMSDS team also provides recommended config via the [`@cmsgov/eslint-config-design-system`](http://npmjs.com/package/@cmsgov/eslint-config-design-system) and [`@cmsgov/stylelint-config-design-system`](http://npmjs.com/package/@cmsgov/stylelint-config-design-system) packages.
-
-The CMSDS lint script is also configurable to turn off any of the three linters/formatters. For example, if you aren't interested in using `stylelint`, simply pass the `--disableStylelint` option to the lint script. Run `yarn cmsds lint --help` to see the lint script options for more information.
-
 ### Configuring SCSS
 
 All design system styles can be located in the `styles` folder, which is modeled after the core CMSDS `styles` folder. Styles are organized into 4 main sections: `settings`, `base`, `component` and `utilites`. A typical child design system setup can be found in `styles/index.scss`, and includes setting variable overrides, a core CMSDS import, and other overrides.

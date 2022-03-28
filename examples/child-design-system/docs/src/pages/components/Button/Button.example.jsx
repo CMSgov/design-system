@@ -1,5 +1,3 @@
-/* eslint no-alert: 0 */
-
 // CMSDS scripts uses webpack's `alias` resolve option to allow for this shorthand import
 // https://webpack.js.org/configuration/resolve/#resolvealias
 //

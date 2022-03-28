@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
 import React from 'react';
 import IdleTimeout from './IdleTimeout';
 import { render, fireEvent } from '@testing-library/react';

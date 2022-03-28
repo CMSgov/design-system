@@ -16,7 +16,6 @@ export interface PrivacySettingsTableProps {
 export const PrivacySettingsTable = (props: PrivacySettingsTableProps) => {
   const { t, privacySettings, setPrivacySetting } = props;
 
-  // eslint-disable-next-line react/no-multi-comp
   function renderToggle(settingsKey: string, value: string, category: string, description: string) {
     const choices = [
       {
@@ -46,7 +45,6 @@ export const PrivacySettingsTable = (props: PrivacySettingsTableProps) => {
     );
   }
 
-  // eslint-disable-next-line react/no-multi-comp
   function renderRow({ settingsKey, translationKey, value }: PrivacySettingsProperty) {
     const category = t(`privacy.${translationKey}.category`);
     const description = t(`privacy.${translationKey}.description`);

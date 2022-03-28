@@ -33,16 +33,13 @@ $tooltip-close-min-width: 32px !default;
   text-decoration-style: dotted;
   text-underline-position: under;
 }
-/* stylelint-disable  */
 // Chrome needs this offset becasue it handles text-underline-position differently and without this the underline runs into descending letters like g,j,q,p,y.
 @media all and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
   %trigger-underline-styles {
     text-underline-offset: 4px;
   }
 }
-/* stylelint-enable  */
 
-// stylelint-disable selector-no-qualifying-type
 // Tooltip trigger style
 .ds-c-tooltip__trigger {
   cursor: pointer;
@@ -65,14 +62,11 @@ $tooltip-close-min-width: 32px !default;
   color: $color-primary;
   padding: 0;
 
-  /* stylelint-disable */
   @media (-ms-high-contrast: active), (forced-colors: active) {
     color: ButtonText;
   }
-  /* stylelint-enable */
 }
 
-/* stylelint-disable */
 .ds-base--inverse .ds-c-tooltip__trigger-link {
   @extend %link-inverse;
   @extend %trigger-underline-styles;
@@ -81,7 +75,6 @@ $tooltip-close-min-width: 32px !default;
     color: ButtonText;
   }
 }
-/* stylelint-enable */
 
 // Tooltip arrow
 .ds-c-tooltip__arrow {
