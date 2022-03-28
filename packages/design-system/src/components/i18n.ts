@@ -19,6 +19,7 @@ const i18nInstance = i18n.createInstance();
 
 i18nInstance.use(LanguageDetector).init(
   {
+    fallbackLng: 'en',
     interpolation: {
       escapeValue: false, // React doesn't need this
     },
@@ -37,11 +38,24 @@ i18nInstance.addResourceBundle('en', 'es:usaBanner', es.usaBanner, true);
 i18nInstance.addResourceBundle('es', 'en:usaBanner', en.usaBanner, true);
 
 export function getLanguage(): Language {
-  return (i18nInstance.language as Language) || 'en';
+  return i18nInstance.language as Language; // || 'en' Actually, I should remove this and figure out why it broke Loki tests, because it actually does detect a language correctly
 }
 
 export function setLanguage(...args: Parameters<typeof i18nInstance.changeLanguage>) {
   return i18nInstance.changeLanguage(...args);
+}
+
+/**
+ * Because language strings can contain region subtags, we need a way to compare
+ * just the language portion of two language strings. This function compares two
+ * locale strings that may or may not contain subtags according to IETF BCP 47.
+ * The second string defaults to our i18next instance's current language (which
+ * may also contain a subtag depending on what was detected).
+ */
+export function languageMatches(localeStringA: string, localeStringB: string = getLanguage()) {
+  const langA = localeStringA.split('-')[0];
+  const langB = localeStringB.split('-')[0];
+  return langA === langB;
 }
 
 export { i18nInstance as i18n };
