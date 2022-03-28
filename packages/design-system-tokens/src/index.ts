@@ -6,7 +6,7 @@ import exportJson from './lib/exportJson';
 
 const OUTPUT_PATH = 'dist';
 const INPUT_TYPES = ['themes', 'tokens'];
-const EXPORT_TYPES = ['scss', 'csv', 'json'];
+const EXPORT_TYPES = ['sass', 'scss', 'csv', 'json'];
 
 // main token export function, returns exit status (0 success, 1 failure)
 const tokenExporter = (inputType: string, exportType: string): number => {
@@ -14,6 +14,7 @@ const tokenExporter = (inputType: string, exportType: string): number => {
 
   switch (exportType) {
     case 'scss':
+    case 'sass':
       return exportScss(fileData, OUTPUT_PATH);
     case 'csv':
       return exportCsv(fileData, OUTPUT_PATH);
@@ -40,12 +41,14 @@ const tokenExporter = (inputType: string, exportType: string): number => {
 
   // throw away first two entries in process.argv
   const args = process.argv.slice(2);
-  if (args.length <= 0) help('no arguments provided');
-  if (!INPUT_TYPES.includes(args[0])) help(`valid import types are: ${INPUT_TYPES}`);
-  if (!EXPORT_TYPES.includes(args[1])) help(`valid export types are: ${EXPORT_TYPES}`);
 
-  const inputType = args[0];
-  const exportType = args[1];
+  if (args.length <= 1) help('not enough arguments provided');
+
+  const inputType = args[0].toLowerCase();
+  const exportType = args[1].toLowerCase();
+
+  if (!INPUT_TYPES.includes(inputType)) help(`valid import types are: ${INPUT_TYPES}`);
+  if (!EXPORT_TYPES.includes(exportType)) help(`valid export types are: ${EXPORT_TYPES}`);
 
   const res = tokenExporter(inputType, exportType);
 

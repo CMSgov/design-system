@@ -351,15 +351,14 @@ Object {
         >
           Foo
         </div>
+        <div
+          className="ds-c-dialog__actions test-action"
+        >
+          <span>
+            Pretend these are actions
+          </span>
+        </div>
       </main>
-      <aside
-        className="ds-c-dialog__actions test-action"
-        role="complementary"
-      >
-        <span>
-          Pretend these are actions
-        </span>
-      </aside>
     </div>
   </Displaced>,
 }

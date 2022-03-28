@@ -5,7 +5,7 @@ export type PxValue = `${number}px`;
 export type ExValue = `${string}ex`;
 export type PercentageValue = `${string}%`;
 
-export type AllTokenValues = SpacingTokens | HexColorTokens | PxValue;
+export type AllTokenValues = SpacingTokens | ColorTokens | PxValue;
 
 export type AnimationTokens = {
   readonly [key: string]: string | number;
@@ -17,6 +17,10 @@ export type BorderRadiusTokens = {
 
 export type MediaWidthTokens = {
   readonly [key: `width-${string}`]: PxValue;
+};
+
+export type ColorTokens = {
+  readonly [key: string | symbol]: HexValue | RGBValue | RGBAValue;
 };
 
 export type SpacingTokens = {
@@ -31,10 +35,6 @@ export type TimeTokens = {
   readonly [key: `duration-${string}`]: number;
 };
 
-export type HexColorTokens = {
-  readonly [key: string]: HexValue;
-};
-
 export interface FontTokens {
   readonly [key: string]: string | number;
 }
@@ -46,13 +46,37 @@ export interface Theme {
 
 export interface ThemeTokens {
   readonly description: string;
-  readonly color: HexColorTokens;
+  readonly color: ColorTokens;
   readonly spacer: SpacingTokens;
   readonly components: AllTokenValues;
   readonly shadow: ShadowTokens;
 }
 
-export const makeTheme = <T extends ThemeTokens>(value: T) => {
+export const makeAnimationTypes = <T extends AnimationTokens>(value: T) => {
+  return value;
+};
+export const makeColorTypes = <T extends ColorTokens>(value: T) => {
+  return value;
+};
+export const makeFontTypes = <T extends FontTokens>(value: T) => {
+  return value;
+};
+export const makeMediaTypes = <T extends MediaWidthTokens>(value: T) => {
+  return value;
+};
+export const makeRadiusTypes = <T extends BorderRadiusTokens>(value: T) => {
+  return value;
+};
+export const makeSpacingTypes = <T extends SpacingTokens>(value: T) => {
+  return value;
+};
+export const makeTimeTypes = <T extends TimeTokens>(value: T) => {
+  return value;
+};
+export const makeThemeTypes = <T extends ThemeTokens>(value: T) => {
+  return value;
+};
+export const makeZindexTypes = <T extends zIndexTokens>(value: T) => {
   return value;
 };
 

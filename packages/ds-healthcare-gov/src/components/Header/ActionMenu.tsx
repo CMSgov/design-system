@@ -57,7 +57,11 @@ const ActionMenu = function (props: ActionMenuProps) {
       onClick={onClick}
       size="small"
     >
-      {props.open ? <CloseIconThin /> : <MenuIcon className="ds-u-margin-right--1" />}
+      {props.open ? (
+        <CloseIconThin className="ds-u-margin-right--1" />
+      ) : (
+        <MenuIcon className="ds-u-margin-right--1" />
+      )}
       {props.t('header.menu')}
     </Button>
   );
