@@ -33,7 +33,6 @@ Style guide: components.date-field.react
 
 ### Usage
 
-- Ensure you've [installed both the Core package and Layout package]({{root}}/startup/installation)
 - Allow users to enter the date as flexibly as possible, for example, allowing `1` as well as `01` for a month input.
 - Be sure each field is properly labeled — some countries enter dates in day, month, year order.
 - It may be tempting to switch all or some of these text fields to drop downs, but these tend to be more difficult to use than text boxes.
