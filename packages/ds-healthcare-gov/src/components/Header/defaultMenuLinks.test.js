@@ -2,8 +2,6 @@ import defaultMenuLinks, {
   defaultMenuLinks as namedExportDefaultMenuLinks,
 } from './defaultMenuLinks';
 
-const t = (key) => key;
-
 describe('MenuList', function () {
   it('includes a named export', () => {
     // Some apps may need to import the default menu links in order to extend them
@@ -55,7 +53,7 @@ describe('MenuList', function () {
 
   describe('English', () => {
     it('returns array of menu list objects', () => {
-      expect(defaultMenuLinks(t)).toMatchSnapshot();
+      expect(defaultMenuLinks()).toMatchSnapshot();
     });
 
     it('returns array of menu list objects with subpath', () => {

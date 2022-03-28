@@ -1,11 +1,9 @@
 /* eslint-disable */
+const i18next = require('./i18next').default;
 const reactI18next = jest.genMockFromModule('react-i18next');
 const React = require('react');
 
-function t(key, params) {
-  const paramString = params ? ` | ${JSON.stringify(params)}` : '';
-  return `${key}${paramString}`;
-}
+const t = i18next.t;
 
 reactI18next.withTranslation = () => (Component) => (props) => <Component t={t} {...props} />;
 reactI18next.useTranslation = () => ({ t });

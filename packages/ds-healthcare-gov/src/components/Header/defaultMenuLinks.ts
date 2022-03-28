@@ -2,7 +2,7 @@ import { Link, VARIATION_NAMES } from './Header';
 import localeLink from './localeLink';
 import loginLink from './loginLink';
 import { TFunction } from 'i18next';
-import { i18n, Language } from '../i18n';
+import { Language, i18n, languageMatches } from '@cmsgov/design-system';
 
 export enum LinkIdentifier {
   LOGIN = 'login',
@@ -48,7 +48,7 @@ export function defaultMenuLinks(
   customLinksPassedIn?: boolean
 ) {
   const t = tWithNamespace(locale ?? 'healthcare');
-  const isSpanish = locale === 'es';
+  const isSpanish = languageMatches(locale, 'es');
   const ffmLocalePath = isSpanish ? 'es_MX' : 'en_US';
 
   // NOTE: order matters here and links will be displayed in order added to the arrays
