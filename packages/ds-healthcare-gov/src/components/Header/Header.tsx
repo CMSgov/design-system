@@ -181,7 +181,6 @@ const Header = (props: HeaderProps) => {
 
   const hasCustomLinks = !!props.links;
   const defaultLinksForVariation = defaultMenuLinks(
-    t,
     props.initialLanguage ?? getLanguage(),
     props.deConsumer,
     props.subpath,
