@@ -4,6 +4,7 @@ module.exports = {
     browser: true,
     es6: true,
     jest: true,
+    node: true,
   },
   parserOptions: {
     ecmaFeatures: {
@@ -36,8 +37,8 @@ module.exports = {
     ],
     'no-use-before-define': 'off',
     'no-unused-vars': ['warn', { ignoreRestSiblings: true }],
-    'no-undef': 'off',
-    'no-useless-escape': 'off',
+    'no-undef': 'warn',
+    'no-useless-escape': 'warn',
     'standard/computed-property-even-spacing': 'off',
     'react/display-name': 'off',
     'react/no-array-index-key': 'warn',
