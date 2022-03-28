@@ -37,7 +37,7 @@ i18nInstance.addResourceBundle('en', 'es:usaBanner', es.usaBanner, true);
 i18nInstance.addResourceBundle('es', 'en:usaBanner', en.usaBanner, true);
 
 export function getLanguage(): Language {
-  return i18nInstance.language as Language;
+  return (i18nInstance.language as Language) || 'en';
 }
 
 export function setLanguage(...args: Parameters<typeof i18nInstance.changeLanguage>) {
