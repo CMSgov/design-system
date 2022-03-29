@@ -1,11 +1,7 @@
 {
   "npmClient": "yarn",
   "packages": ["packages/*"],
-  "ignoreChanges": [
-    "packages/stylelint-config-design-system/**",
-    "packages/eslint-config-design-system/**",
-    "packages/design-system-tokens/**"
-  ],
+  "ignoreChanges": ["packages/design-system-tokens/**"],
   "tagVersionPrefix": "core-",
   "version": "independent",
   "useWorkspaces": true

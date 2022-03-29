@@ -38,14 +38,12 @@ export function register(config) {
 
         // Add some additional logging to localhost, pointing developers to the
         // service worker/PWA documentation.
-        /* eslint-disable promise/catch-or-return */
         navigator.serviceWorker.ready.then(() => {
           console.log(
             'This web app is being served cache-first by a service ' +
               'worker. To learn more, visit https://bit.ly/CRA-PWA'
           );
         });
-        /* eslint-enable promise/catch-or-return */
       } else {
         // Is not localhost. Just register service worker
         registerValidSW(swUrl, config);
@@ -111,13 +109,11 @@ function checkValidServiceWorker(swUrl, config) {
         (contentType != null && contentType.indexOf('javascript') === -1)
       ) {
         // No service worker found. Probably a different app. Reload the page.
-        /* eslint-disable promise/catch-or-return */
         navigator.serviceWorker.ready.then((registration) => {
           registration.unregister().then(() => {
             window.location.reload();
           });
         });
-        /* eslint-enable promise/catch-or-return */
       } else {
         // Service worker found. Proceed as normal.
         registerValidSW(swUrl, config);

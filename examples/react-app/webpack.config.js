@@ -1,4 +1,3 @@
-/* eslint-disable filenames/match-exported */
 /**
  * Use Webpack + Babel to bundle and transpile our JSX
  */

@@ -48,7 +48,6 @@ class ReactPropDocs extends React.PureComponent {
 }
 
 ReactPropDocs.propTypes = {
-  /* eslint-disable react/forbid-prop-types */
   propDocs: PropTypes.object,
 };
 

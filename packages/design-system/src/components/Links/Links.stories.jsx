@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable react/no-multi-comp */
 import React from 'react';
 
 export default {

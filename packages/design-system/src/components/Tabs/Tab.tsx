@@ -68,7 +68,6 @@ export const Tab = React.forwardRef((props: TabProps, ref: any) => {
   };
 
   return !props.disabled ? (
-    // eslint-disable-next-line jsx-a11y/role-supports-aria-props
     <a
       aria-selected={props.selected || defaultProps.selected}
       aria-controls={props.panelId}

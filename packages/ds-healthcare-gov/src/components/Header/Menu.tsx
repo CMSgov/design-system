@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/no-redundant-roles */
 import MenuLinks from './MenuLinks';
 import React from 'react';
 import classnames from 'classnames';

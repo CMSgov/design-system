@@ -10,8 +10,6 @@
   ],
   "menu": {
     "title": "CMSDS Tokens",
-    "items": [
-      "json-token-importer"
-    ]
+    "items": ["json-token-importer"]
   }
 }

@@ -54,6 +54,7 @@ class PageHeader extends React.PureComponent {
     } else if (this.props.uswds) {
       return <span> View related guidance in the {uswdsLink}</span>;
     } else {
+      return;
     }
   }
 
@@ -63,7 +64,6 @@ class PageHeader extends React.PureComponent {
         <div className="ds-u-display--flex ds-u-align-items--center">
           <h1
             className="ds-display ds-u-display--inline-block"
-            // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{ __html: this.props.header }}
             id={this.props.reference}
           />

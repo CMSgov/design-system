@@ -24,13 +24,11 @@ export const TableHead: React.FC<
     });
   };
 
-  /* eslint-disable jsx-a11y/no-redundant-roles */
   return (
     <thead role="rowgroup" {...tableHeadProps}>
       {renderChildren()}
     </thead>
   );
-  /* eslint-enable jsx-a11y/no-redundant-roles */
 };
 
 export default TableHead;

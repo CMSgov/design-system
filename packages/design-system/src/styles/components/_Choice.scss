@@ -43,12 +43,10 @@ $ds-c-inset-border-width: $spacer-half;
     top: 0;
     width: $choice-size;
 
-    /* stylelint-disable */
     @media (-ms-high-contrast: active), (forced-colors: active) {
       // background-color: window;
       border-color: ButtonText;
     }
-    /* stylelint-enable */
   }
 
   // Checkmark icon
@@ -73,12 +71,10 @@ $ds-c-inset-border-width: $spacer-half;
   &[type='radio'] + label::before {
     border-radius: 100%;
 
-    /* stylelint-disable */
     @media (-ms-high-contrast: active), (forced-colors: active) {
       -ms-high-contrast-adjust: none;
       background-color: window;
     }
-    /* stylelint-enable */
   }
 
   &[type='radio'] + label::after {
@@ -91,22 +87,18 @@ $ds-c-inset-border-width: $spacer-half;
     transform: none;
     width: $choice-radio-button-size;
 
-    /* stylelint-disable */
     @media (-ms-high-contrast: active), (forced-colors: active) {
       -ms-high-contrast-adjust: none;
       background-color: WindowText;
     }
-    /* stylelint-enable */
   }
 
   &:checked[type='radio'] + label::before {
     background-color: $color-white;
 
-    /* stylelint-disable */
     @media (-ms-high-contrast: active), (forced-colors: active) {
       background-color: window;
     }
-    /* stylelint-enable */
   }
 
   // Errored choice
@@ -122,11 +114,9 @@ $ds-c-inset-border-width: $spacer-half;
       background-color: $choice-checked-background-color;
       border-color: $choice-checked-border-color;
 
-      /* stylelint-disable */
       @media (-ms-high-contrast: active), (forced-colors: active) {
         border-color: ButtonText;
       }
-      /* stylelint-enable */
     }
 
     &::after {
@@ -144,7 +134,6 @@ $ds-c-inset-border-width: $spacer-half;
       border-color: $choice-disabled-border-color;
     }
 
-    /* stylelint-disable */
     @media (-ms-high-contrast: active), (forced-colors: active) {
       color: GrayText;
 
@@ -153,7 +142,6 @@ $ds-c-inset-border-width: $spacer-half;
         border-color: GrayText;
       }
     }
-    /* stylelint-enable */
   }
 
   // Focused choice
@@ -234,15 +222,12 @@ $ds-c-inset-border-width: $spacer-half;
 .ds-c-choice:checked:focus + label::before {
   border-color: $color-primary-darker;
 
-  /* stylelint-disable */
   @media (-ms-high-contrast: active), (forced-colors: active) {
     border-color: window;
   }
-  /* stylelint-enable */
 }
 
 // TODO: rename to .ds-c-choice__checked-child
-/* stylelint-disable selector-class-pattern */
 
 // Checked children container
 .ds-c-choice__checkedChild {
@@ -259,5 +244,3 @@ $ds-c-inset-border-width: $spacer-half;
     margin-left: $spacer-1;
   }
 }
-
-/* stylelint-enable selector-class-pattern */

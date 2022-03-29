@@ -19,8 +19,6 @@
   "devDependencies": {
     "@cmsgov/design-system-docs": "2.0.0",
     "@cmsgov/design-system-scripts": "2.0.0",
-    "@cmsgov/eslint-config-design-system": "2.0.0",
-    "@cmsgov/stylelint-config-design-system": "2.0.0",
     "classnames": "^2.2.5",
     "eslint": "^6.8.0",
     "prettier": "^2.0.5",

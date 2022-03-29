@@ -16,7 +16,6 @@ export const exportJson = (fileDescriptors: FileDescriptor[], outPath: string): 
      * so ignoring this particular linting error here to allow named require.
      * which runs synchronously.
      */
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
     const importedModule = require(file.moduleImportName);
 
     tokenOutput[file.fileBaseName] = {

@@ -24,7 +24,6 @@ export const EVENT_CATEGORY = {
   uiInteraction: 'ui interaction',
 };
 
-/* eslint-disable camelcase */
 export interface AnalyticsEvent {
   ga_eventAction: string;
   ga_eventCategory: string;
@@ -48,7 +47,7 @@ export function sendAnalytics(
   // feature of TypeScript is well intentioned (because if you're using globals, you want to make sure every
   // module agrees on what they are), but in reality this type definition could vary in trivial ways but
   // break a build.
-  const utag = ((window as any) as UtagContainer).utag;
+  const utag = (window as any as UtagContainer).utag;
 
   if (utag && utag[eventType]) {
     try {
@@ -73,6 +72,5 @@ export function sendLinkEvent(payload: AnalyticsEvent) {
     ...payload,
   });
 }
-/* eslint-enable camelcase */
 
 export default sendAnalytics;

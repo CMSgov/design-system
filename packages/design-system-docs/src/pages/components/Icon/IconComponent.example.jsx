@@ -1,4 +1,3 @@
-/* eslint-disable react/no-danger */
 import {
   AddIcon,
   AlertCircleIcon,
