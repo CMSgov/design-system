@@ -31,22 +31,35 @@ function tWithNamespace(namespace: string) {
   };
 }
 
+export interface DefaultMenuLinkOptions {
+  locale?: Language;
+  deConsumer?: boolean;
+  subpath?: string;
+  primaryDomain?: string;
+  switchLocaleLink?: string;
+  hideLoginLink?: boolean;
+  hideLogoutLink?: boolean;
+  hideLanguageSwitch?: boolean;
+  customLinksPassedIn?: boolean;
+}
+
 /**
  * Default menu links for each header variation.
  * Apps can import this method into their app if they need to
  * extend the existing default list of menu links.
  */
-export function defaultMenuLinks(
-  locale: Language = 'en',
-  deConsumer?: boolean,
-  subpath?: string,
-  primaryDomain = '',
-  switchLocaleLink?: string,
-  hideLoginLink?: boolean,
-  hideLogoutLink?: boolean,
-  hideLanguageSwitch?: boolean,
-  customLinksPassedIn?: boolean
-) {
+export function defaultMenuLinks(options: DefaultMenuLinkOptions = {}) {
+  const {
+    locale = 'en',
+    deConsumer,
+    subpath,
+    primaryDomain = '',
+    switchLocaleLink,
+    hideLoginLink,
+    hideLogoutLink,
+    hideLanguageSwitch,
+    customLinksPassedIn,
+  } = options;
   const t = tWithNamespace(locale ?? 'healthcare');
   const isSpanish = languageMatches(locale, 'es');
   const ffmLocalePath = isSpanish ? 'es_MX' : 'en_US';
