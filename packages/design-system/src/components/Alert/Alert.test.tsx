@@ -84,22 +84,22 @@ describe('Alert', function () {
   describe('a11y labels', () => {
     it('renders default a11y label', () => {
       renderAlert();
-      expect(screen.getByText('defaultLabel:')).toBeInTheDocument();
+      expect(screen.getByText('Notice:')).toBeInTheDocument();
     });
 
     it('renders error a11y label', () => {
       renderAlert({ variation: 'error' });
-      expect(screen.getByText('error:')).toBeInTheDocument();
+      expect(screen.getByText('Alert:')).toBeInTheDocument();
     });
 
     it('renders success a11y label', () => {
       renderAlert({ variation: 'success' });
-      expect(screen.getByText('success:')).toBeInTheDocument();
+      expect(screen.getByText('Success:')).toBeInTheDocument();
     });
 
     it('renders warn a11y label', () => {
       renderAlert({ variation: 'warn' });
-      expect(screen.getByText('warn:')).toBeInTheDocument();
+      expect(screen.getByText('Warning:')).toBeInTheDocument();
     });
   });
 

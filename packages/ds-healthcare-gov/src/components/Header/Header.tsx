@@ -3,10 +3,9 @@ import DeConsumerMessage from './DeConsumerMessage';
 import Logo from '../Logo/Logo';
 import Menu from './Menu';
 import React, { useState } from 'react';
-import { Language, SkipNav, getLanguage } from '@cmsgov/design-system';
+import { Language, SkipNav, getLanguage, tWithLanguage } from '@cmsgov/design-system';
 import classnames from 'classnames';
 import defaultMenuLinks from './defaultMenuLinks';
-import { useTranslation } from 'react-i18next';
 
 export interface Link {
   href: string;
@@ -134,7 +133,7 @@ export const VARIATION_NAMES = {
  */
 const Header = (props: HeaderProps) => {
   const [openMenu, setOpenMenu] = useState(false);
-  const { t } = useTranslation(props.initialLanguage ?? 'healthcare');
+  const t = tWithLanguage(props.initialLanguage);
 
   /**
    * Determines which variation of the header should be displayed,
@@ -181,7 +180,7 @@ const Header = (props: HeaderProps) => {
 
   const hasCustomLinks = !!props.links;
   const defaultLinksForVariation = defaultMenuLinks({
-    locale: props.initialLanguage ?? getLanguage(),
+    locale: props.initialLanguage,
     deConsumer: props.deConsumer,
     subpath: props.subpath,
     primaryDomain: props.primaryDomain,

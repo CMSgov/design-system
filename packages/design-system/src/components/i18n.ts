@@ -65,6 +65,9 @@ export function translate<K extends NestedKeyOf<typeof en | typeof es>>(
   }
 }
 
+/**
+ * Returns the translation for a given key in the currently set language
+ */
 export function t(
   key: Parameters<typeof translate>[1],
   data?: Parameters<typeof translate>[2]
@@ -72,7 +75,9 @@ export function t(
   return translate(getLanguage(), key, data);
 }
 
-export function tWithLanguage(lang?: Language) {
+export type TFunction = typeof t;
+
+export function tWithLanguage(lang?: Language): TFunction {
   return function t(
     key: Parameters<typeof translate>[1],
     data?: Parameters<typeof translate>[2]

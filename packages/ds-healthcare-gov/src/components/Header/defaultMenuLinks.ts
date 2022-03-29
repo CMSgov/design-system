@@ -1,8 +1,7 @@
 import { Link, VARIATION_NAMES } from './Header';
 import localeLink from './localeLink';
 import loginLink from './loginLink';
-import { TFunction } from 'i18next';
-import { Language, i18n, languageMatches } from '@cmsgov/design-system';
+import { Language, TFunction, languageMatches, tWithLanguage } from '@cmsgov/design-system';
 
 export enum LinkIdentifier {
   LOGIN = 'login',
@@ -11,24 +10,6 @@ export enum LinkIdentifier {
 
 export interface DefaultLink extends Link {
   identifier?: LinkIdentifier;
-}
-
-/**
- * In order for the `t` function to be able to find the right translations under the right
- * keys, we need to look in the appropriate namespace. This function returns a version of
- * the `i18n.t` function that is bound to a specific namespace.
- */
-function tWithNamespace(namespace: string) {
-  return (...args: Parameters<TFunction>) => {
-    let originalOptions = {};
-    if (typeof args[1] === 'object') originalOptions = args[1];
-    else if (typeof args[2] === 'object') originalOptions = args[2];
-    const options = {
-      ...originalOptions,
-      ns: namespace,
-    };
-    return i18n.t(args[0], options);
-  };
 }
 
 export interface DefaultMenuLinkOptions {
@@ -60,7 +41,7 @@ export function defaultMenuLinks(options: DefaultMenuLinkOptions = {}) {
     hideLanguageSwitch,
     customLinksPassedIn,
   } = options;
-  const t = tWithNamespace(locale ?? 'healthcare');
+  const t = tWithLanguage(locale);
   const isSpanish = languageMatches('es', locale);
   const ffmLocalePath = isSpanish ? 'es_MX' : 'en_US';
 

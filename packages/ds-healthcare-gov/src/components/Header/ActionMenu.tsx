@@ -1,8 +1,7 @@
-import { Button, CloseIconThin, MenuIcon } from '@cmsgov/design-system';
+import { Button, CloseIconThin, MenuIcon, TFunction } from '@cmsgov/design-system';
 import React, { SyntheticEvent } from 'react';
 import classnames from 'classnames';
 import { sendHeaderEvent } from './analytics';
-import { TFunction } from 'react-i18next';
 
 const menuId = 'hc-c-menu';
 

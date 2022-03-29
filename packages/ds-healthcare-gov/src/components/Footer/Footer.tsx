@@ -2,8 +2,7 @@ import InlineLinkLists from './InlineLinkLists';
 import LogosRow from './LogosRow';
 import React from 'react';
 import classnames from 'classnames';
-import { Language } from '../i18n';
-import { useTranslation } from 'react-i18next';
+import { Language, tWithLanguage } from '@cmsgov/design-system';
 
 export interface FooterProps {
   /**
@@ -37,7 +36,7 @@ export interface FooterProps {
 }
 
 export const Footer = (props: FooterProps) => {
-  const { t } = useTranslation(props.initialLanguage ?? 'healthcare');
+  const t = tWithLanguage(props.initialLanguage);
   const classes = classnames(
     'hc-c-footer ds-u-fill--gray-lightest ds-u-padding-y--5',
     props.className
