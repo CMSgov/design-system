@@ -84,7 +84,7 @@ describe('Header', function () {
     const menu = wrapper.find('Menu');
     expect(menu.prop('links').length).toBe(4);
 
-    expect(menu.prop('links')[2].label).toContain('header.español');
+    expect(menu.prop('links')[2].label).toContain('Español');
   });
 
   it('should not add Spanish toggle when hideLanguageSwitch set', () => {
@@ -94,7 +94,7 @@ describe('Header', function () {
     const menu = wrapper.find('Menu');
     expect(menu.prop('links').length).toBe(1);
 
-    expect(menu.prop('links')[0].label).not.toContain('header.español');
+    expect(menu.prop('links')[0].label).not.toContain('Español');
   });
 
   it('should not add Login Link when hideLoginLink set', () => {
@@ -104,7 +104,7 @@ describe('Header', function () {
     const menu = wrapper.find('Menu');
     expect(menu.prop('links').length).toBe(1);
 
-    expect(menu.prop('links')[0].label).not.toContain('header.login');
+    expect(menu.prop('links')[0].label).not.toContain('Log in');
   });
 
   it('should not add Logout Link when hideLogoutLink set', () => {
@@ -114,7 +114,7 @@ describe('Header', function () {
     const menu = wrapper.find('Menu');
     expect(menu.prop('links').length).toBe(1);
 
-    expect(menu.prop('links')[0].label).not.toContain('header.logout');
+    expect(menu.prop('links')[0].label).not.toContain('Log out');
   });
 
   it('should have "logout" as last item when logged in', () => {
@@ -126,7 +126,7 @@ describe('Header', function () {
     const lastLink = menuLinks.dive().find('a').last();
 
     expect(lastLink).toBeDefined();
-    expect(lastLink.text()).toContain('header.logout');
+    expect(lastLink.text()).toContain('Log out');
   });
 
   it('renders links with absolute URLs if provided a primaryDomain prop', () => {
