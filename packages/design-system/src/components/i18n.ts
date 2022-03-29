@@ -15,6 +15,19 @@ export function setLanguage(lang: Language) {
   language = lang;
 }
 
+type Translations = { [key: string]: string | Translations };
+
+export function getTranslations(lang: Language = getLanguage()) {
+  languageMatches('en', lang) ? en : es;
+}
+
+export function addTranslations(lang: Language, translations: Translations) {
+  const baseTranslations = getTranslations(lang);
+  for (const key in translations) {
+    baseTranslations[key] = translations[key];
+  }
+}
+
 /**
  * Because language strings can contain region subtags, we need a way to compare
  * just the language portion of two language strings. This function compares two
@@ -32,8 +45,7 @@ export function t<K extends NestedKeyOf<typeof en | typeof es>>(
   key: K,
   data?: { [key: string]: string | number }
 ): string {
-  const translations = languageMatches('en', language) ? en : es;
-  const rawTranslation = get(translations, key);
+  const rawTranslation = get(getTranslations(), key);
   if (data) {
     // Replace template strings with provided data
     const interpolatedTranslation = Object.keys(data).reduce(
