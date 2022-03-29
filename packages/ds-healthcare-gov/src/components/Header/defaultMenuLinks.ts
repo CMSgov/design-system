@@ -1,7 +1,7 @@
 import { Link, VARIATION_NAMES } from './Header';
 import localeLink from './localeLink';
 import loginLink from './loginLink';
-import { Language, TFunction, languageMatches, tWithLanguage } from '@cmsgov/design-system';
+import { Language, languageMatches, tWithLanguage } from '../i18n';
 
 export enum LinkIdentifier {
   LOGIN = 'login',

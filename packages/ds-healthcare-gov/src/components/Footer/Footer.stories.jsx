@@ -10,6 +10,10 @@ export default {
       control: { type: 'text' },
       type: { name: 'string', required: false },
     },
+    initialLanguage: {
+      control: 'radio',
+      options: ['en', 'es'],
+    },
   },
   args: {
     className: '',

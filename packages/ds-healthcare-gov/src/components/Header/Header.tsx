@@ -3,7 +3,8 @@ import DeConsumerMessage from './DeConsumerMessage';
 import Logo from '../Logo/Logo';
 import Menu from './Menu';
 import React, { useState } from 'react';
-import { Language, SkipNav, getLanguage, tWithLanguage } from '@cmsgov/design-system';
+import { SkipNav } from '@cmsgov/design-system';
+import { Language, getLanguage, tWithLanguage } from '../i18n';
 import classnames from 'classnames';
 import defaultMenuLinks from './defaultMenuLinks';
 

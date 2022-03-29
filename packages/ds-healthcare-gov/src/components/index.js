@@ -16,7 +16,6 @@
  */
 
 import { setInlineErrorIconDisplay, setErrorPlacementDefault } from '@cmsgov/design-system';
-import './i18n';
 
 export * from '@cmsgov/design-system';
 export * from './Footer';

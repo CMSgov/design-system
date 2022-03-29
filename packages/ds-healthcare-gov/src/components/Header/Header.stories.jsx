@@ -15,6 +15,10 @@ export default {
     firstName: {
       control: { type: 'text' },
     },
+    initialLanguage: {
+      control: 'radio',
+      options: ['en', 'es'],
+    },
   },
   args: {
     className: '',
