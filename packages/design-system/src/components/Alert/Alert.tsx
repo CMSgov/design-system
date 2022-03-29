@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
 import { InfoCircleIcon, AlertCircleIcon, WarningIcon, CheckCircleIcon } from '../Icons';
 import { I18nextProvider, WithTranslationProps, withTranslation } from 'react-i18next';
-import i18n from '../i18n';
+import { t } from '../i18n';
 
 export type AlertHeadingLevel = '1' | '2' | '3' | '4' | '5' | '6';
 export type AlertRole = 'alert' | 'alertdialog' | 'region' | 'status';
@@ -71,10 +71,15 @@ export interface AlertProps {
 // Omit props that we override with values from the Alert
 type OmitAlertProps = 'role' | 'children' | 'className' | 'ref';
 
-export class _Alert extends React.PureComponent<
+export class Alert extends React.PureComponent<
   Omit<React.ComponentPropsWithRef<'div'>, OmitAlertProps> & AlertProps & WithTranslationProps,
   any
 > {
+  static defaultProps = {
+    role: 'region',
+    headingLevel: '2',
+  };
+
   constructor(props: AlertProps) {
     super(props);
     this.alertTextRef = null;
@@ -184,8 +189,6 @@ export class _Alert extends React.PureComponent<
       variation,
       weight,
       analytics,
-      t,
-      i18n,
       analyticsLabelOverride,
       ...alertProps
     } = this.props;
@@ -200,7 +203,7 @@ export class _Alert extends React.PureComponent<
 
     const a11yLabel = (
       <span className="ds-c-alert__a11y-label ds-u-visibility--screen-reader">
-        {t(variation ?? 'defaultLabel')}:{' '}
+        {t(`alert.${variation ?? 'defaultLabel'}`)}:{' '}
       </span>
     );
 
@@ -236,27 +239,5 @@ export class _Alert extends React.PureComponent<
     );
   }
 }
-
-const AlertWithTranslation = withTranslation('alert')(_Alert);
-
-/**
- * A container component responsible for passing an instance
- * of i18next to all child components using react-i18next's
- * `withTranslation` HOC. Note that we use I18nextProvider in order
- * to avoid conflicts with other apps using react-i18next.
- * See https://github.com/i18next/react-i18next/issues/382 for
- * more context on why we need to do it this way.
- */
-// eslint-disable-next-line react/no-multi-comp
-export const Alert = (props: AlertProps) => (
-  <I18nextProvider i18n={i18n}>
-    <AlertWithTranslation {...props} />
-  </I18nextProvider>
-);
-
-Alert.defaultProps = {
-  role: 'region',
-  headingLevel: '2',
-};
 
 export default Alert;
