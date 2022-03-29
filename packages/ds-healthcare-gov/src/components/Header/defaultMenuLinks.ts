@@ -2,7 +2,7 @@ import { Link, VARIATION_NAMES } from './Header';
 import localeLink from './localeLink';
 import loginLink from './loginLink';
 import { TFunction } from 'i18next';
-import { Language } from '../i18n';
+import { Language, i18n, languageMatches } from '@cmsgov/design-system';
 
 export enum LinkIdentifier {
   LOGIN = 'login',
@@ -14,23 +14,54 @@ export interface DefaultLink extends Link {
 }
 
 /**
+ * In order for the `t` function to be able to find the right translations under the right
+ * keys, we need to look in the appropriate namespace. This function returns a version of
+ * the `i18n.t` function that is bound to a specific namespace.
+ */
+function tWithNamespace(namespace: string) {
+  return (...args: Parameters<TFunction>) => {
+    let originalOptions = {};
+    if (typeof args[1] === 'object') originalOptions = args[1];
+    else if (typeof args[2] === 'object') originalOptions = args[2];
+    const options = {
+      ...originalOptions,
+      ns: namespace,
+    };
+    return i18n.t(args[0], options);
+  };
+}
+
+export interface DefaultMenuLinkOptions {
+  locale?: Language;
+  deConsumer?: boolean;
+  subpath?: string;
+  primaryDomain?: string;
+  switchLocaleLink?: string;
+  hideLoginLink?: boolean;
+  hideLogoutLink?: boolean;
+  hideLanguageSwitch?: boolean;
+  customLinksPassedIn?: boolean;
+}
+
+/**
  * Default menu links for each header variation.
  * Apps can import this method into their app if they need to
  * extend the existing default list of menu links.
  */
-export function defaultMenuLinks(
-  t: TFunction,
-  locale: Language = 'en',
-  deConsumer?: boolean,
-  subpath?: string,
-  primaryDomain = '',
-  switchLocaleLink?: string,
-  hideLoginLink?: boolean,
-  hideLogoutLink?: boolean,
-  hideLanguageSwitch?: boolean,
-  customLinksPassedIn?: boolean
-) {
-  const isSpanish = locale === 'es';
+export function defaultMenuLinks(options: DefaultMenuLinkOptions = {}) {
+  const {
+    locale,
+    deConsumer,
+    subpath,
+    primaryDomain = '',
+    switchLocaleLink,
+    hideLoginLink,
+    hideLogoutLink,
+    hideLanguageSwitch,
+    customLinksPassedIn,
+  } = options;
+  const t = tWithNamespace(locale ?? 'healthcare');
+  const isSpanish = languageMatches('es', locale);
   const ffmLocalePath = isSpanish ? 'es_MX' : 'en_US';
 
   // NOTE: order matters here and links will be displayed in order added to the arrays

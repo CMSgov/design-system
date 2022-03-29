@@ -180,18 +180,17 @@ const Header = (props: HeaderProps) => {
   const classes = classnames(`hc-c-header hc-c-header--${variation()}`, props.className);
 
   const hasCustomLinks = !!props.links;
-  const defaultLinksForVariation = defaultMenuLinks(
-    t,
-    props.initialLanguage ?? getLanguage(),
-    props.deConsumer,
-    props.subpath,
-    props.primaryDomain,
-    props.switchLocaleLink,
-    props.hideLoginLink,
-    props.hideLogoutLink,
-    props.hideLanguageSwitch,
-    hasCustomLinks
-  )[variation()];
+  const defaultLinksForVariation = defaultMenuLinks({
+    locale: props.initialLanguage ?? getLanguage(),
+    deConsumer: props.deConsumer,
+    subpath: props.subpath,
+    primaryDomain: props.primaryDomain,
+    switchLocaleLink: props.switchLocaleLink,
+    hideLoginLink: props.hideLoginLink,
+    hideLogoutLink: props.hideLogoutLink,
+    hideLanguageSwitch: props.hideLanguageSwitch,
+    customLinksPassedIn: hasCustomLinks,
+  })[variation()];
 
   const links = hasCustomLinks
     ? props.links.concat(defaultLinksForVariation)
