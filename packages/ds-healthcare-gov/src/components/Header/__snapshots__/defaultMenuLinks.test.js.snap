@@ -5,31 +5,31 @@ Object {
   "logged-in": Array [
     Object {
       "href": "/marketplace/auth/global/en_US/myProfile#landingPage",
-      "label": "header.myApplicationsAndCoverage | {\\"ns\\":\\"en\\"}",
+      "label": "header.myApplicationsAndCoverage | {\\"ns\\":\\"healthcare\\"}",
     },
     Object {
       "href": "/marketplace/auth/global/en_US/myProfile#settings",
-      "label": "header.myProfile | {\\"ns\\":\\"en\\"}",
+      "label": "header.myProfile | {\\"ns\\":\\"healthcare\\"}",
     },
     Object {
       "href": "https://www.cuidadodesalud.gov/es/",
-      "label": "header.español | {\\"ns\\":\\"en\\"}",
+      "label": "header.español | {\\"ns\\":\\"healthcare\\"}",
     },
     Object {
       "href": "/logout",
       "identifier": "logout",
-      "label": "header.logout | {\\"ns\\":\\"en\\"}",
+      "label": "header.logout | {\\"ns\\":\\"healthcare\\"}",
     },
   ],
   "logged-out": Array [
     Object {
       "href": "https://www.cuidadodesalud.gov/es/",
-      "label": "header.español | {\\"ns\\":\\"en\\"}",
+      "label": "header.español | {\\"ns\\":\\"healthcare\\"}",
     },
     Object {
       "href": "/login",
       "identifier": "login",
-      "label": "header.login | {\\"ns\\":\\"en\\"}",
+      "label": "header.login | {\\"ns\\":\\"healthcare\\"}",
     },
   ],
 }
@@ -285,23 +285,23 @@ Object {
   "logged-in": Array [
     Object {
       "href": "/marketplace/auth/global/en_US/myProfile#landingPage",
-      "label": "header.myApplicationsAndCoverage | {\\"ns\\":\\"en\\"}",
+      "label": "header.myApplicationsAndCoverage | {\\"ns\\":\\"healthcare\\"}",
     },
     Object {
       "href": "/marketplace/auth/global/en_US/myProfile#settings",
-      "label": "header.myProfile | {\\"ns\\":\\"en\\"}",
+      "label": "header.myProfile | {\\"ns\\":\\"healthcare\\"}",
     },
     Object {
       "href": "/logout",
       "identifier": "logout",
-      "label": "header.logout | {\\"ns\\":\\"en\\"}",
+      "label": "header.logout | {\\"ns\\":\\"healthcare\\"}",
     },
   ],
   "logged-out": Array [
     Object {
       "href": "/login",
       "identifier": "login",
-      "label": "header.login | {\\"ns\\":\\"en\\"}",
+      "label": "header.login | {\\"ns\\":\\"healthcare\\"}",
     },
   ],
 }
@@ -312,26 +312,26 @@ Object {
   "logged-in": Array [
     Object {
       "href": "/marketplace/auth/global/en_US/myProfile#landingPage",
-      "label": "header.myApplicationsAndCoverage | {\\"ns\\":\\"en\\"}",
+      "label": "header.myApplicationsAndCoverage | {\\"ns\\":\\"healthcare\\"}",
     },
     Object {
       "href": "/marketplace/auth/global/en_US/myProfile#settings",
-      "label": "header.myProfile | {\\"ns\\":\\"en\\"}",
+      "label": "header.myProfile | {\\"ns\\":\\"healthcare\\"}",
     },
     Object {
       "href": "https://www.cuidadodesalud.gov/es/",
-      "label": "header.español | {\\"ns\\":\\"en\\"}",
+      "label": "header.español | {\\"ns\\":\\"healthcare\\"}",
     },
     Object {
       "href": "/logout",
       "identifier": "logout",
-      "label": "header.logout | {\\"ns\\":\\"en\\"}",
+      "label": "header.logout | {\\"ns\\":\\"healthcare\\"}",
     },
   ],
   "logged-out": Array [
     Object {
       "href": "https://www.cuidadodesalud.gov/es/",
-      "label": "header.español | {\\"ns\\":\\"en\\"}",
+      "label": "header.español | {\\"ns\\":\\"healthcare\\"}",
     },
   ],
 }
@@ -342,26 +342,26 @@ Object {
   "logged-in": Array [
     Object {
       "href": "/marketplace/auth/global/en_US/myProfile#landingPage",
-      "label": "header.myApplicationsAndCoverage | {\\"ns\\":\\"en\\"}",
+      "label": "header.myApplicationsAndCoverage | {\\"ns\\":\\"healthcare\\"}",
     },
     Object {
       "href": "/marketplace/auth/global/en_US/myProfile#settings",
-      "label": "header.myProfile | {\\"ns\\":\\"en\\"}",
+      "label": "header.myProfile | {\\"ns\\":\\"healthcare\\"}",
     },
     Object {
       "href": "https://www.cuidadodesalud.gov/es/",
-      "label": "header.español | {\\"ns\\":\\"en\\"}",
+      "label": "header.español | {\\"ns\\":\\"healthcare\\"}",
     },
   ],
   "logged-out": Array [
     Object {
       "href": "https://www.cuidadodesalud.gov/es/",
-      "label": "header.español | {\\"ns\\":\\"en\\"}",
+      "label": "header.español | {\\"ns\\":\\"healthcare\\"}",
     },
     Object {
       "href": "/login",
       "identifier": "login",
-      "label": "header.login | {\\"ns\\":\\"en\\"}",
+      "label": "header.login | {\\"ns\\":\\"healthcare\\"}",
     },
   ],
 }
@@ -372,23 +372,23 @@ Object {
   "logged-in": Array [
     Object {
       "href": "https://www.cuidadodesalud.gov/es/",
-      "label": "header.español | {\\"ns\\":\\"en\\"}",
+      "label": "header.español | {\\"ns\\":\\"healthcare\\"}",
     },
     Object {
       "href": "/logout",
       "identifier": "logout",
-      "label": "header.logout | {\\"ns\\":\\"en\\"}",
+      "label": "header.logout | {\\"ns\\":\\"healthcare\\"}",
     },
   ],
   "logged-out": Array [
     Object {
       "href": "https://www.cuidadodesalud.gov/es/",
-      "label": "header.español | {\\"ns\\":\\"en\\"}",
+      "label": "header.español | {\\"ns\\":\\"healthcare\\"}",
     },
     Object {
       "href": "/login",
       "identifier": "login",
-      "label": "header.login | {\\"ns\\":\\"en\\"}",
+      "label": "header.login | {\\"ns\\":\\"healthcare\\"}",
     },
   ],
 }

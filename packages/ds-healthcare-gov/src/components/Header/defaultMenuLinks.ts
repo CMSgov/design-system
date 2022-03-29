@@ -50,7 +50,7 @@ export interface DefaultMenuLinkOptions {
  */
 export function defaultMenuLinks(options: DefaultMenuLinkOptions = {}) {
   const {
-    locale = 'en',
+    locale,
     deConsumer,
     subpath,
     primaryDomain = '',
@@ -61,7 +61,7 @@ export function defaultMenuLinks(options: DefaultMenuLinkOptions = {}) {
     customLinksPassedIn,
   } = options;
   const t = tWithNamespace(locale ?? 'healthcare');
-  const isSpanish = languageMatches(locale, 'es');
+  const isSpanish = languageMatches('es', locale);
   const ffmLocalePath = isSpanish ? 'es_MX' : 'en_US';
 
   // NOTE: order matters here and links will be displayed in order added to the arrays
