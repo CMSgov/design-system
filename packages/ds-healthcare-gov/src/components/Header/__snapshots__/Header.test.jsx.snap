@@ -29,12 +29,12 @@ exports[`Header renders Direct Enrollment banner 1`] = `
           Array [
             Object {
               "href": "https://www.cuidadodesalud.gov/es/",
-              "label": "header.español",
+              "label": "header.español | {\\"ns\\":\\"en\\"}",
             },
             Object {
               "href": "/login?check_de=1",
               "identifier": "login",
-              "label": "header.login",
+              "label": "header.login | {\\"ns\\":\\"en\\"}",
             },
           ]
         }
@@ -49,12 +49,12 @@ exports[`Header renders Direct Enrollment banner 1`] = `
       Array [
         Object {
           "href": "https://www.cuidadodesalud.gov/es/",
-          "label": "header.español",
+          "label": "header.español | {\\"ns\\":\\"en\\"}",
         },
         Object {
           "href": "/login?check_de=1",
           "identifier": "login",
-          "label": "header.login",
+          "label": "header.login | {\\"ns\\":\\"en\\"}",
         },
       ]
     }
@@ -96,12 +96,12 @@ exports[`Header renders Spanish header 1`] = `
           Array [
             Object {
               "href": "https://www.healthcare.gov/",
-              "label": "header.english",
+              "label": "header.english | {\\"ns\\":\\"es\\"}",
             },
             Object {
               "href": "/login",
               "identifier": "login",
-              "label": "header.login",
+              "label": "header.login | {\\"ns\\":\\"es\\"}",
             },
           ]
         }
@@ -116,12 +116,12 @@ exports[`Header renders Spanish header 1`] = `
       Array [
         Object {
           "href": "https://www.healthcare.gov/",
-          "label": "header.english",
+          "label": "header.english | {\\"ns\\":\\"es\\"}",
         },
         Object {
           "href": "/login",
           "identifier": "login",
-          "label": "header.login",
+          "label": "header.login | {\\"ns\\":\\"es\\"}",
         },
       ]
     }
@@ -159,12 +159,12 @@ exports[`Header renders full/homepage header 1`] = `
           Array [
             Object {
               "href": "https://www.cuidadodesalud.gov/es/",
-              "label": "header.español",
+              "label": "header.español | {\\"ns\\":\\"en\\"}",
             },
             Object {
               "href": "/login",
               "identifier": "login",
-              "label": "header.login",
+              "label": "header.login | {\\"ns\\":\\"en\\"}",
             },
           ]
         }
@@ -179,12 +179,12 @@ exports[`Header renders full/homepage header 1`] = `
       Array [
         Object {
           "href": "https://www.cuidadodesalud.gov/es/",
-          "label": "header.español",
+          "label": "header.español | {\\"ns\\":\\"en\\"}",
         },
         Object {
           "href": "/login",
           "identifier": "login",
-          "label": "header.login",
+          "label": "header.login | {\\"ns\\":\\"en\\"}",
         },
       ]
     }
@@ -222,12 +222,12 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
           Array [
             Object {
               "href": "https://www.cuidadodesalud.gov/es/",
-              "label": "header.español",
+              "label": "header.español | {\\"ns\\":\\"en\\"}",
             },
             Object {
               "href": "https://www.healthcare.gov/login",
               "identifier": "login",
-              "label": "header.login",
+              "label": "header.login | {\\"ns\\":\\"en\\"}",
             },
           ]
         }
@@ -242,12 +242,12 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
       Array [
         Object {
           "href": "https://www.cuidadodesalud.gov/es/",
-          "label": "header.español",
+          "label": "header.español | {\\"ns\\":\\"en\\"}",
         },
         Object {
           "href": "https://www.healthcare.gov/login",
           "identifier": "login",
-          "label": "header.login",
+          "label": "header.login | {\\"ns\\":\\"en\\"}",
         },
       ]
     }
@@ -286,20 +286,20 @@ exports[`Header renders logged-in header with firstName 1`] = `
           Array [
             Object {
               "href": "/marketplace/auth/global/en_US/myProfile#landingPage",
-              "label": "header.myApplicationsAndCoverage",
+              "label": "header.myApplicationsAndCoverage | {\\"ns\\":\\"en\\"}",
             },
             Object {
               "href": "/marketplace/auth/global/en_US/myProfile#settings",
-              "label": "header.myProfile",
+              "label": "header.myProfile | {\\"ns\\":\\"en\\"}",
             },
             Object {
               "href": "https://www.cuidadodesalud.gov/es/",
-              "label": "header.español",
+              "label": "header.español | {\\"ns\\":\\"en\\"}",
             },
             Object {
               "href": "/logout",
               "identifier": "logout",
-              "label": "header.logout",
+              "label": "header.logout | {\\"ns\\":\\"en\\"}",
             },
           ]
         }
@@ -322,20 +322,20 @@ exports[`Header renders logged-in header with firstName 1`] = `
       Array [
         Object {
           "href": "/marketplace/auth/global/en_US/myProfile#landingPage",
-          "label": "header.myApplicationsAndCoverage",
+          "label": "header.myApplicationsAndCoverage | {\\"ns\\":\\"en\\"}",
         },
         Object {
           "href": "/marketplace/auth/global/en_US/myProfile#settings",
-          "label": "header.myProfile",
+          "label": "header.myProfile | {\\"ns\\":\\"en\\"}",
         },
         Object {
           "href": "https://www.cuidadodesalud.gov/es/",
-          "label": "header.español",
+          "label": "header.español | {\\"ns\\":\\"en\\"}",
         },
         Object {
           "href": "/logout",
           "identifier": "logout",
-          "label": "header.logout",
+          "label": "header.logout | {\\"ns\\":\\"en\\"}",
         },
       ]
     }
@@ -373,20 +373,20 @@ exports[`Header renders logged-in header without firstName 1`] = `
           Array [
             Object {
               "href": "/marketplace/auth/global/en_US/myProfile#landingPage",
-              "label": "header.myApplicationsAndCoverage",
+              "label": "header.myApplicationsAndCoverage | {\\"ns\\":\\"en\\"}",
             },
             Object {
               "href": "/marketplace/auth/global/en_US/myProfile#settings",
-              "label": "header.myProfile",
+              "label": "header.myProfile | {\\"ns\\":\\"en\\"}",
             },
             Object {
               "href": "https://www.cuidadodesalud.gov/es/",
-              "label": "header.español",
+              "label": "header.español | {\\"ns\\":\\"en\\"}",
             },
             Object {
               "href": "/logout",
               "identifier": "logout",
-              "label": "header.logout",
+              "label": "header.logout | {\\"ns\\":\\"en\\"}",
             },
           ]
         }
@@ -402,20 +402,20 @@ exports[`Header renders logged-in header without firstName 1`] = `
       Array [
         Object {
           "href": "/marketplace/auth/global/en_US/myProfile#landingPage",
-          "label": "header.myApplicationsAndCoverage",
+          "label": "header.myApplicationsAndCoverage | {\\"ns\\":\\"en\\"}",
         },
         Object {
           "href": "/marketplace/auth/global/en_US/myProfile#settings",
-          "label": "header.myProfile",
+          "label": "header.myProfile | {\\"ns\\":\\"en\\"}",
         },
         Object {
           "href": "https://www.cuidadodesalud.gov/es/",
-          "label": "header.español",
+          "label": "header.español | {\\"ns\\":\\"en\\"}",
         },
         Object {
           "href": "/logout",
           "identifier": "logout",
-          "label": "header.logout",
+          "label": "header.logout | {\\"ns\\":\\"en\\"}",
         },
       ]
     }
