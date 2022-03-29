@@ -1,244 +1,173 @@
 @import '../settings/index.scss';
 
+/**
+** Order of choice styles is important to ensure styles follow correct precedent.
+** Checkboxes and radios follow the following cascade:
+** Normal > Error > Checked > Disabled > Focused
+**/
+
 $ds-c-inset-border-width: $spacer-half;
 
-// Order of the choice styles is important to ensure styles have the correct precedent
-// normal < errored < checked < disabled < focused
+// Layout styles for wrapping choice container
+.ds-c-choice-wrapper {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+}
+
+// Styles for label
+.ds-c-choice + label,
+.ds-c-choice + .ds-c-label {
+  margin-top: 0;
+  transform: translateY(0.25em);
+}
+
+.ds-c-choice--small + label,
+.ds-c-choice--small + .ds-c-label {
+  transform: translateY(-0.125em);
+}
+
+// Styles inherited by both checkbox and radio
 .ds-c-choice {
-  // Hide the default browser checkbox/radio button
-  // We create our own custom version using '+ label::before'
-  left: -999em;
-  opacity: 0;
-  position: absolute;
+  align-items: center;
+  appearance: none;
+  background-color: $choice-background-color;
+  border: $choice-border-width solid $choice-border-color;
+  border-radius: $choice-border-radius;
+  cursor: pointer;
+  display: grid;
+  height: $choice-size;
+  justify-items: center;
+  margin: 0;
+  place-content: center;
+  position: relative;
+  width: $choice-size;
 
-  // Choice label
-  + label {
-    align-items: center;
-    cursor: pointer;
-    display: flex;
-    flex-wrap: wrap;
-    font-weight: $font-normal;
-    margin: $spacer-1 0;
-    max-width: $measure-base;
-    // We set min-height to be the same as `$choice-size` to ensure most of the time
-    // the label and icon will be vertically aligned. We cannot simply vertically center the icon
-    // because of choice hints and label text wrapping, as we want the icon to be vertically aligned
-    // with the first line of text only.
-    min-height: $choice-size;
-    padding-left: $choice-size + $spacer-1;
-    position: relative;
-    width: fit-content;
-  }
+  &::before {
 
-  // Choice checkbox/radio button
-  + label::before {
-    background-color: $choice-background-color;
-    border: $choice-border-width solid $choice-border-color;
-    border-radius: $choice-border-radius;
-    box-sizing: border-box;
-    content: '\a0';
-    height: $choice-size;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: $choice-size;
-
-    /* stylelint-disable */
-    @media (-ms-high-contrast: active), (forced-colors: active) {
-      // background-color: window;
-      border-color: ButtonText;
-    }
-    /* stylelint-enable */
-  }
-
-  // Checkmark icon
-  + label::after {
-    background: transparent;
-    border: solid;
-    border-color: $color-white;
-    border-top-color: transparent;
-    border-width: 0 0 4px 4px;
-    box-sizing: content-box;
+    // Support HCM -- check
+    border-color: ButtonText;
+    box-shadow: inset 0 0 1em 1em $choice-checked-background-color;
     content: '';
-    height: 4px;
-    left: 9px;
+    grid-area: 1/-1;
+    height: $choice-size;
     opacity: 0;
-    position: absolute;
-    top: 11px;
-    transform: rotate(-45deg);
-    width: 10px;
+    transition: 120ms opacity ease-in-out;
+    width: $choice-size;
   }
 
-  // Choice radio button
-  &[type='radio'] + label::before {
-    border-radius: 100%;
-
-    /* stylelint-disable */
-    @media (-ms-high-contrast: active), (forced-colors: active) {
-      -ms-high-contrast-adjust: none;
-      background-color: window;
-    }
-    /* stylelint-enable */
-  }
-
-  &[type='radio'] + label::after {
-    background-color: $choice-checked-border-color;
-    border: 0;
-    border-radius: 100%;
-    height: $choice-radio-button-size;
-    left: 5px;
-    top: 5px;
-    transform: none;
-    width: $choice-radio-button-size;
-
-    /* stylelint-disable */
-    @media (-ms-high-contrast: active), (forced-colors: active) {
-      -ms-high-contrast-adjust: none;
-      background-color: WindowText;
-    }
-    /* stylelint-enable */
-  }
-
-  &:checked[type='radio'] + label::before {
-    background-color: $color-white;
-
-    /* stylelint-disable */
-    @media (-ms-high-contrast: active), (forced-colors: active) {
-      background-color: window;
-    }
-    /* stylelint-enable */
-  }
-
-  // Errored choice
+  // Error
   @if $ds-include-choice-error-highlight {
-    &.ds-c-choice--error + label::before {
+    &.ds-c-choice--error {
       border-color: $color-error;
     }
   }
 
-  // Checked choice
-  &:checked + label {
+  // Checked
+  &:checked {
     &::before {
-      background-color: $choice-checked-background-color;
-      border-color: $choice-checked-border-color;
-
-      /* stylelint-disable */
-      @media (-ms-high-contrast: active), (forced-colors: active) {
-        border-color: ButtonText;
-      }
-      /* stylelint-enable */
-    }
-
-    &::after {
       opacity: 1;
     }
+
+    &:focus {
+      border-color: $color-primary-darker;
+    }
   }
 
-  // Disabled choice
-  &:disabled + label {
+  // Disabled
+  &:disabled {
+    background-color: $choice-disabled-background-color;
+    border-color: $choice-disabled-border-color;
     color: $color-muted;
     cursor: not-allowed;
-
-    &::before {
-      background-color: $choice-disabled-background-color;
-      border-color: $choice-disabled-border-color;
-    }
-
-    /* stylelint-disable */
-    @media (-ms-high-contrast: active), (forced-colors: active) {
-      color: GrayText;
-
-      &::before {
-        background-color: Window;
-        border-color: GrayText;
-      }
-    }
-    /* stylelint-enable */
   }
 
-  // Focused choice
-  &:focus + label::before {
+  // Focus
+  &:focus {
     @include focus-styles;
   }
 }
 
-.ds-c-choice--inverse {
-  // Choice checkbox/radio button
-  + label::before {
-    background-color: $choice-background-color-inverse;
-    border-color: $choice-border-color-inverse;
+// Checkbox styles
+.ds-c-choice[type='checkbox'] {
+  &::after {
+    background-color: transparent;
+    border: solid;
+    border-color: $color-white;
+    border-top-color: transparent;
+    border-width: 0 0 4px 4px;
+    content: '';
+    grid-area: 1/-1;
+    height: 4px;
+    opacity: 0;
+    transform: rotate(-45deg) translateX(0.075em);
+    width: 10px;
   }
 
-  // Errored inverse choice
+  &:checked {
+    &::after {
+      opacity: 1;
+    }
+
+    /* stylelint-disable max-nesting-depth, selector-max-specificity */
+    &:focus::before {
+      height: $choice-size - ($choice-border-width * 2);
+      width: $choice-size - ($choice-border-width * 2);
+    }
+    /* stylelint-enable max-nesting-depth, selector-max-specificity */
+  }
+}
+
+// Radio styles
+.ds-c-choice[type='radio'] {
+  border-radius: 100%;
+
+  &::before {
+    border-radius: 100%;
+    height: $choice-radio-button-size;
+    width: $choice-radio-button-size;
+  }
+}
+
+.ds-c-choice--inverse {
+  background-color: $choice-background-color-inverse;
+  border-color: $choice-border-color-inverse;
+
+  // Error
   @if $ds-include-choice-error-highlight {
-    &.ds-c-choice--error + label::before {
+    &.ds-c-choice--error {
       border-color: $color-error-light;
     }
   }
 
-  // Checked inverse choice
-  // Need to repeat this styling to override error border-color when checked
-  &:checked + label::before {
-    border-color: $choice-checked-background-color;
-  }
-
-  // Disabled inverse choice
-  &:disabled + label {
+  // Disabled
+  &:disabled {
+    background-color: $choice-disabled-background-color-inverse;
+    border-color: $choice-disabled-border-color-inverse;
     color: $color-muted-inverse;
-
-    &::before {
-      background-color: $choice-disabled-background-color-inverse;
-      border-color: $choice-disabled-border-color-inverse;
-    }
-  }
-
-  // Focused inverse choice
-  &:focus + label::before {
-    @include focus-styles;
   }
 }
 
 // Size variants
 .ds-c-choice--small {
-  + label {
-    min-height: $choice-size-small;
-    padding-left: $choice-size-small + $spacer-1;
+  height: $choice-size-small;
+  width: $choice-size-small;
 
-    &::before {
-      height: $choice-size-small;
-      // $choice-size-small is smaller than the choice label, we need to adjust it manually
-      top: 2px;
-      width: $choice-size-small;
-    }
-
-    &::after {
-      border-width: 0 0 3px 3px;
-      height: 3px;
-      left: 5px;
-      top: 8px;
-      width: 7px;
-    }
+  &::before {
+    height: $choice-size-small;
+    width: $choice-size-small;
   }
-  &[type='radio'] + label::after {
+
+  &[type='checkbox']::after {
+    border-width: 0 0 3px 3px;
+    height: 3px;
+    width: 7px;
+  }
+
+  &[type='radio']::before {
     height: $choice-radio-button-size-small;
-    left: 4px;
-    top: 6px;
     width: $choice-radio-button-size-small;
   }
-}
-
-.ds-c-choice--small:focus + label::before {
-  border-width: 2px;
-}
-
-.ds-c-choice:checked:focus + label::before {
-  border-color: $color-primary-darker;
-
-  /* stylelint-disable */
-  @media (-ms-high-contrast: active), (forced-colors: active) {
-    border-color: window;
-  }
-  /* stylelint-enable */
 }
 
 // TODO: rename to .ds-c-choice__checked-child
