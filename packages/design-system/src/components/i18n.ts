@@ -28,8 +28,20 @@ export function languageMatches(localeStringA: string, localeStringB: string = g
   return langA === langB;
 }
 
-export function t<K extends NestedKeyOf<typeof en | typeof es>>(key: K): string {
+export function t<K extends NestedKeyOf<typeof en | typeof es>>(
+  key: K,
+  data?: { [key: string]: string | number }
+): string {
   const translations = languageMatches('en', language) ? en : es;
   const rawTranslation = get(translations, key);
-  return rawTranslation;
+  if (data) {
+    // Replace template strings with provided data
+    const interpolatedTranslation = Object.keys(data).reduce(
+      (interpolatedString, dataKey) => interpolatedString.replace(`{{${dataKey}}}`, data[dataKey]),
+      rawTranslation
+    );
+    return interpolatedTranslation;
+  } else {
+    return rawTranslation;
+  }
 }
