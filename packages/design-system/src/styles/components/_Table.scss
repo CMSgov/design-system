@@ -135,7 +135,6 @@ $table-compact-padding: $spacer-half $spacer-2 !default;
     }
   }
 
-  // stylelint-disable selector-no-qualifying-type
   th[data-title],
   td[data-title] {
     // Add column heading via psuedo element
@@ -146,7 +145,6 @@ $table-compact-padding: $spacer-half $spacer-2 !default;
       padding-bottom: $spacer-half;
     }
   }
-  // stylelint-enable selector-no-qualifying-type
 
   // Remove striped styling on stacked table
   &.ds-c-table--striped tbody {

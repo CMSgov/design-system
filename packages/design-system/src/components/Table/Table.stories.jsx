@@ -1,5 +1,3 @@
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable react/no-multi-comp */
 import React from 'react';
 
 import Table from './Table';

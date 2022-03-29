@@ -1,0 +1,10 @@
+**/node_modules/**
+**/dist/**
+**/helpers/**
+**/__tests__/**
+tmp/**
+**/types/**
+examples/create-react-app-typescript/**
+examples/create-react-app/**
+storybook-static/**
+packages/coverage/**

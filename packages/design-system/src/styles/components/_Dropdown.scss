@@ -1,6 +1,5 @@
 @import '../settings/index.scss';
 
-// stylelint-disable selector-no-qualifying-type
 select.ds-c-field {
   $select-icon-size: 10px;
   appearance: none;
@@ -21,5 +20,3 @@ select.ds-c-field {
     text-shadow: 0 0 0 #000;
   }
 }
-
-// stylelint-enable selector-no-qualifying-type

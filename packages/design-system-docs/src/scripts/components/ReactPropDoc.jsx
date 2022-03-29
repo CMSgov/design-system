@@ -20,9 +20,7 @@ class ReactPropDoc extends React.PureComponent {
 
   description() {
     if (this.props.description) {
-      /* eslint-disable react/no-danger */
       return <span dangerouslySetInnerHTML={{ __html: this.props.description }} />;
-      /* eslint-enable react/no-danger */
     }
   }
 

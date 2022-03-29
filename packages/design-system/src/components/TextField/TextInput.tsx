@@ -143,7 +143,6 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
 
   const ComponentType = multiline ? 'textarea' : 'input';
 
-  /* eslint-disable react/prop-types */
   const ariaAttributes = {
     'aria-label': ariaLabel,
     // Use set `aria-invalid` based off errorMessage unless manually specified
@@ -156,7 +155,6 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
   };
 
   const numberRows: number = typeof rows === 'string' ? parseInt(rows) : rows;
-  /* eslint-enable react/prop-types */
   const field = (
     <ComponentType
       {...ariaAttributes}

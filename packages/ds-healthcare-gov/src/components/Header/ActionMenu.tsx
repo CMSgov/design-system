@@ -1,4 +1,3 @@
-/* eslint-disable react/no-multi-comp, jsx-a11y/no-redundant-roles */
 import { Button, CloseIconThin, MenuIcon } from '@cmsgov/design-system';
 import React, { SyntheticEvent } from 'react';
 import classnames from 'classnames';

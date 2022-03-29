@@ -57,13 +57,11 @@ const SimpleFooter: FunctionComponent<SimpleFooterProps> = ({
             className="SimpleFooter__linkButton"
             variation="transparent"
             onClick={(): void => {
-              // eslint-disable-next-line
               const utag = (window as any).utag;
               if (
                 utag &&
                 utag.gdpr &&
                 utag.gdpr.showConsentPreferences(language) &&
-                // eslint-disable-next-line
                 typeof (window as any).utag.gdpr.showConsentPreferences === 'function'
               ) {
                 utag.gdpr.showConsentPreferences();

@@ -12,7 +12,7 @@ describe('sendLinkEvent', () => {
   describe('without utag instance', () => {
     it('does nothing if window.utag does not exist', () => {
       const mock = jest.fn();
-      ((window as any) as UtagContainer).utag = undefined;
+      (window as any as UtagContainer).utag = undefined;
       sendLinkEvent(gaEventProps);
       expect(mock).not.toHaveBeenCalled();
     });
@@ -20,7 +20,7 @@ describe('sendLinkEvent', () => {
 
   describe('with Utag instance', () => {
     beforeEach(() => {
-      ((window as any) as UtagContainer).utag = {
+      (window as any as UtagContainer).utag = {
         link: jest.fn(),
       };
     });
@@ -31,7 +31,7 @@ describe('sendLinkEvent', () => {
 
     it('calls window.utag.link with event', () => {
       sendLinkEvent(gaEventProps);
-      expect(((window as any) as UtagContainer).utag?.link).toHaveBeenCalledWith(gaEventProps);
+      expect((window as any as UtagContainer).utag?.link).toHaveBeenCalledWith(gaEventProps);
     });
   });
 
@@ -40,9 +40,8 @@ describe('sendLinkEvent', () => {
       jest.resetAllMocks();
     });
     it('catches errors on failed sendEvent', () => {
-      ((window as any) as UtagContainer).utag = {
+      (window as any as UtagContainer).utag = {
         link: jest.fn(() => {
-          // eslint-disable-next-line no-throw-literal
           throw 'test event';
         }),
       };
@@ -53,11 +52,11 @@ describe('sendLinkEvent', () => {
       const mock = jest.fn();
       jest.useFakeTimers();
 
-      ((window as any) as UtagContainer).utag = { link: undefined };
+      (window as any as UtagContainer).utag = { link: undefined };
       sendLinkEvent(gaEventProps);
       expect(mock).not.toHaveBeenCalled();
 
-      ((window as any) as UtagContainer).utag = { link: mock };
+      (window as any as UtagContainer).utag = { link: mock };
       jest.runAllTimers();
       expect(mock).toHaveBeenCalled();
     });
@@ -65,7 +64,7 @@ describe('sendLinkEvent', () => {
     it('stops retry eventually', () => {
       jest.useFakeTimers();
 
-      ((window as any) as UtagContainer).utag = { link: undefined };
+      (window as any as UtagContainer).utag = { link: undefined };
       expect(sendLinkEvent(gaEventProps)).toBe(undefined);
 
       jest.runAllTimers();

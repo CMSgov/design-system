@@ -1,4 +1,3 @@
-/* eslint-disable filenames/match-exported */
 const path = require('path');
 const webpack = require('webpack');
 const { getDocsDirs } = require('../../common/getDirsToProcess');

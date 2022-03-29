@@ -1,4 +1,3 @@
-/* eslint-disable filenames/match-exported */
 /**
  * @file Initializes and exports a single i18next instance,
  *  responsible for rendering internationalized strings.

@@ -1,5 +1,4 @@
 jest.mock('lodash/uniqueId', () => (str) => `${str}snapshot`);
-/* eslint-disable import/first */
 import { mount, shallow } from 'enzyme';
 import DateInput, { DateInputProps } from './DateInput';
 import React from 'react';

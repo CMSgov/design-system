@@ -34,8 +34,6 @@
     "@babel/preset-typescript": "^7.15.0",
     "@cmsgov/design-system-docs": "^3.2.0",
     "@cmsgov/design-system-scripts": "^3.2.0",
-    "@cmsgov/eslint-config-design-system": "2.0.0",
-    "@cmsgov/stylelint-config-design-system": "2.0.0",
     "babel-eslint": "^10.1.0",
     "url-parse": "^1.2.0"
   }

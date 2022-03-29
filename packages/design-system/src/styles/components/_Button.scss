@@ -22,7 +22,6 @@
   text-align: center;
   text-decoration: none;
 
-  /* stylelint-disable selector-max-specificity */
   &:hover,
   &.ds-c-button--hover,
   &:hover &:focus,
@@ -30,7 +29,6 @@
     border-color: $color-primary-darker;
     color: $color-primary-darker;
   }
-  /* stylelint-enable selector-max-specificity */
 
   &:focus,
   &.ds-c-button--focus {
@@ -160,7 +158,6 @@
   }
 }
 
-/* stylelint-disable scss/at-extend-no-missing-placeholder */
 %transparent-inverse-button {
   background-color: transparent;
   border-color: transparent;
@@ -213,7 +210,6 @@
   @extend .ds-c-button--inverse;
   @extend %disabled-inverse-button;
 }
-/* stylelint-enable scss/at-extend-no-missing-placeholder */
 
 /**
  *  Status variants
@@ -275,7 +271,6 @@ $button-color-variants: (
   }
 }
 
-/* stylelint-disable */
 @media (-ms-high-contrast: active), (forced-colors: active) {
   .ds-c-button {
     &:hover,
@@ -320,4 +315,3 @@ $button-color-variants: (
     }
   }
 }
-/* stylelint-enable */

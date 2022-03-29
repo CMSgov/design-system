@@ -1,4 +1,3 @@
-/* stylelint-disable selector-class-pattern */
 @import '../settings/index.scss';
 
 // Links
@@ -68,13 +67,11 @@ $link-underline-offset: auto !default;
     text-decoration-thickness: $link-underline-height-hover;
   }
 
-  /* stylelint-disable selector-max-specificity */
   &:focus,
   &:focus:visited {
     @include focus-styles-link;
     color: $link-color;
   }
-  /* stylelint-enable selector-max-specificity */
 
   &:active {
     background-color: transparent;

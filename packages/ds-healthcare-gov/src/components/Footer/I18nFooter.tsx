@@ -1,4 +1,3 @@
-/* eslint-disable filenames/match-exported */
 import Footer, { FooterProps } from './Footer';
 import { I18nextProvider } from 'react-i18next';
 import React from 'react';
