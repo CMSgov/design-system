@@ -4,7 +4,6 @@ import { alertSendsAnalytics } from '../flags';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
 import { InfoCircleIcon, AlertCircleIcon, WarningIcon, CheckCircleIcon } from '../Icons';
-import { I18nextProvider, WithTranslationProps, withTranslation } from 'react-i18next';
 import { t } from '../i18n';
 
 export type AlertHeadingLevel = '1' | '2' | '3' | '4' | '5' | '6';
@@ -72,7 +71,7 @@ export interface AlertProps {
 type OmitAlertProps = 'role' | 'children' | 'className' | 'ref';
 
 export class Alert extends React.PureComponent<
-  Omit<React.ComponentPropsWithRef<'div'>, OmitAlertProps> & AlertProps & WithTranslationProps,
+  Omit<React.ComponentPropsWithRef<'div'>, OmitAlertProps> & AlertProps,
   any
 > {
   static defaultProps = {

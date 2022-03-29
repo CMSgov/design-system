@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
-import i18n, { Language, languageMatches } from '../i18n';
-import { I18nextProvider, useTranslation } from 'react-i18next';
+import { Language, tWithLanguage } from '../i18n';
 import {
   LockCircleIcon,
   LockIcon,
@@ -29,17 +28,12 @@ export interface UsaBannerProps {
   locale?: Language;
 }
 
-export const UnwrappedUsaBanner: React.FunctionComponent<UsaBannerProps> = (
-  props: UsaBannerProps
-) => {
+export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBannerProps) => {
   const [isBannerOpen, setBannerOpen] = useState<boolean>(false);
   const [shouldRenderMobileView, setShouldRenderMobileView] = useState<boolean>(false);
   const classes = classNames('ds-c-usa-banner', props.className);
   const id = props.id || uniqueId('gov-banner_');
-  // TODO: This is not necessary anymore after the `locale` prop is removed
-  const i18nNamespace =
-    props.locale && !languageMatches(props.locale) ? `${props.locale}:usaBanner` : 'usaBanner';
-  const { t } = useTranslation(i18nNamespace);
+  const t = tWithLanguage(props.locale);
 
   useEffect(() => {
     let media;
@@ -65,7 +59,7 @@ export const UnwrappedUsaBanner: React.FunctionComponent<UsaBannerProps> = (
   };
 
   const flagIcon = (
-    <UsaFlagIcon className="ds-c-usa-banner__header-flag" title={t('flagIconTitle')} />
+    <UsaFlagIcon className="ds-c-usa-banner__header-flag" title={t('usaBanner.flagIconTitle')} />
   );
 
   // on mobile, the entire header needs to be a clickable element
@@ -78,10 +72,10 @@ export const UnwrappedUsaBanner: React.FunctionComponent<UsaBannerProps> = (
     >
       {flagIcon}
       <p className="ds-c-usa-banner__header-text">
-        <span>{t('bannerText')}</span>
+        <span>{t('usaBanner.bannerText')}</span>
         {!isBannerOpen && (
           <span className="ds-c-usa-banner__cta-wrapper">
-            <span className="ds-c-usa-banner__button-text">{t('bannerActionText')}</span>
+            <span className="ds-c-usa-banner__button-text">{t('usaBanner.bannerActionText')}</span>
             <ArrowIcon direction="down" className="ds-c-usa-banner__action-icon" />
           </span>
         )}
@@ -99,7 +93,7 @@ export const UnwrappedUsaBanner: React.FunctionComponent<UsaBannerProps> = (
     <>
       {flagIcon}
       <p className="ds-c-usa-banner__header-text">
-        <span>{t('bannerText')}</span>
+        <span>{t('usaBanner.bannerText')}</span>
 
         <button
           onClick={toggleBanner}
@@ -107,7 +101,7 @@ export const UnwrappedUsaBanner: React.FunctionComponent<UsaBannerProps> = (
           aria-expanded={isBannerOpen}
           aria-controls={id}
         >
-          <span className="ds-c-usa-banner__button-text">{t('bannerActionText')}</span>
+          <span className="ds-c-usa-banner__button-text">{t('usaBanner.bannerActionText')}</span>
 
           <ArrowIcon
             direction={isBannerOpen ? 'up' : 'down'}
@@ -119,7 +113,7 @@ export const UnwrappedUsaBanner: React.FunctionComponent<UsaBannerProps> = (
   );
 
   return (
-    <section className={classes} aria-label={t('bannerLabel')}>
+    <section className={classes} aria-label={t('usaBanner.bannerLabel')}>
       <header
         className={classNames('ds-c-usa-banner__header', {
           'ds-c-usa-banner__header--expanded': isBannerOpen,
@@ -136,24 +130,27 @@ export const UnwrappedUsaBanner: React.FunctionComponent<UsaBannerProps> = (
               ariaHidden
             />
             <p className="ds-c-usa-banner__media-body">
-              <strong>{t('domainHeaderText')}</strong>
+              <strong>{t('usaBanner.domainHeaderText')}</strong>
               <br />
-              {t('domainAText')}
-              <strong> {t('govText')} </strong>
-              {t('domainText')}
+              {t('usaBanner.domainAText')}
+              <strong> {t('usaBanner.govText')} </strong>
+              {t('usaBanner.domainText')}
             </p>
           </div>
           <div className="ds-c-usa-banner__guidance">
             <LockCircleIcon className="ds-c-usa-banner__icon" ariaHidden />
             <p className="ds-c-usa-banner__media-body">
-              <strong>{t('httpsHeaderText')}</strong>
+              <strong>{t('usaBanner.httpsHeaderText')}</strong>
               <br />
-              {t('httpsAText')}
-              <strong> {t('httpsLockText')} </strong> ({' '}
-              <LockIcon className="ds-c-usa-banner__lock-image" title={t('httpsLockText')} /> ){' '}
-              {t('httpsOrText')}
-              <strong> {t('httpsText')} </strong>
-              {t('httpsDetailText')}
+              {t('usaBanner.httpsAText')}
+              <strong> {t('usaBanner.httpsLockText')} </strong> ({' '}
+              <LockIcon
+                className="ds-c-usa-banner__lock-image"
+                title={t('usaBanner.httpsLockText')}
+              />{' '}
+              ) {t('usaBanner.httpsOrText')}
+              <strong> {t('usaBanner.httpsText')} </strong>
+              {t('usaBanner.httpsDetailText')}
             </p>
           </div>
         </div>
@@ -161,20 +158,5 @@ export const UnwrappedUsaBanner: React.FunctionComponent<UsaBannerProps> = (
     </section>
   );
 };
-
-/**
- * A container component responsible for passing an instance
- * of i18next to all child components using react-i18next's
- * `withTranslation` HOC. Note that we use I18nextProvider in order
- * to avoid conflicts with other apps using react-i18next.
- * See https://github.com/i18next/react-i18next/issues/382 for
- * more context on why we need to do it this way.
- */
-// eslint-disable-next-line react/no-multi-comp
-export const UsaBanner = (props: UsaBannerProps) => (
-  <I18nextProvider i18n={i18n}>
-    <UnwrappedUsaBanner {...props} />
-  </I18nextProvider>
-);
 
 export default UsaBanner;

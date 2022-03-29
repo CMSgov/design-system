@@ -18,7 +18,7 @@ export function setLanguage(lang: Language) {
 type Translations = { [key: string]: string | Translations };
 
 export function getTranslations(lang: Language = getLanguage()) {
-  languageMatches('en', lang) ? en : es;
+  return languageMatches('en', lang) ? en : es;
 }
 
 export function addTranslations(lang: Language, translations: Translations) {
@@ -41,11 +41,18 @@ export function languageMatches(localeStringA: string, localeStringB: string = g
   return langA === langB;
 }
 
-export function t<K extends NestedKeyOf<typeof en | typeof es>>(
+/**
+ * Returns the translation for a given key for a given language. For most
+ * use cases, the `t` function will be more appropriate, where the language
+ * is not a required parameter. Use this when you need a translation from
+ * a specific language.
+ */
+export function translate<K extends NestedKeyOf<typeof en | typeof es>>(
+  lang: Language = getLanguage(),
   key: K,
   data?: { [key: string]: string | number }
 ): string {
-  const rawTranslation = get(getTranslations(), key);
+  const rawTranslation = get(getTranslations(lang), key);
   if (data) {
     // Replace template strings with provided data
     const interpolatedTranslation = Object.keys(data).reduce(
@@ -56,4 +63,20 @@ export function t<K extends NestedKeyOf<typeof en | typeof es>>(
   } else {
     return rawTranslation;
   }
+}
+
+export function t(
+  key: Parameters<typeof translate>[1],
+  data?: Parameters<typeof translate>[2]
+): string {
+  return translate(getLanguage(), key, data);
+}
+
+export function tWithLanguage(lang?: Language) {
+  return function t(
+    key: Parameters<typeof translate>[1],
+    data?: Parameters<typeof translate>[2]
+  ): string {
+    return translate(lang, key, data);
+  };
 }
