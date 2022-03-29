@@ -15,7 +15,7 @@ exports[`Badge should render a success badge 1`] = `
   <span
     class="ds-u-visibility--screen-reader"
   >
-    success
+    Success
     : 
   </span>
   Foo
@@ -29,7 +29,7 @@ exports[`Badge should render a warning badge 1`] = `
   <span
     class="ds-u-visibility--screen-reader"
   >
-    warn
+    Warning
     : 
   </span>
   Foo
@@ -43,7 +43,7 @@ exports[`Badge should render an alert badge 1`] = `
   <span
     class="ds-u-visibility--screen-reader"
   >
-    alert
+    Alert
     : 
   </span>
   Foo
@@ -57,7 +57,7 @@ exports[`Badge should render an info badge 1`] = `
   <span
     class="ds-u-visibility--screen-reader"
   >
-    info
+    Notice
     : 
   </span>
   Foo
