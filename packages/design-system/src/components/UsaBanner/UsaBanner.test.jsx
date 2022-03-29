@@ -28,12 +28,12 @@ describe('UsaBanner', function () {
     renderBanner();
     const openButton = screen.getByRole('button');
     fireEvent.click(openButton);
-    const header = screen.getByLabelText('bannerLabel').querySelector('header');
+    const header = screen.getByLabelText('Official government website').querySelector('header');
     expect(header.className).toContain('ds-c-usa-banner__header--expanded');
   });
 
   it('adds className to root element', () => {
     renderBanner({ className: 'bar' });
-    expect(screen.getByLabelText('bannerLabel').className).toContain('bar');
+    expect(screen.getByLabelText('Official government website').className).toContain('bar');
   });
 });

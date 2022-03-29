@@ -2,174 +2,170 @@
 
 exports[`UsaBanner renders correctly 1`] = `
 <div>
-  <div
-    i18n="[object Object]"
+  <section
+    aria-label="Official government website"
+    class="ds-c-usa-banner"
   >
-    <section
-      aria-label="bannerLabel"
-      class="ds-c-usa-banner"
+    <header
+      class="ds-c-usa-banner__header"
     >
-      <header
-        class="ds-c-usa-banner__header"
+      <svg
+        aria-hidden="true"
+        aria-labelledby="icon-2__title"
+        class="ds-c-icon ds-c-icon--usa-flag ds-c-usa-banner__header-flag"
+        focusable="false"
+        id="icon-2"
+        role="img"
+        viewBox="0 0 16 11"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        <svg
-          aria-hidden="true"
-          aria-labelledby="icon-2__title"
-          class="ds-c-icon ds-c-icon--usa-flag ds-c-usa-banner__header-flag"
-          focusable="false"
-          id="icon-2"
-          role="img"
-          viewBox="0 0 16 11"
-          xmlns="http://www.w3.org/2000/svg"
+        <title
+          id="icon-2__title"
         >
-          <title
-            id="icon-2__title"
+          U.S. Flag
+        </title>
+      </svg>
+      <p
+        class="ds-c-usa-banner__header-text"
+      >
+        <span>
+          An official website of the United States government
+        </span>
+        <button
+          aria-controls="gov-banner_1"
+          aria-expanded="false"
+          class="ds-c-usa-banner__button"
+        >
+          <span
+            class="ds-c-usa-banner__button-text"
           >
-            flagIconTitle
-          </title>
-        </svg>
-        <p
-          class="ds-c-usa-banner__header-text"
-        >
-          <span>
-            bannerText
+            Here’s how you know
           </span>
-          <button
-            aria-controls="gov-banner_1"
-            aria-expanded="false"
-            class="ds-c-usa-banner__button"
+          <svg
+            aria-hidden="true"
+            aria-labelledby="icon-3__title"
+            class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
+            focusable="false"
+            id="icon-3"
+            role="img"
+            viewBox="0 0 320 512"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <span
-              class="ds-c-usa-banner__button-text"
+            <title
+              id="icon-3__title"
             >
-              bannerActionText
-            </span>
-            <svg
-              aria-hidden="true"
-              aria-labelledby="icon-3__title"
-              class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
-              focusable="false"
-              id="icon-3"
-              role="img"
-              viewBox="0 0 320 512"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title
-                id="icon-3__title"
-              >
-                down arrow
-              </title>
-            </svg>
-          </button>
-        </p>
-      </header>
+              down arrow
+            </title>
+          </svg>
+        </button>
+      </p>
+    </header>
+    <div
+      class="ds-c-usa-banner__content"
+      hidden=""
+      id="gov-banner_1"
+    >
       <div
-        class="ds-c-usa-banner__content"
-        hidden=""
-        id="gov-banner_1"
+        class="ds-c-usa-banner__guidance-container"
       >
         <div
-          class="ds-c-usa-banner__guidance-container"
+          class="ds-c-usa-banner__guidance"
         >
-          <div
-            class="ds-c-usa-banner__guidance"
+          <svg
+            aria-hidden="true"
+            aria-labelledby="icon-4__title"
+            class="ds-c-icon ds-c-icon--building-circle ds-c-usa-banner__icon ds-c-icon-color--primary"
+            focusable="false"
+            id="icon-4"
+            role="img"
+            viewBox="0 0 54 54"
+            xmlns="http://www.w3.org/2000/svg"
           >
+            <title
+              id="icon-4__title"
+            >
+              Building in circle
+            </title>
+          </svg>
+          <p
+            class="ds-c-usa-banner__media-body"
+          >
+            <strong>
+              Official websites use .gov
+            </strong>
+            <br />
+            A
+            <strong>
+               
+              .gov
+               
+            </strong>
+            website belongs to an official government organization in the United States.
+          </p>
+        </div>
+        <div
+          class="ds-c-usa-banner__guidance"
+        >
+          <svg
+            aria-hidden="true"
+            aria-labelledby="icon-5__title"
+            class="ds-c-icon ds-c-icon--lock-circle ds-c-usa-banner__icon"
+            focusable="false"
+            id="icon-5"
+            role="img"
+            viewBox="0 0 54 54"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title
+              id="icon-5__title"
+            >
+              Lock in circle
+            </title>
+          </svg>
+          <p
+            class="ds-c-usa-banner__media-body"
+          >
+            <strong>
+              Secure .gov websites use HTTPS
+            </strong>
+            <br />
+            A
+            <strong>
+               
+              lock
+               
+            </strong>
+             (
+             
             <svg
               aria-hidden="true"
-              aria-labelledby="icon-4__title"
-              class="ds-c-icon ds-c-icon--building-circle ds-c-usa-banner__icon ds-c-icon-color--primary"
+              aria-labelledby="icon-6__title"
+              class="ds-c-icon ds-c-icon--lock ds-c-usa-banner__lock-image"
               focusable="false"
-              id="icon-4"
+              id="icon-6"
               role="img"
-              viewBox="0 0 54 54"
+              viewBox="0 0 52 64"
               xmlns="http://www.w3.org/2000/svg"
             >
               <title
-                id="icon-4__title"
+                id="icon-6__title"
               >
-                Building in circle
+                lock
               </title>
             </svg>
-            <p
-              class="ds-c-usa-banner__media-body"
-            >
-              <strong>
-                domainHeaderText
-              </strong>
-              <br />
-              domainAText
-              <strong>
-                 
-                govText
-                 
-              </strong>
-              domainText
-            </p>
-          </div>
-          <div
-            class="ds-c-usa-banner__guidance"
-          >
-            <svg
-              aria-hidden="true"
-              aria-labelledby="icon-5__title"
-              class="ds-c-icon ds-c-icon--lock-circle ds-c-usa-banner__icon"
-              focusable="false"
-              id="icon-5"
-              role="img"
-              viewBox="0 0 54 54"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title
-                id="icon-5__title"
-              >
-                Lock in circle
-              </title>
-            </svg>
-            <p
-              class="ds-c-usa-banner__media-body"
-            >
-              <strong>
-                httpsHeaderText
-              </strong>
-              <br />
-              httpsAText
-              <strong>
-                 
-                httpsLockText
-                 
-              </strong>
-               (
+             
+            ) 
+            or
+            <strong>
                
-              <svg
-                aria-hidden="true"
-                aria-labelledby="icon-6__title"
-                class="ds-c-icon ds-c-icon--lock ds-c-usa-banner__lock-image"
-                focusable="false"
-                id="icon-6"
-                role="img"
-                viewBox="0 0 52 64"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <title
-                  id="icon-6__title"
-                >
-                  httpsLockText
-                </title>
-              </svg>
-               )
+              https://
                
-              httpsOrText
-              <strong>
-                 
-                httpsText
-                 
-              </strong>
-              httpsDetailText
-            </p>
-          </div>
+            </strong>
+            means you’ve safely connected to the .gov website. Share sensitive information only on official, secure websites. 
+          </p>
         </div>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
 </div>
 `;
