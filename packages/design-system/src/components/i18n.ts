@@ -1,7 +1,7 @@
 import en from './locale/en.json';
 import es from './locale/es.json';
 import get from 'lodash/get';
-import { NestedPaths, TypeFromPath } from './utilities/nestedPathTypes';
+import { NestedKeyOf } from './utilities/nestedKeyTypes';
 
 export type Language = 'en' | 'es';
 
@@ -27,20 +27,6 @@ export function languageMatches(localeStringA: string, localeStringB: string = g
   const langB = localeStringB.split('-')[0];
   return langA === langB;
 }
-
-type NestedKeyOf<ObjectType extends object> = {
-  [Key in keyof ObjectType & (string | number)]: ObjectType[Key] extends object
-    ? `${Key}` | `${Key}.${NestedKeyOf<ObjectType[Key]>}`
-    : `${Key}`;
-}[keyof ObjectType & (string | number)];
-
-// export function t<K extends NestedPaths<typeof en>>(
-//   key: K
-// ): TypeFromPath<typeof en, K> {
-//   const translations = languageMatches('en', language) ? en : es;
-//   const rawTranslation = get(translations, key);
-//   return rawTranslation;
-// }
 
 export function t<K extends NestedKeyOf<typeof en | typeof es>>(key: K): string {
   const translations = languageMatches('en', language) ? en : es;
