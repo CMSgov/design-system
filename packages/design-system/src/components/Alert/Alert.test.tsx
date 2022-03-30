@@ -103,7 +103,7 @@ describe('Alert', function () {
     beforeEach(() => {
       setAlertSendsAnalytics(true);
       tealiumMock = jest.fn();
-      ((window as any) as UtagContainer).utag = {
+      (window as any as UtagContainer).utag = {
         link: tealiumMock,
       };
     });
