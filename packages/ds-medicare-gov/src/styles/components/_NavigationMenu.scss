@@ -1,5 +1,4 @@
 .m-c-navigationMenu__container--alwaysShowMenuButton .m-c-navigationMenu__toggleContainer {
-  @extend .ds-u-sm-padding--0;
   position: relative;
   top: 0;
   right: 0;
@@ -8,6 +7,7 @@
     position: static;
     display: flex;
     justify-content: flex-end;
+    padding: 0;
   }
 }
 
@@ -33,7 +33,8 @@
 .m-c-navigationMenu__container {
   @extend .ds-l-col--12;
   @extend .ds-l-sm-col--8;
-  @extend .ds-u-padding-x--0;
+  padding-left: 0;
+  padding-right: 0;
   position: relative;
 
   .m-c-navigationMenu__container:not(.m-c-navigationMenu__container--alwaysShowMenuButton) & {
@@ -59,12 +60,13 @@
 
   .m-c-navigationMenu__container:not(.m-c-navigationMenu__container--alwaysShowMenuButton) & {
     @extend .ds-l-sm-col--auto;
-    @extend .ds-u-sm-margin-left--auto;
-    @extend .ds-u-sm-padding-x--0;
 
     @media screen and (min-width: $width-sm) {
       width: auto;
       text-align: right;
+      margin-left: auto;
+      padding-left: 0;
+      padding-right: 0;
     }
   }
 }
@@ -72,7 +74,7 @@
 .m-c-navigationMenu__list {
   @extend .ds-c-list;
   @extend .ds-c-list--bare;
-  @extend .ds-u-fill--gray-lightest;
+  background-color: $color-gray-lightest;
   box-shadow: -3px 0 6px;
   width: 100vw;
   z-index: 2;
@@ -119,33 +121,41 @@
 }
 
 .m-c-navigationMenu__item {
-  @extend .ds-u-margin-top--1;
-  @extend .ds-u-sm-margin--0;
-  @extend .ds-u-padding-left--1;
-  @extend .ds-u-sm-padding--0;
+  margin-top: $spacer-1;
+  padding-left: $spacer-1;
+  width: auto;
 
-  .m-c-navigationMenu__container--alwaysShowMenuButton & {
-    @extend .ds-u-sm-margin-left--1;
+  @media screen and (min-width: $width-sm) {
+    margin: 0;
+    padding: 0;
+
+    .m-c-navigationMenu__container--alwaysShowMenuButton & {
+      margin-left: 1;
+    }
   }
 
   .m-c-navigationMenu__container:not(.m-c-navigationMenu__container--alwaysShowMenuButton) & {
-    @extend .ds-u-sm-margin-top--0;
-    @extend .ds-u-sm-padding-left--0;
-    @extend .ds-u-align-items--center;
+    align-items: center;
+
+    @media screen and (max-width: $width-sm) {
+      margin-top: 0;
+      padding-left: 0;
+    }
 
     @media screen and (max-width: $width-md) {
       display: block !important;
     }
   }
 
-  width: auto;
-
   &:last-child {
-    @extend .ds-u-margin-bottom--1;
-    @extend .ds-u-sm-margin-bottom--0;
-    @extend .ds-u-sm-margin-right--0;
-    @extend .ds-u-sm-padding-right--0;
+    margin-bottom: $spacer-1;
     border-right: 0 !important;
+
+    @media screen and (max-width: $width-sm) {
+      margin-bottom: 0;
+      margin-right: 0;
+      padding-right: 0;
+    }
   }
 
   .m-c-navigationMenu__container:not(.m-c-navigationMenu__container--alwaysShowMenuButton) & {
@@ -159,8 +169,8 @@
   }
 
   a {
-    @extend .ds-u-text-decoration--none;
-    @extend .ds-u-color--primary;
+    text-decoration: none;
+    color: $color-primary;
 
     .m-c-navigationMenu__container:not(.m-c-navigationMenu__container--alwaysShowMenuButton) & {
       @media screen and (min-width: $width-sm) {
