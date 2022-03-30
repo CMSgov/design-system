@@ -11,6 +11,7 @@ $ds-c-inset-border-width: $spacer-half;
 // Layout styles for wrapping choice container
 .ds-c-choice-wrapper {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
   margin: 0.5rem 0;
 }
@@ -18,6 +19,9 @@ $ds-c-inset-border-width: $spacer-half;
 // Styles for label
 .ds-c-choice + label,
 .ds-c-choice + .ds-c-label {
+  cursor: pointer;
+  flex: 1 1 min-content;
+  font-weight: $font-normal;
   margin-top: 0;
   transform: translateY(0.25em);
 }
@@ -25,6 +29,17 @@ $ds-c-inset-border-width: $spacer-half;
 .ds-c-choice--small + label,
 .ds-c-choice--small + .ds-c-label {
   transform: translateY(-0.125em);
+}
+
+label,
+.ds-c-label {
+  .ds-c-choice:disabled + & {
+    color: $color-muted;
+  }
+
+  .ds-c-choice.ds-c-choice--inverse:disabled + & {
+    color: $color-muted-inverse;
+  }
 }
 
 // Styles inherited by both checkbox and radio
@@ -44,9 +59,6 @@ $ds-c-inset-border-width: $spacer-half;
   width: $choice-size;
 
   &::before {
-
-    // Support HCM -- check
-    border-color: ButtonText;
     box-shadow: inset 0 0 1em 1em $choice-checked-background-color;
     content: '';
     grid-area: 1/-1;
@@ -176,6 +188,7 @@ $ds-c-inset-border-width: $spacer-half;
 // Checked children container
 .ds-c-choice__checkedChild {
   border-left: $ds-c-inset-border-width solid $color-primary;
+  flex: 1 0 100%;
   margin-bottom: $spacer-2;
   margin-left: ($choice-size / 2) - ($ds-c-inset-border-width / 2);
   padding: $spacer-2;
