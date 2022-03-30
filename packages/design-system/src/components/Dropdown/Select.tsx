@@ -130,7 +130,6 @@ export class Select extends React.PureComponent<
       </option>
     ));
 
-    /* eslint-disable react/prop-types */
     const ariaAttributes = {
       'aria-label': ariaLabel,
       // Use set `aria-invalid` based off errorMessage unless manually specified
@@ -141,7 +140,6 @@ export class Select extends React.PureComponent<
           ? classNames(this.props['aria-describedby'], errorId)
           : undefined,
     };
-    /* eslint-enable react/prop-types */
 
     return (
       <select {...ariaAttributes} className={classes} ref={setRef} {...selectProps}>

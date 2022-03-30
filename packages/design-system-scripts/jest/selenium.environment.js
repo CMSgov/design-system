@@ -1,4 +1,3 @@
-/* eslint-disable  filenames/match-exported */
 const AxeBuilder = require('@axe-core/webdriverjs');
 const NodeEnvironment = require('jest-environment-node');
 const { Builder, By, Key, until } = require('selenium-webdriver');

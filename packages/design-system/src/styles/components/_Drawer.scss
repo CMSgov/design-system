@@ -41,11 +41,9 @@ $drawer-toggle-space: 0;
   font-weight: $drawer-toggle-font-weight;
   padding: $drawer-toggle-space;
 
-  /* stylelint-disable */
   @media (-ms-high-contrast: active), (forced-colors: active) {
     padding: $spacer-half $spacer-2;
   }
-  /* stylelint-enable */
 }
 
 .ds-c-drawer__toggle--inline {
@@ -71,12 +69,10 @@ $drawer-toggle-space: 0;
     max-width: $measure-base;
   }
 
-  /* stylelint-disable */
   @media (-ms-high-contrast: active), (forced-colors: active) {
     border: 1px solid WindowText;
     border-left: $spacer-3 solid WindowText;
   }
-  /* stylelint-enable */
 }
 
 .ds-c-drawer__window {
@@ -103,11 +99,9 @@ $drawer-toggle-space: 0;
     flex: 0 0 auto;
   }
 
-  /* stylelint-disable */
   @media (-ms-high-contrast: active), (forced-colors: active) {
     border-bottom: 1px solid ButtonText;
   }
-  /* stylelint-enable */
 }
 
 .ds-c-drawer__header-heading {
@@ -147,11 +141,9 @@ $drawer-toggle-space: 0;
     flex: 1 1 auto;
   }
 
-  /* stylelint-disable */
   @media (-ms-high-contrast: active), (forced-colors: active) {
     border-top: 1px solid ButtonText;
   }
-  /* stylelint-enable */
 }
 
 /* Help drawer footer */

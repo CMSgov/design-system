@@ -48,11 +48,9 @@ export class AccordionItem extends React.Component<AccordionItemProps, Accordion
     headingLevel: '2',
   };
 
-  /* eslint-disable react/sort-comp */
   buttonId: string;
   contentId: string;
   isControlled: boolean;
-  /* eslint-enable react/sort-comp */
 
   constructor(props: AccordionItemProps) {
     super(props);
