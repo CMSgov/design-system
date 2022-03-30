@@ -40,6 +40,21 @@ export function languageMatches(localeStringA: string, localeStringB: string = g
 }
 
 /**
+ * Falls back to a more generic locale if the more specific one isn't
+ * available in this browser. Testing platforms tend to have only a
+ * few locales.
+ */
+export function fallbackLocale(language: string, subtag: string) {
+  try {
+    const locale = `${language}-${subtag}`;
+    new Date().toLocaleString(locale);
+    return locale;
+  } catch (error) {
+    return language;
+  }
+}
+
+/**
  * Returns the translation for a given key for a given language. For most
  * use cases, the `t` function will be more appropriate, where the language
  * is not a required parameter. Use this when you need a translation from

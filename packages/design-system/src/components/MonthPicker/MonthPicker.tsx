@@ -7,8 +7,7 @@ import classNames from 'classnames';
 import pick from 'lodash/pick';
 import { FormControl, FormControlPropKeys } from '../FormControl/FormControl';
 import { NUM_MONTHS, getMonthNames } from './getMonthNames';
-import { fallbackLocale } from './fallbackLocale';
-import { getLanguage } from '../i18n';
+import { fallbackLocale, getLanguage } from '../i18n';
 
 const monthNumbers = (() => {
   const months = [];
