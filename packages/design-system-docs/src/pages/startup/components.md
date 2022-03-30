@@ -65,9 +65,7 @@ This example assumes you've already added [design system styles via CSS or Sass]
 <div class="ds-c-alert ds-c-alert--warn">
   <div class="ds-c-alert__body">
     <h3 class="ds-c-alert__heading">Warning status</h3>
-    <p class="ds-c-alert__text">
-      Alert warning body text
-    </p>
+    <p class="ds-c-alert__text">Alert warning body text</p>
   </div>
 </div>
 ```
