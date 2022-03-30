@@ -14,6 +14,7 @@ $ds-c-inset-border-width: $spacer-half;
   flex-wrap: wrap;
   gap: 0.5rem;
   margin: 0.5rem 0;
+  max-width: $input-max-width;
 }
 
 // Styles for label
@@ -23,6 +24,7 @@ $ds-c-inset-border-width: $spacer-half;
   flex: 1 1 min-content;
   font-weight: $font-normal;
   margin-top: 0;
+  max-width: max-content;
   transform: translateY(0.25em);
 }
 
@@ -31,6 +33,7 @@ $ds-c-inset-border-width: $spacer-half;
   transform: translateY(-0.125em);
 }
 
+// Disabled label styles
 label,
 .ds-c-label {
   .ds-c-choice:disabled + & {
@@ -217,10 +220,11 @@ label,
 // Checked children container
 .ds-c-choice__checkedChild {
   border-left: $ds-c-inset-border-width solid $color-primary;
-  flex: 1 0 100%;
+  flex: 1 1 100%;
   margin-bottom: $spacer-2;
   margin-left: ($choice-size / 2) - ($ds-c-inset-border-width / 2);
   padding: $spacer-2;
+  padding-right: 0;
 
   &--inverse {
     border-left-color: $color-white;
