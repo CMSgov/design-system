@@ -31,8 +31,7 @@ export function addTranslations(lang: Language, translations: Translations) {
  * Because language strings can contain region subtags, we need a way to compare
  * just the language portion of two language strings. This function compares two
  * locale strings that may or may not contain subtags according to IETF BCP 47.
- * The second string defaults to our i18next instance's current language (which
- * may also contain a subtag depending on what was detected).
+ * The second string defaults to our globally set language.
  */
 export function languageMatches(localeStringA: string, localeStringB: string = getLanguage()) {
   const langA = localeStringA.split('-')[0];
