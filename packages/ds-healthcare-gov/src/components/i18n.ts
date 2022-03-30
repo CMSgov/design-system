@@ -9,18 +9,22 @@
  */
 import en from './locale/en.json';
 import es from './locale/es.json';
-import {
+import { Language, extend as extendCore, getLanguage } from '@cmsgov/design-system';
+
+const { getTranslations, extend, languageMatches, translate, t, tWithLanguage } = extendCore({
+  en,
+  es,
+});
+
+export {
   Language,
-  TFunction,
-  addTranslations,
   getLanguage,
+  getTranslations,
+  extend,
   languageMatches,
-  t,
   translate,
+  t,
   tWithLanguage,
-} from '@cmsgov/design-system';
+};
 
-addTranslations('en', en);
-addTranslations('es', es);
-
-export { Language, TFunction, getLanguage, languageMatches, t, translate, tWithLanguage };
+export type TFunction = typeof t;
