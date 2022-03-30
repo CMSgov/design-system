@@ -53,6 +53,8 @@ export function languageMatches(localeStringA: string, localeStringB: string = g
 export function fallbackLocale(language: string, subtag: string) {
   try {
     const locale = `${language}-${subtag}`;
+    // If the locale string is invalid, the following line will fail and jump to
+    // our catch block; otherwise, it is valid and safe to return it.
     new Date().toLocaleString(locale);
     return locale;
   } catch (error) {
