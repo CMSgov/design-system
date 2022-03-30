@@ -1,4 +1,3 @@
-/* eslint-disable react/no-multi-comp */
 import React from 'react';
 import { Dialog } from '../Dialog';
 import { Button } from '../Button';

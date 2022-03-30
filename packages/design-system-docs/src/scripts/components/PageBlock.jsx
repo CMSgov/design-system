@@ -44,7 +44,6 @@ class PageBlock extends React.PureComponent {
 
   description() {
     if (this.props.description) {
-      /* eslint-disable react/no-danger */
       return (
         <div
           className="c-page-block-description ds-u-margin-top--2 ds-u-measure--wide"
@@ -53,7 +52,6 @@ class PageBlock extends React.PureComponent {
           }}
         />
       );
-      /* eslint-enable react/no-danger */
     }
   }
 
@@ -75,7 +73,6 @@ class PageBlock extends React.PureComponent {
       </span>
     );
 
-    /* eslint-disable react/no-danger */
     return [
       subheader,
       <h2
@@ -87,7 +84,6 @@ class PageBlock extends React.PureComponent {
       />,
       source,
     ];
-    /* eslint-enable react/no-danger */
   }
 
   render() {

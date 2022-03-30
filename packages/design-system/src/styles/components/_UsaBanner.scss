@@ -109,9 +109,7 @@ $usa-caret-icon-size: 10px;
 }
 
 .ds-c-usa-banner__button-text {
-  /* stylelint-disable scss/at-extend-no-missing-placeholder */
   @extend .ds-c-link;
-  /* stylelint-enable scss/at-extend-no-missing-placeholder */
 }
 
 .ds-c-usa-banner__content {
@@ -156,11 +154,9 @@ $usa-caret-icon-size: 10px;
   &.ds-c-icon--lock-circle {
     color: #719f2a;
 
-    /* stylelint-disable scss/media-feature-value-dollar-variable */
     @media (-ms-high-contrast: active), (forced-colors: active) {
       color: WindowText;
     }
-    /* stylelint-enable scss/media-feature-value-dollar-variable */
   }
 }
 
@@ -173,13 +169,11 @@ $usa-caret-icon-size: 10px;
     fill: currentColor;
   }
 
-  /* stylelint-disable scss/media-feature-value-dollar-variable */
   @media (-ms-high-contrast: active), (forced-colors: active) {
     path {
       fill: WindowText;
     }
   }
-  /* stylelint-enable scss/media-feature-value-dollar-variable */
 }
 
 .ds-c-usa-banner__media-img {
@@ -191,7 +185,6 @@ $usa-caret-icon-size: 10px;
   margin: 0;
 }
 
-// stylelint-disable no-duplicate-selectors
 .ds-c-usa-banner__header--expanded {
   @media (min-width: $width-sm) {
     background-color: transparent;
@@ -205,7 +198,6 @@ $usa-caret-icon-size: 10px;
     display: none;
   }
 }
-// stylelint-enable no-duplicate-selectors
 
 .ds-c-usa-banner__action-icon {
   color: $usa-banner-text-color;

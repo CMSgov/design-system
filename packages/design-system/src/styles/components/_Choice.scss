@@ -47,12 +47,10 @@ label,
   .ds-c-choice:disabled + &,
   .ds-c-choice.ds-c-choice--inverse:disabled + & {
     cursor: not-allowed;
-
-    /* stylelint-disable scss/media-feature-value-dollar-variable */
+    
     @media (-ms-high-contrast: active), (forced-colors: active) {
       color: GrayText;
     }
-    /* stylelint-enable scss/media-feature-value-dollar-variable */
   }
 }
 
@@ -106,12 +104,15 @@ label,
     border-color: $choice-disabled-border-color;
     color: $color-muted;
     cursor: not-allowed;
+    
+    &::before {
+      background-color: $choice-disabled-background-color;
+      border-color: $choice-disabled-border-color;
+    }
 
-    /* stylelint-disable scss/media-feature-value-dollar-variable */
     @media (-ms-high-contrast: active), (forced-colors: active) {
       border-color: GrayText;
     }
-    /* stylelint-enable scss/media-feature-value-dollar-variable */
   }
 
   // Focus
@@ -140,13 +141,11 @@ label,
     &::after {
       opacity: 1;
     }
-
-    /* stylelint-disable max-nesting-depth, selector-max-specificity */
+    
     &:focus::before {
       height: $choice-size - ($choice-border-width * 2);
       width: $choice-size - ($choice-border-width * 2);
     }
-    /* stylelint-enable max-nesting-depth, selector-max-specificity */
   }
 }
 
@@ -159,12 +158,10 @@ label,
     height: $choice-radio-button-size;
     width: $choice-radio-button-size;
 
-    /* stylelint-disable scss/media-feature-value-dollar-variable */
     @media (-ms-high-contrast: active), (forced-colors: active) {
       background-color: WindowText;
       box-shadow: none;
     }
-    /* stylelint-enable scss/media-feature-value-dollar-variable */
   }
 }
 
@@ -184,11 +181,9 @@ label,
     background-color: $choice-disabled-background-color-inverse;
     border-color: $choice-disabled-border-color-inverse;
 
-    /* stylelint-disable scss/media-feature-value-dollar-variable */
     @media (-ms-high-contrast: active), (forced-colors: active) {
       border-color: GrayText;
     }
-    /* stylelint-enable scss/media-feature-value-dollar-variable */
   }
 }
 
@@ -215,7 +210,6 @@ label,
 }
 
 // TODO: rename to .ds-c-choice__checked-child
-/* stylelint-disable selector-class-pattern */
 
 // Checked children container
 .ds-c-choice__checkedChild {
@@ -234,5 +228,3 @@ label,
     margin-left: $spacer-1;
   }
 }
-
-/* stylelint-enable selector-class-pattern */

@@ -1,4 +1,21 @@
 module.exports = {
-  extends: '@cmsgov/stylelint-config-design-system',
-  rules: {},
+  customSyntax: 'postcss-scss',
+  defaultSeverity: 'warning',
+  extends: 'stylelint-config-recommended',
+  ignoreFiles: ['**/dist/**', '**/helpers/**', '**/__tests__/**', 'tmp/**', '**/types/**'],
+  plugins: ['stylelint-scss'],
+  reportDescriptionlessDisables: true,
+  reportNeedlessDisables: true,
+  reportInvalidScopeDisables: true,
+  rules: {
+    'at-rule-no-unknown': null,
+    'declaration-no-important': true,
+    'function-no-unknown': null,
+    'no-descending-specificity': null,
+    'scss/at-extend-no-missing-placeholder': null,
+    'scss/at-import-no-partial-leading-underscore': true,
+    'scss/at-mixin-argumentless-call-parentheses': 'never',
+    'scss/dollar-variable-no-missing-interpolation': true,
+    'scss/selector-no-redundant-nesting-selector': true,
+  },
 };

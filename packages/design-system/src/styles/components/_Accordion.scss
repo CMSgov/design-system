@@ -50,7 +50,6 @@ $accordion-header-font-family: $font-sans;
     @include focus-styles;
   }
 
-  /* stylelint-disable */
   @media (-ms-high-contrast: active), (forced-colors: active) {
     -ms-high-contrast-adjust: none;
     background-color: LinkText;
@@ -65,20 +64,17 @@ $accordion-header-font-family: $font-sans;
       outline: $spacer-half solid LinkText;
     }
   }
-  /* stylelint-enable */
 
   .ds-c-icon {
     flex-shrink: 0;
     height: 1.25em;
     width: 1.25em;
 
-    /* stylelint-disable */
     @media (-ms-high-contrast: active), (forced-colors: active) {
       path {
         fill: Window;
       }
     }
-    /* stylelint-enable */
   }
 }
 

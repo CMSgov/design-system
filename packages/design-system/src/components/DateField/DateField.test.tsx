@@ -1,5 +1,4 @@
 jest.mock('lodash/uniqueId', () => (str) => `${str}snapshot`);
-/* eslint-disable import/first */
 import { DateField } from './DateField';
 import React from 'react';
 import defaultDateFormatter from './defaultDateFormatter';

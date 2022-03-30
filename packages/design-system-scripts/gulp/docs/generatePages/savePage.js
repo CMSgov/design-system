@@ -19,9 +19,7 @@ function savePage(page, docsPath) {
       return saveToFile(html, pathObj);
     }
 
-    /* eslint-disable promise/no-return-wrap */
     return Promise.resolve(false);
-    /* eslint-enable promise/no-return-wrap */
   });
 }
 

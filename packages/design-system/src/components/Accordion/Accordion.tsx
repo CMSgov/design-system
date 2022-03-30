@@ -30,11 +30,9 @@ const handleKeyDown = (e) => {
   }
 };
 
-// eslint-disable-next-line react/prop-types
 export const Accordion: FunctionComponent<AccordionProps> = ({ bordered, children, className }) => {
   const classes = classNames('ds-c-accordion', bordered && 'ds-c-accordion--bordered', className);
   return (
-    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div onKeyDown={handleKeyDown} className={classes}>
       {children}
     </div>

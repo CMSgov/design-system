@@ -12,9 +12,7 @@ interface GlobalHeaderProps {
   noBorder?: boolean;
   actions: {
     text: string | JSX.Element;
-    /* eslint-disable */
     callback?: (...args: any[]) => any;
-    /* eslint-enable */
     menuPanel?: JSX.Element;
     hide?: boolean;
     props?: { [index: string]: any };
@@ -95,7 +93,6 @@ class GlobalHeaderMenu extends PureComponent<GlobalHeaderMenuProps, GlobalHeader
           )}
         </Button>
         {this.state.open && !mobile && (
-          // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
           <div className="m-c-globalHeader__dropdownMenu" tabIndex={0} ref={this.menuRef}>
             {this.props.panel}
           </div>

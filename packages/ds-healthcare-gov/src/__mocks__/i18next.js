@@ -1,4 +1,3 @@
-/* eslint-disable */
 const i18next = jest.genMockFromModule('i18next');
 
 function t(key, params) {
