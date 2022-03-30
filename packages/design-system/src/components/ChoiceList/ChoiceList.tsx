@@ -9,7 +9,7 @@ export type ChoiceListType = 'checkbox' | 'radio';
 export type ChoiceListErrorPlacement = 'top' | 'bottom';
 
 // Omit props that we override with values from the ChoiceList
-type OmitChoiceProp = 'inversed' | 'name' | 'onBlur' | 'onChange' | 'size' | 'type' | 'inputRef';
+type OmitChoiceProp = 'inversed' | 'name' | 'onBlur' | 'onChange' | 'size' | 'type';
 export type ChoiceProps = Omit<ChoiceComponentProps, OmitChoiceProp>;
 
 export interface ChoiceListProps {
@@ -146,6 +146,9 @@ export class ChoiceList extends React.PureComponent<ChoiceListProps, any> {
         disabled: choiceProps.disabled || this.props.disabled, // Individual choices can be disabled as well as the entire field
         inputRef: (ref) => {
           this.choiceRefs.push(ref);
+          if (choiceProps.inputRef) {
+            choiceProps.inputRef(ref);
+          }
         },
       };
 
