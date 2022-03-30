@@ -5,7 +5,7 @@ import get from 'lodash/get';
 export type Language = 'en' | 'es';
 
 function detectDocumentLanguage(): Language | undefined {
-  const detectedLang = document?.querySelector('html')?.lang;
+  const detectedLang = document?.querySelector('html')?.lang ?? '';
   if (['en', 'es'].some((lang) => languageMatches(lang, detectedLang))) {
     return detectedLang as Language;
   } else {
