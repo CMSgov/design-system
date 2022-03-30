@@ -85,7 +85,7 @@ export function translate(
 }
 
 /**
- * Returns the translation for a given key in the currently set language
+ * Returns the translation for a given key in the currently set language.
  */
 export function t(
   key: Parameters<typeof translate>[1],
@@ -96,6 +96,14 @@ export function t(
 
 export type TFunction = typeof t;
 
+/**
+ * Returns a translation function bound to a specific language.
+ *
+ * Note that we don't want to use this to create the default `t` function
+ * because it will bind with whatever the default language is AT THAT TIME,
+ * so if the global language changes after we call this function,
+ * translations coming out if it wouldn't pick up on the change.
+ */
 export function tWithLanguage(lang?: Language) {
   return function t(
     key: Parameters<typeof translate>[1],
