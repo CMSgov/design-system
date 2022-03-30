@@ -1,5 +1,6 @@
 import ChoiceList, { ChoiceListType } from './ChoiceList';
-import { mount, shallow } from 'enzyme';
+import { render, waitFor, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import React from 'react';
 
 function generateChoices(length) {
@@ -16,7 +17,7 @@ function generateChoices(length) {
 }
 
 // Mounts the component by default because the choices are passed into FormControl as a function
-function render(customProps = {}, choicesCount = 2, deep = true) {
+function renderChoiceList(customProps = {}, choicesCount = 2) {
   const props = {
     ...{
       choices: generateChoices(choicesCount),
@@ -26,143 +27,171 @@ function render(customProps = {}, choicesCount = 2, deep = true) {
     },
     ...customProps,
   };
-  const component = <ChoiceList {...props} />;
-
-  return {
-    props,
-    wrapper: deep ? mount(component) : shallow(component),
-  };
+  return render(<ChoiceList {...props} />);
 }
 
 describe('ChoiceList', () => {
   describe('Radio buttons and Checkboxes', () => {
-    it('is a radio button group', () => {
-      const { wrapper } = render({ type: 'radio' });
+    afterEach(() => {
+      jest.clearAllTimers();
+      jest.useRealTimers();
+    });
 
-      expect(wrapper.find('Choice').first().prop('type')).toBe('radio');
-      expect(wrapper).toMatchSnapshot();
+    it('is a radio button group', () => {
+      const { asFragment } = renderChoiceList();
+      const choiceEl = screen.getByLabelText('Choice 1') as HTMLInputElement;
+
+      expect(choiceEl.type).toBe('radio');
+      expect(asFragment()).toMatchSnapshot();
     });
 
     it('is a checkbox group', () => {
-      const { wrapper } = render({ type: 'checkbox' });
+      renderChoiceList({ type: 'checkbox' });
+      const choiceEl = screen.getByLabelText('Choice 1') as HTMLInputElement;
 
-      expect(wrapper.find('Choice').first().prop('type')).toBe('checkbox');
+      expect(choiceEl.type).toBe('checkbox');
     });
 
     it('is a checkbox', () => {
-      const { wrapper } = render({ choices: generateChoices(1), type: 'checkbox' });
+      renderChoiceList({
+        choices: generateChoices(1),
+        type: 'checkbox',
+      });
+      const choiceEl = screen.getByLabelText('Choice 1') as HTMLInputElement;
 
-      expect(wrapper.find('Choice').first().prop('type')).toBe('checkbox');
+      expect(choiceEl.type).toBe('checkbox');
     });
 
     it('renders all choices', () => {
-      const { props, wrapper } = render();
-      const choice = wrapper.find('Choice').first();
+      const numChoices = 3;
+      renderChoiceList({}, numChoices);
+      const choiceEls = screen.getAllByRole('radio');
+      const choice = choiceEls[0] as HTMLInputElement;
 
-      expect(wrapper.find('Choice').length).toBe(props.choices.length);
-      expect(choice.prop('name')).toBe(props.name);
-      expect(choice.prop('value')).toBe(props.choices[0].value);
+      expect(choiceEls.length).toBe(numChoices);
+      expect(choice.name).toBe('spec-field');
+      expect(choice.value).toBe('1');
     });
 
     it('is enclosed by a fieldset', () => {
-      const { wrapper } = render();
-      const container = wrapper.find('FormControl');
+      renderChoiceList();
+      // a fieldset's default aria role is 'group' per MDN
+      // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset#technical_summary
+      const fieldsetEl = screen.getByRole('group');
 
-      expect(container.prop('component')).toBe('fieldset');
+      expect(fieldsetEl).toBeDefined();
     });
 
     it('renders the label prop as a legend element', () => {
-      const { wrapper } = render();
-      const container = wrapper.find('FormControl');
+      renderChoiceList();
+      const legendEl = screen.getByText('Foo');
 
-      expect(container.prop('labelComponent')).toBe('legend');
+      expect(legendEl.parentElement.tagName).toBe('LEGEND');
     });
 
     it('passes checked prop', () => {
       const choices = generateChoices(4);
       choices[0].checked = true;
-      const { wrapper } = render({ choices, onChange: jest.fn() });
+      renderChoiceList({ choices, onChange: jest.fn() });
+      const choiceEl = screen.getByLabelText('Choice 1') as HTMLInputElement;
 
-      expect(wrapper.find('Choice').first().prop('checked')).toBe(true);
+      expect(choiceEl.checked).toBe(true);
     });
 
     it('passes defaultChecked prop', () => {
       const choices = generateChoices(4);
       choices[0].defaultChecked = true;
-      const { wrapper } = render({ choices });
+      renderChoiceList({ choices });
+      const choiceEls = screen.getAllByRole('radio') as HTMLInputElement[];
 
-      expect(wrapper.find('Choice').first().prop('defaultChecked')).toBe(true);
+      expect(choiceEls[0].checked).toBe(true);
+      expect(choiceEls[1].checked).toBe(false);
+      expect(choiceEls[2].checked).toBe(false);
+      expect(choiceEls[3].checked).toBe(false);
     });
 
     it('passes disabled prop', () => {
       const choices = generateChoices(4);
       choices[0].disabled = true;
-      const { wrapper } = render({ choices });
+      renderChoiceList({ choices });
+      const choiceEl = screen.getByLabelText('Choice 1') as HTMLInputElement;
 
-      expect(wrapper.find('Choice').first().prop('disabled')).toBe(true);
+      expect(choiceEl.disabled).toBe(true);
     });
 
     it('disables all choices', () => {
-      const { wrapper } = render({ disabled: true });
+      renderChoiceList({ disabled: true });
+      const choiceEls = screen.getAllByRole('radio') as HTMLInputElement[];
 
-      expect(wrapper.find('Choice').first().prop('disabled')).toBe(true);
-      expect(wrapper.find('Choice').last().prop('disabled')).toBe(true);
-    });
-
-    it("doesn't pass an ID prop", () => {
-      const { wrapper } = render();
-
-      expect(wrapper.find('Choice').first().prop('id')).toBeUndefined();
+      expect(choiceEls[0].disabled).toBe(true);
+      expect(choiceEls[1].disabled).toBe(true);
     });
 
     it('is inversed Choice', () => {
-      const { wrapper } = render({ inversed: true });
+      renderChoiceList({ inversed: true });
+      const choiceEl = screen.getByLabelText('Choice 1') as HTMLInputElement;
 
-      expect(wrapper.find('Choice').first().prop('inversed')).toBe(true);
+      expect(choiceEl.classList).toContain('ds-c-choice--inverse');
     });
 
-    it('calls onChange', () => {
+    it('calls onChange', async () => {
       const onChange = jest.fn();
-      const { wrapper } = render({ onChange });
-      wrapper.find('Choice').first().simulate('change');
-
-      setTimeout(() => {
-        expect(onChange).toHaveBeenCalled();
-      }, 20);
+      renderChoiceList({ onChange });
+      const choiceEl = screen.getByLabelText('Choice 1');
+      userEvent.click(choiceEl);
+      await waitFor(() => expect(onChange).toHaveBeenCalled());
     });
 
     it('calls onBlur', () => {
       const onBlur = jest.fn();
-      const { wrapper } = render({ onBlur });
-      wrapper.find('Choice').first().simulate('blur');
+      renderChoiceList({ onBlur });
+      const choiceEl = screen.getByLabelText('Choice 1');
 
-      setTimeout(() => {
-        expect(onBlur).toHaveBeenCalled();
-      }, 20);
+      choiceEl.focus();
+      userEvent.tab();
+
+      expect(onBlur).toHaveBeenCalled();
     });
 
     it('calls onComponentBlur', () => {
+      jest.useFakeTimers();
       const onBlur = jest.fn();
       const onComponentBlur = jest.fn();
-      const { wrapper } = render({ onBlur, onComponentBlur });
-      wrapper.find('Choice').last().simulate('blur');
+      renderChoiceList({ onBlur, onComponentBlur });
+      const choiceEl = screen.getByLabelText('Choice 2');
 
-      setTimeout(() => {
-        expect(onBlur).toHaveBeenCalled();
-        expect(onComponentBlur).toHaveBeenCalled();
-      }, 20);
+      choiceEl.focus();
+      userEvent.tab();
+      jest.runAllTimers();
+
+      expect(onBlur).toHaveBeenCalled();
+      expect(onComponentBlur).toHaveBeenCalled();
     });
 
     it('doesnt call onComponentBlur', () => {
+      jest.useFakeTimers();
       const onBlur = jest.fn();
       const onComponentBlur = jest.fn();
-      const { wrapper } = render({ onBlur, onComponentBlur });
-      wrapper.find('Choice').first().simulate('blur');
+      renderChoiceList({ onBlur, onComponentBlur, type: 'checkbox' });
+      const choiceEls = screen.getAllByRole('checkbox');
 
-      setTimeout(() => {
-        expect(onBlur).toHaveBeenCalled();
-        expect(onComponentBlur).not.toHaveBeenCalled();
-      }, 20);
+      choiceEls[0].focus();
+      userEvent.tab();
+      jest.runAllTimers();
+
+      expect(onBlur).toHaveBeenCalled();
+      expect(onComponentBlur).not.toHaveBeenCalled();
+    });
+
+    it('passes through a ref', () => {
+      const inputRefCallback = jest.fn();
+      renderChoiceList({
+        choices: [
+          { label: 'Choice 1', value: '1', inputRef: inputRefCallback },
+          { label: 'Choice 2', value: '2' },
+        ],
+      });
+      expect(inputRefCallback).toHaveBeenCalled();
     });
   });
 });
