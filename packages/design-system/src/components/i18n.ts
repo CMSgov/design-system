@@ -1,7 +1,6 @@
 import en from './locale/en.json';
 import es from './locale/es.json';
 import get from 'lodash/get';
-import { NestedKeyOf } from './utilities/nestedKeyTypes';
 
 export type Language = 'en' | 'es';
 
