@@ -11,7 +11,14 @@ export default {
   },
   args: {
     choices: [
-      { label: 'Choice 1', value: 'A', defaultChecked: true },
+      {
+        label: 'Choice 1',
+        value: 'A',
+        defaultChecked: true,
+        inputRef: () => {
+          console.log('I am a ref callback being called!');
+        },
+      },
       { label: 'Choice 2', requirementLabel: 'Choice hint text', value: 'B' },
       { label: 'Disabled choice 3', value: 'C', disabled: true },
     ],
