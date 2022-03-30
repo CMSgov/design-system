@@ -47,9 +47,9 @@ export function languageMatches(localeStringA: string, localeStringB: string = g
  * is not a required parameter. Use this when you need a translation from
  * a specific language.
  */
-export function translate<K extends NestedKeyOf<typeof en | typeof es>>(
+export function translate(
   lang: Language = getLanguage(),
-  key: K,
+  key: string,
   data?: { [key: string]: string | number }
 ): string {
   const rawTranslation = get(getTranslations(lang), key);
@@ -77,7 +77,7 @@ export function t(
 
 export type TFunction = typeof t;
 
-export function tWithLanguage(lang?: Language): TFunction {
+export function tWithLanguage(lang?: Language) {
   return function t(
     key: Parameters<typeof translate>[1],
     data?: Parameters<typeof translate>[2]
