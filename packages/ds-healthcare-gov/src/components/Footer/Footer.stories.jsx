@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Footer from './I18nFooter';
+import Footer from './Footer';
 
 export default {
   title: 'Components/Footer',
@@ -9,6 +9,10 @@ export default {
     className: {
       control: { type: 'text' },
       type: { name: 'string', required: false },
+    },
+    initialLanguage: {
+      control: 'radio',
+      options: ['en', 'es'],
     },
   },
   args: {

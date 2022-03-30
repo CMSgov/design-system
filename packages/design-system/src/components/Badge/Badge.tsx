@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import { t } from '../i18n';
 
 export type BadgeSize = 'big';
 export type BadgeVariation = 'info' | 'success' | 'warn' | 'alert';
@@ -33,17 +34,10 @@ export const Badge: React.FC<React.ComponentPropsWithRef<'span'> & BadgeProps> =
   const variationClass = variation && `ds-c-badge--${variation}`;
   const classes = classNames('ds-c-badge', variationClass, sizeClasses[size], className);
 
-  const a11yLabel = {
-    info: 'Notice',
-    success: 'Success',
-    warn: 'Warning',
-    alert: 'Alert',
-  };
-
   return (
     <span className={classes} {...others}>
-      {a11yLabel[variation] && (
-        <span className="ds-u-visibility--screen-reader">{a11yLabel[variation]}: </span>
+      {variation && (
+        <span className="ds-u-visibility--screen-reader">{t(`badge.${variation}`)}: </span>
       )}
       {children}
     </span>
