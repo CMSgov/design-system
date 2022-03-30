@@ -16,15 +16,12 @@ export function setLanguage(lang: Language) {
 
 type Translations = { [key: string]: string | Translations };
 
-export function getTranslations(lang: Language = getLanguage()) {
+export function getTranslations(lang: Language = getLanguage()): Translations {
   return languageMatches('en', lang) ? en : es;
 }
 
 export function addTranslations(lang: Language, translations: Translations) {
-  const baseTranslations = getTranslations(lang);
-  for (const key in translations) {
-    baseTranslations[key] = translations[key];
-  }
+  Object.assign(getTranslations(lang), translations);
 }
 
 /**
