@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
+import { Language, tWithLanguage } from '../i18n';
 import {
   LockCircleIcon,
   LockIcon,
@@ -9,8 +10,6 @@ import {
   ArrowIcon,
   CloseIconThin,
 } from '../Icons';
-import EnglishTranslations from '../locale/en.json';
-import SpanishTranslations from '../locale/es.json';
 
 export type LocaleLanguage = 'en' | 'es';
 
@@ -26,16 +25,15 @@ export interface UsaBannerProps {
   /**
    * The language the USA Banner will be presented in.
    */
-  locale?: LocaleLanguage;
+  locale?: Language;
 }
 
 export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBannerProps) => {
   const [isBannerOpen, setBannerOpen] = useState<boolean>(false);
   const [shouldRenderMobileView, setShouldRenderMobileView] = useState<boolean>(false);
-  const t = props.locale === 'es' ? SpanishTranslations.usaBanner : EnglishTranslations.usaBanner;
-  const langProp = props.locale === 'es' ? 'es' : null;
   const classes = classNames('ds-c-usa-banner', props.className);
   const id = props.id || uniqueId('gov-banner_');
+  const t = tWithLanguage(props.locale);
 
   useEffect(() => {
     let media;
@@ -60,77 +58,69 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
     setBannerOpen(!isBannerOpen);
   };
 
+  const flagIcon = (
+    <UsaFlagIcon className="ds-c-usa-banner__header-flag" title={t('usaBanner.flagIconTitle')} />
+  );
+
   // on mobile, the entire header needs to be a clickable element
-  const renderMobileHeaderContent = (t) => {
-    const { locale } = props;
-    return (
-      <button
-        onClick={toggleBanner}
-        className="ds-c-usa-banner__button"
-        aria-expanded={isBannerOpen}
-        aria-controls={id}
-      >
-        <UsaFlagIcon
-          className="ds-c-usa-banner__header-flag"
-          title={locale === 'es' ? 'U.S. Bandera' : 'U.S. Flag'}
-        />
-        <p className="ds-c-usa-banner__header-text">
-          <span>{t.bannerText}</span>
-          {!isBannerOpen && (
-            <span className="ds-c-usa-banner__cta-wrapper">
-              <span className="ds-c-usa-banner__button-text">{t.bannerActionText}</span>
-              <ArrowIcon direction="down" className="ds-c-usa-banner__action-icon" />
-            </span>
-          )}
-        </p>
-        {isBannerOpen && (
-          <div className="ds-c-usa-banner__collapse-banner-container">
-            <CloseIconThin />
-          </div>
+  const renderMobileHeaderContent = () => (
+    <button
+      onClick={toggleBanner}
+      className="ds-c-usa-banner__button"
+      aria-expanded={isBannerOpen}
+      aria-controls={id}
+    >
+      {flagIcon}
+      <p className="ds-c-usa-banner__header-text">
+        <span>{t('usaBanner.bannerText')}</span>
+        {!isBannerOpen && (
+          <span className="ds-c-usa-banner__cta-wrapper">
+            <span className="ds-c-usa-banner__button-text">{t('usaBanner.bannerActionText')}</span>
+            <ArrowIcon direction="down" className="ds-c-usa-banner__action-icon" />
+          </span>
         )}
-      </button>
-    );
-  };
+      </p>
+      {isBannerOpen && (
+        <div className="ds-c-usa-banner__collapse-banner-container">
+          <CloseIconThin />
+        </div>
+      )}
+    </button>
+  );
 
   // on larger screens, only cta needs to be clickable
-  const renderHeaderContent = (t) => {
-    const { locale } = props;
-    return (
-      <>
-        <UsaFlagIcon
-          className="ds-c-usa-banner__header-flag"
-          title={locale === 'es' ? 'U.S. Bandera' : 'U.S. Flag'}
-        />
-        <p className="ds-c-usa-banner__header-text">
-          <span>{t.bannerText}</span>
+  const renderHeaderContent = () => (
+    <>
+      {flagIcon}
+      <p className="ds-c-usa-banner__header-text">
+        <span>{t('usaBanner.bannerText')}</span>
 
-          <button
-            onClick={toggleBanner}
-            className="ds-c-usa-banner__button"
-            aria-expanded={isBannerOpen}
-            aria-controls={id}
-          >
-            <span className="ds-c-usa-banner__button-text">{t.bannerActionText}</span>
+        <button
+          onClick={toggleBanner}
+          className="ds-c-usa-banner__button"
+          aria-expanded={isBannerOpen}
+          aria-controls={id}
+        >
+          <span className="ds-c-usa-banner__button-text">{t('usaBanner.bannerActionText')}</span>
 
-            <ArrowIcon
-              direction={isBannerOpen ? 'up' : 'down'}
-              className="ds-c-usa-banner__action-icon"
-            />
-          </button>
-        </p>
-      </>
-    );
-  };
+          <ArrowIcon
+            direction={isBannerOpen ? 'up' : 'down'}
+            className="ds-c-usa-banner__action-icon"
+          />
+        </button>
+      </p>
+    </>
+  );
 
   return (
-    <section className={classes} aria-label={t.bannerLabel} lang={langProp}>
+    <section className={classes} aria-label={t('usaBanner.bannerLabel')}>
       <header
         className={classNames('ds-c-usa-banner__header', {
           'ds-c-usa-banner__header--expanded': isBannerOpen,
           'ds-c-usa-banner__header--mobile': shouldRenderMobileView,
         })}
       >
-        {shouldRenderMobileView ? renderMobileHeaderContent(t) : renderHeaderContent(t)}
+        {shouldRenderMobileView ? renderMobileHeaderContent() : renderHeaderContent()}
       </header>
       <div className="ds-c-usa-banner__content" id={id} hidden={!isBannerOpen}>
         <div className="ds-c-usa-banner__guidance-container">
@@ -140,37 +130,33 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
               ariaHidden
             />
             <p className="ds-c-usa-banner__media-body">
-              <strong>{t.domainHeaderText}</strong>
+              <strong>{t('usaBanner.domainHeaderText')}</strong>
               <br />
-              {t.domainAText}
-              <strong> {t.govText} </strong>
-              {t.domainText}
+              {t('usaBanner.domainAText')}
+              <strong> {t('usaBanner.govText')} </strong>
+              {t('usaBanner.domainText')}
             </p>
           </div>
           <div className="ds-c-usa-banner__guidance">
             <LockCircleIcon className="ds-c-usa-banner__icon" ariaHidden />
             <p className="ds-c-usa-banner__media-body">
-              <strong>{t.httpsHeaderText}</strong>
+              <strong>{t('usaBanner.httpsHeaderText')}</strong>
               <br />
-              {t.httpsAText}
-              <strong> {t.httpsLockText} </strong> ({' '}
+              {t('usaBanner.httpsAText')}
+              <strong> {t('usaBanner.httpsLockText')} </strong> ({' '}
               <LockIcon
                 className="ds-c-usa-banner__lock-image"
-                title={props.locale === 'es' ? 'candado' : 'lock'}
+                title={t('usaBanner.httpsLockText')}
               />{' '}
-              ) {t.httpsOrText}
-              <strong> {t.httpsText} </strong>
-              {t.httpsDetailText}
+              ) {t('usaBanner.httpsOrText')}
+              <strong> {t('usaBanner.httpsText')} </strong>
+              {t('usaBanner.httpsDetailText')}
             </p>
           </div>
         </div>
       </div>
     </section>
   );
-};
-
-UsaBanner.defaultProps = {
-  locale: 'en',
 };
 
 export default UsaBanner;

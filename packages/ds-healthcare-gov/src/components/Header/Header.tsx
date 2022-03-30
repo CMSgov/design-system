@@ -3,11 +3,10 @@ import DeConsumerMessage from './DeConsumerMessage';
 import Logo from '../Logo/Logo';
 import Menu from './Menu';
 import React, { useState } from 'react';
-import { Language } from '../i18n';
 import { SkipNav } from '@cmsgov/design-system';
+import { Language, getLanguage, tWithLanguage } from '../i18n';
 import classnames from 'classnames';
 import defaultMenuLinks from './defaultMenuLinks';
-import { useTranslation } from 'react-i18next';
 
 export interface Link {
   href: string;
@@ -135,7 +134,7 @@ export const VARIATION_NAMES = {
  */
 const Header = (props: HeaderProps) => {
   const [openMenu, setOpenMenu] = useState(false);
-  const { t } = useTranslation(props.initialLanguage);
+  const t = tWithLanguage(props.initialLanguage);
 
   /**
    * Determines which variation of the header should be displayed,
@@ -181,18 +180,17 @@ const Header = (props: HeaderProps) => {
   const classes = classnames(`hc-c-header hc-c-header--${variation()}`, props.className);
 
   const hasCustomLinks = !!props.links;
-  const defaultLinksForVariation = defaultMenuLinks(
-    t,
-    props.initialLanguage,
-    props.deConsumer,
-    props.subpath,
-    props.primaryDomain,
-    props.switchLocaleLink,
-    props.hideLoginLink,
-    props.hideLogoutLink,
-    props.hideLanguageSwitch,
-    hasCustomLinks
-  )[variation()];
+  const defaultLinksForVariation = defaultMenuLinks({
+    locale: props.initialLanguage,
+    deConsumer: props.deConsumer,
+    subpath: props.subpath,
+    primaryDomain: props.primaryDomain,
+    switchLocaleLink: props.switchLocaleLink,
+    hideLoginLink: props.hideLoginLink,
+    hideLogoutLink: props.hideLogoutLink,
+    hideLanguageSwitch: props.hideLanguageSwitch,
+    customLinksPassedIn: hasCustomLinks,
+  })[variation()];
 
   const links = hasCustomLinks
     ? props.links.concat(defaultLinksForVariation)
@@ -210,7 +208,7 @@ const Header = (props: HeaderProps) => {
             href={props.primaryDomain ? props.primaryDomain : '/'}
             className="hc-c-logo-link ds-l-col ds-l-col--auto"
           >
-            <Logo locale={props.initialLanguage} />
+            <Logo locale={props.initialLanguage ?? getLanguage()} />
           </a>
 
           <ActionMenu
@@ -239,7 +237,6 @@ const Header = (props: HeaderProps) => {
 };
 
 Header.defaultProps = {
-  initialLanguage: 'en',
   skipNavHref: '#main',
 };
 

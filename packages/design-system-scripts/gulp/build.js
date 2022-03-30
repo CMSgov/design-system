@@ -81,6 +81,7 @@ function copyComponentJson(dir) {
       .src([`${src}/components/**/*.json`])
       .pipe(gulp.dest(path.join(dir, 'dist', 'components')))
       .pipe(gulp.dest(path.join(dir, 'dist', 'esnext')))
+      .pipe(gulp.dest(path.join(dir, 'dist', 'types')))
   );
 }
 

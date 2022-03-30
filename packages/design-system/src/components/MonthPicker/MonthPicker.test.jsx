@@ -6,7 +6,6 @@ import renderer from 'react-test-renderer';
 const defaultProps = {
   name: 'months',
   label: 'Months',
-  locale: 'en',
   selectAllText: 'Select all',
   clearAllText: 'Clear all',
 };
@@ -85,35 +84,35 @@ describe('MonthPicker', () => {
 
   it('generates month names with based on locale', () => {
     const shortMonthNames = [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec',
+      'ene',
+      'feb',
+      'mar',
+      'abr',
+      'may',
+      'jun',
+      'jul',
+      'ago',
+      'sept',
+      'oct',
+      'nov',
+      'dic',
     ];
     const longMonthNames = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
+      'enero',
+      'febrero',
+      'marzo',
+      'abril',
+      'mayo',
+      'junio',
+      'julio',
+      'agosto',
+      'septiembre',
+      'octubre',
+      'noviembre',
+      'diciembre',
     ];
 
-    const { wrapper } = render({ locale: 'en' });
+    const { wrapper } = render({ locale: 'es' });
     wrapper.find('Choice').forEach((choice, i) => {
       expect(choice.props().label).toEqual(shortMonthNames[i]);
       expect(choice.props()['aria-label']).toEqual(longMonthNames[i]);
