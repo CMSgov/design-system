@@ -4,6 +4,7 @@ import { alertSendsAnalytics } from '../flags';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
 import { InfoCircleIcon, AlertCircleIcon, WarningIcon, CheckCircleIcon } from '../Icons';
+import { t } from '../i18n';
 
 export type AlertHeadingLevel = '1' | '2' | '3' | '4' | '5' | '6';
 export type AlertRole = 'alert' | 'alertdialog' | 'region' | 'status';
@@ -141,12 +142,6 @@ export class Alert extends React.PureComponent<
   headingId: string;
   eventHeadingText: string;
 
-  a11yLabel = {
-    error: 'Alert',
-    warn: 'Warning',
-    success: 'Success',
-  };
-
   heading(): React.ReactElement | void {
     const { headingLevel, heading } = this.props;
     const Heading = `h${headingLevel}`;
@@ -193,6 +188,7 @@ export class Alert extends React.PureComponent<
       variation,
       weight,
       analytics,
+      analyticsLabelOverride,
       ...alertProps
     } = this.props;
 
@@ -202,6 +198,12 @@ export class Alert extends React.PureComponent<
       variation && `ds-c-alert--${variation}`,
       weight && `ds-c-alert--${weight}`,
       className
+    );
+
+    const a11yLabel = (
+      <span className="ds-c-alert__a11y-label ds-u-visibility--screen-reader">
+        {t(`alert.${variation ?? 'defaultLabel'}`)}:{' '}
+      </span>
     );
 
     return (
@@ -224,17 +226,12 @@ export class Alert extends React.PureComponent<
         <div className="ds-c-alert__body">
           {heading ? (
             <div className="ds-c-alert__header ds-c-alert__heading">
-              <span className="ds-c-alert__a11y-label ds-u-visibility--screen-reader">
-                {variation ? this.a11yLabel[variation] : 'Notice'}:{' '}
-              </span>
+              {a11yLabel}
               {this.heading()}
             </div>
           ) : (
-            <span className="ds-c-alert__a11y-label ds-u-visibility--screen-reader">
-              {variation ? this.a11yLabel[variation] : 'Notice'}:{' '}
-            </span>
+            a11yLabel
           )}
-
           {children}
         </div>
       </div>

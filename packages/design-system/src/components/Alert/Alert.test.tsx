@@ -2,90 +2,105 @@ import Alert, { AlertProps } from './Alert';
 import React from 'react';
 import { UtagContainer } from '../analytics';
 import { setAlertSendsAnalytics } from '../flags';
-import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 
-const text = 'Ruhroh';
+const defaultText = 'Ruhroh';
 
-function render(props: AlertProps = {}, children: string | React.ReactElement = text) {
-  return {
-    props: props,
-    wrapper: shallow(<Alert {...props}>{children}</Alert>),
-  };
+function renderAlert(props: AlertProps = {}) {
+  // eslint-disable-next-line react/no-children-prop
+  return render(<Alert children={defaultText} {...props} />);
+}
+
+function expectHasClass(className: string) {
+  expect(screen.getByRole('region').className).toContain(className);
 }
 
 describe('Alert', function () {
   it('renders alert', () => {
-    const { wrapper } = render();
-    const $body = wrapper.render().find('.ds-c-alert__body');
+    renderAlert();
+    const alert = screen.getByRole('region');
+    expect(alert.className).toContain('ds-c-alert');
 
-    expect(wrapper.hasClass('ds-c-alert')).toBe(true);
-    expect(wrapper.prop('role')).toBe('region');
-    expect($body.length).toBe(1);
-    expect($body.text()).toContain(text);
+    const body = screen.getByText(defaultText);
+    expect(body).toBeDefined();
   });
 
   it('renders a heading', () => {
-    const { props, wrapper } = render({ heading: 'Error' });
-    const $heading = wrapper.render().find('.ds-c-alert__heading').last();
-
-    expect($heading.length).toBe(1);
-    expect($heading.text()).toBe(props.heading);
+    const heading = 'Error';
+    renderAlert({ heading });
+    expect(screen.getByText(heading).textContent).toEqual(heading);
   });
 
   it('appears as an error', () => {
-    const { wrapper } = render({ variation: 'error' });
-
-    expect(wrapper.hasClass('ds-c-alert--error')).toBe(true);
+    renderAlert({ variation: 'error' });
+    expectHasClass('ds-c-alert--error');
   });
 
   it('appears as a lightweight alert', () => {
-    const { wrapper } = render({ weight: 'lightweight' });
-
-    expect(wrapper.hasClass('ds-c-alert--lightweight')).toBe(true);
+    renderAlert({ weight: 'lightweight' });
+    expectHasClass('ds-c-alert--lightweight');
   });
 
   it('renders additional className and role prop', () => {
-    const { props, wrapper } = render({
-      className: 'ds-u-test',
-      role: 'alert',
-    });
-
-    expect(wrapper.hasClass(props.className)).toBe(true);
-    expect(wrapper.prop('role')).toBe(props.role);
+    const className = 'ds-u-test';
+    const role = 'alert';
+    renderAlert({ className, role });
+    const alert = screen.getByRole(role);
+    expect(alert.className).toContain(className);
   });
 
   it('renders HTML children', () => {
-    const { wrapper } = render({}, <p className="ds-text">{text}</p>);
-    const $p = wrapper.render().find('.ds-text');
-
-    expect($p.length).toBe(1);
-    expect($p.text()).toBe(text);
+    renderAlert({ children: <p className="ds-text">{defaultText}</p> });
+    const alert = screen.getByRole('region');
+    expect(alert.textContent).toContain(defaultText);
   });
 
   it('hides icon', () => {
-    const { wrapper } = render({ hideIcon: true });
-
-    expect(wrapper.hasClass('ds-c-alert--hide-icon')).toBe(true);
+    renderAlert({ hideIcon: true });
+    expectHasClass('ds-c-alert--hide-icon');
   });
 
   it('sets tabIndex when autoFocus is passed', () => {
-    const { wrapper } = render({ autoFocus: true });
-
-    expect(wrapper.prop('tabIndex')).toBe(-1);
+    renderAlert({ autoFocus: true });
+    const alert = screen.getByRole('region');
+    expect(alert.tabIndex).toBe(-1);
   });
 
   it('sets tabIndex when alertRef is passed', () => {
-    const { wrapper } = render({ alertRef: (elem) => console.log('ALERT', elem) });
-
-    expect(wrapper.prop('tabIndex')).toBe(-1);
+    const alertRef = jest.fn();
+    renderAlert({ alertRef });
+    const alert = screen.getByRole('region');
+    expect(alert.tabIndex).toBe(-1);
+    expect(alertRef).toHaveBeenCalled();
   });
 
   it('renders additional attributes', () => {
-    const { props, wrapper } = render({
-      ariaLabel: 'additional aria alert',
+    const ariaLabel = 'additional aria alert';
+    renderAlert({ 'aria-label': ariaLabel });
+    const alert = screen.getByLabelText(ariaLabel);
+    expect(alert).toBeInTheDocument();
+  });
+
+  describe('a11y labels', () => {
+    it('renders default a11y label', () => {
+      renderAlert();
+      expect(screen.getByText('Notice:')).toBeInTheDocument();
     });
 
-    expect(wrapper.prop('ariaLabel')).toBe(props.ariaLabel);
+    it('renders error a11y label', () => {
+      renderAlert({ variation: 'error' });
+      expect(screen.getByText('Alert:')).toBeInTheDocument();
+    });
+
+    it('renders success a11y label', () => {
+      renderAlert({ variation: 'success' });
+      expect(screen.getByText('Success:')).toBeInTheDocument();
+    });
+
+    it('renders warn a11y label', () => {
+      renderAlert({ variation: 'warn' });
+      expect(screen.getByText('Warning:')).toBeInTheDocument();
+    });
   });
 
   describe('Analytics event tracking', () => {
@@ -95,8 +110,8 @@ describe('Alert', function () {
       event_type: 'ui interaction',
       ga_eventCategory: 'ui components',
       ga_eventAction: 'alert impression',
-      ga_eventLabel: text,
-      heading: text,
+      ga_eventLabel: defaultText,
+      heading: defaultText,
       type: 'warn',
     };
 
@@ -114,7 +129,7 @@ describe('Alert', function () {
     });
 
     it('sends analytics event tracking', () => {
-      render({ variation: 'warn' });
+      renderAlert({ variation: 'warn' });
       expect(tealiumMock).toBeCalledWith({
         ga_eventType: 'cmsds',
         ga_eventValue: '',
@@ -123,12 +138,12 @@ describe('Alert', function () {
     });
 
     it('disables analytics event tracking', () => {
-      render({ heading: 'dialog heading', variation: 'error', analytics: false });
+      renderAlert({ heading: 'dialog heading', variation: 'error', analytics: false });
       expect(tealiumMock).not.toBeCalled();
     });
 
     it('overrides analytics event tracking', () => {
-      render({ variation: 'success', analyticsLabelOverride: 'other heading' });
+      renderAlert({ variation: 'success', analyticsLabelOverride: 'other heading' });
       expect(tealiumMock).toBeCalledWith(
         expect.objectContaining({
           ga_eventLabel: 'other heading',

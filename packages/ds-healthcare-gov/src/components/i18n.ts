@@ -1,38 +1,26 @@
 /**
- * @file Initializes and exports a single i18next instance,
- *  responsible for rendering internationalized strings.
+ * @file Adds translations to core translation module and exports the i18n-
+ * related functions. We want components in this child design system that use
+ * translation to import their translation functions from this module so we
+ * get the side-effects of adding our package-specific translations. It's not
+ * the cleanest way to do things, probably, but it's compatible with unit
+ * tests and Storybook, which expect each component to get everything it
+ * needs from its imports.
  */
 import en from './locale/en.json';
 import es from './locale/es.json';
-import i18n from 'i18next';
+import {
+  Language,
+  TFunction,
+  addTranslations,
+  getLanguage,
+  languageMatches,
+  t,
+  translate,
+  tWithLanguage,
+} from '@cmsgov/design-system';
 
-export type Language = 'en' | 'es';
+addTranslations('en', en);
+addTranslations('es', es);
 
-const resources = {
-  // TODO: This is all wrong, but this is a band-aid until we can release a breaking change.
-  // The keys of this resources object are supposed to be the languages, but we're using
-  // the namespaces feature as our language switcher because that will allow us to continue
-  // to set the language on a per-component basis. Otherwise, after upgrading to the latest
-  // version of i18next we'd have to start setting the language at the i18nInstance level.
-  common: {
-    en,
-    es,
-  },
-} as const;
-
-const i18nInstance = i18n.createInstance(
-  {
-    interpolation: {
-      escapeValue: false, // React doesn't need this
-    },
-    lng: 'common',
-    resources,
-  },
-  function (err) {
-    if (err) {
-      throw new Error(err);
-    }
-  }
-);
-
-export default i18nInstance;
+export { Language, TFunction, getLanguage, languageMatches, t, translate, tWithLanguage };

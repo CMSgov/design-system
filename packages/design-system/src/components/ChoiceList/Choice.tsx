@@ -213,13 +213,15 @@ export class Choice extends React.PureComponent<
       'ds-c-choice--small': size === 'small',
     });
 
+    const choiceWrapperClasses = classNames(className, 'ds-c-choice-wrapper');
+
     // Remove props we have our own implementations for
     if (inputProps.id) delete inputProps.id;
     if (inputProps.onChange) delete inputProps.onChange;
 
     return (
       <div
-        className={className}
+        className={choiceWrapperClasses}
         aria-live={checkedChildren ? 'polite' : null}
         aria-relevant={checkedChildren ? 'additions text' : null}
         aria-atomic={checkedChildren ? 'false' : null}

@@ -1,8 +1,7 @@
-import { Button, Dialog } from '@cmsgov/design-system';
+import { Button, Dialog, TFunction } from '@cmsgov/design-system';
 import { getPrivacySettings, setPrivacySettings } from './privacySettings';
 import PrivacySettingsTable from './PrivacySettingsTable';
 import React, { useState } from 'react';
-import { TFunction } from 'react-i18next';
 
 const privacySettingConfigs = [
   { settingsKey: 'c3', translationKey: 'advertising' },

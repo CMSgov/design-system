@@ -5,31 +5,31 @@ Object {
   "logged-in": Array [
     Object {
       "href": "/marketplace/auth/global/en_US/myProfile#landingPage",
-      "label": "header.myApplicationsAndCoverage",
+      "label": "My applications & coverage",
     },
     Object {
       "href": "/marketplace/auth/global/en_US/myProfile#settings",
-      "label": "header.myProfile",
+      "label": "My profile",
     },
     Object {
       "href": "https://www.cuidadodesalud.gov/es/",
-      "label": "header.español",
+      "label": "Español",
     },
     Object {
       "href": "/logout",
       "identifier": "logout",
-      "label": "header.logout",
+      "label": "Log out",
     },
   ],
   "logged-out": Array [
     Object {
       "href": "https://www.cuidadodesalud.gov/es/",
-      "label": "header.español",
+      "label": "Español",
     },
     Object {
       "href": "/login",
       "identifier": "login",
-      "label": "header.login",
+      "label": "Log in",
     },
   ],
 }
@@ -39,32 +39,32 @@ exports[`MenuList English returns array of menu list objects with absolute URLs 
 Object {
   "logged-in": Array [
     Object {
-      "href": "/marketplace/auth/global/en_US/myProfile#landingPage",
-      "label": "header.myApplicationsAndCoverage",
+      "href": "https://www.healthcare.gov/marketplace/auth/global/en_US/myProfile#landingPage",
+      "label": "My applications & coverage",
     },
     Object {
-      "href": "/marketplace/auth/global/en_US/myProfile#settings",
-      "label": "header.myProfile",
+      "href": "https://www.healthcare.gov/marketplace/auth/global/en_US/myProfile#settings",
+      "label": "My profile",
     },
     Object {
-      "href": "https://www.cuidadodesalud.gov/es/https://www.healthcare.gov",
-      "label": "header.español",
+      "href": "https://www.cuidadodesalud.gov/es/",
+      "label": "Español",
     },
     Object {
-      "href": "/logout",
+      "href": "https://www.healthcare.gov/logout",
       "identifier": "logout",
-      "label": "header.logout",
+      "label": "Log out",
     },
   ],
   "logged-out": Array [
     Object {
-      "href": "https://www.cuidadodesalud.gov/es/https://www.healthcare.gov",
-      "label": "header.español",
+      "href": "https://www.cuidadodesalud.gov/es/",
+      "label": "Español",
     },
     Object {
-      "href": "/login",
+      "href": "https://www.healthcare.gov/login",
       "identifier": "login",
-      "label": "header.login",
+      "label": "Log in",
     },
   ],
 }
@@ -74,32 +74,32 @@ exports[`MenuList English returns array of menu list objects with custom locale 
 Object {
   "logged-in": Array [
     Object {
-      "href": "https://ayudalocal.cuidadodesalud.gov/es/marketplace/auth/global/en_US/myProfile#landingPage",
-      "label": "header.myApplicationsAndCoverage",
+      "href": "/marketplace/auth/global/en_US/myProfile#landingPage",
+      "label": "My applications & coverage",
     },
     Object {
-      "href": "https://ayudalocal.cuidadodesalud.gov/es/marketplace/auth/global/en_US/myProfile#settings",
-      "label": "header.myProfile",
+      "href": "/marketplace/auth/global/en_US/myProfile#settings",
+      "label": "My profile",
     },
     Object {
-      "href": "https://www.cuidadodesalud.gov/es/",
-      "label": "header.español",
+      "href": "https://ayudalocal.cuidadodesalud.gov/es",
+      "label": "Español",
     },
     Object {
-      "href": "https://ayudalocal.cuidadodesalud.gov/es/logout",
+      "href": "/logout",
       "identifier": "logout",
-      "label": "header.logout",
+      "label": "Log out",
     },
   ],
   "logged-out": Array [
     Object {
-      "href": "https://www.cuidadodesalud.gov/es/",
-      "label": "header.español",
+      "href": "https://ayudalocal.cuidadodesalud.gov/es",
+      "label": "Español",
     },
     Object {
-      "href": "https://ayudalocal.cuidadodesalud.gov/es/login",
+      "href": "/login",
       "identifier": "login",
-      "label": "header.login",
+      "label": "Log in",
     },
   ],
 }
@@ -110,31 +110,31 @@ Object {
   "logged-in": Array [
     Object {
       "href": "/marketplace/auth/global/en_US/myProfile#landingPage",
-      "label": "header.myApplicationsAndCoverage",
+      "label": "My applications & coverage",
     },
     Object {
       "href": "/marketplace/auth/global/en_US/myProfile#settings",
-      "label": "header.myProfile",
+      "label": "My profile",
     },
     Object {
-      "href": "https://www.cuidadodesalud.gov/es/",
-      "label": "header.español",
+      "href": "https://www.cuidadodesalud.gov/es/tax-tool/",
+      "label": "Español",
     },
     Object {
       "href": "/logout",
       "identifier": "logout",
-      "label": "header.logout",
+      "label": "Log out",
     },
   ],
   "logged-out": Array [
     Object {
-      "href": "https://www.cuidadodesalud.gov/es/",
-      "label": "header.español",
+      "href": "https://www.cuidadodesalud.gov/es/tax-tool/",
+      "label": "Español",
     },
     Object {
-      "href": "/login?check_de=1",
+      "href": "/login",
       "identifier": "login",
-      "label": "header.login",
+      "label": "Log in",
     },
   ],
 }
@@ -145,31 +145,31 @@ Object {
   "logged-in": Array [
     Object {
       "href": "/marketplace/auth/global/es_MX/myProfile#landingPage",
-      "label": "header.myApplicationsAndCoverage",
+      "label": "Mis solicitudes & cobertura",
     },
     Object {
       "href": "/marketplace/auth/global/es_MX/myProfile#settings",
-      "label": "header.myProfile",
+      "label": "Mi perfil",
     },
     Object {
       "href": "https://www.healthcare.gov/",
-      "label": "header.english",
+      "label": "English",
     },
     Object {
       "href": "/logout",
       "identifier": "logout",
-      "label": "header.logout",
+      "label": "Finalizar sesión",
     },
   ],
   "logged-out": Array [
     Object {
       "href": "https://www.healthcare.gov/",
-      "label": "header.english",
+      "label": "English",
     },
     Object {
       "href": "/login",
       "identifier": "login",
-      "label": "header.login",
+      "label": "Iniciar sesión",
     },
   ],
 }
@@ -179,32 +179,32 @@ exports[`MenuList Spanish returns array of menu list objects with absolute URLs 
 Object {
   "logged-in": Array [
     Object {
-      "href": "/marketplace/auth/global/es_MX/myProfile#landingPage",
-      "label": "header.myApplicationsAndCoverage",
+      "href": "https://www.cuidadodesalud.gov/marketplace/auth/global/es_MX/myProfile#landingPage",
+      "label": "Mis solicitudes & cobertura",
     },
     Object {
-      "href": "/marketplace/auth/global/es_MX/myProfile#settings",
-      "label": "header.myProfile",
+      "href": "https://www.cuidadodesalud.gov/marketplace/auth/global/es_MX/myProfile#settings",
+      "label": "Mi perfil",
     },
     Object {
-      "href": "https://www.healthcare.gov/https://www.healthcare.gov",
-      "label": "header.english",
+      "href": "https://www.healthcare.gov/",
+      "label": "English",
     },
     Object {
-      "href": "/logout",
+      "href": "https://www.cuidadodesalud.gov/logout",
       "identifier": "logout",
-      "label": "header.logout",
+      "label": "Finalizar sesión",
     },
   ],
   "logged-out": Array [
     Object {
-      "href": "https://www.healthcare.gov/https://www.healthcare.gov",
-      "label": "header.english",
+      "href": "https://www.healthcare.gov/",
+      "label": "English",
     },
     Object {
-      "href": "/login",
+      "href": "https://www.cuidadodesalud.gov/login",
       "identifier": "login",
-      "label": "header.login",
+      "label": "Iniciar sesión",
     },
   ],
 }
@@ -214,32 +214,32 @@ exports[`MenuList Spanish returns array of menu list objects with custom locale 
 Object {
   "logged-in": Array [
     Object {
-      "href": "https://localhelp.healthcare.gov/marketplace/auth/global/es_MX/myProfile#landingPage",
-      "label": "header.myApplicationsAndCoverage",
+      "href": "/marketplace/auth/global/es_MX/myProfile#landingPage",
+      "label": "Mis solicitudes & cobertura",
     },
     Object {
-      "href": "https://localhelp.healthcare.gov/marketplace/auth/global/es_MX/myProfile#settings",
-      "label": "header.myProfile",
+      "href": "/marketplace/auth/global/es_MX/myProfile#settings",
+      "label": "Mi perfil",
     },
     Object {
-      "href": "https://www.healthcare.gov/",
-      "label": "header.english",
+      "href": "https://localhelp.healthcare.gov",
+      "label": "English",
     },
     Object {
-      "href": "https://localhelp.healthcare.gov/logout",
+      "href": "/logout",
       "identifier": "logout",
-      "label": "header.logout",
+      "label": "Finalizar sesión",
     },
   ],
   "logged-out": Array [
     Object {
-      "href": "https://www.healthcare.gov/",
-      "label": "header.english",
+      "href": "https://localhelp.healthcare.gov",
+      "label": "English",
     },
     Object {
-      "href": "https://localhelp.healthcare.gov/login",
+      "href": "/login",
       "identifier": "login",
-      "label": "header.login",
+      "label": "Iniciar sesión",
     },
   ],
 }
@@ -250,31 +250,31 @@ Object {
   "logged-in": Array [
     Object {
       "href": "/marketplace/auth/global/es_MX/myProfile#landingPage",
-      "label": "header.myApplicationsAndCoverage",
+      "label": "Mis solicitudes & cobertura",
     },
     Object {
       "href": "/marketplace/auth/global/es_MX/myProfile#settings",
-      "label": "header.myProfile",
+      "label": "Mi perfil",
     },
     Object {
-      "href": "https://www.healthcare.gov/",
-      "label": "header.english",
+      "href": "https://www.healthcare.gov/tax-tool/",
+      "label": "English",
     },
     Object {
       "href": "/logout",
       "identifier": "logout",
-      "label": "header.logout",
+      "label": "Finalizar sesión",
     },
   ],
   "logged-out": Array [
     Object {
-      "href": "https://www.healthcare.gov/",
-      "label": "header.english",
+      "href": "https://www.healthcare.gov/tax-tool/",
+      "label": "English",
     },
     Object {
-      "href": "/login?check_de=1",
+      "href": "/login",
       "identifier": "login",
-      "label": "header.login",
+      "label": "Iniciar sesión",
     },
   ],
 }
@@ -285,23 +285,23 @@ Object {
   "logged-in": Array [
     Object {
       "href": "/marketplace/auth/global/en_US/myProfile#landingPage",
-      "label": "header.myApplicationsAndCoverage",
+      "label": "My applications & coverage",
     },
     Object {
       "href": "/marketplace/auth/global/en_US/myProfile#settings",
-      "label": "header.myProfile",
+      "label": "My profile",
     },
     Object {
       "href": "/logout",
       "identifier": "logout",
-      "label": "header.logout",
+      "label": "Log out",
     },
   ],
   "logged-out": Array [
     Object {
       "href": "/login",
       "identifier": "login",
-      "label": "header.login",
+      "label": "Log in",
     },
   ],
 }
@@ -312,26 +312,26 @@ Object {
   "logged-in": Array [
     Object {
       "href": "/marketplace/auth/global/en_US/myProfile#landingPage",
-      "label": "header.myApplicationsAndCoverage",
+      "label": "My applications & coverage",
     },
     Object {
       "href": "/marketplace/auth/global/en_US/myProfile#settings",
-      "label": "header.myProfile",
+      "label": "My profile",
     },
     Object {
       "href": "https://www.cuidadodesalud.gov/es/",
-      "label": "header.español",
+      "label": "Español",
     },
     Object {
       "href": "/logout",
       "identifier": "logout",
-      "label": "header.logout",
+      "label": "Log out",
     },
   ],
   "logged-out": Array [
     Object {
       "href": "https://www.cuidadodesalud.gov/es/",
-      "label": "header.español",
+      "label": "Español",
     },
   ],
 }
@@ -342,26 +342,26 @@ Object {
   "logged-in": Array [
     Object {
       "href": "/marketplace/auth/global/en_US/myProfile#landingPage",
-      "label": "header.myApplicationsAndCoverage",
+      "label": "My applications & coverage",
     },
     Object {
       "href": "/marketplace/auth/global/en_US/myProfile#settings",
-      "label": "header.myProfile",
+      "label": "My profile",
     },
     Object {
       "href": "https://www.cuidadodesalud.gov/es/",
-      "label": "header.español",
+      "label": "Español",
     },
   ],
   "logged-out": Array [
     Object {
       "href": "https://www.cuidadodesalud.gov/es/",
-      "label": "header.español",
+      "label": "Español",
     },
     Object {
       "href": "/login",
       "identifier": "login",
-      "label": "header.login",
+      "label": "Log in",
     },
   ],
 }
@@ -372,23 +372,23 @@ Object {
   "logged-in": Array [
     Object {
       "href": "https://www.cuidadodesalud.gov/es/",
-      "label": "header.español",
+      "label": "Español",
     },
     Object {
       "href": "/logout",
       "identifier": "logout",
-      "label": "header.logout",
+      "label": "Log out",
     },
   ],
   "logged-out": Array [
     Object {
       "href": "https://www.cuidadodesalud.gov/es/",
-      "label": "header.español",
+      "label": "Español",
     },
     Object {
       "href": "/login",
       "identifier": "login",
-      "label": "header.login",
+      "label": "Log in",
     },
   ],
 }
