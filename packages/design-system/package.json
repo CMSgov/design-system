@@ -28,7 +28,7 @@
     "classnames": "^2.2.5",
     "core-js": "^3.6.5",
     "downshift": "^3.2.10",
-    "ev-emitter": "^1.1.1",
+    "ev-emitter": "^2.1.2",
     "focus-trap-react": "^6.0.0",
     "lodash": "^4.17.21",
     "prop-types": "^15.7.2",
