@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['eslint:recommended', 'plugin:react/recommended'],
+  extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:react-hooks/recommended'],
   env: {
     browser: true,
     es6: true,
@@ -13,7 +13,7 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
-  plugins: ['jest', 'jsx-a11y', 'react'],
+  plugins: ['jest', 'jsx-a11y', 'react', 'react-hooks'],
   settings: {
     react: {
       version: 'detect',

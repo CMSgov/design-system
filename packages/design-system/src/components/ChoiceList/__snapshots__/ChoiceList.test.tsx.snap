@@ -15,7 +15,9 @@ exports[`ChoiceList Radio buttons and Checkboxes is a radio button group 1`] = `
         Foo
       </span>
     </legend>
-    <div>
+    <div
+      class="ds-c-choice-wrapper"
+    >
       <input
         class="ds-c-choice"
         id="radio_spec-field_2"
@@ -34,7 +36,9 @@ exports[`ChoiceList Radio buttons and Checkboxes is a radio button group 1`] = `
         </span>
       </label>
     </div>
-    <div>
+    <div
+      class="ds-c-choice-wrapper"
+    >
       <input
         class="ds-c-choice"
         id="radio_spec-field_3"
