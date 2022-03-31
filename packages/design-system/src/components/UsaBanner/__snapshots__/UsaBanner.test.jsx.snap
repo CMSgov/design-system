@@ -11,20 +11,13 @@ exports[`UsaBanner renders correctly 1`] = `
     >
       <svg
         aria-hidden="true"
-        aria-labelledby="icon-2__title"
         class="ds-c-icon ds-c-icon--usa-flag ds-c-usa-banner__header-flag"
         focusable="false"
         id="icon-2"
         role="img"
         viewBox="0 0 16 11"
         xmlns="http://www.w3.org/2000/svg"
-      >
-        <title
-          id="icon-2__title"
-        >
-          U.S. Flag
-        </title>
-      </svg>
+      />
       <p
         class="ds-c-usa-banner__header-text"
       >
@@ -43,20 +36,13 @@ exports[`UsaBanner renders correctly 1`] = `
           </span>
           <svg
             aria-hidden="true"
-            aria-labelledby="icon-3__title"
             class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
             focusable="false"
             id="icon-3"
             role="img"
             viewBox="0 0 320 512"
             xmlns="http://www.w3.org/2000/svg"
-          >
-            <title
-              id="icon-3__title"
-            >
-              down arrow
-            </title>
-          </svg>
+          />
         </button>
       </p>
     </header>
@@ -73,20 +59,13 @@ exports[`UsaBanner renders correctly 1`] = `
         >
           <svg
             aria-hidden="true"
-            aria-labelledby="icon-4__title"
             class="ds-c-icon ds-c-icon--building-circle ds-c-usa-banner__icon ds-c-icon-color--primary"
             focusable="false"
             id="icon-4"
             role="img"
             viewBox="0 0 54 54"
             xmlns="http://www.w3.org/2000/svg"
-          >
-            <title
-              id="icon-4__title"
-            >
-              Building in circle
-            </title>
-          </svg>
+          />
           <p
             class="ds-c-usa-banner__media-body"
           >
@@ -108,20 +87,13 @@ exports[`UsaBanner renders correctly 1`] = `
         >
           <svg
             aria-hidden="true"
-            aria-labelledby="icon-5__title"
             class="ds-c-icon ds-c-icon--lock-circle ds-c-usa-banner__icon"
             focusable="false"
             id="icon-5"
             role="img"
             viewBox="0 0 54 54"
             xmlns="http://www.w3.org/2000/svg"
-          >
-            <title
-              id="icon-5__title"
-            >
-              Lock in circle
-            </title>
-          </svg>
+          />
           <p
             class="ds-c-usa-banner__media-body"
           >
@@ -139,20 +111,13 @@ exports[`UsaBanner renders correctly 1`] = `
              
             <svg
               aria-hidden="true"
-              aria-labelledby="icon-6__title"
               class="ds-c-icon ds-c-icon--lock ds-c-usa-banner__lock-image"
               focusable="false"
               id="icon-6"
               role="img"
               viewBox="0 0 52 64"
               xmlns="http://www.w3.org/2000/svg"
-            >
-              <title
-                id="icon-6__title"
-              >
-                lock
-              </title>
-            </svg>
+            />
              
             ) 
             or
