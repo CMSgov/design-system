@@ -1,8 +1,7 @@
 import { Link, VARIATION_NAMES } from './Header';
 import localeLink from './localeLink';
 import loginLink from './loginLink';
-import { TFunction } from 'i18next';
-import { Language } from '../i18n';
+import { Language, languageMatches, tWithLanguage } from '../i18n';
 
 export enum LinkIdentifier {
   LOGIN = 'login',
@@ -13,24 +12,37 @@ export interface DefaultLink extends Link {
   identifier?: LinkIdentifier;
 }
 
+export interface DefaultMenuLinkOptions {
+  locale?: Language;
+  deConsumer?: boolean;
+  subpath?: string;
+  primaryDomain?: string;
+  switchLocaleLink?: string;
+  hideLoginLink?: boolean;
+  hideLogoutLink?: boolean;
+  hideLanguageSwitch?: boolean;
+  customLinksPassedIn?: boolean;
+}
+
 /**
  * Default menu links for each header variation.
  * Apps can import this method into their app if they need to
  * extend the existing default list of menu links.
  */
-export function defaultMenuLinks(
-  t: TFunction,
-  locale: Language = 'en',
-  deConsumer?: boolean,
-  subpath?: string,
-  primaryDomain = '',
-  switchLocaleLink?: string,
-  hideLoginLink?: boolean,
-  hideLogoutLink?: boolean,
-  hideLanguageSwitch?: boolean,
-  customLinksPassedIn?: boolean
-) {
-  const isSpanish = locale === 'es';
+export function defaultMenuLinks(options: DefaultMenuLinkOptions = {}) {
+  const {
+    locale,
+    deConsumer,
+    subpath,
+    primaryDomain = '',
+    switchLocaleLink,
+    hideLoginLink,
+    hideLogoutLink,
+    hideLanguageSwitch,
+    customLinksPassedIn,
+  } = options;
+  const t = tWithLanguage(locale);
+  const isSpanish = languageMatches('es', locale);
   const ffmLocalePath = isSpanish ? 'es_MX' : 'en_US';
 
   // NOTE: order matters here and links will be displayed in order added to the arrays

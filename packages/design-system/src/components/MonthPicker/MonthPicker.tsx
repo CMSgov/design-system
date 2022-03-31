@@ -1,12 +1,13 @@
 // Polyfills required for IE11 compatibility
 import 'core-js/stable/array/includes';
-import { FormControl, FormControlPropKeys } from '../FormControl/FormControl';
-import { NUM_MONTHS, getMonthNames } from './getMonthNames';
 import Button, { ButtonVariation } from '../Button/Button';
 import Choice from '../ChoiceList/Choice';
 import React, { ChangeEvent, useState } from 'react';
 import classNames from 'classnames';
 import pick from 'lodash/pick';
+import { FormControl, FormControlPropKeys } from '../FormControl/FormControl';
+import { NUM_MONTHS, getMonthNames } from './getMonthNames';
+import { fallbackLocale, getLanguage } from '../i18n';
 
 const monthNumbers = (() => {
   const months = [];
@@ -103,8 +104,9 @@ interface MonthPickerProps {
 }
 
 export const MonthPicker = (props: MonthPickerProps) => {
-  const months = getMonthNames(props.locale);
-  const monthsLong = getMonthNames(props.locale, false);
+  const locale = props.locale ?? fallbackLocale(getLanguage(), 'US');
+  const months = getMonthNames(locale);
+  const monthsLong = getMonthNames(locale, false);
   const isControlled = props.selectedMonths !== undefined;
   const [selectedMonthsState, setSelectedMonthsState] = useState(props.defaultSelectedMonths ?? []);
   const selectedMonths = isControlled ? props.selectedMonths : selectedMonthsState;

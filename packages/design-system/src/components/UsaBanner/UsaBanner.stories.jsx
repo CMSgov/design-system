@@ -15,6 +15,8 @@ export default {
 
 const Template = ({ data, ...args }) => <UsaBanner {...args} />;
 
+export const Default = Template.bind({});
+
 export const EnglishBanner = Template.bind({});
 EnglishBanner.args = {
   locale: 'en',

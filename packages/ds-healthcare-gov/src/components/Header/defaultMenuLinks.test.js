@@ -2,8 +2,6 @@ import defaultMenuLinks, {
   defaultMenuLinks as namedExportDefaultMenuLinks,
 } from './defaultMenuLinks';
 
-const t = (key) => key;
-
 describe('MenuList', function () {
   it('includes a named export', () => {
     // Some apps may need to import the default menu links in order to extend them
@@ -11,86 +9,64 @@ describe('MenuList', function () {
   });
 
   it('leaves out login link if hideLoginLink true', () => {
-    expect(
-      defaultMenuLinks(t, undefined, undefined, undefined, undefined, undefined, true)
-    ).toMatchSnapshot();
+    expect(defaultMenuLinks({ hideLoginLink: true })).toMatchSnapshot();
   });
 
   it('leaves out logout link if hideLogoutLink true', () => {
-    expect(
-      defaultMenuLinks(t, undefined, undefined, undefined, undefined, undefined, undefined, true)
-    ).toMatchSnapshot();
+    expect(defaultMenuLinks({ hideLogoutLink: true })).toMatchSnapshot();
   });
 
   it('leaves out locale links if hideLanguageSwitch true', () => {
-    expect(
-      defaultMenuLinks(
-        t,
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        true
-      )
-    ).toMatchSnapshot();
+    expect(defaultMenuLinks({ hideLanguageSwitch: true })).toMatchSnapshot();
   });
 
   it('leaves out the myProfile and myApplicationsAndCoverage when customLinksPassedIn is true', () => {
-    expect(
-      defaultMenuLinks(
-        t,
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        true
-      )
-    ).toMatchSnapshot();
+    expect(defaultMenuLinks({ customLinksPassedIn: true })).toMatchSnapshot();
   });
 
   describe('English', () => {
     it('returns array of menu list objects', () => {
-      expect(defaultMenuLinks(t)).toMatchSnapshot();
+      expect(defaultMenuLinks()).toMatchSnapshot();
     });
 
     it('returns array of menu list objects with subpath', () => {
-      expect(defaultMenuLinks(t, 'en', 'tax-tool/')).toMatchSnapshot();
+      expect(defaultMenuLinks({ locale: 'en', subpath: 'tax-tool/' })).toMatchSnapshot();
     });
 
     it('returns array of menu list objects with absolute URLs', () => {
-      expect(defaultMenuLinks(t, 'en', undefined, 'https://www.healthcare.gov')).toMatchSnapshot();
+      expect(
+        defaultMenuLinks({ locale: 'en', primaryDomain: 'https://www.healthcare.gov' })
+      ).toMatchSnapshot();
     });
 
     it('returns array of menu list objects with custom locale switch link', () => {
       expect(
-        defaultMenuLinks(t, 'en', undefined, undefined, 'https://ayudalocal.cuidadodesalud.gov/es')
+        defaultMenuLinks({
+          locale: 'en',
+          switchLocaleLink: 'https://ayudalocal.cuidadodesalud.gov/es',
+        })
       ).toMatchSnapshot();
     });
   });
 
   describe('Spanish', () => {
     it('returns array of menu list objects', () => {
-      expect(defaultMenuLinks(t, 'es')).toMatchSnapshot();
+      expect(defaultMenuLinks({ locale: 'es' })).toMatchSnapshot();
     });
 
     it('returns array of menu list objects with subpath', () => {
-      expect(defaultMenuLinks(t, 'es', 'tax-tool/')).toMatchSnapshot();
+      expect(defaultMenuLinks({ locale: 'es', subpath: 'tax-tool/' })).toMatchSnapshot();
     });
 
     it('returns array of menu list objects with absolute URLs', () => {
-      expect(defaultMenuLinks(t, 'es', undefined, 'https://www.healthcare.gov')).toMatchSnapshot();
+      expect(
+        defaultMenuLinks({ locale: 'es', primaryDomain: 'https://www.cuidadodesalud.gov' })
+      ).toMatchSnapshot();
     });
 
     it('returns array of menu list objects with custom locale switch link', () => {
       expect(
-        defaultMenuLinks(t, 'es', undefined, undefined, 'https://localhelp.healthcare.gov')
+        defaultMenuLinks({ locale: 'es', switchLocaleLink: 'https://localhelp.healthcare.gov' })
       ).toMatchSnapshot();
     });
   });

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Header from './I18nHeader';
+import Header from './Header';
 
 // Because the DS exports the wrapped Header component, Header props are not shown in the args table
 // TODO: look into later if storybook is used more publicly
@@ -14,6 +14,10 @@ export default {
     },
     firstName: {
       control: { type: 'text' },
+    },
+    initialLanguage: {
+      control: 'radio',
+      options: ['en', 'es'],
     },
   },
   args: {
