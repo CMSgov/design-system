@@ -1,2 +1,2 @@
-export { default as Header } from './I18nHeader';
-export { default as defaultMenuLinks } from './defaultMenuLinks';
+export * from './Header';
+export * from './defaultMenuLinks';

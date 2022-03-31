@@ -1,10 +1,10 @@
 import PrivacySettingsLink from './PrivacySettingsLink';
 import React from 'react';
 import languages from './languages';
+import { TFunction } from '@cmsgov/design-system';
 
 interface InlineLinkListsProps {
-  /** i18next translate method */
-  t: (string) => string;
+  t: TFunction;
   primaryDomain: string;
 }
 
@@ -12,9 +12,6 @@ const inlineLiClasses = 'hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display-
 
 /**
  * Create <li> nodes and inline links
- * @param {Function} t - i18next translate method
- * @param {Object} links
- * @returns {Array}
  */
 const renderBasicList = function (t, links) {
   return Object.getOwnPropertyNames(links).map(function (key) {
