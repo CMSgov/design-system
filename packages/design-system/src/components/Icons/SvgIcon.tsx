@@ -21,6 +21,11 @@ export interface SvgIconProps {
    */
   description?: string;
   /**
+   * Optional prop to hide title element inside SVG. This should be used only if the icon is used in another element that has an accessible name.
+   * If this prop is not set, the value of ariaHidden will be used. This is because if aria-Hidden=true, the svg is hidden to screen readers and the title is not needed.
+   */
+  hideTitle?: boolean;
+  /**
    * A custom `id` attribute for the SVG
    */
   id?: string;
@@ -46,12 +51,12 @@ export type IconCommonProps = Partial<Omit<SvgIconProps, 'children'>>;
 
 type OmitProps = 'className' | 'children' | 'id' | 'title' | 'viewBox';
 
-// TODO: Should this extend SVG props?
 function SvgIcon({
   ariaHidden,
   className,
   children,
   description,
+  hideTitle,
   id,
   inversed,
   title,
@@ -63,10 +68,11 @@ function SvgIcon({
   const titleId = `${iconId}__title`;
   const descriptionId = `${iconId}__desc`;
   const ariaLabelledBy = description ? `${titleId} ${descriptionId}` : titleId;
+  const shouldHideTitle = hideTitle || ariaHidden;
+  const labelledByProp = shouldHideTitle ? {} : { 'aria-labelledby': ariaLabelledBy };
 
   return (
     <svg
-      aria-labelledby={ariaLabelledBy}
       aria-hidden={ariaHidden}
       className={svgClasses}
       focusable={false}
@@ -74,8 +80,9 @@ function SvgIcon({
       role="img"
       viewBox={viewBox}
       xmlns="http://www.w3.org/2000/svg"
+      {...labelledByProp}
     >
-      <title id={titleId}>{title}</title>
+      {!shouldHideTitle && <title id={titleId}>{title}</title>}
       {description && <desc id={descriptionId}>{description}</desc>}
       {children}
     </svg>
