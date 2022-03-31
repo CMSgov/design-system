@@ -47,7 +47,7 @@ label,
   .ds-c-choice:disabled + &,
   .ds-c-choice.ds-c-choice--inverse:disabled + & {
     cursor: not-allowed;
-    
+
     @media (-ms-high-contrast: active), (forced-colors: active) {
       color: GrayText;
     }
@@ -76,7 +76,7 @@ label,
     grid-area: 1/-1;
     height: $choice-size;
     opacity: 0;
-    transition: 120ms opacity ease-in-out;
+    // transition: 120ms opacity ease-in-out;
     width: $choice-size;
   }
 
@@ -104,7 +104,7 @@ label,
     border-color: $choice-disabled-border-color;
     color: $color-muted;
     cursor: not-allowed;
-    
+
     &::before {
       background-color: $choice-disabled-background-color;
       border-color: $choice-disabled-border-color;
@@ -141,7 +141,7 @@ label,
     &::after {
       opacity: 1;
     }
-    
+
     &:focus::before {
       height: $choice-size - ($choice-border-width * 2);
       width: $choice-size - ($choice-border-width * 2);
