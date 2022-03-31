@@ -1,53 +1,39 @@
 import React from 'react';
 import UsaBanner from './UsaBanner';
-import renderer from 'react-test-renderer';
-import { shallow } from 'enzyme';
+import { fireEvent, render, screen } from '@testing-library/react';
 
-function render(customProps = {}) {
+function renderBanner(customProps = {}) {
   const props = Object.assign({}, customProps);
+  return render(<UsaBanner {...props} />);
+}
 
-  return {
-    props: props,
-    wrapper: shallow(<UsaBanner {...props} />),
-  };
+function filterOutElements(tagNames, container) {
+  for (const tagName of tagNames) {
+    const elements = container.querySelectorAll(tagName);
+    for (const el of elements) {
+      el.remove();
+    }
+  }
+  return container;
 }
 
 describe('UsaBanner', function () {
   it('renders correctly', () => {
-    const tree = renderer.create(<UsaBanner />).toJSON();
-
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('applies Spanish translation', () => {
-    const tree = renderer.create(<UsaBanner locale="es" />).toJSON();
-
-    expect(tree).toMatchSnapshot();
+    const { container } = renderBanner();
+    // Keep the snapshot small by removing the svg data
+    expect(filterOutElements(['path', 'circle', 'g'], container)).toMatchSnapshot();
   });
 
   it('applies additional class names to expanded banner', () => {
-    const { wrapper } = render();
-    const openButton = wrapper.find('.ds-c-usa-banner__button');
-    openButton.simulate('click');
-    const banner = wrapper.find('header');
-    expect(banner.hasClass('ds-c-usa-banner__header--expanded')).toBe(true);
-    expect(wrapper).toMatchSnapshot();
+    renderBanner();
+    const openButton = screen.getByRole('button');
+    fireEvent.click(openButton);
+    const header = screen.getByLabelText('Official government website').querySelector('header');
+    expect(header.className).toContain('ds-c-usa-banner__header--expanded');
   });
 
   it('adds className to root element', () => {
-    const data = render({ className: 'bar' });
-
-    expect(data.wrapper.hasClass('bar')).toBe(true);
-  });
-
-  it('has a unique id', () => {
-    const banner1 = render({ id: 'banner_unique' });
-    const banner2 = render();
-    const button1 = banner1.wrapper.find('.ds-c-usa-banner__button').first();
-    const content1 = banner1.wrapper.find('.ds-c-usa-banner__content').first();
-    const content2 = banner2.wrapper.find('.ds-c-usa-banner__content').first();
-
-    expect(button1.prop('aria-controls')).toBe(content1.prop('id'));
-    expect(content1.prop('id')).not.toBe(content2.prop('id'));
+    renderBanner({ className: 'bar' });
+    expect(screen.getByLabelText('Official government website').className).toContain('bar');
   });
 });
