@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import { Dialog as DialogComponent } from './Dialog';
 import Button from '../Button/Button';
 
@@ -41,40 +41,15 @@ export default {
 };
 
 export const Dialog = ({ ...args }) => {
-  const [shown, setShown] = useState();
-  const showModal = () => setShown(true);
-  const hideModal = () => setShown(false);
+  const dialogRef = useRef(null);
 
   return (
     <>
-      <Button onClick={showModal} size="big" variation="primary">
+      <Button onClick={() => dialogRef.current.showModal()} size="big" variation="primary">
         Click to show modal
       </Button>
 
-      {shown && (
-        <DialogComponent
-          {...args}
-          getApplicationNode={() => document.getElementById('storybook-preview-iframe')}
-          onExit={hideModal}
-          actions={
-            <>
-              <button
-                className="ds-c-button ds-c-button--primary ds-u-margin-right--1"
-                key="primary"
-              >
-                Dialog action
-              </button>
-              <button
-                className="ds-c-button ds-c-button--transparent"
-                key="cancel"
-                onClick={hideModal}
-              >
-                Cancel
-              </button>
-            </>
-          }
-        />
-      )}
+      <DialogComponent ref={dialogRef}>Foo</DialogComponent>
     </>
   );
 };
