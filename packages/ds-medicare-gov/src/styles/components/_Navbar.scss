@@ -26,8 +26,8 @@
 .m-c-navbar__section {
   @extend .ds-l-col--12;
   @extend .ds-l-sm-col--6;
-  padding-left: 0;
-  padding-right: 0;
+  padding-left: 0 !important; // Has to override the column class styles
+  padding-right: 0 !important; // Has to override the column class styles
   display: flex;
   align-items: flex-start;
   flex-direction: column;
