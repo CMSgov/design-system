@@ -69,7 +69,13 @@ function SvgIcon({
   const descriptionId = `${iconId}__desc`;
   const ariaLabelledBy = description ? `${titleId} ${descriptionId}` : titleId;
   const shouldHideTitle = hideTitle || ariaHidden;
-  const labelledByProp = shouldHideTitle ? {} : { 'aria-labelledby': ariaLabelledBy };
+  const additionalProps = {};
+  if (!shouldHideTitle) {
+    additionalProps['aria-labelledby'] = ariaLabelledBy;
+  }
+  if (!ariaHidden) {
+    additionalProps['role'] = 'img';
+  }
 
   return (
     <svg
@@ -77,10 +83,9 @@ function SvgIcon({
       className={svgClasses}
       focusable={false}
       id={iconId}
-      role="img"
       viewBox={viewBox}
       xmlns="http://www.w3.org/2000/svg"
-      {...labelledByProp}
+      {...additionalProps}
     >
       {!shouldHideTitle && <title id={titleId}>{title}</title>}
       {description && <desc id={descriptionId}>{description}</desc>}

@@ -10,7 +10,6 @@ exports[`TooltipIcon renders inverse trigger icon 1`] = `
       class="ds-c-icon ds-c-icon--info-circle-thin ds-c-tooltip-icon ds-c-tooltip-icon--inverse"
       focusable="false"
       id="icon-2"
-      role="img"
       viewBox="0 0 16 16"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -33,7 +32,6 @@ exports[`TooltipIcon renders normal trigger icon 1`] = `
       class="ds-c-icon ds-c-icon--info-circle-thin ds-c-tooltip-icon"
       focusable="false"
       id="icon-1"
-      role="img"
       viewBox="0 0 16 16"
       xmlns="http://www.w3.org/2000/svg"
     >
