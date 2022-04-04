@@ -3,6 +3,11 @@
 // values with extra -color declarations can be shortened as a part of that
 // process
 
+// animation
+$ease-in-out-expo: $animation-ease-in-out-expo;
+$speed-base: $animation-speed-base;
+
+// border, focus, shadow colors
 $border-color: $color-border-color;
 $border-color-dark: $color-border-color-dark;
 $border-color-inverse: $color-border-color-inverse;
