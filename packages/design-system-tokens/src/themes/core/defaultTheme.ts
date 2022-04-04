@@ -1,4 +1,4 @@
-import { animation, color, measure, spacer } from '../../tokens';
+import { animation, color, font, measure, spacer } from '../../tokens';
 import { to, ThemeTokens, ColorTokens } from '../../lib/types';
 import { hexOpacity } from '../../lib/utility';
 
@@ -114,6 +114,11 @@ const DefaultTheme = to<ThemeTokens>()({
   color: themeColors,
   components,
   description,
+  font: {
+    sans: font['family-open-sans'],
+    serif: font['family-bitter'],
+    ...font,
+  },
   measure,
   shadow,
   spacer,

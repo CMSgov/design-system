@@ -1,5 +1,11 @@
-import { animation, color, measure, spacer } from '../../tokens';
+import { animation, color, font, measure, spacer } from '../../tokens';
 import { to, ThemeTokens, ColorTokens } from '../../lib/types';
+
+/*
+ * This theme currently inherits from the core theme so only needs
+ * to provide overrides to that themes definitions. In the future this
+ * theme should provide a full set of definitions.
+ */
 
 const description = 'Default Healthcare.gov Theme';
 
@@ -35,6 +41,7 @@ const DefaultTheme = to<ThemeTokens>()({
   color: themeColors,
   components,
   description,
+  font,
   measure,
   shadow,
   spacer,
