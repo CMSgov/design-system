@@ -11,11 +11,6 @@ export const exportJson = (fileDescriptors: FileDescriptor[], outPath: string): 
   const tokenOutput: string | any = {};
 
   fileDescriptors.forEach((file) => {
-    /*
-     * doing this asynchronously with import() makes this code needlessly complex
-     * so ignoring this particular linting error here to allow named require.
-     * which runs synchronously.
-     */
     const importedModule = require(file.moduleImportName);
 
     tokenOutput[file.fileBaseName] = {

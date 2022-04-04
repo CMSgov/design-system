@@ -28,11 +28,6 @@ const setVars = (
  */
 export const exportScss = (fileDescriptors: FileDescriptor[], outPath: string): number => {
   fileDescriptors.forEach((file) => {
-    /*
-     * doing this asynchronously with import() makes this code needlessly complex
-     * so ignoring this particular linting error here to allow named require.
-     * which runs synchronously.
-     */
     const importedModule = require(`${file.moduleImportName}`);
     const filename = `${outPath}/${file.exportFileName}.scss`;
     const type = importedModule.default.description ? 'theme' : 'tokens';

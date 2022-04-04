@@ -1,5 +1,5 @@
-import { color } from '../../tokens';
-import { makeThemeTypes, ColorTokens } from '../../lib/types';
+import { animation, color } from '../../tokens';
+import { to, ThemeTokens, ColorTokens } from '../../lib/types';
 
 const description = 'Default Healthcare.gov Theme';
 
@@ -30,7 +30,8 @@ const components = {};
 
 const shadow = {};
 
-const DefaultTheme = makeThemeTypes({
+const DefaultTheme = to<ThemeTokens>()({
+  animation,
   description,
   color: themeColors,
   spacer: {},

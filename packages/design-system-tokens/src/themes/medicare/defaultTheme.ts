@@ -1,5 +1,5 @@
-import { color } from '../../tokens';
-import { makeThemeTypes, ColorTokens } from '../../lib/types';
+import { animation, color } from '../../tokens';
+import { to, ThemeTokens, ColorTokens } from '../../lib/types';
 
 const description = 'Default Medicare.gov Theme';
 
@@ -76,7 +76,8 @@ const shadow = {
   'box-card': '0 2px 3px 0 rgba(50, 50, 50, 0.23)',
 };
 
-const DefaultTheme = makeThemeTypes({
+const DefaultTheme = to<ThemeTokens>()({
+  animation,
   description,
   color: themeColors,
   spacer: {},

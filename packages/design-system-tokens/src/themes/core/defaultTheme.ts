@@ -1,5 +1,5 @@
-import { color } from '../../tokens';
-import { makeThemeTypes, ColorTokens } from '../../lib/types';
+import { animation, color } from '../../tokens';
+import { to, ThemeTokens, ColorTokens } from '../../lib/types';
 import { hexOpacity } from '../../lib/utility';
 
 const description = 'Default CMSDS Core Theme';
@@ -109,7 +109,8 @@ const shadow = {
   base: '2px 2px 4px',
 };
 
-const DefaultTheme = makeThemeTypes({
+const DefaultTheme = to<ThemeTokens>()({
+  animation,
   description,
   color: themeColors,
   spacer: {},

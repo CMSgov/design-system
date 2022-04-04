@@ -1,9 +1,9 @@
 /*
  * CMSDS Border Radius Tokens
  */
-import { makeRadiusTypes } from '../lib/types';
+import { BorderRadiusTokens, to } from '../lib/types';
 
-const radius = makeRadiusTypes({
+const radius = to<BorderRadiusTokens>()({
   default: '3px',
   pill: '9999px',
   circle: '100%',
