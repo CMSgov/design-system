@@ -1,4 +1,4 @@
-import { EVENT_CATEGORY, MAX_LENGTH, sendLinkEvent } from '../analytics/SendAnalytics';
+import { EVENT_CATEGORY, MAX_LENGTH, sendLinkEvent } from '../analytics';
 import AriaModal from 'react-aria-modal';
 import Button, { ButtonVariation } from '../Button/Button';
 import React, { useEffect, useRef } from 'react';

@@ -1,4 +1,4 @@
-import { EVENT_CATEGORY, MAX_LENGTH, sendLinkEvent } from '../analytics/SendAnalytics';
+import { EVENT_CATEGORY, MAX_LENGTH, sendLinkEvent } from '../analytics';
 import React from 'react';
 import { alertSendsAnalytics } from '../flags';
 import classNames from 'classnames';
