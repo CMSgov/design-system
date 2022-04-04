@@ -1,4 +1,4 @@
-import { animation, color } from '../../tokens';
+import { animation, color, measure, spacer } from '../../tokens';
 import { to, ThemeTokens, ColorTokens } from '../../lib/types';
 import { hexOpacity } from '../../lib/utility';
 
@@ -111,11 +111,12 @@ const shadow = {
 
 const DefaultTheme = to<ThemeTokens>()({
   animation,
-  description,
   color: themeColors,
-  spacer: {},
   components,
+  description,
+  measure,
   shadow,
+  spacer,
 });
 
 export default DefaultTheme;

@@ -1,5 +1,5 @@
 /*
- * CMSDS Font Tokens
+ * CMSDS Measure Tokens
  */
 import { MeasureTokens, to } from '../lib/types';
 
