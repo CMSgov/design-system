@@ -13,6 +13,9 @@ export interface DefaultLink extends Link {
 }
 
 export interface DefaultMenuLinkOptions {
+  /**
+   * @deprecated - This is now deprecated in favor of the global language setting. See guides/internationalization
+   */
   locale?: Language;
   deConsumer?: boolean;
   subpath?: string;

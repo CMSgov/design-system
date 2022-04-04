@@ -20,6 +20,9 @@ export interface HeaderProps {
    */
   className?: string;
   /**
+   * @deprecated - This is now deprecated in favor of the global language setting. See guides/internationalization
+   * @hide-prop [Deprecated]
+   *
    * The language the header will render as.
    */
   initialLanguage?: Language;

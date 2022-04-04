@@ -23,6 +23,9 @@ export interface UsaBannerProps {
    */
   id?: string;
   /**
+   * @deprecated - This is now deprecated in favor of the global language setting. See guides/internationalization
+   * @hide-prop [Deprecated]
+   *
    * The language the USA Banner will be presented in.
    */
   locale?: Language;

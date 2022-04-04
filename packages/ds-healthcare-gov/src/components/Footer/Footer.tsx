@@ -10,6 +10,9 @@ export interface FooterProps {
    */
   className?: string;
   /**
+   * @deprecated - This is now deprecated in favor of the global language setting. See guides/internationalization
+   * @hide-prop [Deprecated]
+   *
    * The language the footer will render as.
    */
   initialLanguage?: Language;

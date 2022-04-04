@@ -25,6 +25,9 @@ interface MonthPickerProps {
    */
   name: string;
   /**
+   * @deprecated - This is now deprecated in favor of the global language setting. See guides/internationalization
+   * @hide-prop [Deprecated]
+   *
    * A [BCP 47 language tag](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation)
    * for month name localization. For example: Passing `es-US` as a value
    * will render month names in Spanish.
