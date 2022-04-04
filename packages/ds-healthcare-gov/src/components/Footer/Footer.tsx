@@ -45,6 +45,12 @@ export const Footer = (props: FooterProps) => {
     props.className
   );
 
+  if (props.initialLanguage) {
+    console.warn(
+      `[Deprecated]: Please remove the 'initialLanguage' prop in <Footer> in favor of global language setting. This prop is deprecated and will be removed in a future release.`
+    );
+  }
+
   return (
     <footer className={classes} role="contentinfo">
       {props.footerTop}

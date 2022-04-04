@@ -38,6 +38,12 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
   const id = props.id || uniqueId('gov-banner_');
   const t = tWithLanguage(props.locale);
 
+  if (props.locale) {
+    console.warn(
+      `[Deprecated]: Please remove the 'locale' prop in <UsaBanner> in favor of global language setting. This prop is deprecated and will be removed in a future release.`
+    );
+  }
+
   useEffect(() => {
     let media;
     const onMediaChange = (evt) => {

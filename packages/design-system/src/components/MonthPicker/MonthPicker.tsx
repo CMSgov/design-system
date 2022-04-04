@@ -115,6 +115,12 @@ export const MonthPicker = (props: MonthPickerProps) => {
   const selectedMonths = isControlled ? props.selectedMonths : selectedMonthsState;
   const disabledMonths = props.disabledMonths ?? [];
 
+  if (props.locale) {
+    console.warn(
+      `[Deprecated]: Please remove the 'locale' prop in <MonthPicker> in favor of global language setting. This prop is deprecated and will be removed in a future release.`
+    );
+  }
+
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     if (props.onChange) {
       props.onChange(event);

@@ -139,6 +139,12 @@ const Header = (props: HeaderProps) => {
   const [openMenu, setOpenMenu] = useState(false);
   const t = tWithLanguage(props.initialLanguage);
 
+  if (props.initialLanguage) {
+    console.warn(
+      `[Deprecated]: Please remove the 'initialLanguage' prop in <Header> in favor of global language setting. This prop is deprecated and will be removed in a future release.`
+    );
+  }
+
   /**
    * Determines which variation of the header should be displayed,
    * based on the props being passed into the component.
