@@ -16,8 +16,8 @@
   .SimpleFooter__linkButton,
   a {
     @extend .mct-p3;
-    padding-top: $spacer-0;
-    padding-bottom: $spacer-0;
+    padding-top: 0;
+    padding-bottom: 0;
     padding-left: $spacer-2;
     padding-right: $spacer-2;
     text-decoration: none;
@@ -43,11 +43,11 @@
 
   a {
     &:first-child {
-      padding-left: $spacer-0;
+      padding-left: 0;
     }
 
     &:last-child {
-      padding-right: $spacer-0;
+      padding-right: 0;
       border-right: 0;
     }
   }
