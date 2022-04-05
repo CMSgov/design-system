@@ -13,6 +13,9 @@ export interface DefaultLink extends Link {
 }
 
 export interface DefaultMenuLinkOptions {
+  /**
+   * @deprecated - This is now deprecated in favor of the global language setting. See guides/internationalization
+   */
   locale?: Language;
   deConsumer?: boolean;
   subpath?: string;
@@ -44,6 +47,12 @@ export function defaultMenuLinks(options: DefaultMenuLinkOptions = {}) {
   const t = tWithLanguage(locale);
   const isSpanish = languageMatches('es', locale);
   const ffmLocalePath = isSpanish ? 'es_MX' : 'en_US';
+
+  if (locale) {
+    console.warn(
+      `[Deprecated]: Please remove the 'initialLanguage' prop in 'defaultMenuLinks' in favor of global language setting. This prop is deprecated and will be removed in a future release.`
+    );
+  }
 
   // NOTE: order matters here and links will be displayed in order added to the arrays
   const loggedOut = [];
