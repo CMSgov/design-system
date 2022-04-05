@@ -1,12 +1,13 @@
 import { EVENT_CATEGORY, MAX_LENGTH, sendLinkEvent } from '../analytics/SendAnalytics';
 import Button, { ButtonVariation } from '../Button/Button';
-import React, { forwardRef, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import { dialogSendsAnalytics } from '../flags';
 import { CloseIcon } from '../Icons';
 
 export type DialogCloseButtonSize = 'small' | 'big';
 export type DialogSize = 'narrow' | 'wide' | 'full';
+export type DialogType = 'modal' | 'drawer';
 
 export interface DialogProps {
   /**
@@ -69,16 +70,38 @@ export interface DialogProps {
    * The Dialog's heading, to be rendered in the header alongside the close button.
    */
   heading: React.ReactNode;
+  open: boolean;
+  onClose: () => void;
   /**
    * The Dialog's size parameter.
    */
   size?: DialogSize;
+  type?: DialogType;
 }
 
-export const Dialog = forwardRef((props: DialogProps, ref) => {
+export const Dialog = (props: DialogProps) => {
+  const {
+    actions,
+    actionsClassName,
+    ariaCloseLabel,
+    children,
+    className,
+    closeButtonSize,
+    closeButtonText,
+    closeButtonVariation,
+    closeIcon,
+    headerClassName,
+    heading,
+    open,
+    onClose,
+    size,
+    type,
+    ...modalProps
+  } = props;
+
+  // Analytics
   const headingRef = useRef(null);
   let eventHeadingText = '';
-
   useEffect(() => {
     if (dialogSendsAnalytics() && props.analytics !== false) {
       const heading = props.heading;
@@ -119,56 +142,59 @@ export const Dialog = forwardRef((props: DialogProps, ref) => {
     };
   }, []);
 
-  const {
-    actions,
-    actionsClassName,
-    analytics,
-    ariaCloseLabel,
-    children,
-    className,
-    closeButtonSize,
-    closeButtonText,
-    closeButtonVariation,
-    closeIcon,
-    headerClassName,
-    heading,
-    size,
-    ...modalProps
-  } = props;
+  // Toggle dialog open
+  const dialogRef = useRef(null);
+  useEffect(() => {
+    if (open && type === 'modal') {
+      dialogRef.current?.showModal();
+    } else if (open && type !== 'modal') {
+      dialogRef.current?.show();
+    } else {
+      dialogRef.current?.close();
+    }
+  }, [open, type]);
 
-  const dialogClassNames = classNames(
-    'ds-c-dialog',
-    'ds-base',
-    className,
-    size && `ds-c-dialog--${size}`
-  );
+  const modalClassNames = classNames('ds-c-dialog', className);
+  const drawerClassNames = classNames('ds-c-drawer', className);
+  let dialogClassNames = null;
+  if (type === 'modal') {
+    dialogClassNames = modalClassNames;
+  } else if (type === 'drawer') {
+    dialogClassNames = drawerClassNames;
+  }
+
   const headerClassNames = classNames('ds-c-dialog__header', headerClassName);
   const actionsClassNames = classNames('ds-c-dialog__actions', actionsClassName);
 
+  // PE: Implement `onCancel={onClose}` for `dialog`
+  // https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/oncancel
+  // onCancel allows close/open of dialog using keyboard - state doesn't get tripped up
+  // Receiving TS error saying `onCancel` doesn't exist on HTMLDialogElement
   return (
-    <dialog ref={ref} className={dialogClassNames}>
+    <dialog ref={dialogRef} className={dialogClassNames} onCancel={onClose} {...modalProps}>
       <header role="banner" className={headerClassNames}>
         {heading && (
-          <h1 id="dialog-title" className="ds-h2">
-            {heading}
-          </h1>
+          // 👀 Check into how `h1` behaves with AT
+          <h1 className="ds-h2">{heading}</h1>
         )}
         <Button
+          aria-label={ariaCloseLabel}
           className="ds-c-dialog__close"
-          onClick={() => ref.current.close()}
+          onClick={onClose}
           size={closeButtonSize}
           variation={closeButtonVariation}
         >
-          {closeIcon && closeButtonText}
+          {closeIcon}
+          {closeButtonText}
         </Button>
       </header>
       <main role="main" className="ds-c-dialog__body">
-        <div id="dialog-content">{children}</div>
+        <div>{children}</div>
         {actions && <div className={actionsClassNames}>{actions}</div>}
       </main>
     </dialog>
   );
-});
+};
 
 Dialog.defaultProps = {
   ariaCloseLabel: 'Close modal dialog',

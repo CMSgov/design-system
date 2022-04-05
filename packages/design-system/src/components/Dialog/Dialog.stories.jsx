@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import { Dialog as DialogComponent } from './Dialog';
 import Button from '../Button/Button';
 
@@ -41,15 +41,40 @@ export default {
 };
 
 export const Dialog = ({ ...args }) => {
-  const dialogRef = useRef(null);
+  const [open, setOpen] = useState(false);
 
   return (
     <>
-      <Button onClick={() => dialogRef.current.showModal()} size="big" variation="primary">
+      <Button onClick={() => setOpen(true)} size="big" variation="primary">
         Click to show modal
       </Button>
 
-      <DialogComponent ref={dialogRef}>Foo</DialogComponent>
+      <DialogComponent
+        open={open}
+        onClose={() => setOpen(false)}
+        type="drawer"
+        heading="👋 Hi, I'm a dialog!"
+      >
+        <p>
+          This element can be both a Drawer and a Modal depending on the `type` set. If Drawer is
+          selected, the background is interactive. If Modal is selected, the background is not
+          interactive.
+        </p>
+        <p>
+          You can click the close button or press <kbd>ESCAPE</kbd> to close the dialog.
+        </p>
+      </DialogComponent>
+
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, excepturi aliquam inventore,
+        non rerum maiores tempora laborum ad adipisci aspernatur quas ratione impedit saepe est
+        voluptatum soluta facere eaque porro.
+      </p>
+
+      <p>
+        This line of text has a <a href="!#  ">link</a> in it to demonstrate how interactivity works
+        on elements behind the dialog.
+      </p>
     </>
   );
 };

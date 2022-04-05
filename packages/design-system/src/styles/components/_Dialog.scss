@@ -3,58 +3,58 @@
 $dialog-spacer: $spacer-4;
 
 .ds-c-dialog {
-  background-color: $color-background-dialog;
-  box-shadow: $shadow-base;
-  box-sizing: border-box;
-  display: inline-block;
-  font-size: $base-font-size;
-  max-width: $measure-base;
-  padding: $dialog-spacer;
-  text-align: left;
-  vertical-align: middle;
-  width: 95%; // provide space for the background layer to peek through
+  // background-color: $color-background-dialog;
+  // box-shadow: $shadow-base;
+  // box-sizing: border-box;
+  // display: inline-block;
+  // font-size: $base-font-size;
+  // max-width: $measure-base;
+  // padding: $dialog-spacer;
+  // text-align: left;
+  // vertical-align: middle;
+  // width: 95%; // provide space for the background layer to peek through
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
     outline: $spacer-2 solid WindowText;
   }
 }
 
-.ds-c-dialog--narrow {
-  max-width: $measure-narrow;
-}
+// .ds-c-dialog--narrow {
+//   max-width: $measure-narrow;
+// }
 
-.ds-c-dialog--wide {
-  max-width: $measure-wide;
-}
+// .ds-c-dialog--wide {
+//   max-width: $measure-wide;
+// }
 
-.ds-c-dialog--full {
-  max-width: $site-max-width;
-}
+// .ds-c-dialog--full {
+//   max-width: $site-max-width;
+// }
 
 .ds-c-dialog__header {
-  align-items: flex-start;
-  display: flex;
+  // align-items: flex-start;
+  // display: flex;
   // Provide some spacing when the header only includes the close button
-  padding-bottom: $spacer-1;
+  // padding-bottom: $spacer-1;
 }
 
 .ds-c-dialog__body {
-  overflow-wrap: break-word;
+  // overflow-wrap: break-word;
   // IE fallback
-  word-wrap: break-word;
+  // word-wrap: break-word;
 }
 
 .ds-c-dialog__actions {
-  margin-top: $spacer-3;
+  // margin-top: $spacer-3;
 }
 
 .ds-c-dialog__close {
-  margin-left: auto;
-  padding: 0 $spacer-1 0 $spacer-half;
+  // margin-left: auto;
+  // padding: 0 $spacer-1 0 $spacer-half;
 
   .ds-c-icon {
-    font-size: 13px;
-    margin: 0 $spacer-half;
+    // font-size: 13px;
+    // margin: 0 $spacer-half;
 
     @media (-ms-high-contrast: active), (forced-colors: active) {
       path {
@@ -68,16 +68,40 @@ $dialog-spacer: $spacer-4;
   }
 }
 
-.ds-c-dialog-wrap {
+// .ds-c-dialog-wrap {
+//   background-color: $color-background-dialog-mask;
+//   bottom: 0;
+//   left: 0;
+//   overflow-x: hidden;
+//   overflow-y: auto;
+//   padding: $spacer-6 0;
+//   position: fixed;
+//   text-align: center;
+//   top: 0;
+//   width: 100%;
+//   z-index: $z-dialog;
+// }
+
+// 🧪 Native dialog experiement styles
+.ds-c-dialog {
+  border: 1px solid dodgerblue;
+}
+.ds-c-drawer {
+  height: 100vh;
+  margin: 0 0 0 auto;
+  max-width: 33vw;
+  border: 1px solid hotpink;
+}
+.ds-c-dialog__header {
+  display: flex;
+  gap: 1ch;
+  justify-content: space-between;
+  align-items: center;
+
+  > *:first-child {
+    margin: 0;
+  }
+}
+.ds-c-dialog::backdrop {
   background-color: $color-background-dialog-mask;
-  bottom: 0;
-  left: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  padding: $spacer-6 0;
-  position: fixed;
-  text-align: center;
-  top: 0;
-  width: 100%;
-  z-index: $z-dialog;
 }
