@@ -38,4 +38,4 @@ export default {
 
 const Template = ({ data, ...args }) => <Navbar {...args} />;
 
-export const BasicNavbar = Template.bind({});
+export const Default = Template.bind({});

@@ -15,4 +15,4 @@ export default {
 
 const Template = ({ data, ...args }) => <SimpleFooter {...args} />;
 
-export const BasicSimpleFooter = Template.bind({});
+export const Default = Template.bind({});

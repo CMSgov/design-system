@@ -24,4 +24,4 @@ export default {
 
 const Template = ({ data, ...args }) => <Card {...args} />;
 
-export const BasicCard = Template.bind({});
+export const Default = Template.bind({});
