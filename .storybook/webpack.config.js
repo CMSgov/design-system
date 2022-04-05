@@ -1,6 +1,5 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const FileManagerPlugin = require('filemanager-webpack-plugin');
 
 // import statements in JS & SCSS files cannot be in a conditional
 // this is a workaround to load the appropriate SCSS entry in storybook based on environment variable
@@ -18,46 +17,6 @@ module.exports = async (webpackConfig) => {
   const { config } = webpackConfig;
 
   config.plugins.push(new MiniCssExtractPlugin());
-
-  // TODO: if mgov & in production mode...
-  if (process.env.STORYBOOK_DS == 'mgov') {
-    config.plugins.push(
-      new FileManagerPlugin({
-        events: {
-          onEnd: {
-            copy: [
-              {
-                source: 'storybook-static/medicare/core/fonts/**',
-                destination: 'storybook-static/medicare/fonts/',
-                options: { overwrite: false },
-              },
-              {
-                source: 'storybook-static/medicare/core/images/**',
-                destination: 'storybook-static/medicare/images/',
-                options: { overwrite: false },
-              },
-              {
-                source: 'storybook-static/medicare/mgov/fonts/montserrat/',
-                destination: 'storybook-static/medicare/fonts/montserrat',
-                options: { overwrite: false },
-              },
-              {
-                source: 'storybook-static/medicare/mgov/fonts/rubik/',
-                destination: 'storybook-static/medicare/fonts/rubik',
-                options: { overwrite: false },
-              },
-              {
-                source: 'storybook-static/medicare/mgov/images/**',
-                destination: 'storybook-static/medicare/images/',
-                options: { overwrite: false },
-              },
-            ],
-            delete: ['storybook-static/medicare/core', 'storybook-static/medicare/mgov'],
-          },
-        },
-      })
-    );
-  }
   // add SCSS support for CSS Modules
   config.module.rules.push(
     {
