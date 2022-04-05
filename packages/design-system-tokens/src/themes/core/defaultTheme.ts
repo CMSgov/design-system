@@ -1,4 +1,4 @@
-import { animation, color, font, measure, media, spacer } from '../../tokens';
+import { animation, color, font, measure, media, spacer, z } from '../../tokens';
 import { to, ThemeTokens, ColorTokens } from '../../lib/types';
 import { hexOpacity } from '../../lib/utility';
 
@@ -121,6 +121,7 @@ const DefaultTheme = to<ThemeTokens>()({
   media,
   shadow,
   spacer,
+  z,
 });
 
 export default DefaultTheme;

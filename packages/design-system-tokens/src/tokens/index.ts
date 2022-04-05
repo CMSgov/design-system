@@ -6,4 +6,4 @@ export { default as media } from './media';
 export { default as measure } from './measure';
 export { default as spacer } from './spacer';
 export { default as time } from './time';
-export { default as zIndex } from './zIndex';
+export { default as z } from './zIndex';

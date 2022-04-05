@@ -1,4 +1,4 @@
-import { animation, color, font, measure, media, spacer } from '../../tokens';
+import { color, font } from '../../tokens';
 import { to, ThemeTokens, ColorTokens } from '../../lib/types';
 
 /*
@@ -83,15 +83,11 @@ const shadow = {
 };
 
 const DefaultTheme = to<ThemeTokens>()({
-  animation,
   color: themeColors,
   components,
   description,
   font,
-  measure,
-  media,
   shadow,
-  spacer,
 });
 
 export default DefaultTheme;

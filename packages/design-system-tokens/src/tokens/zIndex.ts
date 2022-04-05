@@ -3,7 +3,7 @@
  */
 import { to, zIndexTokens } from '../lib/types';
 
-const zIndex = to<zIndexTokens>()({
+const z = to<zIndexTokens>()({
   deepdive: -99999,
   default: 1,
   dialog: 1000,
@@ -11,4 +11,4 @@ const zIndex = to<zIndexTokens>()({
   spinner: 9050,
 });
 
-export default zIndex;
+export default z;
