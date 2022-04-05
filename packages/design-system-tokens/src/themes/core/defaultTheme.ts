@@ -1,4 +1,4 @@
-import { animation, color, font, measure, spacer } from '../../tokens';
+import { animation, color, font, measure, media, spacer } from '../../tokens';
 import { to, ThemeTokens, ColorTokens } from '../../lib/types';
 import { hexOpacity } from '../../lib/utility';
 
@@ -52,8 +52,6 @@ const themeColors: ColorTokens = {
   'cool-blue-lightest': color['sapphire-50'],
   focus: color['dark-sky-500'],
   'focus-inverse': color['sky-500'],
-  'focus-color': color['goldenrod-200'],
-  'focus-color-inverse': color['goldenrod-200'],
   'focus-border-inverse': color['goldenrod-800'],
   'focus-light': color.white,
   'focus-dark': color['orchid-500'],
@@ -85,9 +83,9 @@ const themeColors: ColorTokens = {
   background: color.white,
   'background-inverse': color['ocean-800'],
   'background-dialog': color.white,
-  'border-color': color['granite-100'],
-  'border-color-dark': color['lapis-800'],
-  'border-color-inverse': color.white,
+  border: color['granite-100'],
+  'border-dark': color['lapis-800'],
+  'border-inverse': color.white,
   'focus-shadow': color['granite-900'],
   'focus-shadow-inverse': color['granite-900'],
   'focus-shadow-link': color['granite-900'],
@@ -120,6 +118,7 @@ const DefaultTheme = to<ThemeTokens>()({
     ...font,
   },
   measure,
+  media,
   shadow,
   spacer,
 });

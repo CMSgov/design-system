@@ -8,11 +8,11 @@ $ease-in-out-expo: $animation-ease-in-out-expo;
 $speed-base: $animation-speed-base;
 
 // border, focus, shadow colors
-$border-color: $color-border-color;
-$border-color-dark: $color-border-color-dark;
-$border-color-inverse: $color-border-color-inverse;
-$focus-color: $color-focus-color;
-$focus-color-inverse: $color-focus-color-inverse;
+$border-color: $color-border;
+$border-color-dark: $color-border-dark;
+$border-color-inverse: $color-border-inverse;
+$focus-color: $color-focus;
+$focus-color-inverse: $color-focus-inverse;
 $focus-border-inverse: $color-focus-border-inverse;
 $focus-shadow: $shadow-focus;
 $focus-shadow-inverse: $shadow-focus-inverse;
@@ -39,3 +39,10 @@ $font-normal: $font-weight-normal;
 $font-bold: $font-weight-bold;
 $font-semibold: $font-weight-semibold;
 $h1-mobile-font-size: 30px !default;
+
+// media widths
+$width-xs: $media-width-xs;
+$width-sm: $media-width-sm;
+$width-md: $media-width-md;
+$width-lg: $media-width-lg;
+$width-xl: $media-width-xl;

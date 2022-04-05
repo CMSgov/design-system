@@ -1,4 +1,4 @@
-import { animation, color, font, measure, spacer } from '../../tokens';
+import { animation, color, font, measure, media, spacer } from '../../tokens';
 import { to, ThemeTokens, ColorTokens } from '../../lib/types';
 
 /*
@@ -89,6 +89,7 @@ const DefaultTheme = to<ThemeTokens>()({
   description,
   font,
   measure,
+  media,
   shadow,
   spacer,
 });

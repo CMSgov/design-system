@@ -7,3 +7,22 @@ $ds-include-choice-error-highlight: false !default;
 
 @import 'variables/index';
 @import 'mixins/index';
+
+$spacers: (
+  '0': 0,
+  '05': $spacer-half,
+  '1': $spacer-1,
+  '2': $spacer-2,
+  '3': $spacer-3,
+  '4': $spacer-4,
+  '5': $spacer-5,
+  '6': $spacer-6,
+  '7': $spacer-7,
+) !default;
+
+$breakpoints: (
+  sm: $media-width-sm,
+  md: $media-width-md,
+  lg: $media-width-lg,
+  xl: $media-width-xl,
+) !default;
