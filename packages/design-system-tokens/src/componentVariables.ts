@@ -1,1 +1,1 @@
-export const componentVariables = {};
+export const componentVariables = ['variable-name'];
