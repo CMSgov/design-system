@@ -58,12 +58,14 @@ export type zIndexTokens = {
 };
 
 export interface ThemeTokens {
-  readonly animation: AnimationTokens;
-  readonly description: string;
+  readonly animation?: AnimationTokens;
   readonly color: ColorTokens;
-  readonly spacer: SpacerTokens;
-  readonly components: AllTokenValues;
-  readonly shadow: ShadowTokens;
+  readonly components?: AllTokenValues;
+  readonly description: string;
+  readonly font?: FontTokens;
+  readonly measure?: MeasureTokens;
+  readonly shadow?: ShadowTokens;
+  readonly spacer?: SpacerTokens;
 }
 
 export const to = <T extends object>() => {

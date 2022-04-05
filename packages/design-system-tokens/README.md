@@ -58,8 +58,21 @@ Folder structure is as follows:
     `yarn clean` - clean dist directory
     `yarn dist` - copy themes from dist directory to appropriate settings folder for child systems
 
-## Sketch Utilization
+## CMSDS Theming
 
-    The sketch plugin should generally only be used by the design team to import tokens into
-    the main CMSDS libraries when libraries change. Instructions for use of the plugin are
-    in the [cmsds-sketch-plugin](./sketch/cmsds-token-importer/README.md) folder.
+Themes for each subsystem are stored under `src/themes` with a sub-directory there for each system, each
+sub-directory containing as many themes as desired. Theme files are typescript modules which export an
+object containing typed style content including any tokens which should be exported with that theme.
+
+[This theme template](src/themeTemplate.ts) is a good place to start for setting up a new theme.
+
+Theme variables can be defined by including token modules from `src/tokens`. Type definitions for
+theme definitions can be found in [src/lib/types.ts](./src/lib/types.ts).
+
+Themes should include a full set of component variable declarations, [defined here](./src/componentVariables.ts).
+
+## Sketch,Utilization
+
+The sketch plugin should generally only be used by the design team to import tokens into
+the main CMSDS libraries when libraries change. Instructions for use of the plugin are
+in the [cmsds-sketch-plugin](./sketch/cmsds-token-importer/README.md) folder.
