@@ -10,6 +10,9 @@ export interface FooterProps {
    */
   className?: string;
   /**
+   * @deprecated - This is now deprecated in favor of the global language setting. See guides/internationalization
+   * @hide-prop [Deprecated]
+   *
    * The language the footer will render as.
    */
   initialLanguage?: Language;
@@ -41,6 +44,12 @@ export const Footer = (props: FooterProps) => {
     'hc-c-footer ds-u-fill--gray-lightest ds-u-padding-y--5',
     props.className
   );
+
+  if (props.initialLanguage) {
+    console.warn(
+      `[Deprecated]: Please remove the 'initialLanguage' prop in <Footer> in favor of global language setting. This prop is deprecated and will be removed in a future release.`
+    );
+  }
 
   return (
     <footer className={classes} role="contentinfo">
