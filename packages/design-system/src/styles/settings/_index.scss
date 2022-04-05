@@ -1,3 +1,9 @@
-// This file is imported by many different scss files across the design system
+$font-path: '../fonts' !default;
+$image-path: '../images' !default;
+
+// add an error highlight to choice components inside a ChoiceList with an errorMessage.
+// TODO: remove this, we should not be setting variables like this in sass
+$ds-include-choice-error-highlight: false !default;
+
 @import 'variables/index';
 @import 'mixins/index';
