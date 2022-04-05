@@ -21,12 +21,4 @@ describe('TooltipIcon', function () {
     const { asFragment } = renderTooltipIcon({ inversed: true });
     expect(asFragment()).toMatchSnapshot();
   });
-
-  it('renders accessible label if provided', () => {
-    const ariaLabel = 'accessible tooltip label';
-    const { getByText } = renderTooltipIcon({ ariaLabel });
-
-    const labelEl = getByText(ariaLabel);
-    expect(labelEl).toBeDefined();
-  });
 });
