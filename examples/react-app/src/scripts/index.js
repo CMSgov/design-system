@@ -18,7 +18,7 @@ const Example = function () {
         </Button>
       </Alert>
 
-      <Dialog
+      {/* <Dialog
         open={open}
         onClose={() => setOpen(false)}
         type="drawer"
@@ -32,7 +32,7 @@ const Example = function () {
         <p>
           You can click the close button or press <kbd>ESCAPE</kbd> to close the dialog.
         </p>
-      </Dialog>
+      </Dialog> */}
     </div>
   );
 };
