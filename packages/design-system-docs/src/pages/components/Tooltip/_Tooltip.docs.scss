@@ -27,7 +27,7 @@ Style guide: components.tooltip.tooltip
 /*
 `<TooltipIcon>`
 
-When using the `<TooltipIcon>` as the only child of `<Tooltip>`, be sure to provide an `aria-label` to ensure an accessible name for the trigger.
+When using the `<TooltipIcon>` as the only child of `<Tooltip>`, be sure to provide an `aria-label` on the `<Tooltip>` to ensure an accessible name for the trigger.
 
 @react-example TooltipIcon.example.jsx
 
