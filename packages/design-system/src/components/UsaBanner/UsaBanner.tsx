@@ -68,7 +68,11 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
   };
 
   const flagIcon = (
-    <UsaFlagIcon className="ds-c-usa-banner__header-flag" title={t('usaBanner.flagIconTitle')} />
+    <UsaFlagIcon
+      className="ds-c-usa-banner__header-flag"
+      title={t('usaBanner.flagIconTitle')}
+      ariaHidden={false}
+    />
   );
 
   // on mobile, the entire header needs to be a clickable element
@@ -134,10 +138,7 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
       <div className="ds-c-usa-banner__content" id={id} hidden={!isBannerOpen}>
         <div className="ds-c-usa-banner__guidance-container">
           <div className="ds-c-usa-banner__guidance">
-            <BuildingCircleIcon
-              className="ds-c-usa-banner__icon ds-c-icon-color--primary"
-              ariaHidden
-            />
+            <BuildingCircleIcon className="ds-c-usa-banner__icon ds-c-icon-color--primary" />
             <p className="ds-c-usa-banner__media-body">
               <strong>{t('usaBanner.domainHeaderText')}</strong>
               <br />
@@ -147,7 +148,7 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
             </p>
           </div>
           <div className="ds-c-usa-banner__guidance">
-            <LockCircleIcon className="ds-c-usa-banner__icon" ariaHidden />
+            <LockCircleIcon className="ds-c-usa-banner__icon" />
             <p className="ds-c-usa-banner__media-body">
               <strong>{t('usaBanner.httpsHeaderText')}</strong>
               <br />
@@ -156,6 +157,7 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
               <LockIcon
                 className="ds-c-usa-banner__lock-image"
                 title={t('usaBanner.httpsLockText')}
+                ariaHidden={false}
               />{' '}
               ) {t('usaBanner.httpsOrText')}
               <strong> {t('usaBanner.httpsText')} </strong>
