@@ -1,6 +1,6 @@
 import { EVENT_CATEGORY, MAX_LENGTH, sendLinkEvent } from '../analytics/SendAnalytics';
 import Button, { ButtonVariation } from '../Button/Button';
-import React, { useEffect, useRef } from 'react';
+import React, { forwardRef, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import { dialogSendsAnalytics } from '../flags';
 import { CloseIcon } from '../Icons';
@@ -80,6 +80,7 @@ export interface DialogProps {
 }
 
 export const Dialog = (props: DialogProps) => {
+  // export const Dialog = forwardRef<HTMLDialogElement>((props: DialogProps, ref) => {
   const {
     actions,
     actionsClassName,
@@ -163,6 +164,8 @@ export const Dialog = (props: DialogProps) => {
     dialogClassNames = drawerClassNames;
   }
 
+  // const dialogClassNames = classNames('ds-c-dialog', className);
+
   const headerClassNames = classNames('ds-c-dialog__header', headerClassName);
   const actionsClassNames = classNames('ds-c-dialog__actions', actionsClassName);
 
@@ -172,6 +175,7 @@ export const Dialog = (props: DialogProps) => {
   // Receiving TS error saying `onCancel` doesn't exist on HTMLDialogElement
   return (
     <dialog ref={dialogRef} className={dialogClassNames} onCancel={onClose} {...modalProps}>
+      {/* <dialog ref={ref} className={dialogClassNames} {...modalProps}> */}
       <header role="banner" className={headerClassNames}>
         {heading && (
           // 👀 Check into how `h1` behaves with AT
@@ -181,6 +185,7 @@ export const Dialog = (props: DialogProps) => {
           aria-label={ariaCloseLabel}
           className="ds-c-dialog__close"
           onClick={onClose}
+          // onClick={() => ref.current?.close()}
           size={closeButtonSize}
           variation={closeButtonVariation}
         >
@@ -195,6 +200,7 @@ export const Dialog = (props: DialogProps) => {
     </dialog>
   );
 };
+// });
 
 Dialog.defaultProps = {
   ariaCloseLabel: 'Close modal dialog',

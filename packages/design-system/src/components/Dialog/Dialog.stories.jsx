@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Dialog as DialogComponent } from './Dialog';
 import Button from '../Button/Button';
 
@@ -42,14 +42,22 @@ export default {
 
 export const Dialog = ({ ...args }) => {
   const [open, setOpen] = useState(false);
+  const dialogRef = useRef(null);
+  const modalRef = useRef(null);
 
   return (
     <>
-      <Button onClick={() => setOpen(true)} size="big" variation="primary">
+      <Button
+        onClick={() => setOpen(true)}
+        // onClick={() => dialogRef.current.showModal()}
+        size="big"
+        variation="primary"
+      >
         Click to show modal
       </Button>
 
       <DialogComponent
+        // ref={dialogRef}
         open={open}
         onClose={() => setOpen(false)}
         type="drawer"
@@ -70,7 +78,23 @@ export const Dialog = ({ ...args }) => {
         non rerum maiores tempora laborum ad adipisci aspernatur quas ratione impedit saepe est
         voluptatum soluta facere eaque porro.
       </p>
-
+      <Button
+        onClick={() => setOpen(true)}
+        // onClick={() => modalRef.current.showModal()}
+        size="big"
+        variation="primary"
+      >
+        Click to show other modal
+      </Button>
+      <DialogComponent
+        // ref={modalRef}
+        open={open}
+        onClose={() => setOpen(false)}
+        type="drawer"
+        heading="👋 Hi, I'm another dialog!"
+      >
+        <p>Testing how multiple dialogs appear on a screen.</p>
+      </DialogComponent>
       <p>
         This line of text has a <a href="!#  ">link</a> in it to demonstrate how interactivity works
         on elements behind the dialog.
