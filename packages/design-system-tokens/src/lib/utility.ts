@@ -12,7 +12,7 @@ export const rgbToHex = (r: number, g: number, b: number): HexValue => {
 export const hexOpacity = (hexVal: HexValue, opacity: number): HexValue => {
   const percent = Math.max(0, Math.min(100, opacity));
   const intVal = Math.round((percent / 100) * 255);
-  const hexOpacity = intVal.toString(16).toUpperCase().padStart(2, '0');
+  const hexOpacity = intVal.toString(16).padStart(2, '0');
   return `${hexVal}${hexOpacity}`;
 };
 

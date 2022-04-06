@@ -4,9 +4,9 @@
 import { FontTokens, to } from '../lib/types';
 
 const font = to<FontTokens>()({
-  'family-open-sans': '"Open Sans", Helvetica, sans-serif',
-  'family-rubik': '"Rubik", sans-serif',
-  'family-montserrat': '"Montserrat", sans-serif',
+  'family-open-sans': "'Open Sans', Helvetica, sans-serif",
+  'family-rubik': "'Rubik', sans-serif",
+  'family-montserrat': "'Montserrat', sans-serif",
   'family-bitter': 'Bitter, Georgia, serif',
   'size-base': '16px',
   'size-sm': '14px',
