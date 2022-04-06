@@ -41,27 +41,20 @@ export default {
 };
 
 export const Dialog = ({ ...args }) => {
-  const [open, setOpen] = useState(false);
-  const dialogRef = useRef(null);
-  const modalRef = useRef(null);
+  const [openModal, setOpenModal] = useState(false);
+  const [openDrawer, setOpenDrawer] = useState(false);
 
   return (
     <>
-      <Button
-        onClick={() => setOpen(true)}
-        // onClick={() => dialogRef.current.showModal()}
-        size="big"
-        variation="primary"
-      >
+      <Button onClick={() => setOpenModal(true)} size="big" variation="primary">
         Click to show modal
       </Button>
 
       <DialogComponent
-        // ref={dialogRef}
-        open={open}
-        onClose={() => setOpen(false)}
-        type="drawer"
-        heading="👋 Hi, I'm a dialog!"
+        open={openModal}
+        onExit={() => setOpenModal(false)}
+        type="modal"
+        heading="👋 Hi, I'm a modal!"
       >
         <p>
           This element can be both a Drawer and a Modal depending on the `type` set. If Drawer is
@@ -78,23 +71,20 @@ export const Dialog = ({ ...args }) => {
         non rerum maiores tempora laborum ad adipisci aspernatur quas ratione impedit saepe est
         voluptatum soluta facere eaque porro.
       </p>
-      <Button
-        onClick={() => setOpen(true)}
-        // onClick={() => modalRef.current.showModal()}
-        size="big"
-        variation="primary"
-      >
-        Click to show other modal
+
+      <Button onClick={() => setOpenDrawer(true)} size="big" variation="primary">
+        Click to show drawer
       </Button>
+
       <DialogComponent
-        // ref={modalRef}
-        open={open}
-        onClose={() => setOpen(false)}
+        open={openDrawer}
+        onExit={() => setOpenDrawer(false)}
         type="drawer"
-        heading="👋 Hi, I'm another dialog!"
+        heading="👋 Hi, I'm a drawer!"
       >
         <p>Testing how multiple dialogs appear on a screen.</p>
       </DialogComponent>
+
       <p>
         This line of text has a <a href="!#  ">link</a> in it to demonstrate how interactivity works
         on elements behind the dialog.

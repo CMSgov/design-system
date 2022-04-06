@@ -84,13 +84,13 @@ $dialog-spacer: $spacer-4;
 
 // 🧪 Native dialog experiement styles
 .ds-c-dialog {
-  border: 1px solid dodgerblue;
+  border: 3px solid dodgerblue;
 }
 .ds-c-drawer {
   height: 100vh;
   margin: 0 0 0 auto;
   max-width: 33vw;
-  border: 1px solid hotpink;
+  border: 3px solid hotpink;
 }
 .ds-c-dialog__header {
   display: flex;
