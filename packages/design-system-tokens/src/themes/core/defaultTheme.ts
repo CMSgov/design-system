@@ -1,4 +1,4 @@
-import { animation, color, font, measure, media, spacer, z } from '../../tokens';
+import { animation, color, font, measure, media, radius, spacer, z } from '../../tokens';
 import { to, ThemeTokens, ColorTokens } from '../../lib/types';
 import { hexOpacity } from '../../lib/utility';
 
@@ -95,6 +95,19 @@ const themeColors: ColorTokens = {
 
 const components = {};
 
+const globals = {
+  'article-max-width': '600px',
+  'grid-columns': '12',
+  'grid-gutter-width': spacer['4'],
+  'grid-form-gutter-width': spacer['2'],
+  'lead-max-width': '77rem',
+  'nav-width': '951px',
+  'site-margins': '3rem',
+  'site-margins-mobile': '1.5rem',
+  'site-max-width': '1040px',
+  'text-max-width': '53rem',
+};
+
 const shadow = {
   focus: `inset 0 0 0 1px ${themeColors.base}`,
   'focus-inverse': `inset 0 0 0 1px ${themeColors.base}`,
@@ -117,8 +130,10 @@ const DefaultTheme = to<ThemeTokens>()({
     serif: font['family-bitter'],
     ...font,
   },
+  globals,
   measure,
   media,
+  radius,
   shadow,
   spacer,
   z,

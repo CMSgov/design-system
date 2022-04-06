@@ -6,13 +6,13 @@ copyThemes()
 {
   cd dist
   
-  for file in core-*; do
+  for file in core-*.scss; do
     cp -v "$file" "../../design-system/src/styles/settings/variables/_${file#core-}"
   done
-  for file in healthcare-*; do
+  for file in healthcare-*.scss; do
     cp -v "$file" "../../ds-healthcare-gov/src/styles/settings/_${file#healthcare-}"
   done
-  for file in medicare-*; do
+  for file in medicare-*.scss; do
     cp -v "$file" "../../ds-medicare-gov/src/styles/settings/variables/_${file#medicare-}"
   done
 }

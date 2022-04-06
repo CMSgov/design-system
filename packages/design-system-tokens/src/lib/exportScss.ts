@@ -9,14 +9,19 @@ const tokenFormatDefault = (name: string, value: string | unknown) => {
   return `$${name}: ${value} !default;\n`;
 };
 
+/*
+ * Sets up a list of key/pair values from an object (section) using a formatter
+ * function which returns an interpolated string value for use in new sass file
+ */
 const setVars = (
   items: Record<string, any>,
-  filename: string,
+  section: string,
   formatter: (name: string, value: string) => string = tokenFormat
 ) => {
   let vars = '';
   Object.entries(items).forEach(([name, value]) => {
-    name = `${filename}-${name}`;
+    // global objects in themes are not prefixed by the token type
+    name = section === 'globals' ? name : `${section}-${name}`;
     vars += formatter(name, value);
   });
   return vars;

@@ -5,6 +5,9 @@ $image-path: '../images' !default;
 // TODO: remove this, we should not be setting variables like this in sass
 $ds-include-choice-error-highlight: false !default;
 
+// 44 x 44 pixels hit target following Apple iOS Human Interface Guidelines
+$hit-area: 4.4rem !default;
+
 @import 'variables/index';
 @import 'mixins/index';
 
