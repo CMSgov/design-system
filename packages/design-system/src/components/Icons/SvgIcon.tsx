@@ -46,7 +46,6 @@ export type IconCommonProps = Partial<Omit<SvgIconProps, 'children'>>;
 
 type OmitProps = 'className' | 'children' | 'id' | 'title' | 'viewBox';
 
-// TODO: Should this extend SVG props?
 function SvgIcon({
   ariaHidden,
   className,
@@ -63,20 +62,25 @@ function SvgIcon({
   const titleId = `${iconId}__title`;
   const descriptionId = `${iconId}__desc`;
   const ariaLabelledBy = description ? `${titleId} ${descriptionId}` : titleId;
+  const isSrVisible = !ariaHidden;
+  const additionalProps = {};
+  if (isSrVisible) {
+    additionalProps['aria-labelledby'] = ariaLabelledBy;
+    additionalProps['role'] = 'img';
+  }
 
   return (
     <svg
-      aria-labelledby={ariaLabelledBy}
       aria-hidden={ariaHidden}
       className={svgClasses}
       focusable={false}
       id={iconId}
-      role="img"
       viewBox={viewBox}
       xmlns="http://www.w3.org/2000/svg"
+      {...additionalProps}
     >
-      <title id={titleId}>{title}</title>
-      {description && <desc id={descriptionId}>{description}</desc>}
+      {isSrVisible && <title id={titleId}>{title}</title>}
+      {isSrVisible && description && <desc id={descriptionId}>{description}</desc>}
       {children}
     </svg>
   );
