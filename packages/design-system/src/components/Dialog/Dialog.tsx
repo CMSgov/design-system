@@ -72,8 +72,7 @@ export interface DialogProps {
    */
   heading: React.ReactNode;
   open?: boolean;
-  onClose?: () => void;
-  onExit?: () => any;
+  onExit: () => void;
   escapeExits?: boolean;
   /**
    * The Dialog's size parameter.
@@ -83,7 +82,6 @@ export interface DialogProps {
 }
 
 export const Dialog = (props: DialogProps) => {
-  // export const Dialog = forwardRef<HTMLDialogElement>((props: DialogProps, ref) => {
   const {
     actions,
     actionsClassName,
@@ -97,7 +95,7 @@ export const Dialog = (props: DialogProps) => {
     headerClassName,
     heading,
     open,
-    onClose,
+    onExit,
     size,
     type,
     ...modalProps
@@ -160,25 +158,24 @@ export const Dialog = (props: DialogProps) => {
 
   const modalClassNames = classNames('ds-c-dialog', className);
   const drawerClassNames = classNames('ds-c-drawer', className);
+
   let dialogClassNames = null;
+
   if (type === 'modal') {
     dialogClassNames = modalClassNames;
   } else if (type === 'drawer') {
     dialogClassNames = drawerClassNames;
   }
 
-  // const dialogClassNames = classNames('ds-c-dialog', className);
-
   const headerClassNames = classNames('ds-c-dialog__header', headerClassName);
   const actionsClassNames = classNames('ds-c-dialog__actions', actionsClassName);
 
-  // PE: Implement `onCancel={onClose}` for `dialog`
+  // PE: Implement `onCancel={onExit}` for `dialog`
   // https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/oncancel
   // onCancel allows close/open of dialog using keyboard - state doesn't get tripped up
   // Receiving TS error saying `onCancel` doesn't exist on HTMLDialogElement
   return (
-    <dialog ref={dialogRef} className={dialogClassNames}>
-      {/* <dialog ref={ref} className={dialogClassNames} {...modalProps}> */}
+    <dialog ref={dialogRef} className={dialogClassNames} onCancel={onExit} {...modalProps}>
       <header role="banner" className={headerClassNames}>
         {heading && (
           // 👀 Check into how `h1` behaves with AT
@@ -187,8 +184,7 @@ export const Dialog = (props: DialogProps) => {
         <Button
           aria-label={ariaCloseLabel}
           className="ds-c-dialog__close"
-          onClick={onClose}
-          // onClick={() => ref.current?.close()}
+          onClick={onExit}
           size={closeButtonSize}
           variation={closeButtonVariation}
         >
@@ -203,7 +199,6 @@ export const Dialog = (props: DialogProps) => {
     </dialog>
   );
 };
-// });
 
 Dialog.defaultProps = {
   ariaCloseLabel: 'Close modal dialog',
