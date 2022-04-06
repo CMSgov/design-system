@@ -61,6 +61,7 @@ export interface DialogProps {
    */
   closeIcon?: React.ReactNode;
   children: React.ReactNode;
+  dialogId?: string;
   /**
    * Additional classes to be added to the header, which wraps the heading and
    * close button.
@@ -70,8 +71,10 @@ export interface DialogProps {
    * The Dialog's heading, to be rendered in the header alongside the close button.
    */
   heading: React.ReactNode;
-  open: boolean;
-  onClose: () => void;
+  open?: boolean;
+  onClose?: () => void;
+  onExit?: () => any;
+  escapeExits?: boolean;
   /**
    * The Dialog's size parameter.
    */
@@ -174,7 +177,7 @@ export const Dialog = (props: DialogProps) => {
   // onCancel allows close/open of dialog using keyboard - state doesn't get tripped up
   // Receiving TS error saying `onCancel` doesn't exist on HTMLDialogElement
   return (
-    <dialog ref={dialogRef} className={dialogClassNames} onCancel={onClose} {...modalProps}>
+    <dialog ref={dialogRef} className={dialogClassNames}>
       {/* <dialog ref={ref} className={dialogClassNames} {...modalProps}> */}
       <header role="banner" className={headerClassNames}>
         {heading && (
