@@ -39,7 +39,7 @@ msg() {
   echo >&2 -e "${1-}"
 }
 
-run_storybook() {
+parse_args() {
 
   while :; do
     case "${1-}" in
@@ -66,7 +66,7 @@ run_storybook() {
   return 0
 }
 
-run_storybook "$@"
+parse_args "$@"
 
 # wait for storybook to be ready
 msg "-i- Waiting for storybook instance to be ready, timeout in 120s ..\n"
