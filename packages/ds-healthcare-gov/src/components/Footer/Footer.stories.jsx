@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Footer from './I18nFooter';
+import Footer from './Footer';
 
 export default {
   title: 'Components/Footer',
@@ -9,6 +9,12 @@ export default {
     className: {
       control: { type: 'text' },
       type: { name: 'string', required: false },
+    },
+    initialLanguage: {
+      description:
+        '**This prop has been DEPRECATED.** Do not use. See [internationaliation documentation](https://design.cms.gov/guidelines/i18n/#default-internationalized-content-in-the-design-system)',
+      control: 'radio',
+      options: ['en', 'es'],
     },
   },
   args: {

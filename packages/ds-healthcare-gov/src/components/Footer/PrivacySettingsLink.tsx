@@ -1,6 +1,6 @@
 import PrivacySettingsDialog from '../PrivacySettings/PrivacySettingsDialog';
 import React, { useState } from 'react';
-import { TFunction } from 'i18next';
+import { TFunction } from '@cmsgov/design-system';
 
 interface PrivacySettingsLinkProps {
   t: TFunction;

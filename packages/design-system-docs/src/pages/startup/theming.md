@@ -30,8 +30,6 @@ Then, in your main stylesheet, import your overrides file _before_ you [import t
 @import '{{npm}}/dist/scss/index';
 ```
 
-See the [child design system example](https://github.com/CMSgov/design-system/tree/master/examples/child-design-system/src/styles/settings) for a more complex example of Sass variable overrides.
-
 ### Available variables
 
 Sass variables are documented on the relevant documentation pages, and are defined in the `{{npm}}` package:
@@ -103,8 +101,6 @@ Unlike Sass variable overrides, these styles must be declared _after_ importing 
 /* Component overrides */
 @import 'form-overrides';
 ```
-
-See the [child design system example](https://github.com/CMSgov/design-system/blob/master/examples/child-design-system/src/styles/index.scss) for a more complex example of Sass component, utility, and base overrides.
 
 ## CSS declarations
 

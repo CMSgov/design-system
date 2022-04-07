@@ -1,5 +1,4 @@
-import { TFunction } from 'i18next';
-import { Language } from '../i18n';
+import { Language, TFunction } from '@cmsgov/design-system';
 
 /**
  * Returns a link pointing to the opposite locale

@@ -1,8 +1,34 @@
-import { RoundedStarIcon } from '@design-system';
+import {
+  RoundedStarIcon,
+  PharmacyIcon,
+  PiggyBankIcon,
+  CheckShieldIcon,
+  DrugsIcon,
+} from '@design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
 const iconData = [
+  {
+    defaultTitle: 'Check with shield',
+    component: <CheckShieldIcon />,
+    name: 'CheckShieldIcon',
+  },
+  {
+    defaultTitle: 'Drugs',
+    component: <DrugsIcon />,
+    name: 'DrugsIcon',
+  },
+  {
+    defaultTitle: 'Pharmacy',
+    component: <PharmacyIcon />,
+    name: 'PharmacyIcon',
+  },
+  {
+    defaultTitle: 'Piggy Bank',
+    component: <PiggyBankIcon />,
+    name: 'PiggyBankIcon',
+  },
   {
     defaultTitle: '[variation] Star',
     component: (

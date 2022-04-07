@@ -2,8 +2,7 @@ import InlineLinkLists from './InlineLinkLists';
 import LogosRow from './LogosRow';
 import React from 'react';
 import classnames from 'classnames';
-import { Language } from '../i18n';
-import { useTranslation } from 'react-i18next';
+import { Language, tWithLanguage } from '../i18n';
 
 export interface FooterProps {
   /**
@@ -11,9 +10,12 @@ export interface FooterProps {
    */
   className?: string;
   /**
+   * @deprecated - This is now deprecated in favor of the global language setting. See guides/internationalization
+   * @hide-prop [Deprecated]
+   *
    * The language the footer will render as.
    */
-  initialLanguage: Language;
+  initialLanguage?: Language;
   /**
    * The primary, or root domain where the majority of footer links should be
    * hosted.  By default, links render with relative paths, but providing this
@@ -37,11 +39,17 @@ export interface FooterProps {
 }
 
 export const Footer = (props: FooterProps) => {
-  const { t } = useTranslation(props.initialLanguage);
+  const t = tWithLanguage(props.initialLanguage);
   const classes = classnames(
     'hc-c-footer ds-u-fill--gray-lightest ds-u-padding-y--5',
     props.className
   );
+
+  if (props.initialLanguage) {
+    console.warn(
+      `[Deprecated]: Please remove the 'initialLanguage' prop in <Footer> in favor of global language setting. This prop is deprecated and will be removed in a future release.`
+    );
+  }
 
   return (
     <footer className={classes} role="contentinfo">
@@ -51,9 +59,5 @@ export const Footer = (props: FooterProps) => {
     </footer>
   );
 };
-
-Footer.defaultProps = {
-  initialLanguage: 'en',
-} as FooterProps;
 
 export default Footer;

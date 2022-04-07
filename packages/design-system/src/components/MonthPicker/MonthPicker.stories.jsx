@@ -24,10 +24,13 @@ export default {
     errorPlacement: {
       defaultValue: 'top',
     },
+    locale: {
+      description:
+        '**This prop has been DEPRECATED.** Do not use. See [internationaliation documentation](https://design.cms.gov/guidelines/i18n/#default-internationalized-content-in-the-design-system)',
+    },
   },
   args: {
-    hint:
-      "Month Picker can receive optional help text, giving the user additional information of what's required.",
+    hint: "Month Picker can receive optional help text, giving the user additional information of what's required.",
     errorMessage: 'Please meet form requirements.',
   },
 };
@@ -44,8 +47,7 @@ export const SelectedMonthPicker = Template.bind({});
 SelectedMonthPicker.args = {
   name: 'SelectedMonthPicker',
   label: 'Select additional months from Selected Month Picker',
-  hint:
-    'Preselected values are `readonly` when `selectedMonths` property is used. For mutable values, use the `defaultSelectedMonths` property.',
+  hint: 'Preselected values are `readonly` when `selectedMonths` property is used. For mutable values, use the `defaultSelectedMonths` property.',
   selectedMonths: [1, 2, 3, 4, 5, 6],
 };
 
@@ -70,8 +72,7 @@ export const InverseSelectedMonthPicker = Template.bind({});
 InverseSelectedMonthPicker.args = {
   name: 'InverseSelectedMonthPicker',
   label: 'Select additional months from Inverse Selected Month Picker',
-  hint:
-    'Preselected values are `readonly` when `selectedMonths` property is used. For mutable values, use the `defaultSelectedMonths` property.',
+  hint: 'Preselected values are `readonly` when `selectedMonths` property is used. For mutable values, use the `defaultSelectedMonths` property.',
   inversed: true,
   selectedMonths: [1, 2, 3, 4, 5, 6],
 };

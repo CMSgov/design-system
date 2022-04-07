@@ -1,5 +1,5 @@
 import React from 'react';
-import { TFunction } from 'react-i18next';
+import { TFunction } from '@cmsgov/design-system';
 
 interface DeConsumerMessageProps {
   deBrokerName?: string;
