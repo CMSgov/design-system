@@ -1,4 +1,4 @@
-import { EVENT_CATEGORY, MAX_LENGTH, sendLinkEvent } from '../analytics';
+import { EVENT_CATEGORY, MAX_LENGTH, getRenderedTextContent, sendLinkEvent } from '../analytics';
 import React from 'react';
 import Drawer, { DrawerProps } from '../Drawer/Drawer';
 import { helpDrawerSendsAnalytics } from '../flags';
@@ -24,7 +24,6 @@ export interface HelpDrawerProps extends DrawerProps {
 export class HelpDrawer extends React.PureComponent<HelpDrawerProps> {
   constructor(props: HelpDrawerProps) {
     super(props);
-    this.headingRef = null;
     this.eventHeadingText = '';
 
     if (process.env.NODE_ENV !== 'production') {
@@ -47,13 +46,8 @@ export class HelpDrawer extends React.PureComponent<HelpDrawerProps> {
 
       if (this.props.analyticsLabelOverride) {
         this.eventHeadingText = this.props.analyticsLabelOverride;
-      } else if (typeof heading === 'string') {
-        this.eventHeadingText = heading.substring(0, MAX_LENGTH);
       } else {
-        this.eventHeadingText =
-          this.headingRef && this.headingRef.textContent
-            ? this.headingRef.textContent.substring(0, MAX_LENGTH)
-            : '';
+        this.eventHeadingText = getRenderedTextContent(heading).substring(0, MAX_LENGTH);
       }
 
       /* Send analytics event for helpdrawer open */
@@ -82,7 +76,6 @@ export class HelpDrawer extends React.PureComponent<HelpDrawerProps> {
     }
   }
 
-  headingRef: any;
   eventHeadingText: string;
 
   render(): JSX.Element {
