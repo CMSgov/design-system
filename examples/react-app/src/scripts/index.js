@@ -7,15 +7,6 @@ import Button from '@cmsgov/design-system/dist/components/Button/Button';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import ReactDOMServer from 'react-dom/server';
-
-const staticHtml = ReactDOMServer.renderToStaticMarkup(
-  <Alert heading="Status heading">
-    <p className="ds-c-alert__text">This is a React Alert component.</p>
-  </Alert>
-);
-console.log(staticHtml);
-
 const Example = function () {
   return (
     <div>
