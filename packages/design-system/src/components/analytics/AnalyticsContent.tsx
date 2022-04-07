@@ -14,14 +14,14 @@ export interface RenderToStringProps {
  * don't care about. This component renders content and sends a string back to the
  * parent through a callback.
  */
-export const AnalyticsContent = (props: RenderToStringProps) => {
-  const ref = useRef();
+export const AnalyticsContent = ({ children, onContentStringRendered }: RenderToStringProps) => {
+  const ref = useRef<HTMLSpanElement>();
 
   useEffect(() => {
     if (ref.current) {
-      props.onContentStringRendered(ref.current.textContent);
+      onContentStringRendered(ref.current.textContent);
     }
-  }, [props.children, props.onContentStringRendered]);
+  });
 
-  return <React.Fragment ref={ref}>props.children</React.Fragment>;
+  return <span ref={ref}>{children}</span>;
 };

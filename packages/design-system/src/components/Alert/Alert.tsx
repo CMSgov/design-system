@@ -1,4 +1,4 @@
-import { EVENT_CATEGORY, MAX_LENGTH, sendLinkEvent } from '../analytics';
+import { AnalyticsContent, EVENT_CATEGORY, MAX_LENGTH, sendLinkEvent } from '../analytics';
 import React from 'react';
 import { alertSendsAnalytics } from '../flags';
 import classNames from 'classnames';
@@ -81,7 +81,6 @@ export class Alert extends React.PureComponent<
 
   constructor(props: AlertProps) {
     super(props);
-    this.alertTextRef = null;
     this.focusRef = null;
     this.headingId = this.props.headingId || uniqueId('alert_');
 
@@ -99,50 +98,34 @@ export class Alert extends React.PureComponent<
     if (this.props.autoFocus && this.focusRef) {
       this.focusRef.focus();
     }
-
-    const { analytics, analyticsLabelOverride, variation } = this.props;
-
-    if (alertSendsAnalytics() && analytics !== false) {
-      /* Send analytics event for `error`, `warn`, `success` alert variations */
-      if (variation) {
-        const heading = this.props.heading || this.props.children;
-        let eventHeadingText;
-
-        if (analyticsLabelOverride) {
-          eventHeadingText = analyticsLabelOverride;
-        } else if (typeof heading === 'string') {
-          eventHeadingText = heading.substring(0, MAX_LENGTH);
-        } else {
-          const eventHeadingTextElement =
-            (this.alertTextRef &&
-              this.alertTextRef.getElementsByClassName('ds-c-alert__heading')[0]) ||
-            (this.alertTextRef && this.alertTextRef.getElementsByClassName('ds-c-alert__body')[0]);
-          eventHeadingText =
-            eventHeadingTextElement && eventHeadingTextElement.textContent
-              ? eventHeadingTextElement.textContent.substring(0, MAX_LENGTH)
-              : '';
-        }
-
-        sendLinkEvent({
-          event_name: 'alert_impression',
-          event_type: EVENT_CATEGORY.uiInteraction,
-          ga_eventAction: 'alert impression',
-          ga_eventCategory: EVENT_CATEGORY.uiComponents,
-          ga_eventLabel: eventHeadingText,
-          heading: eventHeadingText,
-          type: variation,
-        });
-      }
-    }
   }
 
+  handleAnalyticsContent = (content: string) => {
+    const { analytics, analyticsLabelOverride, variation } = this.props;
+    // Don't send analytics if we don't meet certain criteria
+    // Only sends analytics event for `error`, `warn`, `success` alert variations
+    if (!alertSendsAnalytics() || analytics === false || !variation) {
+      return;
+    }
+
+    const eventHeadingText = analyticsLabelOverride ?? content.substring(0, MAX_LENGTH);
+
+    sendLinkEvent({
+      event_name: 'alert_impression',
+      event_type: EVENT_CATEGORY.uiInteraction,
+      ga_eventAction: 'alert impression',
+      ga_eventCategory: EVENT_CATEGORY.uiComponents,
+      ga_eventLabel: eventHeadingText,
+      heading: eventHeadingText,
+      type: variation,
+    });
+  };
+
   // Alert class properties
-  alertTextRef: any;
   focusRef: any;
   headingId: string;
-  eventHeadingText: string;
 
-  heading(): React.ReactElement | void {
+  heading() {
     const { headingLevel, heading } = this.props;
     const Heading = `h${headingLevel}`;
     if (heading) {
@@ -210,7 +193,6 @@ export class Alert extends React.PureComponent<
       <div
         className={classes}
         ref={(ref) => {
-          this.alertTextRef = ref;
           if (autoFocus) {
             this.focusRef = ref;
           } else if (alertRef) {
@@ -227,12 +209,20 @@ export class Alert extends React.PureComponent<
           {heading ? (
             <div className="ds-c-alert__header ds-c-alert__heading">
               {a11yLabel}
-              {this.heading()}
+              <AnalyticsContent onContentStringRendered={this.handleAnalyticsContent}>
+                {this.heading()}
+              </AnalyticsContent>
             </div>
           ) : (
             a11yLabel
           )}
-          {children}
+          {heading ? (
+            children
+          ) : (
+            <AnalyticsContent onContentStringRendered={this.handleAnalyticsContent}>
+              {children}
+            </AnalyticsContent>
+          )}
         </div>
       </div>
     );
