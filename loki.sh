@@ -39,34 +39,27 @@ msg() {
   echo >&2 -e "${1-}"
 }
 
-parse_args() {
+while :; do
+  case "${1-}" in
+    -h | --help) usage ;;
+    -v | --verbose) set -x ;;
+    -t | --target) 
+      export LOKI_FILE_PREFIX="${2-}"
+      export STORYBOOK_DS="${2-}"
+      shift
+      ;;
+    *) break ;;
+  esac
+  shift
+done
 
-  while :; do
-    case "${1-}" in
-      -h | --help) usage ;;
-      -v | --verbose) set -x ;;
-      -t | --target) 
-        export LOKI_FILE_PREFIX="${2-}"
-        export STORYBOOK_DS="${2-}"
-        shift
-        ;;
-      *) break ;;
-    esac
-    shift
-  done
+args=("$@")
 
-  args=("$@")
+[ ${#args[@]} -eq 0 ] && usage
 
-  [ ${#args[@]} -eq 0 ] && usage
-
-  npx start-storybook --no-open -p 6006 > /dev/null 2>&1 &
-  SB_PID=$!
-  msg "\n-+- Starting: Storybook on port 6006 ${STORYBOOK_DS} PID: ${SB_PID}"
-
-  return 0
-}
-
-parse_args "$@"
+npx start-storybook --no-open -p 6006 > /dev/null 2>&1 &
+SB_PID=$!
+msg "\n-+- Starting: Storybook on port 6006 ${STORYBOOK_DS} PID: ${SB_PID}"
 
 # wait for storybook to be ready
 msg "-i- Waiting for storybook instance to be ready, timeout in 120s ..\n"
