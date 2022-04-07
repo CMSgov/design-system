@@ -79,6 +79,17 @@ describe('HelpDrawer', () => {
       });
     });
 
+    it('sends analytics event when heading is non-string', () => {
+      renderHelpDrawer({ heading: <span>Hello World</span> });
+      expect(tealiumMock).toBeCalledWith({
+        ...defaultEvent,
+        ga_eventType: 'cmsds',
+        ga_eventValue: '',
+        ga_eventLabel: 'Hello World',
+        heading: 'Hello World',
+      });
+    });
+
     it('disables analytics event tracking on open', () => {
       renderHelpDrawer({ analytics: false, onCloseClick: () => {} });
       expect(tealiumMock).not.toBeCalledWith(defaultEvent);

@@ -8,6 +8,7 @@ export function getRenderedTextContent(reactNode: string | React.ReactNode): str
   }
 
   const staticHtml = ReactDOMServer.renderToStaticMarkup(<>{reactNode}</>);
-  // TODO: Parse this to only get the textContent
-  return staticHtml;
+  const el = document.createElement('span');
+  el.innerHTML = staticHtml;
+  return el.textContent;
 }
