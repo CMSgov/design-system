@@ -216,7 +216,7 @@ label,
   border-left: $ds-c-inset-border-width solid $color-primary;
   flex: 1 1 100%;
   margin-bottom: $spacer-2;
-  margin-left: ($choice-size / 2) - ($ds-c-inset-border-width / 2);
+  margin-left: ($choice-size * 0.5) - ($ds-c-inset-border-width * 0.5);
   padding: $spacer-2;
   padding-right: 0;
 

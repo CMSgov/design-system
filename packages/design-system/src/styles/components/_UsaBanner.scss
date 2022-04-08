@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 $usa-banner-background-color: #f0f0f0;
 $usa-banner-text-color: #1b1b1b;
 $usa-banner-close-image-background-color: #e6e6e6;
@@ -163,7 +165,7 @@ $usa-caret-icon-size: 10px;
 .ds-c-usa-banner__lock-image {
   height: 1.5ex;
   vertical-align: inherit;
-  width: 1.5ex * 52 / 64;
+  width: math.div(1.5ex * 52, 64);
 
   path {
     fill: currentColor;
