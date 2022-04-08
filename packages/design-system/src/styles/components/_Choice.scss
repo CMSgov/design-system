@@ -163,6 +163,10 @@ label,
       box-shadow: none;
     }
   }
+
+  &:checked {
+    border-color: $choice-checked-background-color;
+  }
 }
 
 .ds-c-choice--inverse {
