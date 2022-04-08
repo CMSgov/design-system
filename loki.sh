@@ -65,7 +65,7 @@ msg "\n-+- Starting: Storybook on port 6006 ${STORYBOOK_DS} PID: ${SB_PID}"
 msg "-i- Waiting for storybook instance to be ready, timeout in 120s ..\n"
 
 attempts=0
-until $(curl --output /dev/null --silent --head --fail http://localhost:6006); do
+until $(true &>/dev/null </dev/tcp/127.0.0.1/6006); do
   if [ $attempts -eq 20 ]; then
     kill $SB_PID
     die "[x] Something went wrong starting storybook ..\n"
