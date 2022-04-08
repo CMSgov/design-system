@@ -4,10 +4,10 @@
 const getSrcDirectories = () => {
   let projectDirs;
   switch (process.env.STORYBOOK_DS) {
-    case 'mgov':
+    case 'medicare':
       projectDirs = ['../packages/design-system/src', '../packages/ds-medicare-gov/src'];
       break;
-    case 'hcgov':
+    case 'healthcare':
       projectDirs = ['../packages/design-system/src', '../packages/ds-healthcare-gov/src'];
       break;
     default:
