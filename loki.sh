@@ -7,7 +7,7 @@ script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd -P)
 
 usage() {
   cat <<EOF
-Usage: $(basename "${BASH_SOURCE[0]}") [-h] [-v] [-t target] args
+Usage: $(basename "${BASH_SOURCE[0]}") [-h] [-v] [-t target] <...loki args>
 
 Assists with running the Storybook Loki visual regression tests. Items in brackets
 are optional. Must have docker running and able to start up instances.
