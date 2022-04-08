@@ -1,0 +1,6 @@
+// importing core styles from core index.scss files
+// @styles is aliased in gatsby-node.js
+@import '@styles/index.scss';
+
+@import 'components/footer.scss';
+@import 'components/header.scss';
