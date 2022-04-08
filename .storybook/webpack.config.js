@@ -4,9 +4,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // import statements in JS & SCSS files cannot be in a conditional
 // this is a workaround to load the appropriate SCSS entry in storybook based on environment variable
 const getStylesPath = () => {
-  if (process.env.STORYBOOK_DS == 'mgov') {
+  if (process.env.STORYBOOK_DS == 'medicare') {
     return '../packages/ds-medicare-gov/src/styles/index.scss';
-  } else if (process.env.STORYBOOK_DS == 'hcgov') {
+  } else if (process.env.STORYBOOK_DS == 'healthcare') {
     return '../packages/ds-healthcare-gov/src/styles/index.scss';
   } else {
     return '../packages/design-system/src/styles/index.scss';
