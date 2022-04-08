@@ -15,6 +15,9 @@ Installs dependencies for the doc site. Only needs to be run on first spin up of
 Runs the site locally at `http:localhost:8000/`
 Also runs the GraphiQL playground at `http://localhost:800/___graphql`.
 
+`yarn build`
+This builds a production-ready version of the site that can be deployed.
+
 ## Project Structure
 
 Some directories are specific to Gatsby and details can be found on [this Gatsby documentation page](https://www.gatsbyjs.com/docs/reference/gatsby-project-structure/).
