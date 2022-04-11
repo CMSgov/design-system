@@ -1,2 +1,15 @@
-.c-header {
+.c-header__wrapper {
+  background-color: $color-background-inverse;
+}
+
+.c-header__link {
+  text-decoration: none;
+
+  &:visited {
+    color: $color-base-inverse;
+  }
+
+  &:focus {
+    color: $color-primary;
+  }
 }

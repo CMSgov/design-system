@@ -9,6 +9,7 @@ exports.onCreateWebpackConfig = ({ stage, actions }) => {
         '@styles': path.resolve(__dirname, '../design-system/src/styles'),
         '../fonts': path.resolve(__dirname, '../design-system/src/fonts'),
         '../images': path.resolve(__dirname, '../design-system/src/images'),
+        '@ds-components': path.resolve(__dirname, '../design-system/src/components'),
       },
     },
   });
