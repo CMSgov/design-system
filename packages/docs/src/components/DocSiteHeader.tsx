@@ -13,7 +13,7 @@ const DocSiteHeader = () => {
         </h1>
         <div className="ds-u-display--none ds-u-sm-display--block ds-u-md-display--flex ds-u-justify-content--end ds-u-sm-margin-top--1 ds-u-md-margin-top--0">
           <Button
-            href=""
+            href={`https://github.com/CMSgov/design-system/releases/latest/download/cmsgov-design-system-${process.env.GATSBY_CORE_PKG_VERSION}.tgz`}
             className="ds-c-button ds-c-button--primary ds-c-button--inverse ds-u-font-weight--normal"
           >
             {' '}
