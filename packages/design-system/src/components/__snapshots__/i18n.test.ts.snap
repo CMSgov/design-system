@@ -25,3 +25,5 @@ exports[`i18n translate returns expected translation for key (English) 1`] = `"O
 exports[`i18n translate returns expected translation for key (Spanish) 1`] = `"Sitio web oficial del gobierno"`;
 
 exports[`i18n translate returns expected translation for key (default) 1`] = `"Official government website"`;
+
+exports[`i18n translate throws error if key does not resolve to a string 1`] = `"Translation key 'usaBanner' does not resolve to a string."`;
