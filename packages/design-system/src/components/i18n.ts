@@ -80,12 +80,13 @@ export function translate(
   if (data) {
     // Replace template strings with provided data
     const interpolatedTranslation = Object.keys(data).reduce(
-      (interpolatedString, dataKey) => interpolatedString.replace(`{{${dataKey}}}`, data[dataKey]),
+      (interpolatedString: string, dataKey: string) =>
+        interpolatedString.replace(`{{${dataKey}}}`, data[dataKey] as string),
       rawTranslation
     );
-    return interpolatedTranslation;
+    return interpolatedTranslation as string;
   } else {
-    return rawTranslation;
+    return rawTranslation as string;
   }
 }
 

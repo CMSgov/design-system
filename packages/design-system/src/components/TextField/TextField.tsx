@@ -156,8 +156,8 @@ export class TextField extends React.PureComponent<
   }
 
   render() {
-    const containerProps = pick(this.props, FormControlPropKeys);
-    const inputOnlyProps = omit(this.props, FormControlPropKeys);
+    const containerProps: any = pick(this.props, FormControlPropKeys);
+    const inputOnlyProps: any = omit(this.props, FormControlPropKeys);
 
     // Add clearfix class
     const containerClassName = classNames(
