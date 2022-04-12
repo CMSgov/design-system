@@ -9,30 +9,20 @@ import ReactDOM from 'react-dom';
 
 const Example = function () {
   const [open, setOpen] = useState(false);
+  const openDialog = () => setOpen(true);
+  const closeDialog = () => setOpen(false);
   return (
     <div>
       <Alert heading="Hello world">
         <p className="ds-c-alert__text">You did it! You&rsquo;ve ran the example.</p>
-        <Button className="ds-u-margin-top--2" onClick={() => setOpen(true)}>
+        <Button className="ds-u-margin-top--2" onClick={openDialog}>
           Learn more
         </Button>
-      </Alert>
 
-      {/* <Dialog
-        open={open}
-        onClose={() => setOpen(false)}
-        type="drawer"
-        heading="👋 Hi, I'm a dialog!"
-      >
-        <p>
-          This element can be both a Drawer and a Modal depending on the `type` set. If Drawer is
-          selected, the background is interactive. If Modal is selected, the background is not
-          interactive.
-        </p>
-        <p>
-          You can click the close button or press <kbd>ESCAPE</kbd> to close the dialog.
-        </p>
-      </Dialog> */}
+        <Dialog open={open} onExit={closeDialog}>
+          foo
+        </Dialog>
+      </Alert>
     </div>
   );
 };
