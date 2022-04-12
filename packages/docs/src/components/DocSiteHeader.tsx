@@ -23,7 +23,7 @@ const DocSiteHeader = () => {
             href="https://github.com/CMSgov/design-system"
             className="ds-c-button ds-c-button--inverse ds-u-font-weight--normal ds-u-margin-left--2"
           >
-            View on Github
+            View on GitHub
           </Button>
         </div>
       </header>
