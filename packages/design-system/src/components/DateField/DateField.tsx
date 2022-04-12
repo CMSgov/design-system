@@ -1,4 +1,4 @@
-import { FormControl, FormControlPropKeys } from '../FormControl/FormControl';
+import { FormControl, FormControlPropKeys, FormControlProps } from '../FormControl/FormControl';
 import DateInput from './DateInput';
 import React from 'react';
 import defaultDateFormatter from './defaultDateFormatter';
@@ -156,8 +156,8 @@ export interface DateFieldProps {
 }
 
 export function DateField(props: DateFieldProps): React.ReactElement {
-  const containerProps = pick(props, FormControlPropKeys);
-  const inputOnlyProps = omit(props, FormControlPropKeys);
+  const containerProps: any = pick(props, FormControlPropKeys);
+  const inputOnlyProps: any = omit(props, FormControlPropKeys);
 
   return (
     <FormControl
