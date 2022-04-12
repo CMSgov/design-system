@@ -1,13 +1,5 @@
 @import '../settings/index.scss';
 
-$autocomplete-space: $spacer-1;
-
-$autocomplete-list-border-width: 1px;
-$autocomplete-list-border-style: solid;
-$autocomplete-list-border-color: $color-gray-lighter;
-$autocomplete-list-border: $autocomplete-list-border-width $autocomplete-list-border-style
-  $autocomplete-list-border-color;
-
 .ds-c-autocomplete {
   max-width: $input-max-width;
   position: relative;
@@ -30,29 +22,29 @@ $autocomplete-list-border: $autocomplete-list-border-width $autocomplete-list-bo
 
 .ds-c-autocomplete__label {
   margin: 0;
-  padding: $autocomplete-space;
+  padding: $spacer-1;
 }
 
 .ds-c-autocomplete__list {
-  background-color: $color-white;
-  border: $autocomplete-list-border;
+  background-color: $autocomplete-list__background-color;
+  border: 1px solid $autocomplete-list__border-color;
   box-sizing: border-box;
   max-height: ($base-font-size + $spacer-2) * 10;
   overflow-y: auto;
-  padding: $autocomplete-space;
+  padding: $spacer-1;
   position: absolute;
   width: 100%;
   z-index: $z-dialog;
 }
 
 .ds-c-autocomplete__list-item {
-  color: $color-primary;
+  color: $autocomplete-list-item__font-color;
   padding: $spacer-1;
 }
 
 .ds-c-autocomplete__list-item--active {
-  background-color: $color-primary-alt-darkest;
-  color: $color-white;
+  background-color: $autocomplete-list-item__background-color--active;
+  color: $autocomplete-list-item__font-color--active;
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
     background-color: WindowText;
@@ -62,7 +54,7 @@ $autocomplete-list-border: $autocomplete-list-border-width $autocomplete-list-bo
 }
 
 .ds-c-autocomplete__list-item--message {
-  color: $color-muted;
+  color: $autocomplete-list-item-message__font-color;
   padding: $spacer-1;
 }
 

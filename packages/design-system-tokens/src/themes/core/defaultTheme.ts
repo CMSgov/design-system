@@ -93,7 +93,15 @@ const themeColors: ColorTokens = {
   'background-dialog-mask': hexOpacity('#000000', 50),
 };
 
-const components = {};
+const components = {
+  // autocomplete
+  'autocomplete-list__background-color': themeColors.white,
+  'autocomplete-list__border-color': themeColors['gray-lighter'],
+  'autocomplete-list-item__font-color': themeColors.primary,
+  'autocomplete-list-item__background-color--active': themeColors['primary-alt-darkest'],
+  'autocomplete-list-item__font-color--active': themeColors.white,
+  'autocomplete-list-item-message__font-color': themeColors.muted,
+};
 
 const globals = {
   'article-max-width': '600px',

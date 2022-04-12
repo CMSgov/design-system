@@ -20,8 +20,8 @@ const setVars = (
 ) => {
   let vars = '';
   Object.entries(items).forEach(([name, value]) => {
-    // global objects in themes are not prefixed by the token type
-    name = section === 'globals' ? name : `${section}-${name}`;
+    // component and global objects in themes are not prefixed by the token type
+    name = section === 'globals' || section === 'components' ? name : `${section}-${name}`;
     vars += formatter(name, value);
   });
   return vars;
