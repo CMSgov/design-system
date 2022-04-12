@@ -115,6 +115,10 @@ describe('i18n', () => {
         'My favorite color is red.'
       );
     });
+
+    it('throws error if key does not resolve to a string', () => {
+      expect(() => translate('en', 'usaBanner')).toThrowErrorMatchingSnapshot();
+    });
   });
 
   describe('t', () => {
