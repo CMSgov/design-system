@@ -18,6 +18,13 @@ const config: GatsbyConfig = {
       },
     },
     {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'content',
+        path: './content/',
+      },
+    },
+    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'CMS Design System',
