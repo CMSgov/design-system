@@ -1,13 +1,17 @@
 import { EVENT_CATEGORY, MAX_LENGTH, sendLinkEvent } from '../analytics/SendAnalytics';
 import Button, { ButtonVariation } from '../Button/Button';
-import React, { forwardRef, useEffect, useRef } from 'react';
+import React, { useEffect, useLayoutEffect, useRef } from 'react';
 import classNames from 'classnames';
 import { dialogSendsAnalytics } from '../flags';
 import { CloseIcon } from '../Icons';
+import dialogPolyfill from 'dialog-polyfill';
+import 'dialog-polyfill/dist/dialog-polyfill.css';
 
 export type DialogCloseButtonSize = 'small' | 'big';
 export type DialogSize = 'narrow' | 'wide' | 'full';
 export type DialogType = 'modal' | 'drawer';
+
+declare const window: any;
 
 export interface DialogProps {
   /**
@@ -61,6 +65,7 @@ export interface DialogProps {
    */
   closeIcon?: React.ReactNode;
   children: React.ReactNode;
+  dialogId?: string;
   /**
    * Additional classes to be added to the header, which wraps the heading and
    * close button.
@@ -70,8 +75,9 @@ export interface DialogProps {
    * The Dialog's heading, to be rendered in the header alongside the close button.
    */
   heading: React.ReactNode;
-  open: boolean;
+  open?: boolean;
   onExit: () => void;
+  escapeExits?: boolean;
   /**
    * The Dialog's size parameter.
    */
@@ -144,15 +150,50 @@ export const Dialog = (props: DialogProps) => {
 
   // Toggle dialog open
   const dialogRef = useRef(null);
-  useEffect(() => {
-    if (open && type === 'modal') {
-      dialogRef.current?.showModal();
-    } else if (open && type !== 'modal') {
-      dialogRef.current?.show();
+  const lastActiveElement = React.useRef(null);
+  const firstRender = React.useRef(true);
+
+  useLayoutEffect(() => {
+    if (window.HTMLDialogElement === undefined) {
+      dialogPolyfill.registerDialog(dialogRef.current);
+      // import('dialog-polyfill/dist/dialog-polyfill.css');
+    }
+  }, []);
+
+  useLayoutEffect(() => {
+    // prevents calling imperative methods on mount since the polyfill will throw an error since we are not using the `open` attribute
+    if (firstRender.current) {
+      firstRender.current = false;
     } else {
-      dialogRef.current?.close();
+      const dialogNode = dialogRef.current;
+      if (open && type === 'modal') {
+        lastActiveElement.current = document.activeElement;
+        dialogNode.showModal();
+      } else if (open && type !== 'modal') {
+        lastActiveElement.current = document.activeElement;
+        dialogNode.show();
+      } else {
+        dialogNode.close();
+        lastActiveElement.current.focus();
+      }
     }
   }, [open, type]);
+
+  // PE: Implement `onCancel={onExit}` for `dialog`
+  // https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/oncancel
+  // onCancel allows close/open of dialog using keyboard - state doesn't get tripped up
+  // Receiving TS error saying `onCancel` doesn't exist on HTMLDialogElement
+  useEffect(() => {
+    const dialogNode = dialogRef.current;
+    const handleCancel = (event) => {
+      event.preventDefault();
+      onExit();
+    };
+    dialogNode.addEventListener('cancel', handleCancel);
+    return () => {
+      dialogNode.removeEventListener('cancel', handleCancel);
+    };
+  }, [onExit]);
 
   const modalClassNames = classNames('ds-c-dialog', className);
   const drawerClassNames = classNames('ds-c-drawer', className);
@@ -168,12 +209,8 @@ export const Dialog = (props: DialogProps) => {
   const headerClassNames = classNames('ds-c-dialog__header', headerClassName);
   const actionsClassNames = classNames('ds-c-dialog__actions', actionsClassName);
 
-  // PE: Implement `onCancel={onExit}` for `dialog`
-  // https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/oncancel
-  // onCancel allows close/open of dialog using keyboard - state doesn't get tripped up
-  // Receiving TS error saying `onCancel` doesn't exist on HTMLDialogElement
   return (
-    <dialog ref={dialogRef} className={dialogClassNames} onCancel={onExit} {...modalProps}>
+    <dialog ref={dialogRef} className={dialogClassNames} {...modalProps}>
       <header role="banner" className={headerClassNames}>
         {heading && (
           // 👀 Check into how `h1` behaves with AT
