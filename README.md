@@ -87,7 +87,7 @@ We use [loki](https://storybook.js.org/addons/loki) to test our components for v
 
 Running loki tests locally require two things: you must be signed into Docker and you must have an instance of Storybook running locally.
 
-1. Sign into Docker
+1. Open the Docker app, and make sure you're signed in (Docker Desktop requires a license now)
 2. In your terminal window, start Storybook by running `yarn storybook`
 3. In another terminal window, run `yarn loki test` to begin comparing component images
    1. If differences are detected and unexpected, evaluate your changes - we only want to update and commit references when we expect the visual changes detected

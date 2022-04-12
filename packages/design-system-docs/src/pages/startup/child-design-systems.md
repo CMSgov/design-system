@@ -25,12 +25,6 @@ If you are working on a project under either of these sites, we highly recommend
 - [Healthcare.gov Child Design System](https://github.com/CMSgov/design-system/tree/master/packages/ds-healthcare-gov)
 - [Medicare.gov Child Design System](https://github.com/CMSgov/design-system/tree/master/packages/ds-medicare-gov)
 
-## Maintaining a child design system
-
-Child design systems use the CMSDS (`@cmsgov/design-system`) as a dependency to receive updates from the core. Child design system maintainers also use developer tooling (`@cmsgov/design-system-scripts`) and documentation (`@cmsgov/design-system-doc`) from the core CMSDS team to maintain consistency between the different systems.
-
-See the [child design system example](https://github.com/CMSgov/design-system/tree/master/examples/child-design-system) for details on how to run the design system locally, customize it's styles and functionality, and update it's documentation site.
-
 ## Child design system guidelines
 
 - The healthcare.gov and medicare.gov child design systems are actively maintained by the core CMSDS team. Please reach out if you have questions about adoption, use, contribution, or anything else related to these design systems.

@@ -17,7 +17,3 @@ This site-wide design system has a much smaller group of users than the core CMS
 ## Development
 
 See the [root CMSDS README](../../README.md).
-
-## Building on top of the CMS Design System
-
-As a child design system, the Healthcare.gov Design System shares the same tooling and organization as the CMSDS. For more information on how to extend and customize SASS, JS, and documentation, check out the [child design system example and its documentation](https://github.com/CMSgov/design-system/tree/master/examples/child-design-system).
