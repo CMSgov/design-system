@@ -16,12 +16,14 @@ interface NavItem {
  * @returns {React Element}
  * @todo figure out which item is currently selected and mark & expand appropriately
  * @todo Determine URL string for each item once content is integrated
- * @todo possibly use file's meta title instead of actual file name
  */
 const DocSiteNav = () => {
   const data = useStaticQuery(graphql`
     query SiteNavQuery {
-      allFile(filter: { absolutePath: {}, extension: { eq: "mdx" } }) {
+      allFile(
+        filter: { absolutePath: {}, extension: { eq: "mdx" } }
+        sort: { fields: [relativeDirectory, name] }
+      ) {
         nodes {
           id
           name
@@ -32,16 +34,22 @@ const DocSiteNav = () => {
     }
   `);
 
+  /**
+   * Updating a name to remove kebab case & get rid of numeric ordering
+   */
+  const formatNavItemLabel = (name: string): string => {
+    let newName = name.replace(/-/g, ' ');
+    newName = newName.replace(/\d+_/g, '');
+    return newName;
+  };
+
   const formatNavItemData = ({ name, id }: NavItem) => ({
-    label: name.replace(/-/g, ' '),
+    label: formatNavItemLabel(name),
     url: '',
     id,
   });
 
   const formatNavData = (dataList: NavItem[]): VerticalNavItemProps[] => {
-    // interface IFormattedData {
-    //   [key : string] : VerticalNavItemProps
-    // }
     const dataObj = dataList.reduce((acc: any, dataItem) => {
       if (dataItem.relativeDirectory === '') {
         // for level 1 nav items that don't have a sub nav
@@ -58,7 +66,7 @@ const DocSiteNav = () => {
         return {
           ...acc,
           [dataItem.relativeDirectory]: {
-            label: dataItem.relativeDirectory.replace(/-/g, ' '),
+            label: formatNavItemLabel(dataItem.relativeDirectory),
             items: [formatNavItemData(dataItem)],
             defaultCollapsed: true,
           },
@@ -66,7 +74,6 @@ const DocSiteNav = () => {
       }
     }, {});
 
-    // not supported in IE. How to polyfill?
     return Object.values(dataObj);
   };
 
@@ -74,11 +81,7 @@ const DocSiteNav = () => {
 
   return (
     <div className="ds-l-md-col--3 ds-u-padding--2 ds-u-fill--white c-sidebar">
-      <VerticalNav
-        className="c-nav"
-        items={navItems}
-        // selectedId={}
-      />
+      <VerticalNav className="c-nav" items={navItems} />
     </div>
   );
 };
