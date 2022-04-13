@@ -1,0 +1,71 @@
+import { RefObject, useRef, useEffect } from 'react';
+
+export interface UseAnalyticsContentProps {
+  /**
+   * Optional name of component for error messages
+   */
+  componentName?: string;
+  /**
+   * Number of refs that you want to use
+   */
+  refCount: number;
+  onMount: (content: string) => any;
+  onUnmount?: (content: string) => any;
+}
+
+// Should I have them pass the label override in or deal with that in the implementing component?
+// Do I have them pass the potentially string original content in or let them just use rendered content?
+
+export function useAnalyticsContent({
+  componentName,
+  refCount,
+  onMount,
+  onUnmount,
+}: UseAnalyticsContentProps) {
+  const refs: RefObject<any>[] = [];
+  for (let i = 0; i < refCount; i++) {
+    refs.push(useRef());
+  }
+
+  useEffect(() => {
+    const content = refs.map((ref) => ref.current?.textContent).find((textContent) => textContent);
+    if (!content) {
+      console.error(`No content found for ${componentName ?? ''} analytics event`);
+      return;
+    }
+    
+    onMount(content);
+    return () => {
+      if (onUnmount) onUnmount(content);
+    };
+  });
+
+  return refs;
+}
+
+// Example usage:
+/*
+const [headingRef, bodyRef] = useAnalyticsContent({
+  refCount: 2,
+  onMount: (content: string) => {
+    sendLinkEvent({
+      event_name: 'alert_impression',
+      event_type: EVENT_CATEGORY.uiInteraction,
+      ga_eventAction: 'alert impression',
+      ga_eventCategory: EVENT_CATEGORY.uiComponents,
+      ga_eventLabel: content,
+      heading: content,
+      type: variation,
+    });
+  }
+})
+
+return (
+  <div>
+    <h1 ref={headingRef}>Hello World</h1>
+    <p ref={bodyRef}>
+      I'm some body text
+    </p>
+  </div>
+)
+*/
