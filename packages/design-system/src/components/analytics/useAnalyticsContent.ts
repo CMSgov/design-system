@@ -5,10 +5,6 @@ export interface UseAnalyticsContentProps {
    * Optional name of component for error messages
    */
   componentName?: string;
-  /**
-   * Number of refs that you want to use
-   */
-  refCount: number;
   onMount: (content: string) => any;
   onUnmount?: (content: string) => any;
 }
@@ -18,14 +14,11 @@ export interface UseAnalyticsContentProps {
 
 export function useAnalyticsContent({
   componentName,
-  refCount,
   onMount,
   onUnmount,
 }: UseAnalyticsContentProps) {
-  const refs: RefObject<any>[] = [];
-  for (let i = 0; i < refCount; i++) {
-    refs.push(useRef());
-  }
+  // Three refs should be enough to support fallback content. Add more in the future if needed
+  const refs: RefObject<any>[] = [useRef(), useRef(), useRef()];
 
   useEffect(() => {
     const content = refs.map((ref) => ref.current?.textContent).find((textContent) => textContent);
@@ -33,7 +26,7 @@ export function useAnalyticsContent({
       console.error(`No content found for ${componentName ?? ''} analytics event`);
       return;
     }
-    
+
     onMount(content);
     return () => {
       if (onUnmount) onUnmount(content);
@@ -46,7 +39,6 @@ export function useAnalyticsContent({
 // Example usage:
 /*
 const [headingRef, bodyRef] = useAnalyticsContent({
-  refCount: 2,
   onMount: (content: string) => {
     sendLinkEvent({
       event_name: 'alert_impression',
