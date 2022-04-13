@@ -1,4 +1,4 @@
-import { EVENT_CATEGORY, MAX_LENGTH, sendLinkEvent } from '../analytics';
+import { EventCategory, MAX_LENGTH, sendLinkEvent } from '../analytics';
 import AriaModal from 'react-aria-modal';
 import Button, { ButtonVariation } from '../Button/Button';
 import React, { useEffect, useRef } from 'react';
@@ -311,9 +311,9 @@ export const Dialog = (props: DialogProps) => {
       /* Send analytics event for dialog open */
       sendLinkEvent({
         event_name: 'modal_impression',
-        event_type: EVENT_CATEGORY.uiInteraction,
+        event_type: EventCategory.UI_INTERACTION,
         ga_eventAction: 'modal impression',
-        ga_eventCategory: EVENT_CATEGORY.uiComponents,
+        ga_eventCategory: EventCategory.UI_COMPONENTS,
         ga_eventLabel: eventHeadingText,
         heading: eventHeadingText,
       });
@@ -324,9 +324,9 @@ export const Dialog = (props: DialogProps) => {
         /* Send analytics event for dialog close */
         sendLinkEvent({
           event_name: 'modal_closed',
-          event_type: EVENT_CATEGORY.uiInteraction,
+          event_type: EventCategory.UI_INTERACTION,
           ga_eventAction: 'closed modal',
-          ga_eventCategory: EVENT_CATEGORY.uiComponents,
+          ga_eventCategory: EventCategory.UI_COMPONENTS,
           ga_eventLabel: eventHeadingText,
           heading: eventHeadingText,
         });

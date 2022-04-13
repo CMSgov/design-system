@@ -1,4 +1,4 @@
-import { EVENT_CATEGORY, MAX_LENGTH, getRenderedTextContent, sendLinkEvent } from '../analytics';
+import { EventCategory, MAX_LENGTH, sendLinkEvent } from '../analytics';
 import React from 'react';
 import Drawer, { DrawerProps } from '../Drawer/Drawer';
 import { helpDrawerSendsAnalytics } from '../flags';
@@ -24,6 +24,7 @@ export interface HelpDrawerProps extends DrawerProps {
 export class HelpDrawer extends React.PureComponent<HelpDrawerProps> {
   constructor(props: HelpDrawerProps) {
     super(props);
+    this.headingRef = null;
     this.eventHeadingText = '';
 
     if (process.env.NODE_ENV !== 'production') {
@@ -46,16 +47,21 @@ export class HelpDrawer extends React.PureComponent<HelpDrawerProps> {
 
       if (this.props.analyticsLabelOverride) {
         this.eventHeadingText = this.props.analyticsLabelOverride;
+      } else if (typeof heading === 'string') {
+        this.eventHeadingText = heading.substring(0, MAX_LENGTH);
       } else {
-        this.eventHeadingText = getRenderedTextContent(heading).substring(0, MAX_LENGTH);
+        this.eventHeadingText =
+          this.headingRef && this.headingRef.textContent
+            ? this.headingRef.textContent.substring(0, MAX_LENGTH)
+            : '';
       }
 
       /* Send analytics event for helpdrawer open */
       sendLinkEvent({
         event_name: 'help_drawer_opened',
-        event_type: EVENT_CATEGORY.uiInteraction,
+        event_type: EventCategory.UI_INTERACTION,
         ga_eventAction: 'opened help drawer',
-        ga_eventCategory: EVENT_CATEGORY.uiComponents,
+        ga_eventCategory: EventCategory.UI_COMPONENTS,
         ga_eventLabel: this.eventHeadingText,
         heading: this.eventHeadingText,
       });
@@ -67,15 +73,16 @@ export class HelpDrawer extends React.PureComponent<HelpDrawerProps> {
       /* Send analytics event for helpdrawer close */
       sendLinkEvent({
         event_name: 'help_drawer_closed',
-        event_type: EVENT_CATEGORY.uiInteraction,
+        event_type: EventCategory.UI_INTERACTION,
         ga_eventAction: 'closed help drawer',
-        ga_eventCategory: EVENT_CATEGORY.uiComponents,
+        ga_eventCategory: EventCategory.UI_COMPONENTS,
         ga_eventLabel: this.eventHeadingText,
         heading: this.eventHeadingText,
       });
     }
   }
 
+  headingRef: any;
   eventHeadingText: string;
 
   render(): JSX.Element {

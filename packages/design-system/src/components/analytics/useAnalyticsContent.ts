@@ -42,9 +42,9 @@ const [headingRef, bodyRef] = useAnalyticsContent({
   onMount: (content: string) => {
     sendLinkEvent({
       event_name: 'alert_impression',
-      event_type: EVENT_CATEGORY.uiInteraction,
+      event_type: EventCategory.UI_INTERACTION,
       ga_eventAction: 'alert impression',
-      ga_eventCategory: EVENT_CATEGORY.uiComponents,
+      ga_eventCategory: EventCategory.UI_COMPONENTS,
       ga_eventLabel: content,
       heading: content,
       type: variation,

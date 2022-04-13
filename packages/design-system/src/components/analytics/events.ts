@@ -18,10 +18,9 @@ export type EventType = 'link';
 
 export const MAX_LENGTH = 100;
 
-export const EVENT_CATEGORY = {
-  contentTools: 'content tools',
-  uiComponents: 'ui components',
-  uiInteraction: 'ui interaction',
+export enum EventCategory {
+  UI_COMPONENTS = 'ui components',
+  UI_INTERACTION = 'ui interaction',
 };
 
 export interface AnalyticsEvent {
@@ -33,9 +32,26 @@ export interface AnalyticsEvent {
   [additional_props: string]: unknown;
 }
 
+/**
+ * Clip all the string values to the MAX_LENGTH on an event object in place by mutation
+ */
+function clipStrings<T>(event: T): T {
+  for (const key in event) {
+    const value = event[key];
+    if (typeof value === "string") {
+      event[key] = value.substring(0, MAX_LENGTH) as any;
+    }
+  }
+  return event;
+}
+
 const MAX_RETRIES = 3;
 const TIMEOUT = 300;
 
+/**
+ * Use existing window.utag.link function to send analytics events. If the function does not
+ * exist right away, try again after TIMEOUT milliseconds until we've reached MAX_RETRIES.
+ */
 export function sendAnalytics(
   eventType: EventType,
   event: Required<AnalyticsEvent>,
@@ -50,6 +66,7 @@ export function sendAnalytics(
   const utag = (window as any as UtagContainer).utag;
 
   if (utag && utag[eventType]) {
+    clipStrings(event);
     try {
       utag[eventType](event);
       return `Tealium event sent: ${event.ga_eventCategory} - ${event.ga_eventAction} - ${event.ga_eventLabel}`;
