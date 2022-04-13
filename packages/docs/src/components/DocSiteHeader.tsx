@@ -1,5 +1,5 @@
 import React from 'react';
-import { UsaBanner, Button } from '@ds-components';
+import { UsaBanner, Button } from '@cmsgov/design-system';
 
 const DocSiteHeader = () => {
   return (
