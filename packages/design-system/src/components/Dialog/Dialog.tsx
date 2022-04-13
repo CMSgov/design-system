@@ -150,8 +150,7 @@ export const Dialog = (props: DialogProps) => {
 
   // Toggle dialog open
   const dialogRef = useRef(null);
-  const lastActiveElement = React.useRef(null);
-  const firstRender = React.useRef(true);
+  const firstRender = useRef(true);
 
   useLayoutEffect(() => {
     if (window.HTMLDialogElement === undefined) {
@@ -161,39 +160,24 @@ export const Dialog = (props: DialogProps) => {
   }, []);
 
   useLayoutEffect(() => {
-    // prevents calling imperative methods on mount since the polyfill will throw an error since we are not using the `open` attribute
+    /*
+     ** Prevents calling imperative methods on mount;
+     ** the polyfill will throw an error since we are
+     ** not using the `open` attribute
+     */
     if (firstRender.current) {
       firstRender.current = false;
     } else {
       const dialogNode = dialogRef.current;
       if (open && type === 'modal') {
-        lastActiveElement.current = document.activeElement;
         dialogNode.showModal();
       } else if (open && type !== 'modal') {
-        lastActiveElement.current = document.activeElement;
         dialogNode.show();
       } else {
         dialogNode.close();
-        lastActiveElement.current.focus();
       }
     }
   }, [open, type]);
-
-  // PE: Implement `onCancel={onExit}` for `dialog`
-  // https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/oncancel
-  // onCancel allows close/open of dialog using keyboard - state doesn't get tripped up
-  // Receiving TS error saying `onCancel` doesn't exist on HTMLDialogElement
-  useEffect(() => {
-    const dialogNode = dialogRef.current;
-    const handleCancel = (event) => {
-      event.preventDefault();
-      onExit();
-    };
-    dialogNode.addEventListener('cancel', handleCancel);
-    return () => {
-      dialogNode.removeEventListener('cancel', handleCancel);
-    };
-  }, [onExit]);
 
   const modalClassNames = classNames('ds-c-dialog', className);
   const drawerClassNames = classNames('ds-c-drawer', className);

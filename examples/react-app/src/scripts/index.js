@@ -19,7 +19,7 @@ const Example = function () {
           Learn more
         </Button>
 
-        <Dialog open={open} onExit={closeDialog}>
+        <Dialog open={open} onExit={closeDialog} type="modal">
           foo
         </Dialog>
       </Alert>
