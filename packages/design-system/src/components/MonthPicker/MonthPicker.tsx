@@ -161,7 +161,7 @@ export const MonthPicker = (props: MonthPickerProps) => {
   const selectAllPressed = selectedMonths.length === NUM_MONTHS - disabledMonths.length;
   const clearAllPressed = selectedMonths.length === 0;
 
-  const containerProps = pick(props, FormControlPropKeys);
+  const containerProps: any = pick(props, FormControlPropKeys);
   const containerClassName = classNames('ds-c-month-picker', props.className);
 
   return (

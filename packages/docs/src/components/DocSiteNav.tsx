@@ -1,5 +1,6 @@
 import React from 'react';
-import { VerticalNav } from '@ds-components';
+import { VerticalNav } from '@cmsgov/design-system';
+import { VerticalNavItemProps } from '@cmsgov/design-system/src/components/VerticalNav/VerticalNavItem';
 import { useStaticQuery, graphql } from 'gatsby';
 
 interface NavItem {
@@ -37,7 +38,10 @@ const DocSiteNav = () => {
     id,
   });
 
-  const formatNavData = (dataList: NavItem[]) => {
+  const formatNavData = (dataList: NavItem[]): VerticalNavItemProps[] => {
+    // interface IFormattedData {
+    //   [key : string] : VerticalNavItemProps
+    // }
     const dataObj = dataList.reduce((acc: any, dataItem) => {
       if (dataItem.relativeDirectory === '') {
         // for level 1 nav items that don't have a sub nav
@@ -66,7 +70,7 @@ const DocSiteNav = () => {
     return Object.values(dataObj);
   };
 
-  const navItems = formatNavData(data?.allFile?.nodes);
+  const navItems: VerticalNavItemProps[] = formatNavData(data?.allFile?.nodes);
 
   return (
     <div className="ds-l-md-col--3 ds-u-padding--2 ds-u-fill--white c-sidebar">

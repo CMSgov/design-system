@@ -4,7 +4,7 @@ import '../styles/index.scss';
 import Header from '../components/DocSiteHeader';
 import Footer from '../components/DocSiteFooter';
 import Sidebar from '../components/DocSiteNav';
-import { SkipNav } from '@ds-components';
+import { SkipNav } from '@cmsgov/design-system';
 
 // Main landing page for site
 const IndexPage = () => {
