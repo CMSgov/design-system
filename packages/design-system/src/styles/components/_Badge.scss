@@ -1,7 +1,5 @@
 @import '../settings/index.scss';
 
-$badge-font-size-big: $base-font-size;
-
 @mixin badge-high-contrast-mode-remove-color() {
   @media (-ms-high-contrast: active), (forced-colors: active) {
     background-color: windowText;
@@ -11,9 +9,9 @@ $badge-font-size-big: $base-font-size;
 }
 
 .ds-c-badge {
-  background-color: $color-gray;
-  border-radius: $border-radius-pill;
-  color: $color-white;
+  background-color: $badge__background-color;
+  border-radius: $badge__border-radius;
+  color: $badge__font-color;
   display: inline-block;
   font-size: $font-size-sm;
   line-height: $heading-line-height;
@@ -42,30 +40,30 @@ $badge-font-size-big: $base-font-size;
 }
 
 .ds-c-badge--big {
-  font-size: $badge-font-size-big;
+  font-size: $base-font-size;
 }
 
 .ds-c-badge--info {
-  background-color: $color-primary;
+  background-color: $badge__background-color--info;
 
   @include badge-high-contrast-mode-remove-color;
 }
 
 .ds-c-badge--success {
-  background-color: $color-success;
+  background-color: $badge__background-color--success;
 
   @include badge-high-contrast-mode-remove-color;
 }
 
 .ds-c-badge--warn {
-  background-color: $color-warn;
-  color: $color-base;
+  background-color: $badge__background-color--warn;
+  color: $badge__font-color--warn;
 
   @include badge-high-contrast-mode-remove-color;
 }
 
 .ds-c-badge--alert {
-  background-color: $color-error;
+  background-color: $badge__background-color--alert;
 
   @include badge-high-contrast-mode-remove-color;
 }

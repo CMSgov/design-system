@@ -101,6 +101,15 @@ const components = {
   'autocomplete-list-item__background-color--active': themeColors['primary-alt-darkest'],
   'autocomplete-list-item__font-color--active': themeColors.white,
   'autocomplete-list-item-message__font-color': themeColors.muted,
+  // badge
+  'badge__background-color': themeColors.gray,
+  'badge__font-color': themeColors.white,
+  'badge__background-color--alert': themeColors.error,
+  'badge__background-color--info': themeColors.primary,
+  'badge__background-color--success': themeColors.success,
+  'badge__background-color--warn': themeColors.warn,
+  'badge__font-color--warn': themeColors.base,
+  'badge__border-radius': radius.pill,
 };
 
 const globals = {
