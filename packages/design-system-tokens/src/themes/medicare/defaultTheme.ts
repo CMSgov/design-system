@@ -77,7 +77,24 @@ const themeColors: ColorTokens = {
   'background-inverse': color['teal-500'],
 };
 
-const components = {};
+const components = {
+  // autocomplete
+  'autocomplete-list__background-color': themeColors.white,
+  'autocomplete-list__border-color': themeColors['gray-lighter'],
+  'autocomplete-list-item__font-color': themeColors.primary,
+  'autocomplete-list-item__background-color--active': themeColors['primary-alt-darkest'],
+  'autocomplete-list-item__font-color--active': themeColors.white,
+  'autocomplete-list-item-message__font-color': themeColors.muted,
+  // badge
+  'badge__background-color': themeColors.gray,
+  'badge__font-color': themeColors.white,
+  'badge__background-color--alert': themeColors.error,
+  'badge__background-color--info': themeColors.primary,
+  'badge__background-color--success': themeColors.success,
+  'badge__background-color--warn': themeColors.warn,
+  'badge__font-color--warn': themeColors.base,
+};
+
 const shadow = {
   'box-card': '0 2px 3px 0 rgba(50, 50, 50, 0.23)',
 };
