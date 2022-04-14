@@ -48,6 +48,13 @@ export function useAnalyticsContent({
   // Three refs should be enough to support fallback content. Add more in the future if needed
   const refs: RefObject<any>[] = [useRef(), useRef(), useRef()];
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // According to this lint rule, we need to include all the dependencies of this function in the
+  // dependency array. However, in order for this useEffect to only fire on first render, we would
+  // need to memoize the two callback functions. This is an unnecessary burden on the implementing
+  // class, and there isn't a good way to memoize the props we receive here because they *also*
+  // have dependencies that should be listed but are unknown. This assumes that the onMount and
+  // onUnmount do not have a reason to change between renders.
   useEffect(() => {
     const content = refs.map((ref) => ref.current?.textContent).find((textContent) => textContent);
     if (!content) {
