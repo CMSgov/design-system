@@ -15,7 +15,7 @@ export type PxValue = `${number}px`;
 export type ExValue = `${string}ex`;
 export type PercentageValue = `${string}%`;
 
-export type AllTokenValues = SpacerTokens | ColorTokens | PxValue;
+export type AllTokenValues = SpacerTokens | ColorTokens | PxValue | BorderRadiusTokens;
 
 export type AnimationTokens = {
   readonly [key: string]: string | number;
