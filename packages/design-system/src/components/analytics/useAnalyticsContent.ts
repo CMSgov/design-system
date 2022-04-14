@@ -9,9 +9,37 @@ export interface UseAnalyticsContentProps {
   onUnmount?: (content: string) => any;
 }
 
-// Should I have them pass the label override in or deal with that in the implementing component?
-// Do I have them pass the potentially string original content in or let them just use rendered content?
-
+/**
+ * Use this hook to retrieve rendered content for use in analytics events.
+ * It accepts `onMount` and `onUnmount` event handlers, which will be called
+ * with the rendered textContent of the desired element. It grabs text content
+ * from the first element that has it, in order of the returned refs array.
+ * In the example below, it will favor content from `headingRef` (first ref)
+ * but will fall back to `bodyRef` (second ref) if no content is found:
+ *
+ * const [headingRef, bodyRef] = useAnalyticsContent({
+ *   onMount: (content: string) => {
+ *     sendLinkEvent({
+ *       event_name: 'alert_impression',
+ *       event_type: EventCategory.UI_INTERACTION,
+ *       ga_eventAction: 'alert impression',
+ *       ga_eventCategory: EventCategory.UI_COMPONENTS,
+ *       ga_eventLabel: content,
+ *       heading: content,
+ *       type: variation,
+ *     });
+ *   }
+ * })
+ *
+ * return (
+ *   <div>
+ *     <h1 ref={headingRef}>Hello World</h1>
+ *     <p ref={bodyRef}>
+ *       I'm some body text
+ *     </p>
+ *   </div>
+ * )
+ */
 export function useAnalyticsContent({
   componentName,
   onMount,
@@ -35,29 +63,3 @@ export function useAnalyticsContent({
 
   return refs;
 }
-
-// Example usage:
-/*
-const [headingRef, bodyRef] = useAnalyticsContent({
-  onMount: (content: string) => {
-    sendLinkEvent({
-      event_name: 'alert_impression',
-      event_type: EventCategory.UI_INTERACTION,
-      ga_eventAction: 'alert impression',
-      ga_eventCategory: EventCategory.UI_COMPONENTS,
-      ga_eventLabel: content,
-      heading: content,
-      type: variation,
-    });
-  }
-})
-
-return (
-  <div>
-    <h1 ref={headingRef}>Hello World</h1>
-    <p ref={bodyRef}>
-      I'm some body text
-    </p>
-  </div>
-)
-*/
