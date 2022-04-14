@@ -21,7 +21,7 @@ export const MAX_LENGTH = 100;
 export enum EventCategory {
   UI_COMPONENTS = 'ui components',
   UI_INTERACTION = 'ui interaction',
-};
+}
 
 export interface AnalyticsEvent {
   ga_eventAction: string;
@@ -38,7 +38,7 @@ export interface AnalyticsEvent {
 function clipStrings<T>(event: T): T {
   for (const key in event) {
     const value = event[key];
-    if (typeof value === "string") {
+    if (typeof value === 'string') {
       event[key] = value.substring(0, MAX_LENGTH) as any;
     }
   }
