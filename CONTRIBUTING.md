@@ -9,12 +9,6 @@ Please take a look at our [Code of Conduct](CODE_OF_CONDUCT.md) to learn more.
 
 If you are interested in running this site locally, please take a look at [setting up your local development environment](/README.md#running-locally).
 
-Use [our guides](https://github.com/CMSgov/design-system/tree/master/guides) to find additional information like:
-
-- Guiding principles
-- Coding guidelines
-- How to write documentation
-
 ## Submitting a pull request
 
 - [Fork the design system](https://guides.github.com/activities/forking/) into your GitHub account
@@ -28,7 +22,6 @@ Use [our guides](https://github.com/CMSgov/design-system/tree/master/guides) to 
 When considering what to do with a proposed pattern, there are several questions to answer first. The decision tree below outlines those questions to be answered and the various outcomes:
 
 ![CMS Design System component decision workflow](https://raw.githubusercontent.com/CMSgov/design-system/master/.github/images/CMS-Design-System-component-decision-workflow.jpg)
-
 When a new pattern is created, it’s worth asking if it's a one-off use case or something that can be used on other sites. New patterns come at a cost in terms of additional code, maintenance, documentation, and increased cognitive load on users. Care should therefore be taken when adding patterns to the design system.
 
 Our pattern proposal process is largely based on those by the [US Web Design System](https://github.com/uswds/uswds/wiki/Contribution-Guidelines%3A-Design).
