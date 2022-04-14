@@ -1,4 +1,4 @@
-import { EventCategory, sendLinkEvent, useAnalyticsContent } from '../analytics';
+import { EventCategory, MAX_LENGTH, sendLinkEvent } from '../analytics';
 import React from 'react';
 import { alertSendsAnalytics } from '../flags';
 import classNames from 'classnames';
@@ -74,16 +74,14 @@ export class Alert extends React.PureComponent<
   Omit<React.ComponentPropsWithRef<'div'>, OmitAlertProps> & AlertProps,
   any
 > {
-  static defaultProps: AlertProps = {
+  static defaultProps = {
     role: 'region',
     headingLevel: '2',
   };
 
-  focusRef: any;
-  headingId: string;
-
   constructor(props: AlertProps) {
     super(props);
+    this.alertTextRef = null;
     this.focusRef = null;
     this.headingId = this.props.headingId || uniqueId('alert_');
 
@@ -101,28 +99,60 @@ export class Alert extends React.PureComponent<
     if (this.props.autoFocus && this.focusRef) {
       this.focusRef.focus();
     }
+
+    const { analytics, analyticsLabelOverride, variation } = this.props;
+
+    if (alertSendsAnalytics() && analytics !== false) {
+      /* Send analytics event for `error`, `warn`, `success` alert variations */
+      if (variation) {
+        const heading = this.props.heading || this.props.children;
+        let eventHeadingText;
+
+        if (analyticsLabelOverride) {
+          eventHeadingText = analyticsLabelOverride;
+        } else if (typeof heading === 'string') {
+          eventHeadingText = heading.substring(0, MAX_LENGTH);
+        } else {
+          const eventHeadingTextElement =
+            (this.alertTextRef &&
+              this.alertTextRef.getElementsByClassName('ds-c-alert__heading')[0]) ||
+            (this.alertTextRef && this.alertTextRef.getElementsByClassName('ds-c-alert__body')[0]);
+          eventHeadingText =
+            eventHeadingTextElement && eventHeadingTextElement.textContent
+              ? eventHeadingTextElement.textContent.substring(0, MAX_LENGTH)
+              : '';
+        }
+
+        sendLinkEvent({
+          event_name: 'alert_impression',
+          event_type: EventCategory.UI_INTERACTION,
+          ga_eventAction: 'alert impression',
+          ga_eventCategory: EventCategory.UI_COMPONENTS,
+          ga_eventLabel: eventHeadingText,
+          heading: eventHeadingText,
+          type: variation,
+        });
+      }
+    }
   }
 
-  handleAnalyticsContent = (content: string) => {
-    const { analytics, analyticsLabelOverride, variation } = this.props;
-    // Don't send analytics if we don't meet certain criteria
-    // Only sends analytics event for `error`, `warn`, `success` alert variations
-    if (!alertSendsAnalytics() || analytics === false || !variation) {
-      return;
+  // Alert class properties
+  alertTextRef: any;
+  focusRef: any;
+  headingId: string;
+  eventHeadingText: string;
+
+  heading(): React.ReactElement | void {
+    const { headingLevel, heading } = this.props;
+    const Heading = `h${headingLevel}`;
+    if (heading) {
+      const headingProps = {
+        className: 'ds-c-alert__heading',
+        id: this.headingId,
+      };
+      return React.createElement(Heading, headingProps, heading);
     }
-
-    const eventHeadingText = analyticsLabelOverride ?? content;
-
-    sendLinkEvent({
-      event_name: 'alert_impression',
-      event_type: EventCategory.UI_INTERACTION,
-      ga_eventAction: 'alert impression',
-      ga_eventCategory: EventCategory.UI_COMPONENTS,
-      ga_eventLabel: eventHeadingText,
-      heading: eventHeadingText,
-      type: variation,
-    });
-  };
+  }
 
   // getting proper icon for alert variation
   getIcon(): React.ReactElement | null {
@@ -162,11 +192,6 @@ export class Alert extends React.PureComponent<
       ...alertProps
     } = this.props;
 
-    const [headingRef, bodyRef] = useAnalyticsContent({
-      componentName: 'Alert',
-      onMount: this.handleAnalyticsContent,
-    });
-
     const classes = classNames(
       'ds-c-alert',
       hideIcon && 'ds-c-alert--hide-icon',
@@ -181,12 +206,11 @@ export class Alert extends React.PureComponent<
       </span>
     );
 
-    const HeadingComponent = `h${headingLevel}` as const;
-
     return (
       <div
         className={classes}
         ref={(ref) => {
+          this.alertTextRef = ref;
           if (autoFocus) {
             this.focusRef = ref;
           } else if (alertRef) {
@@ -203,20 +227,12 @@ export class Alert extends React.PureComponent<
           {heading ? (
             <div className="ds-c-alert__header ds-c-alert__heading">
               {a11yLabel}
-              <HeadingComponent
-                className="ds-c-alert__heading"
-                id={this.headingId}
-                ref={headingRef}
-              >
-                {heading}
-              </HeadingComponent>
+              {this.heading()}
             </div>
           ) : (
             a11yLabel
           )}
-          <div ref={bodyRef}>
-            {children}
-          </div>
+          {children}
         </div>
       </div>
     );
