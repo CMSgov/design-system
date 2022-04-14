@@ -31,7 +31,7 @@ export function useAnalyticsContent({
     return () => {
       if (onUnmount) onUnmount(content);
     };
-  });
+  }, []);
 
   return refs;
 }
