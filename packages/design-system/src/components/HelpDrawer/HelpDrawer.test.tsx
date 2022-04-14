@@ -1,9 +1,8 @@
 import HelpDrawer, { HelpDrawerProps } from './HelpDrawer';
 import React from 'react';
-import renderer from 'react-test-renderer';
 import { UtagContainer } from '../analytics';
 import { setHelpDrawerSendsAnalytics } from '../flags';
-import { shallow } from 'enzyme';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 const defaultProps = {
   footerBody: (
@@ -17,33 +16,24 @@ const defaultProps = {
 };
 
 function renderHelpDrawer(props: Partial<HelpDrawerProps> = {}) {
-  const wrapper = shallow(
+  return render(
     <HelpDrawer {...defaultProps} {...props}>
       <p>content</p>
     </HelpDrawer>
   );
-  return { wrapper };
 }
 
 describe('HelpDrawer', () => {
   it('calls props.onCloseClick on close button click', () => {
     const onCloseClick = jest.fn();
-    const { wrapper } = renderHelpDrawer({ onCloseClick });
-    const closeBtn = wrapper.dive().find('Button');
-    closeBtn.simulate('click');
+    renderHelpDrawer({ onCloseClick });
+    fireEvent.click(screen.getByRole('button'));
     expect(onCloseClick).toHaveBeenCalled();
   });
 
   it('renders a snapshot', () => {
-    const tree = renderer
-      .create(
-        <HelpDrawer {...defaultProps}>
-          <p>content</p>
-        </HelpDrawer>
-      )
-      .toJSON();
-
-    expect(tree).toMatchSnapshot();
+    const { asFragment } = renderHelpDrawer();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   describe('Analytics event tracking', () => {

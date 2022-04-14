@@ -1,5 +1,5 @@
 import { EventCategory, MAX_LENGTH, sendLinkEvent } from '../analytics';
-import React from 'react';
+import React, { createRef } from 'react';
 import Drawer, { DrawerProps } from '../Drawer/Drawer';
 import { helpDrawerSendsAnalytics } from '../flags';
 import classNames from 'classnames';
@@ -24,7 +24,7 @@ export interface HelpDrawerProps extends DrawerProps {
 export class HelpDrawer extends React.PureComponent<HelpDrawerProps> {
   constructor(props: HelpDrawerProps) {
     super(props);
-    this.headingRef = null;
+    this.headingRef = createRef();
     this.eventHeadingText = '';
 
     if (process.env.NODE_ENV !== 'production') {
@@ -89,7 +89,11 @@ export class HelpDrawer extends React.PureComponent<HelpDrawerProps> {
     const { children, className, ...others } = this.props;
 
     return (
-      <Drawer className={classNames(className, 'ds-c-help-drawer')} {...others}>
+      <Drawer
+        className={classNames(className, 'ds-c-help-drawer')}
+        headingRef={this.headingRef}
+        {...others}
+      >
         {children}
       </Drawer>
     );
