@@ -50,7 +50,7 @@ The names and phrasing of the design system's parts should also still make sense
 
 ### Variations exist only when they can't be achieved with a utility class
 
-The design system includes utility classes for modifying the most common visual traits, like spacing, size, and color. You may want to offer variations of a component that involves changing one of these traits. When you do, you should first see if you can accomplish the variation by using one of the utility classes. If you can, then don't create a new CSS ruleset to accomplish something another ruleset already does.
+The design system includes utility classes for modifying the most common visual traits, like spacing, size, and color. You may want to offer variations of a component that involves changing one of these traits. When you do, you should first see if users of the design can accomplish the variation by applying one of the utility classes to your component.
 
 This accomplishes a few things: Most importantly it reduces the total amount of CSS, and secondly it teaches people how to use the utility classes.
 
