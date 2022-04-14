@@ -325,38 +325,37 @@ export const Dialog = (props: DialogProps) => {
   // TODO: remove after deprecating 'escapeExitDiabled' prop
   const escapeExitsProp = escapeExitDisabled ? !escapeExitDisabled : escapeExits;
 
+  function sendDialogEvent(
+    content: string,
+    eventAttributes: { event_name: string; ga_eventAction: string }
+  ) {
+    if (!dialogSendsAnalytics() || analytics === false) {
+      return;
+    }
+
+    const eventHeadingText = analyticsLabelOverride ?? content;
+
+    sendLinkEvent({
+      event_type: EventCategory.UI_INTERACTION,
+      ga_eventCategory: EventCategory.UI_COMPONENTS,
+      ga_eventLabel: eventHeadingText,
+      heading: eventHeadingText,
+      ...eventAttributes,
+    });
+  }
+
   const [headingRef] = useAnalyticsContent({
     componentName: 'Dialog',
     onMount: (content: string) => {
-      if (!dialogSendsAnalytics() || analytics === false) {
-        return;
-      }
-
-      const eventHeadingText = analyticsLabelOverride ?? content;
-
-      sendLinkEvent({
+      sendDialogEvent(content, {
         event_name: 'modal_impression',
-        event_type: EventCategory.UI_INTERACTION,
         ga_eventAction: 'modal impression',
-        ga_eventCategory: EventCategory.UI_COMPONENTS,
-        ga_eventLabel: eventHeadingText,
-        heading: eventHeadingText,
       });
     },
     onUnmount: (content: string) => {
-      if (!dialogSendsAnalytics() || analytics === false) {
-        return;
-      }
-
-      const eventHeadingText = analyticsLabelOverride ?? content;
-
-      sendLinkEvent({
+      sendDialogEvent(content, {
         event_name: 'modal_closed',
-        event_type: EventCategory.UI_INTERACTION,
         ga_eventAction: 'closed modal',
-        ga_eventCategory: EventCategory.UI_COMPONENTS,
-        ga_eventLabel: eventHeadingText,
-        heading: eventHeadingText,
       });
     },
   });
