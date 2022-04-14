@@ -62,5 +62,5 @@ InverseOption.args = {
   inversed: true,
 };
 InverseOption.parameters = {
-  backgrounds: { default: process.env.STORYBOOK_DS === 'mgov' ? 'Mgov dark' : 'Hcgov dark' },
+  backgrounds: { default: process.env.STORYBOOK_DS === 'medicare' ? 'Mgov dark' : 'Hcgov dark' },
 };
