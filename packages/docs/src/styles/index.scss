@@ -2,5 +2,8 @@
 // @styles is aliased in gatsby-node.js
 @import '@styles/index.scss';
 
+@import 'pages/layout.scss';
+
 @import 'components/footer.scss';
 @import 'components/header.scss';
+@import 'components/sidebar.scss';
