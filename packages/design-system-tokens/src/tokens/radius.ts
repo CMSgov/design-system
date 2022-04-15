@@ -8,7 +8,6 @@ const radius = to<BorderRadiusTokens>()({
   default: '3px',
   large: '8px',
   medium: '4px',
-  none: '0px',
   pill: '9999px',
   small: '2px',
 });

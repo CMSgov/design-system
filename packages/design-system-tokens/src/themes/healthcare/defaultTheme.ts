@@ -150,7 +150,7 @@ const components = {
   'choice__border-color--left': themeColors.primary,
   'choice__border-color--focus': themeColors['primary-darker'],
   'choice__border-color--disabled--inverse': themeColors['gray-light'],
-  'choice__border-radius': radius.none,
+  'choice__border-radius': '0px',
   'choice__border-width': '2px',
   'choice__color--unchecked': themeColors.white,
   'choice__color--disabled': themeColors.muted,
