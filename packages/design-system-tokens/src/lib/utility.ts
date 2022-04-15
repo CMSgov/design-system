@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { HexValue, RGBValue, RGBAValue, FileDescriptor } from './types';
+import { ColorTokens, HexValue, RGBValue, RGBAValue, FileDescriptor } from './types';
 
 // converts an rgb string 'rgb(15,24,128)' to a hex value '#0819A9'
 export const rgbToHex = (r: number, g: number, b: number): HexValue => {
@@ -9,11 +9,11 @@ export const rgbToHex = (r: number, g: number, b: number): HexValue => {
 };
 
 // transforms a hex value to an 8 char hex value with opacity given as a number
-export const hexOpacity = (hexVal: HexValue, opacity: number): HexValue => {
+export const hexOpacity = (hexVal: string, opacity: number): HexValue => {
   const percent = Math.max(0, Math.min(100, opacity));
   const intVal = Math.round((percent / 100) * 255);
   const hexOpacity = intVal.toString(16).padStart(2, '0');
-  return `${hexVal}${hexOpacity}`;
+  return `${hexVal}${hexOpacity}` as HexValue;
 };
 
 /*

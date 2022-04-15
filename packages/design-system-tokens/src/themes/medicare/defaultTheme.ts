@@ -2,7 +2,7 @@
  * Medicare.gov Default CMSDS Visual Theme
  */
 
-import { color, font, radius } from '../../tokens';
+import { color, font, spacer, radius } from '../../tokens';
 import { to, ThemeTokens, ColorTokens } from '../../lib/types';
 import { hexOpacity } from '../../lib/utility';
 
@@ -169,6 +169,29 @@ const components = {
   'badge__background-color--warn': themeColors.warn,
   'badge__font-color--warn': themeColors.base,
   'badge__border-radius': radius.pill,
+  // choice + choicelist
+  'choice__background-color': themeColors.background,
+  'choice__background-color--checked': themeColors['primary-alt'],
+  'choice__background-color--disabled': themeColors['gray-lighter'],
+  'choice__background-color--inverse': 'transparent',
+  'choice__background-color--disabled--inverse': hexOpacity(themeColors['muted-inverse'], 15),
+  'choice__background-color--unchecked': themeColors.primary,
+  'choice__border-color': color['granite-700'],
+  'choice__border-color--checked': themeColors['primary-alt'],
+  'choice__border-color--disabled': color['granite-300'],
+  'choice__border-color--error': themeColors.error,
+  'choice__border-color--inverse': themeColors.white,
+  'choice__border-color--left': themeColors.primary,
+  'choice__border-color--focus': themeColors['primary-darker'],
+  'choice__border-color--disabled--inverse': color['granite-300'],
+  'choice__border-radius': radius.default,
+  'choice__border-width': '2px',
+  'choice__color--unchecked': themeColors.white,
+  'choice__color--disabled': themeColors.muted,
+  choice__size: spacer['3'],
+  'choice__size--small': '20px',
+  'choice__size-radio': spacer['2'],
+  'choice__size-radio--small': '12px',
 };
 
 const shadow = {
