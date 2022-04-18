@@ -1,3 +1,7 @@
+/*
+ * Default CMSDS Visual Theme (core)
+ */
+
 import { animation, color, font, measure, media, radius, spacer, z } from '../../tokens';
 import { to, ThemeTokens, ColorTokens } from '../../lib/types';
 import { hexOpacity } from '../../lib/utility';
@@ -131,13 +135,35 @@ export const components = {
   'badge__background-color--warn': themeColors.warn,
   'badge__font-color--warn': themeColors.base,
   'badge__border-radius': radius.pill,
+  // choice + choicelist
+  'choice__background-color': themeColors.background,
+  'choice__background-color--checked': themeColors.primary,
+  'choice__background-color--disabled': themeColors['gray-lighter'],
+  'choice__background-color--inverse': 'transparent',
+  'choice__background-color--disabled--inverse': hexOpacity(themeColors['muted-inverse'], 15),
+  'choice__border-color': themeColors.base,
+  'choice__border-color--checked': themeColors.primary,
+  'choice__border-color--disabled': themeColors['gray-light'],
+  'choice__border-color--error': themeColors.error,
+  'choice__border-color--inverse': themeColors.white,
+  'choice__border-color--left': themeColors.primary,
+  'choice__border-color--focus': themeColors['primary-darker'],
+  'choice__border-color--disabled--inverse': themeColors['gray-light'],
+  'choice__border-radius': '0px',
+  'choice__border-width': '2px',
+  'choice__color--unchecked': themeColors.white,
+  'choice__color--disabled': themeColors.muted,
+  choice__size: spacer[4],
+  'choice__size--small': '20px',
+  'choice__size-radio': '22px',
+  'choice__size-radio--small': '12px',
 };
 
 export const globals = {
   'article-max-width': '600px',
   'grid-columns': '12',
-  'grid-gutter-width': spacer['4'],
-  'grid-form-gutter-width': spacer['2'],
+  'grid-gutter-width': spacer[4],
+  'grid-form-gutter-width': spacer[2],
   'lead-max-width': '77rem',
   'nav-width': '951px',
   'site-margins': '3rem',

@@ -4,11 +4,11 @@
 import { BorderRadiusTokens, to } from '../lib/types';
 
 const radius = to<BorderRadiusTokens>()({
-  default: '3px',
-  pill: '9999px',
   circle: '100%',
+  default: '3px',
   large: '8px',
   medium: '4px',
+  pill: '9999px',
   small: '2px',
 });
 
