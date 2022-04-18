@@ -3,6 +3,15 @@
 // values with extra -color declarations can be shortened as a part of that
 // process
 
+// alert
+$alert-padding: $alert__padding;
+$alert-bar-size: $alert__bar-width;
+$alert-icon-size: $alert__icon-size;
+$alert-link-color: $alert-link__font-color;
+$alert-link-color-hover: $alert-link__font-color--hover;
+$alert-link-color-active: $alert-link__font-color--active;
+$alert-link-color-focus: $alert-link__font-color--focus;
+
 // animation
 $ease-in-out-expo: $animation-ease-in-out-expo;
 $speed-base: $animation-speed-base;

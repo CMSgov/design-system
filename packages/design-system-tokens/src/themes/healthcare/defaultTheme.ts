@@ -119,6 +119,24 @@ const themeColors: ColorTokens = {
 };
 
 const components = {
+  // alert
+  'alert__background-color': themeColors['primary-alt-lightest'],
+  'alert__background-color--error': themeColors['error-lightest'],
+  'alert__background-color--lightweight': themeColors.white,
+  'alert__background-color--success': themeColors['success-lightest'],
+  'alert__background-color--warn': themeColors['warn-lightest'],
+  'alert__bar-width': spacer[1],
+  'alert__border-left-color': themeColors['primary-alt'],
+  'alert__border-color--error': themeColors.error,
+  'alert__border-color--success': themeColors.success,
+  'alert__border-color--warn': themeColors.warn,
+  'alert__font-color': themeColors['base'],
+  'alert__icon-size': spacer[5],
+  alert__padding: spacer[2],
+  'alert-link__font-color': themeColors['primary-darker'],
+  'alert-link__font-color--hover': themeColors['primary-darkest'],
+  'alert-link__font-color--focus': themeColors['primary-darkest'],
+  'alert-link__font-color--active': themeColors['primary-darkest'],
   // autocomplete
   'autocomplete-list__background-color': themeColors.white,
   'autocomplete-list__border-color': themeColors['gray-lighter'],
