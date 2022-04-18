@@ -135,7 +135,7 @@ export const VARIATION_NAMES = {
  * header's state (like whether the mobile menu is expanded) and
  * determining which variation of the header to display
  */
-const Header = (props: HeaderProps) => {
+export const Header = (props: HeaderProps) => {
   const [openMenu, setOpenMenu] = useState(false);
   const t = tWithLanguage(props.initialLanguage);
 
