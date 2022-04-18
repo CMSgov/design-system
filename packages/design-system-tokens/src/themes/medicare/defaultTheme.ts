@@ -112,7 +112,7 @@ const themeColors: ColorTokens = {
   'primary-alt-darkest': color['lapis-900'],
   'primary-alt-light': color['lapis-200'],
   'primary-alt-lightest': color['dark-sky-50'],
-  'primary-dark': color['teal-700'],
+  'primary-dark': color['ocean-700'],
   'primary-darker': color['ocean-800'],
   'primary-darkest': color['ocean-900'],
   'primary-light': color['teal-300'],
@@ -153,6 +153,24 @@ const themeColors: ColorTokens = {
 };
 
 const components = {
+  // alert
+  'alert__background-color': themeColors['primary-alt-lightest'],
+  'alert__background-color--error': themeColors['error-lightest'],
+  'alert__background-color--lightweight': themeColors.white,
+  'alert__background-color--success': themeColors['success-lightest'],
+  'alert__background-color--warn': themeColors['warn-lightest'],
+  'alert__bar-width': spacer[1],
+  'alert__border-left-color': themeColors['primary-alt'],
+  'alert__border-color--error': themeColors.error,
+  'alert__border-color--success': themeColors.success,
+  'alert__border-color--warn': themeColors.warn,
+  'alert__font-color': themeColors['base'],
+  'alert__icon-size': spacer[5],
+  alert__padding: spacer[2],
+  'alert-link__font-color': themeColors['primary-dark'],
+  'alert-link__font-color--hover': themeColors['primary-alt-dark'],
+  'alert-link__font-color--focus': themeColors['primary-alt-darkest'],
+  'alert-link__font-color--active': themeColors['primary-alt-darkest'],
   // autocomplete
   'autocomplete-list__background-color': themeColors.white,
   'autocomplete-list__border-color': themeColors['gray-lighter'],
