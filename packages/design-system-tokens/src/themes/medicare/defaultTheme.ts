@@ -175,7 +175,6 @@ const components = {
   'choice__background-color--disabled': themeColors['gray-lighter'],
   'choice__background-color--inverse': 'transparent',
   'choice__background-color--disabled--inverse': hexOpacity(themeColors['muted-inverse'], 15),
-  'choice__background-color--unchecked': themeColors.primary,
   'choice__border-color': color['granite-700'],
   'choice__border-color--checked': themeColors['primary-alt'],
   'choice__border-color--disabled': color['granite-300'],
@@ -188,9 +187,9 @@ const components = {
   'choice__border-width': '2px',
   'choice__color--unchecked': themeColors.white,
   'choice__color--disabled': themeColors.muted,
-  choice__size: spacer['3'],
+  choice__size: spacer[3],
   'choice__size--small': '20px',
-  'choice__size-radio': spacer['2'],
+  'choice__size-radio': spacer[2],
   'choice__size-radio--small': '12px',
 };
 
