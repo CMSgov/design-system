@@ -1,7 +1,9 @@
 import React from 'react';
+import classnames from 'classnames';
 import { VerticalNav } from '@cmsgov/design-system';
 import { VerticalNavItemProps } from '@cmsgov/design-system/src/components/VerticalNav/VerticalNavItem';
 import { useStaticQuery, graphql } from 'gatsby';
+import GithubLinks from './GithubLinks';
 
 interface NavItem {
   id: string;
@@ -19,14 +21,18 @@ interface GraphQlNavItem {
   ];
 }
 
+interface DocSiteNavProps {
+  isMobileNavOpen: boolean;
+}
+
 /**
- * DocSiteNav
+ * DocSiteSidebar
  * queries all MDX files and generates the proper format to create a vertical nav
  * @returns {React Element}
  * @todo figure out which item is currently selected and mark & expand appropriately
  * @todo Determine URL string for each item once content is integrated
  */
-const DocSiteNav = () => {
+const DocSiteSidebar = ({ isMobileNavOpen }: DocSiteNavProps) => {
   const data = useStaticQuery(graphql`
     query SiteNavQuery {
       allFile(sort: { fields: [relativeDirectory, name] }) {
@@ -89,10 +95,17 @@ const DocSiteNav = () => {
   const navItems: VerticalNavItemProps[] = formatNavData(data?.allFile?.group);
 
   return (
-    <div className="ds-l-md-col--3 ds-u-padding--2 ds-u-fill--white c-sidebar">
+    <nav
+      className={classnames('ds-l-md-col--3 ds-u-padding--2 ds-u-fill--white c-sidebar', {
+        'c-sidebar--open': isMobileNavOpen,
+      })}
+    >
       <VerticalNav className="c-nav" items={navItems} />
-    </div>
+      <div className="ds-u-md-display--none ds-u-margin-top--2 c-sidebar__mobile-button-wrapper">
+        <GithubLinks />
+      </div>
+    </nav>
   );
 };
 
-export default DocSiteNav;
+export default DocSiteSidebar;
