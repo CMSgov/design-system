@@ -1,5 +1,6 @@
 import React from 'react';
-import { UsaBanner, Button } from '@cmsgov/design-system';
+import { UsaBanner } from '@cmsgov/design-system';
+import GithubLinks from './GithubLinks';
 
 const DocSiteHeader = () => {
   return (
@@ -12,19 +13,7 @@ const DocSiteHeader = () => {
           </a>
         </h1>
         <div className="ds-u-display--none ds-u-sm-display--block ds-u-md-display--flex ds-u-justify-content--end ds-u-sm-margin-top--1 ds-u-md-margin-top--0">
-          <Button
-            href={`https://github.com/CMSgov/design-system/releases/latest/download/cmsgov-design-system-${process.env.GATSBY_CORE_PKG_VERSION}.tgz`}
-            className="ds-c-button ds-c-button--primary ds-c-button--inverse ds-u-font-weight--normal"
-          >
-            {' '}
-            Download Code{' '}
-          </Button>
-          <Button
-            href="https://github.com/CMSgov/design-system"
-            className="ds-c-button ds-c-button--inverse ds-u-font-weight--normal ds-u-margin-left--2"
-          >
-            View on GitHub
-          </Button>
+          <GithubLinks onDark />
         </div>
       </header>
     </div>
