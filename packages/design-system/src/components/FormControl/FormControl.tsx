@@ -19,7 +19,7 @@ interface FormControlRenderProps {
   setRef: (elem: HTMLElement) => void;
 }
 
-interface FormControlProps {
+export interface FormControlProps {
   /**
    * Additional classes to be added to the field container.
    */
