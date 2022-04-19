@@ -209,6 +209,10 @@ const components = {
   'choice__size--small': '20px',
   'choice__size-radio': spacer[2],
   'choice__size-radio--small': '12px',
+  // dialog
+  'dialog__background-color': themeColors.white,
+  dialog__padding: spacer[4],
+  'dialog-overlay__background-color': themeColors['background-dialog-mask'],
 };
 
 const shadow = {
