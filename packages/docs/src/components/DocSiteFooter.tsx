@@ -50,7 +50,7 @@ const DocSiteFooter = () => {
       <section className="c-footer__content--top">
         <div className="ds-footer__container">
           <h2 className="c-footer__content-title">Help make the CMS Design System better</h2>
-          <p className="ds-u-margin-bottom--0 ds-u-measure--wide">
+          <p className="ds-u-measure--wide">
             We use Github issues to keep track of new component submissions, bugs, design feedback,
             and any other suggestions you may have.
           </p>
@@ -88,7 +88,7 @@ const DocSiteFooter = () => {
         <div className="ds-footer__container">
           <div className="c-footer__content-contact">
             <h6 className="c-footer__content-title">Contact us</h6>
-            <p>
+            <p className="ds-u-margin-bottom--0">
               Need help with the CMS Design System?{' '}
               <a
                 target="_blank"
@@ -108,11 +108,7 @@ const DocSiteFooter = () => {
             <dt className="c-footer__content-title">Additional resources</dt>
             {renderLinks(resourceLinks)}
             <dd>
-              <button
-                className="ds-c-button"
-                onClick={() => (window.location.href = '#')}
-                data-privacy-policy="modal-trigger-footer"
-              >
+              <button className="ds-c-button" data-privacy-policy="modal-trigger-footer">
                 Privacy settings
               </button>
             </dd>
