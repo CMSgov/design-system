@@ -20,15 +20,17 @@ interface NavItem {
 const DocSiteNav = () => {
   const data = useStaticQuery(graphql`
     query SiteNavQuery {
-      allFile(
-        filter: { absolutePath: {}, extension: { eq: "mdx" } }
-        sort: { fields: [relativeDirectory, name] }
-      ) {
-        nodes {
-          id
-          name
-          relativeDirectory
-          relativePath
+      allFile(sort: { fields: [relativeDirectory, name] }) {
+        group(field: relativeDirectory) {
+          fieldValue
+          edges {
+            node {
+              id
+              name
+              relativeDirectory
+              relativePath
+            }
+          }
         }
       }
     }
@@ -49,35 +51,33 @@ const DocSiteNav = () => {
     id,
   });
 
-  const formatNavData = (dataList: NavItem[]): VerticalNavItemProps[] => {
-    const dataObj = dataList.reduce((acc: any, dataItem) => {
-      if (dataItem.relativeDirectory === '') {
-        // for level 1 nav items that don't have a sub nav
-        return {
-          ...acc,
-          [dataItem.id]: formatNavItemData(dataItem),
-        };
-      } else if (acc[dataItem.relativeDirectory]) {
-        // for level 2 items where the level 1 exists in the accumulator
-        acc[dataItem.relativeDirectory].items.push(formatNavItemData(dataItem));
-        return { ...acc };
-      } else {
-        // for level 2 items where the level 1 item needs to be created
-        return {
-          ...acc,
-          [dataItem.relativeDirectory]: {
-            label: formatNavItemLabel(dataItem.relativeDirectory),
-            items: [formatNavItemData(dataItem)],
-            defaultCollapsed: true,
-          },
-        };
-      }
-    }, {});
+  const formatNavData = (dataList): VerticalNavItemProps[] => {
+    const retVal = [];
+    dataList.forEach((dataItem) => {
+      // for each level 1 item that has sub nav items
+      if (dataItem.fieldValue.length) {
+        // format all the level 2 items
+        const subNavItems = dataItem.edges.map((subNavItem) => formatNavItemData(subNavItem.node));
 
-    return Object.values(dataObj);
+        // add level 1 item & sub items
+        retVal.push({
+          label: formatNavItemLabel(dataItem.fieldValue),
+          items: subNavItems,
+          defaultCollapsed: true,
+        });
+      } else {
+        // for each level 1 item without sub nav items,
+        // add each top level item
+        dataItem.edges.forEach((navItemLvl1) => {
+          retVal.push(formatNavItemData(navItemLvl1.node));
+        });
+      }
+    });
+
+    return retVal;
   };
 
-  const navItems: VerticalNavItemProps[] = formatNavData(data?.allFile?.nodes);
+  const navItems: VerticalNavItemProps[] = formatNavData(data?.allFile?.group);
 
   return (
     <div className="ds-l-md-col--3 ds-u-padding--2 ds-u-fill--white c-sidebar">
