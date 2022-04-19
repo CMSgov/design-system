@@ -1,3 +1,8 @@
 .c-sidebar {
   border-right: 1px solid $color-gray-lighter;
+  max-width: 15.625rem;
+
+  & .ds-c-vertical-nav__label {
+    text-transform: capitalize;
+  }
 }
