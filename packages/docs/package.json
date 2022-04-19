@@ -38,5 +38,9 @@
   "peerDependencies": {
     "react": ">=16.0.0",
     "react-dom": ">=16.0.0"
-  }
+  },
+  "browserslist": [
+    "> 2%",
+    "Last 2 versions"
+  ]
 }
