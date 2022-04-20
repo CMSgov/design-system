@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
+
 import '../styles/index.scss';
 
 import Layout from '../components/Layout';
 import { MdxQuery } from '../helpers/graphQLTypes';
-
+import ContentRenderer from '../components/ContentRenderer';
 // Main landing page for site
 const IndexPage = ({ data }: MdxQuery) => {
   return (
     <Layout pageName="Introduction">
-      <MDXRenderer>{data.mdx.body}</MDXRenderer>
+      <ContentRenderer data={data.mdx.body} />
     </Layout>
   );
 };
