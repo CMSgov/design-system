@@ -1,26 +1,27 @@
 import * as React from 'react';
+import { graphql } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 import '../styles/index.scss';
 
-import Header from '../components/DocSiteHeader';
-import Footer from '../components/DocSiteFooter';
-import Sidebar from '../components/DocSiteNav';
-import { SkipNav } from '@cmsgov/design-system';
+import Layout from '../components/Layout';
+import { MdxQuery } from '../helpers/graphQLTypes';
 
 // Main landing page for site
-const IndexPage = () => {
+const IndexPage = ({ data }: MdxQuery) => {
   return (
-    <div className="ds-base">
-      <SkipNav href="#main" />
-      <Header />
-      <div className="ds-l-row ds-u-margin--0">
-        <Sidebar />
-        <main id="main" className="ds-u-text-transform--uppercase">
-          Placeholder for main content
-        </main>
-      </div>
-      <Footer />
-    </div>
+    <Layout pageName="Introduction">
+      <MDXRenderer>{data.mdx.body}</MDXRenderer>
+    </Layout>
   );
 };
+
+export const query = graphql`
+  query IntroPageQuery {
+    mdx(frontmatter: { title: { eq: "Introduction" } }) {
+      id
+      body
+    }
+  }
+`;
 
 export default IndexPage;

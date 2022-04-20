@@ -9,7 +9,6 @@ const config: GatsbyConfig = {
     'gatsby-plugin-sass',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
-    'gatsby-plugin-mdx',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -35,6 +34,7 @@ const config: GatsbyConfig = {
         crossOrigin: `use-credentials`,
       },
     },
+    'gatsby-plugin-mdx',
   ],
 };
 
