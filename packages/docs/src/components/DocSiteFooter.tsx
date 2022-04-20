@@ -47,7 +47,7 @@ function renderLinks(links) {
 const DocSiteFooter = () => {
   return (
     <footer className="c-footer">
-      <section className="c-footer__content--top">
+      <section className="c-footer__content c-footer__content--top">
         <div className="ds-footer__container">
           <h2 className="c-footer__content-title">Help make the CMS Design System better</h2>
           <p className="ds-u-measure--wide">
@@ -84,7 +84,7 @@ const DocSiteFooter = () => {
           </div>
         </div>
       </section>
-      <section className="c-footer__content--bottom ds-base--inverse">
+      <section className="c-footer__content c-footer__content--bottom ds-base--inverse">
         <div className="ds-footer__container">
           <div className="c-footer__content-contact">
             <h6 className="c-footer__content-title">Contact us</h6>
