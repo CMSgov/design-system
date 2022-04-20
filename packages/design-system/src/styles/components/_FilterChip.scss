@@ -1,42 +1,32 @@
-$filter-chip-icon-container-size: 18px;
-$filter-chip-icon-size: 10px;
-$filter-chip-text-color: $color-base !default;
-$filter-chip-background-color: $color-primary-alt-lightest !default;
-$filter-chip-border-color: $color-primary !default;
-$filter-chip-text-color-hover: $color-white !default;
-$filter-chip-background-color-hover: $color-primary !default;
-$filter-chip-border-color-hover: $color-primary !default;
-$filter-chip-border-radius: $border-radius-pill !default;
-
 .ds-c-filter-chip__button {
-  background-color: $filter-chip-background-color;
-  border: 1px solid $filter-chip-border-color;
-  border-radius: $filter-chip-border-radius;
-  color: $filter-chip-text-color;
+  background-color: $filter-chip__background-color;
+  border: 1px solid $filter-chip__border-color;
+  border-radius: $filter-chip__border-radius;
+  color: $filter-chip__color;
   cursor: pointer;
   font-family: $font-sans;
-  font-size: $small-font-size;
+  font-size: $font-size-sm;
   font-weight: $font-normal;
   margin-right: $spacer-1;
   margin-top: $spacer-1;
   min-height: 0;
   padding: $spacer-half $spacer-1;
-  padding-right: ($spacer-2 + $filter-chip-icon-container-size);
+  padding-right: ($spacer-2 + 18px);
   position: relative;
   text-align: left;
 
   &--big {
     min-height: 44px;
     padding: $spacer-1 $spacer-2;
-    padding-right: ($spacer-2 + $filter-chip-icon-container-size);
+    padding-right: ($spacer-2 + 18px);
   }
 
   &:active,
   &:focus,
   &:hover {
-    background-color: $filter-chip-background-color-hover;
-    border: 1px solid $filter-chip-border-color-hover;
-    color: $filter-chip-text-color-hover;
+    background-color: $filter-chip__background-color--active;
+    border: 1px solid $filter-chip__border-color--active;
+    color: $filter-chip__color--active;
   }
   &:focus {
     @include focus-styles;
@@ -48,12 +38,12 @@ $filter-chip-border-radius: $border-radius-pill !default;
 }
 
 .ds-c-filter-chip__clear-icon-container {
-  border: 1px solid $filter-chip-text-color;
+  border: 1px solid $filter-chip__color;
   border-radius: 50%;
   box-sizing: border-box;
   cursor: pointer;
   display: inline-block;
-  height: $filter-chip-icon-container-size;
+  height: 18px;
   margin-left: $spacer-1;
   padding: 0;
   position: absolute;
@@ -61,7 +51,7 @@ $filter-chip-border-radius: $border-radius-pill !default;
   top: 50%;
   transform: translateY(-50%);
   vertical-align: middle;
-  width: $filter-chip-icon-container-size;
+  width: 18px;
 
   &.ds-c-filter-chip__clear-icon-alternate-container {
     border: 0;
@@ -69,12 +59,12 @@ $filter-chip-border-radius: $border-radius-pill !default;
 
   .ds-c-icon--close {
     display: block;
-    fill: $filter-chip-text-color;
-    height: $filter-chip-icon-size;
-    left: ($filter-chip-icon-container-size - 2 - $filter-chip-icon-size) / 2;
+    fill: $filter-chip__color;
+    height: 10px;
+    left: 3px;
     position: relative;
-    top: ($filter-chip-icon-container-size - 2 - $filter-chip-icon-size) / 2;
-    width: $filter-chip-icon-size;
+    top: 3px;
+    width: 10px;
 
     @media (-ms-high-contrast: active), (forced-colors: active) {
       path {
@@ -84,8 +74,8 @@ $filter-chip-border-radius: $border-radius-pill !default;
   }
 
   .ds-c-icon--close-thin {
-    height: $filter-chip-icon-size + 2;
-    width: $filter-chip-icon-size + 2;
+    height: 12px;
+    width: 12px;
 
     @media (-ms-high-contrast: active), (forced-colors: active) {
       path {
@@ -97,10 +87,10 @@ $filter-chip-border-radius: $border-radius-pill !default;
   .ds-c-filter-chip__button:active &,
   .ds-c-filter-chip__button:focus &,
   .ds-c-filter-chip__button:hover & {
-    border-color: $filter-chip-text-color-hover;
+    border-color: $filter-chip__color--active;
 
     .ds-c-icon--close {
-      fill: $filter-chip-text-color-hover;
+      fill: $filter-chip__color--active;
     }
   }
 }
