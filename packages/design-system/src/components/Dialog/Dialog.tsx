@@ -1,4 +1,4 @@
-import { EVENT_CATEGORY, MAX_LENGTH, sendLinkEvent } from '../analytics/SendAnalytics';
+import { EventCategory, sendLinkEvent, useAnalyticsContent } from '../analytics';
 import AriaModal from 'react-aria-modal';
 import Button, { ButtonVariation } from '../Button/Button';
 import React, { useEffect, useRef } from 'react';
@@ -273,9 +273,6 @@ export interface DialogProps extends AriaModalProps {
 }
 
 export const Dialog = (props: DialogProps) => {
-  const headingRef = useRef(null);
-  let eventHeadingText = '';
-
   if (process.env.NODE_ENV !== 'production') {
     if (props.title) {
       console.warn(
@@ -294,50 +291,11 @@ export const Dialog = (props: DialogProps) => {
     }
   }
 
-  useEffect(() => {
-    if (dialogSendsAnalytics() && props.analytics !== false) {
-      const heading = props.title || props.heading;
-
-      if (props.analyticsLabelOverride) {
-        eventHeadingText = props.analyticsLabelOverride;
-      } else if (typeof heading === 'string') {
-        eventHeadingText = heading.substring(0, MAX_LENGTH);
-      } else {
-        eventHeadingText = headingRef.current?.textContent
-          ? headingRef.current.textContent.substring(0, MAX_LENGTH)
-          : '';
-      }
-
-      /* Send analytics event for dialog open */
-      sendLinkEvent({
-        event_name: 'modal_impression',
-        event_type: EVENT_CATEGORY.uiInteraction,
-        ga_eventAction: 'modal impression',
-        ga_eventCategory: EVENT_CATEGORY.uiComponents,
-        ga_eventLabel: eventHeadingText,
-        heading: eventHeadingText,
-      });
-    }
-
-    return () => {
-      if (dialogSendsAnalytics() && props.analytics !== false) {
-        /* Send analytics event for dialog close */
-        sendLinkEvent({
-          event_name: 'modal_closed',
-          event_type: EVENT_CATEGORY.uiInteraction,
-          ga_eventAction: 'closed modal',
-          ga_eventCategory: EVENT_CATEGORY.uiComponents,
-          ga_eventLabel: eventHeadingText,
-          heading: eventHeadingText,
-        });
-      }
-    };
-  }, []);
-
   const {
     actions,
     actionsClassName,
     analytics,
+    analyticsLabelOverride,
     ariaCloseLabel,
     children,
     className,
@@ -367,6 +325,41 @@ export const Dialog = (props: DialogProps) => {
   // TODO: remove after deprecating 'escapeExitDiabled' prop
   const escapeExitsProp = escapeExitDisabled ? !escapeExitDisabled : escapeExits;
 
+  function sendDialogEvent(
+    content: string,
+    eventAttributes: { event_name: string; ga_eventAction: string }
+  ) {
+    if (!dialogSendsAnalytics() || analytics === false) {
+      return;
+    }
+
+    const eventHeadingText = analyticsLabelOverride ?? content;
+
+    sendLinkEvent({
+      event_type: EventCategory.UI_INTERACTION,
+      ga_eventCategory: EventCategory.UI_COMPONENTS,
+      ga_eventLabel: eventHeadingText,
+      heading: eventHeadingText,
+      ...eventAttributes,
+    });
+  }
+
+  const [headingRef] = useAnalyticsContent({
+    componentName: 'Dialog',
+    onMount: (content: string) => {
+      sendDialogEvent(content, {
+        event_name: 'modal_impression',
+        ga_eventAction: 'modal impression',
+      });
+    },
+    onUnmount: (content: string) => {
+      sendDialogEvent(content, {
+        event_name: 'modal_closed',
+        ga_eventAction: 'closed modal',
+      });
+    },
+  });
+
   return (
     <AriaModal
       dialogClass={dialogClassNames}
@@ -380,15 +373,11 @@ export const Dialog = (props: DialogProps) => {
       {...modalProps}
     >
       <div role="document">
-        <header
-          ref={(ref) => (headingRef.current = ref)}
-          className={headerClassNames}
-          role="banner"
-        >
+        <header className={headerClassNames} role="banner">
           {
             // TODO: make heading required after removing title
             (title || heading) && (
-              <h1 className="ds-h2" id="dialog-title">
+              <h1 className="ds-h2" id="dialog-title" ref={headingRef}>
                 {heading}
               </h1>
             )

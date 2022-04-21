@@ -1,5 +1,5 @@
-import { EVENT_CATEGORY, MAX_LENGTH, sendLinkEvent } from '../analytics/SendAnalytics';
-import React from 'react';
+import { EventCategory, MAX_LENGTH, sendLinkEvent } from '../analytics';
+import React, { useEffect, useRef } from 'react';
 import Drawer, { DrawerProps } from '../Drawer/Drawer';
 import { helpDrawerSendsAnalytics } from '../flags';
 import classNames from 'classnames';
@@ -21,79 +21,65 @@ export interface HelpDrawerProps extends DrawerProps {
   title?: string | React.ReactNode;
 }
 
-export class HelpDrawer extends React.PureComponent<HelpDrawerProps> {
-  constructor(props: HelpDrawerProps) {
-    super(props);
-    this.headingRef = null;
-    this.eventHeadingText = '';
+export const HelpDrawer = (props: HelpDrawerProps) => {
+  const { analytics, analyticsLabelOverride, children, className, ...others } = props;
+  const headingRef = useRef<any>();
 
-    if (process.env.NODE_ENV !== 'production') {
-      if (this.props.title) {
-        console.warn(
-          `[Deprecated]: Please remove the 'title' prop in <HelpDrawer>, use 'heading' instead. This prop has been renamed and will be removed in a future release.`
-        );
-      }
-      if (!this.props.title && !this.props.heading) {
-        console.warn(
-          `The 'heading' prop in <HelpDrawer> is required. The 'title' prop has been renamed to 'heading' and will be removed in a future release.`
-        );
-      }
+  if (process.env.NODE_ENV !== 'production') {
+    if (props.title) {
+      console.warn(
+        `[Deprecated]: Please remove the 'title' prop in <HelpDrawer>, use 'heading' instead. This prop has been renamed and will be removed in a future release.`
+      );
+    }
+    if (!props.title && !props.heading) {
+      console.warn(
+        `The 'heading' prop in <HelpDrawer> is required. The 'title' prop has been renamed to 'heading' and will be removed in a future release.`
+      );
     }
   }
 
-  componentDidMount(): void {
-    if (helpDrawerSendsAnalytics() && this.props.analytics !== false) {
-      const heading = this.props.title || this.props.heading;
+  useEffect(() => {
+    if (!helpDrawerSendsAnalytics() || analytics === false) {
+      return;
+    }
 
-      if (this.props.analyticsLabelOverride) {
-        this.eventHeadingText = this.props.analyticsLabelOverride;
-      } else if (typeof heading === 'string') {
-        this.eventHeadingText = heading.substring(0, MAX_LENGTH);
-      } else {
-        this.eventHeadingText =
-          this.headingRef && this.headingRef.textContent
-            ? this.headingRef.textContent.substring(0, MAX_LENGTH)
-            : '';
-      }
+    const eventHeadingText =
+      props.analyticsLabelOverride ??
+      headingRef.current?.textContent?.substring(0, MAX_LENGTH) ??
+      '';
 
-      /* Send analytics event for helpdrawer open */
+    // Send analytics event for helpdrawer open
+    sendLinkEvent({
+      event_name: 'help_drawer_opened',
+      event_type: EventCategory.UI_INTERACTION,
+      ga_eventAction: 'opened help drawer',
+      ga_eventCategory: EventCategory.UI_COMPONENTS,
+      ga_eventLabel: eventHeadingText,
+      heading: eventHeadingText,
+    });
+
+    return () => {
+      // Send analytics event for helpdrawer open
       sendLinkEvent({
         event_name: 'help_drawer_opened',
-        event_type: EVENT_CATEGORY.uiInteraction,
+        event_type: EventCategory.UI_INTERACTION,
         ga_eventAction: 'opened help drawer',
-        ga_eventCategory: EVENT_CATEGORY.uiComponents,
-        ga_eventLabel: this.eventHeadingText,
-        heading: this.eventHeadingText,
+        ga_eventCategory: EventCategory.UI_COMPONENTS,
+        ga_eventLabel: eventHeadingText,
+        heading: eventHeadingText,
       });
-    }
-  }
+    };
+  }, []);
 
-  componentWillUnmount(): void {
-    if (helpDrawerSendsAnalytics() && this.props.analytics !== false) {
-      /* Send analytics event for helpdrawer close */
-      sendLinkEvent({
-        event_name: 'help_drawer_closed',
-        event_type: EVENT_CATEGORY.uiInteraction,
-        ga_eventAction: 'closed help drawer',
-        ga_eventCategory: EVENT_CATEGORY.uiComponents,
-        ga_eventLabel: this.eventHeadingText,
-        heading: this.eventHeadingText,
-      });
-    }
-  }
-
-  headingRef: any;
-  eventHeadingText: string;
-
-  render(): JSX.Element {
-    const { children, className, ...others } = this.props;
-
-    return (
-      <Drawer className={classNames(className, 'ds-c-help-drawer')} {...others}>
-        {children}
-      </Drawer>
-    );
-  }
-}
+  return (
+    <Drawer
+      className={classNames(className, 'ds-c-help-drawer')}
+      headingRef={headingRef}
+      {...others}
+    >
+      {children}
+    </Drawer>
+  );
+};
 
 export default HelpDrawer;
