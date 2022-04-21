@@ -1,4 +1,4 @@
-import { UtagContainer, sendLinkEvent } from './SendAnalytics';
+import { UtagContainer, sendLinkEvent } from './events';
 
 describe('sendLinkEvent', () => {
   const gaEventProps = {
