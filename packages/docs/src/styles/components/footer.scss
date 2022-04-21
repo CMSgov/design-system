@@ -32,6 +32,12 @@
 }
 
 .c-footer__content--bottom {
+  padding-bottom: $spacer-7 + $spacer-2;
+
+  @media (min-width: $width-md) {
+    padding-bottom: $grid-gutter-width / 2;
+  }
+
   .ds-footer__container:first-child {
     display: grid;
     gap: $spacer-3;
