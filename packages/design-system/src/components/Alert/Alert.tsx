@@ -1,4 +1,4 @@
-import { EVENT_CATEGORY, MAX_LENGTH, sendLinkEvent } from '../analytics/SendAnalytics';
+import { EventCategory, MAX_LENGTH, sendLinkEvent } from '../analytics';
 import React from 'react';
 import { alertSendsAnalytics } from '../flags';
 import classNames from 'classnames';
@@ -125,9 +125,9 @@ export class Alert extends React.PureComponent<
 
         sendLinkEvent({
           event_name: 'alert_impression',
-          event_type: EVENT_CATEGORY.uiInteraction,
+          event_type: EventCategory.UI_INTERACTION,
           ga_eventAction: 'alert impression',
-          ga_eventCategory: EVENT_CATEGORY.uiComponents,
+          ga_eventCategory: EventCategory.UI_COMPONENTS,
           ga_eventLabel: eventHeadingText,
           heading: eventHeadingText,
           type: variation,
