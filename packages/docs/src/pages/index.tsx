@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet';
 import '../styles/index.scss';
 
 import Header from '../components/DocSiteHeader';
@@ -8,6 +9,7 @@ import { SkipNav } from '@cmsgov/design-system';
 
 // Main landing page for site
 const IndexPage = () => {
+  const env = 'prod';
   const [isMobileNavOpen, setMobileNavOpen] = useState<boolean>(false);
 
   const toggleMenu = () => {
@@ -16,6 +18,11 @@ const IndexPage = () => {
 
   return (
     <div className="ds-base">
+      <Helmet title="CMS Design System">
+        <script>{`window.tealiumEnvironment = "${env}";`}</script>
+        <script src="//tags.tiqcdn.com/utag/cmsgov/cms-design/prod/utag.sync.js"></script>
+      </Helmet>
+
       <SkipNav href="#main" />
       <Header />
       <div className="ds-l-row ds-u-margin--0">

@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import { VerticalNav } from '@cmsgov/design-system';
-import { VerticalNavItemProps } from '@cmsgov/design-system/src/components/VerticalNav/VerticalNavItem';
+import { VerticalNavItemProps } from '@cmsgov/design-system/dist/components/VerticalNav/VerticalNavItem';
 import { useStaticQuery, graphql } from 'gatsby';
 import GithubLinks from './GithubLinks';
 
