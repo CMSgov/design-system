@@ -179,6 +179,16 @@ export const components = {
   'dialog__background-color': themeColors.white,
   dialog__padding: spacer[4],
   'dialog-overlay__background-color': themeColors['background-dialog-mask'],
+  // filter chip
+  'filter-chip__border-radius': radius.pill,
+  'filter-chip__background-color': themeColors['primary-alt-lightest'],
+  'filter-chip__border-color': themeColors['primary'],
+  'filter-chip__color': themeColors.base,
+  'filter-chip__background-color--active': themeColors['primary'],
+  'filter-chip__border-color--active': themeColors['primary'],
+  'filter-chip__color--active': themeColors.white,
+  'filter-chip-icon__color': themeColors.base,
+  'filter-chip-icon__color-active': themeColors.white,
 };
 
 export const globals = {
