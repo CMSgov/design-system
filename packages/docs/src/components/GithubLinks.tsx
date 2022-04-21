@@ -3,9 +3,15 @@ import { Button } from '@cmsgov/design-system';
 import classnames from 'classnames';
 
 interface GithubLinks {
+  /**
+   * Describes if the links are on a dark background
+   */
   onDark?: boolean;
 }
 
+/**
+ * GithubLinks - a reusable component for Github links for downloading code & the Github repo
+ */
 const GithubLinks = ({ onDark }: GithubLinks) => {
   return (
     <>
