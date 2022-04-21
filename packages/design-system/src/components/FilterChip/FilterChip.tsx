@@ -41,10 +41,13 @@ export class FilterChip extends React.Component<FilterChipProps> {
     ariaClearLabel: 'Remove',
   };
 
+  filterChipId: string;
+
   constructor(props: FilterChipProps) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.filterChipId = props.id || uniqueId('filter_');
   }
 
   handleClick(): void {
@@ -59,7 +62,7 @@ export class FilterChip extends React.Component<FilterChipProps> {
   }
 
   render() {
-    const { id, label, ariaClearLabel, className, useAlternateIcon, size } = this.props;
+    const { label, ariaClearLabel, className, useAlternateIcon, size } = this.props;
 
     const buttonClassNames = classNames(
       'ds-c-filter-chip__button',
@@ -74,13 +77,20 @@ export class FilterChip extends React.Component<FilterChipProps> {
 
     return (
       <button
+        id={`${this.filterChipId}`}
         className={buttonClassNames}
-        id={id || uniqueId(`filter_`)}
         onClick={this.handleClick}
         onKeyDown={this.handleKeyDown}
-        aria-label={`${label} . ${ariaClearLabel} ${label} filter`}
       >
-        <span className="ds-c-filter-chip__label">{label}</span>
+        <span
+          className="ds-c-filter-chip__label"
+          aria-describedby={`${this.filterChipId}-instructions`}
+        >
+          {label}
+        </span>
+        <span id={`${this.filterChipId}-instructions`} className="ds-u-visibility--screen-reader">
+          . {ariaClearLabel} {label} filter .
+        </span>
         <span className={iconContainerClassNames}>
           {useAlternateIcon ? <CloseIconThin /> : <CloseIcon />}
         </span>
