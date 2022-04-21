@@ -179,6 +179,8 @@ export const components = {
   'dialog__background-color': themeColors.white,
   dialog__padding: spacer[4],
   'dialog-overlay__background-color': themeColors['background-dialog-mask'],
+  // review
+  'review__border-color': themeColors['border'],
   // dropdown
   'dropdown__background-color': themeColors.white,
   'dropdown__icon-size': '10px',
