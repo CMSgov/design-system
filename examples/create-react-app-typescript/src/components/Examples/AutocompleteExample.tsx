@@ -1,4 +1,4 @@
-import { Autocomplete, TextField } from '@cmsgov/design-system';
+import { Autocomplete, TextField } from '@cmsgov/ds-healthcare-gov';
 import React from 'react';
 
 function AutocompleteExample(): React.ReactElement {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FilterChip } from '@cmsgov/design-system';
+import { FilterChip } from '@cmsgov/ds-healthcare-gov';
 
 function FilterChipExample(): React.ReactElement {
   const [showFilterChip, setShowFilterChip] = useState(true);
