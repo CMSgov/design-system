@@ -215,6 +215,19 @@ const components = {
   'dialog-overlay__background-color': themeColors['background-dialog-mask'],
   // review
   'review__border-color': themeColors['border'],
+  // dropdown
+  'dropdown__background-color': themeColors.white,
+  'dropdown__icon-size': '10px',
+  // filter chip
+  'filter-chip__border-radius': radius.pill,
+  'filter-chip__background-color': themeColors['primary-alt-lightest'],
+  'filter-chip__border-color': themeColors['primary'],
+  'filter-chip__color': themeColors.base,
+  'filter-chip__background-color--active': themeColors['primary'],
+  'filter-chip__border-color--active': themeColors['primary'],
+  'filter-chip__color--active': themeColors.white,
+  'filter-chip-icon__color': themeColors.base,
+  'filter-chip-icon__color-active': themeColors.white,
 };
 
 const shadow = {
