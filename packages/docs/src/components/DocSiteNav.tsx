@@ -1,6 +1,6 @@
 import React from 'react';
 import { VerticalNav } from '@cmsgov/design-system';
-import { VerticalNavItemProps } from '@cmsgov/design-system/src/components/VerticalNav/VerticalNavItem';
+import { VerticalNavItemProps } from '@cmsgov/design-system/dist/components/VerticalNav/VerticalNavItem';
 import { useStaticQuery, graphql } from 'gatsby';
 
 interface NavItem {

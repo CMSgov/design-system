@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 
 import Header from './DocSiteHeader';
 import Footer from './DocSiteFooter';
@@ -17,8 +18,15 @@ interface LayoutProps {
 }
 
 const Layout = ({ children, pageName }: LayoutProps) => {
+  const env = 'prod';
+
   return (
     <div className="ds-base">
+      <Helmet title="CMS Design System">
+        <script>{`window.tealiumEnvironment = "${env}";`}</script>
+        <script src="//tags.tiqcdn.com/utag/cmsgov/cms-design/prod/utag.sync.js"></script>
+      </Helmet>
+
       <SkipNav href="#main" />
       <Header />
       <div className="ds-l-row ds-u-margin--0">

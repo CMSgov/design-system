@@ -38,4 +38,8 @@ const config: GatsbyConfig = {
   ],
 };
 
+if (process.env.PATH_PREFIX) {
+  config.pathPrefix = process.env.PATH_PREFIX;
+}
+
 export default config;
