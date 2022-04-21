@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextField } from '@cmsgov/ds-healthcare-gov';
+import { TextField } from '@cmsgov/design-system';
 
 function TextFieldExample(): React.ReactElement {
   return (

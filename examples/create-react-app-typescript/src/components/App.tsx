@@ -1,4 +1,4 @@
-import { Badge, Button, Dialog, TabPanel, Tabs } from '@cmsgov/ds-healthcare-gov';
+import { Badge, Button, Dialog, TabPanel, Tabs } from '@cmsgov/design-system';
 import React, { useState } from 'react';
 import AccordionExample from './Examples/AccordionExample';
 import AlertExample from './Examples/AlertExample';

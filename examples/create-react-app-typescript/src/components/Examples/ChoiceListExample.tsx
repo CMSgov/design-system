@@ -1,4 +1,4 @@
-import { ChoiceList } from '@cmsgov/ds-healthcare-gov';
+import { ChoiceList } from '@cmsgov/design-system';
 import React from 'react';
 
 function ChoiceListExample(): React.ReactElement {
