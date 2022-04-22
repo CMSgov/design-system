@@ -8,8 +8,14 @@ interface MdxProviderProps {
   children: string;
 }
 
+// adds id to heading elements for in-page linking
 const HeadingWithId = (props: MdxProviderProps, Component) => {
   return <Component {...props} id={toKebabCase(props.children)} />;
+};
+
+// adds DS styling to tables from markdown
+const TableWithClassnames = (props) => {
+  return <table className="ds-c-table" {...props}></table>;
 };
 
 /**
@@ -22,6 +28,7 @@ const customComponents = {
   h4: (props) => HeadingWithId(props, 'h4'),
   h5: (props) => HeadingWithId(props, 'h5'),
   h6: (props) => HeadingWithId(props, 'h6'),
+  table: TableWithClassnames,
 };
 
 interface ContentRendererProps {

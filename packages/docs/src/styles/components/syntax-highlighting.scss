@@ -1,0 +1,60 @@
+/**
+ * GHColors theme by Avi Aryan (http://aviaryan.in)
+ * Inspired by Github syntax coloring
+ */
+
+code[class*='language-'],
+pre[class*='language-'] {
+  direction: ltr;
+  hyphens: none;
+  tab-size: 4;
+  text-align: left;
+  white-space: pre;
+  word-break: normal;
+  word-spacing: normal;
+}
+
+/* Code blocks */
+pre[class*='language-'] {
+  overflow: auto;
+}
+
+pre,
+code {
+  background-color: $color-gray-lightest;
+}
+
+code {
+  color: $color-black;
+  display: inline-block;
+  //   font-family: $font-monospace;
+  font-size: 0.9em;
+  // add spacing for when two code blocks are next to each other
+  margin: 1px;
+  padding: 2px;
+}
+
+a code {
+  text-decoration: underline;
+}
+
+blockquote code {
+  background-color: transparent;
+  font-weight: $font-bold;
+  padding: 0;
+}
+
+pre {
+  line-height: 1.4;
+  margin: 0;
+  padding: $spacer-2;
+
+  code {
+    background-color: transparent;
+    color: $color-gray-dark;
+    font-size: 12px;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+  }
+}
