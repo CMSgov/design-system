@@ -8,12 +8,10 @@ The Open Sans font files are from [Google Web Fonts](https://fonts.google.com/sp
 
 The Bitter font files are from [Google Web Fonts](https://fonts.google.com/specimen/Bitter), licensed under the [SIL Open Font License](http://scripts.sil.org/cms/scripts/page.php?item_id=OFL), and copyright [Sol Matas](www.huertatipografica.com.ar), with Reserved Font Name "Bitter"
 
-The icons in `core/src/images` are from [Font Awesome](http://fontawesome.io/) by Dave Gandy under the [SIL Open Font License 1.1](http://scripts.sil.org/OFL).
+Svg icons are from [Font Awesome](http://fontawesome.io/) by Dave Gandy under the [SIL Open Font License 1.1](http://scripts.sil.org/OFL).
 
 ### Files licensed under the MIT license
 
-- [Bourbon](http://bourbon.io/), copyright [thoughtbot](https://thoughtbot.com/), inc., under the [MIT license](https://github.com/thoughtbot/neat/blob/master/LICENSE.md).
-- [kss-node](https://github.com/kss-node/kss-node), copyright Hugh Kennedy, John Albin Wilkins, et. al.
 - [ev-emitter](https://github.com/metafizzy/ev-emitter)
 
 #### Full license text for the MIT licensed files:
