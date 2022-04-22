@@ -33,6 +33,10 @@ export interface DrawerProps {
    */
   headingLevel?: '1' | '2' | '3' | '4' | '5';
   /**
+   * Ref to heading element
+   */
+  headingRef?: React.MutableRefObject<any>;
+  /**
    * Enables "sticky" position of Drawer header element.
    */
   isHeaderSticky?: boolean;
@@ -78,7 +82,12 @@ export const Drawer = (props: DrawerProps) => {
             tabIndex={0}
             id={id.current}
             className="ds-c-drawer__header-heading"
-            ref={(el) => (headingRef.current = el)}
+            ref={(el) => {
+              headingRef.current = el;
+              if (props.headingRef) {
+                props.headingRef.current = el;
+              }
+            }}
           >
             {props.heading}
           </Heading>

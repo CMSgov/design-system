@@ -74,10 +74,11 @@ These scripts can all be run from the root level of the repo:
   - Updates [Jest snapshots](http://facebook.github.io/jest/docs/en/snapshot-testing.html)
 - `yarn loki test`
   - Runs visual regression tests using [loki](https://storybook.js.org/addons/loki). See [Visual regression testing](#visual-regression-testing) section below for details.
-  - Must be running Storybook simultaneously to use this command in development
   - `yarn loki update` updates reference screenshots used for visual regression testing. Update these only when we expect the visual changes
+  - `yarn loki:healthcare test` to run the Healthcare.gov visual regression tests
+  - `yarn loki:medicare test` to run the Medicare.gov visual regression tests
 - `yarn lint`
-  - Runs just the linting portion of the tests
+  - Runs just the linting portion of the tests, eslint and stylelint
 - `yarn release`
   - Bumps package versions and tags a release commit. Read our [Release Process guide](/guides/RELEASE-PROCESS.md) for more info.
 
@@ -85,11 +86,10 @@ These scripts can all be run from the root level of the repo:
 
 We use [loki](https://storybook.js.org/addons/loki) to test our components for visual regressions. It uses our existing Storybook stories, taking screenshots of them within a docker container and comparing those screenshots with ones previously taken and committed to version control.
 
-Running loki tests locally require two things: you must be signed into Docker and you must have an instance of Storybook running locally.
+Running loki tests locally requires that you be signed into Docker.
 
 1. Open the Docker app, and make sure you're signed in (Docker Desktop requires a license now)
-2. In your terminal window, start Storybook by running `yarn storybook`
-3. In another terminal window, run `yarn loki test` to begin comparing component images
+2. Run `yarn loki test` to begin comparing component images
    1. If differences are detected and unexpected, evaluate your changes - we only want to update and commit references when we expect the visual changes detected
    2. If differences are detected and expected, run `yarn loki update`
 
