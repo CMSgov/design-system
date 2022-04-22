@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'gatsby';
 
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
@@ -18,6 +19,16 @@ const TableWithClassnames = (props) => {
   return <table className="ds-c-table" {...props}></table>;
 };
 
+// Using gatsby link for internal links and regular anchor for external links
+// internal markdown links don't include http* preface
+// external links do
+const LinkWrapper = ({ href, children }: { href: string; children: string }) => {
+  if (href.includes('http')) {
+    return <a href={href}>{children}</a>;
+  }
+  return <Link to={href}>{children}</Link>;
+};
+
 /**
  * A mapping of custom components for mdx syntax
  * Each mapping has a key with the element name and a value of a functional component to be used for that element
@@ -29,6 +40,7 @@ const customComponents = {
   h5: (props) => HeadingWithId(props, 'h5'),
   h6: (props) => HeadingWithId(props, 'h6'),
   table: TableWithClassnames,
+  a: LinkWrapper,
 };
 
 interface ContentRendererProps {
