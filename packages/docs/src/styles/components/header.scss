@@ -1,5 +1,9 @@
 .c-header__wrapper {
   background-color: $color-background-inverse;
+
+  & .ds-c-button + .ds-c-button {
+    margin-left: $spacer-2;
+  }
 }
 
 .c-header__link {

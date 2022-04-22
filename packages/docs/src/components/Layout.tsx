@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 
 import Header from './DocSiteHeader';
 import Footer from './DocSiteFooter';
-import Sidebar from './DocSiteNav';
+import Sidebar from './DocSiteSidebar';
 import { SkipNav } from '@cmsgov/design-system';
 
 interface LayoutProps {
@@ -19,6 +19,11 @@ interface LayoutProps {
 
 const Layout = ({ children, pageName }: LayoutProps) => {
   const env = 'prod';
+  const [isMobileNavOpen, setMobileNavOpen] = useState<boolean>(false);
+
+  const toggleMenu = () => {
+    setMobileNavOpen(!isMobileNavOpen);
+  };
 
   return (
     <div className="ds-base">
@@ -30,7 +35,7 @@ const Layout = ({ children, pageName }: LayoutProps) => {
       <SkipNav href="#main" />
       <Header />
       <div className="ds-l-row ds-u-margin--0">
-        <Sidebar />
+        <Sidebar isMobileNavOpen={isMobileNavOpen} />
         <main id="main" className="ds-l-md-col ds-u-padding--0 ds-u-padding-bottom--4">
           <header className="ds-u-padding--3 ds-u-sm-padding--6 ds-u-display--block ds-u-fill--gray-lightest">
             <h1 className="ds-display ds-u-display--inline-block">{pageName}</h1>
@@ -40,6 +45,14 @@ const Layout = ({ children, pageName }: LayoutProps) => {
           </article>
         </main>
       </div>
+
+      <button
+        className="ds-c-button ds-c-button--primary ds-u-md-display--none c-mobile-nav-button"
+        onClick={toggleMenu}
+      >
+        {isMobileNavOpen ? 'Close' : 'Menu'}
+      </button>
+
       <Footer />
     </div>
   );
