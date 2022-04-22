@@ -1,7 +1,10 @@
 import React from 'react';
+import { Link } from 'gatsby';
 import { VerticalNav } from '@cmsgov/design-system';
 import { VerticalNavItemProps } from '@cmsgov/design-system/dist/components/VerticalNav/VerticalNavItem';
 import { useStaticQuery, graphql } from 'gatsby';
+import { makePageUrl } from '../helpers/urlUtils';
+import { removePositioning } from '../helpers/casingUtils';
 
 interface NavItem {
   id: string;
@@ -11,11 +14,24 @@ interface NavItem {
 }
 
 /**
+ * A wrapper for the gatsby link to handle internal sight navigation
+ * @param props {VerticalNavItemProps}
+ * @returns gatsby link
+ */
+const GatsbyLink = (props: VerticalNavItemProps) => {
+  return (
+    <Link to={props.href} {...props}>
+      {' '}
+      {props.children}{' '}
+    </Link>
+  );
+};
+
+/**
  * DocSiteNav
  * queries all MDX files and generates the proper format to create a vertical nav
  * @returns {React Element}
  * @todo figure out which item is currently selected and mark & expand appropriately
- * @todo Determine URL string for each item once content is integrated
  */
 const DocSiteNav = () => {
   const data = useStaticQuery(graphql`
@@ -41,13 +57,13 @@ const DocSiteNav = () => {
    */
   const formatNavItemLabel = (name: string): string => {
     let newName = name.replace(/-/g, ' ');
-    newName = newName.replace(/\d+_/g, '');
+    newName = removePositioning(newName);
     return newName;
   };
 
-  const formatNavItemData = ({ name, id }: NavItem) => ({
+  const formatNavItemData = ({ name, id, relativePath }: NavItem) => ({
     label: formatNavItemLabel(name),
-    url: '',
+    url: makePageUrl(relativePath),
     id,
   });
 
@@ -81,7 +97,7 @@ const DocSiteNav = () => {
 
   return (
     <div className="ds-l-md-col--3 ds-u-padding--2 ds-u-fill--white c-sidebar">
-      <VerticalNav className="c-nav" items={navItems} />
+      <VerticalNav className="c-nav" items={navItems} component={GatsbyLink} />
     </div>
   );
 };
