@@ -11,7 +11,7 @@ The design system attempts to make all of its components' text content assignabl
 ```jsx
 // Example of an application providing its own internationalized content
 
-import { Alert } from '{{npm}}';
+import { Alert } from '@cmsgov/design-system';
 import i18n from 'i18n';
 
 export default function () {
@@ -32,7 +32,7 @@ While we want components to be flexible, we also want them to be easy to use, so
 For applications that have a `lang` attribute on their html element, **the language will be detected automatically**. If that language is not English or Spanish, the language of the design system will fall back to English. If automatic language detection does not work for your use case, the language can be set manually through the `setLanguage` function. Similarly, the current language can also be read from the `getLanguage` function. Here's an example:
 
 ```jsx
-import { getLanguage, setLanguage } from '{{npm}}';
+import { getLanguage, setLanguage } from '@cmsgov/design-system';
 
 // Set the design system language to something other than the document's detected language
 setLanguage('es');
