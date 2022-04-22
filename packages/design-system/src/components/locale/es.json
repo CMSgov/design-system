@@ -5,11 +5,86 @@
     "success": "Completado",
     "warn": "Advertencia"
   },
+  "autocomplete": {
+    "ariaClearLabel": "Borrar búsqueda y volver a intentar",
+    "clearInputText": "Borrar búsqueda",
+    "loadingMessage": "Cargando...",
+    "noResultsMessage": "No hay resultados"
+  },
   "badge": {
     "alert": "Alerta",
     "info": "Aviso",
     "success": "Completado",
     "warn": "Advertencia"
+  },
+  "dateField": {
+    "label": "Fecha",
+    "hint": "Por ejemplo: 28/4/1986",
+    "dayLabel": "Día",
+    "monthLabel": "Mes",
+    "yearLabel": "Año"
+  },
+  "dialog": {
+    "ariaCloseLabel": "Cerrar cuadro de diálogo modal",
+    "closeButtonText": "Cerrar"
+  },
+  "drawer": {
+    "ariaLabel": "Cerrar ventana de ayuda",
+    "closeButtonText": "Cerrar"
+  },
+  "filterChip": {
+    "ariaClearLabel": "Eliminar"
+  },
+  "icons": {
+    "add": "Añadir",
+    "alertCircle": "Alerta",
+    "arrowUp": "flecha hacía arriba",
+    "arrowDown": "flecha hacía abajo",
+    "arrowLeft": "flecha a la izquierda",
+    "arrowRight": "flecha a la derecha",
+    "buildingCircle": "edificio en un círculo",
+    "checkCircle": "Marca de verificación en círculo",
+    "check": " Marca de cotejo",
+    "close": "Cerrar",
+    "download": "Descargar",
+    "externalLink": "Enlace externo",
+    "hhsLogo": "Departamento de Salud y Servicios Humanos de los Estados Unidos",
+    "image": "Imagen",
+    "infoCircle": "Información",
+    "lockCircle": "Candado en un círculo",
+    "lock": "Candado",
+    "menu": "Icono de menú",
+    "next": "Siguiente",
+    "remove": "Eliminar",
+    "star": "Estrella",
+    "starEmpty": "Estrella vacía",
+    "starFilled": "Estrella llena",
+    "starHalf": "Media Estrella",
+    "usaLogo": "USA.gov – Gobierno más simple"
+  },
+  "monthPicker": {
+    "selectAllText": "Seleccionar todo",
+    "clearAllText": "Borrar todo"
+  },
+  "pagination": {
+    "ariaLabel": "Paginación",
+    "startLabelText": "Anterior",
+    "startAriaLabel": "Página anterior",
+    "endLabelText": "Siguiente",
+    "endAriaLabel": "Página siguiente"
+  },
+  "review": {
+    "editText": "Editar"
+  },
+  "skipNav": {
+    "children": "Ir al contenido principal"
+  },
+  "spinner": {
+    "aria-valuetext": "Cargando"
+  },
+  "verticalNav": {
+    "ariaCollapsedStateButtonLabel": "expandir subnavegación",
+    "ariaExpandedStateButtonLabel": "cerrar subnavegación"
   },
   "usaBanner": {
     "bannerLabel": "Sitio web oficial del gobierno",
