@@ -10,8 +10,6 @@
 import en from './locale/en.json';
 import es from './locale/es.json';
 import {
-  Language,
-  TFunction,
   addTranslations,
   getLanguage,
   languageMatches,
@@ -19,8 +17,10 @@ import {
   translate,
   tWithLanguage,
 } from '@cmsgov/design-system';
+import type { Language, TFunction } from '@cmsgov/design-system';
+export type { Language, TFunction };
 
 addTranslations('en', en);
 addTranslations('es', es);
 
-export { Language, TFunction, getLanguage, languageMatches, t, translate, tWithLanguage };
+export { getLanguage, languageMatches, t, translate, tWithLanguage };
