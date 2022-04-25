@@ -1,6 +1,6 @@
 import React from 'react';
 import uniqueId from 'lodash/uniqueId';
-import githubUrl from '../helpers/githubUrl';
+import { githubUrl } from '../helpers/urlUtils';
 
 /**
  * Privacy setting link under addtional resources triggers modal (styles out of scope)

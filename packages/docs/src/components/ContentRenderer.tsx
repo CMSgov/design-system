@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'gatsby';
 
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
@@ -8,8 +9,24 @@ interface MdxProviderProps {
   children: string;
 }
 
+// adds id to heading elements for in-page linking
 const HeadingWithId = (props: MdxProviderProps, Component) => {
   return <Component {...props} id={toKebabCase(props.children)} />;
+};
+
+// adds DS styling to tables from markdown
+const TableWithClassnames = (props) => {
+  return <table className="ds-c-table" {...props}></table>;
+};
+
+// Using gatsby link for internal links and regular anchor for external links
+// internal markdown links don't include http* preface
+// external links do
+const LinkWrapper = ({ href, children }: { href: string; children: string }) => {
+  if (href.includes('http')) {
+    return <a href={href}>{children}</a>;
+  }
+  return <Link to={href}>{children}</Link>;
 };
 
 /**
@@ -22,6 +39,8 @@ const customComponents = {
   h4: (props) => HeadingWithId(props, 'h4'),
   h5: (props) => HeadingWithId(props, 'h5'),
   h6: (props) => HeadingWithId(props, 'h6'),
+  table: TableWithClassnames,
+  a: LinkWrapper,
 };
 
 interface ContentRendererProps {

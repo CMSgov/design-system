@@ -6,6 +6,9 @@ export interface MdxQuery {
     mdx: {
       id: string;
       body: string;
+      frontmatter: {
+        title: string;
+      };
     };
   };
 }
