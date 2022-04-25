@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { ArrowIcon } from '../Icons';
+import { t } from '../i18n';
 
 export type VerticalNavItemLabelComponent =
   | React.ReactElement<any>
@@ -44,23 +45,7 @@ export const VerticalNavItemLabel = (props: VerticalNavItemLabelProps): React.Re
 
   const handleClick = (evt: React.MouseEvent | React.KeyboardEvent): void => props.onClick(evt);
 
-  const anchorProps = (): { href: string } => {
-    return {
-      href: props.url,
-    };
-  };
-
-  const buttonProps = (): { 'aria-controls': string; 'aria-expanded': boolean; title: string } => {
-    return {
-      'aria-controls': props.subnavId,
-      'aria-expanded': !props.collapsed,
-      title: props.collapsed
-        ? props.ariaCollapsedStateButtonLabel
-        : props.ariaExpandedStateButtonLabel,
-    };
-  };
-
-  let otherProps: any = {
+  const commonProps = {
     className: classNames('ds-c-vertical-nav__label', {
       'ds-c-vertical-nav__label--current': props.selected,
       'ds-c-vertical-nav__label--parent': props.hasSubnav,
@@ -68,24 +53,29 @@ export const VerticalNavItemLabel = (props: VerticalNavItemLabelProps): React.Re
     onClick: props.onClick ? handleClick : undefined,
   };
 
+  let otherProps;
   if (LabelComponent === 'button') {
-    otherProps = Object.assign(otherProps, buttonProps());
+    const collapsedLabel = props.ariaCollapsedStateButtonLabel ?? t('verticalNav.expand');
+    const expandedLabel = props.ariaExpandedStateButtonLabel ?? t('verticalNav.collapse');
+
+    otherProps = {
+      'aria-controls': props.subnavId,
+      'aria-expanded': !props.collapsed,
+      title: props.collapsed ? collapsedLabel : expandedLabel,
+    };
   } else if (LabelComponent !== DEFAULT_COMPONENT_TYPE) {
     // Apply href if <a> or custom component type
-    otherProps = Object.assign(otherProps, anchorProps());
+    otherProps = {
+      href: props.url,
+    };
   }
 
   return (
-    <LabelComponent {...otherProps}>
+    <LabelComponent {...commonProps} {...otherProps}>
       {props.label}
       {props.hasSubnav && <ArrowIcon direction={props.collapsed ? 'down' : 'up'} />}
     </LabelComponent>
   );
-};
-
-VerticalNavItemLabel.defaultProps = {
-  ariaCollapsedStateButtonLabel: 'Expand sub-navigation',
-  ariaExpandedStateButtonLabel: 'Collapse sub-navigation',
 };
 
 export default VerticalNavItemLabel;

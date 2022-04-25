@@ -80,14 +80,14 @@
     "editText": "Edit"
   },
   "skipNav": {
-    "children": "Skip to main content"
+    "default": "Skip to main content"
   },
   "spinner": {
-    "aria-valuetext": "Loading"
+    "ariaText": "Loading"
   },
   "verticalNav": {
-    "ariaCollapsedStateButtonLabel": "Expand sub-navigation",
-    "ariaExpandedStateButtonLabel": "Collapse sub-navigation"
+    "expand": "Expand sub-navigation",
+    "collapse": "Collapse sub-navigation"
   },
   "usaBanner": {
     "bannerLabel": "Official government website",
