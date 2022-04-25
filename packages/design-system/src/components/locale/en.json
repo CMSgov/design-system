@@ -38,10 +38,11 @@
   "icons": {
     "add": "Add",
     "alertCircle": "Alert",
-    "arrowUp": "up arrow",
-    "arrowDown": "down arrow",
-    "arrowLeft": "left arrow",
-    "arrowRight": "right arrow",
+    "arrowsStacked": "Sort",
+    "upArrow": "up arrow",
+    "downArrow": "down arrow",
+    "leftArrow": "left arrow",
+    "rightArrow": "right arrow",
     "buildingCircle": "Building in circle",
     "checkCircle": "Checkmark in circle",
     "check": "Checkmark",
@@ -60,7 +61,8 @@
     "starEmpty": "Empty Star",
     "starFilled": "Filled Star",
     "starHalf": "Half Star",
-    "usaLogo": "USA.gov - Government Made Easy"
+    "usaLogo": "USA.gov - Government Made Easy",
+    "warning": "Warning"
   },
   "monthPicker": {
     "selectAllText": "Select all",

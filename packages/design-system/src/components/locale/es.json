@@ -38,10 +38,11 @@
   "icons": {
     "add": "Añadir",
     "alertCircle": "Alerta",
-    "arrowUp": "flecha hacía arriba",
-    "arrowDown": "flecha hacía abajo",
-    "arrowLeft": "flecha a la izquierda",
-    "arrowRight": "flecha a la derecha",
+    "arrowsStacked": "Ordenar",
+    "upArrow": "flecha hacía arriba",
+    "downArrow": "flecha hacía abajo",
+    "leftArrow": "flecha a la izquierda",
+    "rightArrow": "flecha a la derecha",
     "buildingCircle": "edificio en un círculo",
     "checkCircle": "Marca de verificación en círculo",
     "check": " Marca de cotejo",
@@ -60,7 +61,8 @@
     "starEmpty": "Estrella vacía",
     "starFilled": "Estrella llena",
     "starHalf": "Media Estrella",
-    "usaLogo": "USA.gov – Gobierno más simple"
+    "usaLogo": "USA.gov – Gobierno más simple",
+    "warning": "Advertencia"
   },
   "monthPicker": {
     "selectAllText": "Seleccionar todo",

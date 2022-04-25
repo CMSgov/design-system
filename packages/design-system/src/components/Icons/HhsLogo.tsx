@@ -1,9 +1,9 @@
 import React from 'react';
+import { t } from '../i18n';
 import SvgIcon, { IconCommonProps } from './SvgIcon';
 
 const defaultProps = {
   className: '',
-  title: 'Department of Health and Human Services',
   viewBox: '0 0 252 252',
 };
 
@@ -11,7 +11,7 @@ function HhsLogo(props: IconCommonProps): React.ReactElement {
   const iconCssClasses = `ds-c-icon--hhs-logo ${props.className || ''}`;
 
   return (
-    <SvgIcon {...defaultProps} {...props} className={iconCssClasses}>
+    <SvgIcon title={t('icons.hhsLogo')} {...defaultProps} {...props} className={iconCssClasses}>
       <g fillRule="evenodd">
         <path
           fillRule="nonzero"
