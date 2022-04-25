@@ -1,7 +1,7 @@
 # RFC: Integrating the native dialog element into existing components
 
 **Date**: April 20, 2022
-**Status**: WIP
+**Status**: Ready for review
 
 ## Problem
 
