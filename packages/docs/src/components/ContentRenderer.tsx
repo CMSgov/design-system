@@ -49,6 +49,15 @@ const CodeWithSyntaxHighlighting = ({
   return <code className={className} dangerouslySetInnerHTML={{ __html: highlightedContent }} />;
 };
 
+// for preformatted text that has code as it's child, set language class on <pre> too
+// this allows scrolling in code block on small screens
+const PreformattedWithLanguageClass = (props: any) => {
+  if (props.children?.props?.mdxType === 'code' && props.children?.props?.className) {
+    return <pre className={props.children.props.className} {...props} />;
+  }
+  return <pre {...props} />;
+};
+
 /**
  * A mapping of custom components for mdx syntax
  * Each mapping has a key with the element name and a value of a functional component to be used for that element
@@ -62,6 +71,7 @@ const customComponents = {
   table: TableWithClassnames,
   a: LinkWrapper,
   code: CodeWithSyntaxHighlighting,
+  pre: PreformattedWithLanguageClass,
 };
 
 interface ContentRendererProps {
