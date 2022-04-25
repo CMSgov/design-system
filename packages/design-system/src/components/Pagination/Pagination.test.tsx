@@ -18,6 +18,19 @@ function getPageLink(page: number) {
   return screen.getByRole('link', { name: `page ${page}` });
 }
 
+function queryPrevLink() {
+  return screen.queryByRole('link', { name: 'Previous Page' });
+}
+
+function queryNextLink() {
+  return screen.queryByRole('link', { name: 'Next Page' });
+}
+
+function hasEllipsis() {
+  const items = screen.getAllByRole('listitem');
+  return items.some((item) => item.querySelector('.ds-c-pagination__overflow'));
+}
+
 describe('Pagination', () => {
   const onPageChange = jest.fn();
 
@@ -110,22 +123,22 @@ describe('Pagination', () => {
   describe('navigation slot behavior', () => {
     it('should show "previous" navigation slot if current page is not first page of set', () => {
       renderPagination({ currentPage: 2 });
-      expect(screen.queryByRole('link', { name: 'Previous Page' })).toBeTruthy();
+      expect(queryPrevLink()).toBeTruthy();
     });
 
     it('should hide "previous" navigation slot if current page is first page of set', () => {
       renderPagination({ currentPage: 1 });
-      expect(screen.queryByRole('link', { name: 'Previous Page' })).toBeFalsy();
+      expect(queryPrevLink()).toBeFalsy();
     });
 
     it('should show "next" navigation slot if current page is not last page of set', () => {
       renderPagination({ currentPage: 2 });
-      expect(screen.queryByRole('link', { name: 'Next Page' })).toBeTruthy();
+      expect(queryNextLink()).toBeTruthy();
     });
 
     it('should hide "next" navigation slot if current page is last page of set', () => {
       renderPagination({ currentPage: 3 });
-      expect(screen.queryByRole('link', { name: 'Next Page' })).toBeFalsy();
+      expect(queryNextLink()).toBeFalsy();
     });
   });
 
@@ -161,113 +174,96 @@ describe('Pagination', () => {
 
       it('should not show ellipses', () => {
         renderPagination({ totalPages: 6 });
-        const items = screen.getAllByRole('listitem');
-        expect(items.some((item) => item.querySelector('.ds-c-pagination__overflow'))).toBeFalsy();
+        expect(hasEllipsis()).toBe(false);
       });
     });
 
-    //   describe('more than 7 pages', () => {
-    //     it('should not show beginning ellipses for pages 1 - 3', () => {
-    //       const wrapper1 = renderPagination({ currentPage: 1, totalPages: 35 });
-    //       const wrapper2 = renderPagination({ currentPage: 2, totalPages: 35 });
-    //       const wrapper3 = renderPagination({ currentPage: 3, totalPages: 35 });
+    describe('more than 7 pages', () => {
+      describe('should not show beginning ellipses for pages 1 - 3', () => {
+        function expectFirstThree() {
+          screen.getByText('1');
+          screen.getByText('2');
+          screen.getByText('3');
+          expect(screen.getAllByRole('listitem').length).toBe(7);
+        }
 
-    //       expect(wrapper1.find('Ellipses').length).toBe(1);
-    //       let listEl = wrapper1.find('ul');
-    //       let secondSlot = listEl.childAt(1).find(pageButtonSelector);
-    //       expect(listEl.children().length).toBe(7);
-    //       expect(secondSlot).toBeDefined();
-    //       expect(secondSlot.text()).toBe('2');
+        it('for page 1', () => {
+          renderPagination({ currentPage: 1, totalPages: 35 });
+          expectFirstThree();
+        });
 
-    //       expect(wrapper2.find('Ellipses').length).toBe(1);
-    //       listEl = wrapper2.find('ul');
-    //       secondSlot = listEl.childAt(1).find(pageButtonSelector);
-    //       expect(listEl.children().length).toBe(7);
-    //       expect(secondSlot).toBeDefined();
-    //       expect(secondSlot.text()).toBe('2');
+        it('for page 2', () => {
+          renderPagination({ currentPage: 2, totalPages: 35 });
+          expectFirstThree();
+        });
 
-    //       expect(wrapper3.find('Ellipses').length).toBe(1);
-    //       listEl = wrapper3.find('ul');
-    //       secondSlot = listEl.childAt(1).find(pageButtonSelector);
-    //       expect(listEl.children().length).toBe(7);
-    //       expect(secondSlot).toBeDefined();
-    //       expect(secondSlot.text()).toBe('2');
-    //     });
+        it('for page 3', () => {
+          renderPagination({ currentPage: 3, totalPages: 35 });
+          expectFirstThree();
+        });
+      });
 
-    //     it('should not show end ellipses for last 3 pages', () => {
-    //       const wrapperLast = renderPagination({ currentPage: 35, totalPages: 35 });
-    //       const wrapperSecondLast = renderPagination({ currentPage: 34, totalPages: 35 });
-    //       const wrapperThirdLast = renderPagination({ currentPage: 33, totalPages: 35 });
+      describe('should not show end ellipses for last 3 pages', () => {
+        function exectLastThree() {
+          screen.getByText('33');
+          screen.getByText('34');
+          screen.getByText('35');
+          expect(screen.getAllByRole('listitem').length).toBe(7);
+        }
 
-    //       expect(wrapperLast.find('Ellipses').length).toBe(1);
-    //       let listEl = wrapperLast.find('ul');
-    //       let secondLastSlot = listEl.childAt(5).find(pageButtonSelector);
-    //       expect(listEl.children().length).toBe(7);
-    //       expect(secondLastSlot).toBeDefined();
-    //       expect(secondLastSlot.text()).toBe('34');
+        it('for page 33', () => {
+          renderPagination({ currentPage: 33, totalPages: 35 });
+          exectLastThree();
+        });
 
-    //       expect(wrapperSecondLast.find('Ellipses').length).toBe(1);
-    //       listEl = wrapperSecondLast.find('ul');
-    //       secondLastSlot = listEl.childAt(5).find(pageButtonSelector);
-    //       expect(listEl.children().length).toBe(7);
-    //       expect(secondLastSlot).toBeDefined();
-    //       expect(secondLastSlot.text()).toBe('34');
+        it('for page 34', () => {
+          renderPagination({ currentPage: 34, totalPages: 35 });
+          exectLastThree();
+        });
 
-    //       expect(wrapperThirdLast.find('Ellipses').length).toBe(1);
-    //       listEl = wrapperThirdLast.find('ul');
-    //       secondLastSlot = listEl.childAt(5).find(pageButtonSelector);
-    //       expect(listEl.children().length).toBe(7);
-    //       expect(secondLastSlot).toBeDefined();
-    //       expect(secondLastSlot.text()).toBe('34');
-    //     });
+        it('for page 35', () => {
+          renderPagination({ currentPage: 35, totalPages: 35 });
+          exectLastThree();
+        });
+      });
 
-    //     it('should show both ellipses for number in middle', () => {
-    //       const wrapperEndMiddle = renderPagination({ currentPage: 10, totalPages: 35 });
-    //       const wrapperBeginningMiddle = renderPagination({ currentPage: 30, totalPages: 35 });
+      describe('should show ellipses for number in middle', () => {
+        it('for page 10', () => {
+          renderPagination({ currentPage: 10, totalPages: 35 });
+          expect(hasEllipsis()).toBe(true);
+        });
 
-    //       let listEl = wrapperEndMiddle.find('ul');
-    //       expect(listEl.children().length).toBe(7);
-    //       expect(wrapperEndMiddle.find('Ellipses').length).toBe(2);
-
-    //       listEl = wrapperBeginningMiddle.find('ul');
-    //       expect(wrapperBeginningMiddle.find('Ellipses').length).toBe(2);
-    //       expect(listEl.children().length).toBe(7);
-    //     });
-    //   });
+        it('for page 30', () => {
+          renderPagination({ currentPage: 30, totalPages: 35 });
+          expect(hasEllipsis()).toBe(true);
+        });
+      });
+    });
   });
 
-  // describe('with compact prop enabled', () => {
-  //   it('should render compact variant', () => {
-  //     renderPagination({ currentPage: 2, compact: true });
-  //     const compactClassName = 'ds-c-pagination__page-count';
+  describe('with compact prop enabled', () => {
+    it('should render compact variant', () => {
+      const { asFragment } = renderPagination({ currentPage: 2, compact: true });
+      expect(asFragment()).toMatchSnapshot();
+    });
 
-  //     expect(wrapper.find(compactClassName)).toBeTruthy();
-  //     expect(wrapper.contains('ul')).toBe(false);
-  //     expect(wrapper).toMatchSnapshot();
-  //   });
+    it('should render non-interactive text nodes in place of pagination slot links', () => {
+      renderPagination({ currentPage: 2, compact: true });
+      expect(screen.queryByRole('list')).toBeFalsy();
+    });
+  });
 
-  //   it('should render non-interactive text nodes in place of pagination slot links', () => {
-  //     renderPagination({ currentPage: 2, compact: true });
-  //     const pages = wrapper.childAt(1);
+  describe('isNavigationHidden', () => {
+    it('should hide previous when on first page', () => {
+      renderPagination({ currentPage: 1, isNavigationHidden: true });
+      // Querying in testing-library will not return hidden items
+      expect(queryPrevLink()).toBeFalsy();
+    });
 
-  //     expect(pages.type()).toEqual('span');
-  //     expect(pages.contains('a')).toBe(false);
-  //   });
-  // });
-
-  // describe('isNavigationHidden', () => {
-  //   it('should hide previous when on first page', () => {
-  //     renderPagination({ currentPage: 1, isNavigationHidden: true });
-  //     const firstChild = wrapper.find('.ds-c-pagination__nav').first();
-  //     expect(firstChild.type()).toEqual('span');
-  //     expect(firstChild.props().style).toHaveProperty('visibility', 'hidden');
-  //   });
-
-  //   it('should hide next when on last page', () => {
-  //     renderPagination({ currentPage: 3, isNavigationHidden: true });
-  //     const lastChild = wrapper.find('.ds-c-pagination__nav').last();
-  //     expect(lastChild.type()).toEqual('span');
-  //     expect(lastChild.props().style).toHaveProperty('visibility', 'hidden');
-  //   });
-  // });
+    it('should hide next when on last page', () => {
+      renderPagination({ currentPage: 3, isNavigationHidden: true });
+      // Querying in testing-library will not return hidden items
+      expect(queryNextLink()).toBeFalsy();
+    });
+  });
 });
