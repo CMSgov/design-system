@@ -5,7 +5,7 @@ export interface SkipNavProps {
   /**
    * Skip nav label
    */
-  children: React.ReactNode;
+  children?: React.ReactNode;
   /**
    * The anchor or target for the link (where the link will jump the user to)
    */
