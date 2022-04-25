@@ -86,8 +86,8 @@
     "ariaText": "Cargando"
   },
   "verticalNav": {
-    "ariaCollapsedStateButtonLabel": "expandir subnavegación",
-    "ariaExpandedStateButtonLabel": "cerrar subnavegación"
+    "expand": "expandir subnavegación",
+    "collapse": "cerrar subnavegación"
   },
   "usaBanner": {
     "bannerLabel": "Sitio web oficial del gobierno",
