@@ -22,7 +22,6 @@ export const query = graphql`
     mdx(id: { eq: $id }) {
       id
       frontmatter {
-        parentNavItem
         title
       }
       body

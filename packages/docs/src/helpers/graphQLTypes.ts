@@ -8,7 +8,6 @@ export interface MdxQuery {
       body: string;
       frontmatter: {
         title: string;
-        parentNavItem: string;
       };
     };
   };

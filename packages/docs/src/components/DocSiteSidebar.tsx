@@ -29,7 +29,7 @@ interface DocSiteNavProps {
 }
 
 /**
- * A wrapper for the gatsby link to handle internal sight navigation
+ * A wrapper for the gatsby link to handle internal site navigation
  * @param props {VerticalNavItemProps}
  * @returns gatsby link
  */
