@@ -80,10 +80,10 @@
     "editText": "Editar"
   },
   "skipNav": {
-    "children": "Ir al contenido principal"
+    "default": "Ir al contenido principal"
   },
   "spinner": {
-    "aria-valuetext": "Cargando"
+    "ariaText": "Cargando"
   },
   "verticalNav": {
     "ariaCollapsedStateButtonLabel": "expandir subnavegación",

@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { ArrowIcon } from '../Icons';
+import { t } from '../i18n';
 
 export type VerticalNavItemLabelComponent =
   | React.ReactElement<any>
@@ -55,8 +56,8 @@ export const VerticalNavItemLabel = (props: VerticalNavItemLabelProps): React.Re
       'aria-controls': props.subnavId,
       'aria-expanded': !props.collapsed,
       title: props.collapsed
-        ? props.ariaCollapsedStateButtonLabel
-        : props.ariaExpandedStateButtonLabel,
+        ? props.ariaCollapsedStateButtonLabel ?? t('verticalNav.ariaCollapsedStateButtonLabel')
+        : props.ariaExpandedStateButtonLabel ?? t('verticalNav.ariaExpandedStateButtonLabel'),
     };
   };
 
@@ -81,11 +82,6 @@ export const VerticalNavItemLabel = (props: VerticalNavItemLabelProps): React.Re
       {props.hasSubnav && <ArrowIcon direction={props.collapsed ? 'down' : 'up'} />}
     </LabelComponent>
   );
-};
-
-VerticalNavItemLabel.defaultProps = {
-  ariaCollapsedStateButtonLabel: 'Expand sub-navigation',
-  ariaExpandedStateButtonLabel: 'Collapse sub-navigation',
 };
 
 export default VerticalNavItemLabel;
