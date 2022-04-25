@@ -7,7 +7,7 @@ import { Alert } from '@cmsgov/design-system';
 
 The design system attempts to make all of its components' text content assignable through their React props. That means you can use your own internationalization solutions to provide the content in your applications. Here is an example:
 
-```jsx
+```js
 // Example of an application providing its own internationalized content
 
 import { Alert } from '@cmsgov/design-system';
@@ -30,7 +30,7 @@ While we want components to be flexible, we also want them to be easy to use, so
 
 For applications that have a `lang` attribute on their html element, **the language will be detected automatically**. If that language is not English or Spanish, the language of the design system will fall back to English. If automatic language detection does not work for your use case, the language can be set manually through the `setLanguage` function. Similarly, the current language can also be read from the `getLanguage` function. Here's an example:
 
-```jsx
+```js
 import { getLanguage, setLanguage } from '@cmsgov/design-system';
 
 // Set the design system language to something other than the document's detected language

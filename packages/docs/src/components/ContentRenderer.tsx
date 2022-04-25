@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import Prism from 'prismjs';
 
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
@@ -29,6 +30,25 @@ const LinkWrapper = ({ href, children }: { href: string; children: string }) => 
   return <Link to={href}>{children}</Link>;
 };
 
+// using prismjs to do syntax highlighting in code blocks
+const CodeWithSyntaxHighlighting = ({
+  children,
+  className,
+}: {
+  children: string;
+  className: string;
+}) => {
+  let language = className?.replace('language-', '');
+  // catch all in case the language defined isn't supported by Prismjs
+  if (!Prism.languages[language]) {
+    language = 'text';
+  }
+
+  const highlightedContent = Prism.highlight(children, Prism.languages[language]);
+  // eslint-disable-next-line react/no-danger
+  return <code className={className} dangerouslySetInnerHTML={{ __html: highlightedContent }} />;
+};
+
 /**
  * A mapping of custom components for mdx syntax
  * Each mapping has a key with the element name and a value of a functional component to be used for that element
@@ -41,6 +61,7 @@ const customComponents = {
   h6: (props) => HeadingWithId(props, 'h6'),
   table: TableWithClassnames,
   a: LinkWrapper,
+  code: CodeWithSyntaxHighlighting,
 };
 
 interface ContentRendererProps {
