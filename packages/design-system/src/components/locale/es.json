@@ -70,6 +70,7 @@
   },
   "pagination": {
     "ariaLabel": "Paginación",
+    "pageXOfY": "Página {{number}} de {{total}}",
     "startLabelText": "Anterior",
     "startAriaLabel": "Página anterior",
     "endLabelText": "Siguiente",

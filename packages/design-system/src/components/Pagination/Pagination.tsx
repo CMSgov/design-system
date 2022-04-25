@@ -4,6 +4,7 @@ import Page from './Page';
 import React from 'react';
 import classNames from 'classnames';
 import { ArrowIcon } from '../Icons';
+import { t } from '../i18n';
 
 export interface PaginationProps {
   /**
@@ -245,7 +246,7 @@ function Pagination({
   const endIcon = <ArrowIcon direction="right" className="ds-c-pagination__nav--image" />;
 
   return (
-    <nav className={classes} aria-label={ariaLabel} {...rest}>
+    <nav className={classes} aria-label={ariaLabel ?? t('pagination.ariaLabel')} {...rest}>
       {currentPage === 1 ? (
         <span
           className="ds-c-pagination__nav ds-c-pagination__nav--disabled"
@@ -255,27 +256,33 @@ function Pagination({
           <span className="ds-c-pagination__nav--img-container ds-c-pagination__nav--img-container-previous">
             {startIcon}
           </span>
-          {startLabelText}
+          {startLabelText ?? t('pagination.startLabelText')}
         </span>
       ) : (
         <Button
           variation="transparent"
           href={renderHref(currentPage - 1)}
           onClick={pageChange(currentPage - 1)}
-          aria-label={startAriaLabel}
+          aria-label={startAriaLabel ?? t('pagination.startAriaLabel')}
           className="ds-c-pagination__nav"
         >
           <span className="ds-c-pagination__nav--img-container ds-c-pagination__nav--img-container-previous">
             {startIcon}
           </span>
-          {startLabelText}
+          {startLabelText ?? t('pagination.startLabelText')}
         </Button>
       )}
 
       {isMobile || compact ? (
-        <span className="ds-c-pagination__page-count">
-          Page <strong>{currentPage}</strong> of <strong>{totalPages}</strong>
-        </span>
+        <span
+          className="ds-c-pagination__page-count"
+          dangerouslySetInnerHTML={{
+            __html: t('pagination.pageXOfY', {
+              number: `<strong>${currentPage}</strong>`,
+              total: `<strong>${totalPages}</strong>`,
+            }),
+          }}
+        />
       ) : (
         <ul>{pages}</ul>
       )}
@@ -286,7 +293,7 @@ function Pagination({
           style={{ visibility: isNavigationHidden ? 'hidden' : 'visible' }}
           aria-hidden={isNavigationHidden}
         >
-          {endLabelText}
+          {endLabelText ?? t('pagination.endLabelText')}
           <span className="ds-c-pagination__nav--img-container ds-c-pagination__nav--img-container-next">
             {endIcon}
           </span>
@@ -296,10 +303,10 @@ function Pagination({
           variation="transparent"
           href={renderHref(currentPage + 1)}
           onClick={pageChange(currentPage + 1)}
-          aria-label={endAriaLabel}
+          aria-label={endAriaLabel ?? t('pagination.endAriaLabel')}
           className="ds-c-pagination__nav"
         >
-          {endLabelText}
+          {endLabelText ?? t('pagination.endLabelText')}
           <span className="ds-c-pagination__nav--img-container ds-c-pagination__nav--img-container-next">
             {endIcon}
           </span>
@@ -310,14 +317,9 @@ function Pagination({
 }
 
 Pagination.defaultProps = {
-  ariaLabel: 'Pagination',
   compact: false,
   currentPage: 1,
   isNavigationHidden: false,
-  startLabelText: 'Previous',
-  startAriaLabel: 'Previous Page',
-  endLabelText: 'Next',
-  endAriaLabel: 'Next Page',
 };
 
 export default Pagination;
