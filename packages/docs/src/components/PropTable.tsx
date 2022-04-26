@@ -21,7 +21,7 @@ interface PropTableProps {
  */
 const PropTable = (props: PropTableProps) => {
   return (
-    <Table stackable stackableBreakpoint="md" className="c-prop-table" compact>
+    <Table className="c-prop-table" stackable scrollable compact>
       <TableHead>
         <TableRow>
           <TableCell component="th" key="Name">
