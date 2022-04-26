@@ -40,7 +40,7 @@ const Layout = ({ children, pageName }: LayoutProps) => {
           <header className="ds-u-padding--3 ds-u-sm-padding--6 ds-u-display--block ds-u-fill--gray-lightest">
             <h1 className="ds-display ds-u-display--inline-block">{pageName}</h1>
           </header>
-          <article className="ds-u-border-top--1 ds-u-padding-x--3 ds-u-sm-padding-x--6 ds-u-sm-padding-y--6 ds-u-padding-y--3">
+          <article className="ds-u-border-top--1 ds-u-padding-x--3 ds-u-sm-padding-x--6 ds-u-sm-padding-y--6 ds-u-padding-y--3 page-content">
             {children}
           </article>
         </main>
