@@ -53,7 +53,7 @@ We have a mixin to use for adding focus styles to custom components that need a 
 
 Use the following mixin `@include focus-styles;`
 
-```CSS
+```css
 .customButton:focus {
  @include focus-styles;
 }
@@ -61,7 +61,7 @@ Use the following mixin `@include focus-styles;`
 
 The focus-styles mixin will apply the following styles:
 
-```CSS
+```css
 box-shadow: 0 0 0 3px $color-focus-light, 0 0 4px 6px $color-focus-dark;
 // Add support for Windows High Contrast Mode (WHCM)
 // The transparent color only shows when WHCM is triggered

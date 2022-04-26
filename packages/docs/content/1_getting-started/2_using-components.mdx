@@ -20,7 +20,7 @@ Components can be imported from the package entry point using the syntax below.
     </p>
 </Alert>
 
-```jsx
+```js
 import { Button, TextField } from '@cmsgov/design-system';
 ```
 
@@ -30,7 +30,7 @@ The `@cmsgov/design-system` package provides an ES modules version of our code t
 
 Components can also be imported from their individual export file. This method carries no risk of including unused or extra code, as you are only importing from a specific file.
 
-```jsx
+```js
 import Button from '@cmsgov/design-system/dist/components/Button/Button';
 import TextField from '@cmsgov/design-system/dist/components/Button/TextField';
 ```
@@ -39,7 +39,7 @@ import TextField from '@cmsgov/design-system/dist/components/Button/TextField';
 
 After importing the React component, tell React to render the component in the DOM:
 
-```jsx
+```js
 ReactDOM.render(
   <Button
     variation="primary"
