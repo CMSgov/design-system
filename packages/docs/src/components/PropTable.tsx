@@ -1,66 +1,59 @@
 import React from 'react';
-import { Table, TableHead, TableRow, TableBody, TableCell } from '@cmsgov/design-system';
+import { Table, TableHead, TableRow, TableBody, TableCell, Badge } from '@cmsgov/design-system';
 
-const headings = [
-  { displayName: 'Name', propName: 'name', cellClassName: 'ds-u-font-weight--bold' },
-  { displayName: 'Type', propName: 'type' },
-  { displayName: 'Default', propName: 'defaultValue' },
-  { displayName: 'Description', propName: 'description', cellElement: 'p' },
-];
+import ContentRenderer from './ContentRenderer';
 
-const mockData = [
-  {
-    name: 'bordered',
-    type: 'boolean',
-    defaultValue: null,
-    description: 'Applies a border to the accordion content.',
-  },
-  {
-    name: 'className',
-    type: 'string',
-    defaultValue: 'css-class',
-    description: 'Class to be applied to the outer <div> that contains all accordion items.',
-  },
-];
+export interface PropTableDataItem {
+  name: string;
+  type?: string;
+  defaultValue?: string;
+  description?: string;
+  isRequired?: boolean;
+  id: string;
+}
+
+interface PropTableProps {
+  data: PropTableDataItem[];
+}
 
 /**
  * A component to display a Design System component's prop table
  */
-const PropTable = () => {
-  // most cells use <code>, but not all
-  const renderCell = (heading, data) => {
-    const dataToDisplay = data[heading.propName];
-    if (dataToDisplay) {
-      const Element = heading.cellElement || 'code';
-      const className = heading.cellClassName;
-      return <Element className={className}>{dataToDisplay}</Element>;
-    }
-
-    return <></>;
-  };
-
+const PropTable = (props: PropTableProps) => {
   return (
-    <Table stackable stackableBreakpoint="md" className="c-prop-table">
+    <Table stackable stackableBreakpoint="md" className="c-prop-table" compact>
       <TableHead>
         <TableRow>
-          {headings.map(({ displayName }) => (
-            <TableCell component="th" key={displayName}>
-              {displayName}
-            </TableCell>
-          ))}
+          <TableCell component="th" key="Name">
+            Name
+          </TableCell>
+          <TableCell component="th" key="Type">
+            Type
+          </TableCell>
+          <TableCell component="th" key="Default">
+            Default
+          </TableCell>
+          <TableCell component="th" key="Description">
+            Description
+          </TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
-        {mockData.map((dataItem, index) => (
-          <TableRow key={index}>
-            {headings.map((heading) => (
-              <TableCell
-                key={`${heading.displayName}-${dataItem[heading.propName]}`}
-                stackedTitle={heading.displayName}
-              >
-                {renderCell(heading, dataItem)}
-              </TableCell>
-            ))}
+        {props.data.map((dataItem) => (
+          <TableRow key={dataItem.id}>
+            <TableCell key="name" stackedTitle="Name">
+              {dataItem.name && <code className="ds-u-font-weight--bold">{dataItem.name}</code>}
+              {dataItem.isRequired && <Badge className="ds-u-margin-left--1">required</Badge>}
+            </TableCell>
+            <TableCell key="type" stackedTitle="Type">
+              {dataItem.type && <code>{dataItem.type}</code>}
+            </TableCell>
+            <TableCell key="defaultValue" stackedTitle="Default">
+              {dataItem.defaultValue && <code>{dataItem.defaultValue}</code>}
+            </TableCell>
+            <TableCell key="description" stackedTitle="Description">
+              <ContentRenderer data={dataItem.description} />
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>

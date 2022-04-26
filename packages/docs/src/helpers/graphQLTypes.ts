@@ -12,3 +12,25 @@ export interface MdxQuery {
     };
   };
 }
+
+export interface PropQuery {
+  defaultValue: any;
+  description: {
+    childMdx: {
+      body: string;
+    };
+  };
+  id: string;
+  name: string;
+  required: boolean;
+  tsType: any;
+}
+
+export interface ComponentPropQuery {
+  data: {
+    componentMetadata: {
+      id: string;
+      props: PropQuery[];
+    };
+  };
+}
