@@ -27,6 +27,7 @@
     "gatsby-plugin-sass": "^5.11.1",
     "gatsby-plugin-sitemap": "^5.11.1",
     "gatsby-source-filesystem": "^4.11.1",
+    "gatsby-transformer-react-docgen": "^7.13.0",
     "prismjs": "^1.11.0",
     "react-helmet": "^6.1.0",
     "sass": "^1.43.4"
