@@ -21,7 +21,7 @@ exports.createPages = ({ graphql, actions }) => {
   // get all pages
   return graphql(`
     query loadPagesQuery {
-      allMdx {
+      allMdx(filter: { fileAbsolutePath: { glob: "**/content/**" } }) {
         edges {
           node {
             id
