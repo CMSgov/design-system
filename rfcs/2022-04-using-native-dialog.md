@@ -31,36 +31,41 @@ The recommended implementation is to create one internal wrapping `<_Dialog>` co
 
 Implementation of this component should not change the current component APIs for `<Drawer>` and `<Dialog>`.
 
-The reasoning behind creating one parent component is as follows:
+The reasons we want to create a React wrapper from the native element and use it in multiple components are the following:
 
 - Code is maintained in a singular file; DRY implementation
 - The `<dialog>` spec has a limited number of methods available, making the complexity of this component minimal
-  - `close()` will close the dialog
-  - `show()` will open the dialog, but background elements will remain interactive
-  - `showModal()` will open the dialog as a modal, background elements will **not** be interactive
+  - `close()` closes the dialog
+  - `show()` opens the dialog, but background elements will remain interactive
+  - `showModal()` opens the dialog as a modal, background elements will **not** be interactive
 
 Simplified example of implementation:
 
 ```js
 const _Dialog = (props) => {
+  {/* Provides props that map to native dialog methods */}
   <dialog className={customClass} {...dialogProps}>
     {children}
   </dialog>
 }
 
 const Drawer = (props) => {
-  <_Dialog className='ds-c-drawer' hasFocusTrap={bool}>
+  {/* Would use .show() method to open */}
+  {/* Consuming components will manage `.close()` for the dialog */}
+  <_Dialog ref={DrawerDialog} className='ds-c-drawer' hasFocusTrap={bool}>
     {/* Header */}
-    <Button onClose={handleOnClose}>
+    <Button onClose={close()}>
     {/* Body */}
     {/* Optional footer */}
   </_Dialog>
 }
 
 const Dialog = (props) => {
+  {/* Would use .showModal() method to open */}
+  {/* Consuming components will manage `.close()` for the dialog */}
   <_Dialog className='ds-c-dialog'>
     {/* Header */}
-    <Button onClose={handleOnClose}>
+    <Button onClose={close()}>
     {/* Body */}
     {/* Footer - Modal action buttons */}
   </_Dialog>
@@ -93,6 +98,8 @@ Two risks have been identified with this approach:
 ### 2. One-off bugs may be discovered
 
 The discovery of using the `<dialog>` element in the Design System was done using the pre-existing Storybook examples and documentation pages. As a result, there is a chance consuming teams have specific use-cases not documented in our system that this implementation will expose.
+
+To mitigate this risk, consuming teams can test this update using the Design System's beta release and can flag any potential problems to be resolved before this implementation is officially released.
 
 ## Questions and Requested Feedback
 
