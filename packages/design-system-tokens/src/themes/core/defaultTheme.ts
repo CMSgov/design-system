@@ -187,13 +187,22 @@ export const components = {
   // filter chip
   'filter-chip__border-radius': radius.pill,
   'filter-chip__background-color': themeColors['primary-alt-lightest'],
-  'filter-chip__border-color': themeColors['primary'],
+  'filter-chip__border-color': themeColors.primary,
   'filter-chip__color': themeColors.base,
-  'filter-chip__background-color--active': themeColors['primary'],
-  'filter-chip__border-color--active': themeColors['primary'],
+  'filter-chip__background-color--active': themeColors.primary,
+  'filter-chip__border-color--active': themeColors.primary,
   'filter-chip__color--active': themeColors.white,
   'filter-chip-icon__color': themeColors.base,
   'filter-chip-icon__color-active': themeColors.white,
+  // pagination
+  'pagination-link__color': themeColors.primary,
+  'pagination-link__color--hover': themeColors['primary-darker'],
+  'pagination-link__color--active': themeColors['primary-darkest'],
+  'pagination-link__color--focus': themeColors['primary-darker'],
+  'pagination-link__color--disabled': themeColors['gray-lighter'],
+  'pagination-current-page__color': themeColors.base,
+  'pagination-overflow__color': themeColors.gray,
+  'pagination-page-count__color': themeColors.gray,
 };
 
 export const globals = {
