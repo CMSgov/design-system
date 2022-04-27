@@ -1,5 +1,13 @@
 import React from 'react';
-import { Table, TableHead, TableRow, TableBody, TableCell, Badge } from '@cmsgov/design-system';
+import {
+  Table,
+  TableHead,
+  TableRow,
+  TableBody,
+  TableCell,
+  TableCaption,
+  Badge,
+} from '@cmsgov/design-system';
 
 import ContentRenderer from './ContentRenderer';
 
@@ -22,18 +30,21 @@ interface PropTableProps {
 const PropTable = (props: PropTableProps) => {
   return (
     <Table className="c-prop-table" stackable scrollable compact>
+      <TableCaption>
+        <span className="ds-u-visibility--screen-reader">React Properties Documentation</span>
+      </TableCaption>
       <TableHead>
         <TableRow>
-          <TableCell component="th" key="Name">
+          <TableCell component="th" id="columnname">
             Name
           </TableCell>
-          <TableCell component="th" key="Type">
+          <TableCell component="th" id="columntype">
             Type
           </TableCell>
-          <TableCell component="th" key="Default">
+          <TableCell component="th" id="columndefault">
             Default
           </TableCell>
-          <TableCell component="th" key="Description">
+          <TableCell component="th" id="columndescription">
             Description
           </TableCell>
         </TableRow>
@@ -41,17 +52,17 @@ const PropTable = (props: PropTableProps) => {
       <TableBody>
         {props.data.map((dataItem) => (
           <TableRow key={dataItem.id}>
-            <TableCell key="name" stackedTitle="Name">
+            <TableCell headers="columnname" stackedTitle="Name">
               {dataItem.name && <code className="ds-u-font-weight--bold">{dataItem.name}</code>}
               {dataItem.isRequired && <Badge className="ds-u-margin-left--1">required</Badge>}
             </TableCell>
-            <TableCell key="type" stackedTitle="Type">
+            <TableCell headers="columntype" stackedTitle="Type">
               {dataItem.type && <code>{dataItem.type}</code>}
             </TableCell>
-            <TableCell key="defaultValue" stackedTitle="Default">
+            <TableCell headers="columndefault" stackedTitle="Default">
               {dataItem.defaultValue && <code>{dataItem.defaultValue}</code>}
             </TableCell>
-            <TableCell key="description" stackedTitle="Description">
+            <TableCell headers="columndescription" stackedTitle="Description">
               <ContentRenderer data={dataItem.description} />
             </TableCell>
           </TableRow>
