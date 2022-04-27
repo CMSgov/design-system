@@ -78,9 +78,6 @@ export class FilterChip extends React.Component<FilterChipProps> {
         className={buttonClassNames}
         onClick={this.handleClick}
         onKeyDown={this.handleKeyDown}
-        aria-label={`${label} . ${
-          ariaClearLabel ?? t('filterChip.ariaClearLabel')
-        } ${label} filter`}
       >
         <span
           className="ds-c-filter-chip__label"
