@@ -89,7 +89,7 @@ export class FilterChip extends React.Component<FilterChipProps> {
           {label}
         </span>
         <span id={`${this.filterChipId}-instructions`} className="ds-u-visibility--screen-reader">
-          . {ariaClearLabel} {label} filter .
+          . {ariaClearLabel ?? t('filterChip.ariaClearLabel')} {t('filterChip.filter', { label })} .
         </span>
         <span className={iconContainerClassNames}>
           {useAlternateIcon ? <CloseIconThin /> : <CloseIcon />}
