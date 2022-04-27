@@ -27,7 +27,7 @@ A robust [polyfill](https://github.com/GoogleChrome/dialog-polyfill), maintained
 
 Given the pain points listed above and the overlap of functionality between `<Dialog>` and `<Drawer>`, it's suggested the Design System lessen its reliance on third-party libraries by using the native `<dialog>` element for these components instead.
 
-The recommended implementation is to create one internal wrapping `<_Dialog>` component, which houses the `<dialog>` element and provides props that control styling and User interaction (i.e., if background content remains interactive). This component would also manage elevation and focus trapping behavior.
+The recommended implementation is to create one internal wrapping `<NativeDialog>` component, which houses the `<dialog>` element and provides props that control styling and User interaction (i.e., if background content remains interactive). This component would also manage elevation and focus trapping behavior.
 
 Implementation of this component should not change the current component APIs for `<Drawer>` and `<Dialog>`.
 
@@ -42,7 +42,7 @@ The reasons we want to create a React wrapper from the native element and use it
 Simplified example of implementation:
 
 ```js
-const _Dialog = (props) => {
+const NativeDialog = (props) => {
   {/* Provides props that map to native dialog methods */}
   <dialog className={customClass} {...dialogProps}>
     {children}
@@ -52,23 +52,23 @@ const _Dialog = (props) => {
 const Drawer = (props) => {
   {/* Would use .show() method to open */}
   {/* Consuming components will manage `.close()` for the dialog */}
-  <_Dialog ref={DrawerDialog} className='ds-c-drawer' hasFocusTrap={bool}>
+  <NativeDialog ref={DrawerDialog} className='ds-c-drawer' hasFocusTrap={bool}>
     {/* Header */}
     <Button onClose={close()}>
     {/* Body */}
     {/* Optional footer */}
-  </_Dialog>
+  </NativeDialog>
 }
 
 const Dialog = (props) => {
   {/* Would use .showModal() method to open */}
   {/* Consuming components will manage `.close()` for the dialog */}
-  <_Dialog className='ds-c-dialog'>
+  <NativeDialog className='ds-c-dialog'>
     {/* Header */}
     <Button onClose={close()}>
     {/* Body */}
     {/* Footer - Modal action buttons */}
-  </_Dialog>
+  </NativeDialog>
 }
 ```
 
@@ -103,7 +103,7 @@ To mitigate this risk, consuming teams can test this update using the Design Sys
 
 ## Questions and Requested Feedback
 
-- How does the Design System demarcate internal, not for public-consumption components?
-  - Is prefixing a component with an underscore, as in `<_Dialog>`, acceptable? Or do we prefix the name with something like, `<InternalDialog>`?
-  - Should the system have a special directory for these components?
-- The analytics between `<Drawer>` and `<Dialog>` appears to be identical - should this logic live in the `<_Dialog>` wrapper?
+- ~How does the Design System demarcate internal, not for public-consumption components?~ Resolved in PR feedback.
+  - ~Is prefixing a component with an underscore, as in `<NativeDialog>`, acceptable? Or do we prefix the name with something like, `<InternalDialog>`?~ Resolved in PR feedback.
+  - ~Should the system have a special directory for these components?~ Resolved in PR feedback.
+- The analytics between `<Drawer>` and `<Dialog>` appears to be identical - should this logic live in the `<NativeDialog>` wrapper?
