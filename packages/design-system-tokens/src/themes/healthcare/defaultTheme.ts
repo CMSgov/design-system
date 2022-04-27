@@ -2,7 +2,7 @@
  * Healthcare.gov Default CMSDS Visual Theme
  */
 
-import { color, spacer, radius, z } from '../../tokens';
+import { animation, color, spacer, radius, z } from '../../tokens';
 import { to, ThemeTokens, ColorTokens } from '../../lib/types';
 import { hexOpacity } from '../../lib/utility';
 
@@ -179,8 +179,12 @@ const components = {
   'dialog__background-color': themeColors.white,
   dialog__padding: spacer[4],
   'dialog-overlay__background-color': themeColors['background-dialog-mask'],
-  // review
-  'review__border-color': themeColors['border'],
+  // drawer
+  'drawer__background-color': themeColors.background,
+  'drawer__border-color': themeColors.border,
+  'drawer__animation-timing': animation['speed-2'],
+  'drawer-header__background-color': themeColors['gray-lightest'],
+  'drawer-footer__background-color': themeColors['primary-alt-lightest'],
   // dropdown
   'dropdown__background-color': themeColors.white,
   'dropdown__icon-size': '10px',
@@ -203,6 +207,8 @@ const components = {
   'pagination-current-page__color': themeColors.base,
   'pagination-overflow__color': themeColors.gray,
   'pagination-page-count__color': themeColors.gray,
+  // review
+  'review__border-color': themeColors['border'],
 };
 
 const DefaultTheme = to<ThemeTokens>()({
