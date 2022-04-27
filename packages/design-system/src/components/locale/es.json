@@ -33,7 +33,8 @@
     "closeButtonText": "Cerrar"
   },
   "filterChip": {
-    "ariaClearLabel": "Eliminar"
+    "ariaClearLabel": "Eliminar",
+    "filter": "{{label}} del filtro"
   },
   "icons": {
     "add": "Añadir",

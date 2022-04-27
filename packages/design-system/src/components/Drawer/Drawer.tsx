@@ -3,6 +3,7 @@ import Button from '../Button/Button';
 import React, { useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
+import { t } from '../i18n';
 
 // TODO: closeButtonText, heading should be a string, but it is being used as a node in MCT,
 // until we provide a better solution for customization, we type it as a node.
@@ -92,12 +93,12 @@ export const Drawer = (props: DrawerProps) => {
             {props.heading}
           </Heading>
           <Button
-            aria-label={props.ariaLabel}
+            aria-label={props.ariaLabel ?? t('drawer.ariaLabel')}
             className="ds-c-drawer__close-button"
             size="small"
             onClick={props.onCloseClick}
           >
-            {props.closeButtonText}
+            {props.closeButtonText ?? t('drawer.closeButtonText')}
           </Button>
         </div>
         <div
@@ -127,8 +128,6 @@ export const Drawer = (props: DrawerProps) => {
 };
 
 Drawer.defaultProps = {
-  ariaLabel: 'Close help drawer',
-  closeButtonText: 'Close',
   headingLevel: '3',
 };
 
