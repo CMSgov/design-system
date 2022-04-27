@@ -51,7 +51,6 @@ const NativeDialog = (props) => {
 
 const Drawer = (props) => {
   {/* Would use .show() method to open */}
-  {/* Consuming components will manage `.close()` for the dialog */}
   <NativeDialog ref={DrawerDialog} className='ds-c-drawer' hasFocusTrap={bool}>
     {/* Header */}
     <Button onClose={close()}>
@@ -62,7 +61,6 @@ const Drawer = (props) => {
 
 const Dialog = (props) => {
   {/* Would use .showModal() method to open */}
-  {/* Consuming components will manage `.close()` for the dialog */}
   <NativeDialog className='ds-c-dialog'>
     {/* Header */}
     <Button onClose={close()}>
