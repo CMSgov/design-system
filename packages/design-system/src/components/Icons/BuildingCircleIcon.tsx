@@ -1,9 +1,9 @@
 import React from 'react';
+import { t } from '../i18n';
 import SvgIcon, { IconCommonProps } from './SvgIcon';
 
 const defaultProps = {
   className: '',
-  title: 'Building in circle',
   viewBox: '0 0 54 54',
 };
 
@@ -11,7 +11,12 @@ function BuildingCircleIcon(props: IconCommonProps): React.ReactElement {
   const iconCssClasses = `ds-c-icon--building-circle ${props.className || ''}`;
 
   return (
-    <SvgIcon {...defaultProps} {...props} className={iconCssClasses}>
+    <SvgIcon
+      title={t('icons.buildingCircle')}
+      {...defaultProps}
+      {...props}
+      className={iconCssClasses}
+    >
       <g>
         <path
           className="ds-c-icon--building-circle__building"
