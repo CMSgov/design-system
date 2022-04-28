@@ -24,6 +24,7 @@ import { errorPlacementDefault } from '../flags';
 import get from 'lodash/get';
 import keepInputDownshiftStateReducer from './keepInputDownshiftStateReducer';
 import uniqueId from 'lodash/uniqueId';
+import { t } from '../i18n';
 
 export interface AutocompleteItems {
   /**
@@ -162,14 +163,10 @@ function isTextField(child: React.ReactElement): boolean {
 
 export class Autocomplete extends React.Component<AutocompleteProps, any> {
   static defaultProps = {
-    ariaClearLabel: 'Clear search to try again',
     autoCompleteLabel: 'off',
-    clearInputText: 'Clear search',
     clearSearchButton: true,
     clearInputOnBlur: true,
     itemToString: (item): string => (item ? item.name : ''),
-    loadingMessage: 'Loading...',
-    noResultsMessage: 'No results',
   };
 
   constructor(props: AutocompleteProps) {
@@ -219,7 +216,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, any> {
     if (this.props.loading) {
       return (
         <li aria-selected="false" className="ds-c-autocomplete__list-item--message" role="option">
-          {this.props.loadingMessage}
+          {this.props.loadingMessage ?? t('autocomplete.loadingMessage')}
         </li>
       );
     }
@@ -227,7 +224,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, any> {
     // If we have no results, show the non-selected message
     return (
       <li aria-selected="false" className="ds-c-autocomplete__list-item--message" role="option">
-        {this.props.noResultsMessage}
+        {this.props.noResultsMessage ?? t('autocomplete.noResultsMessage')}
       </li>
     );
   }
@@ -376,13 +373,13 @@ export class Autocomplete extends React.Component<AutocompleteProps, any> {
 
             {clearSearchButton && (
               <Button
-                aria-label={ariaClearLabel}
+                aria-label={ariaClearLabel ?? t('autocomplete.ariaClearLabel')}
                 className="ds-c-autocomplete__clear-btn"
                 onClick={clearSelection}
                 size="small"
                 variation="transparent"
               >
-                {clearInputText}
+                {clearInputText ?? t('autocomplete.clearInputText')}
               </Button>
             )}
           </WrapperDiv>

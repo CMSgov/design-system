@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VerticalNavItemLabel with subnav has default collapsed state title 1`] = `"Expand sub-navigation"`;
+
+exports[`VerticalNavItemLabel with subnav has default expanded state title 1`] = `"Collapse sub-navigation"`;
