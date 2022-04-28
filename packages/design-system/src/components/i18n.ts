@@ -23,6 +23,7 @@ export function getLanguage() {
 }
 
 export function setLanguage(lang: Language) {
+  console.log('hey', language);
   language = lang;
 }
 
