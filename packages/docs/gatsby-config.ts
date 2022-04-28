@@ -11,9 +11,18 @@ const config: GatsbyConfig = {
     'gatsby-plugin-sitemap',
     {
       resolve: 'gatsby-source-filesystem',
+      // content to display on site
       options: {
         name: 'content',
         path: './content/',
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      // components to load prop data from
+      options: {
+        name: 'components',
+        path: '../design-system/src/components',
       },
     },
     {
@@ -35,6 +44,12 @@ const config: GatsbyConfig = {
       },
     },
     'gatsby-plugin-mdx',
+    {
+      resolve: 'gatsby-transformer-react-docgen',
+      options: {
+        babelrcRoots: ['../design-system/src/components/*'],
+      },
+    },
   ],
 };
 

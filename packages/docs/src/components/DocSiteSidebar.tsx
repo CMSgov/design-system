@@ -50,7 +50,7 @@ const GatsbyLink = (props: VerticalNavItemProps) => {
 const DocSiteSidebar = ({ isMobileNavOpen }: DocSiteNavProps) => {
   const data = useStaticQuery(graphql`
     query SiteNavQuery {
-      allFile(sort: { fields: [relativeDirectory, name] }) {
+      allFile(sort: { fields: [relativeDirectory, name] }, filter: { ext: { eq: ".mdx" } }) {
         group(field: relativeDirectory) {
           fieldValue
           edges {
