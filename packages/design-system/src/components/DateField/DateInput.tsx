@@ -185,7 +185,7 @@ export class DateInput extends React.PureComponent<DateInputProps> {
     }, 20);
   }
 
-  renderField(type: 'day' | 'month' | 'year'): React.ReactNode {
+  renderField(type: 'day' | 'month' | 'year', maxLength: number): React.ReactNode {
     const sharedTextFieldProps = {
       className: 'ds-l-col--auto',
       labelClassName: 'ds-c-datefield__label',
@@ -203,6 +203,7 @@ export class DateInput extends React.PureComponent<DateInputProps> {
         value={this.props[`${type}Value`]}
         label={this.props[`${type}Label`] ?? t(`dateField.${type}Label`)}
         name={this.props[`${type}Name`]}
+        maxLength={maxLength}
         fieldClassName={classNames(`ds-c-field--${type}`, {
           'ds-c-field--error': this.props[`${type}Invalid`],
         })}
@@ -220,11 +221,11 @@ export class DateInput extends React.PureComponent<DateInputProps> {
   render() {
     return (
       <div className="ds-c-datefield__container ds-l-form-row">
-        {this.renderField('month')}
+        {this.renderField('month', 2)}
         <span className="ds-c-datefield__separator">/</span>
-        {this.renderField('day')}
+        {this.renderField('day', 2)}
         <span className="ds-c-datefield__separator">/</span>
-        {this.renderField('year')}
+        {this.renderField('year', 4)}
       </div>
     );
   }
