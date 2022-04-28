@@ -179,8 +179,17 @@ const components = {
   'dialog__background-color': themeColors.white,
   dialog__padding: spacer[4],
   'dialog-overlay__background-color': themeColors['background-dialog-mask'],
-  // review
-  'review__border-color': themeColors['border'],
+  // drawer
+  'drawer__animation-timing': animation['speed-2'],
+  'drawer__background-color': themeColors.background,
+  'drawer__border-color': themeColors.border,
+  'drawer-close__color': themeColors.black,
+  'drawer-header__background-color': themeColors['gray-lightest'],
+  'drawer-footer__background-color': themeColors['primary-alt-lightest'],
+  'drawer-toggle__background-color--hover': themeColors['primary-alt'],
+  'drawer-toggle__color--hover': themeColors.white,
+  'drawer-toggle__background-color--hover--inverse': themeColors.white,
+  'drawer-toggle__color--hover--inverse': themeColors['gray-darker'],
   // dropdown
   'dropdown__background-color': themeColors.white,
   'dropdown__icon-size': '10px',
@@ -203,6 +212,8 @@ const components = {
   'pagination-current-page__color': themeColors.base,
   'pagination-overflow__color': themeColors.gray,
   'pagination-page-count__color': themeColors.gray,
+  // review
+  'review__border-color': themeColors['border'],
 };
 
 export const shadow = {

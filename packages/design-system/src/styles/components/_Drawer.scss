@@ -1,28 +1,5 @@
 @import '../settings/index.scss';
 
-// Component vars
-$drawer-background-color: $color-background;
-$drawer-box-shadow: -2px 0 0 $border-color;
-$drawer-space: $spacer-2;
-$drawer-animation-timing: $animation-speed-2;
-$drawer-elevation: 500;
-
-// Header vars
-$drawer-header-background-color: $color-gray-lightest;
-
-// Body vars
-$drawer-font-size-mobile: $base-font-size;
-$drawer-font-size-tablet: $small-font-size;
-$drawer-font-size-desktop: $base-font-size;
-
-// Footer vars
-$drawer-footer-background-color: $color-primary-alt-lightest;
-$drawer-footer-line-height: 1.5;
-
-// Toggle vars
-$drawer-toggle-font-weight: $font-normal;
-$drawer-toggle-space: 0;
-
 @keyframes slideInDrawer {
   from {
     opacity: 0;
@@ -38,8 +15,8 @@ $drawer-toggle-space: 0;
 /* Help drawer toggle */
 .ds-c-drawer__toggle {
   display: block;
-  font-weight: $drawer-toggle-font-weight;
-  padding: $drawer-toggle-space;
+  font-weight: $font-weight-normal;
+  padding: 0;
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
     padding: $spacer-half $spacer-2;
@@ -52,16 +29,16 @@ $drawer-toggle-space: 0;
 
 /* Help drawer wrapper */
 .ds-c-drawer {
-  background: $drawer-background-color;
+  background: $drawer__background-color;
   bottom: 0;
-  box-shadow: $drawer-box-shadow;
+  box-shadow: -2px 0 0 $drawer__border-color;
   position: fixed;
   right: 0;
   top: 0;
-  z-index: $drawer-elevation;
+  z-index: $z-drawer;
 
   @media (min-width: $width-md) {
-    animation: slideInDrawer $drawer-animation-timing ease-in-out both; // slide in from the right
+    animation: slideInDrawer $drawer__animation-timing ease-in-out both; // slide in from the right
     max-width: 33%; // this equates to 4 grid columns
   }
 
@@ -89,11 +66,11 @@ $drawer-toggle-space: 0;
 /* Help drawer header */
 .ds-c-drawer__header {
   align-items: center;
-  background-color: $drawer-header-background-color;
+  background-color: $drawer-header__background-color;
   display: flex;
-  gap: $drawer-space;
+  gap: $spacer-2;
   justify-content: space-between;
-  padding: $drawer-space;
+  padding: $spacer-2;
 
   @supports (display: flex) {
     flex: 0 0 auto;
@@ -126,15 +103,15 @@ $drawer-toggle-space: 0;
 
 /* Help drawer body content */
 .ds-c-drawer__body {
-  font-size: $drawer-font-size-mobile;
-  padding: $drawer-space;
+  font-size: $font-size-base;
+  padding: $spacer-2;
 
   @media (min-width: $width-md) {
-    font-size: $drawer-font-size-tablet;
+    font-size: $font-size-sm;
   }
 
   @media (min-width: $width-lg) {
-    font-size: $drawer-font-size-desktop;
+    font-size: $font-size-base;
   }
 
   @supports (display: flex) {
@@ -148,9 +125,9 @@ $drawer-toggle-space: 0;
 
 /* Help drawer footer */
 .ds-c-drawer__footer {
-  background-color: $drawer-footer-background-color;
-  line-height: $drawer-footer-line-height;
-  padding: $drawer-space;
+  background-color: $drawer-footer__background-color;
+  line-height: 1.5;
+  padding: $spacer-2;
 
   @supports (display: flex) {
     flex: 0 0 auto;
