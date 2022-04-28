@@ -218,7 +218,7 @@ const components = {
   'drawer__background-color': themeColors.background,
   'drawer__border-color': themeColors.border,
   'drawer-close__color': themeColors.black,
-  'drawer-header__background-color': themeColors.white,
+  'drawer-header__background-color': themeColors['gray-lightest'],
   'drawer-footer__background-color': themeColors['primary-alt-lightest'],
   'drawer-toggle__background-color--hover': themeColors['primary-alt'],
   'drawer-toggle__color--hover': themeColors.white,
