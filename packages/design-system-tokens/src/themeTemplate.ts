@@ -1,4 +1,4 @@
-import { animation, color, font, measure, spacer } from './tokens';
+import { animation, color, font, measure, media, radius, spacer, z } from './tokens';
 import { to, ThemeTokens, ColorTokens } from './lib/types';
 
 const description = 'Theme Template Description';
@@ -20,8 +20,11 @@ const ThemeTemplate = to<ThemeTokens>()({
     ...font,
   },
   measure,
+  media,
+  radius,
   shadow,
   spacer,
+  z,
 });
 
 export default ThemeTemplate;

@@ -2,7 +2,7 @@
  * Medicare.gov Default CMSDS Visual Theme
  */
 
-import { color, font, spacer, radius } from '../../tokens';
+import { animation, color, font, measure, media, radius, spacer, z } from '../../tokens';
 import { to, ThemeTokens, ColorTokens } from '../../lib/types';
 import { hexOpacity } from '../../lib/utility';
 
@@ -244,11 +244,22 @@ const shadow = {
 };
 
 const DefaultTheme = to<ThemeTokens>()({
+  animation,
   color: themeColors,
   components,
   description,
-  font,
+  font: {
+    sans: font['family-rubik'],
+    montserrat: font['family-montserrat'],
+    rubik: font['family-rubik'],
+    ...font,
+  },
+  measure,
+  media,
+  radius,
   shadow,
+  spacer,
+  z,
 });
 
 export default DefaultTheme;
