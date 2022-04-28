@@ -7,7 +7,7 @@ import classNames from 'classnames';
 import pick from 'lodash/pick';
 import { FormControl, FormControlPropKeys } from '../FormControl/FormControl';
 import { NUM_MONTHS, getMonthNames } from './getMonthNames';
-import { fallbackLocale, getLanguage } from '../i18n';
+import { fallbackLocale, getLanguage, t } from '../i18n';
 
 const monthNumbers = (() => {
   const months = [];
@@ -181,7 +181,7 @@ export const MonthPicker = (props: MonthPickerProps) => {
               inversed={props.inversed}
               variation={props.buttonVariation}
             >
-              {props.selectAllText}
+              {props.selectAllText ?? t('monthPicker.selectAllText')}
             </Button>
             <Button
               aria-pressed={clearAllPressed}
@@ -191,7 +191,7 @@ export const MonthPicker = (props: MonthPickerProps) => {
               inversed={props.inversed}
               variation={props.buttonVariation}
             >
-              {props.clearAllText}
+              {props.clearAllText ?? t('monthPicker.clearAllText')}
             </Button>
           </div>
           <div className="ds-c-month-picker__months">
@@ -218,11 +218,6 @@ export const MonthPicker = (props: MonthPickerProps) => {
       )}
     />
   );
-};
-
-MonthPicker.defaultProps = {
-  selectAllText: 'Select all',
-  clearAllText: 'Clear all',
 };
 
 export default MonthPicker;

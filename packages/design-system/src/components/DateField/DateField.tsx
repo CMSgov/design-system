@@ -4,6 +4,7 @@ import React from 'react';
 import defaultDateFormatter from './defaultDateFormatter';
 import omit from 'lodash/omit';
 import pick from 'lodash/pick';
+import { t } from '../i18n';
 
 export type DateFieldDayDefaultValue = string | number;
 export type DateFieldDayValue = string | number;
@@ -161,6 +162,8 @@ export function DateField(props: DateFieldProps): React.ReactElement {
 
   return (
     <FormControl
+      label={t('dateField.label')}
+      hint={t('dateField.hint')}
       {...containerProps}
       component="fieldset"
       labelComponent="legend"
@@ -172,13 +175,8 @@ export function DateField(props: DateFieldProps): React.ReactElement {
 }
 
 DateField.defaultProps = {
-  label: 'Date',
-  hint: 'For example: 4 / 28 / 1986',
-  dayLabel: 'Day',
   dayName: 'day',
-  monthLabel: 'Month',
   monthName: 'month',
-  yearLabel: 'Year',
   yearName: 'year',
   dateFormatter: defaultDateFormatter,
 };

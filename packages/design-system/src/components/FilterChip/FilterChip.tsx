@@ -2,6 +2,7 @@ import { CloseIcon, CloseIconThin } from '../Icons';
 import React from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
+import { t } from '../i18n';
 
 const actionableKeys = ['Enter', 'Space', 'Backspace', 'Delete'];
 
@@ -37,10 +38,6 @@ export interface FilterChipProps {
 }
 
 export class FilterChip extends React.Component<FilterChipProps> {
-  static defaultProps = {
-    ariaClearLabel: 'Remove',
-  };
-
   filterChipId: string;
 
   constructor(props: FilterChipProps) {
@@ -89,7 +86,7 @@ export class FilterChip extends React.Component<FilterChipProps> {
           {label}
         </span>
         <span id={`${this.filterChipId}-instructions`} className="ds-u-visibility--screen-reader">
-          . {ariaClearLabel} {label} filter .
+          . {ariaClearLabel ?? t('filterChip.ariaClearLabel')} {t('filterChip.filter', { label })} .
         </span>
         <span className={iconContainerClassNames}>
           {useAlternateIcon ? <CloseIconThin /> : <CloseIcon />}
