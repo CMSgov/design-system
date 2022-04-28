@@ -1,6 +1,7 @@
 import './storybookStyles.scss';
 import React, { useEffect } from 'react';
 import { setLanguage } from '../packages/design-system/src/components/i18n';
+import { setLanguage as setLanguageFromPackage } from '@cmsgov/design-system';
 import { addons } from '@storybook/addons';
 import { FORCE_RE_RENDER } from '@storybook/core-events';
 
@@ -45,6 +46,10 @@ const languageSettingDecorator = (Story, context) => {
     // This could be called in the main render function, but side-effects are discouraged.
     // When we do it inside this useEffect, we need to force a re-render
     setLanguage(language);
+    // In order for it to work in child design systems, which import i18n things from
+    // node_modules, we need to also call this version of the function which comes from
+    // our node_modules
+    setLanguageFromPackage(language);
     addons.getChannel().emit(FORCE_RE_RENDER);
   }, [language]);
 
