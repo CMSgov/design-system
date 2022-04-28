@@ -27,10 +27,13 @@ export interface PropQuery {
 }
 
 export interface ComponentPropQuery {
-  data: {
-    componentMetadata: {
-      id: string;
-      props: PropQuery[];
-    };
+  allComponentMetadata: {
+    edges: {
+      node: {
+        id: string;
+        displayName: string;
+        props: PropQuery[];
+      };
+    }[];
   };
 }
