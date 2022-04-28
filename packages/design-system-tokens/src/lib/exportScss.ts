@@ -5,7 +5,7 @@ const tokenFormat = (name: string, value: string | unknown) => {
   return `$${name}: ${value};\n`;
 };
 
-const tokenFormatDefault = (name: string, value: string | unknown) => {
+const tokenFormatWithDefault = (name: string, value: string | unknown) => {
   return `$${name}: ${value} !default;\n`;
 };
 
@@ -49,7 +49,7 @@ export const exportScss = (fileDescriptors: FileDescriptor[], outPath: string): 
          * same page and remove this
          */
         if (file.parentDirectoryName === 'core') {
-          output += setVars(tokenItems, key, tokenFormatDefault);
+          output += setVars(tokenItems, key, tokenFormatWithDefault);
         } else {
           output += setVars(tokenItems, key);
         }

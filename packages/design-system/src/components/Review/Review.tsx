@@ -1,6 +1,7 @@
 import React from 'react';
 import ReviewLink from './ReviewLink';
 import classNames from 'classnames';
+import { t } from '../i18n';
 
 export type ReviewHeadingLevel = '1' | '2' | '3' | '4' | '5';
 
@@ -59,7 +60,7 @@ export const Review = (props: ReviewProps) => {
           href={props.editHref}
           ariaLabel={props.editAriaLabel}
         >
-          {props.editText}
+          {props.editText ?? t('review.editText')}
         </ReviewLink>
       )}
     </div>
@@ -67,7 +68,6 @@ export const Review = (props: ReviewProps) => {
 };
 
 Review.defaultProps = {
-  editText: 'Edit',
   headingLevel: '3',
 };
 
