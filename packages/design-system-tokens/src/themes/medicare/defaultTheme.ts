@@ -39,6 +39,7 @@ const themeColors: ColorTokens = {
   //
   white: color.white,
   black: color.black,
+  transparent: color.transparent,
   //
   background: color.white,
   'background-dialog': color.white,
@@ -187,11 +188,83 @@ const components = {
   'badge__background-color--warn': themeColors.warn,
   'badge__font-color--warn': themeColors.base,
   'badge__border-radius': radius.pill,
+  // button
+  'button__border-radius': radius.medium,
+  'button__border-width': '1px',
+  'button__background-color': themeColors.white,
+  'button__background-color--active': themeColors.white,
+  'button__background-color--disabled': themeColors.white,
+  'button__background-color--hover': themeColors['primary-darker'],
+  'button__border-color': themeColors['primary-alt'],
+  'button__border-color--active': themeColors['primary-alt-darkest'],
+  'button__border-color--disabled': themeColors['gray-lighter'],
+  'button__border-color--hover': themeColors['primary-alt-dark'],
+  button__color: themeColors['primary-alt'],
+  'button__color--active': themeColors['primary-darkest'],
+  'button__color--disabled': themeColors['gray-lighter'],
+  'button__color--hover': themeColors['primary-alt-dark'],
+  // button icon
+  'button-icon__fill': themeColors.base, // medicare only
+  // button - inverse
+  'button-inverse__background-color': themeColors['background-inverse'],
+  'button-inverse__background-color--disabled': themeColors['background-inverse'],
+  'button-inverse__background-color--focus': themeColors['background-inverse'],
+  'button-inverse__border-color': themeColors.white,
+  'button-inverse__border-color--active': hexOpacity(themeColors.white, 60),
+  'button-inverse__border-color--disabled': hexOpacity(themeColors.white, 80),
+  'button-inverse__border-color--hover': hexOpacity(themeColors.white, 80),
+  'button-inverse__color': themeColors.white,
+  'button-inverse__color--active': hexOpacity(themeColors.white, 60),
+  'button-inverse__color--disabled': hexOpacity(themeColors.white, 80),
+  'button-inverse__color--hover': hexOpacity(themeColors.white, 80),
+  // button - transparent
+  'button-transparent__color--active': themeColors['primary-darkest'],
+  'button-transparent__background-color--disabled': themeColors['gray-lighter'],
+  'button-transparend__color--disabled': themeColors['gray-dark'],
+  // button - inverse transparent
+  'button-inverse-transparent__background-color': themeColors['gray-lighter'],
+  'button-inverse-transparent__color': themeColors['gray-dark'],
+  'button-inverse-transparent__color--disabled': themeColors['gray-dark'], // medicare only
+  // button - primary & status buttons
+  'button-primary__color': themeColors.white, // medicare only
+  'button-primary__color--hover': themeColors.white, // medicare only
+  'button-primary__background-color': themeColors.primary,
+  'button-primary__background-color--hover': themeColors['primary-dark'],
+  'button-primary__background-color--focus': themeColors.primary, // medicare only
+  'button-primary__background-color--active': themeColors['primary-light'],
+  // button - primary inverse, all medicare only
+  'button-primary-inverse__background-color': themeColors.white,
+  'button-primary-inverse__border-color': themeColors['gray-dark'],
+  'button-primary-inverse__color': themeColors['gray-dark'],
+  'button-primary-inverse__background-color--hover': themeColors.white,
+  'button-primary-inverse__border-color--hover': hexOpacity(themeColors['gray-dark'], 80),
+  'button-primary-inverse__color--hover': hexOpacity(themeColors['gray-dark'], 80),
+  'button-primary-inverse__border-color--active': hexOpacity(themeColors['gray-dark'], 60),
+  'button-primary-inverse__coloro--active': hexOpacity(themeColors['gray-dark'], 60),
+  'button-primary-inverse__background-color--focus': themeColors.white,
+  'button-primary-inverse__border-color--focus': hexOpacity(themeColors['gray-dark'], 80),
+  'button-primary-inverse__color--focus': hexOpacity(themeColors['gray-dark'], 80),
+  'button-primary-inverse__background-color--disabled': themeColors['gray-lighter'],
+  'button-primary-inverse__border-color--disabled': themeColors.transparent,
+  'button-primary-inverse__color--disabled': themeColors['gray-dark'],
+  'button-primary-inverse-transparent__background-color': themeColors.transparent,
+  'button-primary-inverse-transparent__border-color': themeColors.transparent,
+  'button-primary-inverse-transparent__color': themeColors.white,
+  /// button primary alt, all medicare only
+  'button-primary-alt__color': themeColors.white,
+  'button-primary-alt__border-color': themeColors.transparent,
+  'button-primary-alt__background-color': themeColors['primary-alt'],
+  'button-primary-alt__color--hover': themeColors.white,
+  'button-primary-alt__background-color--hover': themeColors['primary-alt-dark'],
+  'button-primary-alt__border-color--hover': themeColors['primary-alt-dark'],
+  'button-primary-alt__color--active': themeColors.white,
+  'button-primary-alt__background-color--active': themeColors['primary-alt-light'],
+  'button-primary-alt__border-color--active': themeColors['primary-alt-light'],
   // choice + choicelist
   'choice__background-color': themeColors.background,
   'choice__background-color--checked': themeColors['primary-alt'],
   'choice__background-color--disabled': themeColors['gray-lighter'],
-  'choice__background-color--inverse': 'transparent',
+  'choice__background-color--inverse': themeColors.transparent,
   'choice__background-color--disabled--inverse': hexOpacity(themeColors['muted-inverse'], 15),
   'choice__border-color': color['granite-700'],
   'choice__border-color--checked': themeColors['primary-alt'],

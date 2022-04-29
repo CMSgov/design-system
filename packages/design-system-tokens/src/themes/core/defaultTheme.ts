@@ -12,6 +12,7 @@ export const themeColors: ColorTokens = {
   //
   white: color.white,
   black: color.black,
+  transparent: color.transparent,
   //
   background: color.white,
   'background-dialog': color.white,
@@ -195,7 +196,7 @@ export const components = {
   'choice__background-color': themeColors.background,
   'choice__background-color--checked': themeColors.primary,
   'choice__background-color--disabled': themeColors['gray-lighter'],
-  'choice__background-color--inverse': 'transparent',
+  'choice__background-color--inverse': themeColors.transparent,
   'choice__background-color--disabled--inverse': hexOpacity(themeColors['muted-inverse'], 15),
   'choice__border-color': themeColors.base,
   'choice__border-color--checked': themeColors.primary,

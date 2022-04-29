@@ -25,7 +25,7 @@ interface Token<T> {
 
 export type AnimationTokens = Token<string | number>;
 export type BorderRadiusTokens = Token<PercentageValue | PxValue>;
-export type ColorTokens = Token<HexValue | RGBValue | RGBAValue>;
+export type ColorTokens = Token<HexValue | RGBValue | RGBAValue | 'transparent' | 'inherit'>;
 export type FontTokens = Token<string | number>;
 export type MeasureTokens = Token<MeasureValues>;
 export type MediaWidthTokens = Token<PxValue>;

@@ -7,6 +7,7 @@ import { hexOpacity } from '../lib/utility';
 
 const color = to<ColorTokens>()({
   // singletons
+  transparent: 'transparent',
   white: '#ffffff',
   'white-alpha-80': hexOpacity('#ffffff', 80),
   'white-alpha-50': hexOpacity('#ffffff', 50),

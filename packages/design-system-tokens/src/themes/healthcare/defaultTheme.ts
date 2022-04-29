@@ -12,6 +12,7 @@ const themeColors: ColorTokens = {
   //
   white: color.white,
   black: color.black,
+  transparent: color.transparent,
   //
   background: color.white,
   'background-dialog': color.white,
@@ -193,15 +194,17 @@ const components = {
   'button-primary__background-color--active': themeColors['success-darker'],
   // button - secondary, healthcare only
   'button-secondary__background-color': themeColors.primary,
-  'button-secondary__color': themeColors.white,
-  'button-secondary__color--active': themeColors.white,
+  'button-secondary__border-color': themeColors.transparent,
+  'button-secondary__border-color--active': themeColors.transparent,
   'button-secondary__background-color--hover': themeColors['primary-darker'],
   'button-secondary__background-color--active': themeColors['primary-darkest'],
+  'button-secondary__color': themeColors.white,
+  'button-secondary__color--active': themeColors.white,
   // choice + choicelist
   'choice__background-color': themeColors.background,
   'choice__background-color--checked': themeColors.primary,
   'choice__background-color--disabled': themeColors['gray-lighter'],
-  'choice__background-color--inverse': 'transparent',
+  'choice__background-color--inverse': themeColors.transparent,
   'choice__background-color--disabled--inverse': hexOpacity(themeColors['muted-inverse'], 15),
   'choice__border-color': themeColors.base,
   'choice__border-color--checked': themeColors.primary,
