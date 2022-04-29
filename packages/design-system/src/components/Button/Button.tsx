@@ -128,68 +128,7 @@ export const Button = ({
   }
 
   const contentRef = useRef();
-
-  function sendButtonEvent() {
-    if (!buttonSendsAnalytics() || analytics === false) {
-      return;
-    }
-
-    const buttonText = getAnalyticsContentFromRefs([contentRef]);
-    const buttonStyle = variation ?? 'default';
-    const buttonType = type ?? 'button';
-    const buttonParentHeading = analyticsParentHeading ?? ' ';
-    const buttonParentType = analyticsParentType ?? ' ';
-
-    console.log('=== BUTTON LABEL === ', buttonText);
-
-    if (href) {
-      return sendLinkEvent({
-        event_name: 'button_engagement',
-        event_type: EventCategory.UI_INTERACTION,
-        text: buttonText,
-        link_url: href,
-        button_style: buttonStyle,
-        button_type: 'link',
-        parent_component_heading: buttonParentHeading,
-        parent_component_type: buttonParentType,
-        ga_eventCategory: EventCategory.UI_INTERACTION,
-        ga_eventAction: `engaged ${buttonStyle} button`,
-        ga_eventLabel: `${buttonText}: ${href}`,
-      });
-    } else {
-      return sendLinkEvent({
-        event_name: 'button_engagement',
-        event_type: EventCategory.UI_INTERACTION,
-        text: buttonText,
-        button_style: buttonStyle,
-        button_type: buttonType,
-        parent_component_heading: buttonParentHeading,
-        parent_component_type: buttonParentType,
-        ga_eventCategory: EventCategory.UI_INTERACTION,
-        ga_eventAction: `engaged ${buttonStyle} button`,
-        ga_eventLabel: buttonText,
-      });
-    }
-  }
-
-  function handleClick(e: React.MouseEvent | React.KeyboardEvent): void {
-    if (!disabled) {
-      console.log('=== TEST ONCLICK FIRING ===');
-      sendButtonEvent();
-      if (onClick) {
-        onClick(e);
-      }
-    }
-  }
-
-  function handleKeyPress(e: React.KeyboardEvent): void {
-    // Trigger onClick on space key event for `<a>` elements
-    if (e.key === ' ') {
-      handleClick(e);
-    }
-  }
   const ComponentType = component ?? (href ? 'a' : 'button');
-
   const variationClass = variation && `ds-c-button--${variation}`;
   const disabledClass = disabled && ComponentType !== 'button' && 'ds-c-button--disabled';
   const sizeClass = size && `ds-c-button--${size}`;
@@ -208,7 +147,6 @@ export const Button = ({
     disabled,
     href,
     type,
-    onClick: handleClick,
     ...otherProps,
   };
 
@@ -217,6 +155,48 @@ export const Button = ({
     // and remove <button> specific attributes
     delete attrs.disabled;
     delete attrs.type;
+  }
+
+  function sendButtonEvent() {
+    if (!buttonSendsAnalytics() || analytics === false) {
+      return;
+    }
+
+    const buttonText = getAnalyticsContentFromRefs([contentRef]);
+    const buttonStyle = variation ?? 'default';
+    const buttonType = type ?? 'button';
+    const buttonParentHeading = analyticsParentHeading ?? ' ';
+    const buttonParentType = analyticsParentType ?? ' ';
+
+    return sendLinkEvent({
+      event_name: 'button_engagement',
+      event_type: EventCategory.UI_INTERACTION,
+      ga_eventCategory: EventCategory.UI_INTERACTION,
+      ga_eventAction: `engaged ${buttonStyle} button`,
+      ga_eventLabel: href ? `${buttonText}: ${href}` : buttonText,
+      text: buttonText,
+      button_style: buttonStyle,
+      button_type: href ? 'link' : buttonType,
+      parent_component_heading: buttonParentHeading,
+      parent_component_type: buttonParentType,
+      ...(href ? { link_url: href } : {}),
+    });
+  }
+
+  function handleClick(e: React.MouseEvent | React.KeyboardEvent): void {
+    if (!disabled) {
+      sendButtonEvent();
+      if (onClick) {
+        onClick(e);
+      }
+    }
+  }
+
+  function handleKeyPress(e: React.KeyboardEvent): void {
+    // Trigger onClick on space key event for `<a>` elements
+    if (e.key === ' ') {
+      handleClick(e);
+    }
   }
 
   return (
@@ -231,6 +211,7 @@ export const Button = ({
           }
         }
       }}
+      onClick={handleClick}
       onKeyPress={ComponentType === 'a' ? handleKeyPress : undefined}
       {...attrs}
     >
