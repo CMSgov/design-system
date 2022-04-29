@@ -173,10 +173,12 @@ export const Button = ({
   }
 
   function handleClick(e: React.MouseEvent | React.KeyboardEvent): void {
-    if (!disabled && onClick) {
+    if (!disabled) {
       console.log('=== TEST ONCLICK FIRING ===');
       sendButtonEvent();
-      onClick(e);
+      if (onClick) {
+        onClick(e);
+      }
     }
   }
 
