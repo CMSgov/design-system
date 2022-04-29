@@ -1,38 +1,34 @@
 .ds-c-button--secondary,
 .ds-c-button--secondary:visited {
-  $bg-color: $color-primary;
-  $hover-color: $color-primary-darker;
-  $active-color: $color-primary-darkest;
-
-  background-color: $bg-color;
+  background-color: $button-secondary__background-color;
   border-color: transparent;
-  color: $color-white;
+  color: $button-secondary__color;
 
   &:hover,
   &:active,
   &.ds-c-button--hover,
   &.ds-c-button--active {
     border-color: transparent;
-    color: $color-white;
+    color: $button-secondary__color--active;
   }
   &:focus,
   &.ds-c-button--focus {
-    background-color: $bg-color;
+    background-color: $button-secondary__background-color;
   }
   &:hover,
   &.ds-c-button--hover {
-    background-color: $hover-color;
+    background-color: $button-secondary__background-color--hover;
   }
 
   &:active,
   &.ds-c-button--active {
-    background-color: $active-color;
+    background-color: $button-secondary__background-color--active;
     border-color: transparent;
   }
   // Make sure active overrides focus styles
   &:active:focus,
   &.ds-c-button--active:focus {
-    background-color: $active-color;
+    background-color: $button-secondary__background-color--active;
     box-shadow: none;
   }
 }
