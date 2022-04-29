@@ -1,5 +1,5 @@
-import { EventCategory, MAX_LENGTH, sendLinkEvent, useAnalyticsContent } from '../analytics';
-import React, { RefObject } from 'react';
+import { EventCategory, sendLinkEvent, getAnalyticsContentFromRefs } from '../analytics';
+import React, { MutableRefObject, useRef } from 'react';
 import { buttonSendsAnalytics } from '../flags';
 import classNames from 'classnames';
 
@@ -11,23 +11,20 @@ export type ButtonSize = 'small' | 'big';
  */
 export type ButtonVariation = 'primary' | 'danger' | 'success' | 'transparent';
 
-export type ButtonRef = RefObject<any> | ((...args: any[]) => any);
+export type ButtonRef = MutableRefObject<any> | ((...args: any[]) => any);
 
 type CommonButtonProps = {
   /**
-   * Analytics events tracking is enabled by default.
-   * Set this value to `false` to disable tracking
-   * for this component instance.
+   * Analytics events tracking is enabled by default. Set this value to `false` to
+   * disable tracking for this component instance.
    */
   analytics?: boolean;
   /**
-   * If needed for analytics, pass heading text of
-   * parent component of button.
+   * If needed for analytics, pass heading text of parent component of button.
    */
   analyticsParentHeading?: string;
   /**
-   * If needed for analytics, pass type of parent
-   * component of button.
+   * If needed for analytics, pass type of parent component of button.
    */
   analyticsParentType?: string;
   /**
@@ -93,6 +90,7 @@ type OtherProps = Omit<
 >;
 
 export type ButtonProps = CommonButtonProps & OtherProps;
+
 export const Button = ({
   analytics,
   analyticsParentHeading,
@@ -129,42 +127,22 @@ export const Button = ({
     }
   }
 
+  const contentRef = useRef();
+
   function sendButtonEvent() {
     if (!buttonSendsAnalytics() || analytics === false) {
       return;
     }
 
-    // Determine if `children` is React.Node or str
-    const label = children;
-    let buttonText;
-
-    if (typeof label === 'string') {
-      buttonText = label;
-    } else {
-      // If label is React.Node, convert to arr
-      const labelArray = React.Children.toArray(label);
-
-      // Filter str out of `children` arr
-      const labelStrings = labelArray
-        .filter((child) => {
-          if (typeof child === 'string') {
-            return child;
-          }
-        })
-        .join(' ');
-
-      buttonText = labelStrings;
-    }
-
-    console.log('=== BUTTON LABEL === ', buttonText);
-
+    const buttonText = getAnalyticsContentFromRefs([contentRef]);
     const buttonStyle = variation ?? 'default';
     const buttonType = type ?? 'button';
-
     const buttonParentHeading = analyticsParentHeading ?? ' ';
     const buttonParentType = analyticsParentType ?? ' ';
 
-    if (ComponentType !== 'button') {
+    console.log('=== BUTTON LABEL === ', buttonText);
+
+    if (href) {
       return sendLinkEvent({
         event_name: 'button_engagement',
         event_type: EventCategory.UI_INTERACTION,
@@ -174,7 +152,7 @@ export const Button = ({
         button_type: 'link',
         parent_component_heading: buttonParentHeading,
         parent_component_type: buttonParentType,
-        ga_eventCategory: 'ui interaction',
+        ga_eventCategory: EventCategory.UI_INTERACTION,
         ga_eventAction: `engaged ${buttonStyle} button`,
         ga_eventLabel: `${buttonText}: ${href}`,
       });
@@ -187,7 +165,7 @@ export const Button = ({
         button_type: buttonType,
         parent_component_heading: buttonParentHeading,
         parent_component_type: buttonParentType,
-        ga_eventCategory: 'ui interaction',
+        ga_eventCategory: EventCategory.UI_INTERACTION,
         ga_eventAction: `engaged ${buttonStyle} button`,
         ga_eventLabel: buttonText,
       });
@@ -249,7 +227,16 @@ export const Button = ({
 
   return (
     <ComponentType
-      ref={inputRef}
+      ref={(el) => {
+        contentRef.current = el;
+        if (inputRef) {
+          if (typeof inputRef === 'function') {
+            inputRef(el);
+          } else {
+            inputRef.current = el;
+          }
+        }
+      }}
       onKeyPress={ComponentType === 'a' ? handleKeyPress : undefined}
       {...attrs}
     >
