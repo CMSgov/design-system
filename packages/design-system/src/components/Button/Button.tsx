@@ -208,17 +208,9 @@ export const Button = ({
     disabled,
     href,
     type,
+    onClick: handleClick,
     ...otherProps,
   };
-
-  if (onClick) {
-    attrs.onClick = handleClick;
-  }
-
-  if (!onClick) {
-    console.log('=== TEST NO ONCLICK DEFINED ===');
-    attrs.click = sendButtonEvent;
-  }
 
   if (ComponentType !== 'button') {
     // Assume `component` is not a custom component rendering a <button>
