@@ -1,7 +1,14 @@
 import './storybookStyles.scss';
 import React from 'react';
+import {
+  setAlertSendsAnalytics,
+  setDialogSendsAnalytics,
+  setHelpDrawerSendsAnalytics,
+} from '../packages/design-system/src/components/flags';
 import { setLanguage } from '../packages/design-system/src/components/i18n';
 import { setLanguage as setLanguageFromPackage } from '@cmsgov/design-system';
+
+window.utag = { link: console.log };
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -35,6 +42,18 @@ export const globalTypes = {
       ],
     },
   },
+  analytics: {
+    name: 'Analytics',
+    description: 'Analytics settings',
+    defaultValue: 'off',
+    toolbar: {
+      icon: 'bell',
+      items: [
+        { value: 'on', left: 'Analytics', title: 'Log to console' },
+        { value: 'off', left: 'Analytics', title: 'Off' },
+      ],
+    },
+  },
 };
 
 const languageSettingDecorator = (Story, context) => {
@@ -51,4 +70,16 @@ const languageSettingDecorator = (Story, context) => {
   return <Story {...context} />;
 };
 
-export const decorators = [languageSettingDecorator];
+const analyticsSettingsDecorator = (Story, context) => {
+  const { analytics } = context.globals;
+
+  const on = analytics === 'on';
+
+  setAlertSendsAnalytics(on);
+  setDialogSendsAnalytics(on);
+  setHelpDrawerSendsAnalytics(on);
+
+  return <Story {...context} />;
+};
+
+export const decorators = [languageSettingDecorator, analyticsSettingsDecorator];
