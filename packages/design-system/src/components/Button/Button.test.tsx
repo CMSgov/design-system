@@ -1,6 +1,6 @@
 import Button from './Button';
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 
 function mockWarn(testFunction: () => void) {
   const original = console.warn;
@@ -12,7 +12,11 @@ function mockWarn(testFunction: () => void) {
 }
 
 const Link = (props: any) => {
-  return <div {...props}>{props.children}</div>;
+  return (
+    <a {...props} href="#">
+      {props.children}
+    </a>
+  );
 };
 
 const defaultProps = {
@@ -21,20 +25,22 @@ const defaultProps = {
 
 describe('Button', () => {
   it('renders as button', () => {
-    const wrapper = shallow(<Button {...defaultProps} />);
-    expect(wrapper.is('button')).toBe(true);
-    expect(wrapper).toMatchSnapshot();
+    render(<Button {...defaultProps} />);
+    expect(screen.getByRole('button')).toMatchSnapshot();
   });
 
   it('renders as submit button', () => {
-    const wrapper = shallow(<Button {...defaultProps} {...{ type: 'submit' }} />);
-    expect(wrapper.is('button')).toBe(true);
-    expect(wrapper.prop('type')).toBe('submit');
-    expect(wrapper).toMatchSnapshot();
+    render(<Button {...defaultProps} {...{ type: 'submit' }} />);
+    expect(screen.getByRole('button').getAttribute('type')).toEqual('submit');
+  });
+
+  it('renders disabled button', () => {
+    render(<Button {...defaultProps} disabled />);
+    expect(screen.getByRole('button')).toMatchSnapshot();
   });
 
   it('renders as an anchor with custom prop', () => {
-    const wrapper = shallow(
+    render(
       <Button
         {...defaultProps}
         {...{
@@ -44,16 +50,12 @@ describe('Button', () => {
         }}
       />
     );
-    expect(wrapper.is('a')).toBe(true);
-    expect(wrapper.prop('href')).toBe('/example');
-    expect(wrapper.prop('target')).toBe('_blank');
-    expect(wrapper.prop('type')).toBeUndefined();
-    expect(wrapper).toMatchSnapshot();
+    expect(screen.getByRole('link')).toMatchSnapshot();
   });
 
   it('renders as a custom Link component', () => {
     mockWarn(() => {
-      const wrapper = shallow(
+      render(
         <Button
           {...defaultProps}
           component={Link}
@@ -62,15 +64,12 @@ describe('Button', () => {
           to="anywhere"
         />
       );
-      expect(wrapper.is('Link')).toBe(true);
-      expect(wrapper.hasClass('ds-c-button')).toBe(true);
-      expect(wrapper.render().text()).toBe(defaultProps.children);
-      expect(wrapper).toMatchSnapshot();
+      expect(screen.getByRole('link')).toMatchSnapshot();
     });
   });
 
   it('renders disabled link correctly', () => {
-    const wrapper = shallow(
+    render(
       <Button
         {...defaultProps}
         {...{
@@ -80,80 +79,52 @@ describe('Button', () => {
         }}
       />
     );
-    expect(wrapper.prop('disabled')).not.toBe(true);
-    expect(wrapper.hasClass('ds-c-button--disabled')).toBe(true);
-    expect(wrapper).toMatchSnapshot();
+    expect(screen.getByRole('link')).toMatchSnapshot();
   });
 
   it('applies additional classes', () => {
-    const wrapper = shallow(<Button {...defaultProps} {...{ className: 'foobar' }} />);
-    expect(wrapper.hasClass('foobar')).toBe(true);
-    expect(wrapper.hasClass('ds-c-button')).toBe(true);
-    expect(wrapper).toMatchSnapshot();
+    render(<Button {...defaultProps} {...{ className: 'foobar' }} />);
+    const button = screen.getByRole('button');
+    expect(button.classList.contains('foobar')).toBe(true);
+    expect(button.classList.contains('ds-c-button')).toBe(true);
   });
 
   it('applies variation classes', () => {
-    const wrapper = shallow(<Button {...defaultProps} {...{ variation: 'primary' }} />);
-    expect(wrapper.hasClass('ds-c-button')).toBe(true);
-    expect(wrapper.hasClass('ds-c-button--primary')).toBe(true);
-    expect(wrapper).toMatchSnapshot();
+    render(<Button {...defaultProps} {...{ variation: 'primary' }} />);
+    const button = screen.getByRole('button');
+    expect(button.classList.contains('ds-c-button')).toBe(true);
+    expect(button.classList.contains('ds-c-button--primary')).toBe(true);
   });
 
   it('applies size classes', () => {
-    const wrapper = shallow(<Button {...defaultProps} {...{ size: 'small' }} />);
-    expect(wrapper.hasClass('ds-c-button')).toBe(true);
-    expect(wrapper.hasClass('ds-c-button--small')).toBe(true);
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('applies disabled class', () => {
-    const onClick = jest.fn();
-    const disabled = true;
-    const wrapper = shallow(<Button {...defaultProps} {...{ onClick, disabled }} />);
-    wrapper.simulate('click');
-
-    expect(wrapper.prop('disabled')).toBe(disabled);
-    expect(wrapper.hasClass('ds-c-button--disabled')).toBe(false);
-    expect(onClick.mock.calls.length).toBe(0);
-    expect(wrapper).toMatchSnapshot();
+    render(<Button {...defaultProps} {...{ size: 'small' }} />);
+    const button = screen.getByRole('button');
+    expect(button.classList.contains('ds-c-button')).toBe(true);
+    expect(button.classList.contains('ds-c-button--small')).toBe(true);
   });
 
   it('applies disabled, inverse, and variation classes together', () => {
-    const wrapper = shallow(
+    render(
       <Button
         {...defaultProps}
         {...{
+          href: '#',
           disabled: true,
           inversed: true,
           variation: 'transparent',
         }}
       />
     );
-    expect(wrapper.hasClass('ds-c-button--transparent')).toBe(true);
-    expect(wrapper.hasClass('ds-c-button--inverse')).toBe(true);
-    expect(wrapper.prop('disabled')).toBe(true);
-    expect(wrapper.hasClass('ds-c-button')).toBe(true);
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('applies inversed to default/transparent variations', () => {
-    const wrapper = shallow(
-      <Button
-        {...defaultProps}
-        {...{
-          inversed: true,
-          variation: 'transparent',
-        }}
-      />
-    );
-    expect(wrapper.hasClass('ds-c-button--inverse')).toBe(true);
-    expect(wrapper.hasClass('ds-c-button--transparent')).toBe(true);
-    expect(wrapper).toMatchSnapshot();
+    const link = screen.getByRole('link');
+    expect(link.classList.contains('ds-c-button--transparent')).toBe(true);
+    expect(link.classList.contains('ds-c-button--inverse')).toBe(true);
+    expect(link.classList.contains('ds-c-button--disabled')).toBe(true);
+    expect(link.classList.contains('ds-c-button')).toBe(true);
   });
 
   it('prints deprecation warning for "component" prop', () => {
     const mock = mockWarn(() => {
-      shallow(
+      render(
         <Button
           {...defaultProps}
           component={Link}
