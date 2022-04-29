@@ -4,11 +4,6 @@ import Button from './Button';
 import { NextIcon } from '../Icons';
 import Spinner from '../Spinner/Spinner';
 
-import { setButtonSendsAnalytics } from '../flags';
-setButtonSendsAnalytics(true);
-
-window.utag = { link: console.log };
-
 export default {
   title: 'Components/Button',
   component: Button,
