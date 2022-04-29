@@ -248,6 +248,16 @@ const components = {
   'pagination-page-count__color': themeColors.gray,
   // review
   'review__border-color': themeColors['border'],
+  // steplist
+  steplist__color: themeColors.muted,
+  'steplist__color--current': themeColors.primary,
+  'steplist__background-color--current': themeColors.primary,
+  'steplist-step__color': themeColors.muted,
+  'steplist-step__border-color': themeColors.border,
+  'steplist-step__border-color--default': themeColors.muted,
+  'steplist-step__color--current': themeColors.white,
+  'steplist-step__color--completed': themeColors.base,
+  'steplist-step__background-color--completed': themeColors.base,
 };
 
 const shadow = {
