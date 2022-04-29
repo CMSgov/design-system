@@ -1,4 +1,5 @@
 import React from 'react';
+import { t } from '../i18n';
 import SvgIcon, { IconCommonProps } from './SvgIcon';
 import classNames from 'classnames';
 export interface StarIconProps extends IconCommonProps {
@@ -20,7 +21,7 @@ function StarIcon(props: StarIconProps): React.ReactElement {
     props.className
   );
 
-  const title = props.isFilled ? 'Star filled' : 'Star';
+  const title = props.isFilled ? t('icons.starFilled') : t('icons.star');
 
   return (
     <SvgIcon title={title} {...defaultProps} {...props} className={iconCssClasses}>

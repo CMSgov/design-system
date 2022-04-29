@@ -11,8 +11,8 @@ describe('FilterChip', () => {
 
   it('renders button and should call onDelete function when clicked', () => {
     const onDelete = jest.fn();
-    const wrapper = shallow(<FilterChip label="Foo" onDelete={onDelete} ariaClearLabel="label" />);
-    expect(wrapper.text()).toEqual('Foo. label Foo filter .<CloseIcon />');
+    const wrapper = shallow(<FilterChip label="Foo" onDelete={onDelete} />);
+    expect(wrapper.text()).toEqual('Foo. Remove Foo filter .<CloseIcon />');
 
     const button = wrapper.find('button');
     expect(button.length).toEqual(1);

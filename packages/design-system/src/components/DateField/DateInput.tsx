@@ -2,6 +2,7 @@ import { DateObject } from './defaultDateFormatter';
 import React from 'react';
 import TextField from '../TextField/TextField';
 import classNames from 'classnames';
+import { t } from '../i18n';
 
 export type DateInputDayDefaultValue = string | number;
 export type DateInputDayValue = string | number;
@@ -55,7 +56,7 @@ export interface DateInputProps {
   /**
    * Label for the day field
    */
-  dayLabel: React.ReactNode;
+  dayLabel?: React.ReactNode;
   /**
    * `name` for the day `input` field
    */
@@ -81,7 +82,7 @@ export interface DateInputProps {
   /**
    * Label for the month field
    */
-  monthLabel: React.ReactNode;
+  monthLabel?: React.ReactNode;
   /**
    * `name` for the month `input` field
    */
@@ -120,7 +121,7 @@ export interface DateInputProps {
   /**
    * Label for the year `input` field
    */
-  yearLabel: React.ReactNode;
+  yearLabel?: React.ReactNode;
   /**
    * `name` for the year field
    */
@@ -200,7 +201,7 @@ export class DateInput extends React.PureComponent<DateInputProps> {
         {...sharedTextFieldProps}
         defaultValue={this.props[`${type}DefaultValue`]}
         value={this.props[`${type}Value`]}
-        label={this.props[`${type}Label`]}
+        label={this.props[`${type}Label`] ?? t(`dateField.${type}Label`)}
         name={this.props[`${type}Name`]}
         fieldClassName={classNames(`ds-c-field--${type}`, {
           'ds-c-field--error': this.props[`${type}Invalid`],
