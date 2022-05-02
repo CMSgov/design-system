@@ -2,25 +2,58 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Design System</title>
-    <!-- In a real project this will contain a href link to your local CSS file, 
-      while in this case we are using a CDN as an example -->
+    <title>CDN Example</title>
     <link rel="stylesheet" href="dist/css/index.css" />
+    <link rel="stylesheet" href="style.css" />
     <script src="dist/js/react.production.min.js"></script>
     <script src="dist/js/react-dom.production.min.js"></script>
     <script src="dist/js/bundle.js"></script>
   </head>
   <body class="ds-base">
-    <div id="root"></div>
-
+    <div id="usa-banner"></div>
     <script>
       ReactDOM.render(
-        React.createElement(DesignSystem.Alert, {
-          heading: 'Hello World',
-          children: 'This is some body text',
-        }),
-        document.getElementById('root')
+        React.createElement(DesignSystem.UsaBanner),
+        document.getElementById('usa-banner')
       );
     </script>
+
+    <div class="ds-l-container ds-u-padding-top--2">
+      <div class="ds-u-measure--base">
+        <h1 class="ds-h1">CDN Example</h1>
+        <p>
+          This is an example showing how to use the CDN. Some elements are simple and can be easily
+          created by applying a CSS class from the Design System. Some components are more complex
+          or are interactive. Our React-based component library is here for those more complex
+          cases.
+        </p>
+
+        <div id="alert"></div>
+        <script>
+          ReactDOM.render(
+            React.createElement(DesignSystem.Alert, {
+              heading: 'Hello World',
+              children: 'I was rendered with React!',
+            }),
+            document.getElementById('alert')
+          );
+        </script>
+
+        <form>
+          <div id="month-picker"></div>
+          <script>
+            ReactDOM.render(
+              React.createElement(DesignSystem.MonthPicker, {
+                label: 'Please select the months you lived abroad.',
+                name: 'months',
+              }),
+              document.getElementById('month-picker')
+            );
+          </script>
+
+          <button type="submit" class="ds-c-button ds-c-button--primary">Submit</button>
+        </form>
+      </div>
+    </div>
   </body>
 </html>
