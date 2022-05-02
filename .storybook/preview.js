@@ -48,7 +48,7 @@ export const globalTypes = {
     description: 'Analytics settings',
     defaultValue: 'off',
     toolbar: {
-      icon: 'bell',
+      icon: 'graphline',
       items: [
         { value: 'on', left: 'Analytics', title: 'Log to console' },
         { value: 'off', left: 'Analytics', title: 'Off' },
