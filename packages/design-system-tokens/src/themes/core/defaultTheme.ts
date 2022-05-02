@@ -176,7 +176,7 @@ export const components = {
   'button-inverse__border-color': themeColors['border-inverse'],
   'button-inverse__border-color--active': hexOpacity(themeColors['border-inverse'], 60),
   'button-inverse__border-color--disabled': themeColors['gray-lighter'],
-  'button-inverse__border-color--hover': hexOpacity(themeColors.inverse, 80),
+  'button-inverse__border-color--hover': hexOpacity(themeColors['base-inverse'], 80),
   'button-inverse__color': themeColors['base-inverse'],
   'button-inverse__color--active': hexOpacity(themeColors['base-inverse'], 60),
   'button-inverse__color--disabled': themeColors['gray-lighter'],

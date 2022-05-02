@@ -26,7 +26,6 @@
   &.ds-c-button--hover,
   &:hover &:focus,
   &.ds-c-button--hover &.ds-c-button--focus {
-    background-color: $button__background-color--hover;
     border-color: $button__border-color--hover;
     color: $button__color--hover;
   }
