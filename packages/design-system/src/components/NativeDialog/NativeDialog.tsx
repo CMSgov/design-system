@@ -44,9 +44,14 @@ function NativeDialog({ children, exit, open, showModal, ...dialogProps }: Nativ
         showModal ? dialogNode.showModal() : dialogNode.show();
       } else {
         dialogNode.close();
+        console.log('focusing on lastActiveElement (mount)', lastActiveElement.current);
         lastActiveElement.current.focus();
       }
     }
+    return () => {
+      console.log('focusing on lastActiveElement (unmount)', lastActiveElement.current);
+      lastActiveElement.current?.focus();
+    };
   }, [open, showModal]);
 
   useEffect(() => {

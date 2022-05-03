@@ -73,11 +73,6 @@ export const Drawer = (props: DrawerProps) => {
 
   useEffect(() => {
     setOpen(true);
-    // const timer = setTimeout(() => {
-    //   console.log('hey');
-    //   setOpen(true);
-    // }, 50);
-    // return () => clearTimeout(timer);
   }, []);
 
   const Heading = `h${props.headingLevel}` as const;
