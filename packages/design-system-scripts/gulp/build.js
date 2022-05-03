@@ -5,6 +5,7 @@
  */
 const babel = require('gulp-babel');
 const cleanDist = require('./common/cleanDist');
+const createCdnWebpackConfig = require('./createCdnWebpackConfig');
 const copyFontsImages = require('./common/copyFontsImages');
 const gulp = require('gulp');
 const count = require('gulp-count');
@@ -12,6 +13,9 @@ const rename = require('gulp-rename');
 const ts = require('gulp-typescript');
 const path = require('path');
 const streamPromise = require('./common/streamPromise');
+const util = require('util');
+const webpack = require('webpack');
+const webpackStatsConfig = require('./docs/webpack/webpackStats.config');
 const { compileSourceSass } = require('./sass');
 const { printStats } = require('./stats');
 const { getSourceDirs } = require('./common/getDirsToProcess');
@@ -205,6 +209,22 @@ function compileJs(dir, options, changedPath) {
     });
 }
 
+async function bundleJs(dir) {
+  logTask('🚜 ', 'Running Webpack statically');
+  try {
+    const config = await createCdnWebpackConfig(dir);
+    const stats = await util.promisify(webpack)(config); // Promisify webpack so the task will wait on the compilation to finish
+
+    // Log out any errors or warnings
+    log(stats.toString(webpackStatsConfig));
+  } catch (err) {
+    logError('webpack static', err.stack || err);
+    if (err.details) {
+      logError('webpack static', err.details);
+    }
+  }
+}
+
 module.exports = {
   /**
    * Builds just the source package for the purpose of publishing
@@ -215,6 +235,7 @@ module.exports = {
     await copyAll(sourceDir, options);
     await compileSourceSass(sourceDir, options);
     await compileJs(sourceDir, options);
+    await bundleJs(sourceDir);
     if (process.env.NODE_ENV === 'production') {
       await printStats(sourceDir, options);
     }

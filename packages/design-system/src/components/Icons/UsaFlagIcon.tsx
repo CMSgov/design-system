@@ -1,9 +1,9 @@
 import React from 'react';
+import { t } from '../i18n';
 import SvgIcon, { IconCommonProps } from './SvgIcon';
 
 const defaultProps = {
   className: '',
-  title: 'U.S. flag',
   viewBox: '0 0 16 11',
 };
 
@@ -11,7 +11,12 @@ function UsaFlagIcon(props: IconCommonProps): React.ReactElement {
   const iconCssClasses = `ds-c-icon--usa-flag ${props.className || ''}`;
 
   return (
-    <SvgIcon {...defaultProps} {...props} className={iconCssClasses}>
+    <SvgIcon
+      title={t('usaBanner.flagIconTitle')}
+      {...defaultProps}
+      {...props}
+      className={iconCssClasses}
+    >
       <g fill="none" fillRule="evenodd">
         <path fill="#FFF" d="M0 0h16v11H0z" />
         <path fill="#DB3E1F" d="M8 0h8v1H8z" />
