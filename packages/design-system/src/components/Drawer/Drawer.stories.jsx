@@ -81,11 +81,11 @@ export const DrawerToggleWithDrawer = () => {
     <>
       {isDrawerVisible && (
         <Drawer
+          {...args}
           onCloseClick={() => setIsDrawerVisible({ isDrawerVisible: false })}
           footerTitle="Footer Title"
           footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
           heading="Drawer Heading"
-          {...args}
         >
           {drawerContent}
         </Drawer>
