@@ -62,7 +62,7 @@ function NativeDialog({ children, exit, open, showModal, ...dialogProps }: Nativ
   }, [exit]);
 
   return (
-    <dialog open ref={dialogRef} {...dialogProps}>
+    <dialog ref={dialogRef} {...dialogProps}>
       {children}
     </dialog>
   );

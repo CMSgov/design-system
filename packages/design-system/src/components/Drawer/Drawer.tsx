@@ -1,6 +1,6 @@
 import Button from '../Button/Button';
 import NativeDialog from '../NativeDialog/NativeDialog';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
 import { t } from '../i18n';
@@ -50,6 +50,7 @@ export interface DrawerProps {
 }
 
 export const Drawer = (props: DrawerProps) => {
+  const [open, setOpen] = useState(false);
   const headingRef = useRef(null);
   const id = useRef(props.headingId || uniqueId('drawer_'));
 
@@ -70,6 +71,14 @@ export const Drawer = (props: DrawerProps) => {
     return () => document.removeEventListener('keydown', handleEscapeKey);
   }, []);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      console.log('hey');
+      setOpen(true);
+    }, 50);
+    return () => clearTimeout(timer);
+  }, []);
+
   const Heading = `h${props.headingLevel}` as const;
 
   return (
@@ -77,7 +86,7 @@ export const Drawer = (props: DrawerProps) => {
       aria-labelledby={id.current}
       className={classNames(props.className, 'ds-c-drawer')}
       // open={props.onEnter}
-      open
+      open={open}
       exit={props.onCloseClick}
       showModal={props.hasFocusTrap}
     >

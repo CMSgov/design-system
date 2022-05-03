@@ -12,6 +12,9 @@ export default {
     closeButtonText: {
       control: { type: 'text' },
     },
+    hasFocusTrap: {
+      control: { type: 'boolean' },
+    },
   },
   args: {
     footerTitle: 'Footer Title',
@@ -72,7 +75,7 @@ DrawerWithStickyPositioning.args = {
 };
 
 export const DrawerToggleWithDrawer = () => {
-  const [{ isDrawerVisible }, setIsDrawerVisible] = useArgs();
+  const [{ isDrawerVisible, ...args }, setIsDrawerVisible] = useArgs();
 
   return (
     <>
@@ -82,6 +85,7 @@ export const DrawerToggleWithDrawer = () => {
           footerTitle="Footer Title"
           footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
           heading="Drawer Heading"
+          {...args}
         >
           {drawerContent}
         </Drawer>
