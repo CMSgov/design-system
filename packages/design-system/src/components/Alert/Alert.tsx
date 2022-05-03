@@ -79,11 +79,19 @@ export class Alert extends React.PureComponent<
     headingLevel: '2',
   };
 
+  // Alert class properties
+  alertTextRef: any;
+  focusRef: any;
+  headingId: string;
+  a11yLabelId: string;
+  eventHeadingText: string;
+
   constructor(props: AlertProps) {
     super(props);
     this.alertTextRef = null;
     this.focusRef = null;
     this.headingId = this.props.headingId || uniqueId('alert_');
+    this.a11yLabelId = this.props.a11yLabelId || uniqueId('alert_a11y_label_');
 
     if (process.env.NODE_ENV !== 'production') {
       if (!props.heading && !props.children) {
@@ -136,21 +144,11 @@ export class Alert extends React.PureComponent<
     }
   }
 
-  // Alert class properties
-  alertTextRef: any;
-  focusRef: any;
-  headingId: string;
-  eventHeadingText: string;
-
   heading(): React.ReactElement | void {
     const { headingLevel, heading } = this.props;
-    const Heading = `h${headingLevel}`;
     if (heading) {
-      const headingProps = {
-        className: 'ds-c-alert__heading',
-        id: this.headingId,
-      };
-      return React.createElement(Heading, headingProps, heading);
+      const Heading = `h${headingLevel}` as const;
+      return <Heading className="ds-c-alert__heading">{heading}</Heading>;
     }
   }
 
@@ -201,7 +199,7 @@ export class Alert extends React.PureComponent<
     );
 
     const a11yLabel = (
-      <span className="ds-c-alert__a11y-label ds-u-visibility--screen-reader">
+      <span className="ds-c-alert__a11y-label ds-u-visibility--screen-reader" id={this.a11yLabelId}>
         {t(`alert.${variation ?? 'defaultLabel'}`)}:{' '}
       </span>
     );
@@ -219,11 +217,11 @@ export class Alert extends React.PureComponent<
         }}
         tabIndex={alertRef || autoFocus ? -1 : null}
         role={role}
-        aria-labelledby={heading ? this.headingId : undefined}
+        aria-labelledby={heading ? this.headingId : this.a11yLabelId}
         {...alertProps}
       >
         {this.getIcon()}
-        <div className="ds-c-alert__body">
+        <div className="ds-c-alert__body" id={this.headingId}>
           {heading ? (
             <div className="ds-c-alert__header ds-c-alert__heading">
               {a11yLabel}
