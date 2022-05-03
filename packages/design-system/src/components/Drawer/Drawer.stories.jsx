@@ -4,6 +4,7 @@ import { useArgs } from '@storybook/client-api';
 
 import Drawer from './Drawer';
 import DrawerToggle from './DrawerToggle';
+import { Button } from '../Button';
 
 export default {
   title: 'Components/Drawer',
@@ -90,12 +91,7 @@ export const DrawerToggleWithDrawer = () => {
           {drawerContent}
         </Drawer>
       )}
-      <DrawerToggle
-        showDrawer={() => setIsDrawerVisible({ isDrawerVisible: true })}
-        drawerOpen={isDrawerVisible || false}
-      >
-        Drawer Toggle
-      </DrawerToggle>
+      <Button onClick={() => setIsDrawerVisible({ isDrawerVisible: true })}>Open drawer</Button>
     </>
   );
 };

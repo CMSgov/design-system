@@ -50,6 +50,8 @@ function NativeDialog({ children, exit, open, showModal, ...dialogProps }: Nativ
     }
     return () => {
       console.log('focusing on lastActiveElement (unmount)', lastActiveElement.current);
+      // Focusing on the last active element only works if we call close here
+      dialogRef.current?.close();
       lastActiveElement.current?.focus();
     };
   }, [open, showModal]);
