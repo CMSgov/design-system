@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import ReactDOMServer from 'react-dom/server';
 import Prism from 'prismjs';
 import { ArrowIcon } from '@cmsgov/design-system';
+import parserHtml from 'prettier/parser-html';
+import prettier from 'prettier';
 
 interface EmbeddedExampleProps {
   children: React.ReactElement;
@@ -19,7 +21,8 @@ interface EmbeddedExampleProps {
 const EmbeddedExample = ({ children }: EmbeddedExampleProps) => {
   const [open] = useState(false);
   const html = ReactDOMServer.renderToString(children);
-  const highlightedContent = Prism.highlight(html, Prism.languages.html);
+  const prettyHtml = prettier.format(html, { parser: 'html', plugins: [parserHtml] });
+  const highlightedContent = Prism.highlight(prettyHtml, Prism.languages.html);
 
   return (
     <section className="c-embedded-example">
