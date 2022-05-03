@@ -1,13 +1,29 @@
-import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
-// import dialogPolyfill from 'dialog-polyfill';
-// Move polyfill CSS to local styles?
-// import 'dialog-polyfill/dist/dialog-polyfill.css';
+import React, { useRef, useEffect, useLayoutEffect } from 'react';
+import dialogPolyfill from 'dialog-polyfill';
+
+interface NativeDialogProps {
+  children: React.ReactNode;
+  /**
+   * Function called to close dialog.
+   */
+  exit: any;
+  /**
+   * Determines which dialog method is called.
+   * If true, `showModal()` is called, if false,
+   * `show()` is called.
+   */
+  showModal?: boolean;
+  /**
+   * Controls visibility of dialog.
+   */
+  open: boolean;
+  // Spreading props
+  [x: string]: any;
+}
 
 declare const window: any;
 
-// interface NativeDialogProps {}
-
-function NativeDialog({ children, exit, focusTrap, open, ...props }) {
+function NativeDialog({ children, exit, open, showModal, ...dialogProps }: NativeDialogProps) {
   const dialogRef = useRef(null);
   const firstRender = useRef(true);
   const lastActiveElement = useRef(null);
@@ -25,13 +41,13 @@ function NativeDialog({ children, exit, focusTrap, open, ...props }) {
       const dialogNode = dialogRef.current;
       if (open) {
         lastActiveElement.current = document.activeElement;
-        focusTrap ? dialogNode.showModal() : dialogNode.show();
+        showModal ? dialogNode.showModal() : dialogNode.show();
       } else {
         dialogNode.close();
         lastActiveElement.current.focus();
       }
     }
-  }, [focusTrap, open]);
+  }, [open, showModal]);
 
   useEffect(() => {
     const dialogNode = dialogRef.current;
@@ -43,10 +59,10 @@ function NativeDialog({ children, exit, focusTrap, open, ...props }) {
     return () => {
       dialogNode.removeEventListener('cancel', handleCancel);
     };
-  }, [exit, open]);
+  }, [exit]);
 
   return (
-    <dialog ref={dialogRef} {...props}>
+    <dialog open ref={dialogRef} {...dialogProps}>
       {children}
     </dialog>
   );
