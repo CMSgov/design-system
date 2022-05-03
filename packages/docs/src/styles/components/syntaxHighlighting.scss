@@ -1,3 +1,20 @@
+pre,
+code {
+  background-color: $color-gray-lightest;
+  color: $color-black;
+}
+
+pre {
+  display: block;
+  padding: $spacer-2;
+}
+
+code {
+  display: inline-block;
+  font-size: 0.9em;
+  padding: $spacer-half;
+}
+
 /**
  * a11y-light theme for JavaScript, CSS, and HTML
  * Based on the okaidia theme: https://github.com/PrismJS/prism/blob/gh-pages/themes/prism-okaidia.css
