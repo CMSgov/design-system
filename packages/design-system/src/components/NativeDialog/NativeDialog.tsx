@@ -25,7 +25,6 @@ declare const window: any;
 
 function NativeDialog({ children, exit, open, showModal, ...dialogProps }: NativeDialogProps) {
   const dialogRef = useRef(null);
-  const firstRender = useRef(true);
   const lastActiveElement = useRef(null);
 
   // useLayoutEffect(() => {
@@ -35,18 +34,14 @@ function NativeDialog({ children, exit, open, showModal, ...dialogProps }: Nativ
   // })
 
   useEffect(() => {
-    if (firstRender.current) {
-      firstRender.current = false;
+    const dialogNode = dialogRef.current;
+    if (open) {
+      lastActiveElement.current = document.activeElement;
+      showModal ? dialogNode.showModal() : dialogNode.show();
     } else {
-      const dialogNode = dialogRef.current;
-      if (open) {
-        lastActiveElement.current = document.activeElement;
-        showModal ? dialogNode.showModal() : dialogNode.show();
-      } else {
-        dialogNode.close();
-        console.log('focusing on lastActiveElement (mount)', lastActiveElement.current);
-        lastActiveElement.current.focus();
-      }
+      dialogNode.close();
+      console.log('focusing on lastActiveElement (mount)', lastActiveElement.current);
+      lastActiveElement.current.focus();
     }
     return () => {
       console.log('focusing on lastActiveElement (unmount)', lastActiveElement.current);
