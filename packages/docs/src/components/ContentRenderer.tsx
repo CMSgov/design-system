@@ -6,6 +6,8 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 import { toKebabCase } from '../helpers/casingUtils';
 
+import EmbeddedExample from './EmbeddedExample';
+
 interface MdxProviderProps {
   children: string;
 }
@@ -72,6 +74,7 @@ const customComponents = {
   a: LinkWrapper,
   code: CodeWithSyntaxHighlighting,
   pre: PreformattedWithLanguageClass,
+  EmbeddedExample,
 };
 
 interface ContentRendererProps {
