@@ -12,38 +12,36 @@ export type MeasureValues =
   | `${number}vh`
   | `${number}vmin`
   | `${number}vmax`
+  | `${number}px`
   | `${number}%`;
 export type RGBValue = `rgb(${number},${number},${number})`;
 export type RGBAValue = `rgba(${number},${number},${number},${number})`;
-export type PxValue = `${number}px`;
-export type ExValue = `${string}ex`;
-export type PercentageValue = `${string}%`;
 
 interface Token<T> {
-  readonly [key: string | symbol]: T;
+  [key: string | symbol]: T;
 }
 
 export type AnimationTokens = Token<string | number>;
-export type BorderRadiusTokens = Token<PercentageValue | PxValue>;
+export type BorderRadiusTokens = Token<MeasureValues>;
 export type ColorTokens = Token<HexValue | RGBValue | RGBAValue | 'transparent' | 'inherit'>;
 export type FontTokens = Token<string | number>;
 export type MeasureTokens = Token<MeasureValues>;
-export type MediaWidthTokens = Token<PxValue>;
-export type SpacerTokens = Token<PxValue>;
+export type MediaWidthTokens = Token<MeasureValues>;
 export type ShadowTokens = Token<string>;
+export type SpacerTokens = Token<MeasureValues>;
 export type TimeTokens = Token<number>;
 export type zIndexTokens = Token<number>;
 
 export type AllTokenValues =
   | AnimationTokens
+  | BorderRadiusTokens
+  | ColorTokens
   | FontTokens
+  | MeasureTokens
   | MediaWidthTokens
   | ShadowTokens
-  | TimeTokens
   | SpacerTokens
-  | ColorTokens
-  | PxValue
-  | BorderRadiusTokens
+  | TimeTokens
   | zIndexTokens;
 
 export interface ThemeTokens {
@@ -52,7 +50,7 @@ export interface ThemeTokens {
   components: AllTokenValues;
   description: string;
   font: FontTokens;
-  globals?: Token<any>;
+  globals?: AllTokenValues;
   measure: MeasureTokens;
   media: MediaWidthTokens;
   radius: BorderRadiusTokens;
