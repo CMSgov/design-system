@@ -331,6 +331,11 @@ const components = {
   'steplist-step__color--current': themeColors.white,
   'steplist-step__color--completed': themeColors.base,
   'steplist-step__background-color--completed': themeColors.base,
+  // spinner
+  'spinner__background-color': themeColors.background,
+  spinner__color: themeColors.base,
+  'spinner__background-color--inverse': themeColors['background-inverse'],
+  'spinner__color--inverse': themeColors.white,
 };
 
 const shadow = {
