@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useLayoutEffect } from 'react';
-import dialogPolyfill from 'dialog-polyfill';
+import dialogPolyfill from './polyfill';
 
 interface NativeDialogProps {
   children: React.ReactNode;
@@ -27,11 +27,11 @@ function NativeDialog({ children, exit, open, showModal, ...dialogProps }: Nativ
   const dialogRef = useRef(null);
   const lastActiveElement = useRef(null);
 
-  // useLayoutEffect(() => {
-  //   if (window.HTMLDialogElement === undefined) {
-  //     dialogPolyfill.registerDialog(dialogRef.current);
-  //   }
-  // })
+  useLayoutEffect(() => {
+    if (window.HTMLDialogElement === undefined) {
+      dialogPolyfill.registerDialog(dialogRef.current);
+    }
+  });
 
   useEffect(() => {
     const dialogNode = dialogRef.current;
@@ -46,7 +46,7 @@ function NativeDialog({ children, exit, open, showModal, ...dialogProps }: Nativ
     return () => {
       console.log('focusing on lastActiveElement (unmount)', lastActiveElement.current);
       // Focusing on the last active element only works if we call close here
-      dialogRef.current?.close();
+      dialogNode?.close();
       lastActiveElement.current?.focus();
     };
   }, [open, showModal]);
