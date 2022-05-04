@@ -1,4 +1,6 @@
-import React, { RefObject } from 'react';
+import { EventCategory, sendLinkEvent, getAnalyticsContentFromRefs } from '../analytics';
+import React, { MutableRefObject, useRef } from 'react';
+import { buttonSendsAnalytics } from '../flags';
 import classNames from 'classnames';
 
 export type ButtonComponentType = React.ElementType<any> | React.ComponentType<any>;
@@ -9,9 +11,22 @@ export type ButtonSize = 'small' | 'big';
  */
 export type ButtonVariation = 'primary' | 'danger' | 'success' | 'transparent';
 
-export type ButtonRef = RefObject<any> | ((...args: any[]) => any);
+export type ButtonRef = MutableRefObject<any> | ((...args: any[]) => any);
 
 type CommonButtonProps = {
+  /**
+   * Analytics events tracking is enabled by default. Set this value to `false` to
+   * disable tracking for this component instance.
+   */
+  analytics?: boolean;
+  /**
+   * If needed for analytics, pass heading text of parent component of button.
+   */
+  analyticsParentHeading?: string;
+  /**
+   * If needed for analytics, pass type of parent component of button.
+   */
+  analyticsParentType?: string;
   /**
    * Label text or HTML
    */
@@ -77,6 +92,9 @@ type OtherProps = Omit<
 export type ButtonProps = CommonButtonProps & OtherProps;
 
 export const Button = ({
+  analytics,
+  analyticsParentHeading,
+  analyticsParentType,
   children,
   className,
   component,
@@ -109,20 +127,8 @@ export const Button = ({
     }
   }
 
-  function handleClick(e: React.MouseEvent | React.KeyboardEvent): void {
-    if (!disabled && onClick) {
-      onClick(e);
-    }
-  }
-
-  function handleKeyPress(e: React.KeyboardEvent): void {
-    // Trigger onClick on space key event for `<a>` elements
-    if (e.key === ' ') {
-      handleClick(e);
-    }
-  }
+  const contentRef = useRef();
   const ComponentType = component ?? (href ? 'a' : 'button');
-
   const variationClass = variation && `ds-c-button--${variation}`;
   const disabledClass = disabled && ComponentType !== 'button' && 'ds-c-button--disabled';
   const sizeClass = size && `ds-c-button--${size}`;
@@ -144,10 +150,6 @@ export const Button = ({
     ...otherProps,
   };
 
-  if (onClick) {
-    attrs.onClick = handleClick;
-  }
-
   if (ComponentType !== 'button') {
     // Assume `component` is not a custom component rendering a <button>
     // and remove <button> specific attributes
@@ -155,9 +157,61 @@ export const Button = ({
     delete attrs.type;
   }
 
+  function sendButtonEvent() {
+    if (!buttonSendsAnalytics() || analytics === false) {
+      return;
+    }
+
+    const buttonText = getAnalyticsContentFromRefs([contentRef]);
+    const buttonStyle = variation ?? 'default';
+    const buttonType = type ?? 'button';
+    const buttonParentHeading = analyticsParentHeading ?? ' ';
+    const buttonParentType = analyticsParentType ?? ' ';
+
+    return sendLinkEvent({
+      event_name: 'button_engagement',
+      event_type: EventCategory.UI_INTERACTION,
+      ga_eventCategory: EventCategory.UI_INTERACTION,
+      ga_eventAction: `engaged ${buttonStyle} button`,
+      ga_eventLabel: href ? `${buttonText}: ${href}` : buttonText,
+      text: buttonText,
+      button_style: buttonStyle,
+      button_type: href ? 'link' : buttonType,
+      parent_component_heading: buttonParentHeading,
+      parent_component_type: buttonParentType,
+      ...(href ? { link_url: href } : {}),
+    });
+  }
+
+  function handleClick(e: React.MouseEvent | React.KeyboardEvent): void {
+    if (!disabled) {
+      sendButtonEvent();
+      if (onClick) {
+        onClick(e);
+      }
+    }
+  }
+
+  function handleKeyPress(e: React.KeyboardEvent): void {
+    // Trigger onClick on space key event for `<a>` elements
+    if (e.key === ' ') {
+      handleClick(e);
+    }
+  }
+
   return (
     <ComponentType
-      ref={inputRef}
+      ref={(el) => {
+        contentRef.current = el;
+        if (inputRef) {
+          if (typeof inputRef === 'function') {
+            inputRef(el);
+          } else {
+            inputRef.current = el;
+          }
+        }
+      }}
+      onClick={handleClick}
       onKeyPress={ComponentType === 'a' ? handleKeyPress : undefined}
       {...attrs}
     >
