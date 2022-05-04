@@ -1,24 +1,21 @@
 import NativeDialog from './NativeDialog';
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
+import { render, screen } from '@testing-library/react';
 
-// Should testing be done here or within child components?
+const defaultProps = {
+  children: <p>Foo</p>,
+};
+
+function renderNativeDialog(props = {}) {
+  // eslint-disable-next-line react/no-children-prop
+  return render(<NativeDialog data-testid="test-dialog" {...defaultProps} {...props} />);
+}
 
 describe('NativeDialog', function () {
-  it('renders with correct classNames', () => {
-    // Does it accept dialog or drawer classes when prop set?
-  });
-  it('accepts additional classNames', () => {
-    // Can user add their own class?
-  });
-  it('provides appropriate open function', () => {
-    // Does it open correctly for modal and drawer?
-  });
-  it('provides correct focus-trap', () => {
-    // Does it trap focus if prop set?
-  });
-  it('provides close function', {
-    // Does it close when called?
+  it('renders with custom className', () => {
+    renderNativeDialog({
+      className: 'custom-class',
+    });
+    expect(screen.getByTestId('test-dialog')).toMatchSnapshot();
   });
 });

@@ -2,10 +2,9 @@
 
 exports[`Drawer renders a snapshot with focus trap 1`] = `
 <DocumentFragment>
-  <div
+  <dialog
     aria-labelledby="drawer_6"
     class="ds-c-drawer"
-    role="dialog"
   >
     <div
       class="ds-c-drawer__window"
@@ -54,16 +53,15 @@ exports[`Drawer renders a snapshot with focus trap 1`] = `
         </div>
       </div>
     </div>
-  </div>
+  </dialog>
 </DocumentFragment>
 `;
 
 exports[`Drawer renders a snapshot without focus trap 1`] = `
 <DocumentFragment>
-  <div
+  <dialog
     aria-labelledby="drawer_5"
     class="ds-c-drawer"
-    role="dialog"
   >
     <div
       class="ds-c-drawer__window"
@@ -112,6 +110,6 @@ exports[`Drawer renders a snapshot without focus trap 1`] = `
         </div>
       </div>
     </div>
-  </div>
+  </dialog>
 </DocumentFragment>
 `;

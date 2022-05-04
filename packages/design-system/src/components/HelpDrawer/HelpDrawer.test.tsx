@@ -27,7 +27,7 @@ describe('HelpDrawer', () => {
   it('calls props.onCloseClick on close button click', () => {
     const onCloseClick = jest.fn();
     renderHelpDrawer({ onCloseClick });
-    fireEvent.click(screen.getByRole('button'));
+    fireEvent.click(screen.getByText('Close'));
     expect(onCloseClick).toHaveBeenCalled();
   });
 
