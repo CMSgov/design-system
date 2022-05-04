@@ -13,41 +13,27 @@ interface NativeDialogProps {
    * `show()` is called.
    */
   showModal?: boolean;
-  /**
-   * Controls visibility of dialog.
-   */
-  open: boolean;
   // Spreading props
   [x: string]: any;
 }
 
-declare const window: any;
-
-function NativeDialog({ children, exit, open, showModal, ...dialogProps }: NativeDialogProps) {
+const NativeDialog = ({ children, exit, showModal, ...dialogProps }: NativeDialogProps) => {
   const dialogRef = useRef(null);
-  const firstRender = useRef(true);
-  const lastActiveElement = useRef(null);
 
   // useLayoutEffect(() => {
-  //   if (window.HTMLDialogElement === undefined) {
+  //   if ((window as any).HTMLDialogElement === undefined) {
   //     dialogPolyfill.registerDialog(dialogRef.current);
   //   }
   // })
 
   useEffect(() => {
-    if (firstRender.current) {
-      firstRender.current = false;
-    } else {
-      const dialogNode = dialogRef.current;
-      if (open) {
-        lastActiveElement.current = document.activeElement;
-        showModal ? dialogNode.showModal() : dialogNode.show();
-      } else {
-        dialogNode.close();
-        lastActiveElement.current.focus();
-      }
-    }
-  }, [open, showModal]);
+    const dialogNode = dialogRef.current;
+    showModal ? dialogNode.showModal() : dialogNode.show();
+
+    return () => {
+      dialogNode.close();
+    };
+  }, [showModal]);
 
   useEffect(() => {
     const dialogNode = dialogRef.current;
@@ -62,10 +48,10 @@ function NativeDialog({ children, exit, open, showModal, ...dialogProps }: Nativ
   }, [exit]);
 
   return (
-    <dialog open ref={dialogRef} {...dialogProps}>
+    <dialog ref={dialogRef} {...dialogProps}>
       {children}
     </dialog>
   );
-}
+};
 
 export default NativeDialog;
