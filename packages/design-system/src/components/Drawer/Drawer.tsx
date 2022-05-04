@@ -1,6 +1,6 @@
 import Button from '../Button/Button';
 import NativeDialog from '../NativeDialog/NativeDialog';
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
 import { t } from '../i18n';
@@ -46,38 +46,24 @@ export interface DrawerProps {
    */
   isFooterSticky?: boolean;
   onCloseClick: (event: React.MouseEvent | React.KeyboardEvent) => void;
-  onEnter?: boolean;
 }
 
 export const Drawer = (props: DrawerProps) => {
   const headingRef = useRef(null);
   const id = useRef(props.headingId || uniqueId('drawer_'));
 
-  function handleEscapeKey(evt) {
-    switch (evt.code) {
-      case 'Escape':
-        props.onCloseClick(evt);
-        break;
-      default:
-        break;
-    }
-  }
-
-  useEffect(() => {
-    if (props.hasFocusTrap) document.addEventListener('keydown', handleEscapeKey);
-    if (headingRef) headingRef.current.focus();
-
-    return () => document.removeEventListener('keydown', handleEscapeKey);
-  }, []);
-
   const Heading = `h${props.headingLevel}` as const;
+
+  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    setOpen(true);
+  }, []);
 
   return (
     <NativeDialog
       aria-labelledby={id.current}
       className={classNames(props.className, 'ds-c-drawer')}
-      // open={props.onEnter}
-      open
+      open={open}
       exit={props.onCloseClick}
       showModal={props.hasFocusTrap}
     >
