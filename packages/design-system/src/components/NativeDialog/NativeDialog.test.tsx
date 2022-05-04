@@ -3,7 +3,9 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 
 const defaultProps = {
-  children: <p>Foo</p>,
+  children: 'Foo',
+  showModal: false,
+  exit: jest.fn(),
 };
 
 function renderNativeDialog(props = {}) {

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
 const DrawerDefaultExample = () => {
-  const [showDrawer, setShowDrawer] = useState(false);
+  const [showDrawer, setShowDrawer] = useState(true);
 
   function toggle() {
     setShowDrawer(!showDrawer);
@@ -31,7 +31,6 @@ const DrawerDefaultExample = () => {
           footerTitle="Footer Title"
           footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
           heading="Drawer Heading"
-          // onEnter={showDrawer}
           onCloseClick={() => setShowDrawer(false)}
           hasFocusTrap={true}
         >

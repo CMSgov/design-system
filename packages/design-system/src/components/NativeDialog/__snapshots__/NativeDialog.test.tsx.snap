@@ -5,8 +5,15 @@ exports[`NativeDialog renders with custom className 1`] = `
   class="custom-class"
   data-testid="test-dialog"
 >
-  <p>
+  <div>
     Foo
-  </p>
+     
+    <button
+      class="ds-c-button"
+      type="button"
+    >
+      Close
+    </button>
+  </div>
 </dialog>
 `;
