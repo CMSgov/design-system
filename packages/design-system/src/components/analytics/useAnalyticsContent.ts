@@ -1,4 +1,5 @@
 import { RefObject, useRef, useEffect } from 'react';
+import getAnalyticsContentFromRefs from './getAnalyticsContentFromRefs';
 
 export interface UseAnalyticsContentProps {
   /**
@@ -56,9 +57,8 @@ export function useAnalyticsContent({
   // have dependencies that should be listed but are unknown. This assumes that the onMount and
   // onUnmount do not have a reason to change between renders.
   useEffect(() => {
-    const content = refs.map((ref) => ref.current?.textContent).find((textContent) => textContent);
+    const content = getAnalyticsContentFromRefs(refs, componentName);
     if (!content) {
-      console.error(`No content found for ${componentName ?? ''} analytics event`);
       return;
     }
 
