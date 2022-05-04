@@ -107,11 +107,3 @@
   background-color: $alert__background-color--success;
   border-color: $alert__border-color--success;
 }
-
-.ds-c-alert--heading__hcm {
-  display: flex;
-
-  .ds-c-alert__heading {
-    margin-left: 0.5rem;
-  }
-}
