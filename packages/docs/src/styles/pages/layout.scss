@@ -37,5 +37,5 @@ blockquote {
 ul:not([class]) li,
 .ds-c-list li {
   line-height: 1.5;
-  margin-bottom: 8px;
+  margin-bottom: $spacer-1;
 }

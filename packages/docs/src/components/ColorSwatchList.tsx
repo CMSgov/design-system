@@ -5,18 +5,23 @@ interface ColorSwatchListProps {
 }
 
 // converts an rgb string 'rgb(15,24,128)' to a hex value '#0819A9'
+// pulled from tokens conversion
 export const rgbToHex = (r: number, g: number, b: number) => {
   const hex = ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
   return `#${hex}`;
 };
 
+/**
+ * displays a list of color swatches with a sample of the color, the SCSS variable name & the hex value
+ * @param colorNames {String[]} a list of color names - should be same as SCSS token
+ */
 const ColorSwatchList = ({ colorNames }: ColorSwatchListProps) => {
   const refList = useRef([]);
   const initialColors = colorNames.map((color) => ({ name: color, hex: '' }));
   const [colorList, setColorList] = useState(initialColors);
 
   useLayoutEffect(() => {
-    // after swatch has been rendered once, pull rgb color from element styles
+    // after swatch has been rendered once, pull rgb color from element styles & convert to hex
     const updatedColorList = colorList.map((colorItem, index) => {
       const styles = getComputedStyle(refList.current[index]);
       const rgbColor = styles?.backgroundColor;
