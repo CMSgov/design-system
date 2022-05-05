@@ -5,6 +5,7 @@ import React, { useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import { dialogSendsAnalytics } from '../flags';
 import { CloseIcon } from '../Icons';
+import { t } from '../i18n';
 
 export type DialogCloseButtonSize = 'small' | 'big';
 export type DialogSize = 'narrow' | 'wide' | 'full';
@@ -383,7 +384,7 @@ export const Dialog = (props: DialogProps) => {
             )
           }
           <Button
-            aria-label={ariaCloseLabel}
+            aria-label={ariaCloseLabel ?? t('dialog.ariaCloseLabel')}
             className="ds-c-dialog__close"
             onClick={onExit}
             size={closeButtonSize}
@@ -392,7 +393,7 @@ export const Dialog = (props: DialogProps) => {
             {closeIcon}
             {
               // TODO: remove closeText support once fully deprecated
-              closeText || closeButtonText
+              closeText ?? closeButtonText ?? t('dialog.closeButtonText')
             }
           </Button>
         </header>
@@ -407,8 +408,6 @@ export const Dialog = (props: DialogProps) => {
 };
 
 Dialog.defaultProps = {
-  ariaCloseLabel: 'Close modal dialog',
-  closeButtonText: 'Close',
   closeButtonVariation: 'transparent',
   closeIcon: <CloseIcon />,
   escapeExits: true,

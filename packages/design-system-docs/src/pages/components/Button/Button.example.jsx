@@ -1,5 +1,5 @@
 /* eslint no-alert: 0 */
-import { Button } from '@design-system';
+import { Button, CloseIcon } from '@design-system';
 import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -18,6 +18,8 @@ ReactDOM.render(
   <>
     <Button className="ds-u-margin-right--1">Button</Button>
     <Button className="ds-u-margin-right--1" variation="primary">
+      {/* TESTING ICON + TEXT AS CHILDREN */}
+      <CloseIcon />
       Button with `variation` prop
     </Button>
     <Button className="ds-u-margin-right--1" disabled>

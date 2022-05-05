@@ -66,3 +66,11 @@ SpinnerButton.args = {
   ),
   variation: 'primary',
 };
+
+export const LinkButton = Template.bind({});
+LinkButton.args = {
+  href: 'javascript:void(0);',
+};
+LinkButton.parameters = {
+  loki: { skip: true },
+};

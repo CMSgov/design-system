@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
 import { AddIcon, RemoveIcon } from '../Icons';
+import { t } from '../i18n';
 
 export interface AccordionItemProps {
   /**
@@ -82,7 +83,7 @@ export class AccordionItem extends React.Component<AccordionItemProps, Accordion
     } = this.props;
     const contentClasses = classNames('ds-c-accordion__content', contentClassName);
     const buttonClasses = classNames('ds-c-accordion__button', buttonClassName);
-    const HeadingTag = `h${headingLevel}` as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+    const HeadingTag = `h${headingLevel}` as const;
     const isItemOpen = this.isControlled ? isControlledOpen : this.state.isOpen;
 
     if (heading) {
@@ -101,11 +102,15 @@ export class AccordionItem extends React.Component<AccordionItemProps, Accordion
               {isItemOpen ? (
                 <RemoveIcon
                   className="ds-c-accordion__button-icon"
-                  title="Close"
+                  title={t('accordion.close')}
                   ariaHidden={false}
                 />
               ) : (
-                <AddIcon className="ds-c-accordion__button-icon" title="Open" ariaHidden={false} />
+                <AddIcon
+                  className="ds-c-accordion__button-icon"
+                  title={t('accordion.open')}
+                  ariaHidden={false}
+                />
               )}
             </button>
           </HeadingTag>
