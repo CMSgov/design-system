@@ -2,6 +2,7 @@ import './storybookStyles.scss';
 import React from 'react';
 import {
   setAlertSendsAnalytics,
+  setButtonSendsAnalytics,
   setDialogSendsAnalytics,
   setHelpDrawerSendsAnalytics,
 } from '../packages/design-system/src/components/flags';
@@ -77,6 +78,7 @@ const analyticsSettingsDecorator = (Story, context) => {
   const on = analytics === 'on';
 
   setAlertSendsAnalytics(on);
+  setButtonSendsAnalytics(on);
   setDialogSendsAnalytics(on);
   setHelpDrawerSendsAnalytics(on);
   setHeaderSendsAnalytics(on);
