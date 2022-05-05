@@ -41,3 +41,15 @@ $h3-font-size: $font-size-xl;
 $h4-font-size: $font-size-lg;
 $h5-font-size: $base-font-size;
 $h6-font-size: $font-size-sm;
+
+$link-color: $link__color;
+$link-visited-color: $link__color--visited;
+$link-hover-color: $link__color--hover;
+$link-active-color: $link__color--active;
+$link-inverse-color: $link-inverse__color;
+$link-inverse-visited-color: $link-inverse__color--visited;
+$link-inverse-hover-color: $link-inverse__color--hover;
+$link-inverse-active-color: $link-inverse__color--active;
+$link-underline-height: $link__text-decoration--thickness;
+$link-underline-height-hover: $link__text-decoration--thickness--hover;
+$link-underline-offset: $link__text-decoration--offset;

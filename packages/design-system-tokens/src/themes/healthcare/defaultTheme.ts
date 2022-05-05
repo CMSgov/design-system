@@ -240,6 +240,18 @@ const components = {
   // dropdown
   'dropdown__background-color': themeColors.white,
   'dropdown__icon-size': '10px',
+  // link
+  link__color: themeColors.primary,
+  'link__color--visited': themeColors.visited,
+  'link__color--hover': themeColors['primary-darker'],
+  'link__color--active': themeColors['primary-darkest'],
+  'link-inverse__color': themeColors['base-inverse'],
+  'link-inverse__color--visited': themeColors['muted-inverse'],
+  'link-inverse__color--hover': themeColors['muted-inverse'],
+  'link-inverse__color--status': themeColors['muted-inverse'],
+  'link__text-decoration--thickness': '1px',
+  'link__text-decoration--thickness--hover': '1px',
+  'link__text-decoration--offset': 'auto',
   // filter chip
   'filter-chip__border-radius': radius.pill,
   'filter-chip__background-color': themeColors['primary-alt-lightest'],

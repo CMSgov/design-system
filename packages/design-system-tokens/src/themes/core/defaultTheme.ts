@@ -242,6 +242,18 @@ export const components = {
   'filter-chip__color--active': themeColors.white,
   'filter-chip-icon__color': themeColors.base,
   'filter-chip-icon__color-active': themeColors.white,
+  // link
+  link__color: themeColors.primary,
+  'link__color--visited': themeColors.visited,
+  'link__color--hover': themeColors['primary-darker'],
+  'link__color--active': themeColors['primary-darkest'],
+  'link-inverse__color': themeColors['base-inverse'],
+  'link-inverse__color--visited': themeColors['muted-inverse'],
+  'link-inverse__color--hover': themeColors['muted-inverse'],
+  'link-inverse__color--active': themeColors['muted-inverse'],
+  'link__text-decoration--thickness': '1px',
+  'link__text-decoration--thickness--hover': '1px',
+  'link__text-decoration--offset': 'auto',
   // pagination
   'pagination-link__color': themeColors.primary,
   'pagination-link__color--hover': themeColors['primary-darker'],
