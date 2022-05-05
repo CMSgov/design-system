@@ -54,16 +54,10 @@ export const Drawer = (props: DrawerProps) => {
 
   const Heading = `h${props.headingLevel}` as const;
 
-  const [open, setOpen] = useState(false);
-  useEffect(() => {
-    setOpen(true);
-  }, []);
-
   return (
     <NativeDialog
       aria-labelledby={id.current}
       className={classNames(props.className, 'ds-c-drawer')}
-      open={open}
       exit={props.onCloseClick}
       showModal={props.hasFocusTrap}
     >

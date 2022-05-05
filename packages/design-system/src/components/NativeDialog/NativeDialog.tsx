@@ -13,7 +13,9 @@ interface NativeDialogProps {
    * `show()` is called.
    */
   showModal?: boolean;
-  // Spreading props
+  /*
+   * @hide-prop Spreading props
+   */
   [x: string]: any;
 }
 
