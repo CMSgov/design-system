@@ -48,7 +48,7 @@ const ColorSwatchList = ({ colorNames }: ColorSwatchListProps) => {
       {colorList.map(({ name, hex }, index) => (
         <article className="ds-u-margin-bottom--1 c-swatch" key={`${name}-${index}`}>
           <div
-            className={`c-swatch__preview ds-u-radius--circle ds-u-fill--${name}`}
+            className={`c-swatch__preview ds-u-margin-right--1 ds-u-radius--circle ds-u-fill--${name}`}
             ref={(el) => (refList.current[index] = el)}
           ></div>
           <code>$color-{name}</code>
