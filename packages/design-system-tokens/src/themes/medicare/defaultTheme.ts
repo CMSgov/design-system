@@ -310,6 +310,18 @@ const components = {
   'filter-chip__color--active': themeColors.white,
   'filter-chip-icon__color': themeColors.base,
   'filter-chip-icon__color-active': themeColors.white,
+  // link
+  link__color: themeColors['primary-alt'],
+  'link__color--visited': themeColors.visited,
+  'link__color--hover': themeColors['primary-alt-dark'],
+  'link__color--active': themeColors['primary-alt-dark'],
+  'link-inverse__color': themeColors['base-inverse'],
+  'link-inverse__color--visited': themeColors['gray-lighter'],
+  'link-inverse__color--hover': themeColors['gray-lighter'],
+  'link-inverse__color--status': themeColors['gray-lighter'],
+  'link__text-decoration--thickness': '1px',
+  'link__text-decoration--thickness--hover': '2px',
+  'link__text-decoration--offset': '3px',
   // pagination
   'pagination-link__color': themeColors.primary,
   'pagination-link__color--hover': themeColors['primary-darker'],
