@@ -45,13 +45,13 @@
 }
 
 .ds-c-field__error-message {
-  color: $form-field__color--error;
+  color: $form-error__color;
   display: block;
   font-weight: $font-weight-normal;
 }
 
 .ds-c-field__error-message--inverse {
-  color: $form-field__color--error--inverse;
+  color: $form-error__color--inverse;
 }
 
 .ds-c-choice + label .ds-c-field__hint {
