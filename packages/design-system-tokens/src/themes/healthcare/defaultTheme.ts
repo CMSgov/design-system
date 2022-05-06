@@ -262,6 +262,13 @@ const components = {
   'filter-chip__color--active': themeColors.white,
   'filter-chip-icon__color': themeColors.base,
   'filter-chip-icon__color-active': themeColors.white,
+  // forms
+  'form-label__max-width': '460px',
+  'form-label__color--inverse': themeColors['base-inverse'],
+  'form-hint__color': themeColors.muted,
+  'form-hint__color--inverse': themeColors['muted-inverse'],
+  'form-field__color--error': themeColors.error,
+  'form-field__color--error--inverse': themeColors['error-light'],
   // pagination
   'pagination-link__color': themeColors.primary,
   'pagination-link__color--hover': themeColors['primary-darker'],
