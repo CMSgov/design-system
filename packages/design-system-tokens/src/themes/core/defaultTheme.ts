@@ -287,6 +287,14 @@ export const components = {
   spinner__color: themeColors.base,
   'spinner__background-color--inverse': themeColors['background-inverse'],
   'spinner__color--inverse': themeColors.white,
+  // vertical navigation
+  'vertical-nav-item__background-color--hover': themeColors['gray-lightest'],
+  'vertical-nav-item__color--hover': themeColors.primary,
+  'vertical-nav-item__border-color': themeColors.gray,
+  'vertical-nav-label__color': themeColors.base,
+  'vertical-nav-label-icon__color': themeColors.base,
+  'vertical-nav-label__border-color--current': themeColors.primary,
+  'vertical-nav-label__color--current': themeColors.primary,
 };
 
 export const globals = {
