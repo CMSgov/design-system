@@ -2,6 +2,7 @@
 title: Typography
 ---
 import {Alert} from '@cmsgov/design-system';
+import ResponsiveExample from '../../src/components/ResponsiveExample';
 import loremIpsumGenerator from '../../src/helpers/loremIpsumGenerator';
 
 <Alert heading="Typography sizing updates!" >
@@ -186,8 +187,7 @@ To apply responsive typography elsewhere, use the [font size utility class](/uti
 Since the base typography margins and line height is measured in `em` units,
 they'll automatically adjust as you change the font size.
 
-Markup: responsive-typography.example.html
-
+<ResponsiveExample storyId='typography-responsive--headings' title="Responsive typography example" />
 
 ## Customization
 
