@@ -120,7 +120,7 @@ yargs
         await buildSrc(config.sourceDir, { ...config, ...argv });
       }
       await buildDocs(config.sourceDir, config.docsDir, { ...config, ...argv });
-      // await watchDocs(config.sourceDir, config.docsDir, { ...config, ...argv });
+      await watchDocs(config.sourceDir, config.docsDir, { ...config, ...argv });
     },
   })
   .command({
