@@ -23,7 +23,7 @@ const NativeDialog = ({ children, exit, showModal, ...dialogProps }: NativeDialo
   const dialogRef = useRef(null);
 
   useLayoutEffect(() => {
-    if (window.HTMLDialogElement === undefined) {
+    if ((window as any).HTMLDialogElement === undefined) {
       dialogPolyfill.registerDialog(dialogRef.current);
     }
   });
