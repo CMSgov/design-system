@@ -27,7 +27,6 @@
     "@types/react-dom": "^17.0.10",
     "classnames": "^2.2.5",
     "core-js": "^3.6.5",
-    "dialog-polyfill": "^0.5.6",
     "downshift": "^3.2.10",
     "ev-emitter": "^2.1.2",
     "focus-trap-react": "^6.0.0",

@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useLayoutEffect } from 'react';
-import dialogPolyfill from 'dialog-polyfill';
+import dialogPolyfill from './polyfill';
 
 interface NativeDialogProps {
   children: React.ReactNode;
@@ -22,11 +22,11 @@ interface NativeDialogProps {
 const NativeDialog = ({ children, exit, showModal, ...dialogProps }: NativeDialogProps) => {
   const dialogRef = useRef(null);
 
-  // useLayoutEffect(() => {
-  //   if ((window as any).HTMLDialogElement === undefined) {
-  //     dialogPolyfill.registerDialog(dialogRef.current);
-  //   }
-  // })
+  useLayoutEffect(() => {
+    if (window.HTMLDialogElement === undefined) {
+      dialogPolyfill.registerDialog(dialogRef.current);
+    }
+  });
 
   useEffect(() => {
     const dialogNode = dialogRef.current;
