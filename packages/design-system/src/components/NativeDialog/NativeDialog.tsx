@@ -13,19 +13,14 @@ interface NativeDialogProps {
    * `show()` is called.
    */
   showModal?: boolean;
-  /**
-   * Controls visibility of dialog.
+  /*
+   * @hide-prop Spreading props
    */
-  open: boolean;
-  // Spreading props
   [x: string]: any;
 }
 
-declare const window: any;
-
-function NativeDialog({ children, exit, open, showModal, ...dialogProps }: NativeDialogProps) {
+const NativeDialog = ({ children, exit, showModal, ...dialogProps }: NativeDialogProps) => {
   const dialogRef = useRef(null);
-  const lastActiveElement = useRef(null);
 
   useLayoutEffect(() => {
     if (window.HTMLDialogElement === undefined) {
@@ -35,21 +30,12 @@ function NativeDialog({ children, exit, open, showModal, ...dialogProps }: Nativ
 
   useEffect(() => {
     const dialogNode = dialogRef.current;
-    if (open) {
-      lastActiveElement.current = document.activeElement;
-      showModal ? dialogNode.showModal() : dialogNode.show();
-    } else {
-      dialogNode.close();
-      console.log('focusing on lastActiveElement (mount)', lastActiveElement.current);
-      lastActiveElement.current.focus();
-    }
+    showModal ? dialogNode.showModal() : dialogNode.show();
+
     return () => {
-      console.log('focusing on lastActiveElement (unmount)', lastActiveElement.current);
-      // Focusing on the last active element only works if we call close here
-      dialogNode?.close();
-      lastActiveElement.current?.focus();
+      dialogNode.close();
     };
-  }, [open, showModal]);
+  }, [showModal]);
 
   useEffect(() => {
     const dialogNode = dialogRef.current;
@@ -68,6 +54,6 @@ function NativeDialog({ children, exit, open, showModal, ...dialogProps }: Nativ
       {children}
     </dialog>
   );
-}
+};
 
 export default NativeDialog;

@@ -3,7 +3,6 @@ import { Title, Subtitle, Description, ArgsTable, PRIMARY_STORY } from '@storybo
 import { useArgs } from '@storybook/client-api';
 
 import Drawer from './Drawer';
-import DrawerToggle from './DrawerToggle';
 import { Button } from '../Button';
 
 export default {
@@ -22,7 +21,6 @@ export default {
     footerBody: <p className="ds-text ds-u-margin--0">Footer content</p>,
     heading: 'Drawer Heading',
   },
-  subcomponents: { DrawerToggle },
   // The Drawer was overlapping the docs page, so customizing the docs page to remove the examples
   parameters: {
     docs: {
