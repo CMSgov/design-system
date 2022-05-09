@@ -6,6 +6,8 @@ import Footer from './DocSiteFooter';
 import Sidebar from './DocSiteSidebar';
 import { SkipNav } from '@cmsgov/design-system';
 
+import '../styles/index.scss';
+
 interface LayoutProps {
   /**
    * The elements to appear in the main page content, below the page heading

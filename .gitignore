@@ -49,3 +49,4 @@ packages/coverage/
 # Doc Site ignores
 .cache/
 packages/docs/public
+packages/docs/static/storybook

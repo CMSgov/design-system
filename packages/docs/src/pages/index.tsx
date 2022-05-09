@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
 
-import '../styles/index.scss';
-
 import Layout from '../components/Layout';
 import { MdxQuery } from '../helpers/graphQLTypes';
 import ContentRenderer from '../components/ContentRenderer';
