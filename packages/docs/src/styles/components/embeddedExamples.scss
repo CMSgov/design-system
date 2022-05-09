@@ -21,6 +21,7 @@
   }
 }
 
+// Examples for styles > spacing
 .example-spacer-half {
   height: $spacer-half;
 }
@@ -44,4 +45,15 @@
 }
 .example-spacer-7 {
   height: $spacer-7;
+}
+
+// layout grid examples
+.example-grid {
+  & .ds-l-row > [class*='ds-l-'],
+  & .ds-l-form-row > [class*='ds-l-'] {
+    background-color: $color-primary-alt-lightest;
+    outline: 2px dashed $color-primary-alt;
+    padding-top: $spacer-2;
+    padding-bottom: $spacer-2;
+  }
 }
