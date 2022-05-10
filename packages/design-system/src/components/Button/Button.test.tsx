@@ -156,6 +156,12 @@ describe('Button', () => {
       expect(tealiumMock).not.toBeCalled();
     });
 
+    it('overrides analytics event tracking on open', () => {
+      renderButton({ analyticsLabelOverride: 'alternate content' });
+      fireEvent.click(screen.getByRole('button'));
+      expect(tealiumMock.mock.calls[0]).toMatchSnapshot();
+    });
+
     it('passes along parent heading and type', () => {
       const analyticsParentHeading = 'Hello World';
       const analyticsParentType = 'div';
