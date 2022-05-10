@@ -20,7 +20,6 @@ export default {
   },
   args: {
     alert: false,
-    analytics: false,
     escapeExits: true,
     underlayClickExits: true,
     children: (

@@ -103,7 +103,21 @@ describe('VerticalNavItemLabel', () => {
       expect(wrapper.prop('aria-expanded')).toBe(false);
     });
 
-    it('has collapsed state title', () => {
+    it('has default collapsed state title', () => {
+      props.collapsed = true;
+      const data = shallowRender(props);
+
+      expect(data.wrapper.prop('title')).toMatchSnapshot();
+    });
+
+    it('has default expanded state title', () => {
+      props.collapsed = false;
+      const data = shallowRender(props);
+
+      expect(data.wrapper.prop('title')).toMatchSnapshot();
+    });
+
+    it('uses provided collapsed state title', () => {
       props.collapsed = true;
       props.ariaCollapsedStateButtonLabel = 'Expand me';
       const data = shallowRender(props);
@@ -111,7 +125,7 @@ describe('VerticalNavItemLabel', () => {
       expect(data.wrapper.prop('title')).toBe(data.props.ariaCollapsedStateButtonLabel);
     });
 
-    it('has expanded state title', () => {
+    it('uses provided expanded state title', () => {
       props.collapsed = false;
       props.ariaExpandedStateButtonLabel = 'Collapse me';
       const data = shallowRender(props);
