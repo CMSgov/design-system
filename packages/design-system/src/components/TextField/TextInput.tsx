@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import Mask from './Mask';
+import LabelMask from './LabelMask/LabelMask';
 import classNames from 'classnames';
 
 export type TextInputDefaultValue = string | number;
@@ -53,6 +54,7 @@ export type CommonTextInputProps<MultilineValue extends boolean | undefined> = O
    * field's appearance and functionality may be affected.
    */
   mask?: TextInputMask;
+  labelMask?: 'phone' | 'ssn' | 'date' | 'day_month';
   /**
    * Whether or not the text field is a multiline text field
    */
@@ -111,15 +113,16 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
     errorPlacement,
     fieldClassName,
     inversed,
+    labelMask,
     mask,
     multiline,
     numeric,
-    rows,
-    size,
-    setRef,
-    type,
-    pattern,
     onCopyCapture,
+    pattern,
+    rows,
+    setRef,
+    size,
+    type,
     ...inputProps
   } = props;
 
@@ -130,6 +133,7 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
       'ds-c-field--inverse': inversed,
     },
     mask && `ds-c-field--${mask}`,
+    labelMask && `ds-c-field--${labelMask}`,
     size && `ds-c-field--${size}`,
     fieldClassName
   );
@@ -171,7 +175,13 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
     />
   );
 
-  return mask ? <Mask mask={mask}>{field}</Mask> : field;
+  if (mask) {
+    return <Mask mask={mask}>{field}</Mask>;
+  } else if (labelMask) {
+    return <LabelMask labelMask={labelMask}>{field}</LabelMask>;
+  } else {
+    return field;
+  }
 };
 
 export default TextInput;

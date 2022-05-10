@@ -63,6 +63,12 @@ MaskedField.args = {
   label: 'Currency Field',
   inputMode: 'numeric',
 };
+export const LabelMaskedField = Template.bind({});
+LabelMaskedField.args = {
+  labelMask: 'phone',
+  label: 'Phone number',
+  inputMode: 'numeric',
+};
 export const ErrorField = Template.bind({});
 ErrorField.args = {
   errorMessage: 'Example error message',
