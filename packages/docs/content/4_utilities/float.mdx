@@ -1,6 +1,7 @@
 ---
 title: Float
 ---
+
 import ResponsiveExample from '../../src/components/ResponsiveExample';
 
 Set an element's `float` property using the float utility.
@@ -12,23 +13,23 @@ You can use the clearfix utility class to automatically clear your floats.
 **Responsive format**: `.ds-u-[breakpoint]-float--[left|right|none]`
 
 <EmbeddedExample>
-    <section class="example--wrapper">
-        <div class="ds-u-clearfix ds-u-padding--1 ds-u-border--1 ds-u-margin-bottom--2">
-            <p class="ds-u-float--left utility-example ds-u-padding--1">
-            <code>.ds-u-float--left</code>
-            </p>
-        </div>
-        <div class="ds-u-clearfix ds-u-padding--1 ds-u-border--1 ds-u-margin-bottom--2">
-            <p class="ds-u-float--right utility-example ds-u-padding--1">
-            <code>.ds-u-float--right</code>
-            </p>
-        </div>
-        <div class="ds-u-clearfix ds-u-padding--1 ds-u-border--1 ds-u-margin-bottom--2">
-            <p class="ds-u-float--none utility-example ds-u-padding--1">
-            <code>.ds-u-float--none</code>
-            </p>
-        </div>
-    </section>
+  <section class="example--wrapper">
+    <div class="ds-u-clearfix ds-u-padding--1 ds-u-border--1 ds-u-margin-bottom--2">
+      <p class="ds-u-float--left utility-example ds-u-padding--1">
+        <code>.ds-u-float--left</code>
+      </p>
+    </div>
+    <div class="ds-u-clearfix ds-u-padding--1 ds-u-border--1 ds-u-margin-bottom--2">
+      <p class="ds-u-float--right utility-example ds-u-padding--1">
+        <code>.ds-u-float--right</code>
+      </p>
+    </div>
+    <div class="ds-u-clearfix ds-u-padding--1 ds-u-border--1 ds-u-margin-bottom--2">
+      <p class="ds-u-float--none utility-example ds-u-padding--1">
+        <code>.ds-u-float--none</code>
+      </p>
+    </div>
+  </section>
 </EmbeddedExample>
 
 ## Clearfix
@@ -38,30 +39,30 @@ The clearfix utility can be applied to an element to clear floats around the ele
 **Format**: `.ds-u-clearfix`
 
 <EmbeddedExample>
-    <section style="height: 175px">
-        <div class="ds-u-clearfix utility-example ds-u-padding--1">
-            <code>.ds-u-clearfix</code>
-            <div
-                class="ds-u-float--right ds-u-fill--white ds-u-padding--1 ds-u-border--1"
-                style="height: 50px"
-            >
-                Floated right
-            </div>
-        </div>
-        <div class="utility-example ds-u-padding--1">
-            <span>No clearfix</span>
-            <div
-                class="ds-u-float--right ds-u-fill--white ds-u-padding--1 ds-u-border--1"
-                style="height: 50px"
-            >
-                Floated right
-            </div>
-        </div>
-    </section>
+  <section style="height: 175px">
+    <div class="ds-u-clearfix utility-example ds-u-padding--1">
+      <code>.ds-u-clearfix</code>
+      <div
+        class="ds-u-float--right ds-u-fill--white ds-u-padding--1 ds-u-border--1"
+        style="height: 50px"
+      >
+        Floated right
+      </div>
+    </div>
+    <div class="utility-example ds-u-padding--1">
+      <span>No clearfix</span>
+      <div
+        class="ds-u-float--right ds-u-fill--white ds-u-padding--1 ds-u-border--1"
+        style="height: 50px"
+      >
+        Floated right
+      </div>
+    </div>
+  </section>
 </EmbeddedExample>
 
 ## Responsive float
 
 Use a [breakpoint prefix](/guidelines/responsive-design) to change how an element is floated at specific breakpoints.
 
-<ResponsiveExample storyId='utilities-float--float' title="Responsive float example" />
+<ResponsiveExample storyId="utilities-float--float" title="Responsive float example" />

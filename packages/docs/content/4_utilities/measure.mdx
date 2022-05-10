@@ -1,6 +1,7 @@
 ---
 title: Measure
 ---
+
 import loremIpsumGenerator from '../../src/helpers/loremIpsumGenerator';
 
 Line length, also called "measure", is an important part of readability. CMSDS has 3 measure options to control reading length.
@@ -8,26 +9,26 @@ Line length, also called "measure", is an important part of readability. CMSDS h
 **Format:** `.ds-u-measure--[narrow|base|wide]`
 
 <EmbeddedExample>
-    <section class="example-list">
-        <article>
-            <span class="example-label"
-            ><code>.ds-u-measure--narrow</code> (line length ~45 characters)</span
-            >
-            <div class="ds-u-measure--narrow">{loremIpsumGenerator('l')}</div>
-        </article>
-        <article>
-            <span class="example-label"
-            ><code>.ds-u-measure--base</code> (line length ~65 characters)</span
-            >
-            <div class="ds-u-measure--base">{loremIpsumGenerator('l')}</div>
-        </article>
-        <article>
-            <span class="example-label"
-            ><code>.ds-u-measure--wide</code> (line length ~80 characters)</span
-            >
-            <div class="ds-u-measure--wide">{loremIpsumGenerator('l')}</div>
-        </article>
-    </section>
+  <section class="example-list">
+    <article>
+      <span class="example-label">
+        <code>.ds-u-measure--narrow</code> (line length ~45 characters)
+      </span>
+      <div class="ds-u-measure--narrow">{loremIpsumGenerator('l')}</div>
+    </article>
+    <article>
+      <span class="example-label">
+        <code>.ds-u-measure--base</code> (line length ~65 characters)
+      </span>
+      <div class="ds-u-measure--base">{loremIpsumGenerator('l')}</div>
+    </article>
+    <article>
+      <span class="example-label">
+        <code>.ds-u-measure--wide</code> (line length ~80 characters)
+      </span>
+      <div class="ds-u-measure--wide">{loremIpsumGenerator('l')}</div>
+    </article>
+  </section>
 </EmbeddedExample>
 
 ## Guidance
@@ -43,4 +44,3 @@ The following Sass variables can be overridden to theme the measure utility:
 - `$measure-narrow`
 - `$measure-base`
 - `$measure-wixe`
-
