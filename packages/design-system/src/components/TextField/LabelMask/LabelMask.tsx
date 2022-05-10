@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 export type LabelMaskMask = 'phone' | 'ssn' | 'date' | 'day_month';
 
@@ -7,7 +7,9 @@ export interface LabelMaskProps {
    * Must contain a `TextField` component
    */
   children: React.ReactNode;
-  labelMask?: LabelMaskMask;
+  labelMask?: LabelMaskMask | ((rawInput: string) => string);
+  // placeholder?: string;
+  // value?: string;
 }
 
 const LabelMask = ({ children, labelMask }: LabelMaskProps) => {
@@ -18,19 +20,16 @@ const LabelMask = ({ children, labelMask }: LabelMaskProps) => {
     day_month: '[0-9.,-]*',
   };
 
-  // Add regex logic here
-  // date: /(\d{2})(\d{2})(\d{2})/,
-  // day_month: /(\d{2})(\d{2})/,
-
   /**
    * Get the child text field. Called as a method so that
    * updates to the field cause the mask to re-render
    * @returns {React.ReactElement} Child TextField
    */
   const field = (): React.ReactElement => React.Children.only(children as React.ReactElement);
-  const initialValue = field().props.value || field().props.defaultValue;
+  const initialValue = field().props.value || field().props.defaultValue || '### ### ###';
 
   const [value, setValue] = useState(initialValue);
+  const [focus, setFocus] = useState(null);
 
   /**
    * @param {Object} evt
@@ -39,22 +38,28 @@ const LabelMask = ({ children, labelMask }: LabelMaskProps) => {
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     // Eval use of state here
     setValue(evt.target.value);
+    // if (typeof field().props.onChange === 'function') {
+    //   value = field().props.onChange(evt);
+    // }
   };
 
+  const textRef = useRef();
   const modifiedTextField = React.cloneElement(field(), {
     defaultValue: undefined,
     onChange: (e) => handleChange(e),
+    onBlur: () => setFocus(false),
+    onFocus: () => setFocus(true),
     type: 'text',
     inputMode: 'numeric',
-    pattern: labelMaskPattern[labelMask],
+    ref: textRef,
+    // pattern: labelMaskPattern[labelMask],
   });
-
-  const onFocus = true;
 
   return (
     <div className={`ds-c-field-mask ds-c-field-mask--${labelMask}`}>
       {/* mask in render */}
-      {onFocus ? <span>{value}</span> : <span>(xxx) xxx-xxxx</span>}
+      {/* {formatValue()} */}
+      {focus ? <span>{value}</span> : <span>(xxx) xxx-xxxx</span>}
       {modifiedTextField}
     </div>
   );
