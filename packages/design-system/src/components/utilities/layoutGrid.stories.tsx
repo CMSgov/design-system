@@ -13,7 +13,7 @@ export default {
 
 // an example for responsive layout grid -- referenced in doc site
 export const layoutGrid = () => (
-  <section className="ds-l-container preview__grid">
+  <section className="ds-l-container">
     <div className="ds-l-row">
       {['A', 'B', 'C', 'D', 'E', 'F'].map((content) => (
         <div
