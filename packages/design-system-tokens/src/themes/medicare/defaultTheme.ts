@@ -173,7 +173,6 @@ const components = {
   'alert-link__font-color--focus': themeColors['primary-alt-darkest'],
   'alert-link__font-color--active': themeColors['primary-alt-darkest'],
   // autocomplete
-  'autocomplete__max-width': '460px',
   'autocomplete-list__background-color': themeColors.white,
   'autocomplete-list__border-color': themeColors['gray-lighter'],
   'autocomplete-list-item__font-color': themeColors.primary,
@@ -279,7 +278,6 @@ const components = {
   'choice__border-width': '2px',
   'choice__color--unchecked': themeColors.white,
   'choice__color--disabled': themeColors.muted,
-  'choice__max-width': '460px',
   choice__size: spacer[3],
   'choice__size--small': '20px',
   'choice__size-radio': spacer[2],
@@ -315,9 +313,11 @@ const components = {
   'filter-chip-icon__color': themeColors.base,
   'filter-chip-icon__color-active': themeColors.white,
   // forms
-  'form-label__max-width': '460px',
   'form-label__color--inverse': themeColors['base-inverse'],
   'form-label__color--not-error': themeColors['gray-light'], // medicare only
+  'form__max-width': '460px',
+  'form__max-width--small': '6em',
+  'form__max-width--medium': '12em',
   'form-hint__color': themeColors.muted,
   'form-hint__color--inverse': themeColors['muted-inverse'],
   'form-error__color': themeColors.error,
@@ -371,9 +371,6 @@ const components = {
   'text-input__border-color--inverse': themeColors.black,
   'text-input__border-color--success': themeColors['success-light'],
   'text-input__color': themeColors['gray-warm-dark'],
-  'text-input__max-width': '460px',
-  'text-input__max-width--small': '6em',
-  'text-input__max-width--medium': '12em',
   'text-input__padding': spacer[1],
   'text-input__border-radius': 0,
   // vertical navigation

@@ -8,7 +8,7 @@
   color: $text-input__color;
   display: block;
   margin: $spacer-half 0;
-  max-width: $text-input__max-width;
+  max-width: $form__max-width;
   outline: none;
   padding: $text-input__padding;
   width: 100%;
@@ -38,11 +38,11 @@
 }
 
 .ds-c-field--small {
-  max-width: $text-input__max-width--small;
+  max-width: $form__max-width--small;
 }
 
 .ds-c-field--medium {
-  max-width: $text-input__max-width--medium;
+  max-width: $form__max-width--medium;
 }
 
 .ds-c-field,
