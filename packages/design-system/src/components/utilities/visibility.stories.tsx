@@ -11,7 +11,7 @@ export default {
   },
 };
 
-// an example for responsive layout grid -- referenced in doc site
+// an example for responsive visibility -- referenced in doc site
 export const visibility = () => (
   <div>
     {['sm', 'md', 'lg', 'xl'].map((breakpoint) => (
@@ -19,7 +19,7 @@ export const visibility = () => (
         <div className={`ds-u-${breakpoint}-visibility--hidden ds-u-color--muted`}>
           Hidden on {breakpoint} screens and larger
         </div>
-        <div className={`ds-u-${breakpoint}-visibility--visible`}>
+        <div className={`ds-u-visibility--hidden ds-u-${breakpoint}-visibility--visible`}>
           Visible on {breakpoint} screens and larger
         </div>
       </div>
