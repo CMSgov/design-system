@@ -1,17 +1,20 @@
 ---
 title: Typography
 ---
-import {Alert} from '@cmsgov/design-system';
+
+import { Alert } from '@cmsgov/design-system';
 import ResponsiveExample from '../../src/components/ResponsiveExample';
 import loremIpsumGenerator from '../../src/helpers/loremIpsumGenerator';
 
-<Alert heading="Typography sizing updates!" >
+<Alert heading="Typography sizing updates!">
   <p class="ds-c-alert__text">
-    We've updated typography sizing variables and class names to make them more agnostic. Read about <a href="/getting-started/theming/#updating-font-sizing">how you can update</a>.
+    We've updated typography sizing variables and class names to make them more agnostic. Read about{' '}
+    <a href="/getting-started/theming/#updating-font-sizing">how you can update</a>.
   </p>
 </Alert>
 
 ## Headings
+
 The design system doesn't style base HTML typography elements (like `h1`, `h2`, `p`, etc) in order to avoid conflicting with any existing site styles. You should instead use one of the base typography classes below to apply styling:
 
 <EmbeddedExample>
@@ -54,26 +57,22 @@ The design system doesn't style base HTML typography elements (like `h1`, `h2`, 
 ## Body
 
 ### `.ds-text-body--lg`
+
 <EmbeddedExample>
-  <p class="ds-text-body--lg">
-    {loremIpsumGenerator('l')}
-  </p>
+  <p class="ds-text-body--lg">{loremIpsumGenerator('l')}</p>
 </EmbeddedExample>
 
 ### `.ds-text-body--md`
+
 <EmbeddedExample>
-  <p class="ds-text-body--md">
-    {loremIpsumGenerator('l')}
-  </p>
+  <p class="ds-text-body--md">{loremIpsumGenerator('l')}</p>
 </EmbeddedExample>
 
 ### `.ds-text-body--sm`
-<EmbeddedExample>
-  <p class="ds-text-body--sm">
-    {loremIpsumGenerator('l')}
-  </p>
-</EmbeddedExample>
 
+<EmbeddedExample>
+  <p class="ds-text-body--sm">{loremIpsumGenerator('l')}</p>
+</EmbeddedExample>
 
 ## List
 
@@ -103,7 +102,9 @@ Lists organize written information for users.
 
 <EmbeddedExample>
   <article>
-    <h2 class="ds-h6" id="unordered-list-id">Unordered list</h2>
+    <h2 class="ds-h6" id="unordered-list-id">
+      Unordered list
+    </h2>
     <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-c-list</code>
     <ul class="ds-c-list" aria-labelledby="unordered-list-id">
       <li>List item 1</li>
@@ -114,7 +115,9 @@ Lists organize written information for users.
 
 <EmbeddedExample>
   <article>
-    <h2 class="ds-h6" id="ordered-list-id">Ordered list</h2>
+    <h2 class="ds-h6" id="ordered-list-id">
+      Ordered list
+    </h2>
     <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-c-list</code>
     <ol class="ds-c-list" aria-labelledby="ordered-list-id">
       <li>List item 1</li>
@@ -125,7 +128,9 @@ Lists organize written information for users.
 
 <EmbeddedExample>
   <article>
-    <h2 class="ds-h6" id="unstyled-list-id">Unstyled list</h2>
+    <h2 class="ds-h6" id="unstyled-list-id">
+      Unstyled list
+    </h2>
     <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-c-list .ds-c-list--bare</code>
     <ul class="ds-c-list ds-c-list--bare" aria-labelledby="unstyled-list-id">
       <li>List item 1</li>
@@ -155,9 +160,11 @@ The only base HTML element the design system applies styling to is the `<a>` ele
 Your link should always describe where it will take users. Users tend to scan text online, and elements that stand out (like links) grab attention. Clear links can help users navigate more quickly.
 
 For example, instead of:
+
 > [Learn more](#)
 
 Use:
+
 > [Learn how to reset your passphrase](#)
 
 Never use a link to say “click here.” A nondescript link forces users to backtrack and read the surrounding text for more context. This is even more problematic for those who rely on screen readers, which can list links for quicker navigation. A list of “click here” isn’t helpful for anyone.
@@ -179,7 +186,6 @@ Never use a link to say “click here.” A nondescript link forces users to bac
   </div>
 </EmbeddedExample>
 
-
 ## Responsive typography
 
 The `.ds-type-heading-3xl`, `ds-type-heading-2xl`, and `ds-type-heading-xl` classes are responsive by default.
@@ -187,7 +193,10 @@ To apply responsive typography elsewhere, use the [font size utility class](/uti
 Since the base typography margins and line height is measured in `em` units,
 they'll automatically adjust as you change the font size.
 
-<ResponsiveExample storyId='typography-responsive--headings' title="Responsive typography example" />
+<ResponsiveExample
+  storyId="typography-responsive--headings"
+  title="Responsive typography example"
+/>
 
 ## Customization
 

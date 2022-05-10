@@ -1,6 +1,7 @@
 ---
 title: Background color
 ---
+
 import ColorSwatchList from '../../src/components/ColorSwatchList';
 import { Alert } from '@cmsgov/design-system';
 
@@ -10,42 +11,74 @@ Use the background color utility to change the default background color of an el
 
 ## Primary Colors
 
-<ColorSwatchList colorNames={['primary', 'primary-darker', 'primary-darkest', 'black', 'base', 'gray-dark', 'gray-light', 'white']} preface=".ds-u-fill--" />
+<ColorSwatchList
+  colorNames={[
+    'primary',
+    'primary-darker',
+    'primary-darkest',
+    'black',
+    'base',
+    'gray-dark',
+    'gray-light',
+    'white',
+  ]}
+  preface=".ds-u-fill--"
+/>
 
 ## Secondary Colors
 
-<ColorSwatchList colorNames={['primary-alt', 'primary-alt-dark', 'primary-alt-darkest',  'primary-alt-light', 'primary-alt-lightest']} preface=".ds-u-fill--" />
+<ColorSwatchList
+  colorNames={[
+    'primary-alt',
+    'primary-alt-dark',
+    'primary-alt-darkest',
+    'primary-alt-light',
+    'primary-alt-lightest',
+  ]}
+  preface=".ds-u-fill--"
+/>
 
 ## Background Colors
 
-<ColorSwatchList colorNames={['background', 'background-inverse', 'gray-dark', 'gray', 'gray-light', 'gray-lighter', 'gray-lightest']} preface=".ds-u-fill--"/>
+<ColorSwatchList
+  colorNames={[
+    'background',
+    'background-inverse',
+    'gray-dark',
+    'gray',
+    'gray-light',
+    'gray-lighter',
+    'gray-lightest',
+  ]}
+  preface=".ds-u-fill--"
+/>
 
 ## Status Colors
 
-<ColorSwatchList 
-    colorNames={[
-        'success',
-        'success-dark',
-        'success-darker',
-        'success-darkest',
-        'success-light',
-        'success-lighter',
-        'success-lightest',
-        'warn',
-        'warn-dark',
-        'warn-darker',
-        'warn-darkest',
-        'warn-light',
-        'warn-lighter',
-        'warn-lightest',
-        'error',
-        'error-dark',
-        'error-darker',
-        'error-darkest',
-        'error-light',
-        'error-lightest'
-    ]} 
-    preface=".ds-u-fill--"
+<ColorSwatchList
+  colorNames={[
+    'success',
+    'success-dark',
+    'success-darker',
+    'success-darkest',
+    'success-light',
+    'success-lighter',
+    'success-lightest',
+    'warn',
+    'warn-dark',
+    'warn-darker',
+    'warn-darkest',
+    'warn-light',
+    'warn-lighter',
+    'warn-lightest',
+    'error',
+    'error-dark',
+    'error-darker',
+    'error-darkest',
+    'error-light',
+    'error-lightest',
+  ]}
+  preface=".ds-u-fill--"
 />
 
 ## Focus Colors
@@ -54,14 +87,19 @@ Use the background color utility to change the default background color of an el
 
 ## Additional Colors
 
-<ColorSwatchList colorNames={['muted-inverse','transparent']} preface=".ds-u-fill--" />
+<ColorSwatchList colorNames={['muted-inverse', 'transparent']} preface=".ds-u-fill--" />
 
 ## Focus Colors - Deprecated
 
-<Alert heading="Deprecated" variation="error" className="ds-u-margin-bottom--2 ds-u-font-size--small">
-   <p class="ds-c-alert__text">
-      Do not use.
-    </p>
+<Alert
+  heading="Deprecated"
+  variation="error"
+  className="ds-u-margin-bottom--2 ds-u-font-size--small"
+>
+  <p class="ds-c-alert__text">Do not use.</p>
 </Alert>
 
-<ColorSwatchList colorNames={['focus-color', 'focus-color-inverse','focus-border-inverse']} preface=".ds-u-fill--" />
+<ColorSwatchList
+  colorNames={['focus-color', 'focus-color-inverse', 'focus-border-inverse']}
+  preface=".ds-u-fill--"
+/>
