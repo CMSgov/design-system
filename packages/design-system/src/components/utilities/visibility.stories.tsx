@@ -16,7 +16,7 @@ export const visibility = () => (
   <div>
     {['sm', 'md', 'lg', 'xl'].map((breakpoint) => (
       <div className="ds-u-padding--1 ds-u-border--1" key={breakpoint}>
-        <div className={`ds-u-{breakpoint}-visibility--hidden ds-u-color--muted`}>
+        <div className={`ds-u-${breakpoint}-visibility--hidden ds-u-color--muted`}>
           Hidden on {breakpoint} screens and larger
         </div>
         <div className={`ds-u-${breakpoint}-visibility--visible`}>
