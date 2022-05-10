@@ -1,6 +1,7 @@
 ---
 title: Internationalization
 ---
+
 import { Alert } from '@cmsgov/design-system';
 
 ## Providing your own internationalized content
@@ -40,8 +41,14 @@ setLanguage('es');
 console.log(getLanguage());
 ```
 
-<Alert heading="Deprecated per-component langauge props" variation="warn" className="ds-u-margin-top--3">
-   <p class="ds-c-alert__text">
-      You may notice that some components accept an older `language` or `locale` prop to set the language of the content on a per-component basis, but these per-component props have been deprecated and will be removed in a future breaking-change release.
-    </p>
+<Alert
+  heading="Deprecated per-component langauge props"
+  variation="warn"
+  className="ds-u-margin-top--3"
+>
+  <p class="ds-c-alert__text">
+    You may notice that some components accept an older `language` or `locale` prop to set the
+    language of the content on a per-component basis, but these per-component props have been
+    deprecated and will be removed in a future breaking-change release.
+  </p>
 </Alert>
