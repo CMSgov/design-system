@@ -2,6 +2,7 @@ import React, { useRef, useLayoutEffect, useState } from 'react';
 
 interface ColorSwatchListProps {
   colorNames: string[];
+  preface: string;
 }
 
 // converts an rgb string 'rgb(15,24,128)' to a hex value '#0819A9'
@@ -15,7 +16,7 @@ export const rgbToHex = (r: number, g: number, b: number) => {
  * displays a list of color swatches with a sample of the color, the SCSS variable name & the hex value
  * @param colorNames {String[]} a list of color names - should be same as SCSS token
  */
-const ColorSwatchList = ({ colorNames }: ColorSwatchListProps) => {
+const ColorSwatchList = ({ colorNames, preface }: ColorSwatchListProps) => {
   const refList = useRef([]);
   const initialColors = colorNames.map((color) => ({ name: color, hex: '' }));
   const [colorList, setColorList] = useState(initialColors);
@@ -51,7 +52,10 @@ const ColorSwatchList = ({ colorNames }: ColorSwatchListProps) => {
             className={`c-swatch__preview ds-u-margin-right--1 ds-u-radius--circle ds-u-fill--${name}`}
             ref={(el) => (refList.current[index] = el)}
           ></div>
-          <code>$color-{name}</code>
+          <code>
+            {preface}
+            {name}
+          </code>
           <code className="c-swatch__label js-swatch-hex ds-u-fill--transparent ds-u-color--gray">
             {hex}
           </code>
