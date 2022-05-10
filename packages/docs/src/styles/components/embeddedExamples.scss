@@ -4,6 +4,14 @@
   }
 }
 
+.example-label {
+  color: $color-gray;
+  display: block;
+  font-size: $font-size-sm;
+  font-weight: $font-normal;
+  margin-bottom: $spacer-1;
+}
+
 .example-list {
   & article {
     padding-bottom: $spacer-2;
@@ -61,4 +69,8 @@
 .utility-example {
   background-color: $color-primary-alt-lightest;
   outline: 2px dashed $color-primary-alt;
+
+  & code {
+    background-color: $color-primary-alt-lightest;
+  }
 }

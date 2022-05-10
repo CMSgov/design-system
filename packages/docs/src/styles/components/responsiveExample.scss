@@ -1,5 +1,18 @@
 .c-resposive-example__example-wrapper {
   margin: $spacer-2;
+  position: relative;
+
+  // adding a color to the background of examples for easier viewing
+  &:before {
+    content: '';
+    position: absolute;
+    top: -$spacer-2;
+    bottom: -$spacer-2;
+    left: -$spacer-2;
+    right: -$spacer-2;
+    z-index: -100;
+    background-color: $color-gray-lightest;
+  }
 }
 
 .c-repsonsive-example__iframe-wrapper {
