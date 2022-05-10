@@ -12,7 +12,7 @@
   flex-wrap: wrap;
   gap: 0.5rem;
   margin: 0.5rem 0;
-  max-width: $input-max-width;
+  max-width: $choice__max-width;
 }
 
 // Styles for label
@@ -35,11 +35,11 @@
 label,
 .ds-c-label {
   .ds-c-choice:disabled + & {
-    color: $color-muted;
+    color: $choice-label__color--disabled;
   }
 
   .ds-c-choice.ds-c-choice--inverse:disabled + & {
-    color: $color-muted-inverse;
+    color: $choice-label__color--disabled--inverse;
   }
 
   .ds-c-choice:disabled + &,
