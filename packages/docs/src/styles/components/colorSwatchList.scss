@@ -1,6 +1,11 @@
 // Color examples
+.c-swatch__name,
+.c-swatch__label {
+  font-size: $font-size-md;
+}
+
 .c-swatch__preview {
-  box-shadow: inset 0 0 1px rgba(#000, 0.2);
+  box-shadow: inset 0 0 1px rgba($color-black, 0.2);
   display: inline-block;
   height: $spacer-4;
   margin-bottom: $spacer-half;
