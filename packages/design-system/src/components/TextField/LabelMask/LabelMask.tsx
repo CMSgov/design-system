@@ -56,11 +56,12 @@ const LabelMask = ({ children, labelMask }: LabelMaskProps) => {
   });
 
   return (
-    <div className={`ds-c-field-mask ds-c-field-mask--${labelMask}`}>
-      {/* mask in render */}
-      {/* {formatValue()} */}
-      {focus ? <span>{value}</span> : <span>(xxx) xxx-xxxx</span>}
+    <div className={`ds-c-label-mask ds-c-label-mask--${labelMask}`}>
       {modifiedTextField}
+      <div className="ds-c-label-mask__mask" aria-hidden="true">
+        <span className="ds-c-label-mask__mask--active">Foo</span>
+        <span className="ds-c-label-mask__mask--inactive">Bar</span>
+      </div>
     </div>
   );
 };
