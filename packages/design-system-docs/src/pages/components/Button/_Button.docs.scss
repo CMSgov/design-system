@@ -111,3 +111,32 @@ Style guide: components.button.react
 
 Style guide: components.button.guidance
 */
+
+/*
+Google Analytics
+
+**Analytics event tracking is disabled by default.**
+
+### Enable event tracking
+
+Import and set the `setButtonSendsAnalytics` feature flag to `true` in your application's entry file:
+
+```JSX
+import { setButtonSendsAnalytics } from "@cmsgov/<design-system-package>";
+setButtonSendsAnalytics(true);
+```
+On applications where the page has `utag` loaded, the data goes to Tealium which allows it to route to Google Analytics or the currently approved data analytics tools.
+
+### Disable event tracking
+
+For the `analytics` prop, pass the value `false` to the component to disable analytics tracking for a singular component instance
+
+```JSX
+analytics={false}
+```
+### Override  event tracking
+
+A custom heading value can be sent for an analytics event by using the prop `analyticsLabelOverride`. It is recommended that this value be used to prevent sensitive personal information from being passed to analytics trackers.
+
+Style guide: components.button.guidance-analytics
+*/
