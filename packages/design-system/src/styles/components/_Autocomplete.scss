@@ -1,7 +1,7 @@
 @import '../settings/index.scss';
 
 .ds-c-autocomplete {
-  max-width: $input-max-width;
+  max-width: $form__max-width;
   position: relative;
   // Undoing the clearfix class on the div containing the label element
   .ds-u-clearfix {
