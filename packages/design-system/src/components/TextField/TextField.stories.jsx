@@ -1,6 +1,6 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 import TextField from './TextField';
+import { BuiltInMask } from './LabelMask/LabelMask';
 
 export default {
   title: 'Components/Text Field',
@@ -63,12 +63,6 @@ MaskedField.args = {
   label: 'Currency Field',
   inputMode: 'numeric',
 };
-export const LabelMaskedField = Template.bind({});
-LabelMaskedField.args = {
-  labelMask: 'phone',
-  label: 'Phone number',
-  inputMode: 'numeric',
-};
 export const ErrorField = Template.bind({});
 ErrorField.args = {
   errorMessage: 'Example error message',
@@ -81,4 +75,36 @@ SuccessField.args = {
 export const DisabledField = Template.bind({});
 DisabledField.args = {
   disabled: true,
+};
+
+export const LabelMaskedField = () => {
+  const [date, setDate] = useState('');
+  const [phone, setPhone] = useState('');
+
+  return (
+    <>
+      <TextField
+        name="labelMask-date"
+        label="Enter the last day of your coverage"
+        hint="If you don't have it, give your best estimate. For example: 01/02/2022"
+        labelMask={BuiltInMask.DATE}
+        value={date}
+        onChange={(event) => setDate(event.currentTarget.value)}
+      />
+      <TextField
+        name="labelMask-custom"
+        label="Enter a valid phone number"
+        hint="For example: ###-###-####"
+        labelMask={(rawInput) =>
+          /^(\d{1,3})[-\s]?(\d{1,3})?[-\s]?(\d{1,4})?$/
+            .exec(rawInput)
+            .slice(1)
+            .filter((s) => s)
+            .join('-')
+        }
+        value={phone}
+        onChange={(event) => setPhone(event.currentTarget.value)}
+      />
+    </>
+  );
 };

@@ -1,43 +1,35 @@
-import { TextField } from '@design-system';
-import React from 'react';
+import React, { useState } from 'react';
+import { TextField, BuiltInMask } from '@design-system';
 import ReactDOM from 'react-dom';
 
 const Example = () => {
+  const [date, setDate] = useState('');
+  const [phone, setPhone] = useState('');
   return (
-    <div>
+    <>
       <TextField
-        label="Phone number"
-        labelMask="phone"
-        inputMode="tel"
-        name="phone_example"
-        type="tel"
-        helpText="(123) 456-7890"
+        name="labelMask-date"
+        label="Enter the last day of your coverage"
+        hint="If you don't have it, give your best estimate. For example: 01/02/2022"
+        labelMask={BuiltInMask.DATE}
+        value={date}
+        onChange={(event) => setDate(event.currentTarget.value)}
       />
       <TextField
-        label="Social security number (SSN)"
-        labelMask="ssn"
-        inputMode="numeric"
-        type="text"
-        name="ssn_example"
-        helpText="123-45-6789"
+        name="labelMask-custom"
+        label="Enter a valid phone number"
+        hint="For example: ###-###-####"
+        labelMask={(rawInput) =>
+          /^(\d{1,3})[-\s]?(\d{1,3})?[-\s]?(\d{1,4})?$/
+            .exec(rawInput)
+            .slice(1)
+            .filter((s) => s)
+            .join('-')
+        }
+        value={phone}
+        onChange={(event) => setPhone(event.currentTarget.value)}
       />
-      <TextField
-        label="Date"
-        labelMask="date"
-        inputMode="numeric"
-        type="numeric"
-        name="date_example"
-        helpText="MM/DD/YYYY"
-      />
-      <TextField
-        label="Day/Month"
-        labelMask="day_month"
-        inputMode="numeric"
-        type="text"
-        name="dayMonth_example"
-        helpText="MM/DD"
-      />
-    </div>
+    </>
   );
 };
 
