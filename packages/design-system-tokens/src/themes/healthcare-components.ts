@@ -1,8 +1,8 @@
 /*
- * Core CMSDS Component Theme
+ * Healthcare.gov CMSDS Component Theme
  */
 
-import { default as t } from './core'
+import { default as t } from './healthcare'
 import { hexOpacity } from '../lib/utility'
 
 export const components = {
@@ -48,7 +48,7 @@ export const components = {
 
   'button': {
     '__border-radius':                            t.radius['default'],
-    '__border-width':                             '1px',
+    '__border-width':                             '2px',
     '__background-color':                         t.color['white'],
     '__background-color--active':                 t.color['white'],
     '__background-color--disabled':               t.color['white'],
@@ -89,9 +89,19 @@ export const components = {
   },
 
   'button-primary': {
+    '__background-color':                         t.color['green'],
+    '__background-color--hover':                  t.color['success-dark'],
+    '__background-color--active':                 t.color['success-darker'],
+  },
+
+  'button-secondary': {
     '__background-color':                         t.color['primary'],
+    '__border-color':                             t.color['transparent'],
+    '__border-color--active':                     t.color['transparent'],
     '__background-color--hover':                  t.color['primary-darker'],
     '__background-color--active':                 t.color['primary-darkest'],
+    '__color':                                    t.color['white'],
+    '__color--active':                            t.color['white'],
   },
 
   'choice': {
@@ -144,6 +154,20 @@ export const components = {
     '__icon-size':                                '10px',
   },
 
+  'link': {
+    '__color':                                    t.color['primary'],
+    '__color--visited':                           t.color['visited'],
+    '__color--hover':                             t.color['primary-darker'],
+    '__color--active':                            t.color['primary-darkest'],
+    '__text-decoration--thickness':               '1px',
+    '__text-decoration--thickness--hover':        '1px',
+    '__text-decoration--offset':                  'auto',
+    '-inverse__color':                            t.color['base-inverse'],
+    '-inverse__color--visited':                   t.color['muted-inverse'],
+    '-inverse__color--hover':                     t.color['muted-inverse'],
+    '-inverse__color--status':                    t.color['muted-inverse'],
+  },
+
   'filter-chip': {
     '__border-radius':                            t.radius['pill'],
     '__background-color':                         t.color['primary-alt-lightest'],
@@ -157,28 +181,14 @@ export const components = {
   },
 
   'form': {
-    '-label__color--inverse':                     t.color['base-inverse'],
     '__max-width':                                '460px',
     '__max-width--small':                         '6em',
     '__max-width--medium':                        '12em',
+    '-label__color--inverse':                     t.color['base-inverse'],
     '-hint__color':                               t.color['muted'],
     '-hint__color--inverse':                      t.color['muted-inverse'],
     '-error__color':                              t.color['error'],
     '-error__color--inverse':                     t.color['error-light'],
-  },
-
-  'link': {
-    '__color':                                    t.color['primary'],
-    '__color--visited':                           t.color['visited'],
-    '__color--hover':                             t.color['primary-darker'],
-    '__color--active':                            t.color['primary-darkest'],
-    '__text-decoration--thickness':               '1px',
-    '__text-decoration--thickness--hover':        '1px',
-    '__text-decoration--offset':                  'auto',
-    '-inverse__color':                            t.color['base-inverse'],
-    '-inverse__color--visited':                   t.color['muted-inverse'],
-    '-inverse__color--hover':                     t.color['muted-inverse'],
-    '-inverse__color--active':                    t.color['muted-inverse'],
   },
 
   'pagination': {
@@ -196,7 +206,7 @@ export const components = {
     '__border-color':                             t.color['border'],
   },
 
-  'steplist': {
+    'steplist': {
     '__color':                                    t.color['muted'],
     '__color--current':                           t.color['primary'],
     '__background-color--current':                t.color['primary'],
@@ -227,7 +237,7 @@ export const components = {
     '__border-color--success':                    t.color['success-light'],
     '__color':                                    t.color['base'],
     '__padding':                                  t.spacer['1'],
-    '__border-radius':                            t.radius['default'],
+    '__border-radius':                            '0',
   },
 
   'vertical-nav': {
@@ -239,6 +249,6 @@ export const components = {
     '-label__border-color--current':              t.color['primary'],
     '-label__color--current':                     t.color['primary'],
   },
-};
+}
 
 export default components
