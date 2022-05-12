@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { withPrefix } from 'gatsby';
 import classnames from 'classnames';
 
 const breakpointOpts = {
@@ -29,6 +30,7 @@ const ResponsiveExample = ({ storyId, title }: ResponsiveExample) => {
   const [exampleWrapperWidth, setExampleWrapperWidth] = useState<number>(0);
   const iframeRef = useRef<HTMLIFrameElement>();
   const exampleWrapperRef = useRef<HTMLDivElement>();
+  const iframeUrl = withPrefix(`/storybook/iframe.html?id=${storyId}&viewMode=story`);
 
   useEffect(() => {
     if (window) {
@@ -115,7 +117,7 @@ const ResponsiveExample = ({ storyId, title }: ResponsiveExample) => {
             className={`c-responsive-example__iframe ${
               iframeBreakpoint && `c-responsive-example__iframe--width-${iframeBreakpoint}`
             }`}
-            src={`../storybook/iframe.html?id=${storyId}&viewMode=story`}
+            src={iframeUrl}
             title={title}
             ref={iframeRef}
             onLoad={onIframeLoad}
