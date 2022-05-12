@@ -24,7 +24,7 @@ const setVars = (items: Record<string, any>, filename: string) => {
 export const exportCsv = (fileDescriptors: FileDescriptor[], outPath: string): number => {
   fileDescriptors.forEach((file) => {
     const importedModule = require(file.moduleImportName);
-    const filename = `${outPath}/${file.exportFileName}.csv`;
+    const filename = `${outPath}/${file.baseName}.csv`;
     let output = `key,value\r\n`;
     let type = 'tokens';
 
@@ -39,7 +39,7 @@ export const exportCsv = (fileDescriptors: FileDescriptor[], outPath: string): n
       });
     } else {
       const tokens = flatten(importedModule.default);
-      output += setVars(tokens, file.fileBaseName);
+      output += setVars(tokens, file.baseName);
     }
 
     writeFile(filename, output);

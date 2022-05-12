@@ -10,20 +10,16 @@ const color = to<ColorTokens>()({
 
   'white': {
     'solid': '#ffffff',
-    'alpha': {
-      '25':  hexOpacity('#ffffff',  25),
-      '50':  hexOpacity('#ffffff',  50),
-      '80':  hexOpacity('#ffffff',  80),
-    }
+    'alpha25':  hexOpacity('#ffffff',  25),
+    'alpha50':  hexOpacity('#ffffff',  50),
+    'alpha80':  hexOpacity('#ffffff',  80),
   },
 
   'black': {
     'solid':  '#000000',
-    'alpha': {
-      '25':  hexOpacity('#000000',  25),
-      '50':  hexOpacity('#000000',  50),
-      '80':  hexOpacity('#000000',  80),
-    }
+    'alpha25':  hexOpacity('#000000',  25),
+    'alpha50':  hexOpacity('#000000',  50),
+    'alpha80':  hexOpacity('#000000',  80),
   },
 
   // granite - neutral
@@ -102,7 +98,7 @@ const color = to<ColorTokens>()({
   },
 
   // dark sky - hcgov second
-  'dark-sky': {
+  'darksky': {
     '50':    '#ecf4fa',
     '100':   '#c5dff1',
     '200':   '#9fcae7',

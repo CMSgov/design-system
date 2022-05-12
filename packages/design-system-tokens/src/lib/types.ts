@@ -17,13 +17,13 @@ export type MeasureValues =
 export type RGBValue = `rgb(${number},${number},${number})`;
 export type RGBAValue = `rgba(${number},${number},${number},${number})`;
 
-interface Token<T> {
-  [key: string | symbol]: T;
+export type Token<T> = {
+  [key: string]: T | Token<T>
 }
 
 export type AnimationTokens = Token<string | number>;
 export type BorderRadiusTokens = Token<MeasureValues>;
-export type ColorTokens = Token<object | HexValue | RGBValue | RGBAValue | 'transparent' | 'inherit'>;
+export type ColorTokens = Token<HexValue | RGBValue | RGBAValue | 'transparent' | 'inherit'>;
 export type FontTokens = Token<string | number>;
 export type MeasureTokens = Token<MeasureValues>;
 export type MediaWidthTokens = Token<MeasureValues>;
@@ -47,10 +47,8 @@ export type AllTokenValues =
 export interface ThemeTokens {
   animation: AnimationTokens;
   color: ColorTokens;
-  components: AllTokenValues;
-  description: string;
   font: FontTokens;
-  globals?: AllTokenValues;
+  global?: AllTokenValues;
   measure: MeasureTokens;
   media: MediaWidthTokens;
   radius: BorderRadiusTokens;
@@ -62,6 +60,5 @@ export interface ThemeTokens {
 export interface FileDescriptor {
   moduleImportName: string;
   parentDirectoryName: string;
-  fileBaseName: string;
-  exportFileName: string;
+  baseName: string;
 }

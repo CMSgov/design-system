@@ -1,10 +1,129 @@
-import themeColors from './core-theme'
+/*
+ * Healthcare.gov Default CMSDS Visual Theme
+ */
 
-export const components = {
+import { animation, color, font, measure, media, radius, spacer, z } from '../../tokens';
+import { to, ThemeTokens, ColorTokens } from '../../lib/types';
+import { hexOpacity } from '../../lib/utility';
+
+const description = 'Default Healthcare.gov Theme';
+
+const themeColors: ColorTokens = {
+  //
+  white: color.white,
+  black: color.black,
+  transparent: color.transparent,
+  //
+  background: color.white,
+  'background-dialog': color.white,
+  'background-dialog-mask': hexOpacity('#000000', 50),
+  'background-inverse': color['ocean-800'],
+  //
+  base: color['granite-900'],
+  'base-inverse': color.white,
+  //
+  border: color['granite-100'],
+  'border-dark': color['lapis-800'],
+  'border-inverse': color.white,
+  //
+  'cool-blue': color['sapphire-600'],
+  'cool-blue-light': color['sapphire-500'],
+  'cool-blue-lighter': color['sapphire-200'],
+  'cool-blue-lightest': color['sapphire-50'],
+  //
+  error: color['rose-500'],
+  'error-dark': color['rose-600'],
+  'error-darker': color['rose-700'],
+  'error-darkest': color['rose-800'],
+  'error-light': color['rose-200'],
+  'error-lighter': color['rose-100'],
+  'error-lightest': color['rose-50'],
+  //
+  focus: color['dark-sky-500'],
+  'focus-border-inverse': color['goldenrod-800'],
+  'focus-dark': color['rose-400'],
+  'focus-inverse': color['sky-500'],
+  'focus-light': color.white,
+  'focus-shadow': color['granite-900'],
+  'focus-shadow-inverse': color['granite-900'],
+  'focus-shadow-link': color['granite-900'],
+  'focus-shadow-link-inverse': color['goldenrod-800'],
+  //
+  gold: color['goldenrod-500'],
+  'gold-dark': color['goldenrod-600'],
+  'gold-darker': color['goldenrod-700'],
+  'gold-darkest': color['goldenrod-800'],
+  'gold-light': color['goldenrod-400'],
+  'gold-lighter': color['goldenrod-200'],
+  'gold-lightest': color['goldenrod-50'],
+  //
+  gray: color['granite-700'],
+  'gray-cool-light': color['ocean-50'],
+  'gray-dark': color['granite-800'],
+  'gray-light': color['granite-300'],
+  'gray-lighter': color['granite-100'],
+  'gray-lightest': color['granite-50'],
+  'gray-medium': color['granite-600'],
+  'gray-warm-dark': color['granite-800'],
+  'gray-warm-light': color['granite-50'],
+  //
+  green: color['spring-500'],
+  'green-dark': color['spring-600'],
+  'green-darker': color['spring-700'],
+  'green-darkest': color['spring-800'],
+  'green-light': color['spring-700'],
+  'green-lighter': color['spring-200'],
+  'green-lightest': color['spring-50'],
+  //
+  muted: color['granite-700'],
+  'muted-inverse': color['lapis-50'],
+  //
+  primary: color['sapphire-500'],
+  'primary-alt': color['dark-sky-500'],
+  'primary-alt-dark': color['sky-600'],
+  'primary-alt-darkest': color['sky-800'],
+  'primary-alt-light': color['dark-sky-200'],
+  'primary-alt-lightest': color['cerulean-50'],
+  'primary-darker': color['sapphire-500'],
+  'primary-darkest': color['sapphire-600'],
+  //
+  red: color['rose-500'],
+  'red-dark': color['rose-600'],
+  'red-darker': color['rose-700'],
+  'red-darkest': color['rose-800'],
+  'red-light': color['rose-200'],
+  'red-lighter': color['rose-100'],
+  'red-lightest': color['rose-50'],
+  //
+  secondary: color['crimson-500'],
+  'secondary-dark': color['crimson-700'],
+  'secondary-light': color['rose-200'],
+  'secondary-lightest': color['rose-50'],
+  //
+  success: color['spring-500'],
+  'success-dark': color['spring-600'],
+  'success-darker': color['spring-700'],
+  'success-darkest': color['spring-800'],
+  'success-light': color['spring-400'],
+  'success-lighter': color['spring-200'],
+  'success-lightest': color['spring-50'],
+  //
+  warn: color['goldenrod-500'],
+  'warn-dark': color['goldenrod-600'],
+  'warn-darker': color['goldenrod-700'],
+  'warn-darkest': color['goldenrod-800'],
+  'warn-light': color['goldenrod-400'],
+  'warn-lighter': color['goldenrod-200'],
+  'warn-lightest': color['goldenrod-50'],
+  //
+  visited: color['windsor-500'],
+};
+
+const components = {
   // alert
   'alert__background-color': themeColors['primary-alt-lightest'],
   'alert__background-color--error': themeColors['error-lightest'],
-  'alert__background-color--lightweight': themeColors['white'],
+  'alert__background-color--lightweight': themeColors.white,
   'alert__background-color--success': themeColors['success-lightest'],
   'alert__background-color--warn': themeColors['warn-lightest'],
   'alert__bar-width': spacer[1],
@@ -37,7 +156,7 @@ export const components = {
   'badge__border-radius': radius.pill,
   // button
   'button__border-radius': radius.default,
-  'button__border-width': '1px',
+  'button__border-width': '2px',
   'button__background-color': themeColors.white,
   'button__background-color--active': themeColors.white,
   'button__background-color--disabled': themeColors.white,
@@ -65,14 +184,22 @@ export const components = {
   // button - transparent
   'button-transparent__color--active': themeColors['primary-darkest'],
   'button-transparent__background-color--disabled': themeColors['gray-lighter'],
-  'button-transparend__color--disabled': themeColors['gray-dark'],
+  'button-transparent__color--disabled': themeColors['gray-dark'],
   // button - inverse transparent
   'button-inverse-transparent__background-color': themeColors['gray-lighter'],
   'button-inverse-transparent__color': themeColors['gray-dark'],
   // button - primary & status buttons
-  'button-primary__background-color': themeColors.primary,
-  'button-primary__background-color--hover': themeColors['primary-darker'],
-  'button-primary__background-color--active': themeColors['primary-darkest'],
+  'button-primary__background-color': themeColors.green,
+  'button-primary__background-color--hover': themeColors['success-dark'],
+  'button-primary__background-color--active': themeColors['success-darker'],
+  // button - secondary, healthcare only
+  'button-secondary__background-color': themeColors.primary,
+  'button-secondary__border-color': themeColors.transparent,
+  'button-secondary__border-color--active': themeColors.transparent,
+  'button-secondary__background-color--hover': themeColors['primary-darker'],
+  'button-secondary__background-color--active': themeColors['primary-darkest'],
+  'button-secondary__color': themeColors.white,
+  'button-secondary__color--active': themeColors.white,
   // choice + choicelist
   'choice__background-color': themeColors.background,
   'choice__background-color--checked': themeColors.primary,
@@ -115,6 +242,18 @@ export const components = {
   // dropdown
   'dropdown__background-color': themeColors.white,
   'dropdown__icon-size': '10px',
+  // link
+  link__color: themeColors.primary,
+  'link__color--visited': themeColors.visited,
+  'link__color--hover': themeColors['primary-darker'],
+  'link__color--active': themeColors['primary-darkest'],
+  'link-inverse__color': themeColors['base-inverse'],
+  'link-inverse__color--visited': themeColors['muted-inverse'],
+  'link-inverse__color--hover': themeColors['muted-inverse'],
+  'link-inverse__color--status': themeColors['muted-inverse'],
+  'link__text-decoration--thickness': '1px',
+  'link__text-decoration--thickness--hover': '1px',
+  'link__text-decoration--offset': 'auto',
   // filter chip
   'filter-chip__border-radius': radius.pill,
   'filter-chip__background-color': themeColors['primary-alt-lightest'],
@@ -127,25 +266,13 @@ export const components = {
   'filter-chip-icon__color-active': themeColors.white,
   // forms
   'form-label__color--inverse': themeColors['base-inverse'],
-  'form__max-width': '460px',
-  'form__max-width--small': '6em',
-  'form__max-width--medium': '12em',
   'form-hint__color': themeColors.muted,
   'form-hint__color--inverse': themeColors['muted-inverse'],
   'form-error__color': themeColors.error,
   'form-error__color--inverse': themeColors['error-light'],
-  // link
-  link__color: themeColors.primary,
-  'link__color--visited': themeColors.visited,
-  'link__color--hover': themeColors['primary-darker'],
-  'link__color--active': themeColors['primary-darkest'],
-  'link-inverse__color': themeColors['base-inverse'],
-  'link-inverse__color--visited': themeColors['muted-inverse'],
-  'link-inverse__color--hover': themeColors['muted-inverse'],
-  'link-inverse__color--active': themeColors['muted-inverse'],
-  'link__text-decoration--thickness': '1px',
-  'link__text-decoration--thickness--hover': '1px',
-  'link__text-decoration--offset': 'auto',
+  'form__max-width': '460px',
+  'form__max-width--small': '6em',
+  'form__max-width--medium': '12em',
   // pagination
   'pagination-link__color': themeColors.primary,
   'pagination-link__color--hover': themeColors['primary-darker'],
@@ -184,7 +311,7 @@ export const components = {
   'text-input__border-color--success': themeColors['success-light'],
   'text-input__color': themeColors.base,
   'text-input__padding': spacer[1],
-  'text-input__border-radius': radius.default,
+  'text-input__border-radius': 0,
   // vertical navigation
   'vertical-nav-item__background-color--hover': themeColors['gray-lightest'],
   'vertical-nav-item__color--hover': themeColors.primary,
@@ -195,4 +322,34 @@ export const components = {
   'vertical-nav-label__color--current': themeColors.primary,
 };
 
-export default components;
+export const shadow = {
+  focus: `inset 0 0 0 1px ${themeColors.base}`,
+  'focus-inverse': `inset 0 0 0 1px ${themeColors.base}`,
+  'focus-link': `0 3px ${themeColors.base}`,
+  'focus-link-inverse': `0 3px ${themeColors['focus-border-inverse']}`,
+  'base-offset-x': '2px',
+  'base-offset-y': '2px',
+  'base-blur-radius': '4px',
+  'base-color': hexOpacity('#000000', 25),
+  base: '2px 2px 4px',
+};
+
+const DefaultTheme = to<ThemeTokens>()({
+  animation,
+  color: themeColors,
+  components,
+  description,
+  font: {
+    sans: font['family-open-sans'],
+    serif: font['family-bitter'],
+    ...font,
+  },
+  measure,
+  media,
+  radius,
+  shadow,
+  spacer,
+  z,
+});
+
+export default DefaultTheme;
