@@ -7,10 +7,10 @@ const tokenFormat = (name: string, value: string | unknown) => {
   return `${name},${value}\r\n`;
 };
 
-const setVars = (items: Record<string, any>, filename: string) => {
+const writeToken = (items: Record<string, any>, filename: string, separator: string) => {
   let vars = '';
   Object.entries(items).forEach(([name, value]) => {
-    name = `${filename}-${name}`;
+    name = `${filename}${separator}${name}`;
     vars += tokenFormat(name, value);
   });
   return vars;
@@ -22,29 +22,37 @@ const setVars = (items: Record<string, any>, filename: string) => {
  * with headers
  */
 export const exportCsv = (fileDescriptors: FileDescriptor[], outPath: string): number => {
+  let tokenItems =  {}
+  let filename = ''
+  let tokenOutput = ''
+
   fileDescriptors.forEach((file) => {
-    const importedModule = require(file.moduleImportName);
-    const filename = `${outPath}/${file.baseName}.csv`;
+    const importedModule = require(`${file.moduleImportName}`)
     let output = `key,value\r\n`;
-    let type = 'tokens';
+    const sep = file.baseName.includes('components') ? '' : '-'
 
-    if (importedModule.default.description) type = 'theme';
-
-    if (type === 'theme') {
-      Object.entries(importedModule.default).forEach(([key]) => {
-        if (key === 'description') return;
-
-        const tokenItems = flatten(importedModule.default[key]);
-        output += setVars(tokenItems, key);
-      });
-    } else {
+    if (file.parentDirectoryName.includes('tokens')) {
+      filename = `${outPath}/cmsds.tokens.csv`
       const tokens = flatten(importedModule.default);
-      output += setVars(tokens, file.baseName);
-    }
+      console.log(JSON.stringify(tokens,null,4))
+      tokenOutput += writeToken(tokens, file.baseName, sep);
+    } else {
+      filename = `${outPath}/${file.baseName}-theme.csv`
 
-    writeFile(filename, output);
-  });
-  return 0;
+      Object.entries(importedModule.default).forEach(([section]) => {
+          tokenItems = flatten(importedModule.default[section]);
+          output += writeToken(tokenItems, section, sep);
+      })
+
+      writeFile(filename, output)
+    }
+  })
+
+  if (fileDescriptors[0].parentDirectoryName.includes('tokens')) {
+    writeFile(filename, tokenOutput)
+  }
+
+  return 0
 };
 
 export default exportCsv;
