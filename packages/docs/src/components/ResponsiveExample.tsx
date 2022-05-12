@@ -115,7 +115,7 @@ const ResponsiveExample = ({ storyId, title }: ResponsiveExample) => {
             className={`c-responsive-example__iframe ${
               iframeBreakpoint && `c-responsive-example__iframe--width-${iframeBreakpoint}`
             }`}
-            src={`/storybook/iframe.html?id=${storyId}&viewMode=story`}
+            src={`../storybook/iframe.html?id=${storyId}&viewMode=story`}
             title={title}
             ref={iframeRef}
             onLoad={onIframeLoad}
