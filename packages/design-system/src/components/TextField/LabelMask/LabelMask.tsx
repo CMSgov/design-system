@@ -2,9 +2,6 @@ import React from 'react';
 
 export enum BuiltInMask {
   DATE = 'DATE',
-  // DAY_MONTH = "DAY_MONTH",
-  // PHONE = "PHONE",
-  // SSN = "SSN",
 }
 
 export interface LabelMaskProps {
@@ -13,7 +10,6 @@ export interface LabelMaskProps {
    */
   children: React.ReactNode;
   labelMask?: BuiltInMask | ((rawInput: string) => string);
-  // value?: string;
 }
 
 const LabelMask = ({ children, labelMask }: LabelMaskProps) => {
@@ -29,7 +25,6 @@ const LabelMask = ({ children, labelMask }: LabelMaskProps) => {
    * @param {React.Element} field - Child TextField
    */
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    // setValue(evt.target.value);
     if (typeof field().props.onChange === 'function') {
       return field().props.onChange(evt);
     }
@@ -40,19 +35,38 @@ const LabelMask = ({ children, labelMask }: LabelMaskProps) => {
     onChange: (e) => handleChange(e),
     type: 'text',
     inputMode: 'numeric',
-    // pattern: labelMaskPattern[labelMask],
   });
+
+  let hint = '';
 
   function format(str): any {
     if (labelMask === BuiltInMask.DATE) {
-      if (str !== undefined) {
-        const re = /^(?<month>\d{1,2})(\s|-|\/)?(?<day>\d{1,2})?(\s|-|\/)?(?<year>\d{2,4})?/;
-        const maskedText = str.match(re);
+      const charCount = str.length;
 
-        if (maskedText !== null) {
-          return str.replace(re, '$<month>/$<day>/$<year>');
+      hint = 'MM/DD/YYYY';
+      const hintSub = hint.replace(/\//g, '').substring(charCount);
+
+      let val = str + hintSub;
+      // const dateRegex = /^(?<month>\d{1,2})(\s|-|\/)?(?<day>\d{0,2})(\s|-|\/)?(?<year>\d{0,4}).*/;
+      // const dateRegex = /^(?<month>\d{1,2})(?<day>\d{0,2})(?<year>\d{0,4}).*/;
+      const dateRegex = /^(?<month>[\S]{2})(?<day>[\S]{2})?(?<year>[\S]{1,4}).*/;
+
+      const match = val.match(dateRegex);
+
+      if (match) {
+        match.shift();
+
+        for (let i = 0; i < match.length; i++) {
+          if (!match[i]) {
+            match.splice(i, 1);
+            i--;
+          }
         }
       }
+
+      val = (match || [val])?.join('/');
+
+      return val;
     }
   }
 
@@ -61,7 +75,7 @@ const LabelMask = ({ children, labelMask }: LabelMaskProps) => {
       {modifiedTextField}
       <div className="ds-c-label-mask__mask" aria-hidden="true">
         <span className="ds-c-label-mask__mask--active">{format(field().props.value)}</span>
-        <span className="ds-c-label-mask__mask--inactive">MM/DD/YYYY</span>
+        <span className="ds-c-label-mask__mask--inactive">{hint}</span>
       </div>
     </div>
   );
