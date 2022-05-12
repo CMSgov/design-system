@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import Mask from './Mask';
-import LabelMask from './LabelMask/LabelMask';
+import LabelMask, { BuiltInMask } from './LabelMask/LabelMask';
 import classNames from 'classnames';
 
 export type TextInputDefaultValue = string | number;
@@ -54,7 +54,7 @@ export type CommonTextInputProps<MultilineValue extends boolean | undefined> = O
    * field's appearance and functionality may be affected.
    */
   mask?: TextInputMask;
-  labelMask?: 'phone' | 'ssn' | 'date' | 'day_month';
+  labelMask?: BuiltInMask;
   /**
    * Whether or not the text field is a multiline text field
    */
