@@ -1,0 +1,18 @@
+.c-storybook-example {
+  border: 1px solid $color-gray-lighter;
+}
+
+.c-storybook-example__iframe {
+  border: none;
+  width: 100%;
+}
+
+.c-storybook-example__link-wrapper {
+  background-color: $color-gray-lightest;
+  padding: $spacer-1;
+
+  & .ds-c-icon {
+    font-size: 10px;
+    margin-left: $spacer-1;
+  }
+}

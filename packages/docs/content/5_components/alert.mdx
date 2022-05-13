@@ -6,12 +6,15 @@ Alerts keep users informed of important and sometimes time-sensitive changes.
 
 ## `<Alert>`
 
+<StorybookExample componentName="alert" sourceFilePath="/components/Alert/Alert.tsx"/>
+
+## Guidance 
 ### When to use
 
 - As a validation message that alerts someone that they just did something that needs to be corrected or as confirmation that a task was completed successfully.
 - As a callout or notification for important or timely information. This includes errors, warnings, and general information.
 
-## When to consider alternatives
+### When to consider alternatives
 
 - On long forms, always include in-line validation in addition to any error messages that appear at the top of the form. When possible, simplify forms by rewriting and where possible, splitting long forms across multiple pages
 - If an action will result in destroying a user’s work (for example, deleting an application) use a more intrusive pattern, such as a confirmation modal dialogue, to allow the user to confirm that this is what they want.
