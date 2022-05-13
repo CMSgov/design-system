@@ -22,16 +22,6 @@ const TableWithClassnames = (props) => {
   return <table className="ds-c-table" {...props}></table>;
 };
 
-// Using gatsby link for internal links and regular anchor for external links
-// internal markdown links don't include http* preface
-// external links do
-const LinkWrapper = ({ href, ...props }) => {
-  if (href.includes('http')) {
-    return <a href={href} {...props} />;
-  }
-  return <Link to={href} {...props} />;
-};
-
 // using prismjs to do syntax highlighting in code blocks
 const CodeWithSyntaxHighlighting = ({
   children,
@@ -71,7 +61,6 @@ const customComponents = {
   h5: (props) => HeadingWithId(props, 'h5'),
   h6: (props) => HeadingWithId(props, 'h6'),
   table: TableWithClassnames,
-  a: LinkWrapper,
   code: CodeWithSyntaxHighlighting,
   pre: PreformattedWithLanguageClass,
   EmbeddedExample,
