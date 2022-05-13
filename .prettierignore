@@ -4,3 +4,5 @@ tmp/**
 **/types/**
 storybook-static/**
 packages/coverage/**
+packages/design-system-tokens/src/themes/**
+packages/design-system-tokens/src/tokens/**

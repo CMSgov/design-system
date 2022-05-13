@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { ColorTokens, HexValue, RGBValue, RGBAValue, FileDescriptor } from './types';
+import { HexValue, RGBValue, RGBAValue, FileDescriptor } from './types';
 
 // converts an rgb string 'rgb(15,24,128)' to a hex value '#0819A9'
 export const rgbToHex = (r: number, g: number, b: number): HexValue => {
@@ -9,7 +9,7 @@ export const rgbToHex = (r: number, g: number, b: number): HexValue => {
 };
 
 // transforms a hex value to an 8 char hex value with opacity given as a number
-export const hexOpacity = (hexVal: string, opacity: number): HexValue => {
+export const hexOpacity = (hexVal: HexValue | any, opacity: number): HexValue => {
   const percent = Math.max(0, Math.min(100, opacity));
   const intVal = Math.round((percent / 100) * 255);
   const hexOpacity = intVal.toString(16).padStart(2, '0');
@@ -154,16 +154,14 @@ export const getFileDescriptors = (
      */
     const moduleImportName = mod.replace(/\..+$/, '');
     const parentDirectoryName = path.dirname(mod).split(path.sep).pop();
-    const fileBaseName = path.parse(mod).name;
-    const exportFileName = `${parentDirectoryName}-${fileBaseName}`;
+    const baseName = path.parse(mod).name;
 
-    if (fileBaseName === 'index') return;
+    if (baseName === 'index') return;
 
     fileDescriptors.push({
       moduleImportName: moduleImportName,
       parentDirectoryName: parentDirectoryName || '',
-      fileBaseName: fileBaseName,
-      exportFileName: exportFileName,
+      baseName: baseName,
     });
   });
 
