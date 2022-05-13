@@ -1,6 +1,7 @@
 ---
 title: Text color
 ---
+
 import ColorSwatchList from '../../src/components/ColorSwatchList';
 
 Use the text color utility to change the default text color of an element.
@@ -10,121 +11,128 @@ The options below offer color palette combinations that fall within the range of
 **Format**: `.ds-u-color--[COLOR NAME]-[SHADE]`
 
 ## Text on `.ds-u-fill--background` background
+
 <ColorSwatchList
-    backgroundClass='ds-u-fill--background'
-    preface='.ds-u-color--'
-    colorNames={[
-        'base',
-        'black',
-        'gray',
-        'gray-dark',
-        'primary',
-        'primary-darker', 
-        'primary-darkest', 
-        'primary-alt-darkest', 
-        'error',
-        'error-dark',
-        'error-darkest', 
-        'success'
-    ]}
+  backgroundClass="ds-u-fill--background"
+  preface=".ds-u-color--"
+  colorNames={[
+    'base',
+    'black',
+    'gray',
+    'gray-dark',
+    'primary',
+    'primary-darker',
+    'primary-darkest',
+    'primary-alt-darkest',
+    'error',
+    'error-dark',
+    'error-darkest',
+    'success',
+  ]}
 />
 
 ## Text on `.ds-u-fill--background-inverse` background
+
 <ColorSwatchList
-    backgroundClass='ds-u-fill--background-inverse'
-    preface='.ds-u-color--'
-    colorNames={[
-        'white',
-        'gray-lightest', 
-        'gray-lighter',
-        'gray-light',
-        'primary-alt', 
-        'primary-alt-light', 
-        'primary-alt-lightest', 
-        'primary-alt-dark'
-    ]}
+  backgroundClass="ds-u-fill--background-inverse"
+  preface=".ds-u-color--"
+  colorNames={[
+    'white',
+    'gray-lightest',
+    'gray-lighter',
+    'gray-light',
+    'primary-alt',
+    'primary-alt-light',
+    'primary-alt-lightest',
+    'primary-alt-dark',
+  ]}
 />
 
 ## Text on `.ds-u-fill--gray-lightest` background
+
 <ColorSwatchList
-    backgroundClass='ds-u-fill--gray-lightest'
-    preface='.ds-u-color--'
-    colorNames={[
-        'gray', 
-        'gray-dark', 
-        'base', 
-        'primary', 
-        'primary-darker',
-        'primary-darkest',
-        'primary-alt-darkest', 
-        'error-dark', 
-        'error-darkest'
-    ]}
+  backgroundClass="ds-u-fill--gray-lightest"
+  preface=".ds-u-color--"
+  colorNames={[
+    'gray',
+    'gray-dark',
+    'base',
+    'primary',
+    'primary-darker',
+    'primary-darkest',
+    'primary-alt-darkest',
+    'error-dark',
+    'error-darkest',
+  ]}
 />
 
 ## Text on `.ds-u-fill--primary-alt-lightest` background
+
 <ColorSwatchList
-    backgroundClass='ds-u-fill--primary-alt-lightest'
-    preface='.ds-u-color--'
-    colorNames={[
-        'base', 
-        'gray', 
-        'gray-dark', 
-        'primary-darker', 
-        'primary-darkest', 
-        'primary-alt-darkest',
-        'error-dark', 
-        'error-darkest'
-    ]}
+  backgroundClass="ds-u-fill--primary-alt-lightest"
+  preface=".ds-u-color--"
+  colorNames={[
+    'base',
+    'gray',
+    'gray-dark',
+    'primary-darker',
+    'primary-darkest',
+    'primary-alt-darkest',
+    'error-dark',
+    'error-darkest',
+  ]}
 />
 
 ## Text on `.ds-u-fill--success-lightest` background
+
 <ColorSwatchList
-    backgroundClass='ds-u-fill--success-lightest'
-    preface='.ds-u-color--'
-    colorNames={[
-        'base', 
-        'gray', 
-        'gray-dark', 
-        'primary',
-        'primary-darker', 
-        'primary-darkest', 
-        'primary-alt-darkest', 
-        'error-dark', 
-        'error-darkest'
-    ]}
+  backgroundClass="ds-u-fill--success-lightest"
+  preface=".ds-u-color--"
+  colorNames={[
+    'base',
+    'gray',
+    'gray-dark',
+    'primary',
+    'primary-darker',
+    'primary-darkest',
+    'primary-alt-darkest',
+    'error-dark',
+    'error-darkest',
+  ]}
 />
 
 ## Text on `.ds-u-fill--warn-lightest` background
+
 <ColorSwatchList
-    backgroundClass='ds-u-fill--warn-lightest'
-    preface='.ds-u-color--'
-    colorNames={[
-        'base', 
-        'gray', 
-        'gray-dark', 
-        'primary', 
-        'primary-darker',
-        'primary-darkest',
-        'primary-alt-darkest', 
-        'error-dark', 
-        'error-darkest'
-    ]}
+  backgroundClass="ds-u-fill--warn-lightest"
+  preface=".ds-u-color--"
+  colorNames={[
+    'base',
+    'gray',
+    'gray-dark',
+    'primary',
+    'primary-darker',
+    'primary-darkest',
+    'primary-alt-darkest',
+    'error-dark',
+    'error-darkest',
+  ]}
 />
 
 ## Text on `.ds-u-fill--error-lightest` background
+
 <ColorSwatchList
-    backgroundClass='ds-u-fill--error-lightest'
-    preface='.ds-u-color--'
-    colorNames={[
-        'base',
-        'gray',
-        'gray-dark',
-        'primary-darker', 
-        'primary-darkest', 
-        'primary-alt-darkest', 
-        'error-darkest'
-    ]}
+  backgroundClass="ds-u-fill--error-lightest"
+  preface=".ds-u-color--"
+  colorNames={[
+    'base',
+    'gray',
+    'gray-dark',
+    'primary-darker',
+    'primary-darkest',
+    'primary-alt-darkest',
+    'error-darkest',
+  ]}
 />
 
 ## Inherit a color
@@ -132,9 +140,13 @@ The options below offer color palette combinations that fall within the range of
 Use the `.ds-u-color--inherit` utility class to inherit the color of the parent element.
 
 <EmbeddedExample>
-    <div class="ds-u-color--error">
-        This is an example of <a href="#" class="ds-u-color--inherit">a link</a> with the class `ds-u-color--error` error styling.
-    </div>
+  <div class="ds-u-color--error">
+    This is an example of{' '}
+    <a href="#" class="ds-u-color--inherit">
+      a link
+    </a>{' '}
+    with the class `ds-u-color--error` error styling.
+  </div>
 </EmbeddedExample>
 
 ## Guidance
