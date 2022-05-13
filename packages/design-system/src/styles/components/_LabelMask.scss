@@ -8,6 +8,8 @@
 }
 
 .ds-c-field + .ds-c-label-mask__mask {
+  font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
+
   .ds-c-label-mask__mask--active {
     display: none;
   }
