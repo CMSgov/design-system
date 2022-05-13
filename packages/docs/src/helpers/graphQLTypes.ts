@@ -1,3 +1,4 @@
+import { PageStatus } from '../components/Layout';
 /**
  * typing for the `mdx` graphQL query
  */
@@ -8,6 +9,9 @@ export interface MdxQuery {
       body: string;
       frontmatter: {
         title: string;
+        relatedUswdsGuidance?: string;
+        showJumpToGuidance?: boolean;
+        status?: PageStatus;
       };
     };
   };

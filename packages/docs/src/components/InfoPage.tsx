@@ -10,8 +10,14 @@ import ContentRenderer from './ContentRenderer';
  */
 const InfoPage = ({ data }: MdxQuery) => {
   const { frontmatter, body } = data.mdx;
+  const { title, relatedUswdsGuidance, showJumpToGuidance, status } = frontmatter;
   return (
-    <Layout pageName={frontmatter.title}>
+    <Layout
+      pageName={title}
+      relatedGuidance={relatedUswdsGuidance}
+      showJumpToGuidance={showJumpToGuidance}
+      status={status}
+    >
       <ContentRenderer data={body} />
     </Layout>
   );
@@ -23,6 +29,9 @@ export const query = graphql`
       id
       frontmatter {
         title
+        status
+        showJumpToGuidance
+        relatedUswdsGuidance
       }
       body
     }
