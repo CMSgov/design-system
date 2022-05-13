@@ -1,7 +1,18 @@
 import React, { useRef, useLayoutEffect, useState } from 'react';
+import classNames from 'classnames';
 
 interface ColorSwatchListProps {
+  /**
+   * a fill class for the background of the name text
+   */
+  backgroundClass?: string;
+  /**
+   * list of variable color names
+   */
   colorNames: string[];
+  /**
+   * the start of the color name. Sometimes it is the variable preface (`$color`) or sometimes it is the css class name (`ds-u`)
+   */
   preface: string;
 }
 
@@ -16,7 +27,7 @@ export const rgbToHex = (r: number, g: number, b: number) => {
  * displays a list of color swatches with a sample of the color, the SCSS variable name & the hex value
  * @param colorNames {String[]} a list of color names - should be same as SCSS token
  */
-const ColorSwatchList = ({ colorNames, preface }: ColorSwatchListProps) => {
+const ColorSwatchList = ({ backgroundClass, colorNames, preface }: ColorSwatchListProps) => {
   const refList = useRef([]);
   const initialColors = colorNames.map((color) => ({ name: color, hex: '' }));
   const [colorList, setColorList] = useState(initialColors);
@@ -52,7 +63,12 @@ const ColorSwatchList = ({ colorNames, preface }: ColorSwatchListProps) => {
             className={`c-swatch__preview ds-u-margin-right--1 ds-u-radius--circle ds-u-fill--${name}`}
             ref={(el) => (refList.current[index] = el)}
           ></div>
-          <code>
+          <code
+            className={classNames('c-swatch__name', {
+              [backgroundClass]: backgroundClass,
+              [`${preface.replace('.', '')}${name}`]: backgroundClass,
+            })}
+          >
             {preface}
             {name}
           </code>

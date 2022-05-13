@@ -25,11 +25,11 @@ const TableWithClassnames = (props) => {
 // Using gatsby link for internal links and regular anchor for external links
 // internal markdown links don't include http* preface
 // external links do
-const LinkWrapper = ({ href, children }: { href: string; children: string }) => {
+const LinkWrapper = ({ href, ...props }) => {
   if (href.includes('http')) {
-    return <a href={href}>{children}</a>;
+    return <a href={href} {...props} />;
   }
-  return <Link to={href}>{children}</Link>;
+  return <Link to={href} {...props} />;
 };
 
 // using prismjs to do syntax highlighting in code blocks
