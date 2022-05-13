@@ -128,7 +128,7 @@ export const shadow = {
   'base':                       '2px 2px 4px',
 }
 
-const healthcare_theme: ThemeTokens = {
+const healthcareTheme: ThemeTokens = {
   animation,
   color: themeColors,
   font: {
@@ -144,4 +144,4 @@ const healthcare_theme: ThemeTokens = {
   z,
 }
 
-export default healthcare_theme
+export default healthcareTheme

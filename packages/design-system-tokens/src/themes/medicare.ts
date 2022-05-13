@@ -155,7 +155,7 @@ const shadow = {
   'box-card': '0 2px 3px 0 rgba(50, 50, 50, 0.23)',
 }
 
-const medicare_theme: ThemeTokens = {
+const medicareTheme: ThemeTokens = {
   animation,
   color: themeColors,
   font: {
@@ -172,4 +172,4 @@ const medicare_theme: ThemeTokens = {
   z,
 }
 
-export default medicare_theme
+export default medicareTheme

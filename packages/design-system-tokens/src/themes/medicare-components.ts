@@ -4,8 +4,9 @@
 
 import { default as t } from './medicare'
 import { hexOpacity } from '../lib/utility'
+import { AllTokenValues } from '../lib/types'
 
-export const components = {
+export const components: AllTokenValues = {
   'alert': {
     '__background-color':                         t.color['primary-alt-lightest'],
     '__background-color--error':                  t.color['error-lightest'],

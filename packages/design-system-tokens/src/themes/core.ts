@@ -141,7 +141,7 @@ export const shadow = {
   'base':                       '2px 2px 4px',
 };
 
-const core_theme: ThemeTokens = {
+const coreTheme: ThemeTokens = {
   animation,
   color: themeColors,
   font: {
@@ -158,4 +158,4 @@ const core_theme: ThemeTokens = {
   z,
 };
 
-export default core_theme;
+export default coreTheme;
