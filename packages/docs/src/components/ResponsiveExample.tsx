@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { withPrefix } from 'gatsby';
 import classnames from 'classnames';
+import CodeSnippet from './CodeSnippet';
 
 const breakpointOpts = {
   xs: '360',
@@ -22,11 +23,16 @@ interface ResponsiveExample {
 }
 
 /**
- * An example that includes breakpoints to mimic different screen sizes as well as an example
+ * An example that includes breakpoints to mimic different screen sizes
+ *
+ * This uses a storybook story to display inner content and displays the html for the example
+ *
+ * To use this example, you must have a corresponding storybook story to reference
  */
 const ResponsiveExample = ({ storyId, title }: ResponsiveExample) => {
   const [iframeBreakpoint, setIframeBreakpoint] = useState<string>('xl');
   const [iframeHeight, setiFrameHeight] = useState<number>(0);
+  const [iframeHtml, setiFrameHtml] = useState<string>('');
   const [exampleWrapperWidth, setExampleWrapperWidth] = useState<number>(0);
   const iframeRef = useRef<HTMLIFrameElement>();
   const exampleWrapperRef = useRef<HTMLDivElement>();
@@ -78,54 +84,62 @@ const ResponsiveExample = ({ storyId, title }: ResponsiveExample) => {
       contentWindow.addEventListener('resize', handleIframeResize);
       iframeRef.current.contentDocument.documentElement.classList.add('ds-u-overflow--hidden');
       handleIframeResize();
+
+      const rootEl = iframeRef.current.contentDocument.body.querySelector('#root');
+      if (rootEl) {
+        setiFrameHtml(rootEl.innerHTML);
+      }
     }
   };
 
   return (
-    <div className="c-responsive-example ds-u-border--1">
-      <ol className="c-responsive-example__button-list ds-u-border-bottom--1 ds-l-row ds-u-margin--0 ds-u-padding-x--0">
-        {Object.keys(breakpointOpts).map((breakpointName) => (
-          <li
-            className="c-responsive-example__list-item ds-l-col ds-u-padding-x--0"
-            key={`breakpoint-${breakpointName}`}
-          >
-            <button
-              className={classnames('c-responsive-example__button', {
-                'c-responsive-example__button--active': breakpointName === iframeBreakpoint,
-              })}
-              onClick={() => setIframeBreakpoint(breakpointName)}
+    <>
+      <div className="c-responsive-example ds-u-border--1">
+        <ol className="c-responsive-example__button-list ds-u-border-bottom--1 ds-l-row ds-u-margin--0 ds-u-padding-x--0">
+          {Object.keys(breakpointOpts).map((breakpointName) => (
+            <li
+              className="c-responsive-example__list-item ds-l-col ds-u-padding-x--0"
+              key={`breakpoint-${breakpointName}`}
             >
-              <strong>{breakpointName}</strong>
-              <div className="ds-u-font-size--small">Width: {breakpointOpts[breakpointName]}</div>
-            </button>
-          </li>
-        ))}
-      </ol>
-      <div
-        className="c-resposive-example__example-wrapper "
-        style={{ height: getScale() * iframeHeight }}
-        ref={exampleWrapperRef}
-      >
+              <button
+                className={classnames('c-responsive-example__button', {
+                  'c-responsive-example__button--active': breakpointName === iframeBreakpoint,
+                })}
+                onClick={() => setIframeBreakpoint(breakpointName)}
+              >
+                <strong>{breakpointName}</strong>
+                <div className="ds-u-font-size--small">Width: {breakpointOpts[breakpointName]}</div>
+              </button>
+            </li>
+          ))}
+        </ol>
         <div
-          className={`c-repsonsive-example__iframe-wrapper ${
-            iframeBreakpoint && `c-responsive-example__iframe-wrapper--width-${iframeBreakpoint}`
-          }`}
-          style={{ transform: `scale(${getScale()})` }}
+          className="c-resposive-example__example-wrapper "
+          style={{ height: getScale() * iframeHeight }}
+          ref={exampleWrapperRef}
         >
-          <iframe
-            referrerPolicy="no-referrer"
-            className={`c-responsive-example__iframe ${
-              iframeBreakpoint && `c-responsive-example__iframe--width-${iframeBreakpoint}`
+          <div
+            className={`c-repsonsive-example__iframe-wrapper ${
+              iframeBreakpoint && `c-responsive-example__iframe-wrapper--width-${iframeBreakpoint}`
             }`}
-            src={iframeUrl}
-            title={title}
-            ref={iframeRef}
-            onLoad={onIframeLoad}
-            height={iframeHeight}
-          />
+            style={{ transform: `scale(${getScale()})` }}
+          >
+            <iframe
+              referrerPolicy="no-referrer"
+              className={`c-responsive-example__iframe ${
+                iframeBreakpoint && `c-responsive-example__iframe--width-${iframeBreakpoint}`
+              }`}
+              src={iframeUrl}
+              title={title}
+              ref={iframeRef}
+              onLoad={onIframeLoad}
+              height={iframeHeight}
+            />
+          </div>
         </div>
       </div>
-    </div>
+      <CodeSnippet html={iframeHtml} />
+    </>
   );
 };
 
