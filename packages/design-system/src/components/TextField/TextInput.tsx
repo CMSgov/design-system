@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import Mask from './Mask';
-import LabelMask, { BuiltInMask } from './LabelMask/LabelMask';
+import LabelMask from './LabelMask/LabelMask';
 import classNames from 'classnames';
 
 export type TextInputDefaultValue = string | number;
@@ -54,7 +54,7 @@ export type CommonTextInputProps<MultilineValue extends boolean | undefined> = O
    * field's appearance and functionality may be affected.
    */
   mask?: TextInputMask;
-  labelMask?: BuiltInMask;
+  labelMask?: (rawInput: string, valueOnly?: boolean) => string;
   /**
    * Whether or not the text field is a multiline text field
    */
@@ -133,7 +133,6 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
       'ds-c-field--inverse': inversed,
     },
     mask && `ds-c-field--${mask}`,
-    labelMask && `ds-c-field--${labelMask}`,
     size && `ds-c-field--${size}`,
     fieldClassName
   );
