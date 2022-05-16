@@ -69,11 +69,13 @@ const StorybookExample = ({ componentName, sourceFilePath }: StorybookExamplePro
   return (
     <>
       {sourceFilePath && (
-        <a
-          href={`https://github.com/CMSgov/design-system/blob/master/packages/design-system/src/${sourceFilePath}`}
-        >
-          View Source File
-        </a>
+        <p>
+          <a
+            href={`https://github.com/CMSgov/design-system/blob/master/packages/design-system/src/${sourceFilePath}`}
+          >
+            View Source File
+          </a>
+        </p>
       )}
       <div className="c-storybook-example">
         <div
@@ -96,7 +98,11 @@ const StorybookExample = ({ componentName, sourceFilePath }: StorybookExamplePro
           />
         </div>
         <div className="c-storybook-example__link-wrapper">
-          <a href={`/storybook/?path=/story/components-${componentName}--default`} target="_blank" rel="noreferrer">
+          <a
+            href={`/storybook/?path=/story/components-${componentName}--default`}
+            target="_blank"
+            rel="noreferrer"
+          >
             Open in Storybook <ExternalLinkIcon />
           </a>
         </div>
