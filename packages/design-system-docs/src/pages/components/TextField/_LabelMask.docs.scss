@@ -1,13 +1,23 @@
 /*
-Label masked field
+Label mask
 
-Style guide: components.labelMasked-field
+Label mask provides formatted input hint text and updates as the user inputs their information. When the users leaves the field, the hint text formatting is then applied to the input value itself.
+
+Style guide: components.label-mask
 */
 
 /*
 `<TextField labelMask={...}>`
 
+Applying a `labelMask` prop with a valid value to a `TextField` component enables formatting to occur.
+
+State is not managed by the `LabelMask` component, but by the `TextField` component.
+
+`<TextField labelMask={...}>`
+
 @react-example LabelMask.example.jsx
 
-Style guide: components.labelMasked-field.react
+@react-props TextField.tsx
+
+Style guide: components.label-mask.react
 */
