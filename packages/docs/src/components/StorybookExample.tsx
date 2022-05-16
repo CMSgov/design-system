@@ -97,11 +97,12 @@ const StorybookExample = ({ componentName, sourceFilePath }: StorybookExamplePro
             height={iframeHeight}
           />
         </div>
-        <div className="c-storybook-example__link-wrapper">
+        <div className="ds-u-display--flex ds-u-justify-content--end">
           <a
             href={`/storybook/?path=/story/components-${componentName}--default`}
             target="_blank"
             rel="noreferrer"
+            className="c-storybook-example__link"
           >
             Open in Storybook <ExternalLinkIcon />
           </a>
