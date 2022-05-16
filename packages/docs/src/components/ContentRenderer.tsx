@@ -7,6 +7,7 @@ import { MDXProvider } from '@mdx-js/react';
 import { toKebabCase } from '../helpers/casingUtils';
 
 import EmbeddedExample from './EmbeddedExample';
+import StorybookExample from './StorybookExample';
 
 interface MdxProviderProps {
   children: string;
@@ -64,6 +65,7 @@ const customComponents = {
   code: CodeWithSyntaxHighlighting,
   pre: PreformattedWithLanguageClass,
   EmbeddedExample,
+  StorybookExample,
 };
 
 interface ContentRendererProps {
