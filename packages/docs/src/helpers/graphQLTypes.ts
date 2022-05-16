@@ -1,3 +1,11 @@
+import { PageStatus } from '../components/Layout';
+
+export interface TableOfContentsItem {
+  url: string;
+  title: string;
+  items?: TableOfContentsItem[];
+}
+
 /**
  * typing for the `mdx` graphQL query
  */
@@ -8,6 +16,11 @@ export interface MdxQuery {
       body: string;
       frontmatter: {
         title: string;
+        relatedUswdsGuidance?: string;
+        status?: PageStatus;
+      };
+      tableOfContents: {
+        items: TableOfContentsItem[];
       };
     };
   };
