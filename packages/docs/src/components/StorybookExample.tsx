@@ -6,9 +6,14 @@ import { withPrefix } from 'gatsby';
 
 interface StorybookExampleProps {
   /**
-   * name of component
+   * name of component. Never displayed, but used for accessible labelling. Make sure this is unique on the page
    */
   componentName: string;
+  /**
+   * story id from storybook url
+   * example: `components-[COMPONENT_NAME]--default`
+   */
+  storyId: string;
   /**
    * path within 'src' directory to source file
    */
@@ -22,14 +27,12 @@ interface StorybookExampleProps {
  * If you need to show responsiveness, use the `ResponsiveExample`.
  * If you don't need a story, but can use regular HTML or React components, use an Embedded example.
  */
-const StorybookExample = ({ componentName, sourceFilePath }: StorybookExampleProps) => {
+const StorybookExample = ({ componentName, sourceFilePath, storyId }: StorybookExampleProps) => {
   const [iframeHeight, setiFrameHeight] = useState<number>(200);
   const [iframeHtml, setiFrameHtml] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const iframeRef = useRef<HTMLIFrameElement>();
-  const iframeUrl = withPrefix(
-    `/storybook/iframe.html?id=components-${componentName}--default&args=&viewMode=story`
-  );
+  const iframeUrl = withPrefix(`/storybook/iframe.html?id=${storyId}&viewMode=story`);
 
   useEffect(() => {
     if (window) {
@@ -99,7 +102,7 @@ const StorybookExample = ({ componentName, sourceFilePath }: StorybookExamplePro
         </div>
         <div className="ds-u-display--flex ds-u-justify-content--end">
           <a
-            href={`/storybook/?path=/story/components-${componentName}--default`}
+            href={withPrefix(`/storybook/?path=/story/${storyId}`)}
             target="_blank"
             rel="noreferrer"
             className="c-storybook-example__link"
