@@ -7,7 +7,23 @@ Alerts keep users informed of important and sometimes time-sensitive changes.
 
 ## `<Alert>`
 
-<StorybookExample componentName="alert" sourceFilePath="components/Alert/Alert.tsx" />
+### Default
+<StorybookExample componentName="alert" sourceFilePath="components/Alert/Alert.tsx" storyId="components-alert--default" />
+
+### Error
+<StorybookExample componentName="error alert" sourceFilePath="components/Alert/Alert.tsx" storyId="components-alert--error-alert" />
+
+### Warning
+<StorybookExample componentName="warning alert" sourceFilePath="components/Alert/Alert.tsx" storyId="components-alert--warning-alert" />
+
+### Success
+<StorybookExample componentName="success alert" sourceFilePath="components/Alert/Alert.tsx" storyId="components-alert--success-alert" />
+
+### Lightweight
+<StorybookExample componentName="lightweight alert" sourceFilePath="components/Alert/Alert.tsx" storyId="components-alert--light-weight" />
+
+### Props
+<PropTable componentName="Alert" />
 
 ## Guidance
 
@@ -34,6 +50,10 @@ Alerts keep users informed of important and sometimes time-sensitive changes.
 - Users generally won’t read documentation but will read a message that helps them resolve an error; include some educational material in your error message.
 - If the error relates to specific text fields, give these fields an error state as well.
 
+### Learn more
+
+- [18F Content Guide \- Active voice](https://content-guide.18f.gov/active-voice/)
+
 ### Accessibility
 
 - Use the ARIA `role="alert"` to inform assistive technologies of a time-sensitive and important message that is not interactive. If the message is interactive, use the `role="alertdialog"` instead.
@@ -43,7 +63,7 @@ Alerts keep users informed of important and sometimes time-sensitive changes.
 - Alerts should give users adequate time to review and comprehend the provided information. Avoid hiding alerts using a timer.
 - Include a mechanism like a button to dismiss alerts where appropriate.
 
-### Customization
+## Customization
 
 The following Sass variables can be overridden to theme alerts:
 
@@ -54,10 +74,6 @@ The following Sass variables can be overridden to theme alerts:
 - `$alert-link-color-hover` - Used to control the alert link text color when hovered
 - `$alert-link-color-active` - Used to control the alert link text color when active
 - `$alert-link-color-focus` - Used to control the alert link text color when focused
-
-### Learn more
-
-- [18F Content Guide \- Active voice](https://content-guide.18f.gov/active-voice/)
 
 ## Google Analytics
 
