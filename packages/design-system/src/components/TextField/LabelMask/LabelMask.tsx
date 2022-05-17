@@ -1,5 +1,14 @@
 import React from 'react';
 
+/**
+ * Takes the string value from an input and returns a string
+ * with appropriate date format masking applied concatenated
+ * with the date hint text, MM/DD/YYYY.
+ * @param {String} rawInput
+ * @param {Boolean} valueOnly - Defaults to false. If true,
+ * returns string without additional hint text.
+ * @returns {String}
+ */
 function maskDate(rawInput = '', valueOnly = false): any {
   const RE_DATE = /^(\d{1,2})[\D]?(\d{1,2})?[\D]?(\d{1,4})?/;
   const match = RE_DATE.exec(rawInput);
@@ -34,30 +43,30 @@ export interface LabelMaskProps {
    * Must contain a `TextField` component
    */
   children: React.ReactNode;
+  /**
+   * Applies date format masking to the input value entered
+   * and renders to a text field above the input.
+   * Passing `true` to `valueOnly` will return just the
+   * formatted value entered.
+   */
   labelMask?: (rawInput: string, valueOnly?: boolean) => string;
 }
 
 const LabelMask = ({ children, labelMask }: LabelMaskProps) => {
-  if (typeof labelMask === 'string') {
-    if (labelMask === BuiltInMask.DATE) {
-      labelMask = maskDate;
-    }
-  }
-
   /**
    * Get the child text field. Called as a method so that
    * updates to the field cause the mask to re-render
    * @returns {React.ReactElement} Child TextField
    */
   const field = (): React.ReactElement => React.Children.only(children as React.ReactElement);
-  const value = field().props.value;
+  const { onBlur, onChange, value } = field().props;
 
   /**
    * @param {Object} evt
    * @param {React.Element} field - Child TextField
    */
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    if (typeof field().props.onChange === 'function') {
+    if (typeof onChange === 'function') {
       return field().props.onChange(evt);
     }
   };
@@ -71,7 +80,7 @@ const LabelMask = ({ children, labelMask }: LabelMaskProps) => {
       e.target.value = maskedValue;
       handleChange(e);
 
-      if (typeof field().props.onBlur === 'function') {
+      if (typeof onBlur === 'function') {
         return field().props.onBlur(e);
       }
     },

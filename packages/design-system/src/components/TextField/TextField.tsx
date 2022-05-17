@@ -73,6 +73,12 @@ export interface TextFieldProps {
    * Label for the input
    */
   label: React.ReactNode;
+  /**
+   * Applies date format masking to the input value entered
+   * and renders to a text field above the input.
+   * Passing `true` to `valueOnly` will return just the
+   * formatted value entered.
+   */
   labelMask?: (rawInput: string, valueOnly?: boolean) => string;
   /**
    * Additional classes to be added to the `FormLabel`.

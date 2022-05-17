@@ -54,6 +54,12 @@ export type CommonTextInputProps<MultilineValue extends boolean | undefined> = O
    * field's appearance and functionality may be affected.
    */
   mask?: TextInputMask;
+  /**
+   * Applies date format masking to the input value entered
+   * and renders to a text field above the input.
+   * Passing `true` to `valueOnly` will return just the
+   * formatted value entered.
+   */
   labelMask?: (rawInput: string, valueOnly?: boolean) => string;
   /**
    * Whether or not the text field is a multiline text field
@@ -61,7 +67,7 @@ export type CommonTextInputProps<MultilineValue extends boolean | undefined> = O
   multiline?: MultilineValue;
   name?: string;
   /**
-   * Sets `inputMode`, `type`, and `pattern` to improve accessiblity and consistency for number fields. Use this prop instead of `type="number"`, see [here](https://technology.blog.gov.uk/2020/02/24/why-the-gov-uk-design-system-team-changed-the-input-type-for-numbers/) for more information.
+   * Sets `inputMode`, `type`, and `pattern` to improve accessibility and consistency for number fields. Use this prop instead of `type="number"`, see [here](https://technology.blog.gov.uk/2020/02/24/why-the-gov-uk-design-system-team-changed-the-input-type-for-numbers/) for more information.
    */
   numeric?: boolean;
   onBlur?: (
