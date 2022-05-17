@@ -19,7 +19,7 @@ export interface MdxQuery {
         relatedUswdsGuidance?: string;
         status?: PageStatus;
       };
-      tableOfContents: {
+      tableOfContents?: {
         items: TableOfContentsItem[];
       };
     };
