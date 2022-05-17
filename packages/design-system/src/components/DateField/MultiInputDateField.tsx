@@ -16,7 +16,7 @@ export type DateFieldErrorPlacement = 'top' | 'bottom';
 
 export interface DateFieldProps {
   /**
-   * Adds `autocomplete` attributes `bday-day`, `bday-month` and `bday-year` to the corresponding `<DateField>` inputs
+   * Adds `autocomplete` attributes `bday-day`, `bday-month` and `bday-year` to the corresponding `<MultiInputDateField>` inputs
    */
   autoComplete?: boolean;
   /**
@@ -55,7 +55,7 @@ export interface DateFieldProps {
    */
   label?: React.ReactNode;
   /**
-   * A unique ID to be used for the DateField label. If one isn't provided, a unique ID will be generated.
+   * A unique ID to be used for the MultiInputDateField label. If one isn't provided, a unique ID will be generated.
    */
   labelId?: string;
   /**
@@ -156,7 +156,7 @@ export interface DateFieldProps {
   yearValue?: DateFieldYearValue;
 }
 
-export function DateField(props: DateFieldProps): React.ReactElement {
+export function MultiInputDateField(props: DateFieldProps): React.ReactElement {
   const containerProps = pick(props, FormControlPropKeys);
   const inputOnlyProps = omit(props, FormControlPropKeys);
 
@@ -174,11 +174,11 @@ export function DateField(props: DateFieldProps): React.ReactElement {
   );
 }
 
-DateField.defaultProps = {
+MultiInputDateField.defaultProps = {
   dayName: 'day',
   monthName: 'month',
   yearName: 'year',
   dateFormatter: defaultDateFormatter,
 };
 
-export default DateField;
+export default MultiInputDateField;
