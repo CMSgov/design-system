@@ -11,11 +11,14 @@ import ContentRenderer from './ContentRenderer';
 const InfoPage = ({ data }: MdxQuery) => {
   const { frontmatter, body, tableOfContents } = data.mdx;
   const { title, relatedUswdsGuidance, status } = frontmatter;
+  let showGuidance = false;
 
   // check table of contents to see if there is a guidance section
-  const showGuidance = tableOfContents.items.some(
-    (item: TableOfContentsItem) => item.title === 'Guidance'
-  );
+  if (tableOfContents && Object.keys(tableOfContents).length) {
+    showGuidance = tableOfContents.items.some(
+      (item: TableOfContentsItem) => item.title === 'Guidance'
+    );
+  }
 
   return (
     <Layout
