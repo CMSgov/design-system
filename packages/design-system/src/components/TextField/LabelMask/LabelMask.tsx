@@ -58,8 +58,8 @@ const LabelMask = ({ children, labelMask }: LabelMaskProps) => {
    * updates to the field cause the mask to re-render
    * @returns {React.ReactElement} Child TextField
    */
-  const field = (): React.ReactElement => React.Children.only(children as React.ReactElement);
-  const { onBlur, onChange, value } = field().props;
+  const field = React.Children.only(children as React.ReactElement);
+  const { onBlur, onChange, value } = field.props;
 
   /**
    * @param {Object} evt
@@ -67,11 +67,11 @@ const LabelMask = ({ children, labelMask }: LabelMaskProps) => {
    */
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     if (typeof onChange === 'function') {
-      return field().props.onChange(evt);
+      return onChange(evt);
     }
   };
 
-  const modifiedTextField = React.cloneElement(field(), {
+  const modifiedTextField = React.cloneElement(field, {
     defaultValue: undefined,
     onChange: (e) => handleChange(e),
     onBlur: (e) => {
@@ -81,7 +81,7 @@ const LabelMask = ({ children, labelMask }: LabelMaskProps) => {
       handleChange(e);
 
       if (typeof onBlur === 'function') {
-        return field().props.onBlur(e);
+        return onBlur(e);
       }
     },
     type: 'text',
