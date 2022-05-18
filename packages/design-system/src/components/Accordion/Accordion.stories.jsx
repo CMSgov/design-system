@@ -30,7 +30,7 @@ Default.args = {
         establish this Constitution for the United States of America.
       </p>
     </AccordionItem>,
-    <AccordionItem key="2" heading="Second Amendment">
+    <AccordionItem key="2" heading="Second Amendment" defaultOpen>
       <p>
         A well regulated Militia, being necessary to the security of a free State, the right of the
         people to keep and bear Arms, shall not be infringed.

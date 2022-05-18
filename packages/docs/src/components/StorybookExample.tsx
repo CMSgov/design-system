@@ -10,6 +10,10 @@ interface StorybookExampleProps {
    */
   componentName: string;
   /**
+   * min height of example container. Use for examples that have elements appear on interactivity that need more room
+   */
+  minHeight?: number;
+  /**
    * story id from storybook url
    * example: `components-[COMPONENT_NAME]--default`
    */
@@ -27,7 +31,12 @@ interface StorybookExampleProps {
  * If you need to show responsiveness, use the `ResponsiveExample`.
  * If you don't need a story, but can use regular HTML or React components, use an Embedded example.
  */
-const StorybookExample = ({ componentName, sourceFilePath, storyId }: StorybookExampleProps) => {
+const StorybookExample = ({
+  componentName,
+  minHeight,
+  sourceFilePath,
+  storyId,
+}: StorybookExampleProps) => {
   const [iframeHeight, setiFrameHeight] = useState<number>(200);
   const [iframeHtml, setiFrameHtml] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -86,7 +95,10 @@ const StorybookExample = ({ componentName, sourceFilePath, storyId }: StorybookE
             'ds-u-padding-y--4': isLoading,
             'ds-u-text-align--center': isLoading,
           })}
-          style={{ height: iframeHeight }}
+          style={{
+            height: iframeHeight,
+            minHeight: minHeight || 0,
+          }}
         >
           {isLoading && <Spinner />}
           <iframe
@@ -97,7 +109,6 @@ const StorybookExample = ({ componentName, sourceFilePath, storyId }: StorybookE
             title={`${componentName} example`}
             ref={iframeRef}
             onLoad={onIframeLoad}
-            height={iframeHeight}
           />
         </div>
         <div className="ds-u-display--flex ds-u-justify-content--end">

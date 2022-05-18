@@ -26,7 +26,11 @@ const HeadingWithId = (props: MdxProviderProps, Component) => {
 
 // adds DS styling to tables from markdown
 const TableWithClassnames = (props) => {
-  return <table className="ds-c-table" {...props}></table>;
+  return (
+    <div className="ds-u-overflow--auto">
+      <table className="ds-c-table" {...props}></table>
+    </div>
+  );
 };
 
 // using prismjs to do syntax highlighting in code blocks

@@ -109,7 +109,7 @@ The following Sass variables can be overridden to theme alerts:
 
 Import and set the `setAlertSendsAnalytics` feature flag to `true` in your application's entry file:
 
-```JSX
+```js
 import { setAlertSendsAnalytics } from "@cmsgov/<design-system-package>";
 setAlertSendsAnalytics(true);
 ```
@@ -120,7 +120,7 @@ On applications where the page has `utag` loaded, the data goes to Tealium which
 
 For the `analytics` prop, pass the value `false` to the component to disable analytics tracking for a singular component instance
 
-```JSX
+```js
 analytics={false}
 ```
 
