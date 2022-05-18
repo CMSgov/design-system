@@ -8,7 +8,7 @@ import React from 'react';
  * `valueOnly` defaults to false. If true, returns formatted
  * string without additional hint text.
  */
-function maskDate(rawInput = '', valueOnly = false): any {
+export function DATE_MASK(rawInput = '', valueOnly = false): string {
   const RE_DATE = /^(\d{1,2})[\D]?(\d{1,2})?[\D]?(\d{1,4})?/;
   const match = RE_DATE.exec(rawInput);
   let formattedDate = '';
@@ -33,9 +33,9 @@ function maskDate(rawInput = '', valueOnly = false): any {
   return formattedDate + hintSub;
 }
 
-export const BuiltInMask = {
-  DATE: maskDate,
-};
+// export const BuiltInMask = {
+//   DATE: maskDate,
+// };
 
 export interface LabelMaskProps {
   /**

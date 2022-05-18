@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import TextField from './TextField';
-import { BuiltInMask } from './LabelMask/LabelMask';
+import { DATE_MASK } from './LabelMask';
 
 export default {
   title: 'Components/Text Field',
@@ -86,7 +86,7 @@ export const LabelMaskedField = () => {
         name="labelMask-date"
         label="Enter the last day of your coverage"
         hint="If you don't have it, give your best estimate. For example: 01/02/2022"
-        labelMask={BuiltInMask.DATE}
+        labelMask={DATE_MASK}
         value={date}
         onChange={(event) => setDate(event.currentTarget.value)}
       />

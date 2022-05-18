@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import LabelMask, { BuiltInMask } from './LabelMask';
+import LabelMask, { DATE_MASK } from './LabelMask';
 import { render, fireEvent } from '@testing-library/react';
 
 const TestLabelMask = () => {
   const [value, setValue] = useState('');
   return (
-    <LabelMask labelMask={BuiltInMask.DATE}>
+    <LabelMask labelMask={DATE_MASK}>
       <input type="text" value={value} onChange={(e) => setValue(e.currentTarget.value)} />
     </LabelMask>
   );
