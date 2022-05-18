@@ -44,7 +44,7 @@ export interface LabelMaskProps {
   children: React.ReactNode;
   /**
    * Applies date format masking to the input value entered
-   * and renders to a text field above the input. See
+   * and displays the formatted value above the input. See
    * 'Label mask' documentation page for more information.
    * Passing `true` to `valueOnly` will return just the
    * formatted value entered.
