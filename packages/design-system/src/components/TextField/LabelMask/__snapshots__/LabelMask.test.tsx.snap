@@ -1,34 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Label mask formats input value onBlur 1`] = `
-<DocumentFragment>
-  <div
-    class="ds-c-label-mask"
-  >
-    <input
-      inputmode="numeric"
-      type="text"
-      value="12/34/5678"
-    />
-    <div
-      aria-hidden="true"
-      class="ds-c-label-mask__mask"
-    >
-      <span
-        class="ds-c-label-mask__mask--active"
-      >
-        12/34/5678
-      </span>
-      <span
-        class="ds-c-label-mask__mask--inactive"
-      >
-        MM/DD/YYYY
-      </span>
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
 exports[`Label mask renders default date mask, MM/DD/YYYY, when no input value set 1`] = `
 <DocumentFragment>
   <div
@@ -47,93 +18,6 @@ exports[`Label mask renders default date mask, MM/DD/YYYY, when no input value s
         class="ds-c-label-mask__mask--active"
       >
         MM/DD/YYYY
-      </span>
-      <span
-        class="ds-c-label-mask__mask--inactive"
-      >
-        MM/DD/YYYY
-      </span>
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`Label mask updates label mask to reflect complete input value set 1`] = `
-<DocumentFragment>
-  <div
-    class="ds-c-label-mask"
-  >
-    <input
-      inputmode="numeric"
-      type="text"
-      value="12345678"
-    />
-    <div
-      aria-hidden="true"
-      class="ds-c-label-mask__mask"
-    >
-      <span
-        class="ds-c-label-mask__mask--active"
-      >
-        12/34/5678
-      </span>
-      <span
-        class="ds-c-label-mask__mask--inactive"
-      >
-        MM/DD/YYYY
-      </span>
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`Label mask updates label mask to reflect padded values when incomplete input value set 1`] = `
-<DocumentFragment>
-  <div
-    class="ds-c-label-mask"
-  >
-    <input
-      inputmode="numeric"
-      type="text"
-      value="1"
-    />
-    <div
-      aria-hidden="true"
-      class="ds-c-label-mask__mask"
-    >
-      <span
-        class="ds-c-label-mask__mask--active"
-      >
-        01/DD/YYYY
-      </span>
-      <span
-        class="ds-c-label-mask__mask--inactive"
-      >
-        MM/DD/YYYY
-      </span>
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`Label mask updates label mask to reflect partial input value set 1`] = `
-<DocumentFragment>
-  <div
-    class="ds-c-label-mask"
-  >
-    <input
-      inputmode="numeric"
-      type="text"
-      value="1234"
-    />
-    <div
-      aria-hidden="true"
-      class="ds-c-label-mask__mask"
-    >
-      <span
-        class="ds-c-label-mask__mask--active"
-      >
-        12/34/YYYY
       </span>
       <span
         class="ds-c-label-mask__mask--inactive"

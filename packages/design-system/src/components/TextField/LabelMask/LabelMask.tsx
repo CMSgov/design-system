@@ -4,10 +4,9 @@ import React from 'react';
  * Takes the string value from an input and returns a string
  * with appropriate date format masking applied concatenated
  * with the date hint text, MM/DD/YYYY.
- * @param {String} rawInput
- * @param {Boolean} valueOnly - Defaults to false. If true,
- * returns string without additional hint text.
- * @returns {String}
+ *
+ * `valueOnly` defaults to false. If true, returns formatted
+ * string without additional hint text.
  */
 function maskDate(rawInput = '', valueOnly = false): any {
   const RE_DATE = /^(\d{1,2})[\D]?(\d{1,2})?[\D]?(\d{1,4})?/;
@@ -45,7 +44,8 @@ export interface LabelMaskProps {
   children: React.ReactNode;
   /**
    * Applies date format masking to the input value entered
-   * and renders to a text field above the input.
+   * and renders to a text field above the input. See
+   * 'Label mask' documentation page for more information.
    * Passing `true` to `valueOnly` will return just the
    * formatted value entered.
    */
@@ -56,15 +56,10 @@ const LabelMask = ({ children, labelMask }: LabelMaskProps) => {
   /**
    * Get the child text field. Called as a method so that
    * updates to the field cause the mask to re-render
-   * @returns {React.ReactElement} Child TextField
    */
   const field = React.Children.only(children as React.ReactElement);
   const { onBlur, onChange, value } = field.props;
 
-  /**
-   * @param {Object} evt
-   * @param {React.Element} field - Child TextField
-   */
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     if (typeof onChange === 'function') {
       return onChange(evt);

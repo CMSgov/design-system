@@ -24,7 +24,7 @@ describe('Label mask', function () {
   });
   describe('updates label mask to reflect', () => {
     it('complete input value set', () => {
-      const { container, asFragment } = render(<TestLabelMask />);
+      const { container } = render(<TestLabelMask />);
       const data = '12345678';
       const maskText = '12/34/5678';
 
@@ -35,11 +35,9 @@ describe('Label mask', function () {
 
       expect(input).toHaveValue(data);
       expect(mask.textContent).toBe(maskText);
-
-      expect(asFragment()).toMatchSnapshot();
     });
     it('partial input value set', () => {
-      const { container, asFragment } = render(<TestLabelMask />);
+      const { container } = render(<TestLabelMask />);
       const data = '1234';
 
       const mask = container.querySelector('.ds-c-label-mask__mask--active');
@@ -49,11 +47,9 @@ describe('Label mask', function () {
 
       expect(input).toHaveValue(data);
       expect(mask.textContent).toBe('12/34/YYYY');
-
-      expect(asFragment()).toMatchSnapshot();
     });
     it('padded values when incomplete input value set', () => {
-      const { container, asFragment } = render(<TestLabelMask />);
+      const { container } = render(<TestLabelMask />);
       const data = '1';
       const maskText = '01/DD/YYYY';
 
@@ -64,12 +60,10 @@ describe('Label mask', function () {
 
       expect(input).toHaveValue(data);
       expect(mask.textContent).toBe(maskText);
-
-      expect(asFragment()).toMatchSnapshot();
     });
   });
   it('formats input value onBlur', () => {
-    const { container, asFragment } = render(<TestLabelMask />);
+    const { container } = render(<TestLabelMask />);
     const data = '12345678';
     const formattedData = '12/34/5678';
 
@@ -79,7 +73,5 @@ describe('Label mask', function () {
     fireEvent.blur(input);
 
     expect(input).toHaveValue(formattedData);
-
-    expect(asFragment()).toMatchSnapshot();
   });
 });

@@ -7,7 +7,7 @@ const Example = () => {
   return (
     <>
       <TextField
-        name="labelMask-date"
+        name="label_mask_date"
         label="Enter the last day of your coverage"
         hint="If you don't have it, give your best estimate. For example: 01/02/2022"
         labelMask={BuiltInMask.DATE}
