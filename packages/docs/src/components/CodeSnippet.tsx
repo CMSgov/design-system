@@ -22,7 +22,11 @@ interface CodeSnippetProps {
  */
 const CodeSnippet = ({ html, className }: CodeSnippetProps) => {
   const [open] = useState(false);
-  const prettyHtml = prettier.format(html, { parser: 'html', plugins: [parserHtml] });
+  const prettyHtml = prettier.format(html, {
+    htmlWhitespaceSensitivity: 'ignore',
+    parser: 'html',
+    plugins: [parserHtml],
+  });
   const highlightedContent = Prism.highlight(prettyHtml, Prism.languages.html);
 
   return (

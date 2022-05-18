@@ -8,11 +8,29 @@ An accordion is a list of headers that hide or reveal additional content when se
 
 ## `<Accordion>`
 
+<StorybookExample
+  componentName="accordion"
+  sourceFilePath="components/Accordion/Accordion.tsx"
+  storyId="components-accordion--default"
+/>
+
+### Props
+
+<PropTable componentName="Accordion" />
+
 ## `<AccordionItem>`
+
+<a href="https://github.com/CMSgov/design-system/blob/master/packages/design-system/src/components/Accordion/AccordionItem.tsx">
+  View source file
+</a>
 
 `AccordionItem` renders the Accordion element.
 
-## Guidance 
+### Accordion Item Props
+
+<PropTable componentName="AccordionItem" />
+
+## Guidance
 
 ### When to use
 
@@ -33,16 +51,16 @@ Accordions increase cognitive load and interaction cost, as users have to make d
 - Give interactive elements enough space. Make sure interactive elements within the collapsible region are far enough from the headers that users don’t accidentally trigger a collapse.
 
 ### Accessibility
+
 Keyboard support for the Accordion header includes:
+
 - `Enter` or `Spacebar` - Changes the collapsed/expanded state of the associated accordion panel
 - `Arrow Down` - Moves focus to the next accordion header
 - `Arrow Up` - Moves focus to the previous accordion header
 
 ## Customization
 
-- `$accordion-border-color` -  Border color of the accordion
+- `$accordion-border-color` - Border color of the accordion
 - `$accordion-header-bg-color` - Background color of the accordion header
 - `$accordion-header-bg-hover-color` - Background color of the accordion header when hovered
 - `$accordion-header-font-family` - Font used for the accordion header
-
-

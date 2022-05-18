@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'gatsby';
 import Prism from 'prismjs';
 
 import { MDXRenderer } from 'gatsby-plugin-mdx';
@@ -8,19 +7,30 @@ import { toKebabCase } from '../helpers/casingUtils';
 
 import EmbeddedExample from './EmbeddedExample';
 import StorybookExample from './StorybookExample';
+import PropTable from './PropTable';
 
 interface MdxProviderProps {
-  children: string;
+  children: string | { props: { children?: string } };
 }
 
 // adds id to heading elements for in-page linking
 const HeadingWithId = (props: MdxProviderProps, Component) => {
-  return <Component {...props} id={toKebabCase(props.children)} />;
+  if (typeof props.children === 'string') {
+    return <Component {...props} id={toKebabCase(props.children)} />;
+  } else {
+    // for headings that have code blocks, extract the text
+    const text = props.children?.props?.children;
+    return <Component {...props} id={toKebabCase(text)} />;
+  }
 };
 
 // adds DS styling to tables from markdown
 const TableWithClassnames = (props) => {
-  return <table className="ds-c-table" {...props}></table>;
+  return (
+    <div className="ds-u-overflow--auto">
+      <table className="ds-c-table" {...props}></table>
+    </div>
+  );
 };
 
 // using prismjs to do syntax highlighting in code blocks
@@ -66,6 +76,7 @@ const customComponents = {
   pre: PreformattedWithLanguageClass,
   EmbeddedExample,
   StorybookExample,
+  PropTable,
 };
 
 interface ContentRendererProps {
