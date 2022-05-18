@@ -39,10 +39,15 @@ if (!accessToken) {
 }
 
 async function main() {
-  if (yargs.argv.react) {
-    await printReactVersions(accessToken, designSystemPackageNames);
-  } else {
-    await printDesignSystemVersions(accessToken, designSystemPackageNames);
+  try {
+    if (yargs.argv.react) {
+      await printReactVersions(accessToken, designSystemPackageNames);
+    } else {
+      await printDesignSystemVersions(accessToken, designSystemPackageNames);
+    }
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
   }
 }
 

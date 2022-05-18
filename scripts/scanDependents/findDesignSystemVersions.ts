@@ -59,16 +59,8 @@ function printTables(packages: string[], packageDependents: DependentInfo[][]) {
 }
 
 export async function printDesignSystemVersions(accessToken: string, packages: string[]) {
-  let packageDependents: DependentInfo[][];
-
-  try {
-    packageDependents = await Promise.all(
-      packages.map((packageName) => findPackageVersions(accessToken, packageName))
-    );
-  } catch (error) {
-    console.log(error);
-    return;
-  }
-
+  const packageDependents = await Promise.all(
+    packages.map((packageName) => findPackageVersions(accessToken, packageName))
+  );
   printTables(packages, packageDependents);
 }

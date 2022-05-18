@@ -61,16 +61,8 @@ function printTables(packages: string[], packageDependents: DependentInfo[][]) {
 }
 
 export async function printReactVersions(accessToken: string, packages: string[]) {
-  let packageDependents: DependentInfo[][];
-
-  try {
-    packageDependents = await Promise.all(
-      packages.map((packageName) => findReactVersions(accessToken, packageName))
-    );
-  } catch (error) {
-    console.log(error);
-    return;
-  }
-
+  const packageDependents = await Promise.all(
+    packages.map((packageName) => findReactVersions(accessToken, packageName))
+  );
   printTables(packages, packageDependents);
 }
