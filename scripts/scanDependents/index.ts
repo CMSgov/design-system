@@ -30,7 +30,7 @@ const accessToken = argv.token ?? process.env.GHE_ACCESS_TOKEN;
 if (!accessToken) {
   console.error(
     chalk.red(
-      'A GitHub Enterprise personal access token is required. Please provide this as an argument or assign it to GHE_ACCESS_TOKEN in a .env file.'
+      'A GitHub Enterprise personal access token is required. Please provide this as an argument or set a GHE_ACCESS_TOKEN environment variable using an .env file or by exporting that variable within your current shell.'
     )
   );
   yargs.showHelp();
