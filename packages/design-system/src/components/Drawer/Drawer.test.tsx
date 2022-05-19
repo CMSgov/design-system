@@ -23,6 +23,11 @@ function renderDrawer(overwriteProps = {}) {
 }
 
 describe('Drawer', () => {
+  it('renders a dialog', () => {
+    renderDrawer();
+    expect(screen.getByRole('dialog')).toMatchSnapshot();
+  });
+
   describe('onCloseClick', () => {
     it('calls onCloseClick on close button click', () => {
       const onCloseClick = jest.fn();
@@ -35,9 +40,18 @@ describe('Drawer', () => {
     it('should handle `esc` with focus trap enabled', () => {
       const onCloseClick = jest.fn();
       renderDrawer({ onCloseClick, hasFocusTrap: true });
-      fireEvent.keyDown(document, { code: 'Escape' });
+      fireEvent.keyDown(document, { key: 'Escape', code: 'Escape' });
 
       expect(onCloseClick).toHaveBeenCalled();
+    });
+
+    it('removes event listener on unmount', () => {
+      const onCloseClick = jest.fn();
+      const { unmount } = renderDrawer({ onCloseClick, hasFocusTrap: true });
+      unmount();
+      fireEvent.keyDown(document, { code: 'Escape' });
+
+      expect(onCloseClick).not.toHaveBeenCalled();
     });
 
     it('should not call onCloseClick for other key presses', () => {
@@ -46,29 +60,6 @@ describe('Drawer', () => {
       fireEvent.keyDown(document, { code: 'a' });
 
       expect(onCloseClick).not.toHaveBeenCalled();
-    });
-  });
-
-  it('removes event listener on unmount', () => {
-    const onCloseClick = jest.fn();
-    const { unmount } = renderDrawer({ onCloseClick, hasFocusTrap: true });
-    unmount();
-    fireEvent.keyDown(document, { code: 'Escape' });
-
-    expect(onCloseClick).not.toHaveBeenCalled();
-  });
-
-  describe('renders a snapshot', () => {
-    it('without focus trap', () => {
-      const { asFragment } = renderDrawer();
-
-      expect(asFragment()).toMatchSnapshot();
-    });
-
-    it('with focus trap', () => {
-      const { asFragment } = renderDrawer({ hasFocusTrap: true });
-
-      expect(asFragment()).toMatchSnapshot();
     });
   });
 });

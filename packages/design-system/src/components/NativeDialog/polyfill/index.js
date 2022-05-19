@@ -590,7 +590,7 @@ function loadDialogPolyfill() {
    * @param {!Element} element to force upgrade
    */
   dialogPolyfill.forceRegisterDialog = function (element) {
-    if (window.HTMLDialogElement || element.showModal) {
+    if (element.showModal) {
       console.warn(
         'This browser already supports <dialog>, the polyfill ' + 'may not work correctly',
         element
@@ -759,6 +759,7 @@ function loadDialogPolyfill() {
   };
 
   dialogPolyfill.DialogManager.prototype.handleKey_ = function (event) {
+    // console.log(event.keyCode)
     this.forwardTab_ = undefined;
     if (event.keyCode === 27) {
       event.preventDefault();
