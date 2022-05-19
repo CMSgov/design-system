@@ -1,4 +1,3 @@
-import Table from 'cli-table3';
 import chalk from 'chalk';
 import yargs from 'yargs';
 import dotenv from 'dotenv';
