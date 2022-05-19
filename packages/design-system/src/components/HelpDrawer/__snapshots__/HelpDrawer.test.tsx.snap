@@ -5,6 +5,8 @@ exports[`HelpDrawer renders a snapshot 1`] = `
   <dialog
     aria-labelledby="drawer_2"
     class="ds-c-help-drawer ds-c-drawer"
+    open=""
+    role="dialog"
   >
     <div
       class="ds-c-drawer__window"
