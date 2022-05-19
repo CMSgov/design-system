@@ -1,6 +1,7 @@
 import Drawer from './Drawer';
 import React from 'react';
-import { render, fireEvent, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 const defaultProps = {
   footerBody: (
@@ -32,7 +33,7 @@ describe('Drawer', () => {
     it('calls onCloseClick on close button click', () => {
       const onCloseClick = jest.fn();
       renderDrawer({ onCloseClick });
-      fireEvent.click(screen.getByText('Close'));
+      userEvent.click(screen.getByText('Close'));
 
       expect(onCloseClick).toHaveBeenCalled();
     });
@@ -40,7 +41,7 @@ describe('Drawer', () => {
     it('should handle `esc` with focus trap enabled', () => {
       const onCloseClick = jest.fn();
       renderDrawer({ onCloseClick, hasFocusTrap: true });
-      fireEvent.keyDown(document, { key: 'Escape', code: 'Escape' });
+      userEvent.keyboard('{Escape}');
 
       expect(onCloseClick).toHaveBeenCalled();
     });
@@ -49,7 +50,7 @@ describe('Drawer', () => {
       const onCloseClick = jest.fn();
       const { unmount } = renderDrawer({ onCloseClick, hasFocusTrap: true });
       unmount();
-      fireEvent.keyDown(document, { code: 'Escape' });
+      userEvent.keyboard('{Escape}');
 
       expect(onCloseClick).not.toHaveBeenCalled();
     });
@@ -57,7 +58,7 @@ describe('Drawer', () => {
     it('should not call onCloseClick for other key presses', () => {
       const onCloseClick = jest.fn();
       renderDrawer({ onCloseClick, hasFocusTrap: true });
-      fireEvent.keyDown(document, { code: 'a' });
+      userEvent.keyboard('a');
 
       expect(onCloseClick).not.toHaveBeenCalled();
     });
