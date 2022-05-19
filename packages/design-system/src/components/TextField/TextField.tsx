@@ -6,7 +6,7 @@ import { errorPlacementDefault } from '../flags';
 import omit from 'lodash/omit';
 import pick from 'lodash/pick';
 
-// TODO: Remove this export, apps shouldnt be importing `unmaskValue` from `TextField`
+// TODO: Remove this export, apps shouldn't be importing `unmaskValue` from `TextField`
 export { unmaskValue } from './maskHelpers';
 
 export type TextFieldDefaultValue = string | number;
@@ -73,6 +73,13 @@ export interface TextFieldProps {
    * Label for the input
    */
   label: React.ReactNode;
+  /**
+   * Applies date format masking to the input value entered
+   * and renders to a text field above the input.
+   * Passing `true` to `valueOnly` will return just the
+   * formatted value entered.
+   */
+  labelMask?: (rawInput: string, valueOnly?: boolean) => string;
   /**
    * Additional classes to be added to the `FormLabel`.
    */
