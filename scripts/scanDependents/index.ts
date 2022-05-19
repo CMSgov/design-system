@@ -2,8 +2,8 @@ import Table from 'cli-table3';
 import chalk from 'chalk';
 import yargs from 'yargs';
 import dotenv from 'dotenv';
-import { printDesignSystemVersions } from './findDesignSystemVersions';
-import { printReactVersions } from './findReactVersions';
+import { printDesignSystemVersions } from './designSystemVersions';
+import { printReactVersions } from './reactVersions';
 
 const designSystemPackageNames = [
   '@cmsgov/design-system',
