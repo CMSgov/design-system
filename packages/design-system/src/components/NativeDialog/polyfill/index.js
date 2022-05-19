@@ -17,6 +17,14 @@ const dialogPolyfill = {
 };
 export default dialogPolyfill;
 
+function isNodeTestEnv() {
+  return (
+    typeof process === 'object' &&
+    typeof process.env === 'object' &&
+    process.env.NODE_ENV === 'test'
+  );
+}
+
 /**
  * Putting everything in this function allows us to defer executing the polyfill
  * code until we know that our environment has `window` defined.
@@ -472,7 +480,7 @@ function loadDialogPolyfill() {
         );
       }
 
-      if (createsStackingContext(this.dialog_.parentElement)) {
+      if (createsStackingContext(this.dialog_.parentElement) && !isNodeTestEnv()) {
         console.warn(
           'A dialog is being shown inside a stacking context. ' +
             'This may cause it to be unusable. For more information, see this link: ' +
