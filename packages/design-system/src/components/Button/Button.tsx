@@ -20,6 +20,12 @@ type CommonButtonProps = {
    */
   analytics?: boolean;
   /**
+   * An override for the dynamic content sent to analytics services. By default this content comes from the heading.
+   *
+   * In cases where this component’s heading may contain **sensitive information**, use this prop to override what is sent to analytics.
+   */
+  analyticsLabelOverride?: string;
+  /**
    * If needed for analytics, pass heading text of parent component of button.
    */
   analyticsParentHeading?: string;
@@ -93,6 +99,7 @@ export type ButtonProps = CommonButtonProps & OtherProps;
 
 export const Button = ({
   analytics,
+  analyticsLabelOverride,
   analyticsParentHeading,
   analyticsParentType,
   children,
@@ -162,7 +169,7 @@ export const Button = ({
       return;
     }
 
-    const buttonText = getAnalyticsContentFromRefs([contentRef]);
+    const buttonText = analyticsLabelOverride ?? getAnalyticsContentFromRefs([contentRef]);
     const buttonStyle = variation ?? 'default';
     const buttonType = type ?? 'button';
     const buttonParentHeading = analyticsParentHeading ?? ' ';

@@ -1,5 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Button Analytics overrides analytics event tracking on open 1`] = `
+Array [
+  Object {
+    "button_style": "default",
+    "button_type": "button",
+    "event_name": "button_engagement",
+    "event_type": "ui interaction",
+    "ga_eventAction": "engaged default button",
+    "ga_eventCategory": "ui interaction",
+    "ga_eventLabel": "alternate content",
+    "ga_eventType": "cmsds",
+    "ga_eventValue": "",
+    "parent_component_heading": " ",
+    "parent_component_type": " ",
+    "text": "alternate content",
+  },
+]
+`;
+
 exports[`Button Analytics sends button analytics event 1`] = `
 Array [
   Object {
