@@ -20,7 +20,7 @@ interface SimpleFooterProps {
 const SimpleFooter: FunctionComponent<SimpleFooterProps> = ({
   aboutMedicareLabel = 'About Medicare',
   medicareGlossaryLabel = 'Medicare Glossary',
-  nondiscriminationLabel = 'Nondiscrimination/Accessibility',
+  nondiscriminationLabel = 'Nondiscrimination / Accessibility',
   privacyPolicyLabel = 'Privacy Policy',
   privacySettingLabel = 'Privacy Setting',
   linkingPolicyLabel = 'Linking Policy',
