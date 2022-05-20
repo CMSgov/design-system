@@ -133,6 +133,8 @@
   }
 
   svg {
+    max-width: 100%;
+
     .MgovLogoMedicare {
       fill: $color-base !important;
     }
