@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import Mask from './Mask';
-import LabelMask from './LabelMask/LabelMask';
+import LabelMask from './LabelMask';
 import classNames from 'classnames';
 
 export type TextInputDefaultValue = string | number;
