@@ -10,12 +10,14 @@
 
 :root {
   --rdp-cell-size: 40px;
-  --rdp-accent-color: $color-primary;
-  --rdp-background-color: #b3d4eb; // TODO: use the token ocean-100
+  --rdp-accent-color: #{$color-primary};
+  --rdp-background-color: #e6f1f8; // TODO: use the token ocean-50
+  /* Added this variable for consistency */
+  --rdp-active-color: #{$color-primary-darkest};
   /* Outline border for focused elements */
-  --rdp-outline: 2px solid var(--rdp-accent-color);
+  --rdp-outline: none;
   /* Outline border for focused and selected elements */
-  --rdp-outline-selected: 2px solid rgba(0, 0, 0, 0.75);
+  --rdp-outline-selected: none;
 }
 
 /*******************************************************************************
@@ -334,4 +336,12 @@
 .rdp-button:focus,
 .rdp-button:active {
   @include focus-styles;
+}
+
+.rdp-button:active,
+.rdp-button:active:hover:not([aria-disabled='true']),
+.rdp-day_selected:active:not([aria-disabled='true']),
+.rdp-day_selected:active:hover:not([aria-disabled='true']) {
+  color: white;
+  background-color: var(--rdp-active-color);
 }
