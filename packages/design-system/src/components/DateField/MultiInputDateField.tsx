@@ -1,4 +1,4 @@
-import { FormControl, FormControlPropKeys } from '../FormControl/FormControl';
+import { FormControl, FormControlProps, FormControlPropKeys } from '../FormControl/FormControl';
 import DateInput from './DateInput';
 import React from 'react';
 import defaultDateFormatter from './defaultDateFormatter';
@@ -14,15 +14,11 @@ export type DateFieldYearDefaultValue = string | number;
 export type DateFieldYearValue = string | number;
 export type DateFieldErrorPlacement = 'top' | 'bottom';
 
-export interface DateFieldProps {
+export interface DateFieldProps extends Omit<FormControlProps, 'label' | 'render'> {
   /**
    * Adds `autocomplete` attributes `bday-day`, `bday-month` and `bday-year` to the corresponding `<MultiInputDateField>` inputs
    */
   autoComplete?: boolean;
-  /**
-   * Additional classes to be added to the root fieldset element
-   */
-  className?: string;
   /**
    * Optional method to format the `input` field values. If this
    * method is provided, the returned value will be passed as a second argument
@@ -32,36 +28,10 @@ export interface DateFieldProps {
    * By default `dateFormatter` will be set to the `defaultDateFormatter` function, which prevents days/months more than 2 digits & years more than 4 digits.
    */
   dateFormatter?: (...args: any[]) => any;
-  disabled?: boolean;
-  errorMessage?: React.ReactNode;
-  /**
-   * Additional classes to be added to the error message
-   */
-  errorMessageClassName?: string;
-  /**
-   * Location of the error message relative to the field input
-   */
-  errorPlacement?: DateFieldErrorPlacement;
-  /**
-   * Additional hint text to display above the individual month/day/year fields
-   */
-  hint?: React.ReactNode;
-  /**
-   * Applies the "inverse" UI theme
-   */
-  inversed?: boolean;
   /**
    * The primary label, rendered above the individual month/day/year fields
    */
   label?: React.ReactNode;
-  /**
-   * A unique ID to be used for the MultiInputDateField label. If one isn't provided, a unique ID will be generated.
-   */
-  labelId?: string;
-  /**
-   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
-   */
-  requirementLabel?: React.ReactNode;
   /**
    * Called anytime any date input is blurred
    */
