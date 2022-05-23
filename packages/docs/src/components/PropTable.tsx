@@ -70,7 +70,7 @@ const PropTable = ({ componentName }: PropTableProps) => {
     (acc, prop: PropQuery) => {
       const newProp = {
         name: prop.name,
-        type: prop.tsType?.raw,
+        type: prop.tsType?.raw || prop.tsType?.name,
         defaultValue: prop.defaultValue?.value,
         description: prop.description?.childMdx?.body,
         isRequired: prop.required,
