@@ -1,6 +1,6 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 import TextField from './TextField';
+import { DATE_MASK } from './LabelMask';
 
 export default {
   title: 'Components/Text Field',
@@ -75,4 +75,21 @@ SuccessField.args = {
 export const DisabledField = Template.bind({});
 DisabledField.args = {
   disabled: true,
+};
+
+export const LabelMaskedField = () => {
+  const [date, setDate] = useState('');
+
+  return (
+    <>
+      <TextField
+        name="labelMask-date"
+        label="Enter the last day of your coverage"
+        hint="If you don't have it, give your best estimate. For example: 01/02/2022"
+        labelMask={DATE_MASK}
+        value={date}
+        onChange={(event) => setDate(event.currentTarget.value)}
+      />
+    </>
+  );
 };
