@@ -63,7 +63,7 @@ const themeColors: ColorTokens = {
   'error-lighter':              color['rose-100'],
   'error-lightest':             color['crimson-50'],
   //
-  'focus':                      color['darksky-500'],
+  'focus':                      color['copper-500'],
   'focus-border-inverse':       color['goldenrod-800'],
   'focus-dark':                 color['orchid-500'],
   'focus-inverse':              color['sky-500'],
