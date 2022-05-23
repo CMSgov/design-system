@@ -21,25 +21,25 @@ const writeToken = (
 };
 
 export const exportScss = (fileDescriptors: FileDescriptor[], outPath: string): number => {
-  let tokenItems =  {}
-  let filename = ''
-  let tokenOutput = ''
+  let tokenItems = {};
+  let filename = '';
+  let tokenOutput = '';
 
   fileDescriptors.forEach((file) => {
-    const importedModule = require(`${file.moduleImportName}`)
-    const sep = file.baseName.includes('components') ? '' : '-'
-    let output = '' 
+    const importedModule = require(`${file.moduleImportName}`);
+    const sep = file.baseName.includes('components') ? '' : '-';
+    let output = '';
 
     if (file.parentDirectoryName.includes('tokens')) {
-      filename = `${outPath}/cmsds.tokens.scss`
-      const tokens = flatten(importedModule.default);
-      console.log(JSON.stringify(tokens,null,4))
+      filename = `${outPath}/cmsds.tokens.scss`;
+      const tokens = importedModule.default;
+
       tokenOutput += writeToken(tokens, file.baseName, (n, v) => `$${n}: ${v};\n`, sep);
     } else {
-      filename = `${outPath}/${file.baseName}-theme.scss`
+      filename = `${outPath}/${file.baseName}-theme.scss`;
 
       Object.entries(importedModule.default).forEach(([section]) => {
-          tokenItems = flatten(importedModule.default[section]);
+        tokenItems = flatten(importedModule.default[section]);
         /*
          * core theme scss needs the !default attribute added to every style
          * to allow for overriding in medicare, TODO: get all systems on the
@@ -50,17 +50,17 @@ export const exportScss = (fileDescriptors: FileDescriptor[], outPath: string): 
         } else {
           output += writeToken(tokenItems, section, (n, v) => `$${n}: ${v};\n`, sep);
         }
-      })
+      });
 
-      writeFile(filename, output)
+      writeFile(filename, output);
     }
-  })
+  });
 
   if (fileDescriptors[0].parentDirectoryName.includes('tokens')) {
-    writeFile(filename, tokenOutput)
+    writeFile(filename, tokenOutput);
   }
 
-  return 0
-}
+  return 0;
+};
 
 export default exportScss;

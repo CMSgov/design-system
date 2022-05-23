@@ -147,7 +147,7 @@ export const components: AllTokenValues = {
     '-toggle__background-color--hover':           t.color['primary-alt'],
     '-toggle__color--hover':                      t.color['white'],
     '-toggle__background-color--hover--inverse':  t.color['white'],
-    '-toggle__color--hover--inverse':             t.color['gray-darker'],
+    '-toggle__color--hover--inverse':             t.color['gray-dark'],
   },
 
   'dropdown': {

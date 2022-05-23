@@ -22,37 +22,37 @@ const writeToken = (items: Record<string, any>, filename: string, separator: str
  * with headers
  */
 export const exportCsv = (fileDescriptors: FileDescriptor[], outPath: string): number => {
-  let tokenItems =  {}
-  let filename = ''
-  let tokenOutput = ''
+  let tokenItems = {};
+  let filename = '';
+  let tokenOutput = '';
 
   fileDescriptors.forEach((file) => {
-    const importedModule = require(`${file.moduleImportName}`)
+    const importedModule = require(`${file.moduleImportName}`);
     let output = `key,value\r\n`;
-    const sep = file.baseName.includes('components') ? '' : '-'
+    const sep = file.baseName.includes('components') ? '' : '-';
 
     if (file.parentDirectoryName.includes('tokens')) {
-      filename = `${outPath}/cmsds.tokens.csv`
-      const tokens = flatten(importedModule.default);
-      console.log(JSON.stringify(tokens,null,4))
+      filename = `${outPath}/cmsds.tokens.csv`;
+      const tokens = importedModule.default;
+
       tokenOutput += writeToken(tokens, file.baseName, sep);
     } else {
-      filename = `${outPath}/${file.baseName}-theme.csv`
+      filename = `${outPath}/${file.baseName}-theme.csv`;
 
       Object.entries(importedModule.default).forEach(([section]) => {
-          tokenItems = flatten(importedModule.default[section]);
-          output += writeToken(tokenItems, section, sep);
-      })
+        tokenItems = flatten(importedModule.default[section]);
+        output += writeToken(tokenItems, section, sep);
+      });
 
-      writeFile(filename, output)
+      writeFile(filename, output);
     }
-  })
+  });
 
   if (fileDescriptors[0].parentDirectoryName.includes('tokens')) {
-    writeFile(filename, tokenOutput)
+    writeFile(filename, tokenOutput);
   }
 
-  return 0
+  return 0;
 };
 
 export default exportCsv;
