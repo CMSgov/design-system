@@ -33,6 +33,14 @@ export interface DateFieldProps extends Omit<FormControlProps, 'label' | 'render
    */
   label?: React.ReactNode;
   /**
+   * A unique ID to be used for the MultiInputDateField label. If one isn't provided, a unique ID will be generated.
+   */
+  labelId?: string;
+  /**
+   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
+   */
+  requirementLabel?: React.ReactNode;
+  /**
    * Called anytime any date input is blurred
    */
   onBlur?: (...args: any[]) => any;
