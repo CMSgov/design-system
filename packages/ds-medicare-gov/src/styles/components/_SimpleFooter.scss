@@ -16,23 +16,25 @@
   .SimpleFooter__linkButton,
   a {
     @extend .mct-p3;
-    padding-top: 0;
-    padding-bottom: 0;
-    padding-left: $spacer-2;
-    padding-right: $spacer-2;
     text-decoration: none;
     color: $color-base !important;
-    border-right: 1px solid $color-base;
+    display: inline-block;
+    padding: 0;
 
     &:hover {
       text-decoration: underline;
+    }
+
+    &:not(:last-child)::after {
+      content: '';
+      border-right: 1px solid $color-base;
+      padding-left: $spacer-2;
     }
   }
 
   .SimpleFooter__linkButton {
     color: $color-base !important;
     border-radius: 0 !important;
-    border-right: 1px solid $color-base !important;
     background-color: transparent;
     cursor: pointer;
 
@@ -63,6 +65,12 @@
 
   display: flex;
   flex-direction: column;
+
+  > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 $spacer-2;
+  }
 
   @media screen and (min-width: $width-sm) {
     flex-direction: column;
@@ -125,6 +133,8 @@
   }
 
   svg {
+    max-width: 100%;
+
     .MgovLogoMedicare {
       fill: $color-base !important;
     }
