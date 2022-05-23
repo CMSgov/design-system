@@ -1,5 +1,7 @@
 import React from 'react';
 
+export const RE_DATE = /^(\d{1,2})[\D]?(\d{1,2})?[\D]?(\d{1,4})?/;
+
 /**
  * Takes the string value from an input and returns a string
  * with appropriate date format masking applied concatenated
@@ -9,7 +11,6 @@ import React from 'react';
  * string without additional hint text.
  */
 export function DATE_MASK(rawInput = '', valueOnly = false): string {
-  const RE_DATE = /^(\d{1,2})[\D]?(\d{1,2})?[\D]?(\d{1,4})?/;
   const match = RE_DATE.exec(rawInput);
   let formattedDate = '';
   if (match) {

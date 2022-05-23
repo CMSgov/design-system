@@ -1,12 +1,22 @@
-import { FormControl, FormControlProps, FormControlPropKeys } from '../FormControl/FormControl';
-import React from 'react';
-import { format } from 'date-fns';
+import React, { useState } from 'react';
+import CalendarIcon from '../Icons/CalendarIcon';
+import classNames from 'classnames';
+import { Button } from '../Button';
 import { DayPicker } from 'react-day-picker';
+import { DATE_MASK, RE_DATE } from '../TextField/LabelMask';
+import { FormControlProps } from '../FormControl/FormControl';
+import { TextField } from '../TextField';
+import { format } from 'date-fns';
 
 export interface SingleInputDateFieldProps extends Omit<FormControlProps, 'label' | 'render'> {
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => any;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>, maskedValue: string) => any;
   value?: string;
+  /**
+   * Label for the input
+   */
+  label: React.ReactNode;
+  name: string;
 
   // From DayPicker
   // -------------------------
@@ -20,6 +30,26 @@ export interface SingleInputDateFieldProps extends Omit<FormControlProps, 'label
 }
 
 const SingleInputDateField = (props: SingleInputDateFieldProps) => {
+  const [pickerVisible, setPickerVisible] = useState(false);
+
+  const {
+    className,
+    label,
+    name,
+    value,
+    onBlur,
+    onChange,
+    defaultMonth,
+    fromDate,
+    fromMonth,
+    fromYear,
+    toDate,
+    toMonth,
+    toYear,
+    ...textFieldProps
+  } = props;
+  const withPicker = fromDate || fromMonth || fromYear;
+
   // TODO: Validate this and make date null if it's invalid. Don't pass a bizarre date
   // to DayPicker like new Date(`01/02`), which is interpreted as `Jan 02, 2001`. Probably
   // borrow the regex from the label mask
@@ -31,7 +61,32 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
   // if (selected) {
   //   footer = <p>You picked {format(selected, 'PP')}.</p>;
   // }
-  return <DayPicker mode="single" selected={date} onSelect={handlePickerChange} />;
+  // return <DayPicker mode="single" selected={date} onSelect={handlePickerChange} />;
+  return (
+    <div
+      className={classNames(
+        'ds-c-single-input-date-field',
+        { 'ds-c-single-input-date-field--with-picker': withPicker },
+        className
+      )}
+    >
+      <TextField
+        {...textFieldProps}
+        className="ds-c-single-input-date-field__field"
+        name={name}
+        value={value}
+        label={label}
+        labelMask={DATE_MASK}
+        onChange={(event) => onChange(event, DATE_MASK(event.currentTarget.value, true))}
+      />
+      {withPicker && (
+        <Button onClick={() => setPickerVisible(!pickerVisible)}>
+          <CalendarIcon ariaHidden={false} />
+        </Button>
+      )}
+      {pickerVisible && <DayPicker mode="single" selected={date} onSelect={handlePickerChange} />}
+    </div>
+  );
 };
 
 export default SingleInputDateField;
