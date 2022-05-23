@@ -196,6 +196,18 @@ const color = to<ColorTokens>()({
   'persimmon-800':   '#6f1b02',
   'persimmon-900':   '#421001',
   'persimmon-1000':  '#160500',
+
+  'copper-50':       '#faf1eb',
+  'copper-100':      '#efd6c2',
+  'copper-200':      '#e4ba99',
+  'copper-300':      '#d99e70',
+  'copper-400':      '#ce8347',
+  'copper-500':      '#C97532',
+  'copper-600':      '#b5692d',
+  'copper-700':      '#8d5223',
+  'copper-800':      '#653b19',
+  'copper-900':      '#3c230f',
+  'copper-1000':     '#140c05',
 });
 
 export default color;
