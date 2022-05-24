@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import Mask from './Mask';
+import LabelMask from './LabelMask';
 import classNames from 'classnames';
 
 export type TextInputDefaultValue = string | number;
@@ -54,12 +55,19 @@ export type CommonTextInputProps<MultilineValue extends boolean | undefined> = O
    */
   mask?: TextInputMask;
   /**
+   * Applies date format masking to the input value entered
+   * and renders to a text field above the input.
+   * Passing `true` to `valueOnly` will return just the
+   * formatted value entered.
+   */
+  labelMask?: (rawInput: string, valueOnly?: boolean) => string;
+  /**
    * Whether or not the text field is a multiline text field
    */
   multiline?: MultilineValue;
   name?: string;
   /**
-   * Sets `inputMode`, `type`, and `pattern` to improve accessiblity and consistency for number fields. Use this prop instead of `type="number"`, see [here](https://technology.blog.gov.uk/2020/02/24/why-the-gov-uk-design-system-team-changed-the-input-type-for-numbers/) for more information.
+   * Sets `inputMode`, `type`, and `pattern` to improve accessibility and consistency for number fields. Use this prop instead of `type="number"`, see [here](https://technology.blog.gov.uk/2020/02/24/why-the-gov-uk-design-system-team-changed-the-input-type-for-numbers/) for more information.
    */
   numeric?: boolean;
   onBlur?: (
@@ -111,15 +119,16 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
     errorPlacement,
     fieldClassName,
     inversed,
+    labelMask,
     mask,
     multiline,
     numeric,
-    rows,
-    size,
-    setRef,
-    type,
-    pattern,
     onCopyCapture,
+    pattern,
+    rows,
+    setRef,
+    size,
+    type,
     ...inputProps
   } = props;
 
@@ -171,7 +180,13 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
     />
   );
 
-  return mask ? <Mask mask={mask}>{field}</Mask> : field;
+  if (mask) {
+    return <Mask mask={mask}>{field}</Mask>;
+  } else if (labelMask) {
+    return <LabelMask labelMask={labelMask}>{field}</LabelMask>;
+  } else {
+    return field;
+  }
 };
 
 export default TextInput;
