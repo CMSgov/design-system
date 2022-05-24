@@ -72,15 +72,17 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
           <TextInput
             {...inputProps}
             {...{ id, setRef, errorId }}
-            className="ds-c-single-input-date-field__field"
             value={value}
             labelMask={DATE_MASK}
             onChange={(event) => onChange(event, DATE_MASK(event.currentTarget.value, true))}
           />
           {withPicker && (
-            <Button onClick={() => setPickerVisible(!pickerVisible)}>
+            <button
+              className="ds-c-single-input-date-field__button"
+              onClick={() => setPickerVisible(!pickerVisible)}
+            >
               <CalendarIcon ariaHidden={false} />
-            </Button>
+            </button>
           )}
           {pickerVisible && (
             <DayPicker mode="single" selected={date} onSelect={handlePickerChange} />
