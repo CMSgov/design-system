@@ -3,7 +3,7 @@
  */
 
 import { animation, color, font, measure, media, radius, spacer, z } from '../tokens';
-import { ThemeTokens, ColorTokens } from '../lib/types';
+import { ThemeTokens, ColorTokens, ShadowTokens } from '../lib/types';
 
 const themeColors: ColorTokens = {
   // TODO: deprecate these old definitions
@@ -151,7 +151,7 @@ const themeColors: ColorTokens = {
   'visited':                    color['crimson-800'],
 }
 
-const shadow = {
+const shadow: ShadowTokens = {
   'box-card': '0 2px 3px 0 rgba(50, 50, 50, 0.23)',
 }
 

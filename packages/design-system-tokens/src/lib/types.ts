@@ -18,8 +18,8 @@ export type RGBValue = `rgb(${number},${number},${number})`;
 export type RGBAValue = `rgba(${number},${number},${number},${number})`;
 
 export type Token<T> = {
-  [key: string]: T | Token<T>
-}
+  [key: string]: T | Token<T>;
+};
 
 export type AnimationTokens = Token<string | number>;
 export type BorderRadiusTokens = Token<MeasureValues>;
@@ -32,23 +32,13 @@ export type SpacerTokens = Token<MeasureValues>;
 export type TimeTokens = Token<number>;
 export type zIndexTokens = Token<number>;
 
-export type AllTokenValues =
-  | AnimationTokens
-  | BorderRadiusTokens
-  | ColorTokens
-  | FontTokens
-  | MeasureTokens
-  | MediaWidthTokens
-  | ShadowTokens
-  | SpacerTokens
-  | TimeTokens
-  | zIndexTokens;
+export type AnyTokenValues = Token<any>;
 
 export interface ThemeTokens {
   animation: AnimationTokens;
   color: ColorTokens;
   font: FontTokens;
-  global?: AllTokenValues;
+  global?: AnyTokenValues;
   measure: MeasureTokens;
   media: MediaWidthTokens;
   radius: BorderRadiusTokens;

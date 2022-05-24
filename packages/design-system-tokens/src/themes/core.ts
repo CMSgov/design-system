@@ -3,13 +3,13 @@
  */
 
 import { animation, color, font, measure, media, radius, spacer, z } from '../tokens';
-import { ThemeTokens, ColorTokens } from '../lib/types';
+import { ThemeTokens, ColorTokens, AnyTokenValues, ShadowTokens } from '../lib/types';
 
 export const themeColors: ColorTokens = {
   //
   'white':                      color['white-solid'],
   'black':                      color['black-solid'],
-  'transparent':                color.transparent,
+  'transparent':                color['transparent'],
   //
   'background':                 color['white-solid'],
   'background-dialog':          color['white-solid'],
@@ -116,7 +116,7 @@ export const themeColors: ColorTokens = {
   'visited':                    color['windsor-500'],
 };
 
-export const global = {
+export const global: AnyTokenValues = {
   'article-max-width':          '600px',
   'grid-columns':               '12',
   'grid-gutter-width':          spacer[4],
@@ -127,9 +127,9 @@ export const global = {
   'site-margins-mobile':        '1.5rem',
   'site-max-width':             '1040px',
   'text-max-width':             '53rem',
-};
+}
 
-export const shadow = {
+export const shadow: ShadowTokens = {
   'focus':                      `inset 0 0 0 1px ${themeColors['base']}`,
   'focus-inverse':              `inset 0 0 0 1px ${themeColors['base']}`,
   'focus-link':                 `0 3px ${themeColors['base']}`,

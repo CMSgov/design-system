@@ -4,9 +4,9 @@
 
 import { default as t } from './core'
 import { hexOpacity } from '../lib/utility'
-import { AllTokenValues } from '../lib/types'
+import { AnyTokenValues } from '../lib/types'
 
-export const components: AllTokenValues = {
+export const components: AnyTokenValues = {
   'alert': {
     '__background-color':                         t.color['primary-alt-lightest'],
     '__background-color--error':                  t.color['error-lightest'],
