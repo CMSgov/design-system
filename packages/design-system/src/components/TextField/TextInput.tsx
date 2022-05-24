@@ -1,6 +1,4 @@
 import React, { FunctionComponent } from 'react';
-import Mask from './Mask';
-import LabelMask from './LabelMask';
 import classNames from 'classnames';
 
 export type TextInputDefaultValue = string | number;
@@ -48,19 +46,6 @@ export type CommonTextInputProps<MultilineValue extends boolean | undefined> = O
    * Applies the "inverse" UI theme
    */
   inversed?: boolean;
-  /**
-   * Apply formatting to the field that's unique to the value
-   * you expect to be entered. Depending on the mask, the
-   * field's appearance and functionality may be affected.
-   */
-  mask?: TextInputMask;
-  /**
-   * Applies date format masking to the input value entered
-   * and renders to a text field above the input.
-   * Passing `true` to `valueOnly` will return just the
-   * formatted value entered.
-   */
-  labelMask?: (rawInput: string, valueOnly?: boolean) => string;
   /**
    * Whether or not the text field is a multiline text field
    */
@@ -119,8 +104,6 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
     errorPlacement,
     fieldClassName,
     inversed,
-    labelMask,
-    mask,
     multiline,
     numeric,
     onCopyCapture,
@@ -138,7 +121,6 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
       'ds-c-field--error': errorMessage,
       'ds-c-field--inverse': inversed,
     },
-    mask && `ds-c-field--${mask}`,
     size && `ds-c-field--${size}`,
     fieldClassName
   );
@@ -164,7 +146,7 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
   };
 
   const numberRows: number = typeof rows === 'string' ? parseInt(rows) : rows;
-  const field = (
+  return (
     <ComponentType
       {...ariaAttributes}
       className={classes}
@@ -179,14 +161,6 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
       {...inputProps}
     />
   );
-
-  if (mask) {
-    return <Mask mask={mask}>{field}</Mask>;
-  } else if (labelMask) {
-    return <LabelMask labelMask={labelMask}>{field}</LabelMask>;
-  } else {
-    return field;
-  }
 };
 
 export default TextInput;

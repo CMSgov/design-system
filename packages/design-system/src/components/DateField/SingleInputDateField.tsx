@@ -5,10 +5,11 @@ import omit from 'lodash/omit';
 import pick from 'lodash/pick';
 import { Button } from '../Button';
 import { DayPicker } from 'react-day-picker';
-import { DATE_MASK, RE_DATE } from '../TextField/LabelMask';
+import { DATE_MASK, RE_DATE } from '../TextField/useLabelMask';
 import { FormControl, FormControlProps, FormControlPropKeys } from '../FormControl/FormControl';
 import { TextInput } from '../TextField';
 import { format } from 'date-fns';
+import useLabelMask from '../TextField/useLabelMask';
 
 export interface SingleInputDateFieldProps extends Omit<FormControlProps, 'label' | 'render'> {
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => any;
@@ -57,40 +58,49 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
 
   function handlePickerChange() {}
 
-  return (
-    <FormControl
-      {...containerProps}
-      className={classNames(
-        'ds-c-single-input-date-field',
-        { 'ds-c-single-input-date-field--with-picker': withPicker },
-        className
-      )}
-      component="div"
-      labelComponent="label"
-      render={({ id, errorId, setRef }) => (
-        <div className="ds-c-single-input-date-field__field-wrapper">
-          <TextInput
-            {...inputProps}
-            {...{ id, setRef, errorId }}
-            value={value}
-            labelMask={DATE_MASK}
-            onChange={(event) => onChange(event, DATE_MASK(event.currentTarget.value, true))}
-          />
-          {withPicker && (
-            <button
-              className="ds-c-single-input-date-field__button"
-              onClick={() => setPickerVisible(!pickerVisible)}
-            >
-              <CalendarIcon ariaHidden={false} />
-            </button>
-          )}
-          {pickerVisible && (
-            <DayPicker mode="single" selected={date} onSelect={handlePickerChange} />
-          )}
-        </div>
-      )}
-    />
-  );
+  return null;
+  // return (
+  //   <FormControl
+  //     {...containerProps}
+  //     className={classNames(
+  //       'ds-c-single-input-date-field',
+  //       { 'ds-c-single-input-date-field--with-picker': withPicker },
+  //       className
+  //     )}
+  //     component="div"
+  //     labelComponent="label"
+  //     render={({ id, errorId, setRef }) => {
+  //       const inputWithoutMask = (
+  //         <TextInput
+  //           {...inputProps}
+  //           {...{ id, setRef, errorId }}
+  //           value={value}
+  //           onChange={(event) => onChange(event, DATE_MASK(event.currentTarget.value, true))}
+  //         />
+  //       );
+  //       const { labelMask, input } = useLabelMask(DATE_MASK, inputWithoutMask);
+  //       return (
+  //         <>
+  //           {labelMask}
+  //           <div className="ds-c-single-input-date-field__field-wrapper">
+  //             {input}
+  //             {withPicker && (
+  //               <button
+  //                 className="ds-c-single-input-date-field__button"
+  //                 onClick={() => setPickerVisible(!pickerVisible)}
+  //               >
+  //                 <CalendarIcon ariaHidden={false} />
+  //               </button>
+  //             )}
+  //             {pickerVisible && (
+  //               <DayPicker mode="single" selected={date} onSelect={handlePickerChange} />
+  //             )}
+  //           </div>
+  //         </>
+  //       );
+  //     }}
+  //   />
+  // );
 };
 
 export default SingleInputDateField;
