@@ -2,6 +2,7 @@
 title: Tooltip
 status: draft
 ---
+
 import ViewSourceLink from '../../src/components/ViewSourceLink';
 
 Tooltips provide additional information upon hover, focus or click. The information should be contextual, useful, and nonessential information.
@@ -15,6 +16,7 @@ The component provides a variety of props to configure tooltip behavior for thes
 This component makes use of [`@popperjs/core`](https://popper.js.org/docs/v2/) for tooltip positioning, [`focus-trap-react`](https://github.com/focus-trap/focus-trap-react#readme) for trapping focus in Tooltip Dialogs, and [`react-transition-group`](http://reactcommunity.org/react-transition-group/css-transition) for animations.
 
 ### Icon Trigger
+
 <StorybookExample
   componentName="icon tooltip"
   sourceFilePath="components/Tooltip/Tooltip.tsx"
@@ -22,6 +24,7 @@ This component makes use of [`@popperjs/core`](https://popper.js.org/docs/v2/) f
 />
 
 ### Inline
+
 <StorybookExample
   componentName="inline tooltip"
   sourceFilePath="components/Tooltip/Tooltip.tsx"
@@ -29,6 +32,7 @@ This component makes use of [`@popperjs/core`](https://popper.js.org/docs/v2/) f
 />
 
 ### Interactive content
+
 <StorybookExample
   componentName="interactive tooltip"
   sourceFilePath="components/Tooltip/Tooltip.tsx"
@@ -37,6 +41,7 @@ This component makes use of [`@popperjs/core`](https://popper.js.org/docs/v2/) f
 />
 
 ### With Close
+
 <StorybookExample
   componentName="tooltip with close"
   sourceFilePath="components/Tooltip/Tooltip.tsx"
@@ -55,17 +60,20 @@ When using the `<TooltipIcon>` as the only child of `<Tooltip>`, be sure to prov
 <ViewSourceLink sourceFilePath="components/Tooltip/TooltipIcon.tsx" />
 
 ### Tooltip Icon Props
+
 <PropTable componentName="TooltipIcon" />
 
 ## Guidance
 
 ### When to use
+
 - Use for helpful, non-critical information to strengthen an existing message.
 - Use to increase certainty and enhance confidence about an interaction.
 - Use with brief descriptions as tooltips perform best with succinct text.
 - Tooltips are useful as a last resort for space-constrained UI. Explore other options for keeping content visible without a tooltip.
 
 ### When to consider alternatives
+
 - Don’t hide information necessary for completing a task behind a tooltip interaction.
 - Tooltips are microcopy and should be brief. Don't use a tooltip if you need a lot of text.
 - Don’t use a tooltip when its content is repetitive or if usability is obvious.
@@ -74,6 +82,7 @@ When using the `<TooltipIcon>` as the only child of `<Tooltip>`, be sure to prov
 ### Customization
 
 The following Sass variables can be overridden to theme choice fields:
+
 - `$tooltip-text-color` - Text color of the tooltip content
 - `$tooltip-icon-color` - Color of the tooltip icon
 - `$tooltip-icon-color-inverse` - Color of the inverse tooltip icon

@@ -2,6 +2,7 @@
 title: Vertical navigation
 relatedUswdsGuidance: components/sidenav
 ---
+
 import ViewSourceLink from '../../src/components/ViewSourceLink';
 
 Hierarchical, vertical navigation.
@@ -17,13 +18,15 @@ A `VerticalNav` component accepts list items as a JSON object and includes addit
 />
 
 ### Vertical Nav Props
+
 <PropTable componentName="VerticalNav" />
 
-
 ## `<VerticalNavItem>`
+
 <ViewSourceLink sourceFilePath="components/VerticalNav/VerticalNavItem.tsx" />
 
 ### Vertical Nav Item Props
+
 <PropTable componentName="VerticalNavItem" />
 
 ## Guidance
@@ -49,14 +52,14 @@ A `VerticalNav` component accepts list items as a JSON object and includes addit
 
 - Users should be able to tab through each link.
 - If you have nested menus that are collapsible, ensure the toggle button has its `aria-controls` and `aria-expanded` attributes set. This is done automatically for you
-if you're using the React components.
+  if you're using the React components.
 - If your navigation list is longer than 3 items, consider using a skip navigation link. This allows screen reader and keyboard users to skip to the main content area(s).
 - If a skip navigation link is not an option, consider using:
-  * A valid, descriptive page header
-  * Landmark regions like `<header>`, `<main>`, `<aside>`, `<footer>`
+  - A valid, descriptive page header
+  - Landmark regions like `<header>`, `<main>`, `<aside>`, `<footer>`
 - When naming the optional `ariaNavLabel` prop, keep in mind:
-    * This prop is necessary only when there is more than one nav element on a page.
-    * Don't include the word "Menu" in the label. Most screen readers will announce that information already. Instead, provide more context to what's in the menu and/or its location. Like "Main" or "Social".
+  - This prop is necessary only when there is more than one nav element on a page.
+  - Don't include the word "Menu" in the label. Most screen readers will announce that information already. Instead, provide more context to what's in the menu and/or its location. Like "Main" or "Social".
 
 ### Related patterns
 
