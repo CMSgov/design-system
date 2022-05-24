@@ -36,7 +36,7 @@ const themeColors: ColorTokens = {
   //
   'white':                      color['white-solid'],
   'black':                      color['black-solid'],
-  'transparent':                color.transparent,
+  'transparent':                color['transparent'],
   //
   'background':                 color['white-solid'],
   'background-dialog':          color['white-solid'],
