@@ -14,7 +14,8 @@ export type DateFieldYearDefaultValue = string | number;
 export type DateFieldYearValue = string | number;
 export type DateFieldErrorPlacement = 'top' | 'bottom';
 
-export interface DateFieldProps extends Omit<FormControlProps, 'label' | 'render'> {
+export interface DateFieldProps
+  extends Omit<FormControlProps, 'label' | 'render' | 'component' | 'labelComponent'> {
   /**
    * Adds `autocomplete` attributes `bday-day`, `bday-month` and `bday-year` to the corresponding `<MultiInputDateField>` inputs
    */
