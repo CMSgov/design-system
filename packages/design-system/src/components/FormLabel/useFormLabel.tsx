@@ -6,22 +6,24 @@ import omit from 'lodash/omit';
 import uniqueId from 'lodash/uniqueId';
 import { errorPlacementDefault } from '../flags';
 
-// export interface FormLabelProps {
-//   children: React.ReactNode;
-//   className?: string;
-//   component?: FormLabelComponent;
-//   errorMessage?: React.ReactNode;
-//   errorMessageClassName?: string;
-//   errorId?: string;
-//   fieldId?: string;
-//   hint?: React.ReactNode;
-//   id?: string;
-//   inversed?: boolean;
-//   requirementLabel?: React.ReactNode;
-//   textClassName?: string;
-// }
+// TODO: Reimplement focusTrigger in another place, like another hook
 
-export interface FormControlProps extends FormLabelProps {
+// Some of the FormLabel's props we pass on to the component prop definitions.
+// TODO: This could use a better name
+type PassedOnFormLabelProps = Omit<
+  FormLabelProps,
+  'children' | 'className' | 'component' | 'fieldId'
+>;
+
+/**
+ * This is the set of public-facing props that each component that uses `useFormLabel`
+ * can include in its own props definition.
+ */
+export interface FormControlProps extends PassedOnFormLabelProps {
+  /**
+   * Additional classes to be added to the root element.
+   */
+  className?: string;
   /**
    * Location of the error message relative to the field input
    */
@@ -35,24 +37,36 @@ export interface FormControlProps extends FormLabelProps {
    */
   labelClassName?: string;
   /**
+   * A unique `id` to be used on the field label. If one isn't provided, a unique ID
+   * will be generated.
+   */
+  labelId?: string;
+}
+
+/**
+ * This is the full list of props accepted by `useFormLabel`. Components that use
+ * `useFormLabel` should not include this entire set in their props but instead use
+ * `FormControlProps`, which is the set of public-facing props that a component can
+ * include in its own props.
+ */
+export interface UseFormLabelProps extends FormControlProps {
+  /**
    * The root HTML element used to render the field label
    */
   labelComponent: 'label' | 'legend';
   /**
-   * A unique `id` to be used on the field label. If one isn't provided, a unique ID will be generated.
+   *
    */
-  labelId?: string;
-
   wrapperIsFieldset: boolean;
 }
 
-export function useFormLabel(props: FormControlProps) {
+/**
+ * Takes a component's props and generates the props for its label, field,
+ */
+export function useFormLabel(props: UseFormLabelProps) {
   const id = props.id || uniqueId('field_');
   const labelId = props.labelId || `${id}-label`;
   const errorId = props.errorId || `${id}-error`;
-
-  // Extract props for the label
-  // Extract props for the field
 
   const {
     className,
@@ -97,15 +111,23 @@ export function useFormLabel(props: FormControlProps) {
     fieldId: wrapperIsFieldset ? undefined : id,
     hint: hint,
     id: labelId,
-    requirementLabel: requirementLabel,
-    inversed: inversed,
+    requirementLabel,
+    inversed,
   };
 
-  const fieldProps = {
+  // This is a lazy definition. Could possibly use generics on the hook to make it better.
+  const fieldProps: {
+    id: string;
+    labelId: string;
+    errorId: string;
+    inversed?: boolean;
+    [key: string]: any;
+  } = {
     ...omit(remainingProps, ['errorId', 'labelId', 'wrapperIsFieldset']),
     id,
     labelId,
     errorId,
+    inversed,
   };
 
   const wrapperClassNames = classNames({ 'ds-c-fieldset': wrapperIsFieldset }, className);
@@ -117,16 +139,7 @@ export function useFormLabel(props: FormControlProps) {
     'aria-invalid': ariaInvalid,
   };
 
-  // Determine if we need to include the fieldset/div container logic somewhere.
-  // Some components use div and some use fieldset, and the `ds-c-fieldset` class
-  // is only applied to fieldset elements. Maybe we don't need to enforce the use
-  // of a wrapper at the level of this hook, especially since several of our
-  // components just wrap in a plain div, and that seems acceptible. The only prop
-  // that is always applied to the wrapper is `aria-invalid={ariaInvalid}`
-
   return { labelProps, fieldProps, wrapperProps, bottomError };
 }
-
-// TODO: Reimplement focusTrigger in another place, like another hook
 
 export default useFormLabel;
