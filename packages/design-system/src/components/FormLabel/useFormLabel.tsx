@@ -19,7 +19,7 @@ type PassedOnFormLabelProps = Omit<
  * This is the set of public-facing props that each component that uses `useFormLabel`
  * can include in its own props definition.
  */
-export interface FormControlProps extends PassedOnFormLabelProps {
+export interface FormFieldProps extends PassedOnFormLabelProps {
   /**
    * Additional classes to be added to the root element.
    */
@@ -46,10 +46,10 @@ export interface FormControlProps extends PassedOnFormLabelProps {
 /**
  * This is the full list of props accepted by `useFormLabel`. Components that use
  * `useFormLabel` should not include this entire set in their props but instead use
- * `FormControlProps`, which is the set of public-facing props that a component can
+ * `FormFieldProps`, which is the set of public-facing props that a component can
  * include in its own props.
  */
-export interface UseFormLabelProps extends FormControlProps {
+export interface UseFormLabelProps extends FormFieldProps {
   /**
    * The root HTML element used to render the field label
    */

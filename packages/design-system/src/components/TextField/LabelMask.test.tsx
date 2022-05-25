@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import LabelMask, { DATE_MASK } from './LabelMask';
+import LabelMask from './LabelMask';
+import { DATE_MASK } from './index';
 import { render, fireEvent } from '@testing-library/react';
 
 const TestLabelMask = () => {

@@ -141,7 +141,7 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
     // Link input to bottom placed error message
     'aria-describedby':
       errorPlacement === 'bottom' && errorMessage
-        ? classNames(props['aria-describedby'], errorId)
+        ? classNames(props['aria-describedby'], errorId) // Use of the classNames function for this is confusing
         : undefined,
   };
 
