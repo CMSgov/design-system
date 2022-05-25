@@ -4,6 +4,7 @@ import React from 'react';
 import defaultDateFormatter from './defaultDateFormatter';
 import omit from 'lodash/omit';
 import pick from 'lodash/pick';
+import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 import { t } from '../i18n';
 
 export type DateFieldDayDefaultValue = string | number;
@@ -14,8 +15,7 @@ export type DateFieldYearDefaultValue = string | number;
 export type DateFieldYearValue = string | number;
 export type DateFieldErrorPlacement = 'top' | 'bottom';
 
-export interface DateFieldProps
-  extends Omit<FormControlProps, 'label' | 'render' | 'component' | 'labelComponent'> {
+export interface DateFieldProps extends Omit<FormFieldProps, 'label'> {
   /**
    * Adds `autocomplete` attributes `bday-day`, `bday-month` and `bday-year` to the corresponding `<MultiInputDateField>` inputs
    */
@@ -136,28 +136,27 @@ export interface DateFieldProps
 }
 
 export function MultiInputDateField(props: DateFieldProps): React.ReactElement {
-  const containerProps = pick(props, FormControlPropKeys);
-  const inputOnlyProps = omit(props, FormControlPropKeys);
+  const { labelProps, fieldProps, wrapperProps, bottomError } = useFormLabel({
+    label: t('dateField.label'),
+    hint: t('dateField.hint'),
+    dayName: 'day',
+    monthName: 'month',
+    yearName: 'year',
+    dateFormatter: defaultDateFormatter,
+    ...props,
+    labelComponent: 'label',
+    wrapperIsFieldset: true,
+  });
+
+  const { id, errorId, ...inputProps } = fieldProps;
 
   return (
-    <FormControl
-      label={t('dateField.label')}
-      hint={t('dateField.hint')}
-      {...containerProps}
-      component="fieldset"
-      labelComponent="legend"
-      render={({ labelId }) => (
-        <DateInput {...inputOnlyProps} {...{ labelId }} inversed={props.inversed} />
-      )}
-    />
+    <fieldset {...wrapperProps}>
+      <FormLabel component="legend" {...labelProps} />
+      <DateInput {...inputProps} />
+      {bottomError}
+    </fieldset>
   );
 }
-
-MultiInputDateField.defaultProps = {
-  dayName: 'day',
-  monthName: 'month',
-  yearName: 'year',
-  dateFormatter: defaultDateFormatter,
-};
 
 export default MultiInputDateField;

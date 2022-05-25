@@ -63,7 +63,7 @@ export interface UseFormLabelProps extends FormFieldProps {
 /**
  * Takes a component's props and generates the props for its label, field,
  */
-export function useFormLabel(props: UseFormLabelProps) {
+export function useFormLabel<T extends UseFormLabelProps>(props: T) {
   const id = props.id || uniqueId('field_');
   const labelId = props.labelId || `${id}-label`;
   const errorId = props.errorId || `${id}-error`;
@@ -116,14 +116,8 @@ export function useFormLabel(props: UseFormLabelProps) {
   };
 
   // This is a lazy definition. Could possibly use generics on the hook to make it better.
-  const fieldProps: {
-    id: string;
-    labelId: string;
-    errorId: string;
-    inversed?: boolean;
-    [key: string]: any;
-  } = {
-    ...omit(remainingProps, ['errorId', 'labelId', 'wrapperIsFieldset']),
+  const fieldProps = {
+    ...remainingProps,
     id,
     labelId,
     errorId,
