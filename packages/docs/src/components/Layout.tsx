@@ -6,6 +6,7 @@ import Header from './DocSiteHeader';
 import Footer from './DocSiteFooter';
 import Sidebar from './DocSiteSidebar';
 import { SkipNav, Badge } from '@cmsgov/design-system';
+import { LocationInterface } from '../helpers/graphQLTypes';
 
 import '../styles/index.scss';
 
@@ -16,6 +17,10 @@ interface LayoutProps {
    * The elements to appear in the main page content, below the page heading
    */
   children: React.ReactElement;
+  /**
+   * page location data provided by gatsby
+   */
+  location: LocationInterface;
   /**
    * User-visible page title
    */
@@ -40,6 +45,7 @@ const Layout = ({
   relatedGuidance,
   showJumpToGuidance,
   status,
+  location,
 }: LayoutProps) => {
   const env = 'prod';
   const [isMobileNavOpen, setMobileNavOpen] = useState<boolean>(false);
@@ -58,7 +64,7 @@ const Layout = ({
       <SkipNav href="#main" />
       <Header />
       <div className="ds-l-row ds-u-margin--0">
-        <Sidebar isMobileNavOpen={isMobileNavOpen} />
+        <Sidebar isMobileNavOpen={isMobileNavOpen} location={location} />
         <main id="main" className="ds-l-md-col ds-u-padding--0 ds-u-padding-bottom--4">
           <header className="ds-u-padding--3 ds-u-sm-padding--6 ds-u-display--block ds-u-fill--gray-lightest">
             <div className="ds-u-display--flex ds-u-align-items--center">

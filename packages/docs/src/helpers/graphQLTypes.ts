@@ -7,6 +7,13 @@ export interface TableOfContentsItem {
 }
 
 /**
+ * @see https://www.gatsbyjs.com/docs/location-data-from-props/
+ */
+export interface LocationInterface {
+  pathname: string;
+}
+
+/**
  * typing for the `mdx` graphQL query
  */
 export interface MdxQuery {
@@ -24,6 +31,7 @@ export interface MdxQuery {
       };
     };
   };
+  location?: LocationInterface;
 }
 
 export interface PropQuery {
