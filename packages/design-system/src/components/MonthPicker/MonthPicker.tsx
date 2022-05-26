@@ -4,10 +4,9 @@ import Button, { ButtonVariation } from '../Button/Button';
 import Choice from '../ChoiceList/Choice';
 import React, { ChangeEvent, useState } from 'react';
 import classNames from 'classnames';
-import pick from 'lodash/pick';
-import { FormControl, FormControlPropKeys } from '../FormControl/FormControl';
 import { NUM_MONTHS, getMonthNames } from './getMonthNames';
 import { fallbackLocale, getLanguage, t } from '../i18n';
+import { FormLabel, useFormLabel } from '../FormLabel';
 
 const monthNumbers = (() => {
   const months = [];
@@ -161,62 +160,60 @@ export const MonthPicker = (props: MonthPickerProps) => {
   const selectAllPressed = selectedMonths.length === NUM_MONTHS - disabledMonths.length;
   const clearAllPressed = selectedMonths.length === 0;
 
-  const containerProps = pick(props, FormControlPropKeys);
-  const containerClassName = classNames('ds-c-month-picker', props.className);
+  const { labelProps, wrapperProps, bottomError } = useFormLabel({
+    ...props,
+    className: classNames('ds-c-month-picker', props.className),
+    labelComponent: 'legend',
+    wrapperIsFieldset: true,
+  });
 
   return (
-    <FormControl
-      {...containerProps}
-      className={containerClassName}
-      component="fieldset"
-      labelComponent="legend"
-      render={() => (
-        <>
-          <div className="ds-c-month-picker__buttons ds-u-clearfix">
-            <Button
-              aria-pressed={selectAllPressed}
-              size="small"
-              className="ds-c-month-picker__button"
-              onClick={handleSelectAll}
-              inversed={props.inversed}
-              variation={props.buttonVariation}
-            >
-              {props.selectAllText ?? t('monthPicker.selectAllText')}
-            </Button>
-            <Button
-              aria-pressed={clearAllPressed}
-              size="small"
-              className="ds-c-month-picker__button"
-              onClick={handleClearAll}
-              inversed={props.inversed}
-              variation={props.buttonVariation}
-            >
-              {props.clearAllText ?? t('monthPicker.clearAllText')}
-            </Button>
-          </div>
-          <div className="ds-c-month-picker__months">
-            <ol className="ds-c-list--bare ds-c-month-picker__months-list">
-              {months.map((month, i) => (
-                <li key={month}>
-                  <Choice
-                    aria-label={monthsLong[i]}
-                    checked={selectedMonths.includes(i + 1)}
-                    className="ds-c-month-picker__month"
-                    disabled={disabledMonths.includes(i + 1)}
-                    inversed={props.inversed}
-                    onChange={handleChange}
-                    name={props.name}
-                    type="checkbox"
-                    value={i + 1}
-                    label={month}
-                  />
-                </li>
-              ))}
-            </ol>
-          </div>
-        </>
-      )}
-    />
+    <fieldset {...wrapperProps}>
+      <FormLabel {...labelProps} />
+      <div className="ds-c-month-picker__buttons ds-u-clearfix">
+        <Button
+          aria-pressed={selectAllPressed}
+          size="small"
+          className="ds-c-month-picker__button"
+          onClick={handleSelectAll}
+          inversed={props.inversed}
+          variation={props.buttonVariation}
+        >
+          {props.selectAllText ?? t('monthPicker.selectAllText')}
+        </Button>
+        <Button
+          aria-pressed={clearAllPressed}
+          size="small"
+          className="ds-c-month-picker__button"
+          onClick={handleClearAll}
+          inversed={props.inversed}
+          variation={props.buttonVariation}
+        >
+          {props.clearAllText ?? t('monthPicker.clearAllText')}
+        </Button>
+      </div>
+      <div className="ds-c-month-picker__months">
+        <ol className="ds-c-list--bare ds-c-month-picker__months-list">
+          {months.map((month, i) => (
+            <li key={month}>
+              <Choice
+                aria-label={monthsLong[i]}
+                checked={selectedMonths.includes(i + 1)}
+                className="ds-c-month-picker__month"
+                disabled={disabledMonths.includes(i + 1)}
+                inversed={props.inversed}
+                onChange={handleChange}
+                name={props.name}
+                type="checkbox"
+                value={i + 1}
+                label={month}
+              />
+            </li>
+          ))}
+        </ol>
+      </div>
+      {bottomError}
+    </fieldset>
   );
 };
 
