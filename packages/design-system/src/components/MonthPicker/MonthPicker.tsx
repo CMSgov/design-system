@@ -6,7 +6,7 @@ import React, { ChangeEvent, useState } from 'react';
 import classNames from 'classnames';
 import { NUM_MONTHS, getMonthNames } from './getMonthNames';
 import { fallbackLocale, getLanguage, t } from '../i18n';
-import { FormLabel, useFormLabel } from '../FormLabel';
+import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 
 const monthNumbers = (() => {
   const months = [];
@@ -18,7 +18,7 @@ const monthNumbers = (() => {
 
 export type MonthPickerErrorPlacement = 'top' | 'bottom';
 
-interface MonthPickerProps {
+interface MonthPickerProps extends FormFieldProps {
   /**
    * The `input` field's `name` attribute
    */
@@ -37,37 +37,9 @@ interface MonthPickerProps {
    */
   className?: string;
   /**
-   * Applies the "inverse" UI theme
-   */
-  inversed?: boolean;
-  /**
    * Variation string to be applied to buttons. See [Button component]({{root}}/components/button/#components.button.react)
    */
   buttonVariation?: ButtonVariation;
-  /**
-   * Label for the field
-   */
-  label: React.ReactNode;
-  /**
-   * Enable the error state by providing an error message.
-   */
-  errorMessage?: React.ReactNode;
-  /**
-   * Additional classes to be added to the error message
-   */
-  errorMessageClassName?: string;
-  /**
-   * Location of the error message relative to the field input
-   */
-  errorPlacement?: MonthPickerErrorPlacement;
-  /**
-   * Additional hint text to display
-   */
-  hint?: React.ReactNode;
-  /**
-   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
-   */
-  requirementLabel?: React.ReactNode;
   /**
    * Array of month numbers, where `1` is January, and any month included
    * is disabled for selection.
