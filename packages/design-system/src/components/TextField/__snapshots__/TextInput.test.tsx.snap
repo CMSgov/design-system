@@ -29,27 +29,3 @@ exports[`TextInput is an input field 1`] = `
   type="text"
 />
 `;
-
-exports[`TextInput masks renders TextInput 1`] = `
-<input
-  aria-invalid={false}
-  className="ds-c-field"
-  id="1"
-  name="spec-field"
-  type="text"
-/>
-`;
-
-exports[`TextInput masks renders currency mask 1`] = `
-<Mask
-  mask="currency"
->
-  <input
-    aria-invalid={false}
-    className="ds-c-field ds-c-field--currency"
-    id="1"
-    name="spec-field"
-    type="text"
-  />
-</Mask>
-`;
