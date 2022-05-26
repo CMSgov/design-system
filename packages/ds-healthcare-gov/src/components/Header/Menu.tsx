@@ -25,22 +25,12 @@ const Menu = (props: MenuProps) => {
   });
 
   return (
-    <nav id="hc-c-menu" className={classes} role="navigation">
-      <div className="ds-l-container">
-        <div className="ds-l-row">
-          <div className="hc-c-menu__content ds-u-padding--1 ds-u-font-weight--bold">
-            {props.submenuTop}
-            {props.beforeLinks}
-            {props.links && (
-              <div className="ds-l-col ds-l-col--auto ds-u-padding-x--0">
-                <MenuLinks links={props.links} />
-              </div>
-            )}
-            {props.submenuBottom}
-          </div>
-        </div>
-      </div>
-    </nav>
+    <div id="hc-c-menu" hidden={!props.open} className={classes}>
+      {props.submenuTop}
+      {props.beforeLinks}
+      {props.links && <MenuLinks links={props.links} />}
+      {props.submenuBottom}
+    </div>
   );
 };
 

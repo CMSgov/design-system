@@ -24,7 +24,7 @@ export default {
   },
   args: {
     className: '',
-    firstName: 'Margaret FirstName',
+    firstName: 'Margaret',
   },
 };
 
