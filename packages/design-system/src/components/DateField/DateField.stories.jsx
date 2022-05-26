@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import MultiInputDateField from './MultiInputDateField';
+import DateField from './DateField';
 import DateInput from './DateInput';
 
 export default {
-  title: 'Components/MultiInputDateField',
-  component: MultiInputDateField,
+  title: 'Components/DateField',
+  component: DateField,
   argTypes: {
     label: { control: false },
     errorMessage: {
@@ -15,12 +15,12 @@ export default {
   subcomponents: { DateInput },
 };
 
-const Template = ({ ...args }) => <MultiInputDateField {...args} />;
+const Template = ({ ...args }) => <DateField {...args} />;
 const ControlledTemplate = ({ ...args }) => {
   const [dateState, setDateState] = useState({ month: '10', day: '30', year: '1980' });
 
   return (
-    <MultiInputDateField
+    <DateField
       {...args}
       label={
         <span>
@@ -36,8 +36,8 @@ const ControlledTemplate = ({ ...args }) => {
   );
 };
 
-export const MultiInputDateFieldDefault = Template.bind({});
-MultiInputDateFieldDefault.args = {
+export const DateFieldDefault = Template.bind({});
+DateFieldDefault.args = {
   errorMessage: 'Please enter a year in the past',
   monthDefaultValue: '10',
   dayDefaultValue: '31',
@@ -45,10 +45,10 @@ MultiInputDateFieldDefault.args = {
   yearInvalid: true,
 };
 
-export const ControlledMultiInputDateField = ControlledTemplate.bind({});
+export const ControlledDateField = ControlledTemplate.bind({});
 
-export const InvertedMultiInputDateField = Template.bind({});
-InvertedMultiInputDateField.args = {
+export const InvertedDateField = Template.bind({});
+InvertedDateField.args = {
   errorMessage: 'Please enter a year in the past',
   monthDefaultValue: '10',
   dayDefaultValue: '31',
@@ -56,6 +56,6 @@ InvertedMultiInputDateField.args = {
   yearInvalid: true,
   inversed: true,
 };
-InvertedMultiInputDateField.parameters = {
+InvertedDateField.parameters = {
   backgrounds: { default: process.env.STORYBOOK_DS === 'medicare' ? 'Mgov dark' : 'Hcgov dark' },
 };

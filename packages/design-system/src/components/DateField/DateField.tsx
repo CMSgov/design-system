@@ -1,10 +1,9 @@
-import { FormControl, FormControlProps, FormControlPropKeys } from '../FormControl/FormControl';
+import { FormControl, FormControlPropKeys } from '../FormControl/FormControl';
 import DateInput from './DateInput';
 import React from 'react';
 import defaultDateFormatter from './defaultDateFormatter';
 import omit from 'lodash/omit';
 import pick from 'lodash/pick';
-import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 import { t } from '../i18n';
 
 export type DateFieldDayDefaultValue = string | number;
@@ -15,11 +14,15 @@ export type DateFieldYearDefaultValue = string | number;
 export type DateFieldYearValue = string | number;
 export type DateFieldErrorPlacement = 'top' | 'bottom';
 
-export interface DateFieldProps extends Omit<FormFieldProps, 'label'> {
+export interface DateFieldProps {
   /**
-   * Adds `autocomplete` attributes `bday-day`, `bday-month` and `bday-year` to the corresponding `<MultiInputDateField>` inputs
+   * Adds `autocomplete` attributes `bday-day`, `bday-month` and `bday-year` to the corresponding `<DateField>` inputs
    */
   autoComplete?: boolean;
+  /**
+   * Additional classes to be added to the root fieldset element
+   */
+  className?: string;
   /**
    * Optional method to format the `input` field values. If this
    * method is provided, the returned value will be passed as a second argument
@@ -29,12 +32,30 @@ export interface DateFieldProps extends Omit<FormFieldProps, 'label'> {
    * By default `dateFormatter` will be set to the `defaultDateFormatter` function, which prevents days/months more than 2 digits & years more than 4 digits.
    */
   dateFormatter?: (...args: any[]) => any;
+  disabled?: boolean;
+  errorMessage?: React.ReactNode;
+  /**
+   * Additional classes to be added to the error message
+   */
+  errorMessageClassName?: string;
+  /**
+   * Location of the error message relative to the field input
+   */
+  errorPlacement?: DateFieldErrorPlacement;
+  /**
+   * Additional hint text to display above the individual month/day/year fields
+   */
+  hint?: React.ReactNode;
+  /**
+   * Applies the "inverse" UI theme
+   */
+  inversed?: boolean;
   /**
    * The primary label, rendered above the individual month/day/year fields
    */
   label?: React.ReactNode;
   /**
-   * A unique ID to be used for the MultiInputDateField label. If one isn't provided, a unique ID will be generated.
+   * A unique ID to be used for the DateField label. If one isn't provided, a unique ID will be generated.
    */
   labelId?: string;
   /**
@@ -135,29 +156,29 @@ export interface DateFieldProps extends Omit<FormFieldProps, 'label'> {
   yearValue?: DateFieldYearValue;
 }
 
-export function MultiInputDateField(props: DateFieldProps): React.ReactElement {
-  const { labelProps, fieldProps, wrapperProps, bottomError } = useFormLabel({
-    label: t('dateField.label'),
-    hint: t('dateField.hint'),
-    dayName: 'day',
-    monthName: 'month',
-    yearName: 'year',
-    dateFormatter: defaultDateFormatter,
-    ...props,
-    labelComponent: 'legend',
-    wrapperIsFieldset: true,
-  });
-
-  // Throw away the properties we don't need by destructuring
-  const { id, errorId, ...inputProps } = fieldProps;
+export function DateField(props: DateFieldProps): React.ReactElement {
+  const containerProps = pick(props, FormControlPropKeys);
+  const inputOnlyProps = omit(props, FormControlPropKeys);
 
   return (
-    <fieldset {...wrapperProps}>
-      <FormLabel {...labelProps} />
-      <DateInput {...inputProps} />
-      {bottomError}
-    </fieldset>
+    <FormControl
+      label={t('dateField.label')}
+      hint={t('dateField.hint')}
+      {...containerProps}
+      component="fieldset"
+      labelComponent="legend"
+      render={({ labelId }) => (
+        <DateInput {...inputOnlyProps} {...{ labelId }} inversed={props.inversed} />
+      )}
+    />
   );
 }
 
-export default MultiInputDateField;
+DateField.defaultProps = {
+  dayName: 'day',
+  monthName: 'month',
+  yearName: 'year',
+  dateFormatter: defaultDateFormatter,
+};
+
+export default DateField;
