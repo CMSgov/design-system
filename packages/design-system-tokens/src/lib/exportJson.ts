@@ -23,11 +23,9 @@ export const exportJson = (fileDescriptors: FileDescriptor[], outPath: string): 
 
     if (file.parentDirectoryName.includes('tokens')) {
       // it's a token file
-      tokenOutput.tokenType = 'tokens';
       filename = `${outPath}/cmsds.tokens.json`;
     } else {
       // it's a theme file
-      tokenOutput[`${file.baseName}`].tokenType = 'theme';
       filename = `${outPath}/${file.parentDirectoryName}-${file.baseName}.tokens.json`;
       writeFile(filename, JSON.stringify(tokenOutput[file.baseName], null, 4));
     }

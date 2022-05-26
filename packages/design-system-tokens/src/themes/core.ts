@@ -127,7 +127,7 @@ export const global: AnyTokenValues = {
   'site-margins-mobile':        '1.5rem',
   'site-max-width':             '1040px',
   'text-max-width':             '53rem',
-}
+};
 
 export const shadow: ShadowTokens = {
   'focus':                      `inset 0 0 0 1px ${themeColors['base']}`,
