@@ -144,15 +144,16 @@ export function MultiInputDateField(props: DateFieldProps): React.ReactElement {
     yearName: 'year',
     dateFormatter: defaultDateFormatter,
     ...props,
-    labelComponent: 'label',
+    labelComponent: 'legend',
     wrapperIsFieldset: true,
   });
 
+  // Throw away the properties we don't need by destructuring
   const { id, errorId, ...inputProps } = fieldProps;
 
   return (
     <fieldset {...wrapperProps}>
-      <FormLabel component="legend" {...labelProps} />
+      <FormLabel {...labelProps} />
       <DateInput {...inputProps} />
       {bottomError}
     </fieldset>
