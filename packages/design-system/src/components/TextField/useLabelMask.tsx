@@ -34,7 +34,7 @@ export const DATE_MASK: MaskFunction = (rawInput = '', valueOnly = false) => {
   const hint = 'MM/DD/YYYY';
   const hintSub = hint.substring(formattedDate.length);
   return formattedDate + hintSub;
-}
+};
 
 export function useLabelMask(maskFn: MaskFunction, inputEl: React.ReactElement) {
   const [focused, setFocused] = useState(false);
@@ -57,7 +57,7 @@ export function useLabelMask(maskFn: MaskFunction, inputEl: React.ReactElement) 
       if (onChange) {
         onChange(e);
       }
-      
+
       if (onBlur) {
         return onBlur(e);
       }
@@ -76,6 +76,6 @@ export function useLabelMask(maskFn: MaskFunction, inputEl: React.ReactElement) 
     ),
     input: modifiedInputEl,
   };
-};
+}
 
 export default useLabelMask;
