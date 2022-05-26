@@ -32,6 +32,7 @@ export interface PropQuery {
     childMdx: {
       body: string;
     };
+    text?: string;
   };
   id: string;
   name: string;

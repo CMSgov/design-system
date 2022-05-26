@@ -48,6 +48,7 @@ const PropTable = ({ componentName }: PropTableProps) => {
                 childMdx {
                   body
                 }
+                text
               }
               id
               name
@@ -68,15 +69,20 @@ const PropTable = ({ componentName }: PropTableProps) => {
   // moving from the deeply nested graphql structure to something flatter
   const transformedData: PropTableDataItem[] = propsForComponent?.node.props.reduce(
     (acc, prop: PropQuery) => {
-      const newProp = {
-        name: prop.name,
-        type: prop.tsType?.raw || prop.tsType?.name,
-        defaultValue: prop.defaultValue?.value,
-        description: prop.description?.childMdx?.body,
-        isRequired: prop.required,
-        id: prop.id,
-      };
-      return [...acc, newProp];
+      // if prop description includes '@hide-prop`, don't show it in props table
+      const hideProp = prop.description.text.match(/@hide-prop/i);
+      if (!hideProp) {
+        const newProp = {
+          name: prop.name,
+          type: prop.tsType?.raw || prop.tsType?.name,
+          defaultValue: prop.defaultValue?.value,
+          description: prop.description?.childMdx?.body,
+          isRequired: prop.required,
+          id: prop.id,
+        };
+        return [...acc, newProp];
+      }
+      return acc;
     },
     []
   );
