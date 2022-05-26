@@ -1,6 +1,10 @@
 import { UtagContainer, sendLinkEvent } from './events';
 
 describe('sendLinkEvent', () => {
+  beforeEach(() => {
+    jest.spyOn(global, 'setTimeout');
+  });
+
   const gaEventProps = {
     ga_eventType: 'cmsds',
     ga_eventCategory: 'test category',
@@ -67,9 +71,12 @@ describe('sendLinkEvent', () => {
       (window as any as UtagContainer).utag = { link: undefined };
       expect(sendLinkEvent(gaEventProps)).toBe(undefined);
 
-      jest.runAllTimers();
-      jest.runAllTimers();
-      jest.runAllTimers();
+      // jest.runAllTimers();
+      // jest.runAllTimers();
+      // jest.runAllTimers();
+      jest.runOnlyPendingTimers();
+      jest.runOnlyPendingTimers();
+      jest.runOnlyPendingTimers();
 
       expect(setTimeout).toHaveBeenCalledTimes(3);
       expect(setTimeout).toHaveBeenNthCalledWith(1, expect.any(Function), 300);
