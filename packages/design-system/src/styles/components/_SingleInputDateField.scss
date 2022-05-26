@@ -352,13 +352,17 @@
     justify-content: start;
     align-items: flex-end;
     margin-bottom: $spacer-half;
+
+    .ds-c-field {
+      border-right: $color-gray-light;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      margin-bottom: 0;
+    }
   }
 
   .ds-c-field {
-    border-right: $color-gray-light;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    margin-bottom: 0;
+    max-width: 108px;
   }
 
   .ds-c-single-input-date-field__button {

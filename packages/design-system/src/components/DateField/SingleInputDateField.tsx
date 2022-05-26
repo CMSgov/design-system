@@ -30,7 +30,6 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
   const {
     className,
     value,
-    onBlur,
     onChange,
     defaultMonth,
     fromDate,
@@ -43,6 +42,11 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
   } = props;
   const withPicker = fromDate || fromMonth || fromYear;
   const [pickerVisible, setPickerVisible] = useState(false);
+
+  function handleChange(event) {
+    onChange(event, DATE_MASK(value, true));
+  }
+
   const { labelProps, fieldProps, wrapperProps, bottomError } = useFormLabel({
     ...remainingProps,
     className: classNames(
@@ -53,7 +57,9 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
     labelComponent: 'label',
     wrapperIsFieldset: false,
   });
-  const inputWithoutMasking = <TextInput {...fieldProps} type="text" value={value} />;
+  const inputWithoutMasking = (
+    <TextInput {...fieldProps} type="text" value={value} onChange={handleChange} />
+  );
   const { labelMask, input } = useLabelMask(DATE_MASK, inputWithoutMasking);
 
   // TODO: Validate this and make date null if it's invalid. Don't pass a bizarre date
