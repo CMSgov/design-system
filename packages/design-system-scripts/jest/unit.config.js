@@ -2,6 +2,7 @@ const path = require('path');
 
 module.exports = (rootDir, core) => ({
   rootDir,
+  testEnvironment: 'jsdom',
   testURL: 'http://localhost',
   setupFiles: [require.resolve('react-app-polyfill/stable')],
   // TODO: Find more robust solution for resolving `setupTests.js` considering `rootDir` can change
