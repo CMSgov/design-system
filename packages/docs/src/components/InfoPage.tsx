@@ -8,7 +8,7 @@ import ContentRenderer from './ContentRenderer';
 /**
  * Template for information content pages.
  */
-const InfoPage = ({ data }: MdxQuery) => {
+const InfoPage = ({ data, location }: MdxQuery) => {
   const { frontmatter, body, tableOfContents } = data.mdx;
   const { title, relatedUswdsGuidance, status } = frontmatter;
   let showGuidance = false;
@@ -26,6 +26,7 @@ const InfoPage = ({ data }: MdxQuery) => {
       relatedGuidance={relatedUswdsGuidance}
       showJumpToGuidance={showGuidance}
       status={status}
+      location={location}
     >
       <ContentRenderer data={body} />
     </Layout>

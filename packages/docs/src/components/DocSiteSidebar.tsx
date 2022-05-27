@@ -7,6 +7,7 @@ import { VerticalNav } from '@cmsgov/design-system';
 import { VerticalNavItemProps } from '@cmsgov/design-system/dist/components/VerticalNav/VerticalNavItem';
 import { useStaticQuery, graphql } from 'gatsby';
 import GithubLinks from './GithubLinks';
+import { LocationInterface } from '../helpers/graphQLTypes';
 
 interface NavItem {
   id: string;
@@ -26,6 +27,7 @@ interface GraphQlNavItem {
 
 interface DocSiteNavProps {
   isMobileNavOpen: boolean;
+  location: LocationInterface;
 }
 
 /**
@@ -47,7 +49,7 @@ const GatsbyLink = (props: VerticalNavItemProps) => {
  * @returns {React Element}
  * @todo figure out which item is currently selected and mark & expand appropriately
  */
-const DocSiteSidebar = ({ isMobileNavOpen }: DocSiteNavProps) => {
+const DocSiteSidebar = ({ isMobileNavOpen, location }: DocSiteNavProps) => {
   const data = useStaticQuery(graphql`
     query SiteNavQuery {
       allFile(sort: { fields: [relativeDirectory, name] }, filter: { ext: { eq: ".mdx" } }) {
@@ -67,6 +69,20 @@ const DocSiteSidebar = ({ isMobileNavOpen }: DocSiteNavProps) => {
   `);
 
   /**
+   * determines if the item name is included in the location pathname
+   */
+  const isItemSelected = (name: string) => {
+    return location?.pathname.includes(name);
+  };
+
+  /**
+   * Checks sub nav items to see if any are currently selected
+   */
+  const isSubNavItemSelected = (subNavItems) => {
+    return subNavItems.some((navItem) => isItemSelected(navItem.url));
+  };
+
+  /**
    * Updating a name to remove kebab case & get rid of numeric ordering
    */
   const formatNavItemLabel = (name: string): string => {
@@ -75,11 +91,15 @@ const DocSiteSidebar = ({ isMobileNavOpen }: DocSiteNavProps) => {
     return newName;
   };
 
-  const formatNavItemData = ({ name, id, relativePath }: NavItem) => ({
-    label: formatNavItemLabel(name),
-    url: makePageUrl(relativePath),
-    id,
-  });
+  const formatNavItemData = ({ name, relativePath }: NavItem) => {
+    const url = makePageUrl(relativePath);
+    return {
+      label: formatNavItemLabel(name),
+      url,
+      id: url,
+      selected: isItemSelected(url),
+    };
+  };
 
   const formatNavData = (dataList: GraphQlNavItem[]): VerticalNavItemProps[] => {
     const retVal: VerticalNavItemProps[] = [];
@@ -89,11 +109,14 @@ const DocSiteSidebar = ({ isMobileNavOpen }: DocSiteNavProps) => {
         // format all the level 2 items
         const subNavItems = dataItem.edges.map((subNavItem) => formatNavItemData(subNavItem.node));
 
+        const labelText = formatNavItemLabel(dataItem.fieldValue);
+        const isSelected = isItemSelected(dataItem.fieldValue);
         // add level 1 item & sub items
         retVal.push({
-          label: formatNavItemLabel(dataItem.fieldValue),
+          label: labelText,
           items: subNavItems,
-          defaultCollapsed: true,
+          defaultCollapsed: !isSubNavItemSelected(subNavItems),
+          selected: isSelected,
         });
       } else {
         // for each level 1 item without sub nav items,
@@ -115,7 +138,12 @@ const DocSiteSidebar = ({ isMobileNavOpen }: DocSiteNavProps) => {
         'c-sidebar--open': isMobileNavOpen,
       })}
     >
-      <VerticalNav className="c-nav" items={navItems} component={GatsbyLink} />
+      <VerticalNav
+        className="c-nav"
+        items={navItems}
+        component={GatsbyLink}
+        selectedId={location ? location.pathname : ''}
+      />
       <div className="ds-u-md-display--none ds-u-margin-top--2 c-sidebar__mobile-button-wrapper">
         <GithubLinks />
       </div>
