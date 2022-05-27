@@ -1,8 +1,8 @@
-import { FormLabelProps } from '../FormLabel/FormLabel';
+import React, { useRef } from 'react';
 import InlineError from '../InlineError/InlineError';
-import React from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
+import { FormLabelProps } from '../FormLabel/FormLabel';
 import { errorPlacementDefault } from '../flags';
 
 // TODO: Reimplement focusTrigger in another place, like another hook
@@ -63,9 +63,11 @@ export interface UseFormLabelProps extends FormFieldProps {
  * Takes a component's props and generates the props for its label, field,
  */
 export function useFormLabel<T extends UseFormLabelProps>(props: T) {
-  const id = props.id || uniqueId('field_');
-  const labelId = props.labelId || `${id}-label`;
-  const errorId = props.errorId || `${id}-error`;
+  // TODO: Once we're on React 18, we can use the `useId` hook
+  const generatedId = useRef(uniqueId('field_')).current;
+  const id = props.id ?? generatedId;
+  const labelId = props.labelId ?? `${id}-label`;
+  const errorId = props.errorId ?? `${id}-error`;
 
   const {
     className,
@@ -104,11 +106,11 @@ export function useFormLabel<T extends UseFormLabelProps>(props: T) {
     component: labelComponent,
     errorMessage: bottomError ? undefined : errorMessage,
     errorMessageClassName: bottomError ? undefined : errorMessageClassName,
-    errorId: errorId,
+    errorId,
     // Avoid using `for` attribute for components with multiple inputs
     // i.e. ChoiceList, DateField, and other components that use `fieldset`
     fieldId: wrapperIsFieldset ? undefined : id,
-    hint: hint,
+    hint,
     id: labelId,
     requirementLabel,
     inversed,
