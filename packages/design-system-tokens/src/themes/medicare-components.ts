@@ -254,6 +254,14 @@ export const components: AllTokenValues = {
     '__color--inverse':                           t.color['white'],
   },
 
+  'table': {
+    '__padding':                                  t.spacer['2'],
+    '__border-color':                             t.color['black'],
+    '-header__background-color':                  t.color['gray-lightest'],
+    '-striped__background-color':                 t.color['gray-lightest'],
+    '-striped-header__background-color':          t.color['gray-lightest'],
+  },
+
   'tabs': {
     '__border-color':                             t.color['border'],
     '__background-color':                         t.color['background'],
@@ -268,7 +276,6 @@ export const components: AllTokenValues = {
     '__border-color--disabled':                   t.color['gray-lighter'],
     '__color--disabled':                          t.color['gray-dark'],
   },
-
   
   'text-input': {
     '__line-height':                              '1.3',
