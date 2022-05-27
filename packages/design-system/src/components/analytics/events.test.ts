@@ -71,12 +71,9 @@ describe('sendLinkEvent', () => {
       (window as any as UtagContainer).utag = { link: undefined };
       expect(sendLinkEvent(gaEventProps)).toBe(undefined);
 
-      // jest.runAllTimers();
-      // jest.runAllTimers();
-      // jest.runAllTimers();
-      jest.runOnlyPendingTimers();
-      jest.runOnlyPendingTimers();
-      jest.runOnlyPendingTimers();
+      jest.runAllTimers();
+      jest.runAllTimers();
+      jest.runAllTimers();
 
       expect(setTimeout).toHaveBeenCalledTimes(3);
       expect(setTimeout).toHaveBeenNthCalledWith(1, expect.any(Function), 300);
