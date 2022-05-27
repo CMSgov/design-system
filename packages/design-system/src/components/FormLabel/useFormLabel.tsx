@@ -1,8 +1,7 @@
-import { FormLabel, FormLabelProps } from '../FormLabel/FormLabel';
+import { FormLabelProps } from '../FormLabel/FormLabel';
 import InlineError from '../InlineError/InlineError';
 import React from 'react';
 import classNames from 'classnames';
-import omit from 'lodash/omit';
 import uniqueId from 'lodash/uniqueId';
 import { errorPlacementDefault } from '../flags';
 
