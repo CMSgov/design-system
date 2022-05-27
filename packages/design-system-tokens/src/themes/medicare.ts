@@ -50,10 +50,10 @@ const themeColors: ColorTokens = {
   'border-dark':                color['lapis-800'],
   'border-inverse':             color['white-solid'],
   //
-  'cool-blue':                  color['sapphire-600'],
-  'cool-blue-light':            color['sapphire-500'],
-  'cool-blue-lighter':          color['sapphire-200'],
-  'cool-blue-lightest':         color['sapphire-50'],
+  'coolblue':                  color['sapphire-600'],
+  'coolblue-light':            color['sapphire-500'],
+  'coolblue-lighter':          color['sapphire-200'],
+  'coolblue-lightest':         color['sapphire-50'],
   //
   'error':                      color['crimson-500'],
   'error-dark':                 color['crimson-600'],
