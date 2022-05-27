@@ -155,20 +155,6 @@ export const components: AllTokenValues = {
     '__icon-size':                                '10px',
   },
 
-  'link': {
-    '__color':                                    t.color['primary'],
-    '__color--visited':                           t.color['visited'],
-    '__color--hover':                             t.color['primary-darker'],
-    '__color--active':                            t.color['primary-darkest'],
-    '__text-decoration--thickness':               '1px',
-    '__text-decoration--thickness--hover':        '1px',
-    '__text-decoration--offset':                  'auto',
-    '-inverse__color':                            t.color['base-inverse'],
-    '-inverse__color--visited':                   t.color['muted-inverse'],
-    '-inverse__color--hover':                     t.color['muted-inverse'],
-    '-inverse__color--status':                    t.color['muted-inverse'],
-  },
-
   'filter-chip': {
     '__border-radius':                            t.radius['pill'],
     '__background-color':                         t.color['primary-alt-lightest'],
@@ -192,6 +178,28 @@ export const components: AllTokenValues = {
     '-error__color--inverse':                     t.color['error-light'],
   },
 
+  'icon': {
+    '__color--primary':                           t.color['primary'],
+    '__color--inverse':                           t.color['white'],
+    '__color__error':                             t.color['error'],
+    '__color--warn':                              t.color['warn'],
+    '__color--success':                           t.color['success'],
+  },
+
+  'link': {
+    '__color':                                    t.color['primary'],
+    '__color--visited':                           t.color['visited'],
+    '__color--hover':                             t.color['primary-darker'],
+    '__color--active':                            t.color['primary-darkest'],
+    '__text-decoration--thickness':               '1px',
+    '__text-decoration--thickness--hover':        '1px',
+    '__text-decoration--offset':                  'auto',
+    '-inverse__color':                            t.color['base-inverse'],
+    '-inverse__color--visited':                   t.color['muted-inverse'],
+    '-inverse__color--hover':                     t.color['muted-inverse'],
+    '-inverse__color--status':                    t.color['muted-inverse'],
+  },
+
   'pagination': {
     '-link__color':                               t.color['primary'],
     '-link__color--hover':                        t.color['primary-darker'],
@@ -207,7 +215,7 @@ export const components: AllTokenValues = {
     '__border-color':                             t.color['border'],
   },
 
-    'steplist': {
+  'steplist': {
     '__color':                                    t.color['muted'],
     '__color--current':                           t.color['primary'],
     '__background-color--current':                t.color['primary'],

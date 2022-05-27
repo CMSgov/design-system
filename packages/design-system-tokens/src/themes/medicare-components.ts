@@ -205,6 +205,14 @@ export const components: AllTokenValues = {
     '-error__color':                              t.color['error'],
     '-error__color--inverse':                     t.color['error-light'],
   },
+
+  'icon': {
+    '__color--primary':                           t.color['primary'],
+    '__color--inverse':                           t.color['white'],
+    '__color__error':                             t.color['error'],
+    '__color--warn':                              t.color['warn'],
+    '__color--success':                           t.color['success'],
+  },
   
   'link': {
     '__color':                                    t.color['primary-alt'],
