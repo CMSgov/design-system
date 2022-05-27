@@ -233,6 +233,21 @@ export const components: AllTokenValues = {
     '-striped__background-color':                 t.color['gray-lightest'],
     '-striped-header__background-color':          t.color['gray-lightest'],
   },
+    
+  'tabs': {
+    '__border-color':                             t.color['border'],
+    '__background-color':                         t.color['background'],
+    '__color':                                    t.color['base'],
+    '-selected__background-color':                t.color['primary'],
+    '-selected__border-color':                    t.color['white'],
+    '-selected__color':                           t.color['primary'],
+    '-selected__border-color--active':            t.color['primary'],
+    '__color--hover':                             t.color['primary'],
+    '__color--active':                            t.color['primary-darker'],
+    '__background-color--disabled':               t.color['gray-lighter'],
+    '__border-color--disabled':                   t.color['gray-lighter'],
+    '__color--disabled':                          t.color['gray-dark'],
+  },
 
   'text-input': {
     '__line-height':                              '1.3',
