@@ -27,7 +27,7 @@
   "dependencies": {
     "@cmsgov/design-system": "^3.4.0",
     "@types/react": "^17.0.10",
-    "@types/react-dom": "^17.0.10"
+    "@types/react-dom": "^18.0.5"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.8.3",
