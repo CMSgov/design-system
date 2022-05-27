@@ -82,8 +82,8 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
             <CalendarIcon ariaHidden={false} />
           </button>
         )}
-        {pickerVisible && <DayPicker mode="single" selected={date} onSelect={handlePickerChange} />}
       </div>
+      {pickerVisible && <DayPicker mode="single" selected={date} onSelect={handlePickerChange} />}
       {bottomError}
     </div>
   );

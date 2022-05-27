@@ -346,6 +346,22 @@
   background-color: var(--rdp-active-color);
 }
 
+.ds-c-single-input-date-field {
+  position: relative;
+
+  .rdp {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    border: 1px solid $color-gray-dark;
+    border-radius: 8px;
+    box-shadow: 0 0 17px 0 $color-gray-light;
+    margin: 0;
+    margin-top: $spacer-1;
+    padding: $spacer-2;
+  }
+}
+
 .ds-c-single-input-date-field__field-wrapper {
   .ds-c-single-input-date-field--with-picker & {
     display: flex;
@@ -353,7 +369,6 @@
     align-items: stretch;
     margin-bottom: $spacer-half;
     margin-top: $spacer-half;
-    position: relative;
 
     .ds-c-field {
       border-top-right-radius: 0;
@@ -410,10 +425,5 @@
 
   .ds-c-icon--calendar {
     height: 75%;
-  }
-
-  .rdp {
-    position: absolute;
-    top: 100%;
   }
 }
