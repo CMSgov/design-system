@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useLabelMask masks the value when focused 1`] = `"12/DD/YYYY"`;
+
+exports[`useLabelMask returns labelMask and input elements 1`] = `
+<DocumentFragment>
+  <div
+    aria-hidden="true"
+    class="ds-c-label-mask"
+  >
+    MM/DD/YYYY
+  </div>
+</DocumentFragment>
+`;
+
+exports[`useLabelMask returns labelMask and input elements 2`] = `
+<DocumentFragment>
+  <input
+    inputmode="numeric"
+    type="text"
+    value=""
+  />
+</DocumentFragment>
+`;
+
+exports[`useLabelMask shows unfilled mask when not focused 1`] = `"MM/DD/YYYY"`;
