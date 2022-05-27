@@ -45,18 +45,6 @@ export default function () {
   const doc = sketch.getSelectedDocument();
   doc.swatches = [];
 
-  // const componentLayerStyles = makeLayerStyles(jsonFile.components);
-  // const componentTextStyles = makeTextStyles(jsonFile.components);
-
-  // doc.sharedLayerStyles = componentLayerStyles.map((layerStyle) => {
-  //   // return layerStyle computation
-  //   console.log(layerStyle);
-  // });
-  // doc.sharedTextStyles = componentTextStyles.map((textStyle) => {
-  //   // return textStyle computation
-  //   console.log(textStyle);
-  // });
-
   const colorSwatches = makeColorSwatches(tokenData.color);
   colorSwatches.forEach((swatch) => {
     doc.swatches.push(swatch);
