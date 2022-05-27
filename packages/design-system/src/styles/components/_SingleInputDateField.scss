@@ -356,11 +356,11 @@
     position: relative;
 
     .ds-c-field {
-      border-right: $color-gray-light;
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
       margin-top: 0;
       margin-bottom: 0;
+      margin-right: -#{$input-border-width};
 
       &:focus,
       &:active {
@@ -385,10 +385,26 @@
     padding: $spacer-half $spacer-1;
     text-align: center;
     text-decoration: none;
+    position: relative;
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: -#{$input-border-width};
+      top: 0;
+      bottom: 0;
+      width: $input-border-width;
+      background: $color-gray-light;
+    }
 
     &:focus,
     &:active {
       @include focus-styles;
+
+      &:after {
+        display: none;
+      }
     }
   }
 

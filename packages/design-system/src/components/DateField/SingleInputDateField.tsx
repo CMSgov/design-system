@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import CalendarIcon from '../Icons/CalendarIcon';
 import classNames from 'classnames';
-import { Button } from '../Button';
 import { DayPicker } from 'react-day-picker';
 import { DATE_MASK, RE_DATE } from '../TextField/useLabelMask';
 import { format } from 'date-fns';
