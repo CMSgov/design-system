@@ -3,14 +3,13 @@ import CalendarIcon from '../Icons/CalendarIcon';
 import classNames from 'classnames';
 import { DayPicker } from 'react-day-picker';
 import { DATE_MASK, RE_DATE } from '../TextField/useLabelMask';
-import { format } from 'date-fns';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 import { TextInput } from '../TextField';
 import useLabelMask from '../TextField/useLabelMask';
 
 export interface SingleInputDateFieldProps extends FormFieldProps {
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => any;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>, maskedValue: string) => any;
+  onChange?: (updatedValue: string, maskedValue: string) => any;
   value?: string;
   name: string;
 
@@ -43,7 +42,14 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
   const [pickerVisible, setPickerVisible] = useState(false);
 
   function handleChange(event) {
-    onChange(event, DATE_MASK(value, true));
+    const updatedValue = event.currentTarget.value;
+    onChange(updatedValue, DATE_MASK(updatedValue, true));
+  }
+
+  function handlePickerChange(date: Date) {
+    const updatedValue = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+    onChange(DATE_MASK(updatedValue), DATE_MASK(updatedValue, true));
+    setPickerVisible(false);
   }
 
   const { labelProps, fieldProps, wrapperProps, bottomError } = useFormLabel({
@@ -56,8 +62,9 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
     labelComponent: 'label',
     wrapperIsFieldset: false,
   });
+  const { labelId, ...inputProps } = fieldProps;
   const inputWithoutMasking = (
-    <TextInput {...fieldProps} type="text" value={value} onChange={handleChange} />
+    <TextInput {...inputProps} type="text" value={value} onChange={handleChange} />
   );
   const { labelMask, input } = useLabelMask(DATE_MASK, inputWithoutMasking);
 
@@ -65,8 +72,6 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
   // to DayPicker like new Date(`01/02`), which is interpreted as `Jan 02, 2001`. Probably
   // borrow the regex from the label mask
   const date = new Date(props.value);
-
-  function handlePickerChange() {}
 
   return (
     <div {...wrapperProps}>

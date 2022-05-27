@@ -27,13 +27,7 @@ export default {
 
 const Template = ({ ...args }) => {
   const [dateString, setDateString] = useState('');
-  return (
-    <SingleInputDateField
-      {...args}
-      value={dateString}
-      onChange={(event) => setDateString(event.currentTarget.value)}
-    />
-  );
+  return <SingleInputDateField {...args} value={dateString} onChange={setDateString} />;
 };
 
 export const Default = Template.bind({});
