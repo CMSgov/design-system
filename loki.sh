@@ -10,7 +10,7 @@ usage() {
 Usage: $(basename "${BASH_SOURCE[0]}") [-h] [-v] [-t target] <...loki args>
 
 Assists with running the Storybook Loki visual regression tests. Items in brackets
-are optional.
+are optional. Must have docker running and able to start up instances.
 
 Available options:
 

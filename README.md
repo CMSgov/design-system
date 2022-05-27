@@ -84,11 +84,14 @@ These scripts can all be run from the root level of the repo:
 
 ### Visual regression testing
 
-We use [loki](https://storybook.js.org/addons/loki) to test our components for visual regressions. It uses our existing Storybook stories, taking screenshots of them and compares them against our reference screenshots committed to version control.
+We use [loki](https://storybook.js.org/addons/loki) to test our components for visual regressions. It uses our existing Storybook stories, taking screenshots of them within a docker container and comparing those screenshots with ones previously taken and committed to version control.
 
-To run visual regression tests, run `yarn loki test`.
+Running loki tests locally requires that you be signed into Docker.
 
-If differences are detected and unexpected, evaluate your changes - we only want to update and commit references when we expect the visual changes detected. Otherwise, if differences are detected and expected run `yarn loki update` to update our reference images.
+1. Open the Docker app, and make sure you're signed in (Docker Desktop requires a license now)
+2. Run `yarn loki test` to begin comparing component images
+   1. If differences are detected and unexpected, evaluate your changes - we only want to update and commit references when we expect the visual changes detected
+   2. If differences are detected and expected, run `yarn loki update`
 
 #### Visual regression troubleshooting
 
