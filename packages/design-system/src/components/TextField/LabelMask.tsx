@@ -18,7 +18,8 @@ export interface LabelMaskProps {
 
 const LabelMask = (props: LabelMaskProps) => {
   const field = React.Children.only(props.children as React.ReactElement);
-  const { labelMask, input } = useLabelMask(props.labelMask, field);
+  const { labelMask, inputProps } = useLabelMask(props.labelMask, field.props);
+  const input = React.cloneElement(field, inputProps);
 
   return (
     <>

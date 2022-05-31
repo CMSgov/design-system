@@ -29,7 +29,6 @@ export interface SingleInputDateFieldProps extends FormFieldProps {
 const SingleInputDateField = (props: SingleInputDateFieldProps) => {
   const {
     className,
-    value,
     onChange,
     defaultMonth,
     fromDate,
@@ -64,11 +63,11 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
     labelComponent: 'label',
     wrapperIsFieldset: false,
   });
-  const { labelId, ...inputProps } = fieldProps;
-  const inputWithoutMasking = (
-    <TextInput {...inputProps} type="text" value={value} onChange={handleChange} />
-  );
-  const { labelMask, input } = useLabelMask(DATE_MASK, inputWithoutMasking);
+  const { labelMask, inputProps } = useLabelMask(DATE_MASK, {
+    ...fieldProps,
+    onChange: handleChange,
+    type: 'text',
+  });
 
   const dayPickerRef = useRef();
   const calendarButtonRef = useRef();
@@ -85,7 +84,7 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
       <FormLabel {...labelProps} />
       {labelMask}
       <div className="ds-c-single-input-date-field__field-wrapper">
-        {input}
+        <TextInput {...inputProps} />
         {withPicker && (
           <button
             className="ds-c-single-input-date-field__button"

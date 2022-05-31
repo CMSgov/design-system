@@ -120,7 +120,6 @@ export function useFormLabel<T extends UseFormLabelProps>(props: T) {
   const fieldProps = {
     ...remainingProps,
     id,
-    labelId,
     errorId,
     inversed,
   };
