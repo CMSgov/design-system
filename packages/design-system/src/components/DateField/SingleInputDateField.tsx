@@ -1,13 +1,14 @@
 import React, { useRef, useState } from 'react';
 import CalendarIcon from '../Icons/CalendarIcon';
 import classNames from 'classnames';
+import isMatch from 'date-fns/isMatch';
+import useLabelMask from '../TextField/useLabelMask';
+import useClickOutsideHandler from '../utilities/useClickOutsideHandler';
+import usePressEscapeHandler from '../utilities/usePressEscapeHandler';
 import { DayPicker } from 'react-day-picker';
 import { DATE_MASK, RE_DATE } from '../TextField/useLabelMask';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 import { TextInput } from '../TextField';
-import useLabelMask from '../TextField/useLabelMask';
-import { useClickOutsideHandler } from '../utilities/useClickOutsideHandler';
-import usePressEscapeHandler from '../utilities/usePressEscapeHandler';
 
 export interface SingleInputDateFieldProps extends FormFieldProps {
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => any;
@@ -42,15 +43,9 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
   const withPicker = fromDate || fromMonth || fromYear;
   const [pickerVisible, setPickerVisible] = useState(false);
 
-  function handleChange(event) {
+  function handleInputChange(event) {
     const updatedValue = event.currentTarget.value;
     onChange(updatedValue, DATE_MASK(updatedValue, true));
-  }
-
-  function handlePickerChange(date: Date) {
-    const updatedValue = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
-    onChange(DATE_MASK(updatedValue), DATE_MASK(updatedValue, true));
-    setPickerVisible(false);
   }
 
   const { labelProps, fieldProps, wrapperProps, bottomError } = useFormLabel({
@@ -65,19 +60,27 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
   });
   const { labelMask, inputProps } = useLabelMask(DATE_MASK, {
     ...fieldProps,
-    onChange: handleChange,
+    onChange: handleInputChange,
     type: 'text',
   });
+
+  function handlePickerChange(date: Date) {
+    console.log(date);
+    const updatedValue = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+    onChange(DATE_MASK(updatedValue), DATE_MASK(updatedValue, true));
+    setPickerVisible(false);
+  }
 
   const dayPickerRef = useRef();
   const calendarButtonRef = useRef();
   useClickOutsideHandler([dayPickerRef, calendarButtonRef], () => setPickerVisible(false));
   usePressEscapeHandler(dayPickerRef, () => setPickerVisible(false));
 
-  // TODO: Validate this and make date null if it's invalid. Don't pass a bizarre date
-  // to DayPicker like new Date(`01/02`), which is interpreted as `Jan 02, 2001`. Probably
-  // borrow the regex from the label mask
-  const date = new Date(props.value);
+  // Validate the date string (value) and make date null if it's invalid. We don't want to pass
+  // a bizarre date to DayPicker like `new Date('01/02')`, which is interpreted as `Jan 02, 2001`
+  const dateString = DATE_MASK(props.value, true);
+  const validDateString = isMatch(dateString, 'MM/dd/yyyy');
+  const date = validDateString ? new Date(dateString) : null;
 
   return (
     <div {...wrapperProps}>
@@ -97,7 +100,12 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
       </div>
       {pickerVisible && (
         <div ref={dayPickerRef}>
-          <DayPicker mode="single" selected={date} onSelect={handlePickerChange} />
+          <DayPicker
+            mode="single"
+            selected={date}
+            defaultMonth={date}
+            onSelect={handlePickerChange}
+          />
         </div>
       )}
       {bottomError}
