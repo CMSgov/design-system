@@ -262,7 +262,7 @@ export const components: AnyTokenValues = {
     '__border-radius':                            t.radius['default'],
   },
 
-  'usaBanner': {
+  'usa-banner': {
     '__background-color':                         t.color['gray-lightest'],
     '__color':                                    t.color['black'],
     '-close__background-color':                   t.color['gray-light'],

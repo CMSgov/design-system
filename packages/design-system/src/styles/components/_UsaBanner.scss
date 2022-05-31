@@ -1,6 +1,6 @@
 .ds-c-usa-banner {
-  background-color: $usaBanner__background-color;
-  color: $usaBanner__color;
+  background-color: $usa-banner__background-color;
+  color: $usa-banner__color;
   font-family: $font-sans;
   font-size: $font-size-base;
   padding: 0;
@@ -47,14 +47,14 @@
 
 .ds-c-usa-banner__collapse-banner-container {
   align-items: center;
-  background-color: $usaBanner-close__background-color;
+  background-color: $usa-banner-close__background-color;
   display: flex;
-  height: $usaBanner-mobile-close__size;
+  height: $usa-banner-mobile-close__size;
   justify-content: center;
   margin-left: auto;
   margin-right: -$spacer-2;
   margin-top: -$spacer-1;
-  width: $usaBanner-mobile-close__size;
+  width: $usa-banner-mobile-close__size;
 
   .ds-c-icon {
     height: $font-size-lg;
@@ -77,7 +77,7 @@
 }
 
 .ds-c-usa-banner__header-action {
-  color: $usaBanner-action__color;
+  color: $usa-banner-action__color;
   display: block;
   margin-bottom: 0;
   margin-top: 2px;
@@ -144,7 +144,7 @@
   width: $spacer-5;
 
   &.ds-c-icon--lock-circle {
-    color: $usaBanner-lock-icon__color;
+    color: $usa-banner-lock-icon__color;
 
     @media (-ms-high-contrast: active), (forced-colors: active) {
       color: WindowText;
@@ -192,7 +192,7 @@
 }
 
 .ds-c-usa-banner__action-icon {
-  color: $usaBanner__color;
-  height: $usaBanner-caret-icon__size;
-  width: $usaBanner-caret-icon__size;
+  color: $usa-banner__color;
+  height: $usa-banner-caret-icon__size;
+  width: $usa-banner-caret-icon__size;
 }
