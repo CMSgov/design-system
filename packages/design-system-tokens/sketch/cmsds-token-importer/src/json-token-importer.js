@@ -4,7 +4,7 @@ import { readFileSync } from '@skpm/fs';
 
 /*
  * Split tokens into groups based on root name and store in category,
- * based on first word before '-'.
+ * based on first word before '-'. Allows keys with up to 4 dash separators.
  *
  * @param colorTokens - An object which contains color name:value pairs
  * @returns An array of Swatch objects created by the Sketch API
@@ -12,7 +12,7 @@ import { readFileSync } from '@skpm/fs';
 const makeColorSwatches = (colorTokens) => {
   const swatches = [];
   for (const [key, value] of Object.entries(colorTokens)) {
-    let colorName = key.match(/(^[A-Za-z]*)-?[A-Za-z]*?-?[A-Za-z\d]*?$/);
+    let colorName = key.match(/(^[A-Za-z]*)-?[A-Za-z\d]*?-?[A-Za-z\d]*?-?[A-Za-z\d]*?$/);
     colorName = colorName === null ? (colorName = '') : colorName[1] + '/';
     let currentSwatch = sketch.Swatch.from({
       name: `${colorName}/${key}`,

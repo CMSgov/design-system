@@ -2168,7 +2168,7 @@ function __skpm_run(key, context) {
 
           /*
            * Split tokens into groups based on root name and store in category,
-           * based on first word before '-'.
+           * based on first word before '-'. Allows keys with up to 4 dash separators.
            *
            * @param colorTokens - An object which contains color name:value pairs
            * @returns An array of Swatch objects created by the Sketch API
@@ -2186,7 +2186,7 @@ function __skpm_run(key, context) {
                 key = _Object$entries$_i[0],
                 value = _Object$entries$_i[1];
 
-              var colorName = key.match(/(^[A-Za-z]*)-?[A-Za-z]*?-?[A-Za-z\d]*?$/);
+              var colorName = key.match(/(^[A-Za-z]*)-?[A-Za-z\d]*?-?[A-Za-z\d]*?-?[A-Za-z\d]*?$/);
               colorName = colorName === null ? (colorName = '') : colorName[1] + '/';
               var currentSwatch = sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Swatch.from({
                 name: ''.concat(colorName, '/').concat(key),
