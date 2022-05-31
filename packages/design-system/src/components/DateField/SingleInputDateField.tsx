@@ -65,7 +65,6 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
   });
 
   function handlePickerChange(date: Date) {
-    console.log(date);
     const updatedValue = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
     onChange(DATE_MASK(updatedValue), DATE_MASK(updatedValue, true));
     setPickerVisible(false);

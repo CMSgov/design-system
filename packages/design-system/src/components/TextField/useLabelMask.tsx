@@ -62,7 +62,7 @@ export function useLabelMask(maskFn: MaskFunction, originalInputProps: TextInput
       }
 
       if (onBlur) {
-        return (onBlur as any)(e);
+        (onBlur as any)(e);
       }
 
       setFocused(false);
