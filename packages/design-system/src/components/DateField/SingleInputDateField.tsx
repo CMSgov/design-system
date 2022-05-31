@@ -73,6 +73,32 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
   // borrow the regex from the label mask
   const date = new Date(props.value);
 
+  // TODO: Refactor into a click-outside hook? Or use NativeDialog??
+  // const handleEscapeKey = (event: KeyboardEvent) => {
+  //   const ESCAPE_KEY = 27;
+  //   if (pickerVisible && event.keyCode === ESCAPE_KEY) {
+  //     setPickerVisible(false);
+  //   }
+  // };
+
+  // const handleClickOutside = (event: MouseEvent) => {
+  //   if (pickerVisible) {
+  //     const clickedTooltip = tooltipElement.current?.contains(event.currentTarget);
+  //     if (!clickedTooltip) {
+  //       setPickerVisible(false);
+  //     }
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   document.addEventListener('mousedown', handleClickOutside);
+  //   document.addEventListener('keydown', handleEscapeKey);
+  //   return () => {
+  //     document.removeEventListener('mousedown', handleClickOutside);
+  //     document.removeEventListener('keydown', handleEscapeKey);
+  //   };
+  // }, [handleClickOutside, handleEscapeKey]);
+
   return (
     <div {...wrapperProps}>
       <FormLabel {...labelProps} />
