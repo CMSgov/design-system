@@ -5,9 +5,9 @@ import Layout from '../components/Layout';
 import { MdxQuery } from '../helpers/graphQLTypes';
 import ContentRenderer from '../components/ContentRenderer';
 // Main landing page for site
-const IndexPage = ({ data }: MdxQuery) => {
+const IndexPage = ({ data, location }: MdxQuery) => {
   return (
-    <Layout pageName="Introduction">
+    <Layout pageName="Introduction" location={location}>
       <ContentRenderer data={data.mdx.body} />
     </Layout>
   );
