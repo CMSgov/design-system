@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import CalendarIcon from '../Icons/CalendarIcon';
 import classNames from 'classnames';
 import { DayPicker } from 'react-day-picker';
@@ -6,6 +6,8 @@ import { DATE_MASK, RE_DATE } from '../TextField/useLabelMask';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 import { TextInput } from '../TextField';
 import useLabelMask from '../TextField/useLabelMask';
+import { useClickOutsideHandler } from '../utilities/useClickOutsideHandler';
+import usePressEscapeHandler from '../utilities/usePressEscapeHandler';
 
 export interface SingleInputDateFieldProps extends FormFieldProps {
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => any;
@@ -68,36 +70,15 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
   );
   const { labelMask, input } = useLabelMask(DATE_MASK, inputWithoutMasking);
 
+  const dayPickerRef = useRef();
+  const calendarButtonRef = useRef();
+  useClickOutsideHandler([dayPickerRef, calendarButtonRef], () => setPickerVisible(false));
+  usePressEscapeHandler(dayPickerRef, () => setPickerVisible(false));
+
   // TODO: Validate this and make date null if it's invalid. Don't pass a bizarre date
   // to DayPicker like new Date(`01/02`), which is interpreted as `Jan 02, 2001`. Probably
   // borrow the regex from the label mask
   const date = new Date(props.value);
-
-  // TODO: Refactor into a click-outside hook? Or use NativeDialog??
-  // const handleEscapeKey = (event: KeyboardEvent) => {
-  //   const ESCAPE_KEY = 27;
-  //   if (pickerVisible && event.keyCode === ESCAPE_KEY) {
-  //     setPickerVisible(false);
-  //   }
-  // };
-
-  // const handleClickOutside = (event: MouseEvent) => {
-  //   if (pickerVisible) {
-  //     const clickedTooltip = tooltipElement.current?.contains(event.currentTarget);
-  //     if (!clickedTooltip) {
-  //       setPickerVisible(false);
-  //     }
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   document.addEventListener('mousedown', handleClickOutside);
-  //   document.addEventListener('keydown', handleEscapeKey);
-  //   return () => {
-  //     document.removeEventListener('mousedown', handleClickOutside);
-  //     document.removeEventListener('keydown', handleEscapeKey);
-  //   };
-  // }, [handleClickOutside, handleEscapeKey]);
 
   return (
     <div {...wrapperProps}>
@@ -109,12 +90,17 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
           <button
             className="ds-c-single-input-date-field__button"
             onClick={() => setPickerVisible(!pickerVisible)}
+            ref={calendarButtonRef}
           >
             <CalendarIcon ariaHidden={false} />
           </button>
         )}
       </div>
-      {pickerVisible && <DayPicker mode="single" selected={date} onSelect={handlePickerChange} />}
+      {pickerVisible && (
+        <div ref={dayPickerRef}>
+          <DayPicker mode="single" selected={date} onSelect={handlePickerChange} />
+        </div>
+      )}
       {bottomError}
     </div>
   );
