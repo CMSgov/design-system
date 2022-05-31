@@ -79,6 +79,13 @@ $width-md: $media-width-md;
 $width-lg: $media-width-lg;
 $width-xl: $media-width-xl;
 
+// table
+$table-padding: $table__padding;
+$table-border-color: $table__border-color;
+$table-header-background-color: $table-header__background-color;
+$table-striped-background-color: $table-striped__background-color;
+$table-striped-header-background-color: $table-striped-header__background-color;
+
 // usa banner
 $usa-banner-background-color: $usaBanner__background-color;
 $usa-banner-text-color: $usaBanner__color;

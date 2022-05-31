@@ -3,13 +3,13 @@
  */
 
 import { animation, color, font, measure, media, radius, spacer, z } from '../tokens';
-import { ThemeTokens, ColorTokens } from '../lib/types';
+import { ThemeTokens, ColorTokens, ShadowTokens } from '../lib/types';
 
 const themeColors: ColorTokens = {
   //
   'white':                      color['white-solid'],
   'black':                      color['black-solid'],
-  'transparent':                color.transparent,
+  'transparent':                color['transparent'],
   //
   'background':                 color['white-solid'],
   'background-dialog':          color['white-solid'],
@@ -23,10 +23,10 @@ const themeColors: ColorTokens = {
   'border-dark':                color['lapis-800'],
   'border-inverse':             color['white-solid'],
   //
-  'cool-blue':                  color['sapphire-600'],
-  'cool-blue-light':            color['sapphire-500'],
-  'cool-blue-lighter':          color['sapphire-200'],
-  'cool-blue-lightest':         color['sapphire-50'],
+  'coolblue':                  color['sapphire-600'],
+  'coolblue-light':            color['sapphire-500'],
+  'coolblue-lighter':          color['sapphire-200'],
+  'coolblue-lightest':         color['sapphire-50'],
   //
   'error':                      color['rose-500'],
   'error-dark':                 color['rose-600'],
@@ -116,7 +116,7 @@ const themeColors: ColorTokens = {
   'visited':                    color['windsor-500'],
 }
 
-export const shadow = {
+export const shadow: ShadowTokens = {
   'focus':                      `inset 0 0 0 1px ${themeColors['base']}`,
   'focus-inverse':              `inset 0 0 0 1px ${themeColors['base']}`,
   'focus-link':                 `0 3px ${themeColors['base']}`,

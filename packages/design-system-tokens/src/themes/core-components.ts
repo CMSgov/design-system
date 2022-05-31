@@ -4,9 +4,9 @@
 
 import { default as t } from './core'
 import { hexOpacity } from '../lib/utility'
-import { AllTokenValues } from '../lib/types'
+import { AnyTokenValues } from '../lib/types'
 
-export const components: AllTokenValues = {
+export const components: AnyTokenValues = {
   'alert': {
     '__background-color':                         t.color['primary-alt-lightest'],
     '__background-color--error':                  t.color['error-lightest'],
@@ -69,13 +69,13 @@ export const components: AllTokenValues = {
     '__background-color--disabled':               t.color['background-inverse'],
     '__background-color--focus':                  t.color['background-inverse'],
     '__border-color':                             t.color['border-inverse'],
-    '__border-color--active':                     hexOpacity(t.color['border-inverse'], 60),
+    '__border-color--active':                     hexOpacity(t.color['border-inverse'], 0.6),
     '__border-color--disabled':                   t.color['gray-lighter'],
-    '__border-color--hover':                      hexOpacity(t.color['base-inverse'], 80),
+    '__border-color--hover':                      hexOpacity(t.color['base-inverse'], 0.8),
     '__color':                                    t.color['base-inverse'],
-    '__color--active':                            hexOpacity(t.color['base-inverse'], 60),
+    '__color--active':                            hexOpacity(t.color['base-inverse'], 0.6),
     '__color--disabled':                          t.color['gray-lighter'],
-    '__color--hover':                             hexOpacity(t.color['base-inverse'], 80),
+    '__color--hover':                             hexOpacity(t.color['base-inverse'], 0.8),
   },
 
   'button-transparent': {
@@ -100,7 +100,7 @@ export const components: AllTokenValues = {
     '__background-color--checked':                t.color['primary'],
     '__background-color--disabled':               t.color['gray-lighter'],
     '__background-color--inverse':                t.color['transparent'],
-    '__background-color--disabled--inverse':      hexOpacity(t.color['muted-inverse'], 15),
+    '__background-color--disabled--inverse':      hexOpacity(t.color['muted-inverse'], 0.15),
     '__border-color':                             t.color['base'],
     '__border-color--checked':                    t.color['primary'],
     '__border-color--disabled':                   t.color['gray-light'],
@@ -168,6 +168,14 @@ export const components: AllTokenValues = {
     '-error__color--inverse':                     t.color['error-light'],
   },
 
+  'icon': {
+    '__color--primary':                           t.color['primary'],
+    '__color--inverse':                           t.color['white'],
+    '__color__error':                             t.color['error'],
+    '__color--warn':                              t.color['warn'],
+    '__color--success':                           t.color['success'],
+  },
+
   'link': {
     '__color':                                    t.color['primary'],
     '__color--visited':                           t.color['visited'],
@@ -214,6 +222,29 @@ export const components: AllTokenValues = {
     '__color':                                    t.color['base'],
     '__background-color--inverse':                t.color['background-inverse'],
     '__color--inverse':                           t.color['white'],
+  },
+
+  'table': {
+    '__padding':                                  t.spacer['2'],
+    '__border-color':                             t.color['black'],
+    '-header__background-color':                  t.color['gray-lightest'],
+    '-striped__background-color':                 t.color['gray-lightest'],
+    '-striped-header__background-color':          t.color['gray-lightest'],
+  },
+
+  'tabs': {
+    '__border-color':                             t.color['border'],
+    '__background-color':                         t.color['background'],
+    '__color':                                    t.color['base'],
+    '-selected__background-color':                t.color['primary'],
+    '-selected__border-color':                    t.color['white'],
+    '-selected__color':                           t.color['primary'],
+    '-selected__border-color--active':            t.color['primary'],
+    '__color--hover':                             t.color['primary'],
+    '__color--active':                            t.color['primary-darker'],
+    '__background-color--disabled':               t.color['gray-lighter'],
+    '__border-color--disabled':                   t.color['gray-lighter'],
+    '__color--disabled':                          t.color['gray-dark'],
   },
 
   'text-input': {
