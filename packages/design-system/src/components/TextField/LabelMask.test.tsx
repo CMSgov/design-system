@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import LabelMask, { DATE_MASK } from './LabelMask';
-import { render, fireEvent } from '@testing-library/react';
+import LabelMask from './LabelMask';
+import { DATE_MASK } from './index';
+import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 const TestLabelMask = () => {
   const [value, setValue] = useState('');
@@ -14,7 +16,7 @@ const TestLabelMask = () => {
 describe('Label mask', function () {
   it('renders default date mask, MM/DD/YYYY, when no input value set', () => {
     const { container, asFragment } = render(<TestLabelMask />);
-    const mask = container.querySelector('.ds-c-label-mask__mask--active');
+    const mask = container.querySelector('.ds-c-label-mask');
     const input = container.querySelector('input');
 
     expect(input.value).toBe('');
@@ -28,10 +30,10 @@ describe('Label mask', function () {
       const data = '12345678';
       const maskText = '12/34/5678';
 
-      const mask = container.querySelector('.ds-c-label-mask__mask--active');
+      const mask = container.querySelector('.ds-c-label-mask');
       const input = container.querySelector('input');
 
-      fireEvent.change(input, { target: { value: data } });
+      userEvent.type(input, data);
 
       expect(input).toHaveValue(data);
       expect(mask.textContent).toBe(maskText);
@@ -40,10 +42,10 @@ describe('Label mask', function () {
       const { container } = render(<TestLabelMask />);
       const data = '1234';
 
-      const mask = container.querySelector('.ds-c-label-mask__mask--active');
+      const mask = container.querySelector('.ds-c-label-mask');
       const input = container.querySelector('input');
 
-      fireEvent.change(input, { target: { value: data } });
+      userEvent.type(input, data);
 
       expect(input).toHaveValue(data);
       expect(mask.textContent).toBe('12/34/YYYY');
@@ -53,10 +55,10 @@ describe('Label mask', function () {
       const data = '1';
       const maskText = '01/DD/YYYY';
 
-      const mask = container.querySelector('.ds-c-label-mask__mask--active');
+      const mask = container.querySelector('.ds-c-label-mask');
       const input = container.querySelector('input');
 
-      fireEvent.change(input, { target: { value: data } });
+      userEvent.type(input, data);
 
       expect(input).toHaveValue(data);
       expect(mask.textContent).toBe(maskText);
@@ -69,8 +71,8 @@ describe('Label mask', function () {
 
     const input = container.querySelector('input');
 
-    fireEvent.change(input, { target: { value: data } });
-    fireEvent.blur(input);
+    userEvent.type(input, data);
+    userEvent.tab();
 
     expect(input).toHaveValue(formattedData);
   });
