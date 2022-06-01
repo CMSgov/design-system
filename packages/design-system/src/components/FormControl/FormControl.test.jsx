@@ -44,8 +44,8 @@ describe('FormControl', function () {
 
   it('passes label to FormLabel', () => {
     const data = render();
-
-    expect(data.wrapper.find('FormLabel').prop('children')).toContain(data.props.label);
+    const children = data.wrapper.find('FormLabel').prop('children');
+    expect(children.props.children).toContain(data.props.label);
   });
 
   it('passes hint to FormLabel', () => {

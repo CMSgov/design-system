@@ -4,10 +4,9 @@ import Button, { ButtonVariation } from '../Button/Button';
 import Choice from '../ChoiceList/Choice';
 import React, { ChangeEvent, useState } from 'react';
 import classNames from 'classnames';
-import pick from 'lodash/pick';
-import { FormControl, FormControlPropKeys } from '../FormControl/FormControl';
 import { NUM_MONTHS, getMonthNames } from './getMonthNames';
 import { fallbackLocale, getLanguage, t } from '../i18n';
+import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 
 const monthNumbers = (() => {
   const months = [];
@@ -19,7 +18,7 @@ const monthNumbers = (() => {
 
 export type MonthPickerErrorPlacement = 'top' | 'bottom';
 
-interface MonthPickerProps {
+interface MonthPickerProps extends FormFieldProps {
   /**
    * The `input` field's `name` attribute
    */
@@ -38,37 +37,9 @@ interface MonthPickerProps {
    */
   className?: string;
   /**
-   * Applies the "inverse" UI theme
-   */
-  inversed?: boolean;
-  /**
    * Variation string to be applied to buttons. See [Button component]({{root}}/components/button/#components.button.react)
    */
   buttonVariation?: ButtonVariation;
-  /**
-   * Label for the field
-   */
-  label: React.ReactNode;
-  /**
-   * Enable the error state by providing an error message.
-   */
-  errorMessage?: React.ReactNode;
-  /**
-   * Additional classes to be added to the error message
-   */
-  errorMessageClassName?: string;
-  /**
-   * Location of the error message relative to the field input
-   */
-  errorPlacement?: MonthPickerErrorPlacement;
-  /**
-   * Additional hint text to display
-   */
-  hint?: React.ReactNode;
-  /**
-   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
-   */
-  requirementLabel?: React.ReactNode;
   /**
    * Array of month numbers, where `1` is January, and any month included
    * is disabled for selection.
@@ -161,62 +132,60 @@ export const MonthPicker = (props: MonthPickerProps) => {
   const selectAllPressed = selectedMonths.length === NUM_MONTHS - disabledMonths.length;
   const clearAllPressed = selectedMonths.length === 0;
 
-  const containerProps = pick(props, FormControlPropKeys);
-  const containerClassName = classNames('ds-c-month-picker', props.className);
+  const { labelProps, wrapperProps, bottomError } = useFormLabel({
+    ...props,
+    className: classNames('ds-c-month-picker', props.className),
+    labelComponent: 'legend',
+    wrapperIsFieldset: true,
+  });
 
   return (
-    <FormControl
-      {...containerProps}
-      className={containerClassName}
-      component="fieldset"
-      labelComponent="legend"
-      render={() => (
-        <>
-          <div className="ds-c-month-picker__buttons ds-u-clearfix">
-            <Button
-              aria-pressed={selectAllPressed}
-              size="small"
-              className="ds-c-month-picker__button"
-              onClick={handleSelectAll}
-              inversed={props.inversed}
-              variation={props.buttonVariation}
-            >
-              {props.selectAllText ?? t('monthPicker.selectAllText')}
-            </Button>
-            <Button
-              aria-pressed={clearAllPressed}
-              size="small"
-              className="ds-c-month-picker__button"
-              onClick={handleClearAll}
-              inversed={props.inversed}
-              variation={props.buttonVariation}
-            >
-              {props.clearAllText ?? t('monthPicker.clearAllText')}
-            </Button>
-          </div>
-          <div className="ds-c-month-picker__months">
-            <ol className="ds-c-list--bare ds-c-month-picker__months-list">
-              {months.map((month, i) => (
-                <li key={month}>
-                  <Choice
-                    aria-label={monthsLong[i]}
-                    checked={selectedMonths.includes(i + 1)}
-                    className="ds-c-month-picker__month"
-                    disabled={disabledMonths.includes(i + 1)}
-                    inversed={props.inversed}
-                    onChange={handleChange}
-                    name={props.name}
-                    type="checkbox"
-                    value={i + 1}
-                    label={month}
-                  />
-                </li>
-              ))}
-            </ol>
-          </div>
-        </>
-      )}
-    />
+    <fieldset {...wrapperProps}>
+      <FormLabel {...labelProps} />
+      <div className="ds-c-month-picker__buttons ds-u-clearfix">
+        <Button
+          aria-pressed={selectAllPressed}
+          size="small"
+          className="ds-c-month-picker__button"
+          onClick={handleSelectAll}
+          inversed={props.inversed}
+          variation={props.buttonVariation}
+        >
+          {props.selectAllText ?? t('monthPicker.selectAllText')}
+        </Button>
+        <Button
+          aria-pressed={clearAllPressed}
+          size="small"
+          className="ds-c-month-picker__button"
+          onClick={handleClearAll}
+          inversed={props.inversed}
+          variation={props.buttonVariation}
+        >
+          {props.clearAllText ?? t('monthPicker.clearAllText')}
+        </Button>
+      </div>
+      <div className="ds-c-month-picker__months">
+        <ol className="ds-c-list--bare ds-c-month-picker__months-list">
+          {months.map((month, i) => (
+            <li key={month}>
+              <Choice
+                aria-label={monthsLong[i]}
+                checked={selectedMonths.includes(i + 1)}
+                className="ds-c-month-picker__month"
+                disabled={disabledMonths.includes(i + 1)}
+                inversed={props.inversed}
+                onChange={handleChange}
+                name={props.name}
+                type="checkbox"
+                value={i + 1}
+                label={month}
+              />
+            </li>
+          ))}
+        </ol>
+      </div>
+      {bottomError}
+    </fieldset>
   );
 };
 

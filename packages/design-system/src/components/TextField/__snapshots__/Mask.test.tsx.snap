@@ -5,6 +5,7 @@ exports[`Mask renders mask 1`] = `
   className="ds-c-field-mask ds-c-field-mask--ssn"
 >
   <input
+    fieldClassName="ds-c-field--ssn"
     inputMode="numeric"
     name="foo"
     onBlur={[Function]}
@@ -26,6 +27,7 @@ exports[`Mask renders mask overlay 1`] = `
     $
   </div>
   <input
+    fieldClassName="ds-c-field--currency"
     inputMode="numeric"
     name="foo"
     onBlur={[Function]}
