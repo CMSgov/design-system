@@ -6,24 +6,74 @@ import useLabelMask from '../TextField/useLabelMask';
 import useClickOutsideHandler from '../utilities/useClickOutsideHandler';
 import usePressEscapeHandler from '../utilities/usePressEscapeHandler';
 import { DayPicker } from 'react-day-picker';
-import { DATE_MASK, RE_DATE } from '../TextField/useLabelMask';
+import { DATE_MASK } from '../TextField/useLabelMask';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 import { TextInput } from '../TextField';
 
 export interface SingleInputDateFieldProps extends FormFieldProps {
-  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => any;
-  onChange: (updatedValue: string, maskedValue: string) => any;
-  value?: string;
+  /**
+   * The `input` field's `name` attribute
+   */
   name: string;
+  /**
+   * Called anytime any date input is blurred
+   */
+  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => any;
+  /**
+   * Called anytime any date input is changed. This function is called with two arguments.
+   * The first argument should be used to update whatever state your application uses to
+   * supply back to this component's `value` prop in a _controlled component_ pattern.
+   *
+   * @param updatedValue - The input's new value
+   * @param formattedValue - The input's new value with date formatting applied, included
+   *   for convenience. Do not use this value as the component's `value` prop. An appropriate
+   *   use for this value would be to run date-validation checks against it.
+   */
+  onChange: (updatedValue: string, formattedValue: string) => any;
+  /**
+   * Sets the input's `value`. Use in combination with an `onChange` handler to implement
+   * a _controlled component_ pattern. This component expects the `value` to match
+   * whatever string the user types (i.e., the first argument provided to your `onChange`
+   * handler).
+   */
+  value?: string;
 
   // From DayPicker
   // -------------------------
+  /**
+   * The initial month to show in the calendar picker. If not provided, defaults to the
+   * month of the currently selected date.
+   */
   defaultMonth?: Date;
+  /**
+   * Earliest day to start month navigation in the calendar picker.
+   * (This does not restrict dates entered manually.)
+   */
   fromDate?: Date;
+  /**
+   * Earliest month to start month navigation in the calendar picker.
+   * (This does not restrict dates entered manually.)
+   */
   fromMonth?: Date;
+  /**
+   * Earliest year to start month navigation in the calendar picker.
+   * (This does not restrict dates entered manually.)
+   */
   fromYear?: number;
+  /**
+   * Latest day to end month navigation in the calendar picker.
+   * (This does not restrict dates entered manually.)
+   */
   toDate?: Date;
+  /**
+   * Latest month to end month navigation in the calendar picker.
+   * (This does not restrict dates entered manually.)
+   */
   toMonth?: Date;
+  /**
+   * Latest year to end month navigation in the calendar picker.
+   * (This does not restrict dates entered manually.)
+   */
   toYear?: number;
 }
 
@@ -102,8 +152,16 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
           <DayPicker
             mode="single"
             selected={date}
-            defaultMonth={date}
             onSelect={handlePickerChange}
+            defaultMonth={date ?? defaultMonth}
+            {...{
+              fromDate,
+              fromMonth,
+              fromYear,
+              toDate,
+              toMonth,
+              toYear,
+            }}
           />
         </div>
       )}
