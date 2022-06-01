@@ -116,6 +116,7 @@ export const FormControl = (props: FormControlProps) => {
   // TODO: Use React Context to provide shared form props like `errorPlacement`, `inversed`, `fieldId`
   const fieldInputProps = {
     ...fieldProps,
+    labelId: labelProps.id,
     setRef,
   };
 
