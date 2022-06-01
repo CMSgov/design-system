@@ -56,9 +56,14 @@ const CodeWithSyntaxHighlighting = ({
 // this allows scrolling in code block on small screens
 const PreformattedWithLanguageClass = (props: any) => {
   if (props.children?.props?.mdxType === 'code' && props.children?.props?.className) {
-    return <pre className={props.children.props.className} {...props} />;
+    return <pre className={`ds-u-measure--wide ${props.children.props.className}`} {...props} />;
   }
-  return <pre {...props} />;
+  return <pre {...props} className="ds-u-measure--wide" />;
+};
+
+const TextWithMaxWidth = (props: any, Component) => {
+  const className = `ds-u-measure--wide ${props.className || ''}`;
+  return <Component {...props} className={className} />;
 };
 
 /**
@@ -74,6 +79,9 @@ const customComponents = {
   table: TableWithClassnames,
   code: CodeWithSyntaxHighlighting,
   pre: PreformattedWithLanguageClass,
+  p: (props) => TextWithMaxWidth(props, 'p'),
+  ul: (props) => TextWithMaxWidth(props, 'ul'),
+  ol: (props) => TextWithMaxWidth(props, 'ol'),
   EmbeddedExample,
   StorybookExample,
   PropTable,
