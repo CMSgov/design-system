@@ -12,7 +12,7 @@ import { TextInput } from '../TextField';
 
 export interface SingleInputDateFieldProps extends FormFieldProps {
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => any;
-  onChange?: (updatedValue: string, maskedValue: string) => any;
+  onChange: (updatedValue: string, maskedValue: string) => any;
   value?: string;
   name: string;
 
