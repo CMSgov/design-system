@@ -56,9 +56,9 @@ const CodeWithSyntaxHighlighting = ({
 // this allows scrolling in code block on small screens
 const PreformattedWithLanguageClass = (props: any) => {
   if (props.children?.props?.mdxType === 'code' && props.children?.props?.className) {
-    return <pre className={`ds-u-measure--wide ${props.children.props.className}`} {...props} />;
+    return <pre className={props.children.props.className} {...props} />;
   }
-  return <pre {...props} className="ds-u-measure--wide" />;
+  return <pre {...props} />;
 };
 
 const TextWithMaxWidth = (props: any, Component) => {
