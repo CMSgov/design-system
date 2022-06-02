@@ -74,16 +74,11 @@ export function useLabelMask(maskFn: MaskFunction, originalInputProps: TextInput
 
   return {
     labelMask: (
-      <div className={classNames('ds-c-label-mask', focused && 'ds-c-label-mask--focused')}>
-        <span
-          className={classNames(
-            'ds-c-label-mask__inert',
-            focused && 'ds-u-visibility--screen-reader'
-          )}
-        >
+      <div className="ds-c-label-mask">
+        <span className={classNames(focused && 'ds-u-visibility--screen-reader')}>
           {maskFn('')}
         </span>
-        <span className="ds-c-label-mask__live" aria-hidden="true">
+        <span className={classNames(!focused && 'ds-u-display--none')} aria-hidden="true">
           {maskFn(value)}
         </span>
       </div>
