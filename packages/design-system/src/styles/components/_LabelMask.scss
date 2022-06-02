@@ -3,3 +3,11 @@
 .ds-c-label-mask {
   font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
 }
+
+.ds-c-label-mask__live {
+  display: none;
+}
+
+.ds-c-label-mask--focused .ds-c-label-mask__live {
+  display: inline-block;
+}

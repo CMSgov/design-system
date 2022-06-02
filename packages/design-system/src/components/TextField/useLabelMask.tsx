@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import classNames from 'classnames';
 import { TextInputProps } from './TextInput';
 
 export type MaskFunction = (rawInput: string, valueOnly?: boolean) => string;
@@ -73,8 +74,18 @@ export function useLabelMask(maskFn: MaskFunction, originalInputProps: TextInput
 
   return {
     labelMask: (
-      <div className="ds-c-label-mask" aria-hidden="true">
-        {maskFn(focused ? value : '')}
+      <div className={classNames('ds-c-label-mask', focused && 'ds-c-label-mask--focused')}>
+        <span
+          className={classNames(
+            'ds-c-label-mask__inert',
+            focused && 'ds-u-visibility--screen-reader'
+          )}
+        >
+          {maskFn('')}
+        </span>
+        <span className="ds-c-label-mask__live" aria-hidden="true">
+          {maskFn(value)}
+        </span>
       </div>
     ),
     inputProps,
