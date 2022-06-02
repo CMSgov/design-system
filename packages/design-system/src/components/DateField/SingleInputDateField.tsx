@@ -108,22 +108,30 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
     labelComponent: 'label',
     wrapperIsFieldset: false,
   });
+  const inputRef = useRef<HTMLInputElement>();
   const { labelMask, inputProps } = useLabelMask(DATE_MASK, {
     ...fieldProps,
     onChange: handleInputChange,
     type: 'text',
+    setRef: (el) => {
+      inputRef.current = el;
+    },
   });
 
   function handlePickerChange(date: Date) {
     const updatedValue = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
     onChange(DATE_MASK(updatedValue), DATE_MASK(updatedValue, true));
     setPickerVisible(false);
+    inputRef.current?.focus();
   }
 
   const dayPickerRef = useRef();
   const calendarButtonRef = useRef();
   useClickOutsideHandler([dayPickerRef, calendarButtonRef], () => setPickerVisible(false));
-  usePressEscapeHandler(dayPickerRef, () => setPickerVisible(false));
+  usePressEscapeHandler(dayPickerRef, () => {
+    setPickerVisible(false);
+    inputRef.current?.focus();
+  });
 
   // Validate the date string (value) and make date null if it's invalid. We don't want to pass
   // a bizarre date to DayPicker like `new Date('01/02')`, which is interpreted as `Jan 02, 2001`
