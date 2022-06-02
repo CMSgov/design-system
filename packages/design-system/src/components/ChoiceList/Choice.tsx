@@ -213,41 +213,41 @@ export class Choice extends React.PureComponent<
       'ds-c-choice--small': size === 'small',
     });
 
-    const choiceWrapperClasses = classNames(className, 'ds-c-choice-wrapper');
-
     // Remove props we have our own implementations for
     if (inputProps.id) delete inputProps.id;
     if (inputProps.onChange) delete inputProps.onChange;
 
     return (
       <div
-        className={choiceWrapperClasses}
+        className={className}
         aria-live={checkedChildren ? 'polite' : null}
         aria-relevant={checkedChildren ? 'additions text' : null}
         aria-atomic={checkedChildren ? 'false' : null}
       >
-        <input
-          className={inputClasses}
-          id={this.id}
-          onChange={this.handleChange}
-          disabled={disabled}
-          ref={(ref) => {
-            this.input = ref;
-            if (inputRef) {
-              inputRef(ref);
-            }
-          }}
-          {...inputProps}
-        />
-        <FormLabel
-          className={labelClassName}
-          fieldId={this.id}
-          hint={hint}
-          inversed={inversed}
-          requirementLabel={requirementLabel}
-        >
-          {label || children}
-        </FormLabel>
+        <div className="ds-c-choice-wrapper">
+          <input
+            className={inputClasses}
+            id={this.id}
+            onChange={this.handleChange}
+            disabled={disabled}
+            ref={(ref) => {
+              this.input = ref;
+              if (inputRef) {
+                inputRef(ref);
+              }
+            }}
+            {...inputProps}
+          />
+          <FormLabel
+            className={labelClassName}
+            fieldId={this.id}
+            hint={hint}
+            inversed={inversed}
+            requirementLabel={requirementLabel}
+          >
+            {label || children}
+          </FormLabel>
+        </div>
         {this.checked() ? checkedChildren : uncheckedChildren}
       </div>
     );

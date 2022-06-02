@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react';
-import Mask from './Mask';
 import classNames from 'classnames';
 
 export type TextInputDefaultValue = string | number;
@@ -48,18 +47,12 @@ export type CommonTextInputProps<MultilineValue extends boolean | undefined> = O
    */
   inversed?: boolean;
   /**
-   * Apply formatting to the field that's unique to the value
-   * you expect to be entered. Depending on the mask, the
-   * field's appearance and functionality may be affected.
-   */
-  mask?: TextInputMask;
-  /**
    * Whether or not the text field is a multiline text field
    */
   multiline?: MultilineValue;
   name?: string;
   /**
-   * Sets `inputMode`, `type`, and `pattern` to improve accessiblity and consistency for number fields. Use this prop instead of `type="number"`, see [here](https://technology.blog.gov.uk/2020/02/24/why-the-gov-uk-design-system-team-changed-the-input-type-for-numbers/) for more information.
+   * Sets `inputMode`, `type`, and `pattern` to improve accessibility and consistency for number fields. Use this prop instead of `type="number"`, see [here](https://technology.blog.gov.uk/2020/02/24/why-the-gov-uk-design-system-team-changed-the-input-type-for-numbers/) for more information.
    */
   numeric?: boolean;
   onBlur?: (
@@ -111,15 +104,14 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
     errorPlacement,
     fieldClassName,
     inversed,
-    mask,
     multiline,
     numeric,
-    rows,
-    size,
-    setRef,
-    type,
-    pattern,
     onCopyCapture,
+    pattern,
+    rows,
+    setRef,
+    size,
+    type,
     ...inputProps
   } = props;
 
@@ -129,7 +121,6 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
       'ds-c-field--error': errorMessage,
       'ds-c-field--inverse': inversed,
     },
-    mask && `ds-c-field--${mask}`,
     size && `ds-c-field--${size}`,
     fieldClassName
   );
@@ -150,12 +141,12 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
     // Link input to bottom placed error message
     'aria-describedby':
       errorPlacement === 'bottom' && errorMessage
-        ? classNames(props['aria-describedby'], errorId)
+        ? classNames(props['aria-describedby'], errorId) // Use of the classNames function for this is confusing
         : undefined,
   };
 
   const numberRows: number = typeof rows === 'string' ? parseInt(rows) : rows;
-  const field = (
+  return (
     <ComponentType
       {...ariaAttributes}
       className={classes}
@@ -170,8 +161,6 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
       {...inputProps}
     />
   );
-
-  return mask ? <Mask mask={mask}>{field}</Mask> : field;
 };
 
 export default TextInput;

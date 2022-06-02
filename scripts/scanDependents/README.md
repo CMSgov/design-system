@@ -1,11 +1,11 @@
-# Find Design System Versions Tool
+# Scan Design System Dependents Tool
 
 This tool gathers the versions of our design systems currently being used in the CMS-WDS organization on github.cms.gov.
 
 You can run this tool from the root of the repository directory with the following command:
 
 ```
-yarn scan-versions
+yarn scan-dependents
 ```
 
 ## Setup
@@ -29,5 +29,13 @@ where `token` is your access token.
 Pass it to the command like this
 
 ```
-yarn scan-versions --token YOUR_PERSONAL_ACCESS_TOKEN
+yarn scan-dependents --token YOUR_PERSONAL_ACCESS_TOKEN
+```
+
+## Scan React versions
+
+You can scan react versions of our dependents with
+
+```
+yarn scan-dependents --react
 ```
