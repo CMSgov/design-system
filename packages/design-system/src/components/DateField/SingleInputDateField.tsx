@@ -90,7 +90,7 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
     toYear,
     ...remainingProps
   } = props;
-  const withPicker = fromDate || fromMonth || fromYear;
+  const withPicker = !!(fromDate || fromMonth || Number.isInteger(fromYear));
   const [pickerVisible, setPickerVisible] = useState(false);
 
   function handleInputChange(event) {
