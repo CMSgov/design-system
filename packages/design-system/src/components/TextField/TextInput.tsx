@@ -134,21 +134,9 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
 
   const ComponentType = multiline ? 'textarea' : 'input';
 
-  const ariaAttributes = {
-    'aria-label': ariaLabel,
-    // Use set `aria-invalid` based off errorMessage unless manually specified
-    'aria-invalid': props['aria-invalid'] ? props['aria-invalid'] : !!errorMessage,
-    // Link input to bottom placed error message
-    'aria-describedby':
-      errorPlacement === 'bottom' && errorMessage
-        ? classNames(props['aria-describedby'], errorId) // Use of the classNames function for this is confusing
-        : undefined,
-  };
-
   const numberRows: number = typeof rows === 'string' ? parseInt(rows) : rows;
   return (
     <ComponentType
-      {...ariaAttributes}
       className={classes}
       ref={setRef}
       rows={multiline && numberRows ? numberRows : undefined}
@@ -159,6 +147,17 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
       // is failing to infer which one is being used here based on ComponentType.
       onCopyCapture={onCopyCapture}
       {...inputProps}
+      aria-label={ariaLabel || props['aria-label']}
+      // Use set `aria-invalid` based off errorMessage unless manually specified
+      aria-invalid={props['aria-invalid'] ?? !!errorMessage}
+      // Link input to bottom placed error message
+      // Use of the classNames function for this is confusing
+      aria-describedby={
+        classNames(
+          props['aria-describedby'],
+          errorPlacement === 'bottom' && errorMessage && errorId
+        ) || undefined
+      }
     />
   );
 };
