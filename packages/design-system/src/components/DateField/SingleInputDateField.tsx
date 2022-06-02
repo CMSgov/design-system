@@ -148,7 +148,7 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
         )}
       </div>
       {pickerVisible && (
-        <div ref={dayPickerRef}>
+        <div ref={dayPickerRef} role="dialog">
           <DayPicker
             mode="single"
             selected={date}
