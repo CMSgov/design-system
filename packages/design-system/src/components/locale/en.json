@@ -85,6 +85,10 @@
   "review": {
     "editText": "Edit"
   },
+  "singleInputDateField": {
+    "open": "Open calendar picker dialog",
+    "close": "Close calendar picker dialog"
+  },
   "skipNav": {
     "default": "Skip to main content"
   },

@@ -9,6 +9,7 @@ import { DayPicker } from 'react-day-picker';
 import { DATE_MASK } from '../TextField/useLabelMask';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 import { TextInput } from '../TextField';
+import { t } from '../i18n';
 
 export interface SingleInputDateFieldProps extends FormFieldProps {
   /**
@@ -151,7 +152,10 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
             onClick={() => setPickerVisible(!pickerVisible)}
             ref={calendarButtonRef}
           >
-            <CalendarIcon ariaHidden={false} />
+            <CalendarIcon
+              ariaHidden={false}
+              title={t(pickerVisible ? 'singleInputDateField.close' : 'singleInputDateField.open')}
+            />
           </button>
         )}
       </div>
