@@ -5,7 +5,7 @@
 import { animation, color, font, measure, media, radius, spacer, z } from '../tokens';
 import { ThemeTokens, ColorTokens, ShadowTokens } from '../lib/types';
 
-const themeColors: ColorTokens = {
+export const themeColors: ColorTokens = {
   //
   'white':                      color['white-solid'],
   'black':                      color['black-solid'],

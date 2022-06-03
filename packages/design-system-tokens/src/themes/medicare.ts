@@ -5,7 +5,7 @@
 import { animation, color, font, measure, media, radius, spacer, z } from '../tokens';
 import { ThemeTokens, ColorTokens, ShadowTokens } from '../lib/types';
 
-const themeColors: ColorTokens = {
+export const themeColors: ColorTokens = {
   // TODO: deprecate these old definitions
   'teal-700':                   color['teal-700'],
   'teal-500':                   color['teal-500'],
