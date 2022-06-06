@@ -47,31 +47,31 @@ describe('DATE_MASK', () => {
 describe('useLabelMask', () => {
   const defaultInputProps = { type: 'text', value: '' };
 
-  function getInput(props = {}) {
-    return <input {...defaultInputProps} {...props} />;
+  function renderInput(props = {}) {
+    return render(<input {...props} />);
   }
 
   function renderUseLabelMask(inputProps = {}) {
-    return renderHook(() => useLabelMask(DATE_MASK, getInput(inputProps)));
+    return renderHook(() => useLabelMask(DATE_MASK, { ...defaultInputProps, ...inputProps }));
   }
 
   it('returns labelMask and input elements', () => {
     const { result } = renderUseLabelMask();
-    const { labelMask, input } = result.current;
+    const { labelMask, inputProps } = result.current;
     expect(render(labelMask).asFragment()).toMatchSnapshot();
-    expect(render(input).asFragment()).toMatchSnapshot();
+    expect(renderInput(inputProps).asFragment()).toMatchSnapshot();
   });
 
   it('masks the value when focused', () => {
     const { result } = renderUseLabelMask({ value: '12' });
-    render(result.current.input);
+    renderInput(result.current.inputProps);
     userEvent.click(screen.getByRole('textbox'));
     expect(render(result.current.labelMask).container.textContent).toMatchSnapshot();
   });
 
   it('shows unfilled mask when not focused', () => {
     const { result } = renderUseLabelMask({ value: '12250001' });
-    render(result.current.input);
+    renderInput(result.current.inputProps);
     userEvent.click(screen.getByRole('textbox'));
     userEvent.tab();
     expect(render(result.current.labelMask).container.textContent).toMatchSnapshot();

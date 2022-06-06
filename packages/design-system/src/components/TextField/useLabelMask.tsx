@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { TextInputProps } from './TextInput';
 
 export type MaskFunction = (rawInput: string, valueOnly?: boolean) => string;
 
@@ -36,11 +37,13 @@ export const DATE_MASK: MaskFunction = (rawInput = '', valueOnly = false) => {
   return formattedDate + hintSub;
 };
 
-export function useLabelMask(maskFn: MaskFunction, inputEl: React.ReactElement) {
+export function useLabelMask(maskFn: MaskFunction, originalInputProps: TextInputProps) {
   const [focused, setFocused] = useState(false);
-  const { onFocus, onBlur, onChange, value } = inputEl.props;
+  const { onFocus, onBlur, onChange } = originalInputProps;
+  const value = originalInputProps.value?.toString() ?? '';
 
-  const modifiedInputEl = React.cloneElement(inputEl, {
+  const inputProps = {
+    ...originalInputProps,
     defaultValue: undefined,
     onFocus: (e) => {
       if (onFocus) {
@@ -50,23 +53,23 @@ export function useLabelMask(maskFn: MaskFunction, inputEl: React.ReactElement) 
       setFocused(true);
     },
     onBlur: (e) => {
-      const maskedValue = maskFn(value, true);
+      const maskedValue = maskFn(value.toString(), true);
       e.currentTarget.value = maskedValue;
       e.target.value = maskedValue;
 
       if (onChange) {
-        onChange(e);
+        (onChange as any)(e);
       }
 
       if (onBlur) {
-        return onBlur(e);
+        (onBlur as any)(e);
       }
 
       setFocused(false);
     },
     type: 'text',
-    inputMode: 'numeric',
-  });
+    inputMode: 'numeric' as const,
+  };
 
   return {
     labelMask: (
@@ -74,7 +77,7 @@ export function useLabelMask(maskFn: MaskFunction, inputEl: React.ReactElement) 
         {maskFn(focused ? value : '')}
       </div>
     ),
-    input: modifiedInputEl,
+    inputProps,
   };
 }
 
