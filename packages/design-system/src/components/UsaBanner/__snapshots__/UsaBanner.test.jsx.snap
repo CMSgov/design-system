@@ -44,6 +44,7 @@ exports[`UsaBanner renders correctly 1`] = `
           <svg
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
+            direction="down"
             focusable="false"
             id="icon-3"
             viewBox="0 0 320 512"
