@@ -3,17 +3,19 @@ import dialog from '@skpm/dialog';
 import { readFileSync } from '@skpm/fs';
 
 /*
- * split tokens into groups based on root name
- * and store in tokens submenu, returns array
- * of Sketch Swatches
+ * Split tokens into groups based on root name and store in category,
+ * based on first word before '-'. Allows keys with up to 4 dash separators.
+ *
+ * @param colorTokens - An object which contains color name:value pairs
+ * @returns An array of Swatch objects created by the Sketch API
  */
 const makeColorSwatches = (colorTokens) => {
   const swatches = [];
   for (const [key, value] of Object.entries(colorTokens)) {
-    let colorName = key.match(/(^[A-Za-z]+-?[A-Za-z]+?)-?\d+?$/);
+    let colorName = key.match(/(^[A-Za-z]*)-?[A-Za-z\d]*?-?[A-Za-z\d]*?-?[A-Za-z\d]*?$/);
     colorName = colorName === null ? (colorName = '') : colorName[1] + '/';
-    const currentSwatch = sketch.Swatch.from({
-      name: `tokens/${colorName}${key}`,
+    let currentSwatch = sketch.Swatch.from({
+      name: `${colorName}/${key}`,
       color: value,
     });
     swatches.push(currentSwatch);
