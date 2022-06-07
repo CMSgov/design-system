@@ -2,11 +2,13 @@
 title: Installation
 ---
 
-How you implement the design system depends on the needs of your project and your workstyle. We highly recommend implementing the design system with `npm`, as it allows you to easily update the design system version, but we also provide a direct download if `npm` will not work for you or your project.
+How you implement the design system depends on the needs of your project and your workstyle. We highly recommend implementing the design system with `npm`, as it allows you to easily update the design system version, but we also provide a direct download if `npm` will not work for you or your project. We also offer the ability to utilize the design system via direct reference to code and style resources from our CDN.
 
 - [Install the `@cmsgov/design-system` package](/getting-started/installation/#install-using-npm) if your project uses `npm` for package management.
 
 - [Download the design system](/getting-started/installation/#download-zip) if you are not familiar with `npm` and package management.
+
+- [Utilize the CDN](/getting-started/installation/#utilize-the-cdn) if you would like to reference the design system styles and code directly from your page/application.
 
 ## Install using npm
 
@@ -70,6 +72,62 @@ Copy the files and folders from `download/design-system/dist` to a relevant plac
     │   ├── images/
     │   └── javascript/
     └── index.html
+```
+
+## Utilize the CDN
+
+A content delivery network (CDN) is a collection of servers that dynamically allocate resources dependent on the requester's geographic location in order to optimize the distribution of assets.
+
+Some benefits and applications for utilizing the design system via CDN are:
+
+- Quickly utilize design system code and style assets for development/prototyping
+- The CDN caches assets for fast loading and scales automatically in case of a large number of requests
+- Ability to utilize a specific version of the design system easily
+
+### Resources
+
+```
+  ├── css/
+  │   ├── index.css
+  │   ├── base/index.css
+  │   ├── components/index.css
+  │   └── utilities/index.css
+  └── js/
+      ├── react.production.min.js
+      ├── react-dom.production.min.js
+      └── bundle.js
+```
+
+### Packages
+
+Packages which are currently available for reference:
+
+- **design-system** - The core CMSDS (versions 3.4.0 and above)
+- **ds-healthcare-gov** - Healthcare.gov themed DS (versions 7.4.0 and above)
+- **ds-medicare-gov** - Medicare.gov themed DS (versions 5.4.0 and above)
+
+### URL structure
+
+```
+https://design.cms.gov/cdn/<package-name>/<version>/<resource>
+```
+
+Where `package-name` is one of the packages named above, `version` is the version number and `resource` is the file being requested from the resources listed above.
+
+#### Example for including version 3.4.0 Core CSS via CDN
+
+```
+<link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/3.4.0/css/index.css" crossorigin="anonymous" />
+```
+
+#### Example for including version 3.4.0 Core JS via CDN
+
+If you do not already have React and React-DOM included in your page, include them before the design system js bundle.
+
+```
+<script type="text/javascript" src="https://design.cms.gov/cdn/design-system/3.4.0/js/react.production.min.js"></script>
+<script type="text/javascript" src="https://design.cms.gov/cdn/design-system/3.4.0/js/react-dom.production.min.js"></script>
+<script type="text/javascript" src="https://design.cms.gov/cdn/design-system/3.4.0/js/bundle.js"></script>
 ```
 
 ## Need help or ran into an issue?
