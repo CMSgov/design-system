@@ -109,7 +109,7 @@ function processMarkdownPage(filePath, body, options) {
  * @return {String}
  */
 function formatText(text, options) {
-  return marked(replaceTemplateTags(text, options));
+  return marked.parse(replaceTemplateTags(text, options));
 }
 
 module.exports = processMarkdownPage;
