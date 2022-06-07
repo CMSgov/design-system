@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from '../Button/Button';
 import isSameMonth from 'date-fns/isSameMonth';
 import { ArrowIcon } from '../Icons';
 import { CaptionDropdowns, CaptionProps, useDayPicker, useNavigation } from 'react-day-picker';
@@ -45,27 +44,25 @@ export function CustomDayPickerCaption(props: CaptionProps) {
   return (
     <div className={classNames.caption} style={styles.caption}>
       {!hidePrevious && (
-        <Button
+        <button
           aria-label={previousLabel}
           className="ds-c-single-input-date-field__nav"
-          variation="transparent"
           onClick={handlePreviousClick}
         >
           <ArrowIcon direction="left" />
-        </Button>
+        </button>
       )}
 
       <CaptionDropdowns displayMonth={props.displayMonth} id={props.id} />
 
       {!hideNext && (
-        <Button
+        <button
           aria-label={nextLabel}
           className="ds-c-single-input-date-field__nav"
-          variation="transparent"
           onClick={handleNextClick}
         >
           <ArrowIcon direction="right" />
-        </Button>
+        </button>
       )}
     </div>
   );
