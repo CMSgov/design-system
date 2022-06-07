@@ -94,11 +94,19 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
   const withPicker = !!(fromDate || fromMonth || Number.isInteger(fromYear));
   const [pickerVisible, setPickerVisible] = useState(false);
 
+  // Set up change handlers
   function handleInputChange(event) {
     const updatedValue = event.currentTarget.value;
     onChange(updatedValue, DATE_MASK(updatedValue, true));
   }
+  function handlePickerChange(date: Date) {
+    const updatedValue = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+    onChange(DATE_MASK(updatedValue), DATE_MASK(updatedValue, true));
+    setPickerVisible(false);
+    inputRef.current?.focus();
+  }
 
+  // Collect all the props and elements for the input and its labels
   const { labelProps, fieldProps, wrapperProps, bottomError } = useFormLabel({
     ...remainingProps,
     className: classNames(
@@ -119,13 +127,7 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
     },
   });
 
-  function handlePickerChange(date: Date) {
-    const updatedValue = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
-    onChange(DATE_MASK(updatedValue), DATE_MASK(updatedValue, true));
-    setPickerVisible(false);
-    inputRef.current?.focus();
-  }
-
+  // Handle alternate ways of closing the day picker
   const dayPickerRef = useRef();
   const calendarButtonRef = useRef();
   useClickOutsideHandler([dayPickerRef, calendarButtonRef], () => setPickerVisible(false));
