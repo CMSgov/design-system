@@ -11,6 +11,15 @@ import { DATE_MASK } from '../TextField/useLabelMask';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 import { TextInput } from '../TextField';
 import { t } from '../i18n';
+import type { Locale } from 'date-fns';
+import format from 'date-fns/format';
+
+/**
+ * The default formatter for the Month caption.
+ */
+export function formatMonthCaption(month: Date, options?: { locale?: Locale }) {
+  return format(month, 'LLL', options);
+}
 
 export interface SingleInputDateFieldProps extends FormFieldProps {
   /**
@@ -176,6 +185,7 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
             components={{
               Caption: DayPickerCaption,
             }}
+            formatters={{ formatMonthCaption }}
             {...{
               fromDate,
               fromMonth,
