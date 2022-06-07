@@ -9,7 +9,7 @@ import { CaptionDropdowns, CaptionProps, useDayPicker, useNavigation } from 'rea
  * component. Much of this code is copied out of the `react-day-picker` source and
  * then modified to fit our needs.
  */
-export function DayPickerCaption(props: CaptionProps) {
+export function CustomDayPickerCaption(props: CaptionProps) {
   const {
     classNames,
     styles,
@@ -71,4 +71,4 @@ export function DayPickerCaption(props: CaptionProps) {
   );
 }
 
-export default DayPickerCaption;
+export default CustomDayPickerCaption;

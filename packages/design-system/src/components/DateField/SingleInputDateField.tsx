@@ -1,25 +1,15 @@
 import React, { useRef, useState } from 'react';
 import CalendarIcon from '../Icons/CalendarIcon';
-import DayPickerCaption from './DayPickerCaption';
+import CustomDayPicker from './CustomDayPicker';
 import classNames from 'classnames';
 import isMatch from 'date-fns/isMatch';
 import useLabelMask from '../TextField/useLabelMask';
 import useClickOutsideHandler from '../utilities/useClickOutsideHandler';
 import usePressEscapeHandler from '../utilities/usePressEscapeHandler';
-import { DayPicker } from 'react-day-picker';
 import { DATE_MASK } from '../TextField/useLabelMask';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 import { TextInput } from '../TextField';
 import { t } from '../i18n';
-import type { Locale } from 'date-fns';
-import format from 'date-fns/format';
-
-/**
- * The default formatter for the Month caption.
- */
-export function formatMonthCaption(month: Date, options?: { locale?: Locale }) {
-  return format(month, 'LLL', options);
-}
 
 export interface SingleInputDateFieldProps extends FormFieldProps {
   /**
@@ -175,17 +165,10 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
       </div>
       {pickerVisible && (
         <div ref={dayPickerRef} role="dialog">
-          <DayPicker
-            mode="single"
+          <CustomDayPicker
             selected={date}
             onSelect={handlePickerChange}
             defaultMonth={date ?? defaultMonth}
-            footer={t('singleInputDateField.arrowKeyInstructions')}
-            captionLayout="dropdown"
-            components={{
-              Caption: DayPickerCaption,
-            }}
-            formatters={{ formatMonthCaption }}
             {...{
               fromDate,
               fromMonth,
