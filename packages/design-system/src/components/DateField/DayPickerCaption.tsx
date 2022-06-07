@@ -1,34 +1,74 @@
 import React from 'react';
-import add from 'date-fns/add';
-import {
-  CaptionProps,
-  CaptionLabel,
-  MonthChangeEventHandler,
-  MonthsDropdown,
-  YearsDropdown,
-  useDayPicker,
-  useNavigation,
-} from 'react-day-picker';
+import Button from '../Button/Button';
+import isSameMonth from 'date-fns/isSameMonth';
+import { ArrowIcon } from '../Icons';
+import { CaptionDropdowns, CaptionProps, useDayPicker, useNavigation } from 'react-day-picker';
 
 /**
- * Render the caption of a month. The caption has a different layout when
- * setting the [[DayPickerProps.captionLayout]] prop.
+ * Implements custom month/year navigation controls and caption for the DayPicker
+ * component. Much of this code is copied out of the `react-day-picker` source and
+ * then modified to fit our needs.
  */
 export function DayPickerCaption(props: CaptionProps) {
-  const { classNames, styles, components, onMonthChange } = useDayPicker();
-  const { goToMonth } = useNavigation();
+  const {
+    classNames,
+    styles,
+    labels: { labelPrevious, labelNext },
+    locale,
+    numberOfMonths,
+    onMonthChange,
+  } = useDayPicker();
+  const { previousMonth, nextMonth, goToMonth, displayMonths } = useNavigation();
 
-  const handleMonthChange: MonthChangeEventHandler = (newMonth) => {
-    goToMonth(newMonth);
-    onMonthChange?.(newMonth);
+  const displayIndex = displayMonths.findIndex((month) => isSameMonth(props.displayMonth, month));
+
+  const previousLabel = labelPrevious(previousMonth, { locale });
+  const nextLabel = labelNext(nextMonth, { locale });
+
+  const isFirst = displayIndex === 0;
+  const isLast = displayIndex === displayMonths.length - 1;
+  const hidePrevious = numberOfMonths > 1 && (isLast || !isFirst);
+  const hideNext = numberOfMonths > 1 && (isFirst || !isLast);
+
+  const handlePreviousClick: React.MouseEventHandler = () => {
+    if (!previousMonth) return;
+    goToMonth(previousMonth);
+    onMonthChange?.(previousMonth);
   };
-  const CaptionLabelComponent = components?.CaptionLabel ?? CaptionLabel;
-  const captionLabel = <CaptionLabelComponent id={props.id} displayMonth={props.displayMonth} />;
 
-  <div className={classNames.caption} style={styles.caption}>
-    {/* Caption label is visually hidden but for a11y. */}
-    <div className={classNames.vhidden}>{captionLabel}</div>
-    <MonthsDropdown onChange={handleMonthChange} displayMonth={props.displayMonth} />
-    <YearsDropdown onChange={handleMonthChange} displayMonth={props.displayMonth} />
-  </div>;
+  const handleNextClick: React.MouseEventHandler = () => {
+    if (!nextMonth) return;
+    goToMonth(nextMonth);
+    onMonthChange?.(nextMonth);
+  };
+
+  return (
+    <div className={classNames.caption} style={styles.caption}>
+      {!hidePrevious && (
+        <Button
+          aria-label={previousLabel}
+          className="ds-c-single-input-date-field__nav"
+          variation="transparent"
+          onClick={handlePreviousClick}
+        >
+          <ArrowIcon direction="left" />
+        </Button>
+      )}
+
+      <CaptionDropdowns displayMonth={props.displayMonth} id={props.id} />
+
+      {!hideNext && (
+        <Button
+          aria-label={nextLabel}
+          className="ds-c-single-input-date-field__nav"
+          variation="transparent"
+          onClick={handleNextClick}
+        >
+          <ArrowIcon direction="right" />
+        </Button>
+      )}
+    </div>
+  );
 }
+
+export default DayPickerCaption;

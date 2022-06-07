@@ -37,4 +37,5 @@ WithPicker.args = {
   label: 'What day did you move?',
   hint: 'This date should be within the past 60 days in order to qualify',
   fromYear: new Date().getFullYear(),
+  toDate: new Date(),
 };

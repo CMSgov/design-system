@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import CalendarIcon from '../Icons/CalendarIcon';
+import DayPickerCaption from './DayPickerCaption';
 import classNames from 'classnames';
 import isMatch from 'date-fns/isMatch';
 import useLabelMask from '../TextField/useLabelMask';
@@ -91,7 +92,9 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
     toYear,
     ...remainingProps
   } = props;
-  const withPicker = !!(fromDate || fromMonth || Number.isInteger(fromYear));
+  const withPicker =
+    (fromDate != null || fromMonth != null || Number.isInteger(fromYear)) &&
+    (toDate != null || toMonth != null || Number.isInteger(toYear));
   const [pickerVisible, setPickerVisible] = useState(false);
 
   // Set up change handlers
@@ -169,6 +172,10 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
             onSelect={handlePickerChange}
             defaultMonth={date ?? defaultMonth}
             footer={t('singleInputDateField.arrowKeyInstructions')}
+            captionLayout="dropdown"
+            components={{
+              Caption: DayPickerCaption,
+            }}
             {...{
               fromDate,
               fromMonth,
