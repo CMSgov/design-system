@@ -76,31 +76,13 @@ Copy the files and folders from `download/design-system/dist` to a relevant plac
 
 ## Utilize the CDN
 
-A content delivery network (CDN) is a collection of servers that dynamaically allocate resources dependent on the requestors geographic location in order to optimize the distribution of assets.
+A content delivery network (CDN) is a collection of servers that dynamically allocate resources dependent on the requester's geographic location in order to optimize the distribution of assets.
 
 Some benefits and applications for utilizing the design system via CDN are:
 
 - Quickly utilize design system code and style assets for development/prototyping
 - The CDN caches assets for fast loading and scales automatically in case of a large number of requests
 - Ability to utilize a specific version of the design system easily
-
-### URL structure
-
-```
-https//design.cms.gov/cdn/<package-name>/<version>/<resource>
-```
-
-### Packages
-
-Packages which are currently availble for reference:
-
-- **design-system** - The core CMSDS
-- **ds-healthcare-gov** - Healthcare.gov themed DS
-- **ds-medicare-gov** - Medicare.gov themed DS
-
-### Available versions
-
-Versions numbers `3.4.0` and higher are currently available via CDN.
 
 ### Resources
 
@@ -116,13 +98,29 @@ Versions numbers `3.4.0` and higher are currently available via CDN.
       └── bundle.js
 ```
 
-### CSS via CDN
+### Packages
+
+Packages which are currently available for reference:
+
+- **design-system** - The core CMSDS (versions 3.4.0 and above)
+- **ds-healthcare-gov** - Healthcare.gov themed DS (versions 7.4.0 and above)
+- **ds-medicare-gov** - Medicare.gov themed DS (versions 5.4.0 and above)
+
+### URL structure
+
+```
+https//design.cms.gov/cdn/<package-name>/<version>/<resource>
+```
+
+Where `package-name` is one of the packages named above, `version` is the version number and `resource` is the file being requested from the resources listed above.
+
+#### Example for including version 3.4.0 Core CSS via CDN
 
 ```
 <link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/3.4.0/css/index.css" crossorigin="anonymous" />
 ```
 
-### JS via CDN
+#### Example for including version 3.4.0 Core JS via CDN
 
 If you do not already have React and React-DOM included in your page, include them before the design system js bundle.
 
