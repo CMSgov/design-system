@@ -346,6 +346,11 @@
   background-color: var(--rdp-active-color);
 }
 
+.rdp-tfoot td {
+  padding-top: $spacer-1;
+  color: $color-muted;
+}
+
 .ds-c-single-input-date-field {
   position: relative;
 

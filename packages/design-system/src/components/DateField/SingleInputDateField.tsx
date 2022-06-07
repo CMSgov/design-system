@@ -168,6 +168,7 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
             selected={date}
             onSelect={handlePickerChange}
             defaultMonth={date ?? defaultMonth}
+            footer={t('singleInputDateField.arrowKeyInstructions')}
             {...{
               fromDate,
               fromMonth,
