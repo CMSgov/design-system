@@ -46,3 +46,9 @@ WithPicker.args = {
   fromYear: new Date().getFullYear(),
   toDate: new Date(),
 };
+
+export const WithError = Template.bind({});
+WithError.args = {
+  ...WithPicker.args,
+  errorMessage: 'Example error message',
+};
