@@ -349,7 +349,7 @@
 
   // TODO: When the bug has been fixed upstream, we can reference "rdp-dropdown_year"
   // instead. See https://github.com/gpbl/react-day-picker/pull/1466
-  &:first-of-type {
+  &:nth-child(2) {
     text-align: right;
   }
 }
