@@ -396,11 +396,17 @@
 
   &:hover {
     background-color: $color-gray-cool-light;
+    color: $link-hover-color;
   }
 
   &:focus,
   &:active {
     @include focus-styles;
+  }
+
+  &:active {
+    background-color: $button-primary-bg--active;
+    color: $color-white;
   }
 
   .ds-c-icon--arrow {
