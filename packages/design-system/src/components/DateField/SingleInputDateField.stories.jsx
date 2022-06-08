@@ -8,6 +8,13 @@ export default {
     errorMessage: {
       control: { type: 'text' },
     },
+    errorPlacement: {
+      defaultValue: 'top',
+      control: {
+        type: 'radio',
+      },
+      options: ['top', 'bottom'],
+    },
     hint: {
       control: { type: 'text' },
     },
