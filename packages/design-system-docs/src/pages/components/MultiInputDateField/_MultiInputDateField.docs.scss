@@ -3,7 +3,7 @@ Date field (multi-input)
 
 @uswds https://designsystem.digital.gov/components/memorable-date/
 
-Three text fields are the easiest way for users to enter most dates.
+Date field (multi-input) provides date entry, spaced over three separate inputs for month, day, and year.
 
 Markup: multiinputdatefield.example.html
 
@@ -25,15 +25,15 @@ Style guide: components.multi-input-date-field.react
 
 ### When to use
 
-- Use this format for most dates, particularly memorized dates.
+- Use this date field when user flow requires inputs be separated. Generally used for memorable dates like date of birth, marriage date, or income start date.
 
 ### When to consider alternatives
 
-- If users are trying to schedule something, a calendar picker might make more sense. Be sure to also provide an option for text entry as well.
+- Don't use this date field if users are entering a date within the last year or a future date.
 
 ### Usage
 
-- Allow users to enter the date as flexibly as possible, for example, allowing `1` as well as `01` for a month input.
+- Allow users to enter one-digit numbers with or without the "0" prior to the number. Example: "1" as well as "01" for a month or day.
 - Be sure each field is properly labeled — some countries enter dates in day, month, year order.
 - It may be tempting to switch all or some of these text fields to drop downs, but these tend to be more difficult to use than text boxes.
 - When handling date errors, if the part of the date that has an error is known, only highlight the part with an error. For example, if month and day are valid inputs, but the year is invalid, use `yearInvalid=true` so that only the year field will be highlighted red.
@@ -46,7 +46,7 @@ Style guide: components.multi-input-date-field.react
 
 ### Related patterns
 
-- [Date field (single input)]({{root}}/components/single-input-date-field/)
+- [Date field (single-input)]({{root}}/components/single-input-date-field/)
 - [Date field (with calendar)]({{root}}/components/date-field-with-calendar-picker/)
 - [Text field]({{root}}/components/text-field/)
 - [Grid]({{root}}/utilities/grid/)
