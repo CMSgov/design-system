@@ -7,6 +7,15 @@ import { hexOpacity } from '../lib/utility'
 import { AnyTokenValues } from '../lib/types'
 
 export const components: AnyTokenValues = {
+  'accordion': {
+    '__color':                                    t.color['base'],
+    '__background-color':                         t.color['gray-lightest'],
+    '__background-color--hover':                  t.color['gray-lighter'],
+    '__border-color':                             t.color['gray-lightest'],
+    '-button__color':                             t.color['base'],
+    '-content__background-color':                 t.color['white'],
+  },
+
   'alert': {
     '__background-color':                         t.color['primary-alt-lightest'],
     '__background-color--error':                  t.color['error-lightest'],
