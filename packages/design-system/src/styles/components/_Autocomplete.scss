@@ -1,5 +1,13 @@
 @import '../settings/index.scss';
 
+// @TODO: deprecate usage of these and make component options
+// or hard-code if not being utilized
+$autocomplete-space: $spacer-1;
+$autocomplete-list-border-width: 1px;
+$autocomplete-list-border-style: solid;
+$autocomplete-list-border: $autocomplete-list-border-width $autocomplete-list-border-style
+  $autocomplete__border-color;
+
 .ds-c-autocomplete {
   max-width: $form__max-width;
   position: relative;
@@ -22,16 +30,16 @@
 
 .ds-c-autocomplete__label {
   margin: 0;
-  padding: $spacer-1;
+  padding: $autocomplete-space;
 }
 
 .ds-c-autocomplete__list {
   background-color: $autocomplete__background-color;
-  border: 1px solid $autocomplete__border-color;
+  border: $autocomplete-list-border;
   box-sizing: border-box;
   max-height: ($base-font-size + $spacer-2) * 10;
   overflow-y: auto;
-  padding: $spacer-1;
+  padding: $autocomplete-space;
   position: absolute;
   width: 100%;
   z-index: $z-dialog;

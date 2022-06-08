@@ -2,7 +2,7 @@
 
 .ds-c-alert {
   background-color: $alert__background-color;
-  border-left: $alert__bar-width solid $alert__border-left-color;
+  border-left: $alert-bar__width solid $alert__border-left-color;
   box-sizing: border-box;
   color: $alert__font-color;
   display: flex;
@@ -39,7 +39,7 @@
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
     border: 1px solid windowText;
-    border-left: $alert__bar-width solid windowText;
+    border-left: $alert-bar__width solid windowText;
   }
 
   &.ds-c-alert--lightweight {

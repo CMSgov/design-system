@@ -13,7 +13,6 @@ export const components: AnyTokenValues = {
     '__background-color--lightweight':            t.color['white'],
     '__background-color--success':                t.color['success-lightest'],
     '__background-color--warn':                   t.color['warn-lightest'],
-    '__bar-width':                                t.spacer['1'],
     '__border-left-color':                        t.color['primary-alt'],
     '__border-color--error':                      t.color['error'],
     '__border-color--success':                    t.color['success'],
@@ -21,6 +20,7 @@ export const components: AnyTokenValues = {
     '__font-color':                               t.color['base'],
     '__icon-size':                                t.spacer['5'],
     '__padding':                                  t.spacer['2'],
+    '-bar__width':                                t.spacer['1'],
     '-link__font-color':                          t.color['primary-alt'],
     '-link__font-color--hover':                   t.color['primary-alt-dark'],
     '-link__font-color--focus':                   t.color['primary-alt-darkest'],
@@ -38,13 +38,12 @@ export const components: AnyTokenValues = {
   
   'badge': {
     '__background-color':                         t.color['gray'],
-    '__font-color':                               t.color['white'],
     '__background-color--alert':                  t.color['error'],
     '__background-color--info':                   t.color['primary'],
     '__background-color--success':                t.color['success'],
     '__background-color--warn':                   t.color['warn'],
+    '__font-color':                               t.color['white'],
     '__font-color--warn':                         t.color['base'],
-    '__border-radius':                            t.radius['pill'],
   },
   
   'button': {
@@ -183,7 +182,7 @@ export const components: AnyTokenValues = {
   },
   
   'filter-chip': {
-    '__border-radius':                            t.radius.pill,
+    '__border-radius':                            t.radius['pill'],
     '__background-color':                         t.color['primary-alt-lightest'],
     '__border-color':                             t.color['primary'],
     '__color':                                    t.color['base'],
@@ -207,25 +206,25 @@ export const components: AnyTokenValues = {
   },
 
   'icon': {
-    '__color--primary':                           t.color['primary'],
-    '__color--inverse':                           t.color['white'],
     '__color__error':                             t.color['error'],
-    '__color--warn':                              t.color['warn'],
+    '__color--inverse':                           t.color['white'],
+    '__color--primary':                           t.color['primary'],
     '__color--success':                           t.color['success'],
+    '__color--warn':                              t.color['warn'],
   },
   
   'link': {
     '__color':                                    t.color['primary-alt'],
-    '__color--visited':                           t.color['visited'],
-    '__color--hover':                             t.color['primary-alt-dark'],
     '__color--active':                            t.color['primary-alt-dark'],
+    '__color--hover':                             t.color['primary-alt-dark'],
+    '__color--visited':                           t.color['visited'],
     '-inverse__color':                            t.color['base-inverse'],
-    '-inverse__color--visited':                   t.color['gray-lighter'],
+    '-inverse__color--active':                    t.color['gray-lighter'],
     '-inverse__color--hover':                     t.color['gray-lighter'],
-    '-inverse__color--status':                    t.color['gray-lighter'],
-    '__text-decoration--thickness':               '1px',
-    '__text-decoration--thickness--hover':        '2px',
-    '__text-decoration--offset':                  '3px',
+    '-inverse__color--visited':                   t.color['gray-lighter'],
+    '__text-decoration-offset':                   '3px',
+    '__text-decoration-thickness':                '1px',
+    '__text-decoration-thickness--hover':         '2px',
   },
   
   'pagination': {
@@ -316,8 +315,6 @@ export const components: AnyTokenValues = {
     '-close__background-color':                   t.color['gray-medium-light'],
     '-action__color':                             t.color['primary-darker'],
     '-lock-icon__color':                          t.color['success-light'],
-    '-mobile-close__size':                        '48px',
-    '-caret-icon__size':                          '10px',
   },
   
   'vertical-nav': {

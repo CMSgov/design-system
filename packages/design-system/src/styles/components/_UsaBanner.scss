@@ -1,7 +1,13 @@
+// @TODO: deprecate usage of these when modification of these in
+// consuming systems is either not done or easily resolved
+$usa-banner-mobile-close-size: 48px;
+$usa-caret-icon-size: 10px;
+$usa-banner-font-family: $font-sans;
+
 .ds-c-usa-banner {
   background-color: $usa-banner__background-color;
   color: $usa-banner__color;
-  font-family: $font-sans;
+  font-family: $usa-banner-font-family;
   font-size: $font-size-base;
   padding: 0;
 }
@@ -29,7 +35,7 @@
 
   .ds-c-usa-banner__button {
     display: flex;
-    font-family: $font-sans;
+    font-family: $usa-banner-font-family;
     padding: $spacer-1 $spacer-2 $spacer-1 $spacer-2;
     width: 100%;
   }
@@ -49,12 +55,12 @@
   align-items: center;
   background-color: $usa-banner-close__background-color;
   display: flex;
-  height: $usa-banner-mobile-close__size;
+  height: $usa-banner-mobile-close-size;
   justify-content: center;
   margin-left: auto;
   margin-right: -$spacer-2;
   margin-top: -$spacer-1;
-  width: $usa-banner-mobile-close__size;
+  width: $usa-banner-mobile-close-size;
 
   .ds-c-icon {
     height: $font-size-lg;
@@ -193,6 +199,6 @@
 
 .ds-c-usa-banner__action-icon {
   color: $usa-banner__color;
-  height: $usa-banner-caret-icon__size;
-  width: $usa-banner-caret-icon__size;
+  height: $usa-caret-icon-size;
+  width: $usa-caret-icon-size;
 }

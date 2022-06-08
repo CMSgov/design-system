@@ -5,12 +5,15 @@
 
 // alert
 $alert-padding: $alert__padding;
-$alert-bar-size: $alert__bar-width;
+$alert-bar-size: $alert-bar__width;
 $alert-icon-size: $alert__icon-size;
 $alert-link-color: $alert-link__font-color;
 $alert-link-color-hover: $alert-link__font-color--hover;
 $alert-link-color-active: $alert-link__font-color--active;
 $alert-link-color-focus: $alert-link__font-color--focus;
+
+// autocomplete
+$autocomplete-list-border-color: $autocomplete__border-color;
 
 // animation
 $ease-in-out-expo: $animation-ease-in-out-expo;
@@ -27,6 +30,12 @@ $focus-shadow: $shadow-focus;
 $focus-shadow-inverse: $shadow-focus-inverse;
 $focus-shadow-link: $shadow-focus-link;
 $focus-shadow-link-inverse: $shadow-focus-link-inverse;
+
+// button
+$button-border-width: $button__border-width;
+$button-primary-bg: $button-primary__background-color;
+$button-primary-bg--hover: $button-primary__background-color--hover;
+$button-primary-bg--active: $button-primary__background-color--active;
 
 // border radius
 $border-radius: $radius-default;
@@ -51,6 +60,38 @@ $choice-border-color-inverse: $choice__border-color--inverse;
 $choice-disabled-background-color-inverse: $choice__background-color--disabled--inverse;
 $choice-disabled-border-color-inverse: $choice__border-color--disabled--inverse;
 
+// dialog
+$color-background-dialog: $dialog__background-color;
+$color-background-dialog-mask: $dialog-overlay__background-color;
+$dialog-spacer: $dialog__padding;
+
+// drawer
+$drawer-background-color: $drawer__background-color;
+$drawer-header-background-color: $drawer-header__background-color;
+$drawer-footer-background-color: $drawer-footer__background-color;
+
+// dropdown
+$select-icon-size: $dropdown__icon-size;
+
+// input
+$input-border-color: $text-input__border-color;
+$input-border-color: $text-input__border-color--inverse;
+$input-border-radius: $text-input__border-radius;
+$input-border-width: $text-input__border-width;
+$input-max-width: $form__max-width;
+$input-line-height: $text-input__line-height;
+$input-padding: $text-input__padding;
+$input-medium-width: $form__max-width--medium;
+$input-small-width: $form__max-width--small;
+
+// filter chip
+$filter-chip-text-color: $filter-chip__color;
+$filter-chip-background-color: $filter-chip__background-color;
+$filter-chip-border-color: $filter-chip__border-color;
+$filter-chip-text-color-hover: $filter-chip__color--active;
+$filter-chip-background-color-hover: $filter-chip__background-color--active;
+$filter-chip-border-color-hover: $filter-chip__border-color--active;
+
 // fonts
 $display-font-size: $font-size-5xl;
 $title-font-size: $font-size-4xl;
@@ -72,6 +113,19 @@ $font-bold: $font-weight-bold;
 $font-semibold: $font-weight-semibold;
 $h1-mobile-font-size: 30px !default;
 
+// links
+$link-color: $link__color;
+$link-visited-color: $link__color--visited;
+$link-hover-color: $link__color--hover;
+$link-active-color: $link__color--active;
+$link-inverse-color: $link-inverse__color;
+$link-inverse-visited-color: $link-inverse__color--visited;
+$link-inverse-hover-color: $link-inverse__color--hover;
+$link-inverse-active-color: $link-inverse__color--active;
+$link-underline-height: $link__text-decoration-thickness;
+$link-underline-height-hover: $link__text-decoration-thickness--hover;
+$link-underline-offset: $link__text-decoration-offset;
+
 // media widths
 $width-xs: $media-width-xs;
 $width-sm: $media-width-sm;
@@ -79,8 +133,25 @@ $width-md: $media-width-md;
 $width-lg: $media-width-lg;
 $width-xl: $media-width-xl;
 
+// pagination
+$pagination-nav-link-color: $pagination-link__color;
+$pagination-nav-link-color-hover: $pagination-link__color--hover;
+$pagination-nav-link-color-active: $pagination-link__color--active;
+$pagination-nav-link-color-focus: $pagination-link__color--focus;
+$pagination-current-page-color: $pagination-current-page__color;
+$pagination-overflow-color: $pagination-overflow__color;
+$pagination-page-count-color: $pagination-page-count__color;
+
+// spinner
+$spinner-background-color-inverse: $spinner__background-color--inverse;
+$spinner-color-inverse: $spinner__color--inverse;
+
+// step list
+$current-step-color: $steplist__color--current;
+
 // table
 $table-padding: $table__padding;
+$table-compact-padding: $spacer-half $table__padding;
 $table-border-color: $table__border-color;
 $table-header-background-color: $table-header__background-color;
 $table-striped-background-color: $table-striped__background-color;
@@ -98,5 +169,3 @@ $usa-banner-background-color: $usa-banner__background-color;
 $usa-banner-text-color: $usa-banner__color;
 $usa-banner-close-image-background-color: $usa-banner-close__background-color;
 $usa-banner-header-action-color: $usa-banner-action__color;
-$usa-banner-mobile-close-size: $usa-banner-mobile-close__size;
-$usa-caret-icon-size: $usa-banner-caret-icon__size;

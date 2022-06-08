@@ -1,10 +1,24 @@
 @import '../settings/index.scss';
 
+// @TODO: deprecate and simplify these
+$step-list-number-size: $spacer-4 !default;
+$step-list-number-size-mobile: $spacer-3 !default;
+$step-list-number-font-size: 20px !default;
+$step-list-number-font-size-mobile: $font-size-sm !default;
+$step-list-number-border-size: 2px !default;
+$step-list-number-margin: 10px !default;
+$step-list-padding-h: 0 !default;
+$step-list-padding-left: $step-list-padding-h + $step-list-number-margin + $step-list-number-size;
+$step-list-breakpoint: $media-width-md !default;
+$step-margin: $spacer-2 !default;
+$step-border-width: 1px !default;
+$step-button-height: 38px !default;
+
 .ds-c-step-list {
   list-style-type: none;
   margin: $spacer-4 0 0;
-  padding: 0 0;
-  padding-left: 10px + $spacer-4;
+  padding: 0 $step-list-padding-h;
+  padding-left: $step-list-padding-left;
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
     a:hover {
@@ -16,34 +30,34 @@
 .ds-c-step {
   color: $steplist__color;
   counter-increment: step-counter;
-  margin-bottom: $spacer-2;
-  padding-bottom: $spacer-2;
+  margin-bottom: $step-margin;
+  padding-bottom: $step-margin;
   position: relative;
 
   &::before {
-    border: 2px solid $steplist-step__border-color--default;
+    border: $step-list-number-border-size solid $steplist-step__border-color--default;
     border-radius: $radius-circle;
     box-sizing: border-box;
     color: $steplist-step__color;
     content: counter(step-counter);
     display: block;
-    font-size: $font-size-sm;
-    height: 24px;
-    left: -34px;
-    line-height: 20px;
+    font-size: $step-list-number-font-size-mobile;
+    height: $step-list-number-size-mobile;
+    left: -($step-list-number-margin + $step-list-number-size-mobile);
+    line-height: $step-list-number-size-mobile - $step-list-number-border-size * 2;
     position: absolute;
     text-align: center;
-    top: 7px;
-    width: 24px;
+    top: ($step-button-height - $step-list-number-size-mobile) / 2;
+    width: $step-list-number-size-mobile;
 
-    @media (min-width: $media-width-md) {
-      font-size: 20px;
-      height: 32px;
-      left: -42px;
-      line-height: 28px;
+    @media (min-width: $step-list-breakpoint) {
+      font-size: $step-list-number-font-size;
+      height: $step-list-number-size;
+      left: -($step-list-number-margin + $step-list-number-size);
+      line-height: $step-list-number-size - $step-list-number-border-size * 2;
       padding-left: 1px;
-      top: 3px;
-      width: 32px;
+      top: ($step-button-height - $step-list-number-size) / 2;
+      width: $step-list-number-size;
     }
 
     @media (-ms-high-contrast: active), (forced-colors: active) {
@@ -54,17 +68,17 @@
   }
 
   &::after {
-    border-bottom: 1px solid $steplist-step__border-color;
+    border-bottom: $step-border-width solid $steplist-step__border-color;
     bottom: 0;
     content: '';
     display: block;
     height: 1px;
-    left: -42px;
+    left: -$step-list-padding-left;
     position: absolute;
-    right: -0;
+    right: -$step-list-padding-h;
   }
 
-  @media (min-width: $media-width-md) {
+  @media (min-width: $step-list-breakpoint) {
     display: flex;
     justify-content: space-between;
   }
@@ -72,7 +86,7 @@
 
 .ds-c-step--current,
 .ds-c-step--completed {
-  padding-bottom: $spacer-2;
+  padding-bottom: $step-margin;
 
   &::before {
     border: 0 none;
@@ -125,17 +139,17 @@
 }
 
 .ds-c-step__content {
-  @media (min-width: $media-width-md) {
+  @media (min-width: $step-list-breakpoint) {
     padding-right: $spacer-2;
   }
 }
 
 .ds-c-step__heading {
   font-size: $font-size-md;
-  line-height: 38px;
+  line-height: $step-button-height;
   margin: 0;
 
-  @media (min-width: $media-width-md) {
+  @media (min-width: $step-list-breakpoint) {
     font-size: $font-size-xl;
   }
 }
@@ -147,7 +161,7 @@
   .ds-c-step__content--with-content + & {
     margin-top: $spacer-2;
 
-    @media (min-width: $media-width-md) {
+    @media (min-width: $step-list-breakpoint) {
       margin-top: 0;
     }
   }
@@ -156,7 +170,7 @@
     font-weight: $font-normal;
   }
 
-  @media (min-width: $media-width-md) {
+  @media (min-width: $step-list-breakpoint) {
     font-size: $base-font-size;
     text-align: right;
   }
@@ -164,7 +178,7 @@
 
 .ds-c-step__completed-text {
   display: inline-block;
-  line-height: 26px;
+  line-height: $step-button-height - 12px;
   margin-right: $spacer-2;
 
   .ds-c-icon {
@@ -174,7 +188,7 @@
     width: 16px;
   }
 
-  @media (min-width: $media-width-md) {
+  @media (min-width: $step-list-breakpoint) {
     display: block;
     margin-right: 0;
     padding-top: 6px;
@@ -197,7 +211,7 @@
     margin-top: $spacer-1;
   }
 
-  @media (min-width: $media-width-md) {
+  @media (min-width: $step-list-breakpoint) {
     font-size: $font-size-base;
   }
 }
@@ -225,7 +239,7 @@
 }
 
 .ds-c-substep__edit {
-  @media (min-width: $media-width-md) {
+  @media (min-width: $step-list-breakpoint) {
     position: absolute;
     right: 0;
   }
