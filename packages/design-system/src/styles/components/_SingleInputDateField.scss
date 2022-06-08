@@ -333,6 +333,27 @@
  *                                                                             *
  *******************************************************************************/
 
+// Put the month and year dropdowns in a fixed two-column layout so that they
+// don't shift around off center when the month changes (because different months
+// are different lengths).
+.rdp-caption_dropdowns {
+  // Take up as much space between the nav buttons as we have
+  flex-grow: 1;
+}
+// Due to a bug, the library currently only uses "rdp-dropdown_month"
+.rdp-dropdown_month,
+.rdp-dropdown_year {
+  // See comment above about arranging these in fixed columns
+  display: block;
+  width: 50%;
+
+  // TODO: When the bug has been fixed upstream, we can reference "rdp-dropdown_year"
+  // instead. See https://github.com/gpbl/react-day-picker/pull/1466
+  &:first-of-type {
+    text-align: right;
+  }
+}
+
 .rdp-button:focus,
 .rdp-button:active {
   @include focus-styles;
