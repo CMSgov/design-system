@@ -1,23 +1,23 @@
 /*
-Date field
+Date field (multi-input)
 
-@uswds https://designsystem.digital.gov/components/form-controls/#date-input
+@uswds https://designsystem.digital.gov/components/memorable-date/
 
 Three text fields are the easiest way for users to enter most dates.
 
-Markup: datefield.example.html
+Markup: multiinputdatefield.example.html
 
-Style guide: components.date-field
+Style guide: components.multi-input-date-field
 */
 
 /*
-`<DateField>`
+`<MultiInputDateField>`
 
-@react-example DateField.example.jsx
+@react-example MultiInputDateField.example.jsx
 
-@react-props DateField.tsx
+@react-props MultiInputDateField.tsx
 
-Style guide: components.date-field.react
+Style guide: components.multi-input-date-field.react
 */
 
 /*
@@ -46,8 +46,10 @@ Style guide: components.date-field.react
 
 ### Related patterns
 
+- [Date field (single input)]({{root}}/components/single-input-date-field/)
+- [Date field (with calendar)]({{root}}/components/date-field-with-calendar-picker/)
 - [Text field]({{root}}/components/text-field/)
 - [Grid]({{root}}/utilities/grid/)
 
-Style guide: components.date-field.guidance
+Style guide: components.multi-input-date-field.guidance
 */
