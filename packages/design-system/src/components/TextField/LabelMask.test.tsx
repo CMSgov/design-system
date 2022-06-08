@@ -20,7 +20,7 @@ describe('Label mask', function () {
     const input = container.querySelector('input');
 
     expect(input.value).toBe('');
-    expect(mask.textContent).toBe('MM/DD/YYYY');
+    expect(mask.textContent).toContain('MM/DD/YYYY');
 
     expect(asFragment()).toMatchSnapshot();
   });
@@ -36,7 +36,7 @@ describe('Label mask', function () {
       userEvent.type(input, data);
 
       expect(input).toHaveValue(data);
-      expect(mask.textContent).toBe(maskText);
+      expect(mask.textContent).toContain(maskText);
     });
     it('partial input value set', () => {
       const { container } = render(<TestLabelMask />);
@@ -48,7 +48,7 @@ describe('Label mask', function () {
       userEvent.type(input, data);
 
       expect(input).toHaveValue(data);
-      expect(mask.textContent).toBe('12/34/YYYY');
+      expect(mask.textContent).toContain('12/34/YYYY');
     });
     it('padded values when incomplete input value set', () => {
       const { container } = render(<TestLabelMask />);
@@ -61,7 +61,7 @@ describe('Label mask', function () {
       userEvent.type(input, data);
 
       expect(input).toHaveValue(data);
-      expect(mask.textContent).toBe(maskText);
+      expect(mask.textContent).toContain(maskText);
     });
   });
   it('formats input value onBlur', () => {

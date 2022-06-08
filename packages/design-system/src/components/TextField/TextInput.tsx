@@ -134,21 +134,9 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
 
   const ComponentType = multiline ? 'textarea' : 'input';
 
-  const ariaAttributes = {
-    'aria-label': ariaLabel,
-    // Use set `aria-invalid` based off errorMessage unless manually specified
-    'aria-invalid': props['aria-invalid'] ? props['aria-invalid'] : !!errorMessage,
-    // Link input to bottom placed error message
-    'aria-describedby':
-      errorPlacement === 'bottom' && errorMessage
-        ? classNames(props['aria-describedby'], errorId) // Use of the classNames function for this is confusing
-        : undefined,
-  };
-
   const numberRows: number = typeof rows === 'string' ? parseInt(rows) : rows;
   return (
     <ComponentType
-      {...ariaAttributes}
       className={classes}
       ref={setRef}
       rows={multiline && numberRows ? numberRows : undefined}
@@ -158,7 +146,18 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
       // @ts-ignore: The ClipboardEventHandler for textareas and inputs are incompatible, and TS
       // is failing to infer which one is being used here based on ComponentType.
       onCopyCapture={onCopyCapture}
+      // This can be purposefully overwritten by an 'aria-invalid' defined in inputProps
+      aria-invalid={!!errorMessage}
       {...inputProps}
+      aria-label={ariaLabel || props['aria-label']}
+      // Link input to bottom placed error message
+      // Use of the classNames function for this is confusing
+      aria-describedby={
+        classNames(
+          props['aria-describedby'],
+          errorPlacement === 'bottom' && errorMessage && errorId
+        ) || undefined
+      }
     />
   );
 };
