@@ -61,7 +61,7 @@ export const components: AnyTokenValues = {
     '__color--active':                            t.color['primary-darkest'],
     '__color--disabled':                          t.color['gray-lighter'],
     '__color--hover':                             t.color['primary-alt-dark'],
-    '-icon__fill':                                t.color['base'], // medicare  only
+    '-icon__fill':                                t.color['base'],
   },
   
   'button-inverse': {
@@ -87,15 +87,15 @@ export const components: AnyTokenValues = {
   'button-inverse-transparent': {
     '__background-color':                         t.color['gray-lighter'],
     '__color':                                    t.color['gray-dark'],
-    '__color--disabled':                          t.color['gray-dark'], // medicare  only
+    '__color--disabled':                          t.color['gray-dark'], 
   },
   
   'button-primary': {
-    '__color':                                    t.color['white'], // medicare  only
-    '__color--hover':                             t.color['white'], // medicare  only
+    '__color':                                    t.color['white'], 
+    '__color--hover':                             t.color['white'], 
     '__background-color':                         t.color['primary'],
     '__background-color--hover':                  t.color['primary-dark'],
-    '__background-color--focus':                  t.color['primary'], // medicare  only
+    '__background-color--focus':                  t.color['primary'], 
     '__background-color--active':                 t.color['primary-light'],
   },
   
@@ -195,7 +195,7 @@ export const components: AnyTokenValues = {
   
   'form': {
     '-label__color--inverse':                     t.color['base-inverse'],
-    '-label__color--not-error':                   t.color['gray-light'], // medicare  only
+    '-label__color--not-error':                   t.color['gray-light'], 
     '__max-width':                                '460px',
     '__max-width--small':                         '6em',
     '__max-width--medium':                        '12em',

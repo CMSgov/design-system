@@ -61,6 +61,7 @@ export const components: AnyTokenValues = {
     '__color--active':                            t.color['primary-darkest'],
     '__color--disabled':                          t.color['gray-lighter'],
     '__color--hover':                             t.color['primary-darker'],
+    '-icon__fill':                                t.color['base'],
   },
 
   'button-inverse': {
@@ -86,11 +87,15 @@ export const components: AnyTokenValues = {
   'button-inverse-transparent': {
     '__background-color':                         t.color['gray-lighter'],
     '__color':                                    t.color['gray-dark'],
+    '__color--disabled':                          t.color['gray-dark'], 
   },
 
   'button-primary': {
+    '__color':                                    t.color['white'], 
+    '__color--hover':                             t.color['white'], 
     '__background-color':                         t.color['green'],
     '__background-color--hover':                  t.color['success-dark'],
+    '__background-color--focus':                  t.color['primary'], 
     '__background-color--active':                 t.color['success-darker'],
   },
 
