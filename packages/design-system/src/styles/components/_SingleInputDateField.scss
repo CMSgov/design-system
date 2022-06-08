@@ -402,7 +402,7 @@
 
   &:hover {
     background-color: $color-gray-cool-light;
-    color: $link-hover-color;
+    color: $color-primary-darker; // TODO: Use tokens (same as link-hover-color)
   }
 
   &:focus,
@@ -458,6 +458,10 @@
       &:active {
         z-index: 1;
       }
+
+      &.ds-c-field--error {
+        margin-right: -#{$input-border-width--error};
+      }
     }
   }
 
@@ -499,6 +503,19 @@
         display: none;
       }
     }
+  }
+
+  .ds-c-field--error + .ds-c-single-input-date-field__button {
+    border: $input-border-width--error solid $color-error;
+
+    &:after {
+      left: -#{$input-border-width--error};
+      width: $input-border-width--error;
+    }
+  }
+
+  .ds-c-field--error.ds-c-field--inverse + .ds-c-single-input-date-field__button {
+    border: $input-border-width--error solid $color-error-light;
   }
 
   .ds-c-icon--calendar {
