@@ -1,5 +1,9 @@
 @import '../settings/index.scss';
 
+// @TODO: deprecate, either add to component variables
+// or hard-code if not being utilized.
+$badge-font-size-big: $font-size-base;
+
 @mixin badge-high-contrast-mode-remove-color() {
   @media (-ms-high-contrast: active), (forced-colors: active) {
     background-color: windowText;
@@ -10,7 +14,7 @@
 
 .ds-c-badge {
   background-color: $badge__background-color;
-  border-radius: $badge__border-radius;
+  border-radius: $radius-pill;
   color: $badge__font-color;
   display: inline-block;
   font-size: $font-size-sm;
@@ -40,7 +44,7 @@
 }
 
 .ds-c-badge--big {
-  font-size: $base-font-size;
+  font-size: $badge-font-size-big;
 }
 
 .ds-c-badge--info {

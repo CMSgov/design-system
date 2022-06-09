@@ -5,8 +5,8 @@
   cursor: pointer;
   text-decoration: underline;
   text-decoration-color: $link__color;
-  text-decoration-thickness: $link__text-decoration--thickness;
-  text-underline-offset: $link__text-decoration--offset;
+  text-decoration-thickness: $link__text-decoration-thickness;
+  text-underline-offset: $link__text-decoration-offset;
 
   &:visited {
     color: $link__color--visited;
@@ -16,7 +16,7 @@
   &:hover {
     color: $link__color--hover;
     text-decoration-color: $link__color--hover;
-    text-decoration-thickness: $link__text-decoration--thickness--hover;
+    text-decoration-thickness: $link__text-decoration-thickness--hover;
   }
   &:focus,
   &:focus:visited {
@@ -35,8 +35,8 @@
   cursor: pointer;
   text-decoration: underline;
   text-decoration-color: $link-inverse__color;
-  text-decoration-thickness: $link__text-decoration--thickness;
-  text-underline-offset: $link__text-decoration--offset;
+  text-decoration-thickness: $link__text-decoration-thickness;
+  text-underline-offset: $link__text-decoration-offset;
 
   &:visited {
     color: $link-inverse__color--visited;
@@ -46,7 +46,7 @@
   &:hover {
     color: $link-inverse__color--hover;
     text-decoration-color: $link-inverse__color--hover;
-    text-decoration-thickness: $link__text-decoration--thickness--hover;
+    text-decoration-thickness: $link__text-decoration-thickness--hover;
   }
 
   &:focus,

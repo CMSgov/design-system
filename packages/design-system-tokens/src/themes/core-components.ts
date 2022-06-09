@@ -7,13 +7,21 @@ import { hexOpacity } from '../lib/utility'
 import { AnyTokenValues } from '../lib/types'
 
 export const components: AnyTokenValues = {
+  'accordion': {
+    '__color':                                    t.color['base'],
+    '__background-color':                         t.color['gray-lightest'],
+    '__background-color--hover':                  t.color['gray-lighter'],
+    '__border-color':                             t.color['gray-lightest'],
+    '-button__color':                             t.color['base'],
+    '-content__background-color':                 t.color['white'],
+  },
+
   'alert': {
     '__background-color':                         t.color['primary-alt-lightest'],
     '__background-color--error':                  t.color['error-lightest'],
     '__background-color--lightweight':            t.color['white'],
     '__background-color--success':                t.color['success-lightest'],
     '__background-color--warn':                   t.color['warn-lightest'],
-    '__bar-width':                                t.spacer['1'],
     '__border-left-color':                        t.color['primary-alt'],
     '__border-color--error':                      t.color['error'],
     '__border-color--success':                    t.color['success'],
@@ -21,6 +29,7 @@ export const components: AnyTokenValues = {
     '__font-color':                               t.color['base'],
     '__icon-size':                                t.spacer['5'],
     '__padding':                                  t.spacer['2'],
+    '-bar__width':                                t.spacer['1'],
     '-link__font-color':                          t.color['primary-darker'],
     '-link__font-color--hover':                   t.color['primary-darkest'],
     '-link__font-color--focus':                   t.color['primary-darkest'],
@@ -38,13 +47,12 @@ export const components: AnyTokenValues = {
 
   'badge': {
     '__background-color':                         t.color['gray'],
-    '__font-color':                               t.color['white'],
     '__background-color--alert':                  t.color['error'],
     '__background-color--info':                   t.color['primary'],
     '__background-color--success':                t.color['success'],
     '__background-color--warn':                   t.color['warn'],
+    '__font-color':                               t.color['white'],
     '__font-color--warn':                         t.color['base'],
-    '__border-radius':                            t.radius['pill'],
   },
 
   'button': {
@@ -62,6 +70,7 @@ export const components: AnyTokenValues = {
     '__color--active':                            t.color['primary-darkest'],
     '__color--disabled':                          t.color['gray-lighter'],
     '__color--hover':                             t.color['primary-darker'],
+    '-icon__fill':                                t.color['base'],
   },
 
   'button-inverse': {
@@ -87,11 +96,15 @@ export const components: AnyTokenValues = {
   'button-inverse-transparent': {
     '__background-color':                         t.color['gray-lighter'],
     '__color':                                    t.color['gray-dark'],
+    '__color--disabled':                          t.color['gray-dark'], 
   },
 
   'button-primary': {
+    '__color':                                    t.color['white'], 
+    '__color--hover':                             t.color['white'], 
     '__background-color':                         t.color['primary'],
     '__background-color--hover':                  t.color['primary-darker'],
+    '__background-color--focus':                  t.color['primary'], 
     '__background-color--active':                 t.color['primary-darkest'],
   },
 
@@ -169,25 +182,25 @@ export const components: AnyTokenValues = {
   },
 
   'icon': {
-    '__color--primary':                           t.color['primary'],
-    '__color--inverse':                           t.color['white'],
     '__color__error':                             t.color['error'],
-    '__color--warn':                              t.color['warn'],
+    '__color--inverse':                           t.color['white'],
+    '__color--primary':                           t.color['primary'],
     '__color--success':                           t.color['success'],
+    '__color--warn':                              t.color['warn'],
   },
 
   'link': {
     '__color':                                    t.color['primary'],
-    '__color--visited':                           t.color['visited'],
-    '__color--hover':                             t.color['primary-darker'],
     '__color--active':                            t.color['primary-darkest'],
-    '__text-decoration--thickness':               '1px',
-    '__text-decoration--thickness--hover':        '1px',
-    '__text-decoration--offset':                  'auto',
+    '__color--hover':                             t.color['primary-darker'],
+    '__color--visited':                           t.color['visited'],
     '-inverse__color':                            t.color['base-inverse'],
-    '-inverse__color--visited':                   t.color['muted-inverse'],
-    '-inverse__color--hover':                     t.color['muted-inverse'],
     '-inverse__color--active':                    t.color['muted-inverse'],
+    '-inverse__color--hover':                     t.color['muted-inverse'],
+    '-inverse__color--visited':                   t.color['muted-inverse'],
+    '__text-decoration-offset':                   'auto',
+    '__text-decoration-thickness':                '1px',
+    '__text-decoration-thickness--hover':         '1px',
   },
 
   'pagination': {
@@ -278,8 +291,6 @@ export const components: AnyTokenValues = {
     '-close__background-color':                   t.color['gray-light'],
     '-action__color':                             t.color['primary-darker'],
     '-lock-icon__color':                          t.color['success-light'],
-    '-mobile-close__size':                        '48px',
-    '-caret-icon__size':                          '10px',
   },
 
   'vertical-nav': {
