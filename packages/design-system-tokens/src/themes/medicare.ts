@@ -132,7 +132,7 @@ export const themeColors: ColorTokens = {
   'secondary-darkest':          color['lapis-900'],
   'secondary-light':            color['lapis-200'],
   'secondary-lighter':          color['lapis-100'],
-  'secondary-lightest':         color['lapis-50'],
+  'secondary-lightest':         color['darksky-50'],
   //
   'success':                    color['spring-500'],
   'success-dark':               color['spring-600'],
