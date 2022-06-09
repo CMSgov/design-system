@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import classNames from 'classnames';
+import uniqueId from 'lodash/uniqueId';
 import { TextInputProps } from './TextInput';
 
 export type MaskFunction = (rawInput: string, valueOnly?: boolean) => string;
@@ -38,6 +40,8 @@ export const DATE_MASK: MaskFunction = (rawInput = '', valueOnly = false) => {
 };
 
 export function useLabelMask(maskFn: MaskFunction, originalInputProps: TextInputProps) {
+  // TODO: Once we're on React 18, we can use the `useId` hook
+  const labelMaskId = useRef(uniqueId('labelmask_')).current;
   const [focused, setFocused] = useState(false);
   const { onFocus, onBlur, onChange } = originalInputProps;
   const value = originalInputProps.value?.toString() ?? '';
@@ -69,12 +73,18 @@ export function useLabelMask(maskFn: MaskFunction, originalInputProps: TextInput
     },
     type: 'text',
     inputMode: 'numeric' as const,
+    'aria-describedby': classNames(originalInputProps['aria-describedby'], labelMaskId),
   };
 
   return {
     labelMask: (
-      <div className="ds-c-label-mask" aria-hidden="true">
-        {maskFn(focused ? value : '')}
+      <div className="ds-c-label-mask" id={labelMaskId}>
+        <span className={classNames(focused && 'ds-u-visibility--screen-reader')}>
+          {maskFn('')}
+        </span>
+        <span className={classNames(!focused && 'ds-u-display--none')} aria-hidden="true">
+          {maskFn(value)}
+        </span>
       </div>
     ),
     inputProps,
