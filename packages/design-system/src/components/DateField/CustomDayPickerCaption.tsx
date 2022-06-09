@@ -35,27 +35,23 @@ export function CustomDayPickerCaption(props: CaptionProps) {
 
   return (
     <div className={classNames.caption} style={styles.caption}>
-      {previousMonth && (
-        <button
-          aria-label={previousLabel}
-          className="ds-c-single-input-date-field__nav"
-          onClick={handlePreviousClick}
-        >
-          <ArrowIcon direction="left" />
-        </button>
-      )}
-
+      <button
+        aria-label={previousLabel}
+        className="ds-c-single-input-date-field__nav"
+        onClick={handlePreviousClick}
+        disabled={!previousMonth}
+      >
+        <ArrowIcon direction="left" />
+      </button>
       <CaptionDropdowns displayMonth={props.displayMonth} id={props.id} />
-
-      {nextMonth && (
-        <button
-          aria-label={nextLabel}
-          className="ds-c-single-input-date-field__nav"
-          onClick={handleNextClick}
-        >
-          <ArrowIcon direction="right" />
-        </button>
-      )}
+      <button
+        aria-label={nextLabel}
+        className="ds-c-single-input-date-field__nav"
+        onClick={handleNextClick}
+        disabled={!nextMonth}
+      >
+        <ArrowIcon direction="right" />
+      </button>
     </div>
   );
 }

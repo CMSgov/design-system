@@ -419,6 +419,12 @@
     height: 19px;
     width: 19px;
   }
+
+  &:disabled,
+  &:hover:disabled {
+    background-color: $color-gray-lightest;
+    color: $color-gray;
+  }
 }
 
 // Style the day picker as a floating dialog below the field
