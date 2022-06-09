@@ -14,20 +14,12 @@ export function CustomDayPickerCaption(props: CaptionProps) {
     styles,
     labels: { labelPrevious, labelNext },
     locale,
-    numberOfMonths,
     onMonthChange,
   } = useDayPicker();
-  const { previousMonth, nextMonth, goToMonth, displayMonths } = useNavigation();
-
-  const displayIndex = displayMonths.findIndex((month) => isSameMonth(props.displayMonth, month));
+  const { previousMonth, nextMonth, goToMonth } = useNavigation();
 
   const previousLabel = labelPrevious(previousMonth, { locale });
   const nextLabel = labelNext(nextMonth, { locale });
-
-  const isFirst = displayIndex === 0;
-  const isLast = displayIndex === displayMonths.length - 1;
-  const hidePrevious = numberOfMonths > 1 && (isLast || !isFirst);
-  const hideNext = numberOfMonths > 1 && (isFirst || !isLast);
 
   const handlePreviousClick: React.MouseEventHandler = () => {
     if (!previousMonth) return;
@@ -43,7 +35,7 @@ export function CustomDayPickerCaption(props: CaptionProps) {
 
   return (
     <div className={classNames.caption} style={styles.caption}>
-      {!hidePrevious && (
+      {previousMonth && (
         <button
           aria-label={previousLabel}
           className="ds-c-single-input-date-field__nav"
@@ -55,7 +47,7 @@ export function CustomDayPickerCaption(props: CaptionProps) {
 
       <CaptionDropdowns displayMonth={props.displayMonth} id={props.id} />
 
-      {!hideNext && (
+      {nextMonth && (
         <button
           aria-label={nextLabel}
           className="ds-c-single-input-date-field__nav"
