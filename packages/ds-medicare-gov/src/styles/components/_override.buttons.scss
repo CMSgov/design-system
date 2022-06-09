@@ -155,25 +155,28 @@
 }
 
 // Primary-alt blue solid button
+// @TODO, deprecate primary-alt selectors
+.ds-c-button--secondary,
+.ds-c-button--secondary:visited,
 .ds-c-button--primary-alt,
 .ds-c-button--primary-alt:visited {
   @extend .ds-c-button--primary;
-  color: $button-primary-alt__color;
-  border-color: $button-primary-alt__border-color;
-  background-color: $button-primary-alt__background-color;
+  color: $button-secondary__color;
+  border-color: $button-secondary__border-color;
+  background-color: $button-secondary__background-color;
 
   &:hover,
   &.ds-c-button--hover {
-    color: $button-primary-alt__color--hover;
-    background-color: $button-primary-alt__background-color--hover;
-    border-color: $button-primary-alt__border-color--hover;
+    color: $button-secondary__color--hover;
+    background-color: $button-secondary__background-color--hover;
+    border-color: $button-secondary__border-color--hover;
   }
 
   &:active,
   &.ds-c-button--active {
-    color: $button-primary-alt__color--active;
-    background-color: $button-primary-alt__background-color--active;
-    border-color: $button-primary-alt__border-color--active;
+    color: $button-secondary__color--active;
+    background-color: $button-secondary__background-color--active;
+    border-color: $button-secondary__border-color--active;
   }
 
   &:focus,
@@ -181,11 +184,11 @@
     // Ensure active and hover styles can be used with focus
     &:hover,
     &.ds-c-button--hover {
-      background-color: $button-primary-alt__background-color--hover;
+      background-color: $button-secondary__background-color--hover;
     }
     &:active,
     &.ds-c-button--active {
-      background-color: $button-primary-alt__background-color--active;
+      background-color: $button-secondary__background-color--active;
     }
   }
 }

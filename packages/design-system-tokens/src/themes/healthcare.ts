@@ -76,13 +76,14 @@ export const themeColors: ColorTokens = {
   'muted-inverse':              color['lapis-50'],
   //
   'primary':                    color['sapphire-500'],
+  'primary-darker':             color['sapphire-500'],
+  'primary-darkest':            color['sapphire-600'],
+  // @TODO deprecate primary-alt as secondary
   'primary-alt':                color['darksky-500'],
   'primary-alt-dark':           color['sky-600'],
   'primary-alt-darkest':        color['sky-800'],
   'primary-alt-light':          color['darksky-200'],
   'primary-alt-lightest':       color['cerulean-50'],
-  'primary-darker':             color['sapphire-500'],
-  'primary-darkest':            color['sapphire-600'],
   //
   'red':                        color['rose-500'],
   'red-dark':                   color['rose-600'],
@@ -92,10 +93,13 @@ export const themeColors: ColorTokens = {
   'red-lighter':                color['rose-100'],
   'red-lightest':               color['rose-50'],
   //
-  'secondary':                  color['crimson-500'],
-  'secondary-dark':             color['crimson-700'],
-  'secondary-light':            color['rose-200'],
-  'secondary-lightest':         color['rose-50'],
+  'secondary':                  color['darksky-500'],
+  'secondary-dark':             color['sky-600'],
+  'secondary-darker':           color['sky-700'],
+  'secondary-darkest':          color['sky-800'],
+  'secondary-light':            color['cerulean-200'],
+  'secondary-lighter':          color['cerulean-100'],
+  'secondary-lightest':         color['cerulean-50'],
   //
   'success':                    color['spring-500'],
   'success-dark':               color['spring-600'],

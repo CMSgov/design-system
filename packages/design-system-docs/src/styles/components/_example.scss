@@ -47,12 +47,12 @@
 
 // Visualize grid layout
 .preview__element {
-  background-color: $color-primary-alt-lightest;
+  background-color: $color-secondary-lightest;
   margin: 2px;
-  outline: 2px dashed $color-primary-alt;
+  outline: 2px dashed $color-secondary;
 
   code {
-    background-color: $color-primary-alt-lightest;
+    background-color: $color-secondary-lightest;
   }
 }
 

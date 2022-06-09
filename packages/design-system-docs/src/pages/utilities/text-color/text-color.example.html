@@ -1,16 +1,16 @@
 <section class="example--list">
   <% var groups = { 'background': ['base', 'black', 'gray', 'gray-dark', 'primary',
-  'primary-darker', 'primary-darkest', 'primary-alt-darkest', 'error', 'error-dark',
-  'error-darkest', 'success'], 'background-inverse': ['white','gray-lightest', 'gray-lighter',
-  'gray-light', 'primary-alt', 'primary-alt-light', 'primary-alt-lightest', 'primary-alt-dark'],
+  'primary-darker', 'primary-darkest', 'secondary-darkest', 'error', 'error-dark', 'error-darkest',
+  'success'], 'background-inverse': ['white','gray-lightest', 'gray-lighter', 'gray-light',
+  'secondary', 'secondary-light', 'secondary-lighter', 'secondary-lightest', 'secondary-dark'],
   'gray-lightest': ['gray', 'gray-dark', 'base', 'primary', 'primary-darker',
-  'primary-darkest','primary-alt-darkest', 'error-dark', 'error-darkest'], 'primary-alt-lightest':
-  ['base', 'gray', 'gray-dark', 'primary-darker', 'primary-darkest', 'primary-alt-darkest',
+  'primary-darkest','secondary-darkest', 'error-dark', 'error-darkest'], 'secondary-lightest':
+  ['base', 'gray', 'gray-dark', 'primary-darker', 'primary-darkest', 'secondary-darkest',
   'error-dark', 'error-darkest' ], 'success-lightest': ['base', 'gray', 'gray-dark', 'primary',
-  'primary-darker', 'primary-darkest', 'primary-alt-darkest', 'error-dark', 'error-darkest' ],
+  'primary-darker', 'primary-darkest', 'secondary-darkest', 'error-dark', 'error-darkest' ],
   'warn-lightest': ['base', 'gray', 'gray-dark', 'primary', 'primary-darker', 'primary-darkest',
-  'primary-alt-darkest', 'error-dark', 'error-darkest' ], 'error-lightest': ['base', 'gray',
-  'gray-dark', 'primary-darker', 'primary-darkest', 'primary-alt-darkest', 'error-darkest' ], }; -%>
+  'secondary-darkest', 'error-dark', 'error-darkest' ], 'error-lightest': ['base', 'gray',
+  'gray-dark', 'primary-darker', 'primary-darkest', 'secondary-darkest', 'error-darkest' ], }; -%>
   <% Object.keys(groups).forEach(fill => { -%>
   <article>
     <h2 class="preview__label">Text on <code>.ds-u-fill--<%= fill%></code> background</h2>
