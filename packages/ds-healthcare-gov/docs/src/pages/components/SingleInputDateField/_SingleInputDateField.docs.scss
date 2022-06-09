@@ -1,31 +1,9 @@
 /*
-Date field (single-input)
-
-@uswds https://designsystem.digital.gov/components/memorable-date/
-
-Date field (single-input) provides date entry, using a text field, in a single input.
-
-Markup: singleinputdatefield.example.html
-
-Style guide: components.single-input-date-field
-*/
-
-/*
-`<SingleInputDateField>`
-
-@react-example SingleInputDateField.example.jsx
-
-@react-props SingleInputDateField.tsx
-
-Style guide: components.single-input-date-field.react-single-input-date-field
-*/
-
-/*
 ---
 
 ### When to use
 
-- Use when your user flow does not require separate fields for month, day, and year.
+- A single date input is the preferred component for dates. This can be used with or without the date picker.
 - Use for most dates, particularly memorable dates like date of birth, marriage date, health coverage start or end dates, or income start date.
 
 ### When to consider alternatives
