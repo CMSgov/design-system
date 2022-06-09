@@ -34,5 +34,7 @@ export const Default = Template.bind({});
 
 export const WithPicker = Template.bind({});
 WithPicker.args = {
+  label: 'What day did you move?',
+  hint: 'This date should be within the past 60 days in order to qualify',
   fromYear: new Date().getFullYear(),
 };

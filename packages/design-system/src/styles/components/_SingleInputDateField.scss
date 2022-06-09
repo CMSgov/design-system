@@ -365,7 +365,7 @@
 .ds-c-single-input-date-field__field-wrapper {
   .ds-c-single-input-date-field--with-picker & {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: stretch;
     margin-bottom: $spacer-half;
     margin-top: $spacer-half;
@@ -397,6 +397,7 @@
     border-bottom-left-radius: 0;
     color: $color-primary;
     cursor: pointer;
+    margin: 0;
     padding: $spacer-half $spacer-1;
     text-align: center;
     text-decoration: none;
