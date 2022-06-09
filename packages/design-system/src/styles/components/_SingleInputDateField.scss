@@ -400,17 +400,17 @@
   display: inline-block;
   padding: $spacer-1;
 
-  &:hover {
+  &:hover:not(:disabled) {
     background-color: $color-gray-cool-light;
     color: $color-primary-darker; // TODO: Use tokens (same as link-hover-color)
   }
 
   &:focus,
-  &:active {
+  &:active:not(:disabled) {
     @include focus-styles;
   }
 
-  &:active {
+  &:active:not(:disabled) {
     background-color: $button-primary-bg--active;
     color: $color-white;
   }
@@ -420,10 +420,26 @@
     width: 19px;
   }
 
-  &:disabled,
-  &:hover:disabled {
-    background-color: $color-gray-lightest;
-    color: $color-gray;
+  &:disabled {
+    color: $pagination-nav-disabled-color;
+    pointer-events: none;
+
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      border: 0;
+      cursor: not-allowed;
+      color: GrayText;
+
+      .ds-c-icon {
+        fill: GrayText;
+        color: GrayText;
+
+        path {
+          fill: GrayText;
+          stroke: GrayText;
+          color: GrayText;
+        }
+      }
+    }
   }
 }
 
