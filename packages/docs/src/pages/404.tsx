@@ -1,31 +1,25 @@
 import * as React from 'react';
-import { Link } from 'gatsby';
+import { graphql } from 'gatsby';
 
-// TODO: update with information layout page layout. Should look similar to https://design.cms.gov/test/
-const NotFoundPage = () => {
+import Layout from '../components/Layout';
+import { MdxQuery } from '../helpers/graphQLTypes';
+import ContentRenderer from '../components/ContentRenderer';
+
+const NotFoundPage = ({ data, location }: MdxQuery) => {
   return (
-    <main>
-      <title>Not found</title>
-      <h1>Page not found</h1>
-      <p>
-        Sorry{' '}
-        <span role="img" aria-label="Pensive emoji">
-          😔
-        </span>{' '}
-        we couldn’t find what you were looking for.
-        <br />
-        {process.env.NODE_ENV === 'development' ? (
-          <>
-            <br />
-            Try creating a page in <code>src/pages/</code>.
-            <br />
-          </>
-        ) : null}
-        <br />
-        <Link to="/">Go home</Link>.
-      </p>
-    </main>
+    <Layout pageName="Page not found" location={location}>
+      <ContentRenderer data={data.mdx.body} />
+    </Layout>
   );
 };
+
+export const query = graphql`
+  query PageNotFoundQuery {
+    mdx(frontmatter: { title: { eq: "Page not found" } }) {
+      id
+      body
+    }
+  }
+`;
 
 export default NotFoundPage;
