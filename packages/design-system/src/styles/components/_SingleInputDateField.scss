@@ -366,6 +366,24 @@
   color: white;
   background-color: var(--rdp-active-color);
 }
+@media (-ms-high-contrast: active), (forced-colors: active) {
+  .rdp-button[aria-disabled='true'] {
+    opacity: 1;
+    color: GrayText;
+    border-color: GrayText;
+  }
+
+  .rdp-day_selected:not([aria-disabled='true']),
+  .rdp-day_selected:focus:not([aria-disabled='true']),
+  .rdp-day_selected:active:not([aria-disabled='true']),
+  .rdp-day_selected:hover:not([aria-disabled='true']) {
+    background-color: Highlight;
+    color: Field;
+    border-color: Highlight;
+    -ms-high-contrast-adjust: none;
+    forced-color-adjust: none;
+  }
+}
 
 // Style the instructional text below the calendar
 .rdp-tfoot td {
