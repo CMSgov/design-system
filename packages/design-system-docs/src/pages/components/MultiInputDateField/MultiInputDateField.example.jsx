@@ -1,4 +1,4 @@
-import { DateField } from '@design-system';
+import { MultiInputDateField } from '@design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -14,7 +14,7 @@ class ControlledDateField extends React.PureComponent {
 
   render() {
     return (
-      <DateField
+      <MultiInputDateField
         label={
           <span>
             Controlled example using <code>dateFormatter</code>
@@ -32,7 +32,7 @@ class ControlledDateField extends React.PureComponent {
 
 ReactDOM.render(
   <div className="example--wrapper">
-    <DateField
+    <MultiInputDateField
       label="Date of birth"
       errorMessage="Please enter a year in the past"
       monthDefaultValue="10"
@@ -42,7 +42,7 @@ ReactDOM.render(
     />
     <ControlledDateField />
     <div className="example--wrapper example--inverse">
-      <DateField
+      <MultiInputDateField
         label="Inverse example"
         errorMessage="Please enter a year in the past"
         monthDefaultValue="10"
