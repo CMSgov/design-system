@@ -4,7 +4,7 @@
 ### When to use
 
 - This date input option isn't recommended.
-- Use only when functionality/back-end systems can't support a single date field entry or if you must collect only month and year.
+- Use only when functionality/back-end systems can't support a single date field entry.
 
 ### When to consider alternatives
 
@@ -26,7 +26,7 @@
 ### Related patterns
 
 - [Date field (single-input)]({{root}}/components/single-input-date-field/)
-- [Date field (with calendar)]({{root}}/components/date-field-with-calendar-picker/)
+- [Date field (with calendar)]({{root}}/components/date-picker/)
 - [Text field]({{root}}/components/text-field/)
 - [Grid]({{root}}/utilities/grid/)
 

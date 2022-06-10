@@ -11,6 +11,8 @@ Style guide: components.date-picker
 /*
 `<SingleInputDateField>`
 
+To enable the date picker feature, you must pass both a `from<TIME>` property (i.e., `fromDate`, `fromMonth`, etc.) **and** a `to<TIME>` property (i.e., `toDate`, `toMonth`, etc.) to the date field component.
+
 @react-example DatePicker.example.jsx
 
 @react-props SingleInputDateField.tsx
@@ -27,7 +29,7 @@ Style guide: components.date-picker.react
 
 ### When to consider alternatives
 
-- If users are entering a memorable date. Instead, use either single- or multi-input date fields.
+- If users are entering a memorable date. Instead, use either [single-]({{root}}/components/single-input-date-field/) or [multi-input]({{root}}/components/multi-input-date-field/) date fields.
 - If the date is a long time in the past (like date of birth).
 
 ### Usage
