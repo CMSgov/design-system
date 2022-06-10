@@ -1,30 +1,6 @@
 @import '../settings/index.scss';
 
-// Changing DOM order of label mask and input
-// Maintaining expected visual order
 .ds-c-label-mask {
-  display: flex;
-  flex-direction: column-reverse;
-}
-
-.ds-c-field + .ds-c-label-mask__mask {
   font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
-
-  .ds-c-label-mask__mask--active {
-    display: none;
-  }
-
-  .ds-c-label-mask__mask--inactive {
-    display: inline-block;
-  }
-}
-
-.ds-c-field:focus + .ds-c-label-mask__mask {
-  .ds-c-label-mask__mask--active {
-    display: inline-block;
-  }
-
-  .ds-c-label-mask__mask--inactive {
-    display: none;
-  }
+  color: $color-muted;
 }

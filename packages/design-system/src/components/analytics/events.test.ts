@@ -1,6 +1,10 @@
 import { UtagContainer, sendLinkEvent } from './events';
 
 describe('sendLinkEvent', () => {
+  beforeEach(() => {
+    jest.spyOn(global, 'setTimeout');
+  });
+
   const gaEventProps = {
     ga_eventType: 'cmsds',
     ga_eventCategory: 'test category',

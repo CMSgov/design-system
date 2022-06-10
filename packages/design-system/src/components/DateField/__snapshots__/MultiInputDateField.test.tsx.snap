@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DateField renders 1`] = `
+exports[`MultiInputDateField renders 1`] = `
 <fieldset
   className="ds-c-fieldset"
 >

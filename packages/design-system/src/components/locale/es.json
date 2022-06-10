@@ -44,6 +44,7 @@
     "add": "Añadir",
     "alertCircle": "Alerta",
     "arrowsStacked": "Ordenar",
+    "calendar": "Calendario",
     "upArrow": "flecha hacía arriba",
     "downArrow": "flecha hacía abajo",
     "leftArrow": "flecha a la izquierda",
@@ -83,6 +84,11 @@
   },
   "review": {
     "editText": "Editar"
+  },
+  "singleInputDateField": {
+    "close": "Abrir el cuadro para seleccionar el calendario",
+    "open": "Cerrar el cuadra para seleccionar el calendario",
+    "arrowKeyInstructions": "Las teclas de flecha pueden navegar por las fechas"
   },
   "skipNav": {
     "default": "Ir al contenido principal"
