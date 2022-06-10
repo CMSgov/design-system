@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
 const DrawerDefaultExample = () => {
-  const [showDrawer, setShowDrawer] = useState(true);
+  const [showDrawer, setShowDrawer] = useState(false);
 
   function toggle() {
     setShowDrawer(!showDrawer);
@@ -32,7 +32,6 @@ const DrawerDefaultExample = () => {
           footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
           heading="Drawer Heading"
           onCloseClick={() => setShowDrawer(false)}
-          hasFocusTrap={true}
         >
           <strong>This is a default Drawer component</strong>
 
