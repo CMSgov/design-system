@@ -1,10 +1,10 @@
 /* eslint no-alert: 0 */
-import { Drawer, DrawerToggle } from '@design-system';
-import React, { useState } from 'react';
+import { Drawer, Button } from '@design-system';
+import React from 'react';
 import ReactDOM from 'react-dom';
 
 const DrawerDefaultExample = () => {
-  const [showDrawer, setShowDrawer] = useState(false);
+  const [showDrawer, setShowDrawer] = React.useState(false);
 
   function toggle() {
     setShowDrawer(!showDrawer);
@@ -22,9 +22,9 @@ const DrawerDefaultExample = () => {
         laboris nisi ut aliquip ex ea commodo consequat.
       </p>
 
-      <DrawerToggle drawerOpen={showDrawer} showDrawer={() => toggle()}>
+      <Button className="ds-c-drawer__toggle" variation="transparent" onClick={() => toggle()}>
         Toggle a default drawer.
-      </DrawerToggle>
+      </Button>
 
       {showDrawer && (
         <Drawer

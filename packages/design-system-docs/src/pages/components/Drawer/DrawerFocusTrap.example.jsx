@@ -1,5 +1,5 @@
 /* eslint no-alert: 0 */
-import { Button, Drawer, DrawerToggle } from '@design-system';
+import { Button, Drawer } from '@design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -22,9 +22,9 @@ const DrawerFocusTrapExample = () => {
         laboris nisi ut aliquip ex ea commodo consequat.
       </p>
 
-      <DrawerToggle drawerOpen={showDrawer} showDrawer={() => toggle()}>
+      <Button className="ds-c-drawer__toggle" variation="transparent" onClick={() => toggle()}>
         Toggle a drawer with focus trap.
-      </DrawerToggle>
+      </Button>
 
       {showDrawer && (
         <Drawer

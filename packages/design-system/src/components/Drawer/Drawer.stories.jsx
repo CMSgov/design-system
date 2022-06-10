@@ -89,7 +89,13 @@ export const DrawerToggleWithDrawer = () => {
           {drawerContent}
         </Drawer>
       )}
-      <Button onClick={() => setIsDrawerVisible({ isDrawerVisible: true })}>Open drawer</Button>
+      <Button
+        className="ds-c-drawer__toggle"
+        variation="transparent"
+        onClick={() => setIsDrawerVisible({ isDrawerVisible: true })}
+      >
+        Drawer Toggle
+      </Button>
     </>
   );
 };

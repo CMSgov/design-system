@@ -1,5 +1,5 @@
 /* eslint no-alert: 0 */
-import { HelpDrawer, HelpDrawerToggle } from '@design-system';
+import { HelpDrawer, Button } from '@design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -20,9 +20,9 @@ const HelpDrawerExample = () => {
         labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
         laboris nisi ut aliquip ex ea commodo consequat.
       </p>
-      <HelpDrawerToggle helpDrawerOpen={showHelp} showDrawer={() => toggle()}>
+      <Button className="ds-c-drawer__toggle" variation="transparent" onClick={() => toggle()}>
         Toggle a help drawer.
-      </HelpDrawerToggle>
+      </Button>
 
       {showHelp && (
         <HelpDrawer
