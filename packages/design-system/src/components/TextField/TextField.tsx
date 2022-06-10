@@ -1,12 +1,14 @@
-import { FormControl, FormControlPropKeys } from '../FormControl/FormControl';
 import React from 'react';
+import LabelMask from './LabelMask';
+import Mask from './Mask';
 import TextInput from './TextInput';
 import classNames from 'classnames';
-import { errorPlacementDefault } from '../flags';
 import omit from 'lodash/omit';
 import pick from 'lodash/pick';
+import { FormControl, FormControlPropKeys } from '../FormControl/FormControl';
+import { errorPlacementDefault } from '../flags';
 
-// TODO: Remove this export, apps shouldn't be importing `unmaskValue` from `TextField`
+// TODO: Remove `maskValue` and `unmaskValue` exports with next major release (v3.x.x)
 export { unmaskValue } from './maskHelpers';
 
 export type TextFieldDefaultValue = string | number;
@@ -164,7 +166,7 @@ export class TextField extends React.PureComponent<
 
   render() {
     const containerProps = pick(this.props, FormControlPropKeys);
-    const inputOnlyProps = omit(this.props, FormControlPropKeys);
+    const { mask, labelMask, ...inputOnlyProps } = omit(this.props, FormControlPropKeys);
 
     // Add clearfix class
     const containerClassName = classNames(
@@ -182,15 +184,25 @@ export class TextField extends React.PureComponent<
         className={containerClassName}
         component="div"
         labelComponent="label"
-        render={({ id, errorId, setRef }) => (
-          <TextInput
-            {...inputOnlyProps}
-            {...{ id, setRef, errorId }}
-            errorMessage={this.props.errorMessage}
-            errorPlacement={errorPlacement}
-            inversed={this.props.inversed}
-          />
-        )}
+        render={({ id, errorId, setRef }) => {
+          const input = (
+            <TextInput
+              {...inputOnlyProps}
+              {...{ id, setRef, errorId }}
+              errorMessage={this.props.errorMessage}
+              errorPlacement={errorPlacement}
+              inversed={this.props.inversed}
+            />
+          );
+
+          if (mask) {
+            return <Mask mask={mask}>{input}</Mask>;
+          } else if (labelMask) {
+            return <LabelMask labelMask={labelMask}>{input}</LabelMask>;
+          } else {
+            return input;
+          }
+        }}
       />
     );
   }
