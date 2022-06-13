@@ -63,13 +63,13 @@ Inverse theme
 // State modifiers and message
 // ==============================
 .ds-c-field--error {
-  border: 3px solid $color-error;
+  border: $input-border-width--error solid $color-error;
 
   &.ds-c-field--inverse {
-    border: 3px solid $color-error-light;
+    border: $input-border-width--error solid $color-error-light;
   }
 }
 
 .ds-c-field--success {
-  border: 3px solid $color-success-light;
+  border: $input-border-width--success solid $color-success-light;
 }
