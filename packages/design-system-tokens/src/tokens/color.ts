@@ -5,7 +5,7 @@
 import { to, ColorTokens } from '../lib/types';
 
 const color = to<ColorTokens>()({
-  'transparent':     'transparent',
+  'transparent':     '#ffffff00',
 
   'white-solid':     '#ffffff',
   'white-alpha25':   '#ffffff40',
