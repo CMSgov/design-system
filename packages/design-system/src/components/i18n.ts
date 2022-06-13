@@ -74,13 +74,17 @@ export function fallbackLocale(language: string, subtag: string) {
 export function translate(
   lang: Language = getLanguage(),
   key: string,
-  data?: { [key: string]: string | number }
+  data?: { [key: string]: string }
 ): string {
   const rawTranslation = get(getTranslations(lang), key);
+  if (typeof rawTranslation !== 'string') {
+    throw new Error(`Translation key '${key}' does not resolve to a string.`);
+  }
   if (data) {
     // Replace template strings with provided data
     const interpolatedTranslation = Object.keys(data).reduce(
-      (interpolatedString, dataKey) => interpolatedString.replace(`{{${dataKey}}}`, data[dataKey]),
+      (interpolatedString: string, dataKey: string) =>
+        interpolatedString.replace(`{{${dataKey}}}`, data[dataKey]),
       rawTranslation
     );
     return interpolatedTranslation;

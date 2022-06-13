@@ -23,6 +23,9 @@ export interface MaskProps {
    * Must contain a `TextField` component
    */
   children: React.ReactNode;
+  /**
+   * The type of mask
+   */
   mask?: MaskMask;
 }
 
