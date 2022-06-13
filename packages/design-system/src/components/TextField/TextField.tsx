@@ -174,10 +174,6 @@ export class TextField extends React.PureComponent<
       this.props.className
     );
 
-    // Use errorPlacement feature flag for <TextInput>
-    // Duplicate of errorPlacement defaulting that occurs inside <FormControl>
-    const errorPlacement = this.props.errorPlacement || errorPlacementDefault();
-
     return (
       <FormControl
         {...containerProps}
