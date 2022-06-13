@@ -1,35 +1,14 @@
 /*
-Date field (multi-input)
-
-@uswds https://designsystem.digital.gov/components/memorable-date/
-
-Date field (multi-input) provides date entry, spaced over three separate inputs for month, day, and year.
-
-Markup: multiinputdatefield.example.html
-
-Style guide: components.multi-input-date-field
-*/
-
-/*
-`<MultiInputDateField>`
-
-@react-example MultiInputDateField.example.jsx
-
-@react-props MultiInputDateField.tsx
-
-Style guide: components.multi-input-date-field.react
-*/
-
-/*
 ---
 
 ### When to use
 
-- Use this date field when user flow requires inputs be separated. Generally used for memorable dates like date of birth, marriage date, or income start date.
+- This date input option isn't recommended.
+- Use only when functionality/back-end systems can't support a single date field entry.
 
 ### When to consider alternatives
 
-- Don't use this date field if users are entering a date within the last year or a future date.
+- Don't use if either of the other component options are feasible. This pattern is least effective with users.
 
 ### Usage
 
