@@ -21,15 +21,16 @@ Three text fields are the easiest way for users to enter most dates.
 
 ### When to use
 
-- Use this format for most dates, particularly memorized dates.
+- This date input option isn't recommended.
+- Use only when functionality/back-end systems can't support a single date field entry.
 
 ### When to consider alternatives
 
-- If users are trying to schedule something, a calendar picker might make more sense. Be sure to also provide an option for text entry as well.
+- Don't use if either of the other component options are feasible. This pattern is least effective with users.
 
 ### Usage
 
-- Allow users to enter the date as flexibly as possible, for example, allowing `1` as well as `01` for a month input.
+- Allow users to enter one-digit numbers with or without the "0" prior to the number. Example: "1" as well as "01" for a month or day.
 - Be sure each field is properly labeled — some countries enter dates in day, month, year order.
 - It may be tempting to switch all or some of these text fields to drop downs, but these tend to be more difficult to use than text boxes.
 - When handling date errors, if the part of the date that has an error is known, only highlight the part with an error. For example, if month and day are valid inputs, but the year is invalid, use `yearInvalid=true` so that only the year field will be highlighted red.
