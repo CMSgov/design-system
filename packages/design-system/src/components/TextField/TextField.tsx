@@ -184,6 +184,7 @@ export class TextField extends React.PureComponent<
         className={containerClassName}
         component="div"
         labelComponent="label"
+        label={this.props.label}
         render={({ id, setRef, errorId, errorMessage, errorPlacement }) => {
           const input = (
             <TextInput
