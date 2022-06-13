@@ -79,6 +79,11 @@ export type TextInputProps = Omit<React.ComponentPropsWithoutRef<'input'>, OmitP
   value?: TextInputValue;
 };
 
+// TODO: We don't want to remove these until a breaking change in case anyone
+// was referencing these types directly from this file.
+export type MultilineTextInputProps = TextInputProps;
+export type SingleLineTextInputProps = TextInputProps;
+
 /**
  * `<TextInput>` is an internal component used by `<TextField>`, which wraps it and handles shared form UI like labels, error messages, etc
  * `<TextInput>` is also exported for advanced design system use cases, where the internal component can be leveraged to build custom form components
