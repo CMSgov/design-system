@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SvgIcon passes through additional props 1`] = `
+<svg
+  aria-hidden="false"
+  aria-labelledby="test-icon__title"
+  class="ds-c-icon"
+  data-testid="iconTest"
+  focusable="false"
+  id="test-icon"
+  role="img"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <title
+    id="test-icon__title"
+  >
+    test icon
+  </title>
+  <path />
+</svg>
+`;
+
+exports[`SvgIcon when ariaHidden is true renders without title or description" 1`] = `
+<svg
+  aria-hidden="true"
+  class="ds-c-icon"
+  data-testid="testId"
+  focusable="false"
+  id="test-icon"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path />
+</svg>
+`;
+
+exports[`SvgIcon wrapper icon can pass through additional props 1`] = `
+<svg
+  aria-hidden="true"
+  class="ds-c-icon ds-c-icon--add "
+  data-testid="addIconTest"
+  focusable="false"
+  id="icon-1"
+  viewBox="3 3 18 18"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+  />
+</svg>
+`;

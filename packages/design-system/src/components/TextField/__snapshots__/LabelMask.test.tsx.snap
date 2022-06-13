@@ -4,27 +4,25 @@ exports[`Label mask renders default date mask, MM/DD/YYYY, when no input value s
 <DocumentFragment>
   <div
     class="ds-c-label-mask"
+    id="labelmask_1"
   >
-    <input
-      inputmode="numeric"
-      type="text"
-      value=""
-    />
-    <div
-      aria-hidden="true"
-      class="ds-c-label-mask__mask"
+    <span
+      class=""
     >
-      <span
-        class="ds-c-label-mask__mask--active"
-      >
-        MM/DD/YYYY
-      </span>
-      <span
-        class="ds-c-label-mask__mask--inactive"
-      >
-        MM/DD/YYYY
-      </span>
-    </div>
+      MM/DD/YYYY
+    </span>
+    <span
+      aria-hidden="true"
+      class="ds-u-display--none"
+    >
+      MM/DD/YYYY
+    </span>
   </div>
+  <input
+    aria-describedby="labelmask_1"
+    inputmode="numeric"
+    type="text"
+    value=""
+  />
 </DocumentFragment>
 `;

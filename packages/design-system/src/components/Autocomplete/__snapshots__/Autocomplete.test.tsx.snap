@@ -9,8 +9,8 @@ exports[`Autocomplete renders a snapshot 1`] = `
   >
     <label
       class="ds-c-label"
-      for="autocomplete_51"
-      id="autocomplete_label_52"
+      for="autocomplete_60"
+      id="autocomplete_label_61"
     >
       <span
         class=""
@@ -20,12 +20,12 @@ exports[`Autocomplete renders a snapshot 1`] = `
     </label>
     <input
       aria-autocomplete="list"
-      aria-controls="autocomplete_owned_listbox_53"
+      aria-controls="autocomplete_owned_listbox_62"
       aria-expanded="false"
       aria-invalid="false"
       autocomplete="off"
       class="ds-c-field"
-      id="autocomplete_51"
+      id="autocomplete_60"
       name="autocomplete_field"
       role="combobox"
       type="text"
@@ -50,7 +50,7 @@ exports[`Autocomplete renders items with children property 1`] = `
 <ul
   aria-labelledby={null}
   className="ds-c-list--bare"
-  id="autocomplete_owned_listbox_13"
+  id="autocomplete_owned_listbox_14"
   role="listbox"
 >
   <li
