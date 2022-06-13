@@ -2,7 +2,7 @@
 label: Overview
 title: Utilities
 markup: |
-  <div class="ds-u-fill--primary-alt ds-u-padding--3">
+  <div class="ds-u-fill--secondary ds-u-padding--3">
     <p class="ds-u-margin--0 ds-u-color--white ds-u-text-align--center">Hello world</p>
   </div>
 weight: -100

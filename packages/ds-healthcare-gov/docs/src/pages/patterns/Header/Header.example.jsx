@@ -46,7 +46,7 @@ class HeaderExample extends React.PureComponent {
     const { locale } = this.state;
     const wrapperClassNames = 'ds-u-padding--1';
     const HeaderBottomMessage = (
-      <div className="color-primary-alt-light ds-u-padding-y--2">
+      <div className="color-secondary-light ds-u-padding-y--2">
         <div className="ds-l-container">Add content here for Header Bottom section</div>
       </div>
     );

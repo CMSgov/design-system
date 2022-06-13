@@ -11,7 +11,7 @@ const ButtonExample: FunctionComponent = () => {
           <Button className="ds-c-button--primary">Primary</Button>
         </span>
         <span className="ds-u-margin-right--1">
-          <Button className="ds-c-button--primary-alt">Secondary</Button>
+          <Button className="ds-c-button--secondary">Secondary</Button>
         </span>
         <span className="ds-u-margin-right--1">
           <Button>Tertiary</Button>
