@@ -184,13 +184,11 @@ export class TextField extends React.PureComponent<
         className={containerClassName}
         component="div"
         labelComponent="label"
-        render={({ id, errorId, setRef }) => {
+        render={({ id, setRef, errorId, errorMessage, errorPlacement }) => {
           const input = (
             <TextInput
               {...inputOnlyProps}
-              {...{ id, setRef, errorId }}
-              errorMessage={this.props.errorMessage}
-              errorPlacement={errorPlacement}
+              {...{ id, setRef, errorId, errorMessage, errorPlacement }}
               inversed={this.props.inversed}
             />
           );
