@@ -3320,26 +3320,6 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@cmsgov/design-system@^^3.5.0-beta.1":
-  version "3.5.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@cmsgov/design-system/-/design-system-3.5.0-beta.1.tgz#5c2a08d86f9d04f26e48ed8e97c67f41b932bf62"
-  integrity sha512-iBTywuTr01/tCSE4LG0A+PRY9BpSxSippLT6cjVsXAQfnAnzR/7XdqDNaamo8PkX+Gjrd0ztYKrIvAqQ+ZIFrw==
-  dependencies:
-    "@popperjs/core" "^2.4.4"
-    "@types/react" "^17.0.10"
-    "@types/react-dom" "^17.0.10"
-    classnames "^2.2.5"
-    core-js "^3.6.5"
-    date-fns "^2.28.0"
-    downshift "^3.2.10"
-    ev-emitter "^2.1.2"
-    focus-trap-react "^6.0.0"
-    lodash "^4.17.21"
-    prop-types "^15.7.2"
-    react-aria-modal "^2.11.1"
-    react-day-picker "^8.0.5"
-    react-transition-group "^4.4.2"
-
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.4.tgz#f864ae85004d0fcab6f50be9141c4da368d1656a"
