@@ -4,6 +4,7 @@ import {
   ArrowsStackedIcon,
   ArrowIcon,
   BuildingCircleIcon,
+  CalendarIcon,
   CheckCircleIcon,
   CheckIcon,
   CloseIcon,
@@ -61,6 +62,11 @@ const iconData = [
     defaultTitle: 'Building in circle',
     component: <BuildingCircleIcon />,
     name: 'BuildingCircleIcon',
+  },
+  {
+    defaultTitle: 'Calendar',
+    component: <CalendarIcon />,
+    name: 'CalendarIcon',
   },
   {
     defaultTitle: 'Check mark in circle',

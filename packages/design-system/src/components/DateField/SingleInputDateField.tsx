@@ -1,11 +1,11 @@
 import React, { useRef, useState } from 'react';
 import CalendarIcon from '../Icons/CalendarIcon';
+import CustomDayPicker from './CustomDayPicker';
 import classNames from 'classnames';
 import isMatch from 'date-fns/isMatch';
 import useLabelMask from '../TextField/useLabelMask';
 import useClickOutsideHandler from '../utilities/useClickOutsideHandler';
 import usePressEscapeHandler from '../utilities/usePressEscapeHandler';
-import { DayPicker } from 'react-day-picker';
 import { DATE_MASK } from '../TextField/useLabelMask';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 import { TextInput } from '../TextField';
@@ -91,7 +91,9 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
     toYear,
     ...remainingProps
   } = props;
-  const withPicker = !!(fromDate || fromMonth || Number.isInteger(fromYear));
+  const withPicker =
+    (fromDate != null || fromMonth != null || Number.isInteger(fromYear)) &&
+    (toDate != null || toMonth != null || Number.isInteger(toYear));
   const [pickerVisible, setPickerVisible] = useState(false);
 
   // Set up change handlers
@@ -163,8 +165,7 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
       </div>
       {pickerVisible && (
         <div ref={dayPickerRef} role="dialog">
-          <DayPicker
-            mode="single"
+          <CustomDayPicker
             selected={date}
             onSelect={handlePickerChange}
             defaultMonth={date ?? defaultMonth}
