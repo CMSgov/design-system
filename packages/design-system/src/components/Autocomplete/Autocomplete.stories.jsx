@@ -4,7 +4,7 @@ import TextField from '../TextField/TextField';
 import { Title, Subtitle, Description, ArgsTable, PRIMARY_STORY } from '@storybook/addon-docs';
 
 export default {
-  title: 'Components/AutoComplete',
+  title: 'Components/Autocomplete',
   component: Autocomplete,
   argTypes: {
     clearInputText: {
@@ -41,6 +41,41 @@ export default {
   },
 };
 
+const listOpts = [
+  {
+    id: 'kRf6c2fY',
+    name: 'Cook County, IL',
+  },
+  {
+    id: 'lYf5cGfM',
+    name: 'Cook County, MD',
+  },
+  {
+    id: 'mZfKcGf9',
+    name: 'Cook County, TN',
+  },
+  {
+    id: 'xFz6dLba',
+    name: 'Cook County, AK',
+  },
+  {
+    id: 'vTr5c99',
+    name: 'Cook County, FL',
+  },
+  {
+    id: 'ntY8Lha',
+    name: 'Cook County, AL',
+  },
+  {
+    id: 'uRe0Wqo',
+    name: 'Cook County, WA',
+  },
+  {
+    id: 'yUR7MWl',
+    name: 'Cook County, OR',
+  },
+];
+
 const Template = (args) => {
   return (
     <Autocomplete
@@ -54,6 +89,15 @@ const Template = (args) => {
   );
 };
 
+export const Default = Template.bind({});
+Default.args = {
+  textField: {
+    hint: 'Type c then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
+    label: 'Labeled list',
+  },
+  items: listOpts,
+};
+
 export const LabeledList = Template.bind({});
 LabeledList.args = {
   textField: {
@@ -61,40 +105,7 @@ LabeledList.args = {
     label: 'Labeled list',
   },
   label: 'Select from the options below:',
-  items: [
-    {
-      id: 'kRf6c2fY',
-      name: 'Cook County, IL',
-    },
-    {
-      id: 'lYf5cGfM',
-      name: 'Cook County, MD',
-    },
-    {
-      id: 'mZfKcGf9',
-      name: 'Cook County, TN',
-    },
-    {
-      id: 'xFz6dLba',
-      name: 'Cook County, AK',
-    },
-    {
-      id: 'vTr5c99',
-      name: 'Cook County, FL',
-    },
-    {
-      id: 'ntY8Lha',
-      name: 'Cook County, AL',
-    },
-    {
-      id: 'uRe0Wqo',
-      name: 'Cook County, WA',
-    },
-    {
-      id: 'yUR7MWl',
-      name: 'Cook County, OR',
-    },
-  ],
+  items: listOpts,
 };
 
 export const CustomMarkup = Template.bind({});

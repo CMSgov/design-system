@@ -1,4 +1,4 @@
-import { FormControl, FormControlPropKeys } from '../FormControl/FormControl';
+import { FormControl, FormControlPropKeys, FormControlProps } from '../FormControl/FormControl';
 import React from 'react';
 import Select from './Select';
 import { errorPlacementDefault } from '../flags';
@@ -138,8 +138,8 @@ export class Dropdown extends React.PureComponent<
   }
 
   render() {
-    const containerProps = pick(this.props, FormControlPropKeys);
-    const inputOnlyProps = omit(this.props, FormControlPropKeys);
+    const containerProps: any = pick(this.props, FormControlPropKeys);
+    const inputOnlyProps: any = omit(this.props, FormControlPropKeys);
 
     return (
       <FormControl

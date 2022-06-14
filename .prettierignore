@@ -4,3 +4,6 @@ tmp/**
 **/types/**
 storybook-static/**
 packages/coverage/**
+packages/docs/static/storybook
+packages/docs/.cache
+packages/docs/public
