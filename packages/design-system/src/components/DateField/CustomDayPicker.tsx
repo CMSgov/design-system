@@ -30,7 +30,11 @@ export function CustomDayPicker(props: CustomDayPickerProps) {
   return (
     <DayPicker
       mode="single"
-      footer={t('singleInputDateField.arrowKeyInstructions')}
+      footer={
+        <span className="ds-u-visibility--screen-reader">
+          {t('singleInputDateField.arrowKeyInstructions')}
+        </span>
+      }
       captionLayout="dropdown"
       components={{ Caption: CustomDayPickerCaption, IconDropdown: ArrowsStackedIcon }}
       formatters={{ formatMonthCaption }}
