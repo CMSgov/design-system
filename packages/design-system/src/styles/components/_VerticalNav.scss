@@ -83,11 +83,13 @@
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
     -ms-high-contrast-adjust: none;
+    forced-color-adjust: none;
     background-color: LinkText;
 
     &:hover,
     &:focus {
       -ms-high-contrast-adjust: none;
+      forced-color-adjust: none;
       background-color: window;
       color: LinkText;
       outline: $spacer-half solid LinkText;
