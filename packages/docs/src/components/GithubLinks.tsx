@@ -16,7 +16,7 @@ const GithubLinks = ({ onDark }: GithubLinks) => {
   return (
     <>
       <Button
-        href={`https://github.com/CMSgov/design-system/releases/latest/download/cmsgov-design-system-${process.env.GATSBY_CORE_PKG_VERSION}.tgz`}
+        href={`https://github.com/CMSgov/design-system/archive/refs/tags/@cmsgov/design-system@${process.env.GATSBY_CORE_PKG_VERSION}.tar.gz`}
         className="ds-c-button ds-c-button--primary ds-c-button--inverse ds-u-font-weight--normal"
       >
         {' '}
