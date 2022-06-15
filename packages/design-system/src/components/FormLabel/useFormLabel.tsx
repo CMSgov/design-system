@@ -116,11 +116,12 @@ export function useFormLabel<T extends UseFormLabelProps>(props: T) {
     inversed,
   };
 
-  // This is a lazy definition. Could possibly use generics on the hook to make it better.
   const fieldProps = {
     ...remainingProps,
     id,
     errorId,
+    errorMessage,
+    errorPlacement,
     inversed,
   };
 

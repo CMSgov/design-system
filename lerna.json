@@ -1,7 +1,7 @@
 {
   "npmClient": "yarn",
   "packages": ["packages/*"],
-  "ignoreChanges": ["packages/design-system-tokens/**"],
+  "ignoreChanges": ["packages/design-system-tokens/**", "packages/docs/**"],
   "tagVersionPrefix": "core-",
   "version": "independent",
   "useWorkspaces": true

@@ -78,9 +78,9 @@ export interface SelectProps {
 type OmitProps = 'size' | 'value';
 
 /**
- * <Select> is an internal component used by <Dropdown>, which wraps it and handles common form controls like labels, error messages, etc
- * <Select> is also exported for advanced design system use cases, where the internal component can be leveraged to build custom form components
- * As an internal component, it's subject to more breaking changes. Exercise caution using <Select> outside of those special cases
+ * `<Select>` is an internal component used by `<Dropdown>`, which wraps it and handles common form controls like labels, error messages, etc
+ * `<Select/>` is also exported for advanced design system use cases, where the internal component can be leveraged to build custom form components
+ * As an internal component, it's subject to more breaking changes. Exercise caution using `<Select>` outside of those special cases
  */
 export class Select extends React.PureComponent<
   Omit<React.ComponentPropsWithoutRef<'select'>, OmitProps> & SelectProps,
