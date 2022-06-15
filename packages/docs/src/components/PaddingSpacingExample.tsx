@@ -8,7 +8,7 @@ const PaddingSpacingExample = ({ propName }) => {
     return (
       <div
         key={spacerVal}
-        className={`ds-u-fill--primary-alt ${cssClass} ds-u-margin-bottom--2`}
+        className={`ds-u-fill--secondary ${cssClass} ds-u-margin-bottom--2`}
         style={{ maxWidth: 'fit-content' }}
       >
         <code>.{cssClass}</code>
