@@ -95,6 +95,15 @@ To provide more contrast when being rendered over other content, the `.ds-c-spin
   - `aria-live` should be set to `polite` for a screen reader to speak the changes whenever the user is idle. `aria-live="assertive"` should only be used in situations that require a user&rsquo;s immediate attention.
   - By default, a screen reader will only speak the contents of a changed node, and not the entire contents of the element. Set `aria-atomic="true"` for cases, such as an address, where a screen reader should read the contents of the entire element.
 
+## Customization
+
+The following Sass variables can be overridden to customize Spinner components:
+
+<ComponentThemeOptions
+  theme="core"
+  componentname="spinner"
+/>
+
 ### Learn more
 
 - [Response Times](https://www.nngroup.com/articles/response-times-3-important-limits/)

@@ -88,7 +88,9 @@ const ComponentThemeOptions = ({ theme, componentname }: ComponentThemeOptionsPr
     </table>
   );
 
-  return <section className="c-configuration-options">{componentOptions}</section>;
+  return (
+    <section className="c-configuration-options ds-u-padding-bottom--3">{componentOptions}</section>
+  );
 };
 
 export default ComponentThemeOptions;
