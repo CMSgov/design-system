@@ -202,7 +202,7 @@ const color = to<ColorTokens>()({
   'copper-200':      '#e4ba99',
   'copper-300':      '#d99e70',
   'copper-400':      '#ce8347',
-  'copper-500':      '#C97532',
+  'copper-500':      '#c97532',
   'copper-600':      '#b5692d',
   'copper-700':      '#8d5223',
   'copper-800':      '#653b19',
