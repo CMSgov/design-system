@@ -1,92 +1,54 @@
+export const to = <T extends object>() => {
+  return <U extends T>(val: U) => val;
+};
+
 export type HexValue = `#${string}`;
+export type MeasureValues =
+  | `${number}em`
+  | `${number}ex`
+  | `${number}ch`
+  | `${number}rem`
+  | `${number}vw`
+  | `${number}vh`
+  | `${number}vmin`
+  | `${number}vmax`
+  | `${number}px`
+  | `${number}%`;
 export type RGBValue = `rgb(${number},${number},${number})`;
 export type RGBAValue = `rgba(${number},${number},${number},${number})`;
-export type PxValue = `${number}px`;
-export type ExValue = `${string}ex`;
-export type PercentageValue = `${string}%`;
 
-export type AllTokenValues = SpacingTokens | ColorTokens | PxValue;
-
-export type AnimationTokens = {
-  readonly [key: string]: string | number;
+export type Token<T> = {
+  [key: string]: T | Token<T>;
 };
 
-export type BorderRadiusTokens = {
-  readonly [key: `radius-${string}`]: PercentageValue | PxValue;
-};
+export type AnimationTokens = Token<string | number>;
+export type BorderRadiusTokens = Token<MeasureValues>;
+export type ColorTokens = Token<HexValue | RGBValue | RGBAValue | 'transparent' | 'inherit'>;
+export type FontTokens = Token<string | number>;
+export type MeasureTokens = Token<MeasureValues>;
+export type MediaWidthTokens = Token<MeasureValues>;
+export type ShadowTokens = Token<string>;
+export type SpacerTokens = Token<MeasureValues>;
+export type TimeTokens = Token<number>;
+export type zIndexTokens = Token<number>;
 
-export type MediaWidthTokens = {
-  readonly [key: `width-${string}`]: PxValue;
-};
-
-export type ColorTokens = {
-  readonly [key: string | symbol]: HexValue | RGBValue | RGBAValue;
-};
-
-export type SpacingTokens = {
-  readonly [key: `spacer-${string}`]: PxValue;
-};
-
-export type ShadowTokens = {
-  readonly [key: `shadow-${string}`]: string;
-};
-
-export type TimeTokens = {
-  readonly [key: `duration-${string}`]: number;
-};
-
-export interface FontTokens {
-  readonly [key: string]: string | number;
-}
-
-export interface Theme {
-  readonly name: string;
-  readonly tokens: ThemeTokens;
-}
+export type AnyTokenValues = Token<any>;
 
 export interface ThemeTokens {
-  readonly description: string;
-  readonly color: ColorTokens;
-  readonly spacer: SpacingTokens;
-  readonly components: AllTokenValues;
-  readonly shadow: ShadowTokens;
+  animation: AnimationTokens;
+  color: ColorTokens;
+  font: FontTokens;
+  global?: AnyTokenValues;
+  measure: MeasureTokens;
+  media: MediaWidthTokens;
+  radius: BorderRadiusTokens;
+  shadow: ShadowTokens;
+  spacer: SpacerTokens;
+  z: zIndexTokens;
 }
-
-export const makeAnimationTypes = <T extends AnimationTokens>(value: T) => {
-  return value;
-};
-export const makeColorTypes = <T extends ColorTokens>(value: T) => {
-  return value;
-};
-export const makeFontTypes = <T extends FontTokens>(value: T) => {
-  return value;
-};
-export const makeMediaTypes = <T extends MediaWidthTokens>(value: T) => {
-  return value;
-};
-export const makeRadiusTypes = <T extends BorderRadiusTokens>(value: T) => {
-  return value;
-};
-export const makeSpacingTypes = <T extends SpacingTokens>(value: T) => {
-  return value;
-};
-export const makeTimeTypes = <T extends TimeTokens>(value: T) => {
-  return value;
-};
-export const makeThemeTypes = <T extends ThemeTokens>(value: T) => {
-  return value;
-};
-export const makeZindexTypes = <T extends zIndexTokens>(value: T) => {
-  return value;
-};
 
 export interface FileDescriptor {
   moduleImportName: string;
   parentDirectoryName: string;
-  fileBaseName: string;
-  exportFileName: string;
+  baseName: string;
 }
-
-export type zIndexTokens = {
-  readonly [key: `z-${string}`]: number;
-};

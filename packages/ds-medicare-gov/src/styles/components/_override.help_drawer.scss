@@ -1,25 +1,22 @@
-.mct-c-help-drawer {
-  $mct-drawer-header-background-color: $color-white;
-  $mct-drawer-heading-font-family: $montserrat-font;
-  $mct-drawer-heading-font-size: $h1-mobile-font-size;
-  $mct-drawer-heading-font-weight: $font-bold;
-  $mct-drawer-close-button-color: $color-black;
-  $mct-drawer-close-button-size: 26px;
+// @TODO: remove these once determined they are not being used elsewhere
+$mct-drawer-close-button-size: 26px;
+$mct-drawer-heading-font-size: $h1-mobile-font-size;
 
+.mct-c-help-drawer {
   .ds-c-drawer__header {
-    background-color: $mct-drawer-header-background-color;
+    background-color: $drawer-header__background-color;
   }
 
   .ds-c-drawer__header-heading {
-    font-weight: $mct-drawer-heading-font-weight;
+    font-weight: $font-weight-bold;
     text-align: left;
     font-size: $mct-drawer-heading-font-size;
-    font-family: $mct-drawer-heading-font-family;
+    font-family: $font-family-montserrat;
   }
 
   .ds-c-drawer__close-button {
     border: 0;
-    color: $mct-drawer-close-button-color;
+    color: $drawer-close__color;
 
     svg {
       width: $mct-drawer-close-button-size;
@@ -46,7 +43,7 @@
   &:hover {
     .icon-wrapper {
       &:before {
-        background-color: $color-primary-alt;
+        background-color: $drawer-toggle__background-color--hover;
         border-radius: 50%;
         clip-path: circle(8px);
         content: '';
@@ -59,7 +56,7 @@
       }
     }
     .ds-c-icon--info-circle-outline {
-      color: $color-white;
+      color: $drawer-toggle__color--hover;
     }
   }
 }
@@ -69,11 +66,11 @@
     &:hover {
       .icon-wrapper {
         &:before {
-          background-color: rgba($color-white, 0.8);
+          background-color: rgba($drawer-toggle__background-color--hover--inverse, 0.8);
         }
       }
       .ds-c-icon--info-circle-outline {
-        color: $color-gray-darker;
+        color: $drawer-toggle__color--hover--inverse;
       }
     }
   }

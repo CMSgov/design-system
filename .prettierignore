@@ -4,6 +4,5 @@ tmp/**
 **/types/**
 storybook-static/**
 packages/coverage/**
-packages/docs/static/storybook
-packages/docs/.cache
-packages/docs/public
+packages/design-system-tokens/src/themes/**
+packages/design-system-tokens/src/tokens/**
