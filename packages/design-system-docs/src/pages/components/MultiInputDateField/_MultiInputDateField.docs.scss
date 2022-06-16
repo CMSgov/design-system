@@ -1,0 +1,55 @@
+/*
+Date field (multi-input)
+
+@uswds https://designsystem.digital.gov/components/memorable-date/
+
+Date field (multi-input) provides date entry, spaced over three separate inputs for month, day, and year.
+
+Markup: multiinputdatefield.example.html
+
+Style guide: components.multi-input-date-field
+*/
+
+/*
+`<MultiInputDateField>`
+
+@react-example MultiInputDateField.example.jsx
+
+@react-props MultiInputDateField.tsx
+
+Style guide: components.multi-input-date-field.react
+*/
+
+/*
+---
+
+### When to use
+
+Use this date field when:
+- User flow requires inputs be separated
+- Functionality/back-end systems can't support a single date field entry
+
+Generally used for more memorable dates like date of birth, marriage date, or income start date.
+
+### When to consider alternatives
+
+- Don't use this date field if either [single-input]({{root}}/components/single-input-date-field/) or [date picker]({{root}}/components/date-picker/) are feasible. This pattern is least effective with users.
+
+### Usage
+
+- Allow users to enter one-digit numbers with or without the "0" prior to the number. Example: "1" as well as "01" for a month or day.
+
+### Accessibility
+
+- These text fields should follow the [accessibility guidelines for all text inputs]({{root}}/components/text-field/#guidance).
+- Do not use JavaScript to auto advance the focus from one field to the next. This makes it difficult for keyboard-only users to navigate and correct mistakes.
+
+### Related patterns
+
+- [Date field (single-input)]({{root}}/components/single-input-date-field/)
+- [Date field (with calendar)]({{root}}/components/date-picker/)
+- [Text field]({{root}}/components/text-field/)
+- [Grid]({{root}}/utilities/grid/)
+
+Style guide: components.multi-input-date-field.guidance
+*/

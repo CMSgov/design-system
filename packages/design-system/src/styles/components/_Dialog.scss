@@ -1,15 +1,13 @@
 @import '../settings/index.scss';
 
-$dialog-spacer: $spacer-4;
-
 .ds-c-dialog {
-  background-color: $color-background-dialog;
+  background-color: $dialog__background-color;
   box-shadow: $shadow-base;
   box-sizing: border-box;
   display: inline-block;
-  font-size: $base-font-size;
+  font-size: $font-size-base;
   max-width: $measure-base;
-  padding: $dialog-spacer;
+  padding: $dialog__padding;
   text-align: left;
   vertical-align: middle;
   width: 95%; // provide space for the background layer to peek through
@@ -69,7 +67,7 @@ $dialog-spacer: $spacer-4;
 }
 
 .ds-c-dialog-wrap {
-  background-color: $color-background-dialog-mask;
+  background-color: $dialog-overlay__background-color;
   bottom: 0;
   left: 0;
   overflow-x: hidden;

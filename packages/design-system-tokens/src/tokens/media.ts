@@ -1,9 +1,9 @@
 /*
  * CMSDS Media Width Tokens
  */
-import { makeMediaTypes } from '../lib/types';
+import { to, MediaWidthTokens } from '../lib/types';
 
-const media = makeMediaTypes({
+const media = to<MediaWidthTokens>()({
   'width-xs': '0px',
   'width-sm': '544px',
   'width-md': '768px',

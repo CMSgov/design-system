@@ -1,0 +1,54 @@
+---
+title: Internationalization
+---
+
+import { Alert } from '@cmsgov/design-system';
+
+## Providing your own internationalized content
+
+The design system attempts to make all of its components' text content assignable through their React props. That means you can use your own internationalization solutions to provide the content in your applications. Here is an example:
+
+```js
+// Example of an application providing its own internationalized content
+
+import { Alert } from '@cmsgov/design-system';
+import i18n from 'i18n';
+
+export default function () {
+  return <Alert heading={i18n('success')}>{i18n('account.created')}</Alert>;
+}
+```
+
+## Default internationalized content in the design system
+
+<!-- TODO: Once it is true that all default content is internationalized, we can use this opening paragraph instead
+While we want components to be flexible, we also want them to be easy to use, so for some components we do **provide default content**. When we do this, the content comes in English and Spanish.
+-->
+
+<!-- TODO: Replace this paragraph with the above paragraph -->
+
+While we want components to be flexible, we also want them to be easy to use, so for some components we do **provide default content**. Some of this content comes in both English and Spanish, but our goal is to have Spanish translations for all default content in the near future.
+
+For applications that have a `lang` attribute on their html element, **the language will be detected automatically**. If that language is not English or Spanish, the language of the design system will fall back to English. If automatic language detection does not work for your use case, the language can be set manually through the `setLanguage` function. Similarly, the current language can also be read from the `getLanguage` function. Here's an example:
+
+```js
+import { getLanguage, setLanguage } from '@cmsgov/design-system';
+
+// Set the design system language to something other than the document's detected language
+setLanguage('es');
+
+// Get the design system's current language
+console.log(getLanguage());
+```
+
+<Alert
+  heading="Deprecated per-component langauge props"
+  variation="warn"
+  className="ds-u-margin-top--3"
+>
+  <p class="ds-c-alert__text">
+    You may notice that some components accept an older `language` or `locale` prop to set the
+    language of the content on a per-component basis, but these per-component props have been
+    deprecated and will be removed in a future breaking-change release.
+  </p>
+</Alert>

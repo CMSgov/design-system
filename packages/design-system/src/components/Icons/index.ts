@@ -4,6 +4,7 @@ export { default as AlertCircleIcon } from './AlertCircleIcon';
 export { default as ArrowsStackedIcon } from './ArrowsStacked';
 export { default as ArrowIcon } from './ArrowIcon';
 export { default as BuildingCircleIcon } from './BuildingCircleIcon';
+export { default as CalendarIcon } from './CalendarIcon';
 export { default as CheckCircleIcon } from './CheckCircleIcon';
 export { default as CheckIcon } from './CheckIcon';
 export { default as CloseIcon } from './CloseIcon';

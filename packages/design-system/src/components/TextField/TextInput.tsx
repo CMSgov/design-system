@@ -10,10 +10,7 @@ export type TextInputErrorPlacement = 'top' | 'bottom';
 
 export type OmitProps = 'size' | 'ref';
 
-export type CommonTextInputProps<MultilineValue extends boolean | undefined> = Omit<
-  React.ComponentPropsWithoutRef<MultilineValue extends true ? 'textarea' : 'input'>,
-  OmitProps
-> & {
+export type TextInputProps = Omit<React.ComponentPropsWithoutRef<'input'>, OmitProps> & {
   /**
    * Apply an `aria-label` to the text field to provide additional
    * context to assistive devices.
@@ -49,18 +46,14 @@ export type CommonTextInputProps<MultilineValue extends boolean | undefined> = O
   /**
    * Whether or not the text field is a multiline text field
    */
-  multiline?: MultilineValue;
+  multiline?: boolean;
   name?: string;
   /**
    * Sets `inputMode`, `type`, and `pattern` to improve accessibility and consistency for number fields. Use this prop instead of `type="number"`, see [here](https://technology.blog.gov.uk/2020/02/24/why-the-gov-uk-design-system-team-changed-the-input-type-for-numbers/) for more information.
    */
   numeric?: boolean;
-  onBlur?: (
-    e: React.FocusEvent<MultilineValue extends true ? HTMLTextAreaElement : HTMLInputElement>
-  ) => any;
-  onChange?: (
-    event: React.ChangeEvent<MultilineValue extends true ? HTMLTextAreaElement : HTMLInputElement>
-  ) => any;
+  onBlur?: (...args: any[]) => any;
+  onChange?: (...args: any[]) => any;
   /**
    * @hide-prop HTML `input` [pattern](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefpattern).
    */
@@ -86,15 +79,15 @@ export type CommonTextInputProps<MultilineValue extends boolean | undefined> = O
   value?: TextInputValue;
 };
 
-export type MultilineTextInputProps = CommonTextInputProps<true>;
-export type SingleLineTextInputProps = CommonTextInputProps<false | undefined>;
-
-export type TextInputProps = MultilineTextInputProps | SingleLineTextInputProps;
+// TODO: We don't want to remove these until a breaking change in case anyone
+// was referencing these types directly from this file.
+export type MultilineTextInputProps = TextInputProps;
+export type SingleLineTextInputProps = TextInputProps;
 
 /**
- * <TextInput> is an internal component used by <TextField>, which wraps it and handles shared form UI like labels, error messages, etc
- * <TextInput> is also exported for advanced design system use cases, where the internal component can be leveraged to build custom form components
- * As an internal component, it's subject to more breaking changes. Exercise caution using <TextInput> outside of those special cases
+ * `<TextInput>` is an internal component used by `<TextField>`, which wraps it and handles shared form UI like labels, error messages, etc
+ * `<TextInput>` is also exported for advanced design system use cases, where the internal component can be leveraged to build custom form components
+ * As an internal component, it's subject to more breaking changes. Exercise caution using `<TextInput>` outside of those special cases
  */
 const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => {
   const {
@@ -134,21 +127,9 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
 
   const ComponentType = multiline ? 'textarea' : 'input';
 
-  const ariaAttributes = {
-    'aria-label': ariaLabel,
-    // Use set `aria-invalid` based off errorMessage unless manually specified
-    'aria-invalid': props['aria-invalid'] ? props['aria-invalid'] : !!errorMessage,
-    // Link input to bottom placed error message
-    'aria-describedby':
-      errorPlacement === 'bottom' && errorMessage
-        ? classNames(props['aria-describedby'], errorId) // Use of the classNames function for this is confusing
-        : undefined,
-  };
-
   const numberRows: number = typeof rows === 'string' ? parseInt(rows) : rows;
   return (
     <ComponentType
-      {...ariaAttributes}
       className={classes}
       ref={setRef}
       rows={multiline && numberRows ? numberRows : undefined}
@@ -158,7 +139,18 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
       // @ts-ignore: The ClipboardEventHandler for textareas and inputs are incompatible, and TS
       // is failing to infer which one is being used here based on ComponentType.
       onCopyCapture={onCopyCapture}
+      // This can be purposefully overwritten by an 'aria-invalid' defined in inputProps
+      aria-invalid={!!errorMessage}
       {...inputProps}
+      aria-label={ariaLabel || props['aria-label']}
+      // Link input to bottom placed error message
+      // Use of the classNames function for this is confusing
+      aria-describedby={
+        classNames(
+          props['aria-describedby'],
+          errorPlacement === 'bottom' && errorMessage && errorId
+        ) || undefined
+      }
     />
   );
 };
