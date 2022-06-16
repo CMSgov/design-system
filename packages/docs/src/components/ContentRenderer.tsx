@@ -7,6 +7,7 @@ import { toKebabCase } from '../helpers/casingUtils';
 
 import EmbeddedExample from './EmbeddedExample';
 import StorybookExample from './StorybookExample';
+import ComponentThemeOptions from './ComponentThemeOptions';
 import PropTable from './PropTable';
 
 interface MdxProviderProps {
@@ -84,6 +85,7 @@ const customComponents = {
   ol: (props) => TextWithMaxWidth(props, 'ol'),
   EmbeddedExample,
   StorybookExample,
+  ComponentThemeOptions,
   PropTable,
 };
 
