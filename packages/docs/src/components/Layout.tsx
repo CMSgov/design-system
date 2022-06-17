@@ -57,7 +57,17 @@ const Layout = ({
   return (
     <div className="ds-base">
       <Helmet title="CMS Design System">
-        <script>{`window.tealiumEnvironment = "${env}";`}</script>
+        <script>{`
+          window.tealiumEnvironment = "${env}";
+          window.APP_CONFIG = {
+            nrApplicationID: "1134210514",
+            nrLicenseKey: "5a79be86db",
+            nrAgentID: "1134210514",
+            nrAccountID: "402306",
+            nrTrustKey:  "39033",
+            nrDistributedTracing: false
+          };
+        `}</script>
         <script src="//tags.tiqcdn.com/utag/cmsgov/cms-design/prod/utag.sync.js"></script>
       </Helmet>
 
