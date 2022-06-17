@@ -124,3 +124,13 @@ function propagateSubstepState(step) {
 const steps = rawSteps.map(propagateSubstepState);
 return <StepList steps={steps} />;
 ```
+
+## Customization
+
+The following Sass variables can be overridden to customize StepList patterns:
+
+<ComponentThemeOptions
+  theme="core"
+  componentname="steplist"
+/>
+
