@@ -18,8 +18,10 @@ import {
   LockIcon,
   MenuIcon,
   MenuIconThin,
+  MinusCircleIcon,
   NextIcon,
   PdfIcon,
+  PlusCircleIcon,
   RemoveIcon,
   StarIcon,
   UsaFlagIcon,
@@ -134,6 +136,18 @@ const iconData = [
     name: 'MenuIconThin',
   },
   {
+    defaultTitle: 'Minus in circle',
+    component: (
+      <>
+        <MinusCircleIcon />
+        <MinusCircleIcon isFilled />
+      </>
+    ),
+    name: 'MinusCircleIcon',
+    notes:
+      'Component takes <code>isFilled</code> prop to determine minus in circle is filled or an outline.',
+  },
+  {
     defaultTitle: 'Next',
     component: <NextIcon />,
     name: 'NextIcon',
@@ -142,6 +156,18 @@ const iconData = [
     defaultTitle: 'Pdf',
     component: <PdfIcon />,
     name: 'PdfIcon',
+  },
+  {
+    defaultTitle: 'Plus in circle / Plus in circle Filled',
+    component: (
+      <>
+        <PlusCircleIcon />
+        <PlusCircleIcon isFilled />
+      </>
+    ),
+    name: 'PlusCircleIcon',
+    notes:
+      'Component takes <code>isFilled</code> prop to determine plus in circle is filled or an outline.',
   },
   {
     defaultTitle: 'Remove',
