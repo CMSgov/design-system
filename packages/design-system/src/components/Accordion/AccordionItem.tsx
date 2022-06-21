@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
-import { AddIcon, RemoveIcon } from '../Icons';
+import { AddIcon, MinusCircleIcon, PlusCircleIcon, RemoveIcon } from '../Icons';
 import { t } from '../i18n';
 
 export interface AccordionItemProps {
@@ -36,6 +36,10 @@ export interface AccordionItemProps {
    * for a controlled accordion; otherwise, set `defaultOpen`.
    */
   isControlledOpen?: boolean;
+  /**
+   * @hide-prop This gets passed from the parent `Accordion` component when the `isAlternateStyles` prop is set to true.
+   */
+  _isAlternateStyles?: boolean;
   /**
    * A callback function that's invoked when a controlled accordion panel is selected or deselected.
    */
@@ -80,11 +84,31 @@ export class AccordionItem extends React.Component<AccordionItemProps, Accordion
       heading,
       headingLevel = '2',
       isControlledOpen,
+      _isAlternateStyles,
     } = this.props;
+
     const contentClasses = classNames('ds-c-accordion__content', contentClassName);
     const buttonClasses = classNames('ds-c-accordion__button', buttonClassName);
     const HeadingTag = `h${headingLevel}` as const;
     const isItemOpen = this.isControlled ? isControlledOpen : this.state.isOpen;
+    const IconOpenChild = _isAlternateStyles ? PlusCircleIcon : AddIcon;
+    const IconHideChild = _isAlternateStyles ? MinusCircleIcon : RemoveIcon;
+
+    const renderIcon = (): React.ReactElement => {
+      return isItemOpen ? (
+        <IconHideChild
+          className="ds-c-accordion__button-icon"
+          title={t('accordion.close')}
+          ariaHidden={false}
+        />
+      ) : (
+        <IconOpenChild
+          className="ds-c-accordion__button-icon"
+          title={t('accordion.open')}
+          ariaHidden={false}
+        />
+      );
+    };
 
     if (heading) {
       return (
@@ -97,21 +121,9 @@ export class AccordionItem extends React.Component<AccordionItemProps, Accordion
               id={this.buttonId}
               onClick={this.handleClick}
             >
+              {_isAlternateStyles && renderIcon()}
               {heading}
-
-              {isItemOpen ? (
-                <RemoveIcon
-                  className="ds-c-accordion__button-icon"
-                  title={t('accordion.close')}
-                  ariaHidden={false}
-                />
-              ) : (
-                <AddIcon
-                  className="ds-c-accordion__button-icon"
-                  title={t('accordion.open')}
-                  ariaHidden={false}
-                />
-              )}
+              {!_isAlternateStyles && renderIcon()}
             </button>
           </HeadingTag>
           <div

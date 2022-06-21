@@ -11,6 +11,10 @@ export interface AccordionProps {
    * Class to be applied to the outer `<div>` that contains all accordion items.
    */
   className?: string;
+  /**
+   * Use alternate Accordion icon and styles in place of the standard styles
+   */
+  isAlternateStyles?: boolean;
 }
 const handleKeyDown = (e) => {
   const target = e.target;
@@ -34,11 +38,29 @@ export const Accordion: FunctionComponent<AccordionProps> = ({
   bordered,
   children,
   className,
+  isAlternateStyles,
 }: AccordionProps) => {
-  const classes = classNames('ds-c-accordion', bordered && 'ds-c-accordion--bordered', className);
+  const classes = classNames(
+    'ds-c-accordion',
+    {
+      'ds-c-accordion--bordered': bordered && !isAlternateStyles,
+      'ds-c-accordion--alt-styles': isAlternateStyles,
+    },
+    className
+  );
+
+  const renderExtendChildren = (): React.ReactNode[] => {
+    return React.Children.map(children, (child: React.ReactElement) => {
+      // Extend props on children before rendering.
+      return React.cloneElement(child, {
+        _isAlternateStyles: isAlternateStyles,
+      });
+    });
+  };
+
   return (
     <div onKeyDown={handleKeyDown} className={classes}>
-      {children}
+      {isAlternateStyles ? renderExtendChildren() : children}
     </div>
   );
 };
