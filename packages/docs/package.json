@@ -1,9 +1,8 @@
 {
-  "name": "cms-design-system-docs",
-  "version": "1.0.0",
+  "name": "@cmsgov/cms-design-system-docs",
+  "version": "3.5.0",
   "private": true,
-  "description": "cms-design-system-docs",
-  "author": "Anna Kammeyer",
+  "description": "CMS Design System Documentation",
   "keywords": [
     "gatsby"
   ],
