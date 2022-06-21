@@ -106,7 +106,6 @@ $accordion-header-font-family: $font-sans;
 }
 
 .ds-c-accordion--alt-styles {
-  background-color: transparent;
   column-gap: $spacer-1;
 
   .ds-c-accordion__button {
@@ -115,6 +114,7 @@ $accordion-header-font-family: $font-sans;
     column-gap: $spacer-1;
     justify-content: flex-start;
     font-weight: $font-weight-normal;
+    padding: $spacer-1 $spacer-3 $spacer-1 $spacer-3;
 
     &:hover,
     &:focus {
@@ -128,6 +128,31 @@ $accordion-header-font-family: $font-sans;
       #MinusCircleIcon-Group,
       #PlusCircleIcon-Group {
         fill: $color-white;
+      }
+    }
+
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      -ms-high-contrast-adjust: none;
+      forced-color-adjust: none;
+      background-color: LinkText;
+      color: window;
+
+      &:hover,
+      &:focus {
+        -ms-high-contrast-adjust: none;
+        forced-color-adjust: none;
+        background-color: window;
+        color: LinkText;
+        outline-offset: -$spacer-half;
+        outline: $spacer-half solid LinkText;
+      }
+    }
+
+    .ds-c-icon {
+      @media (-ms-high-contrast: active), (forced-colors: active) {
+        path {
+          fill: Window;
+        }
       }
     }
   }
