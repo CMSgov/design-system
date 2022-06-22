@@ -1,4 +1,5 @@
 const path = require('path');
+const express = require('express');
 
 exports.onCreateWebpackConfig = ({ stage, actions }) => {
   actions.setWebpackConfig({
@@ -12,6 +13,10 @@ exports.onCreateWebpackConfig = ({ stage, actions }) => {
       },
     },
   });
+};
+
+exports.onCreateDevServer = ({ app }) => {
+  app.use(express.static('static'));
 };
 
 exports.createPages = ({ graphql, actions }) => {
