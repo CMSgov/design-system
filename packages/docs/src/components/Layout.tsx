@@ -63,7 +63,7 @@ const Layout = ({
         }}
       >
         <script>{`window.tealiumEnvironment = "${env}";`}</script>
-        <script src="//tags.tiqcdn.com/utag/cmsgov/cms-design/prod/utag.sync.js" defer></script>
+        <script src="//tags.tiqcdn.com/utag/cmsgov/cms-design/prod/utag.sync.js"></script>
       </Helmet>
 
       <SkipNav href="#main" />
