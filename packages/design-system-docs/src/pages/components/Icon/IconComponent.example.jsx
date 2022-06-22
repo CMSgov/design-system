@@ -137,12 +137,7 @@ const iconData = [
   },
   {
     defaultTitle: 'Minus in circle',
-    component: (
-      <>
-        <MinusCircleIcon />
-        <MinusCircleIcon isFilled />
-      </>
-    ),
+    component: <MinusCircleIcon />,
     name: 'MinusCircleIcon',
     notes:
       'Component takes <code>isFilled</code> prop to determine minus in circle is filled or an outline.',
@@ -158,13 +153,8 @@ const iconData = [
     name: 'PdfIcon',
   },
   {
-    defaultTitle: 'Plus in circle / Plus in circle Filled',
-    component: (
-      <>
-        <PlusCircleIcon />
-        <PlusCircleIcon isFilled />
-      </>
-    ),
+    defaultTitle: 'Plus in circle',
+    component: <PlusCircleIcon />,
     name: 'PlusCircleIcon',
     notes:
       'Component takes <code>isFilled</code> prop to determine plus in circle is filled or an outline.',
