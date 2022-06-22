@@ -1,0 +1,74 @@
+@import '../settings/index.scss';
+
+// @TODO: deprecate, either add to component variables
+// or hard-code if not being utilized.
+$badge-font-size-big: $font-size-base;
+
+@mixin badge-high-contrast-mode-remove-color() {
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    background-color: windowText;
+    color: window;
+    -ms-high-contrast-adjust: none;
+    forced-color-adjust: none;
+  }
+}
+
+.ds-c-badge {
+  background-color: $badge__background-color;
+  border-radius: $radius-pill;
+  color: $badge__font-color;
+  display: inline-block;
+  font-size: $font-size-sm;
+  line-height: $heading-line-height;
+  margin-right: $spacer-half;
+  padding: $spacer-half $spacer-1;
+
+  &:only-of-type {
+    margin-right: 0;
+  }
+
+  > span {
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      border: none;
+      clip: auto;
+      height: auto;
+      overflow: visible;
+      padding: 0;
+      position: relative;
+      width: auto;
+      // Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1241631
+      word-wrap: normal;
+    }
+  }
+
+  @include badge-high-contrast-mode-remove-color;
+}
+
+.ds-c-badge--big {
+  font-size: $badge-font-size-big;
+}
+
+.ds-c-badge--info {
+  background-color: $badge__background-color--info;
+
+  @include badge-high-contrast-mode-remove-color;
+}
+
+.ds-c-badge--success {
+  background-color: $badge__background-color--success;
+
+  @include badge-high-contrast-mode-remove-color;
+}
+
+.ds-c-badge--warn {
+  background-color: $badge__background-color--warn;
+  color: $badge__font-color--warn;
+
+  @include badge-high-contrast-mode-remove-color;
+}
+
+.ds-c-badge--alert {
+  background-color: $badge__background-color--alert;
+
+  @include badge-high-contrast-mode-remove-color;
+}

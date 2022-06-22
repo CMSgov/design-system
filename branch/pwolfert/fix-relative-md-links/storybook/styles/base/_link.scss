@@ -1,0 +1,86 @@
+@import '../settings/index.scss';
+
+%link {
+  color: $link__color;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: $link__color;
+  text-decoration-thickness: $link__text-decoration-thickness;
+  text-underline-offset: $link__text-decoration-offset;
+
+  &:visited {
+    color: $link__color--visited;
+    text-decoration-color: $link__color--visited;
+  }
+
+  &:hover {
+    color: $link__color--hover;
+    text-decoration-color: $link__color--hover;
+    text-decoration-thickness: $link__text-decoration-thickness--hover;
+  }
+  &:focus,
+  &:focus:visited {
+    @include focus-styles-link;
+  }
+
+  &:active {
+    color: $link__color--active;
+    outline: 0 none;
+    text-decoration-color: $link__color--active;
+  }
+}
+
+%link-inverse {
+  color: $link-inverse__color;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: $link-inverse__color;
+  text-decoration-thickness: $link__text-decoration-thickness;
+  text-underline-offset: $link__text-decoration-offset;
+
+  &:visited {
+    color: $link-inverse__color--visited;
+    text-decoration-color: $link-inverse__color--visited;
+  }
+
+  &:hover {
+    color: $link-inverse__color--hover;
+    text-decoration-color: $link-inverse__color--hover;
+    text-decoration-thickness: $link__text-decoration-thickness--hover;
+  }
+
+  &:focus,
+  &:focus:visited {
+    @include focus-styles-link;
+    color: $link__color;
+  }
+
+  &:active {
+    background-color: transparent;
+    color: $link-inverse__color--active;
+    outline: 0 none;
+  }
+}
+
+// Rename to ds-link
+a,
+.ds-c-link {
+  @extend %link;
+}
+
+.ds-c-link--inverse {
+  @extend %link-inverse;
+}
+
+// Change color of links that are descendants of '.ds-base--inverse'
+//
+// Fix TODO: Because this selector's specificity is higher than most components,
+// changing inverse links will require unusually specific selectors
+//
+// Specifically exclude '.ds-c-button' because this is most likely case where
+// a inverse link element will have other styles applied
+// Also exclude '.ds-c-tooltip__trigger-link' as we need to set
+// text decoration styles for the tooltip trigger links
+.ds-base--inverse a:not(.ds-c-button):not(.ds-c-tooltip__trigger-link) {
+  @extend %link-inverse;
+}

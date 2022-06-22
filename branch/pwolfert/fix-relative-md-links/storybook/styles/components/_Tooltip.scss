@@ -1,0 +1,222 @@
+@import '../settings/index.scss';
+@import '../base/link.scss';
+
+// @TODO: these styles can eventually be componentized and referenced for deprecation
+// for the present time, they will be left for backwards compatibility and updated with
+// up-to-date token references as currently only component color will be themed.
+
+$tooltip-icon-size: 16px !default;
+$tooltip-arrow-size: 8px !default;
+$tooltip-icon-container-size: $spacer-3 !default;
+$tooltip-border-width: 1px !default;
+$tooltip-border-radius: $radius-large !default;
+$tooltip-font-size: $font-size-base !default;
+$tooltip-close-min-width: $spacer-4 !default;
+
+%trigger-reset-styles {
+  // override user agent button styles
+  background: none;
+  border: 0;
+  display: inline-block;
+  margin: 0;
+}
+
+.ds-c-tooltip__container {
+  display: inline;
+}
+
+%trigger-underline-styles {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-position: under;
+}
+// Chrome needs this offset becasue it handles text-underline-position differently and without this the underline runs into descending letters like g,j,q,p,y.
+@media all and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+  %trigger-underline-styles {
+    text-underline-offset: $spacer-half;
+  }
+}
+
+// Tooltip trigger style
+.ds-c-tooltip__trigger {
+  cursor: pointer;
+  display: inline;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.ds-c-tooltip__trigger-icon {
+  @extend %trigger-reset-styles;
+  padding: $spacer-half;
+  &:focus {
+    @include focus-styles;
+  }
+}
+
+.ds-c-tooltip__trigger-link {
+  @extend %trigger-reset-styles;
+  @extend %trigger-underline-styles;
+  color: $tooltip-trigger__color;
+  padding: 0;
+
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    color: ButtonText;
+  }
+}
+
+.ds-base--inverse .ds-c-tooltip__trigger-link {
+  @extend %link-inverse;
+  @extend %trigger-underline-styles;
+
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    color: ButtonText;
+  }
+}
+
+// Tooltip arrow
+.ds-c-tooltip__arrow {
+  height: $tooltip-icon-size;
+  pointer-events: none;
+  width: $tooltip-icon-size;
+
+  &::after {
+    background: $tooltip__background-color;
+    content: '';
+    height: $tooltip-arrow-size;
+    left: 50%;
+    position: absolute;
+    width: $tooltip-arrow-size;
+  }
+}
+
+// Interior content of tooltip
+// Font style gets inherited from ds-base
+.ds-c-tooltip__content {
+  border-radius: $tooltip-border-radius;
+  box-shadow: 0 0 17px $tooltip__box-shadow-color;
+  color: $tooltip__color;
+  display: block;
+  font-size: $tooltip-font-size;
+  font-weight: $font-weight-normal;
+  padding: $spacer-2;
+
+  // Remove tooltip content padding by default
+  &:first-child {
+    margin-top: 0;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.ds-c-tooltip__header {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: $spacer-1;
+
+  .ds-c-tooltip__close-button {
+    // IE11 fix
+    min-width: $tooltip-close-min-width;
+  }
+}
+
+.ds-c-tooltip__header--right {
+  justify-content: flex-end;
+}
+
+// The invisible area around the tooltip container that keeps the tooltip visible on hover
+.ds-c-tooltip__interactive-border {
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+}
+
+// The greater tooltip container which gets added in via state
+// max-width and z-index are set via props to account for different uses
+.ds-c-tooltip {
+  background: $tooltip__background-color;
+  border-color: $tooltip__border-color;
+  border-radius: $tooltip-border-radius;
+  border-style: solid;
+  border-width: $tooltip-border-width;
+  box-sizing: border-box;
+  display: none;
+  opacity: 0;
+}
+
+// Tooltip transition styles
+// http://reactcommunity.org/react-transition-group/css-transition
+.ds-c-tooltip-enter {
+  display: inline-block;
+  opacity: 0;
+}
+
+.ds-c-tooltip-enter-active {
+  display: inline-block;
+  opacity: 1;
+  transition: opacity $animation-speed-1;
+}
+
+.ds-c-tooltip-enter-done {
+  display: inline-block;
+  opacity: 1;
+}
+
+.ds-c-tooltip-exit {
+  display: inline-block;
+  opacity: 1;
+}
+
+.ds-c-tooltip-exit-active {
+  display: inline-block;
+  opacity: 0;
+  transition: opacity $animation-speed-1;
+}
+
+.ds-c-tooltip-exit-done {
+  display: none;
+  opacity: 0;
+}
+
+// Tooltip arrow positioning based on placement of trigger
+.ds-c-tooltip[data-popper-placement^='top'] .ds-c-tooltip__arrow {
+  top: 100%;
+  &::after {
+    border-bottom: $tooltip-border-width solid $tooltip__border-color;
+    border-right: $tooltip-border-width solid $tooltip__border-color;
+    top: 1px;
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  }
+}
+
+.ds-c-tooltip[data-popper-placement^='bottom'] .ds-c-tooltip__arrow {
+  top: -$tooltip-arrow-size;
+  &::after {
+    border-left: $tooltip-border-width solid $tooltip__border-color;
+    border-top: $tooltip-border-width solid $tooltip__border-color;
+    bottom: 0;
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  }
+}
+
+.ds-c-tooltip[data-popper-placement^='left'] .ds-c-tooltip__arrow {
+  right: -$tooltip-arrow-size;
+  &::after {
+    border-right: $tooltip-border-width solid $tooltip__border-color;
+    border-top: $tooltip-border-width solid $tooltip__border-color;
+    left: 0;
+    transform: translateX(50%) translateY(50%) rotate(45deg);
+  }
+}
+
+.ds-c-tooltip[data-popper-placement^='right'] .ds-c-tooltip__arrow {
+  left: -$tooltip-arrow-size;
+  &::after {
+    border-bottom: $tooltip-border-width solid $tooltip__border-color;
+    border-left: $tooltip-border-width solid $tooltip__border-color;
+    left: -2px;
+    transform: translateX(50%) translateY(50%) rotate(45deg);
+  }
+}

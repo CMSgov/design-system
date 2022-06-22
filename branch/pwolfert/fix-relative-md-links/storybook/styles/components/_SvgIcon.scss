@@ -1,0 +1,106 @@
+.ds-c-icon {
+  display: inline-block;
+  fill: currentColor;
+  flex-shrink: 0;
+  font-size: $font-size-base;
+  height: 1.5em;
+  stroke: currentColor;
+  stroke-width: 0;
+  vertical-align: middle;
+  width: 1.5em;
+
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    fill: WindowText;
+
+    path {
+      fill: WindowText;
+      stroke: WindowText;
+    }
+  }
+}
+
+// Icon color variations
+.ds-c-icon-color--primary {
+  color: $icon__color--primary;
+
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    color: WindowText;
+  }
+}
+
+.ds-c-icon-color--inverse {
+  color: $icon__color--inverse;
+}
+
+.ds-c-icon-color--error {
+  color: $icon__color--error;
+}
+
+.ds-c-icon-color--warn {
+  color: $icon__color--warn;
+}
+
+.ds-c-icon-color--success {
+  color: $icon__color--success;
+}
+
+// Specific icon variations
+
+.ds-c-icon--arrow-up {
+  transform: rotate(-90deg);
+}
+
+.ds-c-icon--arrow-left {
+  transform: rotate(180deg);
+}
+
+.ds-c-icon--arrow-down {
+  transform: rotate(90deg);
+}
+
+.ds-c-icon--pdf__text {
+  fill: $color-white;
+
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    fill: Window !important;
+  }
+}
+
+.ds-c-icon--star {
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    path {
+      fill: Window;
+      stroke: WindowText;
+    }
+  }
+}
+
+.ds-c-icon--star-filled {
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    path {
+      fill: WindowText;
+      stroke: WindowText;
+    }
+  }
+}
+
+.ds-c-icon--usa-flag {
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    -ms-high-contrast-adjust: none;
+    forced-color-adjust: none;
+
+    path:nth-of-type(1),
+    path:nth-of-type(5) {
+      fill: #ffffff;
+    }
+
+    path:nth-of-type(2),
+    path:nth-of-type(4) {
+      fill: #db3e1f;
+    }
+
+    path:nth-of-type(3) {
+      fill: #1e33b1;
+    }
+  }
+}

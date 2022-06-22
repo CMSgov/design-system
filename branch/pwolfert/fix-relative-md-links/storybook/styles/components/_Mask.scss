@@ -1,0 +1,26 @@
+@import '../settings/index.scss';
+
+.ds-c-field-mask {
+  position: relative;
+}
+
+.ds-c-field__before {
+  bottom: $text-input__padding;
+  left: $text-input__padding;
+  position: absolute;
+  top: $text-input__padding;
+}
+
+.ds-c-field__before--currency {
+  // Increase currency size so it serves more as an icon and
+  // better aligns with the input value text
+  font-size: $font-size-base + 2;
+  font-weight: $font-weight-bold;
+  // Adjust to better align icon with value's baseline
+  padding-top: 1px;
+}
+
+.ds-c-field--currency {
+  // Normal padding + space for the icon + normal padding
+  padding-left: $text-input__padding + $spacer-half + $text-input__padding;
+}

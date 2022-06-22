@@ -1,0 +1,204 @@
+// @TODO: deprecate usage of these when modification of these in
+// consuming systems is either not done or easily resolved
+$usa-banner-mobile-close-size: 48px;
+$usa-caret-icon-size: 10px;
+$usa-banner-font-family: $font-sans;
+
+.ds-c-usa-banner {
+  background-color: $usa-banner__background-color;
+  color: $usa-banner__color;
+  font-family: $usa-banner-font-family;
+  font-size: $font-size-base;
+  padding: 0;
+}
+
+.ds-c-usa-banner__header {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  font-size: 12px;
+  font-weight: $font-weight-normal;
+  line-height: 1.2;
+  min-height: $spacer-4;
+  padding: $spacer-1 $spacer-2 $spacer-1 $spacer-2;
+  position: relative;
+
+  @media (min-width: $width-sm) {
+    min-height: 0;
+    padding-bottom: 4px;
+    padding-top: 4px;
+  }
+}
+
+.ds-c-usa-banner__header--mobile {
+  padding: 0;
+
+  .ds-c-usa-banner__button {
+    display: flex;
+    font-family: $usa-banner-font-family;
+    padding: $spacer-1 $spacer-2 $spacer-1 $spacer-2;
+    width: 100%;
+  }
+
+  &.ds-c-usa-banner__header--expanded {
+    .ds-c-usa-banner__button {
+      padding-bottom: 0;
+    }
+  }
+
+  .ds-c-usa-banner__cta-wrapper {
+    display: block;
+  }
+}
+
+.ds-c-usa-banner__collapse-banner-container {
+  align-items: center;
+  background-color: $usa-banner-close__background-color;
+  display: flex;
+  height: $usa-banner-mobile-close-size;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: -$spacer-2;
+  margin-top: -$spacer-1;
+  width: $usa-banner-mobile-close-size;
+
+  .ds-c-icon {
+    height: $font-size-lg;
+    width: $font-size-lg;
+  }
+}
+
+.ds-c-usa-banner__header-flag {
+  height: 11px;
+  margin-right: $spacer-1;
+  width: $spacer-2;
+}
+
+.ds-c-usa-banner__header-text {
+  display: inline;
+  margin: 0;
+  span {
+    margin-right: $spacer-1;
+  }
+}
+
+.ds-c-usa-banner__header-action {
+  color: $usa-banner-action__color;
+  display: block;
+  margin-bottom: 0;
+  margin-top: 2px;
+  text-decoration: underline;
+}
+
+.ds-c-usa-banner__button {
+  background-color: transparent;
+  border: 0;
+  bottom: 0;
+  box-shadow: none;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+
+  &:focus {
+    @include focus-styles;
+  }
+}
+
+.ds-c-usa-banner__button-text {
+  @extend .ds-c-link;
+}
+
+.ds-c-usa-banner__content {
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  padding: 4px $spacer-2 $spacer-2 $spacer-1;
+
+  @media (min-width: $width-sm) {
+    padding-bottom: $spacer-3;
+    padding-top: $spacer-3;
+  }
+}
+
+.ds-c-usa-banner__guidance-container {
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: $width-sm) {
+    flex-flow: row nowrap;
+  }
+}
+
+.ds-c-usa-banner__guidance {
+  align-items: flex-start;
+  display: flex;
+  max-width: 64ex;
+  padding: $spacer-2 12px 0 12px;
+
+  @media (min-width: $width-sm) {
+    padding: 0 $spacer-1;
+    width: 50%;
+  }
+}
+
+.ds-c-usa-banner__icon {
+  flex-shrink: 0;
+  height: $spacer-5;
+  margin-right: $spacer-1;
+  width: $spacer-5;
+
+  &.ds-c-icon--lock-circle {
+    color: $usa-banner-lock-icon__color;
+
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      color: WindowText;
+    }
+  }
+}
+
+.ds-c-usa-banner__lock-image {
+  height: 1.5ex;
+  vertical-align: inherit;
+  width: 1.5ex * 52 / 64;
+
+  path {
+    fill: currentColor;
+  }
+
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    path {
+      fill: WindowText;
+    }
+  }
+}
+
+.ds-c-usa-banner__media-img {
+  float: left;
+  margin-right: $spacer-1;
+}
+
+.ds-c-usa-banner__media-body {
+  margin: 0;
+}
+
+.ds-c-usa-banner__header--expanded {
+  @media (min-width: $width-sm) {
+    background-color: transparent;
+    padding-right: 0;
+    .ds-c-usa-banner__button-text::after {
+      transform: rotate(180deg);
+    }
+  }
+
+  .ds-c-usa-banner__header-action {
+    display: none;
+  }
+}
+
+.ds-c-usa-banner__action-icon {
+  color: $usa-banner__color;
+  height: $usa-caret-icon-size;
+  width: $usa-caret-icon-size;
+}

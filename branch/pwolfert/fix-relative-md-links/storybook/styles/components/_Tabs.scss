@@ -1,0 +1,127 @@
+@import '../settings/index.scss';
+
+.ds-c-tabs {
+  border-bottom: 1px solid $tabs__border-color;
+  display: flex;
+}
+
+/*
+`<TabPanel>`
+*/
+.ds-c-tabs__panel {
+  background-color: $tabs__background-color;
+  border-bottom: 1px solid $tabs__border-color;
+  border-left: 1px solid $tabs__border-color;
+  border-right: 1px solid $tabs__border-color;
+  padding: $spacer-3;
+
+  &[aria-hidden='true'] {
+    display: none !important;
+  }
+}
+
+/*
+`<Tab>`
+*/
+.ds-c-tabs__item,
+.ds-c-tabs__item:visited {
+  appearance: none;
+  background-color: $tabs__background-color;
+  border-bottom: 1px solid $tabs__border-color;
+  border-left: 1px solid $tabs__border-color;
+  border-radius: 0;
+  border-top: 1px solid $tabs__border-color;
+  color: $tabs__color;
+  display: inline-block;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  line-height: $font-line-height-reset;
+  margin-bottom: -1px;
+  padding: $spacer-2 $spacer-1;
+  position: relative;
+  text-decoration: none;
+  // Temporarily disable animation
+  //transition: border-bottom-color $animation-speed-2 $ease-in-out-expo;
+
+  @media (min-width: $width-sm) {
+    padding-left: $spacer-2;
+    padding-right: $spacer-2;
+  }
+
+  // Increase size on larger screens
+  @media (min-width: $width-md) {
+    font-size: $font-size-base;
+    padding-left: $spacer-3;
+    padding-right: $spacer-3;
+  }
+
+  &:last-child {
+    border-right: 1px solid $tabs__border-color;
+  }
+
+  // A pseudo-element for the top border on selected tabs
+  &::after {
+    background-color: $tabs-selected__border-color--active;
+    content: '';
+    height: $spacer-half;
+    left: -1px;
+    opacity: 0;
+    position: absolute;
+    right: -1px;
+    top: -1px;
+    transform: scale3d(0, 1, 1);
+    // Temporarily disable animation
+    //transition: opacity $animation-speed-2 $ease-in-out-expo, transform $animation-speed-2 $ease-in-out-expo;
+  }
+
+  // States
+  &[aria-selected='true'] {
+    border-bottom-color: $tabs-selected__border-color;
+    color: $tabs-selected__color;
+    pointer-events: none;
+
+    &::after {
+      opacity: 1;
+      transform: scale3d(1, 1, 1);
+    }
+
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      border-color: windowText;
+      border-bottom-color: window;
+      color: windowText;
+
+      &::after {
+        background-color: windowText;
+      }
+    }
+  }
+
+  &:hover {
+    color: $color-primary;
+  }
+
+  &:focus {
+    @include focus-styles;
+    @include focus-styles-position;
+  }
+
+  &:active {
+    color: $color-primary-darker;
+  }
+
+  &[aria-disabled='true'] {
+    background-color: $tabs__background-color--disabled;
+    border-color: $tabs__border-color--disabled;
+    color: $tabs__color--disabled;
+
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      color: GrayText;
+      cursor: not-allowed;
+    }
+  }
+
+  // SVG icons
+  > svg {
+    @include inline-icon;
+  }
+}

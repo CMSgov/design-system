@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TooltipIcon renders inverse trigger icon 1`] = `
+<DocumentFragment>
+  <span
+    class="ds-c-tooltip-icon__container"
+  >
+    <svg
+      aria-hidden="true"
+      class="ds-c-icon ds-c-icon--info-circle-thin ds-c-tooltip-icon ds-c-tooltip-icon--inverse"
+      focusable="false"
+      id="icon-2"
+      viewBox="0 0 16 16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 16c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm1-3.7V6.4H7v5.9h2zM7 4.9c0 .6.3.9 1 .9s1-.3 1-.9c0-.3-.1-.5-.2-.7-.2-.1-.5-.2-.8-.2-.3 0-.6.1-.8.2-.1.2-.2.4-.2.7z"
+        fill-rule="nonzero"
+      />
+    </svg>
+  </span>
+</DocumentFragment>
+`;
+
+exports[`TooltipIcon renders normal trigger icon 1`] = `
+<DocumentFragment>
+  <span
+    class="ds-c-tooltip-icon__container"
+  >
+    <svg
+      aria-hidden="true"
+      class="ds-c-icon ds-c-icon--info-circle-thin ds-c-tooltip-icon"
+      focusable="false"
+      id="icon-1"
+      viewBox="0 0 16 16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 16c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm1-3.7V6.4H7v5.9h2zM7 4.9c0 .6.3.9 1 .9s1-.3 1-.9c0-.3-.1-.5-.2-.7-.2-.1-.5-.2-.8-.2-.3 0-.6.1-.8.2-.1.2-.2.4-.2.7z"
+        fill-rule="nonzero"
+      />
+    </svg>
+  </span>
+</DocumentFragment>
+`;
