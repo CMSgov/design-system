@@ -5,6 +5,7 @@ import { Link } from 'gatsby';
 import Header from './DocSiteHeader';
 import Footer from './DocSiteFooter';
 import Sidebar from './DocSiteSidebar';
+import NewRelicAgent from './NewRelicAgent';
 import { SkipNav, Badge } from '@cmsgov/design-system';
 import { LocationInterface } from '../helpers/graphQLTypes';
 
@@ -57,19 +58,10 @@ const Layout = ({
   return (
     <div className="ds-base">
       <Helmet title="CMS Design System">
-        <script>{`
-          window.tealiumEnvironment = "${env}";
-          window.APP_CONFIG = {
-            nrApplicationID: "1134210514",
-            nrLicenseKey: "5a79be86db",
-            nrAgentID: "1134210514",
-            nrAccountID: "402306",
-            nrTrustKey:  "39033",
-            nrDistributedTracing: false
-          };
-        `}</script>
+        <script>{`window.tealiumEnvironment = "${env}";`}</script>
         <script src="//tags.tiqcdn.com/utag/cmsgov/cms-design/prod/utag.sync.js"></script>
       </Helmet>
+      <NewRelicAgent />
 
       <SkipNav href="#main" />
       <Header />
