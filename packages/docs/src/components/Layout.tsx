@@ -5,7 +5,6 @@ import { Link } from 'gatsby';
 import Header from './DocSiteHeader';
 import Footer from './DocSiteFooter';
 import Sidebar from './DocSiteSidebar';
-import NewRelicAgent from './NewRelicAgent';
 import { SkipNav, Badge } from '@cmsgov/design-system';
 import { LocationInterface } from '../helpers/graphQLTypes';
 
@@ -61,7 +60,6 @@ const Layout = ({
         <script>{`window.tealiumEnvironment = "${env}";`}</script>
         <script src="//tags.tiqcdn.com/utag/cmsgov/cms-design/prod/utag.sync.js"></script>
       </Helmet>
-      <NewRelicAgent />
 
       <SkipNav href="#main" />
       <Header />

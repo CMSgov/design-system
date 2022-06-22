@@ -59,7 +59,7 @@
     "gulp-merge-json": "^1.2.0",
     "gulp-postcss": "8.0.0",
     "gulp-rename": "^2.0.0",
-    "gulp-sass": "^3.1.0",
+    "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "2.6.5",
     "gulp-svgmin": "^3.0.0",
     "gulp-typescript": "^6.0.0-alpha.1",
