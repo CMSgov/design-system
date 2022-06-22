@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Label mask renders default date mask, MM/DD/YYYY, when no input value set 1`] = `
+<DocumentFragment>
+  <div
+    class="ds-c-label-mask"
+    id="labelmask_1"
+  >
+    <span
+      class=""
+    >
+      MM/DD/YYYY
+    </span>
+    <span
+      aria-hidden="true"
+      class="ds-u-display--none"
+    >
+      MM/DD/YYYY
+    </span>
+  </div>
+  <input
+    aria-describedby="labelmask_1"
+    inputmode="numeric"
+    type="text"
+    value=""
+  />
+</DocumentFragment>
+`;

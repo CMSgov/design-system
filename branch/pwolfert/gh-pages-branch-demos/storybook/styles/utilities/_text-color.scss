@@ -1,0 +1,137 @@
+@import '../settings/index.scss';
+
+// One of the few places !important is allowed.
+/* stylelint-disable declaration-no-important */
+
+// primary
+.ds-u-color--primary:not(:focus) {
+  color: $color-primary !important;
+}
+
+.ds-u-color--primary-darker:not(:focus) {
+  color: $color-primary-darker !important;
+}
+
+.ds-u-color--primary-darkest:not(:focus) {
+  color: $color-primary-darkest !important;
+}
+
+// @TODO: deprecate usage of color-primary-alt tags for secondary below
+// primary alt
+.ds-u-color--primary-alt:not(:focus) {
+  color: $color-primary-alt !important;
+}
+
+.ds-u-color--primary-alt-light:not(:focus) {
+  color: $color-primary-alt-light !important;
+}
+
+.ds-u-color--primary-alt-lightest:not(:focus) {
+  color: $color-primary-alt-lightest !important;
+}
+
+.ds-u-color--primary-alt-dark:not(:focus) {
+  color: $color-primary-alt-dark !important;
+}
+
+.ds-u-color--primary-alt-darkest:not(:focus) {
+  color: $color-primary-alt-darkest !important;
+}
+
+// secondary
+.ds-u-color--secondary:not(:focus) {
+  color: $color-secondary !important;
+}
+
+.ds-u-color--secondary-light:not(:focus) {
+  color: $color-secondary-light !important;
+}
+
+.ds-u-color--secondary-lighter:not(:focus) {
+  color: $color-secondary-lighter !important;
+}
+
+.ds-u-color--secondary-lightest:not(:focus) {
+  color: $color-secondary-lightest !important;
+}
+
+.ds-u-color--secondary-dark:not(:focus) {
+  color: $color-secondary-dark !important;
+}
+
+.ds-u-color--secondary-darker:not(:focus) {
+  color: $color-secondary-darker !important;
+}
+
+.ds-u-color--secondary-darkest:not(:focus) {
+  color: $color-secondary-darkest !important;
+}
+
+// gray
+.ds-u-color--gray:not(:focus) {
+  color: $color-gray !important;
+}
+
+.ds-u-color--gray-lightest:not(:focus) {
+  color: $color-gray-lightest !important;
+}
+
+.ds-u-color--gray-lighter:not(:focus) {
+  color: $color-gray-lighter !important;
+}
+
+.ds-u-color--gray-light:not(:focus) {
+  color: $color-gray-light !important;
+}
+
+.ds-u-color--muted:not(:focus) {
+  color: $color-muted !important;
+}
+
+// states
+.ds-u-color--error:not(:focus) {
+  color: $color-error !important;
+}
+
+.ds-u-color--error-dark:not(:focus) {
+  color: $color-error-dark !important;
+}
+
+.ds-u-color--error-darkest:not(:focus) {
+  color: $color-error-darkest !important;
+}
+
+.ds-u-color--error-light:not(:focus) {
+  color: $color-error-light !important;
+}
+
+.ds-u-color--success:not(:focus) {
+  color: $color-success !important;
+}
+
+// base colors
+.ds-u-color--base:not(:focus) {
+  color: $color-base !important;
+}
+
+.ds-u-color--base-inverse:not(:focus) {
+  color: $color-base-inverse !important;
+}
+
+.ds-u-color--muted-inverse:not(:focus) {
+  color: $color-muted-inverse !important;
+}
+
+.ds-u-color--black:not(:focus) {
+  color: $color-black !important;
+}
+
+.ds-u-color--white:not(:focus) {
+  color: $color-white !important;
+}
+
+.ds-u-color--inherit:not(:focus) {
+  color: inherit !important;
+}
+
+/* stylelint-enable declaration-no-important */

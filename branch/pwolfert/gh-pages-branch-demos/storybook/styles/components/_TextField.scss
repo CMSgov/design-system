@@ -1,0 +1,75 @@
+@import '../settings/index.scss';
+
+.ds-c-field {
+  appearance: none;
+  border: $text-input__border-width solid $text-input__border-color;
+  border-radius: $text-input__border-radius;
+  box-sizing: border-box; // ensure padding doesn't affect width
+  color: $text-input__color;
+  display: block;
+  margin: $spacer-half 0;
+  max-width: $form__max-width;
+  outline: none;
+  padding: $text-input__padding;
+  width: 100%;
+
+  // To stay consistent across browsers of not applying a style for :invalid pseudo-class,
+  // disable the red "glow" of [Gecko default](https://developer.mozilla.org/en-US/docs/Web/CSS/:invalid#gecko_defaults)
+  &:-moz-ui-invalid {
+    box-shadow: none;
+  }
+
+  &:disabled {
+    background-color: $text-input__background-color--disabled;
+    border-color: $text-input__border-color--disabled;
+
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      cursor: not-allowed;
+
+      > option {
+        color: GrayText;
+      }
+    }
+  }
+
+  &:focus {
+    @include focus-styles;
+  }
+}
+
+.ds-c-field--small {
+  max-width: $form__max-width--small;
+}
+
+.ds-c-field--medium {
+  max-width: $form__max-width--medium;
+}
+
+.ds-c-field,
+.ds-c-field-mask {
+  font-family: $font-sans;
+  font-size: $font-size-base;
+  line-height: $text-input__line-height;
+}
+
+/*
+Inverse theme
+*/
+
+.ds-c-field--inverse {
+  border-color: $text-input__border-color--inverse;
+}
+
+// State modifiers and message
+// ==============================
+.ds-c-field--error {
+  border: 3px solid $text-input__border-color--error;
+
+  &.ds-c-field--inverse {
+    border: 3px solid $text-input__border-color--error--inverse;
+  }
+}
+
+.ds-c-field--success {
+  border: 3px solid $text-input__border-color--success;
+}

@@ -1,0 +1,35 @@
+@import '../settings/index.scss';
+
+.ds-u-float--left {
+  float: left !important;
+}
+
+.ds-u-float--right {
+  float: right !important;
+}
+
+.ds-u-float--none {
+  float: none !important;
+}
+
+@each $breakpoint in map-keys($breakpoints) {
+  $value: map-get($breakpoints, $breakpoint);
+
+  @media (min-width: $value) {
+    .ds-u-#{$breakpoint}-float--left {
+      float: left !important;
+    }
+
+    .ds-u-#{$breakpoint}-float--right {
+      float: right !important;
+    }
+
+    .ds-u-#{$breakpoint}-float--none {
+      float: none !important;
+    }
+  }
+}
+
+.ds-u-clearfix {
+  @include clearfix;
+}
