@@ -141,8 +141,9 @@ label,
     }
 
     &:focus::before {
-      height: $choice__size - ($choice__border-width * 2);
-      width: $choice__size - ($choice__border-width * 2);
+      // have to do a mix of calc & sass interpolation in order to accommodate values being css vars in internal tools
+      height: calc(#{$choice__size} - (#{$choice__border-width} * 2));
+      width: calc(#{$choice__size} - (#{$choice__border-width} * 2));
     }
   }
 }

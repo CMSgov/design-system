@@ -1,4 +1,11 @@
 // importing core styles from core index.scss files
+@import '_core-components-scss-to-css.map.scss';
+@import '_core-components-theme.css';
+@import '_healthcare-components-scss-to-css.map.scss';
+@import '_healthcare-components-theme.css';
+@import '_medicare-components-scss-to-css.map.scss';
+@import '_medicare-components-theme.css';
+
 // @styles is aliased in gatsby-node.js
 @import '@styles/index.scss';
 
