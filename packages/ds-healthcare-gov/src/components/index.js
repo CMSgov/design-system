@@ -18,6 +18,7 @@
 import { setInlineErrorIconDisplay, setErrorPlacementDefault } from '@cmsgov/design-system';
 
 export * from '@cmsgov/design-system';
+export * from './Accordion';
 export * from './Footer';
 export * from './Header';
 export * from './Logo';

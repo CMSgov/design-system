@@ -1,13 +1,6 @@
 import { Accordion, AccordionItem } from '@design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { MinusCircleIcon, PlusCircleIcon } from '@cmsgov/design-system';
-
-AccordionItem.defaultProps = {
-  ...AccordionItem.defaultProps,
-  closeIcon: <MinusCircleIcon className="ds-c-accordion__button-icon" ariaHidden={false} />,
-  openIcon: <PlusCircleIcon className="ds-c-accordion__button-icon" ariaHidden={false} />,
-};
 
 class ControlledAccordion extends React.PureComponent {
   constructor(props) {

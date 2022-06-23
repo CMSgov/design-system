@@ -1,6 +1,6 @@
 import React from 'react';
-
-import { Accordion, AccordionItem, MinusCircleIcon, PlusCircleIcon } from '@cmsgov/design-system';
+import { Accordion } from '@cmsgov/design-system';
+import AccordionItem from './AccordionItem';
 import { useArgs } from '@storybook/client-api';
 
 export default {
@@ -14,10 +14,6 @@ export default {
   subcomponents: { AccordionItem },
 };
 
-const iconProps = {
-  closeIcon: <MinusCircleIcon className="ds-c-accordion__button-icon" ariaHidden={false} />,
-  openIcon: <PlusCircleIcon className="ds-c-accordion__button-icon" ariaHidden={false} />,
-};
 const Template = (args) => <Accordion {...args} />;
 export const Default = Template.bind({});
 Default.argTypes = {
@@ -25,14 +21,7 @@ Default.argTypes = {
 };
 Default.args = {
   children: [
-    <AccordionItem
-      key="1"
-      heading="First Amendment"
-      contentClassName="first-amendment"
-      defaultOpen
-      closeIcon={iconProps.closeIcon}
-      openIcon={iconProps.openIcon}
-    >
+    <AccordionItem key="1" heading="First Amendment" contentClassName="first-amendment" defaultOpen>
       <p>
         We the People of the United States, in Order to form a more perfect Union, establish
         Justice, insure domestic Tranquility, provide for the common defence, promote the general
@@ -40,13 +29,7 @@ Default.args = {
         establish this Constitution for the United States of America.
       </p>
     </AccordionItem>,
-    <AccordionItem
-      key="2"
-      heading="Second Amendment"
-      defaultOpen
-      closeIcon={iconProps.closeIcon}
-      openIcon={iconProps.openIcon}
-    >
+    <AccordionItem key="2" heading="Second Amendment" defaultOpen>
       <p>
         A well regulated Militia, being necessary to the security of a free State, the right of the
         people to keep and bear Arms, shall not be infringed.
@@ -73,8 +56,6 @@ export const Controlled = (args) => {
         defaultOpen
         isControlledOpen={openItems.includes(0)}
         onChange={() => handleChange(0)}
-        closeIcon={iconProps.closeIcon}
-        openIcon={iconProps.openIcon}
       >
         <p>
           In a controlled accordion, the accordion panel&apos;s open state is controlled by the
@@ -88,8 +69,6 @@ export const Controlled = (args) => {
         defaultOpen={false}
         isControlledOpen={openItems.includes(1)}
         onChange={() => handleChange(1)}
-        closeIcon={iconProps.closeIcon}
-        openIcon={iconProps.openIcon}
       >
         <p>
           In the args below you will notice the openItems array being updated with the changes set
