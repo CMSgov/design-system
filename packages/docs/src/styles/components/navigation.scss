@@ -75,3 +75,27 @@
     }
   }
 }
+
+@media (-ms-high-contrast: active), (forced-colors: active) {
+  .c-navigation {
+    -ms-high-contrast-adjust: none;
+    forced-color-adjust: none;
+
+    .ds-c-vertical-nav__label--current[aria-expanded='true'] {
+      background-color: Highlight;
+      color: HighlightText;
+
+      path {
+        fill: HighlightText;
+      }
+    }
+
+    .ds-c-vertical-nav__label--parent {
+      background-color: Window;
+
+      path {
+        fill: WindowText;
+      }
+    }
+  }
+}
