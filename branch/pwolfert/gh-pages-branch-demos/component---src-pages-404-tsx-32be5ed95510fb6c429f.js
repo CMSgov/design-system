@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkcms_design_system_docs=self.webpackChunkcms_design_system_docs||[]).push([[218],{1249:function(e,t,a){a.r(t);var n=a(2784),s=a(292),c=a(597);t.default=function(e){var t=e.data,a=e.location;return n.createElement(s.Z,{pageName:"Page not found",location:a},n.createElement(c.Z,{data:t.mdx.body}))}}}]);
-//# sourceMappingURL=component---src-pages-404-tsx-32be5ed95510fb6c429f.js.map
