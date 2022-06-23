@@ -3,10 +3,9 @@ import { Link } from 'gatsby';
 import { makePageUrl } from '../helpers/urlUtils';
 import { removePositioning } from '../helpers/casingUtils';
 import classnames from 'classnames';
-import { VerticalNav } from '@cmsgov/design-system';
+import { Button, CloseIconThin, MenuIconThin, VerticalNav } from '@cmsgov/design-system';
 import { VerticalNavItemProps } from '@cmsgov/design-system/dist/components/VerticalNav/VerticalNavItem';
 import { useStaticQuery, graphql } from 'gatsby';
-import GithubLinks from './GithubLinks';
 import { LocationInterface } from '../helpers/graphQLTypes';
 
 interface NavItem {
@@ -26,7 +25,6 @@ interface GraphQlNavItem {
 }
 
 interface DocSiteNavProps {
-  isMobileNavOpen: boolean;
   location: LocationInterface;
 }
 
@@ -49,7 +47,38 @@ const GatsbyLink = (props: VerticalNavItemProps) => {
  * @returns {React Element}
  * @todo figure out which item is currently selected and mark & expand appropriately
  */
-const DocSiteSidebar = ({ isMobileNavOpen, location }: DocSiteNavProps) => {
+const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
+  // Open/close state is controlled by toggleMenu()
+  const [isMobileNavOpen, setMobileNavOpen] = React.useState<boolean>(false);
+  const toggleMenu = () => {
+    setMobileNavOpen(!isMobileNavOpen);
+  };
+
+  /*
+   ** Need to know if screen width is at a medium breakpoint to set
+   ** a11y attrs on mobile nav links - attrs not needed for desktop
+   */
+  const [isMobile, setIsMobile] = React.useState<boolean>(false);
+  React.useEffect(() => {
+    if (window) {
+      // `md` media query derived from: https://design.cms.gov/guidelines/responsive/
+      const media = window.matchMedia('(max-width: 768px)');
+
+      if (media.matches !== isMobile) {
+        setIsMobile(media.matches);
+      }
+
+      const listener = () => {
+        setIsMobile(media.matches);
+      };
+
+      media.addEventListener('change', listener);
+      return () => media.removeEventListener('change', listener);
+    } else {
+      setIsMobile(true);
+    }
+  }, [isMobile]);
+
   const data = useStaticQuery(graphql`
     query SiteNavQuery {
       allFile(
@@ -136,22 +165,51 @@ const DocSiteSidebar = ({ isMobileNavOpen, location }: DocSiteNavProps) => {
   const navItems: VerticalNavItemProps[] = formatNavData(data?.allFile?.group);
 
   return (
-    <nav
-      className={classnames('ds-l-md-col--3 ds-u-padding--2 ds-u-fill--white c-sidebar', {
-        'c-sidebar--open': isMobileNavOpen,
+    <div
+      className={classnames('ds-l-md-col--3 ds-u-padding--0 ds-u-md-padding--2 c-navigation', {
+        'c-navigation--open': isMobile && isMobileNavOpen,
       })}
     >
-      <VerticalNav
-        className="c-nav"
-        items={navItems}
-        component={GatsbyLink}
-        selectedId={location ? location.pathname : ''}
-      />
-      <div className="ds-u-md-display--none ds-u-margin-top--2 c-sidebar__mobile-button-wrapper">
-        <GithubLinks />
+      <header className="c-navigation__header">
+        <Button
+          className="ds-u-md-display--none ds-u-padding-left--0 ds-u-padding-right--1"
+          variation="transparent"
+          aria-expanded={isMobileNavOpen}
+          aria-controls="c-mobile-navigation"
+          onClick={toggleMenu}
+        >
+          {isMobileNavOpen ? (
+            <CloseIconThin className="ds-u-font-size--xl" />
+          ) : (
+            <MenuIconThin className="ds-u-font-size--xl" />
+          )}
+        </Button>
+        <h1 className="c-navigation__title">
+          <a href="/">CMS Design System</a>
+        </h1>
+      </header>
+
+      <div
+        id="c-mobile-navigation"
+        // hidden attr applied on mobile breakpoints when nav is closed
+        hidden={isMobile && !isMobileNavOpen}
+        className="ds-u-padding--2 ds-u-md-padding--0"
+      >
+        <VerticalNav
+          className="c-navigation__link-list"
+          items={navItems}
+          component={GatsbyLink}
+          selectedId={location ? location.pathname : ''}
+        />
+        <a
+          href="https://github.com/CMSgov/design-system"
+          className="c-navigation__github-link ds-c-link"
+        >
+          View code on GitHub
+        </a>
       </div>
-    </nav>
+    </div>
   );
 };
 
-export default DocSiteSidebar;
+export default DocSiteNavigation;
