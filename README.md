@@ -79,6 +79,8 @@ These scripts can all be run from the root level of the repo:
   - `yarn loki:medicare test` to run the Medicare.gov visual regression tests
 - `yarn lint`
   - Runs just the linting portion of the tests, eslint and stylelint
+- `yarn deploy-demo`
+  - Builds the doc site locally and deploys it to a branch-specific path on GitHub Pages
 - `yarn release`
   - Bumps package versions and tags a release commit. Read our [Release Process guide](/guides/RELEASE-PROCESS.md) for more info.
 
