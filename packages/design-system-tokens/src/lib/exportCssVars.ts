@@ -82,7 +82,7 @@ export const exportCssVars = (fileDescriptors: FileDescriptor[], outPath: string
     const sep = file.baseName.includes('components') ? '' : '-';
 
     if (file.baseName.includes('components')) {
-      writeMap(`${outPath}/${file.baseName}-scss-to-css-map.scss`, file, importedModule, sep);
+      writeMap(`${outPath}/${file.baseName}-scss-to-css.map.scss`, file, importedModule, sep);
       writeCssVars(`${outPath}/${file.baseName}-theme.css`, file, importedModule, sep);
     }
   });
