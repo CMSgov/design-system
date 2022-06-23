@@ -3,28 +3,16 @@ import { t } from '../i18n';
 import SvgIcon, { IconCommonProps } from './SvgIcon';
 import classNames from 'classnames';
 
-export interface PlusCircleIconProps extends IconCommonProps {
-  isFilled?: boolean;
-}
-
 const defaultProps = {
   className: '',
   viewBox: '0 0 20 20',
 };
 
-function PlusCircleIcon(props: PlusCircleIconProps): React.ReactElement {
-  // don't want to pass isFilled through to SvgIcon
-  const { isFilled, ...otherProps } = props;
-  const iconCssClasses = classNames(
-    'ds-c-icon--plus-circle',
-    {
-      'ds-c-icon--plus-circle-filled': isFilled,
-    },
-    props.className
-  );
+function PlusCircleIcon(props: IconCommonProps): React.ReactElement {
+  const iconCssClasses = classNames('ds-c-icon--plus-circle', props.className);
 
   return (
-    <SvgIcon title={t('icons.add')} {...defaultProps} {...otherProps} className={iconCssClasses}>
+    <SvgIcon title={t('icons.add')} {...defaultProps} {...props} className={iconCssClasses}>
       <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g transform="translate(-47.000000, -360.000000)">
           <g transform="translate(49.000000, 362.000000)">

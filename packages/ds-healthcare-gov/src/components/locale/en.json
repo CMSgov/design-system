@@ -1,4 +1,8 @@
 {
+  "accordion": {
+    "close": "Close",
+    "open": "Open"
+  },
   "footer": {
     "allTopics": "All Topics",
     "glossary": "Glossary",

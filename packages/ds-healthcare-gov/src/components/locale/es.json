@@ -1,4 +1,8 @@
 {
+  "accordion": {
+    "close": "Cerrar",
+    "open": "Abrir"
+  },
   "footer": {
     "allTopics": "Todos los temas",
     "glossary": "Glosario",
