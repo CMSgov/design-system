@@ -1,0 +1,46 @@
+---
+title: Measure
+---
+
+import loremIpsumGenerator from '../../src/helpers/loremIpsumGenerator';
+
+Line length, also called "measure", is an important part of readability. CMSDS has 3 measure options to control reading length.
+
+**Format:** `.ds-u-measure--[narrow|base|wide]`
+
+<EmbeddedExample>
+  <section class="example-list">
+    <article>
+      <span class="example-label">
+        <code>.ds-u-measure--narrow</code> (line length ~45 characters)
+      </span>
+      <div class="ds-u-measure--narrow">{loremIpsumGenerator('l')}</div>
+    </article>
+    <article>
+      <span class="example-label">
+        <code>.ds-u-measure--base</code> (line length ~65 characters)
+      </span>
+      <div class="ds-u-measure--base">{loremIpsumGenerator('l')}</div>
+    </article>
+    <article>
+      <span class="example-label">
+        <code>.ds-u-measure--wide</code> (line length ~80 characters)
+      </span>
+      <div class="ds-u-measure--wide">{loremIpsumGenerator('l')}</div>
+    </article>
+  </section>
+</EmbeddedExample>
+
+## Guidance
+
+### Accessibility
+
+> A line of text shouldn’t be longer than 80 characters. This helps users with certain reading or visual disabilities that have trouble keeping their place when reading long lines of text. If the width of the text container is resized, it should be allowed to scale in a way so 80 characters or less are shown...Another way to ensure good line-length is to use a fluid layout or apply responsive web design techniques that allow the user to resize the window to find a comfortable line length. &mdash; [W3C](https://www.w3.org/WAI/tutorials/page-structure/styling/#line-length)
+
+### Customization
+
+The following Sass variables can be overridden to theme the measure utility:
+
+- `$measure-narrow`
+- `$measure-base`
+- `$measure-wide`

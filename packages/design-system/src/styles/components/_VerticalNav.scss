@@ -1,8 +1,8 @@
 @import '../settings/index.scss';
 
 %nav-item-hover {
-  background-color: $color-gray-lightest;
-  color: $color-primary;
+  background-color: $vertical-nav-item__background-color--hover;
+  color: $vertical-nav-item__color--hover;
   text-decoration: none;
 }
 %nav-item-focus {
@@ -15,7 +15,7 @@
 
   > .ds-c-vertical-nav__item {
     background-color: transparent;
-    border-top: 1px solid $color-gray;
+    border-top: 1px solid $vertical-nav-item__border-color;
 
     &:first-child {
       border-top: 0;
@@ -34,11 +34,11 @@
 .ds-c-vertical-nav__label,
 .ds-c-vertical-nav__label:visited {
   border-left: $spacer-half solid transparent;
-  color: $color-base;
+  color: $vertical-nav-label__color;
   display: block;
   font-family: $font-sans; // necessary for <button>
-  font-size: $base-font-size; // necessary for <button>
-  line-height: $heading-line-height;
+  font-size: $font-size-base; // necessary for <button>
+  line-height: $font-line-height-heading;
   padding: $spacer-1 $spacer-2;
   text-align: left; // necessary for <button>
   text-decoration: none;
@@ -83,11 +83,13 @@
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
     -ms-high-contrast-adjust: none;
+    forced-color-adjust: none;
     background-color: LinkText;
 
     &:hover,
     &:focus {
       -ms-high-contrast-adjust: none;
+      forced-color-adjust: none;
       background-color: window;
       color: LinkText;
       outline: $spacer-half solid LinkText;
@@ -96,7 +98,7 @@
   }
 
   .ds-c-icon {
-    color: $color-base;
+    color: $vertical-nav-label-icon__color;
     height: $font-size-md;
     width: $font-size-md;
 
@@ -110,9 +112,9 @@
 
 .ds-c-vertical-nav__label--current,
 .ds-c-vertical-nav__label--current:visited {
-  border-left-color: $color-primary;
-  color: $color-primary;
-  font-weight: $font-bold;
+  border-left-color: $vertical-nav-label__border-color--current;
+  color: $vertical-nav-label__color--current;
+  font-weight: $font-weight-bold;
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
     border-left-color: WindowText;
@@ -124,7 +126,7 @@
 
   .ds-c-vertical-nav__label {
     font-size: $font-size-sm;
-    line-height: $heading-line-height;
+    line-height: $font-line-height-heading;
     padding-left: $spacer-3;
   }
 

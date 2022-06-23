@@ -1,5 +1,5 @@
 .hc-c-privacy-settings-table {
-  $breakpoint-large-min: $width-md;
+  $breakpoint-large-min: $media-width-md;
   $breakpoint-small-max: $breakpoint-large-min - 1;
 
   td:last-child {
@@ -32,15 +32,15 @@
 
     [data-title]::before {
       content: attr(data-title) ':\00A0';
-      font-weight: $font-bold;
+      font-weight: $font-weight-bold;
     }
 
     td:nth-child(1) {
-      font-weight: $font-bold;
+      font-weight: $font-weight-bold;
     }
 
     tr {
-      border-bottom: 2px solid $border-color;
+      border-bottom: 2px solid $color-border;
       margin-top: $spacer-1;
     }
   }

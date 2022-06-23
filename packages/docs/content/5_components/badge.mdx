@@ -1,0 +1,55 @@
+---
+title: Badge
+relatedUswdsGuidance: components/tag/
+---
+
+Badges hold small amounts of information and draw attention to new or important content.
+
+## `<Badge>`
+
+<StorybookExample
+  componentName="badge"
+  sourceFilePath="components/Badge/Badge.tsx"
+  storyId="components-badge--default"
+/>
+
+### Props
+
+<PropTable componentName="Badge" />
+
+## Guidance
+
+### When to use
+
+- To draw attention to new, important content on a page that might otherwise be missed.
+- To filter results with one or more tags.
+- To indicate the number of new or unread items within a container. For example, to indicate the number of unread messages within a person’s inbox.
+
+### When to consider alternatives
+
+- When users are likely to confuse a badge with a button. For example, when the badge appears in the same area of the page as buttons.
+- To call attention to new or updated content, consider changing the background color of the object itself or experiment with changing the font weight.
+- When users already expect content to be updated frequently. For example, on a site dedicated to breaking news. In this case placing the new content at the top may be enough.
+
+### Usage
+
+- Don’t overdo it — if everything on a page is called out as important, nothing is important.
+- Users may confuse badges as buttons. Always conduct usability testing to make sure your particular implementation is not causing frustration.
+- Don’t mix interactive and static badges on your site. Once you establish a pattern for how badges behave, users will expect that behavior every time.
+
+### Accessibility
+
+- When badges are used to call out new content that is dynamically loaded onto a page, be sure to use [ARIA live regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) to alert screen readers of the change.
+
+## Customization
+
+The following Sass variables can be overridden to customize Badge components:
+
+<ComponentThemeOptions
+  theme="core"
+  componentname="badge"
+/>
+
+### Future research
+
+- Further usability testing should be done to ensure badges aren't being confused with buttons. Further iteration can be done with sizing and colors if there is confusion.

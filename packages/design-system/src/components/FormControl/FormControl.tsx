@@ -13,6 +13,8 @@ interface FormControlRenderProps {
   id: string;
   labelId: string;
   errorId: string;
+  errorMessage?: React.ReactNode;
+  errorPlacement?: 'top' | 'bottom';
   setRef: (elem: HTMLElement) => void;
 }
 
