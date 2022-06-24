@@ -61,7 +61,7 @@ fi
 
 echo "${GREEN}Creating release branch...${NC}"
 DATE=$(date "+%Y-%m-%d")
-BRANCHREF=$(git rev-parse --abbrev-ref HEAD)
+BRANCHREF=$(git rev-parse --short HEAD)
 BRANCH="release-${DATE}-${BRANCHREF}"
 git checkout -b $BRANCH
 
