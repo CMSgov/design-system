@@ -1,6 +1,7 @@
 // Mobile
 .c-navigation {
   background-color: $color-white;
+  width: 100%;
 
   .c-navigation__header {
     background-color: $color-primary-alt-lightest;
@@ -34,6 +35,18 @@
       text-transform: capitalize;
     }
   }
+
+  .c-navigation__github-link {
+    background-color: transparent;
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
+
+    svg {
+      height: 1em;
+      width: auto;
+    }
+  }
 }
 
 .c-navigation--open {
@@ -53,6 +66,7 @@
 @media (min-width: $width-md) {
   .c-navigation {
     background-color: $color-primary-alt-lightest;
+    width: unset;
 
     .c-navigation__header {
       margin-inline: calc($spacer-2 * -1);
@@ -68,10 +82,6 @@
           background-color: #{scale-color($vertical-nav-item__color--hover, $alpha: -95%)};
         }
       }
-    }
-
-    .c-navigation__github-link {
-      background-color: transparent;
     }
   }
 }
