@@ -3,6 +3,7 @@
 @import 'theme-variables/_core-theme.css';
 @import 'theme-variables/_core-components-scss-to-css.map.scss';
 @import 'theme-variables/_core-components-theme.css';
+// brand themes will use core variables if the theme does not explicitly define that variable
 @import 'theme-variables/_healthcare-scss-to-css.map.scss';
 @import 'theme-variables/_healthcare-theme.css';
 @import 'theme-variables/_healthcare-components-scss-to-css.map.scss';

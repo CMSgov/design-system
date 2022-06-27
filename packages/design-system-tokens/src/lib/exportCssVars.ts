@@ -5,6 +5,8 @@ import { writeFile } from './file';
 /**
  * Some sass variables are used in loops in sass. These variables cannot be mapped to css variables because sass will error.
  * This list should include the variable names to be ignored in the sass -> css variable -> value mappings
+ *
+ * Instead, these values will have a direct sass variable -> value definition
  */
 const variableIgnoreList: string[] = [
   'grid-columns',
@@ -44,9 +46,7 @@ const formatTokensAsCssVars = (
   Object.entries(items).forEach(([name, value]) => {
     // global objects in themes are not prefixed by the token type
     name = prefix === 'global' ? name : `${prefix}${separator}${name}`;
-    if (!variableIgnoreList.includes(name)) {
-      SCSS += formatter(name, value);
-    }
+    SCSS += formatter(name, value);
   });
   return SCSS;
 };
@@ -75,7 +75,13 @@ const writeMap = (filename: string, file: FileDescriptor, importedModule: any, s
     output += formatTokensAsCssVars(
       tokenItems,
       section,
-      (name) => `$${name}: var(--${name})${defaultInclude};\n`,
+      (name, value) => {
+        if (variableIgnoreList.includes(name)) {
+          return `$${name}: ${value}${defaultInclude};\n`;
+        }
+
+        return `$${name}: var(--${name})${defaultInclude};\n`;
+      },
       sep
     );
   });
@@ -94,7 +100,11 @@ const writeMap = (filename: string, file: FileDescriptor, importedModule: any, s
  */
 const writeCssVars = (filename: string, file: FileDescriptor, importedModule: any, sep: string) => {
   let tokenItems: Record<string, any>;
-  let output = `[data-theme="${file.baseName.replace('-components', '')}"]{\n`;
+
+  // for core theme, need to scope to root so that other themes can inherit any variables that they don't explicitly define
+  let output = file.baseName.includes('core')
+    ? `:root{\n`
+    : `[data-theme="${file.baseName.replace('-components', '')}"]{\n`;
 
   Object.entries(importedModule.default).forEach(([section]) => {
     tokenItems = flatten(importedModule.default[section]);
@@ -102,7 +112,12 @@ const writeCssVars = (filename: string, file: FileDescriptor, importedModule: an
     output += formatTokensAsCssVars(
       tokenItems,
       section,
-      (name, value) => `--${name}: ${value};\n`,
+      (name, value) => {
+        if (variableIgnoreList.includes(name)) {
+          return '';
+        }
+        return `--${name}: ${value};\n`;
+      },
       sep
     );
   });
