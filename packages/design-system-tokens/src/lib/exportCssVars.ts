@@ -3,6 +3,28 @@ import { flatten } from './utility';
 import { writeFile } from './file';
 
 /**
+ * Some sass variables are used in loops in sass. These variables cannot be mapped to css variables because sass will error.
+ * This list should include the variable names to be ignored in the sass -> css variable -> value mappings
+ */
+const variableIgnoreList: string[] = [
+  'grid-columns',
+  'media-width-xs',
+  'media-width-sm',
+  'media-width-md',
+  'media-width-lg',
+  'media-width-xl',
+  'spacer-1',
+  'spacer-2',
+  'spacer-3',
+  'spacer-4',
+  'spacer-5',
+  'spacer-6',
+  'spacer-7',
+  'spacer-none',
+  'spacer-half',
+];
+
+/**
  * Formats an object containing key/value token pairs as a single string containing
  * the formatted values ready to be written to a SCSS file, including line breaks
  *
@@ -22,7 +44,9 @@ const formatTokensAsCssVars = (
   Object.entries(items).forEach(([name, value]) => {
     // global objects in themes are not prefixed by the token type
     name = prefix === 'global' ? name : `${prefix}${separator}${name}`;
-    SCSS += formatter(name, value);
+    if (!variableIgnoreList.includes(name)) {
+      SCSS += formatter(name, value);
+    }
   });
   return SCSS;
 };
