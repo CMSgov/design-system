@@ -60,9 +60,8 @@ if [ "$DELETE_LAST" = true ]; then
 fi
 
 echo "${GREEN}Creating release branch...${NC}"
-DATE=$(date "+%Y-%m-%d")
 BRANCHREF=$(git rev-parse --short HEAD)
-BRANCH="release-${DATE}-${BRANCHREF}"
+BRANCH="release-${BRANCHREF}"
 git checkout -b $BRANCH
 
 echo "${GREEN}Bumping version...${NC}"
