@@ -1,10 +1,16 @@
 // importing core styles from core index.scss files
-@import '_core-components-scss-to-css.map.scss';
-@import '_core-components-theme.css';
-@import '_healthcare-components-scss-to-css.map.scss';
-@import '_healthcare-components-theme.css';
-@import '_medicare-components-scss-to-css.map.scss';
-@import '_medicare-components-theme.css';
+@import 'theme-variables/_core-scss-to-css.map.scss';
+@import 'theme-variables/_core-theme.css';
+@import 'theme-variables/_core-components-scss-to-css.map.scss';
+@import 'theme-variables/_core-components-theme.css';
+@import 'theme-variables/_healthcare-scss-to-css.map.scss';
+@import 'theme-variables/_healthcare-theme.css';
+@import 'theme-variables/_healthcare-components-scss-to-css.map.scss';
+@import 'theme-variables/_healthcare-components-theme.css';
+@import 'theme-variables/_medicare-scss-to-css.map.scss';
+@import 'theme-variables/_medicare-theme.css';
+@import 'theme-variables/_medicare-components-scss-to-css.map.scss';
+@import 'theme-variables/_medicare-components-theme.css';
 
 // @styles is aliased in gatsby-node.js
 @import '@styles/index.scss';

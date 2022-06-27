@@ -104,12 +104,10 @@ export const exportCssVars = (fileDescriptors: FileDescriptor[], outPath: string
     // component files do not need a separator
     const sep = file.baseName.includes('components') ? '' : '-';
 
-    if (file.baseName.includes('components')) {
-      const scssToCssMapFilename = `${outPath}/${file.baseName}-scss-to-css.map.scss`;
-      const cssVarFilename = `${outPath}/${file.baseName}-theme.css`;
-      writeMap(scssToCssMapFilename, file, importedModule, sep);
-      writeCssVars(cssVarFilename, file, importedModule, sep);
-    }
+    const scssToCssMapFilename = `${outPath}/${file.baseName}-scss-to-css.map.scss`;
+    const cssVarFilename = `${outPath}/${file.baseName}-theme.css`;
+    writeMap(scssToCssMapFilename, file, importedModule, sep);
+    writeCssVars(cssVarFilename, file, importedModule, sep);
   });
 
   return 0;

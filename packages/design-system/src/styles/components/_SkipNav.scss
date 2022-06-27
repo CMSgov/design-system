@@ -4,7 +4,7 @@
   left: 0;
   padding: $spacer-1 $spacer-2;
   position: absolute;
-  top: ($spacer-4 + $font-size-base) * -2;
+  top: calc(calc(#{$spacer-4} + #{$font-size-base}) * -2);
   z-index: 100;
 
   &:focus {

@@ -8,7 +8,7 @@ import exportCssVars from './lib/exportCssVars';
 const INPUT_PATH = `${process.cwd()}/src/`;
 const OUTPUT_PATH = 'dist';
 const INPUT_TYPES = ['themes', 'tokens'];
-const EXPORT_TYPES = ['sass', 'scss', 'csv', 'json', 'css'];
+const EXPORT_TYPES = ['sass', 'scss', 'csv', 'json', 'css-vars'];
 
 // main token export function, returns exit status (0 success, 1 failure)
 const tokenExporter = (inputType: string, exportType: string): number => {
@@ -22,7 +22,7 @@ const tokenExporter = (inputType: string, exportType: string): number => {
       return exportCsv(fileData, OUTPUT_PATH);
     case 'json':
       return exportJson(fileData, OUTPUT_PATH);
-    case 'css':
+    case 'css-vars':
       return exportCssVars(fileData, OUTPUT_PATH);
     default:
       return 0;
