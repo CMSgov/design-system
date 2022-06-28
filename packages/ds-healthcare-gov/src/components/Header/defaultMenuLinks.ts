@@ -1,7 +1,7 @@
 import { Link, VARIATION_NAMES } from './Header';
 import localeLink from './localeLink';
 import loginLink from './loginLink';
-import { Language, languageMatches, tWithLanguage } from '../i18n';
+import { Language, getLanguage, languageMatches, tWithLanguage } from '../i18n';
 
 export enum LinkIdentifier {
   LOGIN = 'login',
@@ -73,7 +73,7 @@ export function defaultMenuLinks(options: DefaultMenuLinkOptions = {}) {
   }
 
   if (!hideLanguageSwitch) {
-    const locLink = localeLink(t, locale, subpath, switchLocaleLink);
+    const locLink = localeLink(t, locale ?? getLanguage(), subpath, switchLocaleLink);
     loggedOut.push(locLink);
     loggedIn.push(locLink);
   }
