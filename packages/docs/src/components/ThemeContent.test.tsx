@@ -1,16 +1,12 @@
 import React from 'react';
-import ThemeContent, { OnlyThemeContentProps, NeverThemeContentProps } from './ThemeContent';
+import ThemeContent, { ThemeContentProps } from './ThemeContent';
 import { render, screen } from '@testing-library/react';
 
 const defaultProps = {
   children: <button>Hey!</button>,
 };
 
-function renderContent(
-  props:
-    | Omit<OnlyThemeContentProps, keyof typeof defaultProps>
-    | Omit<NeverThemeContentProps, keyof typeof defaultProps>
-) {
+function renderContent(props: Omit<ThemeContentProps, keyof typeof defaultProps>) {
   return render(<ThemeContent {...defaultProps} {...props} />);
 }
 
