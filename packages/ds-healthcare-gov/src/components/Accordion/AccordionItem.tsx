@@ -1,9 +1,6 @@
 import React from 'react';
 import { AccordionItem, MinusCircleIcon, PlusCircleIcon } from '@cmsgov/design-system';
-import { getLanguage, tWithLanguage } from '../i18n';
-
-const locale = getLanguage();
-const t = tWithLanguage(locale);
+import { t } from '../i18n';
 
 AccordionItem.defaultProps = {
   ...AccordionItem.defaultProps,
