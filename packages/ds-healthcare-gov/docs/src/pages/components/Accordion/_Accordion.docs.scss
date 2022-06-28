@@ -55,9 +55,11 @@ Accordions increase cognitive load and interaction cost, as users have to make d
 
 ### Style customization
 
-- `$accordion-border-color` -  Border color of the accordion
-- `$accordion-header-bg-color` - Background color of the accordion header
-- `$accordion-header-bg-hover-color` - Background color of the accordion header when hovered
+- `$accordion__border-color` -  Border color of the accordion
+- `$accordion__background-color` - Background color of the accordion header
+- `$accordion__background-color--hover` - Background color of the accordion header when hovered
+- `$accordion-button__color` -  Color of the accordion button
+- `$accordion-content__background-color` - Background color of the accordion content
 - `$accordion-header-font-family` - Font used for the accordion header
 
 ### Accessibility

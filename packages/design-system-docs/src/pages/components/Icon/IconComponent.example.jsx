@@ -139,8 +139,6 @@ const iconData = [
     defaultTitle: 'Minus in circle',
     component: <MinusCircleIcon />,
     name: 'MinusCircleIcon',
-    notes:
-      'Component takes <code>isFilled</code> prop to determine minus in circle is filled or an outline.',
   },
   {
     defaultTitle: 'Next',
@@ -156,8 +154,6 @@ const iconData = [
     defaultTitle: 'Plus in circle',
     component: <PlusCircleIcon />,
     name: 'PlusCircleIcon',
-    notes:
-      'Component takes <code>isFilled</code> prop to determine plus in circle is filled or an outline.',
   },
   {
     defaultTitle: 'Remove',

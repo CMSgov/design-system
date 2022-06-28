@@ -1,8 +1,8 @@
 .ds-c-accordion {
   .ds-c-accordion__button {
     flex-direction: row-reverse;
-    background-color: transparent;
-    color: $color-primary;
+    background-color: $accordion__background-color;
+    color: $accordion-button__color;
     column-gap: $spacer-1;
     justify-content: flex-end;
     font-weight: $font-weight-normal;
@@ -12,12 +12,12 @@
       background-color: transparent;
       color: $color-primary-darker;
       text-decoration: underline;
-      .MinusCircleIcon-Circle,
-      .PlusCircleIcon-Circle {
+      .ds-c-icon--minus-circle__circle,
+      .ds-c-icon--plus-circle__circle {
         fill: #0071bb;
       }
-      .MinusCircleIcon-Group,
-      .PlusCircleIcon-Group {
+      .ds-c-icon--minus-circle__group,
+      .ds-c-icon--plus-circle__group {
         fill: $color-white;
       }
     }
@@ -29,7 +29,7 @@
   }
 
   .ds-c-accordion__content {
-    background-color: transparent;
+    background-color: $accordion-content__background-color;
     padding: $spacer-1 $spacer-2 $spacer-1 $spacer-5;
   }
 }
