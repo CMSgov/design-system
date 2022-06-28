@@ -1,11 +1,11 @@
 ---
-title: Checkbox & Radio
+title: Checkbox
 relatedUswdsGuidance: components/form-controls
 ---
 
 ## `<ChoiceList>`
 
-A `ChoiceList` component can be used to render a radio button group, or checkbox group. Use the `type` prop to specify the type of field to display.
+A `ChoiceList` component can be used to render a [radio](/components/radio/) button group or checkbox group. Use the `type` prop to specify the type of field to display.
 
 **Checkbox**
 
@@ -13,14 +13,6 @@ A `ChoiceList` component can be used to render a radio button group, or checkbox
   componentName="choiceList"
   sourceFilePath="components/ChoiceList/ChoiceList.tsx"
   storyId="components-choicelist--default-checkbox"
-/>
-
-**Radio**
-
-<StorybookExample
-  componentName="choiceList-radio"
-  sourceFilePath="components/ChoiceList/ChoiceList.tsx"
-  storyId="components-choicelist--default-radio"
 />
 
 ### ChoiceList Props
@@ -53,10 +45,6 @@ Any _undocumented_ props that you pass to this component will be passed to the `
 - When a user needs to choose “yes” or “no” on only one option (use a stand-alone checkbox). For example, to toggle a setting on or off.
 - When users need to see all the available options at a glance.
 - When users should be able to select zero of the options.
-
-**Radio buttons**
-
-- When users need to select only one option out of a set of mutually exclusive choices.
 
 ### When to consider alternatives
 
