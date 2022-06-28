@@ -9,7 +9,6 @@
 // Layout styles for wrapping choice container
 .ds-c-choice-wrapper {
   display: flex;
-  flex-wrap: wrap;
   gap: 0.5rem;
   margin: 0.5rem 0;
   max-width: $form__max-width;
@@ -19,7 +18,8 @@
 .ds-c-choice + label,
 .ds-c-choice + .ds-c-label {
   cursor: pointer;
-  flex: 1 1 min-content;
+  flex-grow: 1;
+  flex-basis: min-content;
   font-weight: $font-normal;
   margin-top: 0;
   max-width: max-content;
@@ -61,6 +61,7 @@ label,
   border-radius: $choice__border-radius;
   cursor: pointer;
   display: grid;
+  flex-shrink: 0;
   height: $choice__size;
   justify-items: center;
   margin: 0;
