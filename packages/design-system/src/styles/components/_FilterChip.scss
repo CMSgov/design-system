@@ -66,9 +66,9 @@ $filter-chip-icon-size: 10px;
     display: block;
     fill: $filter-chip__color;
     height: $filter-chip-icon-size;
-    left: ($filter-chip-icon-container-size - 2 - $filter-chip-icon-size) / 2;
+    left: ($filter-chip-icon-container-size - 2 - $filter-chip-icon-size) * 0.5;
     position: relative;
-    top: ($filter-chip-icon-container-size - 2 - $filter-chip-icon-size) / 2;
+    top: ($filter-chip-icon-container-size - 2 - $filter-chip-icon-size) * 0.5;
     width: $filter-chip-icon-size;
 
     @media (-ms-high-contrast: active), (forced-colors: active) {

@@ -56,7 +56,12 @@ const Layout = ({
 
   return (
     <div className="ds-base">
-      <Helmet title="CMS Design System">
+      <Helmet
+        title="CMS Design System"
+        htmlAttributes={{
+          lang: 'en',
+        }}
+      >
         <script>{`window.tealiumEnvironment = "${env}";`}</script>
         <script src="//tags.tiqcdn.com/utag/cmsgov/cms-design/prod/utag.sync.js"></script>
       </Helmet>
