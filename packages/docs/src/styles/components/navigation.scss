@@ -4,7 +4,7 @@
   width: 100%;
 
   .c-navigation__header {
-    background-color: $color-primary-alt-lightest;
+    background-color: $color-secondary-lightest;
     padding: $spacer-2;
     display: flex;
     align-items: center;
@@ -65,7 +65,7 @@
 // Desktop
 @media (min-width: $width-md) {
   .c-navigation {
-    background-color: $color-primary-alt-lightest;
+    background-color: $color-secondary-lightest;
     width: unset;
 
     .c-navigation__header {
