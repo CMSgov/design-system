@@ -1,0 +1,185 @@
+---
+title: Table
+relatedUswdsGuidance: components/tables
+status: draft
+---
+
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableRow,
+} from '@cmsgov/design-system';
+import ViewSourceLink from '../../src/components/ViewSourceLink';
+
+Tables show tabular data in columns and rows.
+
+## Table with multi headers and a caption
+
+<EmbeddedExample>
+  <Table>
+    <TableCaption>Household members</TableCaption>
+    <col />
+    <colgroup span="2"></colgroup>
+    <colgroup span="2"></colgroup>
+    <TableHead>
+      <TableRow>
+        <TableCell component="td" rowspan="1"></TableCell>
+        <TableCell component="th" colspan="2" className="ds-u-text-align--center" scope="colgroup">
+          Address
+        </TableCell>
+        <TableCell component="th" colspan="2" className="ds-u-text-align--center" scope="colgroup">
+          Employment
+        </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell component="th" scope="col">
+          Name
+        </TableCell>
+        <TableCell component="th" scope="col">
+          Street
+        </TableCell>
+        <TableCell component="th" scope="col">
+          ZIP code
+        </TableCell>
+        <TableCell component="th" scope="col">
+          Employer
+        </TableCell>
+        <TableCell component="th" scope="col">
+          Industry
+        </TableCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      <TableRow>
+        <TableCell component="th" scope="row">
+          John Doe
+        </TableCell>
+        <TableCell component="td">123 Braavos Ave.</TableCell>
+        <TableCell component="td">20005</TableCell>
+        <TableCell component="td">Acme Co.</TableCell>
+        <TableCell component="td">Healthcare</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell component="th" scope="row">
+          Jane Doe
+        </TableCell>
+        <TableCell component="td">456 King's Landing</TableCell>
+        <TableCell component="td">20005</TableCell>
+        <TableCell component="td">Acme Co.</TableCell>
+        <TableCell component="td">Healthcare</TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</EmbeddedExample>
+
+## `<Table>`
+
+`Table` is a container component that contains `TableCaption`, `TableHead` and `TableBody` as children,
+as well as `TableRow` and `TableCell` for the table content. These components mostly follow ordinary HTML table semantics, but also include some additional
+responsive features including horizontal scrolling and vertically stacked rows.
+
+<ViewSourceLink sourceFilePath="components/Table/Table.tsx" />
+
+### Scrollable Table
+
+<ResponsiveExample title="Scrollable table example" storyId="components-table--scrollable-table" />
+
+### Stackable Table
+
+<ResponsiveExample
+  componentName="stackable table example"
+  storyId="components-table--stackable-table"
+/>
+
+### Table Props
+
+<PropTable componentName="Table" />
+
+## `<TableCaption>`
+
+`TableCaption` renders the `<caption>` element.
+
+<ViewSourceLink sourceFilePath="components/Table/TableCaption.tsx" />
+
+### Table Caption Props
+
+<PropTable componentName="TableCaption" />
+
+## `<TableHead>`
+
+`TableHead` renders the `<thead>` element and will typically contain `TableRow` elements to define table columns.
+
+<ViewSourceLink sourceFilePath="components/Table/TableHead.tsx" />
+
+### Table Head Props
+
+<PropTable componentName="TableHead" />
+
+## `<TableBody>`
+
+`TableBody` renders the `<tbody>` element and will typically contain `TableRow` elements to define table data.
+
+<ViewSourceLink sourceFilePath="components/Table/TableBody.tsx" />
+
+### Table Body Props
+
+<PropTable componentName="TableBody" />
+
+## `<TableRow>`
+
+`TableRow` renders a `<tr>` element.
+
+<ViewSourceLink sourceFilePath="components/Table/TableRow.tsx" />
+
+### Table Row Props
+
+<PropTable componentName="TableRow" />
+
+## `<TableCell>`
+
+`TableCell` dynamically renders a `<th>` or `<td>` element based on the parent component or user specified `component` prop. By default `TableCell` will automatically render a `<th>` element if the parent component is `TableHead`, otherwise it will render a `<td>` element.
+
+<ViewSourceLink sourceFilePath="components/Table/TableCell.tsx" />
+
+### Table Cell Props
+
+<PropTable componentName="TableCell" />
+
+## Guidance
+
+### When to use
+
+- When you need tabular information, such as statistical data.
+- When users need to compare sets of information.
+
+### When to consider alternatives
+
+- Depending on the type of content, consider using other presentation formats such as definition lists or hierarchical lists.
+- If you're writing out name / value pairs, there's often a more compact way compared to using a table.
+
+### Usage
+
+- Right-align numerical data in tables. You can use the `align` prop on the TableCell to accomplish this. Right alignment makes it easier to scan and compare numerical values.
+
+### Accessibility
+
+- Tables can have two levels of headers. Each header cell should have `scope="col"` or `scope="row"`. [Learn more about the "scope" attribute.](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th#attr-scope)
+- Complex tables are tables with more than two levels of headers. Each header should be given a unique `id` and each data cell should have a `headers` attribute with each related header cell’s `id` listed.
+- When adding a title to a table, include it in a `<caption>` tag inside of the `<table>` element.
+
+## Customization
+
+The following Sass variables can be overridden to customize Table components:
+
+<ComponentThemeOptions
+  theme="core"
+  componentname="table"
+/>
+
+### Learn more
+
+- [W3C Web Accessibility Tutorial \- Table Concepts](https://www.w3.org/WAI/tutorials/tables/)
+- [Design Better Data Tables](https://medium.com/mission-log/design-better-data-tables-430a30a00d8c)

@@ -1,0 +1,79 @@
+---
+title: Dropdown
+relatedUswdsGuidance: components/form-controls/#dropdown
+---
+
+Dropdowns allow users to select one option from a temporary modal menu.
+
+## `<Dropdown>`
+
+A `Dropdown` component can be used to render an HTML `select` menu. Any _undocumented_ props that you pass to this component will be passed to the `select` element, so you can use this to set additional attributes if necessary.
+
+Class-based component gives flexibility for active focus management by allowing refs to be passed.
+
+<StorybookExample
+  componentName="dropdown"
+  sourceFilePath="components/Dropdown/Dropdown.tsx"
+  storyId="components-dropdown--default-dropdown"
+  minHeight={250}
+/>
+
+### Props
+
+<PropTable componentName="Dropdown" />
+
+## Guidance
+
+### When to use
+
+- **Use sparingly**. Use the dropdown component only when a user needs to choose from about seven to 15 possible options and you have limited space to display the options.
+
+### When to consider alternatives
+
+- **Fewer than seven options.** Use [radio buttons](/components/radio) or [checkboxes](/components/checkbox/) instead.
+- **More than 15 options.** If the list of options is very long. Let users type the same information into a text input that suggests possible options instead.
+- **Multi-select.** If you need to allow users to select more than one option at once. Users often don’t understand how to select multiple items from dropdowns. Use [checkboxes]({{root}}/components/choice) instead.
+- **Site navigation.** Use the [navigation components](/components/vertical-nav/) instead.
+
+### Usage
+
+- **Make sure to test.** Test dropdowns thoroughly with members of your target audience. Several usability experts suggest they should be the “UI of last resort.” Many users find them confusing and difficult to use.
+- **Avoid dependent options.** Avoid making options in one dropdown menu change based on the input to another. Users often don’t understand how selecting an item in one impacts another.
+- **Use a good default.** When most users will (or should) pick a particular option, make it the selected default. **If a good default is not an option**, use a descriptive placeholder like `- Select a state -` as the selected default.
+- **Avoid auto-submission.** Don’t use JavaScript to automatically submit the form (or do anything else) when an option is selected. Auto-submission disrupts screen readers because they select each option as they read them.
+
+**[View the "Forms" guidelines for additional guidance and best practices.](/patterns/forms/)**
+
+### Accessibility
+
+- **Customize accessibly.** If you customize the dropdown, ensure it continues to meet the the [accessibility requirements that apply to all form controls](https://designsystem.digital.gov/components/form-controls/).
+- **Always use a label.** Make sure your dropdown has a label. Don’t replace it with the default menu option (for example, removing the “State” label and just having the dropdown read “Select a state” by default).
+- **Avoid auto-submission.** Don’t use JavaScript to automatically submit the form (or do anything else) when an option is selected. Auto-submission disrupts screen readers because they select each option as they read them.
+
+## Customization
+
+The following Sass variables can be overridden to customize Dropdown components:
+
+<ComponentThemeOptions
+  theme="core"
+  componentname="dropdown"
+/>
+
+## Text Input Options
+
+<ComponentThemeOptions
+  theme="core"
+  componentname="text-input"
+/>
+
+### Related patterns
+
+- [Checkbox](/components/checkbox) and [Radio](/components/radio/)
+- [Text field](/components/text-field/)
+
+### Learn more
+
+- [Form Guidelines]/guidelines/forms/)
+- [Asking for a date of birth](https://designnotes.blog.gov.uk/2013/12/05/asking-for-a-date-of-birth/)
+- [Four steps for choosing form elements on the Web (PDF)](http://www.formsthatwork.com/files/Articles/dropdown.pdf)
+- [Dropdowns: Design Guidelines](https://www.nngroup.com/articles/drop-down-menus/)

@@ -1,0 +1,77 @@
+---
+title: Form Label & Legend
+---
+
+Form Labels & Legends are used with form inputs to provide labels, hints, and errors that help the user enter information.
+
+## `<FormLabel>`
+
+The `FormLabel` component provides the `label` (or `legend`) for a field, along with any associated hint text and error message.
+
+<StorybookExample
+  componentName="formLabel"
+  sourceFilePath="components/FormLabel/FormLabel.tsx"
+  storyId="components-formlabel--form-label-with-hint"
+/>
+
+### Props
+
+<PropTable componentName="ChoiceList" />
+
+## Guidance
+
+### When to use
+
+#### Labels
+
+- Each form field should have a `<label>`. Never use a field's placeholder attribute as the primary way to label the field.
+
+#### Legends
+
+- Use a single legend for fieldset (this is required). One example of a common use of fieldset and legend is a question with radio button options for answers. The question text and radio buttons are wrapped in a fieldset, with the question itself being inside the legend tag.
+
+### Usage
+
+#### Labels
+
+- Apply the `.ds-c-label` class to `<label>` elements.
+- Each field should have a `<label>`. Never use a field's `placeholder` attribute as the primary way to label the field.
+- Labels should have a `for` attribute, referencing the corresponding input's unique `id` attribute. Only one label can be associated to each unique form element.
+- Labels should be placed above their fields.
+- Label text should be short and in sentence case.
+- Avoid colons at the end of labels.
+
+#### Legends
+
+- Avoid links in legends when possible. Links inside legends are not read by some screen readers, most notably Internet Explorer 11, paired with JAWS. If you need a pattern like this, put the link outside of the legend element, but keep all other useful hint text in the legend.
+
+#### Hint text
+
+- Place hint text within the field's `<label>` element.
+- Apply the `.ds-c-field__hint` class to hint text.
+- Use hint text for supporting contextual help, which will always be shown.
+- Hint text should sit above a form field and below the label text.
+
+#### Validation
+
+- Place inline validation messages within the field's `<label>` element.
+- Apply the `.ds-c-field__error-message` class to error text.
+- Visually align inline validation messages with the input fields, so people using screen magnifiers can read them quickly.
+- Either place an icon next to the error, labeling the icon as error with ARIA or off-screen text, or use text in front of the message itself. Like: "Error: The email address is not a valid email address." The use of the icon or text not only clearly labels the following text as an error, but allows users to know that the message is an error without relying on color alone.
+- The form field receives an `aria-describedby` attribute that references the `id` of the error message.
+- The error message should be wrapped in an `role="alert"` so that screen readers users receive the message, and can act on it.
+  If the page is fully refreshed, add ‘Error: ’ to the beginning of the page `<title>` so screen readers read it out as soon as possible.
+
+## Customization
+
+The following Sass variables can be overridden to customize Form components:
+
+<ComponentThemeOptions
+  theme="core"
+  componentname="form"
+/>
+
+
+### Learn More
+
+- [Form Guidelines](/patterns/forms/)
