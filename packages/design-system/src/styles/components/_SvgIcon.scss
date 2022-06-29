@@ -104,3 +104,29 @@
     }
   }
 }
+
+.ds-c-icon--minus-circle {
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    .ds-c-icon--minus-circle__circle {
+      fill: Window;
+      stroke: WindowText;
+    }
+
+    .ds-c-icon--minus-circle__group {
+      fill: WindowText;
+    }
+  }
+}
+
+.ds-c-icon--plus-circle {
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    .ds-c-icon--plus-circle__circle {
+      fill: Window;
+      stroke: WindowText;
+    }
+
+    .ds-c-icon--plus-circle__group {
+      fill: WindowText;
+    }
+  }
+}
