@@ -9,19 +9,15 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { LocationInterface } from '../helpers/graphQLTypes';
 
 interface NavItem {
+  frontmatter: {
+    title: string;
+  };
   id: string;
-  name: string;
-  relativeDirectory: string;
-  relativePath: string;
+  slug: string;
 }
 
-interface GraphQlNavItem {
-  fieldValue: string;
-  edges: [
-    {
-      node: NavItem;
-    }
-  ];
+interface GraphQlNavItemNode {
+  node: NavItem;
 }
 
 interface DocSiteNavProps {
@@ -81,19 +77,21 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
 
   const data = useStaticQuery(graphql`
     query SiteNavQuery {
-      allFile(
-        sort: { fields: [relativeDirectory, name] }
-        filter: { ext: { eq: ".mdx" }, relativeDirectory: { ne: "not-in-sidebar" } }
+      allMdx(
+        filter: {
+          slug: { glob: "!(not-in-sidebar)/**" }
+          fileAbsolutePath: { glob: "**/content/**" }
+        }
+        sort: { fields: slug }
       ) {
-        group(field: relativeDirectory) {
-          fieldValue
-          edges {
-            node {
-              id
-              name
-              relativeDirectory
-              relativePath
+        edges {
+          node {
+            frontmatter {
+              title
             }
+            slug
+            id
+            fileAbsolutePath
           }
         }
       }
@@ -111,7 +109,7 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
    * Checks sub nav items to see if any are currently selected
    */
   const isSubNavItemSelected = (subNavItems) => {
-    return subNavItems.some((navItem) => isItemSelected(navItem.url));
+    return subNavItems.some((navItem) => navItem.selected);
   };
 
   /**
@@ -123,46 +121,138 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
     return newName;
   };
 
-  const formatNavItemData = ({ name, relativePath }: NavItem) => {
-    const url = makePageUrl(relativePath);
+  /**
+   * transforms from graphql structure to structure for <VerticalNav> `items` prop
+   */
+  const formatNavItemData = ({ frontmatter, slug }: NavItem) => {
+    const name = frontmatter.title;
+    const url = makePageUrl(slug);
     return {
       label: formatNavItemLabel(name),
       url,
-      id: url,
+      id: slug,
       selected: isItemSelected(url),
     };
   };
 
-  const formatNavData = (dataList: GraphQlNavItem[]): VerticalNavItemProps[] => {
-    const retVal: VerticalNavItemProps[] = [];
+  /**
+   * Groups files under same relative directory
+   *
+   * @example [
+   *  {
+   *    relativeDirectory: 'directory1',
+   *    items: []
+   *  },
+   *  {
+   *    relativeDirectory: 'directory1/subDirectory1'
+   *    items []
+   *  }
+   * ]
+   */
+  const groupData = (dataList: GraphQlNavItemNode[]) => {
+    const retVal = {};
     dataList.forEach((dataItem) => {
-      // for each level 1 item that has sub nav items
-      if (dataItem.fieldValue.length) {
-        // format all the level 2 items
-        const subNavItems = dataItem.edges.map((subNavItem) => formatNavItemData(subNavItem.node));
+      // split file path
+      const filePath = dataItem.node.slug.split('/');
+      // remove file name (last item in list)
+      filePath.pop();
+      // reconstruct with directories path
+      const relativeDirectory = filePath.join('/');
 
-        const labelText = formatNavItemLabel(dataItem.fieldValue);
-        const isSelected = isItemSelected(dataItem.fieldValue);
-        // add level 1 item & sub items
-        retVal.push({
-          label: labelText,
-          items: subNavItems,
-          defaultCollapsed: !isSubNavItemSelected(subNavItems),
-          selected: isSelected,
-        });
+      if (!retVal[relativeDirectory]) {
+        retVal[relativeDirectory] = {
+          relativeDirectory,
+          items: [],
+        };
+      }
+      retVal[relativeDirectory].items.push(dataItem);
+    });
+    return Object.values(retVal);
+  };
+
+  /**
+   * Need to nest level2 items that have subnav items under the relevant level1 items
+   */
+  const nestSubNavs = (dataList): VerticalNavItemProps[] => {
+    const level1Items: { string?: VerticalNavItemProps } = {};
+    const level2Items = [];
+
+    // sort level1 vs level2 items
+    dataList.forEach((dataItem) => {
+      if (dataItem.label.split('/').length > 1) {
+        level2Items.push(dataItem);
       } else {
-        // for each level 1 item without sub nav items,
-        // add each top level item
-        dataItem.edges.forEach((navItemLvl1) => {
-          retVal.push(formatNavItemData(navItemLvl1.node));
-        });
+        level1Items[dataItem.label] = dataItem;
       }
     });
 
+    // iterate through level2 items and nest them under their level1 parent
+    level2Items.forEach((level2Item) => {
+      const [level1Name, level2Name] = level2Item.label.split('/');
+
+      level1Items[level1Name].items.push({ ...level2Item, label: level2Name });
+
+      if (!level2Item.defaultCollapsed) {
+        // if any level2 item is default expanded, make sure that level1 item also gets default expanded
+        level1Items[level1Name].defaultCollapsed = level2Item.defaultCollapsed;
+      }
+    });
+
+    return Object.values(level1Items);
+  };
+
+  /**
+   * sort items - needed because level2 items that have sub nav are added to the end of list in previous step
+   */
+  const sortNavItems = (level1Items: VerticalNavItemProps[]): VerticalNavItemProps[] => {
+    Object.values(level1Items).forEach((level1Item) => {
+      // sort items based on id which is the file path for the item
+      // this allows for control as to how nav items are sorted
+      level1Item.items.sort((itemA, itemB) => {
+        if (itemA.id < itemB.id) {
+          return -1;
+        } else if (itemA.id > itemB.id) {
+          return 1;
+        }
+        return 0;
+      });
+    });
+    return level1Items;
+  };
+
+  /**
+   * re-structures graphQL object to VerticalNavItem structure
+   */
+  const restructureAsVerticalNavItem = (dataList): VerticalNavItemProps[] => {
+    const retVal: VerticalNavItemProps[] = [];
+    dataList.forEach((dataItem) => {
+      // format all the level 2 items
+      const subNavItems = dataItem.items.map((subNavItem) => formatNavItemData(subNavItem.node));
+
+      const labelText = formatNavItemLabel(dataItem.relativeDirectory);
+      const isSelected = isItemSelected(removePositioning(dataItem.relativeDirectory));
+
+      // add level 1 item & sub items
+      retVal.push({
+        label: labelText,
+        items: subNavItems,
+        defaultCollapsed: !isSubNavItemSelected(subNavItems),
+        selected: isSelected,
+        id: dataItem.relativeDirectory,
+      });
+    });
     return retVal;
   };
 
-  const navItems: VerticalNavItemProps[] = formatNavData(data?.allFile?.group);
+  const formatNavData = (graphQlData: GraphQlNavItemNode[]): VerticalNavItemProps[] => {
+    const groupedGraphQlData = groupData(graphQlData);
+    const verticalNavItems = restructureAsVerticalNavItem(groupedGraphQlData);
+    const nestedItems = nestSubNavs(verticalNavItems);
+    const sortedItems = sortNavItems(nestedItems);
+    return sortedItems;
+  };
+
+  const navItems: VerticalNavItemProps[] = formatNavData(data?.allMdx?.edges);
 
   return (
     <div

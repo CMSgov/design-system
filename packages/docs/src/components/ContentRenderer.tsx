@@ -9,6 +9,7 @@ import EmbeddedExample from './EmbeddedExample';
 import StorybookExample from './StorybookExample';
 import ComponentThemeOptions from './ComponentThemeOptions';
 import PropTable from './PropTable';
+import ResponsiveExample from './ResponsiveExample';
 
 interface MdxProviderProps {
   children: string | { props: { children?: string } };
@@ -87,6 +88,7 @@ const customComponents = {
   StorybookExample,
   ComponentThemeOptions,
   PropTable,
+  ResponsiveExample,
 };
 
 interface ContentRendererProps {
