@@ -7,8 +7,22 @@ exports[`AccordionItem renders an accordion item 1`] = `
     onKeyDown={[Function]}
   >
     <AccordionItem
+      closeIcon={
+        <RemoveIcon
+          ariaHidden={false}
+          className="ds-c-accordion__button-icon"
+          title="Close"
+        />
+      }
       heading="Heading for accordion item"
       headingLevel="2"
+      openIcon={
+        <AddIcon
+          ariaHidden={false}
+          className="ds-c-accordion__button-icon"
+          title="Open"
+        />
+      }
     >
       <h2
         className="ds-c-accordion__heading"
