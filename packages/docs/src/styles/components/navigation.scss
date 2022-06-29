@@ -1,0 +1,111 @@
+// Mobile
+.c-navigation {
+  background-color: $color-white;
+  width: 100%;
+
+  .c-navigation__header {
+    background-color: $color-secondary-lightest;
+    padding: $spacer-2;
+    display: flex;
+    align-items: center;
+    gap: $spacer-2;
+
+    button {
+      color: currentColor;
+    }
+  }
+
+  .c-navigation__title {
+    color: $color-base;
+    font-size: $font-size-xl;
+    margin: 0;
+
+    a {
+      background-color: transparent;
+      color: currentColor;
+      text-decoration: none;
+    }
+  }
+
+  .c-navigation__link-list {
+    border-block: 1px solid $vertical-nav-item__border-color;
+    margin-block: $spacer-2;
+
+    .ds-c-vertical-nav__label {
+      text-transform: capitalize;
+    }
+  }
+
+  .c-navigation__github-link {
+    background-color: transparent;
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
+
+    svg {
+      height: 1em;
+      width: auto;
+    }
+  }
+}
+
+.c-navigation--open {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  overflow-y: auto;
+
+  .c-navigation__header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+}
+
+// Desktop
+@media (min-width: $width-md) {
+  .c-navigation {
+    background-color: $color-secondary-lightest;
+    width: unset;
+
+    .c-navigation__header {
+      margin-inline: calc($spacer-2 * -1);
+      margin-top: calc($spacer-2 * -1);
+    }
+
+    .c-navigation__link-list {
+      .ds-c-vertical-nav__label {
+        background-color: transparent;
+
+        &:hover,
+        &:visited:hover {
+          background-color: #{scale-color($vertical-nav-item__color--hover, $alpha: -95%)};
+        }
+      }
+    }
+  }
+}
+
+@media (-ms-high-contrast: active), (forced-colors: active) {
+  .c-navigation {
+    -ms-high-contrast-adjust: none;
+    forced-color-adjust: none;
+
+    .ds-c-vertical-nav__label--current[aria-expanded='true'] {
+      background-color: Highlight;
+      color: HighlightText;
+
+      path {
+        fill: HighlightText;
+      }
+    }
+
+    .ds-c-vertical-nav__label--parent {
+      background-color: Window;
+
+      path {
+        fill: WindowText;
+      }
+    }
+  }
+}

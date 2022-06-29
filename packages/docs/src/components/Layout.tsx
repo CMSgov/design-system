@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'gatsby';
 
-import Header from './DocSiteHeader';
 import Footer from './DocSiteFooter';
-import Sidebar from './DocSiteSidebar';
-import { SkipNav, Badge } from '@cmsgov/design-system';
+import Navigation from './DocSiteNavigation';
+import { SkipNav, Badge, UsaBanner } from '@cmsgov/design-system';
 import { LocationInterface } from '../helpers/graphQLTypes';
 
 import '../styles/index.scss';
@@ -48,11 +47,6 @@ const Layout = ({
   location,
 }: LayoutProps) => {
   const env = 'prod';
-  const [isMobileNavOpen, setMobileNavOpen] = useState<boolean>(false);
-
-  const toggleMenu = () => {
-    setMobileNavOpen(!isMobileNavOpen);
-  };
 
   return (
     <div className="ds-base">
@@ -67,9 +61,11 @@ const Layout = ({
       </Helmet>
 
       <SkipNav href="#main" />
-      <Header />
+
+      <UsaBanner className="ds-u-display--none ds-u-md-display--block" />
+
       <div className="ds-l-row ds-u-margin--0">
-        <Sidebar isMobileNavOpen={isMobileNavOpen} location={location} />
+        <Navigation location={location} />
         <main id="main" className="ds-l-md-col ds-u-padding--0 ds-u-padding-bottom--4">
           <header className="ds-u-padding--3 ds-u-sm-padding--6 ds-u-display--block ds-u-fill--gray-lightest">
             <div className="ds-u-display--flex ds-u-align-items--center">
@@ -108,13 +104,6 @@ const Layout = ({
           </article>
         </main>
       </div>
-
-      <button
-        className="ds-c-button ds-c-button--primary ds-u-md-display--none c-mobile-nav-button"
-        onClick={toggleMenu}
-      >
-        {isMobileNavOpen ? 'Close' : 'Menu'}
-      </button>
 
       <Footer />
     </div>
