@@ -219,7 +219,7 @@ label,
   border-left: $spacer-half solid $choice__border-color--left;
   flex: 1 1 100%;
   margin-bottom: $spacer-2;
-  margin-left: ($choice__size / 2) - ($spacer-half / 2);
+  margin-left: ($choice__size * 0.5) - ($spacer-half * 0.5);
   padding: $spacer-2;
   padding-right: 0;
 
