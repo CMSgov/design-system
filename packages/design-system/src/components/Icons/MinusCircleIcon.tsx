@@ -18,7 +18,7 @@ function MinusCircleIcon(props: IconCommonProps): React.ReactElement {
           <g transform="translate(49.000000, 362.000000)">
             <circle
               className="ds-c-icon--minus-circle__circle"
-              stroke="#0071BB"
+              stroke="currentColor"
               strokeWidth="2"
               fill="#FFFFFF"
               cx="8"
@@ -28,7 +28,7 @@ function MinusCircleIcon(props: IconCommonProps): React.ReactElement {
             <g
               className="ds-c-icon--minus-circle__group"
               transform="translate(2.823529, 7.223529)"
-              fill="#0071BB"
+              fill="currentColor"
             >
               <path
                 d="M5.17647059,-4.4 C5.60530345,-4.4 5.95294118,-4.05236228 5.95294118,-3.62352941 L5.95294118,5.17647059 C5.95294118,5.60530345 5.60530345,5.95294118 5.17647059,5.95294118 C4.74763772,5.95294118 4.4,5.60530345 4.4,5.17647059 L4.4,0.132872909 L4.4,-3.62352941 C4.4,-4.05236228 4.74763772,-4.4 5.17647059,-4.4 Z"

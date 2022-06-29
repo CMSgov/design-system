@@ -18,7 +18,7 @@ function PlusCircleIcon(props: IconCommonProps): React.ReactElement {
           <g transform="translate(49.000000, 362.000000)">
             <circle
               className="ds-c-icon--plus-circle__circle"
-              stroke="#0071BB"
+              stroke="currentColor"
               strokeWidth="2"
               fill="#FFFFFF"
               cx="8"
@@ -28,7 +28,7 @@ function PlusCircleIcon(props: IconCommonProps): React.ReactElement {
             <g
               className="ds-c-icon--plus-circle__group"
               transform="translate(2.823529, 2.823529)"
-              fill="#0071BB"
+              fill="currentColor"
             >
               <rect x="4.4" y="0" width="1.55294118" height="10.3529412" rx="0.776470588"></rect>
               <path
