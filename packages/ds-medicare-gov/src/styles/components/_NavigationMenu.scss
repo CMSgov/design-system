@@ -13,7 +13,7 @@
 
 .m-c-navigationMenu__mobileToggle {
   position: absolute;
-  top: -($base-font-size + 21px + 6px);
+  top: -calc(#{$base-font-size} + 21px + 6px);
   right: 12px;
   outline: 0;
 

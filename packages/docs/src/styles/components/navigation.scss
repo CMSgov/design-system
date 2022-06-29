@@ -69,8 +69,8 @@
     width: unset;
 
     .c-navigation__header {
-      margin-inline: calc($spacer-2 * -1);
-      margin-top: calc($spacer-2 * -1);
+      margin-inline: calc(#{$spacer-2} * -1);
+      margin-top: calc(#{$spacer-2} * -1);
     }
 
     .c-navigation__link-list {
@@ -79,7 +79,20 @@
 
         &:hover,
         &:visited:hover {
-          background-color: #{scale-color($vertical-nav-item__color--hover, $alpha: -95%)};
+          position: relative;
+          z-index: 1;
+
+          &:before {
+            z-index: -1;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            content: '';
+            background-color: #{$vertical-nav-item__color--hover};
+            filter: opacity(0.05);
+          }
         }
       }
     }

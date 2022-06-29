@@ -142,8 +142,9 @@ label,
     }
 
     &:focus::before {
-      height: $choice__size - ($choice__border-width * 2);
-      width: $choice__size - ($choice__border-width * 2);
+      // have to do a mix of calc & sass interpolation in order to accommodate values being css vars in internal tools
+      height: calc(#{$choice__size} - (#{$choice__border-width} * 2));
+      width: calc(#{$choice__size} - (#{$choice__border-width} * 2));
     }
   }
 }
@@ -219,7 +220,7 @@ label,
   border-left: $spacer-half solid $choice__border-color--left;
   flex: 1 1 100%;
   margin-bottom: $spacer-2;
-  margin-left: ($choice__size * 0.5) - ($spacer-half * 0.5);
+  margin-left: calc(calc(#{$choice__size} * 0.5) - calc(#{$spacer-half} * 0.5));
   padding: $spacer-2;
   padding-right: 0;
 

@@ -48,8 +48,9 @@ const Layout = ({
 }: LayoutProps) => {
   const env = 'prod';
 
+  // TODO: update data-theme value when theme switcher is created
   return (
-    <div className="ds-base">
+    <div className="ds-base" data-theme="core">
       <Helmet
         title="CMS Design System"
         htmlAttributes={{
