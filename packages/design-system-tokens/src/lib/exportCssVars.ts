@@ -103,7 +103,7 @@ const writeCssVars = (filename: string, file: FileDescriptor, importedModule: an
 
   // for core theme, need to scope to root so that other themes can inherit any variables that they don't explicitly define
   let output = file.baseName.includes('core')
-    ? `:root{\n`
+    ? `:root, :before{\n`
     : `[data-theme="${file.baseName.replace('-components', '')}"]{\n`;
 
   Object.entries(importedModule.default).forEach(([section]) => {

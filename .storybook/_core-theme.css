@@ -1,4 +1,4 @@
-:root{
+:root, :before{
 --animation-ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
 --animation-speed-base: 1;
 --animation-speed-1: 0.25s;

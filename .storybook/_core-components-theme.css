@@ -1,4 +1,4 @@
-:root{
+:root, :before{
 --accordion__color: #262626;
 --accordion__background-color: #f2f2f2;
 --accordion__background-color--hover: #d9d9d9;
