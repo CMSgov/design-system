@@ -1,0 +1,150 @@
+@import '../settings/index.scss';
+
+$drawer-box-shadow: -2px 0 0 $drawer__border-color;
+$drawer-space: $spacer-2;
+$drawer-animation-timing: $animation-speed-2;
+$drawer-elevation: $z-drawer;
+$drawer-font-size-mobile: $font-size-base;
+$drawer-font-size-tablet: $font-size-sm;
+$drawer-font-size-desktop: $font-size-base;
+$drawer-footer-line-height: $font-line-height-base;
+$drawer-toggle-font-weight: $font-weight-normal;
+$drawer-toggle-space: 0;
+
+@keyframes slideInDrawer {
+  from {
+    opacity: 0;
+    transform: translate3d(200px, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Help drawer toggle */
+.ds-c-drawer__toggle {
+  display: block;
+  font-weight: $drawer-toggle-font-weight;
+  padding: $drawer-toggle-space;
+
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    padding: $spacer-half $spacer-2;
+  }
+}
+
+.ds-c-drawer__toggle--inline {
+  display: inline;
+}
+
+/* Help drawer wrapper */
+.ds-c-drawer {
+  background: $drawer__background-color;
+  bottom: 0;
+  box-shadow: $drawer-box-shadow;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: $drawer-elevation;
+
+  @media (min-width: $width-md) {
+    animation: slideInDrawer $drawer-animation-timing ease-in-out both; // slide in from the right
+    max-width: 33%; // this equates to 4 grid columns
+  }
+
+  @media (min-width: $width-xl) {
+    max-width: $measure-base;
+  }
+
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    border: 1px solid WindowText;
+    border-left: $spacer-3 solid WindowText;
+  }
+}
+
+.ds-c-drawer__window {
+  height: 100%;
+  overflow: auto;
+  overscroll-behavior: contain;
+
+  @supports (display: flex) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* Help drawer header */
+.ds-c-drawer__header {
+  align-items: center;
+  background-color: $drawer-header__background-color;
+  display: flex;
+  gap: $drawer-space;
+  justify-content: space-between;
+  padding: $drawer-space;
+
+  @supports (display: flex) {
+    flex: 0 0 auto;
+  }
+
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    border-bottom: 1px solid ButtonText;
+  }
+}
+
+.ds-c-drawer__header-heading {
+  margin: 0;
+}
+
+.ds-c-drawer__close-button {
+  align-self: flex-start;
+}
+
+// This element is focusable via a tabindex attribute.
+.ds-c-drawer__header-heading:focus {
+  @include focus-styles;
+}
+
+// Using `overflow: auto` instead of `position: sticky` on sticky els
+// due to a Mozilla bug where sticky els don't calc reflow when inside
+// a flex container: https://bugzilla.mozilla.org/show_bug.cgi?id=1585254
+.ds-c-drawer--is-sticky {
+  overflow: auto;
+}
+
+/* Help drawer body content */
+.ds-c-drawer__body {
+  font-size: $drawer-font-size-mobile;
+  padding: $drawer-space;
+
+  @media (min-width: $width-md) {
+    font-size: $drawer-font-size-tablet;
+  }
+
+  @media (min-width: $width-lg) {
+    font-size: $drawer-font-size-desktop;
+  }
+
+  @supports (display: flex) {
+    flex: 1 1 auto;
+  }
+
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    border-top: 1px solid ButtonText;
+  }
+}
+
+/* Help drawer footer */
+.ds-c-drawer__footer {
+  background-color: $drawer-footer__background-color;
+  line-height: $drawer-footer-line-height;
+  padding: $drawer-space;
+
+  @supports (display: flex) {
+    flex: 0 0 auto;
+  }
+}
+
+.ds-c-drawer__footer-title {
+  margin: 0;
+}
