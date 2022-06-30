@@ -1,0 +1,21 @@
+@import '../settings/index.scss';
+
+select.ds-c-field {
+  appearance: none;
+  background-color: $dropdown__background-color;
+  background-image: url('#{$image-path}/arrow-both.svg');
+  background-position: right $spacer-1 center;
+  background-repeat: no-repeat;
+  background-size: $dropdown__icon-size;
+  padding-right: ($dropdown__icon-size * 2) + $spacer-1;
+
+  &[multiple] {
+    background-image: none;
+  }
+
+  // Removes inner outline on select elements in Firefox.
+  &:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+  }
+}

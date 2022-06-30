@@ -1,0 +1,81 @@
+@import '../settings/index.scss';
+
+.ds-c-dialog {
+  background-color: $dialog__background-color;
+  box-shadow: $shadow-base;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: $font-size-base;
+  max-width: $measure-base;
+  padding: $dialog__padding;
+  text-align: left;
+  vertical-align: middle;
+  width: 95%; // provide space for the background layer to peek through
+
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    outline: $spacer-2 solid WindowText;
+  }
+}
+
+.ds-c-dialog--narrow {
+  max-width: $measure-narrow;
+}
+
+.ds-c-dialog--wide {
+  max-width: $measure-wide;
+}
+
+.ds-c-dialog--full {
+  max-width: $site-max-width;
+}
+
+.ds-c-dialog__header {
+  align-items: flex-start;
+  display: flex;
+  // Provide some spacing when the header only includes the close button
+  padding-bottom: $spacer-1;
+}
+
+.ds-c-dialog__body {
+  overflow-wrap: break-word;
+  // IE fallback
+  word-wrap: break-word;
+}
+
+.ds-c-dialog__actions {
+  margin-top: $spacer-3;
+}
+
+.ds-c-dialog__close {
+  margin-left: auto;
+  padding: 0 $spacer-1 0 $spacer-half;
+
+  .ds-c-icon {
+    font-size: 13px;
+    margin: 0 $spacer-half;
+
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      path {
+        fill: ButtonText;
+      }
+    }
+  }
+
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    padding: $spacer-half $spacer-2;
+  }
+}
+
+.ds-c-dialog-wrap {
+  background-color: $dialog-overlay__background-color;
+  bottom: 0;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: $spacer-6 0;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  width: 100%;
+  z-index: $z-dialog;
+}
