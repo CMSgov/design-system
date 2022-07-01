@@ -16,11 +16,6 @@ export default {
     disabled: {
       control: { type: 'boolean' },
     },
-    inverse: {
-      table: {
-        disable: true,
-      },
-    },
     component: {
       table: {
         disable: true,
@@ -35,15 +30,16 @@ export default {
   },
   args: {
     children: 'Your button text here',
+    onDark: false,
   },
 };
 
-const Template = ({ data, ...args }) => <Button {...args} />;
+const Template = ({ ...args }) => <Button {...args} />;
 
 export const DefaultButton = Template.bind({});
 export const InverseButton = Template.bind({});
 InverseButton.args = {
-  inversed: true,
+  onDark: true,
 };
 InverseButton.parameters = {
   backgrounds: { default: process.env.STORYBOOK_DS === 'medicare' ? 'Mgov dark' : 'Hcgov dark' },
@@ -65,12 +61,12 @@ SpinnerButton.args = {
       <Spinner /> Loading...
     </>
   ),
-  variation: 'primary',
+  variation: 'outline',
 };
 
 export const LinkButton = Template.bind({});
 LinkButton.args = {
-  href: 'javascript:void(0);',
+  href: '!#',
 };
 LinkButton.parameters = {
   loki: { skip: true },
