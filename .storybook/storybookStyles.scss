@@ -1,6 +1,14 @@
-// the webpack.config.js file adds the @import path for the appropriate scss entry
+@import '@cmsgov/design-system/src/styles/index';
+
+[data-theme='healthcare'] {
+  @import '@cmsgov/ds-healthcare-gov/src/styles/index';
+}
+
+[data-theme='medicare'] {
+  @import '@cmsgov/ds-medicare-gov/src/styles/index';
+}
 
 .utility-example {
-  background-color: $color-primary-alt-lightest;
-  outline: 2px dashed $color-primary-alt;
+  background-color: $color-secondary-lightest;
+  outline: 2px dashed $color-secondary;
 }

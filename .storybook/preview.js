@@ -56,6 +56,29 @@ export const globalTypes = {
       ],
     },
   },
+  theme: {
+    name: 'Theme',
+    description: 'Current theme',
+    defaultValue: 'core',
+    toolbar: {
+      icon: 'paintbrush',
+      items: [
+        { value: 'core', left: 'Core', title: 'Core CMSDS Theme' },
+        { value: 'healthcare', left: 'Healthcare', title: 'Healthcare Theme' },
+        { value: 'medicare', left: 'Medicare', title: 'Medicare Theme' },
+      ],
+    },
+  },
+};
+
+const themeSettingDecorator = (Story, context) => {
+  const { theme } = context.globals;
+
+  return (
+    <div data-theme={theme}>
+      <Story {...context} />
+    </div>
+  );
 };
 
 const languageSettingDecorator = (Story, context) => {
@@ -86,4 +109,8 @@ const analyticsSettingsDecorator = (Story, context) => {
   return <Story {...context} />;
 };
 
-export const decorators = [languageSettingDecorator, analyticsSettingsDecorator];
+export const decorators = [
+  languageSettingDecorator,
+  analyticsSettingsDecorator,
+  themeSettingDecorator,
+];
