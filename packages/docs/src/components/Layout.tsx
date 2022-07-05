@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'gatsby';
 
@@ -37,7 +37,7 @@ interface LayoutProps {
    */
   status?: PageStatus;
   /**
-   * Theme setting
+   * Current theme name
    */
   theme: string;
 }
@@ -61,13 +61,12 @@ const Layout = ({
           lang: 'en',
         }}
         bodyAttributes={{
-          'data-theme': { theme },
+          'data-theme': theme,
         }}
       >
         <script>{`window.tealiumEnvironment = "${env}";`}</script>
         <script src="//tags.tiqcdn.com/utag/cmsgov/cms-design/prod/utag.sync.js"></script>
       </Helmet>
-
       <SkipNav href="#main" />
 
       <UsaBanner className="ds-u-display--none ds-u-md-display--block" />

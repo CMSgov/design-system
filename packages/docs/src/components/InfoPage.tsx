@@ -3,6 +3,8 @@ import { graphql } from 'gatsby';
 
 import Layout from './Layout';
 import { MdxQuery, TableOfContentsItem } from '../helpers/graphQLTypes';
+import { getQueryParamValue } from '../helpers/urlUtils';
+import { updateThemeLocalStorage } from '../helpers/storageUtils';
 import ContentRenderer from './ContentRenderer';
 
 /**
@@ -12,11 +14,9 @@ const InfoPage = ({ data, location }: MdxQuery) => {
   const { frontmatter, body, tableOfContents } = data.mdx;
   const { title, relatedUswdsGuidance, status } = frontmatter;
   let showGuidance = false;
-  let theme = 'core';
 
-  if (typeof window !== 'undefined') {
-    theme = new URL(window.location.href).searchParams.get('theme');
-  }
+  const themeParam = getQueryParamValue('theme');
+  const theme = updateThemeLocalStorage(themeParam);
 
   // check table of contents to see if there is a guidance section
   if (tableOfContents && Object.keys(tableOfContents).length) {
@@ -34,7 +34,7 @@ const InfoPage = ({ data, location }: MdxQuery) => {
       location={location}
       theme={theme}
     >
-      <ContentRenderer data={body} />
+      <ContentRenderer data={body} theme={theme} />
     </Layout>
   );
 };

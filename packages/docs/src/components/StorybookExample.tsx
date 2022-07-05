@@ -23,6 +23,10 @@ interface StorybookExampleProps {
    * path within 'src' directory to source file
    */
   sourceFilePath?: string;
+  /**
+   * Current theme
+   */
+  theme: string;
 }
 
 /**
@@ -33,6 +37,7 @@ interface StorybookExampleProps {
  * If you don't need a story, but can use regular HTML or React components, use an Embedded example.
  */
 const StorybookExample = ({
+  theme,
   componentName,
   minHeight,
   sourceFilePath,
@@ -42,7 +47,9 @@ const StorybookExample = ({
   const [iframeHtml, setiFrameHtml] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const iframeRef = useRef<HTMLIFrameElement>();
-  const iframeUrl = withPrefix(`/storybook/iframe.html?id=${storyId}&viewMode=story`);
+  const iframeUrl = withPrefix(
+    `/storybook/iframe.html?id=${storyId}&viewMode=story&globals=theme:${theme}`
+  );
 
   useEffect(() => {
     if (window) {
@@ -108,7 +115,7 @@ const StorybookExample = ({
         </div>
         <div className="ds-u-display--flex ds-u-justify-content--end">
           <a
-            href={withPrefix(`/storybook/?path=/story/${storyId}`)}
+            href={withPrefix(`/storybook/?path=/story/${storyId}&globals=theme:${theme}`)}
             target="_blank"
             rel="noreferrer"
             className="c-storybook-example__link"

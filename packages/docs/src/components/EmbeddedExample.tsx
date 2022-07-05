@@ -5,6 +5,7 @@ import CodeSnippet from './CodeSnippet';
 
 interface EmbeddedExampleProps {
   children: React.ReactElement;
+  theme: string;
 }
 
 /**
