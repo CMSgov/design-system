@@ -1,12 +1,12 @@
-import React, { useRef, useEffect, useLayoutEffect } from 'react';
+import React, { useRef, useEffect, useLayoutEffect, DialogHTMLAttributes } from 'react';
 import dialogPolyfill from './polyfill';
 
-interface NativeDialogProps {
+interface NativeDialogProps extends Omit<DialogHTMLAttributes<HTMLElement>, 'children'> {
   children: React.ReactNode;
   /**
    * Function called to close dialog.
    */
-  exit: any;
+  exit: (...args: any[]) => any;
   /**
    * Determines which native dialog method is called to open the dialog. If the dialog
    * is opened with `showModal`, focus will be trapped inside the dialog, and it will
@@ -15,10 +15,6 @@ interface NativeDialogProps {
    * for more details.
    */
   showModal?: boolean;
-  /*
-   * @hide-prop Spreading props
-   */
-  [x: string]: any;
 }
 
 const NativeDialog = ({ children, exit, showModal, ...dialogProps }: NativeDialogProps) => {
