@@ -56,7 +56,7 @@ A `TextField` component renders an input field as well as supporting UI elements
 
 ### When to consider alternatives
 
-- When users are choosing from a specific set of options. Consider [checkboxes, radio buttons](/components/checkbox-and-radio), or a [dropdown](/components/dropdown) in these cases.
+- When users are choosing from a specific set of options. Consider [checkboxes, radio buttons](/components/checkbox-and-radio/), or a [dropdown](/components/dropdown/) in these cases.
 
 ### Usage
 
@@ -72,16 +72,21 @@ A `TextField` component renders an input field as well as supporting UI elements
 - Group each set of thematically related controls in a `fieldset` element. Use the `legend` element to offer a label within each `fieldset`. The `fieldset` and `legend` elements make it easier for screen reader users to navigate the form.
 - Keep your form blocks in a vertical pattern. This approach is ideal, from an accessibility standpoint, because of limited vision that makes it hard to scan from left to right.
 
-### Customization
+## Customization
 
-The following Sass variables can be overridden to theme a field:
+The following Sass variables can be overridden to customize Input/Form components:
 
-- `$input-border-color`
-- `$input-border-color-inverse`
-- `$input-border-radius`
-- `$input-line-height`
-- `$input-border-width`
-- `$input-padding`
+<ComponentThemeOptions
+  theme="core"
+  componentname="text-input"
+/>
+
+### Form components
+
+<ComponentThemeOptions
+  theme="core"
+  componentname="form"
+/>
 
 ### Related patterns
 

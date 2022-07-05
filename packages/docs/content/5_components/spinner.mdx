@@ -9,7 +9,7 @@ Spinners signify that the application is waiting for an asynchronous operation t
 
 ## Changing the spinner color
 
-To change the color of the spinner, one only has to change the `color` property of the spinner element. This can be done with the standard Design System [utility classes](/utilities/color). The color of the spinner also defaults to `inherit`, so it will take on the color of the text in its parent container.
+To change the color of the spinner, one only has to change the `color` property of the spinner element. This can be done with the standard Design System [utility classes](/utilities/color/). The color of the spinner also defaults to `inherit`, so it will take on the color of the text in its parent container.
 
 ## Use inside buttons
 
@@ -94,6 +94,15 @@ To provide more contrast when being rendered over other content, the `.ds-c-spin
   - `aria-relevant` may include `additions`, `text`, and `removals`. If a section will have items added or removed, use `additions removals`. If there will be additions or text changes without explicit removals, use `additions text`.
   - `aria-live` should be set to `polite` for a screen reader to speak the changes whenever the user is idle. `aria-live="assertive"` should only be used in situations that require a user&rsquo;s immediate attention.
   - By default, a screen reader will only speak the contents of a changed node, and not the entire contents of the element. Set `aria-atomic="true"` for cases, such as an address, where a screen reader should read the contents of the entire element.
+
+## Customization
+
+The following Sass variables can be overridden to customize Spinner components:
+
+<ComponentThemeOptions
+  theme="core"
+  componentname="spinner"
+/>
 
 ### Learn more
 

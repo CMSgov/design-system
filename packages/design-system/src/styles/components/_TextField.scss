@@ -2,15 +2,15 @@
 
 .ds-c-field {
   appearance: none;
-  border: $input-border-width solid $input-border-color;
-  border-radius: $input-border-radius;
+  border: $text-input__border-width solid $text-input__border-color;
+  border-radius: $text-input__border-radius;
   box-sizing: border-box; // ensure padding doesn't affect width
-  color: $color-base;
+  color: $text-input__color;
   display: block;
   margin: $spacer-half 0;
-  max-width: $input-max-width;
+  max-width: $form__max-width;
   outline: none;
-  padding: $input-padding;
+  padding: $text-input__padding;
   width: 100%;
 
   // To stay consistent across browsers of not applying a style for :invalid pseudo-class,
@@ -20,8 +20,8 @@
   }
 
   &:disabled {
-    background-color: $color-gray-lighter;
-    border-color: $color-gray-light;
+    background-color: $text-input__background-color--disabled;
+    border-color: $text-input__border-color--disabled;
 
     @media (-ms-high-contrast: active), (forced-colors: active) {
       cursor: not-allowed;
@@ -38,18 +38,18 @@
 }
 
 .ds-c-field--small {
-  max-width: $input-small-width;
+  max-width: $form__max-width--small;
 }
 
 .ds-c-field--medium {
-  max-width: $input-medium-width;
+  max-width: $form__max-width--medium;
 }
 
 .ds-c-field,
 .ds-c-field-mask {
   font-family: $font-sans;
-  font-size: $base-font-size;
-  line-height: $input-line-height;
+  font-size: $font-size-base;
+  line-height: $text-input__line-height;
 }
 
 /*
@@ -57,19 +57,19 @@ Inverse theme
 */
 
 .ds-c-field--inverse {
-  border-color: $input-border-color-inverse;
+  border-color: $text-input__border-color--inverse;
 }
 
 // State modifiers and message
 // ==============================
 .ds-c-field--error {
-  border: $input-border-width--error solid $color-error;
+  border: 3px solid $text-input__border-color--error;
 
   &.ds-c-field--inverse {
-    border: $input-border-width--error solid $color-error-light;
+    border: 3px solid $text-input__border-color--error--inverse;
   }
 }
 
 .ds-c-field--success {
-  border: $input-border-width--success solid $color-success-light;
+  border: 3px solid $text-input__border-color--success;
 }

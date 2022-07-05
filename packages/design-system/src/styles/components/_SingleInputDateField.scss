@@ -11,7 +11,7 @@
 :root {
   --rdp-cell-size: 40px;
   --rdp-accent-color: #{$color-primary};
-  --rdp-background-color: #e6f1f8; // TODO: use the token ocean-50
+  --rdp-background-color: $color-gray-cool-light;
   /* Added this variable for consistency */
   --rdp-active-color: #{$color-primary-darkest};
   /* Outline border for focused elements */
@@ -385,12 +385,6 @@
   }
 }
 
-// Style the instructional text below the calendar
-.rdp-tfoot td {
-  padding: $spacer-1 $spacer-1 0;
-  color: $color-muted;
-}
-
 // Style the month & year dropdowns
 .rdp-caption_label {
   border: none;
@@ -429,7 +423,7 @@
   }
 
   &:active:not(:disabled) {
-    background-color: $button-primary-bg--active;
+    background-color: $button-primary__background-color--active;
     color: $color-white;
   }
 
@@ -439,7 +433,7 @@
   }
 
   &:disabled {
-    color: $pagination-nav-disabled-color;
+    color: $pagination-link__color--disabled;
     pointer-events: none;
 
     @media (-ms-high-contrast: active), (forced-colors: active) {
@@ -492,7 +486,7 @@
       border-bottom-right-radius: 0;
       margin-top: 0;
       margin-bottom: 0;
-      margin-right: -#{$input-border-width};
+      margin-right: -#{$text-input__border-width};
 
       &:focus,
       &:active {
@@ -500,7 +494,7 @@
       }
 
       &.ds-c-field--error {
-        margin-right: -#{$input-border-width--error};
+        margin-right: -#{$text-input__border-width};
       }
     }
   }
@@ -511,9 +505,9 @@
 
   .ds-c-single-input-date-field__button {
     appearance: none;
-    background-color: #e6f1f8; // TODO: use the token ocean-50
-    border: $input-border-width solid $input-border-color;
-    border-radius: $input-border-radius;
+    background-color: $color-gray-cool-light;
+    border: $text-input__border-width solid $text-input__border-color;
+    border-radius: $text-input__border-radius;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     color: $color-primary;
@@ -528,10 +522,10 @@
       content: '';
       display: block;
       position: absolute;
-      left: -#{$input-border-width};
+      left: -#{$text-input__border-width};
       top: 0;
       bottom: 0;
-      width: $input-border-width;
+      width: $text-input__border-width;
       background: $color-gray-light;
     }
 
@@ -546,16 +540,16 @@
   }
 
   .ds-c-field--error + .ds-c-single-input-date-field__button {
-    border: $input-border-width--error solid $color-error;
+    border: $text-input__border-width solid $color-error;
 
     &:after {
-      left: -#{$input-border-width--error};
-      width: $input-border-width--error;
+      left: -#{$text-input__border-width};
+      width: $text-input__border-width;
     }
   }
 
   .ds-c-field--error.ds-c-field--inverse + .ds-c-single-input-date-field__button {
-    border: $input-border-width--error solid $color-error-light;
+    border: $text-input__border-width solid $color-error-light;
   }
 
   .ds-c-icon--calendar {

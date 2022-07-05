@@ -8,7 +8,7 @@
   color: $color-gray;
   display: block;
   font-size: $font-size-sm;
-  font-weight: $font-normal;
+  font-weight: $font-weight-normal;
   margin-bottom: $spacer-1;
 }
 
@@ -59,18 +59,18 @@
 .example-grid {
   & .ds-l-row > [class*='ds-l-'],
   & .ds-l-form-row > [class*='ds-l-'] {
-    background-color: $color-primary-alt-lightest;
-    outline: 2px dashed $color-primary-alt;
+    background-color: $color-secondary-lightest;
+    outline: 2px dashed $color-secondary;
     padding-top: $spacer-2;
     padding-bottom: $spacer-2;
   }
 }
 
 .utility-example {
-  background-color: $color-primary-alt-lightest;
-  outline: 2px dashed $color-primary-alt;
+  background-color: $color-secondary-lightest;
+  outline: 2px dashed $color-secondary;
 
   & code {
-    background-color: $color-primary-alt-lightest;
+    background-color: $color-secondary-lightest;
   }
 }

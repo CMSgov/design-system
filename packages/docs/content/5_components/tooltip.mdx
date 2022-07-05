@@ -79,10 +79,11 @@ When using the `<TooltipIcon>` as the only child of `<Tooltip>`, be sure to prov
 - Don’t use a tooltip when its content is repetitive or if usability is obvious.
 - If content can fit outside a tooltip, don't use a tooltip.
 
-### Customization
+## Customization
 
-The following Sass variables can be overridden to theme choice fields:
+The following Sass variables can be overridden to customize Tooltip fields:
 
-- `$tooltip-text-color` - Text color of the tooltip content
-- `$tooltip-icon-color` - Color of the tooltip icon
-- `$tooltip-icon-color-inverse` - Color of the inverse tooltip icon
+<ComponentThemeOptions
+  theme="core"
+  componentname="tooltip"
+/>

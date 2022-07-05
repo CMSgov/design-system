@@ -25,19 +25,19 @@ Style guide: components.multi-input-date-field.react
 
 ### When to use
 
-- Use this date field when user flow requires inputs be separated. Generally used for memorable dates like date of birth, marriage date, or income start date.
+Use this date field when:
+- User flow requires inputs be separated
+- Functionality/back-end systems can't support a single date field entry
+
+Generally used for more memorable dates like date of birth, marriage date, or income start date.
 
 ### When to consider alternatives
 
-- Don't use this date field if users are entering a date within the last year or a future date.
+- Don't use this date field if either [single-input]({{root}}/components/single-input-date-field/) or [date picker]({{root}}/components/date-picker/) are feasible. This pattern is least effective with users.
 
 ### Usage
 
 - Allow users to enter one-digit numbers with or without the "0" prior to the number. Example: "1" as well as "01" for a month or day.
-- Be sure each field is properly labeled — some countries enter dates in day, month, year order.
-- It may be tempting to switch all or some of these text fields to drop downs, but these tend to be more difficult to use than text boxes.
-- When handling date errors, if the part of the date that has an error is known, only highlight the part with an error. For example, if month and day are valid inputs, but the year is invalid, use `yearInvalid=true` so that only the year field will be highlighted red.
-- If the entire date is incorrect, all fields can be highlighted. For example, if a date in the past is required and a date in the future is entered, all fields should be highlighted.
 
 ### Accessibility
 

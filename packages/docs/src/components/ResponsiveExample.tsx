@@ -3,6 +3,7 @@ import { withPrefix } from 'gatsby';
 import classnames from 'classnames';
 import CodeSnippet from './CodeSnippet';
 
+// @TODO: grab these from tokens
 const breakpointOpts = {
   xs: '360',
   sm: '544',

@@ -1,12 +1,5 @@
 @import '../settings/index.scss';
 
-$table-border-color: $color-black !default;
-$table-header-background-color: $color-gray-lightest !default;
-$table-striped-background-color: $color-gray-lightest !default;
-$table-striped-header-background-color: $color-gray-lightest !default;
-$table-padding: $spacer-2 !default;
-$table-compact-padding: $spacer-half $spacer-2 !default;
-
 .ds-c-table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -15,17 +8,17 @@ $table-compact-padding: $spacer-half $spacer-2 !default;
 
   th,
   thead td {
-    background-color: $table-header-background-color;
+    background-color: $table-header__background-color;
   }
 
   tbody th {
-    font-weight: $font-normal;
+    font-weight: $font-weight-normal;
   }
 
   th,
   td {
-    border: 1px solid $table-border-color;
-    padding: $table-padding;
+    border: 1px solid $table__border-color;
+    padding: $table__padding;
   }
 }
 
@@ -52,7 +45,7 @@ $table-compact-padding: $spacer-half $spacer-2 !default;
 .ds-c-table--dense {
   th,
   td {
-    padding: $table-compact-padding;
+    padding: $spacer-half $spacer-2;
   }
 }
 
@@ -60,13 +53,13 @@ $table-compact-padding: $spacer-half $spacer-2 !default;
   thead {
     th,
     tr {
-      background-color: $table-striped-header-background-color;
+      background-color: $table-striped-header__background-color;
     }
   }
 
   tbody {
     tr:nth-child(even) {
-      background-color: $table-striped-background-color;
+      background-color: $table-striped__background-color;
     }
 
     tr:nth-child(odd)::before {
@@ -80,12 +73,12 @@ $table-compact-padding: $spacer-half $spacer-2 !default;
 }
 
 .ds-c-table__scroll-alert {
-  font-weight: $font-normal;
+  font-weight: $font-weight-normal;
   margin: $spacer-1 0;
 }
 
 .ds-c-table__caption {
-  font-weight: $font-bold;
+  font-weight: $font-weight-bold;
   margin-bottom: $spacer-1;
   text-align: left;
 }
@@ -116,7 +109,7 @@ $table-compact-padding: $spacer-half $spacer-2 !default;
   // Style dividers between different table rows
   tr {
     // Every row has a bottom border
-    border-bottom: $spacer-half solid $table-border-color;
+    border-bottom: $spacer-half solid $table__border-color;
     border-top: 0;
     display: block;
 
@@ -130,7 +123,7 @@ $table-compact-padding: $spacer-half $spacer-2 !default;
     &:first-child {
       th:first-child,
       td:first-child {
-        border-top: $spacer-half solid $table-border-color;
+        border-top: $spacer-half solid $table__border-color;
       }
     }
   }

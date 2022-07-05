@@ -7,12 +7,12 @@
 }
 
 .c-footer__content {
-  padding: $grid-gutter-width $grid-gutter-width / 2;
-  font-size: $small-font-size;
+  padding: $grid-gutter-width calc(#{$grid-gutter-width} * 0.5);
+  font-size: $font-size-sm;
 
   .c-footer__content-title {
-    font-size: $h4-font-size;
-    font-weight: $font-bold;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
     margin: 0 0 $spacer-1 0;
   }
 }
@@ -35,7 +35,7 @@
   padding-bottom: 4.5rem;
 
   @media (min-width: $width-md) {
-    padding-bottom: $grid-gutter-width / 2;
+    padding-bottom: calc(#{$grid-gutter-width} * 0.5);
   }
 
   .ds-footer__container:first-child {

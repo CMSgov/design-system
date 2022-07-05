@@ -1,6 +1,7 @@
 import defaultMenuLinks, {
   defaultMenuLinks as namedExportDefaultMenuLinks,
 } from './defaultMenuLinks';
+import { setLanguage } from '@cmsgov/design-system';
 
 describe('MenuList', function () {
   it('includes a named export', () => {
@@ -51,7 +52,12 @@ describe('MenuList', function () {
 
   describe('Spanish', () => {
     it('returns array of menu list objects', () => {
-      expect(defaultMenuLinks({ locale: 'es' })).toMatchSnapshot();
+      // Make sure you can specify the language through the deprecated `locale` prop or by the global setting
+      const linksA = defaultMenuLinks({ locale: 'es' });
+      setLanguage('es');
+      const linksB = defaultMenuLinks();
+      expect(linksA).toEqual(linksB);
+      expect(linksB).toMatchSnapshot();
     });
 
     it('returns array of menu list objects with subpath', () => {

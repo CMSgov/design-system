@@ -8,5 +8,5 @@ export function githubUrl(pathname = '') {
 
 export function makePageUrl(fileRelativePath) {
   let pageUrl = removePositioning(fileRelativePath);
-  return `/${pageUrl.replace('.mdx', '')}`;
+  return `/${pageUrl.replace('.mdx', '/')}`;
 }

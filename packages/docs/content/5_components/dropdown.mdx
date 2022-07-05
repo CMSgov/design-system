@@ -30,7 +30,7 @@ Class-based component gives flexibility for active focus management by allowing 
 
 ### When to consider alternatives
 
-- **Fewer than seven options.** Use [radio buttons or checkboxes](/components/checkbox-and-radio) instead.
+- **Fewer than seven options.** Use [radio buttons or checkboxes](/components/checkbox-and-radio/) instead.
 - **More than 15 options.** If the list of options is very long. Let users type the same information into a text input that suggests possible options instead.
 - **Multi-select.** If you need to allow users to select more than one option at once. Users often don’t understand how to select multiple items from dropdowns. Use [checkboxes]({{root}}/components/choice) instead.
 - **Site navigation.** Use the [navigation components](/components/vertical-nav/) instead.
@@ -50,10 +50,26 @@ Class-based component gives flexibility for active focus management by allowing 
 - **Always use a label.** Make sure your dropdown has a label. Don’t replace it with the default menu option (for example, removing the “State” label and just having the dropdown read “Select a state” by default).
 - **Avoid auto-submission.** Don’t use JavaScript to automatically submit the form (or do anything else) when an option is selected. Auto-submission disrupts screen readers because they select each option as they read them.
 
+## Customization
+
+The following Sass variables can be overridden to customize Dropdown components:
+
+<ComponentThemeOptions
+  theme="core"
+  componentname="dropdown"
+/>
+
+## Text Input Options
+
+<ComponentThemeOptions
+  theme="core"
+  componentname="text-input"
+/>
+
 ### Related patterns
 
-- [Checkbox and Radio](/components/choice)
-- [Text field](/components/text-field)
+- [Checkbox and Radio](/components/choice/)
+- [Text field](/components/text-field/)
 
 ### Learn more
 

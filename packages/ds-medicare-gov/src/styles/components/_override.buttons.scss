@@ -1,21 +1,21 @@
 // Default (tertiarty) outline button
 .ds-c-button,
 .ds-c-button:visited {
-  border-color: $color-primary-alt;
-  color: $color-primary-alt;
-  font-weight: 400;
+  border-color: $button__border-color;
+  color: $button__color;
+  font-weight: $font-weight-normal;
   border-radius: 4px;
 
   &:hover,
   &.ds-c-button--hover {
-    border-color: $color-primary-alt-dark;
-    color: $color-primary-alt-dark;
+    border-color: $button__border-color--hover;
+    color: $button__color--hover;
   }
 
   &:active,
   &.ds-c-button--active {
-    border-color: $color-primary-alt-darkest;
-    color: $color-primary-alt-darkest;
+    border-color: $button__border-color--active;
+    color: $button__color--active;
   }
 
   &.ds-c-button--transparent {
@@ -33,7 +33,7 @@
 
     &.ds-u-color--gray-dark {
       .apply-fill {
-        fill: $color-base;
+        fill: $button-icon__fill;
       }
     }
   }
@@ -41,26 +41,26 @@
   // default (tertiary) outline inverse button
   &.ds-c-button--inverse,
   &.ds-c-button--inverse:visited {
-    border-color: $color-white;
-    color: $color-white;
+    border-color: $button-inverse__border-color;
+    color: $button-inverse__color;
     background-color: transparent;
 
     &:hover,
     &.ds-c-button--hover {
-      border-color: rgba($color-white, 0.8);
-      color: rgba($color-white, 0.8);
+      border-color: $button-inverse__border-color--hover;
+      color: $button-inverse__color--hover;
     }
 
     &:active,
     &.ds-c-button--active {
-      border-color: rgba($color-white, 0.6);
-      color: rgba($color-white, 0.6);
+      border-color: $button-inverse__border-color--active;
+      color: $button-inverse__color--active;
     }
 
     &:disabled,
     &.ds-c-button--disabled {
-      border-color: rgba($color-white, 0.8);
-      color: rgba($color-white, 0.8);
+      border-color: $button-inverse__border-color--disabled;
+      color: $button-inverse__color--disabled;
     }
 
     &.ds-c-button--transparent {
@@ -68,7 +68,7 @@
 
       &:disabled,
       &.ds-c-button--disabled {
-        color: $color-gray-dark;
+        color: $button-inverse-transparent__color--disabled;
       }
     }
   }
@@ -84,21 +84,21 @@
 // Primary teal solid button
 .ds-c-button--primary,
 .ds-c-button--primary:visited {
-  color: $color-white;
+  color: $button-primary__color;
   border-color: transparent;
 
   &:hover,
   &.ds-c-button--hover {
-    color: $color-white;
-    background-color: $button-primary-bg--hover;
-    border-color: $button-primary-bg--hover;
+    color: $button-primary__color--hover;
+    background-color: $button-primary__background-color--hover;
+    border-color: $button-primary__background-color--hover;
   }
 
   &:active,
   &.ds-c-button--active {
     color: $color-white;
-    background-color: $button-primary-bg--active;
-    border-color: $button-primary-bg--active;
+    background-color: $button-primary__background-color--active;
+    border-color: $button-primary__background-color--active;
   }
 
   &:focus,
@@ -106,11 +106,11 @@
     // Ensure active and hover styles can be used with focus
     &:hover,
     &.ds-c-button--hover {
-      background-color: $button-primary-bg--hover;
+      background-color: $button-primary__background-color--hover;
     }
     &:active,
     &.ds-c-button--active {
-      background-color: $button-primary-bg--active;
+      background-color: $button-primary__background-color--active;
     }
   }
 }
@@ -118,62 +118,65 @@
 // Primary white solid inverse button
 .ds-c-button--primary.ds-c-button--inverse,
 .ds-c-button--primary.ds-c-button--inverse:visited {
-  background-color: $color-white;
-  border-color: $color-gray-dark;
-  color: $color-gray-dark;
+  background-color: $button-primary-inverse__background-color;
+  border-color: $button-primary-inverse__border-color;
+  color: $button-primary-inverse__color;
 
   &:hover,
   &.ds-c-button--hover {
-    background-color: $color-white;
-    border-color: rgba($color-gray-dark, 0.8);
-    color: rgba($color-gray-dark, 0.8);
+    background-color: $button-primary-inverse__background-color--hover;
+    border-color: $button-primary-inverse__border-color--hover;
+    color: $button-primary-inverse__color--hover;
   }
 
   &:active,
   &.ds-c-button--active {
-    border-color: rgba($color-gray-dark, 0.6);
-    color: rgba($color-gray-dark, 0.6);
+    border-color: $button-primary-inverse__border-color--active;
+    color: $button-primary-inverse__coloro--active;
   }
   &:focus,
   &.ds-c-button--focus {
-    background-color: $color-white;
-    border-color: rgba($color-gray-dark, 0.8);
-    color: rgba($color-gray-dark, 0.8);
+    background-color: $button-primary-inverse__background-color--focus;
+    border-color: $button-primary-inverse__border-color--focus;
+    color: $button-primary-inverse__color--focus;
   }
   &:disabled,
   &.ds-c-button--disabled {
-    background-color: $color-gray-lighter;
-    border-color: transparent;
-    color: $color-gray-dark;
+    background-color: $button-primary-inverse__background-color--disabled;
+    border-color: $button-primary-inverse__border-color--disabled;
+    color: $button-primary-inverse__color--disabled;
   }
 
   &.ds-c-button--transparent {
-    background-color: transparent;
-    border-color: transparent;
-    color: $color-white;
+    background-color: $button-primary-inverse-transparent__background-color;
+    border-color: $button-primary-inverse-transparent__border-color;
+    color: $button-primary-inverse-transparent__color;
   }
 }
 
 // Primary-alt blue solid button
+// @TODO, deprecate primary-alt selectors
+.ds-c-button--secondary,
+.ds-c-button--secondary:visited,
 .ds-c-button--primary-alt,
 .ds-c-button--primary-alt:visited {
   @extend .ds-c-button--primary;
-  color: $color-white;
-  border-color: transparent;
-  background-color: $color-primary-alt;
+  color: $button-secondary__color;
+  border-color: $button-secondary__border-color;
+  background-color: $button-secondary__background-color;
 
   &:hover,
   &.ds-c-button--hover {
-    color: $color-white;
-    background-color: $color-primary-alt-dark;
-    border-color: $color-primary-alt-dark;
+    color: $button-secondary__color--hover;
+    background-color: $button-secondary__background-color--hover;
+    border-color: $button-secondary__border-color--hover;
   }
 
   &:active,
   &.ds-c-button--active {
-    color: $color-white;
-    background-color: $color-primary-alt-light;
-    border-color: $color-primary-alt-light;
+    color: $button-secondary__color--active;
+    background-color: $button-secondary__background-color--active;
+    border-color: $button-secondary__border-color--active;
   }
 
   &:focus,
@@ -181,17 +184,17 @@
     // Ensure active and hover styles can be used with focus
     &:hover,
     &.ds-c-button--hover {
-      background-color: $color-primary-alt-dark;
+      background-color: $button-secondary__background-color--hover;
     }
     &:active,
     &.ds-c-button--active {
-      background-color: $color-primary-alt-light;
+      background-color: $button-secondary__background-color--active;
     }
   }
 }
 
 // Big (landing page) button
 .ds-c-button--big {
-  font-family: $montserrat-font;
-  font-weight: 600;
+  font-family: $font-family-montserrat;
+  font-weight: $font-weight-semibold;
 }

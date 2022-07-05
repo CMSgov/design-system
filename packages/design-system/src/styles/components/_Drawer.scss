@@ -1,26 +1,14 @@
 @import '../settings/index.scss';
 
-// Component vars
-$drawer-background-color: $color-background;
-$drawer-box-shadow: -2px 0 0 $border-color;
+$drawer-box-shadow: -2px 0 0 $drawer__border-color;
 $drawer-space: $spacer-2;
 $drawer-animation-timing: $animation-speed-2;
-$drawer-elevation: 500;
-
-// Header vars
-$drawer-header-background-color: $color-gray-lightest;
-
-// Body vars
-$drawer-font-size-mobile: $base-font-size;
-$drawer-font-size-tablet: $small-font-size;
-$drawer-font-size-desktop: $base-font-size;
-
-// Footer vars
-$drawer-footer-background-color: $color-primary-alt-lightest;
-$drawer-footer-line-height: 1.5;
-
-// Toggle vars
-$drawer-toggle-font-weight: $font-normal;
+$drawer-elevation: $z-drawer;
+$drawer-font-size-mobile: $font-size-base;
+$drawer-font-size-tablet: $font-size-sm;
+$drawer-font-size-desktop: $font-size-base;
+$drawer-footer-line-height: $font-line-height-base;
+$drawer-toggle-font-weight: $font-weight-normal;
 $drawer-toggle-space: 0;
 
 @keyframes slideInDrawer {
@@ -52,7 +40,7 @@ $drawer-toggle-space: 0;
 
 /* Help drawer wrapper */
 .ds-c-drawer {
-  background: $drawer-background-color;
+  background: $drawer__background-color;
   bottom: 0;
   box-shadow: $drawer-box-shadow;
   border: 0;
@@ -102,7 +90,7 @@ $drawer-toggle-space: 0;
 /* Help drawer header */
 .ds-c-drawer__header {
   align-items: center;
-  background-color: $drawer-header-background-color;
+  background-color: $drawer-header__background-color;
   display: flex;
   gap: $drawer-space;
   justify-content: space-between;
@@ -161,7 +149,7 @@ $drawer-toggle-space: 0;
 
 /* Help drawer footer */
 .ds-c-drawer__footer {
-  background-color: $drawer-footer-background-color;
+  background-color: $drawer-footer__background-color;
   line-height: $drawer-footer-line-height;
   padding: $drawer-space;
 

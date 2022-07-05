@@ -1,20 +1,17 @@
 @import '../settings/index.scss';
 @import '../base/link.scss';
 
+// @TODO: these styles can eventually be componentized and referenced for deprecation
+// for the present time, they will be left for backwards compatibility and updated with
+// up-to-date token references as currently only component color will be themed.
+
 $tooltip-icon-size: 16px !default;
 $tooltip-arrow-size: 8px !default;
-$tooltip-icon-container-size: 24px !default;
-$tooltip-icon-color: $color-primary !default;
-$tooltip-icon-color-inverse: $color-white !default;
-
-$tooltip-border-color: $color-gray-dark !default;
+$tooltip-icon-container-size: $spacer-3 !default;
 $tooltip-border-width: 1px !default;
-$tooltip-border-radius: 8px !default;
-$tooltip-text-color: $color-base !default;
-$tooltip-font-size: $base-font-size !default;
-$tooltip-background-color: $color-background !default;
-
-$tooltip-close-min-width: 32px !default;
+$tooltip-border-radius: $radius-large !default;
+$tooltip-font-size: $font-size-base !default;
+$tooltip-close-min-width: $spacer-4 !default;
 
 %trigger-reset-styles {
   // override user agent button styles
@@ -36,7 +33,7 @@ $tooltip-close-min-width: 32px !default;
 // Chrome needs this offset becasue it handles text-underline-position differently and without this the underline runs into descending letters like g,j,q,p,y.
 @media all and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
   %trigger-underline-styles {
-    text-underline-offset: 4px;
+    text-underline-offset: $spacer-half;
   }
 }
 
@@ -50,7 +47,7 @@ $tooltip-close-min-width: 32px !default;
 
 .ds-c-tooltip__trigger-icon {
   @extend %trigger-reset-styles;
-  padding: 4px;
+  padding: $spacer-half;
   &:focus {
     @include focus-styles;
   }
@@ -59,7 +56,7 @@ $tooltip-close-min-width: 32px !default;
 .ds-c-tooltip__trigger-link {
   @extend %trigger-reset-styles;
   @extend %trigger-underline-styles;
-  color: $color-primary;
+  color: $tooltip-trigger__color;
   padding: 0;
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
@@ -83,7 +80,7 @@ $tooltip-close-min-width: 32px !default;
   width: $tooltip-icon-size;
 
   &::after {
-    background: $tooltip-background-color;
+    background: $tooltip__background-color;
     content: '';
     height: $tooltip-arrow-size;
     left: 50%;
@@ -96,11 +93,11 @@ $tooltip-close-min-width: 32px !default;
 // Font style gets inherited from ds-base
 .ds-c-tooltip__content {
   border-radius: $tooltip-border-radius;
-  box-shadow: 0 0 17px $color-gray-light;
-  color: $tooltip-text-color;
+  box-shadow: 0 0 17px $tooltip__box-shadow-color;
+  color: $tooltip__color;
   display: block;
   font-size: $tooltip-font-size;
-  font-weight: 400;
+  font-weight: $font-weight-normal;
   padding: $spacer-2;
 
   // Remove tooltip content padding by default
@@ -139,8 +136,8 @@ $tooltip-close-min-width: 32px !default;
 // The greater tooltip container which gets added in via state
 // max-width and z-index are set via props to account for different uses
 .ds-c-tooltip {
-  background: $tooltip-background-color;
-  border-color: $tooltip-border-color;
+  background: $tooltip__background-color;
+  border-color: $tooltip__border-color;
   border-radius: $tooltip-border-radius;
   border-style: solid;
   border-width: $tooltip-border-width;
@@ -187,8 +184,8 @@ $tooltip-close-min-width: 32px !default;
 .ds-c-tooltip[data-popper-placement^='top'] .ds-c-tooltip__arrow {
   top: 100%;
   &::after {
-    border-bottom: $tooltip-border-width solid $tooltip-border-color;
-    border-right: $tooltip-border-width solid $tooltip-border-color;
+    border-bottom: $tooltip-border-width solid $tooltip__border-color;
+    border-right: $tooltip-border-width solid $tooltip__border-color;
     top: 1px;
     transform: translateX(-50%) translateY(-50%) rotate(45deg);
   }
@@ -197,8 +194,8 @@ $tooltip-close-min-width: 32px !default;
 .ds-c-tooltip[data-popper-placement^='bottom'] .ds-c-tooltip__arrow {
   top: -$tooltip-arrow-size;
   &::after {
-    border-left: $tooltip-border-width solid $tooltip-border-color;
-    border-top: $tooltip-border-width solid $tooltip-border-color;
+    border-left: $tooltip-border-width solid $tooltip__border-color;
+    border-top: $tooltip-border-width solid $tooltip__border-color;
     bottom: 0;
     transform: translateX(-50%) translateY(-50%) rotate(45deg);
   }
@@ -207,8 +204,8 @@ $tooltip-close-min-width: 32px !default;
 .ds-c-tooltip[data-popper-placement^='left'] .ds-c-tooltip__arrow {
   right: -$tooltip-arrow-size;
   &::after {
-    border-right: $tooltip-border-width solid $tooltip-border-color;
-    border-top: $tooltip-border-width solid $tooltip-border-color;
+    border-right: $tooltip-border-width solid $tooltip__border-color;
+    border-top: $tooltip-border-width solid $tooltip__border-color;
     left: 0;
     transform: translateX(50%) translateY(50%) rotate(45deg);
   }
@@ -217,8 +214,8 @@ $tooltip-close-min-width: 32px !default;
 .ds-c-tooltip[data-popper-placement^='right'] .ds-c-tooltip__arrow {
   left: -$tooltip-arrow-size;
   &::after {
-    border-bottom: $tooltip-border-width solid $tooltip-border-color;
-    border-left: $tooltip-border-width solid $tooltip-border-color;
+    border-bottom: $tooltip-border-width solid $tooltip__border-color;
+    border-left: $tooltip-border-width solid $tooltip__border-color;
     left: -2px;
     transform: translateX(50%) translateY(50%) rotate(45deg);
   }

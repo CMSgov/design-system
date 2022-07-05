@@ -3,25 +3,7 @@
 
 ### When to use
 
-- This date input option isn't recommended.
-- Use only when functionality/back-end systems can't support a single date field entry.
-
-### When to consider alternatives
-
-- Don't use if either of the other component options are feasible. This pattern is least effective with users.
-
-### Usage
-
-- Allow users to enter one-digit numbers with or without the "0" prior to the number. Example: "1" as well as "01" for a month or day.
-- Be sure each field is properly labeled — some countries enter dates in day, month, year order.
-- It may be tempting to switch all or some of these text fields to drop downs, but these tend to be more difficult to use than text boxes.
-- When handling date errors, if the part of the date that has an error is known, only highlight the part with an error. For example, if month and day are valid inputs, but the year is invalid, use `yearInvalid=true` so that only the year field will be highlighted red.
-- If the entire date is incorrect, all fields can be highlighted. For example, if a date in the past is required and a date in the future is entered, all fields should be highlighted.
-
-### Accessibility
-
-- These text fields should follow the [accessibility guidelines for all text inputs]({{root}}/components/text-field/#guidance).
-- Do not use JavaScript to auto advance the focus from one field to the next. This makes it difficult for keyboard-only users to navigate and correct mistakes.
+- Don't use this date field.
 
 ### Related patterns
 

@@ -49,18 +49,14 @@ Pagination also comes in two styles: default, which is compact on mobile viewpor
 - Do not use buttons for URL-based pagination. Because the URL is updated, the browser history stack updates and a link is the correct tag to use.
 - Consider page load, performance, and the user's scrolling preferences when determining how many items are displayed on each page.
 
-### Style customization
+## Customization
 
-The following Sass variables can be overridden to theme alerts:
+The following Sass variables can be overridden to customize Pagination components:
 
-- `$pagination-nav-link-color` - Used to set color of next/previous and page number links.
-- `$pagination-nav-link-color-hover` - Used to set color of next/previous and page number links on hover.
-- `$pagination-nav-link-color-active` - Used to set color of next/previous and page number links when active.
-- `$pagination-nav-link-color-focus` - Used to set color of next/previous and page number links on focus.
-
-- `$pagination-current-page-color` - Used to set the current page element text color.
-- `$pagination-overflow-color` - Used to set the overflow element text color.
-- `$pagination-page-count-color` - Used to set the page count element text color.
+<ComponentThemeOptions
+  theme="core"
+  componentname="pagination"
+/>
 
 ### Accessibility
 
