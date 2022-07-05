@@ -1,0 +1,61 @@
+---
+title: Multi-input date field
+relatedUswdsGuidance: components/memorable-date/
+---
+
+Date field (multi-input) provides date entry, spaced over three separate inputs for month, day, and year.
+
+## `<MultiInputDateField>`
+
+<StorybookExample
+  componentName="multiInputDateField"
+  sourceFilePath="components/DateField/MultiInputDateField.tsx"
+  storyId="components-multiinputdatefield--multi-input-date-field-default"
+/>
+
+### Props
+
+<PropTable componentName="MultiInputDateField" />
+
+## Guidance
+
+### When to use
+
+Use this date field when:
+- User flow requires inputs be separated
+- Functionality/back-end systems can't support a single date field entry
+
+Generally used for more memorable dates like date of birth, marriage date, or income start date.
+
+### When to consider alternatives
+
+- Don't use this date field if either [single-input](/components/single-input-date-field/) or [date picker](/components/date-picker/) are feasible. This pattern is least effective with users.
+
+### Usage
+
+- Allow users to enter one-digit numbers with or without the "0" prior to the number. Example: "1" as well as "01" for a month or day.
+
+### Accessibility
+
+- These text fields should follow the [accessibility guidelines for all text inputs](/components/text-field/#guidance).
+- Do not use JavaScript to auto advance the focus from one field to the next. This makes it difficult for keyboard-only users to navigate and correct mistakes.
+
+## Customization
+
+The following Sass variables can be overridden to customize Input/Form components:
+
+<ComponentThemeOptions
+  theme="core"
+  componentname="text-input"
+/>
+
+### Form components
+
+<ComponentThemeOptions
+  theme="core"
+  componentname="form"
+/>
+
+### Related patterns
+- [Date field (single-input)](/components/single-input-date-field/)
+- [Date field (with calendar)](/components/date-picker/)

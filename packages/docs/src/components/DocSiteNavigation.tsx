@@ -13,7 +13,15 @@ interface NavItem {
     title: string;
   };
   id: string;
-  slug: string;
+  name: string;
+  relativeDirectory: string;
+  relativePath: string;
+  childMdx: {
+    frontmatter?: {
+      title: string;
+      order?: number;
+    };
+  };
 }
 
 interface GraphQlNavItemNode {
@@ -84,10 +92,20 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
         }
         sort: { fields: slug }
       ) {
-        edges {
-          node {
-            frontmatter {
-              title
+        group(field: relativeDirectory) {
+          fieldValue
+          edges {
+            node {
+              id
+              name
+              relativeDirectory
+              relativePath
+              childMdx {
+                id
+                frontmatter {
+                  title
+                }
+              }
             }
             slug
             id
