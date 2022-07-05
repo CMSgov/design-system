@@ -36,6 +36,10 @@ interface LayoutProps {
    * describes status of page. used for component pages
    */
   status?: PageStatus;
+  /**
+   * Theme setting
+   */
+  theme: string;
 }
 
 const Layout = ({
@@ -45,16 +49,19 @@ const Layout = ({
   showJumpToGuidance,
   status,
   location,
+  theme,
 }: LayoutProps) => {
   const env = 'prod';
 
-  // TODO: update data-theme value when theme switcher is created
   return (
-    <div className="ds-base" data-theme="core">
+    <div className="ds-base">
       <Helmet
         title="CMS Design System"
         htmlAttributes={{
           lang: 'en',
+        }}
+        bodyAttributes={{
+          'data-theme': { theme },
         }}
       >
         <script>{`window.tealiumEnvironment = "${env}";`}</script>

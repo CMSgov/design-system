@@ -12,6 +12,11 @@ const InfoPage = ({ data, location }: MdxQuery) => {
   const { frontmatter, body, tableOfContents } = data.mdx;
   const { title, relatedUswdsGuidance, status } = frontmatter;
   let showGuidance = false;
+  let theme = 'core';
+
+  if (typeof window !== 'undefined') {
+    theme = new URL(window.location.href).searchParams.get('theme');
+  }
 
   // check table of contents to see if there is a guidance section
   if (tableOfContents && Object.keys(tableOfContents).length) {
@@ -27,6 +32,7 @@ const InfoPage = ({ data, location }: MdxQuery) => {
       showJumpToGuidance={showGuidance}
       status={status}
       location={location}
+      theme={theme}
     >
       <ContentRenderer data={body} />
     </Layout>
