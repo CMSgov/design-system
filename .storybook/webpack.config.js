@@ -13,6 +13,17 @@ const getStylesPath = () => {
   }
 };
 
+// because of the way font & image files are organized in dev vs prod, need to have a different font path
+// need to set this before styles are imported
+const getFontAndImagePaths = () => {
+  // for prod builds
+  if (process.env.STORYBOOK_ENV !== 'dev') {
+    return `$font-path: './fonts'; $image-path: './images';`;
+  }
+  // for dev, use default which is '../fonts'
+  return '';
+};
+
 module.exports = async (webpackConfig) => {
   const { config } = webpackConfig;
 
@@ -56,7 +67,7 @@ module.exports = async (webpackConfig) => {
         {
           loader: 'sass-loader',
           options: {
-            additionalData: `@import '${getStylesPath()}';`,
+            additionalData: `${getFontAndImagePaths()} @import '${getStylesPath()}';`,
           },
         },
       ],

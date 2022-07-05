@@ -1,0 +1,74 @@
+$accordion-icon-color: #0071bb;
+
+.ds-c-accordion {
+  .ds-c-accordion__button {
+    flex-direction: row-reverse;
+    background-color: $accordion__background-color;
+    color: $accordion-button__color;
+    column-gap: $spacer-1;
+    justify-content: flex-end;
+    font-weight: $font-weight-normal;
+    padding: $spacer-1 $spacer-2 $spacer-1 $spacer-2;
+
+    &:hover {
+      background-color: transparent;
+      color: $color-primary-darker;
+      text-decoration: underline;
+      .ds-c-icon--minus-circle__circle,
+      .ds-c-icon--plus-circle__circle {
+        fill: $accordion-icon-color;
+      }
+      .ds-c-icon--minus-circle__group,
+      .ds-c-icon--plus-circle__group {
+        fill: $color-white;
+      }
+    }
+
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      -ms-high-contrast-adjust: none;
+      forced-color-adjust: none;
+      background-color: LinkText;
+      color: window;
+
+      &:hover,
+      &:focus {
+        -ms-high-contrast-adjust: none;
+        forced-color-adjust: none;
+        background-color: window;
+        color: LinkText;
+        outline-offset: -$spacer-half;
+        outline: $spacer-half solid LinkText;
+
+        .ds-c-icon--plus-circle__circle,
+        .ds-c-icon--minus-circle__circle {
+          fill: Window;
+          stroke: WindowText;
+        }
+
+        .ds-c-icon--plus-circle__group,
+        .ds-c-icon--minus-circle__group {
+          fill: WindowText;
+        }
+      }
+    }
+  }
+
+  .ds-c-icon {
+    font-size: 14px;
+    align-self: center;
+    color: $accordion-icon-color;
+  }
+
+  .ds-c-accordion__content {
+    background-color: $accordion-content__background-color;
+    padding: $spacer-1 $spacer-2 $spacer-1 $spacer-5;
+  }
+}
+
+// overwrite core bordered styles
+.ds-c-accordion--bordered {
+  .ds-c-accordion__content {
+    border: none;
+    padding: $spacer-1 $spacer-2 $spacer-1 $spacer-5;
+  }
+}

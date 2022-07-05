@@ -1,0 +1,46 @@
+body {
+  margin: 0;
+}
+
+.page-content {
+  max-width: 81rem;
+}
+
+blockquote {
+  background-color: $color-gray-lightest;
+  border-left: 4px solid $color-gray-light;
+  font-family: $font-sans;
+  font-style: italic;
+  margin-left: 0;
+  padding: $spacer-2 $spacer-2 $spacer-2 $spacer-6;
+  position: relative;
+
+  &:before {
+    color: $color-gray-light;
+    content: '\201C';
+    font-family: $font-serif;
+    font-size: 4em;
+    left: 10px;
+    position: absolute;
+    top: -10px;
+  }
+
+  & p:first-child {
+    margin-top: 0;
+  }
+
+  & p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+ul:not([class]) li,
+.ds-c-list li {
+  line-height: 1.5;
+  margin-bottom: $spacer-1;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}

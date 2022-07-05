@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import TextField from './TextField';
-import { DATE_MASK } from './LabelMask';
+import { DATE_MASK } from './useLabelMask';
 
 export default {
   title: 'Components/Text Field',

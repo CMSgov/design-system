@@ -1,0 +1,33 @@
+---
+title: Month Picker
+---
+
+## `<MonthPicker>`
+
+The `MonthPicker` component renders a grid of checkboxes with shortened month names as well as buttons for selecting or deselecting all. For internationalization one can pass a `locale` prop, and the month names will change to match the language of the locale. Full month names are also included as `aria-label` attributes.
+
+<StorybookExample
+  componentName="monthPicker"
+  sourceFilePath="components/MonthPicker/MonthPicker.tsx"
+  storyId="components-month-picker--default-month-picker"
+/>
+
+### Props
+
+<PropTable componentName="MonthPicker" />
+
+## Customization
+
+The following Sass variables can be overridden to customize MonthPicker fields:
+
+<ComponentThemeOptions
+  theme="core"
+  componentname="choice"
+/>
+
+### Form components
+
+<ComponentThemeOptions
+  theme="core"
+  componentname="form"
+/>

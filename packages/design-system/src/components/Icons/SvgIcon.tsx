@@ -55,6 +55,7 @@ function SvgIcon({
   inversed,
   title,
   viewBox,
+  ...otherProps
 }: Omit<React.SVGProps<SVGSVGElement>, OmitProps> & SvgIconProps): React.ReactElement {
   const svgClasses = classNames('ds-c-icon', { 'ds-c-icon--inverse': inversed }, className);
 
@@ -63,10 +64,10 @@ function SvgIcon({
   const descriptionId = `${iconId}__desc`;
   const ariaLabelledBy = description ? `${titleId} ${descriptionId}` : titleId;
   const isSrVisible = !ariaHidden;
-  const additionalProps = {};
+  const screenReaderProps = {};
   if (isSrVisible) {
-    additionalProps['aria-labelledby'] = ariaLabelledBy;
-    additionalProps['role'] = 'img';
+    screenReaderProps['aria-labelledby'] = ariaLabelledBy;
+    screenReaderProps['role'] = 'img';
   }
 
   return (
@@ -77,7 +78,8 @@ function SvgIcon({
       id={iconId}
       viewBox={viewBox}
       xmlns="http://www.w3.org/2000/svg"
-      {...additionalProps}
+      {...screenReaderProps}
+      {...otherProps}
     >
       {isSrVisible && <title id={titleId}>{title}</title>}
       {isSrVisible && description && <desc id={descriptionId}>{description}</desc>}

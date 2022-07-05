@@ -2,7 +2,7 @@ module.exports = {
   customSyntax: 'postcss-scss',
   defaultSeverity: 'warning',
   extends: 'stylelint-config-recommended',
-  ignoreFiles: ['**/dist/**', '**/helpers/**', '**/__tests__/**', 'tmp/**', '**/types/**'],
+  ignoreFiles: ['**/dist/**', '**/helpers/**', '**/__tests__/**', 'tmp/**', '**/types/**', '**/styles/utilities/**'],
   plugins: ['stylelint-scss'],
   reportDescriptionlessDisables: true,
   reportNeedlessDisables: true,

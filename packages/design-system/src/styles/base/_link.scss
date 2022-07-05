@@ -1,40 +1,22 @@
 @import '../settings/index.scss';
 
-// Links
-// Default link
-$link-color: $color-primary !default;
-$link-visited-color: $color-visited !default;
-$link-hover-color: $color-primary-darker !default;
-$link-active-color: $color-primary-darkest !default;
-
-// Inverse link
-$link-inverse-color: $color-base-inverse !default;
-$link-inverse-visited-color: $color-muted-inverse !default;
-$link-inverse-hover-color: $color-muted-inverse !default;
-$link-inverse-active-color: $color-muted-inverse !default;
-
-// Link underline
-$link-underline-height: 1px !default;
-$link-underline-height-hover: 1px !default;
-$link-underline-offset: auto !default;
-
 %link {
-  color: $link-color;
+  color: $link__color;
   cursor: pointer;
   text-decoration: underline;
-  text-decoration-color: $link-color;
-  text-decoration-thickness: $link-underline-height;
-  text-underline-offset: $link-underline-offset;
+  text-decoration-color: $link__color;
+  text-decoration-thickness: $link__text-decoration-thickness;
+  text-underline-offset: $link__text-decoration-offset;
 
   &:visited {
-    color: $link-visited-color;
-    text-decoration-color: $link-visited-color;
+    color: $link__color--visited;
+    text-decoration-color: $link__color--visited;
   }
 
   &:hover {
-    color: $link-hover-color;
-    text-decoration-color: $link-hover-color;
-    text-decoration-thickness: $link-underline-height-hover;
+    color: $link__color--hover;
+    text-decoration-color: $link__color--hover;
+    text-decoration-thickness: $link__text-decoration-thickness--hover;
   }
   &:focus,
   &:focus:visited {
@@ -42,40 +24,40 @@ $link-underline-offset: auto !default;
   }
 
   &:active {
-    color: $link-active-color;
+    color: $link__color--active;
     outline: 0 none;
-    text-decoration-color: $link-active-color;
+    text-decoration-color: $link__color--active;
   }
 }
 
 %link-inverse {
-  color: $link-inverse-color;
+  color: $link-inverse__color;
   cursor: pointer;
   text-decoration: underline;
-  text-decoration-color: $link-inverse-color;
-  text-decoration-thickness: $link-underline-height;
-  text-underline-offset: $link-underline-offset;
+  text-decoration-color: $link-inverse__color;
+  text-decoration-thickness: $link__text-decoration-thickness;
+  text-underline-offset: $link__text-decoration-offset;
 
   &:visited {
-    color: $link-inverse-visited-color;
-    text-decoration-color: $link-inverse-visited-color;
+    color: $link-inverse__color--visited;
+    text-decoration-color: $link-inverse__color--visited;
   }
 
   &:hover {
-    color: $link-inverse-hover-color;
-    text-decoration-color: $link-inverse-hover-color;
-    text-decoration-thickness: $link-underline-height-hover;
+    color: $link-inverse__color--hover;
+    text-decoration-color: $link-inverse__color--hover;
+    text-decoration-thickness: $link__text-decoration-thickness--hover;
   }
 
   &:focus,
   &:focus:visited {
     @include focus-styles-link;
-    color: $link-color;
+    color: $link__color;
   }
 
   &:active {
     background-color: transparent;
-    color: $link-inverse-active-color;
+    color: $link-inverse__color--active;
     outline: 0 none;
   }
 }

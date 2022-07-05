@@ -7,6 +7,7 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "baseUrl": ".",
+    "skipLibCheck": true,
     // Allows `*.example.tsx` files in `docs` to import directly from the design system source root
     // TODO: Remove this once we get rid of the example files in favor of Storybook stories
     "paths": {

@@ -66,6 +66,7 @@ exports[`Pagination should render component 1`] = `
         <svg
           aria-hidden="true"
           class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-left ds-c-pagination__nav--image"
+          direction="left"
           focusable="false"
           id="icon-1"
           viewBox="0 0 320 512"
@@ -119,6 +120,7 @@ exports[`Pagination should render component 1`] = `
         <svg
           aria-hidden="true"
           class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-right ds-c-pagination__nav--image"
+          direction="right"
           focusable="false"
           id="icon-2"
           viewBox="0 0 320 512"
@@ -152,6 +154,7 @@ exports[`Pagination with compact prop enabled should render compact variant 1`] 
         <svg
           aria-hidden="true"
           class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-left ds-c-pagination__nav--image"
+          direction="left"
           focusable="false"
           id="icon-55"
           viewBox="0 0 320 512"
@@ -189,6 +192,7 @@ exports[`Pagination with compact prop enabled should render compact variant 1`] 
         <svg
           aria-hidden="true"
           class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-right ds-c-pagination__nav--image"
+          direction="right"
           focusable="false"
           id="icon-56"
           viewBox="0 0 320 512"

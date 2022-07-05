@@ -9,7 +9,7 @@ function processDocgenTemplates(doc, options) {
         ? doc.getPropDescriptor(propName)
         : doc.props[propName];
       if (propObject.description !== '') {
-        propObject.description = marked(replaceTemplateTags(propObject.description, options));
+        propObject.description = marked.parse(replaceTemplateTags(propObject.description, options));
       }
     });
   }

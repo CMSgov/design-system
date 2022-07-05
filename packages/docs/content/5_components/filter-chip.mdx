@@ -1,0 +1,50 @@
+---
+title: Filter Chip
+status: draft
+---
+
+Filter Chips are used to display dismissible filter chips
+
+## `<FilterChip>`
+
+<StorybookExample
+  componentName="filterChip"
+  sourceFilePath="components/FilterChip/FilterChip.tsx"
+  storyId="components-filter-chip--multiple-chips"
+/>
+
+### Props
+
+<PropTable componentName="FilterChip" />
+
+## Guidance
+
+### When to use
+
+- Use to clearly indicate to the user what filters have been applied to a set of results and provide a quick and easy way to remove a selected filter
+
+### When to consider alternatives
+
+- When many filter chips would be displayed and available screen real estate is limited
+- When a badge is sufficient in place of a filter chip
+
+### Usage
+
+- Do not mix badges and filter chip as it can be confusing to the user
+- Do not use filter chip when a badge is sufficient, i.e., when none of the tags are removable
+- Filter chips should be short and not wrap to the second line
+- Allow adequate spacing (at least 8px) between each filter chip, as much as the design will allow.
+- The colors of the Filter Chip can be overriden using the Sass variables listed below, but should not be overriden with colors outside of the color palette.
+
+### Accessibility
+
+- `Enter`, `Backspace`, `Delete`, and `Spacebar` will remove the tag when it is in focus
+
+## Customization
+
+The following Sass variables can be overridden to customize FilterChip components:
+
+<ComponentThemeOptions
+  theme="core"
+  componentname="filter-chip"
+/>

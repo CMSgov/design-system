@@ -44,6 +44,7 @@ exports[`UsaBanner renders correctly 1`] = `
           <svg
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
+            direction="down"
             focusable="false"
             id="icon-3"
             viewBox="0 0 320 512"
@@ -111,26 +112,16 @@ exports[`UsaBanner renders correctly 1`] = `
               lock
                
             </strong>
-             (
              
             <svg
-              aria-hidden="false"
-              aria-labelledby="icon-6__title"
+              aria-hidden="true"
               class="ds-c-icon ds-c-icon--lock ds-c-usa-banner__lock-image"
               focusable="false"
               id="icon-6"
-              role="img"
               viewBox="0 0 52 64"
               xmlns="http://www.w3.org/2000/svg"
-            >
-              <title
-                id="icon-6__title"
-              >
-                lock
-              </title>
-            </svg>
+            />
              
-            ) 
             or
             <strong>
                

@@ -2,6 +2,7 @@ const path = require('path');
 
 module.exports = (rootDir, core) => ({
   rootDir,
+  testEnvironment: 'jsdom',
   testURL: 'http://localhost',
   setupFiles: [require.resolve('react-app-polyfill/stable')],
   // TODO: Find more robust solution for resolving `setupTests.js` considering `rootDir` can change
@@ -13,7 +14,12 @@ module.exports = (rootDir, core) => ({
     '.+\\.a11y\\.test\\.[jt]s(x)?$',
     '.+\\.e2e\\.test\\.[jt]s(x)?$',
   ],
-  coveragePathIgnorePatterns: ['/node_modules/', 'design-system-scripts'],
+  coveragePathIgnorePatterns: [
+    '/node_modules/',
+    'design-system-scripts',
+    'docs/public/',
+    'docs/static',
+  ],
   transformIgnorePatterns: ['node_modules(?!/@cmsgov)'],
   // Add moduleNameMapper for core CMSDS to resolve imports from @cmsgov/design-system to packages/design-system
   moduleNameMapper: core

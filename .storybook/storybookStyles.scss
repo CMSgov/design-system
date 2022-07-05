@@ -1,1 +1,6 @@
 // the webpack.config.js file adds the @import path for the appropriate scss entry
+
+.utility-example {
+  background-color: $color-primary-alt-lightest;
+  outline: 2px dashed $color-primary-alt;
+}

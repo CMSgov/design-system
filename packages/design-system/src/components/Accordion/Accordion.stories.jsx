@@ -22,7 +22,7 @@ Default.argTypes = {
 };
 Default.args = {
   children: [
-    <AccordionItem key="1" heading="First Amendment" contentClassName="first-amendment">
+    <AccordionItem key="1" heading="First Amendment" contentClassName="first-amendment" defaultOpen>
       <p>
         We the People of the United States, in Order to form a more perfect Union, establish
         Justice, insure domestic Tranquility, provide for the common defence, promote the general
@@ -30,7 +30,7 @@ Default.args = {
         establish this Constitution for the United States of America.
       </p>
     </AccordionItem>,
-    <AccordionItem key="2" heading="Second Amendment">
+    <AccordionItem key="2" heading="Second Amendment" defaultOpen>
       <p>
         A well regulated Militia, being necessary to the security of a free State, the right of the
         people to keep and bear Arms, shall not be infringed.

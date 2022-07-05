@@ -1,0 +1,113 @@
+---
+title: Spinner
+---
+
+import { Spinner, Button } from '@cmsgov/design-system';
+import loremIpsumGenerator from '../../src/helpers/loremIpsumGenerator';
+
+Spinners signify that the application is waiting for an asynchronous operation to complete.
+
+## Changing the spinner color
+
+To change the color of the spinner, one only has to change the `color` property of the spinner element. This can be done with the standard Design System [utility classes](/utilities/color/). The color of the spinner also defaults to `inherit`, so it will take on the color of the text in its parent container.
+
+## Use inside buttons
+
+<EmbeddedExample>
+  <>
+    <Button className="ds-u-margin-right--2">
+      <Spinner size="small" /> Loading{' '}
+    </Button>
+    <Button variation="primary" className="ds-u-margin-right--2">
+      <Spinner size="small" inversed /> Loading{' '}
+    </Button>
+    <Button size="big" className="ds-u-margin-right--2">
+      <Spinner /> Big button{' '}
+    </Button>
+    <Button size="big" variation="success" className="ds-u-margin-right--2">
+      <Spinner /> Big green button{' '}
+    </Button>
+  </>
+</EmbeddedExample>
+
+## "Filled" mode
+
+To provide more contrast when being rendered over other content, the `.ds-c-spinner--filled` class can be added to give it an appropriately shaped background with some padding.
+
+<EmbeddedExample>
+  <>
+    <div
+      class="ds-u-fill--background-inverse ds-u-color--base-inverse ds-u-padding--2"
+      style="position: relative"
+    >
+      <p>{loremIpsumGenerator('l')}</p>
+      <div
+        class="ds-u-display--flex ds-u-justify-content--center ds-u-align-items--center"
+        style="position: absolute; width: 100%; height: 100%; top: 0; left: 0"
+      >
+        <Spinner filled aria-valuetext="Loading" />
+      </div>
+    </div>
+    <div class="ds-u-padding--2" style="position: relative">
+      <p>{loremIpsumGenerator('l')}</p>
+      <div
+        class="ds-u-display--flex ds-u-justify-content--center ds-u-align-items--center"
+        style="position: absolute; width: 100%; height: 100%; top: 0; left: 0"
+      >
+        <Spinner filled inversed aria-valuetext="Loading" />
+      </div>
+    </div>
+  </>
+</EmbeddedExample>
+
+## `<Spinner>`
+
+<StorybookExample
+  componentName="spinner"
+  sourceFilePath="components/Spinner/Spinner.tsx"
+  storyId="components-spinner--default-spinner"
+/>
+
+### Props
+
+<PropTable componentName="Spinner" />
+
+## Guidance
+
+### When to use
+
+- To indicate a loading state for quick asynchronous tasks
+
+### When to consider alternatives
+
+- When the process it is waiting for takes a long time. Spinners provide no feedback other than that _we're waiting_, so long processes can make users nervous that something went wrong. Consider adding descriptive text or another UX pattern entirely.
+- When you are loading a whole page of content. If all you show the user is a spinner, the user may spend several seconds watching the spinner to be surprised with all the content all at once. Consider using a [_skeleton screen_](https://www.lukew.com/ff/entry.asp?1797) so the user knows what to expect.
+
+### Usage
+
+- If the process takes a long time, use something else.
+
+### Accessibility
+
+- The Spinner element should have an [`aria-valuetext`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-valuetext_attribute) attribute with a value of `loading` to provide a human readable text alternative for screen readers.
+- When placed within a parent container, the parent element should include several ARIA attributes: `aria-relevant`, `aria-live`, and optionally `aria-atomic`.
+  - `aria-relevant` may include `additions`, `text`, and `removals`. If a section will have items added or removed, use `additions removals`. If there will be additions or text changes without explicit removals, use `additions text`.
+  - `aria-live` should be set to `polite` for a screen reader to speak the changes whenever the user is idle. `aria-live="assertive"` should only be used in situations that require a user&rsquo;s immediate attention.
+  - By default, a screen reader will only speak the contents of a changed node, and not the entire contents of the element. Set `aria-atomic="true"` for cases, such as an address, where a screen reader should read the contents of the entire element.
+
+## Customization
+
+The following Sass variables can be overridden to customize Spinner components:
+
+<ComponentThemeOptions
+  theme="core"
+  componentname="spinner"
+/>
+
+### Learn more
+
+- [Response Times](https://www.nngroup.com/articles/response-times-3-important-limits/)
+- [Progress Indicators](https://www.nngroup.com/articles/progress-indicators/)
+- [GOV.UK Loading patterns discussion](https://paper.dropbox.com/doc/Loading-patterns-v0x8Xych1PbZQXOlbP3L6)
+- [Avoid the Spinner](https://www.lukew.com/ff/entry.asp?1797)
+- [ARIA Live Regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions)

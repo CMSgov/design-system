@@ -1,14 +1,14 @@
 @import '../settings/index.scss';
 
 select.ds-c-field {
-  $select-icon-size: 10px;
   appearance: none;
-  background-color: $color-white;
+  background-color: $dropdown__background-color;
   background-image: url('#{$image-path}/arrow-both.svg');
   background-position: right $spacer-1 center;
   background-repeat: no-repeat;
-  background-size: $select-icon-size;
-  padding-right: ($select-icon-size * 2) + $spacer-1;
+  background-size: $dropdown__icon-size;
+  // have to do a mix of calc & sass interpolation in order to accommodate values being css vars in internal tools
+  padding-right: calc((#{$dropdown__icon-size} * 2) + #{$spacer-1});
 
   &[multiple] {
     background-image: none;

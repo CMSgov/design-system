@@ -1,0 +1,158 @@
+---
+title: Text color
+---
+
+import ColorSwatchList from '../../src/components/ColorSwatchList';
+
+Use the text color utility to change the default text color of an element.
+
+The options below offer color palette combinations that fall within the range of Section 508 compliant and WCAG 2.0 level AA standards which is a minimum color contrast ratio of 4.5:1.
+
+**Format**: `.ds-u-color--[COLOR NAME]-[SHADE]`
+
+## Text on `.ds-u-fill--background` background
+
+<ColorSwatchList
+  backgroundClass="ds-u-fill--background"
+  preface=".ds-u-color--"
+  colorNames={[
+    'base',
+    'black',
+    'gray',
+    'gray-dark',
+    'primary',
+    'primary-darker',
+    'primary-darkest',
+    'secondary-darkest',
+    'error',
+    'error-dark',
+    'error-darkest',
+    'success',
+  ]}
+/>
+
+## Text on `.ds-u-fill--background-inverse` background
+
+<ColorSwatchList
+  backgroundClass="ds-u-fill--background-inverse"
+  preface=".ds-u-color--"
+  colorNames={[
+    'white',
+    'gray-lightest',
+    'gray-lighter',
+    'gray-light',
+    'secondary',
+    'secondary-light',
+    'secondary-lightest',
+    'secondary-dark',
+  ]}
+/>
+
+## Text on `.ds-u-fill--gray-lightest` background
+
+<ColorSwatchList
+  backgroundClass="ds-u-fill--gray-lightest"
+  preface=".ds-u-color--"
+  colorNames={[
+    'gray',
+    'gray-dark',
+    'base',
+    'primary',
+    'primary-darker',
+    'primary-darkest',
+    'secondary-darkest',
+    'error-dark',
+    'error-darkest',
+  ]}
+/>
+
+## Text on `.ds-u-fill--secondary-lightest` background
+
+<ColorSwatchList
+  backgroundClass="ds-u-fill--secondary-lightest"
+  preface=".ds-u-color--"
+  colorNames={[
+    'base',
+    'gray',
+    'gray-dark',
+    'primary-darker',
+    'primary-darkest',
+    'secondary-darkest',
+    'error-dark',
+    'error-darkest',
+  ]}
+/>
+
+## Text on `.ds-u-fill--success-lightest` background
+
+<ColorSwatchList
+  backgroundClass="ds-u-fill--success-lightest"
+  preface=".ds-u-color--"
+  colorNames={[
+    'base',
+    'gray',
+    'gray-dark',
+    'primary',
+    'primary-darker',
+    'primary-darkest',
+    'secondary-darkest',
+    'error-dark',
+    'error-darkest',
+  ]}
+/>
+
+## Text on `.ds-u-fill--warn-lightest` background
+
+<ColorSwatchList
+  backgroundClass="ds-u-fill--warn-lightest"
+  preface=".ds-u-color--"
+  colorNames={[
+    'base',
+    'gray',
+    'gray-dark',
+    'primary',
+    'primary-darker',
+    'primary-darkest',
+    'secondary-darkest',
+    'error-dark',
+    'error-darkest',
+  ]}
+/>
+
+## Text on `.ds-u-fill--error-lightest` background
+
+<ColorSwatchList
+  backgroundClass="ds-u-fill--error-lightest"
+  preface=".ds-u-color--"
+  colorNames={[
+    'base',
+    'gray',
+    'gray-dark',
+    'primary-darker',
+    'primary-darkest',
+    'secondary-darkest',
+    'error-darkest',
+  ]}
+/>
+
+## Inherit a color
+
+Use the `.ds-u-color--inherit` utility class to inherit the color of the parent element.
+
+<EmbeddedExample>
+  <div class="ds-u-color--error">
+    This is an example of{' '}
+    <a href="#" class="ds-u-color--inherit">
+      a link
+    </a>{' '}
+    with the class `ds-u-color--error` error styling.
+  </div>
+</EmbeddedExample>
+
+## Guidance
+
+### Accessibility
+
+WCAG (Web Content Accessibility Guidelines) ensure that content is accessible by everyone, regardless of disability or user device. To meet these standards, text and interactive elements should have a color contrast ratio of [at least 4.5:1](http://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html). This ensures that viewers who cannot see the full color spectrum are able to read the text.
+
+You can use the [WebAIM color contrast checker](https://webaim.org/resources/contrastchecker/) to test your color combinations.

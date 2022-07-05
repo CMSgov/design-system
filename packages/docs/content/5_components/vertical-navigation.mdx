@@ -1,0 +1,80 @@
+---
+title: Vertical navigation
+relatedUswdsGuidance: components/sidenav
+---
+
+import ViewSourceLink from '../../src/components/ViewSourceLink';
+
+Hierarchical, vertical navigation.
+
+## `<VerticalNav>`
+
+A `VerticalNav` component accepts list items as a JSON object and includes additional functionality like collapsible nested menus.
+
+<StorybookExample
+  componentName="vertical nav"
+  sourceFilePath="components/VerticalNav/VerticalNav.tsx"
+  storyId="components-vertical-nav--default-vertical-nav"
+/>
+
+### Vertical Nav Props
+
+<PropTable componentName="VerticalNav" />
+
+## `<VerticalNavItem>`
+
+<ViewSourceLink sourceFilePath="components/VerticalNav/VerticalNavItem.tsx" />
+
+### Vertical Nav Item Props
+
+<PropTable componentName="VerticalNavItem" />
+
+## Guidance
+
+### When to use
+
+- To display a navigational hierarchy with one to three levels.
+- To display the “sub-navigation” within a section of the website.
+
+### When to consider alternatives
+
+- If the site has fewer than five pages, consider organizing the page without a navigational hierarchy.
+- If your page already has a horizontal and vertical navigation bar, consider ways to simplify your navigation system.
+- If your content is within a frame or sub-area of a page, consider ways to simplify your navigation system.
+
+### Usage
+
+- Indicate where a user is within the navigational hierarchy. Use the `.ds-c-vertical-nav__label--current` modifier to show users which page they have navigated to.
+- Keep the navigation links short and follow sentence case. They can be shorter derivatives of page titles themselves.
+- If the navigation hierarchy is too long, users may miss items at the bottom. If it’s too deep, users may miss items that require too many clicks. Usability test to find the right balance between breadth and depth.
+
+### Accessibility
+
+- Users should be able to tab through each link.
+- If you have nested menus that are collapsible, ensure the toggle button has its `aria-controls` and `aria-expanded` attributes set. This is done automatically for you
+  if you're using the React components.
+- If your navigation list is longer than 3 items, consider using a skip navigation link. This allows screen reader and keyboard users to skip to the main content area(s).
+- If a skip navigation link is not an option, consider using:
+  - A valid, descriptive page header
+  - Landmark regions like `<header>`, `<main>`, `<aside>`, `<footer>`
+- When naming the optional `ariaNavLabel` prop, keep in mind:
+  - This prop is necessary only when there is more than one nav element on a page.
+  - Don't include the word "Menu" in the label. Most screen readers will announce that information already. Instead, provide more context to what's in the menu and/or its location. Like "Main" or "Social".
+
+## Customization
+
+The following Sass variables can be overridden to customize VerticalNav components:
+
+<ComponentThemeOptions
+  theme="core"
+  componentname="vertical-nav"
+/>
+
+### Related patterns
+
+- [Tabs](/components/tabs/)
+
+### Learn more
+
+- [18F Content Guide \- Heading capitalization](https://content-guide.18f.gov/capitalization/#headings)
+- [18F Content Guide \- Headings and titles](https://content-guide.18f.gov/headings-and-titles/)

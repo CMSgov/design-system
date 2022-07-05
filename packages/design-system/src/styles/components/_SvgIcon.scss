@@ -2,7 +2,7 @@
   display: inline-block;
   fill: currentColor;
   flex-shrink: 0;
-  font-size: $base-font-size;
+  font-size: $font-size-base;
   height: 1.5em;
   stroke: currentColor;
   stroke-width: 0;
@@ -21,7 +21,7 @@
 
 // Icon color variations
 .ds-c-icon-color--primary {
-  color: $color-primary;
+  color: $icon__color--primary;
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
     color: WindowText;
@@ -29,19 +29,19 @@
 }
 
 .ds-c-icon-color--inverse {
-  color: $color-white;
+  color: $icon__color--inverse;
 }
 
 .ds-c-icon-color--error {
-  color: $color-error;
+  color: $icon__color--error;
 }
 
 .ds-c-icon-color--warn {
-  color: $color-warn;
+  color: $icon__color--warn;
 }
 
 .ds-c-icon-color--success {
-  color: $color-success;
+  color: $icon__color--success;
 }
 
 // Specific icon variations
@@ -87,6 +87,7 @@
 .ds-c-icon--usa-flag {
   @media (-ms-high-contrast: active), (forced-colors: active) {
     -ms-high-contrast-adjust: none;
+    forced-color-adjust: none;
 
     path:nth-of-type(1),
     path:nth-of-type(5) {
@@ -100,6 +101,32 @@
 
     path:nth-of-type(3) {
       fill: #1e33b1;
+    }
+  }
+}
+
+.ds-c-icon--minus-circle {
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    .ds-c-icon--minus-circle__circle {
+      fill: Window;
+      stroke: WindowText;
+    }
+
+    .ds-c-icon--minus-circle__group {
+      fill: WindowText;
+    }
+  }
+}
+
+.ds-c-icon--plus-circle {
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    .ds-c-icon--plus-circle__circle {
+      fill: Window;
+      stroke: WindowText;
+    }
+
+    .ds-c-icon--plus-circle__group {
+      fill: WindowText;
     }
   }
 }

@@ -153,13 +153,8 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
               <strong>{t('usaBanner.httpsHeaderText')}</strong>
               <br />
               {t('usaBanner.httpsAText')}
-              <strong> {t('usaBanner.httpsLockText')} </strong> ({' '}
-              <LockIcon
-                className="ds-c-usa-banner__lock-image"
-                title={t('usaBanner.httpsLockText')}
-                ariaHidden={false}
-              />{' '}
-              ) {t('usaBanner.httpsOrText')}
+              <strong> {t('usaBanner.httpsLockText')} </strong>{' '}
+              <LockIcon className="ds-c-usa-banner__lock-image" /> {t('usaBanner.httpsOrText')}
               <strong> {t('usaBanner.httpsText')} </strong>
               {t('usaBanner.httpsDetailText')}
             </p>

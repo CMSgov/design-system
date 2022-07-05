@@ -1,9 +1,6 @@
 import FormLabel from '../FormLabel/FormLabel';
-import InlineError from '../InlineError/InlineError';
-import React from 'react';
-import classNames from 'classnames';
-import { errorPlacementDefault } from '../flags';
-import uniqueId from 'lodash/uniqueId';
+import React, { useEffect, useRef } from 'react';
+import useFormLabel from '../FormLabel/useFormLabel';
 
 /**
  * <FormControl> is an internal component used form components (i.e <TextField>, <Dropdown>, <DateField>, <MonthPicker>)
@@ -16,10 +13,12 @@ interface FormControlRenderProps {
   id: string;
   labelId: string;
   errorId: string;
+  errorMessage?: React.ReactNode;
+  errorPlacement?: 'top' | 'bottom';
   setRef: (elem: HTMLElement) => void;
 }
 
-interface FormControlProps {
+export interface FormControlProps {
   /**
    * Additional classes to be added to the field container.
    */
@@ -87,118 +86,50 @@ interface FormControlProps {
   render: (renderProps: FormControlRenderProps) => React.ReactNode;
 }
 
-export class FormControl extends React.Component<FormControlProps> {
-  constructor(props: FormControlProps) {
-    super(props);
+export const FormControl = (props: FormControlProps) => {
+  const focusRef = useRef<HTMLElement>();
 
-    this.id = props.id || uniqueId('field_');
-    this.labelId = props.labelId || `${this.id}-label`;
-    this.errorId = props.errorId || `${this.id}-error`;
-    this.setRef = this.setRef.bind(this);
-  }
+  // TODO: Make a hook out of this
+  // Automatically set focus on field input element when `focusTrigger` prop is used
+  useEffect(() => {
+    if (props.focusTrigger && focusRef.current) {
+      focusRef.current.focus();
+    }
+  }, [focusRef, props.focusTrigger]);
 
-  componentDidMount(): void {
-    // Automatically set focus on field input element when `focusTrigger` prop is used
-    if (this.props.focusTrigger && this.inputRef) {
-      this.inputRef.focus();
+  const { component, render, inputRef, ...remainingProps } = props;
+  const ComponentType = component;
+  const wrapperIsFieldset = ComponentType === 'fieldset';
+  const { labelProps, fieldProps, wrapperProps, bottomError } = useFormLabel({
+    ...remainingProps,
+    wrapperIsFieldset,
+  });
+
+  function setRef(el) {
+    focusRef.current = el;
+    if (inputRef) {
+      inputRef(el);
     }
   }
 
-  id: string;
-  labelId: string;
-  errorId: string;
-  inputRef?: HTMLElement;
+  // Field input props handled by <FormControl>
+  // TODO: Move `setRef` logic into <TextField> and <Select>
+  // TODO: Simplify `id` props by using a singular `fieldId` prop, and a consistent id naming convention
+  // TODO: Use React Context to provide shared form props like `errorPlacement`, `inversed`, `fieldId`
+  const fieldInputProps = {
+    ...fieldProps,
+    labelId: labelProps.id,
+    setRef,
+  };
 
-  setRef(elem: HTMLElement): void {
-    // Use React.forwardRef when upgraded to React 16.3
-    if (this.props.focusTrigger) {
-      this.inputRef = elem;
-    }
-    if (this.props.inputRef) {
-      this.props.inputRef(elem);
-    }
-  }
-
-  render() {
-    const {
-      className,
-      component,
-      errorMessage,
-      errorMessageClassName,
-      errorPlacement = errorPlacementDefault(),
-      hint,
-      inversed,
-      label,
-      labelClassName,
-      labelComponent,
-      requirementLabel,
-      render,
-    } = this.props;
-
-    const ComponentType = component;
-    const isFieldset = ComponentType === 'fieldset';
-    const classes = classNames(
-      {
-        'ds-c-fieldset': isFieldset,
-      },
-      className
-    );
-
-    const bottomError = errorPlacement === 'bottom' && errorMessage;
-
-    // Use `aria-invalid` attribute on errored fieldsets
-    // Errored form components without fieldsets must handle `aria-invalid` in their own component
-    const ariaInvalid = isFieldset && errorMessage ? true : undefined;
-
-    // Bottom placed errors are handled in FormControl instead of FormLabel
-    const renderBottomError = bottomError ? (
-      <InlineError id={this.errorId} inversed={inversed} className={errorMessageClassName}>
-        {errorMessage}
-      </InlineError>
-    ) : null;
-
-    // Bottom placed errors cannot be linked to Choices in ChoiceList, so we add a hidden error message to the label
-    const renderHiddenError =
-      isFieldset && bottomError ? (
-        <div className="ds-u-visibility--screen-reader">{errorMessage}</div>
-      ) : null;
-
-    // Field input props handled by <FormControl>
-    // TODO: Move `setRef` logic into <TextField> and <Select>
-    // TODO: Simplify `id` props by using a singular `fieldId` prop, and a consistent id naming convention
-    // TODO: Use React Context to provide shared form props like `errorPlacement`, `inversed`, `fieldId`
-    const fieldInputProps = {
-      id: this.id,
-      labelId: this.labelId,
-      errorId: this.errorId,
-      setRef: this.setRef,
-    };
-
-    return (
-      <ComponentType className={classes} aria-invalid={ariaInvalid}>
-        <FormLabel
-          className={labelClassName}
-          component={labelComponent}
-          errorMessage={bottomError ? undefined : errorMessage}
-          errorMessageClassName={bottomError ? undefined : errorMessageClassName}
-          errorId={this.errorId}
-          // Avoid using `for` attribute for components with multiple inputs
-          // i.e. ChoiceList, DateField, and other components that use `fieldset`
-          fieldId={isFieldset ? undefined : this.id}
-          hint={hint}
-          id={this.labelId}
-          requirementLabel={requirementLabel}
-          inversed={inversed}
-        >
-          {label}
-          {renderHiddenError}
-        </FormLabel>
-        {render(fieldInputProps)}
-        {renderBottomError}
-      </ComponentType>
-    );
-  }
-}
+  return (
+    <ComponentType {...wrapperProps}>
+      <FormLabel {...labelProps} />
+      {render(fieldInputProps)}
+      {bottomError}
+    </ComponentType>
+  );
+};
 
 export const FormControlPropKeys = [
   'className',
