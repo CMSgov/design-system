@@ -14,7 +14,3 @@ export const toKebabCase = (currentText: string) => {
   }
   return currentText;
 };
-
-export const removePositioning = (text: string): string => {
-  return text.replace(/\d+_/g, '');
-};

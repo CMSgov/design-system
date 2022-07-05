@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { makePageUrl } from '../helpers/urlUtils';
-import { removePositioning } from '../helpers/casingUtils';
 import classnames from 'classnames';
 import { Button, CloseIconThin, MenuIconThin, SvgIcon, VerticalNav } from '@cmsgov/design-system';
 import { VerticalNavItemProps } from '@cmsgov/design-system/dist/components/VerticalNav/VerticalNavItem';
 import { useStaticQuery, graphql } from 'gatsby';
 import { LocationInterface } from '../helpers/graphQLTypes';
+import sortBy from 'lodash.sortby';
 
 interface NavItem {
   frontmatter: {
@@ -31,6 +31,16 @@ interface GraphQlNavItemNode {
 interface DocSiteNavProps {
   location: LocationInterface;
 }
+
+// order of labels of level 1 items
+const level1ItemOrder = [
+  'getting started',
+  'guidelines',
+  'foundation',
+  'components',
+  'patterns',
+  'utilities',
+];
 
 /**
  * A wrapper for the gatsby link to handle internal site navigation
@@ -85,12 +95,9 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
 
   const data = useStaticQuery(graphql`
     query SiteNavQuery {
-      allMdx(
-        filter: {
-          slug: { glob: "!(not-in-sidebar)/**" }
-          fileAbsolutePath: { glob: "**/content/**" }
-        }
-        sort: { fields: slug }
+      allFile(
+        filter: { ext: { eq: ".mdx" }, relativeDirectory: { ne: "not-in-sidebar" } }
+        sort: { fields: [relativeDirectory, name] }
       ) {
         group(field: relativeDirectory) {
           fieldValue
@@ -104,12 +111,10 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
                 id
                 frontmatter {
                   title
+                  order
                 }
               }
             }
-            slug
-            id
-            fileAbsolutePath
           }
         }
       }
@@ -131,61 +136,26 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
   };
 
   /**
-   * Updating a name to remove kebab case & get rid of numeric ordering
+   * Updating a name to remove kebab case
    */
   const formatNavItemLabel = (name: string): string => {
-    let newName = name.replace(/-/g, ' ');
-    newName = removePositioning(newName);
-    return newName;
+    return name.replace(/-/g, ' ');
   };
 
   /**
    * transforms from graphql structure to structure for <VerticalNav> `items` prop
    */
-  const formatNavItemData = ({ frontmatter, slug }: NavItem) => {
+  const formatNavItemData = ({ childMdx, relativePath }: NavItem) => {
+    const { frontmatter } = childMdx;
     const name = frontmatter.title;
-    const url = makePageUrl(slug);
+    const url = makePageUrl(relativePath);
     return {
       label: formatNavItemLabel(name),
       url,
-      id: slug,
+      id: relativePath,
       selected: isItemSelected(url),
+      order: frontmatter.order || 0,
     };
-  };
-
-  /**
-   * Groups files under same relative directory
-   *
-   * @example [
-   *  {
-   *    relativeDirectory: 'directory1',
-   *    items: []
-   *  },
-   *  {
-   *    relativeDirectory: 'directory1/subDirectory1'
-   *    items []
-   *  }
-   * ]
-   */
-  const groupData = (dataList: GraphQlNavItemNode[]) => {
-    const retVal = {};
-    dataList.forEach((dataItem) => {
-      // split file path
-      const filePath = dataItem.node.slug.split('/');
-      // remove file name (last item in list)
-      filePath.pop();
-      // reconstruct with directories path
-      const relativeDirectory = filePath.join('/');
-
-      if (!retVal[relativeDirectory]) {
-        retVal[relativeDirectory] = {
-          relativeDirectory,
-          items: [],
-        };
-      }
-      retVal[relativeDirectory].items.push(dataItem);
-    });
-    return Object.values(retVal);
   };
 
   /**
@@ -206,6 +176,9 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
 
     // iterate through level2 items and nest them under their level1 parent
     level2Items.forEach((level2Item) => {
+      // sort level3 items by order then id / name
+      level2Item.items = sortBy(level2Item.items, ['order', 'id']);
+
       const [level1Name, level2Name] = level2Item.label.split('/');
 
       level1Items[level1Name].items.push({ ...level2Item, label: level2Name });
@@ -223,17 +196,13 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
    * sort items - needed because level2 items that have sub nav are added to the end of list in previous step
    */
   const sortNavItems = (level1Items: VerticalNavItemProps[]): VerticalNavItemProps[] => {
-    Object.values(level1Items).forEach((level1Item) => {
-      // sort items based on id which is the file path for the item
-      // this allows for control as to how nav items are sorted
-      level1Item.items.sort((itemA, itemB) => {
-        if (itemA.id < itemB.id) {
-          return -1;
-        } else if (itemA.id > itemB.id) {
-          return 1;
-        }
-        return 0;
-      });
+    level1Items.forEach((level1Item) => {
+      // sort items based on the order defined in frontmatter then id which is the file path for the item
+      level1Item.items = sortBy(level1Item.items, ['order', 'id']);
+    });
+
+    level1Items.sort((itemA, itemB) => {
+      return level1ItemOrder.indexOf(itemA.label) - level1ItemOrder.indexOf(itemB.label);
     });
     return level1Items;
   };
@@ -245,10 +214,13 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
     const retVal: VerticalNavItemProps[] = [];
     dataList.forEach((dataItem) => {
       // format all the level 2 items
-      const subNavItems = dataItem.items.map((subNavItem) => formatNavItemData(subNavItem.node));
+      const subNavItems = dataItem.edges.map((subNavItem) => formatNavItemData(subNavItem.node));
+      // in order to sort properly, need to get the smallest leve l3 order value and assign to level 2
+      const subNavItemsOrderVals = subNavItems.map((subNavItem) => subNavItem.order);
+      const orderVal = Math.min(...subNavItemsOrderVals);
 
-      const labelText = formatNavItemLabel(dataItem.relativeDirectory);
-      const isSelected = isItemSelected(removePositioning(dataItem.relativeDirectory));
+      const labelText = formatNavItemLabel(dataItem.fieldValue);
+      const isSelected = isItemSelected(dataItem.fieldValue);
 
       // add level 1 item & sub items
       retVal.push({
@@ -256,21 +228,22 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
         items: subNavItems,
         defaultCollapsed: !isSubNavItemSelected(subNavItems),
         selected: isSelected,
-        id: dataItem.relativeDirectory,
+        id: dataItem.fieldValue,
+        order: orderVal,
       });
     });
+
     return retVal;
   };
 
   const formatNavData = (graphQlData: GraphQlNavItemNode[]): VerticalNavItemProps[] => {
-    const groupedGraphQlData = groupData(graphQlData);
-    const verticalNavItems = restructureAsVerticalNavItem(groupedGraphQlData);
+    const verticalNavItems = restructureAsVerticalNavItem(graphQlData);
     const nestedItems = nestSubNavs(verticalNavItems);
     const sortedItems = sortNavItems(nestedItems);
     return sortedItems;
   };
 
-  const navItems: VerticalNavItemProps[] = formatNavData(data?.allMdx?.edges);
+  const navItems: VerticalNavItemProps[] = formatNavData(data?.allFile?.group);
 
   return (
     <div

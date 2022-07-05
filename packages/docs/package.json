@@ -27,6 +27,7 @@
     "gatsby-plugin-sitemap": "^5.11.1",
     "gatsby-source-filesystem": "^4.11.1",
     "gatsby-transformer-react-docgen": "^7.13.0",
+    "lodash.sortby": "^4.7.0",
     "prettier": "^2.6.2",
     "prismjs": "^1.11.0",
     "react-helmet": "^6.1.0",
