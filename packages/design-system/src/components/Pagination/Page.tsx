@@ -30,18 +30,13 @@ export default function Page({
     <li>
       {isActive ? (
         <span
-          className="ds-c-button ds-c-button--transparent ds-c-pagination__current-page"
+          className="ds-c-button ds-c-button--link ds-c-pagination__current-page"
           aria-current="true"
         >
           {index}
         </span>
       ) : (
-        <Button
-          variation="transparent"
-          href={href}
-          onClick={onPageChange}
-          aria-label={`page ${index}`}
-        >
+        <Button variation="link" href={href} onClick={onPageChange} aria-label={`page ${index}`}>
           {index}
         </Button>
       )}
