@@ -1,0 +1,25 @@
+.c-table-of-contents {
+  position: sticky;
+  top: $spacer-1;
+}
+
+.c-table-of-contents__heading {
+  border-bottom: 1px solid $color-gray-lighter;
+  padding-bottom: 0.25rem;
+}
+
+.c-table-of-contents__list {
+  list-style-type: '- ';
+  margin-top: $spacer-half;
+}
+
+.c-table-of-contents-mobile {
+  & .ds-c-accordion__content {
+    border: 1px solid $accordion__background-color;
+  }
+}
+
+.c-table-of-contents-mobile__list {
+  list-style-type: '- ';
+  padding-left: 0;
+}

@@ -6,10 +6,32 @@ import Footer from './DocSiteFooter';
 import Navigation from './DocSiteNavigation';
 import { SkipNav, Badge, UsaBanner } from '@cmsgov/design-system';
 import { LocationInterface } from '../helpers/graphQLTypes';
+import TableOfContents from './TableOfContents';
+import TableOfContentsMobile from './TableOfContentsMobile';
 
 import '../styles/index.scss';
 
 export type PageStatus = 'draft' | 'do not use';
+
+// TODO: deleve this variable and use graphQL data instead
+const mockTOCdata = [
+  {
+    url: '#install-using-npm',
+    title: 'Install using npm',
+  },
+  {
+    url: '#download-zip',
+    title: 'Download zip',
+  },
+  {
+    url: '#utilize-the-cdn',
+    title: 'Utilize the CDN',
+  },
+  {
+    url: '#need-help-or-ran-into-an-issue',
+    title: 'Need help or ran into an issue?',
+  },
+];
 
 interface LayoutProps {
   /**
@@ -100,8 +122,16 @@ const Layout = ({
               </div>
             )}
           </header>
-          <article className="ds-u-border-top--1 ds-u-padding-x--3 ds-u-sm-padding-x--6 ds-u-sm-padding-y--6 ds-u-padding-y--3 page-content">
-            {children}
+          <article className="ds-u-md-display--flex ds-u-border-top--1 ds-u-padding-x--3 ds-u-sm-padding-x--6 ds-u-sm-padding-y--6 ds-u-padding-y--3 page-content">
+            <div className="ds-l-lg-col--10">
+              <div className="ds-u-display--block ds-u-lg-display--none">
+                <TableOfContentsMobile data={mockTOCdata} />
+              </div>
+              {children}
+            </div>
+            <div className="ds-l-lg-col--2 ds-u-display--none ds-u-lg-display--block">
+              <TableOfContents data={mockTOCdata} />
+            </div>
           </article>
         </main>
       </div>
