@@ -22,7 +22,7 @@ exports[`Drawer renders a snapshot with focus trap 1`] = `
         </h3>
         <button
           aria-label="Close help drawer"
-          class="ds-c-button ds-c-button--small ds-c-drawer__close-button"
+          class="ds-c-button ds-c-button--main ds-c-button--on-light ds-c-button--small ds-c-button--outline ds-c-drawer__close-button ds-u-fill--white"
           type="button"
         >
           Close
@@ -80,7 +80,7 @@ exports[`Drawer renders a snapshot without focus trap 1`] = `
         </h3>
         <button
           aria-label="Close help drawer"
-          class="ds-c-button ds-c-button--small ds-c-drawer__close-button"
+          class="ds-c-button ds-c-button--main ds-c-button--on-light ds-c-button--small ds-c-button--outline ds-c-drawer__close-button ds-u-fill--white"
           type="button"
         >
           Close

@@ -3,11 +3,11 @@
 exports[`Button Analytics overrides analytics event tracking on open 1`] = `
 Array [
   Object {
-    "button_style": "default",
+    "button_style": "outline",
     "button_type": "button",
     "event_name": "button_engagement",
     "event_type": "ui interaction",
-    "ga_eventAction": "engaged default button",
+    "ga_eventAction": "engaged outline button",
     "ga_eventCategory": "ui interaction",
     "ga_eventLabel": "alternate content",
     "ga_eventType": "cmsds",
@@ -22,11 +22,11 @@ Array [
 exports[`Button Analytics sends button analytics event 1`] = `
 Array [
   Object {
-    "button_style": "default",
+    "button_style": "outline",
     "button_type": "button",
     "event_name": "button_engagement",
     "event_type": "ui interaction",
-    "ga_eventAction": "engaged default button",
+    "ga_eventAction": "engaged outline button",
     "ga_eventCategory": "ui interaction",
     "ga_eventLabel": "Foo",
     "ga_eventType": "cmsds",
@@ -41,11 +41,11 @@ Array [
 exports[`Button Analytics sends link analytics event 1`] = `
 Array [
   Object {
-    "button_style": "default",
+    "button_style": "outline",
     "button_type": "link",
     "event_name": "button_engagement",
     "event_type": "ui interaction",
-    "ga_eventAction": "engaged default button",
+    "ga_eventAction": "engaged outline button",
     "ga_eventCategory": "ui interaction",
     "ga_eventLabel": "Foo: #/somewhere-over-the-rainbow",
     "ga_eventType": "cmsds",
@@ -60,7 +60,7 @@ Array [
 
 exports[`Button renders as a custom Link component 1`] = `
 <a
-  class="ds-c-button"
+  class="ds-c-button ds-c-button--main ds-c-button--on-light ds-c-button--outline"
   href="#"
   to="anywhere"
 >
@@ -70,7 +70,7 @@ exports[`Button renders as a custom Link component 1`] = `
 
 exports[`Button renders as an anchor with custom prop 1`] = `
 <a
-  class="ds-c-button"
+  class="ds-c-button ds-c-button--main ds-c-button--on-light ds-c-button--outline"
   href="/example"
   target="_blank"
 >
@@ -80,7 +80,7 @@ exports[`Button renders as an anchor with custom prop 1`] = `
 
 exports[`Button renders as button 1`] = `
 <button
-  class="ds-c-button"
+  class="ds-c-button ds-c-button--main ds-c-button--on-light ds-c-button--outline"
   type="button"
 >
   Foo
@@ -89,7 +89,7 @@ exports[`Button renders as button 1`] = `
 
 exports[`Button renders disabled button 1`] = `
 <button
-  class="ds-c-button"
+  class="ds-c-button ds-c-button--main ds-c-button--on-light ds-c-button--outline"
   disabled=""
   type="button"
 >
@@ -99,7 +99,7 @@ exports[`Button renders disabled button 1`] = `
 
 exports[`Button renders disabled link correctly 1`] = `
 <a
-  class="ds-c-button ds-c-button--disabled"
+  class="ds-c-button ds-c-button--disabled ds-c-button--main ds-c-button--on-light ds-c-button--outline"
   href="javascript:void(0)"
 >
   Link button

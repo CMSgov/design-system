@@ -88,7 +88,7 @@ exports[`ActionMenu logged-in version renders logged-in version 1`] = `
         aria-controls="hc-c-menu"
         aria-expanded="false"
         aria-label="header.openMenu"
-        class="ds-c-button ds-c-button--small hc-c-action-menu-button ds-u-sm-margin-left--2"
+        class="ds-c-button ds-c-button--main ds-c-button--on-light ds-c-button--small ds-c-button--outline hc-c-action-menu-button ds-u-sm-margin-left--2"
         type="button"
       >
         <svg
@@ -128,7 +128,7 @@ exports[`ActionMenu logged-in version set aria-expanded to true 1`] = `
         aria-controls="hc-c-menu"
         aria-expanded="true"
         aria-label="header.closeMenu"
-        class="ds-c-button ds-c-button--small hc-c-action-menu-button ds-u-sm-margin-left--2"
+        class="ds-c-button ds-c-button--main ds-c-button--on-light ds-c-button--small ds-c-button--outline hc-c-action-menu-button ds-u-sm-margin-left--2"
         type="button"
       >
         <svg
@@ -180,7 +180,7 @@ exports[`ActionMenu logged-out version renders logged-out version 1`] = `
         aria-controls="hc-c-menu"
         aria-expanded="false"
         aria-label="header.openMenu"
-        class="ds-c-button ds-c-button--small hc-c-action-menu-button ds-u-sm-margin-left--2 ds-u-display--inline-block ds-u-sm-display--none"
+        class="ds-c-button ds-c-button--main ds-c-button--on-light ds-c-button--small ds-c-button--outline hc-c-action-menu-button ds-u-sm-margin-left--2 ds-u-display--inline-block ds-u-sm-display--none"
         type="button"
       >
         <svg
