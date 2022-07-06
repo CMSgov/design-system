@@ -3,11 +3,11 @@
 @mixin spinner-size($inner-size, $outer-size) {
   height: $outer-size;
   width: $outer-size;
-  $padding: (($outer-size - $inner-size) / 2);
+  $padding: (($outer-size - $inner-size) * 0.5);
 
   &::before,
   &::after {
-    border-width: ($inner-size / 8);
+    border-width: ($inner-size * 0.125);
     height: $inner-size;
     left: $padding;
     top: $padding;

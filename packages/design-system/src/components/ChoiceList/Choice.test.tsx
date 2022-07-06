@@ -91,6 +91,12 @@ describe('Choice', () => {
     expect(wrapper.find('FormLabel')).toMatchSnapshot();
   });
 
+  it('applies errorMessage to label', () => {
+    const errorMessage = "Hey! You can't do that!";
+    const { wrapper } = render({ errorMessage });
+    expect(wrapper.find('FormLabel').props().errorMessage).toEqual(errorMessage);
+  });
+
   it('has a hint and requirementLabel', () => {
     const { wrapper } = render({
       hint: 'Hello world',
