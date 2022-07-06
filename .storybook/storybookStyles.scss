@@ -1,4 +1,5 @@
 @import '@cmsgov/design-system/src/styles/index';
+@import '@cmsgov/ds-medicare-gov/src/styles/_fonts';
 
 [data-theme='healthcare'] {
   @import '@cmsgov/ds-healthcare-gov/src/styles/index';
@@ -7,8 +8,6 @@
 [data-theme='medicare'] {
   @import '@cmsgov/ds-medicare-gov/src/styles/index';
 }
-
-@import '@cmsgov/ds-medicare-gov/src/styles/_fonts';
 
 .utility-example {
   background-color: $color-secondary-lightest;
