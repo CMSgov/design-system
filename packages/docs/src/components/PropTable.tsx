@@ -9,9 +9,8 @@ import {
   Badge,
 } from '@cmsgov/design-system';
 import { graphql, useStaticQuery } from 'gatsby';
-
 import ContentRenderer from './ContentRenderer';
-
+import { getTheme } from '../helpers/themeUtils';
 import { ComponentPropQuery, PropQuery } from '../helpers/graphQLTypes';
 
 export interface PropTableDataItem {
@@ -122,7 +121,7 @@ const PropTable = ({ componentName }: PropTableProps) => {
               {dataItem.defaultValue && <code>{dataItem.defaultValue}</code>}
             </TableCell>
             <TableCell headers="columndescription" stackedTitle="Description">
-              <ContentRenderer data={dataItem.description} />
+              <ContentRenderer data={dataItem.description} theme={getTheme()} />
             </TableCell>
           </TableRow>
         ))}

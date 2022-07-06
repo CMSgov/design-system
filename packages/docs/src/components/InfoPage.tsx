@@ -3,8 +3,7 @@ import { graphql } from 'gatsby';
 
 import Layout from './Layout';
 import { MdxQuery, TableOfContentsItem } from '../helpers/graphQLTypes';
-import { getQueryParamValue } from '../helpers/urlUtils';
-import { updateThemeLocalStorage } from '../helpers/storageUtils';
+import { getTheme } from '../helpers/themeUtils';
 import ContentRenderer from './ContentRenderer';
 
 /**
@@ -13,13 +12,8 @@ import ContentRenderer from './ContentRenderer';
 const InfoPage = ({ data, location }: MdxQuery) => {
   const { frontmatter, body, tableOfContents } = data.mdx;
   const { title, relatedUswdsGuidance, status } = frontmatter;
+  const theme = getTheme();
   let showGuidance = false;
-
-  // Get current theme query param value and store in localStorage if it exists.
-  // If no param found, returns value of localStorage.theme.
-  // If localStorage.theme also not set, returns 'core' by default
-  const themeParam = getQueryParamValue('theme');
-  const theme = updateThemeLocalStorage(themeParam);
 
   // check table of contents to see if there is a guidance section
   if (tableOfContents && Object.keys(tableOfContents).length) {
