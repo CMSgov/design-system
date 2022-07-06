@@ -13,6 +13,12 @@ interface NavItem {
   name: string;
   relativeDirectory: string;
   relativePath: string;
+  childMdx: {
+    frontmatter?: {
+      title: string;
+      order?: number;
+    };
+  };
 }
 
 interface GraphQlNavItem {
@@ -93,6 +99,12 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
               name
               relativeDirectory
               relativePath
+              childMdx {
+                id
+                frontmatter {
+                  title
+                }
+              }
             }
           }
         }
