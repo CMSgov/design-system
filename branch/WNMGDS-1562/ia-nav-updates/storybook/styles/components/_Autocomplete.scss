@@ -37,7 +37,7 @@ $autocomplete-list-border: $autocomplete-list-border-width $autocomplete-list-bo
   background-color: $autocomplete__background-color;
   border: $autocomplete-list-border;
   box-sizing: border-box;
-  max-height: ($base-font-size + $spacer-2) * 10;
+  max-height: calc(calc(#{$base-font-size} + #{$spacer-2}) * 10);
   overflow-y: auto;
   padding: $autocomplete-space;
   position: absolute;
