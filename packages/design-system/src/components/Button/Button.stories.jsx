@@ -61,7 +61,7 @@ SpinnerButton.args = {
       <Spinner /> Loading...
     </>
   ),
-  variation: 'outline',
+  variation: 'solid',
 };
 
 export const LinkButton = Template.bind({});

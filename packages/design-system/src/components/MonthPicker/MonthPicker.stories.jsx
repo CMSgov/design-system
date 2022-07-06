@@ -9,7 +9,7 @@ export default {
     buttonVariation: {
       description: `Variation string to be applied to buttons. See [Button component](https://design.cms.gov/components/button/#components.button.react).`,
       control: 'radio',
-      options: ['primary', 'success', 'transparent'],
+      options: ['solid', 'outline', 'link'],
     },
     requirementLabel: {
       description: `Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields](https://design.cms.gov/guidelines/forms/#required-and-optional-fields).`,

@@ -94,7 +94,7 @@ export const Drawer = (props: DrawerProps) => {
           </Heading>
           <Button
             aria-label={props.ariaLabel ?? t('drawer.ariaLabel')}
-            className="ds-c-drawer__close-button"
+            className="ds-c-drawer__close-button ds-u-fill--white"
             size="small"
             onClick={props.onCloseClick}
           >
