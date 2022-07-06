@@ -6,8 +6,8 @@ module.exports = {
   ],
   staticDirs: [
     '../packages/design-system/src',
-    '../packages/ds-healthcare-gov/src',
-    '../packages/ds-medicare-gov/src',
+    //   '../packages/ds-healthcare-gov/src',
+    //   '../packages/ds-medicare-gov/src',
   ],
   addons: [
     '@storybook/addon-links',
