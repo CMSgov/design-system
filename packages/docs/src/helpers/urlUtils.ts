@@ -11,7 +11,13 @@ export function makePageUrl(fileRelativePath) {
   return `/${pageUrl.replace('.mdx', '/')}`;
 }
 
-export function getQueryParamValue(value) {
+/**
+ * Gets value of query parameter from current browser URL
+ *
+ * @param {string} value - Query string key to search for
+ * @returns Value of key if found, null if not
+ */
+export function getQueryParamValue(value: string) {
   let query = {};
   if (typeof window !== 'undefined') {
     location.search
