@@ -12,8 +12,8 @@ export function getTheme() {
 
   if (typeof window !== 'undefined') {
     // query param found, set and return it
-    if (themeQueryParam) {
-      localStorage.setItem('theme', theme);
+    if (themeQueryParam !== null) {
+      localStorage.setItem('theme', themeQueryParam);
       return themeQueryParam;
     } else {
       // returning localStorage theme if found, otherwise 'core'
