@@ -49,6 +49,11 @@ export interface ChoiceProps {
    */
   defaultChecked?: boolean;
   disabled?: boolean;
+  errorMessage?: React.ReactNode;
+  /**
+   * Additional classes to be added to the error message
+   */
+  errorMessageClassName?: string;
   /**
    * Access a reference to the `input` element
    */
@@ -196,6 +201,8 @@ export class Choice extends React.PureComponent<
       children,
       className,
       disabled,
+      errorMessage,
+      errorMessageClassName,
       hint,
       inversed,
       inputClassName,
@@ -241,9 +248,7 @@ export class Choice extends React.PureComponent<
           <FormLabel
             className={labelClassName}
             fieldId={this.id}
-            hint={hint}
-            inversed={inversed}
-            requirementLabel={requirementLabel}
+            {...{ errorMessage, errorMessageClassName, hint, inversed, requirementLabel }}
           >
             {label || children}
           </FormLabel>
