@@ -16,6 +16,7 @@ const getFontAndImagePaths = () => {
 module.exports = async ({ config }) => {
   config.plugins.push(
     new MiniCssExtractPlugin(),
+    // copies current set of static assets to dist folder when building
     new CopyPlugin({
       patterns: [
         {

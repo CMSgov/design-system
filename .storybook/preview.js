@@ -11,6 +11,8 @@ import { setLanguage } from '../packages/design-system/src/components/i18n';
 import { setLanguage as setLanguageFromPackage } from '@cmsgov/design-system';
 
 window.utag = { link: console.log };
+const currentEnvironment =
+  process.env.STORYBOOK_DS !== 'undefined' ? process.env.STORYBOOK_DS : 'core';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -59,7 +61,7 @@ export const globalTypes = {
   theme: {
     name: 'Theme',
     description: 'Current theme',
-    defaultValue: 'core',
+    defaultValue: currentEnvironment,
     toolbar: {
       icon: 'paintbrush',
       items: [
