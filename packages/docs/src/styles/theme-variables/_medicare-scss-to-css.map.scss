@@ -130,7 +130,7 @@ $color-warn-light: var(--color-warn-light);
 $color-warn-lighter: var(--color-warn-lighter);
 $color-warn-lightest: var(--color-warn-lightest);
 $color-visited: var(--color-visited);
-$font-sans: 'Rubik', sans-serif;
+$font-sans: var(--font-sans);
 $font-montserrat: var(--font-montserrat);
 $font-rubik: var(--font-rubik);
 $font-family-open-sans: var(--font-family-open-sans);

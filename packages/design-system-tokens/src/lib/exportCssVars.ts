@@ -9,8 +9,6 @@ import { writeFile } from './file';
  * Instead, these values will have a direct sass variable -> value definition
  */
 const variableIgnoreList: string[] = [
-  'font-sans',
-  'font-seriff',
   'grid-columns',
   'media-width-xs',
   'media-width-sm',
