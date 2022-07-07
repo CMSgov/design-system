@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { TableOfContentsItem } from '../helpers/graphQLTypes';
 
-interface TableOfContentsProps {
+export interface TableOfContentsProps {
   data: TableOfContentsItem[];
 }
 

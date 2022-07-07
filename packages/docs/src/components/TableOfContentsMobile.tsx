@@ -1,11 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { Accordion, AccordionItem } from '@cmsgov/design-system';
-import { TableOfContentsItem } from '../helpers/graphQLTypes';
-
-interface TableOfContentsProps {
-  data: TableOfContentsItem[];
-}
+import { TableOfContentsProps } from './TableOfContents';
 
 /**
  * The mobile version of the table of contents
