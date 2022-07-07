@@ -15,7 +15,7 @@
 
 .c-table-of-contents-mobile {
   & .ds-c-accordion__content {
-    border: 1px solid $accordion__background-color;
+    border: $spacer-half solid $accordion__background-color;
   }
 }
 
