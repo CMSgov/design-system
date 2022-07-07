@@ -11,6 +11,7 @@ import { setLanguage } from '../packages/design-system/src/components/i18n';
 import { setLanguage as setLanguageFromPackage } from '@cmsgov/design-system';
 
 window.utag = { link: console.log };
+// used to set up automatic setting of theme based on STORYBOOK_DS variable
 const currentEnvironment =
   process.env.STORYBOOK_DS !== 'undefined' ? process.env.STORYBOOK_DS : 'core';
 

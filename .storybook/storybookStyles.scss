@@ -1,4 +1,6 @@
 @import '@cmsgov/design-system/src/styles/index';
+// any @font-face declarations need to be included everywhere to not be
+// wrapped with the data-theme selector below
 @import '@cmsgov/ds-medicare-gov/src/styles/_fonts';
 
 [data-theme='healthcare'] {
