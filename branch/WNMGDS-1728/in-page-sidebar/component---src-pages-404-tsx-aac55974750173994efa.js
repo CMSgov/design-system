@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunk_cmsgov_cms_design_system_docs=self.webpackChunk_cmsgov_cms_design_system_docs||[]).push([[218],{1249:function(e,s,t){t.r(s);var a=t(2784),c=t(4006),n=t(4963);s.default=function(e){var s=e.data,t=e.location;return a.createElement(c.Z,{pageName:"Page not found",location:t},a.createElement(n.Z,{data:s.mdx.body}))}}}]);
+//# sourceMappingURL=component---src-pages-404-tsx-aac55974750173994efa.js.map

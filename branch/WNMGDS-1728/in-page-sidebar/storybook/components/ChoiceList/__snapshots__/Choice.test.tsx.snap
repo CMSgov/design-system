@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Choice applies className to label 1`] = `
+<FormLabel
+  className="ds-u-font-weight--bold"
+  component="label"
+  fieldId="checkbox_foo_9"
+>
+  George Washington
+</FormLabel>
+`;
+
+exports[`Choice has a hint and requirementLabel 1`] = `
+<FormLabel
+  component="label"
+  fieldId="checkbox_foo_11"
+  hint="Hello world"
+  requirementLabel="Optional "
+>
+  George Washington
+</FormLabel>
+`;

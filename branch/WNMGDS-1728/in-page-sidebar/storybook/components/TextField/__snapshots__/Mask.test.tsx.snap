@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Mask renders mask 1`] = `
+<div
+  className="ds-c-field-mask ds-c-field-mask--ssn"
+>
+  <input
+    fieldClassName="ds-c-field--ssn"
+    inputMode="numeric"
+    name="foo"
+    onBlur={[Function]}
+    onChange={[Function]}
+    pattern="[0-9-*]*"
+    type="text"
+    value=""
+  />
+</div>
+`;
+
+exports[`Mask renders mask overlay 1`] = `
+<div
+  className="ds-c-field-mask ds-c-field-mask--currency"
+>
+  <div
+    className="ds-c-field__before ds-c-field__before--currency"
+  >
+    $
+  </div>
+  <input
+    fieldClassName="ds-c-field--currency"
+    inputMode="numeric"
+    name="foo"
+    onBlur={[Function]}
+    onChange={[Function]}
+    pattern="[0-9.,-]*"
+    type="text"
+    value=""
+  />
+</div>
+`;

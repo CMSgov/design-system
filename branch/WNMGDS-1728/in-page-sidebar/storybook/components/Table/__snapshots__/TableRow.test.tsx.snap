@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableRow renders additional attributes 1`] = `
+<table>
+  <tbody>
+    <TableRow
+      className="foo-row"
+    >
+      <tr
+        className="foo-row"
+        role="row"
+      >
+        <td>
+          Column a
+        </td>
+        <td>
+          Column b
+        </td>
+      </tr>
+    </TableRow>
+  </tbody>
+</table>
+`;

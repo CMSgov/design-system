@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunk_cmsgov_cms_design_system_docs=self.webpackChunk_cmsgov_cms_design_system_docs||[]).push([[691],{108:function(e,t,s){s.r(t);var c=s(2784),a=s(4006),n=s(4963);t.default=function(e){var t=e.data,s=e.location;return c.createElement(a.Z,{pageName:"Introduction",location:s},c.createElement(n.Z,{data:t.mdx.body}))}}}]);
+//# sourceMappingURL=component---src-pages-index-tsx-409108bb8aea38d73c03.js.map

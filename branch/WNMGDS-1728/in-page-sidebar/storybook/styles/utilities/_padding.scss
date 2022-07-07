@@ -1,0 +1,75 @@
+@import '../settings/index.scss';
+
+@each $scale, $size in $spacers {
+  // Example: ds-u-padding--0
+  .ds-u-padding--#{$scale} {
+    // Example: padding: 0 !important;
+    padding: #{$size} !important;
+  }
+
+  .ds-u-padding-top--#{$scale} {
+    padding-top: #{$size} !important;
+  }
+
+  .ds-u-padding-right--#{$scale} {
+    padding-right: #{$size} !important;
+  }
+
+  .ds-u-padding-bottom--#{$scale} {
+    padding-bottom: #{$size} !important;
+  }
+
+  .ds-u-padding-left--#{$scale} {
+    padding-left: #{$size} !important;
+  }
+
+  .ds-u-padding-x--#{$scale} {
+    padding-left: #{$size} !important;
+    padding-right: #{$size} !important;
+  }
+
+  .ds-u-padding-y--#{$scale} {
+    padding-bottom: #{$size} !important;
+    padding-top: #{$size} !important;
+  }
+}
+
+@each $breakpoint in map-keys($breakpoints) {
+  $value: map-get($breakpoints, $breakpoint);
+
+  @media (min-width: $value) {
+    @each $scale, $size in $spacers {
+      // Example: ds-u-sm-padding--0
+      .ds-u-#{$breakpoint}-padding--#{$scale} {
+        // Example: padding: 0 !important;
+        padding: #{$size} !important;
+      }
+
+      .ds-u-#{$breakpoint}-padding-top--#{$scale} {
+        padding-top: #{$size} !important;
+      }
+
+      .ds-u-#{$breakpoint}-padding-right--#{$scale} {
+        padding-right: #{$size} !important;
+      }
+
+      .ds-u-#{$breakpoint}-padding-bottom--#{$scale} {
+        padding-bottom: #{$size} !important;
+      }
+
+      .ds-u-#{$breakpoint}-padding-left--#{$scale} {
+        padding-left: #{$size} !important;
+      }
+
+      .ds-u-#{$breakpoint}-padding-x--#{$scale} {
+        padding-left: #{$size} !important;
+        padding-right: #{$size} !important;
+      }
+
+      .ds-u-#{$breakpoint}-padding-y--#{$scale} {
+        padding-bottom: #{$size} !important;
+        padding-top: #{$size} !important;
+      }
+    }
+  }
+}

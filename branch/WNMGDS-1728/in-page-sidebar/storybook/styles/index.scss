@@ -1,0 +1,18 @@
+/**
+ * index.scss - SCSS entry point
+ */
+// Settings: Globally-available variables, mixins, functions and config (Sass code that doesn't output CSS)
+@import 'settings/index';
+
+// Fonts are unique from other settings because font-faces are compiled and included css build files
+// TODO: use @use or some other solution to handle fontfaces and font/image paths better
+@import 'font';
+
+// Base: Namespaced selectors for HTML elements (i.e. ds-base, ds-h1, ds-text)
+@import 'base/index';
+
+// Components: Designed UI units
+@import 'components/index';
+
+// Utilities: Overrides, helpers
+@import 'utilities/index';
