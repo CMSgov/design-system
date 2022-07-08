@@ -86,7 +86,7 @@ const customComponents = (theme) => ({
   ol: (props) => TextWithMaxWidth(props, 'ol'),
   EmbeddedExample,
   StorybookExample: (props) => <StorybookExample theme={theme} {...props} />,
-  PropTable,
+  PropTable: (props) => <PropTable theme={theme} {...props} />,
   ComponentThemeOptions: (props) => <ComponentThemeOptions theme={theme} {...props} />,
   ThemeContent: (props) => <ThemeContent theme={theme} {...props} />,
 });
