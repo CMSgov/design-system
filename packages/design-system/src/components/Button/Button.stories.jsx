@@ -64,11 +64,11 @@ SpinnerButton.args = {
   variation: 'solid',
 };
 
-export const LinkButton = Template.bind({});
-LinkButton.args = {
+export const AnchorButton = Template.bind({});
+AnchorButton.args = {
   href: '!#',
 };
-LinkButton.parameters = {
+AnchorButton.parameters = {
   loki: { skip: true },
 };
 

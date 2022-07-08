@@ -65,7 +65,7 @@ describe('Button', () => {
     });
   });
 
-  it('renders disabled link correctly', () => {
+  it('renders disabled anchor correctly', () => {
     renderButton({
       href: 'javascript:void(0)',
       disabled: true,
@@ -131,7 +131,7 @@ describe('Button', () => {
       expect(tealiumMock.mock.calls[0]).toMatchSnapshot();
     });
 
-    it('sends link analytics event', () => {
+    it('sends anchor analytics event', () => {
       renderButton({ href: '#/somewhere-over-the-rainbow' });
       fireEvent.click(screen.getByRole('link'));
       expect(tealiumMock.mock.calls[0]).toMatchSnapshot();
