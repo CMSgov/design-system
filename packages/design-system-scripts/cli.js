@@ -101,6 +101,11 @@ yargs
         type: 'boolean',
         default: false,
       });
+      yargs.option('skipBuild', {
+        desc: 'Use this flag to skip rebuilding the design system package before building the doc site. You must have already ran `cmsds build` or `cmsds build-docs` prior to using this option.',
+        type: 'boolean',
+        default: false,
+      });
     },
     handler: async (argv) => {
       const { buildSrc } = require('./gulp/build');
@@ -111,7 +116,9 @@ yargs
       // rootPath is not used in local development
       config.rootPath = '';
       await logIntroduction(config.sourceDir);
-      await buildSrc(config.sourceDir, { ...config, ...argv });
+      if (!argv.skipBuild) {
+        await buildSrc(config.sourceDir, { ...config, ...argv });
+      }
       await buildDocs(config.sourceDir, config.docsDir, { ...config, ...argv });
       await watchDocs(config.sourceDir, config.docsDir, { ...config, ...argv });
     },

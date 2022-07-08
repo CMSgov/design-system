@@ -1,6 +1,7 @@
 import Drawer from './Drawer';
 import React from 'react';
-import { render, fireEvent, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 const defaultProps = {
   footerBody: (
@@ -23,11 +24,16 @@ function renderDrawer(overwriteProps = {}) {
 }
 
 describe('Drawer', () => {
+  it('renders a dialog', () => {
+    renderDrawer();
+    expect(screen.getByRole('dialog')).toMatchSnapshot();
+  });
+
   describe('onCloseClick', () => {
     it('calls onCloseClick on close button click', () => {
       const onCloseClick = jest.fn();
       renderDrawer({ onCloseClick });
-      fireEvent.click(screen.getByText('Close'));
+      userEvent.click(screen.getByText('Close'));
 
       expect(onCloseClick).toHaveBeenCalled();
     });
@@ -35,40 +41,26 @@ describe('Drawer', () => {
     it('should handle `esc` with focus trap enabled', () => {
       const onCloseClick = jest.fn();
       renderDrawer({ onCloseClick, hasFocusTrap: true });
-      fireEvent.keyDown(document, { code: 'Escape' });
+      userEvent.keyboard('{Escape}');
 
       expect(onCloseClick).toHaveBeenCalled();
+    });
+
+    it('removes event listener on unmount', () => {
+      const onCloseClick = jest.fn();
+      const { unmount } = renderDrawer({ onCloseClick, hasFocusTrap: true });
+      unmount();
+      userEvent.keyboard('{Escape}');
+
+      expect(onCloseClick).not.toHaveBeenCalled();
     });
 
     it('should not call onCloseClick for other key presses', () => {
       const onCloseClick = jest.fn();
       renderDrawer({ onCloseClick, hasFocusTrap: true });
-      fireEvent.keyDown(document, { code: 'a' });
+      userEvent.keyboard('a');
 
       expect(onCloseClick).not.toHaveBeenCalled();
-    });
-  });
-
-  it('removes event listener on unmount', () => {
-    const onCloseClick = jest.fn();
-    const { unmount } = renderDrawer({ onCloseClick, hasFocusTrap: true });
-    unmount();
-    fireEvent.keyDown(document, { code: 'Escape' });
-
-    expect(onCloseClick).not.toHaveBeenCalled();
-  });
-
-  describe('renders a snapshot', () => {
-    it('without focus trap', () => {
-      const { asFragment } = renderDrawer();
-
-      expect(asFragment()).toMatchSnapshot();
-    });
-
-    it('with focus trap', () => {
-      const { asFragment } = renderDrawer({ hasFocusTrap: true });
-
-      expect(asFragment()).toMatchSnapshot();
     });
   });
 });
