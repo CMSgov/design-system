@@ -49,7 +49,7 @@
     "gh-pages:medicare": "yarn build-docs:medicare && gh-pages -d './packages/ds-medicare-gov/docs/dist' --dest 'medicare'",
     "deploy-demo": "./scripts/deploy-demo.sh",
     "scan-dependents": "ts-node scripts/scanDependents/index.ts",
-    "token:dist": "yarn --cwd ./packages/design-system-tokens build themes scss && yarn --cwd ./packages/design-system-tokens dist"
+    "token:dist": "yarn --cwd ./packages/design-system-tokens build themes scss && yarn --cwd ./packages/design-system-tokens build themes css-vars && yarn --cwd ./packages/design-system-tokens dist"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",

@@ -1,10 +1,10 @@
 [data-theme="healthcare"]{
 --accordion__color: #262626;
---accordion__background-color: #f2f2f2;
---accordion__background-color--hover: #d9d9d9;
---accordion__border-color: #f2f2f2;
---accordion-button__color: #262626;
---accordion-content__background-color: #ffffff;
+--accordion__background-color: #ffffff00;
+--accordion__background-color--hover: #ffffff00;
+--accordion__border-color: #ffffff00;
+--accordion-button__color: #046791;
+--accordion-content__background-color: #ffffff00;
 --alert__background-color: #eaf8fe;
 --alert__background-color--error: #fce8ec;
 --alert__background-color--lightweight: #ffffff;
