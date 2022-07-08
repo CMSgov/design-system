@@ -260,7 +260,7 @@ function Pagination({
         </span>
       ) : (
         <Button
-          variation="transparent"
+          variation="link"
           href={renderHref(currentPage - 1)}
           onClick={pageChange(currentPage - 1)}
           aria-label={startAriaLabel ?? t('pagination.startAriaLabel')}
@@ -300,7 +300,7 @@ function Pagination({
         </span>
       ) : (
         <Button
-          variation="transparent"
+          variation="link"
           href={renderHref(currentPage + 1)}
           onClick={pageChange(currentPage + 1)}
           aria-label={endAriaLabel ?? t('pagination.endAriaLabel')}

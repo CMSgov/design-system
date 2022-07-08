@@ -3,7 +3,7 @@
 exports[`DrawerToggle renders a button 1`] = `
 <DocumentFragment>
   <button
-    class="ds-c-button ds-c-button--transparent ds-c-drawer__toggle"
+    class="ds-c-button ds-c-button--main ds-c-button--on-light ds-c-button--link ds-c-drawer__toggle"
     type="button"
   >
     <p>
