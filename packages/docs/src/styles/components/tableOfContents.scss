@@ -5,12 +5,12 @@
 
 .c-table-of-contents__heading {
   border-bottom: 1px solid $color-gray-lighter;
-  padding-bottom: 0.25rem;
+  padding-bottom: $spacer-1;
 }
 
 .c-table-of-contents__list {
   list-style-type: '- ';
-  margin-top: $spacer-half;
+  margin-top: $spacer-1;
 }
 
 .c-table-of-contents-mobile {

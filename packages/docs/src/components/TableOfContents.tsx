@@ -15,7 +15,7 @@ const TableOfContents = ({ data }: TableOfContentsProps) => {
       <h2 className="c-table-of-contents__heading ds-u-margin-y--0 ds-u-font-size--base">
         On this page{' '}
       </h2>
-      <ul className="c-table-of-contents__list ds-u-padding-left--0 ds-u-padding-right--0">
+      <ul className="c-table-of-contents__list ds-u-padding-left--2 ds-u-padding-right--0">
         {data.map((dataItem) => (
           <li key={dataItem.title} className="c-table-of-contents__list-item">
             <Link to={dataItem.url}>{dataItem.title}</Link>

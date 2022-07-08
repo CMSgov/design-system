@@ -6,6 +6,13 @@ body {
   max-width: 81rem;
 }
 
+@media (max-width: $width-lg) {
+  .page-content__content {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
 blockquote {
   background-color: $color-gray-lightest;
   border-left: 4px solid $color-gray-light;

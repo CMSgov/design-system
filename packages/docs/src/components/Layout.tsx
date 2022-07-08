@@ -90,7 +90,7 @@ const Layout = ({
       <div className="ds-l-row ds-u-margin--0">
         <Navigation location={location} />
         <main id="main" className="ds-l-md-col ds-u-padding--0 ds-u-padding-bottom--4">
-          <header className=" ds-u-border-bottom--1 ds-u-padding--3 ds-u-sm-padding--6 ds-u-display--block ds-u-fill--gray-lightest">
+          <header className="ds-u-padding--3 ds-u-sm-padding--6 ds-u-display--block">
             <div className="ds-u-display--flex ds-u-align-items--center">
               <h1 className="ds-display ds-u-display--inline-block">{pageName}</h1>
               {status && (
@@ -122,14 +122,14 @@ const Layout = ({
               </div>
             )}
           </header>
-          <article className="ds-u-md-display--flex ds-u-padding-x--3 ds-u-sm-padding-x--6 ds-u-sm-padding-y--6 ds-u-padding-y--3 page-content">
-            <div className="ds-l-lg-col--10">
+          <article className="ds-u-md-display--flex ds-u-padding-x--3 ds-u-sm-padding-x--6 ds-u-sm-padding-bottom--6 ds-u-sm-padding-top--1 ds-u-padding-bottom--3 page-content">
+            <div className="page-content__content ds-l-lg-col--9 ds-u-padding-left--0">
               <div className="ds-u-display--block ds-u-lg-display--none">
                 <TableOfContentsMobile data={mockTOCdata} />
               </div>
               {children}
             </div>
-            <div className="ds-l-lg-col--2 ds-u-display--none ds-u-lg-display--block">
+            <div className="ds-l-lg-col--3 ds-u-display--none ds-u-lg-display--block">
               <TableOfContents data={mockTOCdata} />
             </div>
           </article>
