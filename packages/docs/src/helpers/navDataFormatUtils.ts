@@ -104,7 +104,6 @@ export const convertToNavItems = (
   dataList: ContentDirectoryGroup[],
   location: LocationInterface
 ): VerticalNavItemProps[] => {
-  // console.count('convert')
   const verticalNavItems: VerticalNavItemProps[] = [];
   dataList.forEach((dataItem: ContentDirectoryGroup) => {
     // format all the level 2 items

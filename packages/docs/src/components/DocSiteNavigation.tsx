@@ -86,9 +86,10 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
     }
   `);
 
-  const navItems: VerticalNavItemProps[] = organizeNavItems(
-    convertToNavItems(data?.allFile?.group, location)
-  );
+  const navItems: VerticalNavItemProps[] = useMemo(() => {
+    const navItems: VerticalNavItemProps[] = convertToNavItems(data?.allFile?.group, location);
+    return organizeNavItems(navItems);
+  }, [data?.allFile?.group, location]);
 
   return (
     <div
