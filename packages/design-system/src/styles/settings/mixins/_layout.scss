@@ -12,8 +12,8 @@
 }
 
 @mixin flexbox-col($size) {
-  flex: 0 0 percentage($size / $grid-columns);
-  max-width: percentage($size / $grid-columns); // IE10+ and Firefox
+  flex: 0 0 calc($size / $grid-columns) * 100%;
+  max-width: calc($size / $grid-columns) * 100%; // IE10+ and Firefox
 }
 
 @mixin equal-width-flexbox-col() {
