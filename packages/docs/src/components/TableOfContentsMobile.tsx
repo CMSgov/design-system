@@ -7,7 +7,7 @@ import { TableOfContentsProps } from './TableOfContents';
  * The mobile version of the table of contents
  */
 const TableOfContentsMobile = ({ data }: TableOfContentsProps) => {
-  return (
+  return data.length ? (
     <Accordion className="c-table-of-contents-mobile">
       <AccordionItem heading="On this page">
         <ul className="c-table-of-contents-mobile__list">
@@ -19,7 +19,7 @@ const TableOfContentsMobile = ({ data }: TableOfContentsProps) => {
         </ul>
       </AccordionItem>
     </Accordion>
-  );
+  ) : null;
 };
 
 export default TableOfContentsMobile;

@@ -10,7 +10,7 @@ export interface TableOfContentsProps {
  * The Desktop version of the table of contents
  */
 const TableOfContents = ({ data }: TableOfContentsProps) => {
-  return (
+  return data.length ? (
     <div className="c-table-of-contents">
       <h2 className="c-table-of-contents__heading ds-u-margin-y--0 ds-u-font-size--base">
         On this page{' '}
@@ -23,7 +23,7 @@ const TableOfContents = ({ data }: TableOfContentsProps) => {
         ))}
       </ul>
     </div>
-  );
+  ) : null;
 };
 
 export default TableOfContents;
