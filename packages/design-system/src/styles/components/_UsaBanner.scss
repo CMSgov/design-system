@@ -161,7 +161,7 @@ $usa-banner-font-family: $font-sans;
 .ds-c-usa-banner__lock-image {
   height: 1.5ex;
   vertical-align: inherit;
-  width: 1.5ex * 52 / 64;
+  width: calc(1.5ex * 52 / 64);
 
   path {
     fill: currentColor;
