@@ -18,8 +18,10 @@ import {
   LockIcon,
   MenuIcon,
   MenuIconThin,
+  MinusCircleIcon,
   NextIcon,
   PdfIcon,
+  PlusCircleIcon,
   RemoveIcon,
   StarIcon,
   UsaFlagIcon,
@@ -134,6 +136,11 @@ const iconData = [
     name: 'MenuIconThin',
   },
   {
+    defaultTitle: 'Minus in circle',
+    component: <MinusCircleIcon />,
+    name: 'MinusCircleIcon',
+  },
+  {
     defaultTitle: 'Next',
     component: <NextIcon />,
     name: 'NextIcon',
@@ -142,6 +149,11 @@ const iconData = [
     defaultTitle: 'Pdf',
     component: <PdfIcon />,
     name: 'PdfIcon',
+  },
+  {
+    defaultTitle: 'Plus in circle',
+    component: <PlusCircleIcon />,
+    name: 'PlusCircleIcon',
   },
   {
     defaultTitle: 'Remove',

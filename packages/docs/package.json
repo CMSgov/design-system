@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/cms-design-system-docs",
-  "version": "3.6.0-beta.2",
+  "version": "3.7.0-beta.1",
   "private": true,
   "description": "CMS Design System Documentation",
   "keywords": [
@@ -15,13 +15,14 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@cmsgov/design-system": "^3.6.0-beta.2",
+    "@cmsgov/design-system": "^3.7.0-beta.1",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "classnames": "^2.3.1",
     "gatsby": "^4.11.2",
     "gatsby-plugin-manifest": "^4.11.1",
     "gatsby-plugin-mdx": "^3.11.1",
+    "gatsby-plugin-newrelic": "^2.2.2",
     "gatsby-plugin-react-helmet": "^5.11.0",
     "gatsby-plugin-sass": "^5.11.1",
     "gatsby-plugin-sitemap": "^5.11.1",
