@@ -47,7 +47,7 @@ $step-button-height: 38px !default;
     line-height: $step-list-number-size-mobile - $step-list-number-border-size * 2;
     position: absolute;
     text-align: center;
-    top: ($step-button-height - $step-list-number-size-mobile) * 0.5;
+    top: ($step-button-height - $step-list-number-size-mobile) / 2;
     width: $step-list-number-size-mobile;
 
     @media (min-width: $step-list-breakpoint) {
@@ -56,7 +56,7 @@ $step-button-height: 38px !default;
       left: -($step-list-number-margin + $step-list-number-size);
       line-height: $step-list-number-size - $step-list-number-border-size * 2;
       padding-left: 1px;
-      top: ($step-button-height - $step-list-number-size) * 0.5;
+      top: ($step-button-height - $step-list-number-size) / 2;
       width: $step-list-number-size;
     }
 
