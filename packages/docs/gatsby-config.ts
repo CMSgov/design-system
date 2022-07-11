@@ -50,21 +50,6 @@ const config: GatsbyConfig = {
         babelrcRoots: ['../design-system/src/components/*'],
       },
     },
-    {
-      resolve: 'gatsby-plugin-newrelic',
-      options: {
-        config: {
-          instrumentationType: 'proAndSPA',
-          accountId: '402306',
-          trustKey: '39033',
-          agentID: '1134210514',
-          licenseKey: '5a79be86db',
-          applicationID: '1134210514',
-          beacon: 'gov-bam.nr-data.net',
-          errorBeacon: 'gov-bam.nr-data.net',
-        },
-      },
-    },
   ],
 };
 
