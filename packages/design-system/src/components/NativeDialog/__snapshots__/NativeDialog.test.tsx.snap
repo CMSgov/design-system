@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NativeDialog renders with custom className 1`] = `
+<dialog
+  class="custom-class"
+  data-testid="test-dialog"
+  open=""
+  role="dialog"
+>
+  Foo
+</dialog>
+`;
