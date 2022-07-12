@@ -423,7 +423,7 @@
   }
 
   &:active:not(:disabled) {
-    background-color: $button-primary__background-color--active;
+    background-color: $button-solid-light-main__background-color--active;
     color: $color-white;
   }
 
