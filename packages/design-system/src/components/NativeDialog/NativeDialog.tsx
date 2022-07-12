@@ -3,6 +3,7 @@ import dialogPolyfill from './polyfill';
 
 interface NativeDialogProps extends Omit<DialogHTMLAttributes<HTMLElement>, 'children'> {
   children: React.ReactNode;
+  backdropClickExits?: boolean;
   /**
    * Function called to close dialog.
    */
@@ -17,7 +18,13 @@ interface NativeDialogProps extends Omit<DialogHTMLAttributes<HTMLElement>, 'chi
   showModal?: boolean;
 }
 
-const NativeDialog = ({ children, exit, showModal, ...dialogProps }: NativeDialogProps) => {
+const NativeDialog = ({
+  children,
+  exit,
+  showModal,
+  backdropClickExits,
+  ...dialogProps
+}: NativeDialogProps) => {
   const dialogRef = useRef(null);
 
   // Register dialog with the polyfill if necessary
@@ -35,18 +42,38 @@ const NativeDialog = ({ children, exit, showModal, ...dialogProps }: NativeDialo
     };
   }, [showModal]);
 
-  // Bind and unbind cancel event listeners on mount and unmount
+  // Bind and unbind event listeners on mount and unmount
   useEffect(() => {
     const dialogNode = dialogRef.current;
+
     const handleCancel = (event) => {
       event.preventDefault();
       exit();
     };
     dialogNode.addEventListener('cancel', handleCancel);
+
+    const handleClick = (event) => {
+      const rect = dialogNode.getBoundingClientRect();
+      const isInDialog =
+        rect.top <= event.clientY &&
+        event.clientY <= rect.top + rect.height &&
+        rect.left <= event.clientX &&
+        event.clientX <= rect.left + rect.width;
+      if (!isInDialog) {
+        exit();
+      }
+    };
+    if (backdropClickExits) {
+      dialogNode.addEventListener('click', handleClick);
+    }
+
     return () => {
       dialogNode.removeEventListener('cancel', handleCancel);
+      if (backdropClickExits) {
+        dialogNode.removeEventListener('click', handleClick);
+      }
     };
-  }, [exit]);
+  }, [exit, backdropClickExits]);
 
   return (
     <dialog ref={dialogRef} {...dialogProps}>
