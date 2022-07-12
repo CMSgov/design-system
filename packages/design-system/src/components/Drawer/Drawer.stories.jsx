@@ -3,7 +3,7 @@ import { Title, Subtitle, Description, ArgsTable, PRIMARY_STORY } from '@storybo
 import { useArgs } from '@storybook/client-api';
 
 import Drawer from './Drawer';
-import DrawerToggle from './DrawerToggle';
+import { Button } from '../Button';
 
 export default {
   title: 'Components/Drawer',
@@ -12,13 +12,15 @@ export default {
     closeButtonText: {
       control: { type: 'text' },
     },
+    hasFocusTrap: {
+      control: { type: 'boolean' },
+    },
   },
   args: {
     footerTitle: 'Footer Title',
     footerBody: <p className="ds-text ds-u-margin--0">Footer content</p>,
     heading: 'Drawer Heading',
   },
-  subcomponents: { DrawerToggle },
   // The Drawer was overlapping the docs page, so customizing the docs page to remove the examples
   parameters: {
     docs: {
@@ -72,12 +74,13 @@ DrawerWithStickyPositioning.args = {
 };
 
 export const DrawerToggleWithDrawer = () => {
-  const [{ isDrawerVisible }, setIsDrawerVisible] = useArgs();
+  const [{ isDrawerVisible, ...args }, setIsDrawerVisible] = useArgs();
 
   return (
     <>
       {isDrawerVisible && (
         <Drawer
+          {...args}
           onCloseClick={() => setIsDrawerVisible({ isDrawerVisible: false })}
           footerTitle="Footer Title"
           footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
@@ -86,12 +89,13 @@ export const DrawerToggleWithDrawer = () => {
           {drawerContent}
         </Drawer>
       )}
-      <DrawerToggle
-        showDrawer={() => setIsDrawerVisible({ isDrawerVisible: true })}
-        drawerOpen={isDrawerVisible || false}
+      <Button
+        className="ds-c-drawer__toggle"
+        variation="transparent"
+        onClick={() => setIsDrawerVisible({ isDrawerVisible: true })}
       >
         Drawer Toggle
-      </DrawerToggle>
+      </Button>
     </>
   );
 };
