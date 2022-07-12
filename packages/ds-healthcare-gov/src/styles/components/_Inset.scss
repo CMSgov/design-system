@@ -9,9 +9,9 @@ $hc-c-inset-border-width: $spacer-half;
 // Align the inset's border with the checkbox/radio field when used as part
 // of the Exposed Within pattern
 .ds-c-choice + label + .hc-c-inset {
-  margin-left: calc($choice-size / 2) - calc($hc-c-inset-border-width / 2);
+  margin-left: calc($choice-size * 0.5) - calc($hc-c-inset-border-width * 0.5);
 }
 
 .ds-c-choice--small + label + .hc-c-inset {
-  margin-left: calc($choice-size-small / 2) - calc($hc-c-inset-border-width / 2);
+  margin-left: calc($choice-size-small * 0.5) - calc($hc-c-inset-border-width * 0.5);
 }
