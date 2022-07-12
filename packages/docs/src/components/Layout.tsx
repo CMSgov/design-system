@@ -5,33 +5,13 @@ import { Link } from 'gatsby';
 import Footer from './DocSiteFooter';
 import Navigation from './DocSiteNavigation';
 import { SkipNav, Badge, UsaBanner } from '@cmsgov/design-system';
-import { LocationInterface } from '../helpers/graphQLTypes';
+import { LocationInterface, TableOfContentsItem } from '../helpers/graphQLTypes';
 import TableOfContents from './TableOfContents';
 import TableOfContentsMobile from './TableOfContentsMobile';
 
 import '../styles/index.scss';
 
 export type PageStatus = 'draft' | 'do not use';
-
-// TODO: delete this variable and use graphQL data instead
-const mockTOCdata = [
-  {
-    url: '#install-using-npm',
-    title: 'Install using npm',
-  },
-  {
-    url: '#download-zip',
-    title: 'Download zip',
-  },
-  {
-    url: '#utilize-the-cdn',
-    title: 'Utilize the CDN',
-  },
-  {
-    url: '#need-help-or-ran-into-an-issue',
-    title: 'Need help or ran into an issue?',
-  },
-];
 
 interface LayoutProps {
   /**
@@ -58,6 +38,10 @@ interface LayoutProps {
    * describes status of page. used for component pages
    */
   status?: PageStatus;
+  /**
+   * list of heading items to be used in table of contents
+   */
+  tableOfContentsData?: TableOfContentsItem[];
 }
 
 const Layout = ({
@@ -67,6 +51,7 @@ const Layout = ({
   showJumpToGuidance,
   status,
   location,
+  tableOfContentsData,
 }: LayoutProps) => {
   const env = 'prod';
 
@@ -125,12 +110,12 @@ const Layout = ({
           <article className="ds-u-md-display--flex ds-u-padding-x--3 ds-u-sm-padding-x--6 ds-u-sm-padding-bottom--6 ds-u-sm-padding-top--1 ds-u-padding-bottom--3 page-content">
             <div className="page-content__content ds-l-lg-col--9 ds-u-padding-left--0">
               <div className="ds-u-display--block ds-u-lg-display--none">
-                <TableOfContentsMobile data={mockTOCdata} />
+                <TableOfContentsMobile data={tableOfContentsData || []} />
               </div>
               {children}
             </div>
             <div className="ds-l-lg-col--3 ds-u-display--none ds-u-lg-display--block">
-              <TableOfContents data={mockTOCdata} />
+              <TableOfContents data={tableOfContentsData || []} />
             </div>
           </article>
         </main>
