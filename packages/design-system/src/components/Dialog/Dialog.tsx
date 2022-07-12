@@ -2,8 +2,7 @@ import Button, { ButtonVariation } from '../Button/Button';
 import NativeDialog from '../NativeDialog/NativeDialog';
 import React, { useEffect } from 'react';
 import classNames from 'classnames';
-import { EventCategory, sendLinkEvent, useAnalyticsContent } from '../analytics';
-import { dialogSendsAnalytics } from '../flags';
+import useDialogAnalytics from './useDialogAnalytics';
 import { CloseIcon } from '../Icons';
 import { t } from '../i18n';
 
@@ -151,51 +150,13 @@ export const Dialog = (props: DialogProps) => {
     if (onEnter) onEnter();
   }, []);
 
-  function sendDialogEvent(
-    content: string | undefined,
-    eventAttributes: { event_name: string; ga_eventAction: string }
-  ) {
-    if (!dialogSendsAnalytics() || analytics === false) {
-      return;
-    }
-
-    const eventHeadingText = analyticsLabelOverride ?? content;
-
-    if (!eventHeadingText) {
-      console.error('No content found for Dialog analytics event');
-      return;
-    }
-
-    sendLinkEvent({
-      event_type: EventCategory.UI_INTERACTION,
-      ga_eventCategory: EventCategory.UI_COMPONENTS,
-      ga_eventLabel: eventHeadingText,
-      heading: eventHeadingText,
-      ...eventAttributes,
-    });
-  }
-
-  const [headingRef] = useAnalyticsContent({
-    componentName: 'Dialog',
-    onMount: (content: string | undefined) => {
-      sendDialogEvent(content, {
-        event_name: 'modal_impression',
-        ga_eventAction: 'modal impression',
-      });
-    },
-    onUnmount: (content: string | undefined) => {
-      sendDialogEvent(content, {
-        event_name: 'modal_closed',
-        ga_eventAction: 'closed modal',
-      });
-    },
-  });
+  const headingRef = useDialogAnalytics(props);
 
   // TODO: We have to implement underlayClickExits=true ourselves. https://stackoverflow.com/a/26984690
   // Also, I checked, and some apps use it
 
   return (
-    <NativeDialog className={dialogClassNames} exit={onExit} {...modalProps}>
+    <NativeDialog className={dialogClassNames} showModal exit={onExit} {...modalProps}>
       <div role="document">
         <header className={headerClassNames} role="banner">
           {heading && (
