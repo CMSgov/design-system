@@ -24,7 +24,7 @@ class Example extends React.PureComponent {
       <div id="App" style={{ minHeight: 300 }}>
         <Button
           href="#"
-          className="ds-c-button--link ds-u-font-weight--normal"
+          className="ds-c-button--ghost ds-u-font-weight--normal"
           onClick={() => this.showModal()}
         >
           Link to external site
@@ -46,7 +46,7 @@ class Example extends React.PureComponent {
                 OK
               </Button>,
               <Button
-                className="ds-c-button ds-c-button--link"
+                className="ds-c-button ds-c-button--ghost"
                 key="cancel"
                 onClick={() => this.hideModal()}
               >
