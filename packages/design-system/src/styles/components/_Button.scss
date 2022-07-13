@@ -1,439 +1,12 @@
 @import '../settings/index.scss';
 
-.ds-c-button--big {
-  --fontSize: #{$font-size-xl};
-  --space: #{$spacer-2 $spacer-3};
-}
-
-.ds-c-button--small {
-  --fontSize: #{$font-size-sm};
-  --fontWeight: #{$font-weight-normal};
-  --space: #{$spacer-half $spacer-1};
-}
-
-.ds-c-button--solid {
-  &.ds-c-button--on-light {
-    &.ds-c-button--main {
-      --backgroundColor: #{$button-solid-light-main__background-color};
-      --borderColor: #{$button-solid-light-main__border-color};
-      --color: #{$button-solid-light-main__color};
-
-      // Hover
-      &:hover,
-      &.ds-c-button--hover,
-      &:hover:focus,
-      &.ds-c-button--hover.ds-c-button--focus {
-        --backgroundColor: #{$button-solid-light-main__background-color--hover};
-        --borderColor: #{$button-solid-light-main__border-color--hover};
-        --color: #{$button-solid-light-main__color--hover};
-      }
-
-      // Active
-      &:active,
-      &.ds-c-button--active,
-      &:active:focus,
-      &.ds-c-button--active:focus {
-        --backgroundColor: #{$button-solid-light-main__background-color--active};
-        --borderColor: #{$button-solid-light-main__border-color--active};
-        --color: #{$button-solid-light-main__color--active};
-      }
-
-      &:disabled,
-      &.ds-c-button--disabled {
-        --backgroundColor: #{$button-solid-light-main__background-color--disabled};
-        --borderColor: #{$button-solid-light-main__border-color--disabled};
-        --color: #{$button-solid-light-main__color--disabled};
-      }
-    }
-
-    &.ds-c-button--alternate {
-      --backgroundColor: #{$button-solid-light-alt__background-color};
-      --borderColor: #{$button-solid-light-alt__border-color};
-      --color: #{$button-solid-light-alt__color};
-
-      // Hover
-      &:hover,
-      &.ds-c-button--hover,
-      &:hover:focus,
-      &.ds-c-button--hover.ds-c-button--focus {
-        --backgroundColor: #{$button-solid-light-alt__background-color--hover};
-        --borderColor: #{$button-solid-light-alt__border-color--hover};
-        --color: #{$button-solid-light-alt__color--hover};
-      }
-
-      // Active
-      &:active,
-      &.ds-c-button--active,
-      &:active:focus,
-      &.ds-c-button--active:focus {
-        --backgroundColor: #{$button-solid-light-alt__background-color--active};
-        --borderColor: #{$button-solid-light-alt__border-color--active};
-        --color: #{$button-solid-light-alt__color--active};
-      }
-
-      &:disabled,
-      &.ds-c-button--disabled {
-        --backgroundColor: #{$button-solid-light-alt__background-color--disabled};
-        --borderColor: #{$button-solid-light-alt__border-color--disabled};
-        --color: #{$button-solid-light-alt__color--disabled};
-      }
-    }
-  }
-
-  &.ds-c-button--on-dark {
-    &.ds-c-button--main {
-      --backgroundColor: #{$button-solid-dark-main__background-color};
-      --borderColor: #{$button-solid-dark-main__border-color};
-      --color: #{$button-solid-dark-main__color};
-
-      // Hover
-      &:hover,
-      &.ds-c-button--hover,
-      &:hover:focus,
-      &.ds-c-button--hover.ds-c-button--focus {
-        --backgroundColor: #{$button-solid-dark-main__background-color--hover};
-        --borderColor: #{$button-solid-dark-main__border-color--hover};
-        --color: #{$button-solid-dark-main__color--hover};
-      }
-
-      // Active
-      &:active,
-      &.ds-c-button--active,
-      &:active:focus,
-      &.ds-c-button--active:focus {
-        --backgroundColor: #{$button-solid-dark-main__background-color--active};
-        --borderColor: #{$button-solid-dark-main__border-color--active};
-        --color: #{$button-solid-dark-main__color--active};
-      }
-
-      &:disabled,
-      &.ds-c-button--disabled {
-        --backgroundColor: #{$button-solid-dark-main__background-color--disabled};
-        --borderColor: #{$button-solid-dark-main__border-color--disabled};
-        --color: #{$button-solid-dark-main__color--disabled};
-      }
-    }
-
-    &.ds-c-button--alternate {
-      --backgroundColor: #{$button-solid-dark-alt__background-color};
-      --borderColor: #{$button-solid-dark-alt__border-color};
-      --color: #{$button-solid-dark-alt__color};
-
-      // Hover
-      &:hover,
-      &.ds-c-button--hover,
-      &:hover:focus,
-      &.ds-c-button--hover.ds-c-button--focus {
-        --backgroundColor: #{$button-solid-dark-alt__background-color--hover};
-        --borderColor: #{$button-solid-dark-alt__border-color--hover};
-        --color: #{$button-solid-dark-alt__color--hover};
-      }
-
-      // Active
-      &:active,
-      &.ds-c-button--active,
-      &:active:focus,
-      &.ds-c-button--active:focus {
-        --backgroundColor: #{$button-solid-dark-alt__background-color--active};
-        --borderColor: #{$button-solid-dark-alt__border-color--active};
-        --color: #{$button-solid-dark-alt__color--active};
-      }
-
-      &:disabled,
-      &.ds-c-button--disabled {
-        --backgroundColor: #{$button-solid-dark-alt__background-color--disabled};
-        --borderColor: #{$button-solid-dark-alt__border-color--disabled};
-        --color: #{$button-solid-dark-alt__color--disabled};
-      }
-    }
-  }
-}
-
-.ds-c-button--outline {
-  &.ds-c-button--on-light {
-    &.ds-c-button--main {
-      --backgroundColor: #{$button-outline-light-main__background-color};
-      --borderColor: #{$button-outline-light-main__border-color};
-      --color: #{$button-outline-light-main__color};
-
-      // Hover
-      &:hover,
-      &.ds-c-button--hover,
-      &:hover:focus,
-      &.ds-c-button--hover.ds-c-button--focus {
-        --backgroundColor: #{$button-outline-light-main__background-color--hover};
-        --borderColor: #{$button-outline-light-main__border-color--hover};
-        --color: #{$button-outline-light-main__color--hover};
-      }
-
-      // Active
-      &:active,
-      &.ds-c-button--active,
-      &:active:focus,
-      &.ds-c-button--active:focus {
-        --backgroundColor: #{$button-outline-light-main__background-color--active};
-        --borderColor: #{$button-outline-light-main__border-color--active};
-        --color: #{$button-outline-light-main__color--active};
-      }
-
-      &:disabled,
-      &.ds-c-button--disabled {
-        --backgroundColor: #{$button-outline-light-main__background-color--disabled};
-        --borderColor: #{$button-outline-light-main__border-color--disabled};
-        --color: #{$button-outline-light-main__color--disabled};
-      }
-    }
-
-    &.ds-c-button--alternate {
-      --backgroundColor: #{$button-outline-light-alt__background-color};
-      --borderColor: #{$button-outline-light-alt__border-color};
-      --color: #{$button-outline-light-alt__color};
-
-      // Hover
-      &:hover,
-      &.ds-c-button--hover,
-      &:hover:focus,
-      &.ds-c-button--hover.ds-c-button--focus {
-        --backgroundColor: #{$button-outline-light-alt__background-color--hover};
-        --borderColor: #{$button-outline-light-alt__border-color--hover};
-        --color: #{$button-outline-light-alt__color--hover};
-      }
-
-      // Active
-      &:active,
-      &.ds-c-button--active,
-      &:active:focus,
-      &.ds-c-button--active:focus {
-        --backgroundColor: #{$button-outline-light-alt__background-color--active};
-        --borderColor: #{$button-outline-light-alt__border-color--active};
-        --color: #{$button-outline-light-alt__color--active};
-      }
-
-      &:disabled,
-      &.ds-c-button--disabled {
-        --backgroundColor: #{$button-outline-light-alt__background-color--disabled};
-        --borderColor: #{$button-outline-light-alt__border-color--disabled};
-        --color: #{$button-outline-light-alt__color--disabled};
-      }
-    }
-  }
-
-  &.ds-c-button--on-dark {
-    &.ds-c-button--main {
-      --backgroundColor: #{$button-outline-dark-main__background-color};
-      --borderColor: #{$button-outline-dark-main__border-color};
-      --color: #{$button-outline-dark-main__color};
-
-      // Hover
-      &:hover,
-      &.ds-c-button--hover,
-      &:hover:focus,
-      &.ds-c-button--hover.ds-c-button--focus {
-        --backgroundColor: #{$button-outline-dark-main__background-color--hover};
-        --borderColor: #{$button-outline-dark-main__border-color--hover};
-        --color: #{$button-outline-dark-main__color--hover};
-      }
-
-      // Active
-      &:active,
-      &.ds-c-button--active,
-      &:active:focus,
-      &.ds-c-button--active:focus {
-        --backgroundColor: #{$button-outline-dark-main__background-color--active};
-        --borderColor: #{$button-outline-dark-main__border-color--active};
-        --color: #{$button-outline-dark-main__color--active};
-      }
-
-      &:disabled,
-      &.ds-c-button--disabled {
-        --backgroundColor: #{$button-outline-dark-main__background-color--disabled};
-        --borderColor: #{$button-outline-dark-main__border-color--disabled};
-        // 📢 Disabled and default colors look very close
-        --color: #{$button-outline-dark-main__color--disabled};
-      }
-    }
-
-    &.ds-c-button--alternate {
-      --backgroundColor: #{$button-outline-dark-alt__background-color};
-      --borderColor: #{$button-outline-dark-alt__border-color};
-      --color: #{$button-outline-dark-alt__color};
-
-      // Hover
-      &:hover,
-      &.ds-c-button--hover,
-      &:hover:focus,
-      &.ds-c-button--hover.ds-c-button--focus {
-        --backgroundColor: #{$button-outline-dark-alt__background-color--hover};
-        --borderColor: #{$button-outline-dark-alt__border-color--hover};
-        --color: #{$button-outline-dark-alt__color--hover};
-      }
-
-      // Active
-      &:active,
-      &.ds-c-button--active,
-      &:active:focus,
-      &.ds-c-button--active:focus {
-        --backgroundColor: #{$button-outline-dark-alt__background-color--active};
-        --borderColor: #{$button-outline-dark-alt__border-color--active};
-        --color: #{$button-outline-dark-alt__color--active};
-      }
-
-      &:disabled,
-      &.ds-c-button--disabled {
-        --backgroundColor: #{$button-outline-dark-alt__background-color--disabled};
-        --borderColor: #{$button-outline-dark-alt__border-color--disabled};
-        // 📢 Disabled and default colors look very close
-        --color: #{$button-outline-dark-alt__color--disabled};
-      }
-    }
-  }
-}
-
-.ds-c-button--link {
-  &.ds-c-button--on-light {
-    &.ds-c-button--main {
-      --backgroundColor: #{$button-link-light-main__background-color};
-      --borderColor: #{$button-link-light-main__border-color};
-      --color: #{$button-link-light-main__color};
-
-      // Hover
-      &:hover,
-      &.ds-c-button--hover,
-      &:hover:focus,
-      &.ds-c-button--hover.ds-c-button--focus {
-        --backgroundColor: #{$button-link-light-main__background-color--hover};
-        --borderColor: #{$button-link-light-main__border-color--hover};
-        --color: #{$button-link-light-main__color--hover};
-      }
-
-      // Active
-      &:active,
-      &.ds-c-button--active,
-      &:active:focus,
-      &.ds-c-button--active:focus {
-        --backgroundColor: #{$button-link-light-main__background-color--active};
-        --borderColor: #{$button-link-light-main__border-color--active};
-        --color: #{$button-link-light-main__color--active};
-      }
-
-      &:disabled,
-      &.ds-c-button--disabled {
-        --backgroundColor: #{$button-link-light-main__background-color--disabled};
-        --borderColor: #{$button-link-light-main__border-color--disabled};
-        --color: #{$button-link-light-main__color--disabled};
-      }
-    }
-
-    &.ds-c-button--alternate {
-      --backgroundColor: #{$button-link-light-alt__background-color};
-      --borderColor: #{$button-link-light-alt__border-color};
-      --color: #{$button-link-light-alt__color};
-
-      // Hover
-      &:hover,
-      &.ds-c-button--hover,
-      &:hover:focus,
-      &.ds-c-button--hover.ds-c-button--focus {
-        --backgroundColor: #{$button-link-light-alt__background-color--hover};
-        --borderColor: #{$button-link-light-alt__border-color--hover};
-        --color: #{$button-link-light-alt__color--hover};
-      }
-
-      // Active
-      &:active,
-      &.ds-c-button--active,
-      &:active:focus,
-      &.ds-c-button--active:focus {
-        --backgroundColor: #{$button-link-light-alt__background-color--active};
-        --borderColor: #{$button-link-light-alt__border-color--active};
-        --color: #{$button-link-light-alt__color--active};
-      }
-
-      &:disabled,
-      &.ds-c-button--disabled {
-        --backgroundColor: #{$button-link-light-alt__background-color--disabled};
-        --borderColor: #{$button-link-light-alt__border-color--disabled};
-        --color: #{$button-link-light-alt__color--disabled};
-      }
-    }
-  }
-
-  &.ds-c-button--on-dark {
-    &.ds-c-button--main {
-      --backgroundColor: #{$button-link-dark-main__background-color};
-      --borderColor: #{$button-link-dark-main__border-color};
-      --color: #{$button-link-dark-main__color};
-
-      // Hover
-      &:hover,
-      &.ds-c-button--hover,
-      &:hover:focus,
-      &.ds-c-button--hover.ds-c-button--focus {
-        --backgroundColor: #{$button-link-dark-main__background-color--hover};
-        --borderColor: #{$button-link-dark-main__border-color--hover};
-        --color: #{$button-link-dark-main__color--hover};
-      }
-
-      // Active
-      &:active,
-      &.ds-c-button--active,
-      &:active:focus,
-      &.ds-c-button--active:focus {
-        --backgroundColor: #{$button-link-dark-main__background-color--active};
-        --borderColor: #{$button-link-dark-main__border-color--active};
-        --color: #{$button-link-dark-main__color--active};
-      }
-
-      &:disabled,
-      &.ds-c-button--disabled {
-        --backgroundColor: #{$button-link-dark-main__background-color--disabled};
-        --borderColor: #{$button-link-dark-main__border-color--disabled};
-        --color: #{$button-link-dark-main__color--disabled};
-      }
-    }
-
-    &.ds-c-button--alternate {
-      --backgroundColor: #{$button-link-dark-alt__background-color};
-      --borderColor: #{$button-link-dark-alt__border-color};
-      --color: #{$button-link-dark-alt__color};
-
-      // Hover
-      &:hover,
-      &.ds-c-button--hover,
-      &:hover:focus,
-      &.ds-c-button--hover.ds-c-button--focus {
-        --backgroundColor: #{$button-link-dark-alt__background-color--hover};
-        --borderColor: #{$button-link-dark-alt__border-color--hover};
-        --color: #{$button-link-dark-alt__color--hover};
-      }
-
-      // Active
-      &:active,
-      &.ds-c-button--active,
-      &:active:focus,
-      &.ds-c-button--active:focus {
-        --backgroundColor: #{$button-link-dark-alt__background-color--active};
-        --borderColor: #{$button-link-dark-alt__border-color--active};
-        --color: #{$button-link-dark-alt__color--active};
-      }
-
-      &:disabled,
-      &.ds-c-button--disabled {
-        --backgroundColor: #{$button-link-dark-alt__background-color--disabled};
-        --borderColor: #{$button-link-dark-alt__border-color--disabled};
-        --color: #{$button-link-dark-alt__color--disabled};
-      }
-    }
-  }
-}
-
 .ds-c-button,
 .ds-c-button:visited {
   appearance: none;
-  background-color: var(--backgroundColor, $button-outline-light-main__background-color);
-  border: $button__border-width solid var(--borderColor, $button-outline-light-main__border-color);
+  background-color: var(--backgroundColor, $button__background-color);
+  border: $button__border-width solid var(--borderColor, $button__border-color);
   border-radius: $button__border-radius;
-  color: var(--color, $button-outline-light-main__color);
+  color: var(--color, $button__color);
   cursor: pointer;
   font-family: $font-sans;
   font-size: var(--fontSize, $font-size-base);
@@ -448,14 +21,27 @@
     @include inline-icon;
   }
 
-  &.ds-c-button--link {
-    text-decoration: underline;
-    text-decoration-color: currentColor;
+  &:hover,
+  &.ds-c-button--hover,
+  &:hover:focus,
+  &.ds-c-button--hover.ds-c-button--focus {
+    background-color: var(--backgroundColor--h, $button__background-color--hover);
+    border-color: var(--borderColor--h, $button__border-color--hover);
+    color: var(--color--h, $button__color--hover);
   }
 
   &:focus,
   &.ds-c-button--focus {
     @include focus-styles;
+  }
+
+  &:active,
+  &.ds-c-button--active,
+  &:active:focus,
+  &.ds-c-button--active:focus {
+    background-color: var(--backgroundColor--a, $button__background-color--active);
+    border-color: var(--borderColor--a, $button__border-color--active);
+    color: var(--color--a, $button__color--active);
   }
 
   // Make sure active overrides focus styles
@@ -466,6 +52,261 @@
 
   &:disabled,
   &.ds-c-button--disabled {
+    background-color: var(--backgroundColor--d, $button__background-color--disabled);
+    border-color: var(--borderColor--d, $button__border-color--disabled);
+    color: var(--color--d, $button__color--disabled);
     pointer-events: none; // Needed to render disabled links correctly
   }
+}
+
+.ds-c-button {
+  &.ds-c-button--alternate {
+    --backgroundColor: #{$button-alt__background-color};
+    --borderColor: #{$button-alt__border-color};
+    --color: #{$button-alt__color};
+
+    // Hover
+    --backgroundColor--h: #{$button-alt__background-color--hover};
+    --borderColor--h: #{$button-alt__border-color--hover};
+    --color--h: #{$button-alt__color--hover};
+
+    // Active
+    --backgroundColor--a: #{$button-alt__background-color--active};
+    --borderColor--a: #{$button-alt__border-color--active};
+    --color--a: #{$button-alt__color--active};
+
+    // Disable
+    --backgroundColor--d: #{$button-alt__background-color--disabled};
+    --borderColor: #{$button-alt__border-color--disabled};
+    --color--d: #{$button-alt__color--disabled};
+  }
+
+  &.ds-c-button--on-dark {
+    --backgroundColor: #{$button-dark__background-color};
+    --borderColor: #{$button-dark__border-color};
+    --color: #{$button-dark__color};
+
+    // Hover
+    --backgroundColor--h: #{$button-dark__background-color--hover};
+    --borderColor--h: #{$button-dark__border-color--hover};
+    --color--h: #{$button-dark__color--hover};
+
+    // Active
+    --backgroundColor--a: #{$button-dark__background-color--active};
+    --borderColor--a: #{$button-dark__border-color--active};
+    --color--a: #{$button-dark__color--active};
+
+    // Disable
+    --backgroundColor--d: #{$button-dark__background-color--disabled};
+    --borderColor--d: #{$button-dark__border-color--disabled};
+    --color--d: #{$button-dark__color--disabled};
+  }
+
+  &.ds-c-button--alternate.ds-c-button--on-dark {
+    --backgroundColor: #{$button-dark-alt__background-color};
+    --borderColor: #{$button-dark-alt__border-color};
+    --color: #{$button-dark-alt__color};
+
+    // Hover
+    --backgroundColor--h: #{$button-dark-alt__background-color--hover};
+    --borderColor--h: #{$button-dark-alt__border-color--hover};
+    --color--h: #{$button-dark-alt__color--hover};
+
+    // Active
+    --backgroundColor--a: #{$button-dark-alt__background-color--active};
+    --borderColor--a: #{$button-dark-alt__border-color--active};
+    --color--a: #{$button-dark-alt__color--active};
+
+    // Disable
+    --backgroundColor--d: #{$button-dark-alt__background-color--disabled};
+    --borderColor--d: #{$button-dark-alt__border-color--disabled};
+    --color--d: #{$button-dark-alt__color--disabled};
+  }
+}
+
+.ds-c-button--solid {
+  --backgroundColor: #{$button-solid__background-color};
+  --borderColor: #{$button-solid__border-color};
+  --color: #{$button-solid__color};
+
+  // Hover
+  --backgroundColor--h: #{$button-solid__background-color--hover};
+  --borderColor--h: #{$button-solid__border-color--hover};
+  --color--h: #{$button-solid__color--hover};
+
+  // Active
+  --backgroundColor--a: #{$button-solid__background-color--active};
+  --borderColor--a: #{$button-solid__border-color--active};
+  --color--a: #{$button-solid__color--active};
+
+  // Disable
+  --backgroundColor--d: #{$button-solid__background-color--disabled};
+  --borderColor--d: #{$button-solid__border-color--disabled};
+  --color--d: #{$button-solid__color--disabled};
+
+  &.ds-c-button--alternate {
+    --backgroundColor: #{$button-solid-alt__background-color};
+    --borderColor: #{$button-solid-alt__border-color};
+    --color: #{$button-solid-alt__color};
+
+    // Hover
+    --backgroundColor--h: #{$button-solid-alt__background-color--hover};
+    --borderColor--h: #{$button-solid-alt__border-color--hover};
+    --color--h: #{$button-solid-alt__color--hover};
+
+    // Active
+    --backgroundColor--a: #{$button-solid-alt__background-color--active};
+    --borderColor--a: #{$button-solid-alt__border-color--active};
+    --color--a: #{$button-solid-alt__color--active};
+
+    // Disable
+    --backgroundColor--d: #{$button-solid-alt__background-color--disabled};
+    --borderColor--d: #{$button-solid-alt__border-color--disabled};
+    --color--d: #{$button-solid-alt__color--disabled};
+  }
+
+  &.ds-c-button--on-dark {
+    --backgroundColor: #{$button-solid-dark__background-color};
+    --borderColor: #{$button-solid-dark__border-color};
+    --color: #{$button-solid-dark__color};
+
+    // Hover
+    --backgroundColor--h: #{$button-solid-dark__background-color--hover};
+    --borderColor--h: #{$button-solid-dark__border-color--hover};
+    --color--h: #{$button-solid-dark__color--hover};
+
+    // Active
+    --backgroundColor--a: #{$button-solid-dark__background-color--active};
+    --borderColor--a: #{$button-solid-dark__border-color--active};
+    --color--a: #{$button-solid-dark__color--active};
+
+    // Disable
+    --backgroundColor--d: #{$button-solid-dark__background-color--disabled};
+    --borderColor--d: #{$button-solid-dark__border-color--disabled};
+    --color--d: #{$button-solid-dark__color--disabled};
+  }
+
+  &.ds-c-button--alternate.ds-c-button--on-dark {
+    --backgroundColor: #{$button-solid-dark-alt__background-color};
+    --borderColor: #{$button-solid-dark-alt__border-color};
+    --color: #{$button-solid-dark-alt__color};
+
+    // Hover
+    --backgroundColor--h: #{$button-solid-dark-alt__background-color--hover};
+    --borderColor--h: #{$button-solid-dark-alt__border-color--hover};
+    --color--h: #{$button-solid-dark-alt__color--hover};
+
+    // Active
+    --backgroundColor--a: #{$button-solid-dark-alt__background-color--active};
+    --borderColor--a: #{$button-solid-dark-alt__border-color--active};
+    --color--a: #{$button-solid-dark-alt__color--active};
+
+    // Disable
+    --backgroundColor--d: #{$button-solid-dark-alt__background-color--disabled};
+    --borderColor--d: #{$button-solid-dark-alt__border-color--disabled};
+    --color--d: #{$button-solid-dark-alt__color--disabled};
+  }
+}
+
+.ds-c-button--ghost {
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+
+  --backgroundColor: #{$button-ghost__background-color};
+  --borderColor: #{$button-ghost__border-color};
+  --color: #{$button-ghost__color};
+
+  // Hover
+  --backgroundColor--h: #{$button-ghost__background-color--hover};
+  --borderColor--h: #{$button-ghost__border-color--hover};
+  --color--h: #{$button-ghost__color--hover};
+
+  // Active
+  --backgroundColor--a: #{$button-ghost__background-color--active};
+  --borderColor--a: #{$button-ghost__border-color--active};
+  --color--a: #{$button-ghost__color--active};
+
+  // Disable
+  --backgroundColor--d: #{$button-ghost__background-color--disabled};
+  --borderColor--d: #{$button-ghost__border-color--disabled};
+  --color--d: #{$button-ghost__color--disabled};
+
+  &:disabled,
+  &.ds-c-button--disabled {
+    text-decoration-color: transparent;
+  }
+
+  &.ds-c-button--alternate {
+    --backgroundColor: #{$button-ghost-alt__background-color};
+    --borderColor: #{$button-ghost-alt__border-color};
+    --color: #{$button-ghost-alt__color};
+
+    // Hover
+    --backgroundColor--h: #{$button-ghost-alt__background-color--hover};
+    --borderColor--h: #{$button-ghost-alt__border-color--hover};
+    --color--h: #{$button-ghost-alt__color--hover};
+
+    // Active
+    --backgroundColor--a: #{$button-ghost-alt__background-color--active};
+    --borderColor--a: #{$button-ghost-alt__border-color--active};
+    --color--a: #{$button-ghost-alt__color--active};
+
+    // Disable
+    --backgroundColor--d: #{$button-ghost-alt__background-color--disabled};
+    --borderColor--d: #{$button-ghost-alt__border-color--disabled};
+    --color--d: #{$button-ghost-alt__color--disabled};
+  }
+
+  &.ds-c-button--on-dark {
+    --backgroundColor: #{$button-ghost-dark__background-color};
+    --borderColor: #{$button-ghost-dark__border-color};
+    --color: #{$button-ghost-dark__color};
+
+    // Hover
+    --backgroundColor--h: #{$button-ghost-dark__background-color--hover};
+    --borderColor--h: #{$button-ghost-dark__border-color--hover};
+    --color--h: #{$button-ghost-dark__color--hover};
+
+    // Active
+    --backgroundColor--a: #{$button-ghost-dark__background-color--active};
+    --borderColor--a: #{$button-ghost-dark__border-color--active};
+    --color--a: #{$button-ghost-dark__color--active};
+
+    // Disable
+    --backgroundColor--d: #{$button-ghost-dark__background-color--disabled};
+    --borderColor--d: #{$button-ghost-dark__border-color--disabled};
+    --color--d: #{$button-ghost-dark__color--disabled};
+  }
+
+  &.ds-c-button--alternate.ds-c-button--on-dark {
+    --backgroundColor: #{$button-ghost-dark-alt__background-color};
+    --borderColor: #{$button-ghost-dark-alt__border-color};
+    --color: #{$button-ghost-dark-alt__color};
+
+    // Hover
+    --backgroundColor--h: #{$button-ghost-dark-alt__background-color--hover};
+    --borderColor--h: #{$button-ghost-dark-alt__border-color--hover};
+    --color--h: #{$button-ghost-dark-alt__color--hover};
+
+    // Active
+    --backgroundColor--a: #{$button-ghost-dark-alt__background-color--active};
+    --borderColor--a: #{$button-ghost-dark-alt__border-color--active};
+    --color--a: #{$button-ghost-dark-alt__color--active};
+
+    // Disable
+    --backgroundColor--d: #{$button-ghost-dark-alt__background-color--disabled};
+    --borderColor--d: #{$button-ghost-dark-alt__border-color--disabled};
+    --color--d: #{$button-ghost-dark-alt__color--disabled};
+  }
+}
+
+.ds-c-button--big {
+  --fontSize: #{$font-size-xl};
+  --space: #{$spacer-2 $spacer-3};
+}
+
+.ds-c-button--small {
+  --fontSize: #{$font-size-sm};
+  --fontWeight: #{$font-weight-normal};
+  --space: #{$spacer-half $spacer-1};
 }
