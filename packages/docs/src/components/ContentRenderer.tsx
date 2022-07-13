@@ -3,7 +3,7 @@ import Prism from 'prismjs';
 
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
-import { toKebabCase } from '../helpers/casingUtils';
+import { toKebabCase, toLowerCaseOneWord } from '../helpers/casingUtils';
 
 import EmbeddedExample from './EmbeddedExample';
 import StorybookExample from './StorybookExample';
@@ -23,7 +23,7 @@ const HeadingWithId = (props: MdxProviderProps, Component) => {
   } else {
     // for headings that have code blocks, extract the text
     const text = props.children?.props?.children;
-    return <Component {...props} id={toKebabCase(text)} />;
+    return <Component {...props} id={toLowerCaseOneWord(text)} />;
   }
 };
 
