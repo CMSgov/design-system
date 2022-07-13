@@ -7,7 +7,11 @@ import ContentRenderer from '../components/ContentRenderer';
 // Main landing page for site
 const IndexPage = ({ data, location }: MdxQuery) => {
   return (
-    <Layout pageName="Introduction" location={location}>
+    <Layout
+      pageName="Introduction"
+      location={location}
+      tableOfContentsData={data.mdx.tableOfContents?.items}
+    >
       <ContentRenderer data={data.mdx.body} />
     </Layout>
   );
@@ -18,6 +22,7 @@ export const query = graphql`
     mdx(frontmatter: { title: { eq: "Introduction" } }) {
       id
       body
+      tableOfContents(maxDepth: 2)
     }
   }
 `;

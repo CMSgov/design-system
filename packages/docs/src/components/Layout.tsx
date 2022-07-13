@@ -5,7 +5,9 @@ import { Link } from 'gatsby';
 import Footer from './DocSiteFooter';
 import Navigation from './DocSiteNavigation';
 import { SkipNav, Badge, UsaBanner } from '@cmsgov/design-system';
-import { LocationInterface } from '../helpers/graphQLTypes';
+import { LocationInterface, TableOfContentsItem } from '../helpers/graphQLTypes';
+import TableOfContents from './TableOfContents';
+import TableOfContentsMobile from './TableOfContentsMobile';
 
 import '../styles/index.scss';
 
@@ -36,6 +38,10 @@ interface LayoutProps {
    * describes status of page. used for component pages
    */
   status?: PageStatus;
+  /**
+   * list of heading items to be used in table of contents
+   */
+  tableOfContentsData?: TableOfContentsItem[];
 }
 
 const Layout = ({
@@ -45,6 +51,7 @@ const Layout = ({
   showJumpToGuidance,
   status,
   location,
+  tableOfContentsData,
 }: LayoutProps) => {
   const env = 'prod';
 
@@ -68,7 +75,7 @@ const Layout = ({
       <div className="ds-l-row ds-u-margin--0">
         <Navigation location={location} />
         <main id="main" className="ds-l-md-col ds-u-padding--0 ds-u-padding-bottom--4">
-          <header className="ds-u-padding--3 ds-u-sm-padding--6 ds-u-display--block ds-u-fill--gray-lightest">
+          <header className="ds-u-padding--3 ds-u-sm-padding--6 ds-u-display--block">
             <div className="ds-u-display--flex ds-u-align-items--center">
               <h1 className="ds-display ds-u-display--inline-block">{pageName}</h1>
               {status && (
@@ -100,8 +107,16 @@ const Layout = ({
               </div>
             )}
           </header>
-          <article className="ds-u-border-top--1 ds-u-padding-x--3 ds-u-sm-padding-x--6 ds-u-sm-padding-y--6 ds-u-padding-y--3 page-content">
-            {children}
+          <article className="ds-u-md-display--flex ds-u-padding-x--3 ds-u-sm-padding-x--6 ds-u-sm-padding-bottom--6 ds-u-sm-padding-top--1 ds-u-padding-bottom--3 page-content">
+            <div className="page-content__content ds-l-lg-col--9 ds-u-padding-left--0">
+              <div className="ds-u-display--block ds-u-lg-display--none">
+                <TableOfContentsMobile data={tableOfContentsData || []} />
+              </div>
+              {children}
+            </div>
+            <div className="ds-l-lg-col--3 ds-u-display--none ds-u-lg-display--block">
+              <TableOfContents data={tableOfContentsData || []} />
+            </div>
           </article>
         </main>
       </div>
