@@ -1,4 +1,4 @@
-import { getQueryParamValue } from './urlUtils';
+import { getQueryParamValue, setQueryParam } from './urlUtils';
 
 /**
  * Checks for current theme using query params and then localStorage
@@ -11,15 +11,17 @@ export function getTheme() {
   let theme = 'core';
 
   if (typeof window !== 'undefined') {
-    // query param found, set and return it
+    // query param found, set in local storage and return it
     if (themeQueryParam !== null) {
       localStorage.setItem('theme', themeQueryParam);
       return themeQueryParam;
     } else {
-      // returning localStorage theme if found, otherwise 'core'
+      // no query param, so check localStorage theme. if found, return otherwise return 'core'
       if ('theme' in localStorage) {
         theme = localStorage.getItem('theme');
       }
+      // if no query param val was set, make sure to set it to the value in local storage or 'core' by default
+      setQueryParam('theme', theme);
       return theme;
     }
   } else {
