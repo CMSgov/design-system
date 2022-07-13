@@ -1,0 +1,100 @@
+@import '../settings/index.scss';
+
+@mixin spinner-size($inner-size, $outer-size) {
+  height: $outer-size;
+  width: $outer-size;
+  $padding: (($outer-size - $inner-size) * 0.5);
+
+  &::before,
+  &::after {
+    border-width: ($inner-size * 0.125);
+    height: $inner-size;
+    left: $padding;
+    top: $padding;
+    width: $inner-size;
+  }
+}
+
+.ds-c-spinner {
+  @include spinner-size($spacer-4, $spacer-4);
+  box-sizing: border-box;
+  display: inline-block;
+  position: relative;
+
+  &::before,
+  &::after {
+    border-radius: $radius-circle;
+    border-style: solid;
+    box-sizing: border-box;
+    content: '';
+    display: block;
+    left: 0;
+    position: absolute;
+    top: 0;
+  }
+
+  &::before {
+    border-color: inherit;
+    opacity: 0.2;
+  }
+
+  &::after {
+    animation: spin $animation-speed-4 infinite linear;
+    border-bottom-color: transparent;
+    border-left-color: inherit;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    transform: translateZ(0);
+
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      border-color: WindowText;
+      border-left-color: Window;
+    }
+  }
+
+  .ds-c-button > & {
+    @include inline-icon;
+    @include spinner-size(1em, 1em);
+  }
+}
+
+.ds-c-spinner--filled {
+  @include spinner-size($spacer-4, $spacer-6);
+  background-color: $spinner__background-color;
+  border-radius: 50%;
+  color: $spinner__color;
+  height: $spacer-6;
+  width: $spacer-6;
+
+  &.ds-c-spinner--inverse {
+    background-color: $spinner__background-color--inverse;
+    &:not(:focus) {
+      color: $spinner__color--inverse;
+    }
+  }
+}
+
+.ds-c-spinner--small {
+  @include spinner-size($spacer-2, $spacer-2);
+
+  &.ds-c-spinner--filled {
+    @include spinner-size($spacer-2, $spacer-3);
+  }
+}
+
+.ds-c-spinner--big {
+  @include spinner-size($spacer-5, $spacer-5);
+
+  &.ds-c-spinner--filled {
+    @include spinner-size($spacer-5, $spacer-7);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

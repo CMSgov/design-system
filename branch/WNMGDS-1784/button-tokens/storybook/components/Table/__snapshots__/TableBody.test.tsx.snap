@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableBody renders additional attributes 1`] = `
+<table>
+  <TableBody
+    className="foo-body"
+  >
+    <tbody
+      className="foo-body"
+      role="rowgroup"
+    >
+      <tr>
+        <td>
+          Cell a
+        </td>
+        <td>
+          Cell a
+        </td>
+      </tr>
+    </tbody>
+  </TableBody>
+</table>
+`;

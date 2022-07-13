@@ -1,0 +1,27 @@
+.ds-c-month-picker {
+  margin-bottom: $spacer-3;
+  margin-top: $spacer-3;
+}
+
+.ds-c-month-picker__buttons {
+  margin-bottom: $spacer-1;
+  margin-top: $spacer-2;
+
+  .ds-c-month-picker__button {
+    margin-right: $spacer-1;
+  }
+}
+
+.ds-c-month-picker__months {
+  max-width: 400px;
+}
+
+.ds-c-month-picker__months-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.ds-c-month-picker__month {
+  width: 100px;
+}
