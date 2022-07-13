@@ -6,7 +6,7 @@ import classNames from 'classnames';
 export type ButtonComponentType = React.ElementType<any> | React.ComponentType<any>;
 export type ButtonSize = 'small' | 'big';
 
-export type ButtonVariation = 'solid' | 'outline' | 'link';
+export type ButtonVariation = 'solid' | 'ghost';
 
 export type ButtonRef = MutableRefObject<any> | ((...args: any[]) => any);
 
@@ -112,15 +112,15 @@ export const Button = ({
   onClick,
   onDark = false,
   size,
-  variation = 'outline',
+  variation,
   type = 'button',
   ...otherProps
 }: ButtonProps) => {
   const contentRef = useRef();
   const ComponentType = component ?? (href ? 'a' : 'button');
   const disabledClass = disabled && ComponentType !== 'button' && 'ds-c-button--disabled';
-  const colorSchemeClass = isAlternate ? `ds-c-button--alternate` : `ds-c-button--main`;
-  const modeClass = onDark ? `ds-c-button--on-dark` : `ds-c-button--on-light`;
+  const colorSchemeClass = isAlternate && `ds-c-button--alternate`;
+  const modeClass = onDark && `ds-c-button--on-dark`;
   const sizeClass = size && `ds-c-button--${size}`;
   const variationClass = variation && `ds-c-button--${variation}`;
 
