@@ -2,10 +2,10 @@
 
 This tool gathers the versions of our design systems currently being used in the CMS-WDS organization on github.cms.gov.
 
-You can run this tool from the root of the repository directory with the following command:
+To see a full list of sub-commands and options available, run this from the root of the repository:
 
 ```
-yarn scan-dependents
+yarn scan-dependents --help
 ```
 
 ## Setup
@@ -32,32 +32,26 @@ Pass it to the command like this
 yarn scan-dependents --token YOUR_PERSONAL_ACCESS_TOKEN
 ```
 
-## Scan versions of the design systems in use
+## Common formulas
 
-This is the default behavior of the script if no additional options are specified, the script will print out design system versions in use by our dependents.
-
-## Scan dependencies of dependents
-
-You can scan for which versions of certain dependencies our dependents are using with
-
-```
-yarn scan-dependents --dependency <dependency-package-name>
-```
-
-For example, this would scan for which version of React our dependencies are using:
+### Scan for the version of React our dependencies are using
 
 ```
 yarn scan-dependents --dependency react
 ```
 
-## Additional options
-
-### Scanning only a subset of our design systems
-
-Example:
+### Scan only a subset of our design systems
 
 ```
-yarn scan-dependents --designSystems @cmsgov/design-system @cmsgov/ds-healthcare-gov --dependency node-sass
+yarn scan-dependents --designSystems @cmsgov/ds-medicare-gov @cmsgov/ds-healthcare-gov --dependency node-sass
 ```
 
-This will scan only dependents of the core and healthcare design systems to find out what version of `node-sass` they're using if any.
+This will scan only dependents of the medicare and healthcare design systems to find out what version of `node-sass` they're using if any.
+
+### Search JavaScript files for certain strings
+
+```
+yarn scan-dependents search ChoiceList --extensions js jsx tsx
+```
+
+Searches JavaScript and TypeScript files for "ChoiceList"
