@@ -82,7 +82,7 @@ export const themeColors: ColorTokens = {
   'primary-alt':                color['sky-500'],
   'primary-alt-dark':           color['sky-600'],
   'primary-alt-darkest':        color['sky-800'],
-  'primary-alt-light':          color['darksky-200'],
+  'primary-alt-light':          color['sky-300'],
   'primary-alt-lightest':       color['sky-50'],
   //
   'secondary':                  color['sky-500'],
