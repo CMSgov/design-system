@@ -32,10 +32,32 @@ Pass it to the command like this
 yarn scan-dependents --token YOUR_PERSONAL_ACCESS_TOKEN
 ```
 
-## Scan React versions
+## Scan versions of the design systems in use
 
-You can scan react versions of our dependents with
+This is the default behavior of the script if no additional options are specified, the script will print out design system versions in use by our dependents.
+
+## Scan dependencies of dependents
+
+You can scan for which versions of certain dependencies our dependents are using with
 
 ```
-yarn scan-dependents --react
+yarn scan-dependents --dependency <dependency-package-name>
 ```
+
+For example, this would scan for which version of React our dependencies are using:
+
+```
+yarn scan-dependents --dependency react
+```
+
+## Additional options
+
+### Scanning only a subset of our design systems
+
+Example:
+
+```
+yarn scan-dependents --designSystems @cmsgov/design-system @cmsgov/ds-healthcare-gov --dependency node-sass
+```
+
+This will scan only dependents of the core and healthcare design systems to find out what version of `node-sass` they're using if any.
