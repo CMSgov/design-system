@@ -1,5 +1,8 @@
 import { getQueryParamValue, setQueryParam } from './urlUtils';
 
+const STORAGE_TOKEN_NAME = 'cmsds_theme';
+const QUERY_PARAM_NAME = 'theme';
+
 /**
  * Checks for current theme using query params and then localStorage
  * in that order. If neither is detected, set localStorage to 'core'
@@ -7,21 +10,21 @@ import { getQueryParamValue, setQueryParam } from './urlUtils';
  * and return found value
  */
 export function getTheme() {
-  const themeQueryParam = getQueryParamValue('theme');
+  const themeQueryParam = getQueryParamValue(QUERY_PARAM_NAME);
   let theme = 'core';
 
   if (typeof window !== 'undefined') {
     // query param found, set in local storage and return it
     if (themeQueryParam !== null) {
-      localStorage.setItem('theme', themeQueryParam);
+      localStorage.setItem(STORAGE_TOKEN_NAME, themeQueryParam);
       return themeQueryParam;
     } else {
       // no query param, so check localStorage theme. if found, return otherwise return 'core'
-      if ('theme' in localStorage) {
-        theme = localStorage.getItem('theme');
+      if (STORAGE_TOKEN_NAME in localStorage) {
+        theme = localStorage.getItem(STORAGE_TOKEN_NAME);
       }
       // if no query param val was set, make sure to set it to the value in local storage or 'core' by default
-      setQueryParam('theme', theme);
+      setQueryParam(QUERY_PARAM_NAME, theme);
       return theme;
     }
   } else {
