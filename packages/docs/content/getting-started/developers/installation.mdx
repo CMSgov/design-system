@@ -1,0 +1,136 @@
+---
+title: Installation
+order: 10
+---
+
+How you implement the design system depends on the needs of your project and your workstyle. We highly recommend implementing the design system with `npm`, as it allows you to easily update the design system version, but we also provide a direct download if `npm` will not work for you or your project. We also offer the ability to utilize the design system via direct reference to code and style resources from our CDN.
+
+- [Install the `@cmsgov/design-system` package](/getting-started/developers/installation/#install-using-npm) if your project uses `npm` for package management.
+
+- [Download the design system](/getting-started/developers/installation/#download-zip) if you are not familiar with `npm` and package management.
+
+- [Utilize the CDN](/getting-started/developers/installation/#utilize-the-cdn) if you would like to reference the design system styles and code directly from your page/application.
+
+## Install using npm
+
+Simply add the `@cmsgov/design-system` package to your `package.json` to install it as a dependency.
+
+```
+npm install --save @cmsgov/design-system@latest
+
+yarn add @cmsgov/design-system@latest
+```
+
+The [@cmsgov/design-system](https://www.npmjs.com/package/@cmsgov/design-system) package includes:
+
+- Pre-compiled SCSS files
+- Compiled CSS files
+- Compiled React components (CommonJS and ES modules)
+- Typescript definition files
+- Fonts and image
+
+### Package file structure
+
+The `dist` folder contains all the necessary files in the design system, your project should not be importing anything from `src`.
+
+```
+└── dist
+    ├── components/
+    │   └── index.js        Compiled JS entry point (CommmonJS)
+    ├── css/
+    │   └── index.css       Compiled CSS entry point
+    ├── esnext/
+    │   └── index.esm.js    Compiled JS entry point (ES Module)
+    ├── fonts/
+    ├── images/
+    ├── scss/
+    │   ├── base/           Base styles, HTML element selectors
+    │   ├── components/     Component styles
+    │   ├── settings/       Variables, mixins, and functions
+    │   ├── utilities/      Utility classes for individual CSS properties
+    │   └── index.scss      Precompiled SCSS entry point
+    └── types/              Typescript definition files
+```
+
+## Download zip
+
+Download the zip file from the 'Download Code' button in the header. This will download the latest release and extract the zip file to see the following folder structure. Like the `npm` package, the contents of `download/design-system/dist` contain design system code and assets.
+
+```
+└── download
+    ├── design-assets/      Design system assets (Sketch files, fonts, designer assets)
+    └── design-system/      Design system package (code, fonts, images)
+        └── dist/
+```
+
+Copy the files and folders from `download/design-system/dist` to a relevant place in your project’s code base. Here is an example structure for how this might look:
+
+```
+└──example-project/
+    ├── assets/
+    │   ├── ds-2.0.0/       Renamed design system package
+    │   ├── stylesheets/
+    │   ├── images/
+    │   └── javascript/
+    └── index.html
+```
+
+## Utilize the CDN
+
+A content delivery network (CDN) is a collection of servers that dynamically allocate resources dependent on the requester's geographic location in order to optimize the distribution of assets.
+
+Some benefits and applications for utilizing the design system via CDN are:
+
+- Quickly utilize design system code and style assets for development/prototyping
+- The CDN caches assets for fast loading and scales automatically in case of a large number of requests
+- Ability to utilize a specific version of the design system easily
+
+### Resources
+
+```
+  ├── css/
+  │   ├── index.css
+  │   ├── base/index.css
+  │   ├── components/index.css
+  │   └── utilities/index.css
+  └── js/
+      ├── react.production.min.js
+      ├── react-dom.production.min.js
+      └── bundle.js
+```
+
+### Packages
+
+Packages which are currently available for reference:
+
+- **design-system** - The core CMSDS (versions 3.4.0 and above)
+- **ds-healthcare-gov** - Healthcare.gov themed DS (versions 7.4.0 and above)
+- **ds-medicare-gov** - Medicare.gov themed DS (versions 5.4.0 and above)
+
+### URL structure
+
+```
+https://design.cms.gov/cdn/<package-name>/<version>/<resource>
+```
+
+Where `package-name` is one of the packages named above, `version` is the version number and `resource` is the file being requested from the resources listed above.
+
+#### Example for including version 3.4.0 Core CSS via CDN
+
+```
+<link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/3.4.0/css/index.css" crossorigin="anonymous" />
+```
+
+#### Example for including version 3.4.0 Core JS via CDN
+
+If you do not already have React and React-DOM included in your page, include them before the design system js bundle.
+
+```
+<script type="text/javascript" src="https://design.cms.gov/cdn/design-system/3.4.0/js/react.production.min.js"></script>
+<script type="text/javascript" src="https://design.cms.gov/cdn/design-system/3.4.0/js/react-dom.production.min.js"></script>
+<script type="text/javascript" src="https://design.cms.gov/cdn/design-system/3.4.0/js/bundle.js"></script>
+```
+
+## Need help or ran into an issue?
+
+If you're having trouble installing or setting up the design system, or if you think you've found a bug, feel free to [open an issue on GitHub](https://github.com/CMSgov/design-system/issues).
