@@ -3,13 +3,14 @@ import Prism from 'prismjs';
 
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
-import { toKebabCase } from '../helpers/casingUtils';
+import { toKebabCase, toLowerCaseOneWord } from '../helpers/casingUtils';
 
 import EmbeddedExample from './EmbeddedExample';
 import StorybookExample from './StorybookExample';
 import ComponentThemeOptions from './ComponentThemeOptions';
 import ThemeContent from './ThemeContent';
 import PropTable from './PropTable';
+import ResponsiveExample from './ResponsiveExample';
 
 interface MdxProviderProps {
   children: string | { props: { children?: string } };
@@ -22,7 +23,7 @@ const HeadingWithId = (props: MdxProviderProps, Component) => {
   } else {
     // for headings that have code blocks, extract the text
     const text = props.children?.props?.children;
-    return <Component {...props} id={toKebabCase(text)} />;
+    return <Component {...props} id={toLowerCaseOneWord(text)} />;
   }
 };
 
@@ -87,6 +88,7 @@ const customComponents = {
   EmbeddedExample,
   StorybookExample,
   PropTable,
+  ResponsiveExample,
   ComponentThemeOptions: (props) => <ComponentThemeOptions theme="core" {...props} />,
   ThemeContent: (props) => <ThemeContent theme="core" {...props} />,
 };

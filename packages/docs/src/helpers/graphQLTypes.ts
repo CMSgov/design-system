@@ -59,3 +59,26 @@ export interface ComponentPropQuery {
     }[];
   };
 }
+
+export interface NavItem {
+  relativePath: string;
+  childMdx: {
+    frontmatter?: {
+      title: string;
+      order?: number;
+    };
+  };
+}
+
+export interface ContentDirectoryGroup {
+  fieldValue: string;
+  edges: {
+    node: NavItem;
+  }[];
+}
+
+export interface NavDataQuery {
+  allFile: {
+    group: ContentDirectoryGroup[];
+  };
+}
