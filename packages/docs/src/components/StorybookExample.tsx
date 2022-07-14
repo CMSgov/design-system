@@ -24,6 +24,10 @@ interface StorybookExampleProps {
    */
   sourceFilePath?: string;
   /**
+   * package where the source comes from
+   */
+  sourcePackageName?: string;
+  /**
    * Current theme
    */
   theme: string;
@@ -41,6 +45,7 @@ const StorybookExample = ({
   componentName,
   minHeight,
   sourceFilePath,
+  sourcePackageName,
   storyId,
 }: StorybookExampleProps) => {
   const [iframeHeight, setiFrameHeight] = useState<number>(200);
@@ -90,7 +95,9 @@ const StorybookExample = ({
 
   return (
     <>
-      {sourceFilePath && <ViewSourceLink sourceFilePath={sourceFilePath} />}
+      {sourceFilePath && (
+        <ViewSourceLink sourceFilePath={sourceFilePath} packageName={sourcePackageName} />
+      )}
       <div className="c-storybook-example">
         <div
           className={classnames('c-storybook-example__iframe-wrapper', {
