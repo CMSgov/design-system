@@ -3,12 +3,12 @@ import { graphql } from 'gatsby';
 
 import Layout from '../components/Layout';
 import { MdxQuery } from '../helpers/graphQLTypes';
-import { getTheme } from '../helpers/themeUtils';
+import useTheme from '../helpers/useTheme';
 import ContentRenderer from '../components/ContentRenderer';
 
 // Main landing page for site
 const IndexPage = ({ data, location }: MdxQuery) => {
-  const theme = getTheme();
+  const theme = useTheme();
 
   return (
     <Layout
