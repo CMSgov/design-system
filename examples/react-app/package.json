@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@cmsgov/design-system": "^2.0.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "@cmsgov/design-system": "file:../../packages/design-system/",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
