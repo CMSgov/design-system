@@ -3,11 +3,78 @@ title: Button
 relatedUswdsGuidance: components/buttons
 ---
 
-import { Alert, Button, ArrowIcon, TextInput } from '@cmsgov/design-system';
+import { Alert, Button, ArrowIcon, TextInput, Table,
+TableCaption,
+TableHead,
+TableRow,
+TableBody,
+TableCell } from '@cmsgov/design-system';
 
 Use buttons to signal actions.
 
-## Default Button
+## Variations
+
+<Table stackable stackableBreakpoint="md">
+  <TableCaption>Button variations</TableCaption>
+  <colgroup span="2" />
+  <colgroup span="2" />
+  <TableHead>
+    <TableRow>
+      <TableCell colSpan="2" scope="colgroup">Default</TableCell>
+      <TableCell colSpan="2" scope="colgroup">Alternate</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell scope="col">On light</TableCell>
+      <TableCell scope="col">On dark</TableCell>
+      <TableCell scope="col">On light</TableCell>
+      <TableCell scope="col">On dark</TableCell>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow>
+      <TableCell>
+        <Button>Default</Button>
+      </TableCell>
+      <TableCell className="ds-u-fill--base">
+        <Button onDark>Default on dark</Button>
+      </TableCell>
+      <TableCell>
+        <Button isAlternate>Alternate</Button>
+      </TableCell>
+      <TableCell className="ds-u-fill--base">
+        <Button isAlternate onDark>Alternate on dark</Button>
+      </TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>
+        <Button variation="solid">Solid</Button>
+      </TableCell>
+      <TableCell className="ds-u-fill--base">
+        <Button variation="solid" onDark>Solid on dark</Button>
+      </TableCell>
+      <TableCell>
+        <Button variation="solid" isAlternate>Solid alternate</Button>
+      </TableCell>
+      <TableCell className="ds-u-fill--base">
+        <Button variation="solid" isAlternate onDark>Solid alternate on dark</Button>
+      </TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>
+        <Button variation="ghost">Ghost</Button>
+      </TableCell>
+      <TableCell className="ds-u-fill--base">
+        <Button variation="ghost" onDark>Ghost on dark</Button>
+      </TableCell>
+      <TableCell>
+        <Button variation="ghost" isAlternate>Ghost alternate</Button>
+      </TableCell>
+      <TableCell className="ds-u-fill--base">
+        <Button variation="ghost" isAlternate onDark>Ghost alternate on dark</Button>
+      </TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
 
 <EmbeddedExample>
   <div>
