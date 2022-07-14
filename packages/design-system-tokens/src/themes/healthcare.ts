@@ -27,10 +27,10 @@ export const themeColors: ColorTokens = {
   'border-dark':                color['lapis-800'],
   'border-inverse':             color['white-solid'],
   //
-  'coolblue':                  color['sapphire-600'],
-  'coolblue-light':            color['sapphire-500'],
-  'coolblue-lighter':          color['sapphire-200'],
-  'coolblue-lightest':         color['sapphire-50'],
+  'coolblue':                   color['sapphire-600'],
+  'coolblue-light':             color['sapphire-500'],
+  'coolblue-lighter':           color['sapphire-200'],
+  'coolblue-lightest':          color['sapphire-50'],
   //
   'error':                      color['rose-500'],
   'error-dark':                 color['rose-600'],
