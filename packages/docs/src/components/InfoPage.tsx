@@ -27,6 +27,7 @@ const InfoPage = ({ data, location }: MdxQuery) => {
       showJumpToGuidance={showGuidance}
       status={status}
       location={location}
+      tableOfContentsData={tableOfContents?.items}
     >
       <ContentRenderer data={body} />
     </Layout>
@@ -43,7 +44,7 @@ export const query = graphql`
         relatedUswdsGuidance
       }
       body
-      tableOfContents
+      tableOfContents(maxDepth: 2)
     }
   }
 `;

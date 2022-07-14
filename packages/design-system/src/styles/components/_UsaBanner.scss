@@ -1,7 +1,5 @@
 // @TODO: deprecate usage of these when modification of these in
 // consuming systems is either not done or easily resolved
-@use 'sass:math';
-
 $usa-banner-mobile-close-size: 48px;
 $usa-caret-icon-size: 10px;
 $usa-banner-font-family: $font-sans;
@@ -163,7 +161,7 @@ $usa-banner-font-family: $font-sans;
 .ds-c-usa-banner__lock-image {
   height: 1.5ex;
   vertical-align: inherit;
-  width: math.div(1.5ex * 52, 64);
+  width: calc(1.5ex * 52 / 64);
 
   path {
     fill: currentColor;
