@@ -1,5 +1,4 @@
 import join from 'url-join';
-import { removePositioning } from './casingUtils';
 
 export function githubUrl(pathname = '') {
   const ghUrl = 'https://github.com/CMSgov/design-system';
@@ -7,8 +6,7 @@ export function githubUrl(pathname = '') {
 }
 
 export function makePageUrl(fileRelativePath) {
-  let pageUrl = removePositioning(fileRelativePath);
-  return `/${pageUrl.replace('.mdx', '/')}`;
+  return `/${fileRelativePath.replace('.mdx', '/')}`;
 }
 
 /**
