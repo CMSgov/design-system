@@ -32,10 +32,16 @@ Pass it to the command like this
 yarn scan-dependents --token YOUR_PERSONAL_ACCESS_TOKEN
 ```
 
-## Scan React versions
+## Scan dependencies of dependents
 
-You can scan react versions of our dependents with
+You can scan for which versions of certain dependencies our dependents are using with
 
 ```
-yarn scan-dependents --react
+yarn scan-dependents --dependency <dependency-package-name>
+```
+
+For example, this would scan for which version of React our dependencies are using:
+
+```
+yarn scan-dependents --dependency react
 ```

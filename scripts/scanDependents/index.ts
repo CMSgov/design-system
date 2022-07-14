@@ -1,8 +1,8 @@
 import chalk from 'chalk';
 import yargs from 'yargs';
 import dotenv from 'dotenv';
-import { printDesignSystemVersions } from './designSystemVersions';
-import { printReactVersions } from './reactVersions';
+import { printTable } from './output';
+import { scanDesignSystemVersions, scanDependentDependencyVersions } from './scans';
 
 const designSystemPackageNames = [
   '@cmsgov/design-system',
@@ -17,10 +17,10 @@ const argv = yargs
     type: 'string',
     description: 'GitHub Enterprise personal access token',
   })
-  .option('react', {
-    desc: 'This flag will skip comparison to the latest release when collecting stats. Use this option if it is expected that the latest release does not exist in node_modules.',
-    type: 'boolean',
-    default: false,
+  .option('dependency', {
+    type: 'string',
+    description:
+      'Scan for a particular named package that is a dependency of our dependencies. Example value: "react"',
   })
   .help().argv;
 
@@ -39,11 +39,18 @@ async function main() {
   }
 
   try {
-    if (yargs.argv.react) {
-      await printReactVersions(accessToken, designSystemPackageNames);
+    let tables;
+    const dependency = yargs.argv.dependency as string | undefined;
+    if (dependency) {
+      tables = await scanDependentDependencyVersions(
+        accessToken,
+        designSystemPackageNames,
+        dependency
+      );
     } else {
-      await printDesignSystemVersions(accessToken, designSystemPackageNames);
+      tables = await scanDesignSystemVersions(accessToken, designSystemPackageNames);
     }
+    tables.forEach(printTable);
   } catch (error) {
     console.log(error);
     process.exit(1);
