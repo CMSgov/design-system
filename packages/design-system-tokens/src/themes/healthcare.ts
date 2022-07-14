@@ -38,7 +38,7 @@ export const themeColors: ColorTokens = {
   //
   'focus':                      color['darksky-500'],
   'focus-border-inverse':       color['goldenrod-800'],
-  'focus-dark':                 color['rose-400'],
+  'focus-dark':                 color['persimmon-500'],
   'focus-inverse':              color['sky-500'],
   'focus-light':                color['white-solid'],
   'focus-shadow':               color['granite-900'],
@@ -76,14 +76,14 @@ export const themeColors: ColorTokens = {
   'muted-inverse':              color['lapis-50'],
   //
   'primary':                    color['sapphire-500'],
-  'primary-darker':             color['sapphire-500'],
-  'primary-darkest':            color['sapphire-600'],
+  'primary-darker':             color['sapphire-700'],
+  'primary-darkest':            color['sapphire-800'],
   // @TODO deprecate primary-alt as secondary
   'primary-alt':                color['darksky-500'],
-  'primary-alt-dark':           color['sky-600'],
-  'primary-alt-darkest':        color['sky-800'],
-  'primary-alt-light':          color['darksky-200'],
-  'primary-alt-lightest':       color['cerulean-50'],
+  'primary-alt-dark':           color['darksky-600'],
+  'primary-alt-darkest':        color['darksky-800'],
+  'primary-alt-light':          color['darksky-300'],
+  'primary-alt-lightest':       color['darksky-50'],
   //
   'red':                        color['rose-500'],
   'red-dark':                   color['rose-600'],
@@ -94,12 +94,12 @@ export const themeColors: ColorTokens = {
   'red-lightest':               color['rose-50'],
   //
   'secondary':                  color['darksky-500'],
-  'secondary-dark':             color['sky-600'],
-  'secondary-darker':           color['sky-700'],
-  'secondary-darkest':          color['sky-800'],
-  'secondary-light':            color['cerulean-200'],
-  'secondary-lighter':          color['cerulean-100'],
-  'secondary-lightest':         color['cerulean-50'],
+  'secondary-dark':             color['darksky-600'],
+  'secondary-darker':           color['darksky-700'],
+  'secondary-darkest':          color['darksky-800'],
+  'secondary-light':            color['darksky-300'],
+  'secondary-lighter':          color['darksky-100'],
+  'secondary-lightest':         color['darksky-50'],
   //
   'success':                    color['spring-500'],
   'success-dark':               color['spring-600'],
