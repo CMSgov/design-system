@@ -1,3 +1,6 @@
+$font-path: '@cmsgov/ds-medicare-gov/dist/fonts';
+@import '@cmsgov/ds-medicare-gov/src/styles/fonts';
+
 // importing core styles from core index.scss files
 @import 'theme-variables/_core-scss-to-css.map.scss';
 @import 'theme-variables/_core-theme.css';
@@ -26,4 +29,5 @@
 @import 'components/responsiveExample.scss';
 @import 'components/storybookExample.scss';
 @import 'components/syntaxHighlighting.scss';
+@import 'components/themeSwitcher.scss';
 @import 'components/tableOfContents.scss';
