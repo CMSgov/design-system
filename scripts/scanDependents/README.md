@@ -37,13 +37,13 @@ yarn scan-dependents --token YOUR_PERSONAL_ACCESS_TOKEN
 ### Scan for the version of React our dependencies are using
 
 ```
-yarn scan-dependents --dependency react
+yarn scan-dependents dependency react
 ```
 
 ### Scan only a subset of our design systems
 
 ```
-yarn scan-dependents --designSystems @cmsgov/ds-medicare-gov @cmsgov/ds-healthcare-gov --dependency node-sass
+yarn scan-dependents dependency node-sass --designSystems @cmsgov/ds-medicare-gov @cmsgov/ds-healthcare-gov
 ```
 
 This will scan only dependents of the medicare and healthcare design systems to find out what version of `node-sass` they're using if any.
@@ -55,3 +55,5 @@ yarn scan-dependents search ChoiceList --extensions js jsx tsx
 ```
 
 Searches JavaScript and TypeScript files for "ChoiceList"
+
+Note that if you want to browse those search results on GitHub's web interface, add a `--verbose` option, and it will print out the full query string used to search in the dependent repositories.
