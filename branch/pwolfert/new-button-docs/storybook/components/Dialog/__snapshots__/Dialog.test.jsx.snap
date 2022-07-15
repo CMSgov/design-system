@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dialog close button text and variation can be changed 1`] = `
+<div
+  role="document"
+>
+  <header
+    class="ds-c-dialog__header"
+    role="banner"
+  >
+    <h1
+      class="ds-h2"
+      id="dialog-title"
+    >
+      dialog heading
+    </h1>
+    <button
+      aria-label="Close modal dialog"
+      class="ds-c-button ds-c-button--main ds-c-button--on-light ds-c-button--link ds-c-dialog__close"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        class="ds-c-icon ds-c-icon--close "
+        focusable="false"
+        id="icon-2"
+        viewBox="0 0 16 16"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M14.647 11.213c.235.235.353.521.353.858 0 .337-.118.624-.353.859l-1.717 1.717a1.17 1.17 0 01-.86.354c-.336 0-.622-.118-.857-.354l-3.714-3.712-3.712 3.712A1.166 1.166 0 012.93 15c-.337 0-.622-.118-.859-.354L.353 12.93A1.165 1.165 0 010 12.07c0-.337.117-.623.353-.858L4.065 7.5.353 3.789A1.168 1.168 0 010 2.929c0-.336.117-.622.353-.857L2.07.353C2.307.118 2.592 0 2.93 0c.337 0 .623.118.858.353L7.5 4.065 11.213.353c.235-.235.521-.353.857-.353.337 0 .623.118.86.353l1.717 1.719c.235.235.353.521.353.857 0 .338-.118.623-.353.86L10.935 7.5l3.712 3.712z"
+          fill-rule="evenodd"
+        />
+      </svg>
+      No thank you. I don't like saving money
+    </button>
+  </header>
+  <main
+    class="ds-c-dialog__body"
+    role="main"
+  >
+    <div
+      id="dialog-content"
+    >
+      Foo
+    </div>
+  </main>
+</div>
+`;
+
+exports[`Dialog renders with additional classNames and size 1`] = `
+<div
+  role="document"
+>
+  <header
+    class="ds-c-dialog__header test-header"
+    role="banner"
+  >
+    <h1
+      class="ds-h2"
+      id="dialog-title"
+    >
+      dialog heading
+    </h1>
+    <button
+      aria-label="Close modal dialog"
+      class="ds-c-button ds-c-button--main ds-c-button--on-light ds-c-button--transparent ds-c-dialog__close"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        class="ds-c-icon ds-c-icon--close "
+        focusable="false"
+        id="icon-1"
+        viewBox="0 0 16 16"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M14.647 11.213c.235.235.353.521.353.858 0 .337-.118.624-.353.859l-1.717 1.717a1.17 1.17 0 01-.86.354c-.336 0-.622-.118-.857-.354l-3.714-3.712-3.712 3.712A1.166 1.166 0 012.93 15c-.337 0-.622-.118-.859-.354L.353 12.93A1.165 1.165 0 010 12.07c0-.337.117-.623.353-.858L4.065 7.5.353 3.789A1.168 1.168 0 010 2.929c0-.336.117-.622.353-.857L2.07.353C2.307.118 2.592 0 2.93 0c.337 0 .623.118.858.353L7.5 4.065 11.213.353c.235-.235.521-.353.857-.353.337 0 .623.118.86.353l1.717 1.719c.235.235.353.521.353.857 0 .338-.118.623-.353.86L10.935 7.5l3.712 3.712z"
+          fill-rule="evenodd"
+        />
+      </svg>
+      Close
+    </button>
+  </header>
+  <main
+    class="ds-c-dialog__body"
+    role="main"
+  >
+    <div
+      id="dialog-content"
+    >
+      Foo
+    </div>
+    <div
+      class="ds-c-dialog__actions test-action"
+    >
+      <span>
+        Pretend these are actions
+      </span>
+    </div>
+  </main>
+</div>
+`;

@@ -1,0 +1,208 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tooltip renders custom trigger component 1`] = `
+<a
+  aria-describedby="trigger_5"
+  aria-label="tooltip trigger"
+  class="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
+  tabindex="0"
+>
+  <span
+    class="ds-c-tooltip-icon__container"
+  >
+    <svg
+      aria-hidden="true"
+      class="ds-c-icon ds-c-icon--info-circle-thin ds-c-tooltip-icon"
+      focusable="false"
+      id="icon-6"
+      viewBox="0 0 16 16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 16c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm1-3.7V6.4H7v5.9h2zM7 4.9c0 .6.3.9 1 .9s1-.3 1-.9c0-.3-.1-.5-.2-.7-.2-.1-.5-.2-.8-.2-.3 0-.6.1-.8.2-.1.2-.2.4-.2.7z"
+        fill-rule="nonzero"
+      />
+    </svg>
+  </span>
+</a>
+`;
+
+exports[`Tooltip renders default trigger icon 1`] = `
+<button
+  aria-describedby="trigger_1"
+  aria-label="tooltip trigger"
+  class="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
+  type="button"
+>
+  <span
+    class="ds-c-tooltip-icon__container"
+  >
+    <svg
+      aria-hidden="true"
+      class="ds-c-icon ds-c-icon--info-circle-thin ds-c-tooltip-icon"
+      focusable="false"
+      id="icon-2"
+      viewBox="0 0 16 16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 16c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm1-3.7V6.4H7v5.9h2zM7 4.9c0 .6.3.9 1 .9s1-.3 1-.9c0-.3-.1-.5-.2-.7-.2-.1-.5-.2-.8-.2-.3 0-.6.1-.8.2-.1.2-.2.4-.2.7z"
+        fill-rule="nonzero"
+      />
+    </svg>
+  </span>
+</button>
+`;
+
+exports[`Tooltip renders dialog tooltip 1`] = `
+<div
+  aria-hidden="false"
+  class="ds-c-tooltip ds-c-tooltip-enter ds-c-tooltip-enter-active"
+  data-placement="top"
+  id="trigger_7"
+  role="dialog"
+  style="max-width: 300px; z-index: 9999;"
+  tabindex="-1"
+>
+  <span
+    class="ds-c-tooltip__arrow"
+    data-popper-arrow="true"
+  />
+  <div
+    class="ds-c-tooltip__content ds-base"
+  >
+    Tooltip body content
+  </div>
+</div>
+`;
+
+exports[`Tooltip renders inverse tooltip 1`] = `
+<DocumentFragment>
+  <div
+    class="ds-c-tooltip__container"
+  >
+    <button
+      aria-describedby="trigger_3"
+      aria-label="tooltip trigger"
+      class="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon ds-c-tooltip__trigger--inverse"
+      type="button"
+    >
+      <span
+        class="ds-c-tooltip-icon__container"
+      >
+        <svg
+          aria-hidden="true"
+          class="ds-c-icon ds-c-icon--info-circle-thin ds-c-tooltip-icon"
+          focusable="false"
+          id="icon-4"
+          viewBox="0 0 16 16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M8 16c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm1-3.7V6.4H7v5.9h2zM7 4.9c0 .6.3.9 1 .9s1-.3 1-.9c0-.3-.1-.5-.2-.7-.2-.1-.5-.2-.8-.2-.3 0-.6.1-.8.2-.1.2-.2.4-.2.7z"
+            fill-rule="nonzero"
+          />
+        </svg>
+      </span>
+    </button>
+    <div
+      aria-hidden="true"
+      class="ds-c-tooltip ds-c-tooltip--inverse"
+      data-placement="top"
+      id="trigger_3"
+      role="tooltip"
+      style="max-width: 300px; z-index: 9999;"
+    >
+      <span
+        class="ds-c-tooltip__arrow"
+        data-popper-arrow="true"
+      />
+      <div
+        class="ds-c-tooltip__content ds-base"
+      >
+        Tooltip body content
+      </div>
+      <span
+        class="ds-c-tooltip__interactive-border"
+        style="left: -15px; top: -15px; border: 15px solid transparent; z-index: -999;"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Tooltip tooltip with close renders heading element 1`] = `
+<div
+  aria-hidden="false"
+  class="ds-c-tooltip ds-c-tooltip-enter ds-c-tooltip-enter-active"
+  data-placement="top"
+  id="trigger_13"
+  role="dialog"
+  style="max-width: 300px; z-index: 9999;"
+  tabindex="-1"
+>
+  <span
+    class="ds-c-tooltip__arrow"
+    data-popper-arrow="true"
+  />
+  <div
+    class="ds-c-tooltip__content ds-base"
+  >
+    <div
+      class="ds-c-tooltip__header"
+    >
+      Tooltip heading content
+    </div>
+    Tooltip body content
+  </div>
+</div>
+`;
+
+exports[`Tooltip tooltip with close renders heading element and close button 1`] = `
+<div
+  aria-hidden="false"
+  class="ds-c-tooltip ds-c-tooltip-enter ds-c-tooltip-enter-active"
+  data-placement="top"
+  id="trigger_16"
+  role="dialog"
+  style="max-width: 300px; z-index: 9999;"
+  tabindex="-1"
+>
+  <span
+    class="ds-c-tooltip__arrow"
+    data-popper-arrow="true"
+  />
+  <div
+    class="ds-c-tooltip__content ds-base"
+  >
+    <div
+      class="ds-c-tooltip__header"
+    >
+      Tooltip heading content
+      <button
+        aria-label="Close"
+        class="ds-c-button ds-c-button--main ds-c-button--on-light ds-c-button--small ds-c-button--link ds-c-tooltip__close-button"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin "
+          focusable="false"
+          id="icon-18"
+          viewBox="-2 -2 18 18"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0 13.0332964L13.0332964 0M13.0332964 13.0332964L0 0"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-width="2"
+          />
+        </svg>
+      </button>
+    </div>
+    Tooltip body content
+  </div>
+</div>
+`;

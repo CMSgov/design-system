@@ -1,0 +1,119 @@
+{
+  "accordion": {
+    "close": "Close",
+    "open": "Open"
+  },
+  "alert": {
+    "defaultLabel": "Notice",
+    "error": "Alert",
+    "success": "Success",
+    "warn": "Warning"
+  },
+  "autocomplete": {
+    "ariaClearLabel": "Clear search to try again",
+    "clearInputText": "Clear search",
+    "loadingMessage": "Loading...",
+    "noResultsMessage": "No results"
+  },
+  "badge": {
+    "alert": "Alert",
+    "info": "Notice",
+    "success": "Success",
+    "warn": "Warning"
+  },
+  "dateField": {
+    "label": "Date",
+    "hint": "For example: 4 / 28 / 1986",
+    "dayLabel": "Day",
+    "monthLabel": "Month",
+    "yearLabel": "Year"
+  },
+  "dialog": {
+    "ariaCloseLabel": "Close modal dialog",
+    "closeButtonText": "Close"
+  },
+  "drawer": {
+    "ariaLabel": "Close help drawer",
+    "closeButtonText": "Close"
+  },
+  "filterChip": {
+    "ariaClearLabel": "Remove",
+    "filter": "{{label}} filter"
+  },
+  "icons": {
+    "add": "Add",
+    "alertCircle": "Alert",
+    "arrowsStacked": "Sort",
+    "calendar": "Calendar",
+    "upArrow": "up arrow",
+    "downArrow": "down arrow",
+    "leftArrow": "left arrow",
+    "rightArrow": "right arrow",
+    "buildingCircle": "Building in circle",
+    "checkCircle": "Checkmark in circle",
+    "check": "Checkmark",
+    "close": "Close",
+    "download": "Download",
+    "externalLink": "External link",
+    "hhsLogo": "Department of Health and Human Services",
+    "image": "Image",
+    "infoCircle": "Information",
+    "lockCircle": "Lock in circle",
+    "lock": "Lock",
+    "menu": "Menu Icon",
+    "next": "Next",
+    "remove": "Remove",
+    "star": "Star",
+    "starEmpty": "Empty Star",
+    "starFilled": "Filled Star",
+    "starHalf": "Half Star",
+    "usaLogo": "USA.gov - Government Made Easy",
+    "warning": "Warning"
+  },
+  "monthPicker": {
+    "selectAllText": "Select all",
+    "clearAllText": "Clear all"
+  },
+  "pagination": {
+    "ariaLabel": "Pagination",
+    "pageXOfY": "Page {{number}} of {{total}}",
+    "startLabelText": "Previous",
+    "startAriaLabel": "Previous Page",
+    "endLabelText": "Next",
+    "endAriaLabel": "Next Page"
+  },
+  "review": {
+    "editText": "Edit"
+  },
+  "singleInputDateField": {
+    "close": "Close calendar picker dialog",
+    "open": "Open calendar picker dialog",
+    "arrowKeyInstructions": "Arrow keys can navigate dates"
+  },
+  "skipNav": {
+    "default": "Skip to main content"
+  },
+  "spinner": {
+    "ariaText": "Loading"
+  },
+  "verticalNav": {
+    "expand": "Expand sub-navigation",
+    "collapse": "Collapse sub-navigation"
+  },
+  "usaBanner": {
+    "bannerLabel": "Official government website",
+    "bannerText": "An official website of the United States government",
+    "bannerActionText": "Here’s how you know",
+    "domainHeaderText": "Official websites use .gov",
+    "domainAText": "A",
+    "domainText": "website belongs to an official government organization in the United States.",
+    "flagIconTitle": "U.S. Flag",
+    "govText": ".gov",
+    "httpsHeaderText": "Secure .gov websites use HTTPS",
+    "httpsOrText": "or",
+    "httpsText": "https://",
+    "httpsAText": "A",
+    "httpsLockText": "lock",
+    "httpsDetailText": "means you’ve safely connected to the .gov website. Share sensitive information only on official, secure websites. "
+  }
+}
