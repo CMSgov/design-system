@@ -109,12 +109,11 @@ const ButtonVariationsTable = ({ theme }: ButtonVariationsTableProps) => {
         <TableBody>
           <TableRow>
             <TableCell component="th">
-              Outline
-              <small>(Default)</small>
+              Outline <small>(Default)</small>
             </TableCell>
-            <TableCell>{b(<Button>Default</Button>, uses?.outline?.main?.onLight)}</TableCell>
+            <TableCell>{b(<Button>Outline</Button>, uses?.outline?.main?.onLight)}</TableCell>
             <TableCell>
-              {b(<Button isAlternate>Alternate</Button>, uses?.outline?.alternate?.onLight)}
+              {b(<Button isAlternate>Outline alternate</Button>, uses?.outline?.alternate?.onLight)}
             </TableCell>
           </TableRow>
           <TableRow>
@@ -163,13 +162,12 @@ const ButtonVariationsTable = ({ theme }: ButtonVariationsTableProps) => {
         <TableBody>
           <TableRow>
             <TableCell component="th">
-              Outline
-              <small>(Default)</small>
+              Outline <small>(Default)</small>
             </TableCell>
             <TableCell className="ds-base--inverse">
               {b(
                 <Button onDark>
-                  Default <span className="ds-u-visibility--screen-reader">on dark</span>
+                  Outline <span className="ds-u-visibility--screen-reader">on dark</span>
                 </Button>,
                 uses?.outline?.main?.onDark
               )}
@@ -177,7 +175,7 @@ const ButtonVariationsTable = ({ theme }: ButtonVariationsTableProps) => {
             <TableCell className="ds-base--inverse">
               {b(
                 <Button isAlternate onDark>
-                  Alternate <span className="ds-u-visibility--screen-reader">on dark</span>
+                  Outline alternate <span className="ds-u-visibility--screen-reader">on dark</span>
                 </Button>,
                 uses?.outline?.alternate?.onDark
               )}
