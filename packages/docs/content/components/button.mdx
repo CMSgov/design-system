@@ -27,14 +27,14 @@ Use buttons to signal actions.
   <colgroup span="2" />
   <TableHead>
     <TableRow>
-      <TableCell colSpan="2" scope="colgroup">Default</TableCell>
-      <TableCell colSpan="2" scope="colgroup">Alternate</TableCell>
+      <TableCell colSpan="2" scope="colgroup">On light</TableCell>
+      <TableCell colSpan="2" scope="colgroup">On dark</TableCell>
     </TableRow>
     <TableRow>
-      <TableCell scope="col">On light</TableCell>
-      <TableCell scope="col">On dark</TableCell>
-      <TableCell scope="col">On light</TableCell>
-      <TableCell scope="col">On dark</TableCell>
+      <TableCell scope="col">Default</TableCell>
+      <TableCell scope="col">Alternate</TableCell>
+      <TableCell scope="col">Default</TableCell>
+      <TableCell scope="col">Alternate</TableCell>
     </TableRow>
   </TableHead>
   <TableBody>
@@ -134,92 +134,25 @@ Use buttons to signal actions.
   </TableBody>
 </Table>
 
-## Button Size Variations
+## Customization
+
+### Changing the size
+
+Buttons can exist in two alternative sizes: "big" or "small". See the example below.
 
 <EmbeddedExample>
   <div>
-    <Button className="ds-u-margin-right--1" size="small">
-      Small
-    </Button>
-    <Button className="ds-u-margin-right--1">Default</Button>
     <Button className="ds-u-margin-right--1" size="big">
       Big
     </Button>
-  </div>
-</EmbeddedExample>
-
-## Inverse Buttons
-
-<EmbeddedExample>
-  <div className="ds-u-fill--background-inverse ds-u-padding--2">
-    <div className="ds-u-margin-bottom--2">
-      <Button className="ds-u-margin-right--1" inversed>
-        Default
-      </Button>
-      <Button className="ds-c-button--hover ds-u-margin-right--1" inversed>
-        Hover
-      </Button>
-      <Button className="ds-c-button--active ds-u-margin-right--1" inversed>
-        Active
-      </Button>
-      <Button className="ds-c-button--focus ds-u-margin-right--1" inversed>
-        Focus
-      </Button>
-      <Button disabled inversed>
-        Disabled
-      </Button>
-    </div>
-    <div>
-      <Button className="ds-u-margin-right--1" variation="transparent" inversed>
-        Default
-      </Button>
-      <Button className="ds-c-button--hover ds-u-margin-right--1" variation="transparent" inversed>
-        Hover
-      </Button>
-      <Button className="ds-c-button--active ds-u-margin-right--1" variation="transparent" inversed>
-        Active
-      </Button>
-      <Button className="ds-c-button--focus ds-u-margin-right--1" variation="transparent" inversed>
-        Focus
-      </Button>
-      <Button disabled variation="transparent" inversed>
-        Disabled
-      </Button>
-    </div>
-  </div>
-</EmbeddedExample>
-
-## Danger Button
-
-<Alert
-  heading="Deprecated"
-  variation="error"
-  className="ds-u-margin-bottom--2 ds-u-font-size--small"
->
-  <p class="ds-c-alert__text">Do not use.</p>
-</Alert>
-
-<EmbeddedExample>
-  <div>
-    <Button className="ds-u-margin-right--1" variation="danger">
-      Default
-    </Button>
-    <Button className="ds-c-button--hover ds-u-margin-right--1" variation="danger">
-      Hover
-    </Button>
-    <Button className="ds-c-button--active ds-u-margin-right--1" variation="danger">
-      Active
-    </Button>
-    <Button className="ds-c-button--focus ds-u-margin-right--1" variation="danger">
-      Focus
-    </Button>
-    <Button disabled variation="danger">
-      Disabled
+    <Button className="ds-u-margin-right--1">Default</Button>
+    <Button className="ds-u-margin-right--1" size="small">
+      Small
     </Button>
   </div>
 </EmbeddedExample>
 
-## Button icons
+### Adding icons
 
 - Add an inline SVG icon and it will become the same color as the button text. For the crispest icon rendering, ensure the icon has a square `viewBox` with values that are multiples of `8` (ie. `24x24`).
 - Use the margin utility class to add spacing between the icon and button text.
