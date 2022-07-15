@@ -15,7 +15,6 @@ const fileNameFormatter = ({ configurationName, kind, story }) =>
   slugify(`${env}${configurationName} ${kind} ${story}`, SLUGIFY_OPTIONS);
 
 module.exports = {
-  chromeSelector: '#root > div > *',
   fileNameFormatter,
   configurations: {
     'chrome.laptop': {
