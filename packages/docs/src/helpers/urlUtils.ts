@@ -33,3 +33,22 @@ export function getQueryParamValue(value: string) {
     return null;
   }
 }
+
+/**
+ * setQueryParam
+ * @param name - name of query parameter
+ * @param value - value of query parameter
+ * @param reloadPage - describes if the page should reload after update, or update quietly.
+ */
+export function setQueryParam(name: string, value: string, reloadPage: boolean = false) {
+  if (typeof window !== 'undefined') {
+    const url = new URL(window.location.toString());
+    url.searchParams.set(name, value);
+
+    if (reloadPage) {
+      window.location.search = url.searchParams.toString();
+    } else {
+      window.history.pushState({}, '', url);
+    }
+  }
+}

@@ -81,7 +81,9 @@ const StorybookExample = ({
       if (rootEl) {
         // unwrap the theme layer div from the example code so it's not shown in example
         const outerDiv = rootEl.getElementsByTagName('div')[0];
-        setiFrameHtml(outerDiv.innerHTML);
+        if (outerDiv) {
+          setiFrameHtml(outerDiv.innerHTML);
+        }
       }
     }
 

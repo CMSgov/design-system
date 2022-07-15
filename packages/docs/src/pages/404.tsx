@@ -3,11 +3,11 @@ import { graphql } from 'gatsby';
 
 import Layout from '../components/Layout';
 import { MdxQuery } from '../helpers/graphQLTypes';
-import { getTheme } from '../helpers/themeUtils';
+import useTheme from '../helpers/useTheme';
 import ContentRenderer from '../components/ContentRenderer';
 
 const NotFoundPage = ({ data, location }: MdxQuery) => {
-  const theme = getTheme();
+  const theme = useTheme();
   return (
     <Layout pageName="Page not found" location={location} theme={theme}>
       <ContentRenderer data={data.mdx.body} theme={theme} />
