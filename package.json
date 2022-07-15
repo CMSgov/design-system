@@ -44,7 +44,7 @@
     "build-storybook": "STORYBOOK_DS=core build-storybook -o storybook-static",
     "build-storybook:healthcare": "STORYBOOK_DS=healthcare build-storybook -o storybook-static",
     "build-storybook:medicare": "STORYBOOK_DS=medicare build-storybook -o storybook-static",
-    "build-storybook:gatsby": "STORYBOOK_DS=all build-storybook -o packages/docs/static/storybook",
+    "build-storybook:gatsby": "STORYBOOK_DS=gatsby build-storybook -o packages/docs/static/storybook",
     "gh-pages:healthcare": "yarn build-docs:healthcare && gh-pages -d './packages/ds-healthcare-gov/docs/dist' --dest 'healthcare'",
     "gh-pages:medicare": "yarn build-docs:medicare && gh-pages -d './packages/ds-medicare-gov/docs/dist' --dest 'medicare'",
     "deploy-demo": "./scripts/deploy-demo.sh",
