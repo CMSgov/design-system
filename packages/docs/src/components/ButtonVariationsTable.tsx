@@ -92,132 +92,138 @@ const ButtonVariationsTable = ({ theme }: ButtonVariationsTableProps) => {
   }
 
   return (
-    <Table
-      stackable
-      stackableBreakpoint="md"
-      className="c-button-variations-table ds-u-margin-bottom--2"
-    >
-      <TableCaption>Table of button variations</TableCaption>
-      <TableHead>
-        <TableRow>
-          <TableCell scope="col">Context</TableCell>
-          <TableCell scope="col">Variation</TableCell>
-          <TableCell scope="col" className="ds-u-font-weight--normal">
-            Main <small>(Default)</small>
-          </TableCell>
-          <TableCell scope="col" className="ds-u-font-weight--normal">
-            Alternate
-          </TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        <TableRow>
-          <TableCell rowSpan={3} component="th">
-            On light
-          </TableCell>
-          <TableCell component="th">
-            Outline <br />
-            <small>(Default)</small>
-          </TableCell>
-          <TableCell>{b(<Button>Default</Button>, uses?.outline?.main?.onLight)}</TableCell>
-          <TableCell>
-            {b(<Button isAlternate>Alternate</Button>, uses?.outline?.alternate?.onLight)}
-          </TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell component="th">Solid</TableCell>
-          <TableCell>
-            {b(<Button variation="solid">Solid</Button>, uses?.solid?.main?.onLight)}
-          </TableCell>
-          <TableCell>
-            {b(
-              <Button variation="solid" isAlternate>
-                Solid alternate
-              </Button>,
-              uses?.solid?.alternate?.onLight
-            )}
-          </TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell component="th">Ghost</TableCell>
-          <TableCell>
-            {b(<Button variation="ghost">Ghost</Button>, uses?.ghost?.main?.onLight)}
-          </TableCell>
-          <TableCell>
-            {b(
-              <Button variation="ghost" isAlternate>
-                Ghost alternate
-              </Button>,
-              uses?.ghost?.alternate?.onLight
-            )}
-          </TableCell>
-        </TableRow>
-
-        <TableRow>
-          <TableCell rowSpan={3} component="th">
-            On dark
-          </TableCell>
-          <TableCell component="th">
-            Outline <br />
-            <small>(Default)</small>
-          </TableCell>
-          <TableCell className="ds-base--inverse">
-            {b(
-              <Button onDark>
-                Default <span className="ds-u-visibility--screen-reader">on dark</span>
-              </Button>,
-              uses?.outline?.main?.onDark
-            )}
-          </TableCell>
-          <TableCell className="ds-base--inverse">
-            {b(
-              <Button isAlternate onDark>
-                Alternate <span className="ds-u-visibility--screen-reader">on dark</span>
-              </Button>,
-              uses?.outline?.alternate?.onDark
-            )}
-          </TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell component="th">Solid</TableCell>
-          <TableCell className="ds-base--inverse">
-            {b(
-              <Button variation="solid" onDark>
-                Solid <span className="ds-u-visibility--screen-reader">on dark</span>
-              </Button>,
-              uses?.solid?.main?.onDark
-            )}
-          </TableCell>
-          <TableCell className="ds-base--inverse">
-            {b(
-              <Button variation="solid" isAlternate onDark>
-                Solid alternate <span className="ds-u-visibility--screen-reader">on dark</span>
-              </Button>,
-              uses?.solid?.alternate?.onDark
-            )}
-          </TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell component="th">Ghost</TableCell>
-          <TableCell className="ds-base--inverse">
-            {b(
-              <Button variation="ghost" onDark>
-                Ghost <span className="ds-u-visibility--screen-reader">on dark</span>
-              </Button>,
-              uses?.ghost?.main?.onDark
-            )}
-          </TableCell>
-          <TableCell className="ds-base--inverse">
-            {b(
-              <Button variation="ghost" isAlternate onDark>
-                Ghost alternate <span className="ds-u-visibility--screen-reader">on dark</span>
-              </Button>,
-              uses?.ghost?.alternate?.onDark
-            )}
-          </TableCell>
-        </TableRow>
-      </TableBody>
-    </Table>
+    <>
+      <Table stackable stackableBreakpoint="md" className="c-button-variations-table">
+        <TableCaption>Table of button variations on light background</TableCaption>
+        <TableHead>
+          <TableRow>
+            <TableCell scope="col">Variation</TableCell>
+            <TableCell scope="col" className="ds-u-font-weight--normal">
+              Main <small>(Default)</small>
+            </TableCell>
+            <TableCell scope="col" className="ds-u-font-weight--normal">
+              Alternate
+            </TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <TableRow>
+            <TableCell component="th">
+              Outline
+              <small>(Default)</small>
+            </TableCell>
+            <TableCell>{b(<Button>Default</Button>, uses?.outline?.main?.onLight)}</TableCell>
+            <TableCell>
+              {b(<Button isAlternate>Alternate</Button>, uses?.outline?.alternate?.onLight)}
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell component="th">Solid</TableCell>
+            <TableCell>
+              {b(<Button variation="solid">Solid</Button>, uses?.solid?.main?.onLight)}
+            </TableCell>
+            <TableCell>
+              {b(
+                <Button variation="solid" isAlternate>
+                  Solid alternate
+                </Button>,
+                uses?.solid?.alternate?.onLight
+              )}
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell component="th">Ghost</TableCell>
+            <TableCell>
+              {b(<Button variation="ghost">Ghost</Button>, uses?.ghost?.main?.onLight)}
+            </TableCell>
+            <TableCell>
+              {b(
+                <Button variation="ghost" isAlternate>
+                  Ghost alternate
+                </Button>,
+                uses?.ghost?.alternate?.onLight
+              )}
+            </TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+      <Table stackable stackableBreakpoint="md" className="c-button-variations-table">
+        <TableCaption>Table of button variations on dark background</TableCaption>
+        <TableHead>
+          <TableRow>
+            <TableCell scope="col">Variation</TableCell>
+            <TableCell scope="col" className="ds-u-font-weight--normal">
+              Main <small>(Default)</small>
+            </TableCell>
+            <TableCell scope="col" className="ds-u-font-weight--normal">
+              Alternate
+            </TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <TableRow>
+            <TableCell component="th">
+              Outline
+              <small>(Default)</small>
+            </TableCell>
+            <TableCell className="ds-base--inverse">
+              {b(
+                <Button onDark>
+                  Default <span className="ds-u-visibility--screen-reader">on dark</span>
+                </Button>,
+                uses?.outline?.main?.onDark
+              )}
+            </TableCell>
+            <TableCell className="ds-base--inverse">
+              {b(
+                <Button isAlternate onDark>
+                  Alternate <span className="ds-u-visibility--screen-reader">on dark</span>
+                </Button>,
+                uses?.outline?.alternate?.onDark
+              )}
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell component="th">Solid</TableCell>
+            <TableCell className="ds-base--inverse">
+              {b(
+                <Button variation="solid" onDark>
+                  Solid <span className="ds-u-visibility--screen-reader">on dark</span>
+                </Button>,
+                uses?.solid?.main?.onDark
+              )}
+            </TableCell>
+            <TableCell className="ds-base--inverse">
+              {b(
+                <Button variation="solid" isAlternate onDark>
+                  Solid alternate <span className="ds-u-visibility--screen-reader">on dark</span>
+                </Button>,
+                uses?.solid?.alternate?.onDark
+              )}
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell component="th">Ghost</TableCell>
+            <TableCell className="ds-base--inverse">
+              {b(
+                <Button variation="ghost" onDark>
+                  Ghost <span className="ds-u-visibility--screen-reader">on dark</span>
+                </Button>,
+                uses?.ghost?.main?.onDark
+              )}
+            </TableCell>
+            <TableCell className="ds-base--inverse">
+              {b(
+                <Button variation="ghost" isAlternate onDark>
+                  Ghost alternate <span className="ds-u-visibility--screen-reader">on dark</span>
+                </Button>,
+                uses?.ghost?.alternate?.onDark
+              )}
+            </TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </>
   );
 };
 
