@@ -3,19 +3,26 @@ title: Button
 relatedUswdsGuidance: components/buttons
 ---
 
-import { Alert, Button, ArrowIcon, TextInput, Table,
-TableCaption,
-TableHead,
-TableRow,
-TableBody,
-TableCell } from '@cmsgov/design-system';
+import {
+  Alert,
+  Button,
+  ArrowIcon,
+  CloseIcon,
+  TextInput,
+  Table,
+  TableCaption,
+  TableHead,
+  TableRow,
+  TableBody,
+  TableCell,
+} from '@cmsgov/design-system';
 
 Use buttons to signal actions.
 
 ## Variations
 
-<Table stackable stackableBreakpoint="md">
-  <TableCaption>Button variations</TableCaption>
+<Table stackable stackableBreakpoint="md" className="ds-u-margin-bottom--2">
+  <TableCaption>Table of button variations</TableCaption>
   <colgroup span="2" />
   <colgroup span="2" />
   <TableHead>
@@ -35,122 +42,97 @@ Use buttons to signal actions.
       <TableCell>
         <Button>Default</Button>
       </TableCell>
-      <TableCell className="ds-u-fill--base">
-        <Button onDark>Default on dark</Button>
-      </TableCell>
       <TableCell>
-        <Button isAlternate>Alternate</Button>
+        <ThemeContent onlyThemes={['healthcare', 'medicare']}>
+          <CloseIcon className="ds-c-icon-color--error" /> Unused
+        </ThemeContent>
+        <ThemeContent neverThemes={['healthcare', 'medicare']}>
+          <Button isAlternate>Alternate</Button>
+        </ThemeContent>
       </TableCell>
-      <TableCell className="ds-u-fill--base">
-        <Button isAlternate onDark>Alternate on dark</Button>
+      <TableCell className="ds-base--inverse">
+        <ThemeContent onlyThemes={['healthcare', 'medicare']}>
+          <CloseIcon className="ds-c-icon-color--error" /> Unused
+        </ThemeContent><ThemeContent neverThemes={['healthcare', 'medicare']}>
+          <Button onDark>Default on dark</Button>
+        </ThemeContent>
+      </TableCell>
+      <TableCell className="ds-base--inverse">
+        <ThemeContent onlyThemes={['healthcare', 'medicare']}>
+          <CloseIcon className="ds-c-icon-color--error" /> Unused
+        </ThemeContent><ThemeContent neverThemes={['healthcare', 'medicare']}>
+          <Button isAlternate onDark>
+            Alternate on dark
+          </Button>
+        </ThemeContent>
       </TableCell>
     </TableRow>
     <TableRow>
       <TableCell>
         <Button variation="solid">Solid</Button>
       </TableCell>
-      <TableCell className="ds-u-fill--base">
-        <Button variation="solid" onDark>Solid on dark</Button>
-      </TableCell>
       <TableCell>
-        <Button variation="solid" isAlternate>Solid alternate</Button>
+        <ThemeContent onlyThemes={['healthcare']}>
+          <CloseIcon className="ds-c-icon-color--error" /> Unused
+        </ThemeContent><ThemeContent neverThemes={['healthcare']}>
+          <Button variation="solid" isAlternate>
+            Solid alternate
+          </Button>
+        </ThemeContent>
       </TableCell>
-      <TableCell className="ds-u-fill--base">
-        <Button variation="solid" isAlternate onDark>Solid alternate on dark</Button>
+      <TableCell className="ds-base--inverse">
+        <ThemeContent onlyThemes={['healthcare']}>
+          <CloseIcon className="ds-c-icon-color--error" /> Unused
+        </ThemeContent><ThemeContent neverThemes={['healthcare']}>
+          <Button variation="solid" onDark>
+            Solid on dark
+          </Button>
+        </ThemeContent>
+      </TableCell>
+      <TableCell className="ds-base--inverse">
+        <ThemeContent onlyThemes={['healthcare']}>
+          <CloseIcon className="ds-c-icon-color--error" /> Unused
+        </ThemeContent><ThemeContent neverThemes={['healthcare']}>
+          <Button variation="solid" isAlternate onDark>
+            Solid alternate on dark
+          </Button>
+        </ThemeContent>
       </TableCell>
     </TableRow>
     <TableRow>
       <TableCell>
         <Button variation="ghost">Ghost</Button>
       </TableCell>
-      <TableCell className="ds-u-fill--base">
-        <Button variation="ghost" onDark>Ghost on dark</Button>
-      </TableCell>
       <TableCell>
-        <Button variation="ghost" isAlternate>Ghost alternate</Button>
+        <ThemeContent onlyThemes={['healthcare', 'medicare']}>
+          <CloseIcon className="ds-c-icon-color--error" /> Unused
+        </ThemeContent><ThemeContent neverThemes={['healthcare', 'medicare']}>
+          <Button variation="ghost" isAlternate>
+            Ghost alternate
+          </Button>
+        </ThemeContent>
       </TableCell>
-      <TableCell className="ds-u-fill--base">
-        <Button variation="ghost" isAlternate onDark>Ghost alternate on dark</Button>
+      <TableCell className="ds-base--inverse">
+        <ThemeContent onlyThemes={['healthcare']}>
+          <CloseIcon className="ds-c-icon-color--error" /> Unused
+        </ThemeContent><ThemeContent neverThemes={['healthcare']}>
+          <Button variation="ghost" onDark>
+            Ghost on dark
+          </Button>
+        </ThemeContent>
+      </TableCell>
+      <TableCell className="ds-base--inverse">
+        <ThemeContent onlyThemes={['healthcare', 'medicare']}>
+          <CloseIcon className="ds-c-icon-color--error" /> Unused
+        </ThemeContent><ThemeContent neverThemes={['healthcare', 'medicare']}>
+          <Button variation="ghost" isAlternate onDark>
+            Ghost alternate on dark
+          </Button>
+        </ThemeContent>
       </TableCell>
     </TableRow>
   </TableBody>
 </Table>
-
-<EmbeddedExample>
-  <div>
-    <Button className="ds-u-margin-right--1">Default</Button>
-    <Button className="ds-c-button--hover ds-u-margin-right--1">Hover</Button>
-    <Button className="ds-c-button--active ds-u-margin-right--1">Active</Button>
-    <Button className="ds-c-button--focus ds-u-margin-right--1">Focus</Button>
-    <Button disabled>Disabled</Button>
-  </div>
-</EmbeddedExample>
-
-## Primary Button
-
-<EmbeddedExample>
-  <div>
-    <Button className="ds-u-margin-right--1" variation="primary">
-      Default
-    </Button>
-    <Button className="ds-c-button--hover ds-u-margin-right--1" variation="primary">
-      Hover
-    </Button>
-    <Button className="ds-c-button--active ds-u-margin-right--1" variation="primary">
-      Active
-    </Button>
-    <Button className="ds-c-button--focus ds-u-margin-right--1" variation="primary">
-      Focus
-    </Button>
-    <Button disabled variation="primary">
-      Disabled
-    </Button>
-  </div>
-</EmbeddedExample>
-
-## Success Button
-
-<EmbeddedExample>
-  <div>
-    <Button className="ds-u-margin-right--1" variation="success">
-      Default
-    </Button>
-    <Button className="ds-c-button--hover ds-u-margin-right--1" variation="success">
-      Hover
-    </Button>
-    <Button className="ds-c-button--active ds-u-margin-right--1" variation="success">
-      Active
-    </Button>
-    <Button className="ds-c-button--focus ds-u-margin-right--1" variation="success">
-      Focus
-    </Button>
-    <Button disabled variation="success">
-      Disabled
-    </Button>
-  </div>
-</EmbeddedExample>
-
-## Transparent Button
-
-<EmbeddedExample>
-  <div>
-    <Button className="ds-u-margin-right--1" variation="transparent">
-      Default
-    </Button>
-    <Button className="ds-c-button--hover ds-u-margin-right--1" variation="transparent">
-      Hover
-    </Button>
-    <Button className="ds-c-button--active ds-u-margin-right--1" variation="transparent">
-      Active
-    </Button>
-    <Button className="ds-c-button--focus ds-u-margin-right--1" variation="transparent">
-      Focus
-    </Button>
-    <Button disabled variation="transparent">
-      Disabled
-    </Button>
-  </div>
-</EmbeddedExample>
 
 ## Button Size Variations
 
@@ -335,9 +317,7 @@ you could pass in a `target` prop to pass to the rendered anchor element.
 
 The following Sass variables can be overridden to customize Button components:
 
-<ComponentThemeOptions
-  componentname="button"
-/>
+<ComponentThemeOptions componentname="button" />
 
 ### Learn more
 
