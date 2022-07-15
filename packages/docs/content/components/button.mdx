@@ -5,9 +5,9 @@ relatedUswdsGuidance: components/buttons
 
 import {
   Alert,
-  Button,
   ArrowIcon,
-  CloseIcon,
+  Badge,
+  Button,
   TextInput,
   Table,
   TableCaption,
@@ -44,7 +44,7 @@ Use buttons to signal actions.
       </TableCell>
       <TableCell>
         <ThemeContent onlyThemes={['healthcare', 'medicare']}>
-          <CloseIcon className="ds-c-icon-color--error" /> Unused
+          <Badge variation="alert">Unused</Badge>
         </ThemeContent>
         <ThemeContent neverThemes={['healthcare', 'medicare']}>
           <Button isAlternate>Alternate</Button>
@@ -52,14 +52,14 @@ Use buttons to signal actions.
       </TableCell>
       <TableCell className="ds-base--inverse">
         <ThemeContent onlyThemes={['healthcare', 'medicare']}>
-          <CloseIcon className="ds-c-icon-color--error" /> Unused
+          <Badge variation="alert">Unused</Badge>
         </ThemeContent><ThemeContent neverThemes={['healthcare', 'medicare']}>
           <Button onDark>Default on dark</Button>
         </ThemeContent>
       </TableCell>
       <TableCell className="ds-base--inverse">
         <ThemeContent onlyThemes={['healthcare', 'medicare']}>
-          <CloseIcon className="ds-c-icon-color--error" /> Unused
+          <Badge variation="alert">Unused</Badge>
         </ThemeContent><ThemeContent neverThemes={['healthcare', 'medicare']}>
           <Button isAlternate onDark>
             Alternate on dark
@@ -73,7 +73,7 @@ Use buttons to signal actions.
       </TableCell>
       <TableCell>
         <ThemeContent onlyThemes={['healthcare']}>
-          <CloseIcon className="ds-c-icon-color--error" /> Unused
+          <Badge variation="alert">Unused</Badge>
         </ThemeContent><ThemeContent neverThemes={['healthcare']}>
           <Button variation="solid" isAlternate>
             Solid alternate
@@ -82,7 +82,7 @@ Use buttons to signal actions.
       </TableCell>
       <TableCell className="ds-base--inverse">
         <ThemeContent onlyThemes={['healthcare']}>
-          <CloseIcon className="ds-c-icon-color--error" /> Unused
+          <Badge variation="alert">Unused</Badge>
         </ThemeContent><ThemeContent neverThemes={['healthcare']}>
           <Button variation="solid" onDark>
             Solid on dark
@@ -91,7 +91,7 @@ Use buttons to signal actions.
       </TableCell>
       <TableCell className="ds-base--inverse">
         <ThemeContent onlyThemes={['healthcare']}>
-          <CloseIcon className="ds-c-icon-color--error" /> Unused
+          <Badge variation="alert">Unused</Badge>
         </ThemeContent><ThemeContent neverThemes={['healthcare']}>
           <Button variation="solid" isAlternate onDark>
             Solid alternate on dark
@@ -105,7 +105,7 @@ Use buttons to signal actions.
       </TableCell>
       <TableCell>
         <ThemeContent onlyThemes={['healthcare', 'medicare']}>
-          <CloseIcon className="ds-c-icon-color--error" /> Unused
+          <Badge variation="alert">Unused</Badge>
         </ThemeContent><ThemeContent neverThemes={['healthcare', 'medicare']}>
           <Button variation="ghost" isAlternate>
             Ghost alternate
@@ -114,7 +114,7 @@ Use buttons to signal actions.
       </TableCell>
       <TableCell className="ds-base--inverse">
         <ThemeContent onlyThemes={['healthcare']}>
-          <CloseIcon className="ds-c-icon-color--error" /> Unused
+          <Badge variation="alert">Unused</Badge>
         </ThemeContent><ThemeContent neverThemes={['healthcare']}>
           <Button variation="ghost" onDark>
             Ghost on dark
@@ -123,7 +123,7 @@ Use buttons to signal actions.
       </TableCell>
       <TableCell className="ds-base--inverse">
         <ThemeContent onlyThemes={['healthcare', 'medicare']}>
-          <CloseIcon className="ds-c-icon-color--error" /> Unused
+          <Badge variation="alert">Unused</Badge>
         </ThemeContent><ThemeContent neverThemes={['healthcare', 'medicare']}>
           <Button variation="ghost" isAlternate onDark>
             Ghost alternate on dark
