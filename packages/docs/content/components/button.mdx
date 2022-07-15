@@ -6,133 +6,15 @@ relatedUswdsGuidance: components/buttons
 import {
   Alert,
   ArrowIcon,
-  Badge,
   Button,
-  TextInput,
-  Table,
-  TableCaption,
-  TableHead,
-  TableRow,
-  TableBody,
-  TableCell,
+  TextInput
 } from '@cmsgov/design-system';
 
 Use buttons to signal actions.
 
 ## Variations
 
-<Table stackable stackableBreakpoint="md" className="ds-u-margin-bottom--2">
-  <TableCaption>Table of button variations</TableCaption>
-  <colgroup span="2" />
-  <colgroup span="2" />
-  <TableHead>
-    <TableRow>
-      <TableCell colSpan="2" scope="colgroup">On light</TableCell>
-      <TableCell colSpan="2" scope="colgroup">On dark</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell scope="col">Default</TableCell>
-      <TableCell scope="col">Alternate</TableCell>
-      <TableCell scope="col">Default</TableCell>
-      <TableCell scope="col">Alternate</TableCell>
-    </TableRow>
-  </TableHead>
-  <TableBody>
-    <TableRow>
-      <TableCell>
-        <Button>Default</Button>
-      </TableCell>
-      <TableCell>
-        <ThemeContent onlyThemes={['healthcare', 'medicare']}>
-          <Badge variation="alert">Unused</Badge>
-        </ThemeContent>
-        <ThemeContent neverThemes={['healthcare', 'medicare']}>
-          <Button isAlternate>Alternate</Button>
-        </ThemeContent>
-      </TableCell>
-      <TableCell className="ds-base--inverse">
-        <ThemeContent onlyThemes={['healthcare', 'medicare']}>
-          <Badge variation="alert">Unused</Badge>
-        </ThemeContent><ThemeContent neverThemes={['healthcare', 'medicare']}>
-          <Button onDark>Default on dark</Button>
-        </ThemeContent>
-      </TableCell>
-      <TableCell className="ds-base--inverse">
-        <ThemeContent onlyThemes={['healthcare', 'medicare']}>
-          <Badge variation="alert">Unused</Badge>
-        </ThemeContent><ThemeContent neverThemes={['healthcare', 'medicare']}>
-          <Button isAlternate onDark>
-            Alternate on dark
-          </Button>
-        </ThemeContent>
-      </TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>
-        <Button variation="solid">Solid</Button>
-      </TableCell>
-      <TableCell>
-        <ThemeContent onlyThemes={['healthcare']}>
-          <Badge variation="alert">Unused</Badge>
-        </ThemeContent><ThemeContent neverThemes={['healthcare']}>
-          <Button variation="solid" isAlternate>
-            Solid alternate
-          </Button>
-        </ThemeContent>
-      </TableCell>
-      <TableCell className="ds-base--inverse">
-        <ThemeContent onlyThemes={['healthcare']}>
-          <Badge variation="alert">Unused</Badge>
-        </ThemeContent><ThemeContent neverThemes={['healthcare']}>
-          <Button variation="solid" onDark>
-            Solid on dark
-          </Button>
-        </ThemeContent>
-      </TableCell>
-      <TableCell className="ds-base--inverse">
-        <ThemeContent onlyThemes={['healthcare']}>
-          <Badge variation="alert">Unused</Badge>
-        </ThemeContent><ThemeContent neverThemes={['healthcare']}>
-          <Button variation="solid" isAlternate onDark>
-            Solid alternate on dark
-          </Button>
-        </ThemeContent>
-      </TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>
-        <Button variation="ghost">Ghost</Button>
-      </TableCell>
-      <TableCell>
-        <ThemeContent onlyThemes={['healthcare', 'medicare']}>
-          <Badge variation="alert">Unused</Badge>
-        </ThemeContent><ThemeContent neverThemes={['healthcare', 'medicare']}>
-          <Button variation="ghost" isAlternate>
-            Ghost alternate
-          </Button>
-        </ThemeContent>
-      </TableCell>
-      <TableCell className="ds-base--inverse">
-        <ThemeContent onlyThemes={['healthcare']}>
-          <Badge variation="alert">Unused</Badge>
-        </ThemeContent><ThemeContent neverThemes={['healthcare']}>
-          <Button variation="ghost" onDark>
-            Ghost on dark
-          </Button>
-        </ThemeContent>
-      </TableCell>
-      <TableCell className="ds-base--inverse">
-        <ThemeContent onlyThemes={['healthcare', 'medicare']}>
-          <Badge variation="alert">Unused</Badge>
-        </ThemeContent><ThemeContent neverThemes={['healthcare', 'medicare']}>
-          <Button variation="ghost" isAlternate onDark>
-            Ghost alternate on dark
-          </Button>
-        </ThemeContent>
-      </TableCell>
-    </TableRow>
-  </TableBody>
-</Table>
+<ButtonVariationsTable />
 
 ## Customization
 
