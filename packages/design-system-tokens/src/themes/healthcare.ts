@@ -10,6 +10,10 @@ export const themeColors: ColorTokens = {
   'white':                      color['white-solid'],
   'black':                      color['black-solid'],
   'transparent':                color['transparent'],
+  'transparent-black-alpha50':  color['black-alpha50'],
+  'transparent-black-alpha25':  color['black-alpha25'],
+  'transparent-white-alpha50':  color['white-alpha50'],
+  'transparent-white-alpha25':  color['white-alpha25'],
   //
   'background':                 color['white-solid'],
   'background-dialog':          color['white-solid'],
@@ -23,10 +27,10 @@ export const themeColors: ColorTokens = {
   'border-dark':                color['lapis-800'],
   'border-inverse':             color['white-solid'],
   //
-  'coolblue':                  color['sapphire-600'],
-  'coolblue-light':            color['sapphire-500'],
-  'coolblue-lighter':          color['sapphire-200'],
-  'coolblue-lightest':         color['sapphire-50'],
+  'coolblue':                   color['sapphire-600'],
+  'coolblue-light':             color['sapphire-500'],
+  'coolblue-lighter':           color['sapphire-200'],
+  'coolblue-lightest':          color['sapphire-50'],
   //
   'error':                      color['rose-500'],
   'error-dark':                 color['rose-600'],
