@@ -98,29 +98,53 @@ const ButtonVariationsTable = ({ theme }: ButtonVariationsTableProps) => {
       className="c-button-variations-table ds-u-margin-bottom--2"
     >
       <TableCaption>Table of button variations</TableCaption>
-      <colgroup span={2} />
-      <colgroup span={2} />
       <TableHead>
         <TableRow>
-          <TableCell colSpan={2} scope="colgroup">
-            On light
-          </TableCell>
-          <TableCell colSpan={2} scope="colgroup">
-            On dark
-          </TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell scope="col">Default</TableCell>
-          <TableCell scope="col">Alternate</TableCell>
+          <col />
           <TableCell scope="col">Default</TableCell>
           <TableCell scope="col">Alternate</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
         <TableRow>
+          <TableCell rowSpan={3} component="th">
+            On light
+          </TableCell>
           <TableCell>{b(<Button>Default</Button>, uses?.outline?.main?.onLight)}</TableCell>
           <TableCell>
             {b(<Button isAlternate>Alternate</Button>, uses?.outline?.alternate?.onLight)}
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>
+            {b(<Button variation="solid">Solid</Button>, uses?.solid?.main?.onLight)}
+          </TableCell>
+          <TableCell>
+            {b(
+              <Button variation="solid" isAlternate>
+                Solid alternate
+              </Button>,
+              uses?.solid?.alternate?.onLight
+            )}
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>
+            {b(<Button variation="ghost">Ghost</Button>, uses?.ghost?.main?.onLight)}
+          </TableCell>
+          <TableCell>
+            {b(
+              <Button variation="ghost" isAlternate>
+                Ghost alternate
+              </Button>,
+              uses?.ghost?.alternate?.onLight
+            )}
+          </TableCell>
+        </TableRow>
+
+        <TableRow>
+          <TableCell rowSpan={3} component="th">
+            On dark
           </TableCell>
           <TableCell className="ds-base--inverse">
             {b(
@@ -140,17 +164,6 @@ const ButtonVariationsTable = ({ theme }: ButtonVariationsTableProps) => {
           </TableCell>
         </TableRow>
         <TableRow>
-          <TableCell>
-            {b(<Button variation="solid">Solid</Button>, uses?.solid?.main?.onLight)}
-          </TableCell>
-          <TableCell>
-            {b(
-              <Button variation="solid" isAlternate>
-                Solid alternate
-              </Button>,
-              uses?.solid?.alternate?.onLight
-            )}
-          </TableCell>
           <TableCell className="ds-base--inverse">
             {b(
               <Button variation="solid" onDark>
@@ -169,17 +182,6 @@ const ButtonVariationsTable = ({ theme }: ButtonVariationsTableProps) => {
           </TableCell>
         </TableRow>
         <TableRow>
-          <TableCell>
-            {b(<Button variation="ghost">Ghost</Button>, uses?.ghost?.main?.onLight)}
-          </TableCell>
-          <TableCell>
-            {b(
-              <Button variation="ghost" isAlternate>
-                Ghost alternate
-              </Button>,
-              uses?.ghost?.alternate?.onLight
-            )}
-          </TableCell>
           <TableCell className="ds-base--inverse">
             {b(
               <Button variation="ghost" onDark>
