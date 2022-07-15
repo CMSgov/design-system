@@ -35,7 +35,7 @@ export default {
   },
 };
 
-const Template = ({ data, ...args }) => <MonthPicker {...args} />;
+const Template = (args) => <MonthPicker {...args} />;
 
 export const DefaultMonthPicker = Template.bind({});
 DefaultMonthPicker.args = {

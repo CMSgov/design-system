@@ -17,12 +17,11 @@ const componentThemes = {
 };
 const masterThemes = { core: CoreTheme, healthcare: HealthcareTheme, medicare: MedicareTheme };
 
-type ThemeNames = 'core' | 'healthcare' | 'medicare';
-export interface ComponentThemeOptionsProps {
+interface ComponentThemeOptionsProps {
   /**
-   * One of the availabe theme names in lowercase as presented in ThemeNames
+   * Current theme name
    */
-  theme: ThemeNames;
+  theme: string;
   /**
    * The name of the component to render the customization table for
    */
@@ -33,7 +32,7 @@ export interface ComponentThemeOptionsProps {
  * Looks up the value found in the component mapping and returns where it maps to along with the specific
  * theme color variable name and swatch for colors.
  */
-const lookupThemeValue = (theme: ThemeNames, value: string): any => {
+const lookupThemeValue = (theme: string, value: string): any => {
   const keyName = _.findKey(masterThemes[theme].color, (v) => String(v) === value);
   const elem = keyName ? (
     <span>
@@ -54,8 +53,6 @@ const lookupThemeValue = (theme: ThemeNames, value: string): any => {
 /**
  * Takes a js object with name-value pairs and creates a list of configuration configuration
  * options with values from the token component theme loaded.
- *
- * @TODO: when theming is added, update to useEffect on theme change to get new values
  */
 const ComponentThemeOptions = ({ theme, componentname }: ComponentThemeOptionsProps) => {
   componentname = componentname.toLowerCase();

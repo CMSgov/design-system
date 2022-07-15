@@ -1,6 +1,17 @@
-// the webpack.config.js file adds the @import path for the appropriate scss entry
+@import '@cmsgov/design-system/src/styles/index';
+// any @font-face declarations need to be included everywhere to not be
+// wrapped with the data-theme selector below
+@import '@cmsgov/ds-medicare-gov/src/styles/_fonts';
+
+[data-theme='healthcare'] {
+  @import '@cmsgov/ds-healthcare-gov/src/styles/index';
+}
+
+[data-theme='medicare'] {
+  @import '@cmsgov/ds-medicare-gov/src/styles/index';
+}
 
 .utility-example {
-  background-color: $color-primary-alt-lightest;
-  outline: 2px dashed $color-primary-alt;
+  background-color: $color-secondary-lightest;
+  outline: 2px dashed $color-secondary;
 }
