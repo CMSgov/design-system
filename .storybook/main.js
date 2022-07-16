@@ -3,13 +3,12 @@ const env = process.env.STORYBOOK_DS ?? 'core';
 let statics = ['../packages/design-system/src'];
 let storyList = ['../packages/design-system/src/**/*.stories.@(js|jsx|ts|tsx|mdx)'];
 
+// child systems have their system-specific stories included
 if (env === 'healthcare') {
   storyList.push('../packages/ds-healthcare-gov/src/**/*.stories.@(js|jsx|ts|tsx|mdx)');
-  // statics.push('../packages/ds-healthcare-gov/src')
 }
 if (env === 'medicare') {
   storyList.push('../packages/ds-medicare-gov/src/**/*.stories.@(js|jsx|ts|tsx|mdx)');
-  // statics.push('../packages/ds-medicare-gov/src')
 }
 // gatsby has it's own way of handling static assets
 // but requires all stories available for inclusion as iframes

@@ -76,6 +76,12 @@ const ResponsiveExample = ({ storyId, title, theme }: ResponsiveExample) => {
     }
   };
 
+  // calculate css height with fallback
+  const getHeight = () => {
+    const heightCalc = getScale() * iframeHeight;
+    return heightCalc ? heightCalc : '0';
+  };
+
   // when the iframe content resizes, recalculate the height at which it should be shown
   const handleIframeResize = () => {
     if (iframeRef.current) {
@@ -122,7 +128,7 @@ const ResponsiveExample = ({ storyId, title, theme }: ResponsiveExample) => {
         </ol>
         <div
           className="c-resposive-example__example-wrapper "
-          style={{ height: getScale() * iframeHeight }}
+          style={{ height: getHeight() }}
           ref={exampleWrapperRef}
         >
           <div
