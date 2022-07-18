@@ -2,13 +2,14 @@ import React from 'react';
 
 interface ViewSourceLinkProps {
   sourceFilePath: string;
+  packageName?: string;
 }
 
-const ViewSourceLink = ({ sourceFilePath }: ViewSourceLinkProps) => {
+const ViewSourceLink = ({ sourceFilePath, packageName = 'design-system' }: ViewSourceLinkProps) => {
   return (
     <p>
       <a
-        href={`https://github.com/CMSgov/design-system/blob/master/packages/design-system/src/${sourceFilePath}`}
+        href={`https://github.com/CMSgov/design-system/blob/master/packages/${packageName}/src/${sourceFilePath}`}
       >
         View Source File
       </a>

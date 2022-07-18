@@ -10,11 +10,21 @@ An accordion is a list of headers that hide or reveal additional content when se
 
 ## `<Accordion>`
 
-<StorybookExample
-  componentName="accordion"
-  sourceFilePath="components/Accordion/Accordion.tsx"
-  storyId="components-accordion--default"
-/>
+<ThemeContent neverThemes={['healthcare']}>
+  <StorybookExample
+    componentName="accordion"
+    sourceFilePath="components/Accordion/Accordion.tsx"
+    storyId="components-accordion--default"
+  />
+</ThemeContent>
+<ThemeContent onlyThemes={['healthcare']}>
+  <StorybookExample
+    componentName="accordion"
+    sourceFilePath="components/Accordion/Accordion.tsx"
+    sourcePackageName="healthcare"
+    storyId="healthcare-accordion--default"
+  />
+</ThemeContent>
 
 ### Props
 
