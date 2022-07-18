@@ -1,5 +1,5 @@
 import React from 'react';
-import { HHSLogo, Button } from '@cmsgov/design-system';
+import { HHSLogo } from '@cmsgov/design-system';
 
 const DocSiteFooter = () => {
   return (
@@ -37,7 +37,7 @@ const DocSiteFooter = () => {
             U.S. Web Design System
           </a>
         </div>
-        <div className="ds-u-padding-top--2 ds-u-display--flex">
+        <div className="ds-u-padding-top--2 ds-u-display--flex ds-u-align-items--center">
           <HHSLogo />
           <p className="ds-u-margin--0 ds-u-measure--wide c-footer__text">
             A federal government website managed by the Centers for Medicare &amp; Medicaid Services
