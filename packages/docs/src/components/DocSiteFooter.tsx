@@ -3,7 +3,7 @@ import { HHSLogo } from '@cmsgov/design-system';
 
 const DocSiteFooter = () => {
   return (
-    <footer className="c-footer">
+    <footer className="c-footer ds-u-padding-x--3 ds-u-sm-padding-x--6">
       <section className="c-footer__container">
         <div className="c-footer__links">
           <a
