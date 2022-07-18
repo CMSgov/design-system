@@ -1,5 +1,4 @@
 import join from 'url-join';
-import { removePositioning } from './casingUtils';
 
 export function githubUrl(pathname = '') {
   const ghUrl = 'https://github.com/CMSgov/design-system';
@@ -7,8 +6,7 @@ export function githubUrl(pathname = '') {
 }
 
 export function makePageUrl(fileRelativePath) {
-  let pageUrl = removePositioning(fileRelativePath);
-  return `/${pageUrl.replace('.mdx', '/')}`;
+  return `/${fileRelativePath.replace('.mdx', '/')}`;
 }
 
 /**
@@ -33,5 +31,24 @@ export function getQueryParamValue(value: string) {
     }
   } else {
     return null;
+  }
+}
+
+/**
+ * setQueryParam
+ * @param name - name of query parameter
+ * @param value - value of query parameter
+ * @param reloadPage - describes if the page should reload after update, or update quietly.
+ */
+export function setQueryParam(name: string, value: string, reloadPage: boolean = false) {
+  if (typeof window !== 'undefined') {
+    const url = new URL(window.location.toString());
+    url.searchParams.set(name, value);
+
+    if (reloadPage) {
+      window.location.search = url.searchParams.toString();
+    } else {
+      window.history.pushState({}, '', url);
+    }
   }
 }
