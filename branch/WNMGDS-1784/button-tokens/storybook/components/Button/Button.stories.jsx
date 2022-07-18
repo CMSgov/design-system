@@ -25,7 +25,7 @@ export default {
       options: ['small', 'big'],
     },
     variation: {
-      options: ['solid', 'outline', 'link'],
+      options: ['solid', 'ghost'],
     },
   },
   args: {
