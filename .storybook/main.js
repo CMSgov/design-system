@@ -1,27 +1,13 @@
-/**
- * Gets the directories used for this project based on STORYBOOK_DS environment variable
- */
-const getSrcDirectories = () => {
-  let projectDirs;
-  switch (process.env.STORYBOOK_DS) {
-    case 'medicare':
-      projectDirs = ['../packages/design-system/src', '../packages/ds-medicare-gov/src'];
-      break;
-    case 'healthcare':
-      projectDirs = ['../packages/design-system/src', '../packages/ds-healthcare-gov/src'];
-      break;
-    default:
-      projectDirs = ['../packages/design-system/src'];
-  }
-  return projectDirs;
-};
-
-const getPathsForStories = () =>
-  getSrcDirectories().map((dir) => `${dir}/**/*.stories.@(js|jsx|ts|tsx|mdx)`);
-
 module.exports = {
-  stories: getPathsForStories(),
-  staticDirs: getSrcDirectories(),
+  features: {
+    postcss: false,
+  },
+  stories: [
+    '../packages/design-system/src/**/*.stories.@(js|jsx|ts|tsx|mdx)',
+    '../packages/ds-healthcare-gov/src/**/*.stories.@(js|jsx|ts|tsx|mdx)',
+    '../packages/ds-medicare-gov/src/**/*.stories.@(js|jsx|ts|tsx|mdx)',
+  ],
+  staticDirs: ['../packages/design-system/src'],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',

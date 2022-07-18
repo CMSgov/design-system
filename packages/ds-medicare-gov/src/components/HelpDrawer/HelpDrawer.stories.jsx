@@ -6,7 +6,7 @@ import { HelpDrawer, HelpDrawerToggle } from '@cmsgov/design-system';
 import InfoCircleOutlineIcon from '../Icons/InfoCircleOutlineIcon';
 
 export default {
-  title: 'Components/Help Drawer',
+  title: 'Medicare/Help Drawer',
   component: HelpDrawer,
   argTypes: {
     closeButtonText: {
@@ -32,6 +32,13 @@ export default {
       ),
     },
   },
+  decorators: [
+    (Story) => (
+      <div data-theme="medicare">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 const drawerContent = (
