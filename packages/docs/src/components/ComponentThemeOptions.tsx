@@ -9,6 +9,14 @@ import {
 } from 'design-system-tokens/src/themes';
 import _ from 'lodash';
 import uniqueId from 'lodash/uniqueId';
+import {
+  Table,
+  TableHead,
+  TableRow,
+  TableBody,
+  TableCell,
+  TableCaption,
+} from '@cmsgov/design-system';
 
 const componentThemes = {
   core: CoreComponentTheme,
@@ -58,31 +66,36 @@ const ComponentThemeOptions = ({ theme, componentname }: ComponentThemeOptionsPr
   componentname = componentname.toLowerCase();
   const currentTheme = componentThemes[theme];
   const componentOptions = (
-    <table className="ds-c-table" role="table">
-      <thead role="rowgroup">
-        <tr role="row">
-          <th className="ds-c-table__cell--align-left" role="columnheader" scope="col">
+    <Table scrollable stackable>
+      <TableCaption className="ds-u-visibility--screen-reader">
+        Sass variables for {componentname}{' '}
+      </TableCaption>
+      <TableHead>
+        <TableRow>
+          <TableCell component="th" align="left">
             Variable
-          </th>
-          <th className="ds-c-table__cell--align-left" role="columnheader" scope="col">
+          </TableCell>
+          <TableCell component="th" align="left">
             Default {_.capitalize(theme)} Theme Value
-          </th>
-        </tr>
-      </thead>
-      <tbody role="rowgroup">
+          </TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody role="rowgroup">
         {Object.keys(currentTheme[componentname]).map((key) => (
-          <tr role="row" key={uniqueId('config_option_')}>
-            <td>
+          <TableRow role="row" key={uniqueId('config_option_')}>
+            <TableCell stackedTitle="Variable">
               <code className="ds-u-font-weight--bold">
                 ${componentname}
                 {key}
               </code>
-            </td>
-            <td>{lookupThemeValue(theme, currentTheme[componentname][key])}</td>
-          </tr>
+            </TableCell>
+            <TableCell stackedTitle={`Default ${_.capitalize(theme)} Theme Value`}>
+              {lookupThemeValue(theme, currentTheme[componentname][key])}
+            </TableCell>
+          </TableRow>
         ))}
-      </tbody>
-    </table>
+      </TableBody>
+    </Table>
   );
 
   return (
