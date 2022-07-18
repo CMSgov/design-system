@@ -174,7 +174,7 @@ export default class GlobalHeader extends PureComponent<GlobalHeaderProps, Globa
               aria-label={menuButtonAriaLabel || 'Navigation Menu'}
               aria-expanded={menuOpen}
               className="m-c-globalHeader__openMenu"
-              variation="transparent"
+              variation="ghost"
               onClick={(): void => this.setState({ menuOpen: !menuOpen })}
             >
               {menuOpen ? <Close /> : <Hamburger />}
