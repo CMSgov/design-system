@@ -124,10 +124,9 @@ const Layout = ({
               <TableOfContents data={tableOfContentsData || []} />
             </div>
           </article>
+          <Footer />
         </main>
       </div>
-
-      <Footer />
     </div>
   );
 };
