@@ -8,12 +8,11 @@ const SLUGIFY_OPTIONS = {
   allowedChars: 'a-zA-Z0-9',
 };
 
-const { LOKI_FILE_PREFIX } = process.env;
-const filePrefix = LOKI_FILE_PREFIX ? LOKI_FILE_PREFIX + ' ' : '';
+const env = process.env.STORYBOOK_DS !== 'core' ? process.env.STORYBOOK_DS + ' ' : '';
 
 // This is basically the default Loki formatter but modified for child design systems
 const fileNameFormatter = ({ configurationName, kind, story }) =>
-  slugify(`${filePrefix}${configurationName} ${kind} ${story}`, SLUGIFY_OPTIONS);
+  slugify(`${env}${configurationName} ${kind} ${story}`, SLUGIFY_OPTIONS);
 
 module.exports = {
   fileNameFormatter,

@@ -15,11 +15,11 @@
 .ds-text-heading--lg,
 .ds-text-heading--md,
 .ds-text-heading--sm {
-  font-family: $montserrat-font;
-  font-weight: $font-semibold;
+  font-family: $font-family-montserrat;
+  font-weight: $font-weight-semibold;
   > a {
     color: $color-primary;
-    text-decoration-color: $teal-300;
+    text-decoration-color: $color-teal-300;
     text-underline-offset: 3px;
     &:hover {
       color: $color-primary-darker;
@@ -93,7 +93,7 @@
 .mct-p3,
 .ds-text-body--sm {
   color: $black-500;
-  font-family: $rubik-font;
+  font-family: $font-family-rubik;
   font-weight: 400;
   margin-top: 0;
 }

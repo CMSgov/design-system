@@ -76,12 +76,9 @@ export const globalTypes = {
 
 const themeSettingDecorator = (Story, context) => {
   const { theme } = context.globals;
+  document.documentElement.setAttribute('data-theme', theme);
 
-  return (
-    <div data-theme={theme}>
-      <Story {...context} />
-    </div>
-  );
+  return <Story {...context} />;
 };
 
 const languageSettingDecorator = (Story, context) => {

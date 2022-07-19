@@ -3,15 +3,23 @@
 // wrapped with the data-theme selector below
 @import '@cmsgov/ds-medicare-gov/src/styles/_fonts';
 
+.utility-example {
+  background-color: $color-secondary-lightest;
+  outline: 2px dashed $color-secondary;
+}
+
 [data-theme='healthcare'] {
   @import '@cmsgov/ds-healthcare-gov/src/styles/index';
+  .utility-example {
+    background-color: $color-secondary-lightest;
+    outline: 2px dashed $color-secondary;
+  }
 }
 
 [data-theme='medicare'] {
   @import '@cmsgov/ds-medicare-gov/src/styles/index';
-}
-
-.utility-example {
-  background-color: $color-secondary-lightest;
-  outline: 2px dashed $color-secondary;
+  .utility-example {
+    background-color: $color-secondary-lightest;
+    outline: 2px dashed $color-secondary;
+  }
 }
