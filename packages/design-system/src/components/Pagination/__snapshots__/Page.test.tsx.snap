@@ -6,7 +6,7 @@ exports[`Page should render interactive el if not current 1`] = `
     aria-label="page 1"
     href="/#1"
     onClick={[MockFunction]}
-    variation="link"
+    variation="ghost"
   >
     1
   </Button>
@@ -17,7 +17,7 @@ exports[`Page should render static el if current 1`] = `
 <li>
   <span
     aria-current="true"
-    className="ds-c-button ds-c-button--link ds-c-pagination__current-page"
+    className="ds-c-button ds-c-button--ghost ds-c-pagination__current-page"
   >
     1
   </span>
