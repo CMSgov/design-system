@@ -84,11 +84,7 @@ const StorybookExample = ({
 
       const rootEl = iframeRef.current.contentDocument.body.querySelector('#root');
       if (rootEl) {
-        // unwrap the theme layer div from the example code so it's not shown in example
-        const outerDiv = rootEl.getElementsByTagName('div')[0];
-        if (outerDiv) {
-          setiFrameHtml(outerDiv.innerHTML);
-        }
+        setiFrameHtml(rootEl.innerHTML);
       }
     }
 
