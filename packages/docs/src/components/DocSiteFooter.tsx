@@ -1,6 +1,6 @@
 import React from 'react';
 import uniqueId from 'lodash/uniqueId';
-import { githubUrl } from '../helpers/urlUtils';
+import { makeGithubUrl } from '../helpers/urlUtils';
 
 /**
  * Privacy setting link under addtional resources triggers modal (styles out of scope)
@@ -56,7 +56,7 @@ const DocSiteFooter = () => {
           </p>
           <div className="c-footer__feedback-links">
             <a
-              href={githubUrl('issues/new?assignees=&labels=Bug&template=bug_report.md&title=')}
+              href={makeGithubUrl('issues/new?assignees=&labels=Bug&template=bug_report.md&title=')}
               target="_blank"
               rel="noreferrer"
               className="ds-c-button"
@@ -64,7 +64,7 @@ const DocSiteFooter = () => {
               Report a bug
             </a>
             <a
-              href={githubUrl('issues/new?assignees=&labels=&template=general-issue.md&title=')}
+              href={makeGithubUrl('issues/new?assignees=&labels=&template=general-issue.md&title=')}
               target="_blank"
               rel="noreferrer"
               className="ds-c-button"
@@ -72,7 +72,7 @@ const DocSiteFooter = () => {
               Request a change
             </a>
             <a
-              href={githubUrl(
+              href={makeGithubUrl(
                 'issues/new?assignees=&labels=proposal%2Ffeature+request&template=propose-a-new-item-for-the-cms-design-system.md&title='
               )}
               target="_blank"

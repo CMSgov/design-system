@@ -6,6 +6,12 @@ export interface TableOfContentsItem {
   items?: TableOfContentsItem[];
 }
 
+export interface ComponentLinksInterface {
+  githubLink?: string;
+  sketchLink?: string;
+  storybookLink?: string;
+}
+
 /**
  * @see https://www.gatsbyjs.com/docs/location-data-from-props/
  */
@@ -16,6 +22,9 @@ export interface LocationInterface {
 export interface FrontmatterInterface {
   title: string;
   status?: PageStatus;
+  core?: ComponentLinksInterface;
+  healthcare?: ComponentLinksInterface;
+  medicare?: ComponentLinksInterface;
 }
 
 /**

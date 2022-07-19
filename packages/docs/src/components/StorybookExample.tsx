@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import classnames from 'classnames';
 import { ExternalLinkIcon, Spinner } from '@cmsgov/design-system';
-import CodeSnippet from './CodeSnippet';
 import { withPrefix } from 'gatsby';
+import CodeSnippet from './CodeSnippet';
+import { makeStorybookUrl } from '../helpers/urlUtils';
 import ViewSourceLink from './ViewSourceLink';
 
 interface StorybookExampleProps {
@@ -120,7 +121,7 @@ const StorybookExample = ({
         </div>
         <div className="ds-u-display--flex ds-u-justify-content--end">
           <a
-            href={withPrefix(`/storybook/?path=/story/${storyId}&globals=theme:${theme}`)}
+            href={makeStorybookUrl(storyId, theme)}
             target="_blank"
             rel="noreferrer"
             className="c-storybook-example__link"

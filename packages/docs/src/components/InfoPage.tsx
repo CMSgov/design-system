@@ -32,6 +32,21 @@ export const query = graphql`
       frontmatter {
         title
         status
+        core {
+          githubLink
+          sketchLink
+          storybookLink
+        }
+        healthcare {
+          githubLink
+          sketchLink
+          storybookLink
+        }
+        medicare {
+          githubLink
+          sketchLink
+          storybookLink
+        }
       }
       body
       tableOfContents(maxDepth: 2)
