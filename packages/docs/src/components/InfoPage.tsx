@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 
 import Layout from './Layout';
-import { MdxQuery, TableOfContentsItem } from '../helpers/graphQLTypes';
+import { MdxQuery } from '../helpers/graphQLTypes';
 import useTheme from '../helpers/useTheme';
 import ContentRenderer from './ContentRenderer';
 
@@ -11,23 +11,11 @@ import ContentRenderer from './ContentRenderer';
  */
 const InfoPage = ({ data, location }: MdxQuery) => {
   const { frontmatter, body, tableOfContents } = data.mdx;
-  const { title, relatedUswdsGuidance, status } = frontmatter;
   const theme = useTheme();
-  let showGuidance = false;
-
-  // check table of contents to see if there is a guidance section
-  if (tableOfContents && Object.keys(tableOfContents).length) {
-    showGuidance = tableOfContents.items.some(
-      (item: TableOfContentsItem) => item.title === 'Guidance'
-    );
-  }
 
   return (
     <Layout
-      pageName={title}
-      relatedGuidance={relatedUswdsGuidance}
-      showJumpToGuidance={showGuidance}
-      status={status}
+      frontmatter={frontmatter}
       location={location}
       theme={theme}
       tableOfContentsData={tableOfContents?.items}
@@ -44,7 +32,6 @@ export const query = graphql`
       frontmatter {
         title
         status
-        relatedUswdsGuidance
       }
       body
       tableOfContents(maxDepth: 2)

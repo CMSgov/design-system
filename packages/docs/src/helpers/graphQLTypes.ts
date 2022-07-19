@@ -13,6 +13,11 @@ export interface LocationInterface {
   pathname: string;
 }
 
+export interface FrontmatterInterface {
+  title: string;
+  status?: PageStatus;
+}
+
 /**
  * typing for the `mdx` graphQL query
  */
@@ -21,11 +26,7 @@ export interface MdxQuery {
     mdx: {
       id: string;
       body: string;
-      frontmatter: {
-        title: string;
-        relatedUswdsGuidance?: string;
-        status?: PageStatus;
-      };
+      frontmatter: FrontmatterInterface;
       tableOfContents?: {
         items: TableOfContentsItem[];
       };
