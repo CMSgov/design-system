@@ -39,6 +39,10 @@ interface LayoutProps {
    */
   status?: PageStatus;
   /**
+   * Current theme name
+   */
+  theme: string;
+  /**
    * list of heading items to be used in table of contents
    */
   tableOfContentsData?: TableOfContentsItem[];
@@ -51,23 +55,25 @@ const Layout = ({
   showJumpToGuidance,
   status,
   location,
+  theme,
   tableOfContentsData,
 }: LayoutProps) => {
   const env = 'prod';
 
-  // TODO: update data-theme value when theme switcher is created
   return (
-    <div className="ds-base" data-theme="core">
+    <div className="ds-base">
       <Helmet
         title="CMS Design System"
         htmlAttributes={{
           lang: 'en',
         }}
+        bodyAttributes={{
+          'data-theme': theme,
+        }}
       >
         <script>{`window.tealiumEnvironment = "${env}";`}</script>
         <script src="//tags.tiqcdn.com/utag/cmsgov/cms-design/prod/utag.sync.js"></script>
       </Helmet>
-
       <SkipNav href="#main" />
 
       <UsaBanner className="ds-u-display--none ds-u-md-display--block" />

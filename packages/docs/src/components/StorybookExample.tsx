@@ -23,6 +23,14 @@ interface StorybookExampleProps {
    * path within 'src' directory to source file
    */
   sourceFilePath?: string;
+  /**
+   * package where the source comes from
+   */
+  sourcePackageName?: string;
+  /**
+   * Current theme
+   */
+  theme: string;
 }
 
 /**
@@ -33,16 +41,20 @@ interface StorybookExampleProps {
  * If you don't need a story, but can use regular HTML or React components, use an Embedded example.
  */
 const StorybookExample = ({
+  theme,
   componentName,
   minHeight,
   sourceFilePath,
+  sourcePackageName,
   storyId,
 }: StorybookExampleProps) => {
   const [iframeHeight, setiFrameHeight] = useState<number>(200);
   const [iframeHtml, setiFrameHtml] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const iframeRef = useRef<HTMLIFrameElement>();
-  const iframeUrl = withPrefix(`/storybook/iframe.html?id=${storyId}&viewMode=story`);
+  const iframeUrl = withPrefix(
+    `/storybook/iframe.html?id=${storyId}&viewMode=story&globals=theme:${theme}`
+  );
 
   useEffect(() => {
     if (window) {
@@ -72,7 +84,11 @@ const StorybookExample = ({
 
       const rootEl = iframeRef.current.contentDocument.body.querySelector('#root');
       if (rootEl) {
-        setiFrameHtml(rootEl.innerHTML);
+        // unwrap the theme layer div from the example code so it's not shown in example
+        const outerDiv = rootEl.getElementsByTagName('div')[0];
+        if (outerDiv) {
+          setiFrameHtml(outerDiv.innerHTML);
+        }
       }
     }
 
@@ -81,7 +97,9 @@ const StorybookExample = ({
 
   return (
     <>
-      {sourceFilePath && <ViewSourceLink sourceFilePath={sourceFilePath} />}
+      {sourceFilePath && (
+        <ViewSourceLink sourceFilePath={sourceFilePath} packageName={sourcePackageName} />
+      )}
       <div className="c-storybook-example">
         <div
           className={classnames('c-storybook-example__iframe-wrapper', {
@@ -106,7 +124,7 @@ const StorybookExample = ({
         </div>
         <div className="ds-u-display--flex ds-u-justify-content--end">
           <a
-            href={withPrefix(`/storybook/?path=/story/${storyId}`)}
+            href={withPrefix(`/storybook/?path=/story/${storyId}&globals=theme:${theme}`)}
             target="_blank"
             rel="noreferrer"
             className="c-storybook-example__link"

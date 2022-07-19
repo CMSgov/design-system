@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import { Button, CloseIconThin, MenuIconThin, SvgIcon, VerticalNav } from '@cmsgov/design-system';
 import { VerticalNavItemProps } from '@cmsgov/design-system/dist/components/VerticalNav/VerticalNavItem';
 import { useStaticQuery, graphql } from 'gatsby';
+import ThemeSwitcher from './ThemeSwitcher';
 import { LocationInterface, NavDataQuery } from '../helpers/graphQLTypes';
 import { convertToNavItems, organizeNavItems } from '../helpers/navDataFormatUtils';
 
@@ -122,6 +123,7 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
         hidden={isMobile && !isMobileNavOpen}
         className="ds-u-padding--2 ds-u-md-padding--0"
       >
+        <ThemeSwitcher />
         <VerticalNav
           className="c-navigation__link-list"
           items={navItems}
