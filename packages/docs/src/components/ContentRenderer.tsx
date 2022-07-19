@@ -88,7 +88,7 @@ const customComponents = (theme) => ({
   EmbeddedExample,
   StorybookExample: (props) => <StorybookExample theme={theme} {...props} />,
   PropTable: (props) => <PropTable theme={theme} {...props} />,
-  ResponsiveExample,
+  ResponsiveExample: (props) => <ResponsiveExample theme={theme} {...props} />,
   ComponentThemeOptions: (props) => <ComponentThemeOptions theme={theme} {...props} />,
   ThemeContent: (props) => <ThemeContent theme={theme} {...props} />,
 });
