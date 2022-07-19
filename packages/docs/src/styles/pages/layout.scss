@@ -6,10 +6,12 @@ body {
   max-width: 81rem;
 }
 
-.page-content__content {
-  // removing margin for first heading on content pages
-  :nth-child(2) {
-    margin-top: 0;
+@media (min-width: $width-lg) {
+  .page-content__content {
+    // removing margin for first heading on content pages
+    :nth-child(2) {
+      margin-top: 0;
+    }
   }
 }
 
