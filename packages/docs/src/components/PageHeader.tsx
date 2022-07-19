@@ -14,7 +14,7 @@ type PageHeaderProps = {
  * Page header component that shows the page title and other details
  */
 const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => {
-  const { status, title, core } = frontmatter;
+  const { status, title, core, intro } = frontmatter;
   const themeLinks = frontmatter[theme];
 
   const ghPath = themeLinks?.githubLink || core?.githubLink || null;
@@ -24,7 +24,7 @@ const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => 
   return (
     <header className="ds-u-padding--3 ds-u-sm-padding--6 ds-u-display--block">
       <h1 className="ds-display">{title}</h1>
-      <p>{}</p>
+      {intro && <p>{intro}</p>}
       <div>
         {status && (
           <Badge variation="warn" className="ds-u-margin-right--2 ds-u-text-transform--capitalize">

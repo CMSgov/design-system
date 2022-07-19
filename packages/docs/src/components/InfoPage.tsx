@@ -32,6 +32,7 @@ export const query = graphql`
       frontmatter {
         title
         status
+        intro
         core {
           githubLink
           sketchLink

@@ -25,6 +25,7 @@ export interface FrontmatterInterface {
   core?: ComponentLinksInterface;
   healthcare?: ComponentLinksInterface;
   medicare?: ComponentLinksInterface;
+  intro?: string;
 }
 
 /**
