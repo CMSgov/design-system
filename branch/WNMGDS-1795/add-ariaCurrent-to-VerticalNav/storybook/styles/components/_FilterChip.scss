@@ -1,0 +1,101 @@
+// @TODO: deprecate these and their complex usage below
+// when determined they are not being altered in other systems
+$filter-chip-icon-container-size: 18px;
+$filter-chip-icon-size: 10px;
+
+.ds-c-filter-chip__button {
+  background-color: $filter-chip__background-color;
+  border: 1px solid $filter-chip__border-color;
+  border-radius: $filter-chip__border-radius;
+  color: $filter-chip__color;
+  cursor: pointer;
+  font-family: $font-sans;
+  font-size: $font-size-sm;
+  font-weight: $font-normal;
+  margin-right: $spacer-1;
+  margin-top: $spacer-1;
+  min-height: 0;
+  padding: $spacer-half $spacer-1;
+  padding-right: ($spacer-2 + $filter-chip-icon-container-size);
+  position: relative;
+  text-align: left;
+
+  &--big {
+    min-height: 44px;
+    padding: $spacer-1 $spacer-2;
+    padding-right: ($spacer-2 + $filter-chip-icon-container-size);
+  }
+
+  &:active,
+  &:focus,
+  &:hover {
+    background-color: $filter-chip__background-color--active;
+    border: 1px solid $filter-chip__border-color--active;
+    color: $filter-chip__color--active;
+  }
+  &:focus {
+    @include focus-styles;
+  }
+
+  > * {
+    pointer-events: none;
+  }
+}
+
+.ds-c-filter-chip__clear-icon-container {
+  border: 1px solid $filter-chip__color;
+  border-radius: 50%;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  height: $filter-chip-icon-container-size;
+  margin-left: $spacer-1;
+  padding: 0;
+  position: absolute;
+  right: $spacer-1;
+  top: 50%;
+  transform: translateY(-50%);
+  vertical-align: middle;
+  width: $filter-chip-icon-container-size;
+
+  &.ds-c-filter-chip__clear-icon-alternate-container {
+    border: 0;
+  }
+
+  .ds-c-icon--close {
+    display: block;
+    fill: $filter-chip__color;
+    height: $filter-chip-icon-size;
+    left: ($filter-chip-icon-container-size - 2 - $filter-chip-icon-size) * 0.5;
+    position: relative;
+    top: ($filter-chip-icon-container-size - 2 - $filter-chip-icon-size) * 0.5;
+    width: $filter-chip-icon-size;
+
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      path {
+        fill: ButtonText;
+      }
+    }
+  }
+
+  .ds-c-icon--close-thin {
+    height: $filter-chip-icon-size + 2;
+    width: $filter-chip-icon-size + 2;
+
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      path {
+        stroke: ButtonText !important;
+      }
+    }
+  }
+
+  .ds-c-filter-chip__button:active &,
+  .ds-c-filter-chip__button:focus &,
+  .ds-c-filter-chip__button:hover & {
+    border-color: $filter-chip__color--active;
+
+    .ds-c-icon--close {
+      fill: $filter-chip__color--active;
+    }
+  }
+}

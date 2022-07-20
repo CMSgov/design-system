@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Analytics overrides analytics event tracking on open 1`] = `
+Array [
+  Object {
+    "button_style": "default",
+    "button_type": "button",
+    "event_name": "button_engagement",
+    "event_type": "ui interaction",
+    "ga_eventAction": "engaged default button",
+    "ga_eventCategory": "ui interaction",
+    "ga_eventLabel": "alternate content",
+    "ga_eventType": "cmsds",
+    "ga_eventValue": "",
+    "parent_component_heading": " ",
+    "parent_component_type": " ",
+    "text": "alternate content",
+  },
+]
+`;
+
+exports[`Button Analytics sends button analytics event 1`] = `
+Array [
+  Object {
+    "button_style": "default",
+    "button_type": "button",
+    "event_name": "button_engagement",
+    "event_type": "ui interaction",
+    "ga_eventAction": "engaged default button",
+    "ga_eventCategory": "ui interaction",
+    "ga_eventLabel": "Foo",
+    "ga_eventType": "cmsds",
+    "ga_eventValue": "",
+    "parent_component_heading": " ",
+    "parent_component_type": " ",
+    "text": "Foo",
+  },
+]
+`;
+
+exports[`Button Analytics sends link analytics event 1`] = `
+Array [
+  Object {
+    "button_style": "default",
+    "button_type": "link",
+    "event_name": "button_engagement",
+    "event_type": "ui interaction",
+    "ga_eventAction": "engaged default button",
+    "ga_eventCategory": "ui interaction",
+    "ga_eventLabel": "Foo: #/somewhere-over-the-rainbow",
+    "ga_eventType": "cmsds",
+    "ga_eventValue": "",
+    "link_url": "#/somewhere-over-the-rainbow",
+    "parent_component_heading": " ",
+    "parent_component_type": " ",
+    "text": "Foo",
+  },
+]
+`;
+
+exports[`Button renders as a custom Link component 1`] = `
+<a
+  class="ds-c-button"
+  href="#"
+  to="anywhere"
+>
+  Foo
+</a>
+`;
+
+exports[`Button renders as an anchor with custom prop 1`] = `
+<a
+  class="ds-c-button"
+  href="/example"
+  target="_blank"
+>
+  Foo
+</a>
+`;
+
+exports[`Button renders as button 1`] = `
+<button
+  class="ds-c-button"
+  type="button"
+>
+  Foo
+</button>
+`;
+
+exports[`Button renders disabled button 1`] = `
+<button
+  class="ds-c-button"
+  disabled=""
+  type="button"
+>
+  Foo
+</button>
+`;
+
+exports[`Button renders disabled link correctly 1`] = `
+<a
+  class="ds-c-button ds-c-button--disabled"
+  href="javascript:void(0)"
+>
+  Link button
+</a>
+`;

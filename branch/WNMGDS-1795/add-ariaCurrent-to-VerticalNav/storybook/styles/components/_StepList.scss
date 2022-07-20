@@ -1,0 +1,247 @@
+@import '../settings/index.scss';
+
+// @TODO: deprecate and simplify these
+$step-list-number-size: $spacer-4 !default;
+$step-list-number-size-mobile: $spacer-3 !default;
+$step-list-number-font-size: 20px !default;
+$step-list-number-font-size-mobile: $font-size-sm !default;
+$step-list-number-border-size: 2px !default;
+$step-list-number-margin: 10px !default;
+$step-list-padding-h: 0 !default;
+$step-list-padding-left: $step-list-padding-h + $step-list-number-margin + $step-list-number-size;
+$step-list-breakpoint: $media-width-md !default;
+$step-margin: $spacer-2 !default;
+$step-border-width: 1px !default;
+$step-button-height: 38px !default;
+
+.ds-c-step-list {
+  list-style-type: none;
+  margin: $spacer-4 0 0;
+  padding: 0 $step-list-padding-h;
+  padding-left: $step-list-padding-left;
+
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    a:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.ds-c-step {
+  color: $steplist__color;
+  counter-increment: step-counter;
+  margin-bottom: $step-margin;
+  padding-bottom: $step-margin;
+  position: relative;
+
+  &::before {
+    border: $step-list-number-border-size solid $steplist-step__border-color--default;
+    border-radius: $radius-circle;
+    box-sizing: border-box;
+    color: $steplist-step__color;
+    content: counter(step-counter);
+    display: block;
+    font-size: $step-list-number-font-size-mobile;
+    height: $step-list-number-size-mobile;
+    left: -($step-list-number-margin + $step-list-number-size-mobile);
+    line-height: $step-list-number-size-mobile - $step-list-number-border-size * 2;
+    position: absolute;
+    text-align: center;
+    top: ($step-button-height - $step-list-number-size-mobile) * 0.5;
+    width: $step-list-number-size-mobile;
+
+    @media (min-width: $step-list-breakpoint) {
+      font-size: $step-list-number-font-size;
+      height: $step-list-number-size;
+      left: -($step-list-number-margin + $step-list-number-size);
+      line-height: $step-list-number-size - $step-list-number-border-size * 2;
+      padding-left: 1px;
+      top: ($step-button-height - $step-list-number-size) * 0.5;
+      width: $step-list-number-size;
+    }
+
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      border-color: GrayText;
+      color: GrayText;
+      -ms-high-contrast-adjust: none;
+      forced-color-adjust: none;
+    }
+  }
+
+  &::after {
+    border-bottom: $step-border-width solid $steplist-step__border-color;
+    bottom: 0;
+    content: '';
+    display: block;
+    height: 1px;
+    left: -$step-list-padding-left;
+    position: absolute;
+    right: -$step-list-padding-h;
+  }
+
+  @media (min-width: $step-list-breakpoint) {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.ds-c-step--current,
+.ds-c-step--completed {
+  padding-bottom: $step-margin;
+
+  &::before {
+    border: 0 none;
+    color: $steplist-step__color--current;
+    line-height: 24px;
+
+    @media (min-width: $media-width-md) {
+      line-height: 32px;
+    }
+  }
+}
+
+.ds-c-step--current {
+  .ds-c-step__heading {
+    color: $steplist__color--current;
+  }
+
+  &::before {
+    background: $steplist__background-color--current;
+  }
+
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    &::before {
+      background-color: Highlight;
+      color: Window;
+      font-weight: bold;
+    }
+  }
+}
+
+.ds-c-step--completed {
+  .ds-c-step__heading {
+    color: $steplist-step__color--completed;
+  }
+
+  .ds-c-step__substeps {
+    color: $steplist-step__color--completed;
+  }
+
+  &::before {
+    background: $steplist-step__background-color--completed;
+  }
+
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    &::before {
+      background-color: WindowText;
+      color: Window;
+    }
+  }
+}
+
+.ds-c-step__content {
+  @media (min-width: $step-list-breakpoint) {
+    padding-right: $spacer-2;
+  }
+}
+
+.ds-c-step__heading {
+  font-size: $font-size-md;
+  line-height: $step-button-height;
+  margin: 0;
+
+  @media (min-width: $step-list-breakpoint) {
+    font-size: $font-size-xl;
+  }
+}
+
+.ds-c-step__actions {
+  font-size: $font-size-sm;
+  margin-left: auto;
+
+  .ds-c-step__content--with-content + & {
+    margin-top: $spacer-2;
+
+    @media (min-width: $step-list-breakpoint) {
+      margin-top: 0;
+    }
+  }
+
+  .ds-c-step--completed & a {
+    font-weight: $font-normal;
+  }
+
+  @media (min-width: $step-list-breakpoint) {
+    font-size: $base-font-size;
+    text-align: right;
+  }
+}
+
+.ds-c-step__completed-text {
+  display: inline-block;
+  line-height: $step-button-height - 12px;
+  margin-right: $spacer-2;
+
+  .ds-c-icon {
+    height: 12px;
+    margin-right: $spacer-1;
+    vertical-align: inherit;
+    width: 16px;
+  }
+
+  @media (min-width: $step-list-breakpoint) {
+    display: block;
+    margin-right: 0;
+    padding-top: 6px;
+    white-space: nowrap;
+  }
+
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    .ds-c-icon-color--success {
+      color: WindowText;
+    }
+  }
+}
+
+.ds-c-step__description {
+  font-size: $font-size-sm;
+  margin-bottom: $spacer-1;
+
+  .ds-c-step--current &,
+  .ds-c-step--completed & {
+    margin-top: $spacer-1;
+  }
+
+  @media (min-width: $step-list-breakpoint) {
+    font-size: $font-size-base;
+  }
+}
+
+.ds-c-step__substeps {
+  list-style-type: none;
+  margin: 0;
+  padding-left: $spacer-5;
+}
+
+.ds-c-substep {
+  display: block;
+  font-size: $font-size-sm;
+
+  &::before {
+    content: '\2022';
+    left: -$spacer-3;
+    position: relative;
+  }
+}
+
+.ds-c-substep__heading {
+  display: inline;
+  margin-right: $spacer-1;
+}
+
+.ds-c-substep__edit {
+  @media (min-width: $step-list-breakpoint) {
+    position: absolute;
+    right: 0;
+  }
+}
