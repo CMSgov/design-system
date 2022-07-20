@@ -2,6 +2,16 @@
 title: Accordion
 status: draft
 intro: An accordion is a list of headers that hide or reveal additional content when selected.
+core:
+  githubLink: design-system/src/components/Accordion/Accordion.tsx
+  sketchLink: D05A5474-A491-4AF8-8DE8-2E3561264D09
+  storybookLink: components-accordion--default
+healthcare:
+  githubLink: ds-healthcare-gov/src/components/Accordion
+  sketchLink: EC8D2483-32A3-45A6-9112-E3158CEBC39A
+  storybookLink: healthcare-accordion--default
+medicare:
+  sketchLink: 11DBC14C-7A40-4763-871C-4518CC31A4DE
 ---
 
 
@@ -10,15 +20,12 @@ intro: An accordion is a list of headers that hide or reveal additional content 
 <ThemeContent neverThemes={['healthcare']}>
   <StorybookExample
     componentName="accordion"
-    sourceFilePath="components/Accordion/Accordion.tsx"
     storyId="components-accordion--default"
   />
 </ThemeContent>
 <ThemeContent onlyThemes={['healthcare']}>
   <StorybookExample
     componentName="accordion"
-    sourceFilePath="components/Accordion/Accordion.tsx"
-    sourcePackageName="healthcare"
     storyId="healthcare-accordion--default"
   />
 </ThemeContent>
