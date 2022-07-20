@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 
 import Layout from './Layout';
 import { MdxQuery, TableOfContentsItem } from '../helpers/graphQLTypes';
+import useTheme from '../helpers/useTheme';
 import ContentRenderer from './ContentRenderer';
 
 /**
@@ -11,6 +12,7 @@ import ContentRenderer from './ContentRenderer';
 const InfoPage = ({ data, location }: MdxQuery) => {
   const { frontmatter, body, tableOfContents } = data.mdx;
   const { title, relatedUswdsGuidance, status } = frontmatter;
+  const theme = useTheme();
   let showGuidance = false;
 
   // check table of contents to see if there is a guidance section
@@ -27,9 +29,10 @@ const InfoPage = ({ data, location }: MdxQuery) => {
       showJumpToGuidance={showGuidance}
       status={status}
       location={location}
+      theme={theme}
       tableOfContentsData={tableOfContents?.items}
     >
-      <ContentRenderer data={body} />
+      <ContentRenderer data={body} theme={theme} />
     </Layout>
   );
 };

@@ -8,6 +8,10 @@
 --color-white: #ffffff;
 --color-black: #000000;
 --color-transparent: #ffffff00;
+--color-transparent-black-alpha50: #00000080;
+--color-transparent-black-alpha25: #00000040;
+--color-transparent-white-alpha50: #ffffff80;
+--color-transparent-white-alpha25: #ffffff40;
 --color-background: #ffffff;
 --color-background-dialog: #ffffff;
 --color-background-dialog-mask: #00000080;
@@ -68,7 +72,7 @@
 --color-primary-alt: #02bfe7;
 --color-primary-alt-dark: #02acd0;
 --color-primary-alt-darkest: #016074;
---color-primary-alt-light: #9fcae7;
+--color-primary-alt-light: #4ed2ee;
 --color-primary-alt-lightest: #e6f9fd;
 --color-secondary: #02bfe7;
 --color-secondary-dark: #02acd0;
