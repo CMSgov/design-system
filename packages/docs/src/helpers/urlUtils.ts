@@ -13,9 +13,10 @@ const sketchBoardIds = {
 };
 
 // creates links to sketch assets
+// in sketch, we are using the art board in 'inspect' mode for each component
 export function makeSketchUrl(pathname = '', theme) {
   const sketchUrl = 'https://www.sketch.com/s/';
-  return join(sketchUrl, sketchBoardIds[theme], 'p', pathname);
+  return join(sketchUrl, sketchBoardIds[theme], 'a', pathname, '#Inspect');
 }
 
 // creates links to storybook story

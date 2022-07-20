@@ -18,7 +18,7 @@ const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => 
   const themeLinks = frontmatter[theme];
 
   const ghPath = themeLinks?.githubLink || core?.githubLink || null;
-  const sketchId = themeLinks?.sketchLink || core?.sketchLink || null;
+  const sketchId = themeLinks?.sketchLink || null;
   const storyId = themeLinks?.storybookLink || core?.storybookLink || null;
 
   return (
