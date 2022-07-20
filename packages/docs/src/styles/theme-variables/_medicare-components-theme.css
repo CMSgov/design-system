@@ -50,7 +50,7 @@
 --button__color--hover: #ffffff;
 --button__color: #1e3c70;
 --button__font-weight: 400;
---button-icon__fill: #404040;
+--button-icon__fill: currentColor;
 --button-alt__background-color--active: #0e4a41;
 --button-alt__background-color--disabled: #ffffff;
 --button-alt__background-color--hover: #146a5d;
