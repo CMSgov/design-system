@@ -21,6 +21,10 @@ interface ResponsiveExample {
    * Accessible text to describe iframe content
    */
   title: string;
+  /**
+   * Current theme
+   */
+  theme: string;
 }
 
 /**
@@ -30,14 +34,16 @@ interface ResponsiveExample {
  *
  * To use this example, you must have a corresponding storybook story to reference
  */
-const ResponsiveExample = ({ storyId, title }: ResponsiveExample) => {
+const ResponsiveExample = ({ storyId, title, theme }: ResponsiveExample) => {
   const [iframeBreakpoint, setIframeBreakpoint] = useState<string>('xl');
   const [iframeHeight, setiFrameHeight] = useState<number>(0);
   const [iframeHtml, setiFrameHtml] = useState<string>('');
   const [exampleWrapperWidth, setExampleWrapperWidth] = useState<number>(0);
   const iframeRef = useRef<HTMLIFrameElement>();
   const exampleWrapperRef = useRef<HTMLDivElement>();
-  const iframeUrl = withPrefix(`/storybook/iframe.html?id=${storyId}&viewMode=story`);
+  const iframeUrl = withPrefix(
+    `/storybook/iframe.html?id=${storyId}&viewMode=story&globals=theme:${theme}`
+  );
 
   useEffect(() => {
     if (window) {
@@ -68,6 +74,12 @@ const ResponsiveExample = ({ storyId, title }: ResponsiveExample) => {
     if (exampleWrapperRef.current) {
       return Math.min(1, exampleWrapperWidth / breakpointOpts[iframeBreakpoint]);
     }
+  };
+
+  // calculate css height with fallback
+  const getHeight = () => {
+    const heightCalc = getScale() * iframeHeight;
+    return heightCalc ? heightCalc : '0';
   };
 
   // when the iframe content resizes, recalculate the height at which it should be shown
@@ -116,7 +128,7 @@ const ResponsiveExample = ({ storyId, title }: ResponsiveExample) => {
         </ol>
         <div
           className="c-resposive-example__example-wrapper "
-          style={{ height: getScale() * iframeHeight }}
+          style={{ height: getHeight() }}
           ref={exampleWrapperRef}
         >
           <div

@@ -11,7 +11,7 @@
 :root {
   --rdp-cell-size: 40px;
   --rdp-accent-color: #{$color-primary};
-  --rdp-background-color: $color-gray-cool-light;
+  --rdp-background-color: #{$color-gray-cool-light};
   /* Added this variable for consistency */
   --rdp-active-color: #{$color-primary-darkest};
   /* Outline border for focused elements */

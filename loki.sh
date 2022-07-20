@@ -4,21 +4,22 @@ set -Eeo pipefail
 trap cleanup SIGINT SIGTERM ERR
 
 script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd -P)
+STORYBOOK_DS=${STORYBOOK_DS:-core}
 
 usage() {
   cat <<EOF
-Usage: $(basename "${BASH_SOURCE[0]}") [-h] [-v] [-t target] <...loki args>
+Usage: $(basename "${BASH_SOURCE[0]}") [-h] [-v] <...loki args>
 
 Assists with running the Storybook Loki visual regression tests. Items in brackets
 are optional. Must have docker running and able to start up instances.
+
+Utilizes the STORYBOOK_DS environment variable to determine which system to test.
 
 Available options:
 
 args            One of: update/test/approve
 -h, --help      Print this help and exit
 -v, --verbose   Print script debug info
--t, --target    Optional, core is default, options are: healthcare/medicare
-
 EOF
   exit
 }
@@ -43,11 +44,6 @@ while :; do
   case "${1-}" in
     -h | --help) usage ;;
     -v | --verbose) set -x ;;
-    -t | --target) 
-      export LOKI_FILE_PREFIX="${2-}"
-      export STORYBOOK_DS="${2-}"
-      shift
-      ;;
     *) break ;;
   esac
   shift
@@ -76,7 +72,7 @@ done
 
 # storybook is up, start the appropriate loki process
 msg "[✓] Storybook instance found at http://localhost:6006!"
-msg "-+- Starting: npx loki ${args} ${LOKI_FILE_PREFIX}\n"
+msg "-+- Starting: npx loki ${args} ${STORYBOOK_DS}\n"
 
 if npx loki $args ; then
   msg "\n[✓] Loki ${args} ran successfully"
