@@ -1,4 +1,6 @@
 .c-page-header__link {
+  display: inline-block;
+
   &:not(:last-child) {
     margin-right: $spacer-2;
   }
