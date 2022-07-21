@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormControl renders bottom placed errors  1`] = `
+<div
+  className=""
+>
+  <FormLabel
+    component="label"
+    errorId="field_7-error"
+    fieldId="field_7"
+    id="field_7-label"
+  >
+    Foo
+  </FormLabel>
+  <input
+    aria-describedby="field_7-label"
+    id="field_7"
+  />
+  <InlineError
+    id="field_7-error"
+  >
+    Error
+  </InlineError>
+</div>
+`;
+
+exports[`FormControl renders custom component and labelComponent elements 1`] = `
+<fieldset
+  className="ds-c-fieldset"
+>
+  <FormLabel
+    component="legend"
+    errorId="field_2-error"
+    id="field_2-label"
+  >
+    Foo
+  </FormLabel>
+  <input
+    aria-describedby="field_2-label"
+    id="field_2"
+  />
+</fieldset>
+`;
+
+exports[`FormControl renders default component and labelComponent elements 1`] = `
+<div
+  className=""
+>
+  <FormLabel
+    component="label"
+    errorId="field_1-error"
+    fieldId="field_1"
+    id="field_1-label"
+  >
+    Foo
+  </FormLabel>
+  <input
+    aria-describedby="field_1-label"
+    id="field_1"
+  />
+</div>
+`;
+
+exports[`FormControl uses aria-invalid for fieldsets with errorMessage 1`] = `
+<fieldset
+  aria-invalid={true}
+  className="ds-c-fieldset"
+>
+  <FormLabel
+    component="label"
+    errorId="field_8-error"
+    errorMessage="Error"
+    id="field_8-label"
+  >
+    Foo
+  </FormLabel>
+  <input
+    aria-describedby="field_8-label"
+    id="field_8"
+  />
+</fieldset>
+`;
