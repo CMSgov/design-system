@@ -66,6 +66,7 @@ export const VerticalNavItemLabel = (props: VerticalNavItemLabelProps): React.Re
   } else if (LabelComponent !== DEFAULT_COMPONENT_TYPE) {
     // Apply href if <a> or custom component type
     otherProps = {
+      'aria-current': props.selected,
       href: props.url,
     };
   }
