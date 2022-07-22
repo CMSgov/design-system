@@ -3,12 +3,7 @@ title: Button
 relatedUswdsGuidance: components/buttons
 ---
 
-import {
-  Alert,
-  ArrowIcon,
-  Button,
-  TextInput
-} from '@cmsgov/design-system';
+import { Alert, ArrowIcon, Button, TextInput } from '@cmsgov/design-system';
 
 Use buttons to signal actions.
 
@@ -53,6 +48,60 @@ Buttons can exist in two alternative sizes: "big" or "small". See the example be
   </div>
 </EmbeddedExample>
 
+## Code
+
+The `Button` component accepts its text as children (AKA inner HTML), which
+means you can also pass in HTML or custom components. This gives you a lot of
+flexibility and supports a variety of advanced use cases. The most common use
+case would be passing in an SVG icon along with the text.
+
+In addition to the supported props listed, you can also pass in additional
+props, which will be passed to the rendered root component. For example,
+you could pass in a `target` prop to pass to the rendered anchor element.
+
+<StorybookExample
+  componentName="button"
+  sourceFilePath="components/Button/Button.tsx"
+  storyId="components-button--default"
+/>
+
+### React props
+
+<PropTable componentName="Button" />
+
+### Style customization
+
+The following Sass variables can be overridden to customize Button components:
+
+<ComponentThemeOptions componentname="button" />
+
+### Google Analytics
+
+**Analytics event tracking is disabled by default.**
+
+#### Enable event tracking
+
+Import and set the `setButtonSendsAnalytics` feature flag to `true` in your application's entry file:
+
+```js
+import { setButtonSendsAnalytics } from '@cmsgov/<design-system-package>';
+setButtonSendsAnalytics(true);
+```
+
+On applications where the page has `utag` loaded, the data goes to Tealium which allows it to route to Google Analytics or the currently approved data analytics tools.
+
+#### Disable event tracking
+
+For the `analytics` prop, pass the value `false` to the component to disable analytics tracking for a singular component instance
+
+```js
+analytics={false}
+```
+
+#### Override event tracking
+
+A custom heading value can be sent for an analytics event by using the prop `analyticsLabelOverride`. It is recommended that this value be used to prevent sensitive personal information from being passed to analytics trackers.
+
 ## Guidance
 
 ### When to use
@@ -96,7 +145,7 @@ Buttons can exist in two alternative sizes: "big" or "small". See the example be
 - When styling links to look like buttons, remember that screen readers handle links slightly differently than they do buttons. Pressing the `Space` key triggers a button, but pressing the `Enter` key triggers a link.
 - Dimmed or unavailable buttons should have the `disabled` attribute applied. This removes native click and keypress events from the button. It also prevents automated scanners from logging a low contrast error. Finally, it announces the button as "dimmed" or "disabled" to screen readers, offering users additional context.
 
-### Learn more
+## Learn more
 
 - [Beyond Blue Links: Making Clickable Elements Recognizable](https://www.nngroup.com/articles/clickable-elements/)
 - [7 Basic Best Practices for Buttons](http://www.uxmatters.com/mt/archives/2012/05/7-basic-best-practices-for-buttons.php)
@@ -112,57 +161,3 @@ Buttons can exist in two alternative sizes: "big" or "small". See the example be
 
 - [Using the button role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_button_role)
 - [Building Accessible Buttons with ARIA](https://www.deque.com/blog/accessible-aria-buttons)
-
-## Code
-
-The `Button` component accepts its text as children (AKA inner HTML), which
-means you can also pass in HTML or custom components. This gives you a lot of
-flexibility and supports a variety of advanced use cases. The most common use
-case would be passing in an SVG icon along with the text.
-
-In addition to the supported props listed, you can also pass in additional
-props, which will be passed to the rendered root component. For example,
-you could pass in a `target` prop to pass to the rendered anchor element.
-
-<StorybookExample
-  componentName="button"
-  sourceFilePath="components/Button/Button.tsx"
-  storyId="components-button--default"
-/>
-
-### React props
-
-<PropTable componentName="Button" />
-
-### Style customization
-
-The following Sass variables can be overridden to customize Button components:
-
-<ComponentThemeOptions componentname="button" />
-
-### Google Analytics
-
-**Analytics event tracking is disabled by default.**
-
-### Enable event tracking
-
-Import and set the `setButtonSendsAnalytics` feature flag to `true` in your application's entry file:
-
-```js
-import { setButtonSendsAnalytics } from '@cmsgov/<design-system-package>';
-setButtonSendsAnalytics(true);
-```
-
-On applications where the page has `utag` loaded, the data goes to Tealium which allows it to route to Google Analytics or the currently approved data analytics tools.
-
-### Disable event tracking
-
-For the `analytics` prop, pass the value `false` to the component to disable analytics tracking for a singular component instance
-
-```js
-analytics={false}
-```
-
-### Override event tracking
-
-A custom heading value can be sent for an analytics event by using the prop `analyticsLabelOverride`. It is recommended that this value be used to prevent sensitive personal information from being passed to analytics trackers.
