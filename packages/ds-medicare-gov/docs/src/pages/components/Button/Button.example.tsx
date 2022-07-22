@@ -17,7 +17,7 @@ const ButtonExample: FunctionComponent = () => {
           <Button>Tertiary</Button>
         </span>
         <span className="ds-u-margin-right--1">
-          <Button className="ds-c-button--ghost">Transparent</Button>
+          <Button className="ds-c-button--transparent">Transparent</Button>
         </span>
         <span className="ds-u-margin-right--1">
           <Button size="big">Landing Page</Button>
@@ -32,7 +32,7 @@ const ButtonExample: FunctionComponent = () => {
           <Button className="ds-c-button--inverse">Tertiary</Button>
         </span>
         <span className="ds-u-margin-right--1">
-          <Button className="ds-c-button--ghost ds-c-button--inverse">Transparent</Button>
+          <Button className="ds-c-button--transparent ds-c-button--inverse">Transparent</Button>
         </span>
         <span className="ds-u-margin-right--1">
           <Button size="big" className="ds-c-button--primary ds-c-button--inverse">
