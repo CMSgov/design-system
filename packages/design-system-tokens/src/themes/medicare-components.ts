@@ -188,10 +188,10 @@ export const components: AnyTokenValues = {
     '__border-color--disabled':                   'transparent',
     '__border-color--hover':                      'transparent',
     '__border-color':                             'transparent',
-    '__color--active':                            t.color['primary-darkest'],
+    '__color--active':                            t.color['secondary-dark'],
     '__color--disabled':                          t.color['gray-lighter'],
-    '__color--hover':                             t.color['primary-darker'],
-    '__color':                                    t.color['primary'],
+    '__color--hover':                             t.color['secondary-dark'],
+    '__color':                                    t.color['secondary'],
   },
 
   'button-ghost-alt': {
@@ -203,10 +203,10 @@ export const components: AnyTokenValues = {
     '__border-color--disabled':                   'transparent',
     '__border-color--hover':                      'transparent',
     '__border-color':                             'transparent',
-    '__color--active':                            t.color['primary-alt-darkest'],
+    '__color--active':                            t.color['primary-darkest'],
     '__color--disabled':                          t.color['gray-lighter'],
-    '__color--hover':                             t.color['primary-alt-darker'],
-    '__color':                                    t.color['primary-alt'],
+    '__color--hover':                             t.color['primary-darker'],
+    '__color':                                    t.color['primary'],
   },
 
   'button-ghost-dark': {
