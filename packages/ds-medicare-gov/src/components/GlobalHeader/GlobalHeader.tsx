@@ -157,7 +157,7 @@ export default class GlobalHeader extends PureComponent<GlobalHeaderProps, Globa
                   } else {
                     el = (
                       <Button
-                        className="m-c-globalHeader__actionButton ds-c-button--transparent"
+                        className="m-c-globalHeader__actionButton ds-c-button--ghost"
                         onClick={action.callback}
                         {...action.props}
                       >

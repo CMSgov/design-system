@@ -13,7 +13,7 @@ export const ThirdPartyExternalLink = () => {
   return (
     <>
       <Button
-        className="ds-c-button--link ds-u-font-weight--normal"
+        className="ds-c-button--ghost ds-u-font-weight--normal"
         onClick={() => setShowModal({ showModal: true })}
       >
         Link to external site
@@ -30,7 +30,7 @@ export const ThirdPartyExternalLink = () => {
               OK
             </Button>,
             <Button
-              className="ds-c-button ds-c-button--link"
+              className="ds-c-button ds-c-button--ghost"
               key="cancel"
               onClick={() => setShowModal({ showModal: false })}
             >
