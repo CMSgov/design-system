@@ -1,15 +1,15 @@
 @import '../settings/index.scss';
 
+// @TODO: deprecate usage of these and make component options
+// or hard-code if not being utilized
 $autocomplete-space: $spacer-1;
-
 $autocomplete-list-border-width: 1px;
 $autocomplete-list-border-style: solid;
-$autocomplete-list-border-color: $color-gray-lighter;
 $autocomplete-list-border: $autocomplete-list-border-width $autocomplete-list-border-style
-  $autocomplete-list-border-color;
+  $autocomplete__border-color;
 
 .ds-c-autocomplete {
-  max-width: $input-max-width;
+  max-width: $form__max-width;
   position: relative;
   // Undoing the clearfix class on the div containing the label element
   .ds-u-clearfix {
@@ -34,10 +34,10 @@ $autocomplete-list-border: $autocomplete-list-border-width $autocomplete-list-bo
 }
 
 .ds-c-autocomplete__list {
-  background-color: $color-white;
+  background-color: $autocomplete__background-color;
   border: $autocomplete-list-border;
   box-sizing: border-box;
-  max-height: ($base-font-size + $spacer-2) * 10;
+  max-height: calc(calc(#{$base-font-size} + #{$spacer-2}) * 10);
   overflow-y: auto;
   padding: $autocomplete-space;
   position: absolute;
@@ -46,23 +46,24 @@ $autocomplete-list-border: $autocomplete-list-border-width $autocomplete-list-bo
 }
 
 .ds-c-autocomplete__list-item {
-  color: $color-primary;
+  color: $autocomplete-item__font-color;
   padding: $spacer-1;
 }
 
 .ds-c-autocomplete__list-item--active {
-  background-color: $color-primary-alt-darkest;
-  color: $color-white;
+  background-color: $autocomplete-item__background-color--active;
+  color: $autocomplete-item__font-color--active;
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
     background-color: WindowText;
     color: Window;
     -ms-high-contrast-adjust: none;
+    forced-color-adjust: none;
   }
 }
 
 .ds-c-autocomplete__list-item--message {
-  color: $color-muted;
+  color: $autocomplete-item-message__font-color;
   padding: $spacer-1;
 }
 

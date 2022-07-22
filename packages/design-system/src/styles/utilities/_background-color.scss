@@ -1,5 +1,8 @@
 @import '../settings/index.scss';
 
+// One of the few places !important is allowed.
+/* stylelint-disable declaration-no-important */
+
 // primary
 .ds-u-fill--primary {
   background-color: $color-primary !important;
@@ -13,6 +16,7 @@
   background-color: $color-primary-darkest !important;
 }
 
+// @TODO: deprecate usage of color-primary-alt tags for secondary below
 // primary-alt
 .ds-u-fill--primary-alt {
   background-color: $color-primary-alt !important;
@@ -32,6 +36,35 @@
 
 .ds-u-fill--primary-alt-lightest {
   background-color: $color-primary-alt-lightest !important;
+}
+
+// secondary
+.ds-u-fill--secondary {
+  background-color: $color-secondary !important;
+}
+
+.ds-u-fill--secondary-light {
+  background-color: $color-secondary-light !important;
+}
+
+.ds-u-fill--secondary-lighter {
+  background-color: $color-secondary-lighter !important;
+}
+
+.ds-u-fill--secondary-lightest {
+  background-color: $color-secondary-lightest !important;
+}
+
+.ds-u-fill--secondary-dark {
+  background-color: $color-secondary-dark !important;
+}
+
+.ds-u-fill--secondary-darker {
+  background-color: $color-secondary-darker !important;
+}
+
+.ds-u-fill--secondary-darkest {
+  background-color: $color-secondary-darkest !important;
 }
 
 // gray
@@ -281,3 +314,5 @@
 .ds-u-fill--focus-border-inverse {
   background-color: $focus-border-inverse !important;
 }
+
+/* stylelint-enable declaration-no-important */

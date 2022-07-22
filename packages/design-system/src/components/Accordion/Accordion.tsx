@@ -30,7 +30,11 @@ const handleKeyDown = (e) => {
   }
 };
 
-export const Accordion: FunctionComponent<AccordionProps> = ({ bordered, children, className }) => {
+export const Accordion: FunctionComponent<AccordionProps> = ({
+  bordered,
+  children,
+  className,
+}: AccordionProps) => {
   const classes = classNames('ds-c-accordion', bordered && 'ds-c-accordion--bordered', className);
   return (
     <div onKeyDown={handleKeyDown} className={classes}>

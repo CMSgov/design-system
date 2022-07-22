@@ -129,7 +129,7 @@ export class ChoiceList extends React.PureComponent<ChoiceListProps, any> {
   }
 
   render() {
-    const containerProps = pick(this.props, FormControlPropKeys);
+    const containerProps: any = pick(this.props, FormControlPropKeys);
 
     const choices = this.props.choices.map((choiceProps) => {
       const completeChoiceProps: ChoiceComponentProps = {

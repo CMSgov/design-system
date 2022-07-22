@@ -103,6 +103,9 @@ const Template = (args) => (
 );
 
 export const ScrollableTable = Template.bind({});
+ScrollableTable.args = {
+  scrollable: true,
+};
 
 export const StackableTable = Template.bind({});
 StackableTable.args = {

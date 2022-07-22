@@ -1,0 +1,40 @@
+---
+title: Border Radius
+---
+
+Apply rounded corners to an element with the border radius utility.
+
+The border radius utility supports default, pill, and circle radiuses, which set `border-radius` to `3px`, `9999px` and `100%` respectively.
+
+**Format**: `.ds-u-radius--[pill|circle]`
+
+<EmbeddedExample>
+  <section>
+    <article class="ds-u-margin-top--2">
+      <code class="ds-u-margin-bottom--1">.ds-u-radius</code>
+      <div class="ds-u-radius ds-u-fill--secondary ds-u-padding--2" style="width: 100px"></div>
+    </article>
+    <article class="ds-u-margin-top--2">
+      <code class="ds-u-margin-bottom--1">.ds-u-radius--pill</code>
+      <div
+        class="ds-u-radius--pill ds-u-fill--secondary ds-u-padding--2"
+        style="width: 100px"
+      ></div>
+    </article>
+    <article class="ds-u-margin-top--2">
+      <code class="ds-u-margin-bottom--1">.ds-u-radius--circle</code>
+      <div
+        class="ds-u-radius--circle ds-u-fill--secondary"
+        style="width: 50px; height: 50px"
+      ></div>
+    </article>
+  </section>
+</EmbeddedExample>
+
+## Guidance
+
+### Customization
+
+The following Sass variables can be overridden to theme the border radius utility:
+
+- `$border-radius`

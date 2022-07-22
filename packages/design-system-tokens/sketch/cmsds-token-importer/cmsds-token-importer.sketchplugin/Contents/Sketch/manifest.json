@@ -1,0 +1,24 @@
+{
+  "icon": "icon.png",
+  "commands": [
+    {
+      "name": "CMSDS Color Token Importer",
+      "identifier": "cmsds.json.color.token.importer",
+      "script": "json-token-importer.js"
+    }
+  ],
+  "menu": {
+    "isRoot": true,
+    "items": [
+      "cmsds.json.color.token.importer"
+    ]
+  },
+  "version": "0.1.0",
+  "description": "",
+  "name": "cmsds-token-importer",
+  "identifier": "cmsds-token-importer",
+  "disableCocoaScriptPreprocessor": true,
+  "appcast": "https://raw.githubusercontent.com//master/.appcast.xml",
+  "author": "Forrest Baer",
+  "authorEmail": "forrest@forrestbaer.com"
+}

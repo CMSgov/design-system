@@ -1,16 +1,13 @@
 @import '../settings/index.scss';
 
-$spinner-background-color-inverse: $color-background-inverse;
-$spinner-color-inverse: $color-white;
-
 @mixin spinner-size($inner-size, $outer-size) {
   height: $outer-size;
   width: $outer-size;
-  $padding: (($outer-size - $inner-size) / 2);
+  $padding: (($outer-size - $inner-size) * 0.5);
 
   &::before,
   &::after {
-    border-width: ($inner-size / 8);
+    border-width: ($inner-size * 0.125);
     height: $inner-size;
     left: $padding;
     top: $padding;
@@ -26,7 +23,7 @@ $spinner-color-inverse: $color-white;
 
   &::before,
   &::after {
-    border-radius: 50%;
+    border-radius: $radius-circle;
     border-style: solid;
     box-sizing: border-box;
     content: '';
@@ -63,16 +60,16 @@ $spinner-color-inverse: $color-white;
 
 .ds-c-spinner--filled {
   @include spinner-size($spacer-4, $spacer-6);
-  background-color: $color-background;
+  background-color: $spinner__background-color;
   border-radius: 50%;
-  color: $color-base;
+  color: $spinner__color;
   height: $spacer-6;
   width: $spacer-6;
 
   &.ds-c-spinner--inverse {
-    background-color: $spinner-background-color-inverse;
+    background-color: $spinner__background-color--inverse;
     &:not(:focus) {
-      color: $spinner-color-inverse;
+      color: $spinner__color--inverse;
     }
   }
 }

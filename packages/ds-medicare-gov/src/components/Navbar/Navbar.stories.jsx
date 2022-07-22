@@ -5,7 +5,7 @@ import NavigationMenu from '../NavigationMenu';
 import Navbar from './Navbar';
 
 export default {
-  title: 'Components/Navbar',
+  title: 'Medicare/Navbar',
   component: Navbar,
   argTypes: {
     className: {
@@ -34,6 +34,13 @@ export default {
     className: '',
     inverse: true,
   },
+  decorators: [
+    (Story) => (
+      <div data-theme="medicare">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 const Template = ({ data, ...args }) => <Navbar {...args} />;

@@ -1,0 +1,141 @@
+---
+title: Drawer & Help Drawer
+---
+
+import ViewSourceLink from '../../src/components/ViewSourceLink';
+
+A drawer provides a space for medium to long-form help content — content that's too long or not common enough to warrant being on the page by default.
+
+On large screens it's fixed to the side of the screen, and on smaller screens it overlays the entire screen.
+
+Render the drawer below the toggle button that triggers it. This way the markup remains semantically sound and screen reader friendly.
+
+## `<Drawer>`
+
+<StorybookExample
+  componentName="drawer"
+  sourceFilePath="components/Drawer/Drawer.tsx"
+  storyId="components-drawer--drawer-default"
+  minHeight={500}
+/>
+
+### Props
+
+<PropTable componentName="Drawer" />
+
+### Layout Alternatives
+
+A header and/or footer can have a "sticky" position if the following properties are applied to their respective elements:
+
+- `isHeaderSticky`
+- `isFooterSticky`
+
+<StorybookExample
+  componentName="sticky-drawer"
+  storyId="components-drawer--drawer-with-sticky-positioning"
+  minHeight={300}
+/>
+
+### Focus Trap
+
+A focus trap can be set on a drawer if the property `hasFocusTrap` is enabled. A user can escape the focus trap by pressing the <kbd>ESC</kbd> key.
+
+## `<DrawerToggle>`
+
+<ViewSourceLink sourceFilePath="components/Drawer/DrawerToggle.tsx" />
+
+<PropTable componentName="DrawerToggle" />
+
+## `<HelpDrawer>`
+
+This component is an enhanced `<Drawer>` component, providing the same properties as `<Drawer>` in addition to Google Analytics properties.
+
+<ViewSourceLink sourceFilePath="components/HelpDrawer/HelpDrawer.tsx" />
+
+<PropTable componentName="HelpDrawer" />
+
+## Guidance
+
+### When to use
+
+- When users need content to remain viewable while also allowing the user to views/interacts with the main page.
+- When the content is longer than 2 sentences.
+- When the content needs to be available at a particular point in the process, but doesn't need to be included on the main page.
+- When the content just needs to be available at the user's discretion, to provide additional details or context.
+- When users may need additional information to complete the task than can be supplied on the main page without overwhelming the primary content.
+
+### When to consider alternatives
+
+- When the content is timely/urgent, or critical to the action being taken.
+- When the content is intended to clarify or call attention to other content on the page.
+- When the content must be displayed without being initiated by a user action.
+- When additional information is necessary to the primary information the user is interacting with.
+
+### Usage
+
+- Link text used to trigger the help drawer should be specific and descriptive.
+  - Avoid using only "Learn more" to link to help drawer content
+  - Limit the amount of link text
+- Drawer content area should include a close button clearly at the top.
+
+### Accessibility
+
+- Focus should move to the content in the help drawer after the user has opened it.
+- Drawer should support keyboard navigation.
+  - `Enter` and `Space` to select the highlighted item.
+  - `Tab` to move the focus sequentially through the list of focusable items
+  - `Shift + Tab` to move the focus sequentially through the list of focusable items in reversed order
+
+#### Focus Management
+
+The property `hasFocusTrap` is an available option that will prevent keyboard focus from leaving the confines of the HelpDrawer when enabled.
+
+When the property `hasFocusTrap` is enabled...
+
+- Keyboard focus is trapped within the HelpDrawer component.
+- Pressing the escape key will close the Drawer.
+
+A focus trap should _not_ be used when it's anticipated that the user will rely on the Drawer as a reference resource for doing something outside of the Drawer. For instance, if the user is completing a form, Drawer may contain a reference guide defining specific requirements.
+
+However, there are times when it makes sense to trap focus within the Drawer. One occassion where it can benefit the user is when the Drawer is anticipated to fill the viewport of a screen, i.e., mobile layout.
+
+## Customization
+
+The following Sass variables can be overridden to customize Drawer components:
+
+<ComponentThemeOptions
+  componentname="drawer"
+/>
+
+### Future Work
+
+Future design iterations and possible user research to ensure the enhanced help drawer link design isn't confused or mistaken for transitional hyperlinks, glossary terms, or tooltips.
+
+## Google Analytics
+
+Google analytics are available via the `<HelpDrawer>` component.
+
+**Analytics event tracking is disabled by default.**
+
+### Enable event tracking
+
+Import and set the `setHelpDrawerSendsAnalytics` feature flag to `true` in your application's entry file:
+
+```js
+import { setHelpDrawerSendsAnalytics } from '@cmsgov/<design-system-package>';
+setHelpDrawerSendsAnalytics(true);
+```
+
+On application where the page has `utag` loaded, the data goes to Tealium which allows it to route to Google Analytics or the currently approved data analytics tools.
+
+### Disable event tracking
+
+For the `analytics` prop, pass the value `false` to the component to disable analytics tracking for a singular component instance
+
+```js
+analytics={false}
+```
+
+### Override event tracking
+
+A custom heading value can be sent for an analytics event by using the prop `analyticsLabelOverride`. It is recommended that this value be used to prevent sensitive personal information from being passed to analytics trackers.

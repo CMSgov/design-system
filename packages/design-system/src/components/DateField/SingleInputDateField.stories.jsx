@@ -8,6 +8,13 @@ export default {
     errorMessage: {
       control: { type: 'text' },
     },
+    errorPlacement: {
+      defaultValue: 'top',
+      control: {
+        type: 'radio',
+      },
+      options: ['top', 'bottom'],
+    },
     hint: {
       control: { type: 'text' },
     },
@@ -34,5 +41,14 @@ export const Default = Template.bind({});
 
 export const WithPicker = Template.bind({});
 WithPicker.args = {
+  label: 'What day did you move?',
+  hint: 'This date should be within the past 60 days in order to qualify',
   fromYear: new Date().getFullYear(),
+  toDate: new Date(),
+};
+
+export const WithError = Template.bind({});
+WithError.args = {
+  ...WithPicker.args,
+  errorMessage: 'Example error message',
 };

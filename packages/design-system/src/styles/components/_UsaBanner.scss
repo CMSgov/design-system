@@ -1,16 +1,14 @@
-$usa-banner-background-color: #f0f0f0;
-$usa-banner-text-color: #1b1b1b;
-$usa-banner-close-image-background-color: #e6e6e6;
-$usa-banner-header-action-color: #005ea2;
-$usa-banner-font-family: $font-sans;
+// @TODO: deprecate usage of these when modification of these in
+// consuming systems is either not done or easily resolved
 $usa-banner-mobile-close-size: 48px;
 $usa-caret-icon-size: 10px;
+$usa-banner-font-family: $font-sans;
 
 .ds-c-usa-banner {
-  background-color: $usa-banner-background-color;
-  color: $usa-banner-text-color;
+  background-color: $usa-banner__background-color;
+  color: $usa-banner__color;
   font-family: $usa-banner-font-family;
-  font-size: $base-font-size;
+  font-size: $font-size-base;
   padding: 0;
 }
 
@@ -19,7 +17,7 @@ $usa-caret-icon-size: 10px;
   display: flex;
   flex-direction: row;
   font-size: 12px;
-  font-weight: $font-normal;
+  font-weight: $font-weight-normal;
   line-height: 1.2;
   min-height: $spacer-4;
   padding: $spacer-1 $spacer-2 $spacer-1 $spacer-2;
@@ -55,7 +53,7 @@ $usa-caret-icon-size: 10px;
 
 .ds-c-usa-banner__collapse-banner-container {
   align-items: center;
-  background-color: $usa-banner-close-image-background-color;
+  background-color: $usa-banner-close__background-color;
   display: flex;
   height: $usa-banner-mobile-close-size;
   justify-content: center;
@@ -85,7 +83,7 @@ $usa-caret-icon-size: 10px;
 }
 
 .ds-c-usa-banner__header-action {
-  color: $usa-banner-header-action-color;
+  color: $usa-banner-action__color;
   display: block;
   margin-bottom: 0;
   margin-top: 2px;
@@ -152,7 +150,7 @@ $usa-caret-icon-size: 10px;
   width: $spacer-5;
 
   &.ds-c-icon--lock-circle {
-    color: #719f2a;
+    color: $usa-banner-lock-icon__color;
 
     @media (-ms-high-contrast: active), (forced-colors: active) {
       color: WindowText;
@@ -163,7 +161,7 @@ $usa-caret-icon-size: 10px;
 .ds-c-usa-banner__lock-image {
   height: 1.5ex;
   vertical-align: inherit;
-  width: 1.5ex * 52 / 64;
+  width: calc(1.5ex * 52 / 64);
 
   path {
     fill: currentColor;
@@ -200,7 +198,7 @@ $usa-caret-icon-size: 10px;
 }
 
 .ds-c-usa-banner__action-icon {
-  color: $usa-banner-text-color;
+  color: $usa-banner__color;
   height: $usa-caret-icon-size;
   width: $usa-caret-icon-size;
 }

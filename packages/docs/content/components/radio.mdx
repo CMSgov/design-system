@@ -1,0 +1,108 @@
+---
+title: Checkbox & Radio
+relatedUswdsGuidance: components/form-controls
+---
+
+## `<ChoiceList>`
+
+A `ChoiceList` component can be used to render a radio button group or [checkbox](/components/checkbox) group. Use the `type` prop to specify the type of field to display.
+
+**Radio**
+
+<StorybookExample
+  componentName="choiceList-radio"
+  sourceFilePath="components/ChoiceList/ChoiceList.tsx"
+  storyId="components-choicelist--default-radio"
+/>
+
+### ChoiceList Props
+
+<PropTable componentName="ChoiceList" />
+
+## `<Choice>`
+
+A `Choice` component can be used to render a checkbox or radio button.
+
+Any _undocumented_ props that you pass to this component will be passed to the `input` element, so you can use this to set additional attributes if necessary.
+
+<StorybookExample
+  componentName="choice"
+  sourceFilePath="components/ChoiceList/Choice.tsx"
+  storyId="components-choicelist--choice-children"
+/>
+
+### Choice Props
+
+<PropTable componentName="Choice" />
+
+## Guidance
+
+### When to use
+
+**Radio buttons**
+
+- When users need to select only one option out of a set of mutually exclusive choices.
+
+### When to consider alternatives
+
+- If there are too many options to display on a mobile screen. Consider a `dropdown` menu if you don’t have enough space to list out all available options, and if the user can only select one of the options.
+- Never use radio buttons for optional questions, since once a radio button is selected from a list, it or another choice will remain selected.
+
+### Usage
+
+- Don't rely on the visual difference between radio buttons and checkboxes. Make it clear with words when users can select one or multiple options.
+- Users should be able to tap on or click on either the text label or the checkbox to select or deselect an option.
+- In general, list choices vertically; horizontal listings can make it difficult to tell which label pertains to which choice. An exception is where you have binary choices with short labels, like 'Yes / No'. The convention here is for horizontal alignment.
+- Avoid using negative language in labels as they can be counterintuitive. For example, “I want to receive a promotional email” instead of “I don’t want to receive promotional email.”
+- Use caution if you decide to set a default value. Setting a default value can discourage users from making conscious decisions, seem pushy, or alienate users who don’t fit into your assumptions. In addition, you'll never know if the user explicitly chose that option or just didn't notice the question. If you're unsure, leave nothing selected by default.
+
+**[View the "Forms" guidelines for additional guidance and best practices.](/patterns/forms/)**
+
+### Checked children and the expose within pattern
+
+- The `<Choice>` component includes a `checkedChildren` prop that can expose hidden text information or form elements. This **expose within** pattern is especially useful if you need to collect data from follow up questions or give just-in-time feedback.
+- Checked children can be exposed by checking the parent checkbox or radio button
+- The `checkedChildren` prop should return one or more items wrapped in a `div` with the following className: `.ds-c-choice__checkedChild`. This class sets the spacing and border color for the exposed elements.
+- Add the className `.ds-c-choice__checkedChild--inverse` to the `div` to show the inverse white border
+- You may need to add the className `.ds-u-margin--0` to your child element(s) to avoid extra top margin
+- If you opt for smaller radio buttons or checkboxes, add className `.ds-c-choice__checkedChild--small` to your checked child container
+
+### Accessibility
+
+- Surround a related set of choices with a `<fieldset>`. The `<legend>` provides context for the grouping. Do not use `fieldset` and `legend` for a single checkbox.
+- Some screen readers read the `legend` text for each `fieldset`, so it should be brief and descriptive.
+- Each input should have a semantic `id` attribute, and its corresponding `label` should have the same value in its `for` attribute.
+- The custom checkboxes and radio buttons here are accessible to screen readers because the default fields are moved off-screen.
+- `checkedChildren` will be announced to screen readers when they are exposed. They have been tested with the following devices:
+  - Windows 10 + Internet Explorer 11 + JAWS screen reader
+  - Windows 10 + Chrome + JAWS
+  - Windows10 - Firefox + NVDA
+    - NVDA reads out the `<select>` label and every `<option>` value
+  - MacOS Mojave + Safari + VoiceOver
+
+## Customization
+
+The following Sass variables can be overridden to customize choice fields:
+
+<ComponentThemeOptions
+  theme="core"
+  componentname="choice"
+/>
+
+### Form components
+
+<ComponentThemeOptions
+  theme="core"
+  componentname="form"
+/>
+
+### Related patterns
+
+- [Dropdown](/components/dropdown/)
+
+### Learn more
+
+- [Form Guidelines](/patterns/forms/)
+- [GOV.UK Checkbox/Radio buttons discussion](https://paper.dropbox.com/doc/Radio-buttons-oIwWoxwBKClt5IXvDbnpF)
+- ["We've updated the radios and checkboxes on GOV.UK"](https://designnotes.blog.gov.uk/2016/11/30/weve-updated-the-radios-and-checkboxes-on-gov-uk/)
+- [Four steps for choosing form elements on the Web (PDF)](http://www.formsthatwork.com/files/Articles/dropdown.pdf)
