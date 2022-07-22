@@ -40,6 +40,8 @@ export const query = graphql`
         }
         healthcare {
           sketchLink
+          storybookLink
+          githubLink
         }
         medicare {
           sketchLink

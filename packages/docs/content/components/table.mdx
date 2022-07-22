@@ -1,6 +1,15 @@
 ---
 title: Table
 status: draft
+intro: Tables show tabular data in columns and rows.
+core:
+  githubLink: design-system/src/components/Table
+  sketchLink: m19DRAP
+  storybookLink: components-table--scrollable-table
+healthcare:
+  sketchLink: L0pzWyl
+medicare:
+  sketchLink: L03RROQ
 ---
 
 import {
@@ -11,9 +20,6 @@ import {
   TableHead,
   TableRow,
 } from '@cmsgov/design-system';
-import ViewSourceLink from '../../src/components/ViewSourceLink';
-
-Tables show tabular data in columns and rows.
 
 ## Table with multi headers and a caption
 
@@ -80,8 +86,6 @@ Tables show tabular data in columns and rows.
 as well as `TableRow` and `TableCell` for the table content. These components mostly follow ordinary HTML table semantics, but also include some additional
 responsive features including horizontal scrolling and vertically stacked rows.
 
-<ViewSourceLink sourceFilePath="components/Table/Table.tsx" />
-
 ### Scrollable Table
 
 <ResponsiveExample title="Scrollable table example" storyId="components-table--scrollable-table" />
@@ -101,8 +105,6 @@ responsive features including horizontal scrolling and vertically stacked rows.
 
 `TableCaption` renders the `<caption>` element.
 
-<ViewSourceLink sourceFilePath="components/Table/TableCaption.tsx" />
-
 ### Table Caption Props
 
 <PropTable componentName="TableCaption" />
@@ -110,8 +112,6 @@ responsive features including horizontal scrolling and vertically stacked rows.
 ## `<TableHead>`
 
 `TableHead` renders the `<thead>` element and will typically contain `TableRow` elements to define table columns.
-
-<ViewSourceLink sourceFilePath="components/Table/TableHead.tsx" />
 
 ### Table Head Props
 
@@ -121,8 +121,6 @@ responsive features including horizontal scrolling and vertically stacked rows.
 
 `TableBody` renders the `<tbody>` element and will typically contain `TableRow` elements to define table data.
 
-<ViewSourceLink sourceFilePath="components/Table/TableBody.tsx" />
-
 ### Table Body Props
 
 <PropTable componentName="TableBody" />
@@ -131,8 +129,6 @@ responsive features including horizontal scrolling and vertically stacked rows.
 
 `TableRow` renders a `<tr>` element.
 
-<ViewSourceLink sourceFilePath="components/Table/TableRow.tsx" />
-
 ### Table Row Props
 
 <PropTable componentName="TableRow" />
@@ -140,8 +136,6 @@ responsive features including horizontal scrolling and vertically stacked rows.
 ## `<TableCell>`
 
 `TableCell` dynamically renders a `<th>` or `<td>` element based on the parent component or user specified `component` prop. By default `TableCell` will automatically render a `<th>` element if the parent component is `TableHead`, otherwise it will render a `<td>` element.
-
-<ViewSourceLink sourceFilePath="components/Table/TableCell.tsx" />
 
 ### Table Cell Props
 

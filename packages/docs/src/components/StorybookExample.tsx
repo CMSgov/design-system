@@ -4,7 +4,6 @@ import { ExternalLinkIcon, Spinner } from '@cmsgov/design-system';
 import { withPrefix } from 'gatsby';
 import CodeSnippet from './CodeSnippet';
 import { makeStorybookUrl } from '../helpers/urlUtils';
-import ViewSourceLink from './ViewSourceLink';
 
 interface StorybookExampleProps {
   /**
@@ -94,9 +93,6 @@ const StorybookExample = ({
 
   return (
     <>
-      {sourceFilePath && (
-        <ViewSourceLink sourceFilePath={sourceFilePath} packageName={sourcePackageName} />
-      )}
       <div className="c-storybook-example">
         <div
           className={classnames('c-storybook-example__iframe-wrapper', {

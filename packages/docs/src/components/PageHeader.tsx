@@ -1,4 +1,5 @@
 import React from 'react';
+import { withPrefix } from 'gatsby';
 
 import { Badge } from '@cmsgov/design-system';
 import { FrontmatterInterface } from '../helpers/graphQLTypes';
@@ -41,7 +42,7 @@ const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => 
           <a href={makeStorybookUrl(storyId, theme)} className="c-page-header__link">
             <img
               alt="Storybook logo"
-              src={'/images/storybook-icon.png'}
+              src={withPrefix('/images/storybook-icon.png')}
               className="ds-u-display--inline c-page-header__icon"
             />
             Storybook
@@ -51,7 +52,7 @@ const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => 
           <a href={makeSketchUrl(sketchId, theme)} className="c-page-header__link">
             <img
               alt="Sketch logo"
-              src={'/images/sketch-icon.png'}
+              src={withPrefix('/images/sketch-icon.png')}
               className="ds-u-display--inline c-page-header__icon"
             />
             Sketch
