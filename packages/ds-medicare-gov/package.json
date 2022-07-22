@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/ds-medicare-gov",
-  "version": "5.5.2",
+  "version": "5.5.3",
   "publishConfig": {
     "tag": "latest",
     "access": "public"
@@ -25,7 +25,7 @@
     "src"
   ],
   "dependencies": {
-    "@cmsgov/design-system": "^3.5.2",
+    "@cmsgov/design-system": "^3.5.3",
     "@types/react": "^17.0.10",
     "@types/react-dom": "^17.0.10"
   },
@@ -33,8 +33,8 @@
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-proposal-object-rest-spread": "^7.9.0",
     "@babel/preset-typescript": "^7.8.3",
-    "@cmsgov/design-system-docs": "^3.5.2",
-    "@cmsgov/design-system-scripts": "^3.5.0-beta.1",
+    "@cmsgov/design-system-docs": "^3.5.3",
+    "@cmsgov/design-system-scripts": "^3.5.3",
     "@types/webpack": "^4.41.6",
     "@typescript-eslint/eslint-plugin": "^2.21.0",
     "@typescript-eslint/parser": "^2.21.0",
