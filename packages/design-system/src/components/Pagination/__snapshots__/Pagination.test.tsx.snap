@@ -5,7 +5,7 @@ Array [
   <li>
     <span
       aria-current="true"
-      class="ds-c-button ds-c-button--link ds-c-pagination__current-page"
+      class="ds-c-button ds-c-button--ghost ds-c-pagination__current-page"
     >
       1
     </span>
@@ -13,7 +13,7 @@ Array [
   <li>
     <a
       aria-label="page 2"
-      class="ds-c-button ds-c-button--main ds-c-button--on-light ds-c-button--link"
+      class="ds-c-button ds-c-button--ghost"
       href="#2"
     >
       2
@@ -22,7 +22,7 @@ Array [
   <li>
     <a
       aria-label="page 3"
-      class="ds-c-button ds-c-button--main ds-c-button--on-light ds-c-button--link"
+      class="ds-c-button ds-c-button--ghost"
       href="#3"
     >
       3
@@ -31,7 +31,7 @@ Array [
   <li>
     <a
       aria-label="page 4"
-      class="ds-c-button ds-c-button--main ds-c-button--on-light ds-c-button--link"
+      class="ds-c-button ds-c-button--ghost"
       href="#4"
     >
       4
@@ -40,7 +40,7 @@ Array [
   <li>
     <a
       aria-label="page 5"
-      class="ds-c-button ds-c-button--main ds-c-button--on-light ds-c-button--link"
+      class="ds-c-button ds-c-button--ghost"
       href="#5"
     >
       5
@@ -57,7 +57,7 @@ exports[`Pagination should render component 1`] = `
   >
     <a
       aria-label="Previous Page"
-      class="ds-c-button ds-c-button--main ds-c-button--on-light ds-c-button--link ds-c-pagination__nav"
+      class="ds-c-button ds-c-button--ghost ds-c-pagination__nav"
       href="#1"
     >
       <span
@@ -84,7 +84,7 @@ exports[`Pagination should render component 1`] = `
       <li>
         <a
           aria-label="page 1"
-          class="ds-c-button ds-c-button--main ds-c-button--on-light ds-c-button--link"
+          class="ds-c-button ds-c-button--ghost"
           href="#1"
         >
           1
@@ -93,7 +93,7 @@ exports[`Pagination should render component 1`] = `
       <li>
         <span
           aria-current="true"
-          class="ds-c-button ds-c-button--link ds-c-pagination__current-page"
+          class="ds-c-button ds-c-button--ghost ds-c-pagination__current-page"
         >
           2
         </span>
@@ -101,7 +101,7 @@ exports[`Pagination should render component 1`] = `
       <li>
         <a
           aria-label="page 3"
-          class="ds-c-button ds-c-button--main ds-c-button--on-light ds-c-button--link"
+          class="ds-c-button ds-c-button--ghost"
           href="#3"
         >
           3
@@ -110,7 +110,7 @@ exports[`Pagination should render component 1`] = `
     </ul>
     <a
       aria-label="Next Page"
-      class="ds-c-button ds-c-button--main ds-c-button--on-light ds-c-button--link ds-c-pagination__nav"
+      class="ds-c-button ds-c-button--ghost ds-c-pagination__nav"
       href="#3"
     >
       Next
@@ -145,7 +145,7 @@ exports[`Pagination with compact prop enabled should render compact variant 1`] 
   >
     <a
       aria-label="Previous Page"
-      class="ds-c-button ds-c-button--main ds-c-button--on-light ds-c-button--link ds-c-pagination__nav"
+      class="ds-c-button ds-c-button--ghost ds-c-pagination__nav"
       href="#1"
     >
       <span
@@ -182,7 +182,7 @@ exports[`Pagination with compact prop enabled should render compact variant 1`] 
     </span>
     <a
       aria-label="Next Page"
-      class="ds-c-button ds-c-button--main ds-c-button--on-light ds-c-button--link ds-c-pagination__nav"
+      class="ds-c-button ds-c-button--ghost ds-c-pagination__nav"
       href="#3"
     >
       Next

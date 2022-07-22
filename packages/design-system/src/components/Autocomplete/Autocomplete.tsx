@@ -377,7 +377,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, any> {
                 className="ds-c-autocomplete__clear-btn"
                 onClick={clearSelection}
                 size="small"
-                variation="link"
+                variation="ghost"
               >
                 {clearInputText ?? t('autocomplete.clearInputText')}
               </Button>

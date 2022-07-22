@@ -28,7 +28,7 @@ describe('Dialog', function () {
 
   it('close button text and variation can be changed', () => {
     renderDialog({
-      closeButtonVariation: 'link',
+      closeButtonVariation: 'ghost',
       closeButtonText: "No thank you. I don't like saving money",
     });
     expect(screen.getByRole('document')).toMatchSnapshot();
