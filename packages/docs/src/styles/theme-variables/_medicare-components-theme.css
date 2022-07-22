@@ -143,10 +143,10 @@
 --button-ghost__border-color--disabled: transparent;
 --button-ghost__border-color--hover: transparent;
 --button-ghost__border-color: transparent;
---button-ghost__color--active: #0a352f;
+--button-ghost__color--active: #1b3665;
 --button-ghost__color--disabled: #d9d9d9;
---button-ghost__color--hover: #0e4a41;
---button-ghost__color: #146a5d;
+--button-ghost__color--hover: #1b3665;
+--button-ghost__color: #1e3c70;
 --button-ghost-alt__background-color--active: transparent;
 --button-ghost-alt__background-color--disabled: transparent;
 --button-ghost-alt__background-color--hover: transparent;
@@ -155,10 +155,10 @@
 --button-ghost-alt__border-color--disabled: transparent;
 --button-ghost-alt__border-color--hover: transparent;
 --button-ghost-alt__border-color: transparent;
---button-ghost-alt__color--active: #0f1e38;
+--button-ghost-alt__color--active: #0a352f;
 --button-ghost-alt__color--disabled: #d9d9d9;
---button-ghost-alt__color--hover: #152a4e;
---button-ghost-alt__color: #1e3c70;
+--button-ghost-alt__color--hover: #0e4a41;
+--button-ghost-alt__color: #146a5d;
 --button-ghost-dark__background-color--active: transparent;
 --button-ghost-dark__background-color--disabled: transparent;
 --button-ghost-dark__background-color--hover: transparent;
