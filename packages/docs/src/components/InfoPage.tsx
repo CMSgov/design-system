@@ -47,7 +47,7 @@ export const query = graphql`
         relatedUswdsGuidance
       }
       body
-      tableOfContents(maxDepth: 2)
+      tableOfContents(maxDepth: 3)
     }
   }
 `;
