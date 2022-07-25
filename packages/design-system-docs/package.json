@@ -13,7 +13,7 @@
   },
   "license": "SEE LICENSE IN LICENSE.md",
   "dependencies": {
-    "@cmsgov/design-system": "^3.5.4",
+    "@cmsgov/design-system": "3.5.4",
     "classnames": "^2.2.5",
     "lodash": "^4.17.19",
     "prismjs": "^1.11.0",
