@@ -50,10 +50,15 @@ const StorybookExample = ({
 }: StorybookExampleProps) => {
   const [iframeHeight, setiFrameHeight] = useState<number>(200);
   const [iframeHtml, setiFrameHtml] = useState<string>('');
+  const [reactCode, setReactCode] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const iframeRef = useRef<HTMLIFrameElement>();
   const iframeUrl = withPrefix(
     `/storybook/iframe.html?id=${storyId}&viewMode=story&globals=theme:${theme}`
+  );
+  const docsRef = useRef<HTMLIFrameElement>();
+  const docsUrl = withPrefix(
+    `/storybook/iframe.html?id=${storyId}&viewMode=docs&globals=theme:${theme}`
   );
 
   useEffect(() => {
@@ -91,6 +96,23 @@ const StorybookExample = ({
     setIsLoading(false);
   };
 
+  const onDocsLoad = () => {
+    if (docsRef.current) {
+      const showCodeButton =
+        docsRef.current.contentDocument.body.querySelector('.docblock-code-toggle');
+      if (showCodeButton && (showCodeButton as HTMLButtonElement).click) {
+        (showCodeButton as HTMLButtonElement).click();
+        setTimeout(() => {
+          // This works, but one problem is that the docs page has multiple examples on it, and we don't know which one we're getting
+          const codeEl = docsRef.current.contentDocument.body.querySelector('code.language-jsx');
+          setReactCode(codeEl.outerHTML);
+        }, 1000);
+      } else {
+        // TODO: Show an error
+      }
+    }
+  };
+
   return (
     <>
       <div className="c-storybook-example">
@@ -114,6 +136,13 @@ const StorybookExample = ({
             ref={iframeRef}
             onLoad={onIframeLoad}
           />
+          <iframe
+            referrerPolicy="no-referrer"
+            src={docsUrl}
+            style={{ width: '0', height: '0' }}
+            ref={docsRef}
+            onLoad={onDocsLoad}
+          />
         </div>
         <div className="ds-u-display--flex ds-u-justify-content--end">
           <a
@@ -126,6 +155,10 @@ const StorybookExample = ({
           </a>
         </div>
       </div>
+      <pre
+        className="ds-u-margin-bottom--4 ds-u-overflow--auto ds-u-padding--2"
+        dangerouslySetInnerHTML={{ __html: reactCode }}
+      ></pre>
       <CodeSnippet html={iframeHtml} />
     </>
   );
