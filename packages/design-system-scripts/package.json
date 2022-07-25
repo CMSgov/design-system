@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/design-system-scripts",
-  "version": "3.5.3",
+  "version": "3.5.4",
   "publishConfig": {
     "access": "public",
     "tag": "latest"
