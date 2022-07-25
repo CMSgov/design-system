@@ -98,15 +98,22 @@ const StorybookExample = ({
 
   const onDocsLoad = () => {
     if (docsRef.current) {
-      const showCodeButton =
-        docsRef.current.contentDocument.body.querySelector('.docblock-code-toggle');
+      const storyBlockSelector = `#anchor--${storyId}`;
+      const showCodeButton = docsRef.current.contentDocument.body.querySelector(
+        `${storyBlockSelector} .docblock-code-toggle`
+      );
       if (showCodeButton && (showCodeButton as HTMLButtonElement).click) {
         (showCodeButton as HTMLButtonElement).click();
         setTimeout(() => {
-          // This works, but one problem is that the docs page has multiple examples on it, and we don't know which one we're getting
-          const codeEl = docsRef.current.contentDocument.body.querySelector('code.language-jsx');
-          setReactCode(codeEl.outerHTML);
-        }, 1000);
+          const codeEl = docsRef.current.contentDocument.body.querySelector(
+            `${storyBlockSelector} code.language-jsx`
+          );
+          if (codeEl) {
+            setReactCode(codeEl.outerHTML);
+          } else {
+            // Show error
+          }
+        }, 2000);
       } else {
         // TODO: Show an error
       }
