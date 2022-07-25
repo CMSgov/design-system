@@ -5,13 +5,31 @@ relatedUswdsGuidance: components/buttons
 
 import { Alert, ArrowIcon, Button, TextInput } from '@cmsgov/design-system';
 
-Use buttons to signal actions.
+## Examples
 
-## Variations
+### Outline buttons
 
-<ButtonVariationsTable />
+<StorybookExample
+  componentName="button"
+  sourceFilePath="components/Button/Button.tsx"
+  storyId="components-button--default&args=children:Outline"
+/>
 
-## Customization
+### Solid buttons
+
+<StorybookExample
+  componentName="button"
+  sourceFilePath="components/Button/Button.tsx"
+  storyId="components-button--default&args=children:Solid;variation:solid"
+/>
+
+### Ghost buttons
+
+<StorybookExample
+  componentName="button"
+  sourceFilePath="components/Button/Button.tsx"
+  storyId="components-button--default&args=children:Ghost;variation:ghost"
+/>
 
 ### Changing the size
 
@@ -50,6 +68,8 @@ Buttons can exist in two alternative sizes: "big" or "small". See the example be
 
 ## Code
 
+### React
+
 The `Button` component accepts its text as children (AKA inner HTML), which
 means you can also pass in HTML or custom components. This gives you a lot of
 flexibility and supports a variety of advanced use cases. The most common use
@@ -59,17 +79,9 @@ In addition to the supported props listed, you can also pass in additional
 props, which will be passed to the rendered root component. For example,
 you could pass in a `target` prop to pass to the rendered anchor element.
 
-<StorybookExample
-  componentName="button"
-  sourceFilePath="components/Button/Button.tsx"
-  storyId="components-button--default"
-/>
-
-### React props
-
 <PropTable componentName="Button" />
 
-### Style customization
+### Styles
 
 The following Sass variables can be overridden to customize Button components:
 
