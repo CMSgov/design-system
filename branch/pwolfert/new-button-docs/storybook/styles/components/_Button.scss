@@ -10,7 +10,7 @@
   cursor: pointer;
   font-family: $font-sans;
   font-size: var(--fontSize, $font-size-base);
-  font-weight: var(--fontWeight, $font-weight-bold);
+  font-weight: var(--fontWeight, $button__font-weight);
   line-height: 1.3;
   text-align: center;
   text-decoration-color: transparent;

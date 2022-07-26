@@ -100,10 +100,10 @@ describe('Button', () => {
       href: '#',
       disabled: true,
       onDark: true,
-      variation: 'link',
+      variation: 'ghost',
     });
     const link = screen.getByRole('link');
-    expect(link.classList.contains('ds-c-button--link')).toBe(true);
+    expect(link.classList.contains('ds-c-button--ghost')).toBe(true);
     expect(link.classList.contains('ds-c-button--on-dark')).toBe(true);
     expect(link.classList.contains('ds-c-button--disabled')).toBe(true);
     expect(link.classList.contains('ds-c-button')).toBe(true);

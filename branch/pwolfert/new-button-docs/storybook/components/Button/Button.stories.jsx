@@ -25,7 +25,7 @@ export default {
       options: ['small', 'big'],
     },
     variation: {
-      options: ['solid', 'outline', 'link'],
+      options: ['solid', 'ghost'],
     },
   },
   args: {
@@ -37,11 +37,11 @@ export default {
 const Template = ({ ...args }) => <Button {...args} />;
 
 export const DefaultButton = Template.bind({});
-export const InverseButton = Template.bind({});
-InverseButton.args = {
+export const OnDark = Template.bind({});
+OnDark.args = {
   onDark: true,
 };
-InverseButton.parameters = {
+OnDark.parameters = {
   backgrounds: { default: process.env.STORYBOOK_DS === 'medicare' ? 'Mgov dark' : 'Hcgov dark' },
 };
 
@@ -72,6 +72,28 @@ AnchorButton.parameters = {
   loki: { skip: true },
 };
 
+export const VariationsOnDark = () => (
+  <>
+    <Button onDark>Outline</Button>
+    <Button onDark variation="solid">
+      Solid
+    </Button>
+    <Button onDark variation="ghost">
+      Ghost
+    </Button>
+  </>
+);
+VariationsOnDark.parameters = {
+  backgrounds: { default: process.env.STORYBOOK_DS === 'medicare' ? 'Mgov dark' : 'Hcgov dark' },
+};
+VariationsOnDark.decorators = [
+  (Story) => (
+    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+      <Story />
+    </div>
+  ),
+];
+
 export const AllButtons = () => {
   return (
     <>
@@ -79,12 +101,12 @@ export const AllButtons = () => {
 
       <div style={{ display: 'flex', gap: '1rem', flexDirection: 'column' }}>
         <h4>Default and modified default</h4>
-        <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
           <Button size="big">Button</Button>
           <Button>Button</Button>
           <Button size="small">Button</Button>
         </div>
-        <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
           <Button size="big" disabled>
             Button
           </Button>
@@ -93,7 +115,7 @@ export const AllButtons = () => {
             Button
           </Button>
         </div>
-        <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
           <Button size="big" isAlternate>
             Alt button
           </Button>
@@ -102,7 +124,7 @@ export const AllButtons = () => {
             Alt button
           </Button>
         </div>
-        <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
           <Button size="big" disabled isAlternate>
             Alt button
           </Button>
@@ -117,7 +139,7 @@ export const AllButtons = () => {
           className="ds-u-fill--base ds-u-padding--2"
           style={{ display: 'flex', gap: '1rem', flexDirection: 'column' }}
         >
-          <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
             <Button onDark size="big">
               Button on-dark
             </Button>
@@ -126,7 +148,7 @@ export const AllButtons = () => {
               Button on-dark
             </Button>
           </div>
-          <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
             <Button onDark size="big" disabled>
               Button on-dark
             </Button>
@@ -137,7 +159,7 @@ export const AllButtons = () => {
               Button on-dark
             </Button>
           </div>
-          <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
             <Button onDark size="big" isAlternate>
               Alt button on-dark
             </Button>
@@ -148,7 +170,7 @@ export const AllButtons = () => {
               Alt button on-dark
             </Button>
           </div>
-          <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
             <Button onDark size="big" disabled isAlternate>
               Alt button on-dark
             </Button>
@@ -162,7 +184,7 @@ export const AllButtons = () => {
         </div>
 
         <h4>Solids</h4>
-        <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
           <Button variation="solid" size="big">
             Solid button
           </Button>
@@ -171,7 +193,7 @@ export const AllButtons = () => {
             Solid button
           </Button>
         </div>
-        <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
           <Button variation="solid" size="big" disabled>
             Solid button
           </Button>
@@ -182,7 +204,7 @@ export const AllButtons = () => {
             Solid button
           </Button>
         </div>
-        <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
           <Button variation="solid" size="big" isAlternate>
             Solid alt button
           </Button>
@@ -193,7 +215,7 @@ export const AllButtons = () => {
             Solid alt button
           </Button>
         </div>
-        <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
           <Button variation="solid" size="big" disabled isAlternate>
             Solid alt button
           </Button>
@@ -208,7 +230,7 @@ export const AllButtons = () => {
           className="ds-u-fill--base ds-u-padding--2"
           style={{ display: 'flex', gap: '1rem', flexDirection: 'column' }}
         >
-          <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
             <Button onDark variation="solid" size="big">
               Solid button on-dark
             </Button>
@@ -219,7 +241,7 @@ export const AllButtons = () => {
               Solid button on-dark
             </Button>
           </div>
-          <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
             <Button onDark variation="solid" size="big" disabled>
               Solid button on-dark
             </Button>
@@ -230,7 +252,7 @@ export const AllButtons = () => {
               Solid button on-dark
             </Button>
           </div>
-          <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
             <Button onDark variation="solid" size="big" isAlternate>
               Solid alt button on-dark
             </Button>
@@ -241,7 +263,7 @@ export const AllButtons = () => {
               Solid alt button on-dark
             </Button>
           </div>
-          <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
             <Button onDark variation="solid" size="big" disabled isAlternate>
               Solid alt button on-dark
             </Button>
@@ -255,7 +277,7 @@ export const AllButtons = () => {
         </div>
 
         <h4>Ghosts</h4>
-        <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
           <Button variation="ghost" size="big">
             Ghost button
           </Button>
@@ -264,7 +286,7 @@ export const AllButtons = () => {
             Ghost button
           </Button>
         </div>
-        <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
           <Button variation="ghost" size="big" disabled>
             Ghost button
           </Button>
@@ -275,7 +297,7 @@ export const AllButtons = () => {
             Ghost button
           </Button>
         </div>
-        <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
           <Button variation="ghost" size="big" isAlternate>
             Ghost alt button
           </Button>
@@ -286,7 +308,7 @@ export const AllButtons = () => {
             Ghost alt button
           </Button>
         </div>
-        <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
           <Button variation="ghost" size="big" disabled isAlternate>
             Ghost alt button
           </Button>
@@ -301,7 +323,7 @@ export const AllButtons = () => {
           className="ds-u-fill--base ds-u-padding--2"
           style={{ display: 'flex', gap: '1rem', flexDirection: 'column' }}
         >
-          <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
             <Button onDark variation="ghost" size="big">
               Ghost button on-dark
             </Button>
@@ -312,7 +334,7 @@ export const AllButtons = () => {
               Ghost button on-dark
             </Button>
           </div>
-          <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
             <Button onDark variation="ghost" size="big" disabled>
               Ghost button on-dark
             </Button>
@@ -323,7 +345,7 @@ export const AllButtons = () => {
               Ghost button on-dark
             </Button>
           </div>
-          <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
             <Button onDark variation="ghost" size="big" isAlternate>
               Ghost alt button on-dark
             </Button>
@@ -334,7 +356,7 @@ export const AllButtons = () => {
               Ghost alt button on-dark
             </Button>
           </div>
-          <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
             <Button onDark variation="ghost" size="big" disabled isAlternate>
               Ghost alt button on-dark
             </Button>

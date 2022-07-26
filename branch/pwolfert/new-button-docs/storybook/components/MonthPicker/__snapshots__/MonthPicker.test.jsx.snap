@@ -19,7 +19,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
   >
     <button
       aria-pressed={false}
-      className="ds-c-button ds-c-button--main ds-c-button--on-light ds-c-button--small ds-c-button--outline ds-c-month-picker__button"
+      className="ds-c-button ds-c-button--small ds-c-month-picker__button"
       onClick={[Function]}
       type="button"
     >
@@ -27,7 +27,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
     </button>
     <button
       aria-pressed={true}
-      className="ds-c-button ds-c-button--main ds-c-button--on-light ds-c-button--small ds-c-button--outline ds-c-month-picker__button"
+      className="ds-c-button ds-c-button--small ds-c-month-picker__button"
       onClick={[Function]}
       type="button"
     >
