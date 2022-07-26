@@ -66,7 +66,7 @@ git checkout -b $BRANCH
 
 echo "${GREEN}Bumping version...${NC}"
 PRE_VERSION_HASH=$(git rev-parse HEAD)
-yarn lerna version --no-push ${EXTRA_OPTS[@]}
+yarn lerna version --no-push --exact ${EXTRA_OPTS[@]}
 POST_VERSION_HASH=$(git rev-parse HEAD)
 
 if [ "$PRE_VERSION_HASH" = "$POST_VERSION_HASH" ]; then

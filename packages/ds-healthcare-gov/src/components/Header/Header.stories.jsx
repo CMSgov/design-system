@@ -5,7 +5,7 @@ import Header from './Header';
 // Because the DS exports the wrapped Header component, Header props are not shown in the args table
 // TODO: look into later if storybook is used more publicly
 export default {
-  title: 'Components/Header',
+  title: 'Healthcare/Header',
   component: Header,
   argTypes: {
     className: {
@@ -26,6 +26,13 @@ export default {
     className: '',
     firstName: 'Margaret FirstName',
   },
+  decorators: [
+    (Story) => (
+      <div data-theme="healthcare">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 const Template = ({ data, ...args }) => <Header {...args} />;

@@ -5,7 +5,7 @@ import GlobalHeader from './GlobalHeader';
 // Because the DS exports the wrapped Header component, Header props are not shown in the args table
 // TODO: look into later if storybook is used more publicly
 export default {
-  title: 'Components/GlobalHeader',
+  title: 'Medicare/GlobalHeader',
   component: GlobalHeader,
   args: {
     actions: [
@@ -25,6 +25,13 @@ export default {
       },
     ],
   },
+  decorators: [
+    (Story) => (
+      <div data-theme="medicare">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 const Template = ({ data, ...args }) => <GlobalHeader {...args} />;
