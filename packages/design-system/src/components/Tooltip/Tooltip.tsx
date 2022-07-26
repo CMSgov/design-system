@@ -313,7 +313,7 @@ export const Tooltip = (props: TooltipProps) => {
               {contentHeading}
               {showCloseButton && (
                 <Button
-                  variation="link"
+                  variation="ghost"
                   size="small"
                   className="ds-c-tooltip__close-button"
                   onClick={handleCloseButtonClick}

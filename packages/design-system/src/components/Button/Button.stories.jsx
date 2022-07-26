@@ -25,7 +25,7 @@ export default {
       options: ['small', 'big'],
     },
     variation: {
-      options: ['solid', 'outline', 'link'],
+      options: ['solid', 'ghost'],
     },
   },
   args: {
@@ -75,10 +75,92 @@ AnchorButton.parameters = {
 export const AllButtons = () => {
   return (
     <>
-      <Button variation="outline">Default button</Button>
+      <Button>Default button</Button>
 
-      <h3>Variations: Main</h3>
       <div style={{ display: 'flex', gap: '1rem', flexDirection: 'column' }}>
+        <h4>Default and modified default</h4>
+        <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+          <Button size="big">Button</Button>
+          <Button>Button</Button>
+          <Button size="small">Button</Button>
+        </div>
+        <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+          <Button size="big" disabled>
+            Button
+          </Button>
+          <Button disabled>Button</Button>
+          <Button size="small" disabled>
+            Button
+          </Button>
+        </div>
+        <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+          <Button size="big" isAlternate>
+            Alt button
+          </Button>
+          <Button isAlternate>Alt button</Button>
+          <Button size="small" isAlternate>
+            Alt button
+          </Button>
+        </div>
+        <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+          <Button size="big" disabled isAlternate>
+            Alt button
+          </Button>
+          <Button disabled isAlternate>
+            Alt button
+          </Button>
+          <Button size="small" disabled isAlternate>
+            Alt button
+          </Button>
+        </div>
+        <div
+          className="ds-u-fill--base ds-u-padding--2"
+          style={{ display: 'flex', gap: '1rem', flexDirection: 'column' }}
+        >
+          <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+            <Button onDark size="big">
+              Button on-dark
+            </Button>
+            <Button onDark>Button on-dark</Button>
+            <Button onDark size="small">
+              Button on-dark
+            </Button>
+          </div>
+          <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+            <Button onDark size="big" disabled>
+              Button on-dark
+            </Button>
+            <Button onDark disabled>
+              Button on-dark
+            </Button>
+            <Button onDark size="small" disabled>
+              Button on-dark
+            </Button>
+          </div>
+          <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+            <Button onDark size="big" isAlternate>
+              Alt button on-dark
+            </Button>
+            <Button onDark isAlternate>
+              Alt button on-dark
+            </Button>
+            <Button onDark size="small" isAlternate>
+              Alt button on-dark
+            </Button>
+          </div>
+          <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+            <Button onDark size="big" disabled isAlternate>
+              Alt button on-dark
+            </Button>
+            <Button onDark disabled isAlternate>
+              Alt button on-dark
+            </Button>
+            <Button onDark size="small" disabled isAlternate>
+              Alt button on-dark
+            </Button>
+          </div>
+        </div>
+
         <h4>Solids</h4>
         <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
           <Button variation="solid" size="big">
@@ -102,258 +184,165 @@ export const AllButtons = () => {
         </div>
         <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
           <Button variation="solid" size="big" isAlternate>
-            Solid button
+            Solid alt button
           </Button>
           <Button variation="solid" isAlternate>
-            Solid button
+            Solid alt button
           </Button>
           <Button variation="solid" size="small" isAlternate>
-            Solid button
+            Solid alt button
           </Button>
         </div>
         <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
           <Button variation="solid" size="big" disabled isAlternate>
-            Solid button
+            Solid alt button
           </Button>
           <Button variation="solid" disabled isAlternate>
-            Solid button
+            Solid alt button
           </Button>
           <Button variation="solid" size="small" disabled isAlternate>
-            Solid button
+            Solid alt button
           </Button>
         </div>
         <div
-          className="ds-u-fill--primary-darkest ds-u-padding--2"
+          className="ds-u-fill--base ds-u-padding--2"
           style={{ display: 'flex', gap: '1rem', flexDirection: 'column' }}
         >
           <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
             <Button onDark variation="solid" size="big">
-              Solid button
+              Solid button on-dark
             </Button>
             <Button onDark variation="solid">
-              Solid button
+              Solid button on-dark
             </Button>
             <Button onDark variation="solid" size="small">
-              Solid button
+              Solid button on-dark
             </Button>
           </div>
           <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
             <Button onDark variation="solid" size="big" disabled>
-              Solid button
+              Solid button on-dark
             </Button>
             <Button onDark variation="solid" disabled>
-              Solid button
+              Solid button on-dark
             </Button>
             <Button onDark variation="solid" size="small" disabled>
-              Solid button
+              Solid button on-dark
             </Button>
           </div>
           <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
             <Button onDark variation="solid" size="big" isAlternate>
-              Solid button
+              Solid alt button on-dark
             </Button>
             <Button onDark variation="solid" isAlternate>
-              Solid button
+              Solid alt button on-dark
             </Button>
             <Button onDark variation="solid" size="small" isAlternate>
-              Solid button
+              Solid alt button on-dark
             </Button>
           </div>
           <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
             <Button onDark variation="solid" size="big" disabled isAlternate>
-              Solid button
+              Solid alt button on-dark
             </Button>
-            <Button onDark variation="solid" disabled isAlternate>
-              Solid button
+            <Button alt onDark variation="solid" disabled isAlternate>
+              Solid button on-dark
             </Button>
             <Button onDark variation="solid" size="small" disabled isAlternate>
-              Solid button
+              Solid alt button on-dark
             </Button>
           </div>
         </div>
 
-        <h4>Outlines</h4>
+        <h4>Ghosts</h4>
         <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-          <Button variation="outline" size="big">
-            Solid button
+          <Button variation="ghost" size="big">
+            Ghost button
           </Button>
-          <Button variation="outline">Solid button</Button>
-          <Button variation="outline" size="small">
-            Solid button
+          <Button variation="ghost">Ghost button</Button>
+          <Button variation="ghost" size="small">
+            Ghost button
           </Button>
         </div>
         <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-          <Button variation="outline" size="big" disabled>
-            Solid button
+          <Button variation="ghost" size="big" disabled>
+            Ghost button
           </Button>
-          <Button variation="outline" disabled>
-            Solid button
+          <Button variation="ghost" disabled>
+            Ghost button
           </Button>
-          <Button variation="outline" size="small" disabled>
-            Solid button
-          </Button>
-        </div>
-        <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-          <Button variation="outline" size="big" isAlternate>
-            Solid button
-          </Button>
-          <Button variation="outline" isAlternate>
-            Solid button
-          </Button>
-          <Button variation="outline" size="small" isAlternate>
-            Solid button
+          <Button variation="ghost" size="small" disabled>
+            Ghost button
           </Button>
         </div>
         <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-          <Button variation="outline" size="big" disabled isAlternate>
-            Solid button
+          <Button variation="ghost" size="big" isAlternate>
+            Ghost alt button
           </Button>
-          <Button variation="outline" disabled isAlternate>
-            Solid button
+          <Button variation="ghost" isAlternate>
+            Ghost alt button
           </Button>
-          <Button variation="outline" size="small" disabled isAlternate>
-            Solid button
+          <Button variation="ghost" size="small" isAlternate>
+            Ghost alt button
+          </Button>
+        </div>
+        <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+          <Button variation="ghost" size="big" disabled isAlternate>
+            Ghost alt button
+          </Button>
+          <Button variation="ghost" disabled isAlternate>
+            Ghost alt button
+          </Button>
+          <Button variation="ghost" size="small" disabled isAlternate>
+            Ghost alt button
           </Button>
         </div>
         <div
-          className="ds-u-fill--primary-darkest ds-u-padding--2"
+          className="ds-u-fill--base ds-u-padding--2"
           style={{ display: 'flex', gap: '1rem', flexDirection: 'column' }}
         >
           <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-            <Button onDark variation="outline" size="big">
-              Solid button
+            <Button onDark variation="ghost" size="big">
+              Ghost button on-dark
             </Button>
-            <Button onDark variation="outline">
-              Solid button
+            <Button onDark variation="ghost">
+              Ghost button on-dark
             </Button>
-            <Button onDark variation="outline" size="small">
-              Solid button
-            </Button>
-          </div>
-          <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-            <Button onDark variation="outline" size="big" disabled>
-              Solid button
-            </Button>
-            <Button onDark variation="outline" disabled>
-              Solid button
-            </Button>
-            <Button onDark variation="outline" size="small" disabled>
-              Solid button
+            <Button onDark variation="ghost" size="small">
+              Ghost button on-dark
             </Button>
           </div>
           <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-            <Button onDark variation="outline" size="big" isAlternate>
-              Solid button
+            <Button onDark variation="ghost" size="big" disabled>
+              Ghost button on-dark
             </Button>
-            <Button onDark variation="outline" isAlternate>
-              Solid button
+            <Button onDark variation="ghost" disabled>
+              Ghost button on-dark
             </Button>
-            <Button onDark variation="outline" size="small" isAlternate>
-              Solid button
-            </Button>
-          </div>
-          <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-            <Button onDark variation="outline" size="big" disabled isAlternate>
-              Solid button
-            </Button>
-            <Button onDark variation="outline" disabled isAlternate>
-              Solid button
-            </Button>
-            <Button onDark variation="outline" size="small" disabled isAlternate>
-              Solid button
-            </Button>
-          </div>
-        </div>
-
-        <h4>Links</h4>
-        <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-          <Button variation="link" size="big">
-            Solid button
-          </Button>
-          <Button variation="link">Solid button</Button>
-          <Button variation="link" size="small">
-            Solid button
-          </Button>
-        </div>
-        <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-          <Button variation="link" size="big" disabled>
-            Solid button
-          </Button>
-          <Button variation="link" disabled>
-            Solid button
-          </Button>
-          <Button variation="link" size="small" disabled>
-            Solid button
-          </Button>
-        </div>
-        <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-          <Button variation="link" size="big" isAlternate>
-            Solid button
-          </Button>
-          <Button variation="link" isAlternate>
-            Solid button
-          </Button>
-          <Button variation="link" size="small" isAlternate>
-            Solid button
-          </Button>
-        </div>
-        <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-          <Button variation="link" size="big" disabled isAlternate>
-            Solid button
-          </Button>
-          <Button variation="link" disabled isAlternate>
-            Solid button
-          </Button>
-          <Button variation="link" size="small" disabled isAlternate>
-            Solid button
-          </Button>
-        </div>
-        <div
-          className="ds-u-fill--primary-darkest ds-u-padding--2"
-          style={{ display: 'flex', gap: '1rem', flexDirection: 'column' }}
-        >
-          <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-            <Button onDark variation="link" size="big">
-              Solid button
-            </Button>
-            <Button onDark variation="link">
-              Solid button
-            </Button>
-            <Button onDark variation="link" size="small">
-              Solid button
+            <Button onDark variation="ghost" size="small" disabled>
+              Ghost button on-dark
             </Button>
           </div>
           <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-            <Button onDark variation="link" size="big" disabled>
-              Solid button
+            <Button onDark variation="ghost" size="big" isAlternate>
+              Ghost alt button on-dark
             </Button>
-            <Button onDark variation="link" disabled>
-              Solid button
+            <Button onDark variation="ghost" isAlternate>
+              Ghost alt button on-dark
             </Button>
-            <Button onDark variation="link" size="small" disabled>
-              Solid button
-            </Button>
-          </div>
-          <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-            <Button onDark variation="link" size="big" isAlternate>
-              Solid button
-            </Button>
-            <Button onDark variation="link" isAlternate>
-              Solid button
-            </Button>
-            <Button onDark variation="link" size="small" isAlternate>
-              Solid button
+            <Button onDark variation="ghost" size="small" isAlternate>
+              Ghost alt button on-dark
             </Button>
           </div>
           <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-            <Button onDark variation="link" size="big" disabled isAlternate>
-              Solid button
+            <Button onDark variation="ghost" size="big" disabled isAlternate>
+              Ghost alt button on-dark
             </Button>
-            <Button onDark variation="link" disabled isAlternate>
-              Solid button
+            <Button onDark variation="ghost" disabled isAlternate>
+              Ghost alt button on-dark
             </Button>
-            <Button onDark variation="link" size="small" disabled isAlternate>
-              Solid button
+            <Button onDark variation="ghost" size="small" disabled isAlternate>
+              Ghost alt button on-dark
             </Button>
           </div>
         </div>

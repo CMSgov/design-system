@@ -22,7 +22,7 @@ export default {
     alert: false,
     escapeExits: true,
     underlayClickExits: true,
-    closeButtonVariation: 'link',
+    closeButtonVariation: 'ghost',
     children: (
       <div>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan diam vitae metus
@@ -58,13 +58,10 @@ export const DialogExample = ({ ...args }) => {
           onExit={hideModal}
           actions={
             <>
-              <button
-                className="ds-c-button ds-c-button--main ds-c-button--on-light ds-c-button--solid ds-u-margin-right--1"
-                key="solid"
-              >
+              <button className="ds-c-button ds-c-button--solid ds-u-margin-right--1" key="solid">
                 Dialog action
               </button>
-              <button className="ds-c-button ds-c-button--link" key="cancel" onClick={hideModal}>
+              <button className="ds-c-button ds-c-button--ghost" key="cancel" onClick={hideModal}>
                 Cancel
               </button>
             </>
