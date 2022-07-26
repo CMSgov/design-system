@@ -6,6 +6,15 @@ body {
   max-width: 81rem;
 }
 
+@media (min-width: $width-lg) {
+  .page-content__content {
+    // removing margin for first heading on content pages
+    :nth-child(2) {
+      margin-top: 0;
+    }
+  }
+}
+
 @media (max-width: $width-lg) {
   .page-content__content {
     padding-left: 0;

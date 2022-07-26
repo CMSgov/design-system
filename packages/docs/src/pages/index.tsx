@@ -12,7 +12,7 @@ const IndexPage = ({ data, location }: MdxQuery) => {
 
   return (
     <Layout
-      pageName="Introduction"
+      frontmatter={data.mdx.frontmatter}
       location={location}
       theme={theme}
       tableOfContentsData={data.mdx.tableOfContents?.items}
@@ -28,6 +28,9 @@ export const query = graphql`
       id
       body
       tableOfContents(maxDepth: 2)
+      frontmatter {
+        title
+      }
     }
   }
 `;
