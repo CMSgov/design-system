@@ -1,88 +1,37 @@
 .c-footer {
-  .ds-footer__container {
-    margin-inline: auto;
+  border-top: 2px solid $color-gray-lighter;
+  padding-top: 1.5rem;
+
+  .c-footer__container {
     max-width: $site-max-width;
     width: 100%;
   }
-}
 
-.c-footer__content {
-  padding: $grid-gutter-width calc(#{$grid-gutter-width} * 0.5);
-  font-size: $font-size-sm;
+  .ds-c-button--transparent {
+    padding: 0;
+    font-weight: $font-weight-normal;
+  }
 
-  .c-footer__content-title {
-    font-size: $font-size-lg;
-    font-weight: $font-weight-bold;
-    margin: 0 0 $spacer-1 0;
+  .ds-c-icon--hhs-logo {
+    font-size: 2rem;
+    margin-right: $spacer-2;
   }
 }
 
-.c-footer__content--top {
-  background-color: $color-gray-lightest;
-  color: $color-base;
+.c-footer__links {
+  & .c-footer__link {
+    display: inline-block;
+    text-decoration-thickness: $link__text-decoration-thickness;
+    text-underline-offset: $link__text-decoration-offset;
+  }
 
-  .c-footer__feedback-links {
-    display: grid;
-    gap: $spacer-2;
-
-    @media (min-width: $width-md) {
-      grid-template-columns: repeat(3, minmax(max-content, 33.3%));
-    }
+  & .c-footer__link:not(:last-child) {
+    margin-right: $spacer-2;
   }
 }
 
-.c-footer__content--bottom {
-  padding-bottom: 4.5rem;
-
-  @media (min-width: $width-md) {
-    padding-bottom: calc(#{$grid-gutter-width} * 0.5);
-  }
-
-  .ds-footer__container:first-child {
-    display: grid;
-    gap: $spacer-3;
-
-    @media (min-width: $width-sm) {
-      gap: $spacer-6;
-      grid-template-columns: repeat(3, minmax(min-content, 33.3%));
-    }
-  }
-
-  .c-footer__content-contact {
-    margin-block: 1em;
-  }
-
-  a {
-    color: currentColor;
-    text-decoration-color: currentColor;
-    text-underline-offset: 1px;
-  }
-
-  dl {
-    > * {
-      margin: 0;
-    }
-
-    button {
-      background-color: inherit;
-      border: 0;
-      color: currentColor;
-      cursor: pointer;
-      font: inherit;
-      padding: 0;
-      text-decoration: underline;
-
-      &:hover {
-        color: $color-muted-inverse;
-      }
-
-      &:active {
-        color: $color-muted-inverse;
-
-        &:focus {
-          background-color: inherit;
-        }
-      }
-    }
+@media (max-width: $media-width-md) {
+  .c-footer__text {
+    font-size: $font-size-sm;
   }
 }
