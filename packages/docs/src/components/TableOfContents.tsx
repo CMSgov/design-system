@@ -23,14 +23,14 @@ export const TableOfContentsList = ({ items, level, className = '' }: TableOfCon
       ? 'c-table-of-contents__list-item c-table-of-contents__list-item--no-marker'
       : 'c-table-of-contents__list-item';
   return (
-    <ol className={`c-table-of-contents__list ds-u-padding-right--0 ${className}`}>
+    <ul className={`c-table-of-contents__list ds-u-padding-right--0 ${className}`}>
       {items.map((item) => (
         <li key={item.title} className={itemClasses}>
           <Link to={item.url}>{item.title}</Link>
           {item.items && <TableOfContentsList items={item.items} level={level + 1} />}
         </li>
       ))}
-    </ol>
+    </ul>
   );
 };
 
