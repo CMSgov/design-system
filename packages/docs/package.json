@@ -26,6 +26,7 @@
     "gatsby-plugin-react-helmet": "^5.11.0",
     "gatsby-plugin-sass": "^5.11.1",
     "gatsby-plugin-sitemap": "^5.11.1",
+    "gatsby-remark-autolink-headers": "^5.19.0",
     "gatsby-source-filesystem": "^4.11.1",
     "gatsby-transformer-react-docgen": "^7.13.0",
     "lodash.sortby": "^4.7.0",
