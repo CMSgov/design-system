@@ -76,10 +76,9 @@ const Layout = ({ children, frontmatter, location, theme, tableOfContentsData }:
               <TableOfContents data={tableOfContentsData || []} />
             </div>
           </article>
+          <Footer />
         </main>
       </div>
-
-      <Footer />
     </div>
   );
 };
