@@ -15,6 +15,10 @@ import { Alert, ArrowIcon, Button, TextInput } from '@cmsgov/design-system';
 
 ## Examples
 
+The following tables give an overview of the different permutations of buttons available in the selected design system. The controlling traits are the named _variation_, whether it's the _main_ vs. _alternate_ color, and the _on-light_ vs. _on-dark_ context. Each of these traits has its own example later on showing how to apply it.
+
+<ButtonVariationsTable />
+
 ### Outline buttons
 
 <StorybookExample
@@ -38,6 +42,62 @@ import { Alert, ArrowIcon, Button, TextInput } from '@cmsgov/design-system';
   sourceFilePath="components/Button/Button.tsx"
   storyId="components-button--default&args=children:Ghost;variation:ghost"
 />
+
+### Alternate buttons
+
+Alternate buttons can exist in each of the three main variations (outline, solid, ghost) but stand apart as having an alternate color. In the core design system, these follow the secondary brand color.
+
+#### Outline alternate button
+
+<ThemeContent neverThemes={['healthcare', 'medicare']}>
+  <StorybookExample
+    componentName="button"
+    sourceFilePath="components/Button/Button.tsx"
+    storyId="components-button--default&args=children:Outline;isAlternate:true"
+  />
+</ThemeContent>
+<ThemeContent onlyThemes={['healthcare', 'medicare']}>
+  Outline alternate buttons are not used by this design system.
+</ThemeContent>
+
+#### Solid alternate button
+
+<ThemeContent neverThemes={['healthcare']}>
+  <StorybookExample
+    componentName="button"
+    sourceFilePath="components/Button/Button.tsx"
+    storyId="components-button--default&args=children:Solid;variation:solid;isAlternate:true"
+  />
+</ThemeContent>
+<ThemeContent onlyThemes={['healthcare']}>
+  Solid alternate buttons are not used by this design system.
+</ThemeContent>
+
+#### Ghost alternate button
+
+<ThemeContent neverThemes={['healthcare', 'medicare']}>
+  <StorybookExample
+    componentName="button"
+    sourceFilePath="components/Button/Button.tsx"
+    storyId="components-button--default&args=children:Ghost;variation:ghost;isAlternate:true"
+  />
+</ThemeContent>
+<ThemeContent onlyThemes={['healthcare', 'medicare']}>
+  Ghost alternate buttons are not used by this design system.
+</ThemeContent>
+
+### On dark background
+
+<ThemeContent neverThemes={['healthcare']}>
+  <StorybookExample
+    componentName="button"
+    sourceFilePath="components/Button/Button.tsx"
+    storyId="components-button--variations-on-dark"
+  />
+</ThemeContent>
+<ThemeContent onlyThemes={['healthcare']}>
+  On-dark buttons are not used by this design system.
+</ThemeContent>
 
 ### Changing the size
 
