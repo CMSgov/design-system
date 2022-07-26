@@ -5,7 +5,6 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 import { toKebabCase, toLowerCaseOneWord } from '../helpers/casingUtils';
 
-import ButtonMigrationTable from './ButtonMigrationTable';
 import ButtonVariationsTable from './ButtonVariationsTable';
 import EmbeddedExample from './EmbeddedExample';
 import StorybookExample from './StorybookExample';
@@ -93,7 +92,6 @@ const customComponents = (theme) => ({
   ResponsiveExample: (props) => <ResponsiveExample theme={theme} {...props} />,
   ComponentThemeOptions: (props) => <ComponentThemeOptions theme={theme} {...props} />,
   ThemeContent: (props) => <ThemeContent theme={theme} {...props} />,
-  ButtonMigrationTable: (props) => <ButtonMigrationTable theme={theme} {...props} />,
   ButtonVariationsTable: (props) => <ButtonVariationsTable theme={theme} {...props} />,
 });
 
