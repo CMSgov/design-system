@@ -1,10 +1,13 @@
 ---
 title: Drawer & Help Drawer
+intro: A drawer provides a space for medium to long-form help content — content that's too long or not common enough to warrant being on the page by default.
+core:
+  githubLink: design-system/src/components/Drawer
+  sketchLink: zxawg1M
+  storybookLink: components-drawer--drawer-default
+healthcare:
+  sketchLink: GmlMnkL
 ---
-
-import ViewSourceLink from '../../src/components/ViewSourceLink';
-
-A drawer provides a space for medium to long-form help content — content that's too long or not common enough to warrant being on the page by default.
 
 On large screens it's fixed to the side of the screen, and on smaller screens it overlays the entire screen.
 
@@ -14,7 +17,6 @@ Render the drawer below the toggle button that triggers it. This way the markup 
 
 <StorybookExample
   componentName="drawer"
-  sourceFilePath="components/Drawer/Drawer.tsx"
   storyId="components-drawer--drawer-default"
   minHeight={500}
 />
@@ -42,15 +44,11 @@ A focus trap can be set on a drawer if the property `hasFocusTrap` is enabled. A
 
 ## `<DrawerToggle>`
 
-<ViewSourceLink sourceFilePath="components/Drawer/DrawerToggle.tsx" />
-
 <PropTable componentName="DrawerToggle" />
 
 ## `<HelpDrawer>`
 
 This component is an enhanced `<Drawer>` component, providing the same properties as `<Drawer>` in addition to Google Analytics properties.
-
-<ViewSourceLink sourceFilePath="components/HelpDrawer/HelpDrawer.tsx" />
 
 <PropTable componentName="HelpDrawer" />
 

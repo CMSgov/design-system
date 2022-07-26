@@ -37,15 +37,15 @@ const formatNavItemLabel = (name: string): string => {
  * transforms from graphql structure to structure for <VerticalNav> `items` prop
  */
 const formatNavItemData = ({ childMdx, relativePath }: NavItem, location: LocationInterface) => {
-  const { frontmatter } = childMdx;
-  const name = frontmatter.title;
+  const frontmatter = childMdx?.frontmatter;
+  const name = frontmatter?.title || '';
   const url = makePageUrl(relativePath);
   return {
     label: formatNavItemLabel(name),
     url,
     id: relativePath,
     selected: isItemSelected(url, location),
-    order: frontmatter.order || 0,
+    order: frontmatter?.order || 0,
   };
 };
 
