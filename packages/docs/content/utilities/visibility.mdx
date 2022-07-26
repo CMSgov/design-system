@@ -1,0 +1,61 @@
+---
+title: Visibility
+---
+
+Use the visibility utility classes to show and hide elements.
+
+## Visibility
+
+> The visibility property can be used to hide an element while leaving the space where it would have been. &mdash; [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/visibility)
+
+There may be times when you want to hide an element, but still want its text to be read by a screen reader. The `ds-u-visibility--screen-reader` class will hide the content visually, but provide the content to screen readers.
+
+The `ds-u-visibility--hidden-print` class uses a print media query to hide content during printing, but otherwise display it normally.
+
+**Format**: `.ds-u-visibility--[hidden|visible|screen-reader|hidden-print]`
+
+**Responsive format**: `.ds-u-[breakpoint]-visibility--[hidden|visible]`
+
+<EmbeddedExample>
+  <div>
+    <div class="ds-u-margin-bottom--2">
+      <code class="ds-u-margin-bottom--1">.ds-u-visibility--visible</code>
+      <div class="utility-example">
+        <span class="ds-u-padding--1 ds-u-visibility--visible">I'm visible and take up space</span>
+      </div>
+    </div>
+    <div class="ds-u-margin-bottom--2">
+      <code class="ds-u-margin-bottom--1">.ds-u-visibility--hidden</code>
+      <div class="utility-example">
+        <span class="ds-u-padding--1 ds-u-visibility--hidden">I'm hidden and take up space</span>
+      </div>
+    </div>
+    <div class="ds-u-margin-bottom--2">
+      <code class="ds-u-margin-bottom--1">.ds-u-visibility--screen-reader</code>
+      <div class="utility-example" style="min-height: 2px">
+        <span class="ds-u-padding--1 ds-u-visibility--screen-reader">
+          I'm visible to screen readers only and don't take up space
+        </span>
+      </div>
+    </div>
+    <div class="ds-u-margin-bottom--2">
+      <code class="ds-u-margin-bottom--1">.ds-u-visibility--hidden-print</code>
+      <div class="utility-example">
+        <span class="ds-u-padding--1 ds-u-visibility--hidden-print">
+          I'm visible and take up space except when printing
+        </span>
+      </div>
+    </div>
+  </div>
+</EmbeddedExample>
+
+## Responsive visibility
+
+Use a [breakpoint prefix](/foundation/layout-grid/responsive-design/) to show/hide content at specific breakpoints.
+
+A breakpoint prefix is supported on all of the utility classes mentioned above, except for `.ds-u-visibility--screen-reader` and `.ds-u-visibility--hidden-print`.
+
+<ResponsiveExample
+  storyId="utilities-visibility--visibility"
+  title="Responsive visibility example"
+/>

@@ -6,7 +6,6 @@ import classNames from 'classnames';
 import omit from 'lodash/omit';
 import pick from 'lodash/pick';
 import { FormControl, FormControlPropKeys } from '../FormControl/FormControl';
-import { errorPlacementDefault } from '../flags';
 
 // TODO: Remove `maskValue` and `unmaskValue` exports with next major release (v3.x.x)
 export { unmaskValue } from './maskHelpers';
@@ -174,23 +173,19 @@ export class TextField extends React.PureComponent<
       this.props.className
     );
 
-    // Use errorPlacement feature flag for <TextInput>
-    // Duplicate of errorPlacement defaulting that occurs inside <FormControl>
-    const errorPlacement = this.props.errorPlacement || errorPlacementDefault();
-
     return (
       <FormControl
         {...containerProps}
         className={containerClassName}
         component="div"
         labelComponent="label"
-        render={({ id, errorId, setRef }) => {
+        label={this.props.label}
+        render={({ id, setRef, errorId, errorMessage, errorPlacement }) => {
           const input = (
             <TextInput
+              type={TextField.defaultProps.type} // Appeases TypeScript
               {...inputOnlyProps}
-              {...{ id, setRef, errorId }}
-              errorMessage={this.props.errorMessage}
-              errorPlacement={errorPlacement}
+              {...{ id, setRef, errorId, errorMessage, errorPlacement }}
               inversed={this.props.inversed}
             />
           );

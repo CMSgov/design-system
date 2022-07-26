@@ -60,13 +60,13 @@ if [ "$DELETE_LAST" = true ]; then
 fi
 
 echo "${GREEN}Creating release branch...${NC}"
-DATE=$(date "+%Y-%m-%d")
-BRANCH="release-${DATE}"
+BRANCHREF=$(git rev-parse --short HEAD)
+BRANCH="release-${BRANCHREF}"
 git checkout -b $BRANCH
 
 echo "${GREEN}Bumping version...${NC}"
 PRE_VERSION_HASH=$(git rev-parse HEAD)
-yarn lerna version --no-push ${EXTRA_OPTS[@]}
+yarn lerna version --no-push --exact ${EXTRA_OPTS[@]}
 POST_VERSION_HASH=$(git rev-parse HEAD)
 
 if [ "$PRE_VERSION_HASH" = "$POST_VERSION_HASH" ]; then

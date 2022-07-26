@@ -1,4 +1,4 @@
-import { FormControl, FormControlPropKeys } from '../FormControl/FormControl';
+import { FormControl, FormControlPropKeys, FormControlProps } from '../FormControl/FormControl';
 import React from 'react';
 import Select from './Select';
 import { errorPlacementDefault } from '../flags';
@@ -138,24 +138,18 @@ export class Dropdown extends React.PureComponent<
   }
 
   render() {
-    const containerProps = pick(this.props, FormControlPropKeys);
-    const inputOnlyProps = omit(this.props, FormControlPropKeys);
-
-    // Use errorPlacement feature flag for <Select>
-    // Duplicate of errorPlacement defaulting that occurs inside <FormControl>
-    const errorPlacement = this.props.errorPlacement || errorPlacementDefault();
+    const containerProps: any = pick(this.props, FormControlPropKeys);
+    const inputOnlyProps: any = omit(this.props, FormControlPropKeys);
 
     return (
       <FormControl
         {...containerProps}
         component="div"
         labelComponent="label"
-        render={({ id, errorId, setRef }) => (
+        render={({ id, errorId, setRef, errorMessage, errorPlacement }) => (
           <Select
             {...inputOnlyProps}
-            {...{ id, setRef, errorId }}
-            errorMessage={this.props.errorMessage}
-            errorPlacement={errorPlacement}
+            {...{ id, setRef, errorId, errorMessage, errorPlacement }}
             inversed={this.props.inversed}
           />
         )}

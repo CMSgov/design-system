@@ -1,6 +1,6 @@
 import TextInput, { OmitProps, TextInputProps } from './TextInput';
-import { mount, shallow } from 'enzyme';
 import React from 'react';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 const defaultProps: Omit<React.ComponentPropsWithRef<'textarea'>, OmitProps> &
   Omit<React.ComponentPropsWithRef<'input'>, OmitProps> &
@@ -12,158 +12,137 @@ const defaultProps: Omit<React.ComponentPropsWithRef<'textarea'>, OmitProps> &
   errorPlacement: 'top',
 };
 
-function render(customProps = {}, deep = false) {
-  const props = { ...defaultProps, ...customProps };
-  const component = <TextInput {...props} />;
+function renderInput(props = {}) {
+  return render(<TextInput {...defaultProps} {...props} />);
+}
 
-  return {
-    props,
-    wrapper: deep ? mount(component) : shallow(component),
-  };
+function getInput() {
+  return screen.getByRole('textbox');
 }
 
 describe('TextInput', function () {
   it('is an input field', () => {
-    const data = render();
+    renderInput();
 
-    expect(data.wrapper.is('input')).toBe(true);
-    expect(data.wrapper.prop('rows')).toBeUndefined();
-    expect(data.wrapper).toMatchSnapshot();
+    expect(getInput().tagName).toBe('INPUT');
+    expect(getInput().getAttribute('rows')).toBeNull();
+    expect(getInput()).toMatchSnapshot();
   });
 
   it('is a textarea', () => {
-    const data = render({ multiline: true });
+    renderInput({ multiline: true });
 
-    expect(data.wrapper.is('textarea')).toBe(true);
-    expect(data.wrapper.prop('rows')).toBeUndefined();
-    expect(data.wrapper.prop('type')).toBeUndefined();
-    expect(data.wrapper).toMatchSnapshot();
+    expect(getInput().tagName).toBe('TEXTAREA');
+    expect(getInput().getAttribute('rows')).toBeNull();
+    expect(getInput().getAttribute('type')).toBeNull();
+    expect(getInput()).toMatchSnapshot();
   });
 
   it('is a password field', () => {
-    const data = render({ type: 'password' });
-
-    expect(data.wrapper.prop('type')).toBe('password');
+    const { container } = renderInput({ type: 'password' });
+    // The password field doesn't have an accessible role!
+    const input = container.querySelector('.ds-c-field');
+    expect(input.getAttribute('type')).toBe('password');
   });
 
   it('is disabled', () => {
-    const data = render({ disabled: true });
-
-    expect(data.wrapper.prop('disabled')).toBe(data.props.disabled);
+    renderInput({ disabled: true });
+    expect(getInput().getAttribute('disabled')).toBe('');
   });
 
   it('has error', () => {
-    const data = render({ errorMessage: 'Error' });
-
-    expect(data.wrapper.prop('aria-invalid')).toBe(true);
-    expect(data.wrapper.hasClass('ds-c-field--error')).toBe(true);
+    renderInput({ errorMessage: 'Error' });
+    expect(getInput().getAttribute('aria-invalid')).toBe('true');
+    expect(getInput().classList.contains('ds-c-field--error')).toBe(true);
   });
 
   it('handles bottom placed error', () => {
-    const data = render({
+    renderInput({
       errorMessage: 'Error',
       errorPlacement: 'bottom',
       errorId: '1_error',
+      'aria-describedby': '1_label',
     });
 
-    expect(data.wrapper.prop('aria-invalid')).toBe(true);
-    expect(data.wrapper.prop('aria-describedby')).toBe('1_error');
-    expect(data.wrapper.hasClass('ds-c-field--error')).toBe(true);
-    expect(data.wrapper).toMatchSnapshot();
+    expect(getInput().getAttribute('aria-invalid')).toBe('true');
+    expect(getInput().getAttribute('aria-describedby')).toBe('1_label 1_error');
+    expect(getInput().classList.contains('ds-c-field--error')).toBe(true);
+    expect(getInput()).toMatchSnapshot();
   });
 
   it('has inversed theme', () => {
-    const data = render({ inversed: true });
-
-    expect(data.wrapper.hasClass('ds-c-field--inverse')).toBe(true);
+    renderInput({ inversed: true });
+    expect(getInput().classList.contains('ds-c-field--inverse')).toBe(true);
   });
 
   it('has a defaultValue', () => {
-    const data = render({ defaultValue: 'Yay' });
-
-    expect(data.wrapper.prop('defaultValue')).toBe(data.props.defaultValue);
-    expect(data.wrapper.prop('value')).toBeUndefined();
+    renderInput({ defaultValue: 'Yay' });
+    expect(getInput().getAttribute('value')).toEqual('Yay');
   });
 
   it('has a value', () => {
-    const data = render({ value: 'Yay' });
-
-    expect(data.wrapper.prop('value')).toBe(data.props.value);
-    expect(data.wrapper.prop('defaultValue')).toBeUndefined();
+    const value = 'Yay';
+    renderInput({ value });
+    expect(getInput().getAttribute('value')).toBe(value);
   });
 
   it('shows 5 rows of text', () => {
-    const data = render({
+    renderInput({
       multiline: true,
       rows: 5,
     });
-
-    expect(data.wrapper.prop('rows')).toBe(data.props.rows);
+    expect(getInput().getAttribute('rows')).toBe('5');
   });
 
   it('adds className to field', () => {
-    const data = render({ fieldClassName: 'bar' });
-
-    expect(data.wrapper.hasClass('ds-c-field')).toBe(true);
-    expect(data.wrapper.hasClass('bar')).toBe(true);
+    renderInput({ fieldClassName: 'bar' });
+    expect(getInput().classList.contains('ds-c-field')).toBe(true);
+    expect(getInput().classList.contains('bar')).toBe(true);
   });
 
-  it('adds size classes to input', () => {
-    const mediumData = render({ size: 'medium' });
-    const mediumField = mediumData.wrapper.find('.ds-c-field').first();
-    const smallData = render({ size: 'small' });
-    const smallField = smallData.wrapper.find('.ds-c-field').first();
+  it('adds size classes to input (small)', () => {
+    renderInput({ size: 'small' });
+    expect(getInput().classList.contains('ds-c-field--small')).toBe(true);
+  });
 
-    expect(mediumField.hasClass('ds-c-field--medium')).toBe(true);
-    expect(smallField.hasClass('ds-c-field--small')).toBe(true);
+  it('adds size classes to input (medium)', () => {
+    renderInput({ size: 'medium' });
+    expect(getInput().classList.contains('ds-c-field--medium')).toBe(true);
   });
 
   it('adds min/max input attributes', () => {
-    const data = render({
-      max: 10,
-      min: 1,
-    });
-
-    expect(data.wrapper.prop('max')).toBe(data.props.max);
-    expect(data.wrapper.prop('min')).toBe(data.props.min);
+    renderInput({ min: 1, max: 10 });
+    expect(getInput().getAttribute('min')).toBe('1');
+    expect(getInput().getAttribute('max')).toBe('10');
   });
 
   it('adds aria-label attribute', () => {
-    const data = render({
-      ariaLabel: 'Foo',
-    });
+    const ariaLabel = 'Foo';
+    renderInput({ ariaLabel });
+    expect(getInput().getAttribute('aria-label')).toBe(ariaLabel);
+  });
 
-    expect(data.wrapper.prop('aria-label')).toBe(data.props.ariaLabel);
+  it('adds aria-describedby attribute', () => {
+    renderInput({ 'aria-describedby': '1_label' });
+    expect(getInput().getAttribute('aria-describedby')).toBe('1_label');
   });
 
   it('adds undocumented prop to input field', () => {
-    const data = render({
-      'data-foo': 'bar',
-    });
-
-    expect(data.wrapper.prop('data-foo')).toBe(data.props['data-foo']);
+    renderInput({ 'data-foo': 'bar' });
+    expect(getInput().getAttribute('data-foo')).toBe('bar');
   });
 
-  describe('event handlers', () => {
-    let data;
+  it('calls onBlur', () => {
+    const onBlur = jest.fn();
+    renderInput({ onBlur });
+    fireEvent.blur(getInput());
+    expect(onBlur).toHaveBeenCalled();
+  });
 
-    beforeEach(() => {
-      data = render({
-        onBlur: jest.fn(),
-        onChange: jest.fn(),
-      });
-    });
-
-    it('calls onBlur', () => {
-      data.wrapper.find('.ds-c-field').first().simulate('blur');
-
-      expect(data.props.onBlur.mock.calls.length).toBe(1);
-    });
-
-    it('calls onChange', () => {
-      data.wrapper.find('.ds-c-field').first().simulate('change');
-
-      expect(data.props.onChange.mock.calls.length).toBe(1);
-    });
+  it('calls onChange', () => {
+    const onChange = jest.fn();
+    renderInput({ onChange });
+    fireEvent.change(getInput(), { target: { value: 'hello world' } });
+    expect(onChange).toHaveBeenCalled();
   });
 });

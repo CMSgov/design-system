@@ -11,7 +11,7 @@
 :root {
   --rdp-cell-size: 40px;
   --rdp-accent-color: #{$color-primary};
-  --rdp-background-color: #e6f1f8; // TODO: use the token ocean-50
+  --rdp-background-color: #{$color-gray-cool-light};
   /* Added this variable for consistency */
   --rdp-active-color: #{$color-primary-darkest};
   /* Outline border for focused elements */
@@ -333,11 +333,32 @@
  *                                                                             *
  *******************************************************************************/
 
+// Put the month and year dropdowns in a fixed two-column layout so that they
+// don't shift around off center when the month changes (because different months
+// are different lengths).
+.rdp-caption_dropdowns {
+  // Take up as much space between the nav buttons as we have
+  flex-grow: 1;
+}
+// Due to a bug, the library currently only uses "rdp-dropdown_month"
+.rdp-dropdown_month,
+.rdp-dropdown_year {
+  // See comment above about arranging these in fixed columns
+  display: block;
+  width: 50%;
+
+  // TODO: When the bug has been fixed upstream, we can reference "rdp-dropdown_year"
+  // instead. See https://github.com/gpbl/react-day-picker/pull/1466
+  &:nth-child(2) {
+    text-align: right;
+  }
+}
+
+// Apply our focus, hover, and active styles to all the day buttons
 .rdp-button:focus,
 .rdp-button:active {
   @include focus-styles;
 }
-
 .rdp-button:active,
 .rdp-button:active:hover:not([aria-disabled='true']),
 .rdp-day_selected:active:not([aria-disabled='true']),
@@ -345,7 +366,96 @@
   color: white;
   background-color: var(--rdp-active-color);
 }
+@media (-ms-high-contrast: active), (forced-colors: active) {
+  .rdp-button[aria-disabled='true'] {
+    opacity: 1;
+    color: GrayText;
+    border-color: GrayText;
+  }
 
+  .rdp-day_selected:not([aria-disabled='true']),
+  .rdp-day_selected:focus:not([aria-disabled='true']),
+  .rdp-day_selected:active:not([aria-disabled='true']),
+  .rdp-day_selected:hover:not([aria-disabled='true']) {
+    background-color: Highlight;
+    color: Field;
+    border-color: Highlight;
+    -ms-high-contrast-adjust: none;
+    forced-color-adjust: none;
+  }
+}
+
+// Style the month & year dropdowns
+.rdp-caption_label {
+  border: none;
+  font-size: $font-size-xl;
+  padding: 0 $spacer-1;
+}
+.rdp-dropdown:focus:not([disabled]) + .rdp-caption_label,
+.rdp-dropdown:active:not([disabled]) + .rdp-caption_label {
+  @include focus-styles;
+  background-color: initial;
+}
+.rdp-dropdown_icon.ds-c-icon--arrows-stacked {
+  width: 14px;
+  height: 14px;
+}
+
+// Style the two nav arrows for switching months
+.ds-c-single-input-date-field__nav {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  border-radius: $border-radius;
+  color: $color-primary;
+  cursor: pointer;
+  display: inline-block;
+  padding: $spacer-1;
+
+  &:hover:not(:disabled) {
+    background-color: $color-gray-cool-light;
+    color: $color-primary-darker; // TODO: Use tokens (same as link-hover-color)
+  }
+
+  &:focus,
+  &:active:not(:disabled) {
+    @include focus-styles;
+  }
+
+  &:active:not(:disabled) {
+    background-color: $button-primary__background-color--active;
+    color: $color-white;
+  }
+
+  .ds-c-icon--arrow {
+    height: 19px;
+    width: 19px;
+  }
+
+  &:disabled {
+    color: $pagination-link__color--disabled;
+    pointer-events: none;
+
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      border: 0;
+      cursor: not-allowed;
+      color: GrayText;
+
+      .ds-c-icon {
+        fill: GrayText;
+        color: GrayText;
+
+        path {
+          fill: GrayText;
+          stroke: GrayText;
+          color: GrayText;
+        }
+      }
+    }
+  }
+}
+
+// Style the day picker as a floating dialog below the field
 .ds-c-single-input-date-field {
   position: relative;
 
@@ -362,6 +472,7 @@
   }
 }
 
+// Style the single-input date field and its calendar-picker button
 .ds-c-single-input-date-field__field-wrapper {
   .ds-c-single-input-date-field--with-picker & {
     display: flex;
@@ -375,11 +486,15 @@
       border-bottom-right-radius: 0;
       margin-top: 0;
       margin-bottom: 0;
-      margin-right: -#{$input-border-width};
+      margin-right: -#{$text-input__border-width};
 
       &:focus,
       &:active {
         z-index: 1;
+      }
+
+      &.ds-c-field--error {
+        margin-right: -#{$text-input__border-width};
       }
     }
   }
@@ -390,13 +505,14 @@
 
   .ds-c-single-input-date-field__button {
     appearance: none;
-    background-color: #e6f1f8; // TODO: use the token ocean-50
-    border: $input-border-width solid $input-border-color;
-    border-radius: $input-border-radius;
+    background-color: $color-gray-cool-light;
+    border: $text-input__border-width solid $text-input__border-color;
+    border-radius: $text-input__border-radius;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     color: $color-primary;
     cursor: pointer;
+    margin: 0;
     padding: $spacer-half $spacer-1;
     text-align: center;
     text-decoration: none;
@@ -406,10 +522,10 @@
       content: '';
       display: block;
       position: absolute;
-      left: -#{$input-border-width};
+      left: -#{$text-input__border-width};
       top: 0;
       bottom: 0;
-      width: $input-border-width;
+      width: $text-input__border-width;
       background: $color-gray-light;
     }
 
@@ -421,6 +537,19 @@
         display: none;
       }
     }
+  }
+
+  .ds-c-field--error + .ds-c-single-input-date-field__button {
+    border: $text-input__border-width solid $color-error;
+
+    &:after {
+      left: -#{$text-input__border-width};
+      width: $text-input__border-width;
+    }
+  }
+
+  .ds-c-field--error.ds-c-field--inverse + .ds-c-single-input-date-field__button {
+    border: $text-input__border-width solid $color-error-light;
   }
 
   .ds-c-icon--calendar {

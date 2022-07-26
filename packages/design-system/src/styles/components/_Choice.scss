@@ -6,15 +6,12 @@
 ** Normal > Error > Checked > Disabled > Focused
 **/
 
-$ds-c-inset-border-width: $spacer-half;
-
 // Layout styles for wrapping choice container
 .ds-c-choice-wrapper {
   display: flex;
   gap: 0.5rem;
   margin: 0.5rem 0;
-  // max-width: $input-max-width;
-  max-width: $measure-base;
+  max-width: $form__max-width;
 }
 
 // Styles for label
@@ -38,11 +35,11 @@ $ds-c-inset-border-width: $spacer-half;
 label,
 .ds-c-label {
   .ds-c-choice:disabled + & {
-    color: $color-muted;
+    color: $choice-label__color--disabled;
   }
 
   .ds-c-choice.ds-c-choice--inverse:disabled + & {
-    color: $color-muted-inverse;
+    color: $choice-label__color--disabled--inverse;
   }
 
   .ds-c-choice:disabled + &,
@@ -59,33 +56,33 @@ label,
 .ds-c-choice {
   align-items: center;
   appearance: none;
-  background-color: $choice-background-color;
-  border: $choice-border-width solid $choice-border-color;
-  border-radius: $choice-border-radius;
+  background-color: $choice__background-color;
+  border: $choice__border-width solid $choice__border-color;
+  border-radius: $choice__border-radius;
   cursor: pointer;
   display: grid;
-  height: $choice-size;
   flex-shrink: 0;
+  height: $choice__size;
   justify-items: center;
   margin: 0;
   place-content: center;
   position: relative;
-  width: $choice-size;
+  width: $choice__size;
 
   &::before {
-    box-shadow: inset 0 0 4em 1em $choice-checked-background-color;
+    box-shadow: inset 0 0 4em 1em $choice__background-color--checked;
     content: '';
     grid-area: 1/-1;
-    height: $choice-size;
+    height: $choice__size;
     opacity: 0;
     // transition: 120ms opacity ease-in-out;
-    width: $choice-size;
+    width: $choice__size;
   }
 
   // Error
   @if $ds-include-choice-error-highlight {
     &.ds-c-choice--error {
-      border-color: $color-error;
+      border-color: $choice__border-color--error;
     }
   }
 
@@ -96,20 +93,20 @@ label,
     }
 
     &:focus {
-      border-color: $color-primary-darker;
+      border-color: $choice__border-color--focus;
     }
   }
 
   // Disabled
   &:disabled {
-    background-color: $choice-disabled-background-color;
-    border-color: $choice-disabled-border-color;
-    color: $color-muted;
+    background-color: $choice__background-color--disabled;
+    border-color: $choice__border-color--disabled;
+    color: $choice__color--disabled;
     cursor: not-allowed;
 
     &::before {
-      background-color: $choice-disabled-background-color;
-      border-color: $choice-disabled-border-color;
+      background-color: $choice__background-color--disabled;
+      border-color: $choice__border-color--disabled;
     }
 
     @media (-ms-high-contrast: active), (forced-colors: active) {
@@ -145,8 +142,9 @@ label,
     }
 
     &:focus::before {
-      height: $choice-size - ($choice-border-width * 2);
-      width: $choice-size - ($choice-border-width * 2);
+      // have to do a mix of calc & sass interpolation in order to accommodate values being css vars in internal tools
+      height: calc(#{$choice__size} - (#{$choice__border-width} * 2));
+      width: calc(#{$choice__size} - (#{$choice__border-width} * 2));
     }
   }
 }
@@ -157,8 +155,8 @@ label,
 
   &::before {
     border-radius: 100%;
-    height: $choice-radio-button-size;
-    width: $choice-radio-button-size;
+    height: $choice__size-radio;
+    width: $choice__size-radio;
 
     @media (-ms-high-contrast: active), (forced-colors: active) {
       background-color: WindowText;
@@ -167,13 +165,13 @@ label,
   }
 
   &:checked {
-    border-color: $choice-checked-background-color;
+    border-color: $choice__background-color--checked;
   }
 }
 
 .ds-c-choice--inverse {
-  background-color: $choice-background-color-inverse;
-  border-color: $choice-border-color-inverse;
+  background-color: $choice__background-color--inverse;
+  border-color: $choice__border-color--inverse;
 
   // Error
   @if $ds-include-choice-error-highlight {
@@ -184,8 +182,8 @@ label,
 
   // Disabled
   &:disabled {
-    background-color: $choice-disabled-background-color-inverse;
-    border-color: $choice-disabled-border-color-inverse;
+    background-color: $choice__background-color--disabled--inverse;
+    border-color: $choice__border-color--disabled--inverse;
 
     @media (-ms-high-contrast: active), (forced-colors: active) {
       border-color: GrayText;
@@ -195,12 +193,12 @@ label,
 
 // Size variants
 .ds-c-choice--small {
-  height: $choice-size-small;
-  width: $choice-size-small;
+  height: $choice__size--small;
+  width: $choice__size--small;
 
   &::before {
-    height: $choice-size-small;
-    width: $choice-size-small;
+    height: $choice__size--small;
+    width: $choice__size--small;
   }
 
   &[type='checkbox']::after {
@@ -210,8 +208,8 @@ label,
   }
 
   &[type='radio']::before {
-    height: $choice-radio-button-size-small;
-    width: $choice-radio-button-size-small;
+    height: $choice__size-radio--small;
+    width: $choice__size-radio--small;
   }
 }
 
@@ -219,10 +217,10 @@ label,
 
 // Checked children container
 .ds-c-choice__checkedChild {
-  border-left: $ds-c-inset-border-width solid $color-primary;
+  border-left: $spacer-half solid $choice__border-color--left;
   flex: 1 1 100%;
   margin-bottom: $spacer-2;
-  margin-left: ($choice-size / 2) - ($ds-c-inset-border-width / 2);
+  margin-left: calc(calc(#{$choice__size} * 0.5) - calc(#{$spacer-half} * 0.5));
   padding: $spacer-2;
   padding-right: 0;
 

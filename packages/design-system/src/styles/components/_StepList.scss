@@ -1,18 +1,18 @@
 @import '../settings/index.scss';
 
-$step-list-number-size: 32px !default;
-$step-list-number-size-mobile: 24px !default;
+// @TODO: deprecate and simplify these
+$step-list-number-size: $spacer-4 !default;
+$step-list-number-size-mobile: $spacer-3 !default;
 $step-list-number-font-size: 20px !default;
 $step-list-number-font-size-mobile: $font-size-sm !default;
 $step-list-number-border-size: 2px !default;
 $step-list-number-margin: 10px !default;
 $step-list-padding-h: 0 !default;
 $step-list-padding-left: $step-list-padding-h + $step-list-number-margin + $step-list-number-size;
-$step-list-breakpoint: $width-md !default;
+$step-list-breakpoint: $media-width-md !default;
 $step-margin: $spacer-2 !default;
 $step-border-width: 1px !default;
 $step-button-height: 38px !default;
-$current-step-color: $color-primary !default;
 
 .ds-c-step-list {
   list-style-type: none;
@@ -28,17 +28,17 @@ $current-step-color: $color-primary !default;
 }
 
 .ds-c-step {
-  color: $color-muted;
+  color: $steplist__color;
   counter-increment: step-counter;
   margin-bottom: $step-margin;
   padding-bottom: $step-margin;
   position: relative;
 
   &::before {
-    border: $step-list-number-border-size solid $color-muted;
-    border-radius: 50%;
+    border: $step-list-number-border-size solid $steplist-step__border-color--default;
+    border-radius: $radius-circle;
     box-sizing: border-box;
-    color: $color-muted;
+    color: $steplist-step__color;
     content: counter(step-counter);
     display: block;
     font-size: $step-list-number-font-size-mobile;
@@ -47,7 +47,7 @@ $current-step-color: $color-primary !default;
     line-height: $step-list-number-size-mobile - $step-list-number-border-size * 2;
     position: absolute;
     text-align: center;
-    top: ($step-button-height - $step-list-number-size-mobile) / 2;
+    top: ($step-button-height - $step-list-number-size-mobile) * 0.5;
     width: $step-list-number-size-mobile;
 
     @media (min-width: $step-list-breakpoint) {
@@ -56,7 +56,7 @@ $current-step-color: $color-primary !default;
       left: -($step-list-number-margin + $step-list-number-size);
       line-height: $step-list-number-size - $step-list-number-border-size * 2;
       padding-left: 1px;
-      top: ($step-button-height - $step-list-number-size) / 2;
+      top: ($step-button-height - $step-list-number-size) * 0.5;
       width: $step-list-number-size;
     }
 
@@ -64,11 +64,12 @@ $current-step-color: $color-primary !default;
       border-color: GrayText;
       color: GrayText;
       -ms-high-contrast-adjust: none;
+      forced-color-adjust: none;
     }
   }
 
   &::after {
-    border-bottom: $step-border-width solid $border-color;
+    border-bottom: $step-border-width solid $steplist-step__border-color;
     bottom: 0;
     content: '';
     display: block;
@@ -90,22 +91,22 @@ $current-step-color: $color-primary !default;
 
   &::before {
     border: 0 none;
-    color: $color-white;
-    line-height: $step-list-number-size-mobile;
+    color: $steplist-step__color--current;
+    line-height: 24px;
 
-    @media (min-width: $step-list-breakpoint) {
-      line-height: $step-list-number-size;
+    @media (min-width: $media-width-md) {
+      line-height: 32px;
     }
   }
 }
 
 .ds-c-step--current {
   .ds-c-step__heading {
-    color: $current-step-color;
+    color: $steplist__color--current;
   }
 
   &::before {
-    background: $current-step-color;
+    background: $steplist__background-color--current;
   }
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
@@ -119,15 +120,15 @@ $current-step-color: $color-primary !default;
 
 .ds-c-step--completed {
   .ds-c-step__heading {
-    color: $color-base;
+    color: $steplist-step__color--completed;
   }
 
   .ds-c-step__substeps {
-    color: $color-base;
+    color: $steplist-step__color--completed;
   }
 
   &::before {
-    background: $color-base;
+    background: $steplist-step__background-color--completed;
   }
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
@@ -212,7 +213,7 @@ $current-step-color: $color-primary !default;
   }
 
   @media (min-width: $step-list-breakpoint) {
-    font-size: $base-font-size;
+    font-size: $font-size-base;
   }
 }
 

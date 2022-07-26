@@ -11,7 +11,7 @@ export default {
   subcomponents: { TabPanel, Tab },
 };
 
-export const Tabs = (args) => (
+export const DefaultTabs = (args) => (
   <TabsComponent {...args}>
     <TabPanel id="summary" tab="Summary">
       The Bill of Rights is the first ten amendments to the United States Constitution.

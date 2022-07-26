@@ -1,6 +1,6 @@
-import FocusTrap from 'focus-trap-react';
 import Button from '../Button/Button';
-import React, { useEffect, useRef } from 'react';
+import NativeDialog from '../NativeDialog/NativeDialog';
+import React, { useRef } from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
 import { t } from '../i18n';
@@ -52,30 +52,14 @@ export const Drawer = (props: DrawerProps) => {
   const headingRef = useRef(null);
   const id = useRef(props.headingId || uniqueId('drawer_'));
 
-  function handleEscapeKey(evt) {
-    switch (evt.code) {
-      case 'Escape':
-        props.onCloseClick(evt);
-        break;
-      default:
-        break;
-    }
-  }
-
-  useEffect(() => {
-    if (props.hasFocusTrap) document.addEventListener('keydown', handleEscapeKey);
-    if (headingRef) headingRef.current.focus();
-
-    return () => document.removeEventListener('keydown', handleEscapeKey);
-  }, []);
-
   const Heading = `h${props.headingLevel}` as const;
 
-  const drawerMarkup = (
-    <div
+  return (
+    <NativeDialog
       aria-labelledby={id.current}
       className={classNames(props.className, 'ds-c-drawer')}
-      role="dialog"
+      exit={props.onCloseClick}
+      showModal={props.hasFocusTrap}
     >
       <div className="ds-c-drawer__window">
         <div className="ds-c-drawer__header">
@@ -113,22 +97,13 @@ export const Drawer = (props: DrawerProps) => {
           <div className="ds-c-drawer__footer-body">{props.footerBody}</div>
         </div>
       </div>
-    </div>
-  );
-
-  return (
-    <>
-      {props.hasFocusTrap ? (
-        <FocusTrap focusTrapOptions={{ clickOutsideDeactivates: true }}>{drawerMarkup}</FocusTrap>
-      ) : (
-        drawerMarkup
-      )}
-    </>
+    </NativeDialog>
   );
 };
 
 Drawer.defaultProps = {
   headingLevel: '3',
+  hasFocusTrap: false,
 };
 
 export default Drawer;

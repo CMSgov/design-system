@@ -13,7 +13,7 @@ exports[`Choice applies className to label 1`] = `
 exports[`Choice has a hint and requirementLabel 1`] = `
 <FormLabel
   component="label"
-  fieldId="checkbox_foo_10"
+  fieldId="checkbox_foo_11"
   hint="Hello world"
   requirementLabel="Optional "
 >

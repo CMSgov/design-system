@@ -62,11 +62,11 @@ describe('useLabelMask', () => {
     expect(renderInput(inputProps).asFragment()).toMatchSnapshot();
   });
 
-  it('masks the value when focused', () => {
+  it('shows masked value when focused', () => {
     const { result } = renderUseLabelMask({ value: '12' });
     renderInput(result.current.inputProps);
     userEvent.click(screen.getByRole('textbox'));
-    expect(render(result.current.labelMask).container.textContent).toMatchSnapshot();
+    expect(render(result.current.labelMask).asFragment()).toMatchSnapshot();
   });
 
   it('shows unfilled mask when not focused', () => {
@@ -74,6 +74,6 @@ describe('useLabelMask', () => {
     renderInput(result.current.inputProps);
     userEvent.click(screen.getByRole('textbox'));
     userEvent.tab();
-    expect(render(result.current.labelMask).container.textContent).toMatchSnapshot();
+    expect(render(result.current.labelMask).asFragment()).toMatchSnapshot();
   });
 });

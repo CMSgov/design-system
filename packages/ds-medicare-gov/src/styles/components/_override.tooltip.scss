@@ -1,5 +1,10 @@
+// @TODO: fold these options into the main tooltip.scss file and set up
+// component theme variables for extra options. For now this can remain
+// the same as medicare is the only place this is happening, correct
+// theme colors are being referenced.
+
 .ds-c-tooltip__trigger-link {
-  color: $color-base;
+  color: $tooltip-trigger__color;
   cursor: default;
   text-decoration-color: $color-primary;
   text-decoration-style: dashed;

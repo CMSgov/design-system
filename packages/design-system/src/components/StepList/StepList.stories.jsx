@@ -79,4 +79,4 @@ const stepListStepData = [
   },
 ];
 
-export const StepList = (args) => <StepListComponent {...args} steps={stepListStepData} />;
+export const StepListExample = (args) => <StepListComponent {...args} steps={stepListStepData} />;
