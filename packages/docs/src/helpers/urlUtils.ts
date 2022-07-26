@@ -1,8 +1,27 @@
 import join from 'url-join';
+import { withPrefix } from 'gatsby';
 
-export function githubUrl(pathname = '') {
+export function makeGithubUrl(pathname = '') {
   const ghUrl = 'https://github.com/CMSgov/design-system';
   return join(ghUrl, pathname);
+}
+
+const sketchBoardIds = {
+  core: 'bffbfeb1-59a1-48dd-842f-a1e0566e457f',
+  healthcare: '4da17849-4fab-4684-b2ef-fe63ba7ff10b',
+  medicare: 'c242aee5-25e9-4684-ac7d-0f084ffeb782',
+};
+
+// creates links to sketch assets
+// in sketch, we are using the art board in 'inspect' mode for each component
+export function makeSketchUrl(pathname = '', theme) {
+  const sketchUrl = 'https://www.sketch.com/s/';
+  return join(sketchUrl, sketchBoardIds[theme], 'a', pathname, '#Inspect');
+}
+
+// creates links to storybook story
+export function makeStorybookUrl(storyId, theme) {
+  return withPrefix(`/storybook/?path=/story/${storyId}&globals=theme:${theme}`);
 }
 
 export function makePageUrl(fileRelativePath) {
