@@ -15,14 +15,20 @@ import { ArrowIcon, Button } from '@cmsgov/design-system';
 
 ## Examples
 
-The following tables give an overview of the different permutations of buttons available in the selected design system. The controlling traits are the named _variation_, whether it's the _main_ vs. _alternate_ color, and the _on-light_ vs. _on-dark_ context. Each of these traits has its own example later on showing how to apply it.
+The following tables give an overview of the different available button styles in the selected design system. Each button has three controllable traits that can be used in various combinations. They are:
+
+1. _Variation_: which affects the border and background styles
+2. Color: defined as either _main_ or _alternate_
+3. Context: specified as either _on-light_ or _on-dark_
+
+See the examples in the following sections to learn how they can be applied.
 
 <ButtonVariationsTable />
 
 ### Outline button
 
 <StorybookExample
-  componentName="button"
+  componentName="outline-button"
   sourceFilePath="components/Button/Button.tsx"
   storyId="components-button--default&args=children:Outline"
 />
@@ -30,7 +36,7 @@ The following tables give an overview of the different permutations of buttons a
 ### Solid button
 
 <StorybookExample
-  componentName="button"
+  componentName="solid-button"
   sourceFilePath="components/Button/Button.tsx"
   storyId="components-button--default&args=children:Solid;variation:solid"
 />
@@ -38,7 +44,7 @@ The following tables give an overview of the different permutations of buttons a
 ### Ghost button
 
 <StorybookExample
-  componentName="button"
+  componentName="ghost-button"
   sourceFilePath="components/Button/Button.tsx"
   storyId="components-button--default&args=children:Ghost;variation:ghost"
 />
@@ -51,7 +57,7 @@ Each button variation (outline, solid, ghost) has an alternate option. The alter
 
 <ThemeContent neverThemes={['healthcare', 'medicare']}>
   <StorybookExample
-    componentName="button"
+    componentName="outline-alt-button"
     sourceFilePath="components/Button/Button.tsx"
     storyId="components-button--default&args=children:Outline;isAlternate:true"
   />
@@ -64,7 +70,7 @@ Each button variation (outline, solid, ghost) has an alternate option. The alter
 
 <ThemeContent neverThemes={['healthcare']}>
   <StorybookExample
-    componentName="button"
+    componentName="solid-alt-button"
     sourceFilePath="components/Button/Button.tsx"
     storyId="components-button--default&args=children:Solid;variation:solid;isAlternate:true"
   />
@@ -77,7 +83,7 @@ Each button variation (outline, solid, ghost) has an alternate option. The alter
 
 <ThemeContent neverThemes={['healthcare', 'medicare']}>
   <StorybookExample
-    componentName="button"
+    componentName="ghost-alt-button"
     sourceFilePath="components/Button/Button.tsx"
     storyId="components-button--default&args=children:Ghost;variation:ghost;isAlternate:true"
   />
@@ -90,7 +96,7 @@ Each button variation (outline, solid, ghost) has an alternate option. The alter
 
 <ThemeContent neverThemes={['healthcare']}>
   <StorybookExample
-    componentName="button"
+    componentName="on-dark-buttons"
     sourceFilePath="components/Button/Button.tsx"
     storyId="components-button--variations-on-dark"
   />
