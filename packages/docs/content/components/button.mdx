@@ -11,7 +11,7 @@ medicare:
   sketchLink: Vr4yyWw
 ---
 
-import { ArrowIcon, Button } from '@cmsgov/design-system';
+import { ArrowIcon, Badge, Button } from '@cmsgov/design-system';
 
 ## Examples
 
@@ -53,7 +53,7 @@ See the examples in the following sections to learn how they can be applied.
 
 Each button variation (outline, solid, ghost) has an alternate option. The alternate options can be styled differently than the main buttons.
 
-#### Outline alternate button
+#### Outline alternate button <ThemeContent onlyThemes={['healthcare', 'medicare']}><Badge variation="alert">Unused</Badge></ThemeContent>
 
 <ThemeContent neverThemes={['healthcare', 'medicare']}>
   <StorybookExample
@@ -62,11 +62,8 @@ Each button variation (outline, solid, ghost) has an alternate option. The alter
     storyId="components-button--default&args=children:Outline;isAlternate:true"
   />
 </ThemeContent>
-<ThemeContent onlyThemes={['healthcare', 'medicare']}>
-  Outline alternate buttons are not used by this design system.
-</ThemeContent>
 
-#### Solid alternate button
+#### Solid alternate button <ThemeContent onlyThemes={['healthcare']}><Badge variation="alert">Unused</Badge></ThemeContent>
 
 <ThemeContent neverThemes={['healthcare']}>
   <StorybookExample
@@ -75,11 +72,8 @@ Each button variation (outline, solid, ghost) has an alternate option. The alter
     storyId="components-button--default&args=children:Solid;variation:solid;isAlternate:true"
   />
 </ThemeContent>
-<ThemeContent onlyThemes={['healthcare']}>
-  Solid alternate buttons are not used by this design system.
-</ThemeContent>
 
-#### Ghost alternate button
+#### Ghost alternate button <ThemeContent onlyThemes={['healthcare', 'medicare']}><Badge variation="alert">Unused</Badge></ThemeContent>
 
 <ThemeContent neverThemes={['healthcare', 'medicare']}>
   <StorybookExample
@@ -88,11 +82,8 @@ Each button variation (outline, solid, ghost) has an alternate option. The alter
     storyId="components-button--default&args=children:Ghost;variation:ghost;isAlternate:true"
   />
 </ThemeContent>
-<ThemeContent onlyThemes={['healthcare', 'medicare']}>
-  Ghost alternate buttons are not used by this design system.
-</ThemeContent>
 
-### On dark background
+### On dark background <ThemeContent onlyThemes={['healthcare']}><Badge variation="alert">Unused</Badge></ThemeContent>
 
 <ThemeContent neverThemes={['healthcare']}>
   <StorybookExample
@@ -100,9 +91,6 @@ Each button variation (outline, solid, ghost) has an alternate option. The alter
     sourceFilePath="components/Button/Button.tsx"
     storyId="components-button--variations-on-dark"
   />
-</ThemeContent>
-<ThemeContent onlyThemes={['healthcare']}>
-  On-dark buttons are not used by this design system.
 </ThemeContent>
 
 ### Changing the size
