@@ -1,0 +1,160 @@
+@import '../settings/index.scss';
+
+// To Do: Remove the semantic classes h1, h2, h3, display, title, etc... after deprecating
+
+// Titles and headings
+.ds-display,
+.ds-title,
+.ds-h1,
+.ds-h2,
+.ds-h3,
+.ds-h4,
+.ds-h5,
+.ds-h6,
+.ds-text-heading--5xl,
+.ds-text-heading--4xl,
+.ds-text-heading--3xl,
+.ds-text-heading--2xl,
+.ds-text-heading--xl,
+.ds-text-heading--lg,
+.ds-text-heading--md,
+.ds-text-heading--sm {
+  line-height: $heading-line-height;
+  margin: 0;
+}
+
+// Bold title and headings
+.ds-display,
+.ds-h1,
+.ds-h2,
+.ds-h3,
+.ds-h4,
+.ds-text-heading--4xl,
+.ds-text-heading--3xl,
+.ds-text-heading--2xl,
+.ds-text-heading--xl,
+.ds-text-heading--lg {
+  font-weight: $font-bold;
+}
+
+// Headings
+.ds-h1,
+.ds-h2,
+.ds-h3,
+.ds-h4,
+.ds-h5,
+.ds-h6,
+.ds-text-heading--3xl,
+.ds-text-heading--2xl,
+.ds-text-heading--xl,
+.ds-text-heading--lg,
+.ds-text-heading--md,
+.ds-text-heading--sm {
+  margin-bottom: 0.5em;
+  margin-top: 1.5em;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.ds-display,
+.ds-text-heading--5xl {
+  font-size: $font-size-3xl;
+
+  @media (min-width: $width-sm) {
+    font-size: $font-size-4xl;
+  }
+
+  @media (min-width: $width-md) {
+    font-size: $font-size-5xl;
+  }
+}
+
+.ds-title,
+.ds-text-heading--4xl {
+  font-size: $font-size-3xl;
+  font-weight: $font-normal;
+
+  @media (min-width: $width-md) {
+    font-size: $font-size-4xl;
+  }
+}
+
+.ds-h1,
+.ds-text-heading--3xl {
+  font-size: $h1-mobile-font-size;
+  font-weight: $font-normal;
+
+  @media (min-width: $width-md) {
+    font-size: $font-size-3xl;
+  }
+}
+
+.ds-h2,
+.ds-text-heading--2xl {
+  font-size: $font-size-2xl;
+}
+
+.ds-h3,
+.ds-text-heading--xl {
+  font-size: $font-size-xl;
+}
+
+.ds-h4,
+.ds-text-heading--lg {
+  font-size: $font-size-lg;
+}
+
+.ds-h5,
+.ds-text-heading--md {
+  font-size: $font-size-md;
+  font-weight: $font-bold;
+}
+
+.ds-h6,
+.ds-text-heading--sm {
+  color: $color-muted;
+  font-size: $font-size-sm;
+  font-weight: $font-normal;
+}
+
+.ds-base--inverse .ds-h6,
+.ds-base--inverse .ds-text-heading--sm {
+  color: $color-muted-inverse;
+}
+
+.ds-text,
+.ds-text--lead,
+.ds-text-body--lg,
+.ds-text-body--md {
+  line-height: $base-line-height;
+  margin-bottom: 1em;
+  margin-top: 1em;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.ds-text--lead,
+.ds-text-body--lg {
+  font-size: $font-size-lg;
+}
+
+.ds-text,
+.ds-text-body--md {
+  font-size: $base-font-size;
+}
+
+.ds-text-body--sm {
+  font-size: $font-size-sm;
+}

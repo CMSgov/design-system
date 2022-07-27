@@ -1,0 +1,13 @@
+@import '../settings/index.scss';
+
+.ds-u-measure--narrow {
+  max-width: $measure-narrow !important;
+}
+
+.ds-u-measure--base {
+  max-width: $measure-base !important;
+}
+
+.ds-u-measure--wide {
+  max-width: $measure-wide !important;
+}
