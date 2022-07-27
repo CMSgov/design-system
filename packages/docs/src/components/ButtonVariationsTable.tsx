@@ -94,7 +94,7 @@ const ButtonVariationsTable = ({ theme }: ButtonVariationsTableProps) => {
   return (
     <>
       <Table stackable stackableBreakpoint="md" className="c-button-variations-table">
-        <TableCaption>Table of button variations on light background</TableCaption>
+        <TableCaption>Button variations on light background</TableCaption>
         <TableHead>
           <TableRow>
             <TableCell scope="col">Variation</TableCell>
