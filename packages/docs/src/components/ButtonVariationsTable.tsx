@@ -85,7 +85,7 @@ export interface ButtonVariationsTableProps {
 
 const ButtonVariationsTable = ({ theme }: ButtonVariationsTableProps) => {
   const uses = themeButtonUsage[theme] ?? {};
-  const unused = <Badge variation="alert">Unused</Badge>;
+  const unused = '(Unused)';
 
   function b(buttonInstance: ReactElement, isUsed?: boolean) {
     return isUsed === false ? unused : buttonInstance;
