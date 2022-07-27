@@ -11,14 +11,14 @@ import {
 } from '@cmsgov/design-system';
 import ThemeContent from './ThemeContent';
 
-export interface ButtonVariationsTableProps {
+export interface ButtonMigrationTableProps {
   /**
    * Name of currently selected theme
    */
   theme: string;
 }
 
-const ButtonVariationsTable = ({ theme }: ButtonVariationsTableProps) => {
+const ButtonMigrationTable = ({ theme }: ButtonMigrationTableProps) => {
   const deprecated = <Badge variation="alert">Deprecated</Badge>;
   const noChange = <Badge>No change</Badge>;
 
@@ -335,4 +335,4 @@ const ButtonVariationsTable = ({ theme }: ButtonVariationsTableProps) => {
   );
 };
 
-export default ButtonVariationsTable;
+export default ButtonMigrationTable;

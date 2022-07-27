@@ -3,7 +3,7 @@
   margin-top: $spacer-3;
 }
 
-.c-button-migration-table td,
-.c-button-migration-table th {
+.c-button-migration-table td:nth-child(1),
+.c-button-migration-table th:nth-child(1) {
   text-align: center;
 }
