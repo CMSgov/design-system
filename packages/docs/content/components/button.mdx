@@ -11,172 +11,129 @@ medicare:
   sketchLink: Vr4yyWw
 ---
 
-import { Alert, Button, ArrowIcon, TextInput } from '@cmsgov/design-system';
+import { ArrowIcon, Badge, Button } from '@cmsgov/design-system';
 
-## Default Button
+## Examples
+
+The following tables give an overview of the different available button styles in the selected design system. Each button has three controllable traits that can be used in various combinations. They are:
+
+1. _Variation_: which affects the border and background styles
+2. Color: defined as either _main_ or _alternate_
+3. Context: specified as either _on-light_ or _on-dark_
+
+See the examples in the following sections to learn how they can be applied.
+
+<ButtonVariationsTable />
+
+### Outline button
+
+<StorybookExample
+  componentName="outline-button"
+  sourceFilePath="components/Button/Button.tsx"
+  storyId="components-button--default&args=children:Outline"
+/>
+
+### Solid button
+
+<StorybookExample
+  componentName="solid-button"
+  sourceFilePath="components/Button/Button.tsx"
+  storyId="components-button--default&args=children:Solid;variation:solid"
+/>
+
+### Ghost button
+
+<StorybookExample
+  componentName="ghost-button"
+  sourceFilePath="components/Button/Button.tsx"
+  storyId="components-button--default&args=children:Ghost;variation:ghost"
+/>
+
+### Alternate buttons
+
+Each button variation (outline, solid, ghost) has an alternate option. The alternate options can be styled differently than the main buttons.
+
+<ThemeContent onlyThemes={['healthcare', 'medicare']}>
+
+  #### Outline alternate button (Unused)
+
+</ThemeContent>
+<ThemeContent neverThemes={['healthcare', 'medicare']}>
+
+  #### Outline alternate button
+
+  <StorybookExample
+    componentName="outline-alt-button"
+    sourceFilePath="components/Button/Button.tsx"
+    storyId="components-button--default&args=children:Outline;isAlternate:true"
+  />
+</ThemeContent>
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+  #### Solid alternate button (Unused)
+
+</ThemeContent>
+<ThemeContent neverThemes={['healthcare']}>
+
+  #### Solid alternate button
+  
+  <StorybookExample
+    componentName="solid-alt-button"
+    sourceFilePath="components/Button/Button.tsx"
+    storyId="components-button--default&args=children:Solid;variation:solid;isAlternate:true"
+  />
+</ThemeContent>
+
+<ThemeContent onlyThemes={['healthcare', 'medicare']}>
+
+  #### Ghost alternate button (Unused)
+
+</ThemeContent>
+<ThemeContent neverThemes={['healthcare', 'medicare']}>
+  
+  #### Ghost alternate button
+
+  <StorybookExample
+    componentName="ghost-alt-button"
+    sourceFilePath="components/Button/Button.tsx"
+    storyId="components-button--default&args=children:Ghost;variation:ghost;isAlternate:true"
+  />
+</ThemeContent>
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+  ### On dark background (Unused)
+
+</ThemeContent>
+<ThemeContent neverThemes={['healthcare']}>
+
+  ### On dark background
+
+  <StorybookExample
+    componentName="on-dark-buttons"
+    sourceFilePath="components/Button/Button.tsx"
+    storyId="components-button--variations-on-dark"
+  />
+</ThemeContent>
+
+### Changing the size
+
+Buttons can exist in two alternative sizes: "big" or "small". See the example below.
 
 <EmbeddedExample>
   <div>
-    <Button className="ds-u-margin-right--1">Default</Button>
-    <Button className="ds-c-button--hover ds-u-margin-right--1">Hover</Button>
-    <Button className="ds-c-button--active ds-u-margin-right--1">Active</Button>
-    <Button className="ds-c-button--focus ds-u-margin-right--1">Focus</Button>
-    <Button disabled>Disabled</Button>
-  </div>
-</EmbeddedExample>
-
-## Primary Button
-
-<EmbeddedExample>
-  <div>
-    <Button className="ds-u-margin-right--1" variation="primary">
-      Default
-    </Button>
-    <Button className="ds-c-button--hover ds-u-margin-right--1" variation="primary">
-      Hover
-    </Button>
-    <Button className="ds-c-button--active ds-u-margin-right--1" variation="primary">
-      Active
-    </Button>
-    <Button className="ds-c-button--focus ds-u-margin-right--1" variation="primary">
-      Focus
-    </Button>
-    <Button disabled variation="primary">
-      Disabled
-    </Button>
-  </div>
-</EmbeddedExample>
-
-## Success Button
-
-<EmbeddedExample>
-  <div>
-    <Button className="ds-u-margin-right--1" variation="success">
-      Default
-    </Button>
-    <Button className="ds-c-button--hover ds-u-margin-right--1" variation="success">
-      Hover
-    </Button>
-    <Button className="ds-c-button--active ds-u-margin-right--1" variation="success">
-      Active
-    </Button>
-    <Button className="ds-c-button--focus ds-u-margin-right--1" variation="success">
-      Focus
-    </Button>
-    <Button disabled variation="success">
-      Disabled
-    </Button>
-  </div>
-</EmbeddedExample>
-
-## Transparent Button
-
-<EmbeddedExample>
-  <div>
-    <Button className="ds-u-margin-right--1" variation="transparent">
-      Default
-    </Button>
-    <Button className="ds-c-button--hover ds-u-margin-right--1" variation="transparent">
-      Hover
-    </Button>
-    <Button className="ds-c-button--active ds-u-margin-right--1" variation="transparent">
-      Active
-    </Button>
-    <Button className="ds-c-button--focus ds-u-margin-right--1" variation="transparent">
-      Focus
-    </Button>
-    <Button disabled variation="transparent">
-      Disabled
-    </Button>
-  </div>
-</EmbeddedExample>
-
-## Button Size Variations
-
-<EmbeddedExample>
-  <div>
-    <Button className="ds-u-margin-right--1" size="small">
-      Small
-    </Button>
-    <Button className="ds-u-margin-right--1">Default</Button>
     <Button className="ds-u-margin-right--1" size="big">
       Big
     </Button>
-  </div>
-</EmbeddedExample>
-
-## Inverse Buttons
-
-<EmbeddedExample>
-  <div className="ds-u-fill--background-inverse ds-u-padding--2">
-    <div className="ds-u-margin-bottom--2">
-      <Button className="ds-u-margin-right--1" inversed>
-        Default
-      </Button>
-      <Button className="ds-c-button--hover ds-u-margin-right--1" inversed>
-        Hover
-      </Button>
-      <Button className="ds-c-button--active ds-u-margin-right--1" inversed>
-        Active
-      </Button>
-      <Button className="ds-c-button--focus ds-u-margin-right--1" inversed>
-        Focus
-      </Button>
-      <Button disabled inversed>
-        Disabled
-      </Button>
-    </div>
-    <div>
-      <Button className="ds-u-margin-right--1" variation="transparent" inversed>
-        Default
-      </Button>
-      <Button className="ds-c-button--hover ds-u-margin-right--1" variation="transparent" inversed>
-        Hover
-      </Button>
-      <Button className="ds-c-button--active ds-u-margin-right--1" variation="transparent" inversed>
-        Active
-      </Button>
-      <Button className="ds-c-button--focus ds-u-margin-right--1" variation="transparent" inversed>
-        Focus
-      </Button>
-      <Button disabled variation="transparent" inversed>
-        Disabled
-      </Button>
-    </div>
-  </div>
-</EmbeddedExample>
-
-## Danger Button
-
-<Alert
-  heading="Deprecated"
-  variation="error"
-  className="ds-u-margin-bottom--2 ds-u-font-size--small"
->
-  <p class="ds-c-alert__text">Do not use.</p>
-</Alert>
-
-<EmbeddedExample>
-  <div>
-    <Button className="ds-u-margin-right--1" variation="danger">
-      Default
-    </Button>
-    <Button className="ds-c-button--hover ds-u-margin-right--1" variation="danger">
-      Hover
-    </Button>
-    <Button className="ds-c-button--active ds-u-margin-right--1" variation="danger">
-      Active
-    </Button>
-    <Button className="ds-c-button--focus ds-u-margin-right--1" variation="danger">
-      Focus
-    </Button>
-    <Button disabled variation="danger">
-      Disabled
+    <Button className="ds-u-margin-right--1">Default</Button>
+    <Button className="ds-u-margin-right--1" size="small">
+      Small
     </Button>
   </div>
 </EmbeddedExample>
 
-## Button icons
+### Adding icons
 
 - Add an inline SVG icon and it will become the same color as the button text. For the crispest icon rendering, ensure the icon has a square `viewBox` with values that are multiples of `8` (ie. `24x24`).
 - Use the margin utility class to add spacing between the icon and button text.
@@ -195,18 +152,9 @@ import { Alert, Button, ArrowIcon, TextInput } from '@cmsgov/design-system';
   </div>
 </EmbeddedExample>
 
-## Button inline with field
+## Code
 
-The button is the same height as a single-line text field.
-
-<EmbeddedExample>
-  <div>
-    <TextInput fieldClassName="ds-u-display--inline-block ds-u-margin-right--05" type="text" />
-    <Button>Submit</Button>
-  </div>
-</EmbeddedExample>
-
-## `<Button>`
+### React
 
 The `Button` component accepts its text as children (AKA inner HTML), which
 means you can also pass in HTML or custom components. This gives you a lot of
@@ -217,14 +165,40 @@ In addition to the supported props listed, you can also pass in additional
 props, which will be passed to the rendered root component. For example,
 you could pass in a `target` prop to pass to the rendered anchor element.
 
-<StorybookExample
-  componentName="button"
-  storyId="components-button--default"
-/>
-
-### Props
-
 <PropTable componentName="Button" />
+
+### Styles
+
+The following Sass variables can be overridden to customize Button components:
+
+<ComponentThemeOptions componentname="button" />
+
+### Google Analytics
+
+**Analytics event tracking is disabled by default.**
+
+#### Enable event tracking
+
+Import and set the `setButtonSendsAnalytics` feature flag to `true` in your application's entry file:
+
+```js
+import { setButtonSendsAnalytics } from '@cmsgov/<design-system-package>';
+setButtonSendsAnalytics(true);
+```
+
+On applications where the page has `utag` loaded, the data goes to Tealium which allows it to route to Google Analytics or the currently approved data analytics tools.
+
+#### Disable event tracking
+
+For the `analytics` prop, pass the value `false` to the component to disable analytics tracking for a singular component instance
+
+```js
+analytics={false}
+```
+
+#### Override event tracking
+
+A custom heading value can be sent for an analytics event by using the prop `analyticsLabelOverride`. It is recommended that this value be used to prevent sensitive personal information from being passed to analytics trackers.
 
 ## Guidance
 
@@ -269,15 +243,7 @@ you could pass in a `target` prop to pass to the rendered anchor element.
 - When styling links to look like buttons, remember that screen readers handle links slightly differently than they do buttons. Pressing the `Space` key triggers a button, but pressing the `Enter` key triggers a link.
 - Dimmed or unavailable buttons should have the `disabled` attribute applied. This removes native click and keypress events from the button. It also prevents automated scanners from logging a low contrast error. Finally, it announces the button as "dimmed" or "disabled" to screen readers, offering users additional context.
 
-## Customization
-
-The following Sass variables can be overridden to customize Button components:
-
-<ComponentThemeOptions
-  componentname="button"
-/>
-
-### Learn more
+## Learn more
 
 - [Beyond Blue Links: Making Clickable Elements Recognizable](https://www.nngroup.com/articles/clickable-elements/)
 - [7 Basic Best Practices for Buttons](http://www.uxmatters.com/mt/archives/2012/05/7-basic-best-practices-for-buttons.php)
@@ -293,30 +259,3 @@ The following Sass variables can be overridden to customize Button components:
 
 - [Using the button role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_button_role)
 - [Building Accessible Buttons with ARIA](https://www.deque.com/blog/accessible-aria-buttons)
-
-## Google Analytics
-
-**Analytics event tracking is disabled by default.**
-
-### Enable event tracking
-
-Import and set the `setButtonSendsAnalytics` feature flag to `true` in your application's entry file:
-
-```js
-import { setButtonSendsAnalytics } from '@cmsgov/<design-system-package>';
-setButtonSendsAnalytics(true);
-```
-
-On applications where the page has `utag` loaded, the data goes to Tealium which allows it to route to Google Analytics or the currently approved data analytics tools.
-
-### Disable event tracking
-
-For the `analytics` prop, pass the value `false` to the component to disable analytics tracking for a singular component instance
-
-```js
-analytics={false}
-```
-
-### Override event tracking
-
-A custom heading value can be sent for an analytics event by using the prop `analyticsLabelOverride`. It is recommended that this value be used to prevent sensitive personal information from being passed to analytics trackers.
