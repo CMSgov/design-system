@@ -22,36 +22,29 @@
   }
 
   &:hover,
-  &.ds-c-button--hover,
-  &:hover:focus,
-  &.ds-c-button--hover.ds-c-button--focus {
+  &:hover:focus {
     background-color: var(--backgroundColor--h, $button__background-color--hover);
     border-color: var(--borderColor--h, $button__border-color--hover);
     color: var(--color--h, $button__color--hover);
   }
 
-  &:focus,
-  &.ds-c-button--focus {
+  &:focus {
     @include focus-styles;
   }
 
   &:active,
-  &.ds-c-button--active,
-  &:active:focus,
-  &.ds-c-button--active:focus {
+  &:active:focus {
     background-color: var(--backgroundColor--a, $button__background-color--active);
     border-color: var(--borderColor--a, $button__border-color--active);
     color: var(--color--a, $button__color--active);
   }
 
   // Make sure active overrides focus styles
-  &:active:focus,
-  &.ds-c-button--active:focus {
+  &:active:focus {
     box-shadow: none;
   }
 
-  &:disabled,
-  &.ds-c-button--disabled {
+  &:disabled {
     background-color: var(--backgroundColor--d, $button__background-color--disabled);
     border-color: var(--borderColor--d, $button__border-color--disabled);
     color: var(--color--d, $button__color--disabled);
