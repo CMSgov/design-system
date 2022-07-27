@@ -1,0 +1,119 @@
+{
+  "accordion": {
+    "close": "Cerrar",
+    "open": "Abrir"
+  },
+  "alert": {
+    "defaultLabel": "Aviso",
+    "error": "Alerta",
+    "success": "Completado",
+    "warn": "Advertencia"
+  },
+  "autocomplete": {
+    "ariaClearLabel": "Borrar búsqueda y volver a intentar",
+    "clearInputText": "Borrar búsqueda",
+    "loadingMessage": "Cargando...",
+    "noResultsMessage": "No hay resultados"
+  },
+  "badge": {
+    "alert": "Alerta",
+    "info": "Aviso",
+    "success": "Completado",
+    "warn": "Advertencia"
+  },
+  "dateField": {
+    "label": "Fecha",
+    "hint": "Por ejemplo: 28/4/1986",
+    "dayLabel": "Día",
+    "monthLabel": "Mes",
+    "yearLabel": "Año"
+  },
+  "dialog": {
+    "ariaCloseLabel": "Cerrar cuadro de diálogo modal",
+    "closeButtonText": "Cerrar"
+  },
+  "drawer": {
+    "ariaLabel": "Cerrar ventana de ayuda",
+    "closeButtonText": "Cerrar"
+  },
+  "filterChip": {
+    "ariaClearLabel": "Eliminar",
+    "filter": "{{label}} del filtro"
+  },
+  "icons": {
+    "add": "Añadir",
+    "alertCircle": "Alerta",
+    "arrowsStacked": "Ordenar",
+    "calendar": "Calendario",
+    "upArrow": "flecha hacía arriba",
+    "downArrow": "flecha hacía abajo",
+    "leftArrow": "flecha a la izquierda",
+    "rightArrow": "flecha a la derecha",
+    "buildingCircle": "edificio en un círculo",
+    "checkCircle": "Marca de verificación en círculo",
+    "check": " Marca de cotejo",
+    "close": "Cerrar",
+    "download": "Descargar",
+    "externalLink": "Enlace externo",
+    "hhsLogo": "Departamento de Salud y Servicios Humanos de los Estados Unidos",
+    "image": "Imagen",
+    "infoCircle": "Información",
+    "lockCircle": "Candado en un círculo",
+    "lock": "Candado",
+    "menu": "Icono de menú",
+    "next": "Siguiente",
+    "remove": "Eliminar",
+    "star": "Estrella",
+    "starEmpty": "Estrella vacía",
+    "starFilled": "Estrella llena",
+    "starHalf": "Media Estrella",
+    "usaLogo": "USA.gov – Gobierno más simple",
+    "warning": "Advertencia"
+  },
+  "monthPicker": {
+    "selectAllText": "Seleccionar todo",
+    "clearAllText": "Borrar todo"
+  },
+  "pagination": {
+    "ariaLabel": "Paginación",
+    "pageXOfY": "Página {{number}} de {{total}}",
+    "startLabelText": "Anterior",
+    "startAriaLabel": "Página anterior",
+    "endLabelText": "Siguiente",
+    "endAriaLabel": "Página siguiente"
+  },
+  "review": {
+    "editText": "Editar"
+  },
+  "singleInputDateField": {
+    "close": "Abrir el cuadro para seleccionar el calendario",
+    "open": "Cerrar el cuadra para seleccionar el calendario",
+    "arrowKeyInstructions": "Las teclas de flecha pueden navegar por las fechas"
+  },
+  "skipNav": {
+    "default": "Ir al contenido principal"
+  },
+  "spinner": {
+    "ariaText": "Cargando"
+  },
+  "verticalNav": {
+    "expand": "expandir subnavegación",
+    "collapse": "cerrar subnavegación"
+  },
+  "usaBanner": {
+    "bannerLabel": "Sitio web oficial del gobierno",
+    "bannerText": "Un sitio oficial del Gobierno de Estados Unidos",
+    "bannerActionText": "Así es como usted puede verificarlo",
+    "domainHeaderText": "Los sitios web oficiales usan .gov",
+    "domainAText": "Un sitio web",
+    "domainText": "pertenece a una organización oficial del Gobierno de Estados Unidos.",
+    "flagIconTitle": "U.S. Bandera",
+    "govText": ".gov",
+    "httpsHeaderText": "Los sitios web seguros .gov usan HTTPS",
+    "httpsOrText": "o",
+    "httpsText": "https://",
+    "httpsAText": "Un",
+    "httpsLockText": "candado",
+    "httpsDetailText": "significa que usted se conectó de forma segura a un sitio web .gov. Comparta información sensible sólo en sitios web oficiales y seguros."
+  }
+}
