@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'gatsby';
 import { TableOfContentsItem } from '../helpers/graphQLTypes';
 
 export interface TableOfContentsProps {
@@ -22,11 +21,12 @@ export const TableOfContentsList = ({ items, level, className = '' }: TableOfCon
     level == 1
       ? 'c-table-of-contents__list-item c-table-of-contents__list-item--no-marker'
       : 'c-table-of-contents__list-item';
+
   return (
     <ul className={`c-table-of-contents__list ds-u-padding-right--0 ${className}`}>
       {items.map((item) => (
         <li key={item.title} className={itemClasses}>
-          <Link to={item.url}>{item.title}</Link>
+          <a href={item.url}>{item.title}</a>
           {item.items && <TableOfContentsList items={item.items} level={level + 1} />}
         </li>
       ))}

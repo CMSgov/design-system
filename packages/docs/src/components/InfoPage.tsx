@@ -53,4 +53,21 @@ export const query = graphql`
   }
 `;
 
-export default InfoPage;
+function compareProps(prevProps, nextProps) {
+  const nextLocation = nextProps.location;
+  const prevLocation = prevProps.location;
+  /*
+  return true if passing nextProps to render would return
+  the same result as passing prevProps to render,
+  otherwise return false
+  */
+  if (
+    nextLocation.pathname === prevLocation.pathname &&
+    nextLocation.search === prevLocation.search
+  ) {
+    return true;
+  }
+  return false;
+}
+
+export default React.memo(InfoPage, compareProps);
