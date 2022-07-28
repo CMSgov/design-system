@@ -48,7 +48,7 @@ export const query = graphql`
         }
       }
       body
-      tableOfContents(maxDepth: 2)
+      tableOfContents(maxDepth: 3)
     }
   }
 `;
