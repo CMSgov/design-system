@@ -96,28 +96,44 @@ const StorybookExample = ({
     setIsLoading(false);
   };
 
-  const onDocsLoad = () => {
-    if (docsRef.current) {
-      const storyBlockSelector = `#anchor--${storyId}`;
-      const showCodeButton = docsRef.current.contentDocument.body.querySelector(
-        `${storyBlockSelector} .docblock-code-toggle`
-      );
-      if (showCodeButton && (showCodeButton as HTMLButtonElement).click) {
-        (showCodeButton as HTMLButtonElement).click();
-        setTimeout(() => {
-          const codeEl = docsRef.current.contentDocument.body.querySelector(
-            `${storyBlockSelector} code.language-jsx`
-          );
-          if (codeEl) {
-            setReactCode(codeEl.outerHTML);
-          } else {
-            // Show error
-          }
-        }, 2000);
-      } else {
-        // TODO: Show an error
-      }
+  const onDocsIframeLoad = () => {
+    const printError = () => setReactCode('Error loading React source');
+
+    if (!docsRef.current) {
+      printError();
+      return;
     }
+
+    const storyBlockSelector = `#anchor--${storyId}`;
+    const codeButtonSelector = `${storyBlockSelector} .docblock-code-toggle`;
+    const codeBlockSelector = `${storyBlockSelector} code.language-jsx`;
+    const body = docsRef.current.contentDocument.body;
+
+    // Find the 'Show code' button and click it
+    const showCodeButton = body.querySelector(codeButtonSelector);
+    if (!(showCodeButton && (showCodeButton as HTMLButtonElement).click)) {
+      printError();
+      return;
+    }
+    (showCodeButton as HTMLButtonElement).click();
+
+    // Read the code out of the resulting code block after waiting for it to be generated
+    let retries = 0;
+    const MAX_RETRIES = 3;
+    function readCode() {
+      setTimeout(() => {
+        const codeEl = body.querySelector(codeBlockSelector);
+        if (codeEl) {
+          setReactCode(codeEl.outerHTML);
+        } else if (retries < MAX_RETRIES) {
+          retries++;
+          readCode();
+        } else {
+          printError();
+        }
+      }, 1000);
+    }
+    readCode();
   };
 
   return (
@@ -147,10 +163,10 @@ const StorybookExample = ({
           <iframe
             referrerPolicy="no-referrer"
             src={docsUrl}
-            style={{ width: '0', height: '0' }}
+            style={{ width: '0', height: '0', border: 'none' }}
             ref={docsRef}
             loading="lazy"
-            onLoad={onDocsLoad}
+            onLoad={onDocsIframeLoad}
           />
         </div>
         <div className="ds-u-display--flex ds-u-justify-content--end">
