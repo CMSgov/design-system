@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunk_cmsgov_cms_design_system_docs=self.webpackChunk_cmsgov_cms_design_system_docs||[]).push([[630],{9113:function(t,e,n){n.r(e);var s=n(2784),a=n(2803),o=n(449),c=n(7829);e.default=function(t){var e=t.data,n=t.location,m=e.mdx,r=m.frontmatter,l=m.body,d=m.tableOfContents,_=(0,o.Z)();return s.createElement(a.Z,{frontmatter:r,location:n,theme:_,tableOfContentsData:null==d?void 0:d.items},s.createElement(c.Z,{data:l,theme:_}))}}}]);
+//# sourceMappingURL=component---src-components-info-page-tsx-ce38cc2527d8912d2365.js.map
