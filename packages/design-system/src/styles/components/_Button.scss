@@ -44,7 +44,8 @@
     box-shadow: none;
   }
 
-  &:disabled {
+  &:disabled,
+  &.ds-c-button--disabled {
     background-color: var(--backgroundColor--d, $button__background-color--disabled);
     border-color: var(--borderColor--d, $button__border-color--disabled);
     color: var(--color--d, $button__color--disabled);
