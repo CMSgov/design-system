@@ -118,7 +118,6 @@ export const Button = ({
 }: ButtonProps) => {
   const contentRef = useRef();
   const ComponentType = component ?? (href ? 'a' : 'button');
-  const disabledClass = disabled && ComponentType !== 'button' && 'ds-c-button--disabled';
   const colorSchemeClass = isAlternate && `ds-c-button--alternate`;
   const modeClass = onDark && `ds-c-button--on-dark`;
   const sizeClass = size && `ds-c-button--${size}`;
@@ -126,7 +125,6 @@ export const Button = ({
 
   const allClassNames = classNames(
     'ds-c-button',
-    disabledClass,
     colorSchemeClass,
     modeClass,
     sizeClass,
@@ -147,6 +145,12 @@ export const Button = ({
     // and remove <button> specific attributes
     delete attrs.disabled;
     delete attrs.type;
+
+    if (disabled) {
+      attrs.role = 'link';
+      attrs['aria-disabled'] = true;
+      delete attrs.href;
+    }
   }
 
   function sendButtonEvent() {

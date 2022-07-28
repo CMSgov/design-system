@@ -111,11 +111,13 @@ export const AllAnchorButtons = () => {
           </Button>
         </div>
         <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-          <Button size="big" disabled>
+          <Button href="#!" size="big" disabled>
             Anchor button
           </Button>
-          <Button disabled>Anchor button</Button>
-          <Button size="small" disabled>
+          <Button href="#!" disabled>
+            Anchor button
+          </Button>
+          <Button href="#!" size="small" disabled>
             Anchor button
           </Button>
         </div>
@@ -131,13 +133,13 @@ export const AllAnchorButtons = () => {
           </Button>
         </div>
         <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-          <Button size="big" disabled isAlternate>
+          <Button href="#!" size="big" disabled isAlternate>
             Alt anchor button
           </Button>
-          <Button disabled isAlternate>
+          <Button href="#!" disabled isAlternate>
             Alt anchor button
           </Button>
-          <Button size="small" disabled isAlternate>
+          <Button href="#!" size="small" disabled isAlternate>
             Alt anchor button
           </Button>
         </div>
@@ -157,13 +159,13 @@ export const AllAnchorButtons = () => {
             </Button>
           </div>
           <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-            <Button onDark size="big" disabled>
+            <Button href="#!" onDark size="big" disabled>
               Anchor button on-dark
             </Button>
-            <Button onDark disabled>
+            <Button href="#!" onDark disabled>
               Anchor button on-dark
             </Button>
-            <Button onDark size="small" disabled>
+            <Button href="#!" onDark size="small" disabled>
               Anchor button on-dark
             </Button>
           </div>
@@ -179,13 +181,13 @@ export const AllAnchorButtons = () => {
             </Button>
           </div>
           <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-            <Button onDark size="big" disabled isAlternate>
+            <Button href="#!" onDark size="big" disabled isAlternate>
               Alt anchor button on-dark
             </Button>
-            <Button onDark disabled isAlternate>
+            <Button href="#!" onDark disabled isAlternate>
               Alt anchor button on-dark
             </Button>
-            <Button onDark size="small" disabled isAlternate>
+            <Button href="#!" onDark size="small" disabled isAlternate>
               Alt anchor button on-dark
             </Button>
           </div>
@@ -204,13 +206,13 @@ export const AllAnchorButtons = () => {
           </Button>
         </div>
         <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-          <Button variation="solid" size="big" disabled>
+          <Button href="#!" variation="solid" size="big" disabled>
             Solid anchor button
           </Button>
-          <Button variation="solid" disabled>
+          <Button href="#!" variation="solid" disabled>
             Solid anchor button
           </Button>
-          <Button variation="solid" size="small" disabled>
+          <Button href="#!" variation="solid" size="small" disabled>
             Solid anchor button
           </Button>
         </div>
@@ -226,13 +228,13 @@ export const AllAnchorButtons = () => {
           </Button>
         </div>
         <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-          <Button variation="solid" size="big" disabled isAlternate>
+          <Button href="#!" variation="solid" size="big" disabled isAlternate>
             Solid alt anchor button
           </Button>
-          <Button variation="solid" disabled isAlternate>
+          <Button href="#!" variation="solid" disabled isAlternate>
             Solid alt anchor button
           </Button>
-          <Button variation="solid" size="small" disabled isAlternate>
+          <Button href="#!" variation="solid" size="small" disabled isAlternate>
             Solid alt anchor button
           </Button>
         </div>
@@ -252,13 +254,13 @@ export const AllAnchorButtons = () => {
             </Button>
           </div>
           <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-            <Button onDark variation="solid" size="big" disabled>
+            <Button href="#!" onDark variation="solid" size="big" disabled>
               Solid anchor button on-dark
             </Button>
-            <Button onDark variation="solid" disabled>
+            <Button href="#!" onDark variation="solid" disabled>
               Solid anchor button on-dark
             </Button>
-            <Button onDark variation="solid" size="small" disabled>
+            <Button href="#!" onDark variation="solid" size="small" disabled>
               Solid anchor button on-dark
             </Button>
           </div>
@@ -274,13 +276,13 @@ export const AllAnchorButtons = () => {
             </Button>
           </div>
           <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-            <Button onDark variation="solid" size="big" disabled isAlternate>
+            <Button href="#!" onDark variation="solid" size="big" disabled isAlternate>
               Solid alt anchor button on-dark
             </Button>
-            <Button alt onDark variation="solid" disabled isAlternate>
+            <Button href="#!" alt onDark variation="solid" disabled isAlternate>
               Solid anchor button on-dark
             </Button>
-            <Button onDark variation="solid" size="small" disabled isAlternate>
+            <Button href="#!" onDark variation="solid" size="small" disabled isAlternate>
               Solid alt anchor button on-dark
             </Button>
           </div>
@@ -299,13 +301,13 @@ export const AllAnchorButtons = () => {
           </Button>
         </div>
         <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-          <Button variation="ghost" size="big" disabled>
+          <Button href="#!" variation="ghost" size="big" disabled>
             Ghost anchor button
           </Button>
-          <Button variation="ghost" disabled>
+          <Button href="#!" variation="ghost" disabled>
             Ghost anchor button
           </Button>
-          <Button variation="ghost" size="small" disabled>
+          <Button href="#!" variation="ghost" size="small" disabled>
             Ghost anchor button
           </Button>
         </div>
@@ -321,13 +323,13 @@ export const AllAnchorButtons = () => {
           </Button>
         </div>
         <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-          <Button variation="ghost" size="big" disabled isAlternate>
+          <Button href="#!" variation="ghost" size="big" disabled isAlternate>
             Ghost alt anchor button
           </Button>
-          <Button variation="ghost" disabled isAlternate>
+          <Button href="#!" variation="ghost" disabled isAlternate>
             Ghost alt anchor button
           </Button>
-          <Button variation="ghost" size="small" disabled isAlternate>
+          <Button href="#!" variation="ghost" size="small" disabled isAlternate>
             Ghost alt anchor button
           </Button>
         </div>
@@ -347,13 +349,13 @@ export const AllAnchorButtons = () => {
             </Button>
           </div>
           <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-            <Button onDark variation="ghost" size="big" disabled>
+            <Button href="#!" onDark variation="ghost" size="big" disabled>
               Ghost anchor button on-dark
             </Button>
-            <Button onDark variation="ghost" disabled>
+            <Button href="#!" onDark variation="ghost" disabled>
               Ghost anchor button on-dark
             </Button>
-            <Button onDark variation="ghost" size="small" disabled>
+            <Button href="#!" onDark variation="ghost" size="small" disabled>
               Ghost anchor button on-dark
             </Button>
           </div>
@@ -369,13 +371,13 @@ export const AllAnchorButtons = () => {
             </Button>
           </div>
           <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-            <Button onDark variation="ghost" size="big" disabled isAlternate>
+            <Button href="#!" onDark variation="ghost" size="big" disabled isAlternate>
               Ghost alt anchor button on-dark
             </Button>
-            <Button onDark variation="ghost" disabled isAlternate>
+            <Button href="#!" onDark variation="ghost" disabled isAlternate>
               Ghost alt anchor button on-dark
             </Button>
-            <Button onDark variation="ghost" size="small" disabled isAlternate>
+            <Button href="#!" onDark variation="ghost" size="small" disabled isAlternate>
               Ghost alt anchor button on-dark
             </Button>
           </div>

@@ -24,7 +24,7 @@
       text-decoration: none;
     }
 
-    &.ds-c-button--disabled {
+    &[aria-disabled] {
       pointer-events: none; // Needed to render disabled links correctly
     }
   }
@@ -57,7 +57,7 @@
   }
 
   &:disabled,
-  &.ds-c-button--disabled {
+  &[aria-disabled] {
     background-color: var(--backgroundColor--d, $button__background-color--disabled);
     border-color: var(--borderColor--d, $button__border-color--disabled);
     color: var(--color--d, $button__color--disabled);

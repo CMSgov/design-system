@@ -89,8 +89,9 @@ exports[`Button renders as button 1`] = `
 
 exports[`Button renders disabled anchor correctly 1`] = `
 <a
-  class="ds-c-button ds-c-button--disabled"
-  href="javascript:void(0)"
+  aria-disabled="true"
+  class="ds-c-button"
+  role="link"
 >
   Link button
 </a>
