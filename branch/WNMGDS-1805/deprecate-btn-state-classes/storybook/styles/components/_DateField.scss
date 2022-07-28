@@ -1,0 +1,35 @@
+@import '../settings/index.scss';
+
+.ds-c-field--month,
+.ds-c-field--day,
+.ds-c-field--year {
+  box-sizing: content-box; // allows us to set width based on # of characters
+}
+
+.ds-c-field--month,
+.ds-c-field--day {
+  width: 4ch; // provide additional spacing for browser UI
+}
+
+.ds-c-field--year {
+  width: 6ch; // provide additional spacing for browser UI
+}
+
+.ds-c-datefield__container {
+  align-items: flex-end;
+}
+
+.ds-c-datefield__separator {
+  font-size: $font-size-2xl;
+  // have to do a mix of calc & sass interpolation in order to accommodate values being css vars in internal tools
+  line-height: calc(
+    #{$text-input__line-height} * #{$font-size-base}
+  ); // vertical dimensions should match adjacent inputs
+  margin: ($text-input__border-width + $spacer-half) 0;
+  padding: $text-input__padding 0;
+}
+
+.ds-c-datefield__label {
+  font-weight: $font-weight-normal;
+  margin-top: $spacer-1;
+}
