@@ -67,7 +67,7 @@ describe('Button', () => {
 
   it('renders disabled anchor correctly', () => {
     renderButton({
-      href: 'javascript:void(0)',
+      href: '#!',
       disabled: true,
       children: 'Link button',
     });
@@ -97,15 +97,15 @@ describe('Button', () => {
 
   it('applies disabled, inverse, and variation classes together', () => {
     renderButton({
-      href: '#',
+      href: '#!',
       disabled: true,
       onDark: true,
       variation: 'ghost',
     });
     const link = screen.getByRole('link');
+    expect(link.hasAttribute('href')).toBe(false);
     expect(link.classList.contains('ds-c-button--ghost')).toBe(true);
     expect(link.classList.contains('ds-c-button--on-dark')).toBe(true);
-    expect(link.classList.contains('ds-c-button--disabled')).toBe(true);
     expect(link.classList.contains('ds-c-button')).toBe(true);
   });
 
