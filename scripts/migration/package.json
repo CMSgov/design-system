@@ -1,0 +1,13 @@
+{
+  "name": "migration-helper",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Migration helpers for CMSDS changes",
+  "license": "ISC",
+  "devDependencies": {
+    "chalk": "^5.0.1",
+    "glob": "^8.0.3",
+    "inquirer": "^9.0.2",
+    "yargs": "^17.5.1"
+  }
+}

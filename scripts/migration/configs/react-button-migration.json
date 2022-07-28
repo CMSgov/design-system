@@ -1,0 +1,9 @@
+{
+  "root": "/Users/forrestbaer/code/design-system",
+  "patterns": [
+    "**/*.[js|ts|tsx|jsx]"
+  ],
+  "expressions": [
+    "variation"
+  ]
+}
