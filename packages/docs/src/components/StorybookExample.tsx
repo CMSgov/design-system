@@ -28,14 +28,6 @@ interface StorybookExampleProps {
    */
   sourcePackageName?: string;
   /**
-   * If set, does not show an option for showing React source
-   */
-  hideReactSource?: boolean;
-  /**
-   * If set, does not show an option for showing HTML source
-   */
-  hideHtmlSource?: boolean;
-  /**
    * Current theme
    */
   theme: string;
@@ -54,8 +46,6 @@ const StorybookExample = ({
   minHeight,
   sourceFilePath,
   sourcePackageName,
-  hideReactSource,
-  hideHtmlSource,
   storyId,
 }: StorybookExampleProps) => {
   const [iframeHeight, setiFrameHeight] = useState<number>(200);
@@ -170,16 +160,14 @@ const StorybookExample = ({
             loading="lazy"
             onLoad={onIframeLoad}
           />
-          {hideReactSource && (
-            <iframe
-              referrerPolicy="no-referrer"
-              src={docsUrl}
-              style={{ width: '0', height: '0', border: 'none' }}
-              ref={docsRef}
-              loading="lazy"
-              onLoad={onDocsIframeLoad}
-            />
-          )}
+          <iframe
+            referrerPolicy="no-referrer"
+            src={docsUrl}
+            style={{ width: '0', height: '0', border: 'none' }}
+            ref={docsRef}
+            loading="lazy"
+            onLoad={onDocsIframeLoad}
+          />
         </div>
         <div className="ds-u-display--flex ds-u-justify-content--end">
           <a
