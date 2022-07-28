@@ -76,7 +76,7 @@ const ButtonMigrationTable = ({ theme }: ButtonMigrationTableProps) => {
                 <code>{'<Button variation="solid" isAlternate...'}</code>
               </ThemeContent>
               <ThemeContent theme={theme} onlyThemes={['healthcare']}>
-                {deprecated}
+                <>{deprecated} - Consider using outline (default) variation</>
               </ThemeContent>
             </TableCell>
           </TableRow>
@@ -99,7 +99,7 @@ const ButtonMigrationTable = ({ theme }: ButtonMigrationTableProps) => {
               <code>{'<Button variation="success"...'}</code>
             </TableCell>
             <TableCell headers="new-react" stackedTitle="New React">
-              {deprecated}
+              <>{deprecated} - Consider using solid variation</>
             </TableCell>
           </TableRow>
           <TableRow>
@@ -256,7 +256,7 @@ const ButtonMigrationTable = ({ theme }: ButtonMigrationTableProps) => {
                 </code>
               </ThemeContent>
               <ThemeContent theme={theme} onlyThemes={['healthcare']}>
-                {deprecated}
+                <>{deprecated} - Consider using outline (default) variation</>
               </ThemeContent>
             </TableCell>
           </TableRow>
@@ -279,7 +279,7 @@ const ButtonMigrationTable = ({ theme }: ButtonMigrationTableProps) => {
               <code>{'<button class="ds-c-button ds-c-button--success...'}</code>
             </TableCell>
             <TableCell headers="new-html" stackedTitle="New HTML">
-              {deprecated}
+              <>{deprecated} - Consider using solid variation</>
             </TableCell>
           </TableRow>
           <TableRow>
