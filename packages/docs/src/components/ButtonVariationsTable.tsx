@@ -97,35 +97,37 @@ const ButtonVariationsTable = ({ theme }: ButtonVariationsTableProps) => {
         <TableCaption>Button variations on light background</TableCaption>
         <TableHead>
           <TableRow>
-            <TableCell scope="col">Variation</TableCell>
-            <TableCell scope="col" className="ds-u-font-weight--normal">
+            <TableCell scope="col" id="header-variation">
+              Variation
+            </TableCell>
+            <TableCell scope="col" id="header-main" className="ds-u-font-weight--normal">
               Main <small>(Default)</small>
             </TableCell>
-            <TableCell scope="col" className="ds-u-font-weight--normal">
+            <TableCell scope="col" id="header-alt" className="ds-u-font-weight--normal">
               Alternate
             </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           <TableRow>
-            <TableCell component="th" stackedTitle="Variation">
+            <TableCell component="th" headers="header-variation" stackedTitle="Variation">
               Outline <small>(Default)</small>
             </TableCell>
-            <TableCell stackedTitle="Main (Default)">
+            <TableCell headers="header-main" stackedTitle="Main (Default)">
               {b(<Button>Outline</Button>, uses?.outline?.main?.onLight)}
             </TableCell>
-            <TableCell stackedTitle="Alternate">
+            <TableCell headers="header-alt" stackedTitle="Alternate">
               {b(<Button isAlternate>Outline alternate</Button>, uses?.outline?.alternate?.onLight)}
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell component="th" stackedTitle="Variation">
+            <TableCell component="th" headers="header-variation" stackedTitle="Variation">
               Solid
             </TableCell>
-            <TableCell stackedTitle="Main (Default)">
+            <TableCell headers="header-main" stackedTitle="Main (Default)">
               {b(<Button variation="solid">Solid</Button>, uses?.solid?.main?.onLight)}
             </TableCell>
-            <TableCell stackedTitle="Alternate">
+            <TableCell headers="header-alt" stackedTitle="Alternate">
               {b(
                 <Button variation="solid" isAlternate>
                   Solid alternate
@@ -135,13 +137,13 @@ const ButtonVariationsTable = ({ theme }: ButtonVariationsTableProps) => {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell component="th" stackedTitle="Variation">
+            <TableCell component="th" headers="header-variation" stackedTitle="Variation">
               Ghost
             </TableCell>
-            <TableCell stackedTitle="Main (Default)">
+            <TableCell headers="header-main" stackedTitle="Main (Default)">
               {b(<Button variation="ghost">Ghost</Button>, uses?.ghost?.main?.onLight)}
             </TableCell>
-            <TableCell stackedTitle="Alternate">
+            <TableCell headers="header-alt" stackedTitle="Alternate">
               {b(
                 <Button variation="ghost" isAlternate>
                   Ghost alternate
@@ -156,21 +158,27 @@ const ButtonVariationsTable = ({ theme }: ButtonVariationsTableProps) => {
         <TableCaption>Button variations on dark background</TableCaption>
         <TableHead>
           <TableRow>
-            <TableCell scope="col">Variation</TableCell>
-            <TableCell scope="col" className="ds-u-font-weight--normal">
+            <TableCell scope="col" id="header-variation-dark">
+              Variation
+            </TableCell>
+            <TableCell scope="col" id="header-main-dark" className="ds-u-font-weight--normal">
               Main <small>(Default)</small>
             </TableCell>
-            <TableCell scope="col" className="ds-u-font-weight--normal">
+            <TableCell scope="col" id="header-alt-dark" className="ds-u-font-weight--normal">
               Alternate
             </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           <TableRow>
-            <TableCell component="th" stackedTitle="Variation">
+            <TableCell component="th" headers="header-variation-dark" stackedTitle="Variation">
               Outline <small>(Default)</small>
             </TableCell>
-            <TableCell stackedTitle="Main (Default)" className="ds-base--inverse">
+            <TableCell
+              headers="header-main-dark"
+              stackedTitle="Main (Default)"
+              className="ds-base--inverse"
+            >
               {b(
                 <Button onDark>
                   Outline <span className="ds-u-visibility--screen-reader">on dark</span>
@@ -178,7 +186,11 @@ const ButtonVariationsTable = ({ theme }: ButtonVariationsTableProps) => {
                 uses?.outline?.main?.onDark
               )}
             </TableCell>
-            <TableCell stackedTitle="Alternate" className="ds-base--inverse">
+            <TableCell
+              headers="header-alt-dark"
+              stackedTitle="Alternate"
+              className="ds-base--inverse"
+            >
               {b(
                 <Button isAlternate onDark>
                   Outline alternate <span className="ds-u-visibility--screen-reader">on dark</span>
@@ -188,10 +200,14 @@ const ButtonVariationsTable = ({ theme }: ButtonVariationsTableProps) => {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell component="th" stackedTitle="Variation">
+            <TableCell component="th" headers="header-variation-dark" stackedTitle="Variation">
               Solid
             </TableCell>
-            <TableCell stackedTitle="Main (Default)" className="ds-base--inverse">
+            <TableCell
+              headers="header-main-dark"
+              stackedTitle="Main (Default)"
+              className="ds-base--inverse"
+            >
               {b(
                 <Button variation="solid" onDark>
                   Solid <span className="ds-u-visibility--screen-reader">on dark</span>
@@ -199,7 +215,11 @@ const ButtonVariationsTable = ({ theme }: ButtonVariationsTableProps) => {
                 uses?.solid?.main?.onDark
               )}
             </TableCell>
-            <TableCell stackedTitle="Alternate" className="ds-base--inverse">
+            <TableCell
+              headers="header-alt-dark"
+              stackedTitle="Alternate"
+              className="ds-base--inverse"
+            >
               {b(
                 <Button variation="solid" isAlternate onDark>
                   Solid alternate <span className="ds-u-visibility--screen-reader">on dark</span>
@@ -209,10 +229,14 @@ const ButtonVariationsTable = ({ theme }: ButtonVariationsTableProps) => {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell component="th" stackedTitle="Variation">
+            <TableCell component="th" headers="header-variation-dark" stackedTitle="Variation">
               Ghost
             </TableCell>
-            <TableCell stackedTitle="Main (Default)" className="ds-base--inverse">
+            <TableCell
+              headers="header-main-dark"
+              stackedTitle="Main (Default)"
+              className="ds-base--inverse"
+            >
               {b(
                 <Button variation="ghost" onDark>
                   Ghost <span className="ds-u-visibility--screen-reader">on dark</span>
@@ -220,7 +244,11 @@ const ButtonVariationsTable = ({ theme }: ButtonVariationsTableProps) => {
                 uses?.ghost?.main?.onDark
               )}
             </TableCell>
-            <TableCell stackedTitle="Alternate" className="ds-base--inverse">
+            <TableCell
+              headers="header-alt-dark"
+              stackedTitle="Alternate"
+              className="ds-base--inverse"
+            >
               {b(
                 <Button variation="ghost" isAlternate onDark>
                   Ghost alternate <span className="ds-u-visibility--screen-reader">on dark</span>
