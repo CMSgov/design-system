@@ -14,7 +14,7 @@
 @mixin focus-styles-link {
   background-color: $color-focus-light;
   box-shadow: none;
-  color: innitial;
+  color: initial;
   outline: 3px solid $color-focus-dark;
   outline-offset: 1px;
   text-decoration: underline;
