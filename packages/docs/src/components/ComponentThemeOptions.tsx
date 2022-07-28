@@ -9,6 +9,14 @@ import {
 } from 'design-system-tokens/src/themes';
 import _ from 'lodash';
 import uniqueId from 'lodash/uniqueId';
+import {
+  Table,
+  TableHead,
+  TableRow,
+  TableBody,
+  TableCell,
+  TableCaption,
+} from '@cmsgov/design-system';
 
 const componentThemes = {
   core: CoreComponentTheme,
@@ -17,12 +25,11 @@ const componentThemes = {
 };
 const masterThemes = { core: CoreTheme, healthcare: HealthcareTheme, medicare: MedicareTheme };
 
-type ThemeNames = 'core' | 'healthcare' | 'medicare';
-export interface ComponentThemeOptionsProps {
+interface ComponentThemeOptionsProps {
   /**
-   * One of the availabe theme names in lowercase as presented in ThemeNames
+   * Current theme name
    */
-  theme: ThemeNames;
+  theme: string;
   /**
    * The name of the component to render the customization table for
    */
@@ -33,7 +40,7 @@ export interface ComponentThemeOptionsProps {
  * Looks up the value found in the component mapping and returns where it maps to along with the specific
  * theme color variable name and swatch for colors.
  */
-const lookupThemeValue = (theme: ThemeNames, value: string): any => {
+const lookupThemeValue = (theme: string, value: string): any => {
   const keyName = _.findKey(masterThemes[theme].color, (v) => String(v) === value);
   const elem = keyName ? (
     <span>
@@ -54,38 +61,41 @@ const lookupThemeValue = (theme: ThemeNames, value: string): any => {
 /**
  * Takes a js object with name-value pairs and creates a list of configuration configuration
  * options with values from the token component theme loaded.
- *
- * @TODO: when theming is added, update to useEffect on theme change to get new values
  */
 const ComponentThemeOptions = ({ theme, componentname }: ComponentThemeOptionsProps) => {
   componentname = componentname.toLowerCase();
   const currentTheme = componentThemes[theme];
   const componentOptions = (
-    <table className="ds-c-table" role="table">
-      <thead role="rowgroup">
-        <tr role="row">
-          <th className="ds-c-table__cell--align-left" role="columnheader" scope="col">
+    <Table scrollable stackable>
+      <TableCaption className="ds-u-visibility--screen-reader">
+        Sass variables for {componentname}{' '}
+      </TableCaption>
+      <TableHead>
+        <TableRow>
+          <TableCell component="th" align="left">
             Variable
-          </th>
-          <th className="ds-c-table__cell--align-left" role="columnheader" scope="col">
+          </TableCell>
+          <TableCell component="th" align="left">
             Default {_.capitalize(theme)} Theme Value
-          </th>
-        </tr>
-      </thead>
-      <tbody role="rowgroup">
+          </TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody role="rowgroup">
         {Object.keys(currentTheme[componentname]).map((key) => (
-          <tr role="row" key={uniqueId('config_option_')}>
-            <td>
+          <TableRow role="row" key={uniqueId('config_option_')}>
+            <TableCell stackedTitle="Variable">
               <code className="ds-u-font-weight--bold">
                 ${componentname}
                 {key}
               </code>
-            </td>
-            <td>{lookupThemeValue(theme, currentTheme[componentname][key])}</td>
-          </tr>
+            </TableCell>
+            <TableCell stackedTitle={`Default ${_.capitalize(theme)} Theme Value`}>
+              {lookupThemeValue(theme, currentTheme[componentname][key])}
+            </TableCell>
+          </TableRow>
         ))}
-      </tbody>
-    </table>
+      </TableBody>
+    </Table>
   );
 
   return (

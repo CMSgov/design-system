@@ -11,6 +11,9 @@ import { setLanguage } from '../packages/design-system/src/components/i18n';
 import { setLanguage as setLanguageFromPackage } from '@cmsgov/design-system';
 
 window.utag = { link: console.log };
+// used to set up automatic setting of theme based on STORYBOOK_DS variable
+const currentEnvironment =
+  process.env.STORYBOOK_DS !== 'undefined' ? process.env.STORYBOOK_DS : 'core';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -56,6 +59,26 @@ export const globalTypes = {
       ],
     },
   },
+  theme: {
+    name: 'Theme',
+    description: 'Current theme',
+    defaultValue: currentEnvironment,
+    toolbar: {
+      icon: 'paintbrush',
+      items: [
+        { value: 'core', left: 'Core', title: 'Core CMSDS Theme' },
+        { value: 'healthcare', left: 'Healthcare', title: 'Healthcare Theme' },
+        { value: 'medicare', left: 'Medicare', title: 'Medicare Theme' },
+      ],
+    },
+  },
+};
+
+const themeSettingDecorator = (Story, context) => {
+  const { theme } = context.globals;
+  document.documentElement.setAttribute('data-theme', theme);
+
+  return <Story {...context} />;
 };
 
 const languageSettingDecorator = (Story, context) => {
@@ -86,4 +109,8 @@ const analyticsSettingsDecorator = (Story, context) => {
   return <Story {...context} />;
 };
 
-export const decorators = [languageSettingDecorator, analyticsSettingsDecorator];
+export const decorators = [
+  languageSettingDecorator,
+  analyticsSettingsDecorator,
+  themeSettingDecorator,
+];

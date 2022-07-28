@@ -224,7 +224,7 @@ export const Tooltip = (props: TooltipProps) => {
 
     const TriggerComponent = component;
     const triggerClasses = classNames('ds-base', 'ds-c-tooltip__trigger', className, {
-      [activeClassName]: active,
+      [activeClassName]: activeClassName && active,
       'ds-c-tooltip__trigger--inverse': inversed,
     });
     const linkTriggerOverrides = {
