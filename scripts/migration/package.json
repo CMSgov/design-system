@@ -4,6 +4,9 @@
   "type": "module",
   "description": "Migration helpers for CMSDS changes",
   "license": "ISC",
+  "scripts": {
+    "migrate": "node src/main.js"
+  },
   "devDependencies": {
     "chalk": "^5.0.1",
     "glob": "^8.0.3",
