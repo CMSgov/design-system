@@ -141,6 +141,7 @@ const StorybookExample = ({
             className="c-storybook-example__iframe"
             title={`${componentName} example`}
             ref={iframeRef}
+            loading="lazy"
             onLoad={onIframeLoad}
           />
           <iframe
@@ -148,6 +149,7 @@ const StorybookExample = ({
             src={docsUrl}
             style={{ width: '0', height: '0' }}
             ref={docsRef}
+            loading="lazy"
             onLoad={onDocsLoad}
           />
         </div>
