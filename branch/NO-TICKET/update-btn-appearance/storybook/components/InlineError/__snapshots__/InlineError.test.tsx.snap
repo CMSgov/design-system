@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InlineError renders inline error 1`] = `
+<span
+  className="ds-c-inline-error ds-c-field__error-message"
+  id="error1"
+  role="alert"
+>
+  <AlertCircleIcon
+    viewBox="36 -12 186 186"
+  />
+  Error message
+</span>
+`;
+
+exports[`InlineError renders inverse error 1`] = `
+<span
+  className="ds-c-inline-error ds-c-field__error-message ds-c-field__error-message--inverse"
+  id="error1"
+  role="alert"
+>
+  <AlertCircleIcon
+    viewBox="36 -12 186 186"
+  />
+  Error message
+</span>
+`;
