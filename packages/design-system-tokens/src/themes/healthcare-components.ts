@@ -57,7 +57,7 @@ export const components: AnyTokenValues = {
 
   'button': {
     '__background-color--active':                 t.color['primary-darkest'],
-    '__background-color--disabled':               'transparent',
+    '__background-color--disabled':               t.color['white'],
     '__background-color--hover':                  t.color['primary'],
     '__background-color':                         t.color['white'],
     '__border-color--active':                     t.color['primary-darkest'],
@@ -76,7 +76,7 @@ export const components: AnyTokenValues = {
 
   'button-alt': {
     '__background-color--active':                 t.color['primary-darkest'],
-    '__background-color--disabled':               'transparent',
+    '__background-color--disabled':               t.color['white'],
     '__background-color--hover':                  t.color['primary'],
     '__background-color':                         t.color['white'],
     '__border-color--active':                     t.color['primary-darkest'],
@@ -91,7 +91,7 @@ export const components: AnyTokenValues = {
 
   'button-dark': {
     '__background-color--active':                 'transparent',
-    '__background-color--disabled':               'transparent',
+    '__background-color--disabled':               t.color['white'],
     '__background-color--hover':                  'transparent',
     '__background-color':                         'transparent',
     '__border-color--active':                     'currentColor',
@@ -106,7 +106,7 @@ export const components: AnyTokenValues = {
 
   'button-dark-alt': {
     '__background-color--active':                 'transparent',
-    '__background-color--disabled':               'transparent',
+    '__background-color--disabled':               t.color['white'],
     '__background-color--hover':                  'transparent',
     '__background-color':                         'transparent',
     '__border-color--active':                     'currentColor',
