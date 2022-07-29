@@ -2,7 +2,7 @@
 import React, { useRef, useState } from 'react';
 import uniqueId from 'lodash/uniqueId';
 import { ArrowIcon, Button } from '@cmsgov/design-system';
-import { highlightHtmlSyntax, highlightJsxSyntax } from '../helpers/syntaxHighlighting';
+import { highlightHtmlSyntax } from '../helpers/syntaxHighlighting';
 
 enum SnippetState {
   CLOSED = 'closed',
@@ -16,15 +16,15 @@ interface UseCodeSnippetProps {
    */
   html?: string;
   /**
-   * jsx string to prettify, highlight and display
+   * pre-highlighted jsx html as a string, because we gather it by scraping
    */
-  jsx?: string;
+  highlightedJsx?: string;
 }
 
 /**
  * HTML code snippet. This component will prettify an html string and do syntax highlighting
  */
-const useCodeSnippet = ({ html, jsx }: UseCodeSnippetProps) => {
+const useCodeSnippet = ({ html, highlightedJsx }: UseCodeSnippetProps) => {
   const [snippetState, setSnippetState] = useState<SnippetState>(SnippetState.CLOSED);
   const highlightedHtml = html && highlightHtmlSyntax(html);
 
@@ -37,7 +37,7 @@ const useCodeSnippet = ({ html, jsx }: UseCodeSnippetProps) => {
     { snippetState: SnippetState.HTML, text: 'HTML code' },
   ];
   const snippets = [
-    { snippetState: SnippetState.JSX, code: jsx },
+    { snippetState: SnippetState.JSX, code: highlightedJsx },
     { snippetState: SnippetState.HTML, code: highlightedHtml },
   ];
 
@@ -47,9 +47,9 @@ const useCodeSnippet = ({ html, jsx }: UseCodeSnippetProps) => {
         {buttons.map((buttonConfig) => (
           <Button
             key={buttonConfig.snippetState}
-            variation="ghost"
+            variation="transparent"
             size="small"
-            className="c-code-snippet-toggle ds-u-text-decoration--none"
+            className="c-code-snippet-toggle ds-u-margin-right--2"
             aria-expanded={buttonConfig.snippetState === snippetState}
             aria-controls={getSnippetId(buttonConfig.snippetState)}
             id={getButtonId(buttonConfig.snippetState)}

@@ -100,16 +100,6 @@ const StorybookExample = ({ theme, componentName, minHeight, storyId }: Storyboo
             onLoad={onIframeLoad}
           />
         </div>
-        <div className="ds-u-display--flex ds-u-justify-content--end">
-          <a
-            href={makeStorybookUrl(storyId, theme)}
-            target="_blank"
-            rel="noreferrer"
-            className="c-storybook-example__link"
-          >
-            Open in Storybook <ExternalLinkIcon />
-          </a>
-        </div>
       </div>
       <StorybookExampleFooter storyId={storyId} theme={theme} />
     </>
