@@ -36,7 +36,7 @@ export default {
 
 const Template = ({ ...args }) => <Button {...args} />;
 
-export const DefaultButton = Template.bind({});
+export const Default = Template.bind({});
 export const OnDark = Template.bind({});
 OnDark.args = {
   onDark: true,
