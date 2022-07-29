@@ -1,11 +1,32 @@
+import chalk from 'chalk';
+import glob from 'glob';
 import fs from 'fs';
 import inquirer from 'inquirer';
+
+export const getGlob = async (pattern, config) => {
+  const globResult = await new Promise((resolve, reject) => {
+    return glob( pattern, config, (err, matches) => {
+      if (err) return reject(err)
+      return resolve(matches)
+    })
+  })
+  return globResult
+}
+
+export const doPatternSearch = async (config) => {
+  let res = []
+  for (const p of config.patterns) {
+    res.push(...await getGlob(p, config.globConfig))
+  }
+  return res
+}
 
 export const readConfigFile = async (file) => {
   const configObj = await new Promise((resolve, reject) => {
     return fs.readFile(file, 'utf8', (err, file) => {
       if (err) return reject(err)
-      return resolve(JSON.parse(file))
+      const parsed = JSON.parse(file)
+      return resolve(parsed)
     })
   })
   return configObj
@@ -19,6 +40,10 @@ export const getConfigFiles = async (path) => {
     })
   })
   return fileList
+}
+
+export const inquireConfirmOrEdit = async (action) => {
+
 }
 
 export const inquireForFile = async (folder, options) => {
@@ -43,19 +68,12 @@ export const inquireForFile = async (folder, options) => {
 }
 
 export default {
+  doPatternSearch,
   getConfigFiles,
+  getGlob,
   inquireForFile,
   readConfigFile,
 }
 
-// let config = argv.file ?? ''
-
-
-// find all javascript, ts, jsx, tsx files
-// return list of files which contain more than 5 newlines
-// grep reduced list for 
-//
 // find . -path "*/.*" -prune -o -name node_modules -prune -o -type f \( -iname \*.jsx -o -iname \*.tsx -o -iname \*.ts -o -iname \*.js \) -print
-// // import chalk from 'chalk';
-// import glob from 'glob';
 

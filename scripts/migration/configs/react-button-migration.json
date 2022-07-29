@@ -1,8 +1,12 @@
 {
-  "root": "/Users/forrestbaer/code/design-system",
   "patterns": [
-    "**/*.[js|ts|tsx|jsx]"
+    "**/*.{js,ts,tsx,jsx}",
+    "**/*.scss",
+    "**/*.md"
   ],
+  "globConfig": {
+    "cwd": "/Users/forrestbaer/code/design-system/packages/design-system/src"
+  },
   "expressions": [
     "variation"
   ]
