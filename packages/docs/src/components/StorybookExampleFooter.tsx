@@ -23,8 +23,8 @@ interface StorybookExampleFooterProps {
  * by loading the component's Storybook docs page in an iframe and scraping the page.
  */
 const StorybookExampleFooter = ({ theme, storyId }: StorybookExampleFooterProps) => {
-  const [htmlCode, setHtmlCode] = useState<string>('');
-  const [reactCode, setReactCode] = useState<string>('');
+  const [htmlCode, setHtmlCode] = useState<string>('Loading...');
+  const [reactCode, setReactCode] = useState<string>('Loading...');
   const iframeRef = useRef<HTMLIFrameElement>();
   const iframeUrl = withPrefix(
     `/storybook/iframe.html?id=${storyId}&viewMode=docs&globals=theme:${theme}`
