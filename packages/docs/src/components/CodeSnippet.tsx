@@ -1,10 +1,8 @@
 /* eslint-disable react/no-danger */
 import React, { useState } from 'react';
 import classnames from 'classnames';
-import Prism from 'prismjs';
 import { ArrowIcon } from '@cmsgov/design-system';
-import parserHtml from 'prettier/parser-html';
-import prettier from 'prettier';
+import { highlightHtmlSyntax, highlightJsxSyntax } from '../helpers/syntaxHighlighting';
 
 interface CodeSnippetProps {
   /**
@@ -14,20 +12,20 @@ interface CodeSnippetProps {
   /**
    * html string to prettify, highlight and display
    */
-  html: string;
+  html?: string;
+  /**
+   * jsx string to prettify, highlight and display
+   */
+  jsx?: string;
 }
 
 /**
  * HTML code snippet. This component will prettify an html string and do syntax highlighting
  */
-const CodeSnippet = ({ html, className }: CodeSnippetProps) => {
+const CodeSnippet = ({ html, jsx, className }: CodeSnippetProps) => {
   const [open] = useState(false);
-  const prettyHtml = prettier.format(html, {
-    htmlWhitespaceSensitivity: 'ignore',
-    parser: 'html',
-    plugins: [parserHtml],
-  });
-  const highlightedContent = Prism.highlight(prettyHtml, Prism.languages.html);
+  const highlightedHtml = highlightHtmlSyntax(html);
+  const highlightedJsx = highlightJsxSyntax(jsx);
 
   return (
     <details open={open} className={classnames('c-code-snippet', className)}>
@@ -35,7 +33,7 @@ const CodeSnippet = ({ html, className }: CodeSnippetProps) => {
         <ArrowIcon direction="right" /> Code snippet
       </summary>
       <pre className="ds-u-margin-bottom--4 ds-u-overflow--auto ds-u-padding--2 language-html">
-        <code dangerouslySetInnerHTML={{ __html: highlightedContent }} className="language-html" />
+        <code dangerouslySetInnerHTML={{ __html: highlightedHtml }} className="language-html" />
       </pre>
     </details>
   );

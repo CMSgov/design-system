@@ -90,7 +90,8 @@ const StorybookExampleFooter = ({ theme, storyId }: StorybookExampleFooterProps)
         onLoad={onIframeLoad}
       />
 
-      <CodeSnippet html={htmlCode} />
+      <CodeSnippet html={htmlCode} jsx={reactCode} />
+
       <a
         href={makeStorybookUrl(storyId, theme)}
         target="_blank"
