@@ -2,7 +2,7 @@
 import React, { useRef, useState } from 'react';
 import uniqueId from 'lodash/uniqueId';
 import { ArrowIcon, Button } from '@cmsgov/design-system';
-import { highlightHtmlSyntax, highlightJsxSyntax } from '../helpers/syntaxHighlighting';
+import { highlightHtmlSyntax } from '../helpers/syntaxHighlighting';
 
 enum SnippetState {
   CLOSED = 'closed',
@@ -10,38 +10,23 @@ enum SnippetState {
   JSX = 'jsx',
 }
 
-interface HtmlProps {
+interface UseCodeSnippetProps {
   /**
    * html string to prettify, highlight and display
    */
-  html: string;
-}
-
-interface JsxProps {
-  /**
-   * html string to prettify, highlight and display
-   */
-  jsx: string;
-}
-
-interface HighlightedJsxProps {
+  html?: string;
   /**
    * pre-highlighted jsx html as a string, because we gather it by scraping
    */
-  highlightedJsx: string;
+  highlightedJsx?: string;
 }
-
-type UseCodeSnippetProps = HtmlProps & (JsxProps | HighlightedJsxProps);
 
 /**
  * HTML code snippet. This component will prettify an html string and do syntax highlighting
  */
-const useCodeSnippet = (props: UseCodeSnippetProps) => {
+const useCodeSnippet = ({ html, highlightedJsx }: UseCodeSnippetProps) => {
   const [snippetState, setSnippetState] = useState<SnippetState>(SnippetState.CLOSED);
-  const highlightedHtml = highlightHtmlSyntax(props.html);
-  const highlightedJsx = (props as JsxProps).jsx
-    ? highlightJsxSyntax((props as JsxProps).jsx)
-    : (props as HighlightedJsxProps).highlightedJsx;
+  const highlightedHtml = html && highlightHtmlSyntax(html);
 
   const snippetIdPrefix = useRef(uniqueId('example-snippet-'));
   const getButtonId = (snippetState: SnippetState) => `${snippetIdPrefix}-${snippetState}-toggle`;
