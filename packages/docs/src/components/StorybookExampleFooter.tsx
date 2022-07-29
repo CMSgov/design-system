@@ -1,8 +1,9 @@
 import React, { useRef, useState } from 'react';
-import CodeSnippet from './CodeSnippet';
+import CodeSnippet from './useCodeSnippet';
 import { ExternalLinkIcon } from '@cmsgov/design-system';
 import { makeStorybookUrl } from '../helpers/urlUtils';
 import { withPrefix } from 'gatsby';
+import useCodeSnippet from './useCodeSnippet';
 
 interface StorybookExampleFooterProps {
   /**
@@ -67,7 +68,7 @@ const StorybookExampleFooter = ({ theme, storyId }: StorybookExampleFooterProps)
       setTimeout(() => {
         const codeEl = body.querySelector(codeBlockSelector);
         if (codeEl) {
-          setReactCode(codeEl.outerHTML);
+          setReactCode(codeEl.innerHTML);
         } else if (retries < MAX_RETRIES) {
           retries++;
           readCode();
@@ -79,27 +80,36 @@ const StorybookExampleFooter = ({ theme, storyId }: StorybookExampleFooterProps)
     readCode();
   };
 
+  const iframe = (
+    <iframe
+      referrerPolicy="no-referrer"
+      src={iframeUrl}
+      style={{ width: '0', height: '0', border: 'none' }}
+      ref={iframeRef}
+      loading="lazy"
+      onLoad={onIframeLoad}
+    />
+  );
+
+  const { codeToggles, codeSnippets } = useCodeSnippet({ html: htmlCode, jsx: reactCode });
+
   return (
     <div className="c-example-footer">
-      <iframe
-        referrerPolicy="no-referrer"
-        src={iframeUrl}
-        style={{ width: '0', height: '0', border: 'none' }}
-        ref={iframeRef}
-        loading="lazy"
-        onLoad={onIframeLoad}
-      />
-
-      <CodeSnippet html={htmlCode} jsx={reactCode} />
-
-      <a
-        href={makeStorybookUrl(storyId, theme)}
-        target="_blank"
-        rel="noreferrer"
-        className="c-storybook-example__link"
-      >
-        Open in Storybook <ExternalLinkIcon />
-      </a>
+      {iframe}
+      <div className="ds-u-display--flex ds-u-justify-content--between">
+        <div>{codeToggles}</div>
+        <div>
+          <a
+            href={makeStorybookUrl(storyId, theme)}
+            target="_blank"
+            rel="noreferrer"
+            className="c-storybook-example__link"
+          >
+            Open in Storybook <ExternalLinkIcon />
+          </a>
+        </div>
+      </div>
+      {codeSnippets}
     </div>
   );
 };
