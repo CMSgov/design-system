@@ -26,7 +26,7 @@ interface UseCodeSnippetProps {
  */
 const useCodeSnippet = ({ html, highlightedJsx }: UseCodeSnippetProps) => {
   const [snippetState, setSnippetState] = useState<SnippetState>(SnippetState.CLOSED);
-  const highlightedHtml = html !== '' && highlightHtmlSyntax(html);
+  const highlightedHtml = html && highlightHtmlSyntax(html);
 
   const snippetIdPrefix = useRef(uniqueId('example-snippet-'));
   const getButtonId = (snippetState: SnippetState) => `${snippetIdPrefix}-${snippetState}-toggle`;
