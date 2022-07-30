@@ -23,62 +23,10 @@ import {
 
 ## Table with multi headers and a caption
 
-<EmbeddedExample>
-  <Table>
-    <TableCaption>Household members</TableCaption>
-    <col />
-    <colgroup span="2"></colgroup>
-    <colgroup span="2"></colgroup>
-    <TableHead>
-      <TableRow>
-        <TableCell component="td" rowspan="1"></TableCell>
-        <TableCell component="th" colspan="2" className="ds-u-text-align--center" scope="colgroup">
-          Address
-        </TableCell>
-        <TableCell component="th" colspan="2" className="ds-u-text-align--center" scope="colgroup">
-          Employment
-        </TableCell>
-      </TableRow>
-      <TableRow>
-        <TableCell component="th" scope="col">
-          Name
-        </TableCell>
-        <TableCell component="th" scope="col">
-          Street
-        </TableCell>
-        <TableCell component="th" scope="col">
-          ZIP code
-        </TableCell>
-        <TableCell component="th" scope="col">
-          Employer
-        </TableCell>
-        <TableCell component="th" scope="col">
-          Industry
-        </TableCell>
-      </TableRow>
-    </TableHead>
-    <TableBody>
-      <TableRow>
-        <TableCell component="th" scope="row">
-          John Doe
-        </TableCell>
-        <TableCell component="td">123 Braavos Ave.</TableCell>
-        <TableCell component="td">20005</TableCell>
-        <TableCell component="td">Acme Co.</TableCell>
-        <TableCell component="td">Healthcare</TableCell>
-      </TableRow>
-      <TableRow>
-        <TableCell component="th" scope="row">
-          Jane Doe
-        </TableCell>
-        <TableCell component="td">456 King's Landing</TableCell>
-        <TableCell component="td">20005</TableCell>
-        <TableCell component="td">Acme Co.</TableCell>
-        <TableCell component="td">Healthcare</TableCell>
-      </TableRow>
-    </TableBody>
-  </Table>
-</EmbeddedExample>
+<StorybookExample
+  componentName="table"
+  storyId="components-table--multi-header-table"
+/>
 
 ## `<Table>`
 
