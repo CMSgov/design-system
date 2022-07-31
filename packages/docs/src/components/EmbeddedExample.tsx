@@ -4,11 +4,6 @@ import ReactDOMServer from 'react-dom/server';
 import useCodeSnippet from './useCodeSnippet';
 
 interface EmbeddedExampleProps {
-  /**
-   * Need to provide a static, unique id that won't cause hydration mismatches
-   * until we are using React 18 and have access to the `useId` hook
-   */
-  id: string;
   children: React.ReactElement;
 }
 
@@ -18,9 +13,9 @@ interface EmbeddedExampleProps {
  * Using ReactDOMServer's renderToString function to extract the HTML from a React child
  * @see https://reactjs.org/docs/react-dom-server.html#rendertostring
  */
-const EmbeddedExample = ({ id, children }: EmbeddedExampleProps) => {
+const EmbeddedExample = ({ children }: EmbeddedExampleProps) => {
   const html = ReactDOMServer.renderToString(children);
-  const { codeToggles, codeSnippets } = useCodeSnippet({ id, html });
+  const { codeToggles, codeSnippets } = useCodeSnippet({ html });
 
   return (
     <section className="c-embedded-example">

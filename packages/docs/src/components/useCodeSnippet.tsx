@@ -12,11 +12,6 @@ enum SnippetState {
 
 interface UseCodeSnippetProps {
   /**
-   * Need to provide a static, unique id that won't cause hydration mismatches
-   * until we are using React 18 and have access to the `useId` hook
-   */
-  id: string;
-  /**
    * html string to prettify, highlight and display
    */
   html: string;
@@ -29,11 +24,11 @@ interface UseCodeSnippetProps {
 /**
  * HTML code snippet. This component will prettify an html string and do syntax highlighting
  */
-const useCodeSnippet = ({ id, html, highlightedJsx }: UseCodeSnippetProps) => {
+const useCodeSnippet = ({ html, highlightedJsx }: UseCodeSnippetProps) => {
   const [snippetState, setSnippetState] = useState<SnippetState>(SnippetState.CLOSED);
   const highlightedHtml = html && highlightHtmlSyntax(html);
 
-  const snippetIdPrefix = `example-snippet-${id}`;
+  const snippetIdPrefix = useRef(uniqueId('example-snippet-')).current;
   const getButtonId = (snippetState: SnippetState) => `${snippetIdPrefix}-${snippetState}-toggle`;
   const getSnippetId = (snippetState: SnippetState) => `${snippetIdPrefix}-${snippetState}`;
 

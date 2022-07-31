@@ -91,7 +91,6 @@ const StorybookExampleFooter = ({ theme, storyId }: StorybookExampleFooterProps)
   );
 
   const { codeToggles, codeSnippets } = useCodeSnippet({
-    id: storyId,
     html: htmlCode,
     highlightedJsx: reactCode,
   });
