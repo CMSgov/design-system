@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { Button, ExternalLinkIcon } from '@cmsgov/design-system';
 import { makeStorybookUrl } from '../helpers/urlUtils';
 import { withPrefix } from 'gatsby';
-import useCodeSnippet from './useCodeSnippet';
+import ExampleFooter from './ExampleFooter';
 
 interface StorybookExampleFooterProps {
   /**
@@ -90,17 +90,13 @@ const StorybookExampleFooter = ({ theme, storyId }: StorybookExampleFooterProps)
     />
   );
 
-  const { codeToggles, codeSnippets } = useCodeSnippet({
-    html: htmlCode,
-    highlightedJsx: reactCode,
-  });
-
   return (
     <div className="c-storybook-example-footer">
       {iframe}
-      <div className="ds-u-display--flex ds-u-justify-content--between">
-        <div>{codeToggles}</div>
-        <div>
+      <ExampleFooter
+        html={htmlCode}
+        highlightedJsx={reactCode}
+        sourceLink={
           <Button
             href={makeStorybookUrl(storyId, theme)}
             target="_blank"
@@ -110,9 +106,8 @@ const StorybookExampleFooter = ({ theme, storyId }: StorybookExampleFooterProps)
           >
             Open in Storybook <ExternalLinkIcon className="ds-u-margin-left--1" />
           </Button>
-        </div>
-      </div>
-      {codeSnippets}
+        }
+      />
     </div>
   );
 };
