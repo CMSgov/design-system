@@ -1,6 +1,5 @@
 import glob from 'glob';
 import chalk from 'chalk';
-import fs from 'fs';
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import inquirer from 'inquirer';
 
@@ -25,7 +24,7 @@ export const doPatternSearch = async (config) => {
   return res
 }
 
-export const getFileContents = (fileList) => {
+export const getAllFileContents = (fileList) => {
   const readPromises = fileList.map(async file => {
     return readFile(file, 'utf8')
       .then(data => {
@@ -35,7 +34,7 @@ export const getFileContents = (fileList) => {
   return Promise.all(readPromises)
 }
 
-export const modifyFileContents = (content, expr) => {
+export const modifyFileContents = async (content, expr) => {
   content.map(f => {
     expr.forEach(e =>  {
       let re = new RegExp(e.from, 'g')
@@ -46,10 +45,19 @@ export const modifyFileContents = (content, expr) => {
 
   const writePromises = content.map(async content => {
     return writeFile(content.file, content.data, 'utf8')
+      // add a percentage bar complete
+      .then(() => console.log('wrote a file!'))
       .catch(err => error(err))
+    // check if file has less than 5 newlines
+    // check if file is empty
+    // if so, skip it
+    // increment number of replacements
+    // when file closes send back number of replacements in filename
+    //
   })
 
   return Promise.all(writePromises)
+    .then(() => console.log('wrote a bunch of files!'))
 }
 
 export const readConfigFile = (file) => {
@@ -109,7 +117,7 @@ export default {
   confirmStart,
   doPatternSearch,
   getConfigFileList,
-  getFileContents,
+  getAllFileContents,
   getGlob,
   inquireForFile,
   readConfigFile,

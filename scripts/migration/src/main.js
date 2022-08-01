@@ -8,7 +8,7 @@ import {
   doPatternSearch,
   error,
   getConfigFileList,
-  getFileContents,
+  getAllFileContents,
   inquireForFile,
   modifyFileContents,
   readConfigFile,
@@ -73,17 +73,11 @@ import {
 
   if (await confirmStart()) {
     console.log(`${g('++')} Starting ...`);
-    await getFileContents(files)
+    await getAllFileContents(files)
       .then((content) => {
         modifyFileContents(content, configData.expressions);
       })
       .catch((err) => error(err));
-    // check if file has less than 5 newlines
-    // check if file is empty
-    // if so, skip it
-    // increment number of replacements
-    // when file closes send back number of replacements in filename
-    //
   } else {
     console.log('cancelling');
   }
