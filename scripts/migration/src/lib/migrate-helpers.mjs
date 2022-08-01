@@ -1,16 +1,20 @@
 import glob from 'glob';
 import chalk from 'chalk';
 import fs from 'fs';
+import { readdir, readFile, writeFile } from 'node:fs/promises';
 import inquirer from 'inquirer';
 
-export const getGlob = async (pattern, config) => {
-  const globResult = await new Promise((resolve, reject) => {
-    return glob(pattern, config, (err, matches) => {
-      if (err) return reject(err)
-      return resolve(matches)
+export const error = (message) => {
+  console.log(`${chalk.red('!!')} Error: ${message}`)
+}
+
+export const getGlob = (pattern, config) => {
+  return new Promise((resolve, reject) => {
+    glob(pattern, config, (err, matches) => {
+      if (err) reject(err)
+      resolve(matches)
     })
   })
-  return globResult
 }
 
 export const doPatternSearch = async (config) => {
@@ -21,48 +25,55 @@ export const doPatternSearch = async (config) => {
   return res
 }
 
-export const doFileSearchAndReplace = async (fileList, expr) => {
-  const p = expr.map(expr => {
-    fileList.map(file => {
-      return fs.readFile(file, 'utf8', (err, data) => {
-        if (err) return console.log(err)
-        var result = data.replace(expr.from, expr.to)
-
-        fs.writeFile(file, result, 'utf8', (err) => {
-           if (err) return console.log(err)
-        });
+export const getFileContents = (fileList) => {
+  const readPromises = fileList.map(async file => {
+    return readFile(file, 'utf8')
+      .then(data => {
+        return { file: file, data: data }
       })
-    })
-  });
-  Promise.all(p)
-    .then(function(results) {
-      console.log(results)
-    })
-}
-
-export const readConfigFile = async (file) => {
-  const configObj = await new Promise((resolve, reject) => {
-    return fs.readFile(file, 'utf8', (err, data) => {
-      if (err) return reject(err)
-      const parsed = JSON.parse(data)
-      return resolve(parsed)
-    })
   })
-  return configObj
+  return Promise.all(readPromises)
 }
 
-export const getConfigFileList = async (path) => {
-  const fileList = await new Promise((resolve, reject) => {
-    return fs.readdir(path, (err, files) => {
-      if (err) return reject(err)
-      return resolve(files)
+export const modifyFileContents = (content, expr) => {
+  content.map(f => {
+    expr.forEach(e =>  {
+      let re = new RegExp(e.from, 'g')
+      f.data = f.data.replace(re, e.to)
     })
+    return f
   })
-  return fileList
+
+  const writePromises = content.map(async content => {
+    return writeFile(content.file, content.data, 'utf8')
+      .catch(err => error(err))
+  })
+
+  return Promise.all(writePromises)
 }
 
-export const confirmStart = async (action) => {
-  const startMatch = await new Promise((resolve, reject) => {
+export const readConfigFile = (file) => {
+  return new Promise((resolve, reject) => {
+    readFile(file, 'utf8')
+      .then(data => {
+        resolve(JSON.parse(data))
+      })
+      .catch(err => reject(err))
+  })
+}
+
+export const getConfigFileList = (path) => {
+  return new Promise((resolve, reject) => {
+    readdir(path)
+      .then(files => {
+        resolve(files)
+      })
+      .catch(err => reject(err))
+  })
+}
+
+export const confirmStart = (action) => {
+  return new Promise((resolve, reject) => {
     inquirer.prompt([
       {
         type: 'confirm',
@@ -71,18 +82,13 @@ export const confirmStart = async (action) => {
         message: 'Begin search and replace?',
         default: true,
       }])
-      .then((choice) => {
-          return resolve(choice.yesno)
-      })
-      .catch((err) => {
-        return reject(err)
-      })
+      .then((choice) => { resolve(choice.yesno) })
+      .catch((err) => { reject(err) })
   })
-  return startMatch
 }
 
-export const inquireForFile = async (folder, options) => {
-  const fileInquiryData = await new Promise((resolve, reject) => {
+export const inquireForFile = (folder, options) => {
+  return new Promise((resolve, reject) => {
     inquirer.prompt([
       {
         type: 'list',
@@ -93,20 +99,17 @@ export const inquireForFile = async (folder, options) => {
       }])
       .then((choice) => {
         const configPath = `${folder}/${choice['file']}`
-        return resolve(readConfigFile(configPath))
+        resolve(readConfigFile(configPath))
       })
-      .catch((err) => {
-        return reject(err)
-      })
+      .catch((err) => { reject(err) })
   })
-  return fileInquiryData
 }
 
 export default {
   confirmStart,
-  doFileSearchAndReplace,
   doPatternSearch,
   getConfigFileList,
+  getFileContents,
   getGlob,
   inquireForFile,
   readConfigFile,

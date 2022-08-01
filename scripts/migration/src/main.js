@@ -6,47 +6,47 @@ import { hideBin } from 'yargs/helpers';
 import {
   confirmStart,
   doPatternSearch,
-  doFileSearchAndReplace,
+  error,
   getConfigFileList,
+  getFileContents,
   inquireForFile,
+  modifyFileContents,
   readConfigFile,
 } from './lib/migrate-helpers.mjs';
 
-// some chalk helpers
-const g = (x) => chalk.green(x);
-const r = (x) => chalk.red(x);
-const w = (x) => chalk.whiteBright(x);
-const m = (x) => chalk.magenta(x);
-const y = (x) => chalk.gray(x);
+(async () => {
+  // some chalk helpers
+  const g = (x) => chalk.green(x);
+  const r = (x) => chalk.red(x);
+  const w = (x) => chalk.whiteBright(x);
+  const m = (x) => chalk.magenta(x);
+  const y = (x) => chalk.gray(x);
 
-// get args
-const argv = yargs(hideBin(process.argv))
-  .scriptName('migration-helper')
-  .usage(
-    '$0 --file migration-config-file.json --cwd "../root/directory --ignore "**/ignored/**", "**/another_ignored/**"'
-  )
-  .option('file', {
-    type: 'string',
-    description: 'Migration configuration file.',
-  })
-  .option('cwd', {
-    type: 'string',
-    description: 'Working directory to scan.',
-  })
-  .option('ignore', {
-    type: 'array',
-    description: 'Glob patterns to ignore during search.',
-  })
-  .help().argv;
+  // get args
+  const argv = yargs(hideBin(process.argv))
+    .scriptName('migration-helper')
+    .usage(
+      '$0 --file migration-config-file.json --cwd "../root/directory --ignore "**/ignored/**", "**/another_ignored/**"'
+    )
+    .option('file', {
+      type: 'string',
+      description: 'Migration configuration file.',
+    })
+    .option('cwd', {
+      type: 'string',
+      description: 'Working directory to scan.',
+    })
+    .option('ignore', {
+      type: 'array',
+      description: 'Glob patterns to ignore during search.',
+    })
+    .help().argv;
 
-const CONFIG_FOLDER = './configs';
-
-// script starts here
-const main = async () => {
-  const configs = await getConfigFileList(CONFIG_FOLDER);
+  const CONFIG_FOLDER = './configs';
+  const configList = await getConfigFileList(CONFIG_FOLDER);
 
   const configData = !argv.file
-    ? await inquireForFile(CONFIG_FOLDER, configs)
+    ? await inquireForFile(CONFIG_FOLDER, configList)
     : await readConfigFile(argv.file);
 
   // take the cwd if they specify on command line
@@ -73,7 +73,11 @@ const main = async () => {
 
   if (await confirmStart()) {
     console.log(`${g('++')} Starting ...`);
-    doFileSearchAndReplace(files, configData.expressions);
+    await getFileContents(files)
+      .then((content) => {
+        modifyFileContents(content, configData.expressions);
+      })
+      .catch((err) => error(err));
     // check if file has less than 5 newlines
     // check if file is empty
     // if so, skip it
@@ -83,6 +87,4 @@ const main = async () => {
   } else {
     console.log('cancelling');
   }
-};
-
-main();
+})();

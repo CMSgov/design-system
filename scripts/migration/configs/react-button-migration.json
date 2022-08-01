@@ -9,6 +9,6 @@
     "realpath": true
   },
   "expressions": [
-    { "from": "/background/g", "to": "BACKGROUND" }
+    { "from": "color", "to": "COLOR" }
   ]
 }
