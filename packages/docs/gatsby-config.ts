@@ -43,7 +43,12 @@ const config: GatsbyConfig = {
         crossOrigin: `use-credentials`,
       },
     },
-    'gatsby-plugin-mdx',
+    {
+      resolve: 'gatsby-plugin-mdx',
+      options: {
+        gatsbyRemarkPlugins: ['gatsby-remark-autolink-headers'],
+      },
+    },
     {
       resolve: 'gatsby-transformer-react-docgen',
       options: {

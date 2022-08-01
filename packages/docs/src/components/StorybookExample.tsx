@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useMemo } from 'react';
 import classnames from 'classnames';
 import StorybookExampleFooter from './StorybookExampleFooter';
 import { ExternalLinkIcon, Spinner } from '@cmsgov/design-system';
@@ -19,14 +19,6 @@ interface StorybookExampleProps {
    * example: `components-[COMPONENT_NAME]--default`
    */
   storyId: string;
-  /**
-   * path within 'src' directory to source file
-   */
-  sourceFilePath?: string;
-  /**
-   * package where the source comes from
-   */
-  sourcePackageName?: string;
   /**
    * Current theme
    */
@@ -57,7 +49,7 @@ const StorybookExample = ({ theme, componentName, minHeight, storyId }: Storyboo
         window.removeEventListener('resize', setIframeHeight);
       };
     }
-  });
+  }, []);
 
   // when the iframe content resizes, recalculate the height at which it should be shown
   const setIframeHeight = () => {
