@@ -1,11 +1,11 @@
-import chalk from 'chalk';
 import glob from 'glob';
+import chalk from 'chalk';
 import fs from 'fs';
 import inquirer from 'inquirer';
 
 export const getGlob = async (pattern, config) => {
   const globResult = await new Promise((resolve, reject) => {
-    return glob( pattern, config, (err, matches) => {
+    return glob(pattern, config, (err, matches) => {
       if (err) return reject(err)
       return resolve(matches)
     })
@@ -21,18 +21,37 @@ export const doPatternSearch = async (config) => {
   return res
 }
 
+export const doFileSearchAndReplace = async (fileList, expr) => {
+  const p = expr.map(expr => {
+    fileList.map(file => {
+      return fs.readFile(file, 'utf8', (err, data) => {
+        if (err) return console.log(err)
+        var result = data.replace(expr.from, expr.to)
+
+        fs.writeFile(file, result, 'utf8', (err) => {
+           if (err) return console.log(err)
+        });
+      })
+    })
+  });
+  Promise.all(p)
+    .then(function(results) {
+      console.log(results)
+    })
+}
+
 export const readConfigFile = async (file) => {
   const configObj = await new Promise((resolve, reject) => {
-    return fs.readFile(file, 'utf8', (err, file) => {
+    return fs.readFile(file, 'utf8', (err, data) => {
       if (err) return reject(err)
-      const parsed = JSON.parse(file)
+      const parsed = JSON.parse(data)
       return resolve(parsed)
     })
   })
   return configObj
 }
 
-export const getConfigFiles = async (path) => {
+export const getConfigFileList = async (path) => {
   const fileList = await new Promise((resolve, reject) => {
     return fs.readdir(path, (err, files) => {
       if (err) return reject(err)
@@ -42,8 +61,24 @@ export const getConfigFiles = async (path) => {
   return fileList
 }
 
-export const inquireConfirmOrEdit = async (action) => {
-
+export const confirmStart = async (action) => {
+  const startMatch = await new Promise((resolve, reject) => {
+    inquirer.prompt([
+      {
+        type: 'confirm',
+        name: 'yesno',
+        prefix: `${chalk.red('!!')} Please be sure you are running this in a git repo. ${chalk.red('!!\n!!')} Filesystem changes will occur.                     ${chalk.red('!!\n\n')}${chalk.green('?')}`,
+        message: 'Begin search and replace?',
+        default: true,
+      }])
+      .then((choice) => {
+          return resolve(choice.yesno)
+      })
+      .catch((err) => {
+        return reject(err)
+      })
+  })
+  return startMatch
 }
 
 export const inquireForFile = async (folder, options) => {
@@ -68,8 +103,10 @@ export const inquireForFile = async (folder, options) => {
 }
 
 export default {
+  confirmStart,
+  doFileSearchAndReplace,
   doPatternSearch,
-  getConfigFiles,
+  getConfigFileList,
   getGlob,
   inquireForFile,
   readConfigFile,

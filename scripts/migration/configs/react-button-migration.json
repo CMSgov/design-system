@@ -1,13 +1,14 @@
 {
   "patterns": [
-    "**/*.{js,ts,tsx,jsx}",
     "**/*.scss",
-    "**/*.md"
+    "**/*.css"
   ],
   "globConfig": {
-    "cwd": "/Users/forrestbaer/code/design-system/packages/design-system/src"
+    "cwd": "/Users/forrestbaer/code/design-system/packages/design-system/src",
+    "ignore": ["**/node_modules/**"],
+    "realpath": true
   },
   "expressions": [
-    "variation"
+    { "from": "/background/g", "to": "BACKGROUND" }
   ]
 }
