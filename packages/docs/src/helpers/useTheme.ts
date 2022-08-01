@@ -16,7 +16,6 @@ function useTheme() {
   useEffect(() => {
     const themeQueryParam = getQueryParamValue(QUERY_PARAM_NAME);
 
-    // console.log(typeof window);
     if (typeof window !== 'undefined') {
       // query param found, set in local storage and return it
       if (themeQueryParam !== null) {

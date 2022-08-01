@@ -10,7 +10,7 @@
 
 .c-table-of-contents__list {
   list-style-type: '- ';
-  margin-top: $spacer-1;
+  padding-left: $spacer-2;
 }
 
 .c-table-of-contents-mobile {
@@ -22,4 +22,13 @@
 .c-table-of-contents-mobile__list {
   list-style-type: '- ';
   padding-left: 0;
+}
+
+.c-table-of-contents__list-item {
+  margin-top: $spacer-half;
+  margin-bottom: $spacer-half;
+}
+
+.c-table-of-contents__list-item--no-marker {
+  list-style: none;
 }
