@@ -1,0 +1,10 @@
+{
+  "patterns": ["**/*"],
+  "globbyConfig": {
+    "gitignore": true,
+    "ignore": ["**/*.json"]
+  },
+  "expressions": [
+    { "from": "<!-- CMSDS-MIGRATE:[\\s\\S]*?-->", "to": "" }
+  ]
+}

@@ -24,7 +24,7 @@ export const confirmStart = () => {
 export const doPatternSearch = async (config) => {
   let res = []
   for (const p of config.patterns) {
-    res.push(...await getGlob(p, config.globbyConfig).catch(err => error(err)))
+    res.push(...await getGlob(p, config.globbyConfig).catch(err => error('doPatternSearch: '+err)))
   }
   return res
 }
@@ -41,7 +41,7 @@ export const getAllFileContents = (fileList) => {
     return readFile(file, 'utf8')
       .then(data => {
         return { file: file, data: data, matches: 0 }
-      }).catch(err => error(err))
+      }).catch(err => error('getAllFileContents: '+err))
   })
   return Promise.all(readPromises)
 }
@@ -79,7 +79,7 @@ export const inquireForFile = (folder, options) => {
         prefix: `\nChoose a migration configuration to run from ${folder}\n`,
       }])
       .then(choice => {
-        const configPath = `${folder}/${choice['file']}`
+        const configPath = `${folder}/${choice.file}`
         resolve(readConfigFile(configPath))
       })
       .catch(err => { reject(err) })
@@ -112,7 +112,7 @@ export const modifyFileContents = async (content, expr) => {
         .then(() => {
           return { file: content.file, matches: content.matches }
         })
-        .catch(err => error(err))
+        .catch(err => error('writePromises: '+err))
     } else {
       return { file: content.file, matches: 0 }
     }

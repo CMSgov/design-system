@@ -34,7 +34,6 @@ import yargs from 'yargs';
       ignore: {
         type: 'array',
         description: 'Other glob patterns to ignore during search. .gitignore included by default.',
-        default: [],
       },
       force: {
         boolean: true,
@@ -46,12 +45,16 @@ import yargs from 'yargs';
 
   // get list of configuration files
   const CONFIG_FOLDER = './configs';
-  const configList = await getConfigFileList(CONFIG_FOLDER).catch((err) => error(err));
+  const configList = await getConfigFileList(CONFIG_FOLDER).catch((err) =>
+    error('getConfigFileList: ' + err)
+  );
 
   // load configuration from arg or list
   const [configData, configFile] = !argv.config
-    ? await inquireForFile(CONFIG_FOLDER, configList).catch((err) => error(err))
-    : await readConfigFile(argv.config).catch((err) => error(err));
+    ? await inquireForFile(CONFIG_FOLDER, configList).catch((err) =>
+        error('inquireForFile: ' + err)
+      )
+    : await readConfigFile(argv.config).catch((err) => error('readConfigFile: ' + err));
 
   console.log(
     `\n${chalk.green('++')} Configuration Loaded! (${configFile}) ${chalk.green('++')}\n`
@@ -60,9 +63,10 @@ import yargs from 'yargs';
   // take CWD if specified from command line
   const cwd = !argv.cwd ? process.cwd() : argv.cwd;
   configData.globbyConfig.cwd = cwd;
-  // take ignored list if they specify on command line
-  const ignored = !argv.ignore ? [''] : argv.ignore;
-  configData.globbyConfig.ignore.push(...ignored);
+  // push ignore list to configuration array
+  if (argv.ignore) {
+    configData.globbyConfig.ignore.push(...argv.ignore);
+  }
 
   // run glob search with configData.patterns
   const files = await doPatternSearch(configData);
@@ -89,7 +93,7 @@ import yargs from 'yargs';
   });
   console.log(
     `${chalk.magenta('-')} ${chalk.whiteBright('IGNORED')} ${chalk.gray(':')} ${JSON.stringify(
-      ignored
+      configData.globbyConfig.ignore
     )}\n`
   );
 
@@ -103,7 +107,7 @@ import yargs from 'yargs';
           console.log(`\n${chalk.magenta('==')} Modification complete!`)
         );
       })
-      .catch((err) => error(err));
+      .catch((err) => error('getAllFileContents: ' + err));
   };
 
   // begin file modification based on configuration rules
@@ -117,7 +121,7 @@ import yargs from 'yargs';
           console.log(`\n${chalk.red('__')} Cancelling ...\n`);
         }
       })
-      .catch((err) => error(err));
+      .catch((err) => error('confirmStart ' + err));
   } else {
     startModification();
   }
