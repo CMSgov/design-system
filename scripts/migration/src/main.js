@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 
 import chalk from 'chalk';
-import yargs from 'yargs';
-import { hideBin } from 'yargs/helpers';
 import {
   confirmStart,
   doPatternSearch,
@@ -13,54 +11,75 @@ import {
   modifyFileContents,
   readConfigFile,
 } from './lib/migrate-helpers.mjs';
+import { hideBin } from 'yargs/helpers';
+import yargs from 'yargs';
 
 (async () => {
-  // get args
+  // get command line args
   const argv = yargs(hideBin(process.argv))
-    .scriptName('migration-helper')
+    .scriptName('cmsds-migrate')
     .usage(
       '$0 --file migration-config-file.json --cwd "../root/directory --ignore "**/ignored/**", "**/another_ignored/**"'
     )
-    .option('file', {
-      type: 'string',
-      description: 'Migration configuration file.',
-    })
-    .option('cwd', {
-      type: 'string',
-      description: 'Working directory to scan.',
-    })
-    .option('ignore', {
-      type: 'array',
-      description: 'Glob patterns to ignore during search.',
+    .options({
+      config: {
+        type: 'string',
+        description: 'Migration configuration file.',
+      },
+      cwd: {
+        type: 'string',
+        description: 'Root directory for scan. Defaults to CWD.',
+        default: process.cwd(),
+      },
+      ignore: {
+        type: 'array',
+        description: 'Other glob patterns to ignore during search. .gitignore included by default.',
+        default: [],
+      },
+      force: {
+        boolean: true,
+        description: 'Skip interactive prompts, use caution!',
+        default: false,
+      },
     })
     .help().argv;
 
+  // get list of configuration files
   const CONFIG_FOLDER = './configs';
-  const configList = await getConfigFileList(CONFIG_FOLDER);
+  const configList = await getConfigFileList(CONFIG_FOLDER).catch((err) => error(err));
 
-  const configData = !argv.file
-    ? await inquireForFile(CONFIG_FOLDER, configList)
-    : await readConfigFile(argv.file);
+  // load configuration from arg or list
+  const [configData, configFile] = !argv.config
+    ? await inquireForFile(CONFIG_FOLDER, configList).catch((err) => error(err))
+    : await readConfigFile(argv.config).catch((err) => error(err));
 
-  // take the cwd if they specify on command line
-  const cwd = !argv.cwd ? configData.globConfig.cwd : argv.cwd;
-  configData.globConfig.cwd = cwd;
+  console.log(
+    `\n${chalk.green('++')} Configuration Loaded! (${configFile}) ${chalk.green('++')}\n`
+  );
+
+  // take CWD if specified from command line
+  const cwd = !argv.cwd ? process.cwd() : argv.cwd;
+  configData.globbyConfig.cwd = cwd;
   // take ignored list if they specify on command line
-  const ignored = !argv.ignore ? configData.globConfig.ignore : argv.ignore;
-  configData.globConfig.ignore = ignored;
+  const ignored = !argv.ignore ? [''] : argv.ignore;
+  configData.globbyConfig.ignore.push(...ignored);
 
+  // run glob search with configData.patterns
   const files = await doPatternSearch(configData);
+  if (files.length >= 0) {
+    error('No files found! Check your patterns and cwd settings.');
+  }
 
   /*
    * display loaded configuration statistics & number of files that will be analyzed
+   * @TODO: could add an option to expand this with the ability to preview file list
    */
-  console.log(`\n${chalk.green('++')} Configuration Loaded! ${chalk.green('++')}\n`);
   console.log(`[ ${chalk.whiteBright(files.length)} ] files queued for operation\n`);
   console.log(
     `${chalk.magenta('-')} ${chalk.whiteBright('WORKING DIR')} ${chalk.gray(':')} ${cwd}`
   );
   Object.keys(configData).map((key) => {
-    if (key !== 'globConfig') {
+    if (key !== 'globbyConfig') {
       console.log(
         `${chalk.magenta('-')} ${chalk.whiteBright(key.toUpperCase())} ${chalk.gray(
           ':'
@@ -74,14 +93,32 @@ import {
     )}\n`
   );
 
-  if (await confirmStart()) {
-    console.log(`${chalk.blue('__')} Starting ...`);
-    await getAllFileContents(files)
+  // kick off file search and replace
+  const startModification = () => {
+    console.log(`\n${chalk.blue('__')} Starting ...\n`);
+
+    getAllFileContents(files)
       .then((content) => {
-        modifyFileContents(content, configData.expressions);
+        modifyFileContents(content, configData.expressions).then(() =>
+          console.log(`\n${chalk.magenta('==')} Modification complete!`)
+        );
+      })
+      .catch((err) => error(err));
+  };
+
+  // begin file modification based on configuration rules
+  // start automatically if --force is specified
+  if (!argv.force) {
+    confirmStart()
+      .then((val) => {
+        if (val) {
+          startModification();
+        } else {
+          console.log(`\n${chalk.red('__')} Cancelling ...\n`);
+        }
       })
       .catch((err) => error(err));
   } else {
-    console.log(`${chalk.red('__')} Cancelling ...`);
+    startModification();
   }
 })();

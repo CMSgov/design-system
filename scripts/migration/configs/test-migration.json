@@ -1,12 +1,11 @@
 {
   "patterns": [
-    "**/*.js",
-    "**/*.jsx"
+    "**/*.fs",
+    "**/*.hsx"
   ],
-  "globConfig": {
-    "cwd": "/Users/forrestbaer/code/design-system/scripts/migration/test",
-    "ignore": ["**/node_modules/**"],
-    "realpath": true
+  "globbyConfig": {
+    "gitignore": true,
+    "ignore": []
   },
   "expressions": [
     { "from": "color", "to": "COLOR" }
