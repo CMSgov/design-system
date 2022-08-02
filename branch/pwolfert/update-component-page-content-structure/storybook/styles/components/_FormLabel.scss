@@ -1,0 +1,59 @@
+@import '../settings/index.scss';
+
+.ds-c-label {
+  // Correct color inheritance for `legend` elements in IE11
+  // https://github.com/necolas/normalize.css/blob/master/normalize.css#L235
+  color: inherit;
+  display: block;
+  font-size: $font-size-base;
+  font-weight: $font-weight-bold;
+  margin-bottom: 0;
+  margin-top: $spacer-3;
+  max-width: $form__max-width;
+  // Remove default padding on <legend> elements:
+  padding: 0;
+}
+
+.ds-c-label--inverse {
+  color: $form-label__color--inverse;
+}
+
+// Applies to "Checkbox & Radio" and "Date field"
+.ds-c-fieldset {
+  border: 0;
+  // We apply the same margin as a label, since in the context of a fieldset
+  // this would be a <legend>. See .ds-c-fieldset > .ds-c-label for more info.
+  margin: $spacer-3 0 0;
+  min-width: 0;
+  padding: 0;
+}
+
+// Webkit won't render a top margin on a fieldset's <legend>, so we apply
+// the top margin to the fieldset instead.
+.ds-c-fieldset > .ds-c-label:first-child {
+  margin-top: 0;
+}
+
+.ds-c-field__hint {
+  color: $form-hint__color;
+  display: block;
+  font-weight: $font-weight-normal;
+}
+
+.ds-c-field__hint--inverse {
+  color: $form-hint__color--inverse;
+}
+
+.ds-c-field__error-message {
+  color: $form-error__color;
+  display: block;
+  font-weight: $font-weight-normal;
+}
+
+.ds-c-field__error-message--inverse {
+  color: $form-error__color--inverse;
+}
+
+.ds-c-choice + label .ds-c-field__hint {
+  flex-basis: 100%;
+}
