@@ -11,10 +11,7 @@ medicare:
   sketchLink: 7y3WWl2
 ---
 
-
-## `<Tabs>`
-
-`Tabs` is a container component that manages the state of your tabs for you. In most cases, you'll want to use this component rather than the presentational components (`Tab`, `TabPanel`) on their own.
+## Examples
 
 <StorybookExample
   componentName="tabs"
@@ -22,17 +19,29 @@ medicare:
   minHeight={400}
 />
 
-### Tabs Props
+## Code
+
+### React
+
+#### `<Tabs>` component
+
+`Tabs` is a container component that manages the state of your tabs for you. In most cases, you'll want to use this component rather than the presentational components (`Tab`, `TabPanel`) on their own.
 
 <PropTable componentName="Tabs" />
 
-## `<TabPanel>`
+#### `<TabPanel>` component
 
 A `TabPanel` is a presentational component which accepts a tab's content as its `children`.
 
-### Tab Panel Props
-
 <PropTable componentName="TabPanel" />
+
+### Styles
+
+The following Sass variables can be overridden to customize Tab components:
+
+<ComponentThemeOptions
+  componentname="tabs"
+/>
 
 ## Guidance
 
@@ -59,19 +68,11 @@ A `TabPanel` is a presentational component which accepts a tab's content as its 
   - For the tabs list parent: `role`, `aria-label`
   - For a tab panel: `role`, `aria-labelledby`
 
-## Customization
-
-The following Sass variables can be overridden to customize Tab components:
-
-<ComponentThemeOptions
-  componentname="tabs"
-/>
-
 ### Related patterns
 
 - [Vertical navigation](/components/vertical-nav/)
 
-### Learn more
+## Learn more
 
 - [How Tabs Should Work](https://24ways.org/2015/how-tabs-should-work/)
 - [Simple ARIA tab interface](http://heydonworks.com/practical_aria_examples/#tab-interface)

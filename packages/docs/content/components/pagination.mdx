@@ -12,26 +12,34 @@ medicare:
   sketchLink: wLOVV9D
 ---
 
-## About the pagination component
-
-Paginated content is any content split into multiple pages determined by a specific amount of content per page, not split by any meaningful attribute, like feature or subject or step. Search results and article collections are often paginated. Readers use the pagination component to move from page to page in paginated content, or directly to the first or last page of the paginated set.
-
-## `<Pagination>`
-
-Pagination requires two properties: `totalPages`, which is the total number of pages, and `onPageChange`, which is a function used to handle state changes when the user clicks a page.
-
-Pagination also comes in two styles: default, which is compact on mobile viewports and expands to reveal individual pages on larger viewports, and `compact`, which maintains the compact layout regardless of viewport size.
+## Examples
 
 <StorybookExample
   componentName="pagination"
   storyId="components-pagination--default"
 />
 
-### Props
+## Code
+
+### React
+
+Pagination requires two properties: `totalPages`, which is the total number of pages, and `onPageChange`, which is a function used to handle state changes when the user clicks a page.
+
+Pagination also comes in two styles: default, which is compact on mobile viewports and expands to reveal individual pages on larger viewports, and `compact`, which maintains the compact layout regardless of viewport size.
 
 <PropTable componentName="Pagination" />
 
+### Styles
+
+The following Sass variables can be overridden to customize Pagination components:
+
+<ComponentThemeOptions
+  componentname="pagination"
+/>
+
 ## Guidance
+
+Paginated content is any content split into multiple pages determined by a specific amount of content per page, not split by any meaningful attribute, like feature or subject or step. Search results and article collections are often paginated. Readers use the pagination component to move from page to page in paginated content, or directly to the first or last page of the paginated set.
 
 ### When to use
 
@@ -53,14 +61,6 @@ Pagination also comes in two styles: default, which is compact on mobile viewpor
 - Use touch targets that are big enough to select with any finger and have enough separation to avoid mistakes.
 - Do not use buttons for URL-based pagination. Because the URL is updated, the browser history stack updates and a link is the correct tag to use.
 - Consider page load, performance, and the user's scrolling preferences when determining how many items are displayed on each page.
-
-## Customization
-
-The following Sass variables can be overridden to customize Pagination components:
-
-<ComponentThemeOptions
-  componentname="pagination"
-/>
 
 ### Accessibility
 

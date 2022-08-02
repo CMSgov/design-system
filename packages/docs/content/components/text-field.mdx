@@ -12,9 +12,7 @@ medicare:
 ---
 
 
-## `<TextField>`
-
-A `TextField` component renders an input field as well as supporting UI elements like a label, error message, and hint text.
+## Examples
 
 ### Single line field
 
@@ -45,9 +43,29 @@ A `TextField` component renders an input field as well as supporting UI elements
 
 <StorybookExample componentName="disabled field" storyId="components-text-field--disabled-field" />
 
-### Props
+## Code
+
+### React
+
+A `TextField` component renders an input field as well as supporting UI elements like a label, error message, and hint text.
 
 <PropTable componentName="TextField" />
+
+### Styles
+
+The following Sass variables can be overridden to customize Input/Form components:
+
+<ComponentThemeOptions
+  componentname="text-input"
+/>
+
+#### Form components
+
+This component also makes use of form field styles, which can be customized by the following variables:
+
+<ComponentThemeOptions
+  componentname="form"
+/>
 
 ## Guidance
 
@@ -74,20 +92,6 @@ A `TextField` component renders an input field as well as supporting UI elements
 
 - Group each set of thematically related controls in a `fieldset` element. Use the `legend` element to offer a label within each `fieldset`. The `fieldset` and `legend` elements make it easier for screen reader users to navigate the form.
 - Keep your form blocks in a vertical pattern. This approach is ideal, from an accessibility standpoint, because of limited vision that makes it hard to scan from left to right.
-
-## Customization
-
-The following Sass variables can be overridden to customize Input/Form components:
-
-<ComponentThemeOptions
-  componentname="text-input"
-/>
-
-### Form components
-
-<ComponentThemeOptions
-  componentname="form"
-/>
 
 ### Related patterns
 

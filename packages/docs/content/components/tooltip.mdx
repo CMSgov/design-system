@@ -12,7 +12,7 @@ medicare:
   sketchLink: My311v3
 ---
 
-## `<Tooltip>`
+## Examples
 
 The `Tooltip` component can render a variety of content ranging from short descriptive text, to paragraphs with links, or more complex interactive popovers.
 
@@ -54,17 +54,25 @@ This component makes use of [`@popperjs/core`](https://popper.js.org/docs/v2/) f
   minHeight={350}
 />
 
-### Tooltip Props
+## Code
+
+### React
 
 <PropTable componentName="Tooltip" />
 
-## `<TooltipIcon>`
+### `<TooltipIcon>` component
 
 When using the `<TooltipIcon>` as the only child of `<Tooltip>`, be sure to provide an `aria-label` on the `<Tooltip>` to ensure an accessible name for the trigger.
 
-### Tooltip Icon Props
-
 <PropTable componentName="TooltipIcon" />
+
+### Styles
+
+The following Sass variables can be overridden to customize Tooltip fields:
+
+<ComponentThemeOptions
+  componentname="tooltip"
+/>
 
 ## Guidance
 
@@ -82,10 +90,3 @@ When using the `<TooltipIcon>` as the only child of `<Tooltip>`, be sure to prov
 - Don’t use a tooltip when its content is repetitive or if usability is obvious.
 - If content can fit outside a tooltip, don't use a tooltip.
 
-## Customization
-
-The following Sass variables can be overridden to customize Tooltip fields:
-
-<ComponentThemeOptions
-  componentname="tooltip"
-/>
