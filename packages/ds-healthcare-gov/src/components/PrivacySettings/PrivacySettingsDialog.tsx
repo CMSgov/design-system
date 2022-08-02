@@ -41,7 +41,7 @@ export const PrivacySettingsDialog = (props: PrivacySettingsDialogProps) => {
       heading={t('privacy.dialogTitle')}
       size="full"
       actions={
-        <Button variation="primary" onClick={savePrivacySettings}>
+        <Button variation="solid" onClick={savePrivacySettings}>
           {t('privacy.save')}
         </Button>
       }

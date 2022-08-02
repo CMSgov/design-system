@@ -66,14 +66,14 @@ describe('MonthPicker', () => {
     const { wrapper } = render({ inversed: true });
     const buttons = wrapper.find('Button');
     const choices = wrapper.find('Choice');
-    buttons.forEach((button) => expect(button.props().inversed).toEqual(true));
+    buttons.forEach((button) => expect(button.props().onDark).toEqual(true));
     choices.forEach((choice) => expect(choice.props().inversed).toEqual(true));
   });
 
   it('buttonVariation prop applied to buttons', () => {
-    const { wrapper } = render({ buttonVariation: 'primary' });
+    const { wrapper } = render({ buttonVariation: 'solid' });
     const buttons = wrapper.find('Button');
-    buttons.forEach((button) => expect(button.props().variation).toEqual('primary'));
+    buttons.forEach((button) => expect(button.props().variation).toEqual('solid'));
   });
 
   it('name prop propagates to all children', () => {

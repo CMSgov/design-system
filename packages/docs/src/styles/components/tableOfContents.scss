@@ -8,7 +8,13 @@
   padding-bottom: $spacer-1;
 }
 
-.c-table-of-contents__list {
+.c-table-of-contents__list,
+.c-table-of-contents-mobile__list {
+  list-style-type: none;
+}
+
+.c-table-of-contents__list .c-table-of-contents__list,
+.c-table-of-contents-mobile__list .c-table-of-contents-mobile__list {
   list-style-type: '- ';
   padding-left: $spacer-2;
 }
@@ -20,7 +26,6 @@
 }
 
 .c-table-of-contents-mobile__list {
-  list-style-type: '- ';
   padding-left: 0;
 }
 
