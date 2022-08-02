@@ -1,10 +1,12 @@
 import glob from 'glob';
 import chalk from 'chalk';
+import path from 'path';
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import inquirer from 'inquirer';
 
 export const error = (message) => {
   console.log(`${chalk.red('!!')} Error: ${message}`)
+  process.exit(1)
 }
 
 export const getGlob = (pattern, config) => {
@@ -28,36 +30,51 @@ export const getAllFileContents = (fileList) => {
   const readPromises = fileList.map(async file => {
     return readFile(file, 'utf8')
       .then(data => {
-        return { file: file, data: data }
+        return { file: file, data: data, matches: 0 }
       })
   })
   return Promise.all(readPromises)
 }
 
 export const modifyFileContents = async (content, expr) => {
-  content.map(f => {
+  // filter out items with less than 3 newlines, likely compressed files
+  content.filter(f => {
+    return (f.data.match(/[\n\r]/g) || []).length > 3
+  })
+  .map(f => {
     expr.forEach(e =>  {
       let re = new RegExp(e.from, 'g')
-      f.data = f.data.replace(re, e.to)
+      f.data = f.data.replace(re, () => {
+          f.matches++
+          return e.to
+        })
     })
     return f
   })
 
   const writePromises = content.map(async content => {
-    return writeFile(content.file, content.data, 'utf8')
-      // add a percentage bar complete
-      .then(() => console.log('wrote a file!'))
-      .catch(err => error(err))
-    // check if file has less than 5 newlines
-    // check if file is empty
-    // if so, skip it
-    // increment number of replacements
-    // when file closes send back number of replacements in filename
-    //
+    if (content.matches > 0) {
+      return writeFile(content.file, content.data, 'utf8')
+        // add a percentage bar complete
+        .then(() => {
+          return { file: content.file, matches: content.matches }
+        })
+        .catch(err => error(err))
+    } else {
+      return { file: content.file, matches: 0 }
+    }
   })
 
-  return Promise.all(writePromises)
-    .then(() => console.log('wrote a bunch of files!'))
+  return await Promise.all(writePromises)
+    .then((results) => {
+      results.forEach(result => {
+        if (result.matches > 0) {
+          // gives a shorter name
+          const shortname = path.relative(process.cwd(), result.file)
+          console.log(`${chalk.green('++')} ${shortname}${chalk.gray(',')} ${chalk.whiteBright(result.matches)} changes`)
+        }
+      })
+    })
 }
 
 export const readConfigFile = (file) => {
@@ -80,7 +97,7 @@ export const getConfigFileList = (path) => {
   })
 }
 
-export const confirmStart = (action) => {
+export const confirmStart = () => {
   return new Promise((resolve, reject) => {
     inquirer.prompt([
       {

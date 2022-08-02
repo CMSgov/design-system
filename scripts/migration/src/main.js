@@ -15,13 +15,6 @@ import {
 } from './lib/migrate-helpers.mjs';
 
 (async () => {
-  // some chalk helpers
-  const g = (x) => chalk.green(x);
-  const r = (x) => chalk.red(x);
-  const w = (x) => chalk.whiteBright(x);
-  const m = (x) => chalk.magenta(x);
-  const y = (x) => chalk.gray(x);
-
   // get args
   const argv = yargs(hideBin(process.argv))
     .scriptName('migration-helper')
@@ -61,24 +54,34 @@ import {
   /*
    * display loaded configuration statistics & number of files that will be analyzed
    */
-  console.log(`\n${g('++')} Configuration Loaded! ${g('++')}\n`);
-  console.log(`[ ${w(files.length)} ] files queued for operation\n`);
-  console.log(`${m('-')} ${w('WORKING DIR')} ${y(':')} ${cwd}`);
+  console.log(`\n${chalk.green('++')} Configuration Loaded! ${chalk.green('++')}\n`);
+  console.log(`[ ${chalk.whiteBright(files.length)} ] files queued for operation\n`);
+  console.log(
+    `${chalk.magenta('-')} ${chalk.whiteBright('WORKING DIR')} ${chalk.gray(':')} ${cwd}`
+  );
   Object.keys(configData).map((key) => {
     if (key !== 'globConfig') {
-      console.log(`${m('-')} ${w(key.toUpperCase())} ${y(':')} ${JSON.stringify(configData[key])}`);
+      console.log(
+        `${chalk.magenta('-')} ${chalk.whiteBright(key.toUpperCase())} ${chalk.gray(
+          ':'
+        )} ${JSON.stringify(configData[key])}`
+      );
     }
   });
-  console.log(`${m('-')} ${w('IGNORED')} ${y(':')} ${JSON.stringify(ignored)}\n`);
+  console.log(
+    `${chalk.magenta('-')} ${chalk.whiteBright('IGNORED')} ${chalk.gray(':')} ${JSON.stringify(
+      ignored
+    )}\n`
+  );
 
   if (await confirmStart()) {
-    console.log(`${g('++')} Starting ...`);
+    console.log(`${chalk.blue('__')} Starting ...`);
     await getAllFileContents(files)
       .then((content) => {
         modifyFileContents(content, configData.expressions);
       })
       .catch((err) => error(err));
   } else {
-    console.log('cancelling');
+    console.log(`${chalk.red('__')} Cancelling ...`);
   }
 })();
