@@ -102,7 +102,7 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
       <header className="c-navigation__header">
         <Button
           className="ds-u-md-display--none ds-u-padding-left--0 ds-u-padding-right--1"
-          variation="transparent"
+          variation="ghost"
           aria-expanded={isMobileNavOpen}
           aria-controls="c-mobile-navigation"
           onClick={toggleMenu}

@@ -7,7 +7,7 @@ export interface ThemeContentProps {
   /**
    * One of the availabe theme names in lowercase as presented in ThemeNames
    */
-  theme: ThemeName;
+  theme: string;
   /**
    * Only show content if the current theme is in this list
    */
@@ -26,7 +26,10 @@ export interface ThemeContentProps {
  */
 const ThemeContent = (props: ThemeContentProps) => {
   const { children, theme, onlyThemes, neverThemes } = props;
-  if ((onlyThemes && onlyThemes.includes(theme)) || (neverThemes && !neverThemes.includes(theme))) {
+  if (
+    (onlyThemes && onlyThemes.includes(theme as ThemeName)) ||
+    (neverThemes && !neverThemes.includes(theme as ThemeName))
+  ) {
     return children;
   } else {
     return null;

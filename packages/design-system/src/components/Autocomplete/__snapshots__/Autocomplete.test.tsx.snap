@@ -34,7 +34,7 @@ exports[`Autocomplete renders a snapshot 1`] = `
   </div>
   <button
     aria-label="Clear search to try again"
-    class="ds-c-button ds-c-button--transparent ds-c-button--small ds-c-autocomplete__clear-btn"
+    class="ds-c-button ds-c-button--small ds-c-button--ghost ds-c-autocomplete__clear-btn"
     type="button"
   >
     Clear search
