@@ -47,7 +47,7 @@ const ExampleFooter = ({ html, highlightedJsx, sourceLink }: ExampleFooterProps)
   const codeToggles = buttons.map((buttonConfig) => (
     <Button
       key={buttonConfig.snippetState}
-      variation="transparent"
+      variation="ghost"
       size="small"
       className="c-code-snippet-toggle ds-u-margin-right--2"
       aria-expanded={buttonConfig.snippetState === snippetState}

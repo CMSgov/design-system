@@ -39,8 +39,9 @@ const StorybookExampleFooter = ({ theme, storyId }: StorybookExampleFooterProps)
       return;
     }
 
-    const storyBlockSelector = `#anchor--${storyId}`;
-    const storyRootSelector = `#story--${storyId}`;
+    const normalizedStoryId = storyId.split('&')[0]; // Omit additional args
+    const storyBlockSelector = `#anchor--${normalizedStoryId}`;
+    const storyRootSelector = `#story--${normalizedStoryId}`;
     const codeButtonSelector = `${storyBlockSelector} .docblock-code-toggle`;
     const codeBlockSelector = `${storyBlockSelector} code.language-jsx`;
     const body = iframeRef.current.contentDocument.body;
@@ -55,6 +56,10 @@ const StorybookExampleFooter = ({ theme, storyId }: StorybookExampleFooterProps)
     // Find the 'Show code' button and click it
     const showCodeButton = body.querySelector(codeButtonSelector);
     if (!(showCodeButton && (showCodeButton as HTMLButtonElement).click)) {
+      console.error(
+        `Code button missing or invalid using this selector: '${codeButtonSelector}'`,
+        showCodeButton
+      );
       errorLoadingReactCode();
       return;
     }
@@ -72,6 +77,7 @@ const StorybookExampleFooter = ({ theme, storyId }: StorybookExampleFooterProps)
           retries++;
           readCode();
         } else {
+          console.error(`Code block not found: ${codeBlockSelector}`, codeEl);
           errorLoadingReactCode();
         }
       }, 1000);
@@ -101,7 +107,7 @@ const StorybookExampleFooter = ({ theme, storyId }: StorybookExampleFooterProps)
             href={makeStorybookUrl(storyId, theme)}
             target="_blank"
             rel="noreferrer"
-            variation="transparent"
+            variation="ghost"
             size="small"
           >
             Open in Storybook <ExternalLinkIcon className="ds-u-margin-left--1" />
