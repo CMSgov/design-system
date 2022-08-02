@@ -19,6 +19,7 @@ $font-path: '@cmsgov/ds-medicare-gov/dist/fonts';
 // @styles is aliased in gatsby-node.js
 @import '@styles/index.scss';
 
+@import 'pages/feedback.scss';
 @import 'pages/layout.scss';
 
 @import 'components/colorSwatchList.scss';
