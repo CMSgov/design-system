@@ -42,7 +42,7 @@ _Note_: When you create a Git commit, any staged scripts will be automatically r
 
 These scripts can all be run from the root level of the repo:
 
-- `yarn start`
+- `yarn start:gatsby`
   - Starts local server running the documentation site
   - Regenerates documentation when files change
   - `yarn start:healthcare` to start the Healthcare.gov Design System's documentation site
