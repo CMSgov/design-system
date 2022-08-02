@@ -66,7 +66,7 @@ export const IdleTimeoutDialog = ({
     return (
       <>
         <Button
-          variation="primary"
+          variation="solid"
           className={continueSessionButtonClasses}
           onClick={onSessionContinue}
         >

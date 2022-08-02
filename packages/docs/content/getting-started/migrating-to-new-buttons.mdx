@@ -1,0 +1,26 @@
+---
+title: Migrating to v4 Buttons
+order: 60
+---
+
+import { Button } from '@cmsgov/design-system';
+
+The CMS Design System v4 release introduces an updated button architecture that is not backwards compatible with previous versions of the design system. Please review the following sections to become acquianted with our new buttons and how to migrate your code.
+
+## The new buttons
+
+In order to more consistently apply design token values across our core and child design systems, we now describe button variations by how they look rather than what their role is in a brand. Because different brands can apply different meanings to each of the styles of buttons we offer, we needed a more consistent way of naming buttons as we move towards a unified design system that can be themed by brand.
+
+Below are two tables showing the complete set of buttons available in v4. **Use the doc site's theme selector** to see what buttons are available in the child design systems.
+
+<ButtonVariationsTable />
+
+## Mapping old buttons to new buttons
+
+While we have provided **automatic migration scripts** as part of this migration guide, it is helpful to know how the old button variations in your app are mapped to the new button architecture. The following tables show how to map buttons defined in React code or in plain HTML with CSS classes. Note that you can **use the doc site's theme selector** to see the buttons that are specific to your brand.
+
+<ButtonMigrationTable />
+
+## Migration scripts
+
+Hello world

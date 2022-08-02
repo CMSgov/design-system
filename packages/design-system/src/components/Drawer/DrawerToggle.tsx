@@ -60,7 +60,7 @@ export const DrawerToggle = ({
       className={classes}
       inputRef={(el) => (buttonRef.current = el)}
       onClick={showDrawer}
-      variation="transparent"
+      variation="ghost"
       {...others}
     >
       {children}

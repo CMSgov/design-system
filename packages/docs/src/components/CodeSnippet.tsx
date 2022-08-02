@@ -31,7 +31,7 @@ const CodeSnippet = ({ html, className }: CodeSnippetProps) => {
 
   return (
     <details open={open} className={classnames('c-code-snippet', className)}>
-      <summary className="ds-u-margin-y--1 ds-c-button ds-c-button--small ds-c-button--transparent ds-u-padding--1 ds-u-text-decoration--none">
+      <summary className="ds-u-margin-y--1 ds-c-button ds-c-button--small ds-c-button--ghost ds-u-padding--1 ds-u-text-decoration--none">
         <ArrowIcon direction="right" /> Code snippet
       </summary>
       <pre className="ds-u-margin-bottom--4 ds-u-overflow--auto ds-u-padding--2 language-html">
