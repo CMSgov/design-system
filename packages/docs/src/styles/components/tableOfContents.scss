@@ -16,6 +16,7 @@
 .c-table-of-contents__list .c-table-of-contents__list,
 .c-table-of-contents-mobile__list .c-table-of-contents-mobile__list {
   list-style-type: '- ';
+  padding-left: $spacer-2;
 }
 
 .c-table-of-contents-mobile {
@@ -26,4 +27,13 @@
 
 .c-table-of-contents-mobile__list {
   padding-left: 0;
+}
+
+.c-table-of-contents__list-item {
+  margin-top: $spacer-half;
+  margin-bottom: $spacer-half;
+}
+
+.c-table-of-contents__list-item--no-marker {
+  list-style: none;
 }

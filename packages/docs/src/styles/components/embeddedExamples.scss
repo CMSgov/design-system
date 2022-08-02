@@ -1,3 +1,7 @@
+.c-code-snippet summary::-webkit-details-marker {
+  display: none;
+}
+
 .c-code-snippet[open] {
   .ds-c-icon {
     transform: rotate(90deg);
