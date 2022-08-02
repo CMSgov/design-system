@@ -42,15 +42,13 @@ import { Button } from '@cmsgov/design-system';
 
 ## Previous button architecture
 
-The previous implementation of the design system button architecture varied between the core design system and child design system themes. This structure did not provide a consistent approach to buttons and did not take into account the potential for "on dark" variations of all buttons.
+The previous implementation of the design system button architecture varied between the core design system and child design systems. The structure did not provide a consistent approach to buttons and did not take into account the potential for "on dark" variations of all buttons.
 
-There were button types and styles that existed at child design system levels only and were not available in the core design system. This created a siloed model where updates to buttons could not be made holistically to the entire design system. This resulted in not being able to make updates and enhancements to the entire system in a predictable way. In addition, the language we used for buttons varied throughout the system. Names such as "primary" and "secondary" were confusing and inconsistent because they were not mapped to primary or secondary brand colors.
+There were button types and styles that existed in child design systems only and were not available in the core design system creating a siloed model where updates and improvements to buttons could not be made to the entire system. In addition, the language used for buttons varied throughout the system. Names such as "primary" and "secondary" were confusing and inconsistent because they were not mapped to primary or secondary brand colors.
 
 ## New button architecture
 
-The updated button architecture creates a more robust and full-featured set of buttons where there are multiple color options for each style of a button, in addition to a full set of "on dark" button variations as well. The updated approach to naming is based on the style of a button rather than the priority of the button. This allows themes to define how to use buttons and the priority given within the theme level guidance and documentation, thus keeping our language for designers and developers consistent across the entire design system and themes.
-
-To more consistently apply design token values across our core and child design systems, we now describe button variations by how they look rather than what their role is in a brand. Because different brands can apply different meanings to each of the styles of buttons we offer, we needed a more consistent way of naming buttons as we move towards a unified design system that can be themed by brand.
+The updated button architecture creates a more robust and full-featured set of buttons with multiple color options for each button style, in addition to a full set of "on dark" button variations. The updated approach to language and naming is based on the style of a button (Solid, Outline, Ghost) rather than the priority of the button (Primary, Secondary). This allows themes to define button usage and button priority within theme level guidance and documentation. This approach keeps our language for consistent across the design system and themes for everyone as we move towards a unified design system that can be themed by brand.
 
 **Use the theme selector in the left navigation** to see what buttons are available for child design systems.
 
@@ -62,7 +60,9 @@ To more consistently apply design token values across our core and child design 
 
 ### Mapping old buttons to new buttons
 
-While we have provided automatic migration scripts as part of this migration guide, it is helpful to know how the old button variations in your app are mapped to the new button architecture. The following tables show how to map buttons defined in React code or plain HTML with CSS classes. Note that you can use the doc site's theme selector to see the buttons that are specific to your brand.
+We have provided automatic migration scripts as part of this migration guide, however it is helpful to know how the old button variations in your app are mapped to the new button architecture. The following tables show how to map buttons defined in React code or plain HTML with CSS classes. 
+
+**Use the theme selector in the left navigation** to see what buttons are available for child design systems.
 
 <ButtonMigrationTable />
 
