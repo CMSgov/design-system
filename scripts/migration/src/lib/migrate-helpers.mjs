@@ -96,16 +96,16 @@ export const modifyFileContents = async (content, expr) => {
   })
   .map(f => {
     expr.forEach(e =>  {
-      let re = new RegExp(e.from, 'g')
-      f.data = f.data.replace(re, () => {
+      let re = new RegExp(e.from, 'gi')
+      f.data = f.data.replace(re, (match) => {
           f.matches++
-          return e.to
+          return match.replace(re, e.to)
         })
     })
     return f
   })
 
-  // promise for writing file to the FS
+  // promise map for writing file to the FS
   const writePromises = content.map(async content => {
     if (content.matches > 0) {
       return writeFile(content.file, content.data, 'utf8')

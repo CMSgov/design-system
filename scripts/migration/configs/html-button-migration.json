@@ -1,13 +1,10 @@
 {
-  "patterns": [
-    "**/*.js",
-    "**/*.jsx"
-  ],
+  "patterns": [ "**/*.html" ],
   "globbyConfig": {
     "gitignore": true,
     "ignore": []
   },
   "expressions": [
-    { "from": "color", "to": "COLOR" }
+    { "from": "(<button[\\s\\S]*?variation=[\\\"\\'])(primary)([\\\"\\'][\\s\\S]*?>)", "to": "$1solid$3" }
   ]
 }

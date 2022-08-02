@@ -1,13 +1,14 @@
 {
   "patterns": [
-    "**/*.fs",
-    "**/*.hsx"
+    "**/*.js",
+    "**/*.tsx"
   ],
   "globbyConfig": {
     "gitignore": true,
     "ignore": []
   },
   "expressions": [
-    { "from": "color", "to": "COLOR" }
+    { "from": "color", "to": "COLOR" },
+    { "from": "log", "to": "something" }
   ]
 }

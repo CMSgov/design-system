@@ -66,7 +66,7 @@ import yargs from 'yargs';
 
   // run glob search with configData.patterns
   const files = await doPatternSearch(configData);
-  if (files.length >= 0) {
+  if (files.length <= 0) {
     error('No files found! Check your patterns and cwd settings.');
   }
 
