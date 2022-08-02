@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useMemo } from 'react';
 import classnames from 'classnames';
 import { ExternalLinkIcon, Spinner } from '@cmsgov/design-system';
 import { withPrefix } from 'gatsby';
@@ -20,14 +20,6 @@ interface StorybookExampleProps {
    */
   storyId: string;
   /**
-   * path within 'src' directory to source file
-   */
-  sourceFilePath?: string;
-  /**
-   * package where the source comes from
-   */
-  sourcePackageName?: string;
-  /**
    * Current theme
    */
   theme: string;
@@ -40,14 +32,7 @@ interface StorybookExampleProps {
  * If you need to show responsiveness, use the `ResponsiveExample`.
  * If you don't need a story, but can use regular HTML or React components, use an Embedded example.
  */
-const StorybookExample = ({
-  theme,
-  componentName,
-  minHeight,
-  sourceFilePath,
-  sourcePackageName,
-  storyId,
-}: StorybookExampleProps) => {
+const StorybookExample = ({ theme, componentName, minHeight, storyId }: StorybookExampleProps) => {
   const [iframeHeight, setiFrameHeight] = useState<number>(200);
   const [iframeHtml, setiFrameHtml] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -67,7 +52,7 @@ const StorybookExample = ({
         window.removeEventListener('resize', setIframeHeight);
       }
     };
-  });
+  }, []);
 
   // when the iframe content resizes, recalculate the height at which it should be shown
   const setIframeHeight = () => {

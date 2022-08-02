@@ -181,7 +181,7 @@ exports[`Tooltip tooltip with close renders heading element and close button 1`]
       Tooltip heading content
       <button
         aria-label="Close"
-        class="ds-c-button ds-c-button--transparent ds-c-button--small ds-c-tooltip__close-button"
+        class="ds-c-button ds-c-button--small ds-c-button--ghost ds-c-tooltip__close-button"
         type="button"
       >
         <svg
