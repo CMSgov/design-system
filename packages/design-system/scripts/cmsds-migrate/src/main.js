@@ -11,6 +11,9 @@ import {
   modifyFileContents,
   readConfigFile,
 } from './lib/migrate-helpers.mjs';
+import ora from 'ora';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 import { hideBin } from 'yargs/helpers';
 import yargs from 'yargs';
 
@@ -44,7 +47,9 @@ import yargs from 'yargs';
     .help().argv;
 
   // get list of configuration files
-  const CONFIG_FOLDER = './configs';
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename);
+  const CONFIG_FOLDER = __dirname + '/../configs';
   const configList = await getConfigFileList(CONFIG_FOLDER).catch((err) =>
     error('getConfigFileList: ' + err)
   );
@@ -69,7 +74,11 @@ import yargs from 'yargs';
   }
 
   // run glob search with configData.patterns
-  const files = await doPatternSearch(configData);
+  const globSpinner = ora('Performing pattern search').start();
+  const files = await doPatternSearch(configData).then((f) => {
+    globSpinner.stop();
+    return f;
+  });
   if (files.length <= 0) {
     error('No files found! Check your patterns and cwd settings.');
   }
@@ -94,18 +103,20 @@ import yargs from 'yargs';
   console.log(
     `${chalk.magenta('-')} ${chalk.whiteBright('IGNORED')} ${chalk.gray(':')} ${JSON.stringify(
       configData.globbyConfig.ignore
-    )}\n`
+    )} (.gitignore patterns included by default)\n`
   );
 
   // kick off file search and replace
   const startModification = () => {
     console.log(`\n${chalk.blue('__')} Starting ...\n`);
+    const modSpinner = ora('Searching and Replacing ...').start();
 
     getAllFileContents(files)
       .then((content) => {
-        modifyFileContents(content, configData.expressions).then(() =>
-          console.log(`\n${chalk.magenta('==')} Modification complete!`)
-        );
+        modifyFileContents(content, configData.expressions).then(() => {
+          modSpinner.stop();
+          console.log(`\n${chalk.magenta('==')} Modification complete!`);
+        });
       })
       .catch((err) => error('getAllFileContents: ' + err));
   };

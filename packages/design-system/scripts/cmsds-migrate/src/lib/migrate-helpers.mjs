@@ -136,7 +136,7 @@ export const readConfigFile = (file) => {
   return new Promise((resolve, reject) => {
     readFile(file, 'utf8')
       .then(data => {
-        resolve([JSON.parse(data), file])
+        resolve([JSON.parse(data), path.basename(file)])
       })
       .catch(err => reject(err))
   })
