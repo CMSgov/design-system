@@ -6,6 +6,7 @@ intro: We've created a more consistent, scalable, and themable button framework 
 
 import oldButtons from '../../src/images/old-buttons.png';
 import newButtons from '../../src/images/new-buttons.png';
+import sketchButtonStrucutre from '../../src/images/Sketch-button-achitecture.png';
 
 import { Alert, Button } from '@cmsgov/design-system';
 
@@ -43,8 +44,19 @@ The updated button architecture creates a more robust and full-featured set of b
 
 ### Sketch button structure updates
 
-The updated button structure in Sketch will be in the following folder structure:
-Note: the **Ω_unused** folder and **Ω_subcomponents** are for categorization purposes and contain elements that are not used within the theme.
+The updated button structure in Sketch will be organzed into 2 main groups on light and on dark and then from there will be categorized by style of button - solid, outline, and ghost. For each style of button there are main and alternate options available. 
+
+<img
+        alt="Sketch component folder structure for buttons showing On light and On dark groupings with solid, outline and ghost buttons beneath them. Screenshot."
+        src={sketchButtonStrucutre}
+        class="ds-u-measure--wide"
+      />
+
+<Alert heading="The Ω_Unused and Ω_Subcomponent folders are for categorization only" weight="lightweight" class="ds-u-margin-top--2">
+     These folders contain elements that are not used within the theme and appear at the bottom of the button folder strucutre. 
+</Alert>
+
+
 
 IMAGE HERE
 
