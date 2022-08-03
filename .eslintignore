@@ -9,4 +9,4 @@ examples/create-react-app/**
 storybook-static/**
 packages/coverage/**
 packages/design-system-tokens/sketch/cmsds-token-importer/cmsds-token-importer.sketchplugin/**
-scripts/migration/test/**
+packages/design-system/scripts/cmsds-migrate/test/**

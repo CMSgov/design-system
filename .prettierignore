@@ -6,4 +6,4 @@ storybook-static/**
 packages/coverage/**
 packages/design-system-tokens/src/themes/**
 packages/design-system-tokens/src/tokens/**
-scripts/migration/test/**
+packages/design-system/scripts/cmsds-migrate/test/**
