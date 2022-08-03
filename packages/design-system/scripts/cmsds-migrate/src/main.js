@@ -112,13 +112,11 @@ import yargs from 'yargs';
 
   // kick off file search and replace
   const startModification = () => {
-    console.log(`\n${chalk.blue('__')} Starting ...\n`);
-    const modSpinner = ora('Searching and Replacing ...').start();
+    console.log(`\n${chalk.blue('__')} Starting ...`);
 
     getAllFileContents(files, configData.globbyConfig.cwd)
       .then((content) => {
         modifyFileContents(content, configData.expressions).then(() => {
-          modSpinner.stop();
           console.log(`\n${chalk.magenta('==')} Modification complete!`);
         });
       })
