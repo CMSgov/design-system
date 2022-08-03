@@ -77,7 +77,7 @@ export const inquireForFile = (folder, options) => {
         name: 'file',
         choices: options,
         pageSize: 4,
-        prefix: `\nChoose a migration configuration to run from ${folder}\n`,
+        prefix: `\n${chalk.green('?')} Choose a migration configuration to use:\n`,
       }])
       .then(choice => {
         const configPath = `${folder}/${choice.file}`

@@ -1,4 +1,5 @@
 {
+  "description": "Cleans up comments/flags made by the cmsds-migrate script.",
   "patterns": ["**/*"],
   "globbyConfig": {
     "ignore": ["**/*.json"]
