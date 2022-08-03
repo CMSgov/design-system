@@ -72,10 +72,10 @@ const ComponentThemeOptions = ({ theme, componentname }: ComponentThemeOptionsPr
       </TableCaption>
       <TableHead>
         <TableRow>
-          <TableCell component="th" align="left">
+          <TableCell component="th" align="left" id="columnthemevalue">
             Variable
           </TableCell>
-          <TableCell component="th" align="left">
+          <TableCell component="th" align="left" id="columnthemevalue">
             Default {_.capitalize(theme)} Theme Value
           </TableCell>
         </TableRow>
@@ -83,13 +83,16 @@ const ComponentThemeOptions = ({ theme, componentname }: ComponentThemeOptionsPr
       <TableBody role="rowgroup">
         {Object.keys(currentTheme[componentname]).map((key) => (
           <TableRow role="row" key={uniqueId('config_option_')}>
-            <TableCell stackedTitle="Variable">
+            <TableCell stackedTitle="Variable" headers="columnvariable">
               <code className="ds-u-font-weight--bold">
                 ${componentname}
                 {key}
               </code>
             </TableCell>
-            <TableCell stackedTitle={`Default ${_.capitalize(theme)} Theme Value`}>
+            <TableCell
+              stackedTitle={`Default ${_.capitalize(theme)} Theme Value`}
+              headers="columnthemevalue"
+            >
               {lookupThemeValue(theme, currentTheme[componentname][key])}
             </TableCell>
           </TableRow>

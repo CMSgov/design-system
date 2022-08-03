@@ -148,7 +148,7 @@ export const MonthPicker = (props: MonthPickerProps) => {
           size="small"
           className="ds-c-month-picker__button"
           onClick={handleSelectAll}
-          inversed={props.inversed}
+          onDark={props.inversed}
           variation={props.buttonVariation}
         >
           {props.selectAllText ?? t('monthPicker.selectAllText')}
@@ -158,7 +158,7 @@ export const MonthPicker = (props: MonthPickerProps) => {
           size="small"
           className="ds-c-month-picker__button"
           onClick={handleClearAll}
-          inversed={props.inversed}
+          onDark={props.inversed}
           variation={props.buttonVariation}
         >
           {props.clearAllText ?? t('monthPicker.clearAllText')}

@@ -9,7 +9,7 @@ describe('Modal Dialog component', () => {
   it('Should have no accessibility violations', async () => {
     await driver.get(rootURL);
 
-    let el = await getElementByClassName('ds-c-button--primary');
+    let el = await getElementByClassName('ds-c-button--solid');
     el.click();
 
     el = await getElementByClassName('ds-c-dialog');

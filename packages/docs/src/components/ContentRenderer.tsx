@@ -3,29 +3,15 @@ import Prism from 'prismjs';
 
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
-import { toKebabCase, toLowerCaseOneWord } from '../helpers/casingUtils';
 
+import ButtonMigrationTable from './ButtonMigrationTable';
+import ButtonVariationsTable from './ButtonVariationsTable';
 import EmbeddedExample from './EmbeddedExample';
 import StorybookExample from './StorybookExample';
 import ComponentThemeOptions from './ComponentThemeOptions';
 import ThemeContent from './ThemeContent';
 import PropTable from './PropTable';
 import ResponsiveExample from './ResponsiveExample';
-
-interface MdxProviderProps {
-  children: string | { props: { children?: string } };
-}
-
-// adds id to heading elements for in-page linking
-const HeadingWithId = (props: MdxProviderProps, Component) => {
-  if (typeof props.children === 'string') {
-    return <Component {...props} id={toKebabCase(props.children)} />;
-  } else {
-    // for headings that have code blocks, extract the text
-    const text = props.children?.props?.children;
-    return <Component {...props} id={toLowerCaseOneWord(text)} />;
-  }
-};
 
 // adds DS styling to tables from markdown
 const TableWithClassnames = (props) => {
@@ -74,11 +60,6 @@ const TextWithMaxWidth = (props: any, Component) => {
  * Each mapping has a key with the element name and a value of a functional component to be used for that element
  */
 const customComponents = (theme) => ({
-  h2: (props) => HeadingWithId(props, 'h2'),
-  h3: (props) => HeadingWithId(props, 'h3'),
-  h4: (props) => HeadingWithId(props, 'h4'),
-  h5: (props) => HeadingWithId(props, 'h5'),
-  h6: (props) => HeadingWithId(props, 'h6'),
   table: TableWithClassnames,
   code: CodeWithSyntaxHighlighting,
   pre: PreformattedWithLanguageClass,
@@ -91,6 +72,8 @@ const customComponents = (theme) => ({
   ResponsiveExample: (props) => <ResponsiveExample theme={theme} {...props} />,
   ComponentThemeOptions: (props) => <ComponentThemeOptions theme={theme} {...props} />,
   ThemeContent: (props) => <ThemeContent theme={theme} {...props} />,
+  ButtonMigrationTable: (props) => <ButtonMigrationTable theme={theme} {...props} />,
+  ButtonVariationsTable: (props) => <ButtonVariationsTable theme={theme} {...props} />,
 });
 
 interface ContentRendererProps {

@@ -48,7 +48,7 @@ export default class NavigationMenu extends React.PureComponent<
             aria-owns="menu-container"
             className="m-c-navigationMenu__mobileToggle"
             onClick={this.toggleMenu}
-            variation="transparent"
+            variation="ghost"
           >
             {this.state.menuOpen ? (
               <Close />
