@@ -7,6 +7,7 @@ intro: We've created a more consistent, scalable, and themable button framework 
 import oldButtons from '../../src/images/old-buttons.png';
 import newButtons from '../../src/images/new-buttons.png';
 import sketchButtonStrucutre from '../../src/images/Sketch-button-achitecture.png';
+import sketchChangingButtons from '../../src/images/Sketch-changing-button-state.gif';
 
 import { Alert, Button } from '@cmsgov/design-system';
 
@@ -56,15 +57,15 @@ The updated button structure in Sketch will be organzed into 2 main groups on li
      These folders contain elements that are not used within the theme and appear at the bottom of the button folder strucutre. 
 </Alert>
 
-
-
-IMAGE HERE
-
 ### Sketch button layer style updates
 
 We’ve updated our buttons in Sketch as well to take advantage of layer styles and text styles for various button states. This means we are only providing the default or resting state of each button variation and then if you need to create a button in a focused state or a button in a disabled state you can easily swap the layer and text style for the button to achieve the state you are wanting to use. The text and layer style names should match - For example, the focus text style will match with the focus layer style to style the button in a focus state. 
 
-GIF HERE
+ <img
+        alt="Switching button text and layer styles to create different states of buttons. Screenshot."
+        src={sketchChangingButtons}
+        class="ds-u-measure--wide"
+      />
 
 ### Sketch button icon updates
 
