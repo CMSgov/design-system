@@ -36,8 +36,9 @@ export const error = (message) => {
 }
 
 // read file contents of all matched files, return filename and data, default matches (0)
-export const getAllFileContents = (fileList) => {
+export const getAllFileContents = (fileList, cwd) => {
   const readPromises = fileList.map(async file => {
+    file = cwd + path.sep + file;
     return readFile(file, 'utf8')
       .then(data => {
         return { file: file, data: data, matches: 0 }

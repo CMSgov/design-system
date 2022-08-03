@@ -1,7 +1,6 @@
 {
   "patterns": ["**/*"],
   "globbyConfig": {
-    "gitignore": true,
     "ignore": ["**/*.json"]
   },
   "expressions": [

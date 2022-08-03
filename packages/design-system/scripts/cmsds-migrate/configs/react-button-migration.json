@@ -2,10 +2,6 @@
   "patterns": [
     "**/*.{js,jsx,ts,tsx}"
   ],
-  "globbyConfig": {
-    "gitignore": true,
-    "ignore": []
-  },
   "expressions": [
     { "from": "<Button", "to": "COLOR" }
   ]

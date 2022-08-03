@@ -3,10 +3,6 @@
     "**/*.js",
     "**/*.tsx"
   ],
-  "globbyConfig": {
-    "gitignore": true,
-    "ignore": []
-  },
   "expressions": [
     { "from": "color", "to": "COLOR" },
     { "from": "log", "to": "something" }

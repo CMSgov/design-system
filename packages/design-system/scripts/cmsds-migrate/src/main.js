@@ -12,7 +12,7 @@ import {
   readConfigFile,
 } from './lib/migrate-helpers.mjs';
 import ora from 'ora';
-import { dirname } from 'path';
+import { dirname, normalize } from 'path';
 import { fileURLToPath } from 'url';
 import { hideBin } from 'yargs/helpers';
 import yargs from 'yargs';
@@ -61,13 +61,17 @@ import yargs from 'yargs';
       )
     : await readConfigFile(argv.config).catch((err) => error('readConfigFile: ' + err));
 
+  // set up some globby defaults
+  configData.globbyConfig = configData.globbyConfig || {};
+  configData.globbyConfig.gitignore = configData.globbyConfig.gitignore || true;
+
   console.log(
     `\n${chalk.green('++')} Configuration Loaded! (${configFile}) ${chalk.green('++')}\n`
   );
 
   // take CWD if specified from command line
-  const cwd = !argv.cwd ? process.cwd() : argv.cwd;
-  configData.globbyConfig.cwd = cwd;
+  const cwd = !argv.cwd ? process.cwd() : normalize(argv.cwd);
+  configData.globbyConfig.cwd = configData.globbyConfig.cwd || cwd;
   // push ignore list to configuration array
   if (argv.ignore) {
     configData.globbyConfig.ignore.push(...argv.ignore);
@@ -111,7 +115,7 @@ import yargs from 'yargs';
     console.log(`\n${chalk.blue('__')} Starting ...\n`);
     const modSpinner = ora('Searching and Replacing ...').start();
 
-    getAllFileContents(files)
+    getAllFileContents(files, configData.globbyConfig.cwd)
       .then((content) => {
         modifyFileContents(content, configData.expressions).then(() => {
           modSpinner.stop();
