@@ -98,7 +98,7 @@ import yargs from 'yargs';
     getAllFileContents(files, configData.globbyConfig.cwd)
       .then((content) => {
         modifyFileContents(content, configData.expressions).then(() => {
-          console.log(`${chalk.magenta('==')} Modification complete!`);
+          console.log(`${chalk.magenta('==')} Modification complete!\n`);
         });
       })
       .catch((err) => error('getAllFileContents: ' + err));
