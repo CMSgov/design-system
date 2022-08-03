@@ -1,8 +1,19 @@
 {
   "patterns": [
-    "**/*.{js,jsx,ts,tsx}"
+    "**/*.{jsx,tsx}"
   ],
   "expressions": [
-    { "from": "<Button", "to": "COLOR" }
+    { 
+      "from": "(<\\s*?button[\\s\\S]*?variation=[\\\"\\'])(primary)([\\\"\\'][\\s\\S]*?\\/?>+)",
+      "to": "$1solid$3" 
+    },
+    { 
+      "from": "(<\\s*?button[\\s\\S]*?variation=[\\\"\\'])(transparent)([\\\"\\'][\\s\\S]*?\\/?>+)", 
+      "to": "$1link$3 {/* CMSDS-MIGRATE: possible visual difference between 'transparent' and 'link' */}" 
+    },
+    { 
+      "from": "(<\\s*?button[\\s\\S]*?variation=[\\\"\\'])(danger|success)([\\\"\\'][\\s\\S]*?\\/?>+)", 
+      "to": "$1solid$3 {/* CMSDS-MIGRATE: $2 variation will be deprecated */}" 
+    }
   ]
 }

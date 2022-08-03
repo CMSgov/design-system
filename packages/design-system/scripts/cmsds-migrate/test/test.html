@@ -10,27 +10,35 @@
 
 </head>
 
-<body>
-
-<button class="ds-c-button" type="button" variation="primary">Your button text here</button>
-
-<button 
-  class="ds-c-button" 
-  width="40" 
-  type="button" variation="primary"
+<div>
+  <button
+    class="ds-c-button ds-c-button--primary ds-u-margin-right--1"
+    type="button"
   >
-      this should be solid
-</button>
-
-<button class="ds-c-button" width=40 type=button variation="transparent">
-  Your button text here
-</button>
-
-<
-      button 
-class='ds-c-button' width=40 type="button" variation='transparent'>
-      this should become a link button
-</button>
+    Default
+  </button>
+  <button
+    class="ds-c-button--transparent ds-c-button--hover ds-u-margin-right--1"
+    type="button"
+  >
+    Hover
+  </button>
+  <button
+    class="ds-c-button ds-c-button--success ds-c-button--active ds-u-margin-right--1"
+    type="button"
+  >
+    Active
+  </button>
+  <button
+    class="ds-c-button ds-c-button--inverse ds-c-button--focus ds-u-margin-right--1"
+    type="button"
+  >
+    Focus
+  </button>
+  <button class="ds-c-button--primary ds-c-button--secondary" disabled="" type="button">
+    Disabled
+  </button>
+</div>
 
   <script src="js/scripts.js"></script>
 </body>

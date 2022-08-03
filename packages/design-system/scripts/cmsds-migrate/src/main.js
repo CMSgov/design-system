@@ -87,28 +87,9 @@ import yargs from 'yargs';
     error('No files found! Check your patterns and cwd settings.');
   }
 
-  /*
-   * display loaded configuration statistics & number of files that will be analyzed
-   * @TODO: could add an option to expand this with the ability to preview file list
-   */
-  console.log(`[ ${chalk.whiteBright(files.length)} ] files queued for operation\n`);
-  console.log(
-    `${chalk.magenta('-')} ${chalk.whiteBright('WORKING DIR')} ${chalk.gray(':')} ${cwd}`
-  );
-  Object.keys(configData).map((key) => {
-    if (key !== 'globbyConfig') {
-      console.log(
-        `${chalk.magenta('-')} ${chalk.whiteBright(key.toUpperCase())} ${chalk.gray(
-          ':'
-        )} ${JSON.stringify(configData[key])}`
-      );
-    }
-  });
-  console.log(
-    `${chalk.magenta('-')} ${chalk.whiteBright('IGNORED')} ${chalk.gray(':')} ${JSON.stringify(
-      configData.globbyConfig.ignore
-    )} (.gitignore patterns included by default)\n`
-  );
+  console.log(`[ ${chalk.whiteBright(files.length)} ] files queued for operation:\n`);
+  console.log(files);
+  console.log();
 
   // kick off file search and replace
   const startModification = () => {

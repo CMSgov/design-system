@@ -4,6 +4,7 @@
     "ignore": ["**/*.json"]
   },
   "expressions": [
-    { "from": "<!-- CMSDS-MIGRATE:[\\s\\S]*?-->", "to": "" }
+    { "from": "<!-- CMSDS-MIGRATE:[\\s\\S]*?-->", "to": "" },
+    { "from": "\{\\/\* CMSDS-MIGRATE:[\\s\\S]*?\*\\/\}", "to": "" }
   ]
 }

@@ -1,7 +1,21 @@
 {
-  "patterns": [ "**/*.html" ],
+  "patterns": [ "**/*.{html,htm}" ],
   "expressions": [
-    { "from": "(<[\\s\\S]*?button[\\s\\S]*?variation=[\\\"\\'])(primary)([\\\"\\'][\\s\\S]*?>)", "to": "$1solid$3" },
-    { "from": "(<[\\s\\S]*?button[\\s\\S]*?variation=[\\\"\\'])(transparent)([\\\"\\'][\\s\\S]*?>)", "to": "$1link$3 <!-- CMSDS-MIGRATE: possible visual difference between 'transparent' and 'link' -->" }
+    { 
+      "from": "(<\\s*?button[\\s\\S]*?class=[\\\"\\'][\\s\\S]*?)(ds-c-button--primary|ds-c-button--success)([\\s\\S]*?[\\\"\\'][\\s\\S]*?\\/?>+)",
+      "to": "$1ds-c-button--solid$3"
+    },
+    { 
+      "from": "(<\\s*?button[\\s\\S]*?class=[\\\"\\'][\\s\\S]*?)(ds-c-button--transparent)([\\s\\S]*?[\\\"\\'][\\s\\S]*?\\/?>+)",
+      "to": "$1ds-c-button--link$3"
+    },
+    { 
+      "from": "(<\\s*?button[\\s\\S]*?class=[\\\"\\'][\\s\\S]*?)(ds-c-button--inverse)([\\s\\S]*?[\\\"\\'][\\s\\S]*?\\/?>+)",
+      "to": "$1ds-c-button--on-dark$3"
+    },
+    { 
+      "from": "(<\\s*?button[\\s\\S]*?class=[\\\"\\'][\\s\\S]*?)(ds-c-button|ds-c-button--hover|ds-c-button--active|ds-c-button--focus)([\\s\\S]*?[\\\"\\'][\\s\\S]*?\\/?>+)",
+      "to": "$& <!-- CMSDS-MIGRATE: ds-c-button and ds-c-button--active/focus/hover will be deprecated in upcoming DS releases -->"
+    }
   ]
 }
