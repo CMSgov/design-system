@@ -1,5 +1,6 @@
 ---
 title: Checkbox
+intro: Checkboxes allow users to select one or more options from a list.
 core:
   githubLink: design-system/src/components/ChoiceList
   sketchLink: 8yn3JK7
@@ -8,11 +9,11 @@ healthcare:
   sketchLink: 4a7lxP3
 ---
 
-## `<ChoiceList>`
+## Examples
+
+### Checkbox list
 
 A `ChoiceList` component can be used to render a [radio](/components/radio/) button group or checkbox group. Use the `type` prop to specify the type of field to display.
-
-**Checkbox**
 
 <StorybookExample
   componentName="choiceList"
@@ -20,15 +21,9 @@ A `ChoiceList` component can be used to render a [radio](/components/radio/) but
   storyId="components-choicelist--default-checkbox"
 />
 
-### ChoiceList Props
+### Checkbox children
 
-<PropTable componentName="ChoiceList" />
-
-## `<Choice>`
-
-A `Choice` component can be used to render a checkbox or radio button.
-
-Any _undocumented_ props that you pass to this component will be passed to the `input` element, so you can use this to set additional attributes if necessary.
+Checkboxes can have optional checked or unchecked children that are conditionally shown based on the state of the checkbox.
 
 <StorybookExample
   componentName="choice"
@@ -36,9 +31,37 @@ Any _undocumented_ props that you pass to this component will be passed to the `
   storyId="components-choicelist--choice-children"
 />
 
-### Choice Props
+## Code
+
+### React
+
+Checkboxes can be managed as a group using `<ChoiceList>` or individually using `<Choice>`.
+
+Note that any _undocumented_ props that you pass to a `<Choice>` or `choices` will be passed to the `input` element, so you can use this to set additional attributes if necessary.
+
+#### `<ChoiceList>` component
+
+<PropTable componentName="ChoiceList" />
+
+#### `<Choice>` component
 
 <PropTable componentName="Choice" />
+
+### Styles
+
+The following Sass variables can be overridden to customize choice fields:
+
+<ComponentThemeOptions
+  componentname="choice"
+/>
+
+#### Form components
+
+This component also makes use of form field styles, which can be customized by the following variables:
+
+<ComponentThemeOptions
+  componentname="form"
+/>
 
 ## Guidance
 
@@ -88,25 +111,11 @@ Any _undocumented_ props that you pass to this component will be passed to the `
     - NVDA reads out the `<select>` label and every `<option>` value
   - MacOS Mojave + Safari + VoiceOver
 
-## Customization
-
-The following Sass variables can be overridden to customize choice fields:
-
-<ComponentThemeOptions
-  componentname="choice"
-/>
-
-### Form components
-
-<ComponentThemeOptions
-  componentname="form"
-/>
-
 ### Related patterns
 
 - [Dropdown](/components/dropdown/)
 
-### Learn more
+## Learn more
 
 - [Form Guidelines](/patterns/forms/)
 - [GOV.UK Checkbox/Radio buttons discussion](https://paper.dropbox.com/doc/Radio-buttons-oIwWoxwBKClt5IXvDbnpF)

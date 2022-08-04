@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { withPrefix } from 'gatsby';
 import classnames from 'classnames';
-import CodeSnippet from './CodeSnippet';
+import StorybookExampleFooter from './StorybookExampleFooter';
 
 // @TODO: grab these from tokens
 const breakpointOpts = {
@@ -37,7 +37,6 @@ interface ResponsiveExample {
 const ResponsiveExample = ({ storyId, title, theme }: ResponsiveExample) => {
   const [iframeBreakpoint, setIframeBreakpoint] = useState<string>('xl');
   const [iframeHeight, setiFrameHeight] = useState<number>(0);
-  const [iframeHtml, setiFrameHtml] = useState<string>('');
   const [exampleWrapperWidth, setExampleWrapperWidth] = useState<number>(0);
   const iframeRef = useRef<HTMLIFrameElement>();
   const exampleWrapperRef = useRef<HTMLDivElement>();
@@ -97,11 +96,6 @@ const ResponsiveExample = ({ storyId, title, theme }: ResponsiveExample) => {
       contentWindow.addEventListener('resize', handleIframeResize);
       iframeRef.current.contentDocument.documentElement.classList.add('ds-u-overflow--hidden');
       handleIframeResize();
-
-      const rootEl = iframeRef.current.contentDocument.body.querySelector('#root');
-      if (rootEl) {
-        setiFrameHtml(rootEl.innerHTML);
-      }
     }
   };
 
@@ -151,7 +145,7 @@ const ResponsiveExample = ({ storyId, title, theme }: ResponsiveExample) => {
           </div>
         </div>
       </div>
-      <CodeSnippet html={iframeHtml} />
+      <StorybookExampleFooter storyId={storyId} theme={theme} />
     </>
   );
 };
