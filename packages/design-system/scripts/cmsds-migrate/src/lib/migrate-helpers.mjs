@@ -35,6 +35,29 @@ export const error = (message) => {
   process.exit(1)
 }
 
+export const findMatchedFiles = async (fileList, config) => {
+  return getAllFileContents(fileList, config.globbyConfig.cwd).then((globbed) => {
+    // filter out minified files
+    const filtered = globbed.filter(f => {
+      return (f.data.match(/[\n\r]/g) || []).length > 3
+    })
+    .filter(f => {
+      config.expressions.forEach(e =>  {
+        let re = new RegExp(e.from, 'gi')
+        if (re.test(f.data)) f.matches++
+      })
+      return f.matches > 0
+    })
+    
+    const matchedFiles = filtered.reduce((prev, current) => {
+      const fn = path.relative(config.globbyConfig.cwd, current.file)
+      return [...prev, fn]
+    }, [])
+
+    return matchedFiles
+  })
+}
+
 // read file contents of all matched files, return filename and data, default matches (0)
 export const getAllFileContents = (fileList, cwd) => {
   const readPromises = fileList.map(async file => {
@@ -147,6 +170,7 @@ export default {
   confirmStart,
   doPatternSearch,
   error,
+  findMatchedFiles,
   getAllFileContents,
   getConfigFileList,
   getGlob,

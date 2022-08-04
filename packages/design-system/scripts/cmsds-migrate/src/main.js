@@ -5,6 +5,7 @@ import {
   confirmStart,
   doPatternSearch,
   error,
+  findMatchedFiles,
   getConfigFileList,
   getAllFileContents,
   inquireForFile,
@@ -80,13 +81,13 @@ import yargs from 'yargs';
   // run glob search with configData.patterns
   const globSpinner = ora('Performing pattern search').start();
   const files = await doPatternSearch(configData).then((f) => {
-    globSpinner.stop();
-    return f;
+    return findMatchedFiles(f, configData);
   });
   if (files.length <= 0) {
-    error('No files found! Check your patterns and cwd settings.');
+    error('No matches found! Check your patterns and cwd settings if you think this is in error.');
   }
 
+  globSpinner.stop();
   console.log(`[ ${chalk.whiteBright(files.length)} ] files queued for operation:\n`);
   console.log(files);
   console.log(
