@@ -11,7 +11,12 @@ export const confirmStart = () => {
       {
         type: 'confirm',
         name: 'yesno',
-        prefix: `${chalk.red('!!')} Please be sure you are running this in a git repo. ${chalk.red('!!\n!!')} Modifications will occur to files listed above.    ${chalk.red('!!\n\n')}${chalk.green('?')}`,
+                prefix: `
+${chalk.bgRed('┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  !!! CAUTION !!!  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓')}
+${chalk.bgRed('┃')}  Please be sure you are running this in a code repository where changes can be rolled back.  ${chalk.bgRed('┃')}
+${chalk.bgRed('┃')}          Modifications will occur to files listed above. Proceed at your own risk.           ${chalk.bgRed('┃')}
+${chalk.bgRed('┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛')}\n
+`,
         message: 'Start modification?',
         default: true,
       }])
