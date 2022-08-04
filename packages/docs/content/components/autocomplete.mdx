@@ -9,7 +9,7 @@ healthcare:
   sketchLink: ZOZk4rx
 ---
 
-## `<Autocomplete>`
+## Examples
 
 The `Autocomplete` component is a parent component that adds autocomplete functionality to a `TextField` component.
 
@@ -19,11 +19,15 @@ The `Autocomplete` component is a parent component that adds autocomplete functi
   minHeight={500}
 />
 
-### Props
+## Code
+
+### React
 
 <PropTable componentName="Autocomplete" />
 
-### Autocomplete Items
+#### Autocomplete items
+
+An `<Autocomplete>` component accepts a list of items (JavaScript objects) that conform to the shape described by the table below.
 
 | Name                                                  | Type                         | Description                                                                                                                |
 | ----------------------------------------------------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
@@ -32,6 +36,23 @@ The `Autocomplete` component is a parent component that adds autocomplete functi
 | <code class="ds-u-font-weight--bold">children</code>  | <code>React.ReactNode</code> | Custom React node as an alternative to a string-only `name`                                                                |
 | <code class="ds-u-font-weight--bold">className</code> | <code>string</code>          | Additional classes to be added to the root element. Useful for adding utility classes.                                     |
 | <code class="ds-u-font-weight--bold">isResult</code>  | <code>boolean</code>         | Whether this item should be counted as one of the results for the purpose of announcing the result count to screen readers |
+
+### Styles
+
+The following Sass variables can be overridden to customize Autocomplete components:
+
+<ComponentThemeOptions
+  componentname="autocomplete"
+/>
+
+#### Text Input Options
+
+The `<Autocomplete>` component also makes use of a text field, which can be customized by the following variables:
+
+<ComponentThemeOptions
+  componentname="text-input"
+/>
+
 
 ## Guidance
 
@@ -61,20 +82,6 @@ The `Autocomplete` component is a parent component that adds autocomplete functi
 
 ### Focus Management
 
-- `<Autocomplete>` has a new Boolean prop called `focusTrigger`. Adding this prop will set keyboard focus on the internal `<Textfield>`. Focus is set immediately when the `componentDidMount()` lifecycle method fires.
+- `<Autocomplete>` has a Boolean prop called `focusTrigger`. Adding this prop will set keyboard focus on the internal `<Textfield>`. Focus is set immediately when the `componentDidMount()` lifecycle method fires.
 - In most cases, this isn't needed. It's useful when components are added dynamically, after the application has been rendered. All major screen readers (JAWS, NVDA, VoiceOver) have been tested with this feature, and announce the new input correctly.
 - Instances that contain the `focusTrigger` prop may fire Downshift's [onInputValueChange](https://github.com/paypal/downshift#oninputvaluechange) method, causing the `inputValue` to be set back to an empty string. In these cases, you may want to access Downshift's [state reducer](https://github.com/paypal/downshift#statereducer) and manage your component's local state for `blur` and `click` events.
-
-## Customization
-
-The following Sass variables can be overridden to customize Autocomplete components:
-
-<ComponentThemeOptions
-  componentname="autocomplete"
-/>
-
-## Text Input Options
-
-<ComponentThemeOptions
-  componentname="text-input"
-/>

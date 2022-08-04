@@ -9,7 +9,7 @@ core:
 
 import { CloseIcon, SvgIcon } from '@cmsgov/design-system';
 
-## `<SvgIcon>`
+## Examples
 
 The `<SvgIcon>` component is a re-usable component that wraps its children in an `<svg>` element.
 This component is used by each individual icon component listed below.
@@ -21,11 +21,7 @@ This component is used by each individual icon component listed below.
   minHeight={250}
 />
 
-### Props
-
-<PropTable componentName="SvgIcon" />
-
-### Icon color
+### Changing icon color
 
 Icon components support a few built-in color options that can be applied by using one of the following utility classes.
 
@@ -39,7 +35,7 @@ If you need a different color for an icon, you can pass a custom class to an ico
 | Warn    | <code>ds-c-icon-color--warn</code>    | <div class="ds-u-text-align--center"><CloseIcon class='ds-c-icon-color--warn' /></div>                                      |
 | Success | <code>ds-c-icon-color--success</code> | <div class="ds-u-text-align--center"><CloseIcon class='ds-c-icon-color--success' /> </div>                                  |
 
-### Icon size
+### Changing icon size
 
 Icon components use `ems` for their height and width and can thereby be sized by changing the font-size of the SVG element.
 
@@ -56,7 +52,7 @@ It is recommended that the [font-size utilities](/utilities/font/font-size/) be 
 | 4x Large    | <CloseIcon class='ds-u-font-size--4xl' /> |
 | 5x Large    | <CloseIcon class='ds-u-font-size--5xl' /> |
 
-### Custom Icons
+### Creating custom icons
 
 The `<SvgIcon>` component can be used for other custom icons. It allows you to pass in the SVG child elements. This component is recommended if you want built-in accessibility features and standard icon styles.
 
@@ -68,7 +64,23 @@ In the example below, the `<SvgIcon>` component is used with a custom path.
   </SvgIcon>
 </EmbeddedExample>
 
-## Accessibility
+## Code
+
+### React
+
+<PropTable componentName="SvgIcon" />
+
+### Styles
+
+The following Sass variables can be overridden to customize Icon components:
+
+<ComponentThemeOptions
+  componentname="icon"
+/>
+
+## Guidance
+
+### Accessibility
 
 The `<SvgIcon>` component has built-in accessibility features including:
 
@@ -77,11 +89,3 @@ The `<SvgIcon>` component has built-in accessibility features including:
 - `role="img"` which tells assistive technologies that the icon's purpose is as an image
 - optional `description` attribute which can be used for a more detailed explanation of the icon's contents. Meant to be used to provide more detail than just the `title`
 - an available`ariaHidden` attribute which can be used if the icon's context is described elsewhere. For example, if the icon is part of a button with text, the text may provide the text description instead of the icon component.
-
-## Customization
-
-The following Sass variables can be overridden to customize Icon components:
-
-<ComponentThemeOptions
-  componentname="icon"
-/>
