@@ -95,9 +95,12 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
 
   return (
     <div
-      className={classnames('ds-u-padding--0 ds-u-md-padding--2 c-navigation', {
-        'c-navigation--open': isMobile && isMobileNavOpen,
-      })}
+      className={classnames(
+        'ds-u-padding--0 ds-u-md-padding--2 ds-u-md-padding-top--4 c-navigation',
+        {
+          'c-navigation--open': isMobile && isMobileNavOpen,
+        }
+      )}
     >
       <header className="c-navigation__header">
         <Button
