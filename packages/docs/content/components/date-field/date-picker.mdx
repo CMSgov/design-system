@@ -11,18 +11,36 @@ medicare:
   sketchLink: Ax3eeQY
 ---
 
-## `<SingleInputDateField>`
-
-To enable the date picker feature, you must pass both a `from<TIME>` property (i.e., `fromDate`, `fromMonth`, etc.) **and** a `to<TIME>` property (i.e., `toDate`, `toMonth`, etc.) to the date field component.
+## Examples
 
 <StorybookExample
   componentName="singleInputDateField"
   storyId="components-singleinputdatefield--with-picker"
 />
 
-### Props
+## Code
+
+### React
+
+The calendar picker is another name for the `<SingleInputDateField>` with a calendar picker button. To enable the date picker feature, you must pass both a `from<TIME>` property (i.e., `fromDate`, `fromMonth`, etc.) **and** a `to<TIME>` property (i.e., `toDate`, `toMonth`, etc.) to the date field component.
 
 <PropTable componentName="SingleInputDateField" />
+
+### Styles
+
+The following Sass variables can be overridden to customize Input/Form components:
+
+<ComponentThemeOptions
+  componentname="text-input"
+/>
+
+#### Form components
+
+This component also makes use of form field styles, which can be customized by the following variables:
+
+<ComponentThemeOptions
+  componentname="form"
+/>
 
 ## Guidance
 
@@ -46,20 +64,6 @@ Allow users to have flexibility in entering the date, such as allowing one-digit
 - These text fields should follow the [accessibility guidelines for all text inputs](/components/text-field/#guidance).
 - Users will be able to enter a variety of date formats that automatically format to the correct date format of MM/DD/YYYY. This change happens once the form field loses focus. For example, a user enters a date as "4122020" and it changes to "04/01/2020" once focus leaves the date input.
 - Instructions are available make this more usable/accessible for assistive technology.
-
-## Customization
-
-The following Sass variables can be overridden to customize Input/Form components:
-
-<ComponentThemeOptions
-  componentname="text-input"
-/>
-
-### Form components
-
-<ComponentThemeOptions
-  componentname="form"
-/>
 
 ### Related patterns
 

@@ -15,7 +15,7 @@ medicare:
 ---
 
 
-## `<Accordion>`
+## Examples
 
 <ThemeContent neverThemes={['healthcare']}>
   <StorybookExample
@@ -30,17 +30,25 @@ medicare:
   />
 </ThemeContent>
 
-### Props
+## Code
+
+### React
+
+An accordion is made up of one `<Accordion>` component wrapping one or more `<AccordionItem>` components. See the sections below for information on each.
+
+#### `<Accordion>` component
 
 <PropTable componentName="Accordion" />
 
-## `<AccordionItem>`
-
-`AccordionItem` renders the Accordion element.
-
-### Accordion Item Props
+#### `<AccordionItem>` component
 
 <PropTable componentName="AccordionItem" />
+
+### Styles
+
+The following Sass variables can be overridden to customize Accordion components:
+
+<ComponentThemeOptions componentname="accordion" />
 
 ## Guidance
 
@@ -69,9 +77,3 @@ Keyboard support for the Accordion header includes:
 - `Enter` or `Spacebar` - Changes the collapsed/expanded state of the associated accordion panel
 - `Arrow Down` - Moves focus to the next accordion header
 - `Arrow Up` - Moves focus to the previous accordion header
-
-## Customization
-
-The following Sass variables can be overridden to customize Accordion components:
-
-<ComponentThemeOptions componentname="accordion" />
