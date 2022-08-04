@@ -31,7 +31,7 @@ export const doPatternSearch = async (config) => {
 
 // error and quit
 export const error = (message) => {
-  console.log(`${chalk.red('!!')} Error: ${message}\n`)
+  console.log(`\n${chalk.red('!!')} Error: ${message}\n`)
   process.exit(1)
 }
 

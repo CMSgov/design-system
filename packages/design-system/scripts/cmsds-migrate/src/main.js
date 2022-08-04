@@ -78,22 +78,25 @@ import yargs from 'yargs';
     configData.globbyConfig.ignore.push(...argv.ignore);
   }
 
-  console.log(configData);
-
   // run glob search with configData.patterns
   const globSpinner = ora('Performing pattern search').start();
   const files = await doPatternSearch(configData).then((f) => {
     return findMatchedFiles(f, configData);
   });
   if (files.length <= 0) {
-    error('No matches found! Check your patterns and cwd settings if you think this is in error.');
+    console.log(
+      '\n' +
+        chalk.cyan('??') +
+        ' No matches found! Check your patterns and cwd settings if you think this is an error.'
+    );
+    process.exit(0);
   }
 
   globSpinner.stop();
   console.log(`[ ${chalk.whiteBright(files.length)} ] files queued for operation:\n`);
   console.log(files);
   console.log(
-    `\n${chalk.yellow('Configuration Description')}${chalk.gray(':')}\n${configData.description}\n`
+    `\n${chalk.cyan('Configuration Description')}${chalk.gray(':')}\n${configData.description}\n`
   );
 
   // kick off file search and replace
