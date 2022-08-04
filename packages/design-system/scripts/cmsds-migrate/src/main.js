@@ -93,7 +93,7 @@ import yargs from 'yargs';
   }
 
   globSpinner.stop();
-  console.log(`[ ${chalk.whiteBright(files.length)} ] files queued for operation:\n`);
+  console.log(`[ ${chalk.whiteBright(files.length)} ] files queued for modification:\n`);
   console.log(files);
   console.log(
     `\n${chalk.yellow('Configuration Description')}${chalk.gray(':')}\n${configData.description}\n`
