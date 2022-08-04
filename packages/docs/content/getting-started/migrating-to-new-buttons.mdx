@@ -23,4 +23,10 @@ While we have provided **automatic migration scripts** as part of this migration
 
 ## Migration scripts
 
-Hello world
+Migration help has been provided via the `cmsds-migrate` helper script. If you include the `@cmsgov/design-system@ver` package in your project the script is usable by executing the following command from the command line:
+
+`yarn cmsds-migrate` or `npx cmsds-migrate`
+
+After executing this you will be provided with a list of migration modules to utilize which are named descriptively by function. After a configuration module is chosen, your `cwd` will be searched for files that match the pre-defined rules for migration, and a description of the changes to occur will be presented. Finally, the files to be modified will be listed, and after verification by prompt, migration will take place. **Please be sure to only run these scripts in a git repo where changes can be backed out if incorrect.**
+
+There are a number of command line options available by passing the flag `--help`. These include the ability to provide the current working directory, add additional ignore globs, force execution without prompting and pass an arbitrary configuration module to the script. The list of configuration modules provided is stored in the `@cmsgov/design-system` package under `scripts/cmsds-migrate/configs`.
