@@ -79,7 +79,12 @@ export const getConfigFileList = (path) => {
   return new Promise((resolve, reject) => {
     readdir(path)
       .then(files => {
-        resolve(files)
+        resolve(
+          files.map(file => ({
+            name: file.replaceAll('-', ' ').split('.')[0], 
+            value: file 
+          }))
+        )
       })
       .catch(err => reject(err))
   })
