@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState, useMemo } from 'react';
 import classnames from 'classnames';
+import StorybookExampleFooter from './StorybookExampleFooter';
 import { ExternalLinkIcon, Spinner } from '@cmsgov/design-system';
-import { withPrefix } from 'gatsby';
-import CodeSnippet from './CodeSnippet';
 import { makeStorybookUrl } from '../helpers/urlUtils';
+import { withPrefix } from 'gatsby';
 
 interface StorybookExampleProps {
   /**
@@ -34,7 +34,6 @@ interface StorybookExampleProps {
  */
 const StorybookExample = ({ theme, componentName, minHeight, storyId }: StorybookExampleProps) => {
   const [iframeHeight, setiFrameHeight] = useState<number>(200);
-  const [iframeHtml, setiFrameHtml] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const iframeRef = useRef<HTMLIFrameElement>();
   const iframeUrl = withPrefix(
@@ -45,13 +44,11 @@ const StorybookExample = ({ theme, componentName, minHeight, storyId }: Storyboo
     if (window) {
       // when window resizes, recalculate the height of the iframe
       window.addEventListener('resize', setIframeHeight);
-    }
 
-    return () => {
-      if (window) {
+      return () => {
         window.removeEventListener('resize', setIframeHeight);
-      }
-    };
+      };
+    }
   }, []);
 
   // when the iframe content resizes, recalculate the height at which it should be shown
@@ -66,13 +63,7 @@ const StorybookExample = ({ theme, componentName, minHeight, storyId }: Storyboo
   const onIframeLoad = () => {
     if (iframeRef.current) {
       setIframeHeight();
-
-      const rootEl = iframeRef.current.contentDocument.body.querySelector('#root');
-      if (rootEl) {
-        setiFrameHtml(rootEl.innerHTML);
-      }
     }
-
     setIsLoading(false);
   };
 
@@ -97,21 +88,12 @@ const StorybookExample = ({ theme, componentName, minHeight, storyId }: Storyboo
             className="c-storybook-example__iframe"
             title={`${componentName} example`}
             ref={iframeRef}
+            loading="lazy"
             onLoad={onIframeLoad}
           />
         </div>
-        <div className="ds-u-display--flex ds-u-justify-content--end">
-          <a
-            href={makeStorybookUrl(storyId, theme)}
-            target="_blank"
-            rel="noreferrer"
-            className="c-storybook-example__link"
-          >
-            Open in Storybook <ExternalLinkIcon />
-          </a>
-        </div>
       </div>
-      <CodeSnippet html={iframeHtml} />
+      <StorybookExampleFooter storyId={storyId} theme={theme} />
     </>
   );
 };
