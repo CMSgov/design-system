@@ -1,0 +1,77 @@
+@import '../settings/index.scss';
+
+.ds-u-display--block {
+  display: block !important;
+}
+
+.ds-u-display--inline-block {
+  display: inline-block !important;
+}
+
+.ds-u-display--inline {
+  display: inline !important;
+}
+
+.ds-u-display--flex {
+  display: flex !important;
+}
+
+.ds-u-display--none {
+  display: none !important;
+}
+
+.ds-u-visibility--hidden {
+  visibility: hidden !important;
+}
+
+.ds-u-visibility--visible {
+  visibility: visible !important;
+}
+
+.ds-u-visibility--screen-reader {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  // Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1241631
+  word-wrap: normal;
+}
+
+@media print {
+  .ds-u-visibility--hidden-print {
+    display: none !important;
+  }
+}
+
+@each $breakpoint in map-keys($breakpoints) {
+  $value: map-get($breakpoints, $breakpoint);
+
+  @media (min-width: $value) {
+    .ds-u-#{$breakpoint}-display--block {
+      display: block !important;
+    }
+
+    .ds-u-#{$breakpoint}-display--inline-block {
+      display: inline-block !important;
+    }
+
+    .ds-u-#{$breakpoint}-display--flex {
+      display: flex !important;
+    }
+
+    .ds-u-#{$breakpoint}-display--none {
+      display: none !important;
+    }
+
+    .ds-u-#{$breakpoint}-visibility--hidden {
+      visibility: hidden !important;
+    }
+
+    .ds-u-#{$breakpoint}-visibility--visible {
+      visibility: visible !important;
+    }
+  }
+}
