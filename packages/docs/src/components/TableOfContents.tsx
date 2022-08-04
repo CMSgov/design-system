@@ -23,7 +23,7 @@ export const TableOfContentsList = ({ items, level, className = '' }: TableOfCon
       : 'c-table-of-contents__list-item';
 
   return (
-    <ul className={`c-table-of-contents__list ds-u-padding-right--0 ${className}`}>
+    <ul className={`c-table-of-contents__list ${className}`}>
       {items.map((item) => (
         <li key={item.title} className={itemClasses}>
           <a href={item.url}>{item.title}</a>

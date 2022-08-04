@@ -11,12 +11,14 @@
 .c-table-of-contents__list,
 .c-table-of-contents-mobile__list {
   list-style-type: none;
+  padding-left: $spacer-1;
+  margin-top: 0;
 }
 
 .c-table-of-contents__list .c-table-of-contents__list,
 .c-table-of-contents-mobile__list .c-table-of-contents-mobile__list {
   list-style-type: '- ';
-  padding-left: $spacer-2;
+  padding-left: $spacer-3;
 }
 
 .c-table-of-contents-mobile {
