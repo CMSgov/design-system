@@ -11,7 +11,7 @@ import {
   inquireForFile,
   modifyFileContents,
   readConfigFile,
-} from './lib/migrate-helpers.mjs';
+} from './lib/migrate-helpers.js';
 import ora from 'ora';
 import { dirname, normalize } from 'path';
 import { fileURLToPath } from 'url';
