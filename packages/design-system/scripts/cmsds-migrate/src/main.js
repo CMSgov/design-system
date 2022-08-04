@@ -96,7 +96,7 @@ import yargs from 'yargs';
   console.log(`[ ${chalk.whiteBright(files.length)} ] files queued for operation:\n`);
   console.log(files);
   console.log(
-    `\n${chalk.cyan('Configuration Description')}${chalk.gray(':')}\n${configData.description}\n`
+    `\n${chalk.yellow('Configuration Description')}${chalk.gray(':')}\n${configData.description}\n`
   );
 
   // kick off file search and replace

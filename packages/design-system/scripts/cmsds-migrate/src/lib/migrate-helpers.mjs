@@ -11,8 +11,8 @@ export const confirmStart = () => {
       {
         type: 'confirm',
         name: 'yesno',
-        prefix: `${chalk.red('!!')} Please be sure you are running this in a git repo. ${chalk.red('!!\n!!')} Filesystem changes will occur.                     ${chalk.red('!!\n\n')}${chalk.green('?')}`,
-        message: 'Begin search and replace?',
+        prefix: `${chalk.red('!!')} Please be sure you are running this in a git repo. ${chalk.red('!!\n!!')} Modifications will occur to files listed above.    ${chalk.red('!!\n\n')}${chalk.green('?')}`,
+        message: 'Start modification?',
         default: true,
       }])
       .then(choice => { resolve(choice.yesno) })
