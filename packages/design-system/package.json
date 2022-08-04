@@ -40,6 +40,13 @@
     "react-day-picker": "^8.0.5",
     "react-transition-group": "^4.4.2"
   },
+  "devDependencies": {
+    "chalk": "^5.0.1",
+    "globby": "^13.1.2",
+    "inquirer": "^9.0.2",
+    "ora": "^6.1.2",
+    "yargs": "^17.5.1"
+  },
   "peerDependencies": {
     "react": ">=16.0.0",
     "react-dom": ">=16.0.0"

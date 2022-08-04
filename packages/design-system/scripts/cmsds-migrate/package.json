@@ -6,12 +6,5 @@
   "license": "ISC",
   "scripts": {
     "migrate": "node src/main.js"
-  },
-  "devDependencies": {
-    "chalk": "^5.0.1",
-    "globby": "^13.1.2",
-    "inquirer": "^9.0.2",
-    "ora": "^6.1.2",
-    "yargs": "^17.5.1"
   }
 }
