@@ -84,4 +84,19 @@ We have provided automatic migration scripts as part of this migration guide, ho
 
 ### Migration scripts
 
-Hello world
+Migration help has been provided via the `cmsds-migrate` helper script. If you include the `@cmsgov/design-system@ver` package in your project the script is usable by executing the following command from the command line:
+
+`yarn cmsds-migrate` or `npx cmsds-migrate`
+
+After executing this you will be provided with a list of migration modules to utilize which are named descriptively by function, like this:
+
+```
+ file: 
+❯ html-button-migration.mjs 
+  migration-notice-cleanup.mjs 
+  react-button-migration.mjs 
+```
+
+If your project is written in React, use the `react-button-migration` option; if you use plain HTML with CSS classes, choose the `html-button-migration` option. After choosing a migration configuration, the script will search your current working directory for files that match the pre-defined rules for migration, and it will present a description of the changes to occur. Finally, it will list all the files to be modified, and after verification by prompt, it will execute the migration. **Please be sure to only run these scripts in a git repo where changes can be backed out if incorrect.** For cases that require some additional human attention, the script will place a comment near the change that it made. These comments can be cleaned up automatically using the `migration-notice-cleanup` migration configuration.
+
+There are a number of command line options available by passing the flag `--help`. These include the ability to provide the current working directory, add additional ignore globs, force execution without prompting and pass an arbitrary configuration module to the script. The list of configuration modules provided is stored in the `@cmsgov/design-system` package under `scripts/cmsds-migrate/configs`.
