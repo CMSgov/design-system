@@ -21,18 +21,15 @@ import {
   TableRow,
 } from '@cmsgov/design-system';
 
-## Table with multi headers and a caption
+
+## Examples
+
+### Table with multi headers and a caption
 
 <StorybookExample
   componentName="table"
   storyId="components-table--multi-header-table"
 />
-
-## `<Table>`
-
-`Table` is a container component that contains `TableCaption`, `TableHead` and `TableBody` as children,
-as well as `TableRow` and `TableCell` for the table content. These components mostly follow ordinary HTML table semantics, but also include some additional
-responsive features including horizontal scrolling and vertically stacked rows.
 
 ### Scrollable Table
 
@@ -45,49 +42,53 @@ responsive features including horizontal scrolling and vertically stacked rows.
   storyId="components-table--stackable-table"
 />
 
-### Table Props
+## Code
+
+### React
+
+`Table` is a container component that contains `TableCaption`, `TableHead` and `TableBody` as children,
+as well as `TableRow` and `TableCell` for the table content. These components mostly follow ordinary HTML table semantics, but also include some additional
+responsive features including horizontal scrolling and vertically stacked rows.
 
 <PropTable componentName="Table" />
 
-## `<TableCaption>`
+#### `<TableCaption>` component
 
 `TableCaption` renders the `<caption>` element.
 
-### Table Caption Props
-
 <PropTable componentName="TableCaption" />
 
-## `<TableHead>`
+#### `<TableHead>` component
 
 `TableHead` renders the `<thead>` element and will typically contain `TableRow` elements to define table columns.
 
-### Table Head Props
-
 <PropTable componentName="TableHead" />
 
-## `<TableBody>`
+#### `<TableBody>` component
 
 `TableBody` renders the `<tbody>` element and will typically contain `TableRow` elements to define table data.
 
-### Table Body Props
-
 <PropTable componentName="TableBody" />
 
-## `<TableRow>`
+#### `<TableRow>` component
 
 `TableRow` renders a `<tr>` element.
 
-### Table Row Props
-
 <PropTable componentName="TableRow" />
 
-## `<TableCell>`
+#### `<TableCell>`
 
 `TableCell` dynamically renders a `<th>` or `<td>` element based on the parent component or user specified `component` prop. By default `TableCell` will automatically render a `<th>` element if the parent component is `TableHead`, otherwise it will render a `<td>` element.
 
-### Table Cell Props
-
 <PropTable componentName="TableCell" />
+
+### Styles
+
+The following Sass variables can be overridden to customize Table components:
+
+<ComponentThemeOptions
+  componentname="table"
+/>
 
 ## Guidance
 
@@ -111,15 +112,7 @@ responsive features including horizontal scrolling and vertically stacked rows.
 - Complex tables are tables with more than two levels of headers. Each header should be given a unique `id` and each data cell should have a `headers` attribute with each related header cell’s `id` listed.
 - When adding a title to a table, include it in a `<caption>` tag inside of the `<table>` element.
 
-## Customization
-
-The following Sass variables can be overridden to customize Table components:
-
-<ComponentThemeOptions
-  componentname="table"
-/>
-
-### Learn more
+## Learn more
 
 - [W3C Web Accessibility Tutorial \- Table Concepts](https://www.w3.org/WAI/tutorials/tables/)
 - [Design Better Data Tables](https://medium.com/mission-log/design-better-data-tables-430a30a00d8c)
