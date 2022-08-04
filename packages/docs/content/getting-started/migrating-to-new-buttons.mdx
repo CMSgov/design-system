@@ -1,27 +1,88 @@
 ---
 title: Migrating to v4 Buttons
 order: 60
+intro: We've created a more consistent, scalable, and themable button framework for the CMS design system.
 ---
 
-import { Button } from '@cmsgov/design-system';
+import oldButtons from '../../src/images/old-buttons.png';
+import newButtons from '../../src/images/new-buttons.png';
+import sketchButtonStrucutre from '../../src/images/Sketch-button-achitecture.png';
+import sketchChangingButtons from '../../src/images/Sketch-changing-button-state.gif';
 
-The CMS Design System v4 release introduces an updated button architecture that is not backwards compatible with previous versions of the design system. Please review the following sections to become acquianted with our new buttons and how to migrate your code.
+import { Alert, Button } from '@cmsgov/design-system';
 
-## The new buttons
+<Alert variation="warn" heading="The CMS Design System v4 release introduces an updated button architecture that is not backward compatible with previous versions of the design system." className="ds-u-measure--wide">
+  Review the following sections to become familiar with our new buttons and how to update to them.
+</Alert>
 
-In order to more consistently apply design token values across our core and child design systems, we now describe button variations by how they look rather than what their role is in a brand. Because different brands can apply different meanings to each of the styles of buttons we offer, we needed a more consistent way of naming buttons as we move towards a unified design system that can be themed by brand.
+## Previous button architecture
 
-Below are two tables showing the complete set of buttons available in v4. **Use the doc site's theme selector** to see what buttons are available in the child design systems.
+The previous implementation of the design system button architecture varied between the core design system and child design systems. The structure did not provide a consistent approach to buttons and did not take into account the potential for "on dark" variations of all buttons.
+
+There were button types and styles that existed in child design systems only and were not available in the core design system creating a siloed model where updates and improvements to buttons could not be made to the entire system. In addition, the language used for buttons varied throughout the system. Names such as "primary" and "secondary" were confusing and inconsistent because they were not mapped to primary or secondary brand colors.
+
+<img
+  alt="3 columns of buttons that are missmatched across the entire design system. Screenshot."
+  src={oldButtons}
+  class="ds-u-measure--wide ds-u-border--1"
+/>
+
+## New button architecture 
+
+The updated button architecture creates a more robust and full-featured set of buttons with multiple color options for each button style, in addition to a full set of "on dark" button variations. The updated approach to language and naming is based on the style of a button (Solid, Outline, Ghost) rather than the priority of the button (Primary, Secondary). This allows themes to define button usage and button priority within theme level guidance and documentation. This approach keeps our language for consistent across the design system and themes for everyone as we move towards a unified design system that can be themed by brand.
+
+<img
+  alt="3 columns of buttons with the first column being a complet set of buttons and column 2 and 3 containing subsets of buttons. Screenshot."
+  src={newButtons}
+  class="ds-u-measure--wide ds-u-border--1"
+/>
+
+**Use the theme selector in the left navigation** to see what buttons are available for child design systems.
 
 <ButtonVariationsTable />
 
-## Mapping old buttons to new buttons
+## Updating your design in Sketch 
 
-While we have provided **automatic migration scripts** as part of this migration guide, it is helpful to know how the old button variations in your app are mapped to the new button architecture. The following tables show how to map buttons defined in React code or in plain HTML with CSS classes. Note that you can **use the doc site's theme selector** to see the buttons that are specific to your brand.
+### Sketch button structure updates
+
+The updated button structure in Sketch will be organzed into 2 main groups on light and on dark and then from there will be categorized by style of button - solid, outline, and ghost. For each style of button there are main and alternate options available. 
+
+<img
+  alt="Sketch component folder structure for buttons showing On light and On dark groupings with solid, outline and ghost buttons beneath them. Screenshot."
+  src={sketchButtonStrucutre}
+  class="ds-u-measure--wide ds-u-border--1"
+/>
+
+<Alert heading="The Ω_Unused and Ω_Subcomponent folders are for categorization only" weight="lightweight" className="ds-u-margin-top--2 ds-u-measure--wide">
+  These folders contain elements that are not used within the theme and appear at the bottom of the button folder strucutre. 
+</Alert>
+
+### Sketch button layer style updates
+
+We've updated our buttons in Sketch as well to take advantage of layer styles and text styles for various button states. This means we are only providing the default or resting state of each button variation and then if you need to create a button in a focused state or a button in a disabled state you can easily swap the layer and text style for the button to achieve the state you are wanting to use. The text and layer style names should match - For example, the focus text style will match with the focus layer style to style the button in a focus state. 
+
+<img
+  alt="Switching button text and layer styles to create different states of buttons. Screenshot."
+  src={sketchChangingButtons}
+  class="ds-u-measure--wide ds-u-border--1"
+/>
+
+### Sketch button icon updates
+
+Content TBD
+
+
+## Updating your code
+
+### Mapping old buttons to new buttons
+
+We have provided automatic migration scripts as part of this migration guide, however it is helpful to know how the old button variations in your app are mapped to the new button architecture. The following tables show how to map buttons defined in React code or plain HTML with CSS classes. 
+
+**Use the theme selector in the left navigation** to see what buttons are available for child design systems.
 
 <ButtonMigrationTable />
 
-## Migration scripts
+### Migration scripts
 
 Migration help has been provided via the `cmsds-migrate` helper script. If you include the `@cmsgov/design-system@ver` package in your project the script is usable by executing the following command from the command line:
 
