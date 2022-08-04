@@ -23,12 +23,12 @@ import yargs from 'yargs';
   const argv = yargs(hideBin(process.argv))
     .scriptName('cmsds-migrate')
     .usage(
-      '$0 --file migration-config-file.json --cwd "../root/directory --ignore "**/ignored/**", "**/another_ignored/**"'
+      '$0 --file migration-config-file.js --cwd "../root/directory --ignore "**/ignored/**", "**/another_ignored/**"'
     )
     .options({
       config: {
         type: 'string',
-        description: 'Migration configuration file.',
+        description: 'Migration configuration module.',
       },
       cwd: {
         type: 'string',
@@ -77,6 +77,8 @@ import yargs from 'yargs';
   if (argv.ignore) {
     configData.globbyConfig.ignore.push(...argv.ignore);
   }
+
+  console.log(configData);
 
   // run glob search with configData.patterns
   const globSpinner = ora('Performing pattern search').start();

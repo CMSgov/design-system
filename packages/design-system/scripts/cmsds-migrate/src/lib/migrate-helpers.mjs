@@ -43,8 +43,7 @@ export const findMatchedFiles = async (fileList, config) => {
     })
     .filter(f => {
       config.expressions.forEach(e =>  {
-        let re = new RegExp(e.from, 'gi')
-        if (re.test(f.data)) f.matches++
+        if (e.from.test(f.data)) f.matches++
       })
       return f.matches > 0
     })
@@ -120,10 +119,9 @@ export const modifyFileContents = async (content, expr) => {
   })
   .map(f => {
     expr.forEach(e =>  {
-      let re = new RegExp(e.from, 'gi')
-      f.data = f.data.replace(re, (match) => {
+      f.data = f.data.replace(e.from, (match) => {
           f.matches++
-          return match.replace(re, e.to)
+          return match.replace(e.from, e.to)
         })
     })
     return f
@@ -156,14 +154,9 @@ export const modifyFileContents = async (content, expr) => {
 }
 
 // read configuration file and return array with data and config filename
-export const readConfigFile = (file) => {
-  return new Promise((resolve, reject) => {
-    readFile(file, 'utf8')
-      .then(data => {
-        resolve([JSON.parse(data), path.basename(file)])
-      })
-      .catch(err => reject(err))
-  })
+export const readConfigFile = async (file) => {
+  const config = await import(file)
+  return [config.default, path.basename(file)]
 }
 
 export default {
