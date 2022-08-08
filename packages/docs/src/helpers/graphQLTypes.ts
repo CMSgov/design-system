@@ -8,6 +8,7 @@ export interface TableOfContentsItem {
 
 export interface ComponentLinksInterface {
   githubLink?: string;
+  githubDiscussionLink?: string;
   sketchLink?: string;
   storybookLink?: string;
 }

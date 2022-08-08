@@ -68,12 +68,15 @@ const Layout = ({ children, frontmatter, location, theme, tableOfContentsData }:
           <article className="ds-u-md-display--flex ds-u-padding-x--3 ds-u-sm-padding-x--6 ds-u-sm-padding-bottom--6 ds-u-sm-padding-top--1 ds-u-padding-bottom--3 page-content">
             <div className="page-content__content ds-l-lg-col--9 ds-u-padding-left--0">
               <div className="ds-u-display--block ds-u-lg-display--none">
-                <TableOfContentsMobile items={tableOfContentsData || []} />
+                <TableOfContentsMobile
+                  frontmatter={frontmatter}
+                  items={tableOfContentsData || []}
+                />
               </div>
               {children}
             </div>
             <div className="ds-l-lg-col--3 ds-u-display--none ds-u-lg-display--block">
-              <TableOfContents items={tableOfContentsData || []} />
+              <TableOfContents frontmatter={frontmatter} items={tableOfContentsData || []} />
             </div>
           </article>
           <Footer />

@@ -1,4 +1,5 @@
 import React from 'react';
+import { FrontmatterInterface } from '../helpers/graphQLTypes';
 import { TableOfContentsItem } from '../helpers/graphQLTypes';
 
 export interface TableOfContentsProps {
@@ -14,7 +15,13 @@ export interface TableOfContentsProps {
    * additional className string to append to the list
    */
   className?: string;
+  /**
+   * current frontmatter to get current page information
+   */
+  frontmatter?: FrontmatterInterface;
 }
+
+type TableOfContentsFeedbackProps = Pick<TableOfContentsProps, 'frontmatter'>;
 
 export const TableOfContentsList = ({ items, level, className = '' }: TableOfContentsProps) => {
   const itemClasses =
@@ -34,17 +41,52 @@ export const TableOfContentsList = ({ items, level, className = '' }: TableOfCon
   );
 };
 
+/*
+ * Feedback section
+ */
+export const TableOfContentsFeedback = ({ frontmatter }: TableOfContentsFeedbackProps) => {
+  const { title, core } = frontmatter;
+  const githubDiscussionLink = core?.githubDiscussionLink || null;
+
+  return (
+    <>
+      <h2 className="c-table-of-contents__heading ds-u-margin-top--0 ds-u-margin-bottom--1 ds-u-font-size--base">
+        Have Ideas?
+      </h2>
+      <ul className="c-table-of-contents__list">
+        {githubDiscussionLink && (
+          <li
+            key="discussion-link"
+            className="c-table-of-contents__list-item c-table-of-contents__list-item--no-marker"
+          >
+            <a href={'https://github.com/CMSgov/' + githubDiscussionLink}>
+              Join in the discussion for &apos;{title}&apos;
+            </a>
+          </li>
+        )}
+        <li
+          key="feedback-link"
+          className="c-table-of-contents__list-item c-table-of-contents__list-item--no-marker"
+        >
+          <a href="/feedback">Propose a change, offer feedback.</a>
+        </li>
+      </ul>
+    </>
+  );
+};
+
 /**
  * The Desktop version of the table of contents
  */
-const TableOfContents = ({ items }: TableOfContentsProps) => {
+const TableOfContents = ({ items, frontmatter }: TableOfContentsProps) => {
   const level = 1;
   return items.length ? (
     <div className="c-table-of-contents">
       <h2 className="c-table-of-contents__heading ds-u-margin-top--0 ds-u-margin-bottom--1 ds-u-font-size--base">
-        On this page{' '}
+        On this page
       </h2>
       <TableOfContentsList items={items} level={level} />
+      <TableOfContentsFeedback frontmatter={frontmatter} />
     </div>
   ) : null;
 };

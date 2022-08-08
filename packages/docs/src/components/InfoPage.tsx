@@ -35,6 +35,7 @@ export const query = graphql`
         intro
         core {
           githubLink
+          githubDiscussionLink
           sketchLink
           storybookLink
         }
