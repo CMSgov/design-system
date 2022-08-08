@@ -66,7 +66,7 @@ const ComponentThemeOptions = ({ theme, componentname }: ComponentThemeOptionsPr
   componentname = componentname.toLowerCase();
   const currentTheme = componentThemes[theme];
   const componentOptions = (
-    <Table scrollable stackable>
+    <Table scrollable stackable borderless>
       <TableCaption className="ds-u-visibility--screen-reader">
         Sass variables for {componentname}{' '}
       </TableCaption>

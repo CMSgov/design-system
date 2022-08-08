@@ -5,11 +5,8 @@ import classNames from 'classnames';
 
 export type ButtonComponentType = React.ElementType<any> | React.ComponentType<any>;
 export type ButtonSize = 'small' | 'big';
-/**
- * A string corresponding to the button-component variation classes.
- * The danger variation is deprecated and will be removed in a future release.
- */
-export type ButtonVariation = 'primary' | 'danger' | 'success' | 'transparent';
+
+export type ButtonVariation = 'solid' | 'ghost';
 
 export type ButtonRef = MutableRefObject<any> | ((...args: any[]) => any);
 
@@ -59,24 +56,27 @@ type CommonButtonProps = {
    */
   inputRef?: ButtonRef;
   /**
-   * @hide-prop [Deprecated] Use inversed instead
+   * Applies the alternate color to a Button. By default, Button
+   * uses the `main` color.
    */
-  inverse?: boolean;
-  /** Applies the inverse theme styling */
-  inversed?: boolean;
+  isAlternate?: boolean;
   /**
    * Returns the [`SyntheticEvent`](https://facebook.github.io/react/docs/events.html).
    * Not called when the button is disabled.
    */
   onClick?: (...args: any[]) => any;
+  /**
+   * Defines a color palette best used when Button is placed on a dark
+   * background-color. By default, Button uses a light color palette.
+   */
+  onDark?: boolean;
   size?: ButtonSize;
   /**
    * Button [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type) attribute
    */
   type?: React.ComponentProps<'button'>['type'];
   /**
-   * A string corresponding to the button-component variation classes.
-   * The `'danger'` variation is deprecated and will be removed in a future release.
+   * A string corresponding to Button variation classes.
    */
   variation?: ButtonVariation;
 };
@@ -108,44 +108,27 @@ export const Button = ({
   disabled,
   href,
   inputRef,
-  inversed,
-  inverse,
+  isAlternate = false,
   onClick,
+  onDark = false,
   size,
   variation,
   type = 'button',
   ...otherProps
 }: ButtonProps) => {
-  if (process.env.NODE_ENV !== 'production') {
-    if (inverse) {
-      console.warn(
-        `[Deprecated]: Please remove the 'inverse' prop in <Button>, use 'inversed' instead. This prop has been renamed and will be removed in a future release.`
-      );
-    }
-    if (variation === 'danger') {
-      console.warn(
-        `[Deprecated]: Please remove the 'danger' variation prop in <Button>. This prop will be removed in a future release.`
-      );
-    }
-    if (component) {
-      console.warn(
-        "[Deprecated]: Please remove the 'component' prop in <Button>. This prop will be removed in a future release."
-      );
-    }
-  }
-
   const contentRef = useRef();
   const ComponentType = component ?? (href ? 'a' : 'button');
-  const variationClass = variation && `ds-c-button--${variation}`;
-  const disabledClass = disabled && ComponentType !== 'button' && 'ds-c-button--disabled';
+  const colorSchemeClass = isAlternate && `ds-c-button--alternate`;
+  const modeClass = onDark && `ds-c-button--on-dark`;
   const sizeClass = size && `ds-c-button--${size}`;
-  const inverseClass = (inversed || inverse) && 'ds-c-button--inverse';
+  const variationClass = variation && `ds-c-button--${variation}`;
+
   const allClassNames = classNames(
     'ds-c-button',
-    disabledClass,
-    variationClass,
-    inverseClass,
+    colorSchemeClass,
+    modeClass,
     sizeClass,
+    variationClass,
     className
   );
 
@@ -162,6 +145,12 @@ export const Button = ({
     // and remove <button> specific attributes
     delete attrs.disabled;
     delete attrs.type;
+
+    if (disabled) {
+      attrs.role = 'link';
+      attrs['aria-disabled'] = true;
+      delete attrs.href;
+    }
   }
 
   function sendButtonEvent() {

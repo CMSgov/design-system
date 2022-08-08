@@ -45,7 +45,7 @@ const TableOfContents = ({ items, title }: TableOfContentsProps) => {
   const level = 1;
   return items.length ? (
     <div className="c-table-of-contents">
-      <h2 className="c-table-of-contents__heading ds-u-margin-y--0 ds-u-font-size--base">
+      <h2 className="c-table-of-contents__heading ds-u-margin-top--0 ds-u-margin-bottom--1 ds-u-font-size--base">
         On this page{' '}
       </h2>
       <TableOfContentsList items={items} level={level} />

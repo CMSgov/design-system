@@ -22,6 +22,9 @@ $font-path: '@cmsgov/ds-medicare-gov/dist/fonts';
 @import 'pages/feedback.scss';
 @import 'pages/layout.scss';
 
+@import 'components/buttonMigrationTable.scss';
+@import 'components/buttonVariationsTable.scss';
+@import 'components/codeSnippet.scss';
 @import 'components/colorSwatchList.scss';
 @import 'components/embeddedExamples.scss';
 @import 'components/footer.scss';

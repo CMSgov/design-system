@@ -86,7 +86,7 @@ const PropTable = ({ componentName }: PropTableProps, theme: string) => {
   );
 
   return (
-    <Table className="c-prop-table" stackable scrollable compact>
+    <Table className="c-prop-table" stackable scrollable borderless>
       <TableCaption>
         <span className="ds-u-visibility--screen-reader">React Properties Documentation</span>
       </TableCaption>
