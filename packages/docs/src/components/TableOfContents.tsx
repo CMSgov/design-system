@@ -38,10 +38,29 @@ export const TableOfContentsList = ({ items, level, className = '' }: TableOfCon
   );
 };
 
+/*
+ * Feedback section
+ */
+export const TableOfContentsFeedback = () => (
+  <>
+    <h2 className="c-table-of-contents__heading ds-u-margin-y--0 ds-u-md-margin-top--6 ds-u-font-size--base">
+      Have ideas?{' '}
+    </h2>
+    <ul role="list" className="ds-c-list--bare ds-u-md-margin-y--2">
+      <li>
+        <a href="/feedback">Propose a change</a>
+      </li>
+      <li>
+        <a href="https://github.com/CMSgov/design-system/discussions">Join in the discussion</a>
+      </li>
+    </ul>
+  </>
+);
+
 /**
  * The Desktop version of the table of contents
  */
-const TableOfContents = ({ items, title }: TableOfContentsProps) => {
+const TableOfContents = ({ items }: TableOfContentsProps) => {
   const level = 1;
   return items.length ? (
     <div className="c-table-of-contents">
@@ -49,15 +68,6 @@ const TableOfContents = ({ items, title }: TableOfContentsProps) => {
         On this page{' '}
       </h2>
       <TableOfContentsList items={items} level={level} />
-
-      <h2 className="c-table-of-contents__heading ds-u-margin-y--0 ds-u-md-margin-top--6 ds-u-font-size--base">
-        Have ideas?{' '}
-      </h2>
-      <ul role="list" className="ds-c-list--bare ds-u-md-margin-y--2">
-        <li>
-          <a href="/not-in-sidebar/feedback">Propose a change</a>
-        </li>
-      </ul>
     </div>
   ) : null;
 };
