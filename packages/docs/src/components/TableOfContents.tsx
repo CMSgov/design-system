@@ -46,7 +46,7 @@ export const TableOfContentsFeedback = () => (
     <h2 className="c-table-of-contents__heading ds-u-margin-y--0 ds-u-md-margin-top--6 ds-u-font-size--base">
       Have ideas?{' '}
     </h2>
-    <ul role="list" className="ds-c-list--bare ds-u-md-margin-y--2">
+    <ul role="list" className="ds-c-list ds-c-list--bare ds-u-md-margin-y--2">
       <li>
         <a href="/feedback">Propose a change</a>
       </li>
@@ -68,6 +68,7 @@ const TableOfContents = ({ items }: TableOfContentsProps) => {
         On this page{' '}
       </h2>
       <TableOfContentsList items={items} level={level} />
+      <TableOfContentsFeedback />
     </div>
   ) : null;
 };
