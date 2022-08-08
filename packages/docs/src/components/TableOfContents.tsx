@@ -53,7 +53,7 @@ export const TableOfContentsFeedback = ({ frontmatter }: TableOfContentsFeedback
       <h2 className="c-table-of-contents__heading ds-u-margin-top--0 ds-u-margin-bottom--1 ds-u-font-size--base">
         Have Ideas?
       </h2>
-      <ul className="c-table-of-contents__list">
+      <ul className="ds-c-list--bare ds-u-md-margin-y--2">
         {githubDiscussionLink && (
           <li
             key="discussion-link"
@@ -68,7 +68,7 @@ export const TableOfContentsFeedback = ({ frontmatter }: TableOfContentsFeedback
           key="feedback-link"
           className="c-table-of-contents__list-item c-table-of-contents__list-item--no-marker"
         >
-          <a href="/feedback">Propose a change, offer feedback.</a>
+          <a href="/feedback">Propose a change.</a>
         </li>
       </ul>
     </>
