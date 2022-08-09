@@ -14,6 +14,7 @@
     "build-storybook:healthcare": "STORYBOOK_DS=healthcare build-storybook -o storybook-static",
     "build-storybook:medicare": "STORYBOOK_DS=medicare build-storybook -o storybook-static",
     "build-storybook:gatsby": "STORYBOOK_DS=gatsby build-storybook -o packages/docs/static/storybook",
+    "build-tokens": "yarn --cwd ./packages/design-system-tokens build themes scss && yarn --cwd ./packages/design-system-tokens build themes css-vars && yarn --cwd ./packages/design-system-tokens dist",
     "build": "yarn cmsds build",
     "build:healthcare": "yarn cmsds build --config cmsds.healthcare.config.js",
     "build:medicare": "yarn cmsds build --config cmsds.medicare.config.js",
@@ -43,7 +44,6 @@
     "gh-pages:healthcare": "yarn build-docs:healthcare && gh-pages -d './packages/ds-healthcare-gov/docs/dist' --dest 'healthcare'",
     "gh-pages:medicare": "yarn build-docs:medicare && gh-pages -d './packages/ds-medicare-gov/docs/dist' --dest 'medicare'",
     "deploy-demo": "./scripts/deploy-demo.sh",
-    "token:dist": "yarn --cwd ./packages/design-system-tokens build themes scss && yarn --cwd ./packages/design-system-tokens build themes css-vars && yarn --cwd ./packages/design-system-tokens dist",
     "release": "./scripts/release.sh",
     "precommit": "lint-staged"
   },
