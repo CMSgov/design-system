@@ -80,7 +80,7 @@ These scripts can all be run from the root level of the repo:
 - `yarn lint`
   - Runs just the linting portion of the tests, eslint and stylelint
 - `yarn deploy-demo`
-  - Builds the doc site locally and deploys it to a branch-specific path on GitHub Pages
+  - Builds the doc site locally and deploys it to a branch-specific path on GitHub Pages. The terminal will display the URL where the demo was deployed to after it is done running. 
 - `yarn release`
   - Bumps package versions and tags a release commit. Read our [Release Process guide](/guides/RELEASE-PROCESS.md) for more info.
 
