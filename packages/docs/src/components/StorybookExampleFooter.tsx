@@ -53,7 +53,7 @@ const StorybookExampleFooter = ({ theme, storyId }: StorybookExampleFooterProps)
       errorLoadingHtmlCode();
     }
 
-    // Find the 'Show code' button and click it
+    // Find the 'Show code' button and click it so we can access the code
     const showCodeButton = body.querySelector(codeButtonSelector);
     if (!(showCodeButton && (showCodeButton as HTMLButtonElement).click)) {
       console.error(
@@ -63,6 +63,10 @@ const StorybookExampleFooter = ({ theme, storyId }: StorybookExampleFooterProps)
       errorLoadingReactCode();
       return;
     }
+    // Hide the iframe first so that clicking the button doesn't scroll us to it. We can't
+    // do this when we first render the iframe or it will never load.
+    iframeRef.current.hidden = true;
+    iframeRef.current.style.display = 'none';
     (showCodeButton as HTMLButtonElement).click();
 
     // Read the code out of the resulting code block after waiting for it to be generated
@@ -93,6 +97,7 @@ const StorybookExampleFooter = ({ theme, storyId }: StorybookExampleFooterProps)
       ref={iframeRef}
       loading="lazy"
       onLoad={onIframeLoad}
+      tabIndex={-1}
     />
   );
 
