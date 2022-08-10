@@ -1,6 +1,6 @@
 ---
 title: Button
-intro: Use buttons to signal actions.
+intro: Buttons allow users to take actions from a current state to a future state.
 core:
   githubLink: design-system/src/components/Button
   sketchLink: g0Kvajz
@@ -18,6 +18,8 @@ import { Alert, ArrowIcon, Button } from '@cmsgov/design-system';
   [Take a look at our v4 buttons migration guide](/getting-started/migrating-to-new-buttons) to get started.
   
 </Alert>
+
+Buttons are promises to the user; they must deliver the promise they offer by doing what the button says it will do.
 
 ## Examples
 
@@ -219,10 +221,17 @@ A custom heading value can be sent for an analytics event by using the prop `ana
 
 ### Usage
 
-- Use the "primary" button variation for the button most users should click. This is your primary call-to-action.
 - Avoid using too many buttons on a page. Aim to use only one button per page.
 - Avoid similar styles elsewhere on the page that could be confused for buttons.
 - Use buttons for the primary action and links for secondary actions.
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+#### Don't
+
+- Use buttons for navigational elements like going to a new page. 
+
+</ThemeContent>
 
 **Label text**
 
@@ -233,7 +242,6 @@ A custom heading value can be sent for an analytics event by using the prop `ana
 
 **Destructive buttons**
 
-- Use the "danger" button variation for destructive buttons. For example, buttons that delete or reset a user's information.
 - Confirm the user meant to trigger a destructive action before following through with the action.
 - Provide a method for a user to undo a destructive action.
 
@@ -242,12 +250,81 @@ A custom heading value can be sent for an analytics event by using the prop `ana
 - Don’t disable buttons, unless there’s a good reason to.
 - If you do disable a button, make sure it receives the disabled styling. A `button` element will automatically be styled as a disabled button when it has the `disabled` HTML attribute, but an `a` element will need to have the `.ds-c-button--disabled` class applied to it.
 
+<ThemeContent onlyThemes={['healthcare']}>
+
+### Design guidelines
+
+- Buttons are used for actions; links are used for navigation
+- Buttons do NOT include icons. 
+  - Exception: Can include icons in buttons for utility actions like print and save and branded buttons like Facebook, Twitter, and YouTube used in the Footer
+- Buttons use sentence case. Example: Update application.
+- When pairing 2 buttons the preferred/main action is placed on the left.
+- Ghost buttons are typically used when paired with a Solid or Outline button or to indicate lower priority actions. 
+
+</ThemeContent>
+
 ### Accessibility
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+Consider when to use links vs. when to use buttons. Links and buttons are read differently using a screen readers. For screen readers buttons can be triggered by pressing the space bar or the enter key while links are only triggered by the enter key. This makes a difference to a screen reader user's flow. 
+
+</ThemeContent>
+
 
 - Buttons should display a visible focus state when users tab to them.
 - Create a button with a `button` or `a` element to retain the native click functionality. Avoid using `<div>` or `<img>` tags to create buttons. Screen readers don't automatically know either is a usable button.
 - When styling links to look like buttons, remember that screen readers handle links slightly differently than they do buttons. Pressing the `Space` key triggers a button, but pressing the `Enter` key triggers a link.
 - Dimmed or unavailable buttons should have the `disabled` attribute applied. This removes native click and keypress events from the button. It also prevents automated scanners from logging a low contrast error. Finally, it announces the button as "dimmed" or "disabled" to screen readers, offering users additional context.
+
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+### Content guidance
+
+- Describe what will happen, not the current state. 
+- Buttons always start with an action verb describing the main thing users will do once selected. 
+  - Pair it with a noun to help it be clearer. Example: Get tips.
+  - If in a form, it can be just the action verb if it's navigating between steps. Example: Cancel, Back, Next.
+- Use the least amount of words possible (no more than 6 with 2-4 being ideal).
+- Use sentence case for buttons. This conveys a friendlier tone. Note: Some tools and the homepage are using ALL CAPS. There are also a few examples of Title Case. We should change to sentence case for consistency across the site. 
+
+#### Writing content
+- Remove articles and use '&' instead of 'and.'
+- Do not capitalize articles. 
+- Avoid all caps unless the word is an acronym, like ZIP.
+- Avoid pronouns unless the future state provides the user with customized information. Example: "Get my results"
+- Limit branded terms, like tool names. As a general rule, we don't use tool names in web content or flow. Rather, content should outline what the user will get/can do when they click the button.
+
+#### Use this/not that
+
+##### Online forms & steps
+
+- Use: "Start" - to start a process or sequential steps. But generally better to use specific verbs to confirm what the user is starting. Example: "Create Account."
+  - Don't use: "Begin," "Go," "Enter," or "Submit."
+- Use: "Continue" - when moving through a process or sequential steps.
+  - Don't use: "Next."
+  - Note: Explore clarity of using Next instead of Continue, especially for unauthenticated
+- Use: "Cancel" - to completely stop a process or translation and return to beginning. It appears on the first step of forms. 
+  - Don't use: "X."
+- Use: "Back" or "Go Back" - to return to the previous step in the process. 
+  - Don't use: "Undo" or "Cancel."
+  - Note: Back is technically a navigational element and should be a link depending on the placement within the design.
+- Use: "Enter," "Go," or "Submit" - to submit information. But generally better to use specific verbs if appropriate to confirm an action. 
+  - Don't use: "Fill in," "Tell us," "Done," or "Select."
+
+##### Log in/Log out
+
+- Use: "Log in" - MUST be 2 words and "in" is lowercase when it's an action.
+  - Don't use: "Login," "Sign in," or "Signin."
+  - "Login" is used as 1 word when it's a noun or adjective.
+- Use: "Log out" - MUST be 2 words and "out" is lowercase when it's an action.
+  - Don't use: "Logoff,", "Log off," "Logout," "Signout," or "Sign out."
+  - "Logout" is used as 1 word when it's a noun or adjective.
+- Use: "Username" - MUST be 1 word 
+  - Don't use: "User name."
+
+</ThemeContent>
 
 ## Learn more
 
