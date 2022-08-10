@@ -1,0 +1,83 @@
+---
+title: List
+order: 40
+intro: Lists organize written information for users sequentially.
+
+---
+
+import { Alert } from '@cmsgov/design-system';
+import loremIpsumGenerator from '../../../src/helpers/loremIpsumGenerator';
+
+<Alert heading="Typography sizing updates!">
+  <p class="ds-c-alert__text">
+    We've updated typography sizing variables and class names to make them more agnostic. Read about{' '}
+    <a href="/getting-started/theming/#updating-font-sizing">how you can update</a>.
+  </p>
+</Alert>
+
+
+
+## Examples
+
+### Unordered list
+`.ds-c-list`
+
+<EmbeddedExample>
+  
+    <ul class="ds-c-list" aria-labelledby="unordered-list-id">
+      <li>List item 1</li>
+      <li>List item 2</li>
+    </ul>
+  
+</EmbeddedExample>
+
+### Ordered list
+`.ds-c-list`
+
+<EmbeddedExample>
+    <ol class="ds-c-list" aria-labelledby="ordered-list-id">
+      <li>List item 1</li>
+      <li>List item 2</li>
+    </ol>
+</EmbeddedExample>
+
+<Alert variation="warn" weight="lightweight" class="ds-u-margin-y--3">
+  <p class="ds-u-margin-top--0">It's worth mentioning that when <code>list-style</code> is removed from a list, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/list-style#accessibility_concerns" target="_blank">Safari will not recognize it as a list</a> in the accessibility tree.</p>
+
+  <p class="ds-u-margin-bottom--0">To resolve this issue, <code>role="list"</code> should be added to a list where the styles have been removed.</p>
+</Alert>
+
+### Unstyled list
+`.ds-c-list .ds-c-list--bare`
+
+<EmbeddedExample>
+    <ul role="list" class="ds-c-list ds-c-list--bare" aria-labelledby="unstyled-list-id">
+      <li>List item 1</li>
+      <li>List item 2</li>
+    </ul>
+</EmbeddedExample>
+
+## Guidance
+
+### When to use
+
+- Use an ordered list when you need to display text in some ranking, hierarchy, or series of steps.
+- Use unordered lists to display text in no specific order.
+
+### When to consider alternatives
+
+- If you need to communicate long lists of narrative text.
+
+### Usage
+
+- Use sentence case and begin lists with a capital letter.
+- Use punctuation appropriate to the text. Do not leave sentences without periods.
+
+### Accessibility
+
+- When a list has a heading, consider adding an `id` attribute to the heading element, and an `aria-labelledby` attribute to the list element. Screen readers will then announce the heading text when users navigate to the list.
+- When using an unstyled list, `role="list"` should be added to the list element.
+
+## Learn more
+
+- [18F Content Guide \- Bulleted lists](https://content-guide.18f.gov/punctuation/#bulleted-lists)

@@ -1,6 +1,8 @@
 ---
 title: Links
 order: 30
+intro: Links connect users to a different page or further information.
+
 ---
 
 import { Alert } from '@cmsgov/design-system';
@@ -13,219 +15,55 @@ import loremIpsumGenerator from '../../../src/helpers/loremIpsumGenerator';
   </p>
 </Alert>
 
-<ThemeContent onlyThemes={['healthcare']}>
-
-Open Sans serves as the base font for the site. The full Open Sans type family consists of a variety of weights including light, regular, semibold, bold, and extrabold which allows for a wide range of type treatments and hierarchies within a page while still maintaining a unified look and feel. 
-
-Sans-serifs have been proven to be easier to read on-screen and are incredibly adaptable when resized and displayed across different platforms and browsers. Accordingly, Open Sans is used for body type, secondary and tertiary headlines, and instructional text. 
-
-**Web font stack:** Open Sans > Helvetica > Arial > Verdana > Sans-Serif 
-
-- Open Sans font is used for headings and body content.
-- Standard body text is Open Sans Regular, 16px, #333, 24px line-height, 32px bottom-margin on paragraphs.
-- Smallest paragraph text for legibility reasons is Open Sans Regular, 14px, #333, 20px line-height, 28px bottom-margin on paragraphs (except for legal/caption text).
-- Uppercase font should not be used.
-
-</ThemeContent>
-
-## Headings
-
-The design system doesn't style base HTML typography elements (like `h1`, `h2`, `p`, etc) in order to avoid conflicting with any existing site styles. You should instead use one of the base typography classes below to apply styling:
-
-### Heading--5xl
-
-<EmbeddedExample>
-  <section class="example-list">
-    <article>
-      <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-text-heading--5xl</code>
-      <h1 class="ds-text-heading--5xl ds-display">{loremIpsumGenerator('s')}</h1>
-    </article>
-  </section>
-</EmbeddedExample>
-
-### Heading--4xl
-
-<EmbeddedExample>
-  <section class="example-list">
-    <article>
-      <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-text-heading--4xl</code>
-      <h1 class="ds-text-heading--4xl ds-title">{loremIpsumGenerator('s')}</h1>
-    </article>
-  </section>
-</EmbeddedExample>
-
-### Heading--3xl
-
-<EmbeddedExample>
-  <section class="example-list">
-    <article>
-      <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-text-heading--3xl</code>
-      <h1 class="ds-text-heading--3xl ds-h1">{loremIpsumGenerator('s')}</h1>
-    </article>
-  </section>
-</EmbeddedExample>
-
-### Heading--2xl
-
-<EmbeddedExample>
-  <section class="example-list">
-    <article>
-      <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-text-heading--2xl</code>
-      <h1 class="ds-text-heading--2xl ds-h2">{loremIpsumGenerator('s')}</h1>
-    </article>
-  </section>
-</EmbeddedExample>
-
-### Heading--xl
-
-<EmbeddedExample>
-  <section class="example-list">
-    <article>
-      <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-text-heading--xl</code>
-      <h1 class="ds-text-heading--xl ds-h3">{loremIpsumGenerator('s')}</h1>
-    </article>
-  </section>
-</EmbeddedExample>
-
-### Heading--lg
-
-<EmbeddedExample>
-  <section class="example-list">
-    <article>
-      <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-text-heading--lg</code>
-      <h1 class="ds-text-heading--lg ds-h4">{loremIpsumGenerator('s')}</h1>
-    </article>
-  </section>
-</EmbeddedExample>
-
-### Heading--md
-
-<EmbeddedExample>
- <section class="example-list">
-    <article>
-      <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-text-heading--md</code>
-      <h1 class="ds-text-heading--md ds-h5">{loremIpsumGenerator('s')}</h1>
-    </article>
-  </section>
-</EmbeddedExample>
-
-### Heading--sm
-
-<EmbeddedExample>
- <section class="example-list">
-    <article>
-      <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-text-heading--sm</code>
-      <h1 class="ds-text-heading--sm ds-h6">{loremIpsumGenerator('s')}</h1>
-    </article>
-  </section>
-</EmbeddedExample>
-
-## Body
-
-<ThemeContent onlyThemes={['healthcare']}>
-
-## Font Weights
-There is only one bold font option for paragraph styles (Open Sans font). Open Sans 600 (Semibold) is the only bold option that should be used. There are no bold options for headers.
-
-Never use italic text.
-
-</ThemeContent>
-
-### `.ds-text-body--lg`
-
-<EmbeddedExample>
-  <p class="ds-text-body--lg">{loremIpsumGenerator('l')}</p>
-</EmbeddedExample>
-
-### `.ds-text-body--md`
-
-<EmbeddedExample>
-  <p class="ds-text-body--md">{loremIpsumGenerator('l')}</p>
-</EmbeddedExample>
-
-### `.ds-text-body--sm`
-
-<EmbeddedExample>
-  <p class="ds-text-body--sm">{loremIpsumGenerator('l')}</p>
-</EmbeddedExample>
-
-## List
-
-Lists organize written information for users.
-
-### When to use
-
-- Use an ordered list when you need to display text in some ranking, hierarchy, or series of steps.
-- Use unordered lists to display text in no specific order.
-
-### When to consider alternatives
-
-- If you need to communicate long lists of narrative text.
-
-### Usage
-
-- Use sentence case and begin lists with a capital letter.
-- Use punctuation appropriate to the text. Do not leave sentences without periods.
-
-### Accessibility
-
-- When a list has a heading, consider adding an `id` attribute to the heading element, and an `aria-labelledby` attribute to the list element. Screen readers will then announce the heading text when users navigate to the list.
-- When using an unstyled list, `role="list"` should be added to the list element.
-
-### Learn more
-
-- [18F Content Guide \- Bulleted lists](https://content-guide.18f.gov/punctuation/#bulleted-lists)
-
-<EmbeddedExample>
-  <article>
-    <h2 class="ds-h6" id="unordered-list-id">
-      Unordered list
-    </h2>
-    <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-c-list</code>
-    <ul class="ds-c-list" aria-labelledby="unordered-list-id">
-      <li>List item 1</li>
-      <li>List item 2</li>
-    </ul>
-  </article>
-</EmbeddedExample>
-
-<EmbeddedExample>
-  <article>
-    <h2 class="ds-h6" id="ordered-list-id">
-      Ordered list
-    </h2>
-    <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-c-list</code>
-    <ol class="ds-c-list" aria-labelledby="ordered-list-id">
-      <li>List item 1</li>
-      <li>List item 2</li>
-    </ol>
-  </article>
-</EmbeddedExample>
-
-<Alert variation="warn" weight="lightweight" class="ds-u-margin-y--3">
-  <p class="ds-u-margin-top--0">It's worth mentioning that when <code>list-style</code> is removed from a list, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/list-style#accessibility_concerns" target="_blank">Safari will not recognize it as a list</a> in the accessibility tree.</p>
-
-  <p class="ds-u-margin-bottom--0">To resolve this issue, <code>role="list"</code> should be added to a list where the styles have been removed.</p>
-</Alert>
-
-<EmbeddedExample>
-  <article>
-    <h2 class="ds-h6" id="unstyled-list-id">
-      Unstyled list
-    </h2>
-    <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-c-list .ds-c-list--bare</code>
-    <ul role="list" class="ds-c-list ds-c-list--bare" aria-labelledby="unstyled-list-id">
-      <li>List item 1</li>
-      <li>List item 2</li>
-    </ul>
-  </article>
-</EmbeddedExample>
-
-## Link
-
-Links connect users to a different page or further information.
+## Examples
 
 The only base HTML element the design system applies styling to is the `<a>` element. You can also use `.ds-c-link` and `.ds-c-link--inverse` for styling links.
+
+### On light background
+
+<EmbeddedExample>
+  <p><a href="javascript:void(0);">This is a text link</a> on a light background.</p>
+  <p><a href="https://design.cms.gov/">This is a visited link</a>.</p>
+</EmbeddedExample>
+
+### On dark background
+
+<EmbeddedExample>
+  <div class="ds-base ds-base--inverse ds-u-padding--1">
+    <p><a href="javascript:void(0);">This is a text link</a> on a dark background.</p>
+    <p><a href="https://design.cms.gov/">This is a visited link</a> on a dark background.</p>
+  </div>
+</EmbeddedExample>
+
+## Code
+
+### Styles
+
+The following Sass variables can be overridden to change the type sizes:
+
+- `$font-size-5xl`
+- `$font-size-4xl`
+- `$font-size-3xl`
+- `$font-size-2xl`
+- `$font-size-xl`
+- `$font-size-lg`
+- `$font-size-md`, uses `$base-font-size`
+- `$font-size-sm`
+
+
+## Guidance
+
+Your link should always describe where it will take users. Users tend to scan text online, and elements that stand out (like links) grab attention. Clear links can help users navigate more quickly.
+
+For example, instead of:
+
+> [Learn more](#)
+
+Use:
+
+> [Learn how to reset your passphrase](#)
+
+Never use a link to say “click here.” A nondescript link forces users to backtrack and read the surrounding text for more context. This is even more problematic for those who rely on screen readers, which can list links for quicker navigation. A list of “click here” isn’t helpful for anyone.
 
 <ThemeContent onlyThemes={['healthcare']}>
 
@@ -241,6 +79,7 @@ The standard style for clickable elements is a color change from plain text and 
 
 </ThemeContent>
 
+
 ### When to use
 
 - Navigating to a new page or view in your application
@@ -253,88 +92,9 @@ The standard style for clickable elements is a color change from plain text and 
 - Triggering a dropdown menu
 - Submitting data to the server
 
-Your link should always describe where it will take users. Users tend to scan text online, and elements that stand out (like links) grab attention. Clear links can help users navigate more quickly.
-
-For example, instead of:
-
-> [Learn more](#)
-
-Use:
-
-> [Learn how to reset your passphrase](#)
-
-Never use a link to say “click here.” A nondescript link forces users to backtrack and read the surrounding text for more context. This is even more problematic for those who rely on screen readers, which can list links for quicker navigation. A list of “click here” isn’t helpful for anyone.
-
 ### Accessibility
 
 - Users should be able to tab to navigate between links.
 - Users should be able to activate a link when pressing ‘Enter’ on their keyboard.
 - Users should be able to identify links without relying on color alone.
 - Users should be able to activate hover and focus states with both a mouse and a keyboard.
-
-<EmbeddedExample>
-  <p><a href="javascript:void(0);">This is a text link</a> on a light background.</p>
-  <p><a href="/styles/typography/">This is a visited link</a>.</p>
-
-  <div class="ds-base ds-base--inverse ds-u-padding--1">
-    <p><a href="javascript:void(0);">This is a text link</a> on a dark background.</p>
-    <p><a href="/styles/typography/">This is a visited link</a> on a dark background.</p>
-  </div>
-</EmbeddedExample>
-
-## Responsive typography
-
-The `.ds-type-heading-3xl`, `ds-type-heading-2xl`, and `ds-type-heading-xl` classes are responsive by default.
-To apply responsive typography elsewhere, use the [font size utility class](/utilities/font/font-size/#responsive-font-sizes).
-Since the base typography margins and line height is measured in `em` units,
-they'll automatically adjust as you change the font size.
-
-<ResponsiveExample
-  storyId="typography-responsive--headings"
-  title="Responsive typography example"
-/>
-
-## Customization
-
-The following Sass variables can be overridden to change the type sizes:
-
-- `$font-size-5xl`
-- `$font-size-4xl`
-- `$font-size-3xl`
-- `$font-size-2xl`
-- `$font-size-xl`
-- `$font-size-lg`
-- `$font-size-md`, uses `$base-font-size`
-- `$font-size-sm`
-
-<ThemeContent onlyThemes={['healthcare']}>
-
-## Captions 
-
-Generally, most content on Healthcare.gov should be 16px or higher. 
-Captions, disclaimers, footnotes and text that is there for legal reasons can use the small heading and body styles.
-
-## Phone Numbers
-- All site provided phone numbers will be shown as links (future update).
-- If the phone number has a letter format, then only the number format of the phone number would be linked.
-- If the phone number only shows up as letters then the letter format of the phone number would be linked. 
-- All numbers need to be followed by details for Teletypewriter (TTY) users.
-
-See examples below: 
-
-- If the phone number is shown in both numeric and letter format:
-"Call us at 1-800-MEDICARE (1-800-633-4227). TTY users can call 1-877-486-2048." 
-
-- If the phone number is only shown in letter format:
-"Call us at 1-800-MEDICARE." 
-
-- If the phone number is in only shown in numeric format:
-"Call us at 1-800-633-4227. TTY users can call 1-877-486-2048." 
-
-## Mobile Guidelines
-Header sizes should be reduced on mobile screen sizes. Header sizes can be reduced depending on the designers discretion but can generally use this guide for reducing your header sizes.
-
-### Body
-Small to Large Body text - No change in size unless header size is smaller than the body size
-
-</ThemeContent>
