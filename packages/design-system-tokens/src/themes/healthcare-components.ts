@@ -320,6 +320,10 @@ export const components: AnyTokenValues = {
     '__color--warn':                              t.color['warn'],
   },
 
+  'inset': {
+    '__border-width':                             t.spacer['half']
+  },
+
   'link': {
     '__color':                                    t.color['primary'],
     '__color--active':                            t.color['primary-darkest'],
