@@ -22,7 +22,7 @@
 ## 4. Note, this script assumes you use nvm to manage node versions
 
 # USING THIS SCRIPT
-# In the root directory of the design-system project, run `./test-locally.sh`
+# In the root directory of the design-system project, run `scripts/test-locally.sh`
 #   This will install dependencies and run the core DS.
 #   Then, it will navigate to the child DS project. It will remove node_modules, install dependencies & build child system.
 #   Then, it will navigate to an application project. It will remove node_modules, install dependencies & build the application.
@@ -30,12 +30,12 @@
 # This script will try to use the default variables defined in this file, but you can override these for additional testing.
 # For example, if you want to test the hcgov child system, when the default CHILD_DS_NAME variable is mgov child system, you can:
 #   1. Update the CHILD_DS_NAME variable in this file
-#   2. Run `./test-locally.sh -c hcgov-design-system`
+#   2. Run `scripts/test-locally.sh -c hcgov-design-system`
 
 # Similarly, if you want to change the application path your are testing with, you can:
 #   1. Update the APP_NAME path variable in this file
-#   2. Run `./test-locally.sh -a [directory name of application]`
-#     a. If you only want to test in child systems and not in an application, you can run `./test-locally.sh -a ""`
+#   2. Run `scripts/test-locally.sh -a [directory name of application]`
+#     a. If you only want to test in child systems and not in an application, you can run `scripts/test-locally.sh -a ""`
 
 #!/bin/sh
 
