@@ -21,8 +21,10 @@ export interface TableOfContentsProps {
   /**
    * page slug
    */
-  slug: string;
+  slug?: string;
 }
+
+export type TableOfContentsFeedbackProps = Pick<TableOfContentsProps, 'slug'>;
 
 export const TableOfContentsList = ({ items, level, className = '' }: TableOfContentsProps) => {
   const itemClasses =
@@ -45,7 +47,7 @@ export const TableOfContentsList = ({ items, level, className = '' }: TableOfCon
 /*
  * Feedback section
  */
-export const TableOfContentsFeedback = (editUrl: { slug: string }) => (
+export const TableOfContentsFeedback = ({ slug }: TableOfContentsFeedbackProps) => (
   <>
     <h2 className="c-table-of-contents__heading ds-u-margin-y--0 ds-u-md-margin-top--6 ds-u-font-size--base">
       Have ideas?{' '}
@@ -57,17 +59,15 @@ export const TableOfContentsFeedback = (editUrl: { slug: string }) => (
       <li>
         <a href="https://github.com/CMSgov/design-system/discussions">Join in the discussion</a>
       </li>
-      <li>
-        <a
-          href={
-            'https://github.com/CMSgov/design-system/edit/master/packages/docs/content/' +
-            editUrl.slug +
-            '.mdx'
-          }
-        >
-          Edit this page
-        </a>
-      </li>
+      {typeof slug !== 'undefined' ? (
+        <li>
+          <a
+            href={`https://github.com/CMSgov/design-system/edit/master/packages/docs/content/${slug}.mdx`}
+          >
+            Edit this page
+          </a>
+        </li>
+      ) : null}
     </ul>
   </>
 );
