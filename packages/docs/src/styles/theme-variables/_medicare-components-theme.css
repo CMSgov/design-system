@@ -297,6 +297,8 @@
 --text-input__line-height: 1.3;
 --text-input__background-color--disabled: #d9d9d9;
 --text-input__border-width: 2px;
+--text-input__border-width--error: 3px;
+--text-input__border-width--success: 3px;
 --text-input__border-color: #737373;
 --text-input__border-color--disabled: #404040;
 --text-input__border-color--error: #b20000;
