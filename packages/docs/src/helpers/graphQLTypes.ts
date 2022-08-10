@@ -17,6 +17,7 @@ export interface ComponentLinksInterface {
  */
 export interface LocationInterface {
   pathname: string;
+  search?: string;
 }
 
 export interface FrontmatterInterface {
