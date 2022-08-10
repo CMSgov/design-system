@@ -1,0 +1,31 @@
+---
+title: Inset (HC.gov)
+intro: The Inset component is meant to draw attention to important content, or to associate a block of content with another element.
+healthcare:
+  githubLink: ds-healthcare-gov/src/styles/components/_Inset.scss
+---
+import loremIpsumGenerator from '../../src/helpers/loremIpsumGenerator';
+import { Alert } from '@cmsgov/design-system';
+
+<ThemeContent neverThemes={['healthcare']}>
+  <Alert variation="error">
+     <p class="ds-c-alert__text">
+        This component is only used for Healthcare. Please use the theme switcher to view the component with Healthcare styles.
+    </p>
+  </Alert>
+</ThemeContent>
+
+## Examples
+
+<EmbeddedExample>
+    <p class="ds-text">{loremIpsumGenerator('m')}</p>
+    <p class="hc-c-inset ds-text">{loremIpsumGenerator('l')}</p>
+    <p class="ds-text">{loremIpsumGenerator('m')}</p>
+</EmbeddedExample>
+
+## Guidance
+
+### When to use
+
+- Use in a progressive disclosure accordion (ie. for help text)
+- Use on its own as a way to distinguish a block of text from its surrounding content.
