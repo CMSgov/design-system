@@ -33,7 +33,7 @@ interface LayoutProps {
   /**
    * Slug of current page
    */
-  slug: string;
+  slug?: string;
   /**
    * Current theme name
    */
