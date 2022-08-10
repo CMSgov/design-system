@@ -63,6 +63,9 @@ const StorybookExampleFooter = ({ theme, storyId }: StorybookExampleFooterProps)
       errorLoadingReactCode();
       return;
     }
+    // Hide the iframe first so that clicking the button doesn't scroll us to it
+    iframeRef.current.hidden = true;
+    iframeRef.current.style.display = 'none';
     (showCodeButton as HTMLButtonElement).click();
 
     // Read the code out of the resulting code block after waiting for it to be generated
@@ -93,6 +96,7 @@ const StorybookExampleFooter = ({ theme, storyId }: StorybookExampleFooterProps)
       ref={iframeRef}
       loading="lazy"
       onLoad={onIframeLoad}
+      tabIndex={-1}
     />
   );
 
