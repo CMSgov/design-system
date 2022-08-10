@@ -9,12 +9,12 @@ import {
 /**
  * The mobile version of the table of contents
  */
-const TableOfContentsMobile = ({ items, title }: TableOfContentsProps) => {
+const TableOfContentsMobile = ({ items, slug }: TableOfContentsProps) => {
   return items.length ? (
     <Accordion className="c-table-of-contents-mobile">
       <AccordionItem heading="On this page">
         <TableOfContentsList items={items} level={1} className="c-table-of-contents-mobile__list" />
-        <TableOfContentsFeedback />
+        <TableOfContentsFeedback slug={slug} />
       </AccordionItem>
     </Accordion>
   ) : null;
