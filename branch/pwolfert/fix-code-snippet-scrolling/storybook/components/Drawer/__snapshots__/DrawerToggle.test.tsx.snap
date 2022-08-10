@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DrawerToggle renders a button 1`] = `
+<DocumentFragment>
+  <button
+    class="ds-c-button ds-c-button--ghost ds-c-drawer__toggle"
+    type="button"
+  >
+    <p>
+      content
+    </p>
+  </button>
+</DocumentFragment>
+`;

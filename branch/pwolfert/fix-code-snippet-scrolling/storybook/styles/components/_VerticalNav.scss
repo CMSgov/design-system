@@ -1,0 +1,174 @@
+@import '../settings/index.scss';
+
+%nav-item-hover {
+  background-color: $vertical-nav-item__background-color--hover;
+  color: $vertical-nav-item__color--hover;
+  text-decoration: none;
+}
+%nav-item-focus {
+  @include focus-styles;
+  @include focus-styles-position;
+}
+
+.ds-c-vertical-nav {
+  @include ds-unstyled-list;
+
+  > .ds-c-vertical-nav__item {
+    background-color: transparent;
+    border-top: 1px solid $vertical-nav-item__border-color;
+
+    &:first-child {
+      border-top: 0;
+    }
+  }
+}
+
+.ds-c-vertical-nav--collapsed {
+  display: none;
+}
+
+.ds-c-vertical-nav__item {
+  position: relative;
+}
+
+.ds-c-vertical-nav__label,
+.ds-c-vertical-nav__label:visited {
+  border-left: $spacer-half solid transparent;
+  color: $vertical-nav-label__color;
+  display: block;
+  font-family: $font-sans; // necessary for <button>
+  font-size: $font-size-base; // necessary for <button>
+  line-height: $font-line-height-heading;
+  padding: $spacer-1 $spacer-2;
+  text-align: left; // necessary for <button>
+  text-decoration: none;
+
+  &:hover {
+    @extend %nav-item-hover;
+  }
+  &:focus,
+  &.ds-c-vertical-nav__label--current:focus {
+    @extend %nav-item-focus;
+  }
+}
+
+.ds-c-vertical-nav__label--current.ds-c-vertical-nav__label--parent {
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    color: window; // Allows parent nav to be legible without obscuring child and grandchild links
+  }
+}
+
+// Subnav toggle
+// This class is applied to a <button>, so we need to reset some styling here...
+.ds-c-vertical-nav__label--parent {
+  appearance: none;
+  background-color: transparent;
+  border-bottom: 0; // Clear <button> borders (border-left is already set)
+  border-radius: 0; // Remove default browser radius in Chrome
+  border-right: 0;
+  border-top: 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  &:hover {
+    @extend %nav-item-hover;
+  }
+
+  &:focus,
+  &.ds-c-vertical-nav__label--current:focus {
+    @extend %nav-item-focus;
+  }
+
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    -ms-high-contrast-adjust: none;
+    forced-color-adjust: none;
+    background-color: LinkText;
+
+    &:hover,
+    &:focus {
+      -ms-high-contrast-adjust: none;
+      forced-color-adjust: none;
+      background-color: window;
+      color: LinkText;
+      outline: $spacer-half solid LinkText;
+      outline-offset: -$spacer-half;
+    }
+  }
+
+  .ds-c-icon {
+    color: $vertical-nav-label-icon__color;
+    height: $font-size-md;
+    width: $font-size-md;
+
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      path {
+        fill: Window;
+      }
+    }
+  }
+}
+
+.ds-c-vertical-nav__label--current,
+.ds-c-vertical-nav__label--current:visited {
+  border-left-color: $vertical-nav-label__border-color--current;
+  color: $vertical-nav-label__color--current;
+  font-weight: $font-weight-bold;
+
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    border-left-color: WindowText;
+  }
+}
+
+.ds-c-vertical-nav__subnav {
+  @include ds-unstyled-list;
+
+  .ds-c-vertical-nav__label {
+    font-size: $font-size-sm;
+    line-height: $font-line-height-heading;
+    padding-left: $spacer-3;
+  }
+
+  .ds-c-vertical-nav__label--current {
+    border-color: transparent;
+
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+      border-color: WindowText;
+    }
+  }
+
+  .ds-c-vertical-nav__subnav .ds-c-vertical-nav__label {
+    padding-left: $spacer-4;
+  }
+}
+
+.ds-c-vertical-nav__subnav {
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    margin-left: $spacer-2;
+  }
+}
+
+.ds-c-vertical-nav {
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    border-top: 1px solid LinkText;
+    border-right: 1px solid LinkText;
+    border-bottom: 1px solid LinkText;
+  }
+}
+
+.ds-c-vertical-nav .ds-c-vertical-nav__item {
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    border-top: 1px solid LinkText;
+    border-bottom: 1px solid LinkText;
+  }
+}
+
+.ds-c-vertical-nav__subnav .ds-c-vertical-nav__label {
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}
