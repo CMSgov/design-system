@@ -2,6 +2,7 @@ import { PageStatus } from '../components/Layout';
 
 export interface TableOfContentsItem {
   url: string;
+  slug?: string;
   title: string;
   items?: TableOfContentsItem[];
 }
@@ -37,6 +38,7 @@ export interface MdxQuery {
     mdx: {
       id: string;
       body: string;
+      slug?: string;
       frontmatter: FrontmatterInterface;
       tableOfContents?: {
         items: TableOfContentsItem[];
