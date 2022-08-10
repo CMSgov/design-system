@@ -406,7 +406,7 @@ export const components: AnyTokenValues = {
     '__border-color--success':                    t.color['success-light'],
     '__color':                                    t.color['gray-warm-dark'],
     '__padding':                                  t.spacer['1'],
-    '__border-radius':                            '0',
+    '__border-radius':                            '3px',
   },
 
   'tooltip': {
