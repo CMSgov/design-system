@@ -18,6 +18,10 @@ export interface TableOfContentsProps {
    * page title
    */
   title?: string;
+  /**
+   * page slug
+   */
+  slug: string;
 }
 
 export const TableOfContentsList = ({ items, level, className = '' }: TableOfContentsProps) => {
@@ -41,7 +45,7 @@ export const TableOfContentsList = ({ items, level, className = '' }: TableOfCon
 /*
  * Feedback section
  */
-export const TableOfContentsFeedback = () => (
+export const TableOfContentsFeedback = (editUrl: { slug: string }) => (
   <>
     <h2 className="c-table-of-contents__heading ds-u-margin-y--0 ds-u-md-margin-top--6 ds-u-font-size--base">
       Have ideas?{' '}
@@ -53,6 +57,17 @@ export const TableOfContentsFeedback = () => (
       <li>
         <a href="https://github.com/CMSgov/design-system/discussions">Join in the discussion</a>
       </li>
+      <li>
+        <a
+          href={
+            'https://github.com/CMSgov/design-system/edit/master/packages/docs/content/' +
+            editUrl.slug +
+            '.mdx'
+          }
+        >
+          Edit this page
+        </a>
+      </li>
     </ul>
   </>
 );
@@ -60,7 +75,7 @@ export const TableOfContentsFeedback = () => (
 /**
  * The Desktop version of the table of contents
  */
-const TableOfContents = ({ items }: TableOfContentsProps) => {
+const TableOfContents = ({ items, slug }: TableOfContentsProps) => {
   const level = 1;
   return items.length ? (
     <div className="c-table-of-contents">
@@ -68,7 +83,7 @@ const TableOfContents = ({ items }: TableOfContentsProps) => {
         On this page{' '}
       </h2>
       <TableOfContentsList items={items} level={level} />
-      <TableOfContentsFeedback />
+      <TableOfContentsFeedback slug={slug} />
     </div>
   ) : null;
 };
