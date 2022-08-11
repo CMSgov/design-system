@@ -51,6 +51,10 @@ if [ "$DELETE_LAST" = true ]; then
     echo "${GREEN}Undoing last release...${NC}"
     git tag -d $TAGS
     git push origin --delete $TAGS
+    echo "${GREEN}Tags deleted...${NC}"
+    git revert $POST_VERSION_HASH
+    git push origin
+    echo "${GREEN}Version bumps reverted...${NC}"
   fi
   exit 0
 fi
