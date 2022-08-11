@@ -1,5 +1,6 @@
-import { maskValue, unmaskValue } from './maskHelpers';
 import React from 'react';
+import classNames from 'classnames';
+import { maskValue, unmaskValue } from './maskHelpers';
 
 // TODO: Remove `maskValue` and `unmaskValue` exports with next major release (v3.x.x)
 export { maskValue, unmaskValue };
@@ -22,6 +23,9 @@ export interface MaskProps {
    * Must contain a `TextField` component
    */
   children: React.ReactNode;
+  /**
+   * The type of mask
+   */
   mask?: MaskMask;
 }
 
@@ -127,6 +131,7 @@ export class Mask extends React.PureComponent<MaskProps, any> {
 
     const modifiedTextField = React.cloneElement(field, {
       defaultValue: undefined,
+      fieldClassName: classNames(field.props.fieldClassName, `ds-c-field--${mask}`),
       onBlur: (evt) => this.handleBlur(evt, field),
       onChange: (evt) => this.handleChange(evt, field),
       value: this.state.value,

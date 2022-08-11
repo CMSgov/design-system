@@ -8,24 +8,25 @@ export interface StarIconProps extends IconCommonProps {
 
 const defaultProps = {
   className: '',
-  isFilled: false,
   viewBox: '0 0 18 16',
 };
 
 function StarIcon(props: StarIconProps): React.ReactElement {
+  // don't want to pass isFilled through to SvgIcon
+  const { isFilled, ...otherProps } = props;
   const iconCssClasses = classNames(
     'ds-c-icon--star',
     {
-      'ds-c-icon--star-filled': props.isFilled,
+      'ds-c-icon--star-filled': isFilled,
     },
     props.className
   );
 
-  const title = props.isFilled ? t('icons.starFilled') : t('icons.star');
+  const title = isFilled ? t('icons.starFilled') : t('icons.star');
 
   return (
-    <SvgIcon title={title} {...defaultProps} {...props} className={iconCssClasses}>
-      {props.isFilled ? (
+    <SvgIcon title={title} {...defaultProps} {...otherProps} className={iconCssClasses}>
+      {isFilled ? (
         <path
           d="M8.533 13.063l-5.274 2.69 1.008-5.699L0 6.017l5.896-.831L8.533 0l2.637 5.186 5.897.831-4.267 4.037 1.007 5.7z"
           fillRule="nonzero"

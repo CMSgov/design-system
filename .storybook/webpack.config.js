@@ -1,22 +1,40 @@
 const path = require('path');
+const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-// import statements in JS & SCSS files cannot be in a conditional
-// this is a workaround to load the appropriate SCSS entry in storybook based on environment variable
-const getStylesPath = () => {
-  if (process.env.STORYBOOK_DS == 'medicare') {
-    return '../packages/ds-medicare-gov/src/styles/index.scss';
-  } else if (process.env.STORYBOOK_DS == 'healthcare') {
-    return '../packages/ds-healthcare-gov/src/styles/index.scss';
-  } else {
-    return '../packages/design-system/src/styles/index.scss';
+// because of the way font & image files are organized in dev vs prod, need to have a different font path
+// need to set this before styles are imported
+const getFontAndImagePaths = () => {
+  // for prod builds
+  if (process.env.STORYBOOK_ENV !== 'dev') {
+    return `$font-path: './fonts'; $image-path: './images';`;
   }
+  // for dev, use default which is '../fonts'
+  return '';
 };
 
-module.exports = async (webpackConfig) => {
-  const { config } = webpackConfig;
+module.exports = async ({ config }) => {
+  config.plugins.push(
+    new MiniCssExtractPlugin(),
+    // copies current set of static assets to dist folder when building
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, '../packages/ds-healthcare-gov/src', 'images'),
+          to: './images',
+        },
+        {
+          from: path.resolve(__dirname, '../packages/ds-medicare-gov/src', 'images'),
+          to: './images',
+        },
+        {
+          from: path.resolve(__dirname, '../packages/ds-medicare-gov/src', 'fonts'),
+          to: './fonts',
+        },
+      ],
+    })
+  );
 
-  config.plugins.push(new MiniCssExtractPlugin());
   // add SCSS support for CSS Modules
   config.module.rules.push(
     {
@@ -56,7 +74,7 @@ module.exports = async (webpackConfig) => {
         {
           loader: 'sass-loader',
           options: {
-            additionalData: `@import '${getStylesPath()}';`,
+            additionalData: `${getFontAndImagePaths()}`,
           },
         },
       ],

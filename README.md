@@ -42,7 +42,7 @@ _Note_: When you create a Git commit, any staged scripts will be automatically r
 
 These scripts can all be run from the root level of the repo:
 
-- `yarn start`
+- `yarn start:gatsby`
   - Starts local server running the documentation site
   - Regenerates documentation when files change
   - `yarn start:healthcare` to start the Healthcare.gov Design System's documentation site
@@ -79,6 +79,8 @@ These scripts can all be run from the root level of the repo:
   - `yarn loki:medicare test` to run the Medicare.gov visual regression tests
 - `yarn lint`
   - Runs just the linting portion of the tests, eslint and stylelint
+- `yarn deploy-demo`
+  - Builds the doc site locally and deploys it to a branch-specific path on GitHub Pages. The terminal will display the URL where the demo was deployed to after it is done running. 
 - `yarn release`
   - Bumps package versions and tags a release commit. Read our [Release Process guide](/guides/RELEASE-PROCESS.md) for more info.
 
@@ -92,6 +94,14 @@ Running loki tests locally requires that you be signed into Docker.
 2. Run `yarn loki test` to begin comparing component images
    1. If differences are detected and unexpected, evaluate your changes - we only want to update and commit references when we expect the visual changes detected
    2. If differences are detected and expected, run `yarn loki update`
+
+#### Visual regression troubleshooting
+
+##### Error: `./loki.sh: line 70: kill: (74680) - No such process`
+
+If you run the visual regression command and receive `./loki.sh: line 70: kill: (74680) - No such process` in your terminal, it may be related to your shell.
+
+For MacOS users, run `brew install bash` to resolve this issue.
 
 ## Design Assets
 

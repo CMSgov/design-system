@@ -1,9 +1,12 @@
 {
   "name": "@cmsgov/design-system",
-  "version": "3.4.0",
+  "version": "4.0.0-beta.3",
   "publishConfig": {
     "access": "public",
     "tag": "latest"
+  },
+  "bin": {
+    "cmsds-migrate": "./scripts/cmsds-migrate/src/main.js"
   },
   "description": "CMS Design System Sass/CSS and React assets",
   "repository": {
@@ -27,13 +30,22 @@
     "@types/react-dom": "^17.0.10",
     "classnames": "^2.2.5",
     "core-js": "^3.6.5",
+    "date-fns": "^2.28.0",
     "downshift": "^3.2.10",
-    "ev-emitter": "^2.1.2",
+    "ev-emitter": "^1.1.1",
     "focus-trap-react": "^6.0.0",
     "lodash": "^4.17.21",
     "prop-types": "^15.7.2",
     "react-aria-modal": "^2.11.1",
+    "react-day-picker": "^8.0.5",
     "react-transition-group": "^4.4.2"
+  },
+  "devDependencies": {
+    "chalk": "^5.0.1",
+    "globby": "^13.1.2",
+    "inquirer": "^9.0.2",
+    "ora": "^6.1.2",
+    "yargs": "^17.5.1"
   },
   "peerDependencies": {
     "react": ">=16.0.0",

@@ -5,22 +5,22 @@
 }
 
 .ds-c-field__before {
-  bottom: $input-padding;
-  left: $input-padding;
+  bottom: $text-input__padding;
+  left: $text-input__padding;
   position: absolute;
-  top: $input-padding;
+  top: $text-input__padding;
 }
 
 .ds-c-field__before--currency {
   // Increase currency size so it serves more as an icon and
   // better aligns with the input value text
-  font-size: $base-font-size + 2;
-  font-weight: $font-bold;
+  font-size: $font-size-base + 2;
+  font-weight: $font-weight-bold;
   // Adjust to better align icon with value's baseline
   padding-top: 1px;
 }
 
 .ds-c-field--currency {
   // Normal padding + space for the icon + normal padding
-  padding-left: $input-padding + 4px + $input-padding;
+  padding-left: calc(#{$text-input__padding} + #{$spacer-half} + #{$text-input__padding});
 }

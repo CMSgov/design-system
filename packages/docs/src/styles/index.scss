@@ -1,0 +1,38 @@
+$font-path: '@cmsgov/ds-medicare-gov/dist/fonts';
+@import '@cmsgov/ds-medicare-gov/src/styles/fonts';
+
+// importing core styles from core index.scss files
+@import 'theme-variables/_core-scss-to-css.map.scss';
+@import 'theme-variables/_core-theme.css';
+@import 'theme-variables/_core-components-scss-to-css.map.scss';
+@import 'theme-variables/_core-components-theme.css';
+// brand themes will use core variables if the theme does not explicitly define that variable
+@import 'theme-variables/_healthcare-scss-to-css.map.scss';
+@import 'theme-variables/_healthcare-theme.css';
+@import 'theme-variables/_healthcare-components-scss-to-css.map.scss';
+@import 'theme-variables/_healthcare-components-theme.css';
+@import 'theme-variables/_medicare-scss-to-css.map.scss';
+@import 'theme-variables/_medicare-theme.css';
+@import 'theme-variables/_medicare-components-scss-to-css.map.scss';
+@import 'theme-variables/_medicare-components-theme.css';
+
+// @styles is aliased in gatsby-node.js
+@import '@styles/index.scss';
+
+@import 'pages/feedback.scss';
+@import 'pages/layout.scss';
+
+@import 'components/buttonMigrationTable.scss';
+@import 'components/buttonVariationsTable.scss';
+@import 'components/codeSnippet.scss';
+@import 'components/colorSwatchList.scss';
+@import 'components/embeddedExamples.scss';
+@import 'components/footer.scss';
+@import 'components/navigation.scss';
+@import 'components/pageHeader.scss';
+@import 'components/propTable.scss';
+@import 'components/responsiveExample.scss';
+@import 'components/storybookExample.scss';
+@import 'components/syntaxHighlighting.scss';
+@import 'components/themeSwitcher.scss';
+@import 'components/tableOfContents.scss';

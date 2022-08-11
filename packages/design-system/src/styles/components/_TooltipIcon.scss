@@ -1,6 +1,6 @@
 // Icon container is the border that appears on hover or focus
 .ds-c-tooltip-icon__container {
-  border: 4px solid rgba(0, 0, 0, 0);
+  border: $spacer-half solid rgba(0, 0, 0, 0);
   border-radius: 100%;
   box-sizing: border-box;
   display: inline-block;
@@ -17,7 +17,7 @@
 // SVG icon styles/positioning
 .ds-c-tooltip-icon {
   display: inline-block;
-  fill: $tooltip-icon-color;
+  fill: $tooltip-icon__color;
   height: $tooltip-icon-size;
   left: 0;
   // fixes clipping issue in Firefox, overrides vendor style
@@ -35,22 +35,30 @@
 }
 
 // Add border style when tooltip is activated in addition to on hover
-.ds-c-tooltip-icon--active {
+// TODO: deprecate and remove `ds-c-tooltip-icon--active class and use pseudo element selectors instead
+.ds-c-tooltip-icon--active,
+.ds-c-tooltip__trigger:active,
+.ds-c-tooltip__trigger:hover,
+.ds-c-tooltip__trigger:focus {
   .ds-c-tooltip-icon__container {
-    border-color: $tooltip-icon-color;
-    border-color: rgba($tooltip-icon-color, 0.25);
+    border-color: $tooltip-icon__color;
+    border-color: rgba($tooltip-icon__color, 0.25);
   }
 }
 
 .ds-c-tooltip-icon--inverse {
-  fill: $tooltip-icon-color-inverse;
+  fill: $tooltip-icon__color--inverse;
 }
 
 .ds-c-tooltip__trigger--inverse {
-  &.ds-c-tooltip-icon--active {
+  // TODO: deprecate and remove `ds-c-tooltip-icon--active class and use pseudo element selectors instead
+  &.ds-c-tooltip-icon--active,
+  &.ds-c-tooltip__trigger:active,
+  &.ds-c-tooltip__trigger:hover,
+  &.ds-c-tooltip__trigger:focus {
     .ds-c-tooltip-icon__container {
-      border-color: $tooltip-icon-color-inverse;
-      border-color: rgba($tooltip-icon-color-inverse, 0.25);
+      border-color: $tooltip-icon__color--inverse;
+      border-color: rgba($tooltip-icon__color--inverse, 0.25);
     }
   }
 }

@@ -327,7 +327,7 @@ export const Dialog = (props: DialogProps) => {
   const escapeExitsProp = escapeExitDisabled ? !escapeExitDisabled : escapeExits;
 
   function sendDialogEvent(
-    content: string,
+    content: string | undefined,
     eventAttributes: { event_name: string; ga_eventAction: string }
   ) {
     if (!dialogSendsAnalytics() || analytics === false) {
@@ -335,6 +335,11 @@ export const Dialog = (props: DialogProps) => {
     }
 
     const eventHeadingText = analyticsLabelOverride ?? content;
+
+    if (!eventHeadingText) {
+      console.error('No content found for Dialog analytics event');
+      return;
+    }
 
     sendLinkEvent({
       event_type: EventCategory.UI_INTERACTION,
@@ -347,13 +352,13 @@ export const Dialog = (props: DialogProps) => {
 
   const [headingRef] = useAnalyticsContent({
     componentName: 'Dialog',
-    onMount: (content: string) => {
+    onMount: (content: string | undefined) => {
       sendDialogEvent(content, {
         event_name: 'modal_impression',
         ga_eventAction: 'modal impression',
       });
     },
-    onUnmount: (content: string) => {
+    onUnmount: (content: string | undefined) => {
       sendDialogEvent(content, {
         event_name: 'modal_closed',
         ga_eventAction: 'closed modal',
@@ -408,7 +413,7 @@ export const Dialog = (props: DialogProps) => {
 };
 
 Dialog.defaultProps = {
-  closeButtonVariation: 'transparent',
+  closeButtonVariation: 'ghost',
   closeIcon: <CloseIcon />,
   escapeExits: true,
   escapeExitDisabled: false,

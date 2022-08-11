@@ -1,21 +1,20 @@
 .ds-c-field {
   &:disabled {
-    border: solid 1px $black-500;
+    border: solid 1px $text-input__border-color--disabled;
   }
 
   &::placeholder {
     color: $black-200;
   }
 
-  color: $black-500;
-  font-family: $rubik-font;
+  color: $text-input__color;
+  font-family: $font-family-rubik;
   font-size: $font-size-md;
-  border-radius: 3px;
-  border-color: $black-200;
+  border-color: $text-input__border-color;
   padding: $spacer-2;
 
   &--error {
-    border-color: $red-500;
+    border-color: $text-input__border-color--error;
   }
 }
 
@@ -27,16 +26,16 @@ select.ds-c-field {
 }
 
 .ds-c-label {
-  font-family: $rubik-font;
+  font-family: $font-family-rubik;
   font-size: $font-size-md;
 
   span:first-child {
-    font-weight: $font-semibold;
+    font-weight: $font-weight-semibold;
     font-size: $font-size-sm;
 
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    font-family: $montserrat-font;
+    font-family: $font-family-montserrat;
   }
 }
 
@@ -53,9 +52,9 @@ select.ds-c-field {
 input[type='radio'] + .ds-c-label,
 input[type='checkbox'] + .ds-c-label {
   span:first-child {
-    font-weight: $font-normal;
+    font-weight: $font-weight-normal;
     text-transform: none;
-    font-family: $rubik-font;
+    font-family: $font-family-rubik;
     font-size: $font-size-md;
     letter-spacing: 0;
   }
@@ -69,13 +68,13 @@ legend[id^='datefield_label'] {
   }
 
   & > .ds-c-field__hint:not(.ds-u-color--error) {
-    color: $black-200;
+    color: $form-label__color--not-error;
   }
 }
 
 .ds-c-field__hint {
   font-size: $font-size-sm;
-  font-family: $rubik-font;
+  font-family: $font-family-rubik;
 }
 
 .ds-c-datefield__separator {

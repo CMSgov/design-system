@@ -1,0 +1,129 @@
+---
+title: Alert
+intro: Alerts keep users informed of important and sometimes time-sensitive changes.
+core:
+  githubLink: design-system/src/components/Alert
+  sketchLink: 9P3rvwn
+  storybookLink: components-alert--default
+healthcare:
+  sketchLink: nRKbw3z
+medicare:
+  sketchLink: 1K9gg0y
+---
+
+## Examples
+
+### Default
+
+<StorybookExample
+  componentName="alert"
+  storyId="components-alert--default"
+/>
+
+### Error
+
+<StorybookExample
+  componentName="error alert"
+  storyId="components-alert--error-alert"
+/>
+
+### Warning
+
+<StorybookExample
+  componentName="warning alert"
+  storyId="components-alert--warning-alert"
+/>
+
+### Success
+
+<StorybookExample
+  componentName="success alert"
+  storyId="components-alert--success-alert"
+/>
+
+### Lightweight
+
+<StorybookExample
+  componentName="lightweight alert"
+  storyId="components-alert--light-weight"
+/>
+
+## Code
+
+### React
+
+<PropTable componentName="Alert" />
+
+### Styles
+
+The following Sass variables can be overridden to customize Alert components:
+
+<ComponentThemeOptions
+  componentname="alert"
+/>
+
+### Google Analytics
+
+**Analytics event tracking is disabled by default.**
+
+#### Enable event tracking
+
+Import and set the `setAlertSendsAnalytics` feature flag to `true` in your application's entry file:
+
+```js
+import { setAlertSendsAnalytics } from '@cmsgov/<design-system-package>';
+setAlertSendsAnalytics(true);
+```
+
+On applications where the page has `utag` loaded, the data goes to Tealium which allows it to route to Google Analytics or the currently approved data analytics tools.
+
+#### Disable event tracking
+
+For the `analytics` prop, pass the value `false` to the component to disable analytics tracking for a singular component instance
+
+```js
+analytics={false}
+```
+
+#### Override event tracking
+
+A custom heading value can be sent for an analytics event by using the prop `analyticsLabelOverride`. It is recommended that this value be used to prevent sensitive personal information from being passed to analytics trackers.
+
+## Guidance
+
+### When to use
+
+- As a validation message that alerts someone that they just did something that needs to be corrected or as confirmation that a task was completed successfully.
+- As a callout or notification for important or timely information. This includes errors, warnings, and general information.
+
+### When to consider alternatives
+
+- On long forms, always include in-line validation in addition to any error messages that appear at the top of the form. When possible, simplify forms by rewriting and where possible, splitting long forms across multiple pages
+- If an action will result in destroying a user’s work (for example, deleting an application) use a more intrusive pattern, such as a confirmation modal dialogue, to allow the user to confirm that this is what they want.
+
+### Usage
+
+- Don’t overdo it — too many notifications will either overwhelm or annoy the user and are likely to be ignored.
+- Write the message in concise, human readable language; avoid jargon and computer code.
+- Don’t include notifications that aren’t related to the user’s current goal.
+- When the user is required to do something in response to an alert, let them know what they need to do and make that task as easy as possible.
+
+**When the alert is for an error:**
+
+- Be polite in error messages — don’t place blame on the user.
+- Users generally won’t read documentation but will read a message that helps them resolve an error; include some educational material in your error message.
+- If the error relates to specific text fields, give these fields an error state as well.
+
+### Accessibility
+
+- Use the ARIA `role="alert"` to inform assistive technologies of a time-sensitive and important message that is not interactive. If the message is interactive, use the `role="alertdialog"` instead.
+- Consider putting the alert inside a div with `aria-live="polite"` and `aria-relevant="additions removals"`. These <abbr title="Accessible rich internet applications">ARIA</abbr> attributes ensure screen readers will announce alerts that have been added or updated dynamically.
+- If you choose to shift focus to the Alert, be mindful that using other techniques like `role="alert"`, and `aria-live="polite"` will cause some browser and screen reader combinations to read out the content more than once. Typically, shifting focus alone will be enough to alert screen readers of the content.
+- Do not visually hide alert messages on the page and then make them visible when they are needed. Users of older assistive technologies may still be able to perceive the alert messages even if they are not currently applicable.
+- Alerts should give users adequate time to review and comprehend the provided information. Avoid hiding alerts using a timer.
+- Include a mechanism like a button to dismiss alerts where appropriate.
+
+
+## Learn more
+
+- [18F Content Guide \- Active voice](https://content-guide.18f.gov/active-voice/)

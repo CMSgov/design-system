@@ -4,6 +4,7 @@ import {
   ArrowsStackedIcon,
   ArrowIcon,
   BuildingCircleIcon,
+  CalendarIcon,
   CheckCircleIcon,
   CheckIcon,
   CloseIcon,
@@ -17,8 +18,10 @@ import {
   LockIcon,
   MenuIcon,
   MenuIconThin,
+  MinusCircleIcon,
   NextIcon,
   PdfIcon,
+  PlusCircleIcon,
   RemoveIcon,
   StarIcon,
   UsaFlagIcon,
@@ -61,6 +64,11 @@ const iconData = [
     defaultTitle: 'Building in circle',
     component: <BuildingCircleIcon />,
     name: 'BuildingCircleIcon',
+  },
+  {
+    defaultTitle: 'Calendar',
+    component: <CalendarIcon />,
+    name: 'CalendarIcon',
   },
   {
     defaultTitle: 'Check mark in circle',
@@ -128,6 +136,11 @@ const iconData = [
     name: 'MenuIconThin',
   },
   {
+    defaultTitle: 'Minus in circle',
+    component: <MinusCircleIcon />,
+    name: 'MinusCircleIcon',
+  },
+  {
     defaultTitle: 'Next',
     component: <NextIcon />,
     name: 'NextIcon',
@@ -136,6 +149,11 @@ const iconData = [
     defaultTitle: 'Pdf',
     component: <PdfIcon />,
     name: 'PdfIcon',
+  },
+  {
+    defaultTitle: 'Plus in circle',
+    component: <PlusCircleIcon />,
+    name: 'PlusCircleIcon',
   },
   {
     defaultTitle: 'Remove',

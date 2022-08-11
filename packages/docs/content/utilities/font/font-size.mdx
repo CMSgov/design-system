@@ -1,0 +1,79 @@
+---
+title: Font size
+---
+
+import { Alert } from '@cmsgov/design-system';
+import loremIpsumGenerator from '../../../src/helpers/loremIpsumGenerator';
+
+<Alert heading="Typography sizing updates!">
+  <p class="ds-c-alert__text">
+    We've updated typography sizing variables and class names to make them more agnostic. Read about{' '}
+    <a href="/getting-started/theming/#updating-font-sizing">how you can update</a>.
+  </p>
+</Alert>
+
+Use the font size utility to make the text larger or smaller.
+
+**Format**: `.ds-u-font-size--[5xl|4xl|3xl|2xl|xl|lg|md|base|sm]`
+
+**Responsive format**: `.ds-u-[breakpoint]-font-size--[5xl|4xl|3xl|2xl|xl|lg|md|base|sm]`
+
+<EmbeddedExample>
+    <section class="example-list">
+        <article>
+            <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-u-font-size--5xl</code>
+            <div class="ds-u-truncate ds-u-font-size--5xl">{loremIpsumGenerator('s')}</div>
+        </article>
+        <article>
+            <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-u-font-size--4xl</code>
+            <div class="ds-u-truncate ds-u-font-size--4xl">{loremIpsumGenerator('s')}</div>
+        </article>
+        <article>
+            <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-u-font-size--3xl</code>
+            <div class="ds-u-truncate ds-u-font-size--3xl">{loremIpsumGenerator('s')}</div>
+        </article>
+        <article>
+            <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-u-font-size--2xl</code>
+            <div class="ds-u-truncate ds-u-font-size--2xl">{loremIpsumGenerator('s')}</div>
+        </article>
+        <article>
+            <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-u-font-size--xl</code>
+            <div class="ds-u-truncate ds-u-font-size--xl">{loremIpsumGenerator('s')}</div>
+        </article>
+        <article>
+            <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-u-font-size--lg</code>
+            <div class="ds-u-truncate ds-u-font-size--lg">{loremIpsumGenerator('s')}</div>
+        </article>
+        <article>
+            <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-u-font-size--base</code> or
+            <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-u-font-size--md</code>
+            <div class="ds-u-truncate ds-u-font-size--base">{loremIpsumGenerator('s')}</div>
+        </article>
+        <article>
+            <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-u-font-size--sm</code>
+            <div class="ds-u-truncate ds-u-font-size--sm">{loremIpsumGenerator('s')}</div>
+        </article>
+    </section>
+
+</EmbeddedExample>
+
+## Responsive font sizes
+
+Use a [breakpoint prefix](/foundation/layout-grid/responsive-design/) to change the font size at specific breakpoints.
+
+<ResponsiveExample storyId="utilities-font-size--font-size" title="Responsive font size example" />
+
+## Guidance
+
+### Customization
+
+The following Sass variables can be overridden to theme the font size utility:
+
+- `$font-size-5xl`
+- `$font-size-4xl`
+- `$font-size-3xl`
+- `$font-size-2xl`
+- `$font-size-xl`
+- `$font-size-lg`
+- `$font-size-md`, uses `$font-size-base`
+- `$font-size-sm`

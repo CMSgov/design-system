@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import TextField from './TextField';
-import { DATE_MASK } from './LabelMask';
+import { DATE_MASK } from './useLabelMask';
 
 export default {
   title: 'Components/Text Field',
@@ -89,6 +89,50 @@ export const LabelMaskedField = () => {
         labelMask={DATE_MASK}
         value={date}
         onChange={(event) => setDate(event.currentTarget.value)}
+      />
+    </>
+  );
+};
+
+export const AllMaskedFields = () => {
+  return (
+    <>
+      <TextField
+        ariaLabel="Enter monthly income amount in dollars."
+        labelClassName="ds-u-margin-top--0"
+        label="Currency"
+        mask="currency"
+        inputMode="numeric"
+        type="text"
+        name="currency_example"
+        onBlur={(evt) => console.log('Unmasked value: ', unmaskValue(evt.target.value, 'currency'))}
+        defaultValue="2,500"
+      />
+      <TextField
+        label="Phone number"
+        mask="phone"
+        name="phone_example"
+        onBlur={(evt) => console.log('Unmasked value: ', unmaskValue(evt.target.value, 'phone'))}
+        type="tel"
+        defaultValue="1234567890"
+      />
+      <TextField
+        label="Social security number (SSN)"
+        mask="ssn"
+        inputMode="numeric"
+        type="text"
+        name="ssn_example"
+        onBlur={(evt) => console.log('Unmasked value: ', unmaskValue(evt.target.value, 'ssn'))}
+        defaultValue="123456789"
+      />
+      <TextField
+        label="Zip code"
+        mask="zip"
+        inputMode="numeric"
+        type="text"
+        name="zip_example"
+        onBlur={(evt) => console.log('Unmasked value: ', unmaskValue(evt.target.value, 'zip'))}
+        defaultValue="123456789"
       />
     </>
   );

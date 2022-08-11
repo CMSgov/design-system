@@ -1,0 +1,25 @@
+.c-storybook-example {
+  border: 1px solid $color-gray-lighter;
+}
+
+.c-storybook-example__iframe-wrapper {
+  min-height: 15.625rem;
+}
+
+.c-storybook-example__iframe {
+  border: none;
+  height: 100%;
+  width: 100%;
+}
+
+.c-storybook-example-footer {
+  position: relative;
+  margin-top: $spacer-1;
+}
+
+.c-storybook-example-footer__iframe {
+  border: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}

@@ -21,12 +21,15 @@
 
 .ds-c-datefield__separator {
   font-size: $font-size-2xl;
-  line-height: $input-line-height * $base-font-size; // vertical dimensions should match adjacent inputs
-  margin: ($input-border-width + $spacer-half) 0;
-  padding: $input-padding 0;
+  // have to do a mix of calc & sass interpolation in order to accommodate values being css vars in internal tools
+  line-height: calc(
+    #{$text-input__line-height} * #{$font-size-base}
+  ); // vertical dimensions should match adjacent inputs
+  margin: ($text-input__border-width + $spacer-half) 0;
+  padding: $text-input__padding 0;
 }
 
 .ds-c-datefield__label {
-  font-weight: $font-normal;
+  font-weight: $font-weight-normal;
   margin-top: $spacer-1;
 }

@@ -1,0 +1,75 @@
+---
+title: Pagination
+status: draft
+intro: Pagination is navigation for paginated content.
+core:
+  githubLink: design-system/src/components/Pagination
+  sketchLink: 4a3Mj1D
+  storybookLink: components-pagination--default
+healthcare:
+  sketchLink: agmKV3d
+medicare:
+  sketchLink: wLOVV9D
+---
+
+## Examples
+
+<StorybookExample
+  componentName="pagination"
+  storyId="components-pagination--default"
+/>
+
+## Code
+
+### React
+
+Pagination requires two properties: `totalPages`, which is the total number of pages, and `onPageChange`, which is a function used to handle state changes when the user clicks a page.
+
+Pagination also comes in two styles: default, which is compact on mobile viewports and expands to reveal individual pages on larger viewports, and `compact`, which maintains the compact layout regardless of viewport size.
+
+<PropTable componentName="Pagination" />
+
+### Styles
+
+The following Sass variables can be overridden to customize Pagination components:
+
+<ComponentThemeOptions
+  componentname="pagination"
+/>
+
+## Guidance
+
+Paginated content is any content split into multiple pages determined by a specific amount of content per page, not split by any meaningful attribute, like feature or subject or step. Search results and article collections are often paginated. Readers use the pagination component to move from page to page in paginated content, or directly to the first or last page of the paginated set.
+
+### When to use
+
+- Typically used for paginated search results.
+- Can be used for multi-page collections of related items, including articles related to a category or tag, content archives, and history or activity. Splitting a large collection of related items into individual pages can improve browsability and scannability.
+
+### When to consider alternatives
+
+- If you need to indicate progress in a series of steps that must be completed in succession, like an onboarding or checkout flow, this isn't the component for you.
+- If the length of the entire collection is less than 3-4 screen lengths long, consider showing all the items at once instead of paginating.
+
+### Usage
+
+- Users want to know the length of a paginated section, so show the size of the paginated set.
+- Highlight the current page the user is on in relation to the entire collection of pages.
+- Don't split the navigation items over multiple lines as this can make individual pages more difficult to understand and select.
+- Don't include out-of-sequence items directly adjacent to one another. Wherever there are missing pages, an ellipses should be used.
+- Avoid adding complexity by focusing on the essentials and avoid adding more items to Pagination just to fill the space.
+- Use touch targets that are big enough to select with any finger and have enough separation to avoid mistakes.
+- Do not use buttons for URL-based pagination. Because the URL is updated, the browser history stack updates and a link is the correct tag to use.
+- Consider page load, performance, and the user's scrolling preferences when determining how many items are displayed on each page.
+
+### Accessibility
+
+- Use a wrapping `<nav>` element to identify Pagination as a navigation section.
+- If more than one `<nav>` element is present on a page, Pagination **must** have an ARIA label attribute defined on the `<nav>` element that describes its purpose.
+- Use an unordered list for the navigation items as this allows screen readers to voice the number of elements in the Pagination component.
+- Use `aria-current="page"` on the current page's element to properly voice the current page for screen readers.
+- Voice the word "page" before the page numbers.
+- If _Previous_ navigation link has keyboard focus, pressing <kbd>TAB</kbd> key **must** move focus to the first pagination page link.
+- If pagination page has keyboard focus, pressing <kbd>TAB</kbd> key **must** move focus to the next pagination page link.
+- If last pagination page has keyboard focus, pressing <kbd>TAB</kbd> key **must** move focus to the _Next_ pagination navigation link.
+- Once a pagination page has been clicked, focus should shift to the top-level piece of content on that page, usually an `<h1>`.

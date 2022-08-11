@@ -1,0 +1,68 @@
+---
+title: Single-input date field
+intro: Date field (single-input) provides date entry, using a text field, in a single input.
+core:
+  githubLink: design-system/src/components/DateField
+  sketchLink: jgLGlZm
+  storybookLink: components-singleinputdatefield--default
+healthcare:
+  sketchLink: L03Rw5W
+medicare:
+  sketchLink: l1ymmbO
+---
+
+## Examples
+
+<StorybookExample
+  componentName="singleInputDateField"
+  storyId="components-singleinputdatefield--default"
+/>
+
+## Code
+
+### React
+
+<PropTable componentName="SingleInputDateField" />
+
+### Styles
+
+The following Sass variables can be overridden to customize Input/Form components:
+
+<ComponentThemeOptions
+  componentname="text-input"
+/>
+
+#### Form components
+
+This component also makes use of form field styles, which can be customized by the following variables:
+
+<ComponentThemeOptions
+  componentname="form"
+/>
+
+## Guidance
+
+### When to use
+
+- Use the date input when your user flow does not require separate fields for month, day, and year.
+- Use the date input for most dates, particularly memorable dates like date of birth, marriage date, health coverage start or end dates, or income start date.
+
+### When to consider alternatives
+
+- Don't use if users are entering a date within the last year or a future date. Instead, use the [date picker](/components/date-picker/).
+
+### Usage
+
+Allow users to have flexibility in entering the date, such as allowing one-digit numbers with or without "0" prior to the number, or entering a date with or without slashes to separate month, day, and year.
+  - Example: "1" as well as "01" for a month or day.
+  - Example: "05/01/2022" as well as "05012022".
+
+### Accessibility
+
+- These text fields should follow the [accessibility guidelines for all text inputs](/components/text-field/#guidance).
+- Users will be able to enter a variety of date formats that automatically format to the correct date format of MM/DD/YYYY. This change happens once the form field loses focus. For example, a user enters a date as "4122020" and it changes to "04/01/2020" once focus leaves the date input.
+
+### Related components
+
+- [Date field (multi-input)](/components/multi-input-date-field/)
+- [Date field (with calendar)](/components/date-picker/)

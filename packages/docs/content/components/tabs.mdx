@@ -1,0 +1,78 @@
+---
+title: Tabs
+intro: Tabs are a secondary navigation pattern, allowing a user to view only the content they're interested in. They build upon a real world metaphor, and the selected state simulates a folder being physically in front of others in the group.
+core:
+  githubLink: design-system/src/components/Tabs
+  sketchLink: DPQmkG4
+  storybookLink: components-tabs--default-tabs
+healthcare:
+  sketchLink: 7yPRdeb
+medicare:
+  sketchLink: 7y3WWl2
+---
+
+## Examples
+
+<StorybookExample
+  componentName="tabs"
+  storyId="components-tabs--default-tabs"
+  minHeight={400}
+/>
+
+## Code
+
+### React
+
+#### `<Tabs>` component
+
+`Tabs` is a container component that manages the state of your tabs for you. In most cases, you'll want to use this component rather than the presentational components (`Tab`, `TabPanel`) on their own.
+
+<PropTable componentName="Tabs" />
+
+#### `<TabPanel>` component
+
+A `TabPanel` is a presentational component which accepts a tab's content as its `children`.
+
+<PropTable componentName="TabPanel" />
+
+### Styles
+
+The following Sass variables can be overridden to customize Tab components:
+
+<ComponentThemeOptions
+  componentname="tabs"
+/>
+
+## Guidance
+
+### When to use
+
+- If you have sub-sections of a page, and there's the need to only show one sub-section at a time.
+
+### When to consider alternatives
+
+- If you have more than four tabs. Consider using a different pattern if your content requires being split into more than four panels.
+- If the panel contents can be displayed at once. This will improve the scanability of your page's content and it's more likely the user will be able to find what they're looking for. Typography, including clear section headers, should be enough to allow the user to navigate the page.
+
+### Usage
+
+- Avoid overflowing tabs to new lines. If the tabs can't fit on one row on small screens, consider using utility classes to apply additional responsive styles or use a different pattern.
+- Tab labels should be descriptive of their content and set the user's expectations.
+- Tab labels should be short — aim for no more than two words.
+
+### Accessibility
+
+- Use an anchor link (`a`) to create the tabs. This allows you to link directly to a tab, and allows you to progressively enhance the page, retaining default browser behavior like opening links in a new window. _Note: You'll need to implement the logic for selecting the correct tab based on the current URL._
+- Ensure the HTML markup includes the proper ARIA attributes:
+  - For tabs: `role`, `aria-selected`, `aria-controls`
+  - For the tabs list parent: `role`, `aria-label`
+  - For a tab panel: `role`, `aria-labelledby`
+
+### Related patterns
+
+- [Vertical navigation](/components/vertical-nav/)
+
+## Learn more
+
+- [How Tabs Should Work](https://24ways.org/2015/how-tabs-should-work/)
+- [Simple ARIA tab interface](http://heydonworks.com/practical_aria_examples/#tab-interface)

@@ -2,9 +2,9 @@
 
 exports[`TextInput handles bottom placed error 1`] = `
 <input
-  aria-describedby="1_error"
-  aria-invalid={true}
-  className="ds-c-field ds-c-field--error"
+  aria-describedby="1_label 1_error"
+  aria-invalid="true"
+  class="ds-c-field ds-c-field--error"
   id="1"
   name="spec-field"
   type="text"
@@ -13,8 +13,8 @@ exports[`TextInput handles bottom placed error 1`] = `
 
 exports[`TextInput is a textarea 1`] = `
 <textarea
-  aria-invalid={false}
-  className="ds-c-field"
+  aria-invalid="false"
+  class="ds-c-field"
   id="1"
   name="spec-field"
 />
@@ -22,34 +22,10 @@ exports[`TextInput is a textarea 1`] = `
 
 exports[`TextInput is an input field 1`] = `
 <input
-  aria-invalid={false}
-  className="ds-c-field"
+  aria-invalid="false"
+  class="ds-c-field"
   id="1"
   name="spec-field"
   type="text"
 />
-`;
-
-exports[`TextInput masks renders TextInput 1`] = `
-<input
-  aria-invalid={false}
-  className="ds-c-field"
-  id="1"
-  name="spec-field"
-  type="text"
-/>
-`;
-
-exports[`TextInput masks renders currency mask 1`] = `
-<Mask
-  mask="currency"
->
-  <input
-    aria-invalid={false}
-    className="ds-c-field ds-c-field--currency"
-    id="1"
-    name="spec-field"
-    type="text"
-  />
-</Mask>
 `;

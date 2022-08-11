@@ -3,7 +3,7 @@ import React from 'react';
 import SimpleFooter from './SimpleFooter';
 
 export default {
-  title: 'Components/SimpleFooter',
+  title: 'Medicare/SimpleFooter',
   component: SimpleFooter,
   argTypes: {
     language: {
@@ -11,6 +11,13 @@ export default {
       options: ['en', 'es'],
     },
   },
+  decorators: [
+    (Story) => (
+      <div data-theme="medicare">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 const Template = ({ data, ...args }) => <SimpleFooter {...args} />;

@@ -1,0 +1,73 @@
+.c-resposive-example__example-wrapper {
+  margin: $spacer-2;
+  position: relative;
+
+  // adding a color to the background of examples for easier viewing
+  &:before {
+    content: '';
+    position: absolute;
+    top: -$spacer-2;
+    bottom: -$spacer-2;
+    left: -$spacer-2;
+    right: -$spacer-2;
+    z-index: -100;
+    background-color: $color-gray-lightest;
+  }
+}
+
+.c-repsonsive-example__iframe-wrapper {
+  transform-origin: 0px 0px;
+  overflow: hidden;
+}
+
+.c-responsive-example__iframe {
+  border: 0;
+  width: 100%;
+}
+
+.c-responsive-example__iframe-wrapper--width-xs {
+  width: 360px;
+}
+.c-responsive-example__iframe-wrapper--width-sm {
+  width: $media-width-sm;
+}
+.c-responsive-example__iframe-wrapper--width-md {
+  width: $media-width-md;
+}
+.c-responsive-example__iframe-wrapper--width-lg {
+  width: $media-width-lg;
+}
+.c-responsive-example__iframe-wrapper--width-xl {
+  width: $media-width-xl;
+}
+
+.c-responsive-example__button-list {
+  list-style: none;
+}
+
+.c-responsive-example__list-item {
+  list-style: none;
+}
+
+.c-responsive-example__button {
+  appearance: none;
+  background-color: $color-gray-lightest;
+  border: 0;
+  border-right: 1px solid $color-gray-lighter;
+  cursor: pointer;
+  font-size: $font-size-md;
+  font-weight: $font-normal;
+  height: 100%;
+  padding: $spacer-2;
+  position: relative;
+  width: 100%;
+
+  &:hover {
+    color: $color-primary-darker;
+  }
+}
+
+.c-responsive-example__button--active {
+  background-color: $color-white;
+  border-bottom: 4px solid $color-primary;
+}

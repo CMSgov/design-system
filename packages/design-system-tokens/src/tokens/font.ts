@@ -1,12 +1,12 @@
 /*
  * CMSDS Font Tokens
  */
-import { makeFontTypes } from '../lib/types';
+import { FontTokens, to } from '../lib/types';
 
-const font = makeFontTypes({
-  'family-open-sans': '"Open Sans", Helvetica, sans-serif',
-  'family-rubik': '"Rubik", sans-serif',
-  'family-montserrat': '"Montserrat", sans-serif',
+const font = to<FontTokens>()({
+  'family-open-sans': "'Open Sans', Helvetica, sans-serif",
+  'family-rubik': "'Rubik', sans-serif",
+  'family-montserrat': "'Montserrat', sans-serif",
   'family-bitter': 'Bitter, Georgia, serif',
   'size-base': '16px',
   'size-sm': '14px',
@@ -17,16 +17,13 @@ const font = makeFontTypes({
   'size-3xl': '36px',
   'size-4xl': '48px',
   'size-5xl': '60px',
-  'lineHeight-reset': 1,
-  'lineHeight-base': 1.5,
-  'lineHeight-heading': 1.3,
-  'lineHeight-lead': 1.7,
+  'line-height-reset': 1,
+  'line-height-base': 1.5,
+  'line-height-heading': 1.3,
+  'line-height-lead': 1.7,
   'weight-normal': 400,
   'weight-bold': 700,
   'weight-semibold': 600,
-  'measure-narrow': '45ex',
-  'measure-base': '65ex',
-  'measure-wide': '80ex',
 });
 
 export default font;

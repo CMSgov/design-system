@@ -1,0 +1,68 @@
+---
+title: Multi-input date field
+intro: Date field (multi-input) provides date entry, spaced over three separate inputs for month, day, and year.
+core:
+  githubLink: design-system/src/components/DateField
+  sketchLink: xrmY9oJ
+  storybookLink: components-multiinputdatefield--multi-input-date-field-default
+healthcare:
+  sketchLink: wLOVybw
+medicare:
+  sketchLink: ka7OOgR
+---
+
+## Examples
+
+<StorybookExample
+  componentName="multiInputDateField"
+  storyId="components-multiinputdatefield--multi-input-date-field-default"
+/>
+
+## Code
+
+### React
+
+<PropTable componentName="MultiInputDateField" />
+
+### Styles
+
+The following Sass variables can be overridden to customize Input/Form components:
+
+<ComponentThemeOptions
+  componentname="text-input"
+/>
+
+#### Form components
+
+This component also makes use of form field styles, which can be customized by the following variables:
+
+<ComponentThemeOptions
+  componentname="form"
+/>
+
+## Guidance
+
+### When to use
+
+Use this date field when:
+- User flow requires inputs be separated
+- Functionality/back-end systems can't support a single date field entry
+
+Generally used for more memorable dates like date of birth, marriage date, or income start date.
+
+### When to consider alternatives
+
+- Don't use this date field if either [single-input](/components/single-input-date-field/) or [date picker](/components/date-picker/) are feasible. This pattern is least effective with users.
+
+### Usage
+
+- Allow users to enter one-digit numbers with or without the "0" prior to the number. Example: "1" as well as "01" for a month or day.
+
+### Accessibility
+
+- These text fields should follow the [accessibility guidelines for all text inputs](/components/text-field/#guidance).
+- Do not use JavaScript to auto advance the focus from one field to the next. This makes it difficult for keyboard-only users to navigate and correct mistakes.
+
+### Related patterns
+- [Date field (single-input)](/components/single-input-date-field/)
+- [Date field (with calendar)](/components/date-picker/)

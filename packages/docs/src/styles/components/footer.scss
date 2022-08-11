@@ -1,0 +1,37 @@
+.c-footer {
+  border-top: 2px solid $color-gray-lighter;
+  padding-top: 1.5rem;
+
+  .c-footer__container {
+    max-width: $site-max-width;
+    width: 100%;
+  }
+
+  .ds-c-button--transparent {
+    padding: 0;
+    font-weight: $font-weight-normal;
+  }
+
+  .ds-c-icon--hhs-logo {
+    font-size: 2rem;
+    margin-right: $spacer-2;
+  }
+}
+
+.c-footer__links {
+  & .c-footer__link {
+    display: inline-block;
+    text-decoration-thickness: $link__text-decoration-thickness;
+    text-underline-offset: $link__text-decoration-offset;
+  }
+
+  & .c-footer__link:not(:last-child) {
+    margin-right: $spacer-2;
+  }
+}
+
+@media (max-width: $media-width-md) {
+  .c-footer__text {
+    font-size: $font-size-sm;
+  }
+}

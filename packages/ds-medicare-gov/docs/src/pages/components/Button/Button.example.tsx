@@ -11,13 +11,13 @@ const ButtonExample: FunctionComponent = () => {
           <Button className="ds-c-button--primary">Primary</Button>
         </span>
         <span className="ds-u-margin-right--1">
-          <Button className="ds-c-button--primary-alt">Secondary</Button>
+          <Button className="ds-c-button--secondary">Secondary</Button>
         </span>
         <span className="ds-u-margin-right--1">
           <Button>Tertiary</Button>
         </span>
         <span className="ds-u-margin-right--1">
-          <Button className="ds-c-button--transparent">Transparent</Button>
+          <Button className="ds-c-button--ghost">Transparent</Button>
         </span>
         <span className="ds-u-margin-right--1">
           <Button size="big">Landing Page</Button>

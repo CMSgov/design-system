@@ -44,6 +44,7 @@
     "add": "Add",
     "alertCircle": "Alert",
     "arrowsStacked": "Sort",
+    "calendar": "Calendar",
     "upArrow": "up arrow",
     "downArrow": "down arrow",
     "leftArrow": "left arrow",
@@ -83,6 +84,11 @@
   },
   "review": {
     "editText": "Edit"
+  },
+  "singleInputDateField": {
+    "close": "Close calendar picker dialog",
+    "open": "Open calendar picker dialog",
+    "arrowKeyInstructions": "Arrow keys can navigate dates"
   },
   "skipNav": {
     "default": "Skip to main content"
