@@ -19,6 +19,11 @@ $font-path: '@cmsgov/ds-medicare-gov/dist/fonts';
 // @styles is aliased in gatsby-node.js
 @import '@styles/index.scss';
 
+[data-theme='healthcare'] {
+  // TODO: update with index for hgov components. But for now, want to solve errors one component at a time
+  @import '@cmsgov/ds-healthcare-gov/src/styles/components/inset';
+}
+
 @import 'pages/feedback.scss';
 @import 'pages/layout.scss';
 
