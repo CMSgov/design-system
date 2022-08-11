@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Autocomplete renders a snapshot 1`] = `
+<div
+  class="ds-u-clearfix ds-c-autocomplete"
+>
+  <div
+    class="ds-u-clearfix"
+  >
+    <label
+      class="ds-c-label"
+      for="autocomplete_60"
+      id="autocomplete_label_61"
+    >
+      <span
+        class=""
+      >
+        autocomplete
+      </span>
+    </label>
+    <input
+      aria-autocomplete="list"
+      aria-controls="autocomplete_owned_listbox_62"
+      aria-expanded="false"
+      aria-invalid="false"
+      autocomplete="off"
+      class="ds-c-field"
+      id="autocomplete_60"
+      name="autocomplete_field"
+      role="combobox"
+      type="text"
+      value=""
+    />
+  </div>
+  <button
+    aria-label="Clear search to try again"
+    class="ds-c-button ds-c-button--small ds-c-button--ghost ds-c-autocomplete__clear-btn"
+    type="button"
+  >
+    Clear search
+  </button>
+</div>
+`;
+
+exports[`Autocomplete renders item with custom className 1`] = `"ds-c-autocomplete__list-item"`;
+
+exports[`Autocomplete renders item with custom className 2`] = `"custom-class ds-c-autocomplete__list-item"`;
+
+exports[`Autocomplete renders items with children property 1`] = `
+<ul
+  aria-labelledby={null}
+  className="ds-c-list--bare"
+  id="autocomplete_owned_listbox_14"
+  role="listbox"
+>
+  <li
+    aria-selected={false}
+    className="ds-c-autocomplete__list-item"
+    id="downshift-1-item-0"
+    key="1"
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseMove={[Function]}
+    role="option"
+  >
+    Carrots 
+    <strong>
+      (1)
+    </strong>
+  </li>
+  <li
+    aria-selected={false}
+    className="ds-c-autocomplete__list-item"
+    id="downshift-1-item-1"
+    key="2"
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseMove={[Function]}
+    role="option"
+  >
+    Cookies 
+    <strong>
+      (3)
+    </strong>
+  </li>
+  <li
+    aria-selected={false}
+    className="ds-c-autocomplete__list-item"
+    id="downshift-1-item-2"
+    key="3"
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseMove={[Function]}
+    role="option"
+  >
+    Crackers 
+    <strong>
+      (2)
+    </strong>
+  </li>
+  <li
+    aria-selected={false}
+    className="ds-c-autocomplete__list-item"
+    id="downshift-1-item-3"
+    key="4"
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseMove={[Function]}
+    role="option"
+  >
+    <a
+      href="https://duckduckgo.com/?q=snacks"
+    >
+      Search all snacks
+    </a>
+  </li>
+</ul>
+`;
