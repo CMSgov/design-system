@@ -50,17 +50,14 @@ if [ "$DELETE_LAST" = true ]; then
   echo
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
-    echo "${GREEN}Undoing last release...${NC}"
+    echo "${GREEN}Removing last set of tags...${NC}"
     git tag -d $TAGS
     git push origin --delete $TAGS
-    echo "${GREEN}Tags deleted...${NC}"
-    git revert $LAST_COMMIT --no-edit
-    git push origin
-    echo "${GREEN}Version bumps reverted...${NC}"
   fi
   exit 0
 fi
 
+# bump current versions in active branch
 echo "${GREEN}Bumping package versions...${NC}"
 PRE_VERSION_HASH=$(git rev-parse HEAD)
 yarn lerna version --no-push --exact ${EXTRA_OPTS[@]}
@@ -71,12 +68,25 @@ if [ "$PRE_VERSION_HASH" = "$POST_VERSION_HASH" ]; then
   exit 1
 fi
 
+# read tags and push to active branch 
 echo "${GREEN}Pushing tags and version update commit to Github...${NC}"
 read_previous_commit_tags
 
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
 git push --set-upstream origin $BRANCH
 git push origin $TAGS
+
+# create temporary release branch from latest commit which is tagged
+# add an empty commit so it can be pushed to origin and PR'd then 
+# move back to previous branch so tags can be deleted with --undo
+# if necessary.
+echo "${GREEN}Creating temporary release branch...${NC}"
+BRANCHREF=$(git rev-parse --short HEAD)
+TEMP_BRANCH="release-${BRANCHREF}"
+git checkout -b $TEMP_BRANCH
+git commit --allow-empty -m "DS Release Bump"
+git push --set-upstream origin $TEMP_BRANCH
+git checkout $BRANCH
 
 echo ""
 echo "${GREEN}Release has been tagged and pushed to origin.${NC}"
@@ -87,7 +97,7 @@ echo "${YELLOW}-------${NC}"
 echo ""
 echo "${YELLOW}NEXT STEPS:${NC}"
 echo ""
-echo "${YELLOW}  1. Create a pull request for merging \`${CYAN}$BRANCH${YELLOW}\` into master to save the version bump${NC}."
+echo "${YELLOW}  1. Create a pull request for merging \`${CYAN}$TEMP_BRANCH${YELLOW}\` into master to save the version bump${NC}."
 echo ""
 echo "${YELLOW}  2. Publish this release using the \`${CYAN}publish${YELLOW}\` jenkins job${NC}."
 echo ""
