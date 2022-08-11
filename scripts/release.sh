@@ -54,7 +54,7 @@ if [ "$DELETE_LAST" = true ]; then
     git tag -d $TAGS
     git push origin --delete $TAGS
     echo "${GREEN}Tags deleted...${NC}"
-    git revert $LAST_COMMIT
+    git revert $LAST_COMMIT --no-edit
     git push origin
     echo "${GREEN}Version bumps reverted...${NC}"
   fi
