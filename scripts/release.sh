@@ -60,9 +60,9 @@ if [ "$DELETE_LAST" = true ]; then
 fi
 
 echo "${GREEN}Bumping package versions...${NC}"
-PRE_VERSION_HASH=$(git rev-parse HEAD)
+export PRE_VERSION_HASH=$(git rev-parse HEAD)
 yarn lerna version --no-push --exact ${EXTRA_OPTS[@]}
-POST_VERSION_HASH=$(git rev-parse HEAD)
+export POST_VERSION_HASH=$(git rev-parse HEAD)
 
 if [ "$PRE_VERSION_HASH" = "$POST_VERSION_HASH" ]; then
   echo "${RED}No bump commit detected. exiting...${NC}"
