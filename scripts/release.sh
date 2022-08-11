@@ -9,6 +9,8 @@ CYAN='\033[0;36m'
 NC='\033[0m' # No color
 
 read_previous_commit_tags() {
+  # Get the last commit to undo
+  LAST_COMMIT=$(git rev-parse HEAD)
   # Grep the last commit message for package versions
   PACKAGE_VERSIONS=$(git log -1 --pretty=%B | grep -o "@.*$")
   # Take the first one we find to use in example command
@@ -52,7 +54,7 @@ if [ "$DELETE_LAST" = true ]; then
     git tag -d $TAGS
     git push origin --delete $TAGS
     echo "${GREEN}Tags deleted...${NC}"
-    git revert $POST_VERSION_HASH
+    git revert $LAST_COMMIT
     git push origin
     echo "${GREEN}Version bumps reverted...${NC}"
   fi
@@ -60,9 +62,9 @@ if [ "$DELETE_LAST" = true ]; then
 fi
 
 echo "${GREEN}Bumping package versions...${NC}"
-export PRE_VERSION_HASH=$(git rev-parse HEAD)
+PRE_VERSION_HASH=$(git rev-parse HEAD)
 yarn lerna version --no-push --exact ${EXTRA_OPTS[@]}
-export POST_VERSION_HASH=$(git rev-parse HEAD)
+POST_VERSION_HASH=$(git rev-parse HEAD)
 
 if [ "$PRE_VERSION_HASH" = "$POST_VERSION_HASH" ]; then
   echo "${RED}No bump commit detected. exiting...${NC}"
