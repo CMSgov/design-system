@@ -22,6 +22,8 @@ $font-path: '@cmsgov/ds-medicare-gov/dist/fonts';
 [data-theme='healthcare'] {
   // TODO: update with index for hgov components. But for now, want to solve errors one component at a time
   @import '@cmsgov/ds-healthcare-gov/src/styles/components/inset';
+  @import '@cmsgov/ds-healthcare-gov/src/styles/components/logo';
+  @import '@cmsgov/ds-healthcare-gov/src/styles/components/footer';
 }
 
 @import 'pages/feedback.scss';
