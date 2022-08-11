@@ -307,7 +307,7 @@
 --text-input__border-color--success: #2a9526;
 --text-input__color: #404040;
 --text-input__padding: 8px;
---text-input__border-radius: 0;
+--text-input__border-radius: 3px;
 --tooltip__background-color: #ffffff;
 --tooltip__border-color: #404040;
 --tooltip__color: #404040;
