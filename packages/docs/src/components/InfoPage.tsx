@@ -10,13 +10,14 @@ import ContentRenderer from './ContentRenderer';
  * Template for information content pages.
  */
 const InfoPage = ({ data, location }: MdxQuery) => {
-  const { frontmatter, body, tableOfContents } = data.mdx;
+  const { frontmatter, body, tableOfContents, slug } = data.mdx;
   const theme = useTheme();
 
   return (
     <Layout
       frontmatter={frontmatter}
       location={location}
+      slug={slug}
       theme={theme}
       tableOfContentsData={tableOfContents?.items}
     >
@@ -47,6 +48,7 @@ export const query = graphql`
           sketchLink
         }
       }
+      slug
       body
       tableOfContents(maxDepth: 3)
     }
