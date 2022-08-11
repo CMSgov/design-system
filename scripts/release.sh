@@ -40,7 +40,7 @@ git fetch --tags
 
 if [ "$DELETE_LAST" = true ]; then
   read_previous_commit_tags
-  echo "${RED}This release branch and the following tags will be deleted locally and on origin${NC}"
+  echo "${RED}The following tags will be deleted locally and on origin${NC}"
   echo ""
   echo "${PACKAGE_VERSIONS}"
   echo ""
@@ -49,37 +49,27 @@ if [ "$DELETE_LAST" = true ]; then
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
     echo "${GREEN}Undoing last release...${NC}"
-    CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
     git tag -d $TAGS
     git push origin --delete $TAGS
-    git push origin --delete $CURRENT_BRANCH
-    git checkout -
-    git branch -D $CURRENT_BRANCH
   fi
   exit 0
 fi
 
-echo "${GREEN}Creating release branch...${NC}"
-BRANCHREF=$(git rev-parse --short HEAD)
-BRANCH="release-${BRANCHREF}"
-git checkout -b $BRANCH
-
-echo "${GREEN}Bumping version...${NC}"
+echo "${GREEN}Bumping package versions...${NC}"
 PRE_VERSION_HASH=$(git rev-parse HEAD)
 yarn lerna version --no-push --exact ${EXTRA_OPTS[@]}
 POST_VERSION_HASH=$(git rev-parse HEAD)
 
 if [ "$PRE_VERSION_HASH" = "$POST_VERSION_HASH" ]; then
-  echo "${RED}No bump commit detected. Removing release branch and exiting...${NC}"
-  git checkout -
-  git branch -D $BRANCH
+  echo "${RED}No bump commit detected. exiting...${NC}"
   exit 1
 fi
 
-echo "${GREEN}Pushing tag and release commit to Github...${NC}"
+echo "${GREEN}Pushing tags and version update commit to Github...${NC}"
 read_previous_commit_tags
 
-git push --set-upstream origin $BRANCH
+# push current branch 
+git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)
 git push origin $TAGS
 
 echo ""
@@ -93,5 +83,5 @@ echo "${YELLOW}NEXT STEPS:${NC}"
 echo ""
 echo "${YELLOW}  1. Create a pull request for merging \`${CYAN}$BRANCH${YELLOW}\` into master to save the version bump${NC}"
 echo ""
-echo "${YELLOW}  2. Publish this release to npm using the \`${CYAN}publish-packages${YELLOW}\` job${NC}"
+echo "${YELLOW}  2. Publish this release to npm using the \`${CYAN}publish${YELLOW}\` job${NC}"
 echo ""
