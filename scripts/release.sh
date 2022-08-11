@@ -9,6 +9,8 @@ CYAN='\033[0;36m'
 NC='\033[0m' # No color
 
 read_previous_commit_tags() {
+  # Get the last commit to undo
+  LAST_COMMIT=$(git rev-parse HEAD)
   # Grep the last commit message for package versions
   PACKAGE_VERSIONS=$(git log -1 --pretty=%B | grep -o "@.*$")
   # Take the first one we find to use in example command
@@ -51,6 +53,10 @@ if [ "$DELETE_LAST" = true ]; then
     echo "${GREEN}Undoing last release...${NC}"
     git tag -d $TAGS
     git push origin --delete $TAGS
+    echo "${GREEN}Tags deleted...${NC}"
+    git revert $LAST_COMMIT --no-edit
+    git push origin
+    echo "${GREEN}Version bumps reverted...${NC}"
   fi
   exit 0
 fi
@@ -68,8 +74,8 @@ fi
 echo "${GREEN}Pushing tags and version update commit to Github...${NC}"
 read_previous_commit_tags
 
-# push current branch 
-git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+git push --set-upstream origin $BRANCH
 git push origin $TAGS
 
 echo ""
@@ -81,7 +87,7 @@ echo "${YELLOW}-------${NC}"
 echo ""
 echo "${YELLOW}NEXT STEPS:${NC}"
 echo ""
-echo "${YELLOW}  1. Create a pull request for merging \`${CYAN}$BRANCH${YELLOW}\` into master to save the version bump${NC}"
+echo "${YELLOW}  1. Create a pull request for merging \`${CYAN}$BRANCH${YELLOW}\` into master to save the version bump${NC}."
 echo ""
-echo "${YELLOW}  2. Publish this release to npm using the \`${CYAN}publish${YELLOW}\` job${NC}"
+echo "${YELLOW}  2. Publish this release using the \`${CYAN}publish${YELLOW}\` jenkins job${NC}."
 echo ""
