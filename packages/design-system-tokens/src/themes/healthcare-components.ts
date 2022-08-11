@@ -301,6 +301,10 @@ export const components: AnyTokenValues = {
     '-icon__color-active':                        t.color['white'],
   },
 
+  'footer': {
+    '__list-marker-size':                         '2px'
+  },
+
   'form': {
     '__max-width':                                '460px',
     '__max-width--small':                         '6em',

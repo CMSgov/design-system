@@ -230,6 +230,7 @@
 --filter-chip__color--active: #ffffff;
 --filter-chip-icon__color: #262626;
 --filter-chip-icon__color-active: #ffffff;
+--footer__list-marker-size: 2px;
 --form__max-width: 460px;
 --form__max-width--small: 6em;
 --form__max-width--medium: 12em;
