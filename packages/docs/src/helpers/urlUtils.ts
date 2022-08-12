@@ -1,5 +1,6 @@
 import join from 'url-join';
 import { withPrefix } from 'gatsby';
+import { LocationInterface } from './graphQLTypes';
 
 export function makeGithubUrl(pathname = '') {
   const ghUrl = 'https://github.com/CMSgov/design-system';
@@ -24,8 +25,8 @@ export function makeStorybookUrl(storyId, theme) {
   return withPrefix(`/storybook/?path=/story/${storyId}&globals=theme:${theme}`);
 }
 
-export function makePageUrl(fileRelativePath) {
-  return `/${fileRelativePath.replace('.mdx', '/')}`;
+export function makePageUrl(fileRelativePath, location: LocationInterface) {
+  return join('/', fileRelativePath.replace('.mdx', ''), '/', location.search);
 }
 
 /**
@@ -67,7 +68,7 @@ export function setQueryParam(name: string, value: string, reloadPage: boolean =
     if (reloadPage) {
       window.location.search = url.searchParams.toString();
     } else {
-      window.history.pushState({}, '', url);
+      window.history.replaceState({}, '', url);
     }
   }
 }

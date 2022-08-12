@@ -17,7 +17,7 @@ const level1ItemOrder = [
  * determines if the item name is included in the location pathname
  */
 const isItemSelected = (name: string, location: LocationInterface) =>
-  location?.pathname.includes(name);
+  location?.pathname.includes(name.replace('.mdx', ''));
 
 /**
  * Checks sub nav items to see if any are currently selected
@@ -39,12 +39,12 @@ const formatNavItemLabel = (name: string): string => {
 const formatNavItemData = ({ childMdx, relativePath }: NavItem, location: LocationInterface) => {
   const frontmatter = childMdx?.frontmatter;
   const name = frontmatter?.title || '';
-  const url = makePageUrl(relativePath);
+  const url = makePageUrl(relativePath, location);
   return {
     label: formatNavItemLabel(name),
     url,
     id: relativePath,
-    selected: isItemSelected(url, location),
+    selected: isItemSelected(relativePath, location),
     order: frontmatter?.order || 0,
   };
 };
@@ -115,7 +115,7 @@ export const convertToNavItems = (
     const orderVal = Math.min(...subNavItemsOrderVals);
 
     const labelText = formatNavItemLabel(dataItem.fieldValue);
-    const isSelected = isItemSelected(dataItem.fieldValue, location);
+    const isSelected = subNavItems.some((subNavItem) => subNavItem.selected);
 
     // add level 1 item & sub items
     verticalNavItems.push({

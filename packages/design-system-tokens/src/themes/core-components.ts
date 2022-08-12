@@ -395,6 +395,8 @@ export const components: AnyTokenValues = {
     '__line-height':                              '1.3',
     '__background-color--disabled':               t.color['gray-lighter'],
     '__border-width':                             '2px',
+    '__border-width--error':                      '3px',
+    '__border-width--success':                    '3px',
     '__border-color':                             t.color['base'],
     '__border-color--disabled':                   t.color['gray-light'],
     '__border-color--error':                      t.color['error'],

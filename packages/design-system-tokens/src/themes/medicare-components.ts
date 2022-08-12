@@ -396,6 +396,8 @@ export const components: AnyTokenValues = {
     '__line-height':                              '1.3',
     '__background-color--disabled':               t.color['gray-lighter'],
     '__border-width':                             '2px',
+    '__border-width--error':                      '3px',
+    '__border-width--success':                    '3px',
     '__border-color':                             t.color['gray-light'],
     '__border-color--disabled':                   t.color['gray-warm-dark'],
     '__border-color--error':                      t.color['error'],
@@ -404,7 +406,7 @@ export const components: AnyTokenValues = {
     '__border-color--success':                    t.color['success-light'],
     '__color':                                    t.color['gray-warm-dark'],
     '__padding':                                  t.spacer['1'],
-    '__border-radius':                            '0',
+    '__border-radius':                            '3px',
   },
 
   'tooltip': {
