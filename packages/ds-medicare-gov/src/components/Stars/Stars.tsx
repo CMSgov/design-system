@@ -2,12 +2,25 @@ import React, { FunctionComponent } from 'react';
 import { RoundedStarIcon } from '../Icons';
 
 interface StarsProps {
+  /**
+   * Describes the number of stars to be filled in (in .5 increments)
+   */
   number: number;
+  /**
+   * Describes the total number of stars to be displayed.
+   */
   total?: number;
+  /**
+   * Describes if the stars should be hidden from a screen reader.
+   */
   ariaHidden?: boolean;
 }
 
-const Stars: FunctionComponent<StarsProps> = ({ number, total, ariaHidden = false }) => {
+const Stars: FunctionComponent<StarsProps> = ({
+  number,
+  total,
+  ariaHidden = false,
+}: StarsProps) => {
   const totalStars = total && number < 11 ? Math.ceil(total) : 5;
   const completeStars = Math.floor(number); // 3.5 -> 3
   const halfStar = number - completeStars !== 0; // 3.5 - 3 = 0.5, so half star exists
