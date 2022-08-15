@@ -71,6 +71,7 @@ const config: GatsbyConfig = {
         babelrcRoots: [
           '../design-system/src/components/*',
           '../ds-healthcare-gov/src/components/*',
+          '../ds-medicare-gov/src/components/*',
         ],
       },
     },
