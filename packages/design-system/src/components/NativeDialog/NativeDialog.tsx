@@ -16,10 +16,15 @@ interface NativeDialogProps extends Omit<DialogHTMLAttributes<HTMLElement>, 'chi
    * for more details.
    */
   showModal?: boolean;
+  /**
+   * By default, the Escape key exits the modal. Pass `false`, and it won't.
+   */
+  escapeExits?: boolean;
 }
 
 const NativeDialog = ({
   children,
+  escapeExits,
   exit,
   showModal,
   backdropClickExits,
@@ -67,13 +72,26 @@ const NativeDialog = ({
       dialogNode.addEventListener('click', handleClick);
     }
 
+    const handleDisablingEscapeKey = (event: KeyboardEvent) => {
+      const ESCAPE_KEY = 27;
+      if (event.keyCode === ESCAPE_KEY || event.key === 'Escape') {
+        event.preventDefault();
+      }
+    };
+    if (escapeExits === false) {
+      dialogNode.addEventListener('keydown', handleDisablingEscapeKey);
+    }
+
     return () => {
       dialogNode.removeEventListener('cancel', handleCancel);
       if (backdropClickExits) {
         dialogNode.removeEventListener('click', handleClick);
       }
+      if (escapeExits === false) {
+        dialogNode.removeEventListener('keydown', handleDisablingEscapeKey);
+      }
     };
-  }, [exit, backdropClickExits]);
+  }, [escapeExits, exit, backdropClickExits]);
 
   return (
     <dialog ref={dialogRef} {...dialogProps}>

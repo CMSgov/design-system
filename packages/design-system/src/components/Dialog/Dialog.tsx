@@ -108,7 +108,7 @@ export interface DialogProps {
   /**
    * By default, the Escape key exits the modal. Pass `false`, and it won't.
    */
-  escapeExits?: boolean | undefined;
+  escapeExits?: boolean;
 }
 
 export const Dialog = (props: DialogProps) => {
@@ -125,7 +125,6 @@ export const Dialog = (props: DialogProps) => {
     closeButtonText,
     closeButtonVariation,
     closeIcon,
-    escapeExits,
     headerClassName,
     heading,
     onEnter,
@@ -187,7 +186,6 @@ export const Dialog = (props: DialogProps) => {
 Dialog.defaultProps = {
   closeButtonVariation: 'ghost',
   closeIcon: <CloseIcon />,
-  escapeExits: true,
   underlayClickExits: false,
 };
 

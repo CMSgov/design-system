@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Dialog as DialogComponent } from './Dialog';
+import { Dialog } from './Dialog';
 import Button from '../Button/Button';
 
 export default {
   title: 'Components/Dialog',
-  component: DialogComponent,
+  component: Dialog,
   argTypes: {
     analytics: { control: false },
     children: { control: false },
@@ -20,8 +20,6 @@ export default {
   },
   args: {
     alert: false,
-    escapeExits: true,
-    underlayClickExits: true,
     closeButtonVariation: 'ghost',
     children: (
       <div>
@@ -52,7 +50,7 @@ export const DialogExample = ({ ...args }) => {
       </Button>
 
       {shown && (
-        <DialogComponent
+        <Dialog
           {...args}
           getApplicationNode={() => document.getElementById('storybook-preview-iframe')}
           onExit={hideModal}
