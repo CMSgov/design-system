@@ -25,7 +25,6 @@ export default {
       },
     ],
   },
-  decorators: [(Story) => <div data-theme="medicare">{Story()}</div>],
 };
 
 const Template = ({ data, ...args }) => <GlobalHeader {...args} />;

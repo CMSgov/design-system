@@ -12,7 +12,6 @@ export default {
     openItems: [0],
   },
   subcomponents: { AccordionItem },
-  decorators: [(Story) => <div data-theme="healthcare">{Story()}</div>],
 };
 
 const Template = (args) => <Accordion {...args} />;

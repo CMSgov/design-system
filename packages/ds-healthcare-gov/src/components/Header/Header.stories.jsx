@@ -26,7 +26,6 @@ export default {
     className: '',
     firstName: 'Margaret FirstName',
   },
-  decorators: [(Story) => <div data-theme="healthcare">{Story()}</div>],
 };
 
 const Template = ({ data, ...args }) => <Header {...args} />;
