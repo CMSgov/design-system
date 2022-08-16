@@ -90,7 +90,7 @@ export interface DialogProps {
    * That also makes it easier to create your own "close modal" buttons; because you
    * have the function that closes the modal right there, written by you, at your disposal.
    */
-  onExit?(event: React.MouseEvent | React.KeyboardEvent): void;
+  onExit(event: React.MouseEvent | React.KeyboardEvent): void;
   /**
    * The Dialog's size parameter.
    */
