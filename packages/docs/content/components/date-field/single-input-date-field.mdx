@@ -1,21 +1,44 @@
 ---
 title: Single-input date field
-relatedUswdsGuidance: components/memorable-date/
+intro: Date field (single-input) provides date entry, using a text field, in a single input.
+core:
+  githubLink: design-system/src/components/DateField
+  sketchLink: jgLGlZm
+  storybookLink: components-singleinputdatefield--default
+healthcare:
+  sketchLink: L03Rw5W
+medicare:
+  sketchLink: l1ymmbO
 ---
 
-Date field (single-input) provides date entry, using a text field, in a single input.
-
-## `<SingleInputDateField>`
+## Examples
 
 <StorybookExample
   componentName="singleInputDateField"
-  sourceFilePath="components/DateField/SingleInputDateField.tsx"
   storyId="components-singleinputdatefield--default"
 />
 
-### Props
+## Code
+
+### React
 
 <PropTable componentName="SingleInputDateField" />
+
+### Styles
+
+The following Sass variables can be overridden to customize Input/Form components:
+
+<ComponentThemeOptions
+  componentname="text-input"
+/>
+
+#### Form components
+
+This component also makes use of form field styles, which can be customized by the following variables:
+
+<ComponentThemeOptions
+  componentname="form"
+/>
 
 ## Guidance
 
@@ -38,20 +61,6 @@ Allow users to have flexibility in entering the date, such as allowing one-digit
 
 - These text fields should follow the [accessibility guidelines for all text inputs](/components/text-field/#guidance).
 - Users will be able to enter a variety of date formats that automatically format to the correct date format of MM/DD/YYYY. This change happens once the form field loses focus. For example, a user enters a date as "4122020" and it changes to "04/01/2020" once focus leaves the date input.
-
-## Customization
-
-The following Sass variables can be overridden to customize Input/Form components:
-
-<ComponentThemeOptions
-  componentname="text-input"
-/>
-
-### Form components
-
-<ComponentThemeOptions
-  componentname="form"
-/>
 
 ### Related components
 

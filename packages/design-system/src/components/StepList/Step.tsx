@@ -80,7 +80,7 @@ export const Step = ({ step, ...props }: StepProps) => {
 
   let linkClassName;
   if (start || resume) {
-    linkClassName = 'ds-c-button ds-c-button--primary';
+    linkClassName = 'ds-c-button ds-c-button--solid ds-c-button--main ds-c-button--on-light';
   }
 
   // TODO: make heading required after removing title

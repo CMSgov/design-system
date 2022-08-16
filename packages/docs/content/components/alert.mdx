@@ -1,17 +1,22 @@
 ---
 title: Alert
-relatedUswdsGuidance: components/alerts
+intro: Alerts keep users informed of important and sometimes time-sensitive changes.
+core:
+  githubLink: design-system/src/components/Alert
+  sketchLink: 9P3rvwn
+  storybookLink: components-alert--default
+healthcare:
+  sketchLink: nRKbw3z
+medicare:
+  sketchLink: 1K9gg0y
 ---
 
-Alerts keep users informed of important and sometimes time-sensitive changes.
-
-## `<Alert>`
+## Examples
 
 ### Default
 
 <StorybookExample
   componentName="alert"
-  sourceFilePath="components/Alert/Alert.tsx"
   storyId="components-alert--default"
 />
 
@@ -19,7 +24,6 @@ Alerts keep users informed of important and sometimes time-sensitive changes.
 
 <StorybookExample
   componentName="error alert"
-  sourceFilePath="components/Alert/Alert.tsx"
   storyId="components-alert--error-alert"
 />
 
@@ -27,7 +31,6 @@ Alerts keep users informed of important and sometimes time-sensitive changes.
 
 <StorybookExample
   componentName="warning alert"
-  sourceFilePath="components/Alert/Alert.tsx"
   storyId="components-alert--warning-alert"
 />
 
@@ -35,7 +38,6 @@ Alerts keep users informed of important and sometimes time-sensitive changes.
 
 <StorybookExample
   componentName="success alert"
-  sourceFilePath="components/Alert/Alert.tsx"
   storyId="components-alert--success-alert"
 />
 
@@ -43,13 +45,49 @@ Alerts keep users informed of important and sometimes time-sensitive changes.
 
 <StorybookExample
   componentName="lightweight alert"
-  sourceFilePath="components/Alert/Alert.tsx"
   storyId="components-alert--light-weight"
 />
 
-### Props
+## Code
+
+### React
 
 <PropTable componentName="Alert" />
+
+### Styles
+
+The following Sass variables can be overridden to customize Alert components:
+
+<ComponentThemeOptions
+  componentname="alert"
+/>
+
+### Google Analytics
+
+**Analytics event tracking is disabled by default.**
+
+#### Enable event tracking
+
+Import and set the `setAlertSendsAnalytics` feature flag to `true` in your application's entry file:
+
+```js
+import { setAlertSendsAnalytics } from '@cmsgov/<design-system-package>';
+setAlertSendsAnalytics(true);
+```
+
+On applications where the page has `utag` loaded, the data goes to Tealium which allows it to route to Google Analytics or the currently approved data analytics tools.
+
+#### Disable event tracking
+
+For the `analytics` prop, pass the value `false` to the component to disable analytics tracking for a singular component instance
+
+```js
+analytics={false}
+```
+
+#### Override event tracking
+
+A custom heading value can be sent for an analytics event by using the prop `analyticsLabelOverride`. It is recommended that this value be used to prevent sensitive personal information from being passed to analytics trackers.
 
 ## Guidance
 
@@ -76,10 +114,6 @@ Alerts keep users informed of important and sometimes time-sensitive changes.
 - Users generally won’t read documentation but will read a message that helps them resolve an error; include some educational material in your error message.
 - If the error relates to specific text fields, give these fields an error state as well.
 
-### Learn more
-
-- [18F Content Guide \- Active voice](https://content-guide.18f.gov/active-voice/)
-
 ### Accessibility
 
 - Use the ARIA `role="alert"` to inform assistive technologies of a time-sensitive and important message that is not interactive. If the message is interactive, use the `role="alertdialog"` instead.
@@ -89,37 +123,7 @@ Alerts keep users informed of important and sometimes time-sensitive changes.
 - Alerts should give users adequate time to review and comprehend the provided information. Avoid hiding alerts using a timer.
 - Include a mechanism like a button to dismiss alerts where appropriate.
 
-## Customization
 
-The following Sass variables can be overridden to customize Alert components:
+## Learn more
 
-<ComponentThemeOptions
-  componentname="alert"
-/>
-
-## Google Analytics
-
-**Analytics event tracking is disabled by default.**
-
-### Enable event tracking
-
-Import and set the `setAlertSendsAnalytics` feature flag to `true` in your application's entry file:
-
-```js
-import { setAlertSendsAnalytics } from '@cmsgov/<design-system-package>';
-setAlertSendsAnalytics(true);
-```
-
-On applications where the page has `utag` loaded, the data goes to Tealium which allows it to route to Google Analytics or the currently approved data analytics tools.
-
-### Disable event tracking
-
-For the `analytics` prop, pass the value `false` to the component to disable analytics tracking for a singular component instance
-
-```js
-analytics={false}
-```
-
-### Override event tracking
-
-A custom heading value can be sent for an analytics event by using the prop `analyticsLabelOverride`. It is recommended that this value be used to prevent sensitive personal information from being passed to analytics trackers.
+- [18F Content Guide \- Active voice](https://content-guide.18f.gov/active-voice/)

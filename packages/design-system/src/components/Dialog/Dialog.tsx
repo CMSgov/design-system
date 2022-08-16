@@ -185,7 +185,7 @@ export const Dialog = (props: DialogProps) => {
 };
 
 Dialog.defaultProps = {
-  closeButtonVariation: 'transparent',
+  closeButtonVariation: 'ghost',
   closeIcon: <CloseIcon />,
   escapeExits: true,
   underlayClickExits: false,

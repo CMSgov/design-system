@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { withPrefix } from 'gatsby';
 import classnames from 'classnames';
-import CodeSnippet from './CodeSnippet';
+import StorybookExampleFooter from './StorybookExampleFooter';
 
 // @TODO: grab these from tokens
 const breakpointOpts = {
@@ -21,6 +21,10 @@ interface ResponsiveExample {
    * Accessible text to describe iframe content
    */
   title: string;
+  /**
+   * Current theme
+   */
+  theme: string;
 }
 
 /**
@@ -30,14 +34,15 @@ interface ResponsiveExample {
  *
  * To use this example, you must have a corresponding storybook story to reference
  */
-const ResponsiveExample = ({ storyId, title }: ResponsiveExample) => {
+const ResponsiveExample = ({ storyId, title, theme }: ResponsiveExample) => {
   const [iframeBreakpoint, setIframeBreakpoint] = useState<string>('xl');
   const [iframeHeight, setiFrameHeight] = useState<number>(0);
-  const [iframeHtml, setiFrameHtml] = useState<string>('');
   const [exampleWrapperWidth, setExampleWrapperWidth] = useState<number>(0);
   const iframeRef = useRef<HTMLIFrameElement>();
   const exampleWrapperRef = useRef<HTMLDivElement>();
-  const iframeUrl = withPrefix(`/storybook/iframe.html?id=${storyId}&viewMode=story`);
+  const iframeUrl = withPrefix(
+    `/storybook/iframe.html?id=${storyId}&viewMode=story&globals=theme:${theme}`
+  );
 
   useEffect(() => {
     if (window) {
@@ -70,6 +75,12 @@ const ResponsiveExample = ({ storyId, title }: ResponsiveExample) => {
     }
   };
 
+  // calculate css height with fallback
+  const getHeight = () => {
+    const heightCalc = getScale() * iframeHeight;
+    return heightCalc ? heightCalc : '0';
+  };
+
   // when the iframe content resizes, recalculate the height at which it should be shown
   const handleIframeResize = () => {
     if (iframeRef.current) {
@@ -85,11 +96,6 @@ const ResponsiveExample = ({ storyId, title }: ResponsiveExample) => {
       contentWindow.addEventListener('resize', handleIframeResize);
       iframeRef.current.contentDocument.documentElement.classList.add('ds-u-overflow--hidden');
       handleIframeResize();
-
-      const rootEl = iframeRef.current.contentDocument.body.querySelector('#root');
-      if (rootEl) {
-        setiFrameHtml(rootEl.innerHTML);
-      }
     }
   };
 
@@ -116,7 +122,7 @@ const ResponsiveExample = ({ storyId, title }: ResponsiveExample) => {
         </ol>
         <div
           className="c-resposive-example__example-wrapper "
-          style={{ height: getScale() * iframeHeight }}
+          style={{ height: getHeight() }}
           ref={exampleWrapperRef}
         >
           <div
@@ -139,7 +145,7 @@ const ResponsiveExample = ({ storyId, title }: ResponsiveExample) => {
           </div>
         </div>
       </div>
-      <CodeSnippet html={iframeHtml} />
+      <StorybookExampleFooter storyId={storyId} theme={theme} />
     </>
   );
 };

@@ -1,33 +1,41 @@
 ---
 title: Vertical navigation
-relatedUswdsGuidance: components/sidenav
+intro: Hierarchical, vertical navigation.
+core:
+  githubLink: design-system/src/components/VerticalNav
+  sketchLink: 1K9gbq5
+  storybookLink: components-vertical-nav--default-vertical-nav
+healthcare:
+  sketchLink: 8yj1zGO
 ---
 
-import ViewSourceLink from '../../src/components/ViewSourceLink';
 
-Hierarchical, vertical navigation.
-
-## `<VerticalNav>`
-
-A `VerticalNav` component accepts list items as a JSON object and includes additional functionality like collapsible nested menus.
+## Examples
 
 <StorybookExample
   componentName="vertical nav"
-  sourceFilePath="components/VerticalNav/VerticalNav.tsx"
   storyId="components-vertical-nav--default-vertical-nav"
 />
 
-### Vertical Nav Props
+## Code
+
+### React
+
+A `VerticalNav` component accepts list items as a JSON object and includes additional functionality like collapsible nested menus.
 
 <PropTable componentName="VerticalNav" />
 
-## `<VerticalNavItem>`
-
-<ViewSourceLink sourceFilePath="components/VerticalNav/VerticalNavItem.tsx" />
-
-### Vertical Nav Item Props
+#### `<VerticalNavItem>` component
 
 <PropTable componentName="VerticalNavItem" />
+
+### Styles
+
+The following Sass variables can be overridden to customize VerticalNav components:
+
+<ComponentThemeOptions
+  componentname="vertical-nav"
+/>
 
 ## Guidance
 
@@ -61,19 +69,11 @@ A `VerticalNav` component accepts list items as a JSON object and includes addit
   - This prop is necessary only when there is more than one nav element on a page.
   - Don't include the word "Menu" in the label. Most screen readers will announce that information already. Instead, provide more context to what's in the menu and/or its location. Like "Main" or "Social".
 
-## Customization
-
-The following Sass variables can be overridden to customize VerticalNav components:
-
-<ComponentThemeOptions
-  componentname="vertical-nav"
-/>
-
 ### Related patterns
 
 - [Tabs](/components/tabs/)
 
-### Learn more
+## Learn more
 
 - [18F Content Guide \- Heading capitalization](https://content-guide.18f.gov/capitalization/#headings)
 - [18F Content Guide \- Headings and titles](https://content-guide.18f.gov/headings-and-titles/)

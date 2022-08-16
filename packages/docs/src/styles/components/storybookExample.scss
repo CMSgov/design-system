@@ -12,12 +12,14 @@
   width: 100%;
 }
 
-.c-storybook-example__link {
-  background-color: $color-gray-lightest;
-  padding: $spacer-1;
+.c-storybook-example-footer {
+  position: relative;
+  margin-top: $spacer-1;
+}
 
-  & .ds-c-icon {
-    font-size: 10px;
-    margin-left: $spacer-1;
-  }
+.c-storybook-example-footer__iframe {
+  border: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
 }

@@ -1,7 +1,7 @@
 /* eslint-disable react/no-danger */
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import CodeSnippet from './CodeSnippet';
+import ExampleFooter from './ExampleFooter';
 
 interface EmbeddedExampleProps {
   children: React.ReactElement;
@@ -19,7 +19,7 @@ const EmbeddedExample = ({ children }: EmbeddedExampleProps) => {
   return (
     <section className="c-embedded-example">
       <div className="ds-u-border--1 ds-u-padding--2">{children}</div>
-      <CodeSnippet html={html} className="c-embedded-example__details" />
+      <ExampleFooter html={html} />
     </section>
   );
 };

@@ -1,13 +1,17 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { Link } from 'gatsby';
 
 import Footer from './DocSiteFooter';
 import Navigation from './DocSiteNavigation';
-import { SkipNav, Badge, UsaBanner } from '@cmsgov/design-system';
-import { LocationInterface, TableOfContentsItem } from '../helpers/graphQLTypes';
+import { SkipNav, UsaBanner } from '@cmsgov/design-system';
+import {
+  LocationInterface,
+  FrontmatterInterface,
+  TableOfContentsItem,
+} from '../helpers/graphQLTypes';
 import TableOfContents from './TableOfContents';
 import TableOfContentsMobile from './TableOfContentsMobile';
+import PageHeader from './PageHeader';
 
 import '../styles/index.scss';
 
@@ -19,25 +23,21 @@ interface LayoutProps {
    */
   children: React.ReactElement;
   /**
+   * page metadata
+   */
+  frontmatter?: FrontmatterInterface;
+  /**
    * page location data provided by gatsby
    */
   location: LocationInterface;
   /**
-   * User-visible page title
+   * Slug of current page
    */
-  pageName: string;
+  slug?: string;
   /**
-   * string for url of related guidance from USWDS
+   * Current theme name
    */
-  relatedGuidance?: string;
-  /**
-   * describes if page header should include a 'jump to guidance' link
-   */
-  showJumpToGuidance?: boolean;
-  /**
-   * describes status of page. used for component pages
-   */
-  status?: PageStatus;
+  theme: string;
   /**
    * list of heading items to be used in table of contents
    */
@@ -46,82 +46,58 @@ interface LayoutProps {
 
 const Layout = ({
   children,
-  pageName,
-  relatedGuidance,
-  showJumpToGuidance,
-  status,
+  frontmatter,
   location,
+  slug,
+  theme,
   tableOfContentsData,
 }: LayoutProps) => {
   const env = 'prod';
 
-  // TODO: update data-theme value when theme switcher is created
   return (
-    <div className="ds-base" data-theme="core">
+    <div className="ds-base">
       <Helmet
         title="CMS Design System"
         htmlAttributes={{
           lang: 'en',
         }}
+        bodyAttributes={{
+          'data-theme': theme,
+        }}
       >
         <script>{`window.tealiumEnvironment = "${env}";`}</script>
         <script src="//tags.tiqcdn.com/utag/cmsgov/cms-design/prod/utag.sync.js"></script>
       </Helmet>
-
       <SkipNav href="#main" />
 
       <UsaBanner className="ds-u-display--none ds-u-md-display--block" />
 
-      <div className="ds-l-row ds-u-margin--0">
+      <div className="ds-l-row ds-u-margin--0 full-height">
         <Navigation location={location} />
-        <main id="main" className="ds-l-md-col ds-u-padding--0 ds-u-padding-bottom--4">
-          <header className="ds-u-padding--3 ds-u-sm-padding--6 ds-u-display--block">
-            <div className="ds-u-display--flex ds-u-align-items--center">
-              <h1 className="ds-display ds-u-display--inline-block">{pageName}</h1>
-              {status && (
-                <Badge
-                  variation="warn"
-                  className="ds-u-margin-left--1 ds-u-text-transform--capitalize"
-                >
-                  {status}
-                </Badge>
-              )}
-            </div>
-
-            {(relatedGuidance || showJumpToGuidance) && (
-              <div className="ds-u-font-size--small">
-                {showJumpToGuidance && (
-                  <Link to="#guidance" className="ds-u-sm-margin-right--2">
-                    Jump to Guidance
-                  </Link>
-                )}
-                {relatedGuidance && (
-                  <div className="ds-u-sm-display--inline-block">
-                    {' '}
-                    View related guidance in the{' '}
-                    <a href={`https://designsystem.digital.gov/${relatedGuidance}`}>
-                      U.S. Web Design System
-                    </a>
-                  </div>
-                )}
-              </div>
-            )}
-          </header>
+        <main id="main" className="ds-l-md-col ds-u-padding--0 ds-u-padding-bottom--4 page-main">
+          <PageHeader frontmatter={frontmatter} theme={theme} />
           <article className="ds-u-md-display--flex ds-u-padding-x--3 ds-u-sm-padding-x--6 ds-u-sm-padding-bottom--6 ds-u-sm-padding-top--1 ds-u-padding-bottom--3 page-content">
             <div className="page-content__content ds-l-lg-col--9 ds-u-padding-left--0">
               <div className="ds-u-display--block ds-u-lg-display--none">
-                <TableOfContentsMobile data={tableOfContentsData || []} />
+                <TableOfContentsMobile
+                  title={frontmatter.title}
+                  items={tableOfContentsData || []}
+                  slug={slug}
+                />
               </div>
               {children}
             </div>
             <div className="ds-l-lg-col--3 ds-u-display--none ds-u-lg-display--block">
-              <TableOfContents data={tableOfContentsData || []} />
+              <TableOfContents
+                title={frontmatter.title}
+                items={tableOfContentsData || []}
+                slug={slug}
+              />
             </div>
           </article>
+          <Footer />
         </main>
       </div>
-
-      <Footer />
     </div>
   );
 };

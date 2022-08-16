@@ -2,14 +2,67 @@ body {
   margin: 0;
 }
 
+.full-height {
+  // viewport height minus the USA banner at the top
+  height: calc(100vh - 22px);
+}
+
+.page-main {
+  display: flex;
+  flex-direction: column;
+
+  .c-footer {
+    flex-shrink: 0;
+  }
+}
+
 .page-content {
   max-width: 81rem;
+  flex: 1 0 auto;
+}
+
+@media (min-width: $width-lg) {
+  .page-content__content {
+    // removing margin for first heading on content pages
+    & > :nth-child(2) {
+      margin-top: 0;
+    }
+    > h2 {
+      font-size: $font-size-3xl;
+      font-weight: normal;
+    }
+    > h3 {
+      font-size: $font-size-2xl;
+    }
+    > h4 {
+      font-size: $font-size-xl;
+    }
+  }
 }
 
 @media (max-width: $width-lg) {
   .page-content__content {
     padding-left: 0;
     padding-right: 0;
+  }
+}
+
+.page-content__content {
+  > .ds-c-table,
+  .c-configuration-options .ds-c-table {
+    width: 100%;
+  }
+  & .c-configuration-options th,
+  .c-prop-table th {
+    background-color: $color-gray-lightest;
+  }
+  & .c-configuration-options td,
+  .c-prop-table td {
+    border-color: $color-gray-lighter;
+  }
+  & .c-configuration-options p,
+  .c-prop-table p {
+    font-size: $font-size-sm;
   }
 }
 

@@ -1,27 +1,25 @@
 ---
 title: Drawer & Help Drawer
+intro: A drawer provides a space for medium to long-form help content — content that's too long or not common enough to warrant being on the page by default.
+core:
+  githubLink: design-system/src/components/Drawer
+  sketchLink: zxawg1M
+  storybookLink: components-drawer--drawer-default
+healthcare:
+  sketchLink: GmlMnkL
 ---
-
-import ViewSourceLink from '../../src/components/ViewSourceLink';
-
-A drawer provides a space for medium to long-form help content — content that's too long or not common enough to warrant being on the page by default.
 
 On large screens it's fixed to the side of the screen, and on smaller screens it overlays the entire screen.
 
 Render the drawer below the toggle button that triggers it. This way the markup remains semantically sound and screen reader friendly.
 
-## `<Drawer>`
+## Examples
 
 <StorybookExample
   componentName="drawer"
-  sourceFilePath="components/Drawer/Drawer.tsx"
   storyId="components-drawer--drawer-default"
   minHeight={500}
 />
-
-### Props
-
-<PropTable componentName="Drawer" />
 
 ### Layout Alternatives
 
@@ -36,23 +34,62 @@ A header and/or footer can have a "sticky" position if the following properties 
   minHeight={300}
 />
 
-### Focus Trap
+## Code
 
-A focus trap can be set on a drawer if the property `hasFocusTrap` is enabled. A user can escape the focus trap by pressing the <kbd>ESC</kbd> key.
+### React
 
-## `<DrawerToggle>`
+<PropTable componentName="Drawer" />
 
-<ViewSourceLink sourceFilePath="components/Drawer/DrawerToggle.tsx" />
+#### `<DrawerToggle>`
 
 <PropTable componentName="DrawerToggle" />
 
-## `<HelpDrawer>`
+#### `<HelpDrawer>`
 
 This component is an enhanced `<Drawer>` component, providing the same properties as `<Drawer>` in addition to Google Analytics properties.
 
-<ViewSourceLink sourceFilePath="components/HelpDrawer/HelpDrawer.tsx" />
-
 <PropTable componentName="HelpDrawer" />
+
+#### Focus Trap
+
+A focus trap can be set on a drawer if the property `hasFocusTrap` is enabled. A user can escape the focus trap by pressing the <kbd>ESC</kbd> key.
+
+### Styles
+
+The following Sass variables can be overridden to customize Drawer components:
+
+<ComponentThemeOptions
+  componentname="drawer"
+/>
+
+### Google Analytics
+
+Google analytics are available via the `<HelpDrawer>` component.
+
+**Analytics event tracking is disabled by default.**
+
+#### Enable event tracking
+
+Import and set the `setHelpDrawerSendsAnalytics` feature flag to `true` in your application's entry file:
+
+```js
+import { setHelpDrawerSendsAnalytics } from '@cmsgov/<design-system-package>';
+setHelpDrawerSendsAnalytics(true);
+```
+
+On application where the page has `utag` loaded, the data goes to Tealium which allows it to route to Google Analytics or the currently approved data analytics tools.
+
+#### Disable event tracking
+
+For the `analytics` prop, pass the value `false` to the component to disable analytics tracking for a singular component instance
+
+```js
+analytics={false}
+```
+
+#### Override event tracking
+
+A custom heading value can be sent for an analytics event by using the prop `analyticsLabelOverride`. It is recommended that this value be used to prevent sensitive personal information from being passed to analytics trackers.
 
 ## Guidance
 
@@ -98,44 +135,3 @@ When the property `hasFocusTrap` is enabled...
 A focus trap should _not_ be used when it's anticipated that the user will rely on the Drawer as a reference resource for doing something outside of the Drawer. For instance, if the user is completing a form, Drawer may contain a reference guide defining specific requirements.
 
 However, there are times when it makes sense to trap focus within the Drawer. One occassion where it can benefit the user is when the Drawer is anticipated to fill the viewport of a screen, i.e., mobile layout.
-
-## Customization
-
-The following Sass variables can be overridden to customize Drawer components:
-
-<ComponentThemeOptions
-  componentname="drawer"
-/>
-
-### Future Work
-
-Future design iterations and possible user research to ensure the enhanced help drawer link design isn't confused or mistaken for transitional hyperlinks, glossary terms, or tooltips.
-
-## Google Analytics
-
-Google analytics are available via the `<HelpDrawer>` component.
-
-**Analytics event tracking is disabled by default.**
-
-### Enable event tracking
-
-Import and set the `setHelpDrawerSendsAnalytics` feature flag to `true` in your application's entry file:
-
-```js
-import { setHelpDrawerSendsAnalytics } from '@cmsgov/<design-system-package>';
-setHelpDrawerSendsAnalytics(true);
-```
-
-On application where the page has `utag` loaded, the data goes to Tealium which allows it to route to Google Analytics or the currently approved data analytics tools.
-
-### Disable event tracking
-
-For the `analytics` prop, pass the value `false` to the component to disable analytics tracking for a singular component instance
-
-```js
-analytics={false}
-```
-
-### Override event tracking
-
-A custom heading value can be sent for an analytics event by using the prop `analyticsLabelOverride`. It is recommended that this value be used to prevent sensitive personal information from being passed to analytics trackers.
