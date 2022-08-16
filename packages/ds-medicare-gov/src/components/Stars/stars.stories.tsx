@@ -13,13 +13,7 @@ export default {
   args: {
     number: 2.5,
   },
-  decorators: [
-    (Story) => (
-      <div data-theme="medicare">
-        <Story />
-      </div>
-    ),
-  ],
+  decorators: [(Story) => <div data-theme="medicare">{Story()}</div>],
 };
 
 const Template = ({ data, ...args }) => <Stars {...args} />;

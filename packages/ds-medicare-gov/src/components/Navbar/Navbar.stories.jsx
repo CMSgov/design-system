@@ -34,13 +34,7 @@ export default {
     className: '',
     inverse: true,
   },
-  decorators: [
-    (Story) => (
-      <div data-theme="medicare">
-        <Story />
-      </div>
-    ),
-  ],
+  decorators: [(Story) => <div data-theme="medicare">{Story()}</div>],
 };
 
 const Template = ({ data, ...args }) => <Navbar {...args} />;
