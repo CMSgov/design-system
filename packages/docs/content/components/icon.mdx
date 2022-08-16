@@ -5,6 +5,8 @@ core:
   githubLink: design-system/src/components/Icons
   sketchLink: ZOm83Y3
   storybookLink: components-icons--available-icons
+medicare:
+  githubLink: ds-medicare-gov/src/components/Icons
 ---
 
 import { CloseIcon, SvgIcon } from '@cmsgov/design-system';
@@ -16,10 +18,18 @@ This component is used by each individual icon component listed below.
 
 <StorybookExample
   componentName="icons"
-  sourceFilePath="components/Icons/SvgIcon.tsx"
   storyId="components-icons--available-icons"
   minHeight={250}
 />
+
+<ThemeContent onlyThemes={['medicare']}>
+  <h3 id="medicare-specific-icons"> Medicare-Specific Icons </h3>
+  <StorybookExample
+    componentName="icons-medicare"
+    storyId="medicare-icons--available-icons"
+    minHeight={250}
+  />
+</ThemeContent>
 
 ### Changing icon color
 
