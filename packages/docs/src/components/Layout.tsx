@@ -57,7 +57,7 @@ const Layout = ({
   return (
     <div className="ds-base">
       <Helmet
-        title="CMS Design System"
+        title={`${frontmatter?.title || ''} - CMS Design System`}
         htmlAttributes={{
           lang: 'en',
         }}
