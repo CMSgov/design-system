@@ -105,10 +105,6 @@ export interface DialogProps {
    * Pass `false`, and clicking on the underlay will do nothing.
    */
   underlayClickExits?: boolean | undefined;
-  /**
-   * By default, the Escape key exits the modal. Pass `false`, and it won't.
-   */
-  escapeExits?: boolean;
 }
 
 export const Dialog = (props: DialogProps) => {
