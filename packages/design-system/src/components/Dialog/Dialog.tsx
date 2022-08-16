@@ -71,6 +71,10 @@ export interface DialogProps {
    */
   heading?: React.ReactNode;
   /**
+   * A custom `id` attribute for the dialog element
+   */
+  id?: string;
+  /**
    * This function is called after the modal opens
    */
   onEnter?(): void;

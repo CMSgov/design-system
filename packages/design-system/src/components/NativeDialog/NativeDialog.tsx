@@ -9,6 +9,10 @@ interface NativeDialogProps extends Omit<DialogHTMLAttributes<HTMLElement>, 'chi
    */
   exit: (...args: any[]) => any;
   /**
+   * A custom `id` attribute for the dialog element
+   */
+  id?: string;
+  /**
    * Determines which native dialog method is called to open the dialog. If the dialog
    * is opened with `showModal`, focus will be trapped inside the dialog, and it will
    * need to be closed before the rest of the page can be interacted with. See the
