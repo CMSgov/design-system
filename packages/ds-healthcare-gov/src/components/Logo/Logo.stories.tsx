@@ -6,13 +6,7 @@ export default {
   title: 'Healthcare/Logo',
   component: Logo,
   args: {},
-  decorators: [
-    (Story) => (
-      <div data-theme="healthcare">
-        <Story />
-      </div>
-    ),
-  ],
+  decorators: [(Story) => <div data-theme="healthcare">{Story()}</div>],
 };
 
 const Template = ({ data, ...args }) => <Logo {...args} />;
