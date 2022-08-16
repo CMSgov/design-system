@@ -39,6 +39,10 @@ export interface DialogProps {
    * Aria label for the close button
    */
   ariaCloseLabel?: string;
+  /**
+   * Pass `true` to have the dialog close when its backdrop pseudo-element is clicked
+   */
+  backdropClickExits?: boolean;
   children?: React.ReactNode;
   /**
    * Additional classes to be added to the root dialog element.
@@ -95,20 +99,6 @@ export interface DialogProps {
    * If true, the modal dialog will prevent any scrolling behind the modal window.
    */
   scrollDisabled?: boolean | undefined;
-  /**
-   * Apply a class to the underlay in order to custom-style it.
-   * This module does apply various inline styles, though, so be aware that
-   * overriding some styles might be difficult. If, for example, you want
-   * to change the underlay's color, you should probably use the
-   * `underlayColor` prop instead of a class.
-   * If you would rather control all CSS, see `includeDefaultStyles`.
-   */
-  underlayClass?: string | undefined;
-  /**
-   * By default, a click on the underlay will exit the modal.
-   * Pass `false`, and clicking on the underlay will do nothing.
-   */
-  underlayClickExits?: boolean | undefined;
 }
 
 export const Dialog = (props: DialogProps) => {
@@ -131,8 +121,6 @@ export const Dialog = (props: DialogProps) => {
     onExit,
     scrollDisabled,
     size,
-    underlayClass,
-    underlayClickExits,
     ...modalProps
   } = props;
 
@@ -186,7 +174,6 @@ export const Dialog = (props: DialogProps) => {
 Dialog.defaultProps = {
   closeButtonVariation: 'ghost',
   closeIcon: <CloseIcon />,
-  underlayClickExits: false,
 };
 
 export default Dialog;

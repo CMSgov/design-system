@@ -3,6 +3,9 @@ import dialogPolyfill from './polyfill';
 
 interface NativeDialogProps extends Omit<DialogHTMLAttributes<HTMLElement>, 'children'> {
   children: React.ReactNode;
+  /**
+   * Pass `true` to have the dialog close when its backdrop pseudo-element is clicked
+   */
   backdropClickExits?: boolean;
   /**
    * Function called to close dialog.
