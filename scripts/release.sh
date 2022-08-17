@@ -9,6 +9,8 @@ CYAN='\033[0;36m'
 NC='\033[0m' # No color
 
 read_previous_commit_tags() {
+  # Get the last commit to undo
+  LAST_COMMIT=$(git rev-parse HEAD)
   # Grep the last commit message for package versions
   PACKAGE_VERSIONS=$(git log -1 --pretty=%B | grep -o "@.*$")
   # Take the first one we find to use in example command
@@ -40,7 +42,7 @@ git fetch --tags
 
 if [ "$DELETE_LAST" = true ]; then
   read_previous_commit_tags
-  echo "${RED}This release branch and the following tags will be deleted locally and on origin${NC}"
+  echo "${RED}The following tags will be deleted locally and on origin${NC}"
   echo ""
   echo "${PACKAGE_VERSIONS}"
   echo ""
@@ -48,39 +50,47 @@ if [ "$DELETE_LAST" = true ]; then
   echo
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
-    echo "${GREEN}Undoing last release...${NC}"
-    CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+    echo "${GREEN}Removing last set of tags...${NC}"
     git tag -d $TAGS
     git push origin --delete $TAGS
-    git push origin --delete $CURRENT_BRANCH
-    git checkout -
-    git branch -D $CURRENT_BRANCH
+    echo "${GREEN}Tags deleted...${NC}"
+    git revert $LAST_COMMIT --no-edit
+    git push origin
+    echo "${GREEN}Version bumps reverted...${NC}"
   fi
   exit 0
 fi
 
-echo "${GREEN}Creating release branch...${NC}"
-BRANCHREF=$(git rev-parse --short HEAD)
-BRANCH="release-${BRANCHREF}"
-git checkout -b $BRANCH
-
-echo "${GREEN}Bumping version...${NC}"
+# bump current versions in active branch
+echo "${GREEN}Bumping package versions...${NC}"
 PRE_VERSION_HASH=$(git rev-parse HEAD)
 yarn lerna version --no-push --exact ${EXTRA_OPTS[@]}
 POST_VERSION_HASH=$(git rev-parse HEAD)
 
 if [ "$PRE_VERSION_HASH" = "$POST_VERSION_HASH" ]; then
-  echo "${RED}No bump commit detected. Removing release branch and exiting...${NC}"
-  git checkout -
-  git branch -D $BRANCH
+  echo "${RED}No bump commit detected. exiting...${NC}"
   exit 1
 fi
 
-echo "${GREEN}Pushing tag and release commit to Github...${NC}"
+# read tags and push to active branch 
+echo "${GREEN}Pushing tags and version update commit to Github...${NC}"
 read_previous_commit_tags
 
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
 git push --set-upstream origin $BRANCH
 git push origin $TAGS
+
+# create temporary release branch from latest commit which is tagged
+# add an empty commit so it can be pushed to origin and PR'd then 
+# move back to previous branch so tags can be deleted with --undo
+# if necessary.
+echo "${GREEN}Creating temporary release branch...${NC}"
+BRANCHREF=$(git rev-parse --short HEAD)
+TEMP_BRANCH="release-${BRANCHREF}"
+git checkout -b $TEMP_BRANCH
+git commit --allow-empty -m "DS Release Bump"
+git push --set-upstream origin $TEMP_BRANCH
+git checkout $BRANCH
 
 echo ""
 echo "${GREEN}Release has been tagged and pushed to origin.${NC}"
@@ -91,7 +101,7 @@ echo "${YELLOW}-------${NC}"
 echo ""
 echo "${YELLOW}NEXT STEPS:${NC}"
 echo ""
-echo "${YELLOW}  1. Create a pull request for merging \`${CYAN}$BRANCH${YELLOW}\` into master to save the version bump${NC}"
+echo "${YELLOW}  1. Create a pull request for merging \`${CYAN}$TEMP_BRANCH${YELLOW}\` into master to save the version bump${NC}."
 echo ""
-echo "${YELLOW}  2. Publish this release to npm using the \`${CYAN}publish-packages${YELLOW}\` job${NC}"
+echo "${YELLOW}  2. Publish this release using the \`${CYAN}publish${YELLOW}\` jenkins job${NC}."
 echo ""

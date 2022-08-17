@@ -31,6 +31,10 @@ interface LayoutProps {
    */
   location: LocationInterface;
   /**
+   * Slug of current page
+   */
+  slug?: string;
+  /**
    * Current theme name
    */
   theme: string;
@@ -40,13 +44,24 @@ interface LayoutProps {
   tableOfContentsData?: TableOfContentsItem[];
 }
 
-const Layout = ({ children, frontmatter, location, theme, tableOfContentsData }: LayoutProps) => {
+const Layout = ({
+  children,
+  frontmatter,
+  location,
+  slug,
+  theme,
+  tableOfContentsData,
+}: LayoutProps) => {
   const env = 'prod';
+
+  const tabTitle = frontmatter?.title
+    ? `${frontmatter.title} - CMS Design System`
+    : 'CMS Design System';
 
   return (
     <div className="ds-base">
       <Helmet
-        title="CMS Design System"
+        title={tabTitle}
         htmlAttributes={{
           lang: 'en',
         }}
@@ -71,12 +86,17 @@ const Layout = ({ children, frontmatter, location, theme, tableOfContentsData }:
                 <TableOfContentsMobile
                   title={frontmatter.title}
                   items={tableOfContentsData || []}
+                  slug={slug}
                 />
               </div>
               {children}
             </div>
             <div className="ds-l-lg-col--3 ds-u-display--none ds-u-lg-display--block">
-              <TableOfContents title={frontmatter.title} items={tableOfContentsData || []} />
+              <TableOfContents
+                title={frontmatter.title}
+                items={tableOfContentsData || []}
+                slug={slug}
+              />
             </div>
           </article>
           <Footer />
