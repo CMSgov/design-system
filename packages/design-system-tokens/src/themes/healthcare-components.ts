@@ -301,6 +301,10 @@ export const components: AnyTokenValues = {
     '-icon__color-active':                        t.color['white'],
   },
 
+  'footer': {
+    '__list-marker-size':                         '2px'
+  },
+
   'form': {
     '__max-width':                                '460px',
     '__max-width--small':                         '6em',
@@ -318,6 +322,10 @@ export const components: AnyTokenValues = {
     '__color--primary':                           t.color['primary'],
     '__color--success':                           t.color['success'],
     '__color--warn':                              t.color['warn'],
+  },
+
+  'inset': {
+    '__border-width':                             t.spacer['half']
   },
 
   'link': {

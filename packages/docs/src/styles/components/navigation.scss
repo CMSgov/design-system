@@ -31,7 +31,7 @@
     border-block: 1px solid $vertical-nav-item__border-color;
     margin-block: $spacer-2;
 
-    .ds-c-vertical-nav__label {
+    .ds-c-vertical-nav__label--parent {
       text-transform: capitalize;
     }
   }
