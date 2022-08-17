@@ -4,6 +4,7 @@
 **/__tests__/**
 tmp/**
 **/types/**
+*bundle*
 examples/create-react-app-typescript/**
 examples/create-react-app/**
 storybook-static/**
