@@ -206,11 +206,11 @@ function compileJs(dir, options, changedPath) {
 async function bundleJs(dir) {
   logTask('🚜 ', 'Running Webpack statically');
   try {
-    const config = await createCdnWebpackConfig(dir);
+    const config = createCdnWebpackConfig(dir);
     const stats = await util.promisify(webpack)(config); // Promisify webpack so the task will wait on the compilation to finish
 
     // Log out any errors or warnings
-    log(stats.toString(webpackStatsConfig));
+    log(stats.toString());
   } catch (err) {
     logError('webpack static', err.stack || err);
     if (err.details) {
