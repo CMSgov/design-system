@@ -16,7 +16,7 @@ const { logData, logError, logTask } = require('./common/logUtil');
 
 // The bulk of our Sass task. Transforms our Sass into CSS, then runs through
 // a variety of postcss processes (inlining, prefixing, minifying, etc).
-function compileSass(src, dest, includePaths, browserSync) {
+function compileSass(src, dest, includePaths) {
   const envDev = process.env.NODE_ENV === 'development';
 
   const sassCompiler = sass({
@@ -35,7 +35,7 @@ function compileSass(src, dest, includePaths, browserSync) {
   ];
 
   let stream = gulp
-    .src([`${src}/**/*.scss`, `!${src}/**/*.docs.scss}`])
+    .src([`${src}/**/*.scss`])
     .pipe(
       changed(dest, {
         extension: '.css',
@@ -55,16 +55,6 @@ function compileSass(src, dest, includePaths, browserSync) {
     )
     .pipe(gulp.dest(dest));
 
-  if (browserSync) {
-    // Auto-inject into docs
-    stream = stream.pipe(
-      browserSync.stream({
-        once: true,
-        match: '**/*.css',
-      })
-    );
-  }
-
   return streamPromise(stream);
 }
 
@@ -83,25 +73,6 @@ async function compileSourceSass(sourceDir, options, browserSync) {
   await compileSass(src, dest, includePaths, browserSync);
 }
 
-async function compileDocsSass(docsDir, options, browserSync) {
-  const src = path.join(docsDir, 'src');
-  const dest = path.join(docsDir, 'dist');
-
-  // The core CMSDS repo hoists deps using yarn workspaces, deps in the root `node_module`
-  // A standard child DS will not have `node_modules` in the docs dir, only at the root of the repo
-  let nodeModuleRelativePath;
-  if (options.core) {
-    nodeModuleRelativePath = path.resolve(docsDir, '../../node_modules');
-  } else if (options.monorepo) {
-    nodeModuleRelativePath = path.resolve(docsDir, '../../../node_modules');
-  } else {
-    nodeModuleRelativePath = path.resolve(docsDir, '../node_modules');
-  }
-  const includePaths = [src, nodeModuleRelativePath];
-  await compileSass(src, dest, includePaths, browserSync);
-}
-
 module.exports = {
   compileSourceSass,
-  compileDocsSass,
 };

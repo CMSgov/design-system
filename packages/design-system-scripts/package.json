@@ -94,7 +94,6 @@
   },
   "peerDependencies": {
     "@cmsgov/design-system": ">=2.0.0",
-    "@cmsgov/design-system-docs": ">=2.0.0",
     "react": ">=16.0.0",
     "react-dom": ">=16.0.0"
   }
