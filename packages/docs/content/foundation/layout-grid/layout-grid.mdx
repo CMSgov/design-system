@@ -74,19 +74,9 @@ The design system utilizes a responsive 12-column layout grid.
 1. **Rows** enable layout and contains the columns
 1. **Columns** determine the number of columns an item will span across, out of a possible 12 per row
 
-## Breakpoints
+## Examples
 
-The grid system utilizes breakpoints to adapt designs at various viewport sizes.
-
-| Prefix          | Breakpoint                     | Sass Variable                | Description                             |
-| --------------- | ------------------------------ | ---------------------------- | --------------------------------------- |
-|                 | <code>min-width(0px)</code>    | <code>$media-width-xs</code> | Viewports <code>0px</code> and wider    |
-| <code>sm</code> | <code>min-width(544px)</code>  | <code>$media-width-sm</code> | Viewports <code>544px</code> and wider  |
-| <code>md</code> | <code>min-width(768px)</code>  | <code>$media-width-md</code> | Viewports <code>768px</code> and wider  |
-| <code>lg</code> | <code>min-width(1024px)</code> | <code>$media-width-lg</code> | Viewports <code>1024px</code> and wider |
-| <code>xl</code> | <code>min-width(1280px)</code> | <code>$media-width-xl</code> | Viewports <code>1280px</code> and wider |
-
-## Default behavior
+### Default behavior
 
 Columns without a set width will automatically layout with equal widths. The columns will automatically wrap when they don't fit a single row.
 
@@ -101,7 +91,7 @@ Columns without a set width will automatically layout with equal widths. The col
   </section>
 </EmbeddedExample>
 
-## Column spanning
+### Column spanning
 
 Layout regions can span any number of columns and are separated by the grid gutter. Layouts can change at any of the designated breakpoints.
 
@@ -116,7 +106,7 @@ Specify the number of columns (1-12) to span using `.ds-l-col--*` classes. These
   </section>
 </EmbeddedExample>
 
-## Natural width columns
+### Natural width columns
 
 Use a `.ds-l-col--auto` class to size a column to the natural width of its content.
 
@@ -130,7 +120,7 @@ Use a `.ds-l-col--auto` class to size a column to the natural width of its conte
   </section>
 </EmbeddedExample>
 
-## Nested grids
+### Nested grids
 
 <EmbeddedExample>
   <section class="ds-l-container example-grid">
@@ -148,7 +138,7 @@ Use a `.ds-l-col--auto` class to size a column to the natural width of its conte
   </section>
 </EmbeddedExample>
 
-## Offsetting columns
+### Offsetting columns
 
 The page content does not always need to span across 12 columns; it can occupy a smaller region in the center of the page. This example shows an 8-column layout region with an offset of 2 columns on both sides.
 
@@ -164,7 +154,7 @@ Offset columns using the [margin auto utility class](/utilities/margin/):
   </section>
 </EmbeddedExample>
 
-## Alignment
+### Alignment
 
 Align columns horizontally or vertically using [flexbox utility classes](/utilities/flexbox/). To align columns horizontally, use the `justify-content` utility class. To align columns vertically, use the `align-items` utility class.
 
@@ -200,7 +190,7 @@ Align columns horizontally or vertically using [flexbox utility classes](/utilit
   </section>
 </EmbeddedExample>
 
-## Form rows
+### Form rows
 
 Use a `.ds-l-form-row` class to tighten the column spacing when laying out form fields in a grid.
 
@@ -223,7 +213,7 @@ Use a `.ds-l-form-row` class to tighten the column spacing when laying out form 
   </section>
 </EmbeddedExample>
 
-## Responsive grids
+### Responsive grids
 
 Use a [breakpoint prefix](/foundation/layout-grid/responsive-design/) to change the column widths based on the viewport width.
 
@@ -279,7 +269,7 @@ The following Sass variables can be overridden to customize the grid:
 - `$grid-columns`
 - `$grid-gutter-width`
 
-### Learn more
+## Learn more
 
 - [A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 - [Flexbox & the keyboard navigation disconnect](https://tink.uk/flexbox-the-keyboard-navigation-disconnect/)
