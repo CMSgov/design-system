@@ -2,6 +2,7 @@ module.exports = {
   // Defaults are configured for a new child design system
   core: false,
   sourceDir: './',
+  docsDir: './docs',
   typescript: false,
   minifySvg: false,
   rootPath: '',
