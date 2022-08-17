@@ -34,14 +34,6 @@ const config: GatsbyConfig = {
       },
     },
     {
-      resolve: 'gatsby-source-filesystem',
-      // components to load prop data from
-      options: {
-        name: 'mgov-components',
-        path: '../ds-medicare-gov/src/components',
-      },
-    },
-    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'CMS Design System',
