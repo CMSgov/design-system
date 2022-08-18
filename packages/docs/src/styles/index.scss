@@ -19,6 +19,12 @@ $font-path: '@cmsgov/ds-medicare-gov/dist/fonts';
 // @styles is aliased in gatsby-node.js
 @import '@styles/index.scss';
 
+[data-theme='healthcare'] {
+  // Have to set the image path so that the error label's svg can be found
+  $image-path: '@cmsgov/ds-healthcare-gov/src/images';
+  @import '@cmsgov/ds-healthcare-gov/src/styles/components/index';
+}
+
 @import 'pages/feedback.scss';
 @import 'pages/layout.scss';
 

@@ -54,10 +54,14 @@ const Layout = ({
 }: LayoutProps) => {
   const env = 'prod';
 
+  const tabTitle = frontmatter?.title
+    ? `${frontmatter.title} - CMS Design System`
+    : 'CMS Design System';
+
   return (
     <div className="ds-base">
       <Helmet
-        title="CMS Design System"
+        title={tabTitle}
         htmlAttributes={{
           lang: 'en',
         }}
