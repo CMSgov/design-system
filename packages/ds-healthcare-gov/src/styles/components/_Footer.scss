@@ -40,15 +40,13 @@
   }
 
   &:not(:last-child)::after {
-    $hc-c-footer-list-marker-size: 2px;
-
     background-color: currentColor;
     border-radius: 50%;
     content: '';
     display: inline-block;
-    height: $hc-c-footer-list-marker-size;
+    height: $footer__list-marker-size;
     vertical-align: middle;
-    width: $hc-c-footer-list-marker-size;
+    width: $footer__list-marker-size;
   }
 
   &:first-child a {
