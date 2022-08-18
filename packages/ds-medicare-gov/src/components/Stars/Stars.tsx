@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { RoundedStarIcon } from '../Icons';
 
-interface StarsProps {
+export interface StarsProps {
   /**
    * Describes the number of stars to be filled in (in .5 increments)
    */

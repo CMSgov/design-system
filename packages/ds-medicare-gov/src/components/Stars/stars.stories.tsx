@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Stars from './Stars';
+import Stars, { StarsProps } from './Stars';
 
 export default {
   title: 'Medicare/Stars',
@@ -15,6 +15,6 @@ export default {
   },
 };
 
-const Template = ({ data, ...args }) => <Stars {...args} />;
+const Template = ({ data, ...args }) => <Stars {...(args as StarsProps)} />;
 
 export const Default = Template.bind({});
