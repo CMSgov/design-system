@@ -1,7 +1,7 @@
 const path = require('path');
 
 const CORE_SOURCE_PACKAGE = '@cmsgov/design-system';
-const CORE_DOCS_PACKAGE = '@cmsgov/design-system-docs';
+const CORE_DOCS_PACKAGE = '@cmsgov/cms-design-system-docs';
 
 const REACT_DATA_DIR = `tmp/data`;
 const REACT_PROP_DATA_FILENAME = 'react-prop.json';

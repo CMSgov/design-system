@@ -96,19 +96,24 @@ yargs
     },
   })
   .command({
-    command: 'test:a11y <directory>',
-    desc: 'Runs a11y tests in a directory.',
+    command: 'test:a11y <system>',
+    desc: 'Runs a11y tests on a storybook instance for <system>.',
     builder: (yargs) => {
       yargs
-        .positional('directory', {
-          desc: 'The relative path to the directory where test files are located.',
+        .positional('system', {
+          desc: 'The system to be tested, default core (medicare/healthcare)',
           type: 'string',
-          demandOption: true,
+          choices: ['core', 'medicare', 'healthcare'],
         })
         .option('headless', {
           desc: 'Runs a11y tests with headless chrome browser testing.',
           type: 'boolean',
           default: true,
+        })
+        .option('skipBuild', {
+          desc: 'Skips the storybook build process.',
+          type: 'boolean',
+          default: false,
         });
     },
     handler: async (argv) => {
@@ -120,7 +125,7 @@ yargs
       process.env.SKIP_BUILD = argv.skipBuild;
       process.env.HEADLESS = argv.headless;
 
-      run(['--config', JSON.stringify(a11yConfig(argv.directory))]);
+      run(['--config', JSON.stringify(a11yConfig(argv.system))]);
     },
   })
   .demandCommand()
