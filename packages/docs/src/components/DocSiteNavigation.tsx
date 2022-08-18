@@ -67,7 +67,11 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
   const data: NavDataQuery = useStaticQuery(graphql`
     query SiteNavQuery {
       allFile(
-        filter: { ext: { eq: ".mdx" }, relativeDirectory: { ne: "not-in-sidebar" } }
+        filter: {
+          sourceInstanceName: { eq: "content" }
+          ext: { eq: ".mdx" }
+          relativeDirectory: { ne: "not-in-sidebar" }
+        }
         sort: { fields: [relativeDirectory, name] }
       ) {
         group(field: relativeDirectory) {

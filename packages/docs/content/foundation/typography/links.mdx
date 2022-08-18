@@ -1,0 +1,105 @@
+---
+title: Links
+order: 30
+intro: Links connect users to a different page or further information.
+
+---
+
+import { Alert } from '@cmsgov/design-system';
+import loremIpsumGenerator from '../../../src/helpers/loremIpsumGenerator';
+
+<Alert heading="Typography sizing updates!">
+  <p class="ds-c-alert__text">
+    We've updated typography sizing variables and class names to make them more agnostic. Read about{' '}
+    <a href="/getting-started/theming/#updating-font-sizing">how you can update</a>.
+  </p>
+</Alert>
+
+## Examples
+
+The only base HTML element the design system applies styling to is the `<a>` element. You can also use `.ds-c-link` and `.ds-c-link--inverse` for styling links.
+
+### On light background
+
+<EmbeddedExample>
+  <p><a href="javascript:void(0);">This is a text link</a> on a light background.</p>
+  <p><a href="https://design.cms.gov/">This is a visited link</a>.</p>
+</EmbeddedExample>
+
+### On dark background
+
+<EmbeddedExample>
+  <div class="ds-base ds-base--inverse ds-u-padding--1">
+    <p><a href="javascript:void(0);">This is a text link</a> on a dark background.</p>
+    <p><a href="https://design.cms.gov/">This is a visited link</a> on a dark background.</p>
+  </div>
+</EmbeddedExample>
+
+## Code
+
+### Styles
+
+The following Sass variables can be overridden to change the type sizes:
+
+- `$font-size-5xl`
+- `$font-size-4xl`
+- `$font-size-3xl`
+- `$font-size-2xl`
+- `$font-size-xl`
+- `$font-size-lg`
+- `$font-size-md`, uses `$base-font-size`
+- `$font-size-sm`
+
+
+## Guidance
+
+Your link should always describe where it will take users. Users tend to scan text online, and elements that stand out (like links) grab attention. Clear links can help users navigate more quickly.
+
+For example, instead of:
+
+> [Learn more](#)
+
+Use:
+
+> [Learn how to reset your passphrase](#)
+
+Never use a link to say “click here.” A nondescript link forces users to backtrack and read the surrounding text for more context. This is even more problematic for those who rely on screen readers, which can list links for quicker navigation. A list of “click here” isn’t helpful for anyone.
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+All links in the body of a page should look like they are clickable from the initial state.  A link that looks clickable could have some different styles depending on if it is a navigational element like an accordion component or a drop down menu. Color alone isn't enough of a style difference for usability and accessibility reason. On hover states also aren't enough for the same reasons ann mobile doesn't have an on hover state.
+
+The standard style for clickable elements is a color change from plain text and underline style.  No matter what element it is, it should appear clickable if it is clickable either through the use of text treatment and/or icon use.
+
+- Active: #046792, Open Sans Regular, text-decoration: underline
+- Hover: #057eb2, Open Sans Regular, text-decoration: underline 
+- Visited: #01435f, Open Sans Regular, text-decoration: underline 
+- Usage: Body text links shown in-line with other text on the page. These links will likely link to internal webpages or external websites. 
+- NOTE: If the in-line body text link is associated with bold text, then it should also be bold.
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+All links in the body of a page should look like they are clickable from the initial state.  A link that looks clickable could have some different styles depending on if it is a navigational element like an accordion component or a drop down menu. 
+
+<b>The standard style for clickable elements is an underline style.</b>  No matter what element it is, it should look clickable if it is clickable. Exceptions to this guideline would be navigational elements like top and footer menus, back buttons, and side navigational elements. 
+</ThemeContent>
+
+### When to use
+
+- Navigating to a new page or view in your application
+- Navigating to a different web page, e.g. external documentation
+- **Note:** Warn the user if links open a new window or downloads a file (PDF, for example).
+
+### When to consider alternatives
+
+- Opening or closing a modal or dialog
+- Triggering a dropdown menu
+- Submitting data to the server
+
+### Accessibility
+
+- Users should be able to tab to navigate between links.
+- Users should be able to activate a link when pressing ‘Enter’ on their keyboard.
+- Users should be able to identify links without relying on color alone.
+- Users should be able to activate hover and focus states with both a mouse and a keyboard.
