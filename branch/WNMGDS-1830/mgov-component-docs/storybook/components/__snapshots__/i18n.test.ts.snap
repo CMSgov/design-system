@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`i18n getTranslations and addTranslations getTranslation returns core English translations 1`] = `"Official government website"`;
+
+exports[`i18n getTranslations and addTranslations getTranslation returns core Spanish translations 1`] = `"Sitio web oficial del gobierno"`;
+
+exports[`i18n getTranslations and addTranslations getTranslation without parameter returns translations from current language (English 1`] = `"Official government website"`;
+
+exports[`i18n getTranslations and addTranslations getTranslation without parameter returns translations from current language (Spanish) 1`] = `"Sitio web oficial del gobierno"`;
+
+exports[`i18n t returns expected translation for key (English) 1`] = `"Official government website"`;
+
+exports[`i18n t returns expected translation for key (Spanish) 1`] = `"Sitio web oficial del gobierno"`;
+
+exports[`i18n t returns expected translation for key (default) 1`] = `"Official government website"`;
+
+exports[`i18n tWithLanguage generated t function returns expected translation for key (English) 1`] = `"Official government website"`;
+
+exports[`i18n tWithLanguage generated t function returns expected translation for key (Spanish) 1`] = `"Sitio web oficial del gobierno"`;
+
+exports[`i18n tWithLanguage generated t function returns expected translation for key (default) 1`] = `"Official government website"`;
+
+exports[`i18n translate returns expected translation for key (English) 1`] = `"Official government website"`;
+
+exports[`i18n translate returns expected translation for key (Spanish) 1`] = `"Sitio web oficial del gobierno"`;
+
+exports[`i18n translate returns expected translation for key (default) 1`] = `"Official government website"`;
+
+exports[`i18n translate throws error if key does not resolve to a string 1`] = `"Translation key 'usaBanner' does not resolve to a string."`;

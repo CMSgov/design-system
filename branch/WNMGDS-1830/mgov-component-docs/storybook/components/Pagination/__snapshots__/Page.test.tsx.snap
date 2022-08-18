@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page should render interactive el if not current 1`] = `
+<li>
+  <Button
+    aria-label="page 1"
+    href="/#1"
+    onClick={[MockFunction]}
+    variation="ghost"
+  >
+    1
+  </Button>
+</li>
+`;
+
+exports[`Page should render static el if current 1`] = `
+<li>
+  <span
+    aria-current="true"
+    className="ds-c-button ds-c-button--ghost ds-c-pagination__current-page"
+  >
+    1
+  </span>
+</li>
+`;
