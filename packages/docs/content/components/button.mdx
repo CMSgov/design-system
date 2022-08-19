@@ -11,6 +11,29 @@ medicare:
   sketchLink: Vr4yyWw
 ---
 
+<h1>Heading 1</h1>
+
+## Heading 2
+
+Fusce porttitor velit ut lorem suscipit, sed sodales nibh volutpat. Cras sed rhoncus massa. Aliquam erat volutpat. Donec sagittis ex lectus, quis semper leo mattis ut. Donec nec odio non risus convallis cursus in eu lacus. Integer vitae placerat quam, eu dignissim elit. Cras dapibus felis felis, et vehicula nisi venenatis eu. Fusce condimentum nec quam tempus faucibus. Maecenas sollicitudin nibh malesuada scelerisque faucibus.
+
+### Heading 3
+
+Fusce porttitor velit ut lorem suscipit, sed sodales nibh volutpat. Cras sed rhoncus massa. Aliquam erat volutpat. Donec sagittis ex lectus, quis semper leo mattis ut. Donec nec odio non risus convallis cursus in eu lacus. Integer vitae placerat quam, eu dignissim elit. Cras dapibus felis felis, et vehicula nisi venenatis eu. Fusce condimentum nec quam tempus faucibus. Maecenas sollicitudin nibh malesuada scelerisque faucibus.
+
+#### Heading 4
+
+Fusce porttitor velit ut lorem suscipit, sed sodales nibh volutpat. Cras sed rhoncus massa. Aliquam erat volutpat. Donec sagittis ex lectus, quis semper leo mattis ut. Donec nec odio non risus convallis cursus in eu lacus. Integer vitae placerat quam, eu dignissim elit. Cras dapibus felis felis, et vehicula nisi venenatis eu. Fusce condimentum nec quam tempus faucibus. Maecenas sollicitudin nibh malesuada scelerisque faucibus.
+
+##### Heading 5
+
+Fusce porttitor velit ut lorem suscipit, sed sodales nibh volutpat. Cras sed rhoncus massa. Aliquam erat volutpat. Donec sagittis ex lectus, quis semper leo mattis ut. Donec nec odio non risus convallis cursus in eu lacus. Integer vitae placerat quam, eu dignissim elit. Cras dapibus felis felis, et vehicula nisi venenatis eu. Fusce condimentum nec quam tempus faucibus. Maecenas sollicitudin nibh malesuada scelerisque faucibus.
+
+###### Heading 6
+
+Fusce porttitor velit ut lorem suscipit, sed sodales nibh volutpat. Cras sed rhoncus massa. Aliquam erat volutpat. Donec sagittis ex lectus, quis semper leo mattis ut. Donec nec odio non risus convallis cursus in eu lacus. Integer vitae placerat quam, eu dignissim elit. Cras dapibus felis felis, et vehicula nisi venenatis eu. Fusce condimentum nec quam tempus faucibus. Maecenas sollicitudin nibh malesuada scelerisque faucibus.
+
+
 import { Alert, ArrowIcon, Button } from '@cmsgov/design-system';
 
 <Alert heading="Are you upgrading to v4 (healthcare v8, medicare v6)?">
@@ -259,7 +282,6 @@ Buttons are promises to the user; they must deliver the promise they offer by do
 - Buttons are used for actions; links are used for navigation
 - Buttons do NOT include icons. 
   - Exception: Can include icons in buttons for utility actions like print and save and branded buttons like Facebook, Twitter, and YouTube used in the Footer
-- Buttons use sentence case. Example: Update application.
 - When pairing 2 buttons the preferred/main action is placed on the left.
 - Ghost buttons are typically used when paired with a Solid or Outline button or to indicate lower priority actions. 
 
@@ -282,7 +304,7 @@ Consider when to use links vs. when to use buttons. Links and buttons are read d
 
 <ThemeContent onlyThemes={['healthcare']}>
 
-### Content guidance
+### Content
 
 - Describe what will happen, not the current state. 
 - Buttons always start with an action word describing the main thing users will do once selected. 
@@ -290,32 +312,68 @@ Consider when to use links vs. when to use buttons. Links and buttons are read d
   - If in a form, it can be just the action word if it's navigating between steps. Example: Cancel, Back, Next.
 - Use the least amount of words possible (no more than 6 with 2-4 being ideal).
 - Use sentence case for buttons. This conveys a friendlier tone. Note: Some tools and the homepage are using ALL CAPS. There are also a few examples of Title Case. We should change to sentence case for consistency across the site. 
-
-#### Writing content
-- Remove articles and use '&' instead of 'and.'
-- Do not capitalize articles. 
+- Remove articles and use '&' instead of 'and'.
 - Avoid all caps unless the word is an acronym, like ZIP.
 - Avoid pronouns unless the future state provides the user with customized information. Example: "Get my results"
 - Limit branded terms, like tool names. As a general rule, we don't use tool names in web content or flow. Rather, content should outline what the user will get/can do when they click the button.
 
-#### Use this/not that
 
-##### Online forms & steps
+#### Online forms & steps
 
-- Use: "Start" - to start a process or sequential steps. But generally better to use specific verbs to confirm what the user is starting. Example: "Create Account."
-  - Don't use: "Begin," "Go," "Enter," or "Submit."
-- Use: "Continue" - when moving through a process or sequential steps.
-  - Don't use: "Next."
+##### Starting a process or sequential steps
+
+Generally better to use specific verbs to confirm what the user is starting. Example: "Create Account."
+
+<table class="ds-c-table ds-c-md-table--stacked" role="table" width="100%">
+  <thead role="rowgroup">
+    <tr role="row">
+      <th class="ds-u-fill--success-lightest" role="columnheader" scope="col">
+        Use
+      </th>
+      <th class="ds-u-fill--error-lightest" role="columnheader" scope="col">
+        Don't use
+      </th>
+    </tr>
+  </thead>
+  <tbody role="rowgroup">
+    <tr role="row">
+      <td
+        role="cell"
+        data-title="Document title"
+        width="50%"
+      >
+       Start
+      </td>
+      <td
+        role="cell"
+        data-title="Description"
+        width="50%"
+      >
+     Begin, Go, Enter, or Submit
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+##### Moving through a process or sequential steps after starting
+
+- Use: "Continue" for forward movement to the next page tr step
+  - Don't use: "Next"
   - Note: Explore clarity of using Next instead of Continue, especially for unauthenticated
-- Use: "Cancel" - to completely stop a process or translation and return to beginning. It appears on the first step of forms. 
-  - Don't use: "X."
-- Use: "Back" or "Go Back" - to return to the previous step in the process. 
-  - Don't use: "Undo" or "Cancel."
+- Use: "Back" or "Go Back" for backwards movement to the previous step in the process
+  - Don't use: "Undo" or "Cancel"
   - Note: Back is technically a navigational element and should be a link depending on the placement within the design.
-- Use: "Enter," "Go," or "Submit" - to submit information. But generally better to use specific verbs if appropriate to confirm an action. 
-  - Don't use: "Fill in," "Tell us," "Done," or "Select."
 
-##### Log in/Log out
+##### Stopping a process or translation and return to beginning
+- Use: "Cancel" It appears on the first step of forms. 
+  - Don't use: "X."
+
+##### Submiting information or completing a process
+
+- Use: "Enter," "Go," or "Submit" - But generally better to use specific verbs if appropriate to confirm an action. 
+  - Don't use: "Fill in," "Tell us," "Done," or "Select" .
+
+#### Logging in and logging out
 
 - Use: "Log in" - MUST be 2 words and "in" is lowercase when it's an action.
   - Don't use: "Login," "Sign in," or "Signin."
