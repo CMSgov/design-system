@@ -55,6 +55,10 @@ body {
     }
     .ds-c-table {
       margin-top: $spacer-2;
+      ol,
+      ul {
+        margin-top: 0;
+      }
     }
   }
 }
