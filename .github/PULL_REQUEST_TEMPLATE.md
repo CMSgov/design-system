@@ -4,7 +4,7 @@
 
 ## How to test
 
-- Instructions on how to test the changes in this PR.
+1. Instructions on how to test the changes in this PR.
 
 ### If this is a change to code:
 
