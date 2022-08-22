@@ -31,6 +31,7 @@
     "precommit": "lint-staged",
     "prepare": "husky install",
     "prettier": "npx prettier --write 'packages/**/*.{js,jsx,tsx,scss,html,md,mdx,json}'",
+    "deploy-demo": "./scripts/deploy-demo.sh",
     "release": "./scripts/release.sh",
     "serve:gatsby": "yarn --cwd ./packages/docs serve",
     "start:gatsby": "yarn --cwd ./packages/docs develop",
