@@ -136,6 +136,24 @@ There should always be a parent/child relationship between headers and content o
 
 </ThemeContent>
 
+<ThemeContent onlyThemes={['medicare']}>
+
+## Typography Spacing
+
+Spacing between text elements can make an impact on the overall design and having a consistent spacing between elements improves the flow of a page and improves consistency between products.
+
+Here are some spacing elements that can help create guides for spacing between elements. 
+
+### How to use spacers
+
+- Use spacers that correspond to the header being applied. 
+- When it comes to content relationships. Header sizes should be of equal or smaller size to the body content.
+- Apply spacers that match the header size being used. If you use a Large header, apply a Large spacer to the body content below the header. 
+
+See the example below. 
+
+</ThemeContent>
+
 <ThemeContent onlyThemes={['healthcare']}>
 - The default size for body content is 16px.
 - The Rubrik font is used for body content.
@@ -162,6 +180,16 @@ There are five header styles that can be used:
 3. Inverse Header - Used on dark backgrounds only. 
 4. Inverse Link Header - Used for header links on dark backgrounds.
 5. Link Header - Used when you need to have a header as a link. 
+
+<EmbeddedExample>
+      <h3 class="ds-text-heading--lg">Default header</h3>
+      <h3 class="ds-text-heading--lg">Teal header</h3>
+      <h3 class="ds-text-heading--lg"><a href="javascript:void(0);">Link header</a></h3>
+      <div class="ds-base--inverse ds-u-padding--2">
+      <h3 class="ds-text-heading--lg">Inverse header</h3>
+      <h3 class="ds-text-heading--lg"><a href="javascript:void(0);">Inverse link header</a></h3>
+      </div>
+</EmbeddedExample>
 
 ### Eyebrow/Eyelash header
 

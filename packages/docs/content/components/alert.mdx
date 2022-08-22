@@ -21,6 +21,14 @@ Provides supplementary information, or highlights a tool or step available to th
 
 </ThemeContent>
 
+<ThemeContent onlyThemes={['medicare']}>
+
+Does not require an icon. 
+
+Provides supplementary information, or highlights a tool or step available to the user, that may be helpful to users regarding their current action or task, but is optional or not critical. Can provide guidance on what the user needs to do to proceed.
+
+</ThemeContent>
+
 <StorybookExample
   componentName="alert"
   storyId="components-alert--default"
@@ -29,6 +37,14 @@ Provides supplementary information, or highlights a tool or step available to th
 ### Error
 
 <ThemeContent onlyThemes={['healthcare']}>
+
+Informs users of an error or critical failure. Often used to block them from proceeding until they resolve the issue including system alerts.
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+Requires an icon. 
 
 Informs users of an error or critical failure. Often used to block them from proceeding until they resolve the issue including system alerts.
 
@@ -47,6 +63,14 @@ Informs users that their entry or selection may have unexpected or undesirable r
 
 </ThemeContent>
 
+<ThemeContent onlyThemes={['medicare']}>
+
+Requires an icon. 
+
+Informs users that their entry or selection may have unexpected or undesirable results, some of which may not be easily undone.
+
+</ThemeContent>
+
 <StorybookExample
   componentName="warning alert"
   storyId="components-alert--warning-alert"
@@ -57,6 +81,14 @@ Informs users that their entry or selection may have unexpected or undesirable r
 <ThemeContent onlyThemes={['healthcare']}>
 
 Confirms the successful completion of a step or task, or receipt of information provided by the user. Suggests a path forward that may be beneficial to the user, based on their selections or entries. 
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+Does not require an icon. 
+
+Confirms the successful completion of a step or task, or receipt of information provided by the user.
 
 </ThemeContent>
 
@@ -137,6 +169,15 @@ A custom heading value can be sent for an analytics event by using the prop `ana
 - Confirming the successful competition of a task.
 - Providing key supplementary or contextual information to support the successful completion of tasks or aid overall comprehension.
 
+<ThemeContent onlyThemes={['medicare']}>
+
+### Don't use
+
+- You need to display alerts that aren’t related to the user’s current goal.
+
+</ThemeContent>
+
+
 ### When to consider alternatives
 
 - On long forms, always include in-line validation in addition to any error messages that appear at the top of the form. When possible, simplify forms by rewriting and where possible, splitting long forms across multiple pages
@@ -166,6 +207,16 @@ A custom heading value can be sent for an analytics event by using the prop `ana
 - When the user is required to do something in response to an alert, let them know what they need to do and make that task as easy as possible.
 - Alerts are static and shouldn't be associated with a timer or dismiss button.
 - Having icons is the preferred use for alerts. Some alerts might have a large amount of content and may need the extra space and in those cases the icon can be removed. Removing the icon should be considered a exception. Validate the design and spacing on mobile to help make this decision.
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+### Display & behavior
+
+- Can be displayed statically on page load or dynamically loaded
+- When the user is required to do something in response to an alert, let them know what they need to do and make that task as easy as possible.
+- Alerts are static and shouldn't be associated with a timer or dismiss button. 
 
 </ThemeContent>
 
