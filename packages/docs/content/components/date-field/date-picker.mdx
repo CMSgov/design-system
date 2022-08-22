@@ -1,0 +1,71 @@
+---
+title: Calendar Picker
+intro: Date field (with calendar picker), also known as "date picker", provides single date entry with a text field or selection through a visual calendar element tied to the input.
+core:
+  githubLink: design-system/src/components/DateField
+  sketchLink: nRja1ed
+  storybookLink: components-singleinputdatefield--with-picker
+healthcare:
+  sketchLink: Kv3oKMn
+medicare:
+  sketchLink: Ax3eeQY
+---
+
+## Examples
+
+<StorybookExample
+  componentName="singleInputDateField"
+  storyId="components-singleinputdatefield--with-picker"
+/>
+
+## Code
+
+### React
+
+The calendar picker is another name for the `<SingleInputDateField>` with a calendar picker button. To enable the date picker feature, you must pass both a `from<TIME>` property (i.e., `fromDate`, `fromMonth`, etc.) **and** a `to<TIME>` property (i.e., `toDate`, `toMonth`, etc.) to the date field component.
+
+<PropTable componentName="SingleInputDateField" />
+
+### Styles
+
+The following Sass variables can be overridden to customize Input/Form components:
+
+<ComponentThemeOptions
+  componentname="text-input"
+/>
+
+#### Form components
+
+This component also makes use of form field styles, which can be customized by the following variables:
+
+<ComponentThemeOptions
+  componentname="form"
+/>
+
+## Guidance
+
+### When to use
+
+- Use the date picker for dates that have happened within the last year, in the future, or is relevant to selecting the day of the week.
+
+### When to consider alternatives
+
+- Don't use if users are entering a memorable date. Instead, use either [single-](/components/single-input-date-field/) or [multi-input](/components/multi-input-date-field/) date fields.
+- Don't use if the date occurred in the distant past (like date of birth).
+
+### Usage
+
+Allow users to have flexibility in entering the date, such as allowing one-digit numbers with or without "0" prior to the number, or entering a date with or without slashes to separate month, day, and year.
+  - Example: "1" as well as "01" for a month or day.
+  - Example: "05/18/2022" as well as "05182022".
+
+### Accessibility
+
+- These text fields should follow the [accessibility guidelines for all text inputs](/components/text-field/#guidance).
+- Users will be able to enter a variety of date formats that automatically format to the correct date format of MM/DD/YYYY. This change happens once the form field loses focus. For example, a user enters a date as "4122020" and it changes to "04/01/2020" once focus leaves the date input.
+- Instructions are available make this more usable/accessible for assistive technology.
+
+### Related patterns
+
+- [Date field (multi-input)](/components/multi-input-date-field/)
+- [Date field (single-input)](/components/single-input-date-field/)

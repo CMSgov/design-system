@@ -6,8 +6,8 @@ export interface UseAnalyticsContentProps {
    * Optional name of component for error messages
    */
   componentName?: string;
-  onMount: (content: string) => any;
-  onUnmount?: (content: string) => any;
+  onMount: (content?: string) => any;
+  onUnmount?: (content?: string) => any;
 }
 
 /**
@@ -19,7 +19,11 @@ export interface UseAnalyticsContentProps {
  * but will fall back to `bodyRef` (second ref) if no content is found:
  *
  * const [headingRef, bodyRef] = useAnalyticsContent({
- *   onMount: (content: string) => {
+ *   onMount: (content: string | undefined) => {
+ *     if (!content) {
+ *       console.error('No content found for [component-name] analytics event');
+ *       return;
+ *     }
  *     sendLinkEvent({
  *       event_name: 'alert_impression',
  *       event_type: EventCategory.UI_INTERACTION,
@@ -58,10 +62,6 @@ export function useAnalyticsContent({
   // onUnmount do not have a reason to change between renders.
   useEffect(() => {
     const content = getAnalyticsContentFromRefs(refs, componentName);
-    if (!content) {
-      return;
-    }
-
     onMount(content);
     return () => {
       if (onUnmount) onUnmount(content);

@@ -38,9 +38,9 @@ $focus-shadow-link-inverse: $shadow-focus-link-inverse;
 
 // button
 $button-border-width: $button__border-width;
-$button-primary-bg: $button-primary__background-color;
-$button-primary-bg--hover: $button-primary__background-color--hover;
-$button-primary-bg--active: $button-primary__background-color--active;
+$button-primary-bg: $button__background-color;
+$button-primary-bg--hover: $button__background-color--hover;
+$button-primary-bg--active: $button__background-color--active;
 
 // border radius
 $border-radius: $radius-default;
@@ -174,3 +174,6 @@ $usa-banner-background-color: $usa-banner__background-color;
 $usa-banner-text-color: $usa-banner__color;
 $usa-banner-close-image-background-color: $usa-banner-close__background-color;
 $usa-banner-header-action-color: $usa-banner-action__color;
+
+// Misc
+$multiple: $spacer-1;

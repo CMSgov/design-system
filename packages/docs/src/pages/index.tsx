@@ -3,12 +3,23 @@ import { graphql } from 'gatsby';
 
 import Layout from '../components/Layout';
 import { MdxQuery } from '../helpers/graphQLTypes';
+import useTheme from '../helpers/useTheme';
 import ContentRenderer from '../components/ContentRenderer';
+
 // Main landing page for site
 const IndexPage = ({ data, location }: MdxQuery) => {
+  const { slug } = data.mdx;
+  const theme = useTheme();
+
   return (
-    <Layout pageName="Introduction" location={location}>
-      <ContentRenderer data={data.mdx.body} />
+    <Layout
+      frontmatter={data.mdx.frontmatter}
+      location={location}
+      slug={slug}
+      theme={theme}
+      tableOfContentsData={data.mdx.tableOfContents?.items}
+    >
+      <ContentRenderer data={data.mdx.body} theme={theme} />
     </Layout>
   );
 };
@@ -18,6 +29,11 @@ export const query = graphql`
     mdx(frontmatter: { title: { eq: "Introduction" } }) {
       id
       body
+      slug
+      tableOfContents(maxDepth: 2)
+      frontmatter {
+        title
+      }
     }
   }
 `;

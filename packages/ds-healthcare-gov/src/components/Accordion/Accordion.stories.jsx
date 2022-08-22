@@ -4,14 +4,21 @@ import AccordionItem from './AccordionItem';
 import { useArgs } from '@storybook/client-api';
 
 export default {
-  title: 'Components/Accordion',
+  title: 'Healthcare/Accordion',
   component: Accordion,
   argTypes: {},
   args: {
-    bordered: true,
+    bordered: false,
     openItems: [0],
   },
   subcomponents: { AccordionItem },
+  decorators: [
+    (Story) => (
+      <div data-theme="healthcare">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 const Template = (args) => <Accordion {...args} />;

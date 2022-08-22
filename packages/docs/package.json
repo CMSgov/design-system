@@ -1,13 +1,13 @@
 {
   "name": "@cmsgov/cms-design-system-docs",
-  "version": "3.6.0",
+  "version": "4.0.0",
   "private": true,
   "description": "CMS Design System Documentation",
   "keywords": [
     "gatsby"
   ],
   "scripts": {
-    "develop": "gatsby develop -H 0.0.0.0",
+    "develop": "gatsby clean && gatsby develop -H 0.0.0.0",
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
@@ -15,7 +15,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@cmsgov/design-system": "^3.6.0",
+    "@cmsgov/design-system": "4.0.0",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "classnames": "^2.3.1",
@@ -26,8 +26,10 @@
     "gatsby-plugin-react-helmet": "^5.11.0",
     "gatsby-plugin-sass": "^5.11.1",
     "gatsby-plugin-sitemap": "^5.11.1",
+    "gatsby-remark-autolink-headers": "^5.19.0",
     "gatsby-source-filesystem": "^4.11.1",
     "gatsby-transformer-react-docgen": "^7.13.0",
+    "lodash.sortby": "^4.7.0",
     "prettier": "^2.6.2",
     "prismjs": "^1.11.0",
     "react-helmet": "^6.1.0",

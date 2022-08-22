@@ -1,0 +1,36 @@
+---
+title: Text Alignment
+---
+import loremIpsumGenerator from '../../../src/helpers/loremIpsumGenerator';
+
+Align text using the `text-align` utility.
+
+**Format**: `.ds-u-text-align--[center|left|right]`
+
+**Responsive format**: `.ds-u-[breakpoint]-text-align--[center|left|right]`
+
+<EmbeddedExample>
+  <section class="example-list">
+    <article>
+      <code class="ds-u-margin-bottom--1">.ds-u-text-align--left</code>
+      <div class="ds-u-text-align--left">{loremIpsumGenerator('s')}</div>
+    </article>
+    <article>
+      <code class="ds-u-margin-bottom--1">.ds-u-text-align--center</code>
+      <div class="ds-u-text-align--center">{loremIpsumGenerator('s')}</div>
+    </article>
+    <article>
+      <code class="ds-u-margin-bottom--1">.ds-u-text-align--right</code>
+      <div class="ds-u-text-align--right">{loremIpsumGenerator('s')}</div>
+    </article>
+  </section>
+</EmbeddedExample>
+
+## Responsive text alignment
+
+Use a [breakpoint prefix](/foundation/layout-grid/responsive-design/) to change the text alignment at specific breakpoints.
+
+<ResponsiveExample
+  storyId="utilities-text-align--text-align"
+  title="Responsive text align example"
+/>

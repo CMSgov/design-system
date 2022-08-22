@@ -95,3 +95,16 @@ TooltipWithCloseButton.args = {
   showCloseButton: true,
   className: 'ds-c-button',
 };
+
+export const InversedTrigger = Template.bind({});
+InversedTrigger.parameters = {
+  backgrounds: { default: process.env.STORYBOOK_DS === 'medicare' ? 'Mgov dark' : 'Hcgov dark' },
+};
+InversedTrigger.args = {
+  data: <p className="ds-u-margin--0 ds-u-color--base-inverse">Tooltip with icon trigger</p>,
+  ariaLabel: 'Label describing the subject of the tooltip',
+  className: 'ds-c-tooltip__trigger-icon',
+  title: 'Tooltip trigger uses <TooltipIcon> for the trigger content',
+  children: <TooltipIcon inversed />,
+  inversed: true,
+};

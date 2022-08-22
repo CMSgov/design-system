@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useMemo } from 'react';
 import classnames from 'classnames';
+import StorybookExampleFooter from './StorybookExampleFooter';
 import { ExternalLinkIcon, Spinner } from '@cmsgov/design-system';
-import CodeSnippet from './CodeSnippet';
+import { makeStorybookUrl } from '../helpers/urlUtils';
 import { withPrefix } from 'gatsby';
-import ViewSourceLink from './ViewSourceLink';
 
 interface StorybookExampleProps {
   /**
@@ -20,9 +20,9 @@ interface StorybookExampleProps {
    */
   storyId: string;
   /**
-   * path within 'src' directory to source file
+   * Current theme
    */
-  sourceFilePath?: string;
+  theme: string;
 }
 
 /**
@@ -32,30 +32,24 @@ interface StorybookExampleProps {
  * If you need to show responsiveness, use the `ResponsiveExample`.
  * If you don't need a story, but can use regular HTML or React components, use an Embedded example.
  */
-const StorybookExample = ({
-  componentName,
-  minHeight,
-  sourceFilePath,
-  storyId,
-}: StorybookExampleProps) => {
+const StorybookExample = ({ theme, componentName, minHeight, storyId }: StorybookExampleProps) => {
   const [iframeHeight, setiFrameHeight] = useState<number>(200);
-  const [iframeHtml, setiFrameHtml] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const iframeRef = useRef<HTMLIFrameElement>();
-  const iframeUrl = withPrefix(`/storybook/iframe.html?id=${storyId}&viewMode=story`);
+  const iframeUrl = withPrefix(
+    `/storybook/iframe.html?id=${storyId}&viewMode=story&globals=theme:${theme}`
+  );
 
   useEffect(() => {
     if (window) {
       // when window resizes, recalculate the height of the iframe
       window.addEventListener('resize', setIframeHeight);
-    }
 
-    return () => {
-      if (window) {
+      return () => {
         window.removeEventListener('resize', setIframeHeight);
-      }
-    };
-  });
+      };
+    }
+  }, []);
 
   // when the iframe content resizes, recalculate the height at which it should be shown
   const setIframeHeight = () => {
@@ -69,19 +63,12 @@ const StorybookExample = ({
   const onIframeLoad = () => {
     if (iframeRef.current) {
       setIframeHeight();
-
-      const rootEl = iframeRef.current.contentDocument.body.querySelector('#root');
-      if (rootEl) {
-        setiFrameHtml(rootEl.innerHTML);
-      }
     }
-
     setIsLoading(false);
   };
 
   return (
     <>
-      {sourceFilePath && <ViewSourceLink sourceFilePath={sourceFilePath} />}
       <div className="c-storybook-example">
         <div
           className={classnames('c-storybook-example__iframe-wrapper', {
@@ -101,21 +88,12 @@ const StorybookExample = ({
             className="c-storybook-example__iframe"
             title={`${componentName} example`}
             ref={iframeRef}
+            loading="lazy"
             onLoad={onIframeLoad}
           />
         </div>
-        <div className="ds-u-display--flex ds-u-justify-content--end">
-          <a
-            href={withPrefix(`/storybook/?path=/story/${storyId}`)}
-            target="_blank"
-            rel="noreferrer"
-            className="c-storybook-example__link"
-          >
-            Open in Storybook <ExternalLinkIcon />
-          </a>
-        </div>
       </div>
-      <CodeSnippet html={iframeHtml} />
+      <StorybookExampleFooter storyId={storyId} theme={theme} />
     </>
   );
 };

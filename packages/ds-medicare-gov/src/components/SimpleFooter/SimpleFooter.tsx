@@ -55,7 +55,7 @@ const SimpleFooter: FunctionComponent<SimpleFooterProps> = ({
 
           <Button
             className="SimpleFooter__linkButton"
-            variation="transparent"
+            variation="ghost"
             onClick={(): void => {
               const utag = (window as any).utag;
               if (

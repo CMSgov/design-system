@@ -1,0 +1,69 @@
+---
+title: Form Label & Legend
+intro: Form Labels & Legends are used with form inputs to provide labels, hints, and errors that help the user enter information.
+core:
+  githubLink: design-system/src/components/FormLabel
+  storybookLink: components-formlabel--form-label-with-hint
+---
+
+## Examples
+
+The `FormLabel` component provides the `label` (or `legend`) for a field, along with any associated hint text and error message.
+
+<StorybookExample
+  componentName="formLabel"
+  sourceFilePath="components/FormLabel/FormLabel.tsx"
+  storyId="components-formlabel--form-label-with-hint"
+/>
+
+## Code
+
+### React
+
+<PropTable componentName="ChoiceList" />
+
+### Styles
+
+The following Sass variables can be overridden to customize Form components:
+
+<ComponentThemeOptions
+  componentname="form"
+/>
+
+## Guidance
+
+### When to use
+
+#### Labels
+
+- Each form field should have a `<label>`. Never use a field's placeholder attribute as the primary way to label the field.
+
+#### Legends
+
+- Use a single legend for fieldset (this is required). One example of a common use of fieldset and legend is a question with radio button options for answers. The question text and radio buttons are wrapped in a fieldset, with the question itself being inside the legend tag.
+
+### Usage
+
+#### Labels
+
+- Each form field should have a clear, brief, and descriptive label.
+- Labels should have a `for` attribute, referencing the corresponding input's unique `id` attribute. Only one label can be associated to each unique form element.
+- Labels should be placed above their fields.
+- Label text should be short and in sentence case.
+- Avoid colons at the end of labels.
+- Don't use a field's placeholder attribute as the primary way to label the field.
+
+#### Legends
+
+- Avoid links in legends when possible. Links inside legends are not read by some screen readers, most notably Internet Explorer 11, paired with JAWS. If you need a pattern like this, put the link outside of the legend element, but keep all other useful hint text in the legend.
+
+#### Hint text
+
+- Place hint text within the field's `<label>` element.
+- Apply the `.ds-c-field__hint` class to hint text.
+- Use hint text for supporting contextual help, which will always be shown.
+- Hint text should sit above a form field and below the label text.
+
+## Learn More
+
+- [Form Guidelines](/patterns/forms/)

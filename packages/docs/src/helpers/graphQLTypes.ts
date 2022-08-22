@@ -2,8 +2,15 @@ import { PageStatus } from '../components/Layout';
 
 export interface TableOfContentsItem {
   url: string;
+  slug?: string;
   title: string;
   items?: TableOfContentsItem[];
+}
+
+export interface ComponentLinksInterface {
+  githubLink?: string;
+  sketchLink?: string;
+  storybookLink?: string;
 }
 
 /**
@@ -11,6 +18,16 @@ export interface TableOfContentsItem {
  */
 export interface LocationInterface {
   pathname: string;
+  search?: string;
+}
+
+export interface FrontmatterInterface {
+  title: string;
+  status?: PageStatus;
+  core?: ComponentLinksInterface;
+  healthcare?: ComponentLinksInterface;
+  medicare?: ComponentLinksInterface;
+  intro?: string;
 }
 
 /**
@@ -21,11 +38,8 @@ export interface MdxQuery {
     mdx: {
       id: string;
       body: string;
-      frontmatter: {
-        title: string;
-        relatedUswdsGuidance?: string;
-        status?: PageStatus;
-      };
+      slug?: string;
+      frontmatter: FrontmatterInterface;
       tableOfContents?: {
         items: TableOfContentsItem[];
       };
@@ -57,5 +71,28 @@ export interface ComponentPropQuery {
         props: PropQuery[];
       };
     }[];
+  };
+}
+
+export interface NavItem {
+  relativePath: string;
+  childMdx: {
+    frontmatter?: {
+      title: string;
+      order?: number;
+    };
+  };
+}
+
+export interface ContentDirectoryGroup {
+  fieldValue: string;
+  edges: {
+    node: NavItem;
+  }[];
+}
+
+export interface NavDataQuery {
+  allFile: {
+    group: ContentDirectoryGroup[];
   };
 }

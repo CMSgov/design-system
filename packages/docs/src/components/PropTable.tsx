@@ -9,9 +9,7 @@ import {
   Badge,
 } from '@cmsgov/design-system';
 import { graphql, useStaticQuery } from 'gatsby';
-
 import ContentRenderer from './ContentRenderer';
-
 import { ComponentPropQuery, PropQuery } from '../helpers/graphQLTypes';
 
 export interface PropTableDataItem {
@@ -31,7 +29,7 @@ interface PropTableProps {
  * A component to display a Design System component's prop table
  * It loads all props for all components and then finds the appropriate props for the passed in `componentName`
  */
-const PropTable = ({ componentName }: PropTableProps) => {
+const PropTable = ({ componentName }: PropTableProps, theme: string) => {
   // load all props for all components
   const allPropData: ComponentPropQuery = useStaticQuery(graphql`
     query loadComponentPropsQuery {
@@ -88,7 +86,7 @@ const PropTable = ({ componentName }: PropTableProps) => {
   );
 
   return (
-    <Table className="c-prop-table" stackable scrollable compact>
+    <Table className="c-prop-table" stackable scrollable borderless>
       <TableCaption>
         <span className="ds-u-visibility--screen-reader">React Properties Documentation</span>
       </TableCaption>
@@ -122,7 +120,7 @@ const PropTable = ({ componentName }: PropTableProps) => {
               {dataItem.defaultValue && <code>{dataItem.defaultValue}</code>}
             </TableCell>
             <TableCell headers="columndescription" stackedTitle="Description">
-              <ContentRenderer data={dataItem.description} />
+              <ContentRenderer data={dataItem.description} theme={theme} />
             </TableCell>
           </TableRow>
         ))}

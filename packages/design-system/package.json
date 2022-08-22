@@ -1,9 +1,12 @@
 {
   "name": "@cmsgov/design-system",
-  "version": "3.6.0",
+  "version": "4.0.0",
   "publishConfig": {
     "access": "public",
     "tag": "latest"
+  },
+  "bin": {
+    "cmsds-migrate": "./scripts/cmsds-migrate/src/main.js"
   },
   "description": "CMS Design System Sass/CSS and React assets",
   "repository": {
@@ -36,6 +39,13 @@
     "react-aria-modal": "^2.11.1",
     "react-day-picker": "^8.0.5",
     "react-transition-group": "^4.4.2"
+  },
+  "devDependencies": {
+    "chalk": "^5.0.1",
+    "globby": "^13.1.2",
+    "inquirer": "^9.0.2",
+    "ora": "^6.1.2",
+    "yargs": "^17.5.1"
   },
   "peerDependencies": {
     "react": ">=16.0.0",

@@ -34,16 +34,12 @@ exports[`UsaBanner renders correctly 1`] = `
         <button
           aria-controls="gov-banner_1"
           aria-expanded="false"
-          class="ds-c-usa-banner__button"
+          class="ds-c-usa-banner__button ds-c-usa-banner__button-text"
         >
-          <span
-            class="ds-c-usa-banner__button-text"
-          >
-            Here’s how you know
-          </span>
+          Here’s how you know
           <svg
             aria-hidden="true"
-            class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
+            class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon ds-u-margin-left--1"
             direction="down"
             focusable="false"
             id="icon-3"

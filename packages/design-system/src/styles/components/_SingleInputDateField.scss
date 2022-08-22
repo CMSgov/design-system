@@ -11,7 +11,7 @@
 :root {
   --rdp-cell-size: 40px;
   --rdp-accent-color: #{$color-primary};
-  --rdp-background-color: $color-gray-cool-light;
+  --rdp-background-color: #{$color-gray-cool-light};
   /* Added this variable for consistency */
   --rdp-active-color: #{$color-primary-darkest};
   /* Outline border for focused elements */
@@ -423,7 +423,7 @@
   }
 
   &:active:not(:disabled) {
-    background-color: $button-primary__background-color--active;
+    background-color: $button-solid__background-color--active;
     color: $color-white;
   }
 
@@ -494,7 +494,7 @@
       }
 
       &.ds-c-field--error {
-        margin-right: -#{$text-input__border-width};
+        margin-right: -#{$text-input__border-width--error};
       }
     }
   }
@@ -540,16 +540,16 @@
   }
 
   .ds-c-field--error + .ds-c-single-input-date-field__button {
-    border: $text-input__border-width solid $color-error;
+    border: $text-input__border-width--error solid $text-input__border-color--error;
 
     &:after {
-      left: -#{$text-input__border-width};
-      width: $text-input__border-width;
+      left: -#{$text-input__border-width--error};
+      width: $text-input__border-width--error;
     }
   }
 
   .ds-c-field--error.ds-c-field--inverse + .ds-c-single-input-date-field__button {
-    border: $text-input__border-width solid $color-error-light;
+    border: $text-input__border-width--error solid $text-input__border-color--error--inverse;
   }
 
   .ds-c-icon--calendar {

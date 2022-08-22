@@ -2,9 +2,10 @@
 
 exports[`HelpDrawer renders a snapshot 1`] = `
 <DocumentFragment>
-  <div
+  <dialog
     aria-labelledby="drawer_2"
     class="ds-c-help-drawer ds-c-drawer"
+    open=""
     role="dialog"
   >
     <div
@@ -22,7 +23,7 @@ exports[`HelpDrawer renders a snapshot 1`] = `
         </h3>
         <button
           aria-label="Close help drawer"
-          class="ds-c-button ds-c-button--small ds-c-drawer__close-button"
+          class="ds-c-button ds-c-button--small ds-c-drawer__close-button ds-u-fill--white"
           type="button"
         >
           Close
@@ -54,6 +55,6 @@ exports[`HelpDrawer renders a snapshot 1`] = `
         </div>
       </div>
     </div>
-  </div>
+  </dialog>
 </DocumentFragment>
 `;

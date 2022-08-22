@@ -65,9 +65,9 @@ describe('Button', () => {
     });
   });
 
-  it('renders disabled link correctly', () => {
+  it('renders disabled anchor correctly', () => {
     renderButton({
-      href: 'javascript:void(0)',
+      href: '#!',
       disabled: true,
       children: 'Link button',
     });
@@ -82,10 +82,10 @@ describe('Button', () => {
   });
 
   it('applies variation classes', () => {
-    renderButton({ variation: 'primary' });
+    renderButton({ variation: 'solid' });
     const button = screen.getByRole('button');
     expect(button.classList.contains('ds-c-button')).toBe(true);
-    expect(button.classList.contains('ds-c-button--primary')).toBe(true);
+    expect(button.classList.contains('ds-c-button--solid')).toBe(true);
   });
 
   it('applies size classes', () => {
@@ -97,29 +97,16 @@ describe('Button', () => {
 
   it('applies disabled, inverse, and variation classes together', () => {
     renderButton({
-      href: '#',
+      href: '#!',
       disabled: true,
-      inversed: true,
-      variation: 'transparent',
+      onDark: true,
+      variation: 'ghost',
     });
     const link = screen.getByRole('link');
-    expect(link.classList.contains('ds-c-button--transparent')).toBe(true);
-    expect(link.classList.contains('ds-c-button--inverse')).toBe(true);
-    expect(link.classList.contains('ds-c-button--disabled')).toBe(true);
+    expect(link.hasAttribute('href')).toBe(false);
+    expect(link.classList.contains('ds-c-button--ghost')).toBe(true);
+    expect(link.classList.contains('ds-c-button--on-dark')).toBe(true);
     expect(link.classList.contains('ds-c-button')).toBe(true);
-  });
-
-  it('prints deprecation warning for "component" prop', () => {
-    const mock = mockWarn(() => {
-      renderButton({
-        component: Link,
-        type: 'submit',
-        to: 'anywhere',
-      });
-    });
-    expect(mock).toHaveBeenCalledWith(
-      "[Deprecated]: Please remove the 'component' prop in <Button>. This prop will be removed in a future release."
-    );
   });
 
   describe('Analytics', () => {
@@ -144,7 +131,7 @@ describe('Button', () => {
       expect(tealiumMock.mock.calls[0]).toMatchSnapshot();
     });
 
-    it('sends link analytics event', () => {
+    it('sends anchor analytics event', () => {
       renderButton({ href: '#/somewhere-over-the-rainbow' });
       fireEvent.click(screen.getByRole('link'));
       expect(tealiumMock.mock.calls[0]).toMatchSnapshot();

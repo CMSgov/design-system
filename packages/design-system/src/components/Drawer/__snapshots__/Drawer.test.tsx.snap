@@ -1,117 +1,58 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Drawer renders a snapshot with focus trap 1`] = `
-<DocumentFragment>
+exports[`Drawer renders a dialog 1`] = `
+<dialog
+  aria-labelledby="drawer_1"
+  class="ds-c-drawer"
+  open=""
+  role="dialog"
+>
   <div
-    aria-labelledby="drawer_6"
-    class="ds-c-drawer"
-    role="dialog"
+    class="ds-c-drawer__window"
   >
     <div
-      class="ds-c-drawer__window"
+      class="ds-c-drawer__header"
     >
-      <div
-        class="ds-c-drawer__header"
+      <h3
+        class="ds-c-drawer__header-heading"
+        id="drawer_1"
+        tabindex="0"
       >
-        <h3
-          class="ds-c-drawer__header-heading"
-          id="drawer_6"
-          tabindex="0"
-        >
-          Drawer title
-        </h3>
-        <button
-          aria-label="Close help drawer"
-          class="ds-c-button ds-c-button--small ds-c-drawer__close-button"
-          type="button"
-        >
-          Close
-        </button>
-      </div>
-      <div
-        class="ds-c-drawer__body"
+        Drawer title
+      </h3>
+      <button
+        aria-label="Close help drawer"
+        class="ds-c-button ds-c-button--small ds-c-drawer__close-button ds-u-fill--white"
+        type="button"
       >
-        <p>
-          content
-        </p>
-      </div>
-      <div
-        class="ds-c-drawer__footer"
+        Close
+      </button>
+    </div>
+    <div
+      class="ds-c-drawer__body"
+    >
+      <p>
+        content
+      </p>
+    </div>
+    <div
+      class="ds-c-drawer__footer"
+    >
+      <h4
+        class="ds-c-drawer__footer-title"
       >
-        <h4
-          class="ds-c-drawer__footer-title"
-        >
-          Footer title
-        </h4>
-        <div
-          class="ds-c-drawer__footer-body"
-        >
-          <div>
-            <p>
-              Some footer content
-            </p>
-          </div>
+        Footer title
+      </h4>
+      <div
+        class="ds-c-drawer__footer-body"
+      >
+        <div>
+          <p>
+            Some footer content
+          </p>
         </div>
       </div>
     </div>
   </div>
-</DocumentFragment>
-`;
-
-exports[`Drawer renders a snapshot without focus trap 1`] = `
-<DocumentFragment>
-  <div
-    aria-labelledby="drawer_5"
-    class="ds-c-drawer"
-    role="dialog"
-  >
-    <div
-      class="ds-c-drawer__window"
-    >
-      <div
-        class="ds-c-drawer__header"
-      >
-        <h3
-          class="ds-c-drawer__header-heading"
-          id="drawer_5"
-          tabindex="0"
-        >
-          Drawer title
-        </h3>
-        <button
-          aria-label="Close help drawer"
-          class="ds-c-button ds-c-button--small ds-c-drawer__close-button"
-          type="button"
-        >
-          Close
-        </button>
-      </div>
-      <div
-        class="ds-c-drawer__body"
-      >
-        <p>
-          content
-        </p>
-      </div>
-      <div
-        class="ds-c-drawer__footer"
-      >
-        <h4
-          class="ds-c-drawer__footer-title"
-        >
-          Footer title
-        </h4>
-        <div
-          class="ds-c-drawer__footer-body"
-        >
-          <div>
-            <p>
-              Some footer content
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</DocumentFragment>
+</dialog>
 `;

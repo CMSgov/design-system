@@ -26,6 +26,14 @@ const config: GatsbyConfig = {
       },
     },
     {
+      resolve: 'gatsby-source-filesystem',
+      // components to load prop data from
+      options: {
+        name: 'hgov-components',
+        path: '../ds-healthcare-gov/src/components',
+      },
+    },
+    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'CMS Design System',
@@ -43,11 +51,19 @@ const config: GatsbyConfig = {
         crossOrigin: `use-credentials`,
       },
     },
-    'gatsby-plugin-mdx',
+    {
+      resolve: 'gatsby-plugin-mdx',
+      options: {
+        gatsbyRemarkPlugins: ['gatsby-remark-autolink-headers'],
+      },
+    },
     {
       resolve: 'gatsby-transformer-react-docgen',
       options: {
-        babelrcRoots: ['../design-system/src/components/*'],
+        babelrcRoots: [
+          '../design-system/src/components/*',
+          '../ds-healthcare-gov/src/components/*',
+        ],
       },
     },
     {
