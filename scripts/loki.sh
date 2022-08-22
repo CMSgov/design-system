@@ -36,6 +36,19 @@ die() {
   exit "$code"
 }
 
+kill_storybook() {
+  if pkill -f storybook ; then
+    msg "[✓] Successfully killed storybook instance"
+  else
+    msg "[X] There was a problem killing storybook, trying harder"
+    if kill -9 $SB_PID ; then
+      msg "[✓] That did it, storybook closed"
+    else
+      die "[X] Storybook can't be killed, oh no, run!"
+    fi
+  fi
+}
+
 msg() {
   echo >&2 -e "${1-}"
 }
@@ -77,18 +90,7 @@ msg "-+- Starting: npx loki ${args} ${STORYBOOK_DS}\n"
 if npx loki $args ; then
   msg "\n[✓] Loki ${args} ran successfully"
 else
-  msg "\n[X] There was a problem with Loki ${args}"
+  kill_storybook && die "\n[X] There was a problem with Loki ${args}"
 fi
 
-if pkill -f storybook ; then
-  msg "[✓] Successfully killed storybook instance"
-else
-  msg "[X] There was a problem killing storybook, trying harder"
-  if kill -9 $SB_PID ; then
-    msg "[✓] That did it, storybook closed"
-  else
-    msg "[X] Storybook can't be killed, oh no, run!"
-  fi
-fi
-
-echo ""
+kill_storybook
