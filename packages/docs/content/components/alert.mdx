@@ -1,6 +1,6 @@
 ---
 title: Alert
-intro: Alerts keep users informed of important and sometimes time-sensitive changes.
+intro: Alerts give feedback to users, provide critical information, and/or offer key supplementary details about a task.
 core:
   githubLink: design-system/src/components/Alert
   sketchLink: 9P3rvwn
@@ -13,7 +13,13 @@ medicare:
 
 ## Examples
 
-### Default
+### Informational (Default)
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+Provides supplementary information, or highlights a tool or step available to the user, that may be helpful to users regarding their current action or task, but is optional or not critical. Can provide guidance on what the user needs to do to proceed. Provides additional information, such as definitions, explanations, or criteria, that the user may find helpful as they answer questions with unfamiliar terminology or policy considerations.
+
+</ThemeContent>
 
 <StorybookExample
   componentName="alert"
@@ -22,12 +28,24 @@ medicare:
 
 ### Error
 
+<ThemeContent onlyThemes={['healthcare']}>
+
+Informs users of an error or critical failure. Often used to block them from proceeding until they resolve the issue including system alerts.
+
+</ThemeContent>
+
 <StorybookExample
   componentName="error alert"
   storyId="components-alert--error-alert"
 />
 
 ### Warning
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+Informs users that their entry or selection may have unexpected or undesirable results, some of which may not be easily undone. Highlights information a user should be aware of in order to help them avoid taking an action that is likely to result in a negative outcome or understand when content/data is missing from the page.
+
+</ThemeContent>
 
 <StorybookExample
   componentName="warning alert"
@@ -36,12 +54,24 @@ medicare:
 
 ### Success
 
+<ThemeContent onlyThemes={['healthcare']}>
+
+Confirms the successful completion of a step or task, or receipt of information provided by the user. Suggests a path forward that may be beneficial to the user, based on their selections or entries. 
+
+</ThemeContent>
+
 <StorybookExample
   componentName="success alert"
   storyId="components-alert--success-alert"
 />
 
 ### Lightweight
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+Used to show important but not as urgent messages as standard alerts.
+
+</ThemeContent>
 
 <StorybookExample
   componentName="lightweight alert"
@@ -91,28 +121,53 @@ A custom heading value can be sent for an analytics event by using the prop `ana
 
 ## Guidance
 
-### When to use
-
-- As a validation message that alerts someone that they just did something that needs to be corrected or as confirmation that a task was completed successfully.
-- As a callout or notification for important or timely information. This includes errors, warnings, and general information.
-
-### When to consider alternatives
-
-- On long forms, always include in-line validation in addition to any error messages that appear at the top of the form. When possible, simplify forms by rewriting and where possible, splitting long forms across multiple pages
-- If an action will result in destroying a user’s work (for example, deleting an application) use a more intrusive pattern, such as a confirmation modal dialogue, to allow the user to confirm that this is what they want.
-
 ### Usage
 
 - Don’t overdo it — too many notifications will either overwhelm or annoy the user and are likely to be ignored.
 - Write the message in concise, human readable language; avoid jargon and computer code.
 - Don’t include notifications that aren’t related to the user’s current goal.
 - When the user is required to do something in response to an alert, let them know what they need to do and make that task as easy as possible.
+- Be mindful of other elements on the page that may compete for the user’s attention.
+
+### When to use
+
+- As a validation message that alerts someone that they just did something that needs to be corrected or as confirmation that a task was completed successfully.
+- As a callout or notification for important or timely information. This includes errors, warnings, and general information.
+- Drawing focus to an error or an incomplete task by prompting the user to review or take other action.
+- Confirming the successful competition of a task.
+- Providing key supplementary or contextual information to support the successful completion of tasks or aid overall comprehension.
+
+### When to consider alternatives
+
+- On long forms, always include in-line validation in addition to any error messages that appear at the top of the form. When possible, simplify forms by rewriting and where possible, splitting long forms across multiple pages
+- If an action will result in destroying a user’s work (for example, deleting an application) use a more intrusive pattern, such as a confirmation modal dialogue, to allow the user to confirm that this is what they want.
+- When you need to display content that isn't related to the user’s current goal.
 
 **When the alert is for an error:**
 
 - Be polite in error messages — don’t place blame on the user.
 - Users generally won’t read documentation but will read a message that helps them resolve an error; include some educational material in your error message.
 - If the error relates to specific text fields, give these fields an error state as well.
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+### Design guidelines
+
+#### Placement
+
+- Place all alerts below the main page title.
+- Default alerts provide more impact and should be used sparingly. Focus on using default alerts as top-level elements.
+  - Exception: Warning alerts can be used as needed within the page.
+- Lightweight alerts are more targeted and should be focused on specific elements within the context of the page. 
+
+#### Display & behavior
+
+- Can be displayed statically on page load or dynamically loaded.
+- When the user is required to do something in response to an alert, let them know what they need to do and make that task as easy as possible.
+- Alerts are static and shouldn't be associated with a timer or dismiss button.
+- Having icons is the preferred use for alerts. Some alerts might have a large amount of content and may need the extra space and in those cases the icon can be removed. Removing the icon should be considered a exception. Validate the design and spacing on mobile to help make this decision.
+
+</ThemeContent>
 
 ### Accessibility
 
