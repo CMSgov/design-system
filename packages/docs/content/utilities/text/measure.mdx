@@ -1,9 +1,19 @@
 ---
 title: Measure
+intro: Line length, also called "measure", is an important part of readability.
 ---
 import loremIpsumGenerator from '../../../src/helpers/loremIpsumGenerator';
 
-Line length, also called "measure", is an important part of readability. CMSDS has 3 measure options to control reading length.
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+## Paragraph widths
+
+- The base paragraph width (~65 characters) is the preferred width for paragraphs.
+- You can opt for a wider (~80 characters) or narrower (~45 characters) paragraph width. 
+- This paragraph width improves the readability of text and helps users with certain reading or visual disabilities that have trouble keeping their place when reading long lines of text. See W3C guidance for more info. 
+
+</ThemeContent>
 
 **Format:** `.ds-u-measure--[narrow|base|wide]`
 

@@ -30,12 +30,35 @@ body {
     > h2 {
       font-size: $font-size-3xl;
       font-weight: normal;
+      margin-bottom: 0;
     }
     > h3 {
       font-size: $font-size-2xl;
+      margin-bottom: 0;
     }
     > h4 {
       font-size: $font-size-xl;
+      margin-bottom: 0;
+    }
+    > h5 {
+      font-size: $font-size-lg;
+      margin-bottom: 0;
+    }
+    > h6 {
+      font-size: $font-size-md;
+      margin-bottom: 0;
+    }
+    > p,
+    ul,
+    ol {
+      margin-bottom: 0;
+    }
+    .ds-c-table {
+      margin-top: $spacer-2;
+      ol,
+      ul {
+        margin-top: 0;
+      }
     }
   }
 }

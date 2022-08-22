@@ -41,8 +41,6 @@
     "loki:healthcare": "STORYBOOK_DS=healthcare ./scripts/loki.sh",
     "loki:medicare": "STORYBOOK_DS=medicare ./scripts/loki.sh",
     "prepare": "husky install",
-    "gh-pages:healthcare": "yarn build-docs:healthcare && gh-pages -d './packages/ds-healthcare-gov/docs/dist' --dest 'healthcare'",
-    "gh-pages:medicare": "yarn build-docs:medicare && gh-pages -d './packages/ds-medicare-gov/docs/dist' --dest 'medicare'",
     "deploy-demo": "./scripts/deploy-demo.sh",
     "release": "./scripts/release.sh",
     "precommit": "lint-staged"
