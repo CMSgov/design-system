@@ -195,7 +195,8 @@ export class Alert extends React.PureComponent<
       hideIcon && 'ds-c-alert--hide-icon',
       variation && `ds-c-alert--${variation}`,
       weight && `ds-c-alert--${weight}`,
-      className
+      className,
+      'ds-u-border--2'
     );
 
     const a11yLabel = (
