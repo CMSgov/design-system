@@ -13,6 +13,8 @@ module.exports = (rootDir, core) => ({
     'node_modules/',
     '.+\\.a11y\\.test\\.[jt]s(x)?$',
     '.+\\.e2e\\.test\\.[jt]s(x)?$',
+    'docs/public/',
+    'docs/static',
   ],
   coveragePathIgnorePatterns: [
     '/node_modules/',
