@@ -35,7 +35,9 @@ $header-background-color: $color-background;
 }
 
 .hc-c-action-menu-button {
-  // We should add the ability to add a className to the ClearIcon like we are doing for Menu Icon. This would need to be done at the core design system
+  // We should add the ability to add a className to the
+  // ClearIcon like we are doing for Menu Icon.
+  // This would need to be done at the core design system
   .ds-c-clear-icon {
     margin-right: 8px;
   }
@@ -43,7 +45,7 @@ $header-background-color: $color-background;
 
 .hc-c-menu {
   background-color: $color-white;
-  border: 1px solid $color-gray-light;
+  border: 1px solid $color-gray-lighter;
   box-shadow: 0 7px 10px -5px $color-gray-light;
   color: $color-primary-darker;
   padding: $spacer-1;
@@ -54,8 +56,7 @@ $header-background-color: $color-background;
   z-index: 1;
 }
 
-.hc-c-header--logged-in .hc-c-menu,
-.hc-c-header--minimal .hc-c-menu {
+.hc-c-header--logged-in .hc-c-menu {
   @media (min-width: $width-sm) {
     // Span only part of non-mobile screens
     left: auto;
@@ -73,119 +74,3 @@ $header-background-color: $color-background;
 .hc-c-menu__link {
   text-decoration: none;
 }
-
-/*
-----------------------------------------
-Homepage header
-----------------------------------------
-*/
-// .hc-c-header--home .hc-c-menu {
-//   background-color: $color-primary;
-// }
-
-// @media (min-width: $width-sm) {
-//   .hc-c-header--home {
-//     // On non-mobile screens, the homepage menu is always visible
-//     .hc-c-menu {
-//       display: block;
-//     }
-
-//     .hc-c-menu__content {
-//       position: static;
-//     }
-
-//     .hc-c-menu__links li {
-//       display: inline-block;
-//     }
-//   }
-// }
-
-// @media (max-width: $width-sm) {
-//   // On small screens, the logo padding was creating a wonky focus style
-//   .hc-c-header {
-//     .hc-c-logo-link {
-//       margin-left: 16px;
-//       padding-left: 0;
-//       padding-right: 8px;
-//     }
-//   }
-// }
-
-/*
-----------------------------------------
-Logged-in and Product headers
-----------------------------------------
-*/
-// .hc-c-header--logged-in .hc-c-menu__content,
-// .hc-c-header--minimal .hc-c-menu__content {
-//   background-color: $color-white;
-//   border: 1px solid $color-gray-lighter;
-//   box-shadow: 0 7px 10px -5px $color-gray-lighter;
-//   color: $color-primary-darker;
-
-//   @media (min-width: $width-sm) {
-//     // Span only part of non-mobile screens
-//     left: auto;
-//     max-width: 30ch;
-//     min-width: 20ch;
-//   }
-// }
-
-/*
-----------------------------------------
-Header dropdown menu - Shared across header variations
-----------------------------------------
-*/
-// .hc-c-menu {
-//   display: none;
-
-//   .ds-l-row {
-//     // Allow us to align hc-c-menu__content with the "Menu" button
-//     position: relative;
-//   }
-// }
-
-// .hc-c-menu--open {
-//   // Ensure the menu is open when its visibility is toggled on
-//   display: block !important;
-// }
-
-// Position the menu below the "Menu" toggle button
-// .hc-c-menu__content {
-//   background-color: $color-white;
-//   border: 1px solid $color-gray-light;
-//   box-shadow: 0 7px 10px -5px $color-gray-light;
-//   color: $color-primary-darker;
-//   left: 0;
-//   position: absolute;
-//   right: 0;
-//   top: 0;
-//   z-index: 1;
-
-//   @media (min-width: $width-sm) {
-//     // Span only part of non-mobile screens
-//     left: auto;
-//     max-width: 30ch;
-//     min-width: 20ch;
-//   }
-
-//   .hc-c-menu__link {
-//     display: block;
-//     padding: $spacer-1;
-//     text-decoration: none;
-//   }
-// }
-
-// .hc-c-menu__link {
-//   &:visited:not(:active):not(:hover) {
-//     color: $color-primary;
-//   }
-// }
-
-// @media (min-width: $width-sm) {
-//   .hc-c-header--logged-out {
-//     .hc-c-menu__content {
-//       display: none;
-//     }
-//   }
-// }
