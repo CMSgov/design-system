@@ -1,7 +1,8 @@
-import { mount, shallow } from 'enzyme';
 import React from 'react';
 import TabPanel from './TabPanel';
 import Tabs from './Tabs';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 const defaultPanelChildren = 'Foo';
 const defaultPanelProps = {
@@ -9,19 +10,12 @@ const defaultPanelProps = {
   tab: 'Tab label',
 };
 
-function render(customProps = {}, children?: React.ReactNode, deep?: boolean) {
-  const props = Object.assign({}, customProps);
-
+function renderTabs(customProps = {}, children?: React.ReactNode) {
   if (!children) {
     children = <TabPanel {...defaultPanelProps}>{defaultPanelChildren}</TabPanel>;
   }
 
-  return {
-    props: props,
-    wrapper: deep
-      ? mount(<Tabs {...props}>{children}</Tabs>)
-      : shallow(<Tabs {...props}>{children}</Tabs>),
-  };
+  return render(<Tabs {...customProps}>{children}</Tabs>);
 }
 
 describe('Tabs', function () {
@@ -37,32 +31,37 @@ describe('Tabs', function () {
         {defaultPanelChildren}
       </TabPanel>,
     ];
-    const data = render(undefined, children);
-    const tabs = data.wrapper.find('Tab');
+    renderTabs(undefined, children);
+    const tabEls = screen.getAllByRole('tab');
 
-    expect(tabs.length).toBe(1);
-    expect(tabs.first().hasClass('bar')).toBe(true);
-    expect(tabs.first().prop('id')).toBe(`ds-c-tabs__item--${defaultPanelProps.id}`);
-    expect(tabs.first().prop('panelId')).toBe(defaultPanelProps.id);
-    expect(tabs.first().prop('href')).toBe('/foo');
-    expect(tabs.first().children().text()).toBe(defaultPanelProps.tab);
+    expect(tabEls.length).toBe(1);
+    const firstTab = tabEls[0];
+    expect(firstTab.classList).toContain('bar');
+    expect(firstTab.id).toBe(`ds-c-tabs__item--${defaultPanelProps.id}`);
+    expect(firstTab.getAttribute('aria-controls')).toBe(defaultPanelProps.id);
+    expect(firstTab.getAttribute('href')).toBe('/foo');
+    expect(firstTab.textContent).toBe(defaultPanelProps.tab);
   });
 
   it('renders panels', () => {
-    const data = render();
-    const panels = data.wrapper.find('TabPanel');
+    renderTabs();
+    const panelEls = screen.getAllByRole('tabpanel');
 
-    expect(panels.length).toBe(1);
-    expect(panels.first().prop('id')).toBe(defaultPanelProps.id);
-    expect(panels.first().prop('tabId')).toBe(`ds-c-tabs__item--${defaultPanelProps.id}`);
+    expect(panelEls.length).toBe(1);
+    const firstPanel = panelEls[0];
+    expect(firstPanel.id).toBe(defaultPanelProps.id);
+    expect(firstPanel.getAttribute('aria-labelledby')).toBe(
+      `ds-c-tabs__item--${defaultPanelProps.id}`
+    );
   });
 
   it('adds additional class names to tablist', () => {
     const className = 'foo-bar';
-    const data = render({ tablistClassName: className });
-    const list = data.wrapper.find('.ds-c-tabs');
+    renderTabs({ tablistClassName: className });
+    const tabList = screen.getByRole('tablist');
 
-    expect(list.hasClass(className)).toBe(true);
+    expect(tabList.classList).toContain(className);
+    expect(tabList.classList).toContain('ds-c-tabs');
   });
 
   describe('with multiple panels', () => {
@@ -80,64 +79,73 @@ describe('Tabs', function () {
     });
 
     it('selects the first tab by default', () => {
-      const data = render(undefined, children);
-      const panels = data.wrapper.find('TabPanel');
-      const tabs = data.wrapper.find('Tab');
+      renderTabs(undefined, children);
+      // Grab all panels. Hidden and visible
+      const panelEls = screen.getAllByRole('tabpanel', { hidden: true });
+      const tabEls = screen.getAllByRole('tab');
 
-      expect(panels.first().prop('selected')).toBe(true);
-      expect(tabs.first().prop('selected')).toBe(true);
+      // checking that panels are set correctly
+      expect(panelEls[0].getAttribute('aria-hidden')).toBe('false');
+      expect(panelEls[1].getAttribute('aria-hidden')).toBe('true');
+      // checking that tabs are set correctly
+      expect(tabEls[0].getAttribute('aria-selected')).toBe('true');
+      expect(tabEls[1].getAttribute('aria-selected')).toBe('false');
     });
 
     it('selects the specified tab', () => {
-      const data = render({ defaultSelectedId: 'panel-2' }, children);
-      const panels = data.wrapper.find('TabPanel');
-      const tabs = data.wrapper.find('Tab');
+      renderTabs({ defaultSelectedId: 'panel-2' }, children);
+      // Grab all panels. Hidden and visible
+      const panelEls = screen.getAllByRole('tabpanel', { hidden: true });
+      const tabEls = screen.getAllByRole('tab');
 
-      expect(panels.at(1).prop('selected')).toBe(true);
-      expect(tabs.at(1).prop('selected')).toBe(true);
+      // checking that panels are set correctly
+      expect(panelEls[0].getAttribute('aria-hidden')).toBe('true');
+      expect(panelEls[1].getAttribute('aria-hidden')).toBe('false');
+      // checking that tabs are set correctly
+      expect(tabEls[0].getAttribute('aria-selected')).toBe('false');
+      expect(tabEls[1].getAttribute('aria-selected')).toBe('true');
     });
 
     it('calls onChange', () => {
       const onChangeMock = jest.fn();
-      const data = render(
+      renderTabs(
         {
           onChange: onChangeMock,
           selectedId: 'panel-1',
         },
-        children,
-        true
+        children
       );
 
-      const tabs = data.wrapper.find('Tab');
-      tabs.at(1).simulate('click');
+      const tabEls = screen.getAllByRole('tab');
+      userEvent.click(tabEls[1]);
 
-      expect(onChangeMock.mock.calls.length).toBe(1);
+      expect(onChangeMock).toHaveBeenCalledTimes(1);
     });
 
     it('selects the second panel on right arrow keyDown', () => {
-      const data = render({ defaultSelectedId: 'panel-1' }, children, true);
-      const tabs = data.wrapper.find('Tab');
+      renderTabs({ defaultSelectedId: 'panel-1' }, children);
+      const tabEls = screen.getAllByRole('tab');
+      // Grab all panels. Hidden and visible
+      const panelEls = screen.getAllByRole('tabpanel', { hidden: true });
 
-      tabs.first().simulate('keyDown', { key: 'ArrowRight' });
+      tabEls[0].focus();
+      userEvent.keyboard('{ArrowRight}');
 
-      const panelsUpdated = data.wrapper.find('TabPanel');
-      const tabsUpdated = data.wrapper.find('Tab');
-
-      expect(panelsUpdated.at(1).prop('selected')).toBe(true);
-      expect(tabsUpdated.at(1).prop('selected')).toBe(true);
+      expect(panelEls[1].getAttribute('aria-hidden')).toBe('false');
+      expect(tabEls[1].getAttribute('aria-selected')).toBe('true');
     });
 
     it('selects the first panel on left arrow keyDown', () => {
-      const data = render({ defaultSelectedId: 'panel-2' }, children, true);
-      const tabs = data.wrapper.find('Tab');
+      renderTabs({ defaultSelectedId: 'panel-2' }, children);
+      const tabEls = screen.getAllByRole('tab');
+      // Grab all panels. Hidden and visible
+      const panelEls = screen.getAllByRole('tabpanel', { hidden: true });
 
-      tabs.at(1).simulate('keyDown', { key: 'ArrowLeft' });
+      tabEls[1].focus();
+      userEvent.keyboard('{ArrowLeft}');
 
-      const panelsUpdated = data.wrapper.find('TabPanel');
-      const tabsUpdated = data.wrapper.find('Tab');
-
-      expect(panelsUpdated.first().prop('selected')).toBe(true);
-      expect(tabsUpdated.first().prop('selected')).toBe(true);
+      expect(panelEls[0].getAttribute('aria-hidden')).toBe('false');
+      expect(tabEls[0].getAttribute('aria-selected')).toBe('true');
     });
   });
 });
