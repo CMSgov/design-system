@@ -58,7 +58,7 @@ function compileSass(src, dest, includePaths) {
   return streamPromise(stream);
 }
 
-async function compileSourceSass(sourceDir, options, browserSync) {
+async function compileSourceSass(sourceDir, options) {
   // 'styles' folder is renamed to 'css'
   const src = path.join(sourceDir, 'src', 'styles');
   const dest = path.join(sourceDir, 'dist', 'css');
@@ -70,7 +70,7 @@ async function compileSourceSass(sourceDir, options, browserSync) {
       ? path.resolve(sourceDir, '../../node_modules')
       : path.resolve(sourceDir, 'node_modules');
   const includePaths = [src, nodeModuleRelativePath];
-  await compileSass(src, dest, includePaths, browserSync);
+  await compileSass(src, dest, includePaths);
 }
 
 module.exports = {
