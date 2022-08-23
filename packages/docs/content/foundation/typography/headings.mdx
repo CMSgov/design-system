@@ -114,9 +114,9 @@ The following Sass variables can be overridden to change the type sizes:
 - `$font-size-md`, uses `$base-font-size`
 - `$font-size-sm`
 
-<ThemeContent onlyThemes={['healthcare']}>
-
 ## Guidance
+
+<ThemeContent onlyThemes={['healthcare']}>
 
 ### Layout
 
@@ -138,6 +138,14 @@ There should always be a parent/child relationship between headers and content o
 
 <ThemeContent onlyThemes={['medicare']}>
 
+### Mobile
+
+Header sizes should be reduced on mobile screen sizes. Header sizes can be reduced depending on the designers discretion but you can generally use this guide for reducing your header sizes. 
+
+- 3xLarge to 2xLarge - Down 2 sizes
+- Xlarge to Large - Down 1 size
+- Medium to Small - No change in size
+
 ## Typography Spacing
 
 Spacing between text elements can make an impact on the overall design and having a consistent spacing between elements improves the flow of a page and improves consistency between products.
@@ -146,11 +154,31 @@ Here are some spacing elements that can help create guides for spacing between e
 
 ### How to use spacers
 
-- Use spacers that correspond to the header being applied. 
+- Use spacers that correspond to the header being applied. If you use a `heading--lg` header, apply a `$spacer-5` spacer to the body content below the header. 
 - When it comes to content relationships. Header sizes should be of equal or smaller size to the body content.
-- Apply spacers that match the header size being used. If you use a Large header, apply a Large spacer to the body content below the header. 
 
-See the example below. 
+| Header size | Variable     | Value | Example                                                      |
+| ----------- | ------------ | ----- | -------------------------------------------------------------|
+|Heading--sm  | $spacer-3    | 24px  | <div class="ds-u-fill--secondary example-spacer-3"></div>    |
+|Heading--md  | $spacer-4    | 32px  | <div class="ds-u-fill--secondary example-spacer-4"></div>    |
+|Heading--lg  | $spacer-5    | 40px  | <div class="ds-u-fill--secondary example-spacer-5"></div>    |
+|Heading--xl  | $spacer-6    | 48px  | <div class="ds-u-fill--secondary example-spacer-6"></div>    |
+|Heading--2xl | $spacer-7    | 56px  | <div class="ds-u-fill--secondary example-spacer-7"></div>    |
+|Heading--3xl | No variable  | 72px  |                                                              |
+
+### Spacing example 
+
+<EmbeddedExample>
+
+<h1 class="ds-text-heading--2xl ds-h1">Heading--2xl</h1>
+<div class="utility-example example-spacer-7 ds-u-display--flex ds-u-align-items--center ds-u-justify-content--center">$spacer-7</div> 
+<p class="ds-text-body--md">{loremIpsumGenerator('l')}</p>
+
+<h1 class="ds-text-heading--lg ds-h1">Heading--lg</h1>
+<div class="utility-example example-spacer-5 ds-u-display--flex ds-u-align-items--center ds-u-justify-content--center">$spacer-5</div> 
+<p class="ds-text-body--md">{loremIpsumGenerator('l')}</p>
+
+</EmbeddedExample>
 
 </ThemeContent>
 
@@ -162,32 +190,24 @@ See the example below.
 - Uppercase font should not be used (exception for form elements).
 </ThemeContent>
 
-
 <ThemeContent onlyThemes={['medicare']}>
-There are six Header sizes to choose from:
 
-1. Small - 14px
-2. Medium - 16px
-3. Large - 20px
-4. XLarge - 24px
-5. 2XLarge - 32px
-6. 3xLarge - 40px
+### Header styles
 
 There are five header styles that can be used:
 
-1. Default Header - This is the header style that would be used in most cases. 
-2. Teal Header - Only used for landing pages and marketing materia to apply emphasis to words within a header. 
-3. Inverse Header - Used on dark backgrounds only. 
-4. Inverse Link Header - Used for header links on dark backgrounds.
-5. Link Header - Used when you need to have a header as a link. 
-
 <EmbeddedExample>
-      <h3 class="ds-text-heading--lg">Default header</h3>
-      <h3 class="ds-text-heading--lg">Teal header</h3>
-      <h3 class="ds-text-heading--lg"><a href="javascript:void(0);">Link header</a></h3>
+      <h3 class="ds-text-heading--lg">1. Default header</h3>
+      <p>This is the header style that would be used in most cases</p>
+      <h3 class="ds-text-heading--lg">2. Teal header</h3>
+      <p>Only used for landing pages and marketing material to apply emphasis to words within a header. </p>
+      <h3 class="ds-text-heading--lg"><a href="javascript:void(0);">3. Link header</a></h3>
+      <p>Used when you need to have a header as a link</p>
       <div class="ds-base--inverse ds-u-padding--2">
-      <h3 class="ds-text-heading--lg">Inverse header</h3>
-      <h3 class="ds-text-heading--lg"><a href="javascript:void(0);">Inverse link header</a></h3>
+      <h3 class="ds-text-heading--lg">4. Header on dark backgrounds</h3>
+      <p>Used on dark backgrounds only</p>
+      <h3 class="ds-text-heading--lg"><a href="javascript:void(0);">5. Header link on dark backgrounds</a></h3>
+      <p>Used for header links on dark backgrounds.</p>
       </div>
 </EmbeddedExample>
 
