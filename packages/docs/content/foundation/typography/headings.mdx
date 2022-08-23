@@ -34,12 +34,33 @@ Sans-serifs have been proven to be easier to read on-screen and are incredibly a
 
 The design system doesn't style base HTML typography elements (like `h1`, `h2`, `p`, etc) in order to avoid conflicting with any existing site styles. You should instead use one of the base typography classes below to apply styling:
 
+<ThemeContent onlyThemes={['healthcare', 'core']}>
+
 ### Heading--5xl
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+### Heading--5xl (Unused)
+
+</ThemeContent>
+
 <EmbeddedExample>
       <h1 class="ds-text-heading--5xl ds-display">{loremIpsumGenerator('s')}</h1>
 </EmbeddedExample>
 
+<ThemeContent onlyThemes={['healthcare', 'core']}>
+
 ### Heading--4xl
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+### Heading--4xl (Unused)
+
+</ThemeContent>
 
 <ThemeContent onlyThemes={['healthcare']}>
 
