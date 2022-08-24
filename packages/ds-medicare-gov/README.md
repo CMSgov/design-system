@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/@cmsgov/ds-medicare-gov.svg?label=@cmsgov%2Fds-medicare-gov)](https://www.npmjs.com/package/@cmsgov/ds-medicare-gov)
 
-[>> **View the full documentation site here** <<](https://cmsgov.github.io/design-system/medicare/)
+[>> **View the full documentation site here** <<](https://design.cms.gov/?theme=medicare)
 
 The _Medicare.gov Design System_ contains shared design and front-end development resources for Medicare.gov applications, and is built on top of the [CMS Design System](https://design.cms.gov/) (CMSDS). As a _child design system_, it inherits base styles, components, and guidance from the CMS Design System, while also adding its own features and customizations.
 
@@ -10,7 +10,7 @@ The _Medicare.gov Design System_ contains shared design and front-end developmen
 
 `yarn add @cmsgov/ds-medicare-gov`
 
-For full documentation on installation and usage in your Medicare.gov product, please refer to [our documentation site](https://cmsgov.github.io/design-system/medicare/startup/installation/).
+For full documentation on installation and usage in your Medicare.gov product, please refer to [our documentation site](https://design.cms.gov/getting-started/developers/installation/?theme=medicare).
 
 ## Contributing
 

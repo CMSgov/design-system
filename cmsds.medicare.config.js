@@ -4,10 +4,7 @@ module.exports = {
   // The relative path to the directory containing the design system package `src`. The design system build files will be saved here under "dist".
   sourceDir: './packages/ds-medicare-gov',
   // The relative path to the directory containing the doc site `src`. The doc site build files will be saved here under "dist".
-  docsDir: './packages/ds-medicare-gov/docs',
-  // The URL root path for the published docs site. I.e. if your docs site is hosted at www.domain.com/design/ your rootPath would be `design`. `rootPath` is only used when building for production.
   rootPath: 'design-system/medicare',
-
   // Name of the design system. This replaces the {{name}} template in documentation content.
   name: 'Medicare.gov Design System',
   // The URL for your GitHub repository. This replaces the {{github}} template in documentation content.
