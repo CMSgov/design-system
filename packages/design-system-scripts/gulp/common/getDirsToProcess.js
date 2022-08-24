@@ -1,5 +1,5 @@
 const getPackageName = require('./getPackageName');
-const { CORE_SOURCE_PACKAGE, CORE_DOCS_PACKAGE } = require('./constants');
+const { CORE_SOURCE_PACKAGE } = require('./constants');
 
 /**
  * Child Design Systems need to process files from the core CMSDS packages in addition to their own files.
@@ -11,11 +11,5 @@ module.exports = {
     return pkgName === CORE_SOURCE_PACKAGE
       ? [sourceDir]
       : [`node_modules/${CORE_SOURCE_PACKAGE}`, sourceDir];
-  },
-  async getDocsDirs(docPackageDir) {
-    const pkgName = await getPackageName(docPackageDir);
-    return pkgName === CORE_DOCS_PACKAGE
-      ? [docPackageDir]
-      : [`node_modules/${CORE_DOCS_PACKAGE}`, docPackageDir];
   },
 };
