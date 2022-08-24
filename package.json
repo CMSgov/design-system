@@ -1,46 +1,71 @@
 {
   "name": "design-system",
   "private": true,
+  "description": "A set of open source design and front-end development resources for creating Section 508 compliant, responsive, and consistent websites.",
+  "repository": "https://github.com/CMSgov/design-system",
   "workspaces": [
     "packages/*"
   ],
-  "description": "A set of open source design and front-end development resources for creating Section 508 compliant, responsive, and consistent websites.",
-  "repository": "https://github.com/CMSgov/design-system",
   "scripts": {
-    "storybook": "STORYBOOK_DS=core start-storybook -p 6006",
-    "storybook:healthcare": "STORYBOOK_DS=healthcare start-storybook -p 6006",
-    "storybook:medicare": "STORYBOOK_DS=medicare start-storybook -p 6006",
+    "build": "yarn cmsds build",
     "build-storybook": "STORYBOOK_DS=core build-storybook -o storybook-static",
+    "build-storybook:gatsby": "STORYBOOK_DS=gatsby build-storybook -o packages/docs/static/storybook",
     "build-storybook:healthcare": "STORYBOOK_DS=healthcare build-storybook -o storybook-static",
     "build-storybook:medicare": "STORYBOOK_DS=medicare build-storybook -o storybook-static",
-    "build-storybook:gatsby": "STORYBOOK_DS=gatsby build-storybook -o packages/docs/static/storybook",
     "build-tokens": "yarn --cwd ./packages/design-system-tokens build themes scss && yarn --cwd ./packages/design-system-tokens build themes css-vars && yarn --cwd ./packages/design-system-tokens dist",
-    "build": "yarn cmsds build",
+    "build:docs": "yarn --cwd ./packages/docs build",
     "build:healthcare": "yarn cmsds build --config cmsds.healthcare.config.js",
     "build:medicare": "yarn cmsds build --config cmsds.medicare.config.js",
-    "build:docs": "yarn --cwd ./packages/docs build",
-    "serve:docs": "yarn --cwd ./packages/docs serve",
-    "start": "yarn --cwd ./packages/docs develop",
-    "test": "yarn test:unit && yarn test:a11y core",
-    "test:unit": "yarn cmsds test ./packages --filePath",
-    "test:a11y": "yarn cmsds test:a11y core",
-    "test:a11y:healthcare": "yarn cmsds test:a11y healthcare",
-    "test:a11y:medicare": "yarn cmsds test:a11y medicare",
-    "update-snapshots": "yarn cmsds test ./packages --updateSnapshot",
-    "test-coverage": "yarn cmsds test ./packages --collectCoverage",
-    "posttest": "yarn lint",
+    "deploy-demo": "./scripts/deploy-demo.sh",
     "lint": "yarn lint:stylelint && yarn lint:eslint",
     "lint:eslint": "npx eslint ./packages/",
     "lint:stylelint": "npx stylelint ./packages/**/*.scss --custom-formatter=node_modules/stylelint-formatter-pretty",
-    "type-check": "yarn tsc --noEmit",
-    "prettier": "npx prettier --write 'packages/**/*.{js,jsx,tsx,scss,html,md,mdx,json}'",
     "loki": "STORYBOOK_DS=core ./scripts/loki.sh",
     "loki:healthcare": "STORYBOOK_DS=healthcare ./scripts/loki.sh",
     "loki:medicare": "STORYBOOK_DS=medicare ./scripts/loki.sh",
+    "precommit": "lint-staged",
     "prepare": "husky install",
-    "deploy-demo": "./scripts/deploy-demo.sh",
+    "prettier": "npx prettier --write 'packages/**/*.{js,jsx,tsx,scss,html,md,mdx,json}'",
     "release": "./scripts/release.sh",
-    "precommit": "lint-staged"
+    "serve:docs": "yarn --cwd ./packages/docs serve",
+    "start": "yarn --cwd ./packages/docs develop",
+    "storybook": "STORYBOOK_DS=core start-storybook -p 6006",
+    "storybook:healthcare": "STORYBOOK_DS=healthcare start-storybook -p 6006",
+    "storybook:medicare": "STORYBOOK_DS=medicare start-storybook -p 6006",
+    "test": "yarn test:unit && yarn test:a11y core",
+    "posttest": "yarn lint",
+    "test-coverage": "yarn cmsds test ./packages --collectCoverage",
+    "test:a11y": "yarn cmsds test:a11y core",
+    "test:a11y:healthcare": "yarn cmsds test:a11y healthcare",
+    "test:a11y:medicare": "yarn cmsds test:a11y medicare",
+    "test:unit": "yarn cmsds test ./packages --filePath",
+    "type-check": "yarn tsc --noEmit",
+    "update-snapshots": "yarn cmsds test ./packages --updateSnapshot"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{md,html}": [
+      "prettier --write"
+    ],
+    "*.scss": [
+      "prettier --write",
+      "stylelint --fix --allow-empty-input"
+    ]
+  },
+  "browserslist": [
+    "> 2%",
+    "Last 2 versions"
+  ],
+  "resolutions": {
+    "kss/nunjucks": ">=3.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
@@ -90,30 +115,5 @@
   "engines": {
     "node": ">=11.0.0",
     "yarn": ">=1.22.4"
-  },
-  "resolutions": {
-    "kss/nunjucks": ">=3.2.0"
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "prettier --write",
-      "eslint --fix"
-    ],
-    "*.{md,html}": [
-      "prettier --write"
-    ],
-    "*.scss": [
-      "prettier --write",
-      "stylelint --fix --allow-empty-input"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "browserslist": [
-    "> 2%",
-    "Last 2 versions"
-  ]
+  }
 }
