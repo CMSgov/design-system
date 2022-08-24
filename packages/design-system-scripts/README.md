@@ -1,15 +1,11 @@
 This package contains shared scripts and tooling for CMS design systems. It includes scripts for the following:
 
 - Compiling & minifying design system files
-- Building & watching documentation site files
 - Running unit & a11y tests
 
 ## Installation
 
-This package is intended to be used with the `design-system-docs` package.
-
 ```
-npm install --save @cmsgov/design-system-docs
 npm install --save @cmsgov/design-system-scripts
 ```
 
@@ -32,8 +28,6 @@ yarn cmsds build --help
 Available commands:
 
 - `yarn cmsds build` - Builds the JavaScript and Sass for your main design system package.
-- `yarn cmsds build-docs` - Builds your main design system package and its corresponding documentation site.
-- `yarn cmsds start` - Builds and hosts the documentation site, automatically rebuilds and refreshes when changes are detected
 - `yarn cmsds test` - Runs unit tests
 - `yarn cmsds test:a11y` - Runs end to end tests
 

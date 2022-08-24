@@ -9,6 +9,8 @@ module.exports = {
     'tmp/**',
     '**/types/**',
     '**/styles/utilities/**',
+    '**/docs/public/**',
+    '**/docs/static/**',
   ],
   plugins: ['stylelint-scss'],
   reportDescriptionlessDisables: true,
