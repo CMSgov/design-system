@@ -1,0 +1,137 @@
+---
+title: Medicare.gov Header
+intro: The Consistent Header is a shared component available for all of medicare.gov.
+medicare:
+  sketchLink: 52355my
+---
+
+import { Alert } from '@cmsgov/design-system';
+
+<ThemeContent neverThemes={['medicare']}>
+  <Alert variation="error">
+     <p class="ds-c-alert__text">
+        This component is only used for Medicare. Please use the theme switcher to view the component with Medicare styles.
+    </p>
+  </Alert>
+</ThemeContent>
+
+## Code
+
+### HTML
+The following example shows what the div element should look like before importing the scripts:
+
+```html
+<div id="root" lang="en" lang-toggle-link="your-language-toggle-link-here" login-url="login-url" logout-url="logout-url" enable-live-chat="true">
+```
+
+### JS
+
+Implementers should load the JavaScript and CSS files programmatically from the asset-manifest.json in order to get the latest versions whenever they become available. Here's an example of how to do that in the imp environment, using jQuery.
+
+```js
+loadFilesFromManifest('https://frontend.imp.medicare.gov/', 'asset-manifest.json');
+
+//Gets and parses the entrypoints node of the asset manifest file
+function loadFilesFromManifest(rootURL, manifest) {
+	var manifestURL = rootURL + manifest;
+	$.getJSON(manifestURL, function(json) {
+		importFilesFromArray(json.entrypoints, rootURL);
+	});
+}
+
+//Takes the provided array, parses it and loads
+// all of the JS and CSS files based on their file extension
+function importFilesFromArray(files, rootURL) {
+	for (var i = 0; i < files.length; i++) {
+		if (files[i].endsWith('.js'))
+			importJSFile(rootURL + files[i]);
+		else if (files[i].endsWith('.css'))
+			importCSSFile(rootURL + files[i]);
+	}
+}
+
+//Imports a single JS file
+function importJSFile(url) {
+	var jsElement = document.createElement('script');
+	jsElement.src = url;
+	jsElement.type = 'text/javascript';
+
+	var head = document.head;
+	head.insertBefore(jsElement, head.childNodes[0]);
+}
+
+//Imports a single CSS file
+function importCSSFile(url) {
+	var cssElement = document.createElement('link');
+	cssElement.href = url;
+	cssElement.rel = 'stylesheet';
+	cssElement.type = 'text/css';
+
+	var head = document.head;
+	head.insertBefore(cssElement, head.childNodes[0]);
+}
+```
+
+## Guidance
+
+For detailed information on the header contents, see [this Confluence page](https://confluence.cms.gov/display/MAX/Consistent+Header+Contents).
+
+For guidance on how to use the consistent header in a variety of scenarios, see the [Additional Guidelines](https://cms.invisionapp.com/dsm/cms/mgov-design-system/nav/5fa7da3f7044bd0018240ddb/asset/5fa15ef85296b21c9eb14293/tab/design?mode=preview).
+
+### Usage
+Implementers should create a `div` with the id of `root` and supply it with the required attributes(listed below), and import the correct Javascript and CSS files, which will attach the header to the div. A list of resources to import can be found in the `entrypoints` section of the `asset-manifest.json` file for each environment.
+
+#### Configuration Attributes
+
+Below is a list of required attributes that are used to configure the Consistent Header:
+
+- lang: "en" or "es".
+  - Default: english if no lang attribute is specified
+- lang-toggle-link: this should be the URL an implementing site is already using to swap languages
+  - The language toggle link on the Consistent Header expects the complete path
+- login-url: this is the url for users to login in to their account.
+  - Default login - Used for application teams that do not have a direct integrations established with SLSx team
+    - URL: [https://imp.medicare.gov/account/login]
+    - This will take benes to the default login page.
+    - Redirect after login: If applications would like to redirect users back to a specific page after login, then please contact the SLSx team to get setup. Full integration is not required just to utilize redirects. - SLSx: Client Onboarding Guide
+  - Application specific - Used by application teams that were provided specific login urls to use by the SLSx team.
+- logout-url: this is the url for users to logout
+  - Default logout url is set to [http://medicare.gov/sso/signout]. This will end the global session and any local sessions for the bene
+  - Teams can ensure that the redirect goes to a specific page after logout by appending the following parameters to the login url: ?redirect_uri=[URL]
+    - https://www.medicare.gov/sso/signout?redirect_uri=https://www.medicare.gov/
+- enable-live-chat: boolean value manages whether live chat is enabled or not
+- live-chat-viewpage: passes the view_page value whenever the live chat is opened up
+- enable-message-center: boolean value manages whether live chat is enabled or not.
+  - Default: the default value is set to false
+- headerType (optional): Allows teams to pass certain header types based on their needs
+  - If the attribute is not included, the MAX header with the config attributes being used the same way they have been.
+  - headerType = ‘MAX’ then the MAX header with the config attributes being used the same way they have been.
+  - headerType = ‘CSR’ and beneficiary={name:’Stephen’} then the CSR header should be displayed along with the name “Stephen” displayed.
+- Active-nav-section (optional): designates where to show an underline within the CH menus to help the beneficiaries better understand “where they are” in terms of global navigation using the header.
+  - Default
+    - The header will detect whether or not the current page url matches any of the links in the Consistent Header. If there is a match, then the underline will remain on that CH menu selection after navigating to that new page.
+      - Bene clicks on Basics > Your Medicare Costs and navigates to https://imp.medicare.gov/your-medicare-costs
+      - On https://imp.medicare.gov/your-medicare-costs the Basics menu will be underlined
+    - If a page doesn’t match any of the links in the Consistent Header, then no underline will be shown in the menu.
+    - Passing active-nav-section configuration will override the default
+  - Manual configuration - Application teams can manually set where the underline show display in the Consistent Header to aid in navigation
+    - Pass the active-nav-section configuration AND the specific menu for the underline to show
+      - Consistent Header menu options are: “"basics", "health & drug plans", "providers & services", or "account"
+    - Passing active-nav-section configuration will override the default
+
+#### Breakpoints
+
+The Consistent Header has two breakpoints and three versions. At the lower range of the desktop size, the main menu items will break into two lines of text. The slide-out menus for the mobile and tablet ranges are the same.
+
+- Desktop: >1024px
+- Tablet: 1024px - 768px
+- Mobile: <768px
+
+### FAQ
+
+- How do translations work for the header?
+  - Translations for the menu text is being performed manually through CMS.
+  - Whenever you set lang="es" on the #root div the header expects the lang-toggle-link to be pointed to the english version of the site. So you would have to provide a link to the english version of the site.
+  - Nothing else is needed on the translation front beyond the lang and lang-toggle-link
+- Is there anything that teams need to do to ensure the proper authenticated\unauth header is displayed to the user?
+  - No, there should not be anything that needs to be done from an integration standpoint for the header know the auth\unauth status of the user and this display the proper version of the header.

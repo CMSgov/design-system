@@ -206,7 +206,7 @@ export const Header = (props: HeaderProps) => {
     : defaultLinksForVariation;
 
   return (
-    <header className={classes} role="banner">
+    <header className={classes} role="banner" aria-label="global">
       <SkipNav href={props.skipNavHref} onClick={props.onSkipNavClick}>
         {t('header.skipNav')}
       </SkipNav>
@@ -220,24 +220,28 @@ export const Header = (props: HeaderProps) => {
             <Logo locale={props.initialLanguage ?? getLanguage()} />
           </a>
 
-          <ActionMenu
-            t={t}
-            firstName={props.firstName}
-            onMenuToggleClick={handleMenuToggleClick}
-            loggedIn={props.loggedIn}
-            open={openMenu}
-            links={links}
-          />
+          <nav
+            id="hc-c-header__actions"
+            className="hc-c-header__actions ds-l-col ds-l-col--auto ds-u-margin-left--auto ds-u-font-weight--bold"
+          >
+            <ActionMenu
+              t={t}
+              firstName={props.firstName}
+              onMenuToggleClick={handleMenuToggleClick}
+              loggedIn={props.loggedIn}
+              open={openMenu}
+              links={links}
+            />
+            <Menu
+              beforeLinks={beforeMenuLinks()}
+              links={links}
+              open={openMenu}
+              submenuTop={props.submenuTop}
+              submenuBottom={props.submenuBottom}
+            />
+          </nav>
         </div>
       </div>
-
-      <Menu
-        beforeLinks={beforeMenuLinks()}
-        links={links}
-        open={openMenu}
-        submenuTop={props.submenuTop}
-        submenuBottom={props.submenuBottom}
-      />
 
       {props.deConsumer && <DeConsumerMessage t={t} deBrokerName={props.deBrokerName} />}
       {props.headerBottom}
