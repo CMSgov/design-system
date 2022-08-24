@@ -1,8 +1,7 @@
-import React, { useEffect, useRef, useState, useMemo } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import classnames from 'classnames';
 import StorybookExampleFooter from './StorybookExampleFooter';
-import { ExternalLinkIcon, Spinner } from '@cmsgov/design-system';
-import { makeStorybookUrl } from '../helpers/urlUtils';
+import { Spinner } from '@cmsgov/design-system';
 import { withPrefix } from 'gatsby';
 
 interface StorybookExampleProps {
