@@ -2,6 +2,7 @@
 
 exports[`Header renders Direct Enrollment banner 1`] = `
 <header
+  aria-label="global"
   className="hc-c-header hc-c-header--logged-out"
   role="banner"
 >
@@ -24,42 +25,47 @@ exports[`Header renders Direct Enrollment banner 1`] = `
           locale="en"
         />
       </a>
-      <ActionMenu
-        links={
-          Array [
-            Object {
-              "href": "https://www.cuidadodesalud.gov/es/",
-              "label": "Español",
-            },
-            Object {
-              "href": "/login?check_de=1",
-              "identifier": "login",
-              "label": "Log in",
-            },
-          ]
-        }
-        onMenuToggleClick={[Function]}
-        open={false}
-        t={[Function]}
-      />
+      <nav
+        className="hc-c-header__actions ds-l-col ds-l-col--auto ds-u-margin-left--auto ds-u-font-weight--bold"
+        id="hc-c-header__actions"
+      >
+        <ActionMenu
+          links={
+            Array [
+              Object {
+                "href": "https://www.cuidadodesalud.gov/es/",
+                "label": "Español",
+              },
+              Object {
+                "href": "/login?check_de=1",
+                "identifier": "login",
+                "label": "Log in",
+              },
+            ]
+          }
+          onMenuToggleClick={[Function]}
+          open={false}
+          t={[Function]}
+        />
+        <Menu
+          links={
+            Array [
+              Object {
+                "href": "https://www.cuidadodesalud.gov/es/",
+                "label": "Español",
+              },
+              Object {
+                "href": "/login?check_de=1",
+                "identifier": "login",
+                "label": "Log in",
+              },
+            ]
+          }
+          open={false}
+        />
+      </nav>
     </div>
   </div>
-  <Menu
-    links={
-      Array [
-        Object {
-          "href": "https://www.cuidadodesalud.gov/es/",
-          "label": "Español",
-        },
-        Object {
-          "href": "/login?check_de=1",
-          "identifier": "login",
-          "label": "Log in",
-        },
-      ]
-    }
-    open={false}
-  />
   <DeConsumerMessage
     deBrokerName="Foo"
     t={[Function]}
@@ -69,6 +75,7 @@ exports[`Header renders Direct Enrollment banner 1`] = `
 
 exports[`Header renders Spanish header 1`] = `
 <header
+  aria-label="global"
   className="hc-c-header hc-c-header--logged-out"
   role="banner"
 >
@@ -91,47 +98,53 @@ exports[`Header renders Spanish header 1`] = `
           locale="es"
         />
       </a>
-      <ActionMenu
-        links={
-          Array [
-            Object {
-              "href": "https://www.healthcare.gov/",
-              "label": "English",
-            },
-            Object {
-              "href": "/login",
-              "identifier": "login",
-              "label": "Iniciar sesión",
-            },
-          ]
-        }
-        onMenuToggleClick={[Function]}
-        open={false}
-        t={[Function]}
-      />
+      <nav
+        className="hc-c-header__actions ds-l-col ds-l-col--auto ds-u-margin-left--auto ds-u-font-weight--bold"
+        id="hc-c-header__actions"
+      >
+        <ActionMenu
+          links={
+            Array [
+              Object {
+                "href": "https://www.healthcare.gov/",
+                "label": "English",
+              },
+              Object {
+                "href": "/login",
+                "identifier": "login",
+                "label": "Iniciar sesión",
+              },
+            ]
+          }
+          onMenuToggleClick={[Function]}
+          open={false}
+          t={[Function]}
+        />
+        <Menu
+          links={
+            Array [
+              Object {
+                "href": "https://www.healthcare.gov/",
+                "label": "English",
+              },
+              Object {
+                "href": "/login",
+                "identifier": "login",
+                "label": "Iniciar sesión",
+              },
+            ]
+          }
+          open={false}
+        />
+      </nav>
     </div>
   </div>
-  <Menu
-    links={
-      Array [
-        Object {
-          "href": "https://www.healthcare.gov/",
-          "label": "English",
-        },
-        Object {
-          "href": "/login",
-          "identifier": "login",
-          "label": "Iniciar sesión",
-        },
-      ]
-    }
-    open={false}
-  />
 </header>
 `;
 
 exports[`Header renders full/homepage header 1`] = `
 <header
+  aria-label="global"
   className="hc-c-header hc-c-header--logged-out"
   role="banner"
 >
@@ -154,47 +167,53 @@ exports[`Header renders full/homepage header 1`] = `
           locale="en"
         />
       </a>
-      <ActionMenu
-        links={
-          Array [
-            Object {
-              "href": "https://www.cuidadodesalud.gov/es/",
-              "label": "Español",
-            },
-            Object {
-              "href": "/login",
-              "identifier": "login",
-              "label": "Log in",
-            },
-          ]
-        }
-        onMenuToggleClick={[Function]}
-        open={false}
-        t={[Function]}
-      />
+      <nav
+        className="hc-c-header__actions ds-l-col ds-l-col--auto ds-u-margin-left--auto ds-u-font-weight--bold"
+        id="hc-c-header__actions"
+      >
+        <ActionMenu
+          links={
+            Array [
+              Object {
+                "href": "https://www.cuidadodesalud.gov/es/",
+                "label": "Español",
+              },
+              Object {
+                "href": "/login",
+                "identifier": "login",
+                "label": "Log in",
+              },
+            ]
+          }
+          onMenuToggleClick={[Function]}
+          open={false}
+          t={[Function]}
+        />
+        <Menu
+          links={
+            Array [
+              Object {
+                "href": "https://www.cuidadodesalud.gov/es/",
+                "label": "Español",
+              },
+              Object {
+                "href": "/login",
+                "identifier": "login",
+                "label": "Log in",
+              },
+            ]
+          }
+          open={false}
+        />
+      </nav>
     </div>
   </div>
-  <Menu
-    links={
-      Array [
-        Object {
-          "href": "https://www.cuidadodesalud.gov/es/",
-          "label": "Español",
-        },
-        Object {
-          "href": "/login",
-          "identifier": "login",
-          "label": "Log in",
-        },
-      ]
-    }
-    open={false}
-  />
 </header>
 `;
 
 exports[`Header renders links with absolute URLs if provided a primaryDomain prop 1`] = `
 <header
+  aria-label="global"
   className="hc-c-header hc-c-header--logged-out"
   role="banner"
 >
@@ -217,47 +236,53 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
           locale="en"
         />
       </a>
-      <ActionMenu
-        links={
-          Array [
-            Object {
-              "href": "https://www.cuidadodesalud.gov/es/",
-              "label": "Español",
-            },
-            Object {
-              "href": "https://www.healthcare.gov/login",
-              "identifier": "login",
-              "label": "Log in",
-            },
-          ]
-        }
-        onMenuToggleClick={[Function]}
-        open={false}
-        t={[Function]}
-      />
+      <nav
+        className="hc-c-header__actions ds-l-col ds-l-col--auto ds-u-margin-left--auto ds-u-font-weight--bold"
+        id="hc-c-header__actions"
+      >
+        <ActionMenu
+          links={
+            Array [
+              Object {
+                "href": "https://www.cuidadodesalud.gov/es/",
+                "label": "Español",
+              },
+              Object {
+                "href": "https://www.healthcare.gov/login",
+                "identifier": "login",
+                "label": "Log in",
+              },
+            ]
+          }
+          onMenuToggleClick={[Function]}
+          open={false}
+          t={[Function]}
+        />
+        <Menu
+          links={
+            Array [
+              Object {
+                "href": "https://www.cuidadodesalud.gov/es/",
+                "label": "Español",
+              },
+              Object {
+                "href": "https://www.healthcare.gov/login",
+                "identifier": "login",
+                "label": "Log in",
+              },
+            ]
+          }
+          open={false}
+        />
+      </nav>
     </div>
   </div>
-  <Menu
-    links={
-      Array [
-        Object {
-          "href": "https://www.cuidadodesalud.gov/es/",
-          "label": "Español",
-        },
-        Object {
-          "href": "https://www.healthcare.gov/login",
-          "identifier": "login",
-          "label": "Log in",
-        },
-      ]
-    }
-    open={false}
-  />
 </header>
 `;
 
 exports[`Header renders logged-in header with firstName 1`] = `
 <header
+  aria-label="global"
   className="hc-c-header hc-c-header--logged-in"
   role="banner"
 >
@@ -280,72 +305,78 @@ exports[`Header renders logged-in header with firstName 1`] = `
           locale="en"
         />
       </a>
-      <ActionMenu
-        firstName="John"
-        links={
-          Array [
-            Object {
-              "href": "/marketplace/auth/global/en_US/myProfile#landingPage",
-              "label": "My applications & coverage",
-            },
-            Object {
-              "href": "/marketplace/auth/global/en_US/myProfile#settings",
-              "label": "My profile",
-            },
-            Object {
-              "href": "https://www.cuidadodesalud.gov/es/",
-              "label": "Español",
-            },
-            Object {
-              "href": "/logout",
-              "identifier": "logout",
-              "label": "Log out",
-            },
-          ]
-        }
-        loggedIn={true}
-        onMenuToggleClick={[Function]}
-        open={false}
-        t={[Function]}
-      />
+      <nav
+        className="hc-c-header__actions ds-l-col ds-l-col--auto ds-u-margin-left--auto ds-u-font-weight--bold"
+        id="hc-c-header__actions"
+      >
+        <ActionMenu
+          firstName="John"
+          links={
+            Array [
+              Object {
+                "href": "/marketplace/auth/global/en_US/myProfile#landingPage",
+                "label": "My applications & coverage",
+              },
+              Object {
+                "href": "/marketplace/auth/global/en_US/myProfile#settings",
+                "label": "My profile",
+              },
+              Object {
+                "href": "https://www.cuidadodesalud.gov/es/",
+                "label": "Español",
+              },
+              Object {
+                "href": "/logout",
+                "identifier": "logout",
+                "label": "Log out",
+              },
+            ]
+          }
+          loggedIn={true}
+          onMenuToggleClick={[Function]}
+          open={false}
+          t={[Function]}
+        />
+        <Menu
+          beforeLinks={
+            <div
+              className="ds-u-sm-display--none ds-u-border-bottom--1 ds-u-margin-x--1 ds-u-padding-y--1 hc-c-header__name"
+            >
+              John
+            </div>
+          }
+          links={
+            Array [
+              Object {
+                "href": "/marketplace/auth/global/en_US/myProfile#landingPage",
+                "label": "My applications & coverage",
+              },
+              Object {
+                "href": "/marketplace/auth/global/en_US/myProfile#settings",
+                "label": "My profile",
+              },
+              Object {
+                "href": "https://www.cuidadodesalud.gov/es/",
+                "label": "Español",
+              },
+              Object {
+                "href": "/logout",
+                "identifier": "logout",
+                "label": "Log out",
+              },
+            ]
+          }
+          open={false}
+        />
+      </nav>
     </div>
   </div>
-  <Menu
-    beforeLinks={
-      <div
-        className="ds-u-sm-display--none ds-u-border-bottom--1 ds-u-margin-x--1 ds-u-padding-y--1 hc-c-header__name"
-      >
-        John
-      </div>
-    }
-    links={
-      Array [
-        Object {
-          "href": "/marketplace/auth/global/en_US/myProfile#landingPage",
-          "label": "My applications & coverage",
-        },
-        Object {
-          "href": "/marketplace/auth/global/en_US/myProfile#settings",
-          "label": "My profile",
-        },
-        Object {
-          "href": "https://www.cuidadodesalud.gov/es/",
-          "label": "Español",
-        },
-        Object {
-          "href": "/logout",
-          "identifier": "logout",
-          "label": "Log out",
-        },
-      ]
-    }
-    open={false}
-  />
 </header>
 `;
 
 exports[`Header renders logged-in header without firstName 1`] = `
 <header
+  aria-label="global"
   className="hc-c-header hc-c-header--logged-in"
   role="banner"
 >
@@ -368,58 +399,63 @@ exports[`Header renders logged-in header without firstName 1`] = `
           locale="en"
         />
       </a>
-      <ActionMenu
-        links={
-          Array [
-            Object {
-              "href": "/marketplace/auth/global/en_US/myProfile#landingPage",
-              "label": "My applications & coverage",
-            },
-            Object {
-              "href": "/marketplace/auth/global/en_US/myProfile#settings",
-              "label": "My profile",
-            },
-            Object {
-              "href": "https://www.cuidadodesalud.gov/es/",
-              "label": "Español",
-            },
-            Object {
-              "href": "/logout",
-              "identifier": "logout",
-              "label": "Log out",
-            },
-          ]
-        }
-        loggedIn={true}
-        onMenuToggleClick={[Function]}
-        open={false}
-        t={[Function]}
-      />
+      <nav
+        className="hc-c-header__actions ds-l-col ds-l-col--auto ds-u-margin-left--auto ds-u-font-weight--bold"
+        id="hc-c-header__actions"
+      >
+        <ActionMenu
+          links={
+            Array [
+              Object {
+                "href": "/marketplace/auth/global/en_US/myProfile#landingPage",
+                "label": "My applications & coverage",
+              },
+              Object {
+                "href": "/marketplace/auth/global/en_US/myProfile#settings",
+                "label": "My profile",
+              },
+              Object {
+                "href": "https://www.cuidadodesalud.gov/es/",
+                "label": "Español",
+              },
+              Object {
+                "href": "/logout",
+                "identifier": "logout",
+                "label": "Log out",
+              },
+            ]
+          }
+          loggedIn={true}
+          onMenuToggleClick={[Function]}
+          open={false}
+          t={[Function]}
+        />
+        <Menu
+          links={
+            Array [
+              Object {
+                "href": "/marketplace/auth/global/en_US/myProfile#landingPage",
+                "label": "My applications & coverage",
+              },
+              Object {
+                "href": "/marketplace/auth/global/en_US/myProfile#settings",
+                "label": "My profile",
+              },
+              Object {
+                "href": "https://www.cuidadodesalud.gov/es/",
+                "label": "Español",
+              },
+              Object {
+                "href": "/logout",
+                "identifier": "logout",
+                "label": "Log out",
+              },
+            ]
+          }
+          open={false}
+        />
+      </nav>
     </div>
   </div>
-  <Menu
-    links={
-      Array [
-        Object {
-          "href": "/marketplace/auth/global/en_US/myProfile#landingPage",
-          "label": "My applications & coverage",
-        },
-        Object {
-          "href": "/marketplace/auth/global/en_US/myProfile#settings",
-          "label": "My profile",
-        },
-        Object {
-          "href": "https://www.cuidadodesalud.gov/es/",
-          "label": "Español",
-        },
-        Object {
-          "href": "/logout",
-          "identifier": "logout",
-          "label": "Log out",
-        },
-      ]
-    }
-    open={false}
-  />
 </header>
 `;
