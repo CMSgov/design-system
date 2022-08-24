@@ -1,9 +1,0 @@
-<% const spacers = ['0', '05', '1', '2', '3', '4', '5', '6', '7'] -%> <% ['', '-x', '-y', '-bottom',
-'-left', '-right', '-top'].forEach(name => { -%> <% spacers.forEach( size => { %>
-<div
-  class="ds-u-fill--secondary ds-u-padding<%= name %>--<%= size %> ds-u-margin-bottom--2"
-  style="max-width: fit-content"
->
-  <code>.ds-u-padding<%= name %>--<%= size %></code>
-</div>
-<% }) -%> <% }) -%>

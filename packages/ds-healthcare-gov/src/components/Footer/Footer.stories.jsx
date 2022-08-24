@@ -20,13 +20,6 @@ export default {
   args: {
     className: '',
   },
-  decorators: [
-    (Story) => (
-      <div data-theme="healthcare">
-        <Story />
-      </div>
-    ),
-  ],
 };
 
 const Template = ({ data, ...args }) => <Footer {...args} />;

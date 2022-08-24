@@ -1,7 +1,5 @@
 /**
- * @file The build tasks handle compiling and optimizing both the
- *  package assets and the documentation site. Essentially makes
- *  everything production-ready.
+ * @file These build tasks handle compiling and bundling CMSDS assets.
  */
 const babel = require('gulp-babel');
 const cleanDist = require('./common/cleanDist');
@@ -15,7 +13,6 @@ const path = require('path');
 const streamPromise = require('./common/streamPromise');
 const util = require('util');
 const webpack = require('webpack');
-const webpackStatsConfig = require('./docs/webpack/webpackStats.config');
 const { compileSourceSass } = require('./sass');
 const { printStats } = require('./stats');
 const { getSourceDirs } = require('./common/getDirsToProcess');
@@ -173,9 +170,6 @@ async function compileEsmJs(dir, changedPath) {
 
 /**
  *  Transpile design system React components.
- *  Note: If you're running a dev server and try to use a newly
- *  babelfied React component in the docs site, you need to run
- *  this task first, otherwise the component won't be found.
  */
 
 function compileJs(dir, options, changedPath) {
@@ -212,11 +206,11 @@ function compileJs(dir, options, changedPath) {
 async function bundleJs(dir) {
   logTask('🚜 ', 'Running Webpack statically');
   try {
-    const config = await createCdnWebpackConfig(dir);
+    const config = createCdnWebpackConfig(dir);
     const stats = await util.promisify(webpack)(config); // Promisify webpack so the task will wait on the compilation to finish
 
     // Log out any errors or warnings
-    log(stats.toString(webpackStatsConfig));
+    log(stats.toString());
   } catch (err) {
     logError('webpack static', err.stack || err);
     if (err.details) {

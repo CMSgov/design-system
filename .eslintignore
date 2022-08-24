@@ -4,9 +4,12 @@
 **/__tests__/**
 tmp/**
 **/types/**
+*bundle*
 examples/create-react-app-typescript/**
 examples/create-react-app/**
 storybook-static/**
+packages/docs/public/**
+packages/docs/static/**
 packages/coverage/**
 packages/design-system-tokens/sketch/cmsds-token-importer/cmsds-token-importer.sketchplugin/**
 packages/design-system/scripts/cmsds-migrate/test/**

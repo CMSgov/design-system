@@ -19,6 +19,7 @@ if (env === 'gatsby') {
 
 module.exports = {
   features: {
+    buildStoriesJson: true,
     postcss: false,
   },
   stories: storyList,
