@@ -147,5 +147,31 @@ describe('Tabs', function () {
       expect(panelEls[0].getAttribute('aria-hidden')).toBe('false');
       expect(tabEls[0].getAttribute('aria-selected')).toBe('true');
     });
+
+    it('selects the last panel on left arrow keyDown from first panel', () => {
+      renderTabs({ defaultSelectedId: 'panel-1' }, children);
+      const tabEls = screen.getAllByRole('tab');
+      // Grab all panels. Hidden and visible
+      const panelEls = screen.getAllByRole('tabpanel', { hidden: true });
+
+      tabEls[0].focus();
+      userEvent.keyboard('{ArrowLeft}');
+
+      expect(panelEls[1].getAttribute('aria-hidden')).toBe('false');
+      expect(tabEls[1].getAttribute('aria-selected')).toBe('true');
+    });
+
+    it('selects the first panel on right arrow keyDown from last panel', () => {
+      renderTabs({ defaultSelectedId: 'panel-2' }, children);
+      const tabEls = screen.getAllByRole('tab');
+      // Grab all panels. Hidden and visible
+      const panelEls = screen.getAllByRole('tabpanel', { hidden: true });
+
+      tabEls[1].focus();
+      userEvent.keyboard('{ArrowRight}');
+
+      expect(panelEls[0].getAttribute('aria-hidden')).toBe('false');
+      expect(tabEls[0].getAttribute('aria-selected')).toBe('true');
+    });
   });
 });
