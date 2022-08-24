@@ -46,6 +46,8 @@ export const query = graphql`
         }
         medicare {
           sketchLink
+          storybookLink
+          githubLink
         }
       }
       slug
