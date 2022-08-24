@@ -1,79 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Menu removes hidden state 1`] = `
-<nav
+<div
   className="hc-c-menu hc-c-menu--open"
+  hidden={false}
   id="hc-c-menu"
-  role="navigation"
 >
-  <div
-    className="ds-l-container"
-  >
-    <div
-      className="ds-l-row"
-    >
-      <div
-        className="hc-c-menu__content ds-u-padding--1 ds-u-font-weight--bold"
-      >
-        <div
-          className="ds-l-col ds-l-col--auto ds-u-padding-x--0"
-        >
-          <MenuLinks
-            links={
-              Array [
-                Object {
-                  "href": "#foo",
-                  "label": "Foo",
-                },
-                Object {
-                  "href": "#bar",
-                  "label": "Bar",
-                },
-              ]
-            }
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</nav>
+  <MenuLinks
+    links={
+      Array [
+        Object {
+          "href": "#foo",
+          "label": "Foo",
+        },
+        Object {
+          "href": "#bar",
+          "label": "Bar",
+        },
+      ]
+    }
+  />
+</div>
 `;
 
 exports[`Menu renders MenuList 1`] = `
-<nav
+<div
   className="hc-c-menu"
+  hidden={true}
   id="hc-c-menu"
-  role="navigation"
 >
-  <div
-    className="ds-l-container"
-  >
-    <div
-      className="ds-l-row"
-    >
-      <div
-        className="hc-c-menu__content ds-u-padding--1 ds-u-font-weight--bold"
-      >
-        <div
-          className="ds-l-col ds-l-col--auto ds-u-padding-x--0"
-        >
-          <MenuLinks
-            links={
-              Array [
-                Object {
-                  "href": "#foo",
-                  "label": "Foo",
-                },
-                Object {
-                  "href": "#bar",
-                  "label": "Bar",
-                },
-              ]
-            }
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</nav>
+  <MenuLinks
+    links={
+      Array [
+        Object {
+          "href": "#foo",
+          "label": "Foo",
+        },
+        Object {
+          "href": "#bar",
+          "label": "Bar",
+        },
+      ]
+    }
+  />
+</div>
 `;
