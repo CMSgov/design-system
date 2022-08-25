@@ -26,8 +26,8 @@ const getSrcGlob = (src, changedPath) =>
     ? [changedPath]
     : [
         `${src}/**/*.{js,jsx,ts,tsx}`,
+        `!${src}/**/*{.test,.spec,.d,.stories}.{js,jsx,ts,tsx}`,
         `!${src}/setupTests.{js,jsx,ts,tsx}`,
-        `!${src}/**/*{.test,.spec,.d}.{js,jsx,ts,tsx}`,
         `!${src}/**/{__mocks__,__tests__}/**/*`,
       ];
 
@@ -71,7 +71,7 @@ function copyMisc(dir) {
         `!${src}/images/**`,
         `!${src}/styles/**`,
         `!${src}/setupTests.{js,jsx,ts,tsx}`,
-        `!${src}/**/*{.test,.spec}.{js,jsx,ts,tsx}`,
+        `!${src}/**/*{.test,.spec,.stories}.{js,jsx,ts,tsx}`,
         `!${src}/**/{__mocks__,__tests__,helpers}/**/*`,
       ])
       .pipe(gulp.dest(path.join(dir, 'dist')))
@@ -113,7 +113,7 @@ async function generateTypeDefinitions(dir, changedPath) {
         `${src}/**/*.{ts,tsx}`,
         `!${src}/**/*.{js,jsx}`,
         `!${src}/setupTests.{js,jsx,ts,tsx}`,
-        `!${src}/**/*{.test,.spec,.d}.{js,jsx,ts,tsx}`,
+        `!${src}/**/*{.test,.spec,.d,.stories}.{js,jsx,ts,tsx}`,
         `!${src}/**/{__mocks__,__tests__,helpers}/**/*`,
       ];
 
