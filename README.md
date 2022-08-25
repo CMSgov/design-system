@@ -16,15 +16,15 @@
 
 ## Packages
 
-You're currently at the root of a monorepo containing multiple NPM packages located in the [`packages` directory](packages/). Unless you're a contributor or a child design system maintainer, you can ignore the `@cmsgov/design-system-docs` and `@cmsgov/design-system-scripts` packages, as they are mostly focused on the design system's developer tooling and documentation. View the `README.md` in each of these for additional details.
+You're currently at the root of a monorepo containing multiple NPM packages located in the [`packages` directory](packages/). Unless you're a contributor or a child design system maintainer, you can ignore the `@cmsgov/design-system-scripts` package, as it is contains tools for developers of the CMSDS. View the `README.md` in each of these for additional details.
 
 | Name                                                       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | [CMS Design System](packages/design-system)                | The core CSS, JS, and React components for the design system. <br> [![@cmsgov/design-system](https://img.shields.io/npm/v/@cmsgov/design-system.svg?label=@cmsgov%2Fdesign-system)](https://www.npmjs.com/package/@cmsgov/design-system)                                                                                                                                                                                                                     |
-| [Design System Documentation](packages/design-system-docs) | Markdown files containing documentation for the core design system site. These files are used by `@cmsgov/design-system-scripts` to generate our documentation site. <br> [![@cmsgov/design-system](https://img.shields.io/npm/v/@cmsgov/design-system.svg?label=@cmsgov%2Fdesign-system-docs)](https://www.npmjs.com/package/@cmsgov/design-system-docs)                                                                                                    |
 | [Design System Scripts](packages/design-system-docs)       | Scripts for compiling, testing, and linting design system assets. Also contains scripts for building and serving the documentation site. This is used internally by the core CMS design system team, but is made public for child design systems. <br> [![@cmsgov/design-system-scripts](https://img.shields.io/npm/v/@cmsgov/design-system-scripts.svg?label=@cmsgov%2Fdesign-system-scripts)](https://www.npmjs.com/package/@cmsgov/design-system-scripts) |
 | [Healthcare.gov Design System](packages/ds-healthcare-gov) | Design system used by application teams at healthcare.gov <br> [![npm](https://img.shields.io/npm/v/@cmsgov/ds-healthcare-gov.svg?label=@cmsgov%2Fds-healthcare-gov)](https://www.npmjs.com/package/@cmsgov/ds-healthcare-gov)                                                                                                                                                                                                                               |
 | [Medicare.gov Design System](packages/ds-medicare-gov)     | Design system used by application teams at medicare.gov <br> [![npm](https://img.shields.io/npm/v/@cmsgov/ds-medicare-gov.svg?label=@cmsgov%2Fds-medicare-gov)](https://www.npmjs.com/package/@cmsgov/ds-medicare-gov)                                                                                                                                                                                                                                       |
+| [CMSDS Documentation](packages/docs)                       | Gatsby based CMSDS Documentation site.                                                                                                                                                                                                                                                                                                                                                                                                                       |
 
 ## Running locally
 
@@ -42,28 +42,22 @@ _Note_: When you create a Git commit, any staged scripts will be automatically r
 
 These scripts can all be run from the root level of the repo:
 
-- `yarn start:gatsby`
+- `yarn start`
   - Starts local server running the documentation site
   - Regenerates documentation when files change
-  - `yarn start:healthcare` to start the Healthcare.gov Design System's documentation site
-  - `yarn start:medicare` to start the Medicare.gov Design System's documentation site
 - `yarn build`
   - Compile/transpile/uglify everything and makes things release-ready.
   - `yarn build:healthcare` to build the Healthcare.gov Design System
   - `yarn build:medicare` to build the Medicare.gov Design System
-- `yarn build-docs`
-  - Build the design system and the documentation site
-  - `yarn build-docs:healthcare` to build the Healthcare.gov Design System docs site
-  - `yarn build-docs:medicare` to build the Medicare.gov Design System docs site
+- `yarn build-storybook:gatsby && yarn build:docs`
+  - Builds the docs site statically
 - `yarn storybook`
   - Starts storybook for easier local development for the core package
   - `yarn storybook:healthcare` starts storybook for healthcare stories & styles
   - `yarn storybook:medicare` starts storybook for medicare stories & styles
 - `yarn test`
   - Runs JS unit tests
-  - Runs Prettier for formatting
-  - Lints JS using ESLint
-  - Lints Sass using stylelint
+  - Runs a11y accessibility tests against core storybook stories
 - `yarn test:unit`
   - Runs JS unit tests for all packages
 - `yarn test:a11y`
@@ -80,7 +74,7 @@ These scripts can all be run from the root level of the repo:
 - `yarn lint`
   - Runs just the linting portion of the tests, eslint and stylelint
 - `yarn deploy-demo`
-  - Builds the doc site locally and deploys it to a branch-specific path on GitHub Pages. The terminal will display the URL where the demo was deployed to after it is done running. 
+  - Builds the doc site locally and deploys it to a branch-specific path on GitHub Pages. The terminal will display the URL where the demo was deployed to after it is done running.
 - `yarn release`
   - Bumps package versions and tags a release commit. Read our [Release Process guide](/guides/RELEASE-PROCESS.md) for more info.
 

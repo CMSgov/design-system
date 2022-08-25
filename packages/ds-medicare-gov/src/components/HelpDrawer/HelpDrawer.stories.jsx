@@ -32,13 +32,6 @@ export default {
       ),
     },
   },
-  decorators: [
-    (Story) => (
-      <div data-theme="medicare">
-        <Story />
-      </div>
-    ),
-  ],
 };
 
 const drawerContent = (

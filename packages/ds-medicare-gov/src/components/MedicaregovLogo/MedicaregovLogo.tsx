@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import uniqueId from 'lodash/uniqueId';
 
-interface MedicaregovLogoProps {
+export interface MedicaregovLogoProps {
   width?: string;
   height?: string;
   className?: string;
