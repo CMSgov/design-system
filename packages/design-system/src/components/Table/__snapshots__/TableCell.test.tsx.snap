@@ -1,85 +1,219 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TableCell TableBody wrap: <td> data cell - default props renders TableCell component 1`] = `
-<table>
-  <TableBody>
-    <tbody
-      role="rowgroup"
-    >
-      <TableRow>
-        <tr
-          role="row"
+exports[`TableCell TableBody wrap: <td> data cell - default props renders TableCell component which has the role cell 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <table>
+        <tbody
+          role="rowgroup"
         >
-          <TableCell
-            align="left"
-            component="th"
+          <tr
+            role="row"
           >
             <th
-              className="ds-c-table__cell--align-left"
+              class="ds-c-table__cell--align-left"
               role="rowheader"
             >
               Cell a
             </th>
-          </TableCell>
-          <TableCell
-            align="left"
-          >
             <td
-              className="ds-c-table__cell--align-left"
+              class="ds-c-table__cell--align-left"
               role="cell"
             >
               Cell b
             </td>
-          </TableCell>
-        </tr>
-      </TableRow>
-    </tbody>
-  </TableBody>
-</table>
-`;
-
-exports[`TableCell TableHead wrap: <th> header cell - default props renders a table <th> element 1`] = `
-<table>
-  <TableHead>
-    <thead
-      role="rowgroup"
-    >
-      <TableRow
-        _isTableHeadChild={true}
-        key=".0"
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>,
+  "container": <div>
+    <table>
+      <tbody
+        role="rowgroup"
       >
         <tr
           role="row"
         >
-          <TableCell
-            _isTableHeadChild={true}
-            align="left"
-            key=".0"
+          <th
+            class="ds-c-table__cell--align-left"
+            role="rowheader"
+          >
+            Cell a
+          </th>
+          <td
+            class="ds-c-table__cell--align-left"
+            role="cell"
+          >
+            Cell b
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`TableCell TableHead wrap: <th> header cell - default props renders a table <th> element with correct role 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <table>
+        <thead
+          role="rowgroup"
+        >
+          <tr
+            role="row"
           >
             <th
-              className="ds-c-table__cell--align-left"
+              class="ds-c-table__cell--align-left"
               role="columnheader"
               scope="col"
             >
               Column a
             </th>
-          </TableCell>
-          <TableCell
-            _isTableHeadChild={true}
-            align="left"
-            key=".1"
-          >
             <th
-              className="ds-c-table__cell--align-left"
+              class="ds-c-table__cell--align-left"
               role="columnheader"
               scope="col"
             >
               Column b
             </th>
-          </TableCell>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </body>,
+  "container": <div>
+    <table>
+      <thead
+        role="rowgroup"
+      >
+        <tr
+          role="row"
+        >
+          <th
+            class="ds-c-table__cell--align-left"
+            role="columnheader"
+            scope="col"
+          >
+            Column a
+          </th>
+          <th
+            class="ds-c-table__cell--align-left"
+            role="columnheader"
+            scope="col"
+          >
+            Column b
+          </th>
         </tr>
-      </TableRow>
-    </thead>
-  </TableHead>
-</table>
+      </thead>
+    </table>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
 `;
