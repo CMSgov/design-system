@@ -6,7 +6,7 @@ BRANCH=$(git rev-parse --abbrev-ref HEAD)
 # Build the demo site
 yarn --cwd ./packages/docs clean
 yarn build-storybook:gatsby
-PATH_PREFIX="/design-system/branch/${BRANCH}" PREFIX_PATHS=true yarn build:gatsby
+PATH_PREFIX="/design-system/branch/${BRANCH}" PREFIX_PATHS=true yarn build:docs
 
 
 # Deploy the demo site to a directory on GitHub Pages
