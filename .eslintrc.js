@@ -54,6 +54,12 @@ module.exports = {
     {
       files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
       extends: ['plugin:testing-library/react'],
+      rules: {
+        'testing-library/prefer-screen-queries': 'warn',
+        'testing-library/no-node-access': 'warn',
+        'testing-library/no-container': 'warn',
+        'testing-library/render-result-naming-convention': 'warn',
+      },
     },
     {
       files: ['*.jsx'],
