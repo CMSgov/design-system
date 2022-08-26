@@ -11,9 +11,7 @@ const defaultTableBodyChildren = (
 );
 
 const makeTableBody = (customProps = {}) => {
-  const props = Object.assign({}, customProps);
-  const children = <TableBody {...props}>{defaultTableBodyChildren}</TableBody>;
-
+  const children = <TableBody {...customProps}>{defaultTableBodyChildren}</TableBody>;
   render(<table>{children}</table>);
 };
 

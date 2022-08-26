@@ -6,9 +6,7 @@ import TableCaption from './TableCaption';
 const defaultCaptionChildren = 'Foo';
 
 const makeTableCaption = (customProps = {}) => {
-  const props = Object.assign({}, customProps);
-  const children = <TableCaption {...props}>{defaultCaptionChildren}</TableCaption>;
-
+  const children = <TableCaption {...customProps}>{defaultCaptionChildren}</TableCaption>;
   render(<table>{children}</table>);
 };
 

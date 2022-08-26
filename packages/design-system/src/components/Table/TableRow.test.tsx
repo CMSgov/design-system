@@ -4,16 +4,14 @@ import { render, screen } from '@testing-library/react';
 import TableRow from './TableRow';
 
 const makeTableRow = (customProps = {}) => {
-  const props = Object.assign({}, customProps);
   const children = (
     <tbody>
-      <TableRow {...props}>
+      <TableRow {...customProps}>
         <td>Column a</td>
         <td>Column b</td>
       </TableRow>
     </tbody>
   );
-
   render(<table>{children}</table>);
 };
 

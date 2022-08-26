@@ -13,9 +13,7 @@ const defaultTableHeadChildren = (
 );
 
 const makeTableHead = (customProps = {}) => {
-  const props = Object.assign({}, customProps);
-  const children = <TableHead {...props}>{defaultTableHeadChildren}</TableHead>;
-
+  const children = <TableHead {...customProps}>{defaultTableHeadChildren}</TableHead>;
   render(<table>{children}</table>);
 };
 

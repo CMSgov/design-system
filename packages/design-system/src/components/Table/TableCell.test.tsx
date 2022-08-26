@@ -1,28 +1,31 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import TableCell from './TableCell';
+import TableRow from './TableRow';
 import TableHead from './TableHead';
 
 const makeTableCells = (customProps = {}) => {
-  const props = Object.assign({}, customProps);
   const children = (
-    <tbody>
+    <>
       <TableHead>
-        <TableCell>Column 1</TableCell>
-        <TableCell>Column 2</TableCell>
+        <TableRow>
+          <TableCell>Column 1</TableCell>
+          <TableCell>Column 2</TableCell>
+        </TableRow>
       </TableHead>
-      <tr>
-        <TableCell>Column a</TableCell>
-        <TableCell>Column b</TableCell>
-      </tr>
-      <tr>
-        <TableCell align="right">Column a2</TableCell>
-        <TableCell component="th">Column b2</TableCell>
-      </tr>
-    </tbody>
+      <tbody>
+        <TableRow>
+          <TableCell>Column a</TableCell>
+          <TableCell>Column b</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell align="right">Column a2</TableCell>
+          <TableCell component="th">Column b2</TableCell>
+        </TableRow>
+      </tbody>
+    </>
   );
-
-  render(<table {...props}>{children}</table>);
+  render(<table {...customProps}>{children}</table>);
 };
 
 describe('TableCell', function () {

@@ -3,13 +3,10 @@ import { render, screen } from '@testing-library/react';
 
 import Table from './Table';
 import TableCaption from './TableCaption';
-// import TableBody from './TableBody';
 
 const makeTable = (customProps = {}) => {
-  const props = Object.assign({}, customProps);
   const children = <TableCaption>A great caption</TableCaption>;
-
-  render(<Table {...props}>{children}</Table>);
+  render(<Table {...customProps}>{children}</Table>);
 };
 
 describe('Table', function () {
