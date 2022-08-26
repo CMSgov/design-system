@@ -1,3 +1,4 @@
+/* stylelint-disable declaration-no-important -- DS doesn't own mgov header */
 .m-c-globalHeader {
   &__top {
     @extend .ds-u-display--flex;
@@ -64,7 +65,7 @@
   &__actionsList {
     height: 100%;
 
-    & > li {
+    > li {
       height: 100%;
       @extend .ds-u-display--flex;
       @extend .ds-u-align-items--center;
@@ -282,3 +283,4 @@
     }
   }
 }
+/* stylelint-enable */
