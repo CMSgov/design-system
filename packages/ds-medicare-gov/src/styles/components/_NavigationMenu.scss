@@ -1,3 +1,4 @@
+/* stylelint-disable declaration-no-important -- Temporarily ignore until mgov overrides can be refactored */
 .m-c-navigationMenu__container--alwaysShowMenuButton .m-c-navigationMenu__toggleContainer {
   position: relative;
   top: 0;
@@ -137,6 +138,14 @@
   .m-c-navigationMenu__container:not(.m-c-navigationMenu__container--alwaysShowMenuButton) & {
     align-items: center;
 
+    @media screen and (min-width: $width-sm) {
+      border-right: 2px solid $color-white;
+
+      .m-c-navbar--inverse & {
+        border-right: 2px solid $color-primary;
+      }
+    }
+
     @media screen and (max-width: $width-sm) {
       margin-top: 0;
       padding-left: 0;
@@ -158,16 +167,6 @@
     }
   }
 
-  .m-c-navigationMenu__container:not(.m-c-navigationMenu__container--alwaysShowMenuButton) & {
-    @media screen and (min-width: $width-sm) {
-      border-right: 2px solid $color-white;
-
-      .m-c-navbar--inverse & {
-        border-right: 2px solid $color-primary;
-      }
-    }
-  }
-
   a {
     text-decoration: none;
     color: $color-primary;
@@ -183,3 +182,4 @@
     }
   }
 }
+/* stylelint-enable */

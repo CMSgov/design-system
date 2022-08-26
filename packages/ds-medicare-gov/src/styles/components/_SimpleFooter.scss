@@ -1,3 +1,4 @@
+/* stylelint-disable declaration-no-important -- Temporarily ignore until mgov can be refactored */
 .m-c-footer {
   background-color: $color-gray-lightest;
   padding: $spacer-3;
@@ -123,7 +124,7 @@
     justify-content: space-between;
   }
 
-  & > * {
+  > * {
     display: flex;
     justify-content: center;
 
@@ -176,3 +177,4 @@
     margin-left: $spacer-3;
   }
 }
+/* stylelint-enable */
