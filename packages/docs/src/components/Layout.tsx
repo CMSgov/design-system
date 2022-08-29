@@ -58,8 +58,10 @@ const Layout = ({
     ? `${frontmatter.title} - CMS Design System`
     : 'CMS Design System';
 
+  const pageId = `page--${slug.replace('/', '_')}`;
+
   return (
-    <div className="ds-base">
+    <div className="ds-base" id={pageId}>
       <Helmet
         title={tabTitle}
         htmlAttributes={{

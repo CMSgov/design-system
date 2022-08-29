@@ -87,3 +87,36 @@ export const HelpDrawerToggleWithDrawer = () => {
     </>
   );
 };
+
+export const HelpDrawerToggleOnDark = () => {
+  const [{ isDrawerVisible }, setIsDrawerVisible] = useArgs();
+
+  return (
+    <>
+      {isDrawerVisible && (
+        <HelpDrawer
+          onCloseClick={() => setIsDrawerVisible({ isDrawerVisible: false })}
+          footerTitle="Footer Title"
+          footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
+          heading="Drawer Heading"
+        >
+          {drawerContent}
+        </HelpDrawer>
+      )}
+      <HelpDrawerToggle
+        showDrawer={() => setIsDrawerVisible({ isDrawerVisible: true })}
+        helpDrawerOpen={isDrawerVisible || false}
+        icon={<InfoCircleOutlineIcon />}
+        className="ds-c-button--on-dark"
+      >
+        Drawer Toggle
+      </HelpDrawerToggle>
+    </>
+  );
+};
+HelpDrawerToggleOnDark.parameters = {
+  backgrounds: { default: process.env.STORYBOOK_DS === 'medicare' ? 'Mgov dark' : 'Hcgov dark' },
+};
+HelpDrawerToggleOnDark.args = {
+  onDark: true,
+};
