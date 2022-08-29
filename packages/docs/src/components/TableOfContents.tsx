@@ -61,7 +61,9 @@ export const TableOfContentsFeedback = ({ slug }: TableOfContentsFeedbackProps) 
         <a href="/feedback">Contact the team</a>
       </li>
       <li>
-        <a href="https://github.com/CMSgov/design-system/discussions">Join in the discussion</a>
+        <a href="https://github.com/CMSgov/design-system/discussions">
+          Start a discussion on GitHub
+        </a>
       </li>
       {typeof slug !== 'undefined' ? (
         <li>
