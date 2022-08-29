@@ -9,28 +9,17 @@ const branch = execSync('git rev-parse --abbrev-ref HEAD').toString().trim();
 // spawn, the command is executed in the same environment as this process, which means we're
 // guaranteed to have access to yarn and node in the PATH. The exec function, on the other
 // hand, will execute it in whatever it determines shoudl be the default shell.
-spawnSync('yarn', ['--cwd', path.join('packages', 'docs'), 'clean'], { stdio: 'inherit' });
-spawnSync('yarn', ['build-storybook:gatsby'], { stdio: 'inherit' });
-spawnSync('yarn', ['build:docs'], {
+execSync(`yarn --cwd ${path.join('packages', 'docs')} clean`);
+execSync('yarn build-storybook:gatsby');
+execSync('yarn build:docs', {
   env: {
     ...process.env,
     PATH_PREFIX: `/design-system/branch/${branch}`,
     PREFIX_PATHS: 'true',
-    stdio: 'inherit',
   },
 });
 
 // Deploy the demo site to a directory on GitHub Pages
-spawnSync(
-  `yarn`,
-  [
-    'gh-pages',
-    '-d',
-    `'${path.join('packages', 'docs', 'public')}'`,
-    '--dest',
-    '"branch/${branch}"',
-  ],
-  { stdio: 'inherit' }
-);
+execSync(`yarn gh-pages -d '${path.join('packages', 'docs', 'public')}' --dest "branch/${branch}"`);
 
 console.log(`Deployed demo doc site to https://cmsgov.github.io/design-system/branch/${branch}`);
