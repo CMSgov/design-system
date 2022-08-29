@@ -58,7 +58,7 @@ export const TableOfContentsFeedback = ({ slug }: TableOfContentsFeedbackProps) 
     </h2>
     <ul role="list" className="ds-c-list ds-c-list--bare ds-u-md-margin-y--2">
       <li>
-        <a href="/feedback">Contact the team</a>
+        <a href="/contact">Contact the team</a>
       </li>
       <li>
         <a href="https://github.com/CMSgov/design-system/discussions">
