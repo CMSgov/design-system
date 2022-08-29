@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/ds-healthcare-gov",
-  "version": "8.0.0",
+  "version": "8.0.1",
   "publishConfig": {
     "tag": "latest",
     "access": "public"
@@ -20,7 +20,7 @@
     "src"
   ],
   "dependencies": {
-    "@cmsgov/design-system": "4.0.0",
+    "@cmsgov/design-system": "4.0.1",
     "@types/js-cookie": "^3.0.2",
     "@types/react": "^17.0.10",
     "@types/react-dom": "^17.0.10",
@@ -32,8 +32,8 @@
     "@babel/plugin-proposal-class-properties": "^7.10.1",
     "@babel/plugin-transform-object-assign": "^7.10.4",
     "@babel/preset-typescript": "^7.15.0",
-    "@cmsgov/design-system-docs": "4.0.0",
-    "@cmsgov/design-system-scripts": "4.0.0",
+    "@cmsgov/design-system-docs": "4.0.1",
+    "@cmsgov/design-system-scripts": "4.0.1",
     "babel-eslint": "^10.1.0",
     "url-parse": "^1.2.0"
   }
