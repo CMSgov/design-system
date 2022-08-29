@@ -16,6 +16,10 @@ const fileNameFormatter = ({ configurationName, kind, story }) =>
 
 module.exports = {
   fileNameFormatter,
+  pixelmatch: {
+    includeAA: true,
+    threshold: 0.7,
+  },
   configurations: {
     'chrome.laptop': {
       target: process.env.CI ? 'chrome.app' : 'chrome.docker',
