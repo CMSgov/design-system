@@ -379,7 +379,7 @@ export const Dialog = (props: DialogProps) => {
       {...modalProps}
     >
       <div role="document">
-        <header className={headerClassNames} role="banner">
+        <header className={headerClassNames}>
           {
             // TODO: make heading required after removing title
             (title || heading) && (
