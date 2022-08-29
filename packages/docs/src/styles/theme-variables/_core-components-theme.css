@@ -314,6 +314,13 @@
 --tooltip-icon__color: #0071bc;
 --tooltip-icon__color--inverse: #ffffff;
 --tooltip-trigger__color: #0071bc;
+--typography-heading__font-family: inherit;
+--typography-heading__font-weight: 700;
+--typography-heading-4xl__font-weight: inherit;
+--typography-heading-4xl__line-height: inherit;
+--typography-text__color: inherit;
+--typography-text__font-family: inherit;
+--typography-text__font-weight: inherit;
 --usa-banner__background-color: #f2f2f2;
 --usa-banner__color: #000000;
 --usa-banner-close__background-color: #a6a6a6;

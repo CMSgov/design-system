@@ -419,6 +419,15 @@ export const components: AnyTokenValues = {
     '-trigger__color':                            t.color['base'],
   },
 
+  'typography': {
+    '-heading__font-family':                      t.font['family-montserrat'],
+    '-heading__font-weight':                      t.font['weight-semibold'],
+    '-heading-4xl__font-weight':                  300,
+    '-text__color':                               t.color['base'],
+    '-text__font-family':                         t.font['family-rubik'],
+    '-text__font-weight':                         t.font['weight-normal'],
+  },
+
   'usa-banner': {
     '__background-color':                         t.color['gray-lightest'],
     '__color':                                    t.color['black'],

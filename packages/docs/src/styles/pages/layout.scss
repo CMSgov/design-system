@@ -21,6 +21,24 @@ body {
   flex: 1 0 auto;
 }
 
+.page-content__content {
+  > h2 {
+    @extend .ds-h2;
+  }
+  > h3 {
+    @extend .ds-h3;
+  }
+  > h4 {
+    @extend .ds-h4;
+  }
+  > h5 {
+    @extend .ds-h5;
+  }
+  > h6 {
+    @extend .ds-h6;
+  }
+}
+
 @media (min-width: $width-lg) {
   .page-content__content {
     // removing margin for first heading on content pages
@@ -28,24 +46,19 @@ body {
       margin-top: 0;
     }
     > h2 {
-      font-size: $font-size-3xl;
       font-weight: normal;
       margin-bottom: 0;
     }
     > h3 {
-      font-size: $font-size-2xl;
       margin-bottom: 0;
     }
     > h4 {
-      font-size: $font-size-xl;
       margin-bottom: 0;
     }
     > h5 {
-      font-size: $font-size-lg;
       margin-bottom: 0;
     }
     > h6 {
-      font-size: $font-size-md;
       margin-bottom: 0;
     }
     > p,

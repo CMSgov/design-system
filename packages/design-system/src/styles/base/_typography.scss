@@ -19,22 +19,10 @@
 .ds-text-heading--lg,
 .ds-text-heading--md,
 .ds-text-heading--sm {
-  line-height: $heading-line-height;
+  font-family: $typography-heading__font-family;
+  font-weight: $typography-heading__font-weight;
+  line-height: $font-line-height-heading;
   margin: 0;
-}
-
-// Bold title and headings
-.ds-display,
-.ds-h1,
-.ds-h2,
-.ds-h3,
-.ds-h4,
-.ds-text-heading--4xl,
-.ds-text-heading--3xl,
-.ds-text-heading--2xl,
-.ds-text-heading--xl,
-.ds-text-heading--lg {
-  font-weight: $font-bold;
 }
 
 // Headings
@@ -78,7 +66,7 @@
 .ds-title,
 .ds-text-heading--4xl {
   font-size: $font-size-3xl;
-  font-weight: $font-normal;
+  font-weight: $typography-heading-4xl__font-weight;
 
   @media (min-width: $width-md) {
     font-size: $font-size-4xl;
@@ -88,7 +76,7 @@
 .ds-h1,
 .ds-text-heading--3xl {
   font-size: $h1-mobile-font-size;
-  font-weight: $font-normal;
+  font-weight: $font-weight-normal;
 
   @media (min-width: $width-md) {
     font-size: $font-size-3xl;
@@ -113,14 +101,14 @@
 .ds-h5,
 .ds-text-heading--md {
   font-size: $font-size-md;
-  font-weight: $font-bold;
+  font-weight: $font-weight-bold;
 }
 
 .ds-h6,
 .ds-text-heading--sm {
   color: $color-muted;
   font-size: $font-size-sm;
-  font-weight: $font-normal;
+  font-weight: $font-weight-normal;
 }
 
 .ds-base--inverse .ds-h6,
@@ -132,7 +120,10 @@
 .ds-text--lead,
 .ds-text-body--lg,
 .ds-text-body--md {
-  line-height: $base-line-height;
+  color: $typography-text__color;
+  font-family: $typography-text__font-family;
+  font-weight: $typography-text__font-weight;
+  line-height: $font-line-height-base;
   margin-bottom: 1em;
   margin-top: 1em;
 
@@ -152,7 +143,7 @@
 
 .ds-text,
 .ds-text-body--md {
-  font-size: $base-font-size;
+  font-size: $font-size-base;
 }
 
 .ds-text-body--sm {
