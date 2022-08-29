@@ -30,7 +30,7 @@ export const query = graphql`
       id
       body
       slug
-      tableOfContents(maxDepth: 2)
+      tableOfContents(maxDepth: 3)
       frontmatter {
         title
       }
