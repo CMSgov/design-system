@@ -6,7 +6,7 @@ import { MdxQuery } from '../helpers/graphQLTypes';
 import useTheme from '../helpers/useTheme';
 import ContentRenderer from '../components/ContentRenderer';
 
-const FeedbackPage = ({ data, location }: MdxQuery) => {
+const ContactPage = ({ data, location }: MdxQuery) => {
   const { slug } = data.mdx;
   const theme = useTheme();
   return (
@@ -36,4 +36,4 @@ export const query = graphql`
   }
 `;
 
-export default FeedbackPage;
+export default ContactPage;
