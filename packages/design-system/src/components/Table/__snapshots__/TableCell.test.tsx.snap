@@ -1,85 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TableCell TableBody wrap: <td> data cell - default props renders TableCell component 1`] = `
-<table>
-  <TableBody>
-    <tbody
-      role="rowgroup"
-    >
-      <TableRow>
-        <tr
-          role="row"
-        >
-          <TableCell
-            align="left"
-            component="th"
-          >
-            <th
-              className="ds-c-table__cell--align-left"
-              role="rowheader"
-            >
-              Cell a
-            </th>
-          </TableCell>
-          <TableCell
-            align="left"
-          >
-            <td
-              className="ds-c-table__cell--align-left"
-              role="cell"
-            >
-              Cell b
-            </td>
-          </TableCell>
-        </tr>
-      </TableRow>
-    </tbody>
-  </TableBody>
-</table>
-`;
-
-exports[`TableCell TableHead wrap: <th> header cell - default props renders a table <th> element 1`] = `
-<table>
-  <TableHead>
-    <thead
-      role="rowgroup"
-    >
-      <TableRow
-        _isTableHeadChild={true}
-        key=".0"
-      >
-        <tr
-          role="row"
-        >
-          <TableCell
-            _isTableHeadChild={true}
-            align="left"
-            key=".0"
-          >
-            <th
-              className="ds-c-table__cell--align-left"
-              role="columnheader"
-              scope="col"
-            >
-              Column a
-            </th>
-          </TableCell>
-          <TableCell
-            _isTableHeadChild={true}
-            align="left"
-            key=".1"
-          >
-            <th
-              className="ds-c-table__cell--align-left"
-              role="columnheader"
-              scope="col"
-            >
-              Column b
-            </th>
-          </TableCell>
-        </tr>
-      </TableRow>
-    </thead>
-  </TableHead>
-</table>
+exports[`TableCell renders TableCell components 1`] = `
+Array [
+  <td
+    class="ds-c-table__cell--align-left"
+    role="cell"
+  >
+    Column a
+  </td>,
+  <td
+    class="ds-c-table__cell--align-left"
+    role="cell"
+  >
+    Column b
+  </td>,
+  <td
+    class="ds-c-table__cell--align-right"
+    role="cell"
+  >
+    Column a2
+  </td>,
+]
 `;
