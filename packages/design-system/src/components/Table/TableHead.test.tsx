@@ -1,8 +1,9 @@
 import React from 'react';
+import { render, screen } from '@testing-library/react';
+
 import TableCell from './TableCell';
 import TableHead from './TableHead';
 import TableRow from './TableRow';
-import { mount } from 'enzyme';
 
 const defaultTableHeadChildren = (
   <TableRow>
@@ -11,30 +12,26 @@ const defaultTableHeadChildren = (
   </TableRow>
 );
 
-function render(customProps = {}) {
-  const props = Object.assign({}, customProps);
-  const children = <TableHead {...props}>{defaultTableHeadChildren}</TableHead>;
-
-  return {
-    props: props,
-    wrapper: mount(<table>{children}</table>),
-  };
-}
+const makeTableHead = (customProps = {}) => {
+  const children = <TableHead {...customProps}>{defaultTableHeadChildren}</TableHead>;
+  render(<table>{children}</table>);
+};
 
 describe('TableHead', function () {
   it('renders a table head', () => {
-    const { wrapper } = render();
-    const tableHead = wrapper.find('thead');
-
-    expect(tableHead).toHaveLength(1);
+    makeTableHead();
+    expect(screen.getByRole('rowgroup')).toBeInTheDocument();
   });
 
   it('renders additional attributes', () => {
-    const { wrapper } = render({ className: 'foo-head' });
-    const tableHead = wrapper.find('thead');
+    makeTableHead({ className: 'foo-head' });
+    const th = screen.getByRole('rowgroup');
+    expect(th).toHaveClass('foo-head');
+    expect(th).toMatchSnapshot();
+  });
 
-    expect(tableHead.hasClass('foo-head')).toBe(true);
-
-    expect(wrapper).toMatchSnapshot();
+  it('applies role columnheader to th columns', () => {
+    makeTableHead();
+    expect(screen.getAllByRole('columnheader')).toHaveLength(2);
   });
 });

@@ -1,6 +1,10 @@
 import React from 'react';
 import { TableOfContentsItem } from '../helpers/graphQLTypes';
 
+function cleanTitle(title: string) {
+  return title.replace(/<[^>]*>/g, '');
+}
+
 export interface TableOfContentsProps {
   /**
    * table of contents data from graphql
@@ -36,7 +40,7 @@ export const TableOfContentsList = ({ items, level, className = '' }: TableOfCon
     <ul role="list" className={`c-table-of-contents__list ds-u-padding-right--0 ${className}`}>
       {items.map((item) => (
         <li key={item.title} className={itemClasses}>
-          <a href={item.url}>{item.title}</a>
+          <a href={item.url}>{cleanTitle(item.title)}</a>
           {item.items && <TableOfContentsList items={item.items} level={level + 1} />}
         </li>
       ))}
@@ -54,10 +58,12 @@ export const TableOfContentsFeedback = ({ slug }: TableOfContentsFeedbackProps) 
     </h2>
     <ul role="list" className="ds-c-list ds-c-list--bare ds-u-md-margin-y--2">
       <li>
-        <a href="/feedback">Propose a change</a>
+        <a href="/feedback">Contact the team</a>
       </li>
       <li>
-        <a href="https://github.com/CMSgov/design-system/discussions">Join in the discussion</a>
+        <a href="https://github.com/CMSgov/design-system/discussions">
+          Start a discussion on GitHub
+        </a>
       </li>
       {typeof slug !== 'undefined' ? (
         <li>

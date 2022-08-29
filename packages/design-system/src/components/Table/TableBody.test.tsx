@@ -1,7 +1,7 @@
 import React from 'react';
+import { render, screen } from '@testing-library/react';
 
 import TableBody from './TableBody';
-import { mount } from 'enzyme';
 
 const defaultTableBodyChildren = (
   <tr>
@@ -10,30 +10,21 @@ const defaultTableBodyChildren = (
   </tr>
 );
 
-function render(customProps = {}) {
-  const props = Object.assign({}, customProps);
-  const children = <TableBody {...props}>{defaultTableBodyChildren}</TableBody>;
-
-  return {
-    props: props,
-    wrapper: mount(<table>{children}</table>),
-  };
-}
+const makeTableBody = (customProps = {}) => {
+  const children = <TableBody {...customProps}>{defaultTableBodyChildren}</TableBody>;
+  render(<table>{children}</table>);
+};
 
 describe('TableBody', function () {
   it('renders a table body', () => {
-    const { wrapper } = render();
-    const tableBody = wrapper.find('tbody');
-
-    expect(tableBody).toHaveLength(1);
+    makeTableBody();
+    expect(screen.getAllByRole('rowgroup')).toHaveLength(1);
   });
 
   it('renders additional attributes', () => {
-    const { wrapper } = render({ className: 'foo-body' });
-    const tableBody = wrapper.find('tbody');
-
-    expect(tableBody.hasClass('foo-body')).toBe(true);
-
-    expect(wrapper).toMatchSnapshot();
+    makeTableBody({ className: 'foo-body' });
+    const rg = screen.getByRole('rowgroup');
+    expect(rg).toHaveClass('foo-body');
+    expect(rg).toMatchSnapshot();
   });
 });
