@@ -1,6 +1,10 @@
 import React from 'react';
 import { TableOfContentsItem } from '../helpers/graphQLTypes';
 
+function cleanTitle(title: string) {
+  return title.replace(/<[^>]*>/g, '');
+}
+
 export interface TableOfContentsProps {
   /**
    * table of contents data from graphql
@@ -36,7 +40,7 @@ export const TableOfContentsList = ({ items, level, className = '' }: TableOfCon
     <ul role="list" className={`c-table-of-contents__list ds-u-padding-right--0 ${className}`}>
       {items.map((item) => (
         <li key={item.title} className={itemClasses}>
-          <a href={item.url}>{item.title}</a>
+          <a href={item.url}>{cleanTitle(item.title)}</a>
           {item.items && <TableOfContentsList items={item.items} level={level + 1} />}
         </li>
       ))}
