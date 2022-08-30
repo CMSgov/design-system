@@ -23,19 +23,19 @@ body {
 
 .page-content__content {
   > h2 {
-    @extend .ds-h2;
+    @extend .ds-text-heading--2xl;
   }
   > h3 {
-    @extend .ds-h3;
+    @extend .ds-text-heading--xl;
   }
   > h4 {
-    @extend .ds-h4;
+    @extend .ds-text-heading--lg;
   }
   > h5 {
-    @extend .ds-h5;
+    @extend .ds-text-heading--md;
   }
   > h6 {
-    @extend .ds-h6;
+    @extend .ds-text-heading--sm;
   }
 }
 
@@ -45,11 +45,7 @@ body {
     & > :nth-child(2) {
       margin-top: 0;
     }
-    > h2 {
-      font-weight: normal;
-      margin-bottom: 0;
-    }
-    > h3,
+    > h2 > h3,
     > h4,
     > h5,
     > h6,

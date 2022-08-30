@@ -21,6 +21,7 @@ const font = to<FontTokens>()({
   'size-3xl': '36px',
   'size-4xl': '48px',
   'size-5xl': '60px',
+  'weight-light': 300,
   'weight-normal': 400,
   'weight-semibold': 600,
   'weight-bold': 700,
