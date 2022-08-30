@@ -31,15 +31,13 @@ See the examples in the following sections to learn how they can be applied.
 
 <ButtonVariationsTable />
 
-### Outline button
-
-<StorybookExample
-  componentName="outline-button"
-  sourceFilePath="components/Button/Button.tsx"
-  storyId="components-button--default&args=children:Outline"
-/>
-
 ### Solid button
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+Use solid buttons for the primary actions we want users to take. These actions are required for the user to move to the next step in the user flow (example: Enroll) or to highlight the main/key action.
+
+</ThemeContent>
 
 <StorybookExample
   componentName="solid-button"
@@ -47,7 +45,31 @@ See the examples in the following sections to learn how they can be applied.
   storyId="components-button--default&args=children:Solid;variation:solid"
 />
 
+
+### Outline button
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+Use outline buttons for actions available but not the primary action we want users to take (example: Plan details). There doesn't have to be a primary button on the page to use the secondary button.
+
+
+</ThemeContent>
+
+<StorybookExample
+  componentName="outline-button"
+  sourceFilePath="components/Button/Button.tsx"
+  storyId="components-button--default&args=children:Outline"
+/>
+
+
+
 ### Ghost button
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+Use ghost buttons for actions available but do not take priority over a primary or secondary CTAs (example: Cancel).
+
+</ThemeContent>
 
 <StorybookExample
   componentName="ghost-button"
@@ -123,17 +145,42 @@ Each button variation (outline, solid, ghost) has an alternate option. The alter
   />
 </ThemeContent>
 
-### Changing the size
+### Button sizes
 
-Buttons can exist in two alternative sizes: "big" or "small". See the example below.
+Buttons can exist in two sizes other than default: "big" or "small".
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+#### Big button (Unused)
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['core', 'medicare']}>
+
+#### Big button
 
 <EmbeddedExample>
   <div>
-    <Button className="ds-u-margin-right--1" size="big">
+    <Button size="big">
       Big
     </Button>
-    <Button className="ds-u-margin-right--1">Default</Button>
-    <Button className="ds-u-margin-right--1" size="small">
+  </div>
+</EmbeddedExample>
+
+</ThemeContent>
+
+#### Small button
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+Small outline buttons are used for utility buttons on a page with other primary and secondary actions (example: Edit, Remove, Add another [something]).
+
+</ThemeContent>
+
+
+<EmbeddedExample>
+  <div>
+    <Button size="small">
       Small
     </Button>
   </div>
