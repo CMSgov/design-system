@@ -42,7 +42,7 @@ body {
 @media (min-width: $width-lg) {
   .page-content__content {
     // removing margin for first heading on content pages
-    & > :nth-child(2) {
+    > :nth-child(2) {
       margin-top: 0;
     }
     > h2 > h3,
@@ -76,15 +76,15 @@ body {
   .c-configuration-options .ds-c-table {
     width: 100%;
   }
-  & .c-configuration-options th,
+  .c-configuration-options th,
   .c-prop-table th {
     background-color: $color-gray-lightest;
   }
-  & .c-configuration-options td,
+  .c-configuration-options td,
   .c-prop-table td {
     border-color: $color-gray-lighter;
   }
-  & .c-configuration-options p,
+  .c-configuration-options p,
   .c-prop-table p {
     font-size: $font-size-sm;
   }
@@ -109,11 +109,11 @@ blockquote {
     top: -10px;
   }
 
-  & p:first-child {
+  p:first-child {
     margin-top: 0;
   }
 
-  & p:last-child {
+  p:last-child {
     margin-bottom: 0;
   }
 }

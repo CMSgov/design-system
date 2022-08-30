@@ -58,7 +58,7 @@ const Layout = ({
     ? `${frontmatter.title} - CMS Design System`
     : 'CMS Design System';
 
-  const pageId = `page--${slug.replace('/', '_')}`;
+  const pageId = slug ? `page--${slug.replace('/', '_')}` : null;
 
   return (
     <div className="ds-base" id={pageId}>
