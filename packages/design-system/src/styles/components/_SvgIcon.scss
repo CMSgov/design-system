@@ -62,7 +62,7 @@
   fill: $color-white;
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
-    fill: Window !important;
+    fill: Window;
   }
 }
 

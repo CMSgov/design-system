@@ -19,13 +19,13 @@
 }
 
 .c-footer__links {
-  & .c-footer__link {
+  .c-footer__link {
     display: inline-block;
     text-decoration-thickness: $link__text-decoration-thickness;
     text-underline-offset: $link__text-decoration-offset;
   }
 
-  & .c-footer__link:not(:last-child) {
+  .c-footer__link:not(:last-child) {
     margin-right: $spacer-2;
   }
 }

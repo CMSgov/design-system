@@ -20,8 +20,7 @@
   fill: $tooltip-icon__color;
   height: $tooltip-icon-size;
   left: 0;
-  // fixes clipping issue in Firefox, overrides vendor style
-  overflow: visible !important;
+  overflow: visible !important; /* stylelint-disable-line declaration-no-important -- fixes clipping issue in Firefox, overrides vendor style */
   position: absolute;
   text-align: center;
   top: 0;
