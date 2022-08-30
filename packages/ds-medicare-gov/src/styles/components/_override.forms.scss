@@ -42,7 +42,7 @@ select.ds-c-field {
 // All form labels inside `ds-c-fieldset` will be lowercase, except the <DateField> main form label
 // The <ChoiceList> form label and the day/month/year labels in <DateField> will be lowercase
 .ds-c-fieldset {
-  & > .ds-c-label:not([id^='datefield']) {
+  > .ds-c-label:not([id^='datefield']) {
     span:first-child {
       text-transform: none;
     }
@@ -67,7 +67,7 @@ legend[id^='datefield_label'] {
     }
   }
 
-  & > .ds-c-field__hint:not(.ds-u-color--error) {
+  > .ds-c-field__hint:not(.ds-u-color--error) {
     color: $form-label__color--not-error;
   }
 }
