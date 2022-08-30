@@ -6,11 +6,9 @@ import { MdxQuery } from '../helpers/graphQLTypes';
 import useTheme from '../helpers/useTheme';
 import ContentRenderer from '../components/ContentRenderer';
 
-// Main landing page for site
-const IndexPage = ({ data, location }: MdxQuery) => {
+const ContactPage = ({ data, location }: MdxQuery) => {
   const { slug } = data.mdx;
   const theme = useTheme();
-
   return (
     <Layout
       frontmatter={data.mdx.frontmatter}
@@ -23,19 +21,19 @@ const IndexPage = ({ data, location }: MdxQuery) => {
     </Layout>
   );
 };
-
 export const query = graphql`
-  query IntroPageQuery {
-    mdx(frontmatter: { title: { eq: "Introduction" } }) {
+  query PageFeedbackQuery {
+    mdx(frontmatter: { title: { eq: "Contact us" } }) {
       id
       body
       slug
       tableOfContents(maxDepth: 3)
       frontmatter {
         title
+        intro
       }
     }
   }
 `;
 
-export default IndexPage;
+export default ContactPage;

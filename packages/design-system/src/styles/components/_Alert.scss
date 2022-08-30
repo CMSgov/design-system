@@ -50,8 +50,8 @@
 .ds-c-alert__a11y-label {
   margin-right: 0.5rem;
 
-  // !important needed to overwrite screen reader utility styles
   @media (-ms-high-contrast: active), (forced-colors: active) {
+    /* stylelint-disable declaration-no-important -- needed to overwrite screen reader utility styles */
     border: none !important;
     clip: auto !important;
     height: auto !important;
@@ -61,6 +61,7 @@
     width: auto !important;
     // Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1241631
     word-wrap: normal !important;
+    /* stylelint-enable */
   }
 }
 

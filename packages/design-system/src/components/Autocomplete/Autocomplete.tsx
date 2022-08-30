@@ -374,7 +374,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, any> {
             {clearSearchButton && (
               <Button
                 aria-label={ariaClearLabel ?? t('autocomplete.ariaClearLabel')}
-                className="ds-c-autocomplete__clear-btn"
+                className="ds-u-padding-right--0 ds-c-autocomplete__clear-btn"
                 onClick={clearSelection}
                 size="small"
                 variation="ghost"

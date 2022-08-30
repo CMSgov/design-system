@@ -8,6 +8,7 @@
 // the source rules.
 // @import 'react-day-picker/dist/style.css';
 
+/* stylelint-disable declaration-no-important, no-duplicate-selectors -- Ignore inlined 3rd party styles */
 :root {
   --rdp-cell-size: 40px;
   --rdp-accent-color: #{$color-primary};
@@ -34,10 +35,8 @@
 /* Hide elements for devices that are not screen readers */
 .rdp-vhidden {
   box-sizing: border-box;
-  padding: 0;
   margin: 0;
   background: transparent;
-  border: 0;
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
@@ -400,6 +399,7 @@
   width: 14px;
   height: 14px;
 }
+/* stylelint-enable */
 
 // Style the two nav arrows for switching months
 .ds-c-single-input-date-field__nav {

@@ -13,13 +13,10 @@ module.exports = (rootDir, core) => ({
     'node_modules/',
     '.+\\.a11y\\.test\\.[jt]s(x)?$',
     '.+\\.e2e\\.test\\.[jt]s(x)?$',
-  ],
-  coveragePathIgnorePatterns: [
-    '/node_modules/',
-    'design-system-scripts',
     'docs/public/',
     'docs/static',
   ],
+  coveragePathIgnorePatterns: ['/node_modules/', 'design-system-scripts'],
   transformIgnorePatterns: ['node_modules(?!/@cmsgov)'],
   // Add moduleNameMapper for core CMSDS to resolve imports from @cmsgov/design-system to packages/design-system
   moduleNameMapper: core
