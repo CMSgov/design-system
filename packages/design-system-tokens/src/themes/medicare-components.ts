@@ -423,9 +423,12 @@ export const components: AnyTokenValues = {
     '-heading__font-family':                      t.font['family-montserrat'],
     '-heading__font-weight':                      t.font['weight-semibold'],
     '-heading-4xl__font-weight':                  t.font['weight-light'],
+    '-heading-3xl__font-weight':                  t.font['weight-semibold'],
+    '-heading-lg__font-weight':                   t.font['weight-semibold'],
+    '-heading-md__font-weight':                   t.font['weight-semibold'],
+    '-heading-sm__font-weight':                   t.font['weight-semibold'],
     '-body__color':                               t.color['base'],
     '-body__font-family':                         t.font['family-rubik'],
-    '-body__font-weight':                         t.font['weight-normal'],
   },
 
   'usa-banner': {

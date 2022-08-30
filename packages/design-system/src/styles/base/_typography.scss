@@ -76,7 +76,7 @@
 .ds-h1,
 .ds-text-heading--3xl {
   font-size: $h1-mobile-font-size;
-  font-weight: $font-weight-normal;
+  font-weight: $typography-heading-3xl__font-weight;
 
   @media (min-width: $width-md) {
     font-size: $font-size-3xl;
@@ -96,19 +96,20 @@
 .ds-h4,
 .ds-text-heading--lg {
   font-size: $font-size-lg;
+  font-weight: $typography-heading-lg__font-weight;
 }
 
 .ds-h5,
 .ds-text-heading--md {
   font-size: $font-size-md;
-  font-weight: $font-weight-bold;
+  font-weight: $typography-heading-md__font-weight;
 }
 
 .ds-h6,
 .ds-text-heading--sm {
   color: $color-muted;
   font-size: $font-size-sm;
-  font-weight: $font-weight-normal;
+  font-weight: $typography-heading-sm__font-weight;
 }
 
 .ds-base--inverse .ds-h6,
@@ -122,7 +123,6 @@
 .ds-text-body--md {
   color: $typography-body__color;
   font-family: $typography-body__font-family;
-  font-weight: $typography-body__font-weight;
   line-height: $font-line-height-base;
   margin-bottom: 1em;
   margin-top: 1em;

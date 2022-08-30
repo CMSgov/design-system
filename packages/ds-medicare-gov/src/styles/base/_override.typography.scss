@@ -67,7 +67,6 @@
 
 .ds-h6,
 .ds-text-heading--sm {
-  color: $color-base;
   line-height: 20px;
   margin-bottom: $spacer-1;
 }
@@ -78,6 +77,7 @@
 .ds-text-body--md,
 .mct-p3,
 .ds-text-body--sm {
+  color: $color-base;
   margin-top: 0;
 }
 

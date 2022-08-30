@@ -430,10 +430,12 @@ export const components: AnyTokenValues = {
     '-heading__font-family':                      'inherit',
     '-heading__font-weight':                      t.font['weight-bold'],
     '-heading-4xl__font-weight':                  'inherit',
-    '-heading-4xl__line-height':                  'inherit',
+    '-heading-3xl__font-weight':                  'inherit',
+    '-heading-lg__font-weight':                   t.font['weight-bold'],
+    '-heading-md__font-weight':                   t.font['weight-bold'],
+    '-heading-sm__font-weight':                   t.font['weight-normal'],
     '-body__color':                               'inherit',
     '-body__font-family':                         'inherit',
-    '-body__font-weight':                         'inherit',
   },
 
   'usa-banner': {
