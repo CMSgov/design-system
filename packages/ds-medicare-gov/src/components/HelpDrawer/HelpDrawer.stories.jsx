@@ -2,9 +2,8 @@ import React from 'react';
 import { Title, Subtitle, Description, ArgsTable, PRIMARY_STORY } from '@storybook/addon-docs';
 import { useArgs } from '@storybook/client-api';
 
-import { HelpDrawer, HelpDrawerToggle } from '@cmsgov/design-system';
-import InfoCircleOutlineIcon from '../Icons/InfoCircleOutlineIcon';
-
+import HelpDrawerToggle from './HelpDrawerToggle';
+import { HelpDrawer } from '@cmsgov/design-system';
 export default {
   title: 'Medicare/Help Drawer',
   component: HelpDrawer,
@@ -80,7 +79,6 @@ export const HelpDrawerToggleWithDrawer = () => {
       <HelpDrawerToggle
         showDrawer={() => setIsDrawerVisible({ isDrawerVisible: true })}
         helpDrawerOpen={isDrawerVisible || false}
-        icon={<InfoCircleOutlineIcon />}
       >
         Drawer Toggle
       </HelpDrawerToggle>
@@ -106,7 +104,6 @@ export const HelpDrawerToggleOnDark = () => {
       <HelpDrawerToggle
         showDrawer={() => setIsDrawerVisible({ isDrawerVisible: true })}
         helpDrawerOpen={isDrawerVisible || false}
-        icon={<InfoCircleOutlineIcon />}
         className="ds-c-button--on-dark"
       >
         Drawer Toggle

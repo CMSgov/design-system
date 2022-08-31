@@ -1,5 +1,12 @@
 import React from 'react';
-import { RoundedStarIcon, PharmacyIcon, PiggyBankIcon, CheckShieldIcon, DrugsIcon } from './index';
+import {
+  RoundedStarIcon,
+  PharmacyIcon,
+  PiggyBankIcon,
+  CheckShieldIcon,
+  DrugsIcon,
+  InfoCircleOutlineIcon,
+} from './index';
 
 export default {
   title: 'Medicare/Icons',
@@ -16,6 +23,11 @@ const iconData = [
     defaultTitle: 'Drugs',
     component: <DrugsIcon />,
     name: 'DrugsIcon',
+  },
+  {
+    defaultTitle: 'Information',
+    component: <InfoCircleOutlineIcon />,
+    name: 'InfoCircleOutlineIcon',
   },
   {
     defaultTitle: 'Pharmacy',
