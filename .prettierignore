@@ -6,3 +6,6 @@ storybook-static/**
 packages/coverage/**
 packages/design-system-tokens/src/themes/**
 packages/design-system-tokens/src/tokens/**
+packages/docs/.cache/**
+packages/docs/public/**
+packages/docs/static/**

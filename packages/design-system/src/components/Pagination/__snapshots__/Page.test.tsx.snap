@@ -1,17 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Page should render interactive el if not current 1`] = `
-<div>
-  <li>
-    <a
-      aria-label="page 1"
-      class="ds-c-button ds-c-button--ghost"
-      href="/#1"
-    >
-      1
-    </a>
-  </li>
-</div>
+<li>
+  <a
+    aria-label="page 1"
+    class="ds-c-button ds-c-button--ghost"
+    href="/#1"
+  >
+    1
+  </a>
+</li>
 `;
 
 exports[`Page should render static el if current 1`] = `
