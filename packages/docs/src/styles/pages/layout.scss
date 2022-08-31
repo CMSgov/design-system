@@ -92,6 +92,12 @@ body {
   }
 }
 
+.ds-c-badge {
+  .ds-c-icon {
+    font-size: 10px;
+  }
+}
+
 blockquote {
   background-color: $color-gray-lightest;
   border-left: 4px solid $color-gray-light;
