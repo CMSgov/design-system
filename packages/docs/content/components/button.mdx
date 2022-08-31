@@ -3,15 +3,15 @@ title: Button
 intro: Buttons allow users to take actions from a current state to a future state.
 core:
   githubLink: design-system/src/components/Button
-  sketchLink: g0Kvajz
+  sketchLink: zx4Ybra
   storybookLink: components-button--default
 healthcare:
-  sketchLink: v8jeK3d
+  sketchLink: bgkyK0V
 medicare:
-  sketchLink: Vr4yyWw
+  sketchLink: 9POn0mM
 ---
 
-import { Alert, ArrowIcon, Button } from '@cmsgov/design-system';
+import { Alert, Badge, ArrowIcon, Button, CloseIconThin } from '@cmsgov/design-system';
 
 <Alert heading="Are you upgrading to v4 (healthcare v8, medicare v6)?">
 
@@ -31,7 +31,9 @@ See the examples in the following sections to learn how they can be applied.
 
 <ButtonVariationsTable />
 
-### Solid button
+### Main buttons
+
+#### Solid button
 
 <ThemeContent onlyThemes={['healthcare']}>
 
@@ -46,7 +48,7 @@ Use solid buttons for the primary actions we want users to take. These actions a
 />
 
 
-### Outline button
+#### Outline button
 
 <ThemeContent onlyThemes={['healthcare']}>
 
@@ -63,7 +65,7 @@ Use outline buttons for actions available but not the primary action we want use
 
 
 
-### Ghost button
+#### Ghost button
 
 <ThemeContent onlyThemes={['healthcare']}>
 
@@ -79,32 +81,19 @@ Use ghost buttons for actions available but do not take priority over a primary 
 
 ### Alternate buttons
 
-Each button variation (outline, solid, ghost) has an alternate option. The alternate options can be styled differently than the main buttons.
-
-<ThemeContent onlyThemes={['healthcare', 'medicare']}>
-
-  #### Outline alternate button (Unused)
-
-</ThemeContent>
-<ThemeContent neverThemes={['healthcare', 'medicare']}>
-
-  #### Outline alternate button
-
-  <StorybookExample
-    componentName="outline-alt-button"
-    sourceFilePath="components/Button/Button.tsx"
-    storyId="components-button--default&args=children:Outline;isAlternate:true"
-  />
-</ThemeContent>
-
 <ThemeContent onlyThemes={['healthcare']}>
 
-  #### Solid alternate button (Unused)
+<Badge variation="alert">
+<CloseIconThin /> Unused by Healthcare.
+</Badge>
 
 </ThemeContent>
+
+Each button variation (outline, solid, ghost) has an alternate option. Alternate buttons can be styled differently than the main buttons.
+
 <ThemeContent neverThemes={['healthcare']}>
 
-  #### Solid alternate button
+  #### Alternate solid button
   
   <StorybookExample
     componentName="solid-alt-button"
@@ -113,14 +102,44 @@ Each button variation (outline, solid, ghost) has an alternate option. The alter
   />
 </ThemeContent>
 
-<ThemeContent onlyThemes={['healthcare', 'medicare']}>
+<ThemeContent neverThemes={['healthcare']}>
 
-  #### Ghost alternate button (Unused)
+#### Alternate outline button
 
 </ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+<Badge variation="alert">
+<CloseIconThin /> Unused by Medicare.
+</Badge>
+
+</ThemeContent>
+
 <ThemeContent neverThemes={['healthcare', 'medicare']}>
 
-  #### Ghost alternate button
+  <StorybookExample
+    componentName="outline-alt-button"
+    sourceFilePath="components/Button/Button.tsx"
+    storyId="components-button--default&args=children:Outline;isAlternate:true"
+  />
+</ThemeContent>
+
+<ThemeContent neverThemes={['healthcare']}>
+
+#### Alternate ghost button
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+<Badge variation="alert">
+<CloseIconThin /> Unused by Medicare.
+</Badge>
+
+</ThemeContent>
+
+<ThemeContent neverThemes={['healthcare','medicare']}>
 
   <StorybookExample
     componentName="ghost-alt-button"
@@ -129,14 +148,18 @@ Each button variation (outline, solid, ghost) has an alternate option. The alter
   />
 </ThemeContent>
 
-<ThemeContent onlyThemes={['healthcare']}>
 
-  ### On dark background (Unused)
+### On dark background 
+
+<ThemeContent onlyThemes={['healthcare']}> 
+
+<Badge variation="alert">
+<CloseIconThin /> Unused by Healthcare.
+</Badge>
 
 </ThemeContent>
-<ThemeContent neverThemes={['healthcare']}>
 
-  ### On dark background
+<ThemeContent neverThemes={['healthcare']}>
 
   <StorybookExample
     componentName="on-dark-buttons"
@@ -149,15 +172,17 @@ Each button variation (outline, solid, ghost) has an alternate option. The alter
 
 Buttons can exist in two sizes other than default: "big" or "small".
 
+#### Big button
+
 <ThemeContent onlyThemes={['healthcare']}>
 
-#### Big button (Unused)
+<Badge variation="alert">
+<CloseIconThin /> Unused by Healthcare.
+</Badge>
 
 </ThemeContent>
 
 <ThemeContent onlyThemes={['core', 'medicare']}>
-
-#### Big button
 
 <EmbeddedExample>
   <div>
@@ -201,7 +226,6 @@ Small outline buttons are used for utility buttons on a page with other primary 
       Right Icon
       <ArrowIcon direction="right" className="ds-u-margin-left--05" />
     </Button>
-    <Button>No Icon</Button>
   </div>
 </EmbeddedExample>
 
