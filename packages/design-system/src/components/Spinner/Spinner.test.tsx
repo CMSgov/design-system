@@ -1,59 +1,70 @@
 import React from 'react';
 import Spinner from './Spinner';
-import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 
-function shallowRender(customProps = {}) {
-  const props = Object.assign({}, customProps);
-
-  return {
-    props: props,
-    wrapper: shallow(<Spinner {...props} />),
-  };
+function renderSpinner(customProps = {}) {
+  return render(<Spinner {...customProps} />);
 }
 
 describe('Spinner', () => {
   it('renders spinner', () => {
-    const data = shallowRender();
-    const wrapper = data.wrapper;
+    renderSpinner();
+    const spinnerEl = screen.getByRole('status');
 
-    expect(wrapper.is('span')).toBe(true);
+    expect(spinnerEl).toBeDefined();
+    expect(spinnerEl).toMatchSnapshot();
   });
 
   it('returns correct default props', () => {
-    const data = shallowRender();
-    const wrapper = data.wrapper;
+    renderSpinner();
+    const spinnerEl = screen.getByRole('status');
 
-    expect(wrapper.text()).toEqual('Loading');
-    expect(wrapper.prop('role')).toEqual('status');
+    expect(spinnerEl.textContent).toEqual('Loading');
   });
 
   it('returns default class names', () => {
-    const data = shallowRender();
-    const wrapper = data.wrapper;
+    renderSpinner();
+    const spinnerEl = screen.getByRole('status');
 
-    expect(wrapper.hasClass('ds-c-spinner')).toBe(true);
-    expect(wrapper.hasClass('ds-c-spinner--inverse')).toBe(false);
-    expect(wrapper.hasClass('ds-c-spinner--filled')).toBe(false);
+    expect(spinnerEl.classList).toContain('ds-c-spinner');
+    expect(spinnerEl.classList).not.toContain('ds-c-spinner--inverse');
+    expect(spinnerEl.classList).not.toContain('ds-c-spinner--filled');
   });
 
   it('adds additional class names', () => {
-    const data = shallowRender({
+    renderSpinner({
       inversed: true,
       filled: true,
       size: 'small',
+      className: 'test-class',
     });
-    const wrapper = data.wrapper;
+    const spinnerEl = screen.getByRole('status');
 
-    expect(wrapper.hasClass('ds-c-spinner--inverse')).toBe(true);
-    expect(wrapper.hasClass('ds-c-spinner--filled')).toBe(true);
-    expect(wrapper.hasClass('ds-c-spinner--small')).toBe(true);
+    expect(spinnerEl.classList).toContain('ds-c-spinner--inverse');
+    expect(spinnerEl.classList).toContain('ds-c-spinner--filled');
+    expect(spinnerEl.classList).toContain('ds-c-spinner--small');
+    expect(spinnerEl.classList).toContain('test-class');
   });
 
   it('does not add the wrong class name for size prop', () => {
-    const data = shallowRender({ size: 'big' });
-    const wrapper = data.wrapper;
+    renderSpinner({ size: 'big' });
+    const spinnerEl = screen.getByRole('status');
 
-    expect(wrapper.hasClass('ds-c-spinner--big')).toBe(true);
-    expect(wrapper.hasClass('ds-c-spinner--small')).toBe(false);
+    expect(spinnerEl.classList).toContain('ds-c-spinner--big');
+    expect(spinnerEl.classList).not.toContain('ds-c-spinner--small');
+  });
+
+  it('uses aria-valuetext if provided', () => {
+    renderSpinner({ 'aria-valuetext': 'Fetching...' });
+    const spinnerEl = screen.getByRole('status');
+
+    expect(spinnerEl.textContent).toEqual('Fetching...');
+  });
+
+  it('uses provided role', () => {
+    renderSpinner({ role: 'alert' });
+    const spinnerEl = screen.getByRole('alert');
+
+    expect(spinnerEl).toBeDefined();
   });
 });
