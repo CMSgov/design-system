@@ -11,6 +11,8 @@
 
 - [ ] Prefixed the PR title with the [Jira ticket number](https://jira.cms.gov/projects/WNMGDS/) as `[WNMGDS-####] Title`
 
+<!-- Feel free to remove items or sections that are not applicable -->
+
 ### If this is a change to code:
 
 - [ ] Created or updated unit tests to cover the logic added
