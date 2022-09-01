@@ -9,7 +9,7 @@
 
 ## Checklist
 
-- [ ] Prefixed the PR title with the [Jira ticket number](https://jira.cms.gov/projects/WNMGDS/) as `[ticket] title`
+- [ ] Prefixed the PR title with the [Jira ticket number](https://jira.cms.gov/projects/WNMGDS/) as `[WNMGDS-####] Title`
 
 ### If this is a change to code:
 
