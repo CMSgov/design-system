@@ -1,16 +1,20 @@
 ## Summary
 
-- Overview of changes.
+- Overview of changes
+- A link to the Jira ticket for quick reference
 
 ## How to test
 
 1. Instructions on how to test the changes in this PR.
 
-### If this is a change to code:
+## Checklist
 
 - [ ] Prefixed the PR title with the [Jira ticket number](https://jira.cms.gov/projects/WNMGDS/) as `[ticket] title`
-- [ ] Ran `yarn type-check && yarn lint && yarn test` with no errors
-- [ ] Updated unit test snapshots and loki reference images **if necessary** with `yarn loki` && `yarn update-snapshots`
+
+### If this is a change to code:
+
+- [ ] Created or updated unit tests to cover the logic added
+- [ ] Updated unit test snapshots (`yarn update-snapshots`) and loki reference images **if necessary** (`yarn loki && yarn loki:healthcare && yarn loki:medicare`)
 
 ### If this is a change to documentation:
 
