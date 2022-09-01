@@ -1,111 +1,113 @@
-import { mount, shallow } from 'enzyme';
 import React from 'react';
-import VerticalNav from './VerticalNav';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import VerticalNav, { VerticalNavProps } from './VerticalNav';
 
-function render(customProps = {}) {
-  const props: any = {
+function renderVerticalNav(customProps = {}) {
+  const props: VerticalNavProps = {
     ...{
       items: [{ label: 'Foo' }, { label: 'Bar' }],
     },
     ...customProps,
   };
-  return {
-    props: props,
-    wrapper: shallow(<VerticalNav {...props} />),
-  };
+  return render(<VerticalNav {...props} />);
 }
 
 describe('VerticalNav', () => {
   it('renders list', () => {
-    const data = render();
-    const wrapper = data.wrapper;
-    const listEl = wrapper.find('ul');
+    renderVerticalNav();
+    const listEl = screen.getByRole('list');
 
-    expect(listEl.is('ul')).toBe(true);
-    expect(listEl.hasClass('ds-c-vertical-nav')).toBe(true);
-    expect(listEl.hasClass('ds-c-vertical-nav__subnav')).toBe(false);
-    expect(listEl.hasClass('ds-c-vertical-nav--collapsed')).toBe(false);
-    expect(wrapper.find('VerticalNavItem').length).toBe(data.props.items.length);
-    expect(wrapper.find('VerticalNavItem').first().prop('onClick')).toBeUndefined();
+    expect(listEl).toBeDefined();
+    expect(listEl.classList).toContain('ds-c-vertical-nav');
+    expect(listEl.classList).not.toContain('ds-c-vertical-nav__subnav');
+    expect(listEl.classList).not.toContain('ds-c-vertical-nav--collapsed');
+
+    const listItemEls = screen.getAllByRole('listitem');
+
+    expect(listItemEls.length).toBe(2);
   });
 
   it('adds additional class names', () => {
-    const data = render({ className: 'foo' });
-    const listEl = data.wrapper.find('ul');
+    renderVerticalNav({ className: 'foo' });
+    const listEl = screen.getByRole('list');
 
-    expect(listEl.hasClass('ds-c-vertical-nav')).toBe(true);
-    expect(listEl.hasClass('foo')).toBe(true);
+    expect(listEl.classList).toContain('ds-c-vertical-nav');
+    expect(listEl.classList).toContain('foo');
   });
 
   describe('aria-label', () => {
     it('has aria-label attribute if passed prop', () => {
-      const data = render({ ariaNavLabel: 'side menu' });
-      const wrapper = data.wrapper;
+      renderVerticalNav({ ariaNavLabel: 'side menu' });
+      const navEl = screen.getByLabelText('side menu');
 
-      const navEl = wrapper.find('nav');
-      const ariaLabelAttr = navEl.prop('aria-label');
-
-      expect(ariaLabelAttr).toBeTruthy();
-      expect(ariaLabelAttr).toEqual('side menu');
+      expect(navEl.getAttribute('aria-label')).toEqual('side menu');
     });
 
     it('does not have aria-label by default', () => {
-      const data = render();
-      const wrapper = data.wrapper;
+      const { container } = renderVerticalNav();
+      // not sure how else to query the nav container
+      // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
+      const navEl = container.querySelector('nav');
 
-      const navEl = wrapper.find('nav');
-      const ariaLabelAttr = navEl.prop('aria-label');
-
-      expect(ariaLabelAttr).toBeFalsy();
+      expect(navEl.getAttribute('arial-label')).toBeFalsy();
     });
   });
 
   it('has an id attribute', () => {
-    const data = render({ id: 'foo' });
-    const listEl = data.wrapper.find('ul');
+    renderVerticalNav({ id: 'foo' });
+    const listEl = screen.getByRole('list');
 
-    expect(listEl.prop('id')).toBe(data.props.id);
+    expect(listEl.id).toBe('foo');
   });
 
   it('is a subnav list', () => {
-    const data = render({ nested: true });
-    const listEl = data.wrapper.find('ul');
+    renderVerticalNav({ nested: true });
+    const listEl = screen.getByRole('list');
 
-    expect(listEl.hasClass('ds-c-vertical-nav')).toBe(false);
-    expect(listEl.hasClass('ds-c-vertical-nav__subnav')).toBe(true);
+    expect(listEl.classList).not.toContain('ds-c-vertical-nav');
+    expect(listEl.classList).toContain('ds-c-vertical-nav__subnav');
   });
 
   it('is collapsed', () => {
-    const data = render({ collapsed: true });
-    const listEl = data.wrapper.find('ul');
+    renderVerticalNav({ collapsed: true });
+    const listEl = screen.getByRole('list');
 
-    expect(listEl.hasClass('ds-c-vertical-nav--collapsed')).toBe(true);
+    expect(listEl.classList).toContain('ds-c-vertical-nav--collapsed');
   });
 
   it('passes onLinkClick to items', () => {
-    const data = render({
-      onLinkClick: jest.fn(),
+    const mockOnLinkClick = jest.fn();
+    renderVerticalNav({
+      onLinkClick: mockOnLinkClick,
     });
 
-    expect(data.wrapper.find('VerticalNavItem').first().prop('onClick')).toBe(
-      data.props.onLinkClick
-    );
+    const navItemEl = screen.getByText('Foo');
+
+    userEvent.click(navItemEl);
+
+    expect(mockOnLinkClick).toHaveBeenCalled();
   });
 
   it("gives precedence to item's onClick callback", () => {
-    const data = render({
-      onLinkClick: jest.fn(),
+    const mockOnLinkClick = jest.fn();
+    const mockOnClick = jest.fn();
+    renderVerticalNav({
+      onLinkClick: mockOnLinkClick,
       items: [
         {
-          label: 'Foo',
-          onClick: jest.fn(),
+          label: 'Link 3',
+          onClick: mockOnClick,
         },
       ],
     });
 
-    expect(data.wrapper.find('VerticalNavItem').first().prop('onClick')).toBe(
-      data.props.items[0].onClick
-    );
+    const navItemEl = screen.getByText('Link 3');
+
+    userEvent.click(navItemEl);
+
+    expect(mockOnClick).toHaveBeenCalled();
+    expect(mockOnLinkClick).not.toHaveBeenCalled();
   });
 
   it('sets selected prop on selected item and its parents', () => {
@@ -137,48 +139,20 @@ describe('VerticalNav', () => {
         },
       ],
     };
-    const wrapper = mount(<VerticalNav {...props} />);
-    const parentWrapper = wrapper.findWhere((n) => n.prop('id') === 'parent').first();
-    const childWrapper = wrapper.findWhere((n) => n.prop('id') === 'child').first();
-    const grandchild1Wrapper = wrapper.findWhere((n) => n.prop('id') === 'grandchild-1').first();
-    const grandchild2Wrapper = wrapper.findWhere((n) => n.prop('id') === 'grandchild-2').first();
-    const fooWrapper = wrapper.findWhere((n) => n.prop('label') === 'Foo').first();
+    render(<VerticalNav {...props} />);
+    const parentEl = screen.getByText('Parent');
+    const childEl = screen.getByText('Child');
+    const grandchild1El = screen.getByText('Grandchild 1');
+    const grandchild2El = screen.getByText('Grandchild 2');
+    const fooEl = screen.getByText('Foo');
 
     // Parents and self are selected
-    expect(
-      parentWrapper
-        .find('.ds-c-vertical-nav__label')
-        .first()
-        .hasClass('ds-c-vertical-nav__label--current')
-    ).toBe(true);
-
-    expect(
-      childWrapper
-        .find('.ds-c-vertical-nav__label')
-        .first()
-        .hasClass('ds-c-vertical-nav__label--current')
-    ).toBe(true);
-
-    expect(
-      grandchild1Wrapper
-        .find('.ds-c-vertical-nav__label')
-        .first()
-        .hasClass('ds-c-vertical-nav__label--current')
-    ).toBe(true);
+    expect(parentEl.classList).toContain('ds-c-vertical-nav__label--current');
+    expect(childEl.classList).toContain('ds-c-vertical-nav__label--current');
+    expect(grandchild1El.classList).toContain('ds-c-vertical-nav__label--current');
 
     // Siblings or unrelated items aren't selected
-    expect(
-      grandchild2Wrapper
-        .find('.ds-c-vertical-nav__label')
-        .first()
-        .hasClass('ds-c-vertical-nav__label--current')
-    ).toBe(false);
-
-    expect(
-      fooWrapper
-        .find('.ds-c-vertical-nav__label')
-        .first()
-        .hasClass('ds-c-vertical-nav__label--current')
-    ).toBe(false);
+    expect(grandchild2El.classList).not.toContain('ds-c-vertical-nav__label--current');
+    expect(fooEl.classList).not.toContain('ds-c-vertical-nav__label--current');
   });
 });
