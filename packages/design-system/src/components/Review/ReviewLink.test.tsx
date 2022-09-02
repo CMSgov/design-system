@@ -27,16 +27,18 @@ describe('ReviewLink', function () {
   });
 
   it('props.onClick is called with correct parameters', () => {
-    const onClick = jest.fn();
-    renderLink({ onClick });
+    const click = jest.fn();
+    renderLink({ onClick: click });
 
     const els = screen.getAllByRole('link');
     expect(els.length).toBe(1);
 
-    const el = els[0];
+    const el = screen.getByRole('link');
     expect(el.textContent).toBe(text);
 
     userEvent.click(el);
-    expect(onClick).toHaveBeenCalledTimes(1);
+
+    expect(click).toHaveBeenCalledWith(expect.anything(), defaultProps.href);
+    expect(click).toHaveBeenCalledTimes(1);
   });
 });
