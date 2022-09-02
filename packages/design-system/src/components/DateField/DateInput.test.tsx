@@ -85,14 +85,16 @@ describe('DateInput', () => {
     const props = {
       onBlur: jest.fn(),
       onChange: jest.fn(),
-      onComponentBlur: jest.fn(),
     };
 
     beforeEach(() => {
       props.onBlur.mockClear();
       props.onChange.mockClear();
-      props.onComponentBlur.mockClear();
     });
+
+    function sleep(ms) {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    }
 
     it('calls onBlur when month is blurred', () => {
       renderDateInput(props);
@@ -111,31 +113,27 @@ describe('DateInput', () => {
       expect(props.onChange).toHaveBeenCalled();
     });
 
-    it('calls onComponentBlur when component loses focus', (done) => {
-      renderDateInput(props);
+    it('calls onComponentBlur when component loses focus', async () => {
+      const onComponentBlur = jest.fn();
+      renderDateInput({ ...props, onComponentBlur });
       const lastInput = screen.getByRole('textbox', { name: /year/i });
-      userEvent.click(lastInput);
+      userEvent.type(lastInput, '1');
       userEvent.tab();
-
       // Because of implementation details, this event doesn't fire until 20ms have gone by
-      setTimeout(() => {
-        expect(props.onComponentBlur).toHaveBeenCalledTimes(1);
-        done();
-      }, 25);
+      await sleep(25);
+      expect(onComponentBlur).toHaveBeenCalledTimes(1);
     });
 
-    it('does not call onComponentBlur when focus switches to other date component', (done) => {
-      renderDateInput(props);
+    it('does not call onComponentBlur when focus switches to other date component', async () => {
+      const onComponentBlur = jest.fn();
+      renderDateInput({ ...props, onComponentBlur });
       const firstInput = screen.getByRole('textbox', { name: /month/i });
       userEvent.click(firstInput);
       // Tab to the next input, which is still part of the DateField component
       userEvent.tab();
-
       // Because of implementation details, this event doesn't fire until 20ms have gone by
-      setTimeout(() => {
-        expect(props.onComponentBlur).not.toHaveBeenCalled();
-        done();
-      }, 25);
+      await sleep(25);
+      expect(onComponentBlur).not.toHaveBeenCalled();
     });
 
     it('formats the date as a single string', () => {
