@@ -1,40 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Mask renders mask 1`] = `
-<div
-  className="ds-c-field-mask ds-c-field-mask--ssn"
->
-  <input
-    fieldClassName="ds-c-field--ssn"
-    inputMode="numeric"
-    name="foo"
-    onBlur={[Function]}
-    onChange={[Function]}
-    pattern="[0-9-*]*"
-    type="text"
-    value=""
-  />
-</div>
+<DocumentFragment>
+  <div
+    class="ds-c-field-mask ds-c-field-mask--ssn"
+  >
+    <input
+      fieldclassname="ds-c-field--ssn"
+      inputmode="numeric"
+      name="foo"
+      pattern="[0-9-*]*"
+      type="text"
+      value=""
+    />
+  </div>
+</DocumentFragment>
 `;
 
 exports[`Mask renders mask overlay 1`] = `
-<div
-  className="ds-c-field-mask ds-c-field-mask--currency"
->
+<DocumentFragment>
   <div
-    className="ds-c-field__before ds-c-field__before--currency"
+    class="ds-c-field-mask ds-c-field-mask--currency"
   >
-    $
+    <div
+      class="ds-c-field__before ds-c-field__before--currency"
+    >
+      $
+    </div>
+    <input
+      fieldclassname="ds-c-field--currency"
+      inputmode="numeric"
+      name="foo"
+      pattern="[0-9.,-]*"
+      type="text"
+      value=""
+    />
   </div>
-  <input
-    fieldClassName="ds-c-field--currency"
-    inputMode="numeric"
-    name="foo"
-    onBlur={[Function]}
-    onChange={[Function]}
-    pattern="[0-9.,-]*"
-    type="text"
-    value=""
-  />
-</div>
+</DocumentFragment>
 `;
