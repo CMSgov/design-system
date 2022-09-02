@@ -1,13 +1,3 @@
-jest.mock('react-aria-modal/node_modules/focus-trap', () => {
-  const trap = {
-    activate: () => trap,
-    deactivate: () => trap,
-    pause: () => {},
-    unpause: () => {},
-  };
-  return () => trap;
-});
-
 import Dialog from './Dialog';
 import React from 'react';
 import { setDialogSendsAnalytics } from '../flags';
