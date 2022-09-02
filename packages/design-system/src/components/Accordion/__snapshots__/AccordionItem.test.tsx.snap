@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AccordionItem renders an accordion item 1`] = `
-<div
-  class="ds-c-accordion"
->
+<DocumentFragment>
   <h2
     class="ds-c-accordion__heading"
   >
@@ -43,5 +41,5 @@ exports[`AccordionItem renders an accordion item 1`] = `
   >
     &lt;p&gt;Content for accordion item&lt;/p&gt;
   </div>
-</div>
+</DocumentFragment>
 `;

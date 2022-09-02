@@ -21,32 +21,24 @@ function renderAccordion(customProps = {}) {
 
 describe('Accordion', function () {
   it('renders accordion', () => {
-    renderAccordion();
+    const { container, asFragment } = renderAccordion();
+    const accordion = container.firstChild as HTMLElement; // eslint-disable-line testing-library/no-node-access
 
-    const wrapper = screen.getAllByRole('generic');
-
-    // Returns Accordion code without RTL wrapping <div>
-    const accordion = wrapper[1];
     expect(accordion.classList).toContain('ds-c-accordion');
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('renders additional className', () => {
-    renderAccordion({ className: 'ds-u-test' });
+    const { container } = renderAccordion({ className: 'ds-u-test' });
+    const accordion = container.firstChild as HTMLElement; // eslint-disable-line testing-library/no-node-access
 
-    const wrapper = screen.getAllByRole('generic');
-
-    // Returns Accordion code without RTL wrapping <div>
-    const accordion = wrapper[1];
     expect(accordion.classList).toContain('ds-u-test');
   });
 
   it('renders ds-c-accordion--bordered class when a bordered prop is set', () => {
-    renderAccordion({ bordered: true });
+    const { container } = renderAccordion({ bordered: true });
+    const accordion = container.firstChild as HTMLElement; // eslint-disable-line testing-library/no-node-access
 
-    const wrapper = screen.getAllByRole('generic');
-
-    // Returns Accordion code without RTL wrapping <div>
-    const accordion = wrapper[1];
     expect(accordion.classList).toContain('ds-c-accordion--bordered');
   });
 });
