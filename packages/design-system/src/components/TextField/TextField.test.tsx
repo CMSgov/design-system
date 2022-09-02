@@ -1,6 +1,6 @@
 import React from 'react';
 import { TextField, unmaskValue } from './TextField';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { DATE_MASK } from './useLabelMask';
 
 const defaultProps = {
