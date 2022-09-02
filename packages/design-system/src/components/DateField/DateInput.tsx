@@ -1,5 +1,5 @@
 import { DateObject } from './defaultDateFormatter';
-import React from 'react';
+import React, { MutableRefObject } from 'react';
 import TextField from '../TextField/TextField';
 import classNames from 'classnames';
 import { t } from '../i18n';
@@ -69,7 +69,7 @@ export interface DateInputProps {
   /**
    * Access a reference to the day `input`
    */
-  dayFieldRef?: (...args: any[]) => any;
+  dayFieldRef?: MutableRefObject<any> | ((...args: any[]) => any);
   /**
    * Apply error styling to the day `input`
    */
@@ -95,7 +95,7 @@ export interface DateInputProps {
   /**
    * Access a reference to the month `input`
    */
-  monthFieldRef?: (...args: any[]) => any;
+  monthFieldRef?: MutableRefObject<any> | ((...args: any[]) => any);
   /**
    * Apply error styling to the month `input`
    */
@@ -113,7 +113,7 @@ export interface DateInputProps {
   /**
    * Access a reference to the year `input`
    */
-  yearFieldRef?: (...args: any[]) => any;
+  yearFieldRef?: MutableRefObject<any> | ((...args: any[]) => any);
   /**
    * Apply error styling to the year `input`
    */
@@ -209,7 +209,12 @@ export class DateInput extends React.PureComponent<DateInputProps> {
         })}
         inputRef={(el) => {
           this[`${type}Input`] = el;
-          if (this.props[`${type}FieldRef`]) this.props[`${type}FieldRef`](el);
+          const ref = this.props[`${type}FieldRef`];
+          if (typeof ref === 'function') {
+            ref(el);
+          } else if (ref) {
+            ref.current = el;
+          }
         }}
         autoComplete={this.props.autoComplete && `bday-${type}`}
         aria-describedby={this.props.labelId}
