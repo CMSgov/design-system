@@ -6,7 +6,7 @@
     "tag": "latest"
   },
   "bin": {
-    "cmsds-migrate": "./scripts/cmsds-migrate/src/main.js"
+    "cmsds-migrate": "./scripts/cmsds-migrate/src/main.mjs"
   },
   "description": "CMS Design System Sass/CSS and React assets",
   "repository": {
@@ -21,6 +21,7 @@
   "types": "dist/types/index.d.ts",
   "files": [
     "dist",
+    "scripts",
     "src/components/**/*.{jsx,tsx}",
     "!src/**/*{.test,.spec,.d}.{jsx,tsx}"
   ],
