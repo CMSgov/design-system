@@ -1,11 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TextField renders 1`] = `
-<FormControl
-  className="ds-u-clearfix"
-  component="div"
-  label="Foo"
-  labelComponent="label"
-  render={[Function]}
-/>
+<DocumentFragment>
+  <div
+    class="ds-u-clearfix"
+  >
+    <label
+      class="ds-c-label"
+      for="field_1"
+      id="field_1-label"
+    >
+      <span
+        class=""
+      >
+        Foo
+      </span>
+    </label>
+    <input
+      aria-invalid="false"
+      class="ds-c-field"
+      id="field_1"
+      name="spec-field"
+      type="text"
+    />
+  </div>
+</DocumentFragment>
 `;
