@@ -1,34 +1,35 @@
 import React from 'react';
 import SkipNav from './SkipNav';
-import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 describe('SkipNav', function () {
   it('uses children as link text content', () => {
-    const wrapper = shallow(<SkipNav href="#main">Foo</SkipNav>);
-
-    expect(wrapper.text()).toBe('Foo');
+    render(<SkipNav href="#main">Foo</SkipNav>);
+    const el = screen.getByRole('link');
+    expect(el.textContent).toBe('Foo');
   });
 
   it('has href', () => {
-    const wrapper = shallow(<SkipNav href="#main" />);
-
-    expect(wrapper.prop('href')).toBe('#main');
+    render(<SkipNav href="#main" />);
+    const el = screen.getByRole('link');
+    expect(el.getAttribute('href')).toBe('#main');
   });
 
   it('has default text content', () => {
-    const wrapper = shallow(<SkipNav href="#main" />);
-
-    expect(wrapper.text()).toBe('Skip to main content');
+    render(<SkipNav href="#main" />);
+    const el = screen.getByRole('link');
+    expect(el.textContent).toBe('Skip to main content');
   });
 
   it('calls onClick when clicked', () => {
-    const spy = jest.fn();
-    const href = 'javascript:void(0)';
-    const wrapper = shallow(<SkipNav href={href} onClick={spy} />);
+    const click = jest.fn();
+    const href = '!#';
+    render(<SkipNav href={href} onClick={click} />);
 
-    const fakeEvent = { anEventProperty: 'hey' };
-    wrapper.simulate('click', fakeEvent);
+    const el = screen.getByRole('link');
+    userEvent.click(el);
 
-    expect(spy).toHaveBeenCalledWith(fakeEvent);
+    expect(click).toHaveBeenCalled();
   });
 });
