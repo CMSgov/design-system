@@ -45,10 +45,8 @@ describe('VerticalNav', () => {
     });
 
     it('does not have aria-label by default', () => {
-      const { container } = renderVerticalNav();
-      // not sure how else to query the nav container
-      // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
-      const navEl = container.querySelector('nav');
+      renderVerticalNav();
+      const navEl = screen.getByRole('navigation');
 
       expect(navEl.getAttribute('arial-label')).toBeFalsy();
     });
@@ -125,6 +123,7 @@ describe('VerticalNav', () => {
                 {
                   label: 'Grandchild 1',
                   id: 'grandchild-1',
+                  url: '#test',
                 },
                 {
                   label: 'Grandchild 2',
@@ -150,6 +149,7 @@ describe('VerticalNav', () => {
     expect(parentEl.classList).toContain('ds-c-vertical-nav__label--current');
     expect(childEl.classList).toContain('ds-c-vertical-nav__label--current');
     expect(grandchild1El.classList).toContain('ds-c-vertical-nav__label--current');
+    expect(grandchild1El.getAttribute('aria-current')).toBe('true');
 
     // Siblings or unrelated items aren't selected
     expect(grandchild2El.classList).not.toContain('ds-c-vertical-nav__label--current');
