@@ -104,7 +104,7 @@ export const getConfigFileList = (path) => {
       .then((files) => {
         resolve(
           files.map((file) => ({
-            name: file.replaceAll('-', ' ').split('.')[0],
+            name: file.replace(/-/g, ' ').split('.')[0],
             value: file,
           }))
         );
