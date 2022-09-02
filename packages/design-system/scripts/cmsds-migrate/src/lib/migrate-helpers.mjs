@@ -2,7 +2,8 @@ import chalk from 'chalk';
 import { globby } from 'globby';
 import inquirer from 'inquirer';
 import path from 'path';
-import { readdir, readFile, writeFile } from 'node:fs/promises';
+import fs from 'fs';
+const { readdir, readFile, writeFile } = fs.promises;
 
 // confirm prompt for starting operations, display warning and y/n dialog
 export const confirmStart = () => {
