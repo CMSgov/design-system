@@ -9,15 +9,25 @@ healthcare:
   sketchLink: m1Y5wQ7
 medicare:
   sketchLink: YGOggo0
+  storybookLink: medicare-dialog--dialog-example
 ---
 
 ## Examples
 
-<StorybookExample
-  componentName="dialog"
-  storyId="components-dialog--dialog-example"
-  minHeight={400}
-/>
+<ThemeContent neverThemes={['medicare']}>
+  <StorybookExample
+    componentName="dialog"
+    storyId="components-dialog--dialog-example"
+    minHeight={400}
+  />
+</ThemeContent>
+<ThemeContent onlyThemes={['medicare']}>
+  <StorybookExample
+    componentName="dialog"
+    storyId="medicare-dialog--dialog-example"
+    minHeight={400}
+  />
+</ThemeContent>
 
 ### Dialog size variants
 
