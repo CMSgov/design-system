@@ -4,6 +4,16 @@ import Tooltip from './Tooltip';
 import TooltipIcon from './TooltipIcon';
 
 jest.mock('@popperjs/core');
+// This module has issues with newer versions of @testing-library/react
+jest.mock('focus-trap', () => {
+  const trap = {
+    activate: () => trap,
+    deactivate: () => trap,
+    pause: () => {},
+    unpause: () => {},
+  };
+  return () => trap;
+});
 
 const triggerAriaLabelText = 'tooltip trigger';
 const defaultProps = {
