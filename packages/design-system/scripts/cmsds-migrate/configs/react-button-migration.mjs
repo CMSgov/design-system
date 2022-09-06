@@ -4,19 +4,19 @@ export default {
   patterns: ['**/*.{jsx,tsx}'],
   expressions: [
     {
-      from: new RegExp(/(<\s*?button[\s\S]*?variation=[\"\'])(primary)([\"\'][\s\S]*?\/?>+)/, 'gi'),
+      from: new RegExp(/(<\s*?button[\s\S]*?variation=["'])(primary)(["'][\s\S]*?\/?>+)/, 'gi'),
       to: '$1solid$3',
     },
     {
       from: new RegExp(
-        /(<\s*?button[\s\S]*?variation=[\"\'])(transparent)([\"\'][\s\S]*?\/?>+)/,
+        /(<\s*?button[\s\S]*?variation=["'])(transparent)(["'][\s\S]*?\/?>+)/,
         'gi'
       ),
-      to: "$1link$3 {/* CMSDS-MIGRATE: possible visual difference between 'transparent' and 'link' */}",
+      to: "$1ghost$3 {/* CMSDS-MIGRATE: possible visual difference between 'transparent' and 'ghost' */}",
     },
     {
       from: new RegExp(
-        /(<\s*?button[\s\S]*?variation=[\"\'])(danger|success)([\"\'][\s\S]*?\/?>+)/,
+        /(<\s*?button[\s\S]*?variation=["'])(danger|success)(["'][\s\S]*?\/?>+)/,
         'gi'
       ),
       to: '$1solid$3 {/* CMSDS-MIGRATE: $2 variation will be deprecated */}',
