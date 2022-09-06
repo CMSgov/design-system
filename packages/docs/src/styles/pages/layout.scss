@@ -88,6 +88,15 @@ body {
   .c-prop-table p {
     font-size: $font-size-sm;
   }
+  .ds-c-alert {
+    margin-top: $spacer-2;
+  }
+}
+
+.ds-c-badge {
+  .ds-c-icon {
+    font-size: 10px;
+  }
 }
 
 blockquote {

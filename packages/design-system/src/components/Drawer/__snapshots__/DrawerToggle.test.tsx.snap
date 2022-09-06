@@ -6,9 +6,7 @@ exports[`DrawerToggle renders a button 1`] = `
     class="ds-c-button ds-c-button--ghost ds-c-drawer__toggle"
     type="button"
   >
-    <p>
-      content
-    </p>
+    content
   </button>
 </DocumentFragment>
 `;

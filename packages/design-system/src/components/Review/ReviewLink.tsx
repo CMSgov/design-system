@@ -2,8 +2,8 @@ import React from 'react';
 
 export interface ReviewLinkProps {
   /**
-   * Provide this value to give screenreaders longer, more descriptive text to
-   * explain the context of the link.
+   * Provide this value to give screen readers longer,
+   * more descriptive text to explain the context of the link.
    */
   ariaLabel?: string;
   className?: string;

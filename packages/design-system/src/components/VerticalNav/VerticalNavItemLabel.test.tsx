@@ -1,74 +1,86 @@
 import React from 'react';
-import VerticalNavItemLabel from './VerticalNavItemLabel';
-import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import VerticalNavItemLabel, { VerticalNavItemLabelProps } from './VerticalNavItemLabel';
 
-function shallowRender(customProps = {}) {
-  const props: any = Object.assign(
-    {
-      label: 'Foo',
-      subnavId: 'foo-subnav',
-    },
-    customProps
-  );
-
-  return {
-    props: props,
-    wrapper: shallow(<VerticalNavItemLabel {...props} />),
+function renderVerticalNavItemLabel(customProps = {}) {
+  const props: VerticalNavItemLabelProps = {
+    label: 'Foo',
+    subnavId: 'foo-subnav',
+    ...customProps,
   };
+
+  return render(<VerticalNavItemLabel {...props} />);
 }
 
 describe('VerticalNavItemLabel', () => {
   it('accepts a node as a label', () => {
-    const wrapper = shallowRender({
+    const { asFragment } = renderVerticalNavItemLabel({
       label: <strong>Foo</strong>,
-    }).wrapper;
+    });
 
-    expect(wrapper.html()).toMatch(/<strong>/);
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('is not selected', () => {
-    const data = shallowRender();
-    expect(data.wrapper.hasClass('ds-c-vertical-nav__label--current')).toBe(false);
+    renderVerticalNavItemLabel();
+
+    const labelEl = screen.getByText('Foo');
+    expect(labelEl.classList).not.toContain('ds-c-vertical-nav__label--current');
   });
 
   it('is selected', () => {
-    const data = shallowRender({ selected: true });
-    expect(data.wrapper.hasClass('ds-c-vertical-nav__label--current')).toBe(true);
+    renderVerticalNavItemLabel({ selected: true });
+
+    const labelEl = screen.getByText('Foo');
+    expect(labelEl.classList).toContain('ds-c-vertical-nav__label--current');
   });
 
   it('calls onClick', () => {
-    const data = shallowRender({
-      onClick: jest.fn(),
-    });
+    const mockOnClick = jest.fn();
+    renderVerticalNavItemLabel({ onClick: mockOnClick });
+    const labelEl = screen.getByText('Foo');
 
-    data.wrapper.simulate('click');
-    expect(data.props.onClick.mock.calls.length).toBe(1);
+    userEvent.click(labelEl);
+    expect(mockOnClick).toHaveBeenCalled();
+  });
+
+  it('uses provided component', () => {
+    const mockComponent = ({ ...props }) => {
+      return <span {...props} />;
+    };
+
+    const { asFragment } = renderVerticalNavItemLabel({ component: mockComponent });
+    const labelEl = screen.getByText('Foo');
+
+    expect(labelEl.nodeName).toEqual('SPAN');
+    expect(asFragment()).toMatchSnapshot();
   });
 
   describe('without subnav', () => {
-    it('is a div element', () => {
-      const data = shallowRender();
-      const wrapper = data.wrapper;
+    it('is a div element by default', () => {
+      renderVerticalNavItemLabel();
+      const labelEl = screen.getByText('Foo');
 
-      expect(wrapper.is('div')).toBe(true);
-      expect(wrapper.prop('href')).toBeUndefined();
+      expect(labelEl.nodeName).toBe('DIV');
+      expect(labelEl.getAttribute('href')).toBeNull();
     });
 
     it('is an anchor element', () => {
-      const data = shallowRender({ url: '/bar' });
-      const wrapper = data.wrapper;
+      renderVerticalNavItemLabel({ url: '/bar' });
+      const labelEl = screen.getByText('Foo') as HTMLAnchorElement;
 
-      expect(wrapper.is('a')).toBe(true);
-      expect(wrapper.prop('href')).toBe('/bar');
+      expect(labelEl.nodeName).toBe('A');
+      expect(labelEl.getAttribute('href')).toBe('/bar');
     });
 
     it('ignores ARIA subnav attributes', () => {
-      const data = shallowRender();
-      const wrapper = data.wrapper;
+      renderVerticalNavItemLabel();
+      const labelEl = screen.getByText('Foo');
 
-      expect(wrapper.prop('title')).toBeUndefined();
-      expect(wrapper.prop('aria-controls')).toBeUndefined();
-      expect(wrapper.prop('aria-expanded')).toBeUndefined();
+      expect(labelEl.getAttribute('title')).toBeNull();
+      expect(labelEl.getAttribute('aria-controls')).toBeNull();
+      expect(labelEl.getAttribute('aria-expanded')).toBeNull();
     });
   });
 
@@ -79,58 +91,79 @@ describe('VerticalNavItemLabel', () => {
       props = { hasSubnav: true };
     });
 
-    it('is a button when URL isnt present', () => {
-      const data = shallowRender(props);
+    it('is a button when URL not present', () => {
+      renderVerticalNavItemLabel(props);
+      const labelEl = screen.getByRole('button');
 
-      expect(data.wrapper.is('button')).toBe(true);
+      expect(labelEl).toBeDefined();
+      expect(labelEl.nodeName).toBe('BUTTON');
     });
 
     it('is a button even when URL is present', () => {
       props.url = '/foo';
-      const data = shallowRender(props);
-      const wrapper = data.wrapper;
+      renderVerticalNavItemLabel(props);
+      const labelEl = screen.getByRole('button');
 
-      expect(wrapper.is('button')).toBe(true);
-      expect(wrapper.prop('href')).toBeUndefined();
+      expect(labelEl).toBeDefined();
+      expect(labelEl.nodeName).toBe('BUTTON');
+      expect(labelEl.getAttribute('href')).toBeNull();
     });
 
     it('has ARIA attributes', () => {
       props.collapsed = true;
-      const data = shallowRender(props);
-      const wrapper = data.wrapper;
+      renderVerticalNavItemLabel(props);
+      const labelEl = screen.getByRole('button');
 
-      expect(wrapper.prop('aria-controls')).toBe(`${data.props.subnavId}`);
-      expect(wrapper.prop('aria-expanded')).toBe(false);
+      expect(labelEl.getAttribute('aria-controls')).toBe('foo-subnav');
+      expect(labelEl.getAttribute('aria-expanded')).toBe('false');
     });
 
     it('has default collapsed state title', () => {
       props.collapsed = true;
-      const data = shallowRender(props);
+      renderVerticalNavItemLabel(props);
+      const labelEl = screen.getByRole('button');
 
-      expect(data.wrapper.prop('title')).toMatchSnapshot();
+      expect(labelEl.getAttribute('title')).toBe('Expand sub-navigation');
     });
 
     it('has default expanded state title', () => {
       props.collapsed = false;
-      const data = shallowRender(props);
+      renderVerticalNavItemLabel(props);
+      const labelEl = screen.getByRole('button');
 
-      expect(data.wrapper.prop('title')).toMatchSnapshot();
+      expect(labelEl.getAttribute('title')).toBe('Collapse sub-navigation');
     });
 
     it('uses provided collapsed state title', () => {
       props.collapsed = true;
       props.ariaCollapsedStateButtonLabel = 'Expand me';
-      const data = shallowRender(props);
+      renderVerticalNavItemLabel(props);
+      const labelEl = screen.getByRole('button');
 
-      expect(data.wrapper.prop('title')).toBe(data.props.ariaCollapsedStateButtonLabel);
+      expect(labelEl.getAttribute('title')).toBe(props.ariaCollapsedStateButtonLabel);
     });
 
     it('uses provided expanded state title', () => {
       props.collapsed = false;
       props.ariaExpandedStateButtonLabel = 'Collapse me';
-      const data = shallowRender(props);
+      renderVerticalNavItemLabel(props);
+      const labelEl = screen.getByRole('button');
 
-      expect(data.wrapper.prop('title')).toBe(data.props.ariaExpandedStateButtonLabel);
+      expect(labelEl.getAttribute('title')).toBe(props.ariaExpandedStateButtonLabel);
+    });
+
+    it('shows a down arrow when collapsed', () => {
+      props.collapsed = true;
+      const { asFragment } = renderVerticalNavItemLabel(props);
+
+      expect(asFragment()).toMatchSnapshot();
+    });
+
+    it('shows an up arrow when not collapsed', () => {
+      props.collapsed = false;
+      const { asFragment } = renderVerticalNavItemLabel(props);
+
+      expect(asFragment()).toMatchSnapshot();
     });
   });
 });
