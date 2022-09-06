@@ -427,7 +427,6 @@ export const components: AnyTokenValues = {
     '-heading-lg__font-weight':                   t.font['weight-semibold'],
     '-heading-md__font-weight':                   t.font['weight-semibold'],
     '-heading-sm__font-weight':                   t.font['weight-semibold'],
-    '-body__color':                               t.color['base'],
     '-body__font-family':                         t.font['family-rubik'],
   },
 

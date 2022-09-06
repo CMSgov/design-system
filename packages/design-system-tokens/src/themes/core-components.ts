@@ -426,7 +426,6 @@ export const components: AnyTokenValues = {
     '-heading-lg__font-weight':                   t.font['weight-bold'],
     '-heading-md__font-weight':                   t.font['weight-bold'],
     '-heading-sm__font-weight':                   t.font['weight-normal'],
-    '-body__color':                               'inherit',
     '-body__font-family':                         'inherit',
   },
 
