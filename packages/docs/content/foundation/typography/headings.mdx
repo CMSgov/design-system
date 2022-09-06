@@ -4,7 +4,7 @@ order: 10
 intro: Headings help to provide a quick, organized way to organize the main sections of a website.
 ---
 
-import { Alert } from '@cmsgov/design-system';
+import { Alert, Badge } from '@cmsgov/design-system';
 import loremIpsumGenerator from '../../../src/helpers/loremIpsumGenerator';
 
 
@@ -34,31 +34,29 @@ Sans-serifs have been proven to be easier to read on-screen and are incredibly a
 
 The design system doesn't style base HTML typography elements (like `h1`, `h2`, `p`, etc) in order to avoid conflicting with any existing site styles. You should instead use one of the base typography classes below to apply styling:
 
-<ThemeContent onlyThemes={['healthcare', 'core']}>
-
 ### Heading--5xl
-
-</ThemeContent>
 
 <ThemeContent onlyThemes={['medicare']}>
 
-### Heading--5xl (Unused)
+<Badge variation="alert">
+<CloseIconThin /> Unused by Medicare.
+</Badge>
 
 </ThemeContent>
 
+<ThemeContent neverThemes={['medicare']}>
 <EmbeddedExample>
       <h1 class="ds-text-heading--5xl ds-display">{loremIpsumGenerator('s')}</h1>
 </EmbeddedExample>
-
-<ThemeContent onlyThemes={['healthcare', 'core']}>
+</ThemeContent>
 
 ### Heading--4xl
 
-</ThemeContent>
-
 <ThemeContent onlyThemes={['medicare']}>
 
-### Heading--4xl (Unused)
+<Badge variation="alert">
+<CloseIconThin /> Unused by Medicare.
+</Badge>
 
 </ThemeContent>
 
@@ -68,9 +66,11 @@ Heading--4xl is used for the heading on landing pages that serve as an entry poi
 
 </ThemeContent>
 
+<ThemeContent neverThemes={['medicare']}>
 <EmbeddedExample>
       <h1 class="ds-text-heading--4xl ds-title">{loremIpsumGenerator('s')}</h1>
 </EmbeddedExample>
+</ThemeContent>
 
 ### Heading--3xl
 
