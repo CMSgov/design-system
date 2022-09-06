@@ -5,28 +5,28 @@ export default {
   expressions: [
     {
       from: new RegExp(
-        /(<\s*?button[\s\S]*?class=[\"\'][\s\S]*?)(ds-c-button--primary|ds-c-button--success)([\s\S]*?[\"\'][\s\S]*?\/?>+)/,
+        /(<\s*?button[\s\S]*?class=["'][\s\S]*?)(ds-c-button--primary|ds-c-button--success)([\s\S]*?["'][\s\S]*?\/?>+)/,
         'gi'
       ),
       to: '$1ds-c-button--solid$3',
     },
     {
       from: new RegExp(
-        /(<\s*?button[\s\S]*?class=[\"\'][\s\S]*?)(ds-c-button--transparent)([\s\S]*?[\"\'][\s\S]*?\/?>+)/,
+        /(<\s*?button[\s\S]*?class=["'][\s\S]*?)(ds-c-button--transparent)([\s\S]*?["'][\s\S]*?\/?>+)/,
         'gi'
       ),
-      to: '$1ds-c-button--link$3',
+      to: '$1ds-c-button--ghost$3',
     },
     {
       from: new RegExp(
-        /(<\s*?button[\s\S]*?class=[\"\'][\s\S]*?)(ds-c-button--inverse)([\s\S]*?[\"\'][\s\S]*?\/?>+)/,
+        /(<\s*?button[\s\S]*?class=["'][\s\S]*?)(ds-c-button--inverse)([\s\S]*?["'][\s\S]*?\/?>+)/,
         'gi'
       ),
       to: '$1ds-c-button--on-dark$3',
     },
     {
       from: new RegExp(
-        /(<\s*?button[\s\S]*?class=[\"\'][\s\S]*?)(ds-c-button|ds-c-button--hover|ds-c-button--active|ds-c-button--focus)([\s\S]*?[\"\'][\s\S]*?\/?>+)/,
+        /(<\s*?button[\s\S]*?class=["'][\s\S]*?)(ds-c-button|ds-c-button--hover|ds-c-button--active|ds-c-button--focus)([\s\S]*?["'][\s\S]*?\/?>+)/,
         'gi'
       ),
       to: '$& <!-- CMSDS-MIGRATE: ds-c-button and ds-c-button--active/focus/hover will be deprecated in upcoming DS releases -->',
