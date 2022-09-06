@@ -39,10 +39,10 @@ module.exports = (system) => {
   return {
     testURL: 'http://localhost',
     setupFiles: [require.resolve('react-app-polyfill/stable')],
-    testMatch: [`${__dirname}/*.a11y.test.[jt]s?(x)`],
-    globalSetup: `${__dirname}/a11y.global-setup.js`,
-    globalTeardown: `${__dirname}/a11y.global-teardown.js`,
-    testEnvironment: `${__dirname}/selenium.environment.js`,
+    testMatch: [path.join(__dirname, '*.a11y.test.[jt]s?(x)')],
+    globalSetup: path.join(__dirname, 'jest.global-setup.js'),
+    globalTeardown: path.join(__dirname, 'jest.global-teardown.js'),
+    testEnvironment: path.join(__dirname, 'jest.environment.js'),
     testEnvironmentOptions: {
       browser: 'chrome',
       chromeOptions: process.env.HEADLESS === 'true' && ['--headless', '--window-size=1024,768'],
