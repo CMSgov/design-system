@@ -15,11 +15,9 @@
 .ds-text-heading--lg,
 .ds-text-heading--md,
 .ds-text-heading--sm {
-  font-family: $font-family-montserrat;
-  font-weight: $font-weight-semibold;
   > a {
     color: $color-primary;
-    text-decoration-color: $color-teal-300;
+    text-decoration-color: $color-primary-light;
     text-underline-offset: 3px;
     &:hover {
       color: $color-primary-darker;
@@ -28,18 +26,11 @@
   }
 }
 
-.ds-title,
-.ds-text-heading--4xl {
-  font-weight: 300;
-}
-
 .ds-h1,
 .ds-text-heading--3xl {
-  font-size: $font-size-2xl;
   line-height: $spacer-5;
   margin-bottom: 44px;
   @media screen and (min-width: $width-md) {
-    font-size: $font-size-3xl;
     line-height: $spacer-6;
     margin-bottom: 52px;
   }
@@ -47,7 +38,6 @@
 
 .ds-h2,
 .ds-text-heading--2xl {
-  font-size: $font-size-2xl;
   line-height: $spacer-5;
   margin-bottom: 44px;
   @media screen and (max-width: $width-md) {
@@ -59,29 +49,24 @@
 
 .ds-h3,
 .ds-text-heading--xl {
-  font-size: $font-size-xl;
   line-height: $spacer-4;
   margin-bottom: $spacer-4;
 }
 
 .ds-h4,
 .ds-text-heading--lg {
-  font-size: $font-size-lg;
   line-height: 28px;
   margin-bottom: $spacer-3;
 }
 
 .ds-h5,
 .ds-text-heading--md {
-  font-size: $font-size-md;
   line-height: $spacer-3;
   margin-bottom: $spacer-2;
 }
 
 .ds-h6,
 .ds-text-heading--sm {
-  color: $color-base;
-  font-size: $font-size-sm;
   line-height: 20px;
   margin-bottom: $spacer-1;
 }
@@ -92,29 +77,24 @@
 .ds-text-body--md,
 .mct-p3,
 .ds-text-body--sm {
-  color: $black-500;
-  font-family: $font-family-rubik;
-  font-weight: 400;
+  color: $color-base;
   margin-top: 0;
 }
 
 .mct-p1,
 .ds-text-body--lg {
-  font-size: $font-size-lg;
   line-height: 28px;
   margin-bottom: 12px;
 }
 
 .mct-p2,
 .ds-text-body--md {
-  font-size: $font-size-md;
   line-height: $spacer-3;
   margin-bottom: $spacer-1;
 }
 
 .mct-p3,
 .ds-text-body--sm {
-  font-size: $font-size-sm;
   line-height: 20px;
   margin-bottom: $spacer-1;
 }

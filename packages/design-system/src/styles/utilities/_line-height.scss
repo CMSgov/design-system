@@ -1,17 +1,17 @@
 @import '../settings/index.scss';
 
 .ds-u-leading--base {
-  line-height: $base-line-height !important;
+  line-height: $font-line-height-base !important;
 }
 
 .ds-u-leading--lead {
-  line-height: $lead-line-height !important;
+  line-height: $font-line-height-lead !important;
 }
 
 .ds-u-leading--heading {
-  line-height: $heading-line-height !important;
+  line-height: $font-line-height-heading !important;
 }
 
 .ds-u-leading--reset {
-  line-height: $reset-line-height !important;
+  line-height: $font-line-height-reset !important;
 }
