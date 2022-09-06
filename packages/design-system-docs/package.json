@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/design-system-docs",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "publishConfig": {
     "access": "public",
     "tag": "latest"
@@ -13,7 +13,7 @@
   },
   "license": "SEE LICENSE IN LICENSE.md",
   "dependencies": {
-    "@cmsgov/design-system": "4.0.1",
+    "@cmsgov/design-system": "4.0.2",
     "classnames": "^2.2.5",
     "lodash": "^4.17.19",
     "prismjs": "^1.11.0",
