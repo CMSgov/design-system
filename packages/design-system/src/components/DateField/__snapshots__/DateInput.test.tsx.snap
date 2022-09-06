@@ -1,328 +1,98 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DateInput has invalid day 1`] = `
-<div
-  className="ds-c-datefield__container ds-l-form-row"
->
-  <TextField
-    aria-describedby="1"
-    className="ds-l-col--auto"
-    fieldClassName="ds-c-field--month"
-    inputRef={[Function]}
-    label="Month"
-    labelClassName="ds-c-datefield__label"
-    maxLength={2}
-    name="month"
-    numeric={true}
-    type="text"
-  />
-  <span
-    className="ds-c-datefield__separator"
-  >
-    /
-  </span>
-  <TextField
-    aria-describedby="1"
-    aria-invalid={true}
-    className="ds-l-col--auto"
-    fieldClassName="ds-c-field--day ds-c-field--error"
-    inputRef={[Function]}
-    label="Day"
-    labelClassName="ds-c-datefield__label"
-    maxLength={2}
-    name="day"
-    numeric={true}
-    type="text"
-  />
-  <span
-    className="ds-c-datefield__separator"
-  >
-    /
-  </span>
-  <TextField
-    aria-describedby="1"
-    className="ds-l-col--auto"
-    fieldClassName="ds-c-field--year"
-    inputRef={[Function]}
-    label="year"
-    labelClassName="ds-c-datefield__label"
-    maxLength={4}
-    name="Year"
-    numeric={true}
-    type="text"
-  />
-</div>
-`;
-
-exports[`DateInput has invalid month 1`] = `
-<div
-  className="ds-c-datefield__container ds-l-form-row"
->
-  <TextField
-    aria-describedby="1"
-    aria-invalid={true}
-    className="ds-l-col--auto"
-    fieldClassName="ds-c-field--month ds-c-field--error"
-    inputRef={[Function]}
-    label="Month"
-    labelClassName="ds-c-datefield__label"
-    maxLength={2}
-    name="month"
-    numeric={true}
-    type="text"
-  />
-  <span
-    className="ds-c-datefield__separator"
-  >
-    /
-  </span>
-  <TextField
-    aria-describedby="1"
-    className="ds-l-col--auto"
-    fieldClassName="ds-c-field--day"
-    inputRef={[Function]}
-    label="Day"
-    labelClassName="ds-c-datefield__label"
-    maxLength={2}
-    name="day"
-    numeric={true}
-    type="text"
-  />
-  <span
-    className="ds-c-datefield__separator"
-  >
-    /
-  </span>
-  <TextField
-    aria-describedby="1"
-    className="ds-l-col--auto"
-    fieldClassName="ds-c-field--year"
-    inputRef={[Function]}
-    label="year"
-    labelClassName="ds-c-datefield__label"
-    maxLength={4}
-    name="Year"
-    numeric={true}
-    type="text"
-  />
-</div>
-`;
-
-exports[`DateInput has invalid year 1`] = `
-<div
-  className="ds-c-datefield__container ds-l-form-row"
->
-  <TextField
-    aria-describedby="1"
-    className="ds-l-col--auto"
-    fieldClassName="ds-c-field--month"
-    inputRef={[Function]}
-    label="Month"
-    labelClassName="ds-c-datefield__label"
-    maxLength={2}
-    name="month"
-    numeric={true}
-    type="text"
-  />
-  <span
-    className="ds-c-datefield__separator"
-  >
-    /
-  </span>
-  <TextField
-    aria-describedby="1"
-    className="ds-l-col--auto"
-    fieldClassName="ds-c-field--day"
-    inputRef={[Function]}
-    label="Day"
-    labelClassName="ds-c-datefield__label"
-    maxLength={2}
-    name="day"
-    numeric={true}
-    type="text"
-  />
-  <span
-    className="ds-c-datefield__separator"
-  >
-    /
-  </span>
-  <TextField
-    aria-describedby="1"
-    aria-invalid={true}
-    className="ds-l-col--auto"
-    fieldClassName="ds-c-field--year ds-c-field--error"
-    inputRef={[Function]}
-    label="year"
-    labelClassName="ds-c-datefield__label"
-    maxLength={4}
-    name="Year"
-    numeric={true}
-    type="text"
-  />
-</div>
-`;
-
-exports[`DateInput is disabled 1`] = `
-<div
-  className="ds-c-datefield__container ds-l-form-row"
->
-  <TextField
-    aria-describedby="1"
-    className="ds-l-col--auto"
-    disabled={true}
-    fieldClassName="ds-c-field--month"
-    inputRef={[Function]}
-    label="Month"
-    labelClassName="ds-c-datefield__label"
-    maxLength={2}
-    name="month"
-    numeric={true}
-    type="text"
-  />
-  <span
-    className="ds-c-datefield__separator"
-  >
-    /
-  </span>
-  <TextField
-    aria-describedby="1"
-    className="ds-l-col--auto"
-    disabled={true}
-    fieldClassName="ds-c-field--day"
-    inputRef={[Function]}
-    label="Day"
-    labelClassName="ds-c-datefield__label"
-    maxLength={2}
-    name="day"
-    numeric={true}
-    type="text"
-  />
-  <span
-    className="ds-c-datefield__separator"
-  >
-    /
-  </span>
-  <TextField
-    aria-describedby="1"
-    className="ds-l-col--auto"
-    disabled={true}
-    fieldClassName="ds-c-field--year"
-    inputRef={[Function]}
-    label="year"
-    labelClassName="ds-c-datefield__label"
-    maxLength={4}
-    name="Year"
-    numeric={true}
-    type="text"
-  />
-</div>
-`;
-
-exports[`DateInput is inversed 1`] = `
-<div
-  className="ds-c-datefield__container ds-l-form-row"
->
-  <TextField
-    aria-describedby="1"
-    className="ds-l-col--auto"
-    fieldClassName="ds-c-field--month"
-    inputRef={[Function]}
-    inversed={true}
-    label="Month"
-    labelClassName="ds-c-datefield__label"
-    maxLength={2}
-    name="month"
-    numeric={true}
-    type="text"
-  />
-  <span
-    className="ds-c-datefield__separator"
-  >
-    /
-  </span>
-  <TextField
-    aria-describedby="1"
-    className="ds-l-col--auto"
-    fieldClassName="ds-c-field--day"
-    inputRef={[Function]}
-    inversed={true}
-    label="Day"
-    labelClassName="ds-c-datefield__label"
-    maxLength={2}
-    name="day"
-    numeric={true}
-    type="text"
-  />
-  <span
-    className="ds-c-datefield__separator"
-  >
-    /
-  </span>
-  <TextField
-    aria-describedby="1"
-    className="ds-l-col--auto"
-    fieldClassName="ds-c-field--year"
-    inputRef={[Function]}
-    inversed={true}
-    label="year"
-    labelClassName="ds-c-datefield__label"
-    maxLength={4}
-    name="Year"
-    numeric={true}
-    type="text"
-  />
-</div>
-`;
-
 exports[`DateInput renders with all defaultProps 1`] = `
-<div
-  className="ds-c-datefield__container ds-l-form-row"
->
-  <TextField
-    aria-describedby="1"
-    className="ds-l-col--auto"
-    fieldClassName="ds-c-field--month"
-    inputRef={[Function]}
-    label="Month"
-    labelClassName="ds-c-datefield__label"
-    maxLength={2}
-    name="month"
-    numeric={true}
-    type="text"
-  />
-  <span
-    className="ds-c-datefield__separator"
+<DocumentFragment>
+  <div
+    class="ds-c-datefield__container ds-l-form-row"
   >
-    /
-  </span>
-  <TextField
-    aria-describedby="1"
-    className="ds-l-col--auto"
-    fieldClassName="ds-c-field--day"
-    inputRef={[Function]}
-    label="Day"
-    labelClassName="ds-c-datefield__label"
-    maxLength={2}
-    name="day"
-    numeric={true}
-    type="text"
-  />
-  <span
-    className="ds-c-datefield__separator"
-  >
-    /
-  </span>
-  <TextField
-    aria-describedby="1"
-    className="ds-l-col--auto"
-    fieldClassName="ds-c-field--year"
-    inputRef={[Function]}
-    label="year"
-    labelClassName="ds-c-datefield__label"
-    maxLength={4}
-    name="Year"
-    numeric={true}
-    type="text"
-  />
-</div>
+    <div
+      class="ds-u-clearfix ds-l-col--auto"
+    >
+      <label
+        class="ds-c-label ds-c-datefield__label"
+        for="field_1"
+        id="field_1-label"
+      >
+        <span
+          class=""
+        >
+          Month
+        </span>
+      </label>
+      <input
+        aria-describedby="1"
+        class="ds-c-field ds-c-field--month"
+        id="field_1"
+        inputmode="numeric"
+        maxlength="2"
+        name="month"
+        pattern="[0-9]*"
+        type="text"
+        value=""
+      />
+    </div>
+    <span
+      class="ds-c-datefield__separator"
+    >
+      /
+    </span>
+    <div
+      class="ds-u-clearfix ds-l-col--auto"
+    >
+      <label
+        class="ds-c-label ds-c-datefield__label"
+        for="field_2"
+        id="field_2-label"
+      >
+        <span
+          class=""
+        >
+          Day
+        </span>
+      </label>
+      <input
+        aria-describedby="1"
+        class="ds-c-field ds-c-field--day"
+        id="field_2"
+        inputmode="numeric"
+        maxlength="2"
+        name="day"
+        pattern="[0-9]*"
+        type="text"
+        value=""
+      />
+    </div>
+    <span
+      class="ds-c-datefield__separator"
+    >
+      /
+    </span>
+    <div
+      class="ds-u-clearfix ds-l-col--auto"
+    >
+      <label
+        class="ds-c-label ds-c-datefield__label"
+        for="field_3"
+        id="field_3-label"
+      >
+        <span
+          class=""
+        >
+          year
+        </span>
+      </label>
+      <input
+        aria-describedby="1"
+        class="ds-c-field ds-c-field--year"
+        id="field_3"
+        inputmode="numeric"
+        maxlength="4"
+        name="Year"
+        pattern="[0-9]*"
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+</DocumentFragment>
 `;

@@ -2,11 +2,11 @@ jest.mock('lodash/uniqueId', () => (str) => `${str}snapshot`);
 import { MultiInputDateField } from './MultiInputDateField';
 import React from 'react';
 import defaultDateFormatter from './defaultDateFormatter';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 
 describe('MultiInputDateField', () => {
   it('renders', () => {
-    expect(renderer.create(<MultiInputDateField />)).toMatchSnapshot();
+    expect(render(<MultiInputDateField />).asFragment()).toMatchSnapshot();
   });
 
   describe('defaultDateFormatter', () => {
