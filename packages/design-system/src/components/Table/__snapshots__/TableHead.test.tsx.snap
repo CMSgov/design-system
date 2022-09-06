@@ -1,50 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TableHead renders additional attributes 1`] = `
-<table>
-  <TableHead
-    className="foo-head"
+<thead
+  class="foo-head"
+  role="rowgroup"
+>
+  <tr
+    role="row"
   >
-    <thead
-      className="foo-head"
-      role="rowgroup"
+    <th
+      class="ds-c-table__cell--align-left"
+      role="columnheader"
+      scope="col"
     >
-      <TableRow
-        _isTableHeadChild={true}
-        key=".0"
-      >
-        <tr
-          role="row"
-        >
-          <TableCell
-            _isTableHeadChild={true}
-            align="left"
-            key=".0"
-          >
-            <th
-              className="ds-c-table__cell--align-left"
-              role="columnheader"
-              scope="col"
-            >
-              Column a
-            </th>
-          </TableCell>
-          <TableCell
-            _isTableHeadChild={true}
-            align="left"
-            key=".1"
-          >
-            <th
-              className="ds-c-table__cell--align-left"
-              role="columnheader"
-              scope="col"
-            >
-              Column b
-            </th>
-          </TableCell>
-        </tr>
-      </TableRow>
-    </thead>
-  </TableHead>
-</table>
+      Column a
+    </th>
+    <th
+      class="ds-c-table__cell--align-left"
+      role="columnheader"
+      scope="col"
+    >
+      Column b
+    </th>
+  </tr>
+</thead>
 `;

@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Accordion renders accordion 1`] = `
+<DocumentFragment>
+  <div
+    class="ds-c-accordion"
+  >
+    <h2
+      class="ds-c-accordion__heading"
+    >
+      <button
+        aria-controls="1"
+        aria-expanded="false"
+        class="ds-c-accordion__button"
+        id="1-button"
+      >
+        First amendment
+        <svg
+          aria-hidden="false"
+          aria-labelledby="icon-1__title"
+          class="ds-c-icon ds-c-icon--add ds-c-accordion__button-icon"
+          focusable="false"
+          id="icon-1"
+          role="img"
+          viewBox="3 3 18 18"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title
+            id="icon-1__title"
+          >
+            Open
+          </title>
+          <path
+            d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+          />
+        </svg>
+      </button>
+    </h2>
+    <div
+      aria-labelledby="1-button"
+      class="ds-c-accordion__content"
+      hidden=""
+      id="1"
+    >
+      <p>
+        Hello world!
+      </p>
+    </div>
+    <h2
+      class="ds-c-accordion__heading"
+    >
+      <button
+        aria-controls="2"
+        aria-expanded="false"
+        class="ds-c-accordion__button"
+        id="2-button"
+      >
+        Second amendment
+        <svg
+          aria-hidden="false"
+          aria-labelledby="icon-2__title"
+          class="ds-c-icon ds-c-icon--add ds-c-accordion__button-icon"
+          focusable="false"
+          id="icon-2"
+          role="img"
+          viewBox="3 3 18 18"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title
+            id="icon-2__title"
+          >
+            Open
+          </title>
+          <path
+            d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+          />
+        </svg>
+      </button>
+    </h2>
+    <div
+      aria-labelledby="2-button"
+      class="ds-c-accordion__content"
+      hidden=""
+      id="2"
+    >
+      <p>
+        Hello world!
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;

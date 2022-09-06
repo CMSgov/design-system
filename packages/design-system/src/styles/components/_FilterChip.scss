@@ -81,12 +81,6 @@ $filter-chip-icon-size: 10px;
   .ds-c-icon--close-thin {
     height: $filter-chip-icon-size + 2;
     width: $filter-chip-icon-size + 2;
-
-    @media (-ms-high-contrast: active), (forced-colors: active) {
-      path {
-        stroke: ButtonText !important;
-      }
-    }
   }
 
   .ds-c-filter-chip__button:active &,

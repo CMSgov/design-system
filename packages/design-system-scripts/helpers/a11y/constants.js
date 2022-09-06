@@ -1,4 +1,4 @@
-const ROOT_URL = 'http://localhost:3001';
+const ROOT_URL = 'http://localhost:3001/iframe.html?viewMode=story&id=';
 const RULESET_ALL = ['section508', 'wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'];
 const RULESET_BEST_PRACTICE = ['best-practice'];
 const RULESET_WCAG_TWO = ['section508', 'wcag2a', 'wcag2aa'];

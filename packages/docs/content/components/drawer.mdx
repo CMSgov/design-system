@@ -7,6 +7,8 @@ core:
   storybookLink: components-drawer--drawer-default
 healthcare:
   sketchLink: GmlMnkL
+medicare:
+  storybookLink: medicare-help-drawer--help-drawer-toggle-with-drawer
 ---
 
 On large screens it's fixed to the side of the screen, and on smaller screens it overlays the entire screen.
@@ -92,6 +94,12 @@ analytics={false}
 A custom heading value can be sent for an analytics event by using the prop `analyticsLabelOverride`. It is recommended that this value be used to prevent sensitive personal information from being passed to analytics trackers.
 
 ## Guidance
+
+<ThemeContent onlyThemes={['medicare']}>
+
+Links will include a help icon with the link to indicate the link is a help option.
+
+</ThemeContent>
 
 ### When to use
 

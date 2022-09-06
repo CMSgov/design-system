@@ -3,38 +3,15 @@ title: Button
 intro: Buttons allow users to take actions from a current state to a future state.
 core:
   githubLink: design-system/src/components/Button
-  sketchLink: g0Kvajz
+  sketchLink: zx4Ybra
   storybookLink: components-button--default
 healthcare:
-  sketchLink: v8jeK3d
+  sketchLink: bgkyK0V
 medicare:
-  sketchLink: Vr4yyWw
+  sketchLink: 9POn0mM
 ---
 
-<h1>Heading 1</h1>
-
-## Heading 2
-
-Fusce porttitor velit ut lorem suscipit, sed sodales nibh volutpat. Cras sed rhoncus massa. Aliquam erat volutpat. Donec sagittis ex lectus, quis semper leo mattis ut. Donec nec odio non risus convallis cursus in eu lacus. Integer vitae placerat quam, eu dignissim elit. Cras dapibus felis felis, et vehicula nisi venenatis eu. Fusce condimentum nec quam tempus faucibus. Maecenas sollicitudin nibh malesuada scelerisque faucibus.
-
-### Heading 3
-
-Fusce porttitor velit ut lorem suscipit, sed sodales nibh volutpat. Cras sed rhoncus massa. Aliquam erat volutpat. Donec sagittis ex lectus, quis semper leo mattis ut. Donec nec odio non risus convallis cursus in eu lacus. Integer vitae placerat quam, eu dignissim elit. Cras dapibus felis felis, et vehicula nisi venenatis eu. Fusce condimentum nec quam tempus faucibus. Maecenas sollicitudin nibh malesuada scelerisque faucibus.
-
-#### Heading 4
-
-Fusce porttitor velit ut lorem suscipit, sed sodales nibh volutpat. Cras sed rhoncus massa. Aliquam erat volutpat. Donec sagittis ex lectus, quis semper leo mattis ut. Donec nec odio non risus convallis cursus in eu lacus. Integer vitae placerat quam, eu dignissim elit. Cras dapibus felis felis, et vehicula nisi venenatis eu. Fusce condimentum nec quam tempus faucibus. Maecenas sollicitudin nibh malesuada scelerisque faucibus.
-
-##### Heading 5
-
-Fusce porttitor velit ut lorem suscipit, sed sodales nibh volutpat. Cras sed rhoncus massa. Aliquam erat volutpat. Donec sagittis ex lectus, quis semper leo mattis ut. Donec nec odio non risus convallis cursus in eu lacus. Integer vitae placerat quam, eu dignissim elit. Cras dapibus felis felis, et vehicula nisi venenatis eu. Fusce condimentum nec quam tempus faucibus. Maecenas sollicitudin nibh malesuada scelerisque faucibus.
-
-###### Heading 6
-
-Fusce porttitor velit ut lorem suscipit, sed sodales nibh volutpat. Cras sed rhoncus massa. Aliquam erat volutpat. Donec sagittis ex lectus, quis semper leo mattis ut. Donec nec odio non risus convallis cursus in eu lacus. Integer vitae placerat quam, eu dignissim elit. Cras dapibus felis felis, et vehicula nisi venenatis eu. Fusce condimentum nec quam tempus faucibus. Maecenas sollicitudin nibh malesuada scelerisque faucibus.
-
-
-import { Alert, ArrowIcon, Button } from '@cmsgov/design-system';
+import { Alert, Badge, ArrowIcon, Button, CloseIconThin } from '@cmsgov/design-system';
 
 <Alert heading="Are you upgrading to v4 (healthcare v8, medicare v6)?">
 
@@ -54,15 +31,15 @@ See the examples in the following sections to learn how they can be applied.
 
 <ButtonVariationsTable />
 
-### Outline button
+### Main buttons
 
-<StorybookExample
-  componentName="outline-button"
-  sourceFilePath="components/Button/Button.tsx"
-  storyId="components-button--default&args=children:Outline"
-/>
+#### Solid button
 
-### Solid button
+<ThemeContent onlyThemes={['healthcare']}>
+
+Use solid buttons for the primary actions we want users to take. These actions are required for the user to move to the next step in the user flow (example: Enroll) or to highlight the main/key action.
+
+</ThemeContent>
 
 <StorybookExample
   componentName="solid-button"
@@ -70,7 +47,31 @@ See the examples in the following sections to learn how they can be applied.
   storyId="components-button--default&args=children:Solid;variation:solid"
 />
 
-### Ghost button
+
+#### Outline button
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+Use outline buttons for actions available but not the primary action we want users to take (example: Plan details). There doesn't have to be a primary button on the page to use the secondary button.
+
+
+</ThemeContent>
+
+<StorybookExample
+  componentName="outline-button"
+  sourceFilePath="components/Button/Button.tsx"
+  storyId="components-button--default&args=children:Outline"
+/>
+
+
+
+#### Ghost button
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+Use ghost buttons for actions available but do not take priority over a primary or secondary CTAs (example: Cancel).
+
+</ThemeContent>
 
 <StorybookExample
   componentName="ghost-button"
@@ -80,32 +81,19 @@ See the examples in the following sections to learn how they can be applied.
 
 ### Alternate buttons
 
-Each button variation (outline, solid, ghost) has an alternate option. The alternate options can be styled differently than the main buttons.
-
-<ThemeContent onlyThemes={['healthcare', 'medicare']}>
-
-  #### Outline alternate button (Unused)
-
-</ThemeContent>
-<ThemeContent neverThemes={['healthcare', 'medicare']}>
-
-  #### Outline alternate button
-
-  <StorybookExample
-    componentName="outline-alt-button"
-    sourceFilePath="components/Button/Button.tsx"
-    storyId="components-button--default&args=children:Outline;isAlternate:true"
-  />
-</ThemeContent>
-
 <ThemeContent onlyThemes={['healthcare']}>
 
-  #### Solid alternate button (Unused)
+<Badge variation="alert">
+<CloseIconThin /> Unused by Healthcare.
+</Badge>
 
 </ThemeContent>
+
+Each button variation (outline, solid, ghost) has an alternate option. Alternate buttons can be styled differently than the main buttons.
+
 <ThemeContent neverThemes={['healthcare']}>
 
-  #### Solid alternate button
+  #### Alternate solid button
   
   <StorybookExample
     componentName="solid-alt-button"
@@ -114,14 +102,44 @@ Each button variation (outline, solid, ghost) has an alternate option. The alter
   />
 </ThemeContent>
 
-<ThemeContent onlyThemes={['healthcare', 'medicare']}>
+<ThemeContent neverThemes={['healthcare']}>
 
-  #### Ghost alternate button (Unused)
+#### Alternate outline button
 
 </ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+<Badge variation="alert">
+<CloseIconThin /> Unused by Medicare.
+</Badge>
+
+</ThemeContent>
+
 <ThemeContent neverThemes={['healthcare', 'medicare']}>
 
-  #### Ghost alternate button
+  <StorybookExample
+    componentName="outline-alt-button"
+    sourceFilePath="components/Button/Button.tsx"
+    storyId="components-button--default&args=children:Outline;isAlternate:true"
+  />
+</ThemeContent>
+
+<ThemeContent neverThemes={['healthcare']}>
+
+#### Alternate ghost button
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+<Badge variation="alert">
+<CloseIconThin /> Unused by Medicare.
+</Badge>
+
+</ThemeContent>
+
+<ThemeContent neverThemes={['healthcare','medicare']}>
 
   <StorybookExample
     componentName="ghost-alt-button"
@@ -130,14 +148,18 @@ Each button variation (outline, solid, ghost) has an alternate option. The alter
   />
 </ThemeContent>
 
-<ThemeContent onlyThemes={['healthcare']}>
 
-  ### On dark background (Unused)
+### On dark background 
+
+<ThemeContent onlyThemes={['healthcare']}> 
+
+<Badge variation="alert">
+<CloseIconThin /> Unused by Healthcare.
+</Badge>
 
 </ThemeContent>
-<ThemeContent neverThemes={['healthcare']}>
 
-  ### On dark background
+<ThemeContent neverThemes={['healthcare']}>
 
   <StorybookExample
     componentName="on-dark-buttons"
@@ -146,17 +168,44 @@ Each button variation (outline, solid, ghost) has an alternate option. The alter
   />
 </ThemeContent>
 
-### Changing the size
+### Button sizes
 
-Buttons can exist in two alternative sizes: "big" or "small". See the example below.
+Buttons can exist in two sizes other than default: "big" or "small".
+
+#### Big button
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+<Badge variation="alert">
+<CloseIconThin /> Unused by Healthcare.
+</Badge>
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['core', 'medicare']}>
 
 <EmbeddedExample>
   <div>
-    <Button className="ds-u-margin-right--1" size="big">
+    <Button size="big">
       Big
     </Button>
-    <Button className="ds-u-margin-right--1">Default</Button>
-    <Button className="ds-u-margin-right--1" size="small">
+  </div>
+</EmbeddedExample>
+
+</ThemeContent>
+
+#### Small button
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+Small outline buttons are used for utility buttons on a page with other primary and secondary actions (example: Edit, Remove, Add another [something]).
+
+</ThemeContent>
+
+
+<EmbeddedExample>
+  <div>
+    <Button size="small">
       Small
     </Button>
   </div>
@@ -177,7 +226,6 @@ Buttons can exist in two alternative sizes: "big" or "small". See the example be
       Right Icon
       <ArrowIcon direction="right" className="ds-u-margin-left--05" />
     </Button>
-    <Button>No Icon</Button>
   </div>
 </EmbeddedExample>
 
@@ -233,7 +281,19 @@ A custom heading value can be sent for an analytics event by using the prop `ana
 
 Buttons are promises to the user; they must deliver the promise they offer by doing what the button says it will do.
 
+<ThemeContent onlyThemes={['medicare']}>
 
+- Action buttons do NOT include icons. 
+<br/> <i>Exception:</i> Can include icons in buttons in mobile for CTAs outlining functionality.<br /> Examples: Filter, Sort, Map, and Menu. 
+- Other exceptions require advance and separate approval than mock-ups by product teams. See [Exception process](../../guidelines/exceptions/?theme=medicare)" in Foundations.
+- Buttons use title case. Example: Join Plan or Find Doctors.
+- Note that clickable cards are sentence case. See that component for more information.
+
+When pairing 2 CTAs:
+- In forms/decision trees: Have the preferred action be on the right. Example: Back/Next or Cancel/Submit.
+- All other cases: Have the preferred action be on the left. Example: Create Account/Return to Home or Change My Account/Stop Easy Pay.
+
+</ThemeContent>
 
 ### When to use
 
@@ -312,11 +372,14 @@ Consider when to use links vs. when to use buttons. Links and buttons are read d
   - If in a form, it can be just the action word if it's navigating between steps. Example: Cancel, Back, Next.
 - Use the least amount of words possible (no more than 6 with 2-4 being ideal).
 - Use sentence case for buttons. This conveys a friendlier tone. Note: Some tools and the homepage are using ALL CAPS. There are also a few examples of Title Case. We should change to sentence case for consistency across the site. 
-- Remove articles and use '&' instead of 'and'.
+
+
+#### Writing content
+- Remove articles and use '&' instead of 'and'
+- Do not capitalize articles. 
 - Avoid all caps unless the word is an acronym, like ZIP.
 - Avoid pronouns unless the future state provides the user with customized information. Example: "Get my results"
 - Limit branded terms, like tool names. As a general rule, we don't use tool names in web content or flow. Rather, content should outline what the user will get/can do when they click the button.
-
 
 #### Online forms & steps
 
@@ -561,7 +624,6 @@ Generally better to use specific verbs if appropriate to confirm an action.
     </tr>
   </tbody>
 </table>
-
 
 
 </ThemeContent>

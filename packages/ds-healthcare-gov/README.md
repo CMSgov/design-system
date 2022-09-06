@@ -2,13 +2,13 @@
 
 [![npm](https://img.shields.io/npm/v/@cmsgov/ds-healthcare-gov.svg?label=@cmsgov%2Fds-healthcare-gov)](https://www.npmjs.com/package/@cmsgov/ds-healthcare-gov)
 
-[>> **View the full documentation site here** <<](https://cmsgov.github.io/design-system/healthcare/)
+[>> **View the full documentation site here** <<](https://design.cms.gov/?theme=healthcare)
 
 The _HealthCare.gov Design System_ contains shared design and front-end development resources for Healthcare.gov applications, and is built on top of the [CMS Design System](https://design.cms.gov/) (CMSDS). As a _child design system_, it inherits base styles, components, and guidance from the CMS Design System, while also adding its own features and customizations.
 
 ## Usage
 
-For documentation on installation and usage, please refer to [our documentation site](https://cmsgov.github.io/design-system/healthcare/startup/installation/).
+For documentation on installation and usage, please refer to [our documentation site](https://design.cms.gov/getting-started/developers/installation/?theme=healthcare).
 
 ## Contributing
 

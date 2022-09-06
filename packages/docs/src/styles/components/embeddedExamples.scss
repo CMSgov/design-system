@@ -7,7 +7,7 @@
 }
 
 .example-list {
-  & article {
+  article {
     padding-bottom: $spacer-2;
     padding-top: $spacer-2;
     border-bottom: 1px solid $color-gray-lighter;
@@ -51,8 +51,8 @@
 
 // layout grid examples
 .example-grid {
-  & .ds-l-row > [class*='ds-l-'],
-  & .ds-l-form-row > [class*='ds-l-'] {
+  .ds-l-row > [class*='ds-l-'],
+  .ds-l-form-row > [class*='ds-l-'] {
     background-color: $color-secondary-lightest;
     outline: 2px dashed $color-secondary;
     padding-top: $spacer-2;
@@ -64,7 +64,11 @@
   background-color: $color-secondary-lightest;
   outline: 2px dashed $color-secondary;
 
-  & code {
+  code {
     background-color: $color-secondary-lightest;
   }
+}
+
+.c-embedded-example {
+  margin-top: $spacer-2;
 }

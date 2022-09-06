@@ -20,7 +20,7 @@ export default {
   },
   args: {
     // setting some defaults so controls turn on by default
-    clearInputText: 'Clear Search',
+    clearInputText: 'Clear search',
     clearInputOnBlur: true,
     clearSearchButton: true,
     loadingMessage: 'Loading...',
@@ -162,7 +162,7 @@ LoadingMessage.args = {
   items: [],
   textField: {
     hint: 'List should return string Loading to simulate async data call.',
-    label: 'Loading Message',
+    label: 'Loading message',
   },
 };
 
@@ -172,6 +172,6 @@ NoResults.args = {
   clearSearchButton: false,
   textField: {
     hint: '',
-    label: 'No Results Message',
+    label: 'No results message',
   },
 };
