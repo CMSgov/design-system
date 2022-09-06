@@ -6,3 +6,5 @@ Dialog.defaultProps = {
   closeButtonText: null,
   closeIcon: <CloseIconThin />,
 };
+
+export default Dialog;

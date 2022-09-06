@@ -1,5 +1,77 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`VerticalNavItemLabel with subnav has default collapsed state title 1`] = `"Expand sub-navigation"`;
+exports[`VerticalNavItemLabel accepts a node as a label 1`] = `
+<DocumentFragment>
+  <div
+    class="ds-c-vertical-nav__label"
+  >
+    <strong>
+      Foo
+    </strong>
+  </div>
+</DocumentFragment>
+`;
 
-exports[`VerticalNavItemLabel with subnav has default expanded state title 1`] = `"Collapse sub-navigation"`;
+exports[`VerticalNavItemLabel uses provided component 1`] = `
+<DocumentFragment>
+  <span
+    class="ds-c-vertical-nav__label"
+  >
+    Foo
+  </span>
+</DocumentFragment>
+`;
+
+exports[`VerticalNavItemLabel with subnav shows a down arrow when collapsed 1`] = `
+<DocumentFragment>
+  <button
+    aria-controls="foo-subnav"
+    aria-expanded="false"
+    class="ds-c-vertical-nav__label ds-c-vertical-nav__label--parent"
+    title="Expand sub-navigation"
+  >
+    Foo
+    <svg
+      aria-hidden="true"
+      class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down"
+      direction="down"
+      focusable="false"
+      id="icon-8"
+      viewBox="0 0 320 512"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"
+        fill="currentColor"
+      />
+    </svg>
+  </button>
+</DocumentFragment>
+`;
+
+exports[`VerticalNavItemLabel with subnav shows an up arrow when not collapsed 1`] = `
+<DocumentFragment>
+  <button
+    aria-controls="foo-subnav"
+    aria-expanded="true"
+    class="ds-c-vertical-nav__label ds-c-vertical-nav__label--parent"
+    title="Collapse sub-navigation"
+  >
+    Foo
+    <svg
+      aria-hidden="true"
+      class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-up"
+      direction="up"
+      focusable="false"
+      id="icon-9"
+      viewBox="0 0 320 512"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"
+        fill="currentColor"
+      />
+    </svg>
+  </button>
+</DocumentFragment>
+`;

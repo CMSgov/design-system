@@ -1,7 +1,7 @@
 import { EventCategory, sendLinkEvent, useAnalyticsContent } from '../analytics';
 import AriaModal from 'react-aria-modal';
 import Button, { ButtonVariation } from '../Button/Button';
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import { dialogSendsAnalytics } from '../flags';
 import { CloseIcon } from '../Icons';
@@ -379,7 +379,7 @@ export const Dialog = (props: DialogProps) => {
       {...modalProps}
     >
       <div role="document">
-        <header className={headerClassNames} role="banner">
+        <header className={headerClassNames}>
           {
             // TODO: make heading required after removing title
             (title || heading) && (
