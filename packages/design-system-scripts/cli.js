@@ -47,38 +47,5 @@ yargs
       await buildSrc(config.sourceDir, { ...config, ...argv });
     },
   })
-  .command({
-    command: 'test:a11y <system>',
-    desc: 'Runs a11y tests on a storybook instance for <system>.',
-    builder: (yargs) => {
-      yargs
-        .positional('system', {
-          desc: 'The system to be tested, default core (medicare/healthcare)',
-          type: 'string',
-          choices: ['core', 'medicare', 'healthcare'],
-        })
-        .option('headless', {
-          desc: 'Runs a11y tests with headless chrome browser testing.',
-          type: 'boolean',
-          default: true,
-        })
-        .option('skipBuild', {
-          desc: 'Skips the storybook build process.',
-          type: 'boolean',
-          default: false,
-        });
-    },
-    handler: async (argv) => {
-      const { run } = require('jest');
-      const a11yConfig = require('./jest/a11y.config.js');
-
-      process.env.NODE_ENV = 'test';
-      process.env.BUILD_PATH = argv.buildPath;
-      process.env.SKIP_BUILD = argv.skipBuild;
-      process.env.HEADLESS = argv.headless;
-
-      run(['--config', JSON.stringify(a11yConfig(argv.system))]);
-    },
-  })
   .demandCommand()
   .help().argv;
