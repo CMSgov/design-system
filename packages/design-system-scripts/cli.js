@@ -48,54 +48,6 @@ yargs
     },
   })
   .command({
-    command: 'test <directory>',
-    desc: 'Runs unit tests in a directory.',
-    builder: (yargs) => {
-      yargs
-        .positional('directory', {
-          desc: 'The relative path to the directory where test files are located.',
-          type: 'string',
-          demandOption: true,
-        })
-        .option('filePath', {
-          desc: 'The relative path to a single test file or directory to run',
-          type: 'string',
-          demandOption: false,
-        })
-        .option('updateSnapshot', {
-          desc: 'Alias: -u. Use this flag to re-record every snapshot that fails during this test run',
-          alias: 'u',
-          type: 'boolean',
-          default: false,
-        })
-        .option('watch', {
-          desc: 'Alias: -w. Watch files for changes and rerun all tests when something changes',
-          alias: 'w',
-          type: 'boolean',
-          default: false,
-        })
-        .option('collectCoverage', {
-          desc: 'outputs test coverage data',
-          type: 'boolean',
-          default: true,
-        });
-    },
-    handler: async (argv) => {
-      const { run } = require('jest');
-      const unitConfig = require('./jest/unit.config.js');
-
-      process.env.NODE_ENV = 'test';
-      run([
-        '--config',
-        JSON.stringify(unitConfig(argv.directory, config.core)),
-        ...(argv.updateSnapshot ? ['--updateSnapshot'] : []),
-        ...(argv.watch ? ['--watch'] : []),
-        ...(argv.filePath ? [argv.filePath] : []),
-        ...(argv.collectCoverage ? ['--collectCoverage'] : []),
-      ]);
-    },
-  })
-  .command({
     command: 'test:a11y <system>',
     desc: 'Runs a11y tests on a storybook instance for <system>.',
     builder: (yargs) => {
