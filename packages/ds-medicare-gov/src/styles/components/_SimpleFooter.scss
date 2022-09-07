@@ -16,6 +16,7 @@
   .SimpleFooter__linkButton,
   a {
     @extend .mct-p3;
+    font-size: 14px;
     text-decoration: none;
     color: $color-base !important;
     display: inline-block;
@@ -165,6 +166,7 @@
 
 .m-c-footer__contactAddress {
   @extend .mct-p3;
+  font-size: 14px;
   margin-top: $spacer-2;
   max-width: 411px;
 

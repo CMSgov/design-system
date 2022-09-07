@@ -12,7 +12,7 @@
     "build-storybook:gatsby": "STORYBOOK_DS=gatsby build-storybook -o packages/docs/static/storybook",
     "build-storybook:healthcare": "STORYBOOK_DS=healthcare build-storybook -o storybook-static",
     "build-storybook:medicare": "STORYBOOK_DS=medicare build-storybook -o storybook-static",
-    "build-tokens": "yarn --cwd ./packages/design-system-tokens build themes scss && yarn --cwd ./packages/design-system-tokens build themes css-vars && yarn --cwd ./packages/design-system-tokens dist",
+    "build:tokens": "yarn --cwd ./packages/design-system-tokens build themes scss && yarn --cwd ./packages/design-system-tokens build themes css-vars && yarn --cwd ./packages/design-system-tokens dist",
     "build:docs": "yarn --cwd ./packages/docs build",
     "build:healthcare": "yarn cmsds build --config cmsds.healthcare.config.js",
     "build:medicare": "yarn cmsds build --config cmsds.medicare.config.js",
