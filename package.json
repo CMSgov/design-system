@@ -38,7 +38,7 @@
     "test:a11y": "yarn cmsds test:a11y core",
     "test:a11y:healthcare": "yarn cmsds test:a11y healthcare",
     "test:a11y:medicare": "yarn cmsds test:a11y medicare",
-    "test:unit": "yarn cmsds test ./packages --filePath",
+    "test:unit": "yarn jest --config=tests/unit/jest.config.js",
     "type-check": "yarn tsc --noEmit",
     "update-snapshots": "yarn cmsds test ./packages --updateSnapshot"
   },
