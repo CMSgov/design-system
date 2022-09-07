@@ -89,7 +89,7 @@ export const Step = ({ step, ...props }: StepProps) => {
       <div className={contentClassName}>
         <Heading className="ds-c-step__heading">{step.heading || step.title}</Heading>
         {step.description && (
-          <div className="ds-c-step__description" {...descriptionLabel}>
+          <div className="ds-c-step__description" role="region" {...descriptionLabel}>
             {step.description}
           </div>
         )}
@@ -105,7 +105,7 @@ export const Step = ({ step, ...props }: StepProps) => {
           </ol>
         )}
       </div>
-      <div className="ds-c-step__actions" {...actionsLabel}>
+      <div className="ds-c-step__actions" role="region" {...actionsLabel}>
         {step.completed && (
           <div className="ds-c-step__completed-text">
             <CheckIcon className="ds-c-icon-color--success" />
