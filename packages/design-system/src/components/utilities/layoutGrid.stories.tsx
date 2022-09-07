@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default {
-  title: 'Utilities/Layout Grid',
+  title: 'Foundations/Layout Grid',
   parameters: {
     docs: {
       source: {
