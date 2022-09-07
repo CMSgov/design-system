@@ -35,9 +35,9 @@
     "test": "yarn test:unit && yarn test:a11y core",
     "posttest": "yarn lint",
     "test-coverage": "yarn cmsds test ./packages --collectCoverage",
-    "test:a11y": "yarn cmsds test:a11y core",
-    "test:a11y:healthcare": "yarn cmsds test:a11y healthcare",
-    "test:a11y:medicare": "yarn cmsds test:a11y medicare",
+    "test:a11y": "yarn jest --config=tests/a11y/jest.config.js",
+    "test:a11y:healthcare": "yarn jest --config=tests/a11y/jest.config.js healthcare",
+    "test:a11y:medicare": "yarn jest --config=tests/a11y/jest.config.js medicare",
     "test:unit": "yarn jest --config=tests/unit/jest.config.js",
     "type-check": "yarn tsc --noEmit",
     "update-snapshots": "yarn cmsds test ./packages --updateSnapshot"

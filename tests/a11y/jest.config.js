@@ -3,52 +3,62 @@ const { execSync } = require('child_process');
 const chalk = require('chalk');
 const log = require('fancy-log');
 
-module.exports = (system) => {
-  let sb;
+process.env.NODE_ENV = 'test';
 
-  if (process.env.SKIP_BUILD === 'true') {
-    log(`${chalk.yellow('Skipping build-storybook and using existing build instead')}`);
-  } else {
-    log(chalk.green(`Building ${system} storybook instance in ./storybook-static/ ...\n`));
-    // formatting for build-storybook script purpose
-    system = system == 'core' ? '' : ':' + system;
-    execSync(
-      process.env.BUILD_COMMAND || `yarn build-storybook${system}`,
-      { stdio: 'inherit' },
-      (err, stdout, stderr) => {
-        if (err) console.error(err.message);
-        if (stderr) console.error(err.message);
-        console.log('\n');
-        log(chalk.green('Build successful! loading story data\n'));
-      }
-    );
-    log(chalk.green('build-storybook complete ✓'));
-  }
+const headless = process.argv.includes('--headless');
+const skipBuild = process.argv.includes('--skipBuild');
 
-  log(chalk.green('Reading ./storybook-static/stories.json ...'));
-  try {
-    sb = require('../../../storybook-static/stories.json');
-  } catch {
-    console.error('Error loading storybook-static/stories.json');
-  }
+let system = 'core';
+if (process.argv.includes('healthcare')) {
+  system = 'healthcare';
+} else if (process.argv.includes('medicare')) {
+  system = 'medicare';
+}
 
-  const storybookTests = Object.keys(sb.stories).map((key) => {
-    return [`${sb.stories[key].title} ${sb.stories[key].story}`, key];
-  });
+if (skipBuild) {
+  log(`${chalk.yellow('Skipping build-storybook and using existing build instead')}`);
+} else {
+  log(chalk.green(`Building ${system} storybook instance in ./storybook-static/ ...\n`));
+  // formatting for build-storybook script purpose
+  system = system == 'core' ? '' : ':' + system;
+  execSync(
+    process.env.BUILD_COMMAND || `yarn build-storybook${system}`,
+    { stdio: 'inherit' },
+    (err, stdout, stderr) => {
+      if (err) console.error(err.message);
+      if (stderr) console.error(err.message);
+      console.log('\n');
+      log(chalk.green('Build successful! loading story data\n'));
+    }
+  );
+  log(chalk.green('build-storybook complete ✓'));
+}
 
-  return {
-    testURL: 'http://localhost',
-    setupFiles: [require.resolve('react-app-polyfill/stable')],
-    testMatch: [path.join(__dirname, '*.a11y.test.[jt]s?(x)')],
-    globalSetup: path.join(__dirname, 'jest.global-setup.js'),
-    globalTeardown: path.join(__dirname, 'jest.global-teardown.js'),
-    testEnvironment: path.join(__dirname, 'jest.environment.js'),
-    testEnvironmentOptions: {
-      browser: 'chrome',
-      chromeOptions: process.env.HEADLESS === 'true' && ['--headless', '--window-size=1024,768'],
-    },
-    globals: {
-      storybookTests: storybookTests,
-    },
-  };
+log(chalk.green('Reading ./storybook-static/stories.json ...'));
+let sb;
+try {
+  sb = require('../../storybook-static/stories.json');
+} catch (error) {
+  console.error('Error loading storybook-static/stories.json');
+  throw error;
+}
+
+const storybookTests = Object.keys(sb.stories).map((key) => {
+  return [`${sb.stories[key].title} ${sb.stories[key].story}`, key];
+});
+
+module.exports = {
+  testURL: 'http://localhost',
+  setupFiles: [require.resolve('react-app-polyfill/stable')],
+  testMatch: [path.join(__dirname, '*.a11y.test.[jt]s?(x)')],
+  globalSetup: path.join(__dirname, 'jest.global-setup.js'),
+  globalTeardown: path.join(__dirname, 'jest.global-teardown.js'),
+  testEnvironment: path.join(__dirname, 'jest.environment.js'),
+  testEnvironmentOptions: {
+    browser: 'chrome',
+    chromeOptions: headless ? ['--headless', '--window-size=1024,768'] : [],
+  },
+  globals: {
+    storybookTests: storybookTests,
+  },
 };
