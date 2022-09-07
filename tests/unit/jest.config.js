@@ -3,7 +3,6 @@ module.exports = {
   testEnvironment: 'jsdom',
   testURL: 'http://localhost',
   setupFiles: [require.resolve('react-app-polyfill/stable')],
-  // TODO: Find more robust solution for resolving `setupTests.js` considering `rootDir` can change
   setupFilesAfterEnv: [`<rootDir>/../setupTests.js`],
   snapshotSerializers: ['enzyme-to-json/serializer'],
   testPathIgnorePatterns: [
