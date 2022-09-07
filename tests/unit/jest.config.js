@@ -15,4 +15,8 @@ module.exports = {
   ],
   coveragePathIgnorePatterns: ['/node_modules/', 'design-system-scripts'],
   transformIgnorePatterns: ['node_modules(?!/@cmsgov)'],
+  moduleNameMapper: {
+    // Remap imports for core to the src directory so we don't have to build first
+    '^@cmsgov/design-system$': '<rootDir>/design-system/src/components/index',
+  },
 };
