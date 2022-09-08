@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default {
-  title: 'Typography/Links',
+  title: 'Foundations/Typography/Links',
   parameters: {
     docs: {
       source: {
