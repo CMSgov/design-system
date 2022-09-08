@@ -1,7 +1,8 @@
 import React from 'react';
+import uniqueId from 'lodash/uniqueId';
 
 export default {
-  title: 'Utilities/Layout Grid',
+  title: 'Foundations/Layout Grid',
   parameters: {
     docs: {
       source: {
@@ -16,7 +17,7 @@ export const EqualWidths = () => (
   <section className="ds-l-container">
     <div className="ds-l-row">
       {['Equal', 'Equal', 'Equal', 'Equal'].map((content) => (
-        <div className="ds-l-col utility-example" key={content}>
+        <div className="ds-l-col utility-example" key={uniqueId('equal_')}>
           {content}
         </div>
       ))}
