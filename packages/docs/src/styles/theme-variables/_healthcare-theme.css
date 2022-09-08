@@ -109,6 +109,10 @@
 --font-family-rubik: 'Rubik', sans-serif;
 --font-family-montserrat: 'Montserrat', sans-serif;
 --font-family-bitter: Bitter, Georgia, serif;
+--font-line-height-reset: 1;
+--font-line-height-heading: 1.3;
+--font-line-height-base: 1.5;
+--font-line-height-lead: 1.7;
 --font-size-base: 16px;
 --font-size-sm: 14px;
 --font-size-md: 16px;
@@ -118,13 +122,10 @@
 --font-size-3xl: 36px;
 --font-size-4xl: 48px;
 --font-size-5xl: 60px;
---font-line-height-reset: 1;
---font-line-height-base: 1.5;
---font-line-height-heading: 1.3;
---font-line-height-lead: 1.7;
+--font-weight-light: 300;
 --font-weight-normal: 400;
---font-weight-bold: 700;
 --font-weight-semibold: 600;
+--font-weight-bold: 700;
 --measure-narrow: 45ex;
 --measure-base: 65ex;
 --measure-wide: 80ex;
