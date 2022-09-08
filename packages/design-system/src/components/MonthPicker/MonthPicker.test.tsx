@@ -27,14 +27,14 @@ describe('MonthPicker', () => {
     const buttons = screen.getAllByRole('button');
     const checkboxes = screen.getAllByRole('checkbox');
 
-    buttons.forEach((button) => expect(button.classList).toContain('ds-c-button--on-dark'));
-    checkboxes.forEach((check) => expect(check.classList).toContain('ds-c-choice--inverse'));
+    buttons.forEach((button) => expect(button).toHaveClass('ds-c-button--on-dark'));
+    checkboxes.forEach((check) => expect(check).toHaveClass('ds-c-choice--inverse'));
   });
 
   it('applies `buttonVariation` to buttons', () => {
     renderMonthPicker({ buttonVariation: 'solid' });
     const buttons = screen.getAllByRole('button');
-    buttons.forEach((button) => expect(button.classList).toContain('ds-c-button--solid'));
+    buttons.forEach((button) => expect(button).toHaveClass('ds-c-button--solid'));
   });
 
   it('updates name attribute on children', () => {
@@ -89,7 +89,7 @@ describe('MonthPicker', () => {
     renderMonthPicker();
     const checkboxes = screen.getAllByRole('checkbox');
     checkboxes.forEach((check, i) => {
-      expect(check.getAttribute('value')).toEqual((i + 1).toString());
+      expect(check).toHaveAttribute('value', (i + 1).toString());
     });
   });
 

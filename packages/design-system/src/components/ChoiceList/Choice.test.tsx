@@ -85,13 +85,13 @@ describe('Choice', () => {
   it('applies custom class to input', () => {
     renderChoice({ inputClassName: 'foo' });
     const input = screen.getByLabelText('George Washington');
-    expect(input.classList).toContain('foo');
+    expect(input).toHaveClass('foo');
   });
 
   it('applies custom class to label', () => {
     const { container } = renderChoice({ labelClassName: 'bar' });
     const label = container.querySelector('label'); // eslint-disable-line testing-library/no-container, testing-library/no-node-access
-    expect(label.classList).toContain('bar');
+    expect(label).toHaveClass('bar');
   });
 
   it('applies errorMessage to label', () => {
@@ -103,31 +103,31 @@ describe('Choice', () => {
   it('applies inverse className to input', () => {
     renderChoice({ inversed: true });
     const input = screen.getByRole('checkbox');
-    expect(input.classList).toContain('ds-c-choice--inverse');
+    expect(input).toHaveClass('ds-c-choice--inverse');
   });
 
   it('applies small className to input', () => {
     renderChoice({ size: 'small' });
     const input = screen.getByRole('checkbox');
-    expect(input.classList).toContain('ds-c-choice--small');
+    expect(input).toHaveClass('ds-c-choice--small');
   });
 
   it('applies additional classNames to root element', () => {
     const { container } = renderChoice({ className: 'foo' });
     const el = container.firstChild as HTMLElement; // eslint-disable-line testing-library/no-container, testing-library/no-node-access
-    expect(el.classList).toContain('foo');
+    expect(el).toHaveClass('foo');
   });
 
   it('accepts a string value in the input', () => {
     renderChoice({ value: 'bar' });
     const input = screen.getByRole('checkbox');
-    expect(input.getAttribute('value')).toBe('bar');
+    expect(input).toHaveAttribute('value', 'bar');
   });
 
   it('accepts a number value in the input', () => {
     renderChoice({ value: 100 });
     const input = screen.getByRole('checkbox');
-    expect(input.getAttribute('value')).toBe('100');
+    expect(input).toHaveAttribute('value', '100');
   });
 
   it('accepts a custom id', () => {
