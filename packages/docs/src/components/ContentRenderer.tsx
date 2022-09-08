@@ -12,6 +12,7 @@ import ComponentThemeOptions from './ComponentThemeOptions';
 import ThemeContent from './ThemeContent';
 import PropTable from './PropTable';
 import ResponsiveExample from './ResponsiveExample';
+import ColorSwatchList from './ColorSwatchList';
 
 // adds DS styling to tables from markdown
 const TableWithClassnames = (props) => {
@@ -70,6 +71,7 @@ const customComponents = (theme) => ({
   StorybookExample: (props) => <StorybookExample theme={theme} {...props} />,
   PropTable: (props) => <PropTable theme={theme} {...props} />,
   ResponsiveExample: (props) => <ResponsiveExample theme={theme} {...props} />,
+  ColorSwatchList: (props) => <ColorSwatchList theme={theme} {...props} />,
   ComponentThemeOptions: (props) => <ComponentThemeOptions theme={theme} {...props} />,
   ThemeContent: (props) => <ThemeContent theme={theme} {...props} />,
   ButtonMigrationTable: (props) => <ButtonMigrationTable theme={theme} {...props} />,
