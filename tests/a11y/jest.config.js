@@ -5,8 +5,8 @@ const log = require('fancy-log');
 
 process.env.NODE_ENV = 'test';
 
-const headless = process.argv.includes('--headless');
-const skipBuild = process.argv.includes('--skipBuild');
+const headless = !process.argv.includes('--headless=false');
+const skipBuild = process.argv.includes('--skipBuild=true');
 
 let system = 'core';
 if (process.argv.includes('healthcare')) {
