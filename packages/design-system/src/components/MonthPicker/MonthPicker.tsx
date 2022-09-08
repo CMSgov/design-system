@@ -165,7 +165,7 @@ export const MonthPicker = (props: MonthPickerProps) => {
         </Button>
       </div>
       <div className="ds-c-month-picker__months">
-        <ol className="ds-c-list--bare ds-c-month-picker__months-list">
+        <ol role="list" className="ds-c-list--bare ds-c-month-picker__months-list">
           {months.map((month, i) => (
             <li key={month}>
               <Choice
