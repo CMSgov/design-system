@@ -42,10 +42,21 @@ function printViolations(violations) {
   violations.forEach(printViolation);
 }
 
-module.exports = function assertNoAxeViolations(url, disabledRules = []) {
+module.exports = function assertNoAxeViolations({
+  url = '',
+  disabledRules = [],
+  delay = 0,
+  title = 'No Title',
+} = {}) {
   if (url) {
     return driver
       .get(url)
+      .then(() => {
+        if (delay > 0)
+          return new Promise((resolve) => {
+            setTimeout(resolve, delay);
+          });
+      })
       .then(() => {
         const defaultDisabledRules = ['bypass'];
         return new AxeBuilder(driver)
@@ -53,16 +64,15 @@ module.exports = function assertNoAxeViolations(url, disabledRules = []) {
           .disableRules(defaultDisabledRules.concat(disabledRules))
           .analyze((err, results) => {
             if (results && results.violations.length >= 1) {
-              log(chalk.red(`url: ${url}`));
+              log(chalk.yellow(`-- title: ${title}`));
+              log(chalk.red(`-- url: ${url}`));
               printViolations(results.violations);
             }
             if (err) {
               // ESLint wants us to handle the error directly, but that's what
               // our assertion does below.
             }
-            // @TODO - fix accessibility errors and change this back
-            // expect(results.violations.length).toBe(0);
-            expect(0).toBe(0);
+            expect(results.violations.length).toBe(0);
           });
       })
       .catch((err) => {

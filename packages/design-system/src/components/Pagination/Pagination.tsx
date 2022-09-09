@@ -250,6 +250,7 @@ function Pagination({
       {currentPage === 1 ? (
         <span
           className="ds-c-pagination__nav ds-c-pagination__nav--disabled"
+          aria-disabled="true"
           style={{ visibility: isNavigationHidden ? 'hidden' : 'visible' }}
           aria-hidden={isNavigationHidden}
         >
@@ -292,6 +293,7 @@ function Pagination({
           className="ds-c-pagination__nav ds-c-pagination__nav--disabled"
           style={{ visibility: isNavigationHidden ? 'hidden' : 'visible' }}
           aria-hidden={isNavigationHidden}
+          aria-disabled="true"
         >
           {endLabelText ?? t('pagination.endLabelText')}
           <span className="ds-c-pagination__nav--img-container ds-c-pagination__nav--img-container-next">
