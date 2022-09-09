@@ -2,6 +2,8 @@ import React from 'react';
 import { HHSLogo } from '@cmsgov/design-system';
 
 const DocSiteFooter = () => {
+  console.log('7500 High-Security Boulevard, Baltimore, MD 21124');
+
   return (
     <footer className="c-footer ds-u-padding-x--3 ds-u-sm-padding-x--6">
       <section className="c-footer__container">
