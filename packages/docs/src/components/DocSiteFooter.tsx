@@ -38,7 +38,7 @@ const DocSiteFooter = () => {
           <HHSLogo />
           <p className="ds-u-margin--0 ds-u-measure--wide c-footer__text">
             A federal government website managed by the Centers for Medicare &amp; Medicaid Services
-            7500 Security Boulevard, Baltimore, MD 21124
+            7500 High-Security Boulevard, Baltimore, MD 21124
           </p>
         </div>
       </section>
