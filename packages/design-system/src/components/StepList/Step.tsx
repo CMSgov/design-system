@@ -3,6 +3,7 @@ import StepLink, { StepLinkProps } from './StepLink';
 import SubStep from './SubStep';
 import classNames from 'classnames';
 import { CheckIcon } from '../Icons';
+import uniqueId from 'lodash/uniqueId';
 
 type HeadingLevel = '1' | '2' | '3' | '4' | '5';
 
@@ -68,6 +69,7 @@ export const Step = ({ step, ...props }: StepProps) => {
   const actionsLabel = getAriaLabel(actionsLabelText);
   const substepsLabel = getAriaLabel(substepsLabelText);
   const descriptionLabel = getAriaLabel(descriptionLabelText);
+  const descriptionHeadingID = uniqueId('heading-');
 
   let linkLabel;
   if (step.completed && !step.steps) {
@@ -87,9 +89,15 @@ export const Step = ({ step, ...props }: StepProps) => {
   return (
     <li className={className}>
       <div className={contentClassName}>
-        <Heading className="ds-c-step__heading">{step.heading || step.title}</Heading>
+        <Heading id={descriptionHeadingID} className="ds-c-step__heading" {...descriptionLabel}>
+          {step.heading || step.title}
+        </Heading>
         {step.description && (
-          <div className="ds-c-step__description" role="region" {...descriptionLabel}>
+          <div
+            className="ds-c-step__description"
+            aria-labelledby={descriptionHeadingID}
+            role="region"
+          >
             {step.description}
           </div>
         )}
@@ -105,7 +113,7 @@ export const Step = ({ step, ...props }: StepProps) => {
           </ol>
         )}
       </div>
-      <div className="ds-c-step__actions" role="region" {...actionsLabel}>
+      <div className="ds-c-step__actions" {...actionsLabel} role="region">
         {step.completed && (
           <div className="ds-c-step__completed-text">
             <CheckIcon className="ds-c-icon-color--success" />
