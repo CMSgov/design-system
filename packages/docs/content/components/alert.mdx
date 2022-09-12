@@ -11,6 +11,8 @@ medicare:
   sketchLink: 1K9gg0y
 ---
 
+import { Badge } from '@cmsgov/design-system';
+
 ## Examples
 
 ### Informational (Default)
@@ -109,15 +111,13 @@ Explains concepts which may include math or maybe not.
 
 </ThemeContent>
 
-<ThemeContent onlyThemes={['healthcare', 'core']}>
-
 ### Lightweight
-
-</ThemeContent>
 
 <ThemeContent onlyThemes={['medicare']}>
 
-### Lightweight (Unused)
+<Badge variation="alert">
+<CloseIconThin /> Unused by Medicare.
+</Badge>
 
 </ThemeContent>
 
@@ -127,10 +127,14 @@ Used to show important but not as urgent messages as standard alerts.
 
 </ThemeContent>
 
+<ThemeContent neverThemes={['medicare']}>
+
 <StorybookExample
   componentName="lightweight alert"
   storyId="components-alert--light-weight"
 />
+
+</ThemeContent>
 
 ## Code
 
