@@ -68,7 +68,7 @@ export const TableOfContentsFeedback = ({ slug }: TableOfContentsFeedbackProps) 
       {typeof slug !== 'undefined' ? (
         <li>
           <a
-            href={`https://github.com/CMSgov/design-system/edit/master/packages/docs/content/${slug}.mdx`}
+            href={`https://github.com/CMSgov/design-system/edit/main/packages/docs/content/${slug}.mdx`}
           >
             Edit this page
           </a>
