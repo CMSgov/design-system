@@ -46,7 +46,8 @@ const lookupThemeValue = (theme: string, value: string): any => {
     <span>
       <span
         title={`hex value: ${value}`}
-        className={`ds-u-fill--${keyName} c-swatch__preview ds-u-margin-right--1 ds-u-radius--pill `}
+        className="c-swatch__preview ds-u-margin-right--1 ds-u-radius--pill"
+        style={{ backgroundColor: `var(--color-${keyName})` }}
       ></span>
       <code>$color-{keyName}</code>
     </span>
