@@ -91,7 +91,7 @@ In CMSDS v2, it will be changed to
 @import "~@cmsgov/design-system/dist/scss/index";
 ```
 
-Imports to `@cmsgov/design-system-layout` or `@cmsgov/design-system-support` are now included in the main `scss` entry point. If you would like to only import specific styles, see the `@cmsgov/design-system` [`README.md`](https://github.com/CMSgov/design-system/blob/master/packages/design-system/README.md#file-structure) for more info on our SASS architecture.
+Imports to `@cmsgov/design-system-layout` or `@cmsgov/design-system-support` are now included in the main `scss` entry point. If you would like to only import specific styles, see the `@cmsgov/design-system` [`README.md`](https://github.com/CMSgov/design-system/blob/main/packages/design-system/README.md#file-structure) for more info on our SASS architecture.
 
 See the [theming page](/getting-started/developers/theming/) for more specific information on overriding the default Sass variables or CSS declarations.
 
@@ -121,7 +121,7 @@ $image-path: "~@cmsgov/design-system/dist/images";
 
 ## A note on versioning
 
-When we decided to publish our new NPM packages for this release, we chose to start at `v2.0.0` even though our old NPM packages were at `v3.7.0`. The main reason for this is that our past v2 and v3 major releases didn't introduce breaking changes to our design system according to our [SemVer guidelines](https://github.com/CMSgov/design-system/blob/master/guides/RELEASE-PROCESS.md#versioning). These releases were also not aligned with our product communication and marketing, and were limited to developer usage.
+When we decided to publish our new NPM packages for this release, we chose to start at `v2.0.0` even though our old NPM packages were at `v3.7.0`. The main reason for this is that our past v2 and v3 major releases didn't introduce breaking changes to our design system according to our [SemVer guidelines](https://github.com/CMSgov/design-system/blob/main/guides/RELEASE-PROCESS.md#versioning). These releases were also not aligned with our product communication and marketing, and were limited to developer usage.
 
 With this major release, we are correcting past inconsistencies and unifying our versioning across NPM packages, our Sketch library, and product communication. Because we still have the same Github repo and release notes, we will be adopting a new naming convention for our release tags going forward; the version number will be prefixed with `core-` (i.e. `core-2.0.0`).
 

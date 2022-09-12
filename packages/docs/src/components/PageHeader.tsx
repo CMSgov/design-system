@@ -33,7 +33,7 @@ const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => 
           </Badge>
         )}
         {ghPath && (
-          <a href={makeGithubUrl(`tree/master/packages/${ghPath}`)} className="c-page-header__link">
+          <a href={makeGithubUrl(`tree/main/packages/${ghPath}`)} className="c-page-header__link">
             <GithubIcon />
             Github
           </a>
