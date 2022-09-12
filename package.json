@@ -40,7 +40,7 @@
     "test:a11y:medicare": "yarn jest --config=tests/a11y/jest.config.js medicare",
     "test:unit": "yarn jest --config=tests/unit/jest.config.js",
     "type-check": "yarn tsc --noEmit",
-    "update-snapshots": "yarn cmsds test ./packages --updateSnapshot"
+    "update-snapshots": "yarn jest --config=tests/unit/jest.config.js --updateSnapshot"
   },
   "husky": {
     "hooks": {
