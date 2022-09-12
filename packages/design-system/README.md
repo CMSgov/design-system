@@ -31,13 +31,13 @@ or import the transpiled CSS:
 
 ## Examples
 
-Examples of the design system in use can be found in the [`examples` directory](https://github.com/CMSgov/design-system/tree/master/examples) on GitHub.
+Examples of the design system in use can be found in the [`examples` directory](https://github.com/CMSgov/design-system/tree/main/examples) on GitHub.
 
 ## Bugs and contributions
 
 Please [submit an issue on GitHub](https://github.com/CMSgov/design-system) for any bugs or feature requests.
 
-You can also read our [CONTRIBUTING.md](https://github.com/CMSgov/design-system/blob/master/CONTRIBUTING.md) document to learn about setting up a local development environment, contributing to the design system, and our coding guidelines.
+You can also read our [CONTRIBUTING.md](https://github.com/CMSgov/design-system/blob/main/CONTRIBUTING.md) document to learn about setting up a local development environment, contributing to the design system, and our coding guidelines.
 
 ## File Structure
 
