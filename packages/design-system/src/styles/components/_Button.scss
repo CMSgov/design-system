@@ -21,6 +21,7 @@
 
     &:focus {
       background-color: var(--backgroundColor, $button__background-color);
+      color: var(--color, $button__color);
       text-decoration: none;
     }
 
