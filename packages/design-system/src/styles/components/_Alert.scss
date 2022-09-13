@@ -10,7 +10,7 @@
   padding: $alert__padding;
   position: relative;
 
-  a,
+  a:not(.ds-c-button),
   .ds-c-link {
     color: $alert-link__font-color;
 
