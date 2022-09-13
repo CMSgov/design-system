@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StepList renders list of steps 1`] = `
+<ol
+  class="ds-c-step-list"
+>
+  <li
+    class="ds-c-step"
+  >
+    <div
+      class="ds-c-step__content ds-c-step__content--with-content"
+    >
+      <h2
+        aria-label="Description for Do something!"
+        class="ds-c-step__heading"
+        id="heading-1"
+      >
+        Do something!
+      </h2>
+      <div
+        aria-labelledby="heading-1"
+        class="ds-c-step__description"
+        role="region"
+      >
+        Do something really cool!
+      </div>
+    </div>
+    <div
+      aria-label="Primary actions for Do something!"
+      class="ds-c-step__actions"
+      role="region"
+    />
+  </li>
+  <li
+    class="ds-c-step"
+  >
+    <div
+      class="ds-c-step__content ds-c-step__content--with-content"
+    >
+      <h2
+        aria-label="Description for Do something!"
+        class="ds-c-step__heading"
+        id="heading-2"
+      >
+        Do something!
+      </h2>
+      <div
+        aria-labelledby="heading-2"
+        class="ds-c-step__description"
+        role="region"
+      >
+        Do something really cool!
+      </div>
+    </div>
+    <div
+      aria-label="Primary actions for Do something!"
+      class="ds-c-step__actions"
+      role="region"
+    />
+  </li>
+  <li
+    class="ds-c-step"
+  >
+    <div
+      class="ds-c-step__content ds-c-step__content--with-content"
+    >
+      <h2
+        aria-label="Description for Do something!"
+        class="ds-c-step__heading"
+        id="heading-3"
+      >
+        Do something!
+      </h2>
+      <div
+        aria-labelledby="heading-3"
+        class="ds-c-step__description"
+        role="region"
+      >
+        Do something really cool!
+      </div>
+    </div>
+    <div
+      aria-label="Primary actions for Do something!"
+      class="ds-c-step__actions"
+      role="region"
+    />
+  </li>
+</ol>
+`;
