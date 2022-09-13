@@ -58,6 +58,7 @@ describe('Step', () => {
     const title = wrapper.find('.ds-c-step__heading');
     expect(title.length).toEqual(1);
     expect(title.text()).toEqual(defaultStep.heading);
+    expect(title.props()['aria-label']).toEqual('!Description for Do something!');
 
     const description = wrapper.find('.ds-c-step__description');
     expect(description.length).toEqual(1);
@@ -181,8 +182,10 @@ describe('Step', () => {
     });
 
     const description = wrapper.find('.ds-c-step__description');
+    const heading = wrapper.find('.ds-c-step__heading');
+    const headingID = heading.props()['id'];
     expect(description.length).toEqual(1);
-    expect(description.props()['aria-label']).toEqual('!Description for Do something!');
+    expect(description.props()['aria-labelledby']).toEqual(headingID);
 
     const actions = wrapper.find('.ds-c-step__actions');
     expect(actions.length).toEqual(1);
