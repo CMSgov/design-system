@@ -1,31 +1,27 @@
 import { defaultStep, generateStep } from './__mocks__/generateStep';
 import React from 'react';
 import SubStep from './SubStep';
-import { shallow } from 'enzyme';
+import { render, screen, fireEvent } from '@testing-library/react';
 
 describe('SubStep', () => {
   function testEditLink(step) {
     const spy = jest.fn();
-    const wrapper = shallow(<SubStep step={step} onStepLinkClick={spy} editText="Edit" />);
+    render(<SubStep step={step} onStepLinkClick={spy} editText="Edit" />);
 
-    const editLink = wrapper.find('StepLink');
+    const editLink = screen.queryAllByRole('link');
     expect(editLink.length).toEqual(1);
-    expect(editLink.props()).toMatchObject({
-      href: defaultStep.href,
-      screenReaderText: defaultStep.heading,
-    });
-    editLink.props().onClick();
+    expect(editLink[0]).toHaveTextContent(defaultStep.heading);
+    expect(editLink[0]).toHaveAttribute('href', defaultStep.href);
+
+    fireEvent.click(editLink[0]);
     expect(spy).toHaveBeenCalled();
   }
 
   it('renders a basic incomplete substep', () => {
-    const wrapper = shallow(
-      <SubStep step={generateStep()} onStepLinkClick={jest.fn()} editText="Edit" />
-    );
-    const title = wrapper.find('.ds-c-substep__heading');
+    render(<SubStep step={generateStep()} onStepLinkClick={jest.fn()} editText="Edit" />);
+    const title = screen.getAllByText('Do something!');
     expect(title.length).toEqual(1);
-    expect(title.text()).toEqual(defaultStep.heading);
-    expect(wrapper.find('StepLink').length).toEqual(0);
+    expect(screen.queryAllByRole('link').length).toEqual(0);
   });
 
   it('renders edit link when substep is started', () => {
@@ -40,47 +36,52 @@ describe('SubStep', () => {
     const onClick = jest.fn();
     const onStepLinkClick = jest.fn();
     const step = generateStep({ completed: true, onClick });
-    const wrapper = shallow(
-      <SubStep step={step} onStepLinkClick={onStepLinkClick} editText="Edit" />
-    );
+    render(<SubStep step={step} onStepLinkClick={onStepLinkClick} editText="Edit" />);
 
-    const editLink = wrapper.find('StepLink');
+    const editLink = screen.queryAllByRole('link');
     expect(editLink.length).toEqual(1);
-    editLink.props().onClick();
+    fireEvent.click(editLink[0]);
     expect(onClick).toHaveBeenCalled();
     expect(onStepLinkClick).not.toHaveBeenCalled();
   });
 
   it('renders a substep with substeps', () => {
-    const step = generateStep({
-      steps: [generateStep({ heading: 'subsubstep1' }), generateStep({ heading: 'subsubstep2' })],
+    const steplist = {
+      steps: [
+        generateStep({ heading: 'subsubstep1', id: 's_1' }),
+        generateStep({ heading: 'subsubstep2', id: 's_2' }),
+      ],
+    };
+    const step = generateStep(steplist);
+    const onStepLinkClick = jest.fn(() => {
+      return 1;
     });
-    const onStepLinkClick = jest.fn();
-    const wrapper = shallow(
+    render(
       <SubStep step={step} onStepLinkClick={onStepLinkClick} showSubSubSteps editText="Edit" />
     );
 
-    const title = wrapper.find('.ds-c-substep__heading');
-    expect(title.length).toEqual(1);
-    expect(title.text()).toEqual(defaultStep.heading);
+    const renderedList = screen.getAllByRole('list');
+    expect(renderedList.length).toEqual(1);
 
-    const subs = wrapper.find(SubStep);
-    expect(subs.length).toEqual(2);
-    expect(subs.at(1).props()).toMatchObject({
-      step: step.steps[1],
-      onStepLinkClick: onStepLinkClick,
+    const titles = screen.getAllByText(/substep\d/);
+    expect(titles.length).toEqual(2);
+
+    titles.forEach((s, i) => {
+      expect(s).toHaveTextContent(steplist.steps[i].heading);
+      expect(s).toHaveClass('ds-c-substep__heading');
     });
-    subs.at(1).props().onStepLinkClick();
-    expect(onStepLinkClick).toHaveBeenCalled();
+
+    const links = screen.queryAllByRole('link');
+    expect(links.length).toEqual(0);
   });
 
   it('does not render a substep with substeps when showSubSubSteps is false', () => {
     const step = generateStep({
       steps: [generateStep({ heading: 'subsubstep1' }), generateStep({ heading: 'subsubstep2' })],
     });
-    const wrapper = shallow(<SubStep step={step} showSubSubSteps={false} editText="Edit" />);
+    render(<SubStep step={step} showSubSubSteps={false} editText="Edit" />);
 
-    const subs = wrapper.find(SubStep);
-    expect(subs.length).toEqual(0);
+    const subs = screen.queryAllByRole('listitem');
+    expect(subs.length).toEqual(1);
   });
 });
