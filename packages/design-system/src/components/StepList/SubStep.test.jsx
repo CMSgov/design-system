@@ -53,9 +53,7 @@ describe('SubStep', () => {
       ],
     };
     const step = generateStep(steplist);
-    const onStepLinkClick = jest.fn(() => {
-      return 1;
-    });
+    const onStepLinkClick = jest.fn();
     render(
       <SubStep step={step} onStepLinkClick={onStepLinkClick} showSubSubSteps editText="Edit" />
     );
