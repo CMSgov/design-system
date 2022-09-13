@@ -41,10 +41,21 @@ function printViolations(violations) {
   violations.forEach(printViolation);
 }
 
-module.exports = function assertNoAxeViolations(url, disabledRules = []) {
+module.exports = function assertNoAxeViolations({
+  url = '',
+  disabledRules = [],
+  delay = 0,
+  title = 'No Title',
+} = {}) {
   if (url) {
     return driver
       .get(url)
+      .then(() => {
+        if (delay > 0)
+          return new Promise((resolve) => {
+            setTimeout(resolve, delay);
+          });
+      })
       .then(() => {
         const defaultDisabledRules = ['bypass'];
         return new AxeBuilder(driver)
@@ -52,6 +63,8 @@ module.exports = function assertNoAxeViolations(url, disabledRules = []) {
           .disableRules(defaultDisabledRules.concat(disabledRules))
           .analyze((err, results) => {
             if (results && results.violations.length >= 1) {
+              log(chalk.yellow(`-- title: ${title}`));
+              log(chalk.red(`-- url: ${url}`));
               printViolations(results.violations);
             }
             if (err) {
