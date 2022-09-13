@@ -61,6 +61,7 @@ export interface UseFormLabelProps extends FormFieldProps {
 
 /**
  * Takes a component's props and generates the props for its label, field,
+ * wrapper element, and possible detached "bottom error"
  */
 export function useFormLabel<T extends UseFormLabelProps>(props: T) {
   // TODO: Once we're on React 18, we can use the `useId` hook
