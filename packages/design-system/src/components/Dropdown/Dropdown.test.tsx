@@ -1,4 +1,4 @@
-import { mount, shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import Dropdown from './Dropdown';
 import React from 'react';
 
@@ -17,19 +17,17 @@ export function generateOptions(count: number): { value: string; label: string }
   return options;
 }
 
-function render(customProps = {}, optionsCount = 1, deep = false) {
+function makeDropdown(customProps = {}, optionsCount = 1) {
   const props = { ...defaultProps, ...customProps };
   const component = <Dropdown {...props} options={generateOptions(optionsCount)} />;
 
-  return {
-    props: props,
-    wrapper: deep ? mount(component) : shallow(component),
-  };
+  return render(component);
 }
 
 describe('Dropdown', () => {
   it('renders', () => {
-    const data = render({ value: '1', label: '', ariaLabel: 'test aria label' });
-    expect(data.wrapper).toMatchSnapshot();
+    const { container } = makeDropdown({ value: '1', label: '', ariaLabel: 'test aria label' });
+
+    expect(container.firstChild).toMatchSnapshot();
   });
 });
