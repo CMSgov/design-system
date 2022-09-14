@@ -42,7 +42,7 @@ FilledSpinner.args = {
   filled: true,
 };
 FilledSpinner.parameters = {
-  backgrounds: { default: process.env.STORYBOOK_DS === 'medicare' ? 'Mgov dark' : 'Hcgov dark' },
+  baseInverse: true,
 };
 
 export const InverseFilledSpinner = Template.bind({});
