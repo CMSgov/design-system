@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Autocomplete renders a snapshot 1`] = `
+exports[`Autocomplete renders Autocomplete component 1`] = `
 <div
   class="ds-u-clearfix ds-c-autocomplete"
 >
@@ -9,8 +9,8 @@ exports[`Autocomplete renders a snapshot 1`] = `
   >
     <label
       class="ds-c-label"
-      for="autocomplete_60"
-      id="autocomplete_label_61"
+      for="autocomplete_1"
+      id="autocomplete_label_2"
     >
       <span
         class=""
@@ -20,12 +20,12 @@ exports[`Autocomplete renders a snapshot 1`] = `
     </label>
     <input
       aria-autocomplete="list"
-      aria-controls="autocomplete_owned_listbox_62"
+      aria-controls="autocomplete_owned_listbox_3"
       aria-expanded="false"
       aria-invalid="false"
       autocomplete="off"
       class="ds-c-field"
-      id="autocomplete_60"
+      id="autocomplete_1"
       name="autocomplete_field"
       role="combobox"
       type="text"
@@ -42,25 +42,81 @@ exports[`Autocomplete renders a snapshot 1`] = `
 </div>
 `;
 
-exports[`Autocomplete renders item with custom className 1`] = `"ds-c-autocomplete__list-item"`;
+exports[`Autocomplete renders a snapshot 1`] = `
+<div>
+  <div
+    class="ds-u-clearfix ds-c-autocomplete"
+  >
+    <div
+      class="ds-u-clearfix"
+    >
+      <label
+        class="ds-c-label"
+        for="autocomplete_55"
+        id="autocomplete_label_56"
+      >
+        <span
+          class=""
+        >
+          autocomplete
+        </span>
+      </label>
+      <input
+        aria-autocomplete="list"
+        aria-controls="autocomplete_owned_listbox_57"
+        aria-expanded="false"
+        aria-invalid="false"
+        autocomplete="off"
+        class="ds-c-field"
+        id="autocomplete_55"
+        name="autocomplete_field"
+        role="combobox"
+        type="text"
+        value=""
+      />
+    </div>
+    <button
+      aria-label="Clear search to try again"
+      class="ds-c-button ds-c-button--small ds-c-button--ghost ds-u-padding-right--0 ds-c-autocomplete__clear-btn"
+      type="button"
+    >
+      Clear search
+    </button>
+  </div>
+</div>
+`;
 
-exports[`Autocomplete renders item with custom className 2`] = `"custom-class ds-c-autocomplete__list-item"`;
+exports[`Autocomplete renders item with custom className 1`] = `
+Array [
+  <li
+    aria-selected="false"
+    class="ds-c-autocomplete__list-item"
+    id="downshift-3-item-0"
+    role="option"
+  >
+    Normal item
+  </li>,
+  <li
+    aria-selected="false"
+    class="custom-class ds-c-autocomplete__list-item"
+    id="downshift-3-item-1"
+    role="option"
+  >
+    Special item
+  </li>,
+]
+`;
 
 exports[`Autocomplete renders items with children property 1`] = `
 <ul
-  aria-labelledby={null}
-  className="ds-c-list--bare"
-  id="autocomplete_owned_listbox_14"
+  class="ds-c-list--bare"
+  id="autocomplete_owned_listbox_15"
   role="listbox"
 >
   <li
-    aria-selected={false}
-    className="ds-c-autocomplete__list-item"
-    id="downshift-1-item-0"
-    key="1"
-    onClick={[Function]}
-    onMouseDown={[Function]}
-    onMouseMove={[Function]}
+    aria-selected="false"
+    class="ds-c-autocomplete__list-item"
+    id="downshift-2-item-0"
     role="option"
   >
     Carrots 
@@ -69,13 +125,9 @@ exports[`Autocomplete renders items with children property 1`] = `
     </strong>
   </li>
   <li
-    aria-selected={false}
-    className="ds-c-autocomplete__list-item"
-    id="downshift-1-item-1"
-    key="2"
-    onClick={[Function]}
-    onMouseDown={[Function]}
-    onMouseMove={[Function]}
+    aria-selected="false"
+    class="ds-c-autocomplete__list-item"
+    id="downshift-2-item-1"
     role="option"
   >
     Cookies 
@@ -84,13 +136,9 @@ exports[`Autocomplete renders items with children property 1`] = `
     </strong>
   </li>
   <li
-    aria-selected={false}
-    className="ds-c-autocomplete__list-item"
-    id="downshift-1-item-2"
-    key="3"
-    onClick={[Function]}
-    onMouseDown={[Function]}
-    onMouseMove={[Function]}
+    aria-selected="false"
+    class="ds-c-autocomplete__list-item"
+    id="downshift-2-item-2"
     role="option"
   >
     Crackers 
@@ -99,13 +147,9 @@ exports[`Autocomplete renders items with children property 1`] = `
     </strong>
   </li>
   <li
-    aria-selected={false}
-    className="ds-c-autocomplete__list-item"
-    id="downshift-1-item-3"
-    key="4"
-    onClick={[Function]}
-    onMouseDown={[Function]}
-    onMouseMove={[Function]}
+    aria-selected="false"
+    class="ds-c-autocomplete__list-item"
+    id="downshift-2-item-3"
     role="option"
   >
     <a
