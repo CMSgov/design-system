@@ -25,8 +25,13 @@ function makeDropdown(customProps = {}, optionsCount = 1) {
 }
 
 describe('Dropdown', () => {
-  it('renders', () => {
-    const { container } = makeDropdown({ value: '1', label: '', ariaLabel: 'test aria label' });
+  it('dropdown matches snapshot', () => {
+    const { container } = makeDropdown({
+      value: '1',
+      label: '',
+      ariaLabel: 'test aria label',
+      readOnly: true,
+    });
 
     expect(container.firstChild).toMatchSnapshot();
   });

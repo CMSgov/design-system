@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Dropdown renders 1`] = `
+exports[`Dropdown dropdown matches snapshot 1`] = `
 <div
   class=""
 >
@@ -21,6 +21,7 @@ exports[`Dropdown renders 1`] = `
     class="ds-c-field"
     id="field_1"
     name="dropdown"
+    readonly=""
   >
     <option
       value="1"
