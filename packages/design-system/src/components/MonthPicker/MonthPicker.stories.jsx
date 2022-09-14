@@ -65,7 +65,7 @@ InverseMonthPicker.args = {
   inversed: true,
 };
 InverseMonthPicker.parameters = {
-  backgrounds: { default: process.env.STORYBOOK_DS === 'medicare' ? 'Mgov dark' : 'Hcgov dark' },
+  baseInverse: true,
 };
 
 export const InverseSelectedMonthPicker = Template.bind({});
@@ -77,7 +77,7 @@ InverseSelectedMonthPicker.args = {
   selectedMonths: [1, 2, 3, 4, 5, 6],
 };
 InverseSelectedMonthPicker.parameters = {
-  backgrounds: { default: process.env.STORYBOOK_DS === 'medicare' ? 'Mgov dark' : 'Hcgov dark' },
+  baseInverse: true,
 };
 
 export const InverseDisabledMonthPicker = Template.bind({});
@@ -88,5 +88,5 @@ InverseDisabledMonthPicker.args = {
   disabledMonths: [7, 8, 9, 10, 11, 12],
 };
 InverseDisabledMonthPicker.parameters = {
-  backgrounds: { default: process.env.STORYBOOK_DS === 'medicare' ? 'Mgov dark' : 'Hcgov dark' },
+  baseInverse: true,
 };

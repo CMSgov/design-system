@@ -42,7 +42,7 @@ OnDark.args = {
   onDark: true,
 };
 OnDark.parameters = {
-  backgrounds: { default: process.env.STORYBOOK_DS === 'medicare' ? 'Mgov dark' : 'Hcgov dark' },
+  baseInverse: true,
 };
 
 export const IconButton = Template.bind({});
@@ -84,7 +84,7 @@ export const VariationsOnDark = () => (
   </>
 );
 VariationsOnDark.parameters = {
-  backgrounds: { default: process.env.STORYBOOK_DS === 'medicare' ? 'Mgov dark' : 'Hcgov dark' },
+  baseInverse: true,
 };
 VariationsOnDark.decorators = [
   (Story) => (

@@ -57,5 +57,5 @@ InvertedMultiInputDateField.args = {
   inversed: true,
 };
 InvertedMultiInputDateField.parameters = {
-  backgrounds: { default: process.env.STORYBOOK_DS === 'medicare' ? 'Mgov dark' : 'Hcgov dark' },
+  baseInverse: true,
 };
