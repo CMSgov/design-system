@@ -22,6 +22,10 @@ function makeSelect(customProps = {}, optionsCount = 1) {
 }
 
 describe('Select', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('renders a select menu', () => {
     makeSelect({ value: '1', label: '', ariaLabel: 'test aria label' });
 
@@ -121,25 +125,20 @@ describe('Select', () => {
     expect(select).not.toHaveAttribute('disabled');
   });
 
-  describe('onChange and onBlur event handlers called appropriately', () => {
+  it('calls the onChange handler', () => {
     makeSelect({ defaultValue: '1' }, 10);
     const select = screen.getByRole('combobox');
+    userEvent.selectOptions(select, screen.getByRole('option', { name: '2' }));
+    expect(defaultProps.onBlur).not.toHaveBeenCalled();
+    expect(defaultProps.onChange).toHaveBeenCalled();
+  });
 
-    beforeEach(() => {
-      jest.clearAllMocks();
-    });
-
-    it('calls the onChange handler', () => {
-      select.focus();
-      userEvent.keyboard('{Space}');
-      expect(defaultProps.onBlur).not.toHaveBeenCalled();
-      expect(defaultProps.onChange).toHaveBeenCalled();
-    });
-
-    it('calls the onBlur handler', () => {
-      userEvent.hover(select);
-      expect(defaultProps.onBlur).toHaveBeenCalled();
-      expect(defaultProps.onChange).not.toHaveBeenCalled();
-    });
+  it('calls the onBlur handler', () => {
+    makeSelect({ defaultValue: '1' }, 10);
+    const select = screen.getByRole('combobox');
+    userEvent.click(select);
+    userEvent.tab();
+    expect(defaultProps.onBlur).toHaveBeenCalled();
+    expect(defaultProps.onChange).not.toHaveBeenCalled();
   });
 });
