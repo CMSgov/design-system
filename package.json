@@ -36,6 +36,7 @@
     "test:a11y:medicare": "yarn jest --config=tests/a11y/jest.config.js medicare",
     "test:unit": "yarn jest --config=tests/unit/jest.config.js",
     "test:browser": "yarn playwright test --config tests/browser/playwright.config.ts",
+    "test:browser:docker": "docker run --rm --network host -v $(pwd):/work/ -w /work/ --env USE_STATIC_STORYBOOK=true mcr.microsoft.com/playwright:v1.25.0-focal yarn test:browser",
     "type-check": "yarn tsc --noEmit",
     "update-snapshots": "yarn jest --config=tests/unit/jest.config.js --updateSnapshot"
   },
@@ -105,6 +106,7 @@
     "eslint-plugin-storybook": "^0.5.7",
     "eslint-plugin-testing-library": "^5.6.0",
     "gh-pages": "^3.2.3",
+    "http-server": "^14.1.1",
     "husky": "^7.0.0",
     "jest": "^27.5.1",
     "lerna": "^3.20.0",

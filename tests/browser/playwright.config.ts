@@ -1,11 +1,8 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
 import { devices } from '@playwright/test';
 
-/**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
- */
-// require('dotenv').config();
+const useStaticStorybook =
+  process.env.USE_STATIC_STORYBOOK && JSON.parse(process.env.USE_STATIC_STORYBOOK);
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -99,12 +96,9 @@ const config: PlaywrightTestConfig = {
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'yarn storybook',
-    // port: 6006,
-    url: 'http://localhost:6006/',
-    // command: 'npx http-server storybook-static',
-    // // port: 8080,
-    // url: 'http://localhost:8080/',
+    command: useStaticStorybook ? 'yarn http-server -p 6006 storybook-static' : 'yarn storybook',
+    port: 6006,
+    cwd: '../../',
   },
 };
 
