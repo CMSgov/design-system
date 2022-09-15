@@ -4,6 +4,9 @@ import { Footer } from '../Footer';
 
 export default {
   title: 'Patterns/One column page layout',
+  parameters: {
+    layout: 'fullscreen',
+  },
 };
 
 export const OneColumnPageLayout = () => {
