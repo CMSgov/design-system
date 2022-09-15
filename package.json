@@ -35,6 +35,7 @@
     "test:a11y:healthcare": "yarn jest --config=tests/a11y/jest.config.js healthcare",
     "test:a11y:medicare": "yarn jest --config=tests/a11y/jest.config.js medicare",
     "test:unit": "yarn jest --config=tests/unit/jest.config.js",
+    "test:browser": "yarn playwright test --config tests/browser/playwright.config.ts",
     "type-check": "yarn tsc --noEmit",
     "update-snapshots": "yarn jest --config=tests/unit/jest.config.js --updateSnapshot"
   },
@@ -72,6 +73,7 @@
     "@babel/preset-react": "^7.8.3",
     "@babel/preset-typescript": "^7.12.7",
     "@babel/register": "^7.8.4",
+    "@playwright/test": "^1.25.1",
     "@storybook/addon-actions": "^6.4.9",
     "@storybook/addon-essentials": "^6.4.9",
     "@storybook/addon-links": "^6.4.9",
