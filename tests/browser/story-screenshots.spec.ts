@@ -15,8 +15,13 @@ Object.values(stories).forEach((story) => {
     const storyUrl = `http://localhost:6006/iframe.html?viewMode=story&id=${story.id}`;
 
     themes.forEach((theme) => {
+      if (theme !== 'healthcare' && story.importPath.includes('ds-healthcare-gov')) return;
+      if (theme !== 'medicare' && story.importPath.includes('ds-medicare-gov')) return;
+
       test(`with ${theme} theme`, async ({ page }) => {
         await page.goto(`${storyUrl}&globals=theme:${theme}`);
+        // await expect(page).toHaveScreenshot(`${story.id}-${theme}.png`);
+        await expect(page).toHaveScreenshot();
       });
     });
   });
