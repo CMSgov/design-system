@@ -1,4 +1,4 @@
-import { mount, shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import InlineError from './InlineError';
 import React from 'react';
 
@@ -8,28 +8,27 @@ const defaultProps = {
   inversed: false,
 };
 
-function render(customProps = {}, deep = false) {
+function makeInlineError(customProps = {}) {
   const props = { ...defaultProps, ...customProps };
   const component = <InlineError {...props} />;
 
-  return {
-    props,
-    wrapper: deep ? mount(component) : shallow(component),
-  };
+  return render(component);
 }
 
 describe('InlineError', function () {
   it('renders inline error', () => {
-    const data = render({});
+    makeInlineError();
 
-    expect(data.wrapper.hasClass('ds-c-field__error-message')).toBe(true);
-    expect(data.wrapper).toMatchSnapshot();
+    const error = screen.getByRole('alert');
+    expect(error).toHaveClass('ds-c-field__error-message');
+    expect(error).toMatchSnapshot();
   });
 
   it('renders inverse error', () => {
-    const data = render({ inversed: true });
+    makeInlineError({ inversed: true });
 
-    expect(data.wrapper.hasClass('ds-c-field__error-message--inverse')).toBe(true);
-    expect(data.wrapper).toMatchSnapshot();
+    const error = screen.getByRole('alert');
+    expect(error).toHaveClass('ds-c-field__error-message--inverse');
+    expect(error).toMatchSnapshot();
   });
 });
