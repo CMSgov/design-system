@@ -10,10 +10,8 @@ import { setHeaderSendsAnalytics } from '../packages/ds-healthcare-gov/src/compo
 import { setLanguage } from '../packages/design-system/src/components/i18n';
 import { setLanguage as setLanguageFromPackage } from '@cmsgov/design-system';
 
+// Rewire analytics events to log to the console
 window.utag = { link: console.log };
-// used to set up automatic setting of theme based on STORYBOOK_DS variable
-const currentEnvironment =
-  process.env.STORYBOOK_DS !== 'undefined' ? process.env.STORYBOOK_DS : 'core';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -54,7 +52,7 @@ export const globalTypes = {
   theme: {
     name: 'Theme',
     description: 'Current theme',
-    defaultValue: currentEnvironment,
+    defaultValue: 'core',
     toolbar: {
       icon: 'paintbrush',
       items: [
