@@ -49,7 +49,7 @@ These scripts can all be run from the root level of the repo:
   - Compile/transpile/uglify everything and makes things release-ready.
   - `yarn build:healthcare` to build the Healthcare.gov Design System
   - `yarn build:medicare` to build the Medicare.gov Design System
-- `yarn build-storybook:gatsby && yarn build:docs`
+- `yarn build:storybook:docs && yarn build:docs`
   - Builds the docs site statically
 - `yarn storybook`
   - Starts storybook for easier local development for the core package
