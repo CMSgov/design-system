@@ -1,9 +1,6 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
 import { devices } from '@playwright/test';
 
-const useStaticStorybook =
-  process.env.USE_STATIC_STORYBOOK && JSON.parse(process.env.USE_STATIC_STORYBOOK);
-
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
@@ -96,7 +93,7 @@ const config: PlaywrightTestConfig = {
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: useStaticStorybook ? 'yarn http-server -p 6006 storybook-static' : 'yarn storybook',
+    command: 'yarn http-server -p 6006 storybook-static',
     port: 6006,
     cwd: '../../',
   },
