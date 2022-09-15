@@ -1,10 +1,10 @@
 import React from 'react';
 import StepLink from './StepLink';
-import { shallow } from 'enzyme';
+import { render, screen, fireEvent } from '@testing-library/react';
 
 describe('StepLink', () => {
   it('renders the step link', () => {
-    const wrapper = shallow(
+    render(
       <StepLink
         href="hello.html"
         stepId="123"
@@ -15,28 +15,27 @@ describe('StepLink', () => {
       </StepLink>
     );
 
-    const link = wrapper.find('a');
+    const link = screen.getAllByRole('link');
     expect(link.length).toEqual(1);
-    expect(link.hasClass('ds-test')).toBe(true);
-    expect(link.text()).toContain('Hello World');
+    expect(link[0]).toHaveClass('ds-test');
+    expect(link[0]).toHaveTextContent('Hello World');
 
-    const sr = link.find('.ds-u-visibility--screen-reader');
-    expect(sr.length).toEqual(1);
-    expect(sr.text()).toEqual(' Hello Screen Reader');
+    const sr = screen.getByText(/Hello Screen Reader/i);
+    expect(sr).toHaveClass('ds-u-visibility--screen-reader');
   });
 
   it('props.onClick is called with correct parameters', () => {
     const onClick = jest.fn();
-    const wrapper = shallow(
+    render(
       <StepLink href="hello.html" stepId="123" onClick={onClick}>
         Hello World
       </StepLink>
     );
 
-    const link = wrapper.find('a');
+    const link = screen.getAllByRole('link');
     expect(link.length).toEqual(1);
 
-    link.simulate('click', { preventDefault: () => {} });
+    fireEvent.click(link[0]);
     expect(onClick).toHaveBeenCalledWith('hello.html', '123');
   });
 });

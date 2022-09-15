@@ -24,14 +24,6 @@ export const parameters = {
       date: /Date$/,
     },
   },
-  backgrounds: {
-    default: 'light',
-    values: [
-      { name: 'light', value: '#fff' },
-      { name: 'Hcgov dark', value: '#112e51' },
-      { name: 'Mgov dark', value: '#146a5d' },
-    ],
-  },
 };
 
 export const globalTypes = {
@@ -74,6 +66,17 @@ export const globalTypes = {
   },
 };
 
+const baseClassDecorator = (Story, context) => {
+  document.body.classList.add('ds-base');
+  if (context.parameters.baseInverse) {
+    document.body.classList.add('ds-base--inverse');
+  } else {
+    document.body.classList.remove('ds-base--inverse');
+  }
+
+  return <Story {...context} />;
+};
+
 const themeSettingDecorator = (Story, context) => {
   const { theme } = context.globals;
   document.documentElement.setAttribute('data-theme', theme);
@@ -110,6 +113,7 @@ const analyticsSettingsDecorator = (Story, context) => {
 };
 
 export const decorators = [
+  baseClassDecorator,
   languageSettingDecorator,
   analyticsSettingsDecorator,
   themeSettingDecorator,
