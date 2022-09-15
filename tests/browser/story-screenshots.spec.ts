@@ -20,8 +20,7 @@ Object.values(stories).forEach((story) => {
 
       test(`with ${theme} theme`, async ({ page }) => {
         await page.goto(`${storyUrl}&globals=theme:${theme}`);
-        // await expect(page).toHaveScreenshot(`${story.id}-${theme}.png`);
-        await expect(page).toHaveScreenshot();
+        await expect(page).toHaveScreenshot(`${story.id}-${theme}.png`);
       });
     });
   });
