@@ -1,7 +1,6 @@
 import FormControl from './FormControl';
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { render, screen } from '@testing-library/react';
 
 const defaultProps = {
   label: 'Foo',
