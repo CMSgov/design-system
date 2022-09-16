@@ -1,5 +1,9 @@
 import { useEffect, useRef } from 'react';
 
+/**
+ * Returns a ref and will focus on the element that ref is attached to
+ * if the `autoFocus` boolean parameter is truthy.
+ */
 export default function useAutofocus(autoFocus?: boolean) {
   const ref = useRef<HTMLElement>();
 

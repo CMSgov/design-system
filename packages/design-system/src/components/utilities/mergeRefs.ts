@@ -1,6 +1,8 @@
 import React from 'react';
 
 /**
+ * Combines multiple refs into one, even old-style ref functions
+ *
  * Borrowed from https://github.com/gregberge/react-merge-refs/blob/main/src/index.tsx
  */
 export default function mergeRefs<T = any>(
