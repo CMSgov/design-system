@@ -17,6 +17,11 @@ export default function useAlertAnalytics({
         return;
       }
 
+      // Do not send analytics event for default alerts
+      if (!variation) {
+        return;
+      }
+
       // This is complicated but allows us to match the old behavior exactly, where if heading or
       // children are strings, those strings will take priority over the content that we scrape
       // from the DOM.
