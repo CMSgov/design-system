@@ -1,38 +1,34 @@
 import { EventCategory, sendLinkEvent, useAnalyticsContent } from '../analytics';
 import { HelpDrawerProps } from './HelpDrawer';
-import { useCallback } from 'react';
 import { helpDrawerSendsAnalytics } from '../flags';
 
 export default function useHelpDrawerAnalytics({
   analytics,
   analyticsLabelOverride,
 }: HelpDrawerProps) {
-  const sendHelpDrawerEvent = useCallback(
-    (
-      content: string | undefined,
-      eventAttributes: { event_name: string; ga_eventAction: string }
-    ) => {
-      if (!helpDrawerSendsAnalytics() || analytics === false) {
-        return;
-      }
+  function sendHelpDrawerEvent(
+    content: string | undefined,
+    eventAttributes: { event_name: string; ga_eventAction: string }
+  ) {
+    if (!helpDrawerSendsAnalytics() || analytics === false) {
+      return;
+    }
 
-      const eventHeadingText = analyticsLabelOverride ?? content;
+    const eventHeadingText = analyticsLabelOverride ?? content;
 
-      if (!eventHeadingText) {
-        console.error('No content found for Dialog analytics event');
-        return;
-      }
+    if (!eventHeadingText) {
+      console.error('No content found for Dialog analytics event');
+      return;
+    }
 
-      sendLinkEvent({
-        event_type: EventCategory.UI_INTERACTION,
-        ga_eventCategory: EventCategory.UI_COMPONENTS,
-        ga_eventLabel: eventHeadingText,
-        heading: eventHeadingText,
-        ...eventAttributes,
-      });
-    },
-    [analytics, analyticsLabelOverride]
-  );
+    sendLinkEvent({
+      event_type: EventCategory.UI_INTERACTION,
+      ga_eventCategory: EventCategory.UI_COMPONENTS,
+      ga_eventLabel: eventHeadingText,
+      heading: eventHeadingText,
+      ...eventAttributes,
+    });
+  }
 
   const [headingRef] = useAnalyticsContent({
     componentName: 'Dialog',
