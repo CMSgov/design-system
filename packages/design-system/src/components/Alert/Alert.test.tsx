@@ -123,6 +123,8 @@ describe('Alert', function () {
     const defaultEvent = {
       event_name: 'alert_impression',
       event_type: 'ui interaction',
+      ga_eventType: 'cmsds',
+      ga_eventValue: '',
       ga_eventCategory: 'ui components',
       ga_eventAction: 'alert impression',
       ga_eventLabel: defaultText,
@@ -143,13 +145,20 @@ describe('Alert', function () {
       jest.resetAllMocks();
     });
 
-    it('sends analytics event tracking', () => {
-      renderAlert({ variation: 'warn' });
+    it('sends analytics event with heading', () => {
+      const heading = 'Ahhh!';
+      renderAlert({ heading, variation: 'error' });
       expect(tealiumMock).toBeCalledWith({
-        ga_eventType: 'cmsds',
-        ga_eventValue: '',
         ...defaultEvent,
+        ga_eventLabel: heading,
+        heading,
+        type: 'error',
       });
+    });
+
+    it('sends analytics event with body-content fallback', () => {
+      renderAlert({ variation: 'warn' });
+      expect(tealiumMock).toBeCalledWith(defaultEvent);
     });
 
     it('disables analytics event tracking', () => {
