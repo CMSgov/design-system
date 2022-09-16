@@ -24,7 +24,7 @@ const Template = (args) => (
 
     <Alert {...args} className="ds-u-margin-top--3" />
 
-    <Alert {...args} className="ds-u-margin-top--3" heading="">
+    <Alert {...args} className="ds-u-margin-top--3" heading={undefined}>
       <p className="ds-c-alert__text">An alert without a heading. Lorem ipsum dolor sit.</p>
     </Alert>
   </>

@@ -31,7 +31,7 @@ export default function useAlertAnalytics({
       const rawPropsContentString =
         typeof rawPropsContent === 'string' ? rawPropsContent : undefined;
 
-      const eventHeadingText = analyticsLabelOverride ?? rawPropsContentString ?? content;
+      const eventHeadingText = analyticsLabelOverride ?? (rawPropsContentString || content);
       if (!eventHeadingText) {
         console.error('No content found for Dialog analytics event');
         return;
