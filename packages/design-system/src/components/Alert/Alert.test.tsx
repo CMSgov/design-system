@@ -154,19 +154,21 @@ describe('Alert', function () {
         heading,
         type: 'error',
       });
+      expect(tealiumMock).toHaveBeenCalledTimes(1);
     });
 
     it('sends analytics event with body-content fallback', () => {
       renderAlert({ variation: 'warn' });
       expect(tealiumMock).toBeCalledWith(defaultEvent);
+      expect(tealiumMock).toHaveBeenCalledTimes(1);
     });
 
-    it('disables analytics event tracking', () => {
+    it('disables analytics tracking', () => {
       renderAlert({ heading: 'dialog heading', variation: 'error', analytics: false });
       expect(tealiumMock).not.toBeCalled();
     });
 
-    it('overrides analytics event tracking', () => {
+    it('overrides analytics event content', () => {
       renderAlert({ variation: 'success', analyticsLabelOverride: 'other heading' });
       expect(tealiumMock).toBeCalledWith(
         expect.objectContaining({
@@ -174,6 +176,7 @@ describe('Alert', function () {
           heading: 'other heading',
         })
       );
+      expect(tealiumMock).toHaveBeenCalledTimes(1);
     });
   });
 });
