@@ -72,7 +72,6 @@ export const TableCell: React.FC<
   id,
   scope,
   stackedTitle,
-  stackedClassName,
   _isTableHeadChild,
   ...tableCellProps
 }: TableCellProps) => {

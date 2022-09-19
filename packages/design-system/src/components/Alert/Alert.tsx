@@ -178,15 +178,11 @@ export class Alert extends React.PureComponent<
       className,
       autoFocus,
       heading,
-      headingId,
-      headingLevel,
       hideIcon,
       alertRef,
       role,
       variation,
       weight,
-      analytics,
-      analyticsLabelOverride,
       ...alertProps
     } = this.props;
 
