@@ -43,9 +43,8 @@ function createViolationMessage({ id, impact, nodes, ...rest }: Result) {
   return message;
 }
 
-function createErrorMessage(violations: AxeResults['violations'], url: string): string {
+function createErrorMessage(violations: AxeResults['violations']): string {
   let message = '';
-  message += formatLine(chalk.red(`-- url: ${url}`));
   message += formatLine(chalk.bgRed.bold('  Accessibility violations:  '), 0);
   message += '\n';
   message += violations.map(createViolationMessage).join('');
@@ -59,5 +58,5 @@ export default async function expectNoAxeViolations(page: Page) {
     .analyze();
   // Disable Jest linting rule because it isn't Jest!
   // eslint-disable-next-line jest/valid-expect
-  expect(results?.violations.length, createErrorMessage(results.violations, page.url())).toBe(0);
+  expect(results?.violations.length, createErrorMessage(results.violations)).toBe(0);
 }
