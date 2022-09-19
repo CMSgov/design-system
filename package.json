@@ -38,7 +38,7 @@
     "test:unit:update": "yarn test:unit --updateSnapshot",
     "test:browser": "yarn playwright test --config tests/browser/playwright.config.ts",
     "test:browser:docker": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.25.0-focal yarn test:browser",
-    "test:browser:update": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.25.0-focal yarn test:browser --update-snapshots",
+    "test:browser:update": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.25.0-focal yarn test:browser -u",
     "type-check": "yarn tsc --noEmit"
   },
   "husky": {
