@@ -23,10 +23,10 @@ const allProjects = [
     name: 'Mobile Chrome',
     use: { ...devices['Pixel 5'] },
   },
-  {
-    name: 'Mobile Safari',
-    use: { ...devices['iPhone 12'] },
-  },
+  // {
+  //   name: 'Mobile Safari',
+  //   use: { ...devices['iPhone 12'] },
+  // },
 
   /* Test against branded browsers. */
   // {
@@ -66,7 +66,7 @@ const config: PlaywrightTestConfig = {
      * Maximum time expect() should wait for the condition to be met.
      * For example in `await expect(locator).toHaveText();`
      */
-    timeout: 15000,
+    timeout: 5000,
   },
   /* Run tests in files in parallel */
   fullyParallel: true,
