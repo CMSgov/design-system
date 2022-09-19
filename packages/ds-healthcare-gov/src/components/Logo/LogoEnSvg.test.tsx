@@ -1,9 +1,10 @@
 import LogoEnSvg from './LogoEnSvg';
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 
 describe('LogoEnSvg', function () {
   it('renders English SVG logo', () => {
-    expect(shallow(<LogoEnSvg />)).toMatchSnapshot();
+    const { container } = render(<LogoEnSvg />);
+    expect(container).toMatchSnapshot();
   });
 });
