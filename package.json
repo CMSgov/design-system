@@ -31,9 +31,7 @@
     "test": "yarn test:unit && yarn test:a11y core",
     "posttest": "yarn lint",
     "test-coverage": "yarn cmsds test ./packages --collectCoverage",
-    "test:a11y": "yarn jest --config=tests/a11y/jest.config.js",
-    "test:a11y:healthcare": "yarn jest --config=tests/a11y/jest.config.js healthcare",
-    "test:a11y:medicare": "yarn jest --config=tests/a11y/jest.config.js medicare",
+    "test:a11y": "yarn playwright test --config tests/a11y/playwright.config.ts",
     "test:unit": "yarn jest --config=tests/unit/jest.config.js",
     "test:unit:update": "yarn test:unit --updateSnapshot",
     "test:browser": "yarn playwright test --config tests/browser/playwright.config.ts",
@@ -67,6 +65,7 @@
     "kss/nunjucks": ">=3.2.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.4.4",
     "@axe-core/webdriverjs": "^4.4.3",
     "@babel/core": "^7.16.0",
     "@babel/plugin-proposal-class-properties": "^7.12.1",
