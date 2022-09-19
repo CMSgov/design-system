@@ -16,17 +16,22 @@ export const OneColumnPageLayout = () => {
       <main className="ds-base ds-l-container example-grid">
         <div className="ds-l-row">
           <div className="ds-l-col--12">
-            12 columns<br></br>Page footer
+            <b>Page header</b>
+            <br></br>
+            12 columns <br></br> <code>ds-l-col--12</code>
           </div>
         </div>
         <div className="ds-l-row">
-          <div className="ds-l-col--8">
-            8 columns<br></br>Page content
+          <div className="ds-l-md-col--8 ds-l-sm-col--12">
+            <b>Page content</b>
+            <br></br>8 columns <br></br> <code>ds-l-md-col--8 ds-l-sm-col--12</code>
           </div>
         </div>
         <div className="ds-l-row">
           <div className="ds-l-col--12">
-            12 columns<br></br>Page footer
+            <b>Page footer</b>
+            <br></br>
+            12 columns <br></br> <code>ds-l-col--12</code>
           </div>
         </div>
       </main>
