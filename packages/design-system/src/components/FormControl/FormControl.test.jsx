@@ -1,6 +1,6 @@
-import { mount, shallow } from 'enzyme';
 import FormControl from './FormControl';
 import React from 'react';
+import { render, screen } from '@testing-library/react';
 
 const defaultProps = {
   label: 'Foo',
@@ -12,114 +12,114 @@ const defaultProps = {
   },
 };
 
-function render(customProps = {}, deep = false) {
+function makeFormControl(customProps = {}) {
   const props = { ...defaultProps, ...customProps };
-  const component = <FormControl {...props} />;
 
-  return {
-    props,
-    wrapper: deep ? mount(component) : shallow(component),
-  };
+  return render(<FormControl {...props} />);
 }
 
 describe('FormControl', function () {
   it('renders default component and labelComponent elements', () => {
-    const data = render({});
+    const { container } = makeFormControl();
 
-    expect(data.wrapper.find('div').length).toBe(1);
-    expect(data.wrapper.find('FormLabel').length).toBe(1);
-    expect(data.wrapper).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('renders custom component and labelComponent elements', () => {
-    const data = render({
+    const { container } = makeFormControl({
       component: 'fieldset',
       labelComponent: 'legend',
     });
 
-    expect(data.wrapper.find('fieldset').length).toBe(1);
-    expect(data.wrapper.find('FormLabel').prop('component')).toEqual('legend');
-    expect(data.wrapper).toMatchSnapshot();
+    const legend = container.querySelectorAll('legend');
+    expect(screen.getByRole('group')).toBeInTheDocument();
+    expect(legend.length).toEqual(1);
+    expect(container).toMatchSnapshot();
   });
 
   it('passes label to FormLabel', () => {
-    const data = render();
-    const children = data.wrapper.find('FormLabel').prop('children');
-    expect(children.props.children).toContain(data.props.label);
+    makeFormControl();
+
+    const label = screen.getByLabelText('Foo');
+    expect(label).toBeInTheDocument();
   });
 
   it('passes hint to FormLabel', () => {
-    const data = render({ hint: '123' });
+    makeFormControl({ hint: '123' });
 
-    expect(data.wrapper.find('FormLabel').prop('hint')).toBe(data.props.hint);
+    const hint = screen.getByText('123');
+    expect(hint).toBeInTheDocument();
   });
 
   it('passes errorMessage to FormLabel', () => {
-    const data = render({ errorMessage: 'error' });
+    makeFormControl({ errorMessage: 'error' });
 
-    expect(data.wrapper.find('FormLabel').prop('errorMessage')).toBe(data.props.errorMessage);
-  });
-
-  it('passes error to FormLabel', () => {
-    const data = render({ errorMessage: 'Error' });
-
-    expect(data.wrapper.find('FormLabel').prop('errorMessage')).toBe(data.props.errorMessage);
+    const error = screen.getByText('error');
+    expect(error).toBeInTheDocument();
   });
 
   it('renders bottom placed errors ', () => {
-    const data = render({ errorMessage: 'Error', errorPlacement: 'bottom' });
+    makeFormControl({ errorMessage: 'Error', errorPlacement: 'bottom' });
 
-    expect(data.wrapper.find('FormLabel').prop('errorMessage')).toBeUndefined();
-    expect(data.wrapper.find('InlineError').prop('children')).toEqual('Error');
-    expect(data.wrapper).toMatchSnapshot();
+    const labelError = screen.getByRole('alert');
+    expect(labelError).toBeInTheDocument();
+    expect(labelError).toMatchSnapshot();
   });
 
   it('uses aria-invalid for fieldsets with errorMessage', () => {
-    const data = render({ errorMessage: 'Error', component: 'fieldset' });
+    makeFormControl({ errorMessage: 'Error', component: 'fieldset' });
 
-    expect(data.wrapper.find('fieldset').prop('aria-invalid')).toBe(true);
-    expect(data.wrapper).toMatchSnapshot();
+    const fieldset = screen.getByRole('group');
+    expect(fieldset).toHaveAttribute('aria-invalid');
+    expect(fieldset).toMatchSnapshot();
   });
 
   it('passes inversed to FormLabel', () => {
-    const data = render({ inversed: true });
+    makeFormControl({ inversed: true, hint: '123' });
 
-    expect(data.wrapper.find('FormLabel').prop('inversed')).toBe(data.props.inversed);
+    const label = screen.getByText('123');
+    expect(label).toHaveClass('ds-c-field__hint ds-c-field__hint--inverse');
   });
 
   it('adds className to root element', () => {
-    const data = render({ className: 'bar' });
+    makeFormControl({ className: 'bar', component: 'fieldset' });
 
-    expect(data.wrapper.hasClass(data.props.className)).toBe(true);
+    const fieldset = screen.getByRole('group');
+    expect(fieldset).toHaveClass('bar');
   });
 
   it('generates a unique label id when labelId is not defined', () => {
-    const data = render();
+    makeFormControl();
 
-    expect(data.wrapper.find('FormLabel').prop('id')).toBeDefined();
+    const uniqueLabel = screen.getByText('Foo', { name: /field_.*/i });
+    expect(uniqueLabel).toBeInTheDocument();
   });
 
   it('passes labelId to the label', () => {
-    const data = render({ labelId: '1' });
+    makeFormControl({ labelId: '1' });
 
-    expect(data.wrapper.find('FormLabel').prop('id')).toBe(data.props.labelId);
+    const labelID = screen.getByText('Foo', { name: '1' });
+    expect(labelID).toBeInTheDocument();
   });
 
   it('generates a unique field input id when id is not defined', () => {
-    const data = render({});
+    makeFormControl();
 
-    expect(data.wrapper.find('input').prop('id')).toBeDefined();
+    const input = screen.getByRole('textbox', { name: 'Foo' });
+    expect(input).toHaveAttribute('id', expect.stringMatching(/field_.*/i));
+    expect(input).toBeInTheDocument();
   });
 
   it('passes id to the field input', () => {
-    const data = render({ id: '1' });
+    makeFormControl({ id: '1' });
 
-    expect(data.wrapper.find('input').prop('id')).toBe(data.props.id);
+    const input = screen.getByRole('textbox', { name: 'Foo' });
+    expect(input).toHaveAttribute('id', '1');
   });
 
   it('returns reference to input field', () => {
     let ref;
-    const data = render(
+    makeFormControl(
       {
         defaultValue: 'Yay',
         inputRef: (el) => {
@@ -130,12 +130,12 @@ describe('FormControl', function () {
     );
 
     setTimeout(() => {
-      expect(ref.value).toBe(data.props.defaultValue);
+      expect(ref.value).toEqual('Yay');
     }, 20);
   });
 
   it('focuses the input when focusTrigger is passed', () => {
-    const data = render(
+    makeFormControl(
       {
         id: 'focus',
         focusTrigger: true,
@@ -144,7 +144,7 @@ describe('FormControl', function () {
     );
 
     setTimeout(() => {
-      expect(data.wrapper.find('input').props().id).toEqual(document.activeElement.id);
+      expect(screen.getByRole('textbox')).toHaveFocus();
     }, 20);
   });
 });
