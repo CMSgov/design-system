@@ -8,6 +8,8 @@ const storySkipList = [
   'components-skip-nav--skip-nav-example',
 ];
 
+const isSmokeTest = Boolean(process.env.SMOKE && JSON.parse(process.env.SMOKE));
+
 Object.values(stories).forEach((story) => {
   if (storySkipList.includes(story.id)) return;
 
@@ -17,6 +19,7 @@ Object.values(stories).forEach((story) => {
     themes.forEach((theme) => {
       if (theme !== 'healthcare' && story.importPath.includes('ds-healthcare-gov')) return;
       if (theme !== 'medicare' && story.importPath.includes('ds-medicare-gov')) return;
+      if (theme !== 'core' && isSmokeTest) return;
 
       test(`with ${theme} theme`, async ({ page }) => {
         await page.goto(`${storyUrl}&globals=theme:${theme}`);
