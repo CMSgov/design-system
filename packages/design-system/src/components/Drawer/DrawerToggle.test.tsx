@@ -61,12 +61,12 @@ describe('DrawerToggle', () => {
       </DrawerToggle>
     );
     const toggle = screen.getByRole('button');
-    expect(toggle).toEqual(document.activeElement);
+    expect(toggle).toEqual(document.activeElement); // eslint-disable-line
   });
 
   it('does not focus button when drawer in initialized to close', () => {
     renderDrawerToggle({ drawerOpen: false });
     const toggle = screen.getByRole('button');
-    expect(toggle).not.toEqual(document.activeElement);
+    expect(toggle).not.toEqual(document.activeElement); // eslint-disable-line
   });
 });

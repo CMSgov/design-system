@@ -1,6 +1,6 @@
 import React from 'react';
 import IdleTimeoutDialog from './IdleTimeoutDialog';
-import { render, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 
 describe('IdleTimeoutDialog', () => {
   const defaultProps = {
@@ -15,31 +15,31 @@ describe('IdleTimeoutDialog', () => {
   };
 
   it('should show an end session button if prop set', () => {
-    const { getByText } = renderDialog({ showSessionEndButton: true });
-    const endSessionBtn = getByText('Logout');
+    renderDialog({ showSessionEndButton: true });
+    const endSessionBtn = screen.getByText('Logout');
     expect(endSessionBtn).toBeDefined();
   });
 
   // if user chooses 'logout' option
   it('should call onSessionForcedEnd() when user opts to end session', () => {
     const onSessionForcedEnd = jest.fn();
-    const { getByText } = renderDialog({ showSessionEndButton: true, onSessionForcedEnd });
-    const endSessionBtn = getByText('Logout');
+    renderDialog({ showSessionEndButton: true, onSessionForcedEnd });
+    const endSessionBtn = screen.getByText('Logout');
     fireEvent.click(endSessionBtn);
     expect(onSessionForcedEnd).toHaveBeenCalled();
   });
 
   it('should call onSessionContinue() when user opts to continue session', () => {
     const onSessionContinue = jest.fn();
-    const { getByText } = renderDialog({ onSessionContinue });
-    const keepSessionBtn = getByText('Continue session');
+    renderDialog({ onSessionContinue });
+    const keepSessionBtn = screen.getByText('Continue session');
     fireEvent.click(keepSessionBtn);
     expect(onSessionContinue).toHaveBeenCalled();
   });
 
   it('should hide end session button by default', () => {
-    const { queryByText } = renderDialog();
-    const endSessionBtn = queryByText('Logout');
+    renderDialog();
+    const endSessionBtn = screen.queryByText('Logout');
     expect(endSessionBtn).toBeNull();
   });
 });

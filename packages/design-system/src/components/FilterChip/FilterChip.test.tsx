@@ -7,7 +7,7 @@ describe('FilterChip', () => {
   const renderFilterChip = (customProps = {}) => {
     const defaultProps = {
       label: 'Foo',
-      onDelete: () => {},
+      onDelete: jest.fn(),
     };
     const props = { ...defaultProps, ...customProps };
     return render(<FilterChip {...props} />);
@@ -78,7 +78,7 @@ describe('FilterChip', () => {
   it('should use alternate icon', () => {
     renderFilterChip({ useAlternateIcon: true });
     const chipEl = screen.getByRole('button');
-    const iconContainerEl = chipEl.querySelector('.ds-c-filter-chip__clear-icon-container');
+    const iconContainerEl = chipEl.querySelector('.ds-c-filter-chip__clear-icon-container'); // eslint-disable-line
 
     expect(iconContainerEl).toBeDefined();
     expect(iconContainerEl.classList).toContain('ds-c-filter-chip__clear-icon-alternate-container');

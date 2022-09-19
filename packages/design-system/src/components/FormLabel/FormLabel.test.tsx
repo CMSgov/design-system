@@ -62,7 +62,7 @@ describe('FormLabel', () => {
     };
     const { container } = render(<FormLabel {...props}>{labelText}</FormLabel>);
 
-    const requirement = container.querySelector('label');
+    const requirement = container.querySelector('label'); // eslint-disable-line
     expect(requirement).toBeInTheDocument();
     expect(requirement).toMatchSnapshot();
   });
@@ -75,14 +75,14 @@ describe('FormLabel', () => {
     const props: PropDef = { hint: 'Hint', requirementLabel: 'Optional' };
     const { container } = render(<FormLabel {...props}>{labelText}</FormLabel>);
 
-    const label = container.querySelector('label');
+    const label = container.querySelector('label'); // eslint-disable-line
     expect(label).toMatchSnapshot();
   });
 
   it('renders as a legend element', () => {
     const { container } = render(<FormLabel component="legend">{labelText}</FormLabel>);
 
-    const legend = container.querySelector('legend');
+    const legend = container.querySelector('legend'); // eslint-disable-line
     expect(legend).toBeInTheDocument();
     expect(legend).toMatchSnapshot();
   });
@@ -103,7 +103,7 @@ describe('FormLabel', () => {
     const props = { className: 'ds-u-foo', 'aria-label': 'testing aria' };
     const { container } = render(<FormLabel {...props}>{labelText}</FormLabel>);
 
-    const label = container.querySelector('label');
+    const label = container.querySelector('label'); // eslint-disable-line
     expect(label).toHaveAttribute('aria-label', 'testing aria');
     expect(label).toMatchSnapshot();
   });

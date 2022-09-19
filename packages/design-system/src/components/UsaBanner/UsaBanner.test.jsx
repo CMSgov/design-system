@@ -9,7 +9,7 @@ function renderBanner(customProps = {}) {
 
 function filterOutElements(tagNames, container) {
   for (const tagName of tagNames) {
-    const elements = container.querySelectorAll(tagName);
+    const elements = container.querySelectorAll(tagName); // eslint-disable-line
     for (const el of elements) {
       el.remove();
     }
@@ -28,7 +28,7 @@ describe('UsaBanner', function () {
     renderBanner();
     const openButton = screen.getByRole('button');
     fireEvent.click(openButton);
-    const header = screen.getByLabelText('Official government website').querySelector('header');
+    const header = screen.getByLabelText('Official government website').querySelector('header'); // eslint-disable-line
     expect(header.className).toContain('ds-c-usa-banner__header--expanded');
   });
 

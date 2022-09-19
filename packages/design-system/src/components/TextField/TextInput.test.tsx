@@ -41,7 +41,7 @@ describe('TextInput', function () {
   it('is a password field', () => {
     const { container } = renderInput({ type: 'password' });
     // The password field doesn't have an accessible role!
-    const input = container.querySelector('.ds-c-field');
+    const input = container.querySelector('.ds-c-field'); // eslint-disable-line
     expect(input.getAttribute('type')).toBe('password');
   });
 

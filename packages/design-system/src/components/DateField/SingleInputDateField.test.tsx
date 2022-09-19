@@ -8,7 +8,7 @@ const defaultProps = {
   hint: 'Please enter your birthday',
   name: 'single-input-date-field',
   value: '',
-  onChange: () => {},
+  onChange: jest.fn(),
 };
 
 function renderField(props = {}) {
@@ -27,7 +27,7 @@ describe('SingleInputDateField', function () {
 
   it('masks in label', function () {
     const { container } = renderField({ value: '11-01' });
-    expect(container.querySelector('.ds-c-label-mask').textContent).toContain('11/01/YYYY');
+    expect(container.querySelector('.ds-c-label-mask').textContent).toContain('11/01/YYYY'); // eslint-disable-line
   });
 
   it('calls onChange when input changes', function () {

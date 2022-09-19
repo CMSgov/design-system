@@ -33,6 +33,6 @@ describe('Dropdown', () => {
       readOnly: true,
     });
 
-    expect(container.firstChild).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot(); // eslint-disable-line
   });
 });

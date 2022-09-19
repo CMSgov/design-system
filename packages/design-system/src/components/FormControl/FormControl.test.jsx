@@ -31,7 +31,7 @@ describe('FormControl', function () {
       labelComponent: 'legend',
     });
 
-    const legend = container.querySelectorAll('legend');
+    const legend = container.querySelectorAll('legend'); // eslint-disable-line
     expect(screen.getByRole('group')).toBeInTheDocument();
     expect(legend.length).toEqual(1);
     expect(container).toMatchSnapshot();
