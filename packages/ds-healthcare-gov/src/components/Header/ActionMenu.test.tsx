@@ -1,12 +1,13 @@
 import '@testing-library/jest-dom';
+import { UtagContainer } from '@cmsgov/design-system';
 import ActionMenu from './ActionMenu';
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 
-const t = (key) => key;
+const t = (key: string) => key;
 
 function renderComponent(props = {}) {
-  return render(<ActionMenu t={t} locale="en" links={[]} {...props} />);
+  return render(<ActionMenu t={t} links={[]} onMenuToggleClick={jest.fn()} {...props} />);
 }
 
 describe('ActionMenu', function () {
@@ -66,10 +67,10 @@ describe('ActionMenu', function () {
   });
 
   describe('analytics', () => {
+    const mock = jest.fn();
+
     beforeEach(() => {
-      window.utag = {
-        link: jest.fn(),
-      };
+      (window as any as UtagContainer).utag = { link: mock };
     });
 
     function renderForAnalytics(props = {}) {
@@ -89,7 +90,7 @@ describe('ActionMenu', function () {
         ],
       });
       fireEvent.click(screen.getByText('ZOMBO'));
-      expect(window.utag.link.mock.calls[0][0]).toMatchSnapshot();
+      expect(mock).toHaveBeenCalled();
     });
 
     it('sends analytics event when logged-out menu opened', () => {
@@ -97,7 +98,7 @@ describe('ActionMenu', function () {
         links: [{ label: 'label', href: 'href' }],
       });
       fireEvent.click(screen.getByRole('button'));
-      expect(window.utag.link.mock.calls[0][0]).toMatchSnapshot();
+      expect(mock).toHaveBeenCalled();
       expect(handleMenuToggleClick).toHaveBeenCalled();
     });
 
@@ -107,7 +108,7 @@ describe('ActionMenu', function () {
         links: [{ label: 'label', href: 'href' }],
       });
       fireEvent.click(screen.getByRole('button'));
-      expect(window.utag.link.mock.calls[0][0]).toMatchSnapshot();
+      expect(mock).toHaveBeenCalled();
       expect(handleMenuToggleClick).toHaveBeenCalled();
     });
 
@@ -116,7 +117,7 @@ describe('ActionMenu', function () {
         loggedIn: true,
       });
       fireEvent.click(screen.getByRole('button'));
-      expect(window.utag.link.mock.calls[0][0]).toMatchSnapshot();
+      expect(mock).toHaveBeenCalled();
       expect(handleMenuToggleClick).toHaveBeenCalled();
     });
 
@@ -126,7 +127,7 @@ describe('ActionMenu', function () {
         loggedIn: true,
       });
       fireEvent.click(screen.getByRole('button'));
-      expect(window.utag.link.mock.calls[0][0]).toMatchSnapshot();
+      expect(mock).toHaveBeenCalled();
       expect(handleMenuToggleClick).toHaveBeenCalled();
     });
   });

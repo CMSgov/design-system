@@ -1,47 +1,70 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Menu removes hidden state 1`] = `
-<div
-  className="hc-c-menu hc-c-menu--open"
-  hidden={false}
-  id="hc-c-menu"
->
-  <MenuLinks
-    links={
-      Array [
-        Object {
-          "href": "#foo",
-          "label": "Foo",
-        },
-        Object {
-          "href": "#bar",
-          "label": "Bar",
-        },
-      ]
-    }
-  />
+<div>
+  <div
+    class="hc-c-menu hc-c-menu--open"
+    id="hc-c-menu"
+  >
+    <ul
+      class="hc-c-menu__links ds-c-list ds-c-list--bare"
+    >
+      <li
+        class="ds-u-margin--0 "
+      >
+        <a
+          class="hc-c-menu__link"
+          href="#foo"
+        >
+          Foo
+        </a>
+      </li>
+      <li
+        class="ds-u-margin--0 "
+      >
+        <a
+          class="hc-c-menu__link"
+          href="#bar"
+        >
+          Bar
+        </a>
+      </li>
+    </ul>
+  </div>
 </div>
 `;
 
 exports[`Menu renders MenuList 1`] = `
-<div
-  className="hc-c-menu"
-  hidden={true}
-  id="hc-c-menu"
->
-  <MenuLinks
-    links={
-      Array [
-        Object {
-          "href": "#foo",
-          "label": "Foo",
-        },
-        Object {
-          "href": "#bar",
-          "label": "Bar",
-        },
-      ]
-    }
-  />
+<div>
+  <div
+    class="hc-c-menu"
+    hidden=""
+    id="hc-c-menu"
+  >
+    <ul
+      class="hc-c-menu__links ds-c-list ds-c-list--bare"
+    >
+      <li
+        class="ds-u-margin--0 "
+      >
+        <a
+          class="hc-c-menu__link"
+          href="#foo"
+        >
+          Foo
+        </a>
+      </li>
+      <li
+        class="ds-u-margin--0 "
+      >
+        <a
+          class="hc-c-menu__link"
+          href="#bar"
+        >
+          Bar
+        </a>
+      </li>
+    </ul>
+  </div>
 </div>
 `;
