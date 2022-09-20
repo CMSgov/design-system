@@ -60,17 +60,15 @@ These scripts can all be run from the root level of the repo:
   - Runs a11y accessibility tests against core storybook stories
 - `yarn test:unit`
   - Runs JS unit tests for all packages
+  - `yarn test:unit:update` updates [Jest snapshots](http://facebook.github.io/jest/docs/en/snapshot-testing.html)
 - `yarn test:a11y`
   - Runs accessibility tests for design-system package only
   - `yarn test:a11y:healthcare` to run the Healthcare.gov Design System's accessibility tests
   - `yarn test:a11y:medicare` to run the Medicare.gov Design System's accessibility tests
-- `yarn update-snapshots`
-  - Updates [Jest snapshots](http://facebook.github.io/jest/docs/en/snapshot-testing.html)
-- `yarn loki test`
-  - Runs visual regression tests using [loki](https://storybook.js.org/addons/loki). See [Visual regression testing](#visual-regression-testing) section below for details.
-  - `yarn loki update` updates reference screenshots used for visual regression testing. Update these only when we expect the visual changes
-  - `yarn loki:healthcare test` to run the Healthcare.gov visual regression tests
-  - `yarn loki:medicare test` to run the Medicare.gov visual regression tests
+- `yarn test:browser`
+  - Runs visual regression tests using [Playwright](https://playwright.dev/). See [Visual regression testing](#visual-regression-testing) section below for details.
+  - Note that you need to build Storybook statically (`yarn build:storybook`) before you can run the tests
+  - `yarn test:browser:update` updates reference screenshots used for visual regression testing. Update these only when we expect the visual changes
 - `yarn lint`
   - Runs just the linting portion of the tests, eslint and stylelint
 - `yarn deploy-demo`
@@ -80,14 +78,14 @@ These scripts can all be run from the root level of the repo:
 
 ### Visual regression testing
 
-We use [loki](https://storybook.js.org/addons/loki) to test our components for visual regressions. It uses our existing Storybook stories, taking screenshots of them within a docker container and comparing those screenshots with ones previously taken and committed to version control.
+We use [Playwright](https://playwright.dev/) to test our components for visual regressions. It uses our existing Storybook stories, taking screenshots of them within a docker container and comparing those screenshots with ones previously taken and committed to version control. The tests assume that Storybook has been built to `./storybook-static` using `yarn build:storybook`.
 
-Running loki tests locally requires that you be signed into Docker.
+Running the browser tests locally requires that you be signed into Docker.
 
 1. Open the Docker app, and make sure you're signed in (Docker Desktop requires a license now)
-2. Run `yarn loki test` to begin comparing component images
+2. Run `yarn test:browser` to begin comparing component images
    1. If differences are detected and unexpected, evaluate your changes - we only want to update and commit references when we expect the visual changes detected
-   2. If differences are detected and expected, run `yarn loki update`
+   2. If differences are detected and expected, run `yarn test:browser:update`
 
 #### Visual regression troubleshooting
 
