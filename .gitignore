@@ -45,6 +45,8 @@ node_modules
 
 storybook-static/
 packages/coverage/
+playwright-report/
+tests/browser/test-results/
 
 # Doc Site ignores
 .cache/
