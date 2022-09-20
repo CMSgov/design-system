@@ -132,4 +132,16 @@ describe('Header', function () {
   it('renders links with absolute URLs if provided a primaryDomain prop', () => {
     expect(render({ primaryDomain: 'https://www.healthcare.gov' })).toMatchSnapshot();
   });
+
+  it('toggles open menu for fully controlled operation', () => {
+    const onMenuToggle = jest.fn();
+    const wrapper = render({
+      isMenuOpen: false,
+      onMenuToggle,
+    });
+    const actionMenuProps = () => wrapper.find('ActionMenu').props();
+    expect(actionMenuProps().open).toBe(false);
+    actionMenuProps().onMenuToggleClick();
+    expect(onMenuToggle).toHaveBeenCalled();
+  });
 });
