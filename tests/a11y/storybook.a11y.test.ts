@@ -2,7 +2,7 @@ import expectNoAxeViolations from './expectNoAxeViolations';
 import { test } from '@playwright/test';
 import { stories } from '../../storybook-static/stories.json';
 
-const themes = ['core' /* 'healthcare', 'medicare' */];
+const themes = ['core', 'healthcare' /* 'medicare' */];
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
