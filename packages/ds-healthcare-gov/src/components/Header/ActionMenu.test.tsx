@@ -71,6 +71,7 @@ describe('ActionMenu', function () {
 
     beforeEach(() => {
       (window as any as UtagContainer).utag = { link: mock };
+      jest.clearAllMocks();
     });
 
     function renderForAnalytics(props = {}) {
