@@ -2,57 +2,15 @@
 
 exports[`FormLabel adds punctuation to requirementLabel when hint is also present 1`] = `
 <label
-  className="ds-c-label"
+  class="ds-c-label"
 >
   <span
-    className=""
+    class=""
   >
     Hello world
   </span>
   <span
-    className="ds-c-field__hint"
-  >
-    Optional.
-     
-    Hint
-  </span>
-</label>
-`;
-
-exports[`FormLabel adds punctuation to requirementLabel when hint is also present 2`] = `
-<label
-  className="ds-c-label"
->
-  <span
-    className=""
-  >
-    Hello world
-  </span>
-  <span
-    className="ds-c-field__hint"
-  >
-    <span>
-      Optional
-    </span>
-     
-    <span>
-      Hint
-    </span>
-  </span>
-</label>
-`;
-
-exports[`FormLabel avoids duplicate punctuation after requirementLabel 1`] = `
-<label
-  className="ds-c-label"
->
-  <span
-    className=""
-  >
-    Hello world
-  </span>
-  <span
-    className="ds-c-field__hint"
+    class="ds-c-field__hint"
   >
     Optional.
      
@@ -62,100 +20,44 @@ exports[`FormLabel avoids duplicate punctuation after requirementLabel 1`] = `
 `;
 
 exports[`FormLabel is inversed 1`] = `
-<label
-  className="ds-c-label ds-c-label--inverse"
+<span
+  class="ds-c-field__hint ds-c-field__hint--inverse"
 >
-  <span
-    className=""
-  >
-    Hello world
-  </span>
-  <span
-    className="ds-c-field__hint ds-c-field__hint--inverse"
-  >
-    Foo
-  </span>
-</label>
+  Foo
+</span>
 `;
 
-exports[`FormLabel renders error state 1`] = `
-<label
-  className="ds-c-label"
-  htmlFor="name"
+exports[`FormLabel renders as a legend element 1`] = `
+<legend
+  class="ds-c-label"
 >
   <span
-    className=""
+    class=""
   >
     Hello world
   </span>
-  <InlineError
-    id="name-error"
-  >
-    Nah, try again.
-  </InlineError>
-</label>
-`;
-
-exports[`FormLabel renders hint node 1`] = `
-<label
-  className="ds-c-label"
->
-  <span
-    className=""
-  >
-    Hello world
-  </span>
-  <span
-    className="ds-c-field__hint"
-  >
-    <strong>
-      President #44
-    </strong>
-  </span>
-</label>
-`;
-
-exports[`FormLabel renders hint string 1`] = `
-<label
-  className="ds-c-label"
->
-  <span
-    className=""
-  >
-    Hello world
-  </span>
-  <span
-    className="ds-c-field__hint"
-  >
-    President #44
-  </span>
-</label>
+</legend>
 `;
 
 exports[`FormLabel renders label text 1`] = `
-<label
-  className="ds-c-label"
-  htmlFor="name"
+<span
+  class=""
 >
-  <span
-    className=""
-  >
-    Hello world
-  </span>
-</label>
+  Hello world
+</span>
 `;
 
-exports[`FormLabel renders requirementLabel node 1`] = `
+exports[`FormLabel renders requirementLabel 1`] = `
 <label
-  className="ds-c-label"
+  class="ds-c-label"
 >
   <span
-    className=""
+    class=""
   >
     Hello world
   </span>
   <span
-    className="ds-c-field__hint"
+    class="ds-c-field__hint"
   >
     <em>
       It is really optional
@@ -164,30 +66,13 @@ exports[`FormLabel renders requirementLabel node 1`] = `
 </label>
 `;
 
-exports[`FormLabel renders requirementLabel string 1`] = `
-<label
-  className="ds-c-label"
->
-  <span
-    className=""
-  >
-    Hello world
-  </span>
-  <span
-    className="ds-c-field__hint"
-  >
-    Optional
-  </span>
-</label>
-`;
-
 exports[`FormLabel supports additional attributes 1`] = `
 <label
-  ariaLabel="testing aria"
-  className="ds-c-label ds-u-foo"
+  aria-label="testing aria"
+  class="ds-c-label ds-u-foo"
 >
   <span
-    className=""
+    class=""
   >
     Hello world
   </span>
