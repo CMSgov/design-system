@@ -98,8 +98,8 @@ describe('ActionMenu', function () {
         links: [{ label: 'label', href: 'href' }],
       });
       fireEvent.click(screen.getByRole('button'));
-      expect(window['utag'].link).toMatchSnapshot();
       expect(mock).toHaveBeenCalled();
+      expect(window['utag'].link.mock.calls[0][0]).toMatchSnapshot();
       expect(handleMenuToggleClick).toHaveBeenCalled();
     });
 
@@ -110,6 +110,7 @@ describe('ActionMenu', function () {
       });
       fireEvent.click(screen.getByRole('button'));
       expect(mock).toHaveBeenCalled();
+      expect(window['utag'].link.mock.calls[0][0]).toMatchSnapshot();
       expect(handleMenuToggleClick).toHaveBeenCalled();
     });
 
@@ -118,8 +119,8 @@ describe('ActionMenu', function () {
         loggedIn: true,
       });
       fireEvent.click(screen.getByRole('button'));
-      expect(window['utag'].link).toMatchSnapshot();
       expect(mock).toHaveBeenCalled();
+      expect(window['utag'].link.mock.calls[0][0]).toMatchSnapshot();
       expect(handleMenuToggleClick).toHaveBeenCalled();
     });
 
@@ -129,8 +130,8 @@ describe('ActionMenu', function () {
         loggedIn: true,
       });
       fireEvent.click(screen.getByRole('button'));
-      expect(window['utag'].link).toMatchSnapshot();
       expect(mock).toHaveBeenCalled();
+      expect(window['utag'].link.mock.calls[0][0]).toMatchSnapshot();
       expect(handleMenuToggleClick).toHaveBeenCalled();
     });
   });
