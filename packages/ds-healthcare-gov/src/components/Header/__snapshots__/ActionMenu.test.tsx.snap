@@ -28,6 +28,21 @@ Object {
 }
 `;
 
+exports[`ActionMenu analytics sends analytics event when logged-out action menu link clicked 1`] = `
+Object {
+  "category": "consistent header",
+  "event_name": "header_click",
+  "event_type": "ui interaction",
+  "ga_eventAction": "click",
+  "ga_eventCategory": "consistent header",
+  "ga_eventLabel": "ZOMBO",
+  "ga_eventType": "cmsds",
+  "ga_eventValue": "",
+  "link_url": "https://www.zombo.com",
+  "text": "ZOMBO",
+}
+`;
+
 exports[`ActionMenu analytics sends analytics event when logged-out menu closed 1`] = `
 Object {
   "category": "consistent header",

@@ -92,6 +92,7 @@ describe('ActionMenu', function () {
       });
       fireEvent.click(screen.getByText('ZOMBO'));
       expect(mock).toHaveBeenCalled();
+      expect(window['utag'].link.mock.calls[0][0]).toMatchSnapshot();
     });
 
     it('sends analytics event when logged-out menu opened', () => {
