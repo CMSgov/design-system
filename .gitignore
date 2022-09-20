@@ -47,6 +47,7 @@ storybook-static/
 packages/coverage/
 playwright-report/
 tests/browser/test-results/
+tests/a11y/test-results/
 
 # Doc Site ignores
 .cache/
