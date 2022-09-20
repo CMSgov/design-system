@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useArgs } from '@storybook/client-api';
 
 import Header from './Header';
 
@@ -41,11 +42,12 @@ LoggedInHeader.args = {
 };
 export const LoggedOutHeader = Template.bind({});
 
-export const LoggedInControlledHeader = Template.bind({});
+export const LoggedInControlledHeader = (args) => {
+  const [{ isMenuOpen }, updateArgs] = useArgs();
+  return <Header {...args} onMenuToggle={() => updateArgs({ isMenuOpen: !isMenuOpen })} />;
+};
+
 LoggedInControlledHeader.args = {
   loggedIn: true,
-  onMenuToggle: () => {
-    console.log('toggled header menu');
-  },
-  isMenuOpen: true,
+  isMenuOpen: false,
 };
