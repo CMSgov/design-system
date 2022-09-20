@@ -21,24 +21,6 @@ body {
   flex: 1 0 auto;
 }
 
-.page-content__content {
-  > h2 {
-    @extend .ds-text-heading--2xl;
-  }
-  > h3 {
-    @extend .ds-text-heading--xl;
-  }
-  > h4 {
-    @extend .ds-text-heading--lg;
-  }
-  > h5 {
-    @extend .ds-text-heading--md;
-  }
-  > h6 {
-    @extend .ds-text-heading--sm;
-  }
-}
-
 @media (min-width: $width-lg) {
   .page-content__content {
     // removing margin for first heading on content pages
@@ -72,6 +54,22 @@ body {
 }
 
 .page-content__content {
+  > h2 {
+    @extend .ds-text-heading--2xl;
+  }
+  > h3 {
+    @extend .ds-text-heading--xl;
+  }
+  > h4 {
+    @extend .ds-text-heading--lg;
+  }
+  > h5 {
+    @extend .ds-text-heading--md;
+  }
+  > h6 {
+    @extend .ds-text-heading--sm;
+  }
+
   > .ds-c-table,
   .c-configuration-options .ds-c-table {
     width: 100%;

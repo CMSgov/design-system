@@ -64,7 +64,7 @@ type PropsNotPassedToDownshift =
 
 export interface AutocompleteProps extends Omit<DownshiftProps<any>, PropsNotPassedToDownshift> {
   /**
-   * Screenreader-specific label for the Clear search `<button>`. Intended to provide a longer, more descriptive explanation of the button's behavior.
+   * Screen reader-specific label for the Clear search `<button>`. Intended to provide a longer, more descriptive explanation of the button's behavior.
    */
   ariaClearLabel?: string;
   /**
@@ -104,7 +104,7 @@ export interface AutocompleteProps extends Omit<DownshiftProps<any>, PropsNotPas
    */
   id?: string;
   /**
-   * Customize the default status messages announced to screenreader users via aria-live when autocomplete results are populated. [Read more on downshift docs.](https://github.com/paypal/downshift#geta11ystatusmessage)
+   * Customize the default status messages announced to screen reader users via aria-live when autocomplete results are populated. [Read more on downshift docs.](https://github.com/paypal/downshift#geta11ystatusmessage)
    */
   getA11yStatusMessage?: DownshiftProps<any>['getA11yStatusMessage'];
   /**
@@ -282,7 +282,6 @@ export class Autocomplete extends React.Component<AutocompleteProps, any> {
       items,
       label,
       loading,
-      children,
       className,
       clearInputOnBlur,
       clearSearchButton,

@@ -6,6 +6,7 @@ import { MenuIconThin } from '@cmsgov/design-system';
 
 export interface NavigationMenuProps {
   alwaysShowMenuButton?: boolean;
+  children: React.ReactNode;
 }
 
 export interface NavigationMenuState {
