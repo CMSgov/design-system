@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Header from './Header';
 
@@ -40,3 +40,12 @@ LoggedInHeader.args = {
   loggedIn: true,
 };
 export const LoggedOutHeader = Template.bind({});
+
+export const LoggedInControlledHeader = Template.bind({});
+LoggedInControlledHeader.args = {
+  loggedIn: true,
+  onMenuToggle: () => {
+    console.log('toggled header menu');
+  },
+  isMenuOpen: true,
+};
