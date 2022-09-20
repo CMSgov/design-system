@@ -3,7 +3,7 @@
  */
 
 import { animation, color, font, measure, media, radius, spacer, z } from '../tokens';
-import { ThemeTokens, ColorTokens, ShadowTokens } from '../lib/types';
+import { FontTokens, ThemeTokens, ColorTokens, ShadowTokens } from '../lib/types';
 
 export const themeColors: ColorTokens = {
   //
@@ -161,15 +161,23 @@ const shadow: ShadowTokens = {
   'box-card': '0 2px 3px 0 rgba(50, 50, 50, 0.23)',
 }
 
+const fonts: FontTokens = {
+  ...font,
+  'size-lg': '20px',
+  'size-xl': '24px',
+  'size-2xl': '32px',
+  'size-3xl': '40px',
+  'size-4xl': '44px',
+  'size-5xl': '50px',
+  sans: font['family-rubik'],
+  montserrat: font['family-montserrat'],
+  rubik: font['family-rubik'],
+}
+
 const medicareTheme: ThemeTokens = {
   animation,
   color: themeColors,
-  font: {
-    sans: font['family-rubik'],
-    montserrat: font['family-montserrat'],
-    rubik: font['family-rubik'],
-    ...font,
-  },
+  font: fonts,
   measure,
   media,
   radius,

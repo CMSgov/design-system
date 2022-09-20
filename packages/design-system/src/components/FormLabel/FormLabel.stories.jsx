@@ -41,5 +41,5 @@ InverseFormLabel.args = {
 };
 
 InverseFormLabel.parameters = {
-  backgrounds: { default: process.env.STORYBOOK_DS === 'medicare' ? 'Mgov dark' : 'Hcgov dark' },
+  baseInverse: true,
 };

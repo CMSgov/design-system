@@ -14,10 +14,7 @@ const DocSiteFooter = () => {
           >
             Plain Writing
           </a>
-          <button
-            className="ds-c-button ds-c-button--transparent c-footer__link"
-            data-privacy-policy="modal-trigger-footer"
-          >
+          <button className="c-footer__link" data-privacy-policy="modal-trigger-footer">
             Privacy settings
           </button>
           <a

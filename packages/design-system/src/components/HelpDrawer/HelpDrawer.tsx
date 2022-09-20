@@ -59,11 +59,11 @@ export const HelpDrawer = (props: HelpDrawerProps) => {
     });
 
     return () => {
-      // Send analytics event for helpdrawer open
+      // Send analytics event for helpdrawer close
       sendLinkEvent({
-        event_name: 'help_drawer_opened',
+        event_name: 'help_drawer_closed',
         event_type: EventCategory.UI_INTERACTION,
-        ga_eventAction: 'opened help drawer',
+        ga_eventAction: 'closed help drawer',
         ga_eventCategory: EventCategory.UI_COMPONENTS,
         ga_eventLabel: eventHeadingText,
         heading: eventHeadingText,

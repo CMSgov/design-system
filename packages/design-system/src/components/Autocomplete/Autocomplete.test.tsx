@@ -1,11 +1,10 @@
-import { mount, shallow } from 'enzyme';
 import Autocomplete from './Autocomplete';
 import React from 'react';
 import TextField from '../TextField/TextField';
-import { render as TLrender } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-function render(customProps = {}, deep = false) {
+function makeAutocomplete(customProps = {}) {
   const props = {
     ...{
       items: [{ id: 'kRf6c2fY', name: 'Cook County, IL' }],
@@ -15,30 +14,25 @@ function render(customProps = {}, deep = false) {
   };
   const component = <Autocomplete {...props} />;
 
-  return {
-    props: props,
-    wrapper: deep ? mount(component) : shallow(component),
-  };
+  return render(component);
 }
 
 describe('Autocomplete', () => {
   it('renders Autocomplete component', () => {
-    const data = render({}, false);
-    const wrapper = data.wrapper;
-    const inst = wrapper.instance();
-
-    expect(inst).toBeInstanceOf(Autocomplete);
+    const { container } = makeAutocomplete();
+    const page = container.firstChild;
+    expect(page).toMatchSnapshot();
   });
 
   it('renders items', () => {
-    const { wrapper } = render({ isOpen: true }, true);
+    makeAutocomplete({ isOpen: true });
 
-    const list = wrapper.find('ul');
-    expect(list.exists()).toBe(true);
+    const list = screen.getByRole('listbox');
+    expect(list).toBeInTheDocument();
 
-    const items = list.find('li');
-    expect(items.length).toEqual(1);
-    expect(items.text()).toEqual('Cook County, IL');
+    const items = screen.getByRole('option');
+    expect(items).toBeInTheDocument();
+    expect(items).toHaveTextContent('Cook County, IL');
   });
 
   it('renders items with children property', () => {
@@ -76,8 +70,8 @@ describe('Autocomplete', () => {
       },
     ];
 
-    const { wrapper } = render({ items, isOpen: true }, true);
-    const ul = wrapper.find('ul');
+    makeAutocomplete({ items, isOpen: true });
+    const ul = screen.getByRole('listbox');
     expect(ul).toMatchSnapshot();
   });
 
@@ -86,107 +80,78 @@ describe('Autocomplete', () => {
       { id: '1a', name: 'Normal item' },
       { id: '5b', name: 'Special item', className: 'custom-class' },
     ];
-    const { wrapper } = render({ isOpen: true, items }, true);
+    makeAutocomplete({ isOpen: true, items });
 
-    const list = wrapper.find('ul');
-    expect(list.exists()).toBe(true);
+    const list = screen.queryByRole('listbox');
+    expect(list).toBeInTheDocument();
 
-    const listItems = list.find('li');
-    expect(listItems.at(0).prop('className')).toMatchSnapshot();
-    expect(listItems.at(1).prop('className')).toMatchSnapshot();
+    const listItems = screen.queryAllByRole('option');
+    expect(listItems[1]).toHaveClass('custom-class');
+    expect(listItems).toMatchSnapshot();
   });
 
   it('renders Autocomplete component without items', () => {
-    const { wrapper } = render({ items: undefined, isOpen: true }, true);
-    expect(wrapper.find('ul').exists()).toBe(false);
+    makeAutocomplete({ items: undefined, isOpen: true });
+    expect(screen.queryByRole('list')).not.toBeInTheDocument();
   });
 
   it('only renders expected elements', () => {
-    const data = render({}, true);
-    const wrapper = data.wrapper;
-    const downshift = wrapper.find('Downshift');
+    makeAutocomplete();
 
-    expect(downshift.find('div').first().exists()).toBe(true);
-    expect(downshift.find('ul').exists()).toBe(false);
-    expect(downshift.find('li').exists()).toBe(false);
-    expect(downshift.find('button').exists()).toBe(true);
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
+    expect(screen.queryByRole('option')).not.toBeInTheDocument();
+    expect(screen.getByRole('button')).toBeInTheDocument();
   });
 
   it('does not render a clear search button when clearSearchButton is set to false', () => {
-    const { wrapper } = render({ clearSearchButton: false }, true);
-    const downshift = wrapper.find('Downshift');
+    makeAutocomplete({ clearSearchButton: false });
 
-    expect(downshift.find('div').first().exists()).toBe(true);
-    expect(downshift.find('button').exists()).toBe(false);
+    expect(screen.queryByRole('button')).not.toBeInTheDocument();
   });
 
   it('renders default class names', () => {
-    const data = render({}, true);
-    const wrapper = data.wrapper;
-    const child = wrapper.find('Downshift').childAt(0);
+    const { container } = makeAutocomplete();
+    const child = container.querySelectorAll('.ds-c-autocomplete');
 
-    expect(child.hasClass('ds-c-autocomplete')).toBe(true);
+    expect(child.length).toEqual(1);
   });
 
   it('renders custom class names', () => {
-    const data = render({ className: 'additional-class' }, true);
-    const wrapper = data.wrapper;
-    const child = wrapper.find('Downshift').childAt(0);
+    const { container } = makeAutocomplete({ className: 'additional-class' });
+    const child = container.querySelector('.ds-c-autocomplete');
 
-    expect(child.hasClass('ds-c-autocomplete')).toBe(true);
-    expect(child.hasClass('additional-class')).toBe(true);
-  });
-
-  it('allows default props to be overridden', () => {
-    const data = render(
-      {
-        ariaClearLabel: 'New ARIA label',
-        clearInputText: 'Clear search box',
-        loading: true,
-        loadingMessage: 'Custom loading message',
-        noResultsMessage: 'Custom no results message',
-      },
-      true
-    );
-    const wrapper = data.wrapper;
-
-    expect(wrapper.prop('ariaClearLabel')).toBe('New ARIA label');
-    expect(wrapper.prop('clearInputText')).toBe('Clear search box');
-    expect(wrapper.prop('loading')).toBe(true);
-    expect(wrapper.prop('loadingMessage')).toBe('Custom loading message');
-    expect(wrapper.prop('noResultsMessage')).toBe('Custom no results message');
+    expect(child).toHaveClass('additional-class');
   });
 
   it('renders a snapshot', () => {
-    const { container } = TLrender(
-      <Autocomplete items={[{ id: 'kRf6c2fY', name: 'Cook County, IL' }]} clearSearchButton>
+    const { container } = render(
+      <Autocomplete
+        items={[{ id: 'kRf6c2fY', name: 'Cook County, IL' }]}
+        clearSearchButton
+        data-testid="my-autocomplete"
+      >
         <TextField label="autocomplete" name="autocomplete_field" />
       </Autocomplete>
     );
-    expect(container.firstChild).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 
   describe('default props', () => {
     it('defaults ariaClearLabel', () => {
-      const data = render({}, true);
-      const wrapper = data.wrapper;
-      const downshift = wrapper.find('Downshift');
+      makeAutocomplete();
+      const button = screen.getByRole('button');
+      expect(button).toBeInTheDocument();
 
-      const buttonEl = downshift.find('button');
-      expect(buttonEl.exists()).toBe(true);
-
-      expect(buttonEl.prop('aria-label')).toBe('Clear search to try again');
+      expect(button).toHaveAttribute('aria-label', 'Clear search to try again');
     });
 
     it('defaults clearInputText', () => {
-      const data = render({}, true);
-      const wrapper = data.wrapper;
-      const downshift = wrapper.find('Downshift');
+      makeAutocomplete();
+      const button = screen.getByRole('button');
+      expect(button).toBeInTheDocument();
 
-      const buttonEl = downshift.find('button');
-      expect(buttonEl.exists()).toBe(true);
-
-      expect(buttonEl.text()).toBe('Clear search');
+      expect(button).toHaveTextContent('Clear search');
     });
   });
 
@@ -197,44 +162,44 @@ describe('Autocomplete', () => {
     };
 
     it('Should expand the listbox when keys are pressed', () => {
-      const { getByLabelText, getByRole } = TLrender(<Autocomplete {...props} />);
-      const autocompleteField = getByLabelText('autocomplete');
+      render(<Autocomplete {...props} />);
+      const autocompleteField = screen.getByLabelText('autocomplete');
       userEvent.click(autocompleteField);
       userEvent.type(autocompleteField, 'c');
 
-      expect(getByRole('listbox')).toBeTruthy();
+      expect(screen.getByRole('listbox')).toBeInTheDocument();
     });
 
     it('Should set the input value correctly when a listbox selection is clicked', () => {
-      const { getByLabelText, getByRole } = TLrender(<Autocomplete {...props} />);
-      const autocompleteField = getByLabelText('autocomplete') as HTMLInputElement;
+      render(<Autocomplete {...props} />);
+      const autocompleteField = screen.getByLabelText('autocomplete') as HTMLInputElement;
       userEvent.click(autocompleteField);
       userEvent.type(autocompleteField, 'c');
 
-      const listboxItem = getByRole('option');
+      const listboxItem = screen.getByRole('option');
       userEvent.click(listboxItem);
 
       expect(autocompleteField.value).toBe('Cook County, IL');
     });
 
     it('Should set the input value to empty when Clear search is clicked', () => {
-      const { getByLabelText, getByRole, getByText } = TLrender(<Autocomplete {...props} />);
-      const autocompleteField = getByLabelText('autocomplete') as HTMLInputElement;
+      render(<Autocomplete {...props} />);
+      const autocompleteField = screen.getByLabelText('autocomplete') as HTMLInputElement;
       userEvent.click(autocompleteField);
       userEvent.type(autocompleteField, 'c');
 
-      const listboxItem = getByRole('option');
+      const listboxItem = screen.getByRole('option');
       userEvent.click(listboxItem);
 
-      const clearButton = getByText('Clear search');
+      const clearButton = screen.getByText('Clear search');
       userEvent.click(clearButton);
 
       expect(autocompleteField.value).toBe('');
     });
 
     it('Should select list items by keyboard', () => {
-      const { getByLabelText } = TLrender(<Autocomplete {...props} />);
-      const autocompleteField = getByLabelText('autocomplete') as HTMLInputElement;
+      render(<Autocomplete {...props} />);
+      const autocompleteField = screen.getByLabelText('autocomplete') as HTMLInputElement;
       userEvent.click(autocompleteField);
       userEvent.type(autocompleteField, 'c');
       userEvent.type(autocompleteField, '{arrowdown}');
@@ -244,8 +209,8 @@ describe('Autocomplete', () => {
     });
 
     it('Should clear the input value by keyboard', () => {
-      const { getByLabelText, getByText } = TLrender(<Autocomplete {...props} />);
-      const autocompleteField = getByLabelText('autocomplete') as HTMLInputElement;
+      render(<Autocomplete {...props} />);
+      const autocompleteField = screen.getByLabelText('autocomplete') as HTMLInputElement;
       autocompleteField.focus();
       userEvent.click(autocompleteField);
       userEvent.type(autocompleteField, 'c');
@@ -256,26 +221,26 @@ describe('Autocomplete', () => {
 
       userEvent.tab();
 
-      const clearButton = getByText('Clear search');
+      const clearButton = screen.getByText('Clear search');
       userEvent.click(clearButton);
 
       expect(autocompleteField.value).toBe('');
     });
 
     it('Closes the listbox when ESC is pressed', () => {
-      const { getByLabelText, queryByRole } = TLrender(<Autocomplete {...props} />);
-      const autocompleteField = getByLabelText('autocomplete') as HTMLInputElement;
+      render(<Autocomplete {...props} />);
+      const autocompleteField = screen.getByLabelText('autocomplete') as HTMLInputElement;
       userEvent.click(autocompleteField);
       userEvent.type(autocompleteField, 'c');
 
-      let listboxEl = queryByRole('listbox');
+      let listboxEl = screen.queryByRole('listbox');
       expect(listboxEl).toBeTruthy();
 
       expect(autocompleteField.value).toEqual('c');
 
       userEvent.type(autocompleteField, '{esc}');
 
-      listboxEl = queryByRole('listbox');
+      listboxEl = screen.queryByRole('listbox');
       expect(listboxEl).toBeNull();
       expect(autocompleteField.value).toEqual('');
     });

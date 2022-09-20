@@ -89,6 +89,7 @@ export const Drawer = (props: DrawerProps) => {
           className={classNames('ds-c-drawer__body', {
             'ds-c-drawer--is-sticky': props.isHeaderSticky || props.isFooterSticky,
           })}
+          tabIndex={0}
         >
           {props.children}
         </div>
