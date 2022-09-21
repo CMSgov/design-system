@@ -10,6 +10,7 @@ const level1ItemOrder = [
   'foundation',
   'components',
   'patterns',
+  'layouts',
   'utilities',
 ];
 
