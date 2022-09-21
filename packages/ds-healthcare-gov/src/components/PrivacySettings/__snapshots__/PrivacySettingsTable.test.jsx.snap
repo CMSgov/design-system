@@ -1,167 +1,600 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<PrivacySettingsTable /> renders the privacy settings table 1`] = `
-<table
-  className="ds-c-table ds-c-table--borderless hc-c-privacy-settings-table"
->
-  <thead>
-    <tr>
-      <th
-        scope="col"
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <table
+        class="ds-c-table ds-c-table--borderless hc-c-privacy-settings-table"
       >
-        privacy.category
-      </th>
-      <th
-        scope="col"
-      >
-        privacy.description
-      </th>
-      <th
-        scope="col"
-      >
-        privacy.status
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr
-      key="key1"
-    >
-      <td
-        data-title="privacy.category"
-      >
-        privacy.setting1.category
-      </td>
-      <td
-        data-title="privacy.description"
-      >
-        privacy.setting1.description
-      </td>
-      <td
-        data-title="privacy.status"
-      >
-        <ChoiceList
-          aria-label="privacy.setting1.description"
-          choices={
-            Array [
-              Object {
-                "checked": true,
-                "label": "privacy.allow",
-                "value": "0",
-              },
-              Object {
-                "checked": false,
-                "label": "privacy.dontAllow",
-                "value": "1",
-              },
-            ]
-          }
-          className="ds-u-margin-top--0"
-          label={
-            <span
-              className="ds-u-visibility--screen-reader"
+        <thead>
+          <tr>
+            <th
+              scope="col"
+            >
+              privacy.category
+            </th>
+            <th
+              scope="col"
+            >
+              privacy.description
+            </th>
+            <th
+              scope="col"
+            >
+              privacy.status
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td
+              data-title="privacy.category"
             >
               privacy.setting1.category
-            </span>
-          }
-          name="cookie-key1"
-          onChange={[Function]}
-          type="radio"
-        />
-      </td>
-    </tr>
-    <tr
-      key="key2"
-    >
-      <td
-        data-title="privacy.category"
-      >
-        privacy.setting2.category
-      </td>
-      <td
-        data-title="privacy.description"
-      >
-        privacy.setting2.description
-      </td>
-      <td
-        data-title="privacy.status"
-      >
-        <ChoiceList
-          aria-label="privacy.setting2.description"
-          choices={
-            Array [
-              Object {
-                "checked": false,
-                "label": "privacy.allow",
-                "value": "0",
-              },
-              Object {
-                "checked": true,
-                "label": "privacy.dontAllow",
-                "value": "1",
-              },
-            ]
-          }
-          className="ds-u-margin-top--0"
-          label={
-            <span
-              className="ds-u-visibility--screen-reader"
+            </td>
+            <td
+              data-title="privacy.description"
+            >
+              privacy.setting1.description
+            </td>
+            <td
+              data-title="privacy.status"
+            >
+              <fieldset
+                class="ds-c-fieldset ds-u-margin-top--0"
+              >
+                <legend
+                  class="ds-c-label"
+                  id="field_1-label"
+                >
+                  <span
+                    class=""
+                  >
+                    <span
+                      class="ds-u-visibility--screen-reader"
+                    >
+                      privacy.setting1.category
+                    </span>
+                  </span>
+                </legend>
+                <div>
+                  <div
+                    class="ds-c-choice-wrapper"
+                  >
+                    <input
+                      checked=""
+                      class="ds-c-choice"
+                      id="radio_cookie-key1_2"
+                      name="cookie-key1"
+                      type="radio"
+                      value="0"
+                    />
+                    <label
+                      class="ds-c-label"
+                      for="radio_cookie-key1_2"
+                    >
+                      <span
+                        class=""
+                      >
+                        privacy.allow
+                      </span>
+                    </label>
+                  </div>
+                </div>
+                <div>
+                  <div
+                    class="ds-c-choice-wrapper"
+                  >
+                    <input
+                      class="ds-c-choice"
+                      id="radio_cookie-key1_3"
+                      name="cookie-key1"
+                      type="radio"
+                      value="1"
+                    />
+                    <label
+                      class="ds-c-label"
+                      for="radio_cookie-key1_3"
+                    >
+                      <span
+                        class=""
+                      >
+                        privacy.dontAllow
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </td>
+          </tr>
+          <tr>
+            <td
+              data-title="privacy.category"
             >
               privacy.setting2.category
-            </span>
-          }
-          name="cookie-key2"
-          onChange={[Function]}
-          type="radio"
-        />
-      </td>
-    </tr>
-    <tr
-      key="key3"
-    >
-      <td
-        data-title="privacy.category"
-      >
-        privacy.setting3.category
-      </td>
-      <td
-        data-title="privacy.description"
-      >
-        privacy.setting3.description
-      </td>
-      <td
-        data-title="privacy.status"
-      >
-        <ChoiceList
-          aria-label="privacy.setting3.description"
-          choices={
-            Array [
-              Object {
-                "checked": true,
-                "label": "privacy.allow",
-                "value": "0",
-              },
-              Object {
-                "checked": false,
-                "label": "privacy.dontAllow",
-                "value": "1",
-              },
-            ]
-          }
-          className="ds-u-margin-top--0"
-          label={
-            <span
-              className="ds-u-visibility--screen-reader"
+            </td>
+            <td
+              data-title="privacy.description"
+            >
+              privacy.setting2.description
+            </td>
+            <td
+              data-title="privacy.status"
+            >
+              <fieldset
+                class="ds-c-fieldset ds-u-margin-top--0"
+              >
+                <legend
+                  class="ds-c-label"
+                  id="field_4-label"
+                >
+                  <span
+                    class=""
+                  >
+                    <span
+                      class="ds-u-visibility--screen-reader"
+                    >
+                      privacy.setting2.category
+                    </span>
+                  </span>
+                </legend>
+                <div>
+                  <div
+                    class="ds-c-choice-wrapper"
+                  >
+                    <input
+                      class="ds-c-choice"
+                      id="radio_cookie-key2_5"
+                      name="cookie-key2"
+                      type="radio"
+                      value="0"
+                    />
+                    <label
+                      class="ds-c-label"
+                      for="radio_cookie-key2_5"
+                    >
+                      <span
+                        class=""
+                      >
+                        privacy.allow
+                      </span>
+                    </label>
+                  </div>
+                </div>
+                <div>
+                  <div
+                    class="ds-c-choice-wrapper"
+                  >
+                    <input
+                      checked=""
+                      class="ds-c-choice"
+                      id="radio_cookie-key2_6"
+                      name="cookie-key2"
+                      type="radio"
+                      value="1"
+                    />
+                    <label
+                      class="ds-c-label"
+                      for="radio_cookie-key2_6"
+                    >
+                      <span
+                        class=""
+                      >
+                        privacy.dontAllow
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </td>
+          </tr>
+          <tr>
+            <td
+              data-title="privacy.category"
             >
               privacy.setting3.category
-            </span>
-          }
-          name="cookie-key3"
-          onChange={[Function]}
-          type="radio"
-        />
-      </td>
-    </tr>
-  </tbody>
-</table>
+            </td>
+            <td
+              data-title="privacy.description"
+            >
+              privacy.setting3.description
+            </td>
+            <td
+              data-title="privacy.status"
+            >
+              <fieldset
+                class="ds-c-fieldset ds-u-margin-top--0"
+              >
+                <legend
+                  class="ds-c-label"
+                  id="field_7-label"
+                >
+                  <span
+                    class=""
+                  >
+                    <span
+                      class="ds-u-visibility--screen-reader"
+                    >
+                      privacy.setting3.category
+                    </span>
+                  </span>
+                </legend>
+                <div>
+                  <div
+                    class="ds-c-choice-wrapper"
+                  >
+                    <input
+                      checked=""
+                      class="ds-c-choice"
+                      id="radio_cookie-key3_8"
+                      name="cookie-key3"
+                      type="radio"
+                      value="0"
+                    />
+                    <label
+                      class="ds-c-label"
+                      for="radio_cookie-key3_8"
+                    >
+                      <span
+                        class=""
+                      >
+                        privacy.allow
+                      </span>
+                    </label>
+                  </div>
+                </div>
+                <div>
+                  <div
+                    class="ds-c-choice-wrapper"
+                  >
+                    <input
+                      class="ds-c-choice"
+                      id="radio_cookie-key3_9"
+                      name="cookie-key3"
+                      type="radio"
+                      value="1"
+                    />
+                    <label
+                      class="ds-c-label"
+                      for="radio_cookie-key3_9"
+                    >
+                      <span
+                        class=""
+                      >
+                        privacy.dontAllow
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>,
+  "container": <div>
+    <table
+      class="ds-c-table ds-c-table--borderless hc-c-privacy-settings-table"
+    >
+      <thead>
+        <tr>
+          <th
+            scope="col"
+          >
+            privacy.category
+          </th>
+          <th
+            scope="col"
+          >
+            privacy.description
+          </th>
+          <th
+            scope="col"
+          >
+            privacy.status
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td
+            data-title="privacy.category"
+          >
+            privacy.setting1.category
+          </td>
+          <td
+            data-title="privacy.description"
+          >
+            privacy.setting1.description
+          </td>
+          <td
+            data-title="privacy.status"
+          >
+            <fieldset
+              class="ds-c-fieldset ds-u-margin-top--0"
+            >
+              <legend
+                class="ds-c-label"
+                id="field_1-label"
+              >
+                <span
+                  class=""
+                >
+                  <span
+                    class="ds-u-visibility--screen-reader"
+                  >
+                    privacy.setting1.category
+                  </span>
+                </span>
+              </legend>
+              <div>
+                <div
+                  class="ds-c-choice-wrapper"
+                >
+                  <input
+                    checked=""
+                    class="ds-c-choice"
+                    id="radio_cookie-key1_2"
+                    name="cookie-key1"
+                    type="radio"
+                    value="0"
+                  />
+                  <label
+                    class="ds-c-label"
+                    for="radio_cookie-key1_2"
+                  >
+                    <span
+                      class=""
+                    >
+                      privacy.allow
+                    </span>
+                  </label>
+                </div>
+              </div>
+              <div>
+                <div
+                  class="ds-c-choice-wrapper"
+                >
+                  <input
+                    class="ds-c-choice"
+                    id="radio_cookie-key1_3"
+                    name="cookie-key1"
+                    type="radio"
+                    value="1"
+                  />
+                  <label
+                    class="ds-c-label"
+                    for="radio_cookie-key1_3"
+                  >
+                    <span
+                      class=""
+                    >
+                      privacy.dontAllow
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </td>
+        </tr>
+        <tr>
+          <td
+            data-title="privacy.category"
+          >
+            privacy.setting2.category
+          </td>
+          <td
+            data-title="privacy.description"
+          >
+            privacy.setting2.description
+          </td>
+          <td
+            data-title="privacy.status"
+          >
+            <fieldset
+              class="ds-c-fieldset ds-u-margin-top--0"
+            >
+              <legend
+                class="ds-c-label"
+                id="field_4-label"
+              >
+                <span
+                  class=""
+                >
+                  <span
+                    class="ds-u-visibility--screen-reader"
+                  >
+                    privacy.setting2.category
+                  </span>
+                </span>
+              </legend>
+              <div>
+                <div
+                  class="ds-c-choice-wrapper"
+                >
+                  <input
+                    class="ds-c-choice"
+                    id="radio_cookie-key2_5"
+                    name="cookie-key2"
+                    type="radio"
+                    value="0"
+                  />
+                  <label
+                    class="ds-c-label"
+                    for="radio_cookie-key2_5"
+                  >
+                    <span
+                      class=""
+                    >
+                      privacy.allow
+                    </span>
+                  </label>
+                </div>
+              </div>
+              <div>
+                <div
+                  class="ds-c-choice-wrapper"
+                >
+                  <input
+                    checked=""
+                    class="ds-c-choice"
+                    id="radio_cookie-key2_6"
+                    name="cookie-key2"
+                    type="radio"
+                    value="1"
+                  />
+                  <label
+                    class="ds-c-label"
+                    for="radio_cookie-key2_6"
+                  >
+                    <span
+                      class=""
+                    >
+                      privacy.dontAllow
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </td>
+        </tr>
+        <tr>
+          <td
+            data-title="privacy.category"
+          >
+            privacy.setting3.category
+          </td>
+          <td
+            data-title="privacy.description"
+          >
+            privacy.setting3.description
+          </td>
+          <td
+            data-title="privacy.status"
+          >
+            <fieldset
+              class="ds-c-fieldset ds-u-margin-top--0"
+            >
+              <legend
+                class="ds-c-label"
+                id="field_7-label"
+              >
+                <span
+                  class=""
+                >
+                  <span
+                    class="ds-u-visibility--screen-reader"
+                  >
+                    privacy.setting3.category
+                  </span>
+                </span>
+              </legend>
+              <div>
+                <div
+                  class="ds-c-choice-wrapper"
+                >
+                  <input
+                    checked=""
+                    class="ds-c-choice"
+                    id="radio_cookie-key3_8"
+                    name="cookie-key3"
+                    type="radio"
+                    value="0"
+                  />
+                  <label
+                    class="ds-c-label"
+                    for="radio_cookie-key3_8"
+                  >
+                    <span
+                      class=""
+                    >
+                      privacy.allow
+                    </span>
+                  </label>
+                </div>
+              </div>
+              <div>
+                <div
+                  class="ds-c-choice-wrapper"
+                >
+                  <input
+                    class="ds-c-choice"
+                    id="radio_cookie-key3_9"
+                    name="cookie-key3"
+                    type="radio"
+                    value="1"
+                  />
+                  <label
+                    class="ds-c-label"
+                    for="radio_cookie-key3_9"
+                  >
+                    <span
+                      class=""
+                    >
+                      privacy.dontAllow
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
 `;

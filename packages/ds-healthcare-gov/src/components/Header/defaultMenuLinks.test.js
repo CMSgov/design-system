@@ -31,19 +31,16 @@ describe('MenuList', function () {
     });
 
     it('returns array of menu list objects with subpath', () => {
-      expect(defaultMenuLinks({ locale: 'en', subpath: 'tax-tool/' })).toMatchSnapshot();
+      expect(defaultMenuLinks({ subpath: 'tax-tool/' })).toMatchSnapshot();
     });
 
     it('returns array of menu list objects with absolute URLs', () => {
-      expect(
-        defaultMenuLinks({ locale: 'en', primaryDomain: 'https://www.healthcare.gov' })
-      ).toMatchSnapshot();
+      expect(defaultMenuLinks({ primaryDomain: 'https://www.healthcare.gov' })).toMatchSnapshot();
     });
 
     it('returns array of menu list objects with custom locale switch link', () => {
       expect(
         defaultMenuLinks({
-          locale: 'en',
           switchLocaleLink: 'https://ayudalocal.cuidadodesalud.gov/es',
         })
       ).toMatchSnapshot();
@@ -61,19 +58,25 @@ describe('MenuList', function () {
     });
 
     it('returns array of menu list objects with subpath', () => {
-      expect(defaultMenuLinks({ locale: 'es', subpath: 'tax-tool/' })).toMatchSnapshot();
+      setLanguage('es');
+      expect(defaultMenuLinks({ subpath: 'tax-tool/' })).toMatchSnapshot();
+      setLanguage('en');
     });
 
     it('returns array of menu list objects with absolute URLs', () => {
+      setLanguage('es');
       expect(
-        defaultMenuLinks({ locale: 'es', primaryDomain: 'https://www.cuidadodesalud.gov' })
+        defaultMenuLinks({ primaryDomain: 'https://www.cuidadodesalud.gov' })
       ).toMatchSnapshot();
+      setLanguage('en');
     });
 
     it('returns array of menu list objects with custom locale switch link', () => {
+      setLanguage('es');
       expect(
-        defaultMenuLinks({ locale: 'es', switchLocaleLink: 'https://localhelp.healthcare.gov' })
+        defaultMenuLinks({ switchLocaleLink: 'https://localhelp.healthcare.gov' })
       ).toMatchSnapshot();
+      setLanguage('en');
     });
   });
 });
