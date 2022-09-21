@@ -4,7 +4,6 @@ module.exports = {
   testURL: 'http://localhost',
   setupFiles: [require.resolve('react-app-polyfill/stable')],
   setupFilesAfterEnv: [`<rootDir>/../setupTests.js`],
-  snapshotSerializers: ['enzyme-to-json/serializer'],
   testPathIgnorePatterns: [
     'dist/',
     'node_modules/',

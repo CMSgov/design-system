@@ -1,27 +1,29 @@
 import InlineLinkLists from './InlineLinkLists';
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 
-const t = (key) => key;
+const t = (key: string) => key;
 
 describe('InlineLinkLists', function () {
   it('renders lists of links', () => {
-    expect(shallow(<InlineLinkLists t={t} />)).toMatchSnapshot();
+    const { container } = render(<InlineLinkLists t={t} />);
+    expect(container).toMatchSnapshot();
   });
 
   it('includes a lang attribute on language links', () => {
-    const wrapper = shallow(<InlineLinkLists t={t} />);
-    const link = wrapper
-      .find('.ds-c-list')
-      .at(2) // Languages list is the 3rd list
-      .find('a')
-      .first();
-    expect(link.prop('lang')).toMatch(/[a-z][a-z]/);
+    render(<InlineLinkLists t={t} />);
+    const links = screen.getAllByRole('link');
+    let matching = 0;
+    links.forEach((l) => {
+      if (l.lang) matching++;
+    });
+    expect(matching > 0).toBeTruthy();
   });
 
   it('renders lists of links with absolute URLs', () => {
-    expect(
-      shallow(<InlineLinkLists t={t} primaryDomain="https://www.healthcare.gov" />)
-    ).toMatchSnapshot();
+    const { container } = render(
+      <InlineLinkLists t={t} primaryDomain="https://www.healthcare.gov" />
+    );
+    expect(container).toMatchSnapshot();
   });
 });

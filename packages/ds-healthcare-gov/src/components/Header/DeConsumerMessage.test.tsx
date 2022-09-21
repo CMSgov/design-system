@@ -1,17 +1,17 @@
 import DeConsumerMessage from './DeConsumerMessage';
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 
 const t = (key, data) => key + (data ? ` | ${JSON.stringify(data)}` : '');
 
 describe('DeConsumerMessage', function () {
   it('renders message with broker name', () => {
-    expect(
-      shallow(<DeConsumerMessage t={t} deBrokerName="Acme Co." />).shallow()
-    ).toMatchSnapshot();
+    const { container } = render(<DeConsumerMessage t={t} deBrokerName="Acme Co." />);
+    expect(container).toMatchSnapshot();
   });
 
   it('renders message with fallback broker name', () => {
-    expect(shallow(<DeConsumerMessage t={t} />).shallow()).toMatchSnapshot();
+    const { container } = render(<DeConsumerMessage t={t} />);
+    expect(container).toMatchSnapshot();
   });
 });
