@@ -32,7 +32,7 @@
     "test:unit": "yarn jest --config=tests/unit/jest.config.js",
     "test:unit:update": "yarn test:unit --updateSnapshot",
     "test:browser": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.25.0-focal yarn playwright test --config tests/browser/playwright.config.ts",
-    "test:browser:update": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.25.0-focal playwright test --config tests/browser/playwright.config.ts -u",
+    "test:browser:update": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.25.0-focal yarn playwright test --config tests/browser/playwright.config.ts -u",
     "type-check": "yarn tsc --noEmit"
   },
   "husky": {
