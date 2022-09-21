@@ -123,6 +123,8 @@ export interface HeaderProps {
    * Element added to display content on Header bottom section
    */
   headerBottom?: React.ReactNode;
+  isMenuOpen?: boolean;
+  onMenuToggle?: () => void;
 }
 
 export const VARIATION_NAMES = {
@@ -137,6 +139,7 @@ export const VARIATION_NAMES = {
  */
 export const Header = (props: HeaderProps) => {
   const [openMenu, setOpenMenu] = useState(false);
+  const isControlledMenu = props.isMenuOpen !== undefined && props.onMenuToggle !== undefined;
   const t = tWithLanguage(props.initialLanguage);
 
   if (props.initialLanguage) {
@@ -183,7 +186,11 @@ export const Header = (props: HeaderProps) => {
    * within ActionMenu is clicked.
    */
   function handleMenuToggleClick() {
-    setOpenMenu(!openMenu);
+    if (!isControlledMenu) {
+      setOpenMenu(!openMenu);
+    } else {
+      props.onMenuToggle();
+    }
   }
 
   const classes = classnames(`hc-c-header hc-c-header--${variation()}`, props.className);
@@ -229,13 +236,13 @@ export const Header = (props: HeaderProps) => {
               firstName={props.firstName}
               onMenuToggleClick={handleMenuToggleClick}
               loggedIn={props.loggedIn}
-              open={openMenu}
+              open={isControlledMenu ? props.isMenuOpen : openMenu}
               links={links}
             />
             <Menu
               beforeLinks={beforeMenuLinks()}
               links={links}
-              open={openMenu}
+              open={isControlledMenu ? props.isMenuOpen : openMenu}
               submenuTop={props.submenuTop}
               submenuBottom={props.submenuBottom}
             />
