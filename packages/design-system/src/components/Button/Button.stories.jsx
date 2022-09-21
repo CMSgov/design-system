@@ -68,9 +68,6 @@ export const AnchorButton = Template.bind({});
 AnchorButton.args = {
   href: '!#',
 };
-AnchorButton.parameters = {
-  loki: { skip: true },
-};
 
 export const VariationsOnDark = () => (
   <>
