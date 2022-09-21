@@ -16,7 +16,7 @@
 ### If this is a change to code:
 
 - [ ] Created or updated unit tests to cover the logic added
-- [ ] Updated unit test snapshots (`yarn update-snapshots`) and loki reference images **if necessary** (`yarn loki && yarn loki:healthcare && yarn loki:medicare`)
+- [ ] If necessary, updated unit-test snapshots (`yarn test:unit:update`) and browser-test snapshots (`yarn test:browser:update`)
 
 ### If this is a change to documentation:
 
