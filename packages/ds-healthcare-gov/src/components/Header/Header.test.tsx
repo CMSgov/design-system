@@ -118,4 +118,20 @@ describe('Header', function () {
     const { container } = makeHeader({ primaryDomain: 'https://www.healthcare.gov' });
     expect(container).toMatchSnapshot();
   });
+
+  it('toggles open menu for fully controlled operation', () => {
+    const onMenuToggle = jest.fn();
+    makeHeader({
+      isMenuOpen: false,
+      onMenuToggle,
+    });
+
+    const menuButton = screen.getByRole('button', { name: 'Open menu' });
+    const menu = screen.getByRole('list');
+    expect(menuButton).toHaveAttribute('aria-expanded', 'false');
+    expect(menu).toHaveClass('ds-u-display--none');
+
+    userEvent.click(menuButton);
+    expect(onMenuToggle).toHaveBeenCalled();
+  });
 });
