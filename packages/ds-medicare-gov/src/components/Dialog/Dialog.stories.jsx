@@ -37,7 +37,6 @@ export default {
         type: 'code',
       },
     },
-    loki: { skip: true },
   },
 };
 
