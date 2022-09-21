@@ -1,7 +1,7 @@
-import { ChoiceList } from '@cmsgov/design-system';
 import PrivacySettingsTable from './PrivacySettingsTable';
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 const defaultProps = {
   t: (key) => key,
@@ -10,25 +10,24 @@ const defaultProps = {
     { settingsKey: 'key2', translationKey: 'setting2', value: '1' },
     { settingsKey: 'key3', translationKey: 'setting3', value: '0' },
   ],
-  setPrivacySetting: () => {},
+  setPrivacySetting: jest.fn(),
 };
 
-function render(props) {
+function makePrivacySettingsTable(props) {
   props = Object.assign({}, defaultProps, props);
-  const wrapper = shallow(<PrivacySettingsTable {...props} />);
-  return { wrapper, props };
+  return render(<PrivacySettingsTable {...props} />);
 }
 
 describe('<PrivacySettingsTable />', function () {
   it('renders the privacy settings table', () => {
-    expect(render().wrapper).toMatchSnapshot();
+    expect(makePrivacySettingsTable()).toMatchSnapshot();
   });
 
   it('calls the setPrivacySetting prop on Choice change', () => {
     const setPrivacySetting = jest.fn();
-    const { wrapper } = render({ setPrivacySetting });
-    const choiceList = wrapper.find(ChoiceList).first();
-    choiceList.props().onChange({ target: { value: '1' } });
+    makePrivacySettingsTable({ setPrivacySetting });
+    const choice = screen.getAllByRole('radio');
+    userEvent.click(choice[1]);
     expect(setPrivacySetting).toHaveBeenCalledWith('key1', '1');
   });
 });

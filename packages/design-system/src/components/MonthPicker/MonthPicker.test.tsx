@@ -2,6 +2,7 @@ import React from 'react';
 import MonthPicker from './MonthPicker';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { setLanguage } from '@cmsgov/design-system';
 
 const defaultProps = {
   name: 'months',
@@ -72,7 +73,8 @@ describe('MonthPicker', () => {
       'noviembre',
       'diciembre',
     ];
-    const { container } = renderMonthPicker({ locale: 'es' });
+    setLanguage('es');
+    const { container } = renderMonthPicker();
 
     const labels = container.querySelectorAll('label.ds-c-label'); // eslint-disable-line testing-library/no-container, testing-library/no-node-access
     Array.from(labels).forEach((label, i) => {
@@ -83,6 +85,7 @@ describe('MonthPicker', () => {
     checkboxes.forEach((check, i) =>
       expect(check).toHaveAttribute('aria-label', longMonthNames[i])
     );
+    setLanguage('en');
   });
 
   it('corresponds choice values to month numbers', () => {

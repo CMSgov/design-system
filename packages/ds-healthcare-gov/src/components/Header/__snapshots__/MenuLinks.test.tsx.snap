@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuLinks renders list of links 1`] = `
+<div>
+  <ul
+    class="hc-c-menu__links ds-c-list ds-c-list--bare"
+  >
+    <li
+      class="ds-u-margin--0 "
+    >
+      <a
+        class="hc-c-menu__link"
+        href="#foo"
+      >
+        Foo
+      </a>
+    </li>
+    <li
+      class="ds-u-margin--0 "
+    >
+      <a
+        class="hc-c-menu__link"
+        href="#bar"
+      >
+        Bar
+      </a>
+    </li>
+    <li
+      class="ds-u-margin--0 "
+    >
+      <a
+        class="hc-c-menu__link"
+        href="#baz"
+      >
+        Baz
+      </a>
+    </li>
+  </ul>
+</div>
+`;
