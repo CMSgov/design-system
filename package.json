@@ -25,7 +25,7 @@
     "serve:docs": "yarn --cwd ./packages/docs serve",
     "start": "yarn --cwd ./packages/docs develop",
     "storybook": "start-storybook -p 6006",
-    "test": "yarn test:unit && yarn test:a11y core",
+    "test": "yarn test:unit && yarn test:a11y",
     "posttest": "yarn lint",
     "test-coverage": "yarn cmsds test ./packages --collectCoverage",
     "test:a11y": "yarn playwright test --config tests/a11y/playwright.config.ts",
