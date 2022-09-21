@@ -21,7 +21,6 @@ export default {
       inlineStories: false,
       page: DocsPage,
     },
-    loki: { skip: true },
   },
   argTypes: {},
   args: {
@@ -58,7 +57,3 @@ export const ViewDialog = () => (
     showSessionEndButton
   />
 );
-
-// ViewDialog.parameters = {
-//   loki: { skip: false }
-// };
