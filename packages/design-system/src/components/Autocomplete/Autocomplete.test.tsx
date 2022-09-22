@@ -20,7 +20,7 @@ function makeAutocomplete(customProps = {}) {
 describe('Autocomplete', () => {
   it('renders Autocomplete component', () => {
     const { container } = makeAutocomplete();
-    const page = container.firstChild; // eslint-disable-line
+    const page = container.firstChild;
     expect(page).toMatchSnapshot();
   });
 
@@ -111,14 +111,14 @@ describe('Autocomplete', () => {
 
   it('renders default class names', () => {
     const { container } = makeAutocomplete();
-    const child = container.querySelectorAll('.ds-c-autocomplete'); // eslint-disable-line
+    const child = container.querySelectorAll('.ds-c-autocomplete');
 
     expect(child.length).toEqual(1);
   });
 
   it('renders custom class names', () => {
     const { container } = makeAutocomplete({ className: 'additional-class' });
-    const child = container.querySelector('.ds-c-autocomplete'); // eslint-disable-line
+    const child = container.querySelector('.ds-c-autocomplete');
 
     expect(child).toHaveClass('additional-class');
   });

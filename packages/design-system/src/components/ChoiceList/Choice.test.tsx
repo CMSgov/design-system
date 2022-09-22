@@ -90,7 +90,7 @@ describe('Choice', () => {
 
   it('applies custom class to label', () => {
     const { container } = renderChoice({ labelClassName: 'bar' });
-    const label = container.querySelector('label'); // eslint-disable-line testing-library/no-container, testing-library/no-node-access
+    const label = container.querySelector('label');
     expect(label).toHaveClass('bar');
   });
 
@@ -114,7 +114,7 @@ describe('Choice', () => {
 
   it('applies additional classNames to root element', () => {
     const { container } = renderChoice({ className: 'foo' });
-    const el = container.firstChild as HTMLElement; // eslint-disable-line testing-library/no-container, testing-library/no-node-access
+    const el = container.firstChild as HTMLElement;
     expect(el).toHaveClass('foo');
   });
 
@@ -150,7 +150,7 @@ describe('Choice', () => {
     );
 
     const idRegex = new RegExp(`checkbox_${props.name}_[0-9]+`);
-    const labels = container.querySelectorAll('label'); // eslint-disable-line testing-library/no-container, testing-library/no-node-access
+    const labels = container.querySelectorAll('label');
     const labelA = labels[0];
     const labelB = labels[1];
     const inputA = screen.getByDisplayValue('a');
