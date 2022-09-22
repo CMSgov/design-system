@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import { MdxQuery } from '../helpers/graphQLTypes';
 import useTheme from '../helpers/useTheme';
-import ContentRenderer from '../components/ContentRenderer';
+import ContentRenderer from '../components/Content/ContentRenderer';
 
 // Main landing page for site
 const IndexPage = ({ data, location }: MdxQuery) => {

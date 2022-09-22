@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 import Layout from './Layout';
 import { MdxQuery } from '../helpers/graphQLTypes';
 import useTheme from '../helpers/useTheme';
-import ContentRenderer from './ContentRenderer';
+import ContentRenderer from './Content/ContentRenderer';
 
 /**
  * Template for information content pages.
