@@ -59,7 +59,6 @@ const ColorSwatchList = ({ backgroundClass, colorNames, preface, theme }: ColorS
 
     setColorList(updatedColorList);
   }, [
-    colorList,
     // If the theme changes, we need to recalculate our hex values
     theme,
   ]);
