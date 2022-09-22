@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/cms-design-system-docs",
-  "version": "4.0.3",
+  "version": "4.0.4",
   "private": true,
   "description": "CMS Design System Documentation",
   "keywords": [
@@ -15,7 +15,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@cmsgov/design-system": "4.0.3",
+    "@cmsgov/design-system": "4.0.4",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "classnames": "^2.3.1",
