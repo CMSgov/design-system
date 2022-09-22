@@ -10,7 +10,7 @@ import {
 } from '@cmsgov/design-system';
 import { graphql, useStaticQuery } from 'gatsby';
 import ContentRenderer from './ContentRenderer';
-import { ComponentPropQuery, PropQuery } from '../helpers/graphQLTypes';
+import { ComponentPropQuery, PropQuery } from '../../helpers/graphQLTypes';
 
 export interface PropTableDataItem {
   name: string;

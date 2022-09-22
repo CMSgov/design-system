@@ -5,9 +5,9 @@ import { Button, CloseIconThin, MenuIconThin, VerticalNav } from '@cmsgov/design
 import { VerticalNavItemProps } from '@cmsgov/design-system/dist/components/VerticalNav/VerticalNavItem';
 import { useStaticQuery, graphql } from 'gatsby';
 import ThemeSwitcher from './ThemeSwitcher';
-import { LocationInterface, NavDataQuery } from '../helpers/graphQLTypes';
-import { convertToNavItems, organizeNavItems } from '../helpers/navDataFormatUtils';
-import GithubIcon from './GithubIcon';
+import { LocationInterface, NavDataQuery } from '../../helpers/graphQLTypes';
+import { convertToNavItems, organizeNavItems } from '../../helpers/navDataFormatUtils';
+import GithubIcon from '../Icons/GithubIcon';
 
 interface DocSiteNavProps {
   location: LocationInterface;

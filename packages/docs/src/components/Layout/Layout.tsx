@@ -8,12 +8,12 @@ import {
   LocationInterface,
   FrontmatterInterface,
   TableOfContentsItem,
-} from '../helpers/graphQLTypes';
+} from '../../helpers/graphQLTypes';
 import TableOfContents from './TableOfContents';
 import TableOfContentsMobile from './TableOfContentsMobile';
 import PageHeader from './PageHeader';
 
-import '../styles/index.scss';
+import '../../styles/index.scss';
 
 export type PageStatus = 'draft' | 'do not use';
 
