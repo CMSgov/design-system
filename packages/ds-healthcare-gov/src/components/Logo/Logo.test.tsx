@@ -1,13 +1,15 @@
 import Logo from './Logo';
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 
 describe('Logo', function () {
   it('renders English logo', () => {
-    expect(shallow(<Logo />)).toMatchSnapshot();
+    const { container } = render(<Logo />);
+    expect(container).toMatchSnapshot();
   });
 
   it('renders Spanish logo', () => {
-    expect(shallow(<Logo locale="es" />)).toMatchSnapshot();
+    const { container } = render(<Logo locale="es" />);
+    expect(container).toMatchSnapshot();
   });
 });

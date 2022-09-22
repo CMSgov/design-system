@@ -1,8 +1,9 @@
-import { EventCategory, MAX_LENGTH, sendLinkEvent } from '../analytics';
-import React from 'react';
-import { alertSendsAnalytics } from '../flags';
+import React, { useRef } from 'react';
 import classNames from 'classnames';
+import mergeRefs from '../utilities/mergeRefs';
 import uniqueId from 'lodash/uniqueId';
+import useAutofocus from '../utilities/useAutoFocus';
+import useAlertAnalytics from './useAlertAnalytics';
 import { InfoCircleIcon, AlertCircleIcon, WarningIcon, CheckCircleIcon } from '../Icons';
 import { t } from '../i18n';
 
@@ -11,7 +12,7 @@ export type AlertRole = 'alert' | 'alertdialog' | 'region' | 'status';
 export type AlertVariation = 'error' | 'warn' | 'success';
 export type AlertWeight = 'lightweight';
 
-export interface AlertProps {
+export interface BaseAlertProps {
   /**
    * Access a reference to the `alert` `div` element
    */
@@ -63,99 +64,69 @@ export interface AlertProps {
    * A string corresponding to the `Alert` variation classes (`error`, `warn`, `success`)
    */
   variation?: AlertVariation;
-
-  [key: string]: any;
 }
 
-// Omit props that we override with values from the Alert
-type OmitAlertProps = 'role' | 'children' | 'className' | 'ref';
+export type AlertProps = BaseAlertProps &
+  Omit<React.ComponentPropsWithRef<'div'>, keyof BaseAlertProps>;
 
-export class Alert extends React.PureComponent<
-  Omit<React.ComponentPropsWithRef<'div'>, OmitAlertProps> & AlertProps,
-  any
-> {
-  static defaultProps = {
-    role: 'region',
-    headingLevel: '2',
-  };
+export const Alert: React.FC<AlertProps> = (props: AlertProps) => {
+  const { headingRef, bodyRef } = useAlertAnalytics(props);
+  const focusRef = useAutofocus(props.autoFocus);
+  const headingId = useRef(props.headingId ?? uniqueId('alert_')).current;
+  const a11yLabelId = useRef(uniqueId('alert_a11y_label_')).current;
 
-  // Alert class properties
-  alertTextRef: any;
-  focusRef: any;
-  headingId: string;
-  a11yLabelId: string;
-  eventHeadingText: string;
-
-  constructor(props: AlertProps) {
-    super(props);
-    this.alertTextRef = null;
-    this.focusRef = null;
-    this.headingId = this.props.headingId || uniqueId('alert_');
-    this.a11yLabelId = this.props.a11yLabelId || uniqueId('alert_a11y_label_');
-
-    if (process.env.NODE_ENV !== 'production') {
-      if (!props.heading && !props.children) {
-        console.warn(
-          `Empty <Alert> components are not allowed, please use the 'heading' prop or include children.`
-        );
-      }
+  if (process.env.NODE_ENV !== 'production') {
+    if (!props.heading && !props.children) {
+      console.warn(
+        `Empty <Alert> components are not allowed, please use the 'heading' prop or include children.`
+      );
     }
   }
 
-  componentDidMount(): void {
-    // Automatically set focus on alert element when `autoFocus` prop is used
-    if (this.props.autoFocus && this.focusRef) {
-      this.focusRef.focus();
-    }
+  const {
+    children,
+    className,
+    autoFocus,
+    heading,
+    headingId: _headingId,
+    headingLevel,
+    hideIcon,
+    alertRef,
+    role,
+    variation,
+    weight,
+    analytics,
+    analyticsLabelOverride,
+    ...alertProps
+  } = props;
 
-    const { analytics, analyticsLabelOverride, variation } = this.props;
-
-    if (alertSendsAnalytics() && analytics !== false) {
-      /* Send analytics event for `error`, `warn`, `success` alert variations */
-      if (variation) {
-        const heading = this.props.heading || this.props.children;
-        let eventHeadingText;
-
-        if (analyticsLabelOverride) {
-          eventHeadingText = analyticsLabelOverride;
-        } else if (typeof heading === 'string') {
-          eventHeadingText = heading.substring(0, MAX_LENGTH);
-        } else {
-          const eventHeadingTextElement =
-            (this.alertTextRef &&
-              this.alertTextRef.getElementsByClassName('ds-c-alert__heading')[0]) ||
-            (this.alertTextRef && this.alertTextRef.getElementsByClassName('ds-c-alert__body')[0]);
-          eventHeadingText =
-            eventHeadingTextElement && eventHeadingTextElement.textContent
-              ? eventHeadingTextElement.textContent.substring(0, MAX_LENGTH)
-              : '';
-        }
-
-        sendLinkEvent({
-          event_name: 'alert_impression',
-          event_type: EventCategory.UI_INTERACTION,
-          ga_eventAction: 'alert impression',
-          ga_eventCategory: EventCategory.UI_COMPONENTS,
-          ga_eventLabel: eventHeadingText,
-          heading: eventHeadingText,
-          type: variation,
-        });
-      }
-    }
+  let headingElement;
+  if (heading) {
+    const Heading = `h${headingLevel}` as const;
+    headingElement = (
+      <Heading className="ds-c-alert__heading" ref={headingRef}>
+        {heading}
+      </Heading>
+    );
   }
 
-  heading(): React.ReactElement | void {
-    const { headingLevel, heading } = this.props;
-    if (heading) {
-      const Heading = `h${headingLevel}` as const;
-      return <Heading className="ds-c-alert__heading">{heading}</Heading>;
-    }
-  }
+  const classes = classNames(
+    'ds-c-alert',
+    hideIcon && 'ds-c-alert--hide-icon',
+    variation && `ds-c-alert--${variation}`,
+    weight && `ds-c-alert--${weight}`,
+    className
+  );
+
+  const a11yLabel = (
+    <span className="ds-c-alert__a11y-label ds-u-visibility--screen-reader" id={a11yLabelId}>
+      {t(`alert.${variation ?? 'defaultLabel'}`)}:{' '}
+    </span>
+  );
 
   // getting proper icon for alert variation
-  getIcon(): React.ReactElement | null {
+  function getIcon() {
     const iconClass = 'ds-c-alert__icon';
-    const { hideIcon, variation } = this.props;
     if (hideIcon) {
       return null;
     }
@@ -172,65 +143,34 @@ export class Alert extends React.PureComponent<
     }
   }
 
-  render(): JSX.Element {
-    const {
-      children,
-      className,
-      autoFocus,
-      heading,
-      hideIcon,
-      alertRef,
-      role,
-      variation,
-      weight,
-      ...alertProps
-    } = this.props;
-
-    const classes = classNames(
-      'ds-c-alert',
-      hideIcon && 'ds-c-alert--hide-icon',
-      variation && `ds-c-alert--${variation}`,
-      weight && `ds-c-alert--${weight}`,
-      className
-    );
-
-    const a11yLabel = (
-      <span className="ds-c-alert__a11y-label ds-u-visibility--screen-reader" id={this.a11yLabelId}>
-        {t(`alert.${variation ?? 'defaultLabel'}`)}:{' '}
-      </span>
-    );
-
-    return (
-      <div
-        className={classes}
-        ref={(ref) => {
-          this.alertTextRef = ref;
-          if (autoFocus) {
-            this.focusRef = ref;
-          } else if (alertRef) {
-            alertRef(ref);
-          }
-        }}
-        tabIndex={alertRef || autoFocus ? -1 : null}
-        role={role}
-        aria-labelledby={heading ? this.headingId : this.a11yLabelId}
-        {...alertProps}
-      >
-        {this.getIcon()}
-        <div className="ds-c-alert__body" id={this.headingId}>
-          {heading ? (
-            <div className="ds-c-alert__header ds-c-alert__heading">
-              {a11yLabel}
-              {this.heading()}
-            </div>
-          ) : (
-            a11yLabel
-          )}
-          {children}
-        </div>
+  return (
+    <div
+      className={classes}
+      ref={mergeRefs([alertRef, focusRef])}
+      tabIndex={alertRef || autoFocus ? -1 : null}
+      role={role}
+      aria-labelledby={heading ? headingId : a11yLabelId}
+      {...alertProps}
+    >
+      {getIcon()}
+      <div className="ds-c-alert__body" id={headingId} ref={bodyRef}>
+        {heading ? (
+          <div className="ds-c-alert__header ds-c-alert__heading">
+            {a11yLabel}
+            {headingElement}
+          </div>
+        ) : (
+          a11yLabel
+        )}
+        {children}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
+Alert.defaultProps = {
+  role: 'region',
+  headingLevel: '2',
+};
 
 export default Alert;
