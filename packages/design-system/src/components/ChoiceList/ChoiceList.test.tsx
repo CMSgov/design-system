@@ -86,7 +86,7 @@ describe('ChoiceList', () => {
       renderChoiceList();
       const legendEl = screen.getByText('Foo');
 
-      expect(legendEl.parentElement.tagName).toBe('LEGEND'); // eslint-disable-line
+      expect(legendEl.parentElement.tagName).toBe('LEGEND');
     });
 
     it('passes checked prop', () => {

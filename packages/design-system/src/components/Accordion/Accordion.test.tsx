@@ -22,7 +22,7 @@ function renderAccordion(customProps = {}) {
 describe('Accordion', function () {
   it('renders accordion', () => {
     const { container, asFragment } = renderAccordion();
-    const accordion = container.firstChild as HTMLElement; // eslint-disable-line testing-library/no-node-access
+    const accordion = container.firstChild as HTMLElement;
 
     expect(accordion.classList).toContain('ds-c-accordion');
     expect(asFragment()).toMatchSnapshot();
@@ -30,14 +30,14 @@ describe('Accordion', function () {
 
   it('renders additional className', () => {
     const { container } = renderAccordion({ className: 'ds-u-test' });
-    const accordion = container.firstChild as HTMLElement; // eslint-disable-line testing-library/no-node-access
+    const accordion = container.firstChild as HTMLElement;
 
     expect(accordion.classList).toContain('ds-u-test');
   });
 
   it('renders ds-c-accordion--bordered class when a bordered prop is set', () => {
     const { container } = renderAccordion({ bordered: true });
-    const accordion = container.firstChild as HTMLElement; // eslint-disable-line testing-library/no-node-access
+    const accordion = container.firstChild as HTMLElement;
 
     expect(accordion.classList).toContain('ds-c-accordion--bordered');
   });

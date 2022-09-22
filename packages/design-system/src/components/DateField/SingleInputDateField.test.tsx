@@ -27,7 +27,7 @@ describe('SingleInputDateField', function () {
 
   it('masks in label', function () {
     const { container } = renderField({ value: '11-01' });
-    expect(container.querySelector('.ds-c-label-mask').textContent).toContain('11/01/YYYY'); // eslint-disable-line
+    expect(container.querySelector('.ds-c-label-mask').textContent).toContain('11/01/YYYY');
   });
 
   it('calls onChange when input changes', function () {

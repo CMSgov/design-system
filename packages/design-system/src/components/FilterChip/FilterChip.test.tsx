@@ -78,7 +78,7 @@ describe('FilterChip', () => {
   it('should use alternate icon', () => {
     renderFilterChip({ useAlternateIcon: true });
     const chipEl = screen.getByRole('button');
-    const iconContainerEl = chipEl.querySelector('.ds-c-filter-chip__clear-icon-container'); // eslint-disable-line
+    const iconContainerEl = chipEl.querySelector('.ds-c-filter-chip__clear-icon-container');
 
     expect(iconContainerEl).toBeDefined();
     expect(iconContainerEl.classList).toContain('ds-c-filter-chip__clear-icon-alternate-container');

@@ -16,8 +16,8 @@ const TestLabelMask = () => {
 describe('Label mask', function () {
   it('renders default date mask, MM/DD/YYYY, when no input value set', () => {
     const { container, asFragment } = render(<TestLabelMask />);
-    const mask = container.querySelector('.ds-c-label-mask'); // eslint-disable-line
-    const input = container.querySelector('input'); // eslint-disable-line
+    const mask = container.querySelector('.ds-c-label-mask');
+    const input = container.querySelector('input');
 
     expect(input.value).toBe('');
     expect(mask.textContent).toContain('MM/DD/YYYY');
@@ -30,8 +30,8 @@ describe('Label mask', function () {
       const data = '12345678';
       const maskText = '12/34/5678';
 
-      const mask = container.querySelector('.ds-c-label-mask'); // eslint-disable-line
-      const input = container.querySelector('input'); // eslint-disable-line
+      const mask = container.querySelector('.ds-c-label-mask');
+      const input = container.querySelector('input');
 
       userEvent.type(input, data);
 
@@ -42,8 +42,8 @@ describe('Label mask', function () {
       const { container } = render(<TestLabelMask />);
       const data = '1234';
 
-      const mask = container.querySelector('.ds-c-label-mask'); // eslint-disable-line
-      const input = container.querySelector('input'); // eslint-disable-line
+      const mask = container.querySelector('.ds-c-label-mask');
+      const input = container.querySelector('input');
 
       userEvent.type(input, data);
 
@@ -55,8 +55,8 @@ describe('Label mask', function () {
       const data = '1';
       const maskText = '01/DD/YYYY';
 
-      const mask = container.querySelector('.ds-c-label-mask'); // eslint-disable-line
-      const input = container.querySelector('input'); // eslint-disable-line
+      const mask = container.querySelector('.ds-c-label-mask');
+      const input = container.querySelector('input');
 
       userEvent.type(input, data);
 
@@ -69,7 +69,7 @@ describe('Label mask', function () {
     const data = '12345678';
     const formattedData = '12/34/5678';
 
-    const input = container.querySelector('input'); // eslint-disable-line
+    const input = container.querySelector('input');
 
     userEvent.type(input, data);
     userEvent.tab();

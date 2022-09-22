@@ -1,8 +1,7 @@
-import { EventCategory, MAX_LENGTH, sendLinkEvent } from '../analytics';
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import Drawer, { DrawerProps } from '../Drawer/Drawer';
-import { helpDrawerSendsAnalytics } from '../flags';
 import classNames from 'classnames';
+import useHelpDrawerAnalytics from './useHelpDrawerAnalytics';
 
 export interface HelpDrawerProps extends DrawerProps {
   /**
@@ -23,7 +22,7 @@ export interface HelpDrawerProps extends DrawerProps {
 
 export const HelpDrawer = (props: HelpDrawerProps) => {
   const { analytics, analyticsLabelOverride, children, className, ...others } = props;
-  const headingRef = useRef<any>();
+  const headingRef = useHelpDrawerAnalytics(props);
 
   if (process.env.NODE_ENV !== 'production') {
     if (props.title) {
@@ -37,39 +36,6 @@ export const HelpDrawer = (props: HelpDrawerProps) => {
       );
     }
   }
-
-  useEffect(() => {
-    if (!helpDrawerSendsAnalytics() || analytics === false) {
-      return;
-    }
-
-    const eventHeadingText =
-      props.analyticsLabelOverride ??
-      headingRef.current?.textContent?.substring(0, MAX_LENGTH) ??
-      '';
-
-    // Send analytics event for helpdrawer open
-    sendLinkEvent({
-      event_name: 'help_drawer_opened',
-      event_type: EventCategory.UI_INTERACTION,
-      ga_eventAction: 'opened help drawer',
-      ga_eventCategory: EventCategory.UI_COMPONENTS,
-      ga_eventLabel: eventHeadingText,
-      heading: eventHeadingText,
-    });
-
-    return () => {
-      // Send analytics event for helpdrawer close
-      sendLinkEvent({
-        event_name: 'help_drawer_closed',
-        event_type: EventCategory.UI_INTERACTION,
-        ga_eventAction: 'closed help drawer',
-        ga_eventCategory: EventCategory.UI_COMPONENTS,
-        ga_eventLabel: eventHeadingText,
-        heading: eventHeadingText,
-      });
-    };
-  }, []);
 
   return (
     <Drawer

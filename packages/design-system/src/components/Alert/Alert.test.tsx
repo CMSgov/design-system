@@ -107,14 +107,14 @@ describe('Alert', function () {
       renderAlert({ heading, variation: 'error' });
       const alert = screen.getByRole('region');
       const id = alert.getAttribute('aria-labelledby');
-      expect(alert.querySelector(`#${id}`).textContent).toContain(`Alert: ${heading}`); // eslint-disable-line
+      expect(alert.querySelector(`#${id}`).textContent).toContain(`Alert: ${heading}`);
     });
 
     it('falls back aria-labelledby to a11y label when no heading is provided', () => {
       renderAlert();
       const alert = screen.getByRole('region');
       const id = alert.getAttribute('aria-labelledby');
-      expect(alert.querySelector(`#${id}`).textContent).toContain('Notice'); // eslint-disable-line
+      expect(alert.querySelector(`#${id}`).textContent).toContain('Notice');
     });
   });
 
@@ -123,6 +123,8 @@ describe('Alert', function () {
     const defaultEvent = {
       event_name: 'alert_impression',
       event_type: 'ui interaction',
+      ga_eventType: 'cmsds',
+      ga_eventValue: '',
       ga_eventCategory: 'ui components',
       ga_eventAction: 'alert impression',
       ga_eventLabel: defaultText,
@@ -143,21 +145,35 @@ describe('Alert', function () {
       jest.resetAllMocks();
     });
 
-    it('sends analytics event tracking', () => {
-      renderAlert({ variation: 'warn' });
+    it('sends analytics event with heading', () => {
+      const heading = 'Ahhh!';
+      renderAlert({ heading, variation: 'error' });
       expect(tealiumMock).toBeCalledWith({
-        ga_eventType: 'cmsds',
-        ga_eventValue: '',
         ...defaultEvent,
+        ga_eventLabel: heading,
+        heading,
+        type: 'error',
       });
+      expect(tealiumMock).toHaveBeenCalledTimes(1);
     });
 
-    it('disables analytics event tracking', () => {
+    it('sends analytics event with body-content fallback', () => {
+      renderAlert({ variation: 'warn' });
+      expect(tealiumMock).toBeCalledWith(defaultEvent);
+      expect(tealiumMock).toHaveBeenCalledTimes(1);
+    });
+
+    it('does not send analytics event for default variation', () => {
+      renderAlert();
+      expect(tealiumMock).not.toBeCalled();
+    });
+
+    it('disables analytics tracking', () => {
       renderAlert({ heading: 'dialog heading', variation: 'error', analytics: false });
       expect(tealiumMock).not.toBeCalled();
     });
 
-    it('overrides analytics event tracking', () => {
+    it('overrides analytics event content', () => {
       renderAlert({ variation: 'success', analyticsLabelOverride: 'other heading' });
       expect(tealiumMock).toBeCalledWith(
         expect.objectContaining({
@@ -165,6 +181,7 @@ describe('Alert', function () {
           heading: 'other heading',
         })
       );
+      expect(tealiumMock).toHaveBeenCalledTimes(1);
     });
   });
 });
