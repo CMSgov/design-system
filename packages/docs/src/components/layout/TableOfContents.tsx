@@ -1,5 +1,5 @@
 import React from 'react';
-import { TableOfContentsItem } from '../helpers/graphQLTypes';
+import { TableOfContentsItem } from '../../helpers/graphQLTypes';
 
 function cleanTitle(title: string) {
   return title.replace(/<[^>]*>/g, '');

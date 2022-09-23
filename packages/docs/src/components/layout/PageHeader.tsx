@@ -2,9 +2,9 @@ import React from 'react';
 import { withPrefix } from 'gatsby';
 
 import { Badge } from '@cmsgov/design-system';
-import { FrontmatterInterface } from '../helpers/graphQLTypes';
-import { makeGithubUrl, makeSketchUrl, makeStorybookUrl } from '../helpers/urlUtils';
-import GithubIcon from './GithubIcon';
+import { FrontmatterInterface } from '../../helpers/graphQLTypes';
+import { makeGithubUrl, makeSketchUrl, makeStorybookUrl } from '../../helpers/urlUtils';
+import GithubIcon from '../icons/GithubIcon';
 
 type PageHeaderProps = {
   frontmatter?: FrontmatterInterface;

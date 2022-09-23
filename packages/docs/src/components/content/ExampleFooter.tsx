@@ -2,7 +2,7 @@
 import React, { useRef, useState } from 'react';
 import uniqueId from 'lodash/uniqueId';
 import { ArrowIcon, Button } from '@cmsgov/design-system';
-import { highlightHtmlSyntax } from '../helpers/syntaxHighlighting';
+import { highlightHtmlSyntax } from '../../helpers/syntaxHighlighting';
 
 enum SnippetState {
   CLOSED = 'closed',
