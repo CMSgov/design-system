@@ -15,6 +15,6 @@ export default {
   },
 };
 
-const Template = ({ data, ...args }) => <Stars {...(args as StarsProps)} />;
+const Template = ({ ...args }) => <Stars {...(args as StarsProps)} />;
 
 export const Default = Template.bind({});

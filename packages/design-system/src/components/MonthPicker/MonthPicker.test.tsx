@@ -76,7 +76,7 @@ describe('MonthPicker', () => {
     setLanguage('es');
     const { container } = renderMonthPicker();
 
-    const labels = container.querySelectorAll('label.ds-c-label'); // eslint-disable-line testing-library/no-container, testing-library/no-node-access
+    const labels = container.querySelectorAll('label.ds-c-label');
     Array.from(labels).forEach((label, i) => {
       expect(label.textContent).toEqual(shortMonthNames[i]);
     });

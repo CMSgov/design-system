@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react';
 import {
-  Badge,
   Button,
   Table,
   TableCaption,

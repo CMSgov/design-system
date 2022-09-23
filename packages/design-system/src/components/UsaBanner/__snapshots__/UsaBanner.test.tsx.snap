@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UsaBanner renders correctly 1`] = `
+<header
+  class="ds-c-usa-banner__header"
+>
+  <svg
+    aria-hidden="false"
+    aria-labelledby="icon-2__title"
+    class="ds-c-icon ds-c-icon--usa-flag ds-c-usa-banner__header-flag"
+    focusable="false"
+    id="icon-2"
+    role="img"
+    viewBox="0 0 16 11"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <title
+      id="icon-2__title"
+    >
+      U.S. Flag
+    </title>
+    <g
+      fill="none"
+      fill-rule="evenodd"
+    >
+      <path
+        d="M0 0h16v11H0z"
+        fill="#FFF"
+      />
+      <path
+        d="M8 0h8v1H8z"
+        fill="#DB3E1F"
+      />
+      <path
+        d="M0 0h8v7H0z"
+        fill="#1E33B1"
+      />
+      <path
+        d="M8 2h8v1H8zM8 4h8v1H8zM8 6h8v1H8zM0 8h16v1H0zM0 10h16v1H0z"
+        fill="#DB3E1F"
+      />
+      <path
+        d="M1 1h1v1H1zM2 3h1v1H2zM1 5h1v1H1zM3 1h1v1H3zM4 3h1v1H4zM3 5h1v1H3zM5 1h1v1H5zM6 3h1v1H6zM5 5h1v1H5z"
+        fill="#FFF"
+      />
+    </g>
+  </svg>
+  <p
+    class="ds-c-usa-banner__header-text"
+  >
+    <span>
+      An official website of the United States government
+    </span>
+    <button
+      aria-controls="gov-banner_1"
+      aria-expanded="false"
+      class="ds-c-usa-banner__button ds-c-usa-banner__button-text"
+    >
+      Here’s how you know
+      <svg
+        aria-hidden="true"
+        class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon ds-u-margin-left--1"
+        direction="down"
+        focusable="false"
+        id="icon-3"
+        viewBox="0 0 320 512"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"
+          fill="currentColor"
+        />
+      </svg>
+    </button>
+  </p>
+</header>
+`;
