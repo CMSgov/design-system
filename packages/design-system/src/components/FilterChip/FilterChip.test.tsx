@@ -7,7 +7,7 @@ describe('FilterChip', () => {
   const renderFilterChip = (customProps = {}) => {
     const defaultProps = {
       label: 'Foo',
-      onDelete: () => {},
+      onDelete: jest.fn(),
     };
     const props = { ...defaultProps, ...customProps };
     return render(<FilterChip {...props} />);

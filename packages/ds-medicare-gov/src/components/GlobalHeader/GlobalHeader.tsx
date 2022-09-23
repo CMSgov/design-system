@@ -2,6 +2,7 @@ import React, { PureComponent, RefObject, createRef } from 'react';
 import MedicaregovLogo from './../MedicaregovLogo/MedicaregovLogo';
 import { Button } from '@cmsgov/design-system';
 import { Caret, Close, Hamburger } from '../Icons';
+import uniqueId from 'lodash/uniqueId';
 
 interface GlobalHeaderProps {
   menuButtonAriaLabel?: string;
@@ -147,12 +148,16 @@ export default class GlobalHeader extends PureComponent<GlobalHeaderProps, Globa
           <div className="m-c-globalHeader__actions">
             <nav className="m-c-globalHeader__actionsNav ds-u-display--none ds-u-md-display--block">
               <ul className="m-c-globalHeader__actionsList ds-c-list--bare ds-u-display--flex ds-u-align-items--center">
-                {actions.map((action, index) => {
+                {actions.map((action) => {
                   let el = null;
 
                   if (action.menuPanel) {
                     el = (
-                      <GlobalHeaderMenu key={index} text={action.text} panel={action.menuPanel} />
+                      <GlobalHeaderMenu
+                        key={uniqueId('m-c-actionListItem_')}
+                        text={action.text}
+                        panel={action.menuPanel}
+                      />
                     );
                   } else {
                     el = (
@@ -166,7 +171,7 @@ export default class GlobalHeader extends PureComponent<GlobalHeaderProps, Globa
                     );
                   }
 
-                  return action.hide ? <></> : <li key={index}>{el}</li>;
+                  return action.hide ? <></> : <li key={uniqueId('m-c-actionListItem_')}>{el}</li>;
                 })}
               </ul>
             </nav>
@@ -208,13 +213,13 @@ export default class GlobalHeader extends PureComponent<GlobalHeaderProps, Globa
             ) : (
               <nav>
                 <ul className="ds-c-list--bare">
-                  {actions.map((action, index) => {
+                  {actions.map((action) => {
                     let el = null;
 
                     if (action.menuPanel) {
                       el = (
                         <GlobalHeaderMenu
-                          key={index}
+                          key={uniqueId('m-c-actionListItem_')}
                           text={action.text}
                           panel={action.menuPanel}
                           mobile={true}
@@ -241,7 +246,7 @@ export default class GlobalHeader extends PureComponent<GlobalHeaderProps, Globa
                     return action.hide ? (
                       <></>
                     ) : (
-                      <li key={index} className="ds-u-margin-top--2">
+                      <li key={uniqueId('m-c-actionListItem_')} className="ds-u-margin-top--2">
                         {el}
                       </li>
                     );
