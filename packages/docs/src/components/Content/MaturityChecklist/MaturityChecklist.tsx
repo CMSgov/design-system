@@ -1,7 +1,5 @@
 import React from 'react';
-import MaturityChecklistItem from './MaturityChecklistItem';
-
-type CheckStatus = boolean | null;
+import MaturityChecklistItem, { CheckStatus } from './MaturityChecklistItem';
 
 interface MaturityChecklistProps {
   // Accessibility
