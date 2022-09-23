@@ -1,13 +1,20 @@
 .c-maturity-checklist-item {
   display: flex;
-  margin-top: 1.5em;
+  margin-top: $spacer-2;
 }
 
 .c-maturity-checklist-item__title {
   margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 1px; // Aligns with status text
 }
 
 .c-maturity-checklist-item__status {
   order: -1;
   min-width: 150px;
+
+  > svg,
+  > span {
+    vertical-align: middle;
+  }
 }
