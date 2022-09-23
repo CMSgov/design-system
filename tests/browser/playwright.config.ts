@@ -28,6 +28,12 @@ const allProjects = [
   //   use: { ...devices['iPhone 12'] },
   // },
 
+  /* Test in forced-colors mode */
+  {
+    name: 'chromium',
+    use: { ...devices['Desktop Chrome'], contextOptions: { forcedColors: 'active' } },
+  },
+
   /* Test against branded browsers. */
   // {
   //   name: 'Microsoft Edge',
