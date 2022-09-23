@@ -30,7 +30,7 @@ const allProjects = [
 
   /* Test in forced-colors mode */
   {
-    name: 'chromium - forced colors',
+    name: 'chromium-forced-colors',
     use: { ...devices['Desktop Chrome'], contextOptions: { forcedColors: 'active' } },
   },
 
