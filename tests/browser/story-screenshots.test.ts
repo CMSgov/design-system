@@ -6,6 +6,11 @@ const storySkipList = [
   'components-idle-timeout--default',
   'components-skip-nav--default-skip-nav',
   'components-skip-nav--skip-nav-example',
+  'foundations-layout-grid--equal-widths',
+  'foundations-layout-grid--column-spanning',
+  'foundations-layout-grid--fit-to-content',
+  'foundations-layout-grid--responsive-columns',
+  'patterns-one-column-page-layout--one-column-page-layout',
 ];
 
 const isSmokeTest = Boolean(process.env.SMOKE && JSON.parse(process.env.SMOKE));
