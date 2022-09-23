@@ -150,8 +150,8 @@ describe('Alert', function () {
       renderAlert({ heading, variation: 'error' });
       expect(tealiumMock).toBeCalledWith({
         ...defaultEvent,
-        ga_eventLabel: heading,
-        heading,
+        ga_eventLabel: `Alert: ${heading}`,
+        heading: `Alert: ${heading}`,
         type: 'error',
       });
       expect(tealiumMock).toHaveBeenCalledTimes(1);

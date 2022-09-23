@@ -103,11 +103,7 @@ export const Alert: React.FC<AlertProps> = (props: AlertProps) => {
   let headingElement;
   if (heading) {
     const Heading = `h${headingLevel}` as const;
-    headingElement = (
-      <Heading className="ds-c-alert__heading" ref={headingRef}>
-        {heading}
-      </Heading>
-    );
+    headingElement = <Heading className="ds-c-alert__heading">{heading}</Heading>;
   }
 
   const classes = classNames(
@@ -155,7 +151,7 @@ export const Alert: React.FC<AlertProps> = (props: AlertProps) => {
       {getIcon()}
       <div className="ds-c-alert__body" id={headingId} ref={bodyRef}>
         {heading ? (
-          <div className="ds-c-alert__header ds-c-alert__heading">
+          <div className="ds-c-alert__header ds-c-alert__heading" ref={headingRef}>
             {a11yLabel}
             {headingElement}
           </div>
