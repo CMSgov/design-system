@@ -12,11 +12,22 @@ interface MaturityChecklistItemProps {
  *
  */
 const MaturityChecklistItem = ({ status, title, children }: MaturityChecklistItemProps) => {
+  let check;
+  if (status === true) {
+    check = '[x]';
+  } else if (status === null) {
+    check = 'N/A';
+  } else {
+    check = '[ ]';
+  }
+
   return (
     <li className="c-maturity-checklist-item">
-      <h4>{title}</h4>
-      <div>{children}</div>
-      <div className="c-maturity-checklist-item__status">{status}</div>
+      <div className="c-maturity-checklist-item__description">
+        <h4 className="c-maturity-checklist-item__title">{title}</h4>
+        <div>{children}</div>
+      </div>
+      <div className="c-maturity-checklist-item__status">{check}</div>
     </li>
   );
 };

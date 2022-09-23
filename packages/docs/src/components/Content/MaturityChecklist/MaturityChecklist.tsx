@@ -29,7 +29,7 @@ interface MaturityChecklistProps {
 const MaturityChecklist = (props: MaturityChecklistProps) => (
   <section>
     <h3>Accessibility</h3>
-    <ul>
+    <ul className="ds-c-list--bare">
       <MaturityChecklistItem title="WCAG 2.1 Level AA Conformance" status={props.a11yStandards}>
         All Axe and Storybook plugins for WCAG AA compliance have passed.
       </MaturityChecklistItem>
@@ -45,7 +45,7 @@ const MaturityChecklist = (props: MaturityChecklistProps) => (
     </ul>
 
     <h3>Code</h3>
-    <ul>
+    <ul className="ds-c-list--bare">
       <MaturityChecklistItem title="Storybook" status={props.storybook}>
         Component has stories to cover all defined props.
       </MaturityChecklistItem>
@@ -61,7 +61,7 @@ const MaturityChecklist = (props: MaturityChecklistProps) => (
     </ul>
 
     <h3>Design</h3>
-    <ul>
+    <ul className="ds-c-list--bare">
       <MaturityChecklistItem title="Sketch UI-kit" status={props.completeUiKit}>
         Includes all Sketch symbols for defined options.
       </MaturityChecklistItem>
@@ -71,7 +71,7 @@ const MaturityChecklist = (props: MaturityChecklistProps) => (
     </ul>
 
     <h3>Tokens</h3>
-    <ul>
+    <ul className="ds-c-list--bare">
       <MaturityChecklistItem title="Code" status={props.tokensInCode}>
         Tokens implemented in code.
       </MaturityChecklistItem>
