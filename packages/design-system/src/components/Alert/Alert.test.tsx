@@ -127,8 +127,8 @@ describe('Alert', function () {
       ga_eventValue: '',
       ga_eventCategory: 'ui components',
       ga_eventAction: 'alert impression',
-      ga_eventLabel: defaultText,
-      heading: defaultText,
+      ga_eventLabel: `Warning: ${defaultText}`,
+      heading: `Warning: ${defaultText}`,
       type: 'warn',
     };
 
