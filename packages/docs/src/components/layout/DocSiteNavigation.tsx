@@ -7,7 +7,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import ThemeSwitcher from './ThemeSwitcher';
 import { LocationInterface, NavDataQuery } from '../../helpers/graphQLTypes';
 import { convertToNavItems, organizeNavItems } from '../../helpers/navDataFormatUtils';
-import GithubIcon from '../Icons/GithubIcon';
+import GithubIcon from '../icons/GithubIcon';
 
 interface DocSiteNavProps {
   location: LocationInterface;
