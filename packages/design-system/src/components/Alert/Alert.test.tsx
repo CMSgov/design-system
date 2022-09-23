@@ -127,8 +127,8 @@ describe('Alert', function () {
       ga_eventValue: '',
       ga_eventCategory: 'ui components',
       ga_eventAction: 'alert impression',
-      ga_eventLabel: defaultText,
-      heading: defaultText,
+      ga_eventLabel: `Warning: ${defaultText}`,
+      heading: `Warning: ${defaultText}`,
       type: 'warn',
     };
 
@@ -150,8 +150,8 @@ describe('Alert', function () {
       renderAlert({ heading, variation: 'error' });
       expect(tealiumMock).toBeCalledWith({
         ...defaultEvent,
-        ga_eventLabel: heading,
-        heading,
+        ga_eventLabel: `Alert: ${heading}`,
+        heading: `Alert: ${heading}`,
         type: 'error',
       });
       expect(tealiumMock).toHaveBeenCalledTimes(1);
