@@ -5,8 +5,6 @@ import { alertSendsAnalytics } from '../flags';
 export default function useAlertAnalytics({
   analytics,
   analyticsLabelOverride,
-  children,
-  heading,
   variation,
 }: AlertProps) {
   // Order matters! Content comes from the heading first and falls back to body if heading doesn't exist
