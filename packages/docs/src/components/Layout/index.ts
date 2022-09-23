@@ -1,1 +1,2 @@
-export { default, PageStatus } from './Layout';
+export { default } from './Layout';
+export type { PageStatus } from './Layout';
