@@ -16,16 +16,13 @@ export interface AriaModalProps {
    * instead of its default dialog.
    */
   alert?: boolean | undefined;
-
   children?: React.ReactNode;
-
   /**
    * By default, the modal is active when mounted, deactivated when unmounted.
    * However, you can also control its active/inactive state by changing
    * its mounted property instead.
    */
   mounted?: boolean | undefined;
-
   /**
    * Provide your main application node here (which the modal should
    * render outside of), and when the modal is open this application
@@ -33,7 +30,6 @@ export interface AriaModalProps {
    * This can help screen readers understand what's going on.
    */
   applicationNode?: Node | Element | undefined;
-
   /**
    * Same as `applicationNode`, but a function that returns the node
    * instead of the node itself. This can be useful or necessary in
@@ -44,7 +40,6 @@ export interface AriaModalProps {
    * without ruining your server-side rendering.
    */
   getApplicationNode?(): Node | Element | null | undefined;
-
   /**
    * By default, styles are applied inline to the dialog and underlay
    * portions of the component. However, you can disable all inline
@@ -56,7 +51,6 @@ export interface AriaModalProps {
    * but these will be the only styles applied.
    */
   includeDefaultStyles?: boolean | undefined;
-
   /**
    * Apply a class to the dialog in order to custom-style it.
    *
@@ -65,19 +59,16 @@ export interface AriaModalProps {
    * To disable _all inline styles_, see `includeDefaultStyles`.
    */
   dialogClass?: string | undefined;
-
   /**
    * Choose your own id attribute for the dialog element.
    *
    * Default: `react-aria-modal-dialog`.
    */
   dialogId?: string | undefined;
-
   /**
    * Customize properties of the style prop that is passed to the dialog.
    */
   dialogStyle?: React.CSSProperties | undefined;
-
   /**
    * By default, when the modal activates its first focusable child will
    * receive focus. However, if `focusDialog` is true, the dialog itself
@@ -85,7 +76,6 @@ export interface AriaModalProps {
    * (This is essentially what Bootstrap does with their modal.)
    */
   focusDialog?: boolean | undefined;
-
   /**
    * By default, when the modal activates its first focusable child will
    * receive focus. If, instead, you want to identify a specific element
@@ -94,21 +84,18 @@ export interface AriaModalProps {
    * the DOM node.)
    */
   initialFocus?: string | undefined;
-
   /**
    * A string to use as the modal's accessible title. This value is passed
    * to the modal's `aria-label` attribute. You must use either `titleId` or
    * `titleText`, but not both.
    */
   titleText?: string | undefined;
-
   /**
    * The `id` of the element that should be used as the modal's accessible
    * title. This value is passed to the modal's `aria-labelledby` attribute.
    * You must use either `titleId` or `titleText`, but not both.
    */
   titleId?: string | undefined;
-
   /**
    * Customize properties of the `style` prop that is passed to the underlay.
    * The best way to add some vertical displacement to the dialog is to add
@@ -116,7 +103,6 @@ export interface AriaModalProps {
    * This is illustrated in the demo examples.
    */
   underlayStyle?: React.CSSProperties | undefined;
-
   /**
    * Apply a class to the underlay in order to custom-style it.
    * This module does apply various inline styles, though, so be aware that
@@ -126,18 +112,15 @@ export interface AriaModalProps {
    * If you would rather control all CSS, see `includeDefaultStyles`.
    */
   underlayClass?: string | undefined;
-
   /**
    * By default, a click on the underlay will exit the modal.
    * Pass `false`, and clicking on the underlay will do nothing.
    */
   underlayClickExits?: boolean | undefined;
-
   /**
    * By default, the Escape key exits the modal. Pass `false`, and it won't.
    */
   escapeExits?: boolean | undefined;
-
   /**
    * If you want to change the underlay's color, you can
    * do that with this prop. If `false`, no background color will be
@@ -147,19 +130,16 @@ export interface AriaModalProps {
    * Default: rgba(0,0,0,0.5)
    */
   underlayColor?: string | false | undefined;
-
   /**
    * If `true`, the modal's contents will be vertically (as well as horizontally) centered.
    */
   verticallyCenter?: boolean | undefined;
-
   /**
    * This function is called in the modal's `componentDidMount()` lifecycle method.
    * You can use it to do whatever diverse and sundry things you feel like
    * doing after the modal activates.
    */
   onEnter?(): void;
-
   /**
    * This function needs to handles the state change of exiting (or deactivating) the modal.
    * Maybe it's just a wrapper around `setState()`; or maybe you use some more involved
@@ -169,20 +149,17 @@ export interface AriaModalProps {
    * have the function that closes the modal right there, written by you, at your disposal.
    */
   onExit?(event: React.MouseEvent | React.KeyboardEvent): void;
-
   /**
    * If true, the modal dialog's focus trap will be paused.
    * You won't typically need to use this prop. It used to be that the typical reason for pausing a focus trap was to enable nested focus traps;
-   * but as of focus-trap v4, the pausing and unpausing of hierachical traps is handled automatically.
+   * but as of focus-trap v4, the pausing and unpausing of hierarchical traps is handled automatically.
    */
   focusTrapPaused?: boolean | undefined;
-
   /**
    * Customize properties of the focusTrapOptions prop that is passed to the modal dialog's focus trap.
    * For example, you can use this prop if you need better control of where focus is returned.
    */
   focusTrapOptions?: Record<string, unknown> | undefined;
-
   /**
    * If true, the modal dialog will prevent any scrolling behind the modal window.
    */
@@ -241,16 +218,6 @@ export interface DialogProps extends AriaModalProps {
    */
   closeIcon?: React.ReactNode;
   /**
-   * @hide-prop [Deprecated] This prop has been renamed to `closeButtonText`
-   * @hide-prop The text for the "Close" button
-   */
-  closeText?: React.ReactNode;
-  /**
-   * @hide-prop [Deprecated] This prop has been renamed to `escapeExits`.
-   * @hide-prop Disable exiting the dialog when a user presses the Escape key.
-   */
-  escapeExitDisabled?: boolean;
-  /**
    * Additional classes to be added to the header, which wraps the heading and
    * close button.
    */
@@ -264,34 +231,12 @@ export interface DialogProps extends AriaModalProps {
    */
   size?: DialogSize;
   /**
-   * @hide-prop [Deprecated] This prop has been renamed to `heading`.
-   */
-  title?: React.ReactNode;
-  /**
    * Allow additional AriaModal props to be passed to Dialog
    */
   additional_props?: AriaModalProps;
 }
 
 export const Dialog = (props: DialogProps) => {
-  if (process.env.NODE_ENV !== 'production') {
-    if (props.title) {
-      console.warn(
-        `[Deprecated]: Please remove the 'title' prop in <Dialog>, use 'heading' instead. This prop has been renamed and will be removed in a future release.`
-      );
-    }
-    if (props.escapeExitDisabled) {
-      console.warn(
-        `[Deprecated]: Please remove the 'escapeExitDisabled' prop in <Dialog>, use 'escapeExits' instead. This prop has been renamed and will be removed in a future release.`
-      );
-    }
-    if (props.closeText) {
-      console.warn(
-        `[Deprecated]: Please remove the 'closeText' prop in <Dialog>, use 'closeButtonText' instead. This prop has been renamed and will be removed in a future release.`
-      );
-    }
-  }
-
   const {
     actions,
     actionsClassName,
@@ -304,14 +249,10 @@ export const Dialog = (props: DialogProps) => {
     closeButtonText,
     closeButtonVariation,
     closeIcon,
-    closeText,
-    escapeExits,
-    escapeExitDisabled,
     headerClassName,
     heading,
     onExit,
     size,
-    title,
     ...modalProps
   } = props;
 
@@ -323,8 +264,6 @@ export const Dialog = (props: DialogProps) => {
   );
   const headerClassNames = classNames('ds-c-dialog__header', headerClassName);
   const actionsClassNames = classNames('ds-c-dialog__actions', actionsClassName);
-  // TODO: remove after deprecating 'escapeExitDiabled' prop
-  const escapeExitsProp = escapeExitDisabled ? !escapeExitDisabled : escapeExits;
 
   function sendDialogEvent(
     content: string | undefined,
@@ -369,8 +308,6 @@ export const Dialog = (props: DialogProps) => {
   return (
     <AriaModal
       dialogClass={dialogClassNames}
-      // TODO: remove 'escapeExits' after deprecating 'escapeExitDiabled' prop so that 'escapeExits' will pass via the 'modalProps' spread operator
-      escapeExits={escapeExitsProp}
       focusDialog
       includeDefaultStyles={false}
       onExit={onExit}
@@ -380,14 +317,11 @@ export const Dialog = (props: DialogProps) => {
     >
       <div role="document">
         <header className={headerClassNames}>
-          {
-            // TODO: make heading required after removing title
-            (title || heading) && (
-              <h1 className="ds-h2" id="dialog-title" ref={headingRef}>
-                {heading}
-              </h1>
-            )
-          }
+          {heading && (
+            <h1 className="ds-h2" id="dialog-title" ref={headingRef}>
+              {heading}
+            </h1>
+          )}
           <Button
             aria-label={ariaCloseLabel ?? t('dialog.ariaCloseLabel')}
             className="ds-c-dialog__close"
@@ -396,10 +330,7 @@ export const Dialog = (props: DialogProps) => {
             variation={closeButtonVariation}
           >
             {closeIcon}
-            {
-              // TODO: remove closeText support once fully deprecated
-              closeText ?? closeButtonText ?? t('dialog.closeButtonText')
-            }
+            {closeButtonText ?? t('dialog.closeButtonText')}
           </Button>
         </header>
         <main role="main" className="ds-c-dialog__body">
