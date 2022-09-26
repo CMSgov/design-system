@@ -69,6 +69,7 @@ These scripts can all be run from the root level of the repo:
   - Runs visual regression tests using [Playwright](https://playwright.dev/). See [Visual regression testing](#visual-regression-testing) section below for details.
   - Note that you need to build Storybook statically (`yarn build:storybook`) before you can run the tests
   - `yarn test:browser:update` updates reference screenshots used for visual regression testing. Update these only when we expect the visual changes
+  - `yarn test:browser --project <name>` runs only one of the named projects found in [playwright.config.ts](/tests/browser/playwright.config.ts)
 - `yarn lint`
   - Runs just the linting portion of the tests, eslint and stylelint
 - `yarn deploy-demo`
