@@ -3,7 +3,6 @@ import React, { MutableRefObject, useRef } from 'react';
 import { buttonSendsAnalytics } from '../flags';
 import classNames from 'classnames';
 
-export type ButtonComponentType = React.ElementType<any> | React.ComponentType<any>;
 export type ButtonSize = 'small' | 'big';
 
 export type ButtonVariation = 'solid' | 'ghost';
@@ -17,9 +16,11 @@ type CommonButtonProps = {
    */
   analytics?: boolean;
   /**
-   * An override for the dynamic content sent to analytics services. By default this content comes from the heading.
+   * An override for the dynamic content sent to analytics services. By default this
+   * content comes from the heading.
    *
-   * In cases where this component’s heading may contain **sensitive information**, use this prop to override what is sent to analytics.
+   * In cases where this component’s heading may contain **sensitive information**,
+   * use this prop to override what is sent to analytics.
    */
   analyticsLabelOverride?: string;
   /**
@@ -36,18 +37,11 @@ type CommonButtonProps = {
   children: string | React.ReactNode;
   /**
    * Additional classes to be added to the root button element.
-   * Useful for adding utility classes.
    */
   className?: string;
-  /**
-   * @hide-prop [Deprecated] Support for rendering custom components will be removed
-   * in the next major version. If you need to use React components like react-router
-   * `Link`, try wrapping this component instead.
-   */
-  component?: ButtonComponentType;
   disabled?: boolean;
   /**
-   * When provided the root component will render as an `<a>` element
+   * When provided, the root component will render as an `<a>` element
    * rather than `button`.
    */
   href?: string;
@@ -62,7 +56,7 @@ type CommonButtonProps = {
   isAlternate?: boolean;
   /**
    * Returns the [`SyntheticEvent`](https://facebook.github.io/react/docs/events.html).
-   * Not called when the button is disabled.
+   * Not called when the Button is disabled.
    */
   onClick?: (...args: any[]) => any;
   /**
@@ -104,7 +98,6 @@ export const Button = ({
   analyticsParentType,
   children,
   className,
-  component,
   disabled,
   href,
   inputRef,
@@ -117,7 +110,7 @@ export const Button = ({
   ...otherProps
 }: ButtonProps) => {
   const contentRef = useRef();
-  const ComponentType = component ?? (href ? 'a' : 'button');
+  const ComponentType = href ? 'a' : 'button';
   const colorSchemeClass = isAlternate && `ds-c-button--alternate`;
   const modeClass = onDark && `ds-c-button--on-dark`;
   const sizeClass = size && `ds-c-button--${size}`;
@@ -141,8 +134,6 @@ export const Button = ({
   };
 
   if (ComponentType !== 'button') {
-    // Assume `component` is not a custom component rendering a <button>
-    // and remove <button> specific attributes
     delete attrs.disabled;
     delete attrs.type;
 

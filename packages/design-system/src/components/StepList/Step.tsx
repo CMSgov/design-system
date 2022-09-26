@@ -10,7 +10,6 @@ type HeadingLevel = '1' | '2' | '3' | '4' | '5';
 export interface StepObject {
   id?: string;
   href: string;
-  title?: string; // [Deprecated]
   heading: string;
   headingLevel?: HeadingLevel;
   description?: string;
@@ -37,22 +36,9 @@ export interface StepProps {
 }
 
 export const Step = ({ step, ...props }: StepProps) => {
-  if (process.env.NODE_ENV !== 'production') {
-    if (step.title) {
-      console.warn(
-        `[Deprecated]: Please remove the 'title' prop the <StepList> step object, use 'heading' instead. This prop has been renamed and will be removed in a future release.`
-      );
-    }
-    if (!step.title && !step.heading) {
-      console.warn(
-        `Please provide a 'heading' prop in the <StepList> step object, it is a required prop.`
-      );
-    }
-  }
-
   const getAriaLabel = (text) => {
     const isValidTemplate = text && text.length > 0;
-    const label = isValidTemplate ? text.replace('%{step}', step.heading || step.title) : undefined;
+    const label = isValidTemplate ? text.replace('%{step}', step.heading) : undefined;
     return { 'aria-label': label };
   };
   const Heading = `h${step.headingLevel || '2'}` as const;
@@ -90,7 +76,7 @@ export const Step = ({ step, ...props }: StepProps) => {
     <li className={className}>
       <div className={contentClassName}>
         <Heading id={descriptionHeadingID} className="ds-c-step__heading" {...descriptionLabel}>
-          {step.heading || step.title}
+          {step.heading}
         </Heading>
         {step.description && (
           <div
@@ -125,7 +111,7 @@ export const Step = ({ step, ...props }: StepProps) => {
             component={step.component}
             href={step.href}
             stepId={step.id}
-            screenReaderText={step.heading || step.title}
+            screenReaderText={step.heading}
             onClick={step.onClick || props.onStepLinkClick}
             className={linkClassName}
           >

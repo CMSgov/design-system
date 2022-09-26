@@ -26,10 +26,6 @@ export interface TableProps {
    */
   compact?: boolean;
   /**
-   * @hide-prop [Deprecated] Use compact instead.
-   */
-  dense?: boolean;
-  /**
    * Applies a horizontal scrollbar and scrollable notice on `TableCaption` when the `Table`'s contents exceed the container width.
    */
   scrollable?: boolean;
@@ -115,11 +111,6 @@ export class Table extends React.Component<
           'The children prop in `Table` must include `TableCaption` component for scrollable tables.'
         );
       }
-      if (props.dense) {
-        console.warn(
-          `[Deprecated]: Please remove the 'dense' prop in <Table>, use 'compact' instead. This prop has been renamed and will be removed in a future release.`
-        );
-      }
     }
   }
 
@@ -167,7 +158,6 @@ export class Table extends React.Component<
       borderless,
       className,
       compact,
-      dense,
       stackable,
       stackableBreakpoint,
       striped,
@@ -181,7 +171,7 @@ export class Table extends React.Component<
     const classes = classNames(
       'ds-c-table',
       borderless ? 'ds-c-table--borderless' : null,
-      compact || dense ? 'ds-c-table--compact' : null,
+      compact ? 'ds-c-table--compact' : null,
       striped ? 'ds-c-table--striped' : null,
       stackable ? `ds-c-${stackableBreakpoint}-table--stacked` : null,
       className

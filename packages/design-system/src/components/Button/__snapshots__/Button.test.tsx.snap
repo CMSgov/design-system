@@ -58,16 +58,6 @@ Array [
 ]
 `;
 
-exports[`Button renders as a custom Link component 1`] = `
-<a
-  class="ds-c-button"
-  href="#"
-  to="anywhere"
->
-  Foo
-</a>
-`;
-
 exports[`Button renders as an anchor with custom prop 1`] = `
 <a
   class="ds-c-button"
