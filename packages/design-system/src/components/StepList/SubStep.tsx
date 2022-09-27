@@ -11,13 +11,13 @@ interface SubStepProps {
 
 export const SubStep = ({ step, ...props }: SubStepProps) => (
   <li className="ds-c-substep">
-    <div className="ds-c-substep__heading">{step.title || step.heading}</div>
+    <div className="ds-c-substep__heading">{step.heading}</div>
     {(step.completed || step.started) && (
       <StepLink
         component={step.component}
         href={step.href}
         stepId={step.id}
-        screenReaderText={step.title || step.heading}
+        screenReaderText={step.heading}
         onClick={step.onClick || props.onStepLinkClick}
         className="ds-c-substep__edit"
       >

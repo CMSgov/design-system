@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DeConsumerMessage renders message with broker name 1`] = `
+<div>
+  <div
+    class="ds-u-fill--primary-darker ds-base--inverse ds-u-padding-y--2"
+  >
+    <div
+      class="ds-l-container"
+    >
+      header.deConsumerMessage | {"brokerName":"Acme Co."}
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DeConsumerMessage renders message with fallback broker name 1`] = `
+<div>
+  <div
+    class="ds-u-fill--primary-darker ds-base--inverse ds-u-padding-y--2"
+  >
+    <div
+      class="ds-l-container"
+    >
+      header.deConsumerMessage | {"brokerName":"header.deBrokerNameFallback"}
+    </div>
+  </div>
+</div>
+`;

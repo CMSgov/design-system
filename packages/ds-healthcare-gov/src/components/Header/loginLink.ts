@@ -1,4 +1,4 @@
-import { Language, TFunction } from '@cmsgov/design-system';
+import { TFunction } from '@cmsgov/design-system';
 
 /**
  * Returns a link pointing to the login page

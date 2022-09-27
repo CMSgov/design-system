@@ -38,7 +38,7 @@ const SimpleFooter: FunctionComponent<SimpleFooterProps> = ({
         anchor.onclick = () => onClickLinkAnalytics(anchor.href);
       });
     }
-  }, []);
+  }, [onClickLinkAnalytics]);
 
   return (
     <footer className="m-c-footer" ref={footerRef}>

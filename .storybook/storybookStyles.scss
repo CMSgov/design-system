@@ -2,6 +2,7 @@
 // any @font-face declarations need to be included everywhere to not be
 // wrapped with the data-theme selector below
 @import '@cmsgov/ds-medicare-gov/src/styles/_fonts';
+@import '../packages/docs/src/styles/components/embeddedExamples.scss';
 
 .utility-example {
   background-color: $color-secondary-lightest;

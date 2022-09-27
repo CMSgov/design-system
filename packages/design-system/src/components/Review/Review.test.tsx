@@ -2,10 +2,9 @@ import React from 'react';
 import Review from './Review';
 import { render, screen } from '@testing-library/react';
 
-const noop = () => {};
 const text = 'review text';
 const defaultProps = {
-  onEditClick: noop,
+  onEditClick: jest.fn(),
   heading: 'review heading',
   editHref: 'edit-href',
   editText: 'edit',

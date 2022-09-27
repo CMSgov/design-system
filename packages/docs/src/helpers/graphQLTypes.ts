@@ -1,4 +1,4 @@
-import { PageStatus } from '../components/Layout';
+import { PageStatus } from '../components/layout/Layout';
 
 export interface TableOfContentsItem {
   url: string;
