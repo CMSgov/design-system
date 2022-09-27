@@ -12,7 +12,6 @@ interface MaturityChecklistProps {
   storybook: CheckStatus;
   responsive: CheckStatus;
   spanish: CheckStatus;
-  analytics: CheckStatus;
 
   // Design
   completeUiKit: CheckStatus;
@@ -54,9 +53,6 @@ const MaturityChecklist = (props: MaturityChecklistProps) => (
       </MaturityChecklistItem>
       <MaturityChecklistItem title="Spanish translations" status={props.spanish}>
         Includes Spanish translations for default text content.
-      </MaturityChecklistItem>
-      <MaturityChecklistItem title="Google Analytics" status={props.analytics}>
-        Automatically sends Google Analytics events if enabled.
       </MaturityChecklistItem>
     </ul>
 
