@@ -36,13 +36,6 @@ const ColorSwatchList = ({ backgroundClass, colorNames, preface, theme }: ColorS
   const initialColors = colorNames.map((color) => ({ name: color, hex: '' }));
   const [colorList, setColorList] = useState(initialColors);
 
-  if (colorList[0].name === 'primary') console.log(theme, colorList[0].hex);
-  // Recalculate hex values every time we render, because there's a chance the browser could
-  // have rendered with the old colors even though we already switched to the current theme.
-  // It may have to do with the fact that Helmet doesn't make its changes during render but
-  // by manipulating the DOM directly. This means that even if we change `theme` in Layout,
-  // the DOM might not have been updated by the time this renders. Before this, I had [theme]
-  // as the dependency array, but it didn't work on Firefox - PW
   useEffect(() => {
     // after swatch has been rendered once, pull rgb color from element styles & convert to hex
     const updatedColorList = colorList.map((colorItem, index) => {
@@ -67,7 +60,10 @@ const ColorSwatchList = ({ backgroundClass, colorNames, preface, theme }: ColorS
     if (colorList.some((item, index) => item.hex !== updatedColorList[index].hex)) {
       setColorList(updatedColorList);
     }
-  });
+  }, [
+    // If the theme changes, we need to recalculate our hex values
+    theme,
+  ]);
 
   return (
     <div className="c-swatch-list ds-u-border--1 ds-u-padding--2">
