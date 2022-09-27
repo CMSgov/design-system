@@ -4,23 +4,6 @@ import { UtagContainer } from '../analytics';
 import { setButtonSendsAnalytics } from '../flags';
 import { fireEvent, render, screen } from '@testing-library/react';
 
-function mockWarn(testFunction: () => void) {
-  const original = console.warn;
-  const mock = jest.fn();
-  console.warn = mock;
-  testFunction();
-  console.warn = original;
-  return mock;
-}
-
-const Link = (props: any) => {
-  return (
-    <a {...props} href="#">
-      {props.children}
-    </a>
-  );
-};
-
 const defaultProps = {
   children: 'Foo',
 };
@@ -52,17 +35,6 @@ describe('Button', () => {
       type: 'submit',
     });
     expect(screen.getByRole('link')).toMatchSnapshot();
-  });
-
-  it('renders as a custom Link component', () => {
-    mockWarn(() => {
-      renderButton({
-        component: Link,
-        type: 'submit',
-        to: 'anywhere',
-      });
-      expect(screen.getByRole('link')).toMatchSnapshot();
-    });
   });
 
   it('renders disabled anchor correctly', () => {

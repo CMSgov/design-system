@@ -11,6 +11,7 @@ describe('Idle Timeout', () => {
     timeToTimeout: 5,
     timeToWarning: 3,
     onTimeout,
+    onClose: () => {},
   };
   const timeTilWarningShown = defaultProps.timeToWarning * 60000;
   const WARNING_DATETIME = MOCK_START_TIME + defaultProps.timeToWarning * 60000; // date time when warning should appear
