@@ -38,7 +38,7 @@ export const themeColors: ColorTokens = {
   //
   'focus':                      color['darksky-500'],
   'focus-border-inverse':       color['goldenrod-800'],
-  'focus-dark':                 color['rose-400'],
+  'focus-dark':                 color['persimmon-500'],
   'focus-inverse':              color['sky-500'],
   'focus-light':                color['white-solid'],
   'focus-shadow':               color['granite-900'],
