@@ -56,7 +56,10 @@ const ColorSwatchList = ({ backgroundClass, colorNames, preface, theme }: ColorS
       };
     });
 
-    setColorList(updatedColorList);
+    // Only update and re-render if a hex value changed
+    if (colorList.some((item, index) => item.hex !== updatedColorList[index].hex)) {
+      setColorList(updatedColorList);
+    }
   }, [
     // If the theme changes, we need to recalculate our hex values
     theme,
