@@ -55,10 +55,6 @@ export interface ChoiceListProps {
    */
   labelClassName?: string;
   /**
-   * @hide-prop [Deprecated] This prop is deprecated after changing `type` to a required prop
-   */
-  multiple?: boolean;
-  /**
    * The field's `name` attribute
    */
   name: string;
@@ -88,15 +84,9 @@ export class ChoiceList extends React.PureComponent<ChoiceListProps, any> {
     super(props);
 
     if (process.env.NODE_ENV !== 'production') {
-      if (props.multiple) {
-        console.warn(
-          `[Deprecated]: Please remove the 'multiple' prop in <ChoiceList>, use type="checkbox" instead. This prop is deprecated and will be removed in a future release.`
-        );
-      }
-
       if (props.type !== 'checkbox' && props.choices.length === 1) {
         console.warn(
-          `[Warning]: Use type="checkbox" for components with only one choice. A singl e radio button is disallowed because it prevents users from deselecting the field.`
+          `[Warning]: Use type="checkbox" for components with only one choice. A single radio button is disallowed because it prevents users from deselecting the field.`
         );
       }
     }
