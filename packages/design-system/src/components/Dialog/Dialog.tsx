@@ -145,7 +145,7 @@ export const Dialog = (props: DialogProps) => {
   return (
     <NativeDialog className={dialogClassNames} showModal exit={onExit} {...modalProps}>
       <div role="document">
-        <header className={headerClassNames} role="banner">
+        <header className={headerClassNames}>
           {heading && (
             <h1 className="ds-h2" id="dialog-title" ref={headingRef}>
               {heading}
