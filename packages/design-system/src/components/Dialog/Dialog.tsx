@@ -1,6 +1,6 @@
 import Button, { ButtonVariation } from '../Button/Button';
 import NativeDialog from '../NativeDialog/NativeDialog';
-import React, { useEffect } from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
 import classNames from 'classnames';
 import useDialogAnalytics from './useDialogAnalytics';
 import { CloseIcon } from '../Icons';
@@ -137,10 +137,25 @@ export const Dialog = (props: DialogProps) => {
     if (onEnter) onEnter();
   }, []);
 
-  const headingRef = useDialogAnalytics(props);
+  // Prevent scrolling the page behind the dialog. Needs to use useLayoutEffect
+  // because we need to grab the window scroll position before the dialog renders
+  // and messes it up.
+  useLayoutEffect(() => {
+    if (!scrollDisabled) return;
 
-  // TODO: We have to implement underlayClickExits=true ourselves. https://stackoverflow.com/a/26984690
-  // Also, I checked, and some apps use it
+    // https://css-tricks.com/prevent-page-scrolling-when-a-modal-is-open/
+    const y = window.scrollY ?? 0;
+    console.log(window.scrollY);
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${y}px`;
+    return () => {
+      document.body.style.position = '';
+      document.body.style.top = '';
+      window.scrollTo(0, y);
+    };
+  }, []);
+
+  const headingRef = useDialogAnalytics(props);
 
   return (
     <NativeDialog className={dialogClassNames} showModal exit={onExit} {...modalProps}>
@@ -174,6 +189,7 @@ export const Dialog = (props: DialogProps) => {
 Dialog.defaultProps = {
   closeButtonVariation: 'ghost',
   closeIcon: <CloseIcon />,
+  scrollDisabled: true,
 };
 
 export default Dialog;
