@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Dialog } from './Dialog';
 import Button from '../Button/Button';
+import { useArgs } from '@storybook/client-api';
 
 export default {
   title: 'Components/Dialog',
@@ -16,6 +17,9 @@ export default {
     title: {
       control: { type: 'text' },
       type: { name: 'string', required: true },
+    },
+    scrollDisabled: {
+      control: { type: 'boolean' },
     },
   },
   args: {
@@ -38,10 +42,10 @@ export default {
   },
 };
 
-export const DialogExample = ({ ...args }) => {
-  const [shown, setShown] = useState();
-  const showModal = () => setShown(true);
-  const hideModal = () => setShown(false);
+export const DialogExample = ({ isOpen: _isOpen, ...args }) => {
+  const [{ dialogOpen }, updateArgs] = useArgs();
+  const showModal = () => updateArgs({ dialogOpen: true });
+  const hideModal = () => updateArgs({ dialogOpen: false });
 
   return (
     <>
@@ -49,7 +53,7 @@ export const DialogExample = ({ ...args }) => {
         Click to show modal
       </Button>
 
-      {shown && (
+      {dialogOpen && (
         <Dialog
           {...args}
           onExit={hideModal}
@@ -69,15 +73,14 @@ export const DialogExample = ({ ...args }) => {
   );
 };
 
-export const PreventScrollExample = (args) => {
-  const [shown, setShown] = useState();
-  const showModal = () => setShown(true);
-  const hideModal = () => setShown(false);
-  console.log(args);
+export const PreventScrollExample = ({ isOpen: _isOpen, ...args }) => {
+  const [{ dialogOpen }, updateArgs] = useArgs();
+  const showModal = () => updateArgs({ dialogOpen: true });
+  const hideModal = () => updateArgs({ dialogOpen: false });
 
   return (
     <div className="ds-u-measure--base">
-      {shown && <Dialog onExit={hideModal} {...args} />}
+      {dialogOpen && <Dialog onExit={hideModal} {...args} />}
       <h1>The United States Constitution</h1>
       <p>
         We the People of the United States, in Order to form a more perfect Union, establish
