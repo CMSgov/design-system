@@ -1,5 +1,4 @@
 import HelpDrawer, { HelpDrawerProps } from './HelpDrawer';
-import React from 'react';
 import { UtagContainer } from '../analytics';
 import { setHelpDrawerSendsAnalytics } from '../flags';
 import { fireEvent, render, screen } from '@testing-library/react';

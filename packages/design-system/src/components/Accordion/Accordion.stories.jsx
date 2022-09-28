@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Accordion from './Accordion';
 import AccordionItem from './AccordionItem';
 import { useArgs } from '@storybook/client-api';
@@ -25,7 +23,7 @@ Default.args = {
     <AccordionItem key="1" heading="First Amendment" contentClassName="first-amendment" defaultOpen>
       <p>
         We the People of the United States, in Order to form a more perfect Union, establish
-        Justice, insure domestic Tranquility, provide for the common defence, promote the general
+        Justice, insure domestic Tranquility, provide for the common defense, promote the general
         Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and
         establish this Constitution for the United States of America.
       </p>

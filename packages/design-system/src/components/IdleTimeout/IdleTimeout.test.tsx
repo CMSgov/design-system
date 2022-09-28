@@ -1,4 +1,3 @@
-import React from 'react';
 import IdleTimeout from './IdleTimeout';
 import { render, fireEvent } from '@testing-library/react';
 import { mockTime, restoreTime } from './utilities/mockTime';

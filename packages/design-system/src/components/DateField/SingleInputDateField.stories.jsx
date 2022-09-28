@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import SingleInputDateField from './SingleInputDateField';
 
 export default {

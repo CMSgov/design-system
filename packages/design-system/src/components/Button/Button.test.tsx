@@ -1,5 +1,4 @@
 import Button from './Button';
-import React from 'react';
 import { UtagContainer } from '../analytics';
 import { setButtonSendsAnalytics } from '../flags';
 import { fireEvent, render, screen } from '@testing-library/react';

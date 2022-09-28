@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import MultiInputDateField from './MultiInputDateField';
 import DateInput from './DateInput';
 
