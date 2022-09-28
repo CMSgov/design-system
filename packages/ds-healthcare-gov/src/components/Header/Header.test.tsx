@@ -1,5 +1,4 @@
 import Header from './Header';
-import React from 'react';
 import { setLanguage } from '@cmsgov/design-system';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';

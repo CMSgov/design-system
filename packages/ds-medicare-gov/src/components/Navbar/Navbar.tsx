@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import { FunctionComponent } from 'react';
 
 /*
  * The Navbar component serves as a container element for the navbar's content
