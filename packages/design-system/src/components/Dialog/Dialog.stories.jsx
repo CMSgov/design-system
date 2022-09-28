@@ -76,7 +76,7 @@ export const PreventScrollExample = ({ ...args }) => {
   const hideModal = () => setShown(false);
 
   return (
-    <>
+    <div className="ds-u-measure--base">
       {shown && <Dialog onExit={hideModal} {...args} />}
       <h1>The United States Constitution</h1>
       <p>
@@ -126,7 +126,7 @@ export const PreventScrollExample = ({ ...args }) => {
       <p>
         The House of Representatives shall chuse their Speaker and other Officers;and shall have the
         sole Power of Impeachment.
-      </p>{' '}
-    </>
+      </p>
+    </div>
   );
 };
