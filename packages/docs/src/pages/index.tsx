@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
 
-import Layout from '../components/Layout';
+import Layout from '../components/layout/Layout';
 import { MdxQuery } from '../helpers/graphQLTypes';
 import useTheme from '../helpers/useTheme';
-import ContentRenderer from '../components/ContentRenderer';
+import ContentRenderer from '../components/content/ContentRenderer';
 
 // Main landing page for site
 const IndexPage = ({ data, location }: MdxQuery) => {
@@ -30,7 +30,7 @@ export const query = graphql`
       id
       body
       slug
-      tableOfContents(maxDepth: 2)
+      tableOfContents(maxDepth: 3)
       frontmatter {
         title
       }

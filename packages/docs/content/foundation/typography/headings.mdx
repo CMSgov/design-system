@@ -1,0 +1,259 @@
+---
+title: Headings
+order: 10
+intro: Headings help to provide a quick, organized way to organize the main sections of a website.
+---
+
+import { Alert, Badge } from '@cmsgov/design-system';
+import loremIpsumGenerator from '../../../src/helpers/loremIpsumGenerator';
+
+
+<Alert heading="Typography sizing updates!">
+  <p class="ds-c-alert__text">
+    We've updated typography sizing variables and class names to make them more agnostic. Read about{' '}
+    <a href="/getting-started/theming/#updating-font-sizing">how you can update</a>.
+  </p>
+</Alert>
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+Open Sans serves as the base font for the site. The full Open Sans type family consists of a variety of weights including light, regular, semibold, bold, and extrabold which allows for a wide range of type treatments and hierarchies within a page while still maintaining a unified look and feel. 
+
+Sans-serifs have been proven to be easier to read on-screen and are incredibly adaptable when resized and displayed across different platforms and browsers. Accordingly, Open Sans is used for body type, secondary and tertiary headlines, and instructional text. 
+
+**Web font stack:** Open Sans > Helvetica > Arial > Verdana > Sans-Serif 
+
+- Open Sans font is used for headings and body content.
+- Standard body text is Open Sans Regular, 16px, #333, 24px line-height, 32px bottom-margin on paragraphs.
+- Smallest paragraph text for legibility reasons is Open Sans Regular, 14px, #333, 20px line-height, 28px bottom-margin on paragraphs (except for legal/caption text).
+- Uppercase font should not be used.
+
+</ThemeContent>
+
+## Examples
+
+The design system doesn't style base HTML typography elements (like `h1`, `h2`, `p`, etc) in order to avoid conflicting with any existing site styles. You should instead use one of the base typography classes below to apply styling:
+
+### Heading--5xl
+
+<ThemeContent onlyThemes={['medicare']}>
+
+<Badge variation="alert">
+<CloseIconThin /> Unused by Medicare.
+</Badge>
+
+</ThemeContent>
+
+<ThemeContent neverThemes={['medicare']}>
+<EmbeddedExample>
+      <h1 class="ds-text-heading--5xl ds-display">{loremIpsumGenerator('s')}</h1>
+</EmbeddedExample>
+</ThemeContent>
+
+### Heading--4xl
+
+<ThemeContent onlyThemes={['medicare']}>
+
+<Badge variation="alert">
+<CloseIconThin /> Unused by Medicare.
+</Badge>
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+Heading--4xl is used for the heading on landing pages that serve as an entry point to a section on HC.gov when the heading needs to be larger and bolder to stand out.
+
+</ThemeContent>
+
+<ThemeContent neverThemes={['medicare']}>
+<EmbeddedExample>
+      <h1 class="ds-text-heading--4xl ds-title">{loremIpsumGenerator('s')}</h1>
+</EmbeddedExample>
+</ThemeContent>
+
+### Heading--3xl
+
+<EmbeddedExample>
+      <h1 class="ds-text-heading--3xl ds-h1">{loremIpsumGenerator('s')}</h1>
+</EmbeddedExample>
+
+### Heading--2xl
+
+<EmbeddedExample>
+      <h1 class="ds-text-heading--2xl ds-h2">{loremIpsumGenerator('s')}</h1>
+</EmbeddedExample>
+
+### Heading--xl
+
+<EmbeddedExample>
+      <h1 class="ds-text-heading--xl ds-h3">{loremIpsumGenerator('s')}</h1>
+</EmbeddedExample>
+
+### Heading--lg
+
+<EmbeddedExample>
+      <h1 class="ds-text-heading--lg ds-h4">{loremIpsumGenerator('s')}</h1>
+</EmbeddedExample>
+
+### Heading--md
+
+<EmbeddedExample>
+      <h1 class="ds-text-heading--md ds-h5">{loremIpsumGenerator('s')}</h1>
+</EmbeddedExample>
+
+### Heading--sm
+
+<EmbeddedExample>
+      <h1 class="ds-text-heading--sm ds-h6">{loremIpsumGenerator('s')}</h1>
+</EmbeddedExample>
+
+## Code
+
+### Responsive typography
+
+The `.ds-type-heading-3xl`, `ds-type-heading-2xl`, and `ds-type-heading-xl` classes are responsive by default.
+To apply responsive typography elsewhere, use the [font size utility class](/utilities/font/font-size/#responsive-font-sizes).
+Since the base typography margins and line height is measured in `em` units,
+they'll automatically adjust as you change the font size.
+
+<ResponsiveExample
+  storyId="typography--responsive-headings"
+  title="Responsive typography example"
+/>
+
+### Styles
+
+The following Sass variables can be overridden to change the type sizes:
+
+- `$font-size-5xl`
+- `$font-size-4xl`
+- `$font-size-3xl`
+- `$font-size-2xl`
+- `$font-size-xl`
+- `$font-size-lg`
+- `$font-size-md`, uses `$font-size-base`
+- `$font-size-sm`
+
+## Guidance
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+### Layout
+
+There should always be a parent/child relationship between headers and content on the page. Every header should have a relationship to something else on the page. This can apply to many different relationships like a header and a form group or a header and list of links. Stray headers or content should be reevaluated.
+
+- Paragraph styles should never be used as a parent to another text element.
+- Header elements should never have equal or smaller font size than the paragraph element.
+- Not all paragraphs need a header, but all headers need children.
+- Every page should have one heading 1 (H1)
+- Headings style appearing under H1 should follow a logical order for information design and supporting various assistive technology devices/software.
+
+
+### Don't
+
+- Don't use a smaller header font size than the body font size
+- Don't use stray headers
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+### Mobile
+
+Header sizes should be reduced on mobile screen sizes. Header sizes can be reduced depending on the designers discretion but you can generally use this guide for reducing your header sizes. 
+
+- 3xLarge to 2xLarge - Down 2 sizes
+- Xlarge to Large - Down 1 size
+- Medium to Small - No change in size
+
+## Typography Spacing
+
+Spacing between text elements can make an impact on the overall design and having a consistent spacing between elements improves the flow of a page and improves consistency between products.
+
+Here are some spacing elements that can help create guides for spacing between elements. 
+
+### How to use spacers
+
+- Use spacers that correspond to the header being applied. If you use a `heading--lg` header, apply a `$spacer-5` spacer to the body content below the header. 
+- When it comes to content relationships. Header sizes should be of equal or smaller size to the body content.
+
+| Header size | Variable     | Value | Example                                                      |
+| ----------- | ------------ | ----- | -------------------------------------------------------------|
+|Heading--sm  | $spacer-3    | 24px  | <div class="ds-u-fill--secondary example-spacer-3"></div>    |
+|Heading--md  | $spacer-4    | 32px  | <div class="ds-u-fill--secondary example-spacer-4"></div>    |
+|Heading--lg  | $spacer-5    | 40px  | <div class="ds-u-fill--secondary example-spacer-5"></div>    |
+|Heading--xl  | $spacer-6    | 48px  | <div class="ds-u-fill--secondary example-spacer-6"></div>    |
+|Heading--2xl | $spacer-7    | 56px  | <div class="ds-u-fill--secondary example-spacer-7"></div>    |
+|Heading--3xl | No variable  | 72px  |                                                              |
+
+### Spacing example 
+
+<EmbeddedExample>
+
+<h1 class="ds-text-heading--2xl ds-h1">Heading--2xl</h1>
+<div class="utility-example example-spacer-7 ds-u-display--flex ds-u-align-items--center ds-u-justify-content--center">$spacer-7</div> 
+<p class="ds-text-body--md">{loremIpsumGenerator('l')}</p>
+
+<h1 class="ds-text-heading--lg ds-h1">Heading--lg</h1>
+<div class="utility-example example-spacer-5 ds-u-display--flex ds-u-align-items--center ds-u-justify-content--center">$spacer-5</div> 
+<p class="ds-text-body--md">{loremIpsumGenerator('l')}</p>
+
+</EmbeddedExample>
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['healthcare']}>
+- The default size for body content is 16px.
+- The Rubrik font is used for body content.
+- The Montserrat font is used for headers, some menu components, and the big button (Landing).
+- The smallest paragraph text for legibility to the Medicare audience should not be smaller than 16 px (except for legal/caption text).
+- Uppercase font should not be used (exception for form elements).
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+### Header styles
+
+There are five header styles that can be used:
+
+<EmbeddedExample>
+      <h3 class="ds-text-heading--lg">1. Default header</h3>
+      <p>This is the header style that would be used in most cases</p>
+      <h3 class="ds-text-heading--lg">2. Teal header</h3>
+      <p>Only used for landing pages and marketing material to apply emphasis to words within a header. </p>
+      <h3 class="ds-text-heading--lg"><a href="javascript:void(0);">3. Link header</a></h3>
+      <p>Used when you need to have a header as a link</p>
+      <div class="ds-base--inverse ds-u-padding--2">
+      <h3 class="ds-text-heading--lg">4. Header on dark backgrounds</h3>
+      <p>Used on dark backgrounds only</p>
+      <h3 class="ds-text-heading--lg"><a href="javascript:void(0);">5. Header link on dark backgrounds</a></h3>
+      <p>Used for header links on dark backgrounds.</p>
+      </div>
+</EmbeddedExample>
+
+### Eyebrow/Eyelash header
+
+In some cases it is better to group header elements into a header component. This can be referred to the Eyelash/Eyebrow header where you have a main header and an optional top header (eyebrow) and bottom header (eyelash) header. 
+
+You can find this symbol on the components page
+
+This is an optional header design and not required to be used. If you do choose to use this header design then the header elements should go in order. 
+
+1. Main header
+2. Eyebrow header
+3. Eyelash header
+
+<div class="ds-u-border--1 ds-u-padding--2">
+
+<code>.ds-text-heading--md .ds-u-margin-bottom--0</code><br />
+<code>.ds-text-heading--3xl .ds-u-margin--0</code><br />
+<code>.ds-text-body--md .ds-u-margin-top--0</code>
+
+<h3 class="ds-text-heading--md ds-u-margin-bottom--0">Eyebrow header</h3>
+<h1 class="ds-text-heading--3xl ds-u-margin--0">Main header</h1>
+<p class="ds-text-body--md ds-u-margin-top--0">Eyelash header</p>
+
+</div>
+</ThemeContent>

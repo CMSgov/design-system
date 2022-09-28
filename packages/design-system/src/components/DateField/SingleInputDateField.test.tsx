@@ -8,7 +8,7 @@ const defaultProps = {
   hint: 'Please enter your birthday',
   name: 'single-input-date-field',
   value: '',
-  onChange: () => {},
+  onChange: jest.fn(),
 };
 
 function renderField(props = {}) {

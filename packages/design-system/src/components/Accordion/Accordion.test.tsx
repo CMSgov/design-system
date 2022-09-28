@@ -1,13 +1,8 @@
-import { mount, shallow } from 'enzyme';
+import React from 'react';
 import Accordion from './Accordion';
 import AccordionItem from './AccordionItem';
-import React from 'react';
-
-const defaultAccordionItemChildren = 'Foo';
-const defaultAccordionItemProps = {
-  id: 'accordionitem-1',
-  heading: 'Accordion item header',
-};
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 const children = [
   <AccordionItem key="1" heading="First amendment" id="1">
@@ -18,71 +13,76 @@ const children = [
   </AccordionItem>,
 ];
 
-function render(customProps = {}, children) {
+function renderAccordion(customProps = {}) {
   const props = { ...customProps };
 
-  if (!children) {
-    children = (
-      <AccordionItem {...defaultAccordionItemProps}>{defaultAccordionItemChildren}</AccordionItem>
-    );
-  }
-
-  return {
-    props,
-    wrapper: shallow(<Accordion {...props}>{children}</Accordion>),
-  };
+  return render(<Accordion {...props}>{children}</Accordion>);
 }
 
 describe('Accordion', function () {
   it('renders accordion', () => {
-    const { wrapper } = render(undefined, children);
+    const { container, asFragment } = renderAccordion();
+    const accordion = container.firstChild as HTMLElement;
 
-    expect(wrapper.hasClass('ds-c-accordion')).toBe(true);
+    expect(accordion.classList).toContain('ds-c-accordion');
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('renders additional className', () => {
-    const { wrapper } = render(
-      {
-        className: 'ds-u-test',
-      },
-      children
-    );
+    const { container } = renderAccordion({ className: 'ds-u-test' });
+    const accordion = container.firstChild as HTMLElement;
 
-    expect(wrapper.hasClass('ds-u-test')).toBe(true);
+    expect(accordion.classList).toContain('ds-u-test');
   });
 
   it('renders ds-c-accordion--bordered class when a bordered prop is set', () => {
-    const { wrapper } = render(
-      {
-        bordered: true,
-      },
-      children
-    );
+    const { container } = renderAccordion({ bordered: true });
+    const accordion = container.firstChild as HTMLElement;
 
-    expect(wrapper.hasClass('ds-c-accordion--bordered')).toBe(true);
+    expect(accordion.classList).toContain('ds-c-accordion--bordered');
   });
 });
 
 describe('Accordion focus', function () {
-  const wrapper = mount(<Accordion>{children}</Accordion>, { attachTo: document.body });
-  const accordionitemButton0 = wrapper.find('button.ds-c-accordion__button').at(0);
-  const accordionitemButton1 = wrapper.find('button.ds-c-accordion__button').at(1);
-
   it('selects the second accordion item on down arrow keyDown', () => {
-    accordionitemButton0.simulate('focus').simulate('keyDown', { key: 'ArrowDown' });
-    const focusedElement = document.activeElement;
-    expect(focusedElement.id).toEqual(accordionitemButton1.props().id);
+    renderAccordion();
+
+    const buttonEls = screen.getAllByRole('button');
+    const firstButton = buttonEls[0];
+    const lastButton = buttonEls[1];
+
+    firstButton.focus();
+    expect(firstButton).toHaveFocus();
+
+    userEvent.keyboard('[ArrowDown]');
+    expect(lastButton).toHaveFocus();
   });
 
   it('cycles back to the first accordion item on down arrow keyDown when you are on the last accordion item', () => {
-    accordionitemButton1.simulate('focus').simulate('keyDown', { key: 'ArrowDown' });
-    const focusedElement = document.activeElement;
-    expect(focusedElement.id).toEqual(accordionitemButton0.props().id);
+    renderAccordion();
+
+    const buttonEls = screen.getAllByRole('button');
+    const firstButton = buttonEls[0];
+    const lastButton = buttonEls[1];
+
+    lastButton.focus();
+    expect(lastButton).toHaveFocus();
+
+    userEvent.keyboard('[ArrowDown]');
+    expect(firstButton).toHaveFocus();
   });
 
   it('selects the first accordion item on up arrow keyDown', () => {
-    accordionitemButton1.simulate('focus').simulate('keyUp', { key: 'ArrowUp' });
-    const focusedElement = document.activeElement;
-    expect(focusedElement.id).toEqual(accordionitemButton0.props().id);
+    renderAccordion();
+
+    const buttonEls = screen.getAllByRole('button');
+    const firstButton = buttonEls[0];
+    const lastButton = buttonEls[1];
+
+    lastButton.focus();
+    expect(lastButton).toHaveFocus();
+
+    userEvent.keyboard('[ArrowUp]');
+    expect(firstButton).toHaveFocus();
   });
 });

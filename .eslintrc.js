@@ -52,6 +52,16 @@ module.exports = {
   },
   overrides: [
     {
+      files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
+      extends: ['plugin:testing-library/react'],
+      rules: {
+        'testing-library/prefer-screen-queries': 'warn',
+        'testing-library/no-node-access': 'off',
+        'testing-library/no-container': 'off',
+        'testing-library/render-result-naming-convention': 'warn',
+      },
+    },
+    {
       files: ['*.jsx'],
       rules: {
         'jsx-quotes': 'off',

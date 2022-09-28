@@ -10,10 +10,8 @@ import { setHeaderSendsAnalytics } from '../packages/ds-healthcare-gov/src/compo
 import { setLanguage } from '../packages/design-system/src/components/i18n';
 import { setLanguage as setLanguageFromPackage } from '@cmsgov/design-system';
 
+// Rewire analytics events to log to the console
 window.utag = { link: console.log };
-// used to set up automatic setting of theme based on STORYBOOK_DS variable
-const currentEnvironment =
-  process.env.STORYBOOK_DS !== 'undefined' ? process.env.STORYBOOK_DS : 'core';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -23,14 +21,6 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/,
     },
-  },
-  backgrounds: {
-    default: 'light',
-    values: [
-      { name: 'light', value: '#fff' },
-      { name: 'Hcgov dark', value: '#112e51' },
-      { name: 'Mgov dark', value: '#146a5d' },
-    ],
   },
 };
 
@@ -62,7 +52,7 @@ export const globalTypes = {
   theme: {
     name: 'Theme',
     description: 'Current theme',
-    defaultValue: currentEnvironment,
+    defaultValue: 'core',
     toolbar: {
       icon: 'paintbrush',
       items: [
@@ -72,6 +62,17 @@ export const globalTypes = {
       ],
     },
   },
+};
+
+const baseClassDecorator = (Story, context) => {
+  document.body.classList.add('ds-base');
+  if (context.parameters.baseInverse) {
+    document.body.classList.add('ds-base--inverse');
+  } else {
+    document.body.classList.remove('ds-base--inverse');
+  }
+
+  return <Story {...context} />;
 };
 
 const themeSettingDecorator = (Story, context) => {
@@ -110,6 +111,7 @@ const analyticsSettingsDecorator = (Story, context) => {
 };
 
 export const decorators = [
+  baseClassDecorator,
   languageSettingDecorator,
   analyticsSettingsDecorator,
   themeSettingDecorator,

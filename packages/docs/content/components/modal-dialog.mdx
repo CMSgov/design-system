@@ -1,5 +1,5 @@
 ---
-title: Modal dialog
+title: Modal Dialog
 intro: The dialog component can be used to focus a user's attention on a single piece of content, without taking them to a new screen. Please use with caution; view our guidance for more details.
 core:
   githubLink: design-system/src/components/Dialog
@@ -9,15 +9,25 @@ healthcare:
   sketchLink: m1Y5wQ7
 medicare:
   sketchLink: YGOggo0
+  storybookLink: medicare-dialog--dialog-example
 ---
 
 ## Examples
 
-<StorybookExample
-  componentName="dialog"
-  storyId="components-dialog--dialog-example"
-  minHeight={400}
-/>
+<ThemeContent neverThemes={['medicare']}>
+  <StorybookExample
+    componentName="dialog"
+    storyId="components-dialog--dialog-example"
+    minHeight={400}
+  />
+</ThemeContent>
+<ThemeContent onlyThemes={['medicare']}>
+  <StorybookExample
+    componentName="dialog"
+    storyId="medicare-dialog--dialog-example"
+    minHeight={400}
+  />
+</ThemeContent>
 
 ### Dialog size variants
 

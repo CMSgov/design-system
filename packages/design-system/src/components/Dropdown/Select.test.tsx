@@ -1,5 +1,6 @@
 import Select, { SelectProps } from './Select';
-import { mount, shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { generateOptions } from './Dropdown.test';
 
@@ -13,120 +14,131 @@ const defaultProps: SelectProps = {
   options: [],
 };
 
-function render(customProps = {}, optionsCount = 1, deep = false) {
+function makeSelect(customProps = {}, optionsCount = 1) {
   const props = { ...defaultProps, ...customProps };
   const component = <Select {...props} options={generateOptions(optionsCount)} />;
 
-  return {
-    props: props,
-    wrapper: deep ? mount(component) : shallow(component),
-  };
+  return render(component);
 }
 
 describe('Select', () => {
-  it('renders a select menu', () => {
-    const data = render({ value: '1', label: '', ariaLabel: 'test aria label' });
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
-    expect(data.wrapper.length).toBe(1);
-    expect(data.wrapper.children('option').length).toBe(1);
-    expect(data.wrapper).toMatchSnapshot();
+  it('renders a select menu', () => {
+    makeSelect({ value: '1', label: '', ariaLabel: 'test aria label' });
+
+    const select = screen.getByRole('combobox');
+    const options = screen.queryAllByRole('option');
+    expect(select).toBeInTheDocument();
+    expect(options.length).toEqual(1);
+    expect(select).toMatchSnapshot();
   });
 
   it('renders options correctly', () => {
-    const data = render({ defaultValue: '1' }, 10);
+    makeSelect({ defaultValue: '1' }, 10);
 
-    expect(data.wrapper.length).toBe(1);
-    expect(data.wrapper.children('option').length).toBe(10);
-    expect(data.wrapper).toMatchSnapshot();
+    const select = screen.getByRole('combobox');
+    const options = screen.queryAllByRole('option');
+    expect(options.length).toBe(10);
+    expect(select).toMatchSnapshot();
   });
 
-  it('selects <option>', () => {
-    const controlledData = render({ value: '1' }, 4);
-    const uncontrolledData = render({ defaultValue: '2' }, 4);
+  it('controlled selects <option>', () => {
+    makeSelect({ value: '1' }, 4);
 
-    expect(controlledData.wrapper.prop('defaultValue')).toBe(controlledData.props.defaultValue);
-    expect(uncontrolledData.wrapper.prop('defaultValue')).toBe(uncontrolledData.props.defaultValue);
+    const select = screen.getByRole('combobox');
+    expect(select).toHaveValue('1');
   });
 
-  it('has a selected <option>', () => {
-    const controlledData = render({ value: '1' }, 4);
-    const uncontrolledData = render({ defaultValue: '2' }, 4);
+  it('uncontrolled selects <option>', () => {
+    makeSelect({ defaultValue: '2' }, 4);
 
-    expect(controlledData.wrapper.prop('defaultValue')).toBe(controlledData.props.defaultValue);
-    expect(uncontrolledData.wrapper.prop('defaultValue')).toBe(uncontrolledData.props.defaultValue);
+    const select = screen.getByRole('combobox');
+    expect(select).toHaveValue('2');
   });
 
   it('applies additional classNames to select element', () => {
-    const data = render({ fieldClassName: 'foo' });
+    makeSelect({ fieldClassName: 'foo' });
 
-    expect(data.wrapper.hasClass(data.props.fieldClassName)).toBe(true);
+    const select = screen.getByRole('combobox');
+    expect(select).toHaveClass('foo');
     // Make sure we're not replacing the other class names
-    expect(data.wrapper.hasClass('ds-c-field')).toBe(true);
+    expect(select).toHaveClass('ds-c-field');
   });
 
-  it('adds size classes to select element', () => {
-    const mediumData = render({ size: 'medium' });
-    const smallData = render({ size: 'small' });
+  it('adds small size classes to select element', () => {
+    makeSelect({ size: 'small' });
 
-    expect(mediumData.wrapper.hasClass('ds-c-field--medium')).toBe(true);
-    expect(smallData.wrapper.hasClass('ds-c-field--small')).toBe(true);
+    const select = screen.getByRole('combobox');
+    expect(select).toHaveClass('ds-c-field--small');
+  });
+
+  it('adds medium size classes to select element', () => {
+    makeSelect({ size: 'medium' });
+
+    const select = screen.getByRole('combobox');
+    expect(select).toHaveClass('ds-c-field--medium');
   });
 
   it('is inversed', () => {
-    const data = render({ inversed: true });
+    makeSelect({ inversed: true });
 
-    expect(data.wrapper.hasClass('ds-c-field--inverse')).toBe(true);
+    const select = screen.getByRole('combobox');
+    expect(select).toHaveClass('ds-c-field--inverse');
   });
 
   it('has error', () => {
-    const data = render({ errorMessage: 'Error' });
+    makeSelect({ errorMessage: 'Error' });
 
-    expect(data.wrapper.prop('aria-invalid')).toBe(true);
-    expect(data.wrapper.hasClass('ds-c-field--error')).toBe(true);
+    const select = screen.getByRole('combobox');
+    expect(select).toHaveAttribute('aria-invalid', 'true');
+    expect(select).toHaveClass('ds-c-field--error');
   });
 
   it('handles bottom placed error', () => {
-    const data = render({
+    makeSelect({
       errorMessage: 'Error',
       errorPlacement: 'bottom',
       errorId: '1_error',
     });
 
-    expect(data.wrapper.prop('aria-invalid')).toBe(true);
-    expect(data.wrapper.prop('aria-describedby')).toBe('1_error');
-    expect(data.wrapper.hasClass('ds-c-field--error')).toBe(true);
-    expect(data.wrapper).toMatchSnapshot();
+    const select = screen.getByRole('combobox');
+    expect(select).toHaveAttribute('aria-invalid', 'true');
+    expect(select).toHaveAttribute('aria-describedby', '1_error');
+    expect(select).toHaveClass('ds-c-field--error');
+    expect(select).toMatchSnapshot();
   });
 
   it('is disabled', () => {
-    const data = render({ disabled: true });
+    makeSelect({ disabled: true });
 
-    expect(data.wrapper.prop('disabled')).toBe(true);
+    const select = screen.getByRole('combobox');
+    expect(select).toHaveAttribute('disabled');
   });
 
   it('is not disabled', () => {
-    const data = render();
+    makeSelect();
 
-    expect(data.wrapper.prop('disabled')).toBeUndefined();
+    const select = screen.getByRole('combobox');
+    expect(select).not.toHaveAttribute('disabled');
   });
 
-  describe('event handlers', () => {
-    const wrapper = render().wrapper;
+  it('calls the onChange handler', () => {
+    makeSelect({ defaultValue: '1' }, 10);
+    const select = screen.getByRole('combobox');
+    userEvent.selectOptions(select, screen.getByRole('option', { name: '2' }));
+    expect(defaultProps.onBlur).not.toHaveBeenCalled();
+    expect(defaultProps.onChange).toHaveBeenCalled();
+  });
 
-    beforeEach(() => {
-      jest.clearAllMocks();
-    });
-
-    it('calls the onChange handler', () => {
-      wrapper.simulate('change');
-      expect(defaultProps.onBlur).not.toHaveBeenCalled();
-      expect(defaultProps.onChange).toHaveBeenCalled();
-    });
-
-    it('calls the onBlur handler', () => {
-      wrapper.simulate('blur');
-      expect(defaultProps.onBlur).toHaveBeenCalled();
-      expect(defaultProps.onChange).not.toHaveBeenCalled();
-    });
+  it('calls the onBlur handler', () => {
+    makeSelect({ defaultValue: '1' }, 10);
+    const select = screen.getByRole('combobox');
+    userEvent.click(select);
+    userEvent.tab();
+    expect(defaultProps.onBlur).toHaveBeenCalled();
+    expect(defaultProps.onChange).not.toHaveBeenCalled();
   });
 });

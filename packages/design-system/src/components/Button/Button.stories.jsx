@@ -42,7 +42,7 @@ OnDark.args = {
   onDark: true,
 };
 OnDark.parameters = {
-  backgrounds: { default: process.env.STORYBOOK_DS === 'medicare' ? 'Mgov dark' : 'Hcgov dark' },
+  baseInverse: true,
 };
 
 export const IconButton = Template.bind({});
@@ -68,9 +68,6 @@ export const AnchorButton = Template.bind({});
 AnchorButton.args = {
   href: '!#',
 };
-AnchorButton.parameters = {
-  loki: { skip: true },
-};
 
 export const VariationsOnDark = () => (
   <>
@@ -84,7 +81,7 @@ export const VariationsOnDark = () => (
   </>
 );
 VariationsOnDark.parameters = {
-  backgrounds: { default: process.env.STORYBOOK_DS === 'medicare' ? 'Mgov dark' : 'Hcgov dark' },
+  baseInverse: true,
 };
 VariationsOnDark.decorators = [
   (Story) => (
@@ -279,7 +276,7 @@ export const AllAnchorButtons = () => {
             <Button href="#!" onDark variation="solid" size="big" disabled isAlternate>
               Solid alt anchor button on-dark
             </Button>
-            <Button href="#!" alt onDark variation="solid" disabled isAlternate>
+            <Button href="#!" onDark variation="solid" disabled isAlternate>
               Solid anchor button on-dark
             </Button>
             <Button href="#!" onDark variation="solid" size="small" disabled isAlternate>
@@ -560,7 +557,7 @@ export const AllButtons = () => {
             <Button onDark variation="solid" size="big" disabled isAlternate>
               Solid alt button on-dark
             </Button>
-            <Button alt onDark variation="solid" disabled isAlternate>
+            <Button onDark variation="solid" disabled isAlternate>
               Solid button on-dark
             </Button>
             <Button onDark variation="solid" size="small" disabled isAlternate>

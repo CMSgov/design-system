@@ -123,6 +123,8 @@ export interface HeaderProps {
    * Element added to display content on Header bottom section
    */
   headerBottom?: React.ReactNode;
+  isMenuOpen?: boolean;
+  onMenuToggle?: () => void;
 }
 
 export const VARIATION_NAMES = {
@@ -137,6 +139,7 @@ export const VARIATION_NAMES = {
  */
 export const Header = (props: HeaderProps) => {
   const [openMenu, setOpenMenu] = useState(false);
+  const isControlledMenu = props.isMenuOpen !== undefined && props.onMenuToggle !== undefined;
   const t = tWithLanguage(props.initialLanguage);
 
   if (props.initialLanguage) {
@@ -183,7 +186,11 @@ export const Header = (props: HeaderProps) => {
    * within ActionMenu is clicked.
    */
   function handleMenuToggleClick() {
-    setOpenMenu(!openMenu);
+    if (!isControlledMenu) {
+      setOpenMenu(!openMenu);
+    } else {
+      props.onMenuToggle();
+    }
   }
 
   const classes = classnames(`hc-c-header hc-c-header--${variation()}`, props.className);
@@ -206,7 +213,7 @@ export const Header = (props: HeaderProps) => {
     : defaultLinksForVariation;
 
   return (
-    <header className={classes} role="banner">
+    <header className={classes} role="banner" aria-label="global">
       <SkipNav href={props.skipNavHref} onClick={props.onSkipNavClick}>
         {t('header.skipNav')}
       </SkipNav>
@@ -220,24 +227,28 @@ export const Header = (props: HeaderProps) => {
             <Logo locale={props.initialLanguage ?? getLanguage()} />
           </a>
 
-          <ActionMenu
-            t={t}
-            firstName={props.firstName}
-            onMenuToggleClick={handleMenuToggleClick}
-            loggedIn={props.loggedIn}
-            open={openMenu}
-            links={links}
-          />
+          <nav
+            id="hc-c-header__actions"
+            className="hc-c-header__actions ds-l-col ds-l-col--auto ds-u-margin-left--auto ds-u-font-weight--bold"
+          >
+            <ActionMenu
+              t={t}
+              firstName={props.firstName}
+              onMenuToggleClick={handleMenuToggleClick}
+              loggedIn={props.loggedIn}
+              open={isControlledMenu ? props.isMenuOpen : openMenu}
+              links={links}
+            />
+            <Menu
+              beforeLinks={beforeMenuLinks()}
+              links={links}
+              open={isControlledMenu ? props.isMenuOpen : openMenu}
+              submenuTop={props.submenuTop}
+              submenuBottom={props.submenuBottom}
+            />
+          </nav>
         </div>
       </div>
-
-      <Menu
-        beforeLinks={beforeMenuLinks()}
-        links={links}
-        open={openMenu}
-        submenuTop={props.submenuTop}
-        submenuBottom={props.submenuBottom}
-      />
 
       {props.deConsumer && <DeConsumerMessage t={t} deBrokerName={props.deBrokerName} />}
       {props.headerBottom}

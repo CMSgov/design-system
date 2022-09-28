@@ -1,22 +1,59 @@
 ---
-title: Color Palette
+title: Color
 order: 20
+intro: The design system provides a flexible color palette that meets accessible color contrast requirements.
 ---
 
-import ColorSwatchList from '../../src/components/ColorSwatchList';
-
-<p class="ds-text--lead">
-  The design system provides a flexible, yet distinctly American palette designed to communicate
-  warmth and trustworthiness while meeting the highest standards of 508 color contrast requirements.
-</p>
+<ThemeContent onlyThemes={['core', 'medicare']}>
 
 The palette is designed to support a range of distinct visual styles that continue to feel connected. The intent of the palette is to convey a warm and open American spirit, with bright saturated tints of blue, grounded in sophisticated deeper shades of cool blues and grays. These colors — combined with clear hierarchy, good information design, and ample white space — should leave users feeling welcomed and in good hands.
 
 This is a simple, minimalist color palette. Shades of blue dominate, providing a neutral backdrop on which brighter shades, clean type treatment, and bright white content areas “pop” on the page.
 
+</ThemeContent>
+
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+Color is a key element in our design system used to create meaning and consistency. Our color palette helps to unify our brand’s experiences, from product interfaces to marketing. 
+
+You can apply color to:
+
+- Convey emotion
+- Express a tone
+- Guide attention
+- Pinpoint critical items
+
+Below you will find a set of well-defined guidelines on how to work with our colors.
+
+</ThemeContent>
+
+
 ## Primary colors
 
+
+<ThemeContent onlyThemes={['core', 'medicare']}>
+
 This palette’s primary colors are blue, gray, and white. Blue is commonly associated with trust, confidence, and sincerity; it is also used to represent calmness and responsibility.
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+Our primary color palette is designed for use throughout our digital products within interfaces and for branding. Primary colors are displayed most frequently across our products' screens and components.
+
+Primary colors are used for:
+
+- Key actions such as primary call to action buttons
+- Highlighted content
+- Form field elements
+
+We chose colors that offer a range of uses and that meet or exceed standards in supporting accessibility and contrast for low vision users.
+
+
+The guidelines indicate how colors should be applied, noting where some should be utilized sparingly and with purpose for specific components like errors or messaging.
+
+</ThemeContent>
 
 <ColorSwatchList
   colorNames={[
@@ -34,7 +71,11 @@ This palette’s primary colors are blue, gray, and white. Blue is commonly asso
 
 ## Secondary colors
 
+<ThemeContent onlyThemes={['core', 'medicare']}>
+
 These are accent colors to provide additional lightness and style to pages looking for a more modern flair. These colors should be used to highlight important features on a page, such as buttons, or for visual style elements, such as illustrations. They should be used sparingly and never draw the eye to more than one piece of information at a time.
+
+</ThemeContent>
 
 <ColorSwatchList
   colorNames={[
@@ -51,7 +92,11 @@ These are accent colors to provide additional lightness and style to pages looki
 
 ## Background colors
 
+<ThemeContent onlyThemes={['core', 'medicare']}>
+
 These colors are used largely for background blocks and large content areas. When alternating between tones, be sure to use enough contrast between adjacent colors.
+
+</ThemeContent>
 
 <ColorSwatchList
   colorNames={[
@@ -68,10 +113,14 @@ These colors are used largely for background blocks and large content areas. Whe
 
 ## Status colors
 
+<ThemeContent onlyThemes={['core', 'medicare']}>
+
 These colors are used largely to indicate the status of something.
 Be cautious using these colors to signify something that may contradict what most people would expect the colors to be used for.
 
 Status colors can also be used with these aliases where `green`, `gold`, and `red` are identical to `success`, `warn`, and `error`. Use these alternate naming options when statuses aren't approproiate or give enough detail. For example, in some situations, `$color-red-dark` might be more accurate and descriptive than `$color-error-darker`.
+
+</ThemeContent>
 
 <ColorSwatchList
   colorNames={[

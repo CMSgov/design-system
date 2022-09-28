@@ -62,13 +62,14 @@ InverseOption.args = {
   inversed: true,
 };
 InverseOption.parameters = {
-  backgrounds: { default: process.env.STORYBOOK_DS === 'medicare' ? 'Mgov dark' : 'Hcgov dark' },
+  baseInverse: true,
 };
 
 export const ChoiceChildren = Template.bind({});
 ChoiceChildren.args = {
   name: 'radio_choices',
   type: 'radio',
+  label: 'Example choices with checked children',
   choices: [
     {
       label: 'Choice 1',

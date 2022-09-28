@@ -230,6 +230,7 @@
 --filter-chip__color--active: #ffffff;
 --filter-chip-icon__color: #262626;
 --filter-chip-icon__color-active: #ffffff;
+--footer__list-marker-size: 2px;
 --form__max-width: 460px;
 --form__max-width--small: 6em;
 --form__max-width--medium: 12em;
@@ -243,6 +244,7 @@
 --icon__color--primary: #046791;
 --icon__color--success: #12890e;
 --icon__color--warn: #f8c41f;
+--inset__border-width: 4px;
 --link__color: #046791;
 --link__color--active: #023449;
 --link__color--hover: #034866;
@@ -314,6 +316,14 @@
 --tooltip-icon__color: #046791;
 --tooltip-icon__color--inverse: #ffffff;
 --tooltip-trigger__color: #046791;
+--typography-heading__font-family: inherit;
+--typography-heading__font-weight: 700;
+--typography-heading-4xl__font-weight: inherit;
+--typography-heading-3xl__font-weight: inherit;
+--typography-heading-lg__font-weight: 700;
+--typography-heading-md__font-weight: 700;
+--typography-heading-sm__font-weight: 400;
+--typography-body__font-family: inherit;
 --usa-banner__background-color: #f2f2f2;
 --usa-banner__color: #000000;
 --usa-banner-close__background-color: #a6a6a6;

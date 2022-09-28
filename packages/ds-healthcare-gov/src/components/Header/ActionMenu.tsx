@@ -67,19 +67,19 @@ const ActionMenu = function (props: ActionMenuProps) {
   let content;
   if (props.loggedIn) {
     content = (
-      <div>
+      <>
         {props.firstName && (
           <span className="ds-u-display--none ds-u-sm-display--inline-block">
             {props.firstName}
           </span>
         )}
         {menuButton}
-      </div>
+      </>
     );
   } else if (props.links.length) {
     content = (
-      <div>
-        <ul className="hc-c-logged-out-links ds-c-list--bare ds-u-display--none ds-u-sm-display--inline-block">
+      <>
+        <ul className="hc-c-logged-out-links ds-c-list--bare ds-u-display--none ds-u-sm-display--flex">
           {props.links.map((link) => {
             return (
               <li key={link.href} className="hc-c-logged-out-links__li">
@@ -100,21 +100,13 @@ const ActionMenu = function (props: ActionMenuProps) {
           })}
         </ul>
         {menuButton}
-      </div>
+      </>
     );
   } else {
     content = null;
   }
 
-  return (
-    <nav
-      id="hc-c-header__actions"
-      className="hc-c-header__actions ds-l-col ds-l-col--auto ds-u-margin-left--auto ds-u-font-weight--bold"
-      role="navigation"
-    >
-      {content}
-    </nav>
-  );
+  return content;
 };
 
 export default ActionMenu;

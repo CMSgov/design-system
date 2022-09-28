@@ -1,0 +1,51 @@
+---
+title: One Column Page Layout
+---
+
+A one column page, as basic as it comes.
+
+import { Alert } from '@cmsgov/design-system';
+
+<ThemeContent neverThemes={['healthcare']}>
+  <Alert variation="error">
+     <p class="ds-c-alert__text">
+        This component is only used for Healthcare. Please use the theme switcher to view the component with Healthcare styles.
+    </p>
+  </Alert>
+</ThemeContent>
+
+<StorybookExample
+  componentName="one-col-page-layout"
+  storyId="patterns-one-column-page-layout--one-column-page-layout"
+/>
+
+## Guidance
+
+### When to use
+
+- A one column layout is useful for presenting a page that includes a form.
+- A one column layout is a great approach for a text-heavy page.
+
+
+### When to consider alternatives
+
+- Use a landing page when introducing users to your application, agency, or organization.
+
+### Usage
+
+Prioritize your content by organizing content into three regions.
+
+- **Page header**
+  - Page headers contain the following items: Backlinks, breadcrumb, progress bars, or utility links (print, email, RSS), Lead text, subtitles, sub-headers, or page-level alerts.
+- **Page content**
+  - Primary content.
+- **Page footer**
+  - Pain index or utility links (print, email, RSS).
+
+### Used in this pattern
+
+- [Healthcare.gov Header](/components/header/healthcare-header/)
+- [Grid](/utilities/layout-grid/)
+- [Base styling](/foundation/base/)
+- [Base typography](/foundation/typography/)
+- [Healthcare.gov Footer](/components/footer/healthcare-footer/)

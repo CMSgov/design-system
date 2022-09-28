@@ -1,10 +1,10 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 
-import Layout from './Layout';
+import Layout from './layout/Layout';
 import { MdxQuery } from '../helpers/graphQLTypes';
 import useTheme from '../helpers/useTheme';
-import ContentRenderer from './ContentRenderer';
+import ContentRenderer from './content/ContentRenderer';
 
 /**
  * Template for information content pages.
@@ -46,6 +46,8 @@ export const query = graphql`
         }
         medicare {
           sketchLink
+          storybookLink
+          githubLink
         }
       }
       slug

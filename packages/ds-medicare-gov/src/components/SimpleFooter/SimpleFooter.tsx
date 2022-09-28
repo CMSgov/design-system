@@ -29,7 +29,7 @@ const SimpleFooter: FunctionComponent<SimpleFooterProps> = ({
   language = 'en',
   websiteInfo = 'A federal government website managed and paid for by the U.S. Centers for Medicare and Medicaid Services.',
   onClickLinkAnalytics,
-}) => {
+}: SimpleFooterProps) => {
   const footerRef = useRef<HTMLElement>();
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const SimpleFooter: FunctionComponent<SimpleFooterProps> = ({
         anchor.onclick = () => onClickLinkAnalytics(anchor.href);
       });
     }
-  }, []);
+  }, [onClickLinkAnalytics]);
 
   return (
     <footer className="m-c-footer" ref={footerRef}>

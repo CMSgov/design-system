@@ -1,0 +1,30 @@
+---
+title: Medicare.gov Footer
+medicare:
+  githubLink: ds-medicare-gov/src/components/SimpleFooter
+  sketchLink: oYZ3yn2
+  storybookLink: medicare-simplefooter--default
+---
+
+import { Alert } from '@cmsgov/design-system';
+
+<ThemeContent neverThemes={['medicare']}>
+  <Alert variation="error">
+     <p class="ds-c-alert__text">
+        This component is only used for Medicare. Please use the theme switcher to view the component with Medicare styles.
+    </p>
+  </Alert>
+</ThemeContent>
+
+## Examples
+
+<StorybookExample
+    componentName="footer"
+    storyId="medicare-simplefooter--default"
+/>
+
+## Code
+
+### React
+
+<PropTable componentName="SimpleFooter" />

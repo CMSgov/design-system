@@ -1,7 +1,6 @@
 import { FormControl, FormControlPropKeys, FormControlProps } from '../FormControl/FormControl';
 import React from 'react';
 import Select from './Select';
-import { errorPlacementDefault } from '../flags';
 import omit from 'lodash/omit';
 import pick from 'lodash/pick';
 

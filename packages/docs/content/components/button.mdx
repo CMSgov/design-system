@@ -1,17 +1,17 @@
 ---
 title: Button
-intro: Use buttons to signal actions.
+intro: Buttons allow users to take actions from a current state to a future state.
 core:
   githubLink: design-system/src/components/Button
-  sketchLink: g0Kvajz
+  sketchLink: zx4Ybra
   storybookLink: components-button--default
 healthcare:
-  sketchLink: v8jeK3d
+  sketchLink: bgkyK0V
 medicare:
-  sketchLink: Vr4yyWw
+  sketchLink: 9POn0mM
 ---
 
-import { Alert, ArrowIcon, Button } from '@cmsgov/design-system';
+import { Alert, Badge, ArrowIcon, Button, CloseIconThin } from '@cmsgov/design-system';
 
 <Alert heading="Are you upgrading to v4 (healthcare v8, medicare v6)?">
 
@@ -31,15 +31,15 @@ See the examples in the following sections to learn how they can be applied.
 
 <ButtonVariationsTable />
 
-### Outline button
+### Main buttons
 
-<StorybookExample
-  componentName="outline-button"
-  sourceFilePath="components/Button/Button.tsx"
-  storyId="components-button--default&args=children:Outline"
-/>
+#### Solid button
 
-### Solid button
+<ThemeContent onlyThemes={['healthcare']}>
+
+Use solid buttons for the primary actions we want users to take. These actions are required for the user to move to the next step in the user flow (example: Enroll) or to highlight the main/key action.
+
+</ThemeContent>
 
 <StorybookExample
   componentName="solid-button"
@@ -47,7 +47,31 @@ See the examples in the following sections to learn how they can be applied.
   storyId="components-button--default&args=children:Solid;variation:solid"
 />
 
-### Ghost button
+
+#### Outline button
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+Use outline buttons for actions available but not the primary action we want users to take (example: Plan details). There doesn't have to be a primary button on the page to use the secondary button.
+
+
+</ThemeContent>
+
+<StorybookExample
+  componentName="outline-button"
+  sourceFilePath="components/Button/Button.tsx"
+  storyId="components-button--default&args=children:Outline"
+/>
+
+
+
+#### Ghost button
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+Use ghost buttons for actions available but do not take priority over a primary or secondary CTAs (example: Cancel).
+
+</ThemeContent>
 
 <StorybookExample
   componentName="ghost-button"
@@ -57,32 +81,19 @@ See the examples in the following sections to learn how they can be applied.
 
 ### Alternate buttons
 
-Each button variation (outline, solid, ghost) has an alternate option. The alternate options can be styled differently than the main buttons.
-
-<ThemeContent onlyThemes={['healthcare', 'medicare']}>
-
-  #### Outline alternate button (Unused)
-
-</ThemeContent>
-<ThemeContent neverThemes={['healthcare', 'medicare']}>
-
-  #### Outline alternate button
-
-  <StorybookExample
-    componentName="outline-alt-button"
-    sourceFilePath="components/Button/Button.tsx"
-    storyId="components-button--default&args=children:Outline;isAlternate:true"
-  />
-</ThemeContent>
-
 <ThemeContent onlyThemes={['healthcare']}>
 
-  #### Solid alternate button (Unused)
+<Badge variation="alert">
+<CloseIconThin /> Unused by Healthcare.
+</Badge>
 
 </ThemeContent>
+
+Each button variation (outline, solid, ghost) has an alternate option. Alternate buttons can be styled differently than the main buttons.
+
 <ThemeContent neverThemes={['healthcare']}>
 
-  #### Solid alternate button
+  #### Alternate solid button
   
   <StorybookExample
     componentName="solid-alt-button"
@@ -91,14 +102,44 @@ Each button variation (outline, solid, ghost) has an alternate option. The alter
   />
 </ThemeContent>
 
-<ThemeContent onlyThemes={['healthcare', 'medicare']}>
+<ThemeContent neverThemes={['healthcare']}>
 
-  #### Ghost alternate button (Unused)
+#### Alternate outline button
 
 </ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+<Badge variation="alert">
+<CloseIconThin /> Unused by Medicare.
+</Badge>
+
+</ThemeContent>
+
 <ThemeContent neverThemes={['healthcare', 'medicare']}>
 
-  #### Ghost alternate button
+  <StorybookExample
+    componentName="outline-alt-button"
+    sourceFilePath="components/Button/Button.tsx"
+    storyId="components-button--default&args=children:Outline;isAlternate:true"
+  />
+</ThemeContent>
+
+<ThemeContent neverThemes={['healthcare']}>
+
+#### Alternate ghost button
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+<Badge variation="alert">
+<CloseIconThin /> Unused by Medicare.
+</Badge>
+
+</ThemeContent>
+
+<ThemeContent neverThemes={['healthcare','medicare']}>
 
   <StorybookExample
     componentName="ghost-alt-button"
@@ -107,14 +148,18 @@ Each button variation (outline, solid, ghost) has an alternate option. The alter
   />
 </ThemeContent>
 
-<ThemeContent onlyThemes={['healthcare']}>
 
-  ### On dark background (Unused)
+### On dark background 
+
+<ThemeContent onlyThemes={['healthcare']}> 
+
+<Badge variation="alert">
+<CloseIconThin /> Unused by Healthcare.
+</Badge>
 
 </ThemeContent>
-<ThemeContent neverThemes={['healthcare']}>
 
-  ### On dark background
+<ThemeContent neverThemes={['healthcare']}>
 
   <StorybookExample
     componentName="on-dark-buttons"
@@ -123,17 +168,44 @@ Each button variation (outline, solid, ghost) has an alternate option. The alter
   />
 </ThemeContent>
 
-### Changing the size
+### Button sizes
 
-Buttons can exist in two alternative sizes: "big" or "small". See the example below.
+Buttons can exist in two sizes other than default: "big" or "small".
+
+#### Big button
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+<Badge variation="alert">
+<CloseIconThin /> Unused by Healthcare.
+</Badge>
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['core', 'medicare']}>
 
 <EmbeddedExample>
   <div>
-    <Button className="ds-u-margin-right--1" size="big">
+    <Button size="big">
       Big
     </Button>
-    <Button className="ds-u-margin-right--1">Default</Button>
-    <Button className="ds-u-margin-right--1" size="small">
+  </div>
+</EmbeddedExample>
+
+</ThemeContent>
+
+#### Small button
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+Small outline buttons are used for utility buttons on a page with other primary and secondary actions (example: Edit, Remove, Add another [something]).
+
+</ThemeContent>
+
+
+<EmbeddedExample>
+  <div>
+    <Button size="small">
       Small
     </Button>
   </div>
@@ -154,7 +226,6 @@ Buttons can exist in two alternative sizes: "big" or "small". See the example be
       Right Icon
       <ArrowIcon direction="right" className="ds-u-margin-left--05" />
     </Button>
-    <Button>No Icon</Button>
   </div>
 </EmbeddedExample>
 
@@ -208,6 +279,22 @@ A custom heading value can be sent for an analytics event by using the prop `ana
 
 ## Guidance
 
+Buttons are promises to the user; they must deliver the promise they offer by doing what the button says it will do.
+
+<ThemeContent onlyThemes={['medicare']}>
+
+- Action buttons do NOT include icons. 
+<br/> <i>Exception:</i> Can include icons in buttons in mobile for CTAs outlining functionality.<br /> Examples: Filter, Sort, Map, and Menu. 
+- Other exceptions require advance and separate approval than mock-ups by product teams. See [Exception process](../../guidelines/exceptions/?theme=medicare)" in Foundations.
+- Buttons use title case. Example: Join Plan or Find Doctors.
+- Note that clickable cards are sentence case. See that component for more information.
+
+When pairing 2 CTAs:
+- In forms/decision trees: Have the preferred action be on the right. Example: Back/Next or Cancel/Submit.
+- All other cases: Have the preferred action be on the left. Example: Create Account/Return to Home or Change My Account/Stop Easy Pay.
+
+</ThemeContent>
+
 ### When to use
 
 - Use buttons for the most important actions you want users to take on your site, such as "Download," "Sign up," or "Apply."
@@ -219,10 +306,17 @@ A custom heading value can be sent for an analytics event by using the prop `ana
 
 ### Usage
 
-- Use the "primary" button variation for the button most users should click. This is your primary call-to-action.
 - Avoid using too many buttons on a page. Aim to use only one button per page.
 - Avoid similar styles elsewhere on the page that could be confused for buttons.
 - Use buttons for the primary action and links for secondary actions.
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+#### Don't
+
+- Use buttons for navigational elements like going to a new page. 
+
+</ThemeContent>
 
 **Label text**
 
@@ -233,7 +327,6 @@ A custom heading value can be sent for an analytics event by using the prop `ana
 
 **Destructive buttons**
 
-- Use the "danger" button variation for destructive buttons. For example, buttons that delete or reset a user's information.
 - Confirm the user meant to trigger a destructive action before following through with the action.
 - Provide a method for a user to undo a destructive action.
 
@@ -242,12 +335,298 @@ A custom heading value can be sent for an analytics event by using the prop `ana
 - Don’t disable buttons, unless there’s a good reason to.
 - If you do disable a button, make sure it receives the disabled styling. A `button` element will automatically be styled as a disabled button when it has the `disabled` HTML attribute, but an `a` element will need to have the `.ds-c-button--disabled` class applied to it.
 
+<ThemeContent onlyThemes={['healthcare']}>
+
+### Design guidelines
+
+- Buttons are used for actions; links are used for navigation
+- Buttons do NOT include icons. 
+  - Exception: Can include icons in buttons for utility actions like print and save and branded buttons like Facebook, Twitter, and YouTube used in the Footer
+- When pairing 2 buttons the preferred/main action is placed on the left.
+- Ghost buttons are typically used when paired with a Solid or Outline button or to indicate lower priority actions. 
+
+</ThemeContent>
+
 ### Accessibility
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+Consider when to use links vs. when to use buttons. Links and buttons are read differently using a screen readers. For screen readers buttons can be triggered by pressing the space bar or the enter key while links are only triggered by the enter key. This makes a difference to a screen reader user's flow. 
+
+</ThemeContent>
+
 
 - Buttons should display a visible focus state when users tab to them.
 - Create a button with a `button` or `a` element to retain the native click functionality. Avoid using `<div>` or `<img>` tags to create buttons. Screen readers don't automatically know either is a usable button.
 - When styling links to look like buttons, remember that screen readers handle links slightly differently than they do buttons. Pressing the `Space` key triggers a button, but pressing the `Enter` key triggers a link.
 - Dimmed or unavailable buttons should have the `disabled` attribute applied. This removes native click and keypress events from the button. It also prevents automated scanners from logging a low contrast error. Finally, it announces the button as "dimmed" or "disabled" to screen readers, offering users additional context.
+
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+### Content
+
+- Describe what will happen, not the current state. 
+- Buttons always start with an action word describing the main thing users will do once selected. 
+  - Pair it with a noun to help it be clearer. Example: Get tips.
+  - If in a form, it can be just the action word if it's navigating between steps. Example: Cancel, Back, Next.
+- Use the least amount of words possible (no more than 6 with 2-4 being ideal).
+- Use sentence case for buttons. This conveys a friendlier tone. Note: Some tools and the homepage are using ALL CAPS. There are also a few examples of Title Case. We should change to sentence case for consistency across the site. 
+
+
+#### Writing content
+- Remove articles and use '&' instead of 'and'
+- Do not capitalize articles. 
+- Avoid all caps unless the word is an acronym, like ZIP.
+- Avoid pronouns unless the future state provides the user with customized information. Example: "Get my results"
+- Limit branded terms, like tool names. As a general rule, we don't use tool names in web content or flow. Rather, content should outline what the user will get/can do when they click the button.
+
+#### Online forms & steps
+
+##### Starting a process or sequential steps
+
+Generally better to use specific verbs to confirm what the user is starting. For example, "Create Account."
+
+<table class="ds-c-table ds-c-table--compact ds-c-md-table--stacked" role="table" width="100%">
+  <thead role="rowgroup">
+    <tr role="row">
+      <th class="ds-u-fill--success-lightest" role="columnheader" scope="col">
+        Use
+      </th>
+      <th class="ds-u-fill--error-lightest" role="columnheader" scope="col">
+        Don't use
+      </th>
+    </tr>
+  </thead>
+  <tbody role="rowgroup">
+    <tr role="row">
+      <td
+        role="cell"
+        data-title="Document title"
+        width="50%"
+      >
+       Start
+      </td>
+      <td
+        role="cell"
+        data-title="Description"
+        width="50%"
+      >
+     Begin, Go, Enter, or Submit
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+##### Moving through a process or sequential steps after starting
+
+For forward movement to the next page or step.
+
+<table class="ds-c-table ds-c-table--compact ds-c-md-table--stacked" role="table" width="100%">
+  <thead role="rowgroup">
+    <tr role="row">
+      <th class="ds-u-fill--success-lightest" role="columnheader" scope="col">
+        Use
+      </th>
+      <th class="ds-u-fill--error-lightest" role="columnheader" scope="col">
+        Don't use
+      </th>
+    </tr>
+  </thead>
+  <tbody role="rowgroup">
+    <tr role="row">
+      <td
+        role="cell"
+        data-title="Document title"
+        width="50%"
+      >
+       Continue
+      </td>
+      <td
+        role="cell"
+        data-title="Description"
+        width="50%"
+      >
+        Next
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+For backward movement to the previous step in the process.
+
+<table class="ds-c-table ds-c-table--compact ds-c-md-table--stacked" role="table" width="100%">
+  <thead role="rowgroup">
+    <tr role="row">
+      <th class="ds-u-fill--success-lightest" role="columnheader" scope="col">
+        Use
+      </th>
+      <th class="ds-u-fill--error-lightest" role="columnheader" scope="col">
+        Don't use
+      </th>
+    </tr>
+  </thead>
+  <tbody role="rowgroup">
+    <tr role="row">
+      <td
+        role="cell"
+        data-title="Document title"
+        width="50%"
+      >
+       Back or Go Back
+      </td>
+      <td
+        role="cell"
+        data-title="Description"
+        width="50%"
+      >
+        Undo or Cancel
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+##### Stopping a process or translation and return to beginning
+
+<table class="ds-c-table ds-c-table--compact ds-c-md-table--stacked" role="table" width="100%">
+  <thead role="rowgroup">
+    <tr role="row">
+      <th class="ds-u-fill--success-lightest" role="columnheader" scope="col">
+        Use
+      </th>
+      <th class="ds-u-fill--error-lightest" role="columnheader" scope="col">
+        Don't use
+      </th>
+    </tr>
+  </thead>
+  <tbody role="rowgroup">
+    <tr role="row">
+      <td
+        role="cell"
+        data-title="Document title"
+        width="50%"
+      >
+       Cancel
+      </td>
+      <td
+        role="cell"
+        data-title="Description"
+        width="50%"
+      >
+        X
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+##### Submiting information or completing a process
+
+Generally better to use specific verbs if appropriate to confirm an action. 
+
+<table class="ds-c-table ds-c-table--compact ds-c-md-table--stacked" role="table" width="100%">
+  <thead role="rowgroup">
+    <tr role="row">
+      <th class="ds-u-fill--success-lightest" role="columnheader" scope="col">
+        Use
+      </th>
+      <th class="ds-u-fill--error-lightest" role="columnheader" scope="col">
+        Don't use
+      </th>
+    </tr>
+  </thead>
+  <tbody role="rowgroup">
+    <tr role="row">
+      <td
+        role="cell"
+        data-title="Document title"
+        width="50%"
+      >
+       Enter, Go, or Submit
+      </td>
+      <td
+        role="cell"
+        data-title="Description"
+        width="50%"
+      >
+        Fill in, Tell us, Done, or Select
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+#### Logging in and logging out
+
+<table class="ds-c-table ds-c-table--compact ds-c-md-table--stacked" role="table" width="100%">
+  <thead role="rowgroup">
+    <tr role="row">
+      <th class="ds-u-fill--success-lightest" role="columnheader" scope="col">
+        Use
+      </th>
+      <th class="ds-u-fill--error-lightest" role="columnheader" scope="col">
+        Don't use
+      </th>
+    </tr>
+  </thead>
+  <tbody role="rowgroup">
+    <tr role="row">
+      <td
+        role="cell"
+        data-title="Document title"
+        width="50%"
+      >
+      <ul>
+       <li>Log in - MUST be 2 words and "in" is lowercase when it's an action.</li>
+       <li>Login - Used as 1 word when it's a noun or adjective.</li>
+       </ul>
+      </td>
+      <td
+        role="cell"
+        data-title="Description"
+        width="50%"
+      >
+        Sign in, or Signin
+      </td>
+    </tr>
+    <tr role="row">
+      <td
+        role="cell"
+        data-title="Document title"
+        width="50%"
+      >
+       <ul>
+       <li>Log out - MUST be 2 words and "out" is lowercase when it's an action.</li>
+       <li>Logout - Used as 1 word when it's a noun or adjective.</li>
+       </ul>
+      </td>
+      <td
+        role="cell"
+        data-title="Description"
+        width="50%"
+      >
+        Logoff, Log off, Signout, or Sign out
+      </td>
+    </tr>
+    <tr role="row">
+      <td
+        role="cell"
+        data-title="Document title"
+        width="50%"
+      >
+       Username - MUST be 1 word.
+      </td>
+      <td
+        role="cell"
+        data-title="Description"
+        width="50%"
+      >
+        User name
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+</ThemeContent>
 
 ## Learn more
 

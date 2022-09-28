@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Step renders completed text and an edit link for completed steps 1`] = `
+<li
+  class="ds-c-step ds-c-step--completed"
+>
+  <div
+    class="ds-c-step__content ds-c-step__content--with-content"
+  >
+    <h2
+      aria-label="!Description for Do something!"
+      class="ds-c-step__heading"
+      id="heading-7"
+    >
+      Do something!
+    </h2>
+    <div
+      aria-labelledby="heading-7"
+      class="ds-c-step__description"
+      role="region"
+    >
+      Do something really cool!
+    </div>
+  </div>
+  <div
+    aria-label="!Primary actions for Do something!"
+    class="ds-c-step__actions"
+    role="region"
+  >
+    <div
+      class="ds-c-step__completed-text"
+    >
+      <svg
+        aria-hidden="true"
+        class="ds-c-icon ds-c-icon--check ds-c-icon-color--success"
+        focusable="false"
+        id="icon-8"
+        viewBox="0 0 16 12"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M16 2.343a.969.969 0 00-.289-.686L14.307.283a1.012 1.012 0 00-1.404 0L6.132 6.919 3.097 3.94a1.012 1.012 0 00-1.404 0L.289 5.313A.969.969 0 000 6c0 .253.103.505.289.687l5.14 5.03a1.012 1.012 0 001.405 0L15.71 3.03A.969.969 0 0016 2.343z"
+        />
+      </svg>
+      Completed!
+    </div>
+    <a
+      href="/some/path"
+    >
+      Edit!
+      <span
+        class="ds-u-visibility--screen-reader"
+      >
+         
+        Do something!
+      </span>
+    </a>
+  </div>
+</li>
+`;
+
+exports[`Step renders substeps 1`] = `
+<ol
+  aria-label="!Secondary actions for Do something!"
+  class="ds-c-step__substeps"
+>
+  <li
+    class="ds-c-substep"
+  >
+    <div
+      class="ds-c-substep__heading"
+    >
+      substep
+    </div>
+  </li>
+  <li
+    class="ds-c-substep"
+  >
+    <div
+      class="ds-c-substep__heading"
+    >
+      substep
+    </div>
+  </li>
+  <li
+    class="ds-c-substep"
+  >
+    <div
+      class="ds-c-substep__heading"
+    >
+      substep
+    </div>
+  </li>
+</ol>
+`;

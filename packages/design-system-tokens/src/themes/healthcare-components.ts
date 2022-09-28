@@ -301,6 +301,10 @@ export const components: AnyTokenValues = {
     '-icon__color-active':                        t.color['white'],
   },
 
+  'footer': {
+    '__list-marker-size':                         '2px'
+  },
+
   'form': {
     '__max-width':                                '460px',
     '__max-width--small':                         '6em',
@@ -318,6 +322,10 @@ export const components: AnyTokenValues = {
     '__color--primary':                           t.color['primary'],
     '__color--success':                           t.color['success'],
     '__color--warn':                              t.color['warn'],
+  },
+
+  'inset': {
+    '__border-width':                             t.spacer['half']
   },
 
   'link': {
@@ -416,6 +424,17 @@ export const components: AnyTokenValues = {
     '-icon__color':                               t.color['primary'],
     '-icon__color--inverse':                      t.color['white'],
     '-trigger__color':                            t.color['primary'],
+  },
+
+  'typography': {
+    '-heading__font-family':                      'inherit',
+    '-heading__font-weight':                      t.font['weight-bold'],
+    '-heading-4xl__font-weight':                  'inherit',
+    '-heading-3xl__font-weight':                  'inherit',
+    '-heading-lg__font-weight':                   t.font['weight-bold'],
+    '-heading-md__font-weight':                   t.font['weight-bold'],
+    '-heading-sm__font-weight':                   t.font['weight-normal'],
+    '-body__font-family':                         'inherit',
   },
 
   'usa-banner': {

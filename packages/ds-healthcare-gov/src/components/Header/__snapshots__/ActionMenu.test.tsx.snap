@@ -1,0 +1,180 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ActionMenu analytics sends analytics event when logged-in menu closed 1`] = `
+Object {
+  "category": "consistent header",
+  "event_name": "header_click",
+  "event_type": "ui interaction",
+  "ga_eventAction": "click",
+  "ga_eventCategory": "consistent header",
+  "ga_eventLabel": "menu closed",
+  "ga_eventType": "cmsds",
+  "ga_eventValue": "",
+  "text": "menu closed",
+}
+`;
+
+exports[`ActionMenu analytics sends analytics event when logged-in menu opened 1`] = `
+Object {
+  "category": "consistent header",
+  "event_name": "header_click",
+  "event_type": "ui interaction",
+  "ga_eventAction": "click",
+  "ga_eventCategory": "consistent header",
+  "ga_eventLabel": "menu opened",
+  "ga_eventType": "cmsds",
+  "ga_eventValue": "",
+  "text": "menu opened",
+}
+`;
+
+exports[`ActionMenu analytics sends analytics event when logged-out action menu link clicked 1`] = `
+Object {
+  "category": "consistent header",
+  "event_name": "header_click",
+  "event_type": "ui interaction",
+  "ga_eventAction": "click",
+  "ga_eventCategory": "consistent header",
+  "ga_eventLabel": "ZOMBO",
+  "ga_eventType": "cmsds",
+  "ga_eventValue": "",
+  "link_url": "https://www.zombo.com",
+  "text": "ZOMBO",
+}
+`;
+
+exports[`ActionMenu analytics sends analytics event when logged-out menu closed 1`] = `
+Object {
+  "category": "consistent header",
+  "event_name": "header_click",
+  "event_type": "ui interaction",
+  "ga_eventAction": "click",
+  "ga_eventCategory": "consistent header",
+  "ga_eventLabel": "menu closed",
+  "ga_eventType": "cmsds",
+  "ga_eventValue": "",
+  "text": "menu closed",
+}
+`;
+
+exports[`ActionMenu analytics sends analytics event when logged-out menu opened 1`] = `
+Object {
+  "category": "consistent header",
+  "event_name": "header_click",
+  "event_type": "ui interaction",
+  "ga_eventAction": "click",
+  "ga_eventCategory": "consistent header",
+  "ga_eventLabel": "menu opened",
+  "ga_eventType": "cmsds",
+  "ga_eventValue": "",
+  "text": "menu opened",
+}
+`;
+
+exports[`ActionMenu logged-in version renders logged-in version 1`] = `
+<DocumentFragment>
+  <span
+    class="ds-u-display--none ds-u-sm-display--inline-block"
+  >
+    John
+  </span>
+  <button
+    aria-controls="hc-c-menu"
+    aria-expanded="false"
+    aria-label="header.openMenu"
+    class="ds-c-button ds-c-button--small hc-c-action-menu-button ds-u-sm-margin-left--2"
+    type="button"
+  >
+    <svg
+      aria-hidden="true"
+      class="ds-c-icon ds-u-margin-right--1 ds-c-icon--menu"
+      focusable="false"
+      id="icon-1"
+      viewBox="0 0 448 512"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+        fill="currentColor"
+      />
+    </svg>
+    header.menu
+  </button>
+</DocumentFragment>
+`;
+
+exports[`ActionMenu logged-in version set aria-expanded to true 1`] = `
+<DocumentFragment>
+  <span
+    class="ds-u-display--none ds-u-sm-display--inline-block"
+  >
+    John
+  </span>
+  <button
+    aria-controls="hc-c-menu"
+    aria-expanded="true"
+    aria-label="header.closeMenu"
+    class="ds-c-button ds-c-button--small hc-c-action-menu-button ds-u-sm-margin-left--2"
+    type="button"
+  >
+    <svg
+      aria-hidden="true"
+      class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin ds-u-margin-right--1"
+      focusable="false"
+      id="icon-2"
+      viewBox="-2 -2 18 18"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M0 13.0332964L13.0332964 0M13.0332964 13.0332964L0 0"
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-width="2"
+      />
+    </svg>
+    header.menu
+  </button>
+</DocumentFragment>
+`;
+
+exports[`ActionMenu logged-out version renders logged-out version 1`] = `
+<DocumentFragment>
+  <ul
+    class="hc-c-logged-out-links ds-c-list--bare ds-u-display--none ds-u-sm-display--flex"
+  >
+    <li
+      class="hc-c-logged-out-links__li"
+    >
+      <a
+        class="hc-c-logged-out-links__link"
+        href="href"
+      >
+        label
+      </a>
+    </li>
+  </ul>
+  <button
+    aria-controls="hc-c-menu"
+    aria-expanded="false"
+    aria-label="header.openMenu"
+    class="ds-c-button ds-c-button--small hc-c-action-menu-button ds-u-sm-margin-left--2 ds-u-display--inline-block ds-u-sm-display--none"
+    type="button"
+  >
+    <svg
+      aria-hidden="true"
+      class="ds-c-icon ds-u-margin-right--1 ds-c-icon--menu"
+      focusable="false"
+      id="icon-4"
+      viewBox="0 0 448 512"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+        fill="currentColor"
+      />
+    </svg>
+    header.menu
+  </button>
+</DocumentFragment>
+`;

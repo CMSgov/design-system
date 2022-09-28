@@ -78,7 +78,7 @@ export const Drawer = (props: DrawerProps) => {
           </Heading>
           <Button
             aria-label={props.ariaLabel ?? t('drawer.ariaLabel')}
-            className="ds-c-drawer__close-button ds-u-fill--white"
+            className="ds-c-drawer__close-button"
             size="small"
             onClick={props.onCloseClick}
           >
@@ -89,6 +89,7 @@ export const Drawer = (props: DrawerProps) => {
           className={classNames('ds-c-drawer__body', {
             'ds-c-drawer--is-sticky': props.isHeaderSticky || props.isFooterSticky,
           })}
+          tabIndex={0}
         >
           {props.children}
         </div>
