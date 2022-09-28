@@ -35,7 +35,6 @@ export default {
         type: 'code',
       },
     },
-    loki: { skip: true },
   },
 };
 
@@ -70,10 +69,11 @@ export const DialogExample = ({ ...args }) => {
   );
 };
 
-export const PreventScrollExample = ({ ...args }) => {
+export const PreventScrollExample = (args) => {
   const [shown, setShown] = useState();
   const showModal = () => setShown(true);
   const hideModal = () => setShown(false);
+  console.log(args);
 
   return (
     <div className="ds-u-measure--base">
