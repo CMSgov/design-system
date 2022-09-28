@@ -7,6 +7,7 @@ import { act } from 'react-dom/test-utils';
 const defaultProps = {
   children: 'Foo',
   heading: 'dialog heading',
+  onExit: jest.fn(),
 };
 
 function renderDialog(props = {}) {
