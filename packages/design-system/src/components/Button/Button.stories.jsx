@@ -274,7 +274,7 @@ export const AllAnchorButtons = () => {
             <Button href="#!" onDark variation="solid" size="big" disabled isAlternate>
               Solid alt anchor button on-dark
             </Button>
-            <Button href="#!" alt onDark variation="solid" disabled isAlternate>
+            <Button href="#!" onDark variation="solid" disabled isAlternate>
               Solid anchor button on-dark
             </Button>
             <Button href="#!" onDark variation="solid" size="small" disabled isAlternate>
@@ -555,7 +555,7 @@ export const AllButtons = () => {
             <Button onDark variation="solid" size="big" disabled isAlternate>
               Solid alt button on-dark
             </Button>
-            <Button alt onDark variation="solid" disabled isAlternate>
+            <Button onDark variation="solid" disabled isAlternate>
               Solid button on-dark
             </Button>
             <Button onDark variation="solid" size="small" disabled isAlternate>
