@@ -19,6 +19,7 @@ window.matchMedia = (query) => ({
 });
 
 window.scroll = () => {};
+window.scrollTo = () => {};
 
 const localStorageMock = (function () {
   return {
