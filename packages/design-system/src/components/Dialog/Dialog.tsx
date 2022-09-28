@@ -145,7 +145,6 @@ export const Dialog = (props: DialogProps) => {
 
     // https://css-tricks.com/prevent-page-scrolling-when-a-modal-is-open/
     const y = window.scrollY ?? 0;
-    console.log(window.scrollY);
     document.body.style.position = 'fixed';
     document.body.style.top = `-${y}px`;
     return () => {
@@ -153,7 +152,7 @@ export const Dialog = (props: DialogProps) => {
       document.body.style.top = '';
       window.scrollTo(0, y);
     };
-  }, []);
+  }, [scrollDisabled]);
 
   const headingRef = useDialogAnalytics(props);
 
