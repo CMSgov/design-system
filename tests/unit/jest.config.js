@@ -12,7 +12,7 @@ module.exports = {
     'docs/public/',
     'docs/static',
   ],
-  coveragePathIgnorePatterns: ['/node_modules/', 'design-system-scripts'],
+  coveragePathIgnorePatterns: ['/node_modules/'],
   transformIgnorePatterns: ['node_modules(?!/@cmsgov)'],
   moduleNameMapper: {
     // Remap imports for core to the src directory so we don't have to build first
