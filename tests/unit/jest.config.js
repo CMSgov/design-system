@@ -3,7 +3,7 @@ module.exports = {
   testEnvironment: 'jsdom',
   testURL: 'http://localhost',
   setupFiles: [require.resolve('react-app-polyfill/stable')],
-  setupFilesAfterEnv: [`<rootDir>/../setupTests.js`],
+  setupFilesAfterEnv: [`<rootDir>/../tests/unit/setupTests.js`],
   testPathIgnorePatterns: [
     'dist/',
     'node_modules/',
