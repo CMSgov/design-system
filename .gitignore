@@ -45,6 +45,7 @@ node_modules
 
 storybook-static/
 packages/coverage/
+coverage-data/
 playwright-report/
 tests/browser/test-results/
 tests/a11y/test-results/

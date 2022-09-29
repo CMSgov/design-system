@@ -12,6 +12,7 @@ module.exports = {
     'docs/public/',
     'docs/static',
   ],
+  coverageDirectory: `<rootDir>/../tests/unit/coverage-data`,
   coveragePathIgnorePatterns: ['/node_modules/'],
   transformIgnorePatterns: ['node_modules(?!/@cmsgov)'],
   moduleNameMapper: {
