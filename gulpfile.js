@@ -25,10 +25,15 @@ const svgmin = require('gulp-svgmin');
 
 const args = require('yargs/yargs')(process.argv.slice(2)).argv;
 
-const CORE_SOURCE_PACKAGE = 'packages/design-system/dist';
-const MINIFY_SVG = args.minifySVG ?? false;
-const ROOT_PATH = args.package ?? 'packages/design-system';
-const IS_CORE = ROOT_PATH.includes('design-system') ?? false;
+const corePackageFiles = 'packages/design-system/dist';
+const willMinifySvg = args.minifySvg ?? false;
+const rootPath = args.package ?? 'packages/design-system';
+const isCore = rootPath.includes('design-system') ?? false;
+
+const distPath = path.join(rootPath, 'dist');
+const srcPath = path.join(rootPath, 'src');
+const imageCorePath = path.join(corePackageFiles, 'images');
+const fontsCorePath = path.join(corePackageFiles, 'fonts');
 
 // const getSrcGlob = (src, changedPath) =>
 //   changedPath
@@ -39,64 +44,6 @@ const IS_CORE = ROOT_PATH.includes('design-system') ?? false;
 //         `!${src}/setupTests.{js,jsx,ts,tsx}`,
 //         `!${src}/**/{__mocks__,__tests__}/**/*`,
 //       ];
-
-// /**
-//  * Copy and process font and image files from src to dist
-//  */
-// async function copyAssets(dir, options) {
-//   const sources = await getSourceDirs(dir);
-//   const isChildDS = sources.length > 1;
-
-//   return [
-//     // Process SVG with `svgo` if the `minifySvg` flag is enabled
-//     copyFontsImages(path.join(dir, 'src'), path.join(dir, 'dist'), options.minifySvg),
-//     // If this a child DS we also need to copy assets from the core npm package
-//     isChildDS && copyFontsImages(path.join(sources[0], 'dist'), path.join(dir, 'dist')),
-//   ];
-// }
-
-// /**
-//  * Generically copy any non test files that arent already processed by the build scripts
-//  * including type definition files located in `src/types`
-//  */
-// function copyMisc(dir) {
-//   const src = path.join(dir, 'src');
-//   return streamPromise(
-//     gulp
-//       .src([
-//         `${src}/**/*`,
-//         `!${src}/components/**`,
-//         `!${src}/fonts/**`,
-//         `!${src}/images/**`,
-//         `!${src}/styles/**`,
-//         `!${src}/setupTests.{js,jsx,ts,tsx}`,
-//         `!${src}/**/*{.test,.spec,.stories}.{js,jsx,ts,tsx}`,
-//         `!${src}/**/{__mocks__,__tests__,helpers}/**/*`,
-//       ])
-//       .pipe(gulp.dest(path.join(dir, 'dist')))
-//   );
-// }
-
-// function copyComponentJson(dir) {
-//   const src = path.join(dir, 'src');
-//   return streamPromise(
-//     gulp
-//       .src([`${src}/components/**/*.json`])
-//       .pipe(gulp.dest(path.join(dir, 'dist', 'components')))
-//       .pipe(gulp.dest(path.join(dir, 'dist', 'esnext')))
-//       .pipe(gulp.dest(path.join(dir, 'dist', 'types')))
-//   );
-// }
-
-// async function copyAll(dir, options) {
-//   const copyTasks = [
-//     copyAssets(dir, options),
-//     copyMisc(dir),
-//     copyComponentJson(dir),
-//   ];
-
-//   return Promise.all(copyTasks);
-// }
 
 // /**
 //  * Because we use babel to compile ts files, we have to compile twice to get definition files.
@@ -220,13 +167,6 @@ const IS_CORE = ROOT_PATH.includes('design-system') ?? false;
 //   }
 // }
 
-const distPath = path.join(ROOT_PATH, 'dist');
-const scssPath = path.join(ROOT_PATH, 'src', 'styles');
-const imagePath = path.join(ROOT_PATH, 'src', 'images');
-const imageCorePath = path.join(CORE_SOURCE_PACKAGE, 'images');
-const fontsPath = path.join(ROOT_PATH, 'src', 'fonts');
-const fontsCorePath = path.join(CORE_SOURCE_PACKAGE, 'fonts');
-
 log('🏃 Starting design system build task');
 
 /**
@@ -244,7 +184,7 @@ cleanDist.displayName = 'cleansing dist path';
  */
 const copySass = (cb) => {
   gulp
-    .src([`${scssPath}/**/*.{scss,sass}`])
+    .src([`${srcPath}/styles/**/*.{scss,sass}`])
     .pipe(gulp.dest(path.join(distPath, 'scss')))
     .on('end', cb);
 };
@@ -254,9 +194,10 @@ copySass.displayName = 'copying scss assets to dist folder';
  * copy image assets, minify svg files if necessary
  */
 const copyImages = (cb) => {
-  const imageSourcePaths = IS_CORE
-    ? `${imagePath}/**/*`
-    : [`${imagePath}/**/*`, `${imageCorePath}/**/*`];
+  // non-core packages get core image assets as well
+  const imageSourcePaths = isCore
+    ? `${srcPath}/images/**/*`
+    : [`${srcPath}/images/**/*`, `${imageCorePath}/**/*`];
   const filtered = filter(`**/*.svg`, { restore: true });
 
   gulp
@@ -264,7 +205,7 @@ const copyImages = (cb) => {
     .pipe(filtered)
     .pipe(
       gulpif(
-        MINIFY_SVG,
+        willMinifySvg,
         svgmin({
           plugins: [
             { cleanupIDs: false },
@@ -286,9 +227,10 @@ copyImages.displayName = 'copying images to dist folder with optional minificati
  * copy font files to dist folder
  */
 const copyFonts = (cb) => {
-  const fontSourcePaths = IS_CORE
-    ? `${fontsPath}/**/*`
-    : [`${fontsPath}/**/*`, `${fontsCorePath}/**/*`];
+  // non-core packages get core font assets as well
+  const fontSourcePaths = isCore
+    ? `${srcPath}/fonts/**/*`
+    : [`${srcPath}/fonts/**/*`, `${fontsCorePath}/**/*`];
 
   gulp
     .src(fontSourcePaths)
@@ -297,20 +239,21 @@ const copyFonts = (cb) => {
 };
 copyFonts.displayName = 'copying fonts to dist folder';
 
-exports.build = gulp.series(cleanDist, gulp.parallel(copySass, copyImages, copyFonts));
+/**
+ * copy json files (internationalization) to dist/components, dist/esnext & dist/types
+ */
+const copyJSON = (cb) => {
+  gulp
+    .src(`${srcPath}/components/**/*.json`)
+    .pipe(gulp.dest(path.join(distPath, 'components')))
+    .pipe(gulp.dest(path.join(distPath, 'esnext')))
+    .pipe(gulp.dest(path.join(distPath, 'types')))
+    .on('end', cb);
+};
+copyJSON.displayName = 'copying JSON data to dist folder';
 
-// return [
-//   // Process SVG with `svgo` if the `minifySvg` flag is enabled
-//   copyFontsImages(path.join(dir, 'src'), path.join(dir, 'dist'), options.minifySvg),
-//   // If this a child DS we also need to copy assets from the core npm package
-//   !isCore && copyFontsImages(path.join(sources[0], 'dist'), path.join(dir, 'dist')),
-// ];
+exports.build = gulp.series(cleanDist, gulp.parallel(copySass, copyImages, copyFonts, copyJSON));
 
-// module.exports = {
-//
-//   /**
-//    * Builds just the source package for the purpose of publishing
-//    */
 //   async buildSrc(sourceDir, options) {
 //     await compileSourceSass(sourceDir, options);
 //     await compileJs(sourceDir, options);

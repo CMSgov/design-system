@@ -7,9 +7,9 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "./scripts/build/build-cmsds.js packages/design-system minifySVG",
-    "build:healthcare": "yarn cmsds build --config cmsds.healthcare.config.js",
-    "build:medicare": "yarn cmsds build --config cmsds.medicare.config.js",
+    "build": "yarn gulp build",
+    "build:healthcare": "yarn gulp build --package packages/ds-healthcare-gov",
+    "build:medicare": "yarn gulp build --package packages/ds-medicare-gov",
     "build:docs": "yarn --cwd ./packages/docs build",
     "build:storybook": "build-storybook -o storybook-static",
     "build:storybook:docs": "build-storybook -o packages/docs/static/storybook",
