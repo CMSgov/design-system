@@ -40,7 +40,7 @@ const MaturityChecklist = (props: MaturityChecklistProps) => (
         All Axe checks for WCAG AA compliance have passed.
       </MaturityChecklistItem>
       <MaturityChecklistItem title="Screen readers" status={props.screenReaders}>
-        VoiceOver, NVDA, and JAWS were used to test for concise communication and interaction.
+        VoiceOver, NVDA, and JAWS screen readers provide concise communication and interaction.
       </MaturityChecklistItem>
       <MaturityChecklistItem title="Keyboard navigation" status={props.keyboardNavigable}>
         Component is fully navigable with a keyboard.
