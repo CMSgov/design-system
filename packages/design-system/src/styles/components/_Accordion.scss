@@ -83,9 +83,7 @@ $accordion-header-font-family: $font-sans;
   font-size: $font-size-base;
   line-height: $font-line-height-base;
   margin-top: 0;
-  max-height: 16rem;
   overflow: auto;
-  overflow-y: auto;
   padding: $spacer-2 $spacer-3 $spacer-1 $spacer-4;
 
   // Not sure why this first-child last-child is not working
