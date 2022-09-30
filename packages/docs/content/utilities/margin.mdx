@@ -2,17 +2,16 @@
 title: Margin
 ---
 
-Use the margin utility to change an element's margin.
+Use the margin utility to change the spacing around an item.
 
-**Format**: `.ds-u-margin-[x|y|bottom|left|right|top]--[0-7]`
+## Examples
 
-[Read more about how the design system approaches spacing here.](/foundation/spacing/)
-
-## `margin`
+### Margin on all sides
 
 <UtilityExampleList
   utilityNames={[
     '0',
+    '05',
     '1',
     '2',
     '3',
@@ -24,8 +23,10 @@ Use the margin utility to change an element's margin.
   ]}
    utilityValues={[
     '0px',
+    '4px',
     '8px',
     '16px',
+    '24px',
     '32px',
     '40px',
     '48px',
@@ -33,372 +34,202 @@ Use the margin utility to change an element's margin.
     'auto',
   ]}
   preface="ds-u-margin--"
+  exampleClass="c-utility-example-margin"
 />
 
-<EmbeddedExample>
-  <>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin--0 ds-u-display--inline-block">
-        <code>.ds-u-margin--0</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin--1 ds-u-display--inline-block">
-        <code>.ds-u-margin--1</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin--2 ds-u-display--inline-block">
-        <code>.ds-u-margin--2</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin--3 ds-u-display--inline-block">
-        <code>.ds-u-margin--3</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin--4 ds-u-display--inline-block">
-        <code>.ds-u-margin--4</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin--5 ds-u-display--inline-block">
-        <code>.ds-u-margin--5</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin--6 ds-u-display--inline-block">
-        <code>.ds-u-margin--6</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin--7 ds-u-display--inline-block">
-        <code>.ds-u-margin--7</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin--auto" style="width: 250px">
-        <code>.ds-u-margin--auto</code>
-      </div>
-    </div>
-  </>
-</EmbeddedExample>
+### Margin on left and right (x-axis)
 
-## `margin-x`
+<UtilityExampleList
+  utilityNames={[
+    '0',
+    '05',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    'auto',
+  ]}
+   utilityValues={[
+    '0px',
+    '4px',
+    '8px',
+    '16px',
+    '24px',
+    '32px',
+    '40px',
+    '48px',
+    '56px',
+    'auto',
+  ]}
+  preface="ds-u-margin-x--"
+  exampleClass="c-utility-example-margin"
+/>
 
-<EmbeddedExample>
-  <>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-x--0 ds-u-display--inline-block">
-        <code>.ds-u-margin-x--0</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-x--1 ds-u-display--inline-block">
-        <code>.ds-u-margin-x--1</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-x--2 ds-u-display--inline-block">
-        <code>.ds-u-margin-x--2</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-x--3 ds-u-display--inline-block">
-        <code>.ds-u-margin-x--3</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-x--4 ds-u-display--inline-block">
-        <code>.ds-u-margin-x--4</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-x--5 ds-u-display--inline-block">
-        <code>.ds-u-margin-x--5</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-x--6 ds-u-display--inline-block">
-        <code>.ds-u-margin-x--6</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-x--7 ds-u-display--inline-block">
-        <code>.ds-u-margin-x--7</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-x--auto" style="width: 250px">
-        <code>.ds-u-margin-x--auto</code>
-      </div>
-    </div>
-  </>
-</EmbeddedExample>
+### Margin on top and bottom (y-axis)
 
-## `margin-y`
+<UtilityExampleList
+  utilityNames={[
+    '0',
+    '05',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    'auto',
+  ]}
+   utilityValues={[
+    '0px',
+    '4px',
+    '8px',
+    '16px',
+    '24px',
+    '32px',
+    '40px',
+    '48px',
+    '56px',
+    'auto',
+  ]}
+  preface="ds-u-margin-y--"
+  exampleClass="c-utility-example-margin"
+/>
 
-<EmbeddedExample>
-  <>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-y--0 ds-u-display--inline-block">
-        <code>.ds-u-margin-y--0</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-y--1 ds-u-display--inline-block">
-        <code>.ds-u-margin-y--1</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-y--2 ds-u-display--inline-block">
-        <code>.ds-u-margin-y--2</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-y--3 ds-u-display--inline-block">
-        <code>.ds-u-margin-y--3</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-y--4 ds-u-display--inline-block">
-        <code>.ds-u-margin-y--4</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-y--5 ds-u-display--inline-block">
-        <code>.ds-u-margin-y--5</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-y--6 ds-u-display--inline-block">
-        <code>.ds-u-margin-y--6</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-y--7 ds-u-display--inline-block">
-        <code>.ds-u-margin-y--7</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-y--auto" style="width: 250px">
-        <code>.ds-u-margin-y--auto</code>
-      </div>
-    </div>
-  </>
-</EmbeddedExample>
+### Margin top
 
-## `margin-bottom`
+<UtilityExampleList
+  utilityNames={[
+    '0',
+    '05',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    'auto',
+  ]}
+   utilityValues={[
+    '0px',
+    '4px',
+    '8px',
+    '16px',
+    '24px',
+    '32px',
+    '40px',
+    '48px',
+    '56px',
+    'auto',
+  ]}
+  preface="ds-u-margin-top--"
+  exampleClass="c-utility-example-margin"
+/>
 
-<EmbeddedExample>
-  <>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-bottom--0 ds-u-display--inline-block">
-        <code>.ds-u-margin-bottom--0</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-bottom--1 ds-u-display--inline-block">
-        <code>.ds-u-margin-bottom--1</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-bottom--2 ds-u-display--inline-block">
-        <code>.ds-u-margin-bottom--2</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-bottom--3 ds-u-display--inline-block">
-        <code>.ds-u-margin-bottom--3</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-bottom--4 ds-u-display--inline-block">
-        <code>.ds-u-margin-bottom--4</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-bottom--5 ds-u-display--inline-block">
-        <code>.ds-u-margin-bottom--5</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-bottom--6 ds-u-display--inline-block">
-        <code>.ds-u-margin-bottom--6</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-bottom--7 ds-u-display--inline-block">
-        <code>.ds-u-margin-bottom--7</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-bottom--auto" style="width: 250px">
-        <code>.ds-u-margin-bottom--auto</code>
-      </div>
-    </div>
-  </>
-</EmbeddedExample>
+### Margin right
 
-## `margin-left`
+<UtilityExampleList
+  utilityNames={[
+    '0',
+    '05',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    'auto',
+  ]}
+   utilityValues={[
+    '0px',
+    '4px',
+    '8px',
+    '16px',
+    '24px',
+    '32px',
+    '40px',
+    '48px',
+    '56px',
+    'auto',
+  ]}
+  preface="ds-u-margin-right--"
+  exampleClass="c-utility-example-margin"
+/>
 
-<EmbeddedExample>
-  <>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-left--0 ds-u-display--inline-block">
-        <code>.ds-u-margin-left--0</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-left--1 ds-u-display--inline-block">
-        <code>.ds-u-margin-left--1</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-left--2 ds-u-display--inline-block">
-        <code>.ds-u-margin-left--2</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-left--3 ds-u-display--inline-block">
-        <code>.ds-u-margin-left--3</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-left--4 ds-u-display--inline-block">
-        <code>.ds-u-margin-left--4</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-left--5 ds-u-display--inline-block">
-        <code>.ds-u-margin-left--5</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-left--6 ds-u-display--inline-block">
-        <code>.ds-u-margin-left--6</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-left--7 ds-u-display--inline-block">
-        <code>.ds-u-margin-left--7</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-left--auto" style="width: 250px">
-        <code>.ds-u-margin-left--auto</code>
-      </div>
-    </div>
-  </>
-</EmbeddedExample>
+### Margin bottom
 
-## `margin-right`
+<UtilityExampleList
+  utilityNames={[
+    '0',
+    '05',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    'auto',
+  ]}
+   utilityValues={[
+    '0px',
+    '4px',
+    '8px',
+    '16px',
+    '24px',
+    '32px',
+    '40px',
+    '48px',
+    '56px',
+    'auto',
+  ]}
+  preface="ds-u-margin-bottom--"
+  exampleClass="c-utility-example-margin"
+/>
 
-<EmbeddedExample>
-  <>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-right--0 ds-u-display--inline-block">
-        <code>.ds-u-margin-right--0</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-right--1 ds-u-display--inline-block">
-        <code>.ds-u-margin-right--1</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-right--2 ds-u-display--inline-block">
-        <code>.ds-u-margin-right--2</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-right--3 ds-u-display--inline-block">
-        <code>.ds-u-margin-right--3</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-right--4 ds-u-display--inline-block">
-        <code>.ds-u-margin-right--4</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-right--5 ds-u-display--inline-block">
-        <code>.ds-u-margin-right--5</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-right--6 ds-u-display--inline-block">
-        <code>.ds-u-margin-right--6</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-right--7 ds-u-display--inline-block">
-        <code>.ds-u-margin-right--7</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-right--auto" style="width: 250px">
-        <code>.ds-u-margin-right--auto</code>
-      </div>
-    </div>
-  </>
-</EmbeddedExample>
+### Margin left
 
-## `margin-top`
+<UtilityExampleList
+  utilityNames={[
+    '0',
+    '05',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    'auto',
+  ]}
+   utilityValues={[
+    '0px',
+    '4px',
+    '8px',
+    '16px',
+    '24px',
+    '32px',
+    '40px',
+    '48px',
+    '56px',
+    'auto',
+  ]}
+  preface="ds-u-margin-left--"
+  exampleClass="c-utility-example-margin"
+/>
 
-<EmbeddedExample>
-  <>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-top--0 ds-u-display--inline-block">
-        <code>.ds-u-margin-top--0</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-top--1 ds-u-display--inline-block">
-        <code>.ds-u-margin-top--1</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-top--2 ds-u-display--inline-block">
-        <code>.ds-u-margin-top--2</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-top--3 ds-u-display--inline-block">
-        <code>.ds-u-margin-top--3</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-top--4 ds-u-display--inline-block">
-        <code>.ds-u-margin-top--4</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-top--5 ds-u-display--inline-block">
-        <code>.ds-u-margin-top--5</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-top--6 ds-u-display--inline-block">
-        <code>.ds-u-margin-top--6</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-top--7 ds-u-display--inline-block">
-        <code>.ds-u-margin-top--7</code>
-      </div>
-    </div>
-    <div class="ds-u-fill--secondary ds-u-margin-bottom--2" style="max-width: fit-content">
-      <div class="ds-u-margin-top--auto" style="width: 250px">
-        <code>.ds-u-margin-top--auto</code>
-      </div>
-    </div>
-  </>
-</EmbeddedExample>
+### Responsive margins
 
-## Responsive margins
 
-Use a [breakpoint prefix](/foundation/layout-grid/responsive-design/) to change the margin at specific breakpoints.
+**Responsive format**: `.ds-u-[breakpoint]-margin-[x|y|bottom|left|right|top]--[0-7]`
+
 
 <ResponsiveExample storyId="utilities-margin--margin" title="Responsive margin example" />
+
+
+[Read more about how the design system approaches spacing here.](/foundation/spacing/)
