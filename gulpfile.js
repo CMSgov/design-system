@@ -4,24 +4,24 @@ const fs = require('fs');
 const path = require('path');
 const gulp = require('gulp');
 const gulpif = require('gulp-if');
+const babel = require('gulp-babel');
+const dartSass = require('sass');
+const gulpSass = require('gulp-sass');
+const rename = require('gulp-rename');
+const sass = gulpSass(dartSass);
+const sourcemaps = require('gulp-sourcemaps');
+const postcss = require('gulp-postcss');
+const postcssImport = require('postcss-import');
+const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
 const filter = require('gulp-filter');
 const log = require('fancy-log');
 const svgmin = require('gulp-svgmin');
 
-// const yargs = require('yargs');
-// const babel = require('gulp-babel');
-// const cleanDist = require('./common/cleanDist');
 // const createCdnWebpackConfig = require('./createCdnWebpackConfig');
-// const copyFontsImages = require('./common/copyFontsImages');
-// const rename = require('gulp-rename');
 // const ts = require('gulp-typescript');
-// const streamPromise = require('./common/streamPromise');
 // const util = require('util');
 // const webpack = require('webpack');
-// const { compileSourceSass } = require('./sass');
-// const { printStats } = require('./stats');
-// const { getSourceDirs } = require('./common/getDirsToProcess');
-// const { log, logTask, logError } = require('./common/logUtil');
 
 const args = require('yargs/yargs')(process.argv.slice(2)).argv;
 
@@ -33,6 +33,7 @@ const isCore = rootPath.includes('design-system') ?? false;
 const distPath = path.join(rootPath, 'dist');
 const srcPath = path.join(rootPath, 'src');
 const imageCorePath = path.join(corePackageFiles, 'images');
+const sassCorePath = path.join(corePackageFiles, 'styles');
 const fontsCorePath = path.join(corePackageFiles, 'fonts');
 
 // const getSrcGlob = (src, changedPath) =>
@@ -116,28 +117,6 @@ const fontsCorePath = path.join(corePackageFiles, 'fonts');
 //   );
 // }
 
-// /**
-//  *  Transpile design system React components.
-//  */
-
-// function compileJs(dir, options, changedPath) {
-//   const src = path.join(dir, 'src', 'components');
-//   const srcGlob = getSrcGlob(src, changedPath);
-//   return streamPromise(
-//     gulp
-//       .src(srcGlob, { base: path.join(dir, 'src') })
-//       .pipe(babel())
-//       .on('error', (error) => {
-//         logError('compileJs', error);
-//       })
-//       .pipe(
-//         count({
-//           message: `## JS files processed in ${dir}`,
-//           logger: (message) => logTask('📜 ', message),
-//         })
-//       )
-//       .pipe(gulp.dest(path.join(dir, 'dist')))
-//   )
 //     .then(() => {
 //       // Compile ESM version of code
 //       return compileEsmJs(dir, changedPath);
@@ -183,12 +162,49 @@ cleanDist.displayName = 'cleansing dist path';
  * copy Sass files from src to dist, rename folder to 'scss'
  */
 const copySass = (cb) => {
+  const sassSourcePaths = isCore
+    ? `${srcPath}/styles/**/*.scss`
+    : [`${sassCorePath}/**/*.scss`, `${srcPath}/styles/**/*.scss`];
   gulp
-    .src([`${srcPath}/styles/**/*.{scss,sass}`])
+    .src(sassSourcePaths)
     .pipe(gulp.dest(path.join(distPath, 'scss')))
     .on('end', cb);
 };
-copySass.displayName = 'copying scss assets to dist folder';
+copySass.displayName = 'copying scss assets and compiling sass in dist folder';
+
+/**
+ * compile sass assets to css, copy to /dist/css folder
+ */
+
+const compileSass = (cb) => {
+  const envDev = process.env.NODE_ENV === 'development';
+
+  const sassSourcePaths = isCore
+    ? `${srcPath}/styles/**/*.scss`
+    : [`${sassCorePath}/**/*.scss`, `${srcPath}/styles/**/*.scss`];
+  const sassIncludePaths = !isCore ? [path.resolve(srcPath, '../../../node_modules')] : [];
+
+  gulp
+    .src(sassSourcePaths)
+    .pipe(gulpif(envDev, sourcemaps.init()))
+    .pipe(
+      sass({
+        outputStyle: 'expanded',
+        includePaths: sassIncludePaths,
+      })
+    )
+    .pipe(gulpif(envDev, sourcemaps.write()))
+    .pipe(
+      postcss([
+        postcssImport(), // inline imports
+        autoprefixer(), // add any necessary vendor prefixes
+        ...(!envDev ? [cssnano()] : []), // minify css
+      ])
+    )
+    .pipe(gulp.dest(path.join(distPath, 'css')))
+    .on('end', cb);
+};
+compileSass.displayName = 'compiling sass assets in dist to dist/css';
 
 /**
  * copy image assets, minify svg files if necessary
@@ -197,12 +213,12 @@ const copyImages = (cb) => {
   // non-core packages get core image assets as well
   const imageSourcePaths = isCore
     ? `${srcPath}/images/**/*`
-    : [`${srcPath}/images/**/*`, `${imageCorePath}/**/*`];
+    : [`${imageCorePath}/**/*`, `${srcPath}/images/**/*`];
   const filtered = filter(`**/*.svg`, { restore: true });
 
   gulp
     .src(imageSourcePaths)
-    .pipe(filtered)
+    .pipe(filtered) // we filter out svgs and minify if necessary
     .pipe(
       gulpif(
         willMinifySvg,
@@ -217,7 +233,7 @@ const copyImages = (cb) => {
         })
       )
     )
-    .pipe(filtered.restore)
+    .pipe(filtered.restore) // then restore full glob for copying
     .pipe(gulp.dest(path.join(distPath, 'images')))
     .on('end', cb);
 };
@@ -252,10 +268,68 @@ const copyJSON = (cb) => {
 };
 copyJSON.displayName = 'copying JSON data to dist folder';
 
-exports.build = gulp.series(cleanDist, gulp.parallel(copySass, copyImages, copyFonts, copyJSON));
+/*
+ * jsSrcGlob used to create ts definitions and transpile to js, esnext
+ */
+const jsSrcGlob = [
+  `${srcPath}/components/**/*.{js,jsx,ts,tsx}`,
+  `!${srcPath}/components/**/*{.test,.spec,.d,.stories}.{js,jsx,ts,tsx}`,
+  `!${srcPath}/components/setupTests.{js,jsx,ts,tsx}`,
+  `!${srcPath}/components/**/{__mocks__,__tests__}/**/*`,
+];
+
+/**
+ * compiles typescript and javascript and copies to dist
+ */
+const compileJs = (cb) => {
+  gulp
+    .src(jsSrcGlob, { base: srcPath })
+    .pipe(babel())
+    .on('error', (error) => {
+      log.error('there was an error transpiling: ' + error);
+    })
+    .pipe(gulp.dest(distPath))
+    .on('end', cb);
+  // .then(() => {
+  //   // If design system is using typescript, use tsc to generate definition files for tsx files
+  //   const unknownOrTypescriptPath = !changedPath || changedPath.match(/\.(ts|tsx)$/);
+  //   if (options.typescript && unknownOrTypescriptPath) {
+  //     return generateTypeDefinitions(dir, changedPath);
+  //   }
+  // });
+};
+compileJs.displayName = 'compiling and copying js/ts assets to dist folder';
+
+const compileEsmJs = (cb) => {
+  gulp
+    .src(jsSrcGlob, { base: `${srcPath}/components` })
+    .pipe(
+      babel({
+        presets: [['@babel/preset-env', { modules: false }]],
+      })
+    )
+    .on('error', (error) => {
+      log.error('there was an error transpiling to esm: ' + error);
+    })
+    .pipe(
+      rename((path) => {
+        if (path.dirname === '.' && path.basename === 'index') {
+          // Renames `component/index.js` to `esnext/index.esm.js`
+          path.extname = '.esm.js';
+        }
+      })
+    )
+    .pipe(gulp.dest(path.join(distPath, 'esnext')))
+    .on('end', cb);
+};
+
+exports.build = gulp.series(
+  cleanDist,
+  gulp.parallel(copySass, copyImages, copyFonts, copyJSON),
+  gulp.parallel(compileSass, compileJs, compileEsmJs)
+);
 
 //   async buildSrc(sourceDir, options) {
-//     await compileSourceSass(sourceDir, options);
 //     await compileJs(sourceDir, options);
 //     await bundleJs(sourceDir);
 //     if (process.env.NODE_ENV === 'production') {
