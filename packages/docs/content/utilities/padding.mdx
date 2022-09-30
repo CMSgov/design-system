@@ -2,60 +2,219 @@
 title: Padding
 ---
 
-import PaddingSpacingExample from '../../src/components/PaddingSpacingExample';
+Use the padding utility to change the spacing inside an item.
 
-Use the padding utility to change an element's padding.
+## Examples
 
-**Format**: `.ds-u-padding-[x|y|bottom|left|right|top]--[0-7]`
+### Padding on all sides
+
+<UtilityExampleList
+  utilityNames={[
+    '0',
+    '05',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+  ]}
+   utilityValues={[
+    '0px',
+    '4px',
+    '8px',
+    '16px',
+    '24px',
+    '32px',
+    '40px',
+    '48px',
+    '56px',
+  ]}
+  preface="ds-u-padding--"
+  exampleClass="c-utility-example-padding"
+/>
+
+### Padding on left and right (x-axis)
+
+<UtilityExampleList
+  utilityNames={[
+    '0',
+    '05',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+  ]}
+   utilityValues={[
+    '0px',
+    '4px',
+    '8px',
+    '16px',
+    '24px',
+    '32px',
+    '40px',
+    '48px',
+    '56px',
+  ]}
+  preface="ds-u-padding-x--"
+  exampleClass="c-utility-example-padding"
+/>
+
+### Padding on top and bottom (y-axis)
+
+<UtilityExampleList
+  utilityNames={[
+    '0',
+    '05',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+  ]}
+   utilityValues={[
+    '0px',
+    '4px',
+    '8px',
+    '16px',
+    '24px',
+    '32px',
+    '40px',
+    '48px',
+    '56px',
+  ]}
+  preface="ds-u-padding-y--"
+  exampleClass="c-utility-example-padding"
+/>
+
+### Padding top
+
+<UtilityExampleList
+  utilityNames={[
+    '0',
+    '05',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+  ]}
+   utilityValues={[
+    '0px',
+    '4px',
+    '8px',
+    '16px',
+    '24px',
+    '32px',
+    '40px',
+    '48px',
+    '56px',
+  ]}
+  preface="ds-u-padding-top--"
+  exampleClass="c-utility-example-padding"
+/>
+
+### Padding right
+
+<UtilityExampleList
+  utilityNames={[
+    '0',
+    '05',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+  ]}
+   utilityValues={[
+    '0px',
+    '4px',
+    '8px',
+    '16px',
+    '24px',
+    '32px',
+    '40px',
+    '48px',
+    '56px',
+  ]}
+  preface="ds-u-padding-right--"
+  exampleClass="c-utility-example-padding"
+/>
+
+### Padding bottom
+
+<UtilityExampleList
+  utilityNames={[
+    '0',
+    '05',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+  ]}
+   utilityValues={[
+    '0px',
+    '4px',
+    '8px',
+    '16px',
+    '24px',
+    '32px',
+    '40px',
+    '48px',
+    '56px',
+  ]}
+  preface="ds-u-padding-bottom--"
+  exampleClass="c-utility-example-padding"
+/>
+
+### Padding left
+
+<UtilityExampleList
+  utilityNames={[
+    '0',
+    '05',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+  ]}
+   utilityValues={[
+    '0px',
+    '4px',
+    '8px',
+    '16px',
+    '24px',
+    '32px',
+    '40px',
+    '48px',
+    '56px',
+  ]}
+  preface="ds-u-padding-left--"
+  exampleClass="c-utility-example-padding"
+/>
+
+
+### Responsive padding
 
 **Responsive format**: `.ds-u-[breakpoint]-padding-[x|y|bottom|left|right|top]--[0-7]`
 
-[Read more about how the design system approaches spacing here.](/foundation/spacing/)
-
-## `padding`
-
-<EmbeddedExample>
-  <PaddingSpacingExample propName="padding" />
-</EmbeddedExample>
-
-## `padding-x`
-
-<EmbeddedExample>
-  <PaddingSpacingExample propName="padding-x" />
-</EmbeddedExample>
-
-## `padding-y`
-
-<EmbeddedExample>
-  <PaddingSpacingExample propName="padding-y" />
-</EmbeddedExample>
-
-## `padding-bottom`
-
-<EmbeddedExample>
-  <PaddingSpacingExample propName="padding-bottom" />
-</EmbeddedExample>
-
-## `padding-left`
-
-<EmbeddedExample>
-  <PaddingSpacingExample propName="padding-left" />
-</EmbeddedExample>
-
-## `padding-right`
-
-<EmbeddedExample>
-  <PaddingSpacingExample propName="padding-right" />
-</EmbeddedExample>
-
-## `padding-top`
-
-<EmbeddedExample>
-  <PaddingSpacingExample propName="padding-top" />
-</EmbeddedExample>
-
-## Responsive padding
-
-Use a [breakpoint prefix](/foundation/layout-grid/responsive-design/) to change the padding at specific breakpoints.
 
 <ResponsiveExample storyId="utilities-padding--padding" title="Responsive padding example" />
+
+[Read more about how the design system approaches spacing here.](/foundation/spacing/)
