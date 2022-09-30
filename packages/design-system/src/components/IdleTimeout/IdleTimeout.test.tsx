@@ -24,7 +24,7 @@ describe('Idle Timeout', () => {
 
   const showWarning = (advanceTimeTo?: number) => {
     act(() => {
-      const nextTime = advanceTimeTo || WARNING_DATETIME;
+      const nextTime = advanceTimeTo ?? WARNING_DATETIME;
       mockTime(nextTime); // set Date.now() to be warning time
       jest.advanceTimersByTime(ADVANCE_TIMER_MS); // trigger next status check in component
     });
@@ -191,17 +191,12 @@ describe('Idle Timeout', () => {
   it('should replace token in message every minute', () => {
     const formatMessage = (time) => `Your session will end in ${time}.`;
     renderIdleTimeout({ formatMessage, timeToWarning: 2 });
-    showWarning(MOCK_START_TIME + 2 * 6000);
-    const dialogBodyText = screen.getByRole('main');
-    expect(dialogBodyText.firstChild.textContent).toEqual('Your session will end in 3.');
-    // have to advance Date.now() and also retrigger the checkStatus interval
-    mockTime(MOCK_START_TIME + 3 * 60000);
-    jest.advanceTimersByTime(60000);
-    expect(dialogBodyText.firstChild.textContent).toEqual('Your session will end in 2.');
-    // have to advance Date.now() and also retrigger the checkStatus interval
-    mockTime(MOCK_START_TIME + 4 * 60000);
-    jest.advanceTimersByTime(60000);
-    expect(dialogBodyText.firstChild.textContent).toEqual('Your session will end in 1.');
+    showWarning(MOCK_START_TIME + 2 * 60000);
+    expect(screen.getByRole('main').firstChild.textContent).toEqual('Your session will end in 3.');
+    showWarning(MOCK_START_TIME + 3 * 60000);
+    expect(screen.getByRole('main').firstChild.textContent).toEqual('Your session will end in 2.');
+    showWarning(MOCK_START_TIME + 4 * 60000);
+    expect(screen.getByRole('main').firstChild.textContent).toEqual('Your session will end in 1.');
   });
 
   it('should cleanup timers on unmount', () => {
