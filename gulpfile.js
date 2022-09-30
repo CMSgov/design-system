@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 const fs = require('fs');
 const path = require('path');
 const gulp = require('gulp');
@@ -10,6 +8,7 @@ const gulpSass = require('gulp-sass');
 const rename = require('gulp-rename');
 const sass = gulpSass(dartSass);
 const sourcemaps = require('gulp-sourcemaps');
+const ts = require('gulp-typescript');
 const postcss = require('gulp-postcss');
 const postcssImport = require('postcss-import');
 const autoprefixer = require('autoprefixer');
@@ -17,14 +16,12 @@ const cssnano = require('cssnano');
 const filter = require('gulp-filter');
 const log = require('fancy-log');
 const svgmin = require('gulp-svgmin');
+const webpack = require('webpack-stream');
 
-// const createCdnWebpackConfig = require('./createCdnWebpackConfig');
-// const ts = require('gulp-typescript');
-// const util = require('util');
-// const webpack = require('webpack');
-
+/*
+ * command line arguments and global variables
+ */
 const args = require('yargs/yargs')(process.argv.slice(2)).argv;
-
 const corePackageFiles = 'packages/design-system/dist';
 const willMinifySvg = args.minifySvg ?? false;
 const rootPath = args.package ?? 'packages/design-system';
@@ -35,116 +32,6 @@ const srcPath = path.join(rootPath, 'src');
 const imageCorePath = path.join(corePackageFiles, 'images');
 const sassCorePath = path.join(corePackageFiles, 'styles');
 const fontsCorePath = path.join(corePackageFiles, 'fonts');
-
-// const getSrcGlob = (src, changedPath) =>
-//   changedPath
-//     ? [changedPath]
-//     : [
-//         `${src}/**/*.{js,jsx,ts,tsx}`,
-//         `!${src}/**/*{.test,.spec,.d,.stories}.{js,jsx,ts,tsx}`,
-//         `!${src}/setupTests.{js,jsx,ts,tsx}`,
-//         `!${src}/**/{__mocks__,__tests__}/**/*`,
-//       ];
-
-// /**
-//  * Because we use babel to compile ts files, we have to compile twice to get definition files.
-//  * This is necessary because the core CMSDS uses babel, but also needs definition files.
-//  * TODO: Figure out how to use gulp-typescript for ts compilation as well
-//  */
-// async function generateTypeDefinitions(dir, changedPath) {
-//   const src = path.join(dir, 'src', 'components');
-//   const srcGlob = changedPath
-//     ? [changedPath]
-//     : [
-//         `${src}/**/*.{ts,tsx}`,
-//         `!${src}/**/*.{js,jsx}`,
-//         `!${src}/setupTests.{js,jsx,ts,tsx}`,
-//         `!${src}/**/*{.test,.spec,.d,.stories}.{js,jsx,ts,tsx}`,
-//         `!${src}/**/{__mocks__,__tests__,helpers}/**/*`,
-//       ];
-
-//   const tsProject = ts.createProject('tsconfig.json', {
-//     declaration: true,
-//     allowJs: true,
-//   });
-
-//   const tsResult = gulp.src(srcGlob, { base: src }).pipe(tsProject());
-
-//   return streamPromise(
-//     tsResult.dts.pipe(gulp.dest(path.join(dir, 'dist', 'types'))).on('finish', function () {
-//       logTask('📜 ', 'Typescript definition files generated');
-//     })
-//   );
-// }
-
-// /**
-//  * Similar to compileJS but babel is configured for esmodules, only used in the core DS
-//  */
-// async function compileEsmJs(dir, changedPath) {
-//   const src = path.join(dir, 'src', 'components');
-//   const srcGlob = getSrcGlob(src, changedPath);
-
-//   return streamPromise(
-//     gulp
-//       .src(srcGlob, { base: src })
-//       .pipe(
-//         babel({
-//           presets: [
-//             [
-//               '@babel/preset-env',
-//               {
-//                 modules: false,
-//               },
-//             ],
-//           ],
-//         })
-//       )
-//       .on('error', (error) => {
-//         logError('compileEsmJs', error);
-//       })
-//       .pipe(
-//         rename((path) => {
-//           if (path.dirname === '.' && path.basename === 'index') {
-//             // Renames `component/index.js` to `esnext/index.esm.js`
-//             path.extname = '.esm.js';
-//           }
-//         })
-//       )
-//       .pipe(gulp.dest(path.join(dir, 'dist', 'esnext')))
-//       .on('finish', function () {
-//         logTask('📜 ', 'ES module JS files processed');
-//       })
-//   );
-// }
-
-//     .then(() => {
-//       // Compile ESM version of code
-//       return compileEsmJs(dir, changedPath);
-//     })
-//     .then(() => {
-//       // If design system is using typescript, use tsc to generate definition files for tsx files
-//       const unknownOrTypescriptPath = !changedPath || changedPath.match(/\.(ts|tsx)$/);
-//       if (options.typescript && unknownOrTypescriptPath) {
-//         return generateTypeDefinitions(dir, changedPath);
-//       }
-//     });
-// }
-
-// async function bundleJs(dir) {
-//   log('🚜 Running Webpack statically');
-//   try {
-//     const config = createCdnWebpackConfig(dir);
-//     const stats = await util.promisify(webpack)(config); // Promisify webpack so the task will wait on the compilation to finish
-
-//     // Log out any errors or warnings
-//     log(stats.toString());
-//   } catch (err) {
-//     logError('webpack static', err.stack || err);
-//     if (err.details) {
-//       logError('webpack static', err.details);
-//     }
-//   }
-// }
 
 log('🏃 Starting design system build task');
 
@@ -175,7 +62,6 @@ copySass.displayName = 'copying scss assets and compiling sass in dist folder';
 /**
  * compile sass assets to css, copy to /dist/css folder
  */
-
 const compileSass = (cb) => {
   const envDev = process.env.NODE_ENV === 'development';
 
@@ -283,23 +169,19 @@ const jsSrcGlob = [
  */
 const compileJs = (cb) => {
   gulp
-    .src(jsSrcGlob, { base: srcPath })
+    .src(jsSrcGlob, { base: `${srcPath}/components` })
     .pipe(babel())
     .on('error', (error) => {
       log.error('there was an error transpiling: ' + error);
     })
-    .pipe(gulp.dest(distPath))
+    .pipe(gulp.dest(path.join(distPath, 'components')))
     .on('end', cb);
-  // .then(() => {
-  //   // If design system is using typescript, use tsc to generate definition files for tsx files
-  //   const unknownOrTypescriptPath = !changedPath || changedPath.match(/\.(ts|tsx)$/);
-  //   if (options.typescript && unknownOrTypescriptPath) {
-  //     return generateTypeDefinitions(dir, changedPath);
-  //   }
-  // });
 };
 compileJs.displayName = 'compiling and copying js/ts assets to dist folder';
 
+/*
+ * compiles typescript and javascript to esm modules and copies to dist
+ */
 const compileEsmJs = (cb) => {
   gulp
     .src(jsSrcGlob, { base: `${srcPath}/components` })
@@ -322,23 +204,73 @@ const compileEsmJs = (cb) => {
     .pipe(gulp.dest(path.join(distPath, 'esnext')))
     .on('end', cb);
 };
+compileEsmJs.displayName = 'compiling esm modules';
 
+/*
+ *  create typescript definition files for the package
+ */
+const compileTypescriptDefs = (cb) => {
+  const tsProject = ts.createProject('tsconfig.json', {
+    declaration: true,
+    allowJs: true,
+  });
+
+  const tsResult = gulp.src(jsSrcGlob, { base: `${srcPath}/components` }).pipe(tsProject());
+
+  tsResult.dts.pipe(gulp.dest(path.join(distPath, 'types'))).on('finish', cb);
+};
+compileTypescriptDefs.displayName = 'generating typescript definition files';
+
+/*
+ * bundle javascript for CDN
+ */
+const bundleJs = (cb) => {
+  const entry = path.resolve(distPath, 'esnext', 'index.esm.js');
+  gulp
+    .src(entry)
+    .pipe(
+      webpack({
+        output: {
+          filename: 'bundle.js',
+          // Expose all the index file's exports as a "DesignSystem" global object
+          library: 'DesignSystem',
+        },
+        mode: process.env.NODE_ENV || 'production',
+        // Don't bundle react, since we don't expose it anyway and you need to interact
+        // with those libraries directly in order to use our components.
+        externals: {
+          react: 'React',
+          'react-dom': 'ReactDOM',
+        },
+      })
+    )
+    .pipe(gulp.dest(`${distPath}/js`))
+    .on('end', cb);
+};
+bundleJs.displayName = 'bundling cmsds for cdn with webpack';
+
+/*
+ * copies react bundles currently installed into cdn dist folder
+ */
+const copyReactToDist = (cb) => {
+  const nodeModules = path.resolve(srcPath, '../../../node_modules');
+
+  gulp
+    .src([
+      `${nodeModules}/react/umd/react.production.min.js`,
+      `${nodeModules}/react-dom/umd/react-dom.production.min.js`,
+    ])
+    .pipe(gulp.dest(`${distPath}/js`))
+    .on('end', cb);
+};
+copyReactToDist.displayName = 'copying react bundles to cdn dist folder';
+
+/*
+ * build command which runs compilation process
+ */
 exports.build = gulp.series(
   cleanDist,
   gulp.parallel(copySass, copyImages, copyFonts, copyJSON),
-  gulp.parallel(compileSass, compileJs, compileEsmJs)
+  gulp.parallel(compileSass, compileJs, compileEsmJs, compileTypescriptDefs),
+  gulp.parallel(bundleJs, copyReactToDist)
 );
-
-//   async buildSrc(sourceDir, options) {
-//     await compileJs(sourceDir, options);
-//     await bundleJs(sourceDir);
-//     if (process.env.NODE_ENV === 'production') {
-//       await printStats(sourceDir, options);
-//     }
-//     logTask('✅ ', 'Build succeeded', true);
-//     log('');
-//   },
-//   copyAssets,
-//   copySass,
-//   compileJs,
-// };
