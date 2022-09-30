@@ -1,6 +1,6 @@
 import Button, { ButtonVariation } from '../Button/Button';
 import NativeDialog from '../NativeDialog/NativeDialog';
-import React, { useEffect, useLayoutEffect } from 'react';
+import React, { useEffect, useLayoutEffect, useRef } from 'react';
 import classNames from 'classnames';
 import useDialogAnalytics from './useDialogAnalytics';
 import { CloseIcon } from '../Icons';
@@ -128,9 +128,16 @@ export const Dialog = (props: DialogProps) => {
   const headerClassNames = classNames('ds-c-dialog__header', headerClassName);
   const actionsClassNames = classNames('ds-c-dialog__actions', actionsClassName);
 
+  const containerRef = useRef<HTMLDivElement>();
+
   useEffect(() => {
     if (onEnter) onEnter();
   }, []);
+
+  // Set initial focus
+  useEffect(() => {
+    containerRef.current?.focus();
+  }, [containerRef]);
 
   // Prevent scrolling the page behind the dialog. Needs to use useLayoutEffect
   // because we need to grab the window scroll position before the dialog renders
@@ -151,7 +158,7 @@ export const Dialog = (props: DialogProps) => {
 
   return (
     <NativeDialog className={dialogClassNames} showModal exit={onExit} {...modalProps}>
-      <div role="document">
+      <div role="document" ref={containerRef} tabIndex={-1}>
         <header className={headerClassNames}>
           {heading && (
             <h1 className="ds-h2" id="dialog-title" ref={headingRef}>
