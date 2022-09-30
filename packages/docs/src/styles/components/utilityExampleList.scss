@@ -1,21 +1,50 @@
-.c-utility-example__row {
-  display: flex;
-  margin-bottom: $spacer-2;
-  align-items: center;
-  code {
-    margin-left: $spacer-2;
+.c-utility-example-margin {
+  .c-utility-example__row {
+    display: flex;
+    margin-bottom: $spacer-2;
+    align-items: center;
+    code {
+      margin-left: $spacer-2;
+    }
+  }
+
+  .c-utility-example__container {
+    background-color: $color-secondary;
+    display: inline-flex;
+  }
+
+  .c-utility-example__item:after {
+    width: $spacer-4;
+    height: $spacer-4;
+    background: $color-white;
+    border: 1px solid $color-black;
+    display: table;
+    content: '';
   }
 }
 
-.c-utility-example__container {
-  background-color: $color-secondary;
-  display: inline-flex;
-}
+.c-utility-example-padding {
+  .c-utility-example__row {
+    display: flex;
+    margin-bottom: $spacer-2;
+    align-items: center;
+    code {
+      margin-left: $spacer-2;
+    }
+  }
 
-.c-utility-example__item {
-  width: $spacer-4;
-  height: $spacer-4;
-  background: $color-white;
-  border: 1px solid $color-black;
-  display: inline-flex;
+  .c-utility-example__container {
+    border: 1px solid $color-black;
+    display: inline-flex;
+
+    background-color: $color-secondary;
+  }
+
+  .c-utility-example__item:after {
+    width: $spacer-4;
+    height: $spacer-4;
+    background: $color-white;
+    display: table;
+    content: '';
+  }
 }
