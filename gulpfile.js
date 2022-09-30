@@ -33,7 +33,7 @@ const imageCorePath = path.join(corePackageFiles, 'images');
 const sassCorePath = path.join(corePackageFiles, 'styles');
 const fontsCorePath = path.join(corePackageFiles, 'fonts');
 
-log('🏃 Starting design system build task');
+log('Starting design system build task');
 
 /**
  * clean up dist folder if it exists
@@ -43,7 +43,7 @@ const cleanDist = (cb) => {
     cb();
   });
 };
-cleanDist.displayName = 'cleansing dist path';
+cleanDist.displayName = '🧹 cleaning up dist path';
 
 /**
  * copy Sass files from src to dist, rename folder to 'scss'
@@ -57,7 +57,7 @@ const copySass = (cb) => {
     .pipe(gulp.dest(path.join(distPath, 'scss')))
     .on('end', cb);
 };
-copySass.displayName = 'copying scss assets and compiling sass in dist folder';
+copySass.displayName = '📎 copying scss assets and compiling sass in dist folder';
 
 /**
  * compile sass assets to css, copy to /dist/css folder
@@ -90,7 +90,7 @@ const compileSass = (cb) => {
     .pipe(gulp.dest(path.join(distPath, 'css')))
     .on('end', cb);
 };
-compileSass.displayName = 'compiling sass assets in dist to dist/css';
+compileSass.displayName = '🖍  compiling sass assets in dist to dist/css';
 
 /**
  * copy image assets, minify svg files if necessary
@@ -123,7 +123,7 @@ const copyImages = (cb) => {
     .pipe(gulp.dest(path.join(distPath, 'images')))
     .on('end', cb);
 };
-copyImages.displayName = 'copying images to dist folder with optional minification';
+copyImages.displayName = '🖼  copying images to dist folder with optional minification';
 
 /**
  * copy font files to dist folder
@@ -139,7 +139,7 @@ const copyFonts = (cb) => {
     .pipe(gulp.dest(path.join(distPath, 'fonts')))
     .on('end', cb);
 };
-copyFonts.displayName = 'copying fonts to dist folder';
+copyFonts.displayName = '📎 copying fonts to dist folder';
 
 /**
  * copy json files (internationalization) to dist/components, dist/esnext & dist/types
@@ -152,7 +152,7 @@ const copyJSON = (cb) => {
     .pipe(gulp.dest(path.join(distPath, 'types')))
     .on('end', cb);
 };
-copyJSON.displayName = 'copying JSON data to dist folder';
+copyJSON.displayName = '📎 copying JSON data to dist folder';
 
 /*
  * jsSrcGlob used to create ts definitions and transpile to js, esnext
@@ -177,7 +177,7 @@ const compileJs = (cb) => {
     .pipe(gulp.dest(path.join(distPath, 'components')))
     .on('end', cb);
 };
-compileJs.displayName = 'compiling and copying js/ts assets to dist folder';
+compileJs.displayName = '🔧 compiling and copying js/ts assets to dist folder';
 
 /*
  * compiles typescript and javascript to esm modules and copies to dist
@@ -204,7 +204,7 @@ const compileEsmJs = (cb) => {
     .pipe(gulp.dest(path.join(distPath, 'esnext')))
     .on('end', cb);
 };
-compileEsmJs.displayName = 'compiling esm modules';
+compileEsmJs.displayName = '🔨 compiling esm modules';
 
 /*
  *  create typescript definition files for the package
@@ -219,7 +219,7 @@ const compileTypescriptDefs = (cb) => {
 
   tsResult.dts.pipe(gulp.dest(path.join(distPath, 'types'))).on('finish', cb);
 };
-compileTypescriptDefs.displayName = 'generating typescript definition files';
+compileTypescriptDefs.displayName = '⛓  generating typescript definition files';
 
 /*
  * bundle javascript for CDN
@@ -247,7 +247,7 @@ const bundleJs = (cb) => {
     .pipe(gulp.dest(`${distPath}/js`))
     .on('end', cb);
 };
-bundleJs.displayName = 'bundling cmsds for cdn with webpack';
+bundleJs.displayName = '💼 bundling cmsds for cdn with webpack';
 
 /*
  * copies react bundles currently installed into cdn dist folder
@@ -263,7 +263,20 @@ const copyReactToDist = (cb) => {
     .pipe(gulp.dest(`${distPath}/js`))
     .on('end', cb);
 };
-copyReactToDist.displayName = 'copying react bundles to cdn dist folder';
+copyReactToDist.displayName = '📦 copying react bundles to cdn dist folder';
+
+/*
+ * displays help if run without any options
+ */
+const displayHelp = (cb) => {
+  log();
+  log('usage:');
+  log('yarn gulp build <params>');
+  log('  --package <cmsds system/child system path> // i.e. packages/ds-healthcare-gov');
+  log('  --minifySvg // will enable svg minification during image asset copying');
+  log();
+  cb();
+};
 
 /*
  * build command which runs compilation process
@@ -274,3 +287,8 @@ exports.build = gulp.series(
   gulp.parallel(compileSass, compileJs, compileEsmJs, compileTypescriptDefs),
   gulp.parallel(bundleJs, copyReactToDist)
 );
+
+/*
+ * command line help
+ */
+exports.default = displayHelp;
