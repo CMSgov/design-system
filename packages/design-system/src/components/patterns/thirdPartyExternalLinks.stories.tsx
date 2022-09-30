@@ -22,7 +22,6 @@ export const ThirdPartyExternalLink = () => {
       {showModal && (
         <Dialog
           onExit={() => setShowModal({ showModal: false })}
-          getApplicationNode={() => document.getElementById('App')}
           heading="You are leaving URL"
           closeButtonText=""
           actions={[
