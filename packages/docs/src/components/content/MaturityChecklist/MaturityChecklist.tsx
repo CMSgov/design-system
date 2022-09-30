@@ -4,6 +4,7 @@ import MaturityChecklistItem, { CheckStatus } from './MaturityChecklistItem';
 interface MaturityChecklistProps {
   // Accessibility
   a11yStandards: CheckStatus;
+  color: CheckStatus;
   forcedColors: CheckStatus;
   screenReaders: CheckStatus;
   keyboardNavigable: CheckStatus;
@@ -29,14 +30,17 @@ const MaturityChecklist = (props: MaturityChecklistProps) => (
   <section>
     <h3>Accessibility</h3>
     <ul className="ds-c-list--bare">
-      <MaturityChecklistItem title="WCAG 2.1 Level AA Conformance" status={props.a11yStandards}>
-        All Axe and Storybook plugins for WCAG AA compliance have passed.
+      <MaturityChecklistItem title="Color" status={props.color}>
+        Meets AA color contrast standards for accessibility and color blindness.
       </MaturityChecklistItem>
-      <MaturityChecklistItem title="Supports Forced Colors Mode (FCM)" status={props.forcedColors}>
+      <MaturityChecklistItem title="Forced Colors Mode (FCM)" status={props.forcedColors}>
         While using FCM the components text is legible and improves readability.
       </MaturityChecklistItem>
+      <MaturityChecklistItem title="WCAG 2.1 Level AA Conformance" status={props.a11yStandards}>
+        All Axe checks for WCAG AA compliance have passed.
+      </MaturityChecklistItem>
       <MaturityChecklistItem title="Screen readers" status={props.screenReaders}>
-        Screen readers were used to test for compatibility and navigation.
+        VoiceOver, NVDA, and JAWS were used to test for concise communication and interaction.
       </MaturityChecklistItem>
       <MaturityChecklistItem title="Keyboard navigation" status={props.keyboardNavigable}>
         Component is fully navigable with a keyboard.
