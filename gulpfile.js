@@ -22,18 +22,16 @@ const webpack = require('webpack-stream');
  * command line arguments and global variables
  */
 const args = require('yargs/yargs')(process.argv.slice(2)).argv;
-const corePackageFiles = 'packages/design-system/dist';
 const willMinifySvg = args.minifySvg ?? false;
 const rootPath = args.package ?? 'packages/design-system';
 const isCore = rootPath.includes('design-system') ?? false;
 
+const corePackageFiles = 'packages/design-system/dist';
 const distPath = path.join(rootPath, 'dist');
 const srcPath = path.join(rootPath, 'src');
 const imageCorePath = path.join(corePackageFiles, 'images');
 const sassCorePath = path.join(corePackageFiles, 'styles');
 const fontsCorePath = path.join(corePackageFiles, 'fonts');
-
-log('Starting design system build task');
 
 /**
  * clean up dist folder if it exists
@@ -281,6 +279,7 @@ const displayHelp = (cb) => {
 /*
  * build command which runs compilation process
  */
+log('🪴 building the cmsds');
 exports.build = gulp.series(
   cleanDist,
   gulp.parallel(copySass, copyImages, copyFonts, copyJSON),
