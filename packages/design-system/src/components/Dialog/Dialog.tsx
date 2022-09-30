@@ -95,10 +95,6 @@ export interface DialogProps {
    * The Dialog's size parameter.
    */
   size?: DialogSize;
-  /**
-   * If true, the modal dialog will prevent any scrolling behind the modal window.
-   */
-  scrollDisabled?: boolean | undefined;
 }
 
 export const Dialog = (props: DialogProps) => {
@@ -119,7 +115,6 @@ export const Dialog = (props: DialogProps) => {
     heading,
     onEnter,
     onExit,
-    scrollDisabled,
     size,
     ...modalProps
   } = props;
@@ -141,8 +136,6 @@ export const Dialog = (props: DialogProps) => {
   // because we need to grab the window scroll position before the dialog renders
   // and messes it up.
   useLayoutEffect(() => {
-    if (!scrollDisabled) return;
-
     // https://css-tricks.com/prevent-page-scrolling-when-a-modal-is-open/
     const y = window.scrollY ?? 0;
     document.body.style.position = 'fixed';
@@ -152,7 +145,7 @@ export const Dialog = (props: DialogProps) => {
       document.body.style.top = '';
       window.scrollTo(0, y);
     };
-  }, [scrollDisabled]);
+  }, []);
 
   const headingRef = useDialogAnalytics(props);
 
@@ -188,7 +181,6 @@ export const Dialog = (props: DialogProps) => {
 Dialog.defaultProps = {
   closeButtonVariation: 'ghost',
   closeIcon: <CloseIcon />,
-  scrollDisabled: true,
 };
 
 export default Dialog;
