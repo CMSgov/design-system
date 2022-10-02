@@ -13,7 +13,6 @@ import ThemeContent from './ThemeContent';
 import PropTable from './PropTable';
 import ResponsiveExample from './ResponsiveExample';
 import ColorSwatchList from './ColorSwatchList';
-import UtilityExampleList from './UtilityExampleList';
 import MaturityChecklist from './MaturityChecklist';
 import SpacingUtilityExampleList from './SpacingUtilityExampleList';
 
@@ -76,7 +75,6 @@ const customComponents = (theme) => ({
   PropTable: (props) => <PropTable theme={theme} {...props} />,
   ResponsiveExample: (props) => <ResponsiveExample theme={theme} {...props} />,
   ColorSwatchList: (props) => <ColorSwatchList theme={theme} {...props} />,
-  UtilityExampleList: (props) => <UtilityExampleList theme={theme} {...props} />,
   SpacingUtilityExampleList: (props) => <SpacingUtilityExampleList theme={theme} {...props} />,
   ComponentThemeOptions: (props) => <ComponentThemeOptions theme={theme} {...props} />,
   ThemeContent: (props) => <ThemeContent theme={theme} {...props} />,
