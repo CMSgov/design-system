@@ -22,6 +22,8 @@
 
 .c-spacing-utility-example--margin .c-spacing-utility-example__item:after {
   border: 1px solid $color-black;
+  width: ($spacer-4 + 2px);
+  box-sizing: border-box;
 }
 
 .c-spacing-utility-example--padding .c-spacing-utility-example__container {
