@@ -22,13 +22,25 @@ export interface PropTableDataItem {
 
 interface PropTableProps {
   componentName: string;
+  /**
+   * Name of currently selected theme
+   */
+  theme: string;
+  /**
+   * If the component we're documenting passes extra props through to an HTML element,
+   * setting this prop will show additional documentation about that behavior. Use
+   * this in combination with `htmlElementLink`, which is a link to MDN documentation
+   * about that element and the attributes it accepts.
+   */
+  htmlElementName?: string;
+  htmlElementLink?: string;
 }
 
 /**
  * A component to display a Design System component's prop table
  * It loads all props for all components and then finds the appropriate props for the passed in `componentName`
  */
-const PropTable = ({ componentName }: PropTableProps, theme: string) => {
+const PropTable = ({ componentName, theme, htmlElementName, htmlElementLink }: PropTableProps) => {
   // load all props for all components
   const allPropData: ComponentPropQuery = useStaticQuery(graphql`
     query loadComponentPropsQuery {
@@ -123,6 +135,31 @@ const PropTable = ({ componentName }: PropTableProps, theme: string) => {
             </TableCell>
           </TableRow>
         ))}
+        {htmlElementName && (
+          <TableRow>
+            <TableCell colSpan={2}>
+              This component passes any additional props to its underlying{' '}
+              <code>
+                {'<'}
+                {htmlElementName}
+                {'>'}`
+              </code>{' '}
+              element as attributes. It will accept poop any props that are valid attributes of
+              <code>
+                {'<'}
+                {htmlElementName}
+                {'>'}`
+              </code>{' '}
+              .{' '}
+              {htmlElementLink && (
+                <>
+                  Please see <a href={htmlElementLink}>MDN documentation</a> for a list of those
+                  attributes.
+                </>
+              )}
+            </TableCell>
+          </TableRow>
+        )}
       </TableBody>
     </Table>
   );
