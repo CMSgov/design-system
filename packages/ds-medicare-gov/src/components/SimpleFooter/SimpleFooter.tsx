@@ -78,9 +78,7 @@ const SimpleFooter: FunctionComponent<SimpleFooterProps> = ({
           <a href="https://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/index.html">
             {linkingPolicyLabel}
           </a>
-          <a href="https://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/Help.html">
-            {usingThisSiteLabel}
-          </a>
+          <a href="https://www.medicare.gov/about-us/using-this-site">{usingThisSiteLabel}</a>
           <a href="https://www.medicare.gov/about-us/plain-writing">{plainWritingLabel}</a>
         </div>
       </div>
