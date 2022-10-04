@@ -96,6 +96,10 @@ const PropTable = ({ componentName, theme, htmlElementName, htmlElementLink }: P
     []
   );
 
+  const formattedHtmlElementName = htmlElementName ? (
+    <code>{`<${htmlElementName}>`}</code>
+  ) : undefined;
+
   return (
     <Table className="c-prop-table" stackable scrollable borderless>
       <TableCaption>
@@ -137,20 +141,10 @@ const PropTable = ({ componentName, theme, htmlElementName, htmlElementLink }: P
         ))}
         {htmlElementName && (
           <TableRow>
-            <TableCell colSpan={2}>
+            <TableCell colSpan={4}>
               This component passes any additional props to its underlying{' '}
-              <code>
-                {'<'}
-                {htmlElementName}
-                {'>'}`
-              </code>{' '}
-              element as attributes. It will accept poop any props that are valid attributes of
-              <code>
-                {'<'}
-                {htmlElementName}
-                {'>'}`
-              </code>{' '}
-              .{' '}
+              {formattedHtmlElementName} element as attributes. It will accept any props that are
+              valid attributes of {formattedHtmlElementName}.{' '}
               {htmlElementLink && (
                 <>
                   Please see <a href={htmlElementLink}>MDN documentation</a> for a list of those
