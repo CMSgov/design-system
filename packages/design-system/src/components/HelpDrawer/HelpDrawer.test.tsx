@@ -81,12 +81,12 @@ describe('HelpDrawer', () => {
     });
 
     it('disables analytics event tracking on open', () => {
-      renderHelpDrawer({ analytics: false, onCloseClick: () => {} });
+      renderHelpDrawer({ analytics: false, onCloseClick: jest.fn() });
       expect(tealiumMock).not.toBeCalledWith(defaultEvent);
     });
 
     it('overrides analytics event tracking on open', () => {
-      renderHelpDrawer({ analyticsLabelOverride: 'other heading', onCloseClick: () => {} });
+      renderHelpDrawer({ analyticsLabelOverride: 'other heading', onCloseClick: jest.fn() });
       expect(tealiumMock).toBeCalledWith(
         expect.objectContaining({
           ga_eventLabel: 'other heading',
