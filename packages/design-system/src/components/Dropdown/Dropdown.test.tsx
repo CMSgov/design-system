@@ -1,6 +1,5 @@
 import { render } from '@testing-library/react';
 import Dropdown from './Dropdown';
-import React from 'react';
 
 const defaultProps = { name: 'dropdown', label: 'Select an option' };
 

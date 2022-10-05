@@ -1,6 +1,5 @@
 import LogoEnSvg from './LogoEnSvg';
 import LogoEsSvg from './LogoEsSvg';
-import React from 'react';
 import { Language } from '@cmsgov/design-system';
 
 export interface LogoProps {

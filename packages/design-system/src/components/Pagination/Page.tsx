@@ -1,5 +1,4 @@
 import Button from '../Button/Button';
-import React from 'react';
 
 export interface PageProps {
   /**

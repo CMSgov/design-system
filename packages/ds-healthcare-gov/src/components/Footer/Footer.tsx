@@ -1,6 +1,5 @@
 import InlineLinkLists from './InlineLinkLists';
 import LogosRow from './LogosRow';
-import React from 'react';
 import classnames from 'classnames';
 import { Language, tWithLanguage } from '../i18n';
 

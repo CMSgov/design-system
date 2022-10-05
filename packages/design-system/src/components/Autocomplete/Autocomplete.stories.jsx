@@ -1,4 +1,3 @@
-import React from 'react';
 import Autocomplete from './Autocomplete';
 import TextField from '../TextField/TextField';
 import { Title, Subtitle, Description, ArgsTable, PRIMARY_STORY } from '@storybook/addon-docs';

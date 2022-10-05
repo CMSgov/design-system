@@ -1,4 +1,3 @@
-import React from 'react';
 import UsaBanner from './UsaBanner';
 import { fireEvent, render, screen } from '@testing-library/react';
 

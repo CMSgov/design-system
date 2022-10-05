@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import CalendarIcon from '../Icons/CalendarIcon';
 import CustomDayPicker from './CustomDayPicker';
 import classNames from 'classnames';

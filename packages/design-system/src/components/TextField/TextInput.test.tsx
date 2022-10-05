@@ -1,5 +1,4 @@
 import TextInput, { OmitProps, TextInputProps } from './TextInput';
-import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 
 const defaultProps: Omit<React.ComponentPropsWithRef<'textarea'>, OmitProps> &
