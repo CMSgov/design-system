@@ -75,7 +75,7 @@ These scripts can all be run from the root level of the repo:
 - `yarn deploy-demo`
   - Builds the doc site locally and deploys it to a branch-specific path on GitHub Pages. The terminal will display the URL where the demo was deployed to after it is done running.
 - `yarn release`
-  - Bumps package versions and tags a release commit. Read our [Release Process guide](/guides/RELEASE-PROCESS.md) for more info.
+  - Bumps package versions and tags a release commit. Read our [release guide on Confluence](https://confluence.cms.gov/x/CAsuK) for more info.
 
 ### Visual regression testing
 
