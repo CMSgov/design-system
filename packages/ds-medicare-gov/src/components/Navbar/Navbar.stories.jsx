@@ -1,5 +1,3 @@
-import React from 'react';
-
 import MedicaregovLogo from '../MedicaregovLogo';
 import NavigationMenu from '../NavigationMenu';
 import Navbar from './Navbar';

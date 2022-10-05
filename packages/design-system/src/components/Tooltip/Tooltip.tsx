@@ -6,7 +6,7 @@ import 'core-js/features/promise';
 // TODO: Update react-transition-group once we update react peer dep
 import CSSTransition from 'react-transition-group/CSSTransition';
 import FocusTrap from 'focus-trap-react';
-import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
+import { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import classNames from 'classnames';
 import { createPopper, Placement } from '@popperjs/core';
 import uniqueId from 'lodash/uniqueId';

@@ -1,4 +1,3 @@
-import React from 'react';
 import IdleTimeout, { IdleTimeoutProps } from './IdleTimeout';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { mockTime, restoreTime } from './utilities/mockTime';
@@ -12,7 +11,7 @@ describe('Idle Timeout', () => {
     timeToTimeout: 5,
     timeToWarning: 3,
     onTimeout,
-    onClose: () => {},
+    onClose: jest.fn(),
   };
   const timeTilWarningShown = defaultProps.timeToWarning * 60000;
   const WARNING_DATETIME = MOCK_START_TIME + defaultProps.timeToWarning * 60000; // date time when warning should appear
@@ -44,7 +43,7 @@ describe('Idle Timeout', () => {
   });
 
   it('should error if timeToWarning is greater than timeToTimeout', () => {
-    const error = jest.spyOn(console, 'error').mockImplementation(() => {});
+    const error = jest.spyOn(console, 'error').mockImplementation(jest.fn());
     renderIdleTimeout({ timeToWarning: 7 });
     expect(error).toHaveBeenCalledWith(
       'Error in TimeoutManager component. `timeToWarning` is greater or equal to `timeToTimeout`'

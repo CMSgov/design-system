@@ -1,9 +1,9 @@
 import Button, { ButtonVariation } from '../Button/Button';
 import NativeDialog from '../NativeDialog/NativeDialog';
-import React, { useEffect, useLayoutEffect, useRef } from 'react';
 import classNames from 'classnames';
 import useDialogAnalytics from './useDialogAnalytics';
 import { CloseIcon } from '../Icons';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 import { t } from '../i18n';
 
 export type DialogCloseButtonSize = 'small' | 'big';

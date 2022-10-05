@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import InlineError from '../InlineError/InlineError';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';

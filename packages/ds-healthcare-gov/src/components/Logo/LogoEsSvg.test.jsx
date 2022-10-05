@@ -1,5 +1,4 @@
 import LogoEsSvg from './LogoEsSvg';
-import React from 'react';
 import { render } from '@testing-library/react';
 
 describe('LogoEsSvg', function () {

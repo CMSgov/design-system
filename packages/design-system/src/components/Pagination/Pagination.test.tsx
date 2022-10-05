@@ -1,5 +1,4 @@
 import Pagination from './Pagination';
-import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 
 function getNav() {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
 import { Language, tWithLanguage } from '../i18n';

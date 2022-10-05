@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { withPrefix } from 'gatsby';
 import classnames from 'classnames';
 import StorybookExampleFooter from './StorybookExampleFooter';
@@ -121,12 +121,12 @@ const ResponsiveExample = ({ storyId, title, theme }: ResponsiveExample) => {
           ))}
         </ol>
         <div
-          className="c-resposive-example__example-wrapper "
+          className="c-responsive-example__example-wrapper "
           style={{ height: getHeight() }}
           ref={exampleWrapperRef}
         >
           <div
-            className={`c-repsonsive-example__iframe-wrapper ${
+            className={`c-responsive-example__iframe-wrapper ${
               iframeBreakpoint && `c-responsive-example__iframe-wrapper--width-${iframeBreakpoint}`
             }`}
             style={{ transform: `scale(${getScale()})` }}

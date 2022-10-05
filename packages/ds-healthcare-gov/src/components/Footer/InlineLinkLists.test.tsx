@@ -1,5 +1,4 @@
 import InlineLinkLists from './InlineLinkLists';
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 
 const t = (key: string) => key;

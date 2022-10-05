@@ -1,5 +1,5 @@
 import { EventCategory, sendLinkEvent, getAnalyticsContentFromRefs } from '../analytics';
-import React, { MutableRefObject, useRef } from 'react';
+import { MutableRefObject, useRef } from 'react';
 import { buttonSendsAnalytics } from '../flags';
 import classNames from 'classnames';
 
