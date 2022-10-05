@@ -1,6 +1,7 @@
 import Button, { ButtonVariation } from '../Button/Button';
 import NativeDialog from '../NativeDialog/NativeDialog';
 import classNames from 'classnames';
+import uniqueId from 'lodash/uniqueId';
 import useDialogAnalytics from './useDialogAnalytics';
 import { CloseIcon } from '../Icons';
 import { useEffect, useLayoutEffect, useRef } from 'react';
@@ -155,13 +156,14 @@ export const Dialog = (props: DialogProps) => {
   }, []);
 
   const headingRef = useDialogAnalytics(props);
+  const headingId = useRef(uniqueId('dialog-title_')).current;
 
   return (
     <NativeDialog className={dialogClassNames} showModal exit={onExit} {...modalProps}>
-      <div role="document" ref={containerRef} tabIndex={-1}>
+      <div role="document" ref={containerRef} tabIndex={-1} aria-labelledby={headingId}>
         <header className={headerClassNames}>
           {heading && (
-            <h1 className="ds-h2" id="dialog-title" ref={headingRef}>
+            <h1 className="ds-h2" id={headingId} ref={headingRef}>
               {heading}
             </h1>
           )}
