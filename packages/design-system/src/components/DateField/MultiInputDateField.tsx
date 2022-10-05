@@ -149,7 +149,7 @@ export function MultiInputDateField(props: DateFieldProps): React.ReactElement {
   });
 
   // Throw away the properties we don't need by destructuring
-  const { id, errorId, ...inputProps } = fieldProps;
+  const { id, ...inputProps } = fieldProps;
 
   return (
     <fieldset {...wrapperProps}>

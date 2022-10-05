@@ -139,18 +139,8 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
       // @ts-ignore: The ClipboardEventHandler for textareas and inputs are incompatible, and TS
       // is failing to infer which one is being used here based on ComponentType.
       onCopyCapture={onCopyCapture}
-      // This can be purposefully overwritten by an 'aria-invalid' defined in inputProps
-      aria-invalid={!!errorMessage}
       {...inputProps}
       aria-label={ariaLabel || props['aria-label']}
-      // Link input to bottom placed error message
-      // Use of the classNames function for this is confusing
-      aria-describedby={
-        classNames(
-          props['aria-describedby'],
-          errorPlacement === 'bottom' && errorMessage && errorId
-        ) || undefined
-      }
     />
   );
 };

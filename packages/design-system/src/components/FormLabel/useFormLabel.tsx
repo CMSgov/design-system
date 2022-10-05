@@ -86,15 +86,16 @@ export function useFormLabel<T extends UseFormLabelProps>(props: T) {
   } = props;
 
   // Bottom placed errors are handled in FormControl instead of FormLabel
-  const bottomError =
-    errorPlacement === 'bottom' && errorMessage ? (
-      <InlineError id={errorId} inversed={inversed} className={errorMessageClassName}>
-        {errorMessage}
-      </InlineError>
-    ) : undefined;
+  const hasBottomError = errorPlacement === 'bottom' && errorMessage;
+  const bottomError = hasBottomError ? (
+    <InlineError id={errorId} inversed={inversed} className={errorMessageClassName}>
+      {errorMessage}
+    </InlineError>
+  ) : undefined;
   // Bottom placed errors cannot be linked to Choices in ChoiceList,
   // so we add a hidden error message to the label
   const showHiddenError = wrapperIsFieldset && bottomError;
+  const ariaInvalid = props['aria-invalid'] ?? !!errorMessage;
 
   const labelProps = {
     children: (
@@ -120,22 +121,19 @@ export function useFormLabel<T extends UseFormLabelProps>(props: T) {
   const fieldProps = {
     ...remainingProps,
     id,
-    errorId,
     errorMessage,
-    errorPlacement,
     inversed,
+    'aria-describedby': hasBottomError ? classNames(props['aria-describedby'], errorId) : undefined,
+    'aria-invalid': !wrapperIsFieldset ? ariaInvalid : undefined,
   };
 
   const wrapperClassNames = classNames({ 'ds-c-fieldset': wrapperIsFieldset }, className);
-  // Use `aria-invalid` attribute on errored fieldsets
-  // Errored form components without fieldsets must handle `aria-invalid` in their own component
-  const ariaInvalid = wrapperIsFieldset && errorMessage ? true : undefined;
   const wrapperProps = {
     className: wrapperClassNames,
-    'aria-invalid': ariaInvalid,
+    'aria-invalid': wrapperIsFieldset ? ariaInvalid : undefined,
   };
 
-  return { labelProps, fieldProps, wrapperProps, bottomError };
+  return { labelProps, fieldProps, wrapperProps, bottomError, errorId };
 }
 
 export default useFormLabel;
