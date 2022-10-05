@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { useRef } from 'react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import { useClickOutsideHandler } from './useClickOutsideHandler';
 
 const TestComponentWithHook = ({ callbackFn }) => {
@@ -8,6 +8,10 @@ const TestComponentWithHook = ({ callbackFn }) => {
   useClickOutsideHandler([divRef], callbackFn);
 
   return <div ref={divRef}>Hello World.</div>;
+};
+
+TestComponentWithHook.propTypes = {
+  callbackFn: typeof jest.fn(),
 };
 
 describe('useClickOutsideHandler', () => {
@@ -27,8 +31,8 @@ describe('useClickOutsideHandler', () => {
 
   it('should not call callback for mousedown inside of element', () => {
     const callback = jest.fn();
-    const { getByText } = render(<TestComponentWithHook callbackFn={callback} />);
-    fireEvent.mouseDown(getByText('Hello World.'));
+    render(<TestComponentWithHook callbackFn={callback} />);
+    fireEvent.mouseDown(screen.getByText('Hello World.'));
     expect(callback).not.toHaveBeenCalled();
   });
 

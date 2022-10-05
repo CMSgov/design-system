@@ -1,5 +1,3 @@
-import React from 'react';
-
 import FormLabel from './FormLabel';
 
 export default {

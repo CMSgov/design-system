@@ -1,7 +1,7 @@
 import Button from '../Button/Button';
 import Ellipses from './Ellipses';
 import Page from './Page';
-import React from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { ArrowIcon } from '../Icons';
 import { t } from '../i18n';
@@ -144,8 +144,8 @@ function Pagination({
    * mobile layout of component is rendered.
    */
 
-  const [isMobile, setIsMobile] = React.useState(false);
-  React.useEffect(() => {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
     if (window) {
       // Mobile media query derived from: https://design.cms.gov/guidelines/responsive/
       const media = window.matchMedia('(max-width: 543px)');
@@ -165,7 +165,7 @@ function Pagination({
     }
   }, [isMobile]);
 
-  const pageChange = React.useCallback(
+  const pageChange = useCallback(
     (page) => (evt: React.MouseEvent) => onPageChange(evt, page),
     [onPageChange]
   );

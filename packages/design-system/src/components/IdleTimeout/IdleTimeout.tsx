@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import useInterval from './useInterval';
 import IdleTimeoutDialog from './IdleTimeoutDialog';
 import { checkPassiveSupport } from './utilities/checkPassive';

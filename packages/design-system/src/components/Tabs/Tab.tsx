@@ -1,4 +1,4 @@
-import React from 'react';
+import { forwardRef } from 'react';
 import classnames from 'classnames';
 
 export interface TabProps {
@@ -40,7 +40,7 @@ export interface TabProps {
   disabled?: boolean;
 }
 
-export const Tab = React.forwardRef((props: TabProps, ref: any) => {
+export const Tab = forwardRef((props: TabProps, ref: any) => {
   const defaultProps = {
     selected: false,
   };

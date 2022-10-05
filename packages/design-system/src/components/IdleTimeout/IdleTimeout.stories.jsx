@@ -1,4 +1,3 @@
-import React from 'react';
 import IdleTimeout from './IdleTimeout';
 import IdleTimeoutDialog from './IdleTimeoutDialog';
 import { Title, Subtitle, Description, ArgsTable, PRIMARY_STORY } from '@storybook/addon-docs';

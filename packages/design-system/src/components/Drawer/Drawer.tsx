@@ -1,6 +1,6 @@
 import Button from '../Button/Button';
 import NativeDialog from '../NativeDialog/NativeDialog';
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
 import { t } from '../i18n';

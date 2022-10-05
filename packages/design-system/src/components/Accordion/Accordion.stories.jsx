@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Accordion from './Accordion';
 import AccordionItem from './AccordionItem';
 import { useArgs } from '@storybook/client-api';

@@ -1,5 +1,4 @@
 import FormLabel from './FormLabel';
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 
 describe('FormLabel', () => {

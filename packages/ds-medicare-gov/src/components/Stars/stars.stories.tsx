@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Stars, { StarsProps } from './Stars';
 
 export default {

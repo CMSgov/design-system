@@ -1,6 +1,5 @@
 import { DefaultLink, LinkIdentifier } from './defaultMenuLinks';
 import { Link } from './Header';
-import React from 'react';
 import { sendHeaderEvent } from './analytics';
 
 interface MenuLinksProps {

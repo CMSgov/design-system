@@ -1,5 +1,3 @@
-import React from 'react';
-
 import GlobalHeader from './GlobalHeader';
 
 // Because the DS exports the wrapped Header component, Header props are not shown in the args table

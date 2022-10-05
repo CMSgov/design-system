@@ -1,4 +1,3 @@
-import React from 'react';
 import SvgIcon, { IconCommonProps } from './SvgIcon';
 
 const defaultProps = {
