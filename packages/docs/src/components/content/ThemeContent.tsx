@@ -1,11 +1,9 @@
-import React from 'react';
-
 type ThemeName = 'core' | 'healthcare' | 'medicare';
 
 export interface ThemeContentProps {
   children: React.ReactElement;
   /**
-   * One of the availabe theme names in lowercase as presented in ThemeNames
+   * One of the available theme names in lowercase as presented in ThemeNames
    */
   theme: string;
   /**
@@ -22,7 +20,7 @@ export interface ThemeContentProps {
  * Conditionally renders content based on the current theme.
  *
  * Note that in order for markdown to be correctly rendered in the children of this component,
- * you need to have an emtpy line after the start tag and before the end tag for this component.
+ * you need to have an empty line after the start tag and before the end tag for this component.
  */
 const ThemeContent = (props: ThemeContentProps) => {
   const { children, theme, onlyThemes, neverThemes } = props;

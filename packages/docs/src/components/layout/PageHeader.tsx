@@ -1,4 +1,3 @@
-import React from 'react';
 import { withPrefix } from 'gatsby';
 
 import { Badge } from '@cmsgov/design-system';

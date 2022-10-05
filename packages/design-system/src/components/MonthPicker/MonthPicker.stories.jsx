@@ -1,5 +1,3 @@
-import React from 'react';
-
 import MonthPicker from './MonthPicker';
 
 export default {

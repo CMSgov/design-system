@@ -1,11 +1,11 @@
-import React from 'react';
+import { createContext } from 'react';
 
 export interface TableContextType {
   stackable: boolean;
   warningDisabled: boolean;
 }
 
-export const TableContext = React.createContext({
+export const TableContext = createContext({
   stackable: false,
   warningDisabled: false,
 } as TableContextType);

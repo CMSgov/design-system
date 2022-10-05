@@ -1,5 +1,4 @@
 import Alert, { AlertProps } from './Alert';
-import React from 'react';
 import { UtagContainer } from '../analytics';
 import { setAlertSendsAnalytics } from '../flags';
 import { render, screen } from '@testing-library/react';

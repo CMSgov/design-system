@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import { useClickOutsideHandler } from './useClickOutsideHandler';
 

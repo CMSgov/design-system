@@ -1,5 +1,5 @@
 import Button, { ButtonProps } from '../Button/Button';
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import usePrevious from '../utilities/usePrevious';
 

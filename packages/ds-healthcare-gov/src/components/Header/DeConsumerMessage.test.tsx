@@ -1,5 +1,4 @@
 import DeConsumerMessage from './DeConsumerMessage';
-import React from 'react';
 import { render } from '@testing-library/react';
 
 const t = (key, data) => key + (data ? ` | ${JSON.stringify(data)}` : '');
