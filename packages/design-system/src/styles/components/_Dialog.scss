@@ -65,6 +65,12 @@ dialog.fixed {
   @media (-ms-high-contrast: active), (forced-colors: active) {
     outline: $spacer-2 solid WindowText;
   }
+
+  // We set default focus to the role="document" div, but we don't want
+  // to show the default focus halo
+  > [role='document']:focus {
+    outline: none;
+  }
 }
 
 .ds-c-dialog::backdrop,
