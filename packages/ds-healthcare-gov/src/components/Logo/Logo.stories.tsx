@@ -6,7 +6,7 @@ export default {
   args: {},
 };
 
-const Template = ({ data, ...args }) => <Logo {...args} />;
+const Template = ({ ...args }) => <Logo {...args} />;
 
 export const EnglishLogo = Template.bind({});
 export const SpanishLogo = Template.bind({});
