@@ -10,7 +10,7 @@ const defaultProps = {
     </div>
   ),
   footerTitle: 'Footer title',
-  onCloseClick: () => {},
+  onCloseClick: jest.fn(),
   heading: 'Drawer title',
 };
 
