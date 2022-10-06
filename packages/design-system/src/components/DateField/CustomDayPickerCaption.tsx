@@ -1,4 +1,3 @@
-import React from 'react';
 import { ArrowIcon } from '../Icons';
 import { CaptionDropdowns, CaptionProps, useDayPicker, useNavigation } from 'react-day-picker';
 

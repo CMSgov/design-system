@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Table from './Table';
 import TableCaption from './TableCaption';
 import TableHead from './TableHead';

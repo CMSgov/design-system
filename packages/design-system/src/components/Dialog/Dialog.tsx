@@ -1,7 +1,6 @@
 import { EventCategory, sendLinkEvent, useAnalyticsContent } from '../analytics';
 import AriaModal from 'react-aria-modal';
 import Button, { ButtonVariation } from '../Button/Button';
-import React from 'react';
 import classNames from 'classnames';
 import { dialogSendsAnalytics } from '../flags';
 import { CloseIcon } from '../Icons';

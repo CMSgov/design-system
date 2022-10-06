@@ -1,5 +1,4 @@
 import Logo from './Logo';
-import React from 'react';
 import { render } from '@testing-library/react';
 
 describe('Logo', function () {

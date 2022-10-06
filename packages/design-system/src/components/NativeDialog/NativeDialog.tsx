@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useLayoutEffect, DialogHTMLAttributes } from 'react';
+import { useRef, useEffect, useLayoutEffect, DialogHTMLAttributes } from 'react';
 import dialogPolyfill from './polyfill';
 
 interface NativeDialogProps extends Omit<DialogHTMLAttributes<HTMLElement>, 'children'> {

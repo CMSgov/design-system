@@ -1,5 +1,4 @@
 import LogosRow from './LogosRow';
-import React from 'react';
 import { render } from '@testing-library/react';
 
 const t = (key) => key;

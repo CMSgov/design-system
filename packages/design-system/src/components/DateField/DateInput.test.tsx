@@ -1,4 +1,4 @@
-import React from 'react';
+import { createRef } from 'react';
 import DateInput, { DateInputProps } from './DateInput';
 import userEvent from '@testing-library/user-event';
 import { render, screen } from '@testing-library/react';
@@ -63,9 +63,9 @@ describe('DateInput', () => {
     const dayDefaultValue = '1';
     const monthDefaultValue = '22';
     const yearDefaultValue = '3333';
-    const dayFieldRef = React.createRef();
-    const monthFieldRef = React.createRef();
-    const yearFieldRef = React.createRef();
+    const dayFieldRef = createRef();
+    const monthFieldRef = createRef();
+    const yearFieldRef = createRef();
 
     renderDateInput({
       dayDefaultValue,

@@ -1,7 +1,6 @@
 import ChoiceList, { ChoiceListType } from './ChoiceList';
 import { render, waitFor, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import React from 'react';
 
 function generateChoices(length) {
   const choices = [];

@@ -1,4 +1,3 @@
-import React from 'react';
 import Pagination from './Pagination';
 import { useArgs } from '@storybook/client-api';
 

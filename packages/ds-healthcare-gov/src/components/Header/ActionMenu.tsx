@@ -1,5 +1,5 @@
 import { Button, CloseIconThin, MenuIcon, TFunction } from '@cmsgov/design-system';
-import React, { SyntheticEvent } from 'react';
+import { SyntheticEvent } from 'react';
 import classnames from 'classnames';
 import { sendHeaderEvent } from './analytics';
 

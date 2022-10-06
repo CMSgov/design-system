@@ -1,4 +1,3 @@
-import React from 'react';
 import { TFunction } from '@cmsgov/design-system';
 
 interface DeConsumerMessageProps {

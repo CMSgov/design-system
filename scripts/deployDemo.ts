@@ -6,7 +6,7 @@ const branch = execSync('git rev-parse --abbrev-ref HEAD').toString().trim();
 
 // Build the demo site
 execSync(`yarn --cwd ${join('packages', 'docs')} clean`, { stdio: 'inherit' });
-execSync('yarn build-storybook:gatsby', { stdio: 'inherit' });
+execSync('yarn build:storybook:docs', { stdio: 'inherit' });
 execSync('yarn build:docs', {
   env: {
     ...process.env,

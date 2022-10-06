@@ -1,5 +1,4 @@
 import Drawer from './Drawer';
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -10,7 +9,7 @@ const defaultProps = {
     </div>
   ),
   footerTitle: 'Footer title',
-  onCloseClick: () => {},
+  onCloseClick: jest.fn(),
   heading: 'Drawer title',
 };
 

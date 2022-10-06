@@ -1,7 +1,6 @@
 import '@testing-library/jest-dom';
 import { UtagContainer } from '@cmsgov/design-system';
 import ActionMenu from './ActionMenu';
-import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 
 const t = (key: string) => key;

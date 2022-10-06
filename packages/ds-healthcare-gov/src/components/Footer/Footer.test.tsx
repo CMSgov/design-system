@@ -1,5 +1,4 @@
 import Footer from './Footer';
-import React from 'react';
 import { render } from '@testing-library/react';
 
 describe('Footer', function () {

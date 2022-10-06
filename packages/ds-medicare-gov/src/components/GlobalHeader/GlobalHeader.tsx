@@ -1,4 +1,4 @@
-import React, { PureComponent, RefObject, createRef } from 'react';
+import { PureComponent, RefObject, createRef } from 'react';
 import MedicaregovLogo from './../MedicaregovLogo/MedicaregovLogo';
 import { Button } from '@cmsgov/design-system';
 import { Caret, Close, Hamburger } from '../Icons';
