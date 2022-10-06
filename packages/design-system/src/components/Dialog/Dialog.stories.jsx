@@ -41,7 +41,7 @@ export default {
   },
 };
 
-export const DialogExample = ({ isOpen: _isOpen, ...args }) => {
+export const DialogExample = ({ isOpen: _isOpen, dialogOpen: _dialogOpen, ...args }) => {
   const [{ dialogOpen }, updateArgs] = useArgs();
   const showModal = () => updateArgs({ dialogOpen: true });
   const hideModal = () => updateArgs({ dialogOpen: false });
@@ -72,14 +72,14 @@ export const DialogExample = ({ isOpen: _isOpen, ...args }) => {
   );
 };
 
-export const PreventScrollExample = ({ isOpen: _isOpen, ...args }) => {
+export const PreventScrollExample = ({ isOpen: _isOpen, dialogOpen: _dialogOpen, ...args }) => {
   const [{ dialogOpen }, updateArgs] = useArgs();
   const showModal = () => updateArgs({ dialogOpen: true });
   const hideModal = () => updateArgs({ dialogOpen: false });
 
   return (
     <div className="ds-u-measure--base">
-      {dialogOpen && <Dialog onExit={hideModal} {...args} />}
+      {dialogOpen && <Dialog {...args} onExit={hideModal} />}
       <h1>The United States Constitution</h1>
       <p>
         We the People of the United States, in Order to form a more perfect Union, establish
