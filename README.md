@@ -16,7 +16,7 @@
 
 ## Packages
 
-You're currently at the root of a monorepo containing multiple NPM packages located in the [`packages` directory](packages/). Unless you're a contributor or a child design system maintainer. View the `README.md` in each of these for additional details.
+You're currently at the root of a monorepo containing multiple NPM packages located in the [`packages` directory](packages/). View the `README.md` in each of these for additional details.
 
 | Name                                                       | Description                                                                                                                                                                                                                              |
 | ---------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
