@@ -2,7 +2,7 @@
 import 'core-js/stable/array/includes';
 import Button, { ButtonVariation } from '../Button/Button';
 import Choice from '../ChoiceList/Choice';
-import React, { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import classNames from 'classnames';
 import { NUM_MONTHS, getMonthNames } from './getMonthNames';
 import { fallbackLocale, getLanguage, t } from '../i18n';

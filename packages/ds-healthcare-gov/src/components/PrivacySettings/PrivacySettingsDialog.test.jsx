@@ -1,6 +1,5 @@
 import '@testing-library/jest-dom';
 import PrivacySettingsDialog from './PrivacySettingsDialog';
-import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 
 jest.mock('./privacySettings', () => ({

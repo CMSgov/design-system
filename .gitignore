@@ -6,6 +6,10 @@
 **/package-lock.json
 /examples/*/yarn.lock
 
+/examples/cdn/js/*
+/examples/cdn/css/*
+/examples/cdn/fonts/*
+
 # Code editors
 *.sublime-*
 
@@ -45,6 +49,7 @@ node_modules
 
 storybook-static/
 packages/coverage/
+coverage-data/
 playwright-report/
 tests/browser/test-results/
 tests/a11y/test-results/

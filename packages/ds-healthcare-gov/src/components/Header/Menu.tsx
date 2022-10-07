@@ -1,5 +1,4 @@
 import MenuLinks from './MenuLinks';
-import React from 'react';
 import classnames from 'classnames';
 import { DefaultLink } from './defaultMenuLinks';
 import { Link } from './Header';

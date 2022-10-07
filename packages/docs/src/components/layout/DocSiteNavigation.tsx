@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'gatsby';
 import classnames from 'classnames';
 import { Button, CloseIconThin, MenuIconThin, VerticalNav } from '@cmsgov/design-system';
@@ -34,7 +34,7 @@ const GatsbyLink = (props: VerticalNavItemProps) => {
  */
 const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
   // Open/close state is controlled by toggleMenu()
-  const [isMobileNavOpen, setMobileNavOpen] = React.useState<boolean>(false);
+  const [isMobileNavOpen, setMobileNavOpen] = useState<boolean>(false);
   const toggleMenu = () => {
     setMobileNavOpen(!isMobileNavOpen);
   };
@@ -43,8 +43,8 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
    ** Need to know if screen width is at a medium breakpoint to set
    ** a11y attrs on mobile nav links - attrs not needed for desktop
    */
-  const [isMobile, setIsMobile] = React.useState<boolean>(false);
-  React.useEffect(() => {
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+  useEffect(() => {
     if (window) {
       // `md` media query derived from: https://design.cms.gov/guidelines/responsive/
       const media = window.matchMedia('(max-width: 768px)');

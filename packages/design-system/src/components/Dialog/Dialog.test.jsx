@@ -1,5 +1,4 @@
 import Dialog from './Dialog';
-import React from 'react';
 import { setDialogSendsAnalytics } from '../flags';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
@@ -7,6 +6,7 @@ import { act } from 'react-dom/test-utils';
 const defaultProps = {
   children: 'Foo',
   heading: 'dialog heading',
+  onExit: jest.fn(),
 };
 
 function renderDialog(props = {}) {

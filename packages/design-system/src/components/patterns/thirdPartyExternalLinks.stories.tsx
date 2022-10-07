@@ -1,4 +1,3 @@
-import React from 'react';
 import { useArgs } from '@storybook/client-api';
 import { Button } from '../Button';
 import { Dialog } from '../Dialog';
@@ -22,7 +21,6 @@ export const ThirdPartyExternalLink = () => {
       {showModal && (
         <Dialog
           onExit={() => setShowModal({ showModal: false })}
-          getApplicationNode={() => document.getElementById('App')}
           heading="You are leaving URL"
           closeButtonText=""
           actions={[

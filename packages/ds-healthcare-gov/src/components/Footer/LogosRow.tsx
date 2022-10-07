@@ -1,5 +1,4 @@
 import Logo from './Logo';
-import React from 'react';
 import { HHSLogo, UsaLogo, WhiteHouseLogo } from '@cmsgov/design-system';
 
 interface LogosRowProps {

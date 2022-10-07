@@ -17,9 +17,9 @@
     "babel-preset-env": "^1.7.0",
     "css-loader": "^1.0.0",
     "file-loader": "^2.0.0",
-    "node-sass": "^4.9.4",
+    "sass": "^1.53.0",
+    "sass-loader": "10.2.1",
     "resolve-url-loader": "^3.0.0",
-    "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.23.1",
     "webpack-cli": "^3.1.2"
@@ -27,7 +27,7 @@
   "dependencies": {
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
-    "@cmsgov/design-system": "^2.0.0",
+    "@cmsgov/design-system": "^4.0.0",
     "copy-webpack-plugin": "^4.5.4",
     "lodash": "^4.17.19",
     "url-loader": "^1.1.2"

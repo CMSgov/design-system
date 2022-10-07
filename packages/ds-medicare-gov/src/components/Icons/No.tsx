@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import { FunctionComponent } from 'react';
 import { CloseIcon } from '@cmsgov/design-system';
 
 interface NoProps {

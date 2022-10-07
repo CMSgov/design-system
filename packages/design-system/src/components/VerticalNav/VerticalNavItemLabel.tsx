@@ -1,4 +1,3 @@
-import React from 'react';
 import classNames from 'classnames';
 import { ArrowIcon } from '../Icons';
 import { t } from '../i18n';

@@ -3,7 +3,7 @@ module.exports = {
   testEnvironment: 'jsdom',
   testURL: 'http://localhost',
   setupFiles: [require.resolve('react-app-polyfill/stable')],
-  setupFilesAfterEnv: [`<rootDir>/../setupTests.js`],
+  setupFilesAfterEnv: [`<rootDir>/../tests/unit/setupTests.js`],
   testPathIgnorePatterns: [
     'dist/',
     'node_modules/',
@@ -12,7 +12,8 @@ module.exports = {
     'docs/public/',
     'docs/static',
   ],
-  coveragePathIgnorePatterns: ['/node_modules/', 'design-system-scripts'],
+  coverageDirectory: `<rootDir>/../tests/unit/coverage-data`,
+  coveragePathIgnorePatterns: ['/node_modules/'],
   transformIgnorePatterns: ['node_modules(?!/@cmsgov)'],
   moduleNameMapper: {
     // Remap imports for core to the src directory so we don't have to build first

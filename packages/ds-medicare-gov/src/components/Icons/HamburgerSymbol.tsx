@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import { FunctionComponent } from 'react';
 import { MenuIconThin } from '@cmsgov/design-system';
 
 interface CloseProps {

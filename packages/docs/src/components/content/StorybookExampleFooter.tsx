@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Button, ExternalLinkIcon } from '@cmsgov/design-system';
 import { makeStorybookUrl } from '../../helpers/urlUtils';
 import { withPrefix } from 'gatsby';

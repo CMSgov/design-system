@@ -3,6 +3,7 @@ import { stories } from '../../storybook-static/stories.json';
 
 const themes = ['core', 'healthcare', 'medicare'];
 const storySkipList = [
+  'components-dialog--prevent-scroll-example',
   'components-idle-timeout--default',
   'components-skip-nav--default-skip-nav',
   'components-skip-nav--skip-nav-example',
