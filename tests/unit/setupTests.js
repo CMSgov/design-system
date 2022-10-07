@@ -1,7 +1,5 @@
 /**
  * setupTests.js
- *
- * Setup for running tests with `@cmsgov/design-system-scripts`, this file is run before each test file
  */
 
 import '@testing-library/jest-dom/extend-expect';
