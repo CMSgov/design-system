@@ -27,7 +27,7 @@
     "storybook": "start-storybook -p 6006",
     "test": "yarn test:unit && yarn test:a11y",
     "posttest": "yarn lint",
-    "test:coverage": "yarn test:unit --collectCoverage",
+    "test:unit:coverage": "yarn test:unit --collectCoverage",
     "test:a11y": "yarn playwright test --config tests/a11y/playwright.config.ts",
     "test:unit": "yarn jest --config=tests/unit/jest.config.js",
     "test:unit:update": "yarn test:unit --updateSnapshot",
