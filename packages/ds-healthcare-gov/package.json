@@ -28,12 +28,6 @@
     "js-cookie": "^2.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "@babel/plugin-proposal-class-properties": "^7.10.1",
-    "@babel/plugin-transform-object-assign": "^7.10.4",
-    "@babel/preset-typescript": "^7.15.0",
-    "@cmsgov/design-system-scripts": "4.0.0",
-    "babel-eslint": "^10.1.0",
     "url-parse": "^1.2.0"
   }
 }
