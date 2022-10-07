@@ -4,13 +4,13 @@ import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
 import useDialogAnalytics from './useDialogAnalytics';
 import { CloseIcon } from '../Icons';
-import { useEffect, useLayoutEffect, useRef } from 'react';
+import { useEffect, useLayoutEffect, useRef, DialogHTMLAttributes } from 'react';
 import { t } from '../i18n';
 
 export type DialogCloseButtonSize = 'small' | 'big';
 export type DialogSize = 'narrow' | 'wide' | 'full';
 
-export interface DialogProps {
+export interface BaseDialogProps {
   /**
    * Buttons or other HTML to be rendered in the "actions" bar
    * at the bottom of the dialog.
@@ -97,6 +97,9 @@ export interface DialogProps {
    */
   size?: DialogSize;
 }
+
+export type DialogProps = BaseDialogProps &
+  Omit<DialogHTMLAttributes<HTMLElement>, keyof BaseDialogProps>;
 
 export const Dialog = (props: DialogProps) => {
   const {
