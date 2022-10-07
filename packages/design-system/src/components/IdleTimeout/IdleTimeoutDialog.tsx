@@ -83,8 +83,7 @@ export const IdleTimeoutDialog = ({
   return (
     <Dialog
       alert
-      dialogId="session-timeout-dialog"
-      escapeExits={false}
+      id="session-timeout-dialog"
       heading={heading}
       actions={renderDialogActions()}
       onExit={onClose}

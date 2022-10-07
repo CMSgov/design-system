@@ -8,6 +8,7 @@ describe('IdleTimeoutDialog', () => {
     message: 'Your session is ending',
     onSessionContinue: jest.fn(),
     endSessionButtonText: 'Logout',
+    onClose: jest.fn(),
   };
   const renderDialog = (overrideProps?) => {
     return render(<IdleTimeoutDialog {...defaultProps} {...overrideProps} />);

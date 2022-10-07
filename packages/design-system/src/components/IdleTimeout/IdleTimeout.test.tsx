@@ -1,6 +1,7 @@
-import IdleTimeout from './IdleTimeout';
+import IdleTimeout, { IdleTimeoutProps } from './IdleTimeout';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { mockTime, restoreTime } from './utilities/mockTime';
+import { act } from 'react-dom/test-utils';
 
 describe('Idle Timeout', () => {
   const MOCK_START_TIME = 1643811720; // setting starting date time to 2/22/2022 2:22
@@ -16,14 +17,16 @@ describe('Idle Timeout', () => {
   const WARNING_DATETIME = MOCK_START_TIME + defaultProps.timeToWarning * 60000; // date time when warning should appear
   const TIMEOUT_DATETIME = MOCK_START_TIME + defaultProps.timeToTimeout * 60000; // date time when timeout should occur
 
-  const renderIdleTimeout = (overrideProps?) => {
+  const renderIdleTimeout = (overrideProps: Partial<IdleTimeoutProps> = {}) => {
     return render(<IdleTimeout {...defaultProps} {...overrideProps} />);
   };
 
   const showWarning = (advanceTimeTo?: number) => {
-    const nextTime = advanceTimeTo || WARNING_DATETIME;
-    mockTime(nextTime); // set Date.now() to be warning time
-    jest.advanceTimersByTime(ADVANCE_TIMER_MS); // trigger next status check in component
+    act(() => {
+      const nextTime = advanceTimeTo ?? WARNING_DATETIME;
+      mockTime(nextTime); // set Date.now() to be warning time
+      jest.advanceTimersByTime(ADVANCE_TIMER_MS); // trigger next status check in component
+    });
   };
 
   beforeEach(() => {
@@ -76,10 +79,10 @@ describe('Idle Timeout', () => {
       showWarning();
       const keepSessionBtn = screen.getByText('Continue session');
       fireEvent.click(keepSessionBtn);
-      const dialogEl = screen.queryByRole('alertdialog');
-      expect(dialogEl).toBeNull();
+      expect(screen.queryByRole('dialog')).toBeNull();
+      // This works because the last active time hasn't changed
       jest.advanceTimersByTime(timeTilWarningShown);
-      expect(dialogEl).toBeDefined();
+      expect(screen.getByRole('dialog')).toBeInTheDocument();
     });
 
     it('should reset countdown if user opts to close modal', () => {
@@ -87,10 +90,10 @@ describe('Idle Timeout', () => {
       showWarning();
       const keepSessionBtn = screen.getByLabelText('Close modal dialog');
       fireEvent.click(keepSessionBtn);
-      const dialogEl = screen.queryByRole('alertdialog');
-      expect(dialogEl).toBeNull();
+      expect(screen.queryByRole('dialog')).toBeNull();
+      // This works because the last active time hasn't changed
       jest.advanceTimersByTime(timeTilWarningShown);
-      expect(dialogEl).toBeDefined();
+      expect(screen.getByRole('dialog')).toBeInTheDocument();
     });
 
     it('should call onSessionContinue if user opts to close modal', () => {
@@ -128,12 +131,12 @@ describe('Idle Timeout', () => {
       expect(onTimeout).toHaveBeenCalled();
     });
 
-    it('should close warning modal when user opts to continue session', () => {
+    it('should close warning modal when user opts to continue session', async () => {
       renderIdleTimeout();
       showWarning();
       const keepSessionBtn = screen.getByText('Continue session');
       fireEvent.click(keepSessionBtn);
-      const dialogEl = screen.queryByRole('alertdialog');
+      const dialogEl = screen.queryByRole('dialog');
       expect(dialogEl).toBeNull();
     });
   });
@@ -188,16 +191,11 @@ describe('Idle Timeout', () => {
     const formatMessage = (time) => `Your session will end in ${time}.`;
     renderIdleTimeout({ formatMessage, timeToWarning: 2 });
     showWarning(MOCK_START_TIME + 2 * 60000);
-    const dialogBodyText = screen.getByRole('main');
-    expect(dialogBodyText.firstChild.textContent).toEqual('Your session will end in 3.');
-    // have to advance Date.now() and also retrigger the checkStatus interval
-    mockTime(MOCK_START_TIME + 3 * 60000);
-    jest.advanceTimersByTime(60000);
-    expect(dialogBodyText.firstChild.textContent).toEqual('Your session will end in 2.');
-    // have to advance Date.now() and also retrigger the checkStatus interval
-    mockTime(MOCK_START_TIME + 4 * 60000);
-    jest.advanceTimersByTime(60000);
-    expect(dialogBodyText.firstChild.textContent).toEqual('Your session will end in 1.');
+    expect(screen.getByRole('main').firstChild.textContent).toEqual('Your session will end in 3.');
+    showWarning(MOCK_START_TIME + 3 * 60000);
+    expect(screen.getByRole('main').firstChild.textContent).toEqual('Your session will end in 2.');
+    showWarning(MOCK_START_TIME + 4 * 60000);
+    expect(screen.getByRole('main').firstChild.textContent).toEqual('Your session will end in 1.');
   });
 
   it('should cleanup timers on unmount', () => {
