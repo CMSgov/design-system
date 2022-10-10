@@ -1,5 +1,3 @@
-import { PageStatus } from '../components/layout/Layout';
-
 export interface TableOfContentsItem {
   url: string;
   slug?: string;
@@ -23,7 +21,6 @@ export interface LocationInterface {
 
 export interface FrontmatterInterface {
   title: string;
-  status?: PageStatus;
   core?: ComponentLinksInterface;
   healthcare?: ComponentLinksInterface;
   medicare?: ComponentLinksInterface;
