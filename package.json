@@ -13,7 +13,7 @@
     "build:docs": "yarn --cwd ./packages/docs build",
     "build:storybook": "build-storybook -o storybook-static",
     "build:storybook:docs": "build-storybook -o packages/docs/static/storybook",
-    "build:tokens": "yarn --cwd ./packages/design-system-tokens build themes scss && yarn --cwd ./packages/design-system-tokens build themes css-vars && yarn --cwd ./packages/design-system-tokens dist",
+    "build:tokens": "yarn --cwd ./packages/design-system-tokens build themes css-vars && yarn --cwd ./packages/design-system-tokens dist",
     "deploy-demo": "ts-node ./scripts/deployDemo.ts",
     "lint": "yarn lint:stylelint && yarn lint:eslint",
     "lint:eslint": "yarn eslint ./packages/",
