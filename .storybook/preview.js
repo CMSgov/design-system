@@ -1,4 +1,6 @@
 import './storybookStyles.scss';
+import '../packages/design-system/src/styles/settings/variables/core-components-vars.css';
+
 import React from 'react';
 import {
   setAlertSendsAnalytics,

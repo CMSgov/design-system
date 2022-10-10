@@ -1,0 +1,25 @@
+:root, :before{
+--choice__background-color: pink;
+--choice__background-color--checked: #00FF00;
+--choice__background-color--disabled: #990033;
+--choice__background-color--inverse: #ffffff00;
+--choice__background-color--disabled--inverse: #e9ecf126;
+--choice__border-color: #262626;
+--choice__border-color--checked: #990033;
+--choice__border-color--disabled: #a6a6a6;
+--choice__border-color--error: #e31c3d;
+--choice__border-color--inverse: #ffffff;
+--choice__border-color--left: #990033;
+--choice__border-color--focus: #00FF00;
+--choice__border-color--disabled--inverse: #a6a6a6;
+--choice__border-radius: 0px;
+--choice__border-width: 2px;
+--choice__color--unchecked: #ffffff;
+--choice__color--disabled: #5a5a5a;
+--choice__size: 32px;
+--choice__size--small: 20px;
+--choice__size-radio: 22px;
+--choice__size-radio--small: 12px;
+--choice-label__color--disabled: #5a5a5a;
+--choice-label__color--disabled--inverse: #e9ecf1;
+}

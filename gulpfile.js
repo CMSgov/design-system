@@ -50,7 +50,7 @@ const compileSass = (cb) => {
   const envDev = process.env.NODE_ENV === 'development';
 
   const sassSourcePaths = isCore
-    ? `${srcPath}/styles/**/*.scss`
+    ? `${srcPath}/styles/**/*.{scss,css}`
     : [`${sassCorePath}/**/*.scss`, `${srcPath}/styles/**/*.scss`];
   const sassIncludePaths = !isCore ? [path.resolve(srcPath, '../../../node_modules')] : [];
 
