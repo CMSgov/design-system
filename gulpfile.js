@@ -3,18 +3,12 @@ const path = require('path');
 const gulp = require('gulp');
 const gulpif = require('gulp-if');
 const babel = require('gulp-babel');
-const dartSass = require('sass');
-const gulpSass = require('gulp-sass');
 const rename = require('gulp-rename');
 const sourcemaps = require('gulp-sourcemaps');
 const ts = require('gulp-typescript');
 const postcss = require('gulp-postcss');
 const postcssImport = require('postcss-import');
-const postcssMediaVariables = require('postcss-media-variables');
-const postcssCssVariables = require('postcss-css-variables');
-const postcssCustomMedia = require('postcss-custom-media');
-const postcssCalc = require('postcss-calc');
-// const postcssNested = require('postcss-nested');
+const postcssEnvFunction = require('postcss-env-function');
 const postcssNesting = require('postcss-nesting');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
@@ -64,17 +58,20 @@ const compileCss = (cb) => {
     .pipe(
       postcss([
         postcssImport(), // inline imports
-
-        // Start of config required for vars in media query declarations
-        postcssMediaVariables(), // first run
-        postcssCustomMedia(),
-        postcssCssVariables(),
-        postcssCalc(),
-        postcssMediaVariables(), // second run
-        // End of config for media variables
-
-        // postcssNested(), // Allows nesting rules like Sass
         postcssNesting(), // Allows nesting according to the CSS Nesting specification
+        postcssEnvFunction({
+          importFrom: [
+            {
+              environmentVariables: {
+                '--media-width-xs': '0px',
+                '--media-width-sm': '544px',
+                '--media-width-md': '768px',
+                '--media-width-lg': '1024px',
+                '--media-width-xl': '1280px',
+              },
+            },
+          ],
+        }),
         autoprefixer(), // add any necessary vendor prefixes
         ...(!envDev ? [cssnano()] : []), // minify css
       ])

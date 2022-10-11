@@ -52,11 +52,11 @@
 .ds-text-heading--5xl {
   font-size: var(--font-size-3xl);
 
-  @media (min-width: var(--width-sm)) {
+  @media (min-width: env(--media-width-sm)) {
     font-size: var(--font-size-4xl);
   }
 
-  @media (min-width: var(--width-md)) {
+  @media (min-width: env(--media-width-md)) {
     font-size: var(--font-size-5xl);
   }
 }
@@ -66,7 +66,7 @@
   font-size: var(--font-size-3xl);
   font-weight: var(--typography-heading-4xl__font-weight);
 
-  @media (min-width: var(--width-md)) {
+  @media (min-width: env(--media-width-md)) {
     font-size: var(--font-size-4xl);
   }
 }
@@ -76,7 +76,7 @@
   font-size: var(--h1-mobile-font-size);
   font-weight: var(--typography-heading-3xl__font-weight);
 
-  @media (min-width: var(--width-md)) {
+  @media (min-width: env(--media-width-md)) {
     font-size: var(--font-size-3xl);
   }
 }
