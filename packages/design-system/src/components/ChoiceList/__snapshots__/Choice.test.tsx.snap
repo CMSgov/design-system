@@ -8,14 +8,14 @@ exports[`Choice accepts a node as innerHTML 1`] = `
     >
       <input
         class="ds-c-choice"
-        id="checkbox_foo_9"
+        id="checkbox_foo_10"
         name="foo"
         type="checkbox"
         value="boo"
       />
       <label
         class="ds-c-label"
-        for="checkbox_foo_9"
+        for="checkbox_foo_10"
       >
         <span
           class=""
@@ -41,14 +41,14 @@ exports[`Choice applies errorMessage to label 1`] = `
     >
       <input
         class="ds-c-choice"
-        id="checkbox_foo_12"
+        id="checkbox_foo_13"
         name="foo"
         type="checkbox"
         value="boo"
       />
       <label
         class="ds-c-label"
-        for="checkbox_foo_12"
+        for="checkbox_foo_13"
       >
         <span
           class=""
@@ -57,14 +57,14 @@ exports[`Choice applies errorMessage to label 1`] = `
         </span>
         <span
           class="ds-c-inline-error ds-c-field__error-message"
-          id="checkbox_foo_12-error"
+          id="checkbox_foo_13-error"
           role="alert"
         >
           <svg
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--alert-circle "
             focusable="false"
-            id="icon-13"
+            id="icon-14"
             viewBox="36 -12 186 186"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -88,14 +88,14 @@ exports[`Choice has a hint and requirementLabel 1`] = `
     >
       <input
         class="ds-c-choice"
-        id="checkbox_foo_8"
+        id="checkbox_foo_9"
         name="foo"
         type="checkbox"
         value="boo"
       />
       <label
         class="ds-c-label"
-        for="checkbox_foo_8"
+        for="checkbox_foo_9"
       >
         <span
           class=""
@@ -181,14 +181,14 @@ exports[`Choice nested content renders \`checkedChildren\` when checked 1`] = `
     >
       <input
         class="ds-c-choice"
-        id="checkbox_foo_24"
+        id="checkbox_foo_25"
         name="foo"
         type="checkbox"
         value="bar"
       />
       <label
         class="ds-c-label"
-        for="checkbox_foo_24"
+        for="checkbox_foo_25"
       >
         <span
           class=""
@@ -219,14 +219,14 @@ exports[`Choice nested content renders \`uncheckedChildren\` when not checked 1`
     >
       <input
         class="ds-c-choice"
-        id="checkbox_foo_23"
+        id="checkbox_foo_24"
         name="foo"
         type="checkbox"
         value="bar"
       />
       <label
         class="ds-c-label"
-        for="checkbox_foo_23"
+        for="checkbox_foo_24"
       >
         <span
           class=""

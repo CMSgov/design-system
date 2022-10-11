@@ -213,9 +213,9 @@ export class Choice extends React.PureComponent<
     return (
       <div
         className={className}
-        aria-live={inputProps['aria-live'] ?? 'polite'}
-        aria-relevant={inputProps['aria-relevant'] ?? 'additions text'}
-        aria-atomic={inputProps['aria-atomic'] ?? 'false'}
+        aria-live={inputProps['aria-live'] ?? checkedChildren ? 'polite' : null}
+        aria-relevant={inputProps['aria-relevant'] ?? checkedChildren ? 'additions text' : null}
+        aria-atomic={inputProps['aria-atomic'] ?? checkedChildren ? 'false' : null}
       >
         <div className="ds-c-choice-wrapper">
           <input

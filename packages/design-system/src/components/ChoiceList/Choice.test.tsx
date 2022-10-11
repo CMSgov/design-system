@@ -50,6 +50,14 @@ describe('Choice', () => {
     expect(el).toBeChecked();
   });
 
+  it('allows for modification of aria attributes', () => {
+    renderChoice({ 'aria-live': 'off', 'aria-relevant': 'none', 'aria-atomic': false });
+    const input = screen.getByRole('checkbox');
+    expect(input).toHaveAttribute('aria-live', 'off');
+    expect(input).toHaveAttribute('aria-relevant', 'none');
+    expect(input).toHaveAttribute('aria-atomic', 'false');
+  });
+
   it('is defaultChecked', () => {
     renderChoice({ defaultChecked: true });
     const el = screen.getByRole('checkbox');
