@@ -1,4 +1,5 @@
 import ChoiceList, { ChoiceListType } from './ChoiceList';
+import { Alert } from '../Alert';
 import { render, waitFor, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -95,6 +96,20 @@ describe('ChoiceList', () => {
       expect(wrapper).toHaveAttribute('aria-relevant', 'text');
       expect(wrapper).toHaveAttribute('aria-atomic', 'true');
       expect(wrapper).toMatchSnapshot();
+    });
+
+    it('applies correct aria attributes when checkedChildren is set', () => {
+      const choices = generateChoices(2, {
+        checkedChildren: <p>this is a test</p>,
+      });
+      choices[0].checked = true;
+      choices[1].checked = true;
+      const { container } = renderChoiceList({ choices });
+      const wrapper = container.querySelector(':nth-child(3)');
+      expect(wrapper).toHaveAttribute('aria-live', 'polite');
+      expect(wrapper).toHaveAttribute('aria-relevant', 'additions text');
+      expect(wrapper).toHaveAttribute('aria-atomic', 'false');
+      expect(container).toMatchSnapshot();
     });
 
     it('renders the label prop as a legend element', () => {
