@@ -139,5 +139,14 @@
   "engines": {
     "node": ">=11.0.0",
     "yarn": ">=1.22.4"
+  },
+  "dependencies": {
+    "postcss-calc": "^8.2.4",
+    "postcss-css-variables": "^0.18.0",
+    "postcss-custom-media": "^8.0.2",
+    "postcss-media-variables": "^2.0.1",
+    "postcss-nested": "^6.0.0",
+    "postcss-nesting": "^10.2.0",
+    "postcss-syntax": "^0.36.2"
   }
 }

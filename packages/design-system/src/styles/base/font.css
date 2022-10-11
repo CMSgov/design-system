@@ -1,0 +1,79 @@
+/* Design system fonts */
+
+/* TODO: Find solution to remove unused @font-faces */
+@font-face {
+  font-family: Bitter;
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/Bitter-Regular.eot');
+  src: url('../fonts/Bitter-Regular.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Bitter-Regular.woff2') format('woff2'),
+    url('../fonts/Bitter-Regular.woff') format('woff'),
+    url('../fonts/Bitter-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Bitter;
+  font-style: normal;
+  font-weight: bold;
+  src: url('../fonts/Bitter-Bold.eot');
+  src: url('../fonts/Bitter-Bold.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Bitter-Bold.woff2') format('woff2'),
+    url('../fonts/Bitter-Bold.woff') format('woff'),
+    url('../fonts/Bitter-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Bitter;
+  font-style: italic;
+  font-weight: normal;
+  src: url('../fonts/Bitter-Italic.eot');
+  src: url('../fonts/Bitter-Italic.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Bitter-Italic.woff2') format('woff2'),
+    url('../fonts/Bitter-Italic.woff') format('woff'),
+    url('../fonts/Bitter-Italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/OpenSans-Regular-webfont.eot');
+  src: url('../fonts/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/OpenSans-Regular-webfont.woff2') format('woff2'),
+    url('../fonts/OpenSans-Regular-webfont.woff') format('woff'),
+    url('../fonts/OpenSans-Regular-webfont.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: normal;
+  src: url('../fonts/OpenSans-Italic-webfont.eot');
+  src: url('../fonts/OpenSans-Italic-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/OpenSans-Italic-webfont.woff2') format('woff2'),
+    url('../fonts/OpenSans-Italic-webfont.woff') format('woff'),
+    url('../fonts/OpenSans-Italic-webfont.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/OpenSans-Semibold-webfont.eot');
+  src: url('../fonts/OpenSans-Semibold-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/OpenSans-Semibold-webfont.woff2') format('woff2'),
+    url('../fonts/OpenSans-Semibold-webfont.woff') format('woff'),
+    url('../fonts/OpenSans-Semibold-webfont.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/OpenSans-Bold-webfont.eot');
+  src: url('../fonts/OpenSans-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/OpenSans-Bold-webfont.woff2') format('woff2'),
+    url('../fonts/OpenSans-Bold-webfont.woff') format('woff'),
+    url('../fonts/OpenSans-Bold-webfont.ttf') format('truetype');
+}

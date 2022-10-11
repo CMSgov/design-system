@@ -1,0 +1,16 @@
+
+.ds-base,
+.ds-base--inverse {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: var(--font-line-height-base);
+}
+
+.ds-base {
+  color: var(--color-base);
+}
+
+.ds-base--inverse {
+  background-color: var(--color-background-inverse);
+  color: var(--color-base-inverse);
+}

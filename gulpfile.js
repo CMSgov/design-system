@@ -6,11 +6,16 @@ const babel = require('gulp-babel');
 const dartSass = require('sass');
 const gulpSass = require('gulp-sass');
 const rename = require('gulp-rename');
-const sass = gulpSass(dartSass);
 const sourcemaps = require('gulp-sourcemaps');
 const ts = require('gulp-typescript');
 const postcss = require('gulp-postcss');
 const postcssImport = require('postcss-import');
+const postcssMediaVariables = require('postcss-media-variables');
+const postcssCssVariables = require('postcss-css-variables');
+const postcssCustomMedia = require('postcss-custom-media');
+const postcssCalc = require('postcss-calc');
+// const postcssNested = require('postcss-nested');
+const postcssNesting = require('postcss-nesting');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const filter = require('gulp-filter');
@@ -44,43 +49,32 @@ const cleanDist = (cb) => {
 cleanDist.displayName = '🧹 cleaning up dist path';
 
 /**
- * copy Sass files from src to dist, rename folder to 'scss'
- */
-const copySass = (cb) => {
-  const sassSourcePaths = isCore
-    ? `${srcPath}/styles/**/*.scss`
-    : [`${sassCorePath}/**/*.scss`, `${srcPath}/styles/**/*.scss`];
-  gulp
-    .src(sassSourcePaths)
-    .pipe(gulp.dest(path.join(distPath, 'scss')))
-    .on('end', cb);
-};
-copySass.displayName = '📎 copying scss assets and compiling sass in dist folder';
-
-/**
  * compile sass assets to css, copy to /dist/css folder
  */
-const compileSass = (cb) => {
+const compileCss = (cb) => {
   const envDev = process.env.NODE_ENV === 'development';
 
-  const sassSourcePaths = isCore
-    ? `${srcPath}/styles/**/*.scss`
-    : [`${sassCorePath}/**/*.scss`, `${srcPath}/styles/**/*.scss`];
-  const sassIncludePaths = !isCore ? [path.resolve(srcPath, '../../../node_modules')] : [];
+  const cssSourcePaths = isCore
+    ? `${srcPath}/styles/**/*.css`
+    : [`${sassCorePath}/**/*.css`, `${srcPath}/styles/**/*.css`];
 
   gulp
-    .src(sassSourcePaths)
-    .pipe(gulpif(envDev, sourcemaps.init()))
-    .pipe(
-      sass({
-        outputStyle: 'expanded',
-        includePaths: sassIncludePaths,
-      })
-    )
+    .src(cssSourcePaths)
     .pipe(gulpif(envDev, sourcemaps.write()))
     .pipe(
       postcss([
         postcssImport(), // inline imports
+
+        // Start of config required for vars in media query declarations
+        postcssMediaVariables(), // first run
+        postcssCustomMedia(),
+        postcssCssVariables(),
+        postcssCalc(),
+        postcssMediaVariables(), // second run
+        // End of config for media variables
+
+        // postcssNested(), // Allows nesting rules like Sass
+        postcssNesting(), // Allows nesting according to the CSS Nesting specification
         autoprefixer(), // add any necessary vendor prefixes
         ...(!envDev ? [cssnano()] : []), // minify css
       ])
@@ -88,7 +82,7 @@ const compileSass = (cb) => {
     .pipe(gulp.dest(path.join(distPath, 'css')))
     .on('end', cb);
 };
-compileSass.displayName = '🖍  compiling sass assets in dist to dist/css';
+compileCss.displayName = '🖍  compiling css assets in dist to dist/css';
 
 /**
  * copy image assets, minify svg files if necessary
@@ -282,8 +276,8 @@ const displayHelp = (cb) => {
 log('🪴 building the cmsds');
 exports.build = gulp.series(
   cleanDist,
-  gulp.parallel(copySass, copyImages, copyFonts, copyJSON),
-  gulp.parallel(compileSass, compileJs, compileEsmJs, compileTypescriptDefs),
+  gulp.parallel(copyImages, copyFonts, copyJSON),
+  gulp.parallel(compileCss, compileJs, compileEsmJs, compileTypescriptDefs),
   gulp.parallel(bundleJs, copyReactToDist)
 );
 

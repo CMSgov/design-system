@@ -1,5 +1,5 @@
 module.exports = {
-  customSyntax: 'postcss-scss',
+  customSyntax: 'postcss-syntax',
   defaultSeverity: 'warning',
   extends: 'stylelint-config-recommended',
   ignoreFiles: [
@@ -22,10 +22,10 @@ module.exports = {
     'function-no-unknown': null,
     'no-descending-specificity': null,
     'no-invalid-position-at-import-rule': null,
-    'scss/at-extend-no-missing-placeholder': null,
-    'scss/at-import-no-partial-leading-underscore': null,
-    'scss/at-mixin-argumentless-call-parentheses': 'never',
-    'scss/dollar-variable-no-missing-interpolation': true,
-    'scss/selector-no-redundant-nesting-selector': true,
+    // 'scss/at-extend-no-missing-placeholder': null,
+    // 'scss/at-import-no-partial-leading-underscore': null,
+    // 'scss/at-mixin-argumentless-call-parentheses': 'never',
+    // 'scss/dollar-variable-no-missing-interpolation': true,
+    // 'scss/selector-no-redundant-nesting-selector': true,
   },
 };
