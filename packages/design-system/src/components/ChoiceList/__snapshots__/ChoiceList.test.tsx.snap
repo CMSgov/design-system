@@ -1,5 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ChoiceList Radio buttons and Checkboxes allows for modification of aria attributes 1`] = `
+<div
+  aria-atomic="true"
+  aria-live="off"
+  aria-relevant="text"
+>
+  <div
+    class="ds-c-choice-wrapper"
+  >
+    <input
+      class="ds-c-choice"
+      id="radio_spec-field_18"
+      name="spec-field"
+      type="radio"
+      value="2"
+    />
+    <label
+      class="ds-c-label"
+      for="radio_spec-field_18"
+    >
+      <span
+        class=""
+      >
+        Choice 2
+      </span>
+    </label>
+  </div>
+</div>
+`;
+
 exports[`ChoiceList Radio buttons and Checkboxes is a radio button group 1`] = `
 <DocumentFragment>
   <fieldset
