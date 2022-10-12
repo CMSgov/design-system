@@ -1,5 +1,116 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ChoiceList Radio buttons and Checkboxes allows for modification of aria attributes 1`] = `
+<div
+  aria-atomic="true"
+  aria-live="off"
+  aria-relevant="text"
+>
+  <div
+    class="ds-c-choice-wrapper"
+  >
+    <input
+      class="ds-c-choice"
+      id="radio_spec-field_18"
+      name="spec-field"
+      type="radio"
+      value="2"
+    />
+    <label
+      class="ds-c-label"
+      for="radio_spec-field_18"
+    >
+      <span
+        class=""
+      >
+        Choice 2
+      </span>
+    </label>
+  </div>
+</div>
+`;
+
+exports[`ChoiceList Radio buttons and Checkboxes applies correct aria attributes when checkedChildren is set 1`] = `
+<div>
+  <fieldset
+    class="ds-c-fieldset"
+  >
+    <legend
+      class="ds-c-label"
+      id="field_21-label"
+    >
+      <span
+        class=""
+      >
+        Foo
+      </span>
+    </legend>
+    <div
+      aria-atomic="false"
+      aria-live="polite"
+      aria-relevant="additions text"
+    >
+      <div
+        class="ds-c-choice-wrapper"
+      >
+        <input
+          checked=""
+          class="ds-c-choice"
+          id="radio_spec-field_22"
+          name="spec-field"
+          type="radio"
+          value="1"
+        />
+        <label
+          class="ds-c-label"
+          for="radio_spec-field_22"
+        >
+          <span
+            class=""
+          >
+            Choice 1
+          </span>
+        </label>
+      </div>
+      <p>
+        this is a test
+      </p>
+    </div>
+    <div
+      aria-atomic="false"
+      aria-live="polite"
+      aria-relevant="additions text"
+    >
+      <div
+        class="ds-c-choice-wrapper"
+      >
+        <input
+          checked=""
+          class="ds-c-choice"
+          id="radio_spec-field_23"
+          name="spec-field"
+          type="radio"
+          value="2"
+        />
+        <label
+          class="ds-c-label"
+          for="radio_spec-field_23"
+        >
+          <span
+            class=""
+          >
+            Choice 2
+          </span>
+        </label>
+      </div>
+      <p>
+        this is a test
+      </p>
+    </div>
+  </fieldset>
+</div>
+`;
+
 exports[`ChoiceList Radio buttons and Checkboxes is a radio button group 1`] = `
 <DocumentFragment>
   <fieldset
