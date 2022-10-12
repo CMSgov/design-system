@@ -1,14 +1,16 @@
 import ChoiceList, { ChoiceListType } from './ChoiceList';
+import { Alert } from '../Alert';
 import { render, waitFor, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-function generateChoices(length) {
+function generateChoices(length: number, customProps = {}) {
   const choices = [];
 
   for (let i = 0; i < length; i++) {
     choices.push({
       label: `Choice ${i + 1}`,
       value: String(i + 1),
+      ...customProps,
     });
   }
 
@@ -79,6 +81,35 @@ describe('ChoiceList', () => {
       const fieldsetEl = screen.getByRole('group');
 
       expect(fieldsetEl).toBeDefined();
+    });
+
+    it('allows for modification of aria attributes', () => {
+      const choices = generateChoices(4, {
+        'aria-live': 'off',
+        'aria-relevant': 'text',
+        'aria-atomic': 'true',
+      });
+      choices[0].checked = true;
+      const { container } = renderChoiceList({ choices });
+      const wrapper = container.querySelector(':nth-child(3)');
+      expect(wrapper).toHaveAttribute('aria-live', 'off');
+      expect(wrapper).toHaveAttribute('aria-relevant', 'text');
+      expect(wrapper).toHaveAttribute('aria-atomic', 'true');
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('applies correct aria attributes when checkedChildren is set', () => {
+      const choices = generateChoices(2, {
+        checkedChildren: <p>this is a test</p>,
+      });
+      choices[0].checked = true;
+      choices[1].checked = true;
+      const { container } = renderChoiceList({ choices });
+      const wrapper = container.querySelector(':nth-child(3)');
+      expect(wrapper).toHaveAttribute('aria-live', 'polite');
+      expect(wrapper).toHaveAttribute('aria-relevant', 'additions text');
+      expect(wrapper).toHaveAttribute('aria-atomic', 'false');
+      expect(container).toMatchSnapshot();
     });
 
     it('renders the label prop as a legend element', () => {
