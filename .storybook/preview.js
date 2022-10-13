@@ -14,35 +14,35 @@ import { setLanguage as setLanguageFromPackage } from '@cmsgov/design-system';
 window.utag = { link: console.log };
 
 const customViewports = {
-  ExtraSmall: {
+  extraSmall: {
     name: 'Extra Small - 320px',
     styles: {
       width: '320px',
       height: '800px',
     },
   },
-  Small: {
+  small: {
     name: 'Small - 544px',
     styles: {
       width: '544px',
       height: '800px',
     },
   },
-  Medium: {
+  medium: {
     name: 'Medium - 768px',
     styles: {
       width: '768px',
       height: '800px',
     },
   },
-  Large: {
+  large: {
     name: 'Large - 1024px',
     styles: {
       width: '1024px',
       height: '800px',
     },
   },
-  ExtraLarge: {
+  extraLarge: {
     name: 'Extra Large - 1280px',
     styles: {
       width: '1280px',
