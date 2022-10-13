@@ -1,6 +1,6 @@
 module.exports = {
   customSyntax: 'postcss-scss',
-  defaultSeverity: 'warning',
+  defaultSeverity: 'warn',
   extends: 'stylelint-config-recommended',
   ignoreFiles: [
     '**/dist/**',
@@ -20,6 +20,12 @@ module.exports = {
     'at-rule-no-unknown': null,
     'declaration-no-important': true,
     'function-no-unknown': null,
+    'at-rule-disallowed-list': [
+      'extend',
+      {
+        severity: 'error',
+      },
+    ],
     'no-descending-specificity': null,
     'no-invalid-position-at-import-rule': null,
     'scss/at-extend-no-missing-placeholder': null,
