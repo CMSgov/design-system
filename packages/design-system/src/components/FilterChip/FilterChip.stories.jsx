@@ -1,4 +1,5 @@
 import FilterChip from './FilterChip';
+import { action } from '@storybook/addon-actions';
 
 export default {
   title: 'Components/Filter Chip',
@@ -27,11 +28,9 @@ export const MultipleChips = () => {
     { label: 'Example big with alternate icon', useAlternateIcon: true, size: 'big' },
   ];
 
-  const onDelete = (index) => {
-    console.log(`deleting chip with label "${listOfChips[index].label}""`);
-  };
+  const onDelete = action('onDelete');
 
-  return listOfChips.map((chipData, index) => (
-    <FilterChip key={chipData.label} {...chipData} onDelete={() => onDelete(index)} />
+  return listOfChips.map((chipData) => (
+    <FilterChip key={chipData.label} {...chipData} onDelete={onDelete} />
   ));
 };

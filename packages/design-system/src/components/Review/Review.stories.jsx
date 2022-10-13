@@ -11,6 +11,9 @@ export default {
       options: ['1', '2', '3', '4', '5', '6'],
       defaultValue: '3',
     },
+    editContent: { control: false },
+    editText: { control: 'text' },
+    heading: { control: 'text' },
   },
 };
 
