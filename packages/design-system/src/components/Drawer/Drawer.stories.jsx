@@ -1,4 +1,5 @@
 import { Title, Subtitle, Description, ArgsTable, PRIMARY_STORY } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
 import { useArgs } from '@storybook/client-api';
 
 import Drawer from './Drawer';
@@ -73,14 +74,19 @@ DrawerWithStickyPositioning.args = {
 };
 
 export const DrawerToggleWithDrawer = () => {
-  const [{ isDrawerVisible, ...args }, setIsDrawerVisible] = useArgs();
+  const [{ isDrawerVisible, ...args }, updateArgs] = useArgs();
+  const showDrawer = () => updateArgs({ isDrawerVisible: true });
+  const hideDrawer = (...params) => {
+    action('onCloseClick')(...params);
+    updateArgs({ isDrawerVisible: false });
+  };
 
   return (
     <>
       {isDrawerVisible && (
         <Drawer
           {...args}
-          onCloseClick={() => setIsDrawerVisible({ isDrawerVisible: false })}
+          onCloseClick={hideDrawer}
           footerTitle="Footer Title"
           footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
           heading="Drawer Heading"
@@ -88,11 +94,7 @@ export const DrawerToggleWithDrawer = () => {
           {drawerContent}
         </Drawer>
       )}
-      <Button
-        className="ds-c-drawer__toggle"
-        variation="ghost"
-        onClick={() => setIsDrawerVisible({ isDrawerVisible: true })}
-      >
+      <Button className="ds-c-drawer__toggle" variation="ghost" onClick={showDrawer}>
         Drawer Toggle
       </Button>
     </>

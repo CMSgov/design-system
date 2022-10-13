@@ -1,7 +1,7 @@
 import { Dialog } from './Dialog';
 import Button from '../Button/Button';
-import { useArgs } from '@storybook/client-api';
 import { action } from '@storybook/addon-actions';
+import { useArgs } from '@storybook/client-api';
 
 export default {
   title: 'Components/Dialog',

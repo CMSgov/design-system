@@ -1,4 +1,5 @@
 import Pagination from './Pagination';
+import { action } from '@storybook/addon-actions';
 import { useArgs } from '@storybook/client-api';
 
 export default {
@@ -15,6 +16,7 @@ const Template = ({ ...args }) => {
   const [{ currentPage }, updateArgs] = useArgs({ currentPage: 1 });
   const handleSetPage = (evt, page) => {
     evt.preventDefault();
+    action('onPageChange')(evt, page);
     updateArgs({ currentPage: page });
   };
   return (
