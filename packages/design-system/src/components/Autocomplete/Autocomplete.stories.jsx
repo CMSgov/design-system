@@ -1,21 +1,19 @@
 import Autocomplete from './Autocomplete';
 import TextField from '../TextField/TextField';
 import { Title, Subtitle, Description, ArgsTable, PRIMARY_STORY } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
 
 export default {
   title: 'Components/Autocomplete',
   component: Autocomplete,
   argTypes: {
+    children: { control: 'text' },
     clearInputText: {
       control: { type: 'text' },
       type: { name: 'string', required: true },
     },
-    // don't need to show empty textfield row
-    textField: {
-      table: { disable: true },
-    },
-    // items is an array, controls can be wonky
-    items: { control: false },
+    textFieldLabel: { control: 'text' },
+    textFieldHint: { control: 'text' },
   },
   args: {
     // setting some defaults so controls turn on by default
@@ -76,43 +74,40 @@ const listOpts = [
 ];
 
 const Template = (args) => {
+  const { textFieldLabel, textFieldHint, ...autocompleteArgs } = args;
   return (
     <Autocomplete
-      {...args}
+      {...autocompleteArgs}
       // using downshifted props
-      onChange={(evt, item) => console.log(item.selectedItem)}
-      onInputValueChange={(evt, input) => console.log('[Autocomplete]: ' + input.inputValue)}
+      onChange={action('onChange')}
+      onInputValueChange={action('onInputValueChange')}
     >
-      <TextField {...args.textField} name="Downshift_autocomplete" />
+      <TextField label={textFieldLabel} hint={textFieldHint} name="Downshift_autocomplete" />
     </Autocomplete>
   );
 };
 
 export const Default = Template.bind({});
 Default.args = {
-  textField: {
-    hint: 'Type c then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
-    label: 'Labeled list',
-  },
+  textFieldHint:
+    'Type c then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
+  textFieldLabel: 'Labeled list',
   items: listOpts,
 };
 
 export const LabeledList = Template.bind({});
 LabeledList.args = {
-  textField: {
-    hint: 'Type c then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
-    label: 'Labeled list',
-  },
+  textFieldHint:
+    'Type c then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
+  textFieldLabel: 'Labeled list',
   label: 'Select from the options below:',
   items: listOpts,
 };
 
 export const CustomMarkup = Template.bind({});
 CustomMarkup.args = {
-  textField: {
-    hint: 'Clicking the last item should not change the input value to "Search all snacks"',
-    label: 'List with custom item markup',
-  },
+  textFieldHint: 'Clicking the last item should not change the input value to "Search all snacks"',
+  textFieldLabel: 'List with custom item markup',
   label: 'Select from the options below:',
   items: [
     {
@@ -159,18 +154,14 @@ LoadingMessage.args = {
   clearSearchButton: false,
   loading: true,
   items: [],
-  textField: {
-    hint: 'List should return string Loading to simulate async data call.',
-    label: 'Loading message',
-  },
+  textFieldHint: 'List should return string Loading to simulate async data call.',
+  textFieldLabel: 'Loading message',
 };
 
 export const NoResults = Template.bind({});
 NoResults.args = {
   items: [],
   clearSearchButton: false,
-  textField: {
-    hint: '',
-    label: 'No results message',
-  },
+  textFieldHint: '',
+  textFieldLabel: 'No results message',
 };

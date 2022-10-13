@@ -1,5 +1,6 @@
 import { Dialog } from './Dialog';
 import Button from '../Button/Button';
+import { action } from '@storybook/addon-actions';
 import { useArgs } from '@storybook/client-api';
 
 export default {
@@ -44,7 +45,10 @@ export default {
 export const DialogExample = ({ isOpen: _isOpen, dialogOpen: _dialogOpen, ...args }) => {
   const [{ dialogOpen }, updateArgs] = useArgs();
   const showModal = () => updateArgs({ dialogOpen: true });
-  const hideModal = () => updateArgs({ dialogOpen: false });
+  const hideModal = (...params) => {
+    action('onExit')(...params);
+    updateArgs({ dialogOpen: false });
+  };
 
   return (
     <>
