@@ -61,6 +61,7 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  backgrounds: { disable: true },
 };
 
 export const globalTypes = {
