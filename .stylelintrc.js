@@ -24,7 +24,7 @@ module.exports = {
         severity: 'warning',
       },
     ],
-    'at-rule-no-unknown': false,
+    'at-rule-no-unknown': null,
     'selector-pseudo-class-case': 'lower',
     'order/properties-alphabetical-order': true,
     'no-empty-first-line': true,
