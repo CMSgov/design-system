@@ -100,16 +100,20 @@ Manually interact with the Storybook stories and make sure that all defined prop
 - Alternate stories exist for complex component configurations that are common
 
 ### Responsive
-Component designed to work in all responsive breakpoints.
+Component designed to work in all responsive breakpoints and allow users to zoom (scale) up to 400% at a 1280px browser width. 
 
 #### About
-[All supported breakpoints (internal link)](https://design.cms.gov/foundation/layout-grid/responsive-design?theme=core "Supported breakpoints") in the CMSDS.
+[View all supported breakpoints (internal link)](https://design.cms.gov/foundation/layout-grid/responsive-design?theme=core "Supported breakpoints") in the CMSDS.
 
 #### When to define as 'Not applicable'?
 Should not be used.
 
 #### How to test?
 View in different responsive sizes with [Storybook controls (internal link)](https://design.cms.gov/storybook/ "CMSDS Storybook") or with browser dev tools.
+
+To test zoom levels, use browser dev tools to zoom your browser to a 400% zoom level.
+- Content should not overlap, or force users to scroll horizontally
+- All content should still be available.
 
 ### Spanish translations
 Includes Spanish translations for default text content.
