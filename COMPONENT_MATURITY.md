@@ -118,7 +118,7 @@ Includes Spanish translations for default text content.
 [Read more about Internationalization (internal link)](https://design.cms.gov/getting-started/developers/internationalization/?theme=core "Internationalization") in the CMSDS.
 
 #### When to define as 'Not applicable'?
-When the component has not text to apply a translation to.
+When the component has no text to apply a translation to.
 
 #### How to test?
 Changing the language in the [Storybook controls (internal link)](https://design.cms.gov/storybook/ "CMSDS Storybook") should change all English content that isn’t provided through a prop
