@@ -11,9 +11,9 @@
   }
 
   &__dropdownContainer {
-    position: relative;
     background-color: $teal-500 !important;
     height: 100%;
+    position: relative;
     @extend .ds-u-display--flex;
     @extend .ds-u-align-items--center;
   }
@@ -21,15 +21,15 @@
   &__dropdownButton {
     @extend .ds-u-border--0;
     @extend .ds-u-fill--white;
+    border-radius: 0 !important;
     color: $teal-500 !important;
+    font-family: $rubik-font !important;
     font-size: 16px !important;
     height: 100%;
-    @extend .ds-u-padding-y--0;
-    @extend .ds-u-padding-x--2;
-    border-radius: 0 !important;
-    font-family: $rubik-font !important;
     outline: none !important;
     transition: none !important;
+    @extend .ds-u-padding-y--0;
+    @extend .ds-u-padding-x--2;
 
     &:hover {
       cursor: pointer;
@@ -75,15 +75,15 @@
 
   &__dropdownMenu {
     background-color: #f3f3f3 !important;
-    box-shadow: $card-box-shadow;
     border: 1px solid #d6d7d9 !important;
-    position: absolute;
-    width: 285px;
-    max-width: 285px;
-    @extend .ds-u-padding--2;
+    box-shadow: $card-box-shadow;
     left: 0;
+    max-width: 285px;
+    position: absolute;
     top: calc(100% + 4px);
+    width: 285px;
     z-index: 999 !important;
+    @extend .ds-u-padding--2;
   }
 
   &__logo {
@@ -102,10 +102,10 @@
     @extend .ds-u-padding--0;
 
     svg {
-      width: 32px !important;
-      height: 32px !important;
-      fill: $color-primary !important;
       color: $color-primary !important;
+      fill: $color-primary !important;
+      height: 32px !important;
+      width: 32px !important;
     }
   }
 
@@ -126,12 +126,13 @@
   }
 
   &__mobileMenu {
-    z-index: 999;
     animation: 0.2s ease slide-in;
-    position: absolute;
-    left: 0;
-    width: 100%;
+    box-shadow: $card-box-shadow;
     box-sizing: border-box;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 999;
     @extend .ds-u-md-display--none;
     @extend .ds-u-padding-top--1;
     @extend .ds-u-padding-bottom--3;
@@ -139,20 +140,19 @@
     @extend .ds-u-margin-bottom--2;
 
     @extend .ds-u-fill--white;
-    box-shadow: $card-box-shadow;
 
     .m-c-globalHeader__dropdownContainer {
       @extend .ds-u-fill--white;
       @extend .ds-u-padding-bottom--2;
 
       &::before {
-        position: absolute;
-        left: -24px;
-        bottom: 0;
-        height: 1px;
-        width: calc(100% + 48px);
         background-color: $black-100;
+        bottom: 0;
         content: '';
+        height: 1px;
+        left: -24px;
+        position: absolute;
+        width: calc(100% + 48px);
       }
     }
 
@@ -162,9 +162,9 @@
       @extend .ds-u-padding--0;
       @extend .ds-u-font-weight--normal;
       color: $black-500 !important;
+      font-family: $montserrat-font !important;
       width: 100%;
       @extend .ds-u-align-items--center;
-      font-family: $montserrat-font !important;
     }
   }
 
@@ -173,8 +173,8 @@
     @extend .ds-u-border--0;
     @extend .ds-u-padding--0;
     @extend .ds-u-padding-x--2;
-    font-size: 16px !important;
     color: $color-primary;
+    font-size: 16px !important;
 
     &:hover {
       color: $color-primary-dark;
@@ -185,42 +185,42 @@
     @extend .ds-u-padding--0;
     @extend .ds-u-border--0;
     font-family: $montserrat-font !important;
-    @extend .ds-u-font-weight--semibold;
     font-size: 16px !important;
+    @extend .ds-u-font-weight--semibold;
   }
 
   &__mobilePanelBackButton {
     @extend .ds-u-padding--0;
     font-family: $montserrat-font !important;
     font-size: 16px !important;
+    margin-left: -16px !important;
     position: relative;
+    width: 100%;
     @extend .ds-u-border--0;
     @extend .ds-u-padding-y--2;
-    width: 100%;
     @extend .ds-u-text-align--left;
     @extend .ds-u-margin-bottom--2;
-    margin-left: -16px !important;
 
     .caret-arrow {
       fill: $teal-500 !important;
     }
 
     &::before {
-      position: absolute;
-      left: -24px;
-      bottom: 0;
-      height: 1px;
-      width: calc(100% + 48px);
       background-color: $black-100;
+      bottom: 0;
       content: '';
+      height: 1px;
+      left: -24px;
+      position: absolute;
+      width: calc(100% + 48px);
     }
   }
 
   &__productName {
     @extend .ds-u-margin--0;
+    color: $teal-500 !important;
     font-family: $montserrat-font !important;
     @extend .ds-u-font-weight--normal;
-    color: $teal-500 !important;
     @extend .ds-u-text-decoration--none;
   }
 

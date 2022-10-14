@@ -48,11 +48,11 @@ $header-background-color: $color-background;
   border: 1px solid $color-gray-lighter;
   box-shadow: 0 7px 10px -5px $color-gray-light;
   color: $color-primary-darker;
+  left: 0;
   padding: $spacer-1;
   position: absolute;
-  top: calc(4em - 2px);
   right: 0;
-  left: 0;
+  top: calc(4em - 2px);
   z-index: 1;
 }
 

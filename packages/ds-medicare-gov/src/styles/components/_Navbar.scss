@@ -1,9 +1,9 @@
 .m-c-navbar {
-  display: flex;
-  justify-content: flex-between;
   align-items: flex-start;
-  flex-direction: column;
   background-color: $color-primary;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-between;
   margin-bottom: $spacer-2;
   padding-left: 0;
   padding-right: 0;
@@ -12,10 +12,10 @@
   @media screen and (min-width: $width-sm) {
     align-items: center;
     flex-direction: row;
-    position: static;
     margin-bottom: 0;
     padding-left: $spacer-7;
     padding-right: $spacer-7;
+    position: static;
   }
 
   &.m-c-navbar--inverse {
@@ -26,11 +26,11 @@
 .m-c-navbar__section {
   @extend .ds-l-col--12;
   @extend .ds-l-sm-col--6;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
   padding-left: 0 !important; // Has to override the column class styles
   padding-right: 0 !important; // Has to override the column class styles
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
 
   @media screen and (min-width: $width-sm) {
     align-items: center;
@@ -42,41 +42,41 @@
   justify-content: flex-end;
 
   @media screen and (max-width: $width-sm) {
-    position: absolute;
     bottom: 0;
+    position: absolute;
     right: 0;
   }
 }
 
 .m-c-navbar__productName {
   @extend .ds-h2;
+  border-top: 2px solid $color-white;
+  color: $color-white;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-bottom: $spacer-1;
   padding-left: $spacer-1;
   padding-top: $spacer-1;
-  padding-bottom: $spacer-1;
-  margin-top: 0;
-  margin-bottom: 0;
-  color: $color-white;
-  border-top: 2px solid $color-white;
   width: 100%;
 
   @media screen and (min-width: $width-sm) {
-    width: auto;
-    border-top: 0;
     border-left: 2px solid $color-white;
+    border-top: 0;
     margin-left: $spacer-2;
     margin-right: $spacer-2;
+    padding-bottom: 0;
     padding-left: $spacer-2;
     padding-top: 0;
-    padding-bottom: 0;
+    width: auto;
   }
 
   .m-c-navbar--inverse & {
-    color: $color-primary;
     border-top: 2px solid $color-primary;
+    color: $color-primary;
 
     @media screen and (min-width: $width-sm) {
-      border-top: 0;
       border-left: 2px solid $color-primary;
+      border-top: 0;
     }
   }
 }

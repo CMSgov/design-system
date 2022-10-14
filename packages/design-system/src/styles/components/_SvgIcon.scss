@@ -86,8 +86,8 @@
 
 .ds-c-icon--usa-flag {
   @media (-ms-high-contrast: active), (forced-colors: active) {
-    -ms-high-contrast-adjust: none;
     forced-color-adjust: none;
+    -ms-high-contrast-adjust: none;
 
     path:nth-of-type(1),
     path:nth-of-type(5) {

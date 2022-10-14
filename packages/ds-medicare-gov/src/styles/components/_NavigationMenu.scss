@@ -1,21 +1,21 @@
 .m-c-navigationMenu__container--alwaysShowMenuButton .m-c-navigationMenu__toggleContainer {
   position: relative;
-  top: 0;
   right: 0;
+  top: 0;
 
   @media screen and (min-width: $width-sm) {
-    position: static;
     display: flex;
     justify-content: flex-end;
     padding: 0;
+    position: static;
   }
 }
 
 .m-c-navigationMenu__mobileToggle {
-  position: absolute;
-  top: -calc(#{$base-font-size} + 21px + 6px);
-  right: 12px;
   outline: 0;
+  position: absolute;
+  right: 12px;
+  top: calc(-1 * (#{$base-font-size} + 21px + 6px));
 
   .m-c-navigationMenu__container--alwaysShowMenuButton & {
     @media screen and (min-width: $width-sm) {
@@ -47,11 +47,11 @@
 
 .m-c-navigationMenu {
   @extend .ds-l-col--12;
+  left: 0;
+  max-width: none !important;
   position: relative;
   top: 0;
-  left: 0;
   width: 100vw;
-  max-width: none !important;
 
   @media screen and (min-width: $width-sm) {
     position: relative;
@@ -62,49 +62,41 @@
     @extend .ds-l-sm-col--auto;
 
     @media screen and (min-width: $width-sm) {
-      width: auto;
-      text-align: right;
       margin-left: auto;
       padding-left: 0 !important; // Has to override the column class styles
       padding-right: 0 !important; // Has to override the column class styles
+      text-align: right;
+      width: auto;
     }
   }
 }
 
 .m-c-navigationMenu__list {
-  @extend .ds-c-list;
-  @extend .ds-c-list--bare;
+  align-items: flex-start;
   background-color: $color-gray-lightest;
   box-shadow: -3px 0 6px;
-  width: 100vw;
-  z-index: 2;
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
   flex-direction: column;
-
-  @media screen and (min-width: $width-sm) {
-    box-shadow: none;
-    flex-direction: row;
-    align-items: center;
-  }
-
-  .m-c-navigationMenu__container--alwaysShowMenuButton & {
-    @media screen and (min-width: $width-sm) {
-      width: 320px;
-      top: 12px;
-      right: -0.5em;
-      padding: 1em 0;
-    }
-  }
+  justify-content: flex-end;
+  max-height: 0;
+  overflow: hidden;
 
   // Display definitions based on menu open/closed
   position: absolute;
-  top: 13px;
   right: 0;
-  max-height: 0;
+  top: 13px;
   transition: all 400ms ease-out;
-  overflow: hidden;
+  width: 100vw;
+  z-index: 2;
+
+  .m-c-navigationMenu__container--alwaysShowMenuButton & {
+    @media screen and (min-width: $width-sm) {
+      padding: 1em 0;
+      right: -0.5em;
+      top: 12px;
+      width: 320px;
+    }
+  }
 
   .m-c-navigationMenu--open & {
     max-height: 900px;
@@ -113,10 +105,18 @@
   .m-c-navigationMenu__container:not(.m-c-navigationMenu__container--alwaysShowMenuButton) & {
     @media screen and (min-width: $width-sm) {
       background-color: transparent !important;
-      width: auto;
-      position: static;
       max-height: 900px;
+      position: static;
+      width: auto;
     }
+  }
+  @extend .ds-c-list;
+  @extend .ds-c-list--bare;
+
+  @media screen and (min-width: $width-sm) {
+    align-items: center;
+    box-shadow: none;
+    flex-direction: row;
   }
 }
 
@@ -156,8 +156,8 @@
   }
 
   &:last-child {
-    margin-bottom: $spacer-1;
     border-right: 0 !important;
+    margin-bottom: $spacer-1;
 
     @media screen and (max-width: $width-sm) {
       margin-bottom: 0;
@@ -167,8 +167,8 @@
   }
 
   a {
-    text-decoration: none;
     color: $color-primary;
+    text-decoration: none;
 
     .m-c-navigationMenu__container:not(.m-c-navigationMenu__container--alwaysShowMenuButton) & {
       @media screen and (min-width: $width-sm) {
