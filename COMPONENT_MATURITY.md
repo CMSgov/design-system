@@ -135,7 +135,7 @@ CMS uses [Sketch (external link)](https://www.sketch.com/ "Sketch app") as a too
 When the component is a utility with no visual element.
 
 #### How to test?
-Verify that the responsive code component matches the responsive symbols in Sketch.
+Verify with code that all props and options that can be used in code have an equal option in Sketch.
 
 ### Responsive
 All Sketch symbols designed for small and large breakpoints.
