@@ -96,7 +96,7 @@ Should not be used.
 #### How to test?
 Manually interact with the Storybook stories and make sure that all defined props are in some way tested by our storybook story and that the meaningful ones can be changed. Specifically,
 - Event handlers have visible output through Actions or logging
-- Visual and content props can be changed
+- Visual and content props can be changed, as long as the prop can be easily changed with standard Storybook controls
 - Alternate stories exist for complex component configurations that are common
 
 ### Responsive
