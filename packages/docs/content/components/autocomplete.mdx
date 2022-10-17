@@ -85,3 +85,20 @@ The `<Autocomplete>` component also makes use of a text field, which can be cust
 - `<Autocomplete>` has a Boolean prop called `focusTrigger`. Adding this prop will set keyboard focus on the internal `<Textfield>`. Focus is set immediately when the `componentDidMount()` lifecycle method fires.
 - In most cases, this isn't needed. It's useful when components are added dynamically, after the application has been rendered. All major screen readers (JAWS, NVDA, VoiceOver) have been tested with this feature, and announce the new input correctly.
 - Instances that contain the `focusTrigger` prop may fire Downshift's [onInputValueChange](https://github.com/paypal/downshift#oninputvaluechange) method, causing the `inputValue` to be set back to an empty string. In these cases, you may want to access Downshift's [state reducer](https://github.com/paypal/downshift#statereducer) and manage your component's local state for `blur` and `click` events.
+
+## Component maturity
+
+<MaturityChecklist
+  a11yStandards={true}
+  color={true}
+  forcedColors={false}
+  screenReaders={true}
+  keyboardNavigable={true}
+  storybook={true}
+  responsive={true}
+  spanish={true}
+  completeUiKit={false}
+  responsiveUiKit={false}
+  tokensInCode={true}
+  tokensInSketch={true}
+/>
