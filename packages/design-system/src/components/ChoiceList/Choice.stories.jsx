@@ -12,6 +12,10 @@ export default {
     errorMessage: 'You must agree to the terms and conditions before continuing',
     defaultChecked: false,
   },
+  argTypes: {
+    checkedChildren: { control: 'text' },
+    uncheckedChildren: { control: 'text' },
+  },
 };
 
 const Template = (args) => <Choice {...args} />;
