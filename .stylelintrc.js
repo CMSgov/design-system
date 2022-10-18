@@ -21,7 +21,18 @@ module.exports = {
     'at-rule-no-unknown': null,
     'at-rule-allowed-list': [
       // Are we intentionally leaving out 'include'?
-      ['function', 'if', 'use', 'media', 'font-face', 'keyframes', 'import', 'extend'],
+      [
+        'function',
+        'if',
+        'use',
+        'media',
+        'font-face',
+        'keyframes',
+        'import',
+        'extend',
+        'mixin',
+        'include',
+      ],
       { severity: 'warning' },
     ],
     // Importants should only be used in our utility classes if possible
