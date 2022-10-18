@@ -38,7 +38,7 @@ module.exports = {
     // Importants should only be used in our utility classes if possible
     'declaration-no-important': [true, { severity: 'warning' }],
     'function-max-empty-lines': 0,
-    'function-no-unknown': [true, { ignoreFunctions: ['percentage', 'calc', 'math.div'] }],
+    'function-no-unknown': [true, { ignoreFunctions: ['percentage', 'math.div'] }],
     linebreaks: 'unix',
     'no-descending-specificity': null,
     'no-empty-first-line': true,
