@@ -79,6 +79,11 @@ label,
     width: $choice__size;
   }
 
+  &::before,
+  &::after {
+    box-sizing: content-box;
+  }
+
   // Error
   @if $ds-include-choice-error-highlight {
     &.ds-c-choice--error {
@@ -139,12 +144,6 @@ label,
   &:checked {
     &::after {
       opacity: 1;
-    }
-
-    &:focus::before {
-      // have to do a mix of calc & sass interpolation in order to accommodate values being css vars in internal tools
-      height: calc(#{$choice__size} - (#{$choice__border-width} * 2));
-      width: calc(#{$choice__size} - (#{$choice__border-width} * 2));
     }
   }
 }

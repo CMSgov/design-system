@@ -16,11 +16,6 @@
     &::before {
       border-radius: $choice__border-radius;
     }
-
-    &:focus::before {
-      height: $choice__size;
-      width: $choice__size;
-    }
   }
 }
 
