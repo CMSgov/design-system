@@ -26,6 +26,7 @@ module.exports = {
         'if',
         'use',
         'media',
+        'supports',
         'font-face',
         'keyframes',
         'import',
