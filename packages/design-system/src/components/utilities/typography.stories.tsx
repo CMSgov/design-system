@@ -13,6 +13,7 @@ export const Headings = () => {
   const heading = 'We the People of the United States';
   return (
     <div>
+      <h1 className="ds-text-heading--5xl">{heading} (5xl)</h1>
       <h1 className="ds-text-heading--4xl">{heading} (4xl)</h1>
       <h1 className="ds-text-heading--3xl">{heading} (3xl)</h1>
       <h1 className="ds-text-heading--2xl">{heading} (2xl)</h1>
@@ -44,12 +45,18 @@ export const Body = () => {
 
 // an example for responsive headings -- referenced in doc site
 export const ResponsiveHeadings = () => (
-  <article className="ds-base--inverse ds-u-padding--2">
-    <h1 className="ds-text-heading--5xl ds-u-margin-y--1">.ds-text-heading--5xl</h1>
-    <h2 className="ds-text-heading--4xl ds-u-margin-y--1">.ds-text-heading--4xl</h2>
-    <h3 className="ds-text-heading--3xl ds-u-margin-y--1">.ds-text-heading--3xl</h3>
-    <h4 className="ds-text-heading--2xl ds-u-margin-y--1 ds-u-font-size--h4 ds-u-md-font-size--h3 ds-u-lg-font-size--h2">
-      Responsive utility classes
-    </h4>
-  </article>
+  <>
+    <h1 className="ds-text-heading--5xl">We the People of the United States (5xl)</h1>
+    <h2 className="ds-text-heading--4xl">We the People of the United States (4xl)</h2>
+    <h3 className="ds-text-heading--3xl">We the People of the United States (3xl)</h3>
+  </>
+);
+
+// an example for responsive headings -- referenced in doc site
+export const ResponsiveUtilityHeadings = () => (
+  <>
+    <h1 className="ds-u-font-size--2xl ds-u-md-font-size--3xl ds-u-lg-font-size--4xl">
+      Responsive heading with utility classes
+    </h1>
+  </>
 );
