@@ -17,7 +17,6 @@ exports[`HelpDrawer renders a snapshot 1`] = `
         <h3
           class="ds-c-drawer__header-heading"
           id="drawer_2"
-          tabindex="0"
         >
           HelpDrawer title
         </h3>
@@ -31,7 +30,6 @@ exports[`HelpDrawer renders a snapshot 1`] = `
       </div>
       <div
         class="ds-c-drawer__body"
-        tabindex="0"
       >
         <p>
           content

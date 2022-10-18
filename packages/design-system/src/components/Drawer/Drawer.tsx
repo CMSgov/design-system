@@ -64,7 +64,6 @@ export const Drawer = (props: DrawerProps) => {
       <div className="ds-c-drawer__window">
         <div className="ds-c-drawer__header">
           <Heading
-            tabIndex={0}
             id={id.current}
             className="ds-c-drawer__header-heading"
             ref={(el) => {
@@ -89,7 +88,6 @@ export const Drawer = (props: DrawerProps) => {
           className={classNames('ds-c-drawer__body', {
             'ds-c-drawer--is-sticky': props.isHeaderSticky || props.isFooterSticky,
           })}
-          tabIndex={0}
         >
           {props.children}
         </div>

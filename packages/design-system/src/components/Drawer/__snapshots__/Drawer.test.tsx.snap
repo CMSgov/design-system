@@ -16,7 +16,6 @@ exports[`Drawer renders a dialog 1`] = `
       <h3
         class="ds-c-drawer__header-heading"
         id="drawer_1"
-        tabindex="0"
       >
         Drawer title
       </h3>
@@ -30,7 +29,6 @@ exports[`Drawer renders a dialog 1`] = `
     </div>
     <div
       class="ds-c-drawer__body"
-      tabindex="0"
     >
       <p>
         content
