@@ -136,7 +136,7 @@ All Sketch symbols designed for small and large breakpoints.
 When there are no visual elements to the component. 
 
 #### How to test?
-Verify that the [small and large breakpoints (internal link)](https://design.cms.gov/foundation/layout-grid/responsive-design/?theme=core "CMSDS breakpoints")in the Sketch symbols match the responsive symbols in Sketch.
+Verify that the [small and large breakpoints (internal link)](https://design.cms.gov/foundation/layout-grid/responsive-design/?theme=core "CMSDS breakpoints")in the Sketch symbols match the responsive symbols in code.
 
 ## Tokens
 
