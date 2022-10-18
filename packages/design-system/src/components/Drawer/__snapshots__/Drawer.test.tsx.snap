@@ -29,6 +29,7 @@ exports[`Drawer renders a dialog 1`] = `
     </div>
     <div
       class="ds-c-drawer__body"
+      tabindex="0"
     >
       <p>
         content
