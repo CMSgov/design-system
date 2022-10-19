@@ -41,21 +41,17 @@ export interface FormFieldProps extends PassedOnFormLabelProps {
    */
   labelClassName?: string;
   /**
-   * A unique `id` to be used on the field label. If one isn't provided, a unique ID
-   * will be generated.
+   * A unique `id` to be used on the field label. If one isn't provided, a unique
+   * ID will be generated.
    */
   labelId?: string;
 }
 
 /**
  * This is the full list of props accepted by `useFormLabel`. Components that use
- * `useFormLabel` should not include this entire set in their props but instead use
- * `FormFieldProps`, which is the set of public-facing props that a component can
- * include in its own props.
- *
- * TODO: Explain every return value and how to apply it to your elements
- *
- *
+ * `useFormLabel` should not include this entire set in their props but instead
+ * use `FormFieldProps`, which is the set of public-facing props that a component
+ * can include in its own props.
  */
 export interface UseFormLabelProps extends FormFieldProps {
   /**
@@ -69,8 +65,29 @@ export interface UseFormLabelProps extends FormFieldProps {
 }
 
 /**
- * Takes a component's props and generates the props for its label, field,
- * wrapper element, and possible detached "bottom error"
+ * This hook contains business logic for how an input field relates to its label
+ * and wrapping container element. It takes a component's props and generates
+ * the specialized set of props for its label, field, wrapper element, and
+ * possible detached "bottom error". While the order and structure of those
+ * elements are different between components and are specific to their
+ * implementation, much of the logic for prop/attribute generation is consistent
+ * between components. The hook will return the relevant information as
+ * properties of an object:
+ *
+ *   - labelProps:   Props to be applied to a `FormLabel` (where we get the name)
+ *   - fieldProps:   Props to be applied to the field (a.k.a., the input)
+ *   - wrapperProps: Props to be applied to the wrapping element
+ *   - bottomError:  A rendered React element representing a bottom-placed error
+ *   - errorId:      The id (string) of the error-message element, in case we
+ *                   need to reference it (currently only necessary to support
+ *                   the FormControl component, which this hook aims to replace)
+ *
+ * Note that while it's helpful now to abstract away this logic behind a shared
+ * hook, that may not always be the case. The first step in creating this hook
+ * was to allow an alternative to `FormControl` that allowed for more freedom in
+ * how the component's individual elements were structured at to get rid of the
+ * dichotomy it imposes on components where their implementation must be split
+ * between an inner and outer component.
  */
 export function useFormLabel<T extends UseFormLabelProps>(props: T) {
   // TODO: Once we're on React 18, we can use the `useId` hook
