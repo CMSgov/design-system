@@ -20,7 +20,6 @@ module.exports = {
     // Turning this off in favor of 'at-rule-allowed-list'
     'at-rule-no-unknown': null,
     'at-rule-allowed-list': [
-      // Are we intentionally leaving out 'include'?
       [
         'function',
         'if',
@@ -29,10 +28,11 @@ module.exports = {
         'supports',
         'font-face',
         'keyframes',
-        'import',
         'extend',
         'mixin',
         'include',
+        // TODO: At some point we will be switching from 'import' to 'use'
+        'import',
       ],
       { severity: 'warning' },
     ],
