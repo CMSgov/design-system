@@ -1,5 +1,6 @@
-import { useState } from 'react';
 import SingleInputDateField from './SingleInputDateField';
+import { action } from '@storybook/addon-actions';
+import { useState } from 'react';
 
 export default {
   title: 'Components/SingleInputDateField',
@@ -34,7 +35,11 @@ export default {
 
 const Template = ({ ...args }) => {
   const [dateString, setDateString] = useState('');
-  return <SingleInputDateField {...args} value={dateString} onChange={setDateString} />;
+  const onChange = (...params) => {
+    action('onChange')(...params);
+    setDateString(...params);
+  };
+  return <SingleInputDateField {...args} value={dateString} onChange={onChange} />;
 };
 
 export const Default = Template.bind({});

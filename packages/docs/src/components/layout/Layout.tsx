@@ -14,8 +14,6 @@ import PageHeader from './PageHeader';
 
 import '../../styles/index.scss';
 
-export type PageStatus = 'draft' | 'do not use';
-
 interface LayoutProps {
   /**
    * The elements to appear in the main page content, below the page heading

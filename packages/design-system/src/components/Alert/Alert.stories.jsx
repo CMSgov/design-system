@@ -4,7 +4,9 @@ import Alert from './Alert';
 export default {
   title: 'Components/Alert',
   component: Alert,
-  argTypes: {},
+  argTypes: {
+    children: { control: 'text' },
+  },
   args: {
     hideIcon: false,
   },
@@ -13,17 +15,21 @@ export default {
 const Template = (args) => (
   <>
     <Alert {...args}>
-      <p className="ds-c-alert__text">
-        Lorem ipsum dolor sit <a href="https://design.cms.gov/">link text</a>, consectetur
-        adipiscing elit, sed do eiusmod. Alerts can have chidren, or they can be left off and used
-        with just a heading prop.
-      </p>
+      {args.children ?? (
+        <p className="ds-c-alert__text">
+          Lorem ipsum dolor sit <a href="https://design.cms.gov/">link text</a>, consectetur
+          adipiscing elit, sed do eiusmod. Alerts can have chidren, or they can be left off and used
+          with just a heading prop.
+        </p>
+      )}
     </Alert>
 
     <Alert {...args} className="ds-u-margin-top--3" />
 
     <Alert {...args} className="ds-u-margin-top--3" heading={undefined}>
-      <p className="ds-c-alert__text">An alert without a heading. Lorem ipsum dolor sit.</p>
+      {args.children ?? (
+        <p className="ds-c-alert__text">An alert without a heading. Lorem ipsum dolor sit.</p>
+      )}
     </Alert>
   </>
 );
