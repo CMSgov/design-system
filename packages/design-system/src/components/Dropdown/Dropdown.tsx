@@ -12,16 +12,11 @@ export type DropdownSize = 'small' | 'medium';
 export type DropdownValue = number | string;
 export type DropdownErrorPlacement = 'top' | 'bottom';
 
-// TODO: Remove redundant props now that we're extending FormFieldProps
-export interface BaseDropdownProps extends FormFieldProps {
+export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
   /**
    * Adds `aria-label` attribute. When using `aria-label`, `label` should be empty string.
    */
   ariaLabel?: string;
-  /**
-   * Additional classes to be added to the root element.
-   */
-  className?: string;
   /**
    * Used to define custom dropdown options (i.e. option groups). When using the `children` prop, `options` should be an empty list.
    */
@@ -35,15 +30,6 @@ export interface BaseDropdownProps extends FormFieldProps {
    * Disables the entire field.
    */
   disabled?: boolean;
-  errorMessage?: React.ReactNode;
-  /**
-   * Additional classes to be added to the error message
-   */
-  errorMessageClassName?: string;
-  /**
-   * Location of the error message relative to the field input
-   */
-  errorPlacement?: DropdownErrorPlacement;
   /**
    * Additional classes to be added to the select element
    */
@@ -53,11 +39,7 @@ export interface BaseDropdownProps extends FormFieldProps {
    */
   autoFocus?: boolean;
   /**
-   * Additional hint text to display
-   */
-  hint?: React.ReactNode;
-  /**
-   * A unique ID to be used for the dropdown field. If one isn't provided, a unique ID will be generated.
+   * A unique ID to be used for the `select` element. If one isn't provided, a unique ID will be generated.
    */
   id?: string;
   /**
@@ -69,14 +51,6 @@ export interface BaseDropdownProps extends FormFieldProps {
    */
   inversed?: boolean;
   /**
-   * Label for the field. If using `Dropdown` without a label, provide an empty string for `label` and use the `ariaLabel` prop instead.
-   */
-  label: React.ReactNode;
-  /**
-   * Additional classes to be added to the `FormLabel`.
-   */
-  labelClassName?: string;
-  /**
    * The field's `name` attribute
    */
   name: string;
@@ -87,11 +61,7 @@ export interface BaseDropdownProps extends FormFieldProps {
   onBlur?: (...args: any[]) => any;
   onChange?: (...args: any[]) => any;
   /**
-   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
-   */
-  requirementLabel?: React.ReactNode;
-  /**
-   * If the component renders a select, set the max-width of the input either to `'small'` or `'medium'`.
+   * Sets the max-width of the input either to `'small'` or `'medium'`.
    */
   size?: DropdownSize;
   /**
