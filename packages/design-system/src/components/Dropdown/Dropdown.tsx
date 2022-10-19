@@ -12,7 +12,8 @@ export type DropdownSize = 'small' | 'medium';
 export type DropdownValue = number | string;
 export type DropdownErrorPlacement = 'top' | 'bottom';
 
-export interface BaseDropdownProps {
+// TODO: Remove redundant props now that we're extending FormFieldProps
+export interface BaseDropdownProps extends FormFieldProps {
   /**
    * Adds `aria-label` attribute. When using `aria-label`, `label` should be empty string.
    */

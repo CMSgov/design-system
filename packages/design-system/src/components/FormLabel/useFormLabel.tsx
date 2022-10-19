@@ -47,6 +47,10 @@ export interface FormFieldProps extends PassedOnFormLabelProps {
  * `useFormLabel` should not include this entire set in their props but instead use
  * `FormFieldProps`, which is the set of public-facing props that a component can
  * include in its own props.
+ *
+ * TODO: Explain every return value and how to apply it to your elements
+ *
+ *
  */
 export interface UseFormLabelProps extends FormFieldProps {
   /**
@@ -54,7 +58,7 @@ export interface UseFormLabelProps extends FormFieldProps {
    */
   labelComponent: 'label' | 'legend';
   /**
-   *
+   * TODO: Document this and why it exists
    */
   wrapperIsFieldset: boolean;
 }
