@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 
-exports.onCreateWebpackConfig = ({ stage, actions }) => {
+exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
       // aliasing @styles a shortcut to core styles directory
@@ -56,5 +56,14 @@ exports.createPages = ({ graphql, actions }) => {
         },
       });
     });
+  });
+};
+
+exports.onCreateBabelConfig = ({ actions }) => {
+  actions.setBabelPlugin({
+    name: '@babel/plugin-transform-react-jsx',
+    options: {
+      runtime: 'automatic',
+    },
   });
 };

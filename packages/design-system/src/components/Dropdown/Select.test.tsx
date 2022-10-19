@@ -1,7 +1,6 @@
 import Select, { SelectProps } from './Select';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import React from 'react';
 import { generateOptions } from './Dropdown.test';
 
 const defaultProps: SelectProps = {

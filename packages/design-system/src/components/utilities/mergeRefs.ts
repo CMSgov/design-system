@@ -1,5 +1,3 @@
-import React from 'react';
-
 /**
  * Combines multiple refs into one, even old-style ref functions
  *

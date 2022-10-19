@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import { graphql } from 'gatsby';
 
 import Layout from './layout/Layout';
@@ -32,7 +32,6 @@ export const query = graphql`
       id
       frontmatter {
         title
-        status
         intro
         core {
           githubLink
@@ -74,4 +73,4 @@ function compareProps(prevProps, nextProps) {
   return false;
 }
 
-export default React.memo(InfoPage, compareProps);
+export default memo(InfoPage, compareProps);

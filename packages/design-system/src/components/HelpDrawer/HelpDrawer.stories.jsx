@@ -1,5 +1,5 @@
-import React from 'react';
 import { Title, Subtitle, Description, ArgsTable, PRIMARY_STORY } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
 import { useArgs } from '@storybook/client-api';
 
 import { HelpDrawer as Help } from './HelpDrawer';
@@ -65,14 +65,19 @@ const drawerContent = (
 );
 
 export const HelpDrawer = () => {
-  const [{ isDrawerVisible, ...args }, setIsDrawerVisible] = useArgs();
+  const [{ isDrawerVisible, ...args }, updateArgs] = useArgs();
+  const showDrawer = () => updateArgs({ isDrawerVisible: true });
+  const hideDrawer = (...params) => {
+    action('onCloseClick')(...params);
+    updateArgs({ isDrawerVisible: false });
+  };
 
   return (
     <>
       {isDrawerVisible && (
         <Help
           {...args}
-          onCloseClick={() => setIsDrawerVisible({ isDrawerVisible: false })}
+          onCloseClick={hideDrawer}
           footerTitle="Footer Title"
           footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
           heading="HelpDrawer Heading"
@@ -80,11 +85,7 @@ export const HelpDrawer = () => {
           {drawerContent}
         </Help>
       )}
-      <Button
-        className="ds-c-drawer__toggle"
-        variation="ghost"
-        onClick={() => setIsDrawerVisible({ isDrawerVisible: true })}
-      >
+      <Button className="ds-c-drawer__toggle" variation="ghost" onClick={showDrawer}>
         Toggle
       </Button>
     </>

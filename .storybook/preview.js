@@ -13,8 +13,47 @@ import { setLanguage as setLanguageFromPackage } from '@cmsgov/design-system';
 // Rewire analytics events to log to the console
 window.utag = { link: console.log };
 
+const customViewports = {
+  extraSmall: {
+    name: 'Extra Small - 320px',
+    styles: {
+      width: '320px',
+      height: '800px',
+    },
+  },
+  small: {
+    name: 'Small - 544px',
+    styles: {
+      width: '544px',
+      height: '800px',
+    },
+  },
+  medium: {
+    name: 'Medium - 768px',
+    styles: {
+      width: '768px',
+      height: '800px',
+    },
+  },
+  large: {
+    name: 'Large - 1024px',
+    styles: {
+      width: '1024px',
+      height: '800px',
+    },
+  },
+  extraLarge: {
+    name: 'Extra Large - 1280px',
+    styles: {
+      width: '1280px',
+      height: '800px',
+    },
+  },
+};
+
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
+  viewport: { viewports: customViewports },
   controls: {
     expanded: true,
     matchers: {
@@ -22,6 +61,7 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  backgrounds: { disable: true },
 };
 
 export const globalTypes = {

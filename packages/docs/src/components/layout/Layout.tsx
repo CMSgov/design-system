@@ -1,4 +1,3 @@
-import React from 'react';
 import { Helmet } from 'react-helmet';
 
 import Footer from './DocSiteFooter';
@@ -14,8 +13,6 @@ import TableOfContentsMobile from './TableOfContentsMobile';
 import PageHeader from './PageHeader';
 
 import '../../styles/index.scss';
-
-export type PageStatus = 'draft' | 'do not use';
 
 interface LayoutProps {
   /**

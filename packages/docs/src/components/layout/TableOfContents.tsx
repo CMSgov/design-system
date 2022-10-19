@@ -1,4 +1,3 @@
-import React from 'react';
 import { TableOfContentsItem } from '../../helpers/graphQLTypes';
 
 function cleanTitle(title: string) {

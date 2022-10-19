@@ -41,13 +41,12 @@
     "lodash": "^4.17.21",
     "ora": "^6.1.2",
     "prop-types": "^15.7.2",
-    "react-aria-modal": "^2.11.1",
     "react-day-picker": "^8.0.5",
     "react-transition-group": "^4.4.2",
     "yargs": "^17.5.1"
   },
   "peerDependencies": {
-    "react": ">=16.0.0",
-    "react-dom": ">=16.0.0"
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0"
   }
 }

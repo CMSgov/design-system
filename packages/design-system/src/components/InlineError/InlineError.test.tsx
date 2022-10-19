@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react';
 import InlineError from './InlineError';
-import React from 'react';
 
 const defaultProps = {
   children: 'Error message',

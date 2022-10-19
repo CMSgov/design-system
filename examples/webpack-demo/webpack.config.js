@@ -36,10 +36,12 @@ module.exports = {
             loader: 'sass-loader', // compiles Sass to CSS, using Node Sass by default
             options: {
               sourceMap: true,
-              includePaths: [
-                path.resolve(__dirname, './src/scss'),
-                path.resolve(__dirname, './node_modules'),
-              ],
+              sassOptions: {
+                includePaths: [
+                  path.resolve(__dirname, './src/scss'),
+                  path.resolve(__dirname, './node_modules'),
+                ],
+              },
             },
           },
         ],
