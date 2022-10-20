@@ -219,6 +219,10 @@
   text-decoration: underline;
   text-decoration-color: currentColor;
 
+  &:is(a) {
+    text-decoration: underline;
+  }
+
   --backgroundColor: #{$button-ghost__background-color};
   --borderColor: #{$button-ghost__border-color};
   --color: #{$button-ghost__color};
