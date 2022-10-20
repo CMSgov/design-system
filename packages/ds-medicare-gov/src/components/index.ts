@@ -17,7 +17,6 @@ export { default as NavigationMenu } from './NavigationMenu';
 export { default as SimpleFooter } from './SimpleFooter';
 export { default as Card } from './Card';
 export { default as Stars } from './Stars';
-export { default as GlobalHeader } from './GlobalHeader';
 export * from './HelpDrawer';
 export * from './Dialog';
 export * from './Icons';
