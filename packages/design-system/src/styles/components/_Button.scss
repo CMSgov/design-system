@@ -221,6 +221,10 @@
 
   &:is(a) {
     text-decoration: underline;
+
+    &:hover {
+      text-decoration-thickness: inherit;
+    }
   }
 
   --backgroundColor: #{$button-ghost__background-color};
