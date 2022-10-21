@@ -70,7 +70,7 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
         filter: {
           sourceInstanceName: { eq: "content" }
           ext: { eq: ".mdx" }
-          relativeDirectory: { ne: "not-in-sidebar" }
+          relativeDirectory: { nin: ["not-in-sidebar", "blog"] }
         }
         sort: { fields: [relativeDirectory, name] }
       ) {

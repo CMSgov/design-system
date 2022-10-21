@@ -1,0 +1,56 @@
+---
+title: What's new
+---
+
+## Release 5.0
+
+<time datetime="2022-11-01" className="ds-text-body--sm">November 1, 2022</time>
+
+<lite-youtube videoid="OPIUMpiV0IY"></lite-youtube>
+
+### What's new in 5.0
+
+#### Feedback & discussion page
+
+We have been using Github Discussions to discuss topics pertaining to the Design System and have added links to promote more conversation and ways to communicate within pages of the Design System. Your feedback and input helps pave the way for how the Design System grows and changes. Feel free to create a discussion or [read some of the past topics](https://github.com/CMSgov/design-system/discussions) in the Github repository.
+
+#### Component maturity checklist
+
+The Design System established a checklist measuring each component's path toward maturity and stability through well-defined and repeatable processes. This maturity model reviews a component's accessibility, code, Sketch assets, and use of design tokens as a series checklist items that have a complete, incomplete, or not-applicable status. Having this checklist helps us track our progress on components internally as a design system team and helps application teams make their own informed decisions about when to use certain components, when to wait, or when to contribute.
+
+#### Single-column layout
+
+We have implemented a single-column layout that teams can use to align their page layouts in both design and code. The single page layout has a space for a header, content, and a footer. You can find templates in both [code](https://design.cms.gov/layouts/Healthcare/one-col-page-layout?theme=healthcare) and design. This is currently only implemented for Healthcare but are looking into offering this layout for other themes.
+
+#### New dialog
+
+The Modal Dialog and Drawer components are now using the new [HTML `<dialog>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog). There are no visual changes associated with this change, but it's a major tune-up under the hood. Before the advent of a specific `<dialog>` element in HTML, web developers had to create the modal dialog experience themselves by dressing up non-semantic elements with custom CSS and JavaScript. This update will improve accessibility and remove third-party dependencies that we used to have to rely on. You can read more about the [research behind the change in github discussions](https://github.com/CMSgov/design-system/discussions/1831).
+
+#### Upgraded to React 17
+
+We have finished upgrading to React 17 to be more aligned with the teams using the Design System. We are now wondering if we should update to React 18. Do you have thoughts? [Visit the discussion board to join the conversation.](https://github.com/CMSgov/design-system/discussions/2058)
+
+#### Quality-assurance improvements
+
+In this program increment, we made a few big changes to our automated testing tools. First, we migrated our automated accessibility tests (axe-core) away from testing our legacy doc-site examples to testing our much larger suite of Storybook stories. Second, we added those a11y tests to our continuous-integration job. That helps us validate all our code changes for accessibility as we make them. Third, we finished converting our all our unit tests to use [react-testing-library](https://testing-library.com/docs/react-testing-library/intro/). While the goal of this was to make them compatible with React 17, the process also resulted in higher-quality tests. Fourth, we rebuilt our visual-regression-testing suite to be able to test all three themes of our design system on multiple browsers at multiple screen sizes. Mamma mia, those are some thorough checks! All these things help us be more confident that we're providing you with quality components.
+
+### What's coming next
+
+#### Links
+
+We will be doing research around external link patterns, backlinks, and text link patterns.
+
+
+## Previous releases
+
+### [4.0.5](https://github.com/CMSgov/design-system/releases/tag/%40cmsgov%2Fdesign-system%404.0.5)
+
+October 4, 2022
+
+### [4.0.4](https://github.com/CMSgov/design-system/releases/tag/%40cmsgov%2Fdesign-system%404.0.4)
+
+September 22, 2022
+
+### [4.0.3](https://github.com/CMSgov/design-system/releases/tag/%40cmsgov%2Fdesign-system%404.0.3)
+
+September 15, 2022

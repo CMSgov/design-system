@@ -4008,6 +4008,11 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
+"@justinribeiro/lite-youtube@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@justinribeiro/lite-youtube/-/lite-youtube-1.4.0.tgz#3ba21950213ffe0d2c69d9609819842d5cad4a4a"
+  integrity sha512-gBuSAPla3oPLV9i2K02/x95KQWlV9rMp42Cy74s6m0WldORSAL/YvRcdK0phwwpPMJJVNsiHZvzZFa1I62LoGQ==
+
 "@lerna/add@3.21.0":
   version "3.21.0"
   resolved "https://registry.yarnpkg.com/@lerna/add/-/add-3.21.0.tgz#27007bde71cc7b0a2969ab3c2f0ae41578b4577b"
