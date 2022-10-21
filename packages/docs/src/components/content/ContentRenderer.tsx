@@ -1,5 +1,3 @@
-import '@justinribeiro/lite-youtube';
-
 import Prism from 'prismjs';
 
 import { MDXRenderer } from 'gatsby-plugin-mdx';
