@@ -2,6 +2,14 @@
 title: Headings
 order: 10
 intro: Headings help to provide a quick, organized way to organize the main sections of a website.
+core:
+  githubLink: design-system/src/styles/base/_typography.scss
+  sketchLink: KvvZ7YV
+  storybookLink: foundations-typography-headings--all-headings
+healthcare:
+  sketchLink: 25qAbyl
+medicare:
+  sketchLink: ZOarvL7
 ---
 
 import { Alert, Badge } from '@cmsgov/design-system';
@@ -11,7 +19,7 @@ import loremIpsumGenerator from '../../../src/helpers/loremIpsumGenerator';
 <Alert heading="Typography sizing updates!">
   <p class="ds-c-alert__text">
     We've updated typography sizing variables and class names to make them more agnostic. Read about{' '}
-    <a href="/getting-started/theming/#updating-font-sizing">how you can update</a>.
+    <a href="/getting-started/developers/theming/#updating-font-sizing">how you can update</a>.
   </p>
 </Alert>
 
@@ -30,9 +38,9 @@ Sans-serifs have been proven to be easier to read on-screen and are incredibly a
 
 </ThemeContent>
 
-## Examples
+The design system doesn't style base HTML typography elements (like `h1`, `h2`, `p`, etc) in order to avoid conflicting with any existing site styles.
 
-The design system doesn't style base HTML typography elements (like `h1`, `h2`, `p`, etc) in order to avoid conflicting with any existing site styles. You should instead use one of the base typography classes below to apply styling:
+## Examples
 
 ### Heading--5xl
 
@@ -46,7 +54,7 @@ The design system doesn't style base HTML typography elements (like `h1`, `h2`, 
 
 <ThemeContent neverThemes={['medicare']}>
 <EmbeddedExample>
-      <h1 class="ds-text-heading--5xl ds-display">{loremIpsumGenerator('s')}</h1>
+      <h1 class="ds-text-heading--5xl">{loremIpsumGenerator('s')}</h1>
 </EmbeddedExample>
 </ThemeContent>
 
@@ -68,59 +76,68 @@ Heading--4xl is used for the heading on landing pages that serve as an entry poi
 
 <ThemeContent neverThemes={['medicare']}>
 <EmbeddedExample>
-      <h1 class="ds-text-heading--4xl ds-title">{loremIpsumGenerator('s')}</h1>
+      <h1 class="ds-text-heading--4xl">{loremIpsumGenerator('s')}</h1>
 </EmbeddedExample>
 </ThemeContent>
 
 ### Heading--3xl
 
 <EmbeddedExample>
-      <h1 class="ds-text-heading--3xl ds-h1">{loremIpsumGenerator('s')}</h1>
+      <h1 class="ds-text-heading--3xl">{loremIpsumGenerator('s')}</h1>
 </EmbeddedExample>
 
 ### Heading--2xl
 
 <EmbeddedExample>
-      <h1 class="ds-text-heading--2xl ds-h2">{loremIpsumGenerator('s')}</h1>
+      <h1 class="ds-text-heading--2xl">{loremIpsumGenerator('s')}</h1>
 </EmbeddedExample>
 
 ### Heading--xl
 
 <EmbeddedExample>
-      <h1 class="ds-text-heading--xl ds-h3">{loremIpsumGenerator('s')}</h1>
+      <h1 class="ds-text-heading--xl">{loremIpsumGenerator('s')}</h1>
 </EmbeddedExample>
 
 ### Heading--lg
 
 <EmbeddedExample>
-      <h1 class="ds-text-heading--lg ds-h4">{loremIpsumGenerator('s')}</h1>
+      <h1 class="ds-text-heading--lg">{loremIpsumGenerator('s')}</h1>
 </EmbeddedExample>
 
 ### Heading--md
 
 <EmbeddedExample>
-      <h1 class="ds-text-heading--md ds-h5">{loremIpsumGenerator('s')}</h1>
+      <h1 class="ds-text-heading--md">{loremIpsumGenerator('s')}</h1>
 </EmbeddedExample>
 
 ### Heading--sm
 
 <EmbeddedExample>
-      <h1 class="ds-text-heading--sm ds-h6">{loremIpsumGenerator('s')}</h1>
+      <h1 class="ds-text-heading--sm">{loremIpsumGenerator('s')}</h1>
 </EmbeddedExample>
 
 ## Code
 
 ### Responsive typography
 
-The `.ds-type-heading-3xl`, `ds-type-heading-2xl`, and `ds-type-heading-xl` classes are responsive by default.
+`.ds-type-heading-5xl`, `ds-type-heading-4xl`, and `ds-type-heading-3xl` classes are responsive by default.
+
+
+| Font class | 545px and below     | 545px to 768px | 768px and above                       |
+| ----------- | ------------ | ----- | -------------------------------------------------------------|
+|`.ds-type-heading-5xl`  | 36px    | 48px  | 60px    |
+|`.ds-type-heading-4xl`  | 36px    | 36px  | 48px    |
+|`.ds-type-heading-3xl` | 30px    | 30px  | 36px    |
+
+
+<ResponsiveExample
+  storyId="foundations-typography--responsive-headings"
+  title="Responsive typography example"
+/>
+
 To apply responsive typography elsewhere, use the [font size utility class](/utilities/font/font-size/#responsive-font-sizes).
 Since the base typography margins and line height is measured in `em` units,
 they'll automatically adjust as you change the font size.
-
-<ResponsiveExample
-  storyId="typography--responsive-headings"
-  title="Responsive typography example"
-/>
 
 ### Styles
 
