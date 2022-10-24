@@ -84,7 +84,6 @@
     "@types/node": "^17.0.22",
     "@typescript-eslint/eslint-plugin": "^5.16.0",
     "@typescript-eslint/parser": "^5.16.0",
-    "@whitespace/storybook-addon-html": "^5.0.0",
     "babel-plugin-inline-react-svg": "^2.0.1",
     "babel-plugin-typescript-to-proptypes": "^2.0.0",
     "copy-webpack-plugin": "^6.4.1",

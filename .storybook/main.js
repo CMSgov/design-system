@@ -11,9 +11,5 @@ module.exports = {
   },
   stories,
   staticDirs: ['../packages/design-system/src'],
-  addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@whitespace/storybook-addon-html',
-  ],
+  addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
 };
