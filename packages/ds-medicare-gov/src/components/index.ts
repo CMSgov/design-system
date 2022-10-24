@@ -12,8 +12,6 @@ import './Dialog';
 export * from '@cmsgov/design-system';
 
 export { default as MedicaregovLogo } from './MedicaregovLogo';
-export { default as Navbar } from './Navbar';
-export { default as NavigationMenu } from './NavigationMenu';
 export { default as SimpleFooter } from './SimpleFooter';
 export { default as Card } from './Card';
 export { default as Stars } from './Stars';
