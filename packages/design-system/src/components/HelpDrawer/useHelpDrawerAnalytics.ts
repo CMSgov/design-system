@@ -1,14 +1,15 @@
-import { EventCategory, sendLinkEvent, useAnalyticsContent } from '../analytics';
+import { defaultAnalyticsFunction, EventCategory, useAnalyticsContent } from '../analytics';
 import { HelpDrawerProps } from './HelpDrawer';
 import { helpDrawerSendsAnalytics } from '../flags';
 
 export default function useHelpDrawerAnalytics({
   analytics,
   analyticsLabelOverride,
+  onAnalyticsEvent = defaultAnalyticsFunction,
 }: HelpDrawerProps) {
   function sendHelpDrawerEvent(
     content: string | undefined,
-    eventAttributes: { event_name: string; ga_eventAction: string }
+    eventAttributes: { event_name: string; event_action: string }
   ) {
     if (!helpDrawerSendsAnalytics() || analytics === false) {
       return;
@@ -21,10 +22,10 @@ export default function useHelpDrawerAnalytics({
       return;
     }
 
-    sendLinkEvent({
+    onAnalyticsEvent({
       event_type: EventCategory.UI_INTERACTION,
-      ga_eventCategory: EventCategory.UI_COMPONENTS,
-      ga_eventLabel: eventHeadingText,
+      event_category: EventCategory.UI_COMPONENTS,
+      event_label: eventHeadingText,
       heading: eventHeadingText,
       ...eventAttributes,
     });
@@ -35,13 +36,13 @@ export default function useHelpDrawerAnalytics({
     onMount: (content: string | undefined) => {
       sendHelpDrawerEvent(content, {
         event_name: 'help_drawer_opened',
-        ga_eventAction: 'opened help drawer',
+        event_action: 'opened help drawer',
       });
     },
     onUnmount: (content: string | undefined) => {
       sendHelpDrawerEvent(content, {
         event_name: 'help_drawer_closed',
-        ga_eventAction: 'closed help drawer',
+        event_action: 'closed help drawer',
       });
     },
   });

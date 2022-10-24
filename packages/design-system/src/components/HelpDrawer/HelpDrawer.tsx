@@ -1,6 +1,7 @@
 import Drawer, { DrawerProps } from '../Drawer/Drawer';
 import classNames from 'classnames';
 import useHelpDrawerAnalytics from './useHelpDrawerAnalytics';
+import { AnalyticsFunction } from '../analytics';
 
 export interface HelpDrawerProps extends DrawerProps {
   /**
@@ -13,6 +14,12 @@ export interface HelpDrawerProps extends DrawerProps {
    * In cases where this component’s heading may contain **sensitive information**, use this prop to override what is sent to analytics.
    */
   analyticsLabelOverride?: string;
+  /**
+   * Optional callback that will intercept analytics events for this component.
+   * If none is specified, the design system will use the default analytics
+   * function, which can be overwritten globally with `setDefaultAnalyticsFunction`.
+   */
+  onAnalyticsEvent?: AnalyticsFunction;
 }
 
 export const HelpDrawer = (props: HelpDrawerProps) => {

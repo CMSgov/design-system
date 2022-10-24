@@ -6,6 +6,7 @@ import useDialogAnalytics from './useDialogAnalytics';
 import { CloseIcon } from '../Icons';
 import { useEffect, useLayoutEffect, useRef, DialogHTMLAttributes } from 'react';
 import { t } from '../i18n';
+import { AnalyticsFunction } from '../analytics';
 
 export type DialogCloseButtonSize = 'small' | 'big';
 export type DialogSize = 'narrow' | 'wide' | 'full';
@@ -36,6 +37,12 @@ export interface BaseDialogProps {
    * In cases where this component’s heading may contain **sensitive information**, use this prop to override what is sent to analytics.
    */
   analyticsLabelOverride?: string;
+  /**
+   * Optional callback that will intercept analytics events for this component.
+   * If none is specified, the design system will use the default analytics
+   * function, which can be overwritten globally with `setDefaultAnalyticsFunction`.
+   */
+  onAnalyticsEvent?: AnalyticsFunction;
   /**
    * Aria label for the close button
    */
@@ -108,6 +115,7 @@ export const Dialog = (props: DialogProps) => {
     alert,
     analytics,
     analyticsLabelOverride,
+    onAnalyticsEvent,
     ariaCloseLabel,
     children,
     className,
