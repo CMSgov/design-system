@@ -1,7 +1,8 @@
+import classNames from 'classnames';
+import mergeRefs from '../utilities/mergeRefs';
+import useButtonAnalytics from './useButtonAnalytics';
 import { AnalyticsFunction } from '../analytics';
 import { MutableRefObject } from 'react';
-import classNames from 'classnames';
-import useButtonAnalytics from './useButtonAnalytics';
 
 export type ButtonSize = 'small' | 'big';
 
@@ -165,16 +166,7 @@ export const Button = (props: ButtonProps) => {
 
   return (
     <ComponentType
-      ref={(el) => {
-        contentRef.current = el;
-        if (inputRef) {
-          if (typeof inputRef === 'function') {
-            inputRef(el);
-          } else {
-            inputRef.current = el;
-          }
-        }
-      }}
+      ref={mergeRefs([inputRef, contentRef])}
       onClick={handleClick}
       onKeyPress={ComponentType === 'a' ? handleKeyPress : undefined}
       {...attrs}
