@@ -6,6 +6,7 @@ import useAutofocus from '../utilities/useAutoFocus';
 import useAlertAnalytics from './useAlertAnalytics';
 import { InfoCircleIcon, AlertCircleIcon, WarningIcon, CheckCircleIcon } from '../Icons';
 import { t } from '../i18n';
+import { AnalyticsFunction } from '../analytics';
 
 export type AlertHeadingLevel = '1' | '2' | '3' | '4' | '5' | '6';
 export type AlertRole = 'alert' | 'alertdialog' | 'region' | 'status';
@@ -27,6 +28,12 @@ export interface BaseAlertProps {
    * In cases where this component’s heading may contain **sensitive information**, use this prop to override what is sent to analytics.
    */
   analyticsLabelOverride?: string;
+  /**
+   * Optional callback that will intercept analytics events for this component.
+   * If none is specified, the design system will use the default analytics
+   * function, which can be overwritten globally with `setDefaultAnalyticsFunction`.
+   */
+  onAnalyticsEvent?: AnalyticsFunction;
   /**
    * Sets the focus on Alert during the first mount
    */
@@ -97,6 +104,7 @@ export const Alert: React.FC<AlertProps> = (props: AlertProps) => {
     weight,
     analytics,
     analyticsLabelOverride,
+    onAnalyticsEvent,
     ...alertProps
   } = props;
 

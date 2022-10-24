@@ -1,10 +1,11 @@
-import { EventCategory, sendLinkEvent, useAnalyticsContent } from '../analytics';
+import { defaultAnalyticsFunction, EventCategory, useAnalyticsContent } from '../analytics';
 import { AlertProps } from './Alert';
 import { alertSendsAnalytics } from '../flags';
 
 export default function useAlertAnalytics({
   analytics,
   analyticsLabelOverride,
+  onAnalyticsEvent = defaultAnalyticsFunction,
   variation,
 }: AlertProps) {
   // Order matters! Content comes from the heading first and falls back to body if heading doesn't exist
@@ -26,12 +27,12 @@ export default function useAlertAnalytics({
         return;
       }
 
-      sendLinkEvent({
+      onAnalyticsEvent({
         event_name: 'alert_impression',
         event_type: EventCategory.UI_INTERACTION,
-        ga_eventAction: 'alert impression',
-        ga_eventCategory: EventCategory.UI_COMPONENTS,
-        ga_eventLabel: eventHeadingText,
+        event_action: 'alert impression',
+        event_category: EventCategory.UI_COMPONENTS,
+        event_label: eventHeadingText,
         heading: eventHeadingText,
         type: variation,
       });

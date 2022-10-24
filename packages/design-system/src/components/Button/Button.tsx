@@ -1,4 +1,9 @@
-import { EventCategory, sendLinkEvent, getAnalyticsContentFromRefs } from '../analytics';
+import {
+  AnalyticsFunction,
+  EventCategory,
+  defaultAnalyticsFunction,
+  getAnalyticsContentFromRefs,
+} from '../analytics';
 import { MutableRefObject, useRef } from 'react';
 import { buttonSendsAnalytics } from '../flags';
 import classNames from 'classnames';
@@ -31,6 +36,12 @@ type CommonButtonProps = {
    * If needed for analytics, pass type of parent component of button.
    */
   analyticsParentType?: string;
+  /**
+   * Optional callback that will intercept analytics events for this component.
+   * If none is specified, the design system will use the default analytics
+   * function, which can be overwritten globally with `setDefaultAnalyticsFunction`.
+   */
+  onAnalyticsEvent?: AnalyticsFunction;
   /**
    * Label text or HTML
    */
@@ -102,6 +113,7 @@ export const Button = ({
   href,
   inputRef,
   isAlternate = false,
+  onAnalyticsEvent = defaultAnalyticsFunction,
   onClick,
   onDark = false,
   size,
@@ -155,12 +167,12 @@ export const Button = ({
     const buttonParentHeading = analyticsParentHeading ?? ' ';
     const buttonParentType = analyticsParentType ?? ' ';
 
-    return sendLinkEvent({
+    return onAnalyticsEvent({
       event_name: 'button_engagement',
       event_type: EventCategory.UI_INTERACTION,
-      ga_eventCategory: EventCategory.UI_INTERACTION,
-      ga_eventAction: `engaged ${buttonStyle} button`,
-      ga_eventLabel: href ? `${buttonText}: ${href}` : buttonText,
+      event_category: EventCategory.UI_INTERACTION,
+      event_action: `engaged ${buttonStyle} button`,
+      event_label: href ? `${buttonText}: ${href}` : buttonText,
       text: buttonText,
       button_style: buttonStyle,
       button_type: href ? 'link' : buttonType,

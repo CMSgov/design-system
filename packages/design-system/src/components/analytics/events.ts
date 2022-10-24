@@ -24,11 +24,11 @@ export enum EventCategory {
 }
 
 export interface AnalyticsEvent {
-  ga_eventAction: string;
-  ga_eventCategory: string;
-  ga_eventLabel: string;
-  ga_eventType?: string;
-  ga_eventValue?: string;
+  event_name: string;
+  event_type: string;
+  event_category: string;
+  event_action: string;
+  event_label: string;
   [additional_props: string]: unknown;
 }
 
@@ -52,11 +52,7 @@ const TIMEOUT = 300;
  * Use existing window.utag.link function to send analytics events. If the function does not
  * exist right away, try again after TIMEOUT milliseconds until we've reached MAX_RETRIES.
  */
-export function sendAnalytics(
-  eventType: EventType,
-  event: Required<AnalyticsEvent>,
-  retry = 0
-): string {
+export function sendAnalytics(eventType: EventType, event: Required<AnalyticsEvent>, retry = 0) {
   // If we were to define this on the window object using `declare global { interface Window { utag: ... } }`
   // that type definition of window.utag can conflict with downstream declarations. This happened before, and
   // our fix is to only have a local type so we can get some type-checking without risk of conflicts. This
@@ -68,26 +64,34 @@ export function sendAnalytics(
   if (utag && utag[eventType]) {
     clipStrings(event);
     try {
-      utag[eventType](event);
-      return `Tealium event sent: ${event.ga_eventCategory} - ${event.ga_eventAction} - ${event.ga_eventLabel}`;
-    } catch (e) {
-      return `Error sending event to Tealium ${e}`;
+      utag[eventType]({
+        // Expand the event object to support the properties expected on healthcare.gov
+        ga_eventValue: '', // default value
+        ga_eventType: event.event_type,
+        ga_eventAction: event.event_action,
+        ga_eventCategory: event.event_category,
+        ga_eventLabel: event.event_label,
+        // But always recognize the incoming event as the authority on truth
+        ...event,
+      });
+    } catch (error) {
+      console.warn('Error sending analytics event: ', error);
     }
   } else {
     if (++retry <= MAX_RETRIES) {
       setTimeout(() => sendAnalytics(eventType, event, retry), retry * TIMEOUT);
-    } else {
-      return `Tealium event max retries reached`;
     }
   }
 }
 
-export function sendLinkEvent(payload: AnalyticsEvent) {
-  return sendAnalytics('link', {
-    ga_eventType: 'cmsds', // default value
-    ga_eventValue: '', // default value
-    ...payload,
-  });
+export function sendLinkEvent(event: AnalyticsEvent) {
+  return sendAnalytics('link', event);
 }
 
-export default sendAnalytics;
+export type AnalyticsFunction = typeof sendLinkEvent;
+
+export let defaultAnalyticsFunction = sendLinkEvent;
+
+export function setDefaultAnalyticsFunction(analyticsFunction: AnalyticsFunction) {
+  defaultAnalyticsFunction = analyticsFunction;
+}
