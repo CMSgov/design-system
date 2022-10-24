@@ -1,12 +1,7 @@
-import {
-  AnalyticsFunction,
-  EventCategory,
-  defaultAnalyticsFunction,
-  getAnalyticsContentFromRefs,
-} from '../analytics';
-import { MutableRefObject, useRef } from 'react';
-import { buttonSendsAnalytics } from '../flags';
+import { AnalyticsFunction } from '../analytics';
+import { MutableRefObject } from 'react';
 import classNames from 'classnames';
+import useButtonAnalytics from './useButtonAnalytics';
 
 export type ButtonSize = 'small' | 'big';
 
@@ -102,27 +97,26 @@ type OtherProps = Omit<
 
 export type ButtonProps = CommonButtonProps & OtherProps;
 
-export const Button = ({
-  analytics,
-  analyticsLabelOverride,
-  analyticsParentHeading,
-  analyticsParentType,
-  children,
-  className,
-  disabled,
-  href,
-  inputRef,
-  isAlternate = false,
-  onAnalyticsEvent = defaultAnalyticsFunction,
-  onClick,
-  onDark = false,
-  size,
-  variation,
-  type = 'button',
-  ...otherProps
-}: ButtonProps) => {
-  const contentRef = useRef();
-  const ComponentType = href ? 'a' : 'button';
+export const Button = (props: ButtonProps) => {
+  const {
+    analytics,
+    analyticsLabelOverride,
+    analyticsParentHeading,
+    analyticsParentType,
+    onAnalyticsEvent,
+    children,
+    className,
+    inputRef,
+    isAlternate,
+    onClick,
+    onDark,
+    size,
+    variation,
+    ...otherProps
+  } = props;
+
+  const { contentRef, sendButtonEvent } = useButtonAnalytics(props);
+  const ComponentType = props.href ? 'a' : 'button';
   const colorSchemeClass = isAlternate && `ds-c-button--alternate`;
   const modeClass = onDark && `ds-c-button--on-dark`;
   const sizeClass = size && `ds-c-button--${size}`;
@@ -137,53 +131,24 @@ export const Button = ({
     className
   );
 
-  const attrs: any = {
-    className: allClassNames,
-    disabled,
-    href,
-    type,
+  const attrs = {
     ...otherProps,
+    className: allClassNames,
   };
 
   if (ComponentType !== 'button') {
     delete attrs.disabled;
     delete attrs.type;
 
-    if (disabled) {
+    if (props.disabled) {
       attrs.role = 'link';
       attrs['aria-disabled'] = true;
       delete attrs.href;
     }
   }
 
-  function sendButtonEvent() {
-    if (!buttonSendsAnalytics() || analytics === false) {
-      return;
-    }
-
-    const buttonText = analyticsLabelOverride ?? getAnalyticsContentFromRefs([contentRef]);
-    const buttonStyle = variation ?? 'default';
-    const buttonType = type ?? 'button';
-    const buttonParentHeading = analyticsParentHeading ?? ' ';
-    const buttonParentType = analyticsParentType ?? ' ';
-
-    return onAnalyticsEvent({
-      event_name: 'button_engagement',
-      event_type: EventCategory.UI_INTERACTION,
-      event_category: EventCategory.UI_INTERACTION,
-      event_action: `engaged ${buttonStyle} button`,
-      event_label: href ? `${buttonText}: ${href}` : buttonText,
-      text: buttonText,
-      button_style: buttonStyle,
-      button_type: href ? 'link' : buttonType,
-      parent_component_heading: buttonParentHeading,
-      parent_component_type: buttonParentType,
-      ...(href ? { link_url: href } : {}),
-    });
-  }
-
   function handleClick(e: React.MouseEvent | React.KeyboardEvent): void {
-    if (!disabled) {
+    if (!props.disabled) {
       sendButtonEvent();
       if (onClick) {
         onClick(e);
@@ -217,6 +182,12 @@ export const Button = ({
       {children}
     </ComponentType>
   );
+};
+
+Button.defaultProps = {
+  isAlternate: false,
+  onDark: false,
+  type: 'button',
 };
 
 export default Button;
