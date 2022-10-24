@@ -223,6 +223,7 @@
     text-decoration: underline;
 
     &:hover {
+      text-decoration-color: inherit;
       text-decoration-thickness: inherit;
     }
   }
@@ -249,6 +250,11 @@
   &:disabled,
   &.ds-c-button--disabled {
     text-decoration-color: transparent;
+
+    &:is(a) {
+      text-decoration: underline;
+      text-decoration-color: inherit;
+    }
   }
 
   &.ds-c-button--alternate {
