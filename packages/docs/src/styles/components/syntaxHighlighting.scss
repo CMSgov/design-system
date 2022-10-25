@@ -17,6 +17,11 @@ code {
   padding: $spacer-half;
 }
 
+p code {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 /**
  * a11y-light theme for JavaScript, CSS, and HTML
  * Based on the okaidia theme: https://github.com/PrismJS/prism/blob/gh-pages/themes/prism-okaidia.css
