@@ -11,7 +11,5 @@ See also: https://reactjs.org/docs/add-react-to-a-website.html
 
 ## Getting started
 
-1. Run `yarn install && yarn build` in the main repo to build the cdn assets
-2. Run `copy_build.sh` in this folder to copy assets from the build folder to this folder.
-3. Utilize a simple http server like `http-server` (downloadable from npm/yarn) to serve the contents of this folder.
-4. Open localhost at the served port to view. (default for http-server is http://localhost:8080)
+1. Serve the root of this directory from a webserver, with `npx http-server`
+2. View it in a browser by visiting http://localhost:8080
