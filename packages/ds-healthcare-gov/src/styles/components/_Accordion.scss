@@ -2,12 +2,12 @@ $accordion-icon-color: #0071bb;
 
 .ds-c-accordion {
   .ds-c-accordion__button {
-    flex-direction: row-reverse;
     background-color: $accordion__background-color;
     color: $accordion-button__color;
     column-gap: $spacer-1;
-    justify-content: flex-end;
+    flex-direction: row-reverse;
     font-weight: $font-weight-normal;
+    justify-content: flex-end;
     padding: $spacer-1 $spacer-2 $spacer-1 $spacer-2;
 
     &:hover {
@@ -25,19 +25,19 @@ $accordion-icon-color: #0071bb;
     }
 
     @media (-ms-high-contrast: active), (forced-colors: active) {
-      -ms-high-contrast-adjust: none;
-      forced-color-adjust: none;
       background-color: LinkText;
       color: window;
+      forced-color-adjust: none;
+      -ms-high-contrast-adjust: none;
 
       &:hover,
       &:focus {
-        -ms-high-contrast-adjust: none;
-        forced-color-adjust: none;
         background-color: window;
         color: LinkText;
-        outline-offset: -$spacer-half;
+        forced-color-adjust: none;
+        -ms-high-contrast-adjust: none;
         outline: $spacer-half solid LinkText;
+        outline-offset: -$spacer-half;
 
         .ds-c-icon--plus-circle__circle,
         .ds-c-icon--minus-circle__circle {
@@ -54,9 +54,9 @@ $accordion-icon-color: #0071bb;
   }
 
   .ds-c-icon {
-    font-size: 14px;
     align-self: center;
     color: $accordion-icon-color;
+    font-size: 14px;
   }
 
   .ds-c-accordion__content {

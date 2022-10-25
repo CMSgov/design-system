@@ -8,10 +8,10 @@ $mct-drawer-heading-font-size: $h1-mobile-font-size;
   }
 
   .ds-c-drawer__header-heading {
+    font-family: $font-family-montserrat;
+    font-size: $mct-drawer-heading-font-size;
     font-weight: $font-weight-bold;
     text-align: left;
-    font-size: $mct-drawer-heading-font-size;
-    font-family: $font-family-montserrat;
   }
 
   .ds-c-drawer__close-button {
@@ -19,8 +19,8 @@ $mct-drawer-heading-font-size: $h1-mobile-font-size;
     color: $drawer-close__color;
 
     svg {
-      width: $mct-drawer-close-button-size;
       height: $mct-drawer-close-button-size;
+      width: $mct-drawer-close-button-size;
     }
 
     .ds-c-help-drawer__footer {
@@ -37,8 +37,8 @@ $mct-drawer-heading-font-size: $h1-mobile-font-size;
   }
 
   .ds-c-icon--info-circle-outline {
-    width: 18px;
     height: 18px;
+    width: 18px;
   }
   &:hover {
     .icon-wrapper {

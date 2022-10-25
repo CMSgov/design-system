@@ -1,7 +1,7 @@
 .c-spacing-utility-example__row {
+  align-items: center;
   display: flex;
   margin-bottom: $spacer-2;
-  align-items: center;
   code {
     margin-left: $spacer-2;
   }
@@ -13,17 +13,17 @@
 }
 
 .c-spacing-utility-example__item:after {
-  width: $spacer-4;
-  height: $spacer-4;
   background: $color-white;
-  display: table;
   content: '';
+  display: table;
+  height: $spacer-4;
+  width: $spacer-4;
 }
 
 .c-spacing-utility-example--margin .c-spacing-utility-example__item:after {
   border: 1px solid $color-black;
-  width: ($spacer-4 + 2px);
   box-sizing: border-box;
+  width: ($spacer-4 + 2px);
 }
 
 .c-spacing-utility-example--padding .c-spacing-utility-example__container {
@@ -31,6 +31,6 @@
 }
 
 .c-spacing-utility-example__container-auto-margin {
-  width: 100px;
   height: 100px;
+  width: 100px;
 }
