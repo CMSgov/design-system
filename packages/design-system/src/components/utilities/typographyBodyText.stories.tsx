@@ -1,5 +1,5 @@
 export default {
-  title: 'Foundations/Typography/BodyText',
+  title: 'Foundations/Typography/Body Text',
   parameters: {
     docs: {
       source: {
