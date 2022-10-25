@@ -23,15 +23,15 @@
   }
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
-    border-top: 1px solid LinkText;
-    border-right: 1px solid LinkText;
     border-bottom: 1px solid LinkText;
+    border-right: 1px solid LinkText;
+    border-top: 1px solid LinkText;
   }
 
   .ds-c-vertical-nav__item {
     @media (-ms-high-contrast: active), (forced-colors: active) {
-      border-top: 1px solid LinkText;
       border-bottom: 1px solid LinkText;
+      border-top: 1px solid LinkText;
     }
   }
 }
@@ -95,16 +95,16 @@
   }
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
-    -ms-high-contrast-adjust: none;
-    forced-color-adjust: none;
     background-color: LinkText;
+    forced-color-adjust: none;
+    -ms-high-contrast-adjust: none;
 
     &:hover,
     &:focus {
-      -ms-high-contrast-adjust: none;
-      forced-color-adjust: none;
       background-color: window;
       color: LinkText;
+      forced-color-adjust: none;
+      -ms-high-contrast-adjust: none;
       outline: $spacer-half solid LinkText;
       outline-offset: -$spacer-half;
     }
