@@ -20,15 +20,49 @@ const listMarkup = (type) => {
 
   return (
     <>
-      <h2 className="ds-h6" id={`${type}-list-id`}>
-        {label} list title
-      </h2>
       <Tag className={className} aria-labelledby={`${type}-list-id`}>
-        <li>List item 1</li>
-        <li>List item 2</li>
+        <li>{type} list item 1</li>
+        <li>{type} list item 2</li>
       </Tag>
     </>
   );
+};
+
+export const AllLists = () => (
+  <>
+    <ul className="ds-c-list" aria-labelledby="unordered-list-id">
+      <li>unordered list item 1</li>
+      <li>unordered list item 2</li>
+    </ul>
+    <ol className="ds-c-list" aria-labelledby="ordered-list-id">
+      <li>ordered list item 1</li>
+      <li>ordered list item 2</li>
+    </ol>
+    <ul className="ds-c-list ds-c-list--bare" aria-labelledby="unstyled-list-id">
+      <li>unstyled list item 1</li>
+      <li>unstyled list item 2</li>
+    </ul>
+  </>
+);
+
+export const AllListsOnDark = () => (
+  <>
+    <ul className="ds-c-list" aria-labelledby="unordered-list-id">
+      <li>unordered list item 1</li>
+      <li>unordered list item 2</li>
+    </ul>
+    <ol className="ds-c-list" aria-labelledby="ordered-list-id">
+      <li>ordered list item 1</li>
+      <li>ordered list item 2</li>
+    </ol>
+    <ul className="ds-c-list ds-c-list--bare" aria-labelledby="unstyled-list-id">
+      <li>unstyled list item 1</li>
+      <li>unstyled list item 2</li>
+    </ul>
+  </>
+);
+AllListsOnDark.parameters = {
+  baseInverse: true,
 };
 
 export const unorderedList = () => listMarkup('unordered');
