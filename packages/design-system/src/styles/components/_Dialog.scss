@@ -4,21 +4,21 @@ $dialog-spacer: $spacer-4;
 
 // Start polyfill styles
 dialog {
-  position: absolute;
+  background: $color-white;
+  border: solid;
+  color: $color-black;
+  display: block;
+  height: -moz-fit-content;
+  height: -webkit-fit-content;
+  height: fit-content;
   left: 0;
+  margin: auto;
+  padding: 1em;
+  position: absolute;
   right: 0;
   width: -moz-fit-content;
   width: -webkit-fit-content;
   width: fit-content;
-  height: -moz-fit-content;
-  height: -webkit-fit-content;
-  height: fit-content;
-  margin: auto;
-  border: solid;
-  padding: 1em;
-  background: $color-white;
-  color: $color-black;
-  display: block;
 }
 
 dialog:not([open]) {
@@ -26,20 +26,20 @@ dialog:not([open]) {
 }
 
 dialog + .backdrop {
-  position: fixed;
-  top: 0;
-  right: 0;
+  background: rgba(0, 0, 0, 0.1);
   bottom: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.1);
+  position: fixed;
+  right: 0;
+  top: 0;
 }
 
 ._dialog_overlay {
-  position: fixed;
-  top: 0;
-  right: 0;
   bottom: 0;
   left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
 }
 
 dialog.fixed {

@@ -11,7 +11,6 @@
 
 # 2. Ensure that child design system projects are looking at local version of the core DS by updating the package.json so that the following dependencies look like this:
 #   "@cmsgov/design-system": "file:../design-system/packages/design-system",
-#   "@cmsgov/design-system-docs": "file:../design-system/packages/design-system-docs",
 
 # 3. Ensure that application project is pointing at local version of child design system by modifying the package.json so that the following dependencies look like this:
 #   "@cmsgov/ds-healthcare-gov": "file:../hcgov-design-system",
