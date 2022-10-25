@@ -17,8 +17,8 @@ body {
 }
 
 .page-content {
-  max-width: 81rem;
   flex: 1 0 auto;
+  max-width: 81rem;
 }
 
 @media (min-width: $width-lg) {
