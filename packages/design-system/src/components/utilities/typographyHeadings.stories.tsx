@@ -25,6 +25,23 @@ export const AllHeadings = () => {
     </>
   );
 };
+export const AllHeadingsOnDark = () => {
+  return (
+    <>
+      <h1 className="ds-text-heading--5xl">{heading} (5xl)</h1>
+      <h1 className="ds-text-heading--4xl">{heading} (4xl)</h1>
+      <h1 className="ds-text-heading--3xl">{heading} (3xl)</h1>
+      <h1 className="ds-text-heading--2xl">{heading} (2xl)</h1>
+      <h1 className="ds-text-heading--xl">{heading} (xl)</h1>
+      <h1 className="ds-text-heading--lg">{heading} (lg)</h1>
+      <h1 className="ds-text-heading--md">{heading} (md)</h1>
+      <h1 className="ds-text-heading--sm">{heading} (sm)</h1>
+    </>
+  );
+};
+AllHeadingsOnDark.parameters = {
+  baseInverse: true,
+};
 
 export const Heading5xl = () => {
   return (
