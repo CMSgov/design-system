@@ -87,14 +87,6 @@ Running the browser tests locally requires that you be signed into Docker.
    1. If differences are detected and unexpected, evaluate your changes - we only want to update and commit references when we expect the visual changes detected
    2. If differences are detected and expected, run `yarn test:browser:update`
 
-#### Visual regression troubleshooting
-
-##### Error: `./loki.sh: line 70: kill: (74680) - No such process`
-
-If you run the visual regression command and receive `./loki.sh: line 70: kill: (74680) - No such process` in your terminal, it may be related to your shell.
-
-For MacOS users, run `brew install bash` to resolve this issue.
-
 ## Design Assets
 
 The CMS Design System provides a Sketch file and Sketch Library containing components, styles, and symbols. These are regularly updated alongside our code, and updates are automatically synced for designers using the Sketch Library.
