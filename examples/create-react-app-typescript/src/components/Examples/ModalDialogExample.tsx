@@ -6,7 +6,7 @@ function ModalDialogExample(): React.ReactElement {
   return (
     <div>
       <h2>Modal Dialog Example</h2>
-      <Button onClick={() => setShowExampleModal(true)} size="big" variation="primary">
+      <Button onClick={() => setShowExampleModal(true)} size="big" variation="solid">
         Click to show modal
       </Button>
 

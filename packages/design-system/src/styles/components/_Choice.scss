@@ -18,8 +18,8 @@
 .ds-c-choice + label,
 .ds-c-choice + .ds-c-label {
   cursor: pointer;
-  flex-grow: 1;
   flex-basis: min-content;
+  flex-grow: 1;
   font-weight: $font-normal;
   margin-top: 0;
   max-width: max-content;
