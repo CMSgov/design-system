@@ -216,18 +216,6 @@
 }
 
 .ds-c-button--ghost {
-  text-decoration: underline;
-  text-decoration-color: currentColor;
-
-  &:is(a) {
-    text-decoration: underline;
-
-    &:hover {
-      text-decoration-color: inherit;
-      text-decoration-thickness: inherit;
-    }
-  }
-
   --backgroundColor: #{$button-ghost__background-color};
   --borderColor: #{$button-ghost__border-color};
   --color: #{$button-ghost__color};
@@ -246,8 +234,18 @@
   --backgroundColor--d: #{$button-ghost__background-color--disabled};
   --borderColor--d: #{$button-ghost__border-color--disabled};
   --color--d: #{$button-ghost__color--disabled};
+
   text-decoration: underline;
   text-decoration-color: currentColor;
+
+  &:is(a) {
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration-color: inherit;
+      text-decoration-thickness: inherit;
+    }
+  }
 
   &:disabled,
   &.ds-c-button--disabled {
