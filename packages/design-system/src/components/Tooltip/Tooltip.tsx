@@ -138,7 +138,7 @@ export const Tooltip = (props: TooltipProps) => {
 
   const handleBlur = (event: Event) => {
     setTimeout(() => {
-      if (event.currentTarget !== event.target) setActive(false);
+      if (!isHover && event.currentTarget !== event.target) setActive(false);
     }, 10);
   };
 
