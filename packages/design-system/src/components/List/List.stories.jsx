@@ -36,22 +36,7 @@ export const AllLists = () => (
   </>
 );
 
-export const AllListsOnDark = () => (
-  <>
-    <ul className="ds-c-list" aria-labelledby="unordered-list-id">
-      <li>unordered list item 1</li>
-      <li>unordered list item 2</li>
-    </ul>
-    <ol className="ds-c-list" aria-labelledby="ordered-list-id">
-      <li>ordered list item 1</li>
-      <li>ordered list item 2</li>
-    </ol>
-    <ul className="ds-c-list ds-c-list--bare" aria-labelledby="unstyled-list-id">
-      <li>unstyled list item 1</li>
-      <li>unstyled list item 2</li>
-    </ul>
-  </>
-);
+export const AllListsOnDark = AllLists.bind({});
 AllListsOnDark.parameters = {
   baseInverse: true,
 };
