@@ -5,19 +5,11 @@ This shows the usage of CMS design system components on a pure HTML/CSS page wit
 - basic article
 - simple form with submit button
 - using responsive classes
+- loading assets from the CDN
 
-Simply include the CSS file in the HTML document.
-
-### Usage
-
-```html
-<link rel="stylesheet" href="packages/design-system/dist/css/index.css" />
-```
+For more information about the setup, see [documentation for using assets from our CDN](https://design.cms.gov/getting-started/developers/installation?theme=core#utilize-the-cdn).
 
 ## Getting started
 
-Install and build the core design system to ensure html-css example can reference the minified CSS.
-
-1. Install packages: `npm install` or `yarn install`
-1. Compile and bundle assets: `npm run build` or `yarn run build`
-1. Open `index.html` in a browser.
+1. Serve the root of this directory from a webserver, with `npx http-server`
+2. View it in a browser by visiting http://localhost:8080
