@@ -27,21 +27,7 @@ export const AllBodyText = () => {
     </>
   );
 };
-export const AllBodyTextOnDark = () => {
-  return (
-    <>
-      <p className="ds-text-body--lg">
-        <strong>Large:</strong> {body}
-      </p>
-      <p className="ds-text-body--md">
-        <strong>Medium:</strong> {body}
-      </p>
-      <p className="ds-text-body--sm">
-        <strong>Small:</strong> {body}
-      </p>
-    </>
-  );
-};
+export const AllBodyTextOnDark = AllBodyText.bind({});
 AllBodyTextOnDark.parameters = {
   baseInverse: true,
 };
