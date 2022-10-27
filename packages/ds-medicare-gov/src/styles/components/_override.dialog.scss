@@ -3,9 +3,9 @@
 
   .ds-c-dialog__close {
     color: transparent !important;
-    padding: 5px !important;
-    min-width: 20px;
     min-height: 20px;
+    min-width: 20px;
+    padding: 5px !important;
 
     .ds-c-icon {
       color: $color-gray-dark;

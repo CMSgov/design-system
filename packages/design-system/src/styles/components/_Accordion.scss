@@ -49,19 +49,19 @@ $accordion-header-font-family: $font-sans;
   }
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
-    -ms-high-contrast-adjust: none;
-    forced-color-adjust: none;
     background-color: LinkText;
     color: window;
+    forced-color-adjust: none;
+    -ms-high-contrast-adjust: none;
 
     &:hover,
     &:focus {
-      -ms-high-contrast-adjust: none;
-      forced-color-adjust: none;
       background-color: window;
       color: LinkText;
-      outline-offset: -$spacer-half;
+      forced-color-adjust: none;
+      -ms-high-contrast-adjust: none;
       outline: $spacer-half solid LinkText;
+      outline-offset: -$spacer-half;
     }
   }
 

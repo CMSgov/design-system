@@ -26,10 +26,10 @@
 
   button.c-footer__link {
     all: inherit; /* removes all DS and browser button styling */
-    text-decoration: underline;
     color: var(--link__color);
     cursor: pointer;
     display: inline;
+    text-decoration: underline;
     text-decoration-thickness: var(--link__text-decoration-thickness);
 
     &:hover {
