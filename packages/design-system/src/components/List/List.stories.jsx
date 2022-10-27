@@ -21,8 +21,8 @@ const listMarkup = (type) => {
   return (
     <>
       <Tag className={className} aria-labelledby={`${type}-list-id`}>
-        <li>{type} list item 1</li>
-        <li>{type} list item 2</li>
+        <li>{label} list item 1</li>
+        <li>{label} list item 2</li>
       </Tag>
     </>
   );
