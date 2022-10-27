@@ -1,6 +1,6 @@
 The `examples` folder contains a few example usages of the CMS design system.
 
-- [create-react-app](https://github.com/CMSgov/design-system/tree/main/examples/create-react-app)
-- [html/css](https://github.com/CMSgov/design-system/tree/main/examples/html-css)
-- [react-app](https://github.com/CMSgov/design-system/tree/main/examples/react-app)
-- [webpack-demo](https://github.com/CMSgov/design-system/tree/main/examples/webpack-demo)
+- [Using the CDN](https://github.com/CMSgov/design-system/tree/main/examples/cdn)
+- [HTML/CSS (also using the CDN)](https://github.com/CMSgov/design-system/tree/main/examples/html-css)
+- [create-react-app with TypeScript](https://github.com/CMSgov/design-system/tree/main/examples/create-react-app-typescript)
+- [A simple React app](https://github.com/CMSgov/design-system/tree/main/examples/react-app)
