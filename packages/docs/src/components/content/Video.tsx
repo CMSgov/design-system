@@ -10,7 +10,7 @@ export interface VideoProps {
 const Video = ({ name }: VideoProps) => {
   const path = withPrefix(`/videos/${name}`);
   return (
-    <video controls className="c-blog-video" poster={`${path}.svg`}>
+    <video controls className="c-blog-video" poster={`${path}.png`}>
       <source src={`${path}.webm`} type="video/webm" />
       <source src={`${path}.mp4`} type="video/mp4" />
       <p>
