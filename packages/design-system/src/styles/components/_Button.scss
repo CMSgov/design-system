@@ -241,7 +241,9 @@
   &:is(a) {
     text-decoration: underline;
 
-    &:hover {
+    &:hover,
+    &:active {
+      text-decoration: underline;
       text-decoration-color: inherit;
       text-decoration-thickness: inherit;
     }
