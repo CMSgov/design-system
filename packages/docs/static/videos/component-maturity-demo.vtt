@@ -1,110 +1,89 @@
 WEBVTT
 
-1
 00:00:00.000 --> 00:00:01.971
 Hello, I'm Patrick!
 
-2
 00:00:01.971 --> 00:00:04.000
 I'm the engineering lead on the design system team
 
-3
 00:00:04.000 --> 00:00:09.000
 And today I would like to show you something we've added to our documentation site.
 
-4
 00:00:09.000 --> 00:00:12.000
 We need to have a chat about maturity.
 
-5
 00:00:12.001 --> 00:00:14.000
 ...component, maturity, that is.
 
-6
 00:00:14.001 --> 00:00:18.999
 Some of you may be aware we have had a draft label on some components for ages.
 
-7
 00:00:19.000 --> 00:00:23.000
 Every once in a while we'd get asked, "What does draft mean?"
 
-8
 00:00:23.000 --> 00:00:24.000
 "Can I use this component?"
 
-9
 00:00:24.000 --> 00:00:27.000
 And honestly our team didn't know what it meant either.
 
-10
 00:00:27.000 --> 00:00:33.000
 It was introduced in an early version of the design system but we never had a clear path for moving out of it.
 
-11
 00:00:33.000 --> 00:00:40.000
 We didn't have a well defined set of criteria for what makes a component fully developed and ready for production.
 
-12
 00:00:40.000 --> 00:00:43.000
 It's been on our to do list for a very long time.
 
-13
 00:00:43.000 --> 00:00:47.000
 But this program increment we were able to set aside time to tackle this big question.
 
-14
-00:00:47.000 --> 00:01:01.000
-We established a checklist that helps us measure each components maturity through well defined and repeatable processes and we made a way to display that information on our dockside and that's what I'm going to demo now.
+00:00:47.000 --> 00:00:54.601
+We established a checklist that helps us measure each components maturity through well defined and repeatable processes
 
-15
-00:01:01.000 --> 00:01:08.000
-Okay, so here we are on the alert page of our dock site and you'll notice at the bottom we've added a component maturity section.
+00:00:54.602 --> 00:01:01.000
+and we made a way to display that information on our doc site and that's what I'm going to demo now.
 
-16
+00:01:01.001 --> 00:01:07.999
+Okay, so here we are on the alert page of our doc site and you'll notice at the bottom we've added a component maturity section.
+
 00:01:08.000 --> 00:01:13.000
 We've added this to all of our component pages here.
 
-17
 00:01:13.000 --> 00:01:16.000
 We have it broken down into three categories.
 
-18
 00:01:16.000 --> 00:01:25.000
-We're working on 1/4 for design but we're still auditing the sketchy like it and we want that information to be accurate before we release it.
+We're working on a fourth for design but we're still auditing the sketchy like it and we want that information to be accurate before we release it.
 
-19
 00:01:25.000 --> 00:01:32.000
-So you'll notice that each of these items can either be complete, incomplete or not applicable in this case, this is an alert component.
+So you'll notice that each of these items can either be complete, incomplete or not applicable. In this case, this is an alert component.
 
-20
 00:01:32.000 --> 00:01:33.000
-It's not an interactive component.
+It's not an interactive component,
 
-21
-00:01:33.000 --> 00:01:48.000
-So keyboard navigation isn't really applicable for more information about these items and the testing strategies, whether it was automated or manual testing that we use to mark these as complete or incomplete.
+00:01:33.000 --> 00:01:36.586
+so keyboard navigation isn't really applicable
 
-22
+00:01:36.587 --> 00:01:47.999
+for more information about these items and the testing strategies, whether it was automated or manual testing that we use to mark these as complete or incomplete.
+
 00:01:48.000 --> 00:01:52.000
 We have a link to that documentation right here, that's more detailed.
 
-23
 00:01:52.000 --> 00:01:56.000
 So I encourage you to read through all of these, read that documentation.
 
-24
 00:01:56.000 --> 00:02:03.000
 If you see a gap, if you see something that's incomplete and you think that your team could fill that gap, please consider contributing.
 
-25
 00:02:03.000 --> 00:02:08.000
 We love contributions so please reach out if you don't have time, that's okay.
 
-26
 00:02:08.000 --> 00:02:21.000
 This is not only a tool for you all to make informed decisions, but it's also a tool for us to be able to see where our gaps are and how we can prioritize our time to make our components more mature.
 
-27
-00:02:21.000 --> 00:02:22.000
-Thank you all for watching.
+00:02:21.001 --> 00:02:25.971
+Thank you all for watching. If you have quetions, please reach out.
 
