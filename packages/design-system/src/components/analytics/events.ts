@@ -19,6 +19,7 @@ export type EventType = 'link';
 export const MAX_LENGTH = 100;
 
 export enum EventCategory {
+  // These are likely unrelated and will need to be separated
   UI_COMPONENTS = 'ui components',
   UI_INTERACTION = 'ui interaction',
 }
