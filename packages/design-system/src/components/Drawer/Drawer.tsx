@@ -56,15 +56,13 @@ export const Drawer = (props: DrawerProps) => {
 
   return (
     <NativeDialog
-      aria-labelledby={id.current}
       className={classNames(props.className, 'ds-c-drawer')}
       exit={props.onCloseClick}
       showModal={props.hasFocusTrap}
     >
-      <div className="ds-c-drawer__window">
+      <div className="ds-c-drawer__window" tabIndex={-1} aria-labelledby={id.current}>
         <div className="ds-c-drawer__header">
           <Heading
-            tabIndex={0}
             id={id.current}
             className="ds-c-drawer__header-heading"
             ref={(el) => {
