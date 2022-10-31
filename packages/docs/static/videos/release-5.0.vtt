@@ -1,0 +1,46 @@
+WEBVTT
+
+00:00.000 --> 00:01.000
+Hi everyone.
+
+00:01.000 --> 00:05.000
+My name is Krithi and I'm a product manager working on the CMS Design system team.
+
+00:05.000 --> 00:09.000
+Thanks for taking the time to check out our first release video.
+
+00:09.000 --> 00:15.000
+We hope to do many more of these in the future and that they're helpful for understanding what's new with the design systems.
+
+00:15.000 --> 00:28.000
+If you're not already aware, the CMS WDS Experienced Team brings you updates to the CMS core design system along with updates to its Healthcare.gov and Medicare.gov child design systems.
+
+00:28.000 --> 00:36.000
+In PI-4, we decided to test out a new release cycle to better help product teams anticipate design system changes.
+
+00:36.000 --> 00:40.000
+Building a family of design systems comes with plenty of technical challenges.
+
+00:40.000 --> 00:52.000
+All year we've been releasing code updates on a bi weekly basis, but data showed that these updates were hard to keep track of and product teams were unable to ingest changes without planning in advance.
+
+00:52.000 --> 01:03.000
+So this program increment, we decided to slow down our release cycle in order to focus more on being intentional about our communication, documentation, and quality assurance.
+
+01:03.000 --> 01:12.000
+Product teams can now expect major and minor releases from the CMS Design System to occur at the end of every program increment.
+
+01:12.000 --> 01:20.000
+In addition, each major release will be accompanied with release notes, a video, a blog post, and slack communications.
+
+01:20.000 --> 01:26.000
+We hope that this shift will allow product teams to better anticipate and plan for design-system updates.
+
+01:26.000 --> 01:37.000
+During program increment planning, we've made a lot of improvements to the design systems over the last 10 weeks, and we're excited to walk you through some of those updates in this post.
+
+01:37.000 --> 01:53.000
+If you have any questions or comments, feel free to reach out to us in Slack at the #cms-design-system channel, or you can visit the contactus page on design.cms.gov to find all the ways you can get in touch with us.
+
+01:53.000 --> 02:02.000
+So thank you so much for reading this post, and keep scrolling to see a preview of what's in store for version five of the CMSDS.
