@@ -19,19 +19,19 @@ Hey everyone, we're doing something new! We've saved up a program increment's wo
 
 #### Component maturity checklist
 
+We established a checklist that measures each component's path toward maturity and stability through [well-defined and repeatable processes](https://github.com/CMSgov/design-system/blob/pwolfert/blog/COMPONENT_MATURITY.md). This _maturity model_ evaluates a component's accessibility, code, Sketch assets, and use of design tokens as a series checklist items that have a complete, incomplete, or not-applicable status. This checklist helps us track progress on components and also helps application teams make informed decisions about when to use certain components, when to wait, or when to contribute.
+
 <div className="ds-u-measure--wide ds-u-margin-top--2">
   <Video name="component-maturity-demo" />
 </div>
 
-We established a checklist that measures each component's path toward maturity and stability through [well-defined and repeatable processes](https://github.com/CMSgov/design-system/blob/pwolfert/blog/COMPONENT_MATURITY.md). This _maturity model_ evaluates a component's accessibility, code, Sketch assets, and use of design tokens as a series checklist items that have a complete, incomplete, or not-applicable status. This checklist helps us track progress on components and also helps application teams make informed decisions about when to use certain components, when to wait, or when to contribute.
-
 #### Single-column layout
+
+We implemented a single-column layout design pattern for Helathcare.gov that teams can use to align their page layouts in both design and [code](https://design.cms.gov/layouts/Healthcare/one-col-page-layout?theme=healthcare). The single page layout has a space for a header, content, and a footer.  We are looking into expanding upon this page layout design patterns to offer more page layouts for Healthcare and Medicare.
 
 <div className="ds-u-measure--wide ds-u-margin-top--2">
   <Video name="page-layout-demo" />
 </div>
-
-We implemented a single-column layout design pattern for Helathcare.gov that teams can use to align their page layouts in both design and [code](https://design.cms.gov/layouts/Healthcare/one-col-page-layout?theme=healthcare). The single page layout has a space for a header, content, and a footer.  We are looking into expanding upon this page layout design patterns to offer more page layouts for Healthcare and Medicare.
 
 #### New dialog
 
@@ -54,11 +54,11 @@ Mamma mia, those are some thorough checks! All these things help us be more conf
 
 #### Sketch alert symbol update 
 
+We have consolidated and updated our alert symbol to take it from multiple alert symbols to a single alerts symbol with optional overrides. The override panel supports standard and lightweight designs, changing the alert icon, and showing and hiding the alert heading and body. The simplified approach to the alert and the practice of utilizing layer styles more to achieve design flexibility is something we are going to continue weaving into other sketch symbols as we create and update them. Finally, this updated alert symbol now can easily adapt to small screen sizes without breaking the design of the alert.
+
 <div className="ds-u-measure--wide ds-u-margin-top--2">
   <Video name="sketch-alert-demo" />
 </div>
-
-We have consolidated and updated our alert symbol to take it from multiple alert symbols to a single alerts symbol with optional overrides. The override panel supports standard and lightweight designs, changing the alert icon, and showing and hiding the alert heading and body. The simplified approach to the alert and the practice of utilizing layer styles more to achieve design flexibility is something we are going to continue weaving into other sketch symbols as we create and update them. Finally, this updated alert symbol now can easily adapt to small screen sizes without breaking the design of the alert.
 
 #### Camilo Sketch plug-in discovery 
 [We have been researching options](https://github.com/CMSgov/design-system/discussions/2231) for making our Sketch UI-kits easier to maintain and scale. Currently, we maintain three UI-kits for Healthcare, Medicare, and the Core Design System. Each time there is a change needed we have to make that change to the three different UI-kits. This can be time consuming and creates challenges when trying to replicate the exact symbol in different Sketch UI-kits. One of the more promising solutions to solve this problem is a plugin for Sketch called Camilo. It applies a theme to a single UI-kit so you can have multiple brands use the same UI-kit. The Camilo plugin has some issues that prevent it from being a solid solution for the CMS Design System.
@@ -71,9 +71,13 @@ We are using [Github Discussions](https://github.com/CMSgov/design-system/discus
 
 #### Sass/CSS changes
 
-<img src={scssToCssImg} alt="Sass to CSS" className="ds-u-margin-top--2" />
+Product teams have experienced pain points consuming our CSS as Sass, so we explored alternative options for distributing our CSS. Sass has been the recommended method of importing Sass from the beginning of the design system, but we've run into serious obstacles with upgrading to newer versions of Sass. 
 
-Product teams have experienced pain points consuming our CSS as Sass, so we explored alternative options for distributing our CSS. Sass has been the recommended method of importing Sass from the beginning of the design system, but we've run into serious obstacles with upgrading to newer versions of Sass. In order to simplify how our styles are consumed, make it easier to override styles in applications when necessary, and better support those who do not use the Sass pre-processor, we've decided to stop distributing our CSS as SCSS files. We will instead only distribute CSS files and will export all our design tokens as CSS variables. [Have thoughts? Join the discussion on GitHub](https://github.com/CMSgov/design-system/discussions/2223).
+<div className="ds-u-measure--wide ds-u-text-align--center ds-u-margin-y--3">
+  <img src={scssToCssImg} alt="Sass to CSS" className="ds-u-display--inline-block" height="100" />
+</div>
+
+In order to simplify how our styles are consumed, make it easier to override styles in applications when necessary, and better support those who do not use the Sass pre-processor, we've decided to stop distributing our CSS as SCSS files. We will instead only distribute CSS files and will export all our design tokens as CSS variables. [Have thoughts? Join the discussion on GitHub](https://github.com/CMSgov/design-system/discussions/2223).
 
 ## Previous releases
 
