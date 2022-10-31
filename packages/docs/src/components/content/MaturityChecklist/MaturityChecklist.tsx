@@ -1,5 +1,4 @@
 import MaturityChecklistItem, { CheckStatus } from './MaturityChecklistItem';
-import { Link } from 'gatsby';
 
 interface MaturityChecklistProps {
   // Accessibility
