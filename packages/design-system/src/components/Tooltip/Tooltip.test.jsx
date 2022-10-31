@@ -1,5 +1,6 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import Tooltip from './Tooltip';
+import userEvent from '@testing-library/user-event';
 import TooltipIcon from './TooltipIcon';
 
 jest.mock('@popperjs/core');
@@ -40,10 +41,28 @@ describe('Tooltip', function () {
   it('renders dialog tooltip', () => {
     renderTooltip({ dialog: true });
     const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
-    fireEvent.click(tooltipTrigger);
+    userEvent.click(tooltipTrigger);
     const contentEl = screen.queryByRole('dialog');
     expect(contentEl).not.toBeNull();
     expect(contentEl).toMatchSnapshot();
+  });
+
+  it('closes tooltip when trigger focus is lost', async () => {
+    jest.useFakeTimers();
+    const { container } = renderTooltip();
+    const tooltip = container.querySelector('.ds-c-tooltip');
+
+    userEvent.tab();
+    act(() => {
+      jest.advanceTimersByTime(100);
+    });
+    expect(tooltip).toHaveClass('ds-c-tooltip-enter');
+
+    userEvent.tab();
+    act(() => {
+      jest.advanceTimersByTime(100);
+    });
+    expect(tooltip).toHaveClass('ds-c-tooltip-exit');
   });
 
   describe('tooltip with close', () => {
@@ -59,7 +78,7 @@ describe('Tooltip', function () {
         contentHeading: 'Tooltip heading content',
       });
       const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
-      fireEvent.click(tooltipTrigger);
+      userEvent.click(tooltipTrigger);
       const contentEl = screen.queryByRole('dialog');
       expect(contentEl).toMatchSnapshot();
     });
@@ -71,7 +90,7 @@ describe('Tooltip', function () {
         showCloseButton: true,
       });
       const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
-      fireEvent.click(tooltipTrigger);
+      userEvent.click(tooltipTrigger);
       const contentEl = screen.queryByRole('dialog');
       expect(contentEl).toMatchSnapshot();
     });
@@ -84,9 +103,9 @@ describe('Tooltip', function () {
         onClose,
       });
       const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
-      fireEvent.click(tooltipTrigger);
+      userEvent.click(tooltipTrigger);
       const closeButton = screen.getByLabelText('Close', { selector: 'button' });
-      fireEvent.click(closeButton);
+      userEvent.click(closeButton);
       expect(onClose).toHaveBeenCalled();
     });
 
@@ -96,9 +115,9 @@ describe('Tooltip', function () {
         showCloseButton: true,
       });
       const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
-      fireEvent.click(tooltipTrigger);
+      userEvent.click(tooltipTrigger);
       const closeButton = screen.getByLabelText('Close', { selector: 'button' });
-      fireEvent.click(closeButton);
+      userEvent.click(closeButton);
       const tooltipContent = screen.queryByRole('dialog');
       expect(tooltipContent).toBeNull();
     });
@@ -109,9 +128,9 @@ describe('Tooltip', function () {
         showCloseButton: true,
       });
       const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
-      fireEvent.click(tooltipTrigger);
+      userEvent.click(tooltipTrigger);
       const closeButton = screen.getByLabelText('Close', { selector: 'button' });
-      fireEvent.click(closeButton);
+      userEvent.click(closeButton);
       expect(tooltipTrigger).toEqual(document.activeElement); // eslint-disable-line
     });
 
