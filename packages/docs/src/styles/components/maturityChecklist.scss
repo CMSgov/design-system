@@ -4,14 +4,14 @@
 }
 
 .c-maturity-checklist-item__title {
-  margin-top: 0;
   margin-bottom: 0;
+  margin-top: 0;
   padding-top: 1px; // Aligns with status text
 }
 
 .c-maturity-checklist-item__status {
-  order: -1;
   min-width: 150px;
+  order: -1;
 
   > svg,
   > span {

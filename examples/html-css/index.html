@@ -5,20 +5,17 @@
     <title>Design System</title>
     <!-- In a real project this will contain a href link to your local CSS file, 
       while in this case we are using a CDN as an example -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/@cmsgov/design-system@2.0.0/dist/css/index.css"
-    />
+    <link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/4.0.5/css/index.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body class="ds-base">
-    <header class="ds-u-padding--3 ds-u-sm-padding--3 ds-u-display--block">
-      <h1 class="ds-display">Example 1: Article</h1>
+  <body class="ds-base ds-l-container">
+    <header class="ds-u-display--block">
+      <h1 class="ds-text-heading--5xl">Example 1: Article</h1>
     </header>
     <hr />
 
-    <article class="ds-u-measure--wide ds-u-margin-y--5 container">
-      <h1 class="ds-h1">How the U.S. Government Is&nbsp;Organized</h1>
+    <article class="ds-u-measure--wide ds-u-margin-y--5">
+      <h1 class="ds-text-heading--3xl">How the U.S. Government Is&nbsp;Organized</h1>
 
       <div class="ds-c-alert">
         <div class="ds-c-alert__body">
@@ -29,7 +26,7 @@
         </div>
       </div>
 
-      <p class="ds-text--lead">
+      <p class="ds-text-body--lg">
         The
         <a href="https://www.archives.gov/founding-docs/constitution"
           >Constitution of the United States</a
@@ -65,7 +62,7 @@
         system of checks and balances.
       </p>
 
-      <h2 class="ds-h2">Legislative Branch</h2>
+      <h2 class="ds-text-heading--2xl">Legislative Branch</h2>
 
       <p class="ds-text">
         The legislative Branch enacts legislation, confirms or rejects Presidential appointments,
@@ -92,7 +89,7 @@
           limit to the number of terms an individual can serve.
         </li>
       </ul>
-      <h2 class="ds-h2">Executive Branch</h2>
+      <h2 class="ds-text-heading--2xl">Executive Branch</h2>
       <p class="ds-text">
         The <a href="https://bensguide.gpo.gov/a-executive">executive branch</a> carries out and
         enforces laws. It includes the President, Vice President, the Cabinet, executive
@@ -122,7 +119,7 @@
         </li>
       </ul>
 
-      <h2 class="ds-h2">Judicial Branch</h2>
+      <h2 class="ds-text-heading--2xl">Judicial Branch</h2>
 
       <p class="ds-text">
         The <a href="https://www.whitehouse.gov/1600/judicial-branch">judicial branch</a> interprets
@@ -231,13 +228,13 @@
       </p>
     </article>
 
-    <header class="ds-u-padding--3 ds-u-sm-padding--3 ds-u-display--block">
-      <h1 class="ds-display">Example 2: Form</h1>
+    <header class="ds-u-display--block">
+      <h1 class="ds-text-heading--5xl">Example 2: Form</h1>
     </header>
     <hr />
 
-    <article class="ds-u-margin-y--5 container">
-      <h1 class="ds-h1">Report an issue</h1>
+    <article class="ds-u-margin-y--5">
+      <h1 class="ds-text-heading--3xl">Report an issue</h1>
       <p class="ds-text ds-u-measure--base">
         Please fill out the fields below to report your issue. After you've reported an issue,
         you'll receive a response within 24 hours.
@@ -268,58 +265,26 @@
           type="text"
         />
 
-        <fieldset class="ds-c-fieldset">
-          <legend class="ds-c-label">Which days can we call you?</legend>
-          <span class="ds-c-field__hint">Select all days that would work for you</span>
-
-          <input class="ds-c-choice" id="input-monday" type="checkbox" name="day" value="monday" />
-          <label for="input-monday">Monday</label>
-
-          <input
-            class="ds-c-choice"
-            id="input-tuesday"
-            type="checkbox"
-            name="day"
-            value="tuesday"
-          />
-          <label for="input-tuesday">Tuesday</label>
-
-          <input
-            class="ds-c-choice"
-            id="input-wednesday"
-            type="checkbox"
-            name="day"
-            value="wednesday"
-          />
-          <label for="input-wednesday">Wednesday</label>
-
-          <input
-            class="ds-c-choice"
-            id="input-thursday"
-            type="checkbox"
-            name="day"
-            value="thursday"
-          />
-          <label for="input-thursday">Thursday</label>
-
-          <input class="ds-c-choice" id="input-friday" type="checkbox" name="day" value="friday" />
-          <label for="input-friday">Friday</label>
-        </fieldset>
-
         <label class="ds-c-label" for="input-description">Describe your issue</label>
         <textarea class="ds-c-field" id="input-description" name="description" rows="6"></textarea>
 
         <fieldset class="ds-c-fieldset">
           <legend class="ds-c-label">Have you contacted us about this issue before?</legend>
 
-          <input class="ds-c-choice" id="input-yes" type="radio" name="duplicate" value="yes" />
-          <label class="ds-u-display--inline-block ds-u-margin-right--3" for="input-yes">Yes</label>
+          <div class="ds-c-choice-wrapper">
+            <input class="ds-c-choice" id="input-yes" type="radio" name="duplicate" value="yes" />
+            <label class="ds-u-display--inline-block ds-u-margin-right--3" for="input-yes"
+              >Yes</label
+            >
+          </div>
 
-          <input class="ds-c-choice" id="input-no" type="radio" name="duplicate" value="no" />
-          <label class="ds-u-display--inline-block" for="input-no">No</label>
+          <div class="ds-c-choice-wrapper">
+            <input class="ds-c-choice" id="input-no" type="radio" name="duplicate" value="no" />
+            <label class="ds-u-display--inline-block" for="input-no">No</label>
+          </div>
         </fieldset>
 
-        <button class="ds-c-button ds-c-button--primary ds-u-margin-top--3" type="submit">
+        <button class="ds-c-button ds-c-button--solid ds-u-margin-top--3" type="submit">
           <span id="spinner" class="ds-c-spinner ds-u-display--none"></span>
           Report issue
         </button>
@@ -327,8 +292,8 @@
       </form>
     </article>
 
-    <header class="ds-u-padding--3 ds-u-sm-padding--3 ds-u-display--block">
-      <h1 class="ds-display">Example 3: Responsive</h1>
+    <header class="ds-u-display--block">
+      <h1 class="ds-text-heading--5xl">Example 3: Responsive</h1>
     </header>
     <hr />
 
@@ -336,9 +301,7 @@
       <div class="ds-u-clearfix ds-u-margin-bottom--2">
         <img class="ds-u-float--left ds-u-margin-right--2" width="60" src="logo.svg" alt="Acme" />
         <div>
-          <h1 class="ds-u-margin-bottom--0 ds-h4 ds-u-md-font-size--h2">
-            Acme Health Insurance
-          </h1>
+          <h1 class="ds-u-margin-bottom--0 ds-h4 ds-u-md-font-size--h2">Acme Health Insurance</h1>
           <p class="ds-text ds-u-color--muted ds-u-margin-top--0 ds-u-leading--heading">
             Enrolled on 12/14/2019 - Covered until 12/31/2020
           </p>
@@ -352,31 +315,20 @@
         <span class="ds-u-color--muted">Anton, Mary, Peter</span>
       </p>
       <p class="ds-u-margin-y--1">
-        <strong class="ds-u-display--block ds-u-md-display--inline-block">
-          Premium:
-        </strong>
+        <strong class="ds-u-display--block ds-u-md-display--inline-block"> Premium: </strong>
         <span class="ds-u-color--muted">$350 per month</span>
       </p>
       <p class="ds-u-margin-y--1">
-        <strong class="ds-u-display--block ds-u-md-display--inline-block">
-          Coverage year:
-        </strong>
+        <strong class="ds-u-display--block ds-u-md-display--inline-block"> Coverage year: </strong>
         <span class="ds-u-color--muted">2020</span>
       </p>
 
       <a
-        class="ds-c-button ds-c-button--outline ds-u-margin-top--1 ds-u-display--block ds-u-md-display--inline-block"
+        class="ds-c-button ds-u-margin-top--1 ds-u-display--block ds-u-md-display--inline-block"
         href="#example"
       >
         View details
       </a>
     </article>
-
-    <script>
-      document.querySelector('form').addEventListener('submit', function (event) {
-        event.preventDefault();
-        document.querySelector('#spinner').classList.toggle('ds-u-display--none');
-      });
-    </script>
   </body>
 </html>
