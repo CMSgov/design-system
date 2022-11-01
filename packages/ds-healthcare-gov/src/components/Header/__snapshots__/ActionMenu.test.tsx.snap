@@ -11,7 +11,6 @@ Object {
   "ga_eventAction": "click",
   "ga_eventCategory": "consistent header",
   "ga_eventLabel": "menu closed",
-  "ga_eventType": "ui interaction",
   "ga_eventValue": "",
   "text": "menu closed",
 }
@@ -28,7 +27,6 @@ Object {
   "ga_eventAction": "click",
   "ga_eventCategory": "consistent header",
   "ga_eventLabel": "menu opened",
-  "ga_eventType": "ui interaction",
   "ga_eventValue": "",
   "text": "menu opened",
 }
@@ -45,7 +43,6 @@ Object {
   "ga_eventAction": "click",
   "ga_eventCategory": "consistent header",
   "ga_eventLabel": "ZOMBO",
-  "ga_eventType": "ui interaction",
   "ga_eventValue": "",
   "link_url": "https://www.zombo.com",
   "text": "ZOMBO",
@@ -63,7 +60,6 @@ Object {
   "ga_eventAction": "click",
   "ga_eventCategory": "consistent header",
   "ga_eventLabel": "menu closed",
-  "ga_eventType": "ui interaction",
   "ga_eventValue": "",
   "text": "menu closed",
 }
@@ -80,7 +76,6 @@ Object {
   "ga_eventAction": "click",
   "ga_eventCategory": "consistent header",
   "ga_eventLabel": "menu opened",
-  "ga_eventType": "ui interaction",
   "ga_eventValue": "",
   "text": "menu opened",
 }

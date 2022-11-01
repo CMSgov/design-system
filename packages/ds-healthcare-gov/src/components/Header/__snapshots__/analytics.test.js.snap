@@ -11,7 +11,6 @@ Object {
   "ga_eventAction": "click",
   "ga_eventCategory": "consistent header",
   "ga_eventLabel": "Click here!",
-  "ga_eventType": "ui interaction",
   "ga_eventValue": "",
   "text": "Click here!",
 }
@@ -28,7 +27,6 @@ Object {
   "ga_eventAction": "click",
   "ga_eventCategory": "consistent header",
   "ga_eventLabel": "Link to somewhere",
-  "ga_eventType": "ui interaction",
   "ga_eventValue": "",
   "link_url": "https://somewhere",
   "text": "Link to somewhere",
