@@ -20,15 +20,25 @@ const listMarkup = (type) => {
 
   return (
     <>
-      <h2 className="ds-h6" id={`${type}-list-id`}>
-        {label} list title
-      </h2>
       <Tag className={className} aria-labelledby={`${type}-list-id`}>
-        <li>List item 1</li>
-        <li>List item 2</li>
+        <li>{label} list item 1</li>
+        <li>{label} list item 2</li>
       </Tag>
     </>
   );
+};
+
+export const AllLists = () => (
+  <>
+    {listMarkup("unordered")}
+    {listMarkup("ordered")}
+    {listMarkup("unstyled")}
+  </>
+);
+
+export const AllListsOnDark = AllLists.bind({});
+AllListsOnDark.parameters = {
+  baseInverse: true,
 };
 
 export const unorderedList = () => listMarkup('unordered');

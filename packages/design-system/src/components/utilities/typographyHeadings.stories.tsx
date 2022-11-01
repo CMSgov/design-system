@@ -26,6 +26,12 @@ export const AllHeadings = () => {
   );
 };
 
+export const AllHeadingsOnDark = AllHeadings.bind({});
+
+AllHeadingsOnDark.parameters = {
+  baseInverse: true,
+};
+
 export const Heading5xl = () => {
   return (
     <>
