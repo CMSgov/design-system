@@ -21,6 +21,9 @@ export const MAX_LENGTH = 100;
 export enum EventCategory {
   // These are likely unrelated and will need to be separated
   UI_COMPONENTS = 'ui components',
+  // TODO: Right now this is used as the category of the Button events, but it should
+  // be consistent. After talking to the analytics team, we decided that it can be
+  // changed after Open Enrollment season.
   UI_INTERACTION = 'ui interaction',
 }
 
