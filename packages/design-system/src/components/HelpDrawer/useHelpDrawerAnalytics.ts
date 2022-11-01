@@ -1,4 +1,9 @@
-import { defaultAnalyticsFunction, EventCategory, useAnalyticsContent } from '../analytics';
+import {
+  defaultAnalyticsFunction,
+  EventCategory,
+  EventType,
+  useAnalyticsContent,
+} from '../analytics';
 import { HelpDrawerProps } from './HelpDrawer';
 import { helpDrawerSendsAnalytics } from '../flags';
 
@@ -23,7 +28,7 @@ export default function useHelpDrawerAnalytics({
     }
 
     onAnalyticsEvent({
-      event_type: EventCategory.UI_INTERACTION,
+      event_type: EventType.UI_INTERACTION,
       event_category: EventCategory.UI_COMPONENTS,
       event_label: eventHeadingText,
       heading: eventHeadingText,

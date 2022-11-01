@@ -14,7 +14,7 @@ export interface UtagContainer {
   utag?: UtagObject;
 }
 
-export type EventType = 'link';
+export type UtagEventType = 'link' | 'view';
 
 export const MAX_LENGTH = 100;
 
@@ -24,6 +24,11 @@ export enum EventCategory {
   // TODO: Right now this is used as the category of the Button events, but it should
   // be consistent. After talking to the analytics team, we decided that it can be
   // changed after Open Enrollment season.
+  UI_INTERACTION = 'ui interaction',
+}
+
+export enum EventType {
+  CONVERSION = 'conversion',
   UI_INTERACTION = 'ui interaction',
 }
 
@@ -56,7 +61,11 @@ const TIMEOUT = 300;
  * Use existing window.utag.link function to send analytics events. If the function does not
  * exist right away, try again after TIMEOUT milliseconds until we've reached MAX_RETRIES.
  */
-export function sendAnalytics(eventType: EventType, event: Required<AnalyticsEvent>, retry = 0) {
+export function sendAnalytics(
+  eventType: UtagEventType,
+  event: Required<AnalyticsEvent>,
+  retry = 0
+) {
   // If we were to define this on the window object using `declare global { interface Window { utag: ... } }`
   // that type definition of window.utag can conflict with downstream declarations. This happened before, and
   // our fix is to only have a local type so we can get some type-checking without risk of conflicts. This

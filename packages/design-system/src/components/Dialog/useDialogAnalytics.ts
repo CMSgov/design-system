@@ -1,5 +1,10 @@
 import { DialogProps } from './Dialog';
-import { defaultAnalyticsFunction, EventCategory, useAnalyticsContent } from '../analytics';
+import {
+  defaultAnalyticsFunction,
+  EventCategory,
+  EventType,
+  useAnalyticsContent,
+} from '../analytics';
 import { dialogSendsAnalytics } from '../flags';
 
 export function useDialogAnalytics({
@@ -23,7 +28,7 @@ export function useDialogAnalytics({
     }
 
     onAnalyticsEvent({
-      event_type: EventCategory.UI_INTERACTION,
+      event_type: EventType.UI_INTERACTION,
       event_category: EventCategory.UI_COMPONENTS,
       event_label: eventHeadingText,
       heading: eventHeadingText,

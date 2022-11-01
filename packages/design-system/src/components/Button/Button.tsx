@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import mergeRefs from '../utilities/mergeRefs';
 import useButtonAnalytics from './useButtonAnalytics';
-import { AnalyticsFunction } from '../analytics';
+import { AnalyticsOverrideProps, AnalyticsParentDataProps } from '../analytics';
 import { MutableRefObject } from 'react';
 
 export type ButtonSize = 'small' | 'big';
@@ -10,34 +10,7 @@ export type ButtonVariation = 'solid' | 'ghost';
 
 export type ButtonRef = MutableRefObject<any> | ((...args: any[]) => any);
 
-type CommonButtonProps = {
-  /**
-   * Analytics events tracking is enabled by default. Set this value to `false` to
-   * disable tracking for this component instance.
-   */
-  analytics?: boolean;
-  /**
-   * An override for the dynamic content sent to analytics services. By default this
-   * content comes from the heading.
-   *
-   * In cases where this component’s heading may contain **sensitive information**,
-   * use this prop to override what is sent to analytics.
-   */
-  analyticsLabelOverride?: string;
-  /**
-   * If needed for analytics, pass heading text of parent component of button.
-   */
-  analyticsParentHeading?: string;
-  /**
-   * If needed for analytics, pass type of parent component of button.
-   */
-  analyticsParentType?: string;
-  /**
-   * Optional callback that will intercept analytics events for this component.
-   * If none is specified, the design system will use the default analytics
-   * function, which can be overwritten globally with `setDefaultAnalyticsFunction`.
-   */
-  onAnalyticsEvent?: AnalyticsFunction;
+interface CommonButtonProps extends AnalyticsOverrideProps, AnalyticsParentDataProps {
   /**
    * Label text or HTML
    */
@@ -80,7 +53,7 @@ type CommonButtonProps = {
    * A string corresponding to Button variation classes.
    */
   variation?: ButtonVariation;
-};
+}
 
 // Collect all the additional properties that one could supply to a button component
 // that will be passed down to whatever element or component is being used. This is
@@ -102,6 +75,7 @@ export const Button = (props: ButtonProps) => {
   const {
     analytics,
     analyticsLabelOverride,
+    analyticsEventTypeOverride,
     analyticsParentHeading,
     analyticsParentType,
     onAnalyticsEvent,
