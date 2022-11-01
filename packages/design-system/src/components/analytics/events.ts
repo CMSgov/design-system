@@ -71,7 +71,6 @@ export function sendAnalytics(eventType: EventType, event: Required<AnalyticsEve
       utag[eventType]({
         // Expand the event object to support the properties expected on healthcare.gov
         ga_eventValue: '', // default value
-        ga_eventType: event.event_type,
         ga_eventAction: event.event_action,
         ga_eventCategory: event.event_category,
         ga_eventLabel: event.event_label,
