@@ -1,5 +1,5 @@
 export default {
-  title: 'Foundations/Typography/BodyText',
+  title: 'Foundations/Typography/Body Text',
   parameters: {
     docs: {
       source: {
@@ -26,6 +26,10 @@ export const AllBodyText = () => {
       </p>
     </>
   );
+};
+export const AllBodyTextOnDark = AllBodyText.bind({});
+AllBodyTextOnDark.parameters = {
+  baseInverse: true,
 };
 export const BodyTextLarge = () => {
   return (

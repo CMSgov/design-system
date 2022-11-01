@@ -234,12 +234,29 @@
   --backgroundColor--d: #{$button-ghost__background-color--disabled};
   --borderColor--d: #{$button-ghost__border-color--disabled};
   --color--d: #{$button-ghost__color--disabled};
+
   text-decoration: underline;
   text-decoration-color: currentColor;
+
+  &:is(a) {
+    text-decoration: underline;
+
+    &:hover,
+    &:active {
+      text-decoration: underline;
+      text-decoration-color: inherit;
+      text-decoration-thickness: inherit;
+    }
+  }
 
   &:disabled,
   &.ds-c-button--disabled {
     text-decoration-color: transparent;
+
+    &:is(a) {
+      text-decoration: underline;
+      text-decoration-color: inherit;
+    }
   }
 
   &.ds-c-button--alternate {
