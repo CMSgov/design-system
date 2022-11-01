@@ -16,8 +16,6 @@ export interface UtagContainer {
 
 export type UtagEventType = 'link' | 'view';
 
-export const MAX_LENGTH = 100;
-
 export enum EventCategory {
   // These are likely unrelated and will need to be separated
   UI_COMPONENTS = 'ui components',
@@ -41,14 +39,15 @@ export interface AnalyticsEvent {
   [additional_props: string]: unknown;
 }
 
+export const MAX_STRING_LENGTH = 100;
 /**
- * Clip all the string values to the MAX_LENGTH on an event object in place by mutation
+ * Clip all the string values to the MAX_STRING_LENGTH on an event object in place by mutation
  */
 function clipStrings<T>(event: T): T {
   for (const key in event) {
     const value = event[key];
     if (typeof value === 'string') {
-      event[key] = value.substring(0, MAX_LENGTH) as any;
+      event[key] = value.substring(0, MAX_STRING_LENGTH) as any;
     }
   }
   return event;
@@ -104,6 +103,11 @@ export type AnalyticsFunction = typeof sendLinkEvent;
 
 export let defaultAnalyticsFunction = sendLinkEvent;
 
+/**
+ * Allows applications to override the default `onAnalyticsEvent` function
+ * across the whole system. To override it for a single component instance,
+ * use the `onAnalyticsEvent` prop instead.
+ */
 export function setDefaultAnalyticsFunction(analyticsFunction: AnalyticsFunction) {
   defaultAnalyticsFunction = analyticsFunction;
 }

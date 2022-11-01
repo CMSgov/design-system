@@ -1,4 +1,9 @@
-import { UtagContainer, sendLinkEvent } from './events';
+import {
+  UtagContainer,
+  sendLinkEvent,
+  defaultAnalyticsFunction,
+  setDefaultAnalyticsFunction,
+} from './events';
 
 describe('sendLinkEvent', () => {
   beforeEach(() => {
@@ -38,7 +43,6 @@ describe('sendLinkEvent', () => {
       expect((window as any as UtagContainer).utag?.link).toHaveBeenCalledWith({
         ...eventProps,
         ga_eventValue: '',
-        ga_eventType: eventProps.event_type,
         ga_eventAction: eventProps.event_action,
         ga_eventCategory: eventProps.event_category,
         ga_eventLabel: eventProps.event_label,
@@ -89,6 +93,17 @@ describe('sendLinkEvent', () => {
       expect(setTimeout).toHaveBeenCalledTimes(3);
       expect(setTimeout).toHaveBeenNthCalledWith(1, expect.any(Function), 300);
       expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 900);
+    });
+  });
+
+  describe('setDefaultAnalyticsFunction', () => {
+    it('sets the defaultAnalyticsFunction', () => {
+      const original = defaultAnalyticsFunction;
+      const analyticsFunction = jest.fn();
+      setDefaultAnalyticsFunction(analyticsFunction);
+      defaultAnalyticsFunction(eventProps);
+      expect(analyticsFunction).toHaveBeenCalledWith(eventProps);
+      setDefaultAnalyticsFunction(original);
     });
   });
 });
