@@ -30,11 +30,11 @@ const PageFeedback = ({ question = 'Was this article helpful?' }: PageFeedbackPr
 
   const stateAlertProps = answered
     ? {
-        variation: 'success',
+        variation: 'success' as const,
         style: { display: 'inline-block' },
       }
     : {
-        weight: 'lightweight',
+        weight: 'lightweight' as const,
       };
 
   return (
