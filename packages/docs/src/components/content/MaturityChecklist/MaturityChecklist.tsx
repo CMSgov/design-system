@@ -1,4 +1,3 @@
-import React from 'react';
 import MaturityChecklistItem, { CheckStatus } from './MaturityChecklistItem';
 
 interface MaturityChecklistProps {
@@ -28,6 +27,14 @@ interface MaturityChecklistProps {
  */
 const MaturityChecklist = (props: MaturityChecklistProps) => (
   <section>
+    <p>
+      For more information about how we tested and validated our work for each checklist item,{' '}
+      <a href="https://github.com/CMSgov/design-system/blob/main/COMPONENT_MATURITY.md">
+        read our component maturity documentation
+      </a>
+      .
+    </p>
+
     <h3>Accessibility</h3>
     <ul className="ds-c-list--bare">
       <MaturityChecklistItem title="Color" status={props.color}>

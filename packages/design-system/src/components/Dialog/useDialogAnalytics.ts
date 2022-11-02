@@ -1,11 +1,20 @@
 import { DialogProps } from './Dialog';
-import { EventCategory, sendLinkEvent, useAnalyticsContent } from '../analytics';
+import {
+  defaultAnalyticsFunction,
+  EventCategory,
+  EventType,
+  useAnalyticsContent,
+} from '../analytics';
 import { dialogSendsAnalytics } from '../flags';
 
-export function useDialogAnalytics({ analytics, analyticsLabelOverride }: DialogProps) {
+export function useDialogAnalytics({
+  analytics,
+  analyticsLabelOverride,
+  onAnalyticsEvent = defaultAnalyticsFunction,
+}: DialogProps) {
   function sendDialogEvent(
     content: string | undefined,
-    eventAttributes: { event_name: string; ga_eventAction: string }
+    eventAttributes: { event_name: string; event_action: string }
   ) {
     if (!dialogSendsAnalytics() || analytics === false) {
       return;
@@ -18,10 +27,10 @@ export function useDialogAnalytics({ analytics, analyticsLabelOverride }: Dialog
       return;
     }
 
-    sendLinkEvent({
-      event_type: EventCategory.UI_INTERACTION,
-      ga_eventCategory: EventCategory.UI_COMPONENTS,
-      ga_eventLabel: eventHeadingText,
+    onAnalyticsEvent({
+      event_type: EventType.UI_INTERACTION,
+      event_category: EventCategory.UI_COMPONENTS,
+      event_label: eventHeadingText,
       heading: eventHeadingText,
       ...eventAttributes,
     });
@@ -32,13 +41,13 @@ export function useDialogAnalytics({ analytics, analyticsLabelOverride }: Dialog
     onMount: (content: string | undefined) => {
       sendDialogEvent(content, {
         event_name: 'modal_impression',
-        ga_eventAction: 'modal impression',
+        event_action: 'modal impression',
       });
     },
     onUnmount: (content: string | undefined) => {
       sendDialogEvent(content, {
         event_name: 'modal_closed',
-        ga_eventAction: 'closed modal',
+        event_action: 'closed modal',
       });
     },
   });

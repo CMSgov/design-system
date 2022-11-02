@@ -1,7 +1,8 @@
-import { EventCategory, sendLinkEvent, getAnalyticsContentFromRefs } from '../analytics';
-import { MutableRefObject, useRef } from 'react';
-import { buttonSendsAnalytics } from '../flags';
 import classNames from 'classnames';
+import mergeRefs from '../utilities/mergeRefs';
+import useButtonAnalytics from './useButtonAnalytics';
+import { AnalyticsOverrideProps, AnalyticsParentDataProps } from '../analytics';
+import { MutableRefObject } from 'react';
 
 export type ButtonSize = 'small' | 'big';
 
@@ -9,28 +10,7 @@ export type ButtonVariation = 'solid' | 'ghost';
 
 export type ButtonRef = MutableRefObject<any> | ((...args: any[]) => any);
 
-type CommonButtonProps = {
-  /**
-   * Analytics events tracking is enabled by default. Set this value to `false` to
-   * disable tracking for this component instance.
-   */
-  analytics?: boolean;
-  /**
-   * An override for the dynamic content sent to analytics services. By default this
-   * content comes from the heading.
-   *
-   * In cases where this component’s heading may contain **sensitive information**,
-   * use this prop to override what is sent to analytics.
-   */
-  analyticsLabelOverride?: string;
-  /**
-   * If needed for analytics, pass heading text of parent component of button.
-   */
-  analyticsParentHeading?: string;
-  /**
-   * If needed for analytics, pass type of parent component of button.
-   */
-  analyticsParentType?: string;
+interface CommonButtonProps extends AnalyticsOverrideProps, AnalyticsParentDataProps {
   /**
    * Label text or HTML
    */
@@ -73,7 +53,7 @@ type CommonButtonProps = {
    * A string corresponding to Button variation classes.
    */
   variation?: ButtonVariation;
-};
+}
 
 // Collect all the additional properties that one could supply to a button component
 // that will be passed down to whatever element or component is being used. This is
@@ -91,26 +71,27 @@ type OtherProps = Omit<
 
 export type ButtonProps = CommonButtonProps & OtherProps;
 
-export const Button = ({
-  analytics,
-  analyticsLabelOverride,
-  analyticsParentHeading,
-  analyticsParentType,
-  children,
-  className,
-  disabled,
-  href,
-  inputRef,
-  isAlternate = false,
-  onClick,
-  onDark = false,
-  size,
-  variation,
-  type = 'button',
-  ...otherProps
-}: ButtonProps) => {
-  const contentRef = useRef();
-  const ComponentType = href ? 'a' : 'button';
+export const Button = (props: ButtonProps) => {
+  const {
+    analytics,
+    analyticsLabelOverride,
+    analyticsEventTypeOverride,
+    analyticsParentHeading,
+    analyticsParentType,
+    onAnalyticsEvent,
+    children,
+    className,
+    inputRef,
+    isAlternate,
+    onClick,
+    onDark,
+    size,
+    variation,
+    ...otherProps
+  } = props;
+
+  const { contentRef, sendButtonEvent } = useButtonAnalytics(props);
+  const ComponentType = props.href ? 'a' : 'button';
   const colorSchemeClass = isAlternate && `ds-c-button--alternate`;
   const modeClass = onDark && `ds-c-button--on-dark`;
   const sizeClass = size && `ds-c-button--${size}`;
@@ -125,53 +106,24 @@ export const Button = ({
     className
   );
 
-  const attrs: any = {
-    className: allClassNames,
-    disabled,
-    href,
-    type,
+  const attrs = {
     ...otherProps,
+    className: allClassNames,
   };
 
   if (ComponentType !== 'button') {
     delete attrs.disabled;
     delete attrs.type;
 
-    if (disabled) {
+    if (props.disabled) {
       attrs.role = 'link';
       attrs['aria-disabled'] = true;
       delete attrs.href;
     }
   }
 
-  function sendButtonEvent() {
-    if (!buttonSendsAnalytics() || analytics === false) {
-      return;
-    }
-
-    const buttonText = analyticsLabelOverride ?? getAnalyticsContentFromRefs([contentRef]);
-    const buttonStyle = variation ?? 'default';
-    const buttonType = type ?? 'button';
-    const buttonParentHeading = analyticsParentHeading ?? ' ';
-    const buttonParentType = analyticsParentType ?? ' ';
-
-    return sendLinkEvent({
-      event_name: 'button_engagement',
-      event_type: EventCategory.UI_INTERACTION,
-      ga_eventCategory: EventCategory.UI_INTERACTION,
-      ga_eventAction: `engaged ${buttonStyle} button`,
-      ga_eventLabel: href ? `${buttonText}: ${href}` : buttonText,
-      text: buttonText,
-      button_style: buttonStyle,
-      button_type: href ? 'link' : buttonType,
-      parent_component_heading: buttonParentHeading,
-      parent_component_type: buttonParentType,
-      ...(href ? { link_url: href } : {}),
-    });
-  }
-
   function handleClick(e: React.MouseEvent | React.KeyboardEvent): void {
-    if (!disabled) {
+    if (!props.disabled) {
       sendButtonEvent();
       if (onClick) {
         onClick(e);
@@ -188,16 +140,7 @@ export const Button = ({
 
   return (
     <ComponentType
-      ref={(el) => {
-        contentRef.current = el;
-        if (inputRef) {
-          if (typeof inputRef === 'function') {
-            inputRef(el);
-          } else {
-            inputRef.current = el;
-          }
-        }
-      }}
+      ref={mergeRefs([inputRef, contentRef])}
       onClick={handleClick}
       onKeyPress={ComponentType === 'a' ? handleKeyPress : undefined}
       {...attrs}
@@ -205,6 +148,12 @@ export const Button = ({
       {children}
     </ComponentType>
   );
+};
+
+Button.defaultProps = {
+  isAlternate: false,
+  onDark: false,
+  type: 'button',
 };
 
 export default Button;
