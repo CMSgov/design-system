@@ -4,7 +4,7 @@ WEBVTT
 Hey everyone, my name is scott.
 
 00:02.000 --> 00:14.000
-I am the design lead for the design system team and I'm going to be demoing an update to our sketch uI kit where we added a layout.
+I am the design lead for the design system team and I'm going to be demoing an update to our sketch UI kit where we added a layout.
 
 00:14.000 --> 00:37.000
 this is for the health care experience this layout that we added, you can find in sketch under your templates and then you'll see a single column layout, we have a few breakpoint options 320, 1024, and 1280 I'm gonna go ahead and choose the 1024 option and you can see place this on the page.
