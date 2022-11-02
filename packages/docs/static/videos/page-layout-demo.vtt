@@ -10,7 +10,7 @@ I am the design lead for the design system team and I'm going to be demoing an u
 this is for the health care experience this layout that we added, you can find in sketch under your templates and then you'll see a single column layout, we have a few breakpoint options 320, 1024, and 1280 I'm gonna go ahead and choose the 1024 option and you can see place this on the page.
 
 00:37.000 --> 00:43.000
-When I do place this on the page, you'll see there are the columns are there?
+When I do place this on the page, you'll see there are the columns are there.
 
 00:43.000 --> 00:55.000
 We've got some guides for the very left and the very right and then we also have a header content area in a page footer area that specify the number of columns as well.
