@@ -1,15 +1,15 @@
 import { headerSendsAnalytics } from '../flags';
-import { sendLinkEvent } from '@cmsgov/design-system';
+import { defaultAnalyticsFunction } from '@cmsgov/design-system';
 
 export function sendHeaderEvent(linkText: string, linkUrl?: string) {
   if (headerSendsAnalytics()) {
-    sendLinkEvent({
+    defaultAnalyticsFunction({
       event_name: 'header_click',
       event_type: 'ui interaction',
       category: 'consistent header',
-      ga_eventAction: 'click',
-      ga_eventCategory: 'consistent header',
-      ga_eventLabel: linkText,
+      event_action: 'click',
+      event_category: 'consistent header',
+      event_label: linkText,
       text: linkText,
       ...(linkUrl ? { link_url: linkUrl } : {}),
     });

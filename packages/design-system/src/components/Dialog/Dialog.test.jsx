@@ -46,7 +46,6 @@ describe('Dialog', function () {
     const defaultEvent = {
       event_name: 'modal_impression',
       event_type: 'ui interaction',
-      ga_eventType: 'cmsds',
       ga_eventValue: '',
       ga_eventCategory: 'ui components',
       ga_eventAction: 'modal impression',
@@ -70,18 +69,20 @@ describe('Dialog', function () {
     it('sends analytics event tracking on open dialog', () => {
       renderDialog();
       act(() => {
-        expect(tealiumMock).toBeCalledWith(defaultEvent);
+        expect(tealiumMock).toBeCalledWith(expect.objectContaining(defaultEvent));
       });
     });
 
     it('sends analytics event when heading is non-string', () => {
       renderDialog({ heading: <span>Hello World</span> });
       act(() => {
-        expect(tealiumMock).toBeCalledWith({
-          ...defaultEvent,
-          ga_eventLabel: 'Hello World',
-          heading: 'Hello World',
-        });
+        expect(tealiumMock).toBeCalledWith(
+          expect.objectContaining({
+            ...defaultEvent,
+            ga_eventLabel: 'Hello World',
+            heading: 'Hello World',
+          })
+        );
       });
     });
 

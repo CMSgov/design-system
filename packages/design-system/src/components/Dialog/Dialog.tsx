@@ -6,11 +6,12 @@ import useDialogAnalytics from './useDialogAnalytics';
 import { CloseIcon } from '../Icons';
 import { useEffect, useLayoutEffect, useRef, DialogHTMLAttributes } from 'react';
 import { t } from '../i18n';
+import { AnalyticsOverrideProps } from '../analytics';
 
 export type DialogCloseButtonSize = 'small' | 'big';
 export type DialogSize = 'narrow' | 'wide' | 'full';
 
-export interface BaseDialogProps {
+export interface BaseDialogProps extends AnalyticsOverrideProps {
   /**
    * Buttons or other HTML to be rendered in the "actions" bar
    * at the bottom of the dialog.
@@ -26,16 +27,6 @@ export interface BaseDialogProps {
    * alert, error, or warning occurs.
    */
   alert?: boolean;
-  /**
-   * Analytics events tracking is enabled by default. Set this value to `false` to disable tracking for this component instance.
-   */
-  analytics?: boolean;
-  /**
-   * An override for the dynamic content sent to analytics services. By default this content comes from the heading.
-   *
-   * In cases where this component’s heading may contain **sensitive information**, use this prop to override what is sent to analytics.
-   */
-  analyticsLabelOverride?: string;
   /**
    * Aria label for the close button
    */
@@ -108,6 +99,8 @@ export const Dialog = (props: DialogProps) => {
     alert,
     analytics,
     analyticsLabelOverride,
+    analyticsEventTypeOverride,
+    onAnalyticsEvent,
     ariaCloseLabel,
     children,
     className,

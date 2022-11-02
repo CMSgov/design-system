@@ -37,14 +37,6 @@ describe('HelpDrawer', () => {
 
   describe('Analytics event tracking', () => {
     let tealiumMock;
-    const defaultEvent = {
-      event_name: 'help_drawer_opened',
-      event_type: 'ui interaction',
-      ga_eventCategory: 'ui components',
-      ga_eventAction: 'opened help drawer',
-      ga_eventLabel: defaultProps.heading,
-      heading: defaultProps.heading,
-    };
 
     beforeEach(() => {
       setHelpDrawerSendsAnalytics(true);
@@ -61,37 +53,22 @@ describe('HelpDrawer', () => {
 
     it('sends analytics event tracking on open help drawer', () => {
       renderHelpDrawer();
-      expect(tealiumMock).toBeCalledWith({
-        ga_eventType: 'cmsds',
-        ga_eventValue: '',
-        ...defaultEvent,
-      });
+      expect(tealiumMock.mock.lastCall).toMatchSnapshot();
     });
 
     it('sends analytics event when heading is non-string', () => {
       renderHelpDrawer({ heading: <span>Hello World</span> });
-      expect(tealiumMock).toBeCalledWith({
-        ...defaultEvent,
-        ga_eventType: 'cmsds',
-        ga_eventValue: '',
-        ga_eventLabel: 'Hello World',
-        heading: 'Hello World',
-      });
+      expect(tealiumMock.mock.lastCall).toMatchSnapshot();
     });
 
     it('disables analytics event tracking on open', () => {
       renderHelpDrawer({ analytics: false, onCloseClick: jest.fn() });
-      expect(tealiumMock).not.toBeCalledWith(defaultEvent);
+      expect(tealiumMock).not.toHaveBeenCalled();
     });
 
     it('overrides analytics event tracking on open', () => {
       renderHelpDrawer({ analyticsLabelOverride: 'other heading', onCloseClick: jest.fn() });
-      expect(tealiumMock).toBeCalledWith(
-        expect.objectContaining({
-          ga_eventLabel: 'other heading',
-          heading: 'other heading',
-        })
-      );
+      expect(tealiumMock.mock.lastCall).toMatchSnapshot();
     });
   });
 });

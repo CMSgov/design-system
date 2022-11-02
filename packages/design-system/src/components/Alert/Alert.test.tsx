@@ -119,17 +119,6 @@ describe('Alert', function () {
 
   describe('Analytics event tracking', () => {
     let tealiumMock;
-    const defaultEvent = {
-      event_name: 'alert_impression',
-      event_type: 'ui interaction',
-      ga_eventType: 'cmsds',
-      ga_eventValue: '',
-      ga_eventCategory: 'ui components',
-      ga_eventAction: 'alert impression',
-      ga_eventLabel: `Warning: ${defaultText}`,
-      heading: `Warning: ${defaultText}`,
-      type: 'warn',
-    };
 
     beforeEach(() => {
       setAlertSendsAnalytics(true);
@@ -147,18 +136,13 @@ describe('Alert', function () {
     it('sends analytics event with heading', () => {
       const heading = 'Ahhh!';
       renderAlert({ heading, variation: 'error' });
-      expect(tealiumMock).toBeCalledWith({
-        ...defaultEvent,
-        ga_eventLabel: `Alert: ${heading}`,
-        heading: `Alert: ${heading}`,
-        type: 'error',
-      });
+      expect(tealiumMock.mock.lastCall).toMatchSnapshot();
       expect(tealiumMock).toHaveBeenCalledTimes(1);
     });
 
     it('sends analytics event with body-content fallback', () => {
       renderAlert({ variation: 'warn' });
-      expect(tealiumMock).toBeCalledWith(defaultEvent);
+      expect(tealiumMock.mock.lastCall).toMatchSnapshot();
       expect(tealiumMock).toHaveBeenCalledTimes(1);
     });
 
@@ -174,12 +158,7 @@ describe('Alert', function () {
 
     it('overrides analytics event content', () => {
       renderAlert({ variation: 'success', analyticsLabelOverride: 'other heading' });
-      expect(tealiumMock).toBeCalledWith(
-        expect.objectContaining({
-          ga_eventLabel: 'other heading',
-          heading: 'other heading',
-        })
-      );
+      expect(tealiumMock.mock.lastCall).toMatchSnapshot();
       expect(tealiumMock).toHaveBeenCalledTimes(1);
     });
   });
