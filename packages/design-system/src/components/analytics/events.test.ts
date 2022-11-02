@@ -1,23 +1,28 @@
-import { UtagContainer, sendLinkEvent } from './events';
+import {
+  UtagContainer,
+  sendLinkEvent,
+  defaultAnalyticsFunction,
+  setDefaultAnalyticsFunction,
+} from './events';
 
 describe('sendLinkEvent', () => {
   beforeEach(() => {
     jest.spyOn(global, 'setTimeout');
   });
 
-  const gaEventProps = {
-    ga_eventType: 'cmsds',
-    ga_eventCategory: 'test category',
-    ga_eventAction: 'test action',
-    ga_eventLabel: 'test label',
-    ga_eventValue: 'test value',
+  const eventProps = {
+    event_type: 'ui interaction',
+    event_name: 'test event',
+    event_category: 'test category',
+    event_action: 'test action',
+    event_label: 'test label',
   };
 
   describe('without utag instance', () => {
     it('does nothing if window.utag does not exist', () => {
       const mock = jest.fn();
       (window as any as UtagContainer).utag = undefined;
-      sendLinkEvent(gaEventProps);
+      sendLinkEvent(eventProps);
       expect(mock).not.toHaveBeenCalled();
     });
   });
@@ -34,8 +39,14 @@ describe('sendLinkEvent', () => {
     });
 
     it('calls window.utag.link with event', () => {
-      sendLinkEvent(gaEventProps);
-      expect((window as any as UtagContainer).utag?.link).toHaveBeenCalledWith(gaEventProps);
+      sendLinkEvent(eventProps);
+      expect((window as any as UtagContainer).utag?.link).toHaveBeenCalledWith({
+        ...eventProps,
+        ga_eventValue: '',
+        ga_eventAction: eventProps.event_action,
+        ga_eventCategory: eventProps.event_category,
+        ga_eventLabel: eventProps.event_label,
+      });
     });
   });
 
@@ -49,7 +60,11 @@ describe('sendLinkEvent', () => {
           throw 'test event';
         }),
       };
-      expect(sendLinkEvent(gaEventProps)).toBe('Error sending event to Tealium test event');
+      const originalWarn = console.warn;
+      console.warn = jest.fn();
+      sendLinkEvent(eventProps);
+      expect((console.warn as jest.Mock).mock.lastCall).toMatchSnapshot();
+      console.warn = originalWarn;
     });
 
     it('retries on missing utag.link', () => {
@@ -57,7 +72,7 @@ describe('sendLinkEvent', () => {
       jest.useFakeTimers();
 
       (window as any as UtagContainer).utag = { link: undefined };
-      sendLinkEvent(gaEventProps);
+      sendLinkEvent(eventProps);
       expect(mock).not.toHaveBeenCalled();
 
       (window as any as UtagContainer).utag = { link: mock };
@@ -69,7 +84,7 @@ describe('sendLinkEvent', () => {
       jest.useFakeTimers();
 
       (window as any as UtagContainer).utag = { link: undefined };
-      expect(sendLinkEvent(gaEventProps)).toBe(undefined);
+      expect(sendLinkEvent(eventProps)).toBe(undefined);
 
       jest.runAllTimers();
       jest.runAllTimers();
@@ -78,6 +93,17 @@ describe('sendLinkEvent', () => {
       expect(setTimeout).toHaveBeenCalledTimes(3);
       expect(setTimeout).toHaveBeenNthCalledWith(1, expect.any(Function), 300);
       expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 900);
+    });
+  });
+
+  describe('setDefaultAnalyticsFunction', () => {
+    it('sets the defaultAnalyticsFunction', () => {
+      const original = defaultAnalyticsFunction;
+      const analyticsFunction = jest.fn();
+      setDefaultAnalyticsFunction(analyticsFunction);
+      defaultAnalyticsFunction(eventProps);
+      expect(analyticsFunction).toHaveBeenCalledWith(eventProps);
+      setDefaultAnalyticsFunction(original);
     });
   });
 });

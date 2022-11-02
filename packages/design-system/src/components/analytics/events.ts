@@ -14,32 +14,40 @@ export interface UtagContainer {
   utag?: UtagObject;
 }
 
-export type EventType = 'link';
-
-export const MAX_LENGTH = 100;
+export type UtagEventType = 'link' | 'view';
 
 export enum EventCategory {
+  // These are likely unrelated and will need to be separated
   UI_COMPONENTS = 'ui components',
+  // TODO: Right now this is used as the category of the Button events, but it should
+  // be consistent. After talking to the analytics team, we decided that it can be
+  // changed after Open Enrollment season.
+  UI_INTERACTION = 'ui interaction',
+}
+
+export enum EventType {
+  CONVERSION = 'conversion',
   UI_INTERACTION = 'ui interaction',
 }
 
 export interface AnalyticsEvent {
-  ga_eventAction: string;
-  ga_eventCategory: string;
-  ga_eventLabel: string;
-  ga_eventType?: string;
-  ga_eventValue?: string;
+  event_name: string;
+  event_type: string;
+  event_category: string;
+  event_action: string;
+  event_label: string;
   [additional_props: string]: unknown;
 }
 
+export const MAX_STRING_LENGTH = 100;
 /**
- * Clip all the string values to the MAX_LENGTH on an event object in place by mutation
+ * Clip all the string values to the MAX_STRING_LENGTH on an event object in place by mutation
  */
 function clipStrings<T>(event: T): T {
   for (const key in event) {
     const value = event[key];
     if (typeof value === 'string') {
-      event[key] = value.substring(0, MAX_LENGTH) as any;
+      event[key] = value.substring(0, MAX_STRING_LENGTH) as any;
     }
   }
   return event;
@@ -53,10 +61,10 @@ const TIMEOUT = 300;
  * exist right away, try again after TIMEOUT milliseconds until we've reached MAX_RETRIES.
  */
 export function sendAnalytics(
-  eventType: EventType,
+  eventType: UtagEventType,
   event: Required<AnalyticsEvent>,
   retry = 0
-): string {
+) {
   // If we were to define this on the window object using `declare global { interface Window { utag: ... } }`
   // that type definition of window.utag can conflict with downstream declarations. This happened before, and
   // our fix is to only have a local type so we can get some type-checking without risk of conflicts. This
@@ -68,26 +76,38 @@ export function sendAnalytics(
   if (utag && utag[eventType]) {
     clipStrings(event);
     try {
-      utag[eventType](event);
-      return `Tealium event sent: ${event.ga_eventCategory} - ${event.ga_eventAction} - ${event.ga_eventLabel}`;
-    } catch (e) {
-      return `Error sending event to Tealium ${e}`;
+      utag[eventType]({
+        // Expand the event object to support the properties expected on healthcare.gov
+        ga_eventValue: '', // default value
+        ga_eventAction: event.event_action,
+        ga_eventCategory: event.event_category,
+        ga_eventLabel: event.event_label,
+        // But always recognize the incoming event as the authority on truth
+        ...event,
+      });
+    } catch (error) {
+      console.warn('Error sending analytics event: ', error);
     }
   } else {
     if (++retry <= MAX_RETRIES) {
       setTimeout(() => sendAnalytics(eventType, event, retry), retry * TIMEOUT);
-    } else {
-      return `Tealium event max retries reached`;
     }
   }
 }
 
-export function sendLinkEvent(payload: AnalyticsEvent) {
-  return sendAnalytics('link', {
-    ga_eventType: 'cmsds', // default value
-    ga_eventValue: '', // default value
-    ...payload,
-  });
+export function sendLinkEvent(event: AnalyticsEvent) {
+  return sendAnalytics('link', event);
 }
 
-export default sendAnalytics;
+export type AnalyticsFunction = typeof sendLinkEvent;
+
+export let defaultAnalyticsFunction = sendLinkEvent;
+
+/**
+ * Allows applications to override the default `onAnalyticsEvent` function
+ * across the whole system. To override it for a single component instance,
+ * use the `onAnalyticsEvent` prop instead.
+ */
+export function setDefaultAnalyticsFunction(analyticsFunction: AnalyticsFunction) {
+  defaultAnalyticsFunction = analyticsFunction;
+}
