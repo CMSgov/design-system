@@ -3,7 +3,7 @@ title: What's new
 ---
 
 import Video from '../../src/components/content/Video';
-import dialogImgB from '../../src/images/dialog-illustration.png';
+import dialogImg from '../../src/images/dialog-browser.png';
 import camiloImg from '../../src/images/camilo.png';
 import scssToCssImg from '../../src/images/scss-to-css.svg';
 
@@ -39,8 +39,8 @@ We implemented a single-column layout design pattern for Helathcare.gov that tea
 
 The Modal Dialog and Drawer components are now using the new [HTML `<dialog>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog). There are no visual changes associated with this change, but it's a major tune-up under the hood.
 
-<div className="ds-u-measure--wide ds-u-margin-y--2 ds-u-text-align--center">
-  <img src={dialogImgB} alt="Illustration of a dialog component" className="ds-u-display--inline-block" height="200" />
+<div className="ds-u-measure--wide ds-u-text-align--center">
+  <img src={dialogImg} alt="Screenshot of a dialog component" className="ds-u-display--inline-block" />
 </div>
 
 Before the advent of a specific `<dialog>` element in HTML, web developers had to create the modal dialog experience themselves by dressing up non-semantic elements with custom CSS and JavaScript. This update will improve accessibility and remove third-party dependencies that we used to have to rely on. You can read more about the [research behind the change in GitHub discussions](https://github.com/CMSgov/design-system/discussions/1831).
