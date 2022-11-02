@@ -8,6 +8,7 @@ import ThemeSwitcher from './ThemeSwitcher';
 import { LocationInterface, NavDataQuery } from '../../helpers/graphQLTypes';
 import { convertToNavItems, organizeNavItems } from '../../helpers/navDataFormatUtils';
 import GithubIcon from '../icons/GithubIcon';
+import NewsIcon from '../icons/NewsIcon';
 
 interface DocSiteNavProps {
   location: LocationInterface;
@@ -70,7 +71,7 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
         filter: {
           sourceInstanceName: { eq: "content" }
           ext: { eq: ".mdx" }
-          relativeDirectory: { ne: "not-in-sidebar" }
+          relativeDirectory: { nin: ["not-in-sidebar", "blog"] }
         }
         sort: { fields: [relativeDirectory, name] }
       ) {
@@ -138,13 +139,21 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
           component={GatsbyLink}
           selectedId={location ? location.pathname : ''}
         />
-        <a
-          href="https://github.com/CMSgov/design-system"
-          className="c-navigation__github-link ds-c-link ds-u-justify-content--center ds-u-md-justify-content--center"
-        >
-          <GithubIcon />
-          View code on GitHub
-        </a>
+        <p>
+          <Link to="/blog/" className="c-navigation__bottom-link ds-c-link">
+            <NewsIcon />
+            What&apos;s new?
+          </Link>
+        </p>
+        <p>
+          <a
+            href="https://github.com/CMSgov/design-system"
+            className="c-navigation__bottom-link ds-c-link"
+          >
+            <GithubIcon />
+            View code on GitHub
+          </a>
+        </p>
       </div>
     </div>
   );

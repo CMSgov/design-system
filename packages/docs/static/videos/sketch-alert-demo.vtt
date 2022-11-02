@@ -1,0 +1,52 @@
+WEBVTT
+
+00:00.000 --> 00:14.000
+Hey, my name is Scott, and I'm the design lead on the design system team and today I'm going to be doing a quick demo of some updates that we made to the sketch alert symbol.
+
+00:14.000 --> 00:27.000
+One update that we have made is we simplified this sketch symbol to be a single symbol so you can find that under component alert and then you can select the alert symbol.
+
+00:27.000 --> 00:39.000
+I will then get the informational alert by default and here you can see that all of the configuration options are here in the overrides for things I can modify about the alert.
+
+00:39.000 --> 00:57.000
+So I can change the icon to match the style of alert, I can remove the heading, I can update the text of the heading, I can remove the body text, I can change the actual text itself of the body and I can change the alert style
+
+00:57.000 --> 01:10.000
+So to see an example of this, I'm gonna go ahead and switch this alert style to the warning alert and I'm also going to then update the icon to be the warning icon.
+
+01:10.000 --> 01:14.000
+and let's add a little bit of extra text in here.
+
+01:14.000 --> 01:27.000
+I'm gonna just add some shorter Lauren ipsum text in here so you can see what that starts to look like and a medium body text, you can see the symbol expands based on the content.
+
+01:27.000 --> 01:37.000
+the other update related to this that we are excited about is the smaller screen sizes you will see are able to update as well.
+
+01:37.000 --> 01:55.000
+So when I collapse this in to maybe be the size of something on a small or mobile screen size, you can see that over in my overrides panel, I have these arrows over here that basically tell me I can size the instance to fit the content.
+
+01:55.000 --> 02:09.000
+and you'll notice that when I adjusted the sizing of this, I got these little arrows here, so if I click this here, you will see it expands and everything looks good again.
+
+02:09.000 --> 02:19.000
+If I if I change this even wider, click the double arrows again to resize and then one more time just to go all the way into a smaller screen size.
+
+02:19.000 --> 02:22.000
+We can resize it as well.
+
+02:22.000 --> 02:25.000
+Now let's maybe look at another style here.
+
+02:25.000 --> 02:34.000
+So let's change it to error, lightweight, style, update the icon and let's go ahead and get rid of the body text for this one.
+
+02:34.000 --> 02:40.000
+So we're just gonna set it to no symbol, you can see this resize is to to fit.
+
+02:40.000 --> 02:51.000
+and then if we wanted to sort of reset everything back to the original state, we can just click this little reset overrides and we are back to the original alert state.
+
+02:51.000 --> 02:55.000
+Thanks for watching everybody and happy sketching
