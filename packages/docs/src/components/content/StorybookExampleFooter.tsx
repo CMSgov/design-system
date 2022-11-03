@@ -43,7 +43,7 @@ const StorybookExampleFooter = ({ theme, storyId }: StorybookExampleFooterProps)
     const storyBlockSelector = `#anchor--${normalizedStoryId}`;
     const storyRootSelector = `#story--${normalizedStoryId}`;
     const codeButtonSelector = `${storyBlockSelector} .docblock-code-toggle`;
-    const codeBlockSelector = `${storyBlockSelector} code.language-jsx`;
+    const codeBlockSelector = `${storyBlockSelector} .language-jsx`;
     const body = iframeRef.current.contentDocument.body;
 
     const storyRootEl = body.querySelector(storyRootSelector);

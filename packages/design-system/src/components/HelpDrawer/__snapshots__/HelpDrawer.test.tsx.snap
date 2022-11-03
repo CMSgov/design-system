@@ -1,15 +1,67 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`HelpDrawer Analytics event tracking overrides analytics event tracking on open 1`] = `
+Array [
+  Object {
+    "event_action": "opened help drawer",
+    "event_category": "ui components",
+    "event_label": "other heading",
+    "event_name": "help_drawer_opened",
+    "event_type": "ui interaction",
+    "ga_eventAction": "opened help drawer",
+    "ga_eventCategory": "ui components",
+    "ga_eventLabel": "other heading",
+    "ga_eventValue": "",
+    "heading": "other heading",
+  },
+]
+`;
+
+exports[`HelpDrawer Analytics event tracking sends analytics event tracking on open help drawer 1`] = `
+Array [
+  Object {
+    "event_action": "opened help drawer",
+    "event_category": "ui components",
+    "event_label": "HelpDrawer title",
+    "event_name": "help_drawer_opened",
+    "event_type": "ui interaction",
+    "ga_eventAction": "opened help drawer",
+    "ga_eventCategory": "ui components",
+    "ga_eventLabel": "HelpDrawer title",
+    "ga_eventValue": "",
+    "heading": "HelpDrawer title",
+  },
+]
+`;
+
+exports[`HelpDrawer Analytics event tracking sends analytics event when heading is non-string 1`] = `
+Array [
+  Object {
+    "event_action": "opened help drawer",
+    "event_category": "ui components",
+    "event_label": "Hello World",
+    "event_name": "help_drawer_opened",
+    "event_type": "ui interaction",
+    "ga_eventAction": "opened help drawer",
+    "ga_eventCategory": "ui components",
+    "ga_eventLabel": "Hello World",
+    "ga_eventValue": "",
+    "heading": "Hello World",
+  },
+]
+`;
+
 exports[`HelpDrawer renders a snapshot 1`] = `
 <DocumentFragment>
   <dialog
-    aria-labelledby="drawer_2"
     class="ds-c-help-drawer ds-c-drawer"
     open=""
     role="dialog"
   >
     <div
+      aria-labelledby="drawer_2"
       class="ds-c-drawer__window"
+      tabindex="-1"
     >
       <div
         class="ds-c-drawer__header"
@@ -17,7 +69,6 @@ exports[`HelpDrawer renders a snapshot 1`] = `
         <h3
           class="ds-c-drawer__header-heading"
           id="drawer_2"
-          tabindex="0"
         >
           HelpDrawer title
         </h3>

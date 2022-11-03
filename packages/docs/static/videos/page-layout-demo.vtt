@@ -1,0 +1,61 @@
+WEBVTT
+
+00:00.000 --> 00:02.000
+Hey everyone, my name is scott.
+
+00:02.000 --> 00:14.000
+I am the design lead for the design system team and I'm going to be demoing an update to our sketch UI kit where we added a layout.
+
+00:14.000 --> 00:37.000
+this is for the health care experience this layout that we added, you can find in sketch under your templates and then you'll see a single column layout, we have a few breakpoint options 320, 1024, and 1280 I'm gonna go ahead and choose the 1024 option and you can see place this on the page.
+
+00:37.000 --> 00:43.000
+When I do place this on the page, you'll see there are the columns are there.
+
+00:43.000 --> 00:55.000
+We've got some guides for the very left and the very right and then we also have a header content area in a page footer area that specify the number of columns as well.
+
+00:55.000 --> 01:06.000
+the the goal of this is really to help create a more consistent experience across healthcare by starting to provide some of these layout templates.
+
+01:06.000 --> 01:09.000
+for designers that are designing for that experience.
+
+01:09.000 --> 01:17.000
+And so if for example, you wanted to create your own columns, maybe didn't want to use eight columns.
+
+01:17.000 --> 01:20.000
+For some reason this grid is still relevant.
+
+01:20.000 --> 01:28.000
+You can just sort of drag the columns out and it will snap to the columns that you see here.
+
+01:28.000 --> 01:44.000
+The other nice thing about this update is that we went ahead and added a similar page on the documentation site that can be found on the design system site under layouts.
+
+01:44.000 --> 01:45.000
+Healthcare.
+
+01:45.000 --> 01:47.000
+One column page layout.
+
+01:47.000 --> 02:04.000
+So this is a live example that is linked to our story book where you can open and expand that storybook and then you can kind of explore this layout at various screen sizes as well to kind of see how the break points operate.
+
+02:04.000 --> 02:12.000
+If I go too small, you're going to see everything is stacking this eight columns spans the entire width of the device.
+
+02:12.000 --> 02:18.000
+And if I start to expand out, you can see a smaller kind of tablet size.
+
+02:18.000 --> 02:20.000
+This eight columns then emerges.
+
+02:20.000 --> 02:30.000
+So this is really, that we had created, to make things a little bit easier for teams that are designing, and and developing page layouts.
+
+02:30.000 --> 02:41.000
+We will continue on the same path of developing more guidance and documentation around sections of the page and how best to use them.
+
+02:41.000 --> 02:45.000
+Thanks for listening and we'll talk to you next time.

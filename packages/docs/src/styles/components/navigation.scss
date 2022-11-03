@@ -4,11 +4,11 @@
   width: 100%;
 
   .c-navigation__header {
-    background-color: $color-secondary-lightest;
-    padding: $spacer-2;
-    display: flex;
     align-items: center;
+    background-color: $color-secondary-lightest;
+    display: flex;
     gap: $spacer-2;
+    padding: $spacer-2;
 
     button {
       color: currentColor;
@@ -36,11 +36,10 @@
     }
   }
 
-  .c-navigation__github-link {
+  .c-navigation__bottom-link {
     background-color: transparent;
     display: flex;
     gap: 0.5em;
-    align-items: center;
 
     svg {
       height: 1em;
@@ -50,10 +49,10 @@
 }
 
 .c-navigation--open {
-  position: fixed;
   inset: 0;
-  z-index: 1;
   overflow-y: auto;
+  position: fixed;
+  z-index: 1;
 
   .c-navigation__header {
     position: sticky;
@@ -83,15 +82,15 @@
           z-index: 1;
 
           &:before {
-            z-index: -1;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            content: '';
             background-color: #{$vertical-nav-item__color--hover};
+            bottom: 0;
+            content: '';
             filter: opacity(0.05);
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: -1;
           }
         }
       }
@@ -101,8 +100,8 @@
 
 @media (-ms-high-contrast: active), (forced-colors: active) {
   .c-navigation {
-    -ms-high-contrast-adjust: none;
     forced-color-adjust: none;
+    -ms-high-contrast-adjust: none;
 
     .ds-c-vertical-nav__label--current[aria-expanded='true'] {
       background-color: Highlight;

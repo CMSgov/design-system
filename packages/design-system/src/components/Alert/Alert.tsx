@@ -6,27 +6,18 @@ import useAutofocus from '../utilities/useAutoFocus';
 import useAlertAnalytics from './useAlertAnalytics';
 import { InfoCircleIcon, AlertCircleIcon, WarningIcon, CheckCircleIcon } from '../Icons';
 import { t } from '../i18n';
+import { AnalyticsOverrideProps } from '../analytics';
 
 export type AlertHeadingLevel = '1' | '2' | '3' | '4' | '5' | '6';
 export type AlertRole = 'alert' | 'alertdialog' | 'region' | 'status';
 export type AlertVariation = 'error' | 'warn' | 'success';
 export type AlertWeight = 'lightweight';
 
-export interface BaseAlertProps {
+export interface BaseAlertProps extends AnalyticsOverrideProps {
   /**
    * Access a reference to the `alert` `div` element
    */
   alertRef?: (...args: any[]) => any;
-  /**
-   * Analytics events tracking is enabled by default. Set this value to `false` to disable tracking for this component instance.
-   */
-  analytics?: boolean;
-  /**
-   * An override for the dynamic content sent to analytics services. By default this content comes from the heading.
-   *
-   * In cases where this component’s heading may contain **sensitive information**, use this prop to override what is sent to analytics.
-   */
-  analyticsLabelOverride?: string;
   /**
    * Sets the focus on Alert during the first mount
    */
@@ -97,6 +88,8 @@ export const Alert: React.FC<AlertProps> = (props: AlertProps) => {
     weight,
     analytics,
     analyticsLabelOverride,
+    analyticsEventTypeOverride,
+    onAnalyticsEvent,
     ...alertProps
   } = props;
 

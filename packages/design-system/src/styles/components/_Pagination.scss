@@ -24,6 +24,8 @@
     padding: $spacer-1 0;
   }
   .ds-c-button--ghost {
+    text-decoration: none;
+
     &:focus {
       color: $pagination-link__color--focus;
     }

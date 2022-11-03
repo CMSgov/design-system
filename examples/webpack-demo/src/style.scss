@@ -1,8 +1,0 @@
-$asset-path: '/examples/webpack-demo/dist/';
-
-// Paths to images and fonts relative from the SCSS entry point
-$font-path: '#{$asset-path}fonts';
-$image-path: '#{$asset-path}images';
-
-// Core CMSDS styles
-@import '~@cmsgov/design-system/dist/scss/index';

@@ -11,15 +11,15 @@
   display: flex;
   gap: 0.5rem;
   margin: 0.5rem 0;
-  max-width: $form__max-width;
+  max-width: $measure-wide;
 }
 
 // Styles for label
 .ds-c-choice + label,
 .ds-c-choice + .ds-c-label {
   cursor: pointer;
-  flex-grow: 1;
   flex-basis: min-content;
+  flex-grow: 1;
   font-weight: $font-normal;
   margin-top: 0;
   max-width: max-content;

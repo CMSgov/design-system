@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`sendLinkEvent with Utag instance - errors catches errors on failed sendEvent 1`] = `
+Array [
+  "Error sending analytics event: ",
+  "test event",
+]
+`;

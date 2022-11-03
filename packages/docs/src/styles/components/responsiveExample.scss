@@ -4,20 +4,20 @@
 
   // adding a color to the background of examples for easier viewing
   &:before {
-    content: '';
-    position: absolute;
-    top: -$spacer-2;
-    bottom: -$spacer-2;
-    left: -$spacer-2;
-    right: -$spacer-2;
-    z-index: -100;
     background-color: $color-gray-lightest;
+    bottom: -$spacer-2;
+    content: '';
+    left: -$spacer-2;
+    position: absolute;
+    right: -$spacer-2;
+    top: -$spacer-2;
+    z-index: -100;
   }
 }
 
 .c-responsive-example__iframe-wrapper {
-  transform-origin: 0px 0px;
   overflow: hidden;
+  transform-origin: 0px 0px;
 }
 
 .c-responsive-example {

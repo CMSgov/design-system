@@ -6,8 +6,8 @@ code {
 
 pre {
   display: block;
-  padding: $spacer-2;
   overflow-x: auto;
+  padding: $spacer-2;
 }
 
 code {
@@ -15,6 +15,11 @@ code {
   font-size: 0.9em;
   margin: 1px;
   padding: $spacer-half;
+}
+
+p code {
+  padding-bottom: 0;
+  padding-top: 0;
 }
 
 /**
@@ -29,25 +34,25 @@ code {
  */
 code[class*='language-'],
 pre[class*='language-'] {
-  color: #545454;
   background: none;
-  text-align: left;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
-  word-wrap: normal;
+  color: #545454;
+  hyphens: none;
   line-height: 1.5;
 
   tab-size: 4;
-  hyphens: none;
+  text-align: left;
+  white-space: pre;
+  word-break: normal;
+  word-spacing: normal;
+  word-wrap: normal;
 }
 
 /* Code blocks */
 pre[class*='language-'] {
-  padding: 1em;
+  border-radius: 0.3em;
   margin: 0.5em 0;
   overflow: auto;
-  border-radius: 0.3em;
+  padding: 1em;
 }
 
 :not(pre) > code[class*='language-'],
@@ -58,8 +63,8 @@ pre[class*='language-'] {
 
 /* Inline code */
 :not(pre) > code[class*='language-'] {
-  padding: 0.1em;
   border-radius: 0.3em;
+  padding: 0.1em;
   white-space: normal;
 }
 
@@ -139,8 +144,8 @@ pre[class*='language-'] {
 /* Line highlight */
 .line-highlight {
   background: rgba(183, 134, 11, 0.075);
-  border-top: 1px solid #b8860b;
   border-bottom: 1px solid #b8860b;
+  border-top: 1px solid #b8860b;
 }
 
 /* Line numbers */
@@ -158,8 +163,8 @@ pre[class*='language-'] {
 @media screen and (-ms-high-contrast: active) {
   code[class*='language-'],
   pre[class*='language-'] {
-    color: windowText;
     background: window;
+    color: windowText;
   }
 
   :not(pre) > code[class*='language-'],

@@ -15,8 +15,8 @@
 .c-table-of-contents__list,
 .c-table-of-contents-mobile__list {
   list-style-type: none;
-  padding-left: $spacer-1;
   margin-top: 0;
+  padding-left: $spacer-1;
 }
 
 .c-table-of-contents__list .c-table-of-contents__list,
@@ -37,8 +37,8 @@
 }
 
 .c-table-of-contents__list-item {
-  margin-top: $spacer-half;
   margin-bottom: $spacer-half;
+  margin-top: $spacer-half;
 }
 
 .c-table-of-contents__list-item--no-marker {
