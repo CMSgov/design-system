@@ -3,9 +3,9 @@ import { TableRow, TableCell } from '@cmsgov/design-system';
 
 export interface PropsTableHtmlElementRowProps {
   /**
-   * List of element names and the URL to documentation
+   * List of element names
    */
-  elements: Array<{ name: string; link: string }>;
+  elements: string[];
 }
 
 /**
@@ -16,9 +16,9 @@ export interface PropsTableHtmlElementRowProps {
  * table.
  */
 const PropsTableHtmlElementRow = ({ elements }: PropsTableHtmlElementRowProps) => {
-  const elementLinks = elements.map(({ name, link }) => (
-    <a href={link} key={name}>
-      <code>{`<${name}>`}</code>
+  const elementLinks = elements.map((name) => (
+    <a href={`https://developer.mozilla.org/en-US/docs/Web/HTML/Element/${name}`} key={name}>
+      {`<${name}>`}
     </a>
   ));
   const formattedElementLinks = humanizeList(elementLinks, { conjunction: 'or' });
