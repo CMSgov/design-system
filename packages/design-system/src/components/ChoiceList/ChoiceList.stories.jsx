@@ -1,6 +1,8 @@
 import { Alert } from '../Alert';
 import ChoiceList from './ChoiceList';
 import Choice from './Choice';
+import Tooltip from '../Tooltip/Tooltip';
+import TooltipIcon from '../Tooltip/TooltipIcon';
 
 export default {
   title: 'Components/ChoiceList',
@@ -93,6 +95,70 @@ ChoiceChildren.args = {
           have signed and submitted your final application.
         </Alert>
       ),
+    },
+  ],
+};
+
+export const ChoiceTooltip = Template.bind({});
+ChoiceChildren.args = {
+  name: 'tooltip_choices',
+  type: 'checkbox',
+  label: 'Choice labels with Tooltips',
+  choices: [
+    {
+      label: (
+        <>
+          <span>Choice A with Tooltip icon trigger</span>
+          <Tooltip
+            ariaLabel="Label describing the subject of the tooltip"
+            className="ds-c-tooltip__trigger-icon"
+            onClose={function noRefCheck() {}}
+            onOpen={function noRefCheck() {}}
+            placement="bottom"
+            title="Tooltip trigger uses <TooltipIcon> for the trigger content"
+          >
+            <TooltipIcon />
+          </Tooltip>
+        </>
+      ),
+      labelClassName: 'choicelist__label_flex',
+      value: 'Tooltip A',
+    },
+    {
+      label: (
+        <>
+          <span>Choice B with Tooltip icon trigger</span>
+          <Tooltip
+            ariaLabel="Label describing the subject of the tooltip"
+            className="ds-c-tooltip__trigger-icon"
+            onClose={function noRefCheck() {}}
+            onOpen={function noRefCheck() {}}
+            title="Tooltip trigger uses <TooltipIcon> for the trigger content"
+          >
+            <TooltipIcon />
+          </Tooltip>
+        </>
+      ),
+      labelClassName: 'choicelist__label_flex',
+      value: 'Tooltip B',
+    },
+    {
+      label: (
+        <>
+          <span>Choice C with Tooltip icon trigger</span>
+          <Tooltip
+            ariaLabel="Label describing the subject of the tooltip"
+            className="ds-c-tooltip__trigger-icon"
+            onClose={function noRefCheck() {}}
+            onOpen={function noRefCheck() {}}
+            title="Tooltip trigger uses <TooltipIcon> for the trigger content"
+          >
+            <TooltipIcon />
+          </Tooltip>
+        </>
+      ),
+      labelClassName: 'choicelist__label_flex',
+      value: 'Tooltip C',
     },
   ],
 };
