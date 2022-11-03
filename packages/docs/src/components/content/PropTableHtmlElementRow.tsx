@@ -1,7 +1,7 @@
 import humanizeList from 'humanize-react';
 import { TableRow, TableCell } from '@cmsgov/design-system';
 
-export interface PropsTableHtmlElementRowProps {
+export interface PropTableHtmlElementRowProps {
   /**
    * List of element names
    */
@@ -15,7 +15,7 @@ export interface PropsTableHtmlElementRowProps {
  * some explanatory text with MDN documentation links to the bottom of our props
  * table.
  */
-const PropsTableHtmlElementRow = ({ elements }: PropsTableHtmlElementRowProps) => {
+const PropsTableHtmlElementRow = ({ elements }: PropTableHtmlElementRowProps) => {
   const elementLinks = elements.map((name) => (
     <a href={`https://developer.mozilla.org/en-US/docs/Web/HTML/Element/${name}`} key={name}>
       {`<${name}>`}
