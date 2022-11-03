@@ -100,7 +100,7 @@ ChoiceChildren.args = {
 };
 
 export const ChoiceTooltip = Template.bind({});
-ChoiceChildren.args = {
+ChoiceTooltip.args = {
   name: 'tooltip_choices',
   type: 'checkbox',
   label: 'Choice labels with Tooltips',
