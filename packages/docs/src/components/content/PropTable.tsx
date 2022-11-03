@@ -21,26 +21,19 @@ export interface PropTableDataItem {
 }
 
 interface PropTableProps {
+  children: React.ReactNode;
   componentName: string;
   /**
    * Name of currently selected theme
    */
   theme: string;
-  /**
-   * If the component we're documenting passes extra props through to an HTML element,
-   * setting this prop will show additional documentation about that behavior. Use
-   * this in combination with `htmlElementLink`, which is a link to MDN documentation
-   * about that element and the attributes it accepts.
-   */
-  htmlElementName?: string;
-  htmlElementLink?: string;
 }
 
 /**
  * A component to display a Design System component's prop table
  * It loads all props for all components and then finds the appropriate props for the passed in `componentName`
  */
-const PropTable = ({ componentName, theme, htmlElementName, htmlElementLink }: PropTableProps) => {
+const PropTable = ({ children, componentName, theme }: PropTableProps) => {
   // load all props for all components
   const allPropData: ComponentPropQuery = useStaticQuery(graphql`
     query loadComponentPropsQuery {
@@ -96,10 +89,6 @@ const PropTable = ({ componentName, theme, htmlElementName, htmlElementLink }: P
     []
   );
 
-  const formattedHtmlElementName = htmlElementName ? (
-    <code>{`<${htmlElementName}>`}</code>
-  ) : undefined;
-
   return (
     <Table className="c-prop-table" stackable scrollable borderless>
       <TableCaption>
@@ -139,21 +128,7 @@ const PropTable = ({ componentName, theme, htmlElementName, htmlElementLink }: P
             </TableCell>
           </TableRow>
         ))}
-        {htmlElementName && (
-          <TableRow>
-            <TableCell colSpan={4}>
-              This component passes any additional props to its underlying{' '}
-              {formattedHtmlElementName} element as attributes. It will accept any props that are
-              valid attributes of {formattedHtmlElementName}.{' '}
-              {htmlElementLink && (
-                <>
-                  Please see <a href={htmlElementLink}>MDN documentation</a> for a list of those
-                  attributes.
-                </>
-              )}
-            </TableCell>
-          </TableRow>
-        )}
+        {children}
       </TableBody>
     </Table>
   );
