@@ -14,7 +14,7 @@ export interface PageFeedbackProps {
 }
 
 /**
- *
+ * Asks a feedback question to the user and reports the answer to New Relic
  */
 const PageFeedback = ({ question = 'Was this article helpful?' }: PageFeedbackProps) => {
   const [answered, setAnswered] = useState(false);
@@ -28,13 +28,21 @@ const PageFeedback = ({ question = 'Was this article helpful?' }: PageFeedbackPr
     setAnswered(true);
   }
 
+  // Use a consistent line-height between alerts so we don't get a content shift
+  const lineHeight = '40px';
+
   const stateAlertProps = answered
     ? {
         variation: 'success' as const,
-        style: { display: 'inline-block' },
+        style: {
+          // Don't have the feedback span the whole width
+          display: 'inline-block',
+          lineHeight,
+        },
       }
     : {
         weight: 'lightweight' as const,
+        style: { lineHeight },
       };
 
   return (
