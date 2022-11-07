@@ -3,13 +3,15 @@ title: For Developers
 order: 10
 ---
 
-Greetings, Developers! This page should have everything you need to get started with the design system, but if you run into trouble, [please reach out](/contact). If you have specific suggestions for how we can improve these docs, please feel free to edit this page (with the link under the table of contents) and submit a pull request!
+Greetings, Developers! This page will walk you through all the basics of using the design system, but you might want to take a look at [our example projects on GitHub](https://github.com/CMSgov/design-system/tree/main/examples/) as well.
 
 As you go through this documentation, keep in mind that CMS Design System is a [family of design systems](/getting-started/child-design-systems/), and each of these design systems is distributed under a different package name:
 
 - [**design-system**](?theme=core) - Core Design System
 - [**ds-healthcare-gov**](?theme=healthcare) - Healthcare.gov Child Design System
 - [**ds-medicare-gov**](?theme=medicare) - Medicare.gov Child Design System
+
+We hope this page provides you with everything you need to get started with the design system, but if you run into trouble, [please reach out](/contact). If you have specific suggestions for how we can improve these docs, please feel free to edit this page (with the link under the table of contents) and submit a pull request!
 
 ## Getting the design system assets
 
@@ -152,9 +154,11 @@ If you'd like to take a look at the static assets that we publish through npm an
 
 ## Including the CSS
 
-No matter what framework you use to build your application, you will need to include the design system styles in order for your application to look the way it should. The simplest way to do that is to include a resource link element in your HTML document, like this:
+No matter what framework you use to build your application, you will need to include the design system styles in order for your application to look the way it should.
 
 ### With HTML
+
+The simplest way to do that is to include a resource link element in your HTML document, like this:
 
 ```html
 <head>
@@ -176,3 +180,7 @@ Or you might import it from your JavaScript like this:
 ```css
 import '@cmsgov/design-system/dist/css/index.css';
 ```
+
+### Fonts and images
+
+Note that our stylesheets also reference fonts and images, so you will need to make sure these assets (`dist/fonts` and `dist/images`) are available to your site/application at the correct relative paths. You don't need to think about this if you're loading the stylesheet from the CDN, and most asset bundlers will be able to locate these additional assets without additional configuration.
