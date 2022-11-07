@@ -184,3 +184,64 @@ import '@cmsgov/design-system/dist/css/index.css';
 ### Fonts and images
 
 Note that our stylesheets also reference fonts and images, so you will need to make sure these assets (`dist/fonts` and `dist/images`) are available to your site/application at the correct relative paths. You don't need to think about this if you're loading the stylesheet from the CDN, and most asset bundlers will be able to locate these additional assets without additional configuration.
+
+## Using the CSS
+
+The design system styles are broken down into a few categories:
+
+1. Base and typography styles
+2. Layout styles
+3. Component styles
+4. Utility classes
+
+### Base and typography styles
+
+For all the other styles to have the right typography styles, the root of your page content should have a `ds-base` class applied to it. Please see [our base styles documentation](/foundation/base) for more details.
+
+### Layout styles
+
+The design system provides a number of layout classes to implement visual structure in your application. Please see [the layout grid documentation](/foundation/layout-grid/layout-grid) to get started. Further resources can be found in the [Layouts](/layouts) section of the doc site.
+
+### Component styles
+
+See the [Using the components]() section below.
+
+### Utility classes
+
+Utility classes help you apply single CSS properties to elements that follow design-system styles. See the [Utilities](/utilities) section of the doc site for more details.
+
+### CSS class naming conventions
+
+The design system favors clarity over succinctness. This means the design system may be verbose, but it should deliver clarity, predictability, and legibility in exchange.
+
+<div className="ds-u-measure--wide ds-u-margin-top--2">
+  <img src={namingConventionsImg} alt="Diagram explaining the parts of an example CSS class '.ds-c-button--outline' where DS is namespace, C is the type prefix, and the rest follows BEM syntax" class="ds-u-border--1" />
+</div>
+
+#### Namespace
+
+To avoid conflicting with other libraries and existing code, the design system namespaces its CSS class names with `ds-`.
+
+#### Prefix
+
+Prefixes are added to class names to make it more apparent what job the class is doing.
+
+| Prefix | Description                                                 |
+| ------ | ----------------------------------------------------------- |
+| `l-`   | Indicates layout-related styles. Example: `.ds-l-container` |
+| `c-`   | Indicates a component. Example: `.ds-c-button`              |
+| `u-`   | Indicates a utility. Example: `.ds-u-color--base`           |
+
+These prefixes can sometimes be followed by a "breakpoint prefix". [Learn more about breakpoint prefixes.](/foundation/layout-grid/responsive-design/)
+
+#### BEM syntax
+
+Following the namespace and prefix is a name conforming to [BEM syntax](http://getbem.com/introduction/).
+
+Put all together, a CSS class can be broken down to these key parts: `[NAMESPACE]-[PREFIX]-[BLOCK]__[ELEMENT]--[MODIFIER]`
+
+- **Block** is a standalone entity that is meaningful on its own. For example: `.ds-c-card`, `.ds-c-button`
+- **Element** is a part of a block that has no standalone meaning and is semantically tied to its block, such as `.ds-c-card__title`
+- **Modifier** is a flag on a block or element and is used to change appearance or behavior. For example: `.ds-c-button--primary`, `.ds-u-color--base`, `.ds-l-col--3`
+
+[BEM’s strict naming rules can be found here](http://getbem.com/naming/).
