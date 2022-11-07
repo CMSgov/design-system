@@ -212,11 +212,13 @@ Utility classes help you apply single CSS properties to elements that follow des
 
 ### CSS class naming conventions
 
-The design system favors clarity over succinctness. This means the design system may be verbose, but it should deliver clarity, predictability, and legibility in exchange.
+All our CSS classes follow a specific naming pattern, outlined below:
 
 <div className="ds-u-measure--wide ds-u-margin-top--2">
   <img src={namingConventionsImg} alt="Diagram explaining the parts of an example CSS class '.ds-c-button--outline' where DS is namespace, C is the type prefix, and the rest follows BEM syntax" class="ds-u-border--1" />
 </div>
+
+Note that the design system favors clarity over succinctness. This means the class names may be verbose but should deliver clarity, predictability, and legibility in exchange.
 
 #### Namespace
 
@@ -236,12 +238,9 @@ These prefixes can sometimes be followed by a "breakpoint prefix". [Learn more a
 
 #### BEM syntax
 
-Following the namespace and prefix is a name conforming to [BEM syntax](http://getbem.com/introduction/).
+Following the namespace and prefix is a name conforming to [BEM syntax](http://getbem.com/introduction/), like `[BLOCK]__[ELEMENT]--[MODIFIER]`, where...
 
-Put all together, a CSS class can be broken down to these key parts: `[NAMESPACE]-[PREFIX]-[BLOCK]__[ELEMENT]--[MODIFIER]`
+- **BLOCK** is a standalone entity that is meaningful on its own. For example: `.ds-c-card`, `.ds-c-button`
+- **ELEMENT** is a part of a block that has no standalone meaning and is semantically tied to its block, such as `.ds-c-card__title`
+- **MODIFIER** is a flag on a block or element and is used to change appearance or behavior. For example: `.ds-c-button--primary`, `.ds-u-color--base`, `.ds-l-col--3`
 
-- **Block** is a standalone entity that is meaningful on its own. For example: `.ds-c-card`, `.ds-c-button`
-- **Element** is a part of a block that has no standalone meaning and is semantically tied to its block, such as `.ds-c-card__title`
-- **Modifier** is a flag on a block or element and is used to change appearance or behavior. For example: `.ds-c-button--primary`, `.ds-u-color--base`, `.ds-l-col--3`
-
-[BEM’s strict naming rules can be found here](http://getbem.com/naming/).
