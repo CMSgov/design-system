@@ -3,6 +3,8 @@ title: For Developers
 order: 10
 ---
 
+import { Alert } from '@cmsgov/design-system';
+
 Greetings, Developers! This page will walk you through all the basics of using the design system, but you might want to take a look at [our example projects on GitHub](https://github.com/CMSgov/design-system/tree/main/examples/) as well.
 
 As you go through this documentation, keep in mind that CMS Design System is a [family of design systems](/getting-started/child-design-systems/), and each of these design systems is distributed under a different package name:
@@ -243,4 +245,88 @@ Following the namespace and prefix is a name conforming to [BEM syntax](http://g
 - **BLOCK** is a standalone entity that is meaningful on its own. For example: `.ds-c-card`, `.ds-c-button`
 - **ELEMENT** is a part of a block that has no standalone meaning and is semantically tied to its block, such as `.ds-c-card__title`
 - **MODIFIER** is a flag on a block or element and is used to change appearance or behavior. For example: `.ds-c-button--primary`, `.ds-u-color--base`, `.ds-l-col--3`
+
+## Using components
+
+Our design system components are more than a collection of styles for making widgets on a page. They embody guidelines and best practices and interactive behaviors that have been designed for good accessibility and user experience.
+
+While you can apply these styles to your own HTML elements, **we strongly recommend using the React versions of our components.** The React components give you those interactive behaviors for free, and without them you'll have to implement the dynamic parts yourself based on the guidance in our documentation. You can even use React components outside a React project, but you'll need to include the React runtime.
+
+### Using React components
+
+Inside a React project, you will import and use the components as you would any other React component. See the [Importing into a JavaScript project](#importing-into-a-javascript-project) below for more details.
+
+Outside a React project, your usage will depend on the framework you're using. [Our CDN example project](https://github.com/CMSgov/design-system/tree/main/examples/cdn) shows you how to use our React components in a plain HTML page. Note that for components that don't have interactive behaviors like [Badge](/components/badge), you may not need to invoke React at all. The best way to learn how to use our React components is to view [our example projects on GitHub](https://github.com/CMSgov/design-system/tree/main/examples/).
+
+More React prop documentation, examples, and guidance can be found on component documentation pages.
+
+#### Importing into a JavaScript project
+
+If you've installed the design system via npm, the components can be imported from the package entry point using the syntax below. **Note that the following example will display a different package name depending on the theme you have selected.**
+
+<ThemeContent onlyThemes={['core']}>
+
+```js
+import { Button, TextField } from '@cmsgov/design-system';
+```
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+```js
+import { Button, TextField } from '@cmsgov/ds-healthcare-gov';
+```
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+```js
+import { Button, TextField } from 'ds-medicare-gov';
+```
+
+</ThemeContent>
+
+<Alert
+  heading="Performance note"
+  variation="warn"
+  className="ds-u-margin-bottom--2 ds-u-font-size--small"
+>
+  <p class="ds-c-alert__text">
+    This approach may result in a larger file size than intended. Depending on what module bundler
+    you use, all of the design system's React components may be included in the bundled file even if
+    you didn't specifically import them. This can be avoided by using{' '}
+    <a href="https://webpack.js.org/guides/tree-shaking/">tree shaking in Webpack</a>.
+  </p>
+</Alert>
+
+The `@cmsgov/design-system` package provides an ES modules version of our code to support Webpack 4's tree shaking optimizations. Our package is configured to use the `modules` property to let bundlers know to resolve imports from `@cmsgov/design-system` to the ES modules version when preferred. Read more about ESM in [Webpack's documentation](https://webpack.js.org/guides/author-libraries/#final-steps), or from [Rollup's proposal](https://github.com/rollup/rollup/wiki/pkg.module).
+
+Components can also be imported from their individual export file. This method carries no risk of including unused or extra code, as you are only importing from a specific file.
+
+```js
+import Button from '@cmsgov/design-system/dist/components/Button/Button';
+import TextField from '@cmsgov/design-system/dist/components/Button/TextField';
+```
+
+### Applying component CSS classes manually
+
+If you can't use React, you can apply the appropriate component CSS classes directly to elements in your HTML. Our component documentation pages provide HTML code for the inert states of components, but you'll be responsible for writing the correct markup and updating classes and DOM attributes in response to user events.
+
+```html
+<div>
+  <label class="ds-c-label" for="field_1">
+    <span>Text Field Label</span>
+    <span class="ds-c-field__hint">Helpful hint text</span>
+  </label>
+  <input
+    class="ds-c-field"
+    type="text"
+    aria-invalid="false"
+    name="text-field-example"
+    id="field_1"
+  />
+</div>
+```
 
