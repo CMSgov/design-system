@@ -1,0 +1,144 @@
+---
+title: For Developers
+order: 10
+---
+
+## Integrating the design system into your project
+
+How you get the design system assets depends on the needs of your project and your workstyle. You could...
+
+1. [Install the npm package](#option-1-install-using-npm)
+    - Good option if your project already uses [npm](https://www.npmjs.com/) for package management
+    - Makes it easy to get patch updates for your major/minor version
+2. [Reference files directly from the CDN](#option-2-reference-assets-from-the-cdn)
+    - Good option if your project doesn't use [npm](https://www.npmjs.com/)
+    - CDN files are versioned, so you always know what version you're using, and those files will be cached by the client's browser
+3. [Download the design system assets directly from GitHub](#option-3-download-assets-directly)
+    - This is not recommended, but it's available if no other options will work for your project
+
+### Option 1: Install using npm
+
+If you already have [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/) set up for your project, you can add it to your list of dependencies using one of the commands below. **Note that the following example will display a different package name depending on the theme you have selected.**
+
+<ThemeContent onlyThemes={['core']}>
+
+```sh
+npm install --save @cmsgov/design-system
+# or
+yarn add @cmsgov/design-system
+```
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+```sh
+npm install --save @cmsgov/ds-healthcare-gov
+# or
+yarn add @cmsgov/ds-healthcare-gov
+```
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+```sh
+npm install --save @cmsgov/ds-medicare-gov
+# or
+yarn add @cmsgov/ds-medicare-gov
+```
+
+</ThemeContent>
+
+#### Package file structure
+
+The npm package includes:
+
+- Pre-compiled SCSS files
+- Compiled CSS files
+- Compiled React components (CommonJS and ES modules)
+- Typescript definition files
+- Fonts and images
+
+The `dist` folder contains all the necessary files in the design system, your project should not be importing anything from `src`.
+
+```
+└── dist
+    ├── components/
+    │   └── index.js        Compiled JS entry point (CommmonJS)
+    ├── css/
+    │   └── index.css       Compiled CSS entry point
+    ├── esnext/
+    │   └── index.esm.js    Compiled JS entry point (ES Module)
+    ├── fonts/
+    ├── images/
+    ├── scss/
+    │   ├── base/           Base styles, HTML element selectors
+    │   ├── components/     Component styles
+    │   ├── settings/       Variables, mixins, and functions
+    │   ├── utilities/      Utility classes for individual CSS properties
+    │   └── index.scss      Precompiled SCSS entry point
+    └── types/              Typescript definition files
+```
+
+### Option 2: Reference assets from the CDN
+
+A content delivery network (CDN) is a collection of servers that dynamically allocate resources dependent on the requester's geographic location in order to optimize the distribution of assets.
+
+Some benefits and applications for utilizing the design system via CDN are:
+
+- Quickly utilize design system code and style assets for development/prototyping
+- The CDN caches assets for fast loading and scales automatically in case of a large number of requests
+- Ability to utilize a specific version of the design system easily
+
+#### Packages
+
+Packages which are currently available for reference:
+
+- **design-system** - The core CMSDS (versions 3.4.0 and above)
+- **ds-healthcare-gov** - Healthcare.gov themed DS (versions 7.4.0 and above)
+- **ds-medicare-gov** - Medicare.gov themed DS (versions 5.4.0 and above)
+
+#### URL structure
+
+```
+https://design.cms.gov/cdn/<package-name>/<version>/<resource>
+```
+
+Where `package-name` is one of the packages named above, `version` is the version number and `resource` is the file being requested from the resources listed above.
+
+#### Resources
+
+```
+  ├── css/
+  │   ├── index.css
+  │   ├── base/index.css
+  │   ├── components/index.css
+  │   └── utilities/index.css
+  └── js/
+      ├── react.production.min.js
+      ├── react-dom.production.min.js
+      └── bundle.js
+```
+
+#### Example for including version 3.4.0 Core CSS via CDN
+
+```
+<link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/3.4.0/css/index.css" crossorigin="anonymous" />
+```
+
+#### Example for including version 3.4.0 Core JS via CDN
+
+If you do not already have React and React-DOM included in your page, include them before the design system js bundle.
+
+```
+<script type="text/javascript" src="https://design.cms.gov/cdn/design-system/3.4.0/js/react.production.min.js"></script>
+<script type="text/javascript" src="https://design.cms.gov/cdn/design-system/3.4.0/js/react-dom.production.min.js"></script>
+<script type="text/javascript" src="https://design.cms.gov/cdn/design-system/3.4.0/js/bundle.js"></script>
+```
+
+### Option 3: Download assets directly
+
+If you'd like to take a look at the static assets that we publish through npm and our CDN, you can download a tar file for any of the releases [on our GitHub Releases page](https://github.com/CMSgov/design-system/releases). You will find these files in the "Assets" section at the bottom of each release.
+
+
