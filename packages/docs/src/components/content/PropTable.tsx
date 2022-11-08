@@ -21,14 +21,19 @@ export interface PropTableDataItem {
 }
 
 interface PropTableProps {
+  children: React.ReactNode;
   componentName: string;
+  /**
+   * Name of currently selected theme
+   */
+  theme: string;
 }
 
 /**
  * A component to display a Design System component's prop table
  * It loads all props for all components and then finds the appropriate props for the passed in `componentName`
  */
-const PropTable = ({ componentName }: PropTableProps, theme: string) => {
+const PropTable = ({ children, componentName, theme }: PropTableProps) => {
   // load all props for all components
   const allPropData: ComponentPropQuery = useStaticQuery(graphql`
     query loadComponentPropsQuery {
@@ -123,6 +128,7 @@ const PropTable = ({ componentName }: PropTableProps, theme: string) => {
             </TableCell>
           </TableRow>
         ))}
+        {children}
       </TableBody>
     </Table>
   );
