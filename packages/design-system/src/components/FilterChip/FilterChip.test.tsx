@@ -15,7 +15,7 @@ describe('FilterChip', () => {
   it('should include children as label', () => {
     renderFilterChip();
     const chipEl = screen.getByRole('button');
-    expect(chipEl.textContent).toEqual('Foo. Remove Foo filter .');
+    expect(chipEl.textContent).toEqual('FooRemove Foo filter .');
 
     expect(chipEl.innerHTML).toMatchSnapshot();
   });
@@ -23,7 +23,7 @@ describe('FilterChip', () => {
   it('should use different aria label if provided', () => {
     renderFilterChip({ ariaClearLabel: 'Clear' });
     const chipEl = screen.getByRole('button');
-    expect(chipEl.textContent).toEqual('Foo. Clear Foo filter .');
+    expect(chipEl.textContent).toEqual('FooClear Foo filter .');
   });
 
   describe('onDelete', () => {
