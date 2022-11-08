@@ -16,19 +16,21 @@ export interface PropTableHtmlElementRowProps {
  * table.
  */
 const PropsTableHtmlElementRow = ({ elements }: PropTableHtmlElementRowProps) => {
+  const elementNames = elements.map((name) => <code key={name}>{`<${name}>`}</code>);
   const elementLinks = elements.map((name) => (
     <a href={`https://developer.mozilla.org/en-US/docs/Web/HTML/Element/${name}`} key={name}>
-      {`<${name}>`}
+      {name}
     </a>
   ));
-  const formattedElementLinks = humanizeList(elementLinks, { conjunction: 'or' });
+  const formattedElementNames = humanizeList(elementNames, { conjunction: 'or' });
+  const formattedElementLinks = humanizeList(elementLinks, { conjunction: 'and' });
 
   return (
     <TableRow>
       <TableCell colSpan={4}>
-        This component passes any additional props to its underlying {formattedElementLinks} element
-        as attributes. It will accept any props that are valid attributes of {formattedElementLinks}
-        .
+        This component passes any additional props to its underlying {formattedElementNames} element
+        as attributes. See the corresponding MDN documentation for {formattedElementLinks} for a
+        list of valid attributes.
       </TableCell>
     </TableRow>
   );
