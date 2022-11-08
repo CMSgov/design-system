@@ -313,6 +313,8 @@ import TextField from '@cmsgov/design-system/dist/components/Button/TextField';
 
 If you can't use React, you can apply the appropriate component CSS classes directly to elements in your HTML. Our component documentation pages provide HTML code for the inert states of components, but you'll be responsible for writing the correct markup and updating classes and DOM attributes in response to user events.
 
+The following example shows how you can manually apply `ds-c-label` and `ds-c-field` classes to HTML to achieve more or less the same affect as using the `<TextField>` React component. Note that you would have to update the HTML to show field errors when validating user input or to achieve other dynamic behaviors.
+
 ```html
 <div>
   <label class="ds-c-label" for="field_1">
