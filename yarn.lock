@@ -15066,6 +15066,11 @@ humanize-ms@^1.2.1:
   dependencies:
     ms "^2.0.0"
 
+humanize-react@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/humanize-react/-/humanize-react-1.0.0.tgz#542c78db7c919b9b8e8c095487469c8868b8c26f"
+  integrity sha512-d68v6HGH4EnYgH/YgbRKj1+4KYi3TLkMXlZgk4On1ee18XbCQO1Eb/ur0BOZvmEgu8TES5G9Cqu7a4lQng4Sig==
+
 husky@^7.0.0:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/husky/-/husky-7.0.1.tgz#579f4180b5da4520263e8713cc832942b48e1f1c"

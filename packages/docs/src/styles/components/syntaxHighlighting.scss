@@ -14,12 +14,12 @@ code {
   display: inline-block;
   font-size: 0.9em;
   margin: 1px;
-  padding: $spacer-half;
+  padding: 0 $spacer-half;
 }
 
-p code {
-  padding-bottom: 0;
-  padding-top: 0;
+a code {
+  color: $link__color;
+  text-decoration: underline;
 }
 
 a code {

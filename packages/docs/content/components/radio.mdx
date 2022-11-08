@@ -39,7 +39,7 @@ Radio buttons can have optional checked or unchecked children that are condition
 
 Radio buttons can be managed as a group using `<ChoiceList>` or individually using `<Choice>`.
 
-Note that any _undocumented_ props that you pass to a `<Choice>` or `choices` will be passed to the `input` element, so you can use this to set additional attributes if necessary.
+Note that each of the items in the `choices` array represents props that will be passed to an individual `<Choice>` component. You can therefore define any of the props listed in the <strong>`<Choice>` component</strong> table below, including all valid attributes of the [HTML input element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input).
 
 #### `<ChoiceList>` component
 
@@ -47,7 +47,9 @@ Note that any _undocumented_ props that you pass to a `<Choice>` or `choices` wi
 
 #### `<Choice>` component
 
-<PropTable componentName="Choice" />
+<PropTable componentName="Choice">
+  <PropTableHtmlElementRow elements={['input']} />
+</PropTable>
 
 ### Styles
 
