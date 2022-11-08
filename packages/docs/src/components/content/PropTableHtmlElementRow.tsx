@@ -19,7 +19,7 @@ const PropsTableHtmlElementRow = ({ elements }: PropTableHtmlElementRowProps) =>
   const elementNames = elements.map((name) => <code key={name}>{`<${name}>`}</code>);
   const elementLinks = elements.map((name) => (
     <a href={`https://developer.mozilla.org/en-US/docs/Web/HTML/Element/${name}`} key={name}>
-      {name}
+      <code key={name}>{`<${name}>`}</code>
     </a>
   ));
   const formattedElementNames = humanizeList(elementNames, { conjunction: 'or' });
