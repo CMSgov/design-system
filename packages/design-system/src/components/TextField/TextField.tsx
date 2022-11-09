@@ -3,7 +3,6 @@ import LabelMask from './LabelMask';
 import Mask from './Mask';
 import TextInput from './TextInput';
 import classNames from 'classnames';
-import useAutofocus from '../utilities/useAutoFocus';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 
 export type TextFieldDefaultValue = string | number;
@@ -126,31 +125,15 @@ const TextField: React.FC<TextFieldProps> = (props: TextFieldProps) => {
     />
   );
 
-  if (mask) {
-    return (
-      <div {...wrapperProps}>
-        <FormLabel {...labelProps} />
-        <Mask mask={mask}>{input}</Mask>
-        {bottomError}
-      </div>
-    );
-  } else if (labelMask) {
-    return (
-      <div {...wrapperProps}>
-        <FormLabel {...labelProps} />
-        <LabelMask labelMask={labelMask}>{input}</LabelMask>
-        {bottomError}
-      </div>
-    );
-  } else {
-    return (
-      <div {...wrapperProps}>
-        <FormLabel {...labelProps} />
-        {input}
-        {bottomError}
-      </div>
-    );
-  }
+  return (
+    <div {...wrapperProps}>
+      <FormLabel {...labelProps} />
+      {mask && <Mask mask={mask}>{input}</Mask>}
+      {labelMask && <LabelMask labelMask={labelMask}>{input}</LabelMask>}
+      {!mask && !labelMask && input}
+      {bottomError}
+    </div>
+  );
 };
 
 TextField.defaultProps = {
