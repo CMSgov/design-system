@@ -1,5 +1,4 @@
 import ChoiceList, { ChoiceListType } from './ChoiceList';
-import { Alert } from '../Alert';
 import { render, waitFor, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -172,7 +171,7 @@ describe('ChoiceList', () => {
       await waitFor(() => expect(onChange).toHaveBeenCalled());
     });
 
-    it('calls onBlur', () => {
+    it('calls onBlur', async () => {
       const onBlur = jest.fn();
       renderChoiceList({ onBlur });
       const choiceEl = screen.getByLabelText('Choice 1');
@@ -180,10 +179,10 @@ describe('ChoiceList', () => {
       choiceEl.focus();
       userEvent.tab();
 
-      expect(onBlur).toHaveBeenCalled();
+      await waitFor(() => expect(onBlur).toHaveBeenCalled());
     });
 
-    it('calls onComponentBlur', () => {
+    it('calls onComponentBlur', async () => {
       jest.useFakeTimers();
       const onBlur = jest.fn();
       const onComponentBlur = jest.fn();
@@ -194,7 +193,7 @@ describe('ChoiceList', () => {
       userEvent.tab();
       jest.runAllTimers();
 
-      expect(onBlur).toHaveBeenCalled();
+      await waitFor(() => expect(onBlur).toHaveBeenCalled());
       expect(onComponentBlur).toHaveBeenCalled();
     });
 
