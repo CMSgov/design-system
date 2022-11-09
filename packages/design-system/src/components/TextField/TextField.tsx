@@ -3,57 +3,32 @@ import LabelMask from './LabelMask';
 import Mask from './Mask';
 import TextInput from './TextInput';
 import classNames from 'classnames';
-import omit from 'lodash/omit';
-import pick from 'lodash/pick';
-import { FormControl, FormControlPropKeys } from '../FormControl/FormControl';
-
-// TODO: Remove `maskValue` and `unmaskValue` exports with next major release (v3.x.x)
-export { unmaskValue } from './maskHelpers';
+import useAutofocus from '../utilities/useAutoFocus';
+import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 
 export type TextFieldDefaultValue = string | number;
 export type TextFieldMask = 'currency' | 'phone' | 'ssn' | 'zip';
 export type TextFieldRows = number | string;
 export type TextFieldSize = 'small' | 'medium';
 export type TextFieldValue = string | number;
-export type TextFieldErrorPlacement = 'top' | 'bottom';
 
-export interface TextFieldProps {
+export interface BaseTextFieldProps extends Omit<FormFieldProps, 'id'> {
   /**
    * Apply an `aria-label` to the text field to provide additional
    * context to assistive devices.
    */
   ariaLabel?: string;
   /**
-   * Additional classes to be added to the root `div` element
-   */
-  className?: string;
-  /**
    * Sets the initial value. Use this for an uncontrolled component; otherwise,
    * use the `value` property.
    */
   defaultValue?: TextFieldDefaultValue;
   disabled?: boolean;
-  errorMessage?: React.ReactNode;
-  /**
-   * Additional classes to be added to the error message
-   */
-  errorMessageClassName?: string;
-  /**
-   * Location of the error message relative to the field input
-   */
-  errorPlacement?: TextFieldErrorPlacement;
-  /**
-   * Additional classes to be added to the field element
-   */
   fieldClassName?: string;
-  /**
-   * Used to focus `input` on `componentDidMount()`
+  /*
+   * Sets the focus on the select during the first mount
    */
-  focusTrigger?: boolean;
-  /**
-   * Additional hint text to display
-   */
-  hint?: React.ReactNode;
+  autoFocus?: boolean;
   /**
    * A unique `id` to be used on the text field.
    */
@@ -71,24 +46,12 @@ export interface TextFieldProps {
    */
   inversed?: boolean;
   /**
-   * Label for the input
-   */
-  label: React.ReactNode;
-  /**
    * Applies date format masking to the input value entered
    * and renders to a text field above the input.
    * Passing `true` to `valueOnly` will return just the
    * formatted value entered.
    */
   labelMask?: (rawInput: string, valueOnly?: boolean) => string;
-  /**
-   * Additional classes to be added to the `FormLabel`.
-   */
-  labelClassName?: string;
-  /**
-   * A unique `id` to be used on the label field.
-   */
-  labelId?: string;
   /**
    * Apply formatting to the field that's unique to the value
    * you expect to be entered. Depending on the mask, the
@@ -130,77 +93,68 @@ export interface TextFieldProps {
   value?: TextFieldValue;
 }
 
-type OmitProps =
-  | 'size'
-  | 'label'
-  | 'className'
-  | 'defaultValue'
-  | 'disabled'
-  | 'id'
-  | 'onBlur'
-  | 'onChange'
-  | 'type'
-  | 'value'
-  | 'name';
+export type TextFieldProps = BaseTextFieldProps &
+  Omit<React.ComponentPropsWithRef<'input'>, keyof BaseTextFieldProps>;
 
-export class TextField extends React.PureComponent<
-  Omit<React.ComponentPropsWithoutRef<'input'>, OmitProps> & TextFieldProps,
-  any
-> {
-  static defaultProps = {
-    type: 'text',
-  };
+const TextField: React.FC<TextFieldProps> = (props: TextFieldProps) => {
+  const { mask, labelMask, ...textFieldProps } = props;
 
-  constructor(props: TextFieldProps) {
-    super(props);
-
-    if (process.env.NODE_ENV !== 'production') {
-      if (props.type === 'number') {
-        console.warn(
-          `Please use the 'numeric' prop instead of 'type="number"' unless your user research suggests otherwise.`
-        );
-      }
+  if (process.env.NODE_ENV !== 'production') {
+    if (props.type === 'number') {
+      console.warn(
+        `Please use the 'numeric' prop instead of 'type="number"' unless your user research suggests otherwise.`
+      );
     }
   }
 
-  render() {
-    const containerProps = pick(this.props, FormControlPropKeys);
-    const { mask, labelMask, ...inputOnlyProps } = omit(this.props, FormControlPropKeys);
+  const { labelProps, fieldProps, wrapperProps, bottomError } = useFormLabel({
+    ...textFieldProps,
+    labelComponent: 'label',
+    wrapperIsFieldset: false,
+  });
 
-    // Add clearfix class
-    const containerClassName = classNames(
-      'ds-u-clearfix', // fixes issue where the label's margin is collapsed
-      this.props.className
-    );
+  wrapperProps.className = classNames(
+    'ds-u-clearfix', // fixes issue where the label's margin is collapsed
+    wrapperProps.className
+  );
 
+  const input = (
+    <TextInput
+      type={TextField.defaultProps.type} // Appeases TypeScript
+      inversed={props.inversed}
+      {...fieldProps}
+    />
+  );
+
+  if (mask) {
     return (
-      <FormControl
-        {...containerProps}
-        className={containerClassName}
-        component="div"
-        labelComponent="label"
-        label={this.props.label}
-        render={({ id, setRef, errorId, errorMessage, errorPlacement }) => {
-          const input = (
-            <TextInput
-              type={TextField.defaultProps.type} // Appeases TypeScript
-              {...inputOnlyProps}
-              {...{ id, setRef, errorId, errorMessage, errorPlacement }}
-              inversed={this.props.inversed}
-            />
-          );
-
-          if (mask) {
-            return <Mask mask={mask}>{input}</Mask>;
-          } else if (labelMask) {
-            return <LabelMask labelMask={labelMask}>{input}</LabelMask>;
-          } else {
-            return input;
-          }
-        }}
-      />
+      <div {...wrapperProps}>
+        <FormLabel {...labelProps} />
+        <Mask mask={mask}>{input}</Mask>
+        {bottomError}
+      </div>
+    );
+  } else if (labelMask) {
+    return (
+      <div {...wrapperProps}>
+        <FormLabel {...labelProps} />
+        <LabelMask labelMask={labelMask}>{input}</LabelMask>
+        {bottomError}
+      </div>
+    );
+  } else {
+    return (
+      <div {...wrapperProps}>
+        <FormLabel {...labelProps} />
+        {input}
+        {bottomError}
+      </div>
     );
   }
-}
+};
+
+TextField.defaultProps = {
+  type: 'text',
+};
 
 export default TextField;
