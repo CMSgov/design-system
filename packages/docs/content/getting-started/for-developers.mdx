@@ -278,28 +278,6 @@ import { Button, TextField } from 'ds-medicare-gov';
 
 </ThemeContent>
 
-<Alert
-  heading="Performance note"
-  variation="warn"
-  className="ds-u-margin-bottom--2 ds-u-font-size--small"
->
-  <p class="ds-c-alert__text">
-    This approach may result in a larger file size than intended. Depending on what module bundler
-    you use, all of the design system's React components may be included in the bundled file even if
-    you didn't specifically import them. This can be avoided by using{' '}
-    <a href="https://webpack.js.org/guides/tree-shaking/">tree shaking in Webpack</a>.
-  </p>
-</Alert>
-
-The `@cmsgov/design-system` package provides an ES modules version of our code to support Webpack 4's tree shaking optimizations. Our package is configured to use the `modules` property to let bundlers know to resolve imports from `@cmsgov/design-system` to the ES modules version when preferred. Read more about ESM in [Webpack's documentation](https://webpack.js.org/guides/author-libraries/#final-steps), or from [Rollup's proposal](https://github.com/rollup/rollup/wiki/pkg.module).
-
-Components can also be imported from their individual export file. This method carries no risk of including unused or extra code, as you are only importing from a specific file.
-
-```js
-import Button from '@cmsgov/design-system/dist/components/Button/Button';
-import TextField from '@cmsgov/design-system/dist/components/Button/TextField';
-```
-
 ### Applying component CSS classes manually
 
 If you can't use React, you can apply the appropriate component CSS classes directly to elements in your HTML. Our component documentation pages provide HTML code for the inert states of components, but you'll be responsible for writing the correct markup and updating classes and DOM attributes in response to user events.
