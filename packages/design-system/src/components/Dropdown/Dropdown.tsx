@@ -17,10 +17,6 @@ export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
    */
   ariaLabel?: string;
   /**
-   * Additional classes to be added to the root element.
-   */
-  className?: string;
-  /**
    * Used to define custom dropdown options (i.e. option groups). When using the `children` prop, `options` should be an empty list.
    */
   children?: React.ReactNode;
@@ -104,7 +100,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   }
 
   // Select specific props
-  const { ariaLabel, children, fieldClassName, inversed, options, size, ...selectProps } = props;
+  const { ariaLabel, children, fieldClassName, options, size, ...selectProps } = props;
 
   const optionElements =
     children ??
@@ -123,8 +119,8 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   const selectClassNames = classNames(
     'ds-c-field',
     {
-      'ds-c-field--error': props.errorMessage,
-      'ds-c-field--inverse': inversed,
+      'ds-c-field--error': selectProps.errorMessage,
+      'ds-c-field--inverse': selectProps.inversed,
     },
     size && `ds-c-field--${size}`,
     fieldClassName
@@ -134,12 +130,16 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
 
   return (
     <div {...wrapperProps}>
-      <FormLabel {...labelProps} />
+      <FormLabel {...labelProps} fieldId={fieldProps.id} />
       <select
         aria-label={ariaLabel}
-        disabled={props.disabled}
+        aria-describedby={fieldProps['aria-describedby']}
+        aria-invalid={fieldProps['aria-invalid']}
+        disabled={fieldProps.disabled}
         ref={ref}
         className={selectClassNames}
+        id={fieldProps.id}
+        name={fieldProps.name}
       >
         {optionElements}
       </select>
