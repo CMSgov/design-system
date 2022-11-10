@@ -171,7 +171,7 @@ describe('ChoiceList', () => {
       await waitFor(() => expect(onChange).toHaveBeenCalled());
     });
 
-    it('calls onBlur', async () => {
+    it('calls onBlur', () => {
       const onBlur = jest.fn();
       renderChoiceList({ onBlur });
       const choiceEl = screen.getByLabelText('Choice 1');
@@ -179,10 +179,10 @@ describe('ChoiceList', () => {
       choiceEl.focus();
       userEvent.tab();
 
-      await waitFor(() => expect(onBlur).toHaveBeenCalled());
+      expect(onBlur).toHaveBeenCalled();
     });
 
-    it('calls onComponentBlur', async () => {
+    it('calls onComponentBlur', () => {
       jest.useFakeTimers();
       const onBlur = jest.fn();
       const onComponentBlur = jest.fn();
@@ -193,7 +193,7 @@ describe('ChoiceList', () => {
       userEvent.tab();
       jest.runAllTimers();
 
-      await waitFor(() => expect(onBlur).toHaveBeenCalled());
+      expect(onBlur).toHaveBeenCalled();
       expect(onComponentBlur).toHaveBeenCalled();
     });
 
