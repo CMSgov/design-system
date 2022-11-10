@@ -100,7 +100,7 @@ export const FormControl = (props: FormControlProps) => {
   const { component, render, inputRef, ...remainingProps } = props;
   const ComponentType = component;
   const wrapperIsFieldset = ComponentType === 'fieldset';
-  const { labelProps, fieldProps, wrapperProps, bottomError } = useFormLabel({
+  const { labelProps, fieldProps, wrapperProps, bottomError, errorId } = useFormLabel({
     ...remainingProps,
     wrapperIsFieldset,
   });
@@ -125,7 +125,7 @@ export const FormControl = (props: FormControlProps) => {
   return (
     <ComponentType {...wrapperProps}>
       <FormLabel {...labelProps} />
-      {render(fieldInputProps)}
+      {render({ ...fieldInputProps, errorId })}
       {bottomError}
     </ComponentType>
   );

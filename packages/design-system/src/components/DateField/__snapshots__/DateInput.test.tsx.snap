@@ -20,7 +20,7 @@ exports[`DateInput renders with all defaultProps 1`] = `
         </span>
       </label>
       <input
-        aria-describedby="1"
+        aria-invalid="false"
         class="ds-c-field ds-c-field--month"
         id="field_1"
         inputmode="numeric"
@@ -51,7 +51,7 @@ exports[`DateInput renders with all defaultProps 1`] = `
         </span>
       </label>
       <input
-        aria-describedby="1"
+        aria-invalid="false"
         class="ds-c-field ds-c-field--day"
         id="field_2"
         inputmode="numeric"
@@ -82,7 +82,7 @@ exports[`DateInput renders with all defaultProps 1`] = `
         </span>
       </label>
       <input
-        aria-describedby="1"
+        aria-invalid="false"
         class="ds-c-field ds-c-field--year"
         id="field_3"
         inputmode="numeric"

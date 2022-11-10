@@ -2,11 +2,11 @@
 
 exports[`Dropdown dropdown matches snapshot 1`] = `
 <div
-  class=""
+  aria-invalid="false"
+  class="ds-c-fieldset"
 >
   <label
     class="ds-c-label"
-    for="field_1"
     id="field_1-label"
   >
     <span
@@ -16,12 +16,8 @@ exports[`Dropdown dropdown matches snapshot 1`] = `
     </span>
   </label>
   <select
-    aria-invalid="false"
     aria-label="test aria label"
     class="ds-c-field"
-    id="field_1"
-    name="dropdown"
-    readonly=""
   >
     <option
       value="1"

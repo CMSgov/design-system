@@ -3,6 +3,7 @@
 exports[`MonthPicker renders a snapshot 1`] = `
 <DocumentFragment>
   <fieldset
+    aria-invalid="false"
     class="ds-c-fieldset ds-c-month-picker"
   >
     <legend

@@ -33,6 +33,7 @@ exports[`ChoiceList Radio buttons and Checkboxes allows for modification of aria
 exports[`ChoiceList Radio buttons and Checkboxes applies correct aria attributes when checkedChildren is set 1`] = `
 <div>
   <fieldset
+    aria-invalid="false"
     class="ds-c-fieldset"
   >
     <legend
@@ -114,6 +115,7 @@ exports[`ChoiceList Radio buttons and Checkboxes applies correct aria attributes
 exports[`ChoiceList Radio buttons and Checkboxes is a radio button group 1`] = `
 <DocumentFragment>
   <fieldset
+    aria-invalid="false"
     class="ds-c-fieldset"
   >
     <legend

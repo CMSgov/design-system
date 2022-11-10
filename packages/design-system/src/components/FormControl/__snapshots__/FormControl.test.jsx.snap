@@ -25,6 +25,7 @@ exports[`FormControl renders bottom placed errors  1`] = `
 exports[`FormControl renders custom component and labelComponent elements 1`] = `
 <div>
   <fieldset
+    aria-invalid="false"
     class="ds-c-fieldset"
   >
     <legend
