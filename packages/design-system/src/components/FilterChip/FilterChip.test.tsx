@@ -15,15 +15,16 @@ describe('FilterChip', () => {
   it('should include children as label', () => {
     renderFilterChip();
     const chipEl = screen.getByRole('button');
-    expect(chipEl.textContent).toEqual('Foo. Remove Foo filter .');
-
+    expect(chipEl.querySelector('.ds-c-filter-chip__label').textContent).toEqual('Foo');
     expect(chipEl.innerHTML).toMatchSnapshot();
   });
 
   it('should use different aria label if provided', () => {
     renderFilterChip({ ariaClearLabel: 'Clear' });
     const chipEl = screen.getByRole('button');
-    expect(chipEl.textContent).toEqual('Foo. Clear Foo filter .');
+    expect(chipEl.querySelector('.ds-u-visibility--screen-reader').textContent).toEqual(
+      'Clear Foo filter .'
+    );
   });
 
   describe('onDelete', () => {
