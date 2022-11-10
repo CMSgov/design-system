@@ -12,6 +12,7 @@ const level1ItemOrder = [
   'patterns',
   'layouts',
   'utilities',
+  'migration guides',
 ];
 
 /**

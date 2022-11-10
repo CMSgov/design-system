@@ -1,0 +1,64 @@
+---
+title: Using agnostic typography classes
+order: 40
+---
+
+In [version 2.5.0](https://github.com/CMSgov/design-system/releases/tag/core-2.5.0), we updated the font size and typography utility classes to make them more flexible. We removed the semantic heading-level references (h1, h2, etc...) from the class names and replaced them with a basic sizing scale (xl, lg, &hellip;). Semantic heading levels in an HTML document don't always match the visual hierarchy in designs, so we're no longer pretending they do.
+
+## Heading utility classes
+
+Before:
+
+- `.ds-h{level}` where level is a number between `1` and `6`
+
+After:
+
+- `.ds-text-heading--[5xl|4xl|3xl|2xl|xl|lg|md|base|sm]`
+
+To update:
+
+- `.ds-display` update to `.ds-text-heading--5xl`
+- `.ds-title` update to `.ds-text-heading--4xl`
+- `.ds-h1` update to `.ds-text-heading--3xl`
+- `.ds-h2` update to `.ds-text-heading--2xl`
+- `.ds-h3` update to `.ds-text-heading--xl`
+- `.ds-h4` update to `.ds-text-heading--lg`
+- `.ds-h5` update to `.ds-text-heading--md`
+- `.ds-h6` update to `ds-text-heading--sm`
+- `.ds-text--lead` update to `.ds-text-body--lg`
+- `.ds-text` update to `ds-text-body--md`
+
+## Font-size utility classes
+
+Before:
+
+- `.ds-u-font-size--display|title|h1|h2|h3|h4|lead|base|small]`
+
+After:
+
+- `.ds-u-font-size--[5xl|4xl|3xl|2xl|xl|lg|md|base|sm]`
+
+To update:
+
+- `.ds-u-font-size--display` update to `.ds-u-font-size--5xl`
+- `.ds-u-font-size--title` update to `.ds-u-font-size--4xl`
+- `.ds-u-font-size--h1` update to `.ds-u-font-size--3xl`
+- `.ds-u-font-size--h2` update to `.ds-u-font-size--2xl`
+- `.ds-u-font-size--h3` update to `.ds-u-font-size--xl`
+- `.ds-u-font-size--h4` update to `.ds-u-font-size--lg`
+- `.ds-u-font-size--lead` update to `.ds-u-font-size--md`
+- `.ds-u-font-size--base` update to `.ds-u-font-size--base`
+- `.ds-u-font-size--small` update to `.ds-u-font-size--sm`
+
+## Font size variable updates
+
+We've added new variables to be used to customize the global sizing values.
+
+- `$font-size-5xl`
+- `$font-size-4xl`
+- `$font-size-3xl`
+- `$font-size-2xl`
+- `$font-size-xl`
+- `$font-size-lg`
+- `$font-size-md`
+- `$font-size-sm`
