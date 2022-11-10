@@ -1,7 +1,6 @@
 import Choice, { ChoiceProps as ChoiceComponentProps } from './Choice';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 import React from 'react';
-import { useEffect, useCallback } from 'react';
 import classNames from 'classnames';
 
 export type ChoiceListSize = 'small';
@@ -75,15 +74,13 @@ export type ChoiceListProps = BaseChoiceListProps &
 export const ChoiceList: React.FC<ChoiceListProps> = (props: ChoiceListProps) => {
   const { onBlur, onComponentBlur, choices, ...listProps } = props;
 
-  useEffect(() => {
-    if (process.env.NODE_ENV !== 'production') {
-      if (props.type !== 'checkbox' && props.choices.length === 1) {
-        console.warn(
-          `[Warning]: Use type="checkbox" for components with only one choice. A single radio button is disallowed because it prevents users from deselecting the field.`
-        );
-      }
+  if (process.env.NODE_ENV !== 'production') {
+    if (props.type !== 'checkbox' && props.choices.length === 1) {
+      console.warn(
+        `[Warning]: Use type="checkbox" for components with only one choice. A single radio button is disallowed because it prevents users from deselecting the field.`
+      );
     }
-  }, [props.choices.length, props.type]);
+  }
 
   const choiceRefs: [any?] = [];
 
