@@ -11,7 +11,7 @@ import { errorPlacementDefault } from '../flags';
 // TODO: This could use a better name
 type PassedOnFormLabelProps = Omit<
   FormLabelProps,
-  'children' | 'className' | 'component' | 'fieldId'
+  'children' | 'className' | 'component' | 'fieldId' | 'id'
 >;
 
 /**
@@ -27,6 +27,11 @@ export interface FormFieldProps extends PassedOnFormLabelProps {
    * Location of the error message relative to the field input
    */
   errorPlacement?: 'top' | 'bottom';
+  /**
+   * A unique `id` for the field element. Useful for referencing the field from
+   * other components with `aria-describedby`.
+   */
+  id?: string;
   /**
    * Label for the field.
    */

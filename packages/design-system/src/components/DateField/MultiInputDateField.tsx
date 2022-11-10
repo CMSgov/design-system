@@ -1,8 +1,5 @@
-import { FormControl, FormControlProps, FormControlPropKeys } from '../FormControl/FormControl';
 import DateInput from './DateInput';
 import defaultDateFormatter from './defaultDateFormatter';
-import omit from 'lodash/omit';
-import pick from 'lodash/pick';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 import { t } from '../i18n';
 
@@ -12,7 +9,6 @@ export type DateFieldMonthDefaultValue = string | number;
 export type DateFieldMonthValue = string | number;
 export type DateFieldYearDefaultValue = string | number;
 export type DateFieldYearValue = string | number;
-export type DateFieldErrorPlacement = 'top' | 'bottom';
 
 export interface DateFieldProps extends Omit<FormFieldProps, 'label'> {
   /**
@@ -148,7 +144,7 @@ export function MultiInputDateField(props: DateFieldProps): React.ReactElement {
   });
 
   // Throw away the properties we don't need by destructuring
-  const { id, errorId, ...inputProps } = fieldProps;
+  const { id, ...inputProps } = fieldProps;
 
   return (
     <fieldset {...wrapperProps}>
