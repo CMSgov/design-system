@@ -2,8 +2,7 @@
 
 exports[`Dropdown dropdown matches snapshot 1`] = `
 <div
-  aria-invalid="false"
-  class="ds-c-fieldset"
+  class=""
 >
   <label
     class="ds-c-label"
@@ -17,6 +16,7 @@ exports[`Dropdown dropdown matches snapshot 1`] = `
     </span>
   </label>
   <select
+    aria-invalid="false"
     aria-label="test aria label"
     class="ds-c-field"
     id="field_1"
@@ -34,8 +34,7 @@ exports[`Dropdown dropdown matches snapshot 1`] = `
 exports[`Dropdown handles bottom placed error 1`] = `
 <div>
   <div
-    aria-invalid="true"
-    class="ds-c-fieldset"
+    class=""
   >
     <label
       class="ds-c-label"
@@ -46,15 +45,11 @@ exports[`Dropdown handles bottom placed error 1`] = `
         class=""
       >
         Select an option
-        <div
-          class="ds-u-visibility--screen-reader"
-        >
-          Error
-        </div>
       </span>
     </label>
     <select
       aria-describedby="1_error"
+      aria-invalid="true"
       class="ds-c-field ds-c-field--error"
       errorid="1_error"
       id="field_12"
@@ -92,8 +87,7 @@ exports[`Dropdown handles bottom placed error 1`] = `
 exports[`Dropdown has error 1`] = `
 <div>
   <div
-    aria-invalid="true"
-    class="ds-c-fieldset"
+    class=""
   >
     <label
       class="ds-c-label"
@@ -126,6 +120,7 @@ exports[`Dropdown has error 1`] = `
       </span>
     </label>
     <select
+      aria-invalid="true"
       class="ds-c-field ds-c-field--error"
       id="field_10"
       name="dropdown"
@@ -142,6 +137,7 @@ exports[`Dropdown has error 1`] = `
 
 exports[`Dropdown renders a select menu 1`] = `
 <select
+  aria-invalid="false"
   aria-label="test aria label"
   class="ds-c-field"
   id="field_2"
@@ -157,6 +153,7 @@ exports[`Dropdown renders a select menu 1`] = `
 
 exports[`Dropdown renders options correctly 1`] = `
 <select
+  aria-invalid="false"
   class="ds-c-field"
   id="field_3"
   name="dropdown"

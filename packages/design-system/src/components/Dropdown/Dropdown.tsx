@@ -113,7 +113,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   const { labelProps, fieldProps, wrapperProps, bottomError } = useFormLabel({
     ...selectProps,
     labelComponent: 'label',
-    wrapperIsFieldset: true,
+    wrapperIsFieldset: false,
   });
 
   const selectClassNames = classNames(

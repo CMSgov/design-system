@@ -107,9 +107,9 @@ describe('Dropdown', () => {
 
   it('has error', () => {
     const { container } = makeDropdown({ errorMessage: 'Error' });
+    const select = screen.getByRole('combobox');
 
-    const wrapper = container.querySelector('div');
-    expect(wrapper).toHaveAttribute('aria-invalid', 'true');
+    expect(select).toHaveAttribute('aria-invalid', 'true');
     expect(container).toMatchSnapshot();
   });
 
@@ -120,9 +120,8 @@ describe('Dropdown', () => {
       errorId: '1_error',
     });
 
-    const wrapper = container.querySelector('div');
     const select = screen.getByRole('combobox');
-    expect(wrapper).toHaveAttribute('aria-invalid', 'true');
+    expect(select).toHaveAttribute('aria-invalid', 'true');
     expect(select).toHaveAttribute('aria-describedby', '1_error');
     expect(select).toHaveClass('ds-c-field--error');
     expect(container).toMatchSnapshot();
