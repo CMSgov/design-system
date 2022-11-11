@@ -144,12 +144,12 @@ export function MultiInputDateField(props: DateFieldProps): React.ReactElement {
   });
 
   // Throw away the properties we don't need by destructuring
-  const { id, ...inputProps } = fieldProps;
+  delete fieldProps.id;
 
   return (
     <fieldset {...wrapperProps}>
       <FormLabel {...labelProps} />
-      <DateInput {...inputProps} labelId={labelProps.id} />
+      <DateInput {...fieldProps} labelId={labelProps.id} />
       {bottomError}
     </fieldset>
   );

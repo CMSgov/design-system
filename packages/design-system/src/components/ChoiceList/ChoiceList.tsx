@@ -94,7 +94,7 @@ export const ChoiceList: React.FC<ChoiceListProps> = (props: ChoiceListProps) =>
     // transition, so in order to check if the newly focused element
     // is one of our choices, we're going to have to wait a bit.
     setTimeout(() => {
-      if (choiceRefs.indexOf(document.activeElement) === -1) {
+      if (!choiceRefs.includes(document.activeElement)) {
         onComponentBlur(evt);
       }
     }, 20);

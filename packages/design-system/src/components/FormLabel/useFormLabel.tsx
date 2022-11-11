@@ -92,13 +92,13 @@ export interface UseFormLabelProps extends FormFieldProps {
 export function useFormLabel<T extends UseFormLabelProps>(props: T) {
   // TODO: Once we're on React 18, we can use the `useId` hook
   const generatedId = useRef(uniqueId('field_')).current;
+  const id = props.id ?? generatedId;
+  const labelId = props.labelId ?? `${id}-label`;
+  const errorId = props.errorId ?? `${id}-error`;
 
   const {
     className,
     label,
-    id = props.id ?? generatedId,
-    labelId = props.labelId ?? `${id}-label`,
-    errorId = props.errorId ?? `${id}-error`,
     labelClassName,
     labelComponent,
     errorMessage,

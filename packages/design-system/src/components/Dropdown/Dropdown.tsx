@@ -100,7 +100,16 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   }
 
   // Select specific props
-  const { ariaLabel, children, fieldClassName, options, size, ...selectProps } = props;
+  const {
+    ariaLabel,
+    children,
+    errorMessage,
+    fieldClassName,
+    inversed,
+    options,
+    size,
+    ...selectProps
+  } = props;
 
   const optionElements =
     children ??
@@ -119,8 +128,8 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   const selectClassNames = classNames(
     'ds-c-field',
     {
-      'ds-c-field--error': selectProps.errorMessage,
-      'ds-c-field--inverse': selectProps.inversed,
+      'ds-c-field--error': errorMessage,
+      'ds-c-field--inverse': inversed,
     },
     size && `ds-c-field--${size}`,
     fieldClassName
@@ -131,16 +140,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   return (
     <div {...wrapperProps}>
       <FormLabel {...labelProps} fieldId={fieldProps.id} />
-      <select
-        aria-label={ariaLabel}
-        aria-describedby={fieldProps['aria-describedby']}
-        aria-invalid={fieldProps['aria-invalid']}
-        disabled={fieldProps.disabled}
-        ref={ref}
-        className={selectClassNames}
-        id={fieldProps.id}
-        name={fieldProps.name}
-      >
+      <select aria-label={ariaLabel} ref={ref} className={selectClassNames} {...fieldProps}>
         {optionElements}
       </select>
       {bottomError}
