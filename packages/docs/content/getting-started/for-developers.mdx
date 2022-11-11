@@ -1,0 +1,342 @@
+---
+title: For developers
+order: 10
+---
+
+import namingConventionsImg from '../../src/images/naming-convention.svg';
+import { Alert } from '@cmsgov/design-system';
+
+Greetings, Developers! This page will walk you through all the basics of using the design system, but another good way to get a jump start is to look through [our example projects on GitHub](https://github.com/CMSgov/design-system/tree/main/examples/).
+
+As you go through this documentation, keep in mind that the CMS Design System is a [family of design systems](/getting-started/child-design-systems/), and each of these design systems is distributed under a different package name:
+
+- [`design-system`](?theme=core) (Core Design System)
+- [`ds-healthcare-gov`](?theme=healthcare) (Healthcare.gov Child Design System)
+- [`ds-medicare-gov`](?theme=medicare) (Medicare.gov Child Design System)
+
+## Getting the design system assets
+
+How you get the design system assets depends on the needs of your project and your workstyle. You could...
+
+1. [Install the npm package](#option-1-install-using-npm)
+    - Good option if your project already uses [npm](https://www.npmjs.com/) for package management
+    - Makes it easy to get patch updates for your major/minor version
+2. [Reference files directly from the CDN](#option-2-reference-assets-from-the-cdn)
+    - Good option if your project doesn't use [npm](https://www.npmjs.com/)
+    - CDN files are versioned, so you always know what version you're using, and those files will be cached by the client's browser
+3. [Download the design system assets directly from GitHub](#option-3-download-assets-directly)
+    - This is not recommended, but it's available if no other options will work for your project
+
+### Option 1: Install using npm
+
+If you already have [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/) set up for your project, you can add it to your list of dependencies using one of the commands below. **Note that the following example will display a different package name depending on the theme you have selected.**
+
+<ThemeContent onlyThemes={['core']}>
+
+```sh
+npm install --save @cmsgov/design-system
+# or
+yarn add @cmsgov/design-system
+```
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+```sh
+npm install --save @cmsgov/ds-healthcare-gov
+# or
+yarn add @cmsgov/ds-healthcare-gov
+```
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+```sh
+npm install --save @cmsgov/ds-medicare-gov
+# or
+yarn add @cmsgov/ds-medicare-gov
+```
+
+</ThemeContent>
+
+#### Package file structure
+
+Inside the npm package, you will find a `dist` folder, which contains all the files your project needs to integrate the design system. Your project should not be importing anything from the `src` directory. Here's a diagram of the folder contents:
+
+```
+└── dist
+    ├── components/
+    │   └── index.js        Compiled JS entry point (CommmonJS)
+    ├── css/
+    │   └── index.css       Compiled CSS entry point
+    ├── esnext/
+    │   └── index.esm.js    Compiled JS entry point (ES Module)
+    ├── fonts/
+    ├── images/
+    ├── scss/
+    │   ├── base/           Base styles, HTML element selectors
+    │   ├── components/     Component styles
+    │   ├── settings/       Variables, mixins, and functions
+    │   ├── utilities/      Utility classes for individual CSS properties
+    │   └── index.scss      Precompiled SCSS entry point
+    └── types/              Typescript definition files
+```
+
+### Option 2: Reference assets from the CDN
+
+You can also choose to load the assets directly from our content delivery network to your clients' browsers. A content delivery network (CDN) is a collection of servers that dynamically allocate resources dependent on the requester's geographic location in order to optimize the distribution of assets.
+
+Some benefits and applications for utilizing the design system via CDN are:
+
+- Quickly utilize design system code and style assets for development/prototyping
+- The CDN caches assets for fast loading and scales automatically in case of a large number of requests
+- Ability to utilize a specific version of the design system easily
+
+#### Packages
+
+Packages which are currently available for reference:
+
+- **design-system** - The core CMSDS (versions 3.4.0 and above)
+- **ds-healthcare-gov** - Healthcare.gov themed DS (versions 7.4.0 and above)
+- **ds-medicare-gov** - Medicare.gov themed DS (versions 5.4.0 and above)
+
+#### URL structure
+
+```
+https://design.cms.gov/cdn/<package-name>/<version>/<resource>
+```
+
+Where `package-name` is one of the packages named above, `version` is the version number and `resource` is the file being requested from the resources listed above.
+
+#### Resources
+
+```
+  ├── css/
+  │   ├── index.css
+  │   ├── base/index.css
+  │   ├── components/index.css
+  │   └── utilities/index.css
+  └── js/
+      ├── react.production.min.js
+      ├── react-dom.production.min.js
+      └── bundle.js
+```
+
+#### Example for including version 3.4.0 Core CSS via CDN
+
+```html
+<link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/3.4.0/css/index.css" />
+```
+
+#### Example for including version 3.4.0 Core JS via CDN
+
+If you do not already have React and React-DOM included in your page, include them before the design system js bundle.
+
+```html
+<script type="text/javascript" src="https://design.cms.gov/cdn/design-system/3.4.0/js/react.production.min.js"></script>
+<script type="text/javascript" src="https://design.cms.gov/cdn/design-system/3.4.0/js/react-dom.production.min.js"></script>
+<script type="text/javascript" src="https://design.cms.gov/cdn/design-system/3.4.0/js/bundle.js"></script>
+```
+
+### Option 3: Download assets directly
+
+If you'd like to take a look at the static assets that we publish through npm and our CDN, you can download a tar file for any of the releases [on our GitHub Releases page](https://github.com/CMSgov/design-system/releases). You will find these files in the "Assets" section at the bottom of each release.
+
+
+## Including the CSS
+
+No matter what framework you use to build your application, you will need to include the design system styles in order for your application to look the way it should.
+
+### With HTML
+
+The simplest way to do that is to include a resource link element in your HTML document, like this:
+
+```html
+<head>
+  <link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/5.0.0/css/index.css" />
+</head>
+```
+
+If you are getting the files from npm, you will want to change the `href` to reference the files from your local `node_modules` folder. Likewise if you've downloaded the files directly, the `href` will point to wherever you've put your files.
+
+### With an asset bundler
+For projects that use an asset bundler, include the assets in whatever way your bundler recommends. For instance, in a WebPack or create-react-app project, you might include the styles in your CSS like this:
+
+```css
+@import '@cmsgov/design-system/dist/css/index';
+```
+
+Or you might import it from your JavaScript like this:
+
+```js
+import '@cmsgov/design-system/dist/css/index.css';
+```
+
+### Fonts and images
+
+Note that our stylesheets also reference fonts and images, so you will need to make sure these assets (`dist/fonts` and `dist/images`) are available to your site/application at the correct relative paths. You don't need to think about this if you're loading the stylesheet from the CDN, and most asset bundlers will be able to locate these additional assets without additional configuration.
+
+## Using the CSS
+
+To start off, for all your elements to inherit the correct typographical properties, the root of your page content should have a `ds-base` class applied to it. Please see [our base styles documentation](/foundation/base) for more details.
+
+Additional design system styles can be broken down into the following categories:
+
+1. **Layout styles** - For implementing visual structure in your application
+    - Please see [the layout grid documentation](/foundation/layout-grid/layout-grid) to get started
+    - Further resources can be found in the [Layouts](/layouts) section of the doc site
+2. **Typography styles** - For visually differentiating between kinds of text
+    - [Heading](foundation/typography/headings) and [body](foundation/typography/body) typography classes can be found on their respective documentation pages
+3. **Component styles** - A collection of designed, self-contained UI elements
+    - See the [Using components](#using-components) section below
+4. **Utility classes** - For applying single CSS properties to elements using standard values
+    - See the [Utilities](/utilities) section of the doc site for more details
+
+### CSS class naming conventions
+
+Most of our CSS classes follow a specific naming pattern, outlined below:
+
+<div className="ds-u-measure--wide ds-u-margin-top--2">
+  <img src={namingConventionsImg} alt="Diagram explaining the parts of an example CSS class '.ds-c-button--outline' where DS is namespace, C is the type prefix, and the rest follows BEM syntax" class="ds-u-border--1" />
+</div>
+
+Note that the design system favors clarity over succinctness. This means the class names may be verbose but should deliver clarity, predictability, and legibility in exchange.
+
+#### Namespace
+
+To avoid conflicting with other libraries and existing code, the design system namespaces its CSS class names with `ds-`.
+
+#### Prefix
+
+Prefixes are added to class names to make it more apparent what job the class is doing.
+
+| Prefix | Description                                                 |
+| ------ | ----------------------------------------------------------- |
+| `l-`   | Indicates layout-related styles. Example: `.ds-l-container` |
+| `c-`   | Indicates a component. Example: `.ds-c-button`              |
+| `u-`   | Indicates a utility. Example: `.ds-u-color--base`           |
+
+These prefixes can sometimes be followed by a "breakpoint prefix". [Learn more about breakpoint prefixes.](/foundation/layout-grid/responsive-design/)
+
+#### BEM syntax
+
+Following the namespace and prefix is a name conforming to [BEM syntax](http://getbem.com/introduction/), like `[BLOCK]__[ELEMENT]--[MODIFIER]`, where...
+
+- **BLOCK** is a standalone entity that is meaningful on its own. For example: `.ds-c-card`, `.ds-c-button`
+- **ELEMENT** is a part of a block that has no standalone meaning and is semantically tied to its block, such as `.ds-c-card__title`
+- **MODIFIER** is a flag on a block or element and is used to change appearance or behavior. For example: `.ds-c-button--primary`, `.ds-u-color--base`, `.ds-l-col--3`
+
+## Using components
+
+Our design system components are more than a collection of styles for making widgets on a page. They embody guidelines, best practices, and interactive behaviors that have been designed for good accessibility and user experience.
+
+While you can apply these styles to your own HTML elements, **we strongly recommend using the React versions of our components.** The React components give you those interactive behaviors for free, and without them you'll have to implement the dynamic parts yourself based on the guidance in our documentation. You can even use React components outside a React project, but you'll need to include the React runtime.
+
+### Using React components
+
+Inside a React project, you will import and use the components as you would any other React component. See the [Importing into a JavaScript project](#importing-into-a-javascript-project) below for more details.
+
+Outside a React project, your usage will depend on the framework you're using. [Our CDN example project](https://github.com/CMSgov/design-system/tree/main/examples/cdn) shows you how to use our React components in a plain HTML page. Note that for components that don't have interactive behaviors like [Badge](/components/badge), you may not need to invoke React at all. The best way to learn how to use our React components is to view [our example projects on GitHub](https://github.com/CMSgov/design-system/tree/main/examples/).
+
+More React prop documentation, examples, and guidance can be found on component documentation pages.
+
+#### Importing into a JavaScript project
+
+If you've installed the design system via npm, the components can be imported from the package entry point using the syntax below. **Note that the following example will display a different package name depending on the theme you have selected.**
+
+<ThemeContent onlyThemes={['core']}>
+
+```js
+import { Button, TextField } from '@cmsgov/design-system';
+```
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+```js
+import { Button, TextField } from '@cmsgov/ds-healthcare-gov';
+```
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+```js
+import { Button, TextField } from 'ds-medicare-gov';
+```
+
+</ThemeContent>
+
+### Applying component CSS classes manually
+
+If you can't use React, you can apply the appropriate component CSS classes directly to elements in your HTML. Our component documentation pages provide HTML code for the inert states of components, but you'll be responsible for writing the correct markup and updating classes and DOM attributes in response to user events.
+
+The following example shows how you can manually apply `ds-c-label` and `ds-c-field` classes to HTML to achieve more or less the same affect as using the `<TextField>` React component. Note that you would have to update the HTML to show field errors when validating user input or to achieve other dynamic behaviors.
+
+```html
+<div>
+  <label class="ds-c-label" for="field_1">
+    <span>Text Field Label</span>
+    <span class="ds-c-field__hint">Helpful hint text</span>
+  </label>
+  <input class="ds-c-field" type="text" name="text-field-example" id="field_1" />
+</div>
+```
+
+## Internationalization
+
+### Providing your own internationalized content
+
+The design system attempts to make all of its components' text content assignable through their React props. That means you can use your own internationalization solutions to provide the content in your applications. Here is an example:
+
+```js
+// Example of an application providing its own internationalized content
+
+import { Alert } from '@cmsgov/design-system';
+import i18n from 'i18n';
+
+export default function () {
+  return <Alert heading={i18n('success')}>{i18n('account.created')}</Alert>;
+}
+```
+
+### Default internationalized content in the design system
+
+<!-- TODO: Once it is true that all default content is internationalized, we can use this opening paragraph instead
+While we want components to be flexible, we also want them to be easy to use, so for some components we do **provide default content**. When we do this, the content comes in English and Spanish.
+-->
+
+<!-- TODO: Replace this paragraph with the above paragraph -->
+
+While we want components to be flexible, we also want them to be easy to use, so for some components we do **provide default content**. If a component does not yet have Spanish translations for its default content, that will be noted in the _component maturity_ section of the component documentation page.
+
+For applications that have a `lang` attribute on their html element, **the language will be detected automatically**. If that language is not English or Spanish, the language of the design system will fall back to English. If automatic language detection does not work for your use case, the language can be set manually through the `setLanguage` function. Similarly, the current language can also be read from the `getLanguage` function. Here's an example:
+
+```js
+import { getLanguage, setLanguage } from '@cmsgov/design-system';
+
+// Set the design system language to something other than the document's detected language
+setLanguage('es');
+
+// Get the design system's current language
+console.log(getLanguage());
+```
+
+<Alert
+  heading="Deprecated per-component language props"
+  variation="warn"
+  className="ds-u-margin-top--3"
+>
+  <p class="ds-c-alert__text">
+    You may notice that some components accept an older `language` or `locale` prop to set the
+    language of the content on a per-component basis, but these per-component props have been
+    deprecated and will be removed in a future breaking-change release.
+  </p>
+</Alert>
+
+## Further resources
+
+We hope this page and [our example projects](https://github.com/CMSgov/design-system/tree/main/examples/) provide you with everything you need to get started with the design system, but if you run into trouble [please reach out](/contact). If you have specific suggestions for how we can improve these docs, please feel free to edit this page (with the link under the table of contents) and submit a pull request!
