@@ -100,16 +100,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   }
 
   // Select specific props
-  const {
-    ariaLabel,
-    children,
-    errorMessage,
-    fieldClassName,
-    inversed,
-    options,
-    size,
-    ...selectProps
-  } = props;
+  const { ariaLabel, children, fieldClassName, options, size, ...selectProps } = props;
 
   const optionElements =
     children ??
@@ -128,14 +119,17 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   const selectClassNames = classNames(
     'ds-c-field',
     {
-      'ds-c-field--error': errorMessage,
-      'ds-c-field--inverse': inversed,
+      'ds-c-field--error': props.errorMessage,
+      'ds-c-field--inverse': props.inversed,
     },
     size && `ds-c-field--${size}`,
     fieldClassName
   );
 
   const ref = useAutofocus<HTMLSelectElement>(props.autoFocus);
+
+  // we don't want to pass this down to the select element
+  delete fieldProps.errorMessage;
 
   return (
     <div {...wrapperProps}>

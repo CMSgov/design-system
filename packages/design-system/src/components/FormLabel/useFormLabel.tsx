@@ -149,7 +149,9 @@ export function useFormLabel<T extends UseFormLabelProps>(props: T) {
     id,
     errorMessage,
     inversed,
-    'aria-describedby': hasBottomError ? classNames(props['aria-describedby'], errorId) : props['aria-describedby']
+    'aria-describedby': hasBottomError
+      ? classNames(props['aria-describedby'], errorId)
+      : props['aria-describedby'],
     'aria-invalid': !wrapperIsFieldset ? ariaInvalid : undefined,
   };
 
