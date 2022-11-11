@@ -28,7 +28,7 @@ export function InlineError({
   const viewbox = '36 -12 186 186';
 
   return (
-    <span className={classes} id={id} role="alert">
+    <span className={classes} id={id} aria-live="assertive" aria-atomic="true">
       <AlertCircleIcon viewBox={viewbox} />
       {children}
     </span>
