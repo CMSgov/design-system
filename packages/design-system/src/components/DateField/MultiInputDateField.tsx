@@ -143,8 +143,8 @@ export function MultiInputDateField(props: DateFieldProps): React.ReactElement {
     wrapperIsFieldset: true,
   });
 
-  // Throw away the properties we don't need by destructuring
   delete fieldProps.id;
+  delete fieldProps.errorId;
 
   return (
     <fieldset {...wrapperProps}>
