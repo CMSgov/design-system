@@ -2,9 +2,10 @@
 
 exports[`FormControl renders bottom placed errors  1`] = `
 <span
+  aria-atomic="true"
+  aria-live="assertive"
   class="ds-c-inline-error ds-c-field__error-message"
   id="field_7-error"
-  role="alert"
 >
   <svg
     aria-hidden="true"
@@ -84,9 +85,10 @@ exports[`FormControl uses aria-invalid for fieldsets with errorMessage 1`] = `
       Foo
     </span>
     <span
+      aria-atomic="true"
+      aria-live="assertive"
       class="ds-c-inline-error ds-c-field__error-message"
       id="field_9-error"
-      role="alert"
     >
       <svg
         aria-hidden="true"
