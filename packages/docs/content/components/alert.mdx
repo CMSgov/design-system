@@ -251,11 +251,14 @@ A custom heading value can be sent for an analytics event by using the prop `ana
 ### Accessibility
 
 <ThemeContent onlyThemes={['healthcare']}>
+
 If dynamically loaded, be mindful of when the alert displays on the page. For example, an alert appearing on a page due to an error or progressive disclosure. Where and how the content appears visually should align with how and when a screen reader user hears the content. Errors need immediate attention, but content through progressive disclosure may not.
 
 - Users who are viewing the content need it to be placed in an effective location and to draw attention even when CSS is turned off. Content can help here too, using word choices that make the importance of the message clear.
 - Users who hear this content through assistive technology, such as a screen readers, will need to be alerted through the backend code effectively at the right time.
+
 </ThemeContent>
+
   
 - Use the ARIA `role="alert"` to inform assistive technologies of a time-sensitive and important message that is not interactive. If the message is interactive, use the `role="alertdialog"` instead.
 - Consider putting the alert inside a div with `aria-live="polite"` and `aria-relevant="additions removals"`. These <abbr title="Accessible rich internet applications">ARIA</abbr> attributes ensure screen readers will announce alerts that have been added or updated dynamically.
@@ -265,6 +268,7 @@ If dynamically loaded, be mindful of when the alert displays on the page. For ex
 - Include a mechanism like a button to dismiss alerts where appropriate.
 
 <ThemeContent onlyThemes={['healthcare']}>
+
 ### Content
 
 - Consider the amount of text placed in an alert. Aim for the shortest possible amount of text to convey the concept or issue.
@@ -272,11 +276,13 @@ If dynamically loaded, be mindful of when the alert displays on the page. For ex
 - Alerts support various types and lengths of content from ~45 to ~80 characters wide, including lists and navigational links.
 
 #### Heading content
+
 - Is bolded and acts as the title of the alert
 - Helps to group or frame the information in the alert.
 - Shouldn't end in a period.
 
-####Error content 
+#### Error content 
+
 - Describe what went wrong and what the the user needs to do.
 - Use the least amount of words possible (i.e., don't use "please").
 - Body copy should end with a period.
@@ -330,7 +336,6 @@ If dynamically loaded, be mindful of when the alert displays on the page. For ex
     </tr>
   </tbody>
 </table>
-
 
 </ThemeContent>
 
