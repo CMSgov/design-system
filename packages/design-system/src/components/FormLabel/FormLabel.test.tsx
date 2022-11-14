@@ -32,7 +32,7 @@ describe('FormLabel', () => {
     };
     render(<FormLabel {...props}>{labelText}</FormLabel>);
 
-    const error = screen.getByRole('alert');
+    const error = screen.getByText('Nah, try again.');
     expect(error).toHaveAttribute('id', 'error');
     expect(error).toBeInTheDocument();
   });
