@@ -27,7 +27,7 @@ You're currently at the root of a monorepo containing multiple NPM packages loca
 
 ## Running locally
 
-This project uses [Yarn](https://yarnpkg.com/) for package management. Yarn helps to ensure everyone is using the same package versions. [**Install Yarn**](https://yarnpkg.com/docs/install), if you don't have it yet.
+This project uses [Yarn](https://yarnpkg.com/) for package management. Yarn helps to ensure everyone is using the same package versions. [**Install Yarn**](https://yarnpkg.com/cli/install), if you don't have it yet.
 
 ### Getting started
 
