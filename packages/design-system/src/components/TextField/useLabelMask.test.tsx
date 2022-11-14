@@ -1,7 +1,6 @@
-import React from 'react';
 import useLabelMask, { DATE_MASK } from './useLabelMask';
-import { render, screen, cleanup } from '@testing-library/react';
-import { renderHook, act } from '@testing-library/react-hooks';
+import { render, screen } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 import userEvent from '@testing-library/user-event';
 
 describe('DATE_MASK', () => {

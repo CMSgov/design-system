@@ -1,8 +1,8 @@
 .m-c-footer {
   background-color: $color-gray-lightest;
   padding: $spacer-3;
-  padding-top: $spacer-4;
   padding-bottom: $spacer-4;
+  padding-top: $spacer-4;
 
   @media screen and (max-width: $width-md) {
     padding: 32px 24px;
@@ -16,26 +16,27 @@
   .SimpleFooter__linkButton,
   a {
     @extend .mct-p3;
-    text-decoration: none;
     color: $color-base !important;
     display: inline-block;
+    font-size: 14px;
     padding: 0;
+    text-decoration: none;
 
     &:hover {
       text-decoration: underline;
     }
 
     &:not(:last-child)::after {
-      content: '';
       border-right: 1px solid $color-base;
+      content: '';
       padding-left: $spacer-2;
     }
   }
 
   .SimpleFooter__linkButton {
-    color: $color-base !important;
-    border-radius: 0 !important;
     background-color: transparent;
+    border-radius: 0 !important;
+    color: $color-base !important;
     cursor: pointer;
 
     &:hover {
@@ -49,22 +50,22 @@
     }
 
     &:last-child {
-      padding-right: 0;
       border-right: 0;
+      padding-right: 0;
     }
   }
 }
 
 .m-c-footer__linkRow {
-  padding-top: $spacer-3;
-  padding-bottom: $spacer-3;
-  margin-bottom: $spacer-1;
   border-color: $color-gray-lighter;
   border-style: solid;
   border-width: 1px 0;
 
   display: flex;
   flex-direction: column;
+  margin-bottom: $spacer-1;
+  padding-bottom: $spacer-3;
+  padding-top: $spacer-3;
 
   > div {
     display: flex;
@@ -102,17 +103,17 @@
 }
 
 .m-c-footer__identityRow {
-  padding-top: $spacer-3;
-  padding-bottom: $spacer-1;
-  margin-bottom: $spacer-1;
   display: flex;
-  justify-content: center;
   flex-direction: column-reverse;
+  justify-content: center;
+  margin-bottom: $spacer-1;
+  padding-bottom: $spacer-1;
+  padding-top: $spacer-3;
 
   @media screen and (min-width: $width-sm) {
+    flex-direction: row;
     height: auto;
     justify-content: space-between;
-    flex-direction: row;
   }
 
   @media screen and (min-width: $width-md) {
@@ -123,7 +124,7 @@
     justify-content: space-between;
   }
 
-  & > * {
+  > * {
     display: flex;
     justify-content: center;
 
@@ -150,21 +151,22 @@
 }
 
 .m-c-footer__identityContent {
-  display: flex;
   align-items: center;
+  display: flex;
   flex-direction: column;
   margin-bottom: $spacer-2;
 
   @media screen and (min-width: $width-sm) {
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 0;
     flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 0;
   }
 }
 
 .m-c-footer__contactAddress {
   @extend .mct-p3;
+  font-size: 14px;
   margin-top: $spacer-2;
   max-width: 411px;
 

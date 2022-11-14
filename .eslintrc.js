@@ -1,5 +1,10 @@
 module.exports = {
-  extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:react-hooks/recommended'],
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+    'plugin:react/jsx-runtime',
+  ],
   env: {
     browser: true,
     es6: true,
@@ -10,7 +15,7 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 2018,
+    ecmaVersion: 2020,
     sourceType: 'module',
   },
   plugins: ['jest', 'jsx-a11y', 'react', 'react-hooks'],
@@ -51,6 +56,16 @@ module.exports = {
     'react/prop-types': [1, { ignore: ['className', 't'] }],
   },
   overrides: [
+    {
+      files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
+      extends: ['plugin:testing-library/react'],
+      rules: {
+        'testing-library/prefer-screen-queries': 'warn',
+        'testing-library/no-node-access': 'off',
+        'testing-library/no-container': 'off',
+        'testing-library/render-result-naming-convention': 'warn',
+      },
+    },
     {
       files: ['*.jsx'],
       rules: {

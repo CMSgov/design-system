@@ -1,44 +1,50 @@
-import React from 'react';
 import TabPanel from './TabPanel';
-import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 
 const defaultChildren = 'Content';
+const defaultProps = {
+  id: 'panel-1',
+  tabId: 'tab-1',
+};
 
-function shallowRender(customProps = {}) {
-  const props = Object.assign(
-    {
-      id: 'panel-1',
-      tabId: 'tab-1',
-    },
-    customProps
-  );
-
-  return {
-    props: props,
-    wrapper: shallow(<TabPanel {...props}>{defaultChildren}</TabPanel>),
+function renderTabPanel(customProps = {}) {
+  const props = {
+    ...defaultProps,
+    ...customProps,
   };
+
+  return render(<TabPanel {...props}>{defaultChildren}</TabPanel>);
 }
 
-describe('TabPanel', function () {
+describe('TabPanel', () => {
   it('is selected', () => {
-    const wrapper = shallowRender({ selected: true }).wrapper;
-    expect(wrapper.prop('aria-hidden')).toBe(false);
+    renderTabPanel({ selected: true });
+    const tabPanelEl = screen.getByRole('tabpanel');
+    expect(tabPanelEl.getAttribute('aria-hidden')).toBe('false');
   });
 
   it('sets ARIA attributes', () => {
-    const data = shallowRender({ selected: true });
-    const panel = data.wrapper;
+    renderTabPanel({ selected: true });
+    const tabPanelEl = screen.getByRole('tabpanel');
 
-    expect(panel.prop('role')).toBe('tabpanel');
-    expect(panel.prop('aria-labelledby')).toBe(data.props.tabId);
-    expect(panel.prop('aria-hidden')).toBe(false);
+    expect(tabPanelEl).toBeDefined();
+    expect(tabPanelEl.getAttribute('aria-labelledby')).toBe(defaultProps.tabId);
+    expect(tabPanelEl.getAttribute('aria-hidden')).toBe('false');
+    expect(tabPanelEl.getAttribute('aria-disabled')).toBe(null);
   });
 
   it('adds additional class names', () => {
     const className = 'foo-panel';
-    const wrapper = shallowRender({ className: className }).wrapper;
+    renderTabPanel({ className: className, selected: true });
+    const tabPanelEl = screen.getByRole('tabpanel');
 
-    expect(wrapper.hasClass(className)).toBe(true);
-    expect(wrapper.hasClass('ds-c-tabs__panel')).toBe(true);
+    expect(tabPanelEl.classList).toContain(className);
+    expect(tabPanelEl.classList).toContain('ds-c-tabs__panel');
+  });
+
+  it('sets aria-disabled', () => {
+    renderTabPanel({ disabled: true });
+    const tabPanelEl = screen.getByRole('tabpanel', { hidden: true });
+    expect(tabPanelEl.getAttribute('aria-disabled')).toBe('true');
   });
 });

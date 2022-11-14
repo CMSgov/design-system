@@ -1,10 +1,9 @@
 import DrawerToggle, { DrawerToggleProps } from './DrawerToggle';
-import React from 'react';
-// import { shallow } from 'enzyme';
-import { render, fireEvent, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 const defaultProps = {
-  children: <p>content</p>,
+  children: 'content',
   drawerOpen: false,
   inline: false,
   showDrawer: jest.fn(),
@@ -13,7 +12,7 @@ const defaultProps = {
 function renderDrawerToggle(props: Partial<DrawerToggleProps> = {}) {
   return render(
     <DrawerToggle {...defaultProps} {...props}>
-      <p>content</p>
+      content
     </DrawerToggle>
   );
 }
@@ -29,7 +28,7 @@ describe('DrawerToggle', () => {
 
   it('calls showDrawer() on toggle click', () => {
     renderDrawerToggle();
-    fireEvent.click(screen.getByRole('button'));
+    userEvent.click(screen.getByRole('button'));
     expect(defaultProps.showDrawer).toHaveBeenCalled();
   });
 
@@ -57,7 +56,7 @@ describe('DrawerToggle', () => {
     const { rerender } = renderDrawerToggle({ drawerOpen: true });
     rerender(
       <DrawerToggle {...defaultProps} drawerOpen={false}>
-        <p>content</p>
+        content
       </DrawerToggle>
     );
     const toggle = screen.getByRole('button');

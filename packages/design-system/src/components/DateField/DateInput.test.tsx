@@ -1,7 +1,7 @@
-jest.mock('lodash/uniqueId', () => (str) => `${str}snapshot`);
-import { mount, shallow } from 'enzyme';
+import { createRef } from 'react';
 import DateInput, { DateInputProps } from './DateInput';
-import React from 'react';
+import userEvent from '@testing-library/user-event';
+import { render, screen } from '@testing-library/react';
 
 const defaultProps: DateInputProps = {
   labelId: '1',
@@ -13,67 +13,72 @@ const defaultProps: DateInputProps = {
   yearLabel: 'year',
 };
 
-function render(customProps: Partial<DateInputProps> = {}, deep = false) {
-  const props = { ...defaultProps, ...customProps };
-  const component = <DateInput {...props} />;
+function renderDateInput(customProps: Partial<DateInputProps> = {}) {
+  return render(<DateInput {...defaultProps} {...customProps} />);
+}
 
-  return {
-    props,
-    wrapper: deep ? mount(component) : shallow(component),
-  };
+function expectInvalid(textField: HTMLElement) {
+  expect(textField.classList).toContain('ds-c-field--error');
+  expect(textField.getAttribute('aria-invalid')).toBeTruthy();
 }
 
 describe('DateInput', () => {
   it('renders with all defaultProps', () => {
-    expect(render().wrapper).toMatchSnapshot();
+    const { asFragment } = renderDateInput();
+    expect(asFragment()).toMatchSnapshot();
   });
 
-  it('is inversed', () => {
-    expect(render({ inversed: true }).wrapper).toMatchSnapshot();
+  it('is inversed', async () => {
+    renderDateInput({ inversed: true });
+    const textFields = await screen.findAllByRole('textbox');
+    textFields.forEach((textField) => {
+      expect(textField.classList).toContain('ds-c-field--inverse');
+    });
   });
 
   it('has invalid month', () => {
-    expect(render({ monthInvalid: true }).wrapper).toMatchSnapshot();
+    renderDateInput({ monthInvalid: true });
+    expectInvalid(screen.getByRole('textbox', { name: /month/i }));
   });
 
   it('has invalid day', () => {
-    expect(render({ dayInvalid: true }).wrapper).toMatchSnapshot();
+    renderDateInput({ dayInvalid: true });
+    expectInvalid(screen.getByRole('textbox', { name: /day/i }));
   });
 
   it('has invalid year', () => {
-    expect(render({ yearInvalid: true }).wrapper).toMatchSnapshot();
+    renderDateInput({ yearInvalid: true });
+    expectInvalid(screen.getByRole('textbox', { name: /year/i }));
   });
 
-  it('is disabled', () => {
-    expect(render({ disabled: true }).wrapper).toMatchSnapshot();
+  it('is disabled', async () => {
+    renderDateInput({ disabled: true });
+    const textFields = await screen.findAllByRole('textbox');
+    textFields.forEach((textField) => {
+      expect(textField.hasAttribute('disabled')).toBeTruthy();
+    });
   });
 
   it('returns reference to input fields', () => {
-    let dayRef;
-    let monthRef;
-    let yearRef;
+    const dayDefaultValue = '1';
+    const monthDefaultValue = '22';
+    const yearDefaultValue = '3333';
+    const dayFieldRef = createRef();
+    const monthFieldRef = createRef();
+    const yearFieldRef = createRef();
 
-    const data = render(
-      {
-        dayDefaultValue: '1',
-        dayFieldRef: (el) => {
-          dayRef = el;
-        },
-        monthDefaultValue: '22',
-        monthFieldRef: (el) => {
-          monthRef = el;
-        },
-        yearDefaultValue: '3333',
-        yearFieldRef: (el) => {
-          yearRef = el;
-        },
-      },
-      true
-    );
+    renderDateInput({
+      dayDefaultValue,
+      dayFieldRef,
+      monthDefaultValue,
+      monthFieldRef,
+      yearDefaultValue,
+      yearFieldRef,
+    });
 
-    expect(dayRef.value).toBe(data.props.dayDefaultValue);
-    expect(monthRef.value).toBe(data.props.monthDefaultValue);
-    expect(yearRef.value).toBe(data.props.yearDefaultValue);
+    expect((dayFieldRef.current as HTMLInputElement).value).toBe(dayDefaultValue);
+    expect((monthFieldRef.current as HTMLInputElement).value).toBe(monthDefaultValue);
+    expect((yearFieldRef.current as HTMLInputElement).value).toBe(yearDefaultValue);
   });
 
   describe('event handlers', () => {
@@ -87,73 +92,66 @@ describe('DateInput', () => {
       props.onChange.mockClear();
     });
 
-    it('does not require event handler', () => {
-      const data = render();
-
-      data.wrapper.find('TextField').at(0).simulate('blur');
-    });
+    function sleep(ms) {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    }
 
     it('calls onBlur when month is blurred', () => {
-      const data = render(props);
-      data.wrapper.find('TextField').at(0).simulate('blur');
-
+      renderDateInput(props);
+      const monthInput = screen.getByRole('textbox', { name: /month/i });
+      userEvent.click(monthInput);
+      userEvent.tab();
       expect(props.onBlur).toHaveBeenCalledTimes(1);
       expect(props.onChange).not.toHaveBeenCalled();
     });
 
     it('calls onChange when day is changed', () => {
-      const data = render(props);
-      data.wrapper.find('TextField').at(1).simulate('change');
-
+      renderDateInput(props);
+      const monthInput = screen.getByRole('textbox', { name: /month/i });
+      userEvent.type(monthInput, '1');
       expect(props.onBlur).not.toHaveBeenCalled();
-      expect(props.onChange).toHaveBeenCalledTimes(1);
+      expect(props.onChange).toHaveBeenCalled();
     });
 
-    it('calls onComponentBlur when component loses focus', (done) => {
+    it('calls onComponentBlur when component loses focus', async () => {
       const onComponentBlur = jest.fn();
-      const wrapper = shallow(<DateInput {...defaultProps} onComponentBlur={onComponentBlur} />);
-      wrapper.find('TextField').last().simulate('blur');
-
-      setTimeout(() => {
-        expect(onComponentBlur).toHaveBeenCalledTimes(1);
-        done();
-      }, 20);
+      renderDateInput({ ...props, onComponentBlur });
+      const lastInput = screen.getByRole('textbox', { name: /year/i });
+      userEvent.type(lastInput, '1');
+      userEvent.tab();
+      // Because of implementation details, this event doesn't fire until 20ms have gone by
+      await sleep(25);
+      expect(onComponentBlur).toHaveBeenCalledTimes(1);
     });
 
-    it('does not call onComponentBlur when focus switches to other date component', (done) => {
+    it('does not call onComponentBlur when focus switches to other date component', async () => {
       const onComponentBlur = jest.fn();
-      const wrapper = mount(<DateInput {...defaultProps} onComponentBlur={onComponentBlur} />);
-      wrapper.find('TextField').first().simulate('blur');
-
-      setTimeout(() => {
-        expect(onComponentBlur).not.toHaveBeenCalled();
-        done();
-      }, 20);
+      renderDateInput({ ...props, onComponentBlur });
+      const firstInput = screen.getByRole('textbox', { name: /month/i });
+      userEvent.click(firstInput);
+      // Tab to the next input, which is still part of the DateField component
+      userEvent.tab();
+      // Because of implementation details, this event doesn't fire until 20ms have gone by
+      await sleep(25);
+      expect(onComponentBlur).not.toHaveBeenCalled();
     });
 
     it('formats the date as a single string', () => {
-      const data = render(
-        {
-          ...{
-            dateFormatter: (values) => {
-              return `${values.month} ${values.day} ${values.year}`;
-            },
-            monthValue: '1',
-            dayValue: '22',
-            yearValue: '3333',
-          },
-          ...props,
-        },
-        true
-      );
+      renderDateInput({
+        ...props,
+        dateFormatter: (values) => `${values.month} ${values.day} ${values.year}`,
+        monthDefaultValue: '1',
+        dayDefaultValue: '22',
+        yearDefaultValue: '3333',
+      });
+      const monthInput = screen.getByRole('textbox', { name: /month/i });
+      userEvent.type(monthInput, '2');
+      userEvent.tab();
 
-      data.wrapper.find('input').at(1).simulate('change');
-      data.wrapper.find('input').at(1).simulate('blur');
-
-      expect(props.onBlur).toHaveBeenCalledTimes(1);
       expect(props.onChange).toHaveBeenCalledTimes(1);
-      expect(props.onBlur.mock.calls[0][1]).toBe('1 22 3333');
-      expect(props.onChange.mock.calls[0][1]).toBe('1 22 3333');
+      expect(props.onBlur).toHaveBeenCalledTimes(1);
+      expect(props.onChange.mock.calls[0][1]).toBe('12 22 3333');
+      expect(props.onBlur.mock.calls[0][1]).toBe('12 22 3333');
     });
   });
 });

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import FormLabel from './FormLabel';
 
 export default {
@@ -41,5 +39,5 @@ InverseFormLabel.args = {
 };
 
 InverseFormLabel.parameters = {
-  backgrounds: { default: process.env.STORYBOOK_DS === 'medicare' ? 'Mgov dark' : 'Hcgov dark' },
+  baseInverse: true,
 };

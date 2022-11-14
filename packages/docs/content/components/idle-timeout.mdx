@@ -1,29 +1,26 @@
 ---
 title: Idle Timeout
+intro: A component that counts down to the end of a session (behind the scenes) and shows a warning message after a set amount of time of inactivity.
+core:
+  githubLink: design-system/src/components/IdleTimeout
+  storybookLink: components-idle-timeout--default
 ---
 
-A component that counts down to the end of a session (behind the scenes) and shows a warning message after a set amount of time of inactivity.
-
-## `<IdleTimeout>`
+## Examples
 
 <StorybookExample
   componentName="idleTimeout"
-  sourceFilePath="components/IdleTimeout/IdleTimeout.tsx"
   storyId="components-idle-timeout--default"
   minHeight={350}
 />
 
-### Props
+## Code
+
+### React
 
 <PropTable componentName="IdleTimeout" />
 
-## Guidance
-
-### When to use
-
-- Use the IdleTimeout for authenticated sessions to force logout after a set amount of time on inactivity
-
-## Customization
+### Customization
 
 The following Sass variables can be overridden to customize Dialog components:
 
@@ -31,6 +28,29 @@ The following Sass variables can be overridden to customize Dialog components:
   componentname="dialog"
 />
 
+## Guidance
+
+### When to use
+
+- Use the IdleTimeout for authenticated sessions to force logout after a set amount of time on inactivity
+
 ### Related patterns
 
 - [Dialog](/components/modal-dialog/)
+
+## Component maturity
+
+<MaturityChecklist
+  a11yStandards={true}
+  color={true}
+  forcedColors={true}
+  screenReaders={true}
+  keyboardNavigable={true}
+  storybook={true}
+  responsive={true}
+  spanish={true}
+  completeUiKit={false}
+  responsiveUiKit={false}
+  tokensInCode={true}
+  tokensInSketch={true}
+/>

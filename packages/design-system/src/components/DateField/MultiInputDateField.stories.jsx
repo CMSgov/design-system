@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import MultiInputDateField from './MultiInputDateField';
 import DateInput from './DateInput';
 
@@ -57,5 +57,5 @@ InvertedMultiInputDateField.args = {
   inversed: true,
 };
 InvertedMultiInputDateField.parameters = {
-  backgrounds: { default: process.env.STORYBOOK_DS === 'medicare' ? 'Mgov dark' : 'Hcgov dark' },
+  baseInverse: true,
 };

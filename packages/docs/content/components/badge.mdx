@@ -1,21 +1,66 @@
 ---
 title: Badge
-relatedUswdsGuidance: components/tag/
+intro: Badges hold small amounts of information and draw attention to new or important content.
+core:
+  githubLink: design-system/src/components/Badge
+  sketchLink: PGjYyaQ
+  storybookLink: components-badge--default
+healthcare:
+  sketchLink: JnRjWEG
+medicare:
+  sketchLink: paz00rp
 ---
 
-Badges hold small amounts of information and draw attention to new or important content.
+## Examples
 
-## `<Badge>`
+### Default
 
 <StorybookExample
   componentName="badge"
-  sourceFilePath="components/Badge/Badge.tsx"
   storyId="components-badge--default"
 />
 
-### Props
+### Alert
 
-<PropTable componentName="Badge" />
+<StorybookExample
+  componentName="badge"
+  storyId="components-badge--alert"
+/>
+
+### Warning
+
+<StorybookExample
+  componentName="badge"
+  storyId="components-badge--warn"
+/>
+
+### Success
+
+<StorybookExample
+  componentName="badge"
+  storyId="components-badge--success"
+/>
+
+### Informational
+
+<StorybookExample
+  componentName="badge"
+  storyId="components-badge--info"
+/>
+
+## Code
+
+### React
+
+<PropTable componentName="Badge" htmlElementName="span" />
+
+### Styles
+
+The following Sass variables can be overridden to customize Badge components:
+
+<ComponentThemeOptions
+  componentname="badge"
+/>
 
 ## Guidance
 
@@ -41,14 +86,23 @@ Badges hold small amounts of information and draw attention to new or important 
 
 - When badges are used to call out new content that is dynamically loaded onto a page, be sure to use [ARIA live regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) to alert screen readers of the change.
 
-## Customization
-
-The following Sass variables can be overridden to customize Badge components:
-
-<ComponentThemeOptions
-  componentname="badge"
-/>
-
 ### Future research
 
 - Further usability testing should be done to ensure badges aren't being confused with buttons. Further iteration can be done with sizing and colors if there is confusion.
+
+## Component maturity
+
+<MaturityChecklist
+  a11yStandards={true}
+  color={true}
+  forcedColors={true}
+  screenReaders={true}
+  keyboardNavigable={null}
+  storybook={true}
+  responsive={true}
+  spanish={true}
+  completeUiKit={false}
+  responsiveUiKit={false}
+  tokensInCode={true}
+  tokensInSketch={true}
+/>

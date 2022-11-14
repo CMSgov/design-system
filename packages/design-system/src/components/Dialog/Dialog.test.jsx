@@ -1,5 +1,4 @@
 import Dialog from './Dialog';
-import React from 'react';
 import { setDialogSendsAnalytics } from '../flags';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
@@ -7,6 +6,7 @@ import { act } from 'react-dom/test-utils';
 const defaultProps = {
   children: 'Foo',
   heading: 'dialog heading',
+  onExit: jest.fn(),
 };
 
 function renderDialog(props = {}) {
@@ -28,7 +28,7 @@ describe('Dialog', function () {
 
   it('close button text and variation can be changed', () => {
     renderDialog({
-      closeButtonVariation: 'transparent',
+      closeButtonVariation: 'ghost',
       closeButtonText: "No thank you. I don't like saving money",
     });
     expect(screen.getByRole('document')).toMatchSnapshot();
@@ -46,7 +46,6 @@ describe('Dialog', function () {
     const defaultEvent = {
       event_name: 'modal_impression',
       event_type: 'ui interaction',
-      ga_eventType: 'cmsds',
       ga_eventValue: '',
       ga_eventCategory: 'ui components',
       ga_eventAction: 'modal impression',
@@ -70,18 +69,20 @@ describe('Dialog', function () {
     it('sends analytics event tracking on open dialog', () => {
       renderDialog();
       act(() => {
-        expect(tealiumMock).toBeCalledWith(defaultEvent);
+        expect(tealiumMock).toBeCalledWith(expect.objectContaining(defaultEvent));
       });
     });
 
     it('sends analytics event when heading is non-string', () => {
       renderDialog({ heading: <span>Hello World</span> });
       act(() => {
-        expect(tealiumMock).toBeCalledWith({
-          ...defaultEvent,
-          ga_eventLabel: 'Hello World',
-          heading: 'Hello World',
-        });
+        expect(tealiumMock).toBeCalledWith(
+          expect.objectContaining({
+            ...defaultEvent,
+            ga_eventLabel: 'Hello World',
+            heading: 'Hello World',
+          })
+        );
       });
     });
 

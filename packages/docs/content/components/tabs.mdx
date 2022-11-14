@@ -1,35 +1,47 @@
 ---
 title: Tabs
+intro: Tabs are a secondary navigation pattern, allowing a user to view only the content they're interested in. They build upon a real world metaphor, and the selected state simulates a folder being physically in front of others in the group.
+core:
+  githubLink: design-system/src/components/Tabs
+  sketchLink: DPQmkG4
+  storybookLink: components-tabs--default-tabs
+healthcare:
+  sketchLink: 7yPRdeb
+medicare:
+  sketchLink: 7y3WWl2
 ---
 
-import ViewSourceLink from '../../src/components/ViewSourceLink';
-
-Tabs are a secondary navigation pattern, allowing a user to view only the content they're interested in. They build upon a real world metaphor, and the selected state simulates a folder being physically in front of others in the group.
-
-## `<Tabs>`
-
-`Tabs` is a container component that manages the state of your tabs for you. In most cases, you'll want to use this component rather than the presentational components (`Tab`, `TabPanel`) on their own.
+## Examples
 
 <StorybookExample
   componentName="tabs"
-  sourceFilePath="components/Tabs/Tabs.tsx"
   storyId="components-tabs--default-tabs"
   minHeight={400}
 />
 
-### Tabs Props
+## Code
+
+### React
+
+#### `<Tabs>` component
+
+`Tabs` is a container component that manages the state of your tabs for you. In most cases, you'll want to use this component rather than the presentational components (`Tab`, `TabPanel`) on their own.
 
 <PropTable componentName="Tabs" />
 
-## `<TabPanel>`
+#### `<TabPanel>` component
 
 A `TabPanel` is a presentational component which accepts a tab's content as its `children`.
 
-<ViewSourceLink sourceFilePath="components/Tabs/TabPanel.tsx" />
-
-### Tab Panel Props
-
 <PropTable componentName="TabPanel" />
+
+### Styles
+
+The following Sass variables can be overridden to customize Tab components:
+
+<ComponentThemeOptions
+  componentname="tabs"
+/>
 
 ## Guidance
 
@@ -56,19 +68,28 @@ A `TabPanel` is a presentational component which accepts a tab's content as its 
   - For the tabs list parent: `role`, `aria-label`
   - For a tab panel: `role`, `aria-labelledby`
 
-## Customization
-
-The following Sass variables can be overridden to customize Tab components:
-
-<ComponentThemeOptions
-  componentname="tabs"
-/>
-
 ### Related patterns
 
 - [Vertical navigation](/components/vertical-nav/)
 
-### Learn more
+## Learn more
 
 - [How Tabs Should Work](https://24ways.org/2015/how-tabs-should-work/)
 - [Simple ARIA tab interface](http://heydonworks.com/practical_aria_examples/#tab-interface)
+
+## Component maturity
+
+<MaturityChecklist
+  a11yStandards={true}
+  color={true}
+  forcedColors={true}
+  screenReaders={true}
+  keyboardNavigable={true}
+  storybook={true}
+  responsive={false}
+  spanish={null}
+  completeUiKit={false}
+  responsiveUiKit={false}
+  tokensInCode={true}
+  tokensInSketch={true}
+/>

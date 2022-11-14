@@ -1,5 +1,3 @@
-import React from 'react';
-
 import MonthPicker from './MonthPicker';
 
 export default {
@@ -9,7 +7,7 @@ export default {
     buttonVariation: {
       description: `Variation string to be applied to buttons. See [Button component](https://design.cms.gov/components/button/#components.button.react).`,
       control: 'radio',
-      options: ['primary', 'success', 'transparent'],
+      options: ['solid', 'outline', 'link'],
     },
     requirementLabel: {
       description: `Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields](https://design.cms.gov/guidelines/forms/#required-and-optional-fields).`,
@@ -26,7 +24,7 @@ export default {
     },
     locale: {
       description:
-        '**This prop has been DEPRECATED.** Do not use. See [internationaliation documentation](https://design.cms.gov/guidelines/i18n/#default-internationalized-content-in-the-design-system)',
+        '**This prop has been DEPRECATED.** Do not use. See [internationalization documentation](https://design.cms.gov/guidelines/i18n/#default-internationalized-content-in-the-design-system)',
     },
   },
   args: {
@@ -65,7 +63,7 @@ InverseMonthPicker.args = {
   inversed: true,
 };
 InverseMonthPicker.parameters = {
-  backgrounds: { default: process.env.STORYBOOK_DS === 'medicare' ? 'Mgov dark' : 'Hcgov dark' },
+  baseInverse: true,
 };
 
 export const InverseSelectedMonthPicker = Template.bind({});
@@ -77,7 +75,7 @@ InverseSelectedMonthPicker.args = {
   selectedMonths: [1, 2, 3, 4, 5, 6],
 };
 InverseSelectedMonthPicker.parameters = {
-  backgrounds: { default: process.env.STORYBOOK_DS === 'medicare' ? 'Mgov dark' : 'Hcgov dark' },
+  baseInverse: true,
 };
 
 export const InverseDisabledMonthPicker = Template.bind({});
@@ -88,5 +86,5 @@ InverseDisabledMonthPicker.args = {
   disabledMonths: [7, 8, 9, 10, 11, 12],
 };
 InverseDisabledMonthPicker.parameters = {
-  backgrounds: { default: process.env.STORYBOOK_DS === 'medicare' ? 'Mgov dark' : 'Hcgov dark' },
+  baseInverse: true,
 };

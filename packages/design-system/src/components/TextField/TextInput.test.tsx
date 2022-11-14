@@ -1,12 +1,11 @@
 import TextInput, { OmitProps, TextInputProps } from './TextInput';
-import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 
 const defaultProps: Omit<React.ComponentPropsWithRef<'textarea'>, OmitProps> &
   Omit<React.ComponentPropsWithRef<'input'>, OmitProps> &
   TextInputProps = {
   name: 'spec-field',
-  setRef: jest.fn(),
+  inputRef: jest.fn(),
   id: '1',
   type: 'text',
   errorPlacement: 'top',

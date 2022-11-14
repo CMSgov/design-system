@@ -1,32 +1,44 @@
 ---
 title: Pagination
-relatedUswdsGuidance: components/pagination
-status: draft
+intro: Pagination is navigation for paginated content.
+core:
+  githubLink: design-system/src/components/Pagination
+  sketchLink: 4a3Mj1D
+  storybookLink: components-pagination--default
+healthcare:
+  sketchLink: agmKV3d
+medicare:
+  sketchLink: wLOVV9D
 ---
 
-Pagination is navigation for paginated content.
+## Examples
 
-## About the pagination component
+<StorybookExample
+  componentName="pagination"
+  storyId="components-pagination--default"
+/>
 
-Paginated content is any content split into multiple pages determined by a specific amount of content per page, not split by any meaningful attribute, like feature or subject or step. Search results and article collections are often paginated. Readers use the pagination component to move from page to page in paginated content, or directly to the first or last page of the paginated set.
+## Code
 
-## `<Pagination>`
+### React
 
 Pagination requires two properties: `totalPages`, which is the total number of pages, and `onPageChange`, which is a function used to handle state changes when the user clicks a page.
 
 Pagination also comes in two styles: default, which is compact on mobile viewports and expands to reveal individual pages on larger viewports, and `compact`, which maintains the compact layout regardless of viewport size.
 
-<StorybookExample
-  componentName="pagination"
-  sourceFilePath="components/Pagination/Pagination.tsx"
-  storyId="components-pagination--default"
-/>
-
-### Props
-
 <PropTable componentName="Pagination" />
 
+### Styles
+
+The following Sass variables can be overridden to customize Pagination components:
+
+<ComponentThemeOptions
+  componentname="pagination"
+/>
+
 ## Guidance
+
+Paginated content is any content split into multiple pages determined by a specific amount of content per page, not split by any meaningful attribute, like feature or subject or step. Search results and article collections are often paginated. Readers use the pagination component to move from page to page in paginated content, or directly to the first or last page of the paginated set.
 
 ### When to use
 
@@ -49,14 +61,6 @@ Pagination also comes in two styles: default, which is compact on mobile viewpor
 - Do not use buttons for URL-based pagination. Because the URL is updated, the browser history stack updates and a link is the correct tag to use.
 - Consider page load, performance, and the user's scrolling preferences when determining how many items are displayed on each page.
 
-## Customization
-
-The following Sass variables can be overridden to customize Pagination components:
-
-<ComponentThemeOptions
-  componentname="pagination"
-/>
-
 ### Accessibility
 
 - Use a wrapping `<nav>` element to identify Pagination as a navigation section.
@@ -68,3 +72,20 @@ The following Sass variables can be overridden to customize Pagination component
 - If pagination page has keyboard focus, pressing <kbd>TAB</kbd> key **must** move focus to the next pagination page link.
 - If last pagination page has keyboard focus, pressing <kbd>TAB</kbd> key **must** move focus to the _Next_ pagination navigation link.
 - Once a pagination page has been clicked, focus should shift to the top-level piece of content on that page, usually an `<h1>`.
+
+## Component maturity
+
+<MaturityChecklist
+  a11yStandards={true}
+  color={true}
+  forcedColors={false}
+  screenReaders={false}
+  keyboardNavigable={true}
+  storybook={true}
+  responsive={true}
+  spanish={true}
+  completeUiKit={false}
+  responsiveUiKit={false}
+  tokensInCode={true}
+  tokensInSketch={true}
+/>

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import CalendarIcon from '../Icons/CalendarIcon';
 import CustomDayPicker from './CustomDayPicker';
 import classNames from 'classnames';
@@ -124,7 +124,7 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
     ...fieldProps,
     onChange: handleInputChange,
     type: 'text',
-    setRef: (el) => {
+    inputRef: (el) => {
       inputRef.current = el;
     },
   });

@@ -1,23 +1,46 @@
 ---
 title: Calendar Picker
-relatedUswdsGuidance: components/date-picker/
+intro: Date field (with calendar picker), also known as "date picker", provides single date entry with a text field or selection through a visual calendar element tied to the input.
+core:
+  githubLink: design-system/src/components/DateField
+  sketchLink: nRja1ed
+  storybookLink: components-singleinputdatefield--with-picker
+healthcare:
+  sketchLink: Kv3oKMn
+medicare:
+  sketchLink: Ax3eeQY
 ---
 
-Date field (with calendar picker), also known as _date picker_, provides single date entry with a text field or selection through a visual calendar element tied to the input.
-
-## `<SingleInputDateField>`
-
-To enable the date picker feature, you must pass both a `from<TIME>` property (i.e., `fromDate`, `fromMonth`, etc.) **and** a `to<TIME>` property (i.e., `toDate`, `toMonth`, etc.) to the date field component.
+## Examples
 
 <StorybookExample
   componentName="singleInputDateField"
-  sourceFilePath="components/DateField/SingleInputDateField.tsx"
   storyId="components-singleinputdatefield--with-picker"
 />
 
-### Props
+## Code
+
+### React
+
+The calendar picker is another name for the `<SingleInputDateField>` with a calendar picker button. To enable the date picker feature, you must pass both a `from<TIME>` property (i.e., `fromDate`, `fromMonth`, etc.) **and** a `to<TIME>` property (i.e., `toDate`, `toMonth`, etc.) to the date field component.
 
 <PropTable componentName="SingleInputDateField" />
+
+### Styles
+
+The following Sass variables can be overridden to customize Input/Form components:
+
+<ComponentThemeOptions
+  componentname="text-input"
+/>
+
+#### Form components
+
+This component also makes use of form field styles, which can be customized by the following variables:
+
+<ComponentThemeOptions
+  componentname="form"
+/>
 
 ## Guidance
 
@@ -42,21 +65,24 @@ Allow users to have flexibility in entering the date, such as allowing one-digit
 - Users will be able to enter a variety of date formats that automatically format to the correct date format of MM/DD/YYYY. This change happens once the form field loses focus. For example, a user enters a date as "4122020" and it changes to "04/01/2020" once focus leaves the date input.
 - Instructions are available make this more usable/accessible for assistive technology.
 
-## Customization
-
-The following Sass variables can be overridden to customize Input/Form components:
-
-<ComponentThemeOptions
-  componentname="text-input"
-/>
-
-### Form components
-
-<ComponentThemeOptions
-  componentname="form"
-/>
-
 ### Related patterns
 
 - [Date field (multi-input)](/components/multi-input-date-field/)
 - [Date field (single-input)](/components/single-input-date-field/)
+
+## Component maturity
+
+<MaturityChecklist
+  a11yStandards={true}
+  color={true}
+  forcedColors={true}
+  screenReaders={true}
+  keyboardNavigable={true}
+  storybook={true}
+  responsive={true}
+  spanish={true}
+  completeUiKit={false}
+  responsiveUiKit={false}
+  tokensInCode={true}
+  tokensInSketch={true}
+/>

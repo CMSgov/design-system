@@ -1,34 +1,23 @@
-import React from 'react';
+import { memo } from 'react';
 import { graphql } from 'gatsby';
 
-import Layout from './Layout';
-import { MdxQuery, TableOfContentsItem } from '../helpers/graphQLTypes';
+import Layout from './layout/Layout';
+import { MdxQuery } from '../helpers/graphQLTypes';
 import useTheme from '../helpers/useTheme';
-import ContentRenderer from './ContentRenderer';
+import ContentRenderer from './content/ContentRenderer';
 
 /**
  * Template for information content pages.
  */
 const InfoPage = ({ data, location }: MdxQuery) => {
-  const { frontmatter, body, tableOfContents } = data.mdx;
-  const { title, relatedUswdsGuidance, status } = frontmatter;
+  const { frontmatter, body, tableOfContents, slug } = data.mdx;
   const theme = useTheme();
-  let showGuidance = false;
-
-  // check table of contents to see if there is a guidance section
-  if (tableOfContents && Object.keys(tableOfContents).length) {
-    showGuidance = tableOfContents.items.some(
-      (item: TableOfContentsItem) => item.title === 'Guidance'
-    );
-  }
 
   return (
     <Layout
-      pageName={title}
-      relatedGuidance={relatedUswdsGuidance}
-      showJumpToGuidance={showGuidance}
-      status={status}
+      frontmatter={frontmatter}
       location={location}
+      slug={slug}
       theme={theme}
       tableOfContentsData={tableOfContents?.items}
     >
@@ -43,13 +32,45 @@ export const query = graphql`
       id
       frontmatter {
         title
-        status
-        relatedUswdsGuidance
+        intro
+        core {
+          githubLink
+          sketchLink
+          storybookLink
+        }
+        healthcare {
+          sketchLink
+          storybookLink
+          githubLink
+        }
+        medicare {
+          sketchLink
+          storybookLink
+          githubLink
+        }
       }
+      slug
       body
-      tableOfContents(maxDepth: 2)
+      tableOfContents(maxDepth: 3)
     }
   }
 `;
 
-export default InfoPage;
+function compareProps(prevProps, nextProps) {
+  const nextLocation = nextProps.location;
+  const prevLocation = prevProps.location;
+  /*
+  return true if passing nextProps to render would return
+  the same result as passing prevProps to render,
+  otherwise return false
+  */
+  if (
+    nextLocation.pathname === prevLocation.pathname &&
+    nextLocation.search === prevLocation.search
+  ) {
+    return true;
+  }
+  return false;
+}
+
+export default memo(InfoPage, compareProps);

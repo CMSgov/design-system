@@ -1,6 +1,5 @@
 import { InfoCircleIconThin } from '../Icons';
 import { IconCommonProps } from '../Icons/SvgIcon';
-import React from 'react';
 import classNames from 'classnames';
 
 export interface TooltipIconProps extends IconCommonProps {

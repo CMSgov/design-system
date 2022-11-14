@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Review renders review 1`] = `
+<div
+  class="ds-c-review"
+>
+  <div
+    class="ds-c-review__content"
+  >
+    <h3
+      class="ds-c-review__heading"
+    >
+      review heading
+    </h3>
+    <div
+      class="ds-c-review__body"
+    >
+      review text
+    </div>
+  </div>
+  <div>
+    <a
+      href="edit-href"
+    >
+      edit
+    </a>
+  </div>
+</div>
+`;

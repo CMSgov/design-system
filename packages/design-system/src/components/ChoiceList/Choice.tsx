@@ -9,10 +9,6 @@ export type ChoiceType = 'checkbox' | 'radio';
 export type ChoiceValue = number | string;
 export interface ChoiceProps {
   /**
-   * @hide-prop In order to be consistent with form elements, use `label` instead
-   */
-  children?: React.ReactNode;
-  /**
    * Sets the input's `checked` state. Use this in combination with `onChange`
    * for a controlled component; otherwise, set `defaultChecked`.
    */
@@ -129,15 +125,6 @@ export class Choice extends React.PureComponent<
     } else {
       this.isControlled = true;
     }
-
-    if (process.env.NODE_ENV !== 'production') {
-      // Temporarily disable deprecation warning
-      // if (props.children) {
-      //  console.warn(
-      //    `[Deprecated]: Please remove the 'children' prop in <Choice>, use 'label' instead. This prop has been renamed and will be removed in a future release.`
-      //  );
-      // }
-    }
   }
 
   componentDidMount(): void {
@@ -197,8 +184,10 @@ export class Choice extends React.PureComponent<
 
   render() {
     const {
+      'aria-live': ariaLive,
+      'aria-relevant': ariaRelevant,
+      'aria-atomic': ariaAtomic,
       checkedChildren,
-      children,
       className,
       disabled,
       errorMessage,
@@ -227,9 +216,9 @@ export class Choice extends React.PureComponent<
     return (
       <div
         className={className}
-        aria-live={checkedChildren ? 'polite' : null}
-        aria-relevant={checkedChildren ? 'additions text' : null}
-        aria-atomic={checkedChildren ? 'false' : null}
+        aria-live={ariaLive ?? (checkedChildren ? 'polite' : null)}
+        aria-relevant={ariaRelevant ?? (checkedChildren ? 'additions text' : null)}
+        aria-atomic={ariaAtomic ?? (checkedChildren ? 'false' : null)}
       >
         <div className="ds-c-choice-wrapper">
           <input
@@ -250,7 +239,7 @@ export class Choice extends React.PureComponent<
             fieldId={this.id}
             {...{ errorMessage, errorMessageClassName, hint, inversed, requirementLabel }}
           >
-            {label || children}
+            {label}
           </FormLabel>
         </div>
         {this.checked() ? checkedChildren : uncheckedChildren}

@@ -1,5 +1,3 @@
-import React from 'react';
-import isSameMonth from 'date-fns/isSameMonth';
 import { ArrowIcon } from '../Icons';
 import { CaptionDropdowns, CaptionProps, useDayPicker, useNavigation } from 'react-day-picker';
 

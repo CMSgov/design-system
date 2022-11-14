@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default {
   title: 'Utilities/Text Align',
   parameters: {

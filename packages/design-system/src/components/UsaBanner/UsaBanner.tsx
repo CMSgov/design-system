@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
 import { Language, tWithLanguage } from '../i18n';
@@ -84,7 +84,7 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
       aria-controls={id}
     >
       {flagIcon}
-      <p className="ds-c-usa-banner__header-text">
+      <span className="ds-c-usa-banner__header-text">
         <span>{t('usaBanner.bannerText')}</span>
         {!isBannerOpen && (
           <span className="ds-c-usa-banner__cta-wrapper">
@@ -92,11 +92,11 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
             <ArrowIcon direction="down" className="ds-c-usa-banner__action-icon" />
           </span>
         )}
-      </p>
+      </span>
       {isBannerOpen && (
-        <div className="ds-c-usa-banner__collapse-banner-container">
+        <span className="ds-c-usa-banner__collapse-banner-container">
           <CloseIconThin />
-        </div>
+        </span>
       )}
     </button>
   );
@@ -110,15 +110,15 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
 
         <button
           onClick={toggleBanner}
-          className="ds-c-usa-banner__button"
+          className="ds-c-usa-banner__button ds-c-usa-banner__button-text"
           aria-expanded={isBannerOpen}
           aria-controls={id}
         >
-          <span className="ds-c-usa-banner__button-text">{t('usaBanner.bannerActionText')}</span>
+          {t('usaBanner.bannerActionText')}
 
           <ArrowIcon
             direction={isBannerOpen ? 'up' : 'down'}
-            className="ds-c-usa-banner__action-icon"
+            className="ds-c-usa-banner__action-icon ds-u-margin-left--1"
           />
         </button>
       </p>

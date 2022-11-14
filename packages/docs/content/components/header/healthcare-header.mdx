@@ -1,0 +1,75 @@
+---
+title: Healthcare.gov Header
+healthcare:
+  githubLink: ds-healthcare-gov/src/components/Header
+  sketchLink: bgDE8k4
+---
+
+import { Alert } from '@cmsgov/design-system';
+
+<ThemeContent neverThemes={['healthcare']}>
+  <Alert variation="error">
+     <p class="ds-c-alert__text">
+        This component is only used for HealthCare. Please use the theme switcher to view the component with HealthCare styles.
+    </p>
+  </Alert>
+</ThemeContent>
+
+## Examples
+The HealthCare.gov header component varies depending on the user's state (ie. logged-in) and context (ie. what page the user is on).
+
+### Logged-In
+<StorybookExample
+    componentName="loggedin-header"
+    storyId="healthcare-header--logged-in-header"
+/>
+
+### Logged-Out
+<StorybookExample
+    componentName="loggedout-header"
+    storyId="healthcare-header--logged-out-header"
+/>
+
+### Minimal
+<StorybookExample
+    componentName="minimal-header"
+    storyId="healthcare-header--minimal-header"
+/>
+
+## Code
+
+### React
+
+<PropTable componentName="Header" />
+
+### Google Analytics
+
+**Analytics event tracking is enabled by default.**
+
+On applications where the page has `utag` loaded, the data goes to Tealium which allows it to route to Google Analytics or the currently approved data analytics tools.
+
+#### Disabling event tracking
+
+Import and set the `setHeaderSendsAnalytics` feature flag to `false` in your application's entry file:
+
+```js
+import { setHeaderSendsAnalytics } from "@cmsgov/<design-system-package>";
+setHeaderSendsAnalytics(false);
+```
+
+## Component maturity
+
+<MaturityChecklist
+  a11yStandards={true}
+  color={true}
+  forcedColors={false}
+  screenReaders={true}
+  keyboardNavigable={true}
+  storybook={true}
+  responsive={true}
+  spanish={true}
+  completeUiKit={false}
+  responsiveUiKit={false}
+  tokensInCode={true}
+  tokensInSketch={true}
+/>

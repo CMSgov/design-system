@@ -4,21 +4,21 @@ $dialog-spacer: $spacer-4;
 
 // Start polyfill styles
 dialog {
-  position: absolute;
+  background: $color-white;
+  border: solid;
+  color: $color-black;
+  display: block;
+  height: -moz-fit-content;
+  height: -webkit-fit-content;
+  height: fit-content;
   left: 0;
+  margin: auto;
+  padding: 1em;
+  position: absolute;
   right: 0;
   width: -moz-fit-content;
   width: -webkit-fit-content;
   width: fit-content;
-  height: -moz-fit-content;
-  height: -webkit-fit-content;
-  height: fit-content;
-  margin: auto;
-  border: solid;
-  padding: 1em;
-  background: $color-white;
-  color: $color-black;
-  display: block;
 }
 
 dialog:not([open]) {
@@ -26,20 +26,20 @@ dialog:not([open]) {
 }
 
 dialog + .backdrop {
-  position: fixed;
-  top: 0;
-  right: 0;
+  background: rgba(0, 0, 0, 0.1);
   bottom: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.1);
+  position: fixed;
+  right: 0;
+  top: 0;
 }
 
 ._dialog_overlay {
-  position: fixed;
-  top: 0;
-  right: 0;
   bottom: 0;
   left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
 }
 
 dialog.fixed {
@@ -51,19 +51,31 @@ dialog.fixed {
 
 .ds-c-dialog {
   background-color: $dialog__background-color;
+  border: none;
   box-shadow: $shadow-base;
   box-sizing: border-box;
   display: inline-block;
   font-size: $font-size-base;
+  margin-top: $spacer-6;
   max-width: $measure-base;
   padding: $dialog__padding;
   text-align: left;
-  vertical-align: middle;
   width: 95%; // provide space for the background layer to peek through
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
     outline: $spacer-2 solid WindowText;
   }
+
+  // We set default focus to the role="document" div, but we don't want
+  // to show the default focus halo
+  > [role='document']:focus {
+    outline: none;
+  }
+}
+
+.ds-c-dialog::backdrop,
+.ds-c-dialog + .backdrop {
+  background-color: $dialog-overlay__background-color;
 }
 
 .ds-c-dialog--narrow {
@@ -113,18 +125,4 @@ dialog.fixed {
   @media (-ms-high-contrast: active), (forced-colors: active) {
     padding: $spacer-half $spacer-2;
   }
-}
-
-.ds-c-dialog-wrap {
-  background-color: $dialog-overlay__background-color;
-  bottom: 0;
-  left: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  padding: $spacer-6 0;
-  position: fixed;
-  text-align: center;
-  top: 0;
-  width: 100%;
-  z-index: $z-dialog;
 }

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Badge from './Badge';
 
 export default {
@@ -14,16 +12,17 @@ export default {
       options: ['default', 'info', 'success', 'warn', 'alert'],
       control: { type: 'select' },
     },
+    children: { control: 'text' },
   },
 };
 
 const Template = (args) => (
   <>
     <div>
-      <Badge {...args}>1</Badge>
-      <Badge {...args}>Badge</Badge>
+      <Badge {...args}>{args.children ?? <>1</>}</Badge>
+      <Badge {...args}>{args.children ?? <>Badge</>}</Badge>
       <Badge {...args} size="big">
-        Badge with size &apos;big&apos;
+        {args.children ?? <>Badge with size &apos;big&apos;</>}
       </Badge>
     </div>
   </>

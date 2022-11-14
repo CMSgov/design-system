@@ -1,112 +1,64 @@
-import React from 'react';
-import TableBody from './TableBody';
+import { render, screen } from '@testing-library/react';
 import TableCell from './TableCell';
-import TableHead from './TableHead';
 import TableRow from './TableRow';
-import { mount } from 'enzyme';
+import TableHead from './TableHead';
 
-function renderHead(customProps = {}) {
-  const props = Object.assign({}, customProps);
+const makeTableCells = (customProps = {}) => {
   const children = (
-    <TableHead>
-      <TableRow>
-        <TableCell>Column a</TableCell>
-        <TableCell>Column b</TableCell>
-      </TableRow>
-    </TableHead>
+    <>
+      <TableHead>
+        <TableRow>
+          <TableCell>Column 1</TableCell>
+          <TableCell>Column 2</TableCell>
+        </TableRow>
+      </TableHead>
+      <tbody>
+        <TableRow>
+          <TableCell>Column a</TableCell>
+          <TableCell>Column b</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell align="right">Column a2</TableCell>
+          <TableCell component="th">Column b2</TableCell>
+        </TableRow>
+      </tbody>
+    </>
   );
-
-  return {
-    props: props,
-    wrapper: mount(<table>{children}</table>),
-  };
-}
-
-function renderBody(customProps = {}) {
-  const props = Object.assign({}, customProps);
-  const children = (
-    <TableBody>
-      <TableRow>
-        <TableCell component="th">Cell a</TableCell>
-        <TableCell>Cell b</TableCell>
-      </TableRow>
-    </TableBody>
-  );
-
-  return {
-    props: props,
-    wrapper: mount(<table>{children}</table>),
-  };
-}
+  render(<table {...customProps}>{children}</table>);
+};
 
 describe('TableCell', function () {
-  describe('TableHead wrap: <th> header cell - default props', () => {
-    it('renders a table <th> element', () => {
-      const { wrapper } = renderHead();
-      const table = wrapper.find('th');
-
-      expect(table).toHaveLength(2);
-
-      expect(wrapper).toMatchSnapshot();
-    });
-
-    it('sets <th> align="left"', () => {
-      const { wrapper } = renderHead();
-      const table = wrapper.find('TableCell');
-
-      expect(table.first().prop('align')).toBe('left');
-    });
-
-    it('sets <th> role="columnheader"', () => {
-      const { wrapper } = renderHead();
-      const table = wrapper.find('th');
-
-      expect(table.first().prop('role')).toBe('columnheader');
-    });
-
-    it('sets <th> scope="col"', () => {
-      const { wrapper } = renderHead();
-      const table = wrapper.find('th');
-
-      expect(table.first().prop('scope')).toBe('col');
-    });
+  it('renders TableCell components', () => {
+    makeTableCells();
+    const tds = screen.getAllByRole('cell');
+    expect(tds).toHaveLength(3);
+    expect(tds).toMatchSnapshot();
   });
 
-  describe('TableBody wrap: <td> data cell - default props', () => {
-    it('renders TableCell component', () => {
-      const { wrapper } = renderBody();
-      const table = wrapper.find('TableCell');
+  it('sets alignment default to left', () => {
+    makeTableCells();
+    expect(screen.getByText('Column a')).toHaveClass('ds-c-table__cell--align-left');
+  });
 
-      expect(table).toHaveLength(2);
-      expect(wrapper).toMatchSnapshot();
-    });
+  it('accepts alternate align options', () => {
+    makeTableCells();
+    expect(screen.getByText('Column a2')).toHaveClass('ds-c-table__cell--align-right');
+  });
 
-    it('renders a table <th> row header element which overwrites default header row component to <th>', () => {
-      const { wrapper } = renderBody();
-      const table = wrapper.find('th');
+  it('accepts alternate component roles', () => {
+    makeTableCells();
+    expect(screen.getAllByRole('rowheader')).toHaveLength(1);
+  });
 
-      expect(table).toHaveLength(1);
-    });
+  it('renders TableCell components as <th> elements when inside a TableHeader', () => {
+    makeTableCells();
+    const tds = screen.getAllByRole('columnheader');
+    expect(tds).toHaveLength(2);
+  });
 
-    it('sets a table <th> role="rowheader" which overwrites default role value "cell"', () => {
-      const { wrapper } = renderBody();
-      const table = wrapper.find('th');
-
-      expect(table.prop('role')).toBe('rowheader');
-    });
-
-    it('renders a table <td> row data element', () => {
-      const { wrapper } = renderBody();
-      const table = wrapper.find('td');
-
-      expect(table).toHaveLength(1);
-    });
-
-    it('sets a table <td> role="cell"', () => {
-      const { wrapper } = renderBody();
-      const table = wrapper.find('td');
-
-      expect(table.prop('role')).toBe('cell');
-    });
+  it('applies col scope when parent is TableHead', () => {
+    makeTableCells();
+    const cell = screen.getByText('Column 1');
+    expect(cell).toHaveAttribute('scope', 'col');
   });
 });

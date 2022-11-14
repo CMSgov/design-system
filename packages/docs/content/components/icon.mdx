@@ -1,28 +1,51 @@
 ---
 title: Icon
+intro: Icons help communicate meaning, actions, status, or feedback.
+core:
+  githubLink: design-system/src/components/Icons
+  sketchLink: ZOm83Y3
+  storybookLink: components-icons--available-icons
+medicare:
+  githubLink: ds-medicare-gov/src/components/Icons
 ---
 
 import { CloseIcon, SvgIcon } from '@cmsgov/design-system';
 
-Icons help communicate meaning, actions, status, or feedback.
 
-## `<SvgIcon>`
+<ThemeContent onlyThemes={['healthcare']}>
+
+Icons are a key part of the user interface. They are language-independent and can help users efficiently navigate and perform desired tasks. They can describe an action better than words alone; communicating concepts faster and in less space than text, reducing cognitive load.
+
+
+They require a careful balance when applied. When used thoughtfully, icons help users understand your interface quickly and easily. When icons are overdone, they crowd the interface and add unnecessary complexity and confuse users instead of guiding them.
+
+## Product Icons
+
+Product icons not only serve a function in our products, but are also a visual expression of our brand. Each has visual distinction to ensure customers can easily tell them apart. Our product icons differ from system icons, which symbolize common actions. Our product icons include more flourish than other icon uses.
+
+</ThemeContent>
+
+## Examples
 
 The `<SvgIcon>` component is a re-usable component that wraps its children in an `<svg>` element.
 This component is used by each individual icon component listed below.
 
 <StorybookExample
   componentName="icons"
-  sourceFilePath="components/Icons/SvgIcon.tsx"
   storyId="components-icons--available-icons"
   minHeight={250}
 />
 
-### Props
+<ThemeContent onlyThemes={['medicare']}>
+  <h3 id="medicare-specific-icons"> Medicare-Specific Icons </h3>
+  <StorybookExample
+    componentName="icons-medicare"
+    storyId="medicare-icons--available-icons"
+    minHeight={250}
+  />
+</ThemeContent>
 
-<PropTable componentName="SvgIcon" />
-
-### Icon color
+### Changing icon color
 
 Icon components support a few built-in color options that can be applied by using one of the following utility classes.
 
@@ -36,7 +59,7 @@ If you need a different color for an icon, you can pass a custom class to an ico
 | Warn    | <code>ds-c-icon-color--warn</code>    | <div class="ds-u-text-align--center"><CloseIcon class='ds-c-icon-color--warn' /></div>                                      |
 | Success | <code>ds-c-icon-color--success</code> | <div class="ds-u-text-align--center"><CloseIcon class='ds-c-icon-color--success' /> </div>                                  |
 
-### Icon size
+### Changing icon size
 
 Icon components use `ems` for their height and width and can thereby be sized by changing the font-size of the SVG element.
 
@@ -53,7 +76,7 @@ It is recommended that the [font-size utilities](/utilities/font/font-size/) be 
 | 4x Large    | <CloseIcon class='ds-u-font-size--4xl' /> |
 | 5x Large    | <CloseIcon class='ds-u-font-size--5xl' /> |
 
-### Custom Icons
+### Creating custom icons
 
 The `<SvgIcon>` component can be used for other custom icons. It allows you to pass in the SVG child elements. This component is recommended if you want built-in accessibility features and standard icon styles.
 
@@ -65,7 +88,37 @@ In the example below, the `<SvgIcon>` component is used with a custom path.
   </SvgIcon>
 </EmbeddedExample>
 
-## Accessibility
+## Code
+
+### React
+
+<PropTable componentName="SvgIcon" />
+
+### Styles
+
+The following Sass variables can be overridden to customize Icon components:
+
+<ComponentThemeOptions
+  componentname="icon"
+/>
+
+## Guidance
+
+<ThemeContent onlyThemes={['medicare']}>
+
+## Guidance
+
+- <b>Use icons sparingly</b> - Only use if they add value/meaning for the user. Too many icons = users stop paying attention.
+- <b>Use the approved icon for similar actions/purpose</b> - Consistency across the entire site is key for user recognition and trust. 
+- <b>Include a text label with most icons</b> - Users need text to overcome ambiguity.
+- <b>Any new icons or changes in use case need prior approval</b> - Contact the internal CMS Design Guild early in your design process. (See "Foundations" page for process.)
+-- Specialty icons for similar use cases are rare. Requests will be considered on a case-by-case basis. In reviewing requests, we'll consider use case, similar icons already approved, and impact to users (UX, consistency, Medicare brand, purpose, and accompanying message impact - like immediate & severe bene harm).
+- <b>Icons can be teal, navy, or black (following approved M.gov DS color swatches) unless stated in the use case notes below.</b>
+
+</ThemeContent>
+
+
+### Accessibility
 
 The `<SvgIcon>` component has built-in accessibility features including:
 
@@ -75,10 +128,19 @@ The `<SvgIcon>` component has built-in accessibility features including:
 - optional `description` attribute which can be used for a more detailed explanation of the icon's contents. Meant to be used to provide more detail than just the `title`
 - an available`ariaHidden` attribute which can be used if the icon's context is described elsewhere. For example, if the icon is part of a button with text, the text may provide the text description instead of the icon component.
 
-## Customization
+## Component maturity
 
-The following Sass variables can be overridden to customize Icon components:
-
-<ComponentThemeOptions
-  componentname="icon"
+<MaturityChecklist
+  a11yStandards={true}
+  color={true}
+  forcedColors={true}
+  screenReaders={true}
+  keyboardNavigable={null}
+  storybook={true}
+  responsive={true}
+  spanish={true}
+  completeUiKit={false}
+  responsiveUiKit={false}
+  tokensInCode={true}
+  tokensInSketch={true}
 />

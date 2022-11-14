@@ -1,5 +1,5 @@
 import Button, { ButtonProps } from '../Button/Button';
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import usePrevious from '../utilities/usePrevious';
 
@@ -60,7 +60,7 @@ export const DrawerToggle = ({
       className={classes}
       inputRef={(el) => (buttonRef.current = el)}
       onClick={showDrawer}
-      variation="transparent"
+      variation="ghost"
       {...others}
     >
       {children}

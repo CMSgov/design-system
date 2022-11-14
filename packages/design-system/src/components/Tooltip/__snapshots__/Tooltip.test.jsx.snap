@@ -136,7 +136,7 @@ exports[`Tooltip tooltip with close renders heading element 1`] = `
   aria-hidden="false"
   class="ds-c-tooltip ds-c-tooltip-enter ds-c-tooltip-enter-active"
   data-placement="top"
-  id="trigger_13"
+  id="trigger_17"
   role="dialog"
   style="max-width: 300px; z-index: 9999;"
   tabindex="-1"
@@ -163,7 +163,7 @@ exports[`Tooltip tooltip with close renders heading element and close button 1`]
   aria-hidden="false"
   class="ds-c-tooltip ds-c-tooltip-enter ds-c-tooltip-enter-active"
   data-placement="top"
-  id="trigger_16"
+  id="trigger_20"
   role="dialog"
   style="max-width: 300px; z-index: 9999;"
   tabindex="-1"
@@ -181,14 +181,14 @@ exports[`Tooltip tooltip with close renders heading element and close button 1`]
       Tooltip heading content
       <button
         aria-label="Close"
-        class="ds-c-button ds-c-button--transparent ds-c-button--small ds-c-tooltip__close-button"
+        class="ds-c-button ds-c-button--small ds-c-button--ghost ds-c-tooltip__close-button"
         type="button"
       >
         <svg
           aria-hidden="true"
           class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin "
           focusable="false"
-          id="icon-18"
+          id="icon-22"
           viewBox="-2 -2 18 18"
           xmlns="http://www.w3.org/2000/svg"
         >

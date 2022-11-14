@@ -1,6 +1,5 @@
 import LogosRow from './LogosRow';
-import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 
 const t = (key) => key;
 
@@ -11,6 +10,8 @@ describe('LogosRow', function () {
   // have unintended consequences, and it's worth looking at the footer
   // in the browser to confirm nothing is funky.
   it('renders logos and address', () => {
-    expect(shallow(<LogosRow t={t} />)).toMatchSnapshot();
+    const { container } = render(<LogosRow t={t} />);
+
+    expect(container).toMatchSnapshot();
   });
 });

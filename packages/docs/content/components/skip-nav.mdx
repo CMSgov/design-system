@@ -1,18 +1,26 @@
 ---
 title: Skip Nav
+intro: Skip navigation links allow users with screen readers to bypass long navigation lists.
+core:
+  githubLink: design-system/src/components/SkipNav
+  sketchLink: Gm3E1DO
+  storybookLink: components-skip-nav--skip-nav-example
+healthcare:
+  sketchLink: VrPazJr
 ---
 
-Skip navigation links allow users with screen readers to bypass long navigation lists. Make sure you include an `id` at the beginning of your main content and that it matches the skipnav link.
-
-## `<SkipNav>`
+## Examples
 
 <StorybookExample
   componentName="pagination"
-  sourceFilePath="components/SkipNav/SkipNav.tsx"
   storyId="components-skip-nav--skip-nav-example"
 />
 
-### Props
+## Code
+
+Make sure you include an `id` at the beginning of your main content and that it matches the skipnav link.
+
+### React
 
 <PropTable componentName="SkipNav" />
 
@@ -30,6 +38,23 @@ Skip navigation links allow users with screen readers to bypass long navigation 
 - More than one skip link can be on a page, but be mindful of creating too many.
 - Adding a `tabindex="-1"` on the container being skipped to allows older browsers to programmatically move focus properly.
 
-### Learn More
+## Learn More
 
 - [Skip Navigation Links on WebAIM](http://webaim.org/techniques/skipnav/)
+
+## Component maturity
+
+<MaturityChecklist
+  a11yStandards={true}
+  color={true}
+  forcedColors={true}
+  screenReaders={true}
+  keyboardNavigable={true}
+  storybook={true}
+  responsive={true}
+  spanish={true}
+  completeUiKit={false}
+  responsiveUiKit={false}
+  tokensInCode={true}
+  tokensInSketch={true}
+/>

@@ -1,26 +1,45 @@
 ---
 title: Dropdown
-relatedUswdsGuidance: components/form-controls/#dropdown
+intro: Dropdowns allow users to select one option from a temporary modal menu.
+core:
+  githubLink: design-system/src/components/Dropdown
+  sketchLink: dlpzO8L
+  storybookLink: components-dropdown--default-dropdown
+healthcare:
+  sketchLink: eK07830
 ---
 
-Dropdowns allow users to select one option from a temporary modal menu.
-
-## `<Dropdown>`
-
-A `Dropdown` component can be used to render an HTML `select` menu. Any _undocumented_ props that you pass to this component will be passed to the `select` element, so you can use this to set additional attributes if necessary.
-
-Class-based component gives flexibility for active focus management by allowing refs to be passed.
+## Examples
 
 <StorybookExample
   componentName="dropdown"
-  sourceFilePath="components/Dropdown/Dropdown.tsx"
   storyId="components-dropdown--default-dropdown"
   minHeight={250}
 />
 
-### Props
+## Code
+
+### React
+
+Note that any _undocumented_ props that you pass to this component will be passed to the `select` element, so you can use this to set additional attributes if necessary.
 
 <PropTable componentName="Dropdown" />
+
+### Styles
+
+The following Sass variables can be overridden to customize Dropdown components:
+
+<ComponentThemeOptions
+  componentname="dropdown"
+/>
+
+#### Text Input Options
+
+This component also makes use of some text input styles, which can be customized by the following variables:
+
+<ComponentThemeOptions
+  componentname="text-input"
+/>
 
 ## Guidance
 
@@ -50,28 +69,31 @@ Class-based component gives flexibility for active focus management by allowing 
 - **Always use a label.** Make sure your dropdown has a label. Don’t replace it with the default menu option (for example, removing the “State” label and just having the dropdown read “Select a state” by default).
 - **Avoid auto-submission.** Don’t use JavaScript to automatically submit the form (or do anything else) when an option is selected. Auto-submission disrupts screen readers because they select each option as they read them.
 
-## Customization
-
-The following Sass variables can be overridden to customize Dropdown components:
-
-<ComponentThemeOptions
-  componentname="dropdown"
-/>
-
-## Text Input Options
-
-<ComponentThemeOptions
-  componentname="text-input"
-/>
-
 ### Related patterns
 
 - [Checkbox](/components/checkbox) and [Radio](/components/radio/)
 - [Text field](/components/text-field/)
 
-### Learn more
+## Learn more
 
 - [Form Guidelines]/guidelines/forms/)
 - [Asking for a date of birth](https://designnotes.blog.gov.uk/2013/12/05/asking-for-a-date-of-birth/)
 - [Four steps for choosing form elements on the Web (PDF)](http://www.formsthatwork.com/files/Articles/dropdown.pdf)
 - [Dropdowns: Design Guidelines](https://www.nngroup.com/articles/drop-down-menus/)
+
+## Component maturity
+
+<MaturityChecklist
+  a11yStandards={true}
+  color={true}
+  forcedColors={true}
+  screenReaders={true}
+  keyboardNavigable={true}
+  storybook={true}
+  responsive={true}
+  spanish={null}
+  completeUiKit={false}
+  responsiveUiKit={false}
+  tokensInCode={true}
+  tokensInSketch={true}
+/>

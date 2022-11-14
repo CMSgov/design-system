@@ -1,21 +1,31 @@
 ---
 title: Filter Chip
-status: draft
+intro: Filter Chips are used to display dismissible filter chips.
+core:
+  githubLink: design-system/src/components/FilterChip
+  storybookLink: components-filter-chip--multiple-chips
 ---
 
-Filter Chips are used to display dismissible filter chips
-
-## `<FilterChip>`
+## Examples
 
 <StorybookExample
   componentName="filterChip"
-  sourceFilePath="components/FilterChip/FilterChip.tsx"
   storyId="components-filter-chip--multiple-chips"
 />
 
-### Props
+## Code
+
+### React
 
 <PropTable componentName="FilterChip" />
+
+### Styles
+
+The following Sass variables can be overridden to customize FilterChip components:
+
+<ComponentThemeOptions
+  componentname="filter-chip"
+/>
 
 ## Guidance
 
@@ -40,10 +50,19 @@ Filter Chips are used to display dismissible filter chips
 
 - `Enter`, `Backspace`, `Delete`, and `Spacebar` will remove the tag when it is in focus
 
-## Customization
+## Component maturity
 
-The following Sass variables can be overridden to customize FilterChip components:
-
-<ComponentThemeOptions
-  componentname="filter-chip"
+<MaturityChecklist
+  a11yStandards={true}
+  color={true}
+  forcedColors={true}
+  screenReaders={true}
+  keyboardNavigable={true}
+  storybook={true}
+  responsive={true}
+  spanish={true}
+  completeUiKit={false}
+  responsiveUiKit={false}
+  tokensInCode={true}
+  tokensInSketch={true}
 />

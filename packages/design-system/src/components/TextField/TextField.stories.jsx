@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
 import TextField from './TextField';
+import { unmaskValue } from './maskHelpers';
 import { DATE_MASK } from './useLabelMask';
+import { action } from '@storybook/addon-actions';
+import { useArgs } from '@storybook/client-api';
 
 export default {
   title: 'Components/Text Field',
@@ -43,7 +45,8 @@ export default {
   },
   args: {
     label: 'Text Field Label',
-    onChange: () => {},
+    onChange: action('onChange'),
+    onBlur: action('onBlur'),
     name: 'text-field-story',
   },
   parameters: {},
@@ -77,18 +80,67 @@ DisabledField.args = {
   disabled: true,
 };
 
-export const LabelMaskedField = () => {
-  const [date, setDate] = useState('');
+export const LabelMaskedField = (args) => {
+  const [_, updateArgs] = useArgs();
+  const onChange = (event) => {
+    action('onChange')(event);
+    updateArgs({ value: event.currentTarget.value });
+  };
 
+  return <TextField {...args} onChange={onChange} />;
+};
+LabelMaskedField.args = {
+  name: 'labelMask-date',
+  label: 'Enter the last day of your coverage',
+  hint: "If you don't have it, give your best estimate. For example: 01/02/2022",
+  labelMask: DATE_MASK,
+};
+LabelMaskedField.argTypes = {
+  // Hide irrelevant props
+  mask: { table: { disable: true } },
+  type: { table: { disable: true } },
+  rows: { table: { disable: true } },
+};
+
+export const AllMaskedFields = () => {
   return (
     <>
       <TextField
-        name="labelMask-date"
-        label="Enter the last day of your coverage"
-        hint="If you don't have it, give your best estimate. For example: 01/02/2022"
-        labelMask={DATE_MASK}
-        value={date}
-        onChange={(event) => setDate(event.currentTarget.value)}
+        ariaLabel="Enter monthly income amount in dollars."
+        labelClassName="ds-u-margin-top--0"
+        label="Currency"
+        mask="currency"
+        inputMode="numeric"
+        type="text"
+        name="currency_example"
+        onBlur={(evt) => console.log('Unmasked value: ', unmaskValue(evt.target.value, 'currency'))}
+        defaultValue="2,500"
+      />
+      <TextField
+        label="Phone number"
+        mask="phone"
+        name="phone_example"
+        onBlur={(evt) => console.log('Unmasked value: ', unmaskValue(evt.target.value, 'phone'))}
+        type="tel"
+        defaultValue="1234567890"
+      />
+      <TextField
+        label="Social security number (SSN)"
+        mask="ssn"
+        inputMode="numeric"
+        type="text"
+        name="ssn_example"
+        onBlur={(evt) => console.log('Unmasked value: ', unmaskValue(evt.target.value, 'ssn'))}
+        defaultValue="123456789"
+      />
+      <TextField
+        label="Zip code"
+        mask="zip"
+        inputMode="numeric"
+        type="text"
+        name="zip_example"
+        onBlur={(evt) => console.log('Unmasked value: ', unmaskValue(evt.target.value, 'zip'))}
+        defaultValue="123456789"
       />
     </>
   );

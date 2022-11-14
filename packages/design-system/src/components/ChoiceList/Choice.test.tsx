@@ -1,7 +1,6 @@
 import Choice, { ChoiceProps, ChoiceType } from './Choice';
-import FormLabel from '../FormLabel/FormLabel';
-import React from 'react';
-import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 const defaultProps = {
   name: 'foo',
@@ -10,203 +9,162 @@ const defaultProps = {
   label: 'George Washington',
 };
 
-function render(customProps = {}) {
+function renderChoice(customProps = {}) {
   const props: ChoiceProps = { ...defaultProps, ...customProps };
-  return {
-    props,
-    wrapper: shallow(<Choice {...props} />),
-  };
+  return render(<Choice {...props} />);
 }
 
 describe('Choice', () => {
+  it('is a radio', () => {
+    const { asFragment } = renderChoice({ type: 'radio' });
+    expect(asFragment()).toMatchSnapshot();
+
+    const radioEl = screen.getByRole('radio');
+    expect(radioEl).toHaveAttribute('type', 'radio');
+  });
+
+  it('is a checkbox', () => {
+    const { asFragment } = renderChoice();
+    expect(asFragment()).toMatchSnapshot();
+
+    const checkboxEl = screen.getByRole('checkbox');
+    expect(checkboxEl).toHaveAttribute('type', 'checkbox');
+  });
+
+  it('is not checked', () => {
+    renderChoice();
+    const el = screen.getByRole('checkbox');
+    expect(el).not.toBeChecked();
+  });
+
+  it('is checked', () => {
+    renderChoice();
+    const el = screen.getByRole('checkbox');
+    userEvent.click(el);
+    expect(el).toBeChecked();
+  });
+
+  it('is checked (with prop)', () => {
+    renderChoice({ checked: true });
+    const el = screen.getByRole('checkbox');
+    expect(el).toBeChecked();
+  });
+
+  it('is defaultChecked', () => {
+    renderChoice({ defaultChecked: true });
+    const el = screen.getByRole('checkbox');
+    expect(el).toBeChecked();
+  });
+
+  it('is required', () => {
+    renderChoice({ required: true });
+    const input = screen.queryByLabelText('George Washington');
+    expect(input).toBeRequired();
+  });
+
+  it('has a hint and requirementLabel', () => {
+    const { asFragment } = renderChoice({
+      hint: 'Hello world',
+      requirementLabel: 'Optional',
+    });
+    expect(asFragment()).toMatchSnapshot();
+  });
+
   it('accepts a node as innerHTML', () => {
-    const { wrapper } = render({
+    const { asFragment } = renderChoice({
       label: (
         <p>
           <strong>Hello</strong> World
         </p>
       ),
     });
-    const labelNode = wrapper.find(FormLabel).dive();
-
-    expect(labelNode.children().first().children().first().is('p')).toBe(true);
+    expect(asFragment()).toMatchSnapshot();
   });
 
-  it('is not checked', () => {
-    const { wrapper } = render();
-    const input = wrapper.find('input');
-
-    expect(input.prop('checked')).toBeUndefined();
-    expect(input.prop('defaultChecked')).toBeUndefined();
+  it('applies custom class to input', () => {
+    renderChoice({ inputClassName: 'foo' });
+    const input = screen.getByLabelText('George Washington');
+    expect(input).toHaveClass('foo');
   });
 
-  it('is checked', () => {
-    const { wrapper } = render({ checked: true });
-    const input = wrapper.find('input');
-
-    expect(input.prop('checked')).toBe(true);
-    expect(input.prop('defaultChecked')).toBeUndefined();
-  });
-
-  it('is defaultChecked', () => {
-    const { wrapper } = render({ defaultChecked: true });
-    const input = wrapper.find('input');
-
-    expect(input.prop('checked')).toBeUndefined();
-    expect(input.prop('defaultChecked')).toBe(true);
-  });
-
-  it('is required', () => {
-    const { wrapper } = render({ required: true });
-    const input = wrapper.find('input');
-
-    expect(input.prop('required')).toBe(true);
-  });
-
-  it('is a checkbox field', () => {
-    const { wrapper } = render();
-    const input = wrapper.find('input');
-
-    expect(input.prop('type')).toBe('checkbox');
-    expect(input.prop('required')).toBeUndefined();
-  });
-
-  it('is a radio button', () => {
-    const { wrapper } = render({ type: 'radio' });
-    const input = wrapper.find('input');
-
-    expect(input.prop('type')).toBe('radio');
-  });
-
-  it('applies className to input', () => {
-    const { wrapper } = render();
-    const input = wrapper.find('input');
-
-    expect(input.hasClass('ds-c-choice')).toBe(true);
-    expect(input.hasClass('ds-c-choice--inverse')).toBe(false);
-  });
-
-  it('applies className to label', () => {
-    const { wrapper } = render({ labelClassName: 'ds-u-font-weight--bold' });
-    expect(wrapper.find('FormLabel')).toMatchSnapshot();
+  it('applies custom class to label', () => {
+    const { container } = renderChoice({ labelClassName: 'bar' });
+    const label = container.querySelector('label');
+    expect(label).toHaveClass('bar');
   });
 
   it('applies errorMessage to label', () => {
     const errorMessage = "Hey! You can't do that!";
-    const { wrapper } = render({ errorMessage });
-    expect(wrapper.find('FormLabel').props().errorMessage).toEqual(errorMessage);
-  });
-
-  it('has a hint and requirementLabel', () => {
-    const { wrapper } = render({
-      hint: 'Hello world',
-      requirementLabel: 'Optional ',
-    });
-
-    expect(wrapper.find('FormLabel')).toMatchSnapshot();
+    const { asFragment } = renderChoice({ errorMessage });
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('applies inverse className to input', () => {
-    const { wrapper } = render({ inversed: true });
-    const input = wrapper.find('input');
-
-    expect(input.hasClass('ds-c-choice')).toBe(true);
-    expect(input.hasClass('ds-c-choice--inverse')).toBe(true);
-  });
-
-  it('places input on left by default', () => {
-    const { wrapper } = render();
-    const input = wrapper.find('input');
-
-    expect(input.hasClass('ds-c-choice')).toBe(true);
+    renderChoice({ inversed: true });
+    const input = screen.getByRole('checkbox');
+    expect(input).toHaveClass('ds-c-choice--inverse');
   });
 
   it('applies small className to input', () => {
-    const { wrapper } = render({ size: 'small' });
-    const input = wrapper.find('input');
-
-    expect(input.hasClass('ds-c-choice')).toBe(true);
-    expect(input.hasClass('ds-c-choice--small')).toBe(true);
+    renderChoice({ size: 'small' });
+    const input = screen.getByRole('checkbox');
+    expect(input).toHaveClass('ds-c-choice--small');
   });
 
   it('applies additional classNames to root element', () => {
-    const { wrapper } = render({ className: 'foo' });
-
-    expect(wrapper.hasClass('foo')).toBe(true);
+    const { container } = renderChoice({ className: 'foo' });
+    const el = container.firstChild as HTMLElement;
+    expect(el).toHaveClass('foo');
   });
 
-  it('applies additional classNames to input element', () => {
-    const { wrapper } = render({ inputClassName: 'foo' });
-    const input = wrapper.find('input');
-
-    expect(input.hasClass('foo')).toBe(true);
+  it('accepts a string value in the input', () => {
+    renderChoice({ value: 'bar' });
+    const input = screen.getByRole('checkbox');
+    expect(input).toHaveAttribute('value', 'bar');
   });
 
-  it('accepts a string value', () => {
-    const data = render({ value: 'bar' });
-    const input = data.wrapper.find('input');
-
-    expect(input.prop('value')).toBe(data.props.value);
-  });
-
-  it('accepts a number value', () => {
-    const data = render({ value: 100 });
-    const input = data.wrapper.find('input');
-
-    expect(input.prop('value')).toBe(data.props.value);
+  it('accepts a number value in the input', () => {
+    renderChoice({ value: 100 });
+    const input = screen.getByRole('checkbox');
+    expect(input).toHaveAttribute('value', '100');
   });
 
   it('accepts a custom id', () => {
-    const data = render({ id: 'custom_id' });
-    const input = data.wrapper.find('input');
-    const labelNode = data.wrapper.find(FormLabel).dive();
-
-    expect(input.prop('id')).toBe(data.props.id);
-    expect(labelNode.prop('htmlFor')).toBe(data.props.id);
+    renderChoice({ id: 'custom_id' });
+    const el = screen.getByRole('checkbox');
+    expect(el.id).toBe('custom_id');
   });
 
   it('generates a unique id', () => {
-    const sharedProps = {
+    const props = {
       name: 'presidents',
       label: defaultProps.label,
+      type: defaultProps.type,
     };
-    const wrapper = shallow(
+    const { container } = render(
       <div>
-        <Choice type="checkbox" value="a" {...sharedProps} />
-        <Choice type="checkbox" value="b" {...sharedProps} />
+        <Choice value="a" {...props} />
+        <Choice value="b" {...props} />
       </div>
-    ).render();
+    );
 
-    const idRegex = new RegExp(`checkbox_${sharedProps.name}_[0-9]+`);
-    const inputAId = wrapper.find('input').eq(0).attr('id');
-    const inputBId = wrapper.find('input').eq(1).attr('id');
+    const idRegex = new RegExp(`checkbox_${props.name}_[0-9]+`);
+    const labels = container.querySelectorAll('label');
+    const labelA = labels[0];
+    const labelB = labels[1];
+    const inputA = screen.getByDisplayValue('a');
+    const inputB = screen.getByDisplayValue('b');
 
     // IDs should be unique!
-    expect(inputAId).not.toBe(inputBId);
+    expect(inputA.id).not.toBe(inputB.id);
 
     // First Choice
-    expect(inputAId).toMatch(idRegex);
-    expect(wrapper.find('label').eq(0).attr('for')).toBe(inputAId);
+    expect(inputA.id).toMatch(idRegex);
+    expect(labelA.getAttribute('for')).toBe(inputA.id);
 
     // Second choice
-    expect(inputBId).toMatch(idRegex);
-    expect(wrapper.find('label').eq(1).attr('for')).toBe(inputBId);
-  });
-
-  describe('state', () => {
-    it('sets state for uncontrolled component', () => {
-      const data = render({ defaultChecked: true });
-
-      expect(data.wrapper.instance().isControlled).toBe(false);
-      expect(data.wrapper.state('checked')).toBe(data.props.defaultChecked);
-    });
-
-    it('does not set state for controlled component', () => {
-      const data = render({ checked: true });
-
-      expect(data.wrapper.instance().isControlled).toBe(true);
-      expect(data.wrapper.state()).toBeNull();
-    });
+    expect(inputB.id).toMatch(idRegex);
+    expect(labelB.getAttribute('for')).toBe(inputB.id);
   });
 
   describe('event handlers and emitters', () => {
@@ -219,140 +177,56 @@ describe('Choice', () => {
       };
     });
 
-    describe('onChange', () => {
-      it('calls the onChange handler', () => {
-        const data = render(props);
-        const input = data.wrapper.find('input');
+    it('calls the onChange handler', () => {
+      renderChoice(props);
+      const el = screen.getByRole('checkbox');
+      userEvent.click(el);
 
-        input.simulate('change', {
-          target: { checked: true },
-        });
-
-        expect(data.props.onBlur).toHaveBeenCalledTimes(0);
-        expect(data.props.onChange).toHaveBeenCalledTimes(1);
-      });
-
-      it('updates state when uncontrolled component', () => {
-        props.defaultChecked = true;
-        const data = render(props);
-        const input = data.wrapper.find('input');
-
-        input.simulate('change', {
-          target: { checked: false },
-        });
-
-        expect(data.wrapper.state('checked')).toBe(false);
-      });
-
-      it('skips updating state when controlled component', () => {
-        props.checked = true;
-        const data = render(props);
-        const input = data.wrapper.find('input');
-
-        input.simulate('change', {
-          target: { checked: false },
-        });
-
-        expect(data.wrapper.state()).toBeNull();
-      });
+      expect(props.onBlur).toHaveBeenCalledTimes(0);
+      expect(props.onChange).toHaveBeenCalledTimes(1);
     });
 
     it('calls the onBlur handler', () => {
-      const data = render(props);
-      const input = data.wrapper.find('input');
+      renderChoice(props);
+      const el = screen.getByLabelText('George Washington');
+      el.focus();
+      userEvent.tab();
 
-      input.simulate('blur');
-
-      expect(data.props.onBlur).toHaveBeenCalledTimes(1);
-      expect(data.props.onChange).toHaveBeenCalledTimes(0);
-    });
-
-    describe('uncheck event emitter', () => {
-      it('sets uncheckEventName for uncontrolled radio buttons', () => {
-        const data = render({ type: 'radio', defaultChecked: false });
-
-        expect(data.wrapper.instance().uncheckEventName).toBe(`${data.props.name}-uncheck`);
-      });
-
-      it('does not set uncheckEventName for controlled radio buttons', () => {
-        const data = render({ type: 'radio', checked: false });
-
-        expect(data.wrapper.instance().uncheckEventName).toBeUndefined();
-      });
-
-      it('does not set uncheckEventName for uncontrolled checkbox', () => {
-        const data = render({ defaultChecked: true });
-
-        expect(data.wrapper.instance().uncheckEventName).toBeUndefined();
-      });
+      expect(props.onBlur).toHaveBeenCalledTimes(1);
+      expect(props.onChange).toHaveBeenCalledTimes(0);
     });
   });
 
   describe('nested content', () => {
     const props = {
-      checkedChildren: <strong className="checked-child">I am checked</strong>,
-      uncheckedChildren: <strong className="unchecked-child">I am unchecked</strong>,
+      checkedChildren: (
+        <strong data-testid="checked" className="checked-child">
+          I am checked
+        </strong>
+      ),
+      uncheckedChildren: (
+        <strong data-testid="unchecked" className="unchecked-child">
+          I am unchecked
+        </strong>
+      ),
       name: 'foo',
       value: 'bar',
     };
 
-    function expectCheckedChildren(wrapper) {
-      expect(wrapper.find('.unchecked-child').length).toBe(0);
-      expect(wrapper.find('.checked-child').length).toBe(1);
-    }
-
-    function expectUncheckedChildren(wrapper) {
-      expect(wrapper.find('.unchecked-child').length).toBe(1);
-      expect(wrapper.find('.checked-child').length).toBe(0);
-    }
-
-    describe('controlled component', () => {
-      it('renders uncheckedChildren when not checked', () => {
-        const { wrapper } = render(props);
-
-        expectUncheckedChildren(wrapper);
-      });
-
-      it('renders uncheckedChildren when checked is changed to false', () => {
-        const { wrapper } = render({ ...props, ...{ checked: true } });
-        wrapper.setProps({ checked: false });
-
-        expectUncheckedChildren(wrapper);
-      });
-
-      it('renders checkedChildren when checked', () => {
-        const { wrapper } = render({ ...props, ...{ checked: true } });
-
-        expectCheckedChildren(wrapper);
-      });
-
-      it('renders checkedChildren when checked is changed to true', () => {
-        const { wrapper } = render({ ...props, ...{ checked: false } });
-        wrapper.setProps({ checked: true });
-
-        expectCheckedChildren(wrapper);
-      });
+    it('renders `uncheckedChildren` when not checked', () => {
+      const { asFragment } = renderChoice(props);
+      expect(asFragment()).toMatchSnapshot();
+      expect(screen.getByTestId('unchecked').textContent).toBe('I am unchecked');
+      expect(screen.queryByTestId('checked')).toBeNull();
     });
 
-    describe('uncontrolled component', () => {
-      it('renders uncheckedChildren when not defaultChecked', () => {
-        const { wrapper } = render({ ...props, ...{ defaultChecked: false } });
-
-        expectUncheckedChildren(wrapper);
-      });
-
-      it('renders uncheckedChildren when changed to unchecked', () => {
-        const { wrapper } = render({ ...props, ...{ defaultChecked: true } });
-
-        wrapper.setState({ checked: false });
-        expectUncheckedChildren(wrapper);
-      });
-
-      it('renders checkedChildren when defaultChecked', () => {
-        const { wrapper } = render({ ...props, ...{ defaultChecked: true } });
-
-        expectCheckedChildren(wrapper);
-      });
+    it('renders `checkedChildren` when checked', () => {
+      const { asFragment } = renderChoice(props);
+      const el = screen.getByRole('checkbox');
+      userEvent.click(el);
+      expect(asFragment()).toMatchSnapshot();
+      expect(screen.getByTestId('checked').textContent).toBe('I am checked');
+      expect(screen.queryByTestId('unchecked')).toBeNull();
     });
   });
 });

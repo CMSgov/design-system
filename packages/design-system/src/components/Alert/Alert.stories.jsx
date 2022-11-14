@@ -1,11 +1,12 @@
-import React from 'react';
-
+import { Button } from '../Button';
 import Alert from './Alert';
 
 export default {
   title: 'Components/Alert',
   component: Alert,
-  argTypes: {},
+  argTypes: {
+    children: { control: 'text' },
+  },
   args: {
     hideIcon: false,
   },
@@ -14,17 +15,21 @@ export default {
 const Template = (args) => (
   <>
     <Alert {...args}>
-      <p className="ds-c-alert__text">
-        Lorem ipsum dolor sit <a href="https://design.cms.gov/">link text</a>, consectetur
-        adipiscing elit, sed do eiusmod. Alerts can have chidren, or they can be left off and used
-        with just a heading prop.
-      </p>
+      {args.children ?? (
+        <p className="ds-c-alert__text">
+          Lorem ipsum dolor sit <a href="https://design.cms.gov/">link text</a>, consectetur
+          adipiscing elit, sed do eiusmod. Alerts can have chidren, or they can be left off and used
+          with just a heading prop.
+        </p>
+      )}
     </Alert>
 
     <Alert {...args} className="ds-u-margin-top--3" />
 
-    <Alert {...args} className="ds-u-margin-top--3" heading="">
-      <p className="ds-c-alert__text">An alert without a heading. Lorem ipsum dolor sit.</p>
+    <Alert {...args} className="ds-u-margin-top--3" heading={undefined}>
+      {args.children ?? (
+        <p className="ds-c-alert__text">An alert without a heading. Lorem ipsum dolor sit.</p>
+      )}
     </Alert>
   </>
 );
@@ -62,4 +67,38 @@ export const LightWeight = Template.bind({});
 LightWeight.args = {
   heading: 'A lightweight heading',
   weight: 'lightweight',
+};
+
+export const AlertWithButtons = (args) => {
+  return (
+    <div className="ds-u-measure--base">
+      <Alert {...args}>
+        <p className="ds-c-alert__text">
+          Lorem ipsum dolor sit <a href="https://design.cms.gov/">link text</a>, consectetur
+          adipiscing elit, sed do eiusmod. Alerts can have chidren, or they can be left off and used
+          with just a heading prop.
+        </p>
+        <div className="ds-u-margin-top--2">
+          <Button variation="solid">Primary action</Button>
+          <Button className="ds-u-margin-left--1">Secondary action</Button>
+        </div>
+      </Alert>
+
+      <Alert {...args} className="ds-u-margin-top--3">
+        <p className="ds-c-alert__text">
+          Lorem ipsum dolor sit <a href="https://design.cms.gov/">link text</a>, consectetur
+          adipiscing elit, sed do eiusmod. Alerts can have chidren, or they can be left off and used
+          with just a heading prop.
+        </p>
+        <div className="ds-u-margin-top--2">
+          <Button variation="solid" href="#">
+            Primary action (link)
+          </Button>
+          <Button className="ds-u-margin-left--1" href="#">
+            Secondary action (link)
+          </Button>
+        </div>
+      </Alert>
+    </div>
+  );
 };

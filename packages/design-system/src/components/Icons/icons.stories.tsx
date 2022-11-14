@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   AddIcon,
   AlertCircleIcon,
@@ -12,6 +11,7 @@ import {
   CloseIconThin,
   DownloadIcon,
   ExternalLinkIcon,
+  HHSLogo,
   ImageIcon,
   InfoCircleIcon,
   InfoCircleIconThin,
@@ -217,3 +217,5 @@ export const AvailableIcons = () => (
     </table>
   </>
 );
+
+export const HhsLogo = () => <HHSLogo />;

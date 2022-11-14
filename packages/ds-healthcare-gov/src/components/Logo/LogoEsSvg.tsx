@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LogoEsSvg: React.FC<unknown> = (props) => {
+const LogoEsSvg: React.FC<unknown> = () => {
   // prettier-ignore
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="237" height="25" viewBox="0 0 313.54 31.74" aria-labelledby="hc-c-logo__title">

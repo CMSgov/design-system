@@ -1,56 +1,27 @@
-import { EventCategory, sendLinkEvent, getAnalyticsContentFromRefs } from '../analytics';
-import React, { MutableRefObject, useRef } from 'react';
-import { buttonSendsAnalytics } from '../flags';
 import classNames from 'classnames';
+import mergeRefs from '../utilities/mergeRefs';
+import useButtonAnalytics from './useButtonAnalytics';
+import { AnalyticsOverrideProps, AnalyticsParentDataProps } from '../analytics';
+import { MutableRefObject } from 'react';
 
-export type ButtonComponentType = React.ElementType<any> | React.ComponentType<any>;
 export type ButtonSize = 'small' | 'big';
-/**
- * A string corresponding to the button-component variation classes.
- * The danger variation is deprecated and will be removed in a future release.
- */
-export type ButtonVariation = 'primary' | 'danger' | 'success' | 'transparent';
+
+export type ButtonVariation = 'solid' | 'ghost';
 
 export type ButtonRef = MutableRefObject<any> | ((...args: any[]) => any);
 
-type CommonButtonProps = {
-  /**
-   * Analytics events tracking is enabled by default. Set this value to `false` to
-   * disable tracking for this component instance.
-   */
-  analytics?: boolean;
-  /**
-   * An override for the dynamic content sent to analytics services. By default this content comes from the heading.
-   *
-   * In cases where this component’s heading may contain **sensitive information**, use this prop to override what is sent to analytics.
-   */
-  analyticsLabelOverride?: string;
-  /**
-   * If needed for analytics, pass heading text of parent component of button.
-   */
-  analyticsParentHeading?: string;
-  /**
-   * If needed for analytics, pass type of parent component of button.
-   */
-  analyticsParentType?: string;
+interface CommonButtonProps extends AnalyticsOverrideProps, AnalyticsParentDataProps {
   /**
    * Label text or HTML
    */
   children: string | React.ReactNode;
   /**
    * Additional classes to be added to the root button element.
-   * Useful for adding utility classes.
    */
   className?: string;
-  /**
-   * @hide-prop [Deprecated] Support for rendering custom components will be removed
-   * in the next major version. If you need to use React components like react-router
-   * `Link`, try wrapping this component instead.
-   */
-  component?: ButtonComponentType;
   disabled?: boolean;
   /**
-   * When provided the root component will render as an `<a>` element
+   * When provided, the root component will render as an `<a>` element
    * rather than `button`.
    */
   href?: string;
@@ -59,27 +30,30 @@ type CommonButtonProps = {
    */
   inputRef?: ButtonRef;
   /**
-   * @hide-prop [Deprecated] Use inversed instead
+   * Applies the alternate color to a Button. By default, Button
+   * uses the `main` color.
    */
-  inverse?: boolean;
-  /** Applies the inverse theme styling */
-  inversed?: boolean;
+  isAlternate?: boolean;
   /**
    * Returns the [`SyntheticEvent`](https://facebook.github.io/react/docs/events.html).
-   * Not called when the button is disabled.
+   * Not called when the Button is disabled.
    */
   onClick?: (...args: any[]) => any;
+  /**
+   * Defines a color palette best used when Button is placed on a dark
+   * background-color. By default, Button uses a light color palette.
+   */
+  onDark?: boolean;
   size?: ButtonSize;
   /**
    * Button [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type) attribute
    */
   type?: React.ComponentProps<'button'>['type'];
   /**
-   * A string corresponding to the button-component variation classes.
-   * The `'danger'` variation is deprecated and will be removed in a future release.
+   * A string corresponding to Button variation classes.
    */
   variation?: ButtonVariation;
-};
+}
 
 // Collect all the additional properties that one could supply to a button component
 // that will be passed down to whatever element or component is being used. This is
@@ -97,101 +71,59 @@ type OtherProps = Omit<
 
 export type ButtonProps = CommonButtonProps & OtherProps;
 
-export const Button = ({
-  analytics,
-  analyticsLabelOverride,
-  analyticsParentHeading,
-  analyticsParentType,
-  children,
-  className,
-  component,
-  disabled,
-  href,
-  inputRef,
-  inversed,
-  inverse,
-  onClick,
-  size,
-  variation,
-  type = 'button',
-  ...otherProps
-}: ButtonProps) => {
-  if (process.env.NODE_ENV !== 'production') {
-    if (inverse) {
-      console.warn(
-        `[Deprecated]: Please remove the 'inverse' prop in <Button>, use 'inversed' instead. This prop has been renamed and will be removed in a future release.`
-      );
-    }
-    if (variation === 'danger') {
-      console.warn(
-        `[Deprecated]: Please remove the 'danger' variation prop in <Button>. This prop will be removed in a future release.`
-      );
-    }
-    if (component) {
-      console.warn(
-        "[Deprecated]: Please remove the 'component' prop in <Button>. This prop will be removed in a future release."
-      );
-    }
-  }
+export const Button = (props: ButtonProps) => {
+  const {
+    analytics,
+    analyticsLabelOverride,
+    analyticsEventTypeOverride,
+    analyticsParentHeading,
+    analyticsParentType,
+    onAnalyticsEvent,
+    children,
+    className,
+    inputRef,
+    isAlternate,
+    onClick,
+    onDark,
+    size,
+    variation,
+    ...otherProps
+  } = props;
 
-  const contentRef = useRef();
-  const ComponentType = component ?? (href ? 'a' : 'button');
-  const variationClass = variation && `ds-c-button--${variation}`;
-  const disabledClass = disabled && ComponentType !== 'button' && 'ds-c-button--disabled';
+  const { contentRef, sendButtonEvent } = useButtonAnalytics(props);
+  const ComponentType = props.href ? 'a' : 'button';
+  const colorSchemeClass = isAlternate && `ds-c-button--alternate`;
+  const modeClass = onDark && `ds-c-button--on-dark`;
   const sizeClass = size && `ds-c-button--${size}`;
-  const inverseClass = (inversed || inverse) && 'ds-c-button--inverse';
+  const variationClass = variation && `ds-c-button--${variation}`;
+
   const allClassNames = classNames(
     'ds-c-button',
-    disabledClass,
-    variationClass,
-    inverseClass,
+    colorSchemeClass,
+    modeClass,
     sizeClass,
+    variationClass,
     className
   );
 
-  const attrs: any = {
-    className: allClassNames,
-    disabled,
-    href,
-    type,
+  const attrs = {
     ...otherProps,
+    className: allClassNames,
   };
 
   if (ComponentType !== 'button') {
-    // Assume `component` is not a custom component rendering a <button>
-    // and remove <button> specific attributes
     delete attrs.disabled;
     delete attrs.type;
-  }
 
-  function sendButtonEvent() {
-    if (!buttonSendsAnalytics() || analytics === false) {
-      return;
+    if (props.disabled) {
+      attrs.role = 'link';
+      attrs['aria-disabled'] = true;
+      delete attrs.href;
     }
-
-    const buttonText = analyticsLabelOverride ?? getAnalyticsContentFromRefs([contentRef]);
-    const buttonStyle = variation ?? 'default';
-    const buttonType = type ?? 'button';
-    const buttonParentHeading = analyticsParentHeading ?? ' ';
-    const buttonParentType = analyticsParentType ?? ' ';
-
-    return sendLinkEvent({
-      event_name: 'button_engagement',
-      event_type: EventCategory.UI_INTERACTION,
-      ga_eventCategory: EventCategory.UI_INTERACTION,
-      ga_eventAction: `engaged ${buttonStyle} button`,
-      ga_eventLabel: href ? `${buttonText}: ${href}` : buttonText,
-      text: buttonText,
-      button_style: buttonStyle,
-      button_type: href ? 'link' : buttonType,
-      parent_component_heading: buttonParentHeading,
-      parent_component_type: buttonParentType,
-      ...(href ? { link_url: href } : {}),
-    });
   }
 
   function handleClick(e: React.MouseEvent | React.KeyboardEvent): void {
-    if (!disabled) {
+    if (!props.disabled) {
       sendButtonEvent();
       if (onClick) {
         onClick(e);
@@ -208,16 +140,7 @@ export const Button = ({
 
   return (
     <ComponentType
-      ref={(el) => {
-        contentRef.current = el;
-        if (inputRef) {
-          if (typeof inputRef === 'function') {
-            inputRef(el);
-          } else {
-            inputRef.current = el;
-          }
-        }
-      }}
+      ref={mergeRefs([inputRef, contentRef])}
       onClick={handleClick}
       onKeyPress={ComponentType === 'a' ? handleKeyPress : undefined}
       {...attrs}
@@ -225,6 +148,12 @@ export const Button = ({
       {children}
     </ComponentType>
   );
+};
+
+Button.defaultProps = {
+  isAlternate: false,
+  onDark: false,
+  type: 'button',
 };
 
 export default Button;

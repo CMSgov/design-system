@@ -1,5 +1,3 @@
-import React from 'react';
-
 import SimpleFooter from './SimpleFooter';
 
 export default {
@@ -11,13 +9,6 @@ export default {
       options: ['en', 'es'],
     },
   },
-  decorators: [
-    (Story) => (
-      <div data-theme="medicare">
-        <Story />
-      </div>
-    ),
-  ],
 };
 
 const Template = ({ data, ...args }) => <SimpleFooter {...args} />;

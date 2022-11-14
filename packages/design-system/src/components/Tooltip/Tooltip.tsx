@@ -6,7 +6,7 @@ import 'core-js/features/promise';
 // TODO: Update react-transition-group once we update react peer dep
 import CSSTransition from 'react-transition-group/CSSTransition';
 import FocusTrap from 'focus-trap-react';
-import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
+import { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import classNames from 'classnames';
 import { createPopper, Placement } from '@popperjs/core';
 import uniqueId from 'lodash/uniqueId';
@@ -136,13 +136,9 @@ export const Tooltip = (props: TooltipProps) => {
     }
   };
 
-  const handleBlur = (event: MouseEvent) => {
+  const handleBlur = (event: Event) => {
     setTimeout(() => {
-      const focusedInsideTrigger = triggerElement.current?.contains(event.target);
-      const focusedInsideTooltip = tooltipElement.current?.contains(event.target);
-      if (!focusedInsideTrigger && !focusedInsideTooltip && !isHover) {
-        setActive(false);
-      }
+      if (!isHover && event.currentTarget !== event.target) setActive(false);
     }, 10);
   };
 
@@ -224,7 +220,7 @@ export const Tooltip = (props: TooltipProps) => {
 
     const TriggerComponent = component;
     const triggerClasses = classNames('ds-base', 'ds-c-tooltip__trigger', className, {
-      [activeClassName]: active,
+      [activeClassName]: activeClassName && active,
       'ds-c-tooltip__trigger--inverse': inversed,
     });
     const linkTriggerOverrides = {
@@ -313,7 +309,7 @@ export const Tooltip = (props: TooltipProps) => {
               {contentHeading}
               {showCloseButton && (
                 <Button
-                  variation="transparent"
+                  variation="ghost"
                   size="small"
                   className="ds-c-tooltip__close-button"
                   onClick={handleCloseButtonClick}
@@ -338,6 +334,7 @@ export const Tooltip = (props: TooltipProps) => {
           <FocusTrap
             active={active}
             focusTrapOptions={{
+              fallbackFocus: () => document.getElementById(`${id.current}`).parentElement,
               initialFocus: () => document.getElementById(`${id.current}`),
               clickOutsideDeactivates: true,
             }}

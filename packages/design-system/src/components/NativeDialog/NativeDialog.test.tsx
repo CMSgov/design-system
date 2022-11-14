@@ -1,5 +1,4 @@
 import NativeDialog from './NativeDialog';
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 
 const defaultProps = {

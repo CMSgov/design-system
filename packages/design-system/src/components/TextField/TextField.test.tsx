@@ -1,30 +1,26 @@
-import { TextField, unmaskValue } from './TextField';
-import { mount, shallow } from 'enzyme';
-import React from 'react';
+import TextField from './TextField';
+import { render } from '@testing-library/react';
+import { DATE_MASK } from './useLabelMask';
 
-function render(customProps = {}, deep = false) {
-  const props = Object.assign(
-    {
-      label: 'Foo',
-      name: 'spec-field',
-    },
-    customProps
-  );
-  const component = <TextField {...props} />;
+const defaultProps = {
+  label: 'Foo',
+  name: 'spec-field',
+};
 
-  return {
-    props: props,
-    wrapper: deep ? mount(component) : shallow(component),
-  };
+function renderTextField(customProps = {}) {
+  return render(<TextField {...defaultProps} {...customProps} />);
 }
 
 describe('TextField', function () {
   it('renders', () => {
-    const data = render();
-    expect(data.wrapper).toMatchSnapshot();
+    expect(renderTextField().asFragment()).toMatchSnapshot();
   });
 
-  it('exports unmaskValue method', () => {
-    expect(typeof unmaskValue).toBe('function');
+  it('renders with a label mask', () => {
+    expect(renderTextField({ labelMask: DATE_MASK }).asFragment()).toMatchSnapshot();
+  });
+
+  it('renders with a mask', () => {
+    expect(renderTextField({ mask: 'currency' }).asFragment()).toMatchSnapshot();
   });
 });

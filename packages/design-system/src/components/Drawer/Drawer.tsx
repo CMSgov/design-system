@@ -1,6 +1,6 @@
 import Button from '../Button/Button';
 import NativeDialog from '../NativeDialog/NativeDialog';
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
 import { t } from '../i18n';
@@ -56,15 +56,13 @@ export const Drawer = (props: DrawerProps) => {
 
   return (
     <NativeDialog
-      aria-labelledby={id.current}
       className={classNames(props.className, 'ds-c-drawer')}
       exit={props.onCloseClick}
       showModal={props.hasFocusTrap}
     >
-      <div className="ds-c-drawer__window">
+      <div className="ds-c-drawer__window" tabIndex={-1} aria-labelledby={id.current}>
         <div className="ds-c-drawer__header">
           <Heading
-            tabIndex={0}
             id={id.current}
             className="ds-c-drawer__header-heading"
             ref={(el) => {
@@ -89,6 +87,7 @@ export const Drawer = (props: DrawerProps) => {
           className={classNames('ds-c-drawer__body', {
             'ds-c-drawer--is-sticky': props.isHeaderSticky || props.isFooterSticky,
           })}
+          tabIndex={0}
         >
           {props.children}
         </div>

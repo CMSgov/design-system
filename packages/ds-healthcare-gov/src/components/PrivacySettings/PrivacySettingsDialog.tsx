@@ -1,7 +1,7 @@
 import { Button, Dialog, TFunction } from '@cmsgov/design-system';
 import { getPrivacySettings, setPrivacySettings } from './privacySettings';
 import PrivacySettingsTable from './PrivacySettingsTable';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const privacySettingConfigs = [
   { settingsKey: 'c3', translationKey: 'advertising' },
@@ -41,7 +41,7 @@ export const PrivacySettingsDialog = (props: PrivacySettingsDialogProps) => {
       heading={t('privacy.dialogTitle')}
       size="full"
       actions={
-        <Button variation="primary" onClick={savePrivacySettings}>
+        <Button variation="solid" onClick={savePrivacySettings}>
           {t('privacy.save')}
         </Button>
       }

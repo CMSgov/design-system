@@ -1,4 +1,3 @@
-import React from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
 import { SvgIcon } from '@cmsgov/design-system';

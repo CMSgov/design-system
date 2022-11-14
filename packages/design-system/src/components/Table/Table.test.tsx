@@ -1,149 +1,66 @@
-import { mount, shallow } from 'enzyme';
-import React from 'react';
+import { render, screen } from '@testing-library/react';
+
 import Table from './Table';
 import TableCaption from './TableCaption';
 
-const defaultCaptionChildren = 'Foo';
-const tableCaption = <TableCaption>{defaultCaptionChildren}</TableCaption>;
-
-function render(customProps = {}, children = tableCaption, deep = false) {
-  const props = Object.assign({}, customProps);
-  const component = <Table {...props}>{children}</Table>;
-
-  return {
-    props: props,
-    wrapper: deep ? mount(component) : shallow(component),
-  };
-}
+const makeTable = (customProps = {}) => {
+  const children = <TableCaption>A great caption</TableCaption>;
+  render(<Table {...customProps}>{children}</Table>);
+};
 
 describe('Table', function () {
-  it('renders a table', () => {
-    const { wrapper } = render();
-    const table = wrapper.find('table');
-
-    expect(table).toHaveLength(1);
-
-    expect(table.hasClass('ds-c-table')).toBe(true);
+  it('sets role="table"', () => {
+    makeTable();
+    expect(screen.getAllByRole('table')).toHaveLength(1);
   });
 
-  it('sets role="table"', () => {
-    const { wrapper } = render();
-    const table = wrapper.find('table');
-
-    expect(table.prop('role')).toBe('table');
+  it('renders table with class ds-c-table', () => {
+    makeTable();
+    expect(screen.getByRole('table')).toHaveClass('ds-c-table');
   });
 
   it('applies additional classNames to root table', () => {
-    const { wrapper } = render({ className: 'foo-table' });
-    const table = wrapper.find('table');
-
-    expect(table.hasClass('foo-table')).toBe(true);
+    makeTable({ className: 'foo-table' });
+    expect(screen.getByRole('table')).toHaveClass('foo-table');
   });
 
   it('applies borderless classes', () => {
-    const { wrapper } = render({ borderless: true });
-    const table = wrapper.find('table');
-
-    expect(table.hasClass('ds-c-table--borderless')).toBe(true);
+    makeTable({ borderless: true });
+    expect(screen.getByRole('table')).toHaveClass('ds-c-table--borderless');
   });
 
   it('applies compact table classes', () => {
-    const { wrapper } = render({ compact: true });
-    const table = wrapper.find('table');
-
-    expect(table.hasClass('ds-c-table--compact')).toBe(true);
+    makeTable({ compact: true });
+    expect(screen.getByRole('table')).toHaveClass('ds-c-table--compact');
   });
 
   it('applies zebra stripe classes', () => {
-    const { wrapper } = render({ striped: true });
-    const table = wrapper.find('table');
-
-    expect(table.hasClass('ds-c-table--striped')).toBe(true);
+    makeTable({ striped: true });
+    expect(screen.getByRole('table')).toHaveClass('ds-c-table--striped');
   });
 
-  it('applies default ContextProvider', () => {
-    const { wrapper } = render();
-    const context = wrapper.find('ContextProvider');
-
-    expect(context.prop('value')).toMatchObject({ stackable: false, warningDisabled: false });
+  it('applies responsive stacked table', () => {
+    makeTable({ stackable: true, stackableBreakpoint: 'lg' });
+    const table = screen.getByRole('table');
+    expect(table).toHaveClass('ds-c-lg-table--stacked');
+    expect(table).toMatchSnapshot();
   });
 
-  describe('table responsive stacked table true', () => {
-    it('applies responsive stacked table', () => {
-      const { wrapper } = render({ stackable: true, stackableBreakpoint: 'lg' });
-      const table = wrapper.find('table');
+  it('applies scrollable prop to table', () => {
+    makeTable({ scrollable: true });
+    const scrollableRegion = screen.getByRole('region');
 
-      expect(table.hasClass('ds-c-lg-table--stacked')).toBe(true);
-
-      expect(wrapper).toMatchSnapshot();
-    });
-
-    it('applies responsive stacked table ContextProvider', () => {
-      const { wrapper } = render({ stackable: true, warningDisabled: true });
-      const context = wrapper.find('ContextProvider');
-
-      expect(context.prop('value')).toMatchObject({ stackable: true, warningDisabled: true });
-
-      expect(wrapper).toMatchSnapshot();
-    });
+    expect(scrollableRegion).toHaveClass('ds-c-table__wrapper');
+    expect(scrollableRegion).toHaveAttribute('aria-live', 'polite');
+    expect(scrollableRegion).toHaveAttribute('aria-relevant', 'additions');
+    expect(scrollableRegion).toMatchSnapshot();
   });
 
-  it('applies scroll table', () => {
-    const { wrapper } = render({ scrollable: true });
-    const divWrapper = wrapper.find('div');
+  it('scroll table aria-labelledby matches caption id', () => {
+    makeTable({ scrollable: true });
+    const region = screen.getByRole('region').attributes['id'];
+    const caption = screen.getByText('A great caption').attributes['aria-labelledby'];
 
-    expect(divWrapper.hasClass('ds-c-table__wrapper')).toBe(true);
-  });
-
-  it('renders additional attributes', () => {
-    const { wrapper } = render({ ariaLabel: 'test additional attribute' });
-    const table = wrapper.find('table');
-
-    expect(table.prop('ariaLabel')).toBe('test additional attribute');
-  });
-
-  describe('table caption scrollable true', () => {
-    it('applies scroll table wrapper and classes', () => {
-      const { wrapper } = render({ scrollable: true }, undefined, true);
-      const divWrapper = wrapper.find('div');
-
-      expect(wrapper.prop('scrollable')).toBe(true);
-
-      expect(divWrapper.hasClass('ds-c-table__wrapper')).toBe(true);
-      expect(divWrapper.prop('role')).toBe('region');
-      expect(divWrapper.prop('aria-live')).toBe('polite');
-      expect(divWrapper.prop('aria-relevant')).toBe('additions');
-      expect(divWrapper.prop('tabindex')).toBeUndefined();
-
-      expect(wrapper).toMatchSnapshot();
-    });
-
-    it('scroll table aria-labelledby matches caption id', () => {
-      const { wrapper } = render({ scrollable: true }, undefined, true);
-      const divWrapper = wrapper.find('div');
-      const caption = wrapper.find('caption');
-
-      expect(caption.prop('id')).toBe(divWrapper.prop('aria-labelledby'));
-    });
-
-    it('contains scroll table notice ', () => {
-      const { wrapper } = render({ scrollable: true }, undefined, true);
-      const tableCaption = wrapper.find('TableCaption');
-
-      expect(tableCaption.prop('_scrollableNotice')).toBeDefined();
-    });
-
-    it('applies scrollableNotice', () => {
-      const { wrapper } = render(
-        { scrollable: true, scrollableNotice: 'foo scrollable notice' },
-        undefined,
-        true
-      );
-      const tableCaption = wrapper.find('TableCaption');
-
-      expect(tableCaption.prop('_scrollableNotice')).toBe('foo scrollable notice');
-
-      expect(wrapper).toMatchSnapshot();
-    });
+    expect(region).toEqual(caption);
   });
 });

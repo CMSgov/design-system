@@ -1,7 +1,7 @@
 import Button from '../Button/Button';
 import Ellipses from './Ellipses';
 import Page from './Page';
-import React from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { ArrowIcon } from '../Icons';
 import { t } from '../i18n';
@@ -144,8 +144,8 @@ function Pagination({
    * mobile layout of component is rendered.
    */
 
-  const [isMobile, setIsMobile] = React.useState(false);
-  React.useEffect(() => {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
     if (window) {
       // Mobile media query derived from: https://design.cms.gov/guidelines/responsive/
       const media = window.matchMedia('(max-width: 543px)');
@@ -165,7 +165,7 @@ function Pagination({
     }
   }, [isMobile]);
 
-  const pageChange = React.useCallback(
+  const pageChange = useCallback(
     (page) => (evt: React.MouseEvent) => onPageChange(evt, page),
     [onPageChange]
   );
@@ -250,6 +250,7 @@ function Pagination({
       {currentPage === 1 ? (
         <span
           className="ds-c-pagination__nav ds-c-pagination__nav--disabled"
+          aria-disabled="true"
           style={{ visibility: isNavigationHidden ? 'hidden' : 'visible' }}
           aria-hidden={isNavigationHidden}
         >
@@ -260,7 +261,7 @@ function Pagination({
         </span>
       ) : (
         <Button
-          variation="transparent"
+          variation="ghost"
           href={renderHref(currentPage - 1)}
           onClick={pageChange(currentPage - 1)}
           aria-label={startAriaLabel ?? t('pagination.startAriaLabel')}
@@ -292,6 +293,7 @@ function Pagination({
           className="ds-c-pagination__nav ds-c-pagination__nav--disabled"
           style={{ visibility: isNavigationHidden ? 'hidden' : 'visible' }}
           aria-hidden={isNavigationHidden}
+          aria-disabled="true"
         >
           {endLabelText ?? t('pagination.endLabelText')}
           <span className="ds-c-pagination__nav--img-container ds-c-pagination__nav--img-container-next">
@@ -300,7 +302,7 @@ function Pagination({
         </span>
       ) : (
         <Button
-          variation="transparent"
+          variation="ghost"
           href={renderHref(currentPage + 1)}
           onClick={pageChange(currentPage + 1)}
           aria-label={endAriaLabel ?? t('pagination.endAriaLabel')}

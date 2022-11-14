@@ -1,15 +1,14 @@
-import React from 'react';
 import StepLink, { StepLinkProps } from './StepLink';
 import SubStep from './SubStep';
 import classNames from 'classnames';
 import { CheckIcon } from '../Icons';
+import uniqueId from 'lodash/uniqueId';
 
 type HeadingLevel = '1' | '2' | '3' | '4' | '5';
 
 export interface StepObject {
   id?: string;
   href: string;
-  title?: string; // [Deprecated]
   heading: string;
   headingLevel?: HeadingLevel;
   description?: string;
@@ -36,22 +35,9 @@ export interface StepProps {
 }
 
 export const Step = ({ step, ...props }: StepProps) => {
-  if (process.env.NODE_ENV !== 'production') {
-    if (step.title) {
-      console.warn(
-        `[Deprecated]: Please remove the 'title' prop the <StepList> step object, use 'heading' instead. This prop has been renamed and will be removed in a future release.`
-      );
-    }
-    if (!step.title && !step.heading) {
-      console.warn(
-        `Please provide a 'heading' prop in the <StepList> step object, it is a required prop.`
-      );
-    }
-  }
-
   const getAriaLabel = (text) => {
     const isValidTemplate = text && text.length > 0;
-    const label = isValidTemplate ? text.replace('%{step}', step.heading || step.title) : undefined;
+    const label = isValidTemplate ? text.replace('%{step}', step.heading) : undefined;
     return { 'aria-label': label };
   };
   const Heading = `h${step.headingLevel || '2'}` as const;
@@ -68,6 +54,7 @@ export const Step = ({ step, ...props }: StepProps) => {
   const actionsLabel = getAriaLabel(actionsLabelText);
   const substepsLabel = getAriaLabel(substepsLabelText);
   const descriptionLabel = getAriaLabel(descriptionLabelText);
+  const descriptionHeadingID = uniqueId('heading-');
 
   let linkLabel;
   if (step.completed && !step.steps) {
@@ -80,16 +67,22 @@ export const Step = ({ step, ...props }: StepProps) => {
 
   let linkClassName;
   if (start || resume) {
-    linkClassName = 'ds-c-button ds-c-button--primary';
+    linkClassName = 'ds-c-button ds-c-button--solid ds-c-button--main ds-c-button--on-light';
   }
 
   // TODO: make heading required after removing title
   return (
     <li className={className}>
       <div className={contentClassName}>
-        <Heading className="ds-c-step__heading">{step.heading || step.title}</Heading>
+        <Heading id={descriptionHeadingID} className="ds-c-step__heading" {...descriptionLabel}>
+          {step.heading}
+        </Heading>
         {step.description && (
-          <div className="ds-c-step__description" {...descriptionLabel}>
+          <div
+            className="ds-c-step__description"
+            aria-labelledby={descriptionHeadingID}
+            role="region"
+          >
             {step.description}
           </div>
         )}
@@ -105,7 +98,7 @@ export const Step = ({ step, ...props }: StepProps) => {
           </ol>
         )}
       </div>
-      <div className="ds-c-step__actions" {...actionsLabel}>
+      <div className="ds-c-step__actions" {...actionsLabel} role="region">
         {step.completed && (
           <div className="ds-c-step__completed-text">
             <CheckIcon className="ds-c-icon-color--success" />
@@ -117,7 +110,7 @@ export const Step = ({ step, ...props }: StepProps) => {
             component={step.component}
             href={step.href}
             stepId={step.id}
-            screenReaderText={step.heading || step.title}
+            screenReaderText={step.heading}
             onClick={step.onClick || props.onStepLinkClick}
             className={linkClassName}
           >

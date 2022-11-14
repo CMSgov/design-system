@@ -36,52 +36,210 @@ $badge__background-color--success: var(--badge__background-color--success) !defa
 $badge__background-color--warn: var(--badge__background-color--warn) !default;
 $badge__font-color: var(--badge__font-color) !default;
 $badge__font-color--warn: var(--badge__font-color--warn) !default;
-$button__border-radius: var(--button__border-radius) !default;
-$button__border-width: var(--button__border-width) !default;
-$button__background-color: var(--button__background-color) !default;
 $button__background-color--active: var(--button__background-color--active) !default;
 $button__background-color--disabled: var(--button__background-color--disabled) !default;
 $button__background-color--hover: var(--button__background-color--hover) !default;
-$button__border-color: var(--button__border-color) !default;
+$button__background-color: var(--button__background-color) !default;
 $button__border-color--active: var(--button__border-color--active) !default;
 $button__border-color--disabled: var(--button__border-color--disabled) !default;
 $button__border-color--hover: var(--button__border-color--hover) !default;
-$button__color: var(--button__color) !default;
+$button__border-color: var(--button__border-color) !default;
+$button__border-radius: var(--button__border-radius) !default;
+$button__border-width: var(--button__border-width) !default;
 $button__color--active: var(--button__color--active) !default;
 $button__color--disabled: var(--button__color--disabled) !default;
 $button__color--hover: var(--button__color--hover) !default;
+$button__color: var(--button__color) !default;
+$button__font-weight: var(--button__font-weight) !default;
 $button-icon__fill: var(--button-icon__fill) !default;
-$button-inverse__background-color: var(--button-inverse__background-color) !default;
-$button-inverse__background-color--disabled: var(
-  --button-inverse__background-color--disabled
+$button-alt__background-color--active: var(--button-alt__background-color--active) !default;
+$button-alt__background-color--disabled: var(--button-alt__background-color--disabled) !default;
+$button-alt__background-color--hover: var(--button-alt__background-color--hover) !default;
+$button-alt__background-color: var(--button-alt__background-color) !default;
+$button-alt__border-color--active: var(--button-alt__border-color--active) !default;
+$button-alt__border-color--disabled: var(--button-alt__border-color--disabled) !default;
+$button-alt__border-color--hover: var(--button-alt__border-color--hover) !default;
+$button-alt__border-color: var(--button-alt__border-color) !default;
+$button-alt__color--active: var(--button-alt__color--active) !default;
+$button-alt__color--disabled: var(--button-alt__color--disabled) !default;
+$button-alt__color--hover: var(--button-alt__color--hover) !default;
+$button-alt__color: var(--button-alt__color) !default;
+$button-dark__background-color--active: var(--button-dark__background-color--active) !default;
+$button-dark__background-color--disabled: var(--button-dark__background-color--disabled) !default;
+$button-dark__background-color--hover: var(--button-dark__background-color--hover) !default;
+$button-dark__background-color: var(--button-dark__background-color) !default;
+$button-dark__border-color--active: var(--button-dark__border-color--active) !default;
+$button-dark__border-color--disabled: var(--button-dark__border-color--disabled) !default;
+$button-dark__border-color--hover: var(--button-dark__border-color--hover) !default;
+$button-dark__border-color: var(--button-dark__border-color) !default;
+$button-dark__color--active: var(--button-dark__color--active) !default;
+$button-dark__color--disabled: var(--button-dark__color--disabled) !default;
+$button-dark__color--hover: var(--button-dark__color--hover) !default;
+$button-dark__color: var(--button-dark__color) !default;
+$button-dark-alt__background-color--active: var(
+  --button-dark-alt__background-color--active
 ) !default;
-$button-inverse__background-color--focus: var(--button-inverse__background-color--focus) !default;
-$button-inverse__border-color: var(--button-inverse__border-color) !default;
-$button-inverse__border-color--active: var(--button-inverse__border-color--active) !default;
-$button-inverse__border-color--disabled: var(--button-inverse__border-color--disabled) !default;
-$button-inverse__border-color--hover: var(--button-inverse__border-color--hover) !default;
-$button-inverse__color: var(--button-inverse__color) !default;
-$button-inverse__color--active: var(--button-inverse__color--active) !default;
-$button-inverse__color--disabled: var(--button-inverse__color--disabled) !default;
-$button-inverse__color--hover: var(--button-inverse__color--hover) !default;
-$button-transparent__color--active: var(--button-transparent__color--active) !default;
-$button-transparent__background-color--disabled: var(
-  --button-transparent__background-color--disabled
+$button-dark-alt__background-color--disabled: var(
+  --button-dark-alt__background-color--disabled
 ) !default;
-$button-transparent__color--disabled: var(--button-transparent__color--disabled) !default;
-$button-inverse-transparent__background-color: var(
-  --button-inverse-transparent__background-color
+$button-dark-alt__background-color--hover: var(--button-dark-alt__background-color--hover) !default;
+$button-dark-alt__background-color: var(--button-dark-alt__background-color) !default;
+$button-dark-alt__border-color--active: var(--button-dark-alt__border-color--active) !default;
+$button-dark-alt__border-color--disabled: var(--button-dark-alt__border-color--disabled) !default;
+$button-dark-alt__border-color--hover: var(--button-dark-alt__border-color--hover) !default;
+$button-dark-alt__border-color: var(--button-dark-alt__border-color) !default;
+$button-dark-alt__color--active: var(--button-dark-alt__color--active) !default;
+$button-dark-alt__color--disabled: var(--button-dark-alt__color--disabled) !default;
+$button-dark-alt__color--hover: var(--button-dark-alt__color--hover) !default;
+$button-dark-alt__color: var(--button-dark-alt__color) !default;
+$button-solid__background-color--active: var(--button-solid__background-color--active) !default;
+$button-solid__background-color--disabled: var(--button-solid__background-color--disabled) !default;
+$button-solid__background-color--hover: var(--button-solid__background-color--hover) !default;
+$button-solid__background-color: var(--button-solid__background-color) !default;
+$button-solid__border-color--active: var(--button-solid__border-color--active) !default;
+$button-solid__border-color--disabled: var(--button-solid__border-color--disabled) !default;
+$button-solid__border-color--hover: var(--button-solid__border-color--hover) !default;
+$button-solid__border-color: var(--button-solid__border-color) !default;
+$button-solid__color--active: var(--button-solid__color--active) !default;
+$button-solid__color--disabled: var(--button-solid__color--disabled) !default;
+$button-solid__color--hover: var(--button-solid__color--hover) !default;
+$button-solid__color: var(--button-solid__color) !default;
+$button-solid-alt__background-color--active: var(
+  --button-solid-alt__background-color--active
 ) !default;
-$button-inverse-transparent__color: var(--button-inverse-transparent__color) !default;
-$button-inverse-transparent__color--disabled: var(
-  --button-inverse-transparent__color--disabled
+$button-solid-alt__background-color--disabled: var(
+  --button-solid-alt__background-color--disabled
 ) !default;
-$button-primary__color: var(--button-primary__color) !default;
-$button-primary__color--hover: var(--button-primary__color--hover) !default;
-$button-primary__background-color: var(--button-primary__background-color) !default;
-$button-primary__background-color--hover: var(--button-primary__background-color--hover) !default;
-$button-primary__background-color--focus: var(--button-primary__background-color--focus) !default;
-$button-primary__background-color--active: var(--button-primary__background-color--active) !default;
+$button-solid-alt__background-color--hover: var(
+  --button-solid-alt__background-color--hover
+) !default;
+$button-solid-alt__background-color: var(--button-solid-alt__background-color) !default;
+$button-solid-alt__border-color--active: var(--button-solid-alt__border-color--active) !default;
+$button-solid-alt__border-color--disabled: var(--button-solid-alt__border-color--disabled) !default;
+$button-solid-alt__border-color--hover: var(--button-solid-alt__border-color--hover) !default;
+$button-solid-alt__border-color: var(--button-solid-alt__border-color) !default;
+$button-solid-alt__color--active: var(--button-solid-alt__color--active) !default;
+$button-solid-alt__color--disabled: var(--button-solid-alt__color--disabled) !default;
+$button-solid-alt__color--hover: var(--button-solid-alt__color--hover) !default;
+$button-solid-alt__color: var(--button-solid-alt__color) !default;
+$button-solid-dark__background-color--active: var(
+  --button-solid-dark__background-color--active
+) !default;
+$button-solid-dark__background-color--disabled: var(
+  --button-solid-dark__background-color--disabled
+) !default;
+$button-solid-dark__background-color--hover: var(
+  --button-solid-dark__background-color--hover
+) !default;
+$button-solid-dark__background-color: var(--button-solid-dark__background-color) !default;
+$button-solid-dark__border-color--active: var(--button-solid-dark__border-color--active) !default;
+$button-solid-dark__border-color--disabled: var(
+  --button-solid-dark__border-color--disabled
+) !default;
+$button-solid-dark__border-color--hover: var(--button-solid-dark__border-color--hover) !default;
+$button-solid-dark__border-color: var(--button-solid-dark__border-color) !default;
+$button-solid-dark__color--active: var(--button-solid-dark__color--active) !default;
+$button-solid-dark__color--disabled: var(--button-solid-dark__color--disabled) !default;
+$button-solid-dark__color--hover: var(--button-solid-dark__color--hover) !default;
+$button-solid-dark__color: var(--button-solid-dark__color) !default;
+$button-solid-dark-alt__background-color--active: var(
+  --button-solid-dark-alt__background-color--active
+) !default;
+$button-solid-dark-alt__background-color--disabled: var(
+  --button-solid-dark-alt__background-color--disabled
+) !default;
+$button-solid-dark-alt__background-color--hover: var(
+  --button-solid-dark-alt__background-color--hover
+) !default;
+$button-solid-dark-alt__background-color: var(--button-solid-dark-alt__background-color) !default;
+$button-solid-dark-alt__border-color--active: var(
+  --button-solid-dark-alt__border-color--active
+) !default;
+$button-solid-dark-alt__border-color--disabled: var(
+  --button-solid-dark-alt__border-color--disabled
+) !default;
+$button-solid-dark-alt__border-color--hover: var(
+  --button-solid-dark-alt__border-color--hover
+) !default;
+$button-solid-dark-alt__border-color: var(--button-solid-dark-alt__border-color) !default;
+$button-solid-dark-alt__color--active: var(--button-solid-dark-alt__color--active) !default;
+$button-solid-dark-alt__color--disabled: var(--button-solid-dark-alt__color--disabled) !default;
+$button-solid-dark-alt__color--hover: var(--button-solid-dark-alt__color--hover) !default;
+$button-solid-dark-alt__color: var(--button-solid-dark-alt__color) !default;
+$button-ghost__background-color--active: var(--button-ghost__background-color--active) !default;
+$button-ghost__background-color--disabled: var(--button-ghost__background-color--disabled) !default;
+$button-ghost__background-color--hover: var(--button-ghost__background-color--hover) !default;
+$button-ghost__background-color: var(--button-ghost__background-color) !default;
+$button-ghost__border-color--active: var(--button-ghost__border-color--active) !default;
+$button-ghost__border-color--disabled: var(--button-ghost__border-color--disabled) !default;
+$button-ghost__border-color--hover: var(--button-ghost__border-color--hover) !default;
+$button-ghost__border-color: var(--button-ghost__border-color) !default;
+$button-ghost__color--active: var(--button-ghost__color--active) !default;
+$button-ghost__color--disabled: var(--button-ghost__color--disabled) !default;
+$button-ghost__color--hover: var(--button-ghost__color--hover) !default;
+$button-ghost__color: var(--button-ghost__color) !default;
+$button-ghost-alt__background-color--active: var(
+  --button-ghost-alt__background-color--active
+) !default;
+$button-ghost-alt__background-color--disabled: var(
+  --button-ghost-alt__background-color--disabled
+) !default;
+$button-ghost-alt__background-color--hover: var(
+  --button-ghost-alt__background-color--hover
+) !default;
+$button-ghost-alt__background-color: var(--button-ghost-alt__background-color) !default;
+$button-ghost-alt__border-color--active: var(--button-ghost-alt__border-color--active) !default;
+$button-ghost-alt__border-color--disabled: var(--button-ghost-alt__border-color--disabled) !default;
+$button-ghost-alt__border-color--hover: var(--button-ghost-alt__border-color--hover) !default;
+$button-ghost-alt__border-color: var(--button-ghost-alt__border-color) !default;
+$button-ghost-alt__color--active: var(--button-ghost-alt__color--active) !default;
+$button-ghost-alt__color--disabled: var(--button-ghost-alt__color--disabled) !default;
+$button-ghost-alt__color--hover: var(--button-ghost-alt__color--hover) !default;
+$button-ghost-alt__color: var(--button-ghost-alt__color) !default;
+$button-ghost-dark__background-color--active: var(
+  --button-ghost-dark__background-color--active
+) !default;
+$button-ghost-dark__background-color--disabled: var(
+  --button-ghost-dark__background-color--disabled
+) !default;
+$button-ghost-dark__background-color--hover: var(
+  --button-ghost-dark__background-color--hover
+) !default;
+$button-ghost-dark__background-color: var(--button-ghost-dark__background-color) !default;
+$button-ghost-dark__border-color--active: var(--button-ghost-dark__border-color--active) !default;
+$button-ghost-dark__border-color--disabled: var(
+  --button-ghost-dark__border-color--disabled
+) !default;
+$button-ghost-dark__border-color--hover: var(--button-ghost-dark__border-color--hover) !default;
+$button-ghost-dark__border-color: var(--button-ghost-dark__border-color) !default;
+$button-ghost-dark__color--active: var(--button-ghost-dark__color--active) !default;
+$button-ghost-dark__color--disabled: var(--button-ghost-dark__color--disabled) !default;
+$button-ghost-dark__color--hover: var(--button-ghost-dark__color--hover) !default;
+$button-ghost-dark__color: var(--button-ghost-dark__color) !default;
+$button-ghost-dark-alt__background-color--active: var(
+  --button-ghost-dark-alt__background-color--active
+) !default;
+$button-ghost-dark-alt__background-color--disabled: var(
+  --button-ghost-dark-alt__background-color--disabled
+) !default;
+$button-ghost-dark-alt__background-color--hover: var(
+  --button-ghost-dark-alt__background-color--hover
+) !default;
+$button-ghost-dark-alt__background-color: var(--button-ghost-dark-alt__background-color) !default;
+$button-ghost-dark-alt__border-color--active: var(
+  --button-ghost-dark-alt__border-color--active
+) !default;
+$button-ghost-dark-alt__border-color--disabled: var(
+  --button-ghost-dark-alt__border-color--disabled
+) !default;
+$button-ghost-dark-alt__border-color--hover: var(
+  --button-ghost-dark-alt__border-color--hover
+) !default;
+$button-ghost-dark-alt__border-color: var(--button-ghost-dark-alt__border-color) !default;
+$button-ghost-dark-alt__color--active: var(--button-ghost-dark-alt__color--active) !default;
+$button-ghost-dark-alt__color--disabled: var(--button-ghost-dark-alt__color--disabled) !default;
+$button-ghost-dark-alt__color--hover: var(--button-ghost-dark-alt__color--hover) !default;
+$button-ghost-dark-alt__color: var(--button-ghost-dark-alt__color) !default;
 $choice__background-color: var(--choice__background-color) !default;
 $choice__background-color--checked: var(--choice__background-color--checked) !default;
 $choice__background-color--disabled: var(--choice__background-color--disabled) !default;
@@ -201,6 +359,8 @@ $tabs__color--disabled: var(--tabs__color--disabled) !default;
 $text-input__line-height: var(--text-input__line-height) !default;
 $text-input__background-color--disabled: var(--text-input__background-color--disabled) !default;
 $text-input__border-width: var(--text-input__border-width) !default;
+$text-input__border-width--error: var(--text-input__border-width--error) !default;
+$text-input__border-width--success: var(--text-input__border-width--success) !default;
 $text-input__border-color: var(--text-input__border-color) !default;
 $text-input__border-color--disabled: var(--text-input__border-color--disabled) !default;
 $text-input__border-color--error: var(--text-input__border-color--error) !default;
@@ -217,6 +377,14 @@ $tooltip__box-shadow-color: var(--tooltip__box-shadow-color) !default;
 $tooltip-icon__color: var(--tooltip-icon__color) !default;
 $tooltip-icon__color--inverse: var(--tooltip-icon__color--inverse) !default;
 $tooltip-trigger__color: var(--tooltip-trigger__color) !default;
+$typography-heading__font-family: var(--typography-heading__font-family) !default;
+$typography-heading__font-weight: var(--typography-heading__font-weight) !default;
+$typography-heading-4xl__font-weight: var(--typography-heading-4xl__font-weight) !default;
+$typography-heading-3xl__font-weight: var(--typography-heading-3xl__font-weight) !default;
+$typography-heading-lg__font-weight: var(--typography-heading-lg__font-weight) !default;
+$typography-heading-md__font-weight: var(--typography-heading-md__font-weight) !default;
+$typography-heading-sm__font-weight: var(--typography-heading-sm__font-weight) !default;
+$typography-body__font-family: var(--typography-body__font-family) !default;
 $usa-banner__background-color: var(--usa-banner__background-color) !default;
 $usa-banner__color: var(--usa-banner__color) !default;
 $usa-banner-close__background-color: var(--usa-banner-close__background-color) !default;

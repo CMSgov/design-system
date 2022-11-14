@@ -1,19 +1,20 @@
-import * as React from 'react';
 import { graphql } from 'gatsby';
 
-import Layout from '../components/Layout';
+import Layout from '../components/layout/Layout';
 import { MdxQuery } from '../helpers/graphQLTypes';
 import useTheme from '../helpers/useTheme';
-import ContentRenderer from '../components/ContentRenderer';
+import ContentRenderer from '../components/content/ContentRenderer';
 
 // Main landing page for site
 const IndexPage = ({ data, location }: MdxQuery) => {
+  const { slug } = data.mdx;
   const theme = useTheme();
 
   return (
     <Layout
-      pageName="Introduction"
+      frontmatter={data.mdx.frontmatter}
       location={location}
+      slug={slug}
       theme={theme}
       tableOfContentsData={data.mdx.tableOfContents?.items}
     >
@@ -27,7 +28,11 @@ export const query = graphql`
     mdx(frontmatter: { title: { eq: "Introduction" } }) {
       id
       body
-      tableOfContents(maxDepth: 2)
+      slug
+      tableOfContents(maxDepth: 3)
+      frontmatter {
+        title
+      }
     }
   }
 `;

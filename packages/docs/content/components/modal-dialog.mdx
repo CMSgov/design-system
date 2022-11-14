@@ -1,12 +1,35 @@
 ---
-title: Modal dialog
+title: Modal Dialog
+intro: The dialog component can be used to focus a user's attention on a single piece of content, without taking them to a new screen. Please use with caution; view our guidance for more details.
+core:
+  githubLink: design-system/src/components/Dialog
+  sketchLink: Jn3kY4k
+  storybookLink: components-dialog--dialog-example
+healthcare:
+  sketchLink: m1Y5wQ7
+medicare:
+  sketchLink: YGOggo0
+  storybookLink: medicare-dialog--dialog-example
 ---
 
-import { Dialog } from '@cmsgov/design-system';
+## Examples
 
-The dialog component can be used to focus a user's attention on a single piece of content, without taking them to a new screen. Please use with caution; view our guidance for more details.
+<ThemeContent neverThemes={['medicare']}>
+  <StorybookExample
+    componentName="dialog"
+    storyId="components-dialog--dialog-example"
+    minHeight={400}
+  />
+</ThemeContent>
+<ThemeContent onlyThemes={['medicare']}>
+  <StorybookExample
+    componentName="dialog"
+    storyId="medicare-dialog--dialog-example"
+    minHeight={400}
+  />
+</ThemeContent>
 
-## Dialog size variants
+### Dialog size variants
 
 Apply one of the size modifier classes to the `ds-c-dialog` element to change the dialog width.
 
@@ -14,24 +37,48 @@ Apply one of the size modifier classes to the `ds-c-dialog` element to change th
 - `.ds-c-dialog--wide`
 - `.ds-c-dialog--full`
 
-## `<Dialog>`
+## Code
 
-<StorybookExample
-  componentName="dialog"
-  sourceFilePath="components/Dialog/Dialog.tsx"
-  storyId="components-dialog--dialog-example"
-  minHeight={400}
-/>
-
-### Props
+### React
 
 <PropTable componentName="Dialog" />
 
+### Styles
+
+The following Sass variables can be overridden to customize Dialog components:
+
+<ComponentThemeOptions
+  componentname="dialog"
+/>
+
+### Google Analytics
+
+**Analytics event tracking is disabled by default.**
+
+#### Enable event tracking
+
+Import and set the `setDialogSendsAnalytics` feature flag to `true` in your application's entry file:
+
+```js
+import { setDialogSendsAnalytics } from '@cmsgov/<design-system-package>';
+setDialogSendsAnalytics(true);
+```
+
+On applications where the page has `utag` loaded, the data goes to Tealium which allows it to route to Google Analytics or the currently approved data analytics tools.
+
+#### Disable event tracking
+
+For the `analytics` prop, pass the value `false` to the component to disable analytics tracking for a singular component instance
+
+```js
+analytics={false}
+```
+
+#### Override event tracking
+
+A custom heading value can be sent for an analytics event by using the prop `analyticsLabelOverride`. It is recommended that this value be used to prevent sensitive personal information from being passed to analytics trackers.
+
 ## Guidance
-
-### Usage
-
-- `<Dialog>` makes use of the `<AriaModal>` component maintained by [react-aria-modal docs on Github](https://github.com/davidtheclark/react-aria-modal). The above documented props are only those directly exposed by the `<Dialog>` component, but you can pass props specific to `<AriaModal>` here as well, e.g. you can set the [`scrollDisabled`](https://github.com/davidtheclark/react-aria-modal#scrolldisabled) prop if you'd like to enable scrolling behind the modal window.
 
 ### Accessibility
 
@@ -56,41 +103,23 @@ Apply one of the size modifier classes to the `ds-c-dialog` element to change th
 - [Overuse of Overlays: How to Avoid Misusing Lightboxes](https://www.nngroup.com/articles/overuse-of-overlays/)
 - [Using ARIA role=dialog to implement a modal dialog box](https://www.w3.org/WAI/GL/wiki/Using_ARIA_role%3Ddialog_to_implement_a_modal_dialog_box)
 
-## Customization
-
-The following Sass variables can be overridden to customize Dialog components:
-
-<ComponentThemeOptions
-  componentname="dialog"
-/>
-
 ### Related patterns
 
 - [Alert](/components/alert/)
 
-## Google Analytics
+## Component maturity
 
-**Analytics event tracking is disabled by default.**
-
-### Enable event tracking
-
-Import and set the `setDialogSendsAnalytics` feature flag to `true` in your application's entry file:
-
-```js
-import { setDialogSendsAnalytics } from '@cmsgov/<design-system-package>';
-setDialogSendsAnalytics(true);
-```
-
-On applications where the page has `utag` loaded, the data goes to Tealium which allows it to route to Google Analytics or the currently approved data analytics tools.
-
-### Disable event tracking
-
-For the `analytics` prop, pass the value `false` to the component to disable analytics tracking for a singular component instance
-
-```js
-analytics={false}
-```
-
-### Override event tracking
-
-A custom heading value can be sent for an analytics event by using the prop `analyticsLabelOverride`. It is recommended that this value be used to prevent sensitive personal information from being passed to analytics trackers.
+<MaturityChecklist
+  a11yStandards={true}
+  color={true}
+  forcedColors={true}
+  screenReaders={true}
+  keyboardNavigable={true}
+  storybook={true}
+  responsive={true}
+  spanish={true}
+  completeUiKit={false}
+  responsiveUiKit={false}
+  tokensInCode={true}
+  tokensInSketch={true}
+/>

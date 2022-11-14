@@ -11,15 +11,15 @@
   display: flex;
   gap: 0.5rem;
   margin: 0.5rem 0;
-  max-width: $form__max-width;
+  max-width: $measure-wide;
 }
 
 // Styles for label
 .ds-c-choice + label,
 .ds-c-choice + .ds-c-label {
   cursor: pointer;
-  flex-grow: 1;
   flex-basis: min-content;
+  flex-grow: 1;
   font-weight: $font-normal;
   margin-top: 0;
   max-width: max-content;
@@ -77,6 +77,11 @@ label,
     opacity: 0;
     // transition: 120ms opacity ease-in-out;
     width: $choice__size;
+  }
+
+  &::before,
+  &::after {
+    box-sizing: content-box;
   }
 
   // Error
@@ -139,12 +144,6 @@ label,
   &:checked {
     &::after {
       opacity: 1;
-    }
-
-    &:focus::before {
-      // have to do a mix of calc & sass interpolation in order to accommodate values being css vars in internal tools
-      height: calc(#{$choice__size} - (#{$choice__border-width} * 2));
-      width: calc(#{$choice__size} - (#{$choice__border-width} * 2));
     }
   }
 }

@@ -1,176 +1,217 @@
 ---
 title: Button
-relatedUswdsGuidance: components/buttons
+intro: Buttons allow users to take actions from a current state to a future state.
+core:
+  githubLink: design-system/src/components/Button
+  sketchLink: zx4Ybra
+  storybookLink: components-button--default
+healthcare:
+  sketchLink: bgkyK0V
+medicare:
+  sketchLink: 9POn0mM
 ---
 
-import { Alert, Button, ArrowIcon, TextInput } from '@cmsgov/design-system';
+import { Alert, Badge, ArrowIcon, Button, CloseIconThin } from '@cmsgov/design-system';
 
-Use buttons to signal actions.
+<Alert heading="Are you upgrading to v4 (healthcare v8, medicare v6)?">
 
-## Default Button
+  [Take a look at our v4 buttons migration guide](/getting-started/migrating-to-new-buttons) to get started.
+  
+</Alert>
+
+## Examples
+
+The following tables give an overview of the different available button styles in the selected design system. Each button has three controllable traits that can be used in various combinations. They are:
+
+1. _Variation_: which affects the border and background styles
+2. Color: defined as either _main_ or _alternate_
+3. Context: specified as either _on-light_ or _on-dark_
+
+See the examples in the following sections to learn how they can be applied.
+
+<ButtonVariationsTable />
+
+### Main buttons
+
+#### Solid button
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+Use solid buttons for the primary actions we want users to take. These actions are required for the user to move to the next step in the user flow (example: Enroll) or to highlight the main/key action.
+
+</ThemeContent>
+
+<StorybookExample
+  componentName="solid-button"
+  sourceFilePath="components/Button/Button.tsx"
+  storyId="components-button--default&args=children:Solid;variation:solid"
+/>
+
+
+#### Outline button
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+Use outline buttons for actions available but not the primary action we want users to take (example: Plan details). There doesn't have to be a primary button on the page to use the secondary button.
+
+
+</ThemeContent>
+
+<StorybookExample
+  componentName="outline-button"
+  sourceFilePath="components/Button/Button.tsx"
+  storyId="components-button--default&args=children:Outline"
+/>
+
+
+
+#### Ghost button
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+Use ghost buttons for actions available but do not take priority over a primary or secondary CTAs (example: Cancel).
+
+</ThemeContent>
+
+<StorybookExample
+  componentName="ghost-button"
+  sourceFilePath="components/Button/Button.tsx"
+  storyId="components-button--default&args=children:Ghost;variation:ghost"
+/>
+
+### Alternate buttons
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+<Badge variation="alert">
+<CloseIconThin /> Unused by Healthcare.
+</Badge>
+
+</ThemeContent>
+
+Each button variation (outline, solid, ghost) has an alternate option. Alternate buttons can be styled differently than the main buttons.
+
+<ThemeContent neverThemes={['healthcare']}>
+
+  #### Alternate solid button
+  
+  <StorybookExample
+    componentName="solid-alt-button"
+    sourceFilePath="components/Button/Button.tsx"
+    storyId="components-button--default&args=children:Solid;variation:solid;isAlternate:true"
+  />
+</ThemeContent>
+
+<ThemeContent neverThemes={['healthcare']}>
+
+#### Alternate outline button
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+<Badge variation="alert">
+<CloseIconThin /> Unused by Medicare.
+</Badge>
+
+</ThemeContent>
+
+<ThemeContent neverThemes={['healthcare', 'medicare']}>
+
+  <StorybookExample
+    componentName="outline-alt-button"
+    sourceFilePath="components/Button/Button.tsx"
+    storyId="components-button--default&args=children:Outline;isAlternate:true"
+  />
+</ThemeContent>
+
+<ThemeContent neverThemes={['healthcare']}>
+
+#### Alternate ghost button
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+<Badge variation="alert">
+<CloseIconThin /> Unused by Medicare.
+</Badge>
+
+</ThemeContent>
+
+<ThemeContent neverThemes={['healthcare','medicare']}>
+
+  <StorybookExample
+    componentName="ghost-alt-button"
+    sourceFilePath="components/Button/Button.tsx"
+    storyId="components-button--default&args=children:Ghost;variation:ghost;isAlternate:true"
+  />
+</ThemeContent>
+
+
+### On dark background 
+
+<ThemeContent onlyThemes={['healthcare']}> 
+
+<Badge variation="alert">
+<CloseIconThin /> Unused by Healthcare.
+</Badge>
+
+</ThemeContent>
+
+<ThemeContent neverThemes={['healthcare']}>
+
+  <StorybookExample
+    componentName="on-dark-buttons"
+    sourceFilePath="components/Button/Button.tsx"
+    storyId="components-button--variations-on-dark"
+  />
+</ThemeContent>
+
+### Button sizes
+
+Buttons can exist in two sizes other than default: "big" or "small".
+
+#### Big button
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+<Badge variation="alert">
+<CloseIconThin /> Unused by Healthcare.
+</Badge>
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['core', 'medicare']}>
 
 <EmbeddedExample>
   <div>
-    <Button className="ds-u-margin-right--1">Default</Button>
-    <Button className="ds-c-button--hover ds-u-margin-right--1">Hover</Button>
-    <Button className="ds-c-button--active ds-u-margin-right--1">Active</Button>
-    <Button className="ds-c-button--focus ds-u-margin-right--1">Focus</Button>
-    <Button disabled>Disabled</Button>
-  </div>
-</EmbeddedExample>
-
-## Primary Button
-
-<EmbeddedExample>
-  <div>
-    <Button className="ds-u-margin-right--1" variation="primary">
-      Default
-    </Button>
-    <Button className="ds-c-button--hover ds-u-margin-right--1" variation="primary">
-      Hover
-    </Button>
-    <Button className="ds-c-button--active ds-u-margin-right--1" variation="primary">
-      Active
-    </Button>
-    <Button className="ds-c-button--focus ds-u-margin-right--1" variation="primary">
-      Focus
-    </Button>
-    <Button disabled variation="primary">
-      Disabled
-    </Button>
-  </div>
-</EmbeddedExample>
-
-## Success Button
-
-<EmbeddedExample>
-  <div>
-    <Button className="ds-u-margin-right--1" variation="success">
-      Default
-    </Button>
-    <Button className="ds-c-button--hover ds-u-margin-right--1" variation="success">
-      Hover
-    </Button>
-    <Button className="ds-c-button--active ds-u-margin-right--1" variation="success">
-      Active
-    </Button>
-    <Button className="ds-c-button--focus ds-u-margin-right--1" variation="success">
-      Focus
-    </Button>
-    <Button disabled variation="success">
-      Disabled
-    </Button>
-  </div>
-</EmbeddedExample>
-
-## Transparent Button
-
-<EmbeddedExample>
-  <div>
-    <Button className="ds-u-margin-right--1" variation="transparent">
-      Default
-    </Button>
-    <Button className="ds-c-button--hover ds-u-margin-right--1" variation="transparent">
-      Hover
-    </Button>
-    <Button className="ds-c-button--active ds-u-margin-right--1" variation="transparent">
-      Active
-    </Button>
-    <Button className="ds-c-button--focus ds-u-margin-right--1" variation="transparent">
-      Focus
-    </Button>
-    <Button disabled variation="transparent">
-      Disabled
-    </Button>
-  </div>
-</EmbeddedExample>
-
-## Button Size Variations
-
-<EmbeddedExample>
-  <div>
-    <Button className="ds-u-margin-right--1" size="small">
-      Small
-    </Button>
-    <Button className="ds-u-margin-right--1">Default</Button>
-    <Button className="ds-u-margin-right--1" size="big">
+    <Button size="big">
       Big
     </Button>
   </div>
 </EmbeddedExample>
 
-## Inverse Buttons
+</ThemeContent>
 
-<EmbeddedExample>
-  <div className="ds-u-fill--background-inverse ds-u-padding--2">
-    <div className="ds-u-margin-bottom--2">
-      <Button className="ds-u-margin-right--1" inversed>
-        Default
-      </Button>
-      <Button className="ds-c-button--hover ds-u-margin-right--1" inversed>
-        Hover
-      </Button>
-      <Button className="ds-c-button--active ds-u-margin-right--1" inversed>
-        Active
-      </Button>
-      <Button className="ds-c-button--focus ds-u-margin-right--1" inversed>
-        Focus
-      </Button>
-      <Button disabled inversed>
-        Disabled
-      </Button>
-    </div>
-    <div>
-      <Button className="ds-u-margin-right--1" variation="transparent" inversed>
-        Default
-      </Button>
-      <Button className="ds-c-button--hover ds-u-margin-right--1" variation="transparent" inversed>
-        Hover
-      </Button>
-      <Button className="ds-c-button--active ds-u-margin-right--1" variation="transparent" inversed>
-        Active
-      </Button>
-      <Button className="ds-c-button--focus ds-u-margin-right--1" variation="transparent" inversed>
-        Focus
-      </Button>
-      <Button disabled variation="transparent" inversed>
-        Disabled
-      </Button>
-    </div>
-  </div>
-</EmbeddedExample>
+#### Small button
 
-## Danger Button
+<ThemeContent onlyThemes={['healthcare']}>
 
-<Alert
-  heading="Deprecated"
-  variation="error"
-  className="ds-u-margin-bottom--2 ds-u-font-size--small"
->
-  <p class="ds-c-alert__text">Do not use.</p>
-</Alert>
+Small outline buttons are used for utility buttons on a page with other primary and secondary actions (example: Edit, Remove, Add another [something]).
+
+</ThemeContent>
+
 
 <EmbeddedExample>
   <div>
-    <Button className="ds-u-margin-right--1" variation="danger">
-      Default
-    </Button>
-    <Button className="ds-c-button--hover ds-u-margin-right--1" variation="danger">
-      Hover
-    </Button>
-    <Button className="ds-c-button--active ds-u-margin-right--1" variation="danger">
-      Active
-    </Button>
-    <Button className="ds-c-button--focus ds-u-margin-right--1" variation="danger">
-      Focus
-    </Button>
-    <Button disabled variation="danger">
-      Disabled
+    <Button size="small">
+      Small
     </Button>
   </div>
 </EmbeddedExample>
 
-## Button icons
+### Adding icons
 
 - Add an inline SVG icon and it will become the same color as the button text. For the crispest icon rendering, ensure the icon has a square `viewBox` with values that are multiples of `8` (ie. `24x24`).
 - Use the margin utility class to add spacing between the icon and button text.
@@ -185,22 +226,12 @@ Use buttons to signal actions.
       Right Icon
       <ArrowIcon direction="right" className="ds-u-margin-left--05" />
     </Button>
-    <Button>No Icon</Button>
   </div>
 </EmbeddedExample>
 
-## Button inline with field
+## Code
 
-The button is the same height as a single-line text field.
-
-<EmbeddedExample>
-  <div>
-    <TextInput fieldClassName="ds-u-display--inline-block ds-u-margin-right--05" type="text" />
-    <Button>Submit</Button>
-  </div>
-</EmbeddedExample>
-
-## `<Button>`
+### React
 
 The `Button` component accepts its text as children (AKA inner HTML), which
 means you can also pass in HTML or custom components. This gives you a lot of
@@ -211,17 +242,60 @@ In addition to the supported props listed, you can also pass in additional
 props, which will be passed to the rendered root component. For example,
 you could pass in a `target` prop to pass to the rendered anchor element.
 
-<StorybookExample
-  componentName="button"
-  sourceFilePath="components/Button/Button.tsx"
-  storyId="components-button--default"
-/>
+<PropTable componentName="Button">
+  <PropTableHtmlElementRow elements={['button', 'a']} />
+</PropTable>
 
-### Props
+### Styles
 
-<PropTable componentName="Button" />
+The following Sass variables can be overridden to customize Button components:
+
+<ComponentThemeOptions componentname="button" />
+
+### Google Analytics
+
+**Analytics event tracking is disabled by default.**
+
+#### Enable event tracking
+
+Import and set the `setButtonSendsAnalytics` feature flag to `true` in your application's entry file:
+
+```js
+import { setButtonSendsAnalytics } from '@cmsgov/<design-system-package>';
+setButtonSendsAnalytics(true);
+```
+
+On applications where the page has `utag` loaded, the data goes to Tealium which allows it to route to Google Analytics or the currently approved data analytics tools.
+
+#### Disable event tracking
+
+For the `analytics` prop, pass the value `false` to the component to disable analytics tracking for a singular component instance
+
+```js
+analytics={false}
+```
+
+#### Override event tracking
+
+A custom heading value can be sent for an analytics event by using the prop `analyticsLabelOverride`. It is recommended that this value be used to prevent sensitive personal information from being passed to analytics trackers.
 
 ## Guidance
+
+Buttons are promises to the user; they must deliver the promise they offer by doing what the button says it will do.
+
+<ThemeContent onlyThemes={['medicare']}>
+
+- Action buttons do NOT include icons. 
+<br/> <i>Exception:</i> Can include icons in buttons in mobile for CTAs outlining functionality.<br /> Examples: Filter, Sort, Map, and Menu. 
+- Other exceptions require advance and separate approval than mock-ups by product teams. See [Exception process](../../guidelines/exceptions/?theme=medicare)" in Foundations.
+- Buttons use title case. Example: Join Plan or Find Doctors.
+- Note that clickable cards are sentence case. See that component for more information.
+
+When pairing 2 CTAs:
+- In forms/decision trees: Have the preferred action be on the right. Example: Back/Next or Cancel/Submit.
+- All other cases: Have the preferred action be on the left. Example: Create Account/Return to Home or Change My Account/Stop Easy Pay.
+
+</ThemeContent>
 
 ### When to use
 
@@ -234,10 +308,17 @@ you could pass in a `target` prop to pass to the rendered anchor element.
 
 ### Usage
 
-- Use the "primary" button variation for the button most users should click. This is your primary call-to-action.
 - Avoid using too many buttons on a page. Aim to use only one button per page.
 - Avoid similar styles elsewhere on the page that could be confused for buttons.
 - Use buttons for the primary action and links for secondary actions.
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+#### Don't
+
+- Use buttons for navigational elements like going to a new page. 
+
+</ThemeContent>
 
 **Label text**
 
@@ -248,7 +329,6 @@ you could pass in a `target` prop to pass to the rendered anchor element.
 
 **Destructive buttons**
 
-- Use the "danger" button variation for destructive buttons. For example, buttons that delete or reset a user's information.
 - Confirm the user meant to trigger a destructive action before following through with the action.
 - Provide a method for a user to undo a destructive action.
 
@@ -257,22 +337,300 @@ you could pass in a `target` prop to pass to the rendered anchor element.
 - Don’t disable buttons, unless there’s a good reason to.
 - If you do disable a button, make sure it receives the disabled styling. A `button` element will automatically be styled as a disabled button when it has the `disabled` HTML attribute, but an `a` element will need to have the `.ds-c-button--disabled` class applied to it.
 
+<ThemeContent onlyThemes={['healthcare']}>
+
+### Design guidelines
+
+- Buttons are used for actions; links are used for navigation
+- Buttons do NOT include icons. 
+  - Exception: Can include icons in buttons for utility actions like print and save and branded buttons like Facebook, Twitter, and YouTube used in the Footer
+- When pairing 2 buttons the preferred/main action is placed on the left.
+- Ghost buttons are typically used when paired with a Solid or Outline button or to indicate lower priority actions. 
+
+</ThemeContent>
+
 ### Accessibility
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+Consider when to use links vs. when to use buttons. Links and buttons are read differently using a screen readers. For screen readers buttons can be triggered by pressing the space bar or the enter key while links are only triggered by the enter key. This makes a difference to a screen reader user's flow. 
+
+</ThemeContent>
+
 
 - Buttons should display a visible focus state when users tab to them.
 - Create a button with a `button` or `a` element to retain the native click functionality. Avoid using `<div>` or `<img>` tags to create buttons. Screen readers don't automatically know either is a usable button.
 - When styling links to look like buttons, remember that screen readers handle links slightly differently than they do buttons. Pressing the `Space` key triggers a button, but pressing the `Enter` key triggers a link.
 - Dimmed or unavailable buttons should have the `disabled` attribute applied. This removes native click and keypress events from the button. It also prevents automated scanners from logging a low contrast error. Finally, it announces the button as "dimmed" or "disabled" to screen readers, offering users additional context.
 
-## Customization
 
-The following Sass variables can be overridden to customize Button components:
+<ThemeContent onlyThemes={['healthcare']}>
 
-<ComponentThemeOptions
-  componentname="button"
-/>
+### Content
 
-### Learn more
+- Describe what will happen, not the current state. 
+- Buttons always start with an action word describing the main thing users will do once selected. 
+  - Pair it with a noun to help it be clearer. Example: Get tips.
+  - If in a form, it can be just the action word if it's navigating between steps. Example: Cancel, Back, Next.
+- Use the least amount of words possible (no more than 6 with 2-4 being ideal).
+- Use sentence case for buttons. This conveys a friendlier tone. Note: Some tools and the homepage are using ALL CAPS. There are also a few examples of Title Case. We should change to sentence case for consistency across the site. 
+
+
+#### Writing content
+- Remove articles and use '&' instead of 'and'
+- Do not capitalize articles. 
+- Avoid all caps unless the word is an acronym, like ZIP.
+- Avoid pronouns unless the future state provides the user with customized information. Example: "Get my results"
+- Limit branded terms, like tool names. As a general rule, we don't use tool names in web content or flow. Rather, content should outline what the user will get/can do when they click the button.
+
+#### Online forms & steps
+
+##### Starting a process or sequential steps
+
+Generally better to use specific verbs to confirm what the user is starting. For example, "Create Account."
+
+<table class="ds-c-table ds-c-table--compact ds-c-md-table--stacked" role="table" width="100%">
+  <thead role="rowgroup">
+    <tr role="row">
+      <th class="ds-u-fill--success-lightest" role="columnheader" scope="col">
+        Use
+      </th>
+      <th class="ds-u-fill--error-lightest" role="columnheader" scope="col">
+        Don't use
+      </th>
+    </tr>
+  </thead>
+  <tbody role="rowgroup">
+    <tr role="row">
+      <td
+        role="cell"
+        data-title="Document title"
+        width="50%"
+      >
+       Start
+      </td>
+      <td
+        role="cell"
+        data-title="Description"
+        width="50%"
+      >
+     Begin, Go, Enter, or Submit
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+##### Moving through a process or sequential steps after starting
+
+For forward movement to the next page or step.
+
+<table class="ds-c-table ds-c-table--compact ds-c-md-table--stacked" role="table" width="100%">
+  <thead role="rowgroup">
+    <tr role="row">
+      <th class="ds-u-fill--success-lightest" role="columnheader" scope="col">
+        Use
+      </th>
+      <th class="ds-u-fill--error-lightest" role="columnheader" scope="col">
+        Don't use
+      </th>
+    </tr>
+  </thead>
+  <tbody role="rowgroup">
+    <tr role="row">
+      <td
+        role="cell"
+        data-title="Document title"
+        width="50%"
+      >
+       Continue
+      </td>
+      <td
+        role="cell"
+        data-title="Description"
+        width="50%"
+      >
+        Next
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+For backward movement to the previous step in the process.
+
+<table class="ds-c-table ds-c-table--compact ds-c-md-table--stacked" role="table" width="100%">
+  <thead role="rowgroup">
+    <tr role="row">
+      <th class="ds-u-fill--success-lightest" role="columnheader" scope="col">
+        Use
+      </th>
+      <th class="ds-u-fill--error-lightest" role="columnheader" scope="col">
+        Don't use
+      </th>
+    </tr>
+  </thead>
+  <tbody role="rowgroup">
+    <tr role="row">
+      <td
+        role="cell"
+        data-title="Document title"
+        width="50%"
+      >
+       Back or Go Back
+      </td>
+      <td
+        role="cell"
+        data-title="Description"
+        width="50%"
+      >
+        Undo or Cancel
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+##### Stopping a process or translation and return to beginning
+
+<table class="ds-c-table ds-c-table--compact ds-c-md-table--stacked" role="table" width="100%">
+  <thead role="rowgroup">
+    <tr role="row">
+      <th class="ds-u-fill--success-lightest" role="columnheader" scope="col">
+        Use
+      </th>
+      <th class="ds-u-fill--error-lightest" role="columnheader" scope="col">
+        Don't use
+      </th>
+    </tr>
+  </thead>
+  <tbody role="rowgroup">
+    <tr role="row">
+      <td
+        role="cell"
+        data-title="Document title"
+        width="50%"
+      >
+       Cancel
+      </td>
+      <td
+        role="cell"
+        data-title="Description"
+        width="50%"
+      >
+        X
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+##### Submiting information or completing a process
+
+Generally better to use specific verbs if appropriate to confirm an action. 
+
+<table class="ds-c-table ds-c-table--compact ds-c-md-table--stacked" role="table" width="100%">
+  <thead role="rowgroup">
+    <tr role="row">
+      <th class="ds-u-fill--success-lightest" role="columnheader" scope="col">
+        Use
+      </th>
+      <th class="ds-u-fill--error-lightest" role="columnheader" scope="col">
+        Don't use
+      </th>
+    </tr>
+  </thead>
+  <tbody role="rowgroup">
+    <tr role="row">
+      <td
+        role="cell"
+        data-title="Document title"
+        width="50%"
+      >
+       Enter, Go, or Submit
+      </td>
+      <td
+        role="cell"
+        data-title="Description"
+        width="50%"
+      >
+        Fill in, Tell us, Done, or Select
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+#### Logging in and logging out
+
+<table class="ds-c-table ds-c-table--compact ds-c-md-table--stacked" role="table" width="100%">
+  <thead role="rowgroup">
+    <tr role="row">
+      <th class="ds-u-fill--success-lightest" role="columnheader" scope="col">
+        Use
+      </th>
+      <th class="ds-u-fill--error-lightest" role="columnheader" scope="col">
+        Don't use
+      </th>
+    </tr>
+  </thead>
+  <tbody role="rowgroup">
+    <tr role="row">
+      <td
+        role="cell"
+        data-title="Document title"
+        width="50%"
+      >
+      <ul>
+       <li>Log in - MUST be 2 words and "in" is lowercase when it's an action.</li>
+       <li>Login - Used as 1 word when it's a noun or adjective.</li>
+       </ul>
+      </td>
+      <td
+        role="cell"
+        data-title="Description"
+        width="50%"
+      >
+        Sign in, or Signin
+      </td>
+    </tr>
+    <tr role="row">
+      <td
+        role="cell"
+        data-title="Document title"
+        width="50%"
+      >
+       <ul>
+       <li>Log out - MUST be 2 words and "out" is lowercase when it's an action.</li>
+       <li>Logout - Used as 1 word when it's a noun or adjective.</li>
+       </ul>
+      </td>
+      <td
+        role="cell"
+        data-title="Description"
+        width="50%"
+      >
+        Logoff, Log off, Signout, or Sign out
+      </td>
+    </tr>
+    <tr role="row">
+      <td
+        role="cell"
+        data-title="Document title"
+        width="50%"
+      >
+       Username - MUST be 1 word.
+      </td>
+      <td
+        role="cell"
+        data-title="Description"
+        width="50%"
+      >
+        User name
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+</ThemeContent>
+
+## Learn more
 
 - [Beyond Blue Links: Making Clickable Elements Recognizable](https://www.nngroup.com/articles/clickable-elements/)
 - [7 Basic Best Practices for Buttons](http://www.uxmatters.com/mt/archives/2012/05/7-basic-best-practices-for-buttons.php)
@@ -289,29 +647,19 @@ The following Sass variables can be overridden to customize Button components:
 - [Using the button role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_button_role)
 - [Building Accessible Buttons with ARIA](https://www.deque.com/blog/accessible-aria-buttons)
 
-## Google Analytics
+## Component maturity
 
-**Analytics event tracking is disabled by default.**
-
-### Enable event tracking
-
-Import and set the `setButtonSendsAnalytics` feature flag to `true` in your application's entry file:
-
-```js
-import { setButtonSendsAnalytics } from '@cmsgov/<design-system-package>';
-setButtonSendsAnalytics(true);
-```
-
-On applications where the page has `utag` loaded, the data goes to Tealium which allows it to route to Google Analytics or the currently approved data analytics tools.
-
-### Disable event tracking
-
-For the `analytics` prop, pass the value `false` to the component to disable analytics tracking for a singular component instance
-
-```js
-analytics={false}
-```
-
-### Override event tracking
-
-A custom heading value can be sent for an analytics event by using the prop `analyticsLabelOverride`. It is recommended that this value be used to prevent sensitive personal information from being passed to analytics trackers.
+<MaturityChecklist
+  a11yStandards={true}
+  color={true}
+  forcedColors={true}
+  screenReaders={true}
+  keyboardNavigable={true}
+  storybook={true}
+  responsive={true}
+  spanish={null}
+  completeUiKit={false}
+  responsiveUiKit={false}
+  tokensInCode={true}
+  tokensInSketch={true}
+/>

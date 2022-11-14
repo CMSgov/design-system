@@ -1,21 +1,44 @@
 ---
-title: Multi-input date field
-relatedUswdsGuidance: components/memorable-date/
+title: Multi-Input Date Field
+intro: Date field (multi-input) provides date entry, spaced over three separate inputs for month, day, and year.
+core:
+  githubLink: design-system/src/components/DateField
+  sketchLink: xrmY9oJ
+  storybookLink: components-multiinputdatefield--multi-input-date-field-default
+healthcare:
+  sketchLink: wLOVybw
+medicare:
+  sketchLink: ka7OOgR
 ---
 
-Date field (multi-input) provides date entry, spaced over three separate inputs for month, day, and year.
-
-## `<MultiInputDateField>`
+## Examples
 
 <StorybookExample
   componentName="multiInputDateField"
-  sourceFilePath="components/DateField/MultiInputDateField.tsx"
   storyId="components-multiinputdatefield--multi-input-date-field-default"
 />
 
-### Props
+## Code
+
+### React
 
 <PropTable componentName="MultiInputDateField" />
+
+### Styles
+
+The following Sass variables can be overridden to customize Input/Form components:
+
+<ComponentThemeOptions
+  componentname="text-input"
+/>
+
+#### Form components
+
+This component also makes use of form field styles, which can be customized by the following variables:
+
+<ComponentThemeOptions
+  componentname="form"
+/>
 
 ## Guidance
 
@@ -40,20 +63,23 @@ Generally used for more memorable dates like date of birth, marriage date, or in
 - These text fields should follow the [accessibility guidelines for all text inputs](/components/text-field/#guidance).
 - Do not use JavaScript to auto advance the focus from one field to the next. This makes it difficult for keyboard-only users to navigate and correct mistakes.
 
-## Customization
-
-The following Sass variables can be overridden to customize Input/Form components:
-
-<ComponentThemeOptions
-  componentname="text-input"
-/>
-
-### Form components
-
-<ComponentThemeOptions
-  componentname="form"
-/>
-
 ### Related patterns
 - [Date field (single-input)](/components/single-input-date-field/)
 - [Date field (with calendar)](/components/date-picker/)
+
+## Component maturity
+
+<MaturityChecklist
+  a11yStandards={true}
+  color={true}
+  forcedColors={true}
+  screenReaders={true}
+  keyboardNavigable={true}
+  storybook={true}
+  responsive={true}
+  spanish={true}
+  completeUiKit={false}
+  responsiveUiKit={false}
+  tokensInCode={true}
+  tokensInSketch={true}
+/>

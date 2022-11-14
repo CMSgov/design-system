@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import InlineError from '../InlineError/InlineError';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
@@ -11,7 +11,7 @@ import { errorPlacementDefault } from '../flags';
 // TODO: This could use a better name
 type PassedOnFormLabelProps = Omit<
   FormLabelProps,
-  'children' | 'className' | 'component' | 'fieldId'
+  'children' | 'className' | 'component' | 'fieldId' | 'id'
 >;
 
 /**
@@ -27,6 +27,11 @@ export interface FormFieldProps extends PassedOnFormLabelProps {
    * Location of the error message relative to the field input
    */
   errorPlacement?: 'top' | 'bottom';
+  /**
+   * A unique `id` for the field element. Useful for referencing the field from
+   * other components with `aria-describedby`.
+   */
+  id?: string;
   /**
    * Label for the field.
    */
@@ -60,7 +65,29 @@ export interface UseFormLabelProps extends FormFieldProps {
 }
 
 /**
- * Takes a component's props and generates the props for its label, field,
+ * This hook contains business logic for how an input field relates to its label
+ * and wrapping container element. It takes a component's props and generates
+ * the specialized set of props for its label, field, wrapper element, and
+ * possible detached "bottom error". While the order and structure of those
+ * elements are different between components and are specific to their
+ * implementation, much of the logic for prop/attribute generation is consistent
+ * between components. The hook will return the relevant information as
+ * properties of an object:
+ *
+ *   - labelProps:   Props to be applied to a `FormLabel` (where we get the name)
+ *   - fieldProps:   Props to be applied to the field (a.k.a., the input)
+ *   - wrapperProps: Props to be applied to the wrapping element
+ *   - bottomError:  A rendered React element representing a bottom-placed error
+ *   - errorId:      The id (string) of the error-message element, in case we
+ *                   need to reference it (currently only necessary to support
+ *                   the FormControl component, which this hook aims to replace)
+ *
+ * Note that while it's helpful now to abstract away this logic behind a shared
+ * hook, that may not always be the case. The first step in creating this hook
+ * was to allow an alternative to `FormControl` that allowed for more freedom in
+ * how the component's individual elements were structured at to get rid of the
+ * dichotomy it imposes on components where their implementation must be split
+ * between an inner and outer component.
  */
 export function useFormLabel<T extends UseFormLabelProps>(props: T) {
   // TODO: Once we're on React 18, we can use the `useId` hook
@@ -84,16 +111,16 @@ export function useFormLabel<T extends UseFormLabelProps>(props: T) {
     ...remainingProps
   } = props;
 
-  // Bottom placed errors are handled in FormControl instead of FormLabel
-  const bottomError =
-    errorPlacement === 'bottom' && errorMessage ? (
-      <InlineError id={errorId} inversed={inversed} className={errorMessageClassName}>
-        {errorMessage}
-      </InlineError>
-    ) : undefined;
+  const hasBottomError = errorPlacement === 'bottom' && errorMessage;
+  const bottomError = hasBottomError ? (
+    <InlineError id={errorId} inversed={inversed} className={errorMessageClassName}>
+      {errorMessage}
+    </InlineError>
+  ) : undefined;
   // Bottom placed errors cannot be linked to Choices in ChoiceList,
   // so we add a hidden error message to the label
   const showHiddenError = wrapperIsFieldset && bottomError;
+  const ariaInvalid = props['aria-invalid'] ?? !!errorMessage;
 
   const labelProps = {
     children: (
@@ -119,22 +146,21 @@ export function useFormLabel<T extends UseFormLabelProps>(props: T) {
   const fieldProps = {
     ...remainingProps,
     id,
-    errorId,
     errorMessage,
-    errorPlacement,
     inversed,
+    'aria-describedby': hasBottomError
+      ? classNames(props['aria-describedby'], errorId)
+      : props['aria-describedby'],
+    'aria-invalid': !wrapperIsFieldset ? ariaInvalid : undefined,
   };
 
   const wrapperClassNames = classNames({ 'ds-c-fieldset': wrapperIsFieldset }, className);
-  // Use `aria-invalid` attribute on errored fieldsets
-  // Errored form components without fieldsets must handle `aria-invalid` in their own component
-  const ariaInvalid = wrapperIsFieldset && errorMessage ? true : undefined;
   const wrapperProps = {
     className: wrapperClassNames,
-    'aria-invalid': ariaInvalid,
+    'aria-invalid': wrapperIsFieldset ? ariaInvalid : undefined,
   };
 
-  return { labelProps, fieldProps, wrapperProps, bottomError };
+  return { labelProps, fieldProps, wrapperProps, bottomError, errorId };
 }
 
 export default useFormLabel;

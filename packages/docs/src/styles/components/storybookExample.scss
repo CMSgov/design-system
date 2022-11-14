@@ -1,5 +1,6 @@
 .c-storybook-example {
   border: 1px solid $color-gray-lighter;
+  margin-top: $spacer-2;
 }
 
 .c-storybook-example__iframe-wrapper {
@@ -12,12 +13,14 @@
   width: 100%;
 }
 
-.c-storybook-example__link {
-  background-color: $color-gray-lightest;
-  padding: $spacer-1;
+.c-storybook-example-footer {
+  margin-top: $spacer-1;
+  position: relative;
+}
 
-  & .ds-c-icon {
-    font-size: 10px;
-    margin-left: $spacer-1;
-  }
+.c-storybook-example-footer__iframe {
+  border: 0;
+  height: 0;
+  position: absolute;
+  width: 0;
 }

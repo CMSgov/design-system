@@ -2,14 +2,98 @@ body {
   margin: 0;
 }
 
+.full-height {
+  // viewport height minus the USA banner at the top
+  height: calc(100vh - 22px);
+}
+
+.page-main {
+  display: flex;
+  flex-direction: column;
+
+  .c-footer {
+    flex-shrink: 0;
+  }
+}
+
 .page-content {
+  flex: 1 0 auto;
   max-width: 81rem;
+}
+
+@media (min-width: $width-lg) {
+  .page-content__content {
+    // removing margin for first heading on content pages
+    > :nth-child(2) {
+      margin-top: 0;
+    }
+    > h2 > h3,
+    > h4,
+    > h5,
+    > h6,
+    > p,
+    ul,
+    ol {
+      margin-bottom: 0;
+    }
+    .ds-c-table {
+      margin-top: $spacer-2;
+      ol,
+      ul {
+        margin-top: 0;
+      }
+    }
+  }
 }
 
 @media (max-width: $width-lg) {
   .page-content__content {
     padding-left: 0;
     padding-right: 0;
+  }
+}
+
+.page-content__content {
+  > h2 {
+    @extend .ds-text-heading--2xl;
+  }
+  > h3 {
+    @extend .ds-text-heading--xl;
+  }
+  > h4 {
+    @extend .ds-text-heading--lg;
+  }
+  > h5 {
+    @extend .ds-text-heading--md;
+  }
+  > h6 {
+    @extend .ds-text-heading--sm;
+  }
+
+  > .ds-c-table,
+  .c-configuration-options .ds-c-table {
+    width: 100%;
+  }
+  .c-configuration-options th,
+  .c-prop-table th {
+    background-color: $color-gray-lightest;
+  }
+  .c-configuration-options td,
+  .c-prop-table td {
+    border-color: $color-gray-lighter;
+  }
+  .c-configuration-options p,
+  .c-prop-table p {
+    font-size: $font-size-sm;
+  }
+  .ds-c-alert {
+    margin-top: $spacer-2;
+  }
+}
+
+.ds-c-badge {
+  .ds-c-icon {
+    font-size: 10px;
   }
 }
 
@@ -32,11 +116,11 @@ blockquote {
     top: -10px;
   }
 
-  & p:first-child {
+  p:first-child {
     margin-top: 0;
   }
 
-  & p:last-child {
+  p:last-child {
     margin-bottom: 0;
   }
 }

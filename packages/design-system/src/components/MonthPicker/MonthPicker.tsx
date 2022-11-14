@@ -2,7 +2,7 @@
 import 'core-js/stable/array/includes';
 import Button, { ButtonVariation } from '../Button/Button';
 import Choice from '../ChoiceList/Choice';
-import React, { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import classNames from 'classnames';
 import { NUM_MONTHS, getMonthNames } from './getMonthNames';
 import { fallbackLocale, getLanguage, t } from '../i18n';
@@ -148,7 +148,7 @@ export const MonthPicker = (props: MonthPickerProps) => {
           size="small"
           className="ds-c-month-picker__button"
           onClick={handleSelectAll}
-          inversed={props.inversed}
+          onDark={props.inversed}
           variation={props.buttonVariation}
         >
           {props.selectAllText ?? t('monthPicker.selectAllText')}
@@ -158,14 +158,14 @@ export const MonthPicker = (props: MonthPickerProps) => {
           size="small"
           className="ds-c-month-picker__button"
           onClick={handleClearAll}
-          inversed={props.inversed}
+          onDark={props.inversed}
           variation={props.buttonVariation}
         >
           {props.clearAllText ?? t('monthPicker.clearAllText')}
         </Button>
       </div>
       <div className="ds-c-month-picker__months">
-        <ol className="ds-c-list--bare ds-c-month-picker__months-list">
+        <ol role="list" className="ds-c-list--bare ds-c-month-picker__months-list">
           {months.map((month, i) => (
             <li key={month}>
               <Choice

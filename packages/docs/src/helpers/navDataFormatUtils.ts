@@ -10,14 +10,16 @@ const level1ItemOrder = [
   'foundation',
   'components',
   'patterns',
+  'layouts',
   'utilities',
+  'migration guides',
 ];
 
 /**
  * determines if the item name is included in the location pathname
  */
 const isItemSelected = (name: string, location: LocationInterface) =>
-  location?.pathname.includes(name);
+  location?.pathname.includes(name.replace('.mdx', ''));
 
 /**
  * Checks sub nav items to see if any are currently selected
@@ -37,15 +39,15 @@ const formatNavItemLabel = (name: string): string => {
  * transforms from graphql structure to structure for <VerticalNav> `items` prop
  */
 const formatNavItemData = ({ childMdx, relativePath }: NavItem, location: LocationInterface) => {
-  const { frontmatter } = childMdx;
-  const name = frontmatter.title;
-  const url = makePageUrl(relativePath);
+  const frontmatter = childMdx?.frontmatter;
+  const name = frontmatter?.title || '';
+  const url = makePageUrl(relativePath, location);
   return {
     label: formatNavItemLabel(name),
     url,
     id: relativePath,
-    selected: isItemSelected(url, location),
-    order: frontmatter.order || 0,
+    selected: isItemSelected(relativePath, location),
+    order: frontmatter?.order || 0,
   };
 };
 
@@ -115,7 +117,7 @@ export const convertToNavItems = (
     const orderVal = Math.min(...subNavItemsOrderVals);
 
     const labelText = formatNavItemLabel(dataItem.fieldValue);
-    const isSelected = isItemSelected(dataItem.fieldValue, location);
+    const isSelected = subNavItems.some((subNavItem) => subNavItem.selected);
 
     // add level 1 item & sub items
     verticalNavItems.push({

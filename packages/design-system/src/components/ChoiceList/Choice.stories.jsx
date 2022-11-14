@@ -1,4 +1,3 @@
-import React from 'react';
 import Choice from './Choice';
 
 export default {
@@ -12,6 +11,10 @@ export default {
     hint: 'This is some additional hint text',
     errorMessage: 'You must agree to the terms and conditions before continuing',
     defaultChecked: false,
+  },
+  argTypes: {
+    checkedChildren: { control: 'text' },
+    uncheckedChildren: { control: 'text' },
   },
 };
 

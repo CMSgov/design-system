@@ -1,45 +1,44 @@
 ---
 title: Step List
+intro: A step list represents a user's progression through an application or multi-page form. It serves as a table of contents and a way to quickly see where they are and what they should be working on next.
+core:
+  githubLink: design-system/src/components/StepList
+  sketchLink: Kv3oKlr
+  storybookLink: patterns-step-list--step-list-example
+healthcare:
+  sketchLink: 3OL0DZa
 ---
 
 import { Badge } from '@cmsgov/design-system';
 
-A step list represents a user's progression through an application or multi-page
-form. It serves as a table of contents and a way to quickly see where they are
-and what they should be working on next.
-
-## Start, Resume, and Edit links
-
-A user interacts with the steps through "Start", "Resume", and "Edit"
-links.
-
-In the React component, the links' `href` properties are determined by the
-`step` object's `href` property. One can also optionally pass an
-`onStepLinkClick` function that will cancel the default link behavior and call
-`onStepLinkClick` with `href` as a parameter for apps that handle routing with
-JavaScript.
-
-When a step has substeps and is incomplete, the `href` property should be set to
-match the `href` of the current substep—that is, the first incomplete substep.
-The "Edit" button will only appear on substeps that have been completed.
-
-## `<StepList>`
+## Examples
 
 The `StepList` component is the preferred method for building a step list, since it handles all the state logic necessary to produce its markup. A step is represented by an object with text, progress, and routing information and can optionally include an array of substeps as well as a description.
 
 <StorybookExample
   componentName="step-list"
-  sourceFilePath="components/StepList/StepList.tsx"
   storyId="patterns-step-list--step-list-example"
 />
 
-### Props
+## Code
+
+### React
+
+#### `<StepList>` component
 
 <PropTable componentName="StepList" />
 
-## `<Step>`
+#### `<Step>` component
 
-### Step Object
+### Styles
+
+The following Sass variables can be overridden to customize StepList patterns:
+
+<ComponentThemeOptions
+  componentname="steplist"
+/>
+
+#### Step Object
 
 | Name                              | Type                      | Description                                                                                                                                                                              |
 | --------------------------------- | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -57,6 +56,21 @@ The `StepList` component is the preferred method for building a step list, since
 | `steps`                           | `StepObject[]`            | Array of substeps                                                                                                                                                                        |
 
 ## Guidance
+
+### Start, Resume, and Edit links
+
+A user interacts with the steps through "Start", "Resume", and "Edit"
+links.
+
+In the React component, the links' `href` properties are determined by the
+`step` object's `href` property. One can also optionally pass an
+`onStepLinkClick` function that will cancel the default link behavior and call
+`onStepLinkClick` with `href` as a parameter for apps that handle routing with
+JavaScript.
+
+When a step has substeps and is incomplete, the `href` property should be set to
+match the `href` of the current substep—that is, the first incomplete substep.
+The "Edit" button will only appear on substeps that have been completed.
 
 ### Managing list state
 
@@ -125,11 +139,19 @@ const steps = rawSteps.map(propagateSubstepState);
 return <StepList steps={steps} />;
 ```
 
-## Customization
+## Component maturity
 
-The following Sass variables can be overridden to customize StepList patterns:
-
-<ComponentThemeOptions
-  componentname="steplist"
+<MaturityChecklist
+  a11yStandards={false}
+  color={true}
+  forcedColors={true}
+  screenReaders={true}
+  keyboardNavigable={false}
+  storybook={true}
+  responsive={true}
+  spanish={false}
+  completeUiKit={false}
+  responsiveUiKit={false}
+  tokensInCode={true}
+  tokensInSketch={true}
 />
-

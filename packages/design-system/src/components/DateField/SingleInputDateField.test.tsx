@@ -1,4 +1,3 @@
-import React from 'react';
 import SingleInputDateField from './SingleInputDateField';
 import userEvent from '@testing-library/user-event';
 import { render, screen } from '@testing-library/react';
@@ -8,7 +7,7 @@ const defaultProps = {
   hint: 'Please enter your birthday',
   name: 'single-input-date-field',
   value: '',
-  onChange: () => {},
+  onChange: jest.fn(),
 };
 
 function renderField(props = {}) {

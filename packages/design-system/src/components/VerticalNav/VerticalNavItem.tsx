@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import VerticalNav from './VerticalNav';
 import VerticalNavItemLabel from './VerticalNavItemLabel';
 import classNames from 'classnames';
@@ -88,7 +88,7 @@ export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement
     setCollapsed(!collapsed);
 
     if (props.onSubnavToggle) {
-      props.onSubnavToggle(props.id, collapsed);
+      props.onSubnavToggle(id, collapsed);
     }
   };
 

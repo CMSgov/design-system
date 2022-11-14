@@ -1,7 +1,7 @@
-import React from 'react';
 import IdleTimeout from './IdleTimeout';
 import IdleTimeoutDialog from './IdleTimeoutDialog';
 import { Title, Subtitle, Description, ArgsTable, PRIMARY_STORY } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
 import { useArgs } from '@storybook/client-api';
 
 const DocsPage = () => (
@@ -21,15 +21,12 @@ export default {
       inlineStories: false,
       page: DocsPage,
     },
-    loki: { skip: true },
   },
   argTypes: {},
   args: {
     timeToTimeout: 2,
     timeToWarning: 0.5,
-    onTimeout: () => {
-      console.log('onTimeout');
-    },
+    onTimeout: action('onTimeout'),
   },
 };
 
@@ -52,13 +49,9 @@ export const ViewDialog = () => (
     endSessionButtonText="Logout"
     endSessionUrl="#"
     message='You’ve been inactive for a while. Your session will end in 2 minutes. Select "Continue session" below if you want more time.'
-    onClose={() => {}}
-    onSessionContinue={() => {}}
-    onSessionForcedEnd={() => {}}
+    onClose={action('onClose')}
+    onSessionContinue={action('onSessionContinue')}
+    onSessionForcedEnd={action('onSessionForcedEnd')}
     showSessionEndButton
   />
 );
-
-// ViewDialog.parameters = {
-//   loki: { skip: false }
-// };

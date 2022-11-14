@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VerticalNavItem renders VerticalNavItemLabel 1`] = `
+<div
+  class="ds-c-vertical-nav__label"
+>
+  Foo
+</div>
+`;
+
+exports[`VerticalNavItem without subnav has no subnav 1`] = `
+<DocumentFragment>
+  <li
+    class="ds-c-vertical-nav__item"
+  >
+    <div
+      class="ds-c-vertical-nav__label"
+    >
+      Foo
+    </div>
+  </li>
+</DocumentFragment>
+`;

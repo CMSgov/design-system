@@ -1,123 +1,108 @@
-import Accordion from './Accordion';
 import AccordionItem from './AccordionItem';
-import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 const defaultChildren = '<p>Content for accordion item</p>';
 const defaultProps = {
   heading: 'Heading for accordion item',
 };
 
-function render(customProps = {}) {
+function renderAccordionItem(customProps = {}) {
   const props = { ...defaultProps, ...customProps };
-  const children = <AccordionItem {...props}>{defaultChildren}</AccordionItem>;
 
-  return {
-    props: props,
-    wrapper: mount(<Accordion>{children}</Accordion>),
-  };
+  return render(<AccordionItem {...props}>{defaultChildren}</AccordionItem>);
 }
 
 describe('AccordionItem', function () {
   it('renders an accordion item', () => {
-    const { wrapper } = render();
-    const accordionItem = wrapper.find('AccordionItem');
-
-    expect(accordionItem).toHaveLength(1);
-    expect(wrapper).toMatchSnapshot();
+    const { asFragment } = renderAccordionItem();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('renders an accordion heading', () => {
-    const { wrapper } = render();
-    const headerWrapper = wrapper.find('h2');
+    renderAccordionItem();
 
-    expect(headerWrapper).toHaveLength(1);
-    expect(headerWrapper.hasClass('ds-c-accordion__heading')).toBe(true);
+    const headerEls = screen.getAllByRole('heading');
+    expect(headerEls).toHaveLength(1);
+
+    const headerEl = headerEls[0];
+    expect(headerEl.classList).toContain('ds-c-accordion__heading');
   });
 
-  it('renders an accordion content', () => {
-    const { wrapper } = render();
-    const contentWrapper = wrapper.find('div').at(1);
+  it('renders accordion content', () => {
+    renderAccordionItem();
 
-    expect(contentWrapper.hasClass('ds-c-accordion__content')).toBe(true);
-    expect(contentWrapper.text()).toBe(defaultChildren);
+    const contentEl = screen.getByText(defaultChildren);
+    expect(contentEl.classList).toContain('ds-c-accordion__content');
   });
 
   it('renders additional className for header button', () => {
-    const { wrapper } = render({
-      buttonClassName: 'ds-u-test',
-    });
-    const headerWrapper = wrapper.find('button');
+    renderAccordionItem({ buttonClassName: 'ds-u-test' });
 
-    expect(headerWrapper.hasClass('ds-u-test')).toBe(true);
+    const buttonEl = screen.getByRole('button');
+    expect(buttonEl.classList).toContain('ds-u-test');
   });
 
   it('renders additional className for content', () => {
-    const { wrapper } = render({
-      contentClassName: 'ds-u-test',
-    });
-    const contentWrapper = wrapper.find('div').at(1);
-    expect(contentWrapper.hasClass('ds-u-test')).toBe(true);
+    renderAccordionItem({ contentClassName: 'ds-u-test' });
+
+    const contentEl = screen.getByText(defaultChildren);
+    expect(contentEl.classList).toContain('ds-u-test');
   });
 
   it('renders header text', () => {
-    const { wrapper } = render({ heading: 'Foo' });
-    const accordionButton = wrapper.find('button');
+    renderAccordionItem({ heading: 'Foo' });
 
-    expect(accordionButton.text()).toBe('FooOpen');
+    const headingEl = screen.getByRole('heading');
+    expect(headingEl.textContent).toBe('FooOpen');
   });
 
   it('renders an id automatically', () => {
-    const { wrapper } = render();
-    const accordionButton = wrapper.find('button');
-    const contentWrapper = wrapper.find('div').at(1);
+    renderAccordionItem();
 
-    expect(accordionButton.props()).toHaveProperty('aria-controls');
-    expect(accordionButton.props()).toHaveProperty('id');
-    expect(contentWrapper.props()).toHaveProperty('aria-labelledby');
-    expect(contentWrapper.props()).toHaveProperty('id');
+    const buttonEl = screen.getByRole('button');
+    const contentEl = screen.getByText(defaultChildren);
+
+    expect(buttonEl).toHaveAttribute('aria-controls');
+    expect(buttonEl).toHaveAttribute('id');
+    expect(contentEl).toHaveAttribute('aria-labelledby');
+    expect(contentEl).toHaveAttribute('id');
   });
 
   it('renders a user set id ', () => {
-    const { wrapper } = render({
-      id: 'test-id',
-    });
-    const accordionButton = wrapper.find('button');
-    const contentWrapper = wrapper.find('div').at(1);
+    renderAccordionItem({ id: 'test-id' });
 
-    expect(accordionButton.props()).toHaveProperty('aria-controls', 'test-id');
-    expect(accordionButton.props()).toHaveProperty('id', 'test-id-button');
+    const buttonEl = screen.getByRole('button');
+    const contentEl = screen.getByText(defaultChildren);
 
-    expect(contentWrapper.props()).toHaveProperty('id', 'test-id');
-    expect(contentWrapper.props()).toHaveProperty('aria-labelledby', 'test-id-button');
+    expect(buttonEl).toHaveAttribute('aria-controls', 'test-id');
+    expect(buttonEl).toHaveAttribute('id', 'test-id-button');
+    expect(contentEl).toHaveAttribute('aria-labelledby', 'test-id-button');
+    expect(contentEl).toHaveAttribute('id', 'test-id');
   });
 
   it('renders an expanded or open accordion item', () => {
-    const { wrapper } = render({ defaultOpen: true });
-    const accordionButton = wrapper.find('button');
+    renderAccordionItem({ defaultOpen: true });
 
-    expect(accordionButton.props()).toHaveProperty('aria-expanded', true);
+    const buttonEl = screen.getByRole('button');
+    expect(buttonEl).toHaveAttribute('aria-expanded', 'true');
   });
 
   it('renders an collapsed or closed accordion item', () => {
-    const { wrapper } = render({ expanded: false });
-    const accordionButton = wrapper.find('button');
+    renderAccordionItem({ defaultOpen: false });
 
-    expect(accordionButton.props()).toHaveProperty('aria-expanded', false);
+    const buttonEl = screen.getByRole('button');
+    expect(buttonEl).toHaveAttribute('aria-expanded', 'false');
   });
 });
 
 describe('Controlled accordion item', function () {
   it('renders button and should call onClick function when clicked', () => {
     const onClick = jest.fn();
+    renderAccordionItem({ heading: 'Foo', onChange: onClick });
 
-    const { wrapper } = render({ heading: 'Foo', onChange: onClick });
-
-    const button = wrapper.find('button');
-    expect(button.length).toEqual(1);
-
-    button.simulate('click');
-    wrapper.update();
+    const buttonEl = screen.getByRole('button');
+    userEvent.click(buttonEl);
     expect(onClick).toHaveBeenCalled();
   });
 });

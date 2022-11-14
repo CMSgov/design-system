@@ -1,106 +1,126 @@
-import { mount, shallow } from 'enzyme';
-import React from 'react';
-import VerticalNavItem from './VerticalNavItem';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import VerticalNavItem, { VerticalNavItemProps } from './VerticalNavItem';
 
-function render(customProps = {}, deep?: boolean) {
-  const props: any = {
-    ...{ label: 'Foo' },
+function renderVerticalNavItem(customProps = {}) {
+  const props: VerticalNavItemProps = {
+    label: 'Foo',
     ...customProps,
   };
 
-  const component = <VerticalNavItem {...props} />;
-
-  return {
-    props: { ...props },
-    wrapper: deep ? mount(component) : shallow(component),
-  };
+  return render(<VerticalNavItem {...props} />);
 }
 
 describe('VerticalNavItem', () => {
   it('renders list item', () => {
-    const data = render();
-    const wrapper = data.wrapper;
+    renderVerticalNavItem();
+    const listItemEl = screen.getByRole('listitem');
 
-    expect(wrapper.is('li')).toBe(true);
-    expect(wrapper.hasClass('ds-c-vertical-nav__item')).toBe(true);
+    expect(listItemEl).toBeDefined();
+    expect(listItemEl.nodeName).toBe('LI');
+    expect(listItemEl.classList).toContain('ds-c-vertical-nav__item');
   });
 
   it('renders VerticalNavItemLabel', () => {
-    const data = render();
-    const label = data.wrapper.find('VerticalNavItemLabel').first();
+    renderVerticalNavItem();
+    const labelEl = screen.getByText('Foo');
 
-    expect(label.prop('collapsed')).toBe(false);
-    expect(label.prop('label')).toBe(data.props.label);
+    expect(labelEl).toBeDefined();
+    expect(labelEl).toMatchSnapshot();
   });
 
   it('has additional class names', () => {
-    const data = render({ className: 'bar' });
+    renderVerticalNavItem({ className: 'bar' });
+    const navItemEl = screen.getByRole('listitem');
 
-    expect(data.wrapper.hasClass('ds-c-vertical-nav__item')).toBe(true);
-    expect(data.wrapper.hasClass('bar')).toBe(true);
+    expect(navItemEl.classList).toContain('ds-c-vertical-nav__item');
+    expect(navItemEl.classList).toContain('bar');
   });
 
   it('calls onSubnavToggle', () => {
     const onSubnavToggleMock = jest.fn();
-    const data = render(
-      {
-        onSubnavToggle: onSubnavToggleMock,
-        defaultCollapsed: true,
-        items: [
-          { label: 'Child 1' },
-          { label: 'Child 2' },
-          {
-            label: 'Child 3 with items',
-            items: [{ label: 'Grandchild' }],
-          },
-        ],
-      },
-      true
-    );
+    renderVerticalNavItem({
+      onSubnavToggle: onSubnavToggleMock,
+      defaultCollapsed: true,
+      items: [
+        { label: 'Child 1' },
+        { label: 'Child 2' },
+        {
+          label: 'Child 3 with items',
+          items: [{ label: 'Grandchild' }],
+        },
+      ],
+    });
 
-    data.wrapper.find('VerticalNavItemLabel').first().simulate('click');
+    const labelEl = screen.getByText('Foo');
 
-    expect(onSubnavToggleMock.mock.calls.length).toBe(1);
-    expect(onSubnavToggleMock.mock.calls[0][0]).toBe(data.props.id);
-    expect(onSubnavToggleMock.mock.calls[0][1]).toBe(true);
+    userEvent.click(labelEl);
+
+    expect(onSubnavToggleMock).toHaveBeenCalledTimes(1);
+    expect(onSubnavToggleMock).toHaveBeenCalledWith(expect.any(String), true);
+  });
+
+  it('calls onSubnavToggle rather than onClick', () => {
+    const onSubnavToggleMock = jest.fn();
+    const onClickMock = jest.fn();
+    renderVerticalNavItem({
+      onSubnavToggle: onSubnavToggleMock,
+      onClick: onClickMock,
+      items: [
+        { label: 'Child 1' },
+        { label: 'Child 2' },
+        {
+          label: 'Child 3 with items',
+          items: [{ label: 'Grandchild' }],
+        },
+      ],
+    });
+
+    const labelEl = screen.getByText('Foo');
+    userEvent.click(labelEl);
+
+    expect(onClickMock).not.toHaveBeenCalled();
+    expect(onSubnavToggleMock).toHaveBeenCalled();
   });
 
   describe('without subnav', () => {
     it('is not selected', () => {
-      const data = render();
+      renderVerticalNavItem();
 
-      expect(data.wrapper.find('VerticalNavItemLabel').prop('selected')).toBe(false);
+      const labelEl = screen.getByText('Foo');
+
+      expect(labelEl.classList).not.toContain('ds-c-vertical-nav__label--current');
     });
 
     it('is selected', () => {
-      const data = render({ selected: true });
+      renderVerticalNavItem({ selected: true });
 
-      expect(data.wrapper.find('VerticalNavItemLabel').prop('selected')).toBe(true);
+      const labelEl = screen.getByText('Foo');
+
+      expect(labelEl.classList).toContain('ds-c-vertical-nav__label--current');
     });
 
     it('has no subnav', () => {
-      const data = render();
-      const label = data.wrapper.find('VerticalNavItemLabel').first();
+      const { asFragment } = renderVerticalNavItem();
+      const labelEl = screen.getByText('Foo');
 
-      expect(label.prop('hasSubnav')).toBe(false);
-      expect(data.wrapper.find('VerticalNav').length).toBe(0);
+      expect(labelEl.nodeName).toBe('DIV');
+      expect(asFragment()).toMatchSnapshot();
     });
 
     it('calls onClick', () => {
-      const data = render(
-        {
-          id: 'bar',
-          onClick: jest.fn(),
-          url: '/bar',
-        },
-        false
-      );
+      const mockOnClick = jest.fn();
+      renderVerticalNavItem({
+        id: 'bar',
+        onClick: mockOnClick,
+        url: '/bar',
+      });
 
-      data.wrapper.find('VerticalNavItemLabel').first().simulate('click');
+      const labelEl = screen.getByText('Foo');
+      userEvent.click(labelEl);
 
-      expect(data.props.onClick.mock.calls.length).toBe(1);
-      expect(data.props.onClick.mock.calls[0][1]).toBe(data.props.id);
-      expect(data.props.onClick.mock.calls[0][2]).toBe(data.props.url);
+      expect(mockOnClick).toHaveBeenCalledTimes(1);
+      expect(mockOnClick).toHaveBeenCalledWith(expect.anything(), 'bar', '/bar');
     });
   });
 
@@ -109,6 +129,7 @@ describe('VerticalNavItem', () => {
 
     beforeEach(() => {
       props = {
+        id: 'mock-nav',
         items: [
           { label: 'Child 1' },
           { label: 'Child 2' },
@@ -121,97 +142,70 @@ describe('VerticalNavItem', () => {
     });
 
     it('has subnav', () => {
-      const data = render(props);
-      const label = data.wrapper.find('VerticalNavItemLabel').first();
-      const subnav = data.wrapper.find('VerticalNav').first();
+      renderVerticalNavItem(props);
 
-      expect(label.prop('hasSubnav')).toBe(true);
-      expect(data.wrapper.render().find('ul').length).toBe(2);
-      expect(subnav.prop('collapsed')).toBe(false);
-      expect(subnav.prop('id')).not.toBeUndefined();
-      expect(subnav.prop('nested')).toBe(true);
+      const labelEl = screen.getByText('Foo');
+      expect(labelEl.getAttribute('aria-controls')).toBe('mock-nav__subnav');
+
+      const subNavEl = screen.getAllByRole('list')[0];
+      expect(subNavEl.id).toEqual('mock-nav__subnav');
+      expect(subNavEl.classList).toContain('ds-c-vertical-nav__subnav');
+      expect(subNavEl.classList).not.toContain('ds-c-vertical-nav__collapsed');
     });
 
     it('is not selected', () => {
-      const data = render(props);
+      renderVerticalNavItem(props);
 
-      expect(data.wrapper.find('VerticalNavItemLabel').prop('selected')).toBe(false);
+      const labelEl = screen.getByText('Foo');
+      expect(labelEl.getAttribute('aria-current')).toBe(null);
     });
 
     it('is selected', () => {
       props._selectedId = 'selected-child';
       props.items[0].id = 'selected-child';
-      const data = render(props);
+      renderVerticalNavItem(props);
 
-      expect(data.wrapper.find('VerticalNavItemLabel').prop('selected')).toBe(true);
+      const labelEl = screen.getByText('Foo');
+      expect(labelEl.classList).toContain('ds-c-vertical-nav__label--current');
     });
 
     it('has collapsed subnav', () => {
       props.defaultCollapsed = true;
-      const data = render(props);
+      renderVerticalNavItem(props);
 
-      expect(data.wrapper.find('VerticalNav').first().prop('collapsed')).toBe(true);
+      const subNavEl = screen.getAllByRole('list')[0];
+      expect(subNavEl.classList).toContain('ds-c-vertical-nav--collapsed');
     });
 
     it('toggles collapsed state', () => {
       props.onClick = jest.fn();
-      const data = render(props);
-      const label = data.wrapper.find('VerticalNavItemLabel').first();
+      renderVerticalNavItem(props);
 
-      expect(data.wrapper.find('VerticalNav').first().prop('collapsed')).toBe(false);
+      const labelEl = screen.getByText('Foo');
+      const subNavEl = screen.getAllByRole('list')[0];
+      expect(subNavEl.classList).not.toContain('ds-c-vertical-nav--collapsed');
 
-      label.simulate('click');
-      data.wrapper.update();
+      userEvent.click(labelEl);
 
-      expect(data.wrapper.find('VerticalNav').first().prop('collapsed')).toBe(true);
+      expect(subNavEl.classList).toContain('ds-c-vertical-nav--collapsed');
     });
 
     it('does not add top-level link to top of subnav', () => {
-      const data = render(props);
-      const subnav = data.wrapper.find('VerticalNav').first().shallow();
-      const firstSubnavItem = subnav.find('VerticalNavItem').first();
+      renderVerticalNavItem(props);
+      const firstSubNavItemEl = screen.getByText('Child 1');
 
-      expect(firstSubnavItem.prop('label')).toBe(data.props.items[0].label);
+      expect(firstSubNavItemEl).toBeDefined();
     });
 
-    describe('with url', () => {
-      beforeEach(() => {
-        props.url = '/foo';
-      });
+    it('adds top-level link to top of subnav', () => {
+      // if a url is provided to an item that also has a subnav, another subnav item will be created at the top
+      // this is because a subnav label is a button for expanding / collapsing the subnav, so the link must be accessed somehow
+      props.url = '/bar';
+      renderVerticalNavItem(props);
 
-      it('adds top-level link to top of subnav', () => {
-        const data = render(props);
-        const subnav = data.wrapper.find('VerticalNav').first().shallow();
-        const firstSubnavItem = subnav.find('VerticalNavItem').first();
+      const firstSubNavItem = screen.getByText('Foo', { selector: 'a' });
 
-        expect(firstSubnavItem.prop('id')).toBe(data.props.id);
-        expect(firstSubnavItem.prop('items')).toBeUndefined();
-        expect(firstSubnavItem.prop('label')).toBe(data.props.label);
-        expect(firstSubnavItem.prop('url')).toBe(data.props.url);
-      });
-
-      it('calls onSubnavToggle rather than onClick', () => {
-        const data = render(
-          {
-            onSubnavToggle: jest.fn(),
-            onClick: jest.fn(),
-            items: [
-              { label: 'Child 1' },
-              { label: 'Child 2' },
-              {
-                label: 'Child 3 with items',
-                items: [{ label: 'Grandchild' }],
-              },
-            ],
-          },
-          true
-        );
-
-        data.wrapper.find('VerticalNavItemLabel').first().simulate('click');
-
-        expect(data.props.onClick.mock.calls.length).toBe(0);
-        expect(data.props.onSubnavToggle.mock.calls.length).toBe(1);
-      });
+      expect(firstSubNavItem.getAttribute('href')).toBe('/bar');
     });
   });
 });

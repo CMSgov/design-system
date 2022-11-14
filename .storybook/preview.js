@@ -10,13 +10,50 @@ import { setHeaderSendsAnalytics } from '../packages/ds-healthcare-gov/src/compo
 import { setLanguage } from '../packages/design-system/src/components/i18n';
 import { setLanguage as setLanguageFromPackage } from '@cmsgov/design-system';
 
+// Rewire analytics events to log to the console
 window.utag = { link: console.log };
-// used to set up automatic setting of theme based on STORYBOOK_DS variable
-const currentEnvironment =
-  process.env.STORYBOOK_DS !== 'undefined' ? process.env.STORYBOOK_DS : 'core';
+
+const customViewports = {
+  extraSmall: {
+    name: 'Extra Small - 320px',
+    styles: {
+      width: '320px',
+      height: '800px',
+    },
+  },
+  small: {
+    name: 'Small - 544px',
+    styles: {
+      width: '544px',
+      height: '800px',
+    },
+  },
+  medium: {
+    name: 'Medium - 768px',
+    styles: {
+      width: '768px',
+      height: '800px',
+    },
+  },
+  large: {
+    name: 'Large - 1024px',
+    styles: {
+      width: '1024px',
+      height: '800px',
+    },
+  },
+  extraLarge: {
+    name: 'Extra Large - 1280px',
+    styles: {
+      width: '1280px',
+      height: '800px',
+    },
+  },
+};
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
+  viewport: { viewports: customViewports },
   controls: {
     expanded: true,
     matchers: {
@@ -24,14 +61,7 @@ export const parameters = {
       date: /Date$/,
     },
   },
-  backgrounds: {
-    default: 'light',
-    values: [
-      { name: 'light', value: '#fff' },
-      { name: 'Hcgov dark', value: '#112e51' },
-      { name: 'Mgov dark', value: '#146a5d' },
-    ],
-  },
+  backgrounds: { disable: true },
 };
 
 export const globalTypes = {
@@ -62,7 +92,7 @@ export const globalTypes = {
   theme: {
     name: 'Theme',
     description: 'Current theme',
-    defaultValue: currentEnvironment,
+    defaultValue: 'core',
     toolbar: {
       icon: 'paintbrush',
       items: [
@@ -72,6 +102,17 @@ export const globalTypes = {
       ],
     },
   },
+};
+
+const baseClassDecorator = (Story, context) => {
+  document.body.classList.add('ds-base');
+  if (context.parameters.baseInverse) {
+    document.body.classList.add('ds-base--inverse');
+  } else {
+    document.body.classList.remove('ds-base--inverse');
+  }
+
+  return <Story {...context} />;
 };
 
 const themeSettingDecorator = (Story, context) => {
@@ -110,6 +151,7 @@ const analyticsSettingsDecorator = (Story, context) => {
 };
 
 export const decorators = [
+  baseClassDecorator,
   languageSettingDecorator,
   analyticsSettingsDecorator,
   themeSettingDecorator,

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Accordion } from '@cmsgov/design-system';
 import AccordionItem from './AccordionItem';
 import { useArgs } from '@storybook/client-api';
@@ -12,13 +11,6 @@ export default {
     openItems: [0],
   },
   subcomponents: { AccordionItem },
-  decorators: [
-    (Story) => (
-      <div data-theme="healthcare">
-        <Story />
-      </div>
-    ),
-  ],
 };
 
 const Template = (args) => <Accordion {...args} />;

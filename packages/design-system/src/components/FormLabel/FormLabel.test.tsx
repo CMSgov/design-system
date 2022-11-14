@@ -1,18 +1,16 @@
 import FormLabel from './FormLabel';
-import React from 'react';
-import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 
 describe('FormLabel', () => {
   const labelText = 'Hello world';
 
   it('renders label text', () => {
     const props = { fieldId: 'name' };
-    const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
+    render(<FormLabel {...props}>{labelText}</FormLabel>);
 
-    expect(wrapper.text()).toBe(labelText);
-    expect(wrapper.is('label')).toBe(true);
-    expect(wrapper.prop('htmlFor')).toBe(props.fieldId);
-    expect(wrapper).toMatchSnapshot();
+    const label = screen.getByText(labelText);
+    expect(label).toBeInTheDocument();
+    expect(label).toMatchSnapshot();
   });
 
   it('renders error state', () => {
@@ -20,11 +18,11 @@ describe('FormLabel', () => {
       errorMessage: 'Nah, try again.',
       fieldId: 'name',
     };
-    const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
+    render(<FormLabel {...props}>{labelText}</FormLabel>);
 
-    expect(wrapper.find('InlineError').length).toBe(1);
-    expect(wrapper.find('InlineError').prop('id')).toEqual('name-error');
-    expect(wrapper).toMatchSnapshot();
+    const error = screen.getByText('Nah, try again.');
+    expect(error).toBeInTheDocument();
+    expect(error).toHaveAttribute('id', 'name-error');
   });
 
   it('uses provided errorId', () => {
@@ -32,44 +30,40 @@ describe('FormLabel', () => {
       errorMessage: 'Nah, try again.',
       errorId: 'error',
     };
-    const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
+    render(<FormLabel {...props}>{labelText}</FormLabel>);
 
-    expect(wrapper.find('InlineError').length).toBe(1);
-    expect(wrapper.find('InlineError').prop('id')).toEqual('error');
+    const error = screen.getByText('Nah, try again.');
+    expect(error).toHaveAttribute('id', 'error');
+    expect(error).toBeInTheDocument();
   });
 
   it('renders hint string', () => {
     const props = { hint: 'President #44' };
-    const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
+    render(<FormLabel {...props}>{labelText}</FormLabel>);
 
-    expect(wrapper).toMatchSnapshot();
+    const hint = screen.getByText('President #44');
+    expect(hint).toBeInTheDocument();
   });
 
   it('renders hint node', () => {
     const props = {
       hint: <strong>President #44</strong>,
     };
-    const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
+    render(<FormLabel {...props}>{labelText}</FormLabel>);
 
-    expect(wrapper).toMatchSnapshot();
+    const hint = screen.getByText('President #44');
+    expect(hint).toBeInTheDocument();
   });
 
-  it('renders requirementLabel string', () => {
-    const props = {
-      requirementLabel: 'Optional',
-    };
-    const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
-
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('renders requirementLabel node', () => {
+  it('renders requirementLabel', () => {
     const props = {
       requirementLabel: <em>It is really optional</em>,
     };
-    const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
+    const { container } = render(<FormLabel {...props}>{labelText}</FormLabel>);
 
-    expect(wrapper).toMatchSnapshot();
+    const requirement = container.querySelector('label');
+    expect(requirement).toBeInTheDocument();
+    expect(requirement).toMatchSnapshot();
   });
 
   it('adds punctuation to requirementLabel when hint is also present', () => {
@@ -77,31 +71,19 @@ describe('FormLabel', () => {
       hint: React.ReactNode;
       requirementLabel: React.ReactNode;
     }
-    let props: PropDef = { hint: 'Hint', requirementLabel: 'Optional' };
-    let wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
+    const props: PropDef = { hint: 'Hint', requirementLabel: 'Optional' };
+    const { container } = render(<FormLabel {...props}>{labelText}</FormLabel>);
 
-    expect(wrapper).toMatchSnapshot();
-
-    props = {
-      hint: <span>Hint</span>,
-      requirementLabel: <span>Optional</span>,
-    };
-    wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
-
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('avoids duplicate punctuation after requirementLabel', () => {
-    const props = { hint: 'Hint', requirementLabel: 'Optional.' };
-    const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
-
-    expect(wrapper).toMatchSnapshot();
+    const label = container.querySelector('label');
+    expect(label).toMatchSnapshot();
   });
 
   it('renders as a legend element', () => {
-    const wrapper = shallow(<FormLabel component="legend">{labelText}</FormLabel>);
+    const { container } = render(<FormLabel component="legend">{labelText}</FormLabel>);
 
-    expect(wrapper.is('legend')).toBe(true);
+    const legend = container.querySelector('legend');
+    expect(legend).toBeInTheDocument();
+    expect(legend).toMatchSnapshot();
   });
 
   it('is inversed', () => {
@@ -109,19 +91,19 @@ describe('FormLabel', () => {
       hint: 'Foo',
       inversed: true,
     };
-    const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
+    render(<FormLabel {...props}>{labelText}</FormLabel>);
 
-    expect(wrapper.find('.ds-c-field__hint').first().hasClass('ds-c-field__hint--inverse')).toBe(
-      true
-    );
-    expect(wrapper).toMatchSnapshot();
+    const inversedHint = screen.getByText('Foo');
+    expect(inversedHint).toHaveClass('ds-c-field__hint ds-c-field__hint--inverse');
+    expect(inversedHint).toMatchSnapshot();
   });
 
   it('supports additional attributes', () => {
-    const props = { className: 'ds-u-foo', ariaLabel: 'testing aria' };
-    const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
+    const props = { className: 'ds-u-foo', 'aria-label': 'testing aria' };
+    const { container } = render(<FormLabel {...props}>{labelText}</FormLabel>);
 
-    expect(wrapper.prop('ariaLabel')).toBe('testing aria');
-    expect(wrapper).toMatchSnapshot();
+    const label = container.querySelector('label');
+    expect(label).toHaveAttribute('aria-label', 'testing aria');
+    expect(label).toMatchSnapshot();
   });
 });

@@ -26,7 +26,7 @@ export interface UseAnalyticsContentProps {
  *     }
  *     sendLinkEvent({
  *       event_name: 'alert_impression',
- *       event_type: EventCategory.UI_INTERACTION,
+ *       event_type: EventType.UI_INTERACTION,
  *       ga_eventAction: 'alert impression',
  *       ga_eventCategory: EventCategory.UI_COMPONENTS,
  *       ga_eventLabel: content,

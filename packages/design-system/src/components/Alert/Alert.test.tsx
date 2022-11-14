@@ -1,5 +1,4 @@
 import Alert, { AlertProps } from './Alert';
-import React from 'react';
 import { UtagContainer } from '../analytics';
 import { setAlertSendsAnalytics } from '../flags';
 import { render, screen } from '@testing-library/react';
@@ -120,15 +119,6 @@ describe('Alert', function () {
 
   describe('Analytics event tracking', () => {
     let tealiumMock;
-    const defaultEvent = {
-      event_name: 'alert_impression',
-      event_type: 'ui interaction',
-      ga_eventCategory: 'ui components',
-      ga_eventAction: 'alert impression',
-      ga_eventLabel: defaultText,
-      heading: defaultText,
-      type: 'warn',
-    };
 
     beforeEach(() => {
       setAlertSendsAnalytics(true);
@@ -143,28 +133,33 @@ describe('Alert', function () {
       jest.resetAllMocks();
     });
 
-    it('sends analytics event tracking', () => {
-      renderAlert({ variation: 'warn' });
-      expect(tealiumMock).toBeCalledWith({
-        ga_eventType: 'cmsds',
-        ga_eventValue: '',
-        ...defaultEvent,
-      });
+    it('sends analytics event with heading', () => {
+      const heading = 'Ahhh!';
+      renderAlert({ heading, variation: 'error' });
+      expect(tealiumMock.mock.lastCall).toMatchSnapshot();
+      expect(tealiumMock).toHaveBeenCalledTimes(1);
     });
 
-    it('disables analytics event tracking', () => {
+    it('sends analytics event with body-content fallback', () => {
+      renderAlert({ variation: 'warn' });
+      expect(tealiumMock.mock.lastCall).toMatchSnapshot();
+      expect(tealiumMock).toHaveBeenCalledTimes(1);
+    });
+
+    it('does not send analytics event for default variation', () => {
+      renderAlert();
+      expect(tealiumMock).not.toBeCalled();
+    });
+
+    it('disables analytics tracking', () => {
       renderAlert({ heading: 'dialog heading', variation: 'error', analytics: false });
       expect(tealiumMock).not.toBeCalled();
     });
 
-    it('overrides analytics event tracking', () => {
+    it('overrides analytics event content', () => {
       renderAlert({ variation: 'success', analyticsLabelOverride: 'other heading' });
-      expect(tealiumMock).toBeCalledWith(
-        expect.objectContaining({
-          ga_eventLabel: 'other heading',
-          heading: 'other heading',
-        })
-      );
+      expect(tealiumMock.mock.lastCall).toMatchSnapshot();
+      expect(tealiumMock).toHaveBeenCalledTimes(1);
     });
   });
 });

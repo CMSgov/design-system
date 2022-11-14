@@ -8,6 +8,7 @@
 // the source rules.
 // @import 'react-day-picker/dist/style.css';
 
+/* stylelint-disable declaration-no-important, no-duplicate-selectors -- Ignore inlined 3rd party styles */
 :root {
   --rdp-cell-size: 40px;
   --rdp-accent-color: #{$color-primary};
@@ -33,38 +34,35 @@
 
 /* Hide elements for devices that are not screen readers */
 .rdp-vhidden {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  background: transparent;
-  border: 0;
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
+  background: transparent;
+  border: 0 !important;
+  box-sizing: border-box;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  height: 1px !important;
+  margin: 0;
+  overflow: hidden !important;
+  padding: 0 !important;
   position: absolute !important;
   top: 0;
   width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-  clip: rect(1px, 1px, 1px, 1px) !important;
-  border: 0 !important;
 }
 
 /* Buttons */
 .rdp-button_reset {
-  appearance: none;
-  position: relative;
-  margin: 0;
-  padding: 0;
-  cursor: default;
-  color: inherit;
-  outline: none;
-  background: none;
-  font: inherit;
-
   -moz-appearance: none;
   -webkit-appearance: none;
+  appearance: none;
+  background: none;
+  color: inherit;
+  cursor: default;
+  font: inherit;
+  margin: 0;
+  outline: none;
+  padding: 0;
+  position: relative;
 }
 
 .rdp-button {
@@ -82,9 +80,9 @@
 
 .rdp-button:focus,
 .rdp-button:active {
-  color: inherit;
-  border: var(--rdp-outline);
   background-color: var(--rdp-background-color);
+  border: var(--rdp-outline);
+  color: inherit;
 }
 
 .rdp-button:hover:not([aria-disabled='true']) {
@@ -108,49 +106,49 @@
 }
 
 .rdp-table {
+  border-collapse: collapse;
   margin: 0;
   max-width: calc(var(--rdp-cell-size) * 7);
-  border-collapse: collapse;
 }
 
 .rdp-with_weeknumber .rdp-table {
-  max-width: calc(var(--rdp-cell-size) * 8);
   border-collapse: collapse;
+  max-width: calc(var(--rdp-cell-size) * 8);
 }
 
 .rdp-caption {
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: space-between;
   padding: 0;
   text-align: left;
 }
 
 .rdp-multiple_months .rdp-caption {
-  position: relative;
   display: block;
+  position: relative;
   text-align: center;
 }
 
 .rdp-caption_dropdowns {
-  position: relative;
   display: inline-flex;
+  position: relative;
 }
 
 .rdp-caption_label {
-  position: relative;
-  z-index: 1;
-  display: inline-flex;
   align-items: center;
-  margin: 0;
-  padding: 0 0.25em;
-  white-space: nowrap;
-  color: currentColor;
   border: 0;
   border: 2px solid transparent;
+  color: currentColor;
+  display: inline-flex;
   font-family: inherit;
   font-size: 140%;
   font-weight: bold;
+  margin: 0;
+  padding: 0 0.25em;
+  position: relative;
+  white-space: nowrap;
+  z-index: 1;
 }
 
 .rdp-nav {
@@ -158,27 +156,27 @@
 }
 
 .rdp-multiple_months .rdp-caption_start .rdp-nav {
+  left: 0;
   position: absolute;
   top: 50%;
-  left: 0;
   transform: translateY(-50%);
 }
 
 .rdp-multiple_months .rdp-caption_end .rdp-nav {
   position: absolute;
-  top: 50%;
   right: 0;
+  top: 50%;
   transform: translateY(-50%);
 }
 
 .rdp-nav_button {
-  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: var(--rdp-cell-size);
-  height: var(--rdp-cell-size);
-  padding: 0.25em;
   border-radius: 100%;
+  display: inline-flex;
+  height: var(--rdp-cell-size);
+  justify-content: center;
+  padding: 0.25em;
+  width: var(--rdp-cell-size);
 }
 
 /* ---------- */
@@ -187,40 +185,40 @@
 
 .rdp-dropdown_year,
 .rdp-dropdown_month {
-  position: relative;
-  display: inline-flex;
   align-items: center;
+  display: inline-flex;
+  position: relative;
 }
 
 .rdp-dropdown {
   appearance: none;
-  position: absolute;
-  z-index: 2;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  cursor: inherit;
-  opacity: 0;
-  border: none;
   background-color: transparent;
+  border: none;
+  bottom: 0;
+  cursor: inherit;
   font-family: inherit;
   font-size: inherit;
+  left: 0;
   line-height: inherit;
+  margin: 0;
+  opacity: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 2;
 }
 
 .rdp-dropdown[disabled] {
-  opacity: unset;
   color: unset;
+  opacity: unset;
 }
 
 .rdp-dropdown:focus:not([disabled]) + .rdp-caption_label,
 .rdp-dropdown:active:not([disabled]) + .rdp-caption_label {
+  background-color: var(--rdp-background-color);
   border: var(--rdp-outline);
   border-radius: 6px;
-  background-color: var(--rdp-background-color);
 }
 
 .rdp-dropdown_icon {
@@ -237,14 +235,14 @@
 }
 
 .rdp-head_cell {
-  vertical-align: middle;
-  text-transform: uppercase;
   font-size: 0.75em;
   font-weight: 700;
-  text-align: center;
   height: 100%;
   height: var(--rdp-cell-size);
   padding: 0;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: middle;
 }
 
 .rdp-tbody {
@@ -256,11 +254,11 @@
 }
 
 .rdp-cell {
-  width: var(--rdp-cell-size);
   height: 100%;
   height: var(--rdp-cell-size);
   padding: 0;
   text-align: center;
+  width: var(--rdp-cell-size);
 }
 
 .rdp-weeknumber {
@@ -269,17 +267,17 @@
 
 .rdp-weeknumber,
 .rdp-day {
-  display: flex;
-  overflow: hidden;
   align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  width: var(--rdp-cell-size);
-  max-width: var(--rdp-cell-size);
-  height: var(--rdp-cell-size);
-  margin: 0;
   border: 2px solid transparent;
   border-radius: 100%;
+  box-sizing: border-box;
+  display: flex;
+  height: var(--rdp-cell-size);
+  justify-content: center;
+  margin: 0;
+  max-width: var(--rdp-cell-size);
+  overflow: hidden;
+  width: var(--rdp-cell-size);
 }
 
 .rdp-day_today:not(.rdp-day_outside) {
@@ -290,8 +288,8 @@
 .rdp-day_selected:focus:not([aria-disabled='true']),
 .rdp-day_selected:active:not([aria-disabled='true']),
 .rdp-day_selected:hover:not([aria-disabled='true']) {
-  color: white;
   background-color: var(--rdp-accent-color);
+  color: white;
 }
 
 .rdp-day_selected:focus:not([aria-disabled='true']) {
@@ -299,23 +297,23 @@
 }
 
 .rdp:not([dir='rtl']) .rdp-day_range_start:not(.rdp-day_range_end) {
-  border-top-right-radius: 0;
   border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .rdp:not([dir='rtl']) .rdp-day_range_end:not(.rdp-day_range_start) {
-  border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
 }
 
 .rdp[dir='rtl'] .rdp-day_range_start:not(.rdp-day_range_end) {
-  border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
 }
 
 .rdp[dir='rtl'] .rdp-day_range_end:not(.rdp-day_range_start) {
-  border-top-right-radius: 0;
   border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .rdp-day_range_end.rdp-day_range_start {
@@ -363,14 +361,14 @@
 .rdp-button:active:hover:not([aria-disabled='true']),
 .rdp-day_selected:active:not([aria-disabled='true']),
 .rdp-day_selected:active:hover:not([aria-disabled='true']) {
-  color: white;
   background-color: var(--rdp-active-color);
+  color: white;
 }
 @media (-ms-high-contrast: active), (forced-colors: active) {
   .rdp-button[aria-disabled='true'] {
-    opacity: 1;
-    color: GrayText;
     border-color: GrayText;
+    color: GrayText;
+    opacity: 1;
   }
 
   .rdp-day_selected:not([aria-disabled='true']),
@@ -378,10 +376,10 @@
   .rdp-day_selected:active:not([aria-disabled='true']),
   .rdp-day_selected:hover:not([aria-disabled='true']) {
     background-color: Highlight;
-    color: Field;
     border-color: Highlight;
-    -ms-high-contrast-adjust: none;
+    color: Field;
     forced-color-adjust: none;
+    -ms-high-contrast-adjust: none;
   }
 }
 
@@ -397,9 +395,10 @@
   background-color: initial;
 }
 .rdp-dropdown_icon.ds-c-icon--arrows-stacked {
-  width: 14px;
   height: 14px;
+  width: 14px;
 }
+/* stylelint-enable */
 
 // Style the two nav arrows for switching months
 .ds-c-single-input-date-field__nav {
@@ -423,7 +422,7 @@
   }
 
   &:active:not(:disabled) {
-    background-color: $button-primary__background-color--active;
+    background-color: $button-solid__background-color--active;
     color: $color-white;
   }
 
@@ -438,17 +437,17 @@
 
     @media (-ms-high-contrast: active), (forced-colors: active) {
       border: 0;
-      cursor: not-allowed;
       color: GrayText;
+      cursor: not-allowed;
 
       .ds-c-icon {
-        fill: GrayText;
         color: GrayText;
+        fill: GrayText;
 
         path {
+          color: GrayText;
           fill: GrayText;
           stroke: GrayText;
-          color: GrayText;
         }
       }
     }
@@ -460,33 +459,33 @@
   position: relative;
 
   .rdp {
-    position: absolute;
-    top: 100%;
-    left: 0;
     border: 1px solid $color-gray-dark;
     border-radius: 8px;
     box-shadow: 0 0 17px 0 $color-gray-light;
+    left: 0;
     margin: 0;
     margin-top: $spacer-1;
     padding: $spacer-2;
+    position: absolute;
+    top: 100%;
   }
 }
 
 // Style the single-input date field and its calendar-picker button
 .ds-c-single-input-date-field__field-wrapper {
   .ds-c-single-input-date-field--with-picker & {
+    align-items: stretch;
     display: flex;
     justify-content: flex-start;
-    align-items: stretch;
     margin-bottom: $spacer-half;
     margin-top: $spacer-half;
 
     .ds-c-field {
-      border-top-right-radius: 0;
       border-bottom-right-radius: 0;
-      margin-top: 0;
+      border-top-right-radius: 0;
       margin-bottom: 0;
       margin-right: -#{$text-input__border-width};
+      margin-top: 0;
 
       &:focus,
       &:active {
@@ -494,7 +493,7 @@
       }
 
       &.ds-c-field--error {
-        margin-right: -#{$text-input__border-width};
+        margin-right: -#{$text-input__border-width--error};
       }
     }
   }
@@ -508,25 +507,25 @@
     background-color: $color-gray-cool-light;
     border: $text-input__border-width solid $text-input__border-color;
     border-radius: $text-input__border-radius;
-    border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
     color: $color-primary;
     cursor: pointer;
     margin: 0;
     padding: $spacer-half $spacer-1;
+    position: relative;
     text-align: center;
     text-decoration: none;
-    position: relative;
 
     &:after {
+      background: $color-gray-light;
+      bottom: 0;
       content: '';
       display: block;
-      position: absolute;
       left: -#{$text-input__border-width};
+      position: absolute;
       top: 0;
-      bottom: 0;
       width: $text-input__border-width;
-      background: $color-gray-light;
     }
 
     &:focus,
@@ -540,16 +539,16 @@
   }
 
   .ds-c-field--error + .ds-c-single-input-date-field__button {
-    border: $text-input__border-width solid $color-error;
+    border: $text-input__border-width--error solid $text-input__border-color--error;
 
     &:after {
-      left: -#{$text-input__border-width};
-      width: $text-input__border-width;
+      left: -#{$text-input__border-width--error};
+      width: $text-input__border-width--error;
     }
   }
 
   .ds-c-field--error.ds-c-field--inverse + .ds-c-single-input-date-field__button {
-    border: $text-input__border-width solid $color-error-light;
+    border: $text-input__border-width--error solid $text-input__border-color--error--inverse;
   }
 
   .ds-c-icon--calendar {

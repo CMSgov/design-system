@@ -1,5 +1,4 @@
 import Button from '../Button/Button';
-import React from 'react';
 
 export interface PageProps {
   /**
@@ -30,18 +29,13 @@ export default function Page({
     <li>
       {isActive ? (
         <span
-          className="ds-c-button ds-c-button--transparent ds-c-pagination__current-page"
+          className="ds-c-button ds-c-button--ghost ds-c-pagination__current-page"
           aria-current="true"
         >
           {index}
         </span>
       ) : (
-        <Button
-          variation="transparent"
-          href={href}
-          onClick={onPageChange}
-          aria-label={`page ${index}`}
-        >
+        <Button variation="ghost" href={href} onClick={onPageChange} aria-label={`page ${index}`}>
           {index}
         </Button>
       )}

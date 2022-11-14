@@ -1,15 +1,11 @@
 @import '../settings/index.scss';
 
-// @TODO: deprecate, either add to component variables
-// or hard-code if not being utilized.
-$badge-font-size-big: $font-size-base;
-
 @mixin badge-high-contrast-mode-remove-color() {
   @media (-ms-high-contrast: active), (forced-colors: active) {
     background-color: windowText;
     color: window;
-    -ms-high-contrast-adjust: none;
     forced-color-adjust: none;
+    -ms-high-contrast-adjust: none;
   }
 }
 
@@ -19,7 +15,7 @@ $badge-font-size-big: $font-size-base;
   color: $badge__font-color;
   display: inline-block;
   font-size: $font-size-sm;
-  line-height: $heading-line-height;
+  line-height: $font-line-height-heading;
   margin-right: $spacer-half;
   padding: $spacer-half $spacer-1;
 
@@ -45,7 +41,7 @@ $badge-font-size-big: $font-size-base;
 }
 
 .ds-c-badge--big {
-  font-size: $badge-font-size-big;
+  font-size: $font-size-base;
 }
 
 .ds-c-badge--info {

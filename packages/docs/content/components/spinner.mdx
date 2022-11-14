@@ -1,17 +1,29 @@
 ---
 title: Spinner
+intro: Spinners signify that the application is waiting for an asynchronous operation to complete.
+core:
+  githubLink: design-system/src/components/Spinner
+  sketchLink: OmxV71m
+  storybookLink: components-spinner--default-spinner
+healthcare:
+  sketchLink: YGzlveZ
 ---
 
 import { Spinner, Button } from '@cmsgov/design-system';
 import loremIpsumGenerator from '../../src/helpers/loremIpsumGenerator';
 
-Spinners signify that the application is waiting for an asynchronous operation to complete.
+## Examples
 
-## Changing the spinner color
+<StorybookExample
+  componentName="spinner"
+  storyId="components-spinner--default-spinner"
+/>
+
+### Changing the spinner color
 
 To change the color of the spinner, one only has to change the `color` property of the spinner element. This can be done with the standard Design System [utility classes](/foundation/color/). The color of the spinner also defaults to `inherit`, so it will take on the color of the text in its parent container.
 
-## Use inside buttons
+### Using inside buttons
 
 <EmbeddedExample>
   <>
@@ -30,7 +42,7 @@ To change the color of the spinner, one only has to change the `color` property 
   </>
 </EmbeddedExample>
 
-## "Filled" mode
+### "Filled" mode
 
 To provide more contrast when being rendered over other content, the `.ds-c-spinner--filled` class can be added to give it an appropriately shaped background with some padding.
 
@@ -60,17 +72,19 @@ To provide more contrast when being rendered over other content, the `.ds-c-spin
   </>
 </EmbeddedExample>
 
-## `<Spinner>`
+## Code
 
-<StorybookExample
-  componentName="spinner"
-  sourceFilePath="components/Spinner/Spinner.tsx"
-  storyId="components-spinner--default-spinner"
-/>
-
-### Props
+### React
 
 <PropTable componentName="Spinner" />
+
+### Styles
+
+The following Sass variables can be overridden to customize Spinner components:
+
+<ComponentThemeOptions
+  componentname="spinner"
+/>
 
 ## Guidance
 
@@ -95,18 +109,27 @@ To provide more contrast when being rendered over other content, the `.ds-c-spin
   - `aria-live` should be set to `polite` for a screen reader to speak the changes whenever the user is idle. `aria-live="assertive"` should only be used in situations that require a user&rsquo;s immediate attention.
   - By default, a screen reader will only speak the contents of a changed node, and not the entire contents of the element. Set `aria-atomic="true"` for cases, such as an address, where a screen reader should read the contents of the entire element.
 
-## Customization
-
-The following Sass variables can be overridden to customize Spinner components:
-
-<ComponentThemeOptions
-  componentname="spinner"
-/>
-
-### Learn more
+## Learn more
 
 - [Response Times](https://www.nngroup.com/articles/response-times-3-important-limits/)
 - [Progress Indicators](https://www.nngroup.com/articles/progress-indicators/)
 - [GOV.UK Loading patterns discussion](https://paper.dropbox.com/doc/Loading-patterns-v0x8Xych1PbZQXOlbP3L6)
 - [Avoid the Spinner](https://www.lukew.com/ff/entry.asp?1797)
 - [ARIA Live Regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions)
+
+## Component maturity
+
+<MaturityChecklist
+  a11yStandards={true}
+  color={true}
+  forcedColors={true}
+  screenReaders={true}
+  keyboardNavigable={true}
+  storybook={true}
+  responsive={true}
+  spanish={true}
+  completeUiKit={false}
+  responsiveUiKit={false}
+  tokensInCode={true}
+  tokensInSketch={true}
+/>

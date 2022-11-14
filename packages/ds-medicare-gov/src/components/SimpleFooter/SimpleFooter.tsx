@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useRef } from 'react';
+import { FunctionComponent, useEffect, useRef } from 'react';
 import { HHSLogo, Button } from '@cmsgov/design-system';
 import MedicaregovLogo from '../MedicaregovLogo/MedicaregovLogo';
 
@@ -29,7 +29,7 @@ const SimpleFooter: FunctionComponent<SimpleFooterProps> = ({
   language = 'en',
   websiteInfo = 'A federal government website managed and paid for by the U.S. Centers for Medicare and Medicaid Services.',
   onClickLinkAnalytics,
-}) => {
+}: SimpleFooterProps) => {
   const footerRef = useRef<HTMLElement>();
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const SimpleFooter: FunctionComponent<SimpleFooterProps> = ({
         anchor.onclick = () => onClickLinkAnalytics(anchor.href);
       });
     }
-  }, []);
+  }, [onClickLinkAnalytics]);
 
   return (
     <footer className="m-c-footer" ref={footerRef}>
@@ -55,7 +55,7 @@ const SimpleFooter: FunctionComponent<SimpleFooterProps> = ({
 
           <Button
             className="SimpleFooter__linkButton"
-            variation="transparent"
+            variation="ghost"
             onClick={(): void => {
               const utag = (window as any).utag;
               if (
@@ -78,9 +78,7 @@ const SimpleFooter: FunctionComponent<SimpleFooterProps> = ({
           <a href="https://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/index.html">
             {linkingPolicyLabel}
           </a>
-          <a href="https://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/Help.html">
-            {usingThisSiteLabel}
-          </a>
+          <a href="https://www.medicare.gov/about-us/using-this-site">{usingThisSiteLabel}</a>
           <a href="https://www.medicare.gov/about-us/plain-writing">{plainWritingLabel}</a>
         </div>
       </div>

@@ -1,21 +1,16 @@
 import Footer from './Footer';
-import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 
 describe('Footer', function () {
   it('renders basic footer', () => {
-    expect(shallow(<Footer />).shallow()).toMatchSnapshot();
+    const { container } = render(<Footer />);
+    expect(container).toMatchSnapshot();
   });
 
   it('renders basic footer with props', () => {
-    expect(
-      shallow(
-        <Footer
-          className="ds-t-test-class"
-          initialLanguage="en"
-          primaryDomain="https://www.healthcare.gov"
-        />
-      ).shallow()
-    ).toMatchSnapshot();
+    const { container } = render(
+      <Footer className="ds-t-test-class" primaryDomain="https://www.healthcare.gov" />
+    );
+    expect(container).toMatchSnapshot();
   });
 });

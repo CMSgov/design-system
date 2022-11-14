@@ -4,6 +4,10 @@ $header-background-color: $color-background;
   background-color: $header-background-color;
   box-shadow: 0 0 10px 0 $color-gray-light;
   isolation: isolate;
+
+  > .ds-l-container {
+    position: relative;
+  }
 }
 
 // Add `ds-l-col.ds-l-col--auto` to give a higher specificity. This fixes the
@@ -11,7 +15,6 @@ $header-background-color: $color-background;
 // `flex-shrink` not getting applied on small width screen.
 .hc-c-logo-link.ds-l-col.ds-l-col--auto {
   bottom: -2px; // optically aligns logo
-  display: inline-block;
   flex-shrink: 1;
   line-height: 1;
   position: relative;
@@ -21,164 +24,53 @@ $header-background-color: $color-background;
   }
 }
 
+.hc-c-header__name {
+  color: $color-base;
+}
+
+.hc-c-header__actions {
+  .hc-c-logged-out-links {
+    gap: $spacer-4;
+  }
+}
+
 .hc-c-action-menu-button {
-  // We should add the ability to add a className to the ClearIcon like we are doing for Menu Icon. This would need to be done at the core design system
+  // We should add the ability to add a className to the
+  // ClearIcon like we are doing for Menu Icon.
+  // This would need to be done at the core design system
   .ds-c-clear-icon {
     margin-right: 8px;
   }
 }
 
-.hc-c-header__close-icon {
-  height: 100%;
-}
-
-.hc-c-logged-out-links__li {
-  display: inline-block;
-  margin: 0;
-  padding-left: $spacer-2;
-  padding-right: $spacer-2;
-
-  &:last-child {
-    padding-right: 0;
-  }
-}
-
-.hc-c-header__name {
-  color: $color-base;
-}
-
-.hc-c-logged-out-links__link {
-  .hc-c-header--inverse & {
-    color: $color-base-inverse;
-
-    &:active,
-    &:hover {
-      color: $color-base-inverse;
-      opacity: 0.8;
-    }
-
-    &:active {
-      opacity: 0.6;
-    }
-  }
-
-  &:visited:not(:active):not(:hover) {
-    color: $color-primary;
-  }
-}
-
-/*
-----------------------------------------
-Homepage header
-----------------------------------------
-*/
-.hc-c-header--home .hc-c-menu {
-  background-color: $color-primary;
-}
-
-@media (min-width: $width-sm) {
-  .hc-c-header--home {
-    // On non-mobile screens, the homepage menu is always visible
-    .hc-c-menu {
-      display: block;
-    }
-
-    .hc-c-menu__content {
-      position: static;
-    }
-
-    .hc-c-menu__links li {
-      display: inline-block;
-    }
-  }
-}
-
-@media (max-width: $width-sm) {
-  // On small screens, the logo padding was creating a wonky focus style
-  .hc-c-header {
-    .hc-c-logo-link {
-      margin-left: 16px;
-      padding-left: 0;
-      padding-right: 8px;
-    }
-  }
-}
-
-/*
-----------------------------------------
-Logged-in and Product headers
-----------------------------------------
-*/
-.hc-c-header--logged-in .hc-c-menu__content,
-.hc-c-header--minimal .hc-c-menu__content {
+.hc-c-menu {
   background-color: $color-white;
   border: 1px solid $color-gray-lighter;
-  box-shadow: 0 7px 10px -5px $color-gray-lighter;
-  color: $color-primary-darker;
-
-  @media (min-width: $width-sm) {
-    // Span only part of non-mobile screens
-    left: auto;
-    max-width: 30ch;
-    min-width: 20ch;
-  }
-}
-
-/*
-----------------------------------------
-Header dropdown menu - Shared across header variations
-----------------------------------------
-*/
-.hc-c-menu {
-  display: none;
-
-  .ds-l-row {
-    // Allow us to align hc-c-menu__content with the "Menu" button
-    position: relative;
-  }
-}
-
-.hc-c-menu--open {
-  // Ensure the menu is open when its visibility is toggled on
-  display: block !important;
-}
-
-// Position the menu below the "Menu" toggle button
-.hc-c-menu__content {
-  background-color: $color-white;
-  border: 1px solid $color-gray-light;
   box-shadow: 0 7px 10px -5px $color-gray-light;
   color: $color-primary-darker;
   left: 0;
+  padding: $spacer-1;
   position: absolute;
   right: 0;
-  top: 0;
+  top: calc(4em - 2px);
   z-index: 1;
+}
 
+.hc-c-header--logged-in .hc-c-menu {
   @media (min-width: $width-sm) {
     // Span only part of non-mobile screens
     left: auto;
     max-width: 30ch;
     min-width: 20ch;
   }
+}
 
-  .hc-c-menu__link {
-    display: block;
+.hc-c-menu__links {
+  li {
     padding: $spacer-1;
-    text-decoration: none;
   }
 }
 
 .hc-c-menu__link {
-  &:visited:not(:active):not(:hover) {
-    color: $color-primary;
-  }
-}
-
-@media (min-width: $width-sm) {
-  .hc-c-header--logged-out {
-    .hc-c-menu__content {
-      display: none;
-    }
-  }
+  text-decoration: none;
 }

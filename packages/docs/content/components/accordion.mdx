@@ -1,44 +1,53 @@
 ---
 title: Accordion
-status: draft
-relatedUswdsGuidance: components/accordion
+intro: An accordion is a list of headers that hide or reveal additional content when selected.
+core:
+  githubLink: design-system/src/components/Accordion
+  sketchLink: ygDKPRA
+  storybookLink: components-accordion--default
+healthcare:
+  githubLink: ds-healthcare-gov/src/components/Accordion
+  sketchLink: zxJDbdo
+  storybookLink: healthcare-accordion--default
+medicare:
+  sketchLink: R1zwwm2
 ---
 
-import ViewSourceLink from '../../src/components/ViewSourceLink';
 
-An accordion is a list of headers that hide or reveal additional content when selected.
-
-## `<Accordion>`
+## Examples
 
 <ThemeContent neverThemes={['healthcare']}>
   <StorybookExample
     componentName="accordion"
-    sourceFilePath="components/Accordion/Accordion.tsx"
     storyId="components-accordion--default"
   />
 </ThemeContent>
 <ThemeContent onlyThemes={['healthcare']}>
   <StorybookExample
     componentName="accordion"
-    sourceFilePath="components/Accordion/Accordion.tsx"
-    sourcePackageName="healthcare"
     storyId="healthcare-accordion--default"
   />
 </ThemeContent>
 
-### Props
+## Code
+
+### React
+
+An accordion is made up of one `<Accordion>` component wrapping one or more `<AccordionItem>` components. See the sections below for information on each.
+
+#### `<Accordion>` component
 
 <PropTable componentName="Accordion" />
 
-## `<AccordionItem>`
-
-<ViewSourceLink sourceFilePath="components/Accordion/AccordionItem.tsx" />
-
-`AccordionItem` renders the Accordion element.
-
-### Accordion Item Props
+#### `<AccordionItem>` component
 
 <PropTable componentName="AccordionItem" />
+
+### Styles
+
+The following Sass variables can be overridden to customize Accordion components:
+
+<ComponentThemeOptions componentname="accordion" />
 
 ## Guidance
 
@@ -68,8 +77,19 @@ Keyboard support for the Accordion header includes:
 - `Arrow Down` - Moves focus to the next accordion header
 - `Arrow Up` - Moves focus to the previous accordion header
 
-## Customization
+## Component maturity
 
-The following Sass variables can be overridden to customize Accordion components:
-
-<ComponentThemeOptions componentname="accordion" />
+<MaturityChecklist
+  a11yStandards={true}
+  color={true}
+  forcedColors={true}
+  screenReaders={true}
+  keyboardNavigable={true}
+  storybook={true}
+  responsive={true}
+  spanish={true}
+  completeUiKit={false}
+  responsiveUiKit={false}
+  tokensInCode={true}
+  tokensInSketch={true}
+/>

@@ -1,7 +1,4 @@
-import React from 'react';
-
 import Dropdown from './Dropdown';
-import Select from './Select';
 
 export default {
   title: 'Components/Dropdown',
@@ -10,7 +7,6 @@ export default {
     children: { control: false },
     options: { control: false },
   },
-  subcomponents: { Select },
 };
 
 const dropdownOptions = [
@@ -85,5 +81,5 @@ InverseOption.args = {
   inversed: true,
 };
 InverseOption.parameters = {
-  backgrounds: { default: process.env.STORYBOOK_DS === 'medicare' ? 'Mgov dark' : 'Hcgov dark' },
+  baseInverse: true,
 };

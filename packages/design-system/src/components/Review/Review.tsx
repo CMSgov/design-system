@@ -1,4 +1,3 @@
-import React from 'react';
 import ReviewLink from './ReviewLink';
 import classNames from 'classnames';
 import { t } from '../i18n';

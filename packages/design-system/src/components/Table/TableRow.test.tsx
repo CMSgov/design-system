@@ -1,45 +1,30 @@
-import React from 'react';
-import TableRow from './TableRow';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 
-function render(customProps = {}) {
-  const props = Object.assign({}, customProps);
+import TableRow from './TableRow';
+
+const makeTableRow = (customProps = {}) => {
   const children = (
     <tbody>
-      <TableRow {...props}>
+      <TableRow {...customProps}>
         <td>Column a</td>
         <td>Column b</td>
       </TableRow>
     </tbody>
   );
-
-  return {
-    props: props,
-    wrapper: mount(<table>{children}</table>),
-  };
-}
+  render(<table>{children}</table>);
+};
 
 describe('TableRow', function () {
   it('renders a table row', () => {
-    const { wrapper } = render();
-    const tableRow = wrapper.find('tr');
-
-    expect(tableRow).toHaveLength(1);
-  });
-
-  it('sets role="row"', () => {
-    const { wrapper } = render();
-    const tableRow = wrapper.find('tr');
-
-    expect(tableRow.prop('role')).toBe('row');
+    makeTableRow();
+    expect(screen.getByRole('row')).toBeInTheDocument();
   });
 
   it('renders additional attributes', () => {
-    const { wrapper } = render({ className: 'foo-row' });
-    const tableRow = wrapper.find('tr');
+    makeTableRow({ className: 'foo-row' });
+    const tr = screen.getByRole('row');
 
-    expect(tableRow.hasClass('foo-row')).toBe(true);
-
-    expect(wrapper).toMatchSnapshot();
+    expect(tr).toHaveClass('foo-row');
+    expect(tr).toMatchSnapshot();
   });
 });

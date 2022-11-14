@@ -1,0 +1,64 @@
+---
+title: Healthcare.gov Logo
+intro: Renders the HealthCare.gov logo in English (default) or Spanish. 
+healthcare:
+  githubLink: ds-healthcare-gov/src/components/Logo
+  sketchLink: g0k9E3J
+---
+
+import { Alert } from '@cmsgov/design-system';
+
+<ThemeContent neverThemes={['healthcare']}>
+  <Alert variation="error">
+     <p class="ds-c-alert__text">
+        This component is only used for HealthCare. Please use the theme switcher to view the component with HealthCare styles.
+    </p>
+  </Alert>
+</ThemeContent>
+
+## Examples
+
+### English
+<StorybookExample
+    componentName="hgovLogo"
+    storyId="healthcare-logo--english-logo"
+/>
+
+### Spanish
+<StorybookExample
+    componentName="hgovLogoSpanish"
+    storyId="healthcare-logo--spanish-logo"
+/>
+
+## Code
+
+### React
+
+<PropTable componentName="Logo" />
+
+### Styles
+
+Customize the colors of the logo using CSS.
+
+Available classes:
+
+- `.hc-c-logo__health`
+- `.hc-c-logo__care`
+- `.hc-c-logo__gov`
+
+## Component maturity
+
+<MaturityChecklist
+  a11yStandards={true}
+  color={true}
+  forcedColors={false}
+  screenReaders={true}
+  keyboardNavigable={true}
+  storybook={true}
+  responsive={true}
+  spanish={true}
+  completeUiKit={false}
+  responsiveUiKit={false}
+  tokensInCode={true}
+  tokensInSketch={true}
+/>

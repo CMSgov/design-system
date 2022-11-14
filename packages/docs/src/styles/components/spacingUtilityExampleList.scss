@@ -1,0 +1,36 @@
+.c-spacing-utility-example__row {
+  align-items: center;
+  display: flex;
+  margin-bottom: $spacer-2;
+  code {
+    margin-left: $spacer-2;
+  }
+}
+
+.c-spacing-utility-example__container {
+  background-color: $color-secondary;
+  display: inline-flex;
+}
+
+.c-spacing-utility-example__item:after {
+  background: $color-white;
+  content: '';
+  display: table;
+  height: $spacer-4;
+  width: $spacer-4;
+}
+
+.c-spacing-utility-example--margin .c-spacing-utility-example__item:after {
+  border: 1px solid $color-black;
+  box-sizing: border-box;
+  width: ($spacer-4 + 2px);
+}
+
+.c-spacing-utility-example--padding .c-spacing-utility-example__container {
+  border: 1px solid $color-black;
+}
+
+.c-spacing-utility-example__container-auto-margin {
+  height: 100px;
+  width: 100px;
+}

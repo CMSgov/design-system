@@ -12,8 +12,8 @@ If you are interested in running this site locally, please take a look at [setti
 ## Submitting a pull request
 
 - [Fork the design system](https://guides.github.com/activities/forking/) into your GitHub account
-- [Create a branch](https://help.github.com/en/articles/creating-and-deleting-branches-within-your-repository) from `master` that defines what you’re working on (for example, fix-autocomplete-bug).
-- [Submit a pull request](https://help.github.com/en/articles/creating-a-pull-request) against the `master` branch
+- [Create a branch](https://help.github.com/en/articles/creating-and-deleting-branches-within-your-repository) from `main` that defines what you’re working on (for example, fix-autocomplete-bug).
+- [Submit a pull request](https://help.github.com/en/articles/creating-a-pull-request) against the `main` branch
 
 **Note:** more information on the [GitHub flow](https://guides.github.com/introduction/flow/)
 
@@ -64,7 +64,7 @@ What does this mean in practice? One example is: Utility classes allow new ideas
 
 When considering what to do with a proposed pattern, there are several questions to answer first. The decision tree below outlines those questions to be answered and the various outcomes:
 
-![CMS Design System component decision workflow](https://raw.githubusercontent.com/CMSgov/design-system/master/.github/images/CMS-Design-System-component-decision-workflow.jpg)
+![CMS Design System component decision workflow](https://raw.githubusercontent.com/CMSgov/design-system/main/.github/images/CMS-Design-System-component-decision-workflow.jpg)
 When a new pattern is created, it’s worth asking if it's a one-off use case or something that can be used on other sites. New patterns come at a cost in terms of additional code, maintenance, documentation, and increased cognitive load on users. Care should therefore be taken when adding patterns to the design system.
 
 Our pattern proposal process is largely based on those by the [US Web Design System](https://github.com/uswds/uswds/wiki/Contribution-Guidelines%3A-Design).

@@ -1,4 +1,3 @@
-import React from 'react';
 import VerticalNavItem, { VerticalNavItemProps } from './VerticalNavItem';
 import classNames from 'classnames';
 
@@ -58,31 +57,31 @@ export const VerticalNav = (props: VerticalNavProps): React.ReactElement => {
 
   const navProps = props.ariaNavLabel ? { 'aria-label': props.ariaNavLabel } : {};
 
-  return (
-    <nav {...navProps}>
-      <ul className={classes} id={props.id}>
-        {props.items.map((item) => {
-          let onClick = item.onClick || props.onLinkClick;
-          if (!onClick) {
-            onClick = undefined;
-          }
+  const navList = (
+    <ul className={classes} id={props.id}>
+      {props.items.map((item) => {
+        let onClick = item.onClick || props.onLinkClick;
+        if (!onClick) {
+          onClick = undefined;
+        }
 
-          const selected = item.selected || (props.selectedId && props.selectedId === item.id);
+        const selected = item.selected || (props.selectedId && props.selectedId === item.id);
 
-          return (
-            <VerticalNavItem
-              {...item}
-              component={props.component || item.component}
-              _selectedId={props.selectedId}
-              key={item.id + item.url + item.label}
-              onClick={onClick}
-              selected={selected}
-            />
-          );
-        })}
-      </ul>
-    </nav>
+        return (
+          <VerticalNavItem
+            {...item}
+            component={props.component || item.component}
+            _selectedId={props.selectedId}
+            key={item.id + item.url + item.label}
+            onClick={onClick}
+            selected={selected}
+          />
+        );
+      })}
+    </ul>
   );
+
+  return props.nested ? navList : <nav {...navProps}>{navList}</nav>;
 };
 
 VerticalNav.defaultProps = {

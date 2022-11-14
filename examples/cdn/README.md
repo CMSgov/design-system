@@ -11,4 +11,5 @@ See also: https://reactjs.org/docs/add-react-to-a-website.html
 
 ## Getting started
 
-Open `index.html` in a browser.
+1. Serve the root of this directory from a webserver, with `npx http-server`
+2. View it in a browser by visiting http://localhost:8080

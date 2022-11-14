@@ -1,5 +1,3 @@
-import React from 'react';
-
 import SkipNav from './SkipNav';
 
 export default {
@@ -7,9 +5,6 @@ export default {
   component: SkipNav,
   args: {
     href: '#main',
-  },
-  parameters: {
-    loki: { skip: true },
   },
 };
 

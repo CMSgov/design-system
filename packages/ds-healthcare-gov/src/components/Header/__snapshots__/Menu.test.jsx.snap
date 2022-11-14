@@ -1,79 +1,70 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Menu removes hidden state 1`] = `
-<nav
-  className="hc-c-menu hc-c-menu--open"
-  id="hc-c-menu"
-  role="navigation"
->
+<div>
   <div
-    className="ds-l-container"
+    class="hc-c-menu hc-c-menu--open"
+    id="hc-c-menu"
   >
-    <div
-      className="ds-l-row"
+    <ul
+      class="hc-c-menu__links ds-c-list ds-c-list--bare"
     >
-      <div
-        className="hc-c-menu__content ds-u-padding--1 ds-u-font-weight--bold"
+      <li
+        class="ds-u-margin--0 "
       >
-        <div
-          className="ds-l-col ds-l-col--auto ds-u-padding-x--0"
+        <a
+          class="hc-c-menu__link"
+          href="#foo"
         >
-          <MenuLinks
-            links={
-              Array [
-                Object {
-                  "href": "#foo",
-                  "label": "Foo",
-                },
-                Object {
-                  "href": "#bar",
-                  "label": "Bar",
-                },
-              ]
-            }
-          />
-        </div>
-      </div>
-    </div>
+          Foo
+        </a>
+      </li>
+      <li
+        class="ds-u-margin--0 "
+      >
+        <a
+          class="hc-c-menu__link"
+          href="#bar"
+        >
+          Bar
+        </a>
+      </li>
+    </ul>
   </div>
-</nav>
+</div>
 `;
 
 exports[`Menu renders MenuList 1`] = `
-<nav
-  className="hc-c-menu"
-  id="hc-c-menu"
-  role="navigation"
->
+<div>
   <div
-    className="ds-l-container"
+    class="hc-c-menu"
+    hidden=""
+    id="hc-c-menu"
   >
-    <div
-      className="ds-l-row"
+    <ul
+      class="hc-c-menu__links ds-c-list ds-c-list--bare"
     >
-      <div
-        className="hc-c-menu__content ds-u-padding--1 ds-u-font-weight--bold"
+      <li
+        class="ds-u-margin--0 "
       >
-        <div
-          className="ds-l-col ds-l-col--auto ds-u-padding-x--0"
+        <a
+          class="hc-c-menu__link"
+          href="#foo"
         >
-          <MenuLinks
-            links={
-              Array [
-                Object {
-                  "href": "#foo",
-                  "label": "Foo",
-                },
-                Object {
-                  "href": "#bar",
-                  "label": "Bar",
-                },
-              ]
-            }
-          />
-        </div>
-      </div>
-    </div>
+          Foo
+        </a>
+      </li>
+      <li
+        class="ds-u-margin--0 "
+      >
+        <a
+          class="hc-c-menu__link"
+          href="#bar"
+        >
+          Bar
+        </a>
+      </li>
+    </ul>
   </div>
-</nav>
+</div>
 `;
