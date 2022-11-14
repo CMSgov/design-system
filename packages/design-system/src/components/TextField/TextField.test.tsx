@@ -1,4 +1,4 @@
-import { TextField, unmaskValue } from './TextField';
+import TextField from './TextField';
 import { render } from '@testing-library/react';
 import { DATE_MASK } from './useLabelMask';
 
@@ -22,9 +22,5 @@ describe('TextField', function () {
 
   it('renders with a mask', () => {
     expect(renderTextField({ mask: 'currency' }).asFragment()).toMatchSnapshot();
-  });
-
-  it('exports unmaskValue method', () => {
-    expect(typeof unmaskValue).toBe('function');
   });
 });

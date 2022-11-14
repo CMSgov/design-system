@@ -124,7 +124,7 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
     ...fieldProps,
     onChange: handleInputChange,
     type: 'text',
-    setRef: (el) => {
+    inputRef: (el) => {
       inputRef.current = el;
     },
   });
