@@ -250,6 +250,13 @@ A custom heading value can be sent for an analytics event by using the prop `ana
 
 ### Accessibility
 
+<ThemeContent onlyThemes={['healthcare']}>
+If dynamically loaded, be mindful of when the alert displays on the page. For example, an alert appearing on a page due to an error or progressive disclosure. Where and how the content appears visually should align with how and when a screen reader user hears the content. Errors need immediate attention, but content through progressive disclosure may not.
+
+- Users who are viewing the content need it to be placed in an effective location and to draw attention even when CSS is turned off. Content can help here too, using word choices that make the importance of the message clear.
+- Users who hear this content through assistive technology, such as a screen readers, will need to be alerted through the backend code effectively at the right time.
+</ThemeContent>
+  
 - Use the ARIA `role="alert"` to inform assistive technologies of a time-sensitive and important message that is not interactive. If the message is interactive, use the `role="alertdialog"` instead.
 - Consider putting the alert inside a div with `aria-live="polite"` and `aria-relevant="additions removals"`. These <abbr title="Accessible rich internet applications">ARIA</abbr> attributes ensure screen readers will announce alerts that have been added or updated dynamically.
 - If you choose to shift focus to the Alert, be mindful that using other techniques like `role="alert"`, and `aria-live="polite"` will cause some browser and screen reader combinations to read out the content more than once. Typically, shifting focus alone will be enough to alert screen readers of the content.
