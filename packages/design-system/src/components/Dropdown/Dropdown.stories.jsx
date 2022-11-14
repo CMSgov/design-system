@@ -1,5 +1,4 @@
 import Dropdown from './Dropdown';
-import Select from './Select';
 
 export default {
   title: 'Components/Dropdown',
@@ -8,7 +7,6 @@ export default {
     children: { control: false },
     options: { control: false },
   },
-  subcomponents: { Select },
 };
 
 const dropdownOptions = [
