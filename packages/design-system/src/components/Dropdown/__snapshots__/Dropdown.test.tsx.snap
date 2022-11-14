@@ -62,9 +62,10 @@ exports[`Dropdown handles bottom placed error 1`] = `
       </option>
     </select>
     <span
+      aria-atomic="true"
+      aria-live="assertive"
       class="ds-c-inline-error ds-c-field__error-message"
       id="1_error"
-      role="alert"
     >
       <svg
         aria-hidden="true"
@@ -100,9 +101,10 @@ exports[`Dropdown has error 1`] = `
         Select an option
       </span>
       <span
+        aria-atomic="true"
+        aria-live="assertive"
         class="ds-c-inline-error ds-c-field__error-message"
         id="field_10-error"
-        role="alert"
       >
         <svg
           aria-hidden="true"
