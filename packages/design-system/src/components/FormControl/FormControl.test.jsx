@@ -60,7 +60,7 @@ describe('FormControl', function () {
   it('renders bottom placed errors ', () => {
     makeFormControl({ errorMessage: 'Error', errorPlacement: 'bottom' });
 
-    const labelError = screen.getByRole('alert');
+    const labelError = screen.getByText('Error');
     expect(labelError).toBeInTheDocument();
     expect(labelError).toMatchSnapshot();
   });
