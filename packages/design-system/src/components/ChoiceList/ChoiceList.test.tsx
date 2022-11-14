@@ -16,7 +16,6 @@ function generateChoices(length: number, customProps = {}) {
   return choices;
 }
 
-// Mounts the component by default because the choices are passed into FormControl as a function
 function renderChoiceList(customProps = {}, choicesCount = 2) {
   const props = {
     ...{

@@ -111,7 +111,6 @@ export function useFormLabel<T extends UseFormLabelProps>(props: T) {
     ...remainingProps
   } = props;
 
-  // Bottom placed errors are handled in FormControl instead of FormLabel
   const hasBottomError = errorPlacement === 'bottom' && errorMessage;
   const bottomError = hasBottomError ? (
     <InlineError id={errorId} inversed={inversed} className={errorMessageClassName}>

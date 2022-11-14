@@ -9,7 +9,6 @@ export * from './Dialog';
 export * from './Drawer';
 export * from './Dropdown';
 export * from './FilterChip';
-export * from './FormControl';
 export * from './FormLabel';
 export * from './HelpDrawer';
 export * from './IdleTimeout';

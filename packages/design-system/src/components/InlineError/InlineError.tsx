@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import AlertCircleIcon from '../Icons/AlertCircleIcon';
 
 /**
- * <InlineError> is an internal component used by <FormLabel> and <FormControl>
+ * <InlineError> is an internal component used by <FormLabel>
  * <InlineError> is also exported for advanced design system use cases, where the internal component can be leveraged to build custom form components
  */
 
