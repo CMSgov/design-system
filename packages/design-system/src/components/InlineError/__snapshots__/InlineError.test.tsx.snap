@@ -2,9 +2,10 @@
 
 exports[`InlineError renders inline error 1`] = `
 <span
+  aria-atomic="true"
+  aria-live="assertive"
   class="ds-c-inline-error ds-c-field__error-message"
   id="error1"
-  role="alert"
 >
   <svg
     aria-hidden="true"
@@ -24,9 +25,10 @@ exports[`InlineError renders inline error 1`] = `
 
 exports[`InlineError renders inverse error 1`] = `
 <span
+  aria-atomic="true"
+  aria-live="assertive"
   class="ds-c-inline-error ds-c-field__error-message ds-c-field__error-message--inverse"
   id="error1"
-  role="alert"
 >
   <svg
     aria-hidden="true"

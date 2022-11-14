@@ -65,7 +65,9 @@
 @media (min-width: $width-md) {
   .c-navigation {
     background-color: $color-secondary-lightest;
-    width: unset;
+    // Set it to a fixed width that is wide enough for most links so that it
+    // doesn't jump around when we open and close subsections.
+    width: 13rem;
 
     .c-navigation__header {
       margin-inline: calc(#{$spacer-2} * -1);

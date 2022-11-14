@@ -1,5 +1,4 @@
 import ChoiceList, { ChoiceListType } from './ChoiceList';
-import { Alert } from '../Alert';
 import { render, waitFor, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -17,7 +16,6 @@ function generateChoices(length: number, customProps = {}) {
   return choices;
 }
 
-// Mounts the component by default because the choices are passed into FormControl as a function
 function renderChoiceList(customProps = {}, choicesCount = 2) {
   const props = {
     ...{

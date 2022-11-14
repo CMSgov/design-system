@@ -7,6 +7,9 @@ export default {
   component: ChoiceList,
   argTypes: {
     choices: { control: false },
+    errorMessage: {
+      control: { type: 'text' },
+    },
   },
   args: {
     choices: [

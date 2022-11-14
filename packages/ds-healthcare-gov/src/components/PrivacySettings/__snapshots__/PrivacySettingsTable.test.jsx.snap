@@ -43,6 +43,7 @@ Object {
               data-title="privacy.status"
             >
               <fieldset
+                aria-invalid="false"
                 class="ds-c-fieldset ds-u-margin-top--0"
               >
                 <legend
@@ -124,6 +125,7 @@ Object {
               data-title="privacy.status"
             >
               <fieldset
+                aria-invalid="false"
                 class="ds-c-fieldset ds-u-margin-top--0"
               >
                 <legend
@@ -205,6 +207,7 @@ Object {
               data-title="privacy.status"
             >
               <fieldset
+                aria-invalid="false"
                 class="ds-c-fieldset ds-u-margin-top--0"
               >
                 <legend
@@ -314,6 +317,7 @@ Object {
             data-title="privacy.status"
           >
             <fieldset
+              aria-invalid="false"
               class="ds-c-fieldset ds-u-margin-top--0"
             >
               <legend
@@ -395,6 +399,7 @@ Object {
             data-title="privacy.status"
           >
             <fieldset
+              aria-invalid="false"
               class="ds-c-fieldset ds-u-margin-top--0"
             >
               <legend
@@ -476,6 +481,7 @@ Object {
             data-title="privacy.status"
           >
             <fieldset
+              aria-invalid="false"
               class="ds-c-fieldset ds-u-margin-top--0"
             >
               <legend

@@ -18,7 +18,7 @@ describe('InlineError', function () {
   it('renders inline error', () => {
     makeInlineError();
 
-    const error = screen.getByRole('alert');
+    const error = screen.getByText('Error message');
     expect(error).toHaveClass('ds-c-field__error-message');
     expect(error).toMatchSnapshot();
   });
@@ -26,7 +26,7 @@ describe('InlineError', function () {
   it('renders inverse error', () => {
     makeInlineError({ inversed: true });
 
-    const error = screen.getByRole('alert');
+    const error = screen.getByText('Error message');
     expect(error).toHaveClass('ds-c-field__error-message--inverse');
     expect(error).toMatchSnapshot();
   });
