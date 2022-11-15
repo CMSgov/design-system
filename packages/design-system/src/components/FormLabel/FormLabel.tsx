@@ -94,7 +94,7 @@ export class FormLabel extends React.PureComponent<
 
   errorMessage(): React.ReactNode {
     if (this.props.errorMessage) {
-      // Include fallback for errorId for usage outside of FormControl
+      // Include fallback for errorId
       let errorId = null;
       if (this.props.errorId) {
         errorId = this.props.errorId;

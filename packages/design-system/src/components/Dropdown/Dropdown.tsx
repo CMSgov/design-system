@@ -1,8 +1,7 @@
-import { FormControl, FormControlPropKeys, FormControlProps } from '../FormControl/FormControl';
 import React from 'react';
-import Select from './Select';
-import omit from 'lodash/omit';
-import pick from 'lodash/pick';
+import classNames from 'classnames';
+import useAutofocus from '../utilities/useAutoFocus';
+import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 
 export type DropdownDefaultValue = number | string;
 export interface DropdownOptions {
@@ -11,16 +10,12 @@ export interface DropdownOptions {
 }
 export type DropdownSize = 'small' | 'medium';
 export type DropdownValue = number | string;
-export type DropdownErrorPlacement = 'top' | 'bottom';
-export interface DropdownProps {
+
+export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
   /**
    * Adds `aria-label` attribute. When using `aria-label`, `label` should be empty string.
    */
   ariaLabel?: string;
-  /**
-   * Additional classes to be added to the root element.
-   */
-  className?: string;
   /**
    * Used to define custom dropdown options (i.e. option groups). When using the `children` prop, `options` should be an empty list.
    */
@@ -34,29 +29,17 @@ export interface DropdownProps {
    * Disables the entire field.
    */
   disabled?: boolean;
-  errorMessage?: React.ReactNode;
-  /**
-   * Additional classes to be added to the error message
-   */
-  errorMessageClassName?: string;
-  /**
-   * Location of the error message relative to the field input
-   */
-  errorPlacement?: DropdownErrorPlacement;
   /**
    * Additional classes to be added to the select element
    */
   fieldClassName?: string;
   /**
-   * Used to focus `select` on `componentDidMount()`
+   * Sets the focus on the select during the first mount
    */
-  focusTrigger?: boolean;
+  autoFocus?: boolean;
   /**
+   * A unique ID to be used for the `select` element. If one isn't provided, a unique ID will be generated.  /**
    * Additional hint text to display
-   */
-  hint?: React.ReactNode;
-  /**
-   * A unique ID to be used for the dropdown field. If one isn't provided, a unique ID will be generated.
    */
   id?: string;
   /**
@@ -67,14 +50,6 @@ export interface DropdownProps {
    * Applies the "inverse" UI theme
    */
   inversed?: boolean;
-  /**
-   * Label for the field. If using `Dropdown` without a label, provide an empty string for `label` and use the `ariaLabel` prop instead.
-   */
-  label: React.ReactNode;
-  /**
-   * Additional classes to be added to the `FormLabel`.
-   */
-  labelClassName?: string;
   /**
    * The field's `name` attribute
    */
@@ -90,7 +65,7 @@ export interface DropdownProps {
    */
   requirementLabel?: React.ReactNode;
   /**
-   * If the component renders a select, set the max-width of the input either to `'small'` or `'medium'`.
+   * Sets the max-width of the input either to `'small'` or `'medium'`.
    */
   size?: DropdownSize;
   /**
@@ -100,61 +75,71 @@ export interface DropdownProps {
   value?: DropdownValue;
 }
 
-type OmitProps =
-  | 'size'
-  | 'value'
-  | 'label'
-  | 'className'
-  | 'children'
-  | 'defaultValue'
-  | 'disabled'
-  | 'id'
-  | 'name'
-  | 'onBlur'
-  | 'onChange';
+export type DropdownProps = BaseDropdownProps &
+  Omit<React.ComponentPropsWithRef<'select'>, keyof BaseDropdownProps>;
 
-export class Dropdown extends React.PureComponent<
-  Omit<React.ComponentPropsWithoutRef<'select'>, OmitProps> & DropdownProps,
-  any
-> {
-  constructor(props: DropdownProps) {
-    super(props);
-
-    if (process.env.NODE_ENV !== 'production') {
-      // 'ariaLabel' is provided with a `label` prop that is not an empty string
-      if (props.ariaLabel && (typeof props.label !== 'string' || props.label.length > 0)) {
-        console.warn(
-          `Cannot use 'ariaLabel' and 'label' React properties together in the <Dropdown> component. If the 'label' prop is used, it should be written for all users so that an 'ariaLabel' is not needed. The 'ariaLabel' prop is intended to be used only when the input is missing an input label (i.e when an empty string is provided for the 'label' prop)`
-        );
-      }
-      // An empty string `label` is provided without a corresponding `ariaLabel` prop
-      if (!props.ariaLabel && typeof props.label === 'string' && props.label.length === 0) {
-        console.warn(
-          `Please provide an 'ariaLabel' when using the <Dropdown> component without a 'label' prop.`
-        );
-      }
+export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
+  if (process.env.NODE_ENV !== 'production') {
+    // 'ariaLabel' is provided with a `label` prop that is not an empty string
+    if (props.ariaLabel && (typeof props.label !== 'string' || props.label.length > 0)) {
+      console.warn(
+        `Cannot use 'ariaLabel' and 'label' React properties together in the <Dropdown> component. If the 'label' prop is used, it should be written for all users so that an 'ariaLabel' is not needed. The 'ariaLabel' prop is intended to be used only when the input is missing an input label (i.e when an empty string is provided for the 'label' prop)`
+      );
+    }
+    // An empty string `label` is provided without a corresponding `ariaLabel` prop
+    if (!props.ariaLabel && typeof props.label === 'string' && props.label.length === 0) {
+      console.warn(
+        `Please provide an 'ariaLabel' when using the <Dropdown> component without a 'label' prop.`
+      );
+    }
+    if (props.children && props.options.length > 0) {
+      console.warn(
+        `Cannot use 'options' and 'children' React properties at the same time in the <Select> component. Please use 'children' for custom options and 'options' for general cases`
+      );
     }
   }
 
-  render() {
-    const containerProps: any = pick(this.props, FormControlPropKeys);
-    const inputOnlyProps: any = omit(this.props, FormControlPropKeys);
+  // Select specific props
+  const { ariaLabel, children, fieldClassName, options, size, ...selectProps } = props;
 
-    return (
-      <FormControl
-        {...containerProps}
-        component="div"
-        labelComponent="label"
-        render={({ id, errorId, setRef, errorMessage, errorPlacement }) => (
-          <Select
-            {...inputOnlyProps}
-            {...{ id, setRef, errorId, errorMessage, errorPlacement }}
-            inversed={this.props.inversed}
-          />
-        )}
-      />
-    );
-  }
-}
+  const optionElements =
+    children ??
+    options.map((option) => (
+      <option key={option.value} value={option.value}>
+        {option.label}
+      </option>
+    ));
+
+  const { labelProps, fieldProps, wrapperProps, bottomError } = useFormLabel({
+    ...selectProps,
+    labelComponent: 'label',
+    wrapperIsFieldset: false,
+  });
+
+  const selectClassNames = classNames(
+    'ds-c-field',
+    {
+      'ds-c-field--error': props.errorMessage,
+      'ds-c-field--inverse': props.inversed,
+    },
+    size && `ds-c-field--${size}`,
+    fieldClassName
+  );
+
+  const ref = useAutofocus<HTMLSelectElement>(props.autoFocus);
+
+  // we don't want to pass this down to the select element
+  delete fieldProps.errorMessage;
+
+  return (
+    <div {...wrapperProps}>
+      <FormLabel {...labelProps} fieldId={fieldProps.id} />
+      <select aria-label={ariaLabel} ref={ref} className={selectClassNames} {...fieldProps}>
+        {optionElements}
+      </select>
+      {bottomError}
+    </div>
+  );
+};
 
 export default Dropdown;

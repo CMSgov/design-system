@@ -63,7 +63,7 @@ export type TextInputProps = Omit<React.ComponentPropsWithoutRef<'input'>, OmitP
    * applicable if this is a multiline field.
    */
   rows?: TextInputRows;
-  setRef?: (...args: any[]) => any;
+  inputRef?: (...args: any[]) => any;
   /**
    * Set the max-width of the input either to `'small'` or `'medium'`.
    */
@@ -102,7 +102,7 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
     onCopyCapture,
     pattern,
     rows,
-    setRef,
+    inputRef,
     size,
     type,
     ...inputProps
@@ -131,7 +131,7 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
   return (
     <ComponentType
       className={classes}
-      ref={setRef}
+      ref={inputRef}
       rows={multiline && numberRows ? numberRows : undefined}
       inputMode={numeric ? 'numeric' : undefined}
       pattern={numeric && !pattern ? '[0-9]*' : pattern}

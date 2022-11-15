@@ -56,9 +56,10 @@ exports[`Choice applies errorMessage to label 1`] = `
           George Washington
         </span>
         <span
+          aria-atomic="true"
+          aria-live="assertive"
           class="ds-c-inline-error ds-c-field__error-message"
           id="checkbox_foo_12-error"
-          role="alert"
         >
           <svg
             aria-hidden="true"
