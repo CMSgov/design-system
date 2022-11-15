@@ -11,14 +11,33 @@ title: Form validation
 - The error message should be wrapped in an `role="alert"` so that screen readers users receive the message, and can act on it.
   If the page is fully refreshed, add ‘Error: ’ to the beginning of the page `<title>` so screen readers read it out as soon as possible.
 
-### Error
+### Validation types
+
+#### Error
 
 - Visually associate inline validation messages with the input fields (e.g., place validation closely to the input field).
 - Place an icon in front of an error to draw attention to an error.
 - Use color as a secondary way to draw attention to an error. 
 
-### Success
+#### Success
 
 - Form field success validation is only use for password creation. 
     - Use success validation to show when a user has met the password criteria
 - Other forms of success validation can be used with check mark icons, alert messages, progress bars/step list page, and toast messages.
+
+### Content
+
+- Use sentence case
+- End with a period
+- Use the fewest words possible (i.e., don't use "please")
+
+#### Error
+
+- Describe what the user still needs to do in a mandatory field that has been left incomplete or unanswered,  or answered incorrectly
+- Repeat what the form label is asking the user to do, but with slightly more detail
+
+##### Success
+
+- Form field success validation is only used for password creation
+- Describe when a user has met the criteria
+
