@@ -72,7 +72,7 @@ export const Step = ({ step, ...props }: StepProps) => {
 
   // TODO: make heading required after removing title
   return (
-    <li className={className}>
+    <li role="listitem" className={className}>
       <div className={contentClassName}>
         <Heading id={descriptionHeadingID} className="ds-c-step__heading" {...descriptionLabel}>
           {step.heading}
@@ -87,7 +87,7 @@ export const Step = ({ step, ...props }: StepProps) => {
           </div>
         )}
         {step.steps && (
-          <ol className="ds-c-step__substeps" {...substepsLabel}>
+          <ol role="list" className="ds-c-step__substeps" {...substepsLabel}>
             {step.steps.map((s, i) => (
               <SubStep
                 step={{ ...s, ...{ component: step.component || s.component } }}
