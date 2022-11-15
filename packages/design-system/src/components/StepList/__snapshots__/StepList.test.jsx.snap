@@ -3,15 +3,16 @@
 exports[`StepList renders list of steps 1`] = `
 <ol
   class="ds-c-step-list"
+  role="list"
 >
   <li
     class="ds-c-step"
+    role="listitem"
   >
     <div
       class="ds-c-step__content ds-c-step__content--with-content"
     >
       <h2
-        aria-label="Description for Do something!"
         class="ds-c-step__heading"
         id="heading-1"
       >
@@ -33,12 +34,12 @@ exports[`StepList renders list of steps 1`] = `
   </li>
   <li
     class="ds-c-step"
+    role="listitem"
   >
     <div
       class="ds-c-step__content ds-c-step__content--with-content"
     >
       <h2
-        aria-label="Description for Do something!"
         class="ds-c-step__heading"
         id="heading-2"
       >
@@ -60,12 +61,12 @@ exports[`StepList renders list of steps 1`] = `
   </li>
   <li
     class="ds-c-step"
+    role="listitem"
   >
     <div
       class="ds-c-step__content ds-c-step__content--with-content"
     >
       <h2
-        aria-label="Description for Do something!"
         class="ds-c-step__heading"
         id="heading-3"
       >

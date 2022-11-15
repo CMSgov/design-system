@@ -3,12 +3,12 @@
 exports[`Step renders completed text and an edit link for completed steps 1`] = `
 <li
   class="ds-c-step ds-c-step--completed"
+  role="listitem"
 >
   <div
     class="ds-c-step__content ds-c-step__content--with-content"
   >
     <h2
-      aria-label="!Description for Do something!"
       class="ds-c-step__heading"
       id="heading-7"
     >
@@ -63,9 +63,11 @@ exports[`Step renders substeps 1`] = `
 <ol
   aria-label="!Secondary actions for Do something!"
   class="ds-c-step__substeps"
+  role="list"
 >
   <li
     class="ds-c-substep"
+    role="listitem"
   >
     <div
       class="ds-c-substep__heading"
@@ -75,6 +77,7 @@ exports[`Step renders substeps 1`] = `
   </li>
   <li
     class="ds-c-substep"
+    role="listitem"
   >
     <div
       class="ds-c-substep__heading"
@@ -84,6 +87,7 @@ exports[`Step renders substeps 1`] = `
   </li>
   <li
     class="ds-c-substep"
+    role="listitem"
   >
     <div
       class="ds-c-substep__heading"
