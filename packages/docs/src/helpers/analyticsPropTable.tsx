@@ -55,4 +55,23 @@ export const analyticsPropTable = [
   },
 ];
 
+export const analyticsParentPropTable = [
+  {
+    name: 'analyticsParentHeading',
+    type: 'string',
+    defaultValue: '',
+    text: <>If needed for analytics, pass heading text of parent component of button.</>,
+    isRequired: false,
+    id: 'a5',
+  },
+  {
+    name: 'analyticsParentType',
+    type: 'string',
+    defaultValue: '',
+    text: <>If needed for analytics, pass type of parent component of button.</>,
+    isRequired: false,
+    id: 'a6',
+  },
+];
+
 export default analyticsPropTable;

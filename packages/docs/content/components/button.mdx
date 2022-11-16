@@ -242,7 +242,7 @@ In addition to the supported props listed, you can also pass in additional
 props, which will be passed to the rendered root component. For example,
 you could pass in a `target` prop to pass to the rendered anchor element.
 
-<PropTable componentName="Button" hasAnalytics >
+<PropTable componentName="Button" hasAnalytics hasParentAnalytics>
   <PropTableHtmlElementRow elements={['button', 'a']} />
 </PropTable>
 
@@ -366,19 +366,19 @@ Consider when to use links vs. when to use buttons. Links and buttons are read d
 
 
 <ThemeContent onlyThemes={['medicare']}>
-  
+
 #### Do's
 
 - Use buttons for clickable actions like "Log in" or "Create an account"
 - Use buttons for javascript triggers that have a clickable element tied to javascript functionality.
-- Use links for navigational elements. <a> tags are reserved for navigation.
+- Use links for navigational elements. <a\> tags are reserved for navigation.
 
 
 #### Don't
 
-- Use buttons for navigational elements like going to a new page. 
+- Use buttons for navigational elements like going to a new page.
 
-  </ThemeContent>
+</ThemeContent>
 
 <ThemeContent onlyThemes={['healthcare']}>
 

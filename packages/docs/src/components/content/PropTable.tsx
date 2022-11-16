@@ -10,7 +10,7 @@ import {
 import { graphql, useStaticQuery } from 'gatsby';
 import ContentRenderer from './ContentRenderer';
 import { ComponentPropQuery, PropQuery } from '../../helpers/graphQLTypes';
-import { analyticsPropTable } from '../../helpers/analyticsPropTable';
+import { analyticsPropTable, analyticsParentPropTable } from '../../helpers/analyticsPropTable';
 
 export interface PropTableDataItem {
   name: string;
@@ -33,6 +33,7 @@ interface PropTableProps {
    * prepends analytics props manually
    */
   hasAnalytics?: boolean;
+  hasParentAnalytics?: boolean;
   /**
    * Name of currently selected theme
    */
@@ -43,7 +44,13 @@ interface PropTableProps {
  * A component to display a Design System component's prop table
  * It loads all props for all components and then finds the appropriate props for the passed in `componentName`
  */
-const PropTable = ({ children, componentName, theme, hasAnalytics }: PropTableProps) => {
+const PropTable = ({
+  children,
+  componentName,
+  theme,
+  hasAnalytics,
+  hasParentAnalytics,
+}: PropTableProps) => {
   // load all props for all components
   const allPropData: ComponentPropQuery = useStaticQuery(graphql`
     query loadComponentPropsQuery {
@@ -78,6 +85,12 @@ const PropTable = ({ children, componentName, theme, hasAnalytics }: PropTablePr
     ({ node }) => node.displayName === componentName
   );
 
+  const hasAnalyticsProps = hasAnalytics
+    ? hasParentAnalytics
+      ? [...analyticsPropTable, ...analyticsParentPropTable]
+      : analyticsPropTable
+    : [];
+
   // moving from the deeply nested graphql structure to something flatter
   const transformedData: PropTableDataItem[] = propsForComponent?.node.props.reduce(
     (acc, prop: PropQuery) => {
@@ -96,7 +109,7 @@ const PropTable = ({ children, componentName, theme, hasAnalytics }: PropTablePr
       }
       return acc;
     },
-    hasAnalytics ? analyticsPropTable : []
+    hasAnalyticsProps
   );
 
   return (
