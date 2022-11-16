@@ -364,6 +364,22 @@ Consider when to use links vs. when to use buttons. Links and buttons are read d
 - Dimmed or unavailable buttons should have the `disabled` attribute applied. This removes native click and keypress events from the button. It also prevents automated scanners from logging a low contrast error. Finally, it announces the button as "dimmed" or "disabled" to screen readers, offering users additional context.
 
 
+
+<ThemeContent onlyThemes={['medicare']}>
+  
+#### Do's
+
+- Use buttons for clickable actions like "Log in" or "Create an account"
+- Use buttons for javascript triggers that have a clickable element tied to javascript functionality.
+- Use links for navigational elements. <a> tags are reserved for navigation.
+
+
+#### Don't
+
+- Use buttons for navigational elements like going to a new page. 
+
+  </ThemeContent>
+
 <ThemeContent onlyThemes={['healthcare']}>
 
 ### Content
