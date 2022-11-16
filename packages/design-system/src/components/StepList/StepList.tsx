@@ -56,7 +56,7 @@ export const StepList = ({
   substepsLabelText = 'Secondary actions for %{step}',
   ...otherProps
 }: StepListProps) => (
-  <ol className="ds-c-step-list">
+  <ol role="list" className="ds-c-step-list">
     {steps.map((step, i) => (
       <Step
         step={{ ...step, ...{ component: component || step.component } }}

@@ -30,7 +30,6 @@ export interface StepProps {
   resumeText: string;
   startText: string;
   actionsLabelText: string;
-  descriptionLabelText: string;
   substepsLabelText: string;
 }
 
@@ -50,10 +49,9 @@ export const Step = ({ step, ...props }: StepProps) => {
   const contentClassName = classNames('ds-c-step__content', {
     'ds-c-step__content--with-content': step.description || step.steps,
   });
-  const { actionsLabelText, substepsLabelText, descriptionLabelText } = props;
+  const { actionsLabelText, substepsLabelText } = props;
   const actionsLabel = getAriaLabel(actionsLabelText);
   const substepsLabel = getAriaLabel(substepsLabelText);
-  const descriptionLabel = getAriaLabel(descriptionLabelText);
   const descriptionHeadingID = uniqueId('heading-');
 
   let linkLabel;
@@ -72,9 +70,9 @@ export const Step = ({ step, ...props }: StepProps) => {
 
   // TODO: make heading required after removing title
   return (
-    <li className={className}>
+    <li role="listitem" className={className}>
       <div className={contentClassName}>
-        <Heading id={descriptionHeadingID} className="ds-c-step__heading" {...descriptionLabel}>
+        <Heading id={descriptionHeadingID} className="ds-c-step__heading">
           {step.heading}
         </Heading>
         {step.description && (
@@ -87,7 +85,7 @@ export const Step = ({ step, ...props }: StepProps) => {
           </div>
         )}
         {step.steps && (
-          <ol className="ds-c-step__substeps" {...substepsLabel}>
+          <ol role="list" className="ds-c-step__substeps" {...substepsLabel}>
             {step.steps.map((s, i) => (
               <SubStep
                 step={{ ...s, ...{ component: step.component || s.component } }}
