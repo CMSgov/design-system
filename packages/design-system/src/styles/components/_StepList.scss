@@ -78,11 +78,6 @@ $step-button-height: 38px !default;
     position: absolute;
     right: -$step-list-padding-h;
   }
-
-  @media (min-width: $step-list-breakpoint) {
-    display: flex;
-    justify-content: space-between;
-  }
 }
 
 .ds-c-step--current,
@@ -139,20 +134,10 @@ $step-button-height: 38px !default;
   }
 }
 
-.ds-c-step__content {
-  @media (min-width: $step-list-breakpoint) {
-    padding-right: $spacer-2;
-  }
-}
-
 .ds-c-step__heading {
   font-size: $font-size-md;
   line-height: $step-button-height;
   margin: 0;
-
-  @media (min-width: $step-list-breakpoint) {
-    font-size: $font-size-xl;
-  }
 }
 
 .ds-c-step__actions {
@@ -161,19 +146,10 @@ $step-button-height: 38px !default;
 
   .ds-c-step__content--with-content + & {
     margin-top: $spacer-2;
-
-    @media (min-width: $step-list-breakpoint) {
-      margin-top: 0;
-    }
   }
 
   .ds-c-step--completed & a {
     font-weight: $font-normal;
-  }
-
-  @media (min-width: $step-list-breakpoint) {
-    font-size: $base-font-size;
-    text-align: right;
   }
 }
 
@@ -187,13 +163,6 @@ $step-button-height: 38px !default;
     margin-right: $spacer-1;
     vertical-align: inherit;
     width: 16px;
-  }
-
-  @media (min-width: $step-list-breakpoint) {
-    display: block;
-    margin-right: 0;
-    padding-top: 6px;
-    white-space: nowrap;
   }
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
@@ -210,10 +179,6 @@ $step-button-height: 38px !default;
   .ds-c-step--current &,
   .ds-c-step--completed & {
     margin-top: $spacer-1;
-  }
-
-  @media (min-width: $step-list-breakpoint) {
-    font-size: $font-size-base;
   }
 }
 
@@ -237,11 +202,4 @@ $step-button-height: 38px !default;
 .ds-c-substep__heading {
   display: inline;
   margin-right: $spacer-1;
-}
-
-.ds-c-substep__edit {
-  @media (min-width: $step-list-breakpoint) {
-    position: absolute;
-    right: 0;
-  }
 }

@@ -11,7 +11,6 @@ const defaultStepProps = {
   resumeText: 'Resume!',
   startText: 'Start!',
   actionsLabelText: '!Primary actions for %{step}',
-  descriptionLabelText: '!Description for %{step}',
   substepsLabelText: '!Secondary actions for %{step}',
 };
 
@@ -63,7 +62,6 @@ describe('Step', () => {
 
     const title = screen.getByText(/Do something!/i);
     expect(title).toHaveClass('ds-c-step__heading');
-    expect(title).toHaveAttribute('aria-label', '!Description for Do something!');
 
     const description = screen.getByText(/Do something really cool!/i);
     expect(description).toHaveClass('ds-c-step__description');
