@@ -22,7 +22,7 @@ export interface PropTableDataItem {
   /**
    * @TODO: cleanup with analytics work here
    */
-  text?: string;
+  text?: React.ReactNode;
 }
 
 interface PropTableProps {
