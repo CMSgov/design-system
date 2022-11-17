@@ -228,6 +228,7 @@ export const Header = (props: HeaderProps) => {
           </a>
 
           <nav
+            aria-label="action"
             id="hc-c-header__actions"
             className="hc-c-header__actions ds-l-col ds-l-col--auto ds-u-margin-left--auto ds-u-font-weight--bold"
           >
