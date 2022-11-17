@@ -32,11 +32,6 @@ export interface StepListProps {
    */
   actionsLabelText?: string;
   /**
-   * A template string for the aria-label for a step's description where
-   * the substring `%{step}` is replaced with that step's `heading`.
-   */
-  descriptionLabelText?: string;
-  /**
    * A template string for the aria-label describing a step's substeps where
    * the substring `%{step}` is replaced with that step's `heading`.
    */
@@ -52,7 +47,6 @@ export const StepList = ({
   resumeText = 'Resume',
   startText = 'Start',
   actionsLabelText = 'Primary actions for %{step}',
-  descriptionLabelText = 'Description for %{step}',
   substepsLabelText = 'Secondary actions for %{step}',
   ...otherProps
 }: StepListProps) => (
@@ -68,7 +62,6 @@ export const StepList = ({
           resumeText,
           startText,
           actionsLabelText,
-          descriptionLabelText,
           substepsLabelText,
           ...otherProps,
         }}
