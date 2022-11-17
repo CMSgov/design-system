@@ -10,6 +10,7 @@ import {
 import { graphql, useStaticQuery } from 'gatsby';
 import ContentRenderer from './ContentRenderer';
 import { ComponentPropQuery, PropQuery } from '../../helpers/graphQLTypes';
+import { analyticsPropTable, analyticsParentPropTable } from '../../helpers/analyticsPropTable';
 
 export interface PropTableDataItem {
   name: string;
@@ -18,11 +19,21 @@ export interface PropTableDataItem {
   description?: string;
   isRequired?: boolean;
   id: string;
+  /**
+   * @TODO: cleanup with analytics work here
+   */
+  text?: React.ReactNode;
 }
 
 interface PropTableProps {
   children: React.ReactNode;
   componentName: string;
+  /**
+   * @TODO: clean this up
+   * prepends analytics props manually
+   */
+  hasAnalytics?: boolean;
+  hasParentAnalytics?: boolean;
   /**
    * Name of currently selected theme
    */
@@ -33,7 +44,13 @@ interface PropTableProps {
  * A component to display a Design System component's prop table
  * It loads all props for all components and then finds the appropriate props for the passed in `componentName`
  */
-const PropTable = ({ children, componentName, theme }: PropTableProps) => {
+const PropTable = ({
+  children,
+  componentName,
+  theme,
+  hasAnalytics,
+  hasParentAnalytics,
+}: PropTableProps) => {
   // load all props for all components
   const allPropData: ComponentPropQuery = useStaticQuery(graphql`
     query loadComponentPropsQuery {
@@ -68,6 +85,12 @@ const PropTable = ({ children, componentName, theme }: PropTableProps) => {
     ({ node }) => node.displayName === componentName
   );
 
+  const hasAnalyticsProps = hasAnalytics
+    ? hasParentAnalytics
+      ? [...analyticsPropTable, ...analyticsParentPropTable]
+      : analyticsPropTable
+    : [];
+
   // moving from the deeply nested graphql structure to something flatter
   const transformedData: PropTableDataItem[] = propsForComponent?.node.props.reduce(
     (acc, prop: PropQuery) => {
@@ -86,7 +109,7 @@ const PropTable = ({ children, componentName, theme }: PropTableProps) => {
       }
       return acc;
     },
-    []
+    hasAnalyticsProps
   );
 
   return (
@@ -124,7 +147,10 @@ const PropTable = ({ children, componentName, theme }: PropTableProps) => {
               {dataItem.defaultValue && <code>{dataItem.defaultValue}</code>}
             </TableCell>
             <TableCell headers="columndescription" stackedTitle="Description">
-              <ContentRenderer data={dataItem.description} theme={theme} />
+              {dataItem.description && (
+                <ContentRenderer data={dataItem.description} theme={theme} />
+              )}{' '}
+              {dataItem.text && <p className="ds-u-measure--wide">{dataItem.text}</p>}
             </TableCell>
           </TableRow>
         ))}
