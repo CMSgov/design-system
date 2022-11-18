@@ -11,8 +11,8 @@ export type MaskFunction = (rawInput: string, valueOnly?: boolean) => string;
  * optional and so should be shown as well with the `?` optional flag.
  */
 export const RE_DATE = /^(\d{1,2})[\D]?(\d{1,2})?[\D]?(\d{1,4})?/;
-export const RE_PHONE = /^\(?(\d{3})?\)?[\s.-]?(\d{3})?[\s.-]?(\d{4})?/;
-export const RE_SSN = /([*\d]{3})[\s.-]?([*\d]{2})?[\s.-]?([\d{4}]+)?/;
+export const RE_PHONE = /^\(?(\d{1,3})?\)?[\s.-]?(\d{1,3})?[\s.-]?(\d{1,4})?/;
+export const RE_SSN = /([*\d]{1,3})[\s.-]?([*\d]{1,2})?[\s.-]?([\d{1,4}]+)?/;
 export const RE_ZIP = /(\d{1,5})/;
 
 /**

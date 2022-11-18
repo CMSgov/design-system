@@ -1,5 +1,89 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`useLabelMask renders the appropriate dom for a CURRENCY_MASK 1`] = `
+<DocumentFragment>
+  <div
+    class="ds-c-label-mask"
+    id="labelmask_10"
+  >
+    <span
+      class=""
+    >
+      $0.00
+    </span>
+    <span
+      aria-hidden="true"
+      class="ds-u-display--none"
+    >
+      $0.00
+    </span>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`useLabelMask renders the appropriate dom for a PHONE_MASK 1`] = `
+<DocumentFragment>
+  <div
+    class="ds-c-label-mask"
+    id="labelmask_7"
+  >
+    <span
+      class=""
+    >
+      XXX-XXX-XXXX
+    </span>
+    <span
+      aria-hidden="true"
+      class="ds-u-display--none"
+    >
+      XXX-XXX-XXXX
+    </span>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`useLabelMask renders the appropriate dom for a SSN_MASK 1`] = `
+<DocumentFragment>
+  <div
+    class="ds-c-label-mask"
+    id="labelmask_9"
+  >
+    <span
+      class=""
+    >
+      XXX-XX-XXXX
+    </span>
+    <span
+      aria-hidden="true"
+      class="ds-u-display--none"
+    >
+      XXX-XX-XXXX
+    </span>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`useLabelMask renders the appropriate dom for a ZIP_MASK 1`] = `
+<DocumentFragment>
+  <div
+    class="ds-c-label-mask"
+    id="labelmask_8"
+  >
+    <span
+      class=""
+    >
+      XXXXX
+    </span>
+    <span
+      aria-hidden="true"
+      class="ds-u-display--none"
+    >
+      XXXXX
+    </span>
+  </div>
+</DocumentFragment>
+`;
+
 exports[`useLabelMask returns labelMask and input elements 1`] = `
 <DocumentFragment>
   <div
