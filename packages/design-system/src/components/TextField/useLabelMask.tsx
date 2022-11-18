@@ -5,38 +5,102 @@ import { TextInputProps } from './TextInput';
 
 export type MaskFunction = (rawInput: string, valueOnly?: boolean) => string;
 
+/**
+ * Regular expressions for matching commonly used masks, ensure capture groups are
+ * set for each set of items that are separated by a delimiter, delimiters are
+ * optional and so should be shown as well with the `?` optional flag.
+ */
 export const RE_DATE = /^(\d{1,2})[\D]?(\d{1,2})?[\D]?(\d{1,4})?/;
+export const RE_PHONE = /^\(?(\d{3})?\)?[\s.-]?(\d{3})?[\s.-]?(\d{4})?/;
+export const RE_SSN = /([*\d]{3})[\s.-]?([*\d]{2})?[\s.-]?([\d{4}]+)?/;
+export const RE_ZIP = /(\d{1,5})/;
 
 /**
- * Takes the string value from an input and returns a string
- * with appropriate date format masking applied concatenated
- * with the date hint text, MM/DD/YYYY.
- *
- * `valueOnly` defaults to false. If true, returns formatted
- * string without additional hint text.
+ * This function returns a mask function which returns either the formatted match only, or
+ * the formatted match + the hint substring which the regular expressions above match against
+ * when determining what content has been filled in.
  */
-export const DATE_MASK: MaskFunction = (rawInput = '', valueOnly = false) => {
-  const match = RE_DATE.exec(rawInput);
-  let formattedDate = '';
-  if (match) {
-    const [month, day, year] = match.slice(1);
-    formattedDate = [
-      // We treat all non-numeric characters as a delimiter. If they're using a
-      // delimiter after a month or day, we interpret that as the user supplying
-      // a single digit for month or day, which we will automatically pad for them.
-      month && month.padStart(2, '0'),
-      day && day.padStart(2, '0'),
-      year,
-    ]
-      .filter((s) => s)
-      .join('/');
-  }
+const makeMask = (regex: RegExp, hint: string, formatter: (stringMatch: string[]) => string) => {
+  return (rawInput = '', valueOnly = false) => {
+    const match = regex.exec(rawInput);
+    let formattedMatch = '';
+    if (match) {
+      formattedMatch = formatter(match);
+    }
+    if (valueOnly) {
+      return formattedMatch;
+    }
+    const hintSub = hint.substring(formattedMatch.length);
+    return formattedMatch + hintSub;
+  };
+};
+
+/**
+ * The date mask automatically pads months and days that are one digit
+ */
+export const DATE_MASK: MaskFunction = makeMask(RE_DATE, 'MM/DD/YYYY', (match) => {
+  const [month, day, year] = match.slice(1);
+  const formattedDate = [
+    // We treat all non-numeric characters as a delimiter. If they're using a
+    // delimiter after a month or day, we interpret that as the user supplying
+    // a single digit for month or day, which we will automatically pad for them.
+    month && month.padStart(2, '0'),
+    day && day.padStart(2, '0'),
+    year,
+  ]
+    .filter((s) => s)
+    .join('/');
+
+  return formattedDate;
+});
+
+/**
+ * Formatting for US phone numbers
+ */
+export const PHONE_MASK: MaskFunction = makeMask(RE_PHONE, 'XXX-XXX-XXXX', (match) => {
+  return match
+    .slice(1)
+    .filter((s) => s)
+    .join('-');
+});
+
+/**
+ * Formatting for US Postal codes, this could be expanded to allow for 9 digit numbers
+ */
+export const ZIP_MASK: MaskFunction = makeMask(RE_ZIP, 'XXXXX', (match) => {
+  return match[1];
+});
+
+/**
+ * Formatting for social security numbers.
+ */
+export const SSN_MASK: MaskFunction = makeMask(RE_SSN, 'XXX-XX-XXXX', (match) => {
+  /**
+   * for future notice, there are rules regarding social security numbers, these could be validated
+   * if we were to add error handling to useLabelMask as an additional set of functionality
+   * The first part should have 3 digits and should not be 000, 666, or between 900 and 999.
+   * The second part should have 2 digits and it should be from 01 to 99.
+   * The third part should have 4 digits and it should be from 0001 to 9999.
+   */
+  return match
+    .slice(1)
+    .filter((s) => s)
+    .join('-');
+});
+
+/**
+ * Currency mask is a little different, we need to modify the incoming content to strip
+ * out any commas or dollar signs before evaluating it via the Intl.NumberFormat function.
+ */
+export const CURRENCY_MASK = (rawInput = '', valueOnly = false) => {
+  const asNumber = Number(rawInput.replace(/[$,]/g, ''));
+  const USDollar = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+  const formatted = USDollar.format(asNumber);
   if (valueOnly) {
-    return formattedDate;
+    return rawInput;
+  } else {
+    return formatted;
   }
-  const hint = 'MM/DD/YYYY';
-  const hintSub = hint.substring(formattedDate.length);
-  return formattedDate + hintSub;
 };
 
 export function useLabelMask(maskFn: MaskFunction, originalInputProps: TextInputProps) {

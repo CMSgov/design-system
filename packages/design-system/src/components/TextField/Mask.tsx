@@ -36,6 +36,10 @@ export class Mask extends React.PureComponent<MaskProps, any> {
     const field = this.field();
     const initialValue = field.props.value || field.props.defaultValue;
 
+    console.warn(
+      '[Deprecated]: Please utilize the LabelMask prop in place of the Mask prop. Mask will be deprecated for use in the next major release'
+    );
+
     this.state = {
       value: maskValue(initialValue, props.mask),
     };
