@@ -62,6 +62,10 @@ export interface TooltipProps {
    */
   offset?: [number, number];
   /**
+   * Called when the tooltip is clicked
+   */
+  onClick?: (e: Event) => any;
+  /**
    * Called when the tooltip is hidden
    */
   onClose?: () => any;
@@ -205,6 +209,7 @@ export const Tooltip = (props: TooltipProps) => {
       offset,
       onClose,
       onOpen,
+      onClick,
       inversed,
       interactiveBorder,
       placement,
@@ -229,17 +234,23 @@ export const Tooltip = (props: TooltipProps) => {
     const eventHandlers = dialog
       ? {
           onTouchStart: () => handleTouch(),
-          onClick: () => {
+          onClick: (e) => {
             if (!isMobile) {
               setActive(!active);
+            }
+            if (onClick) {
+              onClick(e);
             }
           },
         }
       : {
           onTouchStart: () => handleTouch(),
-          onClick: () => {
+          onClick: (e) => {
             if (!isMobile) {
               setActive(!active);
+            }
+            if (onClick) {
+              onClick(e);
             }
           },
           onFocus: () => setActive(true),
