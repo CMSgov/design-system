@@ -98,7 +98,7 @@ exports[`Header renders Direct Enrollment banner 1`] = `
           </span>
         </a>
         <nav
-          aria-label="action"
+          aria-label="Profile and application"
           class="hc-c-header__actions ds-l-col ds-l-col--auto ds-u-margin-left--auto ds-u-font-weight--bold"
           id="hc-c-header__actions"
         >
@@ -148,8 +148,7 @@ exports[`Header renders Direct Enrollment banner 1`] = `
             </svg>
             Menu
           </button>
-          <nav
-            aria-label="Profile and application"
+          <div
             class="hc-c-menu"
             hidden=""
             id="hc-c-menu"
@@ -178,7 +177,7 @@ exports[`Header renders Direct Enrollment banner 1`] = `
                 </a>
               </li>
             </ul>
-          </nav>
+          </div>
         </nav>
       </div>
     </div>
@@ -309,7 +308,7 @@ exports[`Header renders Spanish header 1`] = `
           </span>
         </a>
         <nav
-          aria-label="action"
+          aria-label="Profile and application"
           class="hc-c-header__actions ds-l-col ds-l-col--auto ds-u-margin-left--auto ds-u-font-weight--bold"
           id="hc-c-header__actions"
         >
@@ -359,8 +358,7 @@ exports[`Header renders Spanish header 1`] = `
             </svg>
             Menú
           </button>
-          <nav
-            aria-label="Profile and application"
+          <div
             class="hc-c-menu"
             hidden=""
             id="hc-c-menu"
@@ -389,7 +387,7 @@ exports[`Header renders Spanish header 1`] = `
                 </a>
               </li>
             </ul>
-          </nav>
+          </div>
         </nav>
       </div>
     </div>
@@ -495,7 +493,7 @@ exports[`Header renders full/homepage header 1`] = `
           </span>
         </a>
         <nav
-          aria-label="action"
+          aria-label="Profile and application"
           class="hc-c-header__actions ds-l-col ds-l-col--auto ds-u-margin-left--auto ds-u-font-weight--bold"
           id="hc-c-header__actions"
         >
@@ -545,8 +543,7 @@ exports[`Header renders full/homepage header 1`] = `
             </svg>
             Menu
           </button>
-          <nav
-            aria-label="Profile and application"
+          <div
             class="hc-c-menu"
             hidden=""
             id="hc-c-menu"
@@ -575,7 +572,7 @@ exports[`Header renders full/homepage header 1`] = `
                 </a>
               </li>
             </ul>
-          </nav>
+          </div>
         </nav>
       </div>
     </div>
@@ -681,7 +678,7 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
           </span>
         </a>
         <nav
-          aria-label="action"
+          aria-label="Profile and application"
           class="hc-c-header__actions ds-l-col ds-l-col--auto ds-u-margin-left--auto ds-u-font-weight--bold"
           id="hc-c-header__actions"
         >
@@ -731,8 +728,7 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
             </svg>
             Menu
           </button>
-          <nav
-            aria-label="Profile and application"
+          <div
             class="hc-c-menu"
             hidden=""
             id="hc-c-menu"
@@ -761,7 +757,7 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
                 </a>
               </li>
             </ul>
-          </nav>
+          </div>
         </nav>
       </div>
     </div>
@@ -867,7 +863,7 @@ exports[`Header renders logged-in header with firstName 1`] = `
           </span>
         </a>
         <nav
-          aria-label="action"
+          aria-label="Profile and application"
           class="hc-c-header__actions ds-l-col ds-l-col--auto ds-u-margin-left--auto ds-u-font-weight--bold"
           id="hc-c-header__actions"
         >
@@ -898,8 +894,7 @@ exports[`Header renders logged-in header with firstName 1`] = `
             </svg>
             Menu
           </button>
-          <nav
-            aria-label="Profile and application"
+          <div
             class="hc-c-menu"
             hidden=""
             id="hc-c-menu"
@@ -953,7 +948,7 @@ exports[`Header renders logged-in header with firstName 1`] = `
                 </a>
               </li>
             </ul>
-          </nav>
+          </div>
         </nav>
       </div>
     </div>
@@ -1059,7 +1054,7 @@ exports[`Header renders logged-in header without firstName 1`] = `
           </span>
         </a>
         <nav
-          aria-label="action"
+          aria-label="Profile and application"
           class="hc-c-header__actions ds-l-col ds-l-col--auto ds-u-margin-left--auto ds-u-font-weight--bold"
           id="hc-c-header__actions"
         >
@@ -1085,8 +1080,7 @@ exports[`Header renders logged-in header without firstName 1`] = `
             </svg>
             Menu
           </button>
-          <nav
-            aria-label="Profile and application"
+          <div
             class="hc-c-menu"
             hidden=""
             id="hc-c-menu"
@@ -1135,7 +1129,7 @@ exports[`Header renders logged-in header without firstName 1`] = `
                 </a>
               </li>
             </ul>
-          </nav>
+          </div>
         </nav>
       </div>
     </div>

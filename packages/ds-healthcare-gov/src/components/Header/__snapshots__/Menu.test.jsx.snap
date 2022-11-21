@@ -2,8 +2,7 @@
 
 exports[`Menu removes hidden state 1`] = `
 <div>
-  <nav
-    aria-label="Profile and application"
+  <div
     class="hc-c-menu hc-c-menu--open"
     id="hc-c-menu"
   >
@@ -31,14 +30,13 @@ exports[`Menu removes hidden state 1`] = `
         </a>
       </li>
     </ul>
-  </nav>
+  </div>
 </div>
 `;
 
 exports[`Menu renders MenuList 1`] = `
 <div>
-  <nav
-    aria-label="Profile and application"
+  <div
     class="hc-c-menu"
     hidden=""
     id="hc-c-menu"
@@ -67,6 +65,6 @@ exports[`Menu renders MenuList 1`] = `
         </a>
       </li>
     </ul>
-  </nav>
+  </div>
 </div>
 `;

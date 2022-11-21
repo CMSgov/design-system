@@ -24,17 +24,12 @@ const Menu = (props: MenuProps) => {
   });
 
   return (
-    <nav
-      aria-label="Profile and application"
-      id="hc-c-menu"
-      hidden={!props.open}
-      className={classes}
-    >
+    <div id="hc-c-menu" hidden={!props.open} className={classes}>
       {props.submenuTop}
       {props.beforeLinks}
       {props.links && <MenuLinks links={props.links} />}
       {props.submenuBottom}
-    </nav>
+    </div>
   );
 };
 
