@@ -144,4 +144,18 @@ describe('Tooltip', function () {
       expect(closeButton).not.toBeNull();
     });
   });
+
+  it('should fire onClick handler', () => {
+    const handleClick = jest.fn();
+    renderTooltip({
+      dialog: true,
+      showCloseButton: true,
+      closeButtonLabel: 'custom close label text',
+      onClick: handleClick,
+    });
+    const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
+    userEvent.click(tooltipTrigger);
+
+    expect(handleClick).toHaveBeenCalled();
+  });
 });
