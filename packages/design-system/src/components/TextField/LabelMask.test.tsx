@@ -24,29 +24,29 @@ const allMasks = [
   {
     name: 'Social Security Number',
     mask: SSN_MASK,
-    default: 'XXX-XX-XXXX',
+    default: '###-##-####',
     defaultData: '123456789',
     defaultResult: '123-45-6789',
     partialData: '1234',
-    partialResult: '123-4X-XXXX',
+    partialResult: '123-4#-####',
   },
   {
     name: 'Phone Number',
     mask: PHONE_MASK,
-    default: 'XXX-XXX-XXXX',
+    default: '###-###-####',
     defaultData: '1234567890',
     defaultResult: '123-456-7890',
     partialData: '1234',
-    partialResult: '123-4XX-XXXX',
+    partialResult: '123-4##-####',
   },
   {
     name: 'US Zip Code',
     mask: ZIP_MASK,
-    default: 'XXXXX',
+    default: '#####',
     defaultData: '12345',
     defaultResult: '12345',
     partialData: '123',
-    partialResult: '123XX',
+    partialResult: '123##',
   },
   {
     name: 'US Currency',
@@ -71,7 +71,7 @@ const TestLabelMask = (props: { mask: MaskFunction }) => {
 
 allMasks.forEach((currentMask) => {
   describe(`${currentMask.name} Label mask`, function () {
-    it(`renders default mask, ${currentMask.default}., when no input value set`, () => {
+    it(`renders default mask, ${currentMask.default}, when no input value set`, () => {
       const { container, asFragment } = render(<TestLabelMask mask={currentMask.mask} />);
       const mask = container.querySelector('.ds-c-label-mask');
       const input = container.querySelector('input');

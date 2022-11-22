@@ -57,7 +57,7 @@ export const DATE_MASK: MaskFunction = makeMask(RE_DATE, 'MM/DD/YYYY', (match) =
 /**
  * Formatting for US phone numbers
  */
-export const PHONE_MASK: MaskFunction = makeMask(RE_PHONE, 'XXX-XXX-XXXX', (match) => {
+export const PHONE_MASK: MaskFunction = makeMask(RE_PHONE, '###-###-####', (match) => {
   return match
     .slice(1)
     .filter((s) => s)
@@ -67,14 +67,14 @@ export const PHONE_MASK: MaskFunction = makeMask(RE_PHONE, 'XXX-XXX-XXXX', (matc
 /**
  * Formatting for US Postal codes, this could be expanded to allow for 9 digit numbers
  */
-export const ZIP_MASK: MaskFunction = makeMask(RE_ZIP, 'XXXXX', (match) => {
+export const ZIP_MASK: MaskFunction = makeMask(RE_ZIP, '#####', (match) => {
   return match[1];
 });
 
 /**
  * Formatting for social security numbers.
  */
-export const SSN_MASK: MaskFunction = makeMask(RE_SSN, 'XXX-XX-XXXX', (match) => {
+export const SSN_MASK: MaskFunction = makeMask(RE_SSN, '###-##-####', (match) => {
   /**
    * for future notice, there are rules regarding social security numbers, these could be validated
    * if we were to add error handling to useLabelMask as an additional set of functionality
@@ -93,14 +93,13 @@ export const SSN_MASK: MaskFunction = makeMask(RE_SSN, 'XXX-XX-XXXX', (match) =>
  * out any commas or dollar signs before evaluating it via the Intl.NumberFormat function.
  */
 export const CURRENCY_MASK = (rawInput = '', valueOnly = false) => {
-  const asNumber = Number(rawInput.replace(/[$,]/g, ''));
+  const signed = rawInput.includes('-');
+  const stripped = rawInput.replace(/[^0-9.]/g, '');
+  const clipped = stripped.includes('.') ? stripped.slice(0, stripped.indexOf('.') + 3) : stripped;
   const USDollar = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
-  const formatted = USDollar.format(asNumber);
-  if (valueOnly) {
-    return rawInput;
-  } else {
-    return formatted;
-  }
+  const formatted = USDollar.format(Number(clipped));
+
+  return signed ? '-' + formatted : formatted;
 };
 
 export function useLabelMask(maskFn: MaskFunction, originalInputProps: TextInputProps) {

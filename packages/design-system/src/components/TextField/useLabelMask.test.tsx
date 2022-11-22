@@ -12,7 +12,7 @@ import userEvent from '@testing-library/user-event';
 
 describe('SSN_MASK', () => {
   it('returns just the mask when given no input', () => {
-    expect(SSN_MASK('')).toEqual('XXX-XX-XXXX');
+    expect(SSN_MASK('')).toEqual('###-##-####');
   });
 
   it('masks complete social security numbers', () => {
@@ -23,9 +23,9 @@ describe('SSN_MASK', () => {
   });
 
   it('masks incomplete social security numbers', () => {
-    expect(SSN_MASK('123')).toEqual('123-XX-XXXX');
-    expect(SSN_MASK('1234')).toEqual('123-4X-XXXX');
-    expect(SSN_MASK('1234567')).toEqual('123-45-67XX');
+    expect(SSN_MASK('123')).toEqual('123-##-####');
+    expect(SSN_MASK('1234')).toEqual('123-4#-####');
+    expect(SSN_MASK('1234567')).toEqual('123-45-67##');
   });
 
   it('handles valueOnly parameter', () => {
@@ -37,7 +37,7 @@ describe('SSN_MASK', () => {
 
 describe('ZIP_MASK', () => {
   it('returns just the mask when given no input', () => {
-    expect(ZIP_MASK('')).toEqual('XXXXX');
+    expect(ZIP_MASK('')).toEqual('#####');
   });
 
   it('masks complete zip codes', () => {
@@ -45,10 +45,10 @@ describe('ZIP_MASK', () => {
   });
 
   it('masks incomplete social zip codes', () => {
-    expect(ZIP_MASK('1')).toEqual('1XXXX');
-    expect(ZIP_MASK('12')).toEqual('12XXX');
-    expect(ZIP_MASK('123')).toEqual('123XX');
-    expect(ZIP_MASK('1234')).toEqual('1234X');
+    expect(ZIP_MASK('1')).toEqual('1####');
+    expect(ZIP_MASK('12')).toEqual('12###');
+    expect(ZIP_MASK('123')).toEqual('123##');
+    expect(ZIP_MASK('1234')).toEqual('1234#');
   });
 
   it('handles valueOnly parameter', () => {
@@ -65,27 +65,20 @@ describe('CURRENCY_MASK', () => {
 
   it('returns correctly formatted dollar amounts', () => {
     expect(CURRENCY_MASK('1')).toEqual('$1.00');
-    expect(CURRENCY_MASK('12.479')).toEqual('$12.48');
+    expect(CURRENCY_MASK('12.479')).toEqual('$12.47');
     expect(CURRENCY_MASK('123456789')).toEqual('$123,456,789.00');
     expect(CURRENCY_MASK('0.05')).toEqual('$0.05');
     expect(CURRENCY_MASK('$25')).toEqual('$25.00');
     expect(CURRENCY_MASK('2,300.4')).toEqual('$2,300.40');
     expect(CURRENCY_MASK('-400')).toEqual('-$400.00');
-  });
-
-  it('handles valueOnly parameter', () => {
-    expect(CURRENCY_MASK('1', true)).toEqual('1');
-    expect(CURRENCY_MASK('1.50', true)).toEqual('1.50');
-    expect(CURRENCY_MASK('1.5', true)).toEqual('1.5');
-    expect(CURRENCY_MASK('12', true)).toEqual('12');
-    expect(CURRENCY_MASK('123456', true)).toEqual('123456');
-    expect(CURRENCY_MASK('-20', true)).toEqual('-20');
+    expect(CURRENCY_MASK('ABCD$500.22')).toEqual('$500.22');
+    expect(CURRENCY_MASK('-2500,0.12')).toEqual('-$25,000.12');
   });
 });
 
 describe('PHONE_MASK', () => {
   it('returns just the mask when given no input', () => {
-    expect(PHONE_MASK('')).toEqual('XXX-XXX-XXXX');
+    expect(PHONE_MASK('')).toEqual('###-###-####');
   });
 
   it('masks complete us phone numbers', () => {
@@ -98,10 +91,10 @@ describe('PHONE_MASK', () => {
   });
 
   it('masks incomplete phone numbers', () => {
-    expect(PHONE_MASK('2')).toEqual('2XX-XXX-XXXX');
-    expect(PHONE_MASK('222')).toEqual('222-XXX-XXXX');
-    expect(PHONE_MASK('22255')).toEqual('222-55X-XXXX');
-    expect(PHONE_MASK('2225551')).toEqual('222-555-1XXX');
+    expect(PHONE_MASK('2')).toEqual('2##-###-####');
+    expect(PHONE_MASK('222')).toEqual('222-###-####');
+    expect(PHONE_MASK('22255')).toEqual('222-55#-####');
+    expect(PHONE_MASK('2225551')).toEqual('222-555-1###');
   });
 
   it('handles valueOnly parameter', () => {

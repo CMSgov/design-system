@@ -30,13 +30,13 @@ exports[`useLabelMask renders the appropriate dom for a PHONE_MASK 1`] = `
     <span
       class=""
     >
-      XXX-XXX-XXXX
+      ###-###-####
     </span>
     <span
       aria-hidden="true"
       class="ds-u-display--none"
     >
-      XXX-XXX-XXXX
+      ###-###-####
     </span>
   </div>
 </DocumentFragment>
@@ -51,13 +51,13 @@ exports[`useLabelMask renders the appropriate dom for a SSN_MASK 1`] = `
     <span
       class=""
     >
-      XXX-XX-XXXX
+      ###-##-####
     </span>
     <span
       aria-hidden="true"
       class="ds-u-display--none"
     >
-      XXX-XX-XXXX
+      ###-##-####
     </span>
   </div>
 </DocumentFragment>
@@ -72,13 +72,13 @@ exports[`useLabelMask renders the appropriate dom for a ZIP_MASK 1`] = `
     <span
       class=""
     >
-      XXXXX
+      #####
     </span>
     <span
       aria-hidden="true"
       class="ds-u-display--none"
     >
-      XXXXX
+      #####
     </span>
   </div>
 </DocumentFragment>
