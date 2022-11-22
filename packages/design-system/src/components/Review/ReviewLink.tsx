@@ -1,3 +1,4 @@
+import React from 'react';
 export interface ReviewLinkProps {
   /**
    * Provide this value to give screen readers longer,

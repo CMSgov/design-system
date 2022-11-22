@@ -1,3 +1,4 @@
+import React from 'react';
 import ThemeContent, { ThemeContentProps } from './ThemeContent';
 import { render, screen } from '@testing-library/react';
 

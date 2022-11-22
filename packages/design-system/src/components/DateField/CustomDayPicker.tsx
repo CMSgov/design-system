@@ -1,3 +1,4 @@
+import React from 'react';
 import CustomDayPickerCaption from './CustomDayPickerCaption';
 import format from 'date-fns/format';
 import { DayPicker, DayPickerSingleProps } from 'react-day-picker';

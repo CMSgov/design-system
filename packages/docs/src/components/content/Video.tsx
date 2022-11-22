@@ -1,3 +1,4 @@
+import React from 'react';
 import { withPrefix } from 'gatsby';
 
 export interface VideoProps {

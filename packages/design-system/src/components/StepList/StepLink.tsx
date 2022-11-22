@@ -1,3 +1,4 @@
+import React from 'react';
 export interface StepLinkComponentProps {
   href?: string;
   onClick: (event: React.SyntheticEvent<any>) => any;

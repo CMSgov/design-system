@@ -1,3 +1,4 @@
+import React from 'react';
 import { Button, Dialog, TFunction } from '@cmsgov/design-system';
 import { getPrivacySettings, setPrivacySettings } from './privacySettings';
 import PrivacySettingsTable from './PrivacySettingsTable';

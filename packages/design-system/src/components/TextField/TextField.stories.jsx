@@ -1,3 +1,4 @@
+import React from 'react';
 import TextField from './TextField';
 import { unmaskValue } from './maskHelpers';
 import { DATE_MASK } from './useLabelMask';
