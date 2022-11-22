@@ -1,3 +1,4 @@
+import React from 'react';
 import { FunctionComponent } from 'react';
 import { CheckIcon } from '@cmsgov/design-system';
 

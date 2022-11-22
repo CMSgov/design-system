@@ -1,3 +1,4 @@
+import React from 'react';
 import { Dropdown } from '@cmsgov/design-system';
 import useTheme from '../../helpers/useTheme';
 import { setQueryParam } from '../../helpers/urlUtils';

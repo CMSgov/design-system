@@ -1,3 +1,4 @@
+import React from 'react';
 import { t } from '../i18n';
 import SvgIcon, { IconCommonProps } from './SvgIcon';
 import classNames from 'classnames';

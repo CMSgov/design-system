@@ -1,3 +1,4 @@
+import React from 'react';
 import MenuLinks from './MenuLinks';
 import { UtagContainer } from '@cmsgov/design-system';
 import { render, screen } from '@testing-library/react';

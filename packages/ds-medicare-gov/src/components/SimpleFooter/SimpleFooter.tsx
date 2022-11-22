@@ -1,3 +1,4 @@
+import React from 'react';
 import { FunctionComponent, useEffect, useRef } from 'react';
 import { HHSLogo, Button } from '@cmsgov/design-system';
 import MedicaregovLogo from '../MedicaregovLogo/MedicaregovLogo';

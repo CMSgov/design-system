@@ -1,3 +1,4 @@
+import React from 'react';
 import IdleTimeoutDialog from './IdleTimeoutDialog';
 import { render, screen, fireEvent } from '@testing-library/react';
 

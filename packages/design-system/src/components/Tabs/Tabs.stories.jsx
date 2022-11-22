@@ -1,3 +1,4 @@
+import React from 'react';
 import { Tabs as TabsComponent } from './Tabs';
 import TabPanel from './TabPanel';
 import Tab from './Tab';

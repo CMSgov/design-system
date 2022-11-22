@@ -1,3 +1,4 @@
+import React from 'react';
 import Button, { ButtonVariation } from '../Button/Button';
 import NativeDialog from '../NativeDialog/NativeDialog';
 import classNames from 'classnames';
@@ -142,11 +143,11 @@ export const Dialog = (props: DialogProps) => {
   useLayoutEffect(() => {
     // https://css-tricks.com/prevent-page-scrolling-when-a-modal-is-open/
     const y = window.scrollY ?? 0;
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${y}px`;
+    const bodyClass = 'ds--dialog-open';
+    document.body.classList.add(bodyClass);
+    document.body.style.setProperty('--body_top--dialog-open', `-${y}px`);
     return () => {
-      document.body.style.position = '';
-      document.body.style.top = '';
+      document.body.classList.remove(bodyClass);
       window.scrollTo(0, y);
     };
   }, []);

@@ -1,3 +1,4 @@
+import React from 'react';
 import { HHSLogo } from '@cmsgov/design-system';
 
 const DocSiteFooter = () => {

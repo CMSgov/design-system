@@ -1,3 +1,4 @@
+import React from 'react';
 import useLabelMask, { DATE_MASK } from './useLabelMask';
 import { render, screen } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';

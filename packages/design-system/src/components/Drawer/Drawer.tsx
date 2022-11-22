@@ -1,3 +1,4 @@
+import React from 'react';
 import Button from '../Button/Button';
 import NativeDialog from '../NativeDialog/NativeDialog';
 import { useRef } from 'react';

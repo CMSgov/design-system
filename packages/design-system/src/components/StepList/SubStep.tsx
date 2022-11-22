@@ -1,3 +1,4 @@
+import React from 'react';
 import StepLink, { StepLinkProps } from './StepLink';
 import { StepObject } from './Step';
 
