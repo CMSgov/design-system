@@ -50,7 +50,7 @@ A header and/or footer can have a "sticky" position if the following properties 
 
 This component is an enhanced `<Drawer>` component, providing the same properties as `<Drawer>` in addition to Google Analytics properties.
 
-<PropTable componentName="HelpDrawer" />
+<PropTable componentName="HelpDrawer" hasAnalytics />
 
 #### Focus Trap
 
@@ -97,7 +97,8 @@ A custom heading value can be sent for an analytics event by using the prop `ana
 
 <ThemeContent onlyThemes={['medicare']}>
 
-Links will include a help icon with the link to indicate the link is a help option.
+- All help drawer links will include a help icon with the link to indicate the link is a help option.
+- All help drawer links are clickable.
 
 </ThemeContent>
 
