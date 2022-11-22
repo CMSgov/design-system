@@ -80,6 +80,7 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
   const renderMobileHeaderContent = () => (
     <button
       onClick={toggleBanner}
+      type="button"
       className="ds-c-usa-banner__button"
       aria-expanded={isBannerOpen}
       aria-controls={id}

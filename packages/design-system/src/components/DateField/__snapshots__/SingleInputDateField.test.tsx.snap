@@ -107,6 +107,7 @@ exports[`SingleInputDateField with picker renders with picker 1`] = `
       />
       <button
         class="ds-c-single-input-date-field__button"
+        type="button"
       >
         <svg
           aria-hidden="false"

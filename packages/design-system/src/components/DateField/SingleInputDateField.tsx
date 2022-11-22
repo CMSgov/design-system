@@ -155,6 +155,7 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
           <button
             className="ds-c-single-input-date-field__button"
             onClick={() => setPickerVisible(!pickerVisible)}
+            type="button"
             ref={calendarButtonRef}
           >
             <CalendarIcon
