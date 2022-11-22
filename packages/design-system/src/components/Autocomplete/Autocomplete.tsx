@@ -1,4 +1,3 @@
-import React from 'react';
 /**
  * https://www.levelaccess.com/differences-aria-1-0-1-1-changes-rolecombobox/
  * https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete

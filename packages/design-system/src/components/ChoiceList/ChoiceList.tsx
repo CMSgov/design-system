@@ -1,4 +1,3 @@
-import React from 'react';
 import Choice, { ChoiceProps as ChoiceComponentProps } from './Choice';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 import React from 'react';
