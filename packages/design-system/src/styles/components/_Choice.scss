@@ -110,8 +110,7 @@ label,
     cursor: not-allowed;
 
     &::before {
-      background-color: $choice__background-color--disabled;
-      border-color: $choice__border-color--disabled;
+      box-shadow: inset 0 0 4em 1em $choice__background-color--disabled;
     }
 
     @media (-ms-high-contrast: active), (forced-colors: active) {
