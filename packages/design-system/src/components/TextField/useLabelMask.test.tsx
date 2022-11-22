@@ -1,3 +1,4 @@
+import React from 'react';
 import useLabelMask, {
   DATE_MASK,
   SSN_MASK,

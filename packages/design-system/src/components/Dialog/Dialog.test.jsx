@@ -1,3 +1,4 @@
+import React from 'react';
 import Dialog from './Dialog';
 import { setDialogSendsAnalytics } from '../flags';
 import { fireEvent, render, screen } from '@testing-library/react';

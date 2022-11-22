@@ -1,3 +1,4 @@
+import React from 'react';
 export default {
   title: 'Foundations/Typography/Body Text',
   parameters: {

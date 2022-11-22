@@ -1,3 +1,4 @@
+import React from 'react';
 import TextField from './TextField';
 import { unmaskValue } from './maskHelpers';
 import { DATE_MASK, PHONE_MASK, SSN_MASK, ZIP_MASK, CURRENCY_MASK } from './useLabelMask';

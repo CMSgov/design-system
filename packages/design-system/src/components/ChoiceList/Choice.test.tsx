@@ -1,3 +1,4 @@
+import React from 'react';
 import Choice, { ChoiceProps, ChoiceType } from './Choice';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';

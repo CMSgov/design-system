@@ -1,3 +1,4 @@
+import React from 'react';
 import { DefaultLink, LinkIdentifier } from './defaultMenuLinks';
 import { Link } from './Header';
 import { sendHeaderEvent } from './analytics';

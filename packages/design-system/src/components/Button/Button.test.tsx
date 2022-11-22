@@ -1,3 +1,4 @@
+import React from 'react';
 import Button from './Button';
 import { UtagContainer } from '../analytics';
 import { setButtonSendsAnalytics } from '../flags';

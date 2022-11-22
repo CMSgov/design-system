@@ -1,3 +1,4 @@
+import React from 'react';
 import Drawer, { DrawerProps } from '../Drawer/Drawer';
 import classNames from 'classnames';
 import useHelpDrawerAnalytics from './useHelpDrawerAnalytics';

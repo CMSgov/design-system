@@ -1,3 +1,4 @@
+import React from 'react';
 import PrivacySettingsDialog from '../PrivacySettings/PrivacySettingsDialog';
 import { useState } from 'react';
 import { TFunction } from '@cmsgov/design-system';

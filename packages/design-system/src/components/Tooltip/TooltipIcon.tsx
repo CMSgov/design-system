@@ -1,3 +1,4 @@
+import React from 'react';
 import { InfoCircleIconThin } from '../Icons';
 import { IconCommonProps } from '../Icons/SvgIcon';
 import classNames from 'classnames';

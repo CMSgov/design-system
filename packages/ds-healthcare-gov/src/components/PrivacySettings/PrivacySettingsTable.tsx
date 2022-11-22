@@ -1,3 +1,4 @@
+import React from 'react';
 import { ChoiceList } from '@cmsgov/design-system';
 
 export interface PrivacySettingsProperty {

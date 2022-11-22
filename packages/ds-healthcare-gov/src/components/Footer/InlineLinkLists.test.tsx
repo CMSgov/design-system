@@ -1,3 +1,4 @@
+import React from 'react';
 import InlineLinkLists from './InlineLinkLists';
 import { render, screen } from '@testing-library/react';
 

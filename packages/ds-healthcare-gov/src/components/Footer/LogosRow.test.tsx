@@ -1,3 +1,4 @@
+import React from 'react';
 import LogosRow from './LogosRow';
 import { render } from '@testing-library/react';
 
