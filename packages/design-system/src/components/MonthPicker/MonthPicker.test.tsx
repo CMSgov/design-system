@@ -1,3 +1,4 @@
+import React from 'react';
 import MonthPicker from './MonthPicker';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';

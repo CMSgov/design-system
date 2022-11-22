@@ -1,3 +1,4 @@
+import React from 'react';
 import '@testing-library/jest-dom';
 import { UtagContainer } from '@cmsgov/design-system';
 import ActionMenu from './ActionMenu';

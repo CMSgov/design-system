@@ -1,3 +1,4 @@
+import React from 'react';
 import TextInput, { OmitProps, TextInputProps } from './TextInput';
 import { fireEvent, render, screen } from '@testing-library/react';
 

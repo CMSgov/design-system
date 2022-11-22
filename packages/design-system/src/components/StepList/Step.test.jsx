@@ -1,3 +1,4 @@
+import React from 'react';
 import { defaultStep, generateStep } from './__mocks__/generateStep';
 import Step from './Step';
 import { render, screen, fireEvent } from '@testing-library/react';

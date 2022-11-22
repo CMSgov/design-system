@@ -1,3 +1,4 @@
+import React from 'react';
 type ThemeName = 'core' | 'healthcare' | 'medicare';
 
 export interface ThemeContentProps {

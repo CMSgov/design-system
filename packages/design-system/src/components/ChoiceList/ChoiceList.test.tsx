@@ -1,3 +1,4 @@
+import React from 'react';
 import ChoiceList, { ChoiceListType } from './ChoiceList';
 import { Alert } from '../Alert';
 import { render, waitFor, screen } from '@testing-library/react';

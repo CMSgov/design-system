@@ -1,3 +1,4 @@
+import React from 'react';
 const spacerOpts = ['0', '05', '1', '2', '3', '4', '5', '6', '7'];
 
 const PaddingSpacingExample = ({ propName }) => {

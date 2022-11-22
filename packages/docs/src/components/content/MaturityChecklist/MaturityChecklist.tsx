@@ -1,3 +1,4 @@
+import React from 'react';
 import MaturityChecklistItem, { CheckStatus } from './MaturityChecklistItem';
 
 interface MaturityChecklistProps {

@@ -1,3 +1,4 @@
+import React from 'react';
 import Prism from 'prismjs';
 
 import { MDXRenderer } from 'gatsby-plugin-mdx';

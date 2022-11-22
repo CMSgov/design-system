@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState, useRef, useEffect } from 'react';
 import { withPrefix } from 'gatsby';
 import classnames from 'classnames';

@@ -1,4 +1,5 @@
 import { FormControl, FormControlProps, FormControlPropKeys } from '../FormControl/FormControl';
+import React from 'react';
 import DateInput from './DateInput';
 import defaultDateFormatter from './defaultDateFormatter';
 import omit from 'lodash/omit';

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Alert } from '../Alert';
 import ChoiceList from './ChoiceList';
 import Choice from './Choice';
