@@ -1,3 +1,4 @@
+import React from 'react';
 /* eslint-disable react/no-danger */
 import { useRef, useState } from 'react';
 import uniqueId from 'lodash/uniqueId';
