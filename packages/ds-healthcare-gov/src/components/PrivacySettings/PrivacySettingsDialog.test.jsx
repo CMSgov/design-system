@@ -1,3 +1,4 @@
+import React from 'react';
 import '@testing-library/jest-dom';
 import PrivacySettingsDialog from './PrivacySettingsDialog';
 import { fireEvent, render, screen } from '@testing-library/react';

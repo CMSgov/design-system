@@ -1,3 +1,4 @@
+import React from 'react';
 // Polyfills required for IE11 compatibility
 // Features used by app or its dependencies (i.e. @popperjs/core in Tooltip)
 import 'core-js/stable/object/assign';

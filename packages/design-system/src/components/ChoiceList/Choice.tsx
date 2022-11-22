@@ -1,3 +1,4 @@
+import React from 'react';
 import EvEmitter from 'ev-emitter';
 import FormLabel from '../FormLabel/FormLabel';
 import React from 'react';

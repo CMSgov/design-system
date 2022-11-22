@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from 'react';
 import LabelMask from './LabelMask';
 import { DATE_MASK } from './index';

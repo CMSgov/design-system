@@ -1,3 +1,4 @@
+import React from 'react';
 import { useArgs } from '@storybook/client-api';
 
 import Header from './Header';

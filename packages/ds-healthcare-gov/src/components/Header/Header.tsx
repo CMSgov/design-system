@@ -1,3 +1,4 @@
+import React from 'react';
 import ActionMenu from './ActionMenu';
 import DeConsumerMessage from './DeConsumerMessage';
 import Logo from '../Logo/Logo';

@@ -1,3 +1,4 @@
+import React from 'react';
 import InlineError from '../InlineError/InlineError';
 import React from 'react';
 import classNames from 'classnames';

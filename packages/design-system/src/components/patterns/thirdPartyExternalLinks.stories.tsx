@@ -1,3 +1,4 @@
+import React from 'react';
 import { useArgs } from '@storybook/client-api';
 import { Button } from '../Button';
 import { Dialog } from '../Dialog';

@@ -1,3 +1,4 @@
+import React from 'react';
 export interface WrapperDivProps {
   innerRef: React.RefObject<HTMLDivElement>;
   [additional_props: string]: unknown;

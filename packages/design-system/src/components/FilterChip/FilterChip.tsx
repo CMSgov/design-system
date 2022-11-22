@@ -1,3 +1,4 @@
+import React from 'react';
 import { CloseIcon, CloseIconThin } from '../Icons';
 import React from 'react';
 import classNames from 'classnames';

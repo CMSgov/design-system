@@ -1,3 +1,4 @@
+import React from 'react';
 import Alert from '../Alert/Alert';
 import React from 'react';
 import TableCaption from './TableCaption';

@@ -1,3 +1,4 @@
+import React from 'react';
 import SkipNav from './SkipNav';
 
 export default {

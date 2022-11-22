@@ -1,3 +1,4 @@
+import React from 'react';
 import { FunctionComponent } from 'react';
 import { CloseIcon } from '@cmsgov/design-system';
 
