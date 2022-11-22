@@ -23,6 +23,7 @@ export default {
       },
       { label: 'Choice 2', requirementLabel: 'Choice hint text', value: 'B' },
       { label: 'Disabled choice 3', value: 'C', disabled: true },
+      { label: 'Disabled choice 4', value: 'D', disabled: true, defaultChecked: true },
     ],
   },
   subcomponents: { Alert, Choice },
