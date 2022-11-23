@@ -31,7 +31,7 @@ git checkout main
 git checkout -b $TEMP_BRANCH
 yarn lerna version --no-push --no-git-tag-version --exact ${EXTRA_OPTS[@]}
 
-git add *
+git add -u
 git commit -m 'version bump'
 git push --set-upstream origin $TEMP_BRANCH
 
