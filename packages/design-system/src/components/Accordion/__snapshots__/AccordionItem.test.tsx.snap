@@ -10,6 +10,7 @@ exports[`AccordionItem renders an accordion item 1`] = `
       aria-expanded="false"
       class="ds-c-accordion__button"
       id="accordionItem_1-button"
+      type="button"
     >
       Heading for accordion item
       <svg

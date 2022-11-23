@@ -123,6 +123,7 @@ export class AccordionItem extends React.Component<AccordionItemProps, Accordion
               aria-controls={this.contentId}
               id={this.buttonId}
               onClick={this.handleClick}
+              type="button"
             >
               {heading}
               {isItemOpen ? CloseIcon : OpenIcon}
