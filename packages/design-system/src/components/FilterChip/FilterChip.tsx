@@ -78,6 +78,7 @@ export class FilterChip extends React.Component<FilterChipProps> {
         className={buttonClassNames}
         onClick={this.handleClick}
         onKeyDown={this.handleKeyDown}
+        type="button"
       >
         <span
           className="ds-c-filter-chip__label"
