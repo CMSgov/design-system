@@ -13,6 +13,7 @@ exports[`Accordion renders accordion 1`] = `
         aria-expanded="false"
         class="ds-c-accordion__button"
         id="1-button"
+        type="button"
       >
         First amendment
         <svg
@@ -54,6 +55,7 @@ exports[`Accordion renders accordion 1`] = `
         aria-expanded="false"
         class="ds-c-accordion__button"
         id="2-button"
+        type="button"
       >
         Second amendment
         <svg
