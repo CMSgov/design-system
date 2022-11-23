@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/ds-healthcare-gov",
-  "version": "9.0.1",
+  "version": "9.0.0",
   "publishConfig": {
     "tag": "latest",
     "access": "public"
@@ -20,7 +20,7 @@
     "src"
   ],
   "dependencies": {
-    "@cmsgov/design-system": "5.0.1",
+    "@cmsgov/design-system": "5.0.0",
     "@types/js-cookie": "^3.0.2",
     "@types/react": "^17.0.10",
     "@types/react-dom": "^17.0.10",
