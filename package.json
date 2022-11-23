@@ -24,7 +24,7 @@
     "precommit": "lint-staged",
     "prepare": "husky install",
     "prettier": "yarn prettier --write 'packages/**/*.{js,jsx,tsx,scss,html,md,mdx,json}'",
-    "release:tag": "./scripts/bump-and-tag-release.sh",
+    "release": "./scripts/bump-and-tag-release.sh",
     "release:bump": "./scripts/bump-main.sh",
     "serve:docs": "yarn --cwd ./packages/docs serve",
     "start": "yarn --cwd ./packages/docs develop",

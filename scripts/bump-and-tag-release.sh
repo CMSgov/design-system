@@ -91,9 +91,9 @@ if [ $? -eq 0 ]; then
   echo
   echo "${YELLOW}NEXT STEPS:${NC}"
   echo
-  echo "${YELLOW}  1. Publish this release using the \`${CYAN}publish${YELLOW}\` jenkins job using one of the tags listed above${NC}."
+  echo "${YELLOW}  1. Publish this release using the ${CYAN}publish${YELLOW} jenkins job using one of the tags listed above${NC}."
   echo
-  echo "${YELLOW}  2. Run ${CYAN}yarn release:bump ${YELLOW}using the same package versions here and follow the instructions provided."
+  echo "${YELLOW}  2. Run ${CYAN}yarn release:bump ${YELLOW}to bump versions in main so we keep it in sync with this release."
   echo
 else
   echo "${RED}! Error ${NC} Something went wrong."
