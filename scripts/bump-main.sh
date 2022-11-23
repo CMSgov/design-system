@@ -29,7 +29,7 @@ echo "+ Creating version bump in ${CYAN}${TEMP_BRANCH}${NC}, to be merged into $
 echo "+ Please make sure to use the same versions in the latest release."
 git checkout main
 git checkout -b $TEMP_BRANCH
-yarn lerna version --no-push --exact --exact ${EXTRA_OPTS[@]}
+yarn lerna version --no-push --no-git-tag-version --exact ${EXTRA_OPTS[@]}
 git push --set-upstream origin $TEMP_BRANCH
 
 echo "+ Creating pull request via ${CYAN}gh${NC} to merge these updates into ${GREEN}main${NC}..."
