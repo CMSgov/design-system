@@ -36,6 +36,6 @@ git commit -m 'version bump'
 git push --set-upstream origin $TEMP_BRANCH
 
 echo "+ Creating pull request via ${CYAN}gh${NC} to merge these updates into ${GREEN}main${NC}..."
-gh pr create --base main --title "[RELEASE] $(date '+m/%d') Version bump main" --body "Please review version updates and compare against latest release branch" --reviewer "zarahzachz" --reviewer "pwolfert" --reviewer "forrestbaer"
+gh pr create --base main --title "[RELEASE] $(date '+%m/%d') Version bump main" --body "Please review version updates and compare against latest release branch" --reviewer "zarahzachz" --reviewer "pwolfert" --reviewer "forrestbaer"
 
 git checkout main
