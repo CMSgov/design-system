@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 set -e
 
@@ -61,47 +61,43 @@ if [ "$DELETE_LAST" = true ]; then
   exit 0
 fi
 
-# bump current versions in active branch
-echo "${GREEN}Bumping package versions...${NC}"
+echo "+ ${GREEN}Bumping package versions ${NC}for release..."
+
 PRE_VERSION_HASH=$(git rev-parse HEAD)
 yarn lerna version --no-push --exact ${EXTRA_OPTS[@]}
 POST_VERSION_HASH=$(git rev-parse HEAD)
 
 if [ "$PRE_VERSION_HASH" = "$POST_VERSION_HASH" ]; then
-  echo "${RED}No bump commit detected. exiting...${NC}"
+  echo "${RED}! No bump commit detected. exiting...${NC}"
   exit 1
+else
+  echo "+ Version bumps completed ${GREEN}successfully!${NC}"
 fi
 
-# read tags and push to active branch 
-echo "${GREEN}Pushing tags and version update commit to Github...${NC}"
 read_previous_commit_tags
 
+echo "+ Pushing tags and version to ${GREEN}${BRANCH}${NC}..."
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
 git push --set-upstream origin $BRANCH
 git push origin $TAGS
 
-# create temporary release branch from latest commit which is tagged
-# add an empty commit so it can be pushed to origin and PR'd then 
-# move back to previous branch so tags can be deleted with --undo
-# if necessary.
-echo "${GREEN}Creating temporary release branch...${NC}"
-BRANCHREF=$(git rev-parse --short HEAD)
-TEMP_BRANCH="release-${BRANCHREF}"
-git checkout -b $TEMP_BRANCH
-git commit --allow-empty -m "DS Release Bump"
-git push --set-upstream origin $TEMP_BRANCH
-git checkout $BRANCH
+if [ $? -eq 0 ]; then
+  echo
+  echo "${GREEN}Release has been tagged and pushed to ${BRANCH}!${NC}"
+  echo
+  echo "${PACKAGE_VERSIONS}"
+  echo
+  echo "${YELLOW}-------${NC}"
+  echo
+  echo "${YELLOW}NEXT STEPS:${NC}"
+  echo
+  echo "${YELLOW}  1. Publish this release using the ${CYAN}publish${YELLOW} jenkins job using the tag '${CYAN}${PACKAGE_VERSION}${YELLOW}'."
+  echo
+  echo "${YELLOW}  2. Run ${CYAN}yarn release:bump ${YELLOW}to bump versions in main so we keep it in sync with this release."
+  echo
+else
+  echo "${RED}! Error ${NC} Something went wrong."
+  echo "${RED}! Run ${NC}yarn release -u ${RED}to roll-back changes made so far."
+  exit 1
+fi
 
-echo ""
-echo "${GREEN}Release has been tagged and pushed to origin.${NC}"
-echo ""
-echo "${PACKAGE_VERSIONS}"
-echo ""
-echo "${YELLOW}-------${NC}"
-echo ""
-echo "${YELLOW}NEXT STEPS:${NC}"
-echo ""
-echo "${YELLOW}  1. Create a pull request for merging \`${CYAN}$TEMP_BRANCH${YELLOW}\` into main to save the version bump${NC}."
-echo ""
-echo "${YELLOW}  2. Publish this release using the \`${CYAN}publish${YELLOW}\` jenkins job${NC}."
-echo ""
