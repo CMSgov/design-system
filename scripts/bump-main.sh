@@ -8,28 +8,12 @@ YELLOW='\033[0;33m'
 CYAN='\033[0;36m'
 NC='\033[0m' # No color
 
-# Parse options
-while [[ $# -gt 0 ]]
-do
-  case "$1" in
-    -u|--undo)
-      DELETE_LAST=true
-      shift # past argument
-      ;;
-    *)
-      # unknown option
-      EXTRA_OPTS+=("$1") # save it in an array for later
-      shift # past argument
-      ;;
-  esac
-done
-
 TEMP_BRANCH="version-bump-$(date '+%m%d%Y-%H%M')"
 echo "+ Creating version bump in ${CYAN}${TEMP_BRANCH}${NC}, to be merged into ${GREEN}main${NC}..."
 echo "+ Please make sure to use the same versions in the latest release."
 git checkout main
 git checkout -b $TEMP_BRANCH
-yarn lerna version --no-push --no-git-tag-version --exact ${EXTRA_OPTS[@]}
+yarn lerna version --no-push --no-git-tag-version --exact
 
 git add -u
 git commit -m 'version bump'
