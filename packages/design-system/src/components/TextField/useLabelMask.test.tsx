@@ -61,7 +61,7 @@ describe('ZIP_MASK', () => {
 
 describe('CURRENCY_MASK', () => {
   it('returns just the mask when given no input', () => {
-    expect(CURRENCY_MASK('')).toEqual('$0.00');
+    expect(CURRENCY_MASK('')).toEqual('$');
   });
 
   it('returns correctly formatted dollar amounts', () => {
@@ -72,7 +72,7 @@ describe('CURRENCY_MASK', () => {
     expect(CURRENCY_MASK('$25')).toEqual('$25.00');
     expect(CURRENCY_MASK('2,300.4')).toEqual('$2,300.40');
     expect(CURRENCY_MASK('-400')).toEqual('-$400.00');
-    expect(CURRENCY_MASK('ABCD$500.22')).toEqual('$500.22');
+    expect(CURRENCY_MASK('ABCD$500.22')).toEqual('$');
     expect(CURRENCY_MASK('-2500,0.12')).toEqual('-$25,000.12');
   });
 });

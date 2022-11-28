@@ -52,7 +52,7 @@ const allMasks = [
   {
     name: 'US Currency',
     mask: CURRENCY_MASK,
-    default: '$0.00',
+    default: '$',
     defaultData: '12345.67',
     defaultResult: '$12,345.67',
     partialData: '123',
