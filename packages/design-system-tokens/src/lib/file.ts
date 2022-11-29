@@ -27,7 +27,7 @@ export const getAllFiles = (rootPath: string, arrayOfFiles: string[] = []): stri
 };
 
 /**
- * Search out all availible modules under a path and return an
+ * Search out all available modules under a path and return an
  * array of objects which contains file descriptors for each file
  *
  * @param rootPath - The root path to collect file data from recursively
