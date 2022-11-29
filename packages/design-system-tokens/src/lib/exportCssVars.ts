@@ -90,7 +90,9 @@ const writeMap = (filename: string, file: FileDescriptor, importedModule: any, s
     );
   });
 
-  writeFile(filename, output);
+  if (output.length > 0) {
+    writeFile(filename, output);
+  }
 };
 
 /**
