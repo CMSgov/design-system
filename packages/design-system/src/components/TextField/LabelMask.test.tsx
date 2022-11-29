@@ -56,7 +56,7 @@ const allMasks = [
     defaultData: '12345.67',
     defaultResult: '$12,345.67',
     partialData: '123',
-    partialResult: '$123.00',
+    partialResult: '$123',
   },
 ];
 

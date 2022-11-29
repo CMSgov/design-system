@@ -98,7 +98,9 @@ export const CURRENCY_MASK = makeMask(RE_CURRENCY, '$', (match) => {
   const stripped = match[0].replace(/[^0-9.]/g, '');
   const clipped = stripped.includes('.') ? stripped.slice(0, stripped.indexOf('.') + 3) : stripped;
   const USDollar = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
-  const formatted = USDollar.format(Number(clipped));
+  const formatted = USDollar.format(Number(clipped)).replace(/\.00/, '');
+
+  console.log(Number(clipped));
 
   if (Number(clipped) > 0) {
     return signed ? '-' + formatted : formatted;
@@ -168,7 +170,7 @@ export function useLabelMask(maskFn: MaskFunction, originalInputProps: TextInput
     labelMask: (
       <div className="ds-c-label-mask" id={labelMaskId}>
         <span className={classNames(focused && 'ds-u-visibility--screen-reader')}>
-          {maskFn('')}
+          {currentMask}
         </span>
         <span className={classNames(!focused && 'ds-u-display--none')} aria-hidden="true">
           {currentMask}

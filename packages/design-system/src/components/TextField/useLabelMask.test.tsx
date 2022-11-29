@@ -65,13 +65,14 @@ describe('CURRENCY_MASK', () => {
   });
 
   it('returns correctly formatted dollar amounts', () => {
-    expect(CURRENCY_MASK('1')).toEqual('$1.00');
+    expect(CURRENCY_MASK('1')).toEqual('$1');
     expect(CURRENCY_MASK('12.479')).toEqual('$12.47');
-    expect(CURRENCY_MASK('123456789')).toEqual('$123,456,789.00');
+    expect(CURRENCY_MASK('123456789')).toEqual('$123,456,789');
     expect(CURRENCY_MASK('0.05')).toEqual('$0.05');
-    expect(CURRENCY_MASK('$25')).toEqual('$25.00');
+    expect(CURRENCY_MASK('$25')).toEqual('$25');
     expect(CURRENCY_MASK('2,300.4')).toEqual('$2,300.40');
-    expect(CURRENCY_MASK('-400')).toEqual('-$400.00');
+    expect(CURRENCY_MASK('-400')).toEqual('-$400');
+    expect(CURRENCY_MASK('-428.33')).toEqual('-$428.33');
     expect(CURRENCY_MASK('ABCD$500.22')).toEqual('$');
     expect(CURRENCY_MASK('-2500,0.12')).toEqual('-$25,000.12');
   });

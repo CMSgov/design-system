@@ -125,7 +125,7 @@ exports[`useLabelMask shows masked value when focused 1`] = `
     <span
       class="ds-u-visibility--screen-reader"
     >
-      MM/DD/YYYY
+      12/DD/YYYY
     </span>
     <span
       aria-hidden="true"
