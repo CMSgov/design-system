@@ -116,6 +116,50 @@ Heading--4xl is used for the heading on landing pages that serve as an entry poi
       <h1 class="ds-text-heading--sm">{loremIpsumGenerator('s')}</h1>
 </EmbeddedExample>
 
+### Link Heading
+<EmbeddedExample>
+   <h1 class="ds-text-heading--lg"><a href="javascript:void(0);">{loremIpsumGenerator('s')}</a></h1>
+</EmbeddedExample>
+
+### On dark background
+<EmbeddedExample>
+ <div class="ds-base--inverse ds-u-padding--2">
+      <h3 class="ds-text-heading--lg">{loremIpsumGenerator('s')}</h3>
+      <h3 class="ds-text-heading--lg"><a href="javascript:void(0);">{loremIpsumGenerator('s')}</a></h3>
+      </div>
+</EmbeddedExample>
+
+
+<ThemeContent onlyThemes={['medicare']}>
+
+### Custom heading styles
+
+#### Teal heading 
+Only used for landing pages and marketing material to apply emphasis to words within a header. 
+
+<EmbeddedExample>
+      <h3 class="ds-text-heading--lg ds-u-color--primary">Teal heading</h3>
+     
+</EmbeddedExample>
+
+
+### Eyebrow/Eyelash header
+
+In some cases, it is better to group header elements into a header component. This can be referred to as the Eyelash/Eyebrow header where you have the main header and an optional top header (eyebrow) or bottom header (eyelash) header. 
+
+This is an optional header design.
+
+
+<EmbeddedExample>
+
+<h3 class="ds-text-heading--md ds-u-margin-bottom--0">Eyebrow header</h3>
+<h1 class="ds-text-heading--3xl ds-u-margin--0">Main header</h1>
+<p class="ds-text-body--md ds-u-margin-top--0">Eyelash header</p>
+
+</EmbeddedExample>
+
+</ThemeContent>
+
 ## Code
 
 ### Responsive typography
@@ -184,13 +228,13 @@ Header sizes should be reduced on mobile screen sizes. Header sizes can be reduc
 - Xlarge to Large - Down 1 size
 - Medium to Small - No change in size
 
-## Typography Spacing
+### Typography Spacing
 
 Spacing between text elements can make an impact on the overall design and having a consistent spacing between elements improves the flow of a page and improves consistency between products.
 
 Here are some spacing elements that can help create guides for spacing between elements. 
 
-### How to use spacers
+#### How to use spacers
 
 - Use spacers that correspond to the header being applied. If you use a `heading--lg` header, apply a `$spacer-5` spacer to the body content below the header. 
 - When it comes to content relationships. Header sizes should be of equal or smaller size to the body content.
@@ -204,7 +248,7 @@ Here are some spacing elements that can help create guides for spacing between e
 |Heading--2xl | $spacer-7    | 56px  | <div class="ds-u-fill--secondary example-spacer-7"></div>    |
 |Heading--3xl | No variable  | 72px  |                                                              |
 
-### Spacing example 
+#### Spacing example 
 
 <EmbeddedExample>
 
@@ -227,50 +271,4 @@ Here are some spacing elements that can help create guides for spacing between e
 - The smallest paragraph text for legibility to the Medicare audience should not be smaller than 16 px (except for legal/caption text).
 - Uppercase font should not be used (exception for form elements).
 
-</ThemeContent>
-
-<ThemeContent onlyThemes={['medicare']}>
-
-### Header styles
-
-There are five header styles that can be used:
-
-<EmbeddedExample>
-      <h3 class="ds-text-heading--lg">1. Default header</h3>
-      <p>This is the header style that would be used in most cases</p>
-      <h3 class="ds-text-heading--lg">2. Teal header</h3>
-      <p>Only used for landing pages and marketing material to apply emphasis to words within a header. </p>
-      <h3 class="ds-text-heading--lg"><a href="javascript:void(0);">3. Link header</a></h3>
-      <p>Used when you need to have a header as a link</p>
-      <div class="ds-base--inverse ds-u-padding--2">
-      <h3 class="ds-text-heading--lg">4. Header on dark backgrounds</h3>
-      <p>Used on dark backgrounds only</p>
-      <h3 class="ds-text-heading--lg"><a href="javascript:void(0);">5. Header link on dark backgrounds</a></h3>
-      <p>Used for header links on dark backgrounds.</p>
-      </div>
-</EmbeddedExample>
-
-### Eyebrow/Eyelash header
-
-In some cases it is better to group header elements into a header component. This can be referred to the Eyelash/Eyebrow header where you have a main header and an optional top header (eyebrow) and bottom header (eyelash) header. 
-
-You can find this symbol on the components page
-
-This is an optional header design and not required to be used. If you do choose to use this header design then the header elements should go in order. 
-
-1. Main header
-2. Eyebrow header
-3. Eyelash header
-
-<div class="ds-u-border--1 ds-u-padding--2">
-
-<code>.ds-text-heading--md .ds-u-margin-bottom--0</code><br />
-<code>.ds-text-heading--3xl .ds-u-margin--0</code><br />
-<code>.ds-text-body--md .ds-u-margin-top--0</code>
-
-<h3 class="ds-text-heading--md ds-u-margin-bottom--0">Eyebrow header</h3>
-<h1 class="ds-text-heading--3xl ds-u-margin--0">Main header</h1>
-<p class="ds-text-body--md ds-u-margin-top--0">Eyelash header</p>
-
-</div>
 </ThemeContent>
