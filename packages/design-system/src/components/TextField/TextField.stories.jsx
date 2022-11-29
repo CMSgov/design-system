@@ -128,6 +128,7 @@ const LabelMaskedField = (args) => {
 
   return <TextField {...args} onChange={onChange} />;
 };
+const UncontrolledLabelMaskedField = (args) => <TextField {...args} />;
 
 LabelMaskedField.argTypes = {
   // Hide irrelevant props
@@ -140,7 +141,7 @@ export const LabelMaskedDate = LabelMaskedField.bind({});
 LabelMaskedDate.args = {
   name: 'labelMask-date',
   label: 'Enter the last day of your coverage',
-  hint: "If you don't have it, give your best estimate. For example: 01/02/2022",
+  hint: 'Use the format displayed below.',
   labelMask: DATE_MASK,
 };
 
@@ -170,6 +171,22 @@ LabelMaskedPostalCode.args = {
 
 export const LabelMaskedCurrency = LabelMaskedField.bind({});
 LabelMaskedCurrency.args = {
+  name: 'labelMask-currency',
+  label: 'Enter a dollar amount',
+  hint: 'Please enter a dollar amount',
+  labelMask: CURRENCY_MASK,
+};
+
+export const UncontrolledLabelMaskedDate = UncontrolledLabelMaskedField.bind({});
+UncontrolledLabelMaskedDate.args = {
+  name: 'labelMask-date',
+  label: 'Enter the last day of your coverage',
+  hint: 'Use the format displayed below.',
+  labelMask: DATE_MASK,
+};
+
+export const UncontrolledLabelMaskedCurrency = UncontrolledLabelMaskedField.bind({});
+UncontrolledLabelMaskedCurrency.args = {
   name: 'labelMask-currency',
   label: 'Enter a dollar amount',
   hint: 'Please enter a dollar amount',

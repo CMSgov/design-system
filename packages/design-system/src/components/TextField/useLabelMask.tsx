@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
 import { TextInputProps } from './TextInput';
@@ -15,6 +15,7 @@ export const RE_DATE = /^(\d{1,2})[\D]?(\d{1,2})?[\D]?(\d{1,4})?/;
 export const RE_PHONE = /^\(?(\d{1,3})?\)?[\s.-]?(\d{1,3})?[\s.-]?(\d{1,4})?/;
 export const RE_SSN = /([*\d]{1,3})[\s.-]?([*\d]{1,2})?[\s.-]?([\d{1,4}]+)?/;
 export const RE_ZIP = /(\d{1,5})/;
+export const RE_CURRENCY = /\$?[\d,.-]*/;
 
 /**
  * This function returns a mask function which returns either the formatted match only, or
@@ -24,13 +25,12 @@ export const RE_ZIP = /(\d{1,5})/;
 const makeMask = (regex: RegExp, hint: string, formatter: (stringMatch: string[]) => string) => {
   return (rawInput = '', valueOnly = false) => {
     const match = regex.exec(rawInput);
-    let formattedMatch = '';
-    if (match) {
-      formattedMatch = formatter(match);
-    }
+    const formattedMatch = match ? formatter(match) : '';
+
     if (valueOnly) {
       return formattedMatch;
     }
+
     const hintSub = hint.substring(formattedMatch.length);
     return formattedMatch + hintSub;
   };
@@ -93,15 +93,21 @@ export const SSN_MASK: MaskFunction = makeMask(RE_SSN, '###-##-####', (match) =>
  * Currency mask is a little different, we need to modify the incoming content to strip
  * out any commas or dollar signs before evaluating it via the Intl.NumberFormat function.
  */
-export const CURRENCY_MASK = (rawInput = '', valueOnly = false) => {
-  const signed = rawInput.includes('-');
-  const stripped = rawInput.replace(/[^0-9.]/g, '');
+export const CURRENCY_MASK = makeMask(RE_CURRENCY, '$', (match) => {
+  const signed = match[0].includes('-');
+  const stripped = match[0].replace(/[^0-9.]/g, '');
   const clipped = stripped.includes('.') ? stripped.slice(0, stripped.indexOf('.') + 3) : stripped;
   const USDollar = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
-  const formatted = USDollar.format(Number(clipped));
+  const formatted = USDollar.format(Number(clipped)).replace(/\.00/, '');
 
-  return signed ? '-' + formatted : formatted;
-};
+  console.log(Number(clipped));
+
+  if (Number(clipped) > 0) {
+    return signed ? '-' + formatted : formatted;
+  } else {
+    return '';
+  }
+});
 
 export function useLabelMask(maskFn: MaskFunction, originalInputProps: TextInputProps) {
   // TODO: Once we're on React 18, we can use the `useId` hook
@@ -109,21 +115,36 @@ export function useLabelMask(maskFn: MaskFunction, originalInputProps: TextInput
   const [focused, setFocused] = useState(false);
   const { onFocus, onBlur, onChange } = originalInputProps;
   const value = originalInputProps.value?.toString() ?? '';
+  const [currentValue, setCurrentValue] = useState(value);
+
+  useEffect(() => {
+    setCurrentValue(value);
+  }, [value, setCurrentValue]);
 
   const inputProps = {
     ...originalInputProps,
     defaultValue: undefined,
-    onFocus: (e) => {
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+      setCurrentValue(e.currentTarget.value);
+
+      if (onChange) {
+        onChange(e);
+      }
+    },
+    onFocus: (e: React.FocusEvent<HTMLInputElement>) => {
+      setCurrentValue(e.currentTarget.value);
+
       if (onFocus) {
         onFocus(e);
       }
 
       setFocused(true);
     },
-    onBlur: (e) => {
-      const maskedValue = maskFn(value.toString(), true);
+    onBlur: (e: React.FocusEvent<HTMLInputElement>) => {
+      const maskedValue = maskFn(currentValue, true);
       e.currentTarget.value = maskedValue;
       e.target.value = maskedValue;
+      setCurrentValue(maskedValue);
 
       if (onChange) {
         (onChange as any)(e);
@@ -140,14 +161,19 @@ export function useLabelMask(maskFn: MaskFunction, originalInputProps: TextInput
     'aria-describedby': classNames(originalInputProps['aria-describedby'], labelMaskId),
   };
 
+  /**
+   * Date mask needs to return the default empty mask when not focused
+   */
+  const currentMask = !focused && maskFn === DATE_MASK ? maskFn('') : maskFn(currentValue);
+
   return {
     labelMask: (
       <div className="ds-c-label-mask" id={labelMaskId}>
         <span className={classNames(focused && 'ds-u-visibility--screen-reader')}>
-          {maskFn('')}
+          {currentMask}
         </span>
         <span className={classNames(!focused && 'ds-u-display--none')} aria-hidden="true">
-          {maskFn(value)}
+          {currentMask}
         </span>
       </div>
     ),
