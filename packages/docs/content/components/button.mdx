@@ -381,17 +381,26 @@ Consider when to use links vs. when to use buttons. Links and buttons are read d
 
 </ThemeContent>
 
-<ThemeContent onlyThemes={['healthcare']}>
-
 ### Content
-
 - Describe what will happen, not the current state. 
 - Buttons always start with an action word describing the main thing users will do once selected. 
   - Pair it with a noun to help it be clearer. Example: Get tips.
   - If in a form, it can be just the action word if it's navigating between steps. Example: Cancel, Back, Next.
 - Use the least amount of words possible (no more than 6 with 2-4 being ideal).
+
+<ThemeContent onlyThemes={['healthcare']}>
+
 - Use sentence case for buttons. This conveys a friendlier tone. Note: Some tools and the homepage are using ALL CAPS. There are also a few examples of Title Case. We should change to sentence case for consistency across the site. 
 
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+- Use title case for CTA buttons.
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['healthcare', 'medicare']}>
 
 #### Writing content
 - Remove articles and use '&' instead of 'and'
@@ -437,9 +446,13 @@ Generally better to use specific verbs to confirm what the user is starting. For
   </tbody>
 </table>
 
+</ThemeContent>
+
 ##### Moving through a process or sequential steps after starting
 
 For forward movement to the next page or step.
+
+<ThemeContent onlyThemes={['healthcare']}>
 
 <table class="ds-c-table ds-c-table--compact ds-c-md-table--stacked" role="table" width="100%">
   <thead role="rowgroup">
@@ -471,6 +484,45 @@ For forward movement to the next page or step.
     </tr>
   </tbody>
 </table>
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+<table class="ds-c-table ds-c-table--compact ds-c-md-table--stacked" role="table" width="100%">
+  <thead role="rowgroup">
+    <tr role="row">
+      <th class="ds-u-fill--success-lightest" role="columnheader" scope="col">
+        Use
+      </th>
+      <th class="ds-u-fill--error-lightest" role="columnheader" scope="col">
+        Don't use
+      </th>
+    </tr>
+  </thead>
+  <tbody role="rowgroup">
+    <tr role="row">
+      <td
+        role="cell"
+        data-title="Document title"
+        width="50%"
+      >
+       Next
+      </td>
+      <td
+        role="cell"
+        data-title="Description"
+        width="50%"
+      >
+        Continue
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['healthcare', 'medicare']}>
 
 For backward movement to the previous step in the process.
 
@@ -644,8 +696,8 @@ Generally better to use specific verbs if appropriate to confirm an action.
   </tbody>
 </table>
 
-
 </ThemeContent>
+
 
 ## Learn more
 
