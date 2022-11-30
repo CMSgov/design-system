@@ -1,3 +1,4 @@
+import React from 'react';
 import UsaBanner from './UsaBanner';
 
 export default {

@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
@@ -79,6 +80,7 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
   const renderMobileHeaderContent = () => (
     <button
       onClick={toggleBanner}
+      type="button"
       className="ds-c-usa-banner__button"
       aria-expanded={isBannerOpen}
       aria-controls={id}

@@ -1,3 +1,4 @@
+import React from 'react';
 export default {
   title: 'Foundations/Typography/List',
   parameters: {
@@ -30,9 +31,9 @@ const listMarkup = (type) => {
 
 export const AllLists = () => (
   <>
-    {listMarkup("unordered")}
-    {listMarkup("ordered")}
-    {listMarkup("unstyled")}
+    {listMarkup('unordered')}
+    {listMarkup('ordered')}
+    {listMarkup('unstyled')}
   </>
 );
 

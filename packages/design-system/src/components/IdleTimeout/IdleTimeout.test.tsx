@@ -1,3 +1,4 @@
+import React from 'react';
 import IdleTimeout, { IdleTimeoutProps } from './IdleTimeout';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { mockTime, restoreTime } from './utilities/mockTime';

@@ -1,8 +1,8 @@
+import React from 'react';
 import { FunctionComponent } from 'react';
 import classNames from 'classnames';
 
 export type TextInputDefaultValue = string | number;
-export type TextInputMask = 'currency' | 'phone' | 'ssn' | 'zip';
 export type TextInputRows = number | string;
 export type TextInputSize = 'small' | 'medium';
 export type TextInputValue = string | number;

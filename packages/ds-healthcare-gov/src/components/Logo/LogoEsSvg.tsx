@@ -1,3 +1,4 @@
+import React from 'react';
 const LogoEsSvg: React.FC<unknown> = () => {
   // prettier-ignore
   return (

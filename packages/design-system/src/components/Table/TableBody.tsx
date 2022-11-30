@@ -1,3 +1,4 @@
+import React from 'react';
 export interface TableBodyProps {
   /**
    * The table body contents, usually `TableRow`.

@@ -1,3 +1,4 @@
+import React from 'react';
 import Accordion from './Accordion';
 import AccordionItem from './AccordionItem';
 import { render, screen } from '@testing-library/react';

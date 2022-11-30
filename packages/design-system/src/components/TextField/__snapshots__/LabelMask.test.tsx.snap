@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Label mask renders default date mask, MM/DD/YYYY, when no input value set 1`] = `
+exports[`Date Label mask renders default mask, MM/DD/YYYY, when no input value set 1`] = `
 <DocumentFragment>
   <div
     class="ds-c-label-mask"
@@ -20,6 +20,114 @@ exports[`Label mask renders default date mask, MM/DD/YYYY, when no input value s
   </div>
   <input
     aria-describedby="labelmask_1"
+    inputmode="numeric"
+    type="text"
+    value=""
+  />
+</DocumentFragment>
+`;
+
+exports[`Phone Number Label mask renders default mask, ###-###-####, when no input value set 1`] = `
+<DocumentFragment>
+  <div
+    class="ds-c-label-mask"
+    id="labelmask_101"
+  >
+    <span
+      class=""
+    >
+      ###-###-####
+    </span>
+    <span
+      aria-hidden="true"
+      class="ds-u-display--none"
+    >
+      ###-###-####
+    </span>
+  </div>
+  <input
+    aria-describedby="labelmask_101"
+    inputmode="numeric"
+    type="text"
+    value=""
+  />
+</DocumentFragment>
+`;
+
+exports[`Social Security Number Label mask renders default mask, ###-##-####, when no input value set 1`] = `
+<DocumentFragment>
+  <div
+    class="ds-c-label-mask"
+    id="labelmask_48"
+  >
+    <span
+      class=""
+    >
+      ###-##-####
+    </span>
+    <span
+      aria-hidden="true"
+      class="ds-u-display--none"
+    >
+      ###-##-####
+    </span>
+  </div>
+  <input
+    aria-describedby="labelmask_48"
+    inputmode="numeric"
+    type="text"
+    value=""
+  />
+</DocumentFragment>
+`;
+
+exports[`US Currency Label mask renders default mask, $, when no input value set 1`] = `
+<DocumentFragment>
+  <div
+    class="ds-c-label-mask"
+    id="labelmask_192"
+  >
+    <span
+      class=""
+    >
+      $
+    </span>
+    <span
+      aria-hidden="true"
+      class="ds-u-display--none"
+    >
+      $
+    </span>
+  </div>
+  <input
+    aria-describedby="labelmask_192"
+    inputmode="numeric"
+    type="text"
+    value=""
+  />
+</DocumentFragment>
+`;
+
+exports[`US Zip Code Label mask renders default mask, #####, when no input value set 1`] = `
+<DocumentFragment>
+  <div
+    class="ds-c-label-mask"
+    id="labelmask_158"
+  >
+    <span
+      class=""
+    >
+      #####
+    </span>
+    <span
+      aria-hidden="true"
+      class="ds-u-display--none"
+    >
+      #####
+    </span>
+  </div>
+  <input
+    aria-describedby="labelmask_158"
     inputmode="numeric"
     type="text"
     value=""

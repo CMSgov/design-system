@@ -1,3 +1,4 @@
+import React from 'react';
 import Button from './Button';
 import { NextIcon } from '../Icons';
 import Spinner from '../Spinner/Spinner';

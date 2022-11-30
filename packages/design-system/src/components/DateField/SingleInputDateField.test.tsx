@@ -1,3 +1,4 @@
+import React from 'react';
 import SingleInputDateField from './SingleInputDateField';
 import userEvent from '@testing-library/user-event';
 import { render, screen } from '@testing-library/react';
@@ -26,6 +27,7 @@ describe('SingleInputDateField', function () {
 
   it('masks in label', function () {
     const { container } = renderField({ value: '11-01' });
+    userEvent.click(getInput());
     expect(container.querySelector('.ds-c-label-mask').textContent).toContain('11/01/YYYY');
   });
 

@@ -1,3 +1,4 @@
+import React from 'react';
 import { useRef, useState } from 'react';
 import CalendarIcon from '../Icons/CalendarIcon';
 import CustomDayPicker from './CustomDayPicker';
@@ -154,6 +155,7 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
           <button
             className="ds-c-single-input-date-field__button"
             onClick={() => setPickerVisible(!pickerVisible)}
+            type="button"
             ref={calendarButtonRef}
           >
             <CalendarIcon

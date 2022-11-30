@@ -1,3 +1,4 @@
+import React from 'react';
 import Tooltip from './Tooltip';
 import TooltipIcon from './TooltipIcon';
 import Button from '../Button/Button';
