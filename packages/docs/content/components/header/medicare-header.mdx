@@ -6,6 +6,13 @@ medicare:
 ---
 
 import { Alert } from '@cmsgov/design-system';
+import consistentHeaderBreakpointsImg from '../../../src/images/consistent-header-breakpoints.png';
+import consistentHeaderCurrentSectionImg from '../../../src/images/consistent-header-current-section.png';
+import consistentHeaderDropdownImg from '../../../src/images/consistent-header-dropdown-menus.png';
+import consistentHeaderGuestImg from '../../../src/images/consistent-header-guest.png';
+import consistentHeaderLoggedInImg from '../../../src/images/consistent-header-logged-in.png';
+import consistentHeaderSlideOutImg from '../../../src/images/consistent-header-slide-out-menu.png';
+
 
 <ThemeContent neverThemes={['medicare']}>
   <Alert variation="error">
@@ -81,6 +88,20 @@ For guidance on how to use the consistent header in a variety of scenarios, see 
 ### Usage
 Implementers should create a `div` with the id of `root` and supply it with the required attributes(listed below), and import the correct Javascript and CSS files, which will attach the header to the div. A list of resources to import can be found in the `entrypoints` section of the `asset-manifest.json` file for each environment.
 
+#### Authenticated and Guest Headers 
+
+Use the authenticated headers – named "Auth Headers" in the symbols – for scenarios where a user is logged in. The user's first name should appear in the menu item listed as "First name." Only the first letter of their name is capitalized.
+
+<div className="ds-u-measure--wide ds-u-margin-top--2">
+  <img src={consistentHeaderLoggedInImg} alt="" class="ds-u-border--1" />
+</div>
+
+Use the guest headers – named "Guest Headers" in the symbols – for scenarios where a user is not logged in. This is no customization when 
+
+<div className="ds-u-measure--wide ds-u-margin-top--2">
+  <img src={consistentHeaderGuestImg} alt="" class="ds-u-border--1" />
+</div>
+
 #### Configuration Attributes
 
 Below is a list of required attributes that are used to configure the Consistent Header:
@@ -126,6 +147,37 @@ The Consistent Header has two breakpoints and three versions. At the lower range
 - Desktop: >1024px
 - Tablet: 1024px - 768px
 - Mobile: <768px
+
+<div className="ds-u-measure--wide ds-u-margin-top--2">
+  <img src={consistentHeaderBreakpointsImg} alt="" class="ds-u-border--1" />
+</div>
+
+#### Dropdown Menus (Desktop Only)
+
+With the exception of the Medicare.gov logo, Log in, and Log out; each of the menu items has a dropdown. Each dropdown menu is available as a symbol with the header included showing the focus state for the selected menu item.
+
+Note: at initial launch, the Message menu item will take users to the legacy Message Center. Shortly after the consistent header is available across Medicare.gov, the new Message Center will be deployed.
+
+<div className="ds-u-measure--wide ds-u-margin-top--2">
+  <img src={consistentHeaderDropdownImg} alt="" class="ds-u-border--1" />
+</div>
+
+#### Current Section Indicator (Desktop Only)
+
+Based on where a user is on the site, an underline will display below the section label text. There is a symbol for every version of the header state provided.
+
+<div className="ds-u-measure--wide ds-u-margin-top--2">
+  <img src={consistentHeaderCurrentSectionImg} alt="" class="ds-u-border--1" />
+</div>
+
+#### Slide-out Menus (Tablet and Mobile Only) 
+
+Each of the slide-out menu symbols for tablet and mobile include the dark background and will scale to any screen size.
+
+<div className="ds-u-measure--wide ds-u-margin-top--2">
+  <img src={consistentHeaderSlideOutImg} alt="" class="ds-u-border--1" />
+</div>
+
 
 ### FAQ
 
