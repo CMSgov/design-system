@@ -99,9 +99,7 @@ export const CURRENCY_MASK = makeMask(RE_CURRENCY, '$', (match) => {
   const clipped = stripped.includes('.') ? stripped.slice(0, stripped.indexOf('.') + 3) : stripped;
   const USDollar = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
   const formatted = USDollar.format(Number(clipped)).replace(/\.00/, '');
-
-  console.log(Number(clipped));
-
+  
   if (Number(clipped) > 0) {
     return signed ? '-' + formatted : formatted;
   } else {
