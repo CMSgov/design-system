@@ -53,24 +53,34 @@ export default {
   parameters: {},
 };
 
-const Template = ({ data, ...args }) => <TextField {...args} />;
+const UncontrolledTemplate = ({ data, ...args }) => <TextField {...args} />;
 
-export const SingleLineField = Template.bind({});
-export const MultilineField = Template.bind({});
+const ControlledTemplate = (args) => {
+  const [_, updateArgs] = useArgs();
+  const onChange = (event) => {
+    action('onChange')(event);
+    updateArgs({ value: event.currentTarget.value });
+  };
+
+  return <TextField {...args} onChange={onChange} />;
+};
+
+export const SingleLineField = UncontrolledTemplate.bind({});
+export const MultilineField = UncontrolledTemplate.bind({});
 MultilineField.args = {
   multiline: true,
   rows: 3,
 };
-export const ErrorField = Template.bind({});
+export const ErrorField = UncontrolledTemplate.bind({});
 ErrorField.args = {
   errorMessage: 'Example error message',
   hint: 'Helpful hint text',
 };
-export const SuccessField = Template.bind({});
+export const SuccessField = UncontrolledTemplate.bind({});
 SuccessField.args = {
   fieldClassName: 'ds-c-field--success',
 };
-export const DisabledField = Template.bind({});
+export const DisabledField = UncontrolledTemplate.bind({});
 DisabledField.args = {
   disabled: true,
 };
@@ -119,18 +129,16 @@ export const AllMaskedFields = () => {
   );
 };
 
-const LabelMaskedField = (args) => {
-  const [_, updateArgs] = useArgs();
-  const onChange = (event) => {
-    action('onChange')(event);
-    updateArgs({ value: event.currentTarget.value });
-  };
-
-  return <TextField {...args} onChange={onChange} />;
-};
-const UncontrolledLabelMaskedField = (args) => <TextField {...args} />;
-
+const LabelMaskedField = ControlledTemplate.bind({});
 LabelMaskedField.argTypes = {
+  // Hide irrelevant props
+  mask: { table: { disable: true } },
+  type: { table: { disable: true } },
+  rows: { table: { disable: true } },
+};
+
+const UncontrolledLabelMaskedField = UncontrolledTemplate.bind({});
+UncontrolledLabelMaskedField.argTypes = {
   // Hide irrelevant props
   mask: { table: { disable: true } },
   type: { table: { disable: true } },
