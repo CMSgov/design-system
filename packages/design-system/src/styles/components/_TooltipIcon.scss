@@ -4,10 +4,10 @@
   border-radius: 100%;
   box-sizing: border-box;
   display: inline-block;
-  height: $tooltip-icon-container-size;
+  height: $spacer-3;
   position: relative;
   vertical-align: middle;
-  width: $tooltip-icon-container-size;
+  width: $spacer-3;
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
     border-color: Window;
@@ -18,13 +18,13 @@
 .ds-c-tooltip-icon {
   display: inline-block;
   fill: $tooltip-icon__color;
-  height: $tooltip-icon-size;
+  height: 16px;
   left: 0;
   overflow: visible !important; /* stylelint-disable-line declaration-no-important -- fixes clipping issue in Firefox, overrides vendor style */
   position: absolute;
   text-align: center;
   top: 0;
-  width: $tooltip-icon-size;
+  width: 16px;
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
     path {

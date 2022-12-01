@@ -1,7 +1,3 @@
-// @TODO: remove these once determined they are not being used elsewhere
-$mct-drawer-close-button-size: 26px;
-$mct-drawer-heading-font-size: $h1-mobile-font-size;
-
 .mct-c-help-drawer {
   .ds-c-drawer__header {
     background-color: $drawer-header__background-color;
@@ -9,7 +5,7 @@ $mct-drawer-heading-font-size: $h1-mobile-font-size;
 
   .ds-c-drawer__header-heading {
     font-family: $font-family-montserrat;
-    font-size: $mct-drawer-heading-font-size;
+    font-size: $h1-mobile-font-size;
     font-weight: $font-weight-bold;
     text-align: left;
   }
@@ -19,8 +15,8 @@ $mct-drawer-heading-font-size: $h1-mobile-font-size;
     color: $drawer-close__color;
 
     svg {
-      height: $mct-drawer-close-button-size;
-      width: $mct-drawer-close-button-size;
+      height: 26px;
+      width: 26px;
     }
 
     .ds-c-help-drawer__footer {

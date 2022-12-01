@@ -1,18 +1,6 @@
 @import '../settings/index.scss';
 @import '../base/link.scss';
 
-// @TODO: these styles can eventually be componentized and referenced for deprecation
-// for the present time, they will be left for backwards compatibility and updated with
-// up-to-date token references as currently only component color will be themed.
-
-$tooltip-icon-size: 16px !default;
-$tooltip-arrow-size: 8px !default;
-$tooltip-icon-container-size: $spacer-3 !default;
-$tooltip-border-width: 1px !default;
-$tooltip-border-radius: $radius-large !default;
-$tooltip-font-size: $font-size-base !default;
-$tooltip-close-min-width: $spacer-4 !default;
-
 %trigger-reset-styles {
   // override user agent button styles
   background: none;
@@ -75,28 +63,28 @@ $tooltip-close-min-width: $spacer-4 !default;
 
 // Tooltip arrow
 .ds-c-tooltip__arrow {
-  height: $tooltip-icon-size;
+  height: 16px;
   pointer-events: none;
-  width: $tooltip-icon-size;
+  width: 16px;
 
   &::after {
     background: $tooltip__background-color;
     content: '';
-    height: $tooltip-arrow-size;
+    height: 8px;
     left: 50%;
     position: absolute;
-    width: $tooltip-arrow-size;
+    width: 8px;
   }
 }
 
 // Interior content of tooltip
 // Font style gets inherited from ds-base
 .ds-c-tooltip__content {
-  border-radius: $tooltip-border-radius;
+  border-radius: $radius-large;
   box-shadow: 0 0 17px $tooltip__box-shadow-color;
   color: $tooltip__color;
   display: block;
-  font-size: $tooltip-font-size;
+  font-size: $font-size-base;
   font-weight: $font-weight-normal;
   padding: $spacer-2;
 
@@ -117,7 +105,7 @@ $tooltip-close-min-width: $spacer-4 !default;
 
   .ds-c-tooltip__close-button {
     // IE11 fix
-    min-width: $tooltip-close-min-width;
+    min-width: $spacer-4;
   }
 }
 
@@ -138,9 +126,9 @@ $tooltip-close-min-width: $spacer-4 !default;
 .ds-c-tooltip {
   background: $tooltip__background-color;
   border-color: $tooltip__border-color;
-  border-radius: $tooltip-border-radius;
+  border-radius: $radius-large;
   border-style: solid;
-  border-width: $tooltip-border-width;
+  border-width: 1px;
   box-sizing: border-box;
   display: none;
   opacity: 0;
@@ -184,38 +172,38 @@ $tooltip-close-min-width: $spacer-4 !default;
 .ds-c-tooltip[data-popper-placement^='top'] .ds-c-tooltip__arrow {
   top: 100%;
   &::after {
-    border-bottom: $tooltip-border-width solid $tooltip__border-color;
-    border-right: $tooltip-border-width solid $tooltip__border-color;
+    border-bottom: 1px solid $tooltip__border-color;
+    border-right: 1px solid $tooltip__border-color;
     top: 1px;
     transform: translateX(-50%) translateY(-50%) rotate(45deg);
   }
 }
 
 .ds-c-tooltip[data-popper-placement^='bottom'] .ds-c-tooltip__arrow {
-  top: -$tooltip-arrow-size;
+  top: -8px;
   &::after {
-    border-left: $tooltip-border-width solid $tooltip__border-color;
-    border-top: $tooltip-border-width solid $tooltip__border-color;
+    border-left: 1px solid $tooltip__border-color;
+    border-top: 1px solid $tooltip__border-color;
     bottom: 0;
     transform: translateX(-50%) translateY(-50%) rotate(45deg);
   }
 }
 
 .ds-c-tooltip[data-popper-placement^='left'] .ds-c-tooltip__arrow {
-  right: -$tooltip-arrow-size;
+  right: -8px;
   &::after {
-    border-right: $tooltip-border-width solid $tooltip__border-color;
-    border-top: $tooltip-border-width solid $tooltip__border-color;
+    border-right: 1px solid $tooltip__border-color;
+    border-top: 1px solid $tooltip__border-color;
     left: 0;
     transform: translateX(50%) translateY(50%) rotate(45deg);
   }
 }
 
 .ds-c-tooltip[data-popper-placement^='right'] .ds-c-tooltip__arrow {
-  left: -$tooltip-arrow-size;
+  left: -8px;
   &::after {
-    border-bottom: $tooltip-border-width solid $tooltip__border-color;
-    border-left: $tooltip-border-width solid $tooltip__border-color;
+    border-bottom: 1px solid $tooltip__border-color;
+    border-left: 1px solid $tooltip__border-color;
     left: -2px;
     transform: translateX(50%) translateY(50%) rotate(45deg);
   }
