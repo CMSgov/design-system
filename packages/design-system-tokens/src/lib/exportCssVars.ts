@@ -13,7 +13,7 @@ import { writeFile } from './file';
  *
  * These values will have a direct sass variable -> value definition.
  */
-const variableInclusionList: string[] = [
+const sassVariableList: string[] = [
   'grid-columns',
   'media-width-xs',
   'media-width-sm',
@@ -64,7 +64,12 @@ const formatTokensAsCssVars = (
  * @param importedModule - module data
  * @param sep - separator string between prefix and key
  */
-const writeMap = (filename: string, file: FileDescriptor, importedModule: any, sep: string) => {
+const writeSassVars = (
+  filename: string,
+  file: FileDescriptor,
+  importedModule: any,
+  sep: string
+) => {
   let tokenItems: Record<string, any>;
   let output = '';
 
@@ -81,7 +86,7 @@ const writeMap = (filename: string, file: FileDescriptor, importedModule: any, s
       tokenItems,
       section,
       (name, value) => {
-        if (variableInclusionList.includes(name)) {
+        if (sassVariableList.includes(name)) {
           return `$${name}: ${value}${defaultInclude};\n`;
         }
         return '';
@@ -146,9 +151,9 @@ export const exportCssVars = (fileDescriptors: FileDescriptor[], outPath: string
     // component files do not need a separator
     const sep = file.baseName.includes('components') ? '' : '-';
 
-    const scssToCssMapFilename = `${outPath}/${file.baseName}-scss-to-css.map.scss`;
+    const scssToCssMapFilename = `${outPath}/${file.baseName}-layout-tokens.scss`;
     const cssVarFilename = `${outPath}/${file.baseName}-theme.css`;
-    writeMap(scssToCssMapFilename, file, importedModule, sep);
+    writeSassVars(scssToCssMapFilename, file, importedModule, sep);
     writeCssVars(cssVarFilename, file, importedModule, sep);
   });
 
