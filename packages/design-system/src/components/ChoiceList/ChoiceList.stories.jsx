@@ -101,7 +101,7 @@ ChoiceChildren.args = {
       value: 'A',
       defaultChecked: true,
       checkedChildren: (
-        <Alert heading="You'll save more with this option">
+        <Alert heading="You'll save more with this option" className="ds-c-choice__checkedChild">
           Based on the household information you provided, this option will give you the maximum
           savings. We are adding some filler text just to show what it looks like when you have a
           long alert as the checkedChildren of a Choice component.
@@ -113,7 +113,7 @@ ChoiceChildren.args = {
       requirementLabel: 'Choice hint text',
       value: 'B',
       checkedChildren: (
-        <Alert variation="warn" heading="Are you sure?">
+        <Alert variation="warn" heading="Are you sure?" className="ds-c-choice__checkedChild">
           Based on the household information you provided, you can actually save more with the other
           option. You are free to change this at any point during the application process until you
           have signed and submitted your final application.
