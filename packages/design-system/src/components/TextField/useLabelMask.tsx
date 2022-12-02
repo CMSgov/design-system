@@ -147,8 +147,6 @@ export function useLabelMask(maskFn: MaskFunction, originalInputProps: TextInput
       }
     },
     onFocus: (e: React.FocusEvent<HTMLInputElement>) => {
-      setCurrentValue(e.currentTarget.value);
-
       if (onFocus) {
         onFocus(e);
       }
@@ -186,7 +184,7 @@ export function useLabelMask(maskFn: MaskFunction, originalInputProps: TextInput
   // SSN mask needs to obfuscate the SSN when not focused
   if (maskFn === SSN_MASK && !focused && currentValue !== '') {
     currentMask = SSN_MASK_OBFUSCATED(currentValue);
-    // inputProps.value = '***-**-****';
+    inputProps.value = SSN_MASK_OBFUSCATED(currentValue, true);
   }
 
   return {
