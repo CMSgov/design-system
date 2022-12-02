@@ -89,6 +89,9 @@ export const SSN_MASK: MaskFunction = makeMask(RE_SSN, '###-##-####', (match) =>
     .join('-');
 });
 
+/**
+ * Does the same thing as SSN_MASK except that it obfuscates the first five digits
+ */
 export const SSN_MASK_OBFUSCATED: MaskFunction = (rawInput: string, valueOnly?: boolean) => {
   // Use the normal SSN_MASK function just to clean the raw input and format it
   const formatted = SSN_MASK(rawInput, true);
