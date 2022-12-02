@@ -11,14 +11,14 @@
   margin-top: $spacer-1;
   min-height: 0;
   padding: $spacer-half $spacer-1;
-  padding-right: 32px;
+  padding-right: 34px;
   position: relative;
   text-align: left;
 
   &--big {
     min-height: 44px;
     padding: $spacer-1 $spacer-2;
-    padding-right: 32px;
+    padding-right: 34px;
   }
 
   &:active,
@@ -43,7 +43,7 @@
   box-sizing: border-box;
   cursor: pointer;
   display: inline-block;
-  height: 18px;
+  height: $filter-chip-icon__container-size;
   margin-left: $spacer-1;
   padding: 0;
   position: absolute;
@@ -51,7 +51,7 @@
   top: 50%;
   transform: translateY(-50%);
   vertical-align: middle;
-  width: 18px;
+  width: $filter-chip-icon__container-size;
 
   &.ds-c-filter-chip__clear-icon-alternate-container {
     border: 0;

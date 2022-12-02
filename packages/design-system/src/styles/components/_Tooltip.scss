@@ -128,7 +128,7 @@
   border-color: $tooltip__border-color;
   border-radius: $radius-large;
   border-style: solid;
-  border-width: 1px;
+  border-width: $tooltip__border-width;
   box-sizing: border-box;
   display: none;
   opacity: 0;
@@ -172,8 +172,8 @@
 .ds-c-tooltip[data-popper-placement^='top'] .ds-c-tooltip__arrow {
   top: 100%;
   &::after {
-    border-bottom: 1px solid $tooltip__border-color;
-    border-right: 1px solid $tooltip__border-color;
+    border-bottom: $tooltip__border-width solid $tooltip__border-color;
+    border-right: $tooltip__border-width solid $tooltip__border-color;
     top: 1px;
     transform: translateX(-50%) translateY(-50%) rotate(45deg);
   }
@@ -182,8 +182,8 @@
 .ds-c-tooltip[data-popper-placement^='bottom'] .ds-c-tooltip__arrow {
   top: -8px;
   &::after {
-    border-left: 1px solid $tooltip__border-color;
-    border-top: 1px solid $tooltip__border-color;
+    border-left: $tooltip__border-width solid $tooltip__border-color;
+    border-top: $tooltip__border-width solid $tooltip__border-color;
     bottom: 0;
     transform: translateX(-50%) translateY(-50%) rotate(45deg);
   }
@@ -192,8 +192,8 @@
 .ds-c-tooltip[data-popper-placement^='left'] .ds-c-tooltip__arrow {
   right: -8px;
   &::after {
-    border-right: 1px solid $tooltip__border-color;
-    border-top: 1px solid $tooltip__border-color;
+    border-right: $tooltip__border-width solid $tooltip__border-color;
+    border-top: $tooltip__border-width solid $tooltip__border-color;
     left: 0;
     transform: translateX(50%) translateY(50%) rotate(45deg);
   }
@@ -202,8 +202,8 @@
 .ds-c-tooltip[data-popper-placement^='right'] .ds-c-tooltip__arrow {
   left: -8px;
   &::after {
-    border-bottom: 1px solid $tooltip__border-color;
-    border-left: 1px solid $tooltip__border-color;
+    border-bottom: $tooltip__border-width solid $tooltip__border-color;
+    border-left: $tooltip__border-width solid $tooltip__border-color;
     left: -2px;
     transform: translateX(50%) translateY(50%) rotate(45deg);
   }

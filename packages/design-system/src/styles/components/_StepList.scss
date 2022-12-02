@@ -3,8 +3,7 @@
 .ds-c-step-list {
   list-style-type: none;
   margin: $spacer-4 0 0;
-  padding: 0 0;
-  padding-left: 42px;
+  padding: 0 0 0 42px;
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
     a:hover {
@@ -29,7 +28,7 @@
     display: block;
     font-size: $font-size-sm;
     height: $spacer-3;
-    left: -30px;
+    left: -34px;
     line-height: 22px;
     position: absolute;
     text-align: center;
@@ -62,7 +61,7 @@
     height: 1px;
     left: -42px;
     position: absolute;
-    right: -0;
+    right: 0;
   }
 }
 
@@ -141,7 +140,7 @@
 
 .ds-c-step__completed-text {
   display: inline-block;
-  line-height: 38px - 12px;
+  line-height: 26px;
   margin-right: $spacer-2;
 
   .ds-c-icon {

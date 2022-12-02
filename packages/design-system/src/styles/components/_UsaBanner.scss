@@ -52,8 +52,8 @@
   height: 48px;
   justify-content: center;
   margin-left: auto;
-  margin-right: -$spacer-2;
-  margin-top: -$spacer-1;
+  margin-right: calc(-1 * #{$spacer-2});
+  margin-top: calc(-1 * #{$spacer-1});
   width: 48px;
 
   .ds-c-icon {

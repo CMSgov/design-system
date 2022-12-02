@@ -291,6 +291,7 @@ $filter-chip__border-color--active: var(--filter-chip__border-color--active) !de
 $filter-chip__color--active: var(--filter-chip__color--active) !default;
 $filter-chip-icon__color: var(--filter-chip-icon__color) !default;
 $filter-chip-icon__color-active: var(--filter-chip-icon__color-active) !default;
+$filter-chip-icon__container-size: var(--filter-chip-icon__container-size) !default;
 $form-label__color--inverse: var(--form-label__color--inverse) !default;
 $form__max-width: var(--form__max-width) !default;
 $form__max-width--small: var(--form__max-width--small) !default;
@@ -372,6 +373,7 @@ $text-input__padding: var(--text-input__padding) !default;
 $text-input__border-radius: var(--text-input__border-radius) !default;
 $tooltip__background-color: var(--tooltip__background-color) !default;
 $tooltip__border-color: var(--tooltip__border-color) !default;
+$tooltip__border-width: var(--tooltip__border-width) !default;
 $tooltip__color: var(--tooltip__color) !default;
 $tooltip__box-shadow-color: var(--tooltip__box-shadow-color) !default;
 $tooltip-icon__color: var(--tooltip-icon__color) !default;
