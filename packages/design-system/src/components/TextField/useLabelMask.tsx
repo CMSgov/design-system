@@ -90,24 +90,19 @@ export const SSN_MASK: MaskFunction = makeMask(RE_SSN, '###-##-####', (match) =>
 });
 
 export const SSN_MASK_OBFUSCATED: MaskFunction = (rawInput: string, valueOnly?: boolean) => {
+  // Use the normal SSN_MASK function just to clean the raw input and format it
   const formatted = SSN_MASK(rawInput, true);
+  // We only hide the first five digits of the SSNs
   const obfuscation = '***-**';
+
   let obfuscated: string;
   if (formatted.length < obfuscation.length) {
     obfuscated = obfuscation.substring(0, formatted.length);
   } else {
     obfuscated = obfuscation + formatted.substring(obfuscation.length);
   }
-  return SSN_MASK(obfuscated, valueOnly);
 
-  // const masked = SSN_MASK(rawInput, valueOnly);
-  // // Actually, this will obfuscate `#` values from the above, so we need to start by passing `true` for `valueOnly`
-  // const obfuscation = '***-**';
-  // if (masked.length < obfuscation.length) {
-  //   return obfuscation.substring(0, masked.length);
-  // } else {
-  //   return obfuscation + masked.substring(obfuscation.length);
-  // }
+  return SSN_MASK(obfuscated, valueOnly);
 };
 
 /**
