@@ -2,6 +2,7 @@ import React from 'react';
 import useLabelMask, {
   DATE_MASK,
   SSN_MASK,
+  SSN_MASK_OBFUSCATED,
   PHONE_MASK,
   ZIP_MASK,
   CURRENCY_MASK,
@@ -33,6 +34,31 @@ describe('SSN_MASK', () => {
     expect(SSN_MASK('123', true)).toEqual('123');
     expect(SSN_MASK('12345', true)).toEqual('123-45');
     expect(SSN_MASK('1234567', true)).toEqual('123-45-67');
+  });
+});
+
+describe('SSN_MASK_OBFUSCATED', () => {
+  it('returns just the mask when given no input', () => {
+    expect(SSN_MASK_OBFUSCATED('')).toEqual('###-##-####');
+  });
+
+  it('masks complete social security numbers', () => {
+    expect(SSN_MASK_OBFUSCATED('123-45-6789')).toEqual('***-**-6789');
+    expect(SSN_MASK_OBFUSCATED('123 45 6789')).toEqual('***-**-6789');
+    expect(SSN_MASK_OBFUSCATED('123456789')).toEqual('***-**-6789');
+    expect(SSN_MASK_OBFUSCATED('123.45.6789')).toEqual('***-**-6789');
+  });
+
+  it('masks incomplete social security numbers', () => {
+    expect(SSN_MASK_OBFUSCATED('123')).toEqual('***-##-####');
+    expect(SSN_MASK_OBFUSCATED('1234')).toEqual('***-*#-####');
+    expect(SSN_MASK_OBFUSCATED('1234567')).toEqual('***-**-67##');
+  });
+
+  it('handles valueOnly parameter', () => {
+    expect(SSN_MASK_OBFUSCATED('123', true)).toEqual('***');
+    expect(SSN_MASK_OBFUSCATED('12345', true)).toEqual('***-**');
+    expect(SSN_MASK_OBFUSCATED('1234567', true)).toEqual('***-**-67');
   });
 });
 

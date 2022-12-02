@@ -90,6 +90,25 @@ export const SSN_MASK: MaskFunction = makeMask(RE_SSN, '###-##-####', (match) =>
 });
 
 /**
+ * Does the same thing as SSN_MASK except that it obfuscates the first five digits
+ */
+export const SSN_MASK_OBFUSCATED: MaskFunction = (rawInput: string, valueOnly?: boolean) => {
+  // Use the normal SSN_MASK function just to clean the raw input and format it
+  const formatted = SSN_MASK(rawInput, true);
+  // We only hide the first five digits of the SSNs
+  const obfuscation = '***-**';
+
+  let obfuscated: string;
+  if (formatted.length < obfuscation.length) {
+    obfuscated = obfuscation.substring(0, formatted.length);
+  } else {
+    obfuscated = obfuscation + formatted.substring(obfuscation.length);
+  }
+
+  return SSN_MASK(obfuscated, valueOnly);
+};
+
+/**
  * Currency mask is a little different, we need to modify the incoming content to strip
  * out any commas or dollar signs before evaluating it via the Intl.NumberFormat function.
  */
@@ -99,7 +118,7 @@ export const CURRENCY_MASK = makeMask(RE_CURRENCY, '$', (match) => {
   const clipped = stripped.includes('.') ? stripped.slice(0, stripped.indexOf('.') + 3) : stripped;
   const USDollar = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
   const formatted = USDollar.format(Number(clipped)).replace(/\.00/, '');
-  
+
   if (Number(clipped) > 0) {
     return signed ? '-' + formatted : formatted;
   } else {
@@ -122,6 +141,7 @@ export function useLabelMask(maskFn: MaskFunction, originalInputProps: TextInput
   const inputProps = {
     ...originalInputProps,
     defaultValue: undefined,
+    value: currentValue,
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
       setCurrentValue(e.currentTarget.value);
 
@@ -130,8 +150,6 @@ export function useLabelMask(maskFn: MaskFunction, originalInputProps: TextInput
       }
     },
     onFocus: (e: React.FocusEvent<HTMLInputElement>) => {
-      setCurrentValue(e.currentTarget.value);
-
       if (onFocus) {
         onFocus(e);
       }
@@ -159,10 +177,18 @@ export function useLabelMask(maskFn: MaskFunction, originalInputProps: TextInput
     'aria-describedby': classNames(originalInputProps['aria-describedby'], labelMaskId),
   };
 
-  /**
-   * Date mask needs to return the default empty mask when not focused
-   */
-  const currentMask = !focused && maskFn === DATE_MASK ? maskFn('') : maskFn(currentValue);
+  let currentMask = maskFn(currentValue);
+
+  // Date mask needs to return the default empty mask when not focused
+  if (maskFn === DATE_MASK && !focused) {
+    currentMask = maskFn('');
+  }
+
+  // SSN mask needs to obfuscate the SSN when not focused
+  if (maskFn === SSN_MASK && !focused && currentValue !== '') {
+    currentMask = SSN_MASK_OBFUSCATED(currentValue);
+    inputProps.value = SSN_MASK_OBFUSCATED(currentValue, true);
+  }
 
   return {
     labelMask: (
