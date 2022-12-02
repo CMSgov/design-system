@@ -89,6 +89,27 @@ export const SSN_MASK: MaskFunction = makeMask(RE_SSN, '###-##-####', (match) =>
     .join('-');
 });
 
+export const SSN_MASK_OBFUSCATED: MaskFunction = (rawInput: string, valueOnly?: boolean) => {
+  const formatted = SSN_MASK(rawInput, true);
+  const obfuscation = '***-**';
+  let obfuscated: string;
+  if (formatted.length < obfuscation.length) {
+    obfuscated = obfuscation.substring(0, formatted.length);
+  } else {
+    obfuscated = obfuscation + formatted.substring(obfuscation.length);
+  }
+  return SSN_MASK(obfuscated, valueOnly);
+
+  // const masked = SSN_MASK(rawInput, valueOnly);
+  // // Actually, this will obfuscate `#` values from the above, so we need to start by passing `true` for `valueOnly`
+  // const obfuscation = '***-**';
+  // if (masked.length < obfuscation.length) {
+  //   return obfuscation.substring(0, masked.length);
+  // } else {
+  //   return obfuscation + masked.substring(obfuscation.length);
+  // }
+};
+
 /**
  * Currency mask is a little different, we need to modify the incoming content to strip
  * out any commas or dollar signs before evaluating it via the Intl.NumberFormat function.
@@ -160,10 +181,18 @@ export function useLabelMask(maskFn: MaskFunction, originalInputProps: TextInput
     'aria-describedby': classNames(originalInputProps['aria-describedby'], labelMaskId),
   };
 
-  /**
-   * Date mask needs to return the default empty mask when not focused
-   */
-  const currentMask = !focused && maskFn === DATE_MASK ? maskFn('') : maskFn(currentValue);
+  let currentMask = maskFn(currentValue);
+
+  // Date mask needs to return the default empty mask when not focused
+  if (maskFn === DATE_MASK && !focused) {
+    currentMask = maskFn('');
+  }
+
+  // SSN mask needs to obfuscate the SSN when not focused
+  if (maskFn === SSN_MASK && !focused && currentValue !== '') {
+    currentMask = SSN_MASK_OBFUSCATED(currentValue);
+    // inputProps.value = '***-**-****';
+  }
 
   return {
     labelMask: (
