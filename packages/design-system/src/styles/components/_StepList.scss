@@ -36,7 +36,7 @@
     width: $spacer-3;
 
     @media (min-width: $media-width-md) {
-      font-size: 20px;
+      font-size: $font-size-xl;
       height: $spacer-4;
       left: -42px;
       line-height: 28px;
