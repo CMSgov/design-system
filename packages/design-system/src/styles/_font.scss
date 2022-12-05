@@ -6,75 +6,54 @@
   font-family: Bitter;
   font-style: normal;
   font-weight: normal;
-  src: url('#{$font-path}/Bitter-Regular.eot');
-  src: url('#{$font-path}/Bitter-Regular.eot?#iefix') format('embedded-opentype'),
-    url('#{$font-path}/Bitter-Regular.woff2') format('woff2'),
-    url('#{$font-path}/Bitter-Regular.woff') format('woff'),
-    url('#{$font-path}/Bitter-Regular.ttf') format('truetype');
+  src: url('#{$font-path}/Bitter-Regular.woff2') format('woff2'),
+    url('#{$font-path}/Bitter-Regular.woff') format('woff');
 }
 
 @font-face {
   font-family: Bitter;
   font-style: normal;
   font-weight: bold;
-  src: url('#{$font-path}/Bitter-Bold.eot');
-  src: url('#{$font-path}/Bitter-Bold.eot?#iefix') format('embedded-opentype'),
-    url('#{$font-path}/Bitter-Bold.woff2') format('woff2'),
-    url('#{$font-path}/Bitter-Bold.woff') format('woff'),
-    url('#{$font-path}/Bitter-Bold.ttf') format('truetype');
+  src: url('#{$font-path}/Bitter-Bold.woff2') format('woff2'),
+    url('#{$font-path}/Bitter-Bold.woff') format('woff');
 }
 
 @font-face {
   font-family: Bitter;
   font-style: italic;
   font-weight: normal;
-  src: url('#{$font-path}/Bitter-Italic.eot');
-  src: url('#{$font-path}/Bitter-Italic.eot?#iefix') format('embedded-opentype'),
-    url('#{$font-path}/Bitter-Italic.woff2') format('woff2'),
-    url('#{$font-path}/Bitter-Italic.woff') format('woff'),
-    url('#{$font-path}/Bitter-Italic.ttf') format('truetype');
+  src: url('#{$font-path}/Bitter-Italic.woff2') format('woff2'),
+    url('#{$font-path}/Bitter-Italic.woff') format('woff');
 }
 
 @font-face {
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: normal;
-  src: url('#{$font-path}/OpenSans-Regular-webfont.eot');
-  src: url('#{$font-path}/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
-    url('#{$font-path}/OpenSans-Regular-webfont.woff2') format('woff2'),
-    url('#{$font-path}/OpenSans-Regular-webfont.woff') format('woff'),
-    url('#{$font-path}/OpenSans-Regular-webfont.ttf') format('truetype');
+  src: url('#{$font-path}/OpenSans-Regular-webfont.woff2') format('woff2'),
+    url('#{$font-path}/OpenSans-Regular-webfont.woff') format('woff');
 }
 
 @font-face {
   font-family: 'Open Sans';
   font-style: italic;
   font-weight: normal;
-  src: url('#{$font-path}/OpenSans-Italic-webfont.eot');
-  src: url('#{$font-path}/OpenSans-Italic-webfont.eot?#iefix') format('embedded-opentype'),
-    url('#{$font-path}/OpenSans-Italic-webfont.woff2') format('woff2'),
-    url('#{$font-path}/OpenSans-Italic-webfont.woff') format('woff'),
-    url('#{$font-path}/OpenSans-Italic-webfont.ttf') format('truetype');
+  src: url('#{$font-path}/OpenSans-Italic-webfont.woff2') format('woff2'),
+    url('#{$font-path}/OpenSans-Italic-webfont.woff') format('woff');
 }
 
 @font-face {
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 600;
-  src: url('#{$font-path}/OpenSans-Semibold-webfont.eot');
-  src: url('#{$font-path}/OpenSans-Semibold-webfont.eot?#iefix') format('embedded-opentype'),
-    url('#{$font-path}/OpenSans-Semibold-webfont.woff2') format('woff2'),
-    url('#{$font-path}/OpenSans-Semibold-webfont.woff') format('woff'),
-    url('#{$font-path}/OpenSans-Semibold-webfont.ttf') format('truetype');
+  src: url('#{$font-path}/OpenSans-Semibold-webfont.woff2') format('woff2'),
+    url('#{$font-path}/OpenSans-Semibold-webfont.woff') format('woff');
 }
 
 @font-face {
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 700;
-  src: url('#{$font-path}/OpenSans-Bold-webfont.eot');
-  src: url('#{$font-path}/OpenSans-Bold-webfont.eot?#iefix') format('embedded-opentype'),
-    url('#{$font-path}/OpenSans-Bold-webfont.woff2') format('woff2'),
-    url('#{$font-path}/OpenSans-Bold-webfont.woff') format('woff'),
-    url('#{$font-path}/OpenSans-Bold-webfont.ttf') format('truetype');
+  src: url('#{$font-path}/OpenSans-Bold-webfont.woff2') format('woff2'),
+    url('#{$font-path}/OpenSans-Bold-webfont.woff') format('woff');
 }
