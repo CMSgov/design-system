@@ -106,7 +106,7 @@
       forced-color-adjust: none;
       -ms-high-contrast-adjust: none;
       outline: $spacer-half solid LinkText;
-      outline-offset: -#{$spacer-half};
+      outline-offset: calc(-1 * #{$spacer-half});
     }
   }
 
