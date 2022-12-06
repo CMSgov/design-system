@@ -63,17 +63,17 @@
 
 // Tooltip arrow
 .ds-c-tooltip__arrow {
-  height: 16px;
+  height: $spacer-2;
   pointer-events: none;
-  width: 16px;
+  width: $spacer-2;
 
   &::after {
     background: $tooltip__background-color;
     content: '';
-    height: 8px;
+    height: $spacer-1;
     left: 50%;
     position: absolute;
-    width: 8px;
+    width: $spacer-1;
   }
 }
 

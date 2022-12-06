@@ -49,12 +49,12 @@
   align-items: center;
   background-color: $usa-banner-close__background-color;
   display: flex;
-  height: 48px;
+  height: $spacer-6;
   justify-content: center;
   margin-left: auto;
-  margin-right: calc(-1 * #{$spacer-2});
-  margin-top: calc(-1 * #{$spacer-1});
-  width: 48px;
+  margin-right: -#{$spacer-2};
+  margin-top: -#{$spacer-1};
+  width: $spacer-6;
 
   .ds-c-icon {
     height: $font-size-lg;

@@ -21,8 +21,8 @@
 
 .ds-c-datefield__separator {
   font-size: $font-size-2xl;
-  line-height: $text-input__line-height * $font-size-base;
-  margin: calc(#{$text-input__border-width} + #{$spacer-half}) 0;
+  line-height: 1;
+  margin: 6px 0;
   padding: $text-input__padding 0;
 }
 

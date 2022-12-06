@@ -7,8 +7,7 @@ select.ds-c-field {
   background-position: right $spacer-1 center;
   background-repeat: no-repeat;
   background-size: $dropdown__icon-size;
-  // have to do a mix of calc & sass interpolation in order to accommodate values being css vars in internal tools
-  padding-right: calc((#{$dropdown__icon-size} * 2) + #{$spacer-1});
+  padding-right: 28px;
 
   &[multiple] {
     background-image: none;

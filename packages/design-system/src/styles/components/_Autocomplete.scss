@@ -29,7 +29,7 @@
   background-color: $autocomplete__background-color;
   border: 1px solid $autocomplete__border-color;
   box-sizing: border-box;
-  max-height: calc(calc(#{$base-font-size} + #{$spacer-2}) * 10);
+  max-height: 320px;
   overflow-y: auto;
   padding: $spacer-1;
   position: absolute;
@@ -66,6 +66,7 @@
 
 // Need a custom class for bottom error message to make space for the clear search button
 .ds-c-autocomplete__error-message--clear-btn {
+  // @TODO: seems like this could be done differently without calc, perhaps using ch
   width: calc(100% - 110px);
 }
 

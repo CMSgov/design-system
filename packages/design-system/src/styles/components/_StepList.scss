@@ -179,7 +179,7 @@
 
   &::before {
     content: '\2022';
-    left: -$spacer-3;
+    left: -#{$spacer-3};
     position: relative;
   }
 }

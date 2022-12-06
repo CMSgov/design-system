@@ -10,7 +10,7 @@
 
 /* stylelint-disable declaration-no-important, no-duplicate-selectors -- Ignore inlined 3rd party styles */
 :root {
-  --rdp-cell-size: 40px;
+  --rdp-cell-size: #{$spacer-5};
   --rdp-accent-color: #{$color-primary};
   --rdp-background-color: #{$color-gray-cool-light};
   /* Added this variable for consistency */

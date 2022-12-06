@@ -50,6 +50,7 @@
   padding: $spacer-1;
   position: absolute;
   right: 0;
+  // @TODO: marked for refactoring this calc
   top: calc(4em - 2px);
   z-index: 1;
 }

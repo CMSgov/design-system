@@ -37,7 +37,7 @@ $accordion-icon-color: #0071bb;
         forced-color-adjust: none;
         -ms-high-contrast-adjust: none;
         outline: $spacer-half solid LinkText;
-        outline-offset: -$spacer-half;
+        outline-offset: -#{$spacer-half};
 
         .ds-c-icon--plus-circle__circle,
         .ds-c-icon--minus-circle__circle {
