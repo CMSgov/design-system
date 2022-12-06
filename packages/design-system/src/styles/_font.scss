@@ -1,59 +1,58 @@
 // Design system fonts
 // Fonts are separated from other settings scss because font-faces are compiled and included css build files
 
-// TODO: Find solution to remove unused @font-faces
 @font-face {
+  font-display: swap;
   font-family: Bitter;
   font-style: normal;
   font-weight: normal;
-  src: url('#{$font-path}/Bitter-Regular.woff2') format('woff2'),
-    url('#{$font-path}/Bitter-Regular.woff') format('woff');
+  src: url('#{$font-path}/Bitter-Regular.woff2') format('woff2');
 }
 
 @font-face {
+  font-display: swap;
   font-family: Bitter;
   font-style: normal;
   font-weight: bold;
-  src: url('#{$font-path}/Bitter-Bold.woff2') format('woff2'),
-    url('#{$font-path}/Bitter-Bold.woff') format('woff');
+  src: url('#{$font-path}/Bitter-Bold.woff2') format('woff2');
 }
 
 @font-face {
+  font-display: swap;
   font-family: Bitter;
   font-style: italic;
   font-weight: normal;
-  src: url('#{$font-path}/Bitter-Italic.woff2') format('woff2'),
-    url('#{$font-path}/Bitter-Italic.woff') format('woff');
+  src: url('#{$font-path}/Bitter-Italic.woff2') format('woff2');
 }
 
 @font-face {
+  font-display: swap;
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: normal;
-  src: url('#{$font-path}/OpenSans-Regular-webfont.woff2') format('woff2'),
-    url('#{$font-path}/OpenSans-Regular-webfont.woff') format('woff');
+  src: url('#{$font-path}/OpenSans-Regular-webfont.woff2') format('woff2');
 }
 
 @font-face {
+  font-display: swap;
   font-family: 'Open Sans';
   font-style: italic;
   font-weight: normal;
-  src: url('#{$font-path}/OpenSans-Italic-webfont.woff2') format('woff2'),
-    url('#{$font-path}/OpenSans-Italic-webfont.woff') format('woff');
+  src: url('#{$font-path}/OpenSans-Italic-webfont.woff2') format('woff2');
 }
 
 @font-face {
+  font-display: swap;
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 600;
-  src: url('#{$font-path}/OpenSans-Semibold-webfont.woff2') format('woff2'),
-    url('#{$font-path}/OpenSans-Semibold-webfont.woff') format('woff');
+  src: url('#{$font-path}/OpenSans-Semibold-webfont.woff2') format('woff2');
 }
 
 @font-face {
+  font-display: swap;
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 700;
-  src: url('#{$font-path}/OpenSans-Bold-webfont.woff2') format('woff2'),
-    url('#{$font-path}/OpenSans-Bold-webfont.woff') format('woff');
+  src: url('#{$font-path}/OpenSans-Bold-webfont.woff2') format('woff2');
 }
