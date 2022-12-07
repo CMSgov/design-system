@@ -28,6 +28,7 @@ const allMasks = [
     default: '###-##-####',
     defaultData: '123456789',
     defaultResult: '123-45-6789',
+    defaultResultBlur: '***-**-6789',
     partialData: '1234',
     partialResult: '123-4#-####',
   },
@@ -82,6 +83,7 @@ allMasks.forEach((currentMask) => {
 
       expect(asFragment()).toMatchSnapshot();
     });
+
     describe('updates label mask to reflect', () => {
       it('complete input value set', () => {
         const { container } = render(<TestLabelMask mask={currentMask.mask} />);
@@ -96,6 +98,7 @@ allMasks.forEach((currentMask) => {
         expect(input).toHaveValue(data);
         expect(mask.textContent).toContain(maskText);
       });
+
       it('partial input value set', () => {
         const { container } = render(<TestLabelMask mask={currentMask.mask} />);
         const data = currentMask.partialData;
@@ -109,20 +112,18 @@ allMasks.forEach((currentMask) => {
         expect(mask.textContent).toContain(currentMask.partialResult);
       });
     });
-    // currency mask doesn't currenty reflect formatting in input, only label
-    if (currentMask.mask !== CURRENCY_MASK) {
-      it('formats input value onBlur', () => {
-        const { container } = render(<TestLabelMask mask={currentMask.mask} />);
-        const data = currentMask.defaultData;
-        const formattedData = currentMask.defaultResult;
 
-        const input = container.querySelector('input');
+    it('formats input value onBlur', () => {
+      const { container } = render(<TestLabelMask mask={currentMask.mask} />);
+      const data = currentMask.defaultData;
+      const formattedData = currentMask.defaultResultBlur ?? currentMask.defaultResult;
 
-        userEvent.type(input, data);
-        userEvent.tab();
+      const input = container.querySelector('input');
 
-        expect(input).toHaveValue(formattedData);
-      });
-    }
+      userEvent.type(input, data);
+      userEvent.tab();
+
+      expect(input).toHaveValue(formattedData);
+    });
   });
 });
