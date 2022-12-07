@@ -1,13 +1,10 @@
 .hc-c-privacy-settings-table {
-  $breakpoint-large-min: $media-width-md;
-  $breakpoint-small-max: $breakpoint-large-min - 1;
-
   td:last-child {
     // Avoid text wrapping on the radio buttons
     min-width: 132px;
   }
 
-  @media screen and (max-width: $breakpoint-small-max) {
+  @media screen and (max-width: $media-width-md - 1) {
     &,
     tbody {
       display: block;
@@ -45,7 +42,7 @@
     }
   }
 
-  @media screen and (min-width: $breakpoint-large-min) {
+  @media screen and (min-width: $media-width-md) {
     th:nth-child(1) {
       min-width: 110px;
     }

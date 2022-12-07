@@ -1,8 +1,5 @@
 @import '../settings/index.scss';
 
-// @TODO: deprecate and either add to component definition or hard-code
-$accordion-header-font-family: $font-sans;
-
 .ds-c-accordion {
   color: $accordion__color;
   font-size: $font-size-base;
@@ -30,7 +27,7 @@ $accordion-header-font-family: $font-sans;
   color: $accordion-button__color;
   cursor: pointer;
   display: flex;
-  font-family: $accordion-header-font-family;
+  font-family: $font-sans;
   font-size: $font-size-base;
   font-weight: $font-weight-bold;
   justify-content: space-between;
@@ -61,7 +58,7 @@ $accordion-header-font-family: $font-sans;
       forced-color-adjust: none;
       -ms-high-contrast-adjust: none;
       outline: $spacer-half solid LinkText;
-      outline-offset: -$spacer-half;
+      outline-offset: calc(-1 * #{$spacer-half});
     }
   }
 

@@ -1,13 +1,5 @@
 @import '../settings/index.scss';
 
-// @TODO: deprecate usage of these and make component options
-// or hard-code if not being utilized
-$autocomplete-space: $spacer-1;
-$autocomplete-list-border-width: 1px;
-$autocomplete-list-border-style: solid;
-$autocomplete-list-border: $autocomplete-list-border-width $autocomplete-list-border-style
-  $autocomplete__border-color;
-
 .ds-c-autocomplete {
   max-width: $form__max-width;
   position: relative;
@@ -30,16 +22,16 @@ $autocomplete-list-border: $autocomplete-list-border-width $autocomplete-list-bo
 
 .ds-c-autocomplete__label {
   margin: 0;
-  padding: $autocomplete-space;
+  padding: $spacer-1;
 }
 
 .ds-c-autocomplete__list {
   background-color: $autocomplete__background-color;
-  border: $autocomplete-list-border;
+  border: 1px solid $autocomplete__border-color;
   box-sizing: border-box;
-  max-height: calc(calc(#{$base-font-size} + #{$spacer-2}) * 10);
+  max-height: 320px;
   overflow-y: auto;
-  padding: $autocomplete-space;
+  padding: $spacer-1;
   position: absolute;
   width: 100%;
   z-index: $z-dialog;
@@ -74,6 +66,7 @@ $autocomplete-list-border: $autocomplete-list-border-width $autocomplete-list-bo
 
 // Need a custom class for bottom error message to make space for the clear search button
 .ds-c-autocomplete__error-message--clear-btn {
+  // @TODO: seems like this could be done differently without calc, perhaps using ch
   width: calc(100% - 110px);
 }
 

@@ -10,7 +10,7 @@
 
 /* stylelint-disable declaration-no-important, no-duplicate-selectors -- Ignore inlined 3rd party styles */
 :root {
-  --rdp-cell-size: 40px;
+  --rdp-cell-size: #{$spacer-5};
   --rdp-accent-color: #{$color-primary};
   --rdp-background-color: #{$color-gray-cool-light};
   /* Added this variable for consistency */
@@ -484,7 +484,7 @@
       border-bottom-right-radius: 0;
       border-top-right-radius: 0;
       margin-bottom: 0;
-      margin-right: -#{$text-input__border-width};
+      margin-right: calc(-1 * #{$text-input__border-width});
       margin-top: 0;
 
       &:focus,
@@ -493,7 +493,7 @@
       }
 
       &.ds-c-field--error {
-        margin-right: -#{$text-input__border-width--error};
+        margin-right: calc(-1 * #{$text-input__border-width--error});
       }
     }
   }
@@ -522,7 +522,7 @@
       bottom: 0;
       content: '';
       display: block;
-      left: -#{$text-input__border-width};
+      left: calc(-1 * #{$text-input__border-width});
       position: absolute;
       top: 0;
       width: $text-input__border-width;
@@ -542,7 +542,7 @@
     border: $text-input__border-width--error solid $text-input__border-color--error;
 
     &:after {
-      left: -#{$text-input__border-width--error};
+      left: calc(-1 * #{$text-input__border-width--error});
       width: $text-input__border-width--error;
     }
   }

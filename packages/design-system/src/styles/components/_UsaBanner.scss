@@ -1,13 +1,7 @@
-// @TODO: deprecate usage of these when modification of these in
-// consuming systems is either not done or easily resolved
-$usa-banner-mobile-close-size: 48px;
-$usa-caret-icon-size: 10px;
-$usa-banner-font-family: $font-sans;
-
 .ds-c-usa-banner {
   background-color: $usa-banner__background-color;
   color: $usa-banner__color;
-  font-family: $usa-banner-font-family;
+  font-family: $font-sans;
   font-size: $font-size-base;
   padding: 0;
 }
@@ -35,7 +29,7 @@ $usa-banner-font-family: $font-sans;
 
   .ds-c-usa-banner__button {
     display: flex;
-    font-family: $usa-banner-font-family;
+    font-family: $font-sans;
     padding: $spacer-1 $spacer-2 $spacer-1 $spacer-2;
     width: 100%;
   }
@@ -55,12 +49,12 @@ $usa-banner-font-family: $font-sans;
   align-items: center;
   background-color: $usa-banner-close__background-color;
   display: flex;
-  height: $usa-banner-mobile-close-size;
+  height: $spacer-6;
   justify-content: center;
   margin-left: auto;
-  margin-right: -$spacer-2;
-  margin-top: -$spacer-1;
-  width: $usa-banner-mobile-close-size;
+  margin-right: calc(-1 * #{$spacer-2});
+  margin-top: calc(-1 * #{$spacer-1});
+  width: $spacer-6;
 
   .ds-c-icon {
     height: $font-size-lg;
@@ -159,9 +153,9 @@ $usa-banner-font-family: $font-sans;
 }
 
 .ds-c-usa-banner__lock-image {
-  height: 1.5ex;
+  height: 0.75em;
   vertical-align: inherit;
-  width: calc(1.5ex * 52 / 64);
+  width: auto;
 
   path {
     fill: currentColor;
@@ -199,6 +193,6 @@ $usa-banner-font-family: $font-sans;
 
 .ds-c-usa-banner__action-icon {
   color: $usa-banner__color;
-  height: $usa-caret-icon-size;
-  width: $usa-caret-icon-size;
+  height: 10px;
+  width: 10px;
 }
