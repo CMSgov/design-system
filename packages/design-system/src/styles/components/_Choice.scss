@@ -243,7 +243,10 @@ label,
   border-left: $spacer-half solid $choice__border-color--left;
   flex: 1 1 100%;
   margin-bottom: $spacer-2;
-  margin-left: calc(calc(#{$choice__size} * 0.5) - calc(#{$spacer-half} * 0.5));
+  // @TODO: get rid of this calc
+  // The origin of this 2px shift is fuzzy, it seems like it's based on
+  // the border on alerts and healthcare.gov insets.
+  margin-left: calc(calc(#{$choice__size} * 0.5) - 2px);
   padding: $spacer-2;
   padding-right: 0;
 

@@ -230,6 +230,7 @@
 --filter-chip__color--active: #ffffff;
 --filter-chip-icon__color: #262626;
 --filter-chip-icon__color-active: #ffffff;
+--filter-chip-icon__container-size: 18px;
 --form-label__color--inverse: #ffffff;
 --form__max-width: 460px;
 --form__max-width--small: 6em;
@@ -309,6 +310,7 @@
 --text-input__border-radius: 3px;
 --tooltip__background-color: #ffffff;
 --tooltip__border-color: #404040;
+--tooltip__border-width: 1px;
 --tooltip__color: #262626;
 --tooltip__box-shadow-color: #a6a6a6;
 --tooltip-icon__color: #0071bc;
