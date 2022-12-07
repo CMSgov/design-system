@@ -1,5 +1,5 @@
 @use '../core' as *;
-@use '../mixins';
+@use '../mixins' as *;
 
 @keyframes slideInDrawer {
   from {
@@ -106,7 +106,7 @@
 
 // This element is focusable via a tabindex attribute.
 .ds-c-drawer__header-heading:focus {
-  @include mixins.focus-styles;
+  @include focus-styles;
 }
 
 // Using `overflow: auto` instead of `position: sticky` on sticky els

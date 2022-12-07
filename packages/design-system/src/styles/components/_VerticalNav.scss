@@ -1,5 +1,5 @@
 @use '../core' as *;
-@use '../mixins';
+@use '../mixins' as *;
 
 %nav-item-hover {
   background-color: $vertical-nav-item__background-color--hover;
@@ -7,12 +7,12 @@
   text-decoration: none;
 }
 %nav-item-focus {
-  @include mixins.focus-styles;
-  @include mixins.focus-styles-position;
+  @include focus-styles;
+  @include focus-styles-position;
 }
 
 .ds-c-vertical-nav {
-  @include mixins.ds-unstyled-list;
+  @include ds-unstyled-list;
 
   > .ds-c-vertical-nav__item {
     background-color: transparent;
@@ -136,7 +136,7 @@
 }
 
 .ds-c-vertical-nav__subnav {
-  @include mixins.ds-unstyled-list;
+  @include ds-unstyled-list;
 
   .ds-c-vertical-nav__label {
     font-size: $font-size-sm;

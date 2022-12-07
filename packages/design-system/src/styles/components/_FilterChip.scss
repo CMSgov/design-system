@@ -1,5 +1,5 @@
 @use '../core' as *;
-@use '../mixins';
+@use '../mixins' as *;
 
 .ds-c-filter-chip__button {
   background-color: $filter-chip__background-color;
@@ -32,7 +32,7 @@
     color: $filter-chip__color--active;
   }
   &:focus {
-    @include mixins.focus-styles;
+    @include focus-styles;
   }
 
   > * {

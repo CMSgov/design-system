@@ -1,5 +1,5 @@
 @use 'core' as *;
-@use 'mixins';
+@use 'mixins' as *;
 
 /**
  * Global
@@ -80,7 +80,7 @@ $breakpoints: (
   }
   &:focus,
   &:focus:visited {
-    @include mixins.focus-styles-link;
+    @include focus-styles-link;
   }
 
   &:active {
@@ -111,7 +111,7 @@ $breakpoints: (
 
   &:focus,
   &:focus:visited {
-    @include mixins.focus-styles-link;
+    @include focus-styles-link;
     color: $link__color;
   }
 

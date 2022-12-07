@@ -1,5 +1,5 @@
 @use '../core' as *;
-@use '../mixins';
+@use '../mixins' as *;
 
 // Because import of stylesheets in node_modules would have to be supported by
 // downstream projects--and we have no guarantee that it will--it is necessary
@@ -356,7 +356,7 @@
 // Apply our focus, hover, and active styles to all the day buttons
 .rdp-button:focus,
 .rdp-button:active {
-  @include mixins.focus-styles;
+  @include focus-styles;
 }
 .rdp-button:active,
 .rdp-button:active:hover:not([aria-disabled='true']),
@@ -392,7 +392,7 @@
 }
 .rdp-dropdown:focus:not([disabled]) + .rdp-caption_label,
 .rdp-dropdown:active:not([disabled]) + .rdp-caption_label {
-  @include mixins.focus-styles;
+  @include focus-styles;
   background-color: initial;
 }
 .rdp-dropdown_icon.ds-c-icon--arrows-stacked {
@@ -419,7 +419,7 @@
 
   &:focus,
   &:active:not(:disabled) {
-    @include mixins.focus-styles;
+    @include focus-styles;
   }
 
   &:active:not(:disabled) {
@@ -531,7 +531,7 @@
 
     &:focus,
     &:active {
-      @include mixins.focus-styles;
+      @include focus-styles;
 
       &:after {
         display: none;

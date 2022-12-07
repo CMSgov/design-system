@@ -1,5 +1,5 @@
 @use '../core' as *;
-@use '../mixins';
+@use '../mixins' as *;
 
 .ds-c-tabs {
   border-bottom: 1px solid $tabs__border-color;
@@ -102,8 +102,8 @@
   }
 
   &:focus {
-    @include mixins.focus-styles;
-    @include mixins.focus-styles-position;
+    @include focus-styles;
+    @include focus-styles-position;
   }
 
   &:active {
@@ -123,6 +123,6 @@
 
   // SVG icons
   > svg {
-    @include mixins.inline-icon;
+    @include inline-icon;
   }
 }

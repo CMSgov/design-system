@@ -1,5 +1,5 @@
 @use '../core' as *;
-@use '../mixins';
+@use '../mixins' as *;
 
 @mixin spinner-size($inner-size, $outer-size) {
   height: $outer-size;
@@ -54,7 +54,7 @@
   }
 
   .ds-c-button > & {
-    @include mixins.inline-icon;
+    @include inline-icon;
     @include spinner-size(1em, 1em);
   }
 }

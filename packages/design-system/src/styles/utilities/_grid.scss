@@ -1,6 +1,6 @@
 @use '../core' as *;
-@use '../mixins';
-@use '../base';
+@use '../mixins' as *;
+@use '../base' as *;
 
 // TODO: Update class namespace to utilities
 
@@ -68,22 +68,22 @@
 }
 
 .ds-l-col {
-  @include mixins.equal-width-flexbox-col;
+  @include equal-width-flexbox-col;
 }
 
 .ds-l-col--auto {
-  @include mixins.auto-width-flexbox-col;
+  @include auto-width-flexbox-col;
 }
 
 @for $i from 1 through $grid-columns {
   // Example: ds-l-col--12
   .ds-l-col--#{$i} {
-    @include mixins.flexbox-col($i);
+    @include flexbox-col($i);
   }
 }
 
-@each $breakpoint in map-keys(base.$breakpoints) {
-  $value: map-get(base.$breakpoints, $breakpoint);
+@each $breakpoint in map-keys($breakpoints) {
+  $value: map-get($breakpoints, $breakpoint);
 
   // Allow columns to stretch full width below their breakpoints
   @for $i from 1 through $grid-columns {
@@ -106,17 +106,17 @@
     // Provide breakpoint classes for equal-width columns
     // Example: ds-l-lg-col
     .ds-l-#{$breakpoint}-col {
-      @include mixins.equal-width-flexbox-col;
+      @include equal-width-flexbox-col;
     }
 
     .ds-l-#{$breakpoint}-col--auto {
-      @include mixins.auto-width-flexbox-col;
+      @include auto-width-flexbox-col;
     }
 
     @for $i from 1 through $grid-columns {
       // Example: ds-l-lg-col--12
       .ds-l-#{$breakpoint}-col--#{$i} {
-        @include mixins.flexbox-col($i);
+        @include flexbox-col($i);
       }
     }
   }

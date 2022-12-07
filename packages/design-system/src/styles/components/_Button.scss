@@ -1,5 +1,5 @@
 @use '../core' as *;
-@use '../mixins';
+@use '../mixins' as *;
 
 .ds-c-button,
 .ds-c-button:visited {
@@ -32,7 +32,7 @@
   }
 
   > svg {
-    @include mixins.inline-icon;
+    @include inline-icon;
   }
 
   &:hover,
@@ -43,7 +43,7 @@
   }
 
   &:focus {
-    @include mixins.focus-styles;
+    @include focus-styles;
   }
 
   &:active,

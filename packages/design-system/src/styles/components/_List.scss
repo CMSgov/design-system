@@ -1,5 +1,5 @@
 @use '../core' as *;
-@use '../mixins';
+@use '../mixins' as *;
 
 .ds-c-list {
   margin-bottom: $spacer-2;
@@ -17,5 +17,5 @@
 }
 
 .ds-c-list--bare {
-  @include mixins.ds-unstyled-list;
+  @include ds-unstyled-list;
 }

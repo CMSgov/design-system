@@ -1,5 +1,5 @@
 @use '../core' as *;
-@use '../mixins';
+@use '../mixins' as *;
 
 .ds-c-autocomplete {
   max-width: $form__max-width;
@@ -17,7 +17,7 @@
     }
   }
   input:focus {
-    @include mixins.focus-styles-position;
+    @include focus-styles-position;
   }
 }
 

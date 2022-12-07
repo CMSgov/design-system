@@ -1,5 +1,5 @@
 @use '../core' as *;
-@use '../mixins';
+@use '../mixins' as *;
 
 .ds-c-field {
   appearance: none;
@@ -34,7 +34,7 @@
   }
 
   &:focus {
-    @include mixins.focus-styles;
+    @include focus-styles;
   }
 }
 

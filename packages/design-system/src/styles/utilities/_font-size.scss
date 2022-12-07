@@ -1,5 +1,5 @@
 @use '../core' as *;
-@use '../base';
+@use '../base' as *;
 
 // To Do: Remove the semantic classes h1, h2, h3, display, title, etc... after deprecating
 
@@ -46,8 +46,8 @@
   font-size: $font-size-5xl !important;
 }
 
-@each $breakpoint in map-keys(base.$breakpoints) {
-  $value: map-get(base.$breakpoints, $breakpoint);
+@each $breakpoint in map-keys($breakpoints) {
+  $value: map-get($breakpoints, $breakpoint);
 
   @media (min-width: $value) {
     .ds-u-#{$breakpoint}-font-size--small,

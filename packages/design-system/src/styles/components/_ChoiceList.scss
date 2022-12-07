@@ -1,5 +1,5 @@
 @use '../core' as *;
-@use '../mixins';
+@use '../mixins' as *;
 
 /**
 ** Order of choice styles is important to ensure styles follow correct precedent.
@@ -122,7 +122,7 @@ label,
 
   // Focus
   &:focus {
-    @include mixins.focus-styles;
+    @include focus-styles;
   }
 }
 

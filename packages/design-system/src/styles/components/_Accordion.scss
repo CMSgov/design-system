@@ -1,5 +1,5 @@
 @use '../core' as *;
-@use '../mixins';
+@use '../mixins' as *;
 
 .ds-c-accordion {
   color: $accordion__color;
@@ -43,7 +43,7 @@
   }
 
   &:focus {
-    @include mixins.focus-styles;
+    @include focus-styles;
   }
 
   @media (-ms-high-contrast: active), (forced-colors: active) {

@@ -1,5 +1,5 @@
 @use '../base' as *;
-@use '../mixins';
+@use '../mixins' as *;
 
 .ds-u-float--left {
   float: left !important;
@@ -32,5 +32,5 @@
 }
 
 .ds-u-clearfix {
-  @include mixins.clearfix;
+  @include clearfix;
 }
