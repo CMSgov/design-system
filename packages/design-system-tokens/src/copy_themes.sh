@@ -2,32 +2,28 @@
 
 # copies all themes into appropriate directories
 
-CORE="../../design-system/src/styles"
-HC="../../ds-healthcare-gov/src/styles"
-MC="../../ds-medicare-gov/src/styles"
-
-cd dist
-
 copyThemes()
 {
+  cd dist
+  
   # move files used in distributed packages
-  for file in core*-theme.scss; do
-    cat "$file" >> "$CORE/_core.scss"
+  for file in core*.scss; do
+    cp -v "$file" "../../design-system/src/styles/_${file}"
   done
-  for file in core*-theme.css; do
-    cat "$file" >> "$CORE/_core.css"
+  for file in core*.css; do
+    cp -v "$file" "../../design-system/src/styles/_${file}"
   done
-  for file in healthcare*-theme.scss; do
-    cat "$file" >> "$HC/_healthcare.scss"
+  for file in healthcare*.scss; do
+    cp -v "$file" "../../ds-healthcare-gov/src/styles/_${file}"
   done
-  for file in healthcare*-theme.css; do
-    cat "$file" >> "$HC/_healthcare.css"
+  for file in healthcare*.css; do
+    cp -v "$file" "../../ds-healthcare-gov/src/styles/_${file}"
   done
-  for file in medicare*-theme.scss; do
-    cat "$file" >> "$MC/_medicare.scss"
+  for file in medicare*.scss; do
+    cp -v "$file" "../../ds-medicare-gov/src/styles/_${file}"
   done
-  for file in medicare*-theme.css; do
-    cat "$file" >> "$MC/_medicare.css"
+  for file in medicare*.css; do
+    cp -v "$file" "../../ds-medicare-gov/src/styles/_${file}"
   done
 
   #move files used in internal tooling

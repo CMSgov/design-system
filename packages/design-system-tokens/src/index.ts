@@ -3,12 +3,11 @@ import { getFileDescriptors } from './lib/file';
 import exportCsv from './lib/exportCsv';
 import exportJson from './lib/exportJson';
 import exportCssVars from './lib/exportCssVars';
-import exportScss from './lib/exportScss';
 
 const INPUT_PATH = `${process.cwd()}/src/`;
 const OUTPUT_PATH = 'dist';
 const INPUT_TYPES = ['themes', 'tokens'];
-const EXPORT_TYPES = ['csv', 'json', 'css-vars', 'scss'];
+const EXPORT_TYPES = ['csv', 'json', 'css-vars'];
 
 // main token export function, returns exit status (0 success, 1 failure)
 const tokenExporter = (inputType: string, exportType: string): number => {
@@ -21,8 +20,6 @@ const tokenExporter = (inputType: string, exportType: string): number => {
       return exportJson(fileData, OUTPUT_PATH);
     case 'css-vars':
       return exportCssVars(fileData, OUTPUT_PATH);
-    case 'scss':
-      return exportScss(fileData, OUTPUT_PATH);
     default:
       return 0;
   }
