@@ -1,4 +1,5 @@
-@import '../settings/index.scss';
+@use '../core' as *;
+@use '../mixins';
 
 // Because import of stylesheets in node_modules would have to be supported by
 // downstream projects--and we have no guarantee that it will--it is necessary
@@ -6,7 +7,7 @@
 // risk is that if we make changes, they are not guaranteed to work for future
 // versions of this library. To mitigate this risk, we should avoid modifying
 // the source rules.
-// @import 'react-day-picker/dist/style.css';
+// @use 'react-day-picker/dist/style.css';
 
 /* stylelint-disable declaration-no-important, no-duplicate-selectors -- Ignore inlined 3rd party styles */
 :root {
@@ -355,7 +356,7 @@
 // Apply our focus, hover, and active styles to all the day buttons
 .rdp-button:focus,
 .rdp-button:active {
-  @include focus-styles;
+  @include mixins.focus-styles;
 }
 .rdp-button:active,
 .rdp-button:active:hover:not([aria-disabled='true']),
@@ -391,7 +392,7 @@
 }
 .rdp-dropdown:focus:not([disabled]) + .rdp-caption_label,
 .rdp-dropdown:active:not([disabled]) + .rdp-caption_label {
-  @include focus-styles;
+  @include mixins.focus-styles;
   background-color: initial;
 }
 .rdp-dropdown_icon.ds-c-icon--arrows-stacked {
@@ -405,7 +406,7 @@
   appearance: none;
   background-color: transparent;
   border: none;
-  border-radius: $border-radius;
+  border-radius: $text-input__border-radius;
   color: $color-primary;
   cursor: pointer;
   display: inline-block;
@@ -418,7 +419,7 @@
 
   &:focus,
   &:active:not(:disabled) {
-    @include focus-styles;
+    @include mixins.focus-styles;
   }
 
   &:active:not(:disabled) {
@@ -530,7 +531,7 @@
 
     &:focus,
     &:active {
-      @include focus-styles;
+      @include mixins.focus-styles;
 
       &:after {
         display: none;

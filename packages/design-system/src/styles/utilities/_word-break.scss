@@ -1,4 +1,4 @@
-@import '../settings/index.scss';
+@use '../core.scss';
 
 .ds-u-word-break {
   overflow-wrap: break-word;

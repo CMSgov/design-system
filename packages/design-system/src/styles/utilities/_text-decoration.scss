@@ -1,4 +1,4 @@
-@import '../settings/index.scss';
+@use '../core' as *;
 
 .ds-u-text-decoration--underline {
   text-decoration: underline !important;

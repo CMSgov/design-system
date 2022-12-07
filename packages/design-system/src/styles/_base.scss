@@ -1,3 +1,32 @@
+@use 'core' as *;
+@use 'mixins';
+
+/**
+ * Global
+ */
+
+// 44 x 44 pixels hit target following Apple iOS Human Interface Guidelines
+$hit-area: 4.4rem !default;
+
+$spacers: (
+  '0': 0,
+  '05': $spacer-half,
+  '1': $spacer-1,
+  '2': $spacer-2,
+  '3': $spacer-3,
+  '4': $spacer-4,
+  '5': $spacer-5,
+  '6': $spacer-6,
+  '7': $spacer-7,
+) !default;
+
+$breakpoints: (
+  sm: $media-width-sm,
+  md: $media-width-md,
+  lg: $media-width-lg,
+  xl: $media-width-xl,
+) !default;
+
 /**
  * Body
  */
@@ -51,7 +80,7 @@
   }
   &:focus,
   &:focus:visited {
-    @include focus-styles-link;
+    @include mixins.focus-styles-link;
   }
 
   &:active {
@@ -82,7 +111,7 @@
 
   &:focus,
   &:focus:visited {
-    @include focus-styles-link;
+    @include mixins.focus-styles-link;
     color: $link__color;
   }
 
@@ -175,11 +204,11 @@ a,
 .ds-text-heading--5xl {
   font-size: $font-size-3xl;
 
-  @media (min-width: $width-sm) {
+  @media (min-width: $media-width-sm) {
     font-size: $font-size-4xl;
   }
 
-  @media (min-width: $width-md) {
+  @media (min-width: $media-width-md) {
     font-size: $font-size-5xl;
   }
 }
@@ -189,17 +218,17 @@ a,
   font-size: $font-size-3xl;
   font-weight: $typography-heading-4xl__font-weight;
 
-  @media (min-width: $width-md) {
+  @media (min-width: $media-width-md) {
     font-size: $font-size-4xl;
   }
 }
 
 .ds-h1,
 .ds-text-heading--3xl {
-  font-size: $h1-mobile-font-size;
+  font-size: 30px;
   font-weight: $typography-heading-3xl__font-weight;
 
-  @media (min-width: $width-md) {
+  @media (min-width: $media-width-md) {
     font-size: $font-size-3xl;
   }
 }

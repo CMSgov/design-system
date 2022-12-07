@@ -1,4 +1,5 @@
-@import '../settings/index.scss';
+@use '../core' as *;
+@use '../base';
 
 // To Do: Remove the semantic classes h1, h2, h3, display, title, etc... after deprecating
 
@@ -11,7 +12,7 @@
 .ds-u-font-size--h5,
 .ds-u-font-size--base,
 .ds-u-font-size--md {
-  font-size: $base-font-size !important;
+  font-size: $font-size-base !important;
 }
 
 .ds-u-font-size--h4,
@@ -45,8 +46,8 @@
   font-size: $font-size-5xl !important;
 }
 
-@each $breakpoint in map-keys($breakpoints) {
-  $value: map-get($breakpoints, $breakpoint);
+@each $breakpoint in map-keys(base.$breakpoints) {
+  $value: map-get(base.$breakpoints, $breakpoint);
 
   @media (min-width: $value) {
     .ds-u-#{$breakpoint}-font-size--small,
@@ -55,7 +56,7 @@
     }
     .ds-u-#{$breakpoint}-font-size--md,
     .ds-u-#{$breakpoint}-font-size--base {
-      font-size: $base-font-size !important;
+      font-size: $font-size-base !important;
     }
 
     .ds-u-#{$breakpoint}-font-size--lg,

@@ -1,4 +1,4 @@
-@import '../settings/index.scss';
+@use '../core' as *;
 
 .ds-c-step-list {
   list-style-type: none;
@@ -134,7 +134,7 @@
   }
 
   .ds-c-step--completed & a {
-    font-weight: $font-normal;
+    font-weight: $font-weight-normal;
   }
 }
 

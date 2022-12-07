@@ -1,4 +1,4 @@
-@import '../settings/index.scss';
+@use '../core' as *;
 
 @mixin badge-high-contrast-mode-remove-color() {
   @media (-ms-high-contrast: active), (forced-colors: active) {

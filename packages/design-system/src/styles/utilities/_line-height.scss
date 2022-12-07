@@ -1,4 +1,4 @@
-@import '../settings/index.scss';
+@use '../core' as *;
 
 .ds-u-leading--base {
   line-height: $font-line-height-base !important;

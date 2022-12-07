@@ -1,4 +1,4 @@
-@import '../settings/index.scss';
+@use '../core' as *;
 
 // One of the few places !important is allowed.
 /* stylelint-disable declaration-no-important */
@@ -304,15 +304,15 @@
 }
 // Deprecated Focus colors
 .ds-u-fill--focus-color {
-  background-color: $focus-color !important;
+  background-color: $color-focus !important;
 }
 
 .ds-u-fill--focus-color-inverse {
-  background-color: $focus-color-inverse !important;
+  background-color: $color-focus-inverse !important;
 }
 
 .ds-u-fill--focus-border-inverse {
-  background-color: $focus-border-inverse !important;
+  background-color: $color-focus-border-inverse !important;
 }
 
 /* stylelint-enable declaration-no-important */

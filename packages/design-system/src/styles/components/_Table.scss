@@ -1,4 +1,4 @@
-@import '../settings/index.scss';
+@use '../core' as *;
 
 .ds-c-table {
   border-collapse: collapse;
@@ -152,19 +152,19 @@
 }
 
 .ds-c-sm-table--stacked {
-  @media (max-width: $width-sm) {
+  @media (max-width: $media-width-sm) {
     @include stacked-table-styles;
   }
 }
 
 .ds-c-md-table--stacked {
-  @media (max-width: $width-md) {
+  @media (max-width: $media-width-md) {
     @include stacked-table-styles;
   }
 }
 
 .ds-c-lg-table--stacked {
-  @media (max-width: $width-lg) {
+  @media (max-width: $media-width-lg) {
     @include stacked-table-styles;
   }
 }

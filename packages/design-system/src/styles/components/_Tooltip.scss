@@ -1,5 +1,6 @@
-@import '../settings/index.scss';
-@import '../base/link.scss';
+@use '../core' as *;
+@use '../base';
+@use '../mixins';
 
 %trigger-reset-styles {
   // override user agent button styles
@@ -37,7 +38,7 @@
   @extend %trigger-reset-styles;
   padding: $spacer-half;
   &:focus {
-    @include focus-styles;
+    @include mixins.focus-styles;
   }
 }
 

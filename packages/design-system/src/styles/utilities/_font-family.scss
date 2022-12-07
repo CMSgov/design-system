@@ -1,4 +1,4 @@
-@import '../settings/index.scss';
+@use '../core' as *;
 
 .ds-u-sans {
   font-family: $font-sans !important;

@@ -1,4 +1,4 @@
-@import '../settings/index.scss';
+@use '../core' as *;
 
 // One of the few places !important is allowed.
 /* stylelint-disable declaration-no-important */

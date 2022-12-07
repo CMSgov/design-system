@@ -1,4 +1,5 @@
-@import '../settings/index.scss';
+@use '../core' as *;
+@use '../mixins';
 
 .ds-c-list {
   margin-bottom: $spacer-2;
@@ -16,5 +17,5 @@
 }
 
 .ds-c-list--bare {
-  @include ds-unstyled-list;
+  @include mixins.ds-unstyled-list;
 }

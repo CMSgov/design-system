@@ -1,4 +1,5 @@
-@import '../settings/index.scss';
+@use '../core' as *;
+@use '../mixins';
 
 /**
 ** Order of choice styles is important to ensure styles follow correct precedent.
@@ -20,7 +21,7 @@
   cursor: pointer;
   flex-basis: min-content;
   flex-grow: 1;
-  font-weight: $font-normal;
+  font-weight: $font-weight-normal;
   margin-top: 0;
   max-width: max-content;
   transform: translateY(0.25em);
@@ -121,7 +122,7 @@ label,
 
   // Focus
   &:focus {
-    @include focus-styles;
+    @include mixins.focus-styles;
   }
 }
 

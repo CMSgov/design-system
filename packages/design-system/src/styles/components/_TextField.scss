@@ -1,4 +1,5 @@
-@import '../settings/index.scss';
+@use '../core' as *;
+@use '../mixins';
 
 .ds-c-field {
   appearance: none;
@@ -33,7 +34,7 @@
   }
 
   &:focus {
-    @include focus-styles;
+    @include mixins.focus-styles;
   }
 }
 

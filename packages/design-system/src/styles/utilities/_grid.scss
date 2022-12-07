@@ -1,4 +1,6 @@
-@import '../settings/index.scss';
+@use '../core' as *;
+@use '../mixins';
+@use '../base';
 
 // TODO: Update class namespace to utilities
 
@@ -12,7 +14,7 @@
   padding-left: calc(#{$grid-gutter-width} * 0.5);
   padding-right: calc(#{$grid-gutter-width} * 0.5);
 
-  @media (min-width: $width-sm) {
+  @media (min-width: $media-width-sm) {
     padding-left: $grid-gutter-width;
     padding-right: $grid-gutter-width;
   }
@@ -66,22 +68,22 @@
 }
 
 .ds-l-col {
-  @include equal-width-flexbox-col;
+  @include mixins.equal-width-flexbox-col;
 }
 
 .ds-l-col--auto {
-  @include auto-width-flexbox-col;
+  @include mixins.auto-width-flexbox-col;
 }
 
 @for $i from 1 through $grid-columns {
   // Example: ds-l-col--12
   .ds-l-col--#{$i} {
-    @include flexbox-col($i);
+    @include mixins.flexbox-col($i);
   }
 }
 
-@each $breakpoint in map-keys($breakpoints) {
-  $value: map-get($breakpoints, $breakpoint);
+@each $breakpoint in map-keys(base.$breakpoints) {
+  $value: map-get(base.$breakpoints, $breakpoint);
 
   // Allow columns to stretch full width below their breakpoints
   @for $i from 1 through $grid-columns {
@@ -104,17 +106,17 @@
     // Provide breakpoint classes for equal-width columns
     // Example: ds-l-lg-col
     .ds-l-#{$breakpoint}-col {
-      @include equal-width-flexbox-col;
+      @include mixins.equal-width-flexbox-col;
     }
 
     .ds-l-#{$breakpoint}-col--auto {
-      @include auto-width-flexbox-col;
+      @include mixins.auto-width-flexbox-col;
     }
 
     @for $i from 1 through $grid-columns {
       // Example: ds-l-lg-col--12
       .ds-l-#{$breakpoint}-col--#{$i} {
-        @include flexbox-col($i);
+        @include mixins.flexbox-col($i);
       }
     }
   }

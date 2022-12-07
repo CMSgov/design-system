@@ -1,10 +1,13 @@
+@use 'core' as *;
 // Design system fonts
 // Fonts are separated from other settings scss because font-faces are compiled and included css build files
+
+$font-path: '../fonts' !default;
 
 // TODO: Find solution to remove unused @font-faces
 @font-face {
   font-family: Bitter;
-  font-style: normal;
+  font-style: ormal;
   font-weight: normal;
   src: url('#{$font-path}/Bitter-Regular.eot');
   src: url('#{$font-path}/Bitter-Regular.eot?#iefix') format('embedded-opentype'),

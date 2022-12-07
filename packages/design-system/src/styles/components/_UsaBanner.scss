@@ -1,3 +1,7 @@
+@use '../core' as *;
+@use '../base';
+@use '../mixins';
+
 .ds-c-usa-banner {
   background-color: $usa-banner__background-color;
   color: $usa-banner__color;
@@ -17,7 +21,7 @@
   padding: $spacer-1 $spacer-2 $spacer-1 $spacer-2;
   position: relative;
 
-  @media (min-width: $width-sm) {
+  @media (min-width: $media-width-sm) {
     min-height: 0;
     padding-bottom: 4px;
     padding-top: 4px;
@@ -96,7 +100,7 @@
   text-align: left;
 
   &:focus {
-    @include focus-styles;
+    @include mixins.focus-styles;
   }
 }
 
@@ -110,7 +114,7 @@
   overflow: hidden;
   padding: 4px $spacer-2 $spacer-2 $spacer-1;
 
-  @media (min-width: $width-sm) {
+  @media (min-width: $media-width-sm) {
     padding-bottom: $spacer-3;
     padding-top: $spacer-3;
   }
@@ -120,7 +124,7 @@
   display: flex;
   flex-direction: column;
 
-  @media (min-width: $width-sm) {
+  @media (min-width: $media-width-sm) {
     flex-flow: row nowrap;
   }
 }
@@ -131,7 +135,7 @@
   max-width: 64ex;
   padding: $spacer-2 12px 0 12px;
 
-  @media (min-width: $width-sm) {
+  @media (min-width: $media-width-sm) {
     padding: 0 $spacer-1;
     width: 50%;
   }
@@ -178,7 +182,7 @@
 }
 
 .ds-c-usa-banner__header--expanded {
-  @media (min-width: $width-sm) {
+  @media (min-width: $media-width-sm) {
     background-color: transparent;
     padding-right: 0;
     .ds-c-usa-banner__button-text::after {

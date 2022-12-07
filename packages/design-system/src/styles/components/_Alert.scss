@@ -1,4 +1,4 @@
-@import '../settings/index.scss';
+@use '../core' as *;
 
 .ds-c-alert {
   background-color: $alert__background-color;
@@ -83,7 +83,7 @@
 
 .ds-c-alert__heading {
   font-size: $font-size-lg;
-  font-weight: $font-bold;
+  font-weight: $font-weight-bold;
   margin-bottom: $spacer-half;
   margin-top: 0;
 }

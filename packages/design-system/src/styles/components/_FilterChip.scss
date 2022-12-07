@@ -1,3 +1,6 @@
+@use '../core' as *;
+@use '../mixins';
+
 .ds-c-filter-chip__button {
   background-color: $filter-chip__background-color;
   border: 1px solid $filter-chip__border-color;
@@ -6,7 +9,7 @@
   cursor: pointer;
   font-family: $font-sans;
   font-size: $font-size-sm;
-  font-weight: $font-normal;
+  font-weight: $font-weight-normal;
   margin-right: $spacer-1;
   margin-top: $spacer-1;
   min-height: 0;
@@ -29,7 +32,7 @@
     color: $filter-chip__color--active;
   }
   &:focus {
-    @include focus-styles;
+    @include mixins.focus-styles;
   }
 
   > * {
@@ -43,7 +46,7 @@
   box-sizing: border-box;
   cursor: pointer;
   display: inline-block;
-  height: $filter-chip-icon__container-size;
+  height: 18px;
   margin-left: $spacer-1;
   padding: 0;
   position: absolute;
@@ -51,7 +54,7 @@
   top: 50%;
   transform: translateY(-50%);
   vertical-align: middle;
-  width: $filter-chip-icon__container-size;
+  width: 18px;
 
   &.ds-c-filter-chip__clear-icon-alternate-container {
     border: 0;

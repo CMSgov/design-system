@@ -1,4 +1,4 @@
-@import '../settings/index.scss';
+@use '../core' as *;
 
 .ds-u-text-transform--uppercase {
   text-transform: uppercase !important;

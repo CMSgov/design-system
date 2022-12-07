@@ -1,4 +1,5 @@
-@import '../settings/index.scss';
+@use '../core' as *;
+@use '../mixins';
 
 @mixin spinner-size($inner-size, $outer-size) {
   height: $outer-size;
@@ -53,7 +54,7 @@
   }
 
   .ds-c-button > & {
-    @include inline-icon;
+    @include mixins.inline-icon;
     @include spinner-size(1em, 1em);
   }
 }

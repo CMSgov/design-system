@@ -1,4 +1,5 @@
-@import '../settings/index.scss';
+@use '../core' as *;
+@use '../mixins';
 
 %nav-item-hover {
   background-color: $vertical-nav-item__background-color--hover;
@@ -6,12 +7,12 @@
   text-decoration: none;
 }
 %nav-item-focus {
-  @include focus-styles;
-  @include focus-styles-position;
+  @include mixins.focus-styles;
+  @include mixins.focus-styles-position;
 }
 
 .ds-c-vertical-nav {
-  @include ds-unstyled-list;
+  @include mixins.ds-unstyled-list;
 
   > .ds-c-vertical-nav__item {
     background-color: transparent;
@@ -135,7 +136,7 @@
 }
 
 .ds-c-vertical-nav__subnav {
-  @include ds-unstyled-list;
+  @include mixins.ds-unstyled-list;
 
   .ds-c-vertical-nav__label {
     font-size: $font-size-sm;

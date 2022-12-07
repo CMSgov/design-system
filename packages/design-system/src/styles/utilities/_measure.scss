@@ -1,4 +1,4 @@
-@import '../settings/index.scss';
+@use '../core' as *;
 
 .ds-u-measure--narrow {
   max-width: $measure-narrow !important;
