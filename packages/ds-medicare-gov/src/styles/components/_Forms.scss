@@ -1,0 +1,93 @@
+@use '../layout' as *;
+
+.ds-c-field {
+  border-color: $text-input__border-color;
+
+  color: $text-input__color;
+  font-family: $font-family-rubik;
+  font-size: $font-size-md;
+  padding: $spacer-2;
+  &:disabled {
+    border: solid 1px $text-input__border-color--disabled;
+  }
+
+  &::placeholder {
+    color: $black-200;
+  }
+
+  &--error {
+    border-color: $text-input__border-color--error;
+  }
+}
+
+select.ds-c-field {
+  background-image: url('data:image/svg+xml,%3Csvg width="15px" height="9px" viewBox="0 0 15 9" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"%0A%3E%3Ctitle%3ECaret%3C/title%3E%3Cg stroke="none" strokeWidth="1" fill="none" fillRule="evenodd" %3E%3Cg id="Icons/Arrow/down" transform="translate(-2.000000, -5.000000)" fill="%23323A45" fillRule="nonzero" %3E%3Cpath d="M9.00581395,13.754 L2.26162791,6.686 C1.98837209,6.404 1.98837209,5.948 2.26162791,5.666 L2.6744186,5.24 C2.94767442,4.958 3.38953488,4.958 3.6627907,5.24 L9.5,11.378 L15.3372093,5.246 C15.6104651,4.964 16.0523256,4.964 16.3255814,5.246 L16.7383721,5.672 C17.0116279,5.954 17.0116279,6.41 16.7383721,6.692 L9.99418605,13.76 C9.72093023,14.036 9.27906977,14.036 9.00581395,13.754 Z" %3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+  background-position: right 16px center;
+  background-size: auto;
+  padding-right: 44px;
+}
+
+.ds-c-label {
+  font-family: $font-family-rubik;
+  font-size: $font-size-md;
+
+  span:first-child {
+    font-family: $font-family-montserrat;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    letter-spacing: 0.5px;
+
+    text-transform: uppercase;
+  }
+}
+
+// All form labels inside `ds-c-fieldset` will be lowercase, except the <DateField> main form label
+// The <ChoiceList> form label and the day/month/year labels in <DateField> will be lowercase
+.ds-c-fieldset {
+  > .ds-c-label:not([id^='datefield']) {
+    span:first-child {
+      text-transform: none;
+    }
+  }
+}
+
+input[type='radio'] + .ds-c-label,
+input[type='checkbox'] + .ds-c-label {
+  span:first-child {
+    font-family: $font-family-rubik;
+    font-size: $font-size-md;
+    font-weight: $font-weight-normal;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+}
+
+legend[id^='datefield_label'] {
+  + div {
+    span:first-child {
+      text-transform: none;
+    }
+  }
+
+  > .ds-c-field__hint:not(.ds-u-color--error) {
+    color: $form-label__color--not-error;
+  }
+}
+
+.ds-c-field__hint {
+  font-family: $font-family-rubik;
+  font-size: $font-size-sm;
+}
+
+.ds-c-datefield__separator {
+  display: none;
+}
+
+// Alignment of $ icon for the currency field
+.ds-c-field--currency {
+  padding-left: $spacer-3;
+}
+
+.ds-c-field__before--currency {
+  padding-top: 7px;
+}

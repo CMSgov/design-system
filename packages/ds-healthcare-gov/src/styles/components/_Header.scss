@@ -1,4 +1,6 @@
-@use '../layout' .hc-c-header {
+@use '../layout' as *;
+
+.hc-c-header {
   background-color: $color-background;
   box-shadow: 0 0 10px 0 $color-gray-light;
   isolation: isolate;

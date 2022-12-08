@@ -1,4 +1,6 @@
-@use '../layout' .hc-c-privacy-settings-table {
+@use '../layout' as *;
+
+.hc-c-privacy-settings-table {
   td:last-child {
     // Avoid text wrapping on the radio buttons
     min-width: 132px;

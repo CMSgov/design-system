@@ -1,5 +1,6 @@
-@use '../layout' @use './Logo' as *;
-@use '@cmsgov/design-system/dist/scss/mixins' as *;
+@use '../layout' as *;
+@use './Logo' as *;
+@use '@cmsgov/design-system/src/styles/mixins' as *;
 
 .hc-c-footer {
   a {
