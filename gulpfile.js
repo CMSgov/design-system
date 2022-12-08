@@ -44,9 +44,9 @@ const cleanDist = (cb) => {
 cleanDist.displayName = '🧹 cleaning up dist path';
 
 /**
- * copy font files to dist folder
+ * Copy theme files from styles/themes to dist
  */
-const copyTheme = (cb) => {
+const copyThemes = (cb) => {
   const themeFiles = `${srcPath}/styles/theme/*.css`;
 
   gulp
@@ -55,7 +55,7 @@ const copyTheme = (cb) => {
     .on('end', cb);
 };
 
-copyFonts.displayName = '📎 copying fonts to dist folder';
+copyThemes.displayName = '📎 copying themes to dist/css folder';
 /**
  * compile sass assets to css, copy to /dist/css folder
  */
@@ -279,7 +279,7 @@ const displayHelp = (cb) => {
 log('🪴 building the cmsds');
 exports.build = gulp.series(
   cleanDist,
-  gulp.parallel(copyTheme, copyImages, copyFonts, copyJSON),
+  gulp.parallel(copyThemes, copyImages, copyFonts, copyJSON),
   gulp.parallel(compileSass, compileJs, compileEsmJs, compileTypescriptDefs),
   gulp.parallel(bundleJs, copyReactToDist)
 );
