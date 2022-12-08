@@ -3,7 +3,7 @@
  */
 
 import { animation, color, font, measure, media, radius, spacer, z } from '../tokens';
-import { FontTokens, ThemeTokens, ColorTokens, ShadowTokens } from '../lib/types';
+import { FontTokens, ThemeTokens, ColorTokens, ShadowTokens, AnyTokenValues } from '../lib/types';
 
 export const themeColors: ColorTokens = {
   //

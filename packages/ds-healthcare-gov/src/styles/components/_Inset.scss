@@ -1,4 +1,4 @@
-.hc-c-inset {
+@use '../layout' .hc-c-inset {
   border-left: $inset__border-width solid $color-primary;
   margin-bottom: $spacer-2;
   padding: $spacer-2;

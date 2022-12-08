@@ -1,4 +1,5 @@
-@import './Logo';
+@use '../layout' @use './Logo' as *;
+@use '@cmsgov/design-system/dist/scss/mixins' as *;
 
 .hc-c-footer {
   a {

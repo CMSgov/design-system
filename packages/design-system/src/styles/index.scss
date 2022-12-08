@@ -1,9 +1,7 @@
 /**
  * Entry point, main modules loaded first
  */
-@use 'core-theme';
-@use 'core-components-theme';
-@use 'core-layout-tokens';
+@use 'layout';
 @use 'font';
 @use 'mixins';
 @use 'base';

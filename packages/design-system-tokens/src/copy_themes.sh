@@ -1,29 +1,20 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # copies all themes into appropriate directories
+
+declare -A PATHS
+PATHS[core]="../../design-system/src/styles"
+PATHS[healthcare]="../../ds-healthcare-gov/src/styles"
+PATHS[medicare]="../../ds-medicare-gov/src/styles"
 
 copyThemes()
 {
   cd dist
   
-  # move files used in distributed packages
-  for file in core*.scss; do
-    cp -v "$file" "../../design-system/src/styles/_${file}"
-  done
-  for file in core*.css; do
-    cp -v "$file" "../../design-system/src/styles/_${file}"
-  done
-  for file in healthcare*.scss; do
-    cp -v "$file" "../../ds-healthcare-gov/src/styles/_${file}"
-  done
-  for file in healthcare*.css; do
-    cp -v "$file" "../../ds-healthcare-gov/src/styles/_${file}"
-  done
-  for file in medicare*.scss; do
-    cp -v "$file" "../../ds-medicare-gov/src/styles/_${file}"
-  done
-  for file in medicare*.css; do
-    cp -v "$file" "../../ds-medicare-gov/src/styles/_${file}"
+  for i in "${!PATHS[@]}"; do
+    cp -v "${i}-layout-tokens.scss" "${PATHS[$i]}/_layout.scss"
+    cp -v "${i}-components-theme.css" "${PATHS[$i]}/theme/"
+    cp -v "${i}-theme.css" "${PATHS[$i]}/theme/"
   done
 
   #move files used in internal tooling

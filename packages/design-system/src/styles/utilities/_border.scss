@@ -1,5 +1,3 @@
-@use '../core' as *;
-
 @for $i from 1 through 2 {
   // Example: ds-u-border--1
   .ds-u-border--#{$i} {

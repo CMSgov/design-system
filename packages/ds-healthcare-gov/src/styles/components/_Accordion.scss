@@ -1,4 +1,4 @@
-$accordion-icon-color: #0071bb;
+@use '../layout' $accordion-icon-color: #0071bb;
 
 .ds-c-accordion {
   .ds-c-accordion__button {

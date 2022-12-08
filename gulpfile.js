@@ -44,19 +44,18 @@ const cleanDist = (cb) => {
 cleanDist.displayName = '🧹 cleaning up dist path';
 
 /**
- * copy Sass files from src to dist, rename folder to 'scss'
+ * copy font files to dist folder
  */
-const copySass = (cb) => {
-  const sassSourcePaths = isCore
-    ? `${srcPath}/styles/**/*.scss`
-    : [`${sassCorePath}/**/*.scss`, `${srcPath}/styles/**/*.scss`];
+const copyTheme = (cb) => {
+  const themeFiles = `${srcPath}/styles/theme/*.css`;
+
   gulp
-    .src(sassSourcePaths)
-    .pipe(gulp.dest(path.join(distPath, 'scss')))
+    .src(themeFiles)
+    .pipe(gulp.dest(path.join(distPath, 'css')))
     .on('end', cb);
 };
-copySass.displayName = '📎 copying scss assets and compiling sass in dist folder';
 
+copyFonts.displayName = '📎 copying fonts to dist folder';
 /**
  * compile sass assets to css, copy to /dist/css folder
  */
@@ -66,7 +65,6 @@ const compileSass = (cb) => {
   const sassSourcePaths = isCore
     ? `${srcPath}/styles/**/*.scss`
     : [`${sassCorePath}/**/*.scss`, `${srcPath}/styles/**/*.scss`];
-  const sassIncludePaths = !isCore ? [path.resolve(srcPath, '../../../node_modules')] : [];
 
   gulp
     .src(sassSourcePaths)
@@ -74,7 +72,6 @@ const compileSass = (cb) => {
     .pipe(
       sass({
         outputStyle: 'expanded',
-        includePaths: sassIncludePaths,
       })
     )
     .pipe(gulpif(envDev, sourcemaps.write()))
@@ -282,7 +279,7 @@ const displayHelp = (cb) => {
 log('🪴 building the cmsds');
 exports.build = gulp.series(
   cleanDist,
-  gulp.parallel(copySass, copyImages, copyFonts, copyJSON),
+  gulp.parallel(copyTheme, copyImages, copyFonts, copyJSON),
   gulp.parallel(compileSass, compileJs, compileEsmJs, compileTypescriptDefs),
   gulp.parallel(bundleJs, copyReactToDist)
 );

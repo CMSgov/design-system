@@ -29,6 +29,8 @@ const sassVariableList: string[] = [
   'spacer-7',
   'spacer-none',
   'spacer-half',
+  'ds-include-choice-error-highlight',
+  'image-path',
 ];
 
 /**
