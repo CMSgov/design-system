@@ -1,0 +1,391 @@
+[
+  {
+    "tags": {},
+    "filePath": "packages/design-system/src/components/ChoiceList/ChoiceList.tsx",
+    "description": "",
+    "displayName": "ChoiceList",
+    "methods": [],
+    "props": {
+      "choices": {
+        "defaultValue": null,
+        "description": "Array of [`Choice`]({{root}}/components/choice/#components.choice.react) data objects to be rendered.",
+        "name": "choices",
+        "parent": {
+          "fileName": "packages/design-system/src/components/ChoiceList/ChoiceList.tsx",
+          "name": "BaseChoiceListProps"
+        },
+        "declarations": [
+          {
+            "fileName": "packages/design-system/src/components/ChoiceList/ChoiceList.tsx",
+            "name": "BaseChoiceListProps"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ChoiceProps[]"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Additional classes to be added to the root element.",
+        "name": "className",
+        "parent": {
+          "fileName": "packages/design-system/src/components/ChoiceList/ChoiceList.tsx",
+          "name": "BaseChoiceListProps"
+        },
+        "declarations": [
+          {
+            "fileName": "packages/design-system/src/components/ChoiceList/ChoiceList.tsx",
+            "name": "BaseChoiceListProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "disabled": {
+        "defaultValue": null,
+        "description": "Disables the entire field.",
+        "name": "disabled",
+        "parent": {
+          "fileName": "packages/design-system/src/components/ChoiceList/ChoiceList.tsx",
+          "name": "BaseChoiceListProps"
+        },
+        "declarations": [
+          {
+            "fileName": "packages/design-system/src/components/ChoiceList/ChoiceList.tsx",
+            "name": "BaseChoiceListProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "hint": {
+        "defaultValue": null,
+        "description": "Additional hint text to display",
+        "name": "hint",
+        "parent": {
+          "fileName": "packages/design-system/src/components/ChoiceList/ChoiceList.tsx",
+          "name": "BaseChoiceListProps"
+        },
+        "declarations": [
+          {
+            "fileName": "packages/design-system/src/components/ChoiceList/ChoiceList.tsx",
+            "name": "BaseChoiceListProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "requirementLabel": {
+        "defaultValue": null,
+        "description": "Text showing the requirement (\"Required\", \"Optional\", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).",
+        "name": "requirementLabel",
+        "parent": {
+          "fileName": "packages/design-system/src/components/ChoiceList/ChoiceList.tsx",
+          "name": "BaseChoiceListProps"
+        },
+        "declarations": [
+          {
+            "fileName": "packages/design-system/src/components/ChoiceList/ChoiceList.tsx",
+            "name": "BaseChoiceListProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "inversed": {
+        "defaultValue": null,
+        "description": "Applies the \"inverse\" UI theme",
+        "name": "inversed",
+        "parent": {
+          "fileName": "packages/design-system/src/components/ChoiceList/ChoiceList.tsx",
+          "name": "BaseChoiceListProps"
+        },
+        "declarations": [
+          {
+            "fileName": "packages/design-system/src/components/ChoiceList/ChoiceList.tsx",
+            "name": "BaseChoiceListProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "label": {
+        "defaultValue": null,
+        "description": "Label for the field",
+        "name": "label",
+        "parent": {
+          "fileName": "packages/design-system/src/components/ChoiceList/ChoiceList.tsx",
+          "name": "BaseChoiceListProps"
+        },
+        "declarations": [
+          {
+            "fileName": "packages/design-system/src/components/ChoiceList/ChoiceList.tsx",
+            "name": "BaseChoiceListProps"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "labelClassName": {
+        "defaultValue": null,
+        "description": "Additional classes to be added to the `FormLabel`.",
+        "name": "labelClassName",
+        "parent": {
+          "fileName": "packages/design-system/src/components/ChoiceList/ChoiceList.tsx",
+          "name": "BaseChoiceListProps"
+        },
+        "declarations": [
+          {
+            "fileName": "packages/design-system/src/components/ChoiceList/ChoiceList.tsx",
+            "name": "BaseChoiceListProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "name": {
+        "defaultValue": null,
+        "description": "The field's `name` attribute",
+        "name": "name",
+        "parent": {
+          "fileName": "packages/design-system/src/components/ChoiceList/ChoiceList.tsx",
+          "name": "BaseChoiceListProps"
+        },
+        "declarations": [
+          {
+            "fileName": "packages/design-system/src/components/ChoiceList/ChoiceList.tsx",
+            "name": "BaseChoiceListProps"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "onBlur": {
+        "defaultValue": null,
+        "description": "Called anytime any choice is blurred",
+        "name": "onBlur",
+        "parent": {
+          "fileName": "packages/design-system/src/components/ChoiceList/ChoiceList.tsx",
+          "name": "BaseChoiceListProps"
+        },
+        "declarations": [
+          {
+            "fileName": "packages/design-system/src/components/ChoiceList/ChoiceList.tsx",
+            "name": "BaseChoiceListProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(...args: any[]) => any"
+        }
+      },
+      "onComponentBlur": {
+        "defaultValue": null,
+        "description": "Called when any choice is blurred and the focus does not land on one\nof the other choices inside this component (i.e., when the whole\ncomponent loses focus)",
+        "name": "onComponentBlur",
+        "parent": {
+          "fileName": "packages/design-system/src/components/ChoiceList/ChoiceList.tsx",
+          "name": "BaseChoiceListProps"
+        },
+        "declarations": [
+          {
+            "fileName": "packages/design-system/src/components/ChoiceList/ChoiceList.tsx",
+            "name": "BaseChoiceListProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(...args: any[]) => any"
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onChange",
+        "parent": {
+          "fileName": "packages/design-system/src/components/ChoiceList/ChoiceList.tsx",
+          "name": "BaseChoiceListProps"
+        },
+        "declarations": [
+          {
+            "fileName": "packages/design-system/src/components/ChoiceList/ChoiceList.tsx",
+            "name": "BaseChoiceListProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(...args: any[]) => any"
+        }
+      },
+      "size": {
+        "defaultValue": null,
+        "description": "Sets the size of the checkbox or radio button",
+        "name": "size",
+        "parent": {
+          "fileName": "packages/design-system/src/components/ChoiceList/ChoiceList.tsx",
+          "name": "BaseChoiceListProps"
+        },
+        "declarations": [
+          {
+            "fileName": "packages/design-system/src/components/ChoiceList/ChoiceList.tsx",
+            "name": "BaseChoiceListProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"small\""
+        }
+      },
+      "type": {
+        "defaultValue": null,
+        "description": "Sets the type to render `checkbox` fields or `radio` buttons",
+        "name": "type",
+        "parent": {
+          "fileName": "packages/design-system/src/components/ChoiceList/ChoiceList.tsx",
+          "name": "BaseChoiceListProps"
+        },
+        "declarations": [
+          {
+            "fileName": "packages/design-system/src/components/ChoiceList/ChoiceList.tsx",
+            "name": "BaseChoiceListProps"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ChoiceListType"
+        }
+      },
+      "errorMessage": {
+        "defaultValue": null,
+        "description": "Enable the error state by providing an error message.",
+        "name": "errorMessage",
+        "parent": {
+          "fileName": "design-system/packages/design-system/src/components/FormLabel/FormLabel.tsx",
+          "name": "FormLabelProps"
+        },
+        "declarations": [
+          {
+            "fileName": "design-system/packages/design-system/src/components/FormLabel/FormLabel.tsx",
+            "name": "FormLabelProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "errorMessageClassName": {
+        "defaultValue": null,
+        "description": "Additional classes to be added to the error message",
+        "name": "errorMessageClassName",
+        "parent": {
+          "fileName": "design-system/packages/design-system/src/components/FormLabel/FormLabel.tsx",
+          "name": "FormLabelProps"
+        },
+        "declarations": [
+          {
+            "fileName": "design-system/packages/design-system/src/components/FormLabel/FormLabel.tsx",
+            "name": "FormLabelProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "errorId": {
+        "defaultValue": null,
+        "description": "The ID of the error message applied to this field.",
+        "name": "errorId",
+        "parent": {
+          "fileName": "design-system/packages/design-system/src/components/FormLabel/FormLabel.tsx",
+          "name": "FormLabelProps"
+        },
+        "declarations": [
+          {
+            "fileName": "design-system/packages/design-system/src/components/FormLabel/FormLabel.tsx",
+            "name": "FormLabelProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "textClassName": {
+        "defaultValue": null,
+        "description": "Additional classes to be added to the label text.",
+        "name": "textClassName",
+        "parent": {
+          "fileName": "design-system/packages/design-system/src/components/FormLabel/FormLabel.tsx",
+          "name": "FormLabelProps"
+        },
+        "declarations": [
+          {
+            "fileName": "design-system/packages/design-system/src/components/FormLabel/FormLabel.tsx",
+            "name": "FormLabelProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "errorPlacement": {
+        "defaultValue": null,
+        "description": "Location of the error message relative to the field input",
+        "name": "errorPlacement",
+        "parent": {
+          "fileName": "design-system/packages/design-system/src/components/FormLabel/useFormLabel.tsx",
+          "name": "FormFieldProps"
+        },
+        "declarations": [
+          {
+            "fileName": "design-system/packages/design-system/src/components/FormLabel/useFormLabel.tsx",
+            "name": "FormFieldProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"top\" | \"bottom\""
+        }
+      },
+      "labelId": {
+        "defaultValue": null,
+        "description": "A unique `id` to be used on the field label. If one isn't provided, a unique ID\nwill be generated.",
+        "name": "labelId",
+        "parent": {
+          "fileName": "design-system/packages/design-system/src/components/FormLabel/useFormLabel.tsx",
+          "name": "FormFieldProps"
+        },
+        "declarations": [
+          {
+            "fileName": "design-system/packages/design-system/src/components/FormLabel/useFormLabel.tsx",
+            "name": "FormFieldProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      }
+    }
+  }
+]
