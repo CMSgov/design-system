@@ -1,0 +1,6 @@
+.ds-c-choice {
+  // healthcare is the only place we currently implement a border color for a choice error
+  &.ds-c-choice--error {
+    border-color: $choice__border-color--error;
+  }
+}
