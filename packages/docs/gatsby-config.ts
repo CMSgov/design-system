@@ -65,16 +65,17 @@ const config: GatsbyConfig = {
         gatsbyRemarkPlugins: ['gatsby-remark-autolink-headers'],
       },
     },
-    {
-      resolve: 'gatsby-transformer-react-docgen',
-      options: {
-        babelrcRoots: [
-          '../design-system/src/components/*',
-          '../ds-healthcare-gov/src/components/*',
-          '../ds-medicare-gov/src/components/*',
-        ],
-      },
-    },
+    // {
+    //   resolve: 'gatsby-transformer-react-docgen',
+    //   options: {
+    //     babelrcRoots: [
+    //       '../design-system/src/components/*',
+    //       '../ds-healthcare-gov/src/components/*',
+    //       '../ds-medicare-gov/src/components/*',
+    //     ],
+    //   },
+    // },
+    'gatsby-transformer-react-docgen-typescript',
     {
       resolve: 'gatsby-plugin-newrelic',
       options: {
