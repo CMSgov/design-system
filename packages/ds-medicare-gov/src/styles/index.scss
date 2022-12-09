@@ -10,7 +10,7 @@
 @use 'layout';
 @use 'base';
 @use 'fonts';
-@use '@cmsgov/design-system/src/styles/index';
+@use '../../../design-system/src/styles/index';
 
 @use 'components/ChoiceList';
 @use 'components/Dialog';
