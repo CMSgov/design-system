@@ -95,6 +95,10 @@ label,
     }
   }
 
+  &.ds-c-choice--error {
+    border-color: $choice__border-color--error;
+  }
+
   // Disabled
   &:disabled {
     background-color: $choice__background-color--disabled;
@@ -189,11 +193,8 @@ label,
   background-color: $choice__background-color--inverse;
   border-color: $choice__border-color--inverse;
 
-  // Error
-  @if $ds-include-choice-error-highlight {
-    &.ds-c-choice--error {
-      border-color: $color-error-light;
-    }
+  &.ds-c-choice--error {
+    border-color: $choice__border-color--error;
   }
 
   // Disabled
