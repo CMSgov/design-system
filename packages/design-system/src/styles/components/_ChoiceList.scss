@@ -84,13 +84,6 @@ label,
     box-sizing: content-box;
   }
 
-  // Error
-  @if $ds-include-choice-error-highlight {
-    &.ds-c-choice--error {
-      border-color: $choice__border-color--error;
-    }
-  }
-
   // Checked
   &:checked {
     &::before {

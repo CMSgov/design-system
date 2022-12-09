@@ -136,9 +136,6 @@ export const global: AnyTokenValues = {
   'site-max-width':             '1040px',
   'text-max-width':             '53rem',
   'image-path':                 '"../images"',
-// add an error highlight to choice components inside a ChoiceList with an errorMessage.
-// TODO: remove this, we should not be setting variables like this in sass
-  'ds-include-choice-error-highlight': 'false',
 };
 
 export const shadow: ShadowTokens = {
