@@ -422,7 +422,7 @@ export const components: AnyTokenValues = {
   'typography': {
     '-heading__font-family':                      t.font['family-montserrat'],
     '-heading__font-weight':                      t.font['weight-semibold'],
-    '-heading-4xl__font-weight':                  t.font['weight-light'],
+    '-heading-4xl__font-weight':                  t.font['weight-semibold'],
     '-heading-3xl__font-weight':                  t.font['weight-semibold'],
     '-heading-lg__font-weight':                   t.font['weight-semibold'],
     '-heading-md__font-weight':                   t.font['weight-semibold'],
