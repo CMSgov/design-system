@@ -73,7 +73,7 @@ export const writeFile = (filename: string, vars: string): number => {
   let outputData: string;
 
   if (filename.includes('css')) {
-    outputData = `/* Generated from CMSDS tokens on ${new Date().toString()}*/\n` + vars;
+    outputData = `/* Generated from CMSDS tokens on ${new Date().toString()}*/ \n` + vars;
   } else {
     outputData = vars;
   }
