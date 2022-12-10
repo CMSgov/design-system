@@ -221,10 +221,10 @@ const compileTypescriptDefs = (cb) => {
 compileTypescriptDefs.displayName = '⛓  generating typescript definition files';
 
 const extractPropData = (cb) => {
+  const filename = `props-${args.package ?? 'design-system'}.json`;
   gulp
     .src(jsSrcGlob, { base: `${srcPath}/components` })
-    .pipe(propData(`prop-data-${args.package}.json`))
-    .pipe(gulp.dest(path.join('packages', 'docs', 'data')))
+    .pipe(propData(path.join('packages', 'docs', 'data', filename)))
     .on('end', cb);
 };
 extractPropData.displayName = '🎛  extracting prop documentation';
