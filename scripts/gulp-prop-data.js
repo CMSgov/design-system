@@ -24,32 +24,40 @@ module.exports = function (propsFileName) {
     throw new Error('Must provide a filename to gulp-prop-data');
   }
 
-  const writeStream = fs.createWriteStream(propsFileName, { flags: 'w' });
-  writeStream.write('[\n');
+  const paths = [];
 
   function processTsFile(tsFile, enc, cb) {
-    const components = customParser.parse(tsFile.path);
-    for (const component of components) {
-      const data = {
-        displayName: component.displayName,
-        filePath: component.filePath,
-        props: Object.values(component.props).map(
-          ({ defaultValue, description, name, required, type }) => ({
-            defaultValue,
-            description,
-            name,
-            required,
-            type: type.name,
-          })
-        ),
-      };
-      writeStream.write(JSON.stringify(data, null, 2) + ',\n');
-    }
+    paths.push(tsFile.path);
+
     cb();
   }
 
   function endStream(cb) {
+    const components = customParser.parse(paths);
+    const writeStream = fs.createWriteStream(propsFileName, { flags: 'w' });
+    writeStream.write('[\n');
+    writeStream.write(JSON.stringify(components, null, 2));
     writeStream.write(']\n');
+    writeStream.end();
+
+    // const components = customParser.parse(tsFile.path);
+    // for (const component of components) {
+    //   const data = {
+    //     displayName: component.displayName,
+    //     filePath: component.filePath,
+    //     props: Object.values(component.props).map(
+    //       ({ defaultValue, description, name, required, type }) => ({
+    //         defaultValue,
+    //         description,
+    //         name,
+    //         required,
+    //         type: type.name,
+    //       })
+    //     ),
+    //   };
+    //   writeStream.write(JSON.stringify(data, null, 2) + ',\n');
+    // }
+
     writeStream.end();
     cb();
   }
