@@ -66,6 +66,16 @@ const config: GatsbyConfig = {
       },
     },
     {
+      resolve: 'gatsby-transformer-react-docgen',
+      options: {
+        babelrcRoots: [
+          '../design-system/src/components/*',
+          '../ds-healthcare-gov/src/components/*',
+          '../ds-medicare-gov/src/components/*',
+        ],
+      },
+    },
+    {
       resolve: 'gatsby-plugin-newrelic',
       options: {
         config: {
