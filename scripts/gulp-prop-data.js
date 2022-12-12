@@ -24,41 +24,44 @@ module.exports = function (propsFileName) {
     throw new Error('Must provide a filename to gulp-prop-data');
   }
 
-  const paths = [];
+  const tsFilePaths = [];
 
   function processTsFile(tsFile, enc, cb) {
-    paths.push(tsFile.path);
+    tsFilePaths.push(tsFile.path);
 
     cb();
   }
 
   function endStream(cb) {
-    const components = customParser.parse(paths);
-    const writeStream = fs.createWriteStream(propsFileName, { flags: 'w' });
-    writeStream.write('[\n');
-    writeStream.write(JSON.stringify(components, null, 2));
-    writeStream.write(']\n');
-    writeStream.end();
+    const components = customParser.parse(tsFilePaths);
+    const componentMap = new Map();
 
-    // const components = customParser.parse(tsFile.path);
-    // for (const component of components) {
-    //   const data = {
-    //     displayName: component.displayName,
-    //     filePath: component.filePath,
-    //     props: Object.values(component.props).map(
-    //       ({ defaultValue, description, name, required, type }) => ({
-    //         defaultValue,
-    //         description,
-    //         name,
-    //         required,
-    //         type: type.name,
-    //       })
-    //     ),
-    //   };
-    //   writeStream.write(JSON.stringify(data, null, 2) + ',\n');
-    // }
+    // const writeStream = fs.createWriteStream(propsFileName, { flags: 'w' });
+    // writeStream.write('[\n');
 
-    writeStream.end();
+    for (const component of components) {
+      const data = {
+        displayName: component.displayName,
+        filePath: component.filePath,
+        props: Object.values(component.props).map(
+          ({ defaultValue, description, name, required, type }) => ({
+            defaultValue,
+            description,
+            name,
+            required,
+            type: type.name,
+          })
+        ),
+      };
+      // There are duplicate entries for each component because it looks at
+      // each export, but they should all be the same, so it doesn't matter
+      // if we write over previously set data.
+      componentMap.set(data.displayName, data);
+      // writeStream.write(JSON.stringify(data, null, 2) + ',\n');
+    }
+
+    // writeStream.write(']\n');
+    // writeStream.end();
     cb();
   }
 
