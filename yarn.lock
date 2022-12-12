@@ -13606,18 +13606,6 @@ gatsby-telemetry@^3.11.1:
     lodash "^4.17.21"
     node-fetch "^2.6.7"
 
-gatsby-transformer-react-docgen@^7.13.0:
-  version "7.13.0"
-  resolved "https://registry.yarnpkg.com/gatsby-transformer-react-docgen/-/gatsby-transformer-react-docgen-7.13.0.tgz#67da10e73c9af0344d5df9d5ffd031dfcc38a59d"
-  integrity sha512-BIGsdrZVWfzn40GiyNNiPZedur81VwVX1SMIo/qrxfyHoMPIwvn9i6oqU65fw6NzI+hvo9A03/8cECUmBrhQ2Q==
-  dependencies:
-    "@babel/code-frame" "^7.14.0"
-    "@babel/runtime" "^7.15.4"
-    "@babel/types" "^7.15.4"
-    ast-types "^0.14.2"
-    common-tags "^1.8.2"
-    react-docgen "^5.4.0"
-
 gatsby-worker@^1.11.0:
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/gatsby-worker/-/gatsby-worker-1.11.0.tgz#bf8c3b9374390260b8335d7cfccbc332d0716727"
@@ -21004,7 +20992,7 @@ react-docgen-typescript@^2.1.1:
   resolved "https://registry.yarnpkg.com/react-docgen-typescript/-/react-docgen-typescript-2.2.2.tgz#4611055e569edc071204aadb20e1c93e1ab1659c"
   integrity sha512-tvg2ZtOpOi6QDwsb3GZhOjDkkX0h8Z2gipvTg6OVMUyoYoURhEiRNePT8NZItTVCDh39JJHnLdfCOkzoLbFnTg==
 
-react-docgen@^5.0.0, react-docgen@^5.4.0:
+react-docgen@^5.0.0:
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/react-docgen/-/react-docgen-5.4.0.tgz#2cd7236720ec2769252ef0421f23250b39a153a1"
   integrity sha512-JBjVQ9cahmNlfjMGxWUxJg919xBBKAoy3hgDgKERbR+BcF4ANpDuzWAScC7j27hZfd8sJNmMPOLWo9+vB/XJEQ==

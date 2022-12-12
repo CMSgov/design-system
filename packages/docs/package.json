@@ -32,7 +32,6 @@
     "gatsby-plugin-sitemap": "^5.11.1",
     "gatsby-remark-autolink-headers": "^5.19.0",
     "gatsby-source-filesystem": "^4.11.1",
-    "gatsby-transformer-react-docgen": "^7.13.0",
     "humanize-react": "1.0.0",
     "lodash.sortby": "^4.7.0",
     "prettier": "^2.6.2",

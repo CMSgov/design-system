@@ -33,19 +33,16 @@ async function extractData(fileName) {
   const componentMap = {};
 
   for (const component of components) {
-    const data = {
-      displayName: component.displayName,
-      props: Object.values(component.props).map(
-        ({ defaultValue, description, name, required, type }) => ({
-          defaultValue: defaultValue?.value,
-          description,
-          name,
-          required,
-          type: type.name,
-        })
-      ),
-    };
-    componentMap[data.displayName] = data;
+    const props = Object.values(component.props).map(
+      ({ defaultValue, description, name, required, type }) => ({
+        defaultValue: defaultValue?.value,
+        description,
+        name,
+        required,
+        type: type.name,
+      })
+    );
+    componentMap[component.displayName] = props;
   }
 
   return componentMap;
