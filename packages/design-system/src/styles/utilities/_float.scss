@@ -1,4 +1,5 @@
-@import '../settings/index.scss';
+@use '../base' as *;
+@use '../mixins' as *;
 
 .ds-u-float--left {
   float: left !important;

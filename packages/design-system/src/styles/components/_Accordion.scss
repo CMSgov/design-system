@@ -1,4 +1,4 @@
-@import '../settings/index.scss';
+@use '../mixins' as *;
 
 .ds-c-accordion {
   color: $accordion__color;

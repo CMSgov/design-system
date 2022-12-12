@@ -1,4 +1,4 @@
-@import '../settings/index.scss';
+@use '../mixins' as *;
 
 %nav-item-hover {
   background-color: $vertical-nav-item__background-color--hover;

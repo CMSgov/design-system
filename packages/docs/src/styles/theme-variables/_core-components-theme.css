@@ -1,3 +1,4 @@
+/* Generated from CMSDS tokens on Fri Dec 09 2022 12:32:20 GMT-0600 (Central Standard Time)*/ 
 :root, :before{
 --accordion__color: #262626;
 --accordion__background-color: #f2f2f2;
@@ -191,7 +192,7 @@
 --choice__border-color: #262626;
 --choice__border-color--checked: #0071bc;
 --choice__border-color--disabled: #a6a6a6;
---choice__border-color--error: #e31c3d;
+--choice__border-color--error: #262626;
 --choice__border-color--inverse: #ffffff;
 --choice__border-color--left: #0071bc;
 --choice__border-color--focus: #004f84;

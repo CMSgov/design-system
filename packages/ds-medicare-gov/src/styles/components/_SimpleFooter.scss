@@ -1,3 +1,5 @@
+@use '../layout' as *;
+
 .m-c-footer {
   background-color: $color-gray-lightest;
   padding: $spacer-3;

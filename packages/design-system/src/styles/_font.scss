@@ -1,6 +1,8 @@
 // Design system fonts
 // Fonts are separated from other settings scss because font-faces are compiled and included css build files
 
+$font-path: '../fonts' !default;
+
 // TODO: Find solution to remove unused @font-faces
 @font-face {
   font-family: Bitter;

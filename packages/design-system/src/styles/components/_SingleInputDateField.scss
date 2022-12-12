@@ -1,4 +1,4 @@
-@import '../settings/index.scss';
+@use '../mixins' as *;
 
 // Because import of stylesheets in node_modules would have to be supported by
 // downstream projects--and we have no guarantee that it will--it is necessary
@@ -6,7 +6,7 @@
 // risk is that if we make changes, they are not guaranteed to work for future
 // versions of this library. To mitigate this risk, we should avoid modifying
 // the source rules.
-// @import 'react-day-picker/dist/style.css';
+// @use 'react-day-picker/dist/style.css';
 
 /* stylelint-disable declaration-no-important, no-duplicate-selectors -- Ignore inlined 3rd party styles */
 :root {
@@ -405,7 +405,7 @@
   appearance: none;
   background-color: transparent;
   border: none;
-  border-radius: $border-radius;
+  border-radius: $text-input__border-radius;
   color: $color-primary;
   cursor: pointer;
   display: inline-block;

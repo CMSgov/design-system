@@ -1,26 +1,23 @@
 /**
  * This is the main entry file for a child design system's SCSS.
- * It should define overridden Sass variables (see theming), import core CMS design system styles,
+ * It should define overridden Sass variables (see theming), use core CMS design system styles,
  * and include all additional styles.
  *
  * The CMSDS build scripts rely on this file's location (`src/styles/index.scss`) to generate
  * a scss (`dist/scss/`) and css (`dist/css/`) dist files.
  */
 
-// Settings: Globally-available variables, mixins, functions and config (Sass code that doesn't output CSS)
-@import '@cmsgov/design-system/dist/scss/settings/index';
-@import 'settings/index';
+@use 'layout';
+@use 'base';
+@use 'fonts';
+@use '../../../design-system/src/styles/index';
 
-// Use custom font-faces
-@import 'fonts';
-
-// Base: HTML elements (i.e. ds-base, ds-h1, ds-text), typography, links, icons
-@import '@cmsgov/design-system/dist/scss/base/index';
-@import 'base/index';
-
-// Components: UI component styles (i.e. ds-c-button, ds-c-field)
-@import '@cmsgov/design-system/dist/scss/components/index';
-@import 'components/index';
-
-// Utilities: Utility classes for applying specific CSS properties
-@import '@cmsgov/design-system/dist/scss/utilities/index';
+@use 'components/ChoiceList';
+@use 'components/Dialog';
+@use 'components/Forms';
+@use 'components/HelpDrawer';
+@use 'components/Other';
+@use 'components/Tooltip';
+@use 'components/Icons';
+@use 'components/SimpleFooter';
+@use 'components/Card';

@@ -1,4 +1,5 @@
-@import '../settings/index.scss';
+@use '../mixins' as *;
+@use '../base' as *;
 
 // TODO: Update class namespace to utilities
 
@@ -12,7 +13,7 @@
   padding-left: calc(#{$grid-gutter-width} * 0.5);
   padding-right: calc(#{$grid-gutter-width} * 0.5);
 
-  @media (min-width: $width-sm) {
+  @media (min-width: $media-width-sm) {
     padding-left: $grid-gutter-width;
     padding-right: $grid-gutter-width;
   }

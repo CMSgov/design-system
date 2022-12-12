@@ -1,4 +1,4 @@
-@import '../settings/index.scss';
+@use '../mixins' as *;
 
 .ds-c-autocomplete {
   max-width: $form__max-width;

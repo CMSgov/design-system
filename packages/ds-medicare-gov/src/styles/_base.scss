@@ -1,3 +1,51 @@
+@use 'layout';
+
+/**
+ * Custom MCT variables @TODO: fold these in somewhere else
+ */
+
+$card-border-radius: 6px !important;
+
+$h1-mobile-font-size: 26px !default;
+
+// This format was different than core so it's been updated - to be removed
+$h1-font-size-mobile: 26px;
+
+$mct-p1-font-size: 18px;
+$mct-p2-font-size: 16px;
+$mct-p3-font-size: 14px;
+$mct-p1-mobile-font-size: 18px;
+$mct-p2-mobile-font-size: 17px;
+$mct-p3-mobile-font-size: 17px;
+
+/**
+ * Icon Overrides
+ */
+
+svg {
+  &.ds-u-color--success {
+    .apply-fill {
+      fill: $color-success;
+    }
+  }
+
+  &.ds-u-color--error {
+    .apply-fill {
+      fill: $color-error;
+    }
+  }
+
+  &.ds-u-color--white {
+    .apply-fill {
+      fill: #fff;
+    }
+  }
+}
+
+/**
+ * Typography overrides
+ */
+
 // Specific style overrides that are not easily affected via variables alone.
 .ds-display,
 .ds-title,

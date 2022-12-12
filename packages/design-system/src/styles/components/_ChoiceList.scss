@@ -1,4 +1,4 @@
-@import '../settings/index.scss';
+@use '../mixins' as *;
 
 /**
 ** Order of choice styles is important to ensure styles follow correct precedent.
@@ -20,7 +20,7 @@
   cursor: pointer;
   flex-basis: min-content;
   flex-grow: 1;
-  font-weight: $font-normal;
+  font-weight: $font-weight-normal;
   margin-top: 0;
   max-width: max-content;
   transform: translateY(0.25em);
@@ -84,13 +84,6 @@ label,
     box-sizing: content-box;
   }
 
-  // Error
-  @if $ds-include-choice-error-highlight {
-    &.ds-c-choice--error {
-      border-color: $choice__border-color--error;
-    }
-  }
-
   // Checked
   &:checked {
     &::before {
@@ -100,6 +93,10 @@ label,
     &:focus {
       border-color: $choice__border-color--focus;
     }
+  }
+
+  &.ds-c-choice--error {
+    border-color: $choice__border-color--error;
   }
 
   // Disabled
@@ -196,11 +193,8 @@ label,
   background-color: $choice__background-color--inverse;
   border-color: $choice__border-color--inverse;
 
-  // Error
-  @if $ds-include-choice-error-highlight {
-    &.ds-c-choice--error {
-      border-color: $color-error-light;
-    }
+  &.ds-c-choice--error {
+    border-color: $choice__border-color--error;
   }
 
   // Disabled

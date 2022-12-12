@@ -1,4 +1,4 @@
-@import '../settings/index.scss';
+@use '../mixins' as *;
 
 @keyframes slideInDrawer {
   from {
@@ -51,12 +51,12 @@
     background: transparent;
   }
 
-  @media (min-width: $width-md) {
+  @media (min-width: $media-width-md) {
     animation: slideInDrawer $animation-speed-2 ease-in-out both; // slide in from the right
     max-width: 33%; // this equates to 4 grid columns
   }
 
-  @media (min-width: $width-xl) {
+  @media (min-width: $media-width-xl) {
     max-width: $measure-base;
   }
 
@@ -120,11 +120,11 @@
   font-size: $font-size-base;
   padding: $spacer-2;
 
-  @media (min-width: $width-md) {
+  @media (min-width: $media-width-md) {
     font-size: $font-size-sm;
   }
 
-  @media (min-width: $width-lg) {
+  @media (min-width: $media-width-lg) {
     font-size: $font-size-base;
   }
 

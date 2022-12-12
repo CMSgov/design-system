@@ -1,4 +1,4 @@
-@import '../settings/index.scss';
+@use '../mixins' as *;
 
 @mixin spinner-size($inner-size, $outer-size) {
   height: $outer-size;

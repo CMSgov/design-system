@@ -1,5 +1,5 @@
-@import '../settings/index.scss';
-@import '../base/link.scss';
+@use '../base';
+@use '../mixins' as *;
 
 %trigger-reset-styles {
   // override user agent button styles

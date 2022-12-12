@@ -1,4 +1,4 @@
-@import '../settings/index.scss';
+@use '../mixins' as *;
 
 .ds-c-tabs {
   border-bottom: 1px solid $tabs__border-color;
@@ -43,13 +43,13 @@
   // Temporarily disable animation
   //transition: border-bottom-color $animation-speed-2 $ease-in-out-expo;
 
-  @media (min-width: $width-sm) {
+  @media (min-width: $media-width-sm) {
     padding-left: $spacer-2;
     padding-right: $spacer-2;
   }
 
   // Increase size on larger screens
-  @media (min-width: $width-md) {
+  @media (min-width: $media-width-md) {
     font-size: $font-size-base;
     padding-left: $spacer-3;
     padding-right: $spacer-3;

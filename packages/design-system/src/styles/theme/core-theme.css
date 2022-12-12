@@ -1,3 +1,4 @@
+/* Generated from CMSDS tokens on Fri Dec 09 2022 12:32:20 GMT-0600 (Central Standard Time)*/ 
 :root, :before{
 --animation-ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
 --animation-speed-base: 1;
@@ -136,6 +137,7 @@
 --site-margins-mobile: 1.5rem;
 --site-max-width: 1040px;
 --text-max-width: 53rem;
+--image-path: "../images";
 --measure-narrow: 45ex;
 --measure-base: 65ex;
 --measure-wide: 80ex;

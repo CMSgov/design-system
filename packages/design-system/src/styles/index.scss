@@ -1,18 +1,70 @@
 /**
- * index.scss - SCSS entry point
+ * Entry point, main modules loaded first
  */
-// Settings: Globally-available variables, mixins, functions and config (Sass code that doesn't output CSS)
-@import 'settings/index';
+@use 'layout';
+@use 'font';
+@use 'mixins';
+@use 'base';
 
-// Fonts are unique from other settings because font-faces are compiled and included css build files
-// TODO: use @use or some other solution to handle fontfaces and font/image paths better
-@import 'font';
+/**
+ * Utilities
+ */
+@use 'utilities/background-color';
+@use 'utilities/border';
+@use 'utilities/border-radius';
+@use 'utilities/display-visibility';
+@use 'utilities/flexbox';
+@use 'utilities/float';
+@use 'utilities/font-family';
+@use 'utilities/font-size';
+@use 'utilities/font-style';
+@use 'utilities/font-weight';
+@use 'utilities/grid';
+@use 'utilities/line-height';
+@use 'utilities/margin';
+@use 'utilities/measure';
+@use 'utilities/overflow';
+@use 'utilities/padding';
+@use 'utilities/text-align';
+@use 'utilities/text-color';
+@use 'utilities/text-decoration';
+@use 'utilities/text-transform';
+@use 'utilities/truncate';
+@use 'utilities/vertical-align';
+@use 'utilities/word-break';
 
-// Base: Namespaced selectors for HTML elements (i.e. ds-base, ds-h1, ds-text)
-@import 'base/index';
-
-// Components: Designed UI units
-@import 'components/index';
-
-// Utilities: Overrides, helpers
-@import 'utilities/index';
+/**
+ * Components
+ */
+@use 'components/Accordion';
+@use 'components/Alert';
+@use 'components/Autocomplete';
+@use 'components/Badge';
+@use 'components/Button';
+@use 'components/ChoiceList';
+@use 'components/Dialog';
+@use 'components/Drawer';
+@use 'components/Dropdown';
+@use 'components/FilterChip';
+@use 'components/FormLabel';
+@use 'components/List';
+@use 'components/MonthPicker';
+@use 'components/Pagination';
+@use 'components/Review';
+@use 'components/SingleInputDateField';
+@use 'components/SkipNav';
+@use 'components/Spinner';
+@use 'components/StepList';
+@use 'components/SvgIcon';
+@use 'components/Table';
+@use 'components/Tabs';
+// Mask, LabelMask and Date field styles need useed
+// after TextField since they modify it
+@use 'components/TextField';
+@use 'components/Tooltip';
+@use 'components/TooltipIcon';
+@use 'components/Mask';
+@use 'components/LabelMask';
+@use 'components/DateField';
+@use 'components/UsaBanner';
+@use 'components/VerticalNav';

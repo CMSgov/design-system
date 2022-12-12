@@ -1,4 +1,6 @@
-@import './Logo';
+@use '../layout' as *;
+@use './Logo' as *;
+@use '@cmsgov/design-system/src/styles/mixins' as *;
 
 .hc-c-footer {
   a {

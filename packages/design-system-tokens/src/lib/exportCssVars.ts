@@ -29,6 +29,7 @@ const sassVariableList: string[] = [
   'spacer-7',
   'spacer-none',
   'spacer-half',
+  'image-path',
 ];
 
 /**
