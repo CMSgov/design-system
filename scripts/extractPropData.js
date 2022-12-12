@@ -19,18 +19,17 @@ const config = {
 
 const customParser = docgen.withCustomConfig('./tsconfig.json', config);
 
-module.exports = async function (packageName) {
-  if (typeof packageName !== 'string') {
-    throw new Error('Must provide a packageName');
-  }
+function getOutputFilename(rootPath) {
+  const parts = rootPath.split('/');
+  const packageName = parts[parts.length - 1];
+  return `props-${packageName}.json`;
+}
 
-  const outputPath = path.join('packages', 'docs', 'data', `props-${packageName}.json`);
-  const inputPath = path.join('packages', packageName, 'src', 'components', 'index.ts');
-
+async function extractData(fileName) {
   // Will throw if this file doesn't exist
-  await access(inputPath, constants.R_OK);
+  await access(fileName, constants.R_OK);
 
-  const components = customParser.parse(inputPath);
+  const components = customParser.parse(fileName);
   const componentMap = {};
 
   for (const component of components) {
@@ -49,5 +48,29 @@ module.exports = async function (packageName) {
     componentMap[data.displayName] = data;
   }
 
-  await writeFile(outputPath, JSON.stringify(componentMap, null, 2));
+  return componentMap;
+}
+
+const corePackage = path.join('packages', 'design-system');
+module.exports = async function (rootPath = corePackage) {
+  const outputPath = path.join('packages', 'docs', 'data', getOutputFilename(rootPath));
+  const inputPath = path.join(rootPath, 'src', 'components', 'index.ts');
+  const coreInputPath = path.join(corePackage, 'src', 'components', 'index.ts');
+  const coreData = await extractData(coreInputPath);
+  let packageData;
+
+  if (rootPath === corePackage) {
+    packageData = coreData;
+  } else {
+    // If this isn't core, we want to deduplicate definitions between this package
+    // and core so we're not importing as much data into our Gatsby component.
+    packageData = await extractData(inputPath);
+    for (const key in packageData) {
+      if (coreData[key]) {
+        delete packageData[key];
+      }
+    }
+  }
+
+  await writeFile(outputPath, JSON.stringify(packageData, null, 2));
 };

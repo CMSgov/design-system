@@ -221,7 +221,7 @@ const compileTypescriptDefs = (cb) => {
 compileTypescriptDefs.displayName = '⛓  generating typescript definition files';
 
 const compilePropData = (cb) => {
-  extractPropData(args.package ?? 'design-system').then(cb);
+  extractPropData(rootPath).then(cb);
 };
 compilePropData.displayName = '🎛  extracting prop documentation';
 
