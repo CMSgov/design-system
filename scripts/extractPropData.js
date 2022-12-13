@@ -1,6 +1,7 @@
 const docgen = require('react-docgen-typescript');
 const path = require('path');
 const { access, constants, writeFile } = require('fs/promises');
+const { marked } = require('marked');
 
 const config = {
   savePropValueAsString: true,
@@ -48,6 +49,16 @@ async function extractData(fileName) {
   return componentMap;
 }
 
+function parseMarkdown(data) {
+  for (const props of Object.values(data)) {
+    for (const prop of props) {
+      if (prop.description) {
+        prop.description = marked.parseInline(prop.description);
+      }
+    }
+  }
+}
+
 const corePackage = path.join('packages', 'design-system');
 module.exports = async function (rootPath = corePackage) {
   const outputPath = path.join('packages', 'docs', 'data', getOutputFilename(rootPath));
@@ -69,5 +80,6 @@ module.exports = async function (rootPath = corePackage) {
     }
   }
 
+  parseMarkdown(packageData);
   await writeFile(outputPath, JSON.stringify(packageData, null, 2));
 };

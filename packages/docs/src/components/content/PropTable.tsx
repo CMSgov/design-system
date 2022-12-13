@@ -68,7 +68,7 @@ const PropTable = ({ children, componentName, theme }: PropTableProps) => {
               {prop.defaultValue && <code>{prop.defaultValue}</code>}
             </TableCell>
             <TableCell headers="columndescription" stackedTitle="Description">
-              {prop.description && <ContentRenderer data={prop.description} theme={theme} />}
+              {prop.description && <span dangerouslySetInnerHTML={{ __html: prop.description }} />}
             </TableCell>
           </TableRow>
         ))}
