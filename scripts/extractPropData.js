@@ -1,6 +1,7 @@
 const docgen = require('react-docgen-typescript');
 const path = require('path');
-const { access, constants, writeFile } = require('fs/promises');
+const { access, writeFile } = require('fs/promises');
+const { constants } = require('fs');
 const { marked } = require('marked');
 
 const config = {
