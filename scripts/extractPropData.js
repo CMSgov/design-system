@@ -1,7 +1,7 @@
 const docgen = require('react-docgen-typescript');
 const path = require('path');
-const { access, writeFile } = require('fs/promises');
-const { constants } = require('fs');
+const { mkdir, writeFile } = require('fs/promises');
+const { existsSync } = require('fs');
 const { marked } = require('marked');
 
 const config = {
@@ -28,8 +28,9 @@ function getOutputFilename(rootPath) {
 }
 
 async function extractData(fileName) {
-  // Will throw if this file doesn't exist
-  await access(fileName, constants.R_OK);
+  if (!existsSync(fileName)) {
+    throw new Error(`Cannot find ${fileName}`);
+  }
 
   const components = customParser.parse(fileName);
   const componentMap = {};
@@ -62,7 +63,8 @@ function parseMarkdown(data) {
 
 const corePackage = path.join('packages', 'design-system');
 module.exports = async function (rootPath = corePackage) {
-  const outputPath = path.join('packages', 'docs', 'data', getOutputFilename(rootPath));
+  const outputDir = path.join('packages', 'docs', 'data');
+  const outputPath = path.join(outputDir, getOutputFilename(rootPath));
   const inputPath = path.join(rootPath, 'src', 'components', 'index.ts');
   const coreInputPath = path.join(corePackage, 'src', 'components', 'index.ts');
   const coreData = await extractData(coreInputPath);
@@ -82,5 +84,8 @@ module.exports = async function (rootPath = corePackage) {
   }
 
   parseMarkdown(packageData);
+  if (!existsSync(outputDir)) {
+    await mkdir(outputDir);
+  }
   await writeFile(outputPath, JSON.stringify(packageData, null, 2));
 };
