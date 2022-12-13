@@ -55,23 +55,27 @@ const PropTable = ({ children, componentName, theme }: PropTableProps) => {
         </TableRow>
       </TableHead>
       <TableBody>
-        {componentPropData.map((prop) => (
-          <TableRow key={prop.name}>
-            <TableCell headers="columnname" stackedTitle="Name">
-              {prop.name && <code className="ds-u-font-weight--bold">{prop.name}</code>}
-              {prop.required && <Badge className="ds-u-margin-left--1">required</Badge>}
-            </TableCell>
-            <TableCell headers="columntype" stackedTitle="Type">
-              {prop.type && <code>{prop.type}</code>}
-            </TableCell>
-            <TableCell headers="columndefault" stackedTitle="Default">
-              {prop.defaultValue && <code>{prop.defaultValue}</code>}
-            </TableCell>
-            <TableCell headers="columndescription" stackedTitle="Description">
-              {prop.description && <span dangerouslySetInnerHTML={{ __html: prop.description }} />}
-            </TableCell>
-          </TableRow>
-        ))}
+        {componentPropData
+          .filter((prop) => !prop.description?.includes('@hide-prop'))
+          .map((prop) => (
+            <TableRow key={prop.name}>
+              <TableCell headers="columnname" stackedTitle="Name">
+                {prop.name && <code className="ds-u-font-weight--bold">{prop.name}</code>}
+                {prop.required && <Badge className="ds-u-margin-left--1">required</Badge>}
+              </TableCell>
+              <TableCell headers="columntype" stackedTitle="Type">
+                {prop.type && <code>{prop.type}</code>}
+              </TableCell>
+              <TableCell headers="columndefault" stackedTitle="Default">
+                {prop.defaultValue && <code>{prop.defaultValue}</code>}
+              </TableCell>
+              <TableCell headers="columndescription" stackedTitle="Description">
+                {prop.description && (
+                  <span dangerouslySetInnerHTML={{ __html: prop.description }} />
+                )}
+              </TableCell>
+            </TableRow>
+          ))}
         {children}
       </TableBody>
     </Table>
