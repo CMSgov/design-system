@@ -4,7 +4,9 @@ const { mkdir, writeFile } = require('fs/promises');
 const { existsSync } = require('fs');
 const { marked } = require('marked');
 
-const config = {
+const packages = ['design-system', 'ds-healthcare-gov', 'ds-medicare-gov'];
+
+const customParser = docgen.withCustomConfig('./tsconfig.json', {
   savePropValueAsString: true,
   propFilter: (prop, component) => {
     if (prop.declarations !== undefined && prop.declarations.length > 0) {
@@ -17,15 +19,7 @@ const config = {
 
     return true;
   },
-};
-
-const customParser = docgen.withCustomConfig('./tsconfig.json', config);
-
-function getOutputFilename(rootPath) {
-  const parts = rootPath.split('/');
-  const packageName = parts[parts.length - 1];
-  return `props-${packageName}.json`;
-}
+});
 
 async function extractData(fileName) {
   if (!existsSync(fileName)) {
@@ -61,31 +55,22 @@ function parseMarkdown(data) {
   }
 }
 
-const corePackage = path.join('packages', 'design-system');
-module.exports = async function (rootPath = corePackage) {
+async function run() {
   const outputDir = path.join('packages', 'docs', 'data');
-  const outputPath = path.join(outputDir, getOutputFilename(rootPath));
-  const inputPath = path.join(rootPath, 'src', 'components', 'index.ts');
-  const coreInputPath = path.join(corePackage, 'src', 'components', 'index.ts');
-  const coreData = await extractData(coreInputPath);
-  let packageData;
+  const outputPath = path.join(outputDir, 'propData.json');
+  const inputPaths = packages.map((packageName) =>
+    path.join('packages', packageName, 'src', 'components', 'index.ts')
+  );
+  const propData = Object.assign(
+    ...(await Promise.all(inputPaths.reverse().map((path) => extractData(path))))
+  );
 
-  if (rootPath === corePackage) {
-    packageData = coreData;
-  } else {
-    // If this isn't core, we want to deduplicate definitions between this package
-    // and core so we're not importing as much data into our Gatsby component.
-    packageData = await extractData(inputPath);
-    for (const key in packageData) {
-      if (coreData[key]) {
-        delete packageData[key];
-      }
-    }
-  }
+  parseMarkdown(propData);
 
-  parseMarkdown(packageData);
   if (!existsSync(outputDir)) {
     await mkdir(outputDir);
   }
-  await writeFile(outputPath, JSON.stringify(packageData, null, 2));
-};
+  await writeFile(outputPath, JSON.stringify(propData, null, 2));
+}
+
+run();

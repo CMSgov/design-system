@@ -17,7 +17,6 @@ const filter = require('gulp-filter');
 const log = require('fancy-log');
 const svgmin = require('gulp-svgmin');
 const webpack = require('webpack-stream');
-const extractPropData = require('./scripts/extractPropData');
 
 /*
  * command line arguments and global variables
@@ -220,11 +219,6 @@ const compileTypescriptDefs = (cb) => {
 };
 compileTypescriptDefs.displayName = '⛓  generating typescript definition files';
 
-const compilePropData = (cb) => {
-  extractPropData(rootPath).then(cb);
-};
-compilePropData.displayName = '🎛  extracting prop documentation';
-
 /*
  * bundle javascript for CDN
  */
@@ -289,7 +283,7 @@ log('🪴 building the cmsds');
 exports.build = gulp.series(
   cleanDist,
   gulp.parallel(copySass, copyImages, copyFonts, copyJSON),
-  gulp.parallel(compileSass, compileJs, compileEsmJs, compileTypescriptDefs, compilePropData),
+  gulp.parallel(compileSass, compileJs, compileEsmJs, compileTypescriptDefs),
   gulp.parallel(bundleJs, copyReactToDist)
 );
 

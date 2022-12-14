@@ -8,10 +8,7 @@ import {
   TableCaption,
   Badge,
 } from '@cmsgov/design-system';
-import ContentRenderer from './ContentRenderer';
-import corePropData from '../../../data/props-design-system.json';
-import healthcarePropData from '../../../data/props-ds-healthcare-gov.json';
-import medicarePropData from '../../../data/props-ds-medicare-gov.json';
+import propData from '../../../data/propData.json';
 
 interface PropTableProps {
   children: React.ReactNode;
@@ -28,10 +25,7 @@ interface PropTableProps {
  */
 const PropTable = ({ children, componentName, theme }: PropTableProps) => {
   // get the props for the specified components
-  const componentPropData =
-    corePropData[componentName] ??
-    healthcarePropData[componentName] ??
-    medicarePropData[componentName];
+  const componentPropData = propData[componentName];
 
   return (
     <Table className="c-prop-table" stackable scrollable borderless>
