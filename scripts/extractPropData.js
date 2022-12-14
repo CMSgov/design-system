@@ -8,7 +8,7 @@ const packages = ['design-system', 'ds-healthcare-gov', 'ds-medicare-gov'];
 
 const customParser = docgen.withCustomConfig('./tsconfig.json', {
   savePropValueAsString: true,
-  propFilter: (prop, component) => {
+  propFilter: (prop) => {
     if (prop.declarations !== undefined && prop.declarations.length > 0) {
       const hasPropAdditionalDescription = prop.declarations.find((declaration) => {
         return !declaration.fileName.includes('node_modules');
@@ -21,12 +21,8 @@ const customParser = docgen.withCustomConfig('./tsconfig.json', {
   },
 });
 
-async function extractData(fileName) {
-  if (!existsSync(fileName)) {
-    throw new Error(`Cannot find ${fileName}`);
-  }
-
-  const components = customParser.parse(fileName);
+async function extractData(input) {
+  const components = customParser.parse(input);
   const componentMap = {};
 
   for (const component of components) {
@@ -61,9 +57,7 @@ async function run() {
   const inputPaths = packages.map((packageName) =>
     path.join('packages', packageName, 'src', 'components', 'index.ts')
   );
-  const propData = Object.assign(
-    ...(await Promise.all(inputPaths.reverse().map((path) => extractData(path))))
-  );
+  const propData = await extractData(inputPaths.reverse());
 
   parseMarkdown(propData);
 
