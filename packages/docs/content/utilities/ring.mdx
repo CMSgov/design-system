@@ -1,0 +1,56 @@
+---
+title: Ring
+---
+
+import { Button } from '@cmsgov/design-system';
+
+Use the following utilities to apply focus styles to custom UI components.
+
+## Examples
+
+### Focus rings
+
+**Focus**
+
+Use the `.focus:ring` utility to conditionally apply focus styles to your component when that component has focus. Focus will be applied regardless of keyboard or mouse interaction.
+
+Click or tab into the following example to see this utility in action.
+
+<EmbeddedExample>
+  <p tabIndex="0" class="focus:ring ds-u-border--1 ds-u-padding--2">Focus state example</p>
+</EmbeddedExample>
+
+**Focus-visible**
+
+Use the `.focus-visible:ring` utility to conditionally apply focus styles to your component when that component has keyboard focus.
+
+Tab into the following example to see this utility in action.
+
+<EmbeddedExample>
+  <p tabIndex="0" class="focus-visible:ring ds-u-border--1 ds-u-padding--2">Focus-visible state example</p>
+</EmbeddedExample>
+
+**Focus-within**
+
+Use the `.focus-within:ring` utility to conditionally apply focus styles to your component when a child element of that component has focus. Focus will be applied regardless of keyboard or mouse interaction.
+
+Click or tab into the following example to see this utility in action.
+
+<EmbeddedExample>
+  <div class="focus-within:ring ds-u-border--1 ds-u-padding--2">
+    <p>Focus-within example</p>
+    <Button className="ds-u-margin-right--1">Foo</Button>
+    <Button className="ds-u-margin-right--1">Bar</Button>
+    <Button>Baz</Button>
+  </div>
+</EmbeddedExample>
+
+### Using the `ring` utility
+
+Use the `ring` utility to create outline rings with box-shadows. 
+
+This utility can be added or removed using JavaScript to act as a reusable focus indicator if other focus options don't work for your specific use-case.
+
+<EmbeddedExample>
+  <div tabIndex="0" class="ring">Always focus example</div>
+</EmbeddedExample>

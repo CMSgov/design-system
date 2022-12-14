@@ -1,0 +1,14 @@
+@use 'sass:math';
+
+.ring,
+.focus\:ring:focus,
+.focus-within\:ring:focus-within,
+.focus-visible\:ring:focus-visible {
+  box-shadow: 0 0 0 3px $color-focus-light, 0 0 4px 6px $color-focus-dark;
+  // Add support for Windows High Contrast Mode (WHCM)
+  // The transparent color only shows when WHCM is triggered
+  outline: 3px solid transparent;
+  outline-offset: 3px;
+  position: relative;
+  z-index: 100;
+}
