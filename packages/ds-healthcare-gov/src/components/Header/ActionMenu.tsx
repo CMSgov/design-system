@@ -3,15 +3,9 @@ import { Button, CloseIconThin, MenuIcon, TFunction } from '@cmsgov/design-syste
 import { SyntheticEvent } from 'react';
 import classnames from 'classnames';
 import { sendHeaderEvent } from './analytics';
+import { Link } from './Header';
 
 const menuId = 'hc-c-menu';
-
-export interface LinkProps {
-  href: string;
-  label: React.ReactNode;
-  className?: string;
-  onClick?: (event: SyntheticEvent) => any;
-}
 
 export interface ActionMenuProps {
   t: TFunction;
@@ -29,7 +23,7 @@ export interface ActionMenuProps {
    * is no menu button present. Currently, these only show up when the
    * user is logged out
    */
-  links: LinkProps[];
+  links: Link[];
 }
 
 /**
