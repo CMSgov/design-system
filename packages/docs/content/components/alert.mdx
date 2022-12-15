@@ -218,7 +218,15 @@ A custom heading value can be sent for an analytics event by using the prop `ana
 - Users generally won’t read documentation but will read a message that helps them resolve an error; include some educational material in your error message.
 - If the error relates to specific text fields, give these fields an error state as well.
 
+### Display & behavior
+
+- Alerts are static and shouldn't be associated with a timer or dismiss button. 
+- Can be displayed statically on page load or dynamically loaded.
+- When the user is required to do something in response to an alert, let them know what they need to do and make that task as easy as possible.
+
 <ThemeContent onlyThemes={['healthcare']}>
+
+- Having icons is the preferred use for alerts. Some alerts might have a large amount of content and may need the extra space and in those cases the icon can be removed. Removing the icon should be considered a exception. Validate the design and spacing on mobile to help make this decision.
 
 ### Design guidelines
 
@@ -228,23 +236,6 @@ A custom heading value can be sent for an analytics event by using the prop `ana
 - Default alerts provide more impact and should be used sparingly. Focus on using default alerts as top-level elements.
   - Exception: Warning alerts can be used as needed within the page.
 - Lightweight alerts are more targeted and should be focused on specific elements within the context of the page. 
-
-#### Display & behavior
-
-- Can be displayed statically on page load or dynamically loaded.
-- When the user is required to do something in response to an alert, let them know what they need to do and make that task as easy as possible.
-- Alerts are static and shouldn't be associated with a timer or dismiss button.
-- Having icons is the preferred use for alerts. Some alerts might have a large amount of content and may need the extra space and in those cases the icon can be removed. Removing the icon should be considered a exception. Validate the design and spacing on mobile to help make this decision.
-
-</ThemeContent>
-
-<ThemeContent onlyThemes={['medicare']}>
-
-### Display & behavior
-
-- Can be displayed statically on page load or dynamically loaded
-- When the user is required to do something in response to an alert, let them know what they need to do and make that task as easy as possible.
-- Alerts are static and shouldn't be associated with a timer or dismiss button. 
 
 </ThemeContent>
 
@@ -264,7 +255,6 @@ If dynamically loaded, be mindful of when the alert displays on the page. For ex
 - Consider putting the alert inside a div with `aria-live="polite"` and `aria-relevant="additions removals"`. These <abbr title="Accessible rich internet applications">ARIA</abbr> attributes ensure screen readers will announce alerts that have been added or updated dynamically.
 - If you choose to shift focus to the Alert, be mindful that using other techniques like `role="alert"`, and `aria-live="polite"` will cause some browser and screen reader combinations to read out the content more than once. Typically, shifting focus alone will be enough to alert screen readers of the content.
 - Do not visually hide alert messages on the page and then make them visible when they are needed. Users of older assistive technologies may still be able to perceive the alert messages even if they are not currently applicable.
-- Alerts should give users adequate time to review and comprehend the provided information. Avoid hiding alerts using a timer.
 
 <ThemeContent onlyThemes={['healthcare']}>
 
