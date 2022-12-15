@@ -157,7 +157,7 @@ exports[`ActionMenu logged-out version renders logged-out version 1`] = `
       class="hc-c-logged-out-links__li"
     >
       <a
-        class="hc-c-logged-out-links__link"
+        class="hc-c-logged-out-links__link "
         href="href"
       >
         label

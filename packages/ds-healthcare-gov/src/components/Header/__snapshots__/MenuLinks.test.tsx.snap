@@ -9,7 +9,7 @@ exports[`MenuLinks renders list of links 1`] = `
       class="ds-u-margin--0 "
     >
       <a
-        class="hc-c-menu__link"
+        class="hc-c-menu__link "
         href="#foo"
       >
         Foo
@@ -19,7 +19,7 @@ exports[`MenuLinks renders list of links 1`] = `
       class="ds-u-margin--0 "
     >
       <a
-        class="hc-c-menu__link"
+        class="hc-c-menu__link "
         href="#bar"
       >
         Bar
@@ -29,7 +29,7 @@ exports[`MenuLinks renders list of links 1`] = `
       class="ds-u-margin--0 "
     >
       <a
-        class="hc-c-menu__link"
+        class="hc-c-menu__link "
         href="#baz"
       >
         Baz
