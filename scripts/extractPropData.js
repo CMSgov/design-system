@@ -4,8 +4,6 @@ const { mkdir, writeFile } = require('fs/promises');
 const { existsSync } = require('fs');
 const { marked } = require('marked');
 
-const packages = ['design-system', 'ds-healthcare-gov', 'ds-medicare-gov'];
-
 const customParser = docgen.withCustomConfig('./tsconfig.json', {
   savePropValueAsString: true,
   propFilter: (prop) => {
@@ -54,10 +52,20 @@ function parseMarkdown(data) {
 async function run() {
   const outputDir = path.join('packages', 'docs', 'data');
   const outputPath = path.join(outputDir, 'propData.json');
-  const inputPaths = packages.map((packageName) =>
-    path.join('packages', packageName, 'src', 'components', 'index.ts')
-  );
-  const propData = await extractData(inputPaths.reverse());
+  const inputPaths = [
+    path.join('packages', 'ds-medicare-gov', 'src', 'components', 'index.ts'),
+    path.join('packages', 'ds-healthcare-gov', 'src', 'components', 'index.ts'),
+    path.join(
+      'packages',
+      'design-system',
+      'src',
+      'components',
+      'VerticalNav',
+      'VerticalNavItem.tsx'
+    ),
+    path.join('packages', 'design-system', 'src', 'components', 'index.ts'),
+  ];
+  const propData = await extractData(inputPaths);
 
   parseMarkdown(propData);
 
