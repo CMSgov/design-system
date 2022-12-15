@@ -35,7 +35,11 @@ const MenuLinks = (props: MenuLinksProps) => (
           key={link.href}
           className={`ds-u-margin--0 ${isLoginLogoutLink ? 'ds-u-border-top--1' : ''}`}
         >
-          <a href={link.href} onClick={onClick} className="hc-c-menu__link">
+          <a
+            href={link.href}
+            onClick={onClick}
+            className={`hc-c-menu__link ${link.className ?? ''}`}
+          >
             {link.label}
           </a>
         </li>

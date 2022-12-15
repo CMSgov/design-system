@@ -9,6 +9,7 @@ const menuId = 'hc-c-menu';
 export interface LinkProps {
   href: string;
   label: React.ReactNode;
+  className?: string;
   onClick?: (event: SyntheticEvent) => any;
 }
 
@@ -92,7 +93,7 @@ const ActionMenu = function (props: ActionMenuProps) {
                   // other cases to find the text content of a ReactNode after rendering, like in
                   // packages/design-system/src/components/Alert/Alert.tsx#L114
                   onClick={() => sendHeaderEvent(link.label.toString(), link.href)}
-                  className="hc-c-logged-out-links__link"
+                  className={`hc-c-logged-out-links__link ${link.className ?? ''}`}
                 >
                   {link.label}
                 </a>
