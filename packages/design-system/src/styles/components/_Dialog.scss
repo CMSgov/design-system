@@ -1,8 +1,10 @@
+@use '../layout' as *;
+
 // Start polyfill styles
 dialog {
-  background: $color-white;
+  background: var(--color-white);
   border: solid;
-  color: $color-black;
+  color: var(--color-black);
   display: block;
   height: -moz-fit-content;
   height: -webkit-fit-content;
@@ -46,15 +48,15 @@ dialog.fixed {
 // End polyfill styles
 
 .ds-c-dialog {
-  background-color: $dialog__background-color;
+  background-color: var(--dialog__background-color);
   border: none;
-  box-shadow: $shadow-base;
+  box-shadow: var(--shadow-base);
   box-sizing: border-box;
   display: inline-block;
-  font-size: $font-size-base;
+  font-size: var(--font-size-base);
   margin-top: $spacer-6;
-  max-width: $measure-base;
-  padding: $dialog__padding;
+  max-width: var(--measure-base);
+  padding: var(--dialog__padding);
   text-align: left;
   width: 95%; // provide space for the background layer to peek through
 
@@ -71,19 +73,19 @@ dialog.fixed {
 
 .ds-c-dialog::backdrop,
 .ds-c-dialog + .backdrop {
-  background-color: $dialog-overlay__background-color;
+  background-color: var(--dialog-overlay__background-color);
 }
 
 .ds-c-dialog--narrow {
-  max-width: $measure-narrow;
+  max-width: var(--measure-narrow);
 }
 
 .ds-c-dialog--wide {
-  max-width: $measure-wide;
+  max-width: var(--measure-wide);
 }
 
 .ds-c-dialog--full {
-  max-width: $site-max-width;
+  max-width: var(--site-max-width);
 }
 
 .ds-c-dialog__header {
@@ -127,5 +129,5 @@ dialog.fixed {
   left: 0;
   position: fixed;
   right: 0;
-  top: var(--body_top--dialog-open, 0);
+  top: var(--body_top--dialog-open) 0;
 }

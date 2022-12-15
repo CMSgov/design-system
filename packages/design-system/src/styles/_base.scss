@@ -1,4 +1,5 @@
-@use 'mixins' as *;
+@use 'layout' as *;
+@use 'mixins';
 
 /**
  * Global
@@ -28,20 +29,20 @@ $breakpoints: (
  */
 
 %ds-base {
-  font-family: $font-sans;
-  font-size: $font-size-base;
-  line-height: $font-line-height-base;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: var(--font-line-height-base);
 }
 
 .ds-base {
   @extend %ds-base;
-  color: $color-base;
+  color: var(--color-base);
 }
 
 .ds-base--inverse {
   @extend %ds-base;
-  background-color: $color-background-inverse;
-  color: $color-base-inverse;
+  background-color: var(--color-background-inverse);
+  color: var(--color-base-inverse);
 }
 
 /**
@@ -57,63 +58,63 @@ $breakpoints: (
  */
 
 %link {
-  color: $link__color;
+  color: var(--link__color);
   cursor: pointer;
   text-decoration: underline;
-  text-decoration-color: $link__color;
-  text-decoration-thickness: $link__text-decoration-thickness;
-  text-underline-offset: $link__text-decoration-offset;
+  text-decoration-color: var(--link__color);
+  text-decoration-thickness: var(--link__text-decoration-thickness);
+  text-underline-offset: var(--link__text-decoration-offset);
 
   &:visited {
-    color: $link__color--visited;
-    text-decoration-color: $link__color--visited;
+    color: var(--link__color--visited);
+    text-decoration-color: var(--link__color--visited);
   }
 
   &:hover {
-    color: $link__color--hover;
-    text-decoration-color: $link__color--hover;
-    text-decoration-thickness: $link__text-decoration-thickness--hover;
+    color: var(--link__color--hover);
+    text-decoration-color: var(--link__color--hover);
+    text-decoration-thickness: var(--link__text-decoration-thickness--hover);
   }
   &:focus,
   &:focus:visited {
-    @include focus-styles-link;
+    @include mixins.focus-styles-link;
   }
 
   &:active {
-    color: $link__color--active;
+    color: var(--link__color--active);
     outline: 0 none;
-    text-decoration-color: $link__color--active;
+    text-decoration-color: var(--link__color--active);
   }
 }
 
 %link-inverse {
-  color: $link-inverse__color;
+  color: var(--link-inverse__color);
   cursor: pointer;
   text-decoration: underline;
-  text-decoration-color: $link-inverse__color;
-  text-decoration-thickness: $link__text-decoration-thickness;
-  text-underline-offset: $link__text-decoration-offset;
+  text-decoration-color: var(--link-inverse__color);
+  text-decoration-thickness: var(--link__text-decoration-thickness);
+  text-underline-offset: var(--link__text-decoration-offset);
 
   &:visited {
-    color: $link-inverse__color--visited;
-    text-decoration-color: $link-inverse__color--visited;
+    color: var(--link-inverse__color--visited);
+    text-decoration-color: var(--link-inverse__color--visited);
   }
 
   &:hover {
-    color: $link-inverse__color--hover;
-    text-decoration-color: $link-inverse__color--hover;
-    text-decoration-thickness: $link__text-decoration-thickness--hover;
+    color: var(--link-inverse__color--hover);
+    text-decoration-color: var(--link-inverse__color--hover);
+    text-decoration-thickness: var(--link__text-decoration-thickness--hover);
   }
 
   &:focus,
   &:focus:visited {
-    @include focus-styles-link;
-    color: $link__color;
+    @include mixins.focus-styles-link;
+    color: var(--link__color);
   }
 
   &:active {
     background-color: transparent;
-    color: $link-inverse__color--active;
+    color: var(--link-inverse__color--active);
     outline: 0 none;
   }
 }
@@ -165,9 +166,9 @@ a,
 .ds-text-heading--lg,
 .ds-text-heading--md,
 .ds-text-heading--sm {
-  font-family: $typography-heading__font-family;
-  font-weight: $typography-heading__font-weight;
-  line-height: $font-line-height-heading;
+  font-family: var(--typography-heading__font-family);
+  font-weight: var(--typography-heading__font-weight);
+  line-height: var(--font-line-height-heading);
   margin: 0;
 }
 
@@ -198,77 +199,77 @@ a,
 
 .ds-display,
 .ds-text-heading--5xl {
-  font-size: $font-size-3xl;
+  font-size: var(--font-size-3xl);
 
   @media (min-width: $media-width-sm) {
-    font-size: $font-size-4xl;
+    font-size: var(--font-size-4xl);
   }
 
   @media (min-width: $media-width-md) {
-    font-size: $font-size-5xl;
+    font-size: var(--font-size-5xl);
   }
 }
 
 .ds-title,
 .ds-text-heading--4xl {
-  font-size: $font-size-3xl;
-  font-weight: $typography-heading-4xl__font-weight;
+  font-size: var(--font-size-3xl);
+  font-weight: var(--typography-heading-4xl__font-weight);
 
   @media (min-width: $media-width-md) {
-    font-size: $font-size-4xl;
+    font-size: var(--font-size-4xl);
   }
 }
 
 .ds-h1,
 .ds-text-heading--3xl {
   font-size: 30px;
-  font-weight: $typography-heading-3xl__font-weight;
+  font-weight: var(--typography-heading-3xl__font-weight);
 
   @media (min-width: $media-width-md) {
-    font-size: $font-size-3xl;
+    font-size: var(--font-size-3xl);
   }
 }
 
 .ds-h2,
 .ds-text-heading--2xl {
-  font-size: $font-size-2xl;
+  font-size: var(--font-size-2xl);
 }
 
 .ds-h3,
 .ds-text-heading--xl {
-  font-size: $font-size-xl;
+  font-size: var(--font-size-xl);
 }
 
 .ds-h4,
 .ds-text-heading--lg {
-  font-size: $font-size-lg;
-  font-weight: $typography-heading-lg__font-weight;
+  font-size: var(--font-size-lg);
+  font-weight: var(--typography-heading-lg__font-weight);
 }
 
 .ds-h5,
 .ds-text-heading--md {
-  font-size: $font-size-md;
-  font-weight: $typography-heading-md__font-weight;
+  font-size: var(--font-size-md);
+  font-weight: var(--typography-heading-md__font-weight);
 }
 
 .ds-h6,
 .ds-text-heading--sm {
-  color: $color-muted;
-  font-size: $font-size-sm;
-  font-weight: $typography-heading-sm__font-weight;
+  color: var(--color-muted);
+  font-size: var(--font-size-sm);
+  font-weight: var(--typography-heading-sm__font-weight);
 }
 
 .ds-base--inverse .ds-h6,
 .ds-base--inverse .ds-text-heading--sm {
-  color: $color-muted-inverse;
+  color: var(--color-muted-inverse);
 }
 
 .ds-text,
 .ds-text--lead,
 .ds-text-body--lg,
 .ds-text-body--md {
-  font-family: $typography-body__font-family;
-  line-height: $font-line-height-base;
+  font-family: var(--typography-body__font-family);
+  line-height: var(--font-line-height-base);
   margin-bottom: 1em;
   margin-top: 1em;
 
@@ -283,14 +284,14 @@ a,
 
 .ds-text--lead,
 .ds-text-body--lg {
-  font-size: $font-size-lg;
+  font-size: var(--font-size-lg);
 }
 
 .ds-text,
 .ds-text-body--md {
-  font-size: $font-size-base;
+  font-size: var(--font-size-base);
 }
 
 .ds-text-body--sm {
-  font-size: $font-size-sm;
+  font-size: var(--font-size-sm);
 }

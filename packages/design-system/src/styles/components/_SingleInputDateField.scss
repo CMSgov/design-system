@@ -1,4 +1,5 @@
-@use '../mixins' as *;
+@use '../layout' as *;
+@use '../mixins';
 
 // Because import of stylesheets in node_modules would have to be supported by
 // downstream projects--and we have no guarantee that it will--it is necessary
@@ -11,10 +12,10 @@
 /* stylelint-disable declaration-no-important, no-duplicate-selectors -- Ignore inlined 3rd party styles */
 :root {
   --rdp-cell-size: #{$spacer-5};
-  --rdp-accent-color: #{$color-primary};
-  --rdp-background-color: #{$color-gray-cool-light};
+  --rdp-accent-color: var(--color-primary);
+  --rdp-background-color: var(--color-gray-cool-light);
   /* Added this variable for consistency */
-  --rdp-active-color: #{$color-primary-darkest};
+  --rdp-active-color: var(--color-primary-darkest);
   /* Outline border for focused elements */
   --rdp-outline: none;
   /* Outline border for focused and selected elements */
@@ -355,7 +356,7 @@
 // Apply our focus, hover, and active styles to all the day buttons
 .rdp-button:focus,
 .rdp-button:active {
-  @include focus-styles;
+  @include mixins.focus-styles;
 }
 .rdp-button:active,
 .rdp-button:active:hover:not([aria-disabled='true']),
@@ -386,12 +387,12 @@
 // Style the month & year dropdowns
 .rdp-caption_label {
   border: none;
-  font-size: $font-size-xl;
+  font-size: var(--font-size-xl);
   padding: 0 $spacer-1;
 }
 .rdp-dropdown:focus:not([disabled]) + .rdp-caption_label,
 .rdp-dropdown:active:not([disabled]) + .rdp-caption_label {
-  @include focus-styles;
+  @include mixins.focus-styles;
   background-color: initial;
 }
 .rdp-dropdown_icon.ds-c-icon--arrows-stacked {
@@ -405,25 +406,25 @@
   appearance: none;
   background-color: transparent;
   border: none;
-  border-radius: $text-input__border-radius;
-  color: $color-primary;
+  border-radius: var(--text-input__border-radius);
+  color: var(--color-primary);
   cursor: pointer;
   display: inline-block;
   padding: $spacer-1;
 
   &:hover:not(:disabled) {
-    background-color: $color-gray-cool-light;
-    color: $color-primary-darker; // TODO: Use tokens (same as link-hover-color)
+    background-color: var(--color-gray-cool-light);
+    color: var(--color-primary-darker); // TODO: Use tokens same as link-hover-color
   }
 
   &:focus,
   &:active:not(:disabled) {
-    @include focus-styles;
+    @include mixins.focus-styles;
   }
 
   &:active:not(:disabled) {
-    background-color: $button-solid__background-color--active;
-    color: $color-white;
+    background-color: var(--button-solid__background-color--active);
+    color: var(--color-white);
   }
 
   .ds-c-icon--arrow {
@@ -432,7 +433,7 @@
   }
 
   &:disabled {
-    color: $pagination-link__color--disabled;
+    color: var(--pagination-link__color--disabled);
     pointer-events: none;
 
     @media (-ms-high-contrast: active), (forced-colors: active) {
@@ -459,9 +460,9 @@
   position: relative;
 
   .rdp {
-    border: 1px solid $color-gray-dark;
+    border: 1px solid var(--color-gray-dark);
     border-radius: 8px;
-    box-shadow: 0 0 17px 0 $color-gray-light;
+    box-shadow: 0 0 17px 0 var(--color-gray-light);
     left: 0;
     margin: 0;
     margin-top: $spacer-1;
@@ -484,7 +485,7 @@
       border-bottom-right-radius: 0;
       border-top-right-radius: 0;
       margin-bottom: 0;
-      margin-right: calc(-1 * #{$text-input__border-width});
+      margin-right: calc(-1 * var(--text-input__border-width));
       margin-top: 0;
 
       &:focus,
@@ -493,7 +494,7 @@
       }
 
       &.ds-c-field--error {
-        margin-right: calc(-1 * #{$text-input__border-width--error});
+        margin-right: calc(-1 * var(--text-input__border-width--error));
       }
     }
   }
@@ -504,12 +505,12 @@
 
   .ds-c-single-input-date-field__button {
     appearance: none;
-    background-color: $color-gray-cool-light;
-    border: $text-input__border-width solid $text-input__border-color;
-    border-radius: $text-input__border-radius;
+    background-color: var(--color-gray-cool-light);
+    border: var(--text-input__border-width) solid var(--text-input__border-color);
+    border-radius: var(--text-input__border-radius);
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
-    color: $color-primary;
+    color: var(--color-primary);
     cursor: pointer;
     margin: 0;
     padding: $spacer-half $spacer-1;
@@ -518,19 +519,19 @@
     text-decoration: none;
 
     &:after {
-      background: $color-gray-light;
+      background: var(--color-gray-light);
       bottom: 0;
       content: '';
       display: block;
-      left: calc(-1 * #{$text-input__border-width});
+      left: calc(-1 * var(--text-input__border-width));
       position: absolute;
       top: 0;
-      width: $text-input__border-width;
+      width: var(--text-input__border-width);
     }
 
     &:focus,
     &:active {
-      @include focus-styles;
+      @include mixins.focus-styles;
 
       &:after {
         display: none;
@@ -539,16 +540,17 @@
   }
 
   .ds-c-field--error + .ds-c-single-input-date-field__button {
-    border: $text-input__border-width--error solid $text-input__border-color--error;
+    border: var(--text-input__border-width--error) solid var(--text-input__border-color--error);
 
     &:after {
-      left: calc(-1 * #{$text-input__border-width--error});
-      width: $text-input__border-width--error;
+      left: calc(-1 * var(--text-input__border-width--error));
+      width: var(--text-input__border-width--error);
     }
   }
 
   .ds-c-field--error.ds-c-field--inverse + .ds-c-single-input-date-field__button {
-    border: $text-input__border-width--error solid $text-input__border-color--error--inverse;
+    border: var(--text-input__border-width--error) solid
+      var(--text-input__border-color--error--inverse);
   }
 
   .ds-c-icon--calendar {

@@ -1,3 +1,5 @@
+@use '../layout' as *;
+
 .ds-c-step-list {
   list-style-type: none;
   margin: $spacer-4 0 0;
@@ -11,20 +13,20 @@
 }
 
 .ds-c-step {
-  color: $steplist__color;
+  color: var(--steplist__color);
   counter-increment: step-counter;
   margin-bottom: $spacer-2;
   padding-bottom: $spacer-2;
   position: relative;
 
   &::before {
-    border: 2px solid $steplist-step__border-color--default;
-    border-radius: $radius-circle;
+    border: 2px solid var(--steplist-step__border-color--default);
+    border-radius: var(--radius-circle);
     box-sizing: border-box;
-    color: $steplist-step__color;
+    color: var(--steplist-step__color);
     content: counter(step-counter);
     display: block;
-    font-size: $font-size-sm;
+    font-size: var(--font-size-sm);
     height: $spacer-3;
     left: -34px;
     line-height: 20px;
@@ -34,7 +36,7 @@
     width: $spacer-3;
 
     @media (min-width: $media-width-md) {
-      font-size: $font-size-xl;
+      font-size: var(--font-size-xl);
       height: $spacer-4;
       left: -42px;
       line-height: 28px;
@@ -52,7 +54,7 @@
   }
 
   &::after {
-    border-bottom: 1px solid $steplist-step__border-color;
+    border-bottom: 1px solid var(--steplist-step__border-color);
     bottom: 0;
     content: '';
     display: block;
@@ -69,7 +71,7 @@
 
   &::before {
     border: 0 none;
-    color: $steplist-step__color--current;
+    color: var(--steplist-step__color--current);
     line-height: 24px;
 
     @media (min-width: $media-width-md) {
@@ -80,11 +82,11 @@
 
 .ds-c-step--current {
   .ds-c-step__heading {
-    color: $steplist__color--current;
+    color: var(--steplist__color--current);
   }
 
   &::before {
-    background: $steplist__background-color--current;
+    background: var(--steplist__background-color--current);
   }
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
@@ -98,15 +100,15 @@
 
 .ds-c-step--completed {
   .ds-c-step__heading {
-    color: $steplist-step__color--completed;
+    color: var(--steplist-step__color--completed);
   }
 
   .ds-c-step__substeps {
-    color: $steplist-step__color--completed;
+    color: var(--steplist-step__color--completed);
   }
 
   &::before {
-    background: $steplist-step__background-color--completed;
+    background: var(--steplist-step__background-color--completed);
   }
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
@@ -118,13 +120,13 @@
 }
 
 .ds-c-step__heading {
-  font-size: $font-size-md;
+  font-size: var(--font-size-md);
   line-height: 38px;
   margin: 0;
 }
 
 .ds-c-step__actions {
-  font-size: $font-size-sm;
+  font-size: var(--font-size-sm);
   margin-left: auto;
 
   .ds-c-step__content--with-content + & {
@@ -132,7 +134,7 @@
   }
 
   .ds-c-step--completed & a {
-    font-weight: $font-weight-normal;
+    font-weight: var(--font-weight-normal);
   }
 }
 
@@ -156,7 +158,7 @@
 }
 
 .ds-c-step__description {
-  font-size: $font-size-sm;
+  font-size: var(--font-size-sm);
   margin-bottom: $spacer-1;
 
   .ds-c-step--current &,
@@ -173,7 +175,7 @@
 
 .ds-c-substep {
   display: block;
-  font-size: $font-size-sm;
+  font-size: var(--font-size-sm);
 
   &::before {
     content: '\2022';

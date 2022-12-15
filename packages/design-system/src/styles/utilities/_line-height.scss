@@ -1,15 +1,15 @@
 .ds-u-leading--base {
-  line-height: $font-line-height-base !important;
+  line-height: var(--font-line-height-base) !important;
 }
 
 .ds-u-leading--lead {
-  line-height: $font-line-height-lead !important;
+  line-height: var(--font-line-height-lead) !important;
 }
 
 .ds-u-leading--heading {
-  line-height: $font-line-height-heading !important;
+  line-height: var(--font-line-height-heading) !important;
 }
 
 .ds-u-leading--reset {
-  line-height: $font-line-height-reset !important;
+  line-height: var(--font-line-height-reset) !important;
 }

@@ -1,7 +1,7 @@
 .ds-u-sans {
-  font-family: $font-sans !important;
+  font-family: var(--font-sans) !important;
 }
 
 .ds-u-serif {
-  font-family: $font-serif !important;
+  font-family: var(--font-serif) !important;
 }
