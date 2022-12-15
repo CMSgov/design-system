@@ -24,7 +24,7 @@ exports[`Header renders Direct Enrollment banner 1`] = `
           href="/"
         >
           <span
-            class="hc-c-logo "
+            class="hc-c-logo"
           >
             <svg
               aria-labelledby="hc-c-logo__title"
@@ -109,7 +109,7 @@ exports[`Header renders Direct Enrollment banner 1`] = `
               class="hc-c-logged-out-links__li"
             >
               <a
-                class="hc-c-logged-out-links__link "
+                class="hc-c-logged-out-links__link"
                 href="https://www.cuidadodesalud.gov/es/"
               >
                 Español
@@ -119,7 +119,7 @@ exports[`Header renders Direct Enrollment banner 1`] = `
               class="hc-c-logged-out-links__li"
             >
               <a
-                class="hc-c-logged-out-links__link "
+                class="hc-c-logged-out-links__link"
                 href="/login?check_de=1"
               >
                 Log in
@@ -160,7 +160,7 @@ exports[`Header renders Direct Enrollment banner 1`] = `
                 class="ds-u-margin--0 "
               >
                 <a
-                  class="hc-c-menu__link "
+                  class="hc-c-menu__link"
                   href="https://www.cuidadodesalud.gov/es/"
                 >
                   Español
@@ -170,7 +170,7 @@ exports[`Header renders Direct Enrollment banner 1`] = `
                 class="ds-u-margin--0 ds-u-border-top--1"
               >
                 <a
-                  class="hc-c-menu__link "
+                  class="hc-c-menu__link"
                   href="/login?check_de=1"
                 >
                   Log in
@@ -218,7 +218,7 @@ exports[`Header renders Spanish header 1`] = `
           href="/"
         >
           <span
-            class="hc-c-logo "
+            class="hc-c-logo"
           >
             <svg
               aria-labelledby="hc-c-logo__title"
@@ -319,7 +319,7 @@ exports[`Header renders Spanish header 1`] = `
               class="hc-c-logged-out-links__li"
             >
               <a
-                class="hc-c-logged-out-links__link "
+                class="hc-c-logged-out-links__link"
                 href="https://www.healthcare.gov/"
               >
                 English
@@ -329,7 +329,7 @@ exports[`Header renders Spanish header 1`] = `
               class="hc-c-logged-out-links__li"
             >
               <a
-                class="hc-c-logged-out-links__link "
+                class="hc-c-logged-out-links__link"
                 href="/login"
               >
                 Iniciar sesión
@@ -370,7 +370,7 @@ exports[`Header renders Spanish header 1`] = `
                 class="ds-u-margin--0 "
               >
                 <a
-                  class="hc-c-menu__link "
+                  class="hc-c-menu__link"
                   href="https://www.healthcare.gov/"
                 >
                   English
@@ -380,7 +380,7 @@ exports[`Header renders Spanish header 1`] = `
                 class="ds-u-margin--0 ds-u-border-top--1"
               >
                 <a
-                  class="hc-c-menu__link "
+                  class="hc-c-menu__link"
                   href="/login"
                 >
                   Iniciar sesión
@@ -419,7 +419,7 @@ exports[`Header renders full/homepage header 1`] = `
           href="/"
         >
           <span
-            class="hc-c-logo "
+            class="hc-c-logo"
           >
             <svg
               aria-labelledby="hc-c-logo__title"
@@ -504,7 +504,7 @@ exports[`Header renders full/homepage header 1`] = `
               class="hc-c-logged-out-links__li"
             >
               <a
-                class="hc-c-logged-out-links__link "
+                class="hc-c-logged-out-links__link"
                 href="https://www.cuidadodesalud.gov/es/"
               >
                 Español
@@ -514,7 +514,7 @@ exports[`Header renders full/homepage header 1`] = `
               class="hc-c-logged-out-links__li"
             >
               <a
-                class="hc-c-logged-out-links__link "
+                class="hc-c-logged-out-links__link"
                 href="/login"
               >
                 Log in
@@ -555,7 +555,7 @@ exports[`Header renders full/homepage header 1`] = `
                 class="ds-u-margin--0 "
               >
                 <a
-                  class="hc-c-menu__link "
+                  class="hc-c-menu__link"
                   href="https://www.cuidadodesalud.gov/es/"
                 >
                   Español
@@ -565,7 +565,7 @@ exports[`Header renders full/homepage header 1`] = `
                 class="ds-u-margin--0 ds-u-border-top--1"
               >
                 <a
-                  class="hc-c-menu__link "
+                  class="hc-c-menu__link"
                   href="/login"
                 >
                   Log in
@@ -604,7 +604,7 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
           href="https://www.healthcare.gov"
         >
           <span
-            class="hc-c-logo "
+            class="hc-c-logo"
           >
             <svg
               aria-labelledby="hc-c-logo__title"
@@ -689,7 +689,7 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
               class="hc-c-logged-out-links__li"
             >
               <a
-                class="hc-c-logged-out-links__link "
+                class="hc-c-logged-out-links__link"
                 href="https://www.cuidadodesalud.gov/es/"
               >
                 Español
@@ -699,7 +699,7 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
               class="hc-c-logged-out-links__li"
             >
               <a
-                class="hc-c-logged-out-links__link "
+                class="hc-c-logged-out-links__link"
                 href="https://www.healthcare.gov/login"
               >
                 Log in
@@ -740,7 +740,7 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
                 class="ds-u-margin--0 "
               >
                 <a
-                  class="hc-c-menu__link "
+                  class="hc-c-menu__link"
                   href="https://www.cuidadodesalud.gov/es/"
                 >
                   Español
@@ -750,7 +750,7 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
                 class="ds-u-margin--0 ds-u-border-top--1"
               >
                 <a
-                  class="hc-c-menu__link "
+                  class="hc-c-menu__link"
                   href="https://www.healthcare.gov/login"
                 >
                   Log in
@@ -789,7 +789,7 @@ exports[`Header renders logged-in header with firstName 1`] = `
           href="/"
         >
           <span
-            class="hc-c-logo "
+            class="hc-c-logo"
           >
             <svg
               aria-labelledby="hc-c-logo__title"
@@ -911,7 +911,7 @@ exports[`Header renders logged-in header with firstName 1`] = `
                 class="ds-u-margin--0 "
               >
                 <a
-                  class="hc-c-menu__link "
+                  class="hc-c-menu__link"
                   href="/marketplace/auth/global/en_US/myProfile#landingPage"
                 >
                   My applications & coverage
@@ -921,7 +921,7 @@ exports[`Header renders logged-in header with firstName 1`] = `
                 class="ds-u-margin--0 "
               >
                 <a
-                  class="hc-c-menu__link "
+                  class="hc-c-menu__link"
                   href="/marketplace/auth/global/en_US/myProfile#settings"
                 >
                   My profile
@@ -931,7 +931,7 @@ exports[`Header renders logged-in header with firstName 1`] = `
                 class="ds-u-margin--0 "
               >
                 <a
-                  class="hc-c-menu__link "
+                  class="hc-c-menu__link"
                   href="https://www.cuidadodesalud.gov/es/"
                 >
                   Español
@@ -941,7 +941,7 @@ exports[`Header renders logged-in header with firstName 1`] = `
                 class="ds-u-margin--0 ds-u-border-top--1"
               >
                 <a
-                  class="hc-c-menu__link "
+                  class="hc-c-menu__link"
                   href="/logout"
                 >
                   Log out
@@ -980,7 +980,7 @@ exports[`Header renders logged-in header without firstName 1`] = `
           href="/"
         >
           <span
-            class="hc-c-logo "
+            class="hc-c-logo"
           >
             <svg
               aria-labelledby="hc-c-logo__title"
@@ -1092,7 +1092,7 @@ exports[`Header renders logged-in header without firstName 1`] = `
                 class="ds-u-margin--0 "
               >
                 <a
-                  class="hc-c-menu__link "
+                  class="hc-c-menu__link"
                   href="/marketplace/auth/global/en_US/myProfile#landingPage"
                 >
                   My applications & coverage
@@ -1102,7 +1102,7 @@ exports[`Header renders logged-in header without firstName 1`] = `
                 class="ds-u-margin--0 "
               >
                 <a
-                  class="hc-c-menu__link "
+                  class="hc-c-menu__link"
                   href="/marketplace/auth/global/en_US/myProfile#settings"
                 >
                   My profile
@@ -1112,7 +1112,7 @@ exports[`Header renders logged-in header without firstName 1`] = `
                 class="ds-u-margin--0 "
               >
                 <a
-                  class="hc-c-menu__link "
+                  class="hc-c-menu__link"
                   href="https://www.cuidadodesalud.gov/es/"
                 >
                   Español
@@ -1122,7 +1122,7 @@ exports[`Header renders logged-in header without firstName 1`] = `
                 class="ds-u-margin--0 ds-u-border-top--1"
               >
                 <a
-                  class="hc-c-menu__link "
+                  class="hc-c-menu__link"
                   href="/logout"
                 >
                   Log out

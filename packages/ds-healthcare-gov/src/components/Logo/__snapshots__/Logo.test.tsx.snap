@@ -3,7 +3,7 @@
 exports[`Logo renders English logo 1`] = `
 <div>
   <span
-    class="hc-c-logo "
+    class="hc-c-logo"
   >
     <svg
       aria-labelledby="hc-c-logo__title"
@@ -81,7 +81,7 @@ exports[`Logo renders English logo 1`] = `
 exports[`Logo renders Spanish logo 1`] = `
 <div>
   <span
-    class="hc-c-logo "
+    class="hc-c-logo"
   >
     <svg
       aria-labelledby="hc-c-logo__title"

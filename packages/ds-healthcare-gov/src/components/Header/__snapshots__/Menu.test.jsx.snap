@@ -13,7 +13,7 @@ exports[`Menu removes hidden state 1`] = `
         class="ds-u-margin--0 "
       >
         <a
-          class="hc-c-menu__link "
+          class="hc-c-menu__link"
           href="#foo"
         >
           Foo
@@ -23,7 +23,7 @@ exports[`Menu removes hidden state 1`] = `
         class="ds-u-margin--0 "
       >
         <a
-          class="hc-c-menu__link "
+          class="hc-c-menu__link"
           href="#bar"
         >
           Bar
@@ -48,7 +48,7 @@ exports[`Menu renders MenuList 1`] = `
         class="ds-u-margin--0 "
       >
         <a
-          class="hc-c-menu__link "
+          class="hc-c-menu__link"
           href="#foo"
         >
           Foo
@@ -58,7 +58,7 @@ exports[`Menu renders MenuList 1`] = `
         class="ds-u-margin--0 "
       >
         <a
-          class="hc-c-menu__link "
+          class="hc-c-menu__link"
           href="#bar"
         >
           Bar
