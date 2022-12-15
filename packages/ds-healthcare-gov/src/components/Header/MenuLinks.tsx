@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 import { DefaultLink, LinkIdentifier } from './defaultMenuLinks';
 import { Link } from './Header';
 import { sendHeaderEvent } from './analytics';
@@ -38,7 +39,7 @@ const MenuLinks = (props: MenuLinksProps) => (
           <a
             href={link.href}
             onClick={onClick}
-            className={`hc-c-menu__link ${link.className ?? ''}`}
+            className={classnames('hc-c-menu__link', link.className)}
           >
             {link.label}
           </a>

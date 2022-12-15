@@ -87,7 +87,7 @@ const ActionMenu = function (props: ActionMenuProps) {
                   // other cases to find the text content of a ReactNode after rendering, like in
                   // packages/design-system/src/components/Alert/Alert.tsx#L114
                   onClick={() => sendHeaderEvent(link.label.toString(), link.href)}
-                  className={`hc-c-logged-out-links__link ${link.className ?? ''}`}
+                  className={classnames('hc-c-logged-out-links__link', link.className)}
                 >
                   {link.label}
                 </a>
