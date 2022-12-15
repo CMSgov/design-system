@@ -3,14 +3,9 @@ import { Button, CloseIconThin, MenuIcon, TFunction } from '@cmsgov/design-syste
 import { SyntheticEvent } from 'react';
 import classnames from 'classnames';
 import { sendHeaderEvent } from './analytics';
+import { Link } from './Header';
 
 const menuId = 'hc-c-menu';
-
-export interface LinkProps {
-  href: string;
-  label: React.ReactNode;
-  onClick?: (event: SyntheticEvent) => any;
-}
 
 export interface ActionMenuProps {
   t: TFunction;
@@ -28,7 +23,7 @@ export interface ActionMenuProps {
    * is no menu button present. Currently, these only show up when the
    * user is logged out
    */
-  links: LinkProps[];
+  links: Link[];
 }
 
 /**
@@ -92,7 +87,7 @@ const ActionMenu = function (props: ActionMenuProps) {
                   // other cases to find the text content of a ReactNode after rendering, like in
                   // packages/design-system/src/components/Alert/Alert.tsx#L114
                   onClick={() => sendHeaderEvent(link.label.toString(), link.href)}
-                  className="hc-c-logged-out-links__link"
+                  className={classnames('hc-c-logged-out-links__link', link.className)}
                 >
                   {link.label}
                 </a>
