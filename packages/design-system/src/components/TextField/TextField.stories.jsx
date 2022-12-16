@@ -43,6 +43,12 @@ export default {
         'HTML `input` [type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#<input>_types) attribute. If you are using `type=number` please use the numeric prop instead.',
       control: { type: 'text' },
     },
+    labelMask: {
+      control: {
+        type: 'radio',
+      },
+      options: ['CURRENCY_MASK', 'PHONE_MASK', 'SSN_MASK', 'ZIP_MASK'],
+    },
   },
   args: {
     label: 'Text Field Label',
@@ -53,7 +59,26 @@ export default {
   parameters: {},
 };
 
-const UncontrolledTemplate = ({ data, ...args }) => <TextField {...args} />;
+function getMaskFunction(value) {
+  switch (value) {
+    case 'PHONE_MASK':
+      return PHONE_MASK;
+    case 'ZIP_MASK':
+      return ZIP_MASK;
+    case 'SSN_MASK':
+      return SSN_MASK;
+    case 'CURRENCY_MASK':
+      return CURRENCY_MASK;
+  }
+  return undefined;
+}
+
+const UncontrolledTemplate = ({ data, ...args }) => {
+  if (args.labelMask) {
+    args.labelMask = getMaskFunction(args.labelMask);
+  }
+  return <TextField {...args} />;
+};
 
 const ControlledTemplate = (args) => {
   const [_, updateArgs] = useArgs();
@@ -61,6 +86,10 @@ const ControlledTemplate = (args) => {
     action('onChange')(event);
     updateArgs({ value: event.currentTarget.value });
   };
+
+  if (args.labelMask) {
+    args.labelMask = getMaskFunction(args.labelMask);
+  }
 
   return <TextField {...args} onChange={onChange} />;
 };
@@ -150,7 +179,7 @@ LabelMaskedDate.args = {
   name: 'labelMask-date',
   label: 'Enter the last day of your coverage',
   hint: 'Use the format displayed below.',
-  labelMask: DATE_MASK,
+  labelMask: 'DATE_MASK',
 };
 
 export const LabelMaskedPhone = LabelMaskedField.bind({});
@@ -158,7 +187,7 @@ LabelMaskedPhone.args = {
   name: 'labelMask-phone',
   label: 'Enter your phone number',
   hint: 'Only enter an area code + 7 digit phone number where you can be reached.',
-  labelMask: PHONE_MASK,
+  labelMask: 'PHONE_MASK',
 };
 
 export const LabelMaskedSSN = LabelMaskedField.bind({});
@@ -166,7 +195,7 @@ LabelMaskedSSN.args = {
   name: 'labelMask-ssn',
   label: 'Enter your social security number',
   hint: 'Please enter your SSA administered Social Security Number',
-  labelMask: SSN_MASK,
+  labelMask: 'SSN_MASK',
 };
 
 export const LabelMaskedPostalCode = LabelMaskedField.bind({});
@@ -174,7 +203,7 @@ LabelMaskedPostalCode.args = {
   name: 'labelMask-zipcode',
   label: 'Enter your postal service zip code',
   hint: 'Please enter your Zip Code',
-  labelMask: ZIP_MASK,
+  labelMask: 'ZIP_MASK',
 };
 
 export const LabelMaskedCurrency = LabelMaskedField.bind({});
@@ -182,7 +211,7 @@ LabelMaskedCurrency.args = {
   name: 'labelMask-currency',
   label: 'Enter a dollar amount',
   hint: 'Please enter a dollar amount',
-  labelMask: CURRENCY_MASK,
+  labelMask: 'CURRENCY_MASK',
 };
 
 export const UncontrolledLabelMaskedDate = UncontrolledLabelMaskedField.bind({});
@@ -190,7 +219,7 @@ UncontrolledLabelMaskedDate.args = {
   name: 'labelMask-date',
   label: 'Enter the last day of your coverage',
   hint: 'Use the format displayed below.',
-  labelMask: DATE_MASK,
+  labelMask: 'DATE_MASK',
 };
 
 export const UncontrolledLabelMaskedCurrency = UncontrolledLabelMaskedField.bind({});
@@ -198,5 +227,5 @@ UncontrolledLabelMaskedCurrency.args = {
   name: 'labelMask-currency',
   label: 'Enter a dollar amount',
   hint: 'Please enter a dollar amount',
-  labelMask: CURRENCY_MASK,
+  labelMask: 'CURRENCY_MASK',
 };
