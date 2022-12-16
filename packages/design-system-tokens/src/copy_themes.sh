@@ -13,8 +13,11 @@ copyThemes()
   
   for i in "${!PATHS[@]}"; do
     cp -v "${i}-layout-tokens.scss" "${PATHS[$i]}/_layout.scss"
-    cp -v "${i}-components-theme.css" "${PATHS[$i]}/theme/"
-    cp -v "${i}-theme.css" "${PATHS[$i]}/theme/"
+    rm "${PATHS[$i]}/${i}-theme.css"
+    echo ":root, :before {" >> "${PATHS[$i]}/${i}-theme.css"
+    cat "${i}-theme.css" >> "${PATHS[$i]}/${i}-theme.css"
+    cat "${i}-components-theme.css" >> "${PATHS[$i]}/${i}-theme.css"
+    echo "}" >> "${PATHS[$i]}/${i}-theme.css"
   done
 
   #move files used in internal tooling

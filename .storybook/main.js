@@ -9,7 +9,15 @@ module.exports = {
     buildStoriesJson: true,
     postcss: false,
   },
+  previewHead: (head) => `
+    ${head}
+    <link rel="stylesheet" type="text/css" title="themeCss" href="styles/core-theme.css" />
+  `,
   stories,
-  staticDirs: ['../packages/design-system/src'],
+  staticDirs: [
+    '../packages/design-system/src',
+    '../packages/ds-healthcare-gov/src',
+    '../packages/ds-medicare-gov/src',
+  ],
   addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
 };

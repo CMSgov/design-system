@@ -4,25 +4,25 @@
 .ds-c-button,
 .ds-c-button:visited {
   appearance: none;
-  background-color: var(--backgroundColor, --button__background-color);
-  border: var(--button__border-width) solid var(--borderColor, --button__border-color);
+  background-color: var(--backgroundColor, var(--button__background-color));
+  border: var(--button__border-width) solid var(--borderColor, var(--button__border-color));
   border-radius: var(--button__border-radius);
-  color: var(--color, --button__color);
+  color: var(--color, var(--button__color));
   cursor: pointer;
   display: inline-block;
   font-family: var(--font-sans);
-  font-size: var(--fontSize, --font-size-base);
-  font-weight: var(--fontWeight, --button__font-weight);
+  font-size: var(--fontSize, var(--font-size-base));
+  font-weight: var(--fontWeight, var(--button__font-weight));
   line-height: 1.3;
-  padding: var(--space, $spacer-1 $spacer-3);
+  padding: var(--space, #{$spacer-1 $spacer-3});
   text-align: center;
 
   &:is(a) {
     text-decoration: none;
 
     &:focus {
-      background-color: var(--backgroundColor, --button__background-color);
-      color: var(--color, --button__color);
+      background-color: var(--backgroundColor, var(--button__background-color));
+      color: var(--color, var(--button__color));
       text-decoration: none;
     }
 
@@ -37,9 +37,9 @@
 
   &:hover,
   &:hover:focus {
-    background-color: var(--backgroundColor--h, --button__background-color--hover);
-    border-color: var(--borderColor--h, --button__border-color--hover);
-    color: var(--color--h, --button__color--hover);
+    background-color: var(--backgroundColor--h, var(--button__background-color--hover));
+    border-color: var(--borderColor--h, var(--button__border-color--hover));
+    color: var(--color--h, var(--button__color--hover));
   }
 
   &:focus {
@@ -48,9 +48,9 @@
 
   &:active,
   &:active:focus {
-    background-color: var(--backgroundColor--a, --button__background-color--active);
-    border-color: var(--borderColor--a, --button__border-color--active);
-    color: var(--color--a, --button__color--active);
+    background-color: var(--backgroundColor--a, var(--button__background-color--active));
+    border-color: var(--borderColor--a, var(--button__border-color--active));
+    color: var(--color--a, var(--button__color--active));
   }
 
   // Make sure active overrides focus styles
@@ -60,9 +60,9 @@
 
   &:disabled,
   &[aria-disabled] {
-    background-color: var(--backgroundColor--d, --button__background-color--disabled);
-    border-color: var(--borderColor--d, --button__border-color--disabled);
-    color: var(--color--d, --button__color--disabled);
+    background-color: var(--backgroundColor--d, var(--button__background-color--disabled));
+    border-color: var(--borderColor--d, var(--button__border-color--disabled));
+    color: var(--color--d, var(--button__color--disabled));
     cursor: not-allowed;
   }
 }

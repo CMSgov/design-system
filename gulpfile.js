@@ -47,7 +47,7 @@ cleanDist.displayName = '🧹 cleaning up dist path';
  * Copy theme files from styles/themes to dist
  */
 const copyThemes = (cb) => {
-  const themeFiles = `${srcPath}/styles/theme/*.css`;
+  const themeFiles = `${srcPath}/styles/*-theme.css`;
 
   gulp
     .src(themeFiles)

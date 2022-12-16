@@ -110,13 +110,9 @@ const writeSassVars = (
  * @param importedModule - module data
  * @param sep - separator string between prefix and key
  */
-const writeCssVars = (filename: string, file: FileDescriptor, importedModule: any, sep: string) => {
+const writeCssVars = (filename: string, importedModule: any, sep: string) => {
   let tokenItems: Record<string, any>;
-
-  // for core theme, need to scope to root so that other themes can inherit any variables that they don't explicitly define
-  let output = file.baseName.includes('core')
-    ? `:root, :before{\n`
-    : `[data-theme="${file.baseName.replace('-components', '')}"]{\n`;
+  let output = '';
 
   Object.entries(importedModule.default).forEach(([section]) => {
     tokenItems = flatten(importedModule.default[section]);
@@ -130,8 +126,6 @@ const writeCssVars = (filename: string, file: FileDescriptor, importedModule: an
       sep
     );
   });
-
-  output += '}';
 
   writeFile(filename, output);
 };
@@ -155,7 +149,7 @@ export const exportCssVars = (fileDescriptors: FileDescriptor[], outPath: string
     const scssToCssMapFilename = `${outPath}/${file.baseName}-layout-tokens.scss`;
     const cssVarFilename = `${outPath}/${file.baseName}-theme.css`;
     writeSassVars(scssToCssMapFilename, file, importedModule, sep);
-    writeCssVars(cssVarFilename, file, importedModule, sep);
+    writeCssVars(cssVarFilename, importedModule, sep);
   });
 
   return 0;
