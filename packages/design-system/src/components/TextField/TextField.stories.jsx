@@ -174,14 +174,6 @@ UncontrolledLabelMaskedField.argTypes = {
   rows: { table: { disable: true } },
 };
 
-export const LabelMaskedDate = LabelMaskedField.bind({});
-LabelMaskedDate.args = {
-  name: 'labelMask-date',
-  label: 'Enter the last day of your coverage',
-  hint: 'Use the format displayed below.',
-  labelMask: 'DATE_MASK',
-};
-
 export const LabelMaskedPhone = LabelMaskedField.bind({});
 LabelMaskedPhone.args = {
   name: 'labelMask-phone',
