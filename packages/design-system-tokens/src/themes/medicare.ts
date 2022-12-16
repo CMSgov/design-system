@@ -3,7 +3,7 @@
  */
 
 import { animation, color, font, measure, media, radius, spacer, z } from '../tokens';
-import { FontTokens, ThemeTokens, ColorTokens, ShadowTokens } from '../lib/types';
+import { FontTokens, ThemeTokens, ColorTokens, ShadowTokens, AnyTokenValues } from '../lib/types';
 
 export const themeColors: ColorTokens = {
   //
@@ -178,10 +178,15 @@ const fonts: FontTokens = {
   'weight-bold': 600,
 }
 
+export const global: AnyTokenValues = {
+  'image-path':                 '"../images"',
+}
+
 const medicareTheme: ThemeTokens = {
   animation,
   color: themeColors,
   font: fonts,
+  global,
   measure,
   media,
   radius,

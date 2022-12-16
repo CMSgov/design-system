@@ -1,16 +1,17 @@
 @use '../layout' as *;
+@use '../base' as *;
 
 .m-c-footer {
-  background-color: $color-gray-lightest;
+  background-color: var(--color-gray-lightest);
   padding: $spacer-3;
   padding-bottom: $spacer-4;
   padding-top: $spacer-4;
 
-  @media screen and (max-width: $width-md) {
+  @media screen and (max-width: $media-width-md) {
     padding: 32px 24px;
   }
 
-  @media screen and (min-width: $width-lg) {
+  @media screen and (min-width: $media-width-lg) {
     padding-left: $spacer-7;
     padding-right: $spacer-7;
   }
@@ -18,7 +19,7 @@
   .SimpleFooter__linkButton,
   a {
     @extend .mct-p3;
-    color: $color-base !important;
+    color: var(--color-base) !important;
     display: inline-block;
     font-size: 14px;
     padding: 0;
@@ -29,7 +30,7 @@
     }
 
     &:not(:last-child)::after {
-      border-right: 1px solid $color-base;
+      border-right: 1px solid var(--color-base);
       content: '';
       padding-left: $spacer-2;
     }
@@ -38,7 +39,7 @@
   .SimpleFooter__linkButton {
     background-color: transparent;
     border-radius: 0 !important;
-    color: $color-base !important;
+    color: var(--color-base) !important;
     cursor: pointer;
 
     &:hover {
@@ -59,7 +60,7 @@
 }
 
 .m-c-footer__linkRow {
-  border-color: $color-gray-lighter;
+  border-color: var(--color-gray-lighter);
   border-style: solid;
   border-width: 1px 0;
 
@@ -75,22 +76,22 @@
     gap: 0 $spacer-2;
   }
 
-  @media screen and (min-width: $width-sm) {
+  @media screen and (min-width: $media-width-sm) {
     flex-direction: column;
   }
 
-  @media screen and (min-width: $width-lg) {
+  @media screen and (min-width: $media-width-lg) {
     justify-content: space-between;
   }
 
-  @media screen and (min-width: $width-xl) {
+  @media screen and (min-width: $media-width-xl) {
     flex-direction: row;
   }
 
   &--reverse {
     flex-direction: column-reverse;
 
-    @media screen and (min-width: $width-sm) {
+    @media screen and (min-width: $media-width-sm) {
       flex-direction: row;
     }
   }
@@ -99,7 +100,7 @@
 .m-c-footer__links {
   margin-bottom: $spacer-3;
 
-  @media screen and (min-width: $width-xl) {
+  @media screen and (min-width: $media-width-xl) {
     margin-bottom: 0;
   }
 }
@@ -112,17 +113,17 @@
   padding-bottom: $spacer-1;
   padding-top: $spacer-3;
 
-  @media screen and (min-width: $width-sm) {
+  @media screen and (min-width: $media-width-sm) {
     flex-direction: row;
     height: auto;
     justify-content: space-between;
   }
 
-  @media screen and (min-width: $width-md) {
+  @media screen and (min-width: $media-width-md) {
     align-items: center;
   }
 
-  @media screen and (min-width: $width-lg) {
+  @media screen and (min-width: $media-width-lg) {
     justify-content: space-between;
   }
 
@@ -130,7 +131,7 @@
     display: flex;
     justify-content: center;
 
-    @media screen and (min-width: $width-md) {
+    @media screen and (min-width: $media-width-md) {
       align-items: center;
     }
   }
@@ -139,14 +140,14 @@
     max-width: 100%;
 
     .MgovLogoMedicare {
-      fill: $color-base !important;
+      fill: var(--color-base) !important;
     }
   }
 
   &--reverse {
     flex-direction: column-reverse;
 
-    @media screen and (min-width: $width-sm) {
+    @media screen and (min-width: $media-width-sm) {
       flex-direction: row;
     }
   }
@@ -158,7 +159,7 @@
   flex-direction: column;
   margin-bottom: $spacer-2;
 
-  @media screen and (min-width: $width-sm) {
+  @media screen and (min-width: $media-width-sm) {
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
@@ -172,11 +173,11 @@
   margin-top: $spacer-2;
   max-width: 411px;
 
-  @media screen and (min-width: $width-sm) {
+  @media screen and (min-width: $media-width-sm) {
     margin-top: 0;
   }
 
-  @media screen and (min-width: $width-md) {
+  @media screen and (min-width: $media-width-md) {
     margin-left: $spacer-3;
   }
 }

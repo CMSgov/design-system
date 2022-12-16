@@ -31,15 +31,15 @@
 
     [data-title]::before {
       content: attr(data-title) ':\00A0';
-      font-weight: $font-weight-bold;
+      font-weight: var(--font-weight-bold);
     }
 
     td:nth-child(1) {
-      font-weight: $font-weight-bold;
+      font-weight: var(--font-weight-bold);
     }
 
     tr {
-      border-bottom: 2px solid $color-border;
+      border-bottom: 2px solid var(--color-border);
       margin-top: $spacer-1;
     }
   }

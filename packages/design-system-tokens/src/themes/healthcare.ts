@@ -3,7 +3,7 @@
  */
 
 import { animation, color, font, measure, media, radius, spacer, z } from '../tokens';
-import { ThemeTokens, ColorTokens, ShadowTokens } from '../lib/types';
+import { ThemeTokens, ColorTokens, ShadowTokens, AnyTokenValues } from '../lib/types';
 
 export const themeColors: ColorTokens = {
   //
@@ -136,6 +136,10 @@ export const shadow: ShadowTokens = {
   'base':                       '2px 2px 4px',
 }
 
+export const global: AnyTokenValues = {
+  'image-path':                 '"../images"',
+}
+
 const healthcareTheme: ThemeTokens = {
   animation,
   color: themeColors,
@@ -144,6 +148,7 @@ const healthcareTheme: ThemeTokens = {
     serif: font['family-bitter'],
     ...font,
   },
+  global,
   measure,
   media,
   radius,

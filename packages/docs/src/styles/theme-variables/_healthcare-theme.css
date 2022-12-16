@@ -1,4 +1,4 @@
-/* Generated from CMSDS tokens on Fri Dec 09 2022 12:32:20 GMT-0600 (Central Standard Time)*/ 
+/* Generated from CMSDS tokens on Fri Dec 16 2022 10:05:39 GMT-0600 (Central Standard Time)*/ 
 [data-theme="healthcare"]{
 --animation-ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
 --animation-speed-base: 1;
@@ -127,6 +127,7 @@
 --font-weight-normal: 400;
 --font-weight-semibold: 600;
 --font-weight-bold: 700;
+--image-path: "../images";
 --measure-narrow: 45ex;
 --measure-base: 65ex;
 --measure-wide: 80ex;

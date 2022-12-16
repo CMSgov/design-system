@@ -1,22 +1,22 @@
 @use '../layout' as *;
 
 .ds-c-field {
-  border-color: $text-input__border-color;
+  border-color: var(--text-input__border-color);
 
-  color: $text-input__color;
-  font-family: $font-family-rubik;
-  font-size: $font-size-md;
+  color: var(--text-input__color);
+  font-family: var(--font-family-rubik);
+  font-size: var(--font-size-md);
   padding: $spacer-2;
   &:disabled {
-    border: solid 1px $text-input__border-color--disabled;
+    border: solid 1px var(--text-input__border-color--disabled);
   }
 
   &::placeholder {
-    color: $black-200;
+    color: var(--color-gray-dark);
   }
 
   &--error {
-    border-color: $text-input__border-color--error;
+    border-color: var(--text-input__border-color--error);
   }
 }
 
@@ -28,13 +28,13 @@ select.ds-c-field {
 }
 
 .ds-c-label {
-  font-family: $font-family-rubik;
-  font-size: $font-size-md;
+  font-family: var(--font-family-rubik);
+  font-size: var(--font-size-md);
 
   span:first-child {
-    font-family: $font-family-montserrat;
-    font-size: $font-size-sm;
-    font-weight: $font-weight-semibold;
+    font-family: var(--font-family-montserrat);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
     letter-spacing: 0.5px;
 
     text-transform: uppercase;
@@ -54,9 +54,9 @@ select.ds-c-field {
 input[type='radio'] + .ds-c-label,
 input[type='checkbox'] + .ds-c-label {
   span:first-child {
-    font-family: $font-family-rubik;
-    font-size: $font-size-md;
-    font-weight: $font-weight-normal;
+    font-family: var(--font-family-rubik);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-normal);
     letter-spacing: 0;
     text-transform: none;
   }
@@ -70,13 +70,13 @@ legend[id^='datefield_label'] {
   }
 
   > .ds-c-field__hint:not(.ds-u-color--error) {
-    color: $form-label__color--not-error;
+    color: var(--form-label__color--not-error);
   }
 }
 
 .ds-c-field__hint {
-  font-family: $font-family-rubik;
-  font-size: $font-size-sm;
+  font-family: var(--font-family-rubik);
+  font-size: var(--font-size-sm);
 }
 
 .ds-c-datefield__separator {
