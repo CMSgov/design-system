@@ -209,19 +209,3 @@ LabelMaskedCurrency.args = {
   labelMask: 'CURRENCY_MASK',
   numeric: true,
 };
-
-export const AllLabelMaskedFields = () => {
-  return (
-    <>
-      <TextField
-        labelClassName="ds-u-margin-top--0"
-        {...LabelMaskedCurrency.args}
-        labelMask={CURRENCY_MASK}
-        defaultValue="$1,570"
-      />
-      <TextField {...LabelMaskedPhone.args} labelMask={PHONE_MASK} defaultValue="1234567890" />
-      <TextField {...LabelMaskedSSN.args} labelMask={SSN_MASK} defaultValue="123456789" />
-      <TextField {...LabelMaskedPostalCode.args} labelMask={ZIP_MASK} defaultValue="60647" />
-    </>
-  );
-};
