@@ -180,6 +180,7 @@ LabelMaskedPhone.args = {
   label: 'Enter your phone number',
   hint: 'Only enter an area code + 7 digit phone number where you can be reached.',
   labelMask: 'PHONE_MASK',
+  numeric: true,
 };
 
 export const LabelMaskedSSN = LabelMaskedField.bind({});
@@ -188,6 +189,7 @@ LabelMaskedSSN.args = {
   label: 'Enter your social security number',
   hint: 'Please enter your SSA administered Social Security Number',
   labelMask: 'SSN_MASK',
+  numeric: true,
 };
 
 export const LabelMaskedPostalCode = LabelMaskedField.bind({});
@@ -196,6 +198,7 @@ LabelMaskedPostalCode.args = {
   label: 'Enter your postal service zip code',
   hint: 'Please enter your Zip Code',
   labelMask: 'ZIP_MASK',
+  numeric: true,
 };
 
 export const LabelMaskedCurrency = LabelMaskedField.bind({});
@@ -204,20 +207,21 @@ LabelMaskedCurrency.args = {
   label: 'Enter a dollar amount',
   hint: 'Please enter a dollar amount',
   labelMask: 'CURRENCY_MASK',
+  numeric: true,
 };
 
-export const UncontrolledLabelMaskedDate = UncontrolledLabelMaskedField.bind({});
-UncontrolledLabelMaskedDate.args = {
-  name: 'labelMask-date',
-  label: 'Enter the last day of your coverage',
-  hint: 'Use the format displayed below.',
-  labelMask: 'DATE_MASK',
-};
-
-export const UncontrolledLabelMaskedCurrency = UncontrolledLabelMaskedField.bind({});
-UncontrolledLabelMaskedCurrency.args = {
-  name: 'labelMask-currency',
-  label: 'Enter a dollar amount',
-  hint: 'Please enter a dollar amount',
-  labelMask: 'CURRENCY_MASK',
+export const AllLabelMaskedFields = () => {
+  return (
+    <>
+      <TextField
+        labelClassName="ds-u-margin-top--0"
+        {...LabelMaskedCurrency.args}
+        labelMask={CURRENCY_MASK}
+        defaultValue="$1,570"
+      />
+      <TextField {...LabelMaskedPhone.args} labelMask={PHONE_MASK} defaultValue="1234567890" />
+      <TextField {...LabelMaskedSSN.args} labelMask={SSN_MASK} defaultValue="123456789" />
+      <TextField {...LabelMaskedPostalCode.args} labelMask={ZIP_MASK} defaultValue="60647" />
+    </>
+  );
 };
