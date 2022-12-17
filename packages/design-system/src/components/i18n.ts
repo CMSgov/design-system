@@ -4,7 +4,7 @@ import get from 'lodash/get';
 
 export type Language = 'en' | 'es';
 
-function detectDocumentLanguage(): Language | undefined {
+export function _detectDocumentLanguage(): Language | undefined {
   if (typeof document === 'undefined') {
     return undefined;
   }
@@ -16,7 +16,7 @@ function detectDocumentLanguage(): Language | undefined {
   }
 }
 
-let language: Language = detectDocumentLanguage() ?? 'en';
+let language: Language = _detectDocumentLanguage() ?? 'en';
 
 export function getLanguage() {
   return language;
