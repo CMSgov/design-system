@@ -31,6 +31,16 @@ describe('i18n', () => {
       document.documentElement.setAttribute('lang', 'de');
       expect(_detectDocumentLanguage()).toBeUndefined();
     });
+
+    it('detects lang="en-US" by returning "en"', () => {
+      document.documentElement.setAttribute('lang', 'en-US');
+      expect(_detectDocumentLanguage()).toEqual('en');
+    });
+
+    it('detects lang="es-US" by returning "es"', () => {
+      document.documentElement.setAttribute('lang', 'es-US');
+      expect(_detectDocumentLanguage()).toEqual('es');
+    });
   });
 
   describe('getLanguage and setLanguage', () => {
