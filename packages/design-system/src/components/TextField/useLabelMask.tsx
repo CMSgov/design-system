@@ -131,7 +131,8 @@ export function useLabelMask(maskFn: MaskFunction, originalInputProps: TextInput
   const labelMaskId = useRef(uniqueId('labelmask_')).current;
   const [focused, setFocused] = useState(false);
   const { onFocus, onBlur, onChange } = originalInputProps;
-  const value = originalInputProps.value?.toString() ?? '';
+  const value =
+    originalInputProps.value?.toString() ?? originalInputProps.defaultValue?.toString() ?? '';
   const [currentValue, setCurrentValue] = useState(value);
 
   useEffect(() => {
