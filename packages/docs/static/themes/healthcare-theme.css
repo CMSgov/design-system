@@ -1,5 +1,5 @@
 :root, :before {
-/* Generated from CMSDS tokens on Mon Dec 19 2022 13:28:26 GMT-0600 (Central Standard Time)*/ 
+/* Generated from CMSDS tokens on Mon Dec 19 2022 13:59:30 GMT-0600 (Central Standard Time)*/ 
 --animation-ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
 --animation-speed-base: 1;
 --animation-speed-1: 0.25s;
@@ -127,6 +127,16 @@
 --font-weight-normal: 400;
 --font-weight-semibold: 600;
 --font-weight-bold: 700;
+--article-max-width: 600px;
+--grid-columns: 12;
+--grid-gutter-width: 32px;
+--grid-form-gutter-width: 16px;
+--lead-max-width: 77rem;
+--nav-width: 951px;
+--site-margins: 3rem;
+--site-margins-mobile: 1.5rem;
+--site-max-width: 1040px;
+--text-max-width: 53rem;
 --image-path: "../images";
 --measure-narrow: 45ex;
 --measure-base: 65ex;
@@ -166,7 +176,7 @@
 --z-dialog: 1000;
 --z-popup: 6000;
 --z-spinner: 9050;
-/* Generated from CMSDS tokens on Mon Dec 19 2022 13:28:26 GMT-0600 (Central Standard Time)*/ 
+/* Generated from CMSDS tokens on Mon Dec 19 2022 13:59:30 GMT-0600 (Central Standard Time)*/ 
 --accordion__color: #262626;
 --accordion__background-color: #ffffff00;
 --accordion__background-color--hover: #ffffff00;

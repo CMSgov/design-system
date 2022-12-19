@@ -137,8 +137,18 @@ export const shadow: ShadowTokens = {
 }
 
 export const global: AnyTokenValues = {
+  'article-max-width':          '600px',
+  'grid-columns':               '12',
+  'grid-gutter-width':          spacer[4],
+  'grid-form-gutter-width':     spacer[2],
+  'lead-max-width':             '77rem',
+  'nav-width':                  '951px',
+  'site-margins':               '3rem',
+  'site-margins-mobile':        '1.5rem',
+  'site-max-width':             '1040px',
+  'text-max-width':             '53rem',
   'image-path':                 '"../images"',
-}
+};
 
 const healthcareTheme: ThemeTokens = {
   animation,
