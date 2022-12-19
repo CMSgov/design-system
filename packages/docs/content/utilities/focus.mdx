@@ -1,0 +1,52 @@
+---
+title: Focus
+---
+
+import { Button, FormLabel } from '@cmsgov/design-system';
+
+Use the following utilities to apply focus styles to custom UI components.
+
+## Examples
+
+### Focus rings
+
+**Focus**
+
+Use the `.ds-u-focus` utility to conditionally apply focus styles to your component when that component has focus. Focus will be applied regardless of keyboard or mouse interaction.
+
+Click or tab into the following example to see this utility in action.
+
+<EmbeddedExample>
+  <FormLabel fieldId="focus-visible" className="ds-u-margin-top--0">
+    Select a color
+  </FormLabel>
+  <input type="color" id="focus-visible" name="color-focus-visible" class="ds-u-focus ds-u-radius ds-u-margin-top--1" />
+</EmbeddedExample>
+
+**Focus-visible**
+
+Use the `.ds-u-focus-visible` utility to conditionally apply focus styles to your component when that component has keyboard focus.
+
+Tab into the following example to see this utility in action.
+
+<EmbeddedExample>
+  <FormLabel fieldId="focus" className="ds-u-margin-top--0">
+    Select another color
+  </FormLabel>
+  <input type="color" id="focus" name="color-focus" class="ds-u-focus-visible ds-u-radius ds-u-margin-top--1" />
+</EmbeddedExample>
+
+**Focus-within**
+
+Use the `.ds-u-focus-within` utility to conditionally apply focus styles to your component when a child element of that component has focus. Focus will be applied regardless of keyboard or mouse interaction.
+
+Click or tab into the following example to see this utility in action.
+
+<EmbeddedExample>
+  <div class="ds-u-focus-within ds-u-border--1 ds-u-padding--2">
+    <p>Focus-within example</p>
+    <Button className="ds-u-margin-right--1">Foo</Button>
+    <Button className="ds-u-margin-right--1">Bar</Button>
+    <Button>Baz</Button>
+  </div>
+</EmbeddedExample>
