@@ -14,10 +14,6 @@ module.exports = {
     <link rel="stylesheet" type="text/css" title="themeCss" href="styles/core-theme.css" />
   `,
   stories,
-  staticDirs: [
-    '../packages/design-system/src',
-    '../packages/ds-healthcare-gov/src',
-    '../packages/ds-medicare-gov/src',
-  ],
+  staticDirs: ['./static/', '../packages/design-system/src'],
   addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
 };

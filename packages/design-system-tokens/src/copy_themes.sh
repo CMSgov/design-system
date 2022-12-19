@@ -18,9 +18,11 @@ copyThemes()
     cat "${i}-theme.css" >> "${PATHS[$i]}/${i}-theme.css"
     cat "${i}-components-theme.css" >> "${PATHS[$i]}/${i}-theme.css"
     echo "}" >> "${PATHS[$i]}/${i}-theme.css"
+    # copy to storybook static for storybook building
+    cp "${PATHS[$i]}/${i}-theme.css" ../../../.storybook/static
   done
 
-  #move files used in internal tooling
+  # move files used in internal tooling
   for file in *.scss; do
     cp -v "$file" "../../docs/src/styles/theme-variables/_${file}"
   done

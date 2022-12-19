@@ -120,7 +120,7 @@ const themeSettingDecorator = (Story, context) => {
   document.documentElement.setAttribute('data-theme', theme);
 
   const themeCss = document.querySelector('link[title=themeCss]');
-  themeCss.href = `styles/${theme}-theme.css`;
+  themeCss.href = `${theme}-theme.css`;
 
   return <Story {...context} />;
 };
