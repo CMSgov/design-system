@@ -11,6 +11,7 @@ import defaultMenuLinks from './defaultMenuLinks';
 export interface Link {
   href: string;
   label: React.ReactNode;
+  className?: string;
   onClick?: (...args: any[]) => any;
 }
 
@@ -123,8 +124,15 @@ export interface HeaderProps {
    * Element added to display content on Header bottom section
    */
   headerBottom?: React.ReactNode;
+  /**
+   * Open and handler function for fully controlled menu behavior
+   */
   isMenuOpen?: boolean;
   onMenuToggle?: () => void;
+  /**
+   * Additional classes to be added to the Logo component
+   */
+  logoClassName?: string;
 }
 
 export const VARIATION_NAMES = {
@@ -224,7 +232,10 @@ export const Header = (props: HeaderProps) => {
             href={props.primaryDomain ? props.primaryDomain : '/'}
             className="hc-c-logo-link ds-l-col ds-l-col--auto"
           >
-            <Logo locale={props.initialLanguage ?? getLanguage()} />
+            <Logo
+              locale={props.initialLanguage ?? getLanguage()}
+              className={props.logoClassName ?? ''}
+            />
           </a>
 
           <nav

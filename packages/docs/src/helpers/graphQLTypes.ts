@@ -45,32 +45,6 @@ export interface MdxQuery {
   location?: LocationInterface;
 }
 
-export interface PropQuery {
-  defaultValue: any;
-  description: {
-    childMdx: {
-      body: string;
-    };
-    text?: string;
-  };
-  id: string;
-  name: string;
-  required: boolean;
-  tsType: any;
-}
-
-export interface ComponentPropQuery {
-  allComponentMetadata: {
-    edges: {
-      node: {
-        id: string;
-        displayName: string;
-        props: PropQuery[];
-      };
-    }[];
-  };
-}
-
 export interface NavItem {
   relativePath: string;
   childMdx: {

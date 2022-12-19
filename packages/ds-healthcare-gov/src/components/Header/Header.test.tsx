@@ -133,4 +133,31 @@ describe('Header', function () {
     userEvent.click(menuButton);
     expect(onMenuToggle).toHaveBeenCalled();
   });
+
+  it('should render custom classes provided for Logo', () => {
+    const customClass = 'custom-class-logo';
+    const { baseElement } = makeHeader({
+      logoClassName: customClass,
+    });
+    const logo = baseElement.querySelector('.hc-c-logo');
+    expect(logo.className.includes(customClass)).toBe(true);
+  });
+
+  it('should render custom classes provided within links', () => {
+    const customClass = 'custom-class-link';
+    const { baseElement } = makeHeader({
+      links: [
+        {
+          label: 'Custom Link',
+          href: '/',
+          className: customClass,
+        },
+      ],
+    });
+    const actionMenuLink = baseElement.querySelector(`.hc-c-logged-out-links__link.${customClass}`);
+    const menuLink = baseElement.querySelector(`.hc-c-menu__link.${customClass}`);
+
+    expect(actionMenuLink).toBeTruthy();
+    expect(menuLink).toBeTruthy();
+  });
 });
