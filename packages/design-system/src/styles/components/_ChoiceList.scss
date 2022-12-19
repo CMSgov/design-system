@@ -195,7 +195,7 @@ label,
   border-color: var(--choice__border-color--inverse);
 
   &.ds-c-choice--error {
-    border-color: var(--choice__border-color--error);
+    border-color: var(--choice__border-color--error--inverse);
   }
 
   // Disabled

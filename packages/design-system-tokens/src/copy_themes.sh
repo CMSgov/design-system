@@ -14,7 +14,7 @@ copyThemes()
   for i in "${!PATHS[@]}"; do
     cp -v "${i}-layout-tokens.scss" "${PATHS[$i]}/_layout.scss"
     rm "${PATHS[$i]}/${i}-theme.css"
-    echo ":root, :before {" >> "${PATHS[$i]}/${i}-theme.css"
+    echo ":root, ::before, ::after, ::backdrop {" >> "${PATHS[$i]}/${i}-theme.css"
     cat "${i}-theme.css" >> "${PATHS[$i]}/${i}-theme.css"
     cat "${i}-components-theme.css" >> "${PATHS[$i]}/${i}-theme.css"
     echo "}" >> "${PATHS[$i]}/${i}-theme.css"
