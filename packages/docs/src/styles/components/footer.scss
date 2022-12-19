@@ -1,9 +1,9 @@
 .c-footer {
-  border-top: 2px solid $color-gray-lighter;
+  border-top: 2px solid var(--color-gray-lighter);
   padding-top: 1.5rem;
 
   .c-footer__container {
-    max-width: $site-max-width;
+    max-width: var(--site-max-width);
     width: 100%;
   }
 
@@ -16,8 +16,8 @@
 .c-footer__links {
   .c-footer__link {
     display: inline-block;
-    text-decoration-thickness: $link__text-decoration-thickness;
-    text-underline-offset: $link__text-decoration-offset;
+    text-decoration-thickness: var(--link__text-decoration-thickness);
+    text-underline-offset: var(--link__text-decoration-offset);
   }
 
   .c-footer__link:not(:last-child) {
@@ -40,6 +40,6 @@
 
 @media (max-width: $media-width-md) {
   .c-footer__text {
-    font-size: $font-size-sm;
+    font-size: var(--font-size-sm);
   }
 }

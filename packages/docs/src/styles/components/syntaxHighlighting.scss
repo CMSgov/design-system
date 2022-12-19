@@ -1,7 +1,7 @@
 pre,
 code {
-  background-color: $color-gray-lightest;
-  color: $color-black;
+  background-color: var(--color-gray-lightest);
+  color: var(--color-black);
 }
 
 pre {
@@ -18,7 +18,7 @@ code {
 }
 
 a code {
-  color: $link__color;
+  color: var(--link__color);
   text-decoration: underline;
 }
 
@@ -58,7 +58,7 @@ pre[class*='language-'] {
 :not(pre) > code[class*='language-'],
 pre[class*='language-'] {
   background: #fefefe;
-  border: 1px solid $color-gray-lighter;
+  border: 1px solid var(--color-gray-lighter);
 }
 
 /* Inline code */

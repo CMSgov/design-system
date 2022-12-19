@@ -4,7 +4,7 @@
 
   // adding a color to the background of examples for easier viewing
   &:before {
-    background-color: $color-gray-lightest;
+    background-color: var(--color-gray-lightest);
     bottom: -$spacer-2;
     content: '';
     left: -$spacer-2;
@@ -55,23 +55,23 @@
 
 .c-responsive-example__button {
   appearance: none;
-  background-color: $color-gray-lightest;
+  background-color: var(--color-gray-lightest);
   border: 0;
-  border-right: 1px solid $color-gray-lighter;
+  border-right: 1px solid var(--color-gray-lighter);
   cursor: pointer;
-  font-size: $font-size-md;
-  font-weight: $font-normal;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-normal);
   height: 100%;
   padding: $spacer-2;
   position: relative;
   width: 100%;
 
   &:hover {
-    color: $color-primary-darker;
+    color: var(--color-primary-darker);
   }
 }
 
 .c-responsive-example__button--active {
-  background-color: $color-white;
-  border-bottom: 4px solid $color-primary;
+  background-color: var(--color-white);
+  border-bottom: 4px solid var(--color-primary);
 }
