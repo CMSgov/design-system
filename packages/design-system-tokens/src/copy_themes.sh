@@ -11,18 +11,21 @@ copyThemes()
 {
   cd dist
   
-  for i in "${!PATHS[@]}"; do
-    cp -v "${i}-layout-tokens.scss" "${PATHS[$i]}/_layout.scss"
-    rm "${PATHS[$i]}/${i}-theme.css"
-    echo ":root, ::before, ::after, ::backdrop {" >> "${PATHS[$i]}/${i}-theme.css"
-    cat "${i}-theme.css" >> "${PATHS[$i]}/${i}-theme.css"
-    cat "${i}-components-theme.css" >> "${PATHS[$i]}/${i}-theme.css"
-    echo "}" >> "${PATHS[$i]}/${i}-theme.css"
+  { for i in "${!PATHS[@]}"; do
+    TD=${PATHS[$i]}
+
+    cp -v "${i}-layout-tokens.scss" "${TD}/_layout.scss"
+    rm "${TD}/${i}-theme.css"
+    echo "building ${TD}/${i}-theme.css"
+    echo ":root, ::before, ::after, ::backdrop {" >> "${TD}/${i}-theme.css"
+    cat "${i}-theme.css" >> "${TD}/${i}-theme.css"
+    cat "${i}-components-theme.css" >> "${TD}/${i}-theme.css"
+    echo "}" >> "${TD}/${i}-theme.css"
     # copy to storybook static for storybook building
-    cp -v "${PATHS[$i]}/${i}-theme.css" ../../../.storybook/static
+    cp -v "${TD}/${i}-theme.css" ../../../.storybook/static
     mkdir -p ../../docs/static/themes
-    cp -v "${PATHS[$i]}/${i}-theme.css" ../../docs/static/themes
-  done
+    cp -v "${TD}/${i}-theme.css" ../../docs/static/themes
+  done }
 }
 
 copyThemes
