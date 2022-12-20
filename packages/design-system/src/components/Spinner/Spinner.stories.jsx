@@ -10,15 +10,17 @@ export default {
       options: ['small', 'big'],
     },
     inversed: {
-      defaultValue: false,
       control: 'radio',
       options: [true, false],
     },
     filled: {
-      defaultValue: false,
       control: 'radio',
       options: [true, false],
     },
+  },
+  args: {
+    inversed: false,
+    filled: false,
   },
 };
 
