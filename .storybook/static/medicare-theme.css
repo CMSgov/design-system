@@ -1,5 +1,5 @@
 :root, ::before, ::after, ::backdrop {
-/* Generated from CMSDS tokens on Mon Dec 19 2022 14:56:41 GMT-0600 (Central Standard Time)*/ 
+/* Generated from CMSDS tokens on Tue Dec 20 2022 11:46:36 GMT-0600 (Central Standard Time)*/ 
 --animation-ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
 --animation-speed-base: 1;
 --animation-speed-1: 0.25s;
@@ -201,7 +201,7 @@
 --z-dialog: 1000;
 --z-popup: 6000;
 --z-spinner: 9050;
-/* Generated from CMSDS tokens on Mon Dec 19 2022 14:56:41 GMT-0600 (Central Standard Time)*/ 
+/* Generated from CMSDS tokens on Tue Dec 20 2022 11:46:36 GMT-0600 (Central Standard Time)*/ 
 --accordion__color: #404040;
 --accordion__background-color: #f2f2f2;
 --accordion__background-color--hover: #d9d9d9;
@@ -468,7 +468,7 @@
 --pagination-current-page__color: #404040;
 --pagination-overflow__color: #5a5a5a;
 --pagination-page-count__color: #5a5a5a;
---reviewreview__border-color: #d9d9d9;
+--review__border-color: #d9d9d9;
 --steplist__color: #5a5a5a;
 --steplist__color--current: #146a5d;
 --steplist__background-color--current: #146a5d;

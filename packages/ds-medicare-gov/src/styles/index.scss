@@ -7,10 +7,10 @@
  * a scss (`dist/scss/`) and css (`dist/css/`) dist files.
  */
 
+@use '../../../design-system/src/styles/index';
 @use 'layout';
 @use 'base';
 @use 'fonts';
-@use '../../../design-system/src/styles/index';
 
 @use 'components/ChoiceList';
 @use 'components/Dialog';

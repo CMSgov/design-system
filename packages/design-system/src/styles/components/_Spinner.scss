@@ -22,6 +22,11 @@
   display: inline-block;
   position: relative;
 
+  .ds-c-button > & {
+    @include mixins.inline-icon;
+    @include spinner-size(1em, 1em);
+  }
+
   &::before,
   &::after {
     border-radius: var(--radius-circle);
@@ -51,11 +56,6 @@
       border-color: WindowText;
       border-left-color: Window;
     }
-  }
-
-  .ds-c-button > & {
-    @include mixins.inline-icon;
-    @include spinner-size(1em, 1em);
   }
 }
 
