@@ -1,8 +1,8 @@
-$font-path: '@cmsgov/ds-medicare-gov/src/fonts';
+// including medicare fonts in build for use with medicare theme
 @import '@cmsgov/ds-medicare-gov/src/styles/fonts';
 
 // @styles is aliased in gatsby-node.js
-@import '@cmsgov/design-system/src/styles/layout';
+@import '@styles/layout';
 @import '@styles/index.scss';
 
 @import 'pages/contact.scss';
