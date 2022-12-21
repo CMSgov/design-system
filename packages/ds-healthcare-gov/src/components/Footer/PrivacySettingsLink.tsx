@@ -5,6 +5,7 @@ import { TFunction } from '@cmsgov/design-system';
 
 interface PrivacySettingsLinkProps {
   t: TFunction;
+  className?: string;
 }
 
 export const PrivacySettingsLink = (props: PrivacySettingsLinkProps) => {
@@ -16,7 +17,9 @@ export const PrivacySettingsLink = (props: PrivacySettingsLinkProps) => {
 
   return (
     <>
-      <button onClick={openDialog}>{props.t('footer.privacySettings')}</button>
+      <button className={props.className ?? ''} onClick={openDialog}>
+        {props.t('footer.privacySettings')}
+      </button>
       {showDialog && <PrivacySettingsDialog onExit={closeDialog} t={props.t} />}
     </>
   );
