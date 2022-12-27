@@ -66,6 +66,19 @@ export const MyComponent = () => (
 
 ## Guidance
 
+### When to use
+
+- In fields with a specific expected format like Social Security Number or ZIP code, a label mask allows you to constrain and shape the information being entered without impairing the user's ability to copy/paste or correct mistyping
+
+### When to consider alternatives
+
+- When the input requires a free-form field. When there isn't a common input pattern to use, masking is not appropriate.
+- When the pattern is too complicated to allow for a valid label mask. A pattern like email, with many possible scenarios for input, is not a good candidate for masking. Allow the user to enter their email address (or other complicated data) and have your validation library confirm before form submission.
+
+### Usage
+
+- Only show error validation messages or stylings after a user has interacted with a particular field
+
 ## Learn more
 
 - [labelmask, a blog post by Brad Frost](https://bradfrost.com/blog/post/labelmask/) - the inspiration for this component
