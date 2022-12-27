@@ -26,7 +26,12 @@ export function makeStorybookUrl(storyId, theme) {
 }
 
 export function makePageUrl(fileRelativePath, location: LocationInterface) {
-  return join('/', fileRelativePath.replace('.mdx', ''), '/', location.search);
+  return join(
+    '/',
+    fileRelativePath.replace('index.mdx', '').replace('.mdx', ''),
+    '/',
+    location.search
+  );
 }
 
 /**
