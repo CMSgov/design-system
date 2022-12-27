@@ -47,9 +47,9 @@
 
 .ds-c-field,
 .ds-c-field-mask {
-  font-family: $font-sans;
-  font-size: $font-size-base;
-  line-height: $text-input__line-height;
+  font-family: $font-sans; // Needed to overwrite user agent input tag styles
+  font-size: $font-size-base; // Needed to overwrite user agent input tag styles
+  line-height: $text-input__line-height; // Needed to overwrite user agent input tag styles
 }
 
 /*

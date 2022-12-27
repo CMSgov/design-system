@@ -135,7 +135,7 @@ $step-button-height: 38px !default;
 }
 
 .ds-c-step__heading {
-  font-size: $font-size-md;
+  font-size: $font-size-md; // Needed to overwrite user agent heading tag styles
   line-height: $step-button-height;
   margin: 0;
 }

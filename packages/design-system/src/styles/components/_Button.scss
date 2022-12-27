@@ -9,8 +9,8 @@
   color: var(--color, $button__color);
   cursor: pointer;
   display: inline-block;
-  font-family: $font-sans;
-  font-size: var(--fontSize, $font-size-base);
+  font-family: $font-sans; // Needed to overwrite user agent button tag styles
+  font-size: var(--fontSize, $font-size-base); // Needed to overwrite user agent button tag styles
   font-weight: var(--fontWeight, $button__font-weight);
   line-height: 1.3;
   padding: var(--space, $spacer-1 $spacer-3);

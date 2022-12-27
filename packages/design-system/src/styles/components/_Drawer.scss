@@ -7,7 +7,6 @@ $drawer-elevation: $z-drawer;
 $drawer-font-size-mobile: $font-size-base;
 $drawer-font-size-tablet: $font-size-sm;
 $drawer-font-size-desktop: $font-size-base;
-$drawer-footer-line-height: $font-line-height-base;
 $drawer-toggle-font-weight: $font-weight-normal;
 $drawer-toggle-space: 0;
 
@@ -128,7 +127,6 @@ $drawer-toggle-space: 0;
 
 /* Help drawer body content */
 .ds-c-drawer__body {
-  font-size: $drawer-font-size-mobile;
   padding: $drawer-space;
 
   @media (min-width: $width-md) {
@@ -151,7 +149,6 @@ $drawer-toggle-space: 0;
 /* Help drawer footer */
 .ds-c-drawer__footer {
   background-color: $drawer-footer__background-color;
-  line-height: $drawer-footer-line-height;
   padding: $drawer-space;
 
   @supports (display: flex) {

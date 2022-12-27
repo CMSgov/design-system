@@ -49,8 +49,8 @@
   border-left: $spacer-half solid transparent;
   color: $vertical-nav-label__color;
   display: block;
-  font-family: $font-sans; // necessary for <button>
-  font-size: $font-size-base; // necessary for <button>
+  font-family: $font-sans; // Needed to overwrite user agent button tag styles
+  font-size: $font-size-base; // Needed to overwrite user agent button tag styles
   line-height: $font-line-height-heading;
   padding: $spacer-1 $spacer-2;
   text-align: left; // necessary for <button>
