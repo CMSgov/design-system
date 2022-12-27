@@ -12,7 +12,7 @@
 .ds-c-field__before--currency {
   // Increase currency size so it serves more as an icon and
   // better aligns with the input value text
-  font-size: calc(var(--font-size-base) + 2);
+  font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
   // Adjust to better align icon with value's baseline
   padding-top: 1px;

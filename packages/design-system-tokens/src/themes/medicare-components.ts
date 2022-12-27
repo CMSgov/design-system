@@ -349,7 +349,7 @@ export const components: AnyTokenValues = {
   },
   
   'review': {
-    '__border-color':                       t.color['border'],
+    '__border-color':                             t.color['border'],
   },
   
   'steplist': {

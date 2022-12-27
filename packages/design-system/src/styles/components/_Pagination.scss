@@ -21,7 +21,7 @@
   }
   .ds-c-button {
     color: var(--pagination-link__color);
-    font-weight: normal;
+    font-weight: var(--font-weight-normal);
     min-width: 44px;
     padding: $spacer-1 0;
   }
@@ -48,7 +48,7 @@
   .ds-c-pagination__current-page {
     color: var(--pagination-current-page__color);
     font-size: var(--font-size-xl);
-    font-weight: bold;
+    font-weight: var(--font-weight-bold);
     text-decoration: none;
     &:hover {
       cursor: auto;
