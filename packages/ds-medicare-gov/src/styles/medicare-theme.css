@@ -1,5 +1,5 @@
 :root, ::before, ::after, ::backdrop {
-/* Generated from CMSDS tokens on Tue Dec 20 2022 14:54:23 GMT-0600 (Central Standard Time)*/ 
+/* Generated from CMSDS tokens on Tue Dec 27 2022 09:55:18 GMT-0600 (Central Standard Time)*/ 
 --animation-ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
 --animation-speed-base: 1;
 --animation-speed-1: 0.25s;
@@ -201,7 +201,7 @@
 --z-dialog: 1000;
 --z-popup: 6000;
 --z-spinner: 9050;
-/* Generated from CMSDS tokens on Tue Dec 20 2022 14:54:23 GMT-0600 (Central Standard Time)*/ 
+/* Generated from CMSDS tokens on Tue Dec 27 2022 09:55:18 GMT-0600 (Central Standard Time)*/ 
 --accordion__color: #404040;
 --accordion__background-color: #f2f2f2;
 --accordion__background-color--hover: #d9d9d9;
@@ -515,6 +515,8 @@
 --text-input__border-radius: 3px;
 --tooltip__background-color: #ffffff;
 --tooltip__border-color: #404040;
+--tooltip__border-color--active: #146a5d40;
+--tooltip__border-color--inverse-active: #ffffff40;
 --tooltip__border-width: 1px;
 --tooltip__color: #404040;
 --tooltip__box-shadow-color: #737373;

@@ -421,6 +421,8 @@ export const components: AnyTokenValues = {
   'tooltip': {
     '__background-color':                         t.color['background'],
     '__border-color':                             t.color['gray-dark'],
+    '__border-color--active':                     hexOpacity(t.color['primary'], 0.25),
+    '__border-color--inverse-active':             hexOpacity(t.color['white'], 0.25),
     '__border-width':                             '1px',
     '__color':                                    t.color['base'],
     '__box-shadow-color':                         t.color['gray-light'],
