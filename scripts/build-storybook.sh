@@ -8,7 +8,7 @@ set -e
 OUT="$1"
 
 if [ "$OUT" = "docs" ]; then
-  npx build-storybook -o packages/docs/static/storybook && \
+  build-storybook -o packages/docs/static/storybook && \
   echo "${GREEN}info${NC}: Moving static assets for use with gatsby."
   mkdir -p packages/docs/static/fonts && \
   mkdir -p packages/docs/static/images && \
