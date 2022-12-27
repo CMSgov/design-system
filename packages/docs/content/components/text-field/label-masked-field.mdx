@@ -48,18 +48,43 @@ Passing a `labelMask` prop into a [`TextField`](/components/text-field/) compone
 
 <PropTable componentName="TextField" subset={["labelMask"]} />
 
-#### Example
+#### Handling input changes
+
+When tracking state in a parent component, treat the value as a raw input string, which is updated by the `onChange` handler. Do not try to unmask or clean the value before passing it back to the `TextField` component instance. The intention with this is to keep the API and behavior of the component as simple as possible. You don't need to handle `onBlur` separately from `onChange`. You only need to update your value when `onChange` is called, and it will be called whenever the value of the input changes, including on blur. A more appropriate place to clean the input would be in your validation code.
 
 ```js
-import { TextField, SSN_MASK } from '@cmsgov/design-system';
+// A simplified example of change handling. This is not a recommendation
+// for how to structure error messages or validation code but serves only
+// to illustrate how to set and get values from the label-masked field.
 
-export const MyComponent = () => (
-  <TextField
-    label="Social security number (SSN)"
-    labelMask={SSN_MASK}
-    name="ssn_example"
-  />
-);
+import { useState } from "react";
+import { Button, TextField, SSN_MASK } from '@cmsgov/design-system';
+
+export const MyForm = () => {
+  const [value, setValue] = useState('');
+  const [error, setError] = useState();
+
+  function validate() {
+    if (!isValidSsn(value)) {
+      e.preventDefault();
+      setError('You have entered an invalid SSN.');
+    }
+  }
+
+  return (
+    <form onSubmit={validate}>
+      {error && <Alert variation="error">{error}<Alert>}
+      <TextField
+        label="Social security number (SSN)"
+        labelMask={SSN_MASK}
+        name="ssn_example"
+        value={value}
+        onChange={setValue}
+      />
+      <Button type="submit">Submit</Button>
+    </form>
+  )
+};
 ```
 
 ### Styles
@@ -78,6 +103,10 @@ export const MyComponent = () => (
 ### Usage
 
 - Only show error validation messages or stylings after a user has interacted with a particular field
+
+### Accessibility
+
+- These text fields should follow the [accessibility guidelines for all text inputs](/components/text-field/#guidance).
 
 ## Learn more
 
