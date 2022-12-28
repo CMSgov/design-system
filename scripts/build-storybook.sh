@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
 GREEN='\033[0;32m'
 NC='\033[0m' # No color
@@ -17,5 +17,5 @@ if [ "$OUT" = "docs" ]; then
   rm -rf packages/docs/static/storybook/fonts && \
   rm -rf packages/docs/static/storybook/images
 else
-  npx build-storybook -o storybook-static
+  build-storybook -o storybook-static
 fi
