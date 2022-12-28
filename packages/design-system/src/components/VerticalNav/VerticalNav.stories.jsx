@@ -12,13 +12,15 @@ export default {
     collapsed: {
       control: 'radio',
       options: [true, false],
-      defaultValue: false,
     },
     nested: {
       control: 'radio',
       options: [true, false],
-      defaultValue: false,
     },
+  },
+  args: {
+    collapsed: false,
+    nested: false,
   },
   subcomponents: { VerticalNavItem, VerticalNavItemLabel },
 };
