@@ -13,6 +13,7 @@ import propData from '../../../data/propData.json';
 interface PropTableProps {
   children: React.ReactNode;
   componentName: string;
+  subset?: string[];
   /**
    * Name of currently selected theme
    */
@@ -23,9 +24,15 @@ interface PropTableProps {
  * A component to display a Design System component's prop table
  * It loads all props for all components and then finds the appropriate props for the passed in `componentName`
  */
-const PropTable = ({ children, componentName, theme }: PropTableProps) => {
+const PropTable = ({ children, componentName, subset }: PropTableProps) => {
   // get the props for the specified components
-  const componentPropData = propData[componentName];
+  let componentPropData = propData[componentName].filter(
+    (prop) => !prop.description?.includes('@hide-prop')
+  );
+
+  if (subset) {
+    componentPropData = componentPropData.filter((prop) => subset.includes(prop.name));
+  }
 
   return (
     <Table className="c-prop-table" stackable scrollable borderless>
