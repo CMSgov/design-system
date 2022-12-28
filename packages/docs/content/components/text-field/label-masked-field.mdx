@@ -8,9 +8,11 @@ core:
 
 ## Examples
 
-This component formats the user input in the label as the user types to provide visual feedback about the data. The text in the input field itself will not be formatted until the field loses focus, which is when we know the user has finished typing. We do this to provide a quieter and more usable experience for all users. It is an updated alternative to our [Masked Field](/components/text-field/masked-field/).
+This component mirrors user input as formatted "hint text" after the label to provide visual feedback about the data as the user is typing. The text in the input field itself will not be formatted until the field loses focus, which is when we know the user has finished typing.
 
-The label-mask currently has five built-in implementations: _currency_, _phone number_, _social security number_, _zip code_, and _date_. The date mask is implemented by the [Calendar Picker](/components/date-field/date-picker/) and [Single-Input Date Field](/components/date-field/single-input-date-field/) components, while the rest are available for direct use with the [Text Field](/components/text-field/) component.
+Because the hinting isn't being applied to the input itself, it's less distracting and obtrusive to screen reader users, providing a quieter and more usable experience for everyone. It is an updated alternative to our [Masked Field](/components/text-field/masked-field/).
+
+The label-mask currently has five built-in implementations: _currency_, _phone number_, _Social Security Number_, _ZIP code_, and _date_. The date mask is implemented by the [Calendar Picker](/components/date-field/date-picker/) and [Single-Input Date Field](/components/date-field/single-input-date-field/) components, while the rest are available for direct use with the [Text Field](/components/text-field/) component.
 
 ### Currency
 
@@ -33,7 +35,7 @@ The label-mask currently has five built-in implementations: _currency_, _phone n
   storyId="components-text-field--label-masked-ssn"
 />
 
-### Zip code
+### ZIP code
 
 <StorybookExample
   componentName="zip"
@@ -87,8 +89,6 @@ export const MyForm = () => {
 };
 ```
 
-### Styles
-
 ## Guidance
 
 ### When to use
@@ -97,7 +97,7 @@ export const MyForm = () => {
 
 ### When to consider alternatives
 
-- When the input requires a free-form field. When there isn't a common input pattern to use, masking is not appropriate.
+- When the input requires a free-form field that doesn't use a common input pattern, masking is not appropriate.
 - When the pattern is too complicated to allow for a valid label mask. A pattern like email, with many possible scenarios for input, is not a good candidate for masking. Allow the user to enter their email address (or other complicated data) and have your validation library confirm before form submission.
 
 ### Usage
