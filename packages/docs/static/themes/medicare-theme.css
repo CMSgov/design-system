@@ -1,5 +1,5 @@
 :root, ::before, ::after, ::backdrop {
-/* Generated from CMSDS tokens on Tue Dec 27 2022 09:55:18 GMT-0600 (Central Standard Time)*/ 
+/* Generated from CMSDS tokens on Wed Dec 28 2022 12:47:29 GMT-0600 (Central Standard Time)*/ 
 --animation-ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
 --animation-speed-base: 1;
 --animation-speed-1: 0.25s;
@@ -185,7 +185,16 @@
 --radius-medium: 4px;
 --radius-pill: 9999px;
 --radius-small: 2px;
+--shadow-focus: inset 0 0 0 1px #404040;
+--shadow-focus-inverse: inset 0 0 0 1px #404040;
+--shadow-focus-link: 0 3px #404040;
+--shadow-focus-link-inverse: 0 3px #7c6210;
 --shadow-box-card: 0 2px 3px 0 rgba(50, 50, 50, 0.23);
+--shadow-base-offset-x: 2px;
+--shadow-base-offset-y: 2px;
+--shadow-base-blur-radius: 4px;
+--shadow-base-color: #00000040;
+--shadow-base: 2px 2px 4px;
 --spacer-1: 8px;
 --spacer-2: 16px;
 --spacer-3: 24px;
@@ -201,7 +210,7 @@
 --z-dialog: 1000;
 --z-popup: 6000;
 --z-spinner: 9050;
-/* Generated from CMSDS tokens on Tue Dec 27 2022 09:55:18 GMT-0600 (Central Standard Time)*/ 
+/* Generated from CMSDS tokens on Wed Dec 28 2022 12:47:29 GMT-0600 (Central Standard Time)*/ 
 --accordion__color: #404040;
 --accordion__background-color: #f2f2f2;
 --accordion__background-color--hover: #d9d9d9;
