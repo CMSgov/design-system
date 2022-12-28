@@ -1,28 +1,30 @@
 @use '../layout' as *;
 
-$accordion-icon-color: #0071bb;
+:root {
+  --accordion-icon-color: #0071bb;
+}
 
 .ds-c-accordion {
   .ds-c-accordion__button {
-    background-color: $accordion__background-color;
-    color: $accordion-button__color;
+    background-color: var(--accordion__background-color);
+    color: var(--accordion-button__color);
     column-gap: $spacer-1;
     flex-direction: row-reverse;
-    font-weight: $font-weight-normal;
+    font-weight: var(--font-weight-normal);
     justify-content: flex-end;
     padding: $spacer-1 $spacer-2 $spacer-1 $spacer-2;
 
     &:hover {
       background-color: transparent;
-      color: $color-primary-darker;
+      color: var(--color-primary-darker);
       text-decoration: underline;
       .ds-c-icon--minus-circle__circle,
       .ds-c-icon--plus-circle__circle {
-        fill: $accordion-icon-color;
+        fill: var(--accordion-icon-color);
       }
       .ds-c-icon--minus-circle__group,
       .ds-c-icon--plus-circle__group {
-        fill: $color-white;
+        fill: var(--color-white);
       }
     }
 
@@ -57,12 +59,12 @@ $accordion-icon-color: #0071bb;
 
   .ds-c-icon {
     align-self: center;
-    color: $accordion-icon-color;
+    color: var(--accordion-icon-color);
     font-size: 14px;
   }
 
   .ds-c-accordion__content {
-    background-color: $accordion-content__background-color;
+    background-color: var(--accordion-content__background-color);
     padding: $spacer-1 $spacer-2 $spacer-1 $spacer-5;
   }
 }

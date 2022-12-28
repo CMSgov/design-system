@@ -1,5 +1,6 @@
-@use '../base';
-@use '../mixins' as *;
+@use '../layout' as *;
+@use '../base' as *;
+@use '../mixins';
 
 %trigger-reset-styles {
   // override user agent button styles
@@ -37,14 +38,14 @@
   @extend %trigger-reset-styles;
   padding: $spacer-half;
   &:focus {
-    @include focus-styles;
+    @include mixins.focus-styles;
   }
 }
 
 .ds-c-tooltip__trigger-link {
   @extend %trigger-reset-styles;
   @extend %trigger-underline-styles;
-  color: $tooltip-trigger__color;
+  color: var(--tooltip-trigger__color);
   padding: 0;
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
@@ -68,7 +69,7 @@
   width: $spacer-2;
 
   &::after {
-    background: $tooltip__background-color;
+    background: var(--tooltip__background-color);
     content: '';
     height: $spacer-1;
     left: 50%;
@@ -80,12 +81,12 @@
 // Interior content of tooltip
 // Font style gets inherited from ds-base
 .ds-c-tooltip__content {
-  border-radius: $radius-large;
-  box-shadow: 0 0 17px $tooltip__box-shadow-color;
-  color: $tooltip__color;
+  border-radius: var(--radius-large);
+  box-shadow: 0 0 17px var(--tooltip__box-shadow-color);
+  color: var(--tooltip__color);
   display: block;
-  font-size: $font-size-base;
-  font-weight: $font-weight-normal;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
   padding: $spacer-2;
 
   // Remove tooltip content padding by default
@@ -124,11 +125,11 @@
 // The greater tooltip container which gets added in via state
 // max-width and z-index are set via props to account for different uses
 .ds-c-tooltip {
-  background: $tooltip__background-color;
-  border-color: $tooltip__border-color;
-  border-radius: $radius-large;
+  background: var(--tooltip__background-color);
+  border-color: var(--tooltip__border-color);
+  border-radius: var(--radius-large);
   border-style: solid;
-  border-width: $tooltip__border-width;
+  border-width: var(--tooltip__border-width);
   box-sizing: border-box;
   display: none;
   opacity: 0;
@@ -144,7 +145,7 @@
 .ds-c-tooltip-enter-active {
   display: inline-block;
   opacity: 1;
-  transition: opacity $animation-speed-1;
+  transition: opacity var(--animation-speed-1);
 }
 
 .ds-c-tooltip-enter-done {
@@ -160,7 +161,7 @@
 .ds-c-tooltip-exit-active {
   display: inline-block;
   opacity: 0;
-  transition: opacity $animation-speed-1;
+  transition: opacity var(--animation-speed-1);
 }
 
 .ds-c-tooltip-exit-done {
@@ -172,8 +173,8 @@
 .ds-c-tooltip[data-popper-placement^='top'] .ds-c-tooltip__arrow {
   top: 100%;
   &::after {
-    border-bottom: $tooltip__border-width solid $tooltip__border-color;
-    border-right: $tooltip__border-width solid $tooltip__border-color;
+    border-bottom: var(--tooltip__border-width) solid var(--tooltip__border-color);
+    border-right: var(--tooltip__border-width) solid var(--tooltip__border-color);
     top: 1px;
     transform: translateX(-50%) translateY(-50%) rotate(45deg);
   }
@@ -182,8 +183,8 @@
 .ds-c-tooltip[data-popper-placement^='bottom'] .ds-c-tooltip__arrow {
   top: -8px;
   &::after {
-    border-left: $tooltip__border-width solid $tooltip__border-color;
-    border-top: $tooltip__border-width solid $tooltip__border-color;
+    border-left: var(--tooltip__border-width) solid var(--tooltip__border-color);
+    border-top: var(--tooltip__border-width) solid var(--tooltip__border-color);
     bottom: 0;
     transform: translateX(-50%) translateY(-50%) rotate(45deg);
   }
@@ -192,8 +193,8 @@
 .ds-c-tooltip[data-popper-placement^='left'] .ds-c-tooltip__arrow {
   right: -8px;
   &::after {
-    border-right: $tooltip__border-width solid $tooltip__border-color;
-    border-top: $tooltip__border-width solid $tooltip__border-color;
+    border-right: var(--tooltip__border-width) solid var(--tooltip__border-color);
+    border-top: var(--tooltip__border-width) solid var(--tooltip__border-color);
     left: 0;
     transform: translateX(50%) translateY(50%) rotate(45deg);
   }
@@ -202,8 +203,8 @@
 .ds-c-tooltip[data-popper-placement^='right'] .ds-c-tooltip__arrow {
   left: -8px;
   &::after {
-    border-bottom: $tooltip__border-width solid $tooltip__border-color;
-    border-left: $tooltip__border-width solid $tooltip__border-color;
+    border-bottom: var(--tooltip__border-width) solid var(--tooltip__border-color);
+    border-left: var(--tooltip__border-width) solid var(--tooltip__border-color);
     left: -2px;
     transform: translateX(50%) translateY(50%) rotate(45deg);
   }

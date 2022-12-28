@@ -1,3 +1,5 @@
+@use '../layout' as *;
+
 // This class is being left for compatibility with any raw html
 // that utilizes this class to display an error icon with an
 // error message. Can be removed when we're sure it is not being

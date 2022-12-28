@@ -1,11 +1,12 @@
-@use '../base';
-@use '../mixins' as *;
+@use '../layout' as *;
+@use '../mixins';
+@use '../base' as *;
 
 .ds-c-usa-banner {
-  background-color: $usa-banner__background-color;
-  color: $usa-banner__color;
-  font-family: $font-sans;
-  font-size: $font-size-base;
+  background-color: var(--usa-banner__background-color);
+  color: var(--usa-banner__color);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
   padding: 0;
 }
 
@@ -14,7 +15,7 @@
   display: flex;
   flex-direction: row;
   font-size: 12px;
-  font-weight: $font-weight-normal;
+  font-weight: var(--font-weight-normal);
   line-height: 1.2;
   min-height: $spacer-4;
   padding: $spacer-1 $spacer-2 $spacer-1 $spacer-2;
@@ -32,7 +33,7 @@
 
   .ds-c-usa-banner__button {
     display: flex;
-    font-family: $font-sans;
+    font-family: var(--font-sans);
     padding: $spacer-1 $spacer-2 $spacer-1 $spacer-2;
     width: 100%;
   }
@@ -50,7 +51,7 @@
 
 .ds-c-usa-banner__collapse-banner-container {
   align-items: center;
-  background-color: $usa-banner-close__background-color;
+  background-color: var(--usa-banner-close__background-color);
   display: flex;
   height: $spacer-6;
   justify-content: center;
@@ -60,8 +61,8 @@
   width: $spacer-6;
 
   .ds-c-icon {
-    height: $font-size-lg;
-    width: $font-size-lg;
+    height: var(--font-size-lg);
+    width: var(--font-size-lg);
   }
 }
 
@@ -80,7 +81,7 @@
 }
 
 .ds-c-usa-banner__header-action {
-  color: $usa-banner-action__color;
+  color: var(--usa-banner-action__color);
   display: block;
   margin-bottom: 0;
   margin-top: 2px;
@@ -99,7 +100,7 @@
   text-align: left;
 
   &:focus {
-    @include focus-styles;
+    @include mixins.focus-styles;
   }
 }
 
@@ -147,7 +148,7 @@
   width: $spacer-5;
 
   &.ds-c-icon--lock-circle {
-    color: $usa-banner-lock-icon__color;
+    color: var(--usa-banner-lock-icon__color);
 
     @media (-ms-high-contrast: active), (forced-colors: active) {
       color: WindowText;
@@ -195,7 +196,7 @@
 }
 
 .ds-c-usa-banner__action-icon {
-  color: $usa-banner__color;
+  color: var(--usa-banner__color);
   height: 10px;
   width: 10px;
 }

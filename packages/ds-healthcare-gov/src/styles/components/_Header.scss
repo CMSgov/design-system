@@ -1,8 +1,8 @@
 @use '../layout' as *;
 
 .hc-c-header {
-  background-color: $color-background;
-  box-shadow: 0 0 10px 0 $color-gray-light;
+  background-color: var(--color-background);
+  box-shadow: 0 0 10px 0 var(--color-gray-light);
   isolation: isolate;
 
   > .ds-l-container {
@@ -25,7 +25,7 @@
 }
 
 .hc-c-header__name {
-  color: $color-base;
+  color: var(--color-base);
 }
 
 .hc-c-header__actions {
@@ -44,10 +44,10 @@
 }
 
 .hc-c-menu {
-  background-color: $color-white;
-  border: 1px solid $color-gray-lighter;
-  box-shadow: 0 7px 10px -5px $color-gray-light;
-  color: $color-primary-darker;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-lighter);
+  box-shadow: 0 7px 10px -5px var(--color-gray-light);
+  color: var(--color-primary-darker);
   left: 0;
   padding: $spacer-1;
   position: absolute;
@@ -58,7 +58,7 @@
 }
 
 .hc-c-header--logged-in .hc-c-menu {
-  @media (min-width: $width-sm) {
+  @media (min-width: $media-width-sm) {
     // Span only part of non-mobile screens
     left: auto;
     max-width: 30ch;

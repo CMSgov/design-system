@@ -1,18 +1,18 @@
 .mct-c-help-drawer {
   .ds-c-drawer__header {
-    background-color: $drawer-header__background-color;
+    background-color: var(--drawer-header__background-color);
   }
 
   .ds-c-drawer__header-heading {
-    font-family: $font-family-montserrat;
-    font-size: $h1-mobile-font-size;
-    font-weight: $font-weight-bold;
+    font-family: var(--font-family-montserrat);
+    font-size: 26px;
+    font-weight: var(--font-weight-bold);
     text-align: left;
   }
 
   .ds-c-drawer__close-button {
     border: 0;
-    color: $drawer-close__color;
+    color: var(--drawer-close__color);
 
     svg {
       height: 26px;
@@ -39,7 +39,7 @@
   &:hover {
     .icon-wrapper {
       &:before {
-        background-color: $drawer-toggle__background-color--hover;
+        background-color: var(--drawer-toggle__background-color--hover);
         border-radius: 50%;
         clip-path: circle(8px);
         content: '';
@@ -52,7 +52,7 @@
       }
     }
     .ds-c-icon--info-circle-outline {
-      color: $drawer-toggle__color--hover;
+      color: var(--drawer-toggle__color--hover);
     }
   }
 }
@@ -62,11 +62,11 @@
     &:hover {
       .icon-wrapper {
         &:before {
-          background-color: rgba($drawer-toggle__background-color--hover--inverse, 0.8);
+          background-color: rgba(var(--drawer-toggle__background-color--hover--inverse), 0.8);
         }
       }
       .ds-c-icon--info-circle-outline {
-        color: $drawer-toggle__color--hover--inverse;
+        color: var(--drawer-toggle__color--hover--inverse);
       }
     }
   }

@@ -3,7 +3,7 @@
  */
 
 import { animation, color, font, measure, media, radius, spacer, z } from '../tokens';
-import { FontTokens, ThemeTokens, ColorTokens, ShadowTokens } from '../lib/types';
+import { FontTokens, ThemeTokens, ColorTokens, ShadowTokens, AnyTokenValues } from '../lib/types';
 
 export const themeColors: ColorTokens = {
   //
@@ -157,9 +157,18 @@ export const themeColors: ColorTokens = {
   'red-100':                    color['crimson-50'],
 }
 
-const shadow: ShadowTokens = {
+export const shadow: ShadowTokens = {
+  'focus':                      `inset 0 0 0 1px ${themeColors['base']}`,
+  'focus-inverse':              `inset 0 0 0 1px ${themeColors['base']}`,
+  'focus-link':                 `0 3px ${themeColors['base']}`,
+  'focus-link-inverse':         `0 3px ${themeColors['focus-border-inverse']}`,
   'box-card': '0 2px 3px 0 rgba(50, 50, 50, 0.23)',
-}
+  'base-offset-x':              '2px',
+  'base-offset-y':              '2px',
+  'base-blur-radius':           '4px',
+  'base-color':                 color['black-alpha25'],
+  'base':                       '2px 2px 4px',
+};
 
 const fonts: FontTokens = {
   ...font,
@@ -178,10 +187,25 @@ const fonts: FontTokens = {
   'weight-bold': 600,
 }
 
+export const global: AnyTokenValues = {
+  'article-max-width':          '600px',
+  'grid-columns':               '12',
+  'grid-gutter-width':          spacer[4],
+  'grid-form-gutter-width':     spacer[2],
+  'lead-max-width':             '77rem',
+  'nav-width':                  '951px',
+  'site-margins':               '3rem',
+  'site-margins-mobile':        '1.5rem',
+  'site-max-width':             '1040px',
+  'text-max-width':             '53rem',
+  'image-path':                 '"../images"',
+};
+
 const medicareTheme: ThemeTokens = {
   animation,
   color: themeColors,
   font: fonts,
+  global,
   measure,
   media,
   radius,

@@ -14,11 +14,11 @@
 .ds-c-choice[type='checkbox'] {
   &:checked {
     &::before {
-      border-radius: $choice__border-radius;
+      border-radius: var(--choice__border-radius);
     }
   }
 }
 
 .ds-c-choice:not(:disabled):hover {
-  border-color: $choice__background-color--checked;
+  border-color: var(--choice__background-color--checked);
 }

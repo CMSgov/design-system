@@ -8,8 +8,8 @@ exports.onCreateWebpackConfig = ({ actions }) => {
       // aliasing fonts & images to catch relative paths defined in core styles
       alias: {
         '@styles': path.resolve(__dirname, '../design-system/src/styles'),
-        '../fonts': path.resolve(__dirname, '../design-system/src/fonts'),
-        '../images': path.resolve(__dirname, '../design-system/src/images'),
+        '../fonts': path.resolve(__dirname, 'static/fonts'),
+        '../images': path.resolve(__dirname, 'static/images'),
       },
     },
   });

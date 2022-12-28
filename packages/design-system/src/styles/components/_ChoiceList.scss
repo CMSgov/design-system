@@ -1,4 +1,5 @@
-@use '../mixins' as *;
+@use '../layout' as *;
+@use '../mixins';
 
 /**
 ** Order of choice styles is important to ensure styles follow correct precedent.
@@ -11,7 +12,7 @@
   display: flex;
   gap: 0.5rem;
   margin: 0.5rem 0;
-  max-width: $measure-wide;
+  max-width: var(--measure-wide);
 }
 
 // Styles for label
@@ -20,7 +21,7 @@
   cursor: pointer;
   flex-basis: min-content;
   flex-grow: 1;
-  font-weight: $font-weight-normal;
+  font-weight: var(--font-weight-normal);
   margin-top: 0;
   max-width: max-content;
   transform: translateY(0.25em);
@@ -35,11 +36,11 @@
 label,
 .ds-c-label {
   .ds-c-choice:disabled + & {
-    color: $choice-label__color--disabled;
+    color: var(--choice-label__color--disabled);
   }
 
   .ds-c-choice.ds-c-choice--inverse:disabled + & {
-    color: $choice-label__color--disabled--inverse;
+    color: var(--choice-label__color--disabled--inverse);
   }
 
   .ds-c-choice:disabled + &,
@@ -56,27 +57,27 @@ label,
 .ds-c-choice {
   align-items: center;
   appearance: none;
-  background-color: $choice__background-color;
-  border: $choice__border-width solid $choice__border-color;
-  border-radius: $choice__border-radius;
+  background-color: var(--choice__background-color);
+  border: var(--choice__border-width) solid var(--choice__border-color);
+  border-radius: var(--choice__border-radius);
   cursor: pointer;
   display: grid;
   flex-shrink: 0;
-  height: $choice__size;
+  height: var(--choice__size);
   justify-items: center;
   margin: 0;
   place-content: center;
   position: relative;
-  width: $choice__size;
+  width: var(--choice__size);
 
   &::before {
-    box-shadow: inset 0 0 4em 1em $choice__background-color--checked;
+    box-shadow: inset 0 0 4em 1em var(--choice__background-color--checked);
     content: '';
     grid-area: 1/-1;
-    height: $choice__size;
+    height: var(--choice__size);
     opacity: 0;
     // transition: 120ms opacity ease-in-out;
-    width: $choice__size;
+    width: var(--choice__size);
   }
 
   &::before,
@@ -91,24 +92,24 @@ label,
     }
 
     &:focus {
-      border-color: $choice__border-color--focus;
+      border-color: var(--choice__border-color--focus);
     }
   }
 
   &.ds-c-choice--error {
-    border-color: $choice__border-color--error;
+    border-color: var(--choice__border-color--error);
   }
 
   // Disabled
   &:disabled {
-    background-color: $choice__background-color--disabled;
-    border-color: $choice__border-color--disabled;
-    color: $choice__color--disabled;
+    background-color: var(--choice__background-color--disabled);
+    border-color: var(--choice__border-color--disabled);
+    color: var(--choice__color--disabled);
     cursor: not-allowed;
 
     &::before {
-      border-color: $choice__border-color--disabled;
-      box-shadow: inset 0 0 4em 1em $choice__border-color--disabled;
+      border-color: var(--choice__border-color--disabled);
+      box-shadow: inset 0 0 4em 1em var(--choice__border-color--disabled);
     }
 
     @media (-ms-high-contrast: active), (forced-colors: active) {
@@ -118,7 +119,7 @@ label,
 
   // Focus
   &:focus {
-    @include focus-styles;
+    @include mixins.focus-styles;
   }
 }
 
@@ -127,7 +128,7 @@ label,
   &::after {
     background-color: transparent;
     border: solid;
-    border-color: $color-white;
+    border-color: var(--color-white);
     border-top-color: transparent;
     border-width: 0 0 4px 4px;
     content: '';
@@ -159,8 +160,8 @@ label,
 
   &::before {
     border-radius: 100%;
-    height: $choice__size-radio;
-    width: $choice__size-radio;
+    height: var(--choice__size-radio);
+    width: var(--choice__size-radio);
 
     @media (-ms-high-contrast: active), (forced-colors: active) {
       background-color: WindowText;
@@ -169,13 +170,13 @@ label,
   }
 
   &:checked {
-    border-color: $choice__background-color--checked;
+    border-color: var(--choice__background-color--checked);
 
     &:disabled {
-      border-color: $choice__border-color--disabled;
+      border-color: var(--choice__border-color--disabled);
 
       &::before {
-        box-shadow: inset 0 0 4em 1em $choice__border-color--disabled;
+        box-shadow: inset 0 0 4em 1em var(--choice__border-color--disabled);
       }
 
       @media (-ms-high-contrast: active), (forced-colors: active) {
@@ -190,17 +191,17 @@ label,
 }
 
 .ds-c-choice--inverse {
-  background-color: $choice__background-color--inverse;
-  border-color: $choice__border-color--inverse;
+  background-color: var(--choice__background-color--inverse);
+  border-color: var(--choice__border-color--inverse);
 
   &.ds-c-choice--error {
-    border-color: $choice__border-color--error;
+    border-color: var(--choice__border-color--error--inverse);
   }
 
   // Disabled
   &:disabled {
-    background-color: $choice__background-color--disabled--inverse;
-    border-color: $choice__border-color--disabled--inverse;
+    background-color: var(--choice__background-color--disabled--inverse);
+    border-color: var(--choice__border-color--disabled--inverse);
 
     @media (-ms-high-contrast: active), (forced-colors: active) {
       border-color: GrayText;
@@ -210,12 +211,12 @@ label,
 
 // Size variants
 .ds-c-choice--small {
-  height: $choice__size--small;
-  width: $choice__size--small;
+  height: var(--choice__size--small);
+  width: var(--choice__size--small);
 
   &::before {
-    height: $choice__size--small;
-    width: $choice__size--small;
+    height: var(--choice__size--small);
+    width: var(--choice__size--small);
   }
 
   &[type='checkbox']::after {
@@ -225,8 +226,8 @@ label,
   }
 
   &[type='radio']::before {
-    height: $choice__size-radio--small;
-    width: $choice__size-radio--small;
+    height: var(--choice__size-radio--small);
+    width: var(--choice__size-radio--small);
   }
 }
 
@@ -234,18 +235,18 @@ label,
 
 // Checked children container
 .ds-c-choice__checkedChild {
-  border-left: $spacer-half solid $choice__border-color--left;
+  border-left: $spacer-half solid var(--choice__border-color--left);
   flex: 1 1 100%;
   margin-bottom: $spacer-2;
   // @TODO: get rid of this calc
   // The origin of this 2px shift is fuzzy, it seems like it's based on
   // the border on alerts and healthcare.gov insets.
-  margin-left: calc(calc(#{$choice__size} * 0.5) - 2px);
+  margin-left: calc((var(--choice__size) * 0.5) - 2px);
   padding: $spacer-2;
   padding-right: 0;
 
   &--inverse {
-    border-left-color: $color-white;
+    border-left-color: var(--color-white);
   }
 
   &--small {

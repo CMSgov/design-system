@@ -1,3 +1,5 @@
+@use '../layout' as *;
+
 .ds-c-field--month,
 .ds-c-field--day,
 .ds-c-field--year {
@@ -18,13 +20,13 @@
 }
 
 .ds-c-datefield__separator {
-  font-size: $font-size-2xl;
+  font-size: var(--font-size-2xl);
   line-height: 1;
   margin: 6px 0;
-  padding: $text-input__padding 0;
+  padding: var(--text-input__padding) 0;
 }
 
 .ds-c-datefield__label {
-  font-weight: $font-weight-normal;
+  font-weight: var(--font-weight-normal);
   margin-top: $spacer-1;
 }

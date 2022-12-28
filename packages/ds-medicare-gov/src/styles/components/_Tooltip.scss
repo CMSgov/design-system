@@ -4,16 +4,16 @@
 // theme colors are being referenced.
 
 .ds-c-tooltip__trigger-link {
-  color: $tooltip-trigger__color;
+  color: var(--tooltip-trigger__color);
   cursor: default;
-  text-decoration-color: $color-primary;
+  text-decoration-color: var(--color-primary);
   text-decoration-style: dashed;
-  text-decoration-thickness: $link-underline-height;
-  text-underline-offset: $link-underline-offset;
+  text-decoration-thickness: var(--link__text-decoration-thickness);
+  text-underline-offset: var(--link__text-decoration-offset);
   &:hover {
-    color: $color-black;
-    text-decoration-color: $color-primary-darker;
-    text-decoration-thickness: $link-underline-height;
+    color: var(--color-black);
+    text-decoration-color: var(--color-primary-darker);
+    text-decoration-thickness: var(--link__text-decoration-thickness--hover);
   }
 }
 
@@ -21,10 +21,10 @@
   .ds-c-tooltip__trigger-link {
     cursor: default;
     text-decoration-style: dashed;
-    text-decoration-thickness: $link-underline-height;
+    text-decoration-thickness: var(--link__text-decoration-thickness);
     &:hover {
-      text-decoration-color: $color-gray-lighter;
-      text-decoration-thickness: $link-underline-height;
+      text-decoration-color: var(--color-gray-lighter);
+      text-decoration-thickness: var(--link__text-decoration-thickness--hover);
     }
   }
 }

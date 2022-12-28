@@ -1,11 +1,12 @@
 @use 'sass:math';
+@use 'layout' as *;
 
 /**
  * Focus Styles
  */
 
 @mixin focus-styles {
-  box-shadow: 0 0 0 3px $color-focus-light, 0 0 4px 6px $color-focus-dark;
+  box-shadow: 0 0 0 3px var(--color-focus-light), 0 0 4px 6px var(--color-focus-dark);
   // Add support for Windows High Contrast Mode (WHCM)
   // The transparent color only shows when WHCM is triggered
   outline: 3px solid transparent;
@@ -18,10 +19,10 @@
 }
 
 @mixin focus-styles-link {
-  background-color: $color-focus-light;
+  background-color: var(--color-focus-light);
   box-shadow: none;
   color: initial;
-  outline: 3px solid $color-focus-dark;
+  outline: 3px solid var(--color-focus-dark);
   outline-offset: 1px;
   text-decoration: underline;
 }

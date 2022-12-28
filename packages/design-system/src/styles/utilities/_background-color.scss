@@ -3,289 +3,289 @@
 
 // primary
 .ds-u-fill--primary {
-  background-color: $color-primary !important;
+  background-color: var(--color-primary) !important;
 }
 
 .ds-u-fill--primary-darker {
-  background-color: $color-primary-darker !important;
+  background-color: var(--color-primary-darker) !important;
 }
 
 .ds-u-fill--primary-darkest {
-  background-color: $color-primary-darkest !important;
+  background-color: var(--color-primary-darkest) !important;
 }
 
 // @TODO: deprecate usage of color-primary-alt tags for secondary below
 // primary-alt
 .ds-u-fill--primary-alt {
-  background-color: $color-primary-alt !important;
+  background-color: var(--color-primary-alt) !important;
 }
 
 .ds-u-fill--primary-alt-dark {
-  background-color: $color-primary-alt-dark !important;
+  background-color: var(--color-primary-alt-dark) !important;
 }
 
 .ds-u-fill--primary-alt-darkest {
-  background-color: $color-primary-alt-darkest !important;
+  background-color: var(--color-primary-alt-darkest) !important;
 }
 
 .ds-u-fill--primary-alt-light {
-  background-color: $color-primary-alt-light !important;
+  background-color: var(--color-primary-alt-light) !important;
 }
 
 .ds-u-fill--primary-alt-lightest {
-  background-color: $color-primary-alt-lightest !important;
+  background-color: var(--color-primary-alt-lightest) !important;
 }
 
 // secondary
 .ds-u-fill--secondary {
-  background-color: $color-secondary !important;
+  background-color: var(--color-secondary) !important;
 }
 
 .ds-u-fill--secondary-light {
-  background-color: $color-secondary-light !important;
+  background-color: var(--color-secondary-light) !important;
 }
 
 .ds-u-fill--secondary-lighter {
-  background-color: $color-secondary-lighter !important;
+  background-color: var(--color-secondary-lighter) !important;
 }
 
 .ds-u-fill--secondary-lightest {
-  background-color: $color-secondary-lightest !important;
+  background-color: var(--color-secondary-lightest) !important;
 }
 
 .ds-u-fill--secondary-dark {
-  background-color: $color-secondary-dark !important;
+  background-color: var(--color-secondary-dark) !important;
 }
 
 .ds-u-fill--secondary-darker {
-  background-color: $color-secondary-darker !important;
+  background-color: var(--color-secondary-darker) !important;
 }
 
 .ds-u-fill--secondary-darkest {
-  background-color: $color-secondary-darkest !important;
+  background-color: var(--color-secondary-darkest) !important;
 }
 
 // gray
 .ds-u-fill--gray {
-  background-color: $color-gray !important;
+  background-color: var(--color-gray) !important;
 }
 
 .ds-u-fill--gray-dark {
-  background-color: $color-gray-dark !important;
+  background-color: var(--color-gray-dark) !important;
 }
 
 .ds-u-fill--gray-light {
-  background-color: $color-gray-light !important;
+  background-color: var(--color-gray-light) !important;
 }
 
 .ds-u-fill--gray-lighter {
-  background-color: $color-gray-lighter !important;
+  background-color: var(--color-gray-lighter) !important;
 }
 
 .ds-u-fill--gray-lightest {
-  background-color: $color-gray-lightest !important;
+  background-color: var(--color-gray-lightest) !important;
 }
 
 .ds-u-fill--muted-inverse {
-  background-color: $color-muted-inverse !important;
+  background-color: var(--color-muted-inverse) !important;
 }
 
 // Gold
 .ds-u-fill--gold {
-  background-color: $color-gold !important;
+  background-color: var(--color-gold) !important;
 }
 
 .ds-u-fill--gold-light {
-  background-color: $color-gold-light !important;
+  background-color: var(--color-gold-light) !important;
 }
 
 .ds-u-fill--gold-lighter {
-  background-color: $color-gold-lighter !important;
+  background-color: var(--color-gold-lighter) !important;
 }
 
 .ds-u-fill--gold-lightest {
-  background-color: $color-gold-lightest !important;
+  background-color: var(--color-gold-lightest) !important;
 }
 
 .ds-u-fill--gold-dark {
-  background-color: $color-gold-dark !important;
+  background-color: var(--color-gold-dark) !important;
 }
 
 .ds-u-fill--gold-darker {
-  background-color: $color-gold-darker !important;
+  background-color: var(--color-gold-darker) !important;
 }
 
 .ds-u-fill--gold-darkest {
-  background-color: $color-gold-darkest !important;
+  background-color: var(--color-gold-darkest) !important;
 }
 
 // Green
 .ds-u-fill--green {
-  background-color: $color-green !important;
+  background-color: var(--color-green) !important;
 }
 
 .ds-u-fill--green-light {
-  background-color: $color-green-light !important;
+  background-color: var(--color-green-light) !important;
 }
 
 .ds-u-fill--green-lighter {
-  background-color: $color-green-lighter !important;
+  background-color: var(--color-green-lighter) !important;
 }
 
 .ds-u-fill--green-lightest {
-  background-color: $color-green-lightest !important;
+  background-color: var(--color-green-lightest) !important;
 }
 
 .ds-u-fill--green-dark {
-  background-color: $color-green-dark !important;
+  background-color: var(--color-green-dark) !important;
 }
 
 .ds-u-fill--green-darker {
-  background-color: $color-green-darker !important;
+  background-color: var(--color-green-darker) !important;
 }
 
 .ds-u-fill--green-darkest {
-  background-color: $color-green-darkest !important;
+  background-color: var(--color-green-darkest) !important;
 }
 
 // red
 .ds-u-fill--red {
-  background-color: $color-red !important;
+  background-color: var(--color-red) !important;
 }
 
 .ds-u-fill--red-light {
-  background-color: $color-red-light !important;
+  background-color: var(--color-red-light) !important;
 }
 
 .ds-u-fill--red-lighter {
-  background-color: $color-red-lighter !important;
+  background-color: var(--color-red-lighter) !important;
 }
 
 .ds-u-fill--red-lightest {
-  background-color: $color-red-lightest !important;
+  background-color: var(--color-red-lightest) !important;
 }
 
 .ds-u-fill--red-dark {
-  background-color: $color-red-dark !important;
+  background-color: var(--color-red-dark) !important;
 }
 
 .ds-u-fill--red-darker {
-  background-color: $color-red-darker !important;
+  background-color: var(--color-red-darker) !important;
 }
 
 .ds-u-fill--red-darkest {
-  background-color: $color-red-darkest !important;
+  background-color: var(--color-red-darkest) !important;
 }
 
 // State color - error
 
 .ds-u-fill--error {
-  background-color: $color-error !important;
+  background-color: var(--color-error) !important;
 }
 
 .ds-u-fill--error-light {
-  background-color: $color-error-light !important;
+  background-color: var(--color-error-light) !important;
 }
 
 .ds-u-fill--error-lighter {
-  background-color: $color-error-lighter !important;
+  background-color: var(--color-error-lighter) !important;
 }
 
 .ds-u-fill--error-lightest {
-  background-color: $color-error-lightest !important;
+  background-color: var(--color-error-lightest) !important;
 }
 
 .ds-u-fill--error-dark {
-  background-color: $color-error-dark !important;
+  background-color: var(--color-error-dark) !important;
 }
 
 .ds-u-fill--error-darker {
-  background-color: $color-error-darker !important;
+  background-color: var(--color-error-darker) !important;
 }
 
 .ds-u-fill--error-darkest {
-  background-color: $color-error-darkest !important;
+  background-color: var(--color-error-darkest) !important;
 }
 
 // State color - warn
 
 .ds-u-fill--warn {
-  background-color: $color-warn !important;
+  background-color: var(--color-warn) !important;
 }
 
 .ds-u-fill--warn-light {
-  background-color: $color-warn-light !important;
+  background-color: var(--color-warn-light) !important;
 }
 
 .ds-u-fill--warn-lighter {
-  background-color: $color-warn-lighter !important;
+  background-color: var(--color-warn-lighter) !important;
 }
 
 .ds-u-fill--warn-lightest {
-  background-color: $color-warn-lightest !important;
+  background-color: var(--color-warn-lightest) !important;
 }
 
 .ds-u-fill--warn-dark {
-  background-color: $color-warn-dark !important;
+  background-color: var(--color-warn-dark) !important;
 }
 
 .ds-u-fill--warn-darker {
-  background-color: $color-warn-darker !important;
+  background-color: var(--color-warn-darker) !important;
 }
 
 .ds-u-fill--warn-darkest {
-  background-color: $color-warn-darkest !important;
+  background-color: var(--color-warn-darkest) !important;
 }
 
 // State color - success
 
 .ds-u-fill--success {
-  background-color: $color-success !important;
+  background-color: var(--color-success) !important;
 }
 
 .ds-u-fill--success-light {
-  background-color: $color-success-light !important;
+  background-color: var(--color-success-light) !important;
 }
 
 .ds-u-fill--success-lighter {
-  background-color: $color-success-lighter !important;
+  background-color: var(--color-success-lighter) !important;
 }
 
 .ds-u-fill--success-lightest {
-  background-color: $color-success-lightest !important;
+  background-color: var(--color-success-lightest) !important;
 }
 
 .ds-u-fill--success-dark {
-  background-color: $color-success-dark !important;
+  background-color: var(--color-success-dark) !important;
 }
 
 .ds-u-fill--success-darker {
-  background-color: $color-success-darker !important;
+  background-color: var(--color-success-darker) !important;
 }
 
 .ds-u-fill--success-darkest {
-  background-color: $color-success-darkest !important;
+  background-color: var(--color-success-darkest) !important;
 }
 
 // base colors
 .ds-u-fill--base {
-  background-color: $color-base !important;
+  background-color: var(--color-base) !important;
 }
 
 .ds-u-fill--white {
-  background-color: $color-white !important;
+  background-color: var(--color-white) !important;
 }
 
 .ds-u-fill--black {
-  background-color: $color-black !important;
+  background-color: var(--color-black) !important;
 }
 
 .ds-u-fill--background {
-  background-color: $color-background !important;
+  background-color: var(--color-background) !important;
 }
 
 .ds-u-fill--background-inverse {
-  background-color: $color-background-inverse !important;
+  background-color: var(--color-background-inverse) !important;
 }
 
 .ds-u-fill--transparent {
@@ -294,23 +294,23 @@
 
 // Focus colors
 .ds-u-fill--focus-color-light {
-  background-color: $color-focus-light !important;
+  background-color: var(--color-focus-light) !important;
 }
 
 .ds-u-fill--focus-color-dark {
-  background-color: $color-focus-dark !important;
+  background-color: var(--color-focus-dark) !important;
 }
 // Deprecated Focus colors
 .ds-u-fill--focus-color {
-  background-color: $color-focus !important;
+  background-color: var(--color-focus) !important;
 }
 
 .ds-u-fill--focus-color-inverse {
-  background-color: $color-focus-inverse !important;
+  background-color: var(--color-focus-inverse) !important;
 }
 
 .ds-u-fill--focus-border-inverse {
-  background-color: $color-focus-border-inverse !important;
+  background-color: var(--color-focus-border-inverse) !important;
 }
 
 /* stylelint-enable declaration-no-important */

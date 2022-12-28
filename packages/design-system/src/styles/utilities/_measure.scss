@@ -1,11 +1,11 @@
 .ds-u-measure--narrow {
-  max-width: $measure-narrow !important;
+  max-width: var(--measure-narrow) !important;
 }
 
 .ds-u-measure--base {
-  max-width: $measure-base !important;
+  max-width: var(--measure-base) !important;
 }
 
 .ds-u-measure--wide {
-  max-width: $measure-wide !important;
+  max-width: var(--measure-wide) !important;
 }

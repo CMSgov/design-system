@@ -1,5 +1,7 @@
+@use '../layout' as *;
+
 .ds-c-review {
-  border-bottom: 2px solid $review__border-color;
+  border-bottom: 2px solid var(--review__border-color);
   display: flex;
   justify-content: space-between;
   padding-bottom: $spacer-2;
@@ -22,8 +24,8 @@
 
 .ds-c-review__heading {
   display: inline-block;
-  font-size: $font-size-base;
-  font-weight: $font-weight-bold;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
   margin-bottom: 0;
   margin-top: 0;
 }

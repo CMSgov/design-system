@@ -1,7 +1,7 @@
 @use '../layout' as *;
 
 .hc-c-inset {
-  border-left: $inset__border-width solid $color-primary;
+  border-left: var(--inset__border-width) solid var(--color-primary);
   margin-bottom: $spacer-2;
   padding: $spacer-2;
 }

@@ -1,11 +1,11 @@
 .ds-u-font-weight--normal {
-  font-weight: $font-weight-normal !important;
+  font-weight: var(--font-weight-normal) !important;
 }
 
 .ds-u-font-weight--semibold {
-  font-weight: $font-weight-semibold !important;
+  font-weight: var(--font-weight-semibold) !important;
 }
 
 .ds-u-font-weight--bold {
-  font-weight: $font-weight-bold !important;
+  font-weight: var(--font-weight-bold) !important;
 }

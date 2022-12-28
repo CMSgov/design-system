@@ -68,6 +68,12 @@ const Layout = ({
       >
         <script>{`window.tealiumEnvironment = "${env}";`}</script>
         <script src="//tags.tiqcdn.com/utag/cmsgov/cms-design/prod/utag.sync.js"></script>
+        <link
+          rel="stylesheet"
+          type="text/css"
+          title="docThemeCss"
+          href={`/themes/${theme}-theme.css`}
+        />
       </Helmet>
       <SkipNav href="#main" />
 

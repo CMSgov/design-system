@@ -1,3 +1,5 @@
+@use '../layout' as *;
+
 .ds-c-pagination {
   align-items: flex-end;
   display: flex;
@@ -18,8 +20,8 @@
     list-style: none;
   }
   .ds-c-button {
-    color: $pagination-link__color;
-    font-weight: normal;
+    color: var(--pagination-link__color);
+    font-weight: var(--font-weight-normal);
     min-width: 44px;
     padding: $spacer-1 0;
   }
@@ -27,14 +29,14 @@
     text-decoration: none;
 
     &:focus {
-      color: $pagination-link__color--focus;
+      color: var(--pagination-link__color--focus);
     }
     &:hover {
-      color: $pagination-link__color--hover;
+      color: var(--pagination-link__color--hover);
       text-decoration: underline;
     }
     &:active {
-      color: $pagination-link__color--active;
+      color: var(--pagination-link__color--active);
     }
     @media (-ms-high-contrast: active), (forced-colors: active) {
       border: 0;
@@ -44,9 +46,9 @@
     }
   }
   .ds-c-pagination__current-page {
-    color: $pagination-current-page__color;
-    font-size: $font-size-xl;
-    font-weight: bold;
+    color: var(--pagination-current-page__color);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
     text-decoration: none;
     &:hover {
       cursor: auto;
@@ -55,7 +57,7 @@
   }
   .ds-c-pagination__overflow {
     border: 2px solid transparent;
-    color: $pagination-overflow__color;
+    color: var(--pagination-overflow__color);
     display: inline-block;
     padding: $spacer-1;
 
@@ -65,7 +67,7 @@
   }
   .ds-c-pagination__page-count {
     border: 2px solid transparent;
-    color: $pagination-page-count__color;
+    color: var(--pagination-page-count__color);
     display: inline-block;
     padding: $spacer-1;
 
@@ -110,7 +112,7 @@
   }
   .ds-c-pagination__nav--disabled {
     border: 1px solid transparent;
-    color: $pagination-link__color--disabled;
+    color: var(--pagination-link__color--disabled);
     line-height: 1.3;
     padding: $spacer-1 0;
 
