@@ -76,7 +76,7 @@ exports[`InlineLinkLists renders lists of links 1`] = `
         class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
       >
         <button>
-          footer.privacySettings
+          Privacy Settings
         </button>
       </li>
       <li
@@ -359,7 +359,7 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
         class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
       >
         <button>
-          footer.privacySettings
+          Privacy Settings
         </button>
       </li>
       <li
