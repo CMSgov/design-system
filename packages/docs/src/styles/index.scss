@@ -1,29 +1,9 @@
-$font-path: '@cmsgov/ds-medicare-gov/dist/fonts';
+// including medicare fonts in build for use with medicare theme
 @import '@cmsgov/ds-medicare-gov/src/styles/fonts';
 
-// importing core styles from core index.scss files
-@import 'theme-variables/_core-scss-to-css.map.scss';
-@import 'theme-variables/_core-theme.css';
-@import 'theme-variables/_core-components-scss-to-css.map.scss';
-@import 'theme-variables/_core-components-theme.css';
-// brand themes will use core variables if the theme does not explicitly define that variable
-@import 'theme-variables/_healthcare-scss-to-css.map.scss';
-@import 'theme-variables/_healthcare-theme.css';
-@import 'theme-variables/_healthcare-components-scss-to-css.map.scss';
-@import 'theme-variables/_healthcare-components-theme.css';
-@import 'theme-variables/_medicare-scss-to-css.map.scss';
-@import 'theme-variables/_medicare-theme.css';
-@import 'theme-variables/_medicare-components-scss-to-css.map.scss';
-@import 'theme-variables/_medicare-components-theme.css';
-
 // @styles is aliased in gatsby-node.js
+@import '@styles/layout';
 @import '@styles/index.scss';
-
-[data-theme='healthcare'] {
-  // Have to set the image path so that the error label's svg can be found
-  $image-path: '@cmsgov/ds-healthcare-gov/src/images';
-  @import '@cmsgov/ds-healthcare-gov/src/styles/components/index';
-}
 
 @import 'pages/contact.scss';
 @import 'pages/layout.scss';

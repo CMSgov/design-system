@@ -1,4 +1,4 @@
-@import '../settings/index.scss';
+@use '../base' as *;
 
 @each $scale, $size in $spacers {
   // Example: ds-u-padding--0

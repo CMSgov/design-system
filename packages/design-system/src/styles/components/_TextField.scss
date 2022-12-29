@@ -1,16 +1,17 @@
-@import '../settings/index.scss';
+@use '../mixins';
+@use '../layout' as *;
 
 .ds-c-field {
   appearance: none;
-  border: $text-input__border-width solid $text-input__border-color;
-  border-radius: $text-input__border-radius;
+  border: var(--text-input__border-width) solid var(--text-input__border-color);
+  border-radius: var(--text-input__border-radius);
   box-sizing: border-box; // ensure padding doesn't affect width
-  color: $text-input__color;
+  color: var(--text-input__color);
   display: block;
   margin: $spacer-half 0;
-  max-width: $form__max-width;
+  max-width: var(--form__max-width);
   outline: none;
-  padding: $text-input__padding;
+  padding: var(--text-input__padding);
   width: 100%;
 
   // To stay consistent across browsers of not applying a style for :invalid pseudo-class,
@@ -20,8 +21,8 @@
   }
 
   &:disabled {
-    background-color: $text-input__background-color--disabled;
-    border-color: $text-input__border-color--disabled;
+    background-color: var(--text-input__background-color--disabled);
+    border-color: var(--text-input__border-color--disabled);
 
     @media (-ms-high-contrast: active), (forced-colors: active) {
       cursor: not-allowed;
@@ -33,23 +34,23 @@
   }
 
   &:focus {
-    @include focus-styles;
+    @include mixins.focus-styles;
   }
 }
 
 .ds-c-field--small {
-  max-width: $form__max-width--small;
+  max-width: var(--form__max-width--small);
 }
 
 .ds-c-field--medium {
-  max-width: $form__max-width--medium;
+  max-width: var(--form__max-width--medium);
 }
 
 .ds-c-field,
 .ds-c-field-mask {
-  font-family: $font-sans; // Needed to overwrite user agent input tag styles
-  font-size: $font-size-base; // Needed to overwrite user agent input tag styles
-  line-height: $text-input__line-height; // Needed to overwrite user agent input tag styles
+  font-family: var(--font-sans); // Needed to overwrite user agent heading tag styles
+  font-size: var(--font-size-base); // Needed to overwrite user agent heading tag styles
+  line-height: var(--text-input__line-height); // Needed to overwrite user agent heading tag styles
 }
 
 /*
@@ -57,19 +58,20 @@ Inverse theme
 */
 
 .ds-c-field--inverse {
-  border-color: $text-input__border-color--inverse;
+  border-color: var(--text-input__border-color--inverse);
 }
 
 // State modifiers and message
 // ==============================
 .ds-c-field--error {
-  border: $text-input__border-width--error solid $text-input__border-color--error;
+  border: var(--text-input__border-width--error) solid var(--text-input__border-color--error);
 
   &.ds-c-field--inverse {
-    border: $text-input__border-width--error solid $text-input__border-color--error--inverse;
+    border: var(--text-input__border-width--error) solid
+      var(--text-input__border-color--error--inverse);
   }
 }
 
 .ds-c-field--success {
-  border: $text-input__border-width--success solid $text-input__border-color--success;
+  border: var(--text-input__border-width--success) solid var(--text-input__border-color--success);
 }

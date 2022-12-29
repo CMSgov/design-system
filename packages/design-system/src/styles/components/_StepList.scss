@@ -1,24 +1,9 @@
-@import '../settings/index.scss';
-
-// @TODO: deprecate and simplify these
-$step-list-number-size: $spacer-4 !default;
-$step-list-number-size-mobile: $spacer-3 !default;
-$step-list-number-font-size: 20px !default;
-$step-list-number-font-size-mobile: $font-size-sm !default;
-$step-list-number-border-size: 2px !default;
-$step-list-number-margin: 10px !default;
-$step-list-padding-h: 0 !default;
-$step-list-padding-left: $step-list-padding-h + $step-list-number-margin + $step-list-number-size;
-$step-list-breakpoint: $media-width-md !default;
-$step-margin: $spacer-2 !default;
-$step-border-width: 1px !default;
-$step-button-height: 38px !default;
+@use '../layout' as *;
 
 .ds-c-step-list {
   list-style-type: none;
   margin: $spacer-4 0 0;
-  padding: 0 $step-list-padding-h;
-  padding-left: $step-list-padding-left;
+  padding: 0 0 0 42px;
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
     a:hover {
@@ -28,36 +13,36 @@ $step-button-height: 38px !default;
 }
 
 .ds-c-step {
-  color: $steplist__color;
+  color: var(--steplist__color);
   counter-increment: step-counter;
-  margin-bottom: $step-margin;
-  padding-bottom: $step-margin;
+  margin-bottom: $spacer-2;
+  padding-bottom: $spacer-2;
   position: relative;
 
   &::before {
-    border: $step-list-number-border-size solid $steplist-step__border-color--default;
-    border-radius: $radius-circle;
+    border: 2px solid var(--steplist-step__border-color--default);
+    border-radius: var(--radius-circle);
     box-sizing: border-box;
-    color: $steplist-step__color;
+    color: var(--steplist-step__color);
     content: counter(step-counter);
     display: block;
-    font-size: $step-list-number-font-size-mobile;
-    height: $step-list-number-size-mobile;
-    left: calc(-1 * (#{$step-list-number-margin} + #{$step-list-number-size-mobile}));
-    line-height: $step-list-number-size-mobile - $step-list-number-border-size * 2;
+    font-size: var(--font-size-sm);
+    height: $spacer-3;
+    left: -34px;
+    line-height: 20px;
     position: absolute;
     text-align: center;
-    top: ($step-button-height - $step-list-number-size-mobile) * 0.5;
-    width: $step-list-number-size-mobile;
+    top: 7px;
+    width: $spacer-3;
 
-    @media (min-width: $step-list-breakpoint) {
-      font-size: $step-list-number-font-size;
-      height: $step-list-number-size;
-      left: calc(-1 * (#{$step-list-number-margin} + #{$step-list-number-size}));
-      line-height: $step-list-number-size - $step-list-number-border-size * 2;
+    @media (min-width: $media-width-md) {
+      font-size: var(--font-size-xl);
+      height: $spacer-4;
+      left: -42px;
+      line-height: 28px;
       padding-left: 1px;
-      top: ($step-button-height - $step-list-number-size) * 0.5;
-      width: $step-list-number-size;
+      top: 3px;
+      width: $spacer-4;
     }
 
     @media (-ms-high-contrast: active), (forced-colors: active) {
@@ -69,24 +54,24 @@ $step-button-height: 38px !default;
   }
 
   &::after {
-    border-bottom: $step-border-width solid $steplist-step__border-color;
+    border-bottom: 1px solid var(--steplist-step__border-color);
     bottom: 0;
     content: '';
     display: block;
     height: 1px;
-    left: -$step-list-padding-left;
+    left: -42px;
     position: absolute;
-    right: -$step-list-padding-h;
+    right: 0;
   }
 }
 
 .ds-c-step--current,
 .ds-c-step--completed {
-  padding-bottom: $step-margin;
+  padding-bottom: $spacer-2;
 
   &::before {
     border: 0 none;
-    color: $steplist-step__color--current;
+    color: var(--steplist-step__color--current);
     line-height: 24px;
 
     @media (min-width: $media-width-md) {
@@ -97,11 +82,11 @@ $step-button-height: 38px !default;
 
 .ds-c-step--current {
   .ds-c-step__heading {
-    color: $steplist__color--current;
+    color: var(--steplist__color--current);
   }
 
   &::before {
-    background: $steplist__background-color--current;
+    background: var(--steplist__background-color--current);
   }
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
@@ -115,15 +100,15 @@ $step-button-height: 38px !default;
 
 .ds-c-step--completed {
   .ds-c-step__heading {
-    color: $steplist-step__color--completed;
+    color: var(--steplist-step__color--completed);
   }
 
   .ds-c-step__substeps {
-    color: $steplist-step__color--completed;
+    color: var(--steplist-step__color--completed);
   }
 
   &::before {
-    background: $steplist-step__background-color--completed;
+    background: var(--steplist-step__background-color--completed);
   }
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
@@ -135,13 +120,13 @@ $step-button-height: 38px !default;
 }
 
 .ds-c-step__heading {
-  font-size: $font-size-md; // Needed to overwrite user agent heading tag styles
-  line-height: $step-button-height;
+  font-size: var(--font-size-md); // Needed to overwrite user agent heading tag styles
+  line-height: 38px;
   margin: 0;
 }
 
 .ds-c-step__actions {
-  font-size: $font-size-sm;
+  font-size: var(--font-size-sm);
   margin-left: auto;
 
   .ds-c-step__content--with-content + & {
@@ -149,13 +134,13 @@ $step-button-height: 38px !default;
   }
 
   .ds-c-step--completed & a {
-    font-weight: $font-normal;
+    font-weight: var(--font-weight-normal);
   }
 }
 
 .ds-c-step__completed-text {
   display: inline-block;
-  line-height: $step-button-height - 12px;
+  line-height: 26px;
   margin-right: $spacer-2;
 
   .ds-c-icon {
@@ -173,7 +158,7 @@ $step-button-height: 38px !default;
 }
 
 .ds-c-step__description {
-  font-size: $font-size-sm;
+  font-size: var(--font-size-sm);
   margin-bottom: $spacer-1;
 
   .ds-c-step--current &,
@@ -190,11 +175,11 @@ $step-button-height: 38px !default;
 
 .ds-c-substep {
   display: block;
-  font-size: $font-size-sm;
+  font-size: var(--font-size-sm);
 
   &::before {
     content: '\2022';
-    left: -$spacer-3;
+    left: calc(-1 * #{$spacer-3});
     position: relative;
   }
 }

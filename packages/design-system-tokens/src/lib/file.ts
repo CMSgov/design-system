@@ -27,7 +27,7 @@ export const getAllFiles = (rootPath: string, arrayOfFiles: string[] = []): stri
 };
 
 /**
- * Search out all availible modules under a path and return an
+ * Search out all available modules under a path and return an
  * array of objects which contains file descriptors for each file
  *
  * @param rootPath - The root path to collect file data from recursively
@@ -70,12 +70,20 @@ export const getFileDescriptors = (rootPath: string): FileDescriptor[] => {
  * @returns An exit code for success or error
  */
 export const writeFile = (filename: string, vars: string): number => {
+  let outputData: string;
+
+  if (filename.includes('css')) {
+    outputData = `/* Generated from CMSDS tokens on ${new Date().toString()}*/ \n` + vars;
+  } else {
+    outputData = vars;
+  }
+
   try {
-    fs.writeFileSync(filename, vars);
+    fs.writeFileSync(filename, outputData);
     console.log(`:: wrote ${filename}`);
     return 0;
   } catch (err) {
     console.error(`There was an issue writing to ${filename}: ${err}`);
-    process.exit(1);
+    return process.exit(1);
   }
 };

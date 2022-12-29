@@ -249,6 +249,7 @@ export const components: AnyTokenValues = {
     '__border-color--checked':                    t.color['primary'],
     '__border-color--disabled':                   t.color['gray-light'],
     '__border-color--error':                      t.color['error'],
+    '__border-color--error--inverse':             t.color['error-light'],
     '__border-color--inverse':                    t.color['white'],
     '__border-color--left':                       t.color['primary'],
     '__border-color--focus':                      t.color['primary-darker'],
@@ -299,6 +300,7 @@ export const components: AnyTokenValues = {
     '__color--active':                            t.color['white'],
     '-icon__color':                               t.color['base'],
     '-icon__color-active':                        t.color['white'],
+    '-icon__container-size':                      '18px',
   },
 
   'footer': {
@@ -419,6 +421,9 @@ export const components: AnyTokenValues = {
   'tooltip': {
     '__background-color':                         t.color['background'],
     '__border-color':                             t.color['gray-dark'],
+    '__border-color--active':                     hexOpacity(t.color['primary'], 0.25),
+    '__border-color--inverse-active':             hexOpacity(t.color['white'], 0.25),
+    '__border-width':                             '1px',
     '__color':                                    t.color['base'],
     '__box-shadow-color':                         t.color['gray-light'],
     '-icon__color':                               t.color['primary'],

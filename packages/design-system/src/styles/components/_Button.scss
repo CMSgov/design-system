@@ -1,27 +1,28 @@
-@import '../settings/index.scss';
+@use '../layout' as *;
+@use '../mixins';
 
 .ds-c-button,
 .ds-c-button:visited {
   appearance: none;
-  background-color: var(--backgroundColor, $button__background-color);
-  border: $button__border-width solid var(--borderColor, $button__border-color);
-  border-radius: $button__border-radius;
-  color: var(--color, $button__color);
+  background-color: var(--backgroundColor, var(--button__background-color));
+  border: var(--button__border-width) solid var(--borderColor, var(--button__border-color));
+  border-radius: var(--button__border-radius);
+  color: var(--color, var(--button__color));
   cursor: pointer;
   display: inline-block;
-  font-family: $font-sans; // Needed to overwrite user agent button tag styles
-  font-size: var(--fontSize, $font-size-base); // Needed to overwrite user agent button tag styles
-  font-weight: var(--fontWeight, $button__font-weight);
+  font-family: var(--font-sans); // Needed to overwrite user agent button tag styles
+  font-size: var(--fontSize, var(--font-size-base)); // Needed to overwrite user agent button tag styles
+  font-weight: var(--fontWeight, var(--button__font-weight));
   line-height: 1.3;
-  padding: var(--space, $spacer-1 $spacer-3);
+  padding: var(--space, #{$spacer-1 $spacer-3});
   text-align: center;
 
   &:is(a) {
     text-decoration: none;
 
     &:focus {
-      background-color: var(--backgroundColor, $button__background-color);
-      color: var(--color, $button__color);
+      background-color: var(--backgroundColor, var(--button__background-color));
+      color: var(--color, var(--button__color));
       text-decoration: none;
     }
 
@@ -31,25 +32,25 @@
   }
 
   > svg {
-    @include inline-icon;
+    @include mixins.inline-icon;
   }
 
   &:hover,
   &:hover:focus {
-    background-color: var(--backgroundColor--h, $button__background-color--hover);
-    border-color: var(--borderColor--h, $button__border-color--hover);
-    color: var(--color--h, $button__color--hover);
+    background-color: var(--backgroundColor--h, var(--button__background-color--hover));
+    border-color: var(--borderColor--h, var(--button__border-color--hover));
+    color: var(--color--h, var(--button__color--hover));
   }
 
   &:focus {
-    @include focus-styles;
+    @include mixins.focus-styles;
   }
 
   &:active,
   &:active:focus {
-    background-color: var(--backgroundColor--a, $button__background-color--active);
-    border-color: var(--borderColor--a, $button__border-color--active);
-    color: var(--color--a, $button__color--active);
+    background-color: var(--backgroundColor--a, var(--button__background-color--active));
+    border-color: var(--borderColor--a, var(--button__border-color--active));
+    color: var(--color--a, var(--button__color--active));
   }
 
   // Make sure active overrides focus styles
@@ -59,181 +60,181 @@
 
   &:disabled,
   &[aria-disabled] {
-    background-color: var(--backgroundColor--d, $button__background-color--disabled);
-    border-color: var(--borderColor--d, $button__border-color--disabled);
-    color: var(--color--d, $button__color--disabled);
+    background-color: var(--backgroundColor--d, var(--button__background-color--disabled));
+    border-color: var(--borderColor--d, var(--button__border-color--disabled));
+    color: var(--color--d, var(--button__color--disabled));
     cursor: not-allowed;
   }
 }
 
 .ds-c-button {
   &.ds-c-button--alternate {
-    --backgroundColor: #{$button-alt__background-color};
-    --borderColor: #{$button-alt__border-color};
-    --color: #{$button-alt__color};
+    --backgroundColor: var(--button-alt__background-color);
+    --borderColor: var(--button-alt__border-color);
+    --color: var(--button-alt__color);
 
     // Hover
-    --backgroundColor--h: #{$button-alt__background-color--hover};
-    --borderColor--h: #{$button-alt__border-color--hover};
-    --color--h: #{$button-alt__color--hover};
+    --backgroundColor--h: var(--button-alt__background-color--hover);
+    --borderColor--h: var(--button-alt__border-color--hover);
+    --color--h: var(--button-alt__color--hover);
 
     // Active
-    --backgroundColor--a: #{$button-alt__background-color--active};
-    --borderColor--a: #{$button-alt__border-color--active};
-    --color--a: #{$button-alt__color--active};
+    --backgroundColor--a: var(--button-alt__background-color--active);
+    --borderColor--a: var(--button-alt__border-color--active);
+    --color--a: var(--button-alt__color--active);
 
     // Disable
-    --backgroundColor--d: #{$button-alt__background-color--disabled};
-    --borderColor--d: #{$button-alt__border-color--disabled};
-    --color--d: #{$button-alt__color--disabled};
+    --backgroundColor--d: var(--button-alt__background-color--disabled);
+    --borderColor--d: var(--button-alt__border-color--disabled);
+    --color--d: var(--button-alt__color--disabled);
   }
 
   &.ds-c-button--on-dark {
-    --backgroundColor: #{$button-dark__background-color};
-    --borderColor: #{$button-dark__border-color};
-    --color: #{$button-dark__color};
+    --backgroundColor: var(--button-dark__background-color);
+    --borderColor: var(--button-dark__border-color);
+    --color: var(--button-dark__color);
 
     // Hover
-    --backgroundColor--h: #{$button-dark__background-color--hover};
-    --borderColor--h: #{$button-dark__border-color--hover};
-    --color--h: #{$button-dark__color--hover};
+    --backgroundColor--h: var(--button-dark__background-color--hover);
+    --borderColor--h: var(--button-dark__border-color--hover);
+    --color--h: var(--button-dark__color--hover);
 
     // Active
-    --backgroundColor--a: #{$button-dark__background-color--active};
-    --borderColor--a: #{$button-dark__border-color--active};
-    --color--a: #{$button-dark__color--active};
+    --backgroundColor--a: var(--button-dark__background-color--active);
+    --borderColor--a: var(--button-dark__border-color--active);
+    --color--a: var(--button-dark__color--active);
 
     // Disable
-    --backgroundColor--d: #{$button-dark__background-color--disabled};
-    --borderColor--d: #{$button-dark__border-color--disabled};
-    --color--d: #{$button-dark__color--disabled};
+    --backgroundColor--d: var(--button-dark__background-color--disabled);
+    --borderColor--d: var(--button-dark__border-color--disabled);
+    --color--d: var(--button-dark__color--disabled);
   }
 
   &.ds-c-button--alternate.ds-c-button--on-dark {
-    --backgroundColor: #{$button-dark-alt__background-color};
-    --borderColor: #{$button-dark-alt__border-color};
-    --color: #{$button-dark-alt__color};
+    --backgroundColor: var(--button-dark-alt__background-color);
+    --borderColor: var(--button-dark-alt__border-color);
+    --color: var(--button-dark-alt__color);
 
     // Hover
-    --backgroundColor--h: #{$button-dark-alt__background-color--hover};
-    --borderColor--h: #{$button-dark-alt__border-color--hover};
-    --color--h: #{$button-dark-alt__color--hover};
+    --backgroundColor--h: var(--button-dark-alt__background-color--hover);
+    --borderColor--h: var(--button-dark-alt__border-color--hover);
+    --color--h: var(--button-dark-alt__color--hover);
 
     // Active
-    --backgroundColor--a: #{$button-dark-alt__background-color--active};
-    --borderColor--a: #{$button-dark-alt__border-color--active};
-    --color--a: #{$button-dark-alt__color--active};
+    --backgroundColor--a: var(--button-dark-alt__background-color--active);
+    --borderColor--a: var(--button-dark-alt__border-color--active);
+    --color--a: var(--button-dark-alt__color--active);
 
     // Disable
-    --backgroundColor--d: #{$button-dark-alt__background-color--disabled};
-    --borderColor--d: #{$button-dark-alt__border-color--disabled};
-    --color--d: #{$button-dark-alt__color--disabled};
+    --backgroundColor--d: var(--button-dark-alt__background-color--disabled);
+    --borderColor--d: var(--button-dark-alt__border-color--disabled);
+    --color--d: var(--button-dark-alt__color--disabled);
   }
 }
 
 .ds-c-button--solid {
-  --backgroundColor: #{$button-solid__background-color};
-  --borderColor: #{$button-solid__border-color};
-  --color: #{$button-solid__color};
+  --backgroundColor: var(--button-solid__background-color);
+  --borderColor: var(--button-solid__border-color);
+  --color: var(--button-solid__color);
 
   // Hover
-  --backgroundColor--h: #{$button-solid__background-color--hover};
-  --borderColor--h: #{$button-solid__border-color--hover};
-  --color--h: #{$button-solid__color--hover};
+  --backgroundColor--h: var(--button-solid__background-color--hover);
+  --borderColor--h: var(--button-solid__border-color--hover);
+  --color--h: var(--button-solid__color--hover);
 
   // Active
-  --backgroundColor--a: #{$button-solid__background-color--active};
-  --borderColor--a: #{$button-solid__border-color--active};
-  --color--a: #{$button-solid__color--active};
+  --backgroundColor--a: var(--button-solid__background-color--active);
+  --borderColor--a: var(--button-solid__border-color--active);
+  --color--a: var(--button-solid__color--active);
 
   // Disable
-  --backgroundColor--d: #{$button-solid__background-color--disabled};
-  --borderColor--d: #{$button-solid__border-color--disabled};
-  --color--d: #{$button-solid__color--disabled};
+  --backgroundColor--d: var(--button-solid__background-color--disabled);
+  --borderColor--d: var(--button-solid__border-color--disabled);
+  --color--d: var(--button-solid__color--disabled);
 
   &.ds-c-button--alternate {
-    --backgroundColor: #{$button-solid-alt__background-color};
-    --borderColor: #{$button-solid-alt__border-color};
-    --color: #{$button-solid-alt__color};
+    --backgroundColor: var(--button-solid-alt__background-color);
+    --borderColor: var(--button-solid-alt__border-color);
+    --color: var(--button-solid-alt__color);
 
     // Hover
-    --backgroundColor--h: #{$button-solid-alt__background-color--hover};
-    --borderColor--h: #{$button-solid-alt__border-color--hover};
-    --color--h: #{$button-solid-alt__color--hover};
+    --backgroundColor--h: var(--button-solid-alt__background-color--hover);
+    --borderColor--h: var(--button-solid-alt__border-color--hover);
+    --color--h: var(--button-solid-alt__color--hover);
 
     // Active
-    --backgroundColor--a: #{$button-solid-alt__background-color--active};
-    --borderColor--a: #{$button-solid-alt__border-color--active};
-    --color--a: #{$button-solid-alt__color--active};
+    --backgroundColor--a: var(--button-solid-alt__background-color--active);
+    --borderColor--a: var(--button-solid-alt__border-color--active);
+    --color--a: var(--button-solid-alt__color--active);
 
     // Disable
-    --backgroundColor--d: #{$button-solid-alt__background-color--disabled};
-    --borderColor--d: #{$button-solid-alt__border-color--disabled};
-    --color--d: #{$button-solid-alt__color--disabled};
+    --backgroundColor--d: var(--button-solid-alt__background-color--disabled);
+    --borderColor--d: var(--button-solid-alt__border-color--disabled);
+    --color--d: var(--button-solid-alt__color--disabled);
   }
 
   &.ds-c-button--on-dark {
-    --backgroundColor: #{$button-solid-dark__background-color};
-    --borderColor: #{$button-solid-dark__border-color};
-    --color: #{$button-solid-dark__color};
+    --backgroundColor: var(--button-solid-dark__background-color);
+    --borderColor: var(--button-solid-dark__border-color);
+    --color: var(--button-solid-dark__color);
 
     // Hover
-    --backgroundColor--h: #{$button-solid-dark__background-color--hover};
-    --borderColor--h: #{$button-solid-dark__border-color--hover};
-    --color--h: #{$button-solid-dark__color--hover};
+    --backgroundColor--h: var(--button-solid-dark__background-color--hover);
+    --borderColor--h: var(--button-solid-dark__border-color--hover);
+    --color--h: var(--button-solid-dark__color--hover);
 
     // Active
-    --backgroundColor--a: #{$button-solid-dark__background-color--active};
-    --borderColor--a: #{$button-solid-dark__border-color--active};
-    --color--a: #{$button-solid-dark__color--active};
+    --backgroundColor--a: var(--button-solid-dark__background-color--active);
+    --borderColor--a: var(--button-solid-dark__border-color--active);
+    --color--a: var(--button-solid-dark__color--active);
 
     // Disable
-    --backgroundColor--d: #{$button-solid-dark__background-color--disabled};
-    --borderColor--d: #{$button-solid-dark__border-color--disabled};
-    --color--d: #{$button-solid-dark__color--disabled};
+    --backgroundColor--d: var(--button-solid-dark__background-color--disabled);
+    --borderColor--d: var(--button-solid-dark__border-color--disabled);
+    --color--d: var(--button-solid-dark__color--disabled);
   }
 
   &.ds-c-button--alternate.ds-c-button--on-dark {
-    --backgroundColor: #{$button-solid-dark-alt__background-color};
-    --borderColor: #{$button-solid-dark-alt__border-color};
-    --color: #{$button-solid-dark-alt__color};
+    --backgroundColor: var(--button-solid-dark-alt__background-color);
+    --borderColor: var(--button-solid-dark-alt__border-color);
+    --color: var(--button-solid-dark-alt__color);
 
     // Hover
-    --backgroundColor--h: #{$button-solid-dark-alt__background-color--hover};
-    --borderColor--h: #{$button-solid-dark-alt__border-color--hover};
-    --color--h: #{$button-solid-dark-alt__color--hover};
+    --backgroundColor--h: var(--button-solid-dark-alt__background-color--hover);
+    --borderColor--h: var(--button-solid-dark-alt__border-color--hover);
+    --color--h: var(--button-solid-dark-alt__color--hover);
 
     // Active
-    --backgroundColor--a: #{$button-solid-dark-alt__background-color--active};
-    --borderColor--a: #{$button-solid-dark-alt__border-color--active};
-    --color--a: #{$button-solid-dark-alt__color--active};
+    --backgroundColor--a: var(--button-solid-dark-alt__background-color--active);
+    --borderColor--a: var(--button-solid-dark-alt__border-color--active);
+    --color--a: var(--button-solid-dark-alt__color--active);
 
     // Disable
-    --backgroundColor--d: #{$button-solid-dark-alt__background-color--disabled};
-    --borderColor--d: #{$button-solid-dark-alt__border-color--disabled};
-    --color--d: #{$button-solid-dark-alt__color--disabled};
+    --backgroundColor--d: var(--button-solid-dark-alt__background-color--disabled);
+    --borderColor--d: var(--button-solid-dark-alt__border-color--disabled);
+    --color--d: var(--button-solid-dark-alt__color--disabled);
   }
 }
 
 .ds-c-button--ghost {
-  --backgroundColor: #{$button-ghost__background-color};
-  --borderColor: #{$button-ghost__border-color};
-  --color: #{$button-ghost__color};
+  --backgroundColor: var(--button-ghost__background-color);
+  --borderColor: var(--button-ghost__border-color);
+  --color: var(--button-ghost__color);
 
   // Hover
-  --backgroundColor--h: #{$button-ghost__background-color--hover};
-  --borderColor--h: #{$button-ghost__border-color--hover};
-  --color--h: #{$button-ghost__color--hover};
+  --backgroundColor--h: var(--button-ghost__background-color--hover);
+  --borderColor--h: var(--button-ghost__border-color--hover);
+  --color--h: var(--button-ghost__color--hover);
 
   // Active
-  --backgroundColor--a: #{$button-ghost__background-color--active};
-  --borderColor--a: #{$button-ghost__border-color--active};
-  --color--a: #{$button-ghost__color--active};
+  --backgroundColor--a: var(--button-ghost__background-color--active);
+  --borderColor--a: var(--button-ghost__border-color--active);
+  --color--a: var(--button-ghost__color--active);
 
   // Disable
-  --backgroundColor--d: #{$button-ghost__background-color--disabled};
-  --borderColor--d: #{$button-ghost__border-color--disabled};
-  --color--d: #{$button-ghost__color--disabled};
+  --backgroundColor--d: var(--button-ghost__background-color--disabled);
+  --borderColor--d: var(--button-ghost__border-color--disabled);
+  --color--d: var(--button-ghost__color--disabled);
 
   text-decoration: underline;
   text-decoration-color: currentColor;
@@ -260,76 +261,76 @@
   }
 
   &.ds-c-button--alternate {
-    --backgroundColor: #{$button-ghost-alt__background-color};
-    --borderColor: #{$button-ghost-alt__border-color};
-    --color: #{$button-ghost-alt__color};
+    --backgroundColor: var(--button-ghost-alt__background-color);
+    --borderColor: var(--button-ghost-alt__border-color);
+    --color: var(--button-ghost-alt__color);
 
     // Hover
-    --backgroundColor--h: #{$button-ghost-alt__background-color--hover};
-    --borderColor--h: #{$button-ghost-alt__border-color--hover};
-    --color--h: #{$button-ghost-alt__color--hover};
+    --backgroundColor--h: var(--button-ghost-alt__background-color--hover);
+    --borderColor--h: var(--button-ghost-alt__border-color--hover);
+    --color--h: var(--button-ghost-alt__color--hover);
 
     // Active
-    --backgroundColor--a: #{$button-ghost-alt__background-color--active};
-    --borderColor--a: #{$button-ghost-alt__border-color--active};
-    --color--a: #{$button-ghost-alt__color--active};
+    --backgroundColor--a: var(--button-ghost-alt__background-color--active);
+    --borderColor--a: var(--button-ghost-alt__border-color--active);
+    --color--a: var(--button-ghost-alt__color--active);
 
     // Disable
-    --backgroundColor--d: #{$button-ghost-alt__background-color--disabled};
-    --borderColor--d: #{$button-ghost-alt__border-color--disabled};
-    --color--d: #{$button-ghost-alt__color--disabled};
+    --backgroundColor--d: var(--button-ghost-alt__background-color--disabled);
+    --borderColor--d: var(--button-ghost-alt__border-color--disabled);
+    --color--d: var(--button-ghost-alt__color--disabled);
   }
 
   &.ds-c-button--on-dark {
-    --backgroundColor: #{$button-ghost-dark__background-color};
-    --borderColor: #{$button-ghost-dark__border-color};
-    --color: #{$button-ghost-dark__color};
+    --backgroundColor: var(--button-ghost-dark__background-color);
+    --borderColor: var(--button-ghost-dark__border-color);
+    --color: var(--button-ghost-dark__color);
 
     // Hover
-    --backgroundColor--h: #{$button-ghost-dark__background-color--hover};
-    --borderColor--h: #{$button-ghost-dark__border-color--hover};
-    --color--h: #{$button-ghost-dark__color--hover};
+    --backgroundColor--h: var(--button-ghost-dark__background-color--hover);
+    --borderColor--h: var(--button-ghost-dark__border-color--hover);
+    --color--h: var(--button-ghost-dark__color--hover);
 
     // Active
-    --backgroundColor--a: #{$button-ghost-dark__background-color--active};
-    --borderColor--a: #{$button-ghost-dark__border-color--active};
-    --color--a: #{$button-ghost-dark__color--active};
+    --backgroundColor--a: var(--button-ghost-dark__background-color--active);
+    --borderColor--a: var(--button-ghost-dark__border-color--active);
+    --color--a: var(--button-ghost-dark__color--active);
 
     // Disable
-    --backgroundColor--d: #{$button-ghost-dark__background-color--disabled};
-    --borderColor--d: #{$button-ghost-dark__border-color--disabled};
-    --color--d: #{$button-ghost-dark__color--disabled};
+    --backgroundColor--d: var(--button-ghost-dark__background-color--disabled);
+    --borderColor--d: var(--button-ghost-dark__border-color--disabled);
+    --color--d: var(--button-ghost-dark__color--disabled);
   }
 
   &.ds-c-button--alternate.ds-c-button--on-dark {
-    --backgroundColor: #{$button-ghost-dark-alt__background-color};
-    --borderColor: #{$button-ghost-dark-alt__border-color};
-    --color: #{$button-ghost-dark-alt__color};
+    --backgroundColor: var(--button-ghost-dark-alt__background-color);
+    --borderColor: var(--button-ghost-dark-alt__border-color);
+    --color: var(--button-ghost-dark-alt__color);
 
     // Hover
-    --backgroundColor--h: #{$button-ghost-dark-alt__background-color--hover};
-    --borderColor--h: #{$button-ghost-dark-alt__border-color--hover};
-    --color--h: #{$button-ghost-dark-alt__color--hover};
+    --backgroundColor--h: var(--button-ghost-dark-alt__background-color--hover);
+    --borderColor--h: var(--button-ghost-dark-alt__border-color--hover);
+    --color--h: var(--button-ghost-dark-alt__color--hover);
 
     // Active
-    --backgroundColor--a: #{$button-ghost-dark-alt__background-color--active};
-    --borderColor--a: #{$button-ghost-dark-alt__border-color--active};
-    --color--a: #{$button-ghost-dark-alt__color--active};
+    --backgroundColor--a: var(--button-ghost-dark-alt__background-color--active);
+    --borderColor--a: var(--button-ghost-dark-alt__border-color--active);
+    --color--a: var(--button-ghost-dark-alt__color--active);
 
     // Disable
-    --backgroundColor--d: #{$button-ghost-dark-alt__background-color--disabled};
-    --borderColor--d: #{$button-ghost-dark-alt__border-color--disabled};
-    --color--d: #{$button-ghost-dark-alt__color--disabled};
+    --backgroundColor--d: var(--button-ghost-dark-alt__background-color--disabled);
+    --borderColor--d: var(--button-ghost-dark-alt__border-color--disabled);
+    --color--d: var(--button-ghost-dark-alt__color--disabled);
   }
 }
 
 .ds-c-button--big {
-  --fontSize: #{$font-size-xl};
+  --fontSize: var(--font-size-xl);
   --space: #{$spacer-2 $spacer-3};
 }
 
 .ds-c-button--small {
-  --fontSize: #{$font-size-sm};
-  --fontWeight: #{$font-weight-normal};
+  --fontSize: var(--font-size-sm);
+  --fontWeight: var(--font-weight-normal);
   --space: #{$spacer-half $spacer-1};
 }

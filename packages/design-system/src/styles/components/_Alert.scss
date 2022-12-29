@@ -1,29 +1,28 @@
-@import '../settings/index.scss';
+@use '../layout' as *;
 
 .ds-c-alert {
-  background-color: $alert__background-color;
-  border-left: $alert-bar__width solid $alert__border-left-color;
+  background-color: var(--alert__background-color);
+  border-left: var(--alert-bar__width) solid var(--alert__border-left-color);
   box-sizing: border-box;
-  color: $alert__font-color;
+  color: var(--alert__font-color);
   display: flex;
-  min-height: $alert__icon-size + $spacer-2;
-  padding: $alert__padding;
+  padding: var(--alert__padding);
   position: relative;
 
   a:not(.ds-c-button),
   .ds-c-link {
-    color: $alert-link__font-color;
+    color: var(--alert-link__font-color);
 
     &:hover {
-      color: $alert-link__font-color--hover;
+      color: var(--alert-link__font-color--hover);
     }
 
     &:focus {
-      color: $alert-link__font-color--focus;
+      color: var(--alert-link__font-color--focus);
     }
 
     &:active {
-      color: $alert-link__font-color--active;
+      color: var(--alert-link__font-color--active);
     }
   }
 
@@ -39,11 +38,11 @@
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
     border: 1px solid windowText;
-    border-left: $alert-bar__width solid windowText;
+    border-left: var(--alert-bar__width) solid windowText;
   }
 
   &.ds-c-alert--lightweight {
-    background-color: $alert__background-color--lightweight;
+    background-color: var(--alert__background-color--lightweight);
   }
 }
 
@@ -70,7 +69,7 @@
 }
 
 .ds-c-alert__icon {
-  font-size: $font-size-lg;
+  font-size: var(--font-size-lg);
   margin-left: $spacer-1;
 }
 
@@ -83,8 +82,8 @@
 }
 
 .ds-c-alert__heading {
-  font-size: $font-size-lg;
-  font-weight: $font-bold;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
   margin-bottom: $spacer-half;
   margin-top: 0;
 }
@@ -95,16 +94,16 @@
 }
 
 .ds-c-alert--error {
-  background-color: $alert__background-color--error;
-  border-color: $alert__border-color--error;
+  background-color: var(--alert__background-color--error);
+  border-color: var(--alert__border-color--error);
 }
 
 .ds-c-alert--warn {
-  background-color: $alert__background-color--warn;
-  border-color: $alert__border-color--warn;
+  background-color: var(--alert__background-color--warn);
+  border-color: var(--alert__border-color--warn);
 }
 
 .ds-c-alert--success {
-  background-color: $alert__background-color--success;
-  border-color: $alert__border-color--success;
+  background-color: var(--alert__background-color--success);
+  border-color: var(--alert__border-color--success);
 }

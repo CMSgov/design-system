@@ -11,10 +11,10 @@
     "build:healthcare": "yarn gulp build --package packages/ds-healthcare-gov",
     "build:medicare": "yarn gulp build --package packages/ds-medicare-gov",
     "build:docs": "yarn build:prop-data && yarn --cwd ./packages/docs build",
-    "build:storybook": "build-storybook -o storybook-static",
-    "build:storybook:docs": "build-storybook -o packages/docs/static/storybook",
+    "build:storybook": "./scripts/build-storybook.sh",
+    "build:storybook:docs": "./scripts/build-storybook.sh docs",
+    "build:tokens": "yarn --cwd ./packages/design-system-tokens clean && yarn --cwd ./packages/design-system-tokens build themes css-vars && yarn --cwd ./packages/design-system-tokens dist",
     "build:prop-data": "node ./scripts/extractPropData.js",
-    "build:tokens": "yarn --cwd ./packages/design-system-tokens build themes scss && yarn --cwd ./packages/design-system-tokens build themes css-vars && yarn --cwd ./packages/design-system-tokens dist",
     "clean": "yarn clean:cache && yarn clean:modules",
     "clean:cache": "rm -rf packages/docs/.cache",
     "clean:modules": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
@@ -140,5 +140,6 @@
   "engines": {
     "node": ">=11.0.0",
     "yarn": ">=1.22.4"
-  }
+  },
+  "dependencies": {}
 }

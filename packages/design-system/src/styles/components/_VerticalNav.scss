@@ -1,21 +1,22 @@
-@import '../settings/index.scss';
+@use '../mixins';
+@use '../layout' as *;
 
 %nav-item-hover {
-  background-color: $vertical-nav-item__background-color--hover;
-  color: $vertical-nav-item__color--hover;
+  background-color: var(--vertical-nav-item__background-color--hover);
+  color: var(--vertical-nav-item__color--hover);
   text-decoration: none;
 }
 %nav-item-focus {
-  @include focus-styles;
-  @include focus-styles-position;
+  @include mixins.focus-styles;
+  @include mixins.focus-styles-position;
 }
 
 .ds-c-vertical-nav {
-  @include ds-unstyled-list;
+  @include mixins.ds-unstyled-list;
 
   > .ds-c-vertical-nav__item {
     background-color: transparent;
-    border-top: 1px solid $vertical-nav-item__border-color;
+    border-top: 1px solid var(--vertical-nav-item__border-color);
 
     &:first-child {
       border-top: 0;
@@ -47,13 +48,13 @@
 .ds-c-vertical-nav__label,
 .ds-c-vertical-nav__label:visited {
   border-left: $spacer-half solid transparent;
-  color: $vertical-nav-label__color;
+  color: var(--vertical-nav-label__color);
   display: block;
-  font-family: $font-sans; // Needed to overwrite user agent button tag styles
-  font-size: $font-size-base; // Needed to overwrite user agent button tag styles
-  line-height: $font-line-height-heading;
+  font-family: var(--font-sans); // Needed to overwrite user agent heading tag styles
+  font-size: var(--font-size-base); // Needed to overwrite user agent heading tag styles
+  line-height: var(--font-line-height-heading);
   padding: $spacer-1 $spacer-2;
-  text-align: left; // necessary for <button>
+  text-align: left; // Needed to overwrite user agent heading tag styles
   text-decoration: none;
 
   &:hover {
@@ -106,14 +107,14 @@
       forced-color-adjust: none;
       -ms-high-contrast-adjust: none;
       outline: $spacer-half solid LinkText;
-      outline-offset: -$spacer-half;
+      outline-offset: calc(-1 * #{$spacer-half});
     }
   }
 
   .ds-c-icon {
-    color: $vertical-nav-label-icon__color;
-    height: $font-size-md;
-    width: $font-size-md;
+    color: var(--vertical-nav-label-icon__color);
+    height: var(--font-size-md);
+    width: var(--font-size-md);
 
     @media (-ms-high-contrast: active), (forced-colors: active) {
       path {
@@ -125,9 +126,9 @@
 
 .ds-c-vertical-nav__label--current,
 .ds-c-vertical-nav__label--current:visited {
-  border-left-color: $vertical-nav-label__border-color--current;
-  color: $vertical-nav-label__color--current;
-  font-weight: $font-weight-bold;
+  border-left-color: var(--vertical-nav-label__border-color--current);
+  color: var(--vertical-nav-label__color--current);
+  font-weight: var(--font-weight-bold);
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
     border-left-color: WindowText;
@@ -135,11 +136,11 @@
 }
 
 .ds-c-vertical-nav__subnav {
-  @include ds-unstyled-list;
+  @include mixins.ds-unstyled-list;
 
   .ds-c-vertical-nav__label {
-    font-size: $font-size-sm;
-    line-height: $font-line-height-heading;
+    font-size: var(--font-size-sm);
+    line-height: var(--font-line-height-heading);
     padding-left: $spacer-3;
 
     @media (-ms-high-contrast: active), (forced-colors: active) {
