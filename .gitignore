@@ -58,3 +58,4 @@ tests/a11y/test-results/
 .cache/
 packages/docs/public
 packages/docs/static/storybook
+packages/docs/data

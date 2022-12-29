@@ -172,6 +172,10 @@ const fonts: FontTokens = {
   sans: font['family-rubik'],
   montserrat: font['family-montserrat'],
   rubik: font['family-rubik'],
+  'weight-light': 400,
+  'weight-normal': 400,
+  'weight-semibold': 600,
+  'weight-bold': 600,
 }
 
 const medicareTheme: ThemeTokens = {

@@ -1,0 +1,130 @@
+---
+title: Label-Masked Field
+intro: A label-masked field is a text-field pattern that provides instant, visual feedback about how inputed data is being interpreted without creating a noisy aural experience.
+core:
+  githubLink: design-system/src/components/LabelMask
+  storybookLink: components-text-field--label-masked-currency
+---
+
+## Examples
+
+This component mirrors user input as formatted "hint text" after the label to provide visual feedback about the data as the user is typing. The text in the input field itself will not be formatted until the field loses focus, which is when we know the user has finished typing.
+
+Because the hinting isn't being applied to the input itself, it's less distracting and obtrusive to screen reader users, providing a quieter and more usable experience for everyone. It is an updated alternative to our [Masked Field](/components/text-field/masked-field/).
+
+The label-mask currently has five built-in implementations: _currency_, _phone number_, _Social Security Number_, _ZIP code_, and _date_. The date mask is implemented by the [Calendar Picker](/components/date-field/date-picker/) and [Single-Input Date Field](/components/date-field/single-input-date-field/) components, while the rest are available for direct use with the [Text Field](/components/text-field/) component.
+
+### Currency
+
+<StorybookExample
+  componentName="currency"
+  storyId="components-text-field--label-masked-currency"
+/>
+
+### Phone number
+
+<StorybookExample
+  componentName="phone"
+  storyId="components-text-field--label-masked-phone"
+/>
+
+### Social Security number
+
+<StorybookExample
+  componentName="ssn"
+  storyId="components-text-field--label-masked-ssn"
+/>
+
+### ZIP code
+
+<StorybookExample
+  componentName="zip"
+  storyId="components-text-field--label-masked-postal-code"
+/>
+
+## Code 
+
+### React
+
+Passing a `labelMask` prop into a [`TextField`](/components/text-field/) component with a valid masking function will turn it into a label mask. You can either import one of the named, built-in mask functions (`SSN_MASK`, `ZIP_MASK`, `PHONE_MASK`, or `CURRENCY_MASK`), or you can provide a custom mask function. The following table shows the `TextField` prop that is specific to label masks:
+
+<PropTable componentName="TextField" subset={["labelMask"]} />
+
+#### Handling input changes
+
+When tracking state in a parent component, treat the value as a raw input string, which is updated by the `onChange` handler. Do not try to unmask or clean the value before passing it back to the `TextField` component instance. The intention with this is to keep the API and behavior of the component as simple as possible. You don't need to handle `onBlur` separately from `onChange`. You only need to update your value when `onChange` is called, and it will be called whenever the value of the input changes, including on blur. A more appropriate place to clean the input would be in your validation code.
+
+```js
+// A simplified example of change handling. This is not a recommendation
+// for how to structure error messages or validation code but serves only
+// to illustrate how to set and get values from the label-masked field.
+
+import { useState } from "react";
+import { Button, TextField, SSN_MASK } from '@cmsgov/design-system';
+
+export const MyForm = () => {
+  const [value, setValue] = useState('');
+  const [error, setError] = useState();
+
+  function validate() {
+    if (!isValidSsn(value)) {
+      e.preventDefault();
+      setError('You have entered an invalid SSN.');
+    }
+  }
+
+  return (
+    <form onSubmit={validate}>
+      {error && <Alert variation="error">{error}<Alert>}
+      <TextField
+        label="Social security number (SSN)"
+        labelMask={SSN_MASK}
+        name="ssn_example"
+        value={value}
+        onChange={setValue}
+      />
+      <Button type="submit">Submit</Button>
+    </form>
+  )
+};
+```
+
+## Guidance
+
+### When to use
+
+- In fields with a specific expected format like Social Security Number or ZIP code, a label mask allows you to constrain and shape the information being entered without impairing the user's ability to copy/paste or correct mistyping
+
+### When to consider alternatives
+
+- When the input requires a free-form field that doesn't use a common input pattern, masking is not appropriate.
+- When the pattern is too complicated to allow for a valid label mask. A pattern like email, with many possible scenarios for input, is not a good candidate for masking. Allow the user to enter their email address (or other complicated data) and have your validation library confirm before form submission.
+
+### Usage
+
+- Only show error validation messages or stylings after a user has interacted with a particular field
+
+### Accessibility
+
+- These text fields should follow the [accessibility guidelines for all text inputs](/components/text-field/#guidance).
+
+## Learn more
+
+- [labelmask, a blog post by Brad Frost](https://bradfrost.com/blog/post/labelmask/) - the inspiration for this component
+
+## Component maturity
+
+<MaturityChecklist
+  a11yStandards={true}
+  color={true}
+  forcedColors={true}
+  screenReaders={true}
+  keyboardNavigable={true}
+  storybook={true}
+  responsive={true}
+  spanish={null}
+  completeUiKit={false}
+  responsiveUiKit={false}
+  tokensInCode={true}
+  tokensInSketch={true}
+/>
