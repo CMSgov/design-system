@@ -4,19 +4,21 @@ import get from 'lodash/get';
 
 export type Language = 'en' | 'es';
 
-function detectDocumentLanguage(): Language | undefined {
+export function _detectDocumentLanguage(): Language | undefined {
   if (typeof document === 'undefined') {
     return undefined;
   }
   const detectedLang = document.querySelector('html')?.lang ?? '';
-  if (['en', 'es'].some((lang) => languageMatches(lang, detectedLang))) {
-    return detectedLang as Language;
-  } else {
-    return undefined;
+  const validLangs: Language[] = ['en', 'es'];
+  for (const lang of validLangs) {
+    if (languageMatches(lang, detectedLang)) {
+      return lang;
+    }
   }
+  return undefined;
 }
 
-let language: Language = detectDocumentLanguage() ?? 'en';
+let language: Language = _detectDocumentLanguage() ?? 'en';
 
 export function getLanguage() {
   return language;
