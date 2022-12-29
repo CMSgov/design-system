@@ -49,7 +49,7 @@ exports.createPages = ({ graphql, actions }) => {
     result.data.allMdx.edges.forEach((edge) => {
       createPage({
         // Path for this page -- the slug with positioning markers removed
-        path: edge.node.slug.replace(/\d+_/g, ''),
+        path: edge.node.slug.replace(/\d+_/g, '') + '/',
         component: edge.node.slug.startsWith('blog') ? blogPageTemplate : infoPageTemplate,
         // props passed to template
         context: {
