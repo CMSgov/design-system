@@ -19,7 +19,7 @@ export const PrivacySettingsLink = (props: PrivacySettingsLinkProps) => {
 
   return (
     <>
-      <button className={props.className ?? ''} onClick={openDialog}>
+      <button className={props.className} onClick={openDialog}>
         {t('footer.privacySettings')}
       </button>
       {showDialog && <PrivacySettingsDialog onExit={closeDialog} t={t} />}
