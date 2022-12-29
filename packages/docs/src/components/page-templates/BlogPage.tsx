@@ -1,11 +1,10 @@
 import React from 'react';
-import { memo } from 'react';
-import { graphql } from 'gatsby';
-
-import Layout from '../layout/Layout';
-import { MdxQuery } from '../../helpers/graphQLTypes';
-import useTheme from '../../helpers/useTheme';
 import ContentRenderer from '../content/ContentRenderer';
+import Layout from '../layout/Layout';
+import avoidRefresh from '../../helpers/avoidRefresh';
+import useTheme from '../../helpers/useTheme';
+import { MdxQuery } from '../../helpers/graphQLTypes';
+import { graphql } from 'gatsby';
 
 /**
  * Template for information content pages.
@@ -57,21 +56,4 @@ export const query = graphql`
   }
 `;
 
-function compareProps(prevProps, nextProps) {
-  const nextLocation = nextProps.location;
-  const prevLocation = prevProps.location;
-  /*
-  return true if passing nextProps to render would return
-  the same result as passing prevProps to render,
-  otherwise return false
-  */
-  if (
-    nextLocation.pathname === prevLocation.pathname &&
-    nextLocation.search === prevLocation.search
-  ) {
-    return true;
-  }
-  return false;
-}
-
-export default memo(BlogPage, compareProps);
+export default avoidRefresh(BlogPage);
