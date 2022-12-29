@@ -2,10 +2,10 @@ import React from 'react';
 import { memo } from 'react';
 import { graphql } from 'gatsby';
 
-import Layout from './layout/Layout';
-import { MdxQuery } from '../helpers/graphQLTypes';
-import useTheme from '../helpers/useTheme';
-import ContentRenderer from './content/ContentRenderer';
+import Layout from '../layout/Layout';
+import { MdxQuery } from '../../helpers/graphQLTypes';
+import useTheme from '../../helpers/useTheme';
+import ContentRenderer from '../content/ContentRenderer';
 
 /**
  * Template for information content pages.

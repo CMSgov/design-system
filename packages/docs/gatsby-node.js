@@ -21,7 +21,8 @@ exports.onCreateDevServer = ({ app }) => {
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
-  const infoPageTemplate = path.resolve(`src/components/InfoPage.tsx`);
+  const infoPageTemplate = path.resolve(`src/components/page-templates/InfoPage.tsx`);
+  const blogPageTemplate = path.resolve(`src/components/page-templates/BlogPage.tsx`);
 
   // get all pages
   return graphql(`
@@ -49,7 +50,7 @@ exports.createPages = ({ graphql, actions }) => {
       createPage({
         // Path for this page -- the slug with positioning markers removed
         path: edge.node.slug.replace(/\d+_/g, ''),
-        component: infoPageTemplate,
+        component: edge.node.slug.startsWith('blog') ? blogPageTemplate : infoPageTemplate,
         // props passed to template
         context: {
           id: edge.node.id,
