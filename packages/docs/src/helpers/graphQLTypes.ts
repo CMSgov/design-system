@@ -45,6 +45,24 @@ export interface MdxQuery {
   location?: LocationInterface;
 }
 
+export interface BlogQuery {
+  data: {
+    allMdx: {
+      edges: {
+        node: {
+          body: string;
+          slug?: string;
+          frontmatter: {
+            title: string;
+            date: string;
+          };
+        };
+      }[];
+    };
+  };
+  location?: LocationInterface;
+}
+
 export interface NavItem {
   relativePath: string;
   childMdx: {

@@ -33,21 +33,6 @@ export const query = graphql`
       frontmatter {
         title
         intro
-        core {
-          githubLink
-          sketchLink
-          storybookLink
-        }
-        healthcare {
-          sketchLink
-          storybookLink
-          githubLink
-        }
-        medicare {
-          sketchLink
-          storybookLink
-          githubLink
-        }
       }
       slug
       body
