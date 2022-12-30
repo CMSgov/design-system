@@ -7,10 +7,11 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "yarn gulp build && yarn build:prop-data",
+    "build": "yarn build:core && yarn build:healthcare && yarn build:medicare",
+    "build:core": "yarn gulp build",
     "build:healthcare": "yarn gulp build --package packages/ds-healthcare-gov",
     "build:medicare": "yarn gulp build --package packages/ds-medicare-gov",
-    "build:docs": "yarn build:prop-data && yarn --cwd ./packages/docs build",
+    "build:docs": "yarn build:storybook:docs && yarn build:prop-data && yarn --cwd ./packages/docs build",
     "build:storybook": "build-storybook -o storybook-static",
     "build:storybook:docs": "build-storybook -o packages/docs/static/storybook",
     "build:prop-data": "node ./scripts/extractPropData.js",
@@ -28,7 +29,7 @@
     "release": "./scripts/bump-and-tag-release.sh",
     "release:bump": "./scripts/bump-main.sh",
     "serve:docs": "yarn --cwd ./packages/docs serve",
-    "start": "yarn build:prop-data && yarn --cwd ./packages/docs develop",
+    "start": "yarn build:storybook:docs && yarn build:prop-data && yarn --cwd ./packages/docs develop",
     "storybook": "start-storybook -p 6006",
     "test": "yarn test:unit && yarn test:a11y",
     "posttest": "yarn lint",
