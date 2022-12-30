@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "yarn build:core && yarn build:healthcare && yarn build:medicare",
+    "build": "yarn build:core && yarn build:healthcare && yarn build:medicare && yarn build:prop-data",
     "build:core": "yarn gulp build",
     "build:healthcare": "yarn gulp build --package packages/ds-healthcare-gov",
     "build:medicare": "yarn gulp build --package packages/ds-medicare-gov",
