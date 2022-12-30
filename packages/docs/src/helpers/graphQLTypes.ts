@@ -21,6 +21,7 @@ export interface LocationInterface {
 
 export interface FrontmatterInterface {
   title: string;
+  date?: string;
   core?: ComponentLinksInterface;
   healthcare?: ComponentLinksInterface;
   medicare?: ComponentLinksInterface;

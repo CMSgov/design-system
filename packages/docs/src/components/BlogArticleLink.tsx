@@ -13,7 +13,7 @@ const BlogArticleLink = (props: BlogArticleLinkProps) => {
   return (
     <article>
       <header>
-        <h2>
+        <h2 className="ds-text-heading--2xl ds-u-margin-bottom--0">
           <Link to={`/${props.slug}`}>{props.title}</Link>
         </h2>
         <time dateTime={props.date} className="ds-text-body--sm">
