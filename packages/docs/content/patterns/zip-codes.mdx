@@ -7,29 +7,33 @@ import { TextField } from '@cmsgov/design-system';
 
 ## Guidance
 
-### 5-digit ZIP format
+### 5-digit ZIP code pattern
 
-Use the `small` input field when data validation uses a 5-digit ZIP format.
-
-<EmbeddedExample>
-  <TextField size="small" label="Please enter your 5-digit ZIP code" hint="This field is 'small' size" name="zip-small" numeric />
-</EmbeddedExample>
-
-### 9-digit ZIP format
-
-Use the `medium` input field when validating against a stricter data set, such as the 9-digit format.
+Use the `small` input size when data validation uses a 5-digit ZIP format.
 
 <EmbeddedExample>
-  <TextField size="medium" label="Please enter your 9-digit ZIP code" hint="This field is 'medium' size" name="zip-medium" numeric />
+  <TextField size="small" label="ZIP code" name="zip-small" numeric />
 </EmbeddedExample>
 
-### County selection
 
-Use the default (`large`) input field when the user must confirm or enter data containing County, State, and ZIP code.
+### 9-digit ZIP code pattern
+
+Use the `medium` input size when validating against a stricter data set, such as the 9-digit format.
 
 <EmbeddedExample>
-  <TextField label="Enter your ZIP code to start searching and then select your county from the list" name="zip-default" numeric />
+  <TextField size="medium" label="ZIP code" name="zip-medium" numeric />
 </EmbeddedExample>
+
+
+### ZIP code with geolocation information
+
+Use the default (`large`) input size when the user must confirm or enter data containing County, State, and ZIP code.
+
+<EmbeddedExample>
+  <TextField label="Enter your ZIP code and select your location" name="zip-default" numeric />
+</EmbeddedExample>
+
+Consider user <a href="#user-pain-points">pain points</a> when choosing a ZIP code input field size.
 
 ## Interactions
 
@@ -37,7 +41,7 @@ Use the default (`large`) input field when the user must confirm or enter data c
 - Specific validation of numeric values 0–9, spaces, and dashes.
 - Let the user pick the ZIP code and county/state option from an autocomplete option. In some use cases the ZIP code alone is ambiguous because some ZIP codes are in more than one county.
 - Display the option the user selects from the autocomplete option list
-- Error prevention clearly indicate the user needs to enter a valid ZIP code before moving to the next item.
+- Error prevention clearly indicates the user needs to enter a valid ZIP code before moving to the next item.
 
 ## User pain points
 
