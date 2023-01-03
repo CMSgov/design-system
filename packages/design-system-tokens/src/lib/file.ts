@@ -69,17 +69,9 @@ export const getFileDescriptors = (rootPath: string): FileDescriptor[] => {
  *
  * @returns An exit code for success or error
  */
-export const writeFile = (filename: string, vars: string): number => {
-  let outputData: string;
-
-  if (filename.includes('css')) {
-    outputData = `/* Generated from CMSDS tokens on ${new Date().toString()}*/ \n` + vars;
-  } else {
-    outputData = vars;
-  }
-
+export const writeFile = (filename: string, fileData: string): number => {
   try {
-    fs.writeFileSync(filename, outputData);
+    fs.writeFileSync(filename, fileData);
     console.log(`:: wrote ${filename}`);
     return 0;
   } catch (err) {

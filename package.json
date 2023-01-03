@@ -13,7 +13,7 @@
     "build:docs": "yarn build:prop-data && yarn --cwd ./packages/docs build",
     "build:storybook": "./scripts/build-storybook.sh",
     "build:storybook:docs": "./scripts/build-storybook.sh docs",
-    "build:tokens": "yarn --cwd ./packages/design-system-tokens clean && yarn --cwd ./packages/design-system-tokens build themes css-vars && yarn --cwd ./packages/design-system-tokens dist",
+    "build:tokens": "yarn --cwd ./packages/design-system-tokens build:all",
     "build:prop-data": "node ./scripts/extractPropData.js",
     "clean": "yarn clean:cache && yarn clean:modules",
     "clean:cache": "rm -rf packages/docs/.cache",

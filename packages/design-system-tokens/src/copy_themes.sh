@@ -1,25 +1,26 @@
 #!/usr/bin/env bash
 
-# copies all themes into appropriate directories
-
 declare -A PATHS
-PATHS[core]="../../design-system/src/styles"
-PATHS[healthcare]="../../ds-healthcare-gov/src/styles"
-PATHS[medicare]="../../ds-medicare-gov/src/styles"
+PATHS[core]="../../design-system"
+PATHS[healthcare]="../../ds-healthcare-gov"
+PATHS[medicare]="../../ds-medicare-gov"
+
+cd dist
 
 copyThemes()
 {
-  cd dist
-  
   { for i in "${!PATHS[@]}"; do
-    TD=${PATHS[$i]}
+    TD="${PATHS[$i]}/src/styles"
 
+    # copies layout scss vars used by our 
     cp -v "${i}-layout-tokens.scss" "${TD}/_layout.scss"
+    # get rid of any existing theme file in styles folder 
+    # since we're going to append to that file with cat.
     rm "${TD}/${i}-theme.css"
     echo "building ${TD}/${i}-theme.css"
     echo ":root, ::before, ::after, ::backdrop {" >> "${TD}/${i}-theme.css"
     cat "${i}-theme.css" >> "${TD}/${i}-theme.css"
-    cat "${i}-components-theme.css" >> "${TD}/${i}-theme.css"
+    cat "${i}-component-theme.css" >> "${TD}/${i}-theme.css"
     echo "}" >> "${TD}/${i}-theme.css"
     # copy to storybook static for storybook building
     cp -v "${TD}/${i}-theme.css" ../../../.storybook/static
@@ -28,7 +29,21 @@ copyThemes()
   done }
 }
 
+copyScssTokenVars()
+{
+  { for i in "${!PATHS[@]}"; do
+    TD="${PATHS[$i]}/dist/scss"
+
+    # copies scss vars to dist folder for dist process
+    rm -rf $TD
+    mkdir -p $TD
+    cp -v "${i}-tokens.scss" $TD
+    cp -v "${i}-component-tokens.scss" $TD
+  done }
+}
+
 copyThemes
+copyScssTokenVars
 RESULT=$?
 
 if [ $RESULT -eq 0 ]; then
