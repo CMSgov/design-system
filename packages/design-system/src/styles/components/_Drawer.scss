@@ -118,7 +118,6 @@
 
 /* Help drawer body content */
 .ds-c-drawer__body {
-  font-size: var(--font-size-base);
   padding: $spacer-2;
 
   @media (min-width: $media-width-md) {
@@ -141,7 +140,6 @@
 /* Help drawer footer */
 .ds-c-drawer__footer {
   background-color: var(--drawer-footer__background-color);
-  line-height: var(--font-line-height-base);
   padding: $spacer-2;
 
   @supports (display: flex) {

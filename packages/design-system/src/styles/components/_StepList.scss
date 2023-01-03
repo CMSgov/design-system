@@ -120,7 +120,7 @@
 }
 
 .ds-c-step__heading {
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-md); // Needed to overwrite user agent heading tag styles
   line-height: 38px;
   margin: 0;
 }
