@@ -51,7 +51,7 @@ const InlineLinkLists = function (props: InlineLinkListsProps) {
     'footer.nondiscriminationAndA11y':
       'http://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/CMSNondiscriminationNotice.html',
     'footer.privacyPolicy': `${primaryDomain}/privacy`,
-    'footer.privacySettings': <PrivacySettingsLink t={props.t} />,
+    'footer.privacySettings': <PrivacySettingsLink />,
     'footer.linkingPolicy': `${primaryDomain}/privacy/#links`,
     'footer.usingThisSite': `${primaryDomain}/using-this-site`,
     'footer.plainWriting': 'http://www.hhs.gov/open/plain-writing/index.html',
