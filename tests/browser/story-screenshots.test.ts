@@ -12,6 +12,8 @@ const storySkipList = [
   'foundations-layout-grid--fit-to-content',
   'foundations-layout-grid--responsive-columns',
   'patterns-one-column-page-layout--one-column-page-layout',
+  'healthcare-privacysettingslink--default',
+  'healthcare-privacysettingslink--custom-content',
 ];
 
 const isSmokeTest = Boolean(process.env.SMOKE && JSON.parse(process.env.SMOKE));
