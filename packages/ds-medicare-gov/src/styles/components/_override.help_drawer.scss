@@ -2,31 +2,15 @@
 $mct-drawer-close-button-size: 26px;
 $mct-drawer-heading-font-size: $h1-mobile-font-size;
 
-.mct-c-help-drawer {
-  .ds-c-drawer__header {
-    background-color: $drawer-header__background-color;
-  }
+.ds-c-drawer__header-heading {
+  font-family: $font-family-montserrat;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  line-height: $font-line-height-base;
+}
 
-  .ds-c-drawer__header-heading {
-    font-family: $font-family-montserrat;
-    font-size: $mct-drawer-heading-font-size;
-    font-weight: $font-weight-bold;
-    text-align: left;
-  }
-
-  .ds-c-drawer__close-button {
-    border: 0;
-    color: $drawer-close__color;
-
-    svg {
-      height: $mct-drawer-close-button-size;
-      width: $mct-drawer-close-button-size;
-    }
-
-    .ds-c-help-drawer__footer {
-      display: none;
-    }
-  }
+.ds-c-drawer__close-button {
+  align-self: unset;
 }
 
 // Help drawer button with icon

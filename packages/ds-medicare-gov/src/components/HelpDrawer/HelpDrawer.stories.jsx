@@ -3,18 +3,11 @@ import { Title, Subtitle, Description, ArgsTable, PRIMARY_STORY } from '@storybo
 import { useArgs } from '@storybook/client-api';
 
 import HelpDrawerToggle from './HelpDrawerToggle';
-import { HelpDrawer } from '@cmsgov/design-system';
+import HelpDrawer from './HelpDrawer';
 export default {
   title: 'Medicare/Help Drawer',
   component: HelpDrawer,
-  argTypes: {
-    closeButtonText: {
-      control: { type: 'text' },
-    },
-  },
   args: {
-    footerTitle: 'Footer Title',
-    footerBody: <p className="ds-text ds-u-margin--0">Footer content</p>,
     heading: 'Drawer Heading',
   },
   subcomponents: { HelpDrawerToggle },
@@ -69,8 +62,6 @@ export const HelpDrawerToggleWithDrawer = () => {
       {isDrawerVisible && (
         <HelpDrawer
           onCloseClick={() => setIsDrawerVisible({ isDrawerVisible: false })}
-          footerTitle="Footer Title"
-          footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
           heading="Drawer Heading"
         >
           {drawerContent}
@@ -94,8 +85,6 @@ export const HelpDrawerToggleOnDark = () => {
       {isDrawerVisible && (
         <HelpDrawer
           onCloseClick={() => setIsDrawerVisible({ isDrawerVisible: false })}
-          footerTitle="Footer Title"
-          footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
           heading="Drawer Heading"
         >
           {drawerContent}
