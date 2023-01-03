@@ -11,7 +11,6 @@ export default {
       control: { type: 'text' },
     },
     errorPlacement: {
-      defaultValue: 'top',
       control: {
         type: 'radio',
       },
@@ -28,8 +27,9 @@ export default {
     },
   },
   args: {
-    label: 'Birthday',
+    errorPlacement: 'top',
     hint: 'Please enter your birthday',
+    label: 'Birthday',
     name: 'single-input-date-field',
   },
 };

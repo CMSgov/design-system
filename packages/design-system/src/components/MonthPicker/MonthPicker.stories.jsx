@@ -18,10 +18,6 @@ export default {
     inversed: {
       control: 'radio',
       options: [true, false],
-      defaultValue: false,
-    },
-    errorPlacement: {
-      defaultValue: 'top',
     },
     locale: {
       description:
@@ -30,7 +26,9 @@ export default {
   },
   args: {
     hint: "Month Picker can receive optional help text, giving the user additional information of what's required.",
+    inversed: false,
     errorMessage: 'Please meet form requirements.',
+    errorPlacement: 'top',
   },
 };
 

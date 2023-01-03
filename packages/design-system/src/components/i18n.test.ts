@@ -1,4 +1,5 @@
 import {
+  _detectDocumentLanguage,
   getLanguage,
   setLanguage,
   getTranslations,
@@ -13,6 +14,33 @@ import {
 describe('i18n', () => {
   afterEach(() => {
     setLanguage('en');
+  });
+
+  describe('_detectDocumentLanguage', () => {
+    it('detects lang="en"', () => {
+      document.documentElement.setAttribute('lang', 'en');
+      expect(_detectDocumentLanguage()).toEqual('en');
+    });
+
+    it('detects lang="es"', () => {
+      document.documentElement.setAttribute('lang', 'es');
+      expect(_detectDocumentLanguage()).toEqual('es');
+    });
+
+    it('returns undefined for lang="de"', () => {
+      document.documentElement.setAttribute('lang', 'de');
+      expect(_detectDocumentLanguage()).toBeUndefined();
+    });
+
+    it('detects lang="en-US" by returning "en"', () => {
+      document.documentElement.setAttribute('lang', 'en-US');
+      expect(_detectDocumentLanguage()).toEqual('en');
+    });
+
+    it('detects lang="es-US" by returning "es"', () => {
+      document.documentElement.setAttribute('lang', 'es-US');
+      expect(_detectDocumentLanguage()).toEqual('es');
+    });
   });
 
   describe('getLanguage and setLanguage', () => {
