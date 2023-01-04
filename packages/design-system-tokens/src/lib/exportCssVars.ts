@@ -65,7 +65,7 @@ const formatTokensAsCssVars = (
  * @param importedModule - module data
  * @param sep - separator string between prefix and key
  */
-const writeSassFile = (
+const writeSassLayout = (
   filename: string,
   file: FileDescriptor,
   importedModule: any,
@@ -76,11 +76,7 @@ const writeSassFile = (
 
   Object.entries(importedModule.default).forEach(([section]) => {
     tokenItems = flatten(importedModule.default[section]);
-    /*
-     * The core theme scss needs the !default attribute added to every style
-     * to allow for overriding in medicare,
-     * @TODO: get all systems on the same page and remove this
-     */
+    // core requires !default for each style
     const defaultInclude = file.baseName.includes('core') ? ' !default' : '';
 
     output += formatTokensAsCssVars(
@@ -141,11 +137,11 @@ export const exportCssVars = (fileDescriptors: FileDescriptor[], outPath: string
   fileDescriptors.forEach((file) => {
     const importedModule = require(`${file.moduleImportName}`);
     // component files do not need a separator
-    const sep = file.baseName.includes('components') ? '' : '-';
+    const sep = file.baseName.includes('component') ? '' : '-';
 
     const layoutFilename = `${outPath}/${file.baseName}-layout-tokens.scss`;
     const cssVarFilename = `${outPath}/${file.baseName}-theme.css`;
-    writeSassFile(layoutFilename, file, importedModule, sep);
+    writeSassLayout(layoutFilename, file, importedModule, sep);
     writeCssFile(cssVarFilename, importedModule, sep);
   });
 
