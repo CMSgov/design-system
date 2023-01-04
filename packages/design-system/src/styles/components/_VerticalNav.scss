@@ -50,11 +50,11 @@
   border-left: $spacer-half solid transparent;
   color: var(--vertical-nav-label__color);
   display: block;
-  font-family: var(--font-sans); //necessary for <button>
-  font-size: var(--font-size-base); // necessary for <button>
+  font-family: var(--font-sans); // Needed to overwrite user agent heading tag styles
+  font-size: var(--font-size-base); // Needed to overwrite user agent heading tag styles
   line-height: var(--font-line-height-heading);
   padding: $spacer-1 $spacer-2;
-  text-align: left; // necessary for <button>
+  text-align: left; // Needed to overwrite user agent heading tag styles
   text-decoration: none;
 
   &:hover {

@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { tWithLanguage } from '../i18n';
 
 interface PrivacySettingsLinkProps {
+  children?: React.ReactNode;
   className?: string;
 }
 
@@ -20,7 +21,7 @@ export const PrivacySettingsLink = (props: PrivacySettingsLinkProps) => {
   return (
     <>
       <button className={props.className} onClick={openDialog}>
-        {t('footer.privacySettings')}
+        {props.children || t('footer.privacySettings')}
       </button>
       {showDialog && <PrivacySettingsDialog onExit={closeDialog} t={t} />}
     </>

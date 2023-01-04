@@ -3,7 +3,6 @@
 
 .ds-c-accordion {
   color: var(--accordion__color);
-  font-size: var(--font-size-base);
   line-height: var(--font-line-height-base);
   margin: 0;
   padding: 0;
@@ -11,7 +10,7 @@
 }
 
 .ds-c-accordion__heading {
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-base); // Needed to overwrite user agent heading tag styles
   //   line-height: 0.9;
   margin: 0;
 }
@@ -29,7 +28,7 @@
   cursor: pointer;
   display: flex;
   font-family: var(--font-sans);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-base); // Needed to overwrite user agent heading tag styles
   font-weight: var(--font-weight-bold);
   justify-content: space-between;
   margin: 0;
@@ -78,7 +77,6 @@
 
 .ds-c-accordion__content {
   background-color: var(--accordion-content__background-color);
-  font-size: var(--font-size-base);
   line-height: var(--font-line-height-base);
   margin-top: 0;
   overflow: auto;
