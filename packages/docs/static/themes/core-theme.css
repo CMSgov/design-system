@@ -1,5 +1,4 @@
 :root, ::before, ::after, ::backdrop {
-/* Generated from CMSDS tokens on Wed Dec 28 2022 12:47:29 GMT-0600 (Central Standard Time)*/ 
 --animation-ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
 --animation-speed-base: 1;
 --animation-speed-1: 0.25s;
@@ -176,7 +175,6 @@
 --z-dialog: 1000;
 --z-popup: 6000;
 --z-spinner: 9050;
-/* Generated from CMSDS tokens on Wed Dec 28 2022 12:47:29 GMT-0600 (Central Standard Time)*/ 
 --accordion__color: #262626;
 --accordion__background-color: #f2f2f2;
 --accordion__background-color--hover: #d9d9d9;
