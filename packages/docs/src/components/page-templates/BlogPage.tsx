@@ -2,10 +2,11 @@ import React from 'react';
 import ContentRenderer from '../content/ContentRenderer';
 import Layout from '../layout/Layout';
 import avoidRefresh from '../../helpers/avoidRefresh';
-import format from 'date-fns/format';
+import PublishDate from '../content/PublishDate';
 import useTheme from '../../helpers/useTheme';
 import { MdxQuery } from '../../helpers/graphQLTypes';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
+import BackIcon from '../icons/BackIcon';
 
 /**
  * Template for information content pages.
@@ -16,23 +17,27 @@ const BlogPage = ({ data, location }: MdxQuery) => {
 
   return (
     <Layout
-      frontmatter={{
-        title: "What's new",
-      }}
+      frontmatter={frontmatter}
       location={location}
       slug={slug}
       theme={theme}
       tableOfContentsData={tableOfContents?.items}
-    >
-      <>
-        <header>
-          <h2 className="ds-text-heading--2xl ds-u-margin-bottom--0">{frontmatter.title}</h2>
-          <time dateTime={frontmatter.date} className="ds-text-body--sm">
-            {format(new Date(frontmatter.date), 'PPP')}
-          </time>
+      pageHeader={
+        <header className="ds-u-padding--3 ds-u-sm-padding-x--6 ds-u-sm-padding-bottom--3 ds-u-sm-padding-top--2">
+          <div>
+            <Link to="/blog/">
+              <BackIcon className="ds-u-margin-right--1" />
+              See other releases
+            </Link>
+          </div>
+          <h1 className="ds-text-heading--4xl ds-u-sm-margin-top--2 ds-u-margin-bottom--1">
+            {frontmatter.title}
+          </h1>
+          <PublishDate date={frontmatter.date} />
         </header>
-        <ContentRenderer data={body} theme={theme} />
-      </>
+      }
+    >
+      <ContentRenderer data={body} theme={theme} />
     </Layout>
   );
 };

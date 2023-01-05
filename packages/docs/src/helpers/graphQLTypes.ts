@@ -56,6 +56,7 @@ export interface BlogQuery {
           frontmatter: {
             title: string;
             date: string;
+            intro: string;
           };
         };
       }[];

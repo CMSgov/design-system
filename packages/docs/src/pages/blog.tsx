@@ -1,15 +1,14 @@
 import React from 'react';
-import BlogArticle from '../components/BlogArticle';
-import BlogArticleLink from '../components/BlogArticleLink';
 import Layout from '../components/layout/Layout';
 import useTheme from '../helpers/useTheme';
 import { BlogQuery } from '../helpers/graphQLTypes';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
+import PublishDate from '../components/content/PublishDate';
+import classNames from 'classnames';
 
 const BlogIndexPage = ({ data, location }: BlogQuery) => {
   const theme = useTheme();
   const nodes = data.allMdx.edges.map((edge) => edge.node);
-  const firstNode = nodes.shift();
 
   return (
     <Layout
@@ -21,20 +20,24 @@ const BlogIndexPage = ({ data, location }: BlogQuery) => {
       theme={theme}
     >
       <>
-        <BlogArticle
-          title={firstNode.frontmatter.title}
-          date={firstNode.frontmatter.date}
-          slug={firstNode.slug}
-          body={firstNode.body}
-          theme={theme}
-        />
-        {nodes.map((node) => (
-          <BlogArticleLink
-            title={node.frontmatter.title}
-            date={node.frontmatter.date}
-            slug={node.slug}
+        {nodes.map((node, index) => (
+          <article
+            className={classNames(
+              'ds-u-margin-bottom--3',
+              'ds-u-padding-bottom--3',
+              'ds-u-measure--wide',
+              index < nodes.length - 1 && 'ds-u-border-bottom--1'
+            )}
             key={node.slug}
-          />
+          >
+            <header>
+              <h2 className="ds-text-heading--2xl ds-u-margin-bottom--0">
+                <Link to={`/${node.slug}`}>{node.frontmatter.title}</Link>
+              </h2>
+              <PublishDate date={node.frontmatter.date} />
+            </header>
+            <div className="ds-u-margin-top--2">{node.frontmatter.intro}</div>
+          </article>
         ))}
       </>
     </Layout>
@@ -54,6 +57,7 @@ export const query = graphql`
           frontmatter {
             title
             date
+            intro
           }
         }
       }
