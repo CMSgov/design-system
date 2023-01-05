@@ -69,7 +69,7 @@ const ComponentThemeOptions = ({ theme, componentname }: ComponentThemeOptionsPr
   const componentOptions = (
     <Table scrollable stackable borderless>
       <TableCaption className="ds-u-visibility--screen-reader">
-        Sass variables for {componentname}{' '}
+        CSS variables for {componentname}{' '}
       </TableCaption>
       <TableHead>
         <TableRow>

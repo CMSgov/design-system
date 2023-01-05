@@ -70,17 +70,13 @@ Inside the npm package, you will find a `dist` folder, which contains all the fi
     ├── components/
     │   └── index.js        Compiled JS entry point (CommmonJS)
     ├── css/
-    │   └── index.css       Compiled CSS entry point
+    │   │── index.css       Compiled CSS entry point
+    │   └── ***-theme.css   Compiled Theme Variables
     ├── esnext/
     │   └── index.esm.js    Compiled JS entry point (ES Module)
     ├── fonts/
     ├── images/
-    ├── scss/
-    │   ├── base/           Base styles, HTML element selectors
-    │   ├── components/     Component styles
-    │   ├── settings/       Variables, mixins, and functions
-    │   ├── utilities/      Utility classes for individual CSS properties
-    │   └── index.scss      Precompiled SCSS entry point
+    ├── scss/               Contains token definitions as Sass Variables
     └── types/              Typescript definition files
 ```
 
