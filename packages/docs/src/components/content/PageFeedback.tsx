@@ -11,7 +11,7 @@ declare global {
 }
 
 export interface PageFeedbackProps {
-  question: string;
+  question?: string;
 }
 
 /**

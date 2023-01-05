@@ -7,6 +7,7 @@ import useTheme from '../../helpers/useTheme';
 import { MdxQuery } from '../../helpers/graphQLTypes';
 import { graphql, Link } from 'gatsby';
 import BackIcon from '../icons/BackIcon';
+import PageFeedback from '../content/PageFeedback';
 
 /**
  * Template for information content pages.
@@ -14,6 +15,12 @@ import BackIcon from '../icons/BackIcon';
 const BlogPage = ({ data, location }: MdxQuery) => {
   const { frontmatter, body, tableOfContents, slug } = data.mdx;
   const theme = useTheme();
+  const backLink = (
+    <Link to="/blog/">
+      <BackIcon className="ds-u-margin-right--1" />
+      See other releases
+    </Link>
+  );
 
   return (
     <Layout
@@ -24,12 +31,7 @@ const BlogPage = ({ data, location }: MdxQuery) => {
       tableOfContentsData={tableOfContents?.items}
       pageHeader={
         <header className="ds-u-padding--3 ds-u-sm-padding-x--6 ds-u-sm-padding-bottom--3 ds-u-sm-padding-top--2">
-          <div>
-            <Link to="/blog/">
-              <BackIcon className="ds-u-margin-right--1" />
-              See other releases
-            </Link>
-          </div>
+          <div>{backLink}</div>
           <h1 className="ds-text-heading--4xl ds-u-sm-margin-top--2 ds-u-margin-bottom--1">
             {frontmatter.title}
           </h1>
@@ -37,7 +39,11 @@ const BlogPage = ({ data, location }: MdxQuery) => {
         </header>
       }
     >
-      <ContentRenderer data={body} theme={theme} />
+      <>
+        <ContentRenderer data={body} theme={theme} />
+        <PageFeedback />
+        <div className="ds-u-margin-top--4">{backLink}</div>
+      </>
     </Layout>
   );
 };
