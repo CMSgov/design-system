@@ -111,35 +111,55 @@ Where `package-name` is one of the packages named above, `version` is the versio
 ```
   ├── css/
   │   ├── index.css
-  │   ├── base/index.css
-  │   ├── components/index.css
-  │   └── utilities/index.css
+  │   └── ***-theme.css
   └── js/
       ├── react.production.min.js
       ├── react-dom.production.min.js
       └── bundle.js
 ```
 
-#### Example for including version 3.4.0 Core CSS via CDN
+#### Example for including version 6.0.0 via CDN
+
+<ThemeContent onlyThemes={['core']}>
 
 ```html
-<link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/3.4.0/css/index.css" />
+<link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/6.0.0/css/index.css" />
+<link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/6.0.0/css/core-theme.css" />
 ```
 
-#### Example for including version 3.4.0 Core JS via CDN
+</ThemeContent>
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+```html
+<link rel="stylesheet" href="https://design.cms.gov/cdn/ds-healthcare-gov/10.0.0/css/index.css" />
+<link rel="stylesheet" href="https://design.cms.gov/cdn/ds-healthcare-gov/10.0.0/css/healthcare-theme.css" />
+```
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+```html
+<link rel="stylesheet" href="https://design.cms.gov/cdn/ds-medicare-gov/8.0.0/css/index.css" />
+<link rel="stylesheet" href="https://design.cms.gov/cdn/ds-medicare-gov/8.0.0/css/medicare-theme.css" />
+```
+
+</ThemeContent>
+
+#### Example for including version 6.0.0 Core JS via CDN
 
 If you do not already have React and React-DOM included in your page, include them before the design system js bundle.
 
 ```html
-<script type="text/javascript" src="https://design.cms.gov/cdn/design-system/3.4.0/js/react.production.min.js"></script>
-<script type="text/javascript" src="https://design.cms.gov/cdn/design-system/3.4.0/js/react-dom.production.min.js"></script>
-<script type="text/javascript" src="https://design.cms.gov/cdn/design-system/3.4.0/js/bundle.js"></script>
+<script type="text/javascript" src="https://design.cms.gov/cdn/design-system/6.0.0/js/react.production.min.js"></script>
+<script type="text/javascript" src="https://design.cms.gov/cdn/design-system/6.0.0/js/react-dom.production.min.js"></script>
+<script type="text/javascript" src="https://design.cms.gov/cdn/design-system/6.0.0/js/bundle.js"></script>
 ```
 
 ### Option 3: Download assets directly
 
 If you'd like to take a look at the static assets that we publish through npm and our CDN, you can download a tar file for any of the releases [on our GitHub Releases page](https://github.com/CMSgov/design-system/releases). You will find these files in the "Assets" section at the bottom of each release.
-
 
 ## Including the CSS
 
@@ -147,27 +167,112 @@ No matter what framework you use to build your application, you will need to inc
 
 ### With HTML
 
-The simplest way to do that is to include a resource link element in your HTML document, like this:
+You will need to include both the main `index.css` along with a theme file which contains all of the CSS variables needed by the main stylesheet. The simplest way to do that is to include resource link elements in your HTML document, like this, for the core design system:
+
+<ThemeContent onlyThemes={['core']}>
 
 ```html
 <head>
-  <link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/5.0.0/css/index.css" />
+  <link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/6.0.0/css/index.css" />
+  <link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/6.0.0/css/core-theme.css" />
 </head>
 ```
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+```html
+<head>
+  <link rel="stylesheet" href="https://design.cms.gov/cdn/ds-healthcare-gov/10.0.0/css/index.css" />
+  <link rel="stylesheet" href="https://design.cms.gov/cdn/ds-healthcare-gov/10.0.0/css/healthcare-theme.css" />
+</head>
+```
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+```html
+<head>
+  <link rel="stylesheet" href="https://design.cms.gov/cdn/ds-medicare-gov/8.0.0/css/index.css" />
+  <link rel="stylesheet" href="https://design.cms.gov/cdn/ds-medicare-gov/8.0.0/css/medicare-theme.css" />
+</head>
+```
+
+</ThemeContent>
 
 If you are getting the files from npm, you will want to change the `href` to reference the files from your local `node_modules` folder. Likewise if you've downloaded the files directly, the `href` will point to wherever you've put your files.
 
 ### With an asset bundler
 For projects that use an asset bundler, include the assets in whatever way your bundler recommends. For instance, in a WebPack or create-react-app project, you might include the styles in your CSS like this:
 
+<ThemeContent onlyThemes={['core']}>
+
 ```css
 @import '@cmsgov/design-system/dist/css/index';
+@import '@cmsgov/design-system/dist/css/core-theme';
 ```
 
 Or you might import it from your JavaScript like this:
 
 ```js
 import '@cmsgov/design-system/dist/css/index.css';
+import '@cmsgov/design-system/dist/css/core-theme.css';
+```
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+```css
+@import '@cmsgov/ds-healthcare-gov/dist/css/index';
+@import '@cmsgov/ds-healthcare-gov/dist/css/healthcare-theme';
+```
+
+Or you might import it from your JavaScript like this:
+
+```js
+import '@cmsgov/ds-healthcare-gov/dist/css/index.css';
+import '@cmsgov/ds-healthcare-gov/dist/css/healthcare-theme.css';
+```
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+```css
+@import '@cmsgov/ds-medicare-gov/dist/css/index';
+@import '@cmsgov/ds-medicare-gov/dist/css/medicare-theme';
+```
+
+Or you might import it from your JavaScript like this:
+
+```js
+import '@cmsgov/ds-medicare-gov/dist/css/index.css';
+import '@cmsgov/ds-medicare-gov/dist/css/medicare-theme.css';
+```
+
+</ThemeContent>
+
+### CSS Custom Properties
+
+The CMSDS utilizes [CSS Custom Properties](https://www.w3.org/TR/css-variables-1/) to allow for flexible styling of components, layout, animation, typography and color. Lists of variables and their values can be found throughout this documentation.  
+
+These custom properties allow for a degree of customization of the design systems components and layout. To modify a CSS variable simply re-define them within a given context. The default context for all CSS Custom properties is as follows:
+
+```css
+:root, ::before, ::after, ::backdrop {
+  --variable-name: value;
+}
+```
+
+This allows these classes to apply globally to the entire page their loaded on. By re-defining these variables in this same scope or defining a variable in a custom scope, such as a specific class, you can overwrite these variables:
+
+```css
+.ds-c-button {
+  --button__border-color--hover: green;
+}
 ```
 
 ### Fonts and images
