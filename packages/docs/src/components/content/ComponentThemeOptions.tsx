@@ -49,7 +49,7 @@ const lookupThemeValue = (theme: string, value: string): any => {
         className="c-swatch__preview ds-u-margin-right--1 ds-u-radius--pill"
         style={{ backgroundColor: `var(--color-${keyName})` }}
       ></span>
-      <code>$color-{keyName}</code>
+      <code>--color-{keyName}</code>
     </span>
   ) : (
     <span>
@@ -86,7 +86,7 @@ const ComponentThemeOptions = ({ theme, componentname }: ComponentThemeOptionsPr
           <TableRow role="row" key={uniqueId('config_option_')}>
             <TableCell stackedTitle="Variable" headers="columnvariable">
               <code className="ds-u-font-weight--bold">
-                ${componentname}
+                --{componentname}
                 {key}
               </code>
             </TableCell>
