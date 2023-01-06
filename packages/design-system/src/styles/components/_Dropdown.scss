@@ -3,7 +3,7 @@
 select.ds-c-field {
   appearance: none;
   background-color: var(--dropdown__background-color);
-  background-image: url('#{$image-path}/arrow-both.svg');
+  background-image: url('../images/arrow-both.svg');
   background-position: right $spacer-1 center;
   background-repeat: no-repeat;
   background-size: var(--dropdown__icon-size);
