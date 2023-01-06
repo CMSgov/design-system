@@ -18,9 +18,9 @@ const swatches: Record<string, SwatchColor[]> = Object.keys(colorTokens).reduce(
  */
 const ColorTokenSwatches = () =>
   Object.entries(swatches).map(([swatchName, swatchColors]) => (
-    <>
+    <React.Fragment key={swatchName}>
       <h2 className="ds-u-text-transform--capitalize">{swatchName}</h2>
-      <div className="c-swatch-list ds-u-border--1 ds-u-padding--2" key={swatchName}>
+      <div className="c-swatch-list ds-u-border--1 ds-u-padding--2">
         {swatchColors.map(({ name, value }, index) => (
           <article
             className={classNames(
@@ -40,7 +40,7 @@ const ColorTokenSwatches = () =>
           </article>
         ))}
       </div>
-    </>
+    </React.Fragment>
   ));
 
 export default ColorTokenSwatches;
