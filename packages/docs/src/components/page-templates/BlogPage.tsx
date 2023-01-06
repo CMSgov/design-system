@@ -39,11 +39,11 @@ const BlogPage = ({ data, location }: MdxQuery) => {
         </header>
       }
     >
-      <>
+      <div className="ds-u-measure--wide">
         <ContentRenderer data={body} theme={theme} />
         <PageFeedback />
         <div className="ds-u-margin-top--4">{backLink}</div>
-      </>
+      </div>
     </Layout>
   );
 };
