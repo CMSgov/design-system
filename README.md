@@ -29,11 +29,6 @@ You're currently at the root of a monorepo containing multiple NPM packages loca
 
 This project uses [Yarn](https://yarnpkg.com/) for package management. Yarn helps to ensure everyone is using the same package versions. [**Install Yarn**](https://yarnpkg.com/cli/install), if you don't have it yet.
 
-### Getting started
-
-1. `yarn install`
-   - This will also run [Lerna](https://lerna.js.org/) `bootstrap` which allows us to have multiple packages within the same repo (a monorepo). Lerna installs all our dependencies and symlinks any cross-dependencies.
-1. `yarn start`
 
 _Note_: When you create a Git commit, any staged scripts will be automatically ran through ESLint and Prettier. If the linter catches an error, your commit will fail. This is a feature, not a bug :)
 
@@ -41,15 +36,20 @@ _Note_: When you create a Git commit, any staged scripts will be automatically r
 
 These scripts can all be run from the root level of the repo:
 
-- `yarn start`
-  - Starts local server running the documentation site
-  - Regenerates documentation when files change
+- `yarn install`
+  - This will also run [Lerna](https://lerna.js.org/) `bootstrap` which allows us to have multiple packages within the same repo (a monorepo). Lerna installs all our dependencies and symlinks any cross-dependencies.
+
 - `yarn build`
   - Compile/transpile/uglify everything and makes things release-ready.
   - `yarn build:healthcare` to build the Healthcare.gov Design System
   - `yarn build:medicare` to build the Medicare.gov Design System
 - `yarn build:storybook:docs && yarn build:docs`
   - Builds the docs site statically
+
+- `yarn start`
+  - Starts local server running the documentation site
+  - Regenerates documentation when files change
+  - **Before** running `start` run the `build` command
 - `yarn storybook`
   - Starts storybook for easier local development for the core package
   - `yarn storybook:healthcare` starts storybook for healthcare stories & styles
