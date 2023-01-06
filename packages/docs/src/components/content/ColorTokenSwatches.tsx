@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import colorTokens from 'design-system-tokens/src/tokens/color';
 
 interface SwatchColor {
@@ -17,20 +18,29 @@ const swatches: Record<string, SwatchColor[]> = Object.keys(colorTokens).reduce(
  */
 const ColorTokenSwatches = () =>
   Object.entries(swatches).map(([swatchName, swatchColors]) => (
-    <div className="c-swatch-list ds-u-border--1 ds-u-padding--2" key={swatchName}>
-      {swatchColors.map(({ name, value }) => (
-        <article className="ds-u-margin-bottom--1 c-swatch" key={`${name}-${value}`}>
-          <div
-            className={`c-swatch__preview ds-u-margin-right--1 ds-u-radius--circle`}
-            style={{ backgroundColor: value }}
-          ></div>
-          <code className="c-swatch__name">{name}</code>
-          <code className="c-swatch__label js-swatch-hex ds-u-fill--transparent ds-u-color--gray">
-            {value}
-          </code>
-        </article>
-      ))}
-    </div>
+    <>
+      <h2 className="ds-u-text-transform--capitalize">{swatchName}</h2>
+      <div className="c-swatch-list ds-u-border--1 ds-u-padding--2" key={swatchName}>
+        {swatchColors.map(({ name, value }, index) => (
+          <article
+            className={classNames(
+              'c-swatch',
+              index < swatchColors.length - 1 && 'ds-u-margin-bottom--1'
+            )}
+            key={`${name}-${value}`}
+          >
+            <div
+              className={`c-swatch__preview ds-u-margin-right--1 ds-u-radius--circle`}
+              style={{ backgroundColor: value }}
+            ></div>
+            <code className="c-swatch__name">{name}</code>
+            <code className="c-swatch__label js-swatch-hex ds-u-fill--transparent ds-u-color--gray">
+              {value}
+            </code>
+          </article>
+        ))}
+      </div>
+    </>
   ));
 
 export default ColorTokenSwatches;
