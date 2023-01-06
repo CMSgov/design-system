@@ -6,7 +6,7 @@
 // utilized anywhere important that the component svg can't be used.
 
 .ds-c-field__error-message::before {
-  background-image: url('#{$image-path}/error-red.svg');
+  background-image: url('../images/error-red.svg');
   background-position-x: left;
   background-position-y: center;
   background-repeat: no-repeat;
@@ -17,7 +17,7 @@
 }
 
 .ds-c-field__error-message--inverse::before {
-  background-image: url('#{$image-path}/error-light-red.svg');
+  background-image: url('../images/error-light-red.svg');
 }
 
 // overwrites the background image rendering when the InlineError

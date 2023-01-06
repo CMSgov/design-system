@@ -135,7 +135,6 @@ export const global: AnyTokenValues = {
   'site-margins-mobile':        '1.5rem',
   'site-max-width':             '1040px',
   'text-max-width':             '53rem',
-  'image-path':                 '"../images"',
 };
 
 export const shadow: ShadowTokens = {
