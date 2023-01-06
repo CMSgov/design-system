@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PrivacySettingsLink should render with custom class and children 1`] = `
+<div>
+  <button
+    class="ds-t-test-class"
+  >
+    Custom modal trigger
+  </button>
+</div>
+`;
+
+exports[`PrivacySettingsLink should render with default options 1`] = `
+<div>
+  <button>
+    Privacy Settings
+  </button>
+</div>
+`;
