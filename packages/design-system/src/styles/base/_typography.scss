@@ -23,6 +23,15 @@
   font-weight: $typography-heading__font-weight;
   line-height: $font-line-height-heading;
   margin: 0;
+
+  a,
+  a:hover {
+    // Links inside headings have thin underlines without this. Setting `text-decoration: underline`
+    // will also reset it. TODO: Figure out a more comprehensive system for setting the thickness
+    // and offset
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+  }
 }
 
 // Headings
