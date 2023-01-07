@@ -20,26 +20,26 @@ const ColorTokenSwatches = () =>
   Object.entries(swatches).map(([swatchName, swatchColors]) => (
     <React.Fragment key={swatchName}>
       <h2 className="ds-u-text-transform--capitalize">{swatchName}</h2>
-      <div className="c-swatch-list ds-u-border--1 ds-u-padding--2">
-        {swatchColors.map(({ name, value }, index) => (
-          <article
-            className={classNames(
-              'c-swatch',
-              index < swatchColors.length - 1 && 'ds-u-margin-bottom--1'
-            )}
-            key={`${name}-${value}`}
-          >
-            <div
-              className={`c-swatch__preview ds-u-margin-right--1 ds-u-radius--circle`}
-              style={{ backgroundColor: value }}
-            ></div>
-            <code className="c-swatch__name">{name}</code>
-            <code className="c-swatch__label js-swatch-hex ds-u-fill--transparent ds-u-color--gray">
-              {value}
-            </code>
-          </article>
+      <dl>
+        {swatchColors.map(({ name, value }) => (
+          <div key={`${name}-${value}`}>
+            <dt style={{ display: 'inline-block' }}>
+              <svg
+                viewBox="0 0 200 32"
+                style={{ width: '200px', height: '32px', verticalAlign: 'middle' }}
+              >
+                <rect width="100%" height="100%" fill={value} />
+              </svg>
+              <code className="c-swatch__name">{name}</code>
+            </dt>
+            <dd style={{ display: 'inline-block' }} className="margin-left--1">
+              <code className="c-swatch__label js-swatch-hex ds-u-fill--transparent ds-u-color--gray">
+                {value}
+              </code>
+            </dd>
+          </div>
         ))}
-      </div>
+      </dl>
     </React.Fragment>
   ));
 
