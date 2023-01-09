@@ -25,7 +25,7 @@ const renderTransparencyPattern = (id: string) => (
 /**
  *
  */
-const ColorTokenSwatches = () =>
+const ColorRamps = () =>
   Object.entries(swatches).map(([swatchName, swatchColors], i) => {
     const patternId = `pattern-checkers-${i}`;
     return (
@@ -56,4 +56,4 @@ const ColorTokenSwatches = () =>
     );
   });
 
-export default ColorTokenSwatches;
+export default ColorRamps;
