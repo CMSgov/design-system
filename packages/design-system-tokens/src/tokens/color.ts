@@ -7,16 +7,19 @@ import { to, ColorTokens } from '../lib/types';
 const color = to<ColorTokens>()({
   'transparent':     '#ffffff00',
 
+  // White
   'white-solid':     '#ffffff',
   'white-alpha25':   '#ffffff40',
   'white-alpha50':   '#ffffff80',
   'white-alpha80':   '#ffffffCC',
 
+  // Black
   'black-solid':     '#000000',
   'black-alpha25':   '#00000040',
   'black-alpha50':   '#00000080',
   'black-alpha80':   '#000000CC',
 
+  // Neutrals
   'granite-50':      '#f2f2f2',
   'granite-100':     '#d9d9d9',
   'granite-200':     '#c0c0c0',
@@ -28,7 +31,8 @@ const color = to<ColorTokens>()({
   'granite-800':     '#404040',
   'granite-900':     '#262626',
   'granite-1000':    '#0d0d0d',
-
+  
+  // Blues
   'ocean-50':        '#e6f1f8',
   'ocean-100':       '#b3d4eb',
   'ocean-200':       '#80b8de',
@@ -101,6 +105,19 @@ const color = to<ColorTokens>()({
   'lapis-900':       '#091222',
   'lapis-1000':      '#03060b',
 
+  'deepsea-50':       '#e7e9f5',
+  'deepsea-100':      '#b6bde0',
+  'deepsea-200':      '#8692cc',
+  'deepsea-300':      '#5666b8',
+  'deepsea-400':      '#253aa3',
+  'deepsea-500':      '#0d2499',
+  'deepsea-600':      '#0c208a',
+  'deepsea-700':      '#09196b',
+  'deepsea-800':      '#07124d',
+  'deepsea-900':      '#040b2e',
+  'deepsea-1000':     '#01040f',
+
+  // Greens
   'spring-50':       '#e7f3e7',
   'spring-100':      '#b8dcb7',
   'spring-200':      '#89c487',
@@ -125,6 +142,19 @@ const color = to<ColorTokens>()({
   'teal-900':        '#06201c',
   'teal-1000':       '#020b09',
 
+  'emerald-50':        '#ecfcf3',
+  'emerald-100':       '#c6f6db',
+  'emerald-200':       '#a1f1c4',
+  'emerald-300':       '#7bebac',
+  'emerald-400':       '#55e594',
+  'emerald-500':       '#42e288',
+  'emerald-600':       '#3bcb7a',
+  'emerald-700':       '#2e9e5f',
+  'emerald-800':       '#217144',
+  'emerald-900':       '#144429',
+  'emerald-1000':      '#07170e',
+  
+  // Reds
   'rose-50':         '#fce8ec',
   'rose-100':        '#f7bbc5',
   'rose-200':        '#f18e9e',
@@ -148,7 +178,8 @@ const color = to<ColorTokens>()({
   'crimson-800':     '#590000',
   'crimson-900':     '#350000',
   'crimson-1000':    '#120000',
-
+  
+  // Yellows
   'goldenrod-50':    '#fef9e9',
   'goldenrod-100':   '#fdedbc',
   'goldenrod-200':   '#fce28f',
@@ -161,6 +192,19 @@ const color = to<ColorTokens>()({
   'goldenrod-900':   '#4a3b09',
   'goldenrod-1000':  '#191403',
 
+  'dandelion-50':      '#fffce6',
+  'dandelion-100':      '#fff7b5',
+  'dandelion-200':      '#fff284',
+  'dandelion-300':      '#ffec52',
+  'dandelion-400':      '#ffe721',
+  'dandelion-500':      '#ffe400',
+  'dandelion-600':      '#e6cd07',
+  'dandelion-700':      '#b3a006',
+  'dandelion-800':      '#807204',
+  'dandelion-900':      '#4c4402',
+  'dandelion-1000':      '#191701',
+
+  // Purples
   'windsor-50':      '#edeaf4',
   'windsor-100':     '#c9c0de',
   'windsor-200':     '#a696c9',
@@ -185,6 +229,7 @@ const color = to<ColorTokens>()({
   'orchid-900':      '#390637',
   'orchid-1000':     '#130212',
 
+  // Oranges
   'persimmon-50':    '#fcebe6',
   'persimmon-100':   '#f5c3b3',
   'persimmon-200':   '#ee9b81',
@@ -208,6 +253,7 @@ const color = to<ColorTokens>()({
   'copper-800':      '#653b19',
   'copper-900':      '#3c230f',
   'copper-1000':     '#140c05',
+
 });
 
 export default color;
