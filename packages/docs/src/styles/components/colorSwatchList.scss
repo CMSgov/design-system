@@ -14,7 +14,16 @@
 }
 
 .c-color-ramp {
-  max-width: 300px;
+  clip-path: inset(0 0);
+  max-width: 256px;
+  position: relative;
+}
+
+.c-color-ramp__transparency-pattern {
+  left: 0;
+  position: absolute;
+  top: 0;
+  z-index: -1;
 }
 
 .c-color-ramp__item {

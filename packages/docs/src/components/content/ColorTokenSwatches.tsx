@@ -26,20 +26,22 @@ const renderTransparencyPattern = (id: string) => (
  *
  */
 const ColorTokenSwatches = () =>
-  Object.entries(swatches).map(([swatchName, swatchColors], i) => (
-    <React.Fragment key={swatchName}>
-      <h2 className="ds-u-text-transform--capitalize" id={`hello-${i}`}>
-        {swatchName}
-      </h2>
-      <dl className="c-color-ramp">
-        {swatchColors.map(({ name, value }, j) => {
-          const patternId = `pattern-checkers-${i}-${j}`;
-          return (
+  Object.entries(swatches).map(([swatchName, swatchColors], i) => {
+    const patternId = `pattern-checkers-${i}`;
+    return (
+      <React.Fragment key={swatchName}>
+        <h2 className="ds-u-text-transform--capitalize" id={`hello-${i}`}>
+          {swatchName}
+        </h2>
+        <dl className="c-color-ramp">
+          <svg className="c-color-ramp__transparency-pattern" viewBox="0 0 1024 9999" width="1024">
+            <defs>{renderTransparencyPattern(patternId)}</defs>
+            <rect x="0" y="0" width="100%" height="100%" fill={`url(#${patternId})`}></rect>
+          </svg>
+          {swatchColors.map(({ name, value }) => (
             <div className="c-color-ramp__item" key={`${name}-${value}`}>
               <svg viewBox="0 0 999 32">
-                <defs>{renderTransparencyPattern(patternId)}</defs>
-                <rect x="0" y="0" width="100%" height="100%" fill={`url(#${patternId})`}></rect>
-                <rect x="0" y="-10%" width="100%" height="120%" fill={value} />
+                <rect x="0" y="0" width="100%" height="100%" fill={value} />
               </svg>
               <dt style={{ display: 'inline-block' }}>
                 <code>{name}</code>
@@ -48,10 +50,10 @@ const ColorTokenSwatches = () =>
                 <code>{value}</code>
               </dd>
             </div>
-          );
-        })}
-      </dl>
-    </React.Fragment>
-  ));
+          ))}
+        </dl>
+      </React.Fragment>
+    );
+  });
 
 export default ColorTokenSwatches;
