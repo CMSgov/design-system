@@ -12,3 +12,22 @@
   vertical-align: middle;
   width: $spacer-4;
 }
+
+.c-color-ramp {
+  max-width: 300px;
+}
+
+.c-color-ramp__item {
+  clip-path: inset(0 0);
+  padding: $spacer-1;
+  position: relative;
+  text-align: right;
+
+  svg {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+  }
+}
