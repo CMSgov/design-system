@@ -128,5 +128,5 @@ dialog.fixed {
   left: 0;
   position: fixed;
   right: 0;
-  top: var(--body_top--dialog-open) 0;
+  top: var(--body_top--dialog-open, 0);
 }
