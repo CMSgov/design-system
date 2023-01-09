@@ -16,6 +16,8 @@
     "build:tokens": "yarn --cwd ./packages/design-system-tokens build:all",
     "build:docs": "yarn build:storybook:docs && yarn build:prop-data && yarn --cwd ./packages/docs build",
     "build:prop-data": "node ./scripts/extractPropData.js",
+    "build:tokens": "yarn --cwd ./packages/design-system-tokens build themes scss && yarn --cwd ./packages/design-system-tokens build themes css-vars && yarn --cwd ./packages/design-system-tokens dist",
+    "check:maturity": "./scripts/maturityCheck.sh",
     "clean": "yarn clean:cache && yarn clean:modules",
     "clean:cache": "rm -rf packages/docs/.cache",
     "clean:modules": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",

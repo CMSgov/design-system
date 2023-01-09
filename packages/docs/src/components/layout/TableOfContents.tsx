@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'gatsby';
 import { TableOfContentsItem } from '../../helpers/graphQLTypes';
 
 function cleanTitle(title: string) {
@@ -40,7 +41,7 @@ export const TableOfContentsList = ({ items, level, className = '' }: TableOfCon
     <ul role="list" className={`c-table-of-contents__list ds-u-padding-right--0 ${className}`}>
       {items.map((item) => (
         <li key={item.title} className={itemClasses}>
-          <a href={item.url}>{cleanTitle(item.title)}</a>
+          <Link to={item.url}>{cleanTitle(item.title)}</Link>
           {item.items && <TableOfContentsList items={item.items} level={level + 1} />}
         </li>
       ))}
@@ -58,7 +59,7 @@ export const TableOfContentsFeedback = ({ slug }: TableOfContentsFeedbackProps) 
     </h2>
     <ul role="list" className="ds-c-list ds-c-list--bare ds-u-md-margin-y--2">
       <li>
-        <a href="/contact">Contact the team</a>
+        <Link to="/contact">Contact the team</Link>
       </li>
       <li>
         <a href="https://github.com/CMSgov/design-system/discussions">

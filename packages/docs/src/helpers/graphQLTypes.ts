@@ -21,6 +21,7 @@ export interface LocationInterface {
 
 export interface FrontmatterInterface {
   title: string;
+  date?: string;
   core?: ComponentLinksInterface;
   healthcare?: ComponentLinksInterface;
   medicare?: ComponentLinksInterface;
@@ -40,6 +41,25 @@ export interface MdxQuery {
       tableOfContents?: {
         items: TableOfContentsItem[];
       };
+    };
+  };
+  location?: LocationInterface;
+}
+
+export interface BlogQuery {
+  data: {
+    allMdx: {
+      edges: {
+        node: {
+          body: string;
+          slug?: string;
+          frontmatter: {
+            title: string;
+            date: string;
+            intro: string;
+          };
+        };
+      }[];
     };
   };
   location?: LocationInterface;
