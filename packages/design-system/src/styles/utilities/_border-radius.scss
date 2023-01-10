@@ -1,14 +1,12 @@
-@import '../settings/index.scss';
-
 // TODO: Example border radius utilities and make utility format consistent
 .ds-u-radius {
-  border-radius: $border-radius;
+  border-radius: var(--radius-default);
 }
 
 .ds-u-radius--pill {
-  border-radius: $border-radius-pill;
+  border-radius: var(--radius-pill);
 }
 
 .ds-u-radius--circle {
-  border-radius: $border-radius-circle;
+  border-radius: var(--radius-circle);
 }

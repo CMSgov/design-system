@@ -1,7 +1,7 @@
 // Color examples
 .c-swatch__name,
 .c-swatch__label {
-  font-size: $font-size-md;
+  font-size: var(--font-size-md);
 }
 
 .c-swatch__preview {

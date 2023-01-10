@@ -29,7 +29,6 @@ You're currently at the root of a monorepo containing multiple NPM packages loca
 
 This project uses [Yarn](https://yarnpkg.com/) for package management. Yarn helps to ensure everyone is using the same package versions. [**Install Yarn**](https://yarnpkg.com/cli/install), if you don't have it yet.
 
-
 _Note_: When you create a Git commit, any staged scripts will be automatically ran through ESLint and Prettier. If the linter catches an error, your commit will fail. This is a feature, not a bug :)
 
 ### Scripts
@@ -37,6 +36,7 @@ _Note_: When you create a Git commit, any staged scripts will be automatically r
 These scripts can all be run from the root level of the repo:
 
 - `yarn install`
+
   - This will also run [Lerna](https://lerna.js.org/) `bootstrap` which allows us to have multiple packages within the same repo (a monorepo). Lerna installs all our dependencies and symlinks any cross-dependencies.
 
 - `yarn build`
@@ -44,6 +44,7 @@ These scripts can all be run from the root level of the repo:
   - `yarn build:healthcare` to build the Healthcare.gov Design System
   - `yarn build:medicare` to build the Medicare.gov Design System
 - `yarn build:storybook:docs && yarn build:docs`
+
   - Builds the docs site statically
 
 - `yarn start`

@@ -37,7 +37,7 @@ The design system utilizes a responsive 12-column layout grid.
       />
       <span class="ds-u-font-size--sm">
         Gutters are the gaps between columns. Gutter widths are a fixed value of 16px (
-        <code>$spacer-2</code>).
+        <code>--spacer-2</code>).
       </span>
     </div>
   </div>
@@ -51,8 +51,8 @@ The design system utilizes a responsive 12-column layout grid.
       />
       <span class="ds-u-font-size--sm">
         Gutter margins are the outer margins of the grid. From 0-543px the grid margins are 16px (
-        <code>$spacer-2</code>) from 544px (small breakpoint) and up the grid margins are 32px (
-        <code>$spacer-4</code>).
+        <code>--spacer-2</code>) from 544px (small breakpoint) and up the grid margins are 32px (
+        <code>--spacer-4</code>).
       </span>
     </div>
     <div class="ds-l-col--6 ds-u-margin-bottom--2">
@@ -264,9 +264,9 @@ In the example below, the cells span:
 - Follow the grid consistently to help support the brain while skimming and scanning and reduce cognitive load when trying to make sense of an inconsistently layout experience.
 - Ensure primary interaction elements like call to action buttons appear in similar location to reduce the amount of time it takes users to select thees elements and reduced the time to locate these elements.
 
-### Customization
+### Sass Variables
 
-The following Sass variables can be overridden to customize the grid:
+The following Sass variables are available in the `dist/scss` folder:
 
 - `$grid-columns`
 - `$grid-gutter-width`

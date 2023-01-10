@@ -8,12 +8,12 @@
 }
 
 .c-spacing-utility-example__container {
-  background-color: $color-secondary;
+  background-color: var(--color-secondary);
   display: inline-flex;
 }
 
 .c-spacing-utility-example__item:after {
-  background: $color-white;
+  background: var(--color-white);
   content: '';
   display: table;
   height: $spacer-4;
@@ -21,13 +21,13 @@
 }
 
 .c-spacing-utility-example--margin .c-spacing-utility-example__item:after {
-  border: 1px solid $color-black;
+  border: 1px solid var(--color-black);
   box-sizing: border-box;
   width: ($spacer-4 + 2px);
 }
 
 .c-spacing-utility-example--padding .c-spacing-utility-example__container {
-  border: 1px solid $color-black;
+  border: 1px solid var(--color-black);
 }
 
 .c-spacing-utility-example__container-auto-margin {

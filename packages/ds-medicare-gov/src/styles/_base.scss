@@ -1,0 +1,130 @@
+@use 'layout' as *;
+
+/**
+ * Icon Overrides
+ */
+
+svg {
+  &.ds-u-color--success {
+    .apply-fill {
+      fill: var(--color-success);
+    }
+  }
+
+  &.ds-u-color--error {
+    .apply-fill {
+      fill: var(--color-error);
+    }
+  }
+
+  &.ds-u-color--white {
+    .apply-fill {
+      fill: #fff;
+    }
+  }
+}
+
+/**
+ * Typography overrides
+ */
+
+// Specific style overrides that are not easily affected via variables alone.
+.ds-display,
+.ds-title,
+.ds-h1,
+.ds-h2,
+.ds-h3,
+.ds-h4,
+.ds-h5,
+.ds-h6,
+.ds-text-heading--5xl,
+.ds-text-heading--4xl,
+.ds-text-heading--3xl,
+.ds-text-heading--2xl,
+.ds-text-heading--xl,
+.ds-text-heading--lg,
+.ds-text-heading--md,
+.ds-text-heading--sm {
+  > a {
+    color: var(--color-primary);
+    text-decoration-color: var(--color-primary-light);
+    text-underline-offset: 3px;
+    &:hover {
+      color: var(--color-primary-darker);
+      text-decoration-color: var(--color-primary-darker);
+    }
+  }
+}
+
+.ds-h1,
+.ds-text-heading--3xl {
+  line-height: $spacer-5;
+  margin-bottom: 44px;
+  @media screen and (min-width: $media-width-md) {
+    line-height: $spacer-6;
+    margin-bottom: 52px;
+  }
+}
+
+.ds-h2,
+.ds-text-heading--2xl {
+  line-height: $spacer-5;
+  margin-bottom: 44px;
+  @media screen and (max-width: $media-width-md) {
+    font-size: 28px;
+    line-height: $spacer-5;
+    margin-bottom: 44px;
+  }
+}
+
+.ds-h3,
+.ds-text-heading--xl {
+  line-height: $spacer-4;
+  margin-bottom: $spacer-4;
+}
+
+.ds-h4,
+.ds-text-heading--lg {
+  line-height: 28px;
+  margin-bottom: $spacer-3;
+}
+
+.ds-h5,
+.ds-text-heading--md {
+  line-height: $spacer-3;
+  margin-bottom: $spacer-2;
+}
+
+.ds-h6,
+.ds-text-heading--sm {
+  line-height: 20px;
+  margin-bottom: $spacer-1;
+}
+
+.mct-p1,
+.ds-text-body--lg,
+.mct-p2,
+.ds-text-body--md,
+.mct-p3,
+.ds-text-body--sm {
+  color: var(--color-base);
+  margin-top: 0;
+}
+
+.mct-p1,
+.ds-text-body--lg {
+  line-height: 28px;
+  margin-bottom: 12px;
+}
+
+.mct-p2,
+.ds-text-body--md {
+  line-height: $spacer-3;
+  margin-bottom: $spacer-1;
+}
+
+.mct-p3,
+.ds-text-body--sm {
+  line-height: 20px;
+  margin-bottom: $spacer-1;
+}

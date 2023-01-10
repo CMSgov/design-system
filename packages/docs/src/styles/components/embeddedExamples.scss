@@ -1,14 +1,14 @@
 .example-label {
-  color: $color-gray;
+  color: var(--color-gray);
   display: block;
-  font-size: $font-size-sm;
-  font-weight: $font-weight-normal;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
   margin-bottom: $spacer-1;
 }
 
 .example-list {
   article {
-    border-bottom: 1px solid $color-gray-lighter;
+    border-bottom: 1px solid var(--color-gray-lighter);
     padding-bottom: $spacer-2;
     padding-top: $spacer-2;
 
@@ -49,23 +49,12 @@
   height: $spacer-7;
 }
 
-// layout grid examples
-.example-grid {
-  .ds-l-row > [class*='ds-l-'],
-  .ds-l-form-row > [class*='ds-l-'] {
-    background-color: $color-secondary-lightest;
-    outline: 2px dashed $color-secondary;
-    padding-bottom: $spacer-2;
-    padding-top: $spacer-2;
-  }
-}
-
 .utility-example {
-  background-color: $color-secondary-lightest;
-  outline: 2px dashed $color-secondary;
+  background-color: var(--color-secondary-lightest);
+  outline: 2px dashed var(--color-secondary);
 
   code {
-    background-color: $color-secondary-lightest;
+    background-color: var(--color-secondary-lightest);
   }
 }
 

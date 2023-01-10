@@ -46,7 +46,7 @@ const lookupThemeValue = (theme: string, value: string): any => {
   const elem = keyName ? (
     <span>
       <ColorSwatch colorTokenName={keyName} title={`hex value: ${value}`} />
-      <code>$color-{keyName}</code>
+      <code>--color-{keyName}</code>
     </span>
   ) : (
     <span>
@@ -66,7 +66,7 @@ const ComponentThemeOptions = ({ theme, componentname }: ComponentThemeOptionsPr
   const componentOptions = (
     <Table scrollable stackable borderless>
       <TableCaption className="ds-u-visibility--screen-reader">
-        Sass variables for {componentname}{' '}
+        CSS variables for {componentname}{' '}
       </TableCaption>
       <TableHead>
         <TableRow>
@@ -83,7 +83,7 @@ const ComponentThemeOptions = ({ theme, componentname }: ComponentThemeOptionsPr
           <TableRow role="row" key={uniqueId('config_option_')}>
             <TableCell stackedTitle="Variable" headers="columnvariable">
               <code className="ds-u-font-weight--bold">
-                ${componentname}
+                --{componentname}
                 {key}
               </code>
             </TableCell>

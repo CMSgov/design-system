@@ -1,13 +1,12 @@
-.hc-c-privacy-settings-table {
-  $breakpoint-large-min: $media-width-md;
-  $breakpoint-small-max: $breakpoint-large-min - 1;
+@use '../layout' as *;
 
+.hc-c-privacy-settings-table {
   td:last-child {
     // Avoid text wrapping on the radio buttons
     min-width: 132px;
   }
 
-  @media screen and (max-width: $breakpoint-small-max) {
+  @media screen and (max-width: $media-width-md - 1) {
     &,
     tbody {
       display: block;
@@ -32,20 +31,20 @@
 
     [data-title]::before {
       content: attr(data-title) ':\00A0';
-      font-weight: $font-weight-bold;
+      font-weight: var(--font-weight-bold);
     }
 
     td:nth-child(1) {
-      font-weight: $font-weight-bold;
+      font-weight: var(--font-weight-bold);
     }
 
     tr {
-      border-bottom: 2px solid $color-border;
+      border-bottom: 2px solid var(--color-border);
       margin-top: $spacer-1;
     }
   }
 
-  @media screen and (min-width: $breakpoint-large-min) {
+  @media screen and (min-width: $media-width-md) {
     th:nth-child(1) {
       min-width: 110px;
     }

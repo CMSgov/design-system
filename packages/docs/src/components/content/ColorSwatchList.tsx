@@ -13,7 +13,7 @@ interface ColorSwatchListProps {
    */
   colorNames: string[];
   /**
-   * the start of the color name. Sometimes it is the variable preface (`$color`) or sometimes it is the css class name (`ds-u`)
+   * the start of the color name. Sometimes it is the variable preface (`--color`) or sometimes it is the css class name (`ds-u`)
    */
   preface: string;
   /**
@@ -30,8 +30,8 @@ export const rgbToHex = (r: number, g: number, b: number) => {
 };
 
 /**
- * displays a list of color swatches with a sample of the color, the SCSS variable name & the hex value
- * @param colorNames {String[]} a list of color names - should be same as SCSS token
+ * displays a list of color swatches with a sample of the color, the CSS variable name & the hex value
+ * @param colorNames {String[]} a list of color names - should be same as CSS variable
  */
 const ColorSwatchList = ({ backgroundClass, colorNames, preface, theme }: ColorSwatchListProps) => {
   const refList = useRef([]);
