@@ -16,13 +16,20 @@
 .c-color-ramp {
   clip-path: inset(0 0);
   max-width: 256px;
+  // Move everything 1px away from the clipping rectangle to avoid a bug where
+  // we get a subpixel-tall row of transparency pattern bleeding through on the
+  // top edge of the ramp.
+  padding-top: 1px;
   position: relative;
 }
 
 .c-color-ramp__transparency-pattern {
   left: 0;
   position: absolute;
-  top: 0;
+  // Move everything 1px away from the clipping rectangle to avoid a bug where
+  // we get a subpixel-tall row of transparency pattern bleeding through on the
+  // top edge of the ramp.
+  top: 1px;
   z-index: -2;
 }
 

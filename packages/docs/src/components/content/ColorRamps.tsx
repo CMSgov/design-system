@@ -34,13 +34,13 @@ const ColorRamps = () =>
           {swatchName}
         </h2>
         <dl className="c-color-ramp">
-          <svg className="c-color-ramp__transparency-pattern" viewBox="0 0 1024 9999" width="1024">
+          <svg className="c-color-ramp__transparency-pattern" viewBox="0 0 1024 1337" width="1024">
             <defs>{renderTransparencyPattern(patternId)}</defs>
             <rect x="0" y="0" width="100%" height="100%" fill={`url(#${patternId})`}></rect>
           </svg>
           {swatchColors.map(({ name, value }) => (
             <div className="c-color-ramp__item" key={`${name}-${value}`}>
-              <svg viewBox="0 0 999 32">
+              <svg viewBox="0 0 1337 32">
                 <rect x="0" y="0" width="100%" height="100%" fill={value} />
               </svg>
               <dt style={{ display: 'inline-block' }}>
