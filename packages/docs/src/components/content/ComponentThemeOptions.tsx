@@ -17,6 +17,7 @@ import {
   TableCell,
   TableCaption,
 } from '@cmsgov/design-system';
+import ColorSwatch from './ColorSwatch';
 
 const componentThemes = {
   core: CoreComponentTheme,
@@ -44,11 +45,7 @@ const lookupThemeValue = (theme: string, value: string): any => {
   const keyName = _.findKey(masterThemes[theme].color, (v) => String(v) === value);
   const elem = keyName ? (
     <span>
-      <span
-        title={`hex value: ${value}`}
-        className="c-swatch__preview ds-u-margin-right--1 ds-u-radius--pill"
-        style={{ backgroundColor: `var(--color-${keyName})` }}
-      ></span>
+      <ColorSwatch colorTokenName={keyName} title={`hex value: ${value}`} />
       <code>$color-{keyName}</code>
     </span>
   ) : (

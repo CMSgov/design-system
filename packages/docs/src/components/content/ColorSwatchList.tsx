@@ -1,6 +1,7 @@
 import React from 'react';
 import { useRef, useEffect, useState } from 'react';
 import classNames from 'classnames';
+import ColorSwatch from './ColorSwatch';
 
 interface ColorSwatchListProps {
   /**
@@ -74,6 +75,7 @@ const ColorSwatchList = ({ backgroundClass, colorNames, preface, theme }: ColorS
             className={`c-swatch__preview ds-u-margin-right--1 ds-u-radius--circle ds-u-fill--${name}`}
             ref={(el) => (refList.current[index] = el)}
           ></div>
+          <ColorSwatch colorTokenName={name} />
           <code
             className={classNames('c-swatch__name', {
               [backgroundClass]: backgroundClass,

@@ -13,6 +13,14 @@
   width: $spacer-4;
 }
 
+.c-color-swatch {
+  display: inline-block;
+  height: $spacer-4;
+  margin-bottom: $spacer-half;
+  vertical-align: middle;
+  width: $spacer-4;
+}
+
 .c-color-ramps {
   gap: $grid-gutter-width;
 }
