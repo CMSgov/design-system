@@ -1,6 +1,6 @@
 .m-c-card {
-  background-color: $color-white;
-  border: 1px solid $color-gray-lighter;
-  border-radius: $card-border-radius;
-  box-shadow: $card-box-shadow;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-lighter);
+  border-radius: 6px !important;
+  box-shadow: var(--shadow-box-card);
 }

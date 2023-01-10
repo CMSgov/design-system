@@ -1,4 +1,6 @@
-@import '../settings/index.scss';
+@use '../mixins';
+@use '../layout' as *;
+@use '../base' as *;
 
 // TODO: Update class namespace to utilities
 
@@ -8,13 +10,13 @@
 .ds-l-container {
   margin-left: auto;
   margin-right: auto;
-  max-width: $site-max-width;
-  padding-left: calc(#{$grid-gutter-width} * 0.5);
-  padding-right: calc(#{$grid-gutter-width} * 0.5);
+  max-width: var(--site-max-width);
+  padding-left: calc(var(--grid-gutter-width) * 0.5);
+  padding-right: calc(var(--grid-gutter-width) * 0.5);
 
-  @media (min-width: $width-sm) {
-    padding-left: $grid-gutter-width;
-    padding-right: $grid-gutter-width;
+  @media (min-width: $media-width-sm) {
+    padding-left: var(--grid-gutter-width);
+    padding-right: var(--grid-gutter-width);
   }
 }
 
@@ -28,13 +30,13 @@
 }
 
 .ds-l-row {
-  margin-left: calc(#{$grid-gutter-width} * -0.5);
-  margin-right: calc(#{$grid-gutter-width} * -0.5);
+  margin-left: calc(var(--grid-gutter-width) * -0.5);
+  margin-right: calc(var(--grid-gutter-width) * -0.5);
 }
 
 .ds-l-form-row {
-  margin-left: calc(#{$grid-form-gutter-width} * -0.5);
-  margin-right: calc(#{$grid-form-gutter-width} * -0.5);
+  margin-left: calc(var(--grid-form-gutter-width) * -0.5);
+  margin-right: calc(var(--grid-form-gutter-width) * -0.5);
 }
 
 /**
@@ -48,8 +50,8 @@
   box-sizing: border-box;
   min-height: 1px; // Prevent columns from collapsing when empty
   min-width: 0; // Resize columns as expected (https://css-tricks.com/flexbox-truncated-text/)
-  padding-left: calc(#{$grid-gutter-width} * 0.5);
-  padding-right: calc(#{$grid-gutter-width} * 0.5);
+  padding-left: calc(var(--grid-gutter-width) * 0.5);
+  padding-right: calc(var(--grid-gutter-width) * 0.5);
   width: 100%;
 }
 
@@ -66,17 +68,17 @@
 }
 
 .ds-l-col {
-  @include equal-width-flexbox-col;
+  @include mixins.equal-width-flexbox-col;
 }
 
 .ds-l-col--auto {
-  @include auto-width-flexbox-col;
+  @include mixins.auto-width-flexbox-col;
 }
 
 @for $i from 1 through $grid-columns {
   // Example: ds-l-col--12
   .ds-l-col--#{$i} {
-    @include flexbox-col($i);
+    @include mixins.flexbox-col($i);
   }
 }
 
@@ -104,17 +106,17 @@
     // Provide breakpoint classes for equal-width columns
     // Example: ds-l-lg-col
     .ds-l-#{$breakpoint}-col {
-      @include equal-width-flexbox-col;
+      @include mixins.equal-width-flexbox-col;
     }
 
     .ds-l-#{$breakpoint}-col--auto {
-      @include auto-width-flexbox-col;
+      @include mixins.auto-width-flexbox-col;
     }
 
     @for $i from 1 through $grid-columns {
       // Example: ds-l-lg-col--12
       .ds-l-#{$breakpoint}-col--#{$i} {
-        @include flexbox-col($i);
+        @include mixins.flexbox-col($i);
       }
     }
   }
@@ -123,6 +125,6 @@
 // Overwrite default padding in a form-row so fields are closer
 .ds-l-form-row > .ds-l-col,
 .ds-l-form-row > [class*='-col-'] {
-  padding-left: calc(#{$grid-form-gutter-width} * 0.5);
-  padding-right: calc(#{$grid-form-gutter-width} * 0.5);
+  padding-left: calc(var(--grid-form-gutter-width) * 0.5);
+  padding-right: calc(var(--grid-form-gutter-width) * 0.5);
 }

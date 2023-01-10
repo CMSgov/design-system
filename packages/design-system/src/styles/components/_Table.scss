@@ -1,4 +1,4 @@
-@import '../settings/index.scss';
+@use '../layout' as *;
 
 .ds-c-table {
   border-collapse: collapse;
@@ -8,17 +8,17 @@
 
   th,
   thead td {
-    background-color: $table-header__background-color;
+    background-color: var(--table-header__background-color);
   }
 
   tbody th {
-    font-weight: $font-weight-normal;
+    font-weight: var(--font-weight-normal);
   }
 
   th,
   td {
-    border: 1px solid $table__border-color;
-    padding: $table__padding;
+    border: 1px solid var(--table__border-color);
+    padding: var(--table__padding);
   }
 }
 
@@ -53,13 +53,13 @@
   thead {
     th,
     tr {
-      background-color: $table-striped-header__background-color;
+      background-color: var(--table-striped-header__background-color);
     }
   }
 
   tbody {
     tr:nth-child(even) {
-      background-color: $table-striped__background-color;
+      background-color: var(--table-striped__background-color);
     }
 
     tr:nth-child(odd)::before {
@@ -73,12 +73,12 @@
 }
 
 .ds-c-table__scroll-alert {
-  font-weight: $font-weight-normal;
+  font-weight: var(--font-weight-normal);
   margin: $spacer-1 0;
 }
 
 .ds-c-table__caption {
-  font-weight: $font-weight-bold;
+  font-weight: var(--font-weight-bold);
   margin-bottom: $spacer-1;
   text-align: left;
 }
@@ -109,7 +109,7 @@
   // Style dividers between different table rows
   tr {
     // Every row has a bottom border
-    border-bottom: $spacer-half solid $table__border-color;
+    border-bottom: $spacer-half solid var(--table__border-color);
     border-top: 0;
     display: block;
 
@@ -123,7 +123,7 @@
     &:first-child {
       th:first-child,
       td:first-child {
-        border-top: $spacer-half solid $table__border-color;
+        border-top: $spacer-half solid var(--table__border-color);
       }
     }
   }
@@ -152,19 +152,19 @@
 }
 
 .ds-c-sm-table--stacked {
-  @media (max-width: $width-sm) {
+  @media (max-width: $media-width-sm) {
     @include stacked-table-styles;
   }
 }
 
 .ds-c-md-table--stacked {
-  @media (max-width: $width-md) {
+  @media (max-width: $media-width-md) {
     @include stacked-table-styles;
   }
 }
 
 .ds-c-lg-table--stacked {
-  @media (max-width: $width-lg) {
+  @media (max-width: $media-width-lg) {
     @include stacked-table-styles;
   }
 }

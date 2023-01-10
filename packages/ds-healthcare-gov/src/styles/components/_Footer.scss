@@ -1,19 +1,21 @@
-@import './Logo';
+@use '../layout' as *;
+@use './Logo' as *;
+@use '../../../../design-system/src/styles/mixins';
 
 .hc-c-footer {
   a {
-    color: $color-muted;
+    color: var(--color-muted);
     text-decoration: none;
 
     &:hover,
     &:focus {
-      color: $color-primary-darker;
+      color: var(--color-primary-darker);
     }
   }
 }
 
 .hc-c-footer__inline-item {
-  color: $color-muted;
+  color: var(--color-muted);
   // We use a right margin and padding to avoid a weird
   // left indent when an item wraps to the next line
   margin-right: $spacer-half;
@@ -35,7 +37,7 @@
     text-decoration: none;
 
     &:focus {
-      @include focus-styles;
+      @include mixins.focus-styles;
     }
   }
 
@@ -44,9 +46,9 @@
     border-radius: 50%;
     content: '';
     display: inline-block;
-    height: $footer__list-marker-size;
+    height: var(--footer__list-marker-size);
     vertical-align: middle;
-    width: $footer__list-marker-size;
+    width: var(--footer__list-marker-size);
   }
 
   &:first-child a {

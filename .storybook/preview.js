@@ -119,6 +119,9 @@ const themeSettingDecorator = (Story, context) => {
   const { theme } = context.globals;
   document.documentElement.setAttribute('data-theme', theme);
 
+  const themeCss = document.querySelector('link[title=themeCss]');
+  themeCss.href = `${theme}-theme.css`;
+
   return <Story {...context} />;
 };
 

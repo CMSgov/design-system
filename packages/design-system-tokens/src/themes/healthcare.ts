@@ -3,7 +3,7 @@
  */
 
 import { animation, color, font, measure, media, radius, spacer, z } from '../tokens';
-import { ThemeTokens, ColorTokens, ShadowTokens } from '../lib/types';
+import { ThemeTokens, ColorTokens, ShadowTokens, AnyTokenValues } from '../lib/types';
 
 export const themeColors: ColorTokens = {
   //
@@ -136,6 +136,19 @@ export const shadow: ShadowTokens = {
   'base':                       '2px 2px 4px',
 }
 
+export const global: AnyTokenValues = {
+  'article-max-width':          '600px',
+  'grid-columns':               '12',
+  'grid-gutter-width':          spacer[4],
+  'grid-form-gutter-width':     spacer[2],
+  'lead-max-width':             '77rem',
+  'nav-width':                  '951px',
+  'site-margins':               '3rem',
+  'site-margins-mobile':        '1.5rem',
+  'site-max-width':             '1040px',
+  'text-max-width':             '53rem',
+};
+
 const healthcareTheme: ThemeTokens = {
   animation,
   color: themeColors,
@@ -144,6 +157,7 @@ const healthcareTheme: ThemeTokens = {
     serif: font['family-bitter'],
     ...font,
   },
+  global,
   measure,
   media,
   radius,

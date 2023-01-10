@@ -1,14 +1,11 @@
-// @TODO: deprecate usage of these when modification of these in
-// consuming systems is either not done or easily resolved
-$usa-banner-mobile-close-size: 48px;
-$usa-caret-icon-size: 10px;
-$usa-banner-font-family: $font-sans;
+@use '../layout' as *;
+@use '../mixins';
+@use '../base' as *;
 
 .ds-c-usa-banner {
-  background-color: $usa-banner__background-color;
-  color: $usa-banner__color;
-  font-family: $usa-banner-font-family;
-  font-size: $font-size-base;
+  background-color: var(--usa-banner__background-color);
+  color: var(--usa-banner__color);
+  font-family: var(--font-sans);
   padding: 0;
 }
 
@@ -17,13 +14,13 @@ $usa-banner-font-family: $font-sans;
   display: flex;
   flex-direction: row;
   font-size: 12px;
-  font-weight: $font-weight-normal;
+  font-weight: var(--font-weight-normal);
   line-height: 1.2;
   min-height: $spacer-4;
   padding: $spacer-1 $spacer-2 $spacer-1 $spacer-2;
   position: relative;
 
-  @media (min-width: $width-sm) {
+  @media (min-width: $media-width-sm) {
     min-height: 0;
     padding-bottom: 4px;
     padding-top: 4px;
@@ -35,7 +32,7 @@ $usa-banner-font-family: $font-sans;
 
   .ds-c-usa-banner__button {
     display: flex;
-    font-family: $usa-banner-font-family;
+    font-family: var(--font-sans);
     padding: $spacer-1 $spacer-2 $spacer-1 $spacer-2;
     width: 100%;
   }
@@ -53,18 +50,18 @@ $usa-banner-font-family: $font-sans;
 
 .ds-c-usa-banner__collapse-banner-container {
   align-items: center;
-  background-color: $usa-banner-close__background-color;
+  background-color: var(--usa-banner-close__background-color);
   display: flex;
-  height: $usa-banner-mobile-close-size;
+  height: $spacer-6;
   justify-content: center;
   margin-left: auto;
-  margin-right: -$spacer-2;
-  margin-top: -$spacer-1;
-  width: $usa-banner-mobile-close-size;
+  margin-right: calc(-1 * #{$spacer-2});
+  margin-top: calc(-1 * #{$spacer-1});
+  width: $spacer-6;
 
   .ds-c-icon {
-    height: $font-size-lg;
-    width: $font-size-lg;
+    height: var(--font-size-lg);
+    width: var(--font-size-lg);
   }
 }
 
@@ -83,7 +80,7 @@ $usa-banner-font-family: $font-sans;
 }
 
 .ds-c-usa-banner__header-action {
-  color: $usa-banner-action__color;
+  color: var(--usa-banner-action__color);
   display: block;
   margin-bottom: 0;
   margin-top: 2px;
@@ -102,7 +99,7 @@ $usa-banner-font-family: $font-sans;
   text-align: left;
 
   &:focus {
-    @include focus-styles;
+    @include mixins.focus-styles;
   }
 }
 
@@ -116,7 +113,7 @@ $usa-banner-font-family: $font-sans;
   overflow: hidden;
   padding: 4px $spacer-2 $spacer-2 $spacer-1;
 
-  @media (min-width: $width-sm) {
+  @media (min-width: $media-width-sm) {
     padding-bottom: $spacer-3;
     padding-top: $spacer-3;
   }
@@ -126,7 +123,7 @@ $usa-banner-font-family: $font-sans;
   display: flex;
   flex-direction: column;
 
-  @media (min-width: $width-sm) {
+  @media (min-width: $media-width-sm) {
     flex-flow: row nowrap;
   }
 }
@@ -137,7 +134,7 @@ $usa-banner-font-family: $font-sans;
   max-width: 64ex;
   padding: $spacer-2 12px 0 12px;
 
-  @media (min-width: $width-sm) {
+  @media (min-width: $media-width-sm) {
     padding: 0 $spacer-1;
     width: 50%;
   }
@@ -150,7 +147,7 @@ $usa-banner-font-family: $font-sans;
   width: $spacer-5;
 
   &.ds-c-icon--lock-circle {
-    color: $usa-banner-lock-icon__color;
+    color: var(--usa-banner-lock-icon__color);
 
     @media (-ms-high-contrast: active), (forced-colors: active) {
       color: WindowText;
@@ -159,9 +156,9 @@ $usa-banner-font-family: $font-sans;
 }
 
 .ds-c-usa-banner__lock-image {
-  height: 1.5ex;
+  height: 0.75em;
   vertical-align: inherit;
-  width: calc(1.5ex * 52 / 64);
+  width: auto;
 
   path {
     fill: currentColor;
@@ -184,7 +181,7 @@ $usa-banner-font-family: $font-sans;
 }
 
 .ds-c-usa-banner__header--expanded {
-  @media (min-width: $width-sm) {
+  @media (min-width: $media-width-sm) {
     background-color: transparent;
     padding-right: 0;
     .ds-c-usa-banner__button-text::after {
@@ -198,7 +195,7 @@ $usa-banner-font-family: $font-sans;
 }
 
 .ds-c-usa-banner__action-icon {
-  color: $usa-banner__color;
-  height: $usa-caret-icon-size;
-  width: $usa-caret-icon-size;
+  color: var(--usa-banner__color);
+  height: 10px;
+  width: 10px;
 }

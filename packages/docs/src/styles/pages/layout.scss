@@ -21,7 +21,7 @@ body {
   max-width: 81rem;
 }
 
-@media (min-width: $width-lg) {
+@media (min-width: $media-width-lg) {
   .page-content__content {
     // removing margin for first heading on content pages
     > :nth-child(2) {
@@ -46,7 +46,7 @@ body {
   }
 }
 
-@media (max-width: $width-lg) {
+@media (max-width: $media-width-lg) {
   .page-content__content {
     padding-left: 0;
     padding-right: 0;
@@ -76,15 +76,15 @@ body {
   }
   .c-configuration-options th,
   .c-prop-table th {
-    background-color: $color-gray-lightest;
+    background-color: var(--color-gray-lightest);
   }
   .c-configuration-options td,
   .c-prop-table td {
-    border-color: $color-gray-lighter;
+    border-color: var(--color-gray-lighter);
   }
   .c-configuration-options p,
   .c-prop-table p {
-    font-size: $font-size-sm;
+    font-size: var(--font-size-sm);
   }
   .ds-c-alert {
     margin-top: $spacer-2;
@@ -98,18 +98,18 @@ body {
 }
 
 blockquote {
-  background-color: $color-gray-lightest;
-  border-left: 4px solid $color-gray-light;
-  font-family: $font-sans;
+  background-color: var(--color-gray-lightest);
+  border-left: 4px solid var(--color-gray-light);
+  font-family: var(--font-sans);
   font-style: italic;
   margin-left: 0;
   padding: $spacer-2 $spacer-2 $spacer-2 $spacer-6;
   position: relative;
 
   &:before {
-    color: $color-gray-light;
+    color: var(--color-gray-light);
     content: '\201C';
-    font-family: $font-serif;
+    font-family: var(--font-serif);
     font-size: 4em;
     left: 10px;
     position: absolute;
