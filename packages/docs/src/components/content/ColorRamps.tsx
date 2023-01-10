@@ -23,7 +23,7 @@ const renderTransparencyPattern = (id: string) => (
 );
 
 /**
- *
+ * Component for showing named colors in all their shades
  */
 const ColorRamps = () => (
   <div className="ds-u-display--flex ds-u-flex-wrap--wrap c-color-ramps">
@@ -31,7 +31,7 @@ const ColorRamps = () => (
       const patternId = `pattern-checkers-${i}`;
       return (
         <div className="c-color-ramp__wrapper" key={swatchName}>
-          <h2 className="ds-u-text-transform--capitalize" id={`hello-${i}`}>
+          <h2 className="ds-u-text-transform--capitalize" id={swatchName}>
             {swatchName}
           </h2>
           <div className="c-color-ramp">
