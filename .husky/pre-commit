@@ -1,9 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 . "$(dirname "$0")/_/husky.sh"
 
 declare -a THEMES
 DATE=$(date)
-THEMES=($(git diff --cached --name-only | grep -i "theme" || true))
+THEMES=($(git diff --cached --name-only | grep -i "theme" || :))
 
 if [ ${#THEMES[@]} -eq 0 ]; then
   echo "📄 Stamping modified token theme files"
