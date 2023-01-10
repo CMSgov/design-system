@@ -8,10 +8,9 @@ DATE=$(date)
 THEMES=($(git diff --cached --name-only | grep -i "theme" || :))
 
 if [ ${#THEMES[@]} -ne 0 ]; then
-  echo "📄 Stamping modified token theme files"
+  echo "📄 Date-stamping modified token theme files."
   for i in "${THEMES[@]}"; do
     echo "Last modified on $DATE" | cat - $i > /tmp/out && mv /tmp/out $i
     git add $i
   done
 fi
-
