@@ -13,9 +13,13 @@
   width: $spacer-4;
 }
 
+.c-color-ramps {
+  gap: $grid-gutter-width;
+}
+
 .c-color-ramp__wrapper {
+  flex-basis: 256px;
   flex-shrink: 0;
-  margin-right: $grid-gutter-width;
   width: 256px;
 }
 
@@ -36,7 +40,7 @@
   // we get a subpixel-tall row of transparency pattern bleeding through on the
   // top edge of the ramp.
   top: 1px;
-  z-index: -2;
+  z-index: -1;
 }
 
 .c-color-ramp__item {
@@ -50,6 +54,10 @@
     left: 0;
     position: absolute;
     top: 0;
-    z-index: -1;
+  }
+
+  dt,
+  dd {
+    position: relative;
   }
 }

@@ -26,7 +26,7 @@ const renderTransparencyPattern = (id: string) => (
  *
  */
 const ColorRamps = () => (
-  <div className="ds-u-display--flex ds-u-flex-direction--row ds-u-flex-wrap--wrap">
+  <div className="ds-u-display--flex ds-u-flex-wrap--wrap c-color-ramps">
     {Object.entries(swatches).map(([swatchName, swatchColors], i) => {
       const patternId = `pattern-checkers-${i}`;
       return (
@@ -46,7 +46,7 @@ const ColorRamps = () => (
             {swatchColors.map(({ name, value }) => (
               <div className="c-color-ramp__item" key={`${name}-${value}`}>
                 <svg viewBox="0 0 1337 32">
-                  <rect x="0" y="0" width="100%" height="100%" fill={value} />
+                  <rect x="0" y="-5%" width="100%" height="110%" fill={value} />
                 </svg>
                 <dt className="ds-u-display--inline-block">
                   <code>{name}</code>
