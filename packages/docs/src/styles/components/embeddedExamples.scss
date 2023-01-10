@@ -49,17 +49,6 @@
   height: $spacer-7;
 }
 
-// layout grid examples
-.example-grid {
-  .ds-l-row > [class*='ds-l-'],
-  .ds-l-form-row > [class*='ds-l-'] {
-    background-color: var(--color-secondary-lightest);
-    outline: 2px dashed var(--color-secondary);
-    padding-bottom: $spacer-2;
-    padding-top: $spacer-2;
-  }
-}
-
 .utility-example {
   background-color: var(--color-secondary-lightest);
   outline: 2px dashed var(--color-secondary);
