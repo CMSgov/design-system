@@ -1,4 +1,4 @@
-@import '../settings/index.scss';
+@use '../layout' as *;
 
 .ds-c-field--month,
 .ds-c-field--day,
@@ -20,16 +20,13 @@
 }
 
 .ds-c-datefield__separator {
-  font-size: $font-size-2xl;
-  // have to do a mix of calc & sass interpolation in order to accommodate values being css vars in internal tools
-  line-height: calc(
-    #{$text-input__line-height} * #{$font-size-base}
-  ); // vertical dimensions should match adjacent inputs
-  margin: ($text-input__border-width + $spacer-half) 0;
-  padding: $text-input__padding 0;
+  font-size: var(--font-size-2xl);
+  line-height: 1;
+  margin: 6px 0;
+  padding: var(--text-input__padding) 0;
 }
 
 .ds-c-datefield__label {
-  font-weight: $font-weight-normal;
+  font-weight: var(--font-weight-normal);
   margin-top: $spacer-1;
 }

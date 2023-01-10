@@ -2,7 +2,7 @@
 
 This shows the usage of CMS design system components from the CDN:
 
-- Include the CSS bundle
+- Include the core CSS bundle and theme
 - Include the JS vendor files and bundle
 - Use CSS layout, utility, and component classes
 - Render React components from our library

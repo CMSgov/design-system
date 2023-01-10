@@ -20,14 +20,19 @@ gulp.task('copy-design-system', function () {
  */
 gulp.task('sass', function () {
   const transpiler = sass({
-    // Add node_modules to the list of paths used to resolve @import
-    // declarations. This way it's easier to import our design system's
-    // Sass files.
-    includePaths: ['node_modules'],
     outputStyle: 'compressed',
   }).on('error', sass.logError);
 
   return gulp.src('./src/styles/**/*.scss').pipe(transpiler).pipe(gulp.dest('./dist/styles'));
+});
+
+/**
+ * Copy CSS files to local dist
+ */
+gulp.task('css', function () {
+  return gulp
+    .src('node_modules/@cmsgov/design-system/dist/css/*.css')
+    .pipe(gulp.dest('./dist/styles/cmsds'));
 });
 
 gulp.task('default', gulp.series('copy-design-system', 'sass'));

@@ -1,36 +1,34 @@
-@import '../settings/index.scss';
-
 @for $i from 1 through 2 {
   // Example: ds-u-border--1
   .ds-u-border--#{$i} {
     // Example: border: 1px !important;
-    border: #{$i}px solid $border-color !important;
+    border: #{$i}px solid var(--color-border) !important;
   }
 
   .ds-u-border-top--#{$i} {
-    border-top: #{$i}px solid $border-color !important;
+    border-top: #{$i}px solid var(--color-border) !important;
   }
 
   .ds-u-border-right--#{$i} {
-    border-right: #{$i}px solid $border-color !important;
+    border-right: #{$i}px solid var(--color-border) !important;
   }
 
   .ds-u-border-bottom--#{$i} {
-    border-bottom: #{$i}px solid $border-color !important;
+    border-bottom: #{$i}px solid var(--color-border) !important;
   }
 
   .ds-u-border-left--#{$i} {
-    border-left: #{$i}px solid $border-color !important;
+    border-left: #{$i}px solid var(--color-border) !important;
   }
 
   .ds-u-border-x--#{$i} {
-    border-left: #{$i}px solid $border-color !important;
-    border-right: #{$i}px solid $border-color !important;
+    border-left: #{$i}px solid var(--color-border) !important;
+    border-right: #{$i}px solid var(--color-border) !important;
   }
 
   .ds-u-border-y--#{$i} {
-    border-bottom: #{$i}px solid $border-color !important;
-    border-top: #{$i}px solid $border-color !important;
+    border-bottom: #{$i}px solid var(--color-border) !important;
+    border-top: #{$i}px solid var(--color-border) !important;
   }
 }
 
@@ -66,45 +64,45 @@
 }
 
 .ds-u-border--dark {
-  border-color: $border-color-dark !important;
+  border-color: var(--color-border-dark) !important;
 }
 
 .ds-u-border--inverse {
-  border-color: $border-color-inverse !important;
+  border-color: var(--color-border-inverse) !important;
 }
 
 .ds-u-border--error {
-  border-color: $color-error !important;
+  border-color: var(--color-error) !important;
 }
 
 .ds-u-border--error-light {
-  border-color: $color-error-light !important;
+  border-color: var(--color-error-light) !important;
 }
 
 .ds-u-border--error-lighter {
-  border-color: $color-error-lighter !important;
+  border-color: var(--color-error-lighter) !important;
 }
 
 .ds-u-border--warn {
-  border-color: $color-warn !important;
+  border-color: var(--color-warn) !important;
 }
 
 .ds-u-border--warn-light {
-  border-color: $color-warn-light !important;
+  border-color: var(--color-warn-light) !important;
 }
 
 .ds-u-border--warn-lighter {
-  border-color: $color-warn-lighter !important;
+  border-color: var(--color-warn-lighter) !important;
 }
 
 .ds-u-border--success {
-  border-color: $color-success !important;
+  border-color: var(--color-success) !important;
 }
 
 .ds-u-border--success-light {
-  border-color: $color-success-light !important;
+  border-color: var(--color-success-light) !important;
 }
 
 .ds-u-border--success-lighter {
-  border-color: $color-success-lighter !important;
+  border-color: var(--color-success-lighter) !important;
 }

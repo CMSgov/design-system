@@ -1,15 +1,8 @@
-@import '../settings/index.scss';
-
-// @TODO: deprecate usage of these and make component options
-// or hard-code if not being utilized
-$autocomplete-space: $spacer-1;
-$autocomplete-list-border-width: 1px;
-$autocomplete-list-border-style: solid;
-$autocomplete-list-border: $autocomplete-list-border-width $autocomplete-list-border-style
-  $autocomplete__border-color;
+@use '../layout' as *;
+@use '../mixins';
 
 .ds-c-autocomplete {
-  max-width: $form__max-width;
+  max-width: var(--form__max-width);
   position: relative;
   // Undoing the clearfix class on the div containing the label element
   .ds-u-clearfix {
@@ -24,35 +17,35 @@ $autocomplete-list-border: $autocomplete-list-border-width $autocomplete-list-bo
     }
   }
   input:focus {
-    @include focus-styles-position;
+    @include mixins.focus-styles-position;
   }
 }
 
 .ds-c-autocomplete__label {
   margin: 0;
-  padding: $autocomplete-space;
+  padding: $spacer-1;
 }
 
 .ds-c-autocomplete__list {
-  background-color: $autocomplete__background-color;
-  border: $autocomplete-list-border;
+  background-color: var(--autocomplete__background-color);
+  border: 1px solid var(--autocomplete__border-color);
   box-sizing: border-box;
-  max-height: calc(calc(#{$base-font-size} + #{$spacer-2}) * 10);
+  max-height: 320px;
   overflow-y: auto;
-  padding: $autocomplete-space;
+  padding: $spacer-1;
   position: absolute;
   width: 100%;
-  z-index: $z-dialog;
+  z-index: var(--z-dialog);
 }
 
 .ds-c-autocomplete__list-item {
-  color: $autocomplete-item__font-color;
+  color: var(--autocomplete-item__font-color);
   padding: $spacer-1;
 }
 
 .ds-c-autocomplete__list-item--active {
-  background-color: $autocomplete-item__background-color--active;
-  color: $autocomplete-item__font-color--active;
+  background-color: var(--autocomplete-item__background-color--active);
+  color: var(--autocomplete-item__font-color--active);
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
     background-color: WindowText;
@@ -63,7 +56,7 @@ $autocomplete-list-border: $autocomplete-list-border-width $autocomplete-list-bo
 }
 
 .ds-c-autocomplete__list-item--message {
-  color: $autocomplete-item-message__font-color;
+  color: var(--autocomplete-item-message__font-color);
   padding: $spacer-1;
 }
 
@@ -74,6 +67,7 @@ $autocomplete-list-border: $autocomplete-list-border-width $autocomplete-list-bo
 
 // Need a custom class for bottom error message to make space for the clear search button
 .ds-c-autocomplete__error-message--clear-btn {
+  // @TODO: seems like this could be done differently without calc, perhaps using ch
   width: calc(100% - 110px);
 }
 

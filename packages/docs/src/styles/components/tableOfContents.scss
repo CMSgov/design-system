@@ -4,7 +4,7 @@
 }
 
 .c-table-of-contents__heading {
-  border-bottom: 1px solid $color-gray-lighter;
+  border-bottom: 1px solid var(--color-gray-lighter);
   padding-bottom: $spacer-1;
 
   @media (max-width: $media-width-lg) {
@@ -27,7 +27,7 @@
 
 .c-table-of-contents-mobile {
   .ds-c-accordion__content {
-    border: $spacer-half solid $accordion__background-color;
+    border: $spacer-half solid var(--accordion__background-color);
     padding-bottom: $spacer-2;
   }
 }
