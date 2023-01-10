@@ -13,6 +13,12 @@
   width: $spacer-4;
 }
 
+.c-color-ramp__wrapper {
+  flex-shrink: 0;
+  margin-right: $grid-gutter-width;
+  width: 256px;
+}
+
 .c-color-ramp {
   clip-path: inset(0 0);
   max-width: 256px;

@@ -25,35 +25,42 @@ const renderTransparencyPattern = (id: string) => (
 /**
  *
  */
-const ColorRamps = () =>
-  Object.entries(swatches).map(([swatchName, swatchColors], i) => {
-    const patternId = `pattern-checkers-${i}`;
-    return (
-      <React.Fragment key={swatchName}>
-        <h2 className="ds-u-text-transform--capitalize" id={`hello-${i}`}>
-          {swatchName}
-        </h2>
-        <dl className="c-color-ramp">
-          <svg className="c-color-ramp__transparency-pattern" viewBox="0 0 1024 1337" width="1024">
-            <defs>{renderTransparencyPattern(patternId)}</defs>
-            <rect x="0" y="0" width="100%" height="100%" fill={`url(#${patternId})`}></rect>
-          </svg>
-          {swatchColors.map(({ name, value }) => (
-            <div className="c-color-ramp__item" key={`${name}-${value}`}>
-              <svg viewBox="0 0 1337 32">
-                <rect x="0" y="0" width="100%" height="100%" fill={value} />
-              </svg>
-              <dt style={{ display: 'inline-block' }}>
-                <code>{name}</code>
-              </dt>
-              <dd style={{ display: 'inline-block' }} className="ds-u-margin-left--1">
-                <code>{value}</code>
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </React.Fragment>
-    );
-  });
+const ColorRamps = () => (
+  <div className="ds-u-display--flex ds-u-flex-direction--row ds-u-flex-wrap--wrap">
+    {Object.entries(swatches).map(([swatchName, swatchColors], i) => {
+      const patternId = `pattern-checkers-${i}`;
+      return (
+        <div className="c-color-ramp__wrapper" key={swatchName}>
+          <h2 className="ds-u-text-transform--capitalize" id={`hello-${i}`}>
+            {swatchName}
+          </h2>
+          <dl className="c-color-ramp">
+            <svg
+              className="c-color-ramp__transparency-pattern"
+              viewBox="0 0 1024 1337"
+              width="1024"
+            >
+              <defs>{renderTransparencyPattern(patternId)}</defs>
+              <rect x="0" y="0" width="100%" height="100%" fill={`url(#${patternId})`}></rect>
+            </svg>
+            {swatchColors.map(({ name, value }) => (
+              <div className="c-color-ramp__item" key={`${name}-${value}`}>
+                <svg viewBox="0 0 1337 32">
+                  <rect x="0" y="0" width="100%" height="100%" fill={value} />
+                </svg>
+                <dt style={{ display: 'inline-block' }}>
+                  <code>{name}</code>
+                </dt>
+                <dd style={{ display: 'inline-block' }} className="ds-u-margin-left--1">
+                  <code>{value}</code>
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      );
+    })}
+  </div>
+);
 
 export default ColorRamps;

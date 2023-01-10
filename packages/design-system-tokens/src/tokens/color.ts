@@ -9,15 +9,15 @@ const color = to<ColorTokens>()({
 
   // White
   'white-solid':     '#ffffff',
-  'white-alpha25':   '#ffffff40',
-  'white-alpha50':   '#ffffff80',
   'white-alpha80':   '#ffffffCC',
+  'white-alpha50':   '#ffffff80',
+  'white-alpha25':   '#ffffff40',
 
   // Black
   'black-solid':     '#000000',
-  'black-alpha25':   '#00000040',
-  'black-alpha50':   '#00000080',
   'black-alpha80':   '#000000CC',
+  'black-alpha50':   '#00000080',
+  'black-alpha25':   '#00000040',
 
   // Neutrals
   'granite-50':      '#f2f2f2',
