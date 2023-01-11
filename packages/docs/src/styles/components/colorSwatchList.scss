@@ -22,7 +22,7 @@
 }
 
 .c-color-ramps {
-  gap: $grid-gutter-width;
+  gap: var(--grid-gutter-width);
 }
 
 .c-color-ramp__wrapper {
