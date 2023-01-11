@@ -35,11 +35,7 @@ const ColorRamps = () => (
             {swatchName}
           </h2>
           <div className="c-color-ramp">
-            <svg
-              className="c-color-ramp__transparency-pattern"
-              viewBox="0 0 1024 1337"
-              width="1024"
-            >
+            <svg className="c-color-ramp__transparency-pattern" viewBox="0 0 256 200" width="256">
               <defs>{renderTransparencyPattern(patternId)}</defs>
               <rect x="0" y="0" width="100%" height="100%" fill={`url(#${patternId})`}></rect>
             </svg>
@@ -48,7 +44,7 @@ const ColorRamps = () => (
               const valueId = `color-value-${value}`;
               return (
                 <div className="c-color-ramp__item" key={`${name}-${value}`}>
-                  <svg viewBox="0 0 1337 32" aria-labelledby={`${nameId} ${valueId}`}>
+                  <svg aria-labelledby={`${nameId} ${valueId}`}>
                     <rect x="0" y="-5%" width="100%" height="110%" fill={value} />
                   </svg>
                   <code
