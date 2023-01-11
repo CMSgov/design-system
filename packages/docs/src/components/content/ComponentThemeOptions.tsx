@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  CoreTheme,
-  CoreComponentTheme,
-  HealthcareTheme,
-  HealthcareComponentTheme,
-  MedicareTheme,
-  MedicareComponentTheme,
-} from 'design-system-tokens/src/themes';
-import _ from 'lodash';
+import capitalize from 'lodash/capitalize';
 import uniqueId from 'lodash/uniqueId';
 import {
   Table,
@@ -18,13 +10,7 @@ import {
   TableCaption,
 } from '@cmsgov/design-system';
 import ColorSwatch from './ColorSwatch';
-
-const componentThemes = {
-  core: CoreComponentTheme,
-  healthcare: HealthcareComponentTheme,
-  medicare: MedicareComponentTheme,
-};
-const masterThemes = { core: CoreTheme, healthcare: HealthcareTheme, medicare: MedicareTheme };
+import { getComponentVariables, getThemeColorName, ThemeName } from '../../helpers/themeTokens';
 
 interface ComponentThemeOptionsProps {
   /**
@@ -42,7 +28,7 @@ interface ComponentThemeOptionsProps {
  * theme color variable name and swatch for colors.
  */
 const lookupThemeValue = (theme: string, value: string): any => {
-  const keyName = _.findKey(masterThemes[theme].color, (v) => String(v) === value);
+  const keyName = getThemeColorName(theme as ThemeName, value);
   const elem = keyName ? (
     <span>
       <ColorSwatch colorTokenName={keyName} title={`hex value: ${value}`} />
@@ -62,7 +48,7 @@ const lookupThemeValue = (theme: string, value: string): any => {
  */
 const ComponentThemeOptions = ({ theme, componentname }: ComponentThemeOptionsProps) => {
   componentname = componentname.toLowerCase();
-  const currentTheme = componentThemes[theme];
+  const componentVariables = getComponentVariables(theme as ThemeName, componentname);
   const componentOptions = (
     <Table scrollable stackable borderless>
       <TableCaption className="ds-u-visibility--screen-reader">
@@ -74,12 +60,12 @@ const ComponentThemeOptions = ({ theme, componentname }: ComponentThemeOptionsPr
             Variable
           </TableCell>
           <TableCell component="th" align="left" id="columnthemevalue">
-            Default {_.capitalize(theme)} Theme Value
+            Default {capitalize(theme)} Theme Value
           </TableCell>
         </TableRow>
       </TableHead>
       <TableBody role="rowgroup">
-        {Object.keys(currentTheme[componentname]).map((key) => (
+        {Object.keys(componentVariables).map((key) => (
           <TableRow role="row" key={uniqueId('config_option_')}>
             <TableCell stackedTitle="Variable" headers="columnvariable">
               <code className="ds-u-font-weight--bold">
@@ -88,10 +74,10 @@ const ComponentThemeOptions = ({ theme, componentname }: ComponentThemeOptionsPr
               </code>
             </TableCell>
             <TableCell
-              stackedTitle={`Default ${_.capitalize(theme)} Theme Value`}
+              stackedTitle={`Default ${capitalize(theme)} Theme Value`}
               headers="columnthemevalue"
             >
-              {lookupThemeValue(theme, currentTheme[componentname][key])}
+              {lookupThemeValue(theme, componentVariables[key])}
             </TableCell>
           </TableRow>
         ))}
