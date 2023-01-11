@@ -36,6 +36,35 @@ export const hexToRgbArray = (hex: HexValue): number[] | null => {
   }
 };
 
+/*
+ * Returns the calculated relative luminance based on a WCAG 2.x algorithm
+ * (https://www.w3.org/WAI/GL/wiki/Relative_luminance), which is outdated
+ * now but is good enough.
+ */
+export const luminanceFromRgb = (rgb: number[]): number => {
+  let r = rgb[0] / 255;
+  let g = rgb[1] / 255;
+  let b = rgb[2] / 255;
+  r = r > 0.04045 ? Math.pow((r + 0.055) / 1.055, 2.4) : r / 12.92;
+  g = g > 0.04045 ? Math.pow((g + 0.055) / 1.055, 2.4) : g / 12.92;
+  b = b > 0.04045 ? Math.pow((b + 0.055) / 1.055, 2.4) : b / 12.92;
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+};
+
+export const luminanceFromHex = (hex: HexValue): number | null => {
+  const rgb = hexToRgbArray(hex);
+  if (rgb) {
+    return luminanceFromRgb(rgb);
+  } else {
+    return null;
+  }
+};
+
+export const pickTextColor = (background: HexValue, lightText: string, darkText: string) => {
+  const luminance = luminanceFromHex(background);
+  return luminance == null || luminance > 0.5 ? darkText : lightText;
+};
+
 /**
  * Flattens an object into a single dimension by reducing into initialObject recursively
  *

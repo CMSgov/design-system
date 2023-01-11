@@ -1,6 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 import colorTokens from 'design-system-tokens/src/tokens/color';
+import { pickTextColor } from 'design-system-tokens/src/lib/utility';
+import { HexValue } from 'design-system-tokens/src/lib/types';
 
 interface SwatchColor {
   name: string;
@@ -42,21 +44,32 @@ const ColorRamps = () => (
             {swatchColors.map(({ name, value }) => {
               const nameId = `color-name-${name}`;
               const valueId = `color-value-${value}`;
+              const textColor = pickTextColor(
+                value as HexValue,
+                'var(--color-base-inverse)',
+                'var(--color-base)'
+              );
+              const shortName = name.split('-')[1] ?? name;
               return (
                 <div className="c-color-ramp__item" key={`${name}-${value}`}>
                   <svg aria-labelledby={`${nameId} ${valueId}`}>
                     <rect x="0" y="-5%" width="100%" height="110%" fill={value} />
                   </svg>
-                  <code
-                    className="ds-u-display--inline-block"
+                  <span
+                    className="ds-u-display--block"
                     id={nameId}
                     aria-describedby={valueId}
+                    style={{ color: textColor }}
                   >
-                    {name}
-                  </code>
-                  <code className="ds-u-display--inline-block ds-u-margin-left--1" id={valueId}>
+                    {shortName}
+                  </span>
+                  <span
+                    className="ds-u-display--block ds-u-margin-left--1"
+                    id={valueId}
+                    style={{ color: textColor }}
+                  >
                     {value}
-                  </code>
+                  </span>
                 </div>
               );
             })}

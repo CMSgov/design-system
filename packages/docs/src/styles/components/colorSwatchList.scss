@@ -52,7 +52,8 @@
 }
 
 .c-color-ramp__item {
-  // clip-path: inset(0 0);
+  display: flex;
+  justify-content: space-between;
   padding: $spacer-1;
   position: relative;
   text-align: right;
@@ -64,7 +65,8 @@
     width: 100%;
   }
 
-  code {
+  span {
+    font-family: monospace;
     position: relative;
   }
 }
