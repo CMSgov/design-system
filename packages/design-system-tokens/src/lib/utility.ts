@@ -25,15 +25,31 @@ export const hexOpacity = (hexVal: HexValue | any, opacity: number): HexValue =>
  * @returns An array in the format [R: number, G: number, B: number] or null if there was an error
  */
 export const hexToRgbArray = (hex: HexValue): number[] | null => {
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})?$/i.exec(hex);
   if (result) {
     const r = parseInt(result[1], 16);
     const g = parseInt(result[2], 16);
     const b = parseInt(result[3], 16);
-    return [r, g, b];
+    const a = parseInt(result[4], 16);
+    const array = [r, g, b];
+    if (!isNaN(a)) {
+      array.push(a);
+    }
+    return array;
   } else {
     return null;
   }
+};
+
+/**
+ * Returns whether a hex value has an alpha (transparency) channel
+ *
+ * @param hex - The hex value string to evaluate
+ * @returns boolean
+ */
+export const hexHasTransparency = (hex: HexValue): boolean => {
+  const rgba = hexToRgbArray(hex);
+  return rgba[3] != null && Number.isInteger(rgba[3]);
 };
 
 /*

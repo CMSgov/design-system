@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import colorTokens from 'design-system-tokens/src/tokens/color';
-import { pickTextColor } from 'design-system-tokens/src/lib/utility';
+import { hexHasTransparency, pickTextColor } from 'design-system-tokens/src/lib/utility';
 import { HexValue } from 'design-system-tokens/src/lib/types';
 
 interface SwatchColor {
@@ -44,32 +44,39 @@ const ColorRamps = () => (
             {swatchColors.map(({ name, value }) => {
               const nameId = `color-name-${name}`;
               const valueId = `color-value-${value}`;
+              const shortName = name.split('-')[1] ?? name;
               const textColor = pickTextColor(
                 value as HexValue,
                 'var(--color-base-inverse)',
                 'var(--color-base)'
               );
-              const shortName = name.split('-')[1] ?? name;
+              const codeStyle: React.CSSProperties = hexHasTransparency(value as HexValue)
+                ? {}
+                : {
+                    color: textColor,
+                    background: 'none',
+                  };
+
               return (
                 <div className="c-color-ramp__item" key={`${name}-${value}`}>
                   <svg aria-labelledby={`${nameId} ${valueId}`}>
                     <rect x="0" y="-5%" width="100%" height="110%" fill={value} />
                   </svg>
-                  <span
+                  <code
                     className="ds-u-display--block"
                     id={nameId}
                     aria-describedby={valueId}
-                    style={{ color: textColor }}
+                    style={codeStyle}
                   >
                     {shortName}
-                  </span>
-                  <span
+                  </code>
+                  <code
                     className="ds-u-display--block ds-u-margin-left--1"
                     id={valueId}
-                    style={{ color: textColor }}
+                    style={codeStyle}
                   >
                     {value}
-                  </span>
+                  </code>
                 </div>
               );
             })}
