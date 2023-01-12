@@ -48,8 +48,8 @@ export const hexToRgbArray = (hex: HexValue): number[] | null => {
  * @returns boolean
  */
 export const hexHasTransparency = (hex: HexValue): boolean => {
-  const rgba = hexToRgbArray(hex);
-  return rgba[3] != null && Number.isInteger(rgba[3]);
+  const alpha = hexToRgbArray(hex)?.[3] ?? null;
+  return alpha != null && Number.isInteger(alpha);
 };
 
 /*
