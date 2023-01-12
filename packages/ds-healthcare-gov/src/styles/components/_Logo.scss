@@ -3,7 +3,7 @@
   vertical-align: top;
 
   svg {
-    fill: $color-muted;
+    fill: var(--color-muted);
     width: 100%;
   }
 }
@@ -26,11 +26,11 @@
 }
 
 .hc-c-logo__care {
-  fill: $color-primary;
+  fill: var(--color-primary);
 }
 
 .hc-c-logo__gov {
-  fill: $color-gray;
+  fill: var(--color-gray);
 }
 
 .registered-symbol {

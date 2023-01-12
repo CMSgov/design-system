@@ -3,7 +3,7 @@ import { Dialog, CloseIconThin } from '@cmsgov/design-system';
 
 Dialog.defaultProps = {
   ...Dialog.defaultProps,
-  closeButtonText: null,
+  closeButtonText: '',
   closeIcon: <CloseIconThin />,
 };
 

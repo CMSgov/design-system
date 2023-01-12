@@ -7,14 +7,17 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "yarn gulp build && yarn build:prop-data",
+    "build": "yarn build:tokens && yarn build:core && yarn build:healthcare && yarn build:medicare && yarn build:prop-data",
+    "build:core": "yarn gulp build",
     "build:healthcare": "yarn gulp build --package packages/ds-healthcare-gov",
     "build:medicare": "yarn gulp build --package packages/ds-medicare-gov",
-    "build:docs": "yarn build:prop-data && yarn --cwd ./packages/docs build",
-    "build:storybook": "build-storybook -o storybook-static",
-    "build:storybook:docs": "build-storybook -o packages/docs/static/storybook",
+    "build:storybook": "./scripts/build-storybook.sh",
+    "build:storybook:docs": "./scripts/build-storybook.sh docs",
+    "build:tokens": "yarn --cwd ./packages/design-system-tokens build:all",
+    "build:docs": "yarn build:storybook:docs && yarn build:prop-data && yarn --cwd ./packages/docs build",
     "build:prop-data": "node ./scripts/extractPropData.js",
     "build:tokens": "yarn --cwd ./packages/design-system-tokens build themes scss && yarn --cwd ./packages/design-system-tokens build themes css-vars && yarn --cwd ./packages/design-system-tokens dist",
+    "check:maturity": "./scripts/maturityCheck.sh",
     "clean": "yarn clean:cache && yarn clean:modules",
     "clean:cache": "rm -rf packages/docs/.cache",
     "clean:modules": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
@@ -28,7 +31,7 @@
     "release": "./scripts/bump-and-tag-release.sh",
     "release:bump": "./scripts/bump-main.sh",
     "serve:docs": "yarn --cwd ./packages/docs serve",
-    "start": "yarn build:prop-data && yarn --cwd ./packages/docs develop",
+    "start": "yarn build:storybook:docs && yarn build:prop-data && yarn --cwd ./packages/docs develop",
     "storybook": "start-storybook -p 6006",
     "test": "yarn test:unit && yarn test:a11y",
     "posttest": "yarn lint",
@@ -140,5 +143,6 @@
   "engines": {
     "node": ">=11.0.0",
     "yarn": ">=1.22.4"
-  }
+  },
+  "dependencies": {}
 }
