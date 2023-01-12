@@ -6,12 +6,16 @@ medicare:
 ---
 
 import { Alert } from '@cmsgov/design-system';
-import consistentHeaderBreakpointsImg from '../../../src/images/consistent-header-breakpoints.png';
-import consistentHeaderCurrentSectionImg from '../../../src/images/consistent-header-current-section.png';
-import consistentHeaderDropdownImg from '../../../src/images/consistent-header-dropdown-menus.png';
-import consistentHeaderGuestImg from '../../../src/images/consistent-header-guest.png';
-import consistentHeaderLoggedInImg from '../../../src/images/consistent-header-logged-in.png';
-import consistentHeaderSlideOutImg from '../../../src/images/consistent-header-slide-out-menu.png';
+import consistentHeaderBreakpointsImg from '../../../src/images/consistent-header/consistent-header-breakpoints.png';
+import consistentHeaderCurrentSectionImg from '../../../src/images/consistent-header/consistent-header-current-section.png';
+import consistentHeaderDropdownImg from '../../../src/images/consistent-header/consistent-header-dropdown-menus.png';
+import consistentHeaderGuestImg from '../../../src/images/consistent-header/consistent-header-guest.png';
+import consistentHeaderLoggedInImg from '../../../src/images/consistent-header/consistent-header-logged-in.png';
+import consistentHeaderSlideOutImg from '../../../src/images/consistent-header/consistent-header-slide-out-menu.png';
+import consistentHeaderSubNavImg from '../../../src/images/consistent-header/consistent-header-subnav.png';
+import consistentHeaderPageLevelImg from '../../../src/images/consistent-header/consistent-header-page-level-messages.png';
+import consistentHeaderSlideOutDrawerImg from '../../../src/images/consistent-header/consistent-header-slide-out-drawers.png';
+import consistentHeaderToastImg from '../../../src/images/consistent-header/consistent-header-toast.png';
 
 
 <ThemeContent neverThemes={['medicare']}>
@@ -88,7 +92,7 @@ For guidance on how to use the consistent header in a variety of scenarios, see 
 ### Usage
 Implementers should create a `div` with the id of `root` and supply it with the required attributes(listed below), and import the correct Javascript and CSS files, which will attach the header to the div. A list of resources to import can be found in the `entrypoints` section of the `asset-manifest.json` file for each environment.
 
-#### Authenticated and Guest Headers 
+### Authenticated and Guest Headers 
 
 Use the authenticated headers – named "Auth Headers" in the symbols – for scenarios where a user is logged in. The user's first name should appear in the menu item listed as "First name." Only the first letter of their name is capitalized.
 
@@ -102,7 +106,7 @@ Use the guest headers – named "Guest Headers" in the symbols – for scenarios
   <img src={consistentHeaderGuestImg} alt="" class="ds-u-border--1" />
 </div>
 
-#### Configuration Attributes
+### Configuration Attributes
 
 Below is a list of required attributes that are used to configure the Consistent Header:
 
@@ -140,7 +144,7 @@ Below is a list of required attributes that are used to configure the Consistent
       - Consistent Header menu options are: “"basics", "health & drug plans", "providers & services", or "account"
     - Passing active-nav-section configuration will override the default
 
-#### Breakpoints
+### Breakpoints
 
 The Consistent Header has two breakpoints and three versions. At the lower range of the desktop size, the main menu items will break into two lines of text. The slide-out menus for the mobile and tablet ranges are the same.
 
@@ -152,7 +156,7 @@ The Consistent Header has two breakpoints and three versions. At the lower range
   <img src={consistentHeaderBreakpointsImg} alt="" class="ds-u-border--1" />
 </div>
 
-#### Dropdown Menus (Desktop Only)
+### Dropdown Menus (Desktop Only)
 
 With the exception of the Medicare.gov logo, Log in, and Log out; each of the menu items has a dropdown. Each dropdown menu is available as a symbol with the header included showing the focus state for the selected menu item.
 
@@ -162,7 +166,7 @@ Note: at initial launch, the Message menu item will take users to the legacy Mes
   <img src={consistentHeaderDropdownImg} alt="" class="ds-u-border--1" />
 </div>
 
-#### Current Section Indicator (Desktop Only)
+### Current Section Indicator (Desktop Only)
 
 Based on where a user is on the site, an underline will display below the section label text. There is a symbol for every version of the header state provided.
 
@@ -170,13 +174,51 @@ Based on where a user is on the site, an underline will display below the sectio
   <img src={consistentHeaderCurrentSectionImg} alt="" class="ds-u-border--1" />
 </div>
 
-#### Slide-out Menus (Tablet and Mobile Only) 
+### Slide-out Menus (Tablet and Mobile Only) 
 
 Each of the slide-out menu symbols for tablet and mobile include the dark background and will scale to any screen size.
 
 <div className="ds-u-measure--wide ds-u-margin-top--2">
   <img src={consistentHeaderSlideOutImg} alt="" class="ds-u-border--1" />
 </div>
+
+
+### Z-index
+
+To ensure users always have, you'll need consider the z-index for the header. Components like modals and slide-out menus should display in front of the Consistent Header. While components like page-level banners, sub-navigation should display behind the Consistent Header. Most of the sections below show examples of how the header should render relative to other elements.
+
+### Sub-navigation
+
+Sub-navigation menu items should display below and behind the Consistent Header. 
+
+<div className="ds-u-measure--wide ds-u-margin-top--2">
+  <img src={consistentHeaderSubNavImg} alt="" class="ds-u-border--1" />
+</div>
+
+### Page-level messages and banners
+
+Page-level messages and banners should display below and behind the Consistent Header.
+
+<div className="ds-u-measure--wide ds-u-margin-top--2">
+  <img src={consistentHeaderPageLevelImg} alt="" class="ds-u-border--1" />
+</div>
+
+### Side-out drawers
+
+Slide-out drawers should display in front of the Consistent Header.
+
+<div className="ds-u-measure--wide ds-u-margin-top--2">
+  <img src={consistentHeaderSlideOutDrawerImg} alt="" class="ds-u-border--1" />
+</div>
+
+### Toast notifications
+
+Toast notifications should appear below the Medicare Header with a 10px top margin to prevent the toast notification from impacting navigation or any page-level messages or errors.
+
+<div className="ds-u-measure--wide ds-u-margin-top--2">
+  <img src={consistentHeaderToastImg} alt="" class="ds-u-border--1" />
+</div>
+
 
 
 ### FAQ
