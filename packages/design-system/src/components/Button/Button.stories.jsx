@@ -396,11 +396,11 @@ export const AllButtons = () => {
           <Button size="small">Button</Button>
         </div>
         <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-          <Button size="big" disabled>
+          <Button size="big" aria-disabled>
             Button
           </Button>
-          <Button disabled>Button</Button>
-          <Button size="small" disabled>
+          <Button aria-disabled>Button</Button>
+          <Button size="small" aria-disabled>
             Button
           </Button>
         </div>
@@ -414,13 +414,13 @@ export const AllButtons = () => {
           </Button>
         </div>
         <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-          <Button size="big" disabled isAlternate>
+          <Button size="big" aria-disabled isAlternate>
             Alt button
           </Button>
-          <Button disabled isAlternate>
+          <Button aria-disabled isAlternate>
             Alt button
           </Button>
-          <Button size="small" disabled isAlternate>
+          <Button size="small" aria-disabled isAlternate>
             Alt button
           </Button>
         </div>
@@ -438,13 +438,13 @@ export const AllButtons = () => {
             </Button>
           </div>
           <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-            <Button onDark size="big" disabled>
+            <Button onDark size="big" aria-disabled>
               Button on-dark
             </Button>
-            <Button onDark disabled>
+            <Button onDark aria-disabled>
               Button on-dark
             </Button>
-            <Button onDark size="small" disabled>
+            <Button onDark size="small" aria-disabled>
               Button on-dark
             </Button>
           </div>
@@ -460,13 +460,13 @@ export const AllButtons = () => {
             </Button>
           </div>
           <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-            <Button onDark size="big" disabled isAlternate>
+            <Button onDark size="big" aria-disabled isAlternate>
               Alt button on-dark
             </Button>
-            <Button onDark disabled isAlternate>
+            <Button onDark aria-disabled isAlternate>
               Alt button on-dark
             </Button>
-            <Button onDark size="small" disabled isAlternate>
+            <Button onDark size="small" aria-disabled isAlternate>
               Alt button on-dark
             </Button>
           </div>
@@ -483,13 +483,13 @@ export const AllButtons = () => {
           </Button>
         </div>
         <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-          <Button variation="solid" size="big" disabled>
+          <Button variation="solid" size="big" aria-disabled>
             Solid button
           </Button>
-          <Button variation="solid" disabled>
+          <Button variation="solid" aria-disabled>
             Solid button
           </Button>
-          <Button variation="solid" size="small" disabled>
+          <Button variation="solid" size="small" aria-disabled>
             Solid button
           </Button>
         </div>
@@ -505,13 +505,13 @@ export const AllButtons = () => {
           </Button>
         </div>
         <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-          <Button variation="solid" size="big" disabled isAlternate>
+          <Button variation="solid" size="big" aria-disabled isAlternate>
             Solid alt button
           </Button>
-          <Button variation="solid" disabled isAlternate>
+          <Button variation="solid" aria-disabled isAlternate>
             Solid alt button
           </Button>
-          <Button variation="solid" size="small" disabled isAlternate>
+          <Button variation="solid" size="small" aria-disabled isAlternate>
             Solid alt button
           </Button>
         </div>
@@ -531,13 +531,13 @@ export const AllButtons = () => {
             </Button>
           </div>
           <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-            <Button onDark variation="solid" size="big" disabled>
+            <Button onDark variation="solid" size="big" aria-disabled>
               Solid button on-dark
             </Button>
-            <Button onDark variation="solid" disabled>
+            <Button onDark variation="solid" aria-disabled>
               Solid button on-dark
             </Button>
-            <Button onDark variation="solid" size="small" disabled>
+            <Button onDark variation="solid" size="small" aria-disabled>
               Solid button on-dark
             </Button>
           </div>
@@ -553,13 +553,13 @@ export const AllButtons = () => {
             </Button>
           </div>
           <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-            <Button onDark variation="solid" size="big" disabled isAlternate>
+            <Button onDark variation="solid" size="big" aria-disabled isAlternate>
               Solid alt button on-dark
             </Button>
-            <Button onDark variation="solid" disabled isAlternate>
+            <Button onDark variation="solid" aria-disabled isAlternate>
               Solid button on-dark
             </Button>
-            <Button onDark variation="solid" size="small" disabled isAlternate>
+            <Button onDark variation="solid" size="small" aria-disabled isAlternate>
               Solid alt button on-dark
             </Button>
           </div>
@@ -576,13 +576,13 @@ export const AllButtons = () => {
           </Button>
         </div>
         <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-          <Button variation="ghost" size="big" disabled>
+          <Button variation="ghost" size="big" aria-disabled>
             Ghost button
           </Button>
-          <Button variation="ghost" disabled>
+          <Button variation="ghost" aria-disabled>
             Ghost button
           </Button>
-          <Button variation="ghost" size="small" disabled>
+          <Button variation="ghost" size="small" aria-disabled>
             Ghost button
           </Button>
         </div>
@@ -598,13 +598,13 @@ export const AllButtons = () => {
           </Button>
         </div>
         <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-          <Button variation="ghost" size="big" disabled isAlternate>
+          <Button variation="ghost" size="big" aria-disabled isAlternate>
             Ghost alt button
           </Button>
-          <Button variation="ghost" disabled isAlternate>
+          <Button variation="ghost" aria-disabled isAlternate>
             Ghost alt button
           </Button>
-          <Button variation="ghost" size="small" disabled isAlternate>
+          <Button variation="ghost" size="small" aria-disabled isAlternate>
             Ghost alt button
           </Button>
         </div>
@@ -624,13 +624,13 @@ export const AllButtons = () => {
             </Button>
           </div>
           <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-            <Button onDark variation="ghost" size="big" disabled>
+            <Button onDark variation="ghost" size="big" aria-disabled>
               Ghost button on-dark
             </Button>
-            <Button onDark variation="ghost" disabled>
+            <Button onDark variation="ghost" aria-disabled>
               Ghost button on-dark
             </Button>
-            <Button onDark variation="ghost" size="small" disabled>
+            <Button onDark variation="ghost" size="small" aria-disabled>
               Ghost button on-dark
             </Button>
           </div>
@@ -646,13 +646,13 @@ export const AllButtons = () => {
             </Button>
           </div>
           <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-            <Button onDark variation="ghost" size="big" disabled isAlternate>
+            <Button onDark variation="ghost" size="big" aria-disabled isAlternate>
               Ghost alt button on-dark
             </Button>
-            <Button onDark variation="ghost" disabled isAlternate>
+            <Button onDark variation="ghost" aria-disabled isAlternate>
               Ghost alt button on-dark
             </Button>
-            <Button onDark variation="ghost" size="small" disabled isAlternate>
+            <Button onDark variation="ghost" size="small" aria-disabled isAlternate>
               Ghost alt button on-dark
             </Button>
           </div>
