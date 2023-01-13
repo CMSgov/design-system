@@ -29,7 +29,7 @@
       text-decoration: none;
     }
 
-    &[aria-disabled] {
+    &[aria-disabled='true'] {
       pointer-events: none; // Needed to render disabled links correctly
     }
   }
@@ -62,7 +62,7 @@
   }
 
   &:disabled,
-  &[aria-disabled] {
+  &[aria-disabled='true'] {
     background-color: var(--backgroundColor--d, var(--button__background-color--disabled));
     border-color: var(--borderColor--d, var(--button__border-color--disabled));
     color: var(--color--d, var(--button__color--disabled));
