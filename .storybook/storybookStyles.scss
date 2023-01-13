@@ -17,6 +17,13 @@
   }
 }
 
+[data-theme='cmsgov'] {
+  .utility-example {
+    background-color: var(--color-secondary-lightest);
+    outline: 2px dashed var(--color-secondary);
+  }
+}
+
 [data-theme='medicare'] {
   @import '@cmsgov/ds-medicare-gov/src/styles/index';
   .utility-example {

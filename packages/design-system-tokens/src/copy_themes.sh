@@ -41,8 +41,22 @@ copyScssTokenVars()
   done }
 }
 
+# TODO: fold this back into copyThemes above once we have a CMS Gov theme in the monorepo
+copyCMSGovFiles() {
+    rm -rf tmp
+    mkdir -p tmp
+    echo ":root, ::before, ::after, ::backdrop {" >> "./tmp/cmsgov-theme.css"
+    cat "cmsgov-theme.css" >> "./tmp/cmsgov-theme.css"
+    cat "cmsgov-component-theme.css" >> "./tmp/cmsgov-theme.css"
+    echo "}" >> "./tmp/cmsgov-theme.css"
+    cp "./tmp/cmsgov-theme.css" ../../../.storybook/static
+    mkdir -p ../../docs/static/themes
+    cp "./tmp/cmsgov-theme.css" ../../docs/static/themes
+}
+
 copyThemes
 copyScssTokenVars
+copyCMSGovFiles
 
 RESULT=$?
 
