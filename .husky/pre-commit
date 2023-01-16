@@ -2,3 +2,15 @@
 . "$(dirname "$0")/_/husky.sh"
 
 npx lint-staged
+
+declare -a THEMES
+DATE=$(date)
+THEMES=($(git diff --cached --name-only | grep -Ei "theme\.(sc|c)ss" || :))
+
+if [ ${#THEMES[@]} -ne 0 ]; then
+  echo "📄 Date-stamping modified token theme files."
+  for i in "${THEMES[@]}"; do
+    echo "/* Last modified on $DATE */" | cat - $i > /tmp/out && mv /tmp/out $i
+    git add $i
+  done
+fi

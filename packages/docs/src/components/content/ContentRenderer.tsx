@@ -14,7 +14,7 @@ import PropTable from './PropTable';
 import PropTableHtmlElementRow from './PropTableHtmlElementRow';
 import ResponsiveExample from './ResponsiveExample';
 import ColorSwatchList from './ColorSwatchList';
-import ColorTokenSwatches from './ColorTokenSwatches';
+import ColorRamps from './ColorRamps';
 import MaturityChecklist from './MaturityChecklist';
 import SpacingUtilityExampleList from './SpacingUtilityExampleList';
 
@@ -73,7 +73,7 @@ const customComponents = (theme) => ({
   ol: (props) => TextWithMaxWidth(props, 'ol'),
   EmbeddedExample,
   MaturityChecklist,
-  ColorTokenSwatches,
+  ColorRamps,
   StorybookExample: (props) => <StorybookExample theme={theme} {...props} />,
   PropTable: (props) => <PropTable theme={theme} {...props} />,
   PropTableHtmlElementRow: (props) => <PropTableHtmlElementRow theme={theme} {...props} />,
