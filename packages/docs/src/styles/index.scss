@@ -25,3 +25,11 @@
 @import 'components/tableOfContents.scss';
 @import 'components/spacingUtilityExampleList.scss';
 @import 'components/video.scss';
+
+[data-theme='healthcare'] {
+  @import '@cmsgov/ds-healthcare-gov/src/styles/index';
+}
+
+[data-theme='medicare'] {
+  @import '@cmsgov/ds-medicare-gov/src/styles/index';
+}
