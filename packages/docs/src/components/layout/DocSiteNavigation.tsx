@@ -122,9 +122,9 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
             <MenuIconThin className="ds-u-font-size--xl" />
           )}
         </Button>
-        <h1 className="c-navigation__title">
-          <a href="/">CMS Design System</a>
-        </h1>
+        <a className="c-navigation__title" href="/">
+          CMS Design System
+        </a>
       </header>
 
       <div

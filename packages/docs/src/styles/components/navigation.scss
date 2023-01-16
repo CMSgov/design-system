@@ -16,15 +16,11 @@
   }
 
   .c-navigation__title {
-    color: var(--color-base);
+    background-color: transparent;
+    color: currentColor;
     font-size: var(--font-size-xl);
-    margin: 0;
-
-    a {
-      background-color: transparent;
-      color: currentColor;
-      text-decoration: none;
-    }
+    font-weight: var(--font-weight-bold);
+    text-decoration: none;
   }
 
   .c-navigation__link-list {
