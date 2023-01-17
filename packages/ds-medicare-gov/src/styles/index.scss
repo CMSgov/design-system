@@ -11,13 +11,4 @@
 @use 'layout';
 @use 'base';
 @use 'fonts';
-
-@use 'components/ChoiceList';
-@use 'components/Dialog';
-@use 'components/Forms';
-@use 'components/HelpDrawer';
-@use 'components/Other';
-@use 'components/Tooltip';
-@use 'components/Icons';
-@use 'components/SimpleFooter';
-@use 'components/Card';
+@use 'components/index' as *;
