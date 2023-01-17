@@ -37,9 +37,13 @@ const fontsCorePath = path.join(corePackageFiles, 'fonts');
  * clean up dist folder if it exists
  */
 const cleanDist = (cb) => {
-  fs.rm(distPath, { recursive: true }, () => {
-    cb();
+  fs.readdirSync(distPath, (err, files) => {
+    files.forEach((f) => {
+      // don't clean out the scss folder that was just created
+      if (f !== 'scss') fs.rm(f, { recursive: true });
+    });
   });
+  cb();
 };
 cleanDist.displayName = '🧹 cleaning up dist path';
 

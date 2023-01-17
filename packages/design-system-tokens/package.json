@@ -12,7 +12,7 @@
   "scripts": {
     "build": "ts-node ./src/index.ts",
     "build:all": "yarn clean && yarn build themes css-vars && yarn build themes scss && yarn dist",
-    "clean": "rm -f dist/*",
+    "clean": "rm -rf dist/*",
     "dist": "./src/copy_themes.sh"
   },
   "dependencies": {}
