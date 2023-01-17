@@ -9,11 +9,4 @@
 
 @use '../../../design-system/src/styles/index';
 @use 'layout';
-
-@use 'components/Accordion';
-@use 'components/Footer';
-@use 'components/FormLabel';
-@use 'components/Header';
-@use 'components/Inset';
-@use 'components/Logo';
-@use 'components/PrivacySettingsTable';
+@use 'components/index' as *;
