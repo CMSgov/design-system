@@ -5,7 +5,7 @@ import {
   TableCell,
   TableHead,
   TableRow,
-} from '@cmsgov/ds-healthcare-gov';
+} from '@cmsgov/design-system';
 import React from 'react';
 
 function TableExample(): React.ReactElement {

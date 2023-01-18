@@ -1,4 +1,4 @@
-import { Accordion, AccordionItem } from '@cmsgov/ds-healthcare-gov';
+import { Accordion, AccordionItem } from '@cmsgov/design-system';
 import React from 'react';
 
 function AccordionExample(): React.ReactElement {

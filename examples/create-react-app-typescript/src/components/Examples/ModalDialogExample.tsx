@@ -1,4 +1,4 @@
-import { Button, Dialog } from '@cmsgov/ds-healthcare-gov';
+import { Button, Dialog } from '@cmsgov/design-system';
 import React, { useState } from 'react';
 
 function ModalDialogExample(): React.ReactElement {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Spinner } from '@cmsgov/ds-healthcare-gov';
+import { Spinner } from '@cmsgov/design-system';
 
 function SpinnerExample(): React.ReactElement {
   return (
