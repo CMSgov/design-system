@@ -1,4 +1,4 @@
-import { Badge } from '@cmsgov/design-system';
+import { Badge } from '@cmsgov/ds-healthcare-gov';
 import React, { useState } from 'react';
 import AccordionExample from './Examples/AccordionExample';
 import AlertExample from './Examples/AlertExample';

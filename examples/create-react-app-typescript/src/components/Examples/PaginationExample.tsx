@@ -1,4 +1,4 @@
-import { Pagination } from '@cmsgov/design-system';
+import { Pagination } from '@cmsgov/ds-healthcare-gov';
 import React from 'react';
 
 function PaginationExample(): React.ReactElement {

@@ -1,4 +1,4 @@
-import { Dropdown } from '@cmsgov/design-system';
+import { Dropdown } from '@cmsgov/ds-healthcare-gov';
 import React from 'react';
 
 function DropdownExample(): React.ReactElement {

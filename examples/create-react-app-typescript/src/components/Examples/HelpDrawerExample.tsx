@@ -1,4 +1,4 @@
-import { HelpDrawer, HelpDrawerToggle } from '@cmsgov/design-system';
+import { HelpDrawer, HelpDrawerToggle } from '@cmsgov/ds-healthcare-gov';
 import React, { useState } from 'react';
 
 function HelpDrawerExample(): React.ReactElement {
