@@ -2,15 +2,15 @@
  * Core CMSDS Component Theme
  */
 
-import { default as t } from './core'
+import { default as t } from './cmsgov'
 import { hexOpacity } from '../lib/utility'
 import { AnyTokenValues } from '../lib/types'
 
 export const components: AnyTokenValues = {
   'accordion': {
     '__color':                                    t.color['base'],
-    '__background-color':                         t.color['gray-lightest'],
-    '__background-color--hover':                  t.color['gray-lighter'],
+    '__background-color':                         t.color['primary-lightest'],
+    '__background-color--hover':                  t.color['primary-lighter'],
     '__border-color':                             t.color['gray-lightest'],
     '-button__color':                             t.color['base'],
     '-content__background-color':                 t.color['white'],
@@ -40,13 +40,13 @@ export const components: AnyTokenValues = {
     '__background-color':                         t.color['white'],
     '__border-color':                             t.color['gray-lighter'],
     '-item__font-color':                          t.color['primary'],
-    '-item__background-color--active':            t.color['secondary-darkest'],
+    '-item__background-color--active':            t.color['primary'],
     '-item__font-color--active':                  t.color['white'],
-    '-item-message__font-color':                  t.color['muted'],
+    '-item-message__font-color':                  t.color['primary'],
   },
 
   'badge': {
-    '__background-color':                         t.color['gray'],
+    '__background-color':                         t.color['gray-lightest'],
     '__background-color--alert':                  t.color['error'],
     '__background-color--info':                   t.color['primary'],
     '__background-color--success':                t.color['success'],
@@ -56,18 +56,18 @@ export const components: AnyTokenValues = {
   },
 
   'button': {
-    '__background-color--active':                 t.color['gray-lighter'],
-    '__background-color--disabled':               'transparent',
-    '__background-color--hover':                  t.color['gray-lightest'],
+    '__background-color--active':                 t.color['primary-lightest'],
+    '__background-color--disabled':               t.color['gray-lightest'],
+    '__background-color--hover':                  t.color['primary-lightest'],
     '__background-color':                         'transparent',
-    '__border-color--active':                     'currentColor',
-    '__border-color--disabled':                   'currentColor',
-    '__border-color--hover':                      'currentColor',
-    '__border-color':                             'currentColor',
-    '__border-radius':                            t.radius['default'],
-    '__border-width':                             '1px',
+    '__border-color--active':                     t.color['primary'],
+    '__border-color--disabled':                   t.color['gray-lighter'],
+    '__border-color--hover':                      t.color['primary'],
+    '__border-color':                             t.color['primary'],
+    '__border-radius':                            t.radius['pill'],
+    '__border-width':                             '2px',
     '__color--active':                            t.color['primary-darkest'],
-    '__color--disabled':                          t.color['gray-lighter'],
+    '__color--disabled':                          t.color['gray'],
     '__color--hover':                             t.color['primary-darker'],
     '__color':                                    t.color['primary'],
     '__font-weight':                              t.font['weight-bold'],
@@ -120,17 +120,17 @@ export const components: AnyTokenValues = {
   },
 
   'button-solid': {
-    '__background-color--active':                 t.color['primary-darkest'],
-    '__background-color--disabled':               t.color['gray-lighter'],
-    '__background-color--hover':                  t.color['primary-darker'],
+    '__background-color--active':                 t.color['primary-lightest'],
+    '__background-color--disabled':               t.color['gray-lightest'],
+    '__background-color--hover':                  t.color['primary-lightest'],
     '__background-color':                         t.color['primary'],
-    '__border-color--active':                     t.color['primary-darkest'],
+    '__border-color--active':                     t.color['primary'],
     '__border-color--disabled':                   t.color['gray-lighter'],
-    '__border-color--hover':                      t.color['primary-darker'],
+    '__border-color--hover':                      t.color['primary-lightest'],
     '__border-color':                             t.color['primary'],
-    '__color--active':                            t.color['white'],
-    '__color--disabled':                          t.color['gray-dark'],
-    '__color--hover':                             t.color['white'],
+    '__color--active':                            t.color['primary'],
+    '__color--disabled':                          t.color['gray'],
+    '__color--hover':                             t.color['primary'],
     '__color':                                    t.color['white'],
   },
 
@@ -188,9 +188,9 @@ export const components: AnyTokenValues = {
     '__border-color--disabled':                   'transparent',
     '__border-color--hover':                      'transparent',
     '__border-color':                             'transparent',
-    '__color--active':                            t.color['primary-darkest'],
-    '__color--disabled':                          t.color['gray-lighter'],
-    '__color--hover':                             t.color['primary-darker'],
+    '__color--active':                            t.color['primary'],
+    '__color--disabled':                          t.color['gray'],
+    '__color--hover':                             t.color['primary'],
     '__color':                                    t.color['primary'],
   },
 
@@ -324,16 +324,16 @@ export const components: AnyTokenValues = {
 
   'link': {
     '__color':                                    t.color['primary'],
-    '__color--active':                            t.color['primary-darkest'],
-    '__color--hover':                             t.color['primary-darker'],
+    '__color--active':                            t.color['base'],
+    '__color--hover':                             t.color['primary'],
     '__color--visited':                           t.color['visited'],
     '-inverse__color':                            t.color['base-inverse'],
     '-inverse__color--active':                    t.color['muted-inverse'],
     '-inverse__color--hover':                     t.color['muted-inverse'],
     '-inverse__color--visited':                   t.color['muted-inverse'],
-    '__text-decoration-offset':                   'auto',
-    '__text-decoration-thickness':                '1px',
-    '__text-decoration-thickness--hover':         '1px',
+    '__text-decoration-offset':                   '4px',
+    '__text-decoration-thickness':                '2.4px',
+    '__text-decoration-thickness--hover':         '2.4px',
   },
 
   'pagination': {
@@ -372,8 +372,8 @@ export const components: AnyTokenValues = {
 
   'table': {
     '__padding':                                  t.spacer['2'],
-    '__border-color':                             t.color['black'],
-    '-header__background-color':                  t.color['gray-lightest'],
+    '__border-color':                             t.color['gray-lighter'],
+    '-header__background-color':                  t.color['primary-lightest'],
     '-striped__background-color':                 t.color['gray-lightest'],
     '-striped-header__background-color':          t.color['gray-lightest'],
   },
@@ -388,7 +388,7 @@ export const components: AnyTokenValues = {
     '-selected__border-color--active':            t.color['primary'],
     '__color--hover':                             t.color['primary'],
     '__color--active':                            t.color['primary-darker'],
-    '__background-color--disabled':               t.color['gray-lighter'],
+    '__background-color--disabled':               t.color['gray-lightest'],
     '__border-color--disabled':                   t.color['gray-lighter'],
     '__color--disabled':                          t.color['gray-dark'],
   },
