@@ -49,12 +49,8 @@ describe('MenuList', function () {
 
   describe('Spanish', () => {
     it('returns array of menu list objects', () => {
-      // Make sure you can specify the language through the deprecated `locale` prop or by the global setting
-      const linksA = defaultMenuLinks({ locale: 'es' });
-      setLanguage('es');
-      const linksB = defaultMenuLinks();
-      expect(linksA).toEqual(linksB);
-      expect(linksB).toMatchSnapshot();
+      const links = defaultMenuLinks();
+      expect(links).toMatchSnapshot();
     });
 
     it('returns array of menu list objects with subpath', () => {

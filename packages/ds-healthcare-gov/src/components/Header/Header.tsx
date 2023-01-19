@@ -4,7 +4,7 @@ import Logo from '../Logo/Logo';
 import Menu from './Menu';
 import React, { useState } from 'react';
 import { SkipNav } from '@cmsgov/design-system';
-import { Language, getLanguage, tWithLanguage } from '../i18n';
+import { getLanguage, tWithLanguage } from '../i18n';
 import classnames from 'classnames';
 import defaultMenuLinks from './defaultMenuLinks';
 
@@ -20,13 +20,6 @@ export interface HeaderProps {
    * Additional classes to be added to the root `<header>` element.
    */
   className?: string;
-  /**
-   * @deprecated - This is now deprecated in favor of the global language setting. See guides/internationalization
-   * @hide-prop [Deprecated]
-   *
-   * The language the header will render as.
-   */
-  initialLanguage?: Language;
   /**
    * For applications that handle their own locale switching. Overrides the
    * default locale link. The link's label is still determined by the opposite
@@ -148,20 +141,14 @@ export const VARIATION_NAMES = {
 export const Header = (props: HeaderProps) => {
   const [openMenu, setOpenMenu] = useState(false);
   const isControlledMenu = props.isMenuOpen !== undefined && props.onMenuToggle !== undefined;
-  const t = tWithLanguage(props.initialLanguage);
-
-  if (props.initialLanguage) {
-    console.warn(
-      `[Deprecated]: Please remove the 'initialLanguage' prop in <Header> in favor of global language setting. This prop is deprecated and will be removed in a future release.`
-    );
-  }
+  const t = tWithLanguage(getLanguage());
 
   /**
    * Determines which variation of the header should be displayed,
    * based on the props being passed into the component.
    * @returns {String} Variation name
    */
-  function variation() {
+  function variation(): string {
     if (props.loggedIn) {
       // Logged-in state, with minimal navigation
       return VARIATION_NAMES.LOGGED_IN;
@@ -179,7 +166,7 @@ export const Header = (props: HeaderProps) => {
    * Content rendered within <Menu>, before the list of links
    * @returns {Node}
    */
-  function beforeMenuLinks() {
+  function beforeMenuLinks(): JSX.Element {
     if (isLoggedIn() && props.firstName) {
       return (
         <div className="ds-u-sm-display--none ds-u-border-bottom--1 ds-u-margin-x--1 ds-u-padding-y--1 hc-c-header__name">
@@ -205,7 +192,6 @@ export const Header = (props: HeaderProps) => {
 
   const hasCustomLinks = !!props.links;
   const defaultLinksForVariation = defaultMenuLinks({
-    locale: props.initialLanguage,
     deConsumer: props.deConsumer,
     subpath: props.subpath,
     primaryDomain: props.primaryDomain,
@@ -232,10 +218,7 @@ export const Header = (props: HeaderProps) => {
             href={props.primaryDomain ? props.primaryDomain : '/'}
             className="hc-c-logo-link ds-l-col ds-l-col--auto"
           >
-            <Logo
-              locale={props.initialLanguage ?? getLanguage()}
-              className={props.logoClassName ?? ''}
-            />
+            <Logo className={props.logoClassName ?? ''} />
           </a>
 
           <nav
