@@ -255,6 +255,8 @@ import '@cmsgov/ds-medicare-gov/dist/css/medicare-theme.css';
 
 </ThemeContent>
 
+Note that some bundlers have trouble finding the font and image files when the CSS files are imported through Sass. In those cases, we recommend either adding the `.css` extension to the imports or importing the CSS files directly from JavaScript to avoid limitations of the Sass compiler and/or the WebPack configuration.
+
 ### CSS Custom Properties
 
 The CMSDS utilizes [CSS Custom Properties](https://www.w3.org/TR/css-variables-1/) to allow for flexible styling of components, layout, animation, typography and color. Lists of variables and their values can be found throughout this documentation.  
