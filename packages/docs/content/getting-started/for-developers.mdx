@@ -255,7 +255,11 @@ import '@cmsgov/ds-medicare-gov/dist/css/medicare-theme.css';
 
 </ThemeContent>
 
-Note that some bundlers have trouble finding the font and image files when the CSS files are imported through Sass. In those cases, we recommend either adding the `.css` extension to the imports or importing the CSS files directly from JavaScript to avoid limitations of the Sass compiler and/or the WebPack configuration.
+<Alert heading="Issues with fonts and images" variation="warn">
+
+  Note that some bundlers have trouble finding the font and image files when the CSS files are imported through Sass. In those cases, we recommend either adding the `.css` extension to the imports or importing the CSS files directly from JavaScript to avoid limitations of the Sass compiler and/or the WebPack configuration.
+
+</Alert>
 
 ### CSS Custom Properties
 
@@ -433,11 +437,11 @@ console.log(getLanguage());
   variation="warn"
   className="ds-u-margin-top--3"
 >
-  <p class="ds-c-alert__text">
-    You may notice that some components accept an older `language` or `locale` prop to set the
-    language of the content on a per-component basis, but these per-component props have been
-    deprecated and will be removed in a future breaking-change release.
-  </p>
+
+  You may notice that some components accept an older `language` or `locale` prop to set the
+  language of the content on a per-component basis, but these per-component props have been
+  deprecated and will be removed in a future breaking-change release.
+
 </Alert>
 
 ## Further resources
