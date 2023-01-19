@@ -1,5 +1,5 @@
 /*
- * Core CMSDS Theme
+ * CMSgov CMSDS Theme
  */
 
 import { animation, color, font, measure, media, radius, spacer, z } from '../tokens';
@@ -152,7 +152,7 @@ export const shadow: ShadowTokens = {
   'base':                       '2px 2px 4px',
 };
 
-const coreTheme: ThemeTokens = {
+const cmsgovTheme: ThemeTokens = {
   animation,
   color: themeColors,
   font: {
@@ -169,4 +169,4 @@ const coreTheme: ThemeTokens = {
   z,
 };
 
-export default coreTheme;
+export default cmsgovTheme;

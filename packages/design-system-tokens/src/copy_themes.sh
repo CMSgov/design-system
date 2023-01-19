@@ -4,6 +4,7 @@ declare -A PATHS
 PATHS[core]="../../design-system"
 PATHS[healthcare]="../../ds-healthcare-gov"
 PATHS[medicare]="../../ds-medicare-gov"
+PATHS[cmsgov]="../../cms-gov"
 
 cd dist
 

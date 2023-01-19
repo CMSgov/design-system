@@ -7,12 +7,15 @@ import {
   HealthcareComponentTheme,
   MedicareTheme,
   MedicareComponentTheme,
+  CmsgovTheme,
+  CmsgovComponentTheme,
 } from 'design-system-tokens/src/themes';
 
 const themes = {
   core: { ...CoreTheme, components: CoreComponentTheme },
   healthcare: { ...HealthcareTheme, components: HealthcareComponentTheme },
   medicare: { ...MedicareTheme, components: MedicareComponentTheme },
+  cmsgov: { ...CmsgovTheme, components: CmsgovComponentTheme },
 };
 
 export type ThemeName = keyof typeof themes;

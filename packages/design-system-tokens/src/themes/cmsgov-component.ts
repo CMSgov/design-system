@@ -1,5 +1,5 @@
 /*
- * Core CMSDS Component Theme
+ * CMSgov CMSDS Component Theme
  */
 
 import { default as t } from './cmsgov'
