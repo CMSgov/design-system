@@ -22,6 +22,11 @@ a code {
   text-decoration: underline;
 }
 
+.ds-c-alert code {
+  // Semi-transparent so it matches the color of the alert better
+  background-color: #c4c4c44f;
+}
+
 /**
  * a11y-light theme for JavaScript, CSS, and HTML
  * Based on the okaidia theme: https://github.com/PrismJS/prism/blob/gh-pages/themes/prism-okaidia.css
