@@ -1,5 +1,6 @@
 @use 'layout' as *;
 @use 'mixins';
+@use 'components/List' as *;
 
 /**
  * Global
@@ -294,4 +295,35 @@ a,
 
 .ds-text-body--sm {
   font-size: var(--font-size-sm);
+}
+
+.ds-content {
+  h1 {
+    @extend .ds-text-heading--3xl;
+  }
+
+  h2 {
+    @extend .ds-text-heading--2xl;
+  }
+
+  h3 {
+    @extend .ds-text-heading--xl;
+  }
+
+  h4 {
+    @extend .ds-text-heading--lg;
+  }
+
+  h5 {
+    @extend .ds-text-heading--md;
+  }
+
+  h6 {
+    @extend .ds-text-heading--sm;
+  }
+
+  ul,
+  ol {
+    @extend .ds-c-list;
+  }
 }
