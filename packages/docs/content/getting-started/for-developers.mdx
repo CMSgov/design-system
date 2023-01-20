@@ -255,6 +255,12 @@ import '@cmsgov/ds-medicare-gov/dist/css/medicare-theme.css';
 
 </ThemeContent>
 
+<Alert heading="Issues with fonts and images" variation="warn">
+
+  Note that some bundlers have trouble finding the font and image files when the CSS files are imported through Sass. In those cases, we recommend either adding the `.css` extension to the imports or importing the CSS files directly from JavaScript to avoid limitations of the Sass compiler and/or the WebPack configuration.
+
+</Alert>
+
 ### CSS Custom Properties
 
 The CMSDS utilizes [CSS Custom Properties](https://www.w3.org/TR/css-variables-1/) to allow for flexible styling of components, layout, animation, typography and color. Lists of variables and their values can be found throughout this documentation.  
@@ -267,7 +273,7 @@ These custom properties allow for a degree of customization of the design system
 }
 ```
 
-This allows these classes to apply globally to the entire page their loaded on. By re-defining these variables in this same scope or defining a variable in a custom scope, such as a specific class, you can overwrite these variables:
+This allows these classes to apply globally to the entire page they're loaded on. By re-defining these variables in this same scope or defining a variable in a custom scope, such as a specific class, you can overwrite these variables:
 
 ```css
 .ds-c-button {
@@ -431,11 +437,11 @@ console.log(getLanguage());
   variation="warn"
   className="ds-u-margin-top--3"
 >
-  <p class="ds-c-alert__text">
-    You may notice that some components accept an older `language` or `locale` prop to set the
-    language of the content on a per-component basis, but these per-component props have been
-    deprecated and will be removed in a future breaking-change release.
-  </p>
+
+  You may notice that some components accept an older `language` or `locale` prop to set the
+  language of the content on a per-component basis, but these per-component props have been
+  deprecated and will be removed in a future breaking-change release.
+
 </Alert>
 
 ## Further resources

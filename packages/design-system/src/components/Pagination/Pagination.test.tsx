@@ -37,6 +37,7 @@ describe('Pagination', () => {
   function renderPagination(overrideProps = {}) {
     const props = {
       totalPages: 3,
+      currentPage: 1,
       onPageChange: onPageChange,
       renderHref: (currentPage) => `#${currentPage}`,
       ...overrideProps,
