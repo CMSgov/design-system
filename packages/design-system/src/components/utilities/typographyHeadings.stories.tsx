@@ -33,6 +33,54 @@ AllHeadingsOnDark.parameters = {
   baseInverse: true,
 };
 
+export const ContentClass = () => (
+  <div className="ds-content">
+    <h1>Heading level 1</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+      labore et dolore magna aliqua.
+    </p>
+    <h2>Heading level 2</h2>
+    <p>
+      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat.
+    </p>
+    <h3>Heading level 3</h3>
+    <p>
+      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+      pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+      mollit anim id est laborum.
+    </p>
+    <ul>
+      <li>A list</li>
+      <li>Of items</li>
+    </ul>
+    <p>
+      Arcu risus quis varius quam quisque. Suspendisse ultrices gravida dictum fusce ut placerat.
+    </p>
+    <h4>Heading level 4</h4>
+    <p>
+      Ullamcorper velit sed ullamcorper morbi tincidunt ornare. Sed vulputate mi sit amet mauris
+      commodo. Blandit massa enim nec dui nunc. Vestibulum lorem sed risus ultricies tristique.
+    </p>
+    <ol>
+      <li>An orderly list of items</li>
+      <li>So ordered</li>
+    </ol>
+    <h5>Heading level 5</h5>
+    <p>
+      Non diam phasellus vestibulum lorem sed risus ultricies tristique. Elementum eu facilisis sed
+      odio. Tempor orci dapibus ultrices in iaculis nunc sed augue. Arcu non sodales neque sodales
+      ut etiam sit amet.
+    </p>
+    <h6>Heading level 6</h6>
+    <p>
+      Hac habitasse platea dictumst quisque sagittis purus sit amet. Ultrices neque ornare aenean
+      euismod. Dignissim sodales ut eu sem integer vitae.
+    </p>
+  </div>
+);
+
 export const Heading5xl = () => {
   return (
     <>
