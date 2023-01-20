@@ -9,7 +9,7 @@ import { AnyTokenValues } from '../lib/types'
 export const components: AnyTokenValues = {
   'accordion': {
     '__color':                                    t.color['base'],
-    '__background-color':                         t.color['primary-lightest'],
+    '__background-color':                         t.color['primary'],
     '__background-color--hover':                  t.color['primary-lighter'],
     '__border-color':                             t.color['gray-lightest'],
     '-button__color':                             t.color['base'],
