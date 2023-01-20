@@ -320,4 +320,9 @@ a,
   h6 {
     @extend .ds-text-heading--sm;
   }
+
+  ul,
+  ol {
+    @extend .ds-c-list;
+  }
 }
