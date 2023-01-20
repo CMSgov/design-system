@@ -21,9 +21,9 @@ export interface PaginationProps {
    */
   compact?: boolean;
   /**
-   * Defines active page in Pagination. Optional.
+   * Defines active page in Pagination.
    */
-  currentPage?: number;
+  currentPage: number;
   /**
    * Determines if navigation is hidden when current page is the first or last of Pagination page set. Optional.
    */
@@ -321,7 +321,6 @@ function Pagination({
 
 Pagination.defaultProps = {
   compact: false,
-  currentPage: 1,
   isNavigationHidden: false,
 };
 

@@ -13,7 +13,6 @@ function ModalDialogExample(): React.ReactElement {
       {showExampleModal && (
         <Dialog
           onExit={() => setShowExampleModal(false)}
-          getApplicationNode={() => document.getElementById('App')}
           heading="Dialog heading"
           actions={[
             <button className="ds-c-button ds-c-button--primary ds-u-margin-right--1" key="primary">
