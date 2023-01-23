@@ -3,9 +3,12 @@
 @use '../../../../design-system/src/styles/mixins';
 
 .hc-c-footer {
+  color: var(--color-muted);
+  font-size: var(--font-size-sm);
+
   a {
-    color: var(--color-muted);
-    text-decoration: none;
+    color: currentColor;
+    text-decoration-color: transparent;
 
     &:hover,
     &:focus {
@@ -14,48 +17,41 @@
   }
 }
 
-.hc-c-footer__inline-item {
-  color: var(--color-muted);
-  // We use a right margin and padding to avoid a weird
-  // left indent when an item wraps to the next line
-  margin-right: $spacer-half;
+.hc-c-footer__list {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacer-half;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
-  a {
-    padding-right: $spacer-half;
-  }
+.hc-c-footer__inline-item {
+  align-items: center;
+  display: flex;
+  gap: $spacer-half;
 
   // "Privacy Settings" link is a button
   button {
     background-color: inherit;
     border: 0;
-    color: inherit;
+    color: currentColor;
     cursor: pointer;
     font-family: inherit;
     font-size: inherit;
     padding: 0;
-    padding-right: $spacer-half;
     text-decoration: none;
 
     &:focus {
       @include mixins.focus-styles;
     }
   }
+}
 
-  &:not(:last-child)::after {
-    background-color: currentColor;
-    border-radius: 50%;
-    content: '';
-    display: inline-block;
-    height: var(--footer__list-marker-size);
-    vertical-align: middle;
-    width: var(--footer__list-marker-size);
-  }
-
-  &:first-child a {
-    padding-left: 0;
-  }
-
-  &:last-child {
-    margin-right: 0;
-  }
+.hc-c-footer__delimiter {
+  background-color: currentColor;
+  border-radius: 50%;
+  height: var(--footer__list-marker-size);
+  width: var(--footer__list-marker-size);
 }
