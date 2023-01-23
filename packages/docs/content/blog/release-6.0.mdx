@@ -4,11 +4,19 @@ date: 2023-01-12
 intro: Shipping CSS instead of Sass, introducing new masked fields, streamlining ZIP code patterns, and more
 ---
 
+import scssToCssImg from '../../src/images/scss-to-css.svg';
+
 ## What's new in 6.0
 
 ### First-class support for non-Sass projects through CSS Custom Properties
 
-Previously we had two options for teams consuming our design system styles: CSS and Sass. Importing our Sass files was the only way to gain access to useful design-system variables like color and spacing tokens. Projects that used CSS only had to hard-code things like primary color into their projects. Over this program increment, we shifted to using [CSS Custom Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) throughout our stylesheets, and now we can pass those custom properties on to product teams. With this move, [as we mentioned in our previous blog post](https://design.cms.gov/blog/?theme=core#sasscss-changes), we've decided to stop distributing a Sass version of our stylesheets in our npm package, but we are still providing Sass files with the Sass versions of all our theme variables while teams transition over to using CSS Custom Properties. You can [read about how to use the CSS files and our theme variables](https://design.cms.gov/getting-started/for-developers/) over in our getting-started guide for developers.
+Previously we had two options for teams consuming our design system styles: CSS and Sass. Importing our Sass files was the only way to gain access to useful design-system variables like color and spacing tokens. Projects that used CSS only had to hard-code things like primary color into their projects. Over this program increment, we shifted to using [CSS Custom Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) throughout our stylesheets, and now we can pass those custom properties on to product teams.
+
+<div className="ds-u-measure--wide ds-u-text-align--center ds-u-margin-y--3">
+  <img src={scssToCssImg} alt="Sass to CSS" className="ds-u-display--inline-block" height="100" />
+</div>
+
+With this move, [as we mentioned in our previous blog post](https://design.cms.gov/blog/?theme=core#sasscss-changes), we've decided to stop distributing a Sass version of our stylesheets in our npm package, but we are still providing Sass files with the Sass versions of all our theme variables while teams transition over to using CSS Custom Properties. You can [read about how to use the CSS files and our theme variables](https://design.cms.gov/getting-started/for-developers/) over in our getting-started guide for developers.
 
 ### New masked fields and automatic SSN obfuscation
 
