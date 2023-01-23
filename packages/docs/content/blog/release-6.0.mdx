@@ -5,6 +5,8 @@ intro: Shipping CSS instead of Sass, introducing new masked fields, streamlining
 ---
 
 import scssToCssImg from '../../src/images/scss-to-css.svg';
+import ssnInput from '../../src/images/ssn-input.gif';
+import swatches from '../../src/images/swatches.png';
 
 ## What's new in 6.0
 
@@ -20,7 +22,13 @@ With this move, [as we mentioned in our previous blog post](https://design.cms.g
 
 ### New masked fields and automatic SSN obfuscation
 
-When we created the [single-input date field](https://design.cms.gov/components/date-field/single-input-date-field/) a while back, we introduced a new masking pattern called the [label-mask](https://design.cms.gov/components/text-field/label-masked-field/). Now that we've been using it internally for a few months, we've decided to open it up for use as a drop-in replacement for our old [input-mask](https://design.cms.gov/components/text-field/input-masked-field/) pattern. The label-mask now supports every feature that the old input-mask supported, with the additional improvement that the Social Security Number (SSN) field now automatically obfuscates the SSN when the input doesn't have focus by only showing the last four digits. This is previously something application teams had to implement themselves in order to use the SSN field and maintain their users' privacy. You can [read more about the label-mask pattern](https://design.cms.gov/components/text-field/label-masked-field/)—what it is and why we built it—on the new documentation page.
+When we created the [single-input date field](https://design.cms.gov/components/date-field/single-input-date-field/) a while back, we introduced a new masking pattern called the [label-mask](https://design.cms.gov/components/text-field/label-masked-field/). Now that we've been using it internally for a few months, we've decided to open it up for use as a drop-in replacement for our old [input-mask](https://design.cms.gov/components/text-field/input-masked-field/) pattern. The label-mask now supports every feature that the old input-mask supported, with the additional improvement that the Social Security Number (SSN) field now automatically obfuscates the SSN when the input doesn't have focus by only showing the last four digits.
+
+<div className="ds-u-measure--wide ds-u-text-align--center">
+  <img src={ssnInput} alt="Animated screen capture of inputting a Social Security Number using the new label-mask pattern" className="ds-u-display--inline-block" />
+</div>
+
+Hiding the SSN is previously something application teams had to implement themselves in order to use the SSN field and maintain their users' privacy. You can [read more about the label-mask pattern](https://design.cms.gov/components/text-field/label-masked-field/)—what it is and why we built it—on the new documentation page.
 
 ### Sunsetting InVision DSM
 
@@ -41,9 +49,11 @@ For these reasons we decided to migrate all the content from the DSM into our do
 
 In our [3.6.0 release](https://github.com/CMSgov/design-system/releases/tag/%40cmsgov%2Fdesign-system%403.6.0) we established design tokens for the design system including a system color tokens. System color tokens are the complete set of color tokens from which themes are built.
 
-In this release we've added a page to the design system to show all color tokens in an easy to read and scannable way. We're exposing this base set of tokens to better highlight the design decisions made within a particular theme.
+<div className="ds-u-measure--wide ds-u-text-align--center">
+  <img src={swatches} alt="Color ramps from the 'System Color Tokens' page, showing a range of light to dark shades of a color" className="ds-u-display--inline-block" width="400" />
+</div>
 
-Think of them as [a complete box of crayons](https://design.cms.gov/foundation/system-color-tokens/?theme=core). Our themes make use of certain colors from the crayon box but not all of them.
+In this release we've added a page to the design system to show all color tokens in an easy to read and scannable way. We're exposing this base set of tokens to better highlight the design decisions made within a particular theme. Think of them as [a complete box of crayons](https://design.cms.gov/foundation/system-color-tokens/?theme=core). Our themes make use of certain colors from the crayon box but not all of them.
 
 ### Streamlining the ZIP Code design pattern
 
