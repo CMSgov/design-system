@@ -3,17 +3,10 @@
 
 .m-c-footer {
   background-color: var(--color-gray-lightest);
-  padding: $spacer-3;
-  padding-bottom: $spacer-4;
-  padding-top: $spacer-4;
-
-  @media screen and (max-width: $media-width-md) {
-    padding: 32px 24px;
-  }
+  padding: $spacer-4 $spacer-3;
 
   @media screen and (min-width: $media-width-lg) {
-    padding-left: $spacer-7;
-    padding-right: $spacer-7;
+    padding-inline: $spacer-7;
   }
 
   .SimpleFooter__linkButton,
@@ -21,20 +14,15 @@
     color: var(--color-base) !important;
     display: inline-block;
     font-size: 14px;
-    line-height: 20px;
     margin-bottom: $spacer-1;
     margin-top: 0;
     padding: 0;
-    text-decoration: none;
+    text-decoration-color: transparent;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
 
     &:hover {
-      text-decoration: underline;
-    }
-
-    &:not(:last-child)::after {
-      border-right: 1px solid var(--color-base);
-      content: '';
-      padding-left: $spacer-2;
+      text-decoration-color: currentColor;
     }
   }
 
@@ -43,22 +31,15 @@
     border-radius: 0 !important;
     color: var(--color-base) !important;
     cursor: pointer;
-
-    &:hover {
-      text-decoration: underline;
-    }
   }
+}
 
-  a {
-    &:first-child {
-      padding-left: 0;
-    }
-
-    &:last-child {
-      border-right: 0;
-      padding-right: 0;
-    }
-  }
+.m-c-footer__delimiter {
+  align-self: center;
+  background-color: var(--color-base);
+  height: 1rem;
+  margin-block-end: $spacer-1;
+  width: 1px;
 }
 
 .m-c-footer__linkRow {
