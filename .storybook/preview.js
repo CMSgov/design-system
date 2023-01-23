@@ -99,6 +99,7 @@ export const globalTypes = {
         { value: 'core', left: 'Core', title: 'Core CMSDS Theme' },
         { value: 'healthcare', left: 'Healthcare', title: 'Healthcare Theme' },
         { value: 'medicare', left: 'Medicare', title: 'Medicare Theme' },
+        { value: 'cmsgov', left: 'CMS Gov', title: 'CMS Gov Theme' },
       ],
     },
   },
