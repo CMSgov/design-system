@@ -1,0 +1,66 @@
+---
+title: Sass to CSS
+order: 60
+intro: New features in CSS have allowed us to stop relying on Sass to share design tokens with product teams. We're now only distributing our styles as CSS.
+---
+
+## What we changed and why
+
+Prior to [version 6.0.0](https://github.com/CMSgov/design-system/releases/tag/%40cmsgov%2Fdesign-system%406.0.0), we provided two ways of consuming our design system styles: as [Sass](https://sass-lang.com/) and as CSS. We used to recommend that product teams use our [Sass](https://sass-lang.com/) files because only then would they gain access to our [design tokens](/foundation/theme-colors/) and [theme variables](/components/alert/#styles). However, these three things lead us to reconsider Sass's future in the design system:
+
+1. Sass has a new compiler, but the upgrade path is messy and difficult to synchronize across teams
+2. Having product teams build our Sass source files is exposing them to unnecessary complexity
+3. Features we once relied on Sass for, like [CSS Custom Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*), are now available in CSS
+
+We researched and prototyped and eventually [published an RFC](https://github.com/CMSgov/design-system/discussions/2223) proposing that use Sass internally but only distribute the compiled CSS output. We shared our findings with product teams and heard no objections, so we went forward with the change.
+
+## Updating style imports
+
+## What to do about the focus-style mixin
+
+## What to do with instances of `@extends`
+
+## Referencing our variables in CSS
+
+(/getting-started/for-developers/#css-custom-properties)
+
+## Sass variables are still available
+
+To help teams transition to using CSS custom properties in their own time, we're still providing Sass equivalents of all our variables. The example below shows which files you will need to import from your project Sass.
+
+<ThemeContent neverThemes={['healthcare', 'medicare']}>
+
+```css
+@import '@cmsgov/design-system/dist/scss/core-tokens';
+@import '@cmsgov/design-system/dist/scss/core-component-tokens';
+```
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+```css
+@import '@cmsgov/ds-healthcare-gov/dist/scss/healthcare-tokens';
+@import '@cmsgov/ds-healthcare-gov/dist/scss/healthcare-component-tokens';
+```
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+```css
+@import '@cmsgov/ds-medicare-gov/dist/scss/medicare-tokens';
+@import '@cmsgov/ds-medicare-gov/dist/scss/medicare-component-tokens';
+```
+
+</ThemeContent>
+
+
+------
+
+TODO
+- Focus utility classes
+- `ds-content` class
+- Sass variables backwards compatibility
+
+The messy upgrade path for the Sass compiler and the general complexity around having product teams build our Sass source files lead us to reconsider Sass's future in the design system. We researched and prototyped and eventually [published an RFC](https://github.com/CMSgov/design-system/discussions/2223) proposing that use Sass internally but only distribute the compiled CSS output.
