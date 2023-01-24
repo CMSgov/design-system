@@ -16,6 +16,23 @@ We researched and prototyped and eventually [published an RFC](https://github.co
 
 ## Updating style imports
 
+If you're consuming the design system styles as Sass, you likely have something like this in your project:
+
+```css
+/* Old way of importing design-system styles */
+$font-path: '~@cmsgov/design-system/dist/fonts';
+$image-path: '~@cmsgov/design-system/dist/images';
+@import '@cmsgov/design-system/dist/scss/index';
+
+/* Your styles here */
+```
+
+Due to [limitations with some build systems](/getting-started/for-developers/#with-an-asset-bundler) and the Sass compiler, these `$font-path` and `$image-path` variables were necessary to make sure the bundler knew where to get fonts and images. In the move to CSS, we've made these paths static. It assumes these files exist at a location relative to your CSS bundle.
+
+For best results, we recommend importing our CSS files in the most direct way possible given your particular build system. That could be importing them from within a JavaScript module, creating a `<link>` tag in your HTML, or importing with a `.css` extension in Sass. The [webpack](https://webpack.js.org/) configuration that comes with the latest version of [Create React App](https://github.com/facebook/create-react-app) will be able to find and copy the font files files automatically when our CSS is imported (as can be seen in [our create-react-app-typescript example](https://github.com/CMSgov/design-system/tree/main/examples/create-react-app-typescript)). See also the [_Including the CSS_](https://design.cms.gov/getting-started/for-developers/#including-the-css) section of our developer docs for more details.
+
+Note that if you need your project Sass to evaluate the CSS files as Sass so you can do Sassy things, you'll have to [leave out the `.css` extension](https://sass-lang.com/documentation/at-rules/import#plain-css-imports). However, we have provided alternatives to several things that you might have needed Sass for previously, so be sure to read the sections below.
+
 ## What to do about the focus-style mixin
 
 ## What to do with instances of `@extends`
@@ -54,13 +71,3 @@ To help teams transition to using CSS custom properties in their own time, we're
 ```
 
 </ThemeContent>
-
-
-------
-
-TODO
-- Focus utility classes
-- `ds-content` class
-- Sass variables backwards compatibility
-
-The messy upgrade path for the Sass compiler and the general complexity around having product teams build our Sass source files lead us to reconsider Sass's future in the design system. We researched and prototyped and eventually [published an RFC](https://github.com/CMSgov/design-system/discussions/2223) proposing that use Sass internally but only distribute the compiled CSS output.
