@@ -19,7 +19,7 @@ Previously we had two options for teams consuming our design system styles: CSS 
   <img src={scssToCssImg} alt="Sass to CSS" className="ds-u-display--inline-block" height="100" />
 </div>
 
-With this move, [as we mentioned in our previous blog post](https://design.cms.gov/blog/?theme=core#sasscss-changes), we've decided to stop distributing a Sass version of our stylesheets in our npm package, but we are still providing Sass files with the Sass versions of all our theme variables while teams transition over to using CSS Custom Properties. You can [read about how to use the CSS files and our theme variables](https://design.cms.gov/getting-started/for-developers/) over in our getting-started guide for developers.
+With this move, [as we mentioned in our previous blog post](https://design.cms.gov/blog/?theme=core#sasscss-changes), we've decided to stop distributing a Sass version of our stylesheets in our npm package, but we are still providing Sass files with the Sass versions of all our theme variables while teams transition over to using CSS Custom Properties. You can [read about how to use the CSS files and our theme variables](https://design.cms.gov/getting-started/for-developers/) in our getting-started guide for developers.
 
 ### New masked fields and automatic SSN obfuscation
 
@@ -29,11 +29,11 @@ When we created the [single-input date field](https://design.cms.gov/components/
   <img src={ssnInput} alt="Animated screen capture of inputting a Social Security Number using the new label-mask pattern" className="ds-u-display--inline-block" />
 </div>
 
-Hiding the SSN is previously something application teams had to implement themselves in order to use the SSN field and maintain their users' privacy. You can [read more about the label-mask pattern](https://design.cms.gov/components/text-field/label-masked-field/)—what it is and why we built it—on the new documentation page.
+Hiding the SSN is previously something application teams had to implement themselves to use the SSN field and maintain their users' privacy. You can [read more about the label-mask pattern](https://design.cms.gov/components/text-field/label-masked-field/)—what it is and why we built it—on the new documentation page.
 
 ### Sunsetting InVision DSM
 
-Back in 2020 we started using InVision DSM to capture specific documentation and guidance in addition to the documentation sites. InVision DSM allowed for more non-technical users to contribute documentation and guidance to the design system. The DSM solved one problem of allowing team members an easy way to create and update content. In addition, the DSM has proved that making it easier to update and maintain content using a WYSIWYG type editor is helpful for the design system. We made a lot of good progress in collaborating on specific Healthcare and Medicare guidance for product teams.
+Back in 2020, we started using InVision DSM to capture specific documentation and guidance in addition to the documentation sites. InVision DSM allowed for more non-technical users to contribute documentation and guidance to the design system. The DSM solved one problem of allowing team members an easy way to create and update content. In addition, the DSM has proved that making it easier to update and maintain content using a WYSIWYG-type editor is helpful for the design system. We made a lot of good progress in collaborating on specific Healthcare and Medicare guidance for product teams.
 
 However, the DSM also created divergence in several important areas:  
   
@@ -44,21 +44,21 @@ However, the DSM also created divergence in several important areas:
 - Two different groups were responsible for updating two different doc sites (devs & designers)
 - Engineers favored GitHub-based doc site for its parity with code, while designers looked to the DSM for up-to-date guidance
 
-For these reasons we decided to migrate all the content from the DSM into our documentation site design.cms.gov and with this release have completed that effort and are sunsetting the DSM! This moves us closer toward our objective of having a single source of truth for the design system. We will continue to work on sunsetting related legacy sites like assets.cms.gov and styleguide.healthcare.gov in the future.
+For these reasons we decided to migrate all the content from the DSM into our documentation site design.cms.gov and with this release have completed that effort and are sunsetting the DSM! This moves us closer to our objective of having a single source of truth for the design system. We will continue to work on sunsetting related legacy sites like assets.cms.gov and styleguide.healthcare.gov in the future.
 
 ### System Color tokens
 
-In our [3.6.0 release](https://github.com/CMSgov/design-system/releases/tag/%40cmsgov%2Fdesign-system%403.6.0) we established design tokens for the design system including a system color tokens. System color tokens are the complete set of color tokens from which themes are built.
+In our [3.6.0 release](https://github.com/CMSgov/design-system/releases/tag/%40cmsgov%2Fdesign-system%403.6.0) we established design tokens for the design system including system color tokens. System color tokens are the complete set of color tokens from which themes are built.
 
 <div className="ds-u-measure--wide ds-u-text-align--center">
   <img src={swatches} alt="Color ramps from the 'System Color Tokens' page, showing a range of light to dark shades of a color" className="ds-u-display--inline-block" width="400" />
 </div>
 
-In this release we've added a page to the design system to show all color tokens in an easy to read and scannable way. We're exposing this base set of tokens to better highlight the design decisions made within a particular theme. Think of them as [a complete box of crayons](https://design.cms.gov/foundation/system-color-tokens/?theme=core). Our themes make use of certain colors from the crayon box but not all of them.
+In this release we've added a page to the design system to show all color tokens in an easy-to-read and scannable way. We're exposing this base set of tokens to better highlight the design decisions made within a particular theme. Think of them as [a complete box of crayons](https://design.cms.gov/foundation/system-color-tokens/?theme=core). Our themes make use of certain colors from the crayon box but not all of them.
 
 ### Streamlining the ZIP Code design pattern
 
-We dove deep into a dozen CMS, HealthCare, and Medicare products, what we discovered was truly eye-opening. We found a wide range of design patterns used for ZIP code input fields, but we also found some commonalities that can lead to a more efficient and user-friendly experience.
+We dove deep into a dozen CMS, HealthCare, and Medicare products, and what we discovered was truly eye-opening. We found a wide range of design patterns used for ZIP code input fields, but we also found some commonalities that can lead to a more efficient and user-friendly experience.
 
 Some products used a 5-digit ZIP code pattern, others used a 9-digit ZIP code pattern for stricter data validation. We also discovered services using an autocomplete feature for users to confirm their geo-location.
 
@@ -76,7 +76,7 @@ In this non-breaking change, we shook the proverbial rug out in all three UI Kit
   <img src={sketchThumbs} alt="Three colorful boxes with text, each showing the name and version number of a CMSDS UI Kit theme" className="ds-u-display--inline-block" width="430px" />
 </div>
 
-Oh, and we added some fancy new thumbnails to the files to help visually separate them in Sketch cloud! Checkout our “New Years Fresh Scent” [Design System 3.0.1 UI Kits](https://www.sketch.com/workspace/7688a8c5-c5a5-4944-bd1d-81f2169122ef/p/e0c14ddc-de5f-42bb-815d-be8ba96c39d1).
+Oh, and we added some fancy new thumbnails to the files to help visually separate them in Sketch cloud! Check out our “New Years Fresh Scent” [Design System 3.0.1 UI Kits](https://www.sketch.com/workspace/7688a8c5-c5a5-4944-bd1d-81f2169122ef/p/e0c14ddc-de5f-42bb-815d-be8ba96c39d1).
 
 ## What's on deck
 
@@ -86,7 +86,7 @@ The design system team is turning its attention towards improving our font offer
 - Allow font sizes to adapt to user preferences
 - Improve performance with a variety of operating systems under poor network conditions
 - Treat fonts and their utilities with more consistency across our design system themes
-- Streamline the design process and expedite decision making as it relates to fonts
+- Streamline the design process and expedite decision-making as it relates to fonts
 
 We've recently finished some promising rounds of discovery and auditing, which move us closer to achieving these goals. One major change that product teams can anticipate is a shift from absolute units (`px`) to responsive units (`rem`) for font sizes, which will finally respect browser settings. We're excited to share more about these changes in the coming months!
 
