@@ -84,7 +84,7 @@ export const globalTypes = {
     toolbar: {
       icon: 'graphline',
       items: [
-        { value: 'on', left: 'Analytics', title: 'Log to console' },
+        { value: 'on', left: 'Analytics', title: 'Log to Actions' },
         { value: 'off', left: 'Analytics', title: 'Off' },
       ],
     },
