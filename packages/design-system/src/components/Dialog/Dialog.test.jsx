@@ -92,6 +92,12 @@ describe('Dialog', function () {
       expect(tealiumMock).not.toBeCalled();
     });
 
+    it('setting analytics to true overrides flag value', () => {
+      setDialogSendsAnalytics(false);
+      renderDialog({ analytics: true });
+      expect(tealiumMock).toHaveBeenCalled();
+    });
+
     it('overrides analytics event tracking on open', () => {
       renderDialog({ analyticsLabelOverride: 'other heading' });
       act(() => {
