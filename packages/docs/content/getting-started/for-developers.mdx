@@ -444,6 +444,66 @@ console.log(getLanguage());
 
 </Alert>
 
+## Analytics
+
+### Turning it on and off
+
+Analytics event tracking is **disabled by default**. There are two ways you can enable or disable analytics in your application:
+
+1. At the application level, globally for all instances of a component with a feature flag
+2. At the component-instance level by using the `analytics` prop
+
+The `analytics` prop on a particular component instance will always override whatever the global flag is set to. For instance, you can turn on analytics globally for all alerts using the flag but turn it off for a particular `Alert` on a particular page by setting `analytics={false}` on that `Alert`. It works the other way around too.
+
+As an example, to turn analytics on globally for alerts, put this code somewhere universal to your application:
+
+<ThemeContent onlyThemes={['core']}>
+
+```js
+import { setAlertSendsAnalytics } from '@cmsgov/design-system';
+setAlertSendsAnalytics(true);
+```
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+```js
+import { setAlertSendsAnalytics } from '@cmsgov/ds-healthcare-gov';
+setAlertSendsAnalytics(true);
+```
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+```js
+import { setAlertSendsAnalytics } from '@cmsgov/ds-medicare-gov';
+setAlertSendsAnalytics(true);
+```
+
+</ThemeContent>
+
+Here is the list of each flag-setting function for analytics:
+
+- `setAlertSendsAnalytics`
+- `setButtonSendsAnalytics`
+- `setDialogSendsAnalytics`
+- `setHelpDrawerSendsAnalytics`
+
+### Handling the events
+
+We currently provide two ways of handling analytics events in the design system:
+
+1. Through a global default event handler function, which can be changed
+2. Through a function provided to a component instance via the `onAnalyticsEvent` prop
+
+For the global default handler, the design system will currently attempt to pass all events to the `window.utag.link` function if it exists. If this is not the desired analytics behavior for your application, you can provide your own default analytics event handler by calling [`setDefaultAnalyticsFunction`](https://github.com/CMSgov/design-system/blob/main/packages/design-system/src/components/analytics/events.ts#L111) with your custom implementation, or you can pass a handler to each component instance with the `onAnalyticsEvent` prop.
+
+### Overriding logged data
+
+When you need to prevent sensitive personal information from being passed to analytics trackers from a particular component instance, you can either override the content that contains sensitive information using the `analyticsLabelOverride` prop, or you can disable tracking on that component instance entirely by setting `analytics={false}`.
+
 ## Further resources
 
 We hope this page and [our example projects](https://github.com/CMSgov/design-system/tree/main/examples/) provide you with everything you need to get started with the design system, but if you run into trouble [please reach out](/contact). If you have specific suggestions for how we can improve these docs, please feel free to edit this page (with the link under the table of contents) and submit a pull request!
