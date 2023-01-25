@@ -8,24 +8,20 @@ interface InlineLinkListsProps {
   primaryDomain: string;
 }
 
-const inlineLiClasses = 'hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block';
+const inlineLiClasses = 'hc-c-footer__inline-item';
 
 /**
  * Create <li> nodes and inline links
  */
 const renderBasicList = function (t, links) {
-  return Object.getOwnPropertyNames(links).map(function (key) {
-    const link =
-      typeof links[key] === 'string' ? (
-        <a href={links[key]} className="ds-u-display--inline-block">
-          {t(key)}
-        </a>
-      ) : (
-        links[key]
-      );
+  return Object.getOwnPropertyNames(links).map(function (key, index) {
+    const link = typeof links[key] === 'string' ? <a href={links[key]}>{t(key)}</a> : links[key];
     return (
       <li key={key} className={inlineLiClasses}>
         {link}
+        {index !== Object.getOwnPropertyNames(links).length - 1 ? (
+          <span aria-hidden="true" className="hc-c-footer__delimiter" />
+        ) : null}
       </li>
     );
   });
@@ -59,25 +55,27 @@ const InlineLinkLists = function (props: InlineLinkListsProps) {
 
   return (
     <div className="ds-l-container">
-      <ul className="ds-c-list ds-c-list--bare ds-u-font-size--small ds-u-margin-bottom--1">
+      <ul role="list" className="hc-c-footer__list ds-u-margin-bottom--1">
         {renderBasicList(props.t, inlineLinksTop)}
       </ul>
 
-      <ul className="ds-c-list ds-c-list--bare ds-u-font-size--small ds-u-border-bottom--1 ds-u-margin-bottom--2 ds-u-padding-bottom--2">
+      <ul
+        role="list"
+        className="hc-c-footer__list ds-u-border-bottom--1 ds-u-margin-bottom--2 ds-u-padding-bottom--2"
+      >
         {renderBasicList(props.t, inlineLinksMiddle)}
       </ul>
 
-      <ul className="ds-c-list ds-c-list--bare ds-u-font-size--small">
-        {Object.getOwnPropertyNames(languages).map(function (lang) {
+      <ul role="list" className="hc-c-footer__list">
+        {Object.getOwnPropertyNames(languages).map(function (lang, index) {
           return (
             <li key={lang} className={inlineLiClasses}>
-              <a
-                lang={lang}
-                href={primaryDomain + languages[lang].href}
-                className="ds-u-display--inline-block"
-              >
+              <a lang={lang} href={primaryDomain + languages[lang].href}>
                 {languages[lang].label}
               </a>
+              {index !== Object.getOwnPropertyNames(languages).length - 1 ? (
+                <span aria-hidden="true" className="hc-c-footer__delimiter" />
+              ) : null}
             </li>
           );
         })}

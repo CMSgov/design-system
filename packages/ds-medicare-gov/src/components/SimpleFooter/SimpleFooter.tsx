@@ -46,14 +46,16 @@ const SimpleFooter: FunctionComponent<SimpleFooterProps> = ({
       <div className="m-c-footer__linkRow">
         <div className="m-c-footer__links">
           <a href="https://www.medicare.gov/about-us">{aboutMedicareLabel}</a>
+          <span aria-hidden="true" className="m-c-footer__delimiter" />
           <a href="https://www.medicare.gov/glossary/a">{medicareGlossaryLabel}</a>
         </div>
         <div>
           <a href="https://www.medicare.gov/about-us/accessibility-nondiscrimination-notice">
             {nondiscriminationLabel}
           </a>
+          <span aria-hidden="true" className="m-c-footer__delimiter" />
           <a href="https://www.medicare.gov/privacy-policy">{privacyPolicyLabel}</a>
-
+          <span aria-hidden="true" className="m-c-footer__delimiter" />
           <Button
             className="SimpleFooter__linkButton"
             variation="ghost"
@@ -75,11 +77,13 @@ const SimpleFooter: FunctionComponent<SimpleFooterProps> = ({
           >
             {privacySettingLabel}
           </Button>
-
+          <span aria-hidden="true" className="m-c-footer__delimiter" />
           <a href="https://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/index.html">
             {linkingPolicyLabel}
           </a>
+          <span aria-hidden="true" className="m-c-footer__delimiter" />
           <a href="https://www.medicare.gov/about-us/using-this-site">{usingThisSiteLabel}</a>
+          <span aria-hidden="true" className="m-c-footer__delimiter" />
           <a href="https://www.medicare.gov/about-us/plain-writing">{plainWritingLabel}</a>
         </div>
       </div>
