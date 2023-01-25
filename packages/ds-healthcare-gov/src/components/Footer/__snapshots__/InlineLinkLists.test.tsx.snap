@@ -6,43 +6,52 @@ exports[`InlineLinkLists renders lists of links 1`] = `
     class="ds-l-container"
   >
     <ul
-      class="ds-c-list ds-c-list--bare ds-u-font-size--small ds-u-margin-bottom--1"
+      class="hc-c-footer__list ds-u-margin-bottom--1"
+      role="list"
     >
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="/topics"
         >
           footer.allTopics
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="/glossary"
         >
           footer.glossary
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="/contact-us"
         >
           footer.contactUs
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="/archive"
         >
           footer.archive
@@ -50,60 +59,76 @@ exports[`InlineLinkLists renders lists of links 1`] = `
       </li>
     </ul>
     <ul
-      class="ds-c-list ds-c-list--bare ds-u-font-size--small ds-u-border-bottom--1 ds-u-margin-bottom--2 ds-u-padding-bottom--2"
+      class="hc-c-footer__list ds-u-border-bottom--1 ds-u-margin-bottom--2 ds-u-padding-bottom--2"
+      role="list"
     >
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="http://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/CMSNondiscriminationNotice.html"
         >
           footer.nondiscriminationAndA11y
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="/privacy"
         >
           footer.privacyPolicy
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <button>
           Privacy Settings
         </button>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="/privacy/#links"
         >
           footer.linkingPolicy
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="/using-this-site"
         >
           footer.usingThisSite
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="http://www.hhs.gov/open/plain-writing/index.html"
         >
           footer.plainWriting
@@ -111,167 +136,209 @@ exports[`InlineLinkLists renders lists of links 1`] = `
       </li>
     </ul>
     <ul
-      class="ds-c-list ds-c-list--bare ds-u-font-size--small"
+      class="hc-c-footer__list"
+      role="list"
     >
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="/language-resource/#chinese"
           lang="zh"
         >
           中文
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="/language-resource/#creole"
           lang="ht"
         >
           Kreyòl
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="/language-resource/#french"
           lang="fr"
         >
           Français
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="/language-resource/#german"
           lang="de"
         >
           Deutsch
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="/language-resource/#gujarati"
           lang="gu"
         >
           ગુજરાતી
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="/language-resource/#hindi"
           lang="hi"
         >
           हिंदी
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="/language-resource/#italian"
           lang="it"
         >
           Italiano
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="/language-resource/#japanese"
           lang="ja"
         >
           日本語
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="/language-resource/#korean"
           lang="ko"
         >
           한국어
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="/language-resource/#polish"
           lang="pl"
         >
           Polski
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="/language-resource/#portuguese"
           lang="pt"
         >
           Português
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="/language-resource/#russian"
           lang="ru"
         >
           Русский
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="/language-resource/#spanish"
           lang="es"
         >
           Español
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="/language-resource/#tagalog"
           lang="tl"
         >
           Tagalog
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="/language-resource/#vietnamese"
           lang="vi"
         >
@@ -289,43 +356,52 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
     class="ds-l-container"
   >
     <ul
-      class="ds-c-list ds-c-list--bare ds-u-font-size--small ds-u-margin-bottom--1"
+      class="hc-c-footer__list ds-u-margin-bottom--1"
+      role="list"
     >
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="https://www.healthcare.gov/topics"
         >
           footer.allTopics
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="https://www.healthcare.gov/glossary"
         >
           footer.glossary
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="https://www.healthcare.gov/contact-us"
         >
           footer.contactUs
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="https://www.healthcare.gov/archive"
         >
           footer.archive
@@ -333,60 +409,76 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
       </li>
     </ul>
     <ul
-      class="ds-c-list ds-c-list--bare ds-u-font-size--small ds-u-border-bottom--1 ds-u-margin-bottom--2 ds-u-padding-bottom--2"
+      class="hc-c-footer__list ds-u-border-bottom--1 ds-u-margin-bottom--2 ds-u-padding-bottom--2"
+      role="list"
     >
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="http://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/CMSNondiscriminationNotice.html"
         >
           footer.nondiscriminationAndA11y
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="https://www.healthcare.gov/privacy"
         >
           footer.privacyPolicy
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <button>
           Privacy Settings
         </button>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="https://www.healthcare.gov/privacy/#links"
         >
           footer.linkingPolicy
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="https://www.healthcare.gov/using-this-site"
         >
           footer.usingThisSite
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="http://www.hhs.gov/open/plain-writing/index.html"
         >
           footer.plainWriting
@@ -394,167 +486,209 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
       </li>
     </ul>
     <ul
-      class="ds-c-list ds-c-list--bare ds-u-font-size--small"
+      class="hc-c-footer__list"
+      role="list"
     >
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="https://www.healthcare.gov/language-resource/#chinese"
           lang="zh"
         >
           中文
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="https://www.healthcare.gov/language-resource/#creole"
           lang="ht"
         >
           Kreyòl
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="https://www.healthcare.gov/language-resource/#french"
           lang="fr"
         >
           Français
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="https://www.healthcare.gov/language-resource/#german"
           lang="de"
         >
           Deutsch
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="https://www.healthcare.gov/language-resource/#gujarati"
           lang="gu"
         >
           ગુજરાતી
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="https://www.healthcare.gov/language-resource/#hindi"
           lang="hi"
         >
           हिंदी
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="https://www.healthcare.gov/language-resource/#italian"
           lang="it"
         >
           Italiano
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="https://www.healthcare.gov/language-resource/#japanese"
           lang="ja"
         >
           日本語
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="https://www.healthcare.gov/language-resource/#korean"
           lang="ko"
         >
           한국어
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="https://www.healthcare.gov/language-resource/#polish"
           lang="pl"
         >
           Polski
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="https://www.healthcare.gov/language-resource/#portuguese"
           lang="pt"
         >
           Português
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="https://www.healthcare.gov/language-resource/#russian"
           lang="ru"
         >
           Русский
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="https://www.healthcare.gov/language-resource/#spanish"
           lang="es"
         >
           Español
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="https://www.healthcare.gov/language-resource/#tagalog"
           lang="tl"
         >
           Tagalog
         </a>
+        <span
+          aria-hidden="true"
+          class="hc-c-footer__delimiter"
+        />
       </li>
       <li
-        class="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+        class="hc-c-footer__inline-item"
       >
         <a
-          class="ds-u-display--inline-block"
           href="https://www.healthcare.gov/language-resource/#vietnamese"
           lang="vi"
         >
