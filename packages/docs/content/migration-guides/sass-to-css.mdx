@@ -1,0 +1,113 @@
+---
+title: Sass to CSS
+order: 60
+intro: New features in CSS have allowed us to stop relying on Sass to share design tokens with product teams. We're now only distributing our styles as CSS.
+---
+
+## What we changed and why
+
+Prior to [version 6.0.0](https://github.com/CMSgov/design-system/releases/tag/%40cmsgov%2Fdesign-system%406.0.0), we provided two ways of consuming our design system styles: as [Sass](https://sass-lang.com/) and as CSS. We used to recommend that product teams use our [Sass](https://sass-lang.com/) files because only then would they gain access to our [design tokens](/foundation/theme-colors/) and [theme variables](/components/alert/#styles). However, these three things lead us to reconsider Sass's future in the design system:
+
+1. Sass has a new compiler, but the upgrade path is messy and difficult to synchronize across teams
+2. Having product teams build our Sass source files is exposing them to unnecessary complexity
+3. Features we once relied on Sass for, like [CSS Custom Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*), are now available in CSS
+
+We researched and prototyped and eventually [published an RFC](https://github.com/CMSgov/design-system/discussions/2223) proposing that use Sass internally but only distribute the compiled CSS output. We shared our findings with product teams and heard no objections, so we went forward with the change.
+
+## Updating style imports
+
+If you're consuming the design system styles as Sass, you likely have something like this in your project:
+
+```css
+/* Old way of importing design-system styles */
+$font-path: '~@cmsgov/design-system/dist/fonts';
+$image-path: '~@cmsgov/design-system/dist/images';
+@import '@cmsgov/design-system/dist/scss/index';
+
+/* Your styles here */
+```
+
+Due to [limitations with some build systems](/getting-started/for-developers/#with-an-asset-bundler) and the Sass compiler, these `$font-path` and `$image-path` variables were necessary to make sure the bundler knew where to get fonts and images. In the move to CSS, we've made these paths static. It assumes these files exist at a location relative to your CSS bundle.
+
+For best results, we recommend importing our CSS files in the most direct way possible given your particular build system. That could be importing them from within a JavaScript module, creating a `<link>` tag in your HTML, or importing them with a `.css` extension in Sass. Take a look at the [_Including the CSS_](https://design.cms.gov/getting-started/for-developers/#including-the-css) section of our developer docs and [our example projects](https://github.com/CMSgov/design-system/tree/main/examples/) for more info.
+
+Note that if you need your project Sass to evaluate the CSS files as Sass so you can do Sassy things, you'll have to [leave out the `.css` extension](https://sass-lang.com/documentation/at-rules/import#plain-css-imports). However, we have provided alternatives to several things that you might have needed Sass for previously, so be sure to read the sections below.
+
+## What to do about the focus-style mixin
+
+Your project might have previously used our `focus-styles` [mixin](https://sass-lang.com/documentation/at-rules/mixin) to apply design-system focus styles to custom components. In that case, you will want to [use the new focus utility classes](/utilities/focus/) instead. We're no longer distributing any Sass mixins with the design system.
+
+## What to do with instances of `@extends`
+
+It's still possible to use the `@extends` rule to apply design system styles to your own CSS rules if you import our CSS files into one of your Sass files and [leave out the `.css` extension](https://sass-lang.com/documentation/at-rules/import#plain-css-imports); however, you may not need to.
+
+We've introduced a new [`ds-content`](/foundation/typography/content/) CSS class that is useful for styling content that lives in plain HTML elements that aren't decorated with design system classes. For instance, you may have previously done something like this
+
+```css
+h1 {
+  @extend .ds-text-heading--3xl;
+}
+
+h2 {
+  @extend .ds-text-heading--2xl;
+}
+
+/* et cetera */
+```
+
+so you could get design system styling for content like this
+
+```html
+<article>
+  <h1>I'm a page heading</h1>
+  <p>This is a really thoughtful sentence.</p>
+  <h2>I'm a section heading</h2>
+</article>
+```
+
+Now you can style that content without any Sass by applying the `ds-content` class to a parent element of that content (direct or indirect parent does not matter):
+
+```html
+<article class="ds-content">
+  <h1>I'm a page heading</h1>
+  <p>This is a really thoughtful sentence.</p>
+  <h2>I'm a section heading</h2>
+</article>
+```
+
+Note that the mapping of heading styles to semantic heading levels represents what we consider sane defaults and that there may be cases where you want to override a particular heading's styles. In those cases we'd recommend applying one of the [headings classes](/foundation/typography/headings/) to the element.
+
+## Referencing our variables in CSS
+
+Most likely the biggest change you will want to make is referencing our design tokens and theme variables as [CSS Custom Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*). We have a section on [using our CSS custom properties](/getting-started/for-developers/#css-custom-properties) in the developer docs, but just note that you don't have to make this transition right away. If you're using the Sass variables, they're still there; they've just moved (see next section). If you were always using CSS, you now have access to our variables in your stylesheets!
+
+## Sass variables are still available
+
+To help teams transition to using CSS custom properties in their own time, we're still providing Sass equivalents of all our variables. The example below shows which files you will need to import from your project Sass.
+
+<ThemeContent neverThemes={['healthcare', 'medicare']}>
+
+```css
+@import '@cmsgov/design-system/dist/scss/core-tokens';
+@import '@cmsgov/design-system/dist/scss/core-component-tokens';
+```
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+```css
+@import '@cmsgov/ds-healthcare-gov/dist/scss/healthcare-tokens';
+@import '@cmsgov/ds-healthcare-gov/dist/scss/healthcare-component-tokens';
+```
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+```css
+@import '@cmsgov/ds-medicare-gov/dist/scss/medicare-tokens';
+@import '@cmsgov/ds-medicare-gov/dist/scss/medicare-component-tokens';
+```
+
+</ThemeContent>
