@@ -21,7 +21,7 @@ export default function useButtonAnalytics({
   const contentRef = useRef();
 
   function sendButtonEvent() {
-    if (!buttonSendsAnalytics() || analytics === false) {
+    if (analytics !== true && (!buttonSendsAnalytics() || analytics === false)) {
       return;
     }
 

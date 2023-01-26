@@ -67,6 +67,12 @@ describe('HelpDrawer', () => {
       expect(tealiumMock).not.toHaveBeenCalled();
     });
 
+    it('setting analytics to true overrides flag value', () => {
+      setHelpDrawerSendsAnalytics(false);
+      renderHelpDrawer({ analytics: true, onCloseClick: jest.fn() });
+      expect(tealiumMock).toHaveBeenCalled();
+    });
+
     it('overrides analytics event tracking on open', () => {
       renderHelpDrawer({ analyticsLabelOverride: 'other heading', onCloseClick: jest.fn() });
       expect(tealiumMock.mock.lastCall).toMatchSnapshot();
