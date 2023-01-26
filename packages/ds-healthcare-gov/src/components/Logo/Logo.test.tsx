@@ -5,7 +5,7 @@ import { setLanguage } from '@cmsgov/design-system';
 
 describe('Logo', function () {
   it('renders English logo', () => {
-    setLanguage('es');
+    setLanguage('en');
     const { container } = render(<Logo />);
     expect(container).toMatchSnapshot();
   });
