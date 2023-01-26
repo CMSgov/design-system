@@ -17,7 +17,7 @@ export default function useAlertAnalytics({
   const [headingRef, bodyRef] = useAnalyticsContent({
     componentName: 'Alert',
     onMount: (content: string | undefined) => {
-      if (!alertSendsAnalytics() || analytics === false) {
+      if (analytics !== true && (!alertSendsAnalytics() || analytics === false)) {
         return;
       }
 

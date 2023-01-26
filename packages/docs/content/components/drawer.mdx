@@ -78,34 +78,9 @@ The following CSS variables can be overridden to customize Drawer components:
   componentname="drawer"
 />
 
-### Google Analytics
+### Analytics
 
-Google analytics are available via the `<HelpDrawer>` component.
-
-**Analytics event tracking is disabled by default.**
-
-#### Enable event tracking
-
-Import and set the `setHelpDrawerSendsAnalytics` feature flag to `true` in your application's entry file:
-
-```js
-import { setHelpDrawerSendsAnalytics } from '@cmsgov/<design-system-package>';
-setHelpDrawerSendsAnalytics(true);
-```
-
-On application where the page has `utag` loaded, the data goes to Tealium which allows it to route to Google Analytics or the currently approved data analytics tools.
-
-#### Disable event tracking
-
-For the `analytics` prop, pass the value `false` to the component to disable analytics tracking for a singular component instance
-
-```js
-analytics={false}
-```
-
-#### Override event tracking
-
-A custom heading value can be sent for an analytics event by using the prop `analyticsLabelOverride`. It is recommended that this value be used to prevent sensitive personal information from being passed to analytics trackers.
+This component has analytics tracking available. Please see our developer documentation about [using analytics in the design system](/getting-started/for-developers/#analytics).
 
 ## Guidance
 
