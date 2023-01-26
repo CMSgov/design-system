@@ -144,32 +144,32 @@ exports[`MenuList Spanish returns array of menu list objects 1`] = `
 Object {
   "logged-in": Array [
     Object {
-      "href": "/marketplace/auth/global/en_US/myProfile#landingPage",
-      "label": "My applications & coverage",
+      "href": "/marketplace/auth/global/es_MX/myProfile#landingPage",
+      "label": "Mis solicitudes & cobertura",
     },
     Object {
-      "href": "/marketplace/auth/global/en_US/myProfile#settings",
-      "label": "My profile",
+      "href": "/marketplace/auth/global/es_MX/myProfile#settings",
+      "label": "Mi perfil",
     },
     Object {
-      "href": "https://www.cuidadodesalud.gov/es/",
-      "label": "Español",
+      "href": "https://www.healthcare.gov/",
+      "label": "English",
     },
     Object {
       "href": "/logout",
       "identifier": "logout",
-      "label": "Log out",
+      "label": "Finalizar sesión",
     },
   ],
   "logged-out": Array [
     Object {
-      "href": "https://www.cuidadodesalud.gov/es/",
-      "label": "Español",
+      "href": "https://www.healthcare.gov/",
+      "label": "English",
     },
     Object {
       "href": "/login",
       "identifier": "login",
-      "label": "Log in",
+      "label": "Iniciar sesión",
     },
   ],
 }

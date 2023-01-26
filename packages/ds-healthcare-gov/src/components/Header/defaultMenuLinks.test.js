@@ -49,8 +49,10 @@ describe('MenuList', function () {
 
   describe('Spanish', () => {
     it('returns array of menu list objects', () => {
+      setLanguage('es');
       const links = defaultMenuLinks();
       expect(links).toMatchSnapshot();
+      setLanguage('en');
     });
 
     it('returns array of menu list objects with subpath', () => {
