@@ -157,6 +157,12 @@ describe('Alert', function () {
       expect(tealiumMock).not.toBeCalled();
     });
 
+    it('setting analytics to true overrides flag value', () => {
+      setAlertSendsAnalytics(false);
+      renderAlert({ heading: 'dialog heading', variation: 'error', analytics: true });
+      expect(tealiumMock).toHaveBeenCalled();
+    });
+
     it('overrides analytics event content', () => {
       renderAlert({ variation: 'success', analyticsLabelOverride: 'other heading' });
       expect(tealiumMock.mock.lastCall).toMatchSnapshot();

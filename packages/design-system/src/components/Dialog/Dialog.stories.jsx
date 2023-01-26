@@ -8,7 +8,6 @@ export default {
   title: 'Components/Dialog',
   component: Dialog,
   argTypes: {
-    analytics: { control: false },
     children: { control: false },
     actions: { control: false },
     heading: {
