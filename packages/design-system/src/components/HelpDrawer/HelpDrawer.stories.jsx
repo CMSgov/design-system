@@ -10,6 +10,9 @@ export default {
   title: 'Components/Help Drawer',
   component: Help,
   argTypes: {
+    analytics: {
+      control: { type: 'boolean' },
+    },
     closeButtonText: {
       control: { type: 'text' },
     },
