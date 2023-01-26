@@ -7,6 +7,7 @@ const themeOptions = [
   { label: 'Core', value: 'core' },
   { label: 'Healthcare', value: 'healthcare' },
   { label: 'Medicare', value: 'medicare' },
+  { label: 'CMS Gov', value: 'cmsgov' },
 ];
 /**
  * Theme Switcher

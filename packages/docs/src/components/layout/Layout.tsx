@@ -1,17 +1,17 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
-
 import Footer from './DocSiteFooter';
 import Navigation from './DocSiteNavigation';
+import PageHeader from './PageHeader';
+import TableOfContents from './TableOfContents';
+import TableOfContentsMobile from './TableOfContentsMobile';
+import { Helmet } from 'react-helmet';
 import { SkipNav, UsaBanner } from '@cmsgov/design-system';
 import {
   LocationInterface,
   FrontmatterInterface,
   TableOfContentsItem,
 } from '../../helpers/graphQLTypes';
-import TableOfContents from './TableOfContents';
-import TableOfContentsMobile from './TableOfContentsMobile';
-import PageHeader from './PageHeader';
+import { withPrefix } from 'gatsby';
 
 import '../../styles/index.scss';
 
@@ -77,7 +77,7 @@ const Layout = ({
           rel="stylesheet"
           type="text/css"
           title="docThemeCss"
-          href={`/themes/${theme}-theme.css`}
+          href={withPrefix(`themes/${theme}-theme.css`)}
         />
       </Helmet>
       <SkipNav href="#main" />
