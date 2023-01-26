@@ -22,10 +22,7 @@ export interface HeaderProps {
   className?: string;
   /**
    * For applications that handle their own locale switching. Overrides the
-   * default locale link. The link's label is still determined by the opposite
-   * of the `initialLanguage` provided, i.e. if `initialLanguage` is `en`,
-   * the link's label will always be "Español". This takes precedence over the
-   * `subpath` prop.
+   * default locale link. This takes precedence over the `subpath` prop.
    */
   switchLocaleLink?: string;
   /**
