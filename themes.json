@@ -3,7 +3,7 @@
     "displayName": "Core",
     "packageName": "design-system"
   },
-  "cms": {
+  "cmsgov": {
     "displayName": "CMS.gov",
     "packageName": "ds-cms-gov"
   },

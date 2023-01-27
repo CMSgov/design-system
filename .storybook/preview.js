@@ -9,6 +9,7 @@ import {
 import { setHeaderSendsAnalytics } from '../packages/ds-healthcare-gov/src/components/flags';
 import { setLanguage } from '../packages/design-system/src/components/i18n';
 import { setLanguage as setLanguageFromPackage } from '@cmsgov/design-system';
+import themes from '../themes.json';
 
 // Rewire analytics events to log to the console
 window.utag = { link: console.log };
@@ -95,12 +96,10 @@ export const globalTypes = {
     defaultValue: 'core',
     toolbar: {
       icon: 'paintbrush',
-      items: [
-        { value: 'core', left: 'Core', title: 'Core CMSDS Theme' },
-        { value: 'healthcare', left: 'Healthcare', title: 'Healthcare Theme' },
-        { value: 'medicare', left: 'Medicare', title: 'Medicare Theme' },
-        { value: 'cmsgov', left: 'CMS Gov', title: 'CMS Gov Theme' },
-      ],
+      items: Object.keys(themes).map((key) => ({
+        value: key,
+        title: `${themes[key].displayName} theme`,
+      })),
     },
   },
 };
