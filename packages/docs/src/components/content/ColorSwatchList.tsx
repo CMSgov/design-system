@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import ColorSwatch from './ColorSwatch';
 import { getThemeColorValue, ThemeName } from '../../helpers/themeTokens';
+import { hexHasTransparency, pickTextColor } from 'design-system-tokens/src/lib/utility';
 
 interface ColorSwatchListProps {
   /**
@@ -26,10 +27,11 @@ interface ColorSwatchListProps {
  * displays a list of color swatches with a sample of the color, the CSS variable name & the hex value
  * @param colorNames {String[]} a list of color names - should be same as CSS variable
  */
+
 const ColorSwatchList = ({ backgroundClass, colorNames, preface, theme }: ColorSwatchListProps) => (
-  <div className="c-swatch-list ds-u-border--1 ds-u-padding--2">
+  <div className="c-swatch-list">
     {colorNames.map((name) => (
-      <article className="ds-u-margin-bottom--1 c-swatch" key={name}>
+      <article className="c-swatch" key={name}>
         <ColorSwatch colorTokenName={name} />
         <code
           className={classNames('c-swatch__name', {
@@ -40,7 +42,7 @@ const ColorSwatchList = ({ backgroundClass, colorNames, preface, theme }: ColorS
           {preface}
           {name}
         </code>
-        <code className="c-swatch__label js-swatch-hex ds-u-fill--transparent ds-u-color--gray">
+        <code className="c-swatch__label js-swatch-hex">
           {getThemeColorValue(theme as ThemeName, name)}
         </code>
       </article>

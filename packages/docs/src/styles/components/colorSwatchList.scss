@@ -1,4 +1,10 @@
 // Color examples
+
+.c-swatch-list {
+  clip-path: inset(0 0);
+  margin-top: $spacer-2;
+}
+
 .c-swatch__name,
 .c-swatch__label {
   font-size: var(--font-size-md);
@@ -13,12 +19,23 @@
   width: $spacer-4;
 }
 
-.c-color-swatch {
-  display: inline-block;
-  height: $spacer-4;
-  margin-bottom: $spacer-half;
-  vertical-align: middle;
-  width: $spacer-4;
+.c-swatch {
+  display: flex;
+  justify-content: space-between;
+  padding: $spacer-1;
+  position: relative;
+  text-align: right;
+
+  svg {
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  code {
+    position: relative;
+  }
 }
 
 .c-color-ramps {
