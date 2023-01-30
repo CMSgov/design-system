@@ -1,4 +1,4 @@
-/* Last modified on Mon Jan 30 14:11:59 PST 2023 */
+/* Last modified on Mon Jan 30 14:48:34 PST 2023 */
 :root, ::before, ::after, ::backdrop {
 --animation-ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
 --animation-speed-base: 1;
@@ -469,16 +469,17 @@
 --table-striped-header__background-color: #f2f2f2;
 --tabs__border-color: #d9d9d9;
 --tabs__background-color: #ffffff;
+--tabs__background-color--hover: #e7e9f5;
+--tabs__background-color--disabled: #d9d9d9;
+--tabs__background-color--selected: #ffffff;
 --tabs__color: #262626;
---tabs-selected__background-color: #0d2499;
---tabs-selected__border-color: #ffffff;
---tabs-selected__color: #0d2499;
---tabs-selected__border-color--active: #0d2499;
 --tabs__color--hover: #0d2499;
 --tabs__color--active: #09196b;
---tabs__background-color--disabled: #f2f2f2;
---tabs__border-color--disabled: #d9d9d9;
 --tabs__color--disabled: #404040;
+--tabs__color--selected: #0d2499;
+--tabs__border-color--disabled: #d9d9d9;
+--tabs__border-color--selected: #0d2499;
+--tabs-panel__background-color: #ffffff;
 --text-input__line-height: 1.3;
 --text-input__background-color--disabled: #d9d9d9;
 --text-input__border-width: 2px;
