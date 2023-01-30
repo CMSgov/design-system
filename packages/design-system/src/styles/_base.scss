@@ -148,44 +148,14 @@ a,
  * Typography
  */
 
-// @TODO: Remove the semantic classes h1, h2, h3, display, title, etc... after deprecating
-
-// Titles and headings
-.ds-display,
-.ds-title,
-.ds-h1,
-.ds-h2,
-.ds-h3,
-.ds-h4,
-.ds-h5,
-.ds-h6,
-.ds-text-heading--5xl,
-.ds-text-heading--4xl,
-.ds-text-heading--3xl,
-.ds-text-heading--2xl,
-.ds-text-heading--xl,
-.ds-text-heading--lg,
-.ds-text-heading--md,
-.ds-text-heading--sm {
+@mixin heading {
   font-family: var(--typography-heading__font-family);
   font-weight: var(--typography-heading__font-weight);
   line-height: var(--font-line-height-heading);
   margin: 0;
 }
 
-// Headings
-.ds-h1,
-.ds-h2,
-.ds-h3,
-.ds-h4,
-.ds-h5,
-.ds-h6,
-.ds-text-heading--3xl,
-.ds-text-heading--2xl,
-.ds-text-heading--xl,
-.ds-text-heading--lg,
-.ds-text-heading--md,
-.ds-text-heading--sm {
+@mixin heading-margins {
   margin-bottom: 0.5em;
   margin-top: 1.5em;
 
@@ -198,8 +168,8 @@ a,
   }
 }
 
-.ds-display,
-.ds-text-heading--5xl {
+@mixin heading--5xl {
+  @include heading;
   font-size: var(--font-size-3xl);
 
   @media (min-width: $media-width-sm) {
@@ -211,8 +181,8 @@ a,
   }
 }
 
-.ds-title,
-.ds-text-heading--4xl {
+@mixin heading--4xl {
+  @include heading;
   font-size: var(--font-size-3xl);
   font-weight: var(--typography-heading-4xl__font-weight);
 
@@ -221,8 +191,9 @@ a,
   }
 }
 
-.ds-h1,
-.ds-text-heading--3xl {
+@mixin heading--3xl {
+  @include heading;
+  @include heading-margins;
   font-size: 30px;
   font-weight: var(--typography-heading-3xl__font-weight);
 
@@ -231,33 +202,114 @@ a,
   }
 }
 
-.ds-h2,
-.ds-text-heading--2xl {
+@mixin heading--2xl {
+  @include heading;
+  @include heading-margins;
   font-size: var(--font-size-2xl);
 }
 
-.ds-h3,
-.ds-text-heading--xl {
+@mixin heading--xl {
+  @include heading;
+  @include heading-margins;
   font-size: var(--font-size-xl);
 }
 
-.ds-h4,
-.ds-text-heading--lg {
+@mixin heading--lg {
+  @include heading;
+  @include heading-margins;
   font-size: var(--font-size-lg);
   font-weight: var(--typography-heading-lg__font-weight);
 }
 
-.ds-h5,
-.ds-text-heading--md {
+@mixin heading--md {
+  @include heading;
+  @include heading-margins;
   font-size: var(--font-size-md);
   font-weight: var(--typography-heading-md__font-weight);
 }
 
-.ds-h6,
-.ds-text-heading--sm {
+@mixin heading--sm {
+  @include heading;
+  @include heading-margins;
   color: var(--color-muted);
   font-size: var(--font-size-sm);
   font-weight: var(--typography-heading-sm__font-weight);
+}
+
+.ds-content {
+  :where(h1) {
+    @include heading--3xl;
+  }
+
+  :where(h2) {
+    @include heading--2xl;
+  }
+
+  :where(h3) {
+    @include heading--xl;
+  }
+
+  :where(h4) {
+    @include heading--lg;
+  }
+
+  :where(h5) {
+    @include heading--md;
+  }
+
+  :where(h6) {
+    @include heading--sm;
+  }
+
+  :where(ul, ol) {
+    @extend .ds-c-list;
+  }
+}
+
+.ds-base--inverse .ds-content :where(h6) {
+  color: var(--color-muted-inverse);
+}
+
+// @TODO: Remove the semantic classes h1, h2, h3, display, title, etc... after deprecating
+
+.ds-display,
+.ds-text-heading--5xl {
+  @include heading--5xl;
+}
+
+.ds-title,
+.ds-text-heading--4xl {
+  @include heading--4xl;
+}
+
+.ds-h1,
+.ds-text-heading--3xl {
+  @include heading--3xl;
+}
+
+.ds-h2,
+.ds-text-heading--2xl {
+  @include heading--2xl;
+}
+
+.ds-h3,
+.ds-text-heading--xl {
+  @include heading--xl;
+}
+
+.ds-h4,
+.ds-text-heading--lg {
+  @include heading--lg;
+}
+
+.ds-h5,
+.ds-text-heading--md {
+  @include heading--md;
+}
+
+.ds-h6,
+.ds-text-heading--sm {
+  @include heading--sm;
 }
 
 .ds-base--inverse .ds-h6,
@@ -295,35 +347,4 @@ a,
 
 .ds-text-body--sm {
   font-size: var(--font-size-sm);
-}
-
-.ds-content {
-  h1 {
-    @extend .ds-text-heading--3xl;
-  }
-
-  h2 {
-    @extend .ds-text-heading--2xl;
-  }
-
-  h3 {
-    @extend .ds-text-heading--xl;
-  }
-
-  h4 {
-    @extend .ds-text-heading--lg;
-  }
-
-  h5 {
-    @extend .ds-text-heading--md;
-  }
-
-  h6 {
-    @extend .ds-text-heading--sm;
-  }
-
-  ul,
-  ol {
-    @extend .ds-c-list;
-  }
 }
