@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
-import { tWithLanguage, getLanguage } from '../i18n';
+import { t } from '../i18n';
 import {
   LockCircleIcon,
   LockIcon,
@@ -28,7 +28,6 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
   const [shouldRenderMobileView, setShouldRenderMobileView] = useState<boolean>(false);
   const classes = classNames('ds-c-usa-banner', props.className);
   const id = props.id || uniqueId('gov-banner_');
-  const t = tWithLanguage(getLanguage());
 
   useEffect(() => {
     let media;

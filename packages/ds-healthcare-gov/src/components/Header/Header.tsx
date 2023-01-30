@@ -4,7 +4,7 @@ import Logo from '../Logo/Logo';
 import Menu from './Menu';
 import React, { useState } from 'react';
 import { SkipNav } from '@cmsgov/design-system';
-import { getLanguage, tWithLanguage } from '../i18n';
+import { t } from '../i18n';
 import classnames from 'classnames';
 import defaultMenuLinks from './defaultMenuLinks';
 
@@ -138,7 +138,6 @@ export const VARIATION_NAMES = {
 export const Header = (props: HeaderProps) => {
   const [openMenu, setOpenMenu] = useState(false);
   const isControlledMenu = props.isMenuOpen !== undefined && props.onMenuToggle !== undefined;
-  const t = tWithLanguage(getLanguage());
 
   /**
    * Determines which variation of the header should be displayed,

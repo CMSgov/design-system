@@ -2,7 +2,7 @@ import React from 'react';
 import InlineLinkLists from './InlineLinkLists';
 import LogosRow from './LogosRow';
 import classnames from 'classnames';
-import { getLanguage, tWithLanguage } from '../i18n';
+import { t } from '../i18n';
 
 export interface FooterProps {
   /**
@@ -32,7 +32,6 @@ export interface FooterProps {
 }
 
 export const Footer = (props: FooterProps) => {
-  const t = tWithLanguage(getLanguage());
   const classes = classnames(
     'hc-c-footer ds-u-fill--gray-lightest ds-u-padding-y--5',
     props.className

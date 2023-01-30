@@ -1,7 +1,7 @@
 import { Link, VARIATION_NAMES } from './Header';
 import localeLink from './localeLink';
 import loginLink from './loginLink';
-import { getLanguage, languageMatches, tWithLanguage } from '../i18n';
+import { t, getLanguage, languageMatches } from '../i18n';
 
 export enum LinkIdentifier {
   LOGIN = 'login',
@@ -39,7 +39,6 @@ export function defaultMenuLinks(options: DefaultMenuLinkOptions = {}) {
     hideLanguageSwitch,
     customLinksPassedIn,
   } = options;
-  const t = tWithLanguage(getLanguage());
   const isSpanish = languageMatches('es', getLanguage());
   const ffmLocalePath = isSpanish ? 'es_MX' : 'en_US';
 
