@@ -11,7 +11,7 @@
 
 .ds-c-badge {
   background-color: var(--badge__background-color);
-  border-radius: var(--radius-pill);
+  border-radius: var(--badge__border-radius);
   color: var(--badge__font-color);
   display: inline-block;
   font-size: var(--font-size-sm);

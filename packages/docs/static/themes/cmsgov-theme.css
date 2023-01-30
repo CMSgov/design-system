@@ -1,4 +1,4 @@
-/* Last modified on Mon Jan 30 14:48:34 PST 2023 */
+/* Last modified on Mon Jan 30 15:36:21 PST 2023 */
 :root, ::before, ::after, ::backdrop {
 --animation-ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
 --animation-speed-base: 1;
@@ -214,11 +214,12 @@
 --badge__background-color--info: #0d2499;
 --badge__background-color--success: #12890e;
 --badge__background-color--warn: #ffe400;
---badge__font-color: #ffffff;
+--badge__font-color: #262626;
 --badge__font-color--alert: #ffffff;
 --badge__font-color--info: #ffffff;
 --badge__font-color--success: #ffffff;
 --badge__font-color--warn: #262626;
+--badge__border-radius: 4px;
 --button__background-color--active: #e7e9f5;
 --button__background-color--disabled: #f2f2f2;
 --button__background-color--hover: #e7e9f5;

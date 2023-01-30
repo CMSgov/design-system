@@ -58,6 +58,7 @@ export const components: AnyTokenValues = {
     '__font-color--info':                         t.color['white'],
     '__font-color--success':                      t.color['white'],
     '__font-color--warn':                         t.color['base'],
+    '__border-radius':                            t.radius['pill'],
   },
 
   'button': {
