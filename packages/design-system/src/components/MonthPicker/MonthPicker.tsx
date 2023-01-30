@@ -25,15 +25,6 @@ interface MonthPickerProps extends FormFieldProps {
    */
   name: string;
   /**
-   * @deprecated - This is now deprecated in favor of the global language setting. See guides/internationalization
-   * @hide-prop [Deprecated]
-   *
-   * A [BCP 47 language tag](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation)
-   * for month name localization. For example: Passing `es-US` as a value
-   * will render month names in Spanish.
-   */
-  locale?: string;
-  /**
    * Additional classes to be added to the root element.
    */
   className?: string;
@@ -79,19 +70,13 @@ interface MonthPickerProps extends FormFieldProps {
 }
 
 export const MonthPicker = (props: MonthPickerProps) => {
-  const locale = props.locale ?? fallbackLocale(getLanguage(), 'US');
+  const locale = fallbackLocale(getLanguage(), 'US');
   const months = getMonthNames(locale);
   const monthsLong = getMonthNames(locale, false);
   const isControlled = props.selectedMonths !== undefined;
   const [selectedMonthsState, setSelectedMonthsState] = useState(props.defaultSelectedMonths ?? []);
   const selectedMonths = isControlled ? props.selectedMonths : selectedMonthsState;
   const disabledMonths = props.disabledMonths ?? [];
-
-  if (props.locale) {
-    console.warn(
-      `[Deprecated]: Please remove the 'locale' prop in <MonthPicker> in favor of global language setting. This prop is deprecated and will be removed in a future release.`
-    );
-  }
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     if (props.onChange) {

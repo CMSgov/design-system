@@ -1,7 +1,7 @@
 import { Link, VARIATION_NAMES } from './Header';
 import localeLink from './localeLink';
 import loginLink from './loginLink';
-import { Language, getLanguage, languageMatches, tWithLanguage } from '../i18n';
+import { t, getLanguage, languageMatches } from '../i18n';
 
 export enum LinkIdentifier {
   LOGIN = 'login',
@@ -13,10 +13,6 @@ export interface DefaultLink extends Link {
 }
 
 export interface DefaultMenuLinkOptions {
-  /**
-   * @deprecated - This is now deprecated in favor of the global language setting. See guides/internationalization
-   */
-  locale?: Language;
   deConsumer?: boolean;
   subpath?: string;
   primaryDomain?: string;
@@ -34,7 +30,6 @@ export interface DefaultMenuLinkOptions {
  */
 export function defaultMenuLinks(options: DefaultMenuLinkOptions = {}) {
   const {
-    locale,
     deConsumer,
     subpath,
     primaryDomain = '',
@@ -44,15 +39,8 @@ export function defaultMenuLinks(options: DefaultMenuLinkOptions = {}) {
     hideLanguageSwitch,
     customLinksPassedIn,
   } = options;
-  const t = tWithLanguage(locale);
-  const isSpanish = languageMatches('es', locale);
+  const isSpanish = languageMatches('es', getLanguage());
   const ffmLocalePath = isSpanish ? 'es_MX' : 'en_US';
-
-  if (locale) {
-    console.warn(
-      `[Deprecated]: Please remove the 'initialLanguage' prop in 'defaultMenuLinks' in favor of global language setting. This prop is deprecated and will be removed in a future release.`
-    );
-  }
 
   // NOTE: order matters here and links will be displayed in order added to the arrays
   const loggedOut = [];
@@ -73,7 +61,7 @@ export function defaultMenuLinks(options: DefaultMenuLinkOptions = {}) {
   }
 
   if (!hideLanguageSwitch) {
-    const locLink = localeLink(t, locale ?? getLanguage(), subpath, switchLocaleLink);
+    const locLink = localeLink(t, getLanguage() ?? getLanguage(), subpath, switchLocaleLink);
     loggedOut.push(locLink);
     loggedIn.push(locLink);
   }
