@@ -13,6 +13,7 @@ export const components: AnyTokenValues = {
     '__background-color--hover':                  t.color['transparent'],
     '__border-color':                             t.color['transparent'],
     '__border-radius':                            0,
+    '__border-width':                             t.spacer['half'],
     '-button__color':                             t.color['primary'],
     '-content__background-color':                 t.color['transparent'],
   },

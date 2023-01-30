@@ -93,7 +93,7 @@
 
 .ds-c-accordion--bordered {
   .ds-c-accordion__content {
-    border: $spacer-half solid var(--accordion__border-color);
+    border: var(--accordion__border-width) solid var(--accordion__border-color);
     border-top: 0;
     padding: $spacer-2 $spacer-2;
   }
