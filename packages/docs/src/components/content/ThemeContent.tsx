@@ -1,5 +1,6 @@
 import React from 'react';
-type ThemeName = 'core' | 'healthcare' | 'medicare';
+import themes from '../../../../../themes.json';
+type ThemeName = keyof typeof themes;
 
 export interface ThemeContentProps {
   children: React.ReactElement;
