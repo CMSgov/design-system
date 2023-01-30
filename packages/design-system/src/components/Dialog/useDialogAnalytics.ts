@@ -16,7 +16,7 @@ export function useDialogAnalytics({
     content: string | undefined,
     eventAttributes: { event_name: string; event_action: string }
   ) {
-    if (!dialogSendsAnalytics() || analytics === false) {
+    if (analytics !== true && (!dialogSendsAnalytics() || analytics === false)) {
       return;
     }
 

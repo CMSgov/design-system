@@ -1,0 +1,18 @@
+{
+  "core": {
+    "displayName": "Core",
+    "packageName": "design-system"
+  },
+  "cmsgov": {
+    "displayName": "CMS.gov",
+    "packageName": "ds-cms-gov"
+  },
+  "healthcare": {
+    "displayName": "HealthCare.gov",
+    "packageName": "ds-healthcare-gov"
+  },
+  "medicare": {
+    "displayName": "Medicare.gov",
+    "packageName": "ds-medicare-gov"
+  }
+}

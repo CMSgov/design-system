@@ -16,7 +16,7 @@ export default function useHelpDrawerAnalytics({
     content: string | undefined,
     eventAttributes: { event_name: string; event_action: string }
   ) {
-    if (!helpDrawerSendsAnalytics() || analytics === false) {
+    if (analytics !== true && (!helpDrawerSendsAnalytics() || analytics === false)) {
       return;
     }
 

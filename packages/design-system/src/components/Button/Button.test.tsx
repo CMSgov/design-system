@@ -115,6 +115,13 @@ describe('Button', () => {
       expect(tealiumMock).not.toBeCalled();
     });
 
+    it('setting analytics to true overrides flag value', () => {
+      setButtonSendsAnalytics(false);
+      renderButton({ analytics: true });
+      fireEvent.click(screen.getByRole('button'));
+      expect(tealiumMock).toHaveBeenCalled();
+    });
+
     it('overrides analytics event tracking on open', () => {
       renderButton({ analyticsLabelOverride: 'alternate content' });
       fireEvent.click(screen.getByRole('button'));
