@@ -1,4 +1,4 @@
-/* Last modified on Mon Jan 30 13:35:26 PST 2023 */
+/* Last modified on Mon Jan 30 13:50:26 PST 2023 */
 :root, ::before, ::after, ::backdrop {
 --animation-ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
 --animation-speed-base: 1;
@@ -213,6 +213,7 @@
 --accordion__background-color: #f2f2f2;
 --accordion__background-color--hover: #d9d9d9;
 --accordion__border-color: #f2f2f2;
+--accordion__border-radius: 0;
 --accordion-button__color: #404040;
 --accordion-content__background-color: #ffffff;
 --alert__background-color: #e9ecf1;

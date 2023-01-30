@@ -12,6 +12,7 @@ export const components: AnyTokenValues = {
     '__background-color':                         t.color['gray-lightest'],
     '__background-color--hover':                  t.color['gray-lighter'],
     '__border-color':                             t.color['gray-lightest'],
+    '__border-radius':                            0,
     '-button__color':                             t.color['base'],
     '-content__background-color':                 t.color['white'],
   },
