@@ -52,6 +52,9 @@ export const components: AnyTokenValues = {
     '__background-color--success':                t.color['success'],
     '__background-color--warn':                   t.color['warn'],
     '__font-color':                               t.color['white'],
+    '__font-color--alert':                        t.color['white'],
+    '__font-color--info':                         t.color['white'],
+    '__font-color--success':                      t.color['white'],
     '__font-color--warn':                         t.color['base'],
   },
 

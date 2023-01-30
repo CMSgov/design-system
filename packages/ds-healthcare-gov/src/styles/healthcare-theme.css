@@ -1,3 +1,4 @@
+/* Last modified on Mon Jan 30 13:35:26 PST 2023 */
 :root, ::before, ::after, ::backdrop {
 --animation-ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
 --animation-speed-base: 1;
@@ -209,6 +210,9 @@
 --badge__background-color--success: #12890e;
 --badge__background-color--warn: #f8c41f;
 --badge__font-color: #ffffff;
+--badge__font-color--alert: #ffffff;
+--badge__font-color--info: #ffffff;
+--badge__font-color--success: #ffffff;
 --badge__font-color--warn: #262626;
 --button__background-color--active: #023449;
 --button__background-color--disabled: #ffffff;
