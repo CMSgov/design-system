@@ -19,7 +19,7 @@ const Example = function () {
 
       <div className="ds-l-container ds-u-padding-top--2">
         <div className="ds-u-measure--base">
-          <h1 className="ds-h1">CDN Example</h1>
+          <h1 className="ds-h1">React Example</h1>
           <Alert heading="Hello world">
             <p className="ds-c-alert__text">You did it! You&rsquo;ve ran the example.</p>
             {open && (
