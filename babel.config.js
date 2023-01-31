@@ -18,6 +18,13 @@ module.exports = function (api) {
     '@babel/plugin-transform-object-assign',
     ['babel-plugin-typescript-to-proptypes', { comments: true }],
     'inline-react-svg',
+    [
+      '@babel/plugin-transform-react-jsx',
+      {
+        pragma: 'h',
+        pragmaFrag: 'Fragment',
+      },
+    ],
   ];
 
   return {

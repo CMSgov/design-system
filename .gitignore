@@ -6,10 +6,6 @@
 **/package-lock.json
 /examples/*/yarn.lock
 
-/examples/cdn/js/*
-/examples/cdn/css/*
-/examples/cdn/fonts/*
-
 # Code editors
 *.sublime-*
 

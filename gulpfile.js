@@ -17,6 +17,7 @@ const filter = require('gulp-filter');
 const log = require('fancy-log');
 const svgmin = require('gulp-svgmin');
 const webpack = require('webpack-stream');
+const { ProvidePlugin } = require('webpack');
 
 /*
  * command line arguments and global variables
@@ -237,11 +238,25 @@ const bundleJs = (cb) => {
           library: 'DesignSystem',
         },
         mode: process.env.NODE_ENV || 'production',
-        // Don't bundle react, since we don't expose it anyway and you need to interact
-        // with those libraries directly in order to use our components.
+        // Don't bundle preact because our customers need to interact with it directly
+        // in order to use our components, and we don't expose it in our code. They
+        // should instead load the preact umd module before loading our bundle.
         externals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
+          preact: 'preact',
+        },
+        plugins: [
+          new ProvidePlugin({
+            h: ['preact', 'h'],
+            Fragment: ['preact', 'Fragment'],
+          }),
+        ],
+        resolve: {
+          alias: {
+            react: 'preact/compat',
+            'react-dom/test-utils': 'preact/test-utils',
+            'react-dom': 'preact/compat', // Must be below test-utils
+            'react/jsx-runtime': 'preact/jsx-runtime',
+          },
         },
       })
     )
@@ -258,8 +273,9 @@ const copyReactToDist = (cb) => {
 
   gulp
     .src([
-      `${nodeModules}/react/umd/react.production.min.js`,
-      `${nodeModules}/react-dom/umd/react-dom.production.min.js`,
+      // `${nodeModules}/react/umd/react.production.min.js`,
+      // `${nodeModules}/react-dom/umd/react-dom.production.min.js`,
+      `${nodeModules}/preact/dist/preact.min.umd.js`,
     ])
     .pipe(gulp.dest(`${distPath}/js`))
     .on('end', cb);

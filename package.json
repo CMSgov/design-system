@@ -122,6 +122,7 @@
     "postcss": "^8",
     "postcss-import": "^15.0.0",
     "postcss-scss": "^4.0.3",
+    "preact": "10.11.3",
     "prettier": "^2.6.1",
     "react": "17.0.2",
     "react-app-polyfill": "^3.0.0",
