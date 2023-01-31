@@ -4,6 +4,12 @@
   clip-path: inset(0 0);
   margin-top: $spacer-2;
   max-width: var(--measure-base);
+
+  .text-color {
+    svg {
+      display: none;
+    }
+  }
 }
 
 .c-swatch__name,

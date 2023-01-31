@@ -31,7 +31,13 @@ interface ColorSwatchListProps {
 const ColorSwatchList = ({ backgroundClass, colorNames, preface, theme }: ColorSwatchListProps) => (
   <div className="c-swatch-list">
     {colorNames.map((name) => (
-      <article className="c-swatch" key={name}>
+      <article
+        className={classNames('c-swatch', {
+          [backgroundClass]: backgroundClass,
+          [`${preface.replace('.', '')}${name}`]: backgroundClass,
+        })}
+        key={name}
+      >
         <ColorSwatch colorTokenName={name} />
         <code
           className={classNames('c-swatch__name', {
