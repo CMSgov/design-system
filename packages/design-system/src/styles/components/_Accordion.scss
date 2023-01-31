@@ -22,7 +22,7 @@
 .ds-c-accordion__button {
   background-color: var(--accordion__background-color);
   border: 0;
-  border-radius: 0;
+  border-radius: var(--accordion__border-radius);
   box-shadow: none;
   color: var(--accordion-button__color);
   cursor: pointer;
@@ -93,7 +93,7 @@
 
 .ds-c-accordion--bordered {
   .ds-c-accordion__content {
-    border: $spacer-half solid var(--accordion__border-color);
+    border: var(--accordion__border-width) solid var(--accordion__border-color);
     border-top: 0;
     padding: $spacer-2 $spacer-2;
   }

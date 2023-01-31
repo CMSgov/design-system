@@ -16,13 +16,18 @@ export type MeasureValues =
   | `${number}%`;
 export type RGBValue = `rgb(${number},${number},${number})`;
 export type RGBAValue = `rgba(${number},${number},${number},${number})`;
+// This is still not comprehensive
+export type BorderRadiusValue =
+  | MeasureValues
+  | `${MeasureValues} ${MeasureValues}`
+  | `${MeasureValues} ${MeasureValues} ${MeasureValues} ${MeasureValues}`;
 
 export type Token<T> = {
   [key: string]: T | Token<T>;
 };
 
 export type AnimationTokens = Token<string | number>;
-export type BorderRadiusTokens = Token<MeasureValues>;
+export type BorderRadiusTokens = Token<BorderRadiusValue>;
 export type ColorTokens = Token<HexValue | RGBValue | RGBAValue | 'transparent' | 'inherit'>;
 export type FontTokens = Token<string | number>;
 export type MeasureTokens = Token<MeasureValues>;
