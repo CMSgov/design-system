@@ -11,7 +11,7 @@
 
 .ds-c-badge {
   background-color: var(--badge__background-color);
-  border-radius: var(--radius-pill);
+  border-radius: var(--badge__border-radius);
   color: var(--badge__font-color);
   display: inline-block;
   font-size: var(--font-size-sm);
@@ -46,12 +46,14 @@
 
 .ds-c-badge--info {
   background-color: var(--badge__background-color--info);
+  color: var(--badge__font-color--info);
 
   @include badge-high-contrast-mode-remove-color;
 }
 
 .ds-c-badge--success {
   background-color: var(--badge__background-color--success);
+  color: var(--badge__font-color--success);
 
   @include badge-high-contrast-mode-remove-color;
 }
@@ -65,6 +67,7 @@
 
 .ds-c-badge--alert {
   background-color: var(--badge__background-color--alert);
+  color: var(--badge__font-color--alert);
 
   @include badge-high-contrast-mode-remove-color;
 }
