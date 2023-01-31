@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
-import { Language, tWithLanguage } from '../i18n';
+import { t } from '../i18n';
 import {
   LockCircleIcon,
   LockIcon,
@@ -11,8 +11,6 @@ import {
   ArrowIcon,
   CloseIconThin,
 } from '../Icons';
-
-export type LocaleLanguage = 'en' | 'es';
 
 export interface UsaBannerProps {
   /**
@@ -23,13 +21,6 @@ export interface UsaBannerProps {
    * A unique ID to be applied to the banner content. A unique ID will be generated if one isn't provided.
    */
   id?: string;
-  /**
-   * @deprecated - This is now deprecated in favor of the global language setting. See guides/internationalization
-   * @hide-prop [Deprecated]
-   *
-   * The language the USA Banner will be presented in.
-   */
-  locale?: Language;
 }
 
 export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBannerProps) => {
@@ -37,13 +28,6 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
   const [shouldRenderMobileView, setShouldRenderMobileView] = useState<boolean>(false);
   const classes = classNames('ds-c-usa-banner', props.className);
   const id = props.id || uniqueId('gov-banner_');
-  const t = tWithLanguage(props.locale);
-
-  if (props.locale) {
-    console.warn(
-      `[Deprecated]: Please remove the 'locale' prop in <UsaBanner> in favor of global language setting. This prop is deprecated and will be removed in a future release.`
-    );
-  }
 
   useEffect(() => {
     let media;
