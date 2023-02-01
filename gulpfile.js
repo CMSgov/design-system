@@ -276,6 +276,8 @@ const copyReactToDist = (cb) => {
       // `${nodeModules}/react/umd/react.production.min.js`,
       // `${nodeModules}/react-dom/umd/react-dom.production.min.js`,
       `${nodeModules}/preact/dist/preact.min.umd.js`,
+      `${nodeModules}/preact/dist/preact.umd.js`,
+      `${nodeModules}/preact/dist/preact.umd.js.map`,
     ])
     .pipe(gulp.dest(`${distPath}/js`))
     .on('end', cb);
