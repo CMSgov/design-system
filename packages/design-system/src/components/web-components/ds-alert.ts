@@ -11,4 +11,4 @@ const attributes = [
   'variation',
 ];
 
-define('ds-alert', () => Promise.resolve(Alert), { attributes });
+define('ds-alert', () => Alert, { attributes });
