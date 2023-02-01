@@ -12,6 +12,8 @@ Object.values(stories).forEach((story) => {
     const storyUrl = `http://localhost:6006/iframe.html?viewMode=story&id=${story.id}`;
     Object.keys(Themes).forEach((theme) => {
       if (Themes[theme].incomplete) return;
+      // right now medicare is not doing a11y testing
+      if (theme === 'medicare') return;
 
       // Don't take screenshots of theme-specific components outside of their themes
       if (!story.importPath.includes(Themes[theme].packageName)) return;
