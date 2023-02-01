@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { stories } from '../../storybook-static/stories.json';
+import * as Themes from '../../themes.json';
 
-const themes = ['core', 'healthcare', 'medicare'];
 const storySkipList = [
   'components-dialog--prevent-scroll-example',
   'components-idle-timeout--default',
@@ -23,26 +23,12 @@ Object.values(stories).forEach((story) => {
 
   test.describe(`${story.title}/${story.name}`, () => {
     const storyUrl = `http://localhost:6006/iframe.html?viewMode=story&id=${story.id}`;
-    const isHealthcareStory = story.importPath.includes('ds-healthcare-gov');
-    const isMedicareStory = story.importPath.includes('ds-medicare-gov');
 
-    themes.forEach((theme) => {
+    Object.keys(Themes).forEach((theme) => {
+      if (Themes[theme].incomplete) return;
+
       // Don't take screenshots of theme-specific components outside of their themes
-      if (isHealthcareStory && theme !== 'healthcare') return;
-      if (isMedicareStory && theme !== 'medicare') return;
-
-      // For smoke tests, only capture core components in the core theme and theme-specific
-      // components in their native theme
-      if (
-        isSmokeTest &&
-        !(
-          theme === 'core' ||
-          (isHealthcareStory && theme === 'healthcare') ||
-          (isMedicareStory && theme === 'medicare')
-        )
-      ) {
-        return;
-      }
+      if (isSmokeTest && !story.importPath.includes(Themes[theme].packageName)) return;
 
       test(`with ${theme} theme`, async ({ page }) => {
         await page.goto(`${storyUrl}&globals=theme:${theme}`);
