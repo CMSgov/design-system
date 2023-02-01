@@ -10,14 +10,8 @@
     />
     <link rel="stylesheet" href="style.css" />
     <script src="dist/js/preact.min.umd.js"></script>
-    <script src="dist/js/bundle.js"></script>
   </head>
   <body class="ds-base">
-    <div id="usa-banner"></div>
-    <script>
-      preact.render(preact.h(DesignSystem.UsaBanner), document.getElementById('usa-banner'));
-    </script>
-
     <header class="ds-base--inverse ds-u-padding-y--3">
       <div class="ds-l-container">
         <span class="ds-h3">ExampleWebsite.gov</span>
@@ -34,38 +28,20 @@
           cases.
         </p>
 
-        <ds-badge variation="info">Hello world</ds-badge>
-
-        <div id="alert"></div>
-        <script>
-          preact.render(
-            preact.h(DesignSystem.Alert, {
-              heading: 'Hello World',
-              children: 'I was rendered with React!',
-            }),
-            document.getElementById('alert')
-          );
-        </script>
-
         <ds-alert variation="error" heading="WHOA!!!!!">
           <span>Weeeeeee!!!</span>
         </ds-alert>
 
         <form>
+          <ds-badge variation="info">Hello world</ds-badge>
+
           <div id="month-picker"></div>
-          <script>
-            preact.render(
-              preact.h(DesignSystem.MonthPicker, {
-                label: 'Please select the months you lived abroad.',
-                name: 'months',
-              }),
-              document.getElementById('month-picker')
-            );
-          </script>
 
           <button type="submit" class="ds-c-button ds-c-button--primary">Submit</button>
         </form>
       </div>
     </div>
+
+    <script src="dist/js/bundle.js"></script>
   </body>
 </html>
