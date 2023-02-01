@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { stories } from '../../storybook-static/stories.json';
-import * as Themes from '../../themes.json';
+import themes from '../../themes.json';
 
 const storySkipList = [
   'components-dialog--prevent-scroll-example',
@@ -24,11 +24,11 @@ Object.values(stories).forEach((story) => {
   test.describe(`${story.title}/${story.name}`, () => {
     const storyUrl = `http://localhost:6006/iframe.html?viewMode=story&id=${story.id}`;
 
-    Object.keys(Themes).forEach((theme) => {
-      if (Themes[theme].incomplete) return;
+    Object.keys(themes).forEach((theme) => {
+      if (themes[theme].incomplete) return;
 
       // Don't take screenshots of theme-specific components outside of their themes
-      if (isSmokeTest && !story.importPath.includes(Themes[theme].packageName)) return;
+      if (isSmokeTest && !story.importPath.includes(themes[theme].packageName)) return;
 
       test(`with ${theme} theme`, async ({ page }) => {
         await page.goto(`${storyUrl}&globals=theme:${theme}`);
