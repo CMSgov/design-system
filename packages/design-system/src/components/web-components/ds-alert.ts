@@ -1,16 +1,14 @@
-import register from 'preact-custom-element';
-import Alert, { AlertProps } from '../Alert/Alert';
+import { define } from 'preactement';
+import Alert from '../Alert/Alert';
 
-const observedAttributes: Array<keyof AlertProps> = [
-  'className',
+const attributes = [
+  'class-name',
   'heading',
-  'headingId',
-  'hideIcon',
+  'heading-id',
+  'hide-icon',
   'role',
   'weight',
   'variation',
 ];
 
-// In order for slots to work with `preact-custom-element`, shadow dom has to be
-// enabled, but unfortunately that will break the styles because they're global.
-register(Alert, 'ds-alert', observedAttributes, { shadow: false });
+define('ds-alert', () => Promise.resolve(Alert), { attributes });
