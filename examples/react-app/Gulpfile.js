@@ -1,5 +1,4 @@
 const gulp = require('gulp');
-const sass = require('gulp-sass');
 
 /**
  * Copy the static assets from the design system, such as the fonts and images.
@@ -9,21 +8,10 @@ const sass = require('gulp-sass');
 gulp.task('copy-design-system', function () {
   return gulp
     .src([
-      'node_modules/@cmsgov/design-system/dist/**/fonts/*',
-      'node_modules/@cmsgov/design-system/dist/**/images/*',
+      'node_modules/@cmsgov/ds-cms-gov/dist/**/fonts/*',
+      'node_modules/@cmsgov/ds-cms-gov/dist/**/images/*',
     ])
     .pipe(gulp.dest('./dist/'));
-});
-
-/**
- * Transpile Sass to CSS
- */
-gulp.task('sass', function () {
-  const transpiler = sass({
-    outputStyle: 'compressed',
-  }).on('error', sass.logError);
-
-  return gulp.src('./src/styles/**/*.scss').pipe(transpiler).pipe(gulp.dest('./dist/styles'));
 });
 
 /**
@@ -31,8 +19,8 @@ gulp.task('sass', function () {
  */
 gulp.task('css', function () {
   return gulp
-    .src('node_modules/@cmsgov/design-system/dist/css/*.css')
-    .pipe(gulp.dest('./dist/styles/cmsds'));
+    .src('node_modules/@cmsgov/ds-cms-gov/dist/css/*.css')
+    .pipe(gulp.dest('./dist/styles'));
 });
 
-gulp.task('default', gulp.series('copy-design-system', 'sass'));
+gulp.task('default', gulp.series('copy-design-system', 'css'));

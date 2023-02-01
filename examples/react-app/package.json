@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@cmsgov/design-system": "file:../../packages/design-system/",
+    "@cmsgov/ds-cms-gov": "file:../../packages/ds-cms-gov/",
     "react": "^16.14.0",
     "react-dom": "^16.14.0"
   },
