@@ -20459,6 +20459,11 @@ postcss@^8.2.9, postcss@^8.3.11, postcss@^8.4.12:
     picocolors "^1.0.0"
     source-map-js "^1.0.2"
 
+preact-custom-element@4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/preact-custom-element/-/preact-custom-element-4.2.1.tgz#a18752ef60823ea61199d9cdc1866e51139b3f46"
+  integrity sha512-/fiEEAyC+MXRlCBRmv/owoN5BLpO2nF/MF3YBHLtp4C2lNqlhV+a4he74A5DhfDoRmxDHm0sYVgQzWFEyzTDsw==
+
 preact@10.11.3:
   version "10.11.3"
   resolved "https://registry.yarnpkg.com/preact/-/preact-10.11.3.tgz#8a7e4ba19d3992c488b0785afcc0f8aa13c78d19"
