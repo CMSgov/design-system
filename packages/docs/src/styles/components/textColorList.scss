@@ -1,15 +1,23 @@
 .c-text-color-list {
   margin-top: $spacer-2;
-  max-width: var(--measure-base);
+  max-width: var(--measure-wide);
+}
 
-  .text-color {
-    svg {
-      display: none;
-    }
+.c-text-color-list__item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: $spacer-1;
+
+  &:last-child {
+    margin-bottom: 0;
   }
 }
 
 .c-text-color-list__name,
 .c-text-color-list__label {
   font-size: var(--font-size-md);
+}
+
+.c-text-color-list__label {
+  float: right;
 }

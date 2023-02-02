@@ -26,22 +26,34 @@ interface TextColorListProps {
  * Displays a list of text colors with example code and the hex value
  */
 const TextColorList = ({ backgroundClass, colorNames, preface, theme }: TextColorListProps) => (
-  <div className="c-text-color-list ds-u-border--1 ds-u-padding--2">
+  <div
+    className={classNames(
+      'c-text-color-list',
+      'ds-u-border--1',
+      'ds-u-padding--2',
+      backgroundClass
+    )}
+  >
     {colorNames.map((name) => (
-      <article className="ds-u-margin-bottom--1" key={name}>
-        <ColorSwatch colorTokenName={name} />
-        <code
-          className={classNames('c-text-color-list__name', {
-            [backgroundClass]: backgroundClass,
-            [`${preface.replace('.', '')}${name}`]: backgroundClass,
-          })}
-        >
-          {preface}
-          {name}
-        </code>
-        <code className="c-text-color-list__label ds-u-fill--transparent ds-u-color--gray">
-          {getThemeColorValue(theme as ThemeName, name)}
-        </code>
+      <article className="c-text-color-list__item" key={name}>
+        <div>
+          <ColorSwatch colorTokenName={name} />
+          <code
+            className={classNames(
+              'c-text-color-list__name',
+              `${preface.replace('.', '')}${name}`,
+              'ds-u-fill--transparent'
+            )}
+          >
+            {preface}
+            {name}
+          </code>
+        </div>
+        <div>
+          <code className="c-text-color-list__label">
+            {getThemeColorValue(theme as ThemeName, name)}
+          </code>
+        </div>
       </article>
     ))}
   </div>
