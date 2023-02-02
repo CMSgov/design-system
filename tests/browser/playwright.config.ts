@@ -65,7 +65,7 @@ const smokeTestProjects = [
  */
 const config: PlaywrightTestConfig = {
   testDir: './',
-  snapshotPathTemplate: 'snapshots/{arg}{ext}',
+  snapshotPathTemplate: 'snapshots/{arg}--{projectName}{ext}',
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
   expect: {
