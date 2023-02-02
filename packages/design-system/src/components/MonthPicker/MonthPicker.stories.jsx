@@ -19,10 +19,6 @@ export default {
       control: 'radio',
       options: [true, false],
     },
-    locale: {
-      description:
-        '**This prop has been DEPRECATED.** Do not use. See [internationalization documentation](https://design.cms.gov/guidelines/i18n/#default-internationalized-content-in-the-design-system)',
-    },
   },
   args: {
     hint: "Month Picker can receive optional help text, giving the user additional information of what's required.",
