@@ -1,0 +1,344 @@
+/* Core root defaults */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+// Remove all animations, transitions and smooth scroll
+// for people that prefer not to see them
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Core body defaults */
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-base);
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+
+  // 👀 CMS-WDS/scout uses these reset styles
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: var(--font-line-height-base);
+  margin: 0;
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+}
+
+// 👀 CMS-WDS/sep-screener uses this reset style
+// I've seen similar styles in other repos and I'm curious what it's solving
+#main[tabindex='-1']:focus,
+h1[tabindex='-1']:focus {
+  outline: 0;
+}
+*[tabindex='-1']:focus {
+  outline: 0;
+}
+
+/* Typography */
+// ❓ Do we want to enforce max-width rules on type els?
+// I personally feel like doing this would result in more support work for us
+// but it could result in better enforcement of this rule.
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  // `font` is a shorthand property:
+  // https://developer.mozilla.org/en-US/docs/Web/CSS/font
+  // Heading tags inherit all font style rules to match body text;
+  // This ensures semantics are distinct from appearance.
+  font: inherit;
+  // margin applied to top of heading, informed by current margin size
+  margin-block: 1.5em 0;
+}
+
+p {
+  // ❓margin applied to top of text, informed by Chrome UA style - do we want to codify it?
+  margin-block: 1em 0;
+
+  // ❓taken from ./_base.scss ln 329 - do we want to add this to the reset?
+  // CMS-WDS/application @extends this style for their reset:
+  // https://github.cms.gov/CMS-WDS/application/blob/6de8f3ac19e86b7653f0102dcfff7a79241dcb33/app/styles/base/index.scss#L14
+  &:first-child {
+    margin-block-start: 0;
+  }
+}
+
+// These tags will naturally use 700 weight as bold
+// but because some themes have 600 weight, I'm using
+// the CSS variable to adjust bold based on theme
+b,
+strong {
+  font-weight: var(--font-weight-bold);
+}
+
+a {
+  color: var(--link__color);
+  // 📢 We may want to revisit tokens for `text-decoration-style`
+  // ❓Do we have an instance where the underline doesn't match the text color?
+  text-decoration-color: currentColor;
+  text-decoration-style: solid;
+  text-decoration-thickness: var(--link__text-decoration-thickness);
+  text-underline-offset: var(--link__text-decoration-offset);
+
+  // Recommended order of user action pseudo-classes:
+  // https://css-tricks.com/snippets/css/link-pseudo-classes-in-order/
+
+  &:visited {
+    color: var(--link__color--visited);
+  }
+
+  &:hover {
+    color: var(--link__color--hover);
+    text-decoration-thickness: var(--link__text-decoration-thickness--hover);
+  }
+
+  &:focus,
+  &:focus:visited {
+    background-color: var(--color-focus-light);
+    box-shadow: none;
+    color: currentColor;
+    outline: 3px solid var(--color-focus-dark);
+    outline-offset: 1px;
+  }
+
+  &:active {
+    color: var(--link__color--active);
+  }
+}
+
+// ❓ How do we want to style <hr> tags? I'm using best guess here.
+hr {
+  border-block-end: 0;
+  border-block-start: 1px solid currentColor;
+  margin: 0;
+}
+
+/* Lists */
+
+// Relying on `flex` to set `gap` spacing size on li elements
+// `gap` ensures even spacing and doesn't interfere with layout if list given a `row` direction
+ol,
+ul {
+  // display: flex;
+  // flex-direction: column;
+  // gap: .5em;
+  margin-block: 1em 0;
+  padding-inline-start: 2em;
+
+  // Tying unstyled list styles to a required a11y attribute ensures proper markup structure
+  &[role='list'] {
+    list-style: none;
+    padding: 0;
+  }
+}
+
+// 📢 We don't have examples of nested lists in the design system
+// ❓ How do we handle li `::mark` and nested padding for this pattern?
+// If we choose to support nesting lists, need to remove `gap` solution in favor of li `margin-block-start`
+// li elements are `display: list-item` and cannot receive `flex` or `grid` display without removing `::mark`
+li {
+  margin-block: 0.5em 0;
+}
+
+/* Form elements */
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+// ❓ Not seeing legends used in DS to draw style conclusions from;
+// assuming they should be styled like label els, but not sure
+legend {
+  display: block;
+  font-weight: var(--font-weight-bold);
+  margin-block: 1.5em 0;
+  padding: 0;
+}
+
+label {
+  display: block;
+  font-weight: var(--font-weight-bold);
+  margin-block: 1.5em 0;
+
+  // I see max-width defined on label and I wonder if we should consider removing an opinionated width on individual elements?
+  // I'm thinking devs should lean on layout grid to define component widths. Thoughts?
+  // max-width: var(--form__max-width);
+}
+
+input[type='checkbox'] + label,
+input[type='radio'] + label {
+  display: inline-block;
+  font: inherit;
+  margin-inline-start: 0.5em;
+}
+
+// Readonly examples don't have styles
+input {
+  &:not([type='checkbox'], [type='radio']) {
+    border: var(--text-input__border-width) solid currentColor;
+    border-radius: var(--text-input__border-radius);
+    display: block;
+    line-height: var(--text-input__line-height);
+    margin-block: 0.25em 0;
+    padding: var(--text-input__padding);
+    width: 100%;
+  }
+
+  &[type='checkbox'],
+  &[type='radio'] {
+    accent-color: var(--choice__background-color--checked);
+    height: var(--choice__size);
+    vertical-align: middle;
+    width: var(--choice__size);
+  }
+
+  &:disabled {
+    background-color: var(--text-input__background-color--disabled);
+    border-color: var(--text-input__border-color--disabled);
+    cursor: not-allowed;
+  }
+}
+
+textarea {
+  border: var(--text-input__border-width) solid currentColor;
+  border-radius: var(--text-input__border-radius);
+  display: block;
+  line-height: var(--text-input__line-height);
+  margin-block: 0.25em 0;
+  padding: var(--text-input__padding);
+  width: 100%;
+
+  &:disabled {
+    background-color: var(--text-input__background-color--disabled);
+    border-color: var(--text-input__border-color--disabled);
+    cursor: not-allowed;
+  }
+}
+
+select {
+  appearance: none;
+  background-color: inherit;
+  border: var(--text-input__border-width) solid currentColor;
+  border-radius: var(--text-input__border-radius);
+  display: block;
+  line-height: var(--text-input__line-height);
+  margin-block: 0.25em 0;
+  padding: var(--text-input__padding);
+  width: 100%;
+
+  &:disabled {
+    background-color: var(--text-input__background-color--disabled);
+    border-color: var(--text-input__border-color--disabled);
+    cursor: not-allowed;
+  }
+}
+
+button {
+  background-color: var(--button__background-color);
+  border: var(--button__border-width) solid var(--button__border-color);
+  border-radius: var(--button__border-radius);
+  color: var(--button__color);
+  cursor: pointer;
+  font-weight: var(--button__font-weight);
+  padding: 0.5em 1.5em;
+
+  &:disabled {
+    background-color: var(--button__background-color--disabled);
+    border-color: var(--button__border-color--disabled);
+    color: var(--button__color--disabled);
+    cursor: not-allowed;
+  }
+}
+
+/* Images */
+
+// Stories TBD
+
+// 👀 CMS-WDS/enroll uses this reset style
+figure {
+  margin: 0;
+}
+
+/* Disclosure */
+
+details {
+  border: 4px solid var(--accordion__border-color);
+
+  &:not(:first-child) {
+    margin-block: 0.5em 0;
+  }
+
+  summary {
+    background-color: var(--accordion__background-color);
+    color: var(--accordion__color);
+    font-weight: var(--font-weight-bold);
+    padding: calc(1em - 4px) calc(1.5em - 4px);
+  }
+}
+
+// TBD
+// dialog { }
+
+/* Tables */
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 0;
+  text-align: start;
+
+  // 👀 CMS-WDS/scout uses this reset style
+  // width: 100%;
+
+  caption {
+    font-weight: var(--font-weight-bold);
+    margin-block: 0 0.5em;
+    text-align: start;
+  }
+
+  th,
+  thead td {
+    background-color: var(--table-header__background-color);
+  }
+
+  tbody th {
+    font-weight: var(--font-weight-normal);
+  }
+
+  th,
+  td {
+    border: 1px solid var(--table__border-color);
+    padding: var(--table__padding);
+  }
+}
