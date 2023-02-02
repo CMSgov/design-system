@@ -5,6 +5,7 @@
 
 import { default as pwc } from './playwright.config';
 
+pwc['snapshotPathTemplate'] = 'snapshots/{arg}--{projectName}{ext}';
 pwc.testDir = '../../packages/';
 pwc.testMatch = /.*test\.interaction\.ts/;
 
