@@ -105,7 +105,6 @@ export const globalTypes = {
 };
 
 const baseClassDecorator = (Story, context) => {
-  document.body.classList.add('ds-base');
   if (context.parameters.baseInverse) {
     document.body.classList.add('ds-base--inverse');
   } else {

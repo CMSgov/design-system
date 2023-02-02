@@ -1,4 +1,4 @@
-/* Last modified on Mon Jan 30 15:36:21 PST 2023 */
+/* Last modified on Thu Feb  2 13:00:11 EST 2023 */
 :root, ::before, ::after, ::backdrop {
 --animation-ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
 --animation-speed-base: 1;
@@ -104,6 +104,8 @@
 --color-warn-lighter: #fce28f;
 --color-warn-lightest: #fef9e9;
 --color-visited: #4c2c92;
+--font-body: 'Open Sans', Helvetica, sans-serif;
+--font-heading: 'Open Sans', Helvetica, sans-serif;
 --font-sans: 'Open Sans', Helvetica, sans-serif;
 --font-serif: Bitter, Georgia, serif;
 --font-family-open-sans: 'Open Sans', Helvetica, sans-serif;

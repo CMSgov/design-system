@@ -16,3 +16,9 @@
 [data-theme='medicare'] {
   @import '@cmsgov/ds-medicare-gov/src/styles/index';
 }
+
+article {
+  .preview {
+    border: 1px dashed orchid;
+  }
+}

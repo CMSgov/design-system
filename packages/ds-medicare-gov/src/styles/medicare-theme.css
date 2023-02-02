@@ -1,4 +1,4 @@
-/* Last modified on Mon Jan 30 15:36:21 PST 2023 */
+/* Last modified on Thu Feb  2 13:00:11 EST 2023 */
 :root, ::before, ::after, ::backdrop {
 --animation-ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
 --animation-speed-base: 1;
@@ -157,6 +157,8 @@
 --font-weight-normal: 400;
 --font-weight-semibold: 600;
 --font-weight-bold: 600;
+--font-body: 'Rubik', sans-serif;
+--font-heading: 'Montserrat', sans-serif;
 --font-sans: 'Rubik', sans-serif;
 --font-montserrat: 'Montserrat', sans-serif;
 --font-rubik: 'Rubik', sans-serif;
