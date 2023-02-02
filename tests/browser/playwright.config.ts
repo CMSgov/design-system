@@ -65,6 +65,7 @@ const smokeTestProjects = [
  */
 const config: PlaywrightTestConfig = {
   testDir: './',
+  snapshotPathTemplate: 'snapshots/{arg}{ext}',
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
   expect: {
@@ -90,7 +91,6 @@ const config: PlaywrightTestConfig = {
   use: {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
-    baseURL: 'http://localhost:6006/iframe.html?viewMode=story&id=',
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
