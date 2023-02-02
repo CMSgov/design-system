@@ -89,15 +89,6 @@ body {
   .ds-c-alert {
     margin-top: $spacer-2;
   }
-  .c-configuration-options {
-    .c-color-swatch {
-      border: 1px solid var(--color-gray-lighter);
-      height: $spacer-4;
-      margin-right: $spacer-2;
-      vertical-align: middle;
-      width: $spacer-4;
-    }
-  }
 }
 
 .ds-c-badge {

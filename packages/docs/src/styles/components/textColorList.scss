@@ -1,0 +1,15 @@
+.c-text-color-list {
+  margin-top: $spacer-2;
+  max-width: var(--measure-base);
+
+  .text-color {
+    svg {
+      display: none;
+    }
+  }
+}
+
+.c-text-color-list__name,
+.c-text-color-list__label {
+  font-size: var(--font-size-md);
+}

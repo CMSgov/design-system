@@ -2,13 +2,12 @@ import React from 'react';
 import classNames from 'classnames';
 import ColorSwatch from './ColorSwatch';
 import { getThemeColorValue, ThemeName } from '../../helpers/themeTokens';
-import { hexHasTransparency, pickTextColor } from 'design-system-tokens/src/lib/utility';
 
-interface ColorSwatchListProps {
+interface TextColorListProps {
   /**
    * a fill class for the background of the name text
    */
-  backgroundClass?: string;
+  backgroundClass: string;
   /**
    * list of variable color names
    */
@@ -24,23 +23,15 @@ interface ColorSwatchListProps {
 }
 
 /**
- * displays a list of color swatches with a sample of the color, the CSS variable name & the hex value
- * @param colorNames {String[]} a list of color names - should be same as CSS variable
+ * Displays a list of text colors with example code and the hex value
  */
-
-const ColorSwatchList = ({ backgroundClass, colorNames, preface, theme }: ColorSwatchListProps) => (
-  <div className="c-swatch-list">
+const TextColorList = ({ backgroundClass, colorNames, preface, theme }: TextColorListProps) => (
+  <div className="c-text-color-list ds-u-border--1 ds-u-padding--2">
     {colorNames.map((name) => (
-      <article
-        className={classNames('c-swatch', {
-          [backgroundClass]: backgroundClass,
-          [`${preface.replace('.', '')}${name}`]: backgroundClass,
-        })}
-        key={name}
-      >
+      <article className="ds-u-margin-bottom--1" key={name}>
         <ColorSwatch colorTokenName={name} />
         <code
-          className={classNames('c-swatch__name', {
+          className={classNames('c-text-color-list__name', {
             [backgroundClass]: backgroundClass,
             [`${preface.replace('.', '')}${name}`]: backgroundClass,
           })}
@@ -48,7 +39,7 @@ const ColorSwatchList = ({ backgroundClass, colorNames, preface, theme }: ColorS
           {preface}
           {name}
         </code>
-        <code className="c-swatch__label js-swatch-hex">
+        <code className="c-text-color-list__label ds-u-fill--transparent ds-u-color--gray">
           {getThemeColorValue(theme as ThemeName, name)}
         </code>
       </article>
@@ -56,4 +47,4 @@ const ColorSwatchList = ({ backgroundClass, colorNames, preface, theme }: ColorS
   </div>
 );
 
-export default ColorSwatchList;
+export default TextColorList;
