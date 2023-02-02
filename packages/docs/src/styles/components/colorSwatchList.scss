@@ -74,22 +74,3 @@
   top: 1px;
   z-index: -1;
 }
-
-.c-color-ramp__item {
-  display: flex;
-  justify-content: space-between;
-  padding: $spacer-1;
-  position: relative;
-  text-align: right;
-
-  svg {
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-  }
-
-  code {
-    position: relative;
-  }
-}
