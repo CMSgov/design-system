@@ -18,13 +18,10 @@ interface ColorExampleListProps {
 }
 
 /**
- * TODO: finish these notes
- * This does not support semi-transparent colors like the `ColorRamps` component does.
- *
- * displays a list of color swatches with a sample of the color, the CSS variable name & the hex value
- * @param colorNames {String[]} a list of color names - should be same as CSS variable
+ * Used to show a set of related colors. It's a collection of `ColorExampleRow`
+ * items. Note that this does not show a special transparency background to
+ * support semi-transparent colors like the `ColorRamps` component does.
  */
-
 const ColorExampleList = ({ colorNames, preface, theme }: ColorExampleListProps) => (
   <div className="ds-u-measure--wide ds-u-margin-top--2">
     {colorNames.map((name) => (

@@ -8,6 +8,11 @@ interface ColorExampleRowProps {
   value: string;
 }
 
+/**
+ * Used to show a specific color. It's laid out as a row with a background
+ * color of the specified color plus two text/code elements with the name of
+ * the color and the value of the color
+ */
 const ColorExampleRow = ({ displayName, name, value }: ColorExampleRowProps) => {
   const nameId = `color-name-${name}`;
   const valueId = `color-value-${name}`;
