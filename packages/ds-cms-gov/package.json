@@ -1,0 +1,29 @@
+{
+  "name": "@cmsgov/ds-cms-gov",
+  "version": "6.0.0",
+  "private": true,
+  "description": "A design system for CMS.gov products",
+  "license": "CC0-1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CMSgov/design-system",
+    "directory": "packages/ds-cms-gov"
+  },
+  "keywords": [
+    "design-system",
+    "cms.gov"
+  ],
+  "main": "dist/components/index.js",
+  "module": "dist/esnext/index.esm.js",
+  "types": "dist/types/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "src"
+  ],
+  "dependencies": {
+    "@cmsgov/design-system": "6.0.0",
+    "@types/react": "^17.0.10",
+    "@types/react-dom": "^17.0.10"
+  }
+}
