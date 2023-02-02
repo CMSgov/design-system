@@ -34,28 +34,33 @@ const TextColorList = ({ backgroundClass, colorNames, preface, theme }: TextColo
       backgroundClass
     )}
   >
-    {colorNames.map((name) => (
-      <article className="c-text-color-list__item" key={name}>
-        <div>
-          <ColorSwatch colorTokenName={name} />
-          <code
-            className={classNames(
-              'c-text-color-list__name',
-              `${preface.replace('.', '')}${name}`,
-              'ds-u-fill--transparent'
-            )}
-          >
-            {preface}
-            {name}
-          </code>
-        </div>
-        <div>
-          <code className="c-text-color-list__label">
-            {getThemeColorValue(theme as ThemeName, name)}
-          </code>
-        </div>
-      </article>
-    ))}
+    {colorNames.map((name) => {
+      const nameId = `color-name-${name}`;
+      const valueId = `color-value-${name}`;
+      return (
+        <article className="c-text-color-list__item" key={name}>
+          <div>
+            <ColorSwatch colorTokenName={name} aria-labelledby={`${nameId} ${valueId}`} />
+            <code
+              className={classNames(
+                'c-text-color-list__name',
+                `${preface.replace('.', '')}${name}`,
+                'ds-u-fill--transparent'
+              )}
+              id={nameId}
+            >
+              {preface}
+              {name}
+            </code>
+          </div>
+          <div>
+            <code id={valueId} className="c-text-color-list__label">
+              {getThemeColorValue(theme as ThemeName, name)}
+            </code>
+          </div>
+        </article>
+      );
+    })}
   </div>
 );
 
