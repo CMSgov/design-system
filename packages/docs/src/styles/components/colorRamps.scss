@@ -1,26 +1,3 @@
-// Color examples
-.c-swatch__name,
-.c-swatch__label {
-  font-size: var(--font-size-md);
-}
-
-.c-swatch__preview {
-  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.4);
-  display: inline-block;
-  height: $spacer-4;
-  margin-bottom: $spacer-half;
-  vertical-align: middle;
-  width: $spacer-4;
-}
-
-.c-color-swatch {
-  display: inline-block;
-  height: $spacer-4;
-  margin-bottom: $spacer-half;
-  vertical-align: middle;
-  width: $spacer-4;
-}
-
 .c-color-ramps {
   gap: var(--grid-gutter-width);
 }
@@ -49,23 +26,4 @@
   // top edge of the ramp.
   top: 1px;
   z-index: -1;
-}
-
-.c-color-ramp__item {
-  display: flex;
-  justify-content: space-between;
-  padding: $spacer-1;
-  position: relative;
-  text-align: right;
-
-  svg {
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-  }
-
-  code {
-    position: relative;
-  }
 }

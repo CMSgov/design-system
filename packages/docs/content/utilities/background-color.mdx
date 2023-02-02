@@ -10,97 +10,105 @@ Use the background color utility to change the default background color of an el
 
 ## Primary Colors
 
-<ColorSwatchList
+<ColorExampleList
   colorNames={[
     'primary',
     'primary-darker',
     'primary-darkest',
-    'black',
-    'base',
-    'gray-dark',
-    'gray-light',
-    'white',
   ]}
   preface=".ds-u-fill--"
 />
 
 ## Secondary Colors
 
-<ColorSwatchList
+<ColorExampleList
   colorNames={[
+    'secondary-lightest',
+    'secondary-lighter',
+    'secondary-light',
     'secondary',
     'secondary-dark',
     'secondary-darker',
     'secondary-darkest',
-    'secondary-light',
-    'secondary-lighter',
-    'secondary-lightest',
   ]}
   preface=".ds-u-fill--"
+/>
+
+## Neutral colors
+
+<ColorExampleList
+  colorNames={[
+    'white',
+    'gray-lightest',
+    'gray-lighter',
+    'gray-light',
+    'gray',
+    'gray-dark',
+    'base',
+   'black',
+  ]}
+ preface=".ds-u-fill--"
 />
 
 ## Background Colors
 
-<ColorSwatchList
+<ColorExampleList
   colorNames={[
     'background',
     'background-inverse',
-    'gray-dark',
-    'gray',
-    'gray-light',
-    'gray-lighter',
-    'gray-lightest',
   ]}
   preface=".ds-u-fill--"
 />
 
-## Status Colors
+## Status colors
 
-<ColorSwatchList
+### Success
+
+<ColorExampleList
   colorNames={[
+    'success-lightest',
+    'success-lighter',
+    'success-light',
     'success',
     'success-dark',
     'success-darker',
     'success-darkest',
-    'success-light',
-    'success-lighter',
-    'success-lightest',
+  ]}
+  preface=".ds-u-fill--"
+/>
+
+### Warn
+<ColorExampleList
+  colorNames={[
+    'warn-lightest',
+    'warn-lighter',
+    'warn-light',
     'warn',
     'warn-dark',
     'warn-darker',
     'warn-darkest',
-    'warn-light',
-    'warn-lighter',
-    'warn-lightest',
+  ]}
+  preface=".ds-u-fill--"
+/>
+
+### Error
+<ColorExampleList
+  colorNames={[
+    'error-lightest',
+    'error-lighter',
+    'error-light',
     'error',
     'error-dark',
     'error-darker',
     'error-darkest',
-    'error-light',
-    'error-lightest',
   ]}
   preface=".ds-u-fill--"
 />
 
 ## Focus Colors
 
-<ColorSwatchList colorNames={['focus-color-light', 'focus-color-dark']} preface=".ds-u-fill--" />
+<ColorExampleList colorNames={['focus-light', 'focus-dark']} preface=".ds-u-fill--" />
 
 ## Additional Colors
 
-<ColorSwatchList colorNames={['muted-inverse', 'transparent']} preface=".ds-u-fill--" />
-
-## Focus Colors - Deprecated
-
-<Alert
-  heading="Deprecated"
-  variation="error"
-  className="ds-u-margin-bottom--2 ds-u-font-size--small"
->
-  <p class="ds-c-alert__text">Do not use.</p>
-</Alert>
-
-<ColorSwatchList
-  colorNames={['focus-color', 'focus-color-inverse', 'focus-border-inverse']}
-  preface=".ds-u-fill--"
-/>
+<ColorExampleList colorNames={['muted-inverse', 'transparent']} preface=".ds-u-fill--" />
