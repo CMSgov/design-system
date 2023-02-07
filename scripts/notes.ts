@@ -1,4 +1,13 @@
 import { execSync } from 'node:child_process';
+import themes from '../themes.json';
+
+export interface PRDetails {
+  hash: string;
+  ticket: string | null;
+  description: string;
+  ghpr: string;
+  labels: string[] | null;
+}
 
 let target;
 
@@ -10,6 +19,19 @@ if (process.argv.length == 2) {
 } else {
   target = process.argv[2];
 }
+
+/**
+ * Grabs latest tag from each theme and returns an array of `theme: version` items.
+ */
+export const getLatestVersions = () => {
+  const versions: { [key: string]: string } = {};
+  Object.entries(themes).forEach((theme) => {
+    const pkgn = theme[1].packageName;
+    const vers = execSync(`git tag --sort=taggerdate | grep "${pkgn}" | tail -1`).toString().trim();
+    versions[theme[0]] = vers.replace(/^@cmsgov\/.*@(.*)$/, '$1');
+  });
+  return versions;
+};
 
 /**
  * Accepts: A github pr number
@@ -41,13 +63,12 @@ const filteredLogArray = logData.split('\n').filter((line: string) => line.match
  * Generate an array of objects for each PR/commit from the filtered
  * git log generated above. This data can be sorted into draft notes.
  */
-const sortedLogData = filteredLogArray.map((line: string) => {
+const sortedLogData = filteredLogArray.map((line: string): PRDetails => {
   const matched = line.match(initialFilter);
 
   if (matched) {
     const labels = getGithubLabels(matched[4]);
     const ticket = matched[2].toLowerCase().includes('no') ? null : matched[2];
-
     return {
       hash: matched[1],
       ticket: ticket,
@@ -64,4 +85,22 @@ const sortedLogData = filteredLogArray.map((line: string) => {
   }
 });
 
+// const mdTemplate = (version: string, items: PRDetails[]): string => {
+//   return `
+//     ## [Design System](https://www.npmjs.com/package/@cmsgov/design-system) [${version}]
+//     ## [Documentation site](https://www.npmjs.com/package/@cmsgov/design-system-docs) [${version}]
+//     ## [Healthcare.gov Design System](https://www.npmjs.com/package/@cmsgov/ds-healthcare-gov) [${version}]
+//     ## [Medicare.gov Design System](https://www.npmjs.com/package/@cmsgov/ds-medicare-gov) [${version}]
+//     ## Updated dependencies
+
+//     ### 🚨 Breaking changes
+//     ### 🚀 Added
+//     ### 💅 Changed
+//     ### 🛠 Fixed
+//     ### 📦 Internal
+//   `
+// }
+
 console.log(sortedLogData);
+
+// gh release create v${version} --notes-file release-${version}-notes.md --draft --prerelease
