@@ -9,7 +9,7 @@ export interface PRDetails {
   labels: string[] | null;
 }
 
-let target;
+let compTarget, currTarget;
 
 if (process.argv.length == 2) {
   console.log(
@@ -17,7 +17,8 @@ if (process.argv.length == 2) {
   );
   process.exit(1);
 } else {
-  target = process.argv[2];
+  compTarget = process.argv[2];
+  currTarget = process.argv[3] ?? 'HEAD';
 }
 
 /**
@@ -56,7 +57,9 @@ const initialFilter = /^.\s(\w*)\s\[([\w-]*)\]\s(.*)\s\(#(\d*)\)$/;
  * commits with pr #'s and description. --cherry is used to perform a
  * diff check to rule out commits which just have different hashes.
  */
-const logData = execSync(`git log --pretty=oneline --cherry HEAD...${target}`).toString();
+const logData = execSync(
+  `git log --author-date-order --pretty=oneline --cherry ${compTarget}...${currTarget}`
+).toString();
 const filteredLogArray = logData.split('\n').filter((line: string) => line.match(initialFilter));
 
 /**
@@ -68,7 +71,7 @@ const sortedLogData = filteredLogArray.map((line: string): PRDetails => {
 
   if (matched) {
     const labels = getGithubLabels(matched[4]);
-    const ticket = matched[2].toLowerCase().includes('no') ? null : matched[2];
+    const ticket = /no|release/i.test(matched[2].toLowerCase()) ? null : matched[2];
     return {
       hash: matched[1],
       ticket: ticket,
@@ -101,6 +104,18 @@ const sortedLogData = filteredLogArray.map((line: string): PRDetails => {
 //   `
 // }
 
-console.log(sortedLogData);
+const ticketedWork = sortedLogData.filter((pr) => {
+  return pr.ticket;
+});
+const unticketedWork = sortedLogData.filter((pr) => {
+  return !pr.ticket;
+});
+
+ticketedWork.forEach((pr) => {
+  console.log(`${pr.hash} ${pr.ticket} .. ${pr.labels}`);
+});
+console.log(`${ticketedWork.length} items`);
 
 // gh release create v${version} --notes-file release-${version}-notes.md --draft --prerelease
+// make sure particular name doesn't already exist / error condition on conflict
+// ticketed work outputs list of links for Kara, unticketed (if tagged) will be added to the list as usual.
