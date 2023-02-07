@@ -1,10 +1,5 @@
 @use '../layout' as *;
 
-// 🐸 ADDRESS DISABLED STYLES
-// CHECK DIFFERENT PSEUDO STATES TO MAKE SURE COLORS MATCH
-// CHECK MOBILE
-// RUN VIS REGRESSION TESTS
-
 .ds-c-pagination {
   align-items: flex-end;
   display: flex;
