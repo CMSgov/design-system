@@ -237,6 +237,7 @@ const bundleJs = (options, cb) => {
           library: 'DesignSystem',
         },
         mode: process.env.NODE_ENV || 'production',
+        devtool: 'source-map',
         plugins: [
           new ProvidePlugin({
             h: ['preact', 'h'],

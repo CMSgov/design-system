@@ -17,7 +17,7 @@
   "license": "SEE LICENSE IN LICENSE.md",
   "main": "dist/components/index.js",
   "module": "dist/esnext/index.esm.js",
-  "sideEffects": ["./dist/esnext/web-components/ds-alert.js", "./dist/esnext/web-components/ds-badge.js"],
+  "sideEffects": ["./dist/esnext/web-components/ds-alert.js", "./dist/esnext/web-components/ds-badge.js", "./dist/esnext/web-components/ds-button.js"],
   "types": "dist/types/index.d.ts",
   "files": [
     "dist",

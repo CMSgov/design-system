@@ -154,7 +154,7 @@ export const Button = (props: ButtonProps) => {
 Button.defaultProps = {
   isAlternate: false,
   onDark: false,
-  type: 'button',
+  type: 'button' as const,
 };
 
 export default Button;
