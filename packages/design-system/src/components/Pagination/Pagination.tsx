@@ -247,33 +247,32 @@ function Pagination({
   const endIcon = <ArrowIcon direction="right" className="ds-c-pagination__nav--image" />;
 
   return (
-    <nav className={classes} aria-label={ariaLabel ?? t('pagination.ariaLabel')} {...rest}>
-      {currentPage === 1 ? (
-        <span
-          className="ds-c-pagination__nav ds-c-pagination__nav--disabled"
-          aria-disabled="true"
-          style={{ visibility: isNavigationHidden ? 'hidden' : 'visible' }}
-          aria-hidden={isNavigationHidden}
-        >
-          <span className="ds-c-pagination__nav--img-container ds-c-pagination__nav--img-container-previous">
-            {startIcon}
-          </span>
-          {startLabelText ?? t('pagination.startLabelText')}
+    <nav className={classes} aria-labelledby="pagination-heading" {...rest}>
+      <span aria-live="polite" role="status" className="ds-u-visibility--screen-reader">
+        <h2 id="pagination-heading">
+          {t('pagination.ariaLabel')} -{' '}
+          {t('pagination.pageXOfY', {
+            number: `${currentPage}`,
+            total: `${totalPages}`,
+          })}
+        </h2>
+      </span>
+
+      <Button
+        variation="ghost"
+        href={renderHref(currentPage - 1)}
+        onClick={pageChange(currentPage - 1)}
+        aria-label={startAriaLabel ?? t('pagination.startAriaLabel')}
+        className="ds-c-pagination__nav"
+        disabled={currentPage === 1}
+        style={{ visibility: currentPage === 1 && isNavigationHidden ? 'hidden' : 'visible' }}
+        aria-hidden={currentPage === 1 ? isNavigationHidden : false}
+      >
+        <span className="ds-c-pagination__nav--img-container ds-c-pagination__nav--img-container-previous">
+          {startIcon}
         </span>
-      ) : (
-        <Button
-          variation="ghost"
-          href={renderHref(currentPage - 1)}
-          onClick={pageChange(currentPage - 1)}
-          aria-label={startAriaLabel ?? t('pagination.startAriaLabel')}
-          className="ds-c-pagination__nav"
-        >
-          <span className="ds-c-pagination__nav--img-container ds-c-pagination__nav--img-container-previous">
-            {startIcon}
-          </span>
-          {startLabelText ?? t('pagination.startLabelText')}
-        </Button>
-      )}
+        {startLabelText ?? t('pagination.startLabelText')}
+      </Button>
 
       {isMobile || compact ? (
         <span
@@ -286,35 +285,26 @@ function Pagination({
           }}
         />
       ) : (
-        <ul>{pages}</ul>
+        <ul role="list">{pages}</ul>
       )}
 
-      {currentPage === totalPages ? (
-        <span
-          className="ds-c-pagination__nav ds-c-pagination__nav--disabled"
-          style={{ visibility: isNavigationHidden ? 'hidden' : 'visible' }}
-          aria-hidden={isNavigationHidden}
-          aria-disabled="true"
-        >
-          {endLabelText ?? t('pagination.endLabelText')}
-          <span className="ds-c-pagination__nav--img-container ds-c-pagination__nav--img-container-next">
-            {endIcon}
-          </span>
+      <Button
+        variation="ghost"
+        href={renderHref(currentPage + 1)}
+        onClick={pageChange(currentPage + 1)}
+        aria-label={endAriaLabel ?? t('pagination.endAriaLabel')}
+        className="ds-c-pagination__nav"
+        disabled={currentPage === totalPages}
+        style={{
+          visibility: currentPage === totalPages && isNavigationHidden ? 'hidden' : 'visible',
+        }}
+        aria-hidden={currentPage === totalPages ? isNavigationHidden : false}
+      >
+        {endLabelText ?? t('pagination.endLabelText')}
+        <span className="ds-c-pagination__nav--img-container ds-c-pagination__nav--img-container-next">
+          {endIcon}
         </span>
-      ) : (
-        <Button
-          variation="ghost"
-          href={renderHref(currentPage + 1)}
-          onClick={pageChange(currentPage + 1)}
-          aria-label={endAriaLabel ?? t('pagination.endAriaLabel')}
-          className="ds-c-pagination__nav"
-        >
-          {endLabelText ?? t('pagination.endLabelText')}
-          <span className="ds-c-pagination__nav--img-container ds-c-pagination__nav--img-container-next">
-            {endIcon}
-          </span>
-        </Button>
-      )}
+      </Button>
     </nav>
   );
 }

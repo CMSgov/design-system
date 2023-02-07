@@ -1,11 +1,17 @@
 @use '../layout' as *;
 
+// 🐸 ADDRESS DISABLED STYLES
+// CHECK DIFFERENT PSEUDO STATES TO MAKE SURE COLORS MATCH
+// CHECK MOBILE
+// RUN VIS REGRESSION TESTS
+
 .ds-c-pagination {
   align-items: flex-end;
   display: flex;
   justify-content: space-between;
   ul {
     display: inline;
+    list-style: none;
     margin: 0;
     padding: 0;
 
@@ -17,7 +23,6 @@
   }
   li {
     display: inline-block;
-    list-style: none;
   }
   .ds-c-button {
     color: var(--pagination-link__color);
@@ -89,7 +94,7 @@
       border: 0;
       padding: $spacer-half $spacer-2;
 
-      &:not(.ds-c-pagination__nav--disabled) {
+      &:not([aria-disabled='true']) {
         color: LinkText;
         text-decoration: underline;
         text-decoration-thickness: 3px;
@@ -110,7 +115,7 @@
       }
     }
   }
-  .ds-c-pagination__nav--disabled {
+  [aria-disabled='true'] {
     border: 1px solid transparent;
     color: var(--pagination-link__color--disabled);
     line-height: 1.3;

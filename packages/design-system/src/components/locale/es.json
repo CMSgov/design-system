@@ -75,7 +75,7 @@
     "clearAllText": "Borrar todo"
   },
   "pagination": {
-    "ariaLabel": "Paginación",
+    "ariaLabel": "Resultados de paginación",
     "pageXOfY": "Página {{number}} de {{total}}",
     "startLabelText": "Anterior",
     "startAriaLabel": "Página anterior",
