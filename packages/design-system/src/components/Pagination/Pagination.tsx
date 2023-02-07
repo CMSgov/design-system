@@ -250,7 +250,7 @@ function Pagination({
     <nav className={classes} aria-labelledby="pagination-heading" {...rest}>
       <span aria-live="polite" role="status" className="ds-u-visibility--screen-reader">
         <h2 id="pagination-heading">
-          {t('pagination.ariaLabel')} -{' '}
+          {ariaLabel ?? t('pagination.ariaLabel')} -{' '}
           {t('pagination.pageXOfY', {
             number: `${currentPage}`,
             total: `${totalPages}`,
