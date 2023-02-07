@@ -9,12 +9,12 @@
       href="https://design.cms.gov/cdn/design-system/6.0.0/css/core-theme.css"
     />
     <link rel="stylesheet" href="style.css" />
-    <script src="dist/js/preact.min.umd.js"></script>
   </head>
   <body class="ds-base">
     <header class="ds-base--inverse ds-u-padding-y--3">
       <div class="ds-l-container">
         <span class="ds-h3">ExampleWebsite.gov</span>
+        <ds-badge variation="info">Hello world</ds-badge>
       </div>
     </header>
 
@@ -22,26 +22,16 @@
       <div class="ds-u-measure--base">
         <h1 class="ds-h1">CDN Example</h1>
         <p>
-          This is an example showing how to use the CDN. Some elements are simple and can be easily
-          created by applying a CSS class from the Design System. Some components are more complex
-          or are interactive. Our React-based component library is here for those more complex
-          cases.
+          This is an example showing how to use the CDN and our library of interactive web
+          components.
         </p>
 
-        <ds-alert variation="error" heading="WHOA!!!!!">
+        <ds-alert variation="error" heading="WHOA!!!!!" class-name="ds-u-margin-y--2">
           <span>Weeeeeee!!!</span>
         </ds-alert>
-
-        <form>
-          <ds-badge variation="info">Hello world</ds-badge>
-
-          <div id="month-picker"></div>
-
-          <button type="submit" class="ds-c-button ds-c-button--primary">Submit</button>
-        </form>
       </div>
     </div>
 
-    <script src="dist/js/bundle.js"></script>
+    <script src="dist/js/web-components.js"></script>
   </body>
 </html>

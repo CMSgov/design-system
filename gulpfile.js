@@ -224,26 +224,19 @@ const compileTypescriptDefs = (cb) => {
 compileTypescriptDefs.displayName = '⛓  generating typescript definition files';
 
 /*
- * bundle javascript for CDN
+ * Bundle javascript for CDN
  */
-const bundleJs = (cb) => {
-  const entry = path.resolve(distPath, 'esnext', 'web-components', 'index.js');
+const bundleJs = (options, cb) => {
   gulp
-    .src(entry)
+    .src(options.entryPath)
     .pipe(
       webpack({
         output: {
-          filename: 'bundle.js',
+          filename: options.bundleName,
           // Expose all the index file's exports as a "DesignSystem" global object
           library: 'DesignSystem',
         },
         mode: process.env.NODE_ENV || 'production',
-        // Don't bundle preact because our customers need to interact with it directly
-        // in order to use our components, and we don't expose it in our code. They
-        // should instead load the preact umd module before loading our bundle.
-        // externals: {
-        //   preact: 'preact',
-        // },
         plugins: [
           new ProvidePlugin({
             h: ['preact', 'h'],
@@ -258,12 +251,42 @@ const bundleJs = (cb) => {
             'react/jsx-runtime': 'preact/jsx-runtime',
           },
         },
+        ...(options.webpackConfig ?? {}),
       })
     )
     .pipe(gulp.dest(`${distPath}/js`))
     .on('end', cb);
 };
-bundleJs.displayName = '💼 bundling cmsds for cdn with webpack';
+
+const bundlePreactComponents = (cb) => {
+  bundleJs(
+    {
+      entryPath: path.resolve(distPath, 'esnext', 'index.esm.js'),
+      bundleName: 'preact-components.js',
+      webpackConfig: {
+        // Don't bundle preact because our customers need to interact with it directly
+        // in order to use our components, and we don't expose it in our code. They
+        // should instead load the preact umd module before loading our bundle.
+        externals: {
+          preact: 'preact',
+        },
+      },
+    },
+    cb
+  );
+};
+bundlePreactComponents.displayName = '💼 bundling Preact components for cdn with webpack';
+
+const bundleWebComponents = (cb) => {
+  bundleJs(
+    {
+      entryPath: path.resolve(distPath, 'esnext', 'web-components', 'index.js'),
+      bundleName: 'web-components.js',
+    },
+    cb
+  );
+};
+bundleWebComponents.displayName = '💼 bundling web components for cdn with webpack';
 
 /*
  * copies react bundles currently installed into cdn dist folder
@@ -305,7 +328,7 @@ exports.build = gulp.series(
   cleanDist,
   gulp.parallel(copyThemes, copyImages, copyFonts, copyJSON),
   gulp.parallel(compileSass, compileJs, compileEsmJs, compileTypescriptDefs),
-  gulp.parallel(bundleJs, copyReactToDist)
+  gulp.series(bundlePreactComponents, bundleWebComponents, copyReactToDist)
 );
 
 /*
