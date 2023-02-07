@@ -227,7 +227,7 @@ compileTypescriptDefs.displayName = '⛓  generating typescript definition files
  * bundle javascript for CDN
  */
 const bundleJs = (cb) => {
-  const entry = path.resolve(distPath, 'esnext', 'index.esm.js');
+  const entry = path.resolve(distPath, 'esnext', 'web-components', 'index.js');
   gulp
     .src(entry)
     .pipe(
@@ -241,9 +241,9 @@ const bundleJs = (cb) => {
         // Don't bundle preact because our customers need to interact with it directly
         // in order to use our components, and we don't expose it in our code. They
         // should instead load the preact umd module before loading our bundle.
-        externals: {
-          preact: 'preact',
-        },
+        // externals: {
+        //   preact: 'preact',
+        // },
         plugins: [
           new ProvidePlugin({
             h: ['preact', 'h'],

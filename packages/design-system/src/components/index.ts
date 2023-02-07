@@ -28,9 +28,6 @@ export * from './UsaBanner';
 export * from './VerticalNav';
 export * from './Icons';
 
-import './web-components/ds-alert';
-import './web-components/ds-badge';
-
 export * from './analytics';
 export * from './flags';
 export * from './i18n';
