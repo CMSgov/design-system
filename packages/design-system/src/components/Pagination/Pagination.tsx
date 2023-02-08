@@ -7,6 +7,7 @@ import classNames from 'classnames';
 import { ArrowIcon } from '../Icons';
 import { t } from '../i18n';
 
+export type PaginationHeadingLevel = '1' | '2' | '3' | '4' | '5' | '6';
 export interface PaginationProps {
   /**
    * Defines `aria-label` on wrapping Pagination element. Since this exists on a `<nav>` element, the word "navigation" should be omitted from this label. Optional.
@@ -24,6 +25,10 @@ export interface PaginationProps {
    * Defines active page in Pagination.
    */
   currentPage: number;
+  /**
+   * Heading type to override default `<h2>`.
+   */
+  headingLevel?: PaginationHeadingLevel;
   /**
    * Determines if navigation is hidden when current page is the first or last of Pagination page set. Optional.
    */
@@ -130,6 +135,7 @@ function Pagination({
   currentPage,
   renderHref,
   onPageChange,
+  headingLevel,
   isNavigationHidden,
   startLabelText,
   startAriaLabel,
@@ -246,16 +252,21 @@ function Pagination({
 
   const endIcon = <ArrowIcon direction="right" className="ds-c-pagination__nav--image" />;
 
+  const Heading = `h${headingLevel}` as const;
+  const headingElement = (
+    <Heading id="pagination-heading">
+      {ariaLabel ?? t('pagination.ariaLabel')} -{' '}
+      {t('pagination.pageXOfY', {
+        number: `${currentPage}`,
+        total: `${totalPages}`,
+      })}
+    </Heading>
+  );
+
   return (
     <nav className={classes} aria-labelledby="pagination-heading" {...rest}>
       <span aria-live="polite" role="status" className="ds-u-visibility--screen-reader">
-        <h2 id="pagination-heading">
-          {ariaLabel ?? t('pagination.ariaLabel')} -{' '}
-          {t('pagination.pageXOfY', {
-            number: `${currentPage}`,
-            total: `${totalPages}`,
-          })}
-        </h2>
+        {headingElement}
       </span>
 
       <Button
@@ -311,6 +322,7 @@ function Pagination({
 
 Pagination.defaultProps = {
   compact: false,
+  headingLevel: '2',
   isNavigationHidden: false,
 };
 
