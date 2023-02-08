@@ -31,12 +31,12 @@ if (process.argv.length == 2) {
 /**
  * Grabs latest tag from each theme and returns an array of `theme: version` items.
  */
-export const getLatestVersions = () => {
-  const versions: { [key: string]: string } = {};
-  Object.entries(themes).forEach((theme) => {
+export const getLatestVersions = (t: typeof themes) => {
+  const versions: string[][] = [];
+  Object.entries(t).forEach((theme) => {
     const pkgn = theme[1].packageName;
     const vers = execSync(`git tag --sort=taggerdate | grep "${pkgn}" | tail -1`).toString().trim();
-    versions[theme[0]] = vers.replace(/^@cmsgov\/.*@(.*)$/, '$1');
+    versions.push([pkgn, vers.replace(/^@cmsgov\/.*@(.*)$/, '$1')]);
   });
   return versions;
 };
@@ -122,6 +122,13 @@ export const getOrganizedHistory = () => {
 //   `
 // }
 
+// const latestVersions = getLatestVersions(themes)
+// const latestTag = `@cmsgov/${latestVersions[0][0]}@${latestVersions[0][1]}`
+// const latestTagHash = execSync(`git rev-list -n 1 ${latestTag}`).toString().trim()
+// const latestTagHashDate = execSync(`git show ${latestTagHash} --format=%cs --no-notes -s`).toString().trim()
+
+// leave a comment on pr's that don't have labels but are going to be in the next release
+
 console.log(
   `\nGenerating release notes for diff between ${c.green(compTarget)} and ${c.greenBright(
     currTarget
@@ -148,6 +155,9 @@ console.log(c.black.bgCyanBright(' Ticketed '));
 console.table(ticketedWork, ['ticket', 'title', 'author', 'ghpr', 'labels']);
 console.log('\n' + c.black.bgYellow(' Un-Ticketed '));
 console.table(unticketedWork, ['author', 'title', 'ghpr', 'labels']);
+
+// ------
+
 // ticketedWork.forEach((pr) => {
 //   console.log(`${pr.hash} ${pr.ticket} .. ${pr.labels}`);
 // });
