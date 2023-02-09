@@ -27,11 +27,6 @@ export const themeColors: ColorTokens = {
   'border-dark':                color['lapis-800'],
   'border-inverse':             color['white-solid'],
   //
-  'coolblue':                   color['sapphire-600'],
-  'coolblue-light':             color['sapphire-500'],
-  'coolblue-lighter':           color['sapphire-200'],
-  'coolblue-lightest':          color['sapphire-50'],
-  //
   'error':                      color['rose-500'],
   'error-dark':                 color['rose-600'],
   'error-darker':               color['rose-700'],
@@ -50,14 +45,6 @@ export const themeColors: ColorTokens = {
   'focus-shadow-link':          color['granite-900'],
   'focus-shadow-link-inverse':  color['goldenrod-800'],
   //
-  'gold':                       color['goldenrod-500'],
-  'gold-dark':                  color['goldenrod-600'],
-  'gold-darker':                color['goldenrod-700'],
-  'gold-darkest':               color['goldenrod-800'],
-  'gold-light':                 color['goldenrod-400'],
-  'gold-lighter':               color['goldenrod-200'],
-  'gold-lightest':              color['goldenrod-50'],
-  //
   'gray':                       color['granite-700'],
   'gray-cool-light':            color['ocean-50'],
   'gray-dark':                  color['granite-800'],
@@ -67,14 +54,6 @@ export const themeColors: ColorTokens = {
   'gray-medium':                color['granite-600'],
   'gray-warm-dark':             color['granite-800'],
   'gray-warm-light':            color['granite-50'],
-  //
-  'green':                      color['spring-500'],
-  'green-dark':                 color['spring-600'],
-  'green-darker':               color['spring-700'],
-  'green-darkest':              color['spring-800'],
-  'green-light':                color['spring-700'],
-  'green-lighter':              color['spring-200'],
-  'green-lightest':             color['spring-50'],
   //
   'muted':                      color['granite-700'],
   'muted-inverse':              color['lapis-50'],
@@ -88,14 +67,6 @@ export const themeColors: ColorTokens = {
   'primary-alt-darkest':        color['darksky-800'],
   'primary-alt-light':          color['darksky-300'],
   'primary-alt-lightest':       color['darksky-50'],
-  //
-  'red':                        color['rose-500'],
-  'red-dark':                   color['rose-600'],
-  'red-darker':                 color['rose-700'],
-  'red-darkest':                color['rose-800'],
-  'red-light':                  color['rose-200'],
-  'red-lighter':                color['rose-100'],
-  'red-lightest':               color['rose-50'],
   //
   'secondary':                  color['darksky-500'],
   'secondary-dark':             color['darksky-600'],
