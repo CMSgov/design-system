@@ -75,7 +75,7 @@
     "clearAllText": "Clear all"
   },
   "pagination": {
-    "ariaLabel": "Pagination",
+    "ariaLabel": "Pagination results",
     "pageXOfY": "Page {{number}} of {{total}}",
     "startLabelText": "Previous",
     "startAriaLabel": "Previous Page",

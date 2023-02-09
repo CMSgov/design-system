@@ -4,7 +4,7 @@ exports[`Pagination pagination slot behavior less than 7 pages should show all p
 Array [
   <li>
     <span
-      aria-current="true"
+      aria-current="page"
       class="ds-c-button ds-c-button--ghost ds-c-pagination__current-page"
     >
       1
@@ -52,13 +52,26 @@ Array [
 exports[`Pagination should render component 1`] = `
 <DocumentFragment>
   <nav
-    aria-label="Pagination"
+    aria-labelledby="pagination-heading"
     class="ds-c-pagination"
   >
+    <span
+      aria-live="polite"
+      class="ds-u-visibility--screen-reader"
+      role="status"
+    >
+      <h2
+        id="pagination-heading"
+      >
+        Pagination results - Page 2 of 3
+      </h2>
+    </span>
     <a
+      aria-hidden="false"
       aria-label="Previous Page"
       class="ds-c-button ds-c-button--ghost ds-c-pagination__nav"
       href="#1"
+      style="visibility: visible;"
     >
       <span
         class="ds-c-pagination__nav--img-container ds-c-pagination__nav--img-container-previous"
@@ -106,7 +119,7 @@ exports[`Pagination should render component 1`] = `
       </li>
       <li>
         <span
-          aria-current="true"
+          aria-current="page"
           class="ds-c-button ds-c-button--ghost ds-c-pagination__current-page"
         >
           2
@@ -123,9 +136,11 @@ exports[`Pagination should render component 1`] = `
       </li>
     </ul>
     <a
+      aria-hidden="false"
       aria-label="Next Page"
       class="ds-c-button ds-c-button--ghost ds-c-pagination__nav"
       href="#3"
+      style="visibility: visible;"
     >
       Next
       <span
@@ -157,10 +172,23 @@ exports[`Pagination with compact prop enabled should render compact variant 1`] 
     aria-labelledby="pagination-heading"
     class="ds-c-pagination ds-c-pagination--compact"
   >
+    <span
+      aria-live="polite"
+      class="ds-u-visibility--screen-reader"
+      role="status"
+    >
+      <h2
+        id="pagination-heading"
+      >
+        Pagination results - Page 2 of 3
+      </h2>
+    </span>
     <a
+      aria-hidden="false"
       aria-label="Previous Page"
       class="ds-c-button ds-c-button--ghost ds-c-pagination__nav"
       href="#1"
+      style="visibility: visible;"
     >
       <span
         class="ds-c-pagination__nav--img-container ds-c-pagination__nav--img-container-previous"
@@ -198,9 +226,11 @@ exports[`Pagination with compact prop enabled should render compact variant 1`] 
       role="list"
     />
     <a
+      aria-hidden="false"
       aria-label="Next Page"
       class="ds-c-button ds-c-button--ghost ds-c-pagination__nav"
       href="#3"
+      style="visibility: visible;"
     >
       Next
       <span

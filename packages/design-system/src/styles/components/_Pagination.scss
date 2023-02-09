@@ -21,7 +21,6 @@
   }
   li {
     display: inline-block;
-    list-style: none;
   }
   .ds-c-button {
     color: var(--pagination-link__color);
@@ -96,7 +95,7 @@
       border: 0;
       padding: $spacer-half $spacer-2;
 
-      &:not(.ds-c-pagination__nav--disabled) {
+      &:not([aria-disabled='true']) {
         color: LinkText;
         text-decoration: underline;
         text-decoration-thickness: 3px;
@@ -117,7 +116,7 @@
       }
     }
   }
-  .ds-c-pagination__nav--disabled {
+  [aria-disabled='true'] {
     border: 1px solid transparent;
     color: var(--pagination-link__color--disabled);
     line-height: 1.3;
