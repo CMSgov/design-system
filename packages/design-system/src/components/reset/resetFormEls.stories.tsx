@@ -25,9 +25,6 @@ export const FormElements = () => {
               <br />
               <label htmlFor="disabled-text-input">Disabled text input field</label>
               <input type="text" name="text-inputs" id="disabled-text-input" disabled />
-              {/* <br />
-              <label htmlFor="readonly-text-input">Readonly text input field</label>
-              <input type="text" name="text-inputs" id="readonly-text-input" readOnly /> */}
             </fieldset>
           </form>
         </div>
@@ -47,9 +44,6 @@ export const FormElements = () => {
                 rows={3}
                 disabled
               ></textarea>
-              {/* <br />
-              <label htmlFor="readonly-text-area-input">Readonly multi-line input</label>
-              <textarea name="text-area-inputs" id="readonly-text-area-input" rows={3}></textarea> */}
             </fieldset>
           </form>
         </div>

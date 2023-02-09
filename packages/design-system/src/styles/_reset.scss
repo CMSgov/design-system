@@ -203,7 +203,6 @@ input[type='radio'] + label {
   margin-inline-start: 0.5em;
 }
 
-// Readonly examples don't have styles
 input {
   &:not([type='checkbox'], [type='radio']) {
     border: var(--text-input__border-width) solid currentColor;
