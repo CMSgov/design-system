@@ -83,12 +83,20 @@ These scripts can all be run from the root level of the repo:
 
 We use [Playwright](https://playwright.dev/) to test our components for visual regressions. It uses our existing Storybook stories, taking screenshots of them within a docker container and comparing those screenshots with ones previously taken and committed to version control. The tests assume that Storybook has been built to `./storybook-static` using `yarn build:storybook`.
 
-Running the browser tests locally requires that you be signed into Docker.
+Running the browser tests locally requires that you be signed into Docker or have playwright installed locally.
+
+#### If using Docker:
 
 1. Open the Docker app, and make sure you're signed in (Docker Desktop requires a license now)
 2. Run `yarn test:browser` to begin comparing component images
    1. If differences are detected and unexpected, evaluate your changes - we only want to update and commit references when we expect the visual changes detected
    2. If differences are detected and expected, run `yarn test:browser:update`
+
+#### If running Locally:
+
+1. If you have run `npx playwright install` and installed the playwright dependencies locally you can run the tests using their yarn commands directly.
+2. For example, to run the CMSDS VRT Tests for inteaction states: `yarn playwright test --config tests/browser/interaction.config.ts`
+3. The `-u` flag can be added to the `yarn playwright test` command to update snapshots.
 
 ## Design Assets
 
