@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default {
-  title: 'Reset / Typography',
+  title: 'Reset/Typography',
 };
 
 export const Typography = () => {

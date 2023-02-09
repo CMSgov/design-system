@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default {
-  title: 'Reset / Form Elements',
+  title: 'Reset/Form Elements',
 };
 
 export const FormElements = () => {

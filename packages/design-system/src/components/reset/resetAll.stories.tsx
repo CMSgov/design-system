@@ -6,7 +6,7 @@ import { DisclosureElements } from './resetDisclosureEls.stories';
 import { Tables } from './resetTables.stories';
 
 export default {
-  title: 'Reset / Overview',
+  title: 'Reset/Overview',
 };
 
 export const Overview = () => {

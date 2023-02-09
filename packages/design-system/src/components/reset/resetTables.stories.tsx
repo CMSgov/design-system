@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default {
-  title: 'Reset / Tables',
+  title: 'Reset/Tables',
 };
 
 export const Tables = () => {

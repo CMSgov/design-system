@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default {
-  title: 'Reset / Disclosure Elements',
+  title: 'Reset/Disclosure Elements',
 };
 
 export const DisclosureElements = () => {

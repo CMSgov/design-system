@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default {
-  title: 'Reset / Lists',
+  title: 'Reset/Lists',
 };
 
 export const Lists = () => {
