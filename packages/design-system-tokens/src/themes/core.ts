@@ -153,8 +153,6 @@ const coreTheme: ThemeTokens = {
   animation,
   color: themeColors,
   font: {
-    body: font['family-open-sans'],
-    heading: font['family-open-sans'],
     sans: font['family-open-sans'],
     serif: font['family-bitter'],
     ...font,

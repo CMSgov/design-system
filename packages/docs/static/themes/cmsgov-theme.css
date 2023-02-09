@@ -1,4 +1,4 @@
-/* Last modified on Mon Jan 30 15:36:21 PST 2023 */
+/* Last modified on Thu Feb  9 11:11:23 EST 2023 */
 :root, ::before, ::after, ::backdrop {
 --animation-ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
 --animation-speed-base: 1;
@@ -512,7 +512,7 @@
 --typography-heading-lg__font-weight: 700;
 --typography-heading-md__font-weight: 700;
 --typography-heading-sm__font-weight: 400;
---typography-body__font-family: inherit;
+--typography-body__font-family: 'Open Sans', Helvetica, sans-serif;
 --usa-banner__background-color: #f2f2f2;
 --usa-banner__color: #000000;
 --usa-banner-close__background-color: #a6a6a6;

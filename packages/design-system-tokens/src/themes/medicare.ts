@@ -178,8 +178,6 @@ const fonts: FontTokens = {
   'size-3xl': '40px',
   'size-4xl': '44px',
   'size-5xl': '50px',
-  body: font['family-rubik'],
-  heading: font['family-montserrat'],
   sans: font['family-rubik'],
   montserrat: font['family-montserrat'],
   rubik: font['family-rubik'],
