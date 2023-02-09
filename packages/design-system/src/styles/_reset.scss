@@ -156,31 +156,23 @@ button,
 textarea,
 select {
   font: inherit;
+
+  &:not(button) {
+    display: block;
+    margin-block: 0.25em 0;
+    width: 100%;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 }
 
-fieldset {
-  border: 0;
-  margin: 0;
-  padding: 0;
-}
-
-// ❓ Not seeing legends used in DS to draw style conclusions from;
-// assuming they should be styled like label els, but not sure
-legend {
-  display: block;
-  font-weight: var(--font-weight-bold);
-  margin-block: 1.5em 0;
-  padding: 0;
-}
-
-label {
-  display: block;
-  font-weight: var(--font-weight-bold);
-  margin-block: 1.5em 0;
-
-  // I see max-width defined on label and I wonder if we should consider removing an opinionated width on individual elements?
-  // I'm thinking devs should lean on layout grid to define component widths. Thoughts?
-  // max-width: var(--form__max-width);
+input[type='checkbox'],
+input[type='radio'] {
+  accent-color: var(--choice__background-color--checked);
+  display: inline;
+  width: auto;
 }
 
 input[type='checkbox'] + label,
@@ -190,81 +182,20 @@ input[type='radio'] + label {
   margin-inline-start: 0.5em;
 }
 
-input {
-  &:not([type='checkbox'], [type='radio']) {
-    border: var(--text-input__border-width) solid currentColor;
-    border-radius: var(--text-input__border-radius);
-    display: block;
-    line-height: var(--text-input__line-height);
-    margin-block: 0.25em 0;
-    padding: var(--text-input__padding);
-    width: 100%;
-  }
-
-  &[type='checkbox'],
-  &[type='radio'] {
-    accent-color: var(--choice__background-color--checked);
-    height: var(--choice__size);
-    vertical-align: middle;
-    width: var(--choice__size);
-  }
-
-  &:disabled {
-    background-color: var(--text-input__background-color--disabled);
-    border-color: var(--text-input__border-color--disabled);
-    cursor: not-allowed;
-  }
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
 }
 
-textarea {
-  border: var(--text-input__border-width) solid currentColor;
-  border-radius: var(--text-input__border-radius);
+legend,
+label {
   display: block;
-  line-height: var(--text-input__line-height);
-  margin-block: 0.25em 0;
-  padding: var(--text-input__padding);
-  width: 100%;
-
-  &:disabled {
-    background-color: var(--text-input__background-color--disabled);
-    border-color: var(--text-input__border-color--disabled);
-    cursor: not-allowed;
-  }
-}
-
-select {
-  appearance: none;
-  background-color: inherit;
-  border: var(--text-input__border-width) solid currentColor;
-  border-radius: var(--text-input__border-radius);
-  display: block;
-  line-height: var(--text-input__line-height);
-  margin-block: 0.25em 0;
-  padding: var(--text-input__padding);
-  width: 100%;
-
-  &:disabled {
-    background-color: var(--text-input__background-color--disabled);
-    border-color: var(--text-input__border-color--disabled);
-    cursor: not-allowed;
-  }
+  margin-block: 1.5em 0;
 }
 
 button {
-  background-color: var(--button__background-color);
-  border: var(--button__border-width) solid var(--button__border-color);
-  border-radius: var(--button__border-radius);
-  color: var(--button__color);
   cursor: pointer;
-  font-weight: var(--button__font-weight);
-  padding: 0.5em 1.5em;
-
-  &:disabled {
-    background-color: var(--button__background-color--disabled);
-    border-color: var(--button__border-color--disabled);
-    color: var(--button__color--disabled);
-    cursor: not-allowed;
-  }
 }
 
 /* Images */
