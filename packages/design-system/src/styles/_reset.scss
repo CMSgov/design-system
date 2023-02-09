@@ -124,28 +124,29 @@ hr {
 /* Lists */
 
 // Relying on `flex` to set `gap` spacing size on li elements
-// `gap` ensures even spacing and doesn't interfere with layout if list given a `row` direction
+// `gap` ensures even spacing and doesn't interfere with layout
+// if list given a `row` direction
 ol,
 ul {
-  // display: flex;
-  // flex-direction: column;
-  // gap: .5em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
   margin-block: 1em 0;
   padding-inline-start: 2em;
 
-  // Tying unstyled list styles to a required a11y attribute ensures proper markup structure
+  // Tying unstyled list styles to a required a11y attribute
+  // ensures proper markup structure
   &[role='list'] {
     list-style: none;
     padding: 0;
   }
 }
 
-// 📢 We don't have examples of nested lists in the design system
-// ❓ How do we handle li `::mark` and nested padding for this pattern?
-// If we choose to support nesting lists, need to remove `gap` solution in favor of li `margin-block-start`
-// li elements are `display: list-item` and cannot receive `flex` or `grid` display without removing `::mark`
 li {
-  margin-block: 0.5em 0;
+  > ul,
+  > ol {
+    margin-block: 0.5em 0;
+  }
 }
 
 /* Form elements */
