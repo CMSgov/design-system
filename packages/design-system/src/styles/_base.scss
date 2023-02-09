@@ -120,8 +120,6 @@ $breakpoints: (
   }
 }
 
-// ❓ if we style the <a> tag, what's the point of this link class?
-// a,
 .ds-c-link {
   @extend %link;
 }
