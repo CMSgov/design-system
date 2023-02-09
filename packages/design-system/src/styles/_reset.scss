@@ -31,7 +31,7 @@ html:focus-within {
 body {
   background-color: var(--color-background);
   color: var(--color-base);
-  font-family: var(--font-body);
+  font-family: var(--typography-body__font-family);
   font-size: var(--font-size-base);
 
   // 👀 CMS-WDS/scout uses these reset styles
