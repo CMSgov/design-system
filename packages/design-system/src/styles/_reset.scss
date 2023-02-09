@@ -39,13 +39,10 @@ body {
   text-rendering: optimizeSpeed;
 }
 
-// 👀 CMS-WDS/sep-screener uses this reset style
-// I've seen similar styles in other repos and I'm curious what it's solving
-#main[tabindex='-1']:focus,
-h1[tabindex='-1']:focus {
-  outline: 0;
-}
-*[tabindex='-1']:focus {
+// This removes focus rings for non-interactive elements,
+// i.e. when activating a skip link will then send focus
+// to a main or a heading element.
+[tabindex='-1']:focus {
   outline: 0;
 }
 
