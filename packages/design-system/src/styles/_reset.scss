@@ -33,10 +33,6 @@ body {
   color: var(--color-base);
   font-family: var(--typography-body__font-family);
   font-size: var(--font-size-base);
-
-  // 👀 CMS-WDS/scout uses these reset styles
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   line-height: var(--font-line-height-base);
   margin: 0;
   min-height: 100vh;
