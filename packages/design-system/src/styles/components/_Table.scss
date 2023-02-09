@@ -83,19 +83,6 @@
   text-align: left;
 }
 
-// ❓ Do we need these text-align classes when we have utils that do the same thing?
-.ds-c-table__cell--align-center {
-  text-align: center;
-}
-
-.ds-c-table__cell--align-right {
-  text-align: right;
-}
-
-.ds-c-table__cell--align-left {
-  text-align: left;
-}
-
 @mixin stacked-table-styles {
   thead {
     display: none;
@@ -131,7 +118,7 @@
 
   th[data-title],
   td[data-title] {
-    // Add column heading via psuedo element
+    // Add column heading via pseudo element
     &::before {
       content: attr(data-title);
       display: block;
