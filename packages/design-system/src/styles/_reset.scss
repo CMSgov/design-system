@@ -50,9 +50,6 @@ h1[tabindex='-1']:focus {
 }
 
 /* Typography */
-// ❓ Do we want to enforce max-width rules on type els?
-// I personally feel like doing this would result in more support work for us
-// but it could result in better enforcement of this rule.
 
 h1,
 h2,
@@ -70,12 +67,8 @@ h6 {
 }
 
 p {
-  // ❓margin applied to top of text, informed by Chrome UA style - do we want to codify it?
   margin-block: 1em 0;
 
-  // ❓taken from ./_base.scss ln 329 - do we want to add this to the reset?
-  // CMS-WDS/application @extends this style for their reset:
-  // https://github.cms.gov/CMS-WDS/application/blob/6de8f3ac19e86b7653f0102dcfff7a79241dcb33/app/styles/base/index.scss#L14
   &:first-child {
     margin-block-start: 0;
   }
@@ -91,8 +84,6 @@ strong {
 
 a {
   color: var(--link__color);
-  // 📢 We may want to revisit tokens for `text-decoration-style`
-  // ❓Do we have an instance where the underline doesn't match the text color?
   text-decoration-color: currentColor;
   text-decoration-style: solid;
   text-decoration-thickness: var(--link__text-decoration-thickness);
@@ -124,7 +115,6 @@ a {
   }
 }
 
-// ❓ How do we want to style <hr> tags? I'm using best guess here.
 hr {
   border-block-end: 0;
   border-block-start: 1px solid currentColor;
@@ -278,9 +268,6 @@ button {
 
 /* Images */
 
-// Stories TBD
-
-// 👀 CMS-WDS/enroll uses this reset style
 figure {
   margin: 0;
 }
@@ -302,9 +289,6 @@ details {
   }
 }
 
-// TBD
-// dialog { }
-
 /* Tables */
 
 table {
@@ -312,9 +296,6 @@ table {
   border-spacing: 0;
   margin: 0;
   text-align: start;
-
-  // 👀 CMS-WDS/scout uses this reset style
-  // width: 100%;
 
   caption {
     font-weight: var(--font-weight-bold);
