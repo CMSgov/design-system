@@ -1,4 +1,3 @@
-/* Last modified on Thu Feb  9 11:11:23 EST 2023 */
 :root, ::before, ::after, ::backdrop {
 --animation-ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
 --animation-speed-base: 1;
