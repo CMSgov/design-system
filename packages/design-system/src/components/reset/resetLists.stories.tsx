@@ -30,11 +30,11 @@ export const Lists = () => {
             <li>List Item 2</li>
             <li>
               List Item 3
-              <ol>
+              <ol type="a">
                 <li>List Item 3.1</li>
                 <li>
                   List Item 3.2
-                  <ol>
+                  <ol type="i">
                     <li>List Item 3.2.1</li>
                     <li>List Item 3.2.2</li>
                   </ol>
