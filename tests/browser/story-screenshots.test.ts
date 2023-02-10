@@ -27,8 +27,15 @@ Object.values(stories).forEach((story) => {
     Object.keys(themes).forEach((theme) => {
       if (themes[theme].incomplete) return;
 
+      if (theme !== 'core' && story.importPath.includes(themes[theme].packageName)) return;
+
       // Don't take screenshots of theme-specific components outside of their themes
-      if (isSmokeTest && !story.importPath.includes(themes[theme].packageName)) return;
+      // during smoke tests.
+      if (
+        isSmokeTest &&
+        !(theme === 'core' || !story.importPath.includes(themes[theme].packageName))
+      )
+        return;
 
       test(`with ${theme} theme`, async ({ page }) => {
         await page.goto(`${storyUrl}&globals=theme:${theme}`);
