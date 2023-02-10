@@ -2,7 +2,6 @@ import React from 'react';
 import { Typography } from './resetTypography.stories';
 import { Lists } from './resetLists.stories';
 import { FormElements } from './resetFormEls.stories';
-import { DisclosureElements } from './resetDisclosureEls.stories';
 import { Tables } from './resetTables.stories';
 
 export default {
@@ -20,7 +19,6 @@ export const Overview = () => {
       <Typography />
       <Lists />
       <FormElements />
-      <DisclosureElements />
       <Tables />
     </>
   );
