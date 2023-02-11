@@ -45,11 +45,13 @@ export const themeColors: ColorTokens = {
   'focus-shadow-link':          color['granite-900'],
   'focus-shadow-link-inverse':  color['goldenrod-800'],
   //
-  'gray':                       color['granite-700'],
-  'gray-dark':                  color['granite-800'],
-  'gray-light':                 color['granite-300'],
-  'gray-lighter':               color['granite-100'],
-  'gray-lightest':              color['granite-50'],
+  'gray-lightest':	            color['granite-50'],
+  'gray-lighter':	              color['granite-100'],
+  'gray-light':	                color['granite-300'],
+  'gray':	                      color['granite-500'],
+  'gray-dark':	                color['granite-700'],
+  'gray-darker':	              color['granite-800'],
+  'gray-darkest':	              color['granite-900'],
   //
   'green':                      color['spring-500'],
   'green-dark':                 color['spring-600'],

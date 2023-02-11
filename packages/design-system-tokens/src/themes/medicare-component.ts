@@ -135,7 +135,7 @@ export const components: AnyTokenValues = {
     '__border-color--hover':                      t.color['primary-dark'],
     '__border-color':                             t.color['primary'],
     '__color--active':                            t.color['white'],
-    '__color--disabled':                          t.color['gray-dark'],
+    '__color--disabled':                          t.color['gray-darker'],
     '__color--hover':                             t.color['white'],
     '__color':                                    t.color['white'],
   },
@@ -150,7 +150,7 @@ export const components: AnyTokenValues = {
     '__border-color--hover':                      t.color['secondary-dark'],
     '__border-color':                             t.color['secondary'],
     '__color--active':                            t.color['white'],
-    '__color--disabled':                          t.color['gray-dark'],
+    '__color--disabled':                          t.color['gray-darker'],
     '__color--hover':                             t.color['white'],
     '__color':                                    t.color['white'],
   },
@@ -253,13 +253,13 @@ export const components: AnyTokenValues = {
     '__background-color--disabled--inverse':      hexOpacity(t.color['muted-inverse'], 0.15),
     '__border-color':                             t.color['gray'],
     '__border-color--checked':                    t.color['secondary'],
-    '__border-color--disabled':                   t.color['gray-medium-light'],
+    '__border-color--disabled':                   t.color['gray'],
     '__border-color--error':                      t.color['gray'],
     '__border-color--error--inverse':             t.color['white'],
     '__border-color--inverse':                    t.color['white'],
     '__border-color--left':                       t.color['primary'],
     '__border-color--focus':                      t.color['primary-darker'],
-    '__border-color--disabled--inverse':          t.color['gray-medium-light'],
+    '__border-color--disabled--inverse':          t.color['gray'],
     '__border-radius':                            t.radius['default'],
     '__border-width':                             '2px',
     '__color--unchecked':                         t.color['white'],
@@ -288,7 +288,10 @@ export const components: AnyTokenValues = {
     '-toggle__background-color--hover':           t.color['secondary'],
     '-toggle__color--hover':                      t.color['white'],
     '-toggle__background-color--hover--inverse':  t.color['white'],
-    '-toggle__color--hover--inverse':             t.color['gray-darker'],
+    // I wonder if we can get rid of this variable and just use link-inverse__color--hover
+    // This variable is only used in a medicare style override, and it's weird. Why doesn't
+    // it just behave like a normal inverse link?
+    '-toggle__color--hover--inverse':             t.color['gray-dark'], 
   },
   
   'dropdown': {
@@ -311,7 +314,7 @@ export const components: AnyTokenValues = {
   
   'form': {
     '-label__color--inverse':                     t.color['base-inverse'],
-    '-label__color--not-error':                   t.color['gray-light'], 
+    '-label__color--not-error':                   t.color['gray'], 
     '__max-width':                                '460px',
     '__max-width--small':                         '6em',
     '__max-width--medium':                        '12em',
@@ -394,7 +397,7 @@ export const components: AnyTokenValues = {
     '__color':                                    t.color['base'],
     '__color--hover':                             t.color['primary'],
     '__color--active':                            t.color['primary-darker'],
-    '__color--disabled':                          t.color['gray-dark'],
+    '__color--disabled':                          t.color['gray-darker'],
     '__color--selected':                          t.color['primary'],
     '__border-color--disabled':                   t.color['gray-lighter'],
     '__border-color--selected':                   t.color['primary'],
@@ -407,7 +410,7 @@ export const components: AnyTokenValues = {
     '__border-width':                             '2px',
     '__border-width--error':                      '3px',
     '__border-width--success':                    '3px',
-    '__border-color':                             t.color['gray-light'],
+    '__border-color':                             t.color['gray'],
     '__border-color--disabled':                   t.color['gray-warm-dark'],
     '__border-color--error':                      t.color['error'],
     '__border-color--error--inverse':             t.color['error-light'],
@@ -420,12 +423,12 @@ export const components: AnyTokenValues = {
 
   'tooltip': {
     '__background-color':                         t.color['background'],
-    '__border-color':                             t.color['gray-dark'],
+    '__border-color':                             t.color['gray-darker'],
     '__border-color--active':                     hexOpacity(t.color['primary'], 0.25),
     '__border-color--inverse-active':             hexOpacity(t.color['white'], 0.25),
     '__border-width':                             '1px',
     '__color':                                    t.color['base'],
-    '__box-shadow-color':                         t.color['gray-light'],
+    '__box-shadow-color':                         t.color['gray'],
     '-icon__color':                               t.color['primary'],
     '-icon__color--inverse':                      t.color['white'],
     '-trigger__color':                            t.color['base'],
@@ -445,7 +448,7 @@ export const components: AnyTokenValues = {
   'usa-banner': {
     '__background-color':                         t.color['gray-lightest'],
     '__color':                                    t.color['black'],
-    '-close__background-color':                   t.color['gray-medium-light'],
+    '-close__background-color':                   t.color['gray-light'],
     '-action__color':                             t.color['primary-darker'],
     '-lock-icon__color':                          t.color['success-light'],
   },
