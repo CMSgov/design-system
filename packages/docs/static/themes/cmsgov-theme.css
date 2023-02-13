@@ -371,6 +371,7 @@
 --choice__size-radio--small: 12px;
 --choice-label__color--disabled: #5a5a5a;
 --choice-label__color--disabled--inverse: #e9ecf1;
+--day-picker-button__background-color--hover: #e7e9f5;
 --dialog__background-color: #ffffff;
 --dialog__padding: 32px;
 --dialog-overlay__background-color: #00000080;

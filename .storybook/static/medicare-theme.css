@@ -58,7 +58,7 @@
 --color-primary-darker: #0e4a41;
 --color-primary-darkest: #0a352f;
 --color-primary-light: #5b978e;
---color-primary-lightest: #b9d2ce;
+--color-primary-lightest: #e8f0ef;
 --color-primary-alt: #1e3c70;
 --color-primary-alt-dark: #1b3665;
 --color-primary-alt-darker: #152a4e;
@@ -400,6 +400,7 @@
 --choice__size-radio--small: 12px;
 --choice-label__color--disabled: #5a5a5a;
 --choice-label__color--disabled--inverse: #e9ecf1;
+--day-picker-button__background-color--hover: #e8f0ef;
 --dialog__background-color: #ffffff;
 --dialog__padding: 32px;
 --dialog-overlay__background-color: #00000080;

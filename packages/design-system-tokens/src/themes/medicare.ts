@@ -69,7 +69,7 @@ export const themeColors: ColorTokens = {
   'primary-darker':             color['teal-700'],
   'primary-darkest':            color['teal-800'],
   'primary-light':              color['teal-300'],
-  'primary-lightest':           color['teal-100'],
+  'primary-lightest':           color['teal-50'],
   // @TODO: deprecate primary-alt as secondary
   'primary-alt':                color['lapis-500'],
   'primary-alt-dark':           color['lapis-600'],

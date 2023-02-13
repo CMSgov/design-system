@@ -271,6 +271,10 @@ export const components: AnyTokenValues = {
     '-label__color--disabled':                    t.color['muted'],
     '-label__color--disabled--inverse':           t.color['muted-inverse'],
   },
+
+  'day-picker': {
+    '-button__background-color--hover':           t.color['primary-lightest'],
+  },
   
   'dialog': {
     '__background-color':                         t.color['white'],

@@ -64,6 +64,7 @@ export const themeColors: ColorTokens = {
   'muted':                      color['granite-700'],
   'muted-inverse':              color['lapis-50'],
   //
+  'primary-lightest':           color['ocean-50'],
   'primary':                    color['ocean-500'],
   'primary-darker':             color['ocean-700'],
   'primary-darkest':            color['ocean-800'],

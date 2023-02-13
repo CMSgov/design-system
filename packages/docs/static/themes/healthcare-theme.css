@@ -53,6 +53,7 @@
 --color-green-lightest: #e7f3e7;
 --color-muted: #5a5a5a;
 --color-muted-inverse: #e9ecf1;
+--color-primary-lightest: #e6f0f4;
 --color-primary: #046791;
 --color-primary-darker: #034866;
 --color-primary-darkest: #023449;
@@ -368,6 +369,7 @@
 --choice__size-radio--small: 12px;
 --choice-label__color--disabled: #5a5a5a;
 --choice-label__color--disabled--inverse: #e9ecf1;
+--day-picker-button__background-color--hover: #e6f0f4;
 --dialog__background-color: #ffffff;
 --dialog__padding: 32px;
 --dialog-overlay__background-color: #00000080;
