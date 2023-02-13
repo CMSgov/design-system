@@ -185,7 +185,7 @@
 --autocomplete-item__background-color--active: #016074;
 --autocomplete-item__font-color--active: #ffffff;
 --autocomplete-item-message__font-color: #5a5a5a;
---badge__background-color: #808080;
+--badge__background-color: #5a5a5a;
 --badge__background-color--alert: #e31c3d;
 --badge__background-color--info: #0071bc;
 --badge__background-color--success: #12890e;
@@ -233,7 +233,7 @@
 --button-dark__border-color--hover: currentColor;
 --button-dark__border-color: currentColor;
 --button-dark__color--active: #d9d9d9;
---button-dark__color--disabled: #808080;
+--button-dark__color--disabled: #5a5a5a;
 --button-dark__color--hover: #f2f2f2;
 --button-dark__color: #ffffff;
 --button-dark-alt__background-color--active: transparent;
@@ -245,7 +245,7 @@
 --button-dark-alt__border-color--hover: currentColor;
 --button-dark-alt__border-color: currentColor;
 --button-dark-alt__color--active: #4ed2ee;
---button-dark-alt__color--disabled: #808080;
+--button-dark-alt__color--disabled: #5a5a5a;
 --button-dark-alt__color--hover: #b3ecf8;
 --button-dark-alt__color: #e6f9fd;
 --button-solid__background-color--active: #00395e;
@@ -257,7 +257,7 @@
 --button-solid__border-color--hover: #004f84;
 --button-solid__border-color: #0071bc;
 --button-solid__color--active: #ffffff;
---button-solid__color--disabled: #5a5a5a;
+--button-solid__color--disabled: #404040;
 --button-solid__color--hover: #ffffff;
 --button-solid__color: #ffffff;
 --button-solid-alt__background-color--active: #094507;
@@ -269,15 +269,15 @@
 --button-solid-alt__border-color--hover: #0d600a;
 --button-solid-alt__border-color: #12890e;
 --button-solid-alt__color--active: #ffffff;
---button-solid-alt__color--disabled: #5a5a5a;
+--button-solid-alt__color--disabled: #404040;
 --button-solid-alt__color--hover: #ffffff;
 --button-solid-alt__color: #ffffff;
 --button-solid-dark__background-color--active: #d9d9d9;
---button-solid-dark__background-color--disabled: #5a5a5a;
+--button-solid-dark__background-color--disabled: #404040;
 --button-solid-dark__background-color--hover: #f2f2f2;
 --button-solid-dark__background-color: #ffffff;
 --button-solid-dark__border-color--active: #d9d9d9;
---button-solid-dark__border-color--disabled: #5a5a5a;
+--button-solid-dark__border-color--disabled: #404040;
 --button-solid-dark__border-color--hover: #f2f2f2;
 --button-solid-dark__border-color: #ffffff;
 --button-solid-dark__color--active: #262626;
@@ -285,11 +285,11 @@
 --button-solid-dark__color--hover: #262626;
 --button-solid-dark__color: #262626;
 --button-solid-dark-alt__background-color--active: #02bfe7;
---button-solid-dark-alt__background-color--disabled: #5a5a5a;
+--button-solid-dark-alt__background-color--disabled: #404040;
 --button-solid-dark-alt__background-color--hover: #4ed2ee;
 --button-solid-dark-alt__background-color: #b3ecf8;
 --button-solid-dark-alt__border-color--active: #02bfe7;
---button-solid-dark-alt__border-color--disabled: #5a5a5a;
+--button-solid-dark-alt__border-color--disabled: #404040;
 --button-solid-dark-alt__border-color--hover: #4ed2ee;
 --button-solid-dark-alt__border-color: #b3ecf8;
 --button-solid-dark-alt__color--active: #262626;
@@ -329,7 +329,7 @@
 --button-ghost-dark__border-color--hover: transparent;
 --button-ghost-dark__border-color: transparent;
 --button-ghost-dark__color--active: #d9d9d9;
---button-ghost-dark__color--disabled: #808080;
+--button-ghost-dark__color--disabled: #5a5a5a;
 --button-ghost-dark__color--hover: #f2f2f2;
 --button-ghost-dark__color: #ffffff;
 --button-ghost-dark-alt__background-color--active: transparent;
@@ -341,7 +341,7 @@
 --button-ghost-dark-alt__border-color--hover: transparent;
 --button-ghost-dark-alt__border-color: transparent;
 --button-ghost-dark-alt__color--active: #02bfe7;
---button-ghost-dark-alt__color--disabled: #808080;
+--button-ghost-dark-alt__color--disabled: #5a5a5a;
 --button-ghost-dark-alt__color--hover: #4ed2ee;
 --button-ghost-dark-alt__color: #b3ecf8;
 --choice__background-color: #ffffff;
@@ -380,7 +380,7 @@
 --drawer-toggle__background-color--hover: #02bfe7;
 --drawer-toggle__color--hover: #ffffff;
 --drawer-toggle__background-color--hover--inverse: #ffffff;
---drawer-toggle__color--hover--inverse: #5a5a5a;
+--drawer-toggle__color--hover--inverse: #404040;
 --dropdown__background-color: #ffffff;
 --dropdown__icon-size: 10px;
 --filter-chip__border-radius: 9999px;
@@ -423,8 +423,8 @@
 --pagination-link__color--focus: #004f84;
 --pagination-link__color--disabled: #d9d9d9;
 --pagination-current-page__color: #262626;
---pagination-overflow__color: #808080;
---pagination-page-count__color: #808080;
+--pagination-overflow__color: #5a5a5a;
+--pagination-page-count__color: #5a5a5a;
 --review__border-color: #d9d9d9;
 --steplist__color: #5a5a5a;
 --steplist__color--current: #0071bc;
@@ -452,7 +452,7 @@
 --tabs__color: #262626;
 --tabs__color--hover: #0071bc;
 --tabs__color--active: #004f84;
---tabs__color--disabled: #5a5a5a;
+--tabs__color--disabled: #404040;
 --tabs__color--selected: #0071bc;
 --tabs__border-color--disabled: #d9d9d9;
 --tabs__border-color--selected: #0071bc;
@@ -472,7 +472,7 @@
 --text-input__padding: 8px;
 --text-input__border-radius: 3px;
 --tooltip__background-color: #ffffff;
---tooltip__border-color: #5a5a5a;
+--tooltip__border-color: #404040;
 --tooltip__border-color--active: #0071bc40;
 --tooltip__border-color--inverse-active: #ffffff40;
 --tooltip__border-width: 1px;
@@ -496,7 +496,7 @@
 --usa-banner-lock-icon__color: #2a9526;
 --vertical-nav-item__background-color--hover: #f2f2f2;
 --vertical-nav-item__color--hover: #0071bc;
---vertical-nav-item__border-color: #808080;
+--vertical-nav-item__border-color: #5a5a5a;
 --vertical-nav-label__color: #262626;
 --vertical-nav-label-icon__color: #262626;
 --vertical-nav-label__border-color--current: #0071bc;
