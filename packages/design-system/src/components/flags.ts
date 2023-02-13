@@ -6,7 +6,6 @@ interface flagsType {
   BUTTON_SENDS_ANALYTICS: boolean;
   DIALOG_SENDS_ANALYTICS: boolean;
   HELP_DRAWER_SENDS_ANALYTICS: boolean;
-  DISPLAY_INLINE_ERROR_ICON: boolean;
 }
 
 // featureFlags.js
@@ -16,12 +15,7 @@ const flags: flagsType = {
   BUTTON_SENDS_ANALYTICS: false,
   DIALOG_SENDS_ANALYTICS: false,
   HELP_DRAWER_SENDS_ANALYTICS: false,
-  DISPLAY_INLINE_ERROR_ICON: false,
 };
-
-export function setInlineErrorIconDisplay(value: boolean): void {
-  flags.DISPLAY_INLINE_ERROR_ICON = value;
-}
 
 export function errorPlacementDefault(): errorPlacementValue {
   return flags.ERROR_PLACEMENT_DEFAULT;

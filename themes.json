@@ -5,7 +5,8 @@
   },
   "cmsgov": {
     "displayName": "CMS.gov",
-    "packageName": "ds-cms-gov"
+    "packageName": "ds-cms-gov",
+    "incomplete": true
   },
   "healthcare": {
     "displayName": "HealthCare.gov",
