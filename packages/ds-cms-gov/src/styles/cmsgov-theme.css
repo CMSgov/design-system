@@ -210,7 +210,7 @@
 --button__border-radius: 9999px;
 --button__border-width: 2px;
 --button__color--active: #07124d;
---button__color--disabled: #404040;
+--button__color--disabled: #5a5a5a;
 --button__color--hover: #09196b;
 --button__color: #0d2499;
 --button__font-weight: 700;
@@ -236,7 +236,7 @@
 --button-dark__border-color--hover: currentColor;
 --button-dark__border-color: currentColor;
 --button-dark__color--active: #d9d9d9;
---button-dark__color--disabled: #404040;
+--button-dark__color--disabled: #5a5a5a;
 --button-dark__color--hover: #f2f2f2;
 --button-dark__color: #ffffff;
 --button-dark-alt__background-color--active: transparent;
@@ -248,7 +248,7 @@
 --button-dark-alt__border-color--hover: currentColor;
 --button-dark-alt__border-color: currentColor;
 --button-dark-alt__color--active: #7bebac;
---button-dark-alt__color--disabled: #404040;
+--button-dark-alt__color--disabled: #5a5a5a;
 --button-dark-alt__color--hover: #c6f6db;
 --button-dark-alt__color: #ecfcf3;
 --button-solid__background-color--active: #e7e9f5;
@@ -260,7 +260,7 @@
 --button-solid__border-color--hover: #e7e9f5;
 --button-solid__border-color: #0d2499;
 --button-solid__color--active: #0d2499;
---button-solid__color--disabled: #404040;
+--button-solid__color--disabled: #5a5a5a;
 --button-solid__color--hover: #0d2499;
 --button-solid__color: #ffffff;
 --button-solid-alt__background-color--active: #094507;
@@ -308,7 +308,7 @@
 --button-ghost__border-color--hover: transparent;
 --button-ghost__border-color: transparent;
 --button-ghost__color--active: #0d2499;
---button-ghost__color--disabled: #404040;
+--button-ghost__color--disabled: #5a5a5a;
 --button-ghost__color--hover: #0d2499;
 --button-ghost__color: #0d2499;
 --button-ghost-alt__background-color--active: transparent;
@@ -332,7 +332,7 @@
 --button-ghost-dark__border-color--hover: transparent;
 --button-ghost-dark__border-color: transparent;
 --button-ghost-dark__color--active: #d9d9d9;
---button-ghost-dark__color--disabled: #404040;
+--button-ghost-dark__color--disabled: #5a5a5a;
 --button-ghost-dark__color--hover: #f2f2f2;
 --button-ghost-dark__color: #ffffff;
 --button-ghost-dark-alt__background-color--active: transparent;
@@ -344,7 +344,7 @@
 --button-ghost-dark-alt__border-color--hover: transparent;
 --button-ghost-dark-alt__border-color: transparent;
 --button-ghost-dark-alt__color--active: #42e288;
---button-ghost-dark-alt__color--disabled: #404040;
+--button-ghost-dark-alt__color--disabled: #5a5a5a;
 --button-ghost-dark-alt__color--hover: #7bebac;
 --button-ghost-dark-alt__color: #c6f6db;
 --choice__background-color: #ffffff;
@@ -426,8 +426,8 @@
 --pagination-link__color--focus: #09196b;
 --pagination-link__color--disabled: #d9d9d9;
 --pagination-current-page__color: #262626;
---pagination-overflow__color: #404040;
---pagination-page-count__color: #404040;
+--pagination-overflow__color: #5a5a5a;
+--pagination-page-count__color: #5a5a5a;
 --review__border-color: #d9d9d9;
 --steplist__color: #5a5a5a;
 --steplist__color--current: #0d2499;
@@ -499,7 +499,7 @@
 --usa-banner-lock-icon__color: #2a9526;
 --vertical-nav-item__background-color--hover: #f2f2f2;
 --vertical-nav-item__color--hover: #0d2499;
---vertical-nav-item__border-color: #404040;
+--vertical-nav-item__border-color: #5a5a5a;
 --vertical-nav-label__color: #262626;
 --vertical-nav-label-icon__color: #262626;
 --vertical-nav-label__border-color--current: #0d2499;
