@@ -57,10 +57,10 @@ export const themeColors: ColorTokens = {
   'muted-inverse':              color['lapis-50'],
   //
   'primary-lightest':           color['teal-50'],
-  'primary-lighter':	          color['teal-100'],
-  'primary-light':	            color['teal-300'],
+  'primary-lighter':            color['teal-100'],
+  'primary-light':              color['teal-300'],
   'primary':                    color['teal-500'],
-  'primary-dark':	              color['teal-600'],
+  'primary-dark':               color['teal-600'],
   'primary-darker':             color['teal-700'],
   'primary-darkest':            color['teal-800'],
   // @TODO: deprecate primary-alt as secondary
