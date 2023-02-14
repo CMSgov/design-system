@@ -1,8 +1,7 @@
 import expectNoAxeViolations from './expectNoAxeViolations';
 import { test } from '@playwright/test';
 import { stories } from '../../storybook-static/stories.json';
-
-const themes = ['core', 'healthcare' /* 'medicare' */];
+import themes from '../../themes.json';
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -11,10 +10,13 @@ function sleep(ms) {
 Object.values(stories).forEach((story) => {
   test.describe(`${story.title}/${story.name}`, () => {
     const storyUrl = `http://localhost:6006/iframe.html?viewMode=story&id=${story.id}`;
+    Object.keys(themes).forEach((theme) => {
+      if (themes[theme].incomplete) return;
+      // right now medicare is not doing a11y testing
+      if (theme === 'medicare') return;
 
-    themes.forEach((theme) => {
-      if (theme !== 'healthcare' && story.importPath.includes('ds-healthcare-gov')) return;
-      if (theme !== 'medicare' && story.importPath.includes('ds-medicare-gov')) return;
+      // Don't take screenshots of theme-specific components outside of their themes
+      if (!story.importPath.includes(themes[theme].packageName)) return;
 
       test(`with ${theme} theme`, async ({ page }) => {
         await page.goto(`${storyUrl}&globals=theme:${theme}`);

@@ -6,6 +6,10 @@ function getNav() {
   return screen.getByRole('navigation');
 }
 
+function getLabel() {
+  return screen.getByRole('heading');
+}
+
 function getPrevLink() {
   return screen.getByRole('link', { name: 'Previous Page' });
 }
@@ -54,11 +58,12 @@ describe('Pagination', () => {
   describe('accessibility attributes', () => {
     it('should have navigation label', () => {
       renderPagination({ totalPages: 8 });
-      expect(getNav().getAttribute('aria-label')).toEqual('Pagination');
+      expect(getLabel().textContent).toContain('Pagination');
+      expect(getLabel().textContent).toContain('8');
     });
     it('should set a custom navigation label', () => {
       renderPagination({ totalPages: 8, ariaLabel: 'Pagey page page' });
-      expect(getNav().getAttribute('aria-label')).toEqual('Pagey page page');
+      expect(getLabel().textContent).toContain('Pagey page page');
     });
   });
 
@@ -127,9 +132,10 @@ describe('Pagination', () => {
       expect(queryPrevLink()).toBeTruthy();
     });
 
-    it('should hide "previous" navigation slot if current page is first page of set', () => {
+    it('should render disabled "previous" navigation slot if current page is first page of set', () => {
       renderPagination({ currentPage: 1 });
-      expect(queryPrevLink()).toBeFalsy();
+      expect(queryPrevLink()).toHaveAttribute('aria-disabled');
+      expect(queryPrevLink()).not.toHaveAttribute('href');
     });
 
     it('should show "next" navigation slot if current page is not last page of set', () => {
@@ -137,9 +143,10 @@ describe('Pagination', () => {
       expect(queryNextLink()).toBeTruthy();
     });
 
-    it('should hide "next" navigation slot if current page is last page of set', () => {
+    it('should render disabled "next" navigation slot if current page is last page of set', () => {
       renderPagination({ currentPage: 3 });
-      expect(queryNextLink()).toBeFalsy();
+      expect(queryNextLink()).toHaveAttribute('aria-disabled');
+      expect(queryNextLink()).not.toHaveAttribute('href');
     });
   });
 
@@ -160,7 +167,7 @@ describe('Pagination', () => {
     it('should highlight current page with correct styles', () => {
       renderPagination({ currentPage: 3, totalPages: 5 });
       const currentPageLink = screen.getByText('3');
-      expect(currentPageLink.getAttribute('aria-current')).toEqual('true');
+      expect(currentPageLink.getAttribute('aria-current')).toEqual('page');
       expect(currentPageLink.classList.contains('ds-c-pagination__current-page')).toBeTruthy();
     });
 
