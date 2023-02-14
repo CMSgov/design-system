@@ -21,12 +21,12 @@ export const Typography = () => {
         </hgroup>
 
         <div className="preview">
-          <h1 role="generic">I am an h1 heading</h1>
-          <h2 role="generic">I am an h2 heading</h2>
-          <h3 role="generic">I am an h3 heading</h3>
-          <h4 role="generic">I am an h4 heading</h4>
-          <h5 role="generic">I am an h5 heading</h5>
-          <h6 role="generic">I am an h6 heading</h6>
+          <h1>I am an h1 heading</h1>
+          <h2>I am an h2 heading</h2>
+          <h3>I am an h3 heading</h3>
+          <h4>I am an h4 heading</h4>
+          <h5>I am an h5 heading</h5>
+          <h6>I am an h6 heading</h6>
         </div>
       </article>
 
