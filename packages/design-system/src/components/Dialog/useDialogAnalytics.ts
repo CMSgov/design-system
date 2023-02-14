@@ -4,6 +4,7 @@ import {
   EventCategory,
   EventType,
   useAnalyticsContent,
+  eventExtensionText,
 } from '../analytics';
 import { dialogSendsAnalytics } from '../flags';
 
@@ -31,6 +32,7 @@ export function useDialogAnalytics({
       event_type: EventType.UI_INTERACTION,
       event_category: EventCategory.UI_COMPONENTS,
       event_label: eventHeadingText,
+      event_extension: eventExtensionText,
       heading: eventHeadingText,
       ...eventAttributes,
     });
