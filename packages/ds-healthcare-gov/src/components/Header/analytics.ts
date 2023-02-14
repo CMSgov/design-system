@@ -1,6 +1,6 @@
 import { headerSendsAnalytics } from '../flags';
 import { defaultAnalyticsFunction } from '@cmsgov/design-system';
-import { eventExtensionText } from '@cmsgov/design-system/src/components/analytics';
+import { eventExtensionText } from '@cmsgov/design-system';
 
 export function sendHeaderEvent(linkText: string, linkUrl?: string) {
   if (headerSendsAnalytics()) {
