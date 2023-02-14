@@ -89,10 +89,10 @@ export const components: AnyTokenValues = {
     '__border-color--disabled':                   'currentColor',
     '__border-color--hover':                      'currentColor',
     '__border-color':                             'currentColor',
-    '__color--active':                            t.color['green-darkest'],
+    '__color--active':                            t.color['secondary-darkest'],
     '__color--disabled':                          t.color['gray-lighter'],
-    '__color--hover':                             t.color['green-darker'],
-    '__color':                                    t.color['green'],
+    '__color--hover':                             t.color['secondary-darker'],
+    '__color':                                    t.color['secondary'],
   },
 
   'button-dark': {
@@ -141,14 +141,14 @@ export const components: AnyTokenValues = {
   },
 
   'button-solid-alt': {
-    '__background-color--active':                 t.color['green-darkest'],
+    '__background-color--active':                 t.color['secondary-darkest'],
     '__background-color--disabled':               t.color['gray-lighter'],
-    '__background-color--hover':                  t.color['green-darker'],
-    '__background-color':                         t.color['green'],
-    '__border-color--active':                     t.color['green-darkest'],
+    '__background-color--hover':                  t.color['secondary-darker'],
+    '__background-color':                         t.color['secondary'],
+    '__border-color--active':                     t.color['secondary-darkest'],
     '__border-color--disabled':                   t.color['gray-lighter'],
-    '__border-color--hover':                      t.color['green-darker'],
-    '__border-color':                             t.color['green'],
+    '__border-color--hover':                      t.color['secondary-darker'],
+    '__border-color':                             t.color['secondary'],
     '__color--active':                            t.color['white'],
     '__color--disabled':                          t.color['gray-darker'],
     '__color--hover':                             t.color['white'],
@@ -209,10 +209,10 @@ export const components: AnyTokenValues = {
     '__border-color--disabled':                   'transparent',
     '__border-color--hover':                      'transparent',
     '__border-color':                             'transparent',
-    '__color--active':                            t.color['green-darkest'],
+    '__color--active':                            t.color['secondary-darkest'],
     '__color--disabled':                          t.color['gray-lighter'],
-    '__color--hover':                             t.color['green-darker'],
-    '__color':                                    t.color['green'],
+    '__color--hover':                             t.color['secondary-darker'],
+    '__color':                                    t.color['secondary'],
   },
 
   'button-ghost-dark': {

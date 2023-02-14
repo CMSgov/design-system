@@ -53,14 +53,6 @@ export const themeColors: ColorTokens = {
   'gray-darker':	              color['granite-800'],
   'gray-darkest':	              color['granite-900'],
   //
-  'green':                      color['spring-500'],
-  'green-dark':                 color['spring-600'],
-  'green-darker':               color['spring-700'],
-  'green-darkest':              color['spring-800'],
-  'green-light':                color['spring-400'],
-  'green-lighter':              color['spring-200'],
-  'green-lightest':             color['spring-50'],
-  //
   'muted':                      color['granite-700'],
   'muted-inverse':              color['lapis-50'],
   //

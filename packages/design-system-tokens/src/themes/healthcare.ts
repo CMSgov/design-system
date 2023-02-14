@@ -53,14 +53,6 @@ export const themeColors: ColorTokens = {
   'gray-darker':	              color['granite-800'],
   'gray-darkest':	              color['granite-900'],
   //
-  'green':                      color['spring-500'],
-  'green-dark':                 color['spring-600'],
-  'green-darker':               color['spring-700'],
-  'green-darkest':              color['spring-800'],
-  'green-light':                color['spring-700'],
-  'green-lighter':              color['spring-200'],
-  'green-lightest':             color['spring-50'],
-  //
   'muted':                      color['granite-700'],
   'muted-inverse':              color['lapis-50'],
   //
@@ -78,13 +70,13 @@ export const themeColors: ColorTokens = {
   'primary-alt-light':          color['darksky-300'],
   'primary-alt-lightest':       color['darksky-50'],
   //
-  'secondary':                  color['darksky-500'],
-  'secondary-dark':             color['darksky-600'],
-  'secondary-darker':           color['darksky-700'],
-  'secondary-darkest':          color['darksky-800'],
-  'secondary-light':            color['darksky-300'],
-  'secondary-lighter':          color['darksky-100'],
-  'secondary-lightest':         color['darksky-50'],
+  'secondary':                  color['spring-500'],
+  'secondary-dark':             color['spring-600'],
+  'secondary-darker':           color['spring-700'],
+  'secondary-darkest':          color['spring-800'],
+  'secondary-light':            color['spring-700'],
+  'secondary-lighter':          color['spring-200'],
+  'secondary-lightest':         color['spring-50'],
   //
   'info':                       color['darksky-500'],
   'info-dark':                  color['darksky-600'],
