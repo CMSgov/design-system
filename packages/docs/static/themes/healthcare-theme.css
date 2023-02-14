@@ -54,7 +54,10 @@
 --color-muted: #5a5a5a;
 --color-muted-inverse: #e9ecf1;
 --color-primary-lightest: #e6f0f4;
+--color-primary-lighter: #b4d1de;
+--color-primary-light: #4f95b2;
 --color-primary: #046791;
+--color-primary-dark: #045d83;
 --color-primary-darker: #034866;
 --color-primary-darkest: #023449;
 --color-primary-alt: #3e94cf;

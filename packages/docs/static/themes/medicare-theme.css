@@ -53,12 +53,13 @@
 --color-green-lightest: #e7f3e7;
 --color-muted: #5a5a5a;
 --color-muted-inverse: #e9ecf1;
+--color-primary-lightest: #e8f0ef;
+--color-primary-lighter: #b9d2ce;
+--color-primary-light: #5b978e;
 --color-primary: #146a5d;
 --color-primary-dark: #125f54;
 --color-primary-darker: #0e4a41;
 --color-primary-darkest: #0a352f;
---color-primary-light: #5b978e;
---color-primary-lightest: #e8f0ef;
 --color-primary-alt: #1e3c70;
 --color-primary-alt-dark: #1b3665;
 --color-primary-alt-darker: #152a4e;

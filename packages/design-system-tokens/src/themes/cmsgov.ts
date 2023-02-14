@@ -64,12 +64,13 @@ export const themeColors: ColorTokens = {
   'muted':                      color['granite-700'],
   'muted-inverse':              color['lapis-50'],
   //
+  'primary-lightest':           color['deepsea-50'],
+  'primary-lighter':	          color['deepsea-100'],
+  'primary-light':	            color['deepsea-300'],
   'primary':                    color['deepsea-500'],
+  'primary-dark':	              color['deepsea-600'],
   'primary-darker':             color['deepsea-700'],
   'primary-darkest':            color['deepsea-800'],
-  'primary-light':              color['deepsea-300'],
-  'primary-lighter':            color['deepsea-100'],
-  'primary-lightest':           color['deepsea-50'],
   // @TODO: deprecate primary-alt as secondary
   'primary-alt':                color['sky-500'],
   'primary-alt-dark':           color['sky-600'],
