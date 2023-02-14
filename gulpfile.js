@@ -161,6 +161,7 @@ copyJSON.displayName = '📎 copying JSON data to dist folder';
 const jsSrcGlob = [
   `${srcPath}/components/**/*.{js,jsx,ts,tsx}`,
   `!${srcPath}/components/**/*{.test,.spec,.d,.stories}.{js,jsx,ts,tsx}`,
+  `!${srcPath}/components/**/*.test.interaction.ts`,
   `!${srcPath}/components/setupTests.{js,jsx,ts,tsx}`,
   `!${srcPath}/components/**/{__mocks__,__tests__}/**/*`,
 ];

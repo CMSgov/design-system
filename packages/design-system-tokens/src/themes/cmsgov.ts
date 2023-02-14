@@ -27,11 +27,6 @@ export const themeColors: ColorTokens = {
   'border-dark':                color['lapis-800'],
   'border-inverse':             color['white-solid'],
   //
-  'coolblue':                   color['sapphire-600'],
-  'coolblue-light':             color['sapphire-500'],
-  'coolblue-lighter':           color['sapphire-200'],
-  'coolblue-lightest':          color['sapphire-50'],
-  //
   'error':                      color['rose-500'],
   'error-dark':                 color['rose-600'],
   'error-darker':               color['rose-700'],
@@ -49,14 +44,6 @@ export const themeColors: ColorTokens = {
   'focus-shadow-inverse':       color['granite-900'],
   'focus-shadow-link':          color['granite-900'],
   'focus-shadow-link-inverse':  color['goldenrod-800'],
-  //
-  'gold':                       color['dandelion-500'],
-  'gold-dark':                  color['dandelion-600'],
-  'gold-darker':                color['dandelion-700'],
-  'gold-darkest':               color['dandelion-800'],
-  'gold-light':                 color['dandelion-400'],
-  'gold-lighter':               color['dandelion-200'],
-  'gold-lightest':              color['dandelion-50'],
   //
   'gray':                       color['granite-700'],
   'gray-cool-light':            color['ocean-50'],
@@ -99,14 +86,6 @@ export const themeColors: ColorTokens = {
   'secondary-light':            color['emerald-300'],
   'secondary-lighter':          color['emerald-100'],
   'secondary-lightest':         color['emerald-50'],
-  //
-  'red':                        color['rose-500'],
-  'red-dark':                   color['rose-600'],
-  'red-darker':                 color['rose-700'],
-  'red-darkest':                color['rose-800'],
-  'red-light':                  color['rose-200'],
-  'red-lighter':                color['rose-100'],
-  'red-lightest':               color['rose-50'],
   //
   'success':                    color['spring-500'],
   'success-dark':               color['spring-600'],
