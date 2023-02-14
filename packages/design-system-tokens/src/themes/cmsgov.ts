@@ -86,6 +86,14 @@ export const themeColors: ColorTokens = {
   'secondary-lighter':          color['emerald-100'],
   'secondary-lightest':         color['emerald-50'],
   //
+  'info':                      color['deepsea-500'],
+  'info-dark':                 color['deepsea-600'],
+  'info-darker':               color['deepsea-700'],
+  'info-darkest':              color['deepsea-800'],
+  'info-light':                color['deepsea-300'],
+  'info-lighter':              color['deepsea-100'],
+  'info-lightest':             color['deepsea-50'],
+  //
   'success':                    color['spring-500'],
   'success-dark':               color['spring-600'],
   'success-darker':             color['spring-700'],

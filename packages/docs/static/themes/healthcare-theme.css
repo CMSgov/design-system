@@ -72,6 +72,13 @@
 --color-secondary-light: #78b4dd;
 --color-secondary-lighter: #c5dff1;
 --color-secondary-lightest: #ecf4fa;
+--color-info: #3e94cf;
+--color-info-dark: #3885ba;
+--color-info-darker: #2b6891;
+--color-info-darkest: #1f4a68;
+--color-info-light: #78b4dd;
+--color-info-lighter: #c5dff1;
+--color-info-lightest: #ecf4fa;
 --color-success: #12890e;
 --color-success-dark: #107b0d;
 --color-success-darker: #0d600a;
@@ -186,7 +193,7 @@
 --autocomplete__background-color: #ffffff;
 --autocomplete__border-color: #d9d9d9;
 --autocomplete-item__font-color: #046791;
---autocomplete-item__background-color--active: #1f4a68;
+--autocomplete-item__background-color--active: #023449;
 --autocomplete-item__font-color--active: #ffffff;
 --autocomplete-item-message__font-color: #5a5a5a;
 --badge__background-color: #5a5a5a;
@@ -381,7 +388,7 @@
 --drawer__border-color: #d9d9d9;
 --drawer-close__color: #000000;
 --drawer-header__background-color: #f2f2f2;
---drawer-footer__background-color: #ecf4fa;
+--drawer-footer__background-color: #e6f0f4;
 --drawer-toggle__background-color--hover: #3e94cf;
 --drawer-toggle__color--hover: #ffffff;
 --drawer-toggle__background-color--hover--inverse: #ffffff;
@@ -389,7 +396,7 @@
 --dropdown__background-color: #ffffff;
 --dropdown__icon-size: 10px;
 --filter-chip__border-radius: 9999px;
---filter-chip__background-color: #ecf4fa;
+--filter-chip__background-color: #e6f0f4;
 --filter-chip__border-color: #046791;
 --filter-chip__color: #262626;
 --filter-chip__background-color--active: #046791;

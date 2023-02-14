@@ -73,6 +73,13 @@
 --color-secondary-light: #62779b;
 --color-secondary-lighter: #bcc5d4;
 --color-secondary-lightest: #e9ecf1;
+--color-info: #1e3c70;
+--color-info-dark: #1b3665;
+--color-info-darker: #152a4e;
+--color-info-darkest: #0f1e38;
+--color-info-light: #62779b;
+--color-info-lighter: #bcc5d4;
+--color-info-lightest: #e9ecf1;
 --color-success: #12890e;
 --color-success-dark: #107b0d;
 --color-success-darker: #0d600a;
@@ -419,7 +426,7 @@
 --dropdown__icon-size: 10px;
 --filter-chip__border-radius: 9999px;
 --filter-chip__background-color: #e9ecf1;
---filter-chip__border-color: #146a5d;
+--filter-chip__border-color: #1e3c70;
 --filter-chip__color: #404040;
 --filter-chip__background-color--active: #146a5d;
 --filter-chip__border-color--active: #146a5d;

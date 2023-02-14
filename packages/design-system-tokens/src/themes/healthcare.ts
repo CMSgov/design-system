@@ -86,6 +86,14 @@ export const themeColors: ColorTokens = {
   'secondary-lighter':          color['darksky-100'],
   'secondary-lightest':         color['darksky-50'],
   //
+  'info':                       color['darksky-500'],
+  'info-dark':                  color['darksky-600'],
+  'info-darker':                color['darksky-700'],
+  'info-darkest':               color['darksky-800'],
+  'info-light':                 color['darksky-300'],
+  'info-lighter':               color['darksky-100'],
+  'info-lightest':              color['darksky-50'],
+  //
   'success':                    color['spring-500'],
   'success-dark':               color['spring-600'],
   'success-darker':             color['spring-700'],
