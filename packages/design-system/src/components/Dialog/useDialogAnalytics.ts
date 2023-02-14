@@ -31,6 +31,7 @@ export function useDialogAnalytics({
       event_type: EventType.UI_INTERACTION,
       event_category: EventCategory.UI_COMPONENTS,
       event_label: eventHeadingText,
+      event_extension: 'Design system integration',
       heading: eventHeadingText,
       ...eventAttributes,
     });

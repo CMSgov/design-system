@@ -5,6 +5,7 @@ Array [
   Object {
     "event_action": "alert impression",
     "event_category": "ui components",
+    "event_extension": "Design system integration",
     "event_label": "other heading",
     "event_name": "alert_impression",
     "event_type": "ui interaction",
@@ -23,6 +24,7 @@ Array [
   Object {
     "event_action": "alert impression",
     "event_category": "ui components",
+    "event_extension": "Design system integration",
     "event_label": "Warning: Ruhroh",
     "event_name": "alert_impression",
     "event_type": "ui interaction",
@@ -41,6 +43,7 @@ Array [
   Object {
     "event_action": "alert impression",
     "event_category": "ui components",
+    "event_extension": "Design system integration",
     "event_label": "Alert: Ahhh!",
     "event_name": "alert_impression",
     "event_type": "ui interaction",

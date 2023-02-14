@@ -10,6 +10,7 @@ export function sendHeaderEvent(linkText: string, linkUrl?: string) {
       event_action: 'click',
       event_category: 'consistent header',
       event_label: linkText,
+      event_extension: 'Design system integration',
       text: linkText,
       ...(linkUrl ? { link_url: linkUrl } : {}),
     });

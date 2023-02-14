@@ -36,6 +36,7 @@ export default function useAlertAnalytics({
         event_name: 'alert_impression',
         event_type: EventType.UI_INTERACTION,
         event_action: 'alert impression',
+        event_extension: 'Design system integration',
         event_category: EventCategory.UI_COMPONENTS,
         event_label: eventHeadingText,
         heading: eventHeadingText,

@@ -37,6 +37,7 @@ export default function useButtonAnalytics({
       event_category: EventCategory.UI_INTERACTION,
       event_action: `engaged ${buttonStyle} button`,
       event_label: href ? `${buttonText}: ${href}` : buttonText,
+      event_extension: 'Design system integration',
       text: buttonText,
       button_style: buttonStyle,
       button_type: href ? 'link' : buttonType,
