@@ -13,7 +13,7 @@
 :root {
   --rdp-cell-size: #{$spacer-5};
   --rdp-accent-color: var(--color-primary);
-  --rdp-background-color: var(--color-gray-cool-light);
+  --rdp-background-color: var(--day-picker-button__background-color--hover);
   /* Added this variable for consistency */
   --rdp-active-color: var(--color-primary-darkest);
   /* Outline border for focused elements */
@@ -413,7 +413,7 @@
   padding: $spacer-1;
 
   &:hover:not(:disabled) {
-    background-color: var(--color-gray-cool-light);
+    background-color: var(--day-picker-button__background-color--hover);
     color: var(--color-primary-darker); // TODO: Use tokens same as link-hover-color
   }
 
@@ -505,7 +505,7 @@
 
   .ds-c-single-input-date-field__button {
     appearance: none;
-    background-color: var(--color-gray-cool-light);
+    background-color: var(--day-picker-button__background-color--hover);
     border: var(--text-input__border-width) solid var(--text-input__border-color);
     border-radius: var(--text-input__border-radius);
     border-bottom-left-radius: 0;
