@@ -15,14 +15,14 @@ const heading = 'We the People of the United States';
 export const AllHeadings = () => {
   return (
     <>
-      <h1 className="ds-text-heading--5xl">{heading} (5xl)</h1>
-      <h1 className="ds-text-heading--4xl">{heading} (4xl)</h1>
-      <h1 className="ds-text-heading--3xl">{heading} (3xl)</h1>
-      <h1 className="ds-text-heading--2xl">{heading} (2xl)</h1>
-      <h1 className="ds-text-heading--xl">{heading} (xl)</h1>
-      <h1 className="ds-text-heading--lg">{heading} (lg)</h1>
-      <h1 className="ds-text-heading--md">{heading} (md)</h1>
-      <h1 className="ds-text-heading--sm">{heading} (sm)</h1>
+      <h4 className="ds-text-heading--5xl">{heading} (5xl)</h4>
+      <h4 className="ds-text-heading--4xl">{heading} (4xl)</h4>
+      <h4 className="ds-text-heading--3xl">{heading} (3xl)</h4>
+      <h4 className="ds-text-heading--2xl">{heading} (2xl)</h4>
+      <h4 className="ds-text-heading--xl">{heading} (xl)</h4>
+      <h4 className="ds-text-heading--lg">{heading} (lg)</h4>
+      <h4 className="ds-text-heading--md">{heading} (md)</h4>
+      <h4 className="ds-text-heading--sm">{heading} (sm)</h4>
     </>
   );
 };
@@ -35,17 +35,17 @@ AllHeadingsOnDark.parameters = {
 
 export const ContentClass = () => (
   <div className="ds-content">
-    <h1>Heading level 1</h1>
+    <h4>Heading level 1</h4>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
       labore et dolore magna aliqua.
     </p>
-    <h2>Heading level 2</h2>
+    <h5>Heading level 2</h5>
     <p>
       Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
       commodo consequat.
     </p>
-    <h3>Heading level 3</h3>
+    <h6>Heading level 3</h6>
     <p>
       Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
       pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
@@ -84,7 +84,7 @@ export const ContentClass = () => (
 export const Heading5xl = () => {
   return (
     <>
-      <h1 className="ds-text-heading--5xl">{heading} (5xl)</h1>
+      <h4 className="ds-text-heading--5xl">{heading} (5xl)</h4>
     </>
   );
 };
@@ -92,7 +92,7 @@ export const Heading4xl = () => {
   const heading = 'We the People of the United States';
   return (
     <>
-      <h1 className="ds-text-heading--4xl">{heading} (4xl)</h1>
+      <h4 className="ds-text-heading--4xl">{heading} (4xl)</h4>
     </>
   );
 };
@@ -100,7 +100,7 @@ export const Heading3xl = () => {
   const heading = 'We the People of the United States';
   return (
     <>
-      <h1 className="ds-text-heading--3xl">{heading} (3xl)</h1>
+      <h4 className="ds-text-heading--3xl">{heading} (3xl)</h4>
     </>
   );
 };
@@ -108,35 +108,35 @@ export const Heading2xl = () => {
   const heading = 'We the People of the United States';
   return (
     <>
-      <h1 className="ds-text-heading--2xl">{heading} (2xl)</h1>
+      <h4 className="ds-text-heading--2xl">{heading} (2xl)</h4>
     </>
   );
 };
 export const HeadingXl = () => {
   return (
     <>
-      <h1 className="ds-text-heading--xl">{heading} (xl)</h1>
+      <h4 className="ds-text-heading--xl">{heading} (xl)</h4>
     </>
   );
 };
 export const HeadingLg = () => {
   return (
     <>
-      <h1 className="ds-text-heading--lg">{heading} (lg)</h1>
+      <h4 className="ds-text-heading--lg">{heading} (lg)</h4>
     </>
   );
 };
 export const HeadingMd = () => {
   return (
     <>
-      <h1 className="ds-text-heading--md">{heading} (md)</h1>
+      <h4 className="ds-text-heading--md">{heading} (md)</h4>
     </>
   );
 };
 export const HeadingSm = () => {
   return (
     <>
-      <h1 className="ds-text-heading--sm">{heading} (sm)</h1>
+      <h4 className="ds-text-heading--sm">{heading} (sm)</h4>
     </>
   );
 };
@@ -144,17 +144,17 @@ export const HeadingSm = () => {
 // an example for responsive headings -- referenced in doc site
 export const ResponsiveHeadings = () => (
   <>
-    <h1 className="ds-text-heading--5xl">{heading} (5xl)</h1>
-    <h2 className="ds-text-heading--4xl">{heading} (4xl)</h2>
-    <h3 className="ds-text-heading--3xl">{heading} (3xl)</h3>
+    <h4 className="ds-text-heading--5xl">{heading} (5xl)</h4>
+    <h5 className="ds-text-heading--4xl">{heading} (4xl)</h5>
+    <h6 className="ds-text-heading--3xl">{heading} (3xl)</h6>
   </>
 );
 
 // an example for responsive headings -- referenced in doc site
 export const ResponsiveUtilityHeadings = () => (
   <>
-    <h1 className="ds-u-font-size--2xl ds-u-md-font-size--3xl ds-u-lg-font-size--4xl">
+    <h4 className="ds-u-font-size--2xl ds-u-md-font-size--3xl ds-u-lg-font-size--4xl">
       Responsive heading using utility classes
-    </h1>
+    </h4>
   </>
 );
