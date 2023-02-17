@@ -5,7 +5,7 @@
 
   .c-navigation__header {
     align-items: center;
-    background-color: var(--color-secondary-lightest);
+    background-color: var(--color-primary-lightest);
     display: flex;
     gap: $spacer-2;
     padding: $spacer-2;
@@ -60,7 +60,7 @@
 // Desktop
 @media (min-width: $media-width-md) {
   .c-navigation {
-    background-color: var(--color-secondary-lightest);
+    background-color: var(--color-primary-lightest);
     // Set it to a fixed width that is wide enough for most links so that it
     // doesn't jump around when we open and close subsections.
     width: 13rem;
