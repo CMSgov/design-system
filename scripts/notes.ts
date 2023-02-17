@@ -46,8 +46,13 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
+// current milestone reference
 const cm = JSON.parse(execSync('gh api repos/CMSgov/design-system/milestones').toString())[0];
 
+/**
+ * Get list of PR's associated with the current milestone formatted
+ * for our use as a PRDetails object.
+ */
 const getPRs = () => {
   const prData = JSON.parse(
     execSync(
@@ -67,6 +72,13 @@ const getPRs = () => {
   return prs;
 };
 
+/**
+ * Organizes Note(s) by the category/section they should belong in.
+ * In order to keep this code as simple as possible, this just breaks up
+ * pr's by their impacts. Right now if an item impacts multiple items, it
+ * will be presented in each of those sections. An item will also be placed
+ * in multiple type categories if it belongs to multiple.
+ */
 const organizeNotes = (data: PRDetails[]): Notes => {
   const notes = { core: [], healthcare: [], medicare: [], docs: [] } as Notes;
   const checkImpacts = (pr: any, category: string) => {
@@ -87,6 +99,9 @@ const organizeNotes = (data: PRDetails[]): Notes => {
   return notes;
 };
 
+/**
+ * display jira links with associated title to copy/paste to PM
+ */
 const displayJiraTickets = (data: PRDetails[]) => {
   console.log(`\n-- ${c.green('JIRA Tickets')} --`);
   const notes = data
@@ -109,15 +124,20 @@ console.log(
   } open issues and ${c.magenta(cm.closed_issues)} closed issues.`
 );
 
-rl.question('\nDoes this milestone look good? (Y/n): ', (answer) => {
-  answer.trim().toLowerCase() === 'y' || answer.trim().toLowerCase() === ''
-    ? start()
-    : process.exit(0);
-});
+// Ensure we have the correct milestone.
+rl.question(
+  '\nIs this the correct Milestone and are you ready to create notes? (Y/n): ',
+  (answer) => {
+    answer.trim().toLowerCase() === 'y' || answer.trim().toLowerCase() === ''
+      ? start()
+      : process.exit(0);
+  }
+);
 
 const start = () => {
   const prs = getPRs();
-  // const organizedPRs = organizeNotes(prs);
+  const organizedPRs = organizeNotes(prs);
+  console.log(organizedPRs);
   displayJiraTickets(prs);
   process.exit(0);
 };
