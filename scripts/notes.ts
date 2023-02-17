@@ -2,32 +2,44 @@ import { execSync } from 'node:child_process';
 import chalk from 'chalk';
 import readline from 'readline';
 
-export interface PRDetails {
+interface PRDetails {
   author: string;
-  ghpr: string;
+  ghpr: number;
   hash: string;
   labels: string[] | null;
   ticket: string | null;
   title: string;
 }
 
+interface Note {
+  title: string;
+  number: number;
+  category: string;
+}
+
+interface Notes {
+  core: Note[];
+  docs: Note[];
+  healthcare: Note[];
+  medicare: Note[];
+}
+
 const c = chalk;
 
-// const mdTemplate = (version: string, items: PRDetails[]): string => {
-//   const templ = `
-//     ## [Design System](https://www.npmjs.com/package/@cmsgov/design-system) [${v}]
-//     ## [Documentation site](https://www.npmjs.com/package/@cmsgov/design-system-docs) [${v}]
-//     ## [Healthcare.gov Design System](https://www.npmjs.com/package/@cmsgov/ds-healthcare-gov) [${v}]
-//     ## [Medicare.gov Design System](https://www.npmjs.com/package/@cmsgov/ds-medicare-gov) [${v}]
-//     ## Updated dependencies
-
-//     ### 🚨 Breaking changes
-//     ### 🚀 Added
-//     ### 💅 Changed
-//     ### 🛠 Fixed
-//     ### 📦 Internal
-//   `
-// }
+const mdTemplate = (notes: Notes) => {
+  // let template = `## [Design System](https://www.npmjs.com/package/@cmsgov/design-system) []`
+  // template += if (prs.core.breaking.length()) { return '' }
+  //   ## [Documentation site](https://www.npmjs.com/package/@cmsgov/design-system-docs) [${v}]
+  //   ## [Healthcare.gov Design System](https://www.npmjs.com/package/@cmsgov/ds-healthcare-gov) [${v}]
+  //   ## [Medicare.gov Design System](https://www.npmjs.com/package/@cmsgov/ds-medicare-gov) [${v}]
+  //   ## Updated dependencies
+  //   ### 🚨 Breaking changes
+  //   ### 🚀 Added
+  //   ### 💅 Changed
+  //   ### 🛠 Fixed
+  //   ### 📦 Internal
+  // `
+};
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -55,9 +67,24 @@ const getPRs = () => {
   return prs;
 };
 
-const organizeNotes = (data: PRDetails[]) => {
-  // const unticketed = data.filter(x => x.ticket?.toLowerCase().includes('ticketed'))
-  // const ticketed = data.filter(x => !x.ticket?.toLowerCase().includes('ticketed'))
+const organizeNotes = (data: PRDetails[]): Notes => {
+  const notes = { core: [], healthcare: [], medicare: [], docs: [] } as Notes;
+  const checkImpacts = (pr: any, category: string) => {
+    const data = { title: pr.title, number: pr.ghpr, category: category };
+    if (pr.labels.includes('Impacts: Core')) notes.core.push(data);
+    if (pr.labels.includes('Impacts: Healthcare')) notes.healthcare.push(data);
+    if (pr.labels.includes('Impacts: Medicare')) notes.medicare.push(data);
+    if (pr.labels.includes('Impacts: Documentation')) notes.docs.push(data);
+  };
+  data.forEach((pr) => {
+    if (!pr.labels?.length) return;
+    if (pr.labels.includes('Type: Added')) checkImpacts(pr, 'added');
+    if (pr.labels.includes('Type: Breaking')) checkImpacts(pr, 'breaking');
+    if (pr.labels.includes('Type: Changed')) checkImpacts(pr, 'changed');
+    if (pr.labels.includes('Type: Fixed')) checkImpacts(pr, 'fixed');
+    if (pr.labels.includes('Type: Internal')) checkImpacts(pr, 'internal');
+  });
+  return notes;
 };
 
 /**
@@ -77,7 +104,7 @@ rl.question('\nDoes this milestone look good? (Y/n): ', (answer) => {
 
 const start = () => {
   const prs = getPRs();
-  organizeNotes(prs);
+  const organizedPRs = organizeNotes(prs);
   process.exit(0);
 };
 
