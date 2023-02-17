@@ -61,7 +61,7 @@ const getPRs = () => {
       hash: pr.mergeCommit.oid,
       labels: pr.labels.map((label: any) => label.name),
       ticket: pr.title.replace(/\[(.+)\](.*)/, '$1'),
-      title: pr.title.replace(/\[(.+)\](.*)/, '$2'),
+      title: pr.title.replace(/\[(.+)\]\s+(.*)/, '$2'),
     };
   });
   return prs;
@@ -87,6 +87,19 @@ const organizeNotes = (data: PRDetails[]): Notes => {
   return notes;
 };
 
+const displayJiraTickets = (data: PRDetails[]) => {
+  console.log(`\n-- ${c.green('JIRA Tickets')} --`);
+  const notes = data
+    .filter((pr) => {
+      return !pr.ticket?.toLowerCase().includes('ticket');
+    })
+    .map((pr) => {
+      return { ticket: `https://jira.cms.gov/browse/${pr.ticket}`, title: pr.title };
+    });
+  notes.forEach((note) => console.log(`${note.ticket} - ${note.title}`));
+  console.log('\n');
+};
+
 /**
  * Starting point for generating notes
  */
@@ -104,7 +117,8 @@ rl.question('\nDoes this milestone look good? (Y/n): ', (answer) => {
 
 const start = () => {
   const prs = getPRs();
-  const organizedPRs = organizeNotes(prs);
+  // const organizedPRs = organizeNotes(prs);
+  displayJiraTickets(prs);
   process.exit(0);
 };
 
