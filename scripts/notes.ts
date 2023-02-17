@@ -1,6 +1,6 @@
 import { execSync } from 'node:child_process';
-import themes from '../themes.json';
 import chalk from 'chalk';
+import readline from 'readline';
 
 export interface PRDetails {
   author: string;
@@ -12,99 +12,6 @@ export interface PRDetails {
 }
 
 const c = chalk;
-
-/**
- * Handle command line arguments
- */
-let compTarget: string, currTarget: string;
-
-if (process.argv.length == 2) {
-  console.log(
-    'Please provide a target tag/branch name to compare the current branch HEAD against.'
-  );
-  process.exit(1);
-} else {
-  compTarget = process.argv[2];
-  currTarget = process.argv[3] ?? 'HEAD';
-}
-
-/**
- * Grabs latest tag from each theme and returns an array of `theme: version` items.
- */
-export const getLatestVersions = (t: typeof themes) => {
-  const versions: string[][] = [];
-  Object.entries(t).forEach((theme) => {
-    const pkgn = theme[1].packageName;
-    const vers = execSync(`git tag --sort=taggerdate | grep "${pkgn}" | tail -1`).toString().trim();
-    versions.push([pkgn, vers.replace(/^@cmsgov\/.*@(.*)$/, '$1')]);
-  });
-  return versions;
-};
-
-/**
- * Accepts: A github pr number
- * Returns: Array of labels applied to the PR or null if none.
- */
-const getGithubPrInfo = (pr: string) => {
-  process.stdout.write('.');
-  const d = JSON.parse(execSync(`gh pr view ${pr} --json=labels,author`).toString());
-  const labels = d.labels.map((label: typeof d.labels) => {
-    return label['name'];
-  });
-  return {
-    labels: labels.length ? labels : null,
-    author: d.author.name,
-  };
-};
-
-export const getOrganizedHistory = () => {
-  /**
-   * Filters out 'Publish', or anything that doesn't fit our template
-   * of '[ticket/no-ticket] title'
-   */
-  const initialFilter = /^.\s(\w*)\s\[([\w\s-]*)\]\s(.*)\s\(#(\d*)\)$/;
-
-  /**
-   * Get the difference between one branch and another as a list of
-   * commits with pr #'s and description. --cherry is used to perform a
-   * diff check to rule out commits which just have different hashes.
-   */
-  const logData = execSync(
-    `git log --author-date-order --pretty=oneline --cherry ${compTarget}...${currTarget}`
-  )
-    .toString()
-    .split('\n');
-  const filteredLogArray = logData.filter((line: string) => line.match(initialFilter));
-
-  /**
-   * Generate an array of objects for each PR/commit from the filtered
-   * git log generated above. This data can be sorted into draft notes.
-   */
-  const organizedHistory = filteredLogArray.map((line: string): PRDetails => {
-    const matched = line.match(initialFilter);
-
-    if (matched) {
-      const { labels, author } = getGithubPrInfo(matched[4]);
-      const ticket = /no|release/i.test(matched[2].toLowerCase()) ? null : matched[2];
-      return {
-        author: author,
-        ghpr: matched[4],
-        hash: matched[1],
-        labels: labels,
-        ticket: ticket,
-        title: matched[3],
-      };
-    } else {
-      console.log(
-        `One of the items in the returned set did not match the filter ${initialFilter.toString()}.`
-      );
-      console.log(filteredLogArray);
-      process.exit(1);
-    }
-  });
-
-  return organizedHistory;
-};
 
 // const mdTemplate = (version: string, items: PRDetails[]): string => {
 //   const templ = `
@@ -122,52 +29,56 @@ export const getOrganizedHistory = () => {
 //   `
 // }
 
-// const latestVersions = getLatestVersions(themes)
-// const latestTag = `@cmsgov/${latestVersions[0][0]}@${latestVersions[0][1]}`
-// const latestTagHash = execSync(`git rev-list -n 1 ${latestTag}`).toString().trim()
-// const latestTagHashDate = execSync(`git show ${latestTagHash} --format=%cs --no-notes -s`).toString().trim()
-
-// leave a comment on pr's that don't have labels but are going to be in the next release
-
-console.log(
-  `\nGenerating release notes for diff between ${c.green(compTarget)} and ${c.greenBright(
-    currTarget
-  )}\n`
-);
-console.log(`${c.cyan('🤖 Fetching PR data')}`);
-const organizedLog = getOrganizedHistory();
-console.log(`${c.cyanBright(' done!')}`);
-
-const ticketedWork = organizedLog.filter((pr) => {
-  return pr.ticket;
-});
-const unticketedWork = organizedLog.filter((pr) => {
-  // don't include bump commits
-  return !pr.ticket && !/bump/.test(pr.title);
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
 });
 
+const cm = JSON.parse(execSync('gh api repos/CMSgov/design-system/milestones').toString())[0];
+
+const getPRs = () => {
+  const prData = JSON.parse(
+    execSync(
+      `gh pr list --search "milestone:${cm.title}" --state merged --json title,url,labels,number,author,mergeCommit`
+    ).toString()
+  );
+  const prs: PRDetails[] = prData.map((pr: any) => {
+    return {
+      author: pr.author.login,
+      ghpr: pr.number,
+      hash: pr.mergeCommit.oid,
+      labels: pr.labels.map((label: any) => label.name),
+      ticket: pr.title.replace(/\[(.+)\](.*)/, '$1'),
+      title: pr.title.replace(/\[(.+)\](.*)/, '$2'),
+    };
+  });
+  return prs;
+};
+
+const organizeNotes = (data: PRDetails[]) => {
+  // const unticketed = data.filter(x => x.ticket?.toLowerCase().includes('ticketed'))
+  // const ticketed = data.filter(x => !x.ticket?.toLowerCase().includes('ticketed'))
+};
+
+/**
+ * Starting point for generating notes
+ */
 console.log(
-  `\n  Found: ${c.green(ticketedWork.length)} ticketed items and, ${c.yellow(
-    unticketedWork.length
-  )} items\n`
+  `\nCurrent milestone ${c.green(cm.title)} with ${
+    cm.open_issues > 0 ? c.redBright(cm.open_issues) : c.gray(cm.open_issues)
+  } open issues and ${c.magenta(cm.closed_issues)} closed issues.`
 );
-console.log(c.black.bgCyanBright(' Ticketed '));
-console.table(ticketedWork, ['ticket', 'title', 'author', 'ghpr', 'labels']);
-console.log('\n' + c.black.bgYellow(' Un-Ticketed '));
-console.table(unticketedWork, ['author', 'title', 'ghpr', 'labels']);
 
-// ------
+rl.question('\nDoes this milestone look good? (Y/n): ', (answer) => {
+  answer.trim().toLowerCase() === 'y' || answer.trim().toLowerCase() === ''
+    ? start()
+    : process.exit(0);
+});
 
-// ticketedWork.forEach((pr) => {
-//   console.log(`${pr.hash} ${pr.ticket} .. ${pr.labels}`);
-// });
-// console.log(`ticketed: ${ticketedWork.length} items`);
+const start = () => {
+  const prs = getPRs();
+  organizeNotes(prs);
+  process.exit(0);
+};
 
-// unticketedWork.forEach((pr) => {
-//   console.log(`${pr.author} - ${pr.title} .. #${pr.ghpr}`);
-// });
-// console.log(`unticketed: ${unticketedWork.length} items`);
-
-// gh release create v${version} --notes-file release-${version}-notes.md --draft --prerelease
-// make sure particular name doesn't already exist / error condition on conflict
-// ticketed work outputs list of links for Kara, unticketed (if tagged) will be added to the list as usual.
+// create text changelog to go in dist folder?
