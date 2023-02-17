@@ -173,11 +173,11 @@ export const components: AnyTokenValues = {
   'button-solid-dark-alt': {
     '__background-color--active':                 t.color['secondary'],
     '__background-color--disabled':               t.color['gray-darker'],
-    '__background-color--hover':                  t.color['secondary-light'],
+    '__background-color--hover':                  t.color['secondary-lightest'],
     '__background-color':                         t.color['secondary-lighter'],
     '__border-color--active':                     t.color['secondary'],
     '__border-color--disabled':                   t.color['gray-darker'],
-    '__border-color--hover':                      t.color['secondary-light'],
+    '__border-color--hover':                      t.color['secondary-lightest'],
     '__border-color':                             t.color['secondary-lighter'],
     '__color--active':                            t.color['base'],
     '__color--disabled':                          t.color['base'],
@@ -241,7 +241,7 @@ export const components: AnyTokenValues = {
     '__border-color':                             'transparent',
     '__color--active':                            t.color['secondary'],
     '__color--disabled':                          t.color['gray-dark'],
-    '__color--hover':                             t.color['secondary-light'],
+    '__color--hover':                             t.color['secondary-lightest'],
     '__color':                                    t.color['secondary-lighter'],
   },
 
