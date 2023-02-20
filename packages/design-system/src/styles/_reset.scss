@@ -157,7 +157,6 @@ select {
   &:not(button, [type='checkbox'], [type='radio']) {
     display: block;
     margin-block: 0.25em 0;
-    width: 100%;
   }
 
   &:disabled {
