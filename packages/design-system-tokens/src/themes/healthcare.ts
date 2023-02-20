@@ -74,7 +74,7 @@ export const themeColors: ColorTokens = {
   'secondary-dark':             color['spring-600'],
   'secondary-darker':           color['spring-700'],
   'secondary-darkest':          color['spring-800'],
-  'secondary-light':            color['spring-700'],
+  'secondary-light':            color['spring-300'],
   'secondary-lighter':          color['spring-200'],
   'secondary-lightest':         color['spring-50'],
   //
