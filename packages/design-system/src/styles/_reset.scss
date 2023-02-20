@@ -154,7 +154,7 @@ textarea,
 select {
   font: inherit;
 
-  &:not(button) {
+  &:not(button, [type='checkbox'], [type='radio']) {
     display: block;
     margin-block: 0.25em 0;
     width: 100%;
@@ -168,8 +168,7 @@ select {
 input[type='checkbox'],
 input[type='radio'] {
   accent-color: var(--choice__background-color--checked);
-  display: inline;
-  width: auto;
+  display: inline-grid;
 }
 
 input[type='checkbox'] + label,
