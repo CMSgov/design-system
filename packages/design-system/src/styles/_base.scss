@@ -29,19 +29,7 @@ $breakpoints: (
  * Body
  */
 
-%ds-base {
-  font-family: var(--font-sans);
-  font-size: var(--font-size-base);
-  line-height: var(--font-line-height-base);
-}
-
-.ds-base {
-  @extend %ds-base;
-  color: var(--color-base);
-}
-
 .ds-base--inverse {
-  @extend %ds-base;
   background-color: var(--color-background-inverse);
   color: var(--color-base-inverse);
 }
