@@ -1,12 +1,10 @@
 .ds-c-icon {
   display: inline-block;
   fill: currentColor;
-  flex-shrink: 0;
   font-size: var(--font-size-base);
   height: 1.5em;
   stroke: currentColor;
   stroke-width: 0;
-  vertical-align: middle;
   width: 1.5em;
 
   @media (-ms-high-contrast: active), (forced-colors: active) {

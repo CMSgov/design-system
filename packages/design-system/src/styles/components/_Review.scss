@@ -1,11 +1,10 @@
 @use '../layout' as *;
 
 .ds-c-review {
-  border-bottom: 2px solid var(--review__border-color);
+  border-block-end: 2px solid var(--review__border-color);
   display: flex;
   justify-content: space-between;
-  padding-bottom: $spacer-2;
-  padding-top: $spacer-2;
+  padding-block: $spacer-2;
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
     a:hover {
@@ -15,17 +14,15 @@
 }
 
 .ds-c-review__content {
-  margin-right: $spacer-2;
+  margin-inline-end: $spacer-2;
 }
 
 .ds-c-review:last-of-type {
-  border-bottom: 0;
+  border-block-end: 0;
 }
 
 .ds-c-review__heading {
   display: inline-block;
-  font-size: var(--font-size-base); // Needed to overwrite user agent heading tag styles
   font-weight: var(--font-weight-bold);
-  margin-bottom: 0;
-  margin-top: 0;
+  margin-block: 0;
 }

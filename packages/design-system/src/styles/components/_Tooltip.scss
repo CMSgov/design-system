@@ -30,8 +30,6 @@
 .ds-c-tooltip__trigger {
   cursor: pointer;
   display: inline;
-  font-size: inherit;
-  font-weight: inherit;
 }
 
 .ds-c-tooltip__trigger-icon {
@@ -90,10 +88,10 @@
 
   // Remove tooltip content padding by default
   &:first-child {
-    margin-top: 0;
+    margin-block-start: 0;
   }
   &:last-child {
-    margin-bottom: 0;
+    margin-block-end: 0;
   }
 }
 
@@ -101,7 +99,7 @@
   align-items: flex-start;
   display: flex;
   justify-content: space-between;
-  margin-bottom: $spacer-1;
+  margin-block-end: $spacer-1;
 
   .ds-c-tooltip__close-button {
     // IE11 fix
@@ -129,7 +127,6 @@
   border-radius: var(--radius-large);
   border-style: solid;
   border-width: var(--tooltip__border-width);
-  box-sizing: border-box;
   display: none;
   opacity: 0;
 }
@@ -172,8 +169,7 @@
 .ds-c-tooltip[data-popper-placement^='top'] .ds-c-tooltip__arrow {
   top: 100%;
   &::after {
-    border-bottom: var(--tooltip__border-width) solid var(--tooltip__border-color);
-    border-right: var(--tooltip__border-width) solid var(--tooltip__border-color);
+    border-block: var(--tooltip__border-width) solid var(--tooltip__border-color);
     top: 1px;
     transform: translateX(-50%) translateY(-50%) rotate(45deg);
   }
@@ -182,8 +178,7 @@
 .ds-c-tooltip[data-popper-placement^='bottom'] .ds-c-tooltip__arrow {
   top: -8px;
   &::after {
-    border-left: var(--tooltip__border-width) solid var(--tooltip__border-color);
-    border-top: var(--tooltip__border-width) solid var(--tooltip__border-color);
+    border-block: var(--tooltip__border-width) solid var(--tooltip__border-color);
     bottom: 0;
     transform: translateX(-50%) translateY(-50%) rotate(45deg);
   }
@@ -192,8 +187,7 @@
 .ds-c-tooltip[data-popper-placement^='left'] .ds-c-tooltip__arrow {
   right: -8px;
   &::after {
-    border-right: var(--tooltip__border-width) solid var(--tooltip__border-color);
-    border-top: var(--tooltip__border-width) solid var(--tooltip__border-color);
+    border-block: var(--tooltip__border-width) solid var(--tooltip__border-color);
     left: 0;
     transform: translateX(50%) translateY(50%) rotate(45deg);
   }
@@ -202,8 +196,7 @@
 .ds-c-tooltip[data-popper-placement^='right'] .ds-c-tooltip__arrow {
   left: -8px;
   &::after {
-    border-bottom: var(--tooltip__border-width) solid var(--tooltip__border-color);
-    border-left: var(--tooltip__border-width) solid var(--tooltip__border-color);
+    border-block: var(--tooltip__border-width) solid var(--tooltip__border-color);
     left: -2px;
     transform: translateX(50%) translateY(50%) rotate(45deg);
   }

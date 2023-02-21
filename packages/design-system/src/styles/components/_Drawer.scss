@@ -92,7 +92,7 @@
   }
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
-    border-bottom: 1px solid ButtonText;
+    border-block-end: 1px solid ButtonText;
   }
 }
 
@@ -133,7 +133,7 @@
   }
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
-    border-top: 1px solid ButtonText;
+    border-block-start: 1px solid ButtonText;
   }
 }
 

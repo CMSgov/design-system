@@ -15,10 +15,10 @@
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
   // Adjust to better align icon with value's baseline
-  padding-top: 1px;
+  padding-block-start: 1px;
 }
 
 .ds-c-field--currency {
   // Normal padding + space for the icon + normal padding
-  padding-left: 20px;
+  padding-inline-start: 20px;
 }
