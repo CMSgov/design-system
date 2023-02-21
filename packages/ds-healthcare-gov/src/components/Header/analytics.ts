@@ -1,5 +1,6 @@
 import { headerSendsAnalytics } from '../flags';
 import { defaultAnalyticsFunction } from '@cmsgov/design-system';
+import { eventExtensionText } from '@cmsgov/design-system';
 
 export function sendHeaderEvent(linkText: string, linkUrl?: string) {
   if (headerSendsAnalytics()) {
@@ -10,6 +11,7 @@ export function sendHeaderEvent(linkText: string, linkUrl?: string) {
       event_action: 'click',
       event_category: 'consistent header',
       event_label: linkText,
+      event_extension: eventExtensionText,
       text: linkText,
       ...(linkUrl ? { link_url: linkUrl } : {}),
     });
