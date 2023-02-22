@@ -4,6 +4,50 @@ order: 60
 intro: We've updated the theme color variables to exclude several families of non-semantic color variables and generally normalize the use of color variables across themes
 ---
 
-import Core from '../../src/components/content/ColorMigration/core.mdx';
+import ColorMigrationTable from '../../src/components/content/ColorMigration/ColorMigrationTable.tsx';
 
-<Core />
+## Primary colors
+
+<ColorMigrationTable
+  colorRows={[
+    [null,                                          { name: 'primary-lightest', value: '#e6f1f8' }],
+    [null,                                          { name: 'primary-lighter',  value: '#b3d4eb' }],
+    [null,                                          { name: 'primary-light',    value: '#4d9cd0' }],
+    [{ name: 'primary',         value: '#0071bc' }, { name: 'primary',          value: '#0071bc' }],
+    [null,                                          { name: 'primary-dark',     value: '#0066a9' }],
+    [{ name: 'primary-darker',  value: '#004f84' }, { name: 'primary-darker',   value: '#004f84' }],
+    [{ name: 'primary-darkest', value: '#00395e' }, { name: 'primary-darkest',  value: '#00395e' }],
+  ]}
+/>
+
+## Secondary colors
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: 'secondary-lightest', value: '#e6f9fd' }, { name: 'secondary-lightest',  value: '#e7f3e7' }],
+    [{ name: 'secondary-lighter',  value: '#b3ecf8' }, { name: 'secondary-lighter',   value: '#89c487' }],
+    [{ name: 'secondary-light',    value: '#4ed2ee' }, { name: 'secondary-light',     value: '#2a9526' }],
+    [{ name: 'secondary',          value: '#02bfe7' }, { name: 'secondary',           value: '#12890e' }],
+    [{ name: 'secondary-dark',     value: '#02acd0' }, { name: 'secondary-dark',      value: '#107b0d' }],
+    [{ name: 'secondary-darker',   value: '#0186a2' }, { name: 'secondary-darker',    value: '#0d600a' }],
+    [{ name: 'secondary-darkest',  value: '#016074' }, { name: 'secondary-darkest',   value: '#094507' }],
+  ]}
+/>
+
+## Neutrals
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: 'gray-cool-light', value: '#e6f1f8' }, null],
+    [{ name: 'gray-warm-light', value: '#e6f9fd' }, null],
+    [{ name: 'gray-lightest',   value: '#f2f2f2' }, { name: 'gray-lightest',  value: '#f2f2f2' }],
+    [{ name: 'gray-lighter',    value: '#d9d9d9' }, { name: 'gray-lighter',   value: '#d9d9d9' }],
+    [{ name: 'gray-light',      value: '#a6a6a6' }, { name: 'gray-light',     value: '#a6a6a6' }],
+    [{ name: 'gray',            value: '#5a5a5a' }, { name: 'gray',           value: '#808080' }],
+    [{ name: 'gray-dark',       value: '#404040' }, { name: 'gray-dark',      value: '#5a5a5a' }],
+    [null,                                          { name: 'gray-darker',    value: '#404040' }],
+    [null,                                          { name: 'gray-darkest',   value: '#262626' }],
+    [{ name: 'gray-medium',     value: '#737373' }, null],
+    [{ name: 'gray-warm-dark',  value: '#404040' }, null],
+  ]}
+/>

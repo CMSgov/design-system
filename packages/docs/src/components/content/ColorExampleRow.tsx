@@ -2,7 +2,7 @@ import React from 'react';
 import { hexHasTransparency, pickTextColor } from 'design-system-tokens/src/lib/utility';
 import { HexValue } from 'design-system-tokens/src/lib/types';
 
-interface ColorExampleRowProps {
+export interface ColorExampleRowProps {
   displayName?: string;
   name: string;
   value: string;

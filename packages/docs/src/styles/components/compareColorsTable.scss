@@ -10,7 +10,7 @@
   $row-height: 40px;
 
   td:first-child {
-    padding-right: $row-height * 0.5;
+    padding-right: $spacer-4;
     position: relative;
     width: 50%;
 
@@ -26,7 +26,7 @@
   }
 
   td:last-child {
-    padding-left: $row-height * 0.5;
+    padding-left: $spacer-4;
     width: 50%;
   }
 }
