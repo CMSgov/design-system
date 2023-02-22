@@ -5,8 +5,12 @@
   color: var(--accordion__color);
 }
 
-.ds-c-accordion__heading:not(:first-child) {
-  margin-block-start: $spacer-1;
+.ds-c-accordion__heading {
+  margin-block-start: 0;
+
+  &:not(:first-child) {
+    margin-block-start: $spacer-1;
+  }
 }
 
 .ds-c-accordion__button {
