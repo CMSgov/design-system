@@ -6,19 +6,74 @@ intro: We've updated the theme color variables to exclude several families of no
 
 import ColorMigrationTable from '../../src/components/content/ColorMigration/ColorMigrationTable.tsx';
 
+Green was previously used in the `core` and `healthcare` themes for button variations, but it was unused in other
+themes. The fact that green was being used for buttons really meant that green is a
+secondary brand color for those themes. However, the blue info color for both those themes
+was coming from their secondary color, which meant we needed to give that family of blues
+a new home in the `info` status color.
+
 ## Primary colors
+
+<ThemeContent onlyThemes={['core']}>
 
 <ColorMigrationTable
   colorRows={[
-    [null,                                          { name: 'primary-lightest', value: '#e6f1f8' }],
-    [null,                                          { name: 'primary-lighter',  value: '#b3d4eb' }],
-    [null,                                          { name: 'primary-light',    value: '#4d9cd0' }],
-    [{ name: 'primary',         value: '#0071bc' }, { name: 'primary',          value: '#0071bc' }],
-    [null,                                          { name: 'primary-dark',     value: '#0066a9' }],
-    [{ name: 'primary-darker',  value: '#004f84' }, { name: 'primary-darker',   value: '#004f84' }],
-    [{ name: 'primary-darkest', value: '#00395e' }, { name: 'primary-darkest',  value: '#00395e' }],
+    [{ name: 'primary-lightest', value: '#e6f1f8' }, { name: 'primary-lightest', value: '#e6f1f8' }],
+    [null,                                           { name: 'primary-lighter',  value: '#b3d4eb' }],
+    [null,                                           { name: 'primary-light',    value: '#4d9cd0' }],
+    [{ name: 'primary',          value: '#0071bc' }, { name: 'primary',          value: '#0071bc' }],
+    [null,                                           { name: 'primary-dark',     value: '#0066a9' }],
+    [{ name: 'primary-darker',   value: '#004f84' }, { name: 'primary-darker',   value: '#004f84' }],
+    [{ name: 'primary-darkest',  value: '#00395e' }, { name: 'primary-darkest',  value: '#00395e' }],
   ]}
 />
+
+</ThemeContent>
+<ThemeContent onlyThemes={['healthcare']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: 'primary-lightest', value: '#e6f0f4' }, { name: 'primary-lightest', value: '#e6f0f4' }],
+    [null,                                           { name: 'primary-lighter',  value: '#b4d1de' }],
+    [null,                                           { name: 'primary-light',    value: '#4f95b2' }],
+    [{ name: 'primary',          value: '#046791' }, { name: 'primary',          value: '#046791' }],
+    [null,                                           { name: 'primary-dark',     value: '#045d83' }],
+    [{ name: 'primary-darker',   value: '#034866' }, { name: 'primary-darker',   value: '#034866' }],
+    [{ name: 'primary-darkest',  value: '#023449' }, { name: 'primary-darkest',  value: '#023449' }],
+  ]}
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['medicare']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [null,                                           { name: 'primary-lightest', value: '#e8f0ef' }],
+    [null,                                           { name: 'primary-lighter',  value: '#b9d2ce' }],
+    [null,                                           { name: 'primary-light',    value: '#5b978e' }],
+    [{ name: 'primary',          value: '#146a5d' }, { name: 'primary',          value: '#146a5d' }],
+    [{ name: 'primary-dark',     value: '#125f54' }, { name: 'primary-dark',     value: '#125f54' }],
+    [{ name: 'primary-darker',   value: '#0e4a41' }, { name: 'primary-darker',   value: '#0e4a41' }],
+    [{ name: 'primary-darkest',  value: '#0a352f' }, { name: 'primary-darkest',  value: '#0a352f' }],
+  ]}
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['cmsgov']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: 'primary-lightest', value: '#e7e9f5' }, { name: 'primary-lightest', value: '#e7e9f5' }],
+    [{ name: 'primary-lighter',  value: '#b6bde0' }, { name: 'primary-lighter',  value: '#b6bde0' }],
+    [{ name: 'primary-light',    value: '#5666b8' }, { name: 'primary-light',    value: '#5666b8' }],
+    [{ name: 'primary',          value: '#0d2499' }, { name: 'primary',          value: '#0d2499' }],
+    [null,                                           { name: 'primary-dark',     value: '#0c208a' }],
+    [{ name: 'primary-darker',   value: '#09196b' }, { name: 'primary-darker',   value: '#09196b' }],
+    [{ name: 'primary-darkest',  value: '#07124d' }, { name: 'primary-darkest',  value: '#07124d' }],
+  ]}
+/>
+
+</ThemeContent>
 
 ## Secondary colors
 
@@ -34,12 +89,30 @@ import ColorMigrationTable from '../../src/components/content/ColorMigration/Col
   ]}
 />
 
-## Neutrals
+## Informational colors
+
+<ColorMigrationTable
+  colorRows={[
+    [null, { name: 'info-lightest', value: '#e6f9fd' }],
+    [null, { name: 'info-lighter',  value: '#b3ecf8' }],
+    [null, { name: 'info-light',    value: '#4ed2ee' }],
+    [null, { name: 'info',          value: '#02bfe7' }],
+    [null, { name: 'info-dark',     value: '#02acd0' }],
+    [null, { name: 'info-darker',   value: '#0186a2' }],
+    [null, { name: 'info-darkest',  value: '#016074' }],
+  ]}
+/>
+
+## Neutral colors
+
+We normalized the grays and gave them the same naming structure as the other color families.
+
+<ThemeContent neverThemes={['medicare']}>
 
 <ColorMigrationTable
   colorRows={[
     [{ name: 'gray-cool-light', value: '#e6f1f8' }, null],
-    [{ name: 'gray-warm-light', value: '#e6f9fd' }, null],
+    [{ name: 'gray-warm-light', value: '#f2f2f2' }, null],
     [{ name: 'gray-lightest',   value: '#f2f2f2' }, { name: 'gray-lightest',  value: '#f2f2f2' }],
     [{ name: 'gray-lighter',    value: '#d9d9d9' }, { name: 'gray-lighter',   value: '#d9d9d9' }],
     [{ name: 'gray-light',      value: '#a6a6a6' }, { name: 'gray-light',     value: '#a6a6a6' }],
@@ -49,5 +122,107 @@ import ColorMigrationTable from '../../src/components/content/ColorMigration/Col
     [null,                                          { name: 'gray-darkest',   value: '#262626' }],
     [{ name: 'gray-medium',     value: '#737373' }, null],
     [{ name: 'gray-warm-dark',  value: '#404040' }, null],
+  ]}
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['medicare']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: 'gray-cool-light',   value: '#e6f1f8' }, null],
+    [{ name: 'gray-warm-light',   value: '#f2f2f2' }, null],
+    [{ name: 'gray-lightest',     value: '#f2f2f2' }, { name: 'gray-lightest',  value: '#f2f2f2' }],
+    [{ name: 'gray-lighter',      value: '#d9d9d9' }, { name: 'gray-lighter',   value: '#d9d9d9' }],
+    [{ name: 'gray-light',        value: '#737373' }, { name: 'gray-light',     value: '#a6a6a6' }],
+    [{ name: 'gray',              value: '#5a5a5a' }, { name: 'gray',           value: '#808080' }],
+    [{ name: 'gray-dark',         value: '#404040' }, { name: 'gray-dark',      value: '#5a5a5a' }],
+    [{ name: 'gray-darker',       value: '#262626' }, { name: 'gray-darker',    value: '#404040' }],
+    [null,                                            { name: 'gray-darkest',   value: '#262626' }],
+    [{ name: 'gray-medium-light', value: '#a6a6a6' }, null],
+    [{ name: 'gray-medium',       value: '#737373' }, null],
+    [{ name: 'gray-warm-dark',    value: '#404040' }, null],
+  ]}
+/>
+
+</ThemeContent>
+
+## Coolblue
+
+Coolblue is unused.
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: 'coolblue-lightest', value: '#e6f0f4' }, null],
+    [{ name: 'coolblue-lighter',  value: '#82b3c8' }, null],
+    [{ name: 'coolblue-light',    value: '#046791' }, null],
+    [{ name: 'coolblue',          value: '#045d83' }, null],
+  ]}
+/>
+
+## Green
+
+Green is a non-semantic duplicate of `success` in all themes.
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: 'green-lightest', value: '#e7f3e7' }, null],
+    [{ name: 'green-lighter',  value: '#89c487' }, null],
+    [{ name: 'green-light',    value: '#2a9526' }, null],
+    [{ name: 'green',          value: '#12890e' }, null],
+    [{ name: 'green-dark',     value: '#107b0d' }, null],
+    [{ name: 'green-darker',   value: '#0d600a' }, null],
+    [{ name: 'green-darkest',  value: '#094507' }, null],
+  ]}
+/>
+
+## Gold
+
+Gold is a non-semantic duplicate of `warn` in all themes.
+
+<ThemeContent neverThemes={['cmsgov']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: 'gold-lightest', value: '#fef9e9' }, null],
+    [{ name: 'gold-lighter',  value: '#fce28f' }, null],
+    [{ name: 'gold-light',    value: '#f9ca35' }, null],
+    [{ name: 'gold',          value: '#f8c41f' }, null],
+    [{ name: 'gold-dark',     value: '#dfb01c' }, null],
+    [{ name: 'gold-darker',   value: '#ae8916' }, null],
+    [{ name: 'gold-darkest',  value: '#7c6210' }, null],
+  ]}
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['cmsgov']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: 'gold-lightest', value: '#fffce6' }, null],
+    [{ name: 'gold-lighter',  value: '#fff284' }, null],
+    [{ name: 'gold-light',    value: '#ffe721' }, null],
+    [{ name: 'gold',          value: '#ffe400' }, null],
+    [{ name: 'gold-dark',     value: '#e6cd07' }, null],
+    [{ name: 'gold-darker',   value: '#b3a006' }, null],
+    [{ name: 'gold-darkest',  value: '#807204' }, null],
+  ]}
+/>
+
+</ThemeContent>
+
+## Red
+
+Red is a non-semantic duplicate of `error` in all themes.
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: 'red-lightest', value: '#fce8ec' }, null],
+    [{ name: 'red-lighter',  value: '#f7bbc5' }, null],
+    [{ name: 'red-light',    value: '#f18e9e' }, null],
+    [{ name: 'red',          value: '#e31c3d' }, null],
+    [{ name: 'red-dark',     value: '#cc1937' }, null],
+    [{ name: 'red-darker',   value: '#9f142b' }, null],
+    [{ name: 'red-darkest',  value: '#720e1f' }, null],
   ]}
 />
