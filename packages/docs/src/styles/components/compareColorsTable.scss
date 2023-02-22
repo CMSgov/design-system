@@ -1,0 +1,37 @@
+.c-compare-colors-table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+
+  td {
+    padding: 0;
+  }
+
+  $row-height: 40px;
+
+  td:first-child {
+    padding-right: $row-height * 0.5;
+    position: relative;
+    width: 50%;
+
+    &::after {
+      box-sizing: border-box;
+      content: '→';
+      font-size: 24px;
+      line-height: $row-height;
+      position: absolute;
+      right: -11px;
+      top: 0;
+    }
+  }
+
+  td:last-child {
+    padding-left: $row-height * 0.5;
+    width: 50%;
+  }
+}
+
+.c-compare-colors-table__none {
+  color: var(--color-muted);
+  text-align: center;
+}
