@@ -77,6 +77,8 @@ a new home in the `info` status color.
 
 ## Secondary colors
 
+<ThemeContent onlyThemes={['core']}>
+
 <ColorMigrationTable
   colorRows={[
     [{ name: 'secondary-lightest', value: '#e6f9fd' }, { name: 'secondary-lightest',  value: '#e7f3e7' }],
@@ -89,7 +91,31 @@ a new home in the `info` status color.
   ]}
 />
 
+</ThemeContent>
+<ThemeContent onlyThemes={['healthcare']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: 'secondary-lightest', value: '#ecf4fa' }, { name: 'secondary-lightest',  value: '#e7f3e7' }],
+    [{ name: 'secondary-lighter',  value: '#c5dff1' }, { name: 'secondary-lighter',   value: '#89c487' }],
+    [{ name: 'secondary-light',    value: '#78b4dd' }, { name: 'secondary-light',     value: '#2a9526' }],
+    [{ name: 'secondary',          value: '#3e94cf' }, { name: 'secondary',           value: '#12890e' }],
+    [{ name: 'secondary-dark',     value: '#3885ba' }, { name: 'secondary-dark',      value: '#107b0d' }],
+    [{ name: 'secondary-darker',   value: '#2b6891' }, { name: 'secondary-darker',    value: '#0d600a' }],
+    [{ name: 'secondary-darkest',  value: '#1f4a68' }, { name: 'secondary-darkest',   value: '#094507' }],
+  ]}
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['medicare', 'cmsgov']}>
+
+Secondary colors didn't change for the Medicare or CMS.gov themes.
+
+</ThemeContent>
+
 ## Informational colors
+
+<ThemeContent onlyThemes={['core']}>
 
 <ColorMigrationTable
   colorRows={[
@@ -102,6 +128,55 @@ a new home in the `info` status color.
     [null, { name: 'info-darkest',  value: '#016074' }],
   ]}
 />
+
+</ThemeContent>
+<ThemeContent onlyThemes={['healthcare']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [null, { name: 'info-lightest', value: '#ecf4fa' }],
+    [null, { name: 'info-lighter',  value: '#c5dff1' }],
+    [null, { name: 'info-light',    value: '#78b4dd' }],
+    [null, { name: 'info',          value: '#3e94cf' }],
+    [null, { name: 'info-dark',     value: '#3885ba' }],
+    [null, { name: 'info-darker',   value: '#2b6891' }],
+    [null, { name: 'info-darkest',  value: '#1f4a68' }],
+  ]}
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['medicare']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [null, { name: 'info-lightest', value: '#e9ecf1' }],
+    [null, { name: 'info-lighter',  value: '#bcc5d4' }],
+    [null, { name: 'info-light',    value: '#62779b' }],
+    [null, { name: 'info',          value: '#1e3c70' }],
+    [null, { name: 'info-dark',     value: '#1b3665' }],
+    [null, { name: 'info-darker',   value: '#152a4e' }],
+    [null, { name: 'info-darkest',  value: '#0f1e38' }],
+  ]}
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['cmsgov']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [null, { name: 'info-lightest', value: '#e7e9f5' }],
+    [null, { name: 'info-lighter',  value: '#b6bde0' }],
+    [null, { name: 'info-light',    value: '#5666b8' }],
+    [null, { name: 'info',          value: '#0d2499' }],
+    [null, { name: 'info-dark',     value: '#0c208a' }],
+    [null, { name: 'info-darker',   value: '#09196b' }],
+    [null, { name: 'info-darkest',  value: '#07124d' }],
+  ]}
+/>
+
+</ThemeContent>
+
+
 
 ## Neutral colors
 
