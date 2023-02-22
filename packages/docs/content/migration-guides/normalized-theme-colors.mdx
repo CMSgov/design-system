@@ -222,6 +222,22 @@ We normalized the grays and gave them the same naming structure as the other col
 
 </ThemeContent>
 
+### Effect of removal of `gray-cool-light`
+
+Because we removed `gray-cool-light`, we had to remap some day picker assignments.
+Created the new `--day-picker-button__background-color--hover` component variable
+for that and assigned it to a new `primary-lightest` theme variable. We'll be
+getting `primary-lightest` in the next pull request anyway, but I wanted to be able
+to separate these pull requests as much as possible.
+
+This will result in a color shift for the hover background of those day picker buttons,
+because previously the `gray-cool-light` was mapped to `ocean-50` across the board
+instead of separate values for each theme. Now that it is in the `primary` family of
+colors, healthcare will use `sapphire-50` instead of `ocean-50`, medicare will use
+`teal-50`, and cmsgov will use `deepsea-50`.
+
+      <img width="421" alt="Screen Shot 2023-02-13 at 4 44 22 PM" src="https://user-images.githubusercontent.com/7595652/218608787-dc115fdc-eec3-4b11-a95d-3def3b1aec3c.png">
+
 ## Coolblue
 
 Coolblue is unused.

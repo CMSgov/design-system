@@ -13,8 +13,8 @@ const ColorMigrationTable = ({ colorRows }: ColorMigrationTableProps) => (
     <table className="c-compare-colors-table">
       <thead>
         <tr>
-          <th className="ds-u-visibility--screen-reader">Before</th>
-          <th className="ds-u-visibility--screen-reader">After</th>
+          <th>Before</th>
+          <th>After</th>
         </tr>
       </thead>
       <tbody>
