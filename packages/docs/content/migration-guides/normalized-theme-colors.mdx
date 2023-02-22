@@ -224,19 +224,41 @@ We normalized the grays and gave them the same naming structure as the other col
 
 ### Effect of removal of `gray-cool-light`
 
-Because we removed `gray-cool-light`, we had to remap some day picker assignments.
-Created the new `--day-picker-button__background-color--hover` component variable
-for that and assigned it to a new `primary-lightest` theme variable. We'll be
-getting `primary-lightest` in the next pull request anyway, but I wanted to be able
-to separate these pull requests as much as possible.
+Because we removed `gray-cool-light`, we had to remap the background hover color for
+day-picker buttons to `primary-lightest`. On all but the core theme, this will result
+in a slight color shift for the hover background of those day-picker buttons. Previously
+the `gray-cool-light` was mapped to `ocean-50` across the board instead of separate
+values for each theme. Now that it is in the `primary` family of colors, healthcare
+will use `sapphire-50` instead of `ocean-50`, medicare will use `teal-50`, and cmsgov
+will use `deepsea-50`.
 
-This will result in a color shift for the hover background of those day picker buttons,
-because previously the `gray-cool-light` was mapped to `ocean-50` across the board
-instead of separate values for each theme. Now that it is in the `primary` family of
-colors, healthcare will use `sapphire-50` instead of `ocean-50`, medicare will use
-`teal-50`, and cmsgov will use `deepsea-50`.
+<ThemeContent onlyThemes={['healthcare']}>
 
-      <img width="421" alt="Screen Shot 2023-02-13 at 4 44 22 PM" src="https://user-images.githubusercontent.com/7595652/218608787-dc115fdc-eec3-4b11-a95d-3def3b1aec3c.png">
+<ColorMigrationTable
+  colorRows={[
+    [{ name: 'ocean-50', value: '#e6f1f8' }, { name: 'sapphire-50', value: '#e6f0f4' }],
+  ]}
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['medicare']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: 'ocean-50', value: '#e6f1f8' }, { name: 'teal-50', value: '#e8f0ef' }],
+  ]}
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['cmsgov']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: 'ocean-50', value: '#e6f1f8' }, { name: 'deepsea-50', value: '#e7e9f5' }],
+  ]}
+/>
+
+</ThemeContent>
 
 ## Coolblue
 
