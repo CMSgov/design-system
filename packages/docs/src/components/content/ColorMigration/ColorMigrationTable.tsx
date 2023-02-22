@@ -1,7 +1,8 @@
 import React from 'react';
 import ColorExampleRow, { ColorExampleRowProps } from '../ColorExampleRow';
 
-const none = null;
+const nullBefore = <div className="ds-u-text-align--right">did not exist</div>;
+const nullAfter = <div className="ds-u-text-align--left">removed</div>;
 
 export interface ColorMigrationTableProps {
   colorRows: Array<[ColorExampleRowProps | null, ColorExampleRowProps | null]>;
@@ -19,8 +20,8 @@ const ColorMigrationTable = ({ colorRows }: ColorMigrationTableProps) => (
       <tbody>
         {colorRows.map(([color1, color2], index) => (
           <tr key={index}>
-            <td>{color1 ? <ColorExampleRow {...color1} /> : none}</td>
-            <td>{color2 ? <ColorExampleRow {...color2} /> : none}</td>
+            <td>{color1 ? <ColorExampleRow {...color1} /> : nullBefore}</td>
+            <td>{color2 ? <ColorExampleRow {...color2} /> : nullAfter}</td>
           </tr>
         ))}
       </tbody>
