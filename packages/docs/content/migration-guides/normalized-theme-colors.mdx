@@ -174,7 +174,11 @@ Secondary colors didn't change for the CMS.gov theme.
 
 ## Status colors
 
+An explanation about status colors
+
 ### Informational 
+
+If you were using `secondary` for info-related elements, please use `info` instead.
 
 <ThemeContent onlyThemes={['core']}>
 
@@ -237,6 +241,72 @@ Secondary colors didn't change for the CMS.gov theme.
 
 </ThemeContent>
 
+### Green
+
+Green is a non-semantic duplicate of `success`. If you were using `green` for success states, please use `success` instead.
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: 'green-lightest', value: '#e7f3e7' }, null],
+    [{ name: 'green-lighter',  value: '#89c487' }, null],
+    [{ name: 'green-light',    value: '#2a9526' }, null],
+    [{ name: 'green',          value: '#12890e' }, null],
+    [{ name: 'green-dark',     value: '#107b0d' }, null],
+    [{ name: 'green-darker',   value: '#0d600a' }, null],
+    [{ name: 'green-darkest',  value: '#094507' }, null],
+  ]}
+/>
+
+### Gold
+
+Gold is a non-semantic duplicate of `warn`. If you were using `gold` for warning states, please use `warn` instead.
+
+<ThemeContent neverThemes={['cmsgov']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: 'gold-lightest', value: '#fef9e9' }, null],
+    [{ name: 'gold-lighter',  value: '#fce28f' }, null],
+    [{ name: 'gold-light',    value: '#f9ca35' }, null],
+    [{ name: 'gold',          value: '#f8c41f' }, null],
+    [{ name: 'gold-dark',     value: '#dfb01c' }, null],
+    [{ name: 'gold-darker',   value: '#ae8916' }, null],
+    [{ name: 'gold-darkest',  value: '#7c6210' }, null],
+  ]}
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['cmsgov']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: 'gold-lightest', value: '#fffce6' }, null],
+    [{ name: 'gold-lighter',  value: '#fff284' }, null],
+    [{ name: 'gold-light',    value: '#ffe721' }, null],
+    [{ name: 'gold',          value: '#ffe400' }, null],
+    [{ name: 'gold-dark',     value: '#e6cd07' }, null],
+    [{ name: 'gold-darker',   value: '#b3a006' }, null],
+    [{ name: 'gold-darkest',  value: '#807204' }, null],
+  ]}
+/>
+
+</ThemeContent>
+
+### Red
+
+Red is a non-semantic duplicate of `error`. If you were using `red` for error states, please use `error` instead.
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: 'red-lightest', value: '#fce8ec' }, null],
+    [{ name: 'red-lighter',  value: '#f7bbc5' }, null],
+    [{ name: 'red-light',    value: '#f18e9e' }, null],
+    [{ name: 'red',          value: '#e31c3d' }, null],
+    [{ name: 'red-dark',     value: '#cc1937' }, null],
+    [{ name: 'red-darker',   value: '#9f142b' }, null],
+    [{ name: 'red-darkest',  value: '#720e1f' }, null],
+  ]}
+/>
 
 ## Neutral colors
 
@@ -334,11 +404,7 @@ will use `deepsea-50`.
 
 </ThemeContent>
 
-## Non-semantic colors
-
-We've removed non-semantic colors from the theme files to make space for more intentional color categorization and namespacing. 
-
-### Coolblue
+## Coolblue
 
 Coolblue is unused.
 
@@ -351,69 +417,3 @@ Coolblue is unused.
   ]}
 />
 
-### Green
-
-Green is a non-semantic duplicate of `success`.
-
-<ColorMigrationTable
-  colorRows={[
-    [{ name: 'green-lightest', value: '#e7f3e7' }, null],
-    [{ name: 'green-lighter',  value: '#89c487' }, null],
-    [{ name: 'green-light',    value: '#2a9526' }, null],
-    [{ name: 'green',          value: '#12890e' }, null],
-    [{ name: 'green-dark',     value: '#107b0d' }, null],
-    [{ name: 'green-darker',   value: '#0d600a' }, null],
-    [{ name: 'green-darkest',  value: '#094507' }, null],
-  ]}
-/>
-
-### Gold
-
-Gold is a non-semantic duplicate of `warn`.
-
-<ThemeContent neverThemes={['cmsgov']}>
-
-<ColorMigrationTable
-  colorRows={[
-    [{ name: 'gold-lightest', value: '#fef9e9' }, null],
-    [{ name: 'gold-lighter',  value: '#fce28f' }, null],
-    [{ name: 'gold-light',    value: '#f9ca35' }, null],
-    [{ name: 'gold',          value: '#f8c41f' }, null],
-    [{ name: 'gold-dark',     value: '#dfb01c' }, null],
-    [{ name: 'gold-darker',   value: '#ae8916' }, null],
-    [{ name: 'gold-darkest',  value: '#7c6210' }, null],
-  ]}
-/>
-
-</ThemeContent>
-<ThemeContent onlyThemes={['cmsgov']}>
-
-<ColorMigrationTable
-  colorRows={[
-    [{ name: 'gold-lightest', value: '#fffce6' }, null],
-    [{ name: 'gold-lighter',  value: '#fff284' }, null],
-    [{ name: 'gold-light',    value: '#ffe721' }, null],
-    [{ name: 'gold',          value: '#ffe400' }, null],
-    [{ name: 'gold-dark',     value: '#e6cd07' }, null],
-    [{ name: 'gold-darker',   value: '#b3a006' }, null],
-    [{ name: 'gold-darkest',  value: '#807204' }, null],
-  ]}
-/>
-
-</ThemeContent>
-
-### Red
-
-Red is a non-semantic duplicate of `error`.
-
-<ColorMigrationTable
-  colorRows={[
-    [{ name: 'red-lightest', value: '#fce8ec' }, null],
-    [{ name: 'red-lighter',  value: '#f7bbc5' }, null],
-    [{ name: 'red-light',    value: '#f18e9e' }, null],
-    [{ name: 'red',          value: '#e31c3d' }, null],
-    [{ name: 'red-dark',     value: '#cc1937' }, null],
-    [{ name: 'red-darker',   value: '#9f142b' }, null],
-    [{ name: 'red-darkest',  value: '#720e1f' }, null],
-  ]}
-/>
