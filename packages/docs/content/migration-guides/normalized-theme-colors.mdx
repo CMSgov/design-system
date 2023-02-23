@@ -6,11 +6,21 @@ intro: We've updated the theme color variables to exclude several families of no
 
 import ColorMigrationTable from '../../src/components/content/ColorMigration/ColorMigrationTable.tsx';
 
-Green was previously used in the `core` and `healthcare` themes for button variations, but it was unused in other
-themes. The fact that green was being used for buttons really meant that green is a
-secondary brand color for those themes. However, the blue info color for both those themes
-was coming from their secondary color, which meant we needed to give that family of blues
-a new home in the `info` status color.
+In the process of expanding our family of design systems to include a fourth
+brand, we've run into some places where our theme variables were used inconsistently
+between brand themes. We also noticed some theme variables (whole color families)
+that weren't being used at all—just cruft left over from ancient Sass variables
+that pre-dated our design tokens and theming system. So we decided to do some
+cleaning up and reorganization.
+
+One of the major shifts was the use  of green in the `core` and `healthcare` themes
+and the creation of the `info` status color. In `core` and `healthcare`, green is
+used as a secondary brand color (for buttons), but its `secondary` color family had
+to be used for the alternate blue found in some components like the info alert. In
+order to free up the `secondary` slot for a more appropriate use and get rid of
+the non-semantic `green` color family in our theme variables, we created a new
+category of status color specifically for informational components like info
+alerts, badges, and drawer toggle icons.
 
 ## Primary colors
 
