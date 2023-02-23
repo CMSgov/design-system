@@ -1,4 +1,4 @@
-.c-compare-colors-table {
+.c-color-migration-table {
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
@@ -33,15 +33,10 @@
       box-sizing: border-box;
       content: '→';
       font-size: 24px;
-      line-height: $row-height;
+      margin-top: -17px;
       position: absolute;
       right: -11px;
-      top: 0;
+      top: 50%;
     }
   }
-}
-
-.c-compare-colors-table__none {
-  color: var(--color-muted);
-  text-align: center;
 }

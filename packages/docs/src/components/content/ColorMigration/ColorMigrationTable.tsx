@@ -10,7 +10,7 @@ export interface ColorMigrationTableProps {
 
 const ColorMigrationTable = ({ colorRows }: ColorMigrationTableProps) => (
   <div className="ds-u-measure--wide ds-u-margin-top--2">
-    <table className="c-compare-colors-table">
+    <table className="c-color-migration-table">
       <thead>
         <tr>
           <th>Before</th>
