@@ -1,28 +1,22 @@
 ---
 title: Theme colors normalization update
 order: 60
-intro: We've updated the theme color variables to exclude several families of non-semantic color variables and generally normalize the use of color variables across themes
+intro: We've updated the theme color variables to exclude several families of non-semantic color variables and normalize color variables across themes
 ---
 
 import ColorMigrationTable from '../../src/components/content/ColorMigration/ColorMigrationTable.tsx';
 
 In the process of expanding our family of design systems to include a fourth
-brand, we've run into some places where our theme variables were used inconsistently
-between brand themes. We also noticed some theme variables (whole color families)
-that weren't being used at all—just cruft left over from ancient Sass variables
-that pre-dated our design tokens and theming system. So we decided to do some
-cleaning up and reorganization.
+brand (CMS.gov), there were places where theme variables were used inconsistently
+between brand themes. In some instances, color variables and whole color families
+weren't being used and were left over from Sass variables
+that pre-dated our design tokens and theming system. We've cleaned up and reorganized these colors to provide a more intentional approach to color. 
 
-One of the major shifts was the use  of green in the `core` and `healthcare` themes
-and the creation of the `info` status color. In `core` and `healthcare`, green is
-used as a secondary brand color (for buttons), but its `secondary` color family had
-to be used for the alternate blue found in some components like the info alert. In
-order to free up the `secondary` slot for a more appropriate use and get rid of
-the non-semantic `green` color family in our theme variables, we created a new
-category of status color specifically for informational components like info
-alerts, badges, and drawer toggle icons.
+## Brand colors 
 
-## Primary colors
+### Primary
+
+We've updated the primary color to provide a full spectrum from lightest to darkest. 
 
 <ThemeContent onlyThemes={['core']}>
 
@@ -85,9 +79,21 @@ alerts, badges, and drawer toggle icons.
 
 </ThemeContent>
 
-## Secondary colors
+### Secondary
 
 <ThemeContent onlyThemes={['core']}>
+
+One of the major shifts was the use of green in the `core` and `healthcare` themes
+and the creation of the `info` status color. 
+
+In `core` and `healthcare`, green is
+used as a secondary brand color (for buttons), but its `secondary` color family had
+to be used for the alternate blue found in some components like the info alert. In
+order to free up the `secondary` slot for more appropriate use and get rid of
+the non-semantic `green` color family in our theme variables, we created a new
+category of status color specifically for informational components like info
+alerts, badges, and drawer toggle icons.
+
 
 <ColorMigrationTable
   colorRows={[
@@ -104,6 +110,17 @@ alerts, badges, and drawer toggle icons.
 </ThemeContent>
 <ThemeContent onlyThemes={['healthcare']}>
 
+One of the major shifts was the use  of green in the `core` and `healthcare` themes
+and the creation of the `info` status color. 
+
+In `core` and `healthcare`, green is
+used as a secondary brand color (for buttons), but its `secondary` color family had
+to be used for the alternate blue found in some components like the info alert. In
+order to free up the `secondary` slot for more appropriate use and get rid of
+the non-semantic `green` color family in our theme variables, we created a new
+category of status color specifically for informational components like info
+alerts, badges, and drawer toggle icons.
+
 <ColorMigrationTable
   colorRows={[
     [{ name: 'secondary-lightest', value: '#ecf4fa' }, { name: 'secondary-lightest',  value: '#e7f3e7' }],
@@ -117,13 +134,47 @@ alerts, badges, and drawer toggle icons.
 />
 
 </ThemeContent>
-<ThemeContent onlyThemes={['medicare', 'cmsgov']}>
+<ThemeContent onlyThemes={['medicare']}>
 
-Secondary colors didn't change for the Medicare or CMS.gov themes.
+Secondary colors didn't change for the Medicare theme.
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: 'secondary-lightest', value: '#e9ecf1' }, { name: 'secondary-lightest',  value: '#e9ecf1' }],
+    [{ name: 'secondary-lighter',  value: '#bcc5d4' }, { name: 'secondary-lighter',   value: '#bcc5d4' }],
+    [{ name: 'secondary-light',    value: '#62779b' }, { name: 'secondary-light',     value: '#62779b' }],
+    [{ name: 'secondary',          value: '#1e3c70' }, { name: 'secondary',           value: '#1e3c70' }],
+    [{ name: 'secondary-dark',     value: '#1b3665' }, { name: 'secondary-dark',      value: '#1b3665' }],
+    [{ name: 'secondary-darker',   value: '#152a4e' }, { name: 'secondary-darker',    value: '#152a4e' }],
+    [{ name: 'secondary-darkest',  value: '#0f1e38' }, { name: 'secondary-darkest',   value: '#0f1e38' }],
+  ]}
+/>
 
 </ThemeContent>
 
-## Informational colors
+
+<ThemeContent onlyThemes={['cmsgov']}>
+
+Secondary colors didn't change for the CMS.gov theme.
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: 'secondary-lightest', value: '#ecfcf3' }, { name: 'secondary-lightest',  value: '#ecfcf3' }],
+    [{ name: 'secondary-lighter',  value: '#c6f6db' }, { name: 'secondary-lighter',   value: '#c6f6db' }],
+    [{ name: 'secondary-light',    value: '#7bebac' }, { name: 'secondary-light',     value: '#7bebac' }],
+    [{ name: 'secondary',          value: '#42e288' }, { name: 'secondary',           value: '#42e288' }],
+    [{ name: 'secondary-dark',     value: '#3bcb7a' }, { name: 'secondary-dark',      value: '#3bcb7a' }],
+    [{ name: 'secondary-darker',   value: '#2e9e5f' }, { name: 'secondary-darker',    value: '#2e9e5f' }],
+    [{ name: 'secondary-darkest',  value: '#217144' }, { name: 'secondary-darkest',   value: '#217144' }],
+  ]}
+/>
+
+</ThemeContent>
+
+
+## Status colors
+
+### Informational 
 
 <ThemeContent onlyThemes={['core']}>
 
@@ -187,10 +238,9 @@ Secondary colors didn't change for the Medicare or CMS.gov themes.
 </ThemeContent>
 
 
-
 ## Neutral colors
 
-We normalized the grays and gave them the same naming structure as the other color families.
+We normalized the grays and gave them the same naming structure as the other color families. 
 
 <ThemeContent neverThemes={['medicare']}>
 
@@ -207,6 +257,18 @@ We normalized the grays and gave them the same naming structure as the other col
     [null,                                          { name: 'gray-darkest',   value: '#262626' }],
     [{ name: 'gray-medium',     value: '#737373' }, null],
     [{ name: 'gray-warm-dark',  value: '#404040' }, null],
+  ]}
+/>
+
+
+### Color shift of `gray` and `gray-dark`
+
+Both of these shades became lighter with this update to accommodate a full neutral spectrum.
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: 'gray', value: '#5a5a5a' }, { name: 'gray', value: '#808080' }],
+    [{ name: 'gray-dark', value: '#404040' }, { name: 'gray-dark', value: '#5a5a5a' }],
   ]}
 />
 
@@ -232,6 +294,7 @@ We normalized the grays and gave them the same naming structure as the other col
 
 </ThemeContent>
 
+
 ### Effect of removal of `gray-cool-light`
 
 Because we removed `gray-cool-light`, we had to remap the background hover color for
@@ -241,6 +304,7 @@ the `gray-cool-light` was mapped to `ocean-50` across the board instead of separ
 values for each theme. Now that it is in the `primary` family of colors, healthcare
 will use `sapphire-50` instead of `ocean-50`, medicare will use `teal-50`, and cmsgov
 will use `deepsea-50`.
+
 
 <ThemeContent onlyThemes={['healthcare']}>
 
@@ -270,7 +334,11 @@ will use `deepsea-50`.
 
 </ThemeContent>
 
-## Coolblue
+## Non-semantic colors
+
+We've removed non-semantic colors from the theme files to make space for more intentional color categorization and namespacing. 
+
+### Coolblue
 
 Coolblue is unused.
 
@@ -283,9 +351,9 @@ Coolblue is unused.
   ]}
 />
 
-## Green
+### Green
 
-Green is a non-semantic duplicate of `success` in all themes.
+Green is a non-semantic duplicate of `success`.
 
 <ColorMigrationTable
   colorRows={[
@@ -299,9 +367,9 @@ Green is a non-semantic duplicate of `success` in all themes.
   ]}
 />
 
-## Gold
+### Gold
 
-Gold is a non-semantic duplicate of `warn` in all themes.
+Gold is a non-semantic duplicate of `warn`.
 
 <ThemeContent neverThemes={['cmsgov']}>
 
@@ -334,9 +402,9 @@ Gold is a non-semantic duplicate of `warn` in all themes.
 
 </ThemeContent>
 
-## Red
+### Red
 
-Red is a non-semantic duplicate of `error` in all themes.
+Red is a non-semantic duplicate of `error`.
 
 <ColorMigrationTable
   colorRows={[

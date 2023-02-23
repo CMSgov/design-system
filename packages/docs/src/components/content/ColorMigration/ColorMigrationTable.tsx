@@ -1,8 +1,8 @@
 import React from 'react';
 import ColorExampleRow, { ColorExampleRowProps } from '../ColorExampleRow';
 
-const nullBefore = <div className="ds-u-text-align--right">did not exist</div>;
-const nullAfter = <div className="ds-u-text-align--left">removed</div>;
+const nullBefore = <div className="ds-u-text-align--center">did not exist</div>;
+const nullAfter = <div className="ds-u-text-align--center">removed</div>;
 
 export interface ColorMigrationTableProps {
   colorRows: Array<[ColorExampleRowProps | null, ColorExampleRowProps | null]>;
@@ -10,7 +10,7 @@ export interface ColorMigrationTableProps {
 
 const ColorMigrationTable = ({ colorRows }: ColorMigrationTableProps) => (
   <div className="ds-u-measure--wide ds-u-margin-top--2">
-    <table className="c-color-migration-table">
+    <table className="c-color-migration-table ds-c-table ds-c-table--borderless">
       <thead>
         <tr>
           <th>Before</th>
