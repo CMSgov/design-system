@@ -17,6 +17,7 @@ const filter = require('gulp-filter');
 const log = require('fancy-log');
 const svgmin = require('gulp-svgmin');
 const webpack = require('webpack-stream');
+const { ProvidePlugin } = require('webpack');
 
 /*
  * command line arguments and global variables
@@ -150,6 +151,7 @@ const copyJSON = (cb) => {
     .src(`${srcPath}/components/**/*.json`)
     .pipe(gulp.dest(path.join(distPath, 'components')))
     .pipe(gulp.dest(path.join(distPath, 'esnext')))
+    .pipe(gulp.dest(path.join(distPath, 'preact')))
     .pipe(gulp.dest(path.join(distPath, 'types')))
     .on('end', cb);
 };
@@ -161,7 +163,6 @@ copyJSON.displayName = '📎 copying JSON data to dist folder';
 const jsSrcGlob = [
   `${srcPath}/components/**/*.{js,jsx,ts,tsx}`,
   `!${srcPath}/components/**/*{.test,.spec,.d,.stories}.{js,jsx,ts,tsx}`,
-  `!${srcPath}/components/**/*.test.interaction.ts`,
   `!${srcPath}/components/setupTests.{js,jsx,ts,tsx}`,
   `!${srcPath}/components/**/{__mocks__,__tests__}/**/*`,
 ];
@@ -209,6 +210,36 @@ const compileEsmJs = (cb) => {
 compileEsmJs.displayName = '🔨 compiling esm modules';
 
 /*
+ * compiles typescript and javascript to esm modules and copies to dist
+ */
+const compileJsWithPreact = (cb) => {
+  gulp
+    .src(jsSrcGlob, { base: `${srcPath}/components` })
+    .pipe(
+      babel({
+        plugins: [
+          [
+            'module-resolver',
+            {
+              alias: {
+                react: 'preact/compat',
+                'react-dom': 'preact/compat',
+                'react/jsx-runtime': 'preact/jsx-runtime',
+              },
+            },
+          ],
+        ],
+      })
+    )
+    .on('error', (error) => {
+      log.error('there was an error transpiling to esm: ' + error);
+    })
+    .pipe(gulp.dest(path.join(distPath, 'preact')))
+    .on('end', cb);
+};
+compileJsWithPreact.displayName = '🔨 compiling js with Preact';
+
+/*
  *  create typescript definition files for the package
  */
 const compileTypescriptDefs = (cb) => {
@@ -224,32 +255,70 @@ const compileTypescriptDefs = (cb) => {
 compileTypescriptDefs.displayName = '⛓  generating typescript definition files';
 
 /*
- * bundle javascript for CDN
+ * Bundle javascript for CDN
  */
-const bundleJs = (cb) => {
-  const entry = path.resolve(distPath, 'esnext', 'index.esm.js');
+const bundleJs = (options, cb) => {
   gulp
-    .src(entry)
+    .src(options.entryPath)
     .pipe(
       webpack({
         output: {
-          filename: 'bundle.js',
+          filename: options.bundleName,
           // Expose all the index file's exports as a "DesignSystem" global object
           library: 'DesignSystem',
         },
         mode: process.env.NODE_ENV || 'production',
-        // Don't bundle react, since we don't expose it anyway and you need to interact
-        // with those libraries directly in order to use our components.
-        externals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
+        devtool: 'source-map',
+        plugins: [
+          new ProvidePlugin({
+            h: ['preact', 'h'],
+            Fragment: ['preact', 'Fragment'],
+          }),
+        ],
+        resolve: {
+          alias: {
+            react: 'preact/compat',
+            'react-dom/test-utils': 'preact/test-utils',
+            'react-dom': 'preact/compat', // Must be below test-utils
+            'react/jsx-runtime': 'preact/jsx-runtime',
+          },
         },
+        ...(options.webpackConfig ?? {}),
       })
     )
     .pipe(gulp.dest(`${distPath}/js`))
     .on('end', cb);
 };
-bundleJs.displayName = '💼 bundling cmsds for cdn with webpack';
+
+const bundlePreactComponents = (cb) => {
+  bundleJs(
+    {
+      entryPath: path.resolve(distPath, 'esnext', 'index.esm.js'),
+      bundleName: 'preact-components.js',
+      webpackConfig: {
+        // Don't bundle preact because our customers need to interact with it directly
+        // in order to use our components, and we don't expose it in our code. They
+        // should instead load the preact umd module before loading our bundle.
+        externals: {
+          preact: 'preact',
+        },
+      },
+    },
+    cb
+  );
+};
+bundlePreactComponents.displayName = '💼 bundling Preact components for cdn with webpack';
+
+const bundleWebComponents = (cb) => {
+  bundleJs(
+    {
+      entryPath: path.resolve(distPath, 'esnext', 'web-components', 'index.js'),
+      bundleName: 'web-components.js',
+    },
+    cb
+  );
+};
+bundleWebComponents.displayName = '💼 bundling web components for cdn with webpack';
 
 /*
  * copies react bundles currently installed into cdn dist folder
@@ -259,8 +328,11 @@ const copyReactToDist = (cb) => {
 
   gulp
     .src([
-      `${nodeModules}/react/umd/react.production.min.js`,
-      `${nodeModules}/react-dom/umd/react-dom.production.min.js`,
+      // `${nodeModules}/react/umd/react.production.min.js`,
+      // `${nodeModules}/react-dom/umd/react-dom.production.min.js`,
+      `${nodeModules}/preact/dist/preact.min.umd.js`,
+      `${nodeModules}/preact/dist/preact.umd.js`,
+      `${nodeModules}/preact/dist/preact.umd.js.map`,
     ])
     .pipe(gulp.dest(`${distPath}/js`))
     .on('end', cb);
@@ -287,8 +359,8 @@ log('🪴 building the cmsds');
 exports.build = gulp.series(
   cleanDist,
   gulp.parallel(copyThemes, copyImages, copyFonts, copyJSON),
-  gulp.parallel(compileSass, compileJs, compileEsmJs, compileTypescriptDefs),
-  gulp.parallel(bundleJs, copyReactToDist)
+  gulp.parallel(compileSass, compileJs, compileEsmJs, compileJsWithPreact, compileTypescriptDefs),
+  gulp.series(bundlePreactComponents, bundleWebComponents, copyReactToDist)
 );
 
 /*

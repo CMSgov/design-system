@@ -17,7 +17,7 @@
   "license": "SEE LICENSE IN LICENSE.md",
   "main": "dist/components/index.js",
   "module": "dist/esnext/index.esm.js",
-  "sideEffects": false,
+  "sideEffects": ["./dist/esnext/web-components/ds-alert.js", "./dist/esnext/web-components/ds-badge.js", "./dist/esnext/web-components/ds-button.js"],
   "types": "dist/types/index.d.ts",
   "files": [
     "dist",
@@ -40,6 +40,7 @@
     "inquirer": "^9.0.2",
     "lodash": "^4.17.21",
     "ora": "^6.1.2",
+    "preactement": "1.8.2",
     "prop-types": "^15.8.1",
     "react-day-picker": "^8.0.5",
     "react-transition-group": "^4.4.2",

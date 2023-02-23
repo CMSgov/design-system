@@ -7,9 +7,8 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "yarn build:tokens && yarn build:core && yarn build:healthcare && yarn build:medicare && yarn build:cmsgov && yarn build:prop-data",
+    "build": "yarn build:tokens && yarn build:core && yarn build:healthcare && yarn build:medicare && yarn build:prop-data",
     "build:core": "yarn gulp build",
-    "build:cmsgov": "yarn gulp build --package packages/ds-cms-gov",
     "build:healthcare": "yarn gulp build --package packages/ds-healthcare-gov",
     "build:medicare": "yarn gulp build --package packages/ds-medicare-gov",
     "build:storybook": "./scripts/build-storybook.sh",
@@ -40,11 +39,9 @@
     "test:a11y": "yarn playwright test --config tests/a11y/playwright.config.ts",
     "test:unit": "yarn jest --config=tests/unit/jest.config.js",
     "test:unit:update": "yarn test:unit --updateSnapshot",
-    "test:browser:all": "yarn test:browser:interaction && yarn test:browser:all",
-    "test:browser": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.30.0-focal yarn playwright test --config tests/browser/playwright.config.ts",
-    "test:browser:smoke": "docker run --rm --network host -v $(pwd):/work/ -w /work/ --env SMOKE=true mcr.microsoft.com/playwright:v1.30.0-focal yarn playwright test --config tests/browser/playwright.config.ts",
-    "test:browser:interaction": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.30.0-focal yarn playwright test --config tests/browser/interaction.config.ts",
-    "test:browser:update": "yarn build:storybook && docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.30.0-focal yarn playwright test --config tests/browser/playwright.config.ts -u",
+    "test:unit:preact": "PREACT=true yarn jest --config=tests/unit/jest.config.js",
+    "test:browser": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.25.0-focal yarn playwright test --config tests/browser/playwright.config.ts",
+    "test:browser:update": "yarn build:storybook && docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.25.0-focal yarn playwright test --config tests/browser/playwright.config.ts -u",
     "type-check": "yarn tsc --noEmit"
   },
   "husky": {
@@ -78,7 +75,7 @@
     "@babel/preset-react": "^7.8.3",
     "@babel/preset-typescript": "^7.15.0",
     "@babel/register": "^7.8.4",
-    "@playwright/test": "^1.30.0",
+    "@playwright/test": "^1.25.1",
     "@storybook/addon-actions": "^6.5.12",
     "@storybook/addon-essentials": "^6.5.12",
     "@storybook/addon-links": "^6.5.12",
@@ -94,6 +91,7 @@
     "@typescript-eslint/eslint-plugin": "^5.16.0",
     "@typescript-eslint/parser": "^5.16.0",
     "babel-plugin-inline-react-svg": "^2.0.1",
+    "babel-plugin-module-resolver": "^5.0.0",
     "babel-plugin-typescript-to-proptypes": "^2.0.0",
     "copy-webpack-plugin": "^6.4.1",
     "css-loader": "^5",
@@ -127,6 +125,7 @@
     "postcss": "^8",
     "postcss-import": "^15.0.0",
     "postcss-scss": "^4.0.3",
+    "preact": "10.11.3",
     "prettier": "^2.6.1",
     "react": "17.0.2",
     "react-app-polyfill": "^3.0.0",
@@ -147,6 +146,5 @@
   "engines": {
     "node": ">=11.0.0",
     "yarn": ">=1.22.4"
-  },
-  "dependencies": {}
+  }
 }
