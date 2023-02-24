@@ -1,6 +1,7 @@
 import { execSync } from 'node:child_process';
 import chalk from 'chalk';
 import readline from 'readline';
+import themes from '../themes.json';
 
 interface PRDetails {
   author: string;
@@ -11,93 +12,21 @@ interface PRDetails {
   title: string;
 }
 
-interface Note {
-  title: string;
-  number: number;
-}
-
-interface Notes {
-  [key: string | symbol]: Note[];
-}
-
-interface Categories {
-  title?: string;
-  url?: string;
-  version?: string;
-  items?: Notes;
-}
+type Themes = typeof themes | any;
+const theme: Themes = themes;
 
 const c = chalk;
 
-const mdTemplate = () => {
-  let t = '';
-
-  t += '{{#.}}';
-  t += '## [{{title}}]({{&url}}) []\n';
-  t += '{{#breaking }}### 🚨 Breaking changes\n{{/breaking}}';
-  t += '{{#breaking }}';
-  t += '  - {{&title}} (#{{&number}})\n';
-  t += '{{/breaking}}';
-  t += '{{#added}}### 🚀 Added\n{{/added}}';
-  t += '{{#added}}';
-  t += '  - {{&title}} (#{{&number}})\n';
-  t += '{{/added}}';
-  t += '{{#changed}}### 💅 Changed\n{{/changed}}';
-  t += '{{#changed}}';
-  t += '  - {{&title}} (#{{&number}})\n';
-  t += '{{/changed}}';
-  t += '{{#fixed}}### 🛠 Fixed\n{{/fixed}}';
-  t += '{{#fixed}}';
-  t += '  - {{&title}} (#{{&number}})\n';
-  t += '{{/fixed}}';
-  t += '{{#internal}}### 📦 Internal\n{{/internal}}';
-  t += '{{#internal}}';
-  t += '  - {{&title}} (#{{&number}})\n';
-  t += '{{/internal}}';
-  t += '{{/.}}';
-
-  return t;
+const icons = {
+  breaking: '🚨',
+  added: '🚀',
+  changed: '💅',
+  fixed: '🛠',
+  internal: '📦',
 };
 
-const writeMd = (data: Categories[]): string => {
-  let notes = '';
-
-  data.forEach((section) => {
-    if (!section.items?.length) return;
-    if (section.items.breaking) {
-      notes += '### 🚨 Breaking changes\n';
-      section.items.breaking.forEach((i) => {
-        notes += `  - ${i.title} (${i.number})`;
-      });
-    }
-    if (section.items.added) {
-      notes += '### 🚀 Added\n';
-      section.items.added.forEach((i) => {
-        notes += `  - ${i.title} (${i.number})`;
-      });
-    }
-    if (section.items.changed) {
-      notes += '### 💅 Changed\n';
-      section.items.changed.forEach((i) => {
-        notes += `  - ${i.title} (${i.number})`;
-      });
-    }
-    if (section.items.fixed) {
-      notes += '### 🛠 Fixed\n';
-      section.items.fixed.forEach((i) => {
-        notes += `  - ${i.title} (${i.number})`;
-      });
-    }
-    if (section.items.internal) {
-      notes += '### 📦 Internal\n';
-      section.items.internal.forEach((i) => {
-        notes += `  - ${i.title} (${i.number})`;
-      });
-    }
-  });
-
-  return notes;
-};
+type Icons = typeof icons | any;
+const icon: Icons = icons;
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -137,65 +66,76 @@ const getPRs = () => {
  * will be presented in each of those sections. An item will also be placed
  * in multiple type categories if it belongs to multiple.
  */
-const organizeNotes = (data: PRDetails[]): Categories => {
-  const notes = [
-    {
-      title: 'Design System',
-      url: 'https://www.npmjs.com/package/@cmsgov/design-system',
-      items: [],
-    },
-    {
-      title: 'Healthcare.gov Design System',
-      url: 'https://www.npmjs.com/package/@cmsgov/ds-healthcare-gov',
-      items: [],
-    },
-    {
-      title: 'Medicare.gov Design System',
-      url: 'https://www.npmjs.com/package/@cmsgov/ds-medicare-gov',
-      items: [],
-    },
-    { title: 'Documentation Site', url: 'https://design.cms.gov', items: [] },
-  ] as Categories;
+const organizeNotes = (data: PRDetails[]) => {
+  const notes: any = [];
 
-  const checkObj = (o: any, k: any) => {
-    return (o[k] = o[k] || []);
-  };
-
-  const placeNote = (pr: PRDetails, cat: string, isImpact: boolean) => {
-    const theNote = { title: pr.title, number: pr.ghpr };
-
-    // if (pr.labels?.includes('Impacts: Core')) checkObj(notes[0].items, cat).push(n) ;
-    // if (pr.labels?.includes('Impacts: Healthcare')) checkObj(notes[1].items, cat).push(n);
-    // if (pr.labels?.includes('Impacts: Medicare')) checkObj(notes[2].items, cat).push(n);
-    // if (pr.labels?.includes('Impacts: CMSgov')) checkObj(notes[2].items, cat).push(n);
-    // if (pr.labels?.includes('Impacts: Documentation')) checkObj(notes[3].items, cat).push(n);
-  };
-
-  data.forEach((pr) => {
-    // const notes = []
-
+  data.forEach((pr: PRDetails) => {
     if (!pr.labels?.length) return;
 
-    const pr_impacts = [];
-    const pr_type = [];
+    const noteData: any[] = [];
+    const prImpacts: string[] = [];
+    const prType: string[] = [];
 
     pr.labels.forEach((label) => {
-      const t = label.replace(/Type: /, '').toLowerCase();
-      const i = label.replace(/Impacts: /, '').toLowerCase();
+      const t = label.match(/Type: (\w+)/i);
+      const i = label.match(/Impacts: (\w+)/i);
 
-      if (t) pr_type.push(t);
-      if (i) pr_impacts.push(i);
+      if (t) prType.push(t[1].toLowerCase());
+      if (i) prImpacts.push(i[1].toLowerCase());
     });
 
-    if (pr_impacts.length < 1 || pr_type.length !== 1) {
+    if (prImpacts.length < 1 || prType.length !== 1) {
       console.error(
-        'PRs are required to have at least one Impacts: label and at exactly one Type: label.'
+        '\nPRs are required to have at least one Impacts: label and at exactly one Type: label.'
       );
       console.log(pr);
+      console.log();
+      process.exit(1);
     }
+
+    prImpacts.forEach((i) => {
+      noteData.push([i, prType[0], pr.title, pr.ghpr]);
+    });
+
+    notes.push(...noteData);
   });
 
-  return notes;
+  return notes.sort();
+};
+
+const makeNotesMD = (notes: any[]): string => {
+  let md = '';
+  let lastSystem = '';
+  let lastType = '';
+
+  const upCase = (s: string): string => {
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  };
+
+  notes.forEach((note) => {
+    const [sys, typ, title, num] = note;
+    const typIcon = icon[typ];
+    const sameSystem = lastSystem === sys;
+    const sameType = lastType === typ;
+    lastSystem = sys;
+    lastType = typ;
+
+    if (sameType && sameSystem) {
+      md += `\n    - ${title} (#${num})`;
+    }
+    if (!sameType && sameSystem) {
+      md += `\n  ### ${typIcon} ${upCase(typ)}`;
+      md += `\n    - ${title} (#${num})`;
+    }
+    if (!sameSystem || (!sameSystem && !sameType)) {
+      // the first item from this group, let's print a title and the first type
+      const url = theme[sys].urlNpm ? theme[sys].urlNpm : 'https://design.cms.gov';
+      md += `\n## [${theme[sys].longName}](${url}) [version]`;
+      md += `\n  ### ${typIcon} ${upCase(typ)}`;
+      md += `\n    - ${title} (#${num})`;
+    }
+  });
+  return md + '\n';
 };
 
 /**
@@ -236,7 +176,8 @@ rl.question(
 const start = () => {
   const prs = getPRs();
   const organizedPRs = organizeNotes(prs);
-  console.log(organizedPRs);
+  const notesMD = makeNotesMD(organizedPRs);
+  console.log(notesMD);
   displayJiraTickets(prs);
   process.exit(0);
 };
