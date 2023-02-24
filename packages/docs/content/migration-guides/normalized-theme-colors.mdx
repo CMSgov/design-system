@@ -84,23 +84,8 @@ We've updated the `primary` color to complete the spectrum from lightest to dark
 
 <ThemeContent onlyThemes={['core']}>
 
-One of the major shifts was the use of green in the `core` and `healthcare` themes
-and the creation of the `info` status color. 
 
-In `core` and `healthcare`, green is
-used as a secondary brand color (for buttons), but its `secondary` color family had
-to be used for the alternate blue found in some components like the info alert. In
-order to free up the `secondary` slot for more appropriate use and get rid of
-the non-semantic `green` color family in our theme variables, we created a new
-category of status color specifically for informational components like info
-alerts, badges, and drawer toggle icons.
-
-
----
-
-**Alternate version**
-
-One major shift with color normalization is updating the secondary color to use green system color tokens in the core and healthcare themes. In addition, we created the the info status color and secondary colors have moved to the info color palette for informational components such as alerts, badges, and icons.
+One major shift with color normalization is updating the `secondary` color to use green system color tokens in the core and healthcare themes. In addition, we created the `info` status color and `secondary` colors have moved to the `info` color palette for informational components such as alerts, badges, and icons.
 
 
 <Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
@@ -123,22 +108,7 @@ One major shift with color normalization is updating the secondary color to use 
 </ThemeContent>
 <ThemeContent onlyThemes={['healthcare']}>
 
-One of the major shifts was the use  of green in the `core` and `healthcare` themes
-and the creation of the `info` status color. 
-
-In `core` and `healthcare`, green is
-used as a secondary brand color (for buttons), but its `secondary` color family had
-to be used for the alternate blue found in some components like the info alert. In
-order to free up the `secondary` slot for more appropriate use and get rid of
-the non-semantic `green` color family in our theme variables, we created a new
-category of status color specifically for informational components like info
-alerts, badges, and drawer toggle icons.
-
----
-
-**Alternate version**
-
-One of the major shifts with color normalization is the update of the `secondary` color to use green system color tokens in the `core` and `healthcare` themes. In addition, the `info` status color was created and `secondary` colors have been moved to the `info` color palette and are used for informational components such as alerts, badges, and icons.
+One major shift with color normalization is updating the `secondary` color to use green system color tokens in the core and healthcare themes. In addition, we created the `info` status color and `secondary` colors have moved to the `info` color palette for informational components such as alerts, badges, and icons.
 
 <ColorMigrationTable
   colorRows={[
@@ -379,7 +349,7 @@ Grays have been normalized and use the same naming structure as other color pale
 
 ### Color shift of `gray` and `gray-dark`
 
-Both of these shades became lighter with this update to accommodate a full neutral spectrum.
+Both of these colors are now lighter.
 
 <Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
   <b>What does this mean:</b> You'll need to evaluate if you need to adjust the
@@ -416,15 +386,11 @@ Both of these shades became lighter with this update to accommodate a full neutr
 </ThemeContent>
 
 
-### Effect of removal of `gray-cool-light`
+### Removal of `gray-cool-light`
 
-Previously, `gray-cool-light` was mapped to the system color token `ocean-50` for
-all themes.
+Previously, `gray-cool-light` was mapped to the same system color token `ocean-50` for all themes.
 
-With the removal of `gray-cool-light`, we remapped the background hover color for
-day-picker buttons to `primary-lightest`. On all but the core theme, this results
-in a slight color shift for the hover background of those day-picker buttons and
-also brings more intentional color use to themes.
+When removing `gray-cool-light`, we remapped the background color for the hover state of day-picker buttons to `primary-lightest`. On all but the core theme, this results in a slight color shift for the background color of those day-picker buttons when hovered.
 
 
 <ThemeContent onlyThemes={['healthcare']}>
@@ -461,7 +427,7 @@ Coolblue was unused in the design system.
 
 <Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
   <b>What does this mean:</b> If you are using <code>coolblue</code> colors, you'll need to
-  update to use a new theme color instead.
+  update to use a new <a href="/foundation/theme-colors/">theme color</a> instead.
 </Alert>
 
 <ColorMigrationTable
