@@ -1,9 +1,11 @@
 import React from 'react';
+import { getSystemColorTokenFromValue } from '../../helpers/themeTokens';
 import { hexHasTransparency, pickTextColor } from 'design-system-tokens/src/lib/utility';
 import { HexValue } from 'design-system-tokens/src/lib/types';
 
 export interface ColorExampleRowProps {
   displayName?: string;
+  displayValue?: string;
   name: string;
   value: string;
 }
@@ -13,7 +15,7 @@ export interface ColorExampleRowProps {
  * color of the specified color plus two text/code elements with the name of
  * the color and the value of the color
  */
-const ColorExampleRow = ({ displayName, name, value }: ColorExampleRowProps) => {
+const ColorExampleRow = ({ displayName, displayValue, name, value }: ColorExampleRowProps) => {
   const nameId = `color-name-${name}`;
   const valueId = `color-value-${name}`;
   const textColor = pickTextColor(
@@ -27,6 +29,10 @@ const ColorExampleRow = ({ displayName, name, value }: ColorExampleRowProps) => 
         color: textColor,
         background: 'none',
       };
+
+  if (!displayValue) {
+    displayValue = getSystemColorTokenFromValue(value);
+  }
 
   return (
     <div className="c-color-example-row">
@@ -47,7 +53,7 @@ const ColorExampleRow = ({ displayName, name, value }: ColorExampleRowProps) => 
         {displayName ?? name}
       </code>
       <code className="ds-u-display--block ds-u-margin-left--1" id={valueId} style={codeStyle}>
-        {value}
+        {displayValue ?? value}
       </code>
     </div>
   );
