@@ -47,14 +47,14 @@ const ColorExampleRow = ({ displayName, displayValue, name, value }: ColorExampl
         <rect x="0" y="0" width="100%" height="100%" fill={value} />
       </svg>
       <code
-        className="ds-u-display--block"
+        className="c-color-example-row__name"
         id={nameId}
         aria-describedby={valueId}
         style={codeStyle}
       >
         {displayName ?? name}
       </code>
-      <code className="ds-u-display--block ds-u-margin-left--1" id={valueId} style={codeStyle}>
+      <code className="c-color-example-row__value" id={valueId} style={codeStyle}>
         {displayValue ?? value}
       </code>
     </div>
