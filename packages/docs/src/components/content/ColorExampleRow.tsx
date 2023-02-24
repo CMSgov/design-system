@@ -3,6 +3,9 @@ import { getSystemColorTokenFromValue } from '../../helpers/themeTokens';
 import { hexHasTransparency, pickTextColor } from 'design-system-tokens/src/lib/utility';
 import { HexValue } from 'design-system-tokens/src/lib/types';
 
+const DARK_TEXT = 'var(--color-base)';
+const LIGHT_TEXT = 'var(--color-base-inverse)';
+
 export interface ColorExampleRowProps {
   displayName?: string;
   displayValue?: string;
@@ -18,16 +21,15 @@ export interface ColorExampleRowProps {
 const ColorExampleRow = ({ displayName, displayValue, name, value }: ColorExampleRowProps) => {
   const nameId = `color-name-${name}`;
   const valueId = `color-value-${name}`;
-  const textColor = pickTextColor(
-    value as HexValue,
-    'var(--color-base-inverse)',
-    'var(--color-base)'
-  );
+  const textColor = pickTextColor(value as HexValue, LIGHT_TEXT, DARK_TEXT);
   const codeStyle: React.CSSProperties = hexHasTransparency(value as HexValue)
     ? {}
     : {
         color: textColor,
-        background: 'none',
+        // Some of the mid-range colors do not have sufficient text contrast no matter which
+        // text color is chosen, so we need to add a little bit of background color to
+        // achieve sufficient contrast
+        background: textColor === DARK_TEXT ? 'rgb(255 255 255 / 10%)' : 'rgb(0 0 0 / 10%)',
       };
 
   if (!displayValue) {
