@@ -10,8 +10,9 @@ import { Alert } from '@cmsgov/design-system';
 In the process of expanding our family of design systems to include a fourth
 brand (CMS.gov), there were places where theme variables were used inconsistently
 between brand themes. In some instances, color variables and whole color families
-weren't being used and were left over from Sass variables
-that pre-dated our design tokens and theming system. We've cleaned up and reorganized these colors to provide a more intentional approach to color. 
+weren't being used and were left over from Sass variables that pre-dated our
+design tokens and theming system. We've cleaned up and reorganized these colors
+to provide a more intentional approach to color. 
 
 ## Brand colors 
 
@@ -19,7 +20,7 @@ that pre-dated our design tokens and theming system. We've cleaned up and reorga
 
 We've updated the primary color to complete the spectrum from lightest to darkest. 
 
-<Alert variation="warn" weight="lightweight" hideIcon="true">
+<Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
   <b>What does this mean:</b> You now have more <code>primary</code> color values to use in your designs.
 </Alert>
 
@@ -99,8 +100,9 @@ the non-semantic `green` color family in our theme variables, we created a new
 category of status color specifically for informational components like info
 alerts, badges, and drawer toggle icons.
 
-<Alert variation="warn" weight="lightweight" hideIcon="true">
-  <b>What does this mean:</b> If you were using <code>secondary</code> colors in your design, you'll need to re-evaluate if that color should be remapped to another color value.
+<Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
+  <b>What does this mean:</b> If you were using <code>secondary</code> colors in your design,
+  you'll need to re-evaluate if that color should be remapped to another color value.
 </Alert>
 
 <ColorMigrationTable
@@ -188,8 +190,9 @@ An explanation about status colors
 
 We added an informational color swatch set to be used for informational alerts, badges, and icons.
 
-<Alert variation="warn" weight="lightweight" hideIcon="true">
-  <b>What does this mean:</b> If you were using <code>secondary</code> colors for info-related elements, you'll need to update them to use <code>info</code> colors instead.
+<Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
+  <b>What does this mean:</b> If you were using <code>secondary</code> colors for
+  info-related elements, you'll need to update them to use <code>info</code> colors instead.
 </Alert>
 
 
@@ -258,8 +261,9 @@ We added an informational color swatch set to be used for informational alerts, 
 
 Green is a non-semantic duplicate of `success`.
 
-<Alert variation="warn" weight="lightweight" hideIcon="true">
-  <b>What does this mean:</b> If you were using <code>green</code> colors for success states, you'll need to update to use <code>success</code> colors instead.
+<Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
+  <b>What does this mean:</b> If you were using <code>green</code> colors for success
+  states, you'll need to update to use <code>success</code> colors instead.
 </Alert>
 
 <ColorMigrationTable
@@ -278,8 +282,9 @@ Green is a non-semantic duplicate of `success`.
 
 Gold is a non-semantic duplicate of `warn`. 
 
-<Alert variation="warn" weight="lightweight" hideIcon="true">
-  <b>What does this mean:</b> If you were using <code>gold</code> colors for warning states, you'll need to update to use <code>warn</code> colors instead.
+<Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
+  <b>What does this mean:</b> If you were using <code>gold</code> colors for
+  warning states, you'll need to update to use <code>warn</code> colors instead.
 </Alert>
 
 
@@ -318,8 +323,9 @@ Gold is a non-semantic duplicate of `warn`.
 
 Red is a non-semantic duplicate of `error`. 
 
-<Alert variation="warn" weight="lightweight" hideIcon="true">
-  <b>What does this mean:</b> If you were using <code>red</code> colors for error states, you'll need to update to use <code>error</code> colors instead.
+<Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
+  <b>What does this mean:</b> If you were using <code>red</code> colors for error states,
+  you'll need to update to use <code>error</code> colors instead.
 </Alert>
 
 <ColorMigrationTable
@@ -338,8 +344,9 @@ Red is a non-semantic duplicate of `error`.
 
 We normalized the grays and gave them the same naming structure as the other color families. 
 
-<Alert variation="warn" weight="lightweight" hideIcon="true">
-  <b>What does this mean:</b> If you were using <code>gray</code> colors that have been removed, you'll need to remap to a new <code>gray</code> color.
+<Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
+  <b>What does this mean:</b> If you were using <code>gray</code> colors that have been
+  removed, you'll need to remap to a new <code>gray</code> color.
 </Alert>
 
 <ThemeContent neverThemes={['medicare']}>
@@ -365,8 +372,9 @@ We normalized the grays and gave them the same naming structure as the other col
 
 Both of these shades became lighter with this update to accommodate a full neutral spectrum.
 
-<Alert variation="warn" weight="lightweight" hideIcon="true">
-  <b>What does this mean:</b> You'll need to evaluate if you need to adjust the <code>gray</code> color you are using.
+<Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
+  <b>What does this mean:</b> You'll need to evaluate if you need to adjust the
+  <code>gray</code> color you are using.
 </Alert>
 
 <ColorMigrationTable
@@ -401,11 +409,13 @@ Both of these shades became lighter with this update to accommodate a full neutr
 
 ### Effect of removal of `gray-cool-light`
 
-Previously, `gray-cool-light` was mapped to the system color token `ocean-50` for all themes.
+Previously, `gray-cool-light` was mapped to the system color token `ocean-50` for
+all themes.
 
 With the removal of `gray-cool-light`, we remapped the background hover color for
 day-picker buttons to `primary-lightest`. On all but the core theme, this results
-in a slight color shift for the hover background of those day-picker buttons and also brings more intentional color use to themes.
+in a slight color shift for the hover background of those day-picker buttons and
+also brings more intentional color use to themes.
 
 
 <ThemeContent onlyThemes={['healthcare']}>
@@ -440,8 +450,9 @@ in a slight color shift for the hover background of those day-picker buttons and
 
 Coolblue was unused in the design system. 
 
-<Alert variation="warn" weight="lightweight" hideIcon="true">
-  <b>What does this mean:</b> If you were using <code>coolblue</code> colors, you'll need to update to use a new theme color instead.
+<Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
+  <b>What does this mean:</b> If you were using <code>coolblue</code> colors, you'll need to
+  update to use a new theme color instead.
 </Alert>
 
 <ColorMigrationTable
