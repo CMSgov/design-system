@@ -2,6 +2,7 @@ import { execSync } from 'node:child_process';
 import chalk from 'chalk';
 import readline from 'readline';
 import themes from '../themes.json';
+import { writeFileSync } from 'node:fs';
 
 interface PRDetails {
   author: string;
@@ -33,8 +34,30 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-// current milestone reference
+/**
+ * Current milestone reference
+ */
 const cm = JSON.parse(execSync('gh api repos/CMSgov/design-system/milestones').toString())[0];
+
+/**
+ * Grabs latest tag from each theme and returns an array of `theme: version` items.
+ */
+export const getLatestVersions = () => {
+  const versions: { [key: string]: string } = {};
+  Object.entries(themes).forEach((theme) => {
+    const pkgn = theme[1].packageName;
+    const vers = execSync(`git tag --sort=taggerdate | grep "${pkgn}" | tail -1`).toString().trim();
+    versions[theme[0]] = vers.replace(/^@cmsgov\/.*@(.*)$/, '$1');
+  });
+  return versions;
+};
+const versions = getLatestVersions();
+
+export const getLatestCoreTag = () => {
+  return execSync(`git tag --sort=taggerdate | grep "${themes.core.packageName}" | tail -1`)
+    .toString()
+    .trim();
+};
 
 /**
  * Get list of PR's associated with the current milestone formatted
@@ -121,18 +144,18 @@ const makeNotesMD = (notes: any[]): string => {
     lastType = typ;
 
     if (sameType && sameSystem) {
-      md += `\n    - ${title} (#${num})`;
+      md += `- ${title} (#${num})\n`;
     }
     if (!sameType && sameSystem) {
-      md += `\n  ### ${typIcon} ${upCase(typ)}`;
-      md += `\n    - ${title} (#${num})`;
+      md += `### ${typIcon} ${upCase(typ)}\n`;
+      md += `- ${title} (#${num})\n`;
     }
     if (!sameSystem || (!sameSystem && !sameType)) {
       // the first item from this group, let's print a title and the first type
       const url = theme[sys].urlNpm ? theme[sys].urlNpm : 'https://design.cms.gov';
-      md += `\n## [${theme[sys].longName}](${url}) [version]`;
-      md += `\n  ### ${typIcon} ${upCase(typ)}`;
-      md += `\n    - ${title} (#${num})`;
+      md += `## [${theme[sys].longName}](${url}) [${versions[sys]}]\n`;
+      md += `### ${typIcon} ${upCase(typ)}\n`;
+      md += `- ${title} (#${num})\n`;
     }
   });
   return md + '\n';
@@ -150,8 +173,12 @@ const displayJiraTickets = (data: PRDetails[]) => {
     .map((pr) => {
       return { ticket: `https://jira.cms.gov/browse/${pr.ticket}`, title: pr.title };
     });
+  const unticketed = data.filter((pr) => {
+    return pr.ticket?.toLowerCase().includes('ticket');
+  });
   notes.forEach((note) => console.log(`${note.ticket} - ${note.title}`));
-  console.log('\n');
+  console.log(`\n-- ${c.yellow('Unticketed')} --`);
+  unticketed.forEach((note) => console.log(`${note.author} - ${note.ticket} - ${note.title}`));
 };
 
 /**
@@ -163,23 +190,49 @@ console.log(
   } open issues and ${c.magenta(cm.closed_issues)} closed issues.`
 );
 
-// Ensure we have the correct milestone.
-rl.question(
-  '\nIs this the correct Milestone and are you ready to create notes? (Y/n): ',
-  (answer) => {
-    answer.trim().toLowerCase() === 'y' || answer.trim().toLowerCase() === ''
-      ? start()
-      : process.exit(0);
-  }
-);
+const publishNotes = (notes: string) => {
+  const fn = `${versions.core}-release-notes.md`;
 
-const start = () => {
-  const prs = getPRs();
-  const organizedPRs = organizeNotes(prs);
-  const notesMD = makeNotesMD(organizedPRs);
-  console.log(notesMD);
-  displayJiraTickets(prs);
-  process.exit(0);
+  try {
+    writeFileSync(fn, notes, { encoding: 'utf8' });
+  } catch (err) {
+    console.error(err);
+    process.exit(1);
+  }
+
+  let successUrl;
+  const draftPre = versions.core.includes('beta') ? '--draft --prerelease' : '--draft';
+
+  try {
+    successUrl = execSync(
+      `gh release create ${getLatestCoreTag()} ${draftPre} --title ${
+        versions.core
+      }-test --notes-file ./${fn}`,
+      { encoding: 'utf8' }
+    );
+    console.log(`\n-- ${c.blueBright('Success!')} --`);
+    console.log('A draft for these notes can be found at the url below.');
+    console.log(c.redBright('Please validate and update as needed before release.\n'));
+    console.log(successUrl);
+    process.exit(0);
+  } catch (err) {
+    console.error(err);
+    process.exit(1);
+  }
 };
 
-// create text changelog to go in dist folder?
+const prs = getPRs();
+const organizedPRs = organizeNotes(prs);
+const notesMD = makeNotesMD(organizedPRs).trim();
+
+// Display Jira tickets for PM
+displayJiraTickets(prs);
+
+console.log(`\n-- ${c.cyan('Notes')} --`);
+console.log(notesMD);
+
+rl.question('\nDo these notes look OK to publish as a Draft? (Y/n): ', (answer) => {
+  answer.trim().toLowerCase() === 'y' || answer.trim().toLowerCase() === ''
+    ? publishNotes(notesMD)
+    : process.exit(0);
+});
