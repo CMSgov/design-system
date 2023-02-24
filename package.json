@@ -40,8 +40,9 @@
     "test:a11y": "yarn playwright test --config tests/a11y/playwright.config.ts",
     "test:unit": "yarn jest --config=tests/unit/jest.config.js",
     "test:unit:update": "yarn test:unit --updateSnapshot",
-    "test:browser": "yarn test:browser:interaction && yarn test:browser:all",
-    "test:browser:all": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.30.0-focal yarn playwright test --config tests/browser/playwright.config.ts",
+    "test:browser:all": "yarn test:browser:interaction && yarn test:browser:all",
+    "test:browser": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.30.0-focal yarn playwright test --config tests/browser/playwright.config.ts",
+    "test:browser:smoke": "docker run --rm --network host -v $(pwd):/work/ -w /work/ --env SMOKE=true mcr.microsoft.com/playwright:v1.30.0-focal yarn playwright test --config tests/browser/playwright.config.ts",
     "test:browser:interaction": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.30.0-focal yarn playwright test --config tests/browser/interaction.config.ts",
     "test:browser:update": "yarn build:storybook && docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.30.0-focal yarn playwright test --config tests/browser/playwright.config.ts -u",
     "type-check": "yarn tsc --noEmit"

@@ -19,12 +19,12 @@ export const components: AnyTokenValues = {
   },
 
   'alert': {
-    '__background-color':                         t.color['secondary-lightest'],
+    '__background-color':                         t.color['info-lightest'],
     '__background-color--error':                  t.color['error-lightest'],
     '__background-color--lightweight':            t.color['white'],
     '__background-color--success':                t.color['success-lightest'],
     '__background-color--warn':                   t.color['warn-lightest'],
-    '__border-left-color':                        t.color['secondary'],
+    '__border-left-color':                        t.color['info'],
     '__border-color--error':                      t.color['error'],
     '__border-color--success':                    t.color['success'],
     '__border-color--warn':                       t.color['warn'],
@@ -42,13 +42,13 @@ export const components: AnyTokenValues = {
     '__background-color':                         t.color['white'],
     '__border-color':                             t.color['gray-lighter'],
     '-item__font-color':                          t.color['primary'],
-    '-item__background-color--active':            t.color['secondary-darkest'],
+    '-item__background-color--active':            t.color['primary-darkest'],
     '-item__font-color--active':                  t.color['white'],
     '-item-message__font-color':                  t.color['muted'],
   },
 
   'badge': {
-    '__background-color':                         t.color['gray'],
+    '__background-color':                         t.color['gray-dark'],
     '__background-color--alert':                  t.color['error'],
     '__background-color--info':                   t.color['primary'],
     '__background-color--success':                t.color['success'],
@@ -97,7 +97,7 @@ export const components: AnyTokenValues = {
 
   'button-dark': {
     '__background-color--active':                 'transparent',
-    '__background-color--disabled':               t.color['white'],
+    '__background-color--disabled':               'transparent',
     '__background-color--hover':                  'transparent',
     '__background-color':                         'transparent',
     '__border-color--active':                     'currentColor',
@@ -105,42 +105,27 @@ export const components: AnyTokenValues = {
     '__border-color--hover':                      'currentColor',
     '__border-color':                             'currentColor',
     '__color--active':                            t.color['gray-lighter'],
-    '__color--disabled':                          t.color['gray'],
+    '__color--disabled':                          t.color['gray-dark'],
     '__color--hover':                             t.color['gray-lightest'],
     '__color':                                    t.color['white'],
   },
 
   'button-dark-alt': {
     '__background-color--active':                 'transparent',
-    '__background-color--disabled':               t.color['white'],
+    '__background-color--disabled':               'transparent',
     '__background-color--hover':                  'transparent',
     '__background-color':                         'transparent',
     '__border-color--active':                     'currentColor',
     '__border-color--disabled':                   'currentColor',
     '__border-color--hover':                      'currentColor',
     '__border-color':                             'currentColor',
-    '__color--active':                            t.color['secondary-light'],
-    '__color--disabled':                          t.color['gray'],
-    '__color--hover':                             t.color['secondary-lighter'],
-    '__color':                                    t.color['secondary-lightest'],
-  },
-
-  'button-solid': {
-    '__background-color--active':                 t.color['green-darkest'],
-    '__background-color--disabled':               t.color['gray-lighter'],
-    '__background-color--hover':                  t.color['green-darker'],
-    '__background-color':                         t.color['green'],
-    '__border-color--active':                     t.color['green-darkest'],
-    '__border-color--disabled':                   t.color['gray-lighter'],
-    '__border-color--hover':                      t.color['green-darker'],
-    '__border-color':                             t.color['green'],
-    '__color--active':                            t.color['white'],
+    '__color--active':                            t.color['gray-lighter'],
     '__color--disabled':                          t.color['gray-dark'],
-    '__color--hover':                             t.color['white'],
+    '__color--hover':                             t.color['gray-lightest'],
     '__color':                                    t.color['white'],
   },
 
-  'button-solid-alt': {
+  'button-solid': {
     '__background-color--active':                 t.color['secondary-darkest'],
     '__background-color--disabled':               t.color['gray-lighter'],
     '__background-color--hover':                  t.color['secondary-darker'],
@@ -149,19 +134,34 @@ export const components: AnyTokenValues = {
     '__border-color--disabled':                   t.color['gray-lighter'],
     '__border-color--hover':                      t.color['secondary-darker'],
     '__border-color':                             t.color['secondary'],
-    '__color--active':                            t.color['base'],
-    '__color--disabled':                          t.color['gray-dark'],
-    '__color--hover':                             t.color['base'],
-    '__color':                                    t.color['base'],
+    '__color--active':                            t.color['white'],
+    '__color--disabled':                          t.color['gray-darker'],
+    '__color--hover':                             t.color['white'],
+    '__color':                                    t.color['white'],
+  },
+
+  'button-solid-alt': {
+    '__background-color--active':                 t.color['primary-darkest'],
+    '__background-color--disabled':               t.color['gray-lighter'],
+    '__background-color--hover':                  t.color['primary-darker'],
+    '__background-color':                         t.color['primary'],
+    '__border-color--active':                     t.color['primary-darkest'],
+    '__border-color--disabled':                   t.color['gray-lighter'],
+    '__border-color--hover':                      t.color['primary-darker'],
+    '__border-color':                             t.color['primary'],
+    '__color--active':                            t.color['white'],
+    '__color--disabled':                          t.color['gray-darker'],
+    '__color--hover':                             t.color['white'],
+    '__color':                                    t.color['white'],
   },
 
   'button-solid-dark': {
     '__background-color--active':                 t.color['gray-lighter'],
-    '__background-color--disabled':               t.color['gray-dark'],
+    '__background-color--disabled':               t.color['gray-darker'],
     '__background-color--hover':                  t.color['gray-lightest'],
     '__background-color':                         t.color['white'],
     '__border-color--active':                     t.color['gray-lighter'],
-    '__border-color--disabled':                   t.color['gray-dark'],
+    '__border-color--disabled':                   t.color['gray-darker'],
     '__border-color--hover':                      t.color['gray-lightest'],
     '__border-color':                             t.color['white'],
     '__color--active':                            t.color['base'],
@@ -171,14 +171,14 @@ export const components: AnyTokenValues = {
   },
 
   'button-solid-dark-alt': {
-    '__background-color--active':                 t.color['secondary'],
-    '__background-color--disabled':               t.color['gray-dark'],
-    '__background-color--hover':                  t.color['secondary-light'],
-    '__background-color':                         t.color['secondary-lighter'],
-    '__border-color--active':                     t.color['secondary'],
-    '__border-color--disabled':                   t.color['gray-dark'],
-    '__border-color--hover':                      t.color['secondary-light'],
-    '__border-color':                             t.color['secondary-lighter'],
+    '__background-color--active':                 t.color['primary'],
+    '__background-color--disabled':               t.color['gray-darker'],
+    '__background-color--hover':                  t.color['primary-light'],
+    '__background-color':                         t.color['primary-lighter'],
+    '__border-color--active':                     t.color['primary'],
+    '__border-color--disabled':                   t.color['gray-darker'],
+    '__border-color--hover':                      t.color['primary-light'],
+    '__border-color':                             t.color['primary-lighter'],
     '__color--active':                            t.color['base'],
     '__color--disabled':                          t.color['base'],
     '__color--hover':                             t.color['base'],
@@ -209,10 +209,10 @@ export const components: AnyTokenValues = {
     '__border-color--disabled':                   'transparent',
     '__border-color--hover':                      'transparent',
     '__border-color':                             'transparent',
-    '__color--active':                            t.color['green-darkest'],
+    '__color--active':                            t.color['primary-darkest'],
     '__color--disabled':                          t.color['gray-lighter'],
-    '__color--hover':                             t.color['green-darker'],
-    '__color':                                    t.color['green'],
+    '__color--hover':                             t.color['primary-darker'],
+    '__color':                                    t.color['primary'],
   },
 
   'button-ghost-dark': {
@@ -225,7 +225,7 @@ export const components: AnyTokenValues = {
     '__border-color--hover':                      'transparent',
     '__border-color':                             'transparent',
     '__color--active':                            t.color['gray-lighter'],
-    '__color--disabled':                          t.color['gray'],
+    '__color--disabled':                          t.color['gray-dark'],
     '__color--hover':                             t.color['gray-lightest'],
     '__color':                                    t.color['white'],
   },
@@ -239,10 +239,10 @@ export const components: AnyTokenValues = {
     '__border-color--disabled':                   'transparent',
     '__border-color--hover':                      'transparent',
     '__border-color':                             'transparent',
-    '__color--active':                            t.color['secondary'],
-    '__color--disabled':                          t.color['gray'],
-    '__color--hover':                             t.color['secondary-light'],
-    '__color':                                    t.color['secondary-lighter'],
+    '__color--active':                            t.color['gray-lighter'],
+    '__color--disabled':                          t.color['gray-dark'],
+    '__color--hover':                             t.color['gray-lightest'],
+    '__color':                                    t.color['white'],
   },
 
   'choice': {
@@ -272,6 +272,10 @@ export const components: AnyTokenValues = {
     '-label__color--disabled--inverse':           t.color['muted-inverse'],
   },
 
+  'day-picker': {
+    '-button__background-color--hover':           t.color['primary-lightest'],
+  },
+
   'dialog': {
     '__background-color':                         t.color['white'],
     '__padding':                                  t.spacer['4'],
@@ -284,11 +288,11 @@ export const components: AnyTokenValues = {
     '__border-color':                             t.color['border'],
     '-close__color':                              t.color['black'],
     '-header__background-color':                  t.color['gray-lightest'],
-    '-footer__background-color':                  t.color['secondary-lightest'],
-    '-toggle__background-color--hover':           t.color['secondary'],
+    '-footer__background-color':                  t.color['primary-lightest'],
+    '-toggle__background-color--hover':           t.color['info'],
     '-toggle__color--hover':                      t.color['white'],
     '-toggle__background-color--hover--inverse':  t.color['white'],
-    '-toggle__color--hover--inverse':             t.color['gray-dark'],
+    '-toggle__color--hover--inverse':             t.color['gray-darker'],
   },
 
   'dropdown': {
@@ -298,7 +302,7 @@ export const components: AnyTokenValues = {
 
   'filter-chip': {
     '__border-radius':                            t.radius['pill'],
-    '__background-color':                         t.color['secondary-lightest'],
+    '__background-color':                         t.color['primary-lightest'],
     '__border-color':                             t.color['primary'],
     '__color':                                    t.color['base'],
     '__background-color--active':                 t.color['primary'],
@@ -357,8 +361,8 @@ export const components: AnyTokenValues = {
     '-link__color--focus':                        t.color['primary-darker'],
     '-link__color--disabled':                     t.color['gray-lighter'],
     '-current-page__color':                       t.color['base'],
-    '-overflow__color':                           t.color['gray'],
-    '-page-count__color':                         t.color['gray'],
+    '-overflow__color':                           t.color['gray-dark'],
+    '-page-count__color':                         t.color['gray-dark'],
   },
 
   'review': {
@@ -401,7 +405,7 @@ export const components: AnyTokenValues = {
     '__color':                                    t.color['base'],
     '__color--hover':                             t.color['primary'],
     '__color--active':                            t.color['primary-darker'],
-    '__color--disabled':                          t.color['gray-dark'],
+    '__color--disabled':                          t.color['gray-darker'],
     '__color--selected':                          t.color['primary'],
     '__border-color--disabled':                   t.color['gray-lighter'],
     '__border-color--selected':                   t.color['primary'],
@@ -427,7 +431,7 @@ export const components: AnyTokenValues = {
 
   'tooltip': {
     '__background-color':                         t.color['background'],
-    '__border-color':                             t.color['gray-dark'],
+    '__border-color':                             t.color['gray-darker'],
     '__border-color--active':                     hexOpacity(t.color['primary'], 0.25),
     '__border-color--inverse-active':             hexOpacity(t.color['white'], 0.25),
     '__border-width':                             '1px',
@@ -460,7 +464,7 @@ export const components: AnyTokenValues = {
   'vertical-nav': {
     '-item__background-color--hover':             t.color['gray-lightest'],
     '-item__color--hover':                        t.color['primary'],
-    '-item__border-color':                        t.color['gray'],
+    '-item__border-color':                        t.color['gray-dark'],
     '-label__color':                              t.color['base'],
     '-label-icon__color':                         t.color['base'],
     '-label__border-color--current':              t.color['primary'],
