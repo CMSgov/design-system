@@ -91,7 +91,6 @@ const getPRs = () => {
  */
 const organizeNotes = (data: PRDetails[]) => {
   const notes: any = [];
-
   data.forEach((pr: PRDetails) => {
     if (!pr.labels?.length) return;
 
@@ -162,7 +161,7 @@ const makeNotesMD = (notes: any[]): string => {
 };
 
 /**
- * display jira links with associated title to copy/paste to PM
+ * Display jira links with associated title to copy/paste
  */
 const displayJiraTickets = (data: PRDetails[]) => {
   console.log(`\n-- ${c.green('JIRA Tickets')} --`);
@@ -182,14 +181,8 @@ const displayJiraTickets = (data: PRDetails[]) => {
 };
 
 /**
- * Starting point for generating notes
+ * Writes notes to fs and uses gh-cli to create notes for latest @cmsgov tag
  */
-console.log(
-  `\nCurrent milestone ${c.green(cm.title)} with ${
-    cm.open_issues > 0 ? c.redBright(cm.open_issues) : c.gray(cm.open_issues)
-  } open issues and ${c.magenta(cm.closed_issues)} closed issues.`
-);
-
 const publishNotes = (notes: string) => {
   const fn = `${versions.core}-release-notes.md`;
 
@@ -221,11 +214,19 @@ const publishNotes = (notes: string) => {
   }
 };
 
+/**
+ * Starting point for generating notes
+ */
+console.log(
+  `\nCurrent milestone ${c.green(cm.title)} with ${
+    cm.open_issues > 0 ? c.redBright(cm.open_issues) : c.gray(cm.open_issues)
+  } open issues and ${c.magenta(cm.closed_issues)} closed issues.`
+);
+
 const prs = getPRs();
 const organizedPRs = organizeNotes(prs);
 const notesMD = makeNotesMD(organizedPRs).trim();
 
-// Display Jira tickets for PM
 displayJiraTickets(prs);
 
 console.log(`\n-- ${c.cyan('Notes')} --`);
