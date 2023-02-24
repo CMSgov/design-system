@@ -9,7 +9,7 @@ export interface ColorMigrationTableProps {
 }
 
 const ColorMigrationTable = ({ colorRows }: ColorMigrationTableProps) => (
-  <div className="ds-u-measure--wide ds-u-margin-top--2">
+  <div className="ds-u-margin-top--2">
     <table className="c-color-migration-table ds-c-table ds-c-table--borderless">
       <thead>
         <tr>
