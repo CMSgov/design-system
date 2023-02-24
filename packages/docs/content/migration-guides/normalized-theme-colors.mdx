@@ -5,6 +5,7 @@ intro: We've updated the theme color variables to exclude several families of no
 ---
 
 import ColorMigrationTable from '../../src/components/content/ColorMigration/ColorMigrationTable.tsx';
+import { Alert } from '@cmsgov/design-system';
 
 In the process of expanding our family of design systems to include a fourth
 brand (CMS.gov), there were places where theme variables were used inconsistently
@@ -16,7 +17,11 @@ that pre-dated our design tokens and theming system. We've cleaned up and reorga
 
 ### Primary
 
-We've updated the primary color to provide a full spectrum from lightest to darkest. 
+We've updated the primary color to complete the spectrum from lightest to darkest. 
+
+<Alert variation="warn" weight="lightweight" hideIcon="true">
+  <b>What does this mean:</b> You now have more <code>primary</code> color values to use in your designs.
+</Alert>
 
 <ThemeContent onlyThemes={['core']}>
 
@@ -94,6 +99,9 @@ the non-semantic `green` color family in our theme variables, we created a new
 category of status color specifically for informational components like info
 alerts, badges, and drawer toggle icons.
 
+<Alert variation="warn" weight="lightweight" hideIcon="true">
+  <b>What does this mean:</b> If you were using <code>secondary</code> colors in your design, you'll need to re-evaluate if that color should be remapped to another color value.
+</Alert>
 
 <ColorMigrationTable
   colorRows={[
@@ -178,7 +186,12 @@ An explanation about status colors
 
 ### Informational 
 
-If you were using `secondary` for info-related elements, please use `info` instead.
+We added an informational color swatch set to be used for informational alerts, badges, and icons.
+
+<Alert variation="warn" weight="lightweight" hideIcon="true">
+  <b>What does this mean:</b> If you were using <code>secondary</code> colors for info-related elements, you'll need to update them to use <code>info</code> colors instead.
+</Alert>
+
 
 <ThemeContent onlyThemes={['core']}>
 
@@ -243,7 +256,11 @@ If you were using `secondary` for info-related elements, please use `info` inste
 
 ### Green
 
-Green is a non-semantic duplicate of `success`. If you were using `green` for success states, please use `success` instead.
+Green is a non-semantic duplicate of `success`.
+
+<Alert variation="warn" weight="lightweight" hideIcon="true">
+  <b>What does this mean:</b> If you were using <code>green</code> colors for success states, you'll need to update to use <code>success</code> colors instead.
+</Alert>
 
 <ColorMigrationTable
   colorRows={[
@@ -259,7 +276,12 @@ Green is a non-semantic duplicate of `success`. If you were using `green` for su
 
 ### Gold
 
-Gold is a non-semantic duplicate of `warn`. If you were using `gold` for warning states, please use `warn` instead.
+Gold is a non-semantic duplicate of `warn`. 
+
+<Alert variation="warn" weight="lightweight" hideIcon="true">
+  <b>What does this mean:</b> If you were using <code>gold</code> colors for warning states, you'll need to update to use <code>warn</code> colors instead.
+</Alert>
+
 
 <ThemeContent neverThemes={['cmsgov']}>
 
@@ -294,7 +316,11 @@ Gold is a non-semantic duplicate of `warn`. If you were using `gold` for warning
 
 ### Red
 
-Red is a non-semantic duplicate of `error`. If you were using `red` for error states, please use `error` instead.
+Red is a non-semantic duplicate of `error`. 
+
+<Alert variation="warn" weight="lightweight" hideIcon="true">
+  <b>What does this mean:</b> If you were using <code>red</code> colors for error states, you'll need to update to use <code>error</code> colors instead.
+</Alert>
 
 <ColorMigrationTable
   colorRows={[
@@ -311,6 +337,10 @@ Red is a non-semantic duplicate of `error`. If you were using `red` for error st
 ## Neutral colors
 
 We normalized the grays and gave them the same naming structure as the other color families. 
+
+<Alert variation="warn" weight="lightweight" hideIcon="true">
+  <b>What does this mean:</b> If you were using <code>gray</code> colors that have been removed, you'll need to remap to a new <code>gray</code> color.
+</Alert>
 
 <ThemeContent neverThemes={['medicare']}>
 
@@ -334,6 +364,10 @@ We normalized the grays and gave them the same naming structure as the other col
 ### Color shift of `gray` and `gray-dark`
 
 Both of these shades became lighter with this update to accommodate a full neutral spectrum.
+
+<Alert variation="warn" weight="lightweight" hideIcon="true">
+  <b>What does this mean:</b> You'll need to evaluate if you need to adjust the <code>gray</code> color you are using.
+</Alert>
 
 <ColorMigrationTable
   colorRows={[
@@ -367,13 +401,11 @@ Both of these shades became lighter with this update to accommodate a full neutr
 
 ### Effect of removal of `gray-cool-light`
 
-Because we removed `gray-cool-light`, we had to remap the background hover color for
-day-picker buttons to `primary-lightest`. On all but the core theme, this will result
-in a slight color shift for the hover background of those day-picker buttons. Previously
-the `gray-cool-light` was mapped to `ocean-50` across the board instead of separate
-values for each theme. Now that it is in the `primary` family of colors, healthcare
-will use `sapphire-50` instead of `ocean-50`, medicare will use `teal-50`, and cmsgov
-will use `deepsea-50`.
+Previously, `gray-cool-light` was mapped to the system color token `ocean-50` for all themes.
+
+With the removal of `gray-cool-light`, we remapped the background hover color for
+day-picker buttons to `primary-lightest`. On all but the core theme, this results
+in a slight color shift for the hover background of those day-picker buttons and also brings more intentional color use to themes.
 
 
 <ThemeContent onlyThemes={['healthcare']}>
@@ -406,7 +438,11 @@ will use `deepsea-50`.
 
 ## Coolblue
 
-Coolblue is unused.
+Coolblue was unused in the design system. 
+
+<Alert variation="warn" weight="lightweight" hideIcon="true">
+  <b>What does this mean:</b> If you were using <code>coolblue</code> colors, you'll need to update to use a new theme color instead.
+</Alert>
 
 <ColorMigrationTable
   colorRows={[
