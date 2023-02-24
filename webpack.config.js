@@ -1,5 +1,8 @@
 const CopyPlugin = require('copy-webpack-plugin');
+const path = require('path');
 const { ProvidePlugin } = require('webpack');
+
+const nodeModules = path.resolve(__dirname, 'node_modules');
 
 /**
  *
@@ -32,13 +35,13 @@ function generateWebpackConfig({ preact = false, webComponents = false }) {
       new CopyPlugin({
         patterns: preact
           ? [
-              require.resolve('preact/dist/preact.min.umd.js'),
-              require.resolve('preact/dist/preact.umd.js'),
-              require.resolve('preact/dist/preact.umd.js.map'),
+              `${nodeModules}/preact/dist/preact.min.umd.js`,
+              `${nodeModules}/preact/dist/preact.umd.js`,
+              `${nodeModules}/preact/dist/preact.umd.js.map`,
             ]
           : [
-              require.resolve('react/umd/react.production.min.js'),
-              require.resolve('react-dom/umd/react-dom.production.min.js'),
+              `${nodeModules}/react/umd/react.production.min.js`,
+              `${nodeModules}/react-dom/umd/react-dom.production.min.js`,
             ],
       })
     );

@@ -96,7 +96,7 @@ const compileSass = (cb) => {
     .pipe(gulp.dest(path.join(distPath, 'css')))
     .on('end', cb);
 };
-compileSass.displayName = '🖍  compiling sass assets in dist to dist/css';
+compileSass.displayName = '🖍  compiling sass into css';
 
 /**
  * copy image assets, minify svg files if necessary
@@ -220,7 +220,7 @@ const compileJs = (options) => (cb) => {
 const compileCjs = (dest, babelConfig = {}) =>
   nameTask(
     compileJs({ dest, babelConfig: { ...cjsBabelConfig, ...babelConfig } }),
-    `🖋️  compiling typescript into cjs: ${path.relative(distPath, dest)}`
+    `🔨 compiling typescript into cjs: ${path.relative(distPath, dest)}`
   );
 
 const compileEsm = (dest, babelConfig = {}) =>
@@ -230,7 +230,7 @@ const compileEsm = (dest, babelConfig = {}) =>
       babelConfig: { ...esmBabelConfig, ...babelConfig },
       outputExtension: '.esm.js',
     }),
-    `🖊️  compiling typescript into esm: ${path.relative(distPath, dest)}`
+    `🔨 compiling typescript into esm: ${path.relative(distPath, dest)}`
   );
 
 /*
@@ -268,7 +268,14 @@ const bundleReactComponents = bundleJs({
   entryPath: path.resolve(distReactComponents, 'esm', 'index.esm.js'),
   dest: path.join(distReactComponents, 'bundle'),
 });
-bundleReactComponents.displayName = '📦 bundling react component for cdn distribution';
+bundleReactComponents.displayName = '📦 bundling react components for cdn distribution';
+
+const bundlePreactComponents = bundleJs({
+  entryPath: path.resolve(distPreactComponents, 'esm', 'index.esm.js'),
+  dest: path.join(distPreactComponents, 'bundle'),
+  preact: true,
+});
+bundlePreactComponents.displayName = '📦 bundling preact components for cdn distribution';
 
 // const bundlePreactComponents = bundleJs({
 //   entryPath: path.resolve(distPath, 'esnext', 'index.esm.js'),
@@ -293,15 +300,13 @@ const compileReactComponents = gulp.series(
   compileTypescriptDefs(),
   bundleReactComponents
 );
-compileReactComponents.displayName = '🔨 compiling ts for react components';
 
 const compilePreactComponents = gulp.series(
   compileCjs(path.join(distPreactComponents, 'cjs'), preactBabelConfig),
-  compileEsm(path.join(distPreactComponents, 'esm'), preactBabelConfig)
+  compileEsm(path.join(distPreactComponents, 'esm'), preactBabelConfig),
   // compileTypescriptDefs(preactTSConfig),
-  // bundle
+  bundlePreactComponents
 );
-compilePreactComponents.displayName = '🔨 compiling ts for preact components';
 
 /*
  * displays help if run without any options
