@@ -178,11 +178,11 @@ const preactAliases = {
   'react-dom': 'preact/compat',
   'react/jsx-runtime': 'preact/jsx-runtime',
 };
-const preactTSConfig = {
+const preactTsConfig = {
   paths: {
     // TODO: Could we actually use require.resolve here?
-    react: ['./node_modules/preact/compat/'],
-    'react-dom': ['./node_modules/preact/compat/'],
+    react: [require.resolve('preact/compat')],
+    'react-dom': [require.resolve('preact/compat')],
   },
 };
 const preactBabelConfig = { plugins: [['module-resolver', { alias: preactAliases }]] };
@@ -277,18 +277,6 @@ const bundlePreactComponents = bundleJs({
 });
 bundlePreactComponents.displayName = '📦 bundling preact components for cdn distribution';
 
-// const bundlePreactComponents = bundleJs({
-//   entryPath: path.resolve(distPath, 'esnext', 'index.esm.js'),
-//   bundleName: 'preact-components.js',
-//   webpackConfig: {
-//     // Don't bundle preact because our customers need to interact with it directly
-//     // in order to use our components, and we don't expose it in our code. They
-//     // should instead load the preact umd module before loading our bundle.
-//     externals: {
-//       preact: 'preact',
-//     },
-//   },
-// });
 // const bundleWebComponents = bundleJs({
 //   entryPath: path.resolve(distPath, 'esnext', 'web-components', 'index.js'),
 //   bundleName: 'web-components.js',
@@ -304,7 +292,7 @@ const compileReactComponents = gulp.series(
 const compilePreactComponents = gulp.series(
   compileCjs(path.join(distPreactComponents, 'cjs'), preactBabelConfig),
   compileEsm(path.join(distPreactComponents, 'esm'), preactBabelConfig),
-  // compileTypescriptDefs(preactTSConfig),
+  compileTypescriptDefs(preactTsConfig),
   bundlePreactComponents
 );
 
