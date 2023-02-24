@@ -1,18 +1,13 @@
 ---
 title: Theme colors normalization update
 order: 60
-intro: We've updated the theme color variables to exclude several families of non-semantic color variables and normalize color variables across themes
+intro: We've updated the theme color variables to exclude several families of non-semantic color variables and normalize color variables across themes.
 ---
 
 import ColorMigrationTable from '../../src/components/content/ColorMigration/ColorMigrationTable.tsx';
 import { Alert } from '@cmsgov/design-system';
 
-In the process of expanding our family of design systems to include a fourth
-brand (CMS.gov), there were places where theme variables were used inconsistently
-between brand themes. In some instances, color variables and whole color families
-weren't being used and were left over from Sass variables that pre-dated our
-design tokens and theming system. We've cleaned up and reorganized these colors
-to provide a more intentional approach to color. 
+With the expansion of the design system themes to include a fourth theme (CMS.gov), we noticed theme variables were inconsistent. In some cases color variables and whole color families weren't being used. In other cases, unused legacy Sass variables needed removal. We've cleaned up and reorganized these colors using design tokens and theming to provide a more intentional approach to color.
 
 ## Brand colors 
 
@@ -105,7 +100,7 @@ alerts, badges, and drawer toggle icons.
 
 **Alternate version**
 
-One of the major shifts with color normalization is the update of the `secondary` color to use green system color tokens in the `core` and `healthcare` themes. In addition, the `info` status color was created and `secondary` colors have been moved to the `info` color palette and are used for informational components such as alerts, badges, and icons.
+One major shift with color normalization is updating the secondary color to use green system color tokens in the core and healthcare themes. In addition, we created the the info status color and secondary colors have moved to the info color palette for informational components such as alerts, badges, and icons.
 
 
 <Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
@@ -202,11 +197,11 @@ An explanation about status colors
 
 ### Informational 
 
-We added an informational color palette set to be used for informational alerts, badges, and icons.
+We added an informational color palette for informational alerts, badges, and icons.
 
 <Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
   <b>What does this mean:</b> If you are using <code>secondary</code> colors for
-  info-related elements, you'll need to update them to use <code>info</code> colors instead.
+  informational elements, you'll need to update them to use <code>info</code> colors instead.
 </Alert>
 
 
@@ -273,7 +268,7 @@ We added an informational color palette set to be used for informational alerts,
 
 ### Green
 
-Green is a non-semantic duplicate of `success`.
+Green is removed and was a non-semantic duplicate of `success`.
 
 <Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
   <b>What does this mean:</b> If you are using <code>green</code> colors for success
@@ -294,7 +289,7 @@ Green is a non-semantic duplicate of `success`.
 
 ### Gold
 
-Gold is a non-semantic duplicate of `warn`. 
+Gold is removed and was a non-semantic duplicate of `warn`. 
 
 <Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
   <b>What does this mean:</b> If you are using <code>gold</code> colors for
@@ -335,7 +330,7 @@ Gold is a non-semantic duplicate of `warn`.
 
 ### Red
 
-Red is a non-semantic duplicate of `error`. 
+Red is removed and was a non-semantic duplicate of `error`. 
 
 <Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
   <b>What does this mean:</b> If you are using <code>red</code> colors for error states,
@@ -356,7 +351,7 @@ Red is a non-semantic duplicate of `error`.
 
 ## Neutral colors
 
-We normalized the grays and gave them the same naming structure as the other color families. 
+Grays have been normalized and use the same naming structure as other color palettes. 
 
 <Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
   <b>What does this mean:</b> If you are using <code>gray</code> colors that have been
