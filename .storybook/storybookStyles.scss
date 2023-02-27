@@ -5,8 +5,8 @@
 @import '../packages/docs/src/styles/components/exampleGrid.scss';
 
 .utility-example {
-  background-color: var(--color-secondary-lightest);
-  outline: 2px dashed var(--color-secondary);
+  background-color: var(--color-info-lightest);
+  outline: 2px dashed var(--color-info);
 }
 
 [data-theme='healthcare'] {
