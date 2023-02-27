@@ -37,7 +37,8 @@ const rl = readline.createInterface({
 /**
  * Current milestone reference
  */
-const cm = JSON.parse(execSync('gh api repos/CMSgov/design-system/milestones').toString())[0];
+const milestone = JSON.parse(execSync('gh api repos/CMSgov/design-system/milestones').toString())[0];
+const { title: milestoneTitle, open_issues, closed_issues } = milestone;
 
 /**
  * Grabs latest tag from each theme and returns an array of `theme: version` items.
@@ -166,15 +167,12 @@ const makeNotesMD = (notes: any[]): string => {
 const displayJiraTickets = (data: PRDetails[]) => {
   console.log(`\n-- ${c.green('JIRA Tickets')} --`);
   const notes = data
-    .filter((pr) => {
-      return !pr.ticket?.toLowerCase().includes('ticket');
-    })
-    .map((pr) => {
-      return { ticket: `https://jira.cms.gov/browse/${pr.ticket}`, title: pr.title };
-    });
-  const unticketed = data.filter((pr) => {
-    return pr.ticket?.toLowerCase().includes('ticket');
-  });
+    .filter((pr) => !pr.ticket?.toLowerCase().includes('ticket'))
+    .map((pr) => ({
+      ticket: `https://jira.cms.gov/browse/${pr.ticket}`,
+      title: pr.title,
+    }));
+  const unticketed = data.filter((pr) => pr.ticket?.toLowerCase().includes('ticket'));
   notes.forEach((note) => console.log(`${note.ticket} - ${note.title}`));
   console.log(`\n-- ${c.yellow('Unticketed')} --`);
   unticketed.forEach((note) => console.log(`${note.author} - ${note.ticket} - ${note.title}`));
