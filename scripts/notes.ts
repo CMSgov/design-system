@@ -37,7 +37,9 @@ const rl = readline.createInterface({
 /**
  * Current milestone reference
  */
-const milestone = JSON.parse(execSync('gh api repos/CMSgov/design-system/milestones').toString())[0];
+const milestone = JSON.parse(
+  execSync('gh api repos/CMSgov/design-system/milestones').toString()
+)[0];
 const { title: milestoneTitle, open_issues, closed_issues } = milestone;
 
 /**
@@ -67,7 +69,7 @@ export const getLatestCoreTag = () => {
 const getPRs = () => {
   const prData = JSON.parse(
     execSync(
-      `gh pr list --search "milestone:${cm.title}" --state merged --json title,url,labels,number,author,mergeCommit`
+      `gh pr list --search "milestone:${milestone.title}" --state merged --json title,url,labels,number,author,mergeCommit`
     ).toString()
   );
   const prs: PRDetails[] = prData.map((pr: any) => {
@@ -95,7 +97,7 @@ const organizeNotes = (data: PRDetails[]) => {
   data.forEach((pr: PRDetails) => {
     if (!pr.labels?.length) return;
 
-    const noteData: any[] = [];
+    // const noteData: any[] = [];
     const prImpacts: string[] = [];
     const prType: string[] = [];
 
@@ -117,13 +119,21 @@ const organizeNotes = (data: PRDetails[]) => {
     }
 
     prImpacts.forEach((i) => {
-      noteData.push([i, prType[0], pr.title, pr.ghpr]);
+      notes.push([i, prType[0], pr.title, pr.ghpr]);
     });
-
-    notes.push(...noteData);
   });
 
-  return notes.sort();
+  // initial sort
+  notes.sort();
+
+  // move cmsgov to end
+  notes.forEach((note: any[]) => {
+    if (note[0] === 'cmsgov') {
+      notes.push(notes.shift());
+    }
+  });
+
+  return notes;
 };
 
 const makeNotesMD = (notes: any[]): string => {
@@ -184,12 +194,7 @@ const displayJiraTickets = (data: PRDetails[]) => {
 const publishNotes = (notes: string) => {
   const fn = `${versions.core}-release-notes.md`;
 
-  try {
-    writeFileSync(fn, notes, { encoding: 'utf8' });
-  } catch (err) {
-    console.error(err);
-    process.exit(1);
-  }
+  writeFileSync(fn, notes, { encoding: 'utf8' });
 
   let successUrl;
   const draftPre = versions.core.includes('beta') ? '--draft --prerelease' : '--draft';
@@ -216,13 +221,14 @@ const publishNotes = (notes: string) => {
  * Starting point for generating notes
  */
 console.log(
-  `\nCurrent milestone ${c.green(cm.title)} with ${
-    cm.open_issues > 0 ? c.redBright(cm.open_issues) : c.gray(cm.open_issues)
-  } open issues and ${c.magenta(cm.closed_issues)} closed issues.`
+  `\nCurrent milestone ${c.green(milestone.title)} with ${
+    milestone.open_issues > 0 ? c.redBright(milestone.open_issues) : c.gray(milestone.open_issues)
+  } open issues and ${c.magenta(milestone.closed_issues)} closed issues.`
 );
 
 const prs = getPRs();
 const organizedPRs = organizeNotes(prs);
+console.table(organizedPRs);
 const notesMD = makeNotesMD(organizedPRs).trim();
 
 displayJiraTickets(prs);
