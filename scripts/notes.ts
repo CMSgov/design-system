@@ -29,6 +29,8 @@ const icons = {
 type Icons = typeof icons | any;
 const icon: Icons = icons;
 
+type PRNote = [string, string, string, number];
+
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
@@ -63,7 +65,6 @@ export const getLatestCoreTag = () => {
   )
     .toString()
     .trim();
-  console.log(tagResults);
   return tagResults.replace(/\w+\s+refs\/tags\/(.*)$/gi, '$1');
 };
 const latestCoreTag = getLatestCoreTag();
@@ -99,7 +100,7 @@ const getPRs = () => {
  * in multiple type categories if it belongs to multiple.
  */
 const organizeNotes = (data: PRDetails[]) => {
-  const notes: any = [];
+  const notes: PRNote[] = [];
   data.forEach((pr: PRDetails) => {
     if (!pr.labels?.length) return;
 
@@ -133,9 +134,10 @@ const organizeNotes = (data: PRDetails[]) => {
   notes.sort();
 
   // move cmsgov to end
-  notes.forEach((note: any[]) => {
+  notes.forEach((note: PRNote) => {
     if (note[0] === 'cmsgov') {
-      notes.push(notes.shift());
+      notes.push(note);
+      notes.shift();
     }
   });
 
@@ -233,7 +235,6 @@ console.log(
 
 const prs = getPRs();
 const organizedPRs = organizeNotes(prs);
-console.table(organizedPRs);
 const notesMD = makeNotesMD(organizedPRs).trim();
 
 displayJiraTickets(prs);
