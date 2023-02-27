@@ -117,12 +117,7 @@ export const Dialog = (props: DialogProps) => {
     ...modalProps
   } = props;
 
-  const dialogClassNames = classNames(
-    'ds-c-dialog',
-    'ds-base',
-    className,
-    size && `ds-c-dialog--${size}`
-  );
+  const dialogClassNames = classNames('ds-c-dialog', className, size && `ds-c-dialog--${size}`);
   const headerClassNames = classNames('ds-c-dialog__header', headerClassName);
   const actionsClassNames = classNames('ds-c-dialog__actions', actionsClassName);
 
