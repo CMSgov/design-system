@@ -53,23 +53,16 @@ export const themeColors: ColorTokens = {
   'gray-darker':	              color['granite-800'],
   'gray-darkest':	              color['granite-900'],
   //
-  'green':                      color['spring-500'],
-  'green-dark':                 color['spring-700'],
-  'green-darker':               color['spring-700'],
-  'green-darkest':              color['spring-800'],
-  'green-light':                color['spring-700'],
-  'green-lighter':              color['spring-100'],
-  'green-lightest':             color['spring-50'],
-  //
   'muted':                      color['granite-700'],
   'muted-inverse':              color['lapis-50'],
   //
+  'primary-lightest':           color['teal-50'],
+  'primary-lighter':            color['teal-100'],
+  'primary-light':              color['teal-300'],
   'primary':                    color['teal-500'],
   'primary-dark':               color['teal-600'],
   'primary-darker':             color['teal-700'],
   'primary-darkest':            color['teal-800'],
-  'primary-light':              color['teal-300'],
-  'primary-lightest':           color['teal-50'],
   // @TODO: deprecate primary-alt as secondary
   'primary-alt':                color['lapis-500'],
   'primary-alt-dark':           color['lapis-600'],
@@ -85,6 +78,14 @@ export const themeColors: ColorTokens = {
   'secondary-light':            color['lapis-300'],
   'secondary-lighter':          color['lapis-100'],
   'secondary-lightest':         color['lapis-50'],
+  //
+  'info':                       color['lapis-500'],
+  'info-dark':                  color['lapis-600'],
+  'info-darker':                color['lapis-700'],
+  'info-darkest':               color['lapis-800'],
+  'info-light':                 color['lapis-300'],
+  'info-lighter':               color['lapis-100'],
+  'info-lightest':              color['lapis-50'],
   //
   'success':                    color['spring-500'],
   'success-dark':               color['spring-600'],
