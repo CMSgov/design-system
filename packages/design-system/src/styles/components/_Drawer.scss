@@ -32,17 +32,14 @@
 .ds-c-drawer {
   background: var(--drawer__background-color);
   border: 0;
-  bottom: 0;
   box-shadow: -2px 0 0 var(--drawer__border-color);
   height: 100%;
-  left: auto;
+  inset: 0 0 0 auto;
   margin: 0;
   max-height: 100%;
   max-width: 100%;
   padding: 0;
   position: fixed;
-  right: 0;
-  top: 0;
   width: 100%;
   z-index: var(--z-drawer);
 
@@ -148,5 +145,6 @@
 }
 
 .ds-c-drawer__footer-title {
+  font-weight: var(--font-weight-bold);
   margin: 0;
 }
