@@ -1,9 +1,8 @@
 @use '../layout' as *;
 
-.ds-c-step-list {
-  list-style-type: none;
-  margin: $spacer-4 0 0;
-  padding: 0 0 0 42px;
+.ds-c-step-list[role='list'] {
+  margin-block-start: $spacer-4;
+  padding-inline-start: 42px;
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
     a:hover {

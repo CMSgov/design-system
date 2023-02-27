@@ -19,7 +19,7 @@
   text-decoration-style: dotted;
   text-underline-position: under;
 }
-// Chrome needs this offset becasue it handles text-underline-position differently and without this the underline runs into descending letters like g,j,q,p,y.
+// Chrome needs this offset because it handles text-underline-position differently and without this the underline runs into descending letters like g,j,q,p,y.
 @media all and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
   %trigger-underline-styles {
     text-underline-offset: $spacer-half;
@@ -28,8 +28,8 @@
 
 // Tooltip trigger style
 .ds-c-tooltip__trigger {
-  cursor: pointer;
   display: inline;
+  font-weight: var(--font-weight-normal);
 }
 
 .ds-c-tooltip__trigger-icon {

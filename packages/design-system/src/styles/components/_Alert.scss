@@ -67,6 +67,7 @@
 }
 
 .ds-c-alert__icon {
+  flex-shrink: 0;
   font-size: var(--font-size-lg);
   margin-inline-start: $spacer-1;
 }
