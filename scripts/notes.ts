@@ -40,7 +40,6 @@ const rl = readline.createInterface({
 const milestone = JSON.parse(
   execSync('gh api repos/CMSgov/design-system/milestones').toString()
 )[0];
-const { title: milestoneTitle, open_issues, closed_issues } = milestone;
 
 /**
  * Grabs latest tag from each theme and returns an array of `theme: version` items.
@@ -49,18 +48,25 @@ export const getLatestVersions = () => {
   const versions: { [key: string]: string } = {};
   Object.entries(themes).forEach((theme) => {
     const pkgn = theme[1].packageName;
-    const vers = execSync(`git tag --sort=taggerdate | grep "${pkgn}" | tail -1`).toString().trim();
-    versions[theme[0]] = vers.replace(/^@cmsgov\/.*@(.*)$/, '$1');
+    const vers = execSync(`git ls-remote --tags --sort tag origin | grep "${pkgn}" | tail -1`)
+      .toString()
+      .trim();
+    versions[theme[0]] = vers.replace(/\w+\s+refs\/tags\/@cmsgov\/.*@(.*)$/, '$1');
   });
   return versions;
 };
 const versions = getLatestVersions();
 
 export const getLatestCoreTag = () => {
-  return execSync(`git tag --sort=taggerdate | grep "${themes.core.packageName}" | tail -1`)
+  const tagResults = execSync(
+    `git ls-remote --tags --sort tag origin | grep "${themes.core.packageName}" | tail -1`
+  )
     .toString()
     .trim();
+  console.log(tagResults);
+  return tagResults.replace(/\w+\s+refs\/tags\/(.*)$/gi, '$1');
 };
+const latestCoreTag = getLatestCoreTag();
 
 /**
  * Get list of PR's associated with the current milestone formatted
@@ -69,7 +75,7 @@ export const getLatestCoreTag = () => {
 const getPRs = () => {
   const prData = JSON.parse(
     execSync(
-      `gh pr list --search "milestone:${milestone.title}" --state merged --json title,url,labels,number,author,mergeCommit`
+      `gh pr list --search "milestone:${title}" --state merged --json title,url,labels,number,author,mergeCommit`
     ).toString()
   );
   const prs: PRDetails[] = prData.map((pr: any) => {
@@ -201,9 +207,7 @@ const publishNotes = (notes: string) => {
 
   try {
     successUrl = execSync(
-      `gh release create ${getLatestCoreTag()} ${draftPre} --title ${
-        versions.core
-      }-test --notes-file ./${fn}`,
+      `gh release create ${latestCoreTag} ${draftPre} --title ${versions.core}-test --notes-file ./${fn}`,
       { encoding: 'utf8' }
     );
     console.log(`\n-- ${c.blueBright('Success!')} --`);
@@ -220,10 +224,11 @@ const publishNotes = (notes: string) => {
 /**
  * Starting point for generating notes
  */
+const { title, open_issues, closed_issues } = milestone;
 console.log(
   `\nCurrent milestone ${c.green(milestone.title)} with ${
-    milestone.open_issues > 0 ? c.redBright(milestone.open_issues) : c.gray(milestone.open_issues)
-  } open issues and ${c.magenta(milestone.closed_issues)} closed issues.`
+    open_issues > 0 ? c.redBright(open_issues) : c.gray(open_issues)
+  } open issues and ${c.magenta(closed_issues)} closed issues.`
 );
 
 const prs = getPRs();
