@@ -1,19 +1,26 @@
 {
   "core": {
     "displayName": "Core",
-    "packageName": "design-system"
+    "longName": "Design System",
+    "packageName": "design-system",
+    "urlNpm": "https://www.npmjs.com/package/@cmsgov/design-system"
   },
   "cmsgov": {
     "displayName": "CMS.gov",
+    "longName": "CMS.gov Design System", 
     "packageName": "ds-cms-gov",
     "incomplete": true
   },
   "healthcare": {
     "displayName": "HealthCare.gov",
-    "packageName": "ds-healthcare-gov"
+    "longName": "Healthcare.gov Design System",
+    "packageName": "ds-healthcare-gov",
+    "urlNpm": "https://www.npmjs.com/package/@cmsgov/ds-healthcare-gov"
   },
   "medicare": {
     "displayName": "Medicare.gov",
-    "packageName": "ds-medicare-gov"
+    "longName": "Medicare.gov Design System",
+    "packageName": "ds-medicare-gov",
+    "urlNpm": "https://www.npmjs.com/package/@cmsgov/ds-medicare-gov"
   }
 }
