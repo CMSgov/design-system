@@ -13,12 +13,10 @@
 
 // Applies to "Checkbox & Radio" and "Date field"
 .ds-c-fieldset {
-  border: 0;
   // We apply the same margin as a label, since in the context of a fieldset
   // this would be a <legend>. See .ds-c-fieldset > .ds-c-label for more info.
   margin: $spacer-3 0 0;
   min-width: 0;
-  padding: 0;
 }
 
 // Webkit won't render a top margin on a fieldset's <legend>, so we apply

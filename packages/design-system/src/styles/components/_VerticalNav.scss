@@ -12,7 +12,7 @@
 }
 
 .ds-c-vertical-nav {
-  @include mixins.ds-unstyled-list;
+  margin: 0;
 
   > .ds-c-vertical-nav__item {
     background-color: transparent;
@@ -37,10 +37,6 @@
 
 .ds-c-vertical-nav--collapsed {
   display: none;
-}
-
-.ds-c-vertical-nav__item {
-  position: relative;
 }
 
 .ds-c-vertical-nav__label,
@@ -70,7 +66,6 @@
 // Subnav toggle
 // This class is applied to a <button>, so we need to reset some styling here...
 .ds-c-vertical-nav__label--parent {
-  appearance: none;
   background-color: transparent;
   border-block: 0; // Clear <button> borders (border-left is already set)
   border-inline-end: 0;
@@ -129,11 +124,10 @@
 }
 
 .ds-c-vertical-nav__subnav {
-  @include mixins.ds-unstyled-list;
+  margin: 0;
 
   .ds-c-vertical-nav__label {
     font-size: var(--font-size-sm);
-    line-height: var(--font-line-height-heading);
     padding-inline-start: $spacer-3;
 
     @media (-ms-high-contrast: active), (forced-colors: active) {
