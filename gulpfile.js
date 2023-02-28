@@ -180,7 +180,6 @@ const preactAliases = {
 };
 const preactTsConfig = {
   paths: {
-    // TODO: Could we actually use require.resolve here?
     react: [require.resolve('preact/compat')],
     'react-dom': [require.resolve('preact/compat')],
   },
@@ -292,7 +291,10 @@ const compileReactComponents = gulp.series(
 const compilePreactComponents = gulp.series(
   compileCjs(path.join(distPreactComponents, 'cjs'), preactBabelConfig),
   compileEsm(path.join(distPreactComponents, 'esm'), preactBabelConfig),
-  compileTypescriptDefs(preactTsConfig),
+  // TODO: Re-enable when all components are functional components. TypeScript
+  // is throwing 121 errors when we try to replace react with preact/compat,
+  // and the components that are throwing the errors are all class components.
+  // compileTypescriptDefs(preactTsConfig),
   bundlePreactComponents
 );
 
