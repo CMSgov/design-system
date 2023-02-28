@@ -71,13 +71,13 @@ export const themeColors: ColorTokens = {
   'primary-alt-light':          color['lapis-300'],
   'primary-alt-lightest':       color['lapis-50'],
   //
-  'secondary-lightest':         color['lapis-50'],
-  'secondary-lighter':          color['lapis-100'],
-  'secondary-light':            color['lapis-300'],
   'secondary':                  color['lapis-500'],
   'secondary-dark':             color['lapis-600'],
   'secondary-darker':           color['lapis-700'],
   'secondary-darkest':          color['lapis-800'],
+  'secondary-light':            color['lapis-300'],
+  'secondary-lighter':          color['lapis-100'],
+  'secondary-lightest':         color['lapis-50'],
   //
   'info':                       color['lapis-500'],
   'info-dark':                  color['lapis-600'],
@@ -91,8 +91,8 @@ export const themeColors: ColorTokens = {
   'success-dark':               color['spring-600'],
   'success-darker':             color['spring-700'],
   'success-darkest':            color['spring-800'],
-  'success-light':              color['spring-300'],
-  'success-lighter':            color['spring-100'],
+  'success-light':              color['spring-400'],
+  'success-lighter':            color['spring-200'],
   'success-lightest':           color['spring-50'],
   //
   'warn':                       color['goldenrod-500'],
@@ -100,7 +100,7 @@ export const themeColors: ColorTokens = {
   'warn-darker':                color['goldenrod-700'],
   'warn-darkest':               color['goldenrod-800'],
   'warn-light':                 color['goldenrod-300'],
-  'warn-lighter':               color['goldenrod-100'],
+  'warn-lighter':               color['goldenrod-200'],
   'warn-lightest':              color['goldenrod-50'],
   //
   'visited':                    color['crimson-800'],

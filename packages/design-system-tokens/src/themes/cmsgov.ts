@@ -70,13 +70,13 @@ export const themeColors: ColorTokens = {
   'primary-alt-light':          color['sky-300'],
   'primary-alt-lightest':       color['sky-50'],
   //
-  'secondary-lightest':         color['emerald-50'],
-  'secondary-lighter':          color['emerald-100'],
-  'secondary-light':            color['emerald-300'],
   'secondary':                  color['emerald-500'],
   'secondary-dark':             color['emerald-600'],
   'secondary-darker':           color['emerald-700'],
   'secondary-darkest':          color['emerald-800'],
+  'secondary-light':            color['emerald-300'],
+  'secondary-lighter':          color['emerald-100'],
+  'secondary-lightest':         color['emerald-50'],
   //
   'info':                      color['deepsea-500'],
   'info-dark':                 color['deepsea-600'],
