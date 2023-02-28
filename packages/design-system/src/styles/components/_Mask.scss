@@ -3,10 +3,8 @@
 }
 
 .ds-c-field__before {
-  bottom: var(--text-input__padding);
-  left: var(--text-input__padding);
+  inset: var(--text-input__padding) auto var(--text-input__padding) var(--text-input__padding);
   position: absolute;
-  top: var(--text-input__padding);
 }
 
 .ds-c-field__before--currency {

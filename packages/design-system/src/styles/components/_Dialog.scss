@@ -25,19 +25,13 @@ dialog:not([open]) {
 
 dialog + .backdrop {
   background: rgba(0, 0, 0, 0.1);
-  bottom: 0;
-  left: 0;
+  inset: 0;
   position: fixed;
-  right: 0;
-  top: 0;
 }
 
 ._dialog_overlay {
-  bottom: 0;
-  left: 0;
+  inset: 0;
   position: fixed;
-  right: 0;
-  top: 0;
 }
 
 dialog.fixed {
@@ -56,7 +50,7 @@ dialog.fixed {
   margin-top: $spacer-6;
   max-width: var(--measure-base);
   padding: var(--dialog__padding);
-  text-align: left;
+  text-align: start;
   width: 95%; // provide space for the background layer to peek through
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
@@ -125,8 +119,6 @@ dialog.fixed {
 }
 
 .ds--dialog-open {
-  left: 0;
+  inset: var(--body_top--dialog-open, 0) 0 auto 0;
   position: fixed;
-  right: 0;
-  top: var(--body_top--dialog-open, 0);
 }

@@ -49,6 +49,7 @@
     font-weight: var(--font-weight-bold);
     text-decoration: none;
     &:hover {
+      color: currentColor;
       cursor: auto;
       text-decoration: none;
     }
@@ -125,10 +126,10 @@
     display: inline-block;
     vertical-align: text-top;
     &-next {
-      margin-left: $spacer-half;
+      margin-inline-start: $spacer-half;
     }
     &-previous {
-      margin-right: $spacer-half;
+      margin-inline-end: $spacer-half;
     }
   }
   .ds-c-pagination__nav--image {

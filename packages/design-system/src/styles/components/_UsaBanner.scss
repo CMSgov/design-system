@@ -87,7 +87,7 @@
   box-shadow: none;
   margin: 0;
   padding: 0;
-  text-align: left;
+  text-align: start;
 
   &:focus {
     @include mixins.focus-styles;
@@ -146,7 +146,6 @@
 
 .ds-c-usa-banner__lock-image {
   height: 0.75em;
-  vertical-align: inherit;
   width: auto;
 
   path {

@@ -122,7 +122,7 @@
   display: flex;
   justify-content: space-between;
   padding: 0;
-  text-align: left;
+  text-align: start;
 }
 
 .rdp-multiple_months .rdp-caption {
@@ -349,7 +349,7 @@
   // TODO: When the bug has been fixed upstream, we can reference "rdp-dropdown_year"
   // instead. See https://github.com/gpbl/react-day-picker/pull/1466
   &:nth-child(2) {
-    text-align: right;
+    text-align: end;
   }
 }
 

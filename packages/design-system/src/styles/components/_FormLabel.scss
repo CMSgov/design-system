@@ -24,7 +24,7 @@
 // Webkit won't render a top margin on a fieldset's <legend>, so we apply
 // the top margin to the fieldset instead.
 .ds-c-fieldset > .ds-c-label:first-child {
-  margin-top: 0;
+  margin-block-start: 0;
 }
 
 .ds-c-field__hint {
