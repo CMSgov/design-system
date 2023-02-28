@@ -53,23 +53,16 @@ export const themeColors: ColorTokens = {
   'gray-darker':	              color['granite-800'],
   'gray-darkest':	              color['granite-900'],
   //
-  'green':                      color['spring-500'],
-  'green-dark':                 color['spring-600'],
-  'green-darker':               color['spring-700'],
-  'green-darkest':              color['spring-800'],
-  'green-light':                color['spring-400'],
-  'green-lighter':              color['spring-200'],
-  'green-lightest':             color['spring-50'],
-  //
   'muted':                      color['granite-700'],
   'muted-inverse':              color['lapis-50'],
   //
+  'primary-lightest':           color['deepsea-50'],
+  'primary-lighter':            color['deepsea-100'],
+  'primary-light':              color['deepsea-300'],
   'primary':                    color['deepsea-500'],
+  'primary-dark':               color['deepsea-600'],
   'primary-darker':             color['deepsea-700'],
   'primary-darkest':            color['deepsea-800'],
-  'primary-light':              color['deepsea-300'],
-  'primary-lighter':            color['deepsea-100'],
-  'primary-lightest':           color['deepsea-50'],
   // @TODO: deprecate primary-alt as secondary
   'primary-alt':                color['sky-500'],
   'primary-alt-dark':           color['sky-600'],
@@ -84,6 +77,14 @@ export const themeColors: ColorTokens = {
   'secondary-light':            color['emerald-300'],
   'secondary-lighter':          color['emerald-100'],
   'secondary-lightest':         color['emerald-50'],
+  //
+  'info':                      color['deepsea-500'],
+  'info-dark':                 color['deepsea-600'],
+  'info-darker':               color['deepsea-700'],
+  'info-darkest':              color['deepsea-800'],
+  'info-light':                color['deepsea-300'],
+  'info-lighter':              color['deepsea-100'],
+  'info-lightest':             color['deepsea-50'],
   //
   'success':                    color['spring-500'],
   'success-dark':               color['spring-600'],

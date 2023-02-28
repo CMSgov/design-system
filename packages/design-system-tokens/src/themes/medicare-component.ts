@@ -19,12 +19,12 @@ export const components: AnyTokenValues = {
   },
 
   'alert': {
-    '__background-color':                         t.color['secondary-lightest'],
+    '__background-color':                         t.color['info-lightest'],
     '__background-color--error':                  t.color['error-lightest'],
     '__background-color--lightweight':            t.color['white'],
     '__background-color--success':                t.color['success-lightest'],
     '__background-color--warn':                   t.color['warn-lightest'],
-    '__border-left-color':                        t.color['secondary'],
+    '__border-left-color':                        t.color['info'],
     '__border-color--error':                      t.color['error'],
     '__border-color--success':                    t.color['success'],
     '__border-color--warn':                       t.color['warn'],
@@ -306,7 +306,7 @@ export const components: AnyTokenValues = {
   'filter-chip': {
     '__border-radius':                            t.radius['pill'],
     '__background-color':                         t.color['secondary-lightest'],
-    '__border-color':                             t.color['primary'],
+    '__border-color':                             t.color['secondary'],
     '__color':                                    t.color['base'],
     '__background-color--active':                 t.color['primary'],
     '__border-color--active':                     t.color['primary'],
