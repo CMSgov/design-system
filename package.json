@@ -30,6 +30,7 @@
     "prettier": "yarn prettier --write 'packages/**/*.{js,jsx,tsx,scss,html,md,mdx,json}'",
     "release": "./scripts/bump-and-tag-release.sh",
     "release:bump": "./scripts/bump-main.sh",
+    "release:notes": "ts-node ./scripts/notes.ts",
     "serve:docs": "yarn --cwd ./packages/docs serve",
     "start": "yarn build:storybook:docs && yarn build:prop-data && yarn --cwd ./packages/docs develop",
     "storybook": "start-storybook -p 6006",
