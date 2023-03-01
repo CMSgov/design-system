@@ -16,7 +16,8 @@
   },
   "license": "SEE LICENSE IN LICENSE.md",
   "main": "dist/react-components/cjs/index.js",
-  "module": "dist/react-components/esm/index.mjs",
+  "module": "dist/react-components/esm/index.js",
+  "types": "dist/react-components/types/index.d.ts",
   "exports": {
     ".": {
         "import": "./dist/react-components/esm/index.js",
@@ -34,13 +35,13 @@
         "types": "./dist/preact-components/types/index.d.ts"
     },
     "./web-components": {
-        "import": "./dist/web-components/esm/web-components/index.js",
-        "require": "./dist/web-components/cjs/web-components/index.js"
+        "import": "./dist/preact-components/esm/web-components/index.js",
+        "require": "./dist/preact-components/cjs/web-components/index.js",
+        "types": "./dist/react-components/types/web-components/index.d.ts"
     },
     "./css/*": "./dist/css/*"
   },
   "sideEffects": ["./dist/esnext/web-components/ds-alert.js", "./dist/esnext/web-components/ds-badge.js", "./dist/esnext/web-components/ds-button.js"],
-  "types": "dist/types/index.d.ts",
   "files": [
     "dist",
     "scripts",
