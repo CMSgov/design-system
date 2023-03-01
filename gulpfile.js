@@ -5,7 +5,6 @@ const gulpif = require('gulp-if');
 const babel = require('gulp-babel');
 const dartSass = require('sass');
 const gulpSass = require('gulp-sass');
-const rename = require('gulp-rename');
 const sass = gulpSass(dartSass);
 const sourcemaps = require('gulp-sourcemaps');
 const ts = require('gulp-typescript');
@@ -200,17 +199,6 @@ const compileJs = (options) => (cb) => {
     .on('error', (error) => {
       log.error('there was an error transpiling: ' + error);
     })
-    .pipe(
-      gulpif(
-        !!options.outputExtension,
-        rename((path) => {
-          if (path.dirname === '.' && path.basename === 'index') {
-            // Renames `component/index.js`
-            path.extname = options.outputExtension;
-          }
-        })
-      )
-    )
     .pipe(gulp.dest(options.dest))
     .on('end', cb);
 };
@@ -227,7 +215,6 @@ const compileEsm = (dest, babelConfig = {}) =>
     compileJs({
       dest,
       babelConfig: { ...esmBabelConfig, ...babelConfig },
-      outputExtension: '.esm.js',
     }),
     `🔨 compiling typescript into esm: ${path.relative(distPath, dest)}`
   );
@@ -264,13 +251,13 @@ const bundleJs = (options) => (cb) => {
 };
 
 const bundleReactComponents = bundleJs({
-  entryPath: path.resolve(distReactComponents, 'esm', 'index.esm.js'),
+  entryPath: path.resolve(distReactComponents, 'esm', 'index.js'),
   dest: path.join(distReactComponents, 'bundle'),
 });
 bundleReactComponents.displayName = '📦 bundling react components for cdn distribution';
 
 const bundlePreactComponents = bundleJs({
-  entryPath: path.resolve(distPreactComponents, 'esm', 'index.esm.js'),
+  entryPath: path.resolve(distPreactComponents, 'esm', 'index.js'),
   dest: path.join(distPreactComponents, 'bundle'),
   preact: true,
 });

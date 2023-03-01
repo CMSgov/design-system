@@ -15,8 +15,30 @@
     "directory": "packages/design-system"
   },
   "license": "SEE LICENSE IN LICENSE.md",
-  "main": "dist/components/index.js",
-  "module": "dist/esnext/index.esm.js",
+  "main": "dist/react-components/cjs/index.js",
+  "module": "dist/react-components/esm/index.mjs",
+  "exports": {
+    ".": {
+        "import": "./dist/react-components/esm/index.js",
+        "require": "./dist/react-components/cjs/index.js",
+        "types": "./dist/react-components/types/index.d.ts"
+    },
+    "./react": {
+        "import": "./dist/react-components/esm/index.js",
+        "require": "./dist/react-components/cjs/index.js",
+        "types": "./dist/react-components/types/index.d.ts"
+    },
+    "./preact": {
+        "import": "./dist/preact-components/esm/index.js",
+        "require": "./dist/preact-components/cjs/index.js",
+        "types": "./dist/preact-components/types/index.d.ts"
+    },
+    "./web-components": {
+        "import": "./dist/web-components/esm/web-components/index.js",
+        "require": "./dist/web-components/cjs/web-components/index.js"
+    },
+    "./css/*": "./dist/css/*"
+  },
   "sideEffects": ["./dist/esnext/web-components/ds-alert.js", "./dist/esnext/web-components/ds-badge.js", "./dist/esnext/web-components/ds-button.js"],
   "types": "dist/types/index.d.ts",
   "files": [
