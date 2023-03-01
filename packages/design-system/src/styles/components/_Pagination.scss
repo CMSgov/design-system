@@ -74,6 +74,9 @@
     @media (-ms-high-contrast: active), (forced-colors: active) {
       border: 0;
     }
+    @media (max-width: $media-width-md) {
+      display: block !important;
+    }
   }
   .ds-c-pagination__nav {
     flex: 0 0 auto;
@@ -141,6 +144,12 @@
       path {
         fill: LinkText;
       }
+    }
+  }
+  .ds-c-pagination__desktop {
+    display: none;
+    @media (min-width: $media-width-md) {
+      display: block;
     }
   }
 }

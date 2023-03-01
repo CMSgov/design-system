@@ -93,7 +93,20 @@ exports[`Pagination should render component 1`] = `
       </span>
       Previous
     </a>
+    <span
+      class="ds-c-pagination__page-count ds-u-display--none"
+    >
+      Page 
+      <strong>
+        2
+      </strong>
+       of 
+      <strong>
+        3
+      </strong>
+    </span>
     <ul
+      class="ds-c-pagination__desktop"
       role="list"
     >
       <li>
@@ -210,6 +223,10 @@ exports[`Pagination with compact prop enabled should render compact variant 1`] 
         3
       </strong>
     </span>
+    <ul
+      class="ds-u-display--none"
+      role="list"
+    />
     <a
       aria-hidden="false"
       aria-label="Next Page"
