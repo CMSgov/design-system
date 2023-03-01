@@ -31,7 +31,7 @@ const corePackageFiles = path.join('packages', 'design-system', 'dist');
 const distPath = path.join(rootPath, 'dist');
 const distReactComponents = path.join(distPath, 'react-components');
 const distPreactComponents = path.join(distPath, 'preact-components');
-const distWebComponents = path.join(distPath, 'preact-components');
+const distWebComponents = path.join(distPath, 'web-components');
 const srcPath = path.join(rootPath, 'src');
 const imageCorePath = path.join(corePackageFiles, 'images');
 const sassCorePath = path.join(corePackageFiles, 'styles');
@@ -276,10 +276,13 @@ const bundlePreactComponents = bundleJs({
 });
 bundlePreactComponents.displayName = '📦 bundling preact components for cdn distribution';
 
-// const bundleWebComponents = bundleJs({
-//   entryPath: path.resolve(distPath, 'esnext', 'web-components', 'index.js'),
-//   bundleName: 'web-components.js',
-// });
+const bundleWebComponents = bundleJs({
+  entryPath: path.resolve(distPreactComponents, 'esm', 'web-components', 'index.js'),
+  dest: path.join(distWebComponents, 'bundle'),
+  preact: true,
+  webComponents: true,
+});
+bundleWebComponents.displayName = '📦 bundling web components for cdn distribution';
 
 const compileReactComponents = gulp.series(
   compileCjs(path.join(distReactComponents, 'cjs')),
@@ -295,7 +298,8 @@ const compilePreactComponents = gulp.series(
   // is throwing 121 errors when we try to replace react with preact/compat,
   // and the components that are throwing the errors are all class components.
   // compileTypescriptDefs(preactTsConfig),
-  bundlePreactComponents
+  bundlePreactComponents,
+  bundleWebComponents
 );
 
 /*
