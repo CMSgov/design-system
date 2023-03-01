@@ -519,7 +519,7 @@
     text-decoration: none;
 
     &:after {
-      background: var(--color-gray-light);
+      background: var(--text-input__border-color);
       bottom: 0;
       content: '';
       display: block;
