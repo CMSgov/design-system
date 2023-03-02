@@ -8,7 +8,7 @@
   box-sizing: border-box; // ensure padding doesn't affect width
   color: var(--text-input__color);
   display: block;
-  margin: $spacer-half 0;
+  margin-block-start: $spacer-half;
   max-width: var(--form__max-width);
   outline: none;
   padding: var(--text-input__padding);
