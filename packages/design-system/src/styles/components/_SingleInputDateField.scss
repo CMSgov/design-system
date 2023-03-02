@@ -519,7 +519,7 @@
     text-decoration: none;
 
     &:after {
-      background: var(--text-input__border-color);
+      background: var(--text-input__divider-color);
       bottom: 0;
       content: '';
       display: block;
