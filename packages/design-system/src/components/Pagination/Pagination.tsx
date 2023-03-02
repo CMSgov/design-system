@@ -144,7 +144,7 @@ function Pagination({
   totalPages,
   ...rest
 }: PaginationProps): React.ReactElement {
-  const classes = classNames('ds-c-pagination', { 'ds-c-pagination__compact': compact }, className);
+  const classes = classNames('ds-c-pagination', { 'ds-c-pagination--compact': compact }, className);
 
   /**
    * `useState` and `useEffect` determine if

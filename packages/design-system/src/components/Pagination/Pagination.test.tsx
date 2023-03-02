@@ -257,7 +257,7 @@ describe('Pagination', () => {
 
     it('should render non-interactive text nodes in place of pagination slot links', () => {
       renderPagination({ currentPage: 2, compact: true });
-      expect(screen.queryByRole('navigation')).toHaveClass('ds-c-pagination__compact');
+      expect(screen.queryByRole('navigation')).toHaveClass('ds-c-pagination--compact');
     });
   });
 

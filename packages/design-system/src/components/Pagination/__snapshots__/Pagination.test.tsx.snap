@@ -170,7 +170,7 @@ exports[`Pagination with compact prop enabled should render compact variant 1`] 
 <DocumentFragment>
   <nav
     aria-labelledby="pagination-heading"
-    class="ds-c-pagination ds-c-pagination__compact"
+    class="ds-c-pagination ds-c-pagination--compact"
   >
     <span
       aria-live="polite"
