@@ -1,9 +1,8 @@
 @use '../layout' as *;
 
-.ds-c-step-list {
-  list-style-type: none;
-  margin: $spacer-4 0 0;
-  padding: 0 0 0 42px;
+.ds-c-step-list[role='list'] {
+  margin-block-start: $spacer-4;
+  padding-inline-start: 42px;
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
     a:hover {
@@ -15,24 +14,23 @@
 .ds-c-step {
   color: var(--steplist__color);
   counter-increment: step-counter;
-  margin-bottom: $spacer-2;
-  padding-bottom: $spacer-2;
+  margin-block-end: $spacer-2;
+  padding-block-end: $spacer-2;
   position: relative;
 
   &::before {
+    align-items: center;
     border: 2px solid var(--steplist-step__border-color--default);
     border-radius: var(--radius-circle);
-    box-sizing: border-box;
     color: var(--steplist-step__color);
     content: counter(step-counter);
-    display: block;
+    display: flex;
     font-size: var(--font-size-sm);
     height: $spacer-3;
-    left: -34px;
+    inset: 7px auto auto -34px;
+    justify-content: center;
     line-height: 20px;
     position: absolute;
-    text-align: center;
-    top: 7px;
     width: $spacer-3;
 
     @media (min-width: $media-width-md) {
@@ -40,7 +38,7 @@
       height: $spacer-4;
       left: -42px;
       line-height: 28px;
-      padding-left: 1px;
+      padding-inline-start: 1px;
       top: 3px;
       width: $spacer-4;
     }
@@ -55,28 +53,20 @@
 
   &::after {
     border-bottom: 1px solid var(--steplist-step__border-color);
-    bottom: 0;
     content: '';
-    display: block;
     height: 1px;
-    left: -42px;
+    inset: auto 0 0 -42px;
     position: absolute;
-    right: 0;
   }
 }
 
 .ds-c-step--current,
 .ds-c-step--completed {
-  padding-bottom: $spacer-2;
+  padding-block-end: $spacer-2;
 
   &::before {
-    border: 0 none;
+    border: 0;
     color: var(--steplist-step__color--current);
-    line-height: 24px;
-
-    @media (min-width: $media-width-md) {
-      line-height: 32px;
-    }
   }
 }
 
@@ -120,17 +110,17 @@
 }
 
 .ds-c-step__heading {
-  font-size: var(--font-size-md); // Needed to overwrite user agent heading tag styles
-  line-height: 38px;
+  font-weight: var(--font-weight-bold);
+  line-height: 2.5;
   margin: 0;
 }
 
 .ds-c-step__actions {
   font-size: var(--font-size-sm);
-  margin-left: auto;
+  margin-inline-start: auto;
 
   .ds-c-step__content--with-content + & {
-    margin-top: $spacer-2;
+    margin-block-start: $spacer-2;
   }
 
   .ds-c-step--completed & a {
@@ -140,13 +130,11 @@
 
 .ds-c-step__completed-text {
   display: inline-block;
-  line-height: 26px;
-  margin-right: $spacer-2;
+  margin-inline-end: $spacer-2;
 
   .ds-c-icon {
     height: 12px;
-    margin-right: $spacer-1;
-    vertical-align: inherit;
+    margin-inline-end: $spacer-1;
     width: 16px;
   }
 
@@ -159,22 +147,20 @@
 
 .ds-c-step__description {
   font-size: var(--font-size-sm);
-  margin-bottom: $spacer-1;
+  margin-block-end: $spacer-1;
 
   .ds-c-step--current &,
   .ds-c-step--completed & {
-    margin-top: $spacer-1;
+    margin-block-start: $spacer-1;
   }
 }
 
 .ds-c-step__substeps {
-  list-style-type: none;
   margin: 0;
-  padding-left: $spacer-5;
+  padding-inline-start: $spacer-5;
 }
 
 .ds-c-substep {
-  display: block;
   font-size: var(--font-size-sm);
 
   &::before {
@@ -186,5 +172,5 @@
 
 .ds-c-substep__heading {
   display: inline;
-  margin-right: $spacer-1;
+  margin-inline-end: $spacer-1;
 }

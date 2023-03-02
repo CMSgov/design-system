@@ -4,7 +4,6 @@
   border-collapse: collapse;
   border-spacing: 0;
   margin: 0;
-  text-align: left;
 
   th,
   thead td {
@@ -19,6 +18,7 @@
   td {
     border: 1px solid var(--table__border-color);
     padding: var(--table__padding);
+    text-align: start;
   }
 }
 
@@ -79,8 +79,8 @@
 
 .ds-c-table__caption {
   font-weight: var(--font-weight-bold);
-  margin-bottom: $spacer-1;
-  text-align: left;
+  margin-block-end: $spacer-1;
+  text-align: start;
 }
 
 @mixin stacked-table-styles {
@@ -123,7 +123,7 @@
       content: attr(data-title);
       display: block;
       font-weight: bold;
-      padding-bottom: $spacer-half;
+      padding-block-end: $spacer-half;
     }
   }
 

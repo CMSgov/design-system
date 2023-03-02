@@ -3,10 +3,8 @@
 }
 
 .ds-c-field__before {
-  bottom: var(--text-input__padding);
-  left: var(--text-input__padding);
+  inset: var(--text-input__padding) auto var(--text-input__padding) var(--text-input__padding);
   position: absolute;
-  top: var(--text-input__padding);
 }
 
 .ds-c-field__before--currency {
@@ -15,10 +13,10 @@
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
   // Adjust to better align icon with value's baseline
-  padding-top: 1px;
+  padding-block-start: 1px;
 }
 
 .ds-c-field--currency {
   // Normal padding + space for the icon + normal padding
-  padding-left: 20px;
+  padding-inline-start: 20px;
 }

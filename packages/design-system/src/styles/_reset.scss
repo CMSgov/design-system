@@ -190,40 +190,11 @@ label {
 
 button {
   cursor: pointer;
+  display: inline-block;
 }
 
 /* Images */
 
 figure {
   margin: 0;
-}
-
-/* Tables */
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  margin: 0;
-  text-align: start;
-
-  caption {
-    font-weight: var(--font-weight-bold);
-    margin-block: 0 0.5em;
-    text-align: start;
-  }
-
-  th,
-  thead td {
-    background-color: var(--table-header__background-color);
-  }
-
-  tbody th {
-    font-weight: var(--font-weight-normal);
-  }
-
-  th,
-  td {
-    border: 1px solid var(--table__border-color);
-    padding: var(--table__padding);
-  }
 }

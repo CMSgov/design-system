@@ -6,9 +6,7 @@
   justify-content: space-between;
   ul {
     display: inline;
-    list-style: none;
     margin: 0;
-    padding: 0;
 
     @media (-ms-high-contrast: active), (forced-colors: active) {
       align-items: center;
@@ -51,6 +49,7 @@
     font-weight: var(--font-weight-bold);
     text-decoration: none;
     &:hover {
+      color: currentColor;
       cursor: auto;
       text-decoration: none;
     }
@@ -127,10 +126,10 @@
     display: inline-block;
     vertical-align: text-top;
     &-next {
-      margin-left: $spacer-half;
+      margin-inline-start: $spacer-half;
     }
     &-previous {
-      margin-right: $spacer-half;
+      margin-inline-end: $spacer-half;
     }
   }
   .ds-c-pagination__nav--image {

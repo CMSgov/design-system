@@ -42,7 +42,7 @@ const navItems = [
 
 export const DocumentationPage = () => {
   return (
-    <main className="ds-base ds-l-container">
+    <main className="ds-l-container">
       <SkipNav href="#content" />
       <div className="ds-l-row">
         <aside className="ds-u-margin-bottom--4 ds-u-md-margin-bottom--0 ds-l-md-col--4 ds-l-lg-col--3">

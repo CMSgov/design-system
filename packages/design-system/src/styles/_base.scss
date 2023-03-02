@@ -29,19 +29,7 @@ $breakpoints: (
  * Body
  */
 
-%ds-base {
-  font-family: var(--font-sans);
-  font-size: var(--font-size-base);
-  line-height: var(--font-line-height-base);
-}
-
-.ds-base {
-  @extend %ds-base;
-  color: var(--color-base);
-}
-
 .ds-base--inverse {
-  @extend %ds-base;
   background-color: var(--color-background-inverse);
   color: var(--color-base-inverse);
 }
@@ -155,15 +143,14 @@ $breakpoints: (
 }
 
 @mixin heading-margins {
-  margin-bottom: 0.5em;
-  margin-top: 1.5em;
+  margin-block: 1.5em 0.5em;
 
   &:first-child {
-    margin-top: 0;
+    margin-block-start: 0;
   }
 
   &:last-child {
-    margin-bottom: 0;
+    margin-block-end: 0;
   }
 }
 
@@ -322,15 +309,14 @@ $breakpoints: (
 .ds-text-body--md {
   font-family: var(--typography-body__font-family);
   line-height: var(--font-line-height-base);
-  margin-bottom: 1em;
-  margin-top: 1em;
+  margin-block: 1em;
 
   &:first-child {
-    margin-top: 0;
+    margin-block-start: 0;
   }
 
   &:last-child {
-    margin-bottom: 0;
+    margin-block-end: 0;
   }
 }
 

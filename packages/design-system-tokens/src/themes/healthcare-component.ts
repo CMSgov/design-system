@@ -425,6 +425,7 @@ export const components: AnyTokenValues = {
     '__border-color--inverse':                    t.color['black'],
     '__border-color--success':                    t.color['success-light'],
     '__color':                                    t.color['base'],
+    '__divider-color':                            t.color['gray-light'],
     '__padding':                                  t.spacer['1'],
     '__border-radius':                            '0',
   },
