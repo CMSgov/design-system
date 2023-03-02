@@ -32,6 +32,6 @@ export function getComponentVariables(themeName: ThemeName, componentName: strin
   return themes[themeName].components[componentName];
 }
 
-export function getSystemColorTokenFromValue(themeName: ThemeName, colorValue: string): string {
+export function getSystemColorTokenFromValue(colorValue: string): string {
   return findKey(colorTokens, (value) => String(value) === colorValue);
 }

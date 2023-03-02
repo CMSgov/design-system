@@ -1,5 +1,7 @@
 .c-color-example-row {
+  align-items: center;
   display: flex;
+  gap: $spacer-1;
   justify-content: space-between;
   padding: $spacer-1;
   position: relative;
@@ -10,8 +12,11 @@
     position: absolute;
     top: 0;
   }
+}
 
-  code {
-    position: relative;
-  }
+.c-color-example-row__name,
+.c-color-example-row__value {
+  display: block;
+  font-size: 1em;
+  position: relative;
 }
