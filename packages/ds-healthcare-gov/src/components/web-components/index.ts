@@ -12,7 +12,7 @@
 
 import { setErrorPlacementDefault } from '@cmsgov/design-system';
 
-export * from '@cmsgov/design-system/web-components';
+import '@cmsgov/design-system/web-components';
 
 export * from '../flags';
 

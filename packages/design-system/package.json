@@ -35,6 +35,7 @@
         "types": "./dist/preact-components/types/index.d.ts"
     },
     "./web-components": {
+        "browser": "./dist/preact-components/esm/web-components/index.js",
         "import": "./dist/preact-components/esm/web-components/index.js",
         "require": "./dist/preact-components/cjs/web-components/index.js",
         "types": "./dist/react-components/types/web-components/index.d.ts"
