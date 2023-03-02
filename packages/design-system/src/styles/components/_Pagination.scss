@@ -5,7 +5,7 @@
   display: flex;
   justify-content: space-between;
   ul {
-    display: inline;
+    display: none;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -14,6 +14,9 @@
       align-items: center;
       display: inline-flex;
       gap: 1ch;
+    }
+    @media (min-width: $media-width-md) {
+      display: inline;
     }
   }
   li {
@@ -75,7 +78,7 @@
       border: 0;
     }
     @media (max-width: $media-width-md) {
-      display: block !important;
+      display: inline-block !important;
     }
   }
   .ds-c-pagination__nav {
@@ -144,12 +147,6 @@
       path {
         fill: LinkText;
       }
-    }
-  }
-  .ds-c-pagination__desktop {
-    display: none;
-    @media (min-width: $media-width-md) {
-      display: block;
     }
   }
 }

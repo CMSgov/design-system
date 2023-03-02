@@ -272,7 +272,7 @@ function Pagination({
         }}
       />
 
-      <ul className={!compact ? 'ds-c-pagination__desktop' : 'ds-u-display--none'} role="list">
+      <ul className={!compact ? '' : 'ds-u-display--none'} role="list">
         {pages}
       </ul>
 
