@@ -144,7 +144,7 @@ function Pagination({
   totalPages,
   ...rest
 }: PaginationProps): React.ReactElement {
-  const classes = classNames('ds-c-pagination', className);
+  const classes = classNames('ds-c-pagination', { 'ds-c-pagination__compact': compact }, className);
 
   /**
    * `useState` and `useEffect` determine if
@@ -263,7 +263,7 @@ function Pagination({
       </Button>
 
       <span
-        className={`ds-c-pagination__page-count${!compact ? ' ds-u-display--none' : ''}`}
+        className="ds-c-pagination__page-count"
         dangerouslySetInnerHTML={{
           __html: t('pagination.pageXOfY', {
             number: `<strong>${currentPage}</strong>`,
@@ -272,9 +272,7 @@ function Pagination({
         }}
       />
 
-      <ul className={!compact ? '' : 'ds-u-display--none'} role="list">
-        {pages}
-      </ul>
+      <ul role="list">{pages}</ul>
 
       <Button
         variation="ghost"
