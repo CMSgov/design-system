@@ -25,6 +25,7 @@
 
   .c-navigation__link-list {
     border-block: 1px solid var(--vertical-nav-item__border-color);
+    gap: 0;
     margin-block: $spacer-2;
 
     .ds-c-vertical-nav__label--parent {
@@ -73,6 +74,7 @@
     .c-navigation__link-list {
       .ds-c-vertical-nav__label {
         background-color: transparent;
+        text-align: start;
 
         &:hover,
         &:visited:hover {
