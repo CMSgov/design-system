@@ -2,7 +2,6 @@ import React from 'react';
 import { Typography } from './resetTypography.stories';
 import { Lists } from './resetLists.stories';
 import { FormElements } from './resetFormEls.stories';
-import { Tables } from './resetTables.stories';
 
 export default {
   title: 'Reset/Overview',
@@ -19,7 +18,6 @@ export const Overview = () => {
       <Typography />
       <Lists />
       <FormElements />
-      <Tables />
     </>
   );
 };

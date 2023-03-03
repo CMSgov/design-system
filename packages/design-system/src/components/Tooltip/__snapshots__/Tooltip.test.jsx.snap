@@ -4,7 +4,7 @@ exports[`Tooltip renders custom trigger component 1`] = `
 <a
   aria-describedby="trigger_5"
   aria-label="tooltip trigger"
-  class="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
+  class="ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
   tabindex="0"
 >
   <span
@@ -31,7 +31,7 @@ exports[`Tooltip renders default trigger icon 1`] = `
 <button
   aria-describedby="trigger_1"
   aria-label="tooltip trigger"
-  class="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
+  class="ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
   type="button"
 >
   <span
@@ -69,7 +69,7 @@ exports[`Tooltip renders dialog tooltip 1`] = `
     data-popper-arrow="true"
   />
   <div
-    class="ds-c-tooltip__content ds-base"
+    class="ds-c-tooltip__content"
   >
     Tooltip body content
   </div>
@@ -84,7 +84,7 @@ exports[`Tooltip renders inverse tooltip 1`] = `
     <button
       aria-describedby="trigger_3"
       aria-label="tooltip trigger"
-      class="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon ds-c-tooltip__trigger--inverse"
+      class="ds-c-tooltip__trigger ds-c-tooltip__trigger-icon ds-c-tooltip__trigger--inverse"
       type="button"
     >
       <span
@@ -118,7 +118,7 @@ exports[`Tooltip renders inverse tooltip 1`] = `
         data-popper-arrow="true"
       />
       <div
-        class="ds-c-tooltip__content ds-base"
+        class="ds-c-tooltip__content"
       >
         Tooltip body content
       </div>
@@ -146,7 +146,7 @@ exports[`Tooltip tooltip with close renders heading element 1`] = `
     data-popper-arrow="true"
   />
   <div
-    class="ds-c-tooltip__content ds-base"
+    class="ds-c-tooltip__content"
   >
     <div
       class="ds-c-tooltip__header"
@@ -173,7 +173,7 @@ exports[`Tooltip tooltip with close renders heading element and close button 1`]
     data-popper-arrow="true"
   />
   <div
-    class="ds-c-tooltip__content ds-base"
+    class="ds-c-tooltip__content"
   >
     <div
       class="ds-c-tooltip__header"

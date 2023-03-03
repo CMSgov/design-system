@@ -2,16 +2,14 @@
 @use '../mixins';
 
 .ds-c-list {
-  margin-bottom: $spacer-2;
-  margin-top: $spacer-2;
-  padding-left: $spacer-4;
+  margin-block: $spacer-2;
+  padding-inline-start: $spacer-4;
 
   li {
-    line-height: var(--font-line-height-base);
-    margin-bottom: $spacer-1;
+    margin-block-end: $spacer-1;
 
     &:last-child {
-      margin-bottom: 0;
+      margin-block-end: 0;
     }
   }
 }

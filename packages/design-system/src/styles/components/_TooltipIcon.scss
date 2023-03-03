@@ -4,7 +4,6 @@
 .ds-c-tooltip-icon__container {
   border: $spacer-half solid rgba(0, 0, 0, 0);
   border-radius: 100%;
-  box-sizing: border-box;
   display: inline-block;
   height: $spacer-3;
   position: relative;
@@ -42,8 +41,8 @@
 .ds-c-tooltip__trigger:hover,
 .ds-c-tooltip__trigger:focus {
   .ds-c-tooltip-icon__container {
-    border-color: var(--tooltip-icon__color);
     border-color: var(--tooltip__border-color--active);
+    color: var(--tooltip-icon__color);
   }
 }
 
@@ -58,8 +57,8 @@
   &.ds-c-tooltip__trigger:hover,
   &.ds-c-tooltip__trigger:focus {
     .ds-c-tooltip-icon__container {
-      border-color: var(--tooltip-icon__color--inverse);
       border-color: var(--tooltip__border-color--inverse-active);
+      color: var(--tooltip-icon__color--inverse);
     }
   }
 }

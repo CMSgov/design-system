@@ -12,27 +12,25 @@
 }
 
 .ds-c-vertical-nav {
-  @include mixins.ds-unstyled-list;
+  margin: 0;
 
   > .ds-c-vertical-nav__item {
     background-color: transparent;
-    border-top: 1px solid var(--vertical-nav-item__border-color);
+    border-block-start: 1px solid var(--vertical-nav-item__border-color);
 
     &:first-child {
-      border-top: 0;
+      border-block-start: 0;
     }
   }
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
-    border-bottom: 1px solid LinkText;
-    border-right: 1px solid LinkText;
-    border-top: 1px solid LinkText;
+    border-block: 1px solid LinkText;
+    border-inline-end: 1px solid LinkText;
   }
 
   .ds-c-vertical-nav__item {
     @media (-ms-high-contrast: active), (forced-colors: active) {
-      border-bottom: 1px solid LinkText;
-      border-top: 1px solid LinkText;
+      border-block: 1px solid LinkText;
     }
   }
 }
@@ -41,20 +39,13 @@
   display: none;
 }
 
-.ds-c-vertical-nav__item {
-  position: relative;
-}
-
 .ds-c-vertical-nav__label,
 .ds-c-vertical-nav__label:visited {
-  border-left: $spacer-half solid transparent;
+  border-inline-start: $spacer-half solid transparent;
   color: var(--vertical-nav-label__color);
   display: block;
-  font-family: var(--font-sans); // Needed to overwrite user agent heading tag styles
-  font-size: var(--font-size-base); // Needed to overwrite user agent heading tag styles
   line-height: var(--font-line-height-heading);
   padding: $spacer-1 $spacer-2;
-  text-align: left; // Needed to overwrite user agent heading tag styles
   text-decoration: none;
 
   &:hover {
@@ -75,13 +66,10 @@
 // Subnav toggle
 // This class is applied to a <button>, so we need to reset some styling here...
 .ds-c-vertical-nav__label--parent {
-  appearance: none;
   background-color: transparent;
-  border-bottom: 0; // Clear <button> borders (border-left is already set)
+  border-block: 0; // Clear <button> borders (border-left is already set)
+  border-inline-end: 0;
   border-radius: 0; // Remove default browser radius in Chrome
-  border-right: 0;
-  border-top: 0;
-  cursor: pointer;
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -126,22 +114,21 @@
 
 .ds-c-vertical-nav__label--current,
 .ds-c-vertical-nav__label--current:visited {
-  border-left-color: var(--vertical-nav-label__border-color--current);
+  border-inline-start-color: var(--vertical-nav-label__border-color--current);
   color: var(--vertical-nav-label__color--current);
   font-weight: var(--font-weight-bold);
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
-    border-left-color: WindowText;
+    border-inline-start-color: WindowText;
   }
 }
 
 .ds-c-vertical-nav__subnav {
-  @include mixins.ds-unstyled-list;
+  margin: 0;
 
   .ds-c-vertical-nav__label {
     font-size: var(--font-size-sm);
-    line-height: var(--font-line-height-heading);
-    padding-left: $spacer-3;
+    padding-inline-start: $spacer-3;
 
     @media (-ms-high-contrast: active), (forced-colors: active) {
       &:hover,
@@ -160,10 +147,10 @@
   }
 
   .ds-c-vertical-nav__subnav .ds-c-vertical-nav__label {
-    padding-left: $spacer-4;
+    padding-inline-start: $spacer-4;
   }
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
-    margin-left: $spacer-2;
+    margin-inline-start: $spacer-2;
   }
 }
