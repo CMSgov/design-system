@@ -29,12 +29,6 @@ All heading elements will receive the font styles defined by their parent elemen
 
 [`font`](https://developer.mozilla.org/en-US/docs/Web/CSS/font) is a shorthand property that encompasses several font styles, but the key thing to note is a heading will now inherit the `font-family` and `font-size` of its parent or `<body>` element. This rule ensures the semantics of a heading element are distinct from its appearance. If you need to style a heading, refer to our [headings](/foundation/typography/headings/) or [utility class](/utilities/overview/) documentation.
 
-Lastly, headings have been reset to have their bottom margins removed. All headings have a top margin set to `1.5em`.
-
-### Paragraphs
-
-Like headings, paragraphs have had their bottom margins removed and a top margin of `1em` defined. However, if a paragraph is the `:first-child` its margin will be entirely removed.
-
 ### Links
 
 Links behave as they previously did, with one exception—the `text-decoration-color` is now set to `currentColor`. This change was made under the assumption that all link underlines will have the same color as its text, regardless of that text's state.
