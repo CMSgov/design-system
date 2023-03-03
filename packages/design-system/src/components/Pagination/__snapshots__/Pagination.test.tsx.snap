@@ -80,7 +80,21 @@ exports[`Pagination should render component 1`] = `
       </span>
       Previous
     </a>
-    <ul>
+    <span
+      class="ds-c-pagination__page-count"
+    >
+      Page 
+      <strong>
+        2
+      </strong>
+       of 
+      <strong>
+        3
+      </strong>
+    </span>
+    <ul
+      role="list"
+    >
       <li>
         <a
           aria-label="page 1"
@@ -140,8 +154,8 @@ exports[`Pagination should render component 1`] = `
 exports[`Pagination with compact prop enabled should render compact variant 1`] = `
 <DocumentFragment>
   <nav
-    aria-label="Pagination"
-    class="ds-c-pagination"
+    aria-labelledby="pagination-heading"
+    class="ds-c-pagination ds-c-pagination--compact"
   >
     <a
       aria-label="Previous Page"
@@ -180,6 +194,9 @@ exports[`Pagination with compact prop enabled should render compact variant 1`] 
         3
       </strong>
     </span>
+    <ul
+      role="list"
+    />
     <a
       aria-label="Next Page"
       class="ds-c-button ds-c-button--ghost ds-c-pagination__nav"

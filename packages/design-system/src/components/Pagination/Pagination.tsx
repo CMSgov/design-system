@@ -138,33 +138,12 @@ function Pagination({
   totalPages,
   ...rest
 }: PaginationProps): React.ReactElement {
-  const classes = classNames('ds-c-pagination', className);
+  const classes = classNames('ds-c-pagination', { 'ds-c-pagination--compact': compact }, className);
 
   /**
    * `useState` and `useEffect` determine if
    * mobile layout of component is rendered.
    */
-
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    if (window) {
-      // Mobile media query derived from: https://design.cms.gov/guidelines/responsive/
-      const media = window.matchMedia('(max-width: 543px)');
-
-      if (media.matches !== isMobile) {
-        setIsMobile(media.matches);
-      }
-
-      const listener = () => {
-        setIsMobile(media.matches);
-      };
-
-      media.addEventListener('change', listener);
-      return () => media.removeEventListener('change', listener);
-    } else {
-      setIsMobile(true);
-    }
-  }, [isMobile]);
 
   const pageChange = useCallback(
     (page) => (evt: React.MouseEvent) => onPageChange(evt, page),
@@ -174,10 +153,9 @@ function Pagination({
   const pages = [];
 
   /**
-   * If `compact` or `isMobile` is true,
-   * don't run code to populate `pages[]`.
+   * If `compact` is true, don't run code to populate `pages[]`.
    */
-  if (!compact || !isMobile) {
+  if (!compact) {
     const pageRange = paginationBuilder(currentPage, totalPages);
 
     if (pageRange[0] >= 2) {
@@ -243,7 +221,6 @@ function Pagination({
   }
 
   const startIcon = <ArrowIcon direction="left" className="ds-c-pagination__nav--image" />;
-
   const endIcon = <ArrowIcon direction="right" className="ds-c-pagination__nav--image" />;
 
   return (
@@ -275,19 +252,17 @@ function Pagination({
         </Button>
       )}
 
-      {isMobile || compact ? (
-        <span
-          className="ds-c-pagination__page-count"
-          dangerouslySetInnerHTML={{
-            __html: t('pagination.pageXOfY', {
-              number: `<strong>${currentPage}</strong>`,
-              total: `<strong>${totalPages}</strong>`,
-            }),
-          }}
-        />
-      ) : (
-        <ul>{pages}</ul>
-      )}
+      <span
+        className="ds-c-pagination__page-count"
+        dangerouslySetInnerHTML={{
+          __html: t('pagination.pageXOfY', {
+            number: `<strong>${currentPage}</strong>`,
+            total: `<strong>${totalPages}</strong>`,
+          }),
+        }}
+      />
+
+      <ul role="list">{pages}</ul>
 
       {currentPage === totalPages ? (
         <span
