@@ -18,7 +18,7 @@ The CSS reset introduces globally-defined defaults that will impact the entire a
 - Animations, transitions, and smooth scroll are removed on all elements - including `*::before` and `*::after` for users who have `prefers-reduced-motion` enabled to respect their preferences.
 - The `<body>` element effectively replaces the `.ds-base` class, defining `font-family`, `font-size`, `line-height`, and `color`.
   - In addition, `<body>` now sets `background-color` to a theme's specified background.
-- The `outline` is removed on elements with the `tabindex="-1"` declared. This is removes focus rings for non-interactive elements, e.g., when activating a skip link will then send focus to a `<main>` or heading element.
+- The `outline` is removed on elements with the `tabindex="-1"` declared. This removes focus rings for non-interactive elements, e.g., when activating a skip link will then send focus to a `<main>` or heading element.
 - To avoid [margin collapse](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing), all elements will only rely on their respective top margins to better control layout. All bottom margins have been removed.
 
 ## Typography
