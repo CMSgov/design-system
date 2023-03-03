@@ -418,19 +418,11 @@ Previously, `gray-cool-light` was mapped to the same system color token for all 
 
 When removing `gray-cool-light`, we remapped the background color for the hover state of [calendar picker](/components/date-field/date-picker/) buttons to `primary-lightest`. On all but the core theme, this results in a slight color shift for the background color of those day-picker buttons when hovered.
 
-<ThemeContent onlyThemes={['core']}>
-
-<ColorMigrationTable
-  colorRows={[
-    [{ name: 'ocean-50', value: '#e6f1f8' }, { name: 'sky-50', value: '#e6f9fd' }],
-  ]}
-/>
-</ThemeContent>
 <ThemeContent onlyThemes={['healthcare']}>
 
 <ColorMigrationTable
   colorRows={[
-    [{ name: 'ocean-50', value: '#e6f1f8' }, { name: 'sapphire-50', value: '#e6f0f4' }],
+    [{ name: '--color-gray-cool-light', value: '#e6f1f8' }, { name: '--day-picker-button__background-color--hover', value: '#e6f0f4' }],
   ]}
 />
 
@@ -439,7 +431,7 @@ When removing `gray-cool-light`, we remapped the background color for the hover 
 
 <ColorMigrationTable
   colorRows={[
-    [{ name: 'ocean-50', value: '#e6f1f8' }, { name: 'teal-50', value: '#e8f0ef' }],
+    [{ name: '--color-gray-cool-light', value: '#e6f1f8' }, { name: '--day-picker-button__background-color--hover', value: '#e8f0ef' }],
   ]}
 />
 
@@ -448,7 +440,7 @@ When removing `gray-cool-light`, we remapped the background color for the hover 
 
 <ColorMigrationTable
   colorRows={[
-    [{ name: 'ocean-50', value: '#e6f1f8' }, { name: 'deepsea-50', value: '#e7e9f5' }],
+    [{ name: '--color-gray-cool-light', value: '#e6f1f8' }, { name: '--day-picker-button__background-color--hover', value: '#e7e9f5' }],
   ]}
 />
 
