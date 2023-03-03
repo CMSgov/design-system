@@ -61,6 +61,10 @@ h6 {
   font: inherit;
   // margin applied to top of heading, informed by current margin size
   margin-block: 1.5em 0;
+
+  &:first-child {
+    margin-block-start: 0;
+  }
 }
 
 p {
