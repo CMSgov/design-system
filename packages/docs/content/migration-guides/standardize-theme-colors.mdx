@@ -416,13 +416,23 @@ The alert component has been updated to use `info` colors for the left border co
 
 Previously, `gray-cool-light` was mapped to the same system color token for all themes.
 
-When removing `gray-cool-light`, we remapped the background color for the hover state of [calendar picker](/components/date-field/date-picker/) buttons to `primary-lightest`. On all but the core theme, this results in a slight color shift for the background color of those day-picker buttons when hovered.
+When removing `gray-cool-light`, we remapped the background color for the hover
+state of [calendar picker](/components/date-field/date-picker/) buttons to `primary-lightest`. On all but the core theme, this results in a slight color shift for the background color of those day-picker buttons when hovered.
 
+<ThemeContent onlyThemes={['core']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--color-gray-cool-light', value: '#e6f1f8' }, { name: '--color-primary-lightest', value: '#e6f1f8' }],
+  ]}
+/>
+
+</ThemeContent>
 <ThemeContent onlyThemes={['healthcare']}>
 
 <ColorMigrationTable
   colorRows={[
-    [{ name: '--color-gray-cool-light', value: '#e6f1f8' }, { name: '--day-picker-button__background-color--hover', value: '#e6f0f4' }],
+    [{ name: '--color-gray-cool-light', value: '#e6f1f8' }, { name: '--color-primary-lightest', value: '#e6f0f4' }],
   ]}
 />
 
@@ -431,7 +441,7 @@ When removing `gray-cool-light`, we remapped the background color for the hover 
 
 <ColorMigrationTable
   colorRows={[
-    [{ name: '--color-gray-cool-light', value: '#e6f1f8' }, { name: '--day-picker-button__background-color--hover', value: '#e8f0ef' }],
+    [{ name: '--color-gray-cool-light', value: '#e6f1f8' }, { name: '--color-primary-lightest', value: '#e8f0ef' }],
   ]}
 />
 
@@ -440,10 +450,8 @@ When removing `gray-cool-light`, we remapped the background color for the hover 
 
 <ColorMigrationTable
   colorRows={[
-    [{ name: '--color-gray-cool-light', value: '#e6f1f8' }, { name: '--day-picker-button__background-color--hover', value: '#e7e9f5' }],
+    [{ name: '--color-gray-cool-light', value: '#e6f1f8' }, { name: '--color-primary-lightest', value: '#e7e9f5' }],
   ]}
 />
 
 </ThemeContent>
-
-
