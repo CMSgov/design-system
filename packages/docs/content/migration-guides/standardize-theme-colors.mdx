@@ -455,3 +455,55 @@ state of [calendar picker](/components/date-field/date-picker/) buttons to `prim
 />
 
 </ThemeContent>
+
+### Filter chip
+
+The `secondary` to `info` color shift in most themes forced us to make a
+decision about border and background colors for the filter chip. Previously
+most themes had a mismatch between these two colors. While the chosen colors
+depend on the brand, we've made sure the border and background match now.
+
+<ThemeContent onlyThemes={['core']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--filter-chip__background-color', value: '#e6f9fd' }, { name: '--filter-chip__background-color', value: '#e6f1f8' }],
+    [{ name: '--filter-chip__border-color',     value: '#0071bc' }, { name: '--filter-chip__border-color',     value: '#0071bc' }],
+  ]}
+  
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['healthcare']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--filter-chip__background-color', value: '#ecf4fa' }, { name: '--filter-chip__background-color', value: '#e6f0f4' }],
+    [{ name: '--filter-chip__border-color',     value: '#046791' }, { name: '--filter-chip__border-color',     value: '#046791' }],
+  ]}
+  
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['medicare']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--filter-chip__background-color', value: '#e9ecf1' }, { name: '--filter-chip__background-color', value: '#e9ecf1' }],
+    [{ name: '--filter-chip__border-color',     value: '#146a5d' }, { name: '--filter-chip__border-color',     value: '#1e3c70' }],
+  ]}
+  
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['cmsgov']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--filter-chip__background-color', value: '#ecfcf3' }, { name: '--filter-chip__background-color', value: '#e7e9f5' }],
+    [{ name: '--filter-chip__border-color',     value: '#0d2499' }, { name: '--filter-chip__border-color',     value: '#0d2499' }],
+  ]}
+  
+/>
+
+</ThemeContent>
