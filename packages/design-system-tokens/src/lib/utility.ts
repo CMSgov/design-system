@@ -78,7 +78,7 @@ export const luminanceFromHex = (hex: HexValue): number | null => {
 
 export const pickTextColor = (background: HexValue, lightText: string, darkText: string) => {
   const luminance = luminanceFromHex(background);
-  return luminance == null || luminance > 0.5 ? darkText : lightText;
+  return luminance == null || luminance > 0.24 ? darkText : lightText;
 };
 
 /**
