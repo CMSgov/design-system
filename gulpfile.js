@@ -309,7 +309,7 @@ log('🪴 building the cmsds');
 exports.build = gulp.series(
   cleanDist,
   gulp.parallel(copyThemes, copyImages, copyFonts, copyJSON),
-  gulp.parallel(compileSass, compileReactComponents /*, compilePreactComponents*/)
+  gulp.parallel(compileSass, compileReactComponents, compilePreactComponents)
 );
 
 /*

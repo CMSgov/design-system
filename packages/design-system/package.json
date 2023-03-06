@@ -17,31 +17,35 @@
   "license": "SEE LICENSE IN LICENSE.md",
   "exports": {
     ".": {
-        "types": "./dist/react-components/types/index.d.ts",
-        "import": "./dist/react-components/esm/index.js",
-        "require": "./dist/react-components/cjs/index.js"
+      "types": "./dist/react-components/types/index.d.ts",
+      "import": "./dist/react-components/esm/index.js",
+      "require": "./dist/react-components/cjs/index.js"
     },
     "./react": {
-        "types": "./dist/react-components/types/index.d.ts",
-        "import": "./dist/react-components/esm/index.js",
-        "require": "./dist/react-components/cjs/index.js"
+      "types": "./dist/react-components/types/index.d.ts",
+      "import": "./dist/react-components/esm/index.js",
+      "require": "./dist/react-components/cjs/index.js"
     },
     "./preact": {
-        "types": "./dist/preact-components/types/index.d.ts",
-        "import": "./dist/preact-components/esm/index.js",
-        "require": "./dist/preact-components/cjs/index.js"
+      "types": "./dist/preact-components/types/index.d.ts",
+      "import": "./dist/preact-components/esm/index.js",
+      "require": "./dist/preact-components/cjs/index.js"
     },
     "./web-components": {
-        "types": "./dist/react-components/types/web-components/index.d.ts",
-        "import": "./dist/preact-components/esm/web-components/index.js",
-        "require": "./dist/preact-components/cjs/web-components/index.js"
+      "types": "./dist/react-components/types/web-components/index.d.ts",
+      "import": "./dist/preact-components/esm/web-components/index.js",
+      "require": "./dist/preact-components/cjs/web-components/index.js"
     },
     "./css/*": "./dist/css/*"
   },
   "main": "dist/react-components/cjs/index.js",
   "module": "dist/react-components/esm/index.js",
   "types": "dist/react-components/types/index.d.ts",
-  "sideEffects": ["./dist/esnext/web-components/ds-alert.js", "./dist/esnext/web-components/ds-badge.js", "./dist/esnext/web-components/ds-button.js"],
+  "sideEffects": [
+    "./dist/preact-components/esm/web-components/ds-alert.js",
+    "./dist/preact-components/esm/web-components/ds-badge.js",
+    "./dist/preact-components/esm/web-components/ds-button.js"
+  ],
   "files": [
     "dist",
     "scripts",
