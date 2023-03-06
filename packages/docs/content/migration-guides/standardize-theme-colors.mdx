@@ -412,6 +412,30 @@ Coolblue was unused in the design system and is removed.
 
 The alert component has been updated to use `info` colors for the left border color and background color. This change does not result in visual changes.
 
+### Autocomplete items
+
+The hover/selected state for autocomplete items in core and healthcare changed
+from using the `secondary` (now `info`) blue to the `primary` blue used in buttons.
+
+<ThemeContent onlyThemes={['core']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--autocomplete-item__background-color--active', value: '#016074' }, { name: '--autocomplete-item__background-color--active', value: '#00395e' }],
+  ]}
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['healthcare']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--autocomplete-item__background-color--active', value: '#1f4a68' }, { name: '--autocomplete-item__background-color--active', value: '#023449' }],
+  ]}
+/>
+
+</ThemeContent>
+
 ### Calendar picker button
 
 Previously, `gray-cool-light` was mapped to the same system color token for all themes.
