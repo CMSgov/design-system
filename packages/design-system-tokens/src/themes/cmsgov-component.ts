@@ -288,7 +288,7 @@ export const components: AnyTokenValues = {
     '__border-color':                             t.color['border'],
     '-close__color':                              t.color['black'],
     '-header__background-color':                  t.color['gray-lightest'],
-    '-footer__background-color':                  t.color['primary-lightest'],
+    '-footer__background-color':                  t.color['info-lightest'],
     '-toggle__background-color--hover':           t.color['info'],
     '-toggle__color--hover':                      t.color['white'],
     '-toggle__background-color--hover--inverse':  t.color['white'],
