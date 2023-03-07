@@ -36,7 +36,8 @@
       "import": "./dist/preact-components/esm/web-components/index.js",
       "require": "./dist/preact-components/cjs/web-components/index.js"
     },
-    "./css/*": "./dist/css/*"
+    "./css/*": "./dist/css/*",
+    "./src/*": "./src/*"
   },
   "main": "dist/react-components/cjs/index.js",
   "module": "dist/react-components/esm/index.js",
