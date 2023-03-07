@@ -1,13 +1,13 @@
 import React from 'react';
 import { t } from '../i18n';
-import SvgIcon, { IconCommonProps } from './SvgIcon';
+import { SvgIcon, IconCommonProps } from './SvgIcon';
 
 const defaultProps = {
   className: '',
   viewBox: '0 0 16 16',
 };
 
-function InfoCircleIconThin(props: IconCommonProps): React.ReactElement {
+export function InfoCircleIconThin(props: IconCommonProps): React.ReactElement {
   const iconCssClasses = `ds-c-icon--info-circle-thin ${props.className || ''}`;
 
   return (
@@ -19,5 +19,3 @@ function InfoCircleIconThin(props: IconCommonProps): React.ReactElement {
     </SvgIcon>
   );
 }
-
-export default InfoCircleIconThin;

@@ -1,13 +1,13 @@
 import React from 'react';
 import { t } from '../i18n';
-import SvgIcon, { IconCommonProps } from './SvgIcon';
+import { SvgIcon, IconCommonProps } from './SvgIcon';
 
 const defaultProps = {
   className: '',
   viewBox: '3 3 18 18',
 };
 
-function AddIcon(props: IconCommonProps): React.ReactElement {
+export function AddIcon(props: IconCommonProps): React.ReactElement {
   const iconCssClasses = `ds-c-icon--add ${props.className || ''}`;
 
   return (
@@ -16,5 +16,3 @@ function AddIcon(props: IconCommonProps): React.ReactElement {
     </SvgIcon>
   );
 }
-
-export default AddIcon;

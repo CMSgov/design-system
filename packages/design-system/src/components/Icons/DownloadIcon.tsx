@@ -1,13 +1,13 @@
 import React from 'react';
 import { t } from '../i18n';
-import SvgIcon, { IconCommonProps } from './SvgIcon';
+import { SvgIcon, IconCommonProps } from './SvgIcon';
 
 const defaultProps = {
   className: '',
   viewBox: '0 0 15 19',
 };
 
-function DownloadIcon(props: IconCommonProps): React.ReactElement {
+export function DownloadIcon(props: IconCommonProps): React.ReactElement {
   const iconCssClasses = `ds-c-icon--download ${props.className || ''}`;
 
   return (
@@ -19,5 +19,3 @@ function DownloadIcon(props: IconCommonProps): React.ReactElement {
     </SvgIcon>
   );
 }
-
-export default DownloadIcon;

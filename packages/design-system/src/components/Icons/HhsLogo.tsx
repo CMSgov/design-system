@@ -1,13 +1,13 @@
 import React from 'react';
 import { t } from '../i18n';
-import SvgIcon, { IconCommonProps } from './SvgIcon';
+import { SvgIcon, IconCommonProps } from './SvgIcon';
 
 const defaultProps = {
   className: '',
   viewBox: '0 0 252 252',
 };
 
-function HhsLogo(props: IconCommonProps): React.ReactElement {
+export function HHSLogo(props: IconCommonProps): React.ReactElement {
   const iconCssClasses = `ds-c-icon--hhs-logo ${props.className || ''}`;
 
   return (
@@ -30,5 +30,3 @@ function HhsLogo(props: IconCommonProps): React.ReactElement {
     </SvgIcon>
   );
 }
-
-export default HhsLogo;

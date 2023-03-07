@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import AlertCircleIcon from '../Icons/AlertCircleIcon';
+import { AlertCircleIcon } from '../Icons/AlertCircleIcon';
 
 /**
  * <InlineError> is an internal component used by <FormLabel>

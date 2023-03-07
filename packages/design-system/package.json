@@ -29,6 +29,7 @@
     "@popperjs/core": "^2.4.4",
     "@types/react": "^17.0.10",
     "@types/react-dom": "^17.0.10",
+    "@types/react-transition-group": "^4.4.5",
     "chalk": "^5.0.1",
     "classnames": "^2.2.5",
     "core-js": "^3.6.5",
@@ -42,7 +43,7 @@
     "ora": "^6.1.2",
     "prop-types": "^15.8.1",
     "react-day-picker": "^8.0.5",
-    "react-transition-group": "^4.4.2",
+    "react-transition-group": "^4.4.5",
     "yargs": "^17.5.1"
   },
   "peerDependencies": {

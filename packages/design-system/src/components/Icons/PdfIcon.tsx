@@ -1,5 +1,5 @@
 import React from 'react';
-import SvgIcon, { IconCommonProps } from './SvgIcon';
+import { SvgIcon, IconCommonProps } from './SvgIcon';
 
 const defaultProps = {
   className: '',
@@ -7,7 +7,7 @@ const defaultProps = {
   viewBox: '0 0 17 22',
 };
 
-function PdfIcon(props: IconCommonProps): React.ReactElement {
+export function PdfIcon(props: IconCommonProps): React.ReactElement {
   const iconCssClasses = `ds-c-icon--pdf ${props.className || ''}`;
 
   return (
@@ -22,5 +22,3 @@ function PdfIcon(props: IconCommonProps): React.ReactElement {
     </SvgIcon>
   );
 }
-
-export default PdfIcon;
