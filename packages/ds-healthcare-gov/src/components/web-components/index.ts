@@ -12,9 +12,7 @@
 
 import { setErrorPlacementDefault } from '@cmsgov/design-system';
 
-// export * from '@cmsgov/design-system/dist/preact-components/esm/web-components'; // Fails TypeScript
-export * from '@cmsgov/design-system/web-components'; // Fails WebPack
-// import '@cmsgov/design-system/dist/preact-components/esm/web-components'; // Passes both but doesn't include them in the bundle
+export * from '@cmsgov/design-system/web-components';
 
 export * from '../flags';
 
