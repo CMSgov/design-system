@@ -12,13 +12,11 @@
     "@babel/preset-env": "^7.20.2",
     "babel-loader": "^8.0.0",
     "copy-webpack-plugin": "^6.4.1",
-    "http-server": "14.1.1",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1"
   },
   "sideEffects": false,
   "scripts": {
-    "build": "webpack --mode production --progress",
-    "serve": "http-server"
+    "build": "webpack --mode production --progress"
   }
 }

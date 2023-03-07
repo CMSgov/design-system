@@ -1,6 +1,6 @@
-## Example: react-app
+## Example: preact-react-app
 
-This example shows how you can incorporate the design system into your build process. It uses [Webpack](https://webpack.js.org) to bundle and optimize JavaScript files, [Babel](https://babeljs.io/) to transpile JSX, and [Gulp](http://gulpjs.com/) to transpile Sass and copy static assets from the design system.
+This example shows how you can replace React with [Preact](https://preactjs.com/) in your project without migrating your source code and. This differs from [the preact-app example](https://github.com/CMSgov/design-system/tree/main/examples/preact-app) in that it is intended to be used in a React project without changing the source code.
 
 ## Getting started
 
