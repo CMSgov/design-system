@@ -19,6 +19,7 @@
 .ds-c-month-picker__months-list {
   display: flex;
   flex-flow: row wrap;
+  gap: $spacer-1 0;
   justify-content: space-between;
 }
 
