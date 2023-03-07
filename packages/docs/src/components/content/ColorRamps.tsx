@@ -42,8 +42,9 @@ const ColorRamps = () => (
             {swatchColors.map(({ name, value }) => (
               <ColorExampleRow
                 name={name}
-                value={value}
                 displayName={name.split('-')[1] ?? name}
+                value={value}
+                displayValue={value}
                 key={`${name}-${value}`}
               />
             ))}

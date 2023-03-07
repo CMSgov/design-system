@@ -1,11 +1,13 @@
 ---
 title: Standardizing theme colors in v7
 order: 60
-intro: We've updated theme colors by removing non-semantic colors red, gold, green and coolblue and standarizing colors across themes.
+intro: We've updated theme colors by removing non-semantic colors red, gold, green and coolblue and standardizing colors across themes.
 ---
 
 import ColorMigrationTable from '../../src/components/content/ColorMigration/ColorMigrationTable.tsx';
 import { Alert } from '@cmsgov/design-system';
+
+## What this changes
 
 With the expansion of the design system themes to include a fourth theme (CMS.gov), we noticed theme variables were inconsistent. In some cases colors and whole color palettes weren't being used and needed to be removed. We've cleaned up and reorganized these colors using design tokens and theming to provide a more intentional approach to color.
 
@@ -13,11 +15,7 @@ With the expansion of the design system themes to include a fourth theme (CMS.go
 
 ### Primary
 
-We've updated the `primary` color to complete the spectrum from lightest to darkest. 
-
-<Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
-  <b>What does this mean:</b> You now have more <code>primary</code> color values to use in your designs.
-</Alert>
+We've updated the `primary` color to complete the spectrum from lightest to darkest. There are now more <code>primary</code> color values to use.
 
 <ThemeContent onlyThemes={['core']}>
 
@@ -89,7 +87,7 @@ One major shift with color standardization is updating the `secondary` color to 
 
 
 <Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
-  <b>What does this mean:</b> If you are using <code>secondary</code> colors in your design,
+  <b>What to do:</b> If you are using <code>secondary</code> colors in your design,
   you'll need to re-evaluate if that color should be remapped to a different <a href="/foundation/theme-colors/">theme color</a>.
 </Alert>
 
@@ -109,6 +107,11 @@ One major shift with color standardization is updating the `secondary` color to 
 <ThemeContent onlyThemes={['healthcare']}>
 
 One major shift with color standardization is updating the `secondary` color to use green system color tokens in the core and healthcare themes. In addition, we created the `info` status color and `secondary` colors have moved to the `info` color palette for informational components such as alerts, badges, and icons.
+
+<Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
+  <b>What to do:</b> If you are using <code>secondary</code> colors in your design,
+  you'll need to re-evaluate if that color should be remapped to a different <a href="/foundation/theme-colors/">theme color</a>.
+</Alert>
 
 <ColorMigrationTable
   colorRows={[
@@ -170,7 +173,7 @@ Status colors are used to communicate error, success, warning, or info statuses.
 We added an informational color palette for informational alerts, badges, and icons.
 
 <Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
-  <b>What does this mean:</b> If you are using <code>secondary</code> colors for
+  <b>What to do:</b> If you are using <code>secondary</code> colors for
   informational elements, you'll need to update them to use <code>info</code> colors from the <a href="/foundation/theme-colors/#informational">theme colors</a>..
 </Alert>
 
@@ -241,7 +244,7 @@ We added an informational color palette for informational alerts, badges, and ic
 Green is removed and was a non-semantic duplicate of `success`.
 
 <Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
-  <b>What does this mean:</b> If you are using <code>green</code> colors for success
+  <b>What to do:</b> If you are using <code>green</code> colors for success
   states, you'll need to update to use <code>success</code> colors from the <a href="/foundation/theme-colors/#success">theme colors</a>.
 </Alert>
 
@@ -262,7 +265,7 @@ Green is removed and was a non-semantic duplicate of `success`.
 Gold is removed and was a non-semantic duplicate of `warn`. 
 
 <Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
-  <b>What does this mean:</b> If you are using <code>gold</code> colors for
+  <b>What to do:</b> If you are using <code>gold</code> colors for
   warning states, you'll need to update to use <code>warn</code> colors from the <a href="/foundation/theme-colors/#warn">theme colors</a>.
 </Alert>
 
@@ -303,7 +306,7 @@ Gold is removed and was a non-semantic duplicate of `warn`.
 Red is removed and was a non-semantic duplicate of `error`. 
 
 <Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
-  <b>What does this mean:</b> If you are using <code>red</code> colors for error states,
+  <b>What to do:</b> If you are using <code>red</code> colors for error states,
   you'll need to update to use <code>error</code> colors from the <a href="/foundation/theme-colors/#error">theme colors</a>.
 </Alert>
 
@@ -324,7 +327,7 @@ Red is removed and was a non-semantic duplicate of `error`.
 Grays have been standardized and use the same naming structure as other color palettes. 
 
 <Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
-  <b>What does this mean:</b> If you are using <code>gray</code> colors that have been
+  <b>What to do:</b> If you are using <code>gray</code> colors that have been
   removed, you'll need to remap to a new neutral color from the <a href="/foundation/theme-colors/#neutral-colors">theme colors</a>.
 </Alert>
 
@@ -352,7 +355,7 @@ Grays have been standardized and use the same naming structure as other color pa
 Both of these colors are now lighter.
 
 <Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
-  <b>What does this mean:</b> You'll need to evaluate if you need to adjust the
+  <b>What to do:</b> You'll need to evaluate if you need to adjust the
   <code>gray</code> color you are using to use a different neutral color from the <a href="/foundation/theme-colors/#neutral-colors">theme colors</a>. 
 </Alert>
 
@@ -390,7 +393,7 @@ Both of these colors are now lighter.
 Coolblue was unused in the design system and is removed. 
 
 <Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
-  <b>What does this mean:</b> If you are using <code>coolblue</code> colors, you'll need to
+  <b>What to do:</b> If you are using <code>coolblue</code> colors, you'll need to
   update to use a new <a href="/foundation/theme-colors/">theme color</a> instead.
 </Alert>
 
@@ -407,20 +410,53 @@ Coolblue was unused in the design system and is removed.
 
 ### Alert 
 
-The alert component has been updated to use `info` colors for the left border color and background color.
+The alert component has been updated to use `info` colors for the left border color and background color. This change does not result in visual changes.
+
+### Autocomplete items
+
+The hover/selected state for autocomplete items in core and healthcare changed
+from using the `secondary` (now `info`) blue to the `primary` blue used in buttons.
+
+<ThemeContent onlyThemes={['core']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--autocomplete-item__background-color--active', value: '#016074' }, { name: '--autocomplete-item__background-color--active', value: '#00395e' }],
+  ]}
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['healthcare']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--autocomplete-item__background-color--active', value: '#1f4a68' }, { name: '--autocomplete-item__background-color--active', value: '#023449' }],
+  ]}
+/>
+
+</ThemeContent>
 
 ### Calendar picker button
 
 Previously, `gray-cool-light` was mapped to the same system color token for all themes.
 
-When removing `gray-cool-light`, we remapped the background color for the hover state of [calendar picker](/components/date-field/date-picker/) buttons to `primary-lightest`. On all but the core theme, this results in a slight color shift for the background color of those day-picker buttons when hovered.
+When removing `gray-cool-light`, we remapped the background color for the hover
+state of [calendar picker](/components/date-field/date-picker/) buttons to `primary-lightest`. On all but the core theme, this results in a slight color shift for the background color of those day-picker buttons when hovered.
 
+<ThemeContent onlyThemes={['core']}>
 
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--color-gray-cool-light', value: '#e6f1f8' }, { name: '--color-primary-lightest', value: '#e6f1f8' }],
+  ]}
+/>
+
+</ThemeContent>
 <ThemeContent onlyThemes={['healthcare']}>
 
 <ColorMigrationTable
   colorRows={[
-    [{ name: 'ocean-50', value: '#e6f1f8' }, { name: 'sapphire-50', value: '#e6f0f4' }],
+    [{ name: '--color-gray-cool-light', value: '#e6f1f8' }, { name: '--color-primary-lightest', value: '#e6f0f4' }],
   ]}
 />
 
@@ -429,7 +465,7 @@ When removing `gray-cool-light`, we remapped the background color for the hover 
 
 <ColorMigrationTable
   colorRows={[
-    [{ name: 'ocean-50', value: '#e6f1f8' }, { name: 'teal-50', value: '#e8f0ef' }],
+    [{ name: '--color-gray-cool-light', value: '#e6f1f8' }, { name: '--color-primary-lightest', value: '#e8f0ef' }],
   ]}
 />
 
@@ -438,10 +474,60 @@ When removing `gray-cool-light`, we remapped the background color for the hover 
 
 <ColorMigrationTable
   colorRows={[
-    [{ name: 'ocean-50', value: '#e6f1f8' }, { name: 'deepsea-50', value: '#e7e9f5' }],
+    [{ name: '--color-gray-cool-light', value: '#e6f1f8' }, { name: '--color-primary-lightest', value: '#e7e9f5' }],
   ]}
 />
 
 </ThemeContent>
 
+### Filter chip
 
+The `secondary` to `info` color shift in most themes forced us to make a
+decision about border and background colors for the filter chip. Previously
+most themes had a mismatch between these two colors. While the chosen colors
+depend on the brand, we've made sure the border and background match now.
+
+<ThemeContent onlyThemes={['core']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--filter-chip__background-color', value: '#e6f9fd' }, { name: '--filter-chip__background-color', value: '#e6f1f8' }],
+    [{ name: '--filter-chip__border-color',     value: '#0071bc' }, { name: '--filter-chip__border-color',     value: '#0071bc' }],
+  ]}
+  
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['healthcare']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--filter-chip__background-color', value: '#ecf4fa' }, { name: '--filter-chip__background-color', value: '#e6f0f4' }],
+    [{ name: '--filter-chip__border-color',     value: '#046791' }, { name: '--filter-chip__border-color',     value: '#046791' }],
+  ]}
+  
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['medicare']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--filter-chip__background-color', value: '#e9ecf1' }, { name: '--filter-chip__background-color', value: '#e9ecf1' }],
+    [{ name: '--filter-chip__border-color',     value: '#146a5d' }, { name: '--filter-chip__border-color',     value: '#1e3c70' }],
+  ]}
+  
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['cmsgov']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--filter-chip__background-color', value: '#ecfcf3' }, { name: '--filter-chip__background-color', value: '#e7e9f5' }],
+    [{ name: '--filter-chip__border-color',     value: '#0d2499' }, { name: '--filter-chip__border-color',     value: '#0d2499' }],
+  ]}
+  
+/>
+
+</ThemeContent>
