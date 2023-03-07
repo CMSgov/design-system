@@ -28,7 +28,11 @@ Object.values(stories).forEach((story) => {
       if (themes[theme].incomplete) return;
 
       // Don't capture theme-specific components outside their themes
-      if (!story.importPath.includes(themes[theme].packageName)) return;
+      if (
+        !story.importPath.includes(themes[theme].packageName) &&
+        !story.importPath.includes(themes['core'].packageName)
+      )
+        return;
 
       // During smoke tests, only take screenshots in core of core components
       if (isSmokeTest && theme !== 'core') return;
