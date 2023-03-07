@@ -417,7 +417,7 @@ export const components: AnyTokenValues = {
     '__border-color':                             t.color['gray'],
     '__border-color--disabled':                   t.color['gray-darker'],
     '__border-color--error':                      t.color['error'],
-    '__border-color--error--inverse':             t.color['error-light'],
+    '__border-color--error--inverse':             t.color['error-lighter'],
     '__border-color--inverse':                    t.color['black'],
     '__border-color--success':                    t.color['success-light'],
     '__color':                                    t.color['gray-darker'],
