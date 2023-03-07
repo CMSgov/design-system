@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRef, useState } from 'react';
-import CalendarIcon from '../Icons/CalendarIcon';
+import { CalendarIcon } from '../Icons/CalendarIcon';
 import CustomDayPicker from './CustomDayPicker';
 import classNames from 'classnames';
 import isMatch from 'date-fns/isMatch';

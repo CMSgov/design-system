@@ -1,13 +1,13 @@
 import React from 'react';
 import { t } from '../i18n';
-import SvgIcon, { IconCommonProps } from './SvgIcon';
+import { SvgIcon, IconCommonProps } from './SvgIcon';
 
 const defaultProps = {
   className: '',
   viewBox: '2 2 30 30',
 };
 
-const MenuIconThin = (props: IconCommonProps): React.ReactElement => {
+export const MenuIconThin = (props: IconCommonProps): React.ReactElement => {
   const iconCssClasses = `ds-c-icon--hamburger ${props.className}`;
   return (
     <SvgIcon title={t('icons.menu')} {...defaultProps} {...props} className={iconCssClasses}>
@@ -20,5 +20,3 @@ const MenuIconThin = (props: IconCommonProps): React.ReactElement => {
     </SvgIcon>
   );
 };
-
-export default MenuIconThin;
