@@ -27,16 +27,11 @@ Object.values(stories).forEach((story) => {
     Object.keys(themes).forEach((theme) => {
       if (themes[theme].incomplete) return;
 
-      // Don't take screenshots of theme-specific components outside their themes
-      if (theme !== 'core' && story.importPath.includes(themes[theme].packageName)) return;
+      // Don't capture theme-specific components outside their themes
+      if (!story.importPath.includes(themes[theme].packageName)) return;
 
-      // For smoke tests, only capture core components in the core theme and theme-specific
-      // components in their native theme
-      if (
-        isSmokeTest &&
-        !(theme === 'core' || !story.importPath.includes(themes[theme].packageName))
-      )
-        return;
+      // During smoke tests, only take screenshots in core of core components
+      if (isSmokeTest && theme !== 'core') return;
 
       test(`with ${theme} theme`, async ({ page }) => {
         await page.goto(`${storyUrl}&globals=theme:${theme}`);
