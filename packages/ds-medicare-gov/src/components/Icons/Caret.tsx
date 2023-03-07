@@ -1,7 +1,7 @@
 import React from 'react';
 import { FunctionComponent } from 'react';
 import { ArrowIcon } from '@cmsgov/design-system';
-import { ArrowIconDirectionType } from '@cmsgov/design-system/dist/components/Icons/ArrowIcon';
+import { ArrowIconDirectionType } from '@cmsgov/design-system';
 
 interface CaretProps {
   className?: string;

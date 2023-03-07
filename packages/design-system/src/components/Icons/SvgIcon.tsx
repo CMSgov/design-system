@@ -47,7 +47,7 @@ export type IconCommonProps = Partial<Omit<SvgIconProps, 'children'>>;
 
 type OmitProps = 'className' | 'children' | 'id' | 'title' | 'viewBox';
 
-function SvgIcon({
+export function SvgIcon({
   ariaHidden,
   className,
   children,
@@ -93,5 +93,3 @@ SvgIcon.defaultProps = {
   ariaHidden: true,
   inversed: false,
 };
-
-export default SvgIcon;

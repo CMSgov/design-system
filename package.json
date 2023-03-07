@@ -11,6 +11,7 @@
     "build:core": "yarn gulp build",
     "build:healthcare": "yarn gulp build --package packages/ds-healthcare-gov",
     "build:medicare": "yarn gulp build --package packages/ds-medicare-gov",
+    "build:cmsgov": "yarn gulp build --package packages/ds-cms-gov",
     "build:storybook": "./scripts/build-storybook.sh",
     "build:storybook:docs": "./scripts/build-storybook.sh docs",
     "build:tokens": "yarn --cwd ./packages/design-system-tokens build:all",
