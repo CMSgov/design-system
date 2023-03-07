@@ -166,7 +166,7 @@ describe('Pagination', () => {
 
     it('should highlight current page with correct styles', () => {
       renderPagination({ currentPage: 3, totalPages: 5 });
-      const currentPageLink = screen.getByText('3');
+      const currentPageLink = screen.getAllByText('3')[1];
       expect(currentPageLink.getAttribute('aria-current')).toEqual('page');
       expect(currentPageLink.classList.contains('ds-c-pagination__current-page')).toBeTruthy();
     });
@@ -189,9 +189,9 @@ describe('Pagination', () => {
     describe('more than 7 pages', () => {
       describe('should not show beginning ellipses for pages 1 - 3', () => {
         function expectFirstThree() {
-          screen.getByText('1');
-          screen.getByText('2');
-          screen.getByText('3');
+          screen.getAllByText('1')[1];
+          screen.getAllByText('2')[1];
+          screen.getAllByText('3')[1];
           expect(screen.getAllByRole('listitem').length).toBe(7);
         }
 
@@ -213,9 +213,9 @@ describe('Pagination', () => {
 
       describe('should not show end ellipses for last 3 pages', () => {
         function exectLastThree() {
-          screen.getByText('33');
-          screen.getByText('34');
-          screen.getByText('35');
+          screen.getAllByText('33')[1];
+          screen.getAllByText('34')[1];
+          screen.getAllByText('35')[1];
           expect(screen.getAllByRole('listitem').length).toBe(7);
         }
 
@@ -257,7 +257,7 @@ describe('Pagination', () => {
 
     it('should render non-interactive text nodes in place of pagination slot links', () => {
       renderPagination({ currentPage: 2, compact: true });
-      expect(screen.queryByRole('list')).toBeFalsy();
+      expect(screen.queryByRole('navigation')).toHaveClass('ds-c-pagination--compact');
     });
   });
 
