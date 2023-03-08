@@ -10,7 +10,7 @@ Object.keys(themes).forEach((theme) => {
   test(`Autocomplete select  hover: ${theme}`, async ({ page }) => {
     await page.goto(`${storyUrl}&globals=theme:${theme}`);
     const elem = page.getByRole('listbox');
-    await elem.type('c', { timeout: 200 });
+    await elem.type('c');
     await elem.press('ArrowDown');
     await expect(page).toHaveScreenshot(`autocomplete--type--${theme}.png`, { fullPage: true });
   });
