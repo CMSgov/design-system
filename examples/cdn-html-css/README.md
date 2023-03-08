@@ -1,4 +1,4 @@
-## Example: Pure HTML/CSS
+## Example: Using plain HTML/CSS with the CDN
 
 This shows the usage of CMS design system components on a pure HTML/CSS page with examples of:
 

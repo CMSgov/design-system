@@ -1,4 +1,4 @@
-## Example: react-app
+## Example: Using Preact in a React project
 
 This example shows how you can incorporate the design system into a [Preact](https://preactjs.com/) application. This differs from [the preact-react-app example](https://github.com/CMSgov/design-system/tree/main/examples/preact-react-app) in that we're using Preact directly.
 

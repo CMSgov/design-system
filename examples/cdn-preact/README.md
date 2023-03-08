@@ -1,4 +1,4 @@
-## Example: Consuming assets from the CDN
+## Example: Using Preact components with the CDN
 
 This shows the usage of CMS design system preact components from the CDN:
 
