@@ -1,7 +1,7 @@
 import React from 'react';
 import SingleInputDateField from './SingleInputDateField';
 import { action } from '@storybook/addon-actions';
-import { useState } from 'react';
+import { useArgs } from '@storybook/client-api';
 
 export default {
   title: 'Components/SingleInputDateField',
@@ -25,6 +25,21 @@ export default {
     requirementLabel: {
       control: { type: 'text' },
     },
+    fromDate: {
+      control: { type: 'date' },
+    },
+    toDate: {
+      control: { type: 'date' },
+    },
+    fromMonth: {
+      control: { type: 'date' },
+    },
+    toMonth: {
+      control: { type: 'date' },
+    },
+    defaultMonth: {
+      control: { type: 'date' },
+    },
   },
   args: {
     errorPlacement: 'top',
@@ -34,11 +49,11 @@ export default {
   },
 };
 
-const Template = ({ ...args }) => {
-  const [dateString, setDateString] = useState('');
+const Template = () => {
+  const [{ dateString, ...args }, updateArgs] = useArgs({ dateString: '' });
   const onChange = (...params) => {
     action('onChange')(...params);
-    setDateString(...params);
+    updateArgs({ dateString: params[0] });
   };
   return <SingleInputDateField {...args} value={dateString} onChange={onChange} />;
 };
