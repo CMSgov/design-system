@@ -38,6 +38,7 @@
     "posttest": "yarn lint",
     "test:unit:coverage": "yarn test:unit --collectCoverage",
     "test:a11y": "yarn playwright test --config tests/a11y/playwright.config.ts",
+    "test:a11y:local": "yarn build:storybook && docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.30.0-focal yarn playwright test --config tests/a11y/playwright.config.ts",
     "test:unit": "yarn jest --config=tests/unit/jest.config.js",
     "test:unit:update": "yarn test:unit --updateSnapshot",
     "test:unit:preact": "PREACT=true yarn jest --config=tests/unit/jest.config.js",
