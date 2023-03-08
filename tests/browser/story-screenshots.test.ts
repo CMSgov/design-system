@@ -34,7 +34,7 @@ Object.values(stories).forEach((story) => {
       if (storyNotInTheme && storyNotInCore) return;
 
       // During smoke tests, only take screenshots in core of core components
-      if (isSmokeTest && theme !== 'core') return;
+      if (isSmokeTest && (theme !== 'core' || storyNotInCore)) return;
 
       test(`with ${theme} theme`, async ({ page }) => {
         await page.goto(`${storyUrl}&globals=theme:${theme}`);
