@@ -11,31 +11,50 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body class="ds-base">
+    <ds-usa-banner></ds-usa-banner>
+
     <header class="ds-base--inverse ds-u-padding-y--3">
       <div class="ds-l-container">
         <span class="ds-h3">ExampleWebsite.gov</span>
-        <ds-badge variation="info">Hello world</ds-badge>
+        <ds-badge variation="info" class="ds-u-margin-left--2">CMS Design System</ds-badge>
       </div>
     </header>
 
     <div class="ds-l-container ds-u-padding-top--2">
       <div class="ds-u-measure--base">
-        <h1 class="ds-h1">CDN Example</h1>
+        <h1 class="ds-text-heading--3xl">CDN Example</h1>
         <p>
           This is an example showing how to use the CDN and our library of interactive web
           components.
         </p>
 
         <ds-alert
-          variation="error"
-          heading="WHOA!!!!!"
+          variation="success"
+          heading="You've loaded the web-components example"
           class-name="ds-u-margin-y--2"
-          analytics="true"
+          id="alert"
         >
-          <span>Weeeeeee!!!</span>
+          <p id="alert-content">
+            This is an example of a success alert. If you want to see an error alert, click the
+            button below.
+          </p>
+          <ds-button variation="solid" is-alternate="true" id="the-button">Break things</ds-button>
         </ds-alert>
 
-        <ds-button onclick="console.log('hello')" id="the-button">I'm a button</ds-button>
+        <h2 class="ds-text-heading--2xl">Adding machine</h2>
+        <form id="calculator">
+          <div
+            class="ds-u-display--flex ds-u-align-items--center ds-u-margin-bottom--2"
+            style="gap: var(--spacer-2)"
+          >
+            <input type="number" id="a" name="a" value="20" class="ds-c-field ds-c-field--small" />
+            +
+            <input type="number" id="b" name="b" value="30" class="ds-c-field ds-c-field--small" />
+            =
+            <output name="result" for="a b">50</output>
+          </div>
+          <ds-button variation="solid" type="submit">Calculate</ds-button>
+        </form>
       </div>
     </div>
 
@@ -44,5 +63,22 @@
       the custom design-system elements that already exist on the page
     -->
     <script src="dist/js/web-components.js"></script>
+    <script>
+      document.getElementById('the-button').addEventListener('click', function () {
+        const oldAlert = document.getElementById('alert');
+        const newAlert = document.createElement('ds-alert');
+        newAlert.setAttribute('variation', 'error');
+        newAlert.setAttribute('heading', 'Oh no, something went wrong!');
+        newAlert.innerHTML = "I can't believe you pressed the button.";
+        oldAlert.parentElement.insertBefore(newAlert, oldAlert);
+        oldAlert.remove();
+      });
+
+      document.getElementById('calculator').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const { a, b, result } = e.currentTarget;
+        result.value = parseInt(a.value) + parseInt(b.value);
+      });
+    </script>
   </body>
 </html>

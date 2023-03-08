@@ -45,7 +45,8 @@
   "sideEffects": [
     "./dist/preact-components/esm/web-components/ds-alert.js",
     "./dist/preact-components/esm/web-components/ds-badge.js",
-    "./dist/preact-components/esm/web-components/ds-button.js"
+    "./dist/preact-components/esm/web-components/ds-button.js",
+    "./dist/preact-components/esm/web-components/ds-usa-banner.js"
   ],
   "files": [
     "dist",

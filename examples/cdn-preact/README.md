@@ -9,5 +9,4 @@ This shows the usage of CMS design system preact components from the CDN:
 
 ## Getting started
 
-1. Serve the root of this directory from a webserver, with `npx http-server`
-2. View it in a browser by visiting http://localhost:8080
+1. Open `index.html` in a browser.
