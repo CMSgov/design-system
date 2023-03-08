@@ -405,7 +405,7 @@
 --form-hint__color: #5a5a5a;
 --form-hint__color--inverse: #e9ecf1;
 --form-error__color: #e31c3d;
---form-error__color--inverse: #eb6077;
+--form-error__color--inverse: #f7bbc5;
 --icon__color__error: #e31c3d;
 --icon__color--inverse: #ffffff;
 --icon__color--primary: #0071bc;
@@ -470,7 +470,7 @@
 --text-input__border-color: #262626;
 --text-input__border-color--disabled: #a6a6a6;
 --text-input__border-color--error: #e31c3d;
---text-input__border-color--error--inverse: #eb6077;
+--text-input__border-color--error--inverse: #f7bbc5;
 --text-input__border-color--inverse: #000000;
 --text-input__border-color--success: #59ac56;
 --text-input__color: #262626;
