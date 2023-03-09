@@ -43,10 +43,7 @@
   "module": "dist/react-components/esm/index.js",
   "types": "dist/react-components/types/index.d.ts",
   "sideEffects": [
-    "./dist/preact-components/esm/web-components/ds-alert.js",
-    "./dist/preact-components/esm/web-components/ds-badge.js",
-    "./dist/preact-components/esm/web-components/ds-button.js",
-    "./dist/preact-components/esm/web-components/ds-usa-banner.js"
+    "./dist/preact-components/esm/web-components/*.js"
   ],
   "files": [
     "dist",
