@@ -1,4 +1,4 @@
-## Example: preact-react-app
+## Example: A simple Preact app
 
 This example shows how you can replace React with [Preact](https://preactjs.com/) in your project without migrating your source code and. This differs from [the preact-app example](https://github.com/CMSgov/design-system/tree/main/examples/preact-app) in that it is intended to be used in a React project without changing the source code.
 
