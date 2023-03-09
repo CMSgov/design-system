@@ -25,18 +25,16 @@ Object.values(stories).forEach((story) => {
     const storyUrl = `http://localhost:6006/iframe.html?viewMode=story&id=${story.id}`;
 
     Object.keys(themes).forEach((theme) => {
+      const storyNotInTheme = !story.importPath.includes(themes[theme].packageName);
+      const storyNotInCore = !story.importPath.includes(themes['core'].packageName);
+
       if (themes[theme].incomplete) return;
 
-      // Don't take screenshots of theme-specific components outside their themes
-      if (theme !== 'core' && story.importPath.includes(themes[theme].packageName)) return;
+      // Don't capture theme-specific components outside their themes, all themes get core components
+      if (storyNotInTheme && storyNotInCore) return;
 
-      // For smoke tests, only capture core components in the core theme and theme-specific
-      // components in their native theme
-      if (
-        isSmokeTest &&
-        !(theme === 'core' || !story.importPath.includes(themes[theme].packageName))
-      )
-        return;
+      // During smoke tests, only take screenshots in core of core components
+      if (isSmokeTest && (theme !== 'core' || storyNotInCore)) return;
 
       test(`with ${theme} theme`, async ({ page }) => {
         await page.goto(`${storyUrl}&globals=theme:${theme}`);
