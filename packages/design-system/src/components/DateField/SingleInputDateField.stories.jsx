@@ -65,7 +65,13 @@ WithPicker.args = {
   label: 'What day did you move?',
   hint: 'This date should be within the past 60 days in order to qualify',
   fromYear: new Date().getFullYear(),
-  toDate: new Date(),
+  // TODO: Due to some unknown issue with this story that causes us to lose args
+  // defined with query parameters, we can't supply a specific date in the
+  // browser interaction tests in order to get consistent screenshots. We want
+  // to set this to an arbitrary date in the past so it always takes a screenshot
+  // of the same calendar view every time. If we can solve the root problem, we
+  // can move this setting of the toDate to the `.test.interaction.ts` file.
+  toDate: new Date(1676498194272),
 };
 
 export const WithError = Template.bind({});
