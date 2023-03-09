@@ -9,17 +9,13 @@
       href="https://design.cms.gov/cdn/design-system/6.0.0/css/core-theme.css"
     />
     <link rel="stylesheet" href="style.css" />
-    <script src="https://design.cms.gov/cdn/design-system/6.0.0/js/react.production.min.js"></script>
-    <script src="https://design.cms.gov/cdn/design-system/6.0.0/js/react-dom.production.min.js"></script>
-    <script src="https://design.cms.gov/cdn/design-system/6.0.0/js/bundle.js"></script>
+    <script src="dist/js/preact.min.umd.js"></script>
+    <script src="dist/js/preact-components.js"></script>
   </head>
   <body class="ds-base">
     <div id="usa-banner"></div>
     <script>
-      ReactDOM.render(
-        React.createElement(DesignSystem.UsaBanner),
-        document.getElementById('usa-banner')
-      );
+      preact.render(preact.h(DesignSystem.UsaBanner), document.getElementById('usa-banner'));
     </script>
 
     <header class="ds-base--inverse ds-u-padding-y--3">
@@ -34,16 +30,16 @@
         <p>
           This is an example showing how to use the CDN. Some elements are simple and can be easily
           created by applying a CSS class from the Design System. Some components are more complex
-          or are interactive. Our React-based component library is here for those more complex
+          or are interactive. Our Preact-based component library is here for those more complex
           cases.
         </p>
 
         <div id="alert"></div>
         <script>
-          ReactDOM.render(
-            React.createElement(DesignSystem.Alert, {
+          preact.render(
+            preact.h(DesignSystem.Alert, {
               heading: 'Hello World',
-              children: 'I was rendered with React!',
+              children: 'I was rendered with Preact!',
             }),
             document.getElementById('alert')
           );
@@ -52,8 +48,8 @@
         <form>
           <div id="month-picker"></div>
           <script>
-            ReactDOM.render(
-              React.createElement(DesignSystem.MonthPicker, {
+            preact.render(
+              preact.h(DesignSystem.MonthPicker, {
                 label: 'Please select the months you lived abroad.',
                 name: 'months',
               }),

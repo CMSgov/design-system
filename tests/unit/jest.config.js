@@ -1,3 +1,13 @@
+const usePreact = Boolean(process.env.PREACT && JSON.parse(process.env.PREACT));
+const preactModuleMapper = usePreact
+  ? {
+      '^react$': 'preact/compat',
+      '^react-dom/test-utils$': 'preact/test-utils',
+      '^react-dom$': 'preact/compat',
+      '^react/jsx-runtime$': 'preact/jsx-runtime',
+    }
+  : {};
+
 module.exports = {
   rootDir: '../../packages',
   testEnvironment: 'jsdom',
@@ -18,5 +28,6 @@ module.exports = {
   moduleNameMapper: {
     // Remap imports for core to the src directory so we don't have to build first
     '^@cmsgov/design-system$': '<rootDir>/design-system/src/components/index',
+    ...preactModuleMapper,
   },
 };

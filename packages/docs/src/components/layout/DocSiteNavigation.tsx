@@ -3,11 +3,10 @@ import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'gatsby';
 import classnames from 'classnames';
 import { Button, CloseIconThin, MenuIconThin, VerticalNav } from '@cmsgov/design-system';
-import { VerticalNavItemProps } from '@cmsgov/design-system/dist/components/VerticalNav/VerticalNavItem';
 import { useStaticQuery, graphql } from 'gatsby';
 import ThemeSwitcher from './ThemeSwitcher';
 import { LocationInterface, NavDataQuery } from '../../helpers/graphQLTypes';
-import { convertToNavItems, organizeNavItems } from '../../helpers/navDataFormatUtils';
+import { DocsNavItem, convertToNavItems, organizeNavItems } from '../../helpers/navDataFormatUtils';
 import GithubIcon from '../icons/GithubIcon';
 import NewsIcon from '../icons/NewsIcon';
 
@@ -17,16 +16,12 @@ interface DocSiteNavProps {
 
 /**
  * A wrapper for the gatsby link to handle internal site navigation
- * @param props {VerticalNavItemProps}
- * @returns gatsby link
  */
-const GatsbyLink = (props: VerticalNavItemProps) => {
-  return (
-    <Link to={props.href} {...props}>
-      {props.children}
-    </Link>
-  );
-};
+const GatsbyLink = (props: any /* See VerticalNavItemLabel.tsx */) => (
+  <Link to={props.href} {...props}>
+    {props.children}
+  </Link>
+);
 
 /**
  * DocSiteNav
@@ -94,8 +89,8 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
     }
   `);
 
-  const navItems: VerticalNavItemProps[] = useMemo(() => {
-    const navItems: VerticalNavItemProps[] = convertToNavItems(data?.allFile?.group, location);
+  const navItems: DocsNavItem[] = useMemo(() => {
+    const navItems: DocsNavItem[] = convertToNavItems(data?.allFile?.group, location);
     return organizeNavItems(navItems);
   }, [data?.allFile?.group, location]);
 
