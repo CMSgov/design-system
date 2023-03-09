@@ -377,7 +377,15 @@ import { Button, TextField } from 'ds-medicare-gov';
 
 </ThemeContent>
 
-While you can actually use Preact inside code that was written for React—and [the preact-react-app example](https://github.com/CMSgov/design-system/tree/main/examples/preact-react-app) shows you how—we've also provided an import path for you to use the Preact version of our components directly. To import the Preact versions, add `/preact` to the end of your import path like this:
+<Alert heading="Why switch to Preact?">
+
+If you have a React project, chances are you can actually start using Preact today and save on your total bundle size. For our own component library, [we found that switching to Preact shrunk our bundle by about 92KB](https://github.com/CMSgov/design-system/discussions/2378). The Preact library itself is smaller than React, and so far its claim of full compatability with React has proven true.
+
+Check out [our preact-react-app example](https://github.com/CMSgov/design-system/tree/main/examples/preact-react-app) if you're curious how to make the switch in an existing React project without changing any of your source code.
+
+</Alert>
+
+If your project is based on Preact and not React, we've provided an import path for you to use the Preact version of our components directly. To import the Preact versions, add `/preact` to the end of your import path like this:
 
 <ThemeContent onlyThemes={['core']}>
 
