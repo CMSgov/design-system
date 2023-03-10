@@ -35,15 +35,8 @@ export const themeColors: ColorTokens = {
   'error-darker':               color['rose-700'],
   'error-darkest':              color['rose-800'],
   //
-  'focus':                      color['darksky-500'],
-  'focus-border-inverse':       color['goldenrod-800'],
-  'focus-dark':                 color['orchid-500'],
-  'focus-inverse':              color['sky-500'],
   'focus-light':                color['white-solid'],
-  'focus-shadow':               color['granite-900'],
-  'focus-shadow-inverse':       color['granite-900'],
-  'focus-shadow-link':          color['granite-900'],
-  'focus-shadow-link-inverse':  color['goldenrod-800'],
+  'focus-dark':                 color['orchid-500'],
   //
   'gray-lightest':	            color['granite-50'],
   'gray-lighter':	              color['granite-100'],
