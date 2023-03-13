@@ -20702,10 +20702,10 @@ preact@10.11.3:
   resolved "https://registry.yarnpkg.com/preact/-/preact-10.11.3.tgz#8a7e4ba19d3992c488b0785afcc0f8aa13c78d19"
   integrity sha512-eY93IVpod/zG3uMF22Unl8h9KkrcKIRs2EGar8hwLZZDU1lkjph303V9HZBwufh2s736U6VXuhD109LYqPoffg==
 
-preactement@1.8.2:
-  version "1.8.2"
-  resolved "https://registry.yarnpkg.com/preactement/-/preactement-1.8.2.tgz#e4a81aff91ad4de50cc6ab25a838d9d371d740cf"
-  integrity sha512-YJHjmSc3u9bCtkueKDpNHuf3feCSCAc9R5xE2N7BsteBQB7O2cpFpK1yaFZLzmW+lDV/A4vCVFRpANmSL92Dpg==
+preactement@1.8.4:
+  version "1.8.4"
+  resolved "https://registry.yarnpkg.com/preactement/-/preactement-1.8.4.tgz#3e047566c502801770b5fcacf43cf5f48c8b964b"
+  integrity sha512-RxWc0kDu5mDVDbcO7jDzxJMwKBITxjy4zogqxXafTDS715hHj6mTBmulPDYA2sw/qINDmZP14Bj6ZL8s8uktGA==
 
 prebuild-install@^7.0.1:
   version "7.0.1"
