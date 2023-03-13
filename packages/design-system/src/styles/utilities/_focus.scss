@@ -1,0 +1,11 @@
+.ds-u-focus:focus,
+.ds-u-focus-within:focus-within,
+.ds-u-focus-visible:focus-visible {
+  box-shadow: 0 0 0 3px var(--color-focus-light), 0 0 4px 6px var(--color-focus-dark);
+  // Add support for Windows High Contrast Mode (WHCM)
+  // The transparent color only shows when WHCM is triggered
+  outline: 3px solid transparent;
+  outline-offset: 3px;
+  position: relative;
+  z-index: 100;
+}

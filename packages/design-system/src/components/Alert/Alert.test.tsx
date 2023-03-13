@@ -1,3 +1,4 @@
+import React from 'react';
 import Alert, { AlertProps } from './Alert';
 import { UtagContainer } from '../analytics';
 import { setAlertSendsAnalytics } from '../flags';
@@ -154,6 +155,12 @@ describe('Alert', function () {
     it('disables analytics tracking', () => {
       renderAlert({ heading: 'dialog heading', variation: 'error', analytics: false });
       expect(tealiumMock).not.toBeCalled();
+    });
+
+    it('setting analytics to true overrides flag value', () => {
+      setAlertSendsAnalytics(false);
+      renderAlert({ heading: 'dialog heading', variation: 'error', analytics: true });
+      expect(tealiumMock).toHaveBeenCalled();
     });
 
     it('overrides analytics event content', () => {

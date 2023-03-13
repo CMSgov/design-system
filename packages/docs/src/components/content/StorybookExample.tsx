@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEffect, useRef, useState } from 'react';
 import classnames from 'classnames';
 import StorybookExampleFooter from './StorybookExampleFooter';
@@ -68,7 +69,7 @@ const StorybookExample = ({ theme, componentName, minHeight, storyId }: Storyboo
 
   return (
     <>
-      <div className="c-storybook-example">
+      <section className="c-storybook-example">
         <div
           className={classnames('c-storybook-example__iframe-wrapper', {
             'ds-u-padding-y--4': isLoading,
@@ -91,7 +92,7 @@ const StorybookExample = ({ theme, componentName, minHeight, storyId }: Storyboo
             onLoad={onIframeLoad}
           />
         </div>
-      </div>
+      </section>
       <StorybookExampleFooter storyId={storyId} theme={theme} />
     </>
   );

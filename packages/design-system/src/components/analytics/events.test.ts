@@ -16,6 +16,7 @@ describe('sendLinkEvent', () => {
     event_category: 'test category',
     event_action: 'test action',
     event_label: 'test label',
+    event_extension: 'Design system integration',
   };
 
   describe('without utag instance', () => {

@@ -1,4 +1,5 @@
-import SvgIcon, { IconCommonProps } from './SvgIcon';
+import React from 'react';
+import { SvgIcon, IconCommonProps } from './SvgIcon';
 import classNames from 'classnames';
 import { t } from '../i18n';
 
@@ -14,7 +15,7 @@ const defaultProps = {
   viewBox: '0 0 320 512',
 };
 
-function ArrowIcon(props: ArrowIconProps): React.ReactElement {
+export function ArrowIcon(props: ArrowIconProps): React.ReactElement {
   const direction = props.direction || defaultProps.direction;
   const iconCssClasses = classNames(
     'ds-c-icon--arrow',
@@ -36,5 +37,3 @@ function ArrowIcon(props: ArrowIconProps): React.ReactElement {
     </SvgIcon>
   );
 }
-
-export default ArrowIcon;

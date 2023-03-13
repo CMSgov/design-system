@@ -1,3 +1,4 @@
+import React from 'react';
 import Dialog from './Dialog';
 import { setDialogSendsAnalytics } from '../flags';
 import { fireEvent, render, screen } from '@testing-library/react';
@@ -89,6 +90,12 @@ describe('Dialog', function () {
     it('disables analytics event tracking on open', () => {
       renderDialog({ analytics: false });
       expect(tealiumMock).not.toBeCalled();
+    });
+
+    it('setting analytics to true overrides flag value', () => {
+      setDialogSendsAnalytics(false);
+      renderDialog({ analytics: true });
+      expect(tealiumMock).toHaveBeenCalled();
     });
 
     it('overrides analytics event tracking on open', () => {

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Alert, Button } from '@cmsgov/design-system';
 import { useState } from 'react';
 
@@ -10,7 +11,7 @@ declare global {
 }
 
 export interface PageFeedbackProps {
-  question: string;
+  question?: string;
 }
 
 /**

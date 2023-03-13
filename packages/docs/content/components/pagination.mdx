@@ -22,7 +22,7 @@ medicare:
 
 ### React
 
-Pagination requires two properties: `totalPages`, which is the total number of pages, and `onPageChange`, which is a function used to handle state changes when the user clicks a page.
+Pagination requires three properties: `totalPages`, which is the total number of pages, `currentPage`, which acts a means to track the current page, and `onPageChange`, which is a function used to handle state changes when the user clicks a page.
 
 Pagination also comes in two styles: default, which is compact on mobile viewports and expands to reveal individual pages on larger viewports, and `compact`, which maintains the compact layout regardless of viewport size.
 
@@ -30,7 +30,7 @@ Pagination also comes in two styles: default, which is compact on mobile viewpor
 
 ### Styles
 
-The following Sass variables can be overridden to customize Pagination components:
+The following CSS variables can be overridden to customize Pagination components:
 
 <ComponentThemeOptions
   componentname="pagination"

@@ -1,4 +1,5 @@
-import Button from '../Button/Button';
+import React from 'react';
+import Button, { ButtonVariation } from '../Button/Button';
 import NativeDialog from '../NativeDialog/NativeDialog';
 import { useRef } from 'react';
 import classNames from 'classnames';
@@ -13,6 +14,7 @@ export interface DrawerProps {
    */
   ariaLabel?: string;
   closeButtonText?: React.ReactNode;
+  closeButtonVariation?: ButtonVariation;
   children: React.ReactNode;
   className?: string;
   footerBody?: React.ReactNode;
@@ -79,6 +81,7 @@ export const Drawer = (props: DrawerProps) => {
             className="ds-c-drawer__close-button"
             size="small"
             onClick={props.onCloseClick}
+            variation={props.closeButtonVariation}
           >
             {props.closeButtonText ?? t('drawer.closeButtonText')}
           </Button>
@@ -91,10 +94,12 @@ export const Drawer = (props: DrawerProps) => {
         >
           {props.children}
         </div>
-        <div className="ds-c-drawer__footer">
-          <h4 className="ds-c-drawer__footer-title">{props.footerTitle}</h4>
-          <div className="ds-c-drawer__footer-body">{props.footerBody}</div>
-        </div>
+        {(props.footerTitle || props.footerBody) && (
+          <div className="ds-c-drawer__footer">
+            <h4 className="ds-c-drawer__footer-title">{props.footerTitle}</h4>
+            <div className="ds-c-drawer__footer-body">{props.footerBody}</div>
+          </div>
+        )}
       </div>
     </NativeDialog>
   );

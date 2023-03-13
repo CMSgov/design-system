@@ -1,3 +1,4 @@
+import React from 'react';
 import Button from './Button';
 import { UtagContainer } from '../analytics';
 import { setButtonSendsAnalytics } from '../flags';
@@ -112,6 +113,13 @@ describe('Button', () => {
       renderButton({ analytics: false });
       fireEvent.click(screen.getByRole('button'));
       expect(tealiumMock).not.toBeCalled();
+    });
+
+    it('setting analytics to true overrides flag value', () => {
+      setButtonSendsAnalytics(false);
+      renderButton({ analytics: true });
+      fireEvent.click(screen.getByRole('button'));
+      expect(tealiumMock).toHaveBeenCalled();
     });
 
     it('overrides analytics event tracking on open', () => {

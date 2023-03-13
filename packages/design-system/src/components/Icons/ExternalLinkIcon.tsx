@@ -1,12 +1,13 @@
+import React from 'react';
 import { t } from '../i18n';
-import SvgIcon, { IconCommonProps } from './SvgIcon';
+import { SvgIcon, IconCommonProps } from './SvgIcon';
 
 const defaultProps = {
   className: '',
   viewBox: '0 0 512 512',
 };
 
-function ExternalLinkIcon(props: IconCommonProps): React.ReactElement {
+export function ExternalLinkIcon(props: IconCommonProps): React.ReactElement {
   const iconCssClasses = `ds-c-icon--external-link ${props.className || ''}`;
 
   return (
@@ -20,5 +21,3 @@ function ExternalLinkIcon(props: IconCommonProps): React.ReactElement {
     </SvgIcon>
   );
 }
-
-export default ExternalLinkIcon;

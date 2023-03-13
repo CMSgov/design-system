@@ -1,12 +1,13 @@
+import React from 'react';
 import { t } from '../i18n';
-import SvgIcon, { IconCommonProps } from './SvgIcon';
+import { SvgIcon, IconCommonProps } from './SvgIcon';
 
 const defaultProps = {
   className: '',
   viewBox: '0 0 291 89',
 };
 
-function UsaLogo(props: IconCommonProps): React.ReactElement {
+export function UsaLogo(props: IconCommonProps): React.ReactElement {
   const iconCssClasses = `ds-c-icon--usa-logo ${props.className || ''}`;
 
   return (
@@ -17,5 +18,3 @@ function UsaLogo(props: IconCommonProps): React.ReactElement {
     </SvgIcon>
   );
 }
-
-export default UsaLogo;

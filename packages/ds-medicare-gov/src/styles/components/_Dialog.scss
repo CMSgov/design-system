@@ -1,0 +1,16 @@
+.ds-c-dialog {
+  outline: 0;
+
+  .ds-c-dialog__close {
+    color: transparent !important;
+    min-height: 20px;
+    min-width: 20px;
+    padding: 5px !important;
+
+    .ds-c-icon {
+      color: var(--color-gray-dark);
+      font-size: 22px;
+      margin-right: 0;
+    }
+  }
+}

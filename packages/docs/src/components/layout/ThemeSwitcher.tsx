@@ -1,12 +1,14 @@
-import { Dropdown } from '@cmsgov/design-system';
+import React from 'react';
+import themes from '../../../../../themes.json';
 import useTheme from '../../helpers/useTheme';
+import { Dropdown } from '@cmsgov/design-system';
 import { setQueryParam } from '../../helpers/urlUtils';
 
-const themeOptions = [
-  { label: 'Core', value: 'core' },
-  { label: 'Healthcare', value: 'healthcare' },
-  { label: 'Medicare', value: 'medicare' },
-];
+const themeOptions = Object.keys(themes).map((key) => ({
+  label: themes[key].displayName,
+  value: key,
+}));
+
 /**
  * Theme Switcher
  * The dropdown component to switch the theme of the documentation site

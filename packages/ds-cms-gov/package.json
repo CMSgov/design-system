@@ -1,0 +1,53 @@
+{
+  "name": "@cmsgov/ds-cms-gov",
+  "version": "6.0.0",
+  "private": true,
+  "description": "A design system for CMS.gov products",
+  "license": "CC0-1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CMSgov/design-system",
+    "directory": "packages/ds-cms-gov"
+  },
+  "keywords": [
+    "design-system",
+    "cms.gov"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/react-components/types/index.d.ts",
+      "import": "./dist/react-components/esm/index.js",
+      "require": "./dist/react-components/cjs/index.js"
+    },
+    "./react": {
+      "types": "./dist/react-components/types/index.d.ts",
+      "import": "./dist/react-components/esm/index.js",
+      "require": "./dist/react-components/cjs/index.js"
+    },
+    "./preact": {
+      "types": "./dist/preact-components/types/index.d.ts",
+      "import": "./dist/preact-components/esm/index.js",
+      "require": "./dist/preact-components/cjs/index.js"
+    },
+    "./web-components": {
+      "types": "./dist/react-components/types/web-components/index.d.ts",
+      "import": "./dist/preact-components/esm/web-components/index.js",
+      "require": "./dist/preact-components/cjs/web-components/index.js"
+    },
+    "./css/*": "./dist/css/*",
+    "./src/*": "./src/*"
+  },
+  "main": "dist/react-components/cjs/index.js",
+  "module": "dist/react-components/esm/index.js",
+  "types": "dist/react-components/types/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "src"
+  ],
+  "dependencies": {
+    "@cmsgov/design-system": "6.0.0",
+    "@types/react": "^17.0.10",
+    "@types/react-dom": "^17.0.10"
+  }
+}

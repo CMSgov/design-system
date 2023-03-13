@@ -1,11 +1,11 @@
 // Mobile
 .c-navigation {
-  background-color: $color-white;
+  background-color: var(--color-white);
   width: 100%;
 
   .c-navigation__header {
     align-items: center;
-    background-color: $color-secondary-lightest;
+    background-color: var(--color-primary-lightest);
     display: flex;
     gap: $spacer-2;
     padding: $spacer-2;
@@ -16,19 +16,15 @@
   }
 
   .c-navigation__title {
-    color: $color-base;
-    font-size: $font-size-xl;
-    margin: 0;
-
-    a {
-      background-color: transparent;
-      color: currentColor;
-      text-decoration: none;
-    }
+    background-color: transparent;
+    color: currentColor;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    text-decoration: none;
   }
 
   .c-navigation__link-list {
-    border-block: 1px solid $vertical-nav-item__border-color;
+    border-block: 1px solid var(--vertical-nav-item__border-color);
     margin-block: $spacer-2;
 
     .ds-c-vertical-nav__label--parent {
@@ -62,9 +58,9 @@
 }
 
 // Desktop
-@media (min-width: $width-md) {
+@media (min-width: $media-width-md) {
   .c-navigation {
-    background-color: $color-secondary-lightest;
+    background-color: var(--color-primary-lightest);
     // Set it to a fixed width that is wide enough for most links so that it
     // doesn't jump around when we open and close subsections.
     width: 13rem;
@@ -84,7 +80,7 @@
           z-index: 1;
 
           &:before {
-            background-color: #{$vertical-nav-item__color--hover};
+            background-color: var(--vertical-nav-item__color--hover);
             bottom: 0;
             content: '';
             filter: opacity(0.05);

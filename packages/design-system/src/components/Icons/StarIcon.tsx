@@ -1,5 +1,6 @@
+import React from 'react';
 import { t } from '../i18n';
-import SvgIcon, { IconCommonProps } from './SvgIcon';
+import { SvgIcon, IconCommonProps } from './SvgIcon';
 import classNames from 'classnames';
 export interface StarIconProps extends IconCommonProps {
   isFilled?: boolean;
@@ -10,7 +11,7 @@ const defaultProps = {
   viewBox: '0 0 18 16',
 };
 
-function StarIcon(props: StarIconProps): React.ReactElement {
+export function StarIcon(props: StarIconProps): React.ReactElement {
   // don't want to pass isFilled through to SvgIcon
   const { isFilled, ...otherProps } = props;
   const iconCssClasses = classNames(
@@ -43,5 +44,3 @@ function StarIcon(props: StarIconProps): React.ReactElement {
     </SvgIcon>
   );
 }
-
-export default StarIcon;

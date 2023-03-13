@@ -5,6 +5,7 @@ Array [
   Object {
     "event_action": "opened help drawer",
     "event_category": "ui components",
+    "event_extension": "Design system integration",
     "event_label": "other heading",
     "event_name": "help_drawer_opened",
     "event_type": "ui interaction",
@@ -22,6 +23,7 @@ Array [
   Object {
     "event_action": "opened help drawer",
     "event_category": "ui components",
+    "event_extension": "Design system integration",
     "event_label": "HelpDrawer title",
     "event_name": "help_drawer_opened",
     "event_type": "ui interaction",
@@ -39,6 +41,7 @@ Array [
   Object {
     "event_action": "opened help drawer",
     "event_category": "ui components",
+    "event_extension": "Design system integration",
     "event_label": "Hello World",
     "event_name": "help_drawer_opened",
     "event_type": "ui interaction",

@@ -1,3 +1,5 @@
+import React from 'react';
+import classnames from 'classnames';
 import { DefaultLink, LinkIdentifier } from './defaultMenuLinks';
 import { Link } from './Header';
 import { sendHeaderEvent } from './analytics';
@@ -34,7 +36,11 @@ const MenuLinks = (props: MenuLinksProps) => (
           key={link.href}
           className={`ds-u-margin--0 ${isLoginLogoutLink ? 'ds-u-border-top--1' : ''}`}
         >
-          <a href={link.href} onClick={onClick} className="hc-c-menu__link">
+          <a
+            href={link.href}
+            onClick={onClick}
+            className={classnames('hc-c-menu__link', link.className)}
+          >
             {link.label}
           </a>
         </li>

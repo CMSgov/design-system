@@ -1,4 +1,5 @@
-import SvgIcon, { IconCommonProps } from './SvgIcon';
+import React from 'react';
+import { SvgIcon, IconCommonProps } from './SvgIcon';
 
 const defaultProps = {
   className: '',
@@ -6,7 +7,7 @@ const defaultProps = {
   viewBox: '0 0 670 450',
 };
 
-function WhiteHouseLogo(props: IconCommonProps): React.ReactElement {
+export function WhiteHouseLogo(props: IconCommonProps): React.ReactElement {
   const iconCssClasses = `ds-c-icon--hhs-logo ${props.className || ''}`;
 
   return (
@@ -357,5 +358,3 @@ function WhiteHouseLogo(props: IconCommonProps): React.ReactElement {
     </SvgIcon>
   );
 }
-
-export default WhiteHouseLogo;

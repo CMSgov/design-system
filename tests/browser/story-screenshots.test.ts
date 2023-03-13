@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { stories } from '../../storybook-static/stories.json';
+import themes from '../../themes.json';
 
-const themes = ['core', 'healthcare', 'medicare'];
 const storySkipList = [
   'components-dialog--prevent-scroll-example',
   'components-idle-timeout--default',
@@ -12,6 +12,8 @@ const storySkipList = [
   'foundations-layout-grid--fit-to-content',
   'foundations-layout-grid--responsive-columns',
   'patterns-one-column-page-layout--one-column-page-layout',
+  'healthcare-privacysettingslink--default',
+  'healthcare-privacysettingslink--custom-content',
 ];
 
 const isSmokeTest = Boolean(process.env.SMOKE && JSON.parse(process.env.SMOKE));
@@ -21,26 +23,18 @@ Object.values(stories).forEach((story) => {
 
   test.describe(`${story.title}/${story.name}`, () => {
     const storyUrl = `http://localhost:6006/iframe.html?viewMode=story&id=${story.id}`;
-    const isHealthcareStory = story.importPath.includes('ds-healthcare-gov');
-    const isMedicareStory = story.importPath.includes('ds-medicare-gov');
 
-    themes.forEach((theme) => {
-      // Don't take screenshots of theme-specific components outside of their themes
-      if (isHealthcareStory && theme !== 'healthcare') return;
-      if (isMedicareStory && theme !== 'medicare') return;
+    Object.keys(themes).forEach((theme) => {
+      const storyNotInTheme = !story.importPath.includes(themes[theme].packageName);
+      const storyNotInCore = !story.importPath.includes(themes['core'].packageName);
 
-      // For smoke tests, only capture core components in the core theme and theme-specific
-      // components in their native theme
-      if (
-        isSmokeTest &&
-        !(
-          theme === 'core' ||
-          (isHealthcareStory && theme === 'healthcare') ||
-          (isMedicareStory && theme === 'medicare')
-        )
-      ) {
-        return;
-      }
+      if (themes[theme].incomplete) return;
+
+      // Don't capture theme-specific components outside their themes, all themes get core components
+      if (storyNotInTheme && storyNotInCore) return;
+
+      // During smoke tests, only take screenshots in core of core components
+      if (isSmokeTest && (theme !== 'core' || storyNotInCore)) return;
 
       test(`with ${theme} theme`, async ({ page }) => {
         await page.goto(`${storyUrl}&globals=theme:${theme}`);

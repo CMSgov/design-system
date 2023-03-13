@@ -1,4 +1,5 @@
-@import '../settings/index.scss';
+@use '../layout' as *;
+@use '../mixins';
 
 @mixin spinner-size($inner-size, $outer-size) {
   height: $outer-size;
@@ -21,9 +22,14 @@
   display: inline-block;
   position: relative;
 
+  .ds-c-button > & {
+    @include mixins.inline-icon;
+    @include spinner-size(1em, 1em);
+  }
+
   &::before,
   &::after {
-    border-radius: $radius-circle;
+    border-radius: var(--radius-circle);
     border-style: solid;
     box-sizing: border-box;
     content: '';
@@ -39,7 +45,7 @@
   }
 
   &::after {
-    animation: spin $animation-speed-4 infinite linear;
+    animation: spin var(--animation-speed-4) infinite linear;
     border-bottom-color: transparent;
     border-left-color: inherit;
     border-right-color: transparent;
@@ -51,25 +57,20 @@
       border-left-color: Window;
     }
   }
-
-  .ds-c-button > & {
-    @include inline-icon;
-    @include spinner-size(1em, 1em);
-  }
 }
 
 .ds-c-spinner--filled {
   @include spinner-size($spacer-4, $spacer-6);
-  background-color: $spinner__background-color;
+  background-color: var(--spinner__background-color);
   border-radius: 50%;
-  color: $spinner__color;
+  color: var(--spinner__color);
   height: $spacer-6;
   width: $spacer-6;
 
   &.ds-c-spinner--inverse {
-    background-color: $spinner__background-color--inverse;
+    background-color: var(--spinner__background-color--inverse);
     &:not(:focus) {
-      color: $spinner__color--inverse;
+      color: var(--spinner__color--inverse);
     }
   }
 }

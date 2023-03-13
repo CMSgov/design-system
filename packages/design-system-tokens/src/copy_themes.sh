@@ -1,32 +1,64 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-# copies all themes into appropriate directories for child systems
+declare -A PATHS
+PATHS[core]="../../design-system"
+PATHS[healthcare]="../../ds-healthcare-gov"
+PATHS[medicare]="../../ds-medicare-gov"
+PATHS[cmsgov]="../../ds-cms-gov"
+
+cd dist
 
 copyThemes()
 {
-  cd dist
-  
-  # move files used in distributed pacakges
-  for file in core*[!.map].scss; do
-    cp -v "$file" "../../design-system/src/styles/settings/variables/_${file}"
-  done
-  for file in healthcare*[!.map].scss; do
-    cp -v "$file" "../../ds-healthcare-gov/src/styles/settings/_${file}"
-  done
-  for file in medicare*[!.map].scss; do
-    cp -v "$file" "../../ds-medicare-gov/src/styles/settings/variables/_${file}"
-  done
+  { for i in "${!PATHS[@]}"; do
+    TD="${PATHS[$i]}/src/styles"
 
-  #move files used in internal tooling
-  for file in *.map.scss; do
-    cp -v "$file" "../../docs/src/styles/theme-variables/_${file}"
-  done
-  for file in *.css; do
-    cp -v "$file" "../../docs/src/styles/theme-variables/_${file}"
-  done
+    # copies layout scss vars used by our 
+    cp "${i}-layout-tokens.scss" "${TD}/_layout.scss"
+    # get rid of any existing theme file in styles folder 
+    # since we're going to append to that file with cat.
+    rm "${TD}/${i}-theme.css"
+    echo ":root, ::before, ::after, ::backdrop {" >> "${TD}/${i}-theme.css"
+    cat "${i}-theme.css" >> "${TD}/${i}-theme.css"
+    cat "${i}-component-theme.css" >> "${TD}/${i}-theme.css"
+    echo "}" >> "${TD}/${i}-theme.css"
+    # copy to storybook static for storybook building
+    cp "${TD}/${i}-theme.css" ../../../.storybook/static
+    mkdir -p ../../docs/static/themes
+    cp "${TD}/${i}-theme.css" ../../docs/static/themes
+  done }
+}
+
+copyScssTokenVars()
+{
+  { for i in "${!PATHS[@]}"; do
+    TD="${PATHS[$i]}/dist/scss"
+
+    # copies scss vars to dist folder for dist process
+    rm -rf $TD
+    mkdir -p $TD
+    cp "${i}-tokens.scss" $TD
+    cp "${i}-component-tokens.scss" $TD
+  done }
+}
+
+# TODO: fold this back into copyThemes above once we have a CMS Gov theme in the monorepo
+copyCMSGovFiles() {
+    rm -rf tmp
+    mkdir -p tmp
+    echo ":root, ::before, ::after, ::backdrop {" >> "./tmp/cmsgov-theme.css"
+    cat "cmsgov-theme.css" >> "./tmp/cmsgov-theme.css"
+    cat "cmsgov-component-theme.css" >> "./tmp/cmsgov-theme.css"
+    echo "}" >> "./tmp/cmsgov-theme.css"
+    cp "./tmp/cmsgov-theme.css" ../../../.storybook/static
+    mkdir -p ../../docs/static/themes
+    cp "./tmp/cmsgov-theme.css" ../../docs/static/themes
 }
 
 copyThemes
+copyScssTokenVars
+copyCMSGovFiles
+
 RESULT=$?
 
 if [ $RESULT -eq 0 ]; then

@@ -1,3 +1,4 @@
+import React from 'react';
 import Logo from './Logo';
 import { HHSLogo, UsaLogo, WhiteHouseLogo } from '@cmsgov/design-system';
 

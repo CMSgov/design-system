@@ -189,8 +189,8 @@ export class Autocomplete extends React.Component<AutocompleteProps, any> {
   filterItems(
     items: AutocompleteItems[],
     inputValue: string,
-    getInputProps: (...args: any[]) => unknown,
-    getItemProps: (...args: any[]) => unknown,
+    getInputProps: (...args: any[]) => any,
+    getItemProps: (...args: any[]) => any,
     highlightedIndex: number
   ): React.ReactNode {
     // If we have results, create a mapped list

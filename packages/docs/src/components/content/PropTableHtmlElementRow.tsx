@@ -1,3 +1,4 @@
+import React from 'react';
 import humanizeList from 'humanize-react';
 import { TableRow, TableCell } from '@cmsgov/design-system';
 

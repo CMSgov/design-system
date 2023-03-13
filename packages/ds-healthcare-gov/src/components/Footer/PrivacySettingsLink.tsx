@@ -1,13 +1,18 @@
+import React from 'react';
 import PrivacySettingsDialog from '../PrivacySettings/PrivacySettingsDialog';
 import { useState } from 'react';
-import { TFunction } from '@cmsgov/design-system';
+
+import { tWithLanguage } from '../i18n';
 
 interface PrivacySettingsLinkProps {
-  t: TFunction;
+  children?: React.ReactNode;
+  className?: string;
 }
 
 export const PrivacySettingsLink = (props: PrivacySettingsLinkProps) => {
   const [showDialog, setShowDialog] = useState(false);
+
+  const t = tWithLanguage();
 
   const openDialog = () => setShowDialog(true);
 
@@ -15,8 +20,10 @@ export const PrivacySettingsLink = (props: PrivacySettingsLinkProps) => {
 
   return (
     <>
-      <button onClick={openDialog}>{props.t('footer.privacySettings')}</button>
-      {showDialog && <PrivacySettingsDialog onExit={closeDialog} t={props.t} />}
+      <button className={props.className} onClick={openDialog}>
+        {props.children || t('footer.privacySettings')}
+      </button>
+      {showDialog && <PrivacySettingsDialog onExit={closeDialog} t={t} />}
     </>
   );
 };

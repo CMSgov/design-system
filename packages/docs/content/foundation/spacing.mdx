@@ -1,6 +1,6 @@
 ---
 title: Spacing
-order: 30
+order: 20
 ---
 
 The design system uses multiples of `8px` for all spacing values: dimensions, padding, and margins. The goal behind this is to achieve a consistent vertical rhythm and to reduce the cognitive load of fiddling with different spacing options.
@@ -8,19 +8,19 @@ The design system uses multiples of `8px` for all spacing values: dimensions, pa
 ## Usage
 
 - Use the [margin](/utilities/margin/) and [padding](/utilities/padding/) utility classes to change a UI's spacing. These utility classes are named in a way that allows you to use the modifier to calculate the amount of spacing. For example, a margin utility class that adds `16px` of spacing would be `ds-u-margin--2`. We can calculate this by looking at the class's modifier (`2`) and multiplying that by our multiple: `2 × 8px = 16px`
-- If you've imported the design system's Sass file, you can also use the spacer Sass variables, which follow the format `$spacer-*` where `*` is a number between 1–7 (i.e. `$spacer-4`)
+- If you've imported the design system's CSS file, you can also use the spacer CSS variables, which follow the format `--spacer-*` where `*` is a number between 1–7 (i.e. `--spacer-4`)
 
 ## Learn more
 
 - [The 8-Point Grid](https://spec.fm/specifics/8-pt-grid)
 
-| Variable     | Value | Example                                                      |
-| ------------ | ----- | --------------------------------------------------------------
-| $spacer-half | 4px   | <div class="ds-u-fill--secondary example-spacer-half"></div> |
-| $spacer-1    | 8px   | <div class="ds-u-fill--secondary example-spacer-1"></div>    |
-| $spacer-2    | 16px  | <div class="ds-u-fill--secondary example-spacer-2"></div>    |
-| $spacer-3    | 24px  | <div class="ds-u-fill--secondary example-spacer-3"></div>    |
-| $spacer-4    | 32px  | <div class="ds-u-fill--secondary example-spacer-4"></div>    |
-| $spacer-5    | 40px  | <div class="ds-u-fill--secondary example-spacer-5"></div>    |
-| $spacer-6    | 48px  | <div class="ds-u-fill--secondary example-spacer-6"></div>    |
-| $spacer-7    | 56px  | <div class="ds-u-fill--secondary example-spacer-7"></div>    |
+| Variable        | Value | Example                                                      |
+| --------------- | ----- | ------------------------------------------------------------ |
+| `--spacer-half` | 4px   | <div class="ds-u-fill--secondary example-spacer-half"></div> |
+| `--spacer-1`    | 8px   | <div class="ds-u-fill--secondary example-spacer-1"></div>    |
+| `--spacer-2`    | 16px  | <div class="ds-u-fill--secondary example-spacer-2"></div>    |
+| `--spacer-3`    | 24px  | <div class="ds-u-fill--secondary example-spacer-3"></div>    |
+| `--spacer-4`    | 32px  | <div class="ds-u-fill--secondary example-spacer-4"></div>    |
+| `--spacer-5`    | 40px  | <div class="ds-u-fill--secondary example-spacer-5"></div>    |
+| `--spacer-6`    | 48px  | <div class="ds-u-fill--secondary example-spacer-6"></div>    |
+| `--spacer-7`    | 56px  | <div class="ds-u-fill--secondary example-spacer-7"></div>    |

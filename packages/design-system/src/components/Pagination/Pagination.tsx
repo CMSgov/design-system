@@ -1,3 +1,4 @@
+import React from 'react';
 import Button from '../Button/Button';
 import Ellipses from './Ellipses';
 import Page from './Page';
@@ -6,6 +7,7 @@ import classNames from 'classnames';
 import { ArrowIcon } from '../Icons';
 import { t } from '../i18n';
 
+export type PaginationHeadingLevel = '1' | '2' | '3' | '4' | '5' | '6';
 export interface PaginationProps {
   /**
    * Defines `aria-label` on wrapping Pagination element. Since this exists on a `<nav>` element, the word "navigation" should be omitted from this label. Optional.
@@ -20,9 +22,13 @@ export interface PaginationProps {
    */
   compact?: boolean;
   /**
-   * Defines active page in Pagination. Optional.
+   * Defines active page in Pagination.
    */
-  currentPage?: number;
+  currentPage: number;
+  /**
+   * Heading type to override default `<h2>`.
+   */
+  headingLevel?: PaginationHeadingLevel;
   /**
    * Determines if navigation is hidden when current page is the first or last of Pagination page set. Optional.
    */
@@ -129,6 +135,7 @@ function Pagination({
   currentPage,
   renderHref,
   onPageChange,
+  headingLevel,
   isNavigationHidden,
   startLabelText,
   startAriaLabel,
@@ -137,33 +144,12 @@ function Pagination({
   totalPages,
   ...rest
 }: PaginationProps): React.ReactElement {
-  const classes = classNames('ds-c-pagination', className);
+  const classes = classNames('ds-c-pagination', { 'ds-c-pagination--compact': compact }, className);
 
   /**
    * `useState` and `useEffect` determine if
    * mobile layout of component is rendered.
    */
-
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    if (window) {
-      // Mobile media query derived from: https://design.cms.gov/guidelines/responsive/
-      const media = window.matchMedia('(max-width: 543px)');
-
-      if (media.matches !== isMobile) {
-        setIsMobile(media.matches);
-      }
-
-      const listener = () => {
-        setIsMobile(media.matches);
-      };
-
-      media.addEventListener('change', listener);
-      return () => media.removeEventListener('change', listener);
-    } else {
-      setIsMobile(true);
-    }
-  }, [isMobile]);
 
   const pageChange = useCallback(
     (page) => (evt: React.MouseEvent) => onPageChange(evt, page),
@@ -173,10 +159,9 @@ function Pagination({
   const pages = [];
 
   /**
-   * If `compact` or `isMobile` is true,
-   * don't run code to populate `pages[]`.
+   * If `compact` is true, don't run code to populate `pages[]`.
    */
-  if (!compact || !isMobile) {
+  if (!compact) {
     const pageRange = paginationBuilder(currentPage, totalPages);
 
     if (pageRange[0] >= 2) {
@@ -242,85 +227,77 @@ function Pagination({
   }
 
   const startIcon = <ArrowIcon direction="left" className="ds-c-pagination__nav--image" />;
-
   const endIcon = <ArrowIcon direction="right" className="ds-c-pagination__nav--image" />;
 
+  const Heading = `h${headingLevel}` as const;
+  const headingElement = (
+    <Heading id="pagination-heading">
+      {ariaLabel ?? t('pagination.ariaLabel')} -{' '}
+      {t('pagination.pageXOfY', {
+        number: `${currentPage}`,
+        total: `${totalPages}`,
+      })}
+    </Heading>
+  );
+
   return (
-    <nav className={classes} aria-label={ariaLabel ?? t('pagination.ariaLabel')} {...rest}>
-      {currentPage === 1 ? (
-        <span
-          className="ds-c-pagination__nav ds-c-pagination__nav--disabled"
-          aria-disabled="true"
-          style={{ visibility: isNavigationHidden ? 'hidden' : 'visible' }}
-          aria-hidden={isNavigationHidden}
-        >
-          <span className="ds-c-pagination__nav--img-container ds-c-pagination__nav--img-container-previous">
-            {startIcon}
-          </span>
-          {startLabelText ?? t('pagination.startLabelText')}
-        </span>
-      ) : (
-        <Button
-          variation="ghost"
-          href={renderHref(currentPage - 1)}
-          onClick={pageChange(currentPage - 1)}
-          aria-label={startAriaLabel ?? t('pagination.startAriaLabel')}
-          className="ds-c-pagination__nav"
-        >
-          <span className="ds-c-pagination__nav--img-container ds-c-pagination__nav--img-container-previous">
-            {startIcon}
-          </span>
-          {startLabelText ?? t('pagination.startLabelText')}
-        </Button>
-      )}
+    <nav className={classes} aria-labelledby="pagination-heading" {...rest}>
+      <span aria-live="polite" role="status" className="ds-u-visibility--screen-reader">
+        {headingElement}
+      </span>
 
-      {isMobile || compact ? (
-        <span
-          className="ds-c-pagination__page-count"
-          dangerouslySetInnerHTML={{
-            __html: t('pagination.pageXOfY', {
-              number: `<strong>${currentPage}</strong>`,
-              total: `<strong>${totalPages}</strong>`,
-            }),
-          }}
-        />
-      ) : (
-        <ul>{pages}</ul>
-      )}
-
-      {currentPage === totalPages ? (
-        <span
-          className="ds-c-pagination__nav ds-c-pagination__nav--disabled"
-          style={{ visibility: isNavigationHidden ? 'hidden' : 'visible' }}
-          aria-hidden={isNavigationHidden}
-          aria-disabled="true"
-        >
-          {endLabelText ?? t('pagination.endLabelText')}
-          <span className="ds-c-pagination__nav--img-container ds-c-pagination__nav--img-container-next">
-            {endIcon}
-          </span>
+      <Button
+        variation="ghost"
+        href={renderHref(currentPage - 1)}
+        onClick={pageChange(currentPage - 1)}
+        aria-label={startAriaLabel ?? t('pagination.startAriaLabel')}
+        className="ds-c-pagination__nav"
+        disabled={currentPage === 1}
+        style={{ visibility: currentPage === 1 && isNavigationHidden ? 'hidden' : 'visible' }}
+        aria-hidden={currentPage === 1 ? isNavigationHidden : false}
+      >
+        <span className="ds-c-pagination__nav--img-container ds-c-pagination__nav--img-container-previous">
+          {startIcon}
         </span>
-      ) : (
-        <Button
-          variation="ghost"
-          href={renderHref(currentPage + 1)}
-          onClick={pageChange(currentPage + 1)}
-          aria-label={endAriaLabel ?? t('pagination.endAriaLabel')}
-          className="ds-c-pagination__nav"
-        >
-          {endLabelText ?? t('pagination.endLabelText')}
-          <span className="ds-c-pagination__nav--img-container ds-c-pagination__nav--img-container-next">
-            {endIcon}
-          </span>
-        </Button>
-      )}
+        {startLabelText ?? t('pagination.startLabelText')}
+      </Button>
+
+      <span
+        className="ds-c-pagination__page-count"
+        dangerouslySetInnerHTML={{
+          __html: t('pagination.pageXOfY', {
+            number: `<strong>${currentPage}</strong>`,
+            total: `<strong>${totalPages}</strong>`,
+          }),
+        }}
+      />
+
+      <ul role="list">{pages}</ul>
+
+      <Button
+        variation="ghost"
+        href={renderHref(currentPage + 1)}
+        onClick={pageChange(currentPage + 1)}
+        aria-label={endAriaLabel ?? t('pagination.endAriaLabel')}
+        className="ds-c-pagination__nav"
+        disabled={currentPage === totalPages}
+        style={{
+          visibility: currentPage === totalPages && isNavigationHidden ? 'hidden' : 'visible',
+        }}
+        aria-hidden={currentPage === totalPages ? isNavigationHidden : false}
+      >
+        {endLabelText ?? t('pagination.endLabelText')}
+        <span className="ds-c-pagination__nav--img-container ds-c-pagination__nav--img-container-next">
+          {endIcon}
+        </span>
+      </Button>
     </nav>
   );
 }
 
 Pagination.defaultProps = {
   compact: false,
-  currentPage: 1,
+  headingLevel: '2',
   isNavigationHidden: false,
 };
 

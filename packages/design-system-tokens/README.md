@@ -23,7 +23,7 @@ Folder structure is as follows:
     `yarn build inputType outputType`
 
     inputTypes: `tokens` (all tokens), `themes` (all themes)
-    outputTypes: `scss` (Sass), `csv` (comma separated values), `json` (for sketch import or general use), `css-vars` (for theme switching in internal tools like the doc site or storybook)
+    outputTypes: `csv` (comma separated values), `json` (for sketch import or general use), `css-vars` (CSS custom properties, plus required SCSS variables)
 
     `yarn clean` - clean dist directory
     `yarn dist` - copy themes from dist directory to appropriate settings folder for child systems

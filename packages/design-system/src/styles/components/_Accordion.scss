@@ -1,19 +1,16 @@
-@import '../settings/index.scss';
-
-// @TODO: deprecate and either add to component definition or hard-code
-$accordion-header-font-family: $font-sans;
+@use '../mixins';
+@use '../layout' as *;
 
 .ds-c-accordion {
-  color: $accordion__color;
-  font-size: $font-size-base;
-  line-height: $font-line-height-base;
+  color: var(--accordion__color);
+  line-height: var(--font-line-height-base);
   margin: 0;
   padding: 0;
   width: 100%;
 }
 
 .ds-c-accordion__heading {
-  font-size: $font-size-base;
+  font-size: var(--font-size-base); // Needed to overwrite user agent heading tag styles
   //   line-height: 0.9;
   margin: 0;
 }
@@ -23,16 +20,16 @@ $accordion-header-font-family: $font-sans;
 }
 
 .ds-c-accordion__button {
-  background-color: $accordion__background-color;
+  background-color: var(--accordion__background-color);
   border: 0;
-  border-radius: 0;
+  border-radius: var(--accordion__border-radius);
   box-shadow: none;
-  color: $accordion-button__color;
+  color: var(--accordion-button__color);
   cursor: pointer;
   display: flex;
-  font-family: $accordion-header-font-family;
-  font-size: $font-size-base;
-  font-weight: $font-weight-bold;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base); // Needed to overwrite user agent heading tag styles
+  font-weight: var(--font-weight-bold);
   justify-content: space-between;
   margin: 0;
   padding: $spacer-2 $spacer-3 $spacer-2 $spacer-3;
@@ -41,11 +38,11 @@ $accordion-header-font-family: $font-sans;
   width: 100%;
 
   &:hover {
-    background-color: $accordion__background-color--hover;
+    background-color: var(--accordion__background-color--hover);
   }
 
   &:focus {
-    @include focus-styles;
+    @include mixins.focus-styles;
   }
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
@@ -61,7 +58,7 @@ $accordion-header-font-family: $font-sans;
       forced-color-adjust: none;
       -ms-high-contrast-adjust: none;
       outline: $spacer-half solid LinkText;
-      outline-offset: -$spacer-half;
+      outline-offset: calc(-1 * #{$spacer-half});
     }
   }
 
@@ -79,9 +76,8 @@ $accordion-header-font-family: $font-sans;
 }
 
 .ds-c-accordion__content {
-  background-color: $accordion-content__background-color;
-  font-size: $font-size-base;
-  line-height: $font-line-height-base;
+  background-color: var(--accordion-content__background-color);
+  line-height: var(--font-line-height-base);
   margin-top: 0;
   overflow: auto;
   padding: $spacer-2 $spacer-3 $spacer-1 $spacer-4;
@@ -97,7 +93,7 @@ $accordion-header-font-family: $font-sans;
 
 .ds-c-accordion--bordered {
   .ds-c-accordion__content {
-    border: $spacer-half solid $accordion__border-color;
+    border: var(--accordion__border-width) solid var(--accordion__border-color);
     border-top: 0;
     padding: $spacer-2 $spacer-2;
   }

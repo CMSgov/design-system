@@ -3,6 +3,7 @@ import {
   EventCategory,
   EventType,
   useAnalyticsContent,
+  eventExtensionText,
 } from '../analytics';
 import { HelpDrawerProps } from './HelpDrawer';
 import { helpDrawerSendsAnalytics } from '../flags';
@@ -16,7 +17,7 @@ export default function useHelpDrawerAnalytics({
     content: string | undefined,
     eventAttributes: { event_name: string; event_action: string }
   ) {
-    if (!helpDrawerSendsAnalytics() || analytics === false) {
+    if (analytics !== true && (!helpDrawerSendsAnalytics() || analytics === false)) {
       return;
     }
 
@@ -31,6 +32,7 @@ export default function useHelpDrawerAnalytics({
       event_type: EventType.UI_INTERACTION,
       event_category: EventCategory.UI_COMPONENTS,
       event_label: eventHeadingText,
+      event_extension: eventExtensionText,
       heading: eventHeadingText,
       ...eventAttributes,
     });

@@ -3,6 +3,7 @@ import {
   EventCategory,
   EventType,
   useAnalyticsContent,
+  eventExtensionText,
 } from '../analytics';
 import { AlertProps } from './Alert';
 import { alertSendsAnalytics } from '../flags';
@@ -17,7 +18,7 @@ export default function useAlertAnalytics({
   const [headingRef, bodyRef] = useAnalyticsContent({
     componentName: 'Alert',
     onMount: (content: string | undefined) => {
-      if (!alertSendsAnalytics() || analytics === false) {
+      if (analytics !== true && (!alertSendsAnalytics() || analytics === false)) {
         return;
       }
 
@@ -36,6 +37,7 @@ export default function useAlertAnalytics({
         event_name: 'alert_impression',
         event_type: EventType.UI_INTERACTION,
         event_action: 'alert impression',
+        event_extension: eventExtensionText,
         event_category: EventCategory.UI_COMPONENTS,
         event_label: eventHeadingText,
         heading: eventHeadingText,

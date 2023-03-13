@@ -1,8 +1,13 @@
-## Example: create-react-app-typescript
+## Example: A create-react-app project with TypeScript
 
-This shows the usage of CMS design system components in a typescript [create-react-app](https://create-react-app.dev/docs/getting-started/) project.
+This shows the usage of CMS design system components in a TypeScript [create-react-app](https://create-react-app.dev/docs/getting-started/) project.
 
-Refer to [install with NPM](https://design.cms.gov/startup/installation/) for instructions on how to install the design system as a dependency package. The `.env` is for a basic `create-react-app` configuration with the design system. The [index.scss](https://design.cms.gov/startup/sass-and-css/#using-fonts-and-images) includes the design system's styles and paths for the image and font directories.
+In this project, the design system package is installed as an npm dependency. Refer to [install using npm](https://design.cms.gov/getting-started/for-developers/#option-1-install-using-npm) for instructions on how to install the design system as a dependency package.
+
+## Getting started
+
+1. Install packages: `yarn install`
+1. Run the application: `yarn start`
 
 ## Create React App
 
@@ -11,8 +16,3 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ```
 > npx create-react-app <project-name> --template typescript
 ```
-
-## Getting started
-
-1. Install packages: `yarn install`
-1. Run the application: `yarn start`

@@ -1,16 +1,18 @@
 {
   "name": "design-system-tokens",
   "version": "0.0.1",
+  "private": true,
   "description": "CMSDS Design System Tokens",
   "devDependencies": {
     "@types/node": "^17.0.22",
     "ts-node": "^10.4.0",
     "tslib": "^2.3.1",
-    "typescript": "^4.5.4"
+    "typescript": "^4.9.5"
   },
   "scripts": {
     "build": "ts-node ./src/index.ts",
-    "clean": "rm -f dist/*",
+    "build:all": "yarn clean && yarn build themes css-vars && yarn build themes scss && yarn dist",
+    "clean": "rm -rf dist/*",
     "dist": "./src/copy_themes.sh"
   },
   "dependencies": {}

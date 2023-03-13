@@ -1,3 +1,4 @@
+import React from 'react';
 import { ArrowIcon } from '../Icons';
 import { CaptionDropdowns, CaptionProps, useDayPicker, useNavigation } from 'react-day-picker';
 
@@ -37,6 +38,7 @@ export function CustomDayPickerCaption(props: CaptionProps) {
         aria-label={previousLabel}
         className="ds-c-single-input-date-field__nav"
         onClick={handlePreviousClick}
+        type="button"
         disabled={!previousMonth}
       >
         <ArrowIcon direction="left" />
@@ -46,6 +48,7 @@ export function CustomDayPickerCaption(props: CaptionProps) {
         aria-label={nextLabel}
         className="ds-c-single-input-date-field__nav"
         onClick={handleNextClick}
+        type="button"
         disabled={!nextMonth}
       >
         <ArrowIcon direction="right" />

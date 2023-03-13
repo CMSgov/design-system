@@ -1,80 +1,60 @@
 // Design system fonts
 // Fonts are separated from other settings scss because font-faces are compiled and included css build files
 
-// TODO: Find solution to remove unused @font-faces
+$font-path: '../fonts' !default;
+
 @font-face {
+  font-display: swap;
   font-family: Bitter;
   font-style: normal;
   font-weight: normal;
-  src: url('#{$font-path}/bitter-regular.eot');
-  src: url('#{$font-path}/bitter-regular.eot?#iefix') format('embedded-opentype'),
-    url('#{$font-path}/bitter-regular.woff2') format('woff2'),
-    url('#{$font-path}/bitter-regular.woff') format('woff'),
-    url('#{$font-path}/bitter-regular.ttf') format('truetype');
+  src: url('#{$font-path}/bitter-regular.woff2') format('woff2');
 }
 
 @font-face {
+  font-display: swap;
   font-family: Bitter;
   font-style: normal;
   font-weight: bold;
-  src: url('#{$font-path}/bitter-bold.eot');
-  src: url('#{$font-path}/bitter-bold.eot?#iefix') format('embedded-opentype'),
-    url('#{$font-path}/bitter-bold.woff2') format('woff2'),
-    url('#{$font-path}/bitter-bold.woff') format('woff'),
-    url('#{$font-path}/bitter-bold.ttf') format('truetype');
+  src: url('#{$font-path}/bitter-bold.woff2') format('woff2');
 }
 
 @font-face {
+  font-display: swap;
   font-family: Bitter;
   font-style: italic;
   font-weight: normal;
-  src: url('#{$font-path}/bitter-italic.eot');
-  src: url('#{$font-path}/bitter-italic.eot?#iefix') format('embedded-opentype'),
-    url('#{$font-path}/bitter-italic.woff2') format('woff2'),
-    url('#{$font-path}/bitter-italic.woff') format('woff'),
-    url('#{$font-path}/bitter-italic.ttf') format('truetype');
+  src: url('#{$font-path}/bitter-italic.woff2') format('woff2');
 }
 
 @font-face {
+  font-display: swap;
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: normal;
-  src: url('#{$font-path}/opensans-regular-webfont.eot');
-  src: url('#{$font-path}/opensans-regular-webfont.eot?#iefix') format('embedded-opentype'),
-    url('#{$font-path}/opensans-regular-webfont.woff2') format('woff2'),
-    url('#{$font-path}/opensans-regular-webfont.woff') format('woff'),
-    url('#{$font-path}/opensans-regular-webfont.ttf') format('truetype');
+  src: url('#{$font-path}/opensans-regular-webfont.woff2') format('woff2');
 }
 
 @font-face {
+  font-display: swap;
   font-family: 'Open Sans';
   font-style: italic;
   font-weight: normal;
-  src: url('#{$font-path}/opensans-italic-webfont.eot');
-  src: url('#{$font-path}/opensans-italic-webfont.eot?#iefix') format('embedded-opentype'),
-    url('#{$font-path}/opensans-italic-webfont.woff2') format('woff2'),
-    url('#{$font-path}/opensans-italic-webfont.woff') format('woff'),
-    url('#{$font-path}/opensans-italic-webfont.ttf') format('truetype');
+  src: url('#{$font-path}/opensans-italic-webfont.woff2') format('woff2');
 }
 
 @font-face {
+  font-display: swap;
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 600;
-  src: url('#{$font-path}/opensans-semibold-webfont.eot');
-  src: url('#{$font-path}/opensans-semibold-webfont.eot?#iefix') format('embedded-opentype'),
-    url('#{$font-path}/opensans-semibold-webfont.woff2') format('woff2'),
-    url('#{$font-path}/opensans-semibold-webfont.woff') format('woff'),
-    url('#{$font-path}/opensans-semibold-webfont.ttf') format('truetype');
+  src: url('#{$font-path}/opensans-Semibold-webfont.woff2') format('woff2');
 }
 
 @font-face {
+  font-display: swap;
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 700;
-  src: url('#{$font-path}/opensans-bold-webfont.eot');
-  src: url('#{$font-path}/opensans-bold-webfont.eot?#iefix') format('embedded-opentype'),
-    url('#{$font-path}/opensans-bold-webfont.woff2') format('woff2'),
-    url('#{$font-path}/opensans-bold-webfont.woff') format('woff'),
-    url('#{$font-path}/opensans-bold-webfont.ttf') format('truetype');
+  src: url('#{$font-path}/opensans-bold-webfont.woff2') format('woff2');
 }

@@ -30,10 +30,14 @@ export enum EventType {
   UI_INTERACTION = 'ui interaction',
 }
 
+// This is the default event 'extension' for events arising from the DS
+export const eventExtensionText = 'Design system integration';
+
 export interface AnalyticsEvent {
   event_name: string;
   event_type: string;
   event_category: string;
+  event_extension: string;
   event_action: string;
   event_label: string;
   [additional_props: string]: unknown;

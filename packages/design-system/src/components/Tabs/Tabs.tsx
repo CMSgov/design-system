@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import Tab from './Tab';
-import TabPanel from './TabPanel';
+import TabPanel, { TabPanelProps } from './TabPanel';
 import classnames from 'classnames';
 import get from 'lodash/get';
 
@@ -148,7 +148,7 @@ export const Tabs = (props: TabsProps) => {
         // Extend props on panels before rendering. Also removes any props
         // that don't need passed into TabPanel but are used to generate
         // the Tab components
-        return React.cloneElement(child, {
+        return React.cloneElement(child as React.ReactElement<TabPanelProps>, {
           selected: selectedId === child.props.id,
           tab: undefined,
           tabHref: undefined,

@@ -1,10 +1,12 @@
+@use '../layout' as *;
+
 // This class is being left for compatibility with any raw html
 // that utilizes this class to display an error icon with an
 // error message. Can be removed when we're sure it is not being
 // utilized anywhere important that the component svg can't be used.
 
 .ds-c-field__error-message::before {
-  background-image: url('#{$image-path}/error-red.svg');
+  background-image: url('../images/error-red.svg');
   background-position-x: left;
   background-position-y: center;
   background-repeat: no-repeat;
@@ -15,7 +17,7 @@
 }
 
 .ds-c-field__error-message--inverse::before {
-  background-image: url('#{$image-path}/error-light-red.svg');
+  background-image: url('../images/error-light-red.svg');
 }
 
 // overwrites the background image rendering when the InlineError

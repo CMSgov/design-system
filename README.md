@@ -29,27 +29,28 @@ You're currently at the root of a monorepo containing multiple NPM packages loca
 
 This project uses [Yarn](https://yarnpkg.com/) for package management. Yarn helps to ensure everyone is using the same package versions. [**Install Yarn**](https://yarnpkg.com/cli/install), if you don't have it yet.
 
-### Getting started
-
-1. `yarn install`
-   - This will also run [Lerna](https://lernajs.io/) `bootstrap` which allows us to have multiple packages within the same repo (a monorepo). Lerna installs all our dependencies and symlinks any cross-dependencies.
-1. `yarn start`
-
 _Note_: When you create a Git commit, any staged scripts will be automatically ran through ESLint and Prettier. If the linter catches an error, your commit will fail. This is a feature, not a bug :)
 
 ### Scripts
 
 These scripts can all be run from the root level of the repo:
 
-- `yarn start`
-  - Starts local server running the documentation site
-  - Regenerates documentation when files change
+- `yarn install`
+
+  - This will also run [Lerna](https://lerna.js.org/) `bootstrap` which allows us to have multiple packages within the same repo (a monorepo). Lerna installs all our dependencies and symlinks any cross-dependencies.
+
 - `yarn build`
   - Compile/transpile/uglify everything and makes things release-ready.
   - `yarn build:healthcare` to build the Healthcare.gov Design System
   - `yarn build:medicare` to build the Medicare.gov Design System
 - `yarn build:storybook:docs && yarn build:docs`
+
   - Builds the docs site statically
+
+- `yarn start`
+  - Starts local server running the documentation site
+  - Regenerates documentation when files change
+  - **Before** running `start` run the `build` command
 - `yarn storybook`
   - Starts storybook for easier local development for the core package
   - `yarn storybook:healthcare` starts storybook for healthcare stories & styles
@@ -75,17 +76,27 @@ These scripts can all be run from the root level of the repo:
   - Builds the doc site locally and deploys it to a branch-specific path on GitHub Pages. The terminal will display the URL where the demo was deployed to after it is done running.
 - `yarn release`
   - Bumps package versions and tags a release commit. Read our [release guide on Confluence](https://confluence.cms.gov/x/CAsuK) for more info.
+- `yarn release:bump`
+  - Bumps package versions in a branch off of `main` and creates a pr for these bumps using `gh`. Read our [release guide on Confluence](https://confluence.cms.gov/x/CAsuK) for more info.
 
 ### Visual regression testing
 
 We use [Playwright](https://playwright.dev/) to test our components for visual regressions. It uses our existing Storybook stories, taking screenshots of them within a docker container and comparing those screenshots with ones previously taken and committed to version control. The tests assume that Storybook has been built to `./storybook-static` using `yarn build:storybook`.
 
-Running the browser tests locally requires that you be signed into Docker.
+Running the browser tests locally requires that you be signed into Docker or have playwright installed locally.
+
+#### If using Docker:
 
 1. Open the Docker app, and make sure you're signed in (Docker Desktop requires a license now)
 2. Run `yarn test:browser` to begin comparing component images
    1. If differences are detected and unexpected, evaluate your changes - we only want to update and commit references when we expect the visual changes detected
    2. If differences are detected and expected, run `yarn test:browser:update`
+
+#### If running Locally:
+
+1. If you have run `npx playwright install` and installed the playwright dependencies locally you can run the tests using their yarn commands directly.
+2. For example, to run the CMSDS VRT Tests for inteaction states: `yarn playwright test --config tests/browser/interaction.config.ts`
+3. The `-u` flag can be added to the `yarn playwright test` command to update snapshots.
 
 ## Design Assets
 

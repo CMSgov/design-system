@@ -1,3 +1,4 @@
+import React from 'react';
 import Prism from 'prismjs';
 
 import { MDXRenderer } from 'gatsby-plugin-mdx';
@@ -12,9 +13,11 @@ import ThemeContent from './ThemeContent';
 import PropTable from './PropTable';
 import PropTableHtmlElementRow from './PropTableHtmlElementRow';
 import ResponsiveExample from './ResponsiveExample';
-import ColorSwatchList from './ColorSwatchList';
+import ColorExampleList from './ColorExampleList';
+import ColorRamps from './ColorRamps';
 import MaturityChecklist from './MaturityChecklist';
 import SpacingUtilityExampleList from './SpacingUtilityExampleList';
+import TextColorList from './TextColorList';
 
 // adds DS styling to tables from markdown
 const TableWithClassnames = (props) => {
@@ -71,11 +74,13 @@ const customComponents = (theme) => ({
   ol: (props) => TextWithMaxWidth(props, 'ol'),
   EmbeddedExample,
   MaturityChecklist,
+  ColorRamps,
   StorybookExample: (props) => <StorybookExample theme={theme} {...props} />,
   PropTable: (props) => <PropTable theme={theme} {...props} />,
   PropTableHtmlElementRow: (props) => <PropTableHtmlElementRow theme={theme} {...props} />,
   ResponsiveExample: (props) => <ResponsiveExample theme={theme} {...props} />,
-  ColorSwatchList: (props) => <ColorSwatchList theme={theme} {...props} />,
+  ColorExampleList: (props) => <ColorExampleList theme={theme} {...props} />,
+  TextColorList: (props) => <TextColorList theme={theme} {...props} />,
   SpacingUtilityExampleList: (props) => <SpacingUtilityExampleList theme={theme} {...props} />,
   ComponentThemeOptions: (props) => <ComponentThemeOptions theme={theme} {...props} />,
   ThemeContent: (props) => <ThemeContent theme={theme} {...props} />,

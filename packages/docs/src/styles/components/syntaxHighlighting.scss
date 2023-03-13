@@ -1,7 +1,7 @@
 pre,
 code {
-  background-color: $color-gray-lightest;
-  color: $color-black;
+  background-color: var(--color-gray-lightest);
+  color: var(--color-black);
 }
 
 pre {
@@ -18,8 +18,13 @@ code {
 }
 
 a code {
-  color: $link__color;
+  color: var(--link__color);
   text-decoration: underline;
+}
+
+.ds-c-alert code {
+  // Semi-transparent so it matches the color of the alert better
+  background-color: #c4c4c44f;
 }
 
 /**
@@ -58,7 +63,7 @@ pre[class*='language-'] {
 :not(pre) > code[class*='language-'],
 pre[class*='language-'] {
   background: #fefefe;
-  border: 1px solid $color-gray-lighter;
+  border: 1px solid var(--color-gray-lighter);
 }
 
 /* Inline code */

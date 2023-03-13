@@ -3,7 +3,7 @@
  */
 
 import { animation, color, font, measure, media, radius, spacer, z } from '../tokens';
-import { ThemeTokens, ColorTokens, ShadowTokens } from '../lib/types';
+import { ThemeTokens, ColorTokens, ShadowTokens, AnyTokenValues } from '../lib/types';
 
 export const themeColors: ColorTokens = {
   //
@@ -27,18 +27,13 @@ export const themeColors: ColorTokens = {
   'border-dark':                color['lapis-800'],
   'border-inverse':             color['white-solid'],
   //
-  'coolblue':                   color['sapphire-600'],
-  'coolblue-light':             color['sapphire-500'],
-  'coolblue-lighter':           color['sapphire-200'],
-  'coolblue-lightest':          color['sapphire-50'],
-  //
+  'error-lightest':             color['rose-50'],
+  'error-lighter':              color['rose-100'],
+  'error-light':                color['rose-300'],
   'error':                      color['rose-500'],
   'error-dark':                 color['rose-600'],
   'error-darker':               color['rose-700'],
   'error-darkest':              color['rose-800'],
-  'error-light':                color['rose-200'],
-  'error-lighter':              color['rose-100'],
-  'error-lightest':             color['rose-50'],
   //
   'focus':                      color['darksky-500'],
   'focus-border-inverse':       color['goldenrod-800'],
@@ -50,36 +45,22 @@ export const themeColors: ColorTokens = {
   'focus-shadow-link':          color['granite-900'],
   'focus-shadow-link-inverse':  color['goldenrod-800'],
   //
-  'gold':                       color['goldenrod-500'],
-  'gold-dark':                  color['goldenrod-600'],
-  'gold-darker':                color['goldenrod-700'],
-  'gold-darkest':               color['goldenrod-800'],
-  'gold-light':                 color['goldenrod-400'],
-  'gold-lighter':               color['goldenrod-200'],
-  'gold-lightest':              color['goldenrod-50'],
-  //
-  'gray':                       color['granite-700'],
-  'gray-cool-light':            color['ocean-50'],
-  'gray-dark':                  color['granite-800'],
-  'gray-light':                 color['granite-300'],
-  'gray-lighter':               color['granite-100'],
-  'gray-lightest':              color['granite-50'],
-  'gray-medium':                color['granite-600'],
-  'gray-warm-dark':             color['granite-800'],
-  'gray-warm-light':            color['granite-50'],
-  //
-  'green':                      color['spring-500'],
-  'green-dark':                 color['spring-600'],
-  'green-darker':               color['spring-700'],
-  'green-darkest':              color['spring-800'],
-  'green-light':                color['spring-700'],
-  'green-lighter':              color['spring-200'],
-  'green-lightest':             color['spring-50'],
+  'gray-lightest':	            color['granite-50'],
+  'gray-lighter':	              color['granite-100'],
+  'gray-light':	                color['granite-300'],
+  'gray':	                      color['granite-500'],
+  'gray-dark':	                color['granite-700'],
+  'gray-darker':	              color['granite-800'],
+  'gray-darkest':	              color['granite-900'],
   //
   'muted':                      color['granite-700'],
   'muted-inverse':              color['lapis-50'],
   //
+  'primary-lightest':           color['sapphire-50'],
+  'primary-lighter':            color['sapphire-100'],
+  'primary-light':              color['sapphire-300'],
   'primary':                    color['sapphire-500'],
+  'primary-dark':               color['sapphire-600'],
   'primary-darker':             color['sapphire-700'],
   'primary-darkest':            color['sapphire-800'],
   // @TODO deprecate primary-alt as secondary
@@ -89,37 +70,37 @@ export const themeColors: ColorTokens = {
   'primary-alt-light':          color['darksky-300'],
   'primary-alt-lightest':       color['darksky-50'],
   //
-  'red':                        color['rose-500'],
-  'red-dark':                   color['rose-600'],
-  'red-darker':                 color['rose-700'],
-  'red-darkest':                color['rose-800'],
-  'red-light':                  color['rose-200'],
-  'red-lighter':                color['rose-100'],
-  'red-lightest':               color['rose-50'],
+  'secondary-lightest':         color['spring-50'],
+  'secondary-lighter':          color['spring-100'],
+  'secondary-light':            color['spring-300'],
+  'secondary':                  color['spring-500'],
+  'secondary-dark':             color['spring-600'],
+  'secondary-darker':           color['spring-700'],
+  'secondary-darkest':          color['spring-800'],
   //
-  'secondary':                  color['darksky-500'],
-  'secondary-dark':             color['darksky-600'],
-  'secondary-darker':           color['darksky-700'],
-  'secondary-darkest':          color['darksky-800'],
-  'secondary-light':            color['darksky-300'],
-  'secondary-lighter':          color['darksky-100'],
-  'secondary-lightest':         color['darksky-50'],
+  'info-lightest':              color['darksky-50'],
+  'info-lighter':               color['darksky-100'],
+  'info-light':                 color['darksky-300'],
+  'info':                       color['darksky-500'],
+  'info-dark':                  color['darksky-600'],
+  'info-darker':                color['darksky-700'],
+  'info-darkest':               color['darksky-800'],
   //
+  'success-lightest':           color['spring-50'],
+  'success-lighter':            color['spring-100'],
+  'success-light':              color['spring-300'],
   'success':                    color['spring-500'],
   'success-dark':               color['spring-600'],
   'success-darker':             color['spring-700'],
   'success-darkest':            color['spring-800'],
-  'success-light':              color['spring-400'],
-  'success-lighter':            color['spring-200'],
-  'success-lightest':           color['spring-50'],
   //
+  'warn-lightest':              color['goldenrod-50'],
+  'warn-lighter':               color['goldenrod-100'],
+  'warn-light':                 color['goldenrod-300'],
   'warn':                       color['goldenrod-500'],
   'warn-dark':                  color['goldenrod-600'],
   'warn-darker':                color['goldenrod-700'],
   'warn-darkest':               color['goldenrod-800'],
-  'warn-light':                 color['goldenrod-400'],
-  'warn-lighter':               color['goldenrod-200'],
-  'warn-lightest':              color['goldenrod-50'],
   //
   'visited':                    color['windsor-500'],
 }
@@ -136,6 +117,19 @@ export const shadow: ShadowTokens = {
   'base':                       '2px 2px 4px',
 }
 
+export const global: AnyTokenValues = {
+  'article-max-width':          '600px',
+  'grid-columns':               '12',
+  'grid-gutter-width':          spacer[4],
+  'grid-form-gutter-width':     spacer[2],
+  'lead-max-width':             '77rem',
+  'nav-width':                  '951px',
+  'site-margins':               '3rem',
+  'site-margins-mobile':        '1.5rem',
+  'site-max-width':             '1040px',
+  'text-max-width':             '53rem',
+};
+
 const healthcareTheme: ThemeTokens = {
   animation,
   color: themeColors,
@@ -144,6 +138,7 @@ const healthcareTheme: ThemeTokens = {
     serif: font['family-bitter'],
     ...font,
   },
+  global,
   measure,
   media,
   radius,

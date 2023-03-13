@@ -1,3 +1,4 @@
+import React from 'react';
 const Ellipses: React.FC<unknown> = () => {
   return (
     <li>

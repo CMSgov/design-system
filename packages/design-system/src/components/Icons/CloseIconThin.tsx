@@ -1,12 +1,13 @@
+import React from 'react';
 import { t } from '../i18n';
-import SvgIcon, { IconCommonProps } from './SvgIcon';
+import { SvgIcon, IconCommonProps } from './SvgIcon';
 
 const defaultProps = {
   className: '',
   viewBox: '-2 -2 18 18',
 };
 
-function CloseIconThin(props: IconCommonProps): React.ReactElement {
+export function CloseIconThin(props: IconCommonProps): React.ReactElement {
   const iconCssClasses = `ds-c-icon--close ds-c-icon--close-thin ${props.className || ''}`;
 
   return (
@@ -21,5 +22,3 @@ function CloseIconThin(props: IconCommonProps): React.ReactElement {
     </SvgIcon>
   );
 }
-
-export default CloseIconThin;

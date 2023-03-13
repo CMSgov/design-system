@@ -1,3 +1,4 @@
+import React from 'react';
 import Button from '../Button/Button';
 
 export interface PageProps {
@@ -30,7 +31,7 @@ export default function Page({
       {isActive ? (
         <span
           className="ds-c-button ds-c-button--ghost ds-c-pagination__current-page"
-          aria-current="true"
+          aria-current="page"
         >
           {index}
         </span>

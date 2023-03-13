@@ -8,8 +8,8 @@ exports.onCreateWebpackConfig = ({ actions }) => {
       // aliasing fonts & images to catch relative paths defined in core styles
       alias: {
         '@styles': path.resolve(__dirname, '../design-system/src/styles'),
-        '../fonts': path.resolve(__dirname, '../design-system/src/fonts'),
-        '../images': path.resolve(__dirname, '../design-system/src/images'),
+        '../fonts': path.resolve(__dirname, 'static/fonts'),
+        '../images': path.resolve(__dirname, 'static/images'),
       },
     },
   });
@@ -21,7 +21,8 @@ exports.onCreateDevServer = ({ app }) => {
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
-  const infoPageTemplate = path.resolve(`src/components/InfoPage.tsx`);
+  const infoPageTemplate = path.resolve(`src/components/page-templates/InfoPage.tsx`);
+  const blogPageTemplate = path.resolve(`src/components/page-templates/BlogPage.tsx`);
 
   // get all pages
   return graphql(`
@@ -48,8 +49,8 @@ exports.createPages = ({ graphql, actions }) => {
     result.data.allMdx.edges.forEach((edge) => {
       createPage({
         // Path for this page -- the slug with positioning markers removed
-        path: edge.node.slug.replace(/\d+_/g, ''),
-        component: infoPageTemplate,
+        path: edge.node.slug.replace(/\d+_/g, '') + '/',
+        component: edge.node.slug.startsWith('blog') ? blogPageTemplate : infoPageTemplate,
         // props passed to template
         context: {
           id: edge.node.id,

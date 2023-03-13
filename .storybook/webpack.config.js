@@ -2,17 +2,6 @@ const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-// because of the way font & image files are organized in dev vs prod, need to have a different font path
-// need to set this before styles are imported
-const getFontAndImagePaths = () => {
-  // for prod builds
-  if (process.env.STORYBOOK_ENV !== 'dev') {
-    return `$font-path: './fonts'; $image-path: './images';`;
-  }
-  // for dev, use default which is '../fonts'
-  return '';
-};
-
 module.exports = async ({ config }) => {
   config.plugins.push(
     new MiniCssExtractPlugin(),
@@ -73,9 +62,6 @@ module.exports = async ({ config }) => {
         'css-loader?url=false',
         {
           loader: 'sass-loader',
-          options: {
-            additionalData: `${getFontAndImagePaths()}`,
-          },
         },
       ],
       include: path.resolve(__dirname, '../'),
@@ -87,6 +73,10 @@ module.exports = async ({ config }) => {
       __dirname,
       '../packages/design-system/src/styles/'
     ),
+    react: 'preact/compat',
+    'react-dom/test-utils': 'preact/test-utils',
+    'react-dom': 'preact/compat', // Must be below test-utils
+    'react/jsx-runtime': 'preact/jsx-runtime',
   };
 
   return config;

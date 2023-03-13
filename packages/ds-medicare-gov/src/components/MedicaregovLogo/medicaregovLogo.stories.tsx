@@ -1,3 +1,4 @@
+import React from 'react';
 import MedicaregovLogo from './index';
 
 export default {

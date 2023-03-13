@@ -1,6 +1,7 @@
+import React from 'react';
 import SingleInputDateField from './SingleInputDateField';
 import { action } from '@storybook/addon-actions';
-import { useState } from 'react';
+import { useArgs } from '@storybook/client-api';
 
 export default {
   title: 'Components/SingleInputDateField',
@@ -10,7 +11,6 @@ export default {
       control: { type: 'text' },
     },
     errorPlacement: {
-      defaultValue: 'top',
       control: {
         type: 'radio',
       },
@@ -25,19 +25,35 @@ export default {
     requirementLabel: {
       control: { type: 'text' },
     },
+    fromDate: {
+      control: { type: 'date' },
+    },
+    toDate: {
+      control: { type: 'date' },
+    },
+    fromMonth: {
+      control: { type: 'date' },
+    },
+    toMonth: {
+      control: { type: 'date' },
+    },
+    defaultMonth: {
+      control: { type: 'date' },
+    },
   },
   args: {
-    label: 'Birthday',
+    errorPlacement: 'top',
     hint: 'Please enter your birthday',
+    label: 'Birthday',
     name: 'single-input-date-field',
   },
 };
 
-const Template = ({ ...args }) => {
-  const [dateString, setDateString] = useState('');
+const Template = () => {
+  const [{ dateString, ...args }, updateArgs] = useArgs({ dateString: '' });
   const onChange = (...params) => {
     action('onChange')(...params);
-    setDateString(...params);
+    updateArgs({ dateString: params[0] });
   };
   return <SingleInputDateField {...args} value={dateString} onChange={onChange} />;
 };
@@ -49,7 +65,13 @@ WithPicker.args = {
   label: 'What day did you move?',
   hint: 'This date should be within the past 60 days in order to qualify',
   fromYear: new Date().getFullYear(),
-  toDate: new Date(),
+  // TODO: Due to some unknown issue with this story that causes us to lose args
+  // defined with query parameters, we can't supply a specific date in the
+  // browser interaction tests in order to get consistent screenshots. We want
+  // to set this to an arbitrary date in the past so it always takes a screenshot
+  // of the same calendar view every time. If we can solve the root problem, we
+  // can move this setting of the toDate to the `.test.interaction.ts` file.
+  toDate: new Date(1676498194272),
 };
 
 export const WithError = Template.bind({});

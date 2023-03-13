@@ -1,7 +1,8 @@
+import React from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
 import { SvgIcon } from '@cmsgov/design-system';
-import { IconCommonProps } from '@cmsgov/design-system/dist/components/Icons/SvgIcon';
+import { IconCommonProps } from '@cmsgov/design-system';
 
 const defaultProps = {
   className: '',

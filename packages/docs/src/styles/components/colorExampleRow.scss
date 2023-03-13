@@ -1,0 +1,22 @@
+.c-color-example-row {
+  align-items: center;
+  display: flex;
+  gap: $spacer-1;
+  justify-content: space-between;
+  padding: $spacer-1;
+  position: relative;
+  text-align: right;
+
+  svg {
+    left: 0;
+    position: absolute;
+    top: 0;
+  }
+}
+
+.c-color-example-row__name,
+.c-color-example-row__value {
+  display: block;
+  font-size: 1em;
+  position: relative;
+}

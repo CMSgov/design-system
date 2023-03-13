@@ -1,12 +1,13 @@
+import React from 'react';
 import { t } from '../i18n';
-import SvgIcon, { IconCommonProps } from './SvgIcon';
+import { SvgIcon, IconCommonProps } from './SvgIcon';
 
 const defaultProps = {
   className: '',
   viewBox: '0 0 24 24',
 };
 
-function RemoveIcon(props: IconCommonProps): React.ReactElement {
+export function RemoveIcon(props: IconCommonProps): React.ReactElement {
   const iconCssClasses = `ds-c-icon--remove ${props.className || ''}`;
 
   return (
@@ -15,5 +16,3 @@ function RemoveIcon(props: IconCommonProps): React.ReactElement {
     </SvgIcon>
   );
 }
-
-export default RemoveIcon;

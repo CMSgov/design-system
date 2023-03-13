@@ -1,3 +1,4 @@
+import React from 'react';
 import HelpDrawer, { HelpDrawerProps } from './HelpDrawer';
 import { UtagContainer } from '../analytics';
 import { setHelpDrawerSendsAnalytics } from '../flags';
@@ -64,6 +65,12 @@ describe('HelpDrawer', () => {
     it('disables analytics event tracking on open', () => {
       renderHelpDrawer({ analytics: false, onCloseClick: jest.fn() });
       expect(tealiumMock).not.toHaveBeenCalled();
+    });
+
+    it('setting analytics to true overrides flag value', () => {
+      setHelpDrawerSendsAnalytics(false);
+      renderHelpDrawer({ analytics: true, onCloseClick: jest.fn() });
+      expect(tealiumMock).toHaveBeenCalled();
     });
 
     it('overrides analytics event tracking on open', () => {

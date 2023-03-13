@@ -1,0 +1,51 @@
+---
+title: ZIP codes
+intro: There are approximately 41k ZIP codes in the United States. We use ZIP codes in various ways; to determine eligibility, as a way to search for services, or as part of an address.
+---
+
+import { TextField } from '@cmsgov/design-system';
+
+## Guidance
+
+### 5-digit ZIP code pattern
+
+Use the `small` input size when data validation uses a 5-digit ZIP format.
+
+<EmbeddedExample>
+  <TextField size="small" label="ZIP code" name="zip-small" numeric />
+</EmbeddedExample>
+
+
+### 9-digit ZIP code pattern
+
+Use the `medium` input size when validating against a stricter data set, such as the 9-digit format.
+
+<EmbeddedExample>
+  <TextField size="medium" label="ZIP code" name="zip-medium" numeric />
+</EmbeddedExample>
+
+
+### ZIP code with geolocation information
+
+Use the default (`large`) input size when the user must confirm or enter data containing County, State, and ZIP code.
+
+<EmbeddedExample>
+  <TextField label="Enter your ZIP code & select your location" name="zip-default" numeric />
+</EmbeddedExample>
+
+Consider user <a href="#user-pain-points">pain points</a> when choosing a ZIP code input field size.
+
+## Interactions
+
+- To reduce cognitive load, use the 5-digit pattern which supports a mental model that widely exists.
+- Specific validation of numeric values 0–9, spaces, and dashes.
+- Let the user pick the ZIP code and county/state option from an autocomplete option. In some use cases the ZIP code alone is ambiguous because some ZIP codes are in more than one county.
+- Display the option the user selects from the autocomplete option list
+- Error prevention clearly indicates the user needs to enter a valid ZIP code before moving to the next item.
+
+## User pain points
+
+- A small-sized input field works for a 5-digit ZIP code but hides a 9-digit format.
+- A medium-sized input field accommodates a 9-digit ZIP format but hides additional data such as county and/or state.
+- Some users' browsers auto-populate the 9-digit  ZIP code, including the dash. This interaction can be problematic when using the small input field.
+- ZIP codes are not always consistent. They may not reflect the current geography, which can lead to problems when services rely on the accuracy of the ZIP code.

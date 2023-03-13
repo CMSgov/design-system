@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@cmsgov/design-system": "^4.0.5",
+    "@cmsgov/design-system": "^6.0.0-beta.2",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.0",
     "@types/react": "^18.0.22",

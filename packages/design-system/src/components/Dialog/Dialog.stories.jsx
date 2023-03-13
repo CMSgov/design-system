@@ -1,3 +1,4 @@
+import React from 'react';
 import { Dialog } from './Dialog';
 import Button from '../Button/Button';
 import { action } from '@storybook/addon-actions';
@@ -7,7 +8,6 @@ export default {
   title: 'Components/Dialog',
   component: Dialog,
   argTypes: {
-    analytics: { control: false },
     children: { control: false },
     actions: { control: false },
     heading: {

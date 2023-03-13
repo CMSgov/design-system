@@ -1,3 +1,4 @@
+import React from 'react';
 import { AccordionItem, MinusCircleIcon, PlusCircleIcon } from '@cmsgov/design-system';
 import { t } from '../i18n';
 

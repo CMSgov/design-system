@@ -9,6 +9,7 @@ import {
 import { setHeaderSendsAnalytics } from '../packages/ds-healthcare-gov/src/components/flags';
 import { setLanguage } from '../packages/design-system/src/components/i18n';
 import { setLanguage as setLanguageFromPackage } from '@cmsgov/design-system';
+import themes from '../themes.json';
 
 // Rewire analytics events to log to the console
 window.utag = { link: console.log };
@@ -84,7 +85,7 @@ export const globalTypes = {
     toolbar: {
       icon: 'graphline',
       items: [
-        { value: 'on', left: 'Analytics', title: 'Log to console' },
+        { value: 'on', left: 'Analytics', title: 'Log to Actions' },
         { value: 'off', left: 'Analytics', title: 'Off' },
       ],
     },
@@ -95,11 +96,10 @@ export const globalTypes = {
     defaultValue: 'core',
     toolbar: {
       icon: 'paintbrush',
-      items: [
-        { value: 'core', left: 'Core', title: 'Core CMSDS Theme' },
-        { value: 'healthcare', left: 'Healthcare', title: 'Healthcare Theme' },
-        { value: 'medicare', left: 'Medicare', title: 'Medicare Theme' },
-      ],
+      items: Object.keys(themes).map((key) => ({
+        value: key,
+        title: `${themes[key].displayName} theme`,
+      })),
     },
   },
 };
@@ -118,6 +118,9 @@ const baseClassDecorator = (Story, context) => {
 const themeSettingDecorator = (Story, context) => {
   const { theme } = context.globals;
   document.documentElement.setAttribute('data-theme', theme);
+
+  const themeCss = document.querySelector('link[title=themeCss]');
+  themeCss.href = `${theme}-theme.css`;
 
   return <Story {...context} />;
 };

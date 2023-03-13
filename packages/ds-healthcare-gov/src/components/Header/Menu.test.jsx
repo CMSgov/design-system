@@ -1,3 +1,4 @@
+import React from 'react';
 import Menu from './Menu';
 import { render } from '@testing-library/react';
 

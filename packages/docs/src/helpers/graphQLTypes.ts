@@ -21,6 +21,7 @@ export interface LocationInterface {
 
 export interface FrontmatterInterface {
   title: string;
+  date?: string;
   core?: ComponentLinksInterface;
   healthcare?: ComponentLinksInterface;
   medicare?: ComponentLinksInterface;
@@ -45,30 +46,23 @@ export interface MdxQuery {
   location?: LocationInterface;
 }
 
-export interface PropQuery {
-  defaultValue: any;
-  description: {
-    childMdx: {
-      body: string;
+export interface BlogQuery {
+  data: {
+    allMdx: {
+      edges: {
+        node: {
+          body: string;
+          slug?: string;
+          frontmatter: {
+            title: string;
+            date: string;
+            intro: string;
+          };
+        };
+      }[];
     };
-    text?: string;
   };
-  id: string;
-  name: string;
-  required: boolean;
-  tsType: any;
-}
-
-export interface ComponentPropQuery {
-  allComponentMetadata: {
-    edges: {
-      node: {
-        id: string;
-        displayName: string;
-        props: PropQuery[];
-      };
-    }[];
-  };
+  location?: LocationInterface;
 }
 
 export interface NavItem {

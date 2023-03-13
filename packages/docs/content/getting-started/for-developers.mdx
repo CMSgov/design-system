@@ -70,17 +70,13 @@ Inside the npm package, you will find a `dist` folder, which contains all the fi
     ├── components/
     │   └── index.js        Compiled JS entry point (CommmonJS)
     ├── css/
-    │   └── index.css       Compiled CSS entry point
+    │   │── index.css       Compiled CSS entry point
+    │   └── ***-theme.css   Compiled Theme Variables
     ├── esnext/
     │   └── index.esm.js    Compiled JS entry point (ES Module)
     ├── fonts/
     ├── images/
-    ├── scss/
-    │   ├── base/           Base styles, HTML element selectors
-    │   ├── components/     Component styles
-    │   ├── settings/       Variables, mixins, and functions
-    │   ├── utilities/      Utility classes for individual CSS properties
-    │   └── index.scss      Precompiled SCSS entry point
+    ├── scss/               Contains Sass versions of theme variables
     └── types/              Typescript definition files
 ```
 
@@ -115,35 +111,55 @@ Where `package-name` is one of the packages named above, `version` is the versio
 ```
   ├── css/
   │   ├── index.css
-  │   ├── base/index.css
-  │   ├── components/index.css
-  │   └── utilities/index.css
+  │   └── ***-theme.css
   └── js/
       ├── react.production.min.js
       ├── react-dom.production.min.js
       └── bundle.js
 ```
 
-#### Example for including version 3.4.0 Core CSS via CDN
+#### Example for including version 6.0.0 via CDN
+
+<ThemeContent onlyThemes={['core']}>
 
 ```html
-<link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/3.4.0/css/index.css" />
+<link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/6.0.0/css/index.css" />
+<link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/6.0.0/css/core-theme.css" />
 ```
 
-#### Example for including version 3.4.0 Core JS via CDN
+</ThemeContent>
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+```html
+<link rel="stylesheet" href="https://design.cms.gov/cdn/ds-healthcare-gov/10.0.0/css/index.css" />
+<link rel="stylesheet" href="https://design.cms.gov/cdn/ds-healthcare-gov/10.0.0/css/healthcare-theme.css" />
+```
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+```html
+<link rel="stylesheet" href="https://design.cms.gov/cdn/ds-medicare-gov/8.0.0/css/index.css" />
+<link rel="stylesheet" href="https://design.cms.gov/cdn/ds-medicare-gov/8.0.0/css/medicare-theme.css" />
+```
+
+</ThemeContent>
+
+#### Example for including version 6.0.0 Core JS via CDN
 
 If you do not already have React and React-DOM included in your page, include them before the design system js bundle.
 
 ```html
-<script type="text/javascript" src="https://design.cms.gov/cdn/design-system/3.4.0/js/react.production.min.js"></script>
-<script type="text/javascript" src="https://design.cms.gov/cdn/design-system/3.4.0/js/react-dom.production.min.js"></script>
-<script type="text/javascript" src="https://design.cms.gov/cdn/design-system/3.4.0/js/bundle.js"></script>
+<script type="text/javascript" src="https://design.cms.gov/cdn/design-system/6.0.0/js/react.production.min.js"></script>
+<script type="text/javascript" src="https://design.cms.gov/cdn/design-system/6.0.0/js/react-dom.production.min.js"></script>
+<script type="text/javascript" src="https://design.cms.gov/cdn/design-system/6.0.0/js/bundle.js"></script>
 ```
 
 ### Option 3: Download assets directly
 
 If you'd like to take a look at the static assets that we publish through npm and our CDN, you can download a tar file for any of the releases [on our GitHub Releases page](https://github.com/CMSgov/design-system/releases). You will find these files in the "Assets" section at the bottom of each release.
-
 
 ## Including the CSS
 
@@ -151,27 +167,118 @@ No matter what framework you use to build your application, you will need to inc
 
 ### With HTML
 
-The simplest way to do that is to include a resource link element in your HTML document, like this:
+You will need to include both the main `index.css` along with a theme file which contains all of the CSS variables needed by the main stylesheet. The simplest way to do that is to include resource link elements in your HTML document, like this:
+
+<ThemeContent onlyThemes={['core']}>
 
 ```html
 <head>
-  <link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/5.0.0/css/index.css" />
+  <link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/6.0.0/css/index.css" />
+  <link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/6.0.0/css/core-theme.css" />
 </head>
 ```
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+```html
+<head>
+  <link rel="stylesheet" href="https://design.cms.gov/cdn/ds-healthcare-gov/10.0.0/css/index.css" />
+  <link rel="stylesheet" href="https://design.cms.gov/cdn/ds-healthcare-gov/10.0.0/css/healthcare-theme.css" />
+</head>
+```
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+```html
+<head>
+  <link rel="stylesheet" href="https://design.cms.gov/cdn/ds-medicare-gov/8.0.0/css/index.css" />
+  <link rel="stylesheet" href="https://design.cms.gov/cdn/ds-medicare-gov/8.0.0/css/medicare-theme.css" />
+</head>
+```
+
+</ThemeContent>
 
 If you are getting the files from npm, you will want to change the `href` to reference the files from your local `node_modules` folder. Likewise if you've downloaded the files directly, the `href` will point to wherever you've put your files.
 
 ### With an asset bundler
 For projects that use an asset bundler, include the assets in whatever way your bundler recommends. For instance, in a WebPack or create-react-app project, you might include the styles in your CSS like this:
 
+<ThemeContent onlyThemes={['core']}>
+
 ```css
 @import '@cmsgov/design-system/dist/css/index';
+@import '@cmsgov/design-system/dist/css/core-theme';
 ```
 
 Or you might import it from your JavaScript like this:
 
 ```js
 import '@cmsgov/design-system/dist/css/index.css';
+import '@cmsgov/design-system/dist/css/core-theme.css';
+```
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+```css
+@import '@cmsgov/ds-healthcare-gov/dist/css/index';
+@import '@cmsgov/ds-healthcare-gov/dist/css/healthcare-theme';
+```
+
+Or you might import it from your JavaScript like this:
+
+```js
+import '@cmsgov/ds-healthcare-gov/dist/css/index.css';
+import '@cmsgov/ds-healthcare-gov/dist/css/healthcare-theme.css';
+```
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+```css
+@import '@cmsgov/ds-medicare-gov/dist/css/index';
+@import '@cmsgov/ds-medicare-gov/dist/css/medicare-theme';
+```
+
+Or you might import it from your JavaScript like this:
+
+```js
+import '@cmsgov/ds-medicare-gov/dist/css/index.css';
+import '@cmsgov/ds-medicare-gov/dist/css/medicare-theme.css';
+```
+
+</ThemeContent>
+
+<Alert heading="Issues with fonts and images" variation="warn">
+
+  Note that some bundlers have trouble finding the font and image files when the CSS files are imported through Sass. In those cases, we recommend either adding the `.css` extension to the imports or importing the CSS files directly from JavaScript to avoid limitations of the Sass compiler and/or the WebPack configuration.
+
+</Alert>
+
+### CSS Custom Properties
+
+The CMSDS utilizes [CSS Custom Properties](https://www.w3.org/TR/css-variables-1/) to allow for flexible styling of components, layout, animation, typography and color. Lists of variables and their values can be found throughout this documentation.  
+
+These custom properties allow for a degree of customization of the design systems components and layout. To modify a CSS variable simply re-define them within a given context. The default context for all CSS Custom properties is as follows:
+
+```css
+:root, ::before, ::after, ::backdrop {
+  --variable-name: value;
+}
+```
+
+This allows these classes to apply globally to the entire page they're loaded on. By re-defining these variables in this same scope or defining a variable in a custom scope, such as a specific class, you can overwrite these variables:
+
+```css
+.ds-c-button {
+  --button__border-color--hover: green;
+}
 ```
 
 ### Fonts and images
@@ -232,15 +339,15 @@ Following the namespace and prefix is a name conforming to [BEM syntax](http://g
 
 Our design system components are more than a collection of styles for making widgets on a page. They embody guidelines, best practices, and interactive behaviors that have been designed for good accessibility and user experience.
 
-While you can apply these styles to your own HTML elements, **we strongly recommend using the React versions of our components.** The React components give you those interactive behaviors for free, and without them you'll have to implement the dynamic parts yourself based on the guidance in our documentation. You can even use React components outside a React project, but you'll need to include the React runtime.
+While you can apply these styles to your own HTML elements, **we strongly recommend using the JavaScript versions of our components.** The JavaScript components give you those interactive behaviors for free, and without them you'll have to implement the dynamic parts yourself based on the guidance in our documentation. We've made these JavaScript components available as React, Preact, and [web components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) (though only a subset of our full library is represented by web components at the moment). Please take a look at [our example projects on GitHub](https://github.com/CMSgov/design-system/tree/main/examples/) for details about each option.
 
-### Using React components
+### Using React/Preact components
 
-Inside a React project, you will import and use the components as you would any other React component. See the [Importing into a JavaScript project](#importing-into-a-javascript-project) below for more details.
+Inside a React/Preact project, you will import and use the components as you would any other React/Preact component. See the [Importing into a JavaScript project](#importing-into-a-javascript-project) below for more details.
 
-Outside a React project, your usage will depend on the framework you're using. [Our CDN example project](https://github.com/CMSgov/design-system/tree/main/examples/cdn) shows you how to use our React components in a plain HTML page. Note that for components that don't have interactive behaviors like [Badge](/components/badge), you may not need to invoke React at all. The best way to learn how to use our React components is to view [our example projects on GitHub](https://github.com/CMSgov/design-system/tree/main/examples/).
+Outside a React/Preact project, your usage will depend on the framework you're using. [Our CDN projects](https://github.com/CMSgov/design-system/tree/main/examples) show you how to use our React or Preact components in a plain HTML page. Note that for components that don't have interactive behaviors like [Badge](/components/badge), you may not need to invoke React or Preact at all.
 
-More React prop documentation, examples, and guidance can be found on component documentation pages.
+More React/Preact prop documentation, examples, and guidance can be found on component documentation pages.
 
 #### Importing into a JavaScript project
 
@@ -269,6 +376,44 @@ import { Button, TextField } from 'ds-medicare-gov';
 ```
 
 </ThemeContent>
+
+<Alert heading="Why switch to Preact?">
+
+If you have a React project, chances are you can actually start using Preact today and save on your total bundle size. For our own component library, [we found that switching to Preact shrunk our bundle by about 92KB](https://github.com/CMSgov/design-system/discussions/2378). The Preact library itself is smaller than React, and so far its claim of full compatability with React has proven true.
+
+Check out [our preact-react-app example](https://github.com/CMSgov/design-system/tree/main/examples/preact-react-app) if you're curious how to make the switch in an existing React project without changing any of your source code.
+
+</Alert>
+
+If your project is based on Preact and not React, we've provided an import path for you to use the Preact version of our components directly. To import the Preact versions, add `/preact` to the end of your import path like this:
+
+<ThemeContent onlyThemes={['core']}>
+
+```js
+import { Button, TextField } from '@cmsgov/design-system/preact';
+```
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+```js
+import { Button, TextField } from '@cmsgov/ds-healthcare-gov/preact';
+```
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+```js
+import { Button, TextField } from 'ds-medicare-gov/preact';
+```
+
+</ThemeContent>
+
+### Using web components
+
+We've also begun offering [web components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) as a framework-agnostic alternative to our React or Preact components. We will be working on expanding this library over time, but at a moment only a subset of our JavaScript components are represented in this library. The easiest way to consume these components is by [loading them from the CDN](https://github.com/CMSgov/design-system/tree/main/examples/cdn-web-components); however, they can also be installed via npm and imported by appending `/web-components` to your import path.
 
 ### Applying component CSS classes manually
 
@@ -325,17 +470,65 @@ setLanguage('es');
 console.log(getLanguage());
 ```
 
-<Alert
-  heading="Deprecated per-component language props"
-  variation="warn"
-  className="ds-u-margin-top--3"
->
-  <p class="ds-c-alert__text">
-    You may notice that some components accept an older `language` or `locale` prop to set the
-    language of the content on a per-component basis, but these per-component props have been
-    deprecated and will be removed in a future breaking-change release.
-  </p>
-</Alert>
+## Analytics
+
+### Turning it on and off
+
+Analytics event tracking is **disabled by default**. There are two ways you can enable or disable analytics in your application:
+
+1. At the application level, globally for all instances of a component with a feature flag
+2. At the component-instance level by using the `analytics` prop
+
+The `analytics` prop on a particular component instance will always override whatever the global flag is set to. For instance, you can turn on analytics globally for all alerts using the flag but turn it off for a particular `Alert` on a particular page by setting `analytics={false}` on that `Alert`. It works the other way around too.
+
+As an example, to turn analytics on globally for alerts, put this code somewhere universal to your application:
+
+<ThemeContent onlyThemes={['core']}>
+
+```js
+import { setAlertSendsAnalytics } from '@cmsgov/design-system';
+setAlertSendsAnalytics(true);
+```
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+```js
+import { setAlertSendsAnalytics } from '@cmsgov/ds-healthcare-gov';
+setAlertSendsAnalytics(true);
+```
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+```js
+import { setAlertSendsAnalytics } from '@cmsgov/ds-medicare-gov';
+setAlertSendsAnalytics(true);
+```
+
+</ThemeContent>
+
+Here is the list of each flag-setting function for analytics:
+
+- `setAlertSendsAnalytics`
+- `setButtonSendsAnalytics`
+- `setDialogSendsAnalytics`
+- `setHelpDrawerSendsAnalytics`
+
+### Handling the events
+
+We currently provide two ways of handling analytics events in the design system:
+
+1. Through a global default event handler function, which can be changed
+2. Through a function provided to a component instance via the `onAnalyticsEvent` prop
+
+For the global default handler, the design system will currently attempt to pass all events to the `window.utag.link` function if it exists. If this is not the desired analytics behavior for your application, you can provide your own default analytics event handler by calling [`setDefaultAnalyticsFunction`](https://github.com/CMSgov/design-system/blob/main/packages/design-system/src/components/analytics/events.ts#L111) with your custom implementation, or you can pass a handler to each component instance with the `onAnalyticsEvent` prop.
+
+### Overriding logged data
+
+When you need to prevent sensitive personal information from being passed to analytics trackers from a particular component instance, you can either override the content that contains sensitive information using the `analyticsLabelOverride` prop, or you can disable tracking on that component instance entirely by setting `analytics={false}`.
 
 ## Further resources
 

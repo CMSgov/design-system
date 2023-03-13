@@ -1,3 +1,4 @@
+import React from 'react';
 import MonthPicker from './MonthPicker';
 
 export default {
@@ -17,19 +18,13 @@ export default {
     inversed: {
       control: 'radio',
       options: [true, false],
-      defaultValue: false,
-    },
-    errorPlacement: {
-      defaultValue: 'top',
-    },
-    locale: {
-      description:
-        '**This prop has been DEPRECATED.** Do not use. See [internationalization documentation](https://design.cms.gov/guidelines/i18n/#default-internationalized-content-in-the-design-system)',
     },
   },
   args: {
     hint: "Month Picker can receive optional help text, giving the user additional information of what's required.",
+    inversed: false,
     errorMessage: 'Please meet form requirements.',
+    errorPlacement: 'top',
   },
 };
 

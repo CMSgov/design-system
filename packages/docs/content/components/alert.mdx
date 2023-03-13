@@ -140,44 +140,21 @@ Used to show important but not as urgent messages as standard alerts.
 
 ### React
 
-<PropTable componentName="Alert">
+<PropTable componentName="Alert" hasAnalytics>
   <PropTableHtmlElementRow elements={['div']} />
 </PropTable>
 
 ### Styles
 
-The following Sass variables can be overridden to customize Alert components:
+The following CSS variables can be overridden to customize Alert components:
 
 <ComponentThemeOptions
   componentname="alert"
 />
 
-### Google Analytics
+### Analytics
 
-**Analytics event tracking is disabled by default.**
-
-#### Enable event tracking
-
-Import and set the `setAlertSendsAnalytics` feature flag to `true` in your application's entry file:
-
-```js
-import { setAlertSendsAnalytics } from '@cmsgov/<design-system-package>';
-setAlertSendsAnalytics(true);
-```
-
-On applications where the page has `utag` loaded, the data goes to Tealium which allows it to route to Google Analytics or the currently approved data analytics tools.
-
-#### Disable event tracking
-
-For the `analytics` prop, pass the value `false` to the component to disable analytics tracking for a singular component instance
-
-```js
-analytics={false}
-```
-
-#### Override event tracking
-
-A custom heading value can be sent for an analytics event by using the prop `analyticsLabelOverride`. It is recommended that this value be used to prevent sensitive personal information from being passed to analytics trackers.
+This component has analytics tracking available. Please see our developer documentation about [using analytics in the design system](/getting-started/for-developers/#analytics).
 
 ## Guidance
 
@@ -218,7 +195,15 @@ A custom heading value can be sent for an analytics event by using the prop `ana
 - Users generally won’t read documentation but will read a message that helps them resolve an error; include some educational material in your error message.
 - If the error relates to specific text fields, give these fields an error state as well.
 
+### Display & behavior
+
+- Alerts are static and shouldn't be associated with a timer or dismiss button. 
+- Can be displayed statically on page load or dynamically loaded.
+- When the user is required to do something in response to an alert, let them know what they need to do and make that task as easy as possible.
+
 <ThemeContent onlyThemes={['healthcare']}>
+
+- Having icons is the preferred use for alerts. Some alerts might have a large amount of content and may need the extra space and in those cases the icon can be removed. Removing the icon should be considered a exception. Validate the design and spacing on mobile to help make this decision.
 
 ### Design guidelines
 
@@ -229,34 +214,96 @@ A custom heading value can be sent for an analytics event by using the prop `ana
   - Exception: Warning alerts can be used as needed within the page.
 - Lightweight alerts are more targeted and should be focused on specific elements within the context of the page. 
 
-#### Display & behavior
-
-- Can be displayed statically on page load or dynamically loaded.
-- When the user is required to do something in response to an alert, let them know what they need to do and make that task as easy as possible.
-- Alerts are static and shouldn't be associated with a timer or dismiss button.
-- Having icons is the preferred use for alerts. Some alerts might have a large amount of content and may need the extra space and in those cases the icon can be removed. Removing the icon should be considered a exception. Validate the design and spacing on mobile to help make this decision.
-
-</ThemeContent>
-
-<ThemeContent onlyThemes={['medicare']}>
-
-### Display & behavior
-
-- Can be displayed statically on page load or dynamically loaded
-- When the user is required to do something in response to an alert, let them know what they need to do and make that task as easy as possible.
-- Alerts are static and shouldn't be associated with a timer or dismiss button. 
-
 </ThemeContent>
 
 ### Accessibility
 
+<ThemeContent onlyThemes={['healthcare']}>
+
+If dynamically loaded, be mindful of when the alert displays on the page. For example, an alert could appear on a page due to an error or progressive disclosure. Where and how the content appears visually should align with how and when a screen reader user hears the content. Errors need immediate attention, but content through progressive disclosure may not.
+
+- Users who are viewing the content need it to be placed in an effective location and to draw attention even when CSS is turned off. Content can help here too, using word choices that make the importance of the message clear.
+- Users who hear this content through assistive technology, such as a screen readers, will need to be alerted at the right time, and that can be managed with code.
+
+</ThemeContent>
+
+  
 - Use the ARIA `role="alert"` to inform assistive technologies of a time-sensitive and important message that is not interactive. If the message is interactive, use the `role="alertdialog"` instead.
 - Consider putting the alert inside a div with `aria-live="polite"` and `aria-relevant="additions removals"`. These <abbr title="Accessible rich internet applications">ARIA</abbr> attributes ensure screen readers will announce alerts that have been added or updated dynamically.
 - If you choose to shift focus to the Alert, be mindful that using other techniques like `role="alert"`, and `aria-live="polite"` will cause some browser and screen reader combinations to read out the content more than once. Typically, shifting focus alone will be enough to alert screen readers of the content.
 - Do not visually hide alert messages on the page and then make them visible when they are needed. Users of older assistive technologies may still be able to perceive the alert messages even if they are not currently applicable.
-- Alerts should give users adequate time to review and comprehend the provided information. Avoid hiding alerts using a timer.
-- Include a mechanism like a button to dismiss alerts where appropriate.
 
+<ThemeContent onlyThemes={['healthcare']}>
+
+### Content
+
+- Consider the amount of text placed in an alert. Aim for the shortest possible amount of text to convey the concept or issue.
+- Write the message in concise, plain language; avoid jargon and computer code.
+- Alerts support various types and lengths of content from ~45 to ~80 characters wide, including lists and navigational links.
+
+#### Heading content
+
+- Is bolded and acts as the title of the alert
+- Helps to group or frame the information in the alert
+- Shouldn't end in a period
+
+#### Error content 
+
+- Describe what went wrong and what the the user needs to do.
+- Use the fewest words possible (i.e., don't use "please").
+- Body copy should end with a period.
+- Include some educational material or guidance on what action the user needs to take because they generally won’t read documentation but will read a message that helps them resolve an error.
+- Use active voice. It helps reduce the number of words needed to convey your message.
+- Use contractions where applicable (especially negative contractions like won't, don't, can't, shouldn't). People sometimes miss "not" in text so contractions help with clarity.
+
+<table class="ds-c-table ds-c-table--compact ds-c-md-table--stacked" role="table" width="100%">
+  <thead role="rowgroup">
+    <tr role="row">
+      <th class="ds-u-fill--success-lightest" role="columnheader" scope="col">
+        Use
+      </th>
+      <th class="ds-u-fill--error-lightest" role="columnheader" scope="col">
+        Don't use
+      </th>
+    </tr>
+  </thead>
+  <tbody role="rowgroup">
+    <tr role="row">
+      <td
+        role="cell"
+        data-title="Document title"
+        width="50%"
+      >
+      Use active voice: "Access your application...". Start with an action verb whenever possible.
+      </td>
+      <td
+        role="cell"
+        data-title="Description"
+        width="50%"
+      >
+      Use passive voice: "Your application can be accessed by...."
+      </td>
+    </tr>
+      <tr role="row">
+      <td
+        role="cell"
+        data-title="Document title"
+        width="50%"
+      >
+      Contractions 
+      </td>
+      <td
+        role="cell"
+        data-title="Description"
+        width="50%"
+      >
+      These specific contractions: "it'll, that’ll, why’s, how’s, you’d"
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+</ThemeContent>
 
 ## Learn more
 

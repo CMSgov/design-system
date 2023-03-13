@@ -1,0 +1,124 @@
+---
+title: Text Field
+intro: Text fields allow users to enter any combination of letters, numbers, or symbols of their choosing (unless otherwise restricted). Text fields can span single or multiple lines.
+core:
+  githubLink: design-system/src/components/TextField
+  sketchLink: oYdAplL
+  storybookLink: components-text-field--single-line-field
+healthcare:
+  sketchLink: 9PdpZOx
+medicare:
+  sketchLink: 9P3rrEM
+---
+
+
+## Examples
+
+### Single line field
+
+<StorybookExample
+  componentName="single text field"
+  storyId="components-text-field--single-line-field"
+/>
+
+### Multiline field
+
+<StorybookExample
+  componentName="multi text field"
+  storyId="components-text-field--multiline-field"
+/>
+
+### Error field
+
+<StorybookExample componentName="error field" storyId="components-text-field--error-field" />
+
+### Success field
+
+<StorybookExample
+  componentName="success text field"
+  storyId="components-text-field--success-field"
+/>
+
+### Disabled field
+
+<StorybookExample componentName="disabled field" storyId="components-text-field--disabled-field" />
+
+## Code
+
+### React
+
+A `TextField` component renders an input field as well as supporting UI elements like a label, error message, and hint text.
+
+<PropTable componentName="TextField" />
+
+### Styles
+
+The following CSS variables can be overridden to customize Input/Form components:
+
+<ComponentThemeOptions
+  componentname="text-input"
+/>
+
+#### Form components
+
+This component also makes use of form field styles, which can be customized by the following variables:
+
+<ComponentThemeOptions
+  componentname="form"
+/>
+
+## Guidance
+
+### When to use
+
+- If you can’t reasonably predict a user’s answer to a prompt and there might be wide variability in users’ answers.
+- When using another type of input will make answering more difficult. For example, birthdays and other known dates are easier to type in than they are to select from a calendar picker.
+- When users want to paste in a response.
+
+### When to consider alternatives
+
+- When users are choosing from a specific set of options. Consider [checkboxes](/components/checkbox), [radio buttons](/components/radio/), or a [dropdown](/components/dropdown/) in these cases.
+
+### Usage
+
+- Don't use placeholder text in form fields. Use hint text instead, if you need to provide contextual information. Placeholder text disappears after a user types a value, therefore users will no longer have that text available when they need to review their entries. People who have cognitive or visual disabilities have additional problems with placeholder text.
+- The length of the text field provides a hint to users as to how much text to write. Do not require users to write paragraphs of text into a single-line `input` box; use a `textarea` instead.
+- Text fields are among the easiest type of input for desktop users but are more difficult for mobile users.
+- Only show error messages or styling after a user has interacted with a particular field.
+
+**[View the "Forms" guidelines for additional guidance and best practices.](/patterns/forms/)**
+
+### Accessibility
+
+- Group each set of thematically related controls in a `fieldset` element. Use the `legend` element to offer a label within each `fieldset`. The `fieldset` and `legend` elements make it easier for screen reader users to navigate the form.
+- Keep your form blocks in a vertical pattern. This approach is ideal, from an accessibility standpoint, because of limited vision that makes it hard to scan from left to right.
+
+### Related patterns
+
+- [Masked field](/components/text-field/masked-field/)
+- [Date field](/components/date-field/)
+
+## Learn more
+
+- [Form Guidelines](/patterns/forms/)
+- ["Placeholders in Form Fields Are Harmful"](https://www.nngroup.com/articles/form-design-placeholders/)
+- [Asking for a date of birth](https://designnotes.blog.gov.uk/2013/12/05/asking-for-a-date-of-birth/)
+- [GOV.UK text boxes discussion](https://paper.dropbox.com/doc/Text-boxes-8NLlgz9tjR8OzTz2N9wE3)
+- [Four steps for choosing form elements on the Web (PDF)](http://www.formsthatwork.com/files/Articles/dropdown.pdf)
+
+## Component maturity
+
+<MaturityChecklist
+  a11yStandards={true}
+  color={true}
+  forcedColors={true}
+  screenReaders={true}
+  keyboardNavigable={true}
+  storybook={true}
+  responsive={true}
+  spanish={null}
+  completeUiKit={false}
+  responsiveUiKit={false}
+  tokensInCode={true}
+  tokensInSketch={true}
+/>

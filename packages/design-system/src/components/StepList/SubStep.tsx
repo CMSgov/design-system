@@ -1,3 +1,4 @@
+import React from 'react';
 import StepLink, { StepLinkProps } from './StepLink';
 import { StepObject } from './Step';
 
@@ -9,7 +10,7 @@ interface SubStepProps {
 }
 
 export const SubStep = ({ step, ...props }: SubStepProps) => (
-  <li className="ds-c-substep">
+  <li role="listitem" className="ds-c-substep">
     <div className="ds-c-substep__heading">{step.heading}</div>
     {(step.completed || step.started) && (
       <StepLink
@@ -24,7 +25,7 @@ export const SubStep = ({ step, ...props }: SubStepProps) => (
       </StepLink>
     )}
     {step.steps && props.showSubSubSteps && (
-      <ul>
+      <ul role="list">
         {step.steps.map((s, i) => (
           <SubStep step={s} key={s.id || i} {...props} />
         ))}
