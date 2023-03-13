@@ -1,9 +1,6 @@
-import Cookies from 'js-cookie';
-
-const cookies = Cookies.withConverter({
-  read: (value) => decodeURI(value),
-  write: (value) => encodeURI(value as string),
-});
+export const COOKIE_KEY = 'OPTOUTMULTI';
+export const COOKIE_MAX_AGE = 365 * 3; // 3 years
+export const COOKIE_DOMAIN = getCookieDomain();
 
 /**
  * Returns a string for the cookie's domain that will work for all subdomains
@@ -29,12 +26,29 @@ export function getCookieDomain() {
   }
 }
 
-export const COOKIE_KEY = 'OPTOUTMULTI';
-export const COOKIE_EXPIRES = 365 * 3; // 3 years
-export const COOKIE_DOMAIN = getCookieDomain();
+function readCookie(name: string) {
+  const item = document.cookie
+    .split(';')
+    .map((item) => item.trim().split('='))
+    .find(([itemName]) => itemName === name);
+  const value = item?.[1];
+  if (typeof value === 'string') {
+    return decodeURI(value);
+  }
+}
+
+function writeCookie(name: string, value: string) {
+  // See https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie
+  document.cookie = [
+    `${name}=${encodeURI(value)}`,
+    `max-age=${COOKIE_MAX_AGE}`,
+    `domain=${COOKIE_DOMAIN}`,
+    'path=/', // Should apply to any path on the site
+  ].join('; ');
+}
 
 export function getPrivacySettings() {
-  const cookieString = cookies.get(COOKIE_KEY);
+  const cookieString = readCookie(COOKIE_KEY);
   if (!cookieString && COOKIE_DOMAIN) {
     throw new Error(
       `Privacy settings error: ${COOKIE_KEY} is not set. Check to make sure your app has Tealium enabled.`
@@ -54,13 +68,10 @@ export function setPrivacySettings(settings) {
     .map((key) => `${key}:${settings[key]}`)
     .join('|');
 
-  cookies.set(COOKIE_KEY, cookieString, {
-    expires: COOKIE_EXPIRES,
-    domain: COOKIE_DOMAIN,
-  });
+  writeCookie(COOKIE_KEY, cookieString);
 }
 
 // Set a default if we're not on a healthcare.gov/cuidadodesalud.gov environment
-if (!COOKIE_DOMAIN && !cookies.get(COOKIE_KEY)) {
+if (!COOKIE_DOMAIN && !readCookie(COOKIE_KEY)) {
   setPrivacySettings({ 0: '0', c3: '0', c2: '0', c1: '0', c4: '0' });
 }
