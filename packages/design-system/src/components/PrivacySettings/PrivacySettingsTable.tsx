@@ -1,5 +1,6 @@
 import React from 'react';
-import { ChoiceList } from '@cmsgov/design-system';
+import { ChoiceList } from '../ChoiceList';
+import { t } from '../i18n';
 
 export interface PrivacySettingsProperty {
   settingsKey: string;
@@ -8,14 +9,16 @@ export interface PrivacySettingsProperty {
 }
 
 export interface PrivacySettingsTableProps {
-  t: (key: string) => string;
+  domain: string;
   privacySettings: PrivacySettingsProperty[];
   setPrivacySetting: (key: string, value: string) => any;
 }
 
-export const PrivacySettingsTable = (props: PrivacySettingsTableProps) => {
-  const { t, privacySettings, setPrivacySetting } = props;
-
+export const PrivacySettingsTable = ({
+  domain,
+  privacySettings,
+  setPrivacySetting,
+}: PrivacySettingsTableProps) => {
   function renderToggle(settingsKey: string, value: string, category: string, description: string) {
     const choices = [
       {
@@ -47,7 +50,7 @@ export const PrivacySettingsTable = (props: PrivacySettingsTableProps) => {
 
   function renderRow({ settingsKey, translationKey, value }: PrivacySettingsProperty) {
     const category = t(`privacy.${translationKey}.category`);
-    const description = t(`privacy.${translationKey}.description`);
+    const description = t(`privacy.${translationKey}.description`, { domain });
     return (
       <tr key={settingsKey}>
         <td data-title={t('privacy.category')}>{category}</td>
@@ -60,7 +63,7 @@ export const PrivacySettingsTable = (props: PrivacySettingsTableProps) => {
   }
 
   return (
-    <table className="ds-c-table ds-c-table--borderless hc-c-privacy-settings-table">
+    <table className="ds-c-table ds-c-table--borderless ds-c-privacy-settings-table">
       <thead>
         <tr>
           <th scope="col">{t('privacy.category')}</th>

@@ -1,7 +1,9 @@
 import React from 'react';
-import { Button, Dialog, TFunction } from '@cmsgov/design-system';
-import { getPrivacySettings, setPrivacySettings } from './privacySettings';
 import PrivacySettingsTable from './PrivacySettingsTable';
+import { Button } from '../Button';
+import { Dialog } from '../Dialog';
+import { getPrivacySettings, setPrivacySettings } from './privacySettings';
+import { t } from '../i18n';
 import { useState } from 'react';
 
 const privacySettingConfigs = [
@@ -11,8 +13,8 @@ const privacySettingConfigs = [
 ];
 
 interface PrivacySettingsDialogProps {
+  domain: string;
   onExit: () => void;
-  t: TFunction;
 }
 
 export const PrivacySettingsDialog = (props: PrivacySettingsDialogProps) => {
@@ -30,7 +32,7 @@ export const PrivacySettingsDialog = (props: PrivacySettingsDialogProps) => {
     props.onExit();
   }
 
-  const { t, ...dialogProps } = props;
+  const { domain, ...dialogProps } = props;
   const privacySettingsProperties = privacySettingConfigs.map((config) => ({
     ...config,
     value: localPrivacySettings[config.settingsKey],
@@ -39,7 +41,7 @@ export const PrivacySettingsDialog = (props: PrivacySettingsDialogProps) => {
   return (
     <Dialog
       {...dialogProps}
-      heading={t('privacy.dialogTitle')}
+      heading={t('privacy.dialogTitle', { domain })}
       size="full"
       actions={
         <Button variation="solid" onClick={savePrivacySettings}>
@@ -47,10 +49,10 @@ export const PrivacySettingsDialog = (props: PrivacySettingsDialogProps) => {
         </Button>
       }
     >
-      <p dangerouslySetInnerHTML={{ __html: t('privacy.introText') }} />
+      <p dangerouslySetInnerHTML={{ __html: t('privacy.introText', { domain }) }} />
 
       <PrivacySettingsTable
-        t={t}
+        domain={domain}
         privacySettings={privacySettingsProperties}
         setPrivacySetting={setPrivacySetting}
       />

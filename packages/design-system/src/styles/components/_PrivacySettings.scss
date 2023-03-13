@@ -1,0 +1,56 @@
+@use '../layout' as *;
+
+.ds-c-privacy-settings-table {
+  td:last-child {
+    // Avoid text wrapping on the radio buttons
+    min-width: 132px;
+  }
+
+  @media screen and (max-width: $media-width-md - 1) {
+    &,
+    tbody {
+      display: block;
+      width: 100%;
+    }
+
+    thead {
+      display: none;
+    }
+
+    tr,
+    td {
+      display: block;
+      padding: $spacer-1 0;
+      text-align: left;
+      white-space: normal;
+    }
+
+    td {
+      border-width: 0;
+    }
+
+    [data-title]::before {
+      content: attr(data-title) ':\00A0';
+      font-weight: var(--font-weight-bold);
+    }
+
+    td:nth-child(1) {
+      font-weight: var(--font-weight-bold);
+    }
+
+    tr {
+      border-bottom: 2px solid var(--color-border);
+      margin-top: $spacer-1;
+    }
+  }
+
+  @media screen and (min-width: $media-width-md) {
+    th:nth-child(1) {
+      min-width: 110px;
+    }
+
+    th:nth-child(3) {
+      min-width: 132px;
+    }
+  }
+}
