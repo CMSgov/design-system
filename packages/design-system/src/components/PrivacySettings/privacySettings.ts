@@ -7,7 +7,7 @@ const cookies = Cookies.withConverter({
 
 /**
  * Returns a string for the cookie's domain that will work for all subdomains
- * of the current domain (e.g. ".healthcare.gov") unless we're not on a .gov
+ * of the current domain (e.g. "healthcare.gov") unless we're not on a .gov
  * site right now.
  */
 export function getCookieDomain() {
@@ -16,9 +16,16 @@ export function getCookieDomain() {
   }
 
   const parts = window.location.hostname.split('.');
-  const [_subdomain, domain, tld] = parts;
-  if (parts.length === 3 && tld === 'gov') {
-    return `.${domain}.${tld}`;
+  // Starting from the end and working back means that this logic will now support
+  // any number of subdomains in the hostname (including zero).
+  const tld = parts[parts.length - 1]; // Last item
+  const domain = parts[parts.length - 2]; // Second to last item
+
+  if (domain && tld === 'gov') {
+    // From MDN:
+    //   Contrary to earlier specifications, leading dots in domain names are ignored,
+    //   but browsers may decline to set the cookie containing such dots.
+    return `${domain}.${tld}`;
   }
 }
 
