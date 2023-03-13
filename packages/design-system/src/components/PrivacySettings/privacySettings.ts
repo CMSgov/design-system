@@ -39,15 +39,23 @@ function readCookie(name: string) {
 
 function writeCookie(name: string, value: string) {
   // See https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie
-  document.cookie = [
-    `${name}=${encodeURI(value)}`,
-    `max-age=${COOKIE_MAX_AGE}`,
-    `domain=${COOKIE_DOMAIN}`,
-    'path=/', // Should apply to any path on the site
-  ].join('; ');
+  const base = `${name}=${encodeURI(value)}`;
+  const age = `; max-age=${COOKIE_MAX_AGE}`;
+  const domain = COOKIE_DOMAIN ? `; domain=${COOKIE_DOMAIN}` : '';
+  const path = '; path=/'; // Should apply to any path on the site
+
+  document.cookie = `${base}${age}${domain}${path}`;
 }
 
-export function getPrivacySettings() {
+export interface PrivacySettings {
+  '0': '0' | '1';
+  c3: '0' | '1';
+  c2: '0' | '1';
+  c1: '0' | '1';
+  c4: '0' | '1';
+}
+
+export function getPrivacySettings(): PrivacySettings {
   const cookieString = readCookie(COOKIE_KEY);
   if (!cookieString && COOKIE_DOMAIN) {
     throw new Error(
@@ -59,11 +67,11 @@ export function getPrivacySettings() {
     const [key, value] = pair.split(':');
     obj[key] = value;
     return obj;
-  }, {});
+  }, {} as PrivacySettings);
   return settings;
 }
 
-export function setPrivacySettings(settings) {
+export function setPrivacySettings(settings: PrivacySettings) {
   const cookieString = Object.keys(settings)
     .map((key) => `${key}:${settings[key]}`)
     .join('|');
@@ -71,7 +79,7 @@ export function setPrivacySettings(settings) {
   writeCookie(COOKIE_KEY, cookieString);
 }
 
-// Set a default if we're not on a healthcare.gov/cuidadodesalud.gov environment
+// Set a default if we're not on a .gov environment
 if (!COOKIE_DOMAIN && !readCookie(COOKIE_KEY)) {
   setPrivacySettings({ 0: '0', c3: '0', c2: '0', c1: '0', c4: '0' });
 }
