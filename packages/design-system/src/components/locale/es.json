@@ -92,7 +92,9 @@
     "description": "Descripción",
     "dialogTitle": "Configuración de Privacidad en {{domain}}",
     "dontAllow": "Desactivar",
-    "introText": "Proteger su privacidad es muy importante para nosotros. Usted puede cambiar la configuración de abajo para asegurarse de estar cómodo con la manera en que recopilamos y usamos la información mientras está en {{domain}}. Para obtener más información, consulte nuestro <a href=\"https://www.cuidadodesalud.gov/es/privacy/\">aviso de privacidad</a> o para ver la lista de herramientas específicas de cada categoría, <a href=\"https://www.cuidadodesalud.gov/es/third-party-privacy-policies/\">vea nuestra lista de servicios a terceros</a>.",
+    "introText": "Proteger su privacidad es muy importante para nosotros. Usted puede cambiar la configuración de abajo para asegurarse de estar cómodo con la manera en que recopilamos y usamos la información mientras está en {{domain}}.",
+    "privacyPolicy": "Para obtener más información, consulte nuestro <a href=\"{{url}}\">aviso de privacidad</a>",
+    "thirdPartyPolicies": "o para ver la lista de herramientas específicas de cada categoría, <a href=\"{{url}}\">vea nuestra lista de servicios a terceros</a>",
     "save": "Actualizar mi configuración",
     "socialMedia": {
       "category": "Redes Sociales",

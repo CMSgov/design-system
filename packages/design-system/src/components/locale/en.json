@@ -92,7 +92,9 @@
     "description": "Description",
     "dialogTitle": "{{domain}} Privacy Settings",
     "dontAllow": "Don't allow",
-    "introText": "We take your privacy seriously. You can change the settings below to make sure you’re comfortable with the ways we collect and use information while you’re on {{domain}}. For more information, please see our <a href=\"https://www.healthcare.gov/privacy/\">privacy notice</a> or to see the list of specific tools in each category, please <a href=\"https://www.healthcare.gov/third-party-privacy-policies/\">see our list of third-party services</a>.",
+    "introText": "We take your privacy seriously. You can change the settings below to make sure you’re comfortable with the ways we collect and use information while you’re on {{domain}}.",
+    "privacyPolicy": "For more information, please see our <a href=\"{{url}}\">privacy notice</a>",
+    "thirdPartyPolicies": "or to see the list of specific tools in each category, please <a href=\"{{url}}\">see our list of third-party services</a>",
     "save": "Update my settings",
     "socialMedia": {
       "category": "Social Media",

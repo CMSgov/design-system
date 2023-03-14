@@ -14,6 +14,8 @@ const privacySettingConfigs = [
 
 interface PrivacySettingsDialogProps {
   domain: string;
+  privacyPolicyUrl: string;
+  thirdPartyPoliciesUrl?: string;
   onExit: () => void;
 }
 
@@ -32,11 +34,18 @@ export const PrivacySettingsDialog = (props: PrivacySettingsDialogProps) => {
     props.onExit();
   }
 
-  const { domain, ...dialogProps } = props;
+  const { domain, privacyPolicyUrl, thirdPartyPoliciesUrl, ...dialogProps } = props;
   const privacySettingsProperties = privacySettingConfigs.map((config) => ({
     ...config,
     value: localPrivacySettings[config.settingsKey],
   }));
+
+  let intro = t('privacy.introText', { domain });
+  intro += ' ' + t('privacy.privacyPolicy', { url: privacyPolicyUrl });
+  if (thirdPartyPoliciesUrl) {
+    intro += ' ' + t('privacy.thirdPartyPolicies', { url: thirdPartyPoliciesUrl });
+  }
+  intro += '.';
 
   return (
     <Dialog
@@ -49,7 +58,7 @@ export const PrivacySettingsDialog = (props: PrivacySettingsDialogProps) => {
         </Button>
       }
     >
-      <p dangerouslySetInnerHTML={{ __html: t('privacy.introText', { domain }) }} />
+      <p dangerouslySetInnerHTML={{ __html: intro }} />
 
       <PrivacySettingsTable
         domain={domain}

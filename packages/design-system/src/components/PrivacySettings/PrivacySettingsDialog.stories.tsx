@@ -6,6 +6,7 @@ export default {
   component: PrivacySettingsDialog,
   args: {
     domain: 'Test.gov',
+    privacyPolicyUrl: 'https://youtu.be/dQw4w9WgXcQ',
   },
 };
 
