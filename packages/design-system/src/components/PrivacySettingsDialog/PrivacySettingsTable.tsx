@@ -1,5 +1,7 @@
 import React from 'react';
-import { ChoiceList } from '@cmsgov/design-system';
+import { ChoiceList } from '../ChoiceList/index';
+import { Table, TableHead, TableRow, TableCell, TableBody } from '../Table/index';
+import { t } from '../i18n';
 
 export interface PrivacySettingsProperty {
   settingsKey: string;
@@ -8,14 +10,16 @@ export interface PrivacySettingsProperty {
 }
 
 export interface PrivacySettingsTableProps {
-  t: (key: string) => string;
+  domain: string;
   privacySettings: PrivacySettingsProperty[];
   setPrivacySetting: (key: string, value: string) => any;
 }
 
-export const PrivacySettingsTable = (props: PrivacySettingsTableProps) => {
-  const { t, privacySettings, setPrivacySetting } = props;
-
+export const PrivacySettingsTable = ({
+  domain,
+  privacySettings,
+  setPrivacySetting,
+}: PrivacySettingsTableProps) => {
   function renderToggle(settingsKey: string, value: string, category: string, description: string) {
     const choices = [
       {
@@ -47,29 +51,29 @@ export const PrivacySettingsTable = (props: PrivacySettingsTableProps) => {
 
   function renderRow({ settingsKey, translationKey, value }: PrivacySettingsProperty) {
     const category = t(`privacy.${translationKey}.category`);
-    const description = t(`privacy.${translationKey}.description`);
+    const description = t(`privacy.${translationKey}.description`, { domain });
     return (
-      <tr key={settingsKey}>
-        <td data-title={t('privacy.category')}>{category}</td>
-        <td data-title={t('privacy.description')}>{description}</td>
-        <td data-title={t('privacy.status')}>
+      <TableRow key={settingsKey}>
+        <TableCell stackedTitle={t('privacy.category')}>{category}</TableCell>
+        <TableCell stackedTitle={t('privacy.description')}>{description}</TableCell>
+        <TableCell stackedTitle={t('privacy.status')}>
           {renderToggle(settingsKey, value, category, description)}
-        </td>
-      </tr>
+        </TableCell>
+      </TableRow>
     );
   }
 
   return (
-    <table className="ds-c-table ds-c-table--borderless hc-c-privacy-settings-table">
-      <thead>
-        <tr>
-          <th scope="col">{t('privacy.category')}</th>
-          <th scope="col">{t('privacy.description')}</th>
-          <th scope="col">{t('privacy.status')}</th>
-        </tr>
-      </thead>
-      <tbody>{privacySettings.map(renderRow)}</tbody>
-    </table>
+    <Table className="ds-c-privacy-settings-table" borderless stackable stackableBreakpoint="md">
+      <TableHead>
+        <TableRow>
+          <TableCell>{t('privacy.category')}</TableCell>
+          <TableCell>{t('privacy.description')}</TableCell>
+          <TableCell>{t('privacy.status')}</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>{privacySettings.map(renderRow)}</TableBody>
+    </Table>
   );
 };
 
