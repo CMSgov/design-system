@@ -19,6 +19,7 @@
     "deBrokerNameFallback": "the enrollment partner",
     "deConsumerMessage": "Be sure to finish your application before you return to {{brokerName}}'s website.",
     "español": "Español",
+    "langAriaLabel": "CuidadoDeSalud.gov en Español",
     "login": "Log in",
     "logout": "Log out",
     "menu": "Menu",

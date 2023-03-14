@@ -19,6 +19,7 @@
     "deBrokerNameFallback": "el socio de inscripción",
     "deConsumerMessage": "Asegúrese de terminar su solicitud antes de regresar a la página web de {{brokerName}}",
     "english": "English",
+    "langAriaLabel": "Healthcare.gov in English",
     "login": "Iniciar sesión",
     "logout": "Finalizar sesión",
     "menu": "Menú",
