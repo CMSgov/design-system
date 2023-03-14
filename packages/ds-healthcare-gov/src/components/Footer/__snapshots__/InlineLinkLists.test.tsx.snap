@@ -143,7 +143,6 @@ exports[`InlineLinkLists renders lists of links 1`] = `
         class="hc-c-footer__inline-item"
       >
         <a
-          aria-label="中文 footer.languageResources"
           href="/language-resource/#chinese"
           lang="zh"
         >
@@ -158,7 +157,6 @@ exports[`InlineLinkLists renders lists of links 1`] = `
         class="hc-c-footer__inline-item"
       >
         <a
-          aria-label="Kreyòl footer.languageResources"
           href="/language-resource/#creole"
           lang="ht"
         >
@@ -173,7 +171,6 @@ exports[`InlineLinkLists renders lists of links 1`] = `
         class="hc-c-footer__inline-item"
       >
         <a
-          aria-label="Français footer.languageResources"
           href="/language-resource/#french"
           lang="fr"
         >
@@ -188,7 +185,6 @@ exports[`InlineLinkLists renders lists of links 1`] = `
         class="hc-c-footer__inline-item"
       >
         <a
-          aria-label="Deutsch footer.languageResources"
           href="/language-resource/#german"
           lang="de"
         >
@@ -203,7 +199,6 @@ exports[`InlineLinkLists renders lists of links 1`] = `
         class="hc-c-footer__inline-item"
       >
         <a
-          aria-label="ગુજરાતી footer.languageResources"
           href="/language-resource/#gujarati"
           lang="gu"
         >
@@ -218,7 +213,6 @@ exports[`InlineLinkLists renders lists of links 1`] = `
         class="hc-c-footer__inline-item"
       >
         <a
-          aria-label="हिंदी footer.languageResources"
           href="/language-resource/#hindi"
           lang="hi"
         >
@@ -233,7 +227,6 @@ exports[`InlineLinkLists renders lists of links 1`] = `
         class="hc-c-footer__inline-item"
       >
         <a
-          aria-label="Italiano footer.languageResources"
           href="/language-resource/#italian"
           lang="it"
         >
@@ -248,7 +241,6 @@ exports[`InlineLinkLists renders lists of links 1`] = `
         class="hc-c-footer__inline-item"
       >
         <a
-          aria-label="日本語 footer.languageResources"
           href="/language-resource/#japanese"
           lang="ja"
         >
@@ -263,7 +255,6 @@ exports[`InlineLinkLists renders lists of links 1`] = `
         class="hc-c-footer__inline-item"
       >
         <a
-          aria-label="한국어 footer.languageResources"
           href="/language-resource/#korean"
           lang="ko"
         >
@@ -278,7 +269,6 @@ exports[`InlineLinkLists renders lists of links 1`] = `
         class="hc-c-footer__inline-item"
       >
         <a
-          aria-label="Polski footer.languageResources"
           href="/language-resource/#polish"
           lang="pl"
         >
@@ -293,7 +283,6 @@ exports[`InlineLinkLists renders lists of links 1`] = `
         class="hc-c-footer__inline-item"
       >
         <a
-          aria-label="Português footer.languageResources"
           href="/language-resource/#portuguese"
           lang="pt"
         >
@@ -308,7 +297,6 @@ exports[`InlineLinkLists renders lists of links 1`] = `
         class="hc-c-footer__inline-item"
       >
         <a
-          aria-label="Русский footer.languageResources"
           href="/language-resource/#russian"
           lang="ru"
         >
@@ -323,7 +311,6 @@ exports[`InlineLinkLists renders lists of links 1`] = `
         class="hc-c-footer__inline-item"
       >
         <a
-          aria-label="Español footer.languageResources"
           href="/language-resource/#spanish"
           lang="es"
         >
@@ -338,7 +325,6 @@ exports[`InlineLinkLists renders lists of links 1`] = `
         class="hc-c-footer__inline-item"
       >
         <a
-          aria-label="Tagalog footer.languageResources"
           href="/language-resource/#tagalog"
           lang="tl"
         >
@@ -353,7 +339,6 @@ exports[`InlineLinkLists renders lists of links 1`] = `
         class="hc-c-footer__inline-item"
       >
         <a
-          aria-label="tiếng việt footer.languageResources"
           href="/language-resource/#vietnamese"
           lang="vi"
         >
@@ -508,7 +493,6 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
         class="hc-c-footer__inline-item"
       >
         <a
-          aria-label="中文 footer.languageResources"
           href="https://www.healthcare.gov/language-resource/#chinese"
           lang="zh"
         >
@@ -523,7 +507,6 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
         class="hc-c-footer__inline-item"
       >
         <a
-          aria-label="Kreyòl footer.languageResources"
           href="https://www.healthcare.gov/language-resource/#creole"
           lang="ht"
         >
@@ -538,7 +521,6 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
         class="hc-c-footer__inline-item"
       >
         <a
-          aria-label="Français footer.languageResources"
           href="https://www.healthcare.gov/language-resource/#french"
           lang="fr"
         >
@@ -553,7 +535,6 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
         class="hc-c-footer__inline-item"
       >
         <a
-          aria-label="Deutsch footer.languageResources"
           href="https://www.healthcare.gov/language-resource/#german"
           lang="de"
         >
@@ -568,7 +549,6 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
         class="hc-c-footer__inline-item"
       >
         <a
-          aria-label="ગુજરાતી footer.languageResources"
           href="https://www.healthcare.gov/language-resource/#gujarati"
           lang="gu"
         >
@@ -583,7 +563,6 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
         class="hc-c-footer__inline-item"
       >
         <a
-          aria-label="हिंदी footer.languageResources"
           href="https://www.healthcare.gov/language-resource/#hindi"
           lang="hi"
         >
@@ -598,7 +577,6 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
         class="hc-c-footer__inline-item"
       >
         <a
-          aria-label="Italiano footer.languageResources"
           href="https://www.healthcare.gov/language-resource/#italian"
           lang="it"
         >
@@ -613,7 +591,6 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
         class="hc-c-footer__inline-item"
       >
         <a
-          aria-label="日本語 footer.languageResources"
           href="https://www.healthcare.gov/language-resource/#japanese"
           lang="ja"
         >
@@ -628,7 +605,6 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
         class="hc-c-footer__inline-item"
       >
         <a
-          aria-label="한국어 footer.languageResources"
           href="https://www.healthcare.gov/language-resource/#korean"
           lang="ko"
         >
@@ -643,7 +619,6 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
         class="hc-c-footer__inline-item"
       >
         <a
-          aria-label="Polski footer.languageResources"
           href="https://www.healthcare.gov/language-resource/#polish"
           lang="pl"
         >
@@ -658,7 +633,6 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
         class="hc-c-footer__inline-item"
       >
         <a
-          aria-label="Português footer.languageResources"
           href="https://www.healthcare.gov/language-resource/#portuguese"
           lang="pt"
         >
@@ -673,7 +647,6 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
         class="hc-c-footer__inline-item"
       >
         <a
-          aria-label="Русский footer.languageResources"
           href="https://www.healthcare.gov/language-resource/#russian"
           lang="ru"
         >
@@ -688,7 +661,6 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
         class="hc-c-footer__inline-item"
       >
         <a
-          aria-label="Español footer.languageResources"
           href="https://www.healthcare.gov/language-resource/#spanish"
           lang="es"
         >
@@ -703,7 +675,6 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
         class="hc-c-footer__inline-item"
       >
         <a
-          aria-label="Tagalog footer.languageResources"
           href="https://www.healthcare.gov/language-resource/#tagalog"
           lang="tl"
         >
@@ -718,7 +689,6 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
         class="hc-c-footer__inline-item"
       >
         <a
-          aria-label="tiếng việt footer.languageResources"
           href="https://www.healthcare.gov/language-resource/#vietnamese"
           lang="vi"
         >
