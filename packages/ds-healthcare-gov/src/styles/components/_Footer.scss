@@ -43,9 +43,13 @@
     padding: 0;
     text-decoration: none;
 
-    &:hover,
-    &:focus {
+    &:hover {
       color: var(--color-primary-darker);
+    }
+    &:focus {
+      @include mixins.focus-styles-link;
+      color: var(--color-primary-darker);
+      text-decoration: none;
     }
   }
 }
