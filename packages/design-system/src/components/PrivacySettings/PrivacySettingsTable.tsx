@@ -1,5 +1,6 @@
 import React from 'react';
 import { ChoiceList } from '../ChoiceList';
+import { Table, TableHead, TableRow, TableCell, TableBody } from '../Table';
 import { t } from '../i18n';
 
 export interface PrivacySettingsProperty {
@@ -52,27 +53,27 @@ export const PrivacySettingsTable = ({
     const category = t(`privacy.${translationKey}.category`);
     const description = t(`privacy.${translationKey}.description`, { domain });
     return (
-      <tr key={settingsKey}>
-        <td data-title={t('privacy.category')}>{category}</td>
-        <td data-title={t('privacy.description')}>{description}</td>
-        <td data-title={t('privacy.status')}>
+      <TableRow key={settingsKey}>
+        <TableCell stackedTitle={t('privacy.category')}>{category}</TableCell>
+        <TableCell stackedTitle={t('privacy.description')}>{description}</TableCell>
+        <TableCell stackedTitle={t('privacy.status')}>
           {renderToggle(settingsKey, value, category, description)}
-        </td>
-      </tr>
+        </TableCell>
+      </TableRow>
     );
   }
 
   return (
-    <table className="ds-c-table ds-c-table--borderless ds-c-privacy-settings-table">
-      <thead>
-        <tr>
-          <th scope="col">{t('privacy.category')}</th>
-          <th scope="col">{t('privacy.description')}</th>
-          <th scope="col">{t('privacy.status')}</th>
-        </tr>
-      </thead>
-      <tbody>{privacySettings.map(renderRow)}</tbody>
-    </table>
+    <Table className="ds-c-privacy-settings-table" borderless stackable stackableBreakpoint="md">
+      <TableHead>
+        <TableRow>
+          <TableCell>{t('privacy.category')}</TableCell>
+          <TableCell>{t('privacy.description')}</TableCell>
+          <TableCell>{t('privacy.status')}</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>{privacySettings.map(renderRow)}</TableBody>
+    </Table>
   );
 };
 
