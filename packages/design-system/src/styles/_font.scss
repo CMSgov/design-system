@@ -8,7 +8,7 @@ $font-path: '../fonts' !default;
   font-family: Bitter;
   font-style: normal;
   font-weight: normal;
-  src: url('#{$font-path}/Bitter-Regular.woff2') format('woff2');
+  src: url('#{$font-path}/bitter-regular.woff2') format('woff2');
 }
 
 @font-face {
@@ -16,7 +16,7 @@ $font-path: '../fonts' !default;
   font-family: Bitter;
   font-style: normal;
   font-weight: bold;
-  src: url('#{$font-path}/Bitter-Bold.woff2') format('woff2');
+  src: url('#{$font-path}/bitter-bold.woff2') format('woff2');
 }
 
 @font-face {
@@ -24,7 +24,7 @@ $font-path: '../fonts' !default;
   font-family: Bitter;
   font-style: italic;
   font-weight: normal;
-  src: url('#{$font-path}/Bitter-Italic.woff2') format('woff2');
+  src: url('#{$font-path}/bitter-italic.woff2') format('woff2');
 }
 
 @font-face {
@@ -32,7 +32,7 @@ $font-path: '../fonts' !default;
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: normal;
-  src: url('#{$font-path}/OpenSans-Regular-webfont.woff2') format('woff2');
+  src: url('#{$font-path}/opensans-regular-webfont.woff2') format('woff2');
 }
 
 @font-face {
@@ -40,7 +40,7 @@ $font-path: '../fonts' !default;
   font-family: 'Open Sans';
   font-style: italic;
   font-weight: normal;
-  src: url('#{$font-path}/OpenSans-Italic-webfont.woff2') format('woff2');
+  src: url('#{$font-path}/opensans-italic-webfont.woff2') format('woff2');
 }
 
 @font-face {
@@ -48,7 +48,7 @@ $font-path: '../fonts' !default;
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 600;
-  src: url('#{$font-path}/OpenSans-Semibold-webfont.woff2') format('woff2');
+  src: url('#{$font-path}/opensans-semibold-webfont.woff2') format('woff2');
 }
 
 @font-face {
@@ -56,5 +56,5 @@ $font-path: '../fonts' !default;
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 700;
-  src: url('#{$font-path}/OpenSans-Bold-webfont.woff2') format('woff2');
+  src: url('#{$font-path}/opensans-bold-webfont.woff2') format('woff2');
 }
