@@ -17,6 +17,7 @@ Object {
           >
             <th
               class="ds-c-table__cell--align-left"
+              id="header-category"
               role="columnheader"
               scope="col"
             >
@@ -24,6 +25,7 @@ Object {
             </th>
             <th
               class="ds-c-table__cell--align-left"
+              id="header-description"
               role="columnheader"
               scope="col"
             >
@@ -31,6 +33,7 @@ Object {
             </th>
             <th
               class="ds-c-table__cell--align-left"
+              id="header-status"
               role="columnheader"
               scope="col"
             >
@@ -47,6 +50,7 @@ Object {
             <td
               class="ds-c-table__cell--align-left"
               data-title="Category"
+              headers="header-category"
               role="cell"
             >
               Advertising
@@ -54,6 +58,7 @@ Object {
             <td
               class="ds-c-table__cell--align-left"
               data-title="Description"
+              headers="header-description"
               role="cell"
             >
               We use digital advertising tools, such as web beacons, to track the effectiveness of our digital advertising outreach efforts. This helps us identify ads that are helpful to consumers and efficient for outreach. Selecting OFF will block this tracking.
@@ -61,6 +66,7 @@ Object {
             <td
               class="ds-c-table__cell--align-left"
               data-title="Status"
+              headers="header-status"
               role="cell"
             >
               <fieldset
@@ -137,6 +143,7 @@ Object {
             <td
               class="ds-c-table__cell--align-left"
               data-title="Category"
+              headers="header-category"
               role="cell"
             >
               Social Media
@@ -144,6 +151,7 @@ Object {
             <td
               class="ds-c-table__cell--align-left"
               data-title="Description"
+              headers="header-description"
               role="cell"
             >
               If you share our content on Facebook, Twitter, or other social media accounts, we may track what undefined content you share. This helps us improve our social media outreach. Selecting OFF will block this tracking.
@@ -151,6 +159,7 @@ Object {
             <td
               class="ds-c-table__cell--align-left"
               data-title="Status"
+              headers="header-status"
               role="cell"
             >
               <fieldset
@@ -227,6 +236,7 @@ Object {
             <td
               class="ds-c-table__cell--align-left"
               data-title="Category"
+              headers="header-category"
               role="cell"
             >
               Web Analytics
@@ -234,6 +244,7 @@ Object {
             <td
               class="ds-c-table__cell--align-left"
               data-title="Description"
+              headers="header-description"
               role="cell"
             >
               We use a variety of tools to count, track, and analyze visits to undefined. This helps us understand how people use the site and where we should make improvements. Selecting OFF will block this tracking.
@@ -241,6 +252,7 @@ Object {
             <td
               class="ds-c-table__cell--align-left"
               data-title="Status"
+              headers="header-status"
               role="cell"
             >
               <fieldset
@@ -328,6 +340,7 @@ Object {
         >
           <th
             class="ds-c-table__cell--align-left"
+            id="header-category"
             role="columnheader"
             scope="col"
           >
@@ -335,6 +348,7 @@ Object {
           </th>
           <th
             class="ds-c-table__cell--align-left"
+            id="header-description"
             role="columnheader"
             scope="col"
           >
@@ -342,6 +356,7 @@ Object {
           </th>
           <th
             class="ds-c-table__cell--align-left"
+            id="header-status"
             role="columnheader"
             scope="col"
           >
@@ -358,6 +373,7 @@ Object {
           <td
             class="ds-c-table__cell--align-left"
             data-title="Category"
+            headers="header-category"
             role="cell"
           >
             Advertising
@@ -365,6 +381,7 @@ Object {
           <td
             class="ds-c-table__cell--align-left"
             data-title="Description"
+            headers="header-description"
             role="cell"
           >
             We use digital advertising tools, such as web beacons, to track the effectiveness of our digital advertising outreach efforts. This helps us identify ads that are helpful to consumers and efficient for outreach. Selecting OFF will block this tracking.
@@ -372,6 +389,7 @@ Object {
           <td
             class="ds-c-table__cell--align-left"
             data-title="Status"
+            headers="header-status"
             role="cell"
           >
             <fieldset
@@ -448,6 +466,7 @@ Object {
           <td
             class="ds-c-table__cell--align-left"
             data-title="Category"
+            headers="header-category"
             role="cell"
           >
             Social Media
@@ -455,6 +474,7 @@ Object {
           <td
             class="ds-c-table__cell--align-left"
             data-title="Description"
+            headers="header-description"
             role="cell"
           >
             If you share our content on Facebook, Twitter, or other social media accounts, we may track what undefined content you share. This helps us improve our social media outreach. Selecting OFF will block this tracking.
@@ -462,6 +482,7 @@ Object {
           <td
             class="ds-c-table__cell--align-left"
             data-title="Status"
+            headers="header-status"
             role="cell"
           >
             <fieldset
@@ -538,6 +559,7 @@ Object {
           <td
             class="ds-c-table__cell--align-left"
             data-title="Category"
+            headers="header-category"
             role="cell"
           >
             Web Analytics
@@ -545,6 +567,7 @@ Object {
           <td
             class="ds-c-table__cell--align-left"
             data-title="Description"
+            headers="header-description"
             role="cell"
           >
             We use a variety of tools to count, track, and analyze visits to undefined. This helps us understand how people use the site and where we should make improvements. Selecting OFF will block this tracking.
@@ -552,6 +575,7 @@ Object {
           <td
             class="ds-c-table__cell--align-left"
             data-title="Status"
+            headers="header-status"
             role="cell"
           >
             <fieldset

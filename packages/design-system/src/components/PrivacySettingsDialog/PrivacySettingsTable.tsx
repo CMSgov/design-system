@@ -49,14 +49,22 @@ export const PrivacySettingsTable = ({
     );
   }
 
+  const categoryHeaderId = 'header-category';
+  const descriptionHeaderId = 'header-description';
+  const statusHeaderId = 'header-status';
+
   function renderRow({ settingsKey, translationKey, value }: PrivacySettingsProperty) {
     const category = t(`privacy.${translationKey}.category`);
     const description = t(`privacy.${translationKey}.description`, { domain });
     return (
       <TableRow key={settingsKey}>
-        <TableCell stackedTitle={t('privacy.category')}>{category}</TableCell>
-        <TableCell stackedTitle={t('privacy.description')}>{description}</TableCell>
-        <TableCell stackedTitle={t('privacy.status')}>
+        <TableCell headers={categoryHeaderId} stackedTitle={t('privacy.category')}>
+          {category}
+        </TableCell>
+        <TableCell headers={descriptionHeaderId} stackedTitle={t('privacy.description')}>
+          {description}
+        </TableCell>
+        <TableCell headers={statusHeaderId} stackedTitle={t('privacy.status')}>
           {renderToggle(settingsKey, value, category, description)}
         </TableCell>
       </TableRow>
@@ -67,9 +75,9 @@ export const PrivacySettingsTable = ({
     <Table className="ds-c-privacy-settings-table" borderless stackable stackableBreakpoint="md">
       <TableHead>
         <TableRow>
-          <TableCell>{t('privacy.category')}</TableCell>
-          <TableCell>{t('privacy.description')}</TableCell>
-          <TableCell>{t('privacy.status')}</TableCell>
+          <TableCell id={categoryHeaderId}>{t('privacy.category')}</TableCell>
+          <TableCell id={descriptionHeaderId}>{t('privacy.description')}</TableCell>
+          <TableCell id={statusHeaderId}>{t('privacy.status')}</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>{privacySettings.map(renderRow)}</TableBody>
