@@ -147,6 +147,7 @@ exports[`Footer renders basic footer 1`] = `
           class="hc-c-footer__inline-item"
         >
           <a
+            aria-label="中文 language resources"
             href="/language-resource/#chinese"
             lang="zh"
           >
@@ -161,6 +162,7 @@ exports[`Footer renders basic footer 1`] = `
           class="hc-c-footer__inline-item"
         >
           <a
+            aria-label="Kreyòl language resources"
             href="/language-resource/#creole"
             lang="ht"
           >
@@ -175,6 +177,7 @@ exports[`Footer renders basic footer 1`] = `
           class="hc-c-footer__inline-item"
         >
           <a
+            aria-label="Français language resources"
             href="/language-resource/#french"
             lang="fr"
           >
@@ -189,6 +192,7 @@ exports[`Footer renders basic footer 1`] = `
           class="hc-c-footer__inline-item"
         >
           <a
+            aria-label="Deutsch language resources"
             href="/language-resource/#german"
             lang="de"
           >
@@ -203,6 +207,7 @@ exports[`Footer renders basic footer 1`] = `
           class="hc-c-footer__inline-item"
         >
           <a
+            aria-label="ગુજરાતી language resources"
             href="/language-resource/#gujarati"
             lang="gu"
           >
@@ -217,6 +222,7 @@ exports[`Footer renders basic footer 1`] = `
           class="hc-c-footer__inline-item"
         >
           <a
+            aria-label="हिंदी language resources"
             href="/language-resource/#hindi"
             lang="hi"
           >
@@ -231,6 +237,7 @@ exports[`Footer renders basic footer 1`] = `
           class="hc-c-footer__inline-item"
         >
           <a
+            aria-label="Italiano language resources"
             href="/language-resource/#italian"
             lang="it"
           >
@@ -245,6 +252,7 @@ exports[`Footer renders basic footer 1`] = `
           class="hc-c-footer__inline-item"
         >
           <a
+            aria-label="日本語 language resources"
             href="/language-resource/#japanese"
             lang="ja"
           >
@@ -259,6 +267,7 @@ exports[`Footer renders basic footer 1`] = `
           class="hc-c-footer__inline-item"
         >
           <a
+            aria-label="한국어 language resources"
             href="/language-resource/#korean"
             lang="ko"
           >
@@ -273,6 +282,7 @@ exports[`Footer renders basic footer 1`] = `
           class="hc-c-footer__inline-item"
         >
           <a
+            aria-label="Polski language resources"
             href="/language-resource/#polish"
             lang="pl"
           >
@@ -287,6 +297,7 @@ exports[`Footer renders basic footer 1`] = `
           class="hc-c-footer__inline-item"
         >
           <a
+            aria-label="Português language resources"
             href="/language-resource/#portuguese"
             lang="pt"
           >
@@ -301,6 +312,7 @@ exports[`Footer renders basic footer 1`] = `
           class="hc-c-footer__inline-item"
         >
           <a
+            aria-label="Русский language resources"
             href="/language-resource/#russian"
             lang="ru"
           >
@@ -315,6 +327,7 @@ exports[`Footer renders basic footer 1`] = `
           class="hc-c-footer__inline-item"
         >
           <a
+            aria-label="Español language resources"
             href="/language-resource/#spanish"
             lang="es"
           >
@@ -329,6 +342,7 @@ exports[`Footer renders basic footer 1`] = `
           class="hc-c-footer__inline-item"
         >
           <a
+            aria-label="Tagalog language resources"
             href="/language-resource/#tagalog"
             lang="tl"
           >
@@ -343,6 +357,7 @@ exports[`Footer renders basic footer 1`] = `
           class="hc-c-footer__inline-item"
         >
           <a
+            aria-label="tiếng việt language resources"
             href="/language-resource/#vietnamese"
             lang="vi"
           >
@@ -1172,6 +1187,7 @@ exports[`Footer renders basic footer with props 1`] = `
           class="hc-c-footer__inline-item"
         >
           <a
+            aria-label="中文 language resources"
             href="https://www.healthcare.gov/language-resource/#chinese"
             lang="zh"
           >
@@ -1186,6 +1202,7 @@ exports[`Footer renders basic footer with props 1`] = `
           class="hc-c-footer__inline-item"
         >
           <a
+            aria-label="Kreyòl language resources"
             href="https://www.healthcare.gov/language-resource/#creole"
             lang="ht"
           >
@@ -1200,6 +1217,7 @@ exports[`Footer renders basic footer with props 1`] = `
           class="hc-c-footer__inline-item"
         >
           <a
+            aria-label="Français language resources"
             href="https://www.healthcare.gov/language-resource/#french"
             lang="fr"
           >
@@ -1214,6 +1232,7 @@ exports[`Footer renders basic footer with props 1`] = `
           class="hc-c-footer__inline-item"
         >
           <a
+            aria-label="Deutsch language resources"
             href="https://www.healthcare.gov/language-resource/#german"
             lang="de"
           >
@@ -1228,6 +1247,7 @@ exports[`Footer renders basic footer with props 1`] = `
           class="hc-c-footer__inline-item"
         >
           <a
+            aria-label="ગુજરાતી language resources"
             href="https://www.healthcare.gov/language-resource/#gujarati"
             lang="gu"
           >
@@ -1242,6 +1262,7 @@ exports[`Footer renders basic footer with props 1`] = `
           class="hc-c-footer__inline-item"
         >
           <a
+            aria-label="हिंदी language resources"
             href="https://www.healthcare.gov/language-resource/#hindi"
             lang="hi"
           >
@@ -1256,6 +1277,7 @@ exports[`Footer renders basic footer with props 1`] = `
           class="hc-c-footer__inline-item"
         >
           <a
+            aria-label="Italiano language resources"
             href="https://www.healthcare.gov/language-resource/#italian"
             lang="it"
           >
@@ -1270,6 +1292,7 @@ exports[`Footer renders basic footer with props 1`] = `
           class="hc-c-footer__inline-item"
         >
           <a
+            aria-label="日本語 language resources"
             href="https://www.healthcare.gov/language-resource/#japanese"
             lang="ja"
           >
@@ -1284,6 +1307,7 @@ exports[`Footer renders basic footer with props 1`] = `
           class="hc-c-footer__inline-item"
         >
           <a
+            aria-label="한국어 language resources"
             href="https://www.healthcare.gov/language-resource/#korean"
             lang="ko"
           >
@@ -1298,6 +1322,7 @@ exports[`Footer renders basic footer with props 1`] = `
           class="hc-c-footer__inline-item"
         >
           <a
+            aria-label="Polski language resources"
             href="https://www.healthcare.gov/language-resource/#polish"
             lang="pl"
           >
@@ -1312,6 +1337,7 @@ exports[`Footer renders basic footer with props 1`] = `
           class="hc-c-footer__inline-item"
         >
           <a
+            aria-label="Português language resources"
             href="https://www.healthcare.gov/language-resource/#portuguese"
             lang="pt"
           >
@@ -1326,6 +1352,7 @@ exports[`Footer renders basic footer with props 1`] = `
           class="hc-c-footer__inline-item"
         >
           <a
+            aria-label="Русский language resources"
             href="https://www.healthcare.gov/language-resource/#russian"
             lang="ru"
           >
@@ -1340,6 +1367,7 @@ exports[`Footer renders basic footer with props 1`] = `
           class="hc-c-footer__inline-item"
         >
           <a
+            aria-label="Español language resources"
             href="https://www.healthcare.gov/language-resource/#spanish"
             lang="es"
           >
@@ -1354,6 +1382,7 @@ exports[`Footer renders basic footer with props 1`] = `
           class="hc-c-footer__inline-item"
         >
           <a
+            aria-label="Tagalog language resources"
             href="https://www.healthcare.gov/language-resource/#tagalog"
             lang="tl"
           >
@@ -1368,6 +1397,7 @@ exports[`Footer renders basic footer with props 1`] = `
           class="hc-c-footer__inline-item"
         >
           <a
+            aria-label="tiếng việt language resources"
             href="https://www.healthcare.gov/language-resource/#vietnamese"
             lang="vi"
           >
