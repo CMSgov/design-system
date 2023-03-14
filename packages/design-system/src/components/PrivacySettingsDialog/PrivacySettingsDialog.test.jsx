@@ -13,7 +13,9 @@ jest.mock('./privacySettings', () => ({
 }));
 
 const defaultProps = {
-  t: (key) => key,
+  domain: 'Test.gov',
+  privacyPolicyUrl: 'https://www.healthcare.gov/privacy/',
+  thirdPartyPoliciesUrl: 'https://www.healthcare.gov/third-party-privacy-policies/',
   onExit: () => {},
 };
 

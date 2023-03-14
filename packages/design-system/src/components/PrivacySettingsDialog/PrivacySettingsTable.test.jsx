@@ -5,7 +5,7 @@ import { privacySettingConfigs } from './PrivacySettingsDialog';
 import { render, screen } from '@testing-library/react';
 
 const defaultProps = {
-  t: (key) => key,
+  domain: 'Test.gov',
   privacySettings: [
     { ...privacySettingConfigs[0], value: '0' },
     { ...privacySettingConfigs[1], value: '1' },
