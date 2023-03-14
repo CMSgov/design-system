@@ -1,14 +1,15 @@
 import React from 'react';
 import PrivacySettingsTable from './PrivacySettingsTable';
-import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { privacySettingConfigs } from './PrivacySettingsDialog';
+import { render, screen } from '@testing-library/react';
 
 const defaultProps = {
   t: (key) => key,
   privacySettings: [
-    { settingsKey: 'key1', translationKey: 'setting1', value: '0' },
-    { settingsKey: 'key2', translationKey: 'setting2', value: '1' },
-    { settingsKey: 'key3', translationKey: 'setting3', value: '0' },
+    { ...privacySettingConfigs[0], value: '0' },
+    { ...privacySettingConfigs[1], value: '1' },
+    { ...privacySettingConfigs[2], value: '0' },
   ],
   setPrivacySetting: jest.fn(),
 };
@@ -28,6 +29,6 @@ describe('<PrivacySettingsTable />', function () {
     makePrivacySettingsTable({ setPrivacySetting });
     const choice = screen.getAllByRole('radio');
     userEvent.click(choice[1]);
-    expect(setPrivacySetting).toHaveBeenCalledWith('key1', '1');
+    expect(setPrivacySetting).toHaveBeenCalledWith('c3', '1');
   });
 });

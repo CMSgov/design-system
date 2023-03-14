@@ -53,7 +53,7 @@ describe('<PrivacySettingsDialog />', function () {
 
     const allow = getSettingRadios('c3').find((radio) => radio.value === '1');
     fireEvent.click(allow);
-    fireEvent.click(screen.getByRole('button', { name: 'privacy.save' }));
+    fireEvent.click(screen.getByRole('button', { name: /Update my settings/ }));
 
     expect(onExit).toHaveBeenCalled();
     expect(setPrivacySettings).toHaveBeenCalledWith({

@@ -6,7 +6,7 @@ import { getPrivacySettings, setPrivacySettings } from './privacySettings';
 import { t } from '../i18n';
 import { useState } from 'react';
 
-const privacySettingConfigs = [
+export const privacySettingConfigs = [
   { settingsKey: 'c3', translationKey: 'advertising' },
   { settingsKey: 'c4', translationKey: 'socialMedia' },
   { settingsKey: 'c2', translationKey: 'webAnalytics' },
