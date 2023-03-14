@@ -70,7 +70,11 @@ const InlineLinkLists = function (props: InlineLinkListsProps) {
         {Object.getOwnPropertyNames(languages).map(function (lang, index) {
           return (
             <li key={lang} className={inlineLiClasses}>
-              <a lang={lang} href={primaryDomain + languages[lang].href}>
+              <a
+                lang={lang}
+                aria-label={`${languages[lang].label} ${props.t('footer.languageResources')}`}
+                href={primaryDomain + languages[lang].href}
+              >
                 {languages[lang].label}
               </a>
               {index !== Object.getOwnPropertyNames(languages).length - 1 ? (
