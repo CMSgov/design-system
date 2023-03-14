@@ -33,7 +33,7 @@
   gap: $spacer-half;
 
   // "Privacy Settings" link is a button
-  button {
+  > button {
     background-color: inherit;
     border: 0;
     color: currentColor;
@@ -43,8 +43,9 @@
     padding: 0;
     text-decoration: none;
 
+    &:hover,
     &:focus {
-      @include mixins.focus-styles;
+      color: var(--color-primary-darker);
     }
   }
 }
