@@ -90,33 +90,6 @@ export const themeColors: ColorTokens = {
   'warn-darkest':               color['goldenrod-800'],
   //
   'visited':                    color['crimson-800'],
-  // TODO: deprecate these old definitions
-  'teal-700':                   color['teal-700'],
-  'teal-500':                   color['teal-500'],
-  'teal-300':                   color['teal-300'],
-  'teal-100':                   color['teal-100'],
-  'blue-700':                   color['lapis-700'],
-  'blue-500':                   color['lapis-500'],
-  'blue-300':                   color['lapis-300'],
-  'blue-100':                   color['lapis-100'],
-  'green-700':                  color['spring-700'],
-  'green-500':                  color['spring-500'],
-  'green-300':                  color['spring-100'],
-  'green-100':                  color['spring-50'],
-  'black-700':                  color['granite-900'],
-  'black-500':                  color['granite-800'],
-  'black-300':                  color['granite-700'],
-  'black-200':                  color['granite-600'],
-  'black-100':                  color['granite-100'],
-  'black-50':                   color['granite-50'],
-  'yellow-700':                 color['goldenrod-600'],
-  'yellow-500':                 color['goldenrod-500'],
-  'yellow-300':                 color['goldenrod-300'],
-  'yellow-100':                 color['goldenrod-50'],
-  'red-700':                    color['crimson-600'],
-  'red-500':                    color['crimson-500'],
-  'red-300':                    color['crimson-100'],
-  'red-100':                    color['crimson-50'],
 }
 
 export const shadow: ShadowTokens = {
