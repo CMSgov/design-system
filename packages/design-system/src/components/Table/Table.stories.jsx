@@ -79,8 +79,10 @@ const Template = (args) => (
     <TableCaption>Table</TableCaption>
     <TableHead>
       <TableRow>
-        {tableTemplateData.headings.map(({ displayName }) => (
-          <TableCell key={displayName}>{displayName}</TableCell>
+        {tableTemplateData.headings.map(({ displayName, propName }) => (
+          <TableCell key={displayName} id={propName}>
+            {displayName}
+          </TableCell>
         ))}
       </TableRow>
     </TableHead>
@@ -90,6 +92,7 @@ const Template = (args) => (
           {tableTemplateData.headings.map((heading) => (
             <TableCell
               key={`${heading.displayName}-${dataItem[heading.propName]}`}
+              headers={heading.propName}
               stackedTitle={heading.displayName}
             >
               {dataItem[heading.propName]}
