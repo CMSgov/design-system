@@ -2,8 +2,25 @@
 /* stylelint-disable declaration-no-important */
 
 // primary
+
+.ds-u-fill--primary-lightest {
+  background-color: var(--color-primary-lightest) !important;
+}
+
+.ds-u-fill--primary-lighter {
+  background-color: var(--color-primary-lighter) !important;
+}
+
+.ds-u-fill--primary-light {
+  background-color: var(--color-primary-light) !important;
+}
+
 .ds-u-fill--primary {
   background-color: var(--color-primary) !important;
+}
+
+.ds-u-fill--primary-dark {
+  background-color: var(--color-primary-dark) !important;
 }
 
 .ds-u-fill--primary-darker {
