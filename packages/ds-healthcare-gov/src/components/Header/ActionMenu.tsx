@@ -81,6 +81,7 @@ const ActionMenu = function (props: ActionMenuProps) {
               <li key={link.href} className="hc-c-logged-out-links__li">
                 <a
                   href={link.href}
+                  aria-label={link.ariaLabel}
                   // TODO: .toString() here pacifies TypeScript, but TypeScript has actually found a
                   // potential bug here where we allow link.label to be a ReactNode, but a ReactNode
                   // can't actually be coerced into a string. We've had to do a lot of extra work in
