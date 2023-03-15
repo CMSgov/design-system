@@ -6,41 +6,68 @@ Object {
   "baseElement": <body>
     <div>
       <table
-        class="ds-c-table ds-c-table--borderless hc-c-privacy-settings-table"
+        class="ds-c-table ds-c-table--borderless ds-c-md-table--stacked ds-c-privacy-settings-table"
+        role="table"
       >
-        <thead>
-          <tr>
+        <thead
+          role="rowgroup"
+        >
+          <tr
+            role="row"
+          >
             <th
+              class="ds-c-table__cell--align-left"
+              id="header-category"
+              role="columnheader"
               scope="col"
             >
-              privacy.category
+              Category
             </th>
             <th
+              class="ds-c-table__cell--align-left"
+              id="header-description"
+              role="columnheader"
               scope="col"
             >
-              privacy.description
+              Description
             </th>
             <th
+              class="ds-c-table__cell--align-left"
+              id="header-status"
+              role="columnheader"
               scope="col"
             >
-              privacy.status
+              Status
             </th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
+        <tbody
+          role="rowgroup"
+        >
+          <tr
+            role="row"
+          >
             <td
-              data-title="privacy.category"
+              class="ds-c-table__cell--align-left"
+              data-title="Category"
+              headers="header-category"
+              role="cell"
             >
-              privacy.setting1.category
+              Advertising
             </td>
             <td
-              data-title="privacy.description"
+              class="ds-c-table__cell--align-left"
+              data-title="Description"
+              headers="header-description"
+              role="cell"
             >
-              privacy.setting1.description
+              We use digital advertising tools, such as web beacons, to track the effectiveness of our digital advertising outreach efforts. This helps us identify ads that are helpful to consumers and efficient for outreach. Selecting OFF will block this tracking.
             </td>
             <td
-              data-title="privacy.status"
+              class="ds-c-table__cell--align-left"
+              data-title="Status"
+              headers="header-status"
+              role="cell"
             >
               <fieldset
                 aria-invalid="false"
@@ -48,7 +75,7 @@ Object {
               >
                 <legend
                   class="ds-c-label"
-                  id="field_1-label"
+                  id="field_2-label"
                 >
                   <span
                     class=""
@@ -56,7 +83,7 @@ Object {
                     <span
                       class="ds-u-visibility--screen-reader"
                     >
-                      privacy.setting1.category
+                      Advertising
                     </span>
                   </span>
                 </legend>
@@ -67,19 +94,19 @@ Object {
                     <input
                       checked=""
                       class="ds-c-choice"
-                      id="radio_cookie-key1_2"
-                      name="cookie-key1"
+                      id="radio_cookie-c3_3"
+                      name="cookie-c3"
                       type="radio"
                       value="0"
                     />
                     <label
                       class="ds-c-label"
-                      for="radio_cookie-key1_2"
+                      for="radio_cookie-c3_3"
                     >
                       <span
                         class=""
                       >
-                        privacy.allow
+                        Allow
                       </span>
                     </label>
                   </div>
@@ -90,19 +117,19 @@ Object {
                   >
                     <input
                       class="ds-c-choice"
-                      id="radio_cookie-key1_3"
-                      name="cookie-key1"
+                      id="radio_cookie-c3_4"
+                      name="cookie-c3"
                       type="radio"
                       value="1"
                     />
                     <label
                       class="ds-c-label"
-                      for="radio_cookie-key1_3"
+                      for="radio_cookie-c3_4"
                     >
                       <span
                         class=""
                       >
-                        privacy.dontAllow
+                        Don't allow
                       </span>
                     </label>
                   </div>
@@ -110,19 +137,30 @@ Object {
               </fieldset>
             </td>
           </tr>
-          <tr>
+          <tr
+            role="row"
+          >
             <td
-              data-title="privacy.category"
+              class="ds-c-table__cell--align-left"
+              data-title="Category"
+              headers="header-category"
+              role="cell"
             >
-              privacy.setting2.category
+              Social Media
             </td>
             <td
-              data-title="privacy.description"
+              class="ds-c-table__cell--align-left"
+              data-title="Description"
+              headers="header-description"
+              role="cell"
             >
-              privacy.setting2.description
+              If you share our content on Facebook, Twitter, or other social media accounts, we may track what Test.gov content you share. This helps us improve our social media outreach. Selecting OFF will block this tracking.
             </td>
             <td
-              data-title="privacy.status"
+              class="ds-c-table__cell--align-left"
+              data-title="Status"
+              headers="header-status"
+              role="cell"
             >
               <fieldset
                 aria-invalid="false"
@@ -130,7 +168,7 @@ Object {
               >
                 <legend
                   class="ds-c-label"
-                  id="field_4-label"
+                  id="field_5-label"
                 >
                   <span
                     class=""
@@ -138,7 +176,7 @@ Object {
                     <span
                       class="ds-u-visibility--screen-reader"
                     >
-                      privacy.setting2.category
+                      Social Media
                     </span>
                   </span>
                 </legend>
@@ -148,19 +186,19 @@ Object {
                   >
                     <input
                       class="ds-c-choice"
-                      id="radio_cookie-key2_5"
-                      name="cookie-key2"
+                      id="radio_cookie-c4_6"
+                      name="cookie-c4"
                       type="radio"
                       value="0"
                     />
                     <label
                       class="ds-c-label"
-                      for="radio_cookie-key2_5"
+                      for="radio_cookie-c4_6"
                     >
                       <span
                         class=""
                       >
-                        privacy.allow
+                        Allow
                       </span>
                     </label>
                   </div>
@@ -172,19 +210,19 @@ Object {
                     <input
                       checked=""
                       class="ds-c-choice"
-                      id="radio_cookie-key2_6"
-                      name="cookie-key2"
+                      id="radio_cookie-c4_7"
+                      name="cookie-c4"
                       type="radio"
                       value="1"
                     />
                     <label
                       class="ds-c-label"
-                      for="radio_cookie-key2_6"
+                      for="radio_cookie-c4_7"
                     >
                       <span
                         class=""
                       >
-                        privacy.dontAllow
+                        Don't allow
                       </span>
                     </label>
                   </div>
@@ -192,19 +230,30 @@ Object {
               </fieldset>
             </td>
           </tr>
-          <tr>
+          <tr
+            role="row"
+          >
             <td
-              data-title="privacy.category"
+              class="ds-c-table__cell--align-left"
+              data-title="Category"
+              headers="header-category"
+              role="cell"
             >
-              privacy.setting3.category
+              Web Analytics
             </td>
             <td
-              data-title="privacy.description"
+              class="ds-c-table__cell--align-left"
+              data-title="Description"
+              headers="header-description"
+              role="cell"
             >
-              privacy.setting3.description
+              We use a variety of tools to count, track, and analyze visits to Test.gov. This helps us understand how people use the site and where we should make improvements. Selecting OFF will block this tracking.
             </td>
             <td
-              data-title="privacy.status"
+              class="ds-c-table__cell--align-left"
+              data-title="Status"
+              headers="header-status"
+              role="cell"
             >
               <fieldset
                 aria-invalid="false"
@@ -212,7 +261,7 @@ Object {
               >
                 <legend
                   class="ds-c-label"
-                  id="field_7-label"
+                  id="field_8-label"
                 >
                   <span
                     class=""
@@ -220,7 +269,7 @@ Object {
                     <span
                       class="ds-u-visibility--screen-reader"
                     >
-                      privacy.setting3.category
+                      Web Analytics
                     </span>
                   </span>
                 </legend>
@@ -231,19 +280,19 @@ Object {
                     <input
                       checked=""
                       class="ds-c-choice"
-                      id="radio_cookie-key3_8"
-                      name="cookie-key3"
+                      id="radio_cookie-c2_9"
+                      name="cookie-c2"
                       type="radio"
                       value="0"
                     />
                     <label
                       class="ds-c-label"
-                      for="radio_cookie-key3_8"
+                      for="radio_cookie-c2_9"
                     >
                       <span
                         class=""
                       >
-                        privacy.allow
+                        Allow
                       </span>
                     </label>
                   </div>
@@ -254,19 +303,19 @@ Object {
                   >
                     <input
                       class="ds-c-choice"
-                      id="radio_cookie-key3_9"
-                      name="cookie-key3"
+                      id="radio_cookie-c2_10"
+                      name="cookie-c2"
                       type="radio"
                       value="1"
                     />
                     <label
                       class="ds-c-label"
-                      for="radio_cookie-key3_9"
+                      for="radio_cookie-c2_10"
                     >
                       <span
                         class=""
                       >
-                        privacy.dontAllow
+                        Don't allow
                       </span>
                     </label>
                   </div>
@@ -280,41 +329,68 @@ Object {
   </body>,
   "container": <div>
     <table
-      class="ds-c-table ds-c-table--borderless hc-c-privacy-settings-table"
+      class="ds-c-table ds-c-table--borderless ds-c-md-table--stacked ds-c-privacy-settings-table"
+      role="table"
     >
-      <thead>
-        <tr>
+      <thead
+        role="rowgroup"
+      >
+        <tr
+          role="row"
+        >
           <th
+            class="ds-c-table__cell--align-left"
+            id="header-category"
+            role="columnheader"
             scope="col"
           >
-            privacy.category
+            Category
           </th>
           <th
+            class="ds-c-table__cell--align-left"
+            id="header-description"
+            role="columnheader"
             scope="col"
           >
-            privacy.description
+            Description
           </th>
           <th
+            class="ds-c-table__cell--align-left"
+            id="header-status"
+            role="columnheader"
             scope="col"
           >
-            privacy.status
+            Status
           </th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
+      <tbody
+        role="rowgroup"
+      >
+        <tr
+          role="row"
+        >
           <td
-            data-title="privacy.category"
+            class="ds-c-table__cell--align-left"
+            data-title="Category"
+            headers="header-category"
+            role="cell"
           >
-            privacy.setting1.category
+            Advertising
           </td>
           <td
-            data-title="privacy.description"
+            class="ds-c-table__cell--align-left"
+            data-title="Description"
+            headers="header-description"
+            role="cell"
           >
-            privacy.setting1.description
+            We use digital advertising tools, such as web beacons, to track the effectiveness of our digital advertising outreach efforts. This helps us identify ads that are helpful to consumers and efficient for outreach. Selecting OFF will block this tracking.
           </td>
           <td
-            data-title="privacy.status"
+            class="ds-c-table__cell--align-left"
+            data-title="Status"
+            headers="header-status"
+            role="cell"
           >
             <fieldset
               aria-invalid="false"
@@ -322,7 +398,7 @@ Object {
             >
               <legend
                 class="ds-c-label"
-                id="field_1-label"
+                id="field_2-label"
               >
                 <span
                   class=""
@@ -330,7 +406,7 @@ Object {
                   <span
                     class="ds-u-visibility--screen-reader"
                   >
-                    privacy.setting1.category
+                    Advertising
                   </span>
                 </span>
               </legend>
@@ -341,19 +417,19 @@ Object {
                   <input
                     checked=""
                     class="ds-c-choice"
-                    id="radio_cookie-key1_2"
-                    name="cookie-key1"
+                    id="radio_cookie-c3_3"
+                    name="cookie-c3"
                     type="radio"
                     value="0"
                   />
                   <label
                     class="ds-c-label"
-                    for="radio_cookie-key1_2"
+                    for="radio_cookie-c3_3"
                   >
                     <span
                       class=""
                     >
-                      privacy.allow
+                      Allow
                     </span>
                   </label>
                 </div>
@@ -364,19 +440,19 @@ Object {
                 >
                   <input
                     class="ds-c-choice"
-                    id="radio_cookie-key1_3"
-                    name="cookie-key1"
+                    id="radio_cookie-c3_4"
+                    name="cookie-c3"
                     type="radio"
                     value="1"
                   />
                   <label
                     class="ds-c-label"
-                    for="radio_cookie-key1_3"
+                    for="radio_cookie-c3_4"
                   >
                     <span
                       class=""
                     >
-                      privacy.dontAllow
+                      Don't allow
                     </span>
                   </label>
                 </div>
@@ -384,19 +460,30 @@ Object {
             </fieldset>
           </td>
         </tr>
-        <tr>
+        <tr
+          role="row"
+        >
           <td
-            data-title="privacy.category"
+            class="ds-c-table__cell--align-left"
+            data-title="Category"
+            headers="header-category"
+            role="cell"
           >
-            privacy.setting2.category
+            Social Media
           </td>
           <td
-            data-title="privacy.description"
+            class="ds-c-table__cell--align-left"
+            data-title="Description"
+            headers="header-description"
+            role="cell"
           >
-            privacy.setting2.description
+            If you share our content on Facebook, Twitter, or other social media accounts, we may track what Test.gov content you share. This helps us improve our social media outreach. Selecting OFF will block this tracking.
           </td>
           <td
-            data-title="privacy.status"
+            class="ds-c-table__cell--align-left"
+            data-title="Status"
+            headers="header-status"
+            role="cell"
           >
             <fieldset
               aria-invalid="false"
@@ -404,7 +491,7 @@ Object {
             >
               <legend
                 class="ds-c-label"
-                id="field_4-label"
+                id="field_5-label"
               >
                 <span
                   class=""
@@ -412,7 +499,7 @@ Object {
                   <span
                     class="ds-u-visibility--screen-reader"
                   >
-                    privacy.setting2.category
+                    Social Media
                   </span>
                 </span>
               </legend>
@@ -422,19 +509,19 @@ Object {
                 >
                   <input
                     class="ds-c-choice"
-                    id="radio_cookie-key2_5"
-                    name="cookie-key2"
+                    id="radio_cookie-c4_6"
+                    name="cookie-c4"
                     type="radio"
                     value="0"
                   />
                   <label
                     class="ds-c-label"
-                    for="radio_cookie-key2_5"
+                    for="radio_cookie-c4_6"
                   >
                     <span
                       class=""
                     >
-                      privacy.allow
+                      Allow
                     </span>
                   </label>
                 </div>
@@ -446,19 +533,19 @@ Object {
                   <input
                     checked=""
                     class="ds-c-choice"
-                    id="radio_cookie-key2_6"
-                    name="cookie-key2"
+                    id="radio_cookie-c4_7"
+                    name="cookie-c4"
                     type="radio"
                     value="1"
                   />
                   <label
                     class="ds-c-label"
-                    for="radio_cookie-key2_6"
+                    for="radio_cookie-c4_7"
                   >
                     <span
                       class=""
                     >
-                      privacy.dontAllow
+                      Don't allow
                     </span>
                   </label>
                 </div>
@@ -466,19 +553,30 @@ Object {
             </fieldset>
           </td>
         </tr>
-        <tr>
+        <tr
+          role="row"
+        >
           <td
-            data-title="privacy.category"
+            class="ds-c-table__cell--align-left"
+            data-title="Category"
+            headers="header-category"
+            role="cell"
           >
-            privacy.setting3.category
+            Web Analytics
           </td>
           <td
-            data-title="privacy.description"
+            class="ds-c-table__cell--align-left"
+            data-title="Description"
+            headers="header-description"
+            role="cell"
           >
-            privacy.setting3.description
+            We use a variety of tools to count, track, and analyze visits to Test.gov. This helps us understand how people use the site and where we should make improvements. Selecting OFF will block this tracking.
           </td>
           <td
-            data-title="privacy.status"
+            class="ds-c-table__cell--align-left"
+            data-title="Status"
+            headers="header-status"
+            role="cell"
           >
             <fieldset
               aria-invalid="false"
@@ -486,7 +584,7 @@ Object {
             >
               <legend
                 class="ds-c-label"
-                id="field_7-label"
+                id="field_8-label"
               >
                 <span
                   class=""
@@ -494,7 +592,7 @@ Object {
                   <span
                     class="ds-u-visibility--screen-reader"
                   >
-                    privacy.setting3.category
+                    Web Analytics
                   </span>
                 </span>
               </legend>
@@ -505,19 +603,19 @@ Object {
                   <input
                     checked=""
                     class="ds-c-choice"
-                    id="radio_cookie-key3_8"
-                    name="cookie-key3"
+                    id="radio_cookie-c2_9"
+                    name="cookie-c2"
                     type="radio"
                     value="0"
                   />
                   <label
                     class="ds-c-label"
-                    for="radio_cookie-key3_8"
+                    for="radio_cookie-c2_9"
                   >
                     <span
                       class=""
                     >
-                      privacy.allow
+                      Allow
                     </span>
                   </label>
                 </div>
@@ -528,19 +626,19 @@ Object {
                 >
                   <input
                     class="ds-c-choice"
-                    id="radio_cookie-key3_9"
-                    name="cookie-key3"
+                    id="radio_cookie-c2_10"
+                    name="cookie-c2"
                     type="radio"
                     value="1"
                   />
                   <label
                     class="ds-c-label"
-                    for="radio_cookie-key3_9"
+                    for="radio_cookie-c2_10"
                   >
                     <span
                       class=""
                     >
-                      privacy.dontAllow
+                      Don't allow
                     </span>
                   </label>
                 </div>
