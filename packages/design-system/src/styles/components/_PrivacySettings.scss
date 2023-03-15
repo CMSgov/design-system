@@ -1,0 +1,10 @@
+.ds-c-privacy-settings-table {
+  th:first-child {
+    min-width: 110px;
+  }
+
+  td:last-child {
+    // Avoid text wrapping on the radio buttons
+    min-width: 132px;
+  }
+}

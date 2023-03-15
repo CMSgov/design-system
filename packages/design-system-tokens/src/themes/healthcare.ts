@@ -35,15 +35,8 @@ export const themeColors: ColorTokens = {
   'error-darker':               color['rose-700'],
   'error-darkest':              color['rose-800'],
   //
-  'focus':                      color['darksky-500'],
-  'focus-border-inverse':       color['goldenrod-800'],
-  'focus-dark':                 color['persimmon-500'],
-  'focus-inverse':              color['sky-500'],
   'focus-light':                color['white-solid'],
-  'focus-shadow':               color['granite-900'],
-  'focus-shadow-inverse':       color['granite-900'],
-  'focus-shadow-link':          color['granite-900'],
-  'focus-shadow-link-inverse':  color['goldenrod-800'],
+  'focus-dark':                 color['persimmon-500'],
   //
   'gray-lightest':	            color['granite-50'],
   'gray-lighter':	              color['granite-100'],
@@ -63,12 +56,6 @@ export const themeColors: ColorTokens = {
   'primary-dark':               color['sapphire-600'],
   'primary-darker':             color['sapphire-700'],
   'primary-darkest':            color['sapphire-800'],
-  // @TODO deprecate primary-alt as secondary
-  'primary-alt':                color['darksky-500'],
-  'primary-alt-dark':           color['darksky-600'],
-  'primary-alt-darkest':        color['darksky-800'],
-  'primary-alt-light':          color['darksky-300'],
-  'primary-alt-lightest':       color['darksky-50'],
   //
   'secondary-lightest':         color['spring-50'],
   'secondary-lighter':          color['spring-100'],
@@ -109,7 +96,6 @@ export const shadow: ShadowTokens = {
   'focus':                      `inset 0 0 0 1px ${themeColors['base']}`,
   'focus-inverse':              `inset 0 0 0 1px ${themeColors['base']}`,
   'focus-link':                 `0 3px ${themeColors['base']}`,
-  'focus-link-inverse':         `0 3px ${themeColors['focus-border-inverse']}`,
   'base-offset-x':              '2px',
   'base-offset-y':              '2px',
   'base-blur-radius':           '4px',

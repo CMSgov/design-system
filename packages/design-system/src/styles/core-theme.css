@@ -28,15 +28,8 @@
 --color-error-dark: #cc1937;
 --color-error-darker: #9f142b;
 --color-error-darkest: #720e1f;
---color-focus: #3e94cf;
---color-focus-border-inverse: #7c6210;
---color-focus-dark: #bd13b8;
---color-focus-inverse: #02bfe7;
 --color-focus-light: #ffffff;
---color-focus-shadow: #262626;
---color-focus-shadow-inverse: #262626;
---color-focus-shadow-link: #262626;
---color-focus-shadow-link-inverse: #7c6210;
+--color-focus-dark: #bd13b8;
 --color-gray-lightest: #f2f2f2;
 --color-gray-lighter: #d9d9d9;
 --color-gray-light: #a6a6a6;
@@ -53,11 +46,6 @@
 --color-primary-dark: #0066a9;
 --color-primary-darker: #004f84;
 --color-primary-darkest: #00395e;
---color-primary-alt: #02bfe7;
---color-primary-alt-dark: #02acd0;
---color-primary-alt-darkest: #016074;
---color-primary-alt-light: #4ed2ee;
---color-primary-alt-lightest: #e6f9fd;
 --color-secondary-lightest: #e7f3e7;
 --color-secondary-lighter: #b8dcb7;
 --color-secondary-light: #59ac56;
@@ -137,7 +125,6 @@
 --shadow-focus: inset 0 0 0 1px #262626;
 --shadow-focus-inverse: inset 0 0 0 1px #262626;
 --shadow-focus-link: 0 3px #262626;
---shadow-focus-link-inverse: 0 3px #7c6210;
 --shadow-base-offset-x: 2px;
 --shadow-base-offset-y: 2px;
 --shadow-base-blur-radius: 4px;

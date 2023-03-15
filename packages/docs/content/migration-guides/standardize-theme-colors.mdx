@@ -61,6 +61,22 @@ We've updated the `primary` color to complete the spectrum from lightest to dark
   ]}
 />
 
+#### Teal
+
+<Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
+  <b>What to do:</b> If you are using <code>teal</code> colors,
+  you'll need to update to use <code>primary</code> colors or another color from the <a href="/foundation/theme-colors/#primary-colors">theme colors</a>.
+</Alert>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--teal-100',          value: '#b9d2ce' }, null],
+    [{ name: '--teal-300',     value: '#5b978e' }, null],
+    [{ name: '--teal-500',   value: '#146a5d' }, null],
+    [{ name: '--teal-700',  value: '#0e4a41' }, null],
+  ]}
+/>
+
 </ThemeContent>
 <ThemeContent onlyThemes={['cmsgov']}>
 
@@ -139,6 +155,22 @@ Secondary colors didn't change for the Medicare theme.
     [{ name: '--color-secondary-dark',     value: '#1b3665' }, { name: '--color-secondary-dark',      value: '#1b3665' }],
     [{ name: '--color-secondary-darker',   value: '#152a4e' }, { name: '--color-secondary-darker',    value: '#152a4e' }],
     [{ name: '--color-secondary-darkest',  value: '#0f1e38' }, { name: '--color-secondary-darkest',   value: '#0f1e38' }],
+  ]}
+/>
+
+#### Blue
+
+<Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
+  <b>What to do:</b> If you are using <code>blue</code> colors,
+  you'll need to update to use <code>secondary</code> colors or another color from the <a href="/foundation/theme-colors/#secondary-colors">theme colors</a>.
+</Alert>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--blue-100',          value: '#bcc5d4' }, null],
+    [{ name: '--blue-300',     value: '#62779b' }, null],
+    [{ name: '--blue-500',   value: '#1e3c70' }, null],
+    [{ name: '--blue-700',  value: '#152a4e' }, null],
   ]}
 />
 
@@ -260,6 +292,19 @@ Green is removed and was a non-semantic duplicate of `success`.
   ]}
 />
 
+<ThemeContent onlyThemes={['medicare']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--green-100', value: '#e7f3e7' }, null],
+    [{ name: '--green-300', value: '#b8dcb7' }, null],
+    [{ name: '--green-500', value: '#12890e' }, null],
+    [{ name: '--green-700', value: '#0d600a' }, null],
+  ]}
+/>
+
+</ThemeContent>
+
 ### Gold
 
 Gold is removed and was a non-semantic duplicate of `warn`. 
@@ -301,6 +346,25 @@ Gold is removed and was a non-semantic duplicate of `warn`.
 
 </ThemeContent>
 
+<ThemeContent onlyThemes={['medicare']}>
+
+#### Yellow
+
+<Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
+  <b>What to do:</b> If you are using <code>yellow</code> colors,
+  you'll need to update to use <code>warning</code> colors or another color from the <a href="/foundation/theme-colors/#success">theme colors</a>.
+</Alert>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--yellow-100', value: '#fef9e9' }, null],
+    [{ name: '--yellow-300', value: '#fad662' }, null],
+    [{ name: '--yellow-500', value: '#f8c41f' }, null],
+    [{ name: '--yellow-700', value: '#dfb01c' }, null],
+  ]}
+/>
+</ThemeContent>
+
 ### Red
 
 Red is removed and was a non-semantic duplicate of `error`. 
@@ -321,6 +385,19 @@ Red is removed and was a non-semantic duplicate of `error`.
     [{ name: '--color-red-darkest',  value: '#720e1f' }, null],
   ]}
 />
+
+<ThemeContent onlyThemes={['medicare']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--red-100', value: '#f7e6e6' }, null],
+    [{ name: '--red-300', value: '#e8b3b3' }, null],
+    [{ name: '--red-500', value: '#b20000' }, null],
+    [{ name: '--red-700', value: '#a00000' }, null],
+  ]}
+/>
+
+</ThemeContent>
 
 ## Neutral colors
 
@@ -349,24 +426,8 @@ Grays have been standardized and use the same naming structure as other color pa
   ]}
 />
 
-
-### Color shift of `gray` and `gray-dark`
-
-Both of these colors are now lighter.
-
-<Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
-  <b>What to do:</b> You'll need to evaluate if you need to adjust the
-  <code>gray</code> color you are using to use a different neutral color from the <a href="/foundation/theme-colors/#neutral-colors">theme colors</a>. 
-</Alert>
-
-<ColorMigrationTable
-  colorRows={[
-    [{ name: '--color-gray', value: '#5a5a5a' }, { name: '--color-gray', value: '#808080' }],
-    [{ name: '--color-gray-dark', value: '#404040' }, { name: '--color-gray-dark', value: '#5a5a5a' }],
-  ]}
-/>
-
 </ThemeContent>
+
 <ThemeContent onlyThemes={['medicare']}>
 
 <ColorMigrationTable
@@ -383,6 +444,67 @@ Both of these colors are now lighter.
     [{ name: '--color-gray-medium-light', value: '#a6a6a6' }, null],
     [{ name: '--color-gray-medium',       value: '#737373' }, null],
     [{ name: '--color-gray-warm-dark',    value: '#404040' }, null],
+  ]}
+/>
+
+<br />
+
+`--black` is removed.  
+
+<Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
+  <b>What to do:</b> If you are using <code>black</code> colors,
+  you'll need to update to use <code>neutral</code> colors or another color from the <a href="/foundation/theme-colors/#neutral-colors">theme colors</a>.
+</Alert>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--black-50',  value: '#f2f2f2' }, null],
+    [{ name: '--black-100', value: '#d9d9d9' }, null],
+    [{ name: '--black-200', value: '#737373' }, null],
+    [{ name: '--black-300', value: '#5a5a5a' }, null],
+    [{ name: '--black-500', value: '#404040' }, null],
+    [{ name: '--black-700', value: '#262626' }, null],
+  ]}
+/>
+
+</ThemeContent>
+
+### Color shift of neutrals
+
+<ThemeContent neverThemes={['medicare']}>
+
+Both `--color-gray` and `--color-gray-dark` are now lighter.
+
+<Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
+  <b>What to do:</b> You'll need to evaluate if you need to adjust the
+  <code>gray</code> color you are using to use a different neutral color from the <a href="/foundation/theme-colors/#neutral-colors">theme colors</a>. 
+</Alert>
+
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--color-gray', value: '#5a5a5a' }, { name: '--color-gray', value: '#808080' }],
+    [{ name: '--color-gray-dark', value: '#404040' }, { name: '--color-gray-dark', value: '#5a5a5a' }],
+  ]}
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['medicare']}>
+
+`--color-gray-light`, `--color-gray`, `--color-gray-dark`, `--color-gray-darker` are now lighter.
+
+<Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
+  <b>What to do:</b> You'll need to evaluate if you need to adjust the
+  <code>gray</code> color you are using to use a different neutral color from the <a href="/foundation/theme-colors/#neutral-colors">theme colors</a>. 
+</Alert>
+
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--color-gray-light', value: '#737373' }, { name: '--color-gray-light', value: '#a6a6a6' }],
+    [{ name: '--color-gray', value: '#5a5a5a' }, { name: '--color-gray', value: '#808080' }],
+    [{ name: '--color-gray-dark', value: '#404040' }, { name: '--color-gray-dark', value: '#5a5a5a' }],
+    [{ name: '--color-gray-darker', value: '#262626' }, { name: '--color-gray-darker', value: '#404040' }],
   ]}
 />
 
@@ -405,6 +527,7 @@ Coolblue was unused in the design system and is removed.
     [{ name: '--color-coolblue',          value: '#045d83' }, null],
   ]}
 />
+
 
 ## Components impacted 
 

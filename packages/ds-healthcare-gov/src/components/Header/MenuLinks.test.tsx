@@ -9,10 +9,11 @@ describe('MenuLinks', function () {
     const { container } = render(
       <MenuLinks
         links={[
-          { href: '#foo', label: 'Foo' },
-          { href: '#bar', label: 'Bar' },
+          { href: '#foo', ariaLabel: 'Foo label', label: 'Foo' },
+          { href: '#bar', ariaLabel: 'Bar label', label: 'Bar' },
           {
             href: '#baz',
+            ariaLabel: 'Baz label',
             label: 'Baz',
             onClick: () => {
               return true;
@@ -32,7 +33,11 @@ describe('MenuLinks', function () {
     });
 
     it('sends analytics event when menu link clicked', () => {
-      render(<MenuLinks links={[{ href: 'https://www.zombo.com', label: 'ZOMBO' }]} />);
+      render(
+        <MenuLinks
+          links={[{ href: 'https://www.zombo.com', ariaLabel: 'ZOMBO label', label: 'ZOMBO' }]}
+        />
+      );
       const link = screen.getByRole('link');
       userEvent.click(link);
       expect(mock).toHaveBeenCalled();

@@ -12,6 +12,7 @@ Object {
       "label": "My profile",
     },
     Object {
+      "ariaLabel": "CuidadoDeSalud.gov en Español",
       "href": "https://www.cuidadodesalud.gov/es/",
       "label": "Español",
     },
@@ -23,6 +24,7 @@ Object {
   ],
   "logged-out": Array [
     Object {
+      "ariaLabel": "CuidadoDeSalud.gov en Español",
       "href": "https://www.cuidadodesalud.gov/es/",
       "label": "Español",
     },
@@ -47,6 +49,7 @@ Object {
       "label": "My profile",
     },
     Object {
+      "ariaLabel": "CuidadoDeSalud.gov en Español",
       "href": "https://www.cuidadodesalud.gov/es/",
       "label": "Español",
     },
@@ -58,6 +61,7 @@ Object {
   ],
   "logged-out": Array [
     Object {
+      "ariaLabel": "CuidadoDeSalud.gov en Español",
       "href": "https://www.cuidadodesalud.gov/es/",
       "label": "Español",
     },
@@ -82,6 +86,7 @@ Object {
       "label": "My profile",
     },
     Object {
+      "ariaLabel": "CuidadoDeSalud.gov en Español",
       "href": "https://ayudalocal.cuidadodesalud.gov/es",
       "label": "Español",
     },
@@ -93,6 +98,7 @@ Object {
   ],
   "logged-out": Array [
     Object {
+      "ariaLabel": "CuidadoDeSalud.gov en Español",
       "href": "https://ayudalocal.cuidadodesalud.gov/es",
       "label": "Español",
     },
@@ -117,6 +123,7 @@ Object {
       "label": "My profile",
     },
     Object {
+      "ariaLabel": "CuidadoDeSalud.gov en Español",
       "href": "https://www.cuidadodesalud.gov/es/tax-tool/",
       "label": "Español",
     },
@@ -128,6 +135,7 @@ Object {
   ],
   "logged-out": Array [
     Object {
+      "ariaLabel": "CuidadoDeSalud.gov en Español",
       "href": "https://www.cuidadodesalud.gov/es/tax-tool/",
       "label": "Español",
     },
@@ -152,6 +160,7 @@ Object {
       "label": "Mi perfil",
     },
     Object {
+      "ariaLabel": "Healthcare.gov in English",
       "href": "https://www.healthcare.gov/",
       "label": "English",
     },
@@ -163,6 +172,7 @@ Object {
   ],
   "logged-out": Array [
     Object {
+      "ariaLabel": "Healthcare.gov in English",
       "href": "https://www.healthcare.gov/",
       "label": "English",
     },
@@ -187,6 +197,7 @@ Object {
       "label": "Mi perfil",
     },
     Object {
+      "ariaLabel": "Healthcare.gov in English",
       "href": "https://www.healthcare.gov/",
       "label": "English",
     },
@@ -198,6 +209,7 @@ Object {
   ],
   "logged-out": Array [
     Object {
+      "ariaLabel": "Healthcare.gov in English",
       "href": "https://www.healthcare.gov/",
       "label": "English",
     },
@@ -222,6 +234,7 @@ Object {
       "label": "Mi perfil",
     },
     Object {
+      "ariaLabel": "Healthcare.gov in English",
       "href": "https://localhelp.healthcare.gov",
       "label": "English",
     },
@@ -233,6 +246,7 @@ Object {
   ],
   "logged-out": Array [
     Object {
+      "ariaLabel": "Healthcare.gov in English",
       "href": "https://localhelp.healthcare.gov",
       "label": "English",
     },
@@ -257,6 +271,7 @@ Object {
       "label": "Mi perfil",
     },
     Object {
+      "ariaLabel": "Healthcare.gov in English",
       "href": "https://www.healthcare.gov/tax-tool/",
       "label": "English",
     },
@@ -268,6 +283,7 @@ Object {
   ],
   "logged-out": Array [
     Object {
+      "ariaLabel": "Healthcare.gov in English",
       "href": "https://www.healthcare.gov/tax-tool/",
       "label": "English",
     },
@@ -319,6 +335,7 @@ Object {
       "label": "My profile",
     },
     Object {
+      "ariaLabel": "CuidadoDeSalud.gov en Español",
       "href": "https://www.cuidadodesalud.gov/es/",
       "label": "Español",
     },
@@ -330,6 +347,7 @@ Object {
   ],
   "logged-out": Array [
     Object {
+      "ariaLabel": "CuidadoDeSalud.gov en Español",
       "href": "https://www.cuidadodesalud.gov/es/",
       "label": "Español",
     },
@@ -349,12 +367,14 @@ Object {
       "label": "My profile",
     },
     Object {
+      "ariaLabel": "CuidadoDeSalud.gov en Español",
       "href": "https://www.cuidadodesalud.gov/es/",
       "label": "Español",
     },
   ],
   "logged-out": Array [
     Object {
+      "ariaLabel": "CuidadoDeSalud.gov en Español",
       "href": "https://www.cuidadodesalud.gov/es/",
       "label": "Español",
     },
@@ -371,6 +391,7 @@ exports[`MenuList leaves out the myProfile and myApplicationsAndCoverage when cu
 Object {
   "logged-in": Array [
     Object {
+      "ariaLabel": "CuidadoDeSalud.gov en Español",
       "href": "https://www.cuidadodesalud.gov/es/",
       "label": "Español",
     },
@@ -382,6 +403,7 @@ Object {
   ],
   "logged-out": Array [
     Object {
+      "ariaLabel": "CuidadoDeSalud.gov en Español",
       "href": "https://www.cuidadodesalud.gov/es/",
       "label": "Español",
     },

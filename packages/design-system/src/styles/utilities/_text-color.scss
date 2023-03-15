@@ -14,28 +14,6 @@
   color: var(--color-primary-darkest) !important;
 }
 
-// @TODO: deprecate usage of color-primary-alt tags for secondary below
-// primary alt
-.ds-u-color--primary-alt:not(:focus) {
-  color: var(--color-primary-alt) !important;
-}
-
-.ds-u-color--primary-alt-light:not(:focus) {
-  color: var(--color-primary-alt-light) !important;
-}
-
-.ds-u-color--primary-alt-lightest:not(:focus) {
-  color: var(--color-primary-alt-lightest) !important;
-}
-
-.ds-u-color--primary-alt-dark:not(:focus) {
-  color: var(--color-primary-alt-dark) !important;
-}
-
-.ds-u-color--primary-alt-darkest:not(:focus) {
-  color: var(--color-primary-alt-darkest) !important;
-}
-
 // secondary
 .ds-u-color--secondary:not(:focus) {
   color: var(--color-secondary) !important;
