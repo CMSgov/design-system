@@ -296,10 +296,10 @@ Green is removed and was a non-semantic duplicate of `success`.
 
 <ColorMigrationTable
   colorRows={[
-    [{ name: '--green-100',          value: '#e7f3e7' }, null],
-    [{ name: '--green-300',     value: '#b8dcb7' }, null],
-    [{ name: '--green-500',   value: '#12890e' }, null],
-    [{ name: '--green-700',  value: '#0d600a' }, null],
+    [{ name: '--green-100', value: '#e7f3e7' }, null],
+    [{ name: '--green-300', value: '#b8dcb7' }, null],
+    [{ name: '--green-500', value: '#12890e' }, null],
+    [{ name: '--green-700', value: '#0d600a' }, null],
   ]}
 />
 
@@ -357,10 +357,10 @@ Gold is removed and was a non-semantic duplicate of `warn`.
 
 <ColorMigrationTable
   colorRows={[
-    [{ name: '--yellow-100',          value: '#fef9e9' }, null],
-    [{ name: '--yellow-300',     value: '#fad662' }, null],
-    [{ name: '--yellow-500',   value: '#f8c41f' }, null],
-    [{ name: '--yellow-700',  value: '#dfb01c' }, null],
+    [{ name: '--yellow-100', value: '#fef9e9' }, null],
+    [{ name: '--yellow-300', value: '#fad662' }, null],
+    [{ name: '--yellow-500', value: '#f8c41f' }, null],
+    [{ name: '--yellow-700', value: '#dfb01c' }, null],
   ]}
 />
 </ThemeContent>
@@ -390,10 +390,10 @@ Red is removed and was a non-semantic duplicate of `error`.
 
 <ColorMigrationTable
   colorRows={[
-    [{ name: '--red-100',          value: '#f7e6e6' }, null],
-    [{ name: '--red-300',     value: '#e8b3b3' }, null],
-    [{ name: '--red-500',   value: '#b20000' }, null],
-    [{ name: '--red-700',  value: '#a00000' }, null],
+    [{ name: '--red-100', value: '#f7e6e6' }, null],
+    [{ name: '--red-300', value: '#e8b3b3' }, null],
+    [{ name: '--red-500', value: '#b20000' }, null],
+    [{ name: '--red-700', value: '#a00000' }, null],
   ]}
 />
 
@@ -446,6 +446,27 @@ Grays have been standardized and use the same naming structure as other color pa
     [{ name: '--color-gray-warm-dark',    value: '#404040' }, null],
   ]}
 />
+
+<br />
+
+`--black` is removed.  
+
+<Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
+  <b>What to do:</b> If you are using <code>black</code> colors,
+  you'll need to update to use <code>neutral</code> colors or another color from the <a href="/foundation/theme-colors/#neutral-colors">theme colors</a>.
+</Alert>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--black-50',  value: '#f2f2f2' }, null],
+    [{ name: '--black-100', value: '#d9d9d9' }, null],
+    [{ name: '--black-200', value: '#737373' }, null],
+    [{ name: '--black-300', value: '#5a5a5a' }, null],
+    [{ name: '--black-500', value: '#404040' }, null],
+    [{ name: '--black-700', value: '#262626' }, null],
+  ]}
+/>
+
 </ThemeContent>
 
 ### Color shift of neutrals
@@ -484,26 +505,6 @@ Both `--color-gray` and `--color-gray-dark` are now lighter.
     [{ name: '--color-gray', value: '#5a5a5a' }, { name: '--color-gray', value: '#808080' }],
     [{ name: '--color-gray-dark', value: '#404040' }, { name: '--color-gray-dark', value: '#5a5a5a' }],
     [{ name: '--color-gray-darker', value: '#262626' }, { name: '--color-gray-darker', value: '#404040' }],
-  ]}
-/>
-
-#### Black
-
-`--black` is removed and was a non-semantic color.  
-
-<Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
-  <b>What to do:</b> If you are using <code>black</code> colors,
-  you'll need to update to use <code>neutral</code> colors or another color from the <a href="/foundation/theme-colors/#neutral-colors">theme colors</a>.
-</Alert>
-
-<ColorMigrationTable
-  colorRows={[
-    [{ name: '--black-50',          value: '#f2f2f2' }, null],
-    [{ name: '--black-100',     value: '#d9d9d9' }, null],
-    [{ name: '--black-200',   value: '#737373' }, null],
-    [{ name: '--black-300',  value: '#5a5a5a' }, null],
-    [{ name: '--black-500',  value: '#404040' }, null],
-    [{ name: '--black-700',  value: '#262626' }, null],
   ]}
 />
 
