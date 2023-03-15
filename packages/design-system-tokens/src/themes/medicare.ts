@@ -64,13 +64,6 @@ export const themeColors: ColorTokens = {
   'primary-dark':               color['teal-600'],
   'primary-darker':             color['teal-700'],
   'primary-darkest':            color['teal-800'],
-  // @TODO: deprecate primary-alt as secondary
-  'primary-alt':                color['lapis-500'],
-  'primary-alt-dark':           color['lapis-600'],
-  'primary-alt-darker':         color['lapis-700'],
-  'primary-alt-darkest':        color['lapis-800'],
-  'primary-alt-light':          color['lapis-300'],
-  'primary-alt-lightest':       color['lapis-50'],
   //
   'secondary-lightest':         color['lapis-50'],
   'secondary-lighter':          color['lapis-100'],
