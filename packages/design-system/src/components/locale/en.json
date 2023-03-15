@@ -82,6 +82,30 @@
     "endLabelText": "Next",
     "endAriaLabel": "Next Page"
   },
+  "privacy": {
+    "advertising": {
+      "category": "Advertising",
+      "description": "We use digital advertising tools, such as web beacons, to track the effectiveness of our digital advertising outreach efforts. This helps us identify ads that are helpful to consumers and efficient for outreach. Selecting OFF will block this tracking."
+    },
+    "allow": "Allow",
+    "category": "Category",
+    "description": "Description",
+    "dialogTitle": "{{domain}} Privacy Settings",
+    "dontAllow": "Don't allow",
+    "introText": "We take your privacy seriously. You can change the settings below to make sure you’re comfortable with the ways we collect and use information while you’re on {{domain}}.",
+    "privacyPolicy": "For more information, please see our <a href=\"{{url}}\">privacy notice</a>",
+    "thirdPartyPolicies": "or to see the list of specific tools in each category, please <a href=\"{{url}}\">see our list of third-party services</a>",
+    "save": "Update my settings",
+    "socialMedia": {
+      "category": "Social Media",
+      "description": "If you share our content on Facebook, Twitter, or other social media accounts, we may track what {{domain}} content you share. This helps us improve our social media outreach. Selecting OFF will block this tracking."
+    },
+    "status": "Status",
+    "webAnalytics": {
+      "category": "Web Analytics",
+      "description": "We use a variety of tools to count, track, and analyze visits to {{domain}}. This helps us understand how people use the site and where we should make improvements. Selecting OFF will block this tracking."
+    }
+  },
   "review": {
     "editText": "Edit"
   },
