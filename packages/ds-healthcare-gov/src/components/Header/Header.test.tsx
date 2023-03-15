@@ -72,7 +72,7 @@ describe('Header', function () {
     const links = screen.getAllByRole('link');
     expect(links.length).toBe(2);
 
-    const newProps = { links: [{ href: '/foo', label: 'Foo' }] };
+    const newProps = { links: [{ href: '/foo', label: 'Foo', ariaLabel: 'Bar in Foo' }] };
     rerender(<Header {...newProps} />);
     const newLinks = screen.getAllByRole('link');
 
