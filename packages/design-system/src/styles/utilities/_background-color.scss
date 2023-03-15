@@ -221,17 +221,5 @@
 .ds-u-fill--focus-color-dark {
   background-color: var(--color-focus-dark) !important;
 }
-// Deprecated Focus colors
-.ds-u-fill--focus-color {
-  background-color: var(--color-focus) !important;
-}
-
-.ds-u-fill--focus-color-inverse {
-  background-color: var(--color-focus-inverse) !important;
-}
-
-.ds-u-fill--focus-border-inverse {
-  background-color: var(--color-focus-border-inverse) !important;
-}
 
 /* stylelint-enable declaration-no-important */
