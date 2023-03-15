@@ -152,7 +152,6 @@
 --shadow-focus: inset 0 0 0 1px #404040;
 --shadow-focus-inverse: inset 0 0 0 1px #404040;
 --shadow-focus-link: 0 3px #404040;
---shadow-focus-link-inverse: 0 3px undefined;
 --shadow-box-card: 0 2px 3px 0 rgba(50, 50, 50, 0.23);
 --shadow-base-offset-x: 2px;
 --shadow-base-offset-y: 2px;
