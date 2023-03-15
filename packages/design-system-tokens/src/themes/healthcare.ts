@@ -96,7 +96,6 @@ export const shadow: ShadowTokens = {
   'focus':                      `inset 0 0 0 1px ${themeColors['base']}`,
   'focus-inverse':              `inset 0 0 0 1px ${themeColors['base']}`,
   'focus-link':                 `0 3px ${themeColors['base']}`,
-  'focus-link-inverse':         `0 3px ${themeColors['focus-border-inverse']}`,
   'base-offset-x':              '2px',
   'base-offset-y':              '2px',
   'base-blur-radius':           '4px',

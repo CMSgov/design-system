@@ -123,7 +123,6 @@ export const shadow: ShadowTokens = {
   'focus':                      `inset 0 0 0 1px ${themeColors['base']}`,
   'focus-inverse':              `inset 0 0 0 1px ${themeColors['base']}`,
   'focus-link':                 `0 3px ${themeColors['base']}`,
-  'focus-link-inverse':         `0 3px ${themeColors['focus-border-inverse']}`,
   'box-card': '0 2px 3px 0 rgba(50, 50, 50, 0.23)',
   'base-offset-x':              '2px',
   'base-offset-y':              '2px',
