@@ -11,6 +11,7 @@ import defaultMenuLinks from './defaultMenuLinks';
 export interface Link {
   href: string;
   label: React.ReactNode;
+  ariaLabel: string;
   className?: string;
   onClick?: (...args: any[]) => any;
 }

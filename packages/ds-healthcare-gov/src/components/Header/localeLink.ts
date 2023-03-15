@@ -14,6 +14,7 @@ export default function localeLink(
     : `https://www.cuidadodesalud.gov/es/${subpath}`;
   return {
     label: languageMatches(locale, 'es') ? t('header.english') : t('header.español'),
+    ariaLabel: t('header.langAriaLabel'),
     href: switchLocaleLink ?? defaultLocaleLink,
   };
 }
