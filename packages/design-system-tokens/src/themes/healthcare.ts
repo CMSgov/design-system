@@ -63,12 +63,6 @@ export const themeColors: ColorTokens = {
   'primary-dark':               color['sapphire-600'],
   'primary-darker':             color['sapphire-700'],
   'primary-darkest':            color['sapphire-800'],
-  // @TODO deprecate primary-alt as secondary
-  'primary-alt':                color['darksky-500'],
-  'primary-alt-dark':           color['darksky-600'],
-  'primary-alt-darkest':        color['darksky-800'],
-  'primary-alt-light':          color['darksky-300'],
-  'primary-alt-lightest':       color['darksky-50'],
   //
   'secondary-lightest':         color['spring-50'],
   'secondary-lighter':          color['spring-100'],
