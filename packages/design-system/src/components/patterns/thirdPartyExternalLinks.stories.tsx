@@ -13,11 +13,14 @@ export const ThirdPartyExternalLink = () => {
   return (
     <>
       <Button
-        className="ds-c-button ds-c-button--ghost ds-u-font-weight--normal"
+        className="ds-c-button--ghost ds-u-font-weight--normal"
         onClick={() => setShowModal({ showModal: true })}
       >
         Link to external site
-        <ExternalLinkIcon className="ds-u-margin-left--05" />
+        <ExternalLinkIcon
+          title="This link goes to an external site"
+          className="ds-u-margin-left--05"
+        />
       </Button>
       {showModal && (
         <Dialog
