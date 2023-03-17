@@ -58,6 +58,11 @@ getSystems().forEach((sysinfo) => {
             <li>DS CSS:<br> <code class="ds-u-fill--gray-lightest ds-u-padding--1 ds-u-margin--1 ds-u-display--inline-block"><a href="https://design.cms.gov/cdn/${system}/${version}/css/index.css">https://design.cms.gov/cdn/${system}/${version}/css/index.css</a></code></li>
             <li>Theme:<br> <code class="ds-u-fill--gray-lightest ds-u-padding--1 ds-u-margin--1 ds-u-display--inline-block"><a href="https://design.cms.gov/cdn/${themeCssPath}">https://design.cms.gov/cdn/${themeCssPath}</a></code></li>
           </ul>
+        <h3 class="ds-text-heading--md">The following assets are also available for this version:</h3> 
+          <ul>
+            <li>Preact JS Bundle:<br> <code class="ds-u-fill--gray-lightest ds-u-padding--1 ds-u-margin--1 ds-u-display--inline-block"><a href="https://design.cms.gov/cdn/${system}/${version}/js/preact-components.js">https://design.cms.gov/cdn/${system}/${version}/js/preact-components.js</a></code></li>
+            <li>Web Components JS Bundle:<br> <code class="ds-u-fill--gray-lightest ds-u-padding--1 ds-u-margin--1 ds-u-display--inline-block"><a href="https://design.cms.gov/cdn/${system}/${version}/js/web-components.js">https://design.cms.gov/cdn/${system}/${version}/js/web-components.js</a></code></li>
+          </ul>
       </div>
     </div>
   </body>
