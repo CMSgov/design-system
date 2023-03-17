@@ -191,13 +191,13 @@ const makeNotesMD = (notes: any[]): string => {
         if (theme[sys]) {
           md += `## [${theme[sys].longName}](${theme[sys].urlNpm}) [${versions[sys]}]\n`;
         } else {
-          // we only have two outliers that do not exist in our theme file
-          // internal, and documentation, which each need their place in the
-          // release notes.
+          // the documentation site url is not listed in themes
+          // and needs to be handled outside that, any outliers
+          // will receive a link to our github repo
           const sysUrl =
-            sys === 'internal'
-              ? 'https://github.com/CMSgov/design-system'
-              : 'https://design.cms.gov';
+            sys === 'documentation'
+              ? 'https://design.cms.gov'
+              : 'https://github.com/CMSgov/design-system';
           const sysName = sys.charAt(0).toUpperCase() + sys.slice(1);
           md += `## (${sysName})[${sysUrl}]\n`;
         }
