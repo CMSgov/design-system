@@ -5,16 +5,13 @@ import c from 'chalk';
 
 const getSystems = () => {
   const result: string[][] = [];
-  Object.entries(themes).forEach((theme) => {
-    const config = theme[1];
-    if ('incomplete' in config) return;
+  Object.entries(themes).forEach(([themeName, themeInfo]) => {
+    if ('incomplete' in themeInfo) return;
 
-    const shortname =
-      config.packageName.split('-')[0] === 'design' ? 'core' : config.packageName.split('-')[1];
-    const packageFile = path.join('packages', config.packageName, 'package.json');
+    const packageFile = path.join('packages', themeInfo.packageName, 'package.json');
     const version = JSON.parse(fs.readFileSync(packageFile, 'utf8')).version;
 
-    result.push([config.packageName, version, shortname]);
+    result.push([themeInfo.packageName, version, themeName]);
   });
   return result;
 };
