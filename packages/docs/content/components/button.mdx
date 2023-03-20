@@ -309,10 +309,16 @@ When pairing 2 CTAs:
 - Confirm the user meant to trigger a destructive action before following through with the action.
 - Provide a method for a user to undo a destructive action.
 
-**Disabled buttons**
+**Avoid using disabled buttons**
 
-- Don’t disable buttons, unless there’s a good reason to.
-- If you do disable a button, make sure it receives the disabled styling. A `button` element will automatically be styled as a disabled button when it has the `disabled` HTML attribute, but an `a` element will need to have the `.ds-c-button--disabled` class applied to it.
+Disabling a "button" to act as a guide to the level of form completion is a common anti-pattern (e.g., you aren't able to proceed in the next step until the form contains enough data). Why it's a problem:
+
+- Buttons tend to have call-to-action text that matches what users want to do, so people try to interact with them.
+- They have terrible color contrast.
+- They don’t provide feedback and tell the user why they're disabled. They communicate that something is off, but very often that is not enough information. As a result, users are left wondering what’s actually missing, and consequently are locked out entirely.
+- Assistive technologies like [screen readers](https://www.nngroup.com/articles/touchscreen-screen-readers/) and [switches](https://en.wikipedia.org/wiki/Switch_access) are usually not even able to navigate to disabled buttons.
+
+For these reasons, disabled buttons can be frustrating for all users but especially those with cognitive disabilities and those who use assistive technologies. 
 
 <ThemeContent onlyThemes={['healthcare']}>
 
@@ -336,9 +342,12 @@ Consider when to use links vs. when to use buttons. Links and buttons are read d
 
 
 - Buttons should display a visible focus state when users tab to them.
-- Create a button with a `button` or `a` element to retain the native click functionality. Avoid using `<div>` or `<img>` tags to create buttons. Screen readers don't automatically know either is a usable button.
+- Create a button with a `<button>` or `<a>` element to retain the native click functionality. Avoid using `<div>` or `<img>` tags to create buttons. Screen readers don't automatically know either is a usable button.
 - When styling links to look like buttons, remember that screen readers handle links slightly differently than they do buttons. Pressing the `Space` key triggers a button, but pressing the `Enter` key triggers a link.
-- Dimmed or unavailable buttons should have the `disabled` attribute applied. This removes native click and keypress events from the button. It also prevents automated scanners from logging a low contrast error. Finally, it announces the button as "dimmed" or "disabled" to screen readers, offering users additional context.
+- Dimmed or unavailable buttons using the `<a>` tag must have the `aria-disabled` attribute set to true and its `href` attribute removed. 
+    - Unlike the `<button>`, `disabled` is not a valid attribute for `<a>`. To describe the disabled state to screen reader users, use the `aria-disabled` attribute instead.
+    - The `href` attribute is not required on `<a>` and when it's absent it doesn't create a hyperlink.
+- Dimmed or unavailable buttons using the `<button>` tag should have the `disabled` attribute applied. This removes native click and keypress events from the button. It also prevents automated scanners from logging a low contrast error. Finally, it announces the button as "dimmed" or "disabled" to screen readers, offering users additional context.
 
 
 
