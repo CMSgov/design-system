@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "yarn build:tokens && yarn build:core && yarn build:healthcare && yarn build:medicare && yarn build:prop-data",
+    "build": "yarn build:tokens && yarn build:core && yarn build:healthcare && yarn build:medicare && yarn build:prop-data && yarn build:cdn-index",
     "build:core": "yarn gulp build",
     "build:healthcare": "yarn gulp build --package packages/ds-healthcare-gov",
     "build:medicare": "yarn gulp build --package packages/ds-medicare-gov",
@@ -15,6 +15,7 @@
     "build:storybook": "./scripts/build-storybook.sh",
     "build:storybook:docs": "./scripts/build-storybook.sh docs",
     "build:tokens": "yarn --cwd ./packages/design-system-tokens build:all",
+    "build:cdn-index": "ts-node ./scripts/build-cdn-indexes.ts",
     "build:docs": "yarn build:storybook:docs && yarn build:prop-data && yarn --cwd ./packages/docs build",
     "build:prop-data": "node ./scripts/extractPropData.js",
     "check:maturity": "./scripts/maturityCheck.sh",
