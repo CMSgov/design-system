@@ -6,7 +6,6 @@ function UsaBannerExample(): React.ReactElement {
     <div>
       <h2>Usa Banner Example</h2>
       <UsaBanner />
-      <UsaBanner locale="es" />
     </div>
   );
 }
