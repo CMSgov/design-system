@@ -346,7 +346,7 @@ Consider when to use links vs. when to use buttons. Links and buttons are read d
 - When styling links to look like buttons, remember that screen readers handle links slightly differently than they do buttons. Pressing the `Space` key triggers a button, but pressing the `Enter` key triggers a link.
 - Dimmed or unavailable buttons using the `<a>` tag must have the `aria-disabled` attribute set to true and its `href` attribute removed. 
     - Unlike the `<button>`, `disabled` is not a valid attribute for `<a>`. To describe the disabled state to screen reader users, use the `aria-disabled` attribute instead.
-    - The `href` attribute is not required on `<a>` and when it's absent it doesn't create a hyperlink.
+    - The `href` attribute is not required on `<a>`, and when it's absent it doesn't create a hyperlink.
 - Dimmed or unavailable buttons using the `<button>` tag should have the `disabled` attribute applied. This removes native click and keypress events from the button. It also prevents automated scanners from logging a low contrast error. Finally, it announces the button as "dimmed" or "disabled" to screen readers, offering users additional context.
 
 
