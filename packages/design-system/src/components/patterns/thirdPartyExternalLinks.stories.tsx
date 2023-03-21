@@ -17,10 +17,7 @@ export const ThirdPartyExternalLink = () => {
         onClick={() => setShowModal({ showModal: true })}
       >
         Link to external site
-        <ExternalLinkIcon
-          title="This link goes to an external site"
-          className="ds-u-margin-left--05"
-        />
+        <ExternalLinkIcon className="ds-u-margin-left--05" />
       </Button>
       {showModal && (
         <Dialog
@@ -28,11 +25,11 @@ export const ThirdPartyExternalLink = () => {
           heading="You are leaving URL"
           closeButtonText=""
           actions={[
-            <Button className="ds-c-button ds-c-button--solid" key="solid" href="https://cms.gov">
+            <Button className="ds-c-button--solid" key="solid" href="https://cms.gov">
               OK
             </Button>,
             <Button
-              className="ds-c-button ds-c-button--ghost"
+              className="ds-c-button--ghost"
               key="cancel"
               onClick={() => setShowModal({ showModal: false })}
             >
