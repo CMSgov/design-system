@@ -1,8 +1,9 @@
 import { execSync } from 'node:child_process';
 import chalk from 'chalk';
-import readline from 'readline';
 import themes from '../themes.json';
 import { writeFileSync } from 'node:fs';
+
+const prompt = require('readline-sync');
 
 interface PRDetails {
   author: string;
@@ -31,17 +32,33 @@ const icon: Icons = icons;
 
 type PRNote = [string, string, string, number];
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-
 /**
  * Current milestone reference
  */
-const milestone = JSON.parse(
-  execSync('gh api repos/CMSgov/design-system/milestones').toString()
-)[0];
+const chooseMilestone = () => {
+  let answer, milestone;
+  const milestoneQuery = JSON.parse(
+    execSync('gh api repos/CMSgov/design-system/milestones').toString()
+  );
+
+  if (milestoneQuery.length < 1) {
+    console.error('There are currently no milestones defined.');
+  } else if (milestoneQuery.length === 1) {
+    milestone = milestoneQuery[0];
+  } else {
+    console.log(c.yellow('Current Milestones:'));
+    milestoneQuery.forEach((ms: any, i: number) => {
+      console.log(`  ${i + 1}. ${c.cyan(ms.title)}`);
+    });
+    answer = prompt.question('Which milestone? (number): ').trim();
+    if (answer >= 0 && answer < milestoneQuery.length + 1) {
+      milestone = milestoneQuery[answer - 1];
+    } else {
+      console.log(c.red(`Please enter a number between 1 and ${milestoneQuery.length}`));
+    }
+  }
+  return milestone;
+};
 
 /**
  * Grabs latest tag from each theme and returns an array of `theme: version` items.
@@ -76,7 +93,7 @@ const latestCoreTag = getLatestCoreTag();
 const getPRs = () => {
   const prData = JSON.parse(
     execSync(
-      `gh pr list --search "milestone:${title}" --state merged --json title,url,labels,number,author,mergeCommit`
+      `gh pr list --search milestone:'"${title}"' --state merged --json title,url,labels,number,author,mergeCommit`
     ).toString()
   );
   const prs: PRDetails[] = prData.map((pr: any) => {
@@ -161,19 +178,35 @@ const makeNotesMD = (notes: any[]): string => {
     lastSystem = sys;
     lastType = typ;
 
-    if (sameType && sameSystem) {
-      md += `- ${title} (#${num})\n`;
-    }
-    if (!sameType && sameSystem) {
-      md += `### ${typIcon} ${upCase(typ)}\n`;
-      md += `- ${title} (#${num})\n`;
-    }
-    if (!sameSystem || (!sameSystem && !sameType)) {
-      // the first item from this group, let's print a title and the first type
-      const url = theme[sys].urlNpm ? theme[sys].urlNpm : 'https://design.cms.gov';
-      md += `## [${theme[sys].longName}](${url}) [${versions[sys]}]\n`;
-      md += `### ${typIcon} ${upCase(typ)}\n`;
-      md += `- ${title} (#${num})\n`;
+    if (!theme[sys]?.incomplete) {
+      if (sameType && sameSystem) {
+        md += `- ${title} (#${num})\n`;
+      }
+      if (!sameType && sameSystem) {
+        md += `### ${typIcon} ${upCase(typ)}\n`;
+        md += `- ${title} (#${num})\n`;
+      }
+      if (!sameSystem || (!sameSystem && !sameType)) {
+        // the first item from this group, let's print a title and the first type
+        if (theme[sys]) {
+          md += `## [${theme[sys].longName}](${theme[sys].urlNpm}) [${versions[sys]}]\n`;
+        } else {
+          // the documentation site url is not listed in themes
+          // and needs to be handled outside that, any outliers
+          // will receive a link to our github repo
+          const sysUrl =
+            sys === 'documentation'
+              ? 'https://design.cms.gov'
+              : 'https://github.com/CMSgov/design-system';
+          const sysName = sys.charAt(0).toUpperCase() + sys.slice(1);
+          md += `## (${sysName})[${sysUrl}]\n`;
+        }
+        if (theme[sys] && sys !== 'core') {
+          md += 'All changes from the core design system and...\n';
+        }
+        md += `### ${typIcon} ${upCase(typ)}\n`;
+        md += `- ${title} (#${num})\n`;
+      }
     }
   });
   return md + '\n';
@@ -187,7 +220,7 @@ const displayJiraTickets = (data: PRDetails[]) => {
   const notes = data
     .filter((pr) => !pr.ticket?.toLowerCase().includes('ticket'))
     .map((pr) => ({
-      ticket: `https://jira.cms.gov/browse/${pr.ticket}`,
+      ticket: `https://jira.cms.gov/browse/${pr.ticket?.replace(/(.+)\].*$/, '$1')}`,
       title: pr.title,
     }));
   const unticketed = data.filter((pr) => pr.ticket?.toLowerCase().includes('ticket'));
@@ -226,6 +259,7 @@ const publishNotes = (notes: string) => {
 /**
  * Starting point for generating notes
  */
+const milestone = chooseMilestone();
 const { title, open_issues, closed_issues } = milestone;
 console.log(
   `\nCurrent milestone ${c.green(milestone.title)} with ${
@@ -242,8 +276,13 @@ displayJiraTickets(prs);
 console.log(`\n-- ${c.cyan('Notes')} --`);
 console.log(notesMD);
 
-rl.question('\nDo these notes look OK to publish as a Draft? (Y/n): ', (answer) => {
-  answer.trim().toLowerCase() === 'y' || answer.trim().toLowerCase() === ''
-    ? publishNotes(notesMD)
-    : process.exit(0);
-});
+const publishOk = prompt
+  .question('\nDo these notes look OK to publish as a Draft? (Y/n): ')
+  .trim()
+  .toLowerCase();
+
+if (publishOk === 'y' || publishOk === '') {
+  publishNotes(notesMD);
+} else {
+  process.exit(0);
+}
