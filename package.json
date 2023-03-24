@@ -2,7 +2,10 @@
   "name": "design-system",
   "private": true,
   "description": "A set of open source design and front-end development resources for creating Section 508 compliant, responsive, and consistent websites.",
-  "repository": "https://github.com/CMSgov/design-system",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CMSgov/design-system.git"
+  },
   "workspaces": [
     "packages/*"
   ],
@@ -47,7 +50,8 @@
     "test:browser:smoke": "docker run --rm --network host -v $(pwd):/work/ -w /work/ --env SMOKE=true mcr.microsoft.com/playwright:v1.31.0-focal yarn playwright test --config tests/browser/playwright.config.ts",
     "test:browser:interaction": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.31.0-focal yarn playwright test --config tests/browser/interaction.config.ts",
     "test:browser:update": "yarn build:storybook && yarn test:browser -u && yarn test:browser:interaction -u",
-    "type-check": "yarn tsc --noEmit"
+    "type-check": "yarn tsc --noEmit",
+    "chromatic": "npx chromatic --build-script-name build:storybook --output-dir storybook-static"
   },
   "husky": {
     "hooks": {
@@ -100,6 +104,7 @@
     "babel-plugin-inline-react-svg": "^2.0.1",
     "babel-plugin-module-resolver": "^5.0.0",
     "babel-plugin-typescript-to-proptypes": "^2.0.0",
+    "chromatic": "^6.17.2",
     "copy-webpack-plugin": "^6.4.1",
     "css-loader": "^5",
     "cssnano": "^5.1.13",
@@ -154,5 +159,12 @@
   "engines": {
     "node": ">=11.0.0",
     "yarn": ">=1.22.4"
-  }
+  },
+  "version": "",
+  "bugs": {
+    "url": "https://github.com/CMSgov/design-system/issues"
+  },
+  "readme": "ERROR: No README data found!",
+  "homepage": "https://github.com/CMSgov/design-system#readme",
+  "_id": "design-system@"
 }
