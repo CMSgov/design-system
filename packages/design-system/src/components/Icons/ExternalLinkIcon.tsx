@@ -5,6 +5,7 @@ import { SvgIcon, IconCommonProps } from './SvgIcon';
 const defaultProps = {
   className: '',
   viewBox: '0 0 512 512',
+  ariaHidden: false,
 };
 
 export function ExternalLinkIcon(props: IconCommonProps): React.ReactElement {

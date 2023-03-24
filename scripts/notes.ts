@@ -1,8 +1,8 @@
 import { execSync } from 'node:child_process';
-import chalk from 'chalk';
-import themes from '../themes.json';
+import * as themes from '../themes.json';
 import { writeFileSync } from 'node:fs';
 
+const chalk = require('chalk');
 const prompt = require('readline-sync');
 
 interface PRDetails {
@@ -150,12 +150,14 @@ const organizeNotes = (data: PRDetails[]) => {
   // initial sort
   notes.sort();
 
-  // move cmsgov to end
-  notes.forEach((note: PRNote) => {
-    if (note[0] === 'cmsgov') {
-      notes.push(note);
-      notes.shift();
-    }
+  // move cmsgov to end of list
+  notes.forEach((note: PRNote, indx: number) => {
+    if (note[0] === 'cmsgov') notes.push(notes.splice(indx, 1)[0]);
+  });
+
+  // move documentation to end of list
+  notes.forEach((note: PRNote, indx: number) => {
+    if (note[0] === 'documentation') notes.push(notes.splice(indx, 1)[0]);
   });
 
   return notes;
@@ -199,7 +201,7 @@ const makeNotesMD = (notes: any[]): string => {
               ? 'https://design.cms.gov'
               : 'https://github.com/CMSgov/design-system';
           const sysName = sys.charAt(0).toUpperCase() + sys.slice(1);
-          md += `## (${sysName})[${sysUrl}]\n`;
+          md += `## [${sysName}](${sysUrl})\n`;
         }
         if (theme[sys] && sys !== 'core') {
           md += 'All changes from the core design system and...\n';
@@ -237,12 +239,12 @@ const publishNotes = (notes: string) => {
 
   writeFileSync(fn, notes, { encoding: 'utf8' });
 
-  let successUrl;
+  let successUrl: string;
   const draftPre = versions.core.includes('beta') ? '--draft --prerelease' : '--draft';
 
   try {
     successUrl = execSync(
-      `gh release create ${latestCoreTag} ${draftPre} --title ${versions.core}-test --notes-file ./${fn}`,
+      `gh release create ${latestCoreTag} ${draftPre} --title ${versions.core} --notes-file ./${fn}`,
       { encoding: 'utf8' }
     );
     console.log(`\n-- ${c.blueBright('Success!')} --`);
