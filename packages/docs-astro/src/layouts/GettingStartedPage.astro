@@ -34,16 +34,16 @@ const { title } = Astro.props;
     <SkipNav href="#main" />
     <UsaBanner className="ds-u-display--none ds-u-md-display--block" />
 
-		<div class="ds-l-row ds-u-margin--0 full-height">
-		<Navigation />
-    <main>
-      <article>
-        <h1 class="title">{title}</h1>
-        <hr />
-        <slot />
-      </article>
-    </main>
-	</div>
+    <div class="ds-l-row ds-u-margin--0 full-height">
+      <Navigation />
+      <main class="ds-l-md-col ds-u-padding--0 ds-u-padding-bottom--4">
+        <article>
+          <h1 class="title">{title}</h1>
+          <hr />
+          <slot />
+        </article>
+      </main>
+    </div>
     <Footer />
   </body>
 </html>

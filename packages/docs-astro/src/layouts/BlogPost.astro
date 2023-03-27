@@ -35,25 +35,25 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
     <SkipNav href="#main" />
     <UsaBanner className="ds-u-display--none ds-u-md-display--block" />
 
-		<div class="ds-l-row ds-u-margin--0 full-height">
-		<Navigation />
-    <main>
-      <article>
-        {heroImage && <img width={720} height={360} src={heroImage} alt="" />}
-        <h1 class="title">{title}</h1>
-        <FormattedDate date={pubDate} />
-        {
-          updatedDate && (
-            <div class="last-updated-on">
-              Last updated on <FormattedDate date={updatedDate} />
-            </div>
-          )
-        }
-        <hr />
-        <slot />
-      </article>
-    </main>
-	</div>
+    <div class="ds-l-row ds-u-margin--0 full-height">
+      <Navigation />
+      <main class="ds-l-md-col ds-u-padding--0 ds-u-padding-bottom--4">
+        <article>
+          {heroImage && <img width={720} height={360} src={heroImage} alt="" />}
+          <h1 class="title">{title}</h1>
+          <FormattedDate date={pubDate} />
+          {
+            updatedDate && (
+              <div class="last-updated-on">
+                Last updated on <FormattedDate date={updatedDate} />
+              </div>
+            )
+          }
+          <hr />
+          <slot />
+        </article>
+      </main>
+    </div>
     <Footer />
   </body>
 </html>

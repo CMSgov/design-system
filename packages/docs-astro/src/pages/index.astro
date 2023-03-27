@@ -1,7 +1,10 @@
 ---
+import '@cmsgov/design-system/css/index.css';
+import '@cmsgov/design-system/css/core-theme.css';
 import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { SkipNav, UsaBanner } from '@cmsgov/design-system';
+import Navigation from '../components/Navigation.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
@@ -10,9 +13,13 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
-	<body>
-		<Header title={SITE_TITLE} />
-		<main>
+	<body class="ds-base">
+    <SkipNav href="#main" />
+    <UsaBanner className="ds-u-display--none ds-u-md-display--block" />
+
+		<div class="ds-l-row ds-u-margin--0 full-height">
+			<Navigation />
+			<main class="ds-l-md-col ds-u-padding--0 ds-u-padding-bottom--4">
 			<h1>🧑‍🚀 Hello, Astronaut!</h1>
 			<p>
 				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
@@ -45,6 +52,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
 			</p>
 		</main>
+		</div>
 		<Footer />
 	</body>
 </html>
