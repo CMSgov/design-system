@@ -1,35 +1,33 @@
 ---
+import { CollectionEntry, getCollection } from 'astro:content';
 import { VerticalNav } from '@cmsgov/design-system';
 
 const { pathname } = Astro.url;
 
-const blogFiles = await Astro.glob('../content/blog/*.md');
-const blogItems = blogFiles.map((post) => ({
-  label: post.frontmatter.title,
-  selected: post.file?.includes(pathname),
-  // `post.url` is supposed to exist according to https://docs.astro.build/en/reference/api-reference/#astroglob,
-  // but it doesn't.
-  url: '/' + post.file.match(/src\/content\/(blog\/.*)\.md$/)?.[1],
+
+const blogPages = await getCollection('blog');
+const blogItems = blogPages.map((page) => ({
+  label: page.data.title,
+  selected: pathname.includes(`blog/${page.slug}`),
+  url: `/blog/${page.slug}`,
 }));
 
-const gettingStartedFiles = await Astro.glob('../content/getting-started/*.mdx');
-const gettingStartedItems = gettingStartedFiles.map((page) => ({
-  label: page.frontmatter.title,
-  selected: page.file?.includes(pathname),
-  // `page.url` is supposed to exist according to https://docs.astro.build/en/reference/api-reference/#astroglob,
-  // but it doesn't.
-  url: '/' + page.file.match(/src\/content\/(getting-started\/.*)\.mdx$/)?.[1],
+const gettingStartedPages = await getCollection('getting-started');
+const gettingStartedItems = gettingStartedPages.map((page) => ({
+  label: page.data.title,
+  selected: pathname.includes(`getting-started/${page.slug}`),
+  url: `/getting-started/${page.slug}`,
 }));
 
 const navItems = [
   {
     label: "Blog (Test content)",
-    selected: pathname.includes("blog"),
+    selected: blogItems.some(item => item.selected),
     items: blogItems,
   },
   {
     label: "Getting Started",
-    selected: pathname.includes("getting-started"),
+    selected: gettingStartedItems.some(item => item.selected),
     items: gettingStartedItems,
   }
 ];
