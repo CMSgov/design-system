@@ -7,10 +7,9 @@
   },
   "cmsgov": {
     "displayName": "CMS.gov",
-    "longName": "CMS.gov Design System", 
+    "longName": "CMS.gov Design System",
     "packageName": "ds-cms-gov",
-    "urlNpm": "https://www.npmjs.com/package/@cmsgov/ds-cms-gov",
-    "incomplete": true
+    "urlNpm": "https://www.npmjs.com/package/@cmsgov/ds-cms-gov"
   },
   "healthcare": {
     "displayName": "HealthCare.gov",
