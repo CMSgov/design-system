@@ -6,16 +6,15 @@ import { SkipNav, UsaBanner } from '@cmsgov/design-system';
 import BaseHead from '../components/BaseHead.astro';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<'getting-started'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title } = Astro.props;
 ---
 
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead title={title} description="" />
     <style>
       .title {
         font-size: 2em;
@@ -39,16 +38,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		<Navigation />
     <main>
       <article>
-        {heroImage && <img width={720} height={360} src={heroImage} alt="" />}
         <h1 class="title">{title}</h1>
-        <FormattedDate date={pubDate} />
-        {
-          updatedDate && (
-            <div class="last-updated-on">
-              Last updated on <FormattedDate date={updatedDate} />
-            </div>
-          )
-        }
         <hr />
         <slot />
       </article>

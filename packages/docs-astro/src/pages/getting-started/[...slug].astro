@@ -1,0 +1,21 @@
+---
+import { CollectionEntry, getCollection } from 'astro:content';
+import GettingStartedPage from '../../layouts/GettingStartedPage.astro';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('getting-started');
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: post,
+	}));
+}
+type Props = CollectionEntry<'getting-started'>;
+
+const post = Astro.props;
+const { Content } = await post.render();
+---
+
+<GettingStartedPage {...post.data}>
+	<h1>{post.data.title}</h1>
+	<Content />
+</GettingStartedPage>

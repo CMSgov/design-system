@@ -1,0 +1,46 @@
+---
+import { VerticalNav } from '@cmsgov/design-system';
+
+const { pathname } = Astro.url;
+
+const blogFiles = await Astro.glob('../content/blog/*.md');
+const blogItems = blogFiles.map((post) => ({
+  label: post.frontmatter.title,
+  selected: post.file?.includes(pathname),
+  // `post.url` is supposed to exist according to https://docs.astro.build/en/reference/api-reference/#astroglob,
+  // but it doesn't.
+  url: '/' + post.file.match(/src\/content\/(blog\/.*)\.md$/)?.[1],
+}));
+
+const gettingStartedFiles = await Astro.glob('../content/getting-started/*.mdx');
+const gettingStartedItems = gettingStartedFiles.map((page) => ({
+  label: page.frontmatter.title,
+  selected: page.file?.includes(pathname),
+  // `page.url` is supposed to exist according to https://docs.astro.build/en/reference/api-reference/#astroglob,
+  // but it doesn't.
+  url: '/' + page.file.match(/src\/content\/(getting-started\/.*)\.mdx$/)?.[1],
+}));
+
+const navItems = [
+  {
+    label: "Blog (Test content)",
+    selected: pathname.includes("blog"),
+    items: blogItems,
+  },
+  {
+    label: "Getting Started",
+    selected: pathname.includes("getting-started"),
+    items: gettingStartedItems,
+  }
+];
+---
+
+<div class="ds-u-padding--0 ds-u-md-padding--2 ds-u-md-padding-top--4 c-navigation">
+  <div class="ds-u-padding--2 ds-u-md-padding--0">
+    <VerticalNav
+      className="c-navigation__link-list"
+      items={navItems}
+      client:load
+    />
+  </div>
+</div>
