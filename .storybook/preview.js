@@ -63,6 +63,7 @@ export const parameters = {
     },
   },
   backgrounds: { disable: true },
+  chromatic: { viewports: [390, 1280] },
 };
 
 export const globalTypes = {
