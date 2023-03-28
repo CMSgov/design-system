@@ -7,6 +7,10 @@ export default {
   args: {
     href: '#main',
   },
+  parameters: {
+    // This isn't a visual component
+    chromatic: { disableSnapshot: true },
+  },
 };
 
 const Template = ({ data, ...args }) => <SkipNav {...args} />;

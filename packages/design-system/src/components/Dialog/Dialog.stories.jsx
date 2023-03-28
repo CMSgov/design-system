@@ -136,3 +136,10 @@ export const PreventScrollExample = ({ isOpen: _isOpen, dialogOpen: _dialogOpen,
     </div>
   );
 };
+
+PreventScrollExample.parameters = {
+  // The dialog isn't open by default, so this is not a useful screenshot as-is.
+  // TODO: See if we could use a play function to click the button to open the
+  // dialog and then take the screenshot.
+  chromatic: { disableSnapshot: true },
+};

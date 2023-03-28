@@ -22,6 +22,8 @@ export default {
       inlineStories: false,
       page: DocsPage,
     },
+    // The dialog isn't open by default, so this is not a useful screenshot as-is.
+    chromatic: { disableSnapshot: true },
   },
   argTypes: {},
   args: {

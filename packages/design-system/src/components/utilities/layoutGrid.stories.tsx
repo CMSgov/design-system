@@ -9,6 +9,7 @@ export default {
         type: 'dynamic',
       },
     },
+    chromatic: { disableSnapshot: true },
   },
 };
 
