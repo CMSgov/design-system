@@ -16,19 +16,21 @@
 }
 
 // Styles for label
-.ds-c-choice + label,
-.ds-c-choice + .ds-c-label {
-  cursor: pointer;
+.ds-c-choice + span {
   flex-basis: min-content;
   flex-grow: 1;
-  font-weight: var(--font-weight-normal);
-  margin-top: 0;
   max-width: max-content;
   transform: translateY(0.25em);
 }
 
-.ds-c-choice--small + label,
-.ds-c-choice--small + .ds-c-label {
+.ds-c-choice + span label,
+.ds-c-choice + span .ds-c-label {
+  cursor: pointer;
+  font-weight: var(--font-weight-normal);
+  margin-top: 0;
+}
+
+.ds-c-choice--small + span {
   transform: translateY(-0.125em);
 }
 

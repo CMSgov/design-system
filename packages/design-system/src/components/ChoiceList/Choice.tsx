@@ -234,13 +234,15 @@ export class Choice extends React.PureComponent<
             }}
             {...inputProps}
           />
-          <FormLabel
-            className={labelClassName}
-            fieldId={this.id}
-            {...{ errorMessage, errorMessageClassName, hint, inversed, requirementLabel }}
-          >
-            {label}
-          </FormLabel>
+          <span>
+            <FormLabel
+              className={labelClassName}
+              fieldId={this.id}
+              {...{ errorMessage, errorMessageClassName, hint, inversed, requirementLabel }}
+            >
+              {label}
+            </FormLabel>
+          </span>
         </div>
         {this.checked() ? checkedChildren : uncheckedChildren}
       </div>
