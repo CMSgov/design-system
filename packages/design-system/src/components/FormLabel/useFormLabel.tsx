@@ -108,6 +108,7 @@ export function useFormLabel<T extends UseFormLabelProps>(props: T) {
     hint,
     requirementLabel,
     inversed,
+    interactiveElement,
     wrapperIsFieldset,
     ...remainingProps
   } = props;
@@ -140,6 +141,7 @@ export function useFormLabel<T extends UseFormLabelProps>(props: T) {
     fieldId: wrapperIsFieldset ? undefined : id,
     hint,
     id: labelId,
+    interactiveElement,
     requirementLabel,
     inversed,
   };
@@ -149,9 +151,7 @@ export function useFormLabel<T extends UseFormLabelProps>(props: T) {
     id,
     errorMessage,
     inversed,
-    'aria-describedby': hasBottomError
-      ? classNames(props['aria-describedby'], errorId)
-      : props['aria-describedby'],
+    'aria-describedby': `${id}-error ${id}-hint`,
     'aria-invalid': !wrapperIsFieldset ? ariaInvalid : undefined,
   };
 

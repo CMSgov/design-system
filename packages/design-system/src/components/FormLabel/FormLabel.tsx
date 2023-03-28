@@ -38,6 +38,7 @@ export interface FormLabelProps {
    * other components with `aria-describedby`.
    */
   id?: string;
+  interactiveElement?: React.ReactNode;
   /**
    * Set to `true` to apply the "inverse" theme
    */
@@ -65,6 +66,8 @@ export class FormLabel extends React.PureComponent<
     let { requirementLabel } = this.props;
     if (!hint && !requirementLabel) return;
 
+    const hintId = this.props.fieldId ? `${this.props.fieldId}-hint` : null;
+
     const classes = classNames('ds-c-field__hint', {
       'ds-c-field__hint--inverse': this.props.inversed,
     });
@@ -84,7 +87,7 @@ export class FormLabel extends React.PureComponent<
     }
 
     return (
-      <span className={classes}>
+      <span id={hintId} className={classes}>
         {requirementLabel}
         {hintPadding}
         {hint}
@@ -136,11 +139,16 @@ export class FormLabel extends React.PureComponent<
     });
 
     return (
-      <ComponentType className={classes} htmlFor={fieldId} id={id} {...labelProps}>
-        <span className={classNames(textClassName)}>{children}</span>
+      <>
+        <ComponentType className={classes} htmlFor={fieldId} id={id} {...labelProps}>
+          {children}
+        </ComponentType>
+        {this.props.interactiveElement && (
+          <span className="ds-c-field__interactive-element">{this.props.interactiveElement}</span>
+        )}
         {this.hint()}
         {this.errorMessage()}
-      </ComponentType>
+      </>
     );
   }
 }
