@@ -2,6 +2,7 @@ import React from 'react';
 import TextField from './TextField';
 import { unmaskValue } from './maskHelpers';
 import { DATE_MASK, PHONE_MASK, SSN_MASK, ZIP_MASK, CURRENCY_MASK } from './useLabelMask';
+import Tooltip from '../Tooltip/Tooltip';
 import { action } from '@storybook/addon-actions';
 import { useArgs } from '@storybook/client-api';
 
@@ -105,6 +106,24 @@ ErrorField.args = {
   errorMessage: 'Example error message',
   hint: 'Helpful hint text',
 };
+
+export const FieldWithInteractiveElementLabel = UncontrolledTemplate.bind({});
+FieldWithInteractiveElementLabel.args = {
+  errorMessage: 'Example error message',
+  hint: 'Helpful hint text',
+  requirementLabel: 'Optional',
+  interactiveElement: (
+    <Tooltip
+      component="a"
+      onClose={function noRefCheck() {}}
+      onOpen={function noRefCheck() {}}
+      title="To be accessible, interactive elements must not be nested inside of a &lt;label&gt; element."
+    >
+      An example of an interactive element used alongside a form label.
+    </Tooltip>
+  ),
+};
+
 export const SuccessField = UncontrolledTemplate.bind({});
 SuccessField.args = {
   fieldClassName: 'ds-c-field--success',

@@ -143,14 +143,6 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
       aria-invalid={!!errorMessage}
       {...inputProps}
       aria-label={ariaLabel || props['aria-label']}
-      // Link input to bottom placed error message
-      // Use of the classNames function for this is confusing
-      aria-describedby={
-        classNames(
-          props['aria-describedby'],
-          errorPlacement === 'bottom' && errorMessage && errorId
-        ) || undefined
-      }
     />
   );
 };
