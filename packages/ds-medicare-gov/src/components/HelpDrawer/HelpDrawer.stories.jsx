@@ -23,6 +23,7 @@ export default {
         </>
       ),
     },
+    theme: 'medicare',
   },
 };
 
