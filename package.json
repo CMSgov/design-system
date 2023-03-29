@@ -50,8 +50,7 @@
     "test:browser:smoke": "docker run --rm --network host -v $(pwd):/work/ -w /work/ --env SMOKE=true mcr.microsoft.com/playwright:v1.31.0-focal yarn playwright test --config tests/browser/playwright.config.ts",
     "test:browser:interaction": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.31.0-focal yarn playwright test --config tests/browser/interaction.config.ts",
     "test:browser:update": "yarn build:storybook && yarn test:browser -u && yarn test:browser:interaction -u",
-    "type-check": "yarn tsc --noEmit",
-    "chromatic": "npx chromatic --build-script-name build:storybook --output-dir storybook-static"
+    "type-check": "yarn tsc --noEmit"
   },
   "husky": {
     "hooks": {
