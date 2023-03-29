@@ -1,5 +1,7 @@
 import './storybookStyles.scss';
 import React from 'react';
+import isChromatic from 'chromatic/isChromatic';
+import themes from '../themes.json';
 import {
   setAlertSendsAnalytics,
   setButtonSendsAnalytics,
@@ -9,7 +11,6 @@ import {
 import { setHeaderSendsAnalytics } from '../packages/ds-healthcare-gov/src/components/flags';
 import { setLanguage } from '../packages/design-system/src/components/i18n';
 import { setLanguage as setLanguageFromPackage } from '@cmsgov/design-system';
-import themes from '../themes.json';
 
 // Rewire analytics events to log to the console
 window.utag = { link: console.log };
@@ -117,7 +118,15 @@ const baseClassDecorator = (Story, context) => {
 };
 
 const themeSettingDecorator = (Story, context) => {
-  const { theme } = context.globals;
+  const { globals, id } = context;
+  let { theme } = globals;
+  if (isChromatic()) {
+    const storyTheme = Object.keys(themes).find((key) => id.startsWith(key));
+    if (storyTheme) {
+      theme = storyTheme;
+    }
+  }
+
   document.documentElement.setAttribute('data-theme', theme);
 
   const themeCss = document.querySelector('link[title=themeCss]');
