@@ -144,7 +144,12 @@ export class FormLabel extends React.PureComponent<
           {children}
         </ComponentType>
         {this.props.interactiveElement && (
-          <span className="ds-c-field__interactive-element">{this.props.interactiveElement}</span>
+          <span
+            id={this.props.fieldId ? `${this.props.fieldId}-interactive` : null}
+            className="ds-c-field__interactive-element"
+          >
+            {this.props.interactiveElement}
+          </span>
         )}
         {this.hint()}
         {this.errorMessage()}

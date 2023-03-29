@@ -151,7 +151,7 @@ export function useFormLabel<T extends UseFormLabelProps>(props: T) {
     id,
     errorMessage,
     inversed,
-    'aria-describedby': `${id}-error ${id}-hint`,
+    'aria-describedby': `${id}-interactive ${id}-hint ${id}-error`,
     'aria-invalid': !wrapperIsFieldset ? ariaInvalid : undefined,
   };
 
