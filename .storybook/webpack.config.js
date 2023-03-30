@@ -9,6 +9,14 @@ module.exports = async ({ config }) => {
     new CopyPlugin({
       patterns: [
         {
+          from: path.resolve(__dirname, '../packages/design-system/src', 'images'),
+          to: './images',
+        },
+        {
+          from: path.resolve(__dirname, '../packages/design-system/src', 'fonts'),
+          to: './fonts',
+        },
+        {
           from: path.resolve(__dirname, '../packages/ds-healthcare-gov/src', 'images'),
           to: './images',
         },

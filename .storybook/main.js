@@ -16,10 +16,10 @@ module.exports = {
   },
   previewHead: (head) => `
     ${head}
-    <link rel="stylesheet" type="text/css" title="themeCss" href="styles/core-theme.css" />
+    <link rel="stylesheet" type="text/css" title="themeCss" href="core-theme.css" />
   `,
   stories,
-  staticDirs: ['./static/', '../packages/design-system/src'],
+  staticDirs: ['./static/'],
   addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
   core: {
     builder: 'webpack5',
