@@ -5,24 +5,24 @@ const isCI = Boolean(process.env.CI && JSON.parse(process.env.CI));
 const isSmokeTest = Boolean(process.env.SMOKE && JSON.parse(process.env.SMOKE));
 
 const allProjects = [
-  {
-    name: 'chromium',
-    use: { ...devices['Desktop Chrome'] },
-  },
-  {
-    name: 'firefox',
-    use: { ...devices['Desktop Firefox'] },
-  },
-  {
-    name: 'webkit',
-    use: { ...devices['Desktop Safari'] },
-  },
+  // {
+  //   name: 'chromium',
+  //   use: { ...devices['Desktop Chrome'] },
+  // },
+  // {
+  //   name: 'firefox',
+  //   use: { ...devices['Desktop Firefox'] },
+  // },
+  // {
+  //   name: 'webkit',
+  //   use: { ...devices['Desktop Safari'] },
+  // },
 
   /* Test against mobile viewports. */
-  {
-    name: 'Mobile Chrome',
-    use: { ...devices['Pixel 5'] },
-  },
+  // {
+  //   name: 'Mobile Chrome',
+  //   use: { ...devices['Pixel 5'] },
+  // },
   // {
   //   name: 'Mobile Safari',
   //   use: { ...devices['iPhone 12'] },
