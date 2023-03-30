@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { stories } from '../../storybook-static/stories.json';
 import themes from '../../themes.json';
+import percySnapshot from '@percy/playwright';
 
 const storySkipList = [
   'components-dialog--prevent-scroll-example',
@@ -38,7 +39,8 @@ Object.values(stories).forEach((story) => {
 
       test(`with ${theme} theme`, async ({ page }) => {
         await page.goto(`${storyUrl}&globals=theme:${theme}`);
-        await expect(page).toHaveScreenshot(`${story.id}-${theme}.png`, { fullPage: true });
+        await percySnapshot(page as any, `${story.id}-${theme}`);
+        // await expect(page).toHaveScreenshot(`${story.id}-${theme}.png`, { fullPage: true });
       });
     });
   });
