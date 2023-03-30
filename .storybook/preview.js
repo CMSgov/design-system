@@ -65,6 +65,15 @@ export const parameters = {
   },
   backgrounds: { disable: true },
   chromatic: { viewports: [390, 1280] },
+  percy: {
+    additionalSnapshots: Object.keys(themes)
+      .filter((key) => key !== 'core')
+      .map((key) => ({
+        globals: { theme: key },
+        suffix: ` with ${themes[key].displayName} theme`,
+        exclude: [/^Healthcare/, /^Medicare/],
+      })),
+  },
 };
 
 export const globalTypes = {

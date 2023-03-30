@@ -83,6 +83,8 @@
     "@babel/preset-react": "^7.8.3",
     "@babel/preset-typescript": "^7.15.0",
     "@babel/register": "^7.8.4",
+    "@percy/cli": "1.21.0",
+    "@percy/storybook": "4.3.5",
     "@playwright/test": "^1.31.0",
     "@storybook/addon-actions": "^6.5.16",
     "@storybook/addon-essentials": "^6.5.16",
