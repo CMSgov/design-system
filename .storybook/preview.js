@@ -119,9 +119,11 @@ const baseClassDecorator = (Story, context) => {
 
 const themeSettingDecorator = (Story, context) => {
   const { parameters, globals } = context;
-  // Prefer the story parameter setting, which is for components that are
-  // specific to a brand and only sense when viewed in that brand theme
-  const theme = parameters.theme ?? globals.theme;
+  // The story parameter setting is used for components that are specific to a
+  // brand and only make sense when viewed in that brand theme. The overriding
+  // environment variable is for the nightly builds that need to test against
+  // a particular theme.
+  const theme = process.env.STORYBOOK_THEME_OVERRIDE ?? parameters.theme ?? globals.theme;
 
   document.documentElement.setAttribute('data-theme', theme);
 
