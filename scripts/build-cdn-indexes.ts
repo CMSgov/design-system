@@ -20,7 +20,6 @@ getSystems().forEach((sysinfo) => {
   const [system, version, shortname] = sysinfo;
 
   const distPath = path.join('packages', system, 'dist');
-  const themeCssPath = `${distPath}/css/${shortname}-theme.css`;
   const htmlDoc = `<!DOCTYPE html>
 <html lang="en">
   <meta charset="utf-8" />
@@ -53,12 +52,12 @@ getSystems().forEach((sysinfo) => {
           <ul>
             <li>Main JS Bundle:<br> <code class="ds-u-fill--gray-lightest ds-u-padding--1 ds-u-margin--1 ds-u-display--inline-block"><a href="https://design.cms.gov/cdn/${system}/${version}/js/bundle.js">https://design.cms.gov/cdn/${system}/${version}/js/bundle.js</a></code></li>
             <li>DS CSS:<br> <code class="ds-u-fill--gray-lightest ds-u-padding--1 ds-u-margin--1 ds-u-display--inline-block"><a href="https://design.cms.gov/cdn/${system}/${version}/css/index.css">https://design.cms.gov/cdn/${system}/${version}/css/index.css</a></code></li>
-            <li>Theme:<br> <code class="ds-u-fill--gray-lightest ds-u-padding--1 ds-u-margin--1 ds-u-display--inline-block"><a href="https://design.cms.gov/cdn/${themeCssPath}">https://design.cms.gov/cdn/${themeCssPath}</a></code></li>
+            <li>Theme:<br> <code class="ds-u-fill--gray-lightest ds-u-padding--1 ds-u-margin--1 ds-u-display--inline-block"><a href="https://design.cms.gov/cdn/${system}/${version}/css/${shortname}-theme.css">https://design.cms.gov/cdn/${system}/${version}/css/${shortname}-theme.css</a></code></li>
           </ul>
         <h3 class="ds-text-heading--md">The following assets are also available for this version:</h3> 
           <ul>
-            <li>Preact JS Bundle:<br> <code class="ds-u-fill--gray-lightest ds-u-padding--1 ds-u-margin--1 ds-u-display--inline-block"><a href="https://design.cms.gov/cdn/${system}/${version}/js/preact-components.js">https://design.cms.gov/cdn/${system}/${version}/js/preact-components.js</a></code></li>
-            <li>Web Components JS Bundle:<br> <code class="ds-u-fill--gray-lightest ds-u-padding--1 ds-u-margin--1 ds-u-display--inline-block"><a href="https://design.cms.gov/cdn/${system}/${version}/js/web-components.js">https://design.cms.gov/cdn/${system}/${version}/js/web-components.js</a></code></li>
+            <li>Preact JS Bundle:<br> <code class="ds-u-fill--gray-lightest ds-u-padding--1 ds-u-margin--1 ds-u-display--inline-block"><a href="https://design.cms.gov/cdn/${system}/${version}/preact-components/bundle/preact-components.js">https://design.cms.gov/cdn/${system}/${version}/preact-components/bundle/preact-components.js</a></code></li>
+            <li>Web Components JS Bundle:<br> <code class="ds-u-fill--gray-lightest ds-u-padding--1 ds-u-margin--1 ds-u-display--inline-block"><a href="https://design.cms.gov/cdn/${system}/${version}/web-components/bundle/web-components.js">https://design.cms.gov/cdn/${system}/${version}/web-components/bundle/web-components.js</a></code></li>
           </ul>
       </div>
     </div>
