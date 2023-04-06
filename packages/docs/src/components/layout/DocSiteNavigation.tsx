@@ -96,14 +96,11 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
 
   return (
     <div
-      className={classnames(
-        'ds-u-padding--0 ds-u-md-padding--2 ds-u-md-padding-top--4 c-navigation',
-        {
-          'c-navigation--open': isMobile && isMobileNavOpen,
-        }
-      )}
+      className={classnames('ds-u-padding--0 ds-u-md-padding--2 c-navigation', {
+        'c-navigation--open': isMobile && isMobileNavOpen,
+      })}
     >
-      <header className="c-navigation__header">
+      <header className="c-navigation__header ds-u-md-padding-top--4">
         <Button
           className="ds-u-md-display--none ds-u-padding-left--0 ds-u-padding-right--1"
           variation="ghost"
@@ -117,9 +114,12 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
             <MenuIconThin className="ds-u-font-size--xl" />
           )}
         </Button>
-        <a className="c-navigation__title" href="/">
-          CMS Design System
-        </a>
+        <div>
+          <a className="c-navigation__title" href="/">
+            CMS Design System
+          </a>
+          <ThemeSwitcher />
+        </div>
       </header>
 
       <div
@@ -128,7 +128,6 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
         hidden={isMobile && !isMobileNavOpen}
         className="ds-u-padding--2 ds-u-md-padding--0"
       >
-        <ThemeSwitcher />
         <VerticalNav
           className="c-navigation__link-list"
           items={navItems}
