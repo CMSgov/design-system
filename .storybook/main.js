@@ -7,15 +7,20 @@ module.exports = {
   features: {
     buildStoriesJson: true,
     postcss: false,
+    babelModeV7: true,
   },
   previewHead: (head) => `
     ${head}
     <link rel="stylesheet" type="text/css" title="themeCss" href="core-theme.css" />
   `,
   stories,
-  staticDirs: ['./static/'],
-  addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
-  core: {
-    builder: 'webpack5',
+  staticDirs: ['./static/', '../packages/design-system/src'],
+  addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-mdx-gfm'],
+  framework: {
+    name: '@storybook/react-webpack5',
+    options: {},
+  },
+  docs: {
+    autodocs: true,
   },
 };
