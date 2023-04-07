@@ -15,6 +15,9 @@ git checkout main
 git checkout -b $TEMP_BRANCH
 yarn lerna version --no-push --no-git-tag-version --exact
 
+echo "+ Updating versions.json for reference in docs."
+npx ts-node scripts/append-versions.ts
+
 git add -u
 git commit -m 'version bump'
 git push --set-upstream origin $TEMP_BRANCH
