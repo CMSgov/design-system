@@ -37,7 +37,7 @@ Object {
             <td
               data-title="privacy.description"
             >
-              privacy.setting1.description
+              We use digital advertising tools, such as web beacons, to track the effectiveness of our digital advertising outreach efforts. This helps us identify ads that are helpful to consumers and efficient for outreach. Select “Don’t allow” to block this tracking.
             </td>
             <td
               data-title="privacy.status"
@@ -119,7 +119,7 @@ Object {
             <td
               data-title="privacy.description"
             >
-              privacy.setting2.description
+              If you share our content on Facebook, Twitter, or other social media accounts, we may track what Test.gov content you share. This helps us improve our social media outreach. Select “Don’t allow” to block this tracking.
             </td>
             <td
               data-title="privacy.status"
@@ -201,7 +201,7 @@ Object {
             <td
               data-title="privacy.description"
             >
-              privacy.setting3.description
+              We use a variety of tools to count, track, and analyze visits to Test.gov. This helps us understand how people use the site and where we should make improvements. Select “Don’t allow” to block this tracking.
             </td>
             <td
               data-title="privacy.status"
@@ -311,7 +311,7 @@ Object {
           <td
             data-title="privacy.description"
           >
-            privacy.setting1.description
+            We use digital advertising tools, such as web beacons, to track the effectiveness of our digital advertising outreach efforts. This helps us identify ads that are helpful to consumers and efficient for outreach. Select “Don’t allow” to block this tracking.
           </td>
           <td
             data-title="privacy.status"
@@ -393,7 +393,7 @@ Object {
           <td
             data-title="privacy.description"
           >
-            privacy.setting2.description
+            If you share our content on Facebook, Twitter, or other social media accounts, we may track what Test.gov content you share. This helps us improve our social media outreach. Select “Don’t allow” to block this tracking.
           </td>
           <td
             data-title="privacy.status"
@@ -475,7 +475,7 @@ Object {
           <td
             data-title="privacy.description"
           >
-            privacy.setting3.description
+            We use a variety of tools to count, track, and analyze visits to Test.gov. This helps us understand how people use the site and where we should make improvements. Select “Don’t allow” to block this tracking.
           </td>
           <td
             data-title="privacy.status"
