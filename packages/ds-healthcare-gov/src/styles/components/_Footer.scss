@@ -5,16 +5,6 @@
 .hc-c-footer {
   color: var(--color-muted);
   font-size: var(--font-size-sm);
-
-  a {
-    color: currentColor;
-    text-decoration-color: transparent;
-
-    &:hover,
-    &:focus {
-      color: var(--color-primary-darker);
-    }
-  }
 }
 
 .hc-c-footer__list {
@@ -31,6 +21,17 @@
   align-items: center;
   display: flex;
   gap: $spacer-half;
+
+  // Don't accidentally select links in the privacy settings modal
+  > a {
+    color: currentColor;
+    text-decoration-color: transparent;
+
+    &:hover,
+    &:focus {
+      color: var(--color-primary-darker);
+    }
+  }
 
   // "Privacy Settings" link is a button
   > button {
