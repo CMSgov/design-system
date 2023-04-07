@@ -35,10 +35,10 @@ export interface StepProps {
 }
 
 export const Step = ({ step, ...props }: StepProps) => {
-  const getAriaLabel = (text) => {
+  const getAriaLabelText = (text) => {
     const isValidTemplate = text && text.length > 0;
     const label = isValidTemplate ? text.replace('%{step}', step.heading) : undefined;
-    return { 'aria-label': label };
+    return label;
   };
   const Heading = `h${step.headingLevel || '2'}` as const;
   const start = step.isNextStep;
@@ -51,9 +51,10 @@ export const Step = ({ step, ...props }: StepProps) => {
     'ds-c-step__content--with-content': step.description || step.steps,
   });
   const { actionsLabelText, substepsLabelText } = props;
-  const actionsLabel = getAriaLabel(actionsLabelText);
-  const substepsLabel = getAriaLabel(substepsLabelText);
+  const actionsLabel = getAriaLabelText(actionsLabelText);
+  const substepsLabel = getAriaLabelText(substepsLabelText);
   const descriptionHeadingID = uniqueId('heading-');
+  const subStepsAriaSpanID = uniqueId('ss-label-');
 
   let linkLabel;
   if (step.completed && !step.steps) {
@@ -79,14 +80,18 @@ export const Step = ({ step, ...props }: StepProps) => {
         {step.description && (
           <div
             className="ds-c-step__description"
-            aria-labelledby={descriptionHeadingID}
+            aria-describedby={descriptionHeadingID}
             role="region"
           >
             {step.description}
           </div>
         )}
+        <span id={subStepsAriaSpanID} className="ds-u-visibility--screen-reader">
+          {' '}
+          {substepsLabel}
+        </span>
         {step.steps && (
-          <ol role="list" className="ds-c-step__substeps" {...substepsLabel}>
+          <ol role="list" className="ds-c-step__substeps" aria-describedby={subStepsAriaSpanID}>
             {step.steps.map((s, i) => (
               <SubStep
                 step={{ ...s, ...{ component: step.component || s.component } }}
@@ -97,7 +102,7 @@ export const Step = ({ step, ...props }: StepProps) => {
           </ol>
         )}
       </div>
-      <div className="ds-c-step__actions" {...actionsLabel} role="region">
+      <div className="ds-c-step__actions" role="region">
         {step.completed && (
           <div className="ds-c-step__completed-text">
             <CheckIcon className="ds-c-icon-color--success" />
@@ -109,7 +114,7 @@ export const Step = ({ step, ...props }: StepProps) => {
             component={step.component}
             href={step.href}
             stepId={step.id}
-            screenReaderText={step.heading}
+            screenReaderText={actionsLabel}
             onClick={step.onClick || props.onStepLinkClick}
             className={linkClassName}
           >

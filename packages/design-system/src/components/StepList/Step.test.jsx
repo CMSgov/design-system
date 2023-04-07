@@ -11,7 +11,7 @@ const defaultStepProps = {
   editText: 'Edit!',
   resumeText: 'Resume!',
   startText: 'Start!',
-  actionsLabelText: '!Primary actions for %{step}',
+  actionsLabelText: '!Primary action for %{step}',
   substepsLabelText: '!Secondary actions for %{step}',
 };
 
@@ -61,7 +61,7 @@ describe('Step', () => {
   it('renders basic incomplete, unstarted step', () => {
     renderStep();
 
-    const title = screen.getByText(/Do something!/i);
+    const title = screen.getByText('Do something!');
     expect(title).toHaveClass('ds-c-step__heading');
 
     const description = screen.getByText(/Do something really cool!/i);
@@ -157,18 +157,15 @@ describe('Step', () => {
     expect(list).toMatchSnapshot();
   });
 
-  it('renders aria-labels for heading, description, and substeps', () => {
+  it('renders aria elements and sr text for heading, description, and substeps', () => {
     renderStep({ steps: [generateStep({ id: '1' })] });
 
     const description = screen.getAllByRole('region');
     const headerID = description.id;
     expect(description.length).toEqual(2);
-    expect(description[0]).toHaveAttribute('aria-labelledby', headerID);
+    expect(description[0]).toHaveAttribute('aria-describedby', headerID);
 
-    const primaryLabel = screen.getByLabelText(/!Primary actions for Do something!/i);
-    expect(primaryLabel).toBeInTheDocument();
-
-    const secondaryLabel = screen.getByLabelText(/!Secondary actions for Do something!/i);
+    const secondaryLabel = screen.getByText(/!Secondary actions for Do something!/i);
     expect(secondaryLabel).toBeInTheDocument();
   });
 });

@@ -19,42 +19,21 @@ exports[`StepList renders list of steps 1`] = `
         Do something!
       </h2>
       <div
-        aria-labelledby="heading-1"
+        aria-describedby="heading-1"
         class="ds-c-step__description"
         role="region"
       >
         Do something really cool!
       </div>
+      <span
+        class="ds-u-visibility--screen-reader"
+        id="ss-label-2"
+      >
+         
+        Secondary actions for Do something!
+      </span>
     </div>
     <div
-      aria-label="Primary actions for Do something!"
-      class="ds-c-step__actions"
-      role="region"
-    />
-  </li>
-  <li
-    class="ds-c-step"
-    role="listitem"
-  >
-    <div
-      class="ds-c-step__content ds-c-step__content--with-content"
-    >
-      <h2
-        class="ds-c-step__heading"
-        id="heading-2"
-      >
-        Do something!
-      </h2>
-      <div
-        aria-labelledby="heading-2"
-        class="ds-c-step__description"
-        role="region"
-      >
-        Do something really cool!
-      </div>
-    </div>
-    <div
-      aria-label="Primary actions for Do something!"
       class="ds-c-step__actions"
       role="region"
     />
@@ -73,15 +52,54 @@ exports[`StepList renders list of steps 1`] = `
         Do something!
       </h2>
       <div
-        aria-labelledby="heading-3"
+        aria-describedby="heading-3"
         class="ds-c-step__description"
         role="region"
       >
         Do something really cool!
       </div>
+      <span
+        class="ds-u-visibility--screen-reader"
+        id="ss-label-4"
+      >
+         
+        Secondary actions for Do something!
+      </span>
     </div>
     <div
-      aria-label="Primary actions for Do something!"
+      class="ds-c-step__actions"
+      role="region"
+    />
+  </li>
+  <li
+    class="ds-c-step"
+    role="listitem"
+  >
+    <div
+      class="ds-c-step__content ds-c-step__content--with-content"
+    >
+      <h2
+        class="ds-c-step__heading"
+        id="heading-5"
+      >
+        Do something!
+      </h2>
+      <div
+        aria-describedby="heading-5"
+        class="ds-c-step__description"
+        role="region"
+      >
+        Do something really cool!
+      </div>
+      <span
+        class="ds-u-visibility--screen-reader"
+        id="ss-label-6"
+      >
+         
+        Secondary actions for Do something!
+      </span>
+    </div>
+    <div
       class="ds-c-step__actions"
       role="region"
     />

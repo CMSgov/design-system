@@ -10,20 +10,26 @@ exports[`Step renders completed text and an edit link for completed steps 1`] = 
   >
     <h2
       class="ds-c-step__heading"
-      id="heading-7"
+      id="heading-12"
     >
       Do something!
     </h2>
     <div
-      aria-labelledby="heading-7"
+      aria-describedby="heading-12"
       class="ds-c-step__description"
       role="region"
     >
       Do something really cool!
     </div>
+    <span
+      class="ds-u-visibility--screen-reader"
+      id="ss-label-13"
+    >
+       
+      !Secondary actions for Do something!
+    </span>
   </div>
   <div
-    aria-label="!Primary actions for Do something!"
     class="ds-c-step__actions"
     role="region"
   >
@@ -34,7 +40,7 @@ exports[`Step renders completed text and an edit link for completed steps 1`] = 
         aria-hidden="true"
         class="ds-c-icon ds-c-icon--check ds-c-icon-color--success"
         focusable="false"
-        id="icon-8"
+        id="icon-14"
         viewBox="0 0 16 12"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -52,7 +58,7 @@ exports[`Step renders completed text and an edit link for completed steps 1`] = 
         class="ds-u-visibility--screen-reader"
       >
          
-        Do something!
+        !Primary action for Do something!
       </span>
     </a>
   </div>
@@ -61,7 +67,7 @@ exports[`Step renders completed text and an edit link for completed steps 1`] = 
 
 exports[`Step renders substeps 1`] = `
 <ol
-  aria-label="!Secondary actions for Do something!"
+  aria-describedby="ss-label-27"
   class="ds-c-step__substeps"
   role="list"
 >
