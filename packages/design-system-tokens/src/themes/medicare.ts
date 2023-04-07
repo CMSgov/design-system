@@ -65,6 +65,14 @@ export const themeColors: ColorTokens = {
   'secondary-darker':           color['lapis-700'],
   'secondary-darkest':          color['lapis-800'],
   //
+  'accent-primary-lightest':    color['crimson-50'],
+  'accent-primary-lighter':     color['crimson-100'],
+  'accent-primary-light':       color['crimson-300'],
+  'accent-primary':             color['crimson-500'],
+  'accent-primary-dark':        color['crimson-600'],
+  'accent-primary-darker':      color['crimson-700'],
+  'accent-primary-darkest':     color['crimson-800'],
+  //
   'info-lightest':              color['lapis-50'],
   'info-lighter':               color['lapis-100'],
   'info-light':                 color['lapis-300'],
