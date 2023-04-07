@@ -11,7 +11,7 @@ NC='\033[0m' # No color
 TEMP_BRANCH="version-bump-$(date '+%m%d%Y-%H%M')"
 echo "+ Creating version bump in ${CYAN}${TEMP_BRANCH}${NC}, to be merged into ${GREEN}main${NC}..."
 echo "+ Please make sure to use the same versions in the latest release."
-# git checkout main
+git checkout main
 git checkout -b $TEMP_BRANCH
 yarn lerna version --no-push --no-git-tag-version --exact
 
