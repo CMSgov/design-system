@@ -37,6 +37,8 @@ const ThemeSwitcher = () => {
 
   function onVersionChange(event: ChangeEvent<HTMLSelectElement>) {
     const version = event.currentTarget.value;
+    const versionIndex = themeVersions.indexOf(version);
+    const coreVersion = versions['design-system'][versionIndex];
 
     let path = window.location.pathname;
     if (path.startsWith('/v/')) {
@@ -44,7 +46,7 @@ const ThemeSwitcher = () => {
       path = path.replace(/^\/v\/.*?\//, '/');
     }
 
-    window.location.pathname = `/v/${version}${path}`;
+    window.location.pathname = `/v/${coreVersion}${path}`;
   }
 
   return (
