@@ -7,41 +7,6 @@
   color: var(--color-gray-dark);
   font-size: var(--font-size-sm);
   padding-block: var(--spacer-6);
-
-  p {
-    margin: 0;
-  }
-
-  a {
-    color: currentColor;
-    text-decoration-color: transparent;
-
-    &:hover,
-    &:focus {
-      color: var(--color-primary-darker);
-    }
-  }
-
-  // "Privacy Settings" link is a button
-  button {
-    background-color: inherit;
-    border: 0;
-    color: currentColor;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: inherit;
-    padding: 0;
-    text-decoration: none;
-
-    &:hover {
-      color: var(--color-primary-darker);
-    }
-    &:focus {
-      @include mixins.focus-styles-link;
-      color: var(--color-primary-darker);
-      text-decoration: none;
-    }
-  }
 }
 
 .hc-c-footer__site-links-row,
@@ -61,6 +26,39 @@
   li {
     line-height: 1.25;
     padding-inline: var(--spacer-1);
+
+    // Don't accidentally select links in the privacy settings modal
+    > a {
+      color: currentColor;
+      text-decoration-color: transparent;
+
+      &:hover,
+      &:focus {
+        color: var(--color-primary-darker);
+      }
+    }
+
+    // "Privacy Settings" link is a button
+    > button {
+      background-color: inherit;
+      border: 0;
+      color: currentColor;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: inherit;
+      padding: 0;
+      text-decoration: none;
+
+      &:hover {
+        color: var(--color-primary-darker);
+      }
+
+      &:focus {
+        @include mixins.focus-styles-link;
+        color: var(--color-primary-darker);
+        text-decoration: none;
+      }
+    }
   }
 
   li:not(:last-child) {
@@ -71,7 +69,7 @@
 .hc-c-footer__logo-row {
   margin-block-start: var(--spacer-2);
 
-  @media (min-width: $media-width-lg) {
+  @media (min-width: $media-width-md) {
     align-items: center;
     display: grid;
     grid-template-columns: minmax(auto, 215px) minmax(auto, 3.5fr);
@@ -84,7 +82,7 @@
   .hc-c-logo__health,
   .hc-c-logo__care,
   .hc-c-logo__gov {
-    fill: currentColor;
+    fill: var(--color-gray-dark);
   }
 
   .hc-c-footer__logo,
@@ -95,9 +93,13 @@
   .hc-c-footer__address {
     flex-basis: 3fr;
 
-    @media (min-width: $media-width-lg) {
+    @media (min-width: $media-width-md) {
       border-inline-start: 1px solid var(--color-gray-lighter);
       padding-inline-start: var(--spacer-2);
+    }
+
+    > p {
+      margin: 0;
     }
   }
 }
