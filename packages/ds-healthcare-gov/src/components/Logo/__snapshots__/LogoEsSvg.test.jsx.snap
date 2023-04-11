@@ -4,9 +4,7 @@ exports[`LogoEsSvg renders Spanish SVG logo 1`] = `
 <div>
   <svg
     aria-labelledby="hc-c-logo__title"
-    height="25"
     viewBox="0 0 313.54 31.74"
-    width="237"
     xmlns="http://www.w3.org/2000/svg"
   >
     <title

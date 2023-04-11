@@ -3,8 +3,14 @@
 @use '../../../../design-system/src/styles/mixins';
 
 .hc-c-footer {
-  color: var(--color-muted);
+  background-color: var(--color-gray-lightest);
+  color: var(--color-gray-dark);
   font-size: var(--font-size-sm);
+  padding-block: var(--spacer-6);
+
+  p {
+    margin: 0;
+  }
 
   a {
     color: currentColor;
@@ -15,25 +21,9 @@
       color: var(--color-primary-darker);
     }
   }
-}
-
-.hc-c-footer__list {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  gap: $spacer-half;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.hc-c-footer__inline-item {
-  align-items: center;
-  display: flex;
-  gap: $spacer-half;
 
   // "Privacy Settings" link is a button
-  > button {
+  button {
     background-color: inherit;
     border: 0;
     color: currentColor;
@@ -54,9 +44,60 @@
   }
 }
 
-.hc-c-footer__delimiter {
-  background-color: currentColor;
-  border-radius: 50%;
-  height: var(--footer__list-marker-size);
-  width: var(--footer__list-marker-size);
+.hc-c-footer__site-links-row,
+.hc-c-footer__language-resource-links-row {
+  border-block-end: 1px solid var(--color-gray-lighter);
+  padding-block: var(--spacer-2);
+
+  ul[role='list'] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacer-1) 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    line-height: 1.25;
+    padding-inline: var(--spacer-1);
+  }
+
+  li:not(:last-child) {
+    border-inline-end: 1px solid currentColor;
+  }
+}
+
+.hc-c-footer__logo-row {
+  margin-block-start: var(--spacer-2);
+
+  @media (min-width: $media-width-lg) {
+    align-items: center;
+    display: grid;
+    grid-template-columns: minmax(auto, 215px) minmax(auto, 3.5fr);
+  }
+
+  .hc-c-logo {
+    padding-inline-end: var(--spacer-2);
+  }
+
+  .hc-c-logo__health,
+  .hc-c-logo__care,
+  .hc-c-logo__gov {
+    fill: currentColor;
+  }
+
+  .hc-c-footer__logo,
+  p:not(:first-of-type) {
+    margin-block-start: var(--spacer-1) 0;
+  }
+
+  .hc-c-footer__address {
+    flex-basis: 3fr;
+
+    @media (min-width: $media-width-lg) {
+      border-inline-start: 1px solid var(--color-gray-lighter);
+      padding-inline-start: var(--spacer-2);
+    }
+  }
 }
