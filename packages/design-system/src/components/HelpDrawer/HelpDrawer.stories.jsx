@@ -10,15 +10,9 @@ export default {
   title: 'Components/Help Drawer',
   component: Help,
   argTypes: {
-    analytics: {
-      control: { type: 'boolean' },
-    },
-    closeButtonText: {
-      control: { type: 'text' },
-    },
-    hasFocusTrap: {
-      control: { type: 'boolean' },
-    },
+    analytics: { control: 'boolean' },
+    closeButtonText: { control: 'text' },
+    hasFocusTrap: { control: 'boolean' },
   },
   args: {
     footerTitle: 'Footer Title',

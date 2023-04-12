@@ -7,11 +7,11 @@ export default {
   argTypes: {
     size: {
       options: ['default', 'big'],
-      control: { type: 'select' },
+      control: { type: 'radio' },
     },
     variation: {
       options: ['default', 'info', 'success', 'warn', 'alert'],
-      control: { type: 'select' },
+      control: { type: 'radio' },
     },
     children: { control: 'text' },
   },

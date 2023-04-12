@@ -4,6 +4,9 @@ import SkipNav from './SkipNav';
 export default {
   title: 'Components/Skip Nav',
   component: SkipNav,
+  argTypes: {
+    children: { control: 'text' },
+  },
   args: {
     href: '#main',
   },

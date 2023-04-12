@@ -7,11 +7,17 @@ export default {
   title: 'Components/MultiInputDateField',
   component: MultiInputDateField,
   argTypes: {
-    label: { control: false },
     errorMessage: {
       control: { type: 'text' },
       type: { name: 'string', required: true },
     },
+    label: { control: 'text' },
+    monthDefaultValue: { control: { type: 'number', min: 1, max: 12, steps: 1 } },
+    dayDefaultValue: { control: { type: 'number', min: 1, max: 31, steps: 1 } },
+    yearDefaultValue: { control: 'number' },
+    monthLabel: { control: 'text' },
+    yearLabel: { control: 'text' },
+    dayLabel: { control: 'text' },
   },
   subcomponents: { DateInput },
 };
