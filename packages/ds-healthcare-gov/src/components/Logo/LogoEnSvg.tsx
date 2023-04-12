@@ -2,7 +2,7 @@ import React from 'react';
 const LogoEnSvg: React.FC<unknown> = () => {
   // prettier-ignore
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 253.05 31.65" aria-labelledby="hc-c-logo__title">
+    <svg xmlns="http://www.w3.org/2000/svg" width="200" height="25" viewBox="0 0 253.05 31.65" aria-labelledby="hc-c-logo__title">
       <title id="hc-c-logo__title">HealthCare.gov</title>
       <path className="hc-c-logo__health" d="M0,.61H4.68V9.75H15.74V.61H20.4V24.85H15.74V14.22H4.67V24.85H0Z" />
       <path className="hc-c-logo__health" d="M41.41,17.18H27a4.8,4.8,0,0,0,1.67,3,5.25,5.25,0,0,0,3.47,1.13,6,6,0,0,0,4.33-1.76l3.79,1.78a8.92,8.92,0,0,1-3.39,3,10.56,10.56,0,0,1-4.69,1,9.25,9.25,0,0,1-6.87-2.66A9.06,9.06,0,0,1,22.62,16,9.35,9.35,0,0,1,25.26,9.2a8.89,8.89,0,0,1,6.63-2.71A9.21,9.21,0,0,1,38.77,9.2a9.78,9.78,0,0,1,2.65,7.16Zm-4.5-3.54a4.51,4.51,0,0,0-1.76-2.44,5.13,5.13,0,0,0-3-.94,5.41,5.41,0,0,0-3.3,1.05,5.88,5.88,0,0,0-1.65,2.32Z" />
