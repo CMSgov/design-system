@@ -28,9 +28,9 @@ getSystems().forEach((sysinfo) => {
 <title>CMSDS CDN Version Index</title>
     <link rel="stylesheet" href="https://design.cms.gov/cdn/${system}/${version}/css/index.css" />
     <link rel="stylesheet" href="https://design.cms.gov/cdn/${system}/${version}/css/${shortname}-theme.css" />
-    <script type="text/javascript" src="https://design.cms.gov/cdn/${system}/${version}/js/react.production.min.js"></script>
-    <script type="text/javascript" src="https://design.cms.gov/cdn/${system}/${version}/js/react-dom.production.min.js"></script>
-    <script type="text/javascript" src="https://design.cms.gov/cdn/${system}/${version}/js/bundle.js"></script>
+    <script type="text/javascript" src="https://design.cms.gov/cdn/${system}/${version}/react-components/bundle/react.production.min.js"></script>
+    <script type="text/javascript" src="https://design.cms.gov/cdn/${system}/${version}/react-components/bundle/react-dom.production.min.js"></script>
+    <script type="text/javascript" src="https://design.cms.gov/cdn/${system}/${version}/react-components/bundle/bundle.js"></script>
   </head>
   <body class="ds-base" style="margin: 0">
     <div id="usa-banner"></div>
@@ -50,7 +50,7 @@ getSystems().forEach((sysinfo) => {
         <h3 class="ds-text-heading--md">The following assets are available for use, and are currently loaded on this page:</h3>
         <p>See the <a href="https://design.cms.gov">CMSDS documentation site</a> for  <a href="https://design.cms.gov/getting-started/for-developers/#option-2-reference-assets-from-the-cdn">instructions</a> regarding utilization of these assets.</p>
           <ul>
-            <li>Main JS Bundle:<br> <code class="ds-u-fill--gray-lightest ds-u-padding--1 ds-u-margin--1 ds-u-display--inline-block"><a href="https://design.cms.gov/cdn/${system}/${version}/js/bundle.js">https://design.cms.gov/cdn/${system}/${version}/js/bundle.js</a></code></li>
+            <li>Main React JS Bundle:<br> <code class="ds-u-fill--gray-lightest ds-u-padding--1 ds-u-margin--1 ds-u-display--inline-block"><a href="https://design.cms.gov/cdn/${system}/${version}/react-components/bundle/bundle.js">https://design.cms.gov/cdn/${system}/${version}/react-components/bundle/bundle.js</a></code></li>
             <li>DS CSS:<br> <code class="ds-u-fill--gray-lightest ds-u-padding--1 ds-u-margin--1 ds-u-display--inline-block"><a href="https://design.cms.gov/cdn/${system}/${version}/css/index.css">https://design.cms.gov/cdn/${system}/${version}/css/index.css</a></code></li>
             <li>Theme:<br> <code class="ds-u-fill--gray-lightest ds-u-padding--1 ds-u-margin--1 ds-u-display--inline-block"><a href="https://design.cms.gov/cdn/${system}/${version}/css/${shortname}-theme.css">https://design.cms.gov/cdn/${system}/${version}/css/${shortname}-theme.css</a></code></li>
           </ul>
