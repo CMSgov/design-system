@@ -111,12 +111,11 @@ const StorybookExampleFooter = ({ theme, storyId }: StorybookExampleFooterProps)
         sourceLink={
           <Button
             href={makeStorybookUrl(storyId, theme)}
-            target="_blank"
             rel="noreferrer"
             variation="ghost"
             size="small"
           >
-            Open in Storybook <ExternalLinkIcon className="ds-u-margin-left--1" />
+            Open in Storybook
           </Button>
         }
       />
