@@ -30,7 +30,7 @@ function getPackageData(theme: string) {
  * Theme Switcher
  * The dropdown component to switch the theme of the documentation site
  */
-const ThemeSwitcher = () => {
+const VersionSwitcher = () => {
   const currentTheme = useTheme();
   const currentVersion = getPackageData(currentTheme).version;
   const themeVersions = versions[themes[currentTheme].packageName];
@@ -60,4 +60,4 @@ const ThemeSwitcher = () => {
   );
 };
 
-export default ThemeSwitcher;
+export default VersionSwitcher;
