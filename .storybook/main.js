@@ -3,7 +3,6 @@ const stories = [
   '../packages/ds-healthcare-gov/src/**/*.stories.@(js|jsx|ts|tsx|mdx)',
   '../packages/ds-medicare-gov/src/**/*.stories.@(js|jsx|ts|tsx|mdx)',
 ];
-
 module.exports = {
   features: {
     buildStoriesJson: true,
@@ -16,4 +15,7 @@ module.exports = {
   stories,
   staticDirs: ['./static/', '../packages/design-system/src'],
   addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
+  core: {
+    builder: 'webpack5',
+  },
 };

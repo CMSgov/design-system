@@ -1,4 +1,4 @@
-## Example: create-react-app-typescript
+## Example: A create-react-app project with TypeScript
 
 This shows the usage of CMS design system components in a TypeScript [create-react-app](https://create-react-app.dev/docs/getting-started/) project.
 

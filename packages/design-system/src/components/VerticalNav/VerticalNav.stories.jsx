@@ -9,14 +9,8 @@ export default {
   title: 'Components/Vertical Nav',
   component: VerticalNav,
   argTypes: {
-    collapsed: {
-      control: 'radio',
-      options: [true, false],
-    },
-    nested: {
-      control: 'radio',
-      options: [true, false],
-    },
+    collapsed: { control: 'boolean' },
+    nested: { control: 'boolean' },
   },
   args: {
     collapsed: false,

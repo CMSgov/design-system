@@ -10,12 +10,10 @@ export default {
   title: 'Components/Drawer',
   component: Drawer,
   argTypes: {
-    closeButtonText: {
-      control: { type: 'text' },
-    },
-    hasFocusTrap: {
-      control: { type: 'boolean' },
-    },
+    closeButtonText: { control: 'text' },
+    footerBody: { control: 'text' },
+    hasFocusTrap: { control: 'boolean' },
+    heading: { control: 'text' },
   },
   args: {
     footerTitle: 'Footer Title',

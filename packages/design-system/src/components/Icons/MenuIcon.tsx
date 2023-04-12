@@ -1,5 +1,5 @@
 import React from 'react';
-import SvgIcon, { IconCommonProps } from './SvgIcon';
+import { SvgIcon, IconCommonProps } from './SvgIcon';
 import classNames from 'classnames';
 import { t } from '../i18n';
 
@@ -8,7 +8,7 @@ const defaultProps = {
   viewBox: '0 0 448 512',
 };
 
-function MenuIcon(props: IconCommonProps): React.ReactElement {
+export function MenuIcon(props: IconCommonProps): React.ReactElement {
   const classes = classNames(props.className, 'ds-c-icon--menu');
 
   return (
@@ -20,5 +20,3 @@ function MenuIcon(props: IconCommonProps): React.ReactElement {
     </SvgIcon>
   );
 }
-
-export default MenuIcon;

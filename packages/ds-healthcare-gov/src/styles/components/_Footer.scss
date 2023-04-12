@@ -5,16 +5,6 @@
 .hc-c-footer {
   color: var(--color-muted);
   font-size: var(--font-size-sm);
-
-  a {
-    color: currentColor;
-    text-decoration-color: transparent;
-
-    &:hover,
-    &:focus {
-      color: var(--color-primary-darker);
-    }
-  }
 }
 
 .hc-c-footer__list {
@@ -32,8 +22,19 @@
   display: flex;
   gap: $spacer-half;
 
+  // Don't accidentally select links in the privacy settings modal
+  > a {
+    color: currentColor;
+    text-decoration-color: transparent;
+
+    &:hover,
+    &:focus {
+      color: var(--color-primary-darker);
+    }
+  }
+
   // "Privacy Settings" link is a button
-  button {
+  > button {
     background-color: inherit;
     border: 0;
     color: currentColor;
@@ -43,8 +44,13 @@
     padding: 0;
     text-decoration: none;
 
+    &:hover {
+      color: var(--color-primary-darker);
+    }
     &:focus {
-      @include mixins.focus-styles;
+      @include mixins.focus-styles-link;
+      color: var(--color-primary-darker);
+      text-decoration: none;
     }
   }
 }

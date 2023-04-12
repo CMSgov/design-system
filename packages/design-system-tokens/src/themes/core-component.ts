@@ -288,7 +288,7 @@ export const components: AnyTokenValues = {
     '__border-color':                             t.color['border'],
     '-close__color':                              t.color['black'],
     '-header__background-color':                  t.color['gray-lightest'],
-    '-footer__background-color':                  t.color['primary-lightest'],
+    '-footer__background-color':                  t.color['info-lightest'],
     '-toggle__background-color--hover':           t.color['info'],
     '-toggle__color--hover':                      t.color['white'],
     '-toggle__background-color--hover--inverse':  t.color['white'],
@@ -321,7 +321,7 @@ export const components: AnyTokenValues = {
     '-hint__color':                               t.color['muted'],
     '-hint__color--inverse':                      t.color['muted-inverse'],
     '-error__color':                              t.color['error'],
-    '-error__color--inverse':                     t.color['error-light'],
+    '-error__color--inverse':                     t.color['error-lighter'],
   },
 
   'icon': {
@@ -413,7 +413,7 @@ export const components: AnyTokenValues = {
     '__border-color':                             t.color['base'],
     '__border-color--disabled':                   t.color['gray-light'],
     '__border-color--error':                      t.color['error'],
-    '__border-color--error--inverse':             t.color['error-light'],
+    '__border-color--error--inverse':             t.color['error-lighter'],
     '__border-color--inverse':                    t.color['black'],
     '__border-color--success':                    t.color['success-light'],
     '__color':                                    t.color['base'],

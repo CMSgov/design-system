@@ -18,6 +18,7 @@
     "deBrokerNameFallback": "el socio de inscripción",
     "deConsumerMessage": "Asegúrese de terminar su solicitud antes de regresar a la página web de {{brokerName}}",
     "english": "English",
+    "langAriaLabel": "Healthcare.gov in English",
     "login": "Iniciar sesión",
     "logout": "Finalizar sesión",
     "menu": "Menú",
@@ -25,27 +26,5 @@
     "myProfile": "Mi perfil",
     "openMenu": "Abrir menú",
     "skipNav": "Ir al contenido principal"
-  },
-  "privacy": {
-    "advertising": {
-      "category": "Publicidad",
-      "description": "Usamos herramientas de publicidad digitales, tales como contadores de visitantes, para rastrear la efectividad de nuestros esfuerzos de publicidad digital. Esto nos ayuda a identificar los anuncios que son de utilidad para los consumidores y la difusión eficiente. Seleccionando DESACTIVAR bloqueará este rastreo."
-    },
-    "allow": "Activar",
-    "category": "Categoría",
-    "description": "Descripción",
-    "dialogTitle": "Configuración de Privacidad en CuidadoDeSalud.gov",
-    "dontAllow": "Desactivar",
-    "introText": "Proteger su privacidad es muy importante para nosotros. Usted puede cambiar la configuración de abajo para asegurarse de estar cómodo con la manera en que recopilamos y usamos la información mientras está en CuidadoDeSalud.gov. Para obtener más información, consulte nuestro <a href=\"https://www.cuidadodesalud.gov/es/privacy/\">aviso de privacidad</a> o para ver la lista de herramientas específicas de cada categoría, <a href=\"https://www.cuidadodesalud.gov/es/third-party-privacy-policies/\">vea nuestra lista de servicios a terceros</a>.",
-    "save": "Actualizar mi configuración",
-    "socialMedia": {
-      "category": "Redes Sociales",
-      "description": "Si comparte nuestro contenido en Facebook, Twitter u otras cuentas de redes sociales, podemos rastrear el contenido de CuidadoDeSalud.gov que comparte. Esto nos ayuda a mejorar nuestro alcance en los medios de comunicación social. Seleccionando DESACTIVAR bloqueará este rastreo."
-    },
-    "status": "Estatus",
-    "webAnalytics": {
-      "category": "Análisis Web",
-      "description": "Usamos una variedad de herramientas para contar, rastrear y analizar las visitas a CuidadoDeSalud.gov. Esto nos ayuda a entender cómo las personas usan el sitio y dónde debemos mejorar. Seleccionando DESACTIVAR bloqueará este rastreo."
-    }
   }
 }

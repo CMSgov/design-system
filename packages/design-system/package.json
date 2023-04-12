@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/design-system",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "publishConfig": {
     "access": "public",
     "tag": "latest"
@@ -15,10 +15,36 @@
     "directory": "packages/design-system"
   },
   "license": "SEE LICENSE IN LICENSE.md",
-  "main": "dist/components/index.js",
-  "module": "dist/esnext/index.esm.js",
-  "sideEffects": false,
-  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/react-components/types/index.d.ts",
+      "import": "./dist/react-components/esm/index.js",
+      "require": "./dist/react-components/cjs/index.js"
+    },
+    "./react": {
+      "types": "./dist/react-components/types/index.d.ts",
+      "import": "./dist/react-components/esm/index.js",
+      "require": "./dist/react-components/cjs/index.js"
+    },
+    "./preact": {
+      "types": "./dist/preact-components/types/index.d.ts",
+      "import": "./dist/preact-components/esm/index.js",
+      "require": "./dist/preact-components/cjs/index.js"
+    },
+    "./web-components": {
+      "types": "./dist/react-components/types/web-components/index.d.ts",
+      "import": "./dist/preact-components/esm/web-components/index.js",
+      "require": "./dist/preact-components/cjs/web-components/index.js"
+    },
+    "./css/*": "./dist/css/*",
+    "./src/*": "./src/*"
+  },
+  "main": "dist/react-components/cjs/index.js",
+  "module": "dist/react-components/esm/index.js",
+  "types": "dist/react-components/types/index.d.ts",
+  "sideEffects": [
+    "./dist/preact-components/esm/web-components/*.js"
+  ],
   "files": [
     "dist",
     "scripts",
@@ -29,6 +55,7 @@
     "@popperjs/core": "^2.4.4",
     "@types/react": "^17.0.10",
     "@types/react-dom": "^17.0.10",
+    "@types/react-transition-group": "^4.4.5",
     "chalk": "^5.0.1",
     "classnames": "^2.2.5",
     "core-js": "^3.6.5",
@@ -40,9 +67,10 @@
     "inquirer": "^9.0.2",
     "lodash": "^4.17.21",
     "ora": "^6.1.2",
+    "preactement": "1.8.4",
     "prop-types": "^15.8.1",
     "react-day-picker": "^8.0.5",
-    "react-transition-group": "^4.4.2",
+    "react-transition-group": "^4.4.5",
     "yargs": "^17.5.1"
   },
   "peerDependencies": {

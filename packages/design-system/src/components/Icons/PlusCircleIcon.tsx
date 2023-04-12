@@ -1,6 +1,6 @@
 import React from 'react';
 import { t } from '../i18n';
-import SvgIcon, { IconCommonProps } from './SvgIcon';
+import { SvgIcon, IconCommonProps } from './SvgIcon';
 import classNames from 'classnames';
 
 const defaultProps = {
@@ -8,7 +8,7 @@ const defaultProps = {
   viewBox: '0 0 20 20',
 };
 
-function PlusCircleIcon(props: IconCommonProps): React.ReactElement {
+export function PlusCircleIcon(props: IconCommonProps): React.ReactElement {
   const iconCssClasses = classNames('ds-c-icon--plus-circle', props.className);
 
   return (
@@ -42,5 +42,3 @@ function PlusCircleIcon(props: IconCommonProps): React.ReactElement {
     </SvgIcon>
   );
 }
-
-export default PlusCircleIcon;

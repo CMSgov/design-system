@@ -109,6 +109,7 @@ exports[`Header renders Direct Enrollment banner 1`] = `
               class="hc-c-logged-out-links__li"
             >
               <a
+                aria-label="CuidadoDeSalud.gov en Español"
                 class="hc-c-logged-out-links__link"
                 href="https://www.cuidadodesalud.gov/es/"
               >
@@ -319,6 +320,7 @@ exports[`Header renders Spanish header 1`] = `
               class="hc-c-logged-out-links__li"
             >
               <a
+                aria-label="Healthcare.gov in English"
                 class="hc-c-logged-out-links__link"
                 href="https://www.healthcare.gov/"
               >
@@ -504,6 +506,7 @@ exports[`Header renders full/homepage header 1`] = `
               class="hc-c-logged-out-links__li"
             >
               <a
+                aria-label="CuidadoDeSalud.gov en Español"
                 class="hc-c-logged-out-links__link"
                 href="https://www.cuidadodesalud.gov/es/"
               >
@@ -689,6 +692,7 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
               class="hc-c-logged-out-links__li"
             >
               <a
+                aria-label="CuidadoDeSalud.gov en Español"
                 class="hc-c-logged-out-links__link"
                 href="https://www.cuidadodesalud.gov/es/"
               >
