@@ -7,6 +7,8 @@ export default {
   component: Alert,
   argTypes: {
     children: { control: 'text' },
+    // @TODO: deprecate, there is only one option: 'lightweight'
+    weight: { table: { disable: true } },
   },
   args: {
     hideIcon: false,
