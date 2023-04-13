@@ -16,7 +16,7 @@ Object {
             role="row"
           >
             <th
-              class="ds-c-table__cell--align-left"
+              class="ds-u-text-align--left"
               id="header-category"
               role="columnheader"
               scope="col"
@@ -24,7 +24,7 @@ Object {
               Category
             </th>
             <th
-              class="ds-c-table__cell--align-left"
+              class="ds-u-text-align--left"
               id="header-description"
               role="columnheader"
               scope="col"
@@ -32,7 +32,7 @@ Object {
               Description
             </th>
             <th
-              class="ds-c-table__cell--align-left"
+              class="ds-u-text-align--left"
               id="header-status"
               role="columnheader"
               scope="col"
@@ -48,7 +48,7 @@ Object {
             role="row"
           >
             <td
-              class="ds-c-table__cell--align-left"
+              class="ds-u-text-align--left"
               data-title="Category"
               headers="header-category"
               role="cell"
@@ -56,7 +56,7 @@ Object {
               Advertising
             </td>
             <td
-              class="ds-c-table__cell--align-left"
+              class="ds-u-text-align--left"
               data-title="Description"
               headers="header-description"
               role="cell"
@@ -64,7 +64,7 @@ Object {
               We use digital advertising tools, such as web beacons, to track the effectiveness of our digital advertising outreach efforts. This helps us identify ads that are helpful to consumers and efficient for outreach. Select “Don’t allow” to block this tracking.
             </td>
             <td
-              class="ds-c-table__cell--align-left"
+              class="ds-u-text-align--left"
               data-title="Status"
               headers="header-status"
               role="cell"
@@ -141,7 +141,7 @@ Object {
             role="row"
           >
             <td
-              class="ds-c-table__cell--align-left"
+              class="ds-u-text-align--left"
               data-title="Category"
               headers="header-category"
               role="cell"
@@ -149,7 +149,7 @@ Object {
               Social Media
             </td>
             <td
-              class="ds-c-table__cell--align-left"
+              class="ds-u-text-align--left"
               data-title="Description"
               headers="header-description"
               role="cell"
@@ -157,7 +157,7 @@ Object {
               If you share our content on Facebook, Twitter, or other social media accounts, we may track what Test.gov content you share. This helps us improve our social media outreach. Select “Don’t allow” to block this tracking.
             </td>
             <td
-              class="ds-c-table__cell--align-left"
+              class="ds-u-text-align--left"
               data-title="Status"
               headers="header-status"
               role="cell"
@@ -234,7 +234,7 @@ Object {
             role="row"
           >
             <td
-              class="ds-c-table__cell--align-left"
+              class="ds-u-text-align--left"
               data-title="Category"
               headers="header-category"
               role="cell"
@@ -242,7 +242,7 @@ Object {
               Web Analytics
             </td>
             <td
-              class="ds-c-table__cell--align-left"
+              class="ds-u-text-align--left"
               data-title="Description"
               headers="header-description"
               role="cell"
@@ -250,7 +250,7 @@ Object {
               We use a variety of tools to count, track, and analyze visits to Test.gov. This helps us understand how people use the site and where we should make improvements. Select “Don’t allow” to block this tracking.
             </td>
             <td
-              class="ds-c-table__cell--align-left"
+              class="ds-u-text-align--left"
               data-title="Status"
               headers="header-status"
               role="cell"
@@ -339,7 +339,7 @@ Object {
           role="row"
         >
           <th
-            class="ds-c-table__cell--align-left"
+            class="ds-u-text-align--left"
             id="header-category"
             role="columnheader"
             scope="col"
@@ -347,7 +347,7 @@ Object {
             Category
           </th>
           <th
-            class="ds-c-table__cell--align-left"
+            class="ds-u-text-align--left"
             id="header-description"
             role="columnheader"
             scope="col"
@@ -355,7 +355,7 @@ Object {
             Description
           </th>
           <th
-            class="ds-c-table__cell--align-left"
+            class="ds-u-text-align--left"
             id="header-status"
             role="columnheader"
             scope="col"
@@ -371,7 +371,7 @@ Object {
           role="row"
         >
           <td
-            class="ds-c-table__cell--align-left"
+            class="ds-u-text-align--left"
             data-title="Category"
             headers="header-category"
             role="cell"
@@ -379,7 +379,7 @@ Object {
             Advertising
           </td>
           <td
-            class="ds-c-table__cell--align-left"
+            class="ds-u-text-align--left"
             data-title="Description"
             headers="header-description"
             role="cell"
@@ -387,7 +387,7 @@ Object {
             We use digital advertising tools, such as web beacons, to track the effectiveness of our digital advertising outreach efforts. This helps us identify ads that are helpful to consumers and efficient for outreach. Select “Don’t allow” to block this tracking.
           </td>
           <td
-            class="ds-c-table__cell--align-left"
+            class="ds-u-text-align--left"
             data-title="Status"
             headers="header-status"
             role="cell"
@@ -464,7 +464,7 @@ Object {
           role="row"
         >
           <td
-            class="ds-c-table__cell--align-left"
+            class="ds-u-text-align--left"
             data-title="Category"
             headers="header-category"
             role="cell"
@@ -472,7 +472,7 @@ Object {
             Social Media
           </td>
           <td
-            class="ds-c-table__cell--align-left"
+            class="ds-u-text-align--left"
             data-title="Description"
             headers="header-description"
             role="cell"
@@ -480,7 +480,7 @@ Object {
             If you share our content on Facebook, Twitter, or other social media accounts, we may track what Test.gov content you share. This helps us improve our social media outreach. Select “Don’t allow” to block this tracking.
           </td>
           <td
-            class="ds-c-table__cell--align-left"
+            class="ds-u-text-align--left"
             data-title="Status"
             headers="header-status"
             role="cell"
@@ -557,7 +557,7 @@ Object {
           role="row"
         >
           <td
-            class="ds-c-table__cell--align-left"
+            class="ds-u-text-align--left"
             data-title="Category"
             headers="header-category"
             role="cell"
@@ -565,7 +565,7 @@ Object {
             Web Analytics
           </td>
           <td
-            class="ds-c-table__cell--align-left"
+            class="ds-u-text-align--left"
             data-title="Description"
             headers="header-description"
             role="cell"
@@ -573,7 +573,7 @@ Object {
             We use a variety of tools to count, track, and analyze visits to Test.gov. This helps us understand how people use the site and where we should make improvements. Select “Don’t allow” to block this tracking.
           </td>
           <td
-            class="ds-c-table__cell--align-left"
+            class="ds-u-text-align--left"
             data-title="Status"
             headers="header-status"
             role="cell"
