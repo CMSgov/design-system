@@ -1,7 +1,12 @@
 import sortBy from 'lodash.sortby';
-import { VerticalNavItemProps } from '@cmsgov/design-system/dist/components/VerticalNav/VerticalNavItem';
+import { VerticalNavItemProps } from '@cmsgov/design-system';
 import { makePageUrl } from './urlUtils';
 import { ContentDirectoryGroup, NavItem, LocationInterface } from './graphQLTypes';
+
+export interface DocsNavItem extends Omit<VerticalNavItemProps, 'label'> {
+  label: string;
+  order: number;
+}
 
 // order of labels of level 1 items
 const level1ItemOrder = [
@@ -54,12 +59,12 @@ const formatNavItemData = ({ childMdx, relativePath }: NavItem, location: Locati
 /**
  * Need to nest level2 items that have subnav items under the relevant level1 items
  */
-export const organizeNavItems = (dataList: VerticalNavItemProps[]): VerticalNavItemProps[] => {
-  const level1ItemMap: { string?: VerticalNavItemProps } = {};
+export const organizeNavItems = (dataList: DocsNavItem[]): DocsNavItem[] => {
+  const level1ItemMap: { string?: DocsNavItem } = {};
   const level2Items = [];
 
   // sort level1 vs level2 items into distinct variables from data list where they are combined
-  dataList.forEach((dataItem: VerticalNavItemProps) => {
+  dataList.forEach((dataItem: DocsNavItem) => {
     if (dataItem.label.split('/').length > 1) {
       level2Items.push(dataItem);
     } else {
@@ -68,7 +73,7 @@ export const organizeNavItems = (dataList: VerticalNavItemProps[]): VerticalNavI
   });
 
   // iterate through level2 items and nest them under their level 1 parent
-  level2Items.forEach((level2Item: VerticalNavItemProps) => {
+  level2Items.forEach((level2Item: DocsNavItem) => {
     // sort level3 items by order then id / name
     level2Item.items = sortBy(level2Item.items, ['order', 'id']);
 
@@ -85,7 +90,7 @@ export const organizeNavItems = (dataList: VerticalNavItemProps[]): VerticalNavI
   const level1Items = Object.values(level1ItemMap);
   // at this point, all items should be properly nested
   //sort level2 items because they added to the end of list in previous nesting step
-  level1Items.forEach((level1Item: VerticalNavItemProps) => {
+  level1Items.forEach((level1Item: DocsNavItem) => {
     // sort items based on the order defined in frontmatter then id which is the file path for the item
     level1Item.items = sortBy(level1Item.items, ['order', 'id']);
   });
@@ -105,8 +110,8 @@ export const organizeNavItems = (dataList: VerticalNavItemProps[]): VerticalNavI
 export const convertToNavItems = (
   dataList: ContentDirectoryGroup[],
   location: LocationInterface
-): VerticalNavItemProps[] => {
-  const verticalNavItems: VerticalNavItemProps[] = [];
+): DocsNavItem[] => {
+  const verticalNavItems: DocsNavItem[] = [];
   dataList.forEach((dataItem: ContentDirectoryGroup) => {
     // format all the level 2 items
     const subNavItems = dataItem.edges.map((subNavItem) =>

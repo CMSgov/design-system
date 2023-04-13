@@ -5,13 +5,17 @@
   display: flex;
   justify-content: space-between;
   ul {
-    display: inline;
+    display: none;
+    list-style: none;
     margin: 0;
 
     @media (-ms-high-contrast: active), (forced-colors: active) {
       align-items: center;
       display: inline-flex;
       gap: 1ch;
+    }
+    @media (min-width: $media-width-sm + 1) {
+      display: inline-block;
     }
   }
   li {
@@ -67,11 +71,14 @@
   .ds-c-pagination__page-count {
     border: 2px solid transparent;
     color: var(--pagination-page-count__color);
-    display: inline-block;
+    display: none;
     padding: $spacer-1;
 
     @media (-ms-high-contrast: active), (forced-colors: active) {
       border: 0;
+    }
+    @media (max-width: $media-width-sm) {
+      display: inline-block;
     }
   }
   .ds-c-pagination__nav {
@@ -140,6 +147,14 @@
       path {
         fill: LinkText;
       }
+    }
+  }
+  &.ds-c-pagination--compact {
+    .ds-c-pagination__page-count {
+      display: inline;
+    }
+    ul {
+      display: none;
     }
   }
 }

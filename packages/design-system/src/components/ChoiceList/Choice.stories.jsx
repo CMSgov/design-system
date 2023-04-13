@@ -15,7 +15,12 @@ export default {
   },
   argTypes: {
     checkedChildren: { control: 'text' },
+    errorMessage: { control: 'text' },
+    hint: { control: 'text' },
+    label: { control: 'text' },
+    requirementLabel: { control: 'text' },
     uncheckedChildren: { control: 'text' },
+    value: { control: 'text' },
   },
 };
 

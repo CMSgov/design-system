@@ -15,7 +15,7 @@ function ModalDialogExample(): React.ReactElement {
           onExit={() => setShowExampleModal(false)}
           heading="Dialog heading"
           actions={[
-            <button className="ds-c-button ds-c-button--primary ds-u-margin-right--1" key="primary">
+            <button className="ds-c-button ds-c-button--solid ds-u-margin-right--1" key="primary">
               Dialog action
             </button>,
             <button

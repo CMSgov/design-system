@@ -8,6 +8,7 @@ export default {
   component: Tooltip,
   argTypes: {
     children: { control: false },
+    contentHeading: { control: 'text' },
     data: { table: { disable: true } },
     placement: {
       options: [
@@ -27,8 +28,9 @@ export default {
         'bottom-start',
         'bottom-end',
       ],
-      control: { type: 'select' },
+      control: 'radio',
     },
+    title: { control: 'text' },
   },
 };
 

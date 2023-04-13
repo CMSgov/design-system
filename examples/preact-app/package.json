@@ -1,0 +1,22 @@
+{
+  "name": "react-app-example",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@cmsgov/design-system": "file:../../packages/design-system",
+    "preact": "^10.11.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@babel/plugin-transform-react-jsx": "7.20.13",
+    "@babel/preset-env": "^7.20.2",
+    "babel-loader": "^8.0.0",
+    "copy-webpack-plugin": "^6.4.1",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "build": "webpack --mode production --progress"
+  }
+}

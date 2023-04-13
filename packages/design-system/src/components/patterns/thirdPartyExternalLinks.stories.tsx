@@ -13,7 +13,7 @@ export const ThirdPartyExternalLink = () => {
   return (
     <>
       <Button
-        className="ds-c-button ds-c-button--ghost ds-u-font-weight--normal"
+        className="ds-c-button--ghost ds-u-font-weight--normal"
         onClick={() => setShowModal({ showModal: true })}
       >
         Link to external site
@@ -25,11 +25,11 @@ export const ThirdPartyExternalLink = () => {
           heading="You are leaving URL"
           closeButtonText=""
           actions={[
-            <Button className="ds-c-button ds-c-button--solid" key="solid" href="https://cms.gov">
+            <Button className="ds-c-button--solid" key="solid" href="https://cms.gov">
               OK
             </Button>,
             <Button
-              className="ds-c-button ds-c-button--ghost"
+              className="ds-c-button--ghost"
               key="cancel"
               onClick={() => setShowModal({ showModal: false })}
             >

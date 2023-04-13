@@ -1,13 +1,13 @@
 import React from 'react';
 import { t } from '../i18n';
-import SvgIcon, { IconCommonProps } from './SvgIcon';
+import { SvgIcon, IconCommonProps } from './SvgIcon';
 
 const defaultProps = {
   className: '',
   viewBox: '27 0 160 135',
 };
 
-function WarningIcon(props: IconCommonProps): React.ReactElement {
+export function WarningIcon(props: IconCommonProps): React.ReactElement {
   const iconCssClasses = `ds-c-icon--warning ${props.className || ''}`;
 
   return (
@@ -16,5 +16,3 @@ function WarningIcon(props: IconCommonProps): React.ReactElement {
     </SvgIcon>
   );
 }
-
-export default WarningIcon;

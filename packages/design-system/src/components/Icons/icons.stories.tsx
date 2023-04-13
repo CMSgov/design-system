@@ -26,11 +26,10 @@ import {
   PlusCircleIcon,
   RemoveIcon,
   StarIcon,
+  SvgIcon,
   UsaFlagIcon,
   WarningIcon,
 } from './index';
-
-import SvgIcon from './SvgIcon';
 
 export default {
   title: 'Components/Icons',

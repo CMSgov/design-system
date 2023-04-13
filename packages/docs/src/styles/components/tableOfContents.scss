@@ -1,4 +1,6 @@
 .c-table-of-contents {
+  max-height: calc(100vh - $spacer-1);
+  overflow-y: auto;
   position: sticky;
   top: $spacer-1;
 }

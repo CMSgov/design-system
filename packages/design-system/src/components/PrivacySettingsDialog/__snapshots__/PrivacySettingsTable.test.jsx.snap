@@ -1,0 +1,704 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PrivacySettingsTable /> renders the privacy settings table 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <table
+        class="ds-c-table ds-c-table--borderless ds-c-md-table--stacked ds-c-privacy-settings-table"
+        role="table"
+      >
+        <thead
+          role="rowgroup"
+        >
+          <tr
+            role="row"
+          >
+            <th
+              class="ds-c-table__cell--align-left"
+              id="header-category"
+              role="columnheader"
+              scope="col"
+            >
+              Category
+            </th>
+            <th
+              class="ds-c-table__cell--align-left"
+              id="header-description"
+              role="columnheader"
+              scope="col"
+            >
+              Description
+            </th>
+            <th
+              class="ds-c-table__cell--align-left"
+              id="header-status"
+              role="columnheader"
+              scope="col"
+            >
+              Status
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          role="rowgroup"
+        >
+          <tr
+            role="row"
+          >
+            <td
+              class="ds-c-table__cell--align-left"
+              data-title="Category"
+              headers="header-category"
+              role="cell"
+            >
+              Advertising
+            </td>
+            <td
+              class="ds-c-table__cell--align-left"
+              data-title="Description"
+              headers="header-description"
+              role="cell"
+            >
+              We use digital advertising tools, such as web beacons, to track the effectiveness of our digital advertising outreach efforts. This helps us identify ads that are helpful to consumers and efficient for outreach. Select “Don’t allow” to block this tracking.
+            </td>
+            <td
+              class="ds-c-table__cell--align-left"
+              data-title="Status"
+              headers="header-status"
+              role="cell"
+            >
+              <fieldset
+                aria-invalid="false"
+                class="ds-c-fieldset ds-u-margin-top--0"
+              >
+                <legend
+                  class="ds-c-label"
+                  id="field_2-label"
+                >
+                  <span
+                    class=""
+                  >
+                    <span
+                      class="ds-u-visibility--screen-reader"
+                    >
+                      Advertising
+                    </span>
+                  </span>
+                </legend>
+                <div>
+                  <div
+                    class="ds-c-choice-wrapper"
+                  >
+                    <input
+                      checked=""
+                      class="ds-c-choice"
+                      id="radio_cookie-c3_3"
+                      name="cookie-c3"
+                      type="radio"
+                      value="0"
+                    />
+                    <label
+                      class="ds-c-label"
+                      for="radio_cookie-c3_3"
+                    >
+                      <span
+                        class=""
+                      >
+                        Allow
+                      </span>
+                    </label>
+                  </div>
+                </div>
+                <div>
+                  <div
+                    class="ds-c-choice-wrapper"
+                  >
+                    <input
+                      class="ds-c-choice"
+                      id="radio_cookie-c3_4"
+                      name="cookie-c3"
+                      type="radio"
+                      value="1"
+                    />
+                    <label
+                      class="ds-c-label"
+                      for="radio_cookie-c3_4"
+                    >
+                      <span
+                        class=""
+                      >
+                        Don't allow
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </td>
+          </tr>
+          <tr
+            role="row"
+          >
+            <td
+              class="ds-c-table__cell--align-left"
+              data-title="Category"
+              headers="header-category"
+              role="cell"
+            >
+              Social Media
+            </td>
+            <td
+              class="ds-c-table__cell--align-left"
+              data-title="Description"
+              headers="header-description"
+              role="cell"
+            >
+              If you share our content on Facebook, Twitter, or other social media accounts, we may track what Test.gov content you share. This helps us improve our social media outreach. Select “Don’t allow” to block this tracking.
+            </td>
+            <td
+              class="ds-c-table__cell--align-left"
+              data-title="Status"
+              headers="header-status"
+              role="cell"
+            >
+              <fieldset
+                aria-invalid="false"
+                class="ds-c-fieldset ds-u-margin-top--0"
+              >
+                <legend
+                  class="ds-c-label"
+                  id="field_5-label"
+                >
+                  <span
+                    class=""
+                  >
+                    <span
+                      class="ds-u-visibility--screen-reader"
+                    >
+                      Social Media
+                    </span>
+                  </span>
+                </legend>
+                <div>
+                  <div
+                    class="ds-c-choice-wrapper"
+                  >
+                    <input
+                      class="ds-c-choice"
+                      id="radio_cookie-c4_6"
+                      name="cookie-c4"
+                      type="radio"
+                      value="0"
+                    />
+                    <label
+                      class="ds-c-label"
+                      for="radio_cookie-c4_6"
+                    >
+                      <span
+                        class=""
+                      >
+                        Allow
+                      </span>
+                    </label>
+                  </div>
+                </div>
+                <div>
+                  <div
+                    class="ds-c-choice-wrapper"
+                  >
+                    <input
+                      checked=""
+                      class="ds-c-choice"
+                      id="radio_cookie-c4_7"
+                      name="cookie-c4"
+                      type="radio"
+                      value="1"
+                    />
+                    <label
+                      class="ds-c-label"
+                      for="radio_cookie-c4_7"
+                    >
+                      <span
+                        class=""
+                      >
+                        Don't allow
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </td>
+          </tr>
+          <tr
+            role="row"
+          >
+            <td
+              class="ds-c-table__cell--align-left"
+              data-title="Category"
+              headers="header-category"
+              role="cell"
+            >
+              Web Analytics
+            </td>
+            <td
+              class="ds-c-table__cell--align-left"
+              data-title="Description"
+              headers="header-description"
+              role="cell"
+            >
+              We use a variety of tools to count, track, and analyze visits to Test.gov. This helps us understand how people use the site and where we should make improvements. Select “Don’t allow” to block this tracking.
+            </td>
+            <td
+              class="ds-c-table__cell--align-left"
+              data-title="Status"
+              headers="header-status"
+              role="cell"
+            >
+              <fieldset
+                aria-invalid="false"
+                class="ds-c-fieldset ds-u-margin-top--0"
+              >
+                <legend
+                  class="ds-c-label"
+                  id="field_8-label"
+                >
+                  <span
+                    class=""
+                  >
+                    <span
+                      class="ds-u-visibility--screen-reader"
+                    >
+                      Web Analytics
+                    </span>
+                  </span>
+                </legend>
+                <div>
+                  <div
+                    class="ds-c-choice-wrapper"
+                  >
+                    <input
+                      checked=""
+                      class="ds-c-choice"
+                      id="radio_cookie-c2_9"
+                      name="cookie-c2"
+                      type="radio"
+                      value="0"
+                    />
+                    <label
+                      class="ds-c-label"
+                      for="radio_cookie-c2_9"
+                    >
+                      <span
+                        class=""
+                      >
+                        Allow
+                      </span>
+                    </label>
+                  </div>
+                </div>
+                <div>
+                  <div
+                    class="ds-c-choice-wrapper"
+                  >
+                    <input
+                      class="ds-c-choice"
+                      id="radio_cookie-c2_10"
+                      name="cookie-c2"
+                      type="radio"
+                      value="1"
+                    />
+                    <label
+                      class="ds-c-label"
+                      for="radio_cookie-c2_10"
+                    >
+                      <span
+                        class=""
+                      >
+                        Don't allow
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>,
+  "container": <div>
+    <table
+      class="ds-c-table ds-c-table--borderless ds-c-md-table--stacked ds-c-privacy-settings-table"
+      role="table"
+    >
+      <thead
+        role="rowgroup"
+      >
+        <tr
+          role="row"
+        >
+          <th
+            class="ds-c-table__cell--align-left"
+            id="header-category"
+            role="columnheader"
+            scope="col"
+          >
+            Category
+          </th>
+          <th
+            class="ds-c-table__cell--align-left"
+            id="header-description"
+            role="columnheader"
+            scope="col"
+          >
+            Description
+          </th>
+          <th
+            class="ds-c-table__cell--align-left"
+            id="header-status"
+            role="columnheader"
+            scope="col"
+          >
+            Status
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        role="rowgroup"
+      >
+        <tr
+          role="row"
+        >
+          <td
+            class="ds-c-table__cell--align-left"
+            data-title="Category"
+            headers="header-category"
+            role="cell"
+          >
+            Advertising
+          </td>
+          <td
+            class="ds-c-table__cell--align-left"
+            data-title="Description"
+            headers="header-description"
+            role="cell"
+          >
+            We use digital advertising tools, such as web beacons, to track the effectiveness of our digital advertising outreach efforts. This helps us identify ads that are helpful to consumers and efficient for outreach. Select “Don’t allow” to block this tracking.
+          </td>
+          <td
+            class="ds-c-table__cell--align-left"
+            data-title="Status"
+            headers="header-status"
+            role="cell"
+          >
+            <fieldset
+              aria-invalid="false"
+              class="ds-c-fieldset ds-u-margin-top--0"
+            >
+              <legend
+                class="ds-c-label"
+                id="field_2-label"
+              >
+                <span
+                  class=""
+                >
+                  <span
+                    class="ds-u-visibility--screen-reader"
+                  >
+                    Advertising
+                  </span>
+                </span>
+              </legend>
+              <div>
+                <div
+                  class="ds-c-choice-wrapper"
+                >
+                  <input
+                    checked=""
+                    class="ds-c-choice"
+                    id="radio_cookie-c3_3"
+                    name="cookie-c3"
+                    type="radio"
+                    value="0"
+                  />
+                  <label
+                    class="ds-c-label"
+                    for="radio_cookie-c3_3"
+                  >
+                    <span
+                      class=""
+                    >
+                      Allow
+                    </span>
+                  </label>
+                </div>
+              </div>
+              <div>
+                <div
+                  class="ds-c-choice-wrapper"
+                >
+                  <input
+                    class="ds-c-choice"
+                    id="radio_cookie-c3_4"
+                    name="cookie-c3"
+                    type="radio"
+                    value="1"
+                  />
+                  <label
+                    class="ds-c-label"
+                    for="radio_cookie-c3_4"
+                  >
+                    <span
+                      class=""
+                    >
+                      Don't allow
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </td>
+        </tr>
+        <tr
+          role="row"
+        >
+          <td
+            class="ds-c-table__cell--align-left"
+            data-title="Category"
+            headers="header-category"
+            role="cell"
+          >
+            Social Media
+          </td>
+          <td
+            class="ds-c-table__cell--align-left"
+            data-title="Description"
+            headers="header-description"
+            role="cell"
+          >
+            If you share our content on Facebook, Twitter, or other social media accounts, we may track what Test.gov content you share. This helps us improve our social media outreach. Select “Don’t allow” to block this tracking.
+          </td>
+          <td
+            class="ds-c-table__cell--align-left"
+            data-title="Status"
+            headers="header-status"
+            role="cell"
+          >
+            <fieldset
+              aria-invalid="false"
+              class="ds-c-fieldset ds-u-margin-top--0"
+            >
+              <legend
+                class="ds-c-label"
+                id="field_5-label"
+              >
+                <span
+                  class=""
+                >
+                  <span
+                    class="ds-u-visibility--screen-reader"
+                  >
+                    Social Media
+                  </span>
+                </span>
+              </legend>
+              <div>
+                <div
+                  class="ds-c-choice-wrapper"
+                >
+                  <input
+                    class="ds-c-choice"
+                    id="radio_cookie-c4_6"
+                    name="cookie-c4"
+                    type="radio"
+                    value="0"
+                  />
+                  <label
+                    class="ds-c-label"
+                    for="radio_cookie-c4_6"
+                  >
+                    <span
+                      class=""
+                    >
+                      Allow
+                    </span>
+                  </label>
+                </div>
+              </div>
+              <div>
+                <div
+                  class="ds-c-choice-wrapper"
+                >
+                  <input
+                    checked=""
+                    class="ds-c-choice"
+                    id="radio_cookie-c4_7"
+                    name="cookie-c4"
+                    type="radio"
+                    value="1"
+                  />
+                  <label
+                    class="ds-c-label"
+                    for="radio_cookie-c4_7"
+                  >
+                    <span
+                      class=""
+                    >
+                      Don't allow
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </td>
+        </tr>
+        <tr
+          role="row"
+        >
+          <td
+            class="ds-c-table__cell--align-left"
+            data-title="Category"
+            headers="header-category"
+            role="cell"
+          >
+            Web Analytics
+          </td>
+          <td
+            class="ds-c-table__cell--align-left"
+            data-title="Description"
+            headers="header-description"
+            role="cell"
+          >
+            We use a variety of tools to count, track, and analyze visits to Test.gov. This helps us understand how people use the site and where we should make improvements. Select “Don’t allow” to block this tracking.
+          </td>
+          <td
+            class="ds-c-table__cell--align-left"
+            data-title="Status"
+            headers="header-status"
+            role="cell"
+          >
+            <fieldset
+              aria-invalid="false"
+              class="ds-c-fieldset ds-u-margin-top--0"
+            >
+              <legend
+                class="ds-c-label"
+                id="field_8-label"
+              >
+                <span
+                  class=""
+                >
+                  <span
+                    class="ds-u-visibility--screen-reader"
+                  >
+                    Web Analytics
+                  </span>
+                </span>
+              </legend>
+              <div>
+                <div
+                  class="ds-c-choice-wrapper"
+                >
+                  <input
+                    checked=""
+                    class="ds-c-choice"
+                    id="radio_cookie-c2_9"
+                    name="cookie-c2"
+                    type="radio"
+                    value="0"
+                  />
+                  <label
+                    class="ds-c-label"
+                    for="radio_cookie-c2_9"
+                  >
+                    <span
+                      class=""
+                    >
+                      Allow
+                    </span>
+                  </label>
+                </div>
+              </div>
+              <div>
+                <div
+                  class="ds-c-choice-wrapper"
+                >
+                  <input
+                    class="ds-c-choice"
+                    id="radio_cookie-c2_10"
+                    name="cookie-c2"
+                    type="radio"
+                    value="1"
+                  />
+                  <label
+                    class="ds-c-label"
+                    for="radio_cookie-c2_10"
+                  >
+                    <span
+                      class=""
+                    >
+                      Don't allow
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

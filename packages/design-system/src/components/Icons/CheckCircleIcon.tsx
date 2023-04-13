@@ -1,13 +1,13 @@
 import React from 'react';
 import { t } from '../i18n';
-import SvgIcon, { IconCommonProps } from './SvgIcon';
+import { SvgIcon, IconCommonProps } from './SvgIcon';
 
 const defaultProps = {
   className: '',
   viewBox: '38 7 135 135',
 };
 
-function CheckCircleIcon(props: IconCommonProps): React.ReactElement {
+export function CheckCircleIcon(props: IconCommonProps): React.ReactElement {
   const iconCssClasses = `ds-c-icon--check-circle ${props.className || ''}`;
 
   return (
@@ -16,5 +16,3 @@ function CheckCircleIcon(props: IconCommonProps): React.ReactElement {
     </SvgIcon>
   );
 }
-
-export default CheckCircleIcon;

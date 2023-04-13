@@ -3,11 +3,11 @@ import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'gatsby';
 import classnames from 'classnames';
 import { Button, CloseIconThin, MenuIconThin, VerticalNav } from '@cmsgov/design-system';
-import { VerticalNavItemProps } from '@cmsgov/design-system/dist/components/VerticalNav/VerticalNavItem';
 import { useStaticQuery, graphql } from 'gatsby';
 import ThemeSwitcher from './ThemeSwitcher';
+import VersionSwitcher from './VersionSwitcher';
 import { LocationInterface, NavDataQuery } from '../../helpers/graphQLTypes';
-import { convertToNavItems, organizeNavItems } from '../../helpers/navDataFormatUtils';
+import { DocsNavItem, convertToNavItems, organizeNavItems } from '../../helpers/navDataFormatUtils';
 import GithubIcon from '../icons/GithubIcon';
 import NewsIcon from '../icons/NewsIcon';
 
@@ -17,16 +17,12 @@ interface DocSiteNavProps {
 
 /**
  * A wrapper for the gatsby link to handle internal site navigation
- * @param props {VerticalNavItemProps}
- * @returns gatsby link
  */
-const GatsbyLink = (props: VerticalNavItemProps) => {
-  return (
-    <Link to={props.href} {...props}>
-      {props.children}
-    </Link>
-  );
-};
+const GatsbyLink = (props: any /* See VerticalNavItemLabel.tsx */) => (
+  <Link to={props.href} {...props}>
+    {props.children}
+  </Link>
+);
 
 /**
  * DocSiteNav
@@ -94,21 +90,18 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
     }
   `);
 
-  const navItems: VerticalNavItemProps[] = useMemo(() => {
-    const navItems: VerticalNavItemProps[] = convertToNavItems(data?.allFile?.group, location);
+  const navItems: DocsNavItem[] = useMemo(() => {
+    const navItems: DocsNavItem[] = convertToNavItems(data?.allFile?.group, location);
     return organizeNavItems(navItems);
   }, [data?.allFile?.group, location]);
 
   return (
     <div
-      className={classnames(
-        'ds-u-padding--0 ds-u-md-padding--2 ds-u-md-padding-top--4 c-navigation',
-        {
-          'c-navigation--open': isMobile && isMobileNavOpen,
-        }
-      )}
+      className={classnames('ds-u-padding--0 ds-u-md-padding--2 c-navigation', {
+        'c-navigation--open': isMobile && isMobileNavOpen,
+      })}
     >
-      <header className="c-navigation__header">
+      <header className="c-navigation__header ds-u-md-padding-top--4">
         <Button
           className="ds-u-md-display--none ds-u-padding-left--0 ds-u-padding-right--1"
           variation="ghost"
@@ -122,9 +115,13 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
             <MenuIconThin className="ds-u-font-size--xl" />
           )}
         </Button>
-        <a className="c-navigation__title" href="/">
-          CMS Design System
-        </a>
+        <div>
+          <a className="c-navigation__title" href="/">
+            CMS Design System
+          </a>
+          <ThemeSwitcher />
+          <VersionSwitcher />
+        </div>
       </header>
 
       <div
@@ -133,7 +130,6 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
         hidden={isMobile && !isMobileNavOpen}
         className="ds-u-padding--2 ds-u-md-padding--0"
       >
-        <ThemeSwitcher />
         <VerticalNav
           className="c-navigation__link-list"
           items={navItems}

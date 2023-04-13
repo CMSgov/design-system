@@ -16,6 +16,10 @@
   display: flex !important;
 }
 
+.ds-u-display--inline-flex {
+  display: inline-flex !important;
+}
+
 .ds-u-display--none {
   display: none !important;
 }
@@ -60,6 +64,10 @@
 
     .ds-u-#{$breakpoint}-display--flex {
       display: flex !important;
+    }
+
+    .ds-u-#{$breakpoint}-display--inline-flex {
+      display: inline-flex !important;
     }
 
     .ds-u-#{$breakpoint}-display--none {
