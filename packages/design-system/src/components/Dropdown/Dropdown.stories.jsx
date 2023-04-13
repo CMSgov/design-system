@@ -7,6 +7,7 @@ export default {
   argTypes: {
     children: { control: false },
     options: { control: false },
+    requirementLabel: { control: 'text' },
   },
 };
 

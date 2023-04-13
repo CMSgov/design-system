@@ -7,7 +7,6 @@ export default {
   title: 'Components/Button',
   component: Button,
   argTypes: {
-    // children can be text or a ReactNode. For storybook controls, just allowing strings
     children: {
       control: { type: 'text' },
       type: { name: 'string', required: true },
