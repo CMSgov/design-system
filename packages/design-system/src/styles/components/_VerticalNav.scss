@@ -12,6 +12,7 @@
 }
 
 .ds-c-vertical-nav {
+  gap: 0;
   margin: 0;
 
   > .ds-c-vertical-nav__item {
@@ -124,6 +125,7 @@
 }
 
 .ds-c-vertical-nav__subnav {
+  gap: 0;
   margin: 0;
 
   .ds-c-vertical-nav__label {
