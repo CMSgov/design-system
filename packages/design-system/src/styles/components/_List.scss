@@ -4,14 +4,6 @@
 .ds-c-list {
   margin-block: $spacer-2;
   padding-inline-start: $spacer-4;
-
-  li {
-    margin-block-end: $spacer-1;
-
-    &:last-child {
-      margin-block-end: 0;
-    }
-  }
 }
 
 .ds-c-list--bare {
