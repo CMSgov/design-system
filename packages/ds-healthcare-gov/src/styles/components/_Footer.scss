@@ -86,8 +86,6 @@
   }
 
   .hc-c-footer__address {
-    // flex-basis: 3fr;
-
     @media (min-width: $media-width-md) {
       border-inline-start: 1px solid var(--color-gray-light);
       padding-inline-start: var(--spacer-2);

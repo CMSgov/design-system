@@ -6,9 +6,6 @@ interface LogosRowProps {
   t: (string) => string;
 }
 
-/**
- * The logos row includes agency/branch logos and address info
- */
 const LogosRow = function (props: LogosRowProps) {
   return (
     <div className="ds-l-container">
