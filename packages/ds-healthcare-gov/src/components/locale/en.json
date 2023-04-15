@@ -1,17 +1,13 @@
 {
   "footer": {
-    "allTopics": "All Topics",
-    "glossary": "Glossary",
     "contactUs": "Contact Us",
     "archive": "Archive",
     "a11y": "Accessibility",
     "privacyPolicy": "Privacy Policy",
     "privacySettings": "Privacy Settings",
-    "linkingPolicy": "Linking Policy",
     "usingThisSite": "Using This Site",
-    "plainWriting": "Plain Writing",
-    "address-top": "Health Insurance Marketplace<sup>&#174;</sup> is a registered trademark of the Department of Health &amp; Human Services.",
-    "address-bottom": "An official website of the U.S. Centers for Medicare &amp; Medicaid Services."
+    "disclaimer-top": "Health Insurance Marketplace<sup>&#174;</sup> is a registered trademark of the Department of Health &amp; Human Services.",
+    "disclaimer-bottom": "An official website of the U.S. Centers for Medicare &amp; Medicaid Services."
   },
   "header": {
     "close": "Close",

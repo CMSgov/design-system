@@ -13,9 +13,9 @@ const LogosRow = function (props: LogosRowProps) {
         <Logo href="https://www.healthcare.gov">
           <HCgovLogo />
         </Logo>
-        <div className="hc-c-footer__address">
-          <p dangerouslySetInnerHTML={{ __html: props.t('footer.address-top') }} />
-          <p dangerouslySetInnerHTML={{ __html: props.t('footer.address-bottom') }} />
+        <div className="hc-c-footer__disclaimer">
+          <p dangerouslySetInnerHTML={{ __html: props.t('footer.disclaimer-top') }} />
+          <p dangerouslySetInnerHTML={{ __html: props.t('footer.disclaimer-bottom') }} />
         </div>
       </div>
     </div>
