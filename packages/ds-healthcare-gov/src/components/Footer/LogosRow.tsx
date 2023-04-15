@@ -13,7 +13,7 @@ const LogosRow = function (props: LogosRowProps) {
   return (
     <div className="ds-l-container">
       <div className="hc-c-footer__logo-row">
-        <Logo href="https://www.hhs.gov/">
+        <Logo href="https://www.healthcare.gov">
           <HCgovLogo />
         </Logo>
         <div className="hc-c-footer__address">
