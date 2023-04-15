@@ -91,7 +91,7 @@ exports[`InlineLinkLists renders lists of links 1`] = `
     >
       <h4
         class="ds-u-visibility--screen-reader"
-        id="global-footer-language-resource"
+        id="global-footer-language-resources"
       >
         Language resources
       </h4>
@@ -347,7 +347,7 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
     >
       <h4
         class="ds-u-visibility--screen-reader"
-        id="global-footer-language-resource"
+        id="global-footer-language-resources"
       >
         Language resources
       </h4>
