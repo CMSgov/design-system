@@ -5,6 +5,7 @@ import classnames from 'classnames';
 import { Button, CloseIconThin, MenuIconThin, VerticalNav } from '@cmsgov/design-system';
 import { useStaticQuery, graphql } from 'gatsby';
 import ThemeSwitcher from './ThemeSwitcher';
+import VersionSwitcher from './VersionSwitcher';
 import { LocationInterface, NavDataQuery } from '../../helpers/graphQLTypes';
 import { DocsNavItem, convertToNavItems, organizeNavItems } from '../../helpers/navDataFormatUtils';
 import GithubIcon from '../icons/GithubIcon';
@@ -119,6 +120,7 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
             CMS Design System
           </a>
           <ThemeSwitcher />
+          <VersionSwitcher />
         </div>
       </header>
 
