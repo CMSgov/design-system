@@ -271,14 +271,14 @@ exports[`Footer renders basic footer 1`] = `
             class="hc-c-logo"
           >
             <svg
-              aria-labelledby="hc-c-logo__title"
+              aria-labelledby="hc-c-footer__logo-title"
               height="25"
               viewBox="0 0 253.05 31.65"
               width="200"
               xmlns="http://www.w3.org/2000/svg"
             >
               <title
-                id="hc-c-logo__title"
+                id="hc-c-footer__logo-title"
               >
                 HealthCare.gov
               </title>
@@ -632,14 +632,14 @@ exports[`Footer renders basic footer with props 1`] = `
             class="hc-c-logo"
           >
             <svg
-              aria-labelledby="hc-c-logo__title"
+              aria-labelledby="hc-c-footer__logo-title"
               height="25"
               viewBox="0 0 253.05 31.65"
               width="200"
               xmlns="http://www.w3.org/2000/svg"
             >
               <title
-                id="hc-c-logo__title"
+                id="hc-c-footer__logo-title"
               >
                 HealthCare.gov
               </title>
