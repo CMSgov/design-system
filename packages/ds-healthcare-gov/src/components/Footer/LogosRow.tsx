@@ -1,6 +1,7 @@
 import React from 'react';
 import Logo from './Logo';
 import { Logo as HCgovLogo } from '../Logo';
+import { getLanguage } from '@cmsgov/design-system';
 
 interface LogosRowProps {
   t: (string) => string;
@@ -10,7 +11,12 @@ const LogosRow = function (props: LogosRowProps) {
   return (
     <div className="ds-l-container">
       <div className="hc-c-footer__logo-row">
-        <Logo href="https://www.healthcare.gov">
+        <Logo
+          href={
+            getLanguage() === 'es' ? 'https://www.cuidadodesalud.gov' : 'https://www.healthcare.gov'
+          }
+          aria-label={props.t('footer.url-label')}
+        >
           <HCgovLogo />
         </Logo>
         <div className="hc-c-footer__disclaimer">
