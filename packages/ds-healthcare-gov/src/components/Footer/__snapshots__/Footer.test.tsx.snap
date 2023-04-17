@@ -342,7 +342,7 @@ exports[`Footer renders basic footer 1`] = `
           </span>
         </a>
         <div
-          class="hc-c-footer__address"
+          class="hc-c-footer__disclaimer"
         >
           <p>
             Health Insurance Marketplace
@@ -703,7 +703,7 @@ exports[`Footer renders basic footer with props 1`] = `
           </span>
         </a>
         <div
-          class="hc-c-footer__address"
+          class="hc-c-footer__disclaimer"
         >
           <p>
             Health Insurance Marketplace

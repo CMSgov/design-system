@@ -87,13 +87,13 @@ exports[`LogosRow renders logos and address 1`] = `
         </span>
       </a>
       <div
-        class="hc-c-footer__address"
+        class="hc-c-footer__disclaimer"
       >
         <p>
-          footer.address-top
+          footer.disclaimer-top
         </p>
         <p>
-          footer.address-bottom
+          footer.disclaimer-bottom
         </p>
       </div>
     </div>
