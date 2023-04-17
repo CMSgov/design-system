@@ -39,7 +39,6 @@ export function useDialogAnalytics({
   }
 
   const [headingRef] = useAnalyticsContent({
-    componentName: 'Dialog',
     onMount: (content: string | undefined) => {
       sendDialogEvent(content, {
         event_name: 'modal_impression',

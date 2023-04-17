@@ -16,7 +16,6 @@ export default function useAlertAnalytics({
 }: AlertProps) {
   // Order matters! Content comes from the heading first and falls back to body if heading doesn't exist
   const [headingRef, bodyRef] = useAnalyticsContent({
-    componentName: 'Alert',
     onMount: (content: string | undefined) => {
       if (analytics !== true && (!alertSendsAnalytics() || analytics === false)) {
         return;

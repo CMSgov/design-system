@@ -188,8 +188,6 @@ export class Autocomplete extends React.Component<AutocompleteProps, any> {
 
   filterItems(
     items: AutocompleteItems[],
-    inputValue: string,
-    getInputProps: (...args: any[]) => any,
     getItemProps: (...args: any[]) => any,
     highlightedIndex: number
   ): React.ReactNode {
@@ -328,7 +326,6 @@ export class Autocomplete extends React.Component<AutocompleteProps, any> {
           getItemProps,
           getRootProps,
           highlightedIndex,
-          inputValue,
           isOpen,
         }) => (
           <WrapperDiv
@@ -359,13 +356,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, any> {
                   id={this.listboxId}
                   role="listbox"
                 >
-                  {this.filterItems(
-                    items,
-                    inputValue,
-                    getInputProps,
-                    getItemProps,
-                    highlightedIndex
-                  )}
+                  {this.filterItems(items, getItemProps, highlightedIndex)}
                 </ul>
               </div>
             ) : null}

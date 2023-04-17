@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '../Button/Button';
 import Ellipses from './Ellipses';
 import Page from './Page';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback } from 'react';
 import classNames from 'classnames';
 import { ArrowIcon } from '../Icons';
 import { t } from '../i18n';

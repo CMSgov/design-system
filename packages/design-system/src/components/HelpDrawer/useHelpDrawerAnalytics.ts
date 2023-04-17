@@ -39,7 +39,6 @@ export default function useHelpDrawerAnalytics({
   }
 
   const [headingRef] = useAnalyticsContent({
-    componentName: 'Dialog',
     onMount: (content: string | undefined) => {
       sendHelpDrawerEvent(content, {
         event_name: 'help_drawer_opened',
