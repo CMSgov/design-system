@@ -11,8 +11,6 @@ const defaultStepProps = {
   editText: 'Edit!',
   resumeText: 'Resume!',
   startText: 'Start!',
-  actionsLabelText: '!Primary action for %{step}',
-  substepsLabelText: '!Secondary actions for %{step}',
 };
 
 function renderStep(step = {}, props = {}) {
@@ -155,17 +153,5 @@ describe('Step', () => {
     });
 
     expect(list).toMatchSnapshot();
-  });
-
-  it('renders aria elements and sr text for heading, description, and substeps', () => {
-    renderStep({ steps: [generateStep({ id: '1' })] });
-
-    const description = screen.getAllByRole('region');
-    const headerID = description.id;
-    expect(description.length).toEqual(2);
-    expect(description[0]).toHaveAttribute('aria-describedby', headerID);
-
-    const secondaryLabel = screen.getByText(/!Secondary actions for Do something!/i);
-    expect(secondaryLabel).toBeInTheDocument();
   });
 });
