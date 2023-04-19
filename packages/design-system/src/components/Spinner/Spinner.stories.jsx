@@ -9,14 +9,8 @@ export default {
       control: 'radio',
       options: ['small', 'big'],
     },
-    inversed: {
-      control: 'radio',
-      options: [true, false],
-    },
-    filled: {
-      control: 'radio',
-      options: [true, false],
-    },
+    inversed: { control: 'boolean' },
+    filled: { control: 'boolean' },
   },
   args: {
     inversed: false,

@@ -5,6 +5,9 @@ export default {
   title: 'Components/Month Picker',
   component: MonthPicker,
   argTypes: {
+    hint: { control: 'text' },
+    errorMessage: { control: 'text' },
+    label: { control: 'text' },
     buttonVariation: {
       description: `Variation string to be applied to buttons. See [Button component](https://design.cms.gov/components/button/#components.button.react).`,
       control: 'radio',

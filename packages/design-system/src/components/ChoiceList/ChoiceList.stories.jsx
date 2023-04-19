@@ -8,9 +8,11 @@ export default {
   component: ChoiceList,
   argTypes: {
     choices: { control: false },
-    errorMessage: {
-      control: { type: 'text' },
-    },
+    hint: { control: 'text' },
+    label: { control: 'text' },
+    errorMessage: { control: 'text' },
+    // @TODO: deprecate, only size available is 'small'
+    size: { table: { disable: true } },
   },
   args: {
     choices: [

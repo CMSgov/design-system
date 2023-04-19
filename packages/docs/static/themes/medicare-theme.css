@@ -53,6 +53,13 @@
 --color-secondary-dark: #1b3665;
 --color-secondary-darker: #152a4e;
 --color-secondary-darkest: #0f1e38;
+--color-accent-primary-lightest: #f7e6e6;
+--color-accent-primary-lighter: #e8b3b3;
+--color-accent-primary-light: #c94d4d;
+--color-accent-primary: #b20000;
+--color-accent-primary-dark: #a00000;
+--color-accent-primary-darker: #7d0000;
+--color-accent-primary-darkest: #590000;
 --color-info-lightest: #e9ecf1;
 --color-info-lighter: #bcc5d4;
 --color-info-light: #62779b;
