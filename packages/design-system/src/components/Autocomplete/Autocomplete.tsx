@@ -16,7 +16,7 @@
 
 import Downshift, { A11yStatusMessageOptions, DownshiftProps } from 'downshift';
 import Button from '../Button/Button';
-import React from 'react';
+import React, { useRef } from 'react';
 import TextField from '../TextField/TextField';
 import WrapperDiv from './WrapperDiv';
 import classNames from 'classnames';
@@ -161,42 +161,41 @@ function isTextField(child: React.ReactElement): boolean {
   return child && (child.type === TextField || componentName === 'TextField');
 }
 
-export class Autocomplete extends React.Component<AutocompleteProps, any> {
-  static defaultProps = {
-    autoCompleteLabel: 'off',
-    clearSearchButton: true,
-    clearInputOnBlur: true,
-    itemToString: (item): string => (item ? item.name : ''),
-  };
+export const Autocomplete = (props: AutocompleteProps) => {
+  const id = useRef(props.id ?? uniqueId('autocomplete_')).current;
+  const labelId = useRef(props.labelId ?? uniqueId('autocomplete_label_')).current;
+  const listboxId = useRef(uniqueId('autocomplete_owned_listbox_')).current;
+  const listboxContainerId = useRef(uniqueId('autocomplete_owned_container_')).current;
+  const listboxHeadingId = useRef(uniqueId('autocomplete_header_')).current;
 
-  constructor(props: AutocompleteProps) {
-    super(props);
+  const {
+    ariaClearLabel,
+    autoCompleteLabel,
+    children,
+    className,
+    clearInputOnBlur,
+    clearInputText,
+    clearSearchButton,
+    focusTrigger,
+    id: _id,
+    inputRef,
+    items,
+    itemToString,
+    label,
+    labelId: _labelId,
+    loading,
+    loadingMessage,
+    noResultsMessage,
+    ...autocompleteProps
+  } = props;
 
-    this.id = this.props.id || uniqueId('autocomplete_');
-    this.labelId = this.props.labelId || uniqueId('autocomplete_label_');
-    this.listboxId = uniqueId('autocomplete_owned_listbox_');
-    this.listboxContainerId = uniqueId('autocomplete_owned_container_');
-    this.listboxHeadingId = uniqueId('autocomplete_header_');
-  }
-
-  // Autocomplete class properties
-  id: string;
-  labelId: string;
-  listboxId: string;
-  listboxContainerId: string;
-  listboxHeadingId: string;
-
-  filterItems(
+  function renderItems(
     items: AutocompleteItems[],
-    inputValue: string,
-    getInputProps: (...args: any[]) => any,
     getItemProps: (...args: any[]) => any,
     highlightedIndex: number
   ): React.ReactNode {
     // If we have results, create a mapped list
     if (items.length) {
-      const { itemToString } = this.props;
-
       return items.map((item, index) => (
         <li
           aria-selected={highlightedIndex === index}
@@ -207,16 +206,16 @@ export class Autocomplete extends React.Component<AutocompleteProps, any> {
           role="option"
           {...getItemProps({ item })}
         >
-          {item.children ?? itemToString(item)}
+          {item.children ?? props.itemToString(item)}
         </li>
       ));
     }
 
     // If we're waiting for results to load, show the non-selected message
-    if (this.props.loading) {
+    if (loading) {
       return (
         <li aria-selected="false" className="ds-c-autocomplete__list-item--message" role="option">
-          {this.props.loadingMessage ?? t('autocomplete.loadingMessage')}
+          {loadingMessage ?? t('autocomplete.loadingMessage')}
         </li>
       );
     }
@@ -224,168 +223,158 @@ export class Autocomplete extends React.Component<AutocompleteProps, any> {
     // If we have no results, show the non-selected message
     return (
       <li aria-selected="false" className="ds-c-autocomplete__list-item--message" role="option">
-        {this.props.noResultsMessage ?? t('autocomplete.noResultsMessage')}
+        {noResultsMessage ?? t('autocomplete.noResultsMessage')}
       </li>
     );
   }
 
-  renderChildren(getInputProps: (...args: any[]) => any, listboxOpen: boolean): React.ReactNode[] {
+  function renderChildren(
+    getInputProps: (...args: any[]) => any,
+    listboxOpen: boolean
+  ): React.ReactNode[] {
     const isOpen = listboxOpen;
-    const { clearSearchButton } = this.props;
     // Extend props on the TextField, by passing them
     // through Downshift's `getInputProps` method
-    return React.Children.map(this.props.children, (child: React.ReactElement) => {
-      if (isTextField(child)) {
-        // The display of bottom placed errorMessages in TextField breaks the Autocomplete's UI design.
-        // Add errorMessageClassName to fix the styles for bottom placed errors
-        const bottomError =
-          (child.props.errorPlacement === 'bottom' || errorPlacementDefault() === 'bottom') &&
-          child.props.errorMessage;
-        const errorMessageClassName = bottomError
-          ? classNames(
-              'ds-c-autocomplete__error-message',
-              {
-                'ds-c-autocomplete__error-message--clear-btn': clearSearchButton,
-              },
-              child.props.errorMessageClassName
-            )
-          : child.props.errorMessageClassName;
-        const propOverrides = {
-          'aria-autocomplete': 'list',
-          'aria-controls': this.listboxId,
-          'aria-expanded': isOpen,
-          'aria-labelledby': null,
-          'aria-owns': isOpen ? this.listboxId : null,
-          autoComplete: this.props.autoCompleteLabel,
-          errorMessageClassName: errorMessageClassName,
-          focusTrigger: this.props.focusTrigger,
-          id: this.id,
-          inputRef: this.props.inputRef,
-          labelId: this.labelId,
-          onBlur: child.props.onBlur,
-          onChange: child.props.onChange,
-          onKeyDown: child.props.onKeyDown,
-          role: 'combobox',
-        };
-
-        return React.cloneElement(child, getInputProps(propOverrides));
+    return React.Children.map(children, (child: React.ReactElement) => {
+      if (!isTextField(child)) {
+        return child;
       }
 
-      return child;
+      // The display of bottom placed errorMessages in TextField breaks the Autocomplete's UI design.
+      // Add errorMessageClassName to fix the styles for bottom placed errors
+      const bottomError =
+        (child.props.errorPlacement === 'bottom' || errorPlacementDefault() === 'bottom') &&
+        child.props.errorMessage;
+
+      const errorMessageClassName = bottomError
+        ? classNames(
+            'ds-c-autocomplete__error-message',
+            {
+              'ds-c-autocomplete__error-message--clear-btn': clearSearchButton,
+            },
+            child.props.errorMessageClassName
+          )
+        : child.props.errorMessageClassName;
+
+      const propOverrides = {
+        'aria-autocomplete': 'list',
+        'aria-controls': listboxId,
+        'aria-expanded': isOpen,
+        'aria-labelledby': null,
+        'aria-owns': isOpen ? listboxId : null,
+        autoComplete: autoCompleteLabel,
+        errorMessageClassName,
+        focusTrigger,
+        id,
+        inputRef,
+        labelId,
+        onBlur: child.props.onBlur,
+        onChange: child.props.onChange,
+        onKeyDown: child.props.onKeyDown,
+        role: 'combobox',
+      };
+
+      return React.cloneElement(child, getInputProps(propOverrides));
     });
   }
 
-  render() {
-    const {
-      ariaClearLabel,
-      clearInputText,
-      items,
-      label,
-      loading,
-      className,
-      clearInputOnBlur,
-      clearSearchButton,
-      ...autocompleteProps
-    }: AutocompleteProps = this.props;
+  const rootClassName = classNames('ds-u-clearfix', 'ds-c-autocomplete', className);
 
-    const rootClassName = classNames('ds-u-clearfix', 'ds-c-autocomplete', className);
-
-    if (clearInputOnBlur === false) {
-      autocompleteProps.stateReducer = keepInputDownshiftStateReducer;
-    }
-
-    if (items) {
-      // We allow items that aren't technically results to be rendered as items in the list, such as
-      // a button for viewing all results, but these non-result items should not be counted in the
-      // accessibility messages as results. It is not enough to set downshift's `itemCount` property
-      // because it will actually make any remaining items past the `itemCount` unselectable with
-      // the keyboard.
-      const resultCount = items.filter((item) => item.isResult !== false).length;
-      if (items.length !== resultCount) {
-        const getA11yStatusMessage =
-          autocompleteProps.getA11yStatusMessage ?? Downshift.defaultProps.getA11yStatusMessage;
-        autocompleteProps.getA11yStatusMessage = (
-          args: A11yStatusMessageOptions<AutocompleteItems>
-        ) => {
-          const newArgs = { ...args, resultCount };
-          if (args.previousResultCount === args.resultCount) {
-            // Since we are modifying the resultCount, we want to avoid a case where the resultCount
-            // doesn't match the previousResultCount when it naturally would. If there's an artificial
-            // mismatch between these two values, the result count will be announced each time the
-            // currently focused list item changes.
-            newArgs.previousResultCount = newArgs.resultCount;
-          }
-          return getA11yStatusMessage(newArgs);
-        };
-      }
-    }
-
-    return (
-      <Downshift {...autocompleteProps}>
-        {({
-          clearSelection,
-          getInputProps,
-          getItemProps,
-          getRootProps,
-          highlightedIndex,
-          inputValue,
-          isOpen,
-        }) => (
-          <WrapperDiv
-            {...getRootProps({
-              refKey: 'innerRef',
-            })}
-            aria-expanded={null}
-            aria-haspopup={null}
-            aria-labelledby={null}
-            aria-owns={null}
-            className={rootClassName}
-            // role has to be null to overwrite Downshift
-            role={null}
-          >
-            {this.renderChildren(getInputProps, isOpen)}
-
-            {isOpen && (loading || items) ? (
-              <div className="ds-c-autocomplete__list" id={this.listboxContainerId}>
-                {label && !loading && (
-                  <h5 className="ds-c-autocomplete__label" id={this.listboxHeadingId}>
-                    {label}
-                  </h5>
-                )}
-
-                <ul
-                  aria-labelledby={label ? this.listboxHeadingId : null}
-                  className="ds-c-list--bare"
-                  id={this.listboxId}
-                  role="listbox"
-                >
-                  {this.filterItems(
-                    items,
-                    inputValue,
-                    getInputProps,
-                    getItemProps,
-                    highlightedIndex
-                  )}
-                </ul>
-              </div>
-            ) : null}
-
-            {clearSearchButton && (
-              <Button
-                aria-label={ariaClearLabel ?? t('autocomplete.ariaClearLabel')}
-                className="ds-u-padding-right--0 ds-c-autocomplete__clear-btn"
-                onClick={clearSelection}
-                size="small"
-                variation="ghost"
-              >
-                {clearInputText ?? t('autocomplete.clearInputText')}
-              </Button>
-            )}
-          </WrapperDiv>
-        )}
-      </Downshift>
-    );
+  if (clearInputOnBlur === false) {
+    autocompleteProps.stateReducer = keepInputDownshiftStateReducer;
   }
-}
+
+  if (items) {
+    // We allow items that aren't technically results to be rendered as items in the list, such as
+    // a button for viewing all results, but these non-result items should not be counted in the
+    // accessibility messages as results. It is not enough to set downshift's `itemCount` property
+    // because it will actually make any remaining items past the `itemCount` unselectable with
+    // the keyboard.
+    const resultCount = items.filter((item) => item.isResult !== false).length;
+    if (items.length !== resultCount) {
+      const getA11yStatusMessage =
+        autocompleteProps.getA11yStatusMessage ?? Downshift.defaultProps.getA11yStatusMessage;
+      autocompleteProps.getA11yStatusMessage = (
+        args: A11yStatusMessageOptions<AutocompleteItems>
+      ) => {
+        const newArgs = { ...args, resultCount };
+        if (args.previousResultCount === args.resultCount) {
+          // Since we are modifying the resultCount, we want to avoid a case where the resultCount
+          // doesn't match the previousResultCount when it naturally would. If there's an artificial
+          // mismatch between these two values, the result count will be announced each time the
+          // currently focused list item changes.
+          newArgs.previousResultCount = newArgs.resultCount;
+        }
+        return getA11yStatusMessage(newArgs);
+      };
+    }
+  }
+
+  return (
+    <Downshift itemToString={itemToString} {...autocompleteProps}>
+      {({
+        clearSelection,
+        getInputProps,
+        getItemProps,
+        getRootProps,
+        highlightedIndex,
+        isOpen,
+      }) => (
+        <WrapperDiv
+          {...getRootProps({
+            refKey: 'innerRef',
+          })}
+          aria-expanded={null}
+          aria-haspopup={null}
+          aria-labelledby={null}
+          aria-owns={null}
+          className={rootClassName}
+          // role has to be null to overwrite Downshift
+          role={null}
+        >
+          {renderChildren(getInputProps, isOpen)}
+
+          {isOpen && (loading || items) ? (
+            <div className="ds-c-autocomplete__list" id={listboxContainerId}>
+              {label && !loading && (
+                <h5 className="ds-c-autocomplete__label" id={listboxHeadingId}>
+                  {label}
+                </h5>
+              )}
+
+              <ul
+                aria-labelledby={label ? listboxHeadingId : null}
+                className="ds-c-list--bare"
+                id={listboxId}
+                role="listbox"
+              >
+                {renderItems(items, getItemProps, highlightedIndex)}
+              </ul>
+            </div>
+          ) : null}
+
+          {clearSearchButton && (
+            <Button
+              aria-label={ariaClearLabel ?? t('autocomplete.ariaClearLabel')}
+              className="ds-u-padding-right--0 ds-c-autocomplete__clear-btn"
+              onClick={clearSelection}
+              size="small"
+              variation="ghost"
+            >
+              {clearInputText ?? t('autocomplete.clearInputText')}
+            </Button>
+          )}
+        </WrapperDiv>
+      )}
+    </Downshift>
+  );
+};
+
+Autocomplete.defaultProps = {
+  autoCompleteLabel: 'off',
+  clearSearchButton: true,
+  clearInputOnBlur: true,
+  itemToString: (item): string => (item ? item.name : ''),
+};
 
 export default Autocomplete;
