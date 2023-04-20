@@ -299,7 +299,8 @@ export const Autocomplete = (props: AutocompleteProps) => {
     const resultCount = items.filter((item) => item.isResult !== false).length;
     if (items.length !== resultCount) {
       const getA11yStatusMessage =
-        autocompleteProps.getA11yStatusMessage ?? Downshift.defaultProps.getA11yStatusMessage;
+        autocompleteProps.getA11yStatusMessage ??
+        ((Downshift as any).defaultProps as DownshiftProps<any>).getA11yStatusMessage;
       autocompleteProps.getA11yStatusMessage = (
         args: A11yStatusMessageOptions<AutocompleteItems>
       ) => {
