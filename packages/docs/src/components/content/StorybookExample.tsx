@@ -62,7 +62,7 @@ const StorybookExample = ({ theme, componentName, minHeight, storyId }: Storyboo
   // when the iframe's content loads, calculate height of iframe & set html
   const onIframeLoad = () => {
     if (iframeRef.current) {
-      setIframeHeight();
+      setIframeHeight;
     }
     setIsLoading(false);
   };
