@@ -92,8 +92,13 @@ export interface AutocompleteProps extends Omit<DownshiftProps<any>, PropsNotPas
    * Removes the Clear search button when set to `false`
    */
   clearSearchButton?: boolean;
+  /*
+   * Sets the focus on the select during the first mount
+   */
+  autoFocus?: boolean;
   /**
-   * Used to focus child `TextField` on `componentDidMount()`
+   * @deprecated This is deprecated in favor of autoFocus
+   * @hide-prop [Deprecated]
    */
   focusTrigger?: boolean;
   /**
@@ -171,6 +176,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
   const {
     ariaClearLabel,
     autoCompleteLabel,
+    autoFocus,
     children,
     className,
     clearInputOnBlur,
@@ -264,7 +270,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
         'aria-owns': isOpen ? listboxId : null,
         autoComplete: autoCompleteLabel,
         errorMessageClassName,
-        focusTrigger,
+        autoFocus: autoFocus || focusTrigger,
         id,
         inputRef,
         labelId,
