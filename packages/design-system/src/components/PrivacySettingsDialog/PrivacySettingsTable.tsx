@@ -72,7 +72,12 @@ export const PrivacySettingsTable = ({
   }
 
   return (
-    <Table className="ds-c-privacy-settings-table" borderless stackable stackableBreakpoint="md">
+    <Table
+      className="ds-c-privacy-settings-table ds-u-margin-top--2 ds-u-lg-margin--0"
+      borderless
+      stackable
+      stackableBreakpoint="md"
+    >
       <TableHead>
         <TableRow>
           <TableCell id={categoryHeaderId}>{t('privacy.category')}</TableCell>
