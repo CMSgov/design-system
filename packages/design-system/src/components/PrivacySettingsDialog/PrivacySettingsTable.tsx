@@ -49,9 +49,9 @@ export const PrivacySettingsTable = ({
     );
   }
 
-  const categoryHeaderId = 'header-category';
-  const descriptionHeaderId = 'header-description';
-  const statusHeaderId = 'header-status';
+  const categoryHeaderId = 'privacy-settings-header-category';
+  const descriptionHeaderId = 'privacy-settings-header-description';
+  const statusHeaderId = 'privacy-settings-header-status';
 
   function renderRow({ settingsKey, translationKey, value }: PrivacySettingsProperty) {
     const category = t(`privacy.${translationKey}.category`);
