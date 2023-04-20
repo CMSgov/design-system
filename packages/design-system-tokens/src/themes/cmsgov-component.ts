@@ -64,7 +64,7 @@ export const components: AnyTokenValues = {
   'button': {
     '__background-color--active':                 t.color['primary-lightest'],
     '__background-color--disabled':               t.color['gray-lightest'],
-    '__background-color--hover':                  t.color['primary-lightest'],
+    '__background-color--hover':                  t.color['accent-primary'],
     '__background-color':                         'transparent',
     '__border-color--active':                     t.color['primary'],
     '__border-color--disabled':                   t.color['gray-lighter'],
@@ -83,7 +83,7 @@ export const components: AnyTokenValues = {
   'button-alt': {
     '__background-color--active':                 t.color['gray-lighter'],
     '__background-color--disabled':               'transparent',
-    '__background-color--hover':                  t.color['gray-lightest'],
+    '__background-color--hover':                  t.color['accent-primary'],
     '__background-color':                         'transparent',
     '__border-color--active':                     'currentColor',
     '__border-color--disabled':                   'currentColor',
@@ -128,11 +128,11 @@ export const components: AnyTokenValues = {
   'button-solid': {
     '__background-color--active':                 t.color['primary-lightest'],
     '__background-color--disabled':               t.color['gray-lightest'],
-    '__background-color--hover':                  t.color['primary-lightest'],
+    '__background-color--hover':                  t.color['accent-primary'],
     '__background-color':                         t.color['primary'],
     '__border-color--active':                     t.color['primary'],
     '__border-color--disabled':                   t.color['gray-lighter'],
-    '__border-color--hover':                      t.color['primary-lightest'],
+    '__border-color--hover':                      t.color['primary'],
     '__border-color':                             t.color['primary'],
     '__color--active':                            t.color['primary'],
     '__color--disabled':                          t.color['gray-dark'],
@@ -143,11 +143,11 @@ export const components: AnyTokenValues = {
   'button-solid-alt': {
     '__background-color--active':                 t.color['primary-lightest'],
     '__background-color--disabled':               t.color['gray-lightest'],
-    '__background-color--hover':                  t.color['primary-lightest'],
+    '__background-color--hover':                  t.color['accent-primary'],
     '__background-color':                         t.color['primary'],
     '__border-color--active':                     t.color['primary'],
     '__border-color--disabled':                   t.color['gray-lighter'],
-    '__border-color--hover':                      t.color['primary-lightest'],
+    '__border-color--hover':                      t.color['primary'],
     '__border-color':                             t.color['primary'],
     '__color--active':                            t.color['primary'],
     '__color--disabled':                          t.color['gray-dark'],
@@ -188,7 +188,7 @@ export const components: AnyTokenValues = {
   'button-ghost': {
     '__background-color--active':                 'transparent',
     '__background-color--disabled':               'transparent',
-    '__background-color--hover':                  'transparent',
+    '__background-color--hover':                  t.color['accent-primary'],
     '__background-color':                         'transparent',
     '__border-color--active':                     'transparent',
     '__border-color--disabled':                   'transparent',
@@ -203,7 +203,7 @@ export const components: AnyTokenValues = {
   'button-ghost-alt': {
     '__background-color--active':                 'transparent',
     '__background-color--disabled':               'transparent',
-    '__background-color--hover':                  'transparent',
+    '__background-color--hover':                  t.color['accent-primary'],
     '__background-color':                         'transparent',
     '__border-color--active':                     'transparent',
     '__border-color--disabled':                   'transparent',

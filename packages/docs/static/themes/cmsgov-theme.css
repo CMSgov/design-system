@@ -196,7 +196,7 @@
 --badge__border-radius: 4px;
 --button__background-color--active: #e7e9f5;
 --button__background-color--disabled: #f2f2f2;
---button__background-color--hover: #e7e9f5;
+--button__background-color--hover: #ffe400;
 --button__background-color: transparent;
 --button__border-color--active: #0d2499;
 --button__border-color--disabled: #d9d9d9;
@@ -212,7 +212,7 @@
 --button-icon__fill: currentColor;
 --button-alt__background-color--active: #d9d9d9;
 --button-alt__background-color--disabled: transparent;
---button-alt__background-color--hover: #f2f2f2;
+--button-alt__background-color--hover: #ffe400;
 --button-alt__background-color: transparent;
 --button-alt__border-color--active: currentColor;
 --button-alt__border-color--disabled: currentColor;
@@ -248,11 +248,11 @@
 --button-dark-alt__color: #ecfcf3;
 --button-solid__background-color--active: #e7e9f5;
 --button-solid__background-color--disabled: #f2f2f2;
---button-solid__background-color--hover: #e7e9f5;
+--button-solid__background-color--hover: #ffe400;
 --button-solid__background-color: #0d2499;
 --button-solid__border-color--active: #0d2499;
 --button-solid__border-color--disabled: #d9d9d9;
---button-solid__border-color--hover: #e7e9f5;
+--button-solid__border-color--hover: #0d2499;
 --button-solid__border-color: #0d2499;
 --button-solid__color--active: #0d2499;
 --button-solid__color--disabled: #5a5a5a;
@@ -260,11 +260,11 @@
 --button-solid__color: #ffffff;
 --button-solid-alt__background-color--active: #e7e9f5;
 --button-solid-alt__background-color--disabled: #f2f2f2;
---button-solid-alt__background-color--hover: #e7e9f5;
+--button-solid-alt__background-color--hover: #ffe400;
 --button-solid-alt__background-color: #0d2499;
 --button-solid-alt__border-color--active: #0d2499;
 --button-solid-alt__border-color--disabled: #d9d9d9;
---button-solid-alt__border-color--hover: #e7e9f5;
+--button-solid-alt__border-color--hover: #0d2499;
 --button-solid-alt__border-color: #0d2499;
 --button-solid-alt__color--active: #0d2499;
 --button-solid-alt__color--disabled: #5a5a5a;
@@ -296,7 +296,7 @@
 --button-solid-dark-alt__color: #262626;
 --button-ghost__background-color--active: transparent;
 --button-ghost__background-color--disabled: transparent;
---button-ghost__background-color--hover: transparent;
+--button-ghost__background-color--hover: #ffe400;
 --button-ghost__background-color: transparent;
 --button-ghost__border-color--active: transparent;
 --button-ghost__border-color--disabled: transparent;
@@ -308,7 +308,7 @@
 --button-ghost__color: #0d2499;
 --button-ghost-alt__background-color--active: transparent;
 --button-ghost-alt__background-color--disabled: transparent;
---button-ghost-alt__background-color--hover: transparent;
+--button-ghost-alt__background-color--hover: #ffe400;
 --button-ghost-alt__background-color: transparent;
 --button-ghost-alt__border-color--active: transparent;
 --button-ghost-alt__border-color--disabled: transparent;
