@@ -85,6 +85,12 @@ dialog.fixed {
 
 .ds-c-dialog__body {
   overflow-wrap: break-word;
+
+  @media (max-width: $media-width-md) {
+    p:first-child {
+      margin-block: $spacer-1 $spacer-3;
+    }
+  }
 }
 
 .ds-c-dialog__actions {
