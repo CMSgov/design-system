@@ -10,6 +10,7 @@
 .hc-c-footer__list {
   align-items: center;
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   gap: $spacer-half;
   list-style: none;

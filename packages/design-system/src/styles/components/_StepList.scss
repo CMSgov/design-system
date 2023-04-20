@@ -155,7 +155,8 @@
   }
 }
 
-.ds-c-step__substeps {
+ol.ds-c-step__substeps {
+  gap: 0;
   margin: 0;
   padding-inline-start: $spacer-5;
 }
