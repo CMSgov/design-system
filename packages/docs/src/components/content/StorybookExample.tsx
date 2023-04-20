@@ -68,7 +68,6 @@ const StorybookExample = ({ theme, componentName, minHeight, storyId }: Storyboo
   const onIframeLoad = () => {
     const attemptToUpdateHeight = (millisecondsWaited = 0) => {
       if (updateIframeHeight()) {
-        console.log(millisecondsWaited);
         // Job well done
         return;
       }
