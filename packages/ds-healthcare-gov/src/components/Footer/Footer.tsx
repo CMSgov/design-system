@@ -32,10 +32,7 @@ export interface FooterProps {
 }
 
 export const Footer = (props: FooterProps) => {
-  const classes = classnames(
-    'hc-c-footer ds-u-fill--gray-lightest ds-u-padding-y--5',
-    props.className
-  );
+  const classes = classnames('hc-c-footer', props.className);
 
   return (
     <footer className={classes} role="contentinfo">
