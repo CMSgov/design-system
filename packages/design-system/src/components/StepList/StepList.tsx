@@ -47,8 +47,6 @@ export const StepList = ({
   editText = 'Edit',
   resumeText = 'Resume',
   startText = 'Start',
-  actionsLabelText = 'Primary actions for %{step}',
-  substepsLabelText = 'Secondary actions for %{step}',
   ...otherProps
 }: StepListProps) => (
   <ol role="list" className="ds-c-step-list">
@@ -62,8 +60,6 @@ export const StepList = ({
           editText,
           resumeText,
           startText,
-          actionsLabelText,
-          substepsLabelText,
           ...otherProps,
         }}
       />
