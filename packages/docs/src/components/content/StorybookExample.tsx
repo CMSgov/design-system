@@ -43,27 +43,44 @@ const StorybookExample = ({ theme, componentName, minHeight, storyId }: Storyboo
   useEffect(() => {
     if (window) {
       // when window resizes, recalculate the height of the iframe
-      window.addEventListener('resize', setIframeHeight);
+      window.addEventListener('resize', updateIframeHeight);
 
       return () => {
-        window.removeEventListener('resize', setIframeHeight);
+        window.removeEventListener('resize', updateIframeHeight);
       };
     }
   }, []);
 
-  // when the iframe content resizes, recalculate the height at which it should be shown
-  const setIframeHeight = () => {
-    if (iframeRef.current) {
-      const height = iframeRef.current.contentDocument.body.offsetHeight;
+  /**
+   * Calculate the new height of the iframe based on the content resizes.
+   * Returns true if it detects height and resizes.
+   */
+  const updateIframeHeight = () => {
+    const height = iframeRef?.current.contentDocument.body.offsetHeight;
+    if (height > 0) {
       setiFrameHeight(height);
+      return true;
     }
+    return false;
   };
 
   // when the iframe's content loads, calculate height of iframe & set html
   const onIframeLoad = () => {
-    if (iframeRef.current) {
-      setIframeHeight;
-    }
+    const attemptToUpdateHeight = (millisecondsWaited = 0) => {
+      if (updateIframeHeight()) {
+        console.log(millisecondsWaited);
+        // Job well done
+        return;
+      }
+
+      if (millisecondsWaited > 2000) {
+        console.error(`Timed out waiting for content from ${iframeUrl} to have readable height`);
+      } else {
+        setTimeout(() => attemptToUpdateHeight(millisecondsWaited + 200), 200);
+      }
+    };
+
+    attemptToUpdateHeight();
     setIsLoading(false);
   };
 
