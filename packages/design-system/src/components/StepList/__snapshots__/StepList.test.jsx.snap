@@ -14,12 +14,10 @@ exports[`StepList renders list of steps 1`] = `
     >
       <h2
         class="ds-c-step__heading"
-        id="heading-1"
       >
         Do something!
       </h2>
       <div
-        aria-labelledby="heading-1"
         class="ds-c-step__description"
         role="region"
       >
@@ -27,7 +25,6 @@ exports[`StepList renders list of steps 1`] = `
       </div>
     </div>
     <div
-      aria-label="Primary actions for Do something!"
       class="ds-c-step__actions"
       role="region"
     />
@@ -41,12 +38,10 @@ exports[`StepList renders list of steps 1`] = `
     >
       <h2
         class="ds-c-step__heading"
-        id="heading-2"
       >
         Do something!
       </h2>
       <div
-        aria-labelledby="heading-2"
         class="ds-c-step__description"
         role="region"
       >
@@ -54,7 +49,6 @@ exports[`StepList renders list of steps 1`] = `
       </div>
     </div>
     <div
-      aria-label="Primary actions for Do something!"
       class="ds-c-step__actions"
       role="region"
     />
@@ -68,12 +62,10 @@ exports[`StepList renders list of steps 1`] = `
     >
       <h2
         class="ds-c-step__heading"
-        id="heading-3"
       >
         Do something!
       </h2>
       <div
-        aria-labelledby="heading-3"
         class="ds-c-step__description"
         role="region"
       >
@@ -81,7 +73,6 @@ exports[`StepList renders list of steps 1`] = `
       </div>
     </div>
     <div
-      aria-label="Primary actions for Do something!"
       class="ds-c-step__actions"
       role="region"
     />
