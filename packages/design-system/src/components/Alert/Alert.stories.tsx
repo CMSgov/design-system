@@ -78,7 +78,7 @@ export const SuccessAlert = {
   },
 };
 
-export const NoIcon = {
+export const NoIconAlert = {
   ...AlertTemplate,
   args: {
     heading: 'Alert without icon',
@@ -94,7 +94,7 @@ export const LightweightAlert = {
   },
 };
 
-export const AlertWithButton: Story = {
+export const AlertWithButtons: Story = {
   args: {
     heading: 'Alert with buttons',
     children: (
