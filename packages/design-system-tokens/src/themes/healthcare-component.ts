@@ -325,7 +325,7 @@ export const components: AnyTokenValues = {
     '-hint__color':                               t.color['muted'],
     '-hint__color--inverse':                      t.color['muted-inverse'],
     '-error__color':                              t.color['error'],
-    '-error__color--inverse':                     t.color['error-light'],
+    '-error__color--inverse':                     t.color['error-lighter'],
   },
 
   'icon': {
