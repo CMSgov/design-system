@@ -1,16 +1,13 @@
 {
   "footer": {
-    "allTopics": "Todos los temas",
-    "glossary": "Glosario",
     "contactUs": "Contáctenos",
     "archive": "Archivo",
-    "nondiscriminationAndA11y": "No Discriminación / Accesibilidad",
+    "a11y": "Accesibilidad",
     "privacyPolicy": "Política de privacidad",
     "privacySettings": "Configuración de Privacidad",
-    "linkingPolicy": "Política de enlaces",
     "usingThisSite": "Usando este sitio",
-    "plainWriting": "Lenguaje Sencillo",
-    "address": "Un sitio Web del gobierno federal administrado y pagado por los Centros de Servicios de Medicare y Medicaid. 7500 Security Boulevard, Baltimore, MD 21244"
+    "disclaimer-top": "Health Insurance Marketplace<sup>&#174;</sup> es una marca registrada del Departamento de Salud &amp; Servicios Humanos.",
+    "disclaimer-bottom": "Un sitio web oficial de los Centros de Medicare &amp; de EE. UU. Servicios de Medicaid."
   },
   "header": {
     "close": "Cerca",

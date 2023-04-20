@@ -7,12 +7,17 @@ import { Language } from '@cmsgov/design-system';
 export interface LogoProps {
   locale?: Language;
   className?: string;
+  titleId?: string;
 }
 
 export function Logo(props: LogoProps) {
   return (
     <span className={classnames('hc-c-logo', props.className)}>
-      {props.locale === 'es' ? <LogoEsSvg /> : <LogoEnSvg />}
+      {getLanguage() === 'es' ? (
+        <LogoEsSvg titleId={props.titleId} />
+      ) : (
+        <LogoEnSvg titleId={props.titleId} />
+      )}
     </span>
   );
 }

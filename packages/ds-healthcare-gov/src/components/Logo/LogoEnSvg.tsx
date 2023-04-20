@@ -1,9 +1,10 @@
 import React from 'react';
-const LogoEnSvg: React.FC<unknown> = () => {
+
+const LogoEnSvg: React.FC<{ titleId?: string }> = ({ titleId }) => {
   // prettier-ignore
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="200" height="25" viewBox="0 0 253.05 31.65" aria-labelledby="hc-c-logo__title">
-      <title id="hc-c-logo__title">HealthCare.gov</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="200" height="25" viewBox="0 0 253.05 31.65" aria-labelledby={titleId}>
+      <title id={titleId}>HealthCare.gov</title>
       <path className="hc-c-logo__health" d="M0,.61H4.68V9.75H15.74V.61H20.4V24.85H15.74V14.22H4.67V24.85H0Z" />
       <path className="hc-c-logo__health" d="M41.41,17.18H27a4.8,4.8,0,0,0,1.67,3,5.25,5.25,0,0,0,3.47,1.13,6,6,0,0,0,4.33-1.76l3.79,1.78a8.92,8.92,0,0,1-3.39,3,10.56,10.56,0,0,1-4.69,1,9.25,9.25,0,0,1-6.87-2.66A9.06,9.06,0,0,1,22.62,16,9.35,9.35,0,0,1,25.26,9.2a8.89,8.89,0,0,1,6.63-2.71A9.21,9.21,0,0,1,38.77,9.2a9.78,9.78,0,0,1,2.65,7.16Zm-4.5-3.54a4.51,4.51,0,0,0-1.76-2.44,5.13,5.13,0,0,0-3-.94,5.41,5.41,0,0,0-3.3,1.05,5.88,5.88,0,0,0-1.65,2.32Z" />
       <path className="hc-c-logo__health" d="M57.28,6.92h4.5V24.85h-4.5V23a8.66,8.66,0,0,1-2.64,1.8,7.44,7.44,0,0,1-2.87.55,8,8,0,0,1-6-2.69,9.39,9.39,0,0,1-2.53-6.7,9.61,9.61,0,0,1,2.45-6.8,7.81,7.81,0,0,1,6-2.65,7.56,7.56,0,0,1,3,.61,8.26,8.26,0,0,1,2.59,1.78Zm-4.73,3.69a4.55,4.55,0,0,0-3.46,1.47,5.9,5.9,0,0,0,0,7.6,4.54,4.54,0,0,0,3.46,1.5,4.62,4.62,0,0,0,3.51-1.47,5.4,5.4,0,0,0,1.42-3.86,5.26,5.26,0,0,0-1.4-3.79,4.67,4.67,0,0,0-3.52-1.45Z" />
@@ -20,6 +21,10 @@ const LogoEnSvg: React.FC<unknown> = () => {
       <polygon className="hc-c-logo__gov" points="245.03 24.61 244.86 24.61 236.79 7.09 238.8 7.09 244.76 20.04 244.95 20.43 245.13 20.04 251.02 7.09 253.05 7.09 245.03 24.61 245.03 24.61" />
     </svg>
   );
+};
+
+LogoEnSvg.defaultProps = {
+  titleId: 'hc-c-logo__title',
 };
 
 export default LogoEnSvg;

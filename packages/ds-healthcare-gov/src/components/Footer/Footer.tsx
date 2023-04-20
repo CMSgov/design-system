@@ -39,11 +39,7 @@ export interface FooterProps {
 }
 
 export const Footer = (props: FooterProps) => {
-  const t = tWithLanguage(props.initialLanguage);
-  const classes = classnames(
-    'hc-c-footer ds-u-fill--gray-lightest ds-u-padding-y--5',
-    props.className
-  );
+  const classes = classnames('hc-c-footer', props.className);
 
   if (props.initialLanguage) {
     console.warn(
