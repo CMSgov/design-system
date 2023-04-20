@@ -16,7 +16,8 @@ Object.values(stories).forEach((story) => {
       if (theme === 'medicare') return;
 
       // Don't take screenshots of theme-specific components outside of their themes
-      if (!story.importPath.includes(themes[theme].packageName)) return;
+      const isCoreStory = story.importPath.includes('design-system');
+      if (!isCoreStory && !story.importPath.includes(themes[theme].packageName)) return;
 
       test(`with ${theme} theme`, async ({ page }) => {
         await page.goto(`${storyUrl}&globals=theme:${theme}`);
