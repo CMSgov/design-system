@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRef, useState } from 'react';
-import { Button, ExternalLinkIcon } from '@cmsgov/design-system';
+import { Button } from '@cmsgov/design-system';
 import { makeStorybookUrl } from '../../helpers/urlUtils';
 import { withPrefix } from 'gatsby';
 import ExampleFooter from './ExampleFooter';

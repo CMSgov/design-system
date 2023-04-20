@@ -16,7 +16,7 @@ export type AlertWeight = 'lightweight';
 
 export interface BaseAlertProps extends AnalyticsOverrideProps {
   /**
-   * Access a reference to the `alert` `div` element
+   * Access a reference to the Alert `div` element
    */
   alertRef?: (...args: any[]) => any;
   /**
@@ -61,6 +61,9 @@ export interface BaseAlertProps extends AnalyticsOverrideProps {
 export type AlertProps = BaseAlertProps &
   Omit<React.ComponentPropsWithRef<'div'>, keyof BaseAlertProps>;
 
+/**
+ * The Alert component gives feedback to users, provides critical information, and/or offers key supplementary details about a task.
+ */
 export const Alert: React.FC<AlertProps> = (props: AlertProps) => {
   const { headingRef, bodyRef } = useAlertAnalytics(props);
   const focusRef = useAutofocus(props.autoFocus);
