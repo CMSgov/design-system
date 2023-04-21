@@ -65,7 +65,7 @@
     background-color: var(--color-gray-lightest);
     // Set it to a fixed width that is wide enough for most links so that it
     // doesn't jump around when we open and close subsections.
-    width: 13rem;
+    width: 17rem;
 
     .c-navigation__header {
       margin-inline: calc(#{$spacer-2} * -1);
