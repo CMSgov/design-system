@@ -11,7 +11,7 @@
 .ds-c-choice-wrapper {
   display: flex;
   gap: 0.5rem;
-  margin: 0.5rem 0;
+  margin-block-start: $spacer-1;
   max-width: var(--measure-wide);
 }
 
@@ -22,7 +22,7 @@
   flex-basis: min-content;
   flex-grow: 1;
   font-weight: var(--font-weight-normal);
-  margin-top: 0;
+  margin-block-start: 0;
   max-width: max-content;
   transform: translateY(0.25em);
 }
@@ -76,7 +76,6 @@ label,
     grid-area: 1/-1;
     height: var(--choice__size);
     opacity: 0;
-    // transition: 120ms opacity ease-in-out;
     width: var(--choice__size);
   }
 
@@ -105,7 +104,6 @@ label,
     background-color: var(--choice__background-color--disabled);
     border-color: var(--choice__border-color--disabled);
     color: var(--choice__color--disabled);
-    cursor: not-allowed;
 
     &::before {
       border-color: var(--choice__border-color--disabled);
@@ -128,8 +126,8 @@ label,
   &::after {
     background-color: transparent;
     border: solid;
+    border-block-start-color: transparent;
     border-color: var(--color-white);
-    border-top-color: transparent;
     border-width: 0 0 4px 4px;
     content: '';
     grid-area: 1/-1;
@@ -235,21 +233,25 @@ label,
 
 // Checked children container
 .ds-c-choice__checkedChild {
-  border-left: $spacer-half solid var(--choice__border-color--left);
+  border-inline-start: $spacer-half solid var(--choice__border-color--left);
   flex: 1 1 100%;
-  margin-bottom: $spacer-2;
+  margin-block: $spacer-1 $spacer-2;
   // @TODO: get rid of this calc
   // The origin of this 2px shift is fuzzy, it seems like it's based on
   // the border on alerts and healthcare.gov insets.
-  margin-left: calc((var(--choice__size) * 0.5) - 2px);
+  margin-inline-start: calc((var(--choice__size) * 0.5) - 2px);
   padding: $spacer-2;
-  padding-right: 0;
+  padding-inline-end: 0;
 
   &--inverse {
-    border-left-color: var(--color-white);
+    border-inline-start-color: var(--color-white);
   }
 
   &--small {
-    margin-left: $spacer-1;
+    margin-inline-start: $spacer-1;
+  }
+
+  .ds-c-fieldset > div:last-child & {
+    margin-block-end: 0;
   }
 }

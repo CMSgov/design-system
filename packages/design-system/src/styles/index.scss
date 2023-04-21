@@ -1,6 +1,7 @@
 /**
  * Entry point, main modules loaded first
  */
+@use 'reset';
 @use 'layout';
 @use 'font';
 @use 'mixins';

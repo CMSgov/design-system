@@ -6,22 +6,20 @@
   border: 1px solid var(--filter-chip__border-color);
   border-radius: var(--filter-chip__border-radius);
   color: var(--filter-chip__color);
-  cursor: pointer;
-  font-family: var(--font-sans);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-normal);
-  margin-right: $spacer-1;
-  margin-top: $spacer-1;
+  margin-block-start: $spacer-1;
+  margin-inline-end: $spacer-1;
   min-height: 0;
   padding: $spacer-half $spacer-1;
-  padding-right: 34px;
+  padding-inline-end: 34px;
   position: relative;
-  text-align: left;
+  text-align: start;
 
   &--big {
     min-height: 44px;
     padding: $spacer-1 $spacer-2;
-    padding-right: 34px;
+    padding-inline-end: 34px;
   }
 
   &:active,
@@ -43,11 +41,9 @@
 .ds-c-filter-chip__clear-icon-container {
   border: 1px solid var(--filter-chip__color);
   border-radius: 50%;
-  box-sizing: border-box;
-  cursor: pointer;
   display: inline-block;
   height: var(--filter-chip-icon__container-size);
-  margin-left: $spacer-1;
+  margin-inline-start: $spacer-1;
   padding: 0;
   position: absolute;
   right: $spacer-1;

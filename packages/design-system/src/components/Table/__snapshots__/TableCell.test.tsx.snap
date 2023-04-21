@@ -3,19 +3,19 @@
 exports[`TableCell renders TableCell components 1`] = `
 Array [
   <td
-    class="ds-c-table__cell--align-left"
+    class="ds-u-text-align--left"
     role="cell"
   >
     Column a
   </td>,
   <td
-    class="ds-c-table__cell--align-left"
+    class="ds-u-text-align--left"
     role="cell"
   >
     Column b
   </td>,
   <td
-    class="ds-c-table__cell--align-right"
+    class="ds-u-text-align--right"
     role="cell"
   >
     Column a2

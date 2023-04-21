@@ -417,6 +417,7 @@ export const components: AnyTokenValues = {
     '__border-color--inverse':                    t.color['black'],
     '__border-color--success':                    t.color['success-light'],
     '__color':                                    t.color['base'],
+    '__divider-color':                            t.color['gray-light'],
     '__padding':                                  t.spacer['1'],
     '__border-radius':                            t.radius['default'],
   },
@@ -442,7 +443,7 @@ export const components: AnyTokenValues = {
     '-heading-lg__font-weight':                   t.font['weight-bold'],
     '-heading-md__font-weight':                   t.font['weight-bold'],
     '-heading-sm__font-weight':                   t.font['weight-normal'],
-    '-body__font-family':                         'inherit',
+    '-body__font-family':                         t.font['family-open-sans'],
   },
 
   'usa-banner': {
