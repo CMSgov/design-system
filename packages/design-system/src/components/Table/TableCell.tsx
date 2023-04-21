@@ -120,7 +120,7 @@ export const TableCell: React.FC<
     defaultScope = 'col';
   }
 
-  const alignClassName = align ? `ds-c-table__cell--align-${align}` : null;
+  const alignClassName = align ? `ds-u-text-align--${align}` : null;
   const classes = classNames(alignClassName, className);
 
   // The data attributes `data-title` is access by CSS to generates row header content for stacked table

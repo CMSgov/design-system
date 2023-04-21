@@ -29,7 +29,6 @@
 .ds-c-autocomplete__list {
   background-color: var(--autocomplete__background-color);
   border: 1px solid var(--autocomplete__border-color);
-  box-sizing: border-box;
   max-height: 320px;
   overflow-y: auto;
   padding: $spacer-1;
@@ -73,5 +72,6 @@
 
 .ds-c-autocomplete__clear-btn {
   float: right;
-  margin-right: 0;
+  margin-block-start: $spacer-half;
+  margin-inline-end: 0;
 }

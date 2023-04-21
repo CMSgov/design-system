@@ -7,7 +7,7 @@ select.ds-c-field {
   background-position: right $spacer-1 center;
   background-repeat: no-repeat;
   background-size: var(--dropdown__icon-size);
-  padding-right: 28px;
+  padding-inline-end: 28px;
 
   &[multiple] {
     background-image: none;
