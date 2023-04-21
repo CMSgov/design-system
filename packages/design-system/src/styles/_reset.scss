@@ -134,13 +134,13 @@ ul {
   gap: 0.5em;
   margin-block: 1em 0;
   padding-inline-start: 2em;
+}
 
-  // Tying unstyled list styles to a required a11y attribute
-  // ensures proper markup structure
-  &[role='list'] {
-    list-style: none;
-    padding: 0;
-  }
+// Tying unstyled list styles to a required a11y attribute
+// ensures proper markup structure
+[role='list'] {
+  list-style: none;
+  padding: 0;
 }
 
 li {
