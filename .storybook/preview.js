@@ -117,7 +117,7 @@ const baseClassDecorator = (Story, context) => {
 const themeSettingDecorator = (Story, context) => {
   const { parameters, globals } = context;
   // Prefer the story parameter setting, which is for components that are
-  // specific to a brand and only sense when viewed in that brand theme
+  // specific to a brand and only make sense when viewed in that brand theme
   const theme = parameters.theme ?? globals.theme;
 
   document.documentElement.setAttribute('data-theme', theme);
