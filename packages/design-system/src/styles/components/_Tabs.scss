@@ -11,9 +11,8 @@
 */
 .ds-c-tabs__panel {
   background-color: var(--tabs-panel__background-color);
-  border-bottom: 1px solid var(--tabs__border-color);
-  border-left: 1px solid var(--tabs__border-color);
-  border-right: 1px solid var(--tabs__border-color);
+  border: 1px solid var(--tabs__border-color);
+  border-block-start: 0;
   padding: $spacer-3;
 
   &[aria-hidden='true'] {
@@ -28,16 +27,15 @@
 .ds-c-tabs__item:visited {
   appearance: none;
   background-color: var(--tabs__background-color);
-  border-bottom: 1px solid var(--tabs__border-color);
-  border-left: 1px solid var(--tabs__border-color);
+  border-block: 1px solid var(--tabs__border-color);
+  border-inline-start: 1px solid var(--tabs__border-color);
   border-radius: 0;
-  border-top: 1px solid var(--tabs__border-color);
   color: var(--tabs__color);
   display: inline-block;
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-bold);
   line-height: var(--font-line-height-reset);
-  margin-bottom: -1px;
+  margin-block-end: -1px;
   padding: $spacer-2 $spacer-1;
   position: relative;
   text-decoration: none;
@@ -45,19 +43,17 @@
   //transition: border-bottom-color $animation-speed-2 $ease-in-out-expo;
 
   @media (min-width: $media-width-sm) {
-    padding-left: $spacer-2;
-    padding-right: $spacer-2;
+    padding-inline: $spacer-2;
   }
 
   // Increase size on larger screens
   @media (min-width: $media-width-md) {
     font-size: var(--font-size-base);
-    padding-left: $spacer-3;
-    padding-right: $spacer-3;
+    padding-inline: $spacer-3;
   }
 
   &:last-child {
-    border-right: 1px solid var(--tabs__border-color);
+    border-inline-end: 1px solid var(--tabs__border-color);
   }
 
   // A pseudo-element for the top border on selected tabs
@@ -65,20 +61,16 @@
     background-color: var(--tabs__border-color--selected);
     content: '';
     height: $spacer-half;
-    left: -1px;
+    inset: -1px -1px auto;
     opacity: 0;
     position: absolute;
-    right: -1px;
-    top: -1px;
     transform: scale3d(0, 1, 1);
-    // Temporarily disable animation
-    //transition: opacity $animation-speed-2 $ease-in-out-expo, transform $animation-speed-2 $ease-in-out-expo;
   }
 
   // States
   &[aria-selected='true'] {
     background-color: var(--tabs__background-color--selected);
-    border-bottom-color: var(
+    border-block-end-color: var(
       --tabs__background-color--selected
     ); // Essentially turning off the bottom border
     color: var(--tabs__color--selected);

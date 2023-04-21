@@ -49,9 +49,9 @@ export const PrivacySettingsTable = ({
     );
   }
 
-  const categoryHeaderId = 'header-category';
-  const descriptionHeaderId = 'header-description';
-  const statusHeaderId = 'header-status';
+  const categoryHeaderId = 'privacy-settings-header-category';
+  const descriptionHeaderId = 'privacy-settings-header-description';
+  const statusHeaderId = 'privacy-settings-header-status';
 
   function renderRow({ settingsKey, translationKey, value }: PrivacySettingsProperty) {
     const category = t(`privacy.${translationKey}.category`);
@@ -72,7 +72,12 @@ export const PrivacySettingsTable = ({
   }
 
   return (
-    <Table className="ds-c-privacy-settings-table" borderless stackable stackableBreakpoint="md">
+    <Table
+      className="ds-c-privacy-settings-table ds-u-margin-top--2 ds-u-lg-margin--0"
+      borderless
+      stackable
+      stackableBreakpoint="md"
+    >
       <TableHead>
         <TableRow>
           <TableCell id={categoryHeaderId}>{t('privacy.category')}</TableCell>

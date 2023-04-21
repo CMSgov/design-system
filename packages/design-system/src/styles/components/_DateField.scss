@@ -22,11 +22,11 @@
 .ds-c-datefield__separator {
   font-size: var(--font-size-2xl);
   line-height: 1;
-  margin: 6px 0;
+  margin: 0;
   padding: var(--text-input__padding) 0;
 }
 
 .ds-c-datefield__label {
   font-weight: var(--font-weight-normal);
-  margin-top: $spacer-1;
+  margin-block-start: $spacer-1;
 }

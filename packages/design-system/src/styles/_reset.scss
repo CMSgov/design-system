@@ -1,0 +1,203 @@
+/* Core root defaults */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+// Remove all animations, transitions and smooth scroll
+// for people that prefer not to see them
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Core body defaults */
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-base);
+  font-family: var(--typography-body__font-family);
+  font-size: var(--font-size-base);
+  line-height: var(--font-line-height-base);
+  margin: 0;
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+}
+
+// This removes focus rings for non-interactive elements,
+// i.e. when activating a skip link will then send focus
+// to a main or a heading element.
+[tabindex='-1']:focus {
+  outline: 0;
+}
+
+/* Typography */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  // `font` is a shorthand property:
+  // https://developer.mozilla.org/en-US/docs/Web/CSS/font
+  // Heading tags inherit all font style rules to match body text;
+  // This ensures semantics are distinct from appearance.
+  font: inherit;
+  // margin applied to top of heading, informed by current margin size
+  margin-block: 1.5em 0;
+
+  &:first-child {
+    margin-block-start: 0;
+  }
+}
+
+p {
+  margin-block: 1em 0;
+
+  &:first-child {
+    margin-block-start: 0;
+  }
+}
+
+// These tags will naturally use 700 weight as bold
+// but because some themes have 600 weight, I'm using
+// the CSS variable to adjust bold based on theme
+b,
+strong {
+  font-weight: var(--font-weight-bold);
+}
+
+a {
+  color: var(--link__color);
+  text-decoration-color: currentColor;
+  text-decoration-style: solid;
+  text-decoration-thickness: var(--link__text-decoration-thickness);
+  text-underline-offset: var(--link__text-decoration-offset);
+
+  // Recommended order of user action pseudo-classes:
+  // https://css-tricks.com/snippets/css/link-pseudo-classes-in-order/
+
+  &:visited {
+    color: var(--link__color--visited);
+  }
+
+  &:hover {
+    color: var(--link__color--hover);
+    text-decoration-thickness: var(--link__text-decoration-thickness--hover);
+  }
+
+  &:focus,
+  &:focus:visited {
+    background-color: var(--color-focus-light);
+    box-shadow: none;
+    color: currentColor;
+    outline: 3px solid var(--color-focus-dark);
+    outline-offset: 1px;
+  }
+
+  &:active {
+    color: var(--link__color--active);
+  }
+}
+
+hr {
+  border-block-end: 0;
+  border-block-start: 1px solid currentColor;
+  margin: 0;
+}
+
+/* Lists */
+
+// Relying on `flex` to set `gap` spacing size on li elements
+// `gap` ensures even spacing and doesn't interfere with layout
+// if list given a `row` direction
+ol,
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  margin-block: 1em 0;
+  padding-inline-start: 2em;
+}
+
+// Tying unstyled list styles to a required a11y attribute
+// ensures proper markup structure
+[role='list'] {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  > ul,
+  > ol {
+    margin-block: 0.5em 0;
+  }
+}
+
+/* Form elements */
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+
+  &:not(button, [type='checkbox'], [type='radio']) {
+    display: block;
+    margin-block: 0.25em 0;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+  accent-color: var(--choice__background-color--checked);
+  display: inline-grid;
+}
+
+input[type='checkbox'] + label,
+input[type='radio'] + label {
+  display: inline-block;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+legend,
+label {
+  display: block;
+  margin-block: 1.5em 0;
+}
+
+button {
+  cursor: pointer;
+  display: inline-block;
+}
+
+/* Images */
+
+figure {
+  margin: 0;
+}

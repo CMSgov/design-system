@@ -1,16 +1,14 @@
 @use '../layout' as *;
 
 .ds-c-month-picker {
-  margin-bottom: $spacer-3;
-  margin-top: $spacer-3;
+  margin-block: $spacer-3;
 }
 
 .ds-c-month-picker__buttons {
-  margin-bottom: $spacer-1;
-  margin-top: $spacer-2;
+  margin-block: $spacer-2 $spacer-1;
 
   .ds-c-month-picker__button {
-    margin-right: $spacer-1;
+    margin-inline-end: $spacer-1;
   }
 }
 
@@ -20,7 +18,8 @@
 
 .ds-c-month-picker__months-list {
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
+  gap: $spacer-1 0;
   justify-content: space-between;
 }
 
