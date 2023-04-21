@@ -38,12 +38,12 @@ describe('TableCell', function () {
 
   it('sets alignment default to left', () => {
     makeTableCells();
-    expect(screen.getByText('Column a')).toHaveClass('ds-c-table__cell--align-left');
+    expect(screen.getByText('Column a')).toHaveClass('ds-u-text-align--left');
   });
 
   it('accepts alternate align options', () => {
     makeTableCells();
-    expect(screen.getByText('Column a2')).toHaveClass('ds-c-table__cell--align-right');
+    expect(screen.getByText('Column a2')).toHaveClass('ds-u-text-align--right');
   });
 
   it('accepts alternate component roles', () => {

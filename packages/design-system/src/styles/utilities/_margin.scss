@@ -8,29 +8,27 @@
   }
 
   .ds-u-margin-top--#{$scale} {
-    margin-top: #{$size} !important;
+    margin-block-start: #{$size} !important;
   }
 
   .ds-u-margin-right--#{$scale} {
-    margin-right: #{$size} !important;
+    margin-inline-end: #{$size} !important;
   }
 
   .ds-u-margin-bottom--#{$scale} {
-    margin-bottom: #{$size} !important;
+    margin-block-end: #{$size} !important;
   }
 
   .ds-u-margin-left--#{$scale} {
-    margin-left: #{$size} !important;
+    margin-inline-start: #{$size} !important;
   }
 
   .ds-u-margin-x--#{$scale} {
-    margin-left: #{$size} !important;
-    margin-right: #{$size} !important;
+    margin-inline: #{$size} !important;
   }
 
   .ds-u-margin-y--#{$scale} {
-    margin-bottom: #{$size} !important;
-    margin-top: #{$size} !important;
+    margin-block: #{$size} !important;
   }
 }
 
@@ -39,29 +37,27 @@
 }
 
 .ds-u-margin-top--auto {
-  margin-top: auto !important;
+  margin-block-start: auto !important;
 }
 
 .ds-u-margin-right--auto {
-  margin-right: auto !important;
+  margin-inline-end: auto !important;
 }
 
 .ds-u-margin-bottom--auto {
-  margin-bottom: auto !important;
+  margin-block-end: auto !important;
 }
 
 .ds-u-margin-left--auto {
-  margin-left: auto !important;
+  margin-inline-start: auto !important;
 }
 
 .ds-u-margin-x--auto {
-  margin-left: auto !important;
-  margin-right: auto !important;
+  margin-inline: auto !important;
 }
 
 .ds-u-margin-y--auto {
-  margin-bottom: auto !important;
-  margin-top: auto !important;
+  margin-block: auto !important;
 }
 
 @each $breakpoint in map-keys($breakpoints) {
@@ -76,29 +72,27 @@
       }
 
       .ds-u-#{$breakpoint}-margin-top--#{$scale} {
-        margin-top: #{$size} !important;
+        margin-block-start: #{$size} !important;
       }
 
       .ds-u-#{$breakpoint}-margin-right--#{$scale} {
-        margin-right: #{$size} !important;
+        margin-inline-end: #{$size} !important;
       }
 
       .ds-u-#{$breakpoint}-margin-bottom--#{$scale} {
-        margin-bottom: #{$size} !important;
+        margin-block-end: #{$size} !important;
       }
 
       .ds-u-#{$breakpoint}-margin-left--#{$scale} {
-        margin-left: #{$size} !important;
+        margin-inline-start: #{$size} !important;
       }
 
       .ds-u-#{$breakpoint}-margin-x--#{$scale} {
-        margin-left: #{$size} !important;
-        margin-right: #{$size} !important;
+        margin-inline: #{$size} !important;
       }
 
       .ds-u-#{$breakpoint}-margin-y--#{$scale} {
-        margin-bottom: #{$size} !important;
-        margin-top: #{$size} !important;
+        margin-block: #{$size} !important;
       }
     }
 
@@ -107,29 +101,27 @@
     }
 
     .ds-u-#{$breakpoint}-margin-top--auto {
-      margin-top: auto !important;
+      margin-block-start: auto !important;
     }
 
     .ds-u-#{$breakpoint}-margin-right--auto {
-      margin-right: auto !important;
+      margin-inline-end: auto !important;
     }
 
     .ds-u-#{$breakpoint}-margin-bottom--auto {
-      margin-bottom: auto !important;
+      margin-block-end: auto !important;
     }
 
     .ds-u-#{$breakpoint}-margin-left--auto {
-      margin-left: auto !important;
+      margin-inline-start: auto !important;
     }
 
     .ds-u-#{$breakpoint}-margin-x--auto {
-      margin-left: auto !important;
-      margin-right: auto !important;
+      margin-inline: auto !important;
     }
 
     .ds-u-#{$breakpoint}-margin-y--auto {
-      margin-bottom: auto !important;
-      margin-top: auto !important;
+      margin-block: auto !important;
     }
   }
 }
