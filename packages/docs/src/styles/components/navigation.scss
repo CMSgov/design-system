@@ -1,12 +1,10 @@
 // Mobile
 .c-navigation {
-  background-color: var(--color-white);
+  background-color: var(--color-gray-lightest);
   width: 100%;
 
   .c-navigation__header {
-    align-items: flex-start;
-    background-color: var(--color-primary);
-    color: var(--color-white);
+    align-items: center;
     display: flex;
     gap: $spacer-2;
     padding: $spacer-2;
@@ -27,7 +25,6 @@
   .c-navigation__link-list {
     border-block: 1px solid var(--vertical-nav-item__border-color);
     gap: 0;
-    margin-block: $spacer-2;
 
     .ds-c-vertical-nav__label--parent {
       text-transform: capitalize;
@@ -46,6 +43,25 @@
   }
 }
 
+.c-navigation__header,
+.c-navigation__switchers-wrapper {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.c-navigation__switchers-wrapper {
+  padding: $spacer-2;
+}
+
+.c-navigation__links-wrapper {
+  background-color: var(--color-gray-lightest);
+  padding: $spacer-2;
+}
+
+.c-theme-switcher label {
+  margin-block-start: 0;
+}
+
 .c-navigation--open {
   inset: 0;
   overflow-y: auto;
@@ -62,14 +78,13 @@
 // Desktop
 @media (min-width: $media-width-md) {
   .c-navigation {
-    background-color: var(--color-gray-lightest);
     // Set it to a fixed width that is wide enough for most links so that it
     // doesn't jump around when we open and close subsections.
     width: 17rem;
 
     .c-navigation__header {
-      margin-inline: calc(#{$spacer-2} * -1);
-      margin-top: calc(#{$spacer-2} * -1);
+      padding-block-end: $spacer-1;
+      padding-block-start: $spacer-4;
     }
 
     .c-navigation__link-list {

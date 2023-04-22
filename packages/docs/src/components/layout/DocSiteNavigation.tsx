@@ -97,16 +97,16 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
 
   return (
     <div
-      className={classnames('ds-u-padding--0 ds-u-md-padding--2 c-navigation', {
+      className={classnames('c-navigation', {
         'c-navigation--open': isMobile && isMobileNavOpen,
       })}
     >
-      <header className="c-navigation__header ds-u-md-padding-top--4">
+      <header className="c-navigation__header">
         <Button
           className="ds-u-md-display--none ds-u-padding-left--0 ds-u-padding-right--1"
           variation="ghost"
           aria-expanded={isMobileNavOpen}
-          aria-controls="c-mobile-navigation"
+          aria-controls="c-navigation__menu"
           onClick={toggleMenu}
         >
           {isMobileNavOpen ? (
@@ -119,38 +119,41 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
           <a className="c-navigation__title" href="/">
             CMS Design System
           </a>
-          <ThemeSwitcher />
-          <VersionSwitcher />
         </div>
       </header>
 
       <div
-        id="c-mobile-navigation"
+        id="c-navigation__menu"
         // hidden attr applied on mobile breakpoints when nav is closed
         hidden={isMobile && !isMobileNavOpen}
-        className="ds-u-padding--2 ds-u-md-padding--0"
       >
-        <VerticalNav
-          className="c-navigation__link-list"
-          items={navItems}
-          component={GatsbyLink}
-          selectedId={location ? location.pathname : ''}
-        />
-        <p>
-          <Link to="/blog/" className="c-navigation__bottom-link ds-c-link">
-            <NewsIcon />
-            What&apos;s new?
-          </Link>
-        </p>
-        <p>
-          <a
-            href="https://github.com/CMSgov/design-system"
-            className="c-navigation__bottom-link ds-c-link"
-          >
-            <GithubIcon />
-            View code on GitHub
-          </a>
-        </p>
+        <div className="c-navigation__switchers-wrapper">
+          <ThemeSwitcher />
+          <VersionSwitcher />
+        </div>
+        <div className="c-navigation__links-wrapper">
+          <VerticalNav
+            className="c-navigation__link-list"
+            items={navItems}
+            component={GatsbyLink}
+            selectedId={location ? location.pathname : ''}
+          />
+          <p>
+            <Link to="/blog/" className="c-navigation__bottom-link ds-c-link">
+              <NewsIcon />
+              What&apos;s new?
+            </Link>
+          </p>
+          <p>
+            <a
+              href="https://github.com/CMSgov/design-system"
+              className="c-navigation__bottom-link ds-c-link"
+            >
+              <GithubIcon />
+              View code on GitHub
+            </a>
+          </p>
+        </div>
       </div>
     </div>
   );
