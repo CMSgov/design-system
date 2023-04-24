@@ -53,6 +53,7 @@ const VersionSwitcher = () => {
     <Dropdown
       label="Documentation version"
       name="version-switcher"
+      className="c-version-switcher"
       options={getVersionOptions(themeVersions)}
       value={currentVersion}
       onChange={onVersionChange}
