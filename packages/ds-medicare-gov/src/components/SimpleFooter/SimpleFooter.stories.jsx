@@ -10,6 +10,7 @@ export default {
       options: ['en', 'es'],
     },
   },
+  parameters: { theme: 'medicare' },
 };
 
 const Template = ({ data, ...args }) => <SimpleFooter {...args} />;

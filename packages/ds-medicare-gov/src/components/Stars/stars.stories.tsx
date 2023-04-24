@@ -12,6 +12,7 @@ export default {
   args: {
     number: 2.5,
   },
+  parameters: { theme: 'medicare' },
 };
 
 const Template = ({ ...args }) => <Stars {...(args as StarsProps)} />;

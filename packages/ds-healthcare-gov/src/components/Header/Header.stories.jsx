@@ -21,6 +21,7 @@ export default {
     className: '',
     firstName: 'Margaret',
   },
+  parameters: { theme: 'healthcare' },
 };
 
 const Template = ({ data, ...args }) => <Header {...args} />;
