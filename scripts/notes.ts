@@ -175,8 +175,6 @@ const makeNotesMD = (notes: PRNote[][]): string => {
   let lastSystem = '';
   let lastType = '';
 
-  console.log(notes);
-
   const capitalize = (s: string): string => {
     return s.charAt(0).toUpperCase() + s.slice(1);
   };
