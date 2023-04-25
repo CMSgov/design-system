@@ -316,14 +316,14 @@ export const Autocomplete = (props: AutocompleteProps) => {
   }
 
   let menuHeading;
-  let menuPropOverrides;
+  const menuProps = getMenuProps();
   if (label && !loading) {
     menuHeading = (
       <h5 className="ds-c-autocomplete__label" id={menuHeadingId}>
         {label}
       </h5>
     );
-    menuPropOverrides = { 'aria-labelledby': menuHeadingId };
+    menuProps['aria-labelledby'] = `${menuHeadingId} ${menuProps['aria-labelledby'] ?? ''}`;
   }
 
   return (
@@ -335,7 +335,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
         id={menuContainerId}
       >
         {menuHeading}
-        <ul className="ds-c-list--bare" {...getMenuProps(menuPropOverrides)}>
+        <ul className="ds-c-list--bare" {...menuProps}>
           {renderItems()}
         </ul>
       </div>
