@@ -1,7 +1,7 @@
 import { execSync } from 'node:child_process';
 import * as themes from '../themes.json';
 import { writeFileSync } from 'node:fs';
-import _ from 'underscore';
+import _ from 'lodash';
 
 const chalk = require('chalk');
 const prompt = require('readline-sync');
