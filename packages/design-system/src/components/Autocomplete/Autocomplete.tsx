@@ -167,8 +167,8 @@ function isTextField(child: React.ReactElement): boolean {
 export const Autocomplete = (props: AutocompleteProps) => {
   const id = useRef(props.id ?? uniqueId('autocomplete_')).current;
   const labelId = useRef(props.labelId ?? uniqueId('autocomplete_label_')).current;
-  const listboxContainerId = useRef(uniqueId('autocomplete_owned_container_')).current;
-  const listboxHeadingId = useRef(uniqueId('autocomplete_header_')).current;
+  const menuContainerId = useRef(uniqueId('autocomplete_owned_container_')).current;
+  const menuHeadingId = useRef(uniqueId('autocomplete_header_')).current;
 
   const {
     ariaClearLabel,
@@ -315,20 +315,27 @@ export const Autocomplete = (props: AutocompleteProps) => {
     }
   }
 
+  let menuHeading;
+  let menuPropOverrides;
+  if (label && !loading) {
+    menuHeading = (
+      <h5 className="ds-c-autocomplete__label" id={menuHeadingId}>
+        {label}
+      </h5>
+    );
+    menuPropOverrides = { 'aria-labelledby': menuHeadingId };
+  }
+
   return (
     <div className={rootClassName}>
       {renderChildren()}
 
       <div
         className={classNames('ds-c-autocomplete__list', !isOpen && 'ds-u-display--none')}
-        id={listboxContainerId}
+        id={menuContainerId}
       >
-        {label && !loading && (
-          <h5 className="ds-c-autocomplete__label" id={listboxHeadingId}>
-            {label}
-          </h5>
-        )}
-        <ul className="ds-c-list--bare" {...getMenuProps()}>
+        {menuHeading}
+        <ul className="ds-c-list--bare" {...getMenuProps(menuPropOverrides)}>
           {renderItems()}
         </ul>
       </div>
