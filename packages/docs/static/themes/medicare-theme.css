@@ -354,6 +354,7 @@
 --choice__border-color--disabled: #a6a6a6;
 --choice__border-color--error: #808080;
 --choice__border-color--error--inverse: #ffffff;
+--choice__border-color--hover: #1e3c70;
 --choice__border-color--inverse: #ffffff;
 --choice__border-color--left: #146a5d;
 --choice__border-color--focus: #0e4a41;
@@ -366,8 +367,12 @@
 --choice__size--small: 20px;
 --choice__size-radio: 16px;
 --choice__size-radio--small: 12px;
+--choice__translateY: 0.25em;
+--choice__translateY--small: 0.125em;
 --choice-label__color--disabled: #5a5a5a;
 --choice-label__color--disabled--inverse: #e9ecf1;
+--choice-wrapper__gap: 1rem;
+--choice-wrapper__gap--small: 0.75rem;
 --day-picker-button__background-color--hover: #e8f0ef;
 --dialog__background-color: #ffffff;
 --dialog__padding: 32px;

@@ -10,9 +10,16 @@
 // Layout styles for wrapping choice container
 .ds-c-choice-wrapper {
   display: flex;
-  gap: 0.5rem;
+  // gap: 0.5rem;
+  gap: var(--choice-wrapper__gap);
   margin-block-start: $spacer-1;
   max-width: var(--measure-wide);
+
+  // Medicare has a different gap for small choices
+  // If a theme doesn't have a gap for small choices defined, it will fall back to the normal gap
+  &:has(.ds-c-choice--small) {
+    gap: var(--choice-wrapper__gap--small, var(--choice-wrapper__gap));
+  }
 }
 
 // Styles for label
@@ -24,12 +31,12 @@
   font-weight: var(--font-weight-normal);
   margin-block-start: 0;
   max-width: max-content;
-  transform: translateY(0.25em);
+  transform: translateY(var(--choice__translateY));
 }
 
 .ds-c-choice--small + label,
 .ds-c-choice--small + .ds-c-label {
-  transform: translateY(-0.125em);
+  transform: translateY(var(--choice__translateY--small));
 }
 
 // Disabled label styles
@@ -71,6 +78,7 @@ label,
   width: var(--choice__size);
 
   &::before {
+    border-radius: inherit;
     box-shadow: inset 0 0 4em 1em var(--choice__background-color--checked);
     content: '';
     grid-area: 1/-1;
@@ -97,6 +105,12 @@ label,
 
   &.ds-c-choice--error {
     border-color: var(--choice__border-color--error);
+  }
+
+  // Medicare.gov has a different hover state for checked choices
+  // If a theme doesn't have a hover state for checked choices, it will fall back to the normal hover state
+  &:not(:disabled):hover {
+    border-color: var(--choice__border-color--hover, var(--choice__border-color));
   }
 
   // Disabled

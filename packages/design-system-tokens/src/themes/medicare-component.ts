@@ -256,6 +256,7 @@ export const components: AnyTokenValues = {
     '__border-color--disabled':                   t.color['gray-light'],
     '__border-color--error':                      t.color['gray'],
     '__border-color--error--inverse':             t.color['white'],
+    '__border-color--hover':                      t.color['secondary'],
     '__border-color--inverse':                    t.color['white'],
     '__border-color--left':                       t.color['primary'],
     '__border-color--focus':                      t.color['primary-darker'],
@@ -268,8 +269,12 @@ export const components: AnyTokenValues = {
     '__size--small':                              '20px',
     '__size-radio':                               t.spacer['2'],
     '__size-radio--small':                        '12px',
+    '__translateY':                               '0.25em',
+    '__translateY--small':                        '0.125em',
     '-label__color--disabled':                    t.color['muted'],
     '-label__color--disabled--inverse':           t.color['muted-inverse'],
+    '-wrapper__gap':                              '1rem',
+    '-wrapper__gap--small':                       '0.75rem',
   },
 
   'day-picker': {

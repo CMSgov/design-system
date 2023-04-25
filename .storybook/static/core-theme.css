@@ -364,8 +364,11 @@
 --choice__size--small: 20px;
 --choice__size-radio: 22px;
 --choice__size-radio--small: 12px;
+--choice__translateY: 0.25em;
+--choice__translateY--small: -0.125em;
 --choice-label__color--disabled: #5a5a5a;
 --choice-label__color--disabled--inverse: #e9ecf1;
+--choice-wrapper__gap: 0.5rem;
 --day-picker-button__background-color--hover: #e6f1f8;
 --dialog__background-color: #ffffff;
 --dialog__padding: 32px;
