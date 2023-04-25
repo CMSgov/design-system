@@ -193,6 +193,37 @@ export const Autocomplete = (props: AutocompleteProps) => {
     ...autocompleteProps
   } = props;
 
+  if (clearInputOnBlur === false) {
+    autocompleteProps.stateReducer = keepInputDownshiftStateReducer;
+  }
+
+  if (items) {
+    // We allow items that aren't technically results to be rendered as items in the list, such as
+    // a button for viewing all results, but these non-result items should not be counted in the
+    // accessibility messages as results. It is not enough to set downshift's `itemCount` property
+    // because it will actually make any remaining items past the `itemCount` unselectable with
+    // the keyboard.
+    const resultCount = items.filter((item) => item.isResult !== false).length;
+    if (items.length !== resultCount) {
+      const getA11yStatusMessage =
+        autocompleteProps.getA11yStatusMessage ??
+        ((Downshift as any).defaultProps as DownshiftProps<any>).getA11yStatusMessage;
+      autocompleteProps.getA11yStatusMessage = (
+        args: A11yStatusMessageOptions<AutocompleteItems>
+      ) => {
+        const newArgs = { ...args, resultCount };
+        if (args.previousResultCount === args.resultCount) {
+          // Since we are modifying the resultCount, we want to avoid a case where the resultCount
+          // doesn't match the previousResultCount when it naturally would. If there's an artificial
+          // mismatch between these two values, the result count will be announced each time the
+          // currently focused list item changes.
+          newArgs.previousResultCount = newArgs.resultCount;
+        }
+        return getA11yStatusMessage(newArgs);
+      };
+    }
+  }
+
   const { clearSelection, isOpen, getMenuProps, getInputProps, highlightedIndex, getItemProps } =
     useCombobox({
       items,
@@ -200,6 +231,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
       inputId: id,
       labelId,
       onInputValueChange,
+      ...autocompleteProps,
     });
 
   function renderItems() {
@@ -283,37 +315,6 @@ export const Autocomplete = (props: AutocompleteProps) => {
   }
 
   const rootClassName = classNames('ds-u-clearfix', 'ds-c-autocomplete', className);
-
-  if (clearInputOnBlur === false) {
-    autocompleteProps.stateReducer = keepInputDownshiftStateReducer;
-  }
-
-  if (items) {
-    // We allow items that aren't technically results to be rendered as items in the list, such as
-    // a button for viewing all results, but these non-result items should not be counted in the
-    // accessibility messages as results. It is not enough to set downshift's `itemCount` property
-    // because it will actually make any remaining items past the `itemCount` unselectable with
-    // the keyboard.
-    const resultCount = items.filter((item) => item.isResult !== false).length;
-    if (items.length !== resultCount) {
-      const getA11yStatusMessage =
-        autocompleteProps.getA11yStatusMessage ??
-        ((Downshift as any).defaultProps as DownshiftProps<any>).getA11yStatusMessage;
-      autocompleteProps.getA11yStatusMessage = (
-        args: A11yStatusMessageOptions<AutocompleteItems>
-      ) => {
-        const newArgs = { ...args, resultCount };
-        if (args.previousResultCount === args.resultCount) {
-          // Since we are modifying the resultCount, we want to avoid a case where the resultCount
-          // doesn't match the previousResultCount when it naturally would. If there's an artificial
-          // mismatch between these two values, the result count will be announced each time the
-          // currently focused list item changes.
-          newArgs.previousResultCount = newArgs.resultCount;
-        }
-        return getA11yStatusMessage(newArgs);
-      };
-    }
-  }
 
   let menuHeading;
   const menuProps = getMenuProps();
