@@ -10,15 +10,17 @@
 // Layout styles for wrapping choice container
 .ds-c-choice-wrapper {
   display: flex;
-  // gap: 0.5rem;
-  gap: var(--choice-wrapper__gap);
+
+  // Medicare has a different gap for choice wrappers
+  // If a theme doesn't have a gap for choice wrappers defined, it will fall back to the normal gap
+  gap: var(--choice-wrapper__gap, 0.5rem);
   margin-block-start: $spacer-1;
   max-width: var(--measure-wide);
 
   // Medicare has a different gap for small choices
   // If a theme doesn't have a gap for small choices defined, it will fall back to the normal gap
   &:has(.ds-c-choice--small) {
-    gap: var(--choice-wrapper__gap--small, var(--choice-wrapper__gap));
+    gap: var(--choice-wrapper__gap--small, 0.5rem);
   }
 }
 
@@ -31,12 +33,17 @@
   font-weight: var(--font-weight-normal);
   margin-block-start: 0;
   max-width: max-content;
-  transform: translateY(var(--choice__translateY));
+
+  // Medicare has a different `translateY` for choice labels
+  // If a theme doesn't have a `translateY` for choice labels defined, it will fall back to the normal `translateY`
+  transform: translateY(var(--choice__translateY), 0.25em);
 }
 
+// Medicare has a different `translateY` for small choice labels
+// If a theme doesn't have a `translateY` for small choice labels defined, it will fall back to the normal `translateY`
 .ds-c-choice--small + label,
 .ds-c-choice--small + .ds-c-label {
-  transform: translateY(var(--choice__translateY--small));
+  transform: translateY(var(--choice__translateY--small), -0.125em);
 }
 
 // Disabled label styles

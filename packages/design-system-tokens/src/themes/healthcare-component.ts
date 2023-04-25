@@ -268,11 +268,8 @@ export const components: AnyTokenValues = {
     '__size--small':                              '20px',
     '__size-radio':                               '22px',
     '__size-radio--small':                        '12px',
-    '__translateY':                               '0.25em',
-    '__translateY--small':                        '-0.125em',
     '-label__color--disabled':                    t.color['muted'],
     '-label__color--disabled--inverse':           t.color['muted-inverse'],
-    '-wrapper__gap':                              '0.5rem',
   },
 
   'day-picker': {
