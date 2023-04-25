@@ -367,8 +367,7 @@
 --choice__size--small: 20px;
 --choice__size-radio: 16px;
 --choice__size-radio--small: 12px;
---choice__translateY: 0.25em;
---choice__translateY--small: 0.125em;
+--choice__translateY: 0.125em;
 --choice-label__color--disabled: #5a5a5a;
 --choice-label__color--disabled--inverse: #e9ecf1;
 --choice-wrapper__gap: 1rem;
