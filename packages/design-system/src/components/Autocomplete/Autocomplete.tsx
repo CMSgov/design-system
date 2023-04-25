@@ -14,16 +14,14 @@
  * an unacceptable regression of the user experience.
  */
 
-import Downshift, { A11yStatusMessageOptions, DownshiftProps } from 'downshift';
+import Downshift, { A11yStatusMessageOptions, DownshiftProps, useCombobox } from 'downshift';
 import Button from '../Button/Button';
 import React, { useRef } from 'react';
 import TextField from '../TextField/TextField';
-import WrapperDiv from './WrapperDiv';
 import classNames from 'classnames';
-import { errorPlacementDefault } from '../flags';
-import get from 'lodash/get';
 import keepInputDownshiftStateReducer from './keepInputDownshiftStateReducer';
 import uniqueId from 'lodash/uniqueId';
+import { errorPlacementDefault } from '../flags';
 import { t } from '../i18n';
 
 export interface AutocompleteItems {
@@ -149,7 +147,7 @@ export interface AutocompleteProps extends Omit<DownshiftProps<any>, PropsNotPas
    */
   onChange?: (...args: any[]) => any;
   /**
-   * Called when the child `TextField` value changes. Returns a String `inputValue`. [Read more on downshift docs.](https://github.com/paypal/downshift#oninputvaluechange)
+   * Called when the child `TextField` value changes. Returns a String `inputValue`. [Read more on downshift docs.](https://github.com/downshift-js/downshift#oninputvaluechange)
    */
   onInputValueChange?: DownshiftProps<any>['onInputValueChange'];
 }
@@ -160,7 +158,7 @@ export interface AutocompleteProps extends Omit<DownshiftProps<any>, PropsNotPas
  * @return {Boolean} Is this a TextField component?
  */
 function isTextField(child: React.ReactElement): boolean {
-  const componentName = get(child, 'type.displayName') || get(child, 'type.name');
+  const componentName = (child.type as any)?.displayName || (child.type as any)?.name;
 
   // Check child.type first and as a fallback, check child.type.displayName follow by child.type.name
   return child && (child.type === TextField || componentName === 'TextField');
@@ -169,7 +167,6 @@ function isTextField(child: React.ReactElement): boolean {
 export const Autocomplete = (props: AutocompleteProps) => {
   const id = useRef(props.id ?? uniqueId('autocomplete_')).current;
   const labelId = useRef(props.labelId ?? uniqueId('autocomplete_label_')).current;
-  const listboxId = useRef(uniqueId('autocomplete_owned_listbox_')).current;
   const listboxContainerId = useRef(uniqueId('autocomplete_owned_container_')).current;
   const listboxHeadingId = useRef(uniqueId('autocomplete_header_')).current;
 
@@ -192,14 +189,20 @@ export const Autocomplete = (props: AutocompleteProps) => {
     loading,
     loadingMessage,
     noResultsMessage,
+    onInputValueChange,
     ...autocompleteProps
   } = props;
 
-  function renderItems(
-    items: AutocompleteItems[],
-    getItemProps: (...args: any[]) => any,
-    highlightedIndex: number
-  ): React.ReactNode {
+  const { clearSelection, isOpen, getMenuProps, getInputProps, highlightedIndex, getItemProps } =
+    useCombobox({
+      items,
+      itemToString,
+      inputId: id,
+      labelId,
+      onInputValueChange,
+    });
+
+  function renderItems() {
     // If we have results, create a mapped list
     if (items.length) {
       return items.map((item, index) => (
@@ -234,11 +237,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
     );
   }
 
-  function renderChildren(
-    getInputProps: (...args: any[]) => any,
-    listboxOpen: boolean
-  ): React.ReactNode[] {
-    const isOpen = listboxOpen;
+  function renderChildren(): React.ReactNode[] {
     // Extend props on the TextField, by passing them
     // through Downshift's `getInputProps` method
     return React.Children.map(children, (child: React.ReactElement) => {
@@ -262,25 +261,24 @@ export const Autocomplete = (props: AutocompleteProps) => {
           )
         : child.props.errorMessageClassName;
 
-      const propOverrides = {
-        'aria-autocomplete': 'list',
-        'aria-controls': listboxId,
-        'aria-expanded': isOpen,
-        'aria-labelledby': null,
-        'aria-owns': isOpen ? listboxId : null,
+      const propOverrides = getInputProps({
         autoComplete: autoCompleteLabel,
-        errorMessageClassName,
         autoFocus: autoFocus || focusTrigger,
+        errorMessageClassName,
         id,
-        inputRef,
+        ref: inputRef,
         labelId,
         onBlur: child.props.onBlur,
         onChange: child.props.onChange,
         onKeyDown: child.props.onKeyDown,
-        role: 'combobox',
-      };
+      });
 
-      return React.cloneElement(child, getInputProps(propOverrides));
+      // Downshift wants to put a ref on the input, but we call it `inputRef` in
+      // the TextField component.
+      propOverrides.inputRef = propOverrides.ref;
+      delete propOverrides.ref;
+
+      return React.cloneElement(child, propOverrides);
     });
   }
 
@@ -318,62 +316,35 @@ export const Autocomplete = (props: AutocompleteProps) => {
   }
 
   return (
-    <Downshift itemToString={itemToString} {...autocompleteProps}>
-      {({
-        clearSelection,
-        getInputProps,
-        getItemProps,
-        getRootProps,
-        highlightedIndex,
-        isOpen,
-      }) => (
-        <WrapperDiv
-          {...getRootProps({
-            refKey: 'innerRef',
-          })}
-          aria-expanded={null}
-          aria-haspopup={null}
-          aria-labelledby={null}
-          aria-owns={null}
-          className={rootClassName}
-          // role has to be null to overwrite Downshift
-          role={null}
+    <div className={rootClassName}>
+      {renderChildren()}
+
+      <div
+        className={classNames('ds-c-autocomplete__list', !isOpen && 'ds-u-display--none')}
+        id={listboxContainerId}
+      >
+        {label && !loading && (
+          <h5 className="ds-c-autocomplete__label" id={listboxHeadingId}>
+            {label}
+          </h5>
+        )}
+        <ul className="ds-c-list--bare" {...getMenuProps()}>
+          {renderItems()}
+        </ul>
+      </div>
+
+      {clearSearchButton && (
+        <Button
+          aria-label={ariaClearLabel ?? t('autocomplete.ariaClearLabel')}
+          className="ds-u-padding-right--0 ds-c-autocomplete__clear-btn"
+          onClick={clearSelection}
+          size="small"
+          variation="ghost"
         >
-          {renderChildren(getInputProps, isOpen)}
-
-          {isOpen && (loading || items) ? (
-            <div className="ds-c-autocomplete__list" id={listboxContainerId}>
-              {label && !loading && (
-                <h5 className="ds-c-autocomplete__label" id={listboxHeadingId}>
-                  {label}
-                </h5>
-              )}
-
-              <ul
-                aria-labelledby={label ? listboxHeadingId : null}
-                className="ds-c-list--bare"
-                id={listboxId}
-                role="listbox"
-              >
-                {renderItems(items, getItemProps, highlightedIndex)}
-              </ul>
-            </div>
-          ) : null}
-
-          {clearSearchButton && (
-            <Button
-              aria-label={ariaClearLabel ?? t('autocomplete.ariaClearLabel')}
-              className="ds-u-padding-right--0 ds-c-autocomplete__clear-btn"
-              onClick={clearSelection}
-              size="small"
-              variation="ghost"
-            >
-              {clearInputText ?? t('autocomplete.clearInputText')}
-            </Button>
-          )}
-        </WrapperDiv>
+          {clearInputText ?? t('autocomplete.clearInputText')}
+        </Button>
       )}
-    </Downshift>
+    </div>
   );
 };
 
