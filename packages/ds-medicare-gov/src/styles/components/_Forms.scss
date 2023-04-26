@@ -45,7 +45,7 @@ input[type='checkbox'] + .ds-c-label {
   }
 }
 
-legend[id^='datefield_label'] + div {
+legend[id^='datefield_label'] {
   + div {
     span:first-child {
       text-transform: none;
