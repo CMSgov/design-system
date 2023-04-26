@@ -31,8 +31,7 @@ function queryNextLink() {
 }
 
 function hasEllipsis() {
-  const items = screen.getAllByRole('listitem');
-  return items.some((item) => item.querySelector('.ds-c-pagination__overflow'));
+  return document.querySelector('.ds-c-pagination__overflow');
 }
 
 describe('Pagination', () => {
@@ -153,14 +152,14 @@ describe('Pagination', () => {
   describe('pagination slot behavior', () => {
     it('should begin page count with 1', () => {
       renderPagination({ currentPage: 1 });
-      const items = screen.getAllByRole('listitem');
+      const items = document.querySelector('.ds-c-pagination__pages').childNodes;
       expect(items[0].textContent).toContain('1');
     });
 
     it('should end page count with page total', () => {
       const lastPageNum = 3;
       renderPagination({ currentPage: 1, totalPages: lastPageNum });
-      const items = screen.getAllByRole('listitem');
+      const items = document.querySelector('.ds-c-pagination__pages').childNodes;
       expect(items[items.length - 1].textContent).toContain(`${lastPageNum}`);
     });
 
@@ -175,14 +174,14 @@ describe('Pagination', () => {
       it('should show all pages', () => {
         const totalPageNum = 5;
         renderPagination({ currentPage: 1, totalPages: totalPageNum });
-        const items = screen.getAllByRole('listitem');
+        const items = document.querySelector('.ds-c-pagination__pages').childNodes;
         expect(items.length).toEqual(totalPageNum);
         expect(items).toMatchSnapshot();
       });
 
       it('should not show ellipses', () => {
         renderPagination({ totalPages: 6 });
-        expect(hasEllipsis()).toBe(false);
+        expect(hasEllipsis()).toBeNull();
       });
     });
 
@@ -192,7 +191,7 @@ describe('Pagination', () => {
           screen.getAllByText('1')[1];
           screen.getAllByText('2')[1];
           screen.getAllByText('3')[1];
-          expect(screen.getAllByRole('listitem').length).toBe(7);
+          expect(document.querySelector('.ds-c-pagination__pages').childNodes.length).toBe(7);
         }
 
         it('for page 1', () => {
@@ -216,7 +215,7 @@ describe('Pagination', () => {
           screen.getAllByText('33')[1];
           screen.getAllByText('34')[1];
           screen.getAllByText('35')[1];
-          expect(screen.getAllByRole('listitem').length).toBe(7);
+          expect(document.querySelector('.ds-c-pagination__pages').childNodes.length).toBe(7);
         }
 
         it('for page 33', () => {
@@ -238,12 +237,12 @@ describe('Pagination', () => {
       describe('should show ellipses for number in middle', () => {
         it('for page 10', () => {
           renderPagination({ currentPage: 10, totalPages: 35 });
-          expect(hasEllipsis()).toBe(true);
+          expect(hasEllipsis()).toBeTruthy();
         });
 
         it('for page 30', () => {
           renderPagination({ currentPage: 30, totalPages: 35 });
-          expect(hasEllipsis()).toBe(true);
+          expect(hasEllipsis()).toBeTruthy();
         });
       });
     });

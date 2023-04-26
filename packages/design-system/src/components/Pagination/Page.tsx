@@ -27,7 +27,7 @@ export default function Page({
   onPageChange,
 }: PageProps): React.ReactElement {
   return (
-    <li>
+    <>
       {isActive ? (
         <span
           className="ds-c-button ds-c-button--ghost ds-c-pagination__current-page"
@@ -40,6 +40,6 @@ export default function Page({
           {index}
         </Button>
       )}
-    </li>
+    </>
   );
 }
