@@ -277,7 +277,7 @@ export const components: AnyTokenValues = {
   },
 
   'datefield': {
-    '__separator--display':                       'none',
+    '-separator__display':                       'none',
   },
 
   'day-picker': {
@@ -434,8 +434,8 @@ export const components: AnyTokenValues = {
     '__divider-color':                            t.color['gray-light'],
     '__padding':                                  t.spacer['2'],
     '__border-radius':                            '3px',
-    '__currency-icon--line-height':               '1',
-    '__currency-icon--spacing':                   t.spacer['4'],
+    '-currency-icon__line-height':               '1',
+    '-currency-icon__spacing':                   t.spacer['4'],
   },
 
   'tooltip': {

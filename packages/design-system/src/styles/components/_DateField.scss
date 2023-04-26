@@ -22,7 +22,7 @@
 .ds-c-datefield__separator {
   // Medicare removes the separator as part of its theme
   // If a theme doesn't specify if a separator should be displayed, it will fall back to its default value of `block` (User Agent style)
-  display: var(--datefield__separator--display, block);
+  display: var(--datefield-separator__display, block);
   font-size: var(--font-size-2xl);
   line-height: 1;
   margin: 0;

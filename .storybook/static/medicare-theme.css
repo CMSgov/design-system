@@ -372,7 +372,7 @@
 --choice-label__color--disabled--inverse: #e9ecf1;
 --choice-wrapper__gap: 1rem;
 --choice-wrapper__gap--small: 0.75rem;
---datefield__separator--display: none;
+--datefield-separator__display: none;
 --day-picker-button__background-color--hover: #e8f0ef;
 --dialog__background-color: #ffffff;
 --dialog__padding: 32px;
@@ -481,8 +481,8 @@
 --text-input__divider-color: #a6a6a6;
 --text-input__padding: 16px;
 --text-input__border-radius: 3px;
---text-input__currency-icon--line-height: 1;
---text-input__currency-icon--spacing: 32px;
+--text-input-currency-icon__line-height: 1;
+--text-input-currency-icon__spacing: 32px;
 --tooltip__background-color: #ffffff;
 --tooltip__border-color: #404040;
 --tooltip__border-color--active: #146a5d40;
