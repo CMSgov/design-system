@@ -1,8 +1,6 @@
 @use '../layout' as *;
 
 .ds-c-field {
-  // padding: $spacer-2;
-
   &::placeholder {
     color: var(--color-gray-dark);
   }
@@ -47,32 +45,10 @@ input[type='checkbox'] + .ds-c-label {
   }
 }
 
-legend[id^='datefield_label'] {
+legend[id^='datefield_label'] + div {
   + div {
     span:first-child {
       text-transform: none;
     }
   }
-
-  > .ds-c-field__hint:not(.ds-u-color--error) {
-    color: var(--form-label__color--not-error);
-  }
 }
-
-.ds-c-field__hint {
-  // font-family: var(--font-family-rubik);
-  // font-size: var(--font-size-sm);
-}
-
-// .ds-c-datefield__separator {
-//   display: none;
-// }
-
-// Alignment of $ icon for the currency field
-// .ds-c-field--currency {
-//   padding-left: $spacer-3;
-// }
-
-// .ds-c-field__before--currency {
-//   padding-top: 7px;
-// }

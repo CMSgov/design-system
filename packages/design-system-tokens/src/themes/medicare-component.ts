@@ -428,12 +428,14 @@ export const components: AnyTokenValues = {
     '__border-color--disabled':                   t.color['gray-darker'],
     '__border-color--error':                      t.color['error'],
     '__border-color--error--inverse':             t.color['error-lighter'],
-    '__border-color--inverse':                    t.color['black'],
+    '__border-color--inverse':                    t.color['gray'],
     '__border-color--success':                    t.color['success-light'],
     '__color':                                    t.color['gray-darker'],
     '__divider-color':                            t.color['gray-light'],
     '__padding':                                  t.spacer['2'],
     '__border-radius':                            '3px',
+    '__currency-icon--line-height':               '1',
+    '__currency-icon--spacing':                   t.spacer['4'],
   },
 
   'tooltip': {
