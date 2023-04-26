@@ -73,7 +73,9 @@ export const getLatestVersions = () => {
   const versions: { [key: string]: string } = {};
   Object.entries(themes).forEach((theme) => {
     const pkgn = theme[1].packageName;
-    const vers = execSync(`git ls-remote --tags --sort tag origin | grep "${pkgn}" | tail -1`)
+    const vers = execSync(
+      `git ls-remote --tags --sort committerdate origin | grep "${pkgn}" | tail -1`
+    )
       .toString()
       .trim();
     versions[theme[0]] = vers.replace(/\w+\s+refs\/tags\/@cmsgov\/.*@(.*)$/, '$1');
