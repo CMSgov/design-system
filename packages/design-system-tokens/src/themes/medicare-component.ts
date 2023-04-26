@@ -276,6 +276,10 @@ export const components: AnyTokenValues = {
     '-wrapper__gap--small':                       '0.75rem',
   },
 
+  'datefield': {
+    '__separator--display':                       'none',
+  },
+
   'day-picker': {
     '-button__background-color--hover':           t.color['primary-lightest'],
   },
@@ -328,6 +332,7 @@ export const components: AnyTokenValues = {
     '__max-width--medium':                        '12em',
     '-hint__color':                               t.color['muted'],
     '-hint__color--inverse':                      t.color['muted-inverse'],
+    '-hint__font-size':                           '14px',
     '-error__color':                              t.color['error'],
     '-error__color--inverse':                     t.color['error-lighter'],
   },
@@ -416,6 +421,7 @@ export const components: AnyTokenValues = {
     '__line-height':                              '1.3',
     '__background-color--disabled':               t.color['gray-lighter'],
     '__border-width':                             '2px',
+    '__border-width--disabled':                   '1px',
     '__border-width--error':                      '3px',
     '__border-width--success':                    '3px',
     '__border-color':                             t.color['gray'],
@@ -426,7 +432,7 @@ export const components: AnyTokenValues = {
     '__border-color--success':                    t.color['success-light'],
     '__color':                                    t.color['gray-darker'],
     '__divider-color':                            t.color['gray-light'],
-    '__padding':                                  t.spacer['1'],
+    '__padding':                                  t.spacer['2'],
     '__border-radius':                            '3px',
   },
 

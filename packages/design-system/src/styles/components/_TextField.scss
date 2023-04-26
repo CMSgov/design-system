@@ -23,6 +23,10 @@
     background-color: var(--text-input__background-color--disabled);
     border-color: var(--text-input__border-color--disabled);
 
+    // Medicare have a specific border-width for disabled inputs
+    // If a theme doesn't have a disabled border-width style defined, it will fall back to the normal border-width token
+    border-width: var(--text-input__border-width--disabled, var(--text-input__border-width));
+
     @media (-ms-high-contrast: active), (forced-colors: active) {
       cursor: not-allowed;
 
