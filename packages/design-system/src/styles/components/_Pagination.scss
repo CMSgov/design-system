@@ -5,9 +5,8 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
-  ul {
+  .ds-c-pagination__pages {
     display: none;
-    list-style: none;
     margin: 0;
 
     @media (-ms-high-contrast: active), (forced-colors: active) {
@@ -18,9 +17,6 @@
     @media (min-width: $media-width-sm + 1) {
       display: inline-block;
     }
-  }
-  li {
-    display: inline-block;
   }
   .ds-c-button {
     color: var(--pagination-link__color);
@@ -154,7 +150,7 @@
     .ds-c-pagination__page-count {
       display: inline;
     }
-    ul {
+    .ds-c-pagination__pages {
       display: none;
     }
   }

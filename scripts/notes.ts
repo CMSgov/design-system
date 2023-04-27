@@ -1,6 +1,7 @@
 import { execSync } from 'node:child_process';
 import * as themes from '../themes.json';
 import { writeFileSync } from 'node:fs';
+import _ from 'lodash';
 
 const chalk = require('chalk');
 const prompt = require('readline-sync');
@@ -12,6 +13,13 @@ interface PRDetails {
   labels: string[] | null;
   ticket: string | null;
   title: string;
+}
+
+interface PRNote {
+  impacts: string;
+  type: string;
+  title: string;
+  pr_number: number;
 }
 
 type Themes = typeof themes | any;
@@ -29,8 +37,6 @@ const icons = {
 
 type Icons = typeof icons | any;
 const icon: Icons = icons;
-
-type PRNote = [string, string, string, number];
 
 /**
  * Current milestone reference
@@ -67,7 +73,9 @@ export const getLatestVersions = () => {
   const versions: { [key: string]: string } = {};
   Object.entries(themes).forEach((theme) => {
     const pkgn = theme[1].packageName;
-    const vers = execSync(`git ls-remote --tags --sort tag origin | grep "${pkgn}" | tail -1`)
+    const vers = execSync(
+      `git ls-remote --tags --sort committerdate origin | grep "${pkgn}" | tail -1`
+    )
       .toString()
       .trim();
     versions[theme[0]] = vers.replace(/\w+\s+refs\/tags\/@cmsgov\/.*@(.*)$/, '$1');
@@ -92,8 +100,9 @@ const latestCoreTag = getLatestCoreTag();
  */
 const getPRs = () => {
   const prData = JSON.parse(
+    // limit to 200 results so we get more than the 30 default
     execSync(
-      `gh pr list --search milestone:'"${title}"' --state merged --json title,url,labels,number,author,mergeCommit`
+      `gh pr list --search milestone:'"${title}"' --state merged -L 200 --json title,url,labels,number,author,mergeCommit`
     ).toString()
   );
   const prs: PRDetails[] = prData.map((pr: any) => {
@@ -116,98 +125,98 @@ const getPRs = () => {
  * will be presented in each of those sections. An item will also be placed
  * in multiple type categories if it belongs to multiple.
  */
-const organizeNotes = (data: PRDetails[]) => {
+const organizeNotes = (ghPrData: PRDetails[]) => {
   const notes: PRNote[] = [];
-  data.forEach((pr: PRDetails) => {
+
+  ghPrData.forEach((pr: PRDetails) => {
+    const note = {} as PRNote;
     if (!pr.labels?.length) return;
 
-    // const noteData: any[] = [];
-    const prImpacts: string[] = [];
-    const prType: string[] = [];
-
-    pr.labels.forEach((label) => {
-      const t = label.match(/Type: (\w+)/i);
-      const i = label.match(/Impacts: (\w+)/i);
-
-      if (t) prType.push(t[1].toLowerCase());
-      if (i) prImpacts.push(i[1].toLowerCase());
-    });
-
-    if (prImpacts.length < 1 || prType.length !== 1) {
+    if (pr.labels.length !== 2) {
       console.error(
-        '\nPRs are required to have at least one Impacts: label and at exactly one Type: label.'
+        '\nPRs are required to have exactly one Impacts: label and at exactly one Type: label.'
       );
       console.log(pr);
       console.log();
       process.exit(1);
     }
 
-    prImpacts.forEach((i) => {
-      notes.push([i, prType[0], pr.title, pr.ghpr]);
+    pr.labels.forEach((label) => {
+      const t = label.match(/Type: (\w+)/i);
+      const i = label.match(/Impacts: (\w+)/i);
+
+      if (t) note.type = t[1].toLowerCase();
+      if (i) note.impacts = i[1].toLowerCase();
     });
+
+    note.title = pr.title;
+    note.pr_number = pr.ghpr;
+
+    notes.push(note);
   });
 
-  // initial sort
-  notes.sort();
+  /**
+   * sort these notes in a particular order
+   */
+  const order = ['core', 'healthcare', 'medicare', 'cmsgov', 'documentation'];
+  const typeOrder = ['breaking', 'changed', 'added', 'fixed', 'internal'];
 
-  // move cmsgov to end of list
-  notes.forEach((note: PRNote, indx: number) => {
-    if (note[0] === 'cmsgov') notes.push(notes.splice(indx, 1)[0]);
-  });
+  const sorted = _.chain(notes)
+    .sortBy((note) => _.indexOf(order, note.impacts))
+    .groupBy((note) => note.impacts)
+    .map((system) => {
+      return _.sortBy(system, (t) => _.indexOf(typeOrder, t.type));
+    })
+    .value();
 
-  // move documentation to end of list
-  notes.forEach((note: PRNote, indx: number) => {
-    if (note[0] === 'documentation') notes.push(notes.splice(indx, 1)[0]);
-  });
-
-  return notes;
+  return sorted;
 };
 
-const makeNotesMD = (notes: any[]): string => {
+const makeNotesMD = (notes: PRNote[][]): string => {
   let md = '';
   let lastSystem = '';
   let lastType = '';
 
-  const upCase = (s: string): string => {
+  const capitalize = (s: string): string => {
     return s.charAt(0).toUpperCase() + s.slice(1);
   };
 
-  notes.forEach((note) => {
-    const [sys, typ, title, num] = note;
-    const typIcon = icon[typ];
-    const sameSystem = lastSystem === sys;
-    const sameType = lastType === typ;
-    lastSystem = sys;
-    lastType = typ;
+  _.flatten(notes).forEach((note) => {
+    const { impacts, type, title, pr_number } = note;
+    const typIcon = icon[type];
+    const sameSystem = lastSystem === impacts;
+    const sameType = lastType === type;
+    lastSystem = impacts;
+    lastType = type;
 
-    if (!theme[sys]?.incomplete) {
+    if (!theme[impacts]?.incomplete) {
       if (sameType && sameSystem) {
-        md += `- ${title} (#${num})\n`;
+        md += `- ${title} (#${pr_number})\n`;
       }
       if (!sameType && sameSystem) {
-        md += `### ${typIcon} ${upCase(typ)}\n`;
-        md += `- ${title} (#${num})\n`;
+        md += `### ${typIcon} ${capitalize(type)}\n`;
+        md += `- ${title} (#${pr_number})\n`;
       }
       if (!sameSystem || (!sameSystem && !sameType)) {
         // the first item from this group, let's print a title and the first type
-        if (theme[sys]) {
-          md += `## [${theme[sys].longName}](${theme[sys].urlNpm}) [${versions[sys]}]\n`;
+        if (theme[impacts]) {
+          md += `## [${theme[impacts].longName}](${theme[impacts].urlNpm}) [${versions[impacts]}]\n`;
         } else {
           // the documentation site url is not listed in themes
           // and needs to be handled outside that, any outliers
           // will receive a link to our github repo
           const sysUrl =
-            sys === 'documentation'
+            impacts === 'documentation'
               ? 'https://design.cms.gov'
               : 'https://github.com/CMSgov/design-system';
-          const sysName = sys.charAt(0).toUpperCase() + sys.slice(1);
+          const sysName = impacts.charAt(0).toUpperCase() + impacts.slice(1);
           md += `## [${sysName}](${sysUrl})\n`;
         }
-        if (theme[sys] && sys !== 'core') {
+        if (theme[impacts] && impacts !== 'core') {
           md += 'All changes from the core design system and...\n';
         }
-        md += `### ${typIcon} ${upCase(typ)}\n`;
-        md += `- ${title} (#${num})\n`;
+        md += `### ${typIcon} ${capitalize(type)}\n`;
+        md += `- ${title} (#${pr_number})\n`;
       }
     }
   });
