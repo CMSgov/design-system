@@ -244,10 +244,12 @@ export const Autocomplete = (props: AutocompleteProps) => {
       inputId: id,
       labelId,
       menuId,
-      onInputValueChange: (changes: UseComboboxStateChangeOptions<any>) => {
-        // Map to old API where the first parameter is input value
-        onInputValueChange(changes.inputValue, changes);
-      },
+      onInputValueChange: onInputValueChange
+        ? (changes: UseComboboxStateChangeOptions<any>) => {
+            // Map to old API where the first parameter is input value
+            onInputValueChange(changes.inputValue, changes);
+          }
+        : undefined,
       ...autocompleteProps,
     });
 

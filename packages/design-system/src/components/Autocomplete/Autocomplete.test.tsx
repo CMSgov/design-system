@@ -156,14 +156,9 @@ describe('Autocomplete', () => {
   });
 
   describe('Downshift integration', () => {
-    const props = {
-      items: [{ id: 'kRf6c2fY', name: 'Cook County, IL' }],
-      children: <TextField label="autocomplete" name="autocomplete_field" />,
-    };
-
     it('Should expand the listbox when keys are pressed', () => {
-      render(<Autocomplete {...props} />);
-      const autocompleteField = screen.getByLabelText('autocomplete');
+      makeAutocomplete();
+      const autocompleteField = screen.getByRole('combobox');
       userEvent.click(autocompleteField);
       userEvent.type(autocompleteField, 'c');
 
@@ -171,8 +166,8 @@ describe('Autocomplete', () => {
     });
 
     it('Should set the input value correctly when a listbox selection is clicked', () => {
-      render(<Autocomplete {...props} />);
-      const autocompleteField = screen.getByLabelText('autocomplete') as HTMLInputElement;
+      makeAutocomplete();
+      const autocompleteField = screen.getByRole('combobox') as HTMLInputElement;
       userEvent.click(autocompleteField);
       userEvent.type(autocompleteField, 'c');
 
@@ -183,8 +178,8 @@ describe('Autocomplete', () => {
     });
 
     it('Should set the input value to empty when Clear search is clicked', () => {
-      render(<Autocomplete {...props} />);
-      const autocompleteField = screen.getByLabelText('autocomplete') as HTMLInputElement;
+      makeAutocomplete();
+      const autocompleteField = screen.getByRole('combobox') as HTMLInputElement;
       userEvent.click(autocompleteField);
       userEvent.type(autocompleteField, 'c');
 
@@ -198,8 +193,8 @@ describe('Autocomplete', () => {
     });
 
     it('Should select list items by keyboard', () => {
-      render(<Autocomplete {...props} />);
-      const autocompleteField = screen.getByLabelText('autocomplete') as HTMLInputElement;
+      makeAutocomplete();
+      const autocompleteField = screen.getByRole('combobox') as HTMLInputElement;
       userEvent.click(autocompleteField);
       userEvent.type(autocompleteField, 'c');
       userEvent.type(autocompleteField, '{arrowdown}');
@@ -209,8 +204,8 @@ describe('Autocomplete', () => {
     });
 
     it('Should clear the input value by keyboard', () => {
-      render(<Autocomplete {...props} />);
-      const autocompleteField = screen.getByLabelText('autocomplete') as HTMLInputElement;
+      makeAutocomplete();
+      const autocompleteField = screen.getByRole('combobox') as HTMLInputElement;
       autocompleteField.focus();
       userEvent.click(autocompleteField);
       userEvent.type(autocompleteField, 'c');
@@ -228,20 +223,19 @@ describe('Autocomplete', () => {
     });
 
     it('Closes the listbox when ESC is pressed', () => {
-      render(<Autocomplete {...props} />);
-      const autocompleteField = screen.getByLabelText('autocomplete') as HTMLInputElement;
+      const { container } = makeAutocomplete();
+      const autocompleteField = screen.getByRole('combobox') as HTMLInputElement;
       userEvent.click(autocompleteField);
       userEvent.type(autocompleteField, 'c');
 
-      let listboxEl = screen.queryByRole('listbox');
-      expect(listboxEl).toBeTruthy();
+      const menuContainer = container.querySelector('.ds-c-autocomplete__list');
+      expect(menuContainer).not.toHaveClass('ds-u-display--none');
 
       expect(autocompleteField.value).toEqual('c');
 
       userEvent.type(autocompleteField, '{esc}');
 
-      listboxEl = screen.queryByRole('listbox');
-      expect(listboxEl).toBeNull();
+      expect(menuContainer).toHaveClass('ds-u-display--none');
       expect(autocompleteField.value).toEqual('');
     });
   });
