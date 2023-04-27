@@ -205,9 +205,11 @@ export const Autocomplete = (props: AutocompleteProps) => {
     // the keyboard.
     const resultCount = items.filter((item) => item.isResult !== false).length;
     if (items.length !== resultCount) {
-      const getA11yStatusMessage =
+      const originalGetA11yStatusMessage =
         autocompleteProps.getA11yStatusMessage ??
         ((Downshift as any).defaultProps as DownshiftProps<any>).getA11yStatusMessage;
+
+      // Replace the getA11yStatusMessage function with one that modifies the result count
       autocompleteProps.getA11yStatusMessage = (
         args: A11yStatusMessageOptions<AutocompleteItems>
       ) => {
@@ -219,7 +221,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
           // currently focused list item changes.
           newArgs.previousResultCount = newArgs.resultCount;
         }
-        return getA11yStatusMessage(newArgs);
+        return originalGetA11yStatusMessage(newArgs);
       };
     }
   }
@@ -281,17 +283,13 @@ export const Autocomplete = (props: AutocompleteProps) => {
       // Add errorMessageClassName to fix the styles for bottom placed errors
       const bottomError =
         (child.props.errorPlacement === 'bottom' || errorPlacementDefault() === 'bottom') &&
-        child.props.errorMessage;
+        child.props.errorMessage != null;
 
-      const errorMessageClassName = bottomError
-        ? classNames(
-            'ds-c-autocomplete__error-message',
-            {
-              'ds-c-autocomplete__error-message--clear-btn': clearSearchButton,
-            },
-            child.props.errorMessageClassName
-          )
-        : child.props.errorMessageClassName;
+      const errorMessageClassName = classNames(
+        child.props.errorMessageClassName,
+        bottomError && 'ds-c-autocomplete__error-message',
+        bottomError && clearSearchButton && 'ds-c-autocomplete__error-message--clear-btn'
+      );
 
       const propOverrides = getInputProps({
         autoComplete: autoCompleteLabel,
