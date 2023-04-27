@@ -1,4 +1,4 @@
-import Downshift, { DownshiftState, StateChangeOptions } from 'downshift';
+import { UseComboboxState, UseComboboxStateChangeOptions, useCombobox } from 'downshift';
 
 /**
  * For some use cases of the Autocomplete component, we do not want the input to
@@ -7,13 +7,11 @@ import Downshift, { DownshiftState, StateChangeOptions } from 'downshift';
  * state reducer keeps that input value rather than clearing it.
  */
 export default function keepInputDownshiftStateReducer(
-  state: DownshiftState<any>,
-  changes: StateChangeOptions<any>
+  state: UseComboboxState<any>,
+  changes: UseComboboxStateChangeOptions<any>
 ) {
   switch (changes.type) {
-    case Downshift.stateChangeTypes.touchEnd:
-    case Downshift.stateChangeTypes.blurInput:
-    case Downshift.stateChangeTypes.mouseUp:
+    case useCombobox.stateChangeTypes.InputBlur:
       return {
         inputValue: state.inputValue,
         isOpen: false,
@@ -21,7 +19,7 @@ export default function keepInputDownshiftStateReducer(
     // Clear input when `esc` is pressed
     // Default behavior to reselect the last selected item, but that doesn't
     // trigger the validations for the change events
-    case Downshift.stateChangeTypes.keyDownEscape:
+    case useCombobox.stateChangeTypes.InputKeyDownEscape:
       return {
         inputValue: '',
         isOpen: false,

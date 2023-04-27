@@ -14,7 +14,13 @@
  * an unacceptable regression of the user experience.
  */
 
-import Downshift, { A11yStatusMessageOptions, DownshiftProps, useCombobox } from 'downshift';
+import Downshift, {
+  A11yStatusMessageOptions,
+  DownshiftProps,
+  UseComboboxProps,
+  UseComboboxStateChangeOptions,
+  useCombobox,
+} from 'downshift';
 import Button from '../Button/Button';
 import React, { useRef } from 'react';
 import TextField from '../TextField/TextField';
@@ -58,9 +64,10 @@ type PropsNotPassedToDownshift =
   | 'children'
   | 'className'
   | 'clearInputOnBlur'
-  | 'clearSearchButton';
+  | 'clearSearchButton'
+  | 'onInputValueChange';
 
-export interface AutocompleteProps extends Omit<DownshiftProps<any>, PropsNotPassedToDownshift> {
+export interface AutocompleteProps extends Omit<UseComboboxProps<any>, PropsNotPassedToDownshift> {
   /**
    * Screen reader-specific label for the Clear search `<button>`. Intended to provide a longer, more descriptive explanation of the button's behavior.
    */
@@ -109,7 +116,7 @@ export interface AutocompleteProps extends Omit<DownshiftProps<any>, PropsNotPas
   /**
    * Customize the default status messages announced to screen reader users via aria-live when autocomplete results are populated. [Read more on downshift docs.](https://github.com/paypal/downshift#geta11ystatusmessage)
    */
-  getA11yStatusMessage?: DownshiftProps<any>['getA11yStatusMessage'];
+  getA11yStatusMessage?: UseComboboxProps<any>['getA11yStatusMessage'];
   /**
    * Access a reference to the child `TextField`'s `input` element
    */
@@ -117,7 +124,7 @@ export interface AutocompleteProps extends Omit<DownshiftProps<any>, PropsNotPas
   /**
    * Used to determine the string value for the selected item (which is used to compute the `inputValue`). [Read more on downshift docs.](https://github.com/paypal/downshift#itemtostring)
    */
-  itemToString?: DownshiftProps<any>['itemToString'];
+  itemToString?: UseComboboxProps<any>['itemToString'];
   /**
    * Array of objects used to populate the suggestion list that appears below the input as users type. This array of objects is intended for an async data callback, and should conform to the prescribed shape to avoid errors.
    */
@@ -149,7 +156,10 @@ export interface AutocompleteProps extends Omit<DownshiftProps<any>, PropsNotPas
   /**
    * Called when the child `TextField` value changes. Returns a String `inputValue`. [Read more on downshift docs.](https://github.com/downshift-js/downshift#oninputvaluechange)
    */
-  onInputValueChange?: DownshiftProps<any>['onInputValueChange'];
+  onInputValueChange?: (
+    inputValue: string,
+    stateAndHelpers: UseComboboxStateChangeOptions<any>
+  ) => void;
 }
 
 /**
@@ -227,20 +237,23 @@ export const Autocomplete = (props: AutocompleteProps) => {
     }
   }
 
-  const { clearSelection, isOpen, getMenuProps, getInputProps, highlightedIndex, getItemProps } =
+  const { isOpen, getMenuProps, getInputProps, getItemProps, highlightedIndex, selectItem } =
     useCombobox({
       items,
       itemToString,
       inputId: id,
       labelId,
       menuId,
-      onInputValueChange,
+      onInputValueChange: (changes: UseComboboxStateChangeOptions<any>) => {
+        // Map to old API where the first parameter is input value
+        onInputValueChange(changes.inputValue, changes);
+      },
       ...autocompleteProps,
     });
 
   function renderItems() {
     // If we have results, create a mapped list
-    if (items.length) {
+    if (items?.length) {
       return items.map((item, index) => (
         <li
           aria-selected={highlightedIndex === index}
@@ -296,10 +309,8 @@ export const Autocomplete = (props: AutocompleteProps) => {
       const propOverrides = getInputProps({
         autoComplete: autoCompleteLabel,
         autoFocus: autoFocus || focusTrigger,
-        errorMessageClassName,
         id,
         ref: inputRef,
-        labelId,
         onBlur: child.props.onBlur,
         onChange: child.props.onChange,
         onKeyDown: child.props.onKeyDown,
@@ -309,6 +320,11 @@ export const Autocomplete = (props: AutocompleteProps) => {
       // the TextField component.
       propOverrides.inputRef = propOverrides.ref;
       delete propOverrides.ref;
+
+      // TypeScript doesn't want us to pass these to getInputProps because they're unknown
+      // to Downshift. They're part of our TextField prop definitions.
+      propOverrides.errorMessageClassName = errorMessageClassName;
+      propOverrides.labelId = labelId;
 
       return React.cloneElement(child, propOverrides);
     });
@@ -345,7 +361,10 @@ export const Autocomplete = (props: AutocompleteProps) => {
         <Button
           aria-label={ariaClearLabel ?? t('autocomplete.ariaClearLabel')}
           className="ds-u-padding-right--0 ds-c-autocomplete__clear-btn"
-          onClick={clearSelection}
+          onClick={() => {
+            // How they clear selection in the docs
+            selectItem(null);
+          }}
           size="small"
           variation="ghost"
         >
