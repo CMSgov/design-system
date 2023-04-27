@@ -165,10 +165,11 @@ function isTextField(child: React.ReactElement): boolean {
 }
 
 export const Autocomplete = (props: AutocompleteProps) => {
-  const id = useRef(props.id ?? uniqueId('autocomplete_')).current;
-  const labelId = useRef(props.labelId ?? uniqueId('autocomplete_label_')).current;
-  const menuContainerId = useRef(uniqueId('autocomplete_owned_container_')).current;
-  const menuHeadingId = useRef(uniqueId('autocomplete_header_')).current;
+  const id = useRef(props.id ?? uniqueId('autocomplete__input--')).current;
+  const labelId = useRef(props.labelId ?? uniqueId('autocomplete__label--')).current;
+  const menuId = useRef(uniqueId('autocomplete__menu--')).current;
+  const menuContainerId = useRef(uniqueId('autocomplete__menu-container--')).current;
+  const menuHeadingId = useRef(uniqueId('autocomplete__header--')).current;
 
   const {
     ariaClearLabel,
@@ -232,6 +233,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
       itemToString,
       inputId: id,
       labelId,
+      menuId,
       onInputValueChange,
       ...autocompleteProps,
     });
