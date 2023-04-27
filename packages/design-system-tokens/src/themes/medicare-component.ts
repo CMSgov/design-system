@@ -256,6 +256,7 @@ export const components: AnyTokenValues = {
     '__border-color--disabled':                   t.color['gray-light'],
     '__border-color--error':                      t.color['gray'],
     '__border-color--error--inverse':             t.color['white'],
+    // Medicare is the only theme where the border color is different on hover
     '__border-color--hover':                      t.color['secondary'],
     '__border-color--inverse':                    t.color['white'],
     '__border-color--left':                       t.color['primary'],
@@ -269,13 +270,16 @@ export const components: AnyTokenValues = {
     '__size--small':                              '20px',
     '__size-radio':                               t.spacer['2'],
     '__size-radio--small':                        '12px',
+    // Medicare is the only theme with a translateY token
     '__translateY':                               '0.125em',
     '-label__color--disabled':                    t.color['muted'],
     '-label__color--disabled--inverse':           t.color['muted-inverse'],
+    // Medicare is the only theme with gap tokens
     '-wrapper__gap':                              '1rem',
     '-wrapper__gap--small':                       '0.75rem',
   },
 
+  // Medicare is the only theme with datefield tokens
   'datefield': {
     '-separator__display':                       'none',
   },
@@ -332,6 +336,7 @@ export const components: AnyTokenValues = {
     '__max-width--medium':                        '12em',
     '-hint__color':                               t.color['muted'],
     '-hint__color--inverse':                      t.color['muted-inverse'],
+    // Medicare is the only theme with a custom font-size token for hint messages
     '-hint__font-size':                           '14px',
     '-error__color':                              t.color['error'],
     '-error__color--inverse':                     t.color['error-lighter'],
@@ -421,6 +426,7 @@ export const components: AnyTokenValues = {
     '__line-height':                              '1.3',
     '__background-color--disabled':               t.color['gray-lighter'],
     '__border-width':                             '2px',
+    // Medicare is the only theme that has a custom width token for its borders on disabled fields
     '__border-width--disabled':                   '1px',
     '__border-width--error':                      '3px',
     '__border-width--success':                    '3px',
@@ -434,6 +440,7 @@ export const components: AnyTokenValues = {
     '__divider-color':                            t.color['gray-light'],
     '__padding':                                  t.spacer['2'],
     '__border-radius':                            '3px',
+    // `-currency-icon__` prefixed tokens are only available in the Medicare theme
     '-currency-icon__line-height':               '1',
     '-currency-icon__spacing':                   t.spacer['4'],
   },
