@@ -6,15 +6,11 @@ import userEvent from '@testing-library/user-event';
 
 function makeAutocomplete(customProps = {}) {
   const props = {
-    ...{
-      items: [{ id: 'kRf6c2fY', name: 'Cook County, IL' }],
-      children: <TextField label="autocomplete" name="autocomplete_field" />,
-    },
+    items: [{ id: 'kRf6c2fY', name: 'Cook County, IL' }],
+    children: <TextField label="autocomplete" name="autocomplete_field" />,
     ...customProps,
   };
-  const component = <Autocomplete {...props} />;
-
-  return render(component);
+  return render(<Autocomplete {...props} />);
 }
 
 describe('Autocomplete', () => {
@@ -92,15 +88,19 @@ describe('Autocomplete', () => {
 
   it('renders Autocomplete component without items', () => {
     makeAutocomplete({ items: undefined, isOpen: true });
-    expect(screen.queryByRole('list')).not.toBeInTheDocument();
+    expect(screen.queryByRole('listbox').children.length).toEqual(0);
   });
 
-  it('only renders expected elements', () => {
-    makeAutocomplete();
+  it('renders Autocomplete component no results', () => {
+    makeAutocomplete({ items: [], isOpen: true });
+    expect(screen.queryByRole('listbox').children.length).toEqual(1);
+    expect(screen.queryByRole('option')).toHaveTextContent('No results');
+  });
 
-    expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
-    expect(screen.queryByRole('option')).not.toBeInTheDocument();
-    expect(screen.getByRole('button')).toBeInTheDocument();
+  it('shows the menu when open', () => {
+    const { container } = makeAutocomplete({ isOpen: true });
+    const child = container.querySelector('.ds-c-autocomplete__list');
+    expect(child).not.toHaveClass('ds-u-display--none');
   });
 
   it('does not render a clear search button when clearSearchButton is set to false', () => {

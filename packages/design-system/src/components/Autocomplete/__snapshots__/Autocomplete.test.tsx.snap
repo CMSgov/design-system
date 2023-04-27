@@ -9,8 +9,8 @@ exports[`Autocomplete renders Autocomplete component 1`] = `
   >
     <label
       class="ds-c-label"
-      for="autocomplete_1"
-      id="autocomplete_label_2"
+      for="autocomplete__input--1"
+      id="autocomplete__label--2"
     >
       <span
         class=""
@@ -19,19 +19,41 @@ exports[`Autocomplete renders Autocomplete component 1`] = `
       </span>
     </label>
     <input
+      aria-activedescendant=""
       aria-autocomplete="list"
-      aria-controls="autocomplete_owned_listbox_3"
+      aria-controls="autocomplete__menu--3"
       aria-expanded="false"
       aria-invalid="false"
+      aria-labelledby="autocomplete__label--2"
       autocomplete="off"
       class="ds-c-field"
-      id="autocomplete_1"
-      labelid="autocomplete_label_2"
+      id="autocomplete__input--1"
+      labelid="autocomplete__label--2"
       name="autocomplete_field"
       role="combobox"
       type="text"
       value=""
     />
+  </div>
+  <div
+    class="ds-c-autocomplete__list ds-u-display--none"
+    id="autocomplete__menu-container--4"
+  >
+    <ul
+      aria-labelledby="autocomplete__label--2"
+      class="ds-c-list--bare"
+      id="autocomplete__menu--3"
+      role="listbox"
+    >
+      <li
+        aria-selected="false"
+        class="ds-c-autocomplete__list-item"
+        id="downshift-0-item-0"
+        role="option"
+      >
+        Cook County, IL
+      </li>
+    </ul>
   </div>
   <button
     aria-label="Clear search to try again"
@@ -53,8 +75,8 @@ exports[`Autocomplete renders a snapshot 1`] = `
     >
       <label
         class="ds-c-label"
-        for="autocomplete_55"
-        id="autocomplete_label_56"
+        for="autocomplete__input--61"
+        id="autocomplete__label--62"
       >
         <span
           class=""
@@ -63,19 +85,41 @@ exports[`Autocomplete renders a snapshot 1`] = `
         </span>
       </label>
       <input
+        aria-activedescendant=""
         aria-autocomplete="list"
-        aria-controls="autocomplete_owned_listbox_57"
+        aria-controls="autocomplete__menu--63"
         aria-expanded="false"
         aria-invalid="false"
+        aria-labelledby="autocomplete__label--62"
         autocomplete="off"
         class="ds-c-field"
-        id="autocomplete_55"
-        labelid="autocomplete_label_56"
+        id="autocomplete__input--61"
+        labelid="autocomplete__label--62"
         name="autocomplete_field"
         role="combobox"
         type="text"
         value=""
       />
+    </div>
+    <div
+      class="ds-c-autocomplete__list ds-u-display--none"
+      id="autocomplete__menu-container--64"
+    >
+      <ul
+        aria-labelledby="autocomplete__label--62"
+        class="ds-c-list--bare"
+        id="autocomplete__menu--63"
+        role="listbox"
+      >
+        <li
+          aria-selected="false"
+          class="ds-c-autocomplete__list-item"
+          id="downshift-10-item-0"
+          role="option"
+        >
+          Cook County, IL
+        </li>
+      </ul>
     </div>
     <button
       aria-label="Clear search to try again"
@@ -111,8 +155,9 @@ Array [
 
 exports[`Autocomplete renders items with children property 1`] = `
 <ul
+  aria-labelledby="autocomplete__label--14"
   class="ds-c-list--bare"
-  id="autocomplete_owned_listbox_15"
+  id="autocomplete__menu--15"
   role="listbox"
 >
   <li

@@ -239,7 +239,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
 
   const { isOpen, getMenuProps, getInputProps, getItemProps, highlightedIndex, selectItem } =
     useCombobox({
-      items,
+      items: items ?? [],
       itemToString,
       inputId: id,
       labelId,
@@ -278,12 +278,16 @@ export const Autocomplete = (props: AutocompleteProps) => {
       );
     }
 
-    // If we have no results, show the non-selected message
-    return (
-      <li aria-selected="false" className="ds-c-autocomplete__list-item--message" role="option">
-        {noResultsMessage ?? t('autocomplete.noResultsMessage')}
-      </li>
-    );
+    // If we have no results (empty array), show the non-selected message
+    if (items) {
+      return (
+        <li aria-selected="false" className="ds-c-autocomplete__list-item--message" role="option">
+          {noResultsMessage ?? t('autocomplete.noResultsMessage')}
+        </li>
+      );
+    }
+
+    return null;
   }
 
   function renderChildren(): React.ReactNode[] {
