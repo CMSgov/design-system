@@ -1,22 +1,8 @@
 @use '../layout' as *;
 
 .ds-c-field {
-  border-color: var(--text-input__border-color);
-
-  color: var(--text-input__color);
-  font-family: var(--font-family-rubik);
-  font-size: var(--font-size-md);
-  padding: $spacer-2;
-  &:disabled {
-    border: solid 1px var(--text-input__border-color--disabled);
-  }
-
   &::placeholder {
     color: var(--color-gray-dark);
-  }
-
-  &--error {
-    border-color: var(--text-input__border-color--error);
   }
 }
 
@@ -28,9 +14,6 @@ select.ds-c-field {
 }
 
 .ds-c-label {
-  font-family: var(--font-family-rubik);
-  font-size: var(--font-size-md);
-
   span:first-child {
     font-family: var(--font-family-montserrat);
     font-size: var(--font-size-sm);
@@ -68,26 +51,4 @@ legend[id^='datefield_label'] {
       text-transform: none;
     }
   }
-
-  > .ds-c-field__hint:not(.ds-u-color--error) {
-    color: var(--form-label__color--not-error);
-  }
-}
-
-.ds-c-field__hint {
-  font-family: var(--font-family-rubik);
-  font-size: var(--font-size-sm);
-}
-
-.ds-c-datefield__separator {
-  display: none;
-}
-
-// Alignment of $ icon for the currency field
-.ds-c-field--currency {
-  padding-left: $spacer-3;
-}
-
-.ds-c-field__before--currency {
-  padding-top: 7px;
 }
