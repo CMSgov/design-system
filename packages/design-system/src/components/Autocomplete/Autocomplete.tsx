@@ -14,13 +14,7 @@
  * an unacceptable regression of the user experience.
  */
 
-import Downshift, {
-  A11yStatusMessageOptions,
-  DownshiftProps,
-  UseComboboxProps,
-  UseComboboxStateChangeOptions,
-  useCombobox,
-} from 'downshift';
+import { UseComboboxProps, UseComboboxStateChangeOptions, useCombobox } from 'downshift';
 import Button from '../Button/Button';
 import React, { useRef } from 'react';
 import TextField from '../TextField/TextField';
@@ -28,6 +22,7 @@ import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
 import { errorPlacementDefault } from '../flags';
 import { t } from '../i18n';
+import createFilteredA11yStatusMessageFn from './createFilteredA11yStatusMessageFn';
 
 export interface AutocompleteItem {
   /**
@@ -184,37 +179,9 @@ export const Autocomplete = (props: AutocompleteProps) => {
     loadingMessage,
     noResultsMessage,
     onInputValueChange,
+    getA11yStatusMessage,
     ...autocompleteProps
   } = props;
-
-  if (items) {
-    // We allow items that aren't technically results to be rendered as items in the list, such as
-    // a button for viewing all results, but these non-result items should not be counted in the
-    // accessibility messages as results. It is not enough to set downshift's `itemCount` property
-    // because it will actually make any remaining items past the `itemCount` unselectable with
-    // the keyboard.
-    const resultCount = items.filter((item) => item.isResult !== false).length;
-    if (items.length !== resultCount) {
-      const originalGetA11yStatusMessage =
-        autocompleteProps.getA11yStatusMessage ??
-        ((Downshift as any).defaultProps as DownshiftProps<any>).getA11yStatusMessage;
-
-      // Replace the getA11yStatusMessage function with one that modifies the result count
-      autocompleteProps.getA11yStatusMessage = (
-        args: A11yStatusMessageOptions<AutocompleteItem>
-      ) => {
-        const newArgs = { ...args, resultCount };
-        if (args.previousResultCount === args.resultCount) {
-          // Since we are modifying the resultCount, we want to avoid a case where the resultCount
-          // doesn't match the previousResultCount when it naturally would. If there's an artificial
-          // mismatch between these two values, the result count will be announced each time the
-          // currently focused list item changes.
-          newArgs.previousResultCount = newArgs.resultCount;
-        }
-        return originalGetA11yStatusMessage(newArgs);
-      };
-    }
-  }
 
   const { isOpen, getMenuProps, getInputProps, getItemProps, highlightedIndex, selectItem } =
     useCombobox({
@@ -229,6 +196,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
             onInputValueChange(changes.inputValue, changes);
           }
         : undefined,
+      getA11yStatusMessage: createFilteredA11yStatusMessageFn(getA11yStatusMessage, items),
       ...autocompleteProps,
     });
 
