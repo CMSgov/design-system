@@ -102,6 +102,8 @@ export function useFormLabel<T extends UseFormLabelProps>(props: T) {
     label,
     labelClassName,
     labelComponent,
+    // Throw away this value and don't pass it to `fieldProps`
+    labelId: _labelId,
     errorMessage,
     errorMessageClassName,
     errorPlacement = errorPlacementDefault(),
