@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DrawerManager renders a dialog 1`] = `
+<dialog
+  class="ds-c-drawer"
+  open=""
+  role="dialog"
+>
+  <div
+    aria-labelledby="drawer_5"
+    class="ds-c-drawer__window"
+    tabindex="-1"
+  >
+    <div
+      class="ds-c-drawer__header"
+    >
+      <h3
+        class="ds-c-drawer__header-heading"
+        id="drawer_5"
+      >
+        drawer one
+      </h3>
+      <button
+        aria-label="Close help drawer"
+        class="ds-c-button ds-c-button--small ds-c-drawer__close-button"
+        type="button"
+      >
+        Close
+      </button>
+    </div>
+    <div
+      class="ds-c-drawer__body"
+      tabindex="0"
+    >
+      A drawer for 
+      drawer one
+    </div>
+  </div>
+</dialog>
+`;
