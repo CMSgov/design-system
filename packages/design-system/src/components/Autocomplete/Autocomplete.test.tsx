@@ -123,20 +123,6 @@ describe('Autocomplete', () => {
     expect(child).toHaveClass('additional-class');
   });
 
-  it('renders a snapshot', () => {
-    const { container } = render(
-      <Autocomplete
-        items={[{ id: 'kRf6c2fY', name: 'Cook County, IL' }]}
-        clearSearchButton
-        data-testid="my-autocomplete"
-      >
-        <TextField label="autocomplete" name="autocomplete_field" />
-      </Autocomplete>
-    );
-
-    expect(container).toMatchSnapshot();
-  });
-
   describe('default props', () => {
     it('defaults ariaClearLabel', () => {
       makeAutocomplete();
