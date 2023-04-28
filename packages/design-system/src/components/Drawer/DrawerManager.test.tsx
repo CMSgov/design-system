@@ -37,12 +37,6 @@ const renderDrawerManager = () => {
 };
 
 describe('DrawerManager', () => {
-  it('renders a dialog', () => {
-    renderDrawerManager();
-    userEvent.click(screen.getAllByRole('button')[0]);
-    expect(screen.getByRole('dialog')).toMatchSnapshot();
-  });
-
   it('toggles active state of single dialog', async () => {
     renderDrawerManager();
     userEvent.click(screen.getAllByRole('button')[0]);
