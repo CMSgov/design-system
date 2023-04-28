@@ -2,7 +2,7 @@ import React from 'react';
 import Review from './Review';
 
 export default {
-  title: 'Patterns/Review',
+  title: 'Components/Review',
   component: Review,
   argTypes: {
     headingLevel: {

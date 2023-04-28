@@ -12,11 +12,18 @@
   // better aligns with the input value text
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
+
+  // Medicare needs special layout adjustments for the currency icon within this field
+  // If theme doesn't have a value for this token, use the value inherited by its parent
+  line-height: var(--text-input-currency-icon__line-height, inherit);
   // Adjust to better align icon with value's baseline
   padding-block-start: 1px;
 }
 
 .ds-c-field--currency {
   // Normal padding + space for the icon + normal padding
-  padding-inline-start: 20px;
+
+  // Medicare needs special spacing adjustments for the currency icon within this field
+  // If theme doesn't have a value for this token, use the default value of 20px
+  padding-inline-start: var(--text-input-currency-icon__spacing, 20px);
 }
