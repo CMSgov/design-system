@@ -8,22 +8,15 @@ import { UseComboboxState, UseComboboxStateChangeOptions, useCombobox } from 'do
  */
 export default function keepInputDownshiftStateReducer(
   state: UseComboboxState<any>,
-  changes: UseComboboxStateChangeOptions<any>
+  actionAndChanges: UseComboboxStateChangeOptions<any>
 ) {
-  switch (changes.type) {
+  const { changes, type } = actionAndChanges;
+  switch (type) {
     case useCombobox.stateChangeTypes.InputBlur:
       return {
+        ...changes,
         inputValue: state.inputValue,
         isOpen: false,
-      };
-    // Clear input when `esc` is pressed
-    // Default behavior to reselect the last selected item, but that doesn't
-    // trigger the validations for the change events
-    case useCombobox.stateChangeTypes.InputKeyDownEscape:
-      return {
-        inputValue: '',
-        isOpen: false,
-        selectedItem: null,
       };
     default:
       return changes;
