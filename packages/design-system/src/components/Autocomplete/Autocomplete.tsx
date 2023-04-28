@@ -25,7 +25,6 @@ import Button from '../Button/Button';
 import React, { useRef } from 'react';
 import TextField from '../TextField/TextField';
 import classNames from 'classnames';
-import keepInputDownshiftStateReducer from './keepInputDownshiftStateReducer';
 import uniqueId from 'lodash/uniqueId';
 import { errorPlacementDefault } from '../flags';
 import { t } from '../i18n';
@@ -63,7 +62,6 @@ type PropsNotPassedToDownshift =
   | 'loading'
   | 'children'
   | 'className'
-  | 'clearInputOnBlur'
   | 'clearSearchButton'
   | 'onInputValueChange';
 
@@ -85,10 +83,6 @@ export interface AutocompleteProps extends Omit<UseComboboxProps<any>, PropsNotP
    * Useful for adding utility classes.
    */
   className?: string;
-  /**
-   * When set to `false`, do not clear the input when the input element loses focus.
-   */
-  clearInputOnBlur?: boolean;
   /**
    * Text rendered on the page if `clearInput` prop is passed. Default is "Clear search".
    */
@@ -187,7 +181,6 @@ export const Autocomplete = (props: AutocompleteProps) => {
     autoFocus,
     children,
     className,
-    clearInputOnBlur,
     clearInputText,
     clearSearchButton,
     focusTrigger,
@@ -203,10 +196,6 @@ export const Autocomplete = (props: AutocompleteProps) => {
     onInputValueChange,
     ...autocompleteProps
   } = props;
-
-  if (clearInputOnBlur === false) {
-    autocompleteProps.stateReducer = keepInputDownshiftStateReducer;
-  }
 
   if (items) {
     // We allow items that aren't technically results to be rendered as items in the list, such as
@@ -384,7 +373,6 @@ export const Autocomplete = (props: AutocompleteProps) => {
 Autocomplete.defaultProps = {
   autoCompleteLabel: 'off',
   clearSearchButton: true,
-  clearInputOnBlur: true,
   itemToString: (item): string => (item ? item.name : ''),
 };
 
