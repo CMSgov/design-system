@@ -29,7 +29,7 @@ import uniqueId from 'lodash/uniqueId';
 import { errorPlacementDefault } from '../flags';
 import { t } from '../i18n';
 
-export interface AutocompleteItems {
+export interface AutocompleteItem {
   /**
    * Unique identifier for this item
    */
@@ -54,18 +54,8 @@ export interface AutocompleteItems {
   isResult?: boolean;
 }
 
-type PropsNotPassedToDownshift =
-  | 'ariaClearLabel'
-  | 'clearInputText'
-  | 'items'
-  | 'label'
-  | 'loading'
-  | 'children'
-  | 'className'
-  | 'clearSearchButton'
-  | 'onInputValueChange';
-
-export interface AutocompleteProps extends Omit<UseComboboxProps<any>, PropsNotPassedToDownshift> {
+export interface AutocompleteProps
+  extends Omit<UseComboboxProps<any>, 'items' | 'onInputValueChange'> {
   /**
    * Screen reader-specific label for the Clear search `<button>`. Intended to provide a longer, more descriptive explanation of the button's behavior.
    */
@@ -122,7 +112,7 @@ export interface AutocompleteProps extends Omit<UseComboboxProps<any>, PropsNotP
   /**
    * Array of objects used to populate the suggestion list that appears below the input as users type. This array of objects is intended for an async data callback, and should conform to the prescribed shape to avoid errors.
    */
-  items?: AutocompleteItems[];
+  items?: AutocompleteItem[];
   /**
    * Adds a heading to the top of the autocomplete list. This can be used to convey to the user that they're required to select an option from the autocomplete list.
    */
@@ -211,7 +201,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
 
       // Replace the getA11yStatusMessage function with one that modifies the result count
       autocompleteProps.getA11yStatusMessage = (
-        args: A11yStatusMessageOptions<AutocompleteItems>
+        args: A11yStatusMessageOptions<AutocompleteItem>
       ) => {
         const newArgs = { ...args, resultCount };
         if (args.previousResultCount === args.resultCount) {
