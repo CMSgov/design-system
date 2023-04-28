@@ -4,9 +4,11 @@ import TextField from '../TextField/TextField';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+const defaultItems = [{ id: 'kRf6c2fY', name: 'Cook County, IL' }];
+
 function makeAutocomplete(customProps = {}) {
   const props = {
-    items: [{ id: 'kRf6c2fY', name: 'Cook County, IL' }],
+    items: defaultItems,
     children: <TextField label="autocomplete" name="autocomplete_field" />,
     ...customProps,
   };
@@ -152,7 +154,8 @@ describe('Autocomplete', () => {
     });
 
     it('Should set the input value correctly when a listbox selection is clicked', () => {
-      makeAutocomplete();
+      const onChange = jest.fn();
+      makeAutocomplete({ onChange });
       const autocompleteField = screen.getByRole('combobox') as HTMLInputElement;
       userEvent.click(autocompleteField);
       userEvent.type(autocompleteField, 'c');
@@ -161,9 +164,13 @@ describe('Autocomplete', () => {
       userEvent.click(listboxItem);
 
       expect(autocompleteField.value).toBe('Cook County, IL');
+      expect(onChange).toHaveBeenCalledWith(
+        defaultItems[0],
+        expect.objectContaining({ inputValue: defaultItems[0].name })
+      );
     });
 
-    it('Should set the input value to empty when Clear search is clicked', () => {
+    it('Should set the input value to empty when "Clear search" is clicked', () => {
       makeAutocomplete();
       const autocompleteField = screen.getByRole('combobox') as HTMLInputElement;
       userEvent.click(autocompleteField);
@@ -178,8 +185,26 @@ describe('Autocomplete', () => {
       expect(autocompleteField.value).toBe('');
     });
 
+    it('Should call onChange with null item when "Clear search" is clicked', () => {
+      const onChange = jest.fn();
+      makeAutocomplete({ onChange });
+      const autocompleteField = screen.getByRole('combobox') as HTMLInputElement;
+      userEvent.click(autocompleteField);
+      userEvent.type(autocompleteField, 'c');
+
+      const listboxItem = screen.getByRole('option');
+      userEvent.click(listboxItem);
+
+      const clearButton = screen.getByText('Clear search');
+      userEvent.click(clearButton);
+
+      expect(autocompleteField.value).toBe('');
+      expect(onChange).toHaveBeenLastCalledWith(null, expect.objectContaining({ inputValue: '' }));
+    });
+
     it('Should select list items by keyboard', () => {
-      makeAutocomplete();
+      const onChange = jest.fn();
+      makeAutocomplete({ onChange });
       const autocompleteField = screen.getByRole('combobox') as HTMLInputElement;
       userEvent.click(autocompleteField);
       userEvent.type(autocompleteField, 'c');
@@ -187,6 +212,21 @@ describe('Autocomplete', () => {
       userEvent.type(autocompleteField, '{enter}');
 
       expect(autocompleteField.value).toBe('Cook County, IL');
+      expect(onChange).toHaveBeenCalledWith(
+        defaultItems[0],
+        expect.objectContaining({ inputValue: defaultItems[0].name })
+      );
+    });
+
+    it('Should not call onChange when an item was not selected', () => {
+      const onChange = jest.fn();
+      makeAutocomplete({ onChange });
+      const autocompleteField = screen.getByRole('combobox') as HTMLInputElement;
+      userEvent.click(autocompleteField);
+      userEvent.type(autocompleteField, 'c');
+      userEvent.type(autocompleteField, 'o');
+      userEvent.type(autocompleteField, '{enter}');
+      expect(onChange).not.toHaveBeenCalled();
     });
 
     it('Should clear the input value by keyboard', () => {

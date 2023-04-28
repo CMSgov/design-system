@@ -178,6 +178,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
     loading,
     loadingMessage,
     noResultsMessage,
+    onChange,
     onInputValueChange,
     getA11yStatusMessage,
     ...autocompleteProps
@@ -190,12 +191,18 @@ export const Autocomplete = (props: AutocompleteProps) => {
       inputId: id,
       labelId,
       menuId,
-      onInputValueChange: onInputValueChange
-        ? (changes: UseComboboxStateChangeOptions<any>) => {
-            // Map to old API where the first parameter is input value
-            onInputValueChange(changes.inputValue, changes);
-          }
-        : undefined,
+      onSelectedItemChange:
+        onChange &&
+        ((changes: UseComboboxStateChangeOptions<any>) => {
+          // Map to old API where the first parameter is input value
+          onChange(changes.selectedItem, changes);
+        }),
+      onInputValueChange:
+        onInputValueChange &&
+        ((changes: UseComboboxStateChangeOptions<any>) => {
+          // Map to old API where the first parameter is input value
+          onInputValueChange(changes.inputValue, changes);
+        }),
       getA11yStatusMessage: createFilteredA11yStatusMessageFn(getA11yStatusMessage, items),
       ...autocompleteProps,
     });
