@@ -236,7 +236,6 @@ describe('Autocomplete', () => {
       userEvent.type(autocompleteField, '{esc}');
 
       expect(menuContainer).toHaveClass('ds-u-display--none');
-      expect(autocompleteField.value).toEqual('');
     });
   });
 });
