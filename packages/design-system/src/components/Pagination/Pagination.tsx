@@ -272,7 +272,7 @@ function Pagination({
         }}
       />
 
-      <ul role="list">{pages}</ul>
+      <div className="ds-c-pagination__pages">{pages}</div>
 
       <Button
         variation="ghost"

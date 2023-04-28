@@ -18,12 +18,10 @@ exports[`Review renders review 1`] = `
       review text
     </div>
   </div>
-  <div>
-    <a
-      href="edit-href"
-    >
-      edit
-    </a>
-  </div>
+  <a
+    href="edit-href"
+  >
+    edit
+  </a>
 </div>
 `;

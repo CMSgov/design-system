@@ -1,9 +1,8 @@
 import React from 'react';
-import ReviewLink from './ReviewLink';
 import classNames from 'classnames';
 import { t } from '../i18n';
 
-export type ReviewHeadingLevel = '1' | '2' | '3' | '4' | '5';
+export type ReviewHeadingLevel = '1' | '2' | '3' | '4' | '5' | '6';
 
 export interface ReviewProps {
   /**
@@ -12,7 +11,7 @@ export interface ReviewProps {
   children: React.ReactNode;
   className?: string;
   /**
-   * Optional label to give screenreaders longer, more descriptive text to
+   * Optional label to give screen readers longer, more descriptive text to
    * explain the context of an edit link.
    */
   editAriaLabel?: string;
@@ -45,6 +44,12 @@ const getHeading = (heading, headingLevel) => {
 };
 
 export const Review = (props: ReviewProps) => {
+  const handleClick = (event): void => {
+    if (props.onEditClick) {
+      props.onEditClick(event, props.editHref);
+    }
+  };
+
   const classes = classNames('ds-c-review', props.className);
 
   return (
@@ -55,13 +60,9 @@ export const Review = (props: ReviewProps) => {
       </div>
       {props.editContent}
       {!props.editContent && props.editHref && (
-        <ReviewLink
-          onClick={props.onEditClick}
-          href={props.editHref}
-          ariaLabel={props.editAriaLabel}
-        >
+        <a onClick={handleClick} href={props.editHref} aria-label={props.editAriaLabel}>
           {props.editText ?? t('review.editText')}
-        </ReviewLink>
+        </a>
       )}
     </div>
   );
