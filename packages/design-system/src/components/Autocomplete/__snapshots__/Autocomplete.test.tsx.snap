@@ -28,7 +28,6 @@ exports[`Autocomplete renders Autocomplete component 1`] = `
       autocomplete="off"
       class="ds-c-field"
       id="autocomplete__input--1"
-      labelid="autocomplete__label--2"
       name="autocomplete_field"
       role="combobox"
       type="text"
