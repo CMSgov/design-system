@@ -35,6 +35,7 @@
       "require": "./dist/preact-components/cjs/web-components/index.js"
     },
     "./css/*": "./dist/css/*",
+    "./dist/*": "./dist/*",
     "./src/*": "./src/*"
   },
   "main": "dist/react-components/cjs/index.js",
