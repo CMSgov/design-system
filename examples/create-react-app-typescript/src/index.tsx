@@ -1,5 +1,5 @@
-import '@cmsgov/design-system/dist/css/index.css';
-import '@cmsgov/design-system/dist/css/core-theme.css';
+// import '@cmsgov/design-system/dist/css/index.css';
+// import '@cmsgov/design-system/dist/css/core-theme.css';
 import './styles/index.scss';
 import App from './components/App';
 import React from 'react';
