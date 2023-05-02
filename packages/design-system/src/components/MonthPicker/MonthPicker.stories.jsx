@@ -27,7 +27,6 @@ export default {
     hint: "Month Picker can receive optional help text, giving the user additional information of what's required.",
     inversed: false,
     errorMessage: 'Please meet form requirements.',
-    errorPlacement: 'top',
   },
 };
 
