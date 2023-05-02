@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external link dialog 1`] = `
+<dialog
+  class="ds-c-dialog"
+  open=""
+  role="dialog"
+  style="z-index: 100149; top: 384px;"
+>
+  <div
+    aria-labelledby="dialog-title_6"
+    role="document"
+    tabindex="-1"
+  >
+    <header
+      class="ds-c-dialog__header"
+    >
+      <h1
+        class="ds-h2"
+        id="dialog-title_6"
+      >
+        You are leaving bar.
+      </h1>
+      <button
+        aria-label="Close modal dialog"
+        class="ds-c-button ds-c-button--ghost ds-c-dialog__close"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="ds-c-icon ds-c-icon--close "
+          focusable="false"
+          id="icon-7"
+          viewBox="0 0 16 16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M14.647 11.213c.235.235.353.521.353.858 0 .337-.118.624-.353.859l-1.717 1.717a1.17 1.17 0 01-.86.354c-.336 0-.622-.118-.857-.354l-3.714-3.712-3.712 3.712A1.166 1.166 0 012.93 15c-.337 0-.622-.118-.859-.354L.353 12.93A1.165 1.165 0 010 12.07c0-.337.117-.623.353-.858L4.065 7.5.353 3.789A1.168 1.168 0 010 2.929c0-.336.117-.622.353-.857L2.07.353C2.307.118 2.592 0 2.93 0c.337 0 .623.118.858.353L7.5 4.065 11.213.353c.235-.235.521-.353.857-.353.337 0 .623.118.86.353l1.717 1.719c.235.235.353.521.353.857 0 .338-.118.623-.353.86L10.935 7.5l3.712 3.712z"
+            fill-rule="evenodd"
+          />
+        </svg>
+        
+      </button>
+    </header>
+    <main
+      class="ds-c-dialog__body"
+      role="main"
+    >
+      <div
+        id="dialog-content"
+      >
+        <p>
+          You are leaving 
+          bar
+           and connecting to a 3rd party site. Please click OK to continue or CANCEL to stay on this site.
+        </p>
+        <p>
+          <a
+            href="https://www.healthcare.gov/links-to-other-sites"
+          >
+            Learn more about links to third-party sites
+          </a>
+          .
+        </p>
+      </div>
+      <div
+        class="ds-c-dialog__actions"
+      >
+        <a
+          class="ds-c-button ds-c-button--solid"
+          href="foo"
+        >
+          OK
+        </a>
+        <button
+          class="ds-c-button ds-c-button--ghost"
+          type="button"
+        >
+          Cancel
+        </button>
+      </div>
+    </main>
+  </div>
+</dialog>
+`;
+
+exports[`ThirdPartyExternalLink renders external link 1`] = `
+<button
+  class="ds-c-button ds-c-button--ghost"
+  type="button"
+>
+  External site link
+  <svg
+    aria-hidden="false"
+    aria-labelledby="icon-1__title"
+    class="ds-c-icon ds-c-icon--external-link ds-u-margin-left--05"
+    focusable="false"
+    id="icon-1"
+    role="img"
+    viewBox="0 0 512 512"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <title
+      id="icon-1__title"
+    >
+      This link goes to an external site
+    </title>
+    <path
+      d="M497.6,0,334.4.17A14.4,14.4,0,0,0,320,14.57V47.88a14.4,14.4,0,0,0,14.69,14.4l73.63-2.72,2.06,2.06L131.52,340.49a12,12,0,0,0,0,17l23,23a12,12,0,0,0,17,0L450.38,101.62l2.06,2.06-2.72,73.63A14.4,14.4,0,0,0,464.12,192h33.31a14.4,14.4,0,0,0,14.4-14.4L512,14.4A14.4,14.4,0,0,0,497.6,0ZM432,288H416a16,16,0,0,0-16,16V458a6,6,0,0,1-6,6H54a6,6,0,0,1-6-6V118a6,6,0,0,1,6-6H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V304A16,16,0,0,0,432,288Z"
+    />
+  </svg>
+</button>
+`;
