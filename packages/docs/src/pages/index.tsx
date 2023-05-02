@@ -18,6 +18,7 @@ const IndexPage = ({ data, location }: MdxQuery) => {
       slug={slug}
       theme={theme}
       tableOfContentsData={data.mdx.tableOfContents?.items}
+      localSearchPages={data.localSearchPages}
     >
       <ContentRenderer data={data.mdx.body} theme={theme} />
     </Layout>
@@ -34,6 +35,10 @@ export const query = graphql`
       frontmatter {
         title
       }
+    }
+    localSearchPages {
+      store
+      index
     }
   }
 `;

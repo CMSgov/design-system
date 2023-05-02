@@ -80,6 +80,44 @@ const config: GatsbyConfig = {
         },
       },
     },
+    {
+      resolve: 'gatsby-plugin-local-search',
+      options: {
+        name: 'pages',
+        engine: 'flexsearch',
+        engineOptions: '',
+        query: `
+          {
+            allMdx (
+              filter: {fileAbsolutePath: {glob: "**/content/**/*"}}
+            ) {
+              edges {
+                node {
+                  id
+                  slug
+                  body
+                  frontmatter {
+                    title
+                    intro
+                  }
+                  rawBody
+                }
+              }
+            }
+          }
+          `,
+        ref: 'id',
+        index: ['title', 'body'],
+        store: ['id', 'path', 'title'],
+        normalizer: ({ data }) =>
+          data.allMdx.edges.map((n) => ({
+            id: n.node.id,
+            path: n.node.slug,
+            title: n.node.frontmatter.title,
+            body: n.node.rawBody,
+          })),
+      },
+    },
   ],
 };
 

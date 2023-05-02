@@ -20,6 +20,7 @@ const InfoPage = ({ data, location }: MdxQuery) => {
       slug={slug}
       theme={theme}
       tableOfContentsData={tableOfContents?.items}
+      localSearchPages={data.localSearchPages}
     >
       <ContentRenderer data={body} theme={theme} />
     </Layout>
@@ -52,6 +53,10 @@ export const query = graphql`
       slug
       body
       tableOfContents(maxDepth: 3)
+    }
+    localSearchPages {
+      store
+      index
     }
   }
 `;

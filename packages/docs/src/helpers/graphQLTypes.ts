@@ -17,6 +17,7 @@ export interface ComponentLinksInterface {
 export interface LocationInterface {
   pathname: string;
   search?: string;
+  origin?: string;
 }
 
 export interface FrontmatterInterface {
@@ -26,6 +27,17 @@ export interface FrontmatterInterface {
   healthcare?: ComponentLinksInterface;
   medicare?: ComponentLinksInterface;
   intro?: string;
+}
+
+export interface LocalSearchDataStore {
+  id: string;
+  path: string;
+  title: string;
+}
+
+export interface LocalSearchData {
+  store: Record<string, LocalSearchDataStore>[];
+  index: string;
 }
 
 /**
@@ -42,6 +54,7 @@ export interface MdxQuery {
         items: TableOfContentsItem[];
       };
     };
+    localSearchPages?: LocalSearchData;
   };
   location?: LocationInterface;
 }

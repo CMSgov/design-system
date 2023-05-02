@@ -60,6 +60,10 @@ export const query = graphql`
       body
       tableOfContents(maxDepth: 3)
     }
+    localSearchPages {
+      store
+      index
+    }
   }
 `;
 
