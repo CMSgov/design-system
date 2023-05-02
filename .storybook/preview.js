@@ -5,6 +5,7 @@ import {
   setButtonSendsAnalytics,
   setDialogSendsAnalytics,
   setHelpDrawerSendsAnalytics,
+  setErrorPlacementDefault,
 } from '../packages/design-system/src/components/flags';
 import { setHeaderSendsAnalytics } from '../packages/ds-healthcare-gov/src/components/flags';
 import { setLanguage } from '../packages/design-system/src/components/i18n';
@@ -124,6 +125,9 @@ const themeSettingDecorator = (Story, context) => {
 
   const themeCss = document.querySelector('link[title=themeCss]');
   themeCss.href = `${theme}-theme.css`;
+
+  // Child design system flag settings could be handled better in the future
+  setErrorPlacementDefault(theme === 'healthcare' ? 'bottom' : 'top');
 
   return <Story {...context} />;
 };
