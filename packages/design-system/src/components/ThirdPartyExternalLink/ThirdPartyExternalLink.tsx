@@ -11,6 +11,8 @@ interface ThirdPartyExternalLinkProps {
   children: string;
   /** Additional classes to be applied to the external link button. */
   className?: string;
+  /** Specify the URL User's should visit to learn more about your application's external link policy. */
+  learnMoreUrl?: string;
   /** Text informing the user where they are. This text will appear in both the dialog heading and body. */
   origin: string;
 }
@@ -19,6 +21,7 @@ const ThirdPartyExternalLink = ({
   href,
   children,
   className,
+  learnMoreUrl,
   origin,
 }: ThirdPartyExternalLinkProps) => {
   const [showDialog, setShowDialog] = useState(false);
@@ -52,15 +55,16 @@ const ThirdPartyExternalLink = ({
             or CANCEL to stay on this site.
           </p>
           <p>
-            <a href="https://www.healthcare.gov/links-to-other-sites">
-              Learn more about links to third-party sites
-            </a>
-            .
+            <a href={learnMoreUrl}>Learn more about links to third-party sites</a>.
           </p>
         </Dialog>
       )}
     </>
   );
+};
+
+ThirdPartyExternalLink.defaultProps = {
+  learnMoreUrl: '',
 };
 
 export default ThirdPartyExternalLink;
