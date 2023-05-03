@@ -50,13 +50,11 @@ exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external l
         id="dialog-content"
       >
         <p>
-          You are leaving 
-          bar
-           and connecting to a 3rd party site. Please click OK to continue or CANCEL to stay on this site.
+          You're about to connect to a third-party site. Select CONTINUE to proceed or CANCEL to stay on this site.
         </p>
         <p>
           <a
-            href="https://www.healthcare.gov/links-to-other-sites"
+            href=""
           >
             Learn more about links to third-party sites
           </a>
@@ -70,7 +68,7 @@ exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external l
           class="ds-c-button ds-c-button--solid"
           href="foo"
         >
-          OK
+          Continue
         </a>
         <button
           class="ds-c-button ds-c-button--ghost"

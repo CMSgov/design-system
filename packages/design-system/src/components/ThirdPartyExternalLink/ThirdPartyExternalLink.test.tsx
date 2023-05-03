@@ -46,12 +46,20 @@ describe('ThirdPartyExternalLink', () => {
       const dialog = screen.getByRole('dialog');
       expect(dialog).toMatchSnapshot();
     });
-    it('renders external link with custom href', () => {
+    it('renders custom URL in Learn More link', () => {
+      renderThirdPartyExternalLink({ learnMoreUrl: 'https://www.google.com/' });
+
+      userEvent.click(screen.getByRole('button'));
+
+      const learnMoreLink = screen.getByText('Learn more about links to third-party sites');
+      expect(learnMoreLink.getAttribute('href')).toBe('https://www.google.com/');
+    });
+    it('renders confirmation link with custom href', () => {
       renderThirdPartyExternalLink({ href: 'https://www.google.com/' });
 
       userEvent.click(screen.getByRole('button'));
 
-      const confirmButton = screen.getByText('OK');
+      const confirmButton = screen.getByText('Continue');
 
       expect(confirmButton.getAttribute('href')).toBe('https://www.google.com/');
     });
