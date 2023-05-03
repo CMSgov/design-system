@@ -4,7 +4,7 @@ exports[`useLabelMask renders the appropriate dom for a CURRENCY_MASK 1`] = `
 <DocumentFragment>
   <div
     class="ds-c-label-mask"
-    id="labelmask_11"
+    id="labelmask_9"
   >
     <span
       class=""
@@ -25,7 +25,7 @@ exports[`useLabelMask renders the appropriate dom for a PHONE_MASK 1`] = `
 <DocumentFragment>
   <div
     class="ds-c-label-mask"
-    id="labelmask_8"
+    id="labelmask_6"
   >
     <span
       class=""
@@ -46,7 +46,7 @@ exports[`useLabelMask renders the appropriate dom for a SSN_MASK 1`] = `
 <DocumentFragment>
   <div
     class="ds-c-label-mask"
-    id="labelmask_10"
+    id="labelmask_8"
   >
     <span
       class=""
@@ -67,7 +67,7 @@ exports[`useLabelMask renders the appropriate dom for a ZIP_MASK 1`] = `
 <DocumentFragment>
   <div
     class="ds-c-label-mask"
-    id="labelmask_9"
+    id="labelmask_7"
   >
     <span
       class=""
