@@ -82,7 +82,7 @@ describe('TextInput', function () {
 
   it('has a value', () => {
     const value = 'Yay';
-    renderInput({ value });
+    renderInput({ value, onChange: () => {} });
     expect(getInput().getAttribute('value')).toBe(value);
   });
 
