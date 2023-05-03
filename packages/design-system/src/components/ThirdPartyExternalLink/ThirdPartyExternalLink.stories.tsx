@@ -20,4 +20,5 @@ Default.args = {
   className: 'foo',
   href: 'https://www.google.com/',
   origin: 'CMS Design System',
+  learnMoreUrl: 'https://design.cms.gov/components/third-party-external-link/',
 };

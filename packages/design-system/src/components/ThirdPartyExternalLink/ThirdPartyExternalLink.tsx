@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Button } from '../Button';
 import { Dialog } from '../Dialog';
 import { ExternalLinkIcon } from '../Icons';
+import { t } from '../i18n';
 
 interface ThirdPartyExternalLinkProps {
   /** External link url. The destination. */
@@ -35,27 +36,24 @@ const ThirdPartyExternalLink = ({
       {showDialog && (
         <Dialog
           onExit={() => setShowDialog(false)}
-          heading={`You are leaving ${origin}.`}
+          heading={t('thirdPartyExternalLink.dialogHeading', { origin })}
           closeButtonText=""
           actions={[
             <Button variation="solid" key="external-link__confirm" href={href}>
-              OK
+              {t('thirdPartyExternalLink.confirmationButtonText')}
             </Button>,
             <Button
               variation="ghost"
               onClick={() => setShowDialog(false)}
               key="external-link__cancel"
             >
-              Cancel
+              {t('thirdPartyExternalLink.cancelButtonText')}
             </Button>,
           ]}
         >
+          <p>{t('thirdPartyExternalLink.dialogBody')}</p>
           <p>
-            You are leaving {origin} and connecting to a 3rd party site. Please click OK to continue
-            or CANCEL to stay on this site.
-          </p>
-          <p>
-            <a href={learnMoreUrl}>Learn more about links to third-party sites</a>.
+            <a href={learnMoreUrl}>{t('thirdPartyExternalLink.learnMoreText')}</a>.
           </p>
         </Dialog>
       )}
