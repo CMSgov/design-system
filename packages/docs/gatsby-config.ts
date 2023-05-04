@@ -95,26 +95,26 @@ const config: GatsbyConfig = {
                 node {
                   id
                   slug
-                  body
                   frontmatter {
                     title
-                    intro
                   }
                   rawBody
+                  excerpt
                 }
               }
             }
           }
           `,
         ref: 'id',
-        index: ['title', 'body'],
-        store: ['id', 'path', 'title'],
+        index: ['title', 'excerpt', 'body'],
+        store: ['path', 'title', 'body', 'excerpt'],
         normalizer: ({ data }) =>
           data.allMdx.edges.map((n) => ({
             id: n.node.id,
             path: n.node.slug,
             title: n.node.frontmatter.title,
             body: n.node.rawBody,
+            excerpt: n.node.excerpt,
           })),
       },
     },

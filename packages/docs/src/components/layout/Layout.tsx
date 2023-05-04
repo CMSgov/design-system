@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
 import Footer from './DocSiteFooter';
 import Navigation from './DocSiteNavigation';
 import PageHeader from './PageHeader';
@@ -10,12 +9,9 @@ import { SkipNav, UsaBanner } from '@cmsgov/design-system';
 import {
   LocationInterface,
   FrontmatterInterface,
-  LocalSearchData,
   TableOfContentsItem,
 } from '../../helpers/graphQLTypes';
 import { withPrefix } from 'gatsby';
-import { TextField } from '@cmsgov/design-system';
-import { useFlexSearch } from 'react-use-flexsearch';
 
 import '../../styles/index.scss';
 
@@ -48,10 +44,6 @@ interface LayoutProps {
    * list of heading items to be used in table of contents
    */
   tableOfContentsData?: TableOfContentsItem[];
-  /**
-   * flexsearch localsearch data
-   */
-  localSearchPages?: LocalSearchData;
 }
 
 const Layout = ({
@@ -62,35 +54,8 @@ const Layout = ({
   slug,
   theme,
   tableOfContentsData,
-  localSearchPages,
 }: LayoutProps) => {
   const env = 'prod';
-
-  const { index, store } = localSearchPages;
-
-  const SearchBar = () => {
-    const [query, setQuery] = useState('');
-    const results = useFlexSearch(query, index, store);
-
-    return (
-      <>
-        <TextField
-          label="Search"
-          name="search-field"
-          onChange={(evt) => {
-            setQuery(evt.target.value);
-          }}
-        />
-        <ul>
-          {results.map((result) => (
-            <li key={result.id}>
-              <a href={location.origin + '/' + result.path + location.search}>{result.title}</a>
-            </li>
-          ))}
-        </ul>
-      </>
-    );
-  };
 
   const tabTitle = frontmatter?.title
     ? `${frontmatter.title} - CMS Design System`
@@ -118,8 +83,6 @@ const Layout = ({
       <SkipNav href="#main" />
 
       <UsaBanner className="ds-u-display--none ds-u-md-display--block" />
-
-      <SearchBar />
 
       <div className="ds-l-row ds-u-margin--0 full-height">
         <Navigation location={location} />

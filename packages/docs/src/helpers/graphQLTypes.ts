@@ -29,17 +29,6 @@ export interface FrontmatterInterface {
   intro?: string;
 }
 
-export interface LocalSearchDataStore {
-  id: string;
-  path: string;
-  title: string;
-}
-
-export interface LocalSearchData {
-  store: Record<string, LocalSearchDataStore>[];
-  index: string;
-}
-
 /**
  * typing for the `mdx` graphQL query
  */
@@ -54,9 +43,23 @@ export interface MdxQuery {
         items: TableOfContentsItem[];
       };
     };
-    localSearchPages?: LocalSearchData;
   };
   location?: LocationInterface;
+}
+
+export interface SearchDataStore {
+  id: string;
+  path: string;
+  title: string;
+  body: string;
+  excerpt: string;
+}
+
+export interface SearchQuery {
+  localSearchPages: {
+    store: Record<string, SearchDataStore>[];
+    index: string;
+  };
 }
 
 export interface BlogQuery {
