@@ -310,10 +310,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
     <div className={rootClassName}>
       {renderChildren()}
 
-      <div
-        className={classNames('ds-c-autocomplete__list', !isOpen && 'ds-u-display--none')}
-        id={menuContainerId}
-      >
+      <div className="ds-c-autocomplete__list" id={menuContainerId} hidden={!isOpen}>
         {menuHeading}
         <ul className="ds-c-list--bare" {...menuProps}>
           {renderItems()}
