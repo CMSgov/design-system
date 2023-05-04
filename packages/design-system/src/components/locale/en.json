@@ -120,6 +120,13 @@
   "spinner": {
     "ariaText": "Loading"
   },
+  "thirdPartyExternalLink": {
+    "dialogHeading": "You are leaving {{origin}}.",
+    "dialogBody": "You're about to connect to a third-party site. Select CONTINUE to proceed or CANCEL to stay on this site.",
+    "confirmationButtonText": "Continue",
+    "cancelButtonText": "Cancel",
+    "learnMoreText": "Learn more about links to third-party sites"
+  },
   "verticalNav": {
     "expand": "Expand sub-navigation",
     "collapse": "Collapse sub-navigation"
