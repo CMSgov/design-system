@@ -77,10 +77,15 @@ export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
 }
 
 export type DropdownProps = BaseDropdownProps &
-  Omit<React.ComponentPropsWithRef<'select'>, keyof BaseDropdownProps>;
+  Omit<React.ComponentPropsWithRef<'button'>, keyof BaseDropdownProps>;
 
 const itemToString = (item: DropdownOptions) => item.label;
-function childrenToItems(children: React.ReactNode): DropdownOptions[] {}
+function childrenToItems(children: React.ReactNode): DropdownOptions[] {
+  React.Children.map(children, (child: React.ReactElement) => {
+    console.log(child);
+    console.log(child.props.children);
+  });
+}
 
 export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   if (process.env.NODE_ENV !== 'production') {
@@ -140,36 +145,6 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   //   </option>
   // ));
 
-  // {isOpen &&
-  //   books.map((item, index) => (
-  //     <li
-  //       className={cx(
-  //         highlightedIndex === index && 'bg-blue-300',
-  //         selectedItem === item && 'font-bold',
-  //         'py-2 px-3 shadow-sm flex flex-col',
-  //       )}
-  //       key={`${item.value}${index}`}
-  //       {...getItemProps({item, index})}
-  //     >
-  //       <span>{item.title}</span>
-  //       <span className="text-sm text-gray-700">{item.author}</span>
-  //     </li>
-  //   ))}
-
-  let listContent;
-  if (children) {
-    listContent = React.Children.map(children, (child: React.ReactElement) => {
-      console.log(child);
-      console.log(child.props.children);
-    });
-  } else {
-    listContent = options.map((option, index) => (
-      <li key={option.value} value={option.value} {...getItemProps({ item: option, index })}>
-        {option.label}
-      </li>
-    ));
-  }
-
   const { labelProps, fieldProps, wrapperProps, bottomError } = useFormLabel({
     ...selectProps,
     labelComponent: 'label',
@@ -185,25 +160,28 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     ...fieldProps,
     ref,
     className: classNames(
+      'ds-c-dropdown__button',
       'ds-c-field',
-      {
-        'ds-c-field--error': props.errorMessage,
-        'ds-c-field--inverse': props.inversed,
-      },
+      props.errorMessage && 'ds-c-field--error',
+      props.inversed && 'ds-c-field--inverse',
       size && `ds-c-field--${size}`,
       fieldClassName
     ),
+    'aria-label': ariaLabel,
   };
 
   return (
     <div {...wrapperProps} className="ds-c-dropdown">
       <FormLabel {...labelProps} fieldId={fieldProps.id} />
-      {/* <select aria-label={ariaLabel} ref={ref} className={selectClassNames} {...fieldProps}>
-        {optionElements}
-      </select> */}
       <button {...getToggleButtonProps(buttonPropOverrides)}>{selectedItem.label}</button>
       <div hidden={!isOpen}>
-        <ul {...getMenuProps()}>{listContent}</ul>
+        <ul {...getMenuProps()}>
+          {options.map((option, index) => (
+            <li key={option.value} value={option.value} {...getItemProps({ item: option, index })}>
+              {option.label}
+            </li>
+          ))}
+        </ul>
       </div>
       {bottomError}
     </div>

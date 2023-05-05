@@ -1,6 +1,6 @@
 @use '../layout' as *;
 
-select.ds-c-field {
+.ds-c-dropdown__button.ds-c-field {
   appearance: none;
   background-color: var(--dropdown__background-color);
   background-image: url('../images/arrow-both.svg');
