@@ -1,4 +1,10 @@
 @use '../layout' as *;
+@use '../mixins';
+
+.ds-c-dropdown {
+  max-width: var(--form__max-width);
+  position: relative;
+}
 
 .ds-c-dropdown__button.ds-c-field {
   appearance: none;
@@ -18,4 +24,26 @@
     color: transparent;
     text-shadow: 0 0 0 #000;
   }
+}
+
+.ds-c-dropdown__menu-container {
+  background-color: var(--autocomplete__background-color);
+  border: 1px solid var(--autocomplete__border-color);
+  max-height: 320px;
+  overflow-y: auto;
+  position: absolute;
+  width: 100%;
+  z-index: var(--z-dialog);
+}
+
+.ds-c-dropdown__menu {
+  @include mixins.ds-unstyled-list;
+}
+
+.ds-c-dropdown__item--highlighted {
+  background-color: var(--color-primary-lighter);
+}
+
+.ds-c-dropdown__item--selected {
+  background-color: var(--color-primary-light);
 }

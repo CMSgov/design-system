@@ -124,7 +124,6 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     isOpen,
     selectedItem,
     getToggleButtonProps,
-    getLabelProps,
     getMenuProps,
     getItemProps,
     highlightedIndex,
@@ -134,31 +133,18 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     itemToString,
   });
 
-  //
-  // TODO: children can be anything. Do we start looking for optgroups?
-  //
-  // const optionElements =
-  //   children ??
-  // options.map((option) => (
-  //   <option key={option.value} value={option.value}>
-  //     {option.label}
-  //   </option>
-  // ));
-
   const { labelProps, fieldProps, wrapperProps, bottomError } = useFormLabel({
     ...selectProps,
     labelComponent: 'label',
     wrapperIsFieldset: false,
   });
 
-  const ref = useAutofocus<HTMLButtonElement>(props.autoFocus);
-
-  // we don't want to pass this down to the select element
+  // we don't want to pass this down to the button
   delete fieldProps.errorMessage;
 
-  const buttonPropOverrides = {
+  const buttonProps = getToggleButtonProps({
     ...fieldProps,
-    ref,
+    ref: useAutofocus<HTMLButtonElement>(props.autoFocus),
     className: classNames(
       'ds-c-dropdown__button',
       'ds-c-field',
@@ -168,17 +154,26 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
       fieldClassName
     ),
     'aria-label': ariaLabel,
-  };
+  });
 
   return (
     <div {...wrapperProps} className="ds-c-dropdown">
       <FormLabel {...labelProps} fieldId={fieldProps.id} />
-      <button {...getToggleButtonProps(buttonPropOverrides)}>{selectedItem.label}</button>
-      <div hidden={!isOpen}>
-        <ul {...getMenuProps()}>
-          {options.map((option, index) => (
-            <li key={option.value} value={option.value} {...getItemProps({ item: option, index })}>
-              {option.label}
+      <button {...buttonProps}>{selectedItem.label}</button>
+      <div className="ds-c-dropdown__menu-container" hidden={!isOpen}>
+        <ul className="ds-c-dropdown__menu" {...getMenuProps()}>
+          {items.map((item, index) => (
+            <li
+              key={item.value}
+              value={item.value}
+              className={classNames(
+                'ds-c-dropdown__item',
+                highlightedIndex === index && 'ds-c-dropdown__item--highlighted',
+                selectedItem === item && 'ds-c-dropdown__item--selected'
+              )}
+              {...getItemProps({ item, index })}
+            >
+              {item.label}
             </li>
           ))}
         </ul>
