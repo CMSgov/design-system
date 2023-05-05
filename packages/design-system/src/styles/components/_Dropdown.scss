@@ -14,6 +14,7 @@
   background-repeat: no-repeat;
   background-size: var(--dropdown__icon-size);
   padding-inline-end: 28px;
+  text-align: start;
 
   &[multiple] {
     background-image: none;
@@ -38,6 +39,16 @@
 
 .ds-c-dropdown__menu {
   @include mixins.ds-unstyled-list;
+  gap: 0;
+}
+
+.ds-c-dropdown__item {
+  border-block-end: 1px solid var(--autocomplete__border-color);
+  padding: var(--spacer-1);
+
+  &:last-child {
+    border-block-end: none;
+  }
 }
 
 .ds-c-dropdown__item--highlighted {

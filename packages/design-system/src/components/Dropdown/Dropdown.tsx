@@ -135,6 +135,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
 
   const { labelProps, fieldProps, wrapperProps, bottomError } = useFormLabel({
     ...selectProps,
+    className: classNames('ds-c-dropdown', size && `ds-c-field--${size}`),
     labelComponent: 'label',
     wrapperIsFieldset: false,
   });
@@ -150,18 +151,19 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
       'ds-c-field',
       props.errorMessage && 'ds-c-field--error',
       props.inversed && 'ds-c-field--inverse',
-      size && `ds-c-field--${size}`,
       fieldClassName
     ),
     'aria-label': ariaLabel,
   });
 
+  const menuProps = getMenuProps({ className: 'ds-c-dropdown__menu' });
+
   return (
-    <div {...wrapperProps} className="ds-c-dropdown">
+    <div {...wrapperProps}>
       <FormLabel {...labelProps} fieldId={fieldProps.id} />
       <button {...buttonProps}>{selectedItem.label}</button>
       <div className="ds-c-dropdown__menu-container" hidden={!isOpen}>
-        <ul className="ds-c-dropdown__menu" {...getMenuProps()}>
+        <ul {...menuProps}>
           {items.map((item, index) => (
             <li
               key={item.value}
