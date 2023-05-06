@@ -5,9 +5,13 @@ import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 import { useSelect } from 'downshift';
 
 export type DropdownDefaultValue = number | string;
-export interface DropdownOptions {
+export interface DropdownOption {
   label: string;
   value: number | string;
+}
+export interface DropdownOptGroup {
+  label: string;
+  options: DropdownOption[];
 }
 export type DropdownSize = 'small' | 'medium';
 export type DropdownValue = number | string;
@@ -58,7 +62,7 @@ export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
   /**
    * The list of options to be rendered. Provide an empty list if using custom options via the `children` prop.
    */
-  options: DropdownOptions[];
+  options: DropdownOption[];
   onBlur?: (...args: any[]) => any;
   onChange?: (...args: any[]) => any;
   /**
@@ -79,12 +83,51 @@ export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
 export type DropdownProps = BaseDropdownProps &
   Omit<React.ComponentPropsWithRef<'button'>, keyof BaseDropdownProps>;
 
-const itemToString = (item: DropdownOptions) => item.label;
-function childrenToItems(children: React.ReactNode): DropdownOptions[] {
-  React.Children.map(children, (child: React.ReactElement) => {
-    console.log(child);
-    console.log(child.props.children);
-  });
+const itemToString = (item: DropdownOption) => item.label;
+
+function findElementsOfType<T extends keyof JSX.IntrinsicElements>(
+  type: T,
+  node: React.ReactNode
+): Array<React.ReactElement<any, T>> {
+  if (node && React.isValidElement(node) && type === node.type) {
+    return [node as any as React.ReactElement<any, T>];
+  } else if (typeof node === 'object') {
+    const array: React.ReactNode[] =
+      (Array.isArray(node) ? node : (node as React.ReactElement).props?.children) ?? [];
+    return array.reduce(
+      (acc: Array<React.ReactElement<any, T>>, child: React.ReactNode) => [
+        ...acc,
+        ...findElementsOfType(type, child),
+      ],
+      []
+    ) as Array<React.ReactElement<any, T>>;
+  } else {
+    return [];
+  }
+}
+
+function parseOptionElements(els: Array<React.ReactElement<any, 'option'>>): DropdownOption[] {
+  return els.map((option) => ({
+    value: option.props.value,
+    label: option.props.children?.toString?.() ?? '', // Probably should throw an error
+  }));
+}
+
+function parseChildren(node: React.ReactNode): DropdownOptGroup[] | DropdownOption[] {
+  const optgroups = findElementsOfType('optgroup', node);
+  if (optgroups.length) {
+    return optgroups.map((optgroup) => ({
+      label: optgroup.props.label,
+      options: parseOptionElements(findElementsOfType('option', optgroup)),
+    }));
+  }
+
+  const options = findElementsOfType('option', node);
+  if (options.length) {
+    return parseOptionElements(options);
+  }
+
+  return [{ label: 'foo', value: '1-1' }] as any;
 }
 
 export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
@@ -101,7 +144,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
         `Please provide an 'ariaLabel' when using the <Dropdown> component without a 'label' prop.`
       );
     }
-    if (props.children && props.options.length > 0) {
+    if (props.children && props.options?.length > 0) {
       console.warn(
         `Cannot use 'options' and 'children' React properties at the same time in the <Select> component. Please use 'children' for custom options and 'options' for general cases`
       );
@@ -112,7 +155,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   const { ariaLabel, children, fieldClassName, options, size, defaultValue, ...selectProps } =
     props;
 
-  const items = options ?? childrenToItems(children);
+  const items = options ?? parseChildren(children);
 
   const defaultSelectedItem =
     defaultValue !== undefined ? items.find((item) => defaultValue === item.value) : items[0];

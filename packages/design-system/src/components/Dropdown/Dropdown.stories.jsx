@@ -66,7 +66,7 @@ Disabled.args = {
 
 export const OptionGroup = Template.bind({});
 OptionGroup.args = {
-  options: [],
+  options: undefined,
   defaultValue: '1-1',
   label: 'Option group example',
   name: 'custom_dropdown_field',
