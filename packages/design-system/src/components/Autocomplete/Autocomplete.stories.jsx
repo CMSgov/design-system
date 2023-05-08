@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Autocomplete from './Autocomplete';
 import TextField from '../TextField/TextField';
 import { Title, Subtitle, Description, ArgsTable, PRIMARY_STORY } from '@storybook/addon-docs';
@@ -26,6 +26,7 @@ export default {
     clearSearchButton: true,
     loadingMessage: 'Loading...',
     noResultsMessage: 'No results',
+    itemToString: (item) => item.name,
   },
   subcomponents: { TextField },
   parameters: {
@@ -78,15 +79,29 @@ const listOpts = [
 ];
 
 const Template = (args) => {
-  const { textFieldLabel, textFieldHint, ...autocompleteArgs } = args;
+  const { items, textFieldLabel, textFieldHint, ...autocompleteArgs } = args;
+  const [input, setInput] = useState('');
+  const onInputValueChange = (...args) => {
+    action('onInputValueChange');
+    setInput(args[0]);
+  };
+  let filteredItems = null;
+  if (input.length > 0) {
+    filteredItems = items.filter((item) => item.name.toLowerCase().includes(input.toLowerCase()));
+  }
   return (
     <Autocomplete
       {...autocompleteArgs}
-      // using downshifted props
       onChange={action('onChange')}
-      onInputValueChange={action('onInputValueChange')}
+      onInputValueChange={onInputValueChange}
+      items={filteredItems}
     >
-      <TextField label={textFieldLabel} hint={textFieldHint} name="Downshift_autocomplete" />
+      <TextField
+        label={textFieldLabel}
+        hint={textFieldHint}
+        name="Downshift_autocomplete"
+        value={input}
+      />
     </Autocomplete>
   );
 };
