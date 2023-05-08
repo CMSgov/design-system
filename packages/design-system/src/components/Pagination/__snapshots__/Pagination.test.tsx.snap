@@ -1,51 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Pagination pagination slot behavior less than 7 pages should show all pages 1`] = `
-Array [
-  <li>
-    <span
-      aria-current="page"
-      class="ds-c-button ds-c-button--ghost ds-c-pagination__current-page"
-    >
-      1
-    </span>
-  </li>,
-  <li>
-    <a
-      aria-label="page 2"
-      class="ds-c-button ds-c-button--ghost"
-      href="#2"
-    >
-      2
-    </a>
-  </li>,
-  <li>
-    <a
-      aria-label="page 3"
-      class="ds-c-button ds-c-button--ghost"
-      href="#3"
-    >
-      3
-    </a>
-  </li>,
-  <li>
-    <a
-      aria-label="page 4"
-      class="ds-c-button ds-c-button--ghost"
-      href="#4"
-    >
-      4
-    </a>
-  </li>,
-  <li>
-    <a
-      aria-label="page 5"
-      class="ds-c-button ds-c-button--ghost"
-      href="#5"
-    >
-      5
-    </a>
-  </li>,
+NodeList [
+  <span
+    aria-current="page"
+    class="ds-c-button ds-c-button--ghost ds-c-pagination__current-page"
+  >
+    1
+  </span>,
+  <a
+    aria-label="page 2"
+    class="ds-c-button ds-c-button--ghost"
+    href="#2"
+  >
+    2
+  </a>,
+  <a
+    aria-label="page 3"
+    class="ds-c-button ds-c-button--ghost"
+    href="#3"
+  >
+    3
+  </a>,
+  <a
+    aria-label="page 4"
+    class="ds-c-button ds-c-button--ghost"
+    href="#4"
+  >
+    4
+  </a>,
+  <a
+    aria-label="page 5"
+    class="ds-c-button ds-c-button--ghost"
+    href="#5"
+  >
+    5
+  </a>,
 ]
 `;
 
@@ -105,36 +95,30 @@ exports[`Pagination should render component 1`] = `
         3
       </strong>
     </span>
-    <ul
-      role="list"
+    <div
+      class="ds-c-pagination__pages"
     >
-      <li>
-        <a
-          aria-label="page 1"
-          class="ds-c-button ds-c-button--ghost"
-          href="#1"
-        >
-          1
-        </a>
-      </li>
-      <li>
-        <span
-          aria-current="page"
-          class="ds-c-button ds-c-button--ghost ds-c-pagination__current-page"
-        >
-          2
-        </span>
-      </li>
-      <li>
-        <a
-          aria-label="page 3"
-          class="ds-c-button ds-c-button--ghost"
-          href="#3"
-        >
-          3
-        </a>
-      </li>
-    </ul>
+      <a
+        aria-label="page 1"
+        class="ds-c-button ds-c-button--ghost"
+        href="#1"
+      >
+        1
+      </a>
+      <span
+        aria-current="page"
+        class="ds-c-button ds-c-button--ghost ds-c-pagination__current-page"
+      >
+        2
+      </span>
+      <a
+        aria-label="page 3"
+        class="ds-c-button ds-c-button--ghost"
+        href="#3"
+      >
+        3
+      </a>
+    </div>
     <a
       aria-hidden="false"
       aria-label="Next Page"
@@ -222,8 +206,8 @@ exports[`Pagination with compact prop enabled should render compact variant 1`] 
         3
       </strong>
     </span>
-    <ul
-      role="list"
+    <div
+      class="ds-c-pagination__pages"
     />
     <a
       aria-hidden="false"

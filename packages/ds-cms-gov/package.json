@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/ds-cms-gov",
-  "version": "6.0.1",
+  "version": "7.0.0-beta.1",
   "private": true,
   "description": "A design system for CMS.gov products",
   "license": "CC0-1.0",
@@ -35,6 +35,7 @@
       "require": "./dist/preact-components/cjs/web-components/index.js"
     },
     "./css/*": "./dist/css/*",
+    "./dist/*": "./dist/*",
     "./src/*": "./src/*"
   },
   "main": "dist/react-components/cjs/index.js",
@@ -46,7 +47,7 @@
     "src"
   ],
   "dependencies": {
-    "@cmsgov/design-system": "6.0.1",
+    "@cmsgov/design-system": "7.0.0-beta.1",
     "@types/react": "^17.0.10",
     "@types/react-dom": "^17.0.10"
   }

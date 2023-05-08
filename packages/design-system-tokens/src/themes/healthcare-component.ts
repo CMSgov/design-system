@@ -325,7 +325,7 @@ export const components: AnyTokenValues = {
     '-hint__color':                               t.color['muted'],
     '-hint__color--inverse':                      t.color['muted-inverse'],
     '-error__color':                              t.color['error'],
-    '-error__color--inverse':                     t.color['error-light'],
+    '-error__color--inverse':                     t.color['error-lighter'],
   },
 
   'icon': {
@@ -425,6 +425,7 @@ export const components: AnyTokenValues = {
     '__border-color--inverse':                    t.color['black'],
     '__border-color--success':                    t.color['success-light'],
     '__color':                                    t.color['base'],
+    '__divider-color':                            t.color['gray-light'],
     '__padding':                                  t.spacer['1'],
     '__border-radius':                            '0',
   },
@@ -450,7 +451,7 @@ export const components: AnyTokenValues = {
     '-heading-lg__font-weight':                   t.font['weight-bold'],
     '-heading-md__font-weight':                   t.font['weight-bold'],
     '-heading-sm__font-weight':                   t.font['weight-normal'],
-    '-body__font-family':                         'inherit',
+    '-body__font-family':                         t.font['family-open-sans'],
   },
 
   'usa-banner': {

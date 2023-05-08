@@ -19,12 +19,11 @@ function generateChoices(length: number, customProps = {}) {
 
 function renderChoiceList(customProps = {}, choicesCount = 2) {
   const props = {
-    ...{
-      choices: generateChoices(choicesCount),
-      label: 'Foo',
-      name: 'spec-field',
-      type: 'radio' as ChoiceListType,
-    },
+    choices: generateChoices(choicesCount),
+    label: 'Foo',
+    name: 'spec-field',
+    type: 'radio' as ChoiceListType,
+    onChange: () => {},
     ...customProps,
   };
   return render(<ChoiceList {...props} />);

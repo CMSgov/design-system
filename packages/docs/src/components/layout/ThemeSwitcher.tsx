@@ -25,8 +25,8 @@ const ThemeSwitcher = () => {
     <Dropdown
       label="Selected theme"
       name="theme-switcher"
-      options={themeOptions}
       className="c-theme-switcher"
+      options={themeOptions}
       value={currentTheme}
       onChange={onThemeChange}
     />

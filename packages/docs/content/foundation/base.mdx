@@ -1,27 +1,12 @@
 ---
-title: Base
+title: Inverse Base
 order: 10
 ---
 
 import loremIpsumGenerator from '../../src/helpers/loremIpsumGenerator';
 
-A base layer of styling can be applied to an area of your site by adding the `.ds-base` class. If you're implementing the design system on a new site, you'd likely want to apply this class to the `<body>` element. On existing sites this might not be desirable. In which case, you could apply the `.ds-base` class to an element which scopes the styling to itself and its children.
-
-Specifically, the base styling sets the following CSS properties:
-
-- `color` is set to `--color-base`
-- `font-family` is set to `--font-sans`
-- `font-size` is set to `--font-size-base`
-- `line-height` is set to `--font-line-height-base`
+Adding `.ds-base--inverse` to any element sets an inverse `color` and `background-color` to that element and its children. This class overwrites those styles applied to `<body>`.
 
 <EmbeddedExample>
-  <div class="ds-base ds-u-padding--2">{loremIpsumGenerator('l')}</div>
-</EmbeddedExample>
-
-**Modifier: `.ds-base--inverse` **
-
-Applies an inverse `text color` and `background-color`
-
-<EmbeddedExample>
-  <div class="ds-base ds-base--inverse ds-u-padding--2">{loremIpsumGenerator('l')}</div>
+  <div class="ds-base--inverse ds-u-padding--2">{loremIpsumGenerator('l')}</div>
 </EmbeddedExample>

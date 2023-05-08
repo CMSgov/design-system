@@ -32,17 +32,14 @@
 .ds-c-drawer {
   background: var(--drawer__background-color);
   border: 0;
-  bottom: 0;
   box-shadow: -2px 0 0 var(--drawer__border-color);
   height: 100%;
-  left: auto;
+  inset: 0 0 0 auto;
   margin: 0;
   max-height: 100%;
   max-width: 100%;
   padding: 0;
   position: fixed;
-  right: 0;
-  top: 0;
   width: 100%;
   z-index: var(--z-drawer);
 
@@ -92,11 +89,12 @@
   }
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
-    border-bottom: 1px solid ButtonText;
+    border-block-end: 1px solid ButtonText;
   }
 }
 
 .ds-c-drawer__header-heading {
+  font-weight: var(--font-weight-bold);
   margin: 0;
 }
 
@@ -133,7 +131,7 @@
   }
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
-    border-top: 1px solid ButtonText;
+    border-block-start: 1px solid ButtonText;
   }
 }
 
@@ -148,5 +146,6 @@
 }
 
 .ds-c-drawer__footer-title {
+  font-weight: var(--font-weight-bold);
   margin: 0;
 }

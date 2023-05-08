@@ -28,11 +28,11 @@ Style guide: utilities.text-align
 }
 
 .ds-u-text-align--left {
-  text-align: left !important;
+  text-align: start !important;
 }
 
 .ds-u-text-align--right {
-  text-align: right !important;
+  text-align: end !important;
 }
 
 /*
@@ -58,11 +58,11 @@ Style guide: utilities.text-align.responsive
     }
 
     .ds-u-#{$breakpoint}-text-align--left {
-      text-align: left !important;
+      text-align: start !important;
     }
 
     .ds-u-#{$breakpoint}-text-align--right {
-      text-align: right !important;
+      text-align: end !important;
     }
   }
 }

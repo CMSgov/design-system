@@ -106,7 +106,6 @@ export const globalTypes = {
 };
 
 const baseClassDecorator = (Story, context) => {
-  document.body.classList.add('ds-base');
   if (context.parameters.baseInverse) {
     document.body.classList.add('ds-base--inverse');
   } else {
@@ -117,7 +116,11 @@ const baseClassDecorator = (Story, context) => {
 };
 
 const themeSettingDecorator = (Story, context) => {
-  const { theme } = context.globals;
+  const { parameters, globals } = context;
+  // Prefer the story parameter setting, which is for components that are
+  // specific to a brand and only make sense when viewed in that brand theme
+  const theme = parameters.theme ?? globals.theme;
+
   document.documentElement.setAttribute('data-theme', theme);
 
   const themeCss = document.querySelector('link[title=themeCss]') as HTMLLinkElement;

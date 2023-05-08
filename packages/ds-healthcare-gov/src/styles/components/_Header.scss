@@ -30,6 +30,7 @@
 
 .hc-c-header__actions {
   .hc-c-logged-out-links {
+    flex-direction: row;
     gap: $spacer-4;
   }
 }
@@ -67,6 +68,8 @@
 }
 
 .hc-c-menu__links {
+  gap: 0;
+
   li {
     padding: $spacer-1;
   }

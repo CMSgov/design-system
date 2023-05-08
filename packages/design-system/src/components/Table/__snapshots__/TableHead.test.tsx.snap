@@ -9,14 +9,14 @@ exports[`TableHead renders additional attributes 1`] = `
     role="row"
   >
     <th
-      class="ds-c-table__cell--align-left"
+      class="ds-u-text-align--left"
       role="columnheader"
       scope="col"
     >
       Column a
     </th>
     <th
-      class="ds-c-table__cell--align-left"
+      class="ds-u-text-align--left"
       role="columnheader"
       scope="col"
     >

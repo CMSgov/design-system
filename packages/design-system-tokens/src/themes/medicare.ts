@@ -138,7 +138,7 @@ export const global: AnyTokenValues = {
   'nav-width':                  '951px',
   'site-margins':               '3rem',
   'site-margins-mobile':        '1.5rem',
-  'site-max-width':             '1040px',
+  'site-max-width':             '1104px',
   'text-max-width':             '53rem',
 };
 

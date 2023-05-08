@@ -1,6 +1,7 @@
 import React from 'react';
 import Review from './Review';
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 const text = 'review text';
 const defaultProps = {
@@ -77,5 +78,19 @@ describe('Review', function () {
     const wrapper = wrappers[1];
 
     expect(wrapper.classList).toContain('my-class');
+  });
+
+  it('calls onClick function when clicked', () => {
+    renderReview();
+
+    const els = screen.getAllByRole('link');
+    expect(els.length).toBe(1);
+
+    const el = screen.getByRole('link');
+    expect(el.textContent).toBe(defaultProps.editText);
+
+    userEvent.click(el);
+    expect(defaultProps.onEditClick).toHaveBeenCalledWith(expect.anything(), defaultProps.editHref);
+    expect(defaultProps.onEditClick).toHaveBeenCalledTimes(1);
   });
 });

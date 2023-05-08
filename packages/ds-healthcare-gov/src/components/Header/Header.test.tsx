@@ -151,6 +151,7 @@ describe('Header', function () {
           label: 'Custom Link',
           href: '/',
           className: customClass,
+          ariaLabel: 'Custom Link',
         },
       ],
     });

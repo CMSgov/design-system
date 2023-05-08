@@ -1,0 +1,51 @@
+---
+title: Introducing a CSS reset
+order: 10
+---
+
+The design system's CSS reset is a collection of HTML element-specific styles that simplifies the development process while providing cross-browser sensible defaults to build from.
+
+Our reset CSS is bundled with the rest of the design system's styles, so to use it all you need to do is [import the design system's CSS](/getting-started/for-developers/#including-the-css) using your preferred method. Even if you haven't imported one of our components, your application should visually align with the design system.
+
+If you're curious to see what changes have been made, you can preview our reset styles in [Storybook](/storybook/?path=/story/reset-overview--overview). We'll break down the major changes for you to review below.
+
+## Global defaults
+
+The CSS reset introduces globally-defined defaults that will impact the entire application once the CSS has been imported. These defaults include (but aren't limited to):
+
+- `box-sizing: border-box` is set on every element — including `*::before` and `*::after`. This ensures that the declared width of element is never exceeded due to padding or border.
+- The `<html>` element has `scroll-behavior: smooth` set on `:focus-within`. This is a CSS-only solution that provides smooth anchor scrolling.
+- Animations, transitions, and smooth scroll are removed on all elements - including `*::before` and `*::after` for users who have `prefers-reduced-motion` enabled to respect their preferences.
+- The `<body>` element effectively replaces the `.ds-base` class, defining `font-family`, `font-size`, `line-height`, and `color`.
+  - In addition, `<body>` now sets `background-color` to a theme's specified background.
+- The `outline` is removed on elements with the `tabindex="-1"` declared. This removes focus rings for non-interactive elements, e.g., when activating a skip link will then send focus to a `<main>` or heading element.
+- To avoid [margin collapse](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing), all elements will only rely on their respective top margins to better control layout. All bottom margins have been removed.
+
+## Typography
+
+### Headings
+
+All heading elements will receive the font styles defined by their parent element using the `font: inherit` rule. 
+
+[`font`](https://developer.mozilla.org/en-US/docs/Web/CSS/font) is a shorthand property that encompasses several font styles, but the key thing to note is a heading will now inherit the `font-family` and `font-size` of its parent or `<body>` element. This rule ensures the semantics of a heading element are distinct from its appearance. If you need to style a heading, refer to our [headings](/foundation/typography/headings/) or [utility class](/utilities/overview/) documentation.
+
+### Links
+
+Links behave as they previously did, with one exception—the `text-decoration-color` is now set to `currentColor`. This change was made under the assumption that all link underlines will have the same color as its text, regardless of that text's state.
+
+## Lists
+
+The `<ol>` and `<ul>` elements have been styled to match their [`.ds-c-list`](/foundation/typography/list/) counterpart, with one key difference - they use `flex` to better control list item spacing and assist with commonly used inline list patterns.
+
+If you find yourself in need of an inline list, you can add `flex-direction: row` locally to your project. Likewise, if the spacing between list elements isn't to your liking, `gap` can be changed to the value that fits your project best.
+
+One last change worth mentioning for lists is that unstyled lists are defined under the `role="list"` attribute. This makes something like `<ul role="list">` visually the same as applying the `.ds-c-list--bare` class. Because unstyled lists have [accessibility concerns](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type#accessibility_concerns), we opted to include this style rule to ensure proper markup is used.
+
+## Form elements
+
+Various form elements have been rebooted for simpler base styles. Here are some of the most notable changes:
+
+- The `<input>`, `<button>`, `<textarea>`, and `<select>` elements receive the font styles defined by their parent element using the `font: inherit` rule. 
+- All `:disabled` fields have `cursor: not-allowed` to prevent user confusion.
+- Checkboxes and radio buttons use `accent-color` (set to a theme's defined "checked" color). This makes sure the `:checked` state of these inputs matches the theme of your site, even if you aren't using our [Choice component](/components/checkbox/).
+- `<fieldset>` has no `border`, `margin`, or `padding` so they can be easily used as wrappers for individual inputs or groups of inputs.
