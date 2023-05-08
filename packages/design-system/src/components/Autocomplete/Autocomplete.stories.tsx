@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Autocomplete from './Autocomplete';
 import TextField from '../TextField/TextField';
+import uniqueId from 'lodash/uniqueId';
 import { Title, Subtitle, Description, ArgsTable, PRIMARY_STORY } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
 
@@ -43,39 +44,23 @@ export default {
   },
 };
 
+function makeItem(name: string, children?: React.ReactNode) {
+  return {
+    id: uniqueId(),
+    name,
+    children,
+  };
+}
+
 const listOpts = [
-  {
-    id: 'kRf6c2fY',
-    name: 'Cook County, IL',
-  },
-  {
-    id: 'lYf5cGfM',
-    name: 'Cook County, MD',
-  },
-  {
-    id: 'mZfKcGf9',
-    name: 'Cook County, TN',
-  },
-  {
-    id: 'xFz6dLba',
-    name: 'Cook County, AK',
-  },
-  {
-    id: 'vTr5c99',
-    name: 'Cook County, FL',
-  },
-  {
-    id: 'ntY8Lha',
-    name: 'Cook County, AL',
-  },
-  {
-    id: 'uRe0Wqo',
-    name: 'Cook County, WA',
-  },
-  {
-    id: 'yUR7MWl',
-    name: 'Cook County, OR',
-  },
+  makeItem('Cook County, IL'),
+  makeItem('Cook County, MD'),
+  makeItem('Cook County, TN'),
+  makeItem('Cook County, AK'),
+  makeItem('Cook County, FL'),
+  makeItem('Cook County, AL'),
+  makeItem('Cook County, WA'),
+  makeItem('Cook County, OR'),
 ];
 
 const Template = (args) => {
@@ -87,7 +72,10 @@ const Template = (args) => {
   };
   let filteredItems = null;
   if (input.length > 0) {
-    filteredItems = items.filter((item) => item.name.toLowerCase().includes(input.toLowerCase()));
+    filteredItems = items.filter(
+      (item) => !item.name || item.name.toLowerCase().includes(input.toLowerCase())
+    );
+    filteredItems.forEach((item) => console.log(item));
   }
   return (
     <Autocomplete
@@ -129,33 +117,24 @@ CustomMarkup.args = {
   textFieldLabel: 'List with custom item markup',
   label: 'Select from the options below:',
   items: [
-    {
-      id: '1',
-      name: 'Carrots (1)',
-      children: (
-        <>
-          Carrots <strong>(1)</strong>
-        </>
-      ),
-    },
-    {
-      id: '2',
-      name: 'Cookies (3)',
-      children: (
-        <>
-          Cookies <strong>(3)</strong>
-        </>
-      ),
-    },
-    {
-      id: '3',
-      name: 'Crackers (2)',
-      children: (
-        <>
-          Crackers <strong>(2)</strong>
-        </>
-      ),
-    },
+    makeItem(
+      'Carrots (1)',
+      <>
+        Carrots <strong>(1)</strong>
+      </>
+    ),
+    makeItem(
+      'Cookies (3)',
+      <>
+        Cookies <strong>(3)</strong>
+      </>
+    ),
+    makeItem(
+      'Crackers (2)',
+      <>
+        Crackers <strong>(2)</strong>
+      </>
+    ),
     {
       children: (
         <a href="#snacks" onClick={() => console.log('Searching for all the snacks!')}>
