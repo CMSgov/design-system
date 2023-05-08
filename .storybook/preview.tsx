@@ -82,7 +82,7 @@ export const globalTypes = {
   analytics: {
     name: 'Analytics',
     description: 'Analytics settings',
-    defaultValue: 'off',
+    defaultValue: 'on',
     toolbar: {
       icon: 'graphline',
       items: [
