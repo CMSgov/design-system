@@ -30,7 +30,7 @@ const StorybookExampleFooter = ({ theme, storyId }: StorybookExampleFooterProps)
             variation="ghost"
             size="small"
           >
-            Open code in Storybook
+            View example in Storybook
           </Button>
         }
       />
