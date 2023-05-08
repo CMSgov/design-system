@@ -10,9 +10,9 @@ const config: StorybookConfig = {
     <link rel="stylesheet" type="text/css" title="themeCss" href="styles/core-theme.css" />
   `,
   stories: [
-    '../packages/design-system/src/**/*.stories.@(js|jsx|ts|tsx|mdx)',
-    '../packages/ds-healthcare-gov/src/**/*.stories.@(js|jsx|ts|tsx|mdx)',
-    '../packages/ds-medicare-gov/src/**/*.stories.@(js|jsx|ts|tsx|mdx)',
+    '../packages/design-system/src/**/*.stories.@([jt]sx)',
+    '../packages/ds-healthcare-gov/src/**/*.stories.@([jt]sx)',
+    '../packages/ds-medicare-gov/src/**/*.stories.@([jt]sx)',
   ],
   staticDirs: ['./static/', '../packages/design-system/src'],
   framework: {
