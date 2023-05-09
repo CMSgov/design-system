@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Autocomplete from './Autocomplete';
 import TextField from '../TextField/TextField';
 import uniqueId from 'lodash/uniqueId';
-import { Title, Subtitle, Description, ArgsTable, PRIMARY_STORY } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
 
 export default {
@@ -30,38 +29,7 @@ export default {
     itemToString: (item) => item.name,
   },
   subcomponents: { TextField },
-  parameters: {
-    docs: {
-      page: () => (
-        <>
-          <Title />
-          <Subtitle />
-          <Description />
-          <ArgsTable story={PRIMARY_STORY} />
-        </>
-      ),
-    },
-  },
 };
-
-function makeItem(name: string, children?: React.ReactNode) {
-  return {
-    id: uniqueId(),
-    name,
-    children,
-  };
-}
-
-const listOpts = [
-  makeItem('Cook County, IL'),
-  makeItem('Cook County, MD'),
-  makeItem('Cook County, TN'),
-  makeItem('Cook County, AK'),
-  makeItem('Cook County, FL'),
-  makeItem('Cook County, AL'),
-  makeItem('Cook County, WA'),
-  makeItem('Cook County, OR'),
-];
 
 const Template = (args) => {
   const { items, textFieldLabel, textFieldHint, ...autocompleteArgs } = args;
@@ -94,27 +62,77 @@ const Template = (args) => {
   );
 };
 
+function makeItem(name: string, children?: React.ReactNode) {
+  return {
+    id: uniqueId(),
+    name,
+    children,
+  };
+}
+
 export const Default = Template.bind({});
 Default.args = {
+  textFieldLabel: 'Select a drug to see its cost under each plan',
   textFieldHint:
-    'Type c then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
-  textFieldLabel: 'Labeled list',
-  items: listOpts,
+    'Type a letter to see results, then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
+  items: [
+    makeItem('Acetaminophen'),
+    makeItem('Advil'),
+    makeItem('Benadryl'),
+    makeItem('Claritin'),
+    makeItem('Detrol'),
+    makeItem('Excedrin'),
+    makeItem('Flonase'),
+    makeItem('Gas-X'),
+    makeItem('Hydrocortisone'),
+    makeItem('Ibuprofen'),
+    makeItem('Insulin glargine'),
+    makeItem('Jublia'),
+    makeItem('Ketoprofen'),
+    makeItem('Lidocaine'),
+    makeItem('Lunestra'),
+    makeItem('Melatonin'),
+    makeItem('Meloxicam'),
+    makeItem('Neosporin'),
+    makeItem('Oxycodone'),
+    makeItem('Prednisone'),
+    makeItem('Prilosec'),
+    makeItem('Quinine'),
+    makeItem('Robitussin'),
+    makeItem('Sudafed'),
+    makeItem('Tamiflu'),
+    makeItem('Unisom'),
+    makeItem('Vicodin'),
+    makeItem('Warfarin'),
+    makeItem('Xanax'),
+    makeItem('Yonsa'),
+    makeItem('Zyrtec'),
+  ],
 };
 
 export const LabeledList = Template.bind({});
 LabeledList.args = {
+  textFieldLabel: 'Select your county',
   textFieldHint:
-    'Type c then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
-  textFieldLabel: 'Labeled list',
+    'Type "C" then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
   label: 'Select from the options below:',
-  items: listOpts,
+  items: [
+    makeItem('Cook County, IL'),
+    makeItem('Cook County, MD'),
+    makeItem('Cook County, TN'),
+    makeItem('Cook County, AK'),
+    makeItem('Cook County, FL'),
+    makeItem('Cook County, AL'),
+    makeItem('Cook County, WA'),
+    makeItem('Cook County, OR'),
+  ],
 };
 
 export const CustomMarkup = Template.bind({});
 CustomMarkup.args = {
-  textFieldHint: 'Clicking the last item should not change the input value to "Search all snacks"',
-  textFieldLabel: 'List with custom item markup',
+  textFieldLabel: 'Select a snack that starts with "C"',
+  textFieldHint:
+    'Type "C" to start seeing a list of snacks. Clicking the last item should not change the input value to "Search all snacks"',
   label: 'Select from the options below:',
   items: [
     makeItem(
@@ -145,6 +163,13 @@ CustomMarkup.args = {
       isResult: false,
     },
   ],
+};
+CustomMarkup.parameters = {
+  docs: {
+    source: {
+      code: 'Disabled for this story. See https://github.com/storybookjs/storybook/issues/11554',
+    },
+  },
 };
 
 export const LoadingMessage = Template.bind({});
