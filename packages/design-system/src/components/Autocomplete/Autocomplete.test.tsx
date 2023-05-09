@@ -90,7 +90,7 @@ describe('Autocomplete', () => {
 
   it('renders Autocomplete component without items', () => {
     makeAutocomplete({ items: undefined, isOpen: true });
-    expect(screen.queryByRole('listbox').children.length).toEqual(0);
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
   });
 
   it('renders Autocomplete component no results', () => {
@@ -102,7 +102,7 @@ describe('Autocomplete', () => {
   it('shows the menu when open', () => {
     const { container } = makeAutocomplete({ isOpen: true });
     const child = container.querySelector('.ds-c-autocomplete__list');
-    expect(child).not.toHaveClass('ds-u-display--none');
+    expect(child).not.toHaveAttribute('hidden');
   });
 
   it('does not render a clear search button when clearSearchButton is set to false', () => {
@@ -255,13 +255,13 @@ describe('Autocomplete', () => {
       userEvent.type(autocompleteField, 'c');
 
       const menuContainer = container.querySelector('.ds-c-autocomplete__list');
-      expect(menuContainer).not.toHaveClass('ds-u-display--none');
+      expect(menuContainer).not.toHaveAttribute('hidden');
 
       expect(autocompleteField.value).toEqual('c');
 
       userEvent.type(autocompleteField, '{esc}');
 
-      expect(menuContainer).toHaveClass('ds-u-display--none');
+      expect(menuContainer).toHaveAttribute('hidden');
     });
   });
 });
