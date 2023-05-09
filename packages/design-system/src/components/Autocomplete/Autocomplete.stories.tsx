@@ -177,14 +177,14 @@ LoadingMessage.args = {
   clearSearchButton: false,
   loading: true,
   items: [],
-  textFieldHint: 'List should return string Loading to simulate async data call.',
   textFieldLabel: 'This will only show a loading message',
+  textFieldHint: 'List should return string Loading to simulate async data call.',
 };
 
 export const NoResults = Template.bind({});
 NoResults.args = {
   items: [],
   clearSearchButton: false,
-  textFieldHint: '',
   textFieldLabel: 'This will show a "no results" message',
+  textFieldHint: "Start typing, but you'll only get a loading message.",
 };
