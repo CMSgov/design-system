@@ -72,7 +72,7 @@ function makeItem(name: string, children?: React.ReactNode) {
 
 export const Default = Template.bind({});
 Default.args = {
-  textFieldLabel: 'Select a drug to see its cost under each plan',
+  textFieldLabel: 'Enter and select a drug to see its cost under each plan',
   textFieldHint:
     'Type a letter to see results, then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
   items: [
@@ -112,7 +112,7 @@ Default.args = {
 
 export const LabeledList = Template.bind({});
 LabeledList.args = {
-  textFieldLabel: 'Select your county',
+  textFieldLabel: 'Search for and select your county',
   textFieldHint:
     'Type "C" then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
   label: 'Select from the options below:',
@@ -178,7 +178,7 @@ LoadingMessage.args = {
   loading: true,
   items: [],
   textFieldHint: 'List should return string Loading to simulate async data call.',
-  textFieldLabel: 'Loading message',
+  textFieldLabel: 'This will only show a loading message',
 };
 
 export const NoResults = Template.bind({});
@@ -186,5 +186,5 @@ NoResults.args = {
   items: [],
   clearSearchButton: false,
   textFieldHint: '',
-  textFieldLabel: 'No results message',
+  textFieldLabel: 'This will show a "no results" message',
 };
