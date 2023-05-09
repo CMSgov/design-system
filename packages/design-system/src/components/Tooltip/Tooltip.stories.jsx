@@ -35,7 +35,7 @@ export default {
 };
 
 const Template = ({ data, ...args }) => (
-  <div className="ds-u-display--flex ds-u-align-items--center ds-u-margin--7 ds-u-padding--7">
+  <div className="ds-u-margin--7">
     {data}
     <Tooltip {...args} />
   </div>
@@ -43,9 +43,9 @@ const Template = ({ data, ...args }) => (
 
 export const IconTrigger = Template.bind({});
 IconTrigger.args = {
-  data: <p className="ds-u-margin--0">Tooltip with icon trigger</p>,
+  data: <p className="ds-u-margin--0 ds-u-display--inline">Tooltip with icon trigger</p>,
   ariaLabel: 'Label describing the subject of the tooltip',
-  className: 'ds-c-tooltip__trigger-icon',
+  className: 'ds-c-tooltip__trigger-icon ds-u-display--inline',
   title: 'Tooltip trigger uses <TooltipIcon> for the trigger content',
   children: <TooltipIcon />,
 };
@@ -102,9 +102,13 @@ InversedTrigger.parameters = {
   baseInverse: true,
 };
 InversedTrigger.args = {
-  data: <p className="ds-u-margin--0 ds-u-color--base-inverse">Tooltip with icon trigger</p>,
+  data: (
+    <p className="ds-u-margin--0 ds-u-color--base-inverse ds-u-display--inline">
+      Tooltip with icon trigger
+    </p>
+  ),
   ariaLabel: 'Label describing the subject of the tooltip',
-  className: 'ds-c-tooltip__trigger-icon',
+  className: 'ds-c-tooltip__trigger-icon ds-u-display--inline',
   title: 'Tooltip trigger uses <TooltipIcon> for the trigger content',
   children: <TooltipIcon inversed />,
   inversed: true,
