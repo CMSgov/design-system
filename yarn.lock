@@ -3372,13 +3372,13 @@
   resolved "https://registry.yarnpkg.com/@pkgjs/parseargs/-/parseargs-0.11.0.tgz#a77ea742fab25775145434eb1d2328cf5013ac33"
   integrity sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==
 
-"@playwright/test@^1.33.0":
-  version "1.33.0"
-  resolved "https://registry.yarnpkg.com/@playwright/test/-/test-1.33.0.tgz#669ef859efb81b143dfc624eef99d1dd92a81b67"
-  integrity sha512-YunBa2mE7Hq4CfPkGzQRK916a4tuZoVx/EpLjeWlTVOnD4S2+fdaQZE0LJkbfhN5FTSKNLdcl7MoT5XB37bTkg==
+"@playwright/test@1.31.0":
+  version "1.31.0"
+  resolved "https://registry.yarnpkg.com/@playwright/test/-/test-1.31.0.tgz#bde42ca06804164be54893525110adda946248d6"
+  integrity sha512-Ys5s/06Dg9g3zAIdCIb/UOBYim3U7Zjb3DvC6XBtnRmnglH5O47iwYzmtxXu9fhSyzI2Jn28apkXIOD81GgCdw==
   dependencies:
     "@types/node" "*"
-    playwright-core "1.33.0"
+    playwright-core "1.31.0"
   optionalDependencies:
     fsevents "2.3.2"
 
@@ -16943,10 +16943,10 @@ platform@^1.3.6:
   resolved "https://registry.yarnpkg.com/platform/-/platform-1.3.6.tgz#48b4ce983164b209c2d45a107adb31f473a6e7a7"
   integrity sha512-fnWVljUchTro6RiCFvCXBbNhJc2NijN7oIQxbwsyL0buWJPG85v81ehlHI9fXrJsMNgTofEoWIQeClKpgxFLrg==
 
-playwright-core@1.33.0:
-  version "1.33.0"
-  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.33.0.tgz#269efe29a927cd6d144d05f3c2d2f72bd72447a1"
-  integrity sha512-aizyPE1Cj62vAECdph1iaMILpT0WUDCq3E6rW6I+dleSbBoGbktvJtzS6VHkZ4DKNEOG9qJpiom/ZxO+S15LAw==
+playwright-core@1.31.0:
+  version "1.31.0"
+  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.31.0.tgz#dbd184771535e76c6743ef5c082def5564f07e85"
+  integrity sha512-/KquBjS5DcASCh8cGeNVHuC0kyb7c9plKTwaKxgOGtxT7+DZO2fjmFvPDBSXslEIK5CeOO/2kk5rOCktFXKEdA==
 
 please-upgrade-node@^3.2.0:
   version "3.2.0"
