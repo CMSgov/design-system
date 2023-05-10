@@ -4,7 +4,7 @@ import Navigation from './DocSiteNavigation';
 import PageHeader from './PageHeader';
 import TableOfContents from './TableOfContents';
 import TableOfContentsMobile from './TableOfContentsMobile';
-import TitleSearchHeader from './TitleSearchHeader';
+import HeaderFullWidth from './HeaderFullWidth';
 import { Helmet } from 'react-helmet';
 import { SkipNav, UsaBanner } from '@cmsgov/design-system';
 import {
@@ -85,7 +85,7 @@ const Layout = ({
 
       <UsaBanner className="ds-u-display--none ds-u-md-display--block" />
 
-      <TitleSearchHeader location={location} />
+      <HeaderFullWidth />
 
       <div className="ds-l-row ds-u-margin--0 full-height">
         <Navigation location={location} />

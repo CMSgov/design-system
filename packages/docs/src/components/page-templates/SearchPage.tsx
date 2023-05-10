@@ -3,20 +3,16 @@ import { useEffect, useState } from 'react';
 import { TextField } from '@cmsgov/design-system';
 import { useFlexSearch } from 'react-use-flexsearch';
 import { useStaticQuery, graphql } from 'gatsby';
-import { LocationInterface, SearchDataStore, SearchQuery } from '../../helpers/graphQLTypes';
+import { SearchDataStore, SearchQuery } from '../../helpers/graphQLTypes';
+import avoidRefresh from '../../helpers/avoidRefresh';
 
-interface SearchBarProps {
-  location: LocationInterface;
-}
-
-const SearchBar = (props: SearchBarProps) => {
-  const { location } = props;
+const SearchPage = () => {
   const [query, setQuery] = useState('');
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     setQuery(params.get('query'));
-  }, [location.search]);
+  }, []);
 
   const data: SearchQuery = useStaticQuery(graphql`
     {
@@ -64,4 +60,4 @@ const SearchBar = (props: SearchBarProps) => {
   );
 };
 
-export default SearchBar;
+export default avoidRefresh(SearchPage);
