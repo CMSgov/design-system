@@ -8,7 +8,7 @@ set -e
 OUT="$1"
 
 if [ "$OUT" = "docs" ]; then
-  build-storybook -o packages/docs/static/storybook && \
+  storybook build -o packages/docs/static/storybook && \
   echo "${GREEN}info${NC}: Moving static assets for use with gatsby."
   mkdir -p packages/docs/static/fonts && \
   mkdir -p packages/docs/static/images && \
@@ -17,5 +17,5 @@ if [ "$OUT" = "docs" ]; then
   rm -rf packages/docs/static/storybook/fonts && \
   rm -rf packages/docs/static/storybook/images
 else
-  build-storybook -o storybook-static
+  storybook build -o storybook-static
 fi

@@ -1,7 +1,7 @@
 // .storybook/manager.js
 
 import { addons } from '@storybook/addons';
-import cmsTheme from './CmsTheme';
+import cmsTheme from './cmsTheme';
 
 addons.setConfig({
   theme: cmsTheme,
