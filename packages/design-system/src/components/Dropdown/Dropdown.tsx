@@ -172,6 +172,11 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   const { ariaLabel, children, fieldClassName, options, size, defaultValue, ...selectProps } =
     props;
 
+  // Turn our options or optgroups into a flat array of selectable items
+  // that we can pass to the Downshift `useSelect` hook. Because the group
+  // headings are not selectable and should not be counted as results, we do
+  // not want to pass them to Downshift. We therefore have to flatten the
+  // groups into a single array.
   const optionsOrOptGroups = options ?? parseChildren(children);
   const items: DropdownOption[] = !isOptGroupArray(optionsOrOptGroups)
     ? optionsOrOptGroups
@@ -257,6 +262,12 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     );
   };
 
+  // Because we allow for either a flat set of options or grouped options, we
+  // need to build the content with those differences in mind. If the options
+  // we received through props are just plain DropdownOptions, rendering them
+  // is straightforward. If they are grouped, however, we need to also render
+  // our group headings but leave them out of the indexing so we don't mess up
+  // the highlightedIndex calculation.
   let menuContent;
   if (isOptGroupArray(optionsOrOptGroups)) {
     menuContent = [];
