@@ -81,5 +81,5 @@ export function parseChildren(node: React.ReactNode): DropdownOptGroup[] | Dropd
     return parseOptionElements(options);
   }
 
-  return [{ label: 'foo', value: '1-1' }] as any;
+  return [];
 }

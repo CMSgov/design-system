@@ -206,12 +206,12 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   let menuContent;
   if (isOptGroupArray(optionsOrOptGroups)) {
     menuContent = [];
-    // Need to keep the option groups out of the indexing
+    // Need to keep track of the index ourselves so we can exclude optgroup
+    // headings from the count
     let itemIndex = 0;
     for (const optGroup of optionsOrOptGroups) {
       menuContent.push(renderOptGroup(optGroup));
       for (const option of optGroup.options) {
-        console.log(`index: ${itemIndex}`);
         menuContent.push(renderOption(option, itemIndex++));
       }
     }
