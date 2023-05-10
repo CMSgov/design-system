@@ -173,7 +173,6 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     return (
       <li
         key={value}
-        value={value}
         className={classNames(
           'ds-c-dropdown__item',
           highlightedIndex === index && 'ds-c-dropdown__item--highlighted',
@@ -188,12 +187,12 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     );
   };
 
-  const renderOptGroup = ({ label, className, ...extraAttrs }: DropdownOptGroup) => {
+  const renderOptGroup = ({ label, options, className, ...extraAttrs }: DropdownOptGroup) => {
     return (
       <li
         key={label}
-        value={label}
         className={classNames('ds-c-dropdown__item-group', className)}
+        role="group"
         {...(extraAttrs as React.HTMLAttributes<any>)}
       >
         {label}

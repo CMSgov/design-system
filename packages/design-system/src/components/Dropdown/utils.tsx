@@ -56,29 +56,36 @@ function findElementsOfType<T extends keyof JSX.IntrinsicElements>(
   }
 }
 
-function parseOptionElements(els: Array<React.ReactElement<any, 'option'>>): DropdownOption[] {
-  return els.map((option) => {
-    const { value, children, ...extraAttributes } = option.props;
-    return {
-      value: value,
-      label: children?.toString?.() ?? '', // Probably should throw an error
-      ...extraAttributes,
-    };
-  });
+function parseOptionElement(option: React.ReactElement<any, 'option'>): DropdownOption {
+  const { value, children, ...extraAttributes } = option.props;
+  return {
+    value,
+    label: children?.toString?.() ?? '', // Probably should throw an error
+    ...extraAttributes,
+  };
+}
+
+function parseOptGroupElement(optgroup: React.ReactElement<any, 'optgroup'>): DropdownOptGroup {
+  const { label, ...extraProps } = optgroup.props;
+  if (!label) {
+    throw new Error('Could not find a label on `<optgroup>` element');
+  }
+  return {
+    label,
+    options: findElementsOfType('option', optgroup).map(parseOptionElement),
+    ...extraProps,
+  };
 }
 
 export function parseChildren(node: React.ReactNode): DropdownOptGroup[] | DropdownOption[] {
   const optgroups = findElementsOfType('optgroup', node);
   if (optgroups.length) {
-    return optgroups.map((optgroup) => ({
-      ...optgroup.props,
-      options: parseOptionElements(findElementsOfType('option', optgroup)),
-    }));
+    return optgroups.map(parseOptGroupElement);
   }
 
   const options = findElementsOfType('option', node);
   if (options.length) {
-    return parseOptionElements(options);
+    return options.map(parseOptionElement);
   }
 
   return [];
