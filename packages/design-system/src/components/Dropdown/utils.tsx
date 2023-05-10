@@ -38,22 +38,30 @@ export function isOptGroupArray(
 function findElementsOfType<T extends keyof JSX.IntrinsicElements>(
   type: T,
   node: React.ReactNode
-): Array<React.ReactElement<any, T>> {
-  if (node && React.isValidElement(node) && type === node.type) {
-    return [node as any as React.ReactElement<any, T>];
-  } else if (typeof node === 'object') {
-    const array: React.ReactNode[] =
-      (Array.isArray(node) ? node : (node as React.ReactElement).props?.children) ?? [];
-    return array.reduce(
-      (acc: Array<React.ReactElement<any, T>>, child: React.ReactNode) => [
+): React.ReactElement<any, T>[] {
+  if (!node || !(React.isValidElement(node) || Array.isArray(node))) {
+    // There's nothing to recurse on, and this is not the droid we're looking for
+    return [];
+  }
+
+  if (React.isValidElement(node) && type === node.type) {
+    // We found it! Return an array because it will be flattened
+    return [node as React.ReactElement<any, T>];
+  }
+
+  if (Array.isArray(node)) {
+    // Recurse on each member of the array and flatten the result
+    return node.reduce(
+      (acc: React.ReactElement<any, T>[], child: React.ReactNode) => [
         ...acc,
         ...findElementsOfType(type, child),
       ],
       []
-    ) as Array<React.ReactElement<any, T>>;
-  } else {
-    return [];
+    ) as React.ReactElement<any, T>[];
   }
+
+  // It's a React element, so recurse on its children (a ReactNode)
+  return findElementsOfType(type, node.props?.children);
 }
 
 function parseOptionElement(option: React.ReactElement<any, 'option'>): DropdownOption {

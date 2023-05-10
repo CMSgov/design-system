@@ -23,7 +23,7 @@ const dropdownOptions = [
   { label: 'Option 8', value: '8' },
 ];
 
-const optGroupData = (
+const htmlOptGroups = (
   <>
     <optgroup label="Group A">
       <option value="a-1">Option A-1</option>
@@ -35,6 +35,19 @@ const optGroupData = (
       <option value="b-2">Option B-2</option>
       <option value="b-3">Option B-3</option>
     </optgroup>
+  </>
+);
+
+const htmlOptions = (
+  <>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+    <option value="3">Option 3</option>
+    <option value="4">Option 4</option>
+    <option value="5">Option 5</option>
+    <option value="6">Option 6</option>
+    <option value="7">Option 7</option>
+    <option value="8">Option 8</option>
   </>
 );
 
@@ -64,12 +77,20 @@ Disabled.args = {
   name: 'disabled_dropdown_field',
 };
 
-export const OptionGroup = Template.bind({});
-OptionGroup.args = {
+export const HtmlOptionGroups = Template.bind({});
+HtmlOptionGroups.args = {
   options: undefined,
   label: 'Option group example',
   name: 'custom_dropdown_field',
-  children: optGroupData,
+  children: htmlOptGroups,
+};
+
+export const HtmlOptions = Template.bind({});
+HtmlOptions.args = {
+  options: undefined,
+  label: 'Option group example',
+  name: 'custom_dropdown_field',
+  children: htmlOptions,
 };
 
 export const InverseOption = Template.bind({});
