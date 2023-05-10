@@ -61,7 +61,7 @@ function findElementsOfType<T extends keyof JSX.IntrinsicElements>(
   }
 
   // It's a React element, so recurse on its children (a ReactNode)
-  return findElementsOfType(type, node.props?.children);
+  return findElementsOfType(type, node.props.children);
 }
 
 function parseOptionElement(option: React.ReactElement<any, 'option'>): DropdownOption {

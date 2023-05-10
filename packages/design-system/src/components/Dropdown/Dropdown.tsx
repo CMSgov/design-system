@@ -14,6 +14,11 @@ export interface DropdownOptGroup extends React.HTMLAttributes<'optgroup'> {
   label: string;
   options: DropdownOption[];
 }
+interface InternalItem extends React.HTMLAttributes<'option' | 'optgroup'> {
+  label: string;
+  value?: number | string;
+  isOptGroup?: boolean;
+}
 export type DropdownSize = 'small' | 'medium';
 export type DropdownValue = number | string;
 
@@ -99,24 +104,32 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   // Draw out certain props that we don't want to pass through as attributes
   const { ariaLabel, children, fieldClassName, options, size, defaultValue, ...extraProps } = props;
 
-  // Turn our options or optgroups into a flat array of selectable items
-  // that we can pass to the Downshift `useSelect` hook. Because the group
-  // headings are not selectable and should not be counted as results, we do
-  // not want to pass them to Downshift. We therefore have to flatten the
-  // groups into a single array.
-  const optionsOrOptGroups = useMemo(() => options ?? parseChildren(children), [options, children]);
-  const items: DropdownOption[] = !isOptGroupArray(optionsOrOptGroups)
-    ? optionsOrOptGroups
-    : optionsOrOptGroups.reduce(
-        (options: DropdownOption[], optGroup: DropdownOptGroup) => [
-          ...options,
-          ...optGroup.options,
-        ],
-        []
-      );
+  // Turn our options or optgroups into a flat array of selectable items that
+  // we can pass to the Downshift `useSelect` hook. Even though the group
+  // headings are not selectable, Downshift wants to know about them. I've
+  // tried excluding them from the list we give to Downshift, but then the
+  // highlighted index sticks on the last hovered selectable item when hovering
+  // over a group heading, and it doesn't look very good.
+  const optionsOrOptGroups = options ?? parseChildren(children);
+  const items: InternalItem[] = useMemo(
+    () =>
+      !isOptGroupArray(optionsOrOptGroups)
+        ? optionsOrOptGroups
+        : optionsOrOptGroups.reduce((internalItems: InternalItem[], optGroup: DropdownOptGroup) => {
+            internalItems.push({
+              label: optGroup.label,
+              isOptGroup: true,
+            });
+            internalItems.push(...optGroup.options);
+            return internalItems;
+          }, [] as InternalItem[]),
+    [options, children]
+  );
 
   const defaultSelectedItem =
-    defaultValue !== undefined ? items.find((item) => defaultValue === item.value) : items[0];
+    defaultValue !== undefined
+      ? items.find((item) => defaultValue === item.value)
+      : items.filter((item) => !item.isOptGroup)[0];
   if (!defaultSelectedItem) {
     throw new Error('Dropdown component could not determine a default selected option');
   }
@@ -168,59 +181,29 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     ),
   });
 
-  const renderOption = (item: DropdownOption, index: number) => {
-    const { value, label, className, ...extraAttrs } = item;
+  const menuContent = items.map((item, index) => {
+    const { value, label, isOptGroup, className, ...extraAttrs } = item;
     return (
       <li
-        key={value}
+        key={value ?? label}
         className={classNames(
-          'ds-c-dropdown__item',
+          className,
+          isOptGroup ? 'ds-c-dropdown__item-group' : 'ds-c-dropdown__item',
           highlightedIndex === index && 'ds-c-dropdown__item--highlighted',
-          selectedItem === item && 'ds-c-dropdown__item--selected',
-          className
+          selectedItem === item && 'ds-c-dropdown__item--selected'
         )}
         {...extraAttrs}
-        {...getItemProps({ item, index })}
+        {...getItemProps({
+          item,
+          index,
+          disabled: isOptGroup,
+          role: isOptGroup ? 'group' : undefined,
+        })}
       >
-        {label}
+        {item.label}
       </li>
     );
-  };
-
-  const renderOptGroup = ({ label, options, className, ...extraAttrs }: DropdownOptGroup) => {
-    return (
-      <li
-        key={label}
-        className={classNames('ds-c-dropdown__item-group', className)}
-        role="group"
-        {...(extraAttrs as React.HTMLAttributes<any>)}
-      >
-        {label}
-      </li>
-    );
-  };
-
-  // Because we allow for either a flat set of options or grouped options, we
-  // need to build the content with those differences in mind. If the options
-  // we received through props are just plain DropdownOptions, rendering them
-  // is straightforward. If they are grouped, however, we need to also render
-  // our group headings but leave them out of the indexing so we don't mess up
-  // the highlightedIndex calculation.
-  let menuContent;
-  if (isOptGroupArray(optionsOrOptGroups)) {
-    menuContent = [];
-    // Need to keep track of the index ourselves so we can exclude optgroup
-    // headings from the count
-    let itemIndex = 0;
-    for (const optGroup of optionsOrOptGroups) {
-      menuContent.push(renderOptGroup(optGroup));
-      for (const option of optGroup.options) {
-        menuContent.push(renderOption(option, itemIndex++));
-      }
-    }
-  } else {
-    menuContent = optionsOrOptGroups.map(renderOption);
-  }
+  });
 
   return (
     <div {...wrapperProps}>
