@@ -23,12 +23,13 @@ const SearchBar = () => {
   return (
     <>
       <TextField
-        label="Search"
+        label=""
         name="search-field"
         onChange={(evt) => {
           setQuery(evt.target.value);
         }}
       />
+      <hr />
       <ul>
         {results.map((result: SearchDataStore) => (
           <li key={result.id}>

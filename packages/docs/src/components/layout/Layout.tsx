@@ -12,6 +12,7 @@ import {
   TableOfContentsItem,
 } from '../../helpers/graphQLTypes';
 import { withPrefix } from 'gatsby';
+import CMSLogoIcon from '../icons/CMSLogo';
 
 import '../../styles/index.scss';
 
@@ -83,6 +84,11 @@ const Layout = ({
       <SkipNav href="#main" />
 
       <UsaBanner className="ds-u-display--none ds-u-md-display--block" />
+
+      <div className="ds-u-flex-direction--row .ds-u-justify-content--start ds-u-align-items--center ds-l-row ds-u-margin--0 ds-u-padding--2">
+        <CMSLogoIcon />
+        <h1 className="ds-u-padding-left--2 ds-text-heading--2xl">Design System</h1>
+      </div>
 
       <div className="ds-l-row ds-u-margin--0 full-height">
         <Navigation location={location} />
