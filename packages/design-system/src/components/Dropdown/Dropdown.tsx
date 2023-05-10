@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import classNames from 'classnames';
 import useAutofocus from '../utilities/useAutoFocus';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
@@ -104,7 +104,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   // headings are not selectable and should not be counted as results, we do
   // not want to pass them to Downshift. We therefore have to flatten the
   // groups into a single array.
-  const optionsOrOptGroups = options ?? parseChildren(children);
+  const optionsOrOptGroups = useMemo(() => options ?? parseChildren(children), [options, children]);
   const items: DropdownOption[] = !isOptGroupArray(optionsOrOptGroups)
     ? optionsOrOptGroups
     : optionsOrOptGroups.reduce(
@@ -221,8 +221,6 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   } else {
     menuContent = optionsOrOptGroups.map(renderOption);
   }
-
-  console.log(`highlighted index: ${highlightedIndex}`);
 
   return (
     <div {...wrapperProps}>
