@@ -4,6 +4,7 @@ import Navigation from './DocSiteNavigation';
 import PageHeader from './PageHeader';
 import TableOfContents from './TableOfContents';
 import TableOfContentsMobile from './TableOfContentsMobile';
+import TitleSearchHeader from './TitleSearchHeader';
 import { Helmet } from 'react-helmet';
 import { SkipNav, UsaBanner } from '@cmsgov/design-system';
 import {
@@ -12,7 +13,6 @@ import {
   TableOfContentsItem,
 } from '../../helpers/graphQLTypes';
 import { withPrefix } from 'gatsby';
-import CMSLogoIcon from '../icons/CMSLogo';
 
 import '../../styles/index.scss';
 
@@ -85,14 +85,14 @@ const Layout = ({
 
       <UsaBanner className="ds-u-display--none ds-u-md-display--block" />
 
-      <div className="ds-u-flex-direction--row .ds-u-justify-content--start ds-u-align-items--center ds-l-row ds-u-margin--0 ds-u-padding--2">
-        <CMSLogoIcon />
-        <h1 className="ds-u-padding-left--2 ds-text-heading--2xl">Design System</h1>
-      </div>
+      <TitleSearchHeader location={location} />
 
       <div className="ds-l-row ds-u-margin--0 full-height">
         <Navigation location={location} />
-        <main id="main" className="ds-l-md-col ds-u-padding--0 ds-u-padding-bottom--4 page-main">
+        <main
+          id="main"
+          className="ds-l-md-col ds-u-padding--0 ds-u-padding-bottom--4 ds-u-padding-top--2 page-main"
+        >
           {pageHeader ? pageHeader : <PageHeader frontmatter={frontmatter} theme={theme} />}
           <article className="ds-u-md-display--flex ds-u-padding-x--3 ds-u-sm-padding-x--6 ds-u-sm-padding-bottom--6 ds-u-sm-padding-top--1 ds-u-padding-bottom--3 page-content">
             <div className="page-content__content ds-l-lg-col--9 ds-u-padding-left--0">

@@ -9,6 +9,7 @@ import ContentRenderer from '../components/content/ContentRenderer';
 const SearchPage = ({ data, location }: MdxQuery) => {
   const { slug } = data.mdx;
   const theme = useTheme();
+
   return (
     <Layout
       frontmatter={data.mdx.frontmatter}
