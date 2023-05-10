@@ -71,6 +71,14 @@
   }
 }
 
+.ds-c-dropdown__item-group {
+  font-weight: var(--font-weight-bold);
+}
+
+.ds-c-dropdown__menu--grouped .ds-c-dropdown__item {
+  padding-inline-start: var(--spacer-3);
+}
+
 .ds-c-dropdown__item--highlighted {
   background-color: var(--color-primary-lighter);
 }
