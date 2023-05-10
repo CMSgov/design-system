@@ -1,5 +1,27 @@
 import React from 'react';
-import { DropdownOption, DropdownOptGroup } from './Dropdown';
+import { DropdownProps, DropdownOption, DropdownOptGroup } from './Dropdown';
+
+export function validateProps(props: DropdownProps) {
+  if (process.env.NODE_ENV !== 'production') {
+    // 'ariaLabel' is provided with a `label` prop that is not an empty string
+    if (props.ariaLabel && (typeof props.label !== 'string' || props.label.length > 0)) {
+      console.warn(
+        `Cannot use 'ariaLabel' and 'label' React properties together in the <Dropdown> component. If the 'label' prop is used, it should be written for all users so that an 'ariaLabel' is not needed. The 'ariaLabel' prop is intended to be used only when the input is missing an input label (i.e when an empty string is provided for the 'label' prop)`
+      );
+    }
+    // An empty string `label` is provided without a corresponding `ariaLabel` prop
+    if (!props.ariaLabel && typeof props.label === 'string' && props.label.length === 0) {
+      console.warn(
+        `Please provide an 'ariaLabel' when using the <Dropdown> component without a 'label' prop.`
+      );
+    }
+    if (props.children && props.options?.length > 0) {
+      console.warn(
+        `Cannot use 'options' and 'children' React properties at the same time in the <Select> component. Please use 'children' for custom options and 'options' for general cases`
+      );
+    }
+  }
+}
 
 export function itemToString(item: DropdownOption) {
   return item.label;

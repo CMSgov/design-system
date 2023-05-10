@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import useAutofocus from '../utilities/useAutoFocus';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 import { useSelect } from 'downshift';
-import { itemToString, isOptGroupArray, parseChildren } from './utils';
+import { itemToString, isOptGroupArray, parseChildren, validateProps } from './utils';
 
 export type DropdownDefaultValue = number | string;
 export interface DropdownOption extends React.HTMLAttributes<'option'> {
@@ -94,25 +94,7 @@ export type DropdownProps = BaseDropdownProps &
   Omit<React.ComponentPropsWithRef<'button'>, keyof BaseDropdownProps>;
 
 export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
-  if (process.env.NODE_ENV !== 'production') {
-    // 'ariaLabel' is provided with a `label` prop that is not an empty string
-    if (props.ariaLabel && (typeof props.label !== 'string' || props.label.length > 0)) {
-      console.warn(
-        `Cannot use 'ariaLabel' and 'label' React properties together in the <Dropdown> component. If the 'label' prop is used, it should be written for all users so that an 'ariaLabel' is not needed. The 'ariaLabel' prop is intended to be used only when the input is missing an input label (i.e when an empty string is provided for the 'label' prop)`
-      );
-    }
-    // An empty string `label` is provided without a corresponding `ariaLabel` prop
-    if (!props.ariaLabel && typeof props.label === 'string' && props.label.length === 0) {
-      console.warn(
-        `Please provide an 'ariaLabel' when using the <Dropdown> component without a 'label' prop.`
-      );
-    }
-    if (props.children && props.options?.length > 0) {
-      console.warn(
-        `Cannot use 'options' and 'children' React properties at the same time in the <Select> component. Please use 'children' for custom options and 'options' for general cases`
-      );
-    }
-  }
+  validateProps(props);
 
   // Draw out certain props that we don't want to pass through as attributes
   const { ariaLabel, children, fieldClassName, options, size, defaultValue, ...extraProps } = props;
