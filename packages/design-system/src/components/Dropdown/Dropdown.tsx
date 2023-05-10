@@ -3,13 +3,14 @@ import classNames from 'classnames';
 import useAutofocus from '../utilities/useAutoFocus';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 import { useSelect } from 'downshift';
+import { itemToString, isOptGroupArray, parseChildren } from './utils';
 
 export type DropdownDefaultValue = number | string;
 export interface DropdownOption extends React.HTMLAttributes<'option'> {
   label: string;
   value: number | string;
 }
-export interface DropdownOptGroup {
+export interface DropdownOptGroup extends React.HTMLAttributes<'optgroup'> {
   label: string;
   options: DropdownOption[];
 }
@@ -92,61 +93,6 @@ export type DropdownProps = BaseDropdownProps &
   OptionsOrChildren &
   Omit<React.ComponentPropsWithRef<'button'>, keyof BaseDropdownProps>;
 
-const itemToString = (item: DropdownOption) => item.label;
-
-function isOptGroupArray(
-  optionsOrGroups: DropdownOption[] | DropdownOptGroup[]
-): optionsOrGroups is DropdownOptGroup[] {
-  return (
-    optionsOrGroups?.length > 0 && (optionsOrGroups as DropdownOptGroup[])[0].options !== undefined
-  );
-}
-
-function findElementsOfType<T extends keyof JSX.IntrinsicElements>(
-  type: T,
-  node: React.ReactNode
-): Array<React.ReactElement<any, T>> {
-  if (node && React.isValidElement(node) && type === node.type) {
-    return [node as any as React.ReactElement<any, T>];
-  } else if (typeof node === 'object') {
-    const array: React.ReactNode[] =
-      (Array.isArray(node) ? node : (node as React.ReactElement).props?.children) ?? [];
-    return array.reduce(
-      (acc: Array<React.ReactElement<any, T>>, child: React.ReactNode) => [
-        ...acc,
-        ...findElementsOfType(type, child),
-      ],
-      []
-    ) as Array<React.ReactElement<any, T>>;
-  } else {
-    return [];
-  }
-}
-
-function parseOptionElements(els: Array<React.ReactElement<any, 'option'>>): DropdownOption[] {
-  return els.map((option) => ({
-    value: option.props.value,
-    label: option.props.children?.toString?.() ?? '', // Probably should throw an error
-  }));
-}
-
-function parseChildren(node: React.ReactNode): DropdownOptGroup[] | DropdownOption[] {
-  const optgroups = findElementsOfType('optgroup', node);
-  if (optgroups.length) {
-    return optgroups.map((optgroup) => ({
-      label: optgroup.props.label,
-      options: parseOptionElements(findElementsOfType('option', optgroup)),
-    }));
-  }
-
-  const options = findElementsOfType('option', node);
-  if (options.length) {
-    return parseOptionElements(options);
-  }
-
-  return [{ label: 'foo', value: '1-1' }] as any;
-}
-
 export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   if (process.env.NODE_ENV !== 'production') {
     // 'ariaLabel' is provided with a `label` prop that is not an empty string
@@ -168,9 +114,8 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     }
   }
 
-  // Select specific props
-  const { ariaLabel, children, fieldClassName, options, size, defaultValue, ...selectProps } =
-    props;
+  // Draw out certain props that we don't want to pass through as attributes
+  const { ariaLabel, children, fieldClassName, options, size, defaultValue, ...extraProps } = props;
 
   // Turn our options or optgroups into a flat array of selectable items
   // that we can pass to the Downshift `useSelect` hook. Because the group
@@ -208,7 +153,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   });
 
   const { labelProps, fieldProps, wrapperProps, bottomError } = useFormLabel({
-    ...selectProps,
+    ...extraProps,
     className: classNames('ds-c-dropdown', size && `ds-c-field--${size}`),
     labelComponent: 'label',
     wrapperIsFieldset: false,
@@ -238,26 +183,34 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   });
 
   const renderOption = (item: DropdownOption, index: number) => {
+    const { value, label, className, ...extraAttrs } = item;
     return (
       <li
-        key={item.value}
-        value={item.value}
+        key={value}
+        value={value}
         className={classNames(
           'ds-c-dropdown__item',
           highlightedIndex === index && 'ds-c-dropdown__item--highlighted',
-          selectedItem === item && 'ds-c-dropdown__item--selected'
+          selectedItem === item && 'ds-c-dropdown__item--selected',
+          className
         )}
+        {...extraAttrs}
         {...getItemProps({ item, index })}
       >
-        {item.label}
+        {label}
       </li>
     );
   };
 
-  const renderOptGroup = (item: DropdownOptGroup) => {
+  const renderOptGroup = ({ label, className, ...extraAttrs }: DropdownOptGroup) => {
     return (
-      <li key={item.label} value={item.label} className="ds-c-dropdown__item-group">
-        {item.label}
+      <li
+        key={label}
+        value={label}
+        className={classNames('ds-c-dropdown__item-group', className)}
+        {...(extraAttrs as React.HTMLAttributes<any>)}
+      >
+        {label}
       </li>
     );
   };
