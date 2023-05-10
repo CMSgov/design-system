@@ -25,15 +25,15 @@ const dropdownOptions = [
 
 const optGroupData = (
   <>
-    <optgroup label="Option group">
-      <option value="1-1">Option 1</option>
-      <option value="1-2">Option 2</option>
-      <option value="1-3">Option 3</option>
+    <optgroup label="Group A">
+      <option value="a-1">Option A-1</option>
+      <option value="a-2">Option A-2</option>
+      <option value="a-3">Option A-3</option>
     </optgroup>
-    <optgroup label="More option groups">
-      <option value="2-1">Option 4</option>
-      <option value="2-2">Option 5</option>
-      <option value="2-3">Option 6</option>
+    <optgroup label="Group B">
+      <option value="b-1">Option B-1</option>
+      <option value="b-2">Option B-2</option>
+      <option value="b-3">Option B-3</option>
     </optgroup>
   </>
 );
@@ -67,7 +67,6 @@ Disabled.args = {
 export const OptionGroup = Template.bind({});
 OptionGroup.args = {
   options: undefined,
-  defaultValue: '1-1',
   label: 'Option group example',
   name: 'custom_dropdown_field',
   children: optGroupData,

@@ -13,6 +13,11 @@ export interface DropdownOptGroup {
   label: string;
   options: DropdownOption[];
 }
+interface InternalItem {
+  label: string;
+  value?: number | string;
+  isOptGroup?: boolean;
+}
 export type DropdownSize = 'small' | 'medium';
 export type DropdownValue = number | string;
 
@@ -21,10 +26,6 @@ export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
    * Adds `aria-label` attribute. When using `aria-label`, `label` should be empty string.
    */
   ariaLabel?: string;
-  /**
-   * Used to define custom dropdown options (i.e. option groups). When using the `children` prop, `options` should be an empty list.
-   */
-  children?: React.ReactNode;
   /**
    * Sets the initial selected state. Use this for an uncontrolled component;
    * otherwise, use the `value` property.
@@ -59,10 +60,6 @@ export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
    * The field's `name` attribute
    */
   name: string;
-  /**
-   * The list of options to be rendered. Provide an empty list if using custom options via the `children` prop.
-   */
-  options: DropdownOption[];
   onBlur?: (...args: any[]) => any;
   onChange?: (...args: any[]) => any;
   /**
@@ -80,10 +77,41 @@ export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
   value?: DropdownValue;
 }
 
+type OptionsOrChildren =
+  | {
+      /**
+       * Used to define custom dropdown options (i.e. option groups). When using the `children` prop, `options` should be an empty list.
+       */
+      children?: undefined;
+      /**
+       * The list of options to be rendered. Provide an empty list if using custom options via the `children` prop.
+       */
+      options: DropdownOption[];
+    }
+  | {
+      /**
+       * Used to define custom dropdown options (i.e. option groups). When using the `children` prop, `options` should be an empty list.
+       */
+      children: React.ReactNode;
+      /**
+       * The list of options to be rendered. Provide an empty list if using custom options via the `children` prop.
+       */
+      options?: undefined;
+    };
+
 export type DropdownProps = BaseDropdownProps &
+  OptionsOrChildren &
   Omit<React.ComponentPropsWithRef<'button'>, keyof BaseDropdownProps>;
 
 const itemToString = (item: DropdownOption) => item.label;
+
+function isOptGroupArray(
+  optionsOrGroups: DropdownOption[] | DropdownOptGroup[]
+): optionsOrGroups is DropdownOptGroup[] {
+  return (
+    optionsOrGroups?.length > 0 && (optionsOrGroups as DropdownOptGroup[])[0].options !== undefined
+  );
+}
 
 function findElementsOfType<T extends keyof JSX.IntrinsicElements>(
   type: T,
@@ -155,10 +183,22 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   const { ariaLabel, children, fieldClassName, options, size, defaultValue, ...selectProps } =
     props;
 
-  const items = options ?? parseChildren(children);
+  const optionsOrOptGroups = options ?? parseChildren(children);
+  const items: InternalItem[] = !isOptGroupArray(optionsOrOptGroups)
+    ? optionsOrOptGroups
+    : optionsOrOptGroups.reduce((internalItems: InternalItem[], optGroup: DropdownOptGroup) => {
+        internalItems.push({
+          label: optGroup.label,
+          isOptGroup: true,
+        });
+        internalItems.push(...optGroup.options);
+        return internalItems;
+      }, [] as InternalItem[]);
 
   const defaultSelectedItem =
-    defaultValue !== undefined ? items.find((item) => defaultValue === item.value) : items[0];
+    defaultValue !== undefined
+      ? items.find((item) => defaultValue === item.value)
+      : items.filter((item) => !item.isOptGroup)[0];
   if (!defaultSelectedItem) {
     throw new Error('Dropdown component could not determine a default selected option');
   }
@@ -199,7 +239,12 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     'aria-label': ariaLabel,
   });
 
-  const menuProps = getMenuProps({ className: 'ds-c-dropdown__menu' });
+  const menuProps = getMenuProps({
+    className: classNames(
+      'ds-c-dropdown__menu',
+      isOptGroupArray(optionsOrOptGroups) && 'ds-c-dropdown__menu--grouped'
+    ),
+  });
 
   return (
     <div {...wrapperProps}>
@@ -212,11 +257,11 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
               key={item.value}
               value={item.value}
               className={classNames(
-                'ds-c-dropdown__item',
+                item.isOptGroup ? 'ds-c-dropdown__item-group' : 'ds-c-dropdown__item',
                 highlightedIndex === index && 'ds-c-dropdown__item--highlighted',
                 selectedItem === item && 'ds-c-dropdown__item--selected'
               )}
-              {...getItemProps({ item, index })}
+              {...(!item.isOptGroup ? getItemProps({ item, index }) : {})}
             >
               {item.label}
             </li>

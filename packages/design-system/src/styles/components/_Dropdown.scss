@@ -42,7 +42,8 @@
   gap: 0;
 }
 
-.ds-c-dropdown__item {
+.ds-c-dropdown__item,
+.ds-c-dropdown__item-group {
   border-block-end: 1px solid var(--autocomplete__border-color);
   padding: var(--spacer-1);
 
