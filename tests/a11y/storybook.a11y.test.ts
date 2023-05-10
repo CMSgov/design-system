@@ -8,8 +8,13 @@ function sleep(ms) {
 }
 
 Object.values(stories).forEach((story) => {
+  // Storybook's UI has a lot of Axe violations we have no control over
+  // Don't run a11y tests on docs-only stories
+  if (story.parameters.docsOnly) return;
+
   test.describe(`${story.title}/${story.name}`, () => {
-    const storyUrl = `http://localhost:6006/iframe.html?viewMode=story&id=${story.id}`;
+    const storyUrl = `http://localhost:6006/iframe.html?globals=backgrounds.grid:!false&args=&id=${story.id}&viewMode=story`;
+
     Object.keys(themes).forEach((theme) => {
       if (themes[theme].incomplete) return;
       // right now medicare is not doing a11y testing

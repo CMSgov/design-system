@@ -22,7 +22,7 @@ exports[`Footer renders basic footer 1`] = `
             <a
               href="/contact-us"
             >
-              Contact Us
+              Contact us
             </a>
             <span
               aria-hidden="true"
@@ -59,7 +59,7 @@ exports[`Footer renders basic footer 1`] = `
             class="hc-c-footer__inline-item"
           >
             <button>
-              Privacy Settings
+              Privacy settings
             </button>
             <span
               aria-hidden="true"
@@ -72,7 +72,7 @@ exports[`Footer renders basic footer 1`] = `
             <a
               href="/privacy"
             >
-              Privacy Policy
+              Privacy policy
             </a>
             <span
               aria-hidden="true"
@@ -85,7 +85,7 @@ exports[`Footer renders basic footer 1`] = `
             <a
               href="/using-this-site"
             >
-              Using This Site
+              Using this site
             </a>
           </li>
         </ul>
@@ -383,7 +383,7 @@ exports[`Footer renders basic footer with props 1`] = `
             <a
               href="https://www.healthcare.gov/contact-us"
             >
-              Contact Us
+              Contact us
             </a>
             <span
               aria-hidden="true"
@@ -420,7 +420,7 @@ exports[`Footer renders basic footer with props 1`] = `
             class="hc-c-footer__inline-item"
           >
             <button>
-              Privacy Settings
+              Privacy settings
             </button>
             <span
               aria-hidden="true"
@@ -433,7 +433,7 @@ exports[`Footer renders basic footer with props 1`] = `
             <a
               href="https://www.healthcare.gov/privacy"
             >
-              Privacy Policy
+              Privacy policy
             </a>
             <span
               aria-hidden="true"
@@ -446,7 +446,7 @@ exports[`Footer renders basic footer with props 1`] = `
             <a
               href="https://www.healthcare.gov/using-this-site"
             >
-              Using This Site
+              Using this site
             </a>
           </li>
         </ul>
