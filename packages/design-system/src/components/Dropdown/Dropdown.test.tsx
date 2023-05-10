@@ -173,4 +173,31 @@ describe('Dropdown', () => {
 
     expect(select).toHaveFocus();
   });
+
+  it('accepts optgroup children', () => {
+    render(
+      <Dropdown {...defaultProps}>
+        <optgroup label="Group A">
+          <option value="a-1">Option A-1</option>
+          <option value="a-2">Option A-2</option>
+          <option value="a-3">Option A-3</option>
+        </optgroup>
+        <optgroup label="Group B">
+          <option value="b-1">Option B-1</option>
+          <option value="b-2">Option B-2</option>
+          <option value="b-3">Option B-3</option>
+        </optgroup>
+      </Dropdown>
+    );
+  });
+
+  it('accepts option children', () => {
+    render(
+      <Dropdown {...defaultProps}>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+      </Dropdown>
+    );
+  });
 });

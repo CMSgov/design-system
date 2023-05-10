@@ -5,18 +5,13 @@ import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 import { useSelect } from 'downshift';
 
 export type DropdownDefaultValue = number | string;
-export interface DropdownOption {
+export interface DropdownOption extends React.HTMLAttributes<'option'> {
   label: string;
   value: number | string;
 }
 export interface DropdownOptGroup {
   label: string;
   options: DropdownOption[];
-}
-interface InternalItem {
-  label: string;
-  value?: number | string;
-  isOptGroup?: boolean;
 }
 export type DropdownSize = 'small' | 'medium';
 export type DropdownValue = number | string;
@@ -79,23 +74,17 @@ export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
 
 type OptionsOrChildren =
   | {
-      /**
-       * Used to define custom dropdown options (i.e. option groups). When using the `children` prop, `options` should be an empty list.
-       */
       children?: undefined;
       /**
-       * The list of options to be rendered. Provide an empty list if using custom options via the `children` prop.
+       * The list of options to be rendered. Each item must have a `label` and `value`.
        */
       options: DropdownOption[];
     }
   | {
       /**
-       * Used to define custom dropdown options (i.e. option groups). When using the `children` prop, `options` should be an empty list.
+       * Used to define custom dropdown options (i.e. option groups). Alternative to `options` prop.
        */
       children: React.ReactNode;
-      /**
-       * The list of options to be rendered. Provide an empty list if using custom options via the `children` prop.
-       */
       options?: undefined;
     };
 
@@ -184,21 +173,18 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     props;
 
   const optionsOrOptGroups = options ?? parseChildren(children);
-  const items: InternalItem[] = !isOptGroupArray(optionsOrOptGroups)
+  const items: DropdownOption[] = !isOptGroupArray(optionsOrOptGroups)
     ? optionsOrOptGroups
-    : optionsOrOptGroups.reduce((internalItems: InternalItem[], optGroup: DropdownOptGroup) => {
-        internalItems.push({
-          label: optGroup.label,
-          isOptGroup: true,
-        });
-        internalItems.push(...optGroup.options);
-        return internalItems;
-      }, [] as InternalItem[]);
+    : optionsOrOptGroups.reduce(
+        (options: DropdownOption[], optGroup: DropdownOptGroup) => [
+          ...options,
+          ...optGroup.options,
+        ],
+        []
+      );
 
   const defaultSelectedItem =
-    defaultValue !== undefined
-      ? items.find((item) => defaultValue === item.value)
-      : items.filter((item) => !item.isOptGroup)[0];
+    defaultValue !== undefined ? items.find((item) => defaultValue === item.value) : items[0];
   if (!defaultSelectedItem) {
     throw new Error('Dropdown component could not determine a default selected option');
   }
@@ -246,27 +232,55 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     ),
   });
 
+  const renderOption = (item: DropdownOption, index: number) => {
+    return (
+      <li
+        key={item.value}
+        value={item.value}
+        className={classNames(
+          'ds-c-dropdown__item',
+          highlightedIndex === index && 'ds-c-dropdown__item--highlighted',
+          selectedItem === item && 'ds-c-dropdown__item--selected'
+        )}
+        {...getItemProps({ item, index })}
+      >
+        {item.label}
+      </li>
+    );
+  };
+
+  const renderOptGroup = (item: DropdownOptGroup) => {
+    return (
+      <li key={item.label} value={item.label} className="ds-c-dropdown__item-group">
+        {item.label}
+      </li>
+    );
+  };
+
+  let menuContent;
+  if (isOptGroupArray(optionsOrOptGroups)) {
+    menuContent = [];
+    // Need to keep the option groups out of the indexing
+    let itemIndex = 0;
+    for (const optGroup of optionsOrOptGroups) {
+      menuContent.push(renderOptGroup(optGroup));
+      for (const option of optGroup.options) {
+        console.log(`index: ${itemIndex}`);
+        menuContent.push(renderOption(option, itemIndex++));
+      }
+    }
+  } else {
+    menuContent = optionsOrOptGroups.map(renderOption);
+  }
+
+  console.log(`highlighted index: ${highlightedIndex}`);
+
   return (
     <div {...wrapperProps}>
       <FormLabel {...labelProps} fieldId={fieldProps.id} />
       <button {...buttonProps}>{selectedItem.label}</button>
       <div className="ds-c-dropdown__menu-container" hidden={!isOpen}>
-        <ul {...menuProps}>
-          {items.map((item, index) => (
-            <li
-              key={item.value}
-              value={item.value}
-              className={classNames(
-                item.isOptGroup ? 'ds-c-dropdown__item-group' : 'ds-c-dropdown__item',
-                highlightedIndex === index && 'ds-c-dropdown__item--highlighted',
-                selectedItem === item && 'ds-c-dropdown__item--selected'
-              )}
-              {...(!item.isOptGroup ? getItemProps({ item, index }) : {})}
-            >
-              {item.label}
-            </li>
-          ))}
-        </ul>
+        <ul {...menuProps}>{menuContent}</ul>
       </div>
       {bottomError}
     </div>
