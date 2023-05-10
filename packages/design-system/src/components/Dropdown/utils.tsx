@@ -23,10 +23,6 @@ export function validateProps(props: DropdownProps) {
   }
 }
 
-export function itemToString(item: DropdownOption) {
-  return item.label;
-}
-
 export function isOptGroupArray(
   optionsOrGroups: DropdownOption[] | DropdownOptGroup[]
 ): optionsOrGroups is DropdownOptGroup[] {
@@ -61,7 +57,7 @@ function findElementsOfType<T extends keyof JSX.IntrinsicElements>(
   }
 
   // It's a React element, so recurse on its children (a ReactNode)
-  return findElementsOfType(type, node.props.children);
+  return findElementsOfType(type, (node as React.ReactElement).props?.children);
 }
 
 function parseOptionElement(option: React.ReactElement<any, 'option'>): DropdownOption {

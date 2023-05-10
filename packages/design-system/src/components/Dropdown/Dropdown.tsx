@@ -3,12 +3,14 @@ import classNames from 'classnames';
 import useAutofocus from '../utilities/useAutoFocus';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 import { useSelect } from 'downshift';
-import { itemToString, isOptGroupArray, parseChildren, validateProps } from './utils';
+import { isOptGroupArray, parseChildren, validateProps } from './utils';
 
-export type DropdownDefaultValue = number | string;
+export type DropdownSize = 'small' | 'medium';
+export type DropdownValue = number | string;
+
 export interface DropdownOption extends React.HTMLAttributes<'option'> {
   label: string;
-  value: number | string;
+  value: DropdownValue;
 }
 export interface DropdownOptGroup extends React.HTMLAttributes<'optgroup'> {
   label: string;
@@ -19,8 +21,7 @@ interface InternalItem extends React.HTMLAttributes<'option' | 'optgroup'> {
   value?: number | string;
   isOptGroup?: boolean;
 }
-export type DropdownSize = 'small' | 'medium';
-export type DropdownValue = number | string;
+const itemToString = (item: InternalItem) => item.label;
 
 export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
   /**
@@ -31,7 +32,7 @@ export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
    * Sets the initial selected state. Use this for an uncontrolled component;
    * otherwise, use the `value` property.
    */
-  defaultValue?: DropdownDefaultValue;
+  defaultValue?: DropdownValue;
   /**
    * Disables the entire field.
    */
@@ -115,7 +116,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     () =>
       !isOptGroupArray(optionsOrOptGroups)
         ? optionsOrOptGroups
-        : optionsOrOptGroups.reduce((internalItems: InternalItem[], optGroup: DropdownOptGroup) => {
+        : optionsOrOptGroups.reduce((internalItems, optGroup) => {
             internalItems.push({
               label: optGroup.label,
               isOptGroup: true,
