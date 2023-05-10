@@ -313,6 +313,8 @@ export const components: AnyTokenValues = {
   'dropdown': {
     '__background-color':                         t.color['white'],
     '__icon-size':                                '10px',
+    '-item__border-width':                        '1px',
+    '-item__border-color':                        t.color['gray-lighter'],
   },
   
   'filter-chip': {

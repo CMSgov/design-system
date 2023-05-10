@@ -382,6 +382,8 @@
 --drawer-toggle__color--hover--inverse: #404040;
 --dropdown__background-color: #ffffff;
 --dropdown__icon-size: 10px;
+--dropdown-item__border-width: 1px;
+--dropdown-item__border-color: #d9d9d9;
 --filter-chip__border-radius: 9999px;
 --filter-chip__background-color: #e6f1f8;
 --filter-chip__border-color: #0071bc;

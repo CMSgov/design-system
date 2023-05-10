@@ -136,7 +136,11 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
 
   const { labelProps, fieldProps, wrapperProps, bottomError } = useFormLabel({
     ...extraProps,
-    className: classNames('ds-c-dropdown', size && `ds-c-field--${size}`),
+    className: classNames(
+      'ds-c-dropdown',
+      isOpen && 'ds-c-dropdown--open',
+      size && `ds-c-field--${size}`
+    ),
     labelComponent: 'label',
     wrapperIsFieldset: false,
   });
