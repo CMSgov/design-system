@@ -6,8 +6,8 @@ exports[`Dropdown dropdown matches snapshot 1`] = `
 >
   <label
     class="ds-c-label"
-    for="field_1"
-    id="field_1-label"
+    for="dropdown__button--1"
+    id="dropdown__label--2"
   >
     <span
       class=""
@@ -17,13 +17,13 @@ exports[`Dropdown dropdown matches snapshot 1`] = `
   </label>
   <button
     aria-activedescendant=""
-    aria-controls="downshift-0-menu"
+    aria-controls="dropdown__menu--3"
     aria-expanded="false"
     aria-haspopup="listbox"
     aria-invalid="false"
-    aria-labelledby="downshift-0-label"
+    aria-labelledby="dropdown__label--2"
     class="ds-c-dropdown__button ds-c-field"
-    id="field_1"
+    id="dropdown__button--1"
     name="dropdown"
     role="combobox"
     tabindex="0"
@@ -35,9 +35,9 @@ exports[`Dropdown dropdown matches snapshot 1`] = `
     hidden=""
   >
     <ul
-      aria-labelledby="downshift-0-label"
+      aria-labelledby="dropdown__label--2"
       class="ds-c-dropdown__menu"
-      id="downshift-0-menu"
+      id="dropdown__menu--3"
       role="listbox"
     >
       <li
@@ -80,8 +80,8 @@ exports[`Dropdown supports bottom placed error 1`] = `
   >
     <label
       class="ds-c-label"
-      for="field_8"
-      id="field_8-label"
+      for="dropdown__button--19"
+      id="dropdown__label--20"
     >
       <span
         class=""
@@ -91,14 +91,14 @@ exports[`Dropdown supports bottom placed error 1`] = `
     </label>
     <button
       aria-activedescendant=""
-      aria-controls="downshift-6-menu"
+      aria-controls="dropdown__menu--21"
       aria-describedby="1_error"
       aria-expanded="false"
       aria-haspopup="listbox"
       aria-invalid="true"
-      aria-labelledby="downshift-6-label"
+      aria-labelledby="dropdown__label--20"
       class="ds-c-dropdown__button ds-c-field ds-c-field--error"
-      id="field_8"
+      id="dropdown__button--19"
       name="dropdown"
       role="combobox"
       tabindex="0"
@@ -110,9 +110,9 @@ exports[`Dropdown supports bottom placed error 1`] = `
       hidden=""
     >
       <ul
-        aria-labelledby="downshift-6-label"
+        aria-labelledby="dropdown__label--20"
         class="ds-c-dropdown__menu"
-        id="downshift-6-menu"
+        id="dropdown__menu--21"
         role="listbox"
       >
         <li

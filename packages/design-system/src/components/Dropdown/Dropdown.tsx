@@ -1,9 +1,10 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useRef } from 'react';
 import classNames from 'classnames';
 import useAutofocus from '../utilities/useAutoFocus';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 import { useSelect, UseSelectStateChangeOptions } from 'downshift';
 import { isOptGroupArray, parseChildren, validateProps } from './utils';
+import { uniqueId } from 'lodash';
 
 export type DropdownSize = 'small' | 'medium';
 export type DropdownValue = number | string;
@@ -107,6 +108,10 @@ export type DropdownProps = BaseDropdownProps &
 export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   validateProps(props);
 
+  const id = useRef(props.id ?? uniqueId('dropdown__button--')).current;
+  const labelId = useRef(props.labelId ?? uniqueId('dropdown__label--')).current;
+  const menuId = useRef(uniqueId('dropdown__menu--')).current;
+
   // Draw out certain props that we don't want to pass through as attributes
   const {
     ariaLabel,
@@ -171,6 +176,9 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   } = useSelect({
     defaultSelectedItem,
     selectedItem: controlledSelectedItem,
+    toggleButtonId: id,
+    labelId,
+    menuId,
     items,
     itemToString,
     onSelectedItemChange:
@@ -188,6 +196,8 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
 
   const { labelProps, fieldProps, wrapperProps, bottomError } = useFormLabel({
     ...extraProps,
+    id,
+    labelId,
     className: classNames(
       'ds-c-dropdown',
       isOpen && 'ds-c-dropdown--open',

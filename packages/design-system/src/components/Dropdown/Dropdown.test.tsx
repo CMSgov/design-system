@@ -104,26 +104,22 @@ describe('Dropdown', () => {
     makeDropdown({ value: '1', onChange, onBlur }, 5);
     const button = screen.getByRole('combobox');
     userEvent.click(button);
-    userEvent.type(button, '{arrowdown}');
-    userEvent.type(button, '{enter}');
+    userEvent.keyboard('{arrowdown}');
+    userEvent.keyboard('{enter}');
     expect(onBlur).not.toHaveBeenCalled();
     expect(onChange).toHaveBeenCalled();
   });
 
   it('calls the onBlur handler', () => {
+    const onChange = jest.fn();
+    const onBlur = jest.fn();
     makeDropdown({ defaultValue: '1', onChange, onBlur }, 10);
-    const selectLabel = screen.getByLabelText('Select an option');
-    const select = screen.getByRole('combobox');
-
-    userEvent.click(selectLabel);
-    expect(select).toHaveFocus();
+    const button = screen.getByRole('combobox');
+    userEvent.click(button);
+    expect(button).toHaveFocus();
     userEvent.tab();
     expect(onBlur).toHaveBeenCalled();
-    // TODO: reimpliment this to check for no onChange in this test
-    // this is being called automatically by RTL when the component mounts
-    // it does not get called in storybook or in a live environment, jsdom
-    // limitation?
-    // expect(defaultProps.onChange).not.toHaveBeenCalled();
+    expect(onChange).not.toHaveBeenCalled();
   });
 
   it('focuses automatically with autoFocus prop', () => {
