@@ -123,6 +123,7 @@ HtmlOptions.args = {
 export const InverseOption = Template.bind({});
 InverseOption.args = {
   options: dropdownOptions,
+  errorMessage: 'Example error message',
   hint: 'Helpful hint text',
   label: 'Inverse example',
   name: 'inverse_dropdown_field',
