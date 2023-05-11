@@ -2,11 +2,16 @@ import React, { useMemo } from 'react';
 import classNames from 'classnames';
 import useAutofocus from '../utilities/useAutoFocus';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
-import { useSelect } from 'downshift';
+import { useSelect, UseSelectStateChangeOptions } from 'downshift';
 import { isOptGroupArray, parseChildren, validateProps } from './utils';
 
 export type DropdownSize = 'small' | 'medium';
 export type DropdownValue = number | string;
+
+export interface DropdownChangeObject extends UseSelectStateChangeOptions<any> {
+  target: { value: string };
+  currentTarget: { value: string };
+}
 
 export interface DropdownOption extends React.HTMLAttributes<'option'> {
   label: string;
@@ -63,7 +68,7 @@ export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
    */
   name: string;
   onBlur?: (...args: any[]) => any;
-  onChange?: (...args: any[]) => any;
+  onChange?: (change: DropdownChangeObject) => any;
   /**
    * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
    */
@@ -103,7 +108,18 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   validateProps(props);
 
   // Draw out certain props that we don't want to pass through as attributes
-  const { ariaLabel, children, fieldClassName, options, size, defaultValue, ...extraProps } = props;
+  const {
+    ariaLabel,
+    autoFocus,
+    children,
+    fieldClassName,
+    onChange,
+    options,
+    size,
+    defaultValue,
+    value,
+    ...extraProps
+  } = props;
 
   // Turn our options or optgroups into a flat array of selectable items that
   // we can pass to the Downshift `useSelect` hook. Even though the group
@@ -127,12 +143,22 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     [options, children]
   );
 
-  const defaultSelectedItem =
-    defaultValue !== undefined
-      ? items.find((item) => defaultValue === item.value)
-      : items.filter((item) => !item.isOptGroup)[0];
-  if (!defaultSelectedItem) {
-    throw new Error('Dropdown component could not determine a default selected option');
+  let controlledSelectedItem;
+  let defaultSelectedItem;
+  if (value !== undefined) {
+    // Controlled component
+    controlledSelectedItem = items.find((item) => value === item.value);
+    if (!controlledSelectedItem) {
+      throw new Error(`Could not find option matching value: ${value}`);
+    }
+  } else {
+    defaultSelectedItem =
+      defaultValue !== undefined
+        ? items.find((item) => defaultValue === item.value)
+        : items.filter((item) => !item.isOptGroup)[0];
+    if (!defaultSelectedItem) {
+      throw new Error('Dropdown component could not determine a default selected option');
+    }
   }
 
   const {
@@ -144,8 +170,20 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     highlightedIndex,
   } = useSelect({
     defaultSelectedItem,
+    selectedItem: controlledSelectedItem,
     items,
     itemToString,
+    onSelectedItemChange:
+      onChange &&
+      ((changes: UseSelectStateChangeOptions<any>) => {
+        // Try to support the old API that passed an event object
+        const target = { value: changes.selectedItem.value };
+        onChange({
+          ...changes,
+          target,
+          currentTarget: target,
+        });
+      }),
   });
 
   const { labelProps, fieldProps, wrapperProps, bottomError } = useFormLabel({
@@ -159,8 +197,10 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     wrapperIsFieldset: false,
   });
 
-  // we don't want to pass this down to the button
+  // We don't want to pass these down to the button
   delete fieldProps.errorMessage;
+  delete fieldProps.errorId;
+  delete fieldProps.inversed;
 
   const buttonProps = getToggleButtonProps({
     ...fieldProps,

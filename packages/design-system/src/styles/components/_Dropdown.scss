@@ -54,6 +54,10 @@
     position: sticky;
     width: 100%;
   }
+
+  .ds-c-field--inverse + & {
+    color: var(--color-base);
+  }
 }
 
 .ds-c-dropdown__menu {
