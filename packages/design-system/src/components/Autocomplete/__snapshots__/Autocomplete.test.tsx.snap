@@ -35,7 +35,8 @@ exports[`Autocomplete renders Autocomplete component 1`] = `
     />
   </div>
   <div
-    class="ds-c-autocomplete__list ds-u-display--none"
+    class="ds-c-autocomplete__list"
+    hidden=""
     id="autocomplete__menu-container--4"
   >
     <ul
