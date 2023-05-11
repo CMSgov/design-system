@@ -14,7 +14,7 @@ const config: StorybookConfig = {
     '../packages/ds-healthcare-gov/src/**/*.stories.@([jt]sx)',
     '../packages/ds-medicare-gov/src/**/*.stories.@([jt]sx)',
   ],
-  staticDirs: ['./static/', '../packages/design-system/src'],
+  staticDirs: ['./static/'],
   framework: {
     name: '@storybook/react-webpack5',
     options: {},
