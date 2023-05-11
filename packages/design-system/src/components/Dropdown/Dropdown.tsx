@@ -44,20 +44,20 @@ export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
    */
   disabled?: boolean;
   /**
-   * Additional classes to be added to the select element
+   * Additional classes to be added to the dropdown button element
    */
   fieldClassName?: string;
   /**
-   * Sets the focus on the select during the first mount
+   * Sets the focus on the button during the first mount
    */
   autoFocus?: boolean;
   /**
-   * A unique ID to be used for the `select` element. If one isn't provided, a unique ID will be generated.  /**
+   * A unique ID to be used for the `button` element. If one isn't provided, a unique ID will be generated.  /**
    * Additional hint text to display
    */
   id?: string;
   /**
-   * Access a reference to the `select` element
+   * Access a reference to the `button` element
    */
   inputRef?: (...args: any[]) => any;
   /**
