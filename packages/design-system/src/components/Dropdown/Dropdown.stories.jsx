@@ -56,8 +56,8 @@ const htmlOptions = (
 
 const Template = (args) => <Dropdown {...args} />;
 
-export const DefaultDropdown = Template.bind({});
-DefaultDropdown.args = {
+export const Default = Template.bind({});
+Default.args = {
   options: dropdownOptions,
   label: 'Dropdown example',
   name: 'dropdown_field',
