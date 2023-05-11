@@ -80,6 +80,30 @@ Disabled.args = {
   name: 'disabled_dropdown_field',
 };
 
+export const OptionGroups = Template.bind({});
+OptionGroups.args = {
+  options: [
+    {
+      label: 'Group A',
+      options: [
+        { value: 'a-1', label: 'Option A-1' },
+        { value: 'a-2', label: 'Option A-2' },
+        { value: 'a-3', label: 'Option A-3' },
+      ],
+    },
+    {
+      label: 'Group B',
+      options: [
+        { value: 'b-1', label: 'Option B-1' },
+        { value: 'b-2', label: 'Option B-2' },
+        { value: 'b-3', label: 'Option B-3' },
+      ],
+    },
+  ],
+  label: 'Option groups example',
+  name: 'optgroups_dropdown_field',
+};
+
 export const HtmlOptionGroups = Template.bind({});
 HtmlOptionGroups.args = {
   options: undefined,
