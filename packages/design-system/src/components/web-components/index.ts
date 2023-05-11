@@ -15,4 +15,5 @@ export * from '../i18n';
 export * from './ds-alert';
 export * from './ds-badge';
 export * from './ds-button';
+export * from './ds-dropdown';
 export * from './ds-usa-banner';

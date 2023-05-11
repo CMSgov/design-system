@@ -18,4 +18,17 @@ const attributes = [
   'alert-ref',
 ];
 
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'ds-alert': React.DetailedHTMLProps<
+        React.HTMLAttributes<HTMLElement> & {
+          [K in typeof attributes[number]]?: string;
+        },
+        HTMLElement
+      >;
+    }
+  }
+}
+
 define('ds-alert', () => Alert, { attributes });
