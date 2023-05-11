@@ -124,9 +124,8 @@ describe('Dropdown', () => {
 
   it('focuses automatically with autoFocus prop', () => {
     makeDropdown({ defaultValue: '1', autoFocus: true }, 10);
-    const select = screen.getByRole('combobox');
-
-    expect(select).toHaveFocus();
+    const button = screen.getByRole('combobox');
+    expect(button).toHaveFocus();
   });
 
   it('accepts optgroup children', () => {
@@ -144,6 +143,35 @@ describe('Dropdown', () => {
         </optgroup>
       </Dropdown>
     );
+    userEvent.click(screen.getByRole('combobox'));
+    const list = screen.getByRole('listbox');
+    expect(list.children.length).toEqual(8); // Group headings + options
+    expect(list).toMatchSnapshot();
+  });
+
+  it('accepts DropdownOptGroup objects in options prop', () => {
+    const options = [
+      {
+        label: 'Group A',
+        options: [
+          { value: 'a-1', label: 'Option A-1' },
+          { value: 'a-2', label: 'Option A-2' },
+          { value: 'a-3', label: 'Option A-3' },
+        ],
+      },
+      {
+        label: 'Group B',
+        options: [
+          { value: 'b-1', label: 'Option B-1' },
+          { value: 'b-2', label: 'Option B-2' },
+          { value: 'b-3', label: 'Option B-3' },
+        ],
+      },
+    ];
+    render(<Dropdown {...defaultProps} options={options} />);
+    userEvent.click(screen.getByRole('combobox'));
+    const list = screen.getByRole('listbox');
+    expect(list.children.length).toEqual(8); // Group headings + options
   });
 
   it('accepts option children', () => {
@@ -154,5 +182,8 @@ describe('Dropdown', () => {
         <option value="3">Option 3</option>
       </Dropdown>
     );
+    userEvent.click(screen.getByRole('combobox'));
+    const list = screen.getByRole('listbox');
+    expect(list.children.length).toEqual(3);
   });
 });

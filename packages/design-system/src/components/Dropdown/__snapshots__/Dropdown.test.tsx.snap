@@ -1,5 +1,75 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Dropdown accepts optgroup children 1`] = `
+<ul
+  aria-labelledby="dropdown__label--50"
+  class="ds-c-dropdown__menu ds-c-dropdown__menu--grouped"
+  id="dropdown__menu--51"
+  role="listbox"
+>
+  <li
+    aria-selected="false"
+    class="ds-c-dropdown__item-group"
+    disabled=""
+    id="downshift-16-item-0"
+    role="group"
+  >
+    Group A
+  </li>
+  <li
+    aria-selected="true"
+    class="ds-c-dropdown__item ds-c-dropdown__item--highlighted ds-c-dropdown__item--selected"
+    id="downshift-16-item-1"
+  >
+    Option A-1
+  </li>
+  <li
+    aria-selected="false"
+    class="ds-c-dropdown__item"
+    id="downshift-16-item-2"
+  >
+    Option A-2
+  </li>
+  <li
+    aria-selected="false"
+    class="ds-c-dropdown__item"
+    id="downshift-16-item-3"
+  >
+    Option A-3
+  </li>
+  <li
+    aria-selected="false"
+    class="ds-c-dropdown__item-group"
+    disabled=""
+    id="downshift-16-item-4"
+    role="group"
+  >
+    Group B
+  </li>
+  <li
+    aria-selected="false"
+    class="ds-c-dropdown__item"
+    id="downshift-16-item-5"
+  >
+    Option B-1
+  </li>
+  <li
+    aria-selected="false"
+    class="ds-c-dropdown__item"
+    id="downshift-16-item-6"
+  >
+    Option B-2
+  </li>
+  <li
+    aria-selected="false"
+    class="ds-c-dropdown__item"
+    id="downshift-16-item-7"
+  >
+    Option B-3
+  </li>
+</ul>
+`;
+
 exports[`Dropdown dropdown matches snapshot 1`] = `
 <div
   class="ds-c-dropdown"

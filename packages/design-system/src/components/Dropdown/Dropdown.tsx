@@ -91,7 +91,7 @@ type OptionsOrChildren =
       /**
        * The list of options to be rendered. Each item must have a `label` and `value`.
        */
-      options: DropdownOption[];
+      options: DropdownOption[] | DropdownOptGroup[];
     }
   | {
       /**
