@@ -116,7 +116,11 @@ export function useFormLabel<T extends UseFormLabelProps>(props: T) {
 
   const hasBottomError = errorPlacement === 'bottom' && errorMessage;
   const bottomError = hasBottomError ? (
-    <InlineError id={errorId} inversed={inversed} className={errorMessageClassName}>
+    <InlineError
+      id={errorId}
+      inversed={inversed}
+      className={classNames('ds-c-field__error-message--bottom', errorMessageClassName)}
+    >
       {errorMessage}
     </InlineError>
   ) : undefined;

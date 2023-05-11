@@ -22,7 +22,6 @@ export default {
     defaultMonth: { control: 'date' },
   },
   args: {
-    errorPlacement: 'top',
     hint: 'Please enter your birthday',
     label: 'Birthday',
     name: 'single-input-date-field',
