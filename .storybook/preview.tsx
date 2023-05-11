@@ -5,7 +5,8 @@ import {
   setButtonSendsAnalytics,
   setDialogSendsAnalytics,
   setHelpDrawerSendsAnalytics,
-} from '@cmsgov/design-system/src/components/flags';
+  setErrorPlacementDefault,
+} from '../packages/design-system/src/components/flags';
 import { setHeaderSendsAnalytics } from '../packages/ds-healthcare-gov/src/components/flags';
 import { setLanguage } from '@cmsgov/design-system/src/components/i18n';
 import { setLanguage as setLanguageFromPackage } from '@cmsgov/design-system';
@@ -125,6 +126,9 @@ const themeSettingDecorator = (Story, context) => {
 
   const themeCss = document.querySelector('link[title=themeCss]') as HTMLLinkElement;
   themeCss.href = `${theme}-theme.css`;
+
+  // Child design system flag settings could be handled better in the future
+  setErrorPlacementDefault(theme === 'healthcare' ? 'bottom' : 'top');
 
   return <Story {...context} />;
 };

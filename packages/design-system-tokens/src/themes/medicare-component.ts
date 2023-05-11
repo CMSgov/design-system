@@ -332,7 +332,6 @@ export const components: AnyTokenValues = {
   
   'form': {
     '-label__color--inverse':                     t.color['base-inverse'],
-    '-label__color--not-error':                   t.color['gray'], 
     '__max-width':                                '460px',
     '__max-width--small':                         '6em',
     '__max-width--medium':                        '12em',

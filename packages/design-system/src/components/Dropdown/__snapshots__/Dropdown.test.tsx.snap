@@ -127,7 +127,7 @@ exports[`Dropdown supports bottom placed error 1`] = `
     <span
       aria-atomic="true"
       aria-live="assertive"
-      class="ds-c-inline-error ds-c-field__error-message"
+      class="ds-c-inline-error ds-c-field__error-message ds-c-field__error-message--bottom"
       id="1_error"
     >
       <svg
