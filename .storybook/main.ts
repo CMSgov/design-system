@@ -25,6 +25,22 @@ const config: StorybookConfig = {
     name: '@storybook/react-webpack5',
     options: {},
   },
+  babel: async (options) => ({
+    ...options,
+    plugins: [
+      [
+        'module-resolver',
+        {
+          alias: {
+            react: 'preact/compat',
+            'react-dom': 'preact/compat',
+            'react/jsx-runtime': 'preact/jsx-runtime',
+          },
+        },
+      ],
+    ],
+    // presets: [["@babel/typescript", { jsxPragma: "h" }]], Don't think we need this
+  }),
   docs: {
     autodocs: true,
   },

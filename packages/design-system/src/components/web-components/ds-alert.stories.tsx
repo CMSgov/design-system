@@ -1,4 +1,5 @@
 import React from 'react';
+import './ds-alert';
 
 export default {
   title: 'Web Components/Alert',
@@ -11,17 +12,14 @@ export default {
   },
   args: {
     variation: 'success',
-    heading: "Yay!"
-  }
+    heading: 'Yay!',
+  },
 };
 
 const Template = (args) => (
-  <ds-alert
-    variation={args.variation}
-    heading={args.heading}
-  >
-    This is an example of a success alert. If you want to see an error alert, click the
-    button below.
+  <ds-alert variation={args.variation} heading={args.heading}>
+    This is an example of a success alert. If you want to see an error alert, click the button
+    below.
   </ds-alert>
 );
 
