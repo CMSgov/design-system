@@ -8,12 +8,13 @@ import {
   setErrorPlacementDefault,
 } from '../packages/design-system/src/components/flags';
 import { setHeaderSendsAnalytics } from '../packages/ds-healthcare-gov/src/components/flags';
-import { setLanguage } from '../packages/design-system/src/components/i18n';
+import { setLanguage } from '@cmsgov/design-system/src/components/i18n';
 import { setLanguage as setLanguageFromPackage } from '@cmsgov/design-system';
 import themes from '../themes.json';
+import type { UtagContainer } from '@cmsgov/design-system';
 
 // Rewire analytics events to log to the console
-window.utag = { link: console.log };
+(window as UtagContainer).utag = { link: console.log };
 
 const customViewports = {
   extraSmall: {
@@ -123,7 +124,7 @@ const themeSettingDecorator = (Story, context) => {
 
   document.documentElement.setAttribute('data-theme', theme);
 
-  const themeCss = document.querySelector('link[title=themeCss]');
+  const themeCss = document.querySelector('link[title=themeCss]') as HTMLLinkElement;
   themeCss.href = `${theme}-theme.css`;
 
   // Child design system flag settings could be handled better in the future
