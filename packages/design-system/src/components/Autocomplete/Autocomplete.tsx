@@ -215,6 +215,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
     if (items?.length) {
       return items.map((item, index) => (
         <li
+          aria-selected={highlightedIndex === index}
           className={classNames(item.className, 'ds-c-autocomplete__list-item', {
             'ds-c-autocomplete__list-item--active': highlightedIndex === index,
           })}
@@ -309,7 +310,10 @@ export const Autocomplete = (props: AutocompleteProps) => {
     <div className={rootClassName}>
       {renderChildren()}
 
-      <div className="ds-c-autocomplete__list" id={menuContainerId} hidden={!isOpen}>
+      <div
+        className={classNames('ds-c-autocomplete__list', !isOpen && 'ds-u-display--none')}
+        id={menuContainerId}
+      >
         {menuHeading}
         <ul className="ds-c-list--bare" {...menuProps}>
           {renderItems()}
