@@ -6,12 +6,13 @@ import {
   setDialogSendsAnalytics,
   setHelpDrawerSendsAnalytics,
   setErrorPlacementDefault,
-} from '../packages/design-system/src/components/flags';
+} from '@cmsgov/design-system/src/components/flags';
 import { setHeaderSendsAnalytics } from '../packages/ds-healthcare-gov/src/components/flags';
 import { setLanguage } from '@cmsgov/design-system/src/components/i18n';
 import { setLanguage as setLanguageFromPackage } from '@cmsgov/design-system';
 import themes from '../themes.json';
 import type { UtagContainer } from '@cmsgov/design-system';
+import { Preview } from '@storybook/react';
 
 // Rewire analytics events to log to the console
 (window as UtagContainer).utag = { link: console.log };
@@ -54,57 +55,60 @@ const customViewports = {
   },
 };
 
-export const parameters = {
-  actions: { argTypesRegex: '^on[A-Z].*' },
-  viewport: { viewports: customViewports },
-  controls: {
-    expanded: true,
-    matchers: {
-      color: /(background|color)$/i,
-      date: /Date$/,
+const preview: Preview = {
+  parameters: {
+    actions: { argTypesRegex: '^on[A-Z].*' },
+    viewport: { viewports: customViewports },
+    controls: {
+      expanded: true,
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/,
+      },
+    },
+    backgrounds: { disable: true },
+  },
+  globalTypes: {
+    language: {
+      name: 'Language',
+      description: 'International language',
+      defaultValue: 'en',
+      toolbar: {
+        icon: 'globe',
+        items: [
+          { value: 'en', title: 'English' },
+          { value: 'es', title: 'Español' },
+        ],
+      },
+    },
+    analytics: {
+      name: 'Analytics',
+      description: 'Analytics settings',
+      defaultValue: 'on',
+      toolbar: {
+        icon: 'graphline',
+        items: [
+          { value: 'on', left: 'Analytics', title: 'Log to Actions' },
+          { value: 'off', left: 'Analytics', title: 'Off' },
+        ],
+      },
+    },
+    theme: {
+      name: 'Theme',
+      description: 'Current theme',
+      defaultValue: 'core',
+      toolbar: {
+        icon: 'paintbrush',
+        items: Object.keys(themes).map((key) => ({
+          value: key,
+          title: `${themes[key].displayName} theme`,
+        })),
+      },
     },
   },
-  backgrounds: { disable: true },
 };
 
-export const globalTypes = {
-  language: {
-    name: 'Language',
-    description: 'Internationalization language',
-    defaultValue: 'en',
-    toolbar: {
-      icon: 'globe',
-      items: [
-        { value: 'en', title: 'English' },
-        { value: 'es', title: 'Español' },
-      ],
-    },
-  },
-  analytics: {
-    name: 'Analytics',
-    description: 'Analytics settings',
-    defaultValue: 'off',
-    toolbar: {
-      icon: 'graphline',
-      items: [
-        { value: 'on', left: 'Analytics', title: 'Log to Actions' },
-        { value: 'off', left: 'Analytics', title: 'Off' },
-      ],
-    },
-  },
-  theme: {
-    name: 'Theme',
-    description: 'Current theme',
-    defaultValue: 'core',
-    toolbar: {
-      icon: 'paintbrush',
-      items: Object.keys(themes).map((key) => ({
-        value: key,
-        title: `${themes[key].displayName} theme`,
-      })),
-    },
-  },
-};
+export default preview;
 
 const baseClassDecorator = (Story, context) => {
   if (context.parameters.baseInverse) {
