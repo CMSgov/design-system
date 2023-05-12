@@ -46,7 +46,7 @@ const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => 
             </a>
           )}
           {storyId && (
-            <a href={makeStorybookUrl(storyId, theme)} className="c-page-header__link">
+            <a href={makeStorybookUrl(storyId, theme, 'docs')} className="c-page-header__link">
               <img
                 alt="Storybook logo"
                 src={withPrefix('/images/storybook-icon.png')}
