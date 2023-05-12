@@ -60,12 +60,14 @@
 
 // Tooltip arrow
 .ds-c-tooltip__arrow {
+  box-sizing: content-box;
   height: $spacer-2;
   pointer-events: none;
   width: $spacer-2;
 
   &::after {
     background: var(--tooltip__background-color);
+    box-sizing: content-box;
     content: '';
     height: $spacer-1;
     left: 50%;
