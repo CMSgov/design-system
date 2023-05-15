@@ -34,5 +34,7 @@ InverseFormLabel.args = {
 };
 
 InverseFormLabel.parameters = {
+  // Must supply `layout: 'fullscreen'` when we use `baseInverse: true`
   baseInverse: true,
+  layout: 'fullscreen',
 };

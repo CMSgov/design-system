@@ -40,7 +40,9 @@ OnDark.args = {
   onDark: true,
 };
 OnDark.parameters = {
+  // Must supply `layout: 'fullscreen'` when we use `baseInverse: true`
   baseInverse: true,
+  layout: 'fullscreen',
 };
 
 export const IconButton = Template.bind({});
@@ -79,7 +81,9 @@ export const VariationsOnDark = () => (
   </>
 );
 VariationsOnDark.parameters = {
+  // Must supply `layout: 'fullscreen'` when we use `baseInverse: true`
   baseInverse: true,
+  layout: 'fullscreen',
 };
 VariationsOnDark.decorators = [
   (Story) => (

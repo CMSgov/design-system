@@ -106,14 +106,18 @@ export const globalTypes = {
   },
 };
 
-const baseClassDecorator = (Story, context) => {
+const baseInverseDecorator = (Story, context) => {
+  let className;
   if (context.parameters.baseInverse) {
-    document.body.classList.add('ds-base--inverse');
-  } else {
-    document.body.classList.remove('ds-base--inverse');
+    className = 'ds-base--inverse match-storybook-padding';
+    context.parameters.layout = 'fullscreen';
   }
 
-  return <Story {...context} />;
+  return (
+    <div className={className}>
+      <Story {...context} />
+    </div>
+  );
 };
 
 const themeSettingDecorator = (Story, context) => {
@@ -162,7 +166,7 @@ const analyticsSettingsDecorator = (Story, context) => {
 };
 
 export const decorators = [
-  baseClassDecorator,
+  baseInverseDecorator,
   languageSettingDecorator,
   analyticsSettingsDecorator,
   themeSettingDecorator,

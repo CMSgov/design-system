@@ -102,7 +102,9 @@ export const HelpDrawerToggleOnDark = () => {
   );
 };
 HelpDrawerToggleOnDark.parameters = {
+  // Must supply `layout: 'fullscreen'` when we use `baseInverse: true`
   baseInverse: true,
+  layout: 'fullscreen',
 };
 HelpDrawerToggleOnDark.args = {
   onDark: true,

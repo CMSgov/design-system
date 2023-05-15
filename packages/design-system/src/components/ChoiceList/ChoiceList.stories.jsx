@@ -67,7 +67,9 @@ InverseOption.args = {
   inversed: true,
 };
 InverseOption.parameters = {
+  // Must supply `layout: 'fullscreen'` when we use `baseInverse: true`
   baseInverse: true,
+  layout: 'fullscreen',
 };
 
 export const DisabledCheckbox = Template.bind({});

@@ -9,6 +9,18 @@
   outline: 2px dashed var(--color-info);
 }
 
+// This class is meant to turn a be applied to a fullscreen story and match the
+// default padding that storybook puts around stories in different contexts. If
+// Storybook's styles change, we'll need to update these rules. It is used for
+// the decorator of inverse-color stories.
+.match-storybook-padding {
+  padding: 1rem;
+
+  #storybook-docs & {
+    padding: 30px 20px;
+  }
+}
+
 [data-theme='healthcare'] {
   @import '@cmsgov/ds-healthcare-gov/src/styles/index';
 }
