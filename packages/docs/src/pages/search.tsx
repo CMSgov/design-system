@@ -7,6 +7,16 @@ import { MdxQuery, SearchDataStore, SearchQuery } from '../helpers/graphQLTypes'
 import Layout from '../components/layout/Layout';
 import useTheme from '../helpers/useTheme';
 
+const stripHTML = (s) => {
+  if (s === null || s === '') {
+    return false;
+  } else {
+    s = s.toString();
+    s = s.replace(/#/gi, '');
+    return s.replace(/(<([^>]+)>)/gi, '');
+  }
+};
+
 const SearchPage = ({ location }: MdxQuery) => {
   const [query, setQuery] = useState('');
   const theme = useTheme();
@@ -14,7 +24,7 @@ const SearchPage = ({ location }: MdxQuery) => {
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     setQuery(params.get('query'));
-  }, []);
+  }, [location.search]);
 
   const searchData: SearchQuery = useStaticQuery(graphql`
     {
@@ -38,7 +48,7 @@ const SearchPage = ({ location }: MdxQuery) => {
       theme={theme}
     >
       <div id="search-results">
-        <div className="ds-u-margin-bottom--4">
+        <div className="search-form ds-u-margin-bottom--4">
           <TextField
             label="Enter your search terms below:"
             name="search-field"
@@ -48,7 +58,7 @@ const SearchPage = ({ location }: MdxQuery) => {
             value={query}
           />
         </div>
-        <div>
+        <div className="search-results">
           {results.length > 0 && (
             <div>
               &quot;{query}&quot; returned <strong>{results.length}</strong> results.
@@ -58,12 +68,22 @@ const SearchPage = ({ location }: MdxQuery) => {
             <div>Search for &quot;{query}&quot; did not return any results.</div>
           )}
           <ul>
-            {results.map((result: SearchDataStore) => (
-              <li key={result.id}>
-                <a href={location.origin + '/' + result.path + location.search}>{result.title}</a>
-                <p>{result.excerpt}</p>
-              </li>
-            ))}
+            {results.map((result: SearchDataStore) => {
+              let body = stripHTML(result.body);
+              const strLoc = body.indexOf(query);
+              if (strLoc <= 0) {
+                return;
+              } else {
+                body = body.slice(strLoc - 100, strLoc + 100);
+                body = body.replace(query, `<strong>${query}</strong>`) + '...';
+              }
+              return (
+                <li key={result.id}>
+                  <a href={location.origin + '/' + result.path + location.search}>{result.title}</a>
+                  <p dangerouslySetInnerHTML={{ __html: body }} />
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>

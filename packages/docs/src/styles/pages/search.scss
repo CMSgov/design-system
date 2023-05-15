@@ -1,0 +1,23 @@
+#search-results {
+  .search-results {
+    > div {
+      margin-block: 0 1.5em;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+
+      li {
+        list-style: none;
+
+        a {
+          font-weight: var(--font-weight-bold);
+        }
+        p {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
