@@ -26,6 +26,7 @@ const SearchForm = (props) => {
         type="search"
         size="medium"
         onChange={(evt: ChangeEvent<HTMLInputElement>) => setInputText(evt.target.value)}
+        className="ds-u-margin--0 ds-c-field ds-c-field--medium"
       />
       <Button
         isAlternate
