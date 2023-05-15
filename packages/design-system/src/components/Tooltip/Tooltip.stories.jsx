@@ -35,7 +35,7 @@ export default {
 };
 
 const Template = ({ data, ...args }) => (
-  <div className="ds-u-margin--7">
+  <div style={{ margin: '11rem auto', textAlign: 'center' }}>
     {data}
     <Tooltip {...args} />
   </div>
