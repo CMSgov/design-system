@@ -99,22 +99,20 @@ const config: GatsbyConfig = {
                     title
                   }
                   rawBody
-                  excerpt
                 }
               }
             }
           }
           `,
         ref: 'id',
-        index: ['title', 'excerpt', 'body'],
-        store: ['path', 'title', 'body', 'excerpt'],
+        index: ['title', 'body'],
+        store: ['id', 'path', 'title', 'body'],
         normalizer: ({ data }) =>
           data.allMdx.edges.map((n) => ({
             id: n.node.id,
             path: n.node.slug,
             title: n.node.frontmatter.title,
             body: n.node.rawBody,
-            excerpt: n.node.excerpt,
           })),
       },
     },
