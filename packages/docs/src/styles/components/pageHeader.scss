@@ -17,3 +17,10 @@
   margin-right: $spacer-half;
   vertical-align: middle;
 }
+
+#header-full-width {
+  a {
+    color: var(--color-base);
+    text-decoration: none;
+  }
+}
