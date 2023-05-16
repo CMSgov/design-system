@@ -1,9 +1,9 @@
 import React from 'react';
 import { Button, TextInput } from '@cmsgov/design-system';
 
-const SearchForm = (props) => {
+const SearchForm = ({ className }) => {
   return (
-    <form {...props} action="/search" method="GET">
+    <form className={`ds-u-display--flex ${className ?? ''}`} action="/search" method="GET">
       <TextInput
         type="search"
         size="medium"
