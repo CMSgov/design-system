@@ -16,6 +16,10 @@
         }
         p {
           margin: 0;
+
+          strong {
+            background-color: var(--color-warn-lighter);
+          }
         }
       }
     }
