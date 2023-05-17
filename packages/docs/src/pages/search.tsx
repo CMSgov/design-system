@@ -61,8 +61,9 @@ const SearchPage = ({ location }: MdxQuery) => {
             {results.map((result: SearchDataStore) => {
               let body = result.body;
               const strLoc = body.toLowerCase().indexOf(query.toLowerCase());
-              body = body.slice(strLoc - 100, strLoc + 100);
-              body = body.replace(query, `<mark>${query}</mark>`) + '...';
+              body = body.slice(Math.max(strLoc - 160, 0), strLoc + 160);
+              const re = new RegExp(query, 'gi');
+              body = body.replace(re, `<mark>${query}</mark>`) + '...';
 
               return (
                 <li key={result.id}>

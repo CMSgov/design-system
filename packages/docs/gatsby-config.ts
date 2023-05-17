@@ -115,7 +115,7 @@ const config: GatsbyConfig = {
             id: n.node.id,
             path: n.node.slug,
             title: n.node.frontmatter.title,
-            body: n.node.rawBody.replace(/(<([^>]+)>)/gi, ''),
+            body: n.node.rawBody.replace(/(<([^>]+)>)/gi, '').replace(/\\n/gi, ''),
           })),
       },
     },
