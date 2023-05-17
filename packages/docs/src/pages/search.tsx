@@ -47,10 +47,11 @@ const SearchPage = ({ location }: MdxQuery) => {
       slug="Search"
       theme={theme}
     >
-      <div id="search-results">
+      <div className="search-results-wrapper">
         <div className="search-form ds-u-margin-bottom--4">
           <TextField
             label="Enter your search terms below:"
+            type="search"
             name="search-field"
             onChange={(evt) => {
               setQuery(evt.target.value);
@@ -75,7 +76,7 @@ const SearchPage = ({ location }: MdxQuery) => {
                 return;
               } else {
                 body = body.slice(strLoc - 100, strLoc + 100);
-                body = body.replace(query, `<strong>${query}</strong>`) + '...';
+                body = body.replace(query, `<mark>${query}</mark>`) + '...';
               }
               return (
                 <li key={result.id}>

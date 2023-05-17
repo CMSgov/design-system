@@ -1,7 +1,11 @@
-#search-results {
+.search-results-wrapper {
   .search-results {
     > div {
       margin-block: 0 1.5em;
+    }
+    mark {
+      background-color: var(--color-warn-lightest);
+      font-weight: var(--font-weight-bold);
     }
 
     ul {
@@ -16,10 +20,6 @@
         }
         p {
           margin: 0;
-
-          strong {
-            background-color: var(--color-warn-lightest);
-          }
         }
       }
     }
