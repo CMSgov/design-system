@@ -25,7 +25,7 @@
     "src"
   ],
   "dependencies": {
-    "@cmsgov/design-system": "6.1.0",
+    "@cmsgov/design-system": "6.0.1",
     "@types/react": "^17.0.10",
     "@types/react-dom": "^17.0.10"
   }
