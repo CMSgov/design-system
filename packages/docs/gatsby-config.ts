@@ -85,7 +85,10 @@ const config: GatsbyConfig = {
       options: {
         name: 'pages',
         engine: 'flexsearch',
-        engineOptions: '',
+        engineOptions: {
+          tokenize: 'full',
+          encoder: 'simple',
+        },
         query: `
           {
             allMdx (
@@ -106,13 +109,13 @@ const config: GatsbyConfig = {
           `,
         ref: 'id',
         index: ['title', 'body'],
-        store: ['id', 'path', 'title', 'body'],
+        store: ['path', 'title', 'body'],
         normalizer: ({ data }) =>
           data.allMdx.edges.map((n) => ({
             id: n.node.id,
             path: n.node.slug,
             title: n.node.frontmatter.title,
-            body: n.node.rawBody,
+            body: n.node.rawBody.replace(/(<([^>]+)>)/gi, ''),
           })),
       },
     },

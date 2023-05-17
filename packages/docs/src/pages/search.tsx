@@ -7,16 +7,6 @@ import { MdxQuery, SearchDataStore, SearchQuery } from '../helpers/graphQLTypes'
 import Layout from '../components/layout/Layout';
 import useTheme from '../helpers/useTheme';
 
-const stripHTML = (s) => {
-  if (s === null || s === '') {
-    return false;
-  } else {
-    s = s.toString();
-    s = s.replace(/#/gi, '');
-    return s.replace(/(<([^>]+)>)/gi, '');
-  }
-};
-
 const SearchPage = ({ location }: MdxQuery) => {
   const [query, setQuery] = useState('');
   const theme = useTheme();
@@ -51,7 +41,6 @@ const SearchPage = ({ location }: MdxQuery) => {
         <div className="search-form ds-u-margin-bottom--4">
           <TextField
             label="Enter your search terms below:"
-            type="search"
             name="search-field"
             onChange={(evt) => {
               setQuery(evt.target.value);
@@ -70,14 +59,11 @@ const SearchPage = ({ location }: MdxQuery) => {
           )}
           <ul>
             {results.map((result: SearchDataStore) => {
-              let body = stripHTML(result.body);
-              const strLoc = body.indexOf(query);
-              if (strLoc <= 0) {
-                return;
-              } else {
-                body = body.slice(strLoc - 100, strLoc + 100);
-                body = body.replace(query, `<mark>${query}</mark>`) + '...';
-              }
+              let body = result.body;
+              const strLoc = body.toLowerCase().indexOf(query.toLowerCase());
+              body = body.slice(strLoc - 100, strLoc + 100);
+              body = body.replace(query, `<mark>${query}</mark>`) + '...';
+
               return (
                 <li key={result.id}>
                   <a href={location.origin + '/' + result.path + location.search}>{result.title}</a>
