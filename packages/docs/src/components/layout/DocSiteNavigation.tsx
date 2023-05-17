@@ -102,19 +102,26 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
         'c-navigation--open': isMobile && isMobileNavOpen,
       })}
     >
-      <Button
-        className="ds-u-md-display--none ds-u-padding-left--0 ds-u-padding-right--1"
-        variation="ghost"
-        aria-expanded={isMobileNavOpen}
-        aria-controls="c-navigation__menu"
-        onClick={toggleMenu}
-      >
-        {isMobileNavOpen ? (
-          <CloseIconThin className="ds-u-font-size--xl" />
-        ) : (
-          <MenuIconThin className="ds-u-font-size--xl" />
-        )}
-      </Button>
+      <header className="c-navigation__header ds-u-md-display--block ds-u-md-display--none">
+        <Button
+          className="ds-u-md-display--none ds-u-padding-left--0 ds-u-padding-right--1"
+          variation="ghost"
+          aria-expanded={isMobileNavOpen}
+          aria-controls="c-navigation__menu"
+          onClick={toggleMenu}
+        >
+          {isMobileNavOpen ? (
+            <CloseIconThin className="ds-u-font-size--xl" />
+          ) : (
+            <MenuIconThin className="ds-u-font-size--xl" />
+          )}
+        </Button>
+        <div>
+          <a className="c-navigation__title" href="/">
+            CMS Design System
+          </a>
+        </div>
+      </header>
 
       <div
         id="c-navigation__menu"
