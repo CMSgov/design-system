@@ -7,6 +7,11 @@
   color: var(--color-base);
   font-size: var(--font-size-sm);
   padding-block: var(--spacer-6);
+
+  &__list {
+    display: flex;
+    list-style: none;
+  }
 }
 
 .hc-c-footer__site-links-row,
