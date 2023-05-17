@@ -2,7 +2,7 @@ import React from 'react';
 import InlineLinkLists from './InlineLinkLists';
 import LogosRow from './LogosRow';
 import classnames from 'classnames';
-import { Language, t } from '../i18n';
+import { Language, tWithLanguage } from '../i18n';
 
 export interface FooterProps {
   /**
@@ -39,6 +39,7 @@ export interface FooterProps {
 }
 
 export const Footer = (props: FooterProps) => {
+  const t = tWithLanguage(props.initialLanguage);
   const classes = classnames('hc-c-footer', props.className);
 
   if (props.initialLanguage) {
