@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import LogoEnSvg from './LogoEnSvg';
 import LogoEsSvg from './LogoEsSvg';
-import { Language } from '@cmsgov/design-system';
+import { getLanguage, Language } from '@cmsgov/design-system';
 
 export interface LogoProps {
   locale?: Language;
