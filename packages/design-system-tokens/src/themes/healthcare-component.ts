@@ -17,7 +17,7 @@ export const components: AnyTokenValues = {
     '-button__color':                             t.color['primary'],
     '-content__background-color':                 t.color['transparent'],
     // This variable only exists for the Healthcare Accordion CSS override
-    '-icons__size':                               '0.875rem',
+    '-icon__size':                                '0.875rem',
   },
 
   'alert': {
