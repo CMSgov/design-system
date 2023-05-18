@@ -4,6 +4,9 @@ import themes from '../../themes.json';
 
 const storySkipList = [
   'components-dialog--prevent-scroll-example',
+  'components-dropdown--option-groups',
+  'components-dropdown--html-option-groups',
+  'components-dropdown--html-options',
   'components-idle-timeout--default',
   'components-skip-nav--default-skip-nav',
   'components-skip-nav--skip-nav-example',
