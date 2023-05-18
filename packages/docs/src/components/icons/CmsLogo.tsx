@@ -3,7 +3,7 @@ import React from 'react';
 /**
  * SVG for CMS Logo
  */
-const CMSLogoIcon = () => {
+const CmsLogo = () => {
   // "#323a45" was what Brent originally sent
   const fill = 'var(--color-base)';
 
@@ -27,4 +27,4 @@ const CMSLogoIcon = () => {
   );
 };
 
-export default CMSLogoIcon;
+export default CmsLogo;

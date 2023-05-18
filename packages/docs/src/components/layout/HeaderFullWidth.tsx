@@ -1,5 +1,5 @@
 import React from 'react';
-import CMSLogoIcon from '../icons/CMSLogo';
+import CmsLogo from '../icons/CmsLogo';
 import SearchForm from '../content/SearchForm';
 
 const HeaderFullWidth = () => {
@@ -10,7 +10,7 @@ const HeaderFullWidth = () => {
         href="/"
         title="Return to the homepage"
       >
-        <CMSLogoIcon />
+        <CmsLogo />
         <h1 className="ds-u-padding-left--1 ds-text-heading--2xl ds-u-margin--0">Design System</h1>
       </a>
       <SearchForm className="ds-u-display--flex ds-l-col--6 ds-u-align-items--center ds-u-justify-content--end" />
