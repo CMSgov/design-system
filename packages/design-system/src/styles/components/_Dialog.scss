@@ -96,7 +96,7 @@ dialog.fixed {
   padding: 0 $spacer-1 0 $spacer-half;
 
   .ds-c-icon {
-    font-size: 13px;
+    font-size: (--dialog-icon__size);
     margin: 0 $spacer-half;
 
     @media (-ms-high-contrast: active), (forced-colors: active) {

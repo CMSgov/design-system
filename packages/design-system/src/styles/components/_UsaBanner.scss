@@ -11,7 +11,7 @@
 .ds-c-usa-banner__header {
   align-items: flex-start;
   display: flex;
-  font-size: 12px;
+  font-size: (--usa-banner-heading__font-size);
   line-height: 1.2;
   min-height: $spacer-4;
   padding: $spacer-1 $spacer-2;
