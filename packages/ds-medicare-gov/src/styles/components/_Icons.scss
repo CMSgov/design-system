@@ -4,22 +4,25 @@
 
 // The following styles are to transform the core icon components
 // to match current mgov styling
+
+// These overrides are too specific to these icons to be properly tokenized
+// Also, there isn't enough space between our established font sizes to include these granualar sizes (what do you call a size between `font-size-sm` and `font-size-md`?)
 .ds-c-icon--arrow {
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 
 .ds-c-icon--check {
-  font-size: 14px;
+  font-size: var(--font-size-sm);
 }
 
 .ds-c-icon--close {
-  font-size: 13px;
+  font-size: 0.8125rem;
 }
 
 .ds-c-icon--close-thin {
-  font-size: 11px;
+  font-size: 0.6875rem;
 }
 
 .ds-c-icon--hamburger {
-  font-size: 20px;
+  font-size: var(--font-size-lg);
 }
