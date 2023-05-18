@@ -60,7 +60,9 @@
   .ds-c-icon {
     align-self: center;
     color: var(--accordion-icon-color);
-    font-size: 14px;
+
+    // This variable only exists for the Healthcare Accordion CSS override
+    font-size: var(--accordion-icon__size);
   }
 
   .ds-c-accordion__content {
