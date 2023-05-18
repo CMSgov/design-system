@@ -7,6 +7,8 @@
 
 // These overrides are too specific to these icons to be properly tokenized
 // Also, there isn't enough space between our established font sizes to include these granualar sizes (what do you call a size between `font-size-sm` and `font-size-md`?)
+
+// We need to create tokens specific to icon sizing instead of repurposing spacer-* or font-size-* tokens
 .ds-c-icon--arrow {
   font-size: 0.75rem;
 }

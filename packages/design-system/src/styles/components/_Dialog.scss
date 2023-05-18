@@ -96,6 +96,7 @@ dialog.fixed {
   padding: 0 $spacer-1 0 $spacer-half;
 
   .ds-c-icon {
+    // We need to create tokens specific to icon sizing instead of repurposing spacer-* or font-size-* tokens
     font-size: var(--dialog-icon__size);
     margin: 0 $spacer-half;
 

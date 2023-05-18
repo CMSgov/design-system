@@ -183,6 +183,7 @@ $breakpoints: (
 
   // There's no font size token for the mobile size heading--3xl style
   // There's no space in our current font size token names to include it (what do you call a token between font-size-2xl and font-size-3xl?)
+  // Related to https://jira.cms.gov/browse/WNMGDS-2174
   font-size: 1.875rem;
   font-weight: var(--typography-heading-3xl__font-weight);
 
