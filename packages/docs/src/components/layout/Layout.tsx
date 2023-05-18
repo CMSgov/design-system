@@ -83,7 +83,7 @@ const Layout = ({
       </Helmet>
       <SkipNav href="#main" />
 
-      <UsaBanner className="ds-u-display--none ds-u-md-display--block" />
+      <UsaBanner />
 
       <HeaderFullWidth />
 
