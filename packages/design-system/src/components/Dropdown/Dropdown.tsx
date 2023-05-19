@@ -31,10 +31,6 @@ const itemToString = (item: InternalItem) => item.label;
 
 export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
   /**
-   * Adds `aria-label` attribute. When using `aria-label`, `label` should be empty string.
-   */
-  ariaLabel?: string;
-  /**
    * Sets the initial selected state. Use this for an uncontrolled component;
    * otherwise, use the `value` property.
    */
@@ -114,7 +110,6 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
 
   // Draw out certain props that we don't want to pass through as attributes
   const {
-    ariaLabel,
     autoFocus,
     children,
     fieldClassName,
@@ -222,7 +217,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
       props.inversed && 'ds-c-field--inverse',
       fieldClassName
     ),
-    'aria-label': ariaLabel,
+    'aria-labelledby': `${id} ${labelId}`,
   });
 
   const menuProps = getMenuProps({
@@ -259,9 +254,15 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   return (
     <div {...wrapperProps}>
       <FormLabel {...labelProps} fieldId={fieldProps.id} />
-      <button {...buttonProps}>{selectedItem.label}</button>
+      {/* The following is a div instead of a button on purpose. See:
+       *    - https://github.com/w3c/aria/wiki/Resolving-ARIA-1.1-Combobox-Issues
+       *    - https://github.com/microsoft/sonder-ui/tree/master/src/components/select#notes-on-semantics
+       */}
+      <div {...buttonProps}>{selectedItem.label}</div>
       <div className="ds-c-dropdown__menu-container" hidden={!isOpen}>
-        <ul {...menuProps}>{menuContent}</ul>
+        <ul {...menuProps} aria-labelledby={undefined}>
+          {menuContent}
+        </ul>
       </div>
       {bottomError}
     </div>
