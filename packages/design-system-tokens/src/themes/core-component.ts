@@ -280,6 +280,7 @@ export const components: AnyTokenValues = {
     '__background-color':                         t.color['white'],
     '__padding':                                  t.spacer['4'],
     '-overlay__background-color':                 t.color['background-dialog-mask'],
+    '-icon__size':                                '0.8125rem',
   },
 
   'drawer': {
@@ -454,6 +455,7 @@ export const components: AnyTokenValues = {
     '-close__background-color':                   t.color['gray-light'],
     '-action__color':                             t.color['primary-darker'],
     '-lock-icon__color':                          t.color['success-light'],
+    '-heading__font-size':                        '0.75rem',
   },
 
   'vertical-nav': {
