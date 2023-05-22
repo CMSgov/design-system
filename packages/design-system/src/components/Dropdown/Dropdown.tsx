@@ -112,6 +112,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
 
   const id = useRef(props.id ?? uniqueId('dropdown__button--')).current;
   const labelId = useRef(props.labelId ?? uniqueId('dropdown__label--')).current;
+  const buttonContentId = useRef(uniqueId('dropdown__button-content--')).current;
   const menuId = useRef(uniqueId('dropdown__menu--')).current;
 
   // Draw out certain props that we don't want to pass through as attributes
@@ -224,7 +225,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
       props.inversed && 'ds-c-field--inverse',
       fieldClassName
     ),
-    'aria-labelledby': `${id} ${labelId}`,
+    'aria-labelledby': `${buttonContentId} ${labelId}`,
   });
 
   const menuProps = getMenuProps({
@@ -261,11 +262,9 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   return (
     <div {...wrapperProps}>
       <FormLabel {...labelProps} fieldId={fieldProps.id} />
-      {/* The following is a div instead of a button on purpose. See:
-       *    - https://github.com/w3c/aria/wiki/Resolving-ARIA-1.1-Combobox-Issues
-       *    - https://github.com/microsoft/sonder-ui/tree/master/src/components/select#notes-on-semantics
-       */}
-      <div {...buttonProps}>{selectedItem.label}</div>
+      <button {...buttonProps}>
+        <span id={buttonContentId}>{selectedItem.label}</span>
+      </button>
       <div className="ds-c-dropdown__menu-container" hidden={!isOpen}>
         <ul {...menuProps} aria-labelledby={undefined}>
           {menuContent}
