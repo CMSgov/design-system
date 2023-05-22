@@ -60,8 +60,8 @@ InverseMonthPicker.args = {
   inversed: true,
 };
 InverseMonthPicker.parameters = {
-  // Must supply `layout: 'fullscreen'` when we use `baseInverse: true`
-  baseInverse: true,
+  // Must supply `layout: 'fullscreen'` when we use `onDark: true`
+  onDark: true,
   layout: 'fullscreen',
 };
 
@@ -74,8 +74,8 @@ InverseSelectedMonthPicker.args = {
   selectedMonths: [1, 2, 3, 4, 5, 6],
 };
 InverseSelectedMonthPicker.parameters = {
-  // Must supply `layout: 'fullscreen'` when we use `baseInverse: true`
-  baseInverse: true,
+  // Must supply `layout: 'fullscreen'` when we use `onDark: true`
+  onDark: true,
   layout: 'fullscreen',
 };
 
@@ -87,7 +87,7 @@ InverseDisabledMonthPicker.args = {
   disabledMonths: [7, 8, 9, 10, 11, 12],
 };
 InverseDisabledMonthPicker.parameters = {
-  // Must supply `layout: 'fullscreen'` when we use `baseInverse: true`
-  baseInverse: true,
+  // Must supply `layout: 'fullscreen'` when we use `onDark: true`
+  onDark: true,
   layout: 'fullscreen',
 };

@@ -30,8 +30,8 @@ export const AllHeadings = () => {
 export const AllHeadingsOnDark = AllHeadings.bind({});
 
 AllHeadingsOnDark.parameters = {
-  // Must supply `layout: 'fullscreen'` when we use `baseInverse: true`
-  baseInverse: true,
+  // Must supply `layout: 'fullscreen'` when we use `onDark: true`
+  onDark: true,
   layout: 'fullscreen',
 };
 

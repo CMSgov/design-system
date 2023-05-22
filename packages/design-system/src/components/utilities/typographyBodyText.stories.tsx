@@ -30,8 +30,8 @@ export const AllBodyText = () => {
 };
 export const AllBodyTextOnDark = AllBodyText.bind({});
 AllBodyTextOnDark.parameters = {
-  // Must supply `layout: 'fullscreen'` when we use `baseInverse: true`
-  baseInverse: true,
+  // Must supply `layout: 'fullscreen'` when we use `onDark: true`
+  onDark: true,
   layout: 'fullscreen',
 };
 export const BodyTextLarge = () => {

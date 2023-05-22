@@ -61,7 +61,7 @@ InvertedMultiInputDateField.args = {
   inversed: true,
 };
 InvertedMultiInputDateField.parameters = {
-  // Must supply `layout: 'fullscreen'` when we use `baseInverse: true`
-  baseInverse: true,
+  // Must supply `layout: 'fullscreen'` when we use `onDark: true`
+  onDark: true,
   layout: 'fullscreen',
 };

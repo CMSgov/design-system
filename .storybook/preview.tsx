@@ -106,9 +106,9 @@ export const globalTypes = {
   },
 };
 
-const baseInverseDecorator = (Story, context) => {
+const onDarkDecorator = (Story, context) => {
   let className;
-  if (context.parameters.baseInverse) {
+  if (context.parameters.onDark) {
     className = 'ds-base--inverse match-storybook-padding';
     context.parameters.layout = 'fullscreen';
   }
@@ -166,7 +166,7 @@ const analyticsSettingsDecorator = (Story, context) => {
 };
 
 export const decorators = [
-  baseInverseDecorator,
+  onDarkDecorator,
   languageSettingDecorator,
   analyticsSettingsDecorator,
   themeSettingDecorator,

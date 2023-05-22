@@ -40,8 +40,8 @@ OnDark.args = {
   onDark: true,
 };
 OnDark.parameters = {
-  // Must supply `layout: 'fullscreen'` when we use `baseInverse: true`
-  baseInverse: true,
+  // Must supply `layout: 'fullscreen'` when we use `onDark: true`
+  onDark: true,
   layout: 'fullscreen',
 };
 
@@ -81,8 +81,8 @@ export const VariationsOnDark = () => (
   </>
 );
 VariationsOnDark.parameters = {
-  // Must supply `layout: 'fullscreen'` when we use `baseInverse: true`
-  baseInverse: true,
+  // Must supply `layout: 'fullscreen'` when we use `onDark: true`
+  onDark: true,
   layout: 'fullscreen',
 };
 VariationsOnDark.decorators = [
