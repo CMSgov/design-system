@@ -2,9 +2,10 @@ import React, { useMemo, useRef } from 'react';
 import classNames from 'classnames';
 import useAutofocus from '../utilities/useAutoFocus';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
-import { useSelect, UseSelectStateChangeOptions } from 'downshift';
+import { useSelect, UseSelectProps, UseSelectStateChangeOptions } from 'downshift';
 import { isOptGroupArray, parseChildren, validateProps } from './utils';
 import { uniqueId } from 'lodash';
+import createCustomStatusMessageFn from './useHighlightStatusMessageFn';
 
 export type DropdownSize = 'small' | 'medium';
 export type DropdownValue = number | string;
@@ -79,6 +80,11 @@ export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
    * for a controlled component; otherwise, set `defaultValue`.
    */
   value?: DropdownValue;
+  /**
+   * Customize the default status messages announced to screen reader users via
+   * aria-live during certain interactions. [Read more on downshift docs.](https://github.com/downshift-js/downshift/tree/master/src/hooks/useSelect#geta11ystatusmessage)
+   */
+  getA11yStatusMessage: UseSelectProps<any>['getA11yStatusMessage'];
 }
 
 type OptionsOrChildren =
@@ -176,6 +182,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     menuId,
     items,
     itemToString,
+    getA11yStatusMessage: createCustomStatusMessageFn(),
     onSelectedItemChange:
       onChange &&
       ((changes: UseSelectStateChangeOptions<any>) => {
