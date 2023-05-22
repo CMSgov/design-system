@@ -2,16 +2,15 @@
 
 exports[`Dropdown accepts optgroup children 1`] = `
 <ul
-  aria-labelledby="dropdown__label--50"
   class="ds-c-dropdown__menu ds-c-dropdown__menu--grouped"
-  id="dropdown__menu--51"
+  id="dropdown__menu--48"
   role="listbox"
 >
   <li
     aria-selected="false"
     class="ds-c-dropdown__item-group"
     disabled=""
-    id="downshift-16-item-0"
+    id="downshift-15-item-0"
     role="group"
   >
     Group A
@@ -19,21 +18,21 @@ exports[`Dropdown accepts optgroup children 1`] = `
   <li
     aria-selected="true"
     class="ds-c-dropdown__item ds-c-dropdown__item--highlighted ds-c-dropdown__item--selected"
-    id="downshift-16-item-1"
+    id="downshift-15-item-1"
   >
     Option A-1
   </li>
   <li
     aria-selected="false"
     class="ds-c-dropdown__item"
-    id="downshift-16-item-2"
+    id="downshift-15-item-2"
   >
     Option A-2
   </li>
   <li
     aria-selected="false"
     class="ds-c-dropdown__item"
-    id="downshift-16-item-3"
+    id="downshift-15-item-3"
   >
     Option A-3
   </li>
@@ -41,7 +40,7 @@ exports[`Dropdown accepts optgroup children 1`] = `
     aria-selected="false"
     class="ds-c-dropdown__item-group"
     disabled=""
-    id="downshift-16-item-4"
+    id="downshift-15-item-4"
     role="group"
   >
     Group B
@@ -49,21 +48,21 @@ exports[`Dropdown accepts optgroup children 1`] = `
   <li
     aria-selected="false"
     class="ds-c-dropdown__item"
-    id="downshift-16-item-5"
+    id="downshift-15-item-5"
   >
     Option B-1
   </li>
   <li
     aria-selected="false"
     class="ds-c-dropdown__item"
-    id="downshift-16-item-6"
+    id="downshift-15-item-6"
   >
     Option B-2
   </li>
   <li
     aria-selected="false"
     class="ds-c-dropdown__item"
-    id="downshift-16-item-7"
+    id="downshift-15-item-7"
   >
     Option B-3
   </li>
@@ -85,13 +84,13 @@ exports[`Dropdown dropdown matches snapshot 1`] = `
       Select an option
     </span>
   </label>
-  <button
+  <div
     aria-activedescendant=""
     aria-controls="dropdown__menu--3"
     aria-expanded="false"
     aria-haspopup="listbox"
     aria-invalid="false"
-    aria-labelledby="dropdown__label--2"
+    aria-labelledby="dropdown__button--1 dropdown__label--2"
     class="ds-c-dropdown__button ds-c-field"
     id="dropdown__button--1"
     name="dropdown"
@@ -99,13 +98,12 @@ exports[`Dropdown dropdown matches snapshot 1`] = `
     tabindex="0"
   >
     2
-  </button>
+  </div>
   <div
     class="ds-c-dropdown__menu-container"
     hidden=""
   >
     <ul
-      aria-labelledby="dropdown__label--2"
       class="ds-c-dropdown__menu"
       id="dropdown__menu--3"
       role="listbox"
@@ -150,8 +148,8 @@ exports[`Dropdown supports bottom placed error 1`] = `
   >
     <label
       class="ds-c-label"
-      for="dropdown__button--19"
-      id="dropdown__label--20"
+      for="dropdown__button--16"
+      id="dropdown__label--17"
     >
       <span
         class=""
@@ -159,36 +157,35 @@ exports[`Dropdown supports bottom placed error 1`] = `
         Select an option
       </span>
     </label>
-    <button
+    <div
       aria-activedescendant=""
-      aria-controls="dropdown__menu--21"
+      aria-controls="dropdown__menu--18"
       aria-describedby="1_error"
       aria-expanded="false"
       aria-haspopup="listbox"
       aria-invalid="true"
-      aria-labelledby="dropdown__label--20"
+      aria-labelledby="dropdown__button--16 dropdown__label--17"
       class="ds-c-dropdown__button ds-c-field ds-c-field--error"
-      id="dropdown__button--19"
+      id="dropdown__button--16"
       name="dropdown"
       role="combobox"
       tabindex="0"
     >
       1
-    </button>
+    </div>
     <div
       class="ds-c-dropdown__menu-container"
       hidden=""
     >
       <ul
-        aria-labelledby="dropdown__label--20"
         class="ds-c-dropdown__menu"
-        id="dropdown__menu--21"
+        id="dropdown__menu--18"
         role="listbox"
       >
         <li
           aria-selected="true"
           class="ds-c-dropdown__item ds-c-dropdown__item--selected"
-          id="downshift-6-item-0"
+          id="downshift-5-item-0"
         >
           1
         </li>
@@ -204,7 +201,7 @@ exports[`Dropdown supports bottom placed error 1`] = `
         aria-hidden="true"
         class="ds-c-icon ds-c-icon--alert-circle "
         focusable="false"
-        id="icon-9"
+        id="icon-8"
         viewBox="36 -12 186 186"
         xmlns="http://www.w3.org/2000/svg"
       >

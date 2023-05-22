@@ -84,7 +84,7 @@ export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
    * Customize the default status messages announced to screen reader users via
    * aria-live during certain interactions. [Read more on downshift docs.](https://github.com/downshift-js/downshift/tree/master/src/hooks/useSelect#geta11ystatusmessage)
    */
-  getA11yStatusMessage: UseSelectProps<any>['getA11yStatusMessage'];
+  getA11yStatusMessage?: UseSelectProps<any>['getA11yStatusMessage'];
 }
 
 type OptionsOrChildren =
