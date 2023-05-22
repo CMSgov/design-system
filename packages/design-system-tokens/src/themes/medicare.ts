@@ -114,12 +114,12 @@ export const shadow: ShadowTokens = {
 
 const fonts: FontTokens = {
   ...font,
-  'size-lg': '20px',
-  'size-xl': '24px',
-  'size-2xl': '32px',
-  'size-3xl': '40px',
-  'size-4xl': '44px',
-  'size-5xl': '50px',
+  'size-lg': '1.25rem',
+  'size-xl': '1.5rem',
+  'size-2xl': '2rem',
+  'size-3xl': '2.5rem',
+  'size-4xl': '2.75rem',
+  'size-5xl': '3.125rem',
   sans: font['family-rubik'],
   montserrat: font['family-montserrat'],
   rubik: font['family-rubik'],

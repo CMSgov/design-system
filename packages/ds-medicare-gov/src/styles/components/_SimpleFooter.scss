@@ -13,7 +13,7 @@
   a {
     color: var(--color-base) !important;
     display: inline-block;
-    font-size: 14px;
+    font-size: var(--font-size-sm);
     margin-bottom: $spacer-1;
     margin-top: 0;
     padding: 0;
@@ -152,7 +152,7 @@
 
 .m-c-footer__contactAddress {
   @extend .mct-p3;
-  font-size: 14px;
+  font-size: var(--font-size-sm);
   line-height: 20px;
   margin-bottom: $spacer-1;
   margin-top: $spacer-2;
