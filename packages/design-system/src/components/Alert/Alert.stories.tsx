@@ -27,27 +27,28 @@ const AlertTemplate: Story = {
 export const Default = {
   ...AlertTemplate,
   args: {
-    heading: 'Eu irure do aute in eiusmod',
+    heading: 'Confidentiality and medical data sharing',
     children:
-      'Sunt laborum et labore ea duis amet eu voluptate mollit. Cillum sint reprehenderit amet incididunt id irure. Sunt non labore irure nisi dolor ea ut quis excepteur enim aliquip. Consequat incididunt voluptate esse quis cillum esse nisi.',
+      'In accordance with HIPAA, this application does not store any data. All data is stored locally on your computer and is not transmitted to any external servers. The data you enter into this application is not stored or shared with anyone.',
   },
 };
 
 export const WithNodeChildren: Story = {
   args: {
-    heading: 'Aute laboris aliquip duis ad voluptate adipisicing sunt nisi irure adipisicing',
+    heading: 'Log in to your account to continue',
     children: (
       <>
         <p className="ds-c-alert__text">
-          Occaecat irure minim velit qui deserunt <a href="https://design.cms.gov/">anim nisi</a>{' '}
-          cupidatat. Consectetur nostrud laborum id laboris qui officia fugiat pariatur enim nulla
-          nisi aute ut. Dolor ullamco aliquip esse officia. Ut pariatur qui eiusmod sunt anim
-          voluptate duis velit tempor anim adipisicing consectetur ea nulla. Consequat commodo ad ex
-          nulla sit deserunt officia culpa.
+          It looks like you may be logged out of your account. Log in to your account to continue.
+          If you don&apos;t have an account, you can{' '}
+          <a href="https://design.cms.gov/">register one</a> or visit our{' '}
+          <a href="https://design.cms.gov/">homepage</a> to learn more.
         </p>
-        <div className="ds-u-margin-top--2">
-          <Button variation="solid">Primary action</Button>
-          <Button className="ds-u-margin-left--1">Secondary action</Button>
+        <div className="[ ds-u-display--flex ds-u-flex-direction--column ] ds-u-margin-top--2 ds-u-sm-display--block">
+          <Button variation="solid" className="ds-u-margin-bottom--1 ds-u-sm-margin-bottom--0">
+            Log in
+          </Button>
+          <Button className="ds-u-sm-margin-left--1">Cancel</Button>
         </div>
       </>
     ),
@@ -57,7 +58,7 @@ export const WithNodeChildren: Story = {
 export const WithoutChildren = {
   ...AlertTemplate,
   args: {
-    heading: 'Exercitation esse anim ex adipisicing anim voluptate velit minim',
+    heading: 'You have a new message',
     children: null,
   },
 };
@@ -67,16 +68,27 @@ export const WithoutHeading = {
   args: {
     heading: null,
     children:
-      'Elit excepteur dolore voluptate amet. Elit dolor culpa qui laboris veniam id elit consectetur sint. Sint est irure velit nostrud et adipisicing cillum consectetur labore Lorem eiusmod ut veniam. Sint occaecat reprehenderit ex eiusmod incididunt.',
+      'Your beneficiary information has been updated. You can view your updated information on your dashboard.',
   },
 };
 
 export const WithoutIcon = {
   ...AlertTemplate,
   args: {
-    heading: 'Reprehenderit aliquip exercitation ad aliquip',
-    children:
-      'Et minim velit cillum laboris aliquip in irure id duis fugiat. Dolor cillum enim ea culpa. Culpa commodo labore consectetur culpa irure excepteur.',
+    heading: 'Understanding your in-network medical benefits',
+    children: (
+      <>
+        <p className="ds-c-alert__text">
+          Your plan covers a wide range of medical services. You can see any provider in your
+          plan&apos;s network without a referral.
+        </p>
+        <p className="ds-c-alert__text ds-u-margin-top--1">
+          You can also see providers outside of your plan&apos;s network, but you may have to pay
+          more. You can find a provider in your plan&apos;s network by{' '}
+          <a href="https://design.cms.gov/">using our provider search tool</a>.
+        </p>
+      </>
+    ),
     hideIcon: true,
   },
 };
@@ -84,9 +96,9 @@ export const WithoutIcon = {
 export const Lightweight = {
   ...AlertTemplate,
   args: {
-    heading: 'Nisi id esse dolor ipsum eu ea fugiat nulla cillum',
+    heading: 'You may be able to save money on your monthly premium',
     children:
-      'Excepteur dolore esse occaecat tempor elit aute id consectetur dolor excepteur nulla tempor quis. Minim nisi ut voluptate ipsum cillum ullamco. Qui sit laboris pariatur pariatur. Excepteur amet est exercitation occaecat dolore ea proident nostrud reprehenderit id sit esse. Aliqua duis est dolor laboris ea consequat voluptate ex pariatur sunt aliquip consequat esse. Et enim enim sint labore velit culpa est tempor nisi.',
+      'Based on your income, you may qualify for a plan that costs less than your current plan. You can change plans and apply your savings to your premium each month.',
     weight: 'lightweight',
   },
 };
@@ -94,9 +106,9 @@ export const Lightweight = {
 export const Success = {
   ...AlertTemplate,
   args: {
-    heading: 'Elit duis ipsum eu esse id elit laborum id et reprehenderit aute',
+    heading: 'Your application has been submitted',
     children:
-      'Deserunt in do reprehenderit aliqua. Velit dolor nulla enim cupidatat exercitation duis cupidatat fugiat eiusmod ullamco occaecat. Occaecat dolor Lorem est esse quis eiusmod excepteur aute in magna magna duis laboris. Proident duis irure anim duis. Lorem pariatur ex ea aliqua nisi laborum est ullamco ea ex ullamco eu non.',
+      'You successfully submitted your application. You will receive a confirmation email within 24 hours. If you do not receive an email, please contact us at 1-800-555-5555 (TTY: 1-855-555-5555).',
     variation: 'success',
   },
 };
@@ -104,19 +116,17 @@ export const Success = {
 export const Warning = {
   ...AlertTemplate,
   args: {
-    heading: 'Minim ex adipisicing adipisicing est ea',
-    children:
-      'Et aute irure aliquip minim minim dolor reprehenderit. Qui pariatur elit incididunt duis esse ut. Officia anim elit ea velit incididunt laboris quis incididunt ipsum mollit proident non. Magna officia irure labore non culpa cillum. Amet commodo Lorem elit mollit exercitation. Cupidatat aliqua culpa proident eiusmod eiusmod labore eu ipsum incididunt et.',
+    heading: 'Copy your API key to a safe location',
+    children: 'Once you leave this page, you will not be able to access it.',
     variation: 'warn',
   },
 };
-
 export const Error = {
   ...AlertTemplate,
   args: {
-    heading: 'Mollit ad do amet incididunt ullamco ullamco',
+    heading: 'There was a problem saving your information',
     children:
-      'Fugiat elit commodo nulla sint quis dolore in. Elit Lorem voluptate elit proident exercitation consequat labore culpa commodo duis. Incididunt laborum duis veniam ipsum velit. Voluptate tempor voluptate eu do cupidatat occaecat labore Lorem. Labore exercitation voluptate aliquip labore Lorem ea mollit duis.',
+      'Please review the information you entered and try again. If you continue to have problems, please contact us at 1-800-555-5555 (TTY: 1-855-555-5555).',
     variation: 'error',
   },
 };
