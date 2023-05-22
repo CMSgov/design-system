@@ -12,8 +12,9 @@
 // This class is meant to turn a be applied to a fullscreen story and match the
 // default padding that storybook puts around stories in different contexts. If
 // Storybook's styles change, we'll need to update these rules. It is used for
-// the decorator of inverse-color stories.
-.match-storybook-padding {
+// the decorator of on-dark stories.
+.on-dark-story {
+  height: 100vh;
   padding: 1rem;
 
   #storybook-docs & {

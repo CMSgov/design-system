@@ -109,7 +109,7 @@ export const globalTypes = {
 const onDarkDecorator = (Story, context) => {
   let className;
   if (context.parameters.onDark) {
-    className = 'ds-base--inverse match-storybook-padding';
+    className = 'ds-base--inverse on-dark-story';
     context.parameters.layout = 'fullscreen';
   }
 
