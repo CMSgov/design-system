@@ -35,7 +35,7 @@ const VersionSwitcher = () => {
   const currentVersion = getPackageData(currentTheme).version;
   const themeVersions = versions[themes[currentTheme].packageName];
 
-  function onVersionChange(event: ChangeEvent<HTMLSelectElement>) {
+  function onVersionChange(event) {
     const version = event.currentTarget.value;
     const versionIndex = themeVersions.indexOf(version);
     const coreVersion = versions['design-system'][versionIndex];

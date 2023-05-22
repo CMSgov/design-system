@@ -1,7 +1,12 @@
 import React from 'react';
-import { HHSLogo } from '@cmsgov/design-system';
+import { useState } from 'react';
+import { HHSLogo, PrivacySettingsDialog } from '@cmsgov/design-system';
 
 const DocSiteFooter = () => {
+  const [showDialog, setShowDialog] = useState(false);
+  const openDialog = () => setShowDialog(true);
+  const closeDialog = () => setShowDialog(false);
+
   return (
     <footer className="c-footer ds-u-padding-x--3 ds-u-sm-padding-x--6">
       <section className="c-footer__container">
@@ -14,9 +19,17 @@ const DocSiteFooter = () => {
           >
             Plain Writing
           </a>
-          <button className="c-footer__link" data-privacy-policy="modal-trigger-footer">
+          <button className="c-footer__link" onClick={openDialog}>
             Privacy settings
           </button>
+          {showDialog && (
+            <PrivacySettingsDialog
+              onExit={closeDialog}
+              domain="CMS.gov"
+              privacyPolicyUrl="https://www.cms.gov/privacy"
+              thirdPartyPoliciesUrl="https://www.cms.gov/privacy#h57sjsyz3r1jqc1oje1naete3bvoi6g"
+            />
+          )}
           <a
             className="c-footer__link"
             href="https://cms.gov/privacy/"

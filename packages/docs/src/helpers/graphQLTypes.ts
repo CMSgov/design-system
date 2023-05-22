@@ -17,6 +17,7 @@ export interface ComponentLinksInterface {
 export interface LocationInterface {
   pathname: string;
   search?: string;
+  origin?: string;
 }
 
 export interface FrontmatterInterface {
@@ -44,6 +45,21 @@ export interface MdxQuery {
     };
   };
   location?: LocationInterface;
+}
+
+export interface SearchDataStore {
+  id: string;
+  path: string;
+  title: string;
+  body: string;
+  excerpt: string;
+}
+
+export interface SearchQuery {
+  localSearchPages: {
+    store: Record<string, SearchDataStore>[];
+    index: string;
+  };
 }
 
 export interface BlogQuery {
