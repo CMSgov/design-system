@@ -5,7 +5,7 @@ import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 import { useSelect, UseSelectProps, UseSelectStateChangeOptions } from 'downshift';
 import { isOptGroupArray, parseChildren, validateProps } from './utils';
 import { uniqueId } from 'lodash';
-import createCustomStatusMessageFn from './useHighlightStatusMessageFn';
+import useHighlightStatusMessageFn from './useHighlightStatusMessageFn';
 
 export type DropdownSize = 'small' | 'medium';
 export type DropdownValue = number | string;
@@ -182,7 +182,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     menuId,
     items,
     itemToString,
-    getA11yStatusMessage: createCustomStatusMessageFn(),
+    getA11yStatusMessage: useHighlightStatusMessageFn(),
     onSelectedItemChange:
       onChange &&
       ((changes: UseSelectStateChangeOptions<any>) => {
