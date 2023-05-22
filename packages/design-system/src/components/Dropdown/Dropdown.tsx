@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef } from 'react';
+import React, { useMemo, useRef } from 'react';
 import classNames from 'classnames';
 import useAutofocus from '../utilities/useAutoFocus';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
@@ -220,16 +220,13 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     'aria-labelledby': `${id} ${labelId}`,
   });
 
-  // const menuRef = useRef<HTMLUListElement>();
   const menuProps = getMenuProps({
     className: classNames(
       'ds-c-dropdown__menu',
       isOptGroupArray(optionsOrOptGroups) && 'ds-c-dropdown__menu--grouped'
     ),
-    // ref: menuRef,
   });
 
-  const highlightedRef = useRef<HTMLLIElement>();
   const menuContent = items.map((item, index) => {
     const { value, label, isOptGroup, className, ...extraAttrs } = item;
     return (
@@ -241,37 +238,18 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
           highlightedIndex === index && 'ds-c-dropdown__item--highlighted',
           selectedItem === item && 'ds-c-dropdown__item--selected'
         )}
-        // autoFocus={highlightedIndex === index}
         {...extraAttrs}
         {...getItemProps({
           item,
           index,
           disabled: isOptGroup,
           role: isOptGroup ? 'group' : undefined,
-          ref: highlightedIndex === index ? highlightedRef : undefined,
-          tabIndex: highlightedIndex === index ? 0 : -1,
         })}
       >
         {item.label}
       </li>
     );
   });
-
-  // useEffect(() => {
-  //   if (isOpen) {
-  //     const highlightedItem: HTMLLIElement | undefined = menuRef.current?.querySelector(
-  //       'ds-c-dropdown__item--highlighted'
-  //     );
-  //     console.log(highlightedItem)
-  //     highlightedItem?.focus();
-  //   }
-  // }, [menuRef.current, highlightedIndex]);
-  useEffect(() => {
-    if (isOpen && highlightedRef.current) {
-      console.log(highlightedRef.current);
-      highlightedRef.current.focus();
-    }
-  }, [highlightedRef.current]);
 
   return (
     <div {...wrapperProps}>
