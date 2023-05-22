@@ -25,16 +25,13 @@ Provides supplementary information, or highlights a tool or step available to th
 
 <ThemeContent onlyThemes={['medicare']}>
 
-Does not require an icon. 
+Does not require an icon.
 
 Provides supplementary information, or highlights a tool or step available to the user, that may be helpful to users regarding their current action or task, but is optional or not critical. Can provide guidance on what the user needs to do to proceed.
 
 </ThemeContent>
 
-<StorybookExample
-  componentName="alert"
-  storyId="components-alert--default"
-/>
+<StorybookExample componentName="alert" storyId="components-alert--default" />
 
 ### Error
 
@@ -46,16 +43,13 @@ Informs users of an error or critical failure. Often used to block them from pro
 
 <ThemeContent onlyThemes={['medicare']}>
 
-Requires an icon. 
+Requires an icon.
 
 Informs users of an error or critical failure. Often used to block them from proceeding until they resolve the issue including system alerts.
 
 </ThemeContent>
 
-<StorybookExample
-  componentName="error alert"
-  storyId="components-alert--error-alert"
-/>
+<StorybookExample componentName="error alert" storyId="components-alert--error" />
 
 ### Warning
 
@@ -67,37 +61,31 @@ Informs users that their entry or selection may have unexpected or undesirable r
 
 <ThemeContent onlyThemes={['medicare']}>
 
-Requires an icon. 
+Requires an icon.
 
 Informs users that their entry or selection may have unexpected or undesirable results, some of which may not be easily undone.
 
 </ThemeContent>
 
-<StorybookExample
-  componentName="warning alert"
-  storyId="components-alert--warning-alert"
-/>
+<StorybookExample componentName="warning alert" storyId="components-alert--warning" />
 
 ### Success
 
 <ThemeContent onlyThemes={['healthcare']}>
 
-Confirms the successful completion of a step or task, or receipt of information provided by the user. Suggests a path forward that may be beneficial to the user, based on their selections or entries. 
+Confirms the successful completion of a step or task, or receipt of information provided by the user. Suggests a path forward that may be beneficial to the user, based on their selections or entries.
 
 </ThemeContent>
 
 <ThemeContent onlyThemes={['medicare']}>
 
-Does not require an icon. 
+Does not require an icon.
 
 Confirms the successful completion of a step or task, or receipt of information provided by the user.
 
 </ThemeContent>
 
-<StorybookExample
-  componentName="success alert"
-  storyId="components-alert--success-alert"
-/>
+<StorybookExample componentName="success alert" storyId="components-alert--success" />
 
 <ThemeContent onlyThemes={['medicare']}>
 
@@ -105,7 +93,7 @@ Confirms the successful completion of a step or task, or receipt of information 
 
 Not in the design system yet.
 
-Does not require an icon. 
+Does not require an icon.
 
 Explains concepts which may include math or maybe not.
 
@@ -116,7 +104,7 @@ Explains concepts which may include math or maybe not.
 <ThemeContent onlyThemes={['medicare']}>
 
 <Badge variation="alert">
-<CloseIconThin /> Unused by Medicare.
+  <CloseIconThin /> Unused by Medicare.
 </Badge>
 
 </ThemeContent>
@@ -129,10 +117,7 @@ Used to show important but not as urgent messages as standard alerts.
 
 <ThemeContent neverThemes={['medicare']}>
 
-<StorybookExample
-  componentName="lightweight alert"
-  storyId="components-alert--light-weight"
-/>
+<StorybookExample componentName="lightweight alert" storyId="components-alert--lightweight" />
 
 </ThemeContent>
 
@@ -148,9 +133,7 @@ Used to show important but not as urgent messages as standard alerts.
 
 The following CSS variables can be overridden to customize Alert components:
 
-<ComponentThemeOptions
-  componentname="alert"
-/>
+<ComponentThemeOptions componentname="alert" />
 
 ### Analytics
 
@@ -182,7 +165,6 @@ This component has analytics tracking available. Please see our developer docume
 
 </ThemeContent>
 
-
 ### When to consider alternatives
 
 - On long forms, always include in-line validation in addition to any error messages that appear at the top of the form. When possible, simplify forms by rewriting and where possible, splitting long forms across multiple pages
@@ -197,7 +179,7 @@ This component has analytics tracking available. Please see our developer docume
 
 ### Display & behavior
 
-- Alerts are static and shouldn't be associated with a timer or dismiss button. 
+- Alerts are static and shouldn't be associated with a timer or dismiss button.
 - Can be displayed statically on page load or dynamically loaded.
 - When the user is required to do something in response to an alert, let them know what they need to do and make that task as easy as possible.
 
@@ -212,7 +194,7 @@ This component has analytics tracking available. Please see our developer docume
 - Place all alerts below the main page title.
 - Default alerts provide more impact and should be used sparingly. Focus on using default alerts as top-level elements.
   - Exception: Warning alerts can be used as needed within the page.
-- Lightweight alerts are more targeted and should be focused on specific elements within the context of the page. 
+- Lightweight alerts are more targeted and should be focused on specific elements within the context of the page.
 
 </ThemeContent>
 
@@ -227,7 +209,6 @@ If dynamically loaded, be mindful of when the alert displays on the page. For ex
 
 </ThemeContent>
 
-  
 - Use the ARIA `role="alert"` to inform assistive technologies of a time-sensitive and important message that is not interactive. If the message is interactive, use the `role="alertdialog"` instead.
 - Consider putting the alert inside a div with `aria-live="polite"` and `aria-relevant="additions removals"`. These <abbr title="Accessible rich internet applications">ARIA</abbr> attributes ensure screen readers will announce alerts that have been added or updated dynamically.
 - If you choose to shift focus to the Alert, be mindful that using other techniques like `role="alert"`, and `aria-live="polite"` will cause some browser and screen reader combinations to read out the content more than once. Typically, shifting focus alone will be enough to alert screen readers of the content.
@@ -247,7 +228,7 @@ If dynamically loaded, be mindful of when the alert displays on the page. For ex
 - Helps to group or frame the information in the alert
 - Shouldn't end in a period
 
-#### Error content 
+#### Error content
 
 - Describe what went wrong and what the the user needs to do.
 - Use the fewest words possible (i.e., don't use "please").
@@ -269,35 +250,19 @@ If dynamically loaded, be mindful of when the alert displays on the page. For ex
   </thead>
   <tbody role="rowgroup">
     <tr role="row">
-      <td
-        role="cell"
-        data-title="Document title"
-        width="50%"
-      >
-      Use active voice: "Access your application...". Start with an action verb whenever possible.
+      <td role="cell" data-title="Document title" width="50%">
+        Use active voice: "Access your application...". Start with an action verb whenever possible.
       </td>
-      <td
-        role="cell"
-        data-title="Description"
-        width="50%"
-      >
-      Use passive voice: "Your application can be accessed by...."
+      <td role="cell" data-title="Description" width="50%">
+        Use passive voice: "Your application can be accessed by...."
       </td>
     </tr>
-      <tr role="row">
-      <td
-        role="cell"
-        data-title="Document title"
-        width="50%"
-      >
-      Contractions 
+    <tr role="row">
+      <td role="cell" data-title="Document title" width="50%">
+        Contractions
       </td>
-      <td
-        role="cell"
-        data-title="Description"
-        width="50%"
-      >
-      These specific contractions: "it'll, that’ll, why’s, how’s, you’d"
+      <td role="cell" data-title="Description" width="50%">
+        These specific contractions: "it'll, that’ll, why’s, how’s, you’d"
       </td>
     </tr>
   </tbody>
