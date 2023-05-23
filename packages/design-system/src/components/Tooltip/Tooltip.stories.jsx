@@ -99,7 +99,9 @@ TooltipWithCloseButton.args = {
 
 export const InversedTrigger = Template.bind({});
 InversedTrigger.parameters = {
-  baseInverse: true,
+  // Must supply `layout: 'fullscreen'` when we use `onDark: true`
+  onDark: true,
+  layout: 'fullscreen',
 };
 InversedTrigger.args = {
   data: (

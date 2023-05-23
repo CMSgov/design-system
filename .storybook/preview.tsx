@@ -106,14 +106,18 @@ export const globalTypes = {
   },
 };
 
-const baseClassDecorator = (Story, context) => {
-  if (context.parameters.baseInverse) {
-    document.body.classList.add('ds-base--inverse');
-  } else {
-    document.body.classList.remove('ds-base--inverse');
+const onDarkDecorator = (Story, context) => {
+  let className;
+  if (context.parameters.onDark) {
+    className = 'ds-base--inverse on-dark-story';
+    context.parameters.layout = 'fullscreen';
   }
 
-  return <Story {...context} />;
+  return (
+    <div className={className}>
+      <Story {...context} />
+    </div>
+  );
 };
 
 const themeSettingDecorator = (Story, context) => {
@@ -162,7 +166,7 @@ const analyticsSettingsDecorator = (Story, context) => {
 };
 
 export const decorators = [
-  baseClassDecorator,
+  onDarkDecorator,
   languageSettingDecorator,
   analyticsSettingsDecorator,
   themeSettingDecorator,

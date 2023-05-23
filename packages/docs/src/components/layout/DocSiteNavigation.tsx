@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'gatsby';
 import classnames from 'classnames';
-import { Button, CloseIconThin, MenuIconThin, VerticalNav } from '@cmsgov/design-system';
+import { Button, CloseIconThin, MenuIconThin, UsaBanner, VerticalNav } from '@cmsgov/design-system';
 import { useStaticQuery, graphql } from 'gatsby';
 import ThemeSwitcher from './ThemeSwitcher';
 import VersionSwitcher from './VersionSwitcher';
@@ -102,6 +102,7 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
         'c-navigation--open': isMobile && isMobileNavOpen,
       })}
     >
+      <UsaBanner className="ds-u-display--block ds-u-md-display--none" />
       <header className="c-navigation__header ds-u-md-display--block ds-u-md-display--none">
         <Button
           className="ds-u-md-display--none ds-u-padding-left--0 ds-u-padding-right--1"
