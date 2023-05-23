@@ -1,7 +1,7 @@
 import React from 'react';
-import { Typography } from './resetTypography.stories';
-import { Lists } from './resetLists.stories';
-import { FormElements } from './resetFormEls.stories';
+import { Typography } from './reset-typography.stories';
+import { Lists } from './reset-lists.stories';
+import { FormElements } from './reset-form-els.stories';
 
 export default {
   title: 'Reset/Overview',
