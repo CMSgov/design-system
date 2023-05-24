@@ -12,7 +12,7 @@ const defaultGetA11yStatusMessage: GetA11yStatusMessageFn = (
  * a known bug where it doesn't read changes to the `aria-activedescendant`.
  * In this function, we're telling Downshift to create an "a11y message" to
  * read out the currently highlighted item when the highlighted index changes.
- * More more info on the VoiceOver issue, see:
+ * For more info on the VoiceOver issue, see:
  *   - https://github.com/tailwindlabs/headlessui/issues/2129
  *   - https://a11ysupport.io/tests/apg__aria-1-2-combobox-with-list-autocomplete-example#assertion-aria-aria-activedescendant_attribute-convey_value-aria-combobox_role
  *   - https://zellwk.com/blog/element-focus-vs-aria-activedescendant/
