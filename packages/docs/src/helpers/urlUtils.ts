@@ -21,8 +21,8 @@ export function makeSketchUrl(pathname = '', theme) {
 }
 
 // creates links to storybook story
-export function makeStorybookUrl(storyId, theme) {
-  return withPrefix(`/storybook/?path=/story/${storyId}&globals=theme:${theme}`);
+export function makeStorybookUrl(storyId, theme, storyType = 'story') {
+  return withPrefix(`/storybook/?path=/${storyType}/${storyId}&globals=theme:${theme}`);
 }
 
 export function makePageUrl(fileRelativePath, location: LocationInterface) {
