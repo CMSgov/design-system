@@ -30,7 +30,9 @@ export const AllHeadings = () => {
 export const AllHeadingsOnDark = AllHeadings.bind({});
 
 AllHeadingsOnDark.parameters = {
-  baseInverse: true,
+  // Must supply `layout: 'fullscreen'` when we use `onDark: true`
+  onDark: true,
+  layout: 'fullscreen',
 };
 
 export const ContentClass = () => (

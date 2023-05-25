@@ -37,7 +37,9 @@ FilledSpinner.args = {
   filled: true,
 };
 FilledSpinner.parameters = {
-  baseInverse: true,
+  // Must supply `layout: 'fullscreen'` when we use `onDark: true`
+  onDark: true,
+  layout: 'fullscreen',
 };
 
 export const InverseFilledSpinner = Template.bind({});
