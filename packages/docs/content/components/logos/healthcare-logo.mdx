@@ -1,9 +1,10 @@
 ---
 title: Healthcare.gov Logo
-intro: Renders the HealthCare.gov logo in English (default) or Spanish. 
+intro: Renders the HealthCare.gov logo in English (default) or Spanish.
 healthcare:
   githubLink: ds-healthcare-gov/src/components/Logo
   sketchLink: g0k9E3J
+  storybookLink: healthcare-logo--docs
 ---
 
 import { Alert } from '@cmsgov/design-system';
@@ -21,45 +22,43 @@ import greyLogoTag from '../../../src/images/HCgov-logo/GreyLogoTag.png';
 
 <ThemeContent neverThemes={['healthcare']}>
   <Alert variation="error">
-     <p class="ds-c-alert__text">
-        This component is only used for HealthCare. Please use the theme switcher to view the component with HealthCare styles.
+    <p class="ds-c-alert__text">
+      This component is only used for HealthCare. Please use the theme switcher to view the
+      component with HealthCare styles.
     </p>
   </Alert>
 </ThemeContent>
 
 In keeping with our theme of trust, the HealthCare.gov identity marker establishes a universal signature across all HealthCare.gov communications. We treat the marker the same across all media. See the rules to follow when using the HealthCare.gov identity marker below.
 
-The Health Insurance Marketplace, the authenticated application where consumers buy insurance, uses a separate and distinct logo. This logo appears in the HealthCare.gov footer. 
+The Health Insurance Marketplace, the authenticated application where consumers buy insurance, uses a separate and distinct logo. This logo appears in the HealthCare.gov footer.
 
 To ensure that our identity marker is clearly discernable, it requires space as shown below, free of type, graphics, and other elements that might cause visual clutter. There is also a Spanish version of the marker.
 
 ## Examples
 
 ### English
-<StorybookExample
-    componentName="hgovLogo"
-    storyId="healthcare-logo--english-logo"
-/>
+
+<StorybookExample componentName="hgovLogo" storyId="healthcare-logo--english-logo" />
 
 ### Spanish
-<StorybookExample
-    componentName="hgovLogoSpanish"
-    storyId="healthcare-logo--spanish-logo"
-/>
 
+<StorybookExample componentName="hgovLogoSpanish" storyId="healthcare-logo--spanish-logo" />
 
 ### Variations
 
 There are two variations of the HealthCare.gov identity marker that should be used sparingly. The first is a white logo against black. The second is a gray version. Both are intended to be used as "tags" in areas such as a footer where subtle use of the mark is appropriate.
 
 #### White logo on black
+
 <EmbeddedExample>
-<img src={blackLogoTag} />
+  <img src={blackLogoTag} />
 </EmbeddedExample>
 
 #### Grey logo
+
 <EmbeddedExample>
-<img src={greyLogoTag} />
+  <img src={greyLogoTag} />
 </EmbeddedExample>
 
 ### Favicon
@@ -67,7 +66,7 @@ There are two variations of the HealthCare.gov identity marker that should be us
 A dark blue HealthCare.gov favicon appears on all HealthCare.gov web pages.
 
 <EmbeddedExample>
-<img src={hcgovFavicon} />
+  <img src={hcgovFavicon} />
 </EmbeddedExample>
 
 ## Code
@@ -86,7 +85,6 @@ Available classes:
 - `.hc-c-logo__care`
 - `.hc-c-logo__gov`
 
-
 ## Guidance
 
 ### Usage
@@ -95,16 +93,15 @@ Available classes:
 
 ### Incorrect usage
 
-| Style        | Example                                   |
-| ----------- | ----------------------------------------- |
-| <CloseIconThin class='ds-c-icon-color--error' /> Color background        | <img src={colorBackground} alt="Healthcage.gov logo incorrectly used on a blue background"/> |
-| <CloseIconThin class='ds-c-icon-color--error' /> Photographic background        | <img src={photoBackground} alt="Healthcage.gov logo incorrectly used on a photographic background"/> |
-| <CloseIconThin class='ds-c-icon-color--error' /> White against color        |   <img src={reversed} alt="White Healthcage.gov logo incorrectly used on a blue background"/> |
-| <CloseIconThin class='ds-c-icon-color--error' /> Drop shadow        |   <img src={dropshadow} alt="Healthcage.gov logo incorrectly used with a drop shadow"/> |
-| <CloseIconThin class='ds-c-icon-color--error' /> Other colors        | <img src={differentColors} alt="Healthcage.gov logo incorrectly used with tan and teal colors"/> |
-| <CloseIconThin class='ds-c-icon-color--error' /> Outlined        | <img src={outlined} alt="Healthcage.gov logo incorrectly used with a blue outline of the logo"/> |
-| <CloseIconThin class='ds-c-icon-color--error' /> Squeezed        | <img src={squeezed} alt="Healthcage.gov logo incorrectly used with the logo squeezed"/> |
-
+| Style                                                                    | Example                                                                                              |
+| ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
+| <CloseIconThin class='ds-c-icon-color--error' /> Color background        | <img src={colorBackground} alt="Healthcage.gov logo incorrectly used on a blue background"/>         |
+| <CloseIconThin class='ds-c-icon-color--error' /> Photographic background | <img src={photoBackground} alt="Healthcage.gov logo incorrectly used on a photographic background"/> |
+| <CloseIconThin class='ds-c-icon-color--error' /> White against color     | <img src={reversed} alt="White Healthcage.gov logo incorrectly used on a blue background"/>          |
+| <CloseIconThin class='ds-c-icon-color--error' /> Drop shadow             | <img src={dropshadow} alt="Healthcage.gov logo incorrectly used with a drop shadow"/>                |
+| <CloseIconThin class='ds-c-icon-color--error' /> Other colors            | <img src={differentColors} alt="Healthcage.gov logo incorrectly used with tan and teal colors"/>     |
+| <CloseIconThin class='ds-c-icon-color--error' /> Outlined                | <img src={outlined} alt="Healthcage.gov logo incorrectly used with a blue outline of the logo"/>     |
+| <CloseIconThin class='ds-c-icon-color--error' /> Squeezed                | <img src={squeezed} alt="Healthcage.gov logo incorrectly used with the logo squeezed"/>              |
 
 ## Component maturity
 
@@ -122,4 +119,3 @@ Available classes:
   tokensInCode={true}
   tokensInSketch={true}
 />
-
