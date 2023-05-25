@@ -2,10 +2,11 @@ import React from 'react';
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'gatsby';
 import classnames from 'classnames';
-import { Button, CloseIconThin, MenuIconThin, VerticalNav } from '@cmsgov/design-system';
+import { Button, CloseIconThin, MenuIconThin, UsaBanner, VerticalNav } from '@cmsgov/design-system';
 import { useStaticQuery, graphql } from 'gatsby';
 import ThemeSwitcher from './ThemeSwitcher';
 import VersionSwitcher from './VersionSwitcher';
+import SearchForm from '../content/SearchForm';
 import { LocationInterface, NavDataQuery } from '../../helpers/graphQLTypes';
 import { DocsNavItem, convertToNavItems, organizeNavItems } from '../../helpers/navDataFormatUtils';
 import GithubIcon from '../icons/GithubIcon';
@@ -101,7 +102,8 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
         'c-navigation--open': isMobile && isMobileNavOpen,
       })}
     >
-      <header className="c-navigation__header">
+      <UsaBanner className="ds-u-display--block ds-u-md-display--none" />
+      <header className="c-navigation__header ds-u-md-display--block ds-u-md-display--none">
         <Button
           className="ds-u-md-display--none ds-u-padding-left--0 ds-u-padding-right--1"
           variation="ghost"
@@ -132,6 +134,7 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
           <VersionSwitcher />
         </div>
         <div className="c-navigation__links-wrapper">
+          <SearchForm className="ds-u-md-display--none ds-u-margin--0 ds-u-padding-bottom--2" />
           <VerticalNav
             className="c-navigation__link-list"
             items={navItems}

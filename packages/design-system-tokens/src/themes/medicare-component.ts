@@ -292,6 +292,7 @@ export const components: AnyTokenValues = {
     '__background-color':                         t.color['white'],
     '__padding':                                  t.spacer['4'],
     '-overlay__background-color':                 t.color['background-dialog-mask'],
+    '-icon__size':                                '1.375rem',
   },
   
   'drawer': {
@@ -313,6 +314,8 @@ export const components: AnyTokenValues = {
   'dropdown': {
     '__background-color':                         t.color['white'],
     '__icon-size':                                '10px',
+    '-item__border-width':                        '1px',
+    '-item__border-color':                        t.color['gray-lighter'],
   },
   
   'filter-chip': {
@@ -336,7 +339,7 @@ export const components: AnyTokenValues = {
     '-hint__color':                               t.color['muted'],
     '-hint__color--inverse':                      t.color['muted-inverse'],
     // Medicare is the only theme with a custom font-size token for hint messages
-    '-hint__font-size':                           '14px',
+    '-hint__font-size':                           '0.875rem',
     '-error__color':                              t.color['error'],
     '-error__color--inverse':                     t.color['error-lighter'],
   },
@@ -474,6 +477,7 @@ export const components: AnyTokenValues = {
     '-close__background-color':                   t.color['gray-light'],
     '-action__color':                             t.color['primary-darker'],
     '-lock-icon__color':                          t.color['success-light'],
+    '-heading__font-size':                        '0.75rem',
   },
   
   'vertical-nav': {
