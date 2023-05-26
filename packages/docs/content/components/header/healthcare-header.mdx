@@ -3,44 +3,41 @@ title: Healthcare.gov Header
 healthcare:
   githubLink: ds-healthcare-gov/src/components/Header
   sketchLink: bgDE8k4
+  storybookLink: healthcare-header--docs
 ---
 
 import { Alert } from '@cmsgov/design-system';
 
 <ThemeContent neverThemes={['healthcare']}>
   <Alert variation="error">
-     <p class="ds-c-alert__text">
-        This component is only used for HealthCare. Please use the theme switcher to view the component with HealthCare styles.
+    <p class="ds-c-alert__text">
+      This component is only used for HealthCare. Please use the theme switcher to view the
+      component with HealthCare styles.
     </p>
   </Alert>
 </ThemeContent>
 
 ## Examples
+
 The HealthCare.gov header component varies depending on the user's state (ie. logged-in) and context (ie. what page the user is on).
 
 ### Logged-In
-<StorybookExample
-    componentName="loggedin-header"
-    storyId="healthcare-header--logged-in-header"
-/>
+
+<StorybookExample componentName="loggedin-header" storyId="healthcare-header--logged-in-header" />
 
 ### Logged-Out
-<StorybookExample
-    componentName="loggedout-header"
-    storyId="healthcare-header--logged-out-header"
-/>
+
+<StorybookExample componentName="loggedout-header" storyId="healthcare-header--logged-out-header" />
 
 ### Minimal
-<StorybookExample
-    componentName="minimal-header"
-    storyId="healthcare-header--minimal-header"
-/>
+
+<StorybookExample componentName="minimal-header" storyId="healthcare-header--minimal-header" />
 
 ## Code
 
 ### React
 
-<PropTable componentName="Header" />
+<SeeStorybookForReactGuidance storyId={'healthcare-header--docs'} />
 
 ### Google Analytics
 
@@ -53,7 +50,7 @@ On applications where the page has `utag` loaded, the data goes to Tealium which
 Import and set the `setHeaderSendsAnalytics` feature flag to `false` in your application's entry file:
 
 ```js
-import { setHeaderSendsAnalytics } from "@cmsgov/<design-system-package>";
+import { setHeaderSendsAnalytics } from '@cmsgov/<design-system-package>';
 setHeaderSendsAnalytics(false);
 ```
 

@@ -3,7 +3,7 @@ title: Label-Masked Field
 intro: A label-masked field is a text-field pattern that provides instant, visual feedback about how inputed data is being interpreted without creating a noisy aural experience.
 core:
   githubLink: design-system/src/components/LabelMask
-  storybookLink: components-text-field--label-masked-currency
+  storybookLink: components-text-field--docs
 ---
 
 ## Examples
@@ -16,39 +16,27 @@ The label-mask currently has five built-in implementations: _currency_, _phone n
 
 ### Currency
 
-<StorybookExample
-  componentName="currency"
-  storyId="components-text-field--label-masked-currency"
-/>
+<StorybookExample componentName="currency" storyId="components-text-field--label-masked-currency" />
 
 ### Phone number
 
-<StorybookExample
-  componentName="phone"
-  storyId="components-text-field--label-masked-phone"
-/>
+<StorybookExample componentName="phone" storyId="components-text-field--label-masked-phone" />
 
 ### Social Security number
 
-<StorybookExample
-  componentName="ssn"
-  storyId="components-text-field--label-masked-ssn"
-/>
+<StorybookExample componentName="ssn" storyId="components-text-field--label-masked-ssn" />
 
 ### ZIP code
 
-<StorybookExample
-  componentName="zip"
-  storyId="components-text-field--label-masked-postal-code"
-/>
+<StorybookExample componentName="zip" storyId="components-text-field--label-masked-postal-code" />
 
-## Code 
+## Code
 
 ### React
 
 Passing a `labelMask` prop into a [`TextField`](/components/text-field/) component with a valid masking function will turn it into a label mask. You can either import one of the named, built-in mask functions (`SSN_MASK`, `ZIP_MASK`, `PHONE_MASK`, or `CURRENCY_MASK`), or you can provide a custom mask function. The following table shows the `TextField` prop that is specific to label masks:
 
-<PropTable componentName="TextField" subset={["labelMask"]} />
+<SeeStorybookForReactGuidance storyId={'components-text-field--docs'} />
 
 #### Handling input changes
 
