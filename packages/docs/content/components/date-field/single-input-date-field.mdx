@@ -4,7 +4,7 @@ intro: Date field (single-input) provides date entry, using a text field, in a s
 core:
   githubLink: design-system/src/components/DateField
   sketchLink: jgLGlZm
-  storybookLink: components-singleinputdatefield--default
+  storybookLink: components-singleinputdatefield--docs
 healthcare:
   sketchLink: L03Rw5W
 medicare:
@@ -22,23 +22,19 @@ medicare:
 
 ### React
 
-<PropTable componentName="SingleInputDateField" />
+<SeeStorybookForReactGuidance storyId={'components-singleinputdatefield--docs'} />
 
 ### Styles
 
 The following CSS variables can be overridden to customize Input/Form components:
 
-<ComponentThemeOptions
-  componentname="text-input"
-/>
+<ComponentThemeOptions componentname="text-input" />
 
 #### Form components
 
 This component also makes use of form field styles, which can be customized by the following variables:
 
-<ComponentThemeOptions
-  componentname="form"
-/>
+<ComponentThemeOptions componentname="form" />
 
 ## Guidance
 
@@ -54,8 +50,9 @@ This component also makes use of form field styles, which can be customized by t
 ### Usage
 
 Allow users to have flexibility in entering the date, such as allowing one-digit numbers with or without "0" prior to the number, or entering a date with or without slashes to separate month, day, and year.
-  - Example: "1" as well as "01" for a month or day.
-  - Example: "05/01/2022" as well as "05012022".
+
+- Example: "1" as well as "01" for a month or day.
+- Example: "05/01/2022" as well as "05012022".
 
 ### Accessibility
 
