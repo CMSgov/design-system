@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/ds-medicare-gov",
-  "version": "8.0.1",
+  "version": "9.0.0-beta.1",
   "publishConfig": {
     "tag": "latest",
     "access": "public"
@@ -38,6 +38,7 @@
       "require": "./dist/preact-components/cjs/web-components/index.js"
     },
     "./css/*": "./dist/css/*",
+    "./dist/*": "./dist/*",
     "./src/*": "./src/*"
   },
   "main": "dist/react-components/cjs/index.js",
@@ -49,8 +50,8 @@
     "src"
   ],
   "dependencies": {
-    "@cmsgov/design-system": "6.0.1",
-    "@types/react": "^17.0.10",
+    "@cmsgov/design-system": "7.0.0-beta.1",
+    "@types/react": "^18.2.6",
     "@types/react-dom": "^17.0.10"
   }
 }

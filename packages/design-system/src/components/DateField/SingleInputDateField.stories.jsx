@@ -7,42 +7,21 @@ export default {
   title: 'Components/SingleInputDateField',
   component: SingleInputDateField,
   argTypes: {
-    errorMessage: {
-      control: { type: 'text' },
-    },
+    errorMessage: { control: 'text' },
     errorPlacement: {
-      control: {
-        type: 'radio',
-      },
+      control: 'radio',
       options: ['top', 'bottom'],
     },
-    hint: {
-      control: { type: 'text' },
-    },
-    label: {
-      control: { type: 'text' },
-    },
-    requirementLabel: {
-      control: { type: 'text' },
-    },
-    fromDate: {
-      control: { type: 'date' },
-    },
-    toDate: {
-      control: { type: 'date' },
-    },
-    fromMonth: {
-      control: { type: 'date' },
-    },
-    toMonth: {
-      control: { type: 'date' },
-    },
-    defaultMonth: {
-      control: { type: 'date' },
-    },
+    hint: { control: 'text' },
+    label: { control: 'text' },
+    requirementLabel: { control: 'text' },
+    fromDate: { control: 'date' },
+    toDate: { control: 'date' },
+    fromMonth: { control: 'date' },
+    toMonth: { control: 'date' },
+    defaultMonth: { control: 'date' },
   },
   args: {
-    errorPlacement: 'top',
     hint: 'Please enter your birthday',
     label: 'Birthday',
     name: 'single-input-date-field',

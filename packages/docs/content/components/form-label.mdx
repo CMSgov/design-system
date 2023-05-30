@@ -3,7 +3,7 @@ title: Form Label & Legend
 intro: Form Labels & Legends are used with form inputs to provide labels, hints, and errors that help the user enter information.
 core:
   githubLink: design-system/src/components/FormLabel
-  storybookLink: components-formlabel--form-label-with-hint
+  storybookLink: components-formlabel--docs
 ---
 
 ## Examples
@@ -20,17 +20,13 @@ The `FormLabel` component provides the `label` (or `legend`) for a field, along 
 
 ### React
 
-<PropTable componentName="FormLabel">
-  <PropTableHtmlElementRow elements={['label', 'legend']} />
-</PropTable>
+<SeeStorybookForReactGuidance storyId={'components-formlabel--docs'} />
 
 ### Styles
 
 The following CSS variables can be overridden to customize Form components:
 
-<ComponentThemeOptions
-  componentname="form"
-/>
+<ComponentThemeOptions componentname="form" />
 
 ## Guidance
 
@@ -38,7 +34,6 @@ The following CSS variables can be overridden to customize Form components:
 
 - Use a single legend for fieldset (this is required). One example of a common use of fieldset and legend is a question with radio button options for answers. The question text and radio buttons are wrapped in a fieldset, with the question itself being inside the legend tag.
 - Avoid links in legends when possible. Links inside legends are not read by some screen readers, namely JAWS. If you need a pattern like this, put the link outside of the legend element, but keep all other useful hint text in the legend.
-
 
 ### Form label
 
@@ -66,7 +61,7 @@ The following CSS variables can be overridden to customize Form components:
 - Place hint text where appropriate depending on what content it's helping to explain
 - Use hint text for supporting contextual help, which will always be shown.
 - Hint text should sit between a form label and the input.
-- Use lower visual style (i.e., lighter gray than the form label or the input option) so it won't compete for users' attention with the field label. 
+- Use lower visual style (i.e., lighter gray than the form label or the input option) so it won't compete for users' attention with the field label.
 - Use hint text to indicate which inputs are optional when there are more required fields than optional.
 - Hint text can also appear after an input box when the text is being used to show the value someone should be entering in the field (e.g., income amount input box displays text after the input box to highlight the amount should be "monthly income".)
 

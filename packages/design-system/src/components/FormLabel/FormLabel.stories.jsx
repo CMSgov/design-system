@@ -6,15 +6,9 @@ export default {
   title: 'Components/FormLabel',
   component: FormLabel,
   argTypes: {
-    errorMessage: {
-      control: { type: 'text' },
-    },
-    hint: {
-      control: { type: 'text' },
-    },
-    requirementLabel: {
-      control: { type: 'text' },
-    },
+    errorMessage: { control: 'text' },
+    hint: { control: 'text' },
+    requirementLabel: { control: 'text' },
   },
   args: {
     children: 'Sample Label',
@@ -65,5 +59,7 @@ InverseFormLabel.args = {
 };
 
 InverseFormLabel.parameters = {
-  baseInverse: true,
+  // Must supply `layout: 'fullscreen'` when we use `onDark: true`
+  onDark: true,
+  layout: 'fullscreen',
 };

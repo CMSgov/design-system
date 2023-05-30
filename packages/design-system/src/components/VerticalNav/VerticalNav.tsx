@@ -59,7 +59,7 @@ export const VerticalNav = (props: VerticalNavProps): React.ReactElement => {
   const navProps = props.ariaNavLabel ? { 'aria-label': props.ariaNavLabel } : {};
 
   const navList = (
-    <ul className={classes} id={props.id}>
+    <ul role="list" className={classes} id={props.id}>
       {props.items.map((item) => {
         let onClick = item.onClick || props.onLinkClick;
         if (!onClick) {

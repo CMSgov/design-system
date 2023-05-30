@@ -10,17 +10,31 @@
 // Layout styles for wrapping choice container
 .ds-c-choice-wrapper {
   display: flex;
-  gap: 0.5rem;
-  margin: 0.5rem 0;
+
+  // Medicare has a different gap for choice wrappers
+  // If a theme doesn't have a gap for choice wrappers defined, it will fall back to the normal gap
+  gap: var(--choice-wrapper__gap, 0.5rem);
+  margin-block-start: $spacer-1;
   max-width: var(--measure-wide);
+
+  // Medicare has a different gap for small choices
+  // If a theme doesn't have a gap for small choices defined, it will fall back to the normal gap
+  &:has(.ds-c-choice--small) {
+    gap: var(--choice-wrapper__gap--small, 0.5rem);
+  }
 }
 
 // Styles for label
 .ds-c-choice + span {
   flex-basis: min-content;
   flex-grow: 1;
+  font-weight: var(--font-weight-normal);
+  margin-block-start: 0;
   max-width: max-content;
-  transform: translateY(0.25em);
+
+  // Medicare has a different `translateY` for choice labels
+  // If a theme doesn't have a `translateY` for choice labels defined, it will fall back to the normal `translateY`
+  transform: translateY(var(--choice__translateY, 0.25em));
 }
 
 .ds-c-choice + span label,
@@ -73,12 +87,12 @@ label,
   width: var(--choice__size);
 
   &::before {
+    border-radius: inherit;
     box-shadow: inset 0 0 4em 1em var(--choice__background-color--checked);
     content: '';
     grid-area: 1/-1;
     height: var(--choice__size);
     opacity: 0;
-    // transition: 120ms opacity ease-in-out;
     width: var(--choice__size);
   }
 
@@ -102,12 +116,17 @@ label,
     border-color: var(--choice__border-color--error);
   }
 
+  // Medicare.gov has a different hover state for checked choices
+  // If a theme doesn't have a hover state for checked choices, it will fall back to the normal hover state
+  &:not(:disabled):hover {
+    border-color: var(--choice__border-color--hover, var(--choice__border-color));
+  }
+
   // Disabled
   &:disabled {
     background-color: var(--choice__background-color--disabled);
     border-color: var(--choice__border-color--disabled);
     color: var(--choice__color--disabled);
-    cursor: not-allowed;
 
     &::before {
       border-color: var(--choice__border-color--disabled);
@@ -130,8 +149,8 @@ label,
   &::after {
     background-color: transparent;
     border: solid;
+    border-block-start-color: transparent;
     border-color: var(--color-white);
-    border-top-color: transparent;
     border-width: 0 0 4px 4px;
     content: '';
     grid-area: 1/-1;
@@ -200,6 +219,12 @@ label,
     border-color: var(--choice__border-color--error--inverse);
   }
 
+  // Medicare.gov has a different hover state for checked choices
+  // If a theme doesn't have a hover state for checked choices, it will fall back to the normal hover state
+  &:not(:disabled):hover {
+    border-color: var(--choice__border-color--hover, var(--choice__border-color--inverse));
+  }
+
   // Disabled
   &:disabled {
     background-color: var(--choice__background-color--disabled--inverse);
@@ -237,21 +262,25 @@ label,
 
 // Checked children container
 .ds-c-choice__checkedChild {
-  border-left: $spacer-half solid var(--choice__border-color--left);
+  border-inline-start: $spacer-half solid var(--choice__border-color--left);
   flex: 1 1 100%;
-  margin-bottom: $spacer-2;
+  margin-block: $spacer-1 $spacer-2;
   // @TODO: get rid of this calc
   // The origin of this 2px shift is fuzzy, it seems like it's based on
   // the border on alerts and healthcare.gov insets.
-  margin-left: calc((var(--choice__size) * 0.5) - 2px);
+  margin-inline-start: calc((var(--choice__size) * 0.5) - 2px);
   padding: $spacer-2;
-  padding-right: 0;
+  padding-inline-end: 0;
 
   &--inverse {
-    border-left-color: var(--color-white);
+    border-inline-start-color: var(--color-white);
   }
 
   &--small {
-    margin-left: $spacer-1;
+    margin-inline-start: $spacer-1;
+  }
+
+  .ds-c-fieldset > div:last-child & {
+    margin-block-end: 0;
   }
 }

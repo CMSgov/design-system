@@ -25,5 +25,7 @@ export const LinksOnDark = () => (
   </>
 );
 LinksOnDark.parameters = {
-  baseInverse: true,
+  // Must supply `layout: 'fullscreen'` when we use `onDark: true`
+  onDark: true,
+  layout: 'fullscreen',
 };

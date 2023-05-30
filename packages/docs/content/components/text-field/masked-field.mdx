@@ -3,7 +3,7 @@ title: Masked Field
 intro: A masked field is an enhanced input field that improves readability by providing visual and non-visual cues to a user about the expected value.
 core:
   githubLink: design-system/src/components/TextField
-  storybookLink: components-text-field--all-masked-fields
+  storybookLink: components-text-field--docs
 ---
 
 import { TextField, unmaskValue } from '@cmsgov/design-system';
@@ -12,12 +12,9 @@ import { TextField, unmaskValue } from '@cmsgov/design-system';
 
 A Mask component renders a controlled input field that applies formatting to the input value when the field is blurred.
 
-<StorybookExample
-  componentName="text-field"
-  storyId="components-text-field--all-masked-fields"
-/>
+<StorybookExample componentName="text-field" storyId="components-text-field--all-masked-fields" />
 
-## Code 
+## Code
 
 ### React
 
@@ -25,23 +22,19 @@ Passing a `mask` prop into the `TextField` component with a valid value will
 enable formatting to occur when the field is blurred. To "unmask" the
 value, you can import and call the `unmaskValue` method.
 
-<PropTable componentName="TextField" />
+<SeeStorybookForReactGuidance storyId={'components-text-field--docs'} />
 
 ### Styles
 
 The following CSS variables can be overridden to customize Input/Form components:
 
-<ComponentThemeOptions
-  componentname="text-input"
-/>
+<ComponentThemeOptions componentname="text-input" />
 
 #### Form components
 
 This component uses a text field and its styles, which can be customized by the following variables:
 
-<ComponentThemeOptions
-  componentname="form"
-/>
+<ComponentThemeOptions componentname="form" />
 
 ## Component maturity
 

@@ -1,45 +1,157 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Dropdown accepts optgroup children 1`] = `
+<ul
+  aria-labelledby="dropdown__label--50"
+  class="ds-c-dropdown__menu ds-c-dropdown__menu--grouped"
+  id="dropdown__menu--51"
+  role="listbox"
+>
+  <li
+    aria-selected="false"
+    class="ds-c-dropdown__item-group"
+    disabled=""
+    id="downshift-16-item-0"
+    role="group"
+  >
+    Group A
+  </li>
+  <li
+    aria-selected="true"
+    class="ds-c-dropdown__item ds-c-dropdown__item--highlighted ds-c-dropdown__item--selected"
+    id="downshift-16-item-1"
+  >
+    Option A-1
+  </li>
+  <li
+    aria-selected="false"
+    class="ds-c-dropdown__item"
+    id="downshift-16-item-2"
+  >
+    Option A-2
+  </li>
+  <li
+    aria-selected="false"
+    class="ds-c-dropdown__item"
+    id="downshift-16-item-3"
+  >
+    Option A-3
+  </li>
+  <li
+    aria-selected="false"
+    class="ds-c-dropdown__item-group"
+    disabled=""
+    id="downshift-16-item-4"
+    role="group"
+  >
+    Group B
+  </li>
+  <li
+    aria-selected="false"
+    class="ds-c-dropdown__item"
+    id="downshift-16-item-5"
+  >
+    Option B-1
+  </li>
+  <li
+    aria-selected="false"
+    class="ds-c-dropdown__item"
+    id="downshift-16-item-6"
+  >
+    Option B-2
+  </li>
+  <li
+    aria-selected="false"
+    class="ds-c-dropdown__item"
+    id="downshift-16-item-7"
+  >
+    Option B-3
+  </li>
+</ul>
+`;
+
 exports[`Dropdown dropdown matches snapshot 1`] = `
 <div
-  class=""
+  class="ds-c-dropdown"
 >
   <label
     class="ds-c-label"
-    for="field_1"
-    id="field_1-label"
+    for="dropdown__button--1"
+    id="dropdown__label--2"
   >
     <span
       class=""
     >
-      
+      Select an option
     </span>
   </label>
-  <select
+  <button
+    aria-activedescendant=""
+    aria-controls="dropdown__menu--3"
+    aria-expanded="false"
+    aria-haspopup="listbox"
     aria-invalid="false"
-    aria-label="test aria label"
-    class="ds-c-field"
-    id="field_1"
+    aria-labelledby="dropdown__label--2"
+    class="ds-c-dropdown__button ds-c-field"
+    id="dropdown__button--1"
     name="dropdown"
+    role="combobox"
+    tabindex="0"
   >
-    <option
-      value="1"
+    2
+  </button>
+  <div
+    class="ds-c-dropdown__menu-container"
+    hidden=""
+  >
+    <ul
+      aria-labelledby="dropdown__label--2"
+      class="ds-c-dropdown__menu"
+      id="dropdown__menu--3"
+      role="listbox"
     >
-      1
-    </option>
-  </select>
+      <li
+        aria-selected="false"
+        class="ds-c-dropdown__item"
+        id="downshift-0-item-0"
+      >
+        1
+      </li>
+      <li
+        aria-selected="true"
+        class="ds-c-dropdown__item ds-c-dropdown__item--selected"
+        id="downshift-0-item-1"
+      >
+        2
+      </li>
+      <li
+        aria-selected="false"
+        class="ds-c-dropdown__item"
+        id="downshift-0-item-2"
+      >
+        3
+      </li>
+      <li
+        aria-selected="false"
+        class="ds-c-dropdown__item"
+        id="downshift-0-item-3"
+      >
+        4
+      </li>
+    </ul>
+  </div>
 </div>
 `;
 
-exports[`Dropdown handles bottom placed error 1`] = `
+exports[`Dropdown supports bottom placed error 1`] = `
 <div>
   <div
-    class=""
+    class="ds-c-dropdown"
   >
     <label
       class="ds-c-label"
-      for="field_12"
-      id="field_12-label"
+      for="dropdown__button--19"
+      id="dropdown__label--20"
     >
       <span
         class=""
@@ -47,31 +159,52 @@ exports[`Dropdown handles bottom placed error 1`] = `
         Select an option
       </span>
     </label>
-    <select
+    <button
+      aria-activedescendant=""
+      aria-controls="dropdown__menu--21"
       aria-describedby="1_error"
+      aria-expanded="false"
+      aria-haspopup="listbox"
       aria-invalid="true"
-      class="ds-c-field ds-c-field--error"
-      errorid="1_error"
-      id="field_12"
+      aria-labelledby="dropdown__label--20"
+      class="ds-c-dropdown__button ds-c-field ds-c-field--error"
+      id="dropdown__button--19"
       name="dropdown"
+      role="combobox"
+      tabindex="0"
     >
-      <option
-        value="1"
+      1
+    </button>
+    <div
+      class="ds-c-dropdown__menu-container"
+      hidden=""
+    >
+      <ul
+        aria-labelledby="dropdown__label--20"
+        class="ds-c-dropdown__menu"
+        id="dropdown__menu--21"
+        role="listbox"
       >
-        1
-      </option>
-    </select>
+        <li
+          aria-selected="true"
+          class="ds-c-dropdown__item ds-c-dropdown__item--selected"
+          id="downshift-6-item-0"
+        >
+          1
+        </li>
+      </ul>
+    </div>
     <span
       aria-atomic="true"
       aria-live="assertive"
-      class="ds-c-inline-error ds-c-field__error-message"
+      class="ds-c-inline-error ds-c-field__error-message ds-c-field__error-message--bottom"
       id="1_error"
     >
       <svg
         aria-hidden="true"
         class="ds-c-icon ds-c-icon--alert-circle "
         focusable="false"
-        id="icon-13"
+        id="icon-9"
         viewBox="36 -12 186 186"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -83,133 +216,4 @@ exports[`Dropdown handles bottom placed error 1`] = `
     </span>
   </div>
 </div>
-`;
-
-exports[`Dropdown has error 1`] = `
-<div>
-  <div
-    class=""
-  >
-    <label
-      class="ds-c-label"
-      for="field_10"
-      id="field_10-label"
-    >
-      <span
-        class=""
-      >
-        Select an option
-      </span>
-      <span
-        aria-atomic="true"
-        aria-live="assertive"
-        class="ds-c-inline-error ds-c-field__error-message"
-        id="field_10-error"
-      >
-        <svg
-          aria-hidden="true"
-          class="ds-c-icon ds-c-icon--alert-circle "
-          focusable="false"
-          id="icon-11"
-          viewBox="36 -12 186 186"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M162.18 41.592c-5.595-9.586-13.185-17.176-22.771-22.771-9.588-5.595-20.055-8.392-31.408-8.392-11.352 0-21.821 2.797-31.408 8.392-9.587 5.594-17.177 13.184-22.772 22.771-5.596 9.587-8.393 20.057-8.393 31.408 0 11.351 2.798 21.82 8.392 31.408 5.595 9.584 13.185 17.176 22.772 22.771 9.587 5.595 20.056 8.392 31.408 8.392s21.822-2.797 31.408-8.392c9.586-5.594 17.176-13.185 22.771-22.771C167.773 94.82 170.57 84.35 170.57 73c0-11.351-2.797-21.822-8.39-31.408zm-43.75 70.433c0 .761-.246 1.398-.734 1.914s-1.086.773-1.793.773H100.26c-.706 0-1.331-.271-1.874-.814-.543-.543-.814-1.168-.814-1.873V96.546c0-.706.271-1.331.814-1.874.543-.543 1.168-.814 1.874-.814h15.643c.707 0 1.306.258 1.793.773.488.518.734 1.154.734 1.915v15.479zm-.164-28.026c-.055.543-.339 1.019-.854 1.426-.517.407-1.154.61-1.914.61h-15.073c-.761 0-1.413-.203-1.956-.61-.543-.407-.815-.883-.815-1.426l-1.385-50.595c0-.653.271-1.141.814-1.467.544-.434 1.196-.652 1.956-.652h17.926c.761 0 1.412.217 1.955.652.543.326.813.815.813 1.467l-1.467 50.595z"
-          />
-        </svg>
-        Error
-      </span>
-    </label>
-    <select
-      aria-invalid="true"
-      class="ds-c-field ds-c-field--error"
-      id="field_10"
-      name="dropdown"
-    >
-      <option
-        value="1"
-      >
-        1
-      </option>
-    </select>
-  </div>
-</div>
-`;
-
-exports[`Dropdown renders a select menu 1`] = `
-<select
-  aria-invalid="false"
-  aria-label="test aria label"
-  class="ds-c-field"
-  id="field_2"
-  name="dropdown"
->
-  <option
-    value="1"
-  >
-    1
-  </option>
-</select>
-`;
-
-exports[`Dropdown renders options correctly 1`] = `
-<select
-  aria-invalid="false"
-  class="ds-c-field"
-  id="field_3"
-  name="dropdown"
->
-  <option
-    selected=""
-    value="1"
-  >
-    1
-  </option>
-  <option
-    value="2"
-  >
-    2
-  </option>
-  <option
-    value="3"
-  >
-    3
-  </option>
-  <option
-    value="4"
-  >
-    4
-  </option>
-  <option
-    value="5"
-  >
-    5
-  </option>
-  <option
-    value="6"
-  >
-    6
-  </option>
-  <option
-    value="7"
-  >
-    7
-  </option>
-  <option
-    value="8"
-  >
-    8
-  </option>
-  <option
-    value="9"
-  >
-    9
-  </option>
-  <option
-    value="10"
-  >
-    10
-  </option>
-</select>
 `;

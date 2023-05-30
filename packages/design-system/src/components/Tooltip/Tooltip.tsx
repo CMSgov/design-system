@@ -220,7 +220,7 @@ export const Tooltip = (props: TooltipProps) => {
     } = props;
 
     const TriggerComponent = component;
-    const triggerClasses = classNames('ds-base', 'ds-c-tooltip__trigger', className, {
+    const triggerClasses = classNames('ds-c-tooltip__trigger', className, {
       [activeClassName]: activeClassName && active,
       'ds-c-tooltip__trigger--inverse': inversed,
     });
@@ -300,7 +300,7 @@ export const Tooltip = (props: TooltipProps) => {
         {...eventHandlers}
       >
         <span className="ds-c-tooltip__arrow" data-popper-arrow />
-        <div className="ds-c-tooltip__content ds-base">
+        <div className="ds-c-tooltip__content">
           {contentHeading || showCloseButton ? (
             <div
               className={classNames('ds-c-tooltip__header', {

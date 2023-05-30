@@ -4,6 +4,9 @@ import themes from '../../themes.json';
 
 const storySkipList = [
   'components-dialog--prevent-scroll-example',
+  'components-dropdown--option-groups',
+  'components-dropdown--html-option-groups',
+  'components-dropdown--html-options',
   'components-idle-timeout--default',
   'components-skip-nav--default-skip-nav',
   'components-skip-nav--skip-nav-example',
@@ -27,8 +30,9 @@ Object.values(stories).forEach((story) => {
     Object.keys(themes).forEach((theme) => {
       const storyNotInTheme = !story.importPath.includes(themes[theme].packageName);
       const storyNotInCore = !story.importPath.includes(themes['core'].packageName);
+      const storyIsDocPage = story.name === 'Docs';
 
-      if (themes[theme].incomplete) return;
+      if (themes[theme].incomplete || storyIsDocPage) return;
 
       // Don't capture theme-specific components outside their themes, all themes get core components
       if (storyNotInTheme && storyNotInCore) return;

@@ -23,6 +23,7 @@ export default {
         </>
       ),
     },
+    theme: 'medicare',
   },
 };
 
@@ -101,7 +102,9 @@ export const HelpDrawerToggleOnDark = () => {
   );
 };
 HelpDrawerToggleOnDark.parameters = {
-  baseInverse: true,
+  // Must supply `layout: 'fullscreen'` when we use `onDark: true`
+  onDark: true,
+  layout: 'fullscreen',
 };
 HelpDrawerToggleOnDark.args = {
   onDark: true,

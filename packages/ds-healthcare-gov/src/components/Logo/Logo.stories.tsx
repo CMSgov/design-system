@@ -5,6 +5,7 @@ import { setLanguage } from '@cmsgov/design-system';
 export default {
   title: 'Healthcare/Logo',
   component: Logo,
+  parameters: { theme: 'healthcare' },
 };
 
 const Template = (args) => <Logo {...args} />;

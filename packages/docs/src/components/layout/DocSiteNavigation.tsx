@@ -2,9 +2,11 @@ import React from 'react';
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'gatsby';
 import classnames from 'classnames';
-import { Button, CloseIconThin, MenuIconThin, VerticalNav } from '@cmsgov/design-system';
+import { Button, CloseIconThin, MenuIconThin, UsaBanner, VerticalNav } from '@cmsgov/design-system';
 import { useStaticQuery, graphql } from 'gatsby';
 import ThemeSwitcher from './ThemeSwitcher';
+import VersionSwitcher from './VersionSwitcher';
+import SearchForm from '../content/SearchForm';
 import { LocationInterface, NavDataQuery } from '../../helpers/graphQLTypes';
 import { DocsNavItem, convertToNavItems, organizeNavItems } from '../../helpers/navDataFormatUtils';
 import GithubIcon from '../icons/GithubIcon';
@@ -96,19 +98,17 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
 
   return (
     <div
-      className={classnames(
-        'ds-u-padding--0 ds-u-md-padding--2 ds-u-md-padding-top--4 c-navigation',
-        {
-          'c-navigation--open': isMobile && isMobileNavOpen,
-        }
-      )}
+      className={classnames('c-navigation', {
+        'c-navigation--open': isMobile && isMobileNavOpen,
+      })}
     >
-      <header className="c-navigation__header">
+      <UsaBanner className="ds-u-display--block ds-u-md-display--none" />
+      <header className="c-navigation__header ds-u-md-display--block ds-u-md-display--none">
         <Button
           className="ds-u-md-display--none ds-u-padding-left--0 ds-u-padding-right--1"
           variation="ghost"
           aria-expanded={isMobileNavOpen}
-          aria-controls="c-mobile-navigation"
+          aria-controls="c-navigation__menu"
           onClick={toggleMenu}
         >
           {isMobileNavOpen ? (
@@ -117,39 +117,46 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
             <MenuIconThin className="ds-u-font-size--xl" />
           )}
         </Button>
-        <a className="c-navigation__title" href="/">
-          CMS Design System
-        </a>
+        <div>
+          <a className="c-navigation__title" href="/">
+            CMS Design System
+          </a>
+        </div>
       </header>
 
       <div
-        id="c-mobile-navigation"
+        id="c-navigation__menu"
         // hidden attr applied on mobile breakpoints when nav is closed
         hidden={isMobile && !isMobileNavOpen}
-        className="ds-u-padding--2 ds-u-md-padding--0"
       >
-        <ThemeSwitcher />
-        <VerticalNav
-          className="c-navigation__link-list"
-          items={navItems}
-          component={GatsbyLink}
-          selectedId={location ? location.pathname : ''}
-        />
-        <p>
-          <Link to="/blog/" className="c-navigation__bottom-link ds-c-link">
-            <NewsIcon />
-            What&apos;s new?
-          </Link>
-        </p>
-        <p>
-          <a
-            href="https://github.com/CMSgov/design-system"
-            className="c-navigation__bottom-link ds-c-link"
-          >
-            <GithubIcon />
-            View code on GitHub
-          </a>
-        </p>
+        <div className="c-navigation__switchers-wrapper">
+          <ThemeSwitcher />
+          <VersionSwitcher />
+        </div>
+        <div className="c-navigation__links-wrapper">
+          <SearchForm className="ds-u-md-display--none ds-u-margin--0 ds-u-padding-bottom--2" />
+          <VerticalNav
+            className="c-navigation__link-list"
+            items={navItems}
+            component={GatsbyLink}
+            selectedId={location ? location.pathname : ''}
+          />
+          <p>
+            <Link to="/blog/" className="c-navigation__bottom-link ds-c-link">
+              <NewsIcon />
+              What&apos;s new?
+            </Link>
+          </p>
+          <p>
+            <a
+              href="https://github.com/CMSgov/design-system"
+              className="c-navigation__bottom-link ds-c-link"
+            >
+              <GithubIcon />
+              View code on GitHub
+            </a>
+          </p>
+        </div>
       </div>
     </div>
   );

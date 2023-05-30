@@ -34,143 +34,156 @@ function makeDropdown(customProps = {}, optionsCount = 1) {
 
 describe('Dropdown', () => {
   it('dropdown matches snapshot', () => {
-    const { container } = makeDropdown({
-      value: '1',
-      label: '',
-      ariaLabel: 'test aria label',
-    });
+    const { container } = makeDropdown(
+      {
+        value: '2',
+      },
+      4
+    );
 
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  it('renders a select menu', () => {
-    makeDropdown({ value: '1', label: '', ariaLabel: 'test aria label' });
+  it('alternatively uses an aria-label', () => {
+    const ariaLabel = 'test aria label';
+    makeDropdown({ label: '', ariaLabel }, 3);
 
-    const select = screen.getByRole('combobox');
-    const options = screen.queryAllByRole('option');
-    expect(select).toBeInTheDocument();
-    expect(options.length).toEqual(1);
-    expect(select).toMatchSnapshot();
+    const button = screen.getByRole('combobox');
+    expect(button.getAttribute('aria-label')).toEqual(ariaLabel);
   });
 
-  it('renders options correctly', () => {
-    makeDropdown({ defaultValue: '1' }, 10);
-
-    const select = screen.getByRole('combobox');
-    const options = screen.queryAllByRole('option');
-    expect(options.length).toBe(10);
-    expect(select).toMatchSnapshot();
-  });
-
-  it('controlled selects <option>', () => {
-    makeDropdown({ value: '1' }, 4);
-
-    const select = screen.getByRole('combobox');
-    expect(select).toHaveValue('1');
-  });
-
-  it('uncontrolled selects <option>', () => {
-    makeDropdown({ defaultValue: '2' }, 4);
-
-    const select = screen.getByRole('combobox');
-    expect(select).toHaveValue('2');
-  });
-
-  it('applies additional classNames to select element', () => {
+  it('applies additional classNames to button element', () => {
     makeDropdown({ fieldClassName: 'foo' });
 
-    const select = screen.getByRole('combobox');
-    expect(select).toHaveClass('foo');
+    const button = screen.getByRole('combobox');
+    expect(button).toHaveClass('foo');
     // Make sure we're not replacing the other class names
-    expect(select).toHaveClass('ds-c-field');
+    expect(button).toHaveClass('ds-c-field');
   });
 
-  it('adds small size classes to select element', () => {
-    makeDropdown({ size: 'small' });
-
-    const select = screen.getByRole('combobox');
-    expect(select).toHaveClass('ds-c-field--small');
+  it('adds size classes to wrapper element', () => {
+    const { container } = makeDropdown({ size: 'small' });
+    expect(container.querySelector('.ds-c-dropdown')).toHaveClass('ds-c-field--small');
   });
 
-  it('adds medium size classes to select element', () => {
-    makeDropdown({ size: 'medium' });
-
-    const select = screen.getByRole('combobox');
-    expect(select).toHaveClass('ds-c-field--medium');
-  });
-
-  it('is inversed', () => {
+  it('adds inverse class to button', () => {
     makeDropdown({ inversed: true });
-
-    const select = screen.getByRole('combobox');
-    expect(select).toHaveClass('ds-c-field--inverse');
+    const button = screen.getByRole('combobox');
+    expect(button).toHaveClass('ds-c-field--inverse');
   });
 
   it('has error', () => {
-    const { container } = makeDropdown({ errorMessage: 'Error' });
-    const select = screen.getByRole('combobox');
-
-    expect(select).toHaveAttribute('aria-invalid', 'true');
-    expect(container).toMatchSnapshot();
+    const { container } = makeDropdown({ errorMessage: 'Really bad error' });
+    const button = screen.getByRole('combobox', { name: /Really bad error/ });
+    expect(button).toHaveAttribute('aria-invalid', 'true');
   });
 
-  it('handles bottom placed error', () => {
+  it('supports bottom placed error', () => {
     const { container } = makeDropdown({
       errorMessage: 'Error',
       errorPlacement: 'bottom',
       errorId: '1_error',
     });
 
-    const select = screen.getByRole('combobox');
-    expect(select).toHaveAttribute('aria-invalid', 'true');
-    expect(select).toHaveAttribute('aria-describedby', '1_error');
-    expect(select).toHaveClass('ds-c-field--error');
+    const button = screen.getByRole('combobox');
+    expect(button).toHaveAttribute('aria-invalid', 'true');
+    expect(button).toHaveAttribute('aria-describedby', '1_error');
+    expect(button).toHaveClass('ds-c-field--error');
     expect(container).toMatchSnapshot();
   });
 
   it('is disabled', () => {
     makeDropdown({ disabled: true });
-
-    const select = screen.getByRole('combobox');
-    expect(select).toHaveAttribute('disabled');
-  });
-
-  it('is not disabled', () => {
-    makeDropdown();
-
-    const select = screen.getByRole('combobox');
-    expect(select).not.toHaveAttribute('disabled');
+    const button = screen.getByRole('combobox');
+    expect(button).toHaveAttribute('disabled');
   });
 
   it('calls the onChange handler', () => {
-    makeDropdown({ defaultValue: '1' }, 10);
-    const select = screen.getByRole('combobox');
-
-    userEvent.selectOptions(select, screen.getByRole('option', { name: '2' }));
-    expect(defaultProps.onBlur).not.toHaveBeenCalled();
-    expect(defaultProps.onChange).toHaveBeenCalled();
+    const onChange = jest.fn();
+    const onBlur = jest.fn();
+    makeDropdown({ value: '1', onChange, onBlur }, 5);
+    const button = screen.getByRole('combobox');
+    userEvent.click(button);
+    userEvent.keyboard('{arrowdown}');
+    userEvent.keyboard('{enter}');
+    expect(onBlur).not.toHaveBeenCalled();
+    expect(onChange).toHaveBeenCalled();
   });
 
   it('calls the onBlur handler', () => {
-    makeDropdown({ defaultValue: '1' }, 10);
-    const selectLabel = screen.getByLabelText('Select an option');
-    const select = screen.getByRole('combobox');
-
-    userEvent.click(selectLabel);
-    expect(select).toHaveFocus();
+    const onChange = jest.fn();
+    const onBlur = jest.fn();
+    makeDropdown({ defaultValue: '1', onChange, onBlur }, 10);
+    const button = screen.getByRole('combobox');
+    userEvent.click(button);
+    expect(button).toHaveFocus();
     userEvent.tab();
-    expect(defaultProps.onBlur).toHaveBeenCalled();
-    // TODO: reimpliment this to check for no onChange in this test
-    // this is being called automatically by RTL when the component mounts
-    // it does not get called in storybook or in a live environment, jsdom
-    // limitation?
-    // expect(defaultProps.onChange).not.toHaveBeenCalled();
+    expect(onBlur).toHaveBeenCalled();
+    expect(onChange).not.toHaveBeenCalled();
   });
 
   it('focuses automatically with autoFocus prop', () => {
     makeDropdown({ defaultValue: '1', autoFocus: true }, 10);
-    const select = screen.getByRole('combobox');
+    const button = screen.getByRole('combobox');
+    expect(button).toHaveFocus();
+  });
 
-    expect(select).toHaveFocus();
+  it('accepts optgroup children', () => {
+    render(
+      <Dropdown {...defaultProps}>
+        <optgroup label="Group A">
+          <option value="a-1">Option A-1</option>
+          <option value="a-2">Option A-2</option>
+          <option value="a-3">Option A-3</option>
+        </optgroup>
+        <optgroup label="Group B">
+          <option value="b-1">Option B-1</option>
+          <option value="b-2">Option B-2</option>
+          <option value="b-3">Option B-3</option>
+        </optgroup>
+      </Dropdown>
+    );
+    userEvent.click(screen.getByRole('combobox'));
+    const list = screen.getByRole('listbox');
+    expect(list.children.length).toEqual(8); // Group headings + options
+    expect(list).toMatchSnapshot();
+  });
+
+  it('accepts DropdownOptGroup objects in options prop', () => {
+    const options = [
+      {
+        label: 'Group A',
+        options: [
+          { value: 'a-1', label: 'Option A-1' },
+          { value: 'a-2', label: 'Option A-2' },
+          { value: 'a-3', label: 'Option A-3' },
+        ],
+      },
+      {
+        label: 'Group B',
+        options: [
+          { value: 'b-1', label: 'Option B-1' },
+          { value: 'b-2', label: 'Option B-2' },
+          { value: 'b-3', label: 'Option B-3' },
+        ],
+      },
+    ];
+    render(<Dropdown {...defaultProps} options={options} />);
+    userEvent.click(screen.getByRole('combobox'));
+    const list = screen.getByRole('listbox');
+    expect(list.children.length).toEqual(8); // Group headings + options
+  });
+
+  it('accepts option children', () => {
+    render(
+      <Dropdown {...defaultProps}>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+      </Dropdown>
+    );
+    userEvent.click(screen.getByRole('combobox'));
+    const list = screen.getByRole('listbox');
+    expect(list.children.length).toEqual(3);
   });
 });

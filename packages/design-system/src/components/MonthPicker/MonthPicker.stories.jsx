@@ -5,6 +5,9 @@ export default {
   title: 'Components/Month Picker',
   component: MonthPicker,
   argTypes: {
+    hint: { control: 'text' },
+    errorMessage: { control: 'text' },
+    label: { control: 'text' },
     buttonVariation: {
       description: `Variation string to be applied to buttons. See [Button component](https://design.cms.gov/components/button/#components.button.react).`,
       control: 'radio',
@@ -24,7 +27,6 @@ export default {
     hint: "Month Picker can receive optional help text, giving the user additional information of what's required.",
     inversed: false,
     errorMessage: 'Please meet form requirements.',
-    errorPlacement: 'top',
   },
 };
 
@@ -58,7 +60,9 @@ InverseMonthPicker.args = {
   inversed: true,
 };
 InverseMonthPicker.parameters = {
-  baseInverse: true,
+  // Must supply `layout: 'fullscreen'` when we use `onDark: true`
+  onDark: true,
+  layout: 'fullscreen',
 };
 
 export const InverseSelectedMonthPicker = Template.bind({});
@@ -70,7 +74,9 @@ InverseSelectedMonthPicker.args = {
   selectedMonths: [1, 2, 3, 4, 5, 6],
 };
 InverseSelectedMonthPicker.parameters = {
-  baseInverse: true,
+  // Must supply `layout: 'fullscreen'` when we use `onDark: true`
+  onDark: true,
+  layout: 'fullscreen',
 };
 
 export const InverseDisabledMonthPicker = Template.bind({});
@@ -81,5 +87,7 @@ InverseDisabledMonthPicker.args = {
   disabledMonths: [7, 8, 9, 10, 11, 12],
 };
 InverseDisabledMonthPicker.parameters = {
-  baseInverse: true,
+  // Must supply `layout: 'fullscreen'` when we use `onDark: true`
+  onDark: true,
+  layout: 'fullscreen',
 };

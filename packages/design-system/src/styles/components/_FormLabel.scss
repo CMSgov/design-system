@@ -1,13 +1,7 @@
 @use '../layout' as *;
 
 .ds-c-label {
-  // Correct color inheritance for `legend` elements in IE11
-  // https://github.com/necolas/normalize.css/blob/master/normalize.css#L235
-  color: inherit;
-  display: block;
   font-weight: var(--font-weight-bold);
-  margin-bottom: 0;
-  margin-top: $spacer-3;
   max-width: var(--form__max-width);
   // Remove default padding on <legend> elements:
   padding: 0;
@@ -19,23 +13,25 @@
 
 // Applies to "Checkbox & Radio" and "Date field"
 .ds-c-fieldset {
-  border: 0;
   // We apply the same margin as a label, since in the context of a fieldset
   // this would be a <legend>. See .ds-c-fieldset > .ds-c-label for more info.
   margin: $spacer-3 0 0;
   min-width: 0;
-  padding: 0;
 }
 
 // Webkit won't render a top margin on a fieldset's <legend>, so we apply
 // the top margin to the fieldset instead.
 .ds-c-fieldset > .ds-c-label:first-child {
-  margin-top: 0;
+  margin-block-start: 0;
 }
 
 .ds-c-field__hint {
   color: var(--form-hint__color);
   display: block;
+
+  // Medicare uses a smaller font size for hint messages
+  // If a theme doesn't have a font size for hint messages defined, it will fall back to inheriting the font size from its parent
+  font-size: var(--form-hint__font-size, inherit);
   font-weight: var(--font-weight-normal);
 }
 
@@ -51,6 +47,10 @@
 
 .ds-c-field__error-message--inverse {
   color: var(--form-error__color--inverse);
+}
+
+.ds-c-field__error-message--bottom {
+  margin-block-start: $spacer-half;
 }
 
 .ds-c-choice + label .ds-c-field__hint {

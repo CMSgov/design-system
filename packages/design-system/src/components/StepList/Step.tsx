@@ -30,16 +30,9 @@ export interface StepProps {
   editText: string;
   resumeText: string;
   startText: string;
-  actionsLabelText: string;
-  substepsLabelText: string;
 }
 
 export const Step = ({ step, ...props }: StepProps) => {
-  const getAriaLabel = (text) => {
-    const isValidTemplate = text && text.length > 0;
-    const label = isValidTemplate ? text.replace('%{step}', step.heading) : undefined;
-    return { 'aria-label': label };
-  };
   const Heading = `h${step.headingLevel || '2'}` as const;
   const start = step.isNextStep;
   const resume = step.started && !step.completed;
@@ -50,12 +43,8 @@ export const Step = ({ step, ...props }: StepProps) => {
   const contentClassName = classNames('ds-c-step__content', {
     'ds-c-step__content--with-content': step.description || step.steps,
   });
-  const { actionsLabelText, substepsLabelText } = props;
-  const actionsLabel = getAriaLabel(actionsLabelText);
-  const substepsLabel = getAriaLabel(substepsLabelText);
-  const descriptionHeadingID = uniqueId('heading-');
 
-  let linkLabel;
+  let linkLabel: string;
   if (step.completed && !step.steps) {
     linkLabel = step.linkText || props.editText;
   } else if (start) {
@@ -64,7 +53,7 @@ export const Step = ({ step, ...props }: StepProps) => {
     linkLabel = step.linkText || props.resumeText;
   }
 
-  let linkClassName;
+  let linkClassName: string;
   if (start || resume) {
     linkClassName = 'ds-c-button ds-c-button--solid ds-c-button--main ds-c-button--on-light';
   }
@@ -73,20 +62,14 @@ export const Step = ({ step, ...props }: StepProps) => {
   return (
     <li role="listitem" className={className}>
       <div className={contentClassName}>
-        <Heading id={descriptionHeadingID} className="ds-c-step__heading">
-          {step.heading}
-        </Heading>
+        <Heading className="ds-c-step__heading">{step.heading}</Heading>
         {step.description && (
-          <div
-            className="ds-c-step__description"
-            aria-labelledby={descriptionHeadingID}
-            role="region"
-          >
+          <div className="ds-c-step__description" role="region">
             {step.description}
           </div>
         )}
         {step.steps && (
-          <ol role="list" className="ds-c-step__substeps" {...substepsLabel}>
+          <ol role="list" className="ds-c-step__substeps">
             {step.steps.map((s, i) => (
               <SubStep
                 step={{ ...s, ...{ component: step.component || s.component } }}
@@ -97,7 +80,7 @@ export const Step = ({ step, ...props }: StepProps) => {
           </ol>
         )}
       </div>
-      <div className="ds-c-step__actions" {...actionsLabel} role="region">
+      <div className="ds-c-step__actions" role="region">
         {step.completed && (
           <div className="ds-c-step__completed-text">
             <CheckIcon className="ds-c-icon-color--success" />

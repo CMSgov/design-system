@@ -9,14 +9,8 @@ export default {
       control: 'radio',
       options: ['small', 'big'],
     },
-    inversed: {
-      control: 'radio',
-      options: [true, false],
-    },
-    filled: {
-      control: 'radio',
-      options: [true, false],
-    },
+    inversed: { control: 'boolean' },
+    filled: { control: 'boolean' },
   },
   args: {
     inversed: false,
@@ -43,7 +37,9 @@ FilledSpinner.args = {
   filled: true,
 };
 FilledSpinner.parameters = {
-  baseInverse: true,
+  // Must supply `layout: 'fullscreen'` when we use `onDark: true`
+  onDark: true,
+  layout: 'fullscreen',
 };
 
 export const InverseFilledSpinner = Template.bind({});

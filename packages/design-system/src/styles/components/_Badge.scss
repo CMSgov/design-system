@@ -16,11 +16,11 @@
   display: inline-block;
   font-size: var(--font-size-sm);
   line-height: var(--font-line-height-heading);
-  margin-right: $spacer-half;
+  margin-inline-end: $spacer-half;
   padding: $spacer-half $spacer-1;
 
   &:only-of-type {
-    margin-right: 0;
+    margin-inline-end: 0;
   }
 
   > span {

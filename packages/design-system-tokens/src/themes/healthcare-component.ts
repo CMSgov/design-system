@@ -16,6 +16,8 @@ export const components: AnyTokenValues = {
     '__border-width':                             t.spacer['half'],
     '-button__color':                             t.color['primary'],
     '-content__background-color':                 t.color['transparent'],
+    // This variable only exists for the Healthcare Accordion CSS override
+    '-icon__size':                                '0.875rem',
   },
 
   'alert': {
@@ -280,6 +282,7 @@ export const components: AnyTokenValues = {
     '__background-color':                         t.color['white'],
     '__padding':                                  t.spacer['4'],
     '-overlay__background-color':                 t.color['background-dialog-mask'],
+    '-icon__size':                                '0.8125rem',
   },
 
   'drawer': {
@@ -298,6 +301,8 @@ export const components: AnyTokenValues = {
   'dropdown': {
     '__background-color':                         t.color['white'],
     '__icon-size':                                '10px',
+    '-item__border-width':                        '1px',
+    '-item__border-color':                        t.color['gray-lighter'],
   },
 
   'filter-chip': {
@@ -325,7 +330,7 @@ export const components: AnyTokenValues = {
     '-hint__color':                               t.color['muted'],
     '-hint__color--inverse':                      t.color['muted-inverse'],
     '-error__color':                              t.color['error'],
-    '-error__color--inverse':                     t.color['error-light'],
+    '-error__color--inverse':                     t.color['error-lighter'],
   },
 
   'icon': {
@@ -425,6 +430,7 @@ export const components: AnyTokenValues = {
     '__border-color--inverse':                    t.color['black'],
     '__border-color--success':                    t.color['success-light'],
     '__color':                                    t.color['base'],
+    '__divider-color':                            t.color['gray-light'],
     '__padding':                                  t.spacer['1'],
     '__border-radius':                            '0',
   },
@@ -450,7 +456,7 @@ export const components: AnyTokenValues = {
     '-heading-lg__font-weight':                   t.font['weight-bold'],
     '-heading-md__font-weight':                   t.font['weight-bold'],
     '-heading-sm__font-weight':                   t.font['weight-normal'],
-    '-body__font-family':                         'inherit',
+    '-body__font-family':                         t.font['family-open-sans'],
   },
 
   'usa-banner': {
@@ -459,6 +465,7 @@ export const components: AnyTokenValues = {
     '-close__background-color':                   t.color['gray-light'],
     '-action__color':                             t.color['primary-darker'],
     '-lock-icon__color':                          t.color['success-light'],
+    '-heading__font-size':                        '0.75rem',
   },
 
   'vertical-nav': {

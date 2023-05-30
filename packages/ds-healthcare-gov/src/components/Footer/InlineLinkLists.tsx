@@ -37,49 +37,43 @@ const InlineLinkLists = function (props: InlineLinkListsProps) {
   const { primaryDomain } = props;
 
   const inlineLinksTop = {
-    'footer.allTopics': `${primaryDomain}/topics`,
-    'footer.glossary': `${primaryDomain}/glossary`,
     'footer.contactUs': `${primaryDomain}/contact-us`,
     'footer.archive': `${primaryDomain}/archive`,
-  };
-
-  const inlineLinksMiddle = {
-    'footer.nondiscriminationAndA11y':
+    'footer.a11y':
       'http://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/CMSNondiscriminationNotice.html',
-    'footer.privacyPolicy': `${primaryDomain}/privacy`,
     'footer.privacySettings': <PrivacySettingsLink />,
-    'footer.linkingPolicy': `${primaryDomain}/privacy/#links`,
+    'footer.privacyPolicy': `${primaryDomain}/privacy`,
     'footer.usingThisSite': `${primaryDomain}/using-this-site`,
-    'footer.plainWriting': 'http://www.hhs.gov/open/plain-writing/index.html',
   };
 
   return (
     <div className="ds-l-container">
-      <ul role="list" className="hc-c-footer__list ds-u-margin-bottom--1">
-        {renderBasicList(props.t, inlineLinksTop)}
-      </ul>
+      <div className="hc-c-footer__site-links-row">
+        <ul role="list" className="hc-c-footer__list">
+          {renderBasicList(props.t, inlineLinksTop)}
+        </ul>
+      </div>
 
-      <ul
-        role="list"
-        className="hc-c-footer__list ds-u-border-bottom--1 ds-u-margin-bottom--2 ds-u-padding-bottom--2"
-      >
-        {renderBasicList(props.t, inlineLinksMiddle)}
-      </ul>
-
-      <ul role="list" className="hc-c-footer__list">
-        {Object.getOwnPropertyNames(languages).map(function (lang, index) {
-          return (
-            <li key={lang} className={inlineLiClasses}>
-              <a lang={lang} href={primaryDomain + languages[lang].href}>
-                {languages[lang].label}
-              </a>
-              {index !== Object.getOwnPropertyNames(languages).length - 1 ? (
-                <span aria-hidden="true" className="hc-c-footer__delimiter" />
-              ) : null}
-            </li>
-          );
-        })}
-      </ul>
+      <div className="hc-c-footer__language-resource-links-row">
+        <h4 id="global-footer-language-resources" className="ds-u-visibility--screen-reader">
+          Language resources
+        </h4>
+        <ul
+          role="list"
+          aria-labelledby="global-footer-language-resources"
+          className="hc-c-footer__list"
+        >
+          {Object.getOwnPropertyNames(languages).map(function (lang, index) {
+            return (
+              <li key={lang} className={inlineLiClasses}>
+                <a lang={lang} href={primaryDomain + languages[lang].href}>
+                  {languages[lang].label}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </div>
   );
 };

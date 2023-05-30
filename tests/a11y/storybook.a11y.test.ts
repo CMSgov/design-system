@@ -8,15 +8,21 @@ function sleep(ms) {
 }
 
 Object.values(stories).forEach((story) => {
+  // Storybook's UI has a lot of Axe violations we have no control over
+  // Don't run a11y tests on docs-only stories
+  if (story.parameters.docsOnly) return;
+
   test.describe(`${story.title}/${story.name}`, () => {
-    const storyUrl = `http://localhost:6006/iframe.html?viewMode=story&id=${story.id}`;
+    const storyUrl = `http://localhost:6006/iframe.html?globals=backgrounds.grid:!false&args=&id=${story.id}&viewMode=story`;
+
     Object.keys(themes).forEach((theme) => {
       if (themes[theme].incomplete) return;
       // right now medicare is not doing a11y testing
       if (theme === 'medicare') return;
 
       // Don't take screenshots of theme-specific components outside of their themes
-      if (!story.importPath.includes(themes[theme].packageName)) return;
+      const isCoreStory = story.importPath.includes('design-system');
+      if (!isCoreStory && !story.importPath.includes(themes[theme].packageName)) return;
 
       test(`with ${theme} theme`, async ({ page }) => {
         await page.goto(`${storyUrl}&globals=theme:${theme}`);

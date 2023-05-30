@@ -13,6 +13,7 @@ export default {
   args: {
     className: '',
   },
+  parameters: { theme: 'healthcare' },
 };
 
 const Template = ({ data, ...args }) => <Footer {...args} />;

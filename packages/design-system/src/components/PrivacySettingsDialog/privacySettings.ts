@@ -27,6 +27,10 @@ export function getCookieDomain() {
 }
 
 function readCookie(name: string) {
+  if (typeof document === 'undefined') {
+    return;
+  }
+
   const item = document.cookie
     .split(';')
     .map((item) => item.trim().split('='))
@@ -38,6 +42,10 @@ function readCookie(name: string) {
 }
 
 function writeCookie(name: string, value: string) {
+  if (typeof document === 'undefined') {
+    return;
+  }
+
   // See https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie
   const base = `${name}=${encodeURI(value)}`;
   const age = `; max-age=${COOKIE_MAX_AGE}`;
