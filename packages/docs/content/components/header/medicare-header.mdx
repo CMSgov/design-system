@@ -17,11 +17,11 @@ import consistentHeaderPageLevelImg from '../../../src/images/consistent-header/
 import consistentHeaderSlideOutDrawerImg from '../../../src/images/consistent-header/consistent-header-slide-out-drawers.png';
 import consistentHeaderToastImg from '../../../src/images/consistent-header/consistent-header-toast.png';
 
-
 <ThemeContent neverThemes={['medicare']}>
   <Alert variation="error">
-     <p class="ds-c-alert__text">
-        This component is only used for Medicare. Please use the theme switcher to view the component with Medicare styles.
+    <p class="ds-c-alert__text">
+      This component is only used for Medicare. Please use the theme switcher to view the component
+      with Medicare styles.
     </p>
   </Alert>
 </ThemeContent>
@@ -29,10 +29,18 @@ import consistentHeaderToastImg from '../../../src/images/consistent-header/cons
 ## Code
 
 ### HTML
+
 The following example shows what the div element should look like before importing the scripts:
 
 ```html
-<div id="root" lang="en" lang-toggle-link="your-language-toggle-link-here" login-url="login-url" logout-url="logout-url" enable-live-chat="true">
+<div
+  id="root"
+  lang="en"
+  lang-toggle-link="your-language-toggle-link-here"
+  login-url="login-url"
+  logout-url="logout-url"
+  enable-live-chat="true"
+></div>
 ```
 
 ### JS
@@ -44,42 +52,40 @@ loadFilesFromManifest('https://frontend.imp.medicare.gov/', 'asset-manifest.json
 
 //Gets and parses the entrypoints node of the asset manifest file
 function loadFilesFromManifest(rootURL, manifest) {
-	var manifestURL = rootURL + manifest;
-	$.getJSON(manifestURL, function(json) {
-		importFilesFromArray(json.entrypoints, rootURL);
-	});
+  var manifestURL = rootURL + manifest;
+  $.getJSON(manifestURL, function (json) {
+    importFilesFromArray(json.entrypoints, rootURL);
+  });
 }
 
 //Takes the provided array, parses it and loads
 // all of the JS and CSS files based on their file extension
 function importFilesFromArray(files, rootURL) {
-	for (var i = 0; i < files.length; i++) {
-		if (files[i].endsWith('.js'))
-			importJSFile(rootURL + files[i]);
-		else if (files[i].endsWith('.css'))
-			importCSSFile(rootURL + files[i]);
-	}
+  for (var i = 0; i < files.length; i++) {
+    if (files[i].endsWith('.js')) importJSFile(rootURL + files[i]);
+    else if (files[i].endsWith('.css')) importCSSFile(rootURL + files[i]);
+  }
 }
 
 //Imports a single JS file
 function importJSFile(url) {
-	var jsElement = document.createElement('script');
-	jsElement.src = url;
-	jsElement.type = 'text/javascript';
+  var jsElement = document.createElement('script');
+  jsElement.src = url;
+  jsElement.type = 'text/javascript';
 
-	var head = document.head;
-	head.insertBefore(jsElement, head.childNodes[0]);
+  var head = document.head;
+  head.insertBefore(jsElement, head.childNodes[0]);
 }
 
 //Imports a single CSS file
 function importCSSFile(url) {
-	var cssElement = document.createElement('link');
-	cssElement.href = url;
-	cssElement.rel = 'stylesheet';
-	cssElement.type = 'text/css';
+  var cssElement = document.createElement('link');
+  cssElement.href = url;
+  cssElement.rel = 'stylesheet';
+  cssElement.type = 'text/css';
 
-	var head = document.head;
-	head.insertBefore(cssElement, head.childNodes[0]);
+  var head = document.head;
+  head.insertBefore(cssElement, head.childNodes[0]);
 }
 ```
 
@@ -90,9 +96,10 @@ For detailed information on the header contents, see [this Confluence page](http
 For guidance on how to use the consistent header in a variety of scenarios, see the [Additional Guidelines](https://cms.invisionapp.com/dsm/cms/mgov-design-system/nav/5fa7da3f7044bd0018240ddb/asset/5fa15ef85296b21c9eb14293/tab/design?mode=preview).
 
 ### Usage
+
 Implementers should create a `div` with the id of `root` and supply it with the required attributes(listed below), and import the correct Javascript and CSS files, which will attach the header to the div. A list of resources to import can be found in the `entrypoints` section of the `asset-manifest.json` file for each environment.
 
-### Authenticated and Guest Headers 
+### Authenticated and Guest Headers
 
 Use the authenticated headers – named "Auth Headers" in the symbols – for scenarios where a user is logged in. The user's first name should appear in the menu item listed as "First name." Only the first letter of their name is capitalized.
 
@@ -100,7 +107,7 @@ Use the authenticated headers – named "Auth Headers" in the symbols – for sc
   <img src={consistentHeaderLoggedInImg} alt="" class="ds-u-border--1" />
 </div>
 
-Use the guest headers – named "Guest Headers" in the symbols – for scenarios where a user is not logged in. This is no customization when 
+Use the guest headers – named "Guest Headers" in the symbols – for scenarios where a user is not logged in. This is no customization when
 
 <div className="ds-u-measure--wide ds-u-margin-top--2">
   <img src={consistentHeaderGuestImg} alt="" class="ds-u-border--1" />
@@ -174,7 +181,7 @@ Based on where a user is on the site, an underline will display below the sectio
   <img src={consistentHeaderCurrentSectionImg} alt="" class="ds-u-border--1" />
 </div>
 
-### Slide-out Menus (Tablet and Mobile Only) 
+### Slide-out Menus (Tablet and Mobile Only)
 
 Each of the slide-out menu symbols for tablet and mobile include the dark background and will scale to any screen size.
 
@@ -182,14 +189,13 @@ Each of the slide-out menu symbols for tablet and mobile include the dark backgr
   <img src={consistentHeaderSlideOutImg} alt="" class="ds-u-border--1" />
 </div>
 
-
 ### Z-index
 
 To ensure users always have, you'll need consider the z-index for the header. Components like modals and slide-out menus should display in front of the Consistent Header. While components like page-level banners, sub-navigation should display behind the Consistent Header. Most of the sections below show examples of how the header should render relative to other elements.
 
 ### Sub-navigation
 
-Sub-navigation menu items should display below and behind the Consistent Header. 
+Sub-navigation menu items should display below and behind the Consistent Header.
 
 <div className="ds-u-measure--wide ds-u-margin-top--2">
   <img src={consistentHeaderSubNavImg} alt="" class="ds-u-border--1" />
@@ -218,8 +224,6 @@ Toast notifications should appear below the Medicare Header with a 10px top marg
 <div className="ds-u-measure--wide ds-u-margin-top--2">
   <img src={consistentHeaderToastImg} alt="" class="ds-u-border--1" />
 </div>
-
-
 
 ### FAQ
 

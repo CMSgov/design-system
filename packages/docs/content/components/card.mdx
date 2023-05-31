@@ -2,30 +2,29 @@
 title: Card (M.gov)
 medicare:
   githubLink: ds-medicare-gov/src/components/Card
-  storybookLink: medicare-card--default
+  storybookLink: medicare-card--docs
 ---
+
 import { Alert } from '@cmsgov/design-system';
 
 <ThemeContent neverThemes={['medicare']}>
   <Alert variation="error">
-     <p class="ds-c-alert__text">
-        This component is only used for Medicare. Please use the theme switcher to view the component with Medicare styles.
+    <p class="ds-c-alert__text">
+      This component is only used for Medicare. Please use the theme switcher to view the component
+      with Medicare styles.
     </p>
   </Alert>
 </ThemeContent>
 
 ## Examples
 
-<StorybookExample
-    componentName="card"
-    storyId="medicare-card--default"
-/>
+<StorybookExample componentName="card" storyId="medicare-card--default" />
 
 ## Code
 
 ### React
 
-<PropTable componentName="Card" />
+<SeeStorybookForReactGuidance storyId={'medicare-card--docs'} />
 
 ## Component maturity
 

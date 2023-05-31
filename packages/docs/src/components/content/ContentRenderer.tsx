@@ -6,18 +6,19 @@ import { MDXProvider } from '@mdx-js/react';
 
 import ButtonMigrationTable from './ButtonMigrationTable';
 import ButtonVariationsTable from './ButtonVariationsTable';
-import EmbeddedExample from './EmbeddedExample';
-import StorybookExample from './StorybookExample';
+import ColorExampleList from './ColorExampleList';
+import ColorRamps from './ColorRamps';
 import ComponentThemeOptions from './ComponentThemeOptions';
-import ThemeContent from './ThemeContent';
+import EmbeddedExample from './EmbeddedExample';
+import MaturityChecklist from './MaturityChecklist';
 import PropTable from './PropTable';
 import PropTableHtmlElementRow from './PropTableHtmlElementRow';
 import ResponsiveExample from './ResponsiveExample';
-import ColorExampleList from './ColorExampleList';
-import ColorRamps from './ColorRamps';
-import MaturityChecklist from './MaturityChecklist';
+import SeeStorybookForReactGuidance from './SeeStorybookForReactGuidance';
 import SpacingUtilityExampleList from './SpacingUtilityExampleList';
+import StorybookExample from './StorybookExample';
 import TextColorList from './TextColorList';
+import ThemeContent from './ThemeContent';
 
 // adds DS styling to tables from markdown
 const TableWithClassnames = (props) => {
@@ -66,26 +67,29 @@ const TextWithMaxWidth = (props: any, Component) => {
  * Each mapping has a key with the element name and a value of a functional component to be used for that element
  */
 const customComponents = (theme) => ({
-  table: TableWithClassnames,
+  ButtonMigrationTable: (props) => <ButtonMigrationTable theme={theme} {...props} />,
+  ButtonVariationsTable: (props) => <ButtonVariationsTable theme={theme} {...props} />,
   code: CodeWithSyntaxHighlighting,
-  pre: PreformattedWithLanguageClass,
-  p: (props) => TextWithMaxWidth(props, 'p'),
-  ul: (props) => TextWithMaxWidth(props, 'ul'),
-  ol: (props) => TextWithMaxWidth(props, 'ol'),
+  ColorExampleList: (props) => <ColorExampleList theme={theme} {...props} />,
+  ColorRamps,
+  ComponentThemeOptions: (props) => <ComponentThemeOptions theme={theme} {...props} />,
   EmbeddedExample,
   MaturityChecklist,
-  ColorRamps,
-  StorybookExample: (props) => <StorybookExample theme={theme} {...props} />,
+  ol: (props) => TextWithMaxWidth(props, 'ol'),
+  p: (props) => TextWithMaxWidth(props, 'p'),
+  pre: PreformattedWithLanguageClass,
   PropTable: (props) => <PropTable theme={theme} {...props} />,
   PropTableHtmlElementRow: (props) => <PropTableHtmlElementRow theme={theme} {...props} />,
   ResponsiveExample: (props) => <ResponsiveExample theme={theme} {...props} />,
-  ColorExampleList: (props) => <ColorExampleList theme={theme} {...props} />,
-  TextColorList: (props) => <TextColorList theme={theme} {...props} />,
+  SeeStorybookForReactGuidance: (props) => (
+    <SeeStorybookForReactGuidance theme={theme} {...props} />
+  ),
   SpacingUtilityExampleList: (props) => <SpacingUtilityExampleList theme={theme} {...props} />,
-  ComponentThemeOptions: (props) => <ComponentThemeOptions theme={theme} {...props} />,
+  StorybookExample: (props) => <StorybookExample theme={theme} {...props} />,
+  table: TableWithClassnames,
+  TextColorList: (props) => <TextColorList theme={theme} {...props} />,
   ThemeContent: (props) => <ThemeContent theme={theme} {...props} />,
-  ButtonMigrationTable: (props) => <ButtonMigrationTable theme={theme} {...props} />,
-  ButtonVariationsTable: (props) => <ButtonVariationsTable theme={theme} {...props} />,
+  ul: (props) => TextWithMaxWidth(props, 'ul'),
 });
 
 interface ContentRendererProps {
