@@ -108,9 +108,10 @@ export const Alert: React.FC<AlertProps> = (props: AlertProps) => {
     className
   );
 
+  const a11yLabelText = t(`alert.${variation ?? 'defaultLabel'}`);
   const a11yLabel = (
     <span className="ds-c-alert__a11y-label ds-u-visibility--screen-reader" id={a11yLabelId}>
-      {t(`alert.${variation ?? 'defaultLabel'}`)}:{' '}
+      {`${a11yLabelText}: `}
     </span>
   );
 
