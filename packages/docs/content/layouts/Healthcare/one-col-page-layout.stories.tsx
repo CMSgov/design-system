@@ -1,6 +1,5 @@
 import React from 'react';
-import { Header } from '../Header';
-import { Footer } from '../Footer';
+import { Header, Footer } from '../../../../ds-healthcare-gov/src/components';
 
 export default {
   title: 'Patterns/One column page layout',
