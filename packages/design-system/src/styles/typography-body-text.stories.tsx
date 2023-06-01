@@ -28,26 +28,36 @@ export const AllBodyText = () => {
     </>
   );
 };
-
 export const AllBodyTextOnDark = AllBodyText.bind({});
 AllBodyTextOnDark.parameters = {
-  baseInverse: true,
+  // Must supply `layout: 'fullscreen'` when we use `onDark: true`
+  onDark: true,
+  layout: 'fullscreen',
 };
-
-export const BodyTextLarge = () => (
-  <p className="ds-text-body--lg">
-    <strong>Large:</strong> {body}
-  </p>
-);
-
-export const BodyTextMedium = () => (
-  <p className="ds-text-body--md">
-    <strong>Medium:</strong> {body}
-  </p>
-);
-
-export const BodyTextSmall = () => (
-  <p className="ds-text-body--sm">
-    <strong>Small:</strong> {body}
-  </p>
-);
+export const BodyTextLarge = () => {
+  return (
+    <>
+      <p className="ds-text-body--lg">
+        <strong>Large:</strong> {body}
+      </p>
+    </>
+  );
+};
+export const BodyTextMedium = () => {
+  return (
+    <>
+      <p className="ds-text-body--md">
+        <strong>Medium:</strong> {body}
+      </p>
+    </>
+  );
+};
+export const BodyTextSmall = () => {
+  return (
+    <>
+      <p className="ds-text-body--sm">
+        <strong>Small:</strong> {body}
+      </p>
+    </>
+  );
+};

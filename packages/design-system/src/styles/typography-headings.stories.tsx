@@ -30,7 +30,9 @@ export const AllHeadings = () => {
 export const AllHeadingsOnDark = AllHeadings.bind({});
 
 AllHeadingsOnDark.parameters = {
-  baseInverse: true,
+  // Must supply `layout: 'fullscreen'` when we use `onDark: true`
+  onDark: true,
+  layout: 'fullscreen',
 };
 
 export const ContentClass = () => (
@@ -81,21 +83,62 @@ export const ContentClass = () => (
   </div>
 );
 
-export const Heading5xl = () => <h1 className="ds-text-heading--5xl">{heading} (5xl)</h1>;
-
-export const Heading4xl = () => <h1 className="ds-text-heading--4xl">{heading} (4xl)</h1>;
-
-export const Heading3xl = () => <h1 className="ds-text-heading--3xl">{heading} (3xl)</h1>;
-
-export const Heading2xl = () => <h1 className="ds-text-heading--2xl">{heading} (2xl)</h1>;
-
-export const HeadingXl = () => <h1 className="ds-text-heading--xl">{heading} (xl)</h1>;
-
-export const HeadingLg = () => <h1 className="ds-text-heading--lg">{heading} (lg)</h1>;
-
-export const HeadingMd = () => <h1 className="ds-text-heading--md">{heading} (md)</h1>;
-
-export const HeadingSm = () => <h1 className="ds-text-heading--sm">{heading} (sm)</h1>;
+export const Heading5xl = () => {
+  return (
+    <>
+      <h1 className="ds-text-heading--5xl">{heading} (5xl)</h1>
+    </>
+  );
+};
+export const Heading4xl = () => {
+  return (
+    <>
+      <h1 className="ds-text-heading--4xl">{heading} (4xl)</h1>
+    </>
+  );
+};
+export const Heading3xl = () => {
+  return (
+    <>
+      <h1 className="ds-text-heading--3xl">{heading} (3xl)</h1>
+    </>
+  );
+};
+export const Heading2xl = () => {
+  return (
+    <>
+      <h1 className="ds-text-heading--2xl">{heading} (2xl)</h1>
+    </>
+  );
+};
+export const HeadingXl = () => {
+  return (
+    <>
+      <h1 className="ds-text-heading--xl">{heading} (xl)</h1>
+    </>
+  );
+};
+export const HeadingLg = () => {
+  return (
+    <>
+      <h1 className="ds-text-heading--lg">{heading} (lg)</h1>
+    </>
+  );
+};
+export const HeadingMd = () => {
+  return (
+    <>
+      <h1 className="ds-text-heading--md">{heading} (md)</h1>
+    </>
+  );
+};
+export const HeadingSm = () => {
+  return (
+    <>
+      <h1 className="ds-text-heading--sm">{heading} (sm)</h1>
+    </>
+  );
+};
 
 // an example for responsive headings -- referenced in doc site
 export const ResponsiveHeadings = () => (
@@ -108,7 +151,9 @@ export const ResponsiveHeadings = () => (
 
 // an example for responsive headings -- referenced in doc site
 export const ResponsiveUtilityHeadings = () => (
-  <h1 className="ds-u-font-size--2xl ds-u-md-font-size--3xl ds-u-lg-font-size--4xl">
-    Example responsive heading using utility classes
-  </h1>
+  <>
+    <h1 className="ds-u-font-size--2xl ds-u-md-font-size--3xl ds-u-lg-font-size--4xl">
+      Example responsive heading using utility classes
+    </h1>
+  </>
 );
