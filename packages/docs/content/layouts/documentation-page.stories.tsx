@@ -1,6 +1,5 @@
 import React from 'react';
-import { SkipNav } from '../SkipNav';
-import { VerticalNav } from '../VerticalNav';
+import { SkipNav, VerticalNav } from '@cmsgov/design-system';
 
 export default {
   title: 'Patterns/Documentation Page',

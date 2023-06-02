@@ -13,6 +13,7 @@ const config: StorybookConfig = {
     '../packages/design-system/src/**/*.stories.@(js|jsx|ts|tsx|mdx)',
     '../packages/ds-healthcare-gov/src/**/*.stories.@(js|jsx|ts|tsx|mdx)',
     '../packages/ds-medicare-gov/src/**/*.stories.@(js|jsx|ts|tsx|mdx)',
+    '../packages/docs/content/**/*.stories.@(js|jsx|ts|tsx|mdx)',
   ],
   staticDirs: ['./static/'],
   framework: {
