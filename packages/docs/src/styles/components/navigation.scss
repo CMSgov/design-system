@@ -46,7 +46,10 @@
 .c-navigation__header,
 .c-navigation__switchers-wrapper {
   background-color: var(--color-primary);
-  color: var(--color-white);
+
+  label {
+    color: var(--color-white);
+  }
 }
 
 .c-navigation__switchers-wrapper {
