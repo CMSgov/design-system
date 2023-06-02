@@ -43,9 +43,9 @@
     "url-join": "^4.0.1"
   },
   "devDependencies": {
-    "@types/node": "^17.0.22",
-    "@types/react": "^18.2.6",
-    "@types/react-dom": "^17.0.10"
+    "@types/node": "17.0.22",
+    "@types/react": "18.2.6",
+    "@types/react-dom": "17.0.10"
   },
   "peerDependencies": {
     "react": ">=16.0.0",

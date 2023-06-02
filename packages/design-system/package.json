@@ -70,11 +70,11 @@
     "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
-    "ora": "^6.1.2",
-    "yargs": "^17.5.1",
-    "globby": "^13.1.2",
-    "inquirer": "^9.0.2",
-    "chalk": "^5.0.1"
+    "ora": "6.1.2",
+    "yargs": "17.5.1",
+    "globby": "13.1.2",
+    "inquirer": "9.0.2",
+    "chalk": "5.0.1"
   },
   "peerDependencies": {
     "react": ">=17.0.0",
