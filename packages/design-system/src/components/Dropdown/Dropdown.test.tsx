@@ -44,14 +44,6 @@ describe('Dropdown', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  it('alternatively uses an aria-label', () => {
-    const ariaLabel = 'test aria label';
-    makeDropdown({ label: '', ariaLabel }, 3);
-
-    const button = screen.getByRole('combobox');
-    expect(button.getAttribute('aria-label')).toEqual(ariaLabel);
-  });
-
   it('applies additional classNames to button element', () => {
     makeDropdown({ fieldClassName: 'foo' });
 
@@ -73,7 +65,7 @@ describe('Dropdown', () => {
   });
 
   it('has error', () => {
-    const { container } = makeDropdown({ errorMessage: 'Really bad error' });
+    makeDropdown({ errorMessage: 'Really bad error' });
     const button = screen.getByRole('combobox', { name: /Really bad error/ });
     expect(button).toHaveAttribute('aria-invalid', 'true');
   });

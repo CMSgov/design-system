@@ -93,7 +93,7 @@ export interface AutocompleteProps
    */
   id?: string;
   /**
-   * Customize the default status messages announced to screen reader users via aria-live when autocomplete results are populated. [Read more on downshift docs.](https://github.com/paypal/downshift#geta11ystatusmessage)
+   * Customize the default status messages announced to screen reader users via aria-live when autocomplete results are populated. [Read more on downshift docs.](https://github.com/downshift-js/downshift/tree/master/src/hooks/useCombobox#geta11ystatusmessage)
    */
   getA11yStatusMessage?: UseComboboxProps<any>['getA11yStatusMessage'];
   /**
