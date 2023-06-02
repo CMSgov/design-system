@@ -2,9 +2,10 @@ import React, { useMemo, useRef } from 'react';
 import classNames from 'classnames';
 import useAutofocus from '../utilities/useAutoFocus';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
-import { useSelect, UseSelectStateChangeOptions } from 'downshift';
+import { useSelect, UseSelectProps, UseSelectStateChangeOptions } from 'downshift';
 import { isOptGroupArray, parseChildren, validateProps } from './utils';
 import { uniqueId } from 'lodash';
+import useHighlightStatusMessageFn from './useHighlightStatusMessageFn';
 
 export type DropdownSize = 'small' | 'medium';
 export type DropdownValue = number | string;
@@ -30,10 +31,6 @@ interface InternalItem extends React.HTMLAttributes<'option' | 'optgroup'> {
 const itemToString = (item: InternalItem) => item.label;
 
 export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
-  /**
-   * Adds `aria-label` attribute. When using `aria-label`, `label` should be empty string.
-   */
-  ariaLabel?: string;
   /**
    * Sets the initial selected state. Use this for an uncontrolled component;
    * otherwise, use the `value` property.
@@ -83,6 +80,11 @@ export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
    * for a controlled component; otherwise, set `defaultValue`.
    */
   value?: DropdownValue;
+  /**
+   * Customize the default status messages announced to screen reader users via
+   * aria-live during certain interactions. [Read more on downshift docs.](https://github.com/downshift-js/downshift/tree/master/src/hooks/useSelect#geta11ystatusmessage)
+   */
+  getA11yStatusMessage?: UseSelectProps<any>['getA11yStatusMessage'];
 }
 
 type OptionsOrChildren =
@@ -110,11 +112,11 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
 
   const id = useRef(props.id ?? uniqueId('dropdown__button--')).current;
   const labelId = useRef(props.labelId ?? uniqueId('dropdown__label--')).current;
+  const buttonContentId = useRef(uniqueId('dropdown__button-content--')).current;
   const menuId = useRef(uniqueId('dropdown__menu--')).current;
 
   // Draw out certain props that we don't want to pass through as attributes
   const {
-    ariaLabel,
     autoFocus,
     children,
     fieldClassName,
@@ -181,6 +183,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     menuId,
     items,
     itemToString,
+    getA11yStatusMessage: useHighlightStatusMessageFn(),
     onSelectedItemChange:
       onChange &&
       ((changes: UseSelectStateChangeOptions<any>) => {
@@ -222,7 +225,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
       props.inversed && 'ds-c-field--inverse',
       fieldClassName
     ),
-    'aria-label': ariaLabel,
+    'aria-labelledby': `${buttonContentId} ${labelId}`,
   });
 
   const menuProps = getMenuProps({
@@ -259,9 +262,13 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   return (
     <div {...wrapperProps}>
       <FormLabel {...labelProps} fieldId={fieldProps.id} />
-      <button {...buttonProps}>{selectedItem.label}</button>
+      <button {...buttonProps}>
+        <span id={buttonContentId}>{selectedItem.label}</span>
+      </button>
       <div className="ds-c-dropdown__menu-container" hidden={!isOpen}>
-        <ul {...menuProps}>{menuContent}</ul>
+        <ul {...menuProps} aria-labelledby={undefined}>
+          {menuContent}
+        </ul>
       </div>
       {bottomError}
     </div>
