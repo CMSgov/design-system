@@ -345,7 +345,7 @@ export const components: AnyTokenValues = {
   },
 
   'icon': {
-    '__color__error':                             t.color['error'],
+    '__color--error':                             t.color['error'],
     '__color--inverse':                           t.color['white'],
     '__color--primary':                           t.color['primary'],
     '__color--success':                           t.color['success'],

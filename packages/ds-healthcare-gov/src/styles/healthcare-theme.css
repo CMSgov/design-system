@@ -405,7 +405,7 @@
 --form-hint__color--inverse: #e9ecf1;
 --form-error__color: #e31c3d;
 --form-error__color--inverse: #f7bbc5;
---icon__color__error: #e31c3d;
+--icon__color--error: #e31c3d;
 --icon__color--inverse: #ffffff;
 --icon__color--primary: #046791;
 --icon__color--success: #12890e;
