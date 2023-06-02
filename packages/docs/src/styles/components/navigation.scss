@@ -47,6 +47,7 @@
 .c-navigation__switchers-wrapper {
   background-color: var(--color-primary);
 
+  .ds-c-dropdown__item--selected,
   label {
     color: var(--color-white);
   }
