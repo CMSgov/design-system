@@ -26,7 +26,7 @@ const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => 
     'ds-u-padding-x--3',
     'ds-u-sm-padding-x--6',
     'ds-u-sm-padding-top--2',
-    showLinkBar && 'ds-u-md-margin-bottom--7'
+    showLinkBar && 'ds-u-margin-bottom--3 ds-u-lg-margin-bottom--7'
   );
 
   return (
