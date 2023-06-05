@@ -20,6 +20,22 @@ exports[`Dropdown accepts optgroup children 1`] = `
     class="ds-c-dropdown__item ds-c-dropdown__item--highlighted ds-c-dropdown__item--selected"
     id="downshift-15-item-1"
   >
+    <span
+      class="ds-c-dropdown__item-selected-indicator"
+    >
+      <svg
+        aria-hidden="true"
+        class="ds-c-icon ds-c-icon--check ds-u-font-size--sm"
+        focusable="false"
+        id="icon-50"
+        viewBox="0 0 16 12"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M16 2.343a.969.969 0 00-.289-.686L14.307.283a1.012 1.012 0 00-1.404 0L6.132 6.919 3.097 3.94a1.012 1.012 0 00-1.404 0L.289 5.313A.969.969 0 000 6c0 .253.103.505.289.687l5.14 5.03a1.012 1.012 0 001.405 0L15.71 3.03A.969.969 0 0016 2.343z"
+        />
+      </svg>
+    </span>
     Option A-1
   </li>
   <li
@@ -98,9 +114,28 @@ exports[`Dropdown dropdown matches snapshot 1`] = `
     tabindex="0"
   >
     <span
+      class="ds-u-truncate"
       id="dropdown__button-content--3"
     >
       2
+    </span>
+    <span
+      class="ds-c-dropdown__caret"
+    >
+      <svg
+        aria-hidden="true"
+        class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-u-font-size--sm"
+        direction="down"
+        focusable="false"
+        id="icon-2"
+        viewBox="0 0 320 512"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"
+          fill="currentColor"
+        />
+      </svg>
     </span>
   </button>
   <div
@@ -124,6 +159,22 @@ exports[`Dropdown dropdown matches snapshot 1`] = `
         class="ds-c-dropdown__item ds-c-dropdown__item--selected"
         id="downshift-0-item-1"
       >
+        <span
+          class="ds-c-dropdown__item-selected-indicator"
+        >
+          <svg
+            aria-hidden="true"
+            class="ds-c-icon ds-c-icon--check ds-u-font-size--sm"
+            focusable="false"
+            id="icon-3"
+            viewBox="0 0 16 12"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M16 2.343a.969.969 0 00-.289-.686L14.307.283a1.012 1.012 0 00-1.404 0L6.132 6.919 3.097 3.94a1.012 1.012 0 00-1.404 0L.289 5.313A.969.969 0 000 6c0 .253.103.505.289.687l5.14 5.03a1.012 1.012 0 001.405 0L15.71 3.03A.969.969 0 0016 2.343z"
+            />
+          </svg>
+        </span>
         2
       </li>
       <li
@@ -176,9 +227,28 @@ exports[`Dropdown supports bottom placed error 1`] = `
       tabindex="0"
     >
       <span
+        class="ds-u-truncate"
         id="dropdown__button-content--23"
       >
         1
+      </span>
+      <span
+        class="ds-c-dropdown__caret"
+      >
+        <svg
+          aria-hidden="true"
+          class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-u-font-size--sm"
+          direction="down"
+          focusable="false"
+          id="icon-18"
+          viewBox="0 0 320 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"
+            fill="currentColor"
+          />
+        </svg>
       </span>
     </button>
     <div
@@ -195,6 +265,22 @@ exports[`Dropdown supports bottom placed error 1`] = `
           class="ds-c-dropdown__item ds-c-dropdown__item--selected"
           id="downshift-5-item-0"
         >
+          <span
+            class="ds-c-dropdown__item-selected-indicator"
+          >
+            <svg
+              aria-hidden="true"
+              class="ds-c-icon ds-c-icon--check ds-u-font-size--sm"
+              focusable="false"
+              id="icon-19"
+              viewBox="0 0 16 12"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16 2.343a.969.969 0 00-.289-.686L14.307.283a1.012 1.012 0 00-1.404 0L6.132 6.919 3.097 3.94a1.012 1.012 0 00-1.404 0L.289 5.313A.969.969 0 000 6c0 .253.103.505.289.687l5.14 5.03a1.012 1.012 0 001.405 0L15.71 3.03A.969.969 0 0016 2.343z"
+              />
+            </svg>
+          </span>
           1
         </li>
       </ul>
@@ -209,7 +295,7 @@ exports[`Dropdown supports bottom placed error 1`] = `
         aria-hidden="true"
         class="ds-c-icon ds-c-icon--alert-circle "
         focusable="false"
-        id="icon-8"
+        id="icon-20"
         viewBox="36 -12 186 186"
         xmlns="http://www.w3.org/2000/svg"
       >
