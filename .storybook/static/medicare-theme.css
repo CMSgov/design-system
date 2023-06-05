@@ -392,6 +392,7 @@
 --dropdown__icon-size: 10px;
 --dropdown-item__border-width: 1px;
 --dropdown-item__border-color: #d9d9d9;
+--dropdown-menu__border-radius--open: 3px;
 --filter-chip__border-radius: 9999px;
 --filter-chip__background-color: #e9ecf1;
 --filter-chip__border-color: #1e3c70;
