@@ -42,6 +42,13 @@ const ControlledTemplate = ({ ...args }) => {
 
 export const MultiInputDateFieldDefault = Template.bind({});
 MultiInputDateFieldDefault.args = {
+  monthDefaultValue: '10',
+  dayDefaultValue: '31',
+  yearDefaultValue: '1965',
+};
+
+export const MultiInputDateFieldWithError = Template.bind({});
+MultiInputDateFieldWithError.args = {
   errorMessage: 'Please enter a year in the past',
   monthDefaultValue: '10',
   dayDefaultValue: '31',
