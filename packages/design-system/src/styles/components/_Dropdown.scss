@@ -1,37 +1,45 @@
 @use '../layout' as *;
 @use '../mixins';
 
+// Wraps all label and dropdown markup
 .ds-c-dropdown {
   max-width: var(--form__max-width);
   position: relative;
 }
 
+// Dropdown uses a <button> to fake a <select> element
+// This styles a <button> to look like a <select> and positions content within
 .ds-c-dropdown__button.ds-c-field {
   appearance: none;
   background-color: var(--dropdown__background-color);
-  background-image: url('../images/arrow-both.svg');
-  background-position: right $spacer-1 center;
-  background-repeat: no-repeat;
-  background-size: var(--dropdown__icon-size);
-  padding-inline-end: 28px;
+  display: flex;
+  gap: 2ch;
+  justify-content: space-between;
   text-align: start;
-
-  &[multiple] {
-    background-image: none;
-  }
 
   // Removes inner outline on select elements in Firefox.
   &:-moz-focusring {
     color: transparent;
     text-shadow: 0 0 0 #000;
   }
+}
 
-  .ds-c-dropdown--open & {
-    border-end-end-radius: 0;
-    border-end-start-radius: 0;
+// Dropdown previously used a background image for the caret
+// Caret is now an SVG icon that is rotated based on aria-expanded set on its parent
+// Rotation (and potential animation) couldn't be handled on the background element, but can now that it's its own element
+.ds-c-dropdown__caret {
+  flex-basis: 0 0 auto;
+
+  [aria-expanded='true'] & {
+    transform: rotate(180deg);
+  }
+
+  [aria-expanded='false'] & {
+    transform: rotate(0deg);
   }
 }
 
+// Styles for the dropdown menu
 .ds-c-dropdown__menu-container {
   background-color: var(--autocomplete__background-color);
   border: var(--text-input__border-width) solid var(--text-input__border-color);
@@ -58,6 +66,26 @@
   .ds-c-field--inverse + & {
     color: var(--color-base);
   }
+
+  // When dropdown is open (not `hidden`), add border radius to bottom of menu
+  &:not([hidden]) {
+    // We don't have a good way to create alpha versions of colors using our current hex value tokens
+    // Sass has color functions, but they can't be used in CSS custom properties because CSS custom properties are evaluated at runtime
+    // Hex values can't be used in native CSS color functions like `hsla()` or `rgba()`
+    // Creating a temporary variable until we discuss a better solution
+    --shadow-color: 0deg 0% 50%;
+    animation: fade-in var(--animation-speed-1) var(--animation-ease-in-out-expo);
+    border-radius: 0 0 var(--dropdown-menu__border-radius--open)
+      var(--dropdown-menu__border-radius--open);
+    box-shadow: 0px 0.2px 0.2px hsl(var(--shadow-color) / 0.43),
+      0px 0.7px 0.7px -0.5px hsl(var(--shadow-color) / 0.39),
+      0px 1.4px 1.3px -1.1px hsl(var(--shadow-color) / 0.35),
+      -0.1px 2.6px 2.4px -1.6px hsl(var(--shadow-color) / 0.32),
+      -0.1px 4.6px 4.3px -2.1px hsl(var(--shadow-color) / 0.28),
+      -0.2px 7.8px 7.3px -2.7px hsl(var(--shadow-color) / 0.25),
+      -0.3px 12.6px 11.8px -3.2px hsl(var(--shadow-color) / 0.21),
+      -0.4px 19.1px 17.9px -3.7px hsl(var(--shadow-color) / 0.18);
+  }
 }
 
 .ds-c-dropdown__menu {
@@ -65,9 +93,21 @@
   gap: 0;
 }
 
+// Animation keyframes for dropdown menu
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+// Base styles for grouped and individual dropdown elements
 .ds-c-dropdown__item,
 .ds-c-dropdown__item-group {
   border-block-end: var(--dropdown-item__border-width) solid var(--dropdown-item__border-color);
+  cursor: default;
   padding: var(--spacer-1);
 
   &:last-child {
@@ -83,10 +123,19 @@
   padding-inline-start: var(--spacer-3);
 }
 
+// Styles for dropdown elements that are highlighted
 .ds-c-dropdown__item--highlighted {
-  background-color: var(--color-primary-lighter);
+  background-color: var(--color-primary-lightest);
+  transition: background-color var(--animation-speed-1) var(--animation-ease-in-out-expo);
 }
 
+// Styles for dropdown elements that are selected
 .ds-c-dropdown__item--selected {
-  background-color: var(--color-primary-light);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-weight: var(--font-weight-bold);
+}
+
+.ds-c-dropdown__item-selected-indicator {
+  padding-inline-end: var(--spacer-1);
 }
