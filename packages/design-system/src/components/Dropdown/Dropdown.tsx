@@ -2,6 +2,7 @@ import React, { useMemo, useRef } from 'react';
 import classNames from 'classnames';
 import useAutofocus from '../utilities/useAutoFocus';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
+import { ArrowIcon, CheckIcon } from '../Icons';
 import { useSelect, UseSelectProps, UseSelectStateChangeOptions } from 'downshift';
 import { isOptGroupArray, parseChildren, validateProps } from './utils';
 import { uniqueId } from 'lodash';
@@ -254,6 +255,11 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
           role: isOptGroup ? 'group' : undefined,
         })}
       >
+        {selectedItem === item && (
+          <span className="ds-c-dropdown__item-selected-indicator">
+            <CheckIcon className="ds-u-font-size--sm" />
+          </span>
+        )}
         {item.label}
       </li>
     );
@@ -263,7 +269,12 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     <div {...wrapperProps}>
       <FormLabel {...labelProps} fieldId={fieldProps.id} />
       <button {...buttonProps}>
-        <span id={buttonContentId}>{selectedItem.label}</span>
+        <span id={buttonContentId} className="ds-u-truncate">
+          {selectedItem.label}
+        </span>
+        <span className="ds-c-dropdown__caret">
+          <ArrowIcon direction="down" className="ds-u-font-size--sm" />
+        </span>
       </button>
       <div className="ds-c-dropdown__menu-container" hidden={!isOpen}>
         <ul {...menuProps} aria-labelledby={undefined}>
