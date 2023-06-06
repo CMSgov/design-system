@@ -2,7 +2,7 @@ import React, { useMemo, useRef } from 'react';
 import classNames from 'classnames';
 import useAutofocus from '../utilities/useAutoFocus';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
-import { ArrowIcon, CheckIcon } from '../Icons';
+import { SvgIcon } from '../Icons';
 import { useSelect, UseSelectProps, UseSelectStateChangeOptions } from 'downshift';
 import { isOptGroupArray, parseChildren, validateProps } from './utils';
 import { uniqueId } from 'lodash';
@@ -236,6 +236,13 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     ),
   });
 
+  const caretIcon = (
+    <path d="m360.5 217.5-152 143.1c-4.6 5.2-10.6 7.4-16.5 7.4s-11.88-2.188-16.5-6.562L23.5 217.5c-9.63-9.2-10.03-24.4-.94-34 9.13-9.7 24.38-10 33.94-.9L192 310.9l135.5-128.4c9.562-9.094 24.75-8.75 33.94.9375C370.5 193.1 370.1 208.3 360.5 217.5z" />
+  );
+  const checkIcon = (
+    <path d="m480.1 128.1-272 272c-3.8 5.6-9.9 7.9-16.1 7.9s-12.28-2.344-16.97-7.031l-144-144c-9.375-9.375-9.375-24.56 0-33.94s24.56-9.375 33.94 0L192 350.1l255-255c9.375-9.375 24.56-9.375 33.94 0s9.36 24.5-.84 33z" />
+  );
+
   const menuContent = items.map((item, index) => {
     const { value, label, isOptGroup, className, ...extraAttrs } = item;
     return (
@@ -257,7 +264,13 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
       >
         {selectedItem === item && (
           <span className="ds-c-dropdown__item-selected-indicator">
-            <CheckIcon className="ds-u-font-size--sm" />
+            <SvgIcon
+              title="selected option icon"
+              viewBox="0 0 512 512"
+              className="ds-u-font-size--sm"
+            >
+              {checkIcon}
+            </SvgIcon>
           </span>
         )}
         {item.label}
@@ -273,7 +286,13 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
           {selectedItem.label}
         </span>
         <span className="ds-c-dropdown__caret">
-          <ArrowIcon direction="down" className="ds-u-font-size--sm" />
+          <SvgIcon
+            title="expanded indicator icon"
+            viewBox="0 0 384 512"
+            className="ds-u-font-size--sm"
+          >
+            {caretIcon}
+          </SvgIcon>
         </span>
       </button>
       <div className="ds-c-dropdown__menu-container" hidden={!isOpen}>
