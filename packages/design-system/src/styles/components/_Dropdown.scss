@@ -24,6 +24,11 @@
     color: transparent;
     text-shadow: 0 0 0 #000;
   }
+
+  // Due to the shadow overlay, the border needs to be transparent to avoid a light gray line divider
+  &[aria-expanded='true'] {
+    border-block-end-color: transparent;
+  }
 }
 
 // Dropdown previously used a background image for the caret
@@ -61,10 +66,14 @@
 
   // When dropdown is open (not `hidden`), add border radius to bottom of menu
   &:not([hidden]) {
+    --blur-radius: 17px;
+    --clip-path-value: calc(-1 * var(--blur-radius));
     animation: fade-in var(--animation-speed-1) var(--animation-ease-in-out-expo);
     border-radius: 0 0 var(--dropdown-menu__border-radius--open)
       var(--dropdown-menu__border-radius--open);
-    box-shadow: 0 0 17px 0 var(--color-gray-light);
+    box-shadow: 0 0 var(--blur-radius) 0 var(--color-gray-light);
+    // `clip-path` needed to hide `box-shadow` overlap in field. 17px is the `box-shadow` blur radius.
+    clip-path: inset(0px var(--clip-path-value) var(--clip-path-value) var(--clip-path-value));
   }
 }
 
