@@ -15,6 +15,7 @@
   display: flex;
   gap: 2ch;
   justify-content: space-between;
+  padding-inline-start: var(--spacer-3);
   text-align: start;
 
   // Removes inner outline on select elements in Firefox.
@@ -52,16 +53,6 @@
   position: absolute;
   width: 100%;
   z-index: var(--z-dialog);
-
-  // Create a line visually separating the
-  &::before {
-    border-block-start: var(--dropdown-item__border-width) solid var(--dropdown-item__border-color);
-    content: '';
-    display: block;
-    inset-block-start: 0;
-    position: sticky;
-    width: 100%;
-  }
 
   .ds-c-field--inverse + & {
     color: var(--color-base);
@@ -106,9 +97,8 @@
 // Base styles for grouped and individual dropdown elements
 .ds-c-dropdown__item,
 .ds-c-dropdown__item-group {
-  border-block-end: var(--dropdown-item__border-width) solid var(--dropdown-item__border-color);
   cursor: default;
-  padding: var(--spacer-1);
+  padding: var(--spacer-1) var(--spacer-3);
 
   &:last-child {
     border-block-end: none;
