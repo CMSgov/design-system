@@ -10,6 +10,7 @@
 // Dropdown uses a <button> to fake a <select> element
 // This styles a <button> to look like a <select> and positions content within
 .ds-c-dropdown__button.ds-c-field {
+  align-items: center;
   appearance: none;
   background-color: var(--dropdown__background-color);
   display: flex;
@@ -32,11 +33,11 @@
   flex-basis: 0 0 auto;
 
   [aria-expanded='true'] & {
-    transform: rotate(180deg);
+    transform: rotate(0deg);
   }
 
   [aria-expanded='false'] & {
-    transform: rotate(0deg);
+    transform: rotate(180deg);
   }
 }
 
