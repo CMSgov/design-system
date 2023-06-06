@@ -57,6 +57,7 @@ const VersionSwitcher = () => {
       options={getVersionOptions(themeVersions)}
       value={currentVersion}
       onChange={onVersionChange}
+      inversed={true}
     />
   );
 };
