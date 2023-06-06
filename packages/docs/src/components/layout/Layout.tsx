@@ -94,23 +94,25 @@ const Layout = ({
           className="ds-l-md-col ds-u-padding--0 ds-u-padding-bottom--4 ds-u-padding-top--2 page-main"
         >
           {pageHeader ? pageHeader : <PageHeader frontmatter={frontmatter} theme={theme} />}
-          <article className="ds-u-md-display--flex ds-u-padding-x--3 ds-u-sm-padding-x--6 ds-u-sm-padding-bottom--6 ds-u-sm-padding-top--1 ds-u-padding-bottom--3 page-content">
-            <div className="page-content__content ds-l-lg-col--9 ds-u-padding-left--0">
-              <div className="ds-u-display--block ds-u-lg-display--none">
-                <TableOfContentsMobile
+          <article className="ds-u-md-display--flex ds-u-padding-x--3 ds-u-sm-padding-x--6 ds-u-sm-padding-bottom--6 ds-u-sm-padding-top--1 ds-u-padding-bottom--3 page-body">
+            <div className="ds-l-row">
+              <div className="ds-l-lg-col--9">
+                <div className="ds-u-display--block ds-u-lg-display--none ds-u-margin-bottom--3">
+                  <TableOfContentsMobile
+                    title={frontmatter.title}
+                    items={tableOfContentsData || []}
+                    slug={slug}
+                  />
+                </div>
+                <div className="page-body__content">{children}</div>
+              </div>
+              <div className="ds-l-lg-col--3 ds-u-display--none ds-u-lg-display--block">
+                <TableOfContents
                   title={frontmatter.title}
                   items={tableOfContentsData || []}
                   slug={slug}
                 />
               </div>
-              {children}
-            </div>
-            <div className="ds-l-lg-col--3 ds-u-display--none ds-u-lg-display--block">
-              <TableOfContents
-                title={frontmatter.title}
-                items={tableOfContentsData || []}
-                slug={slug}
-              />
             </div>
           </article>
           <Footer />
