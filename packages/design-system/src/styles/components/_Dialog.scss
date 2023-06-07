@@ -44,12 +44,16 @@ dialog.fixed {
   display: inline-block;
   margin-top: $spacer-6;
   max-width: var(--measure-base);
-  padding: var(--dialog__padding);
+  padding: 0;
   text-align: start;
   width: 95%; // provide space for the background layer to peek through
 
   @media (-ms-high-contrast: active), (forced-colors: active) {
     outline: $spacer-2 solid WindowText;
+  }
+
+  > [role='document'] {
+    padding: var(--dialog__padding);
   }
 
   // We set default focus to the role="document" div, but we don't want
