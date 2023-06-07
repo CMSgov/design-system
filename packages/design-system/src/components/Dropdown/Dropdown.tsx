@@ -1,5 +1,6 @@
 import React, { useMemo, useRef } from 'react';
 import classNames from 'classnames';
+import mergeRefs from '../utilities/mergeRefs';
 import useAutofocus from '../utilities/useAutoFocus';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 import { useSelect, UseSelectProps, UseSelectStateChangeOptions } from 'downshift';
@@ -217,7 +218,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
 
   const buttonProps = getToggleButtonProps({
     ...fieldProps,
-    ref: useAutofocus<HTMLButtonElement>(props.autoFocus),
+    ref: mergeRefs([props.inputRef, useAutofocus<HTMLButtonElement>(props.autoFocus)]),
     className: classNames(
       'ds-c-dropdown__button',
       'ds-c-field',
