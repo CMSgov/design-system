@@ -141,9 +141,11 @@ export const Dialog = (props: DialogProps) => {
     const bodyClass = 'ds--dialog-open';
     document.body.classList.add(bodyClass);
     document.body.style.setProperty('--body_top--dialog-open', `-${y}px`);
+    document.documentElement.style.setProperty('scroll-behavior', 'auto');
     return () => {
       document.body.classList.remove(bodyClass);
-      window.scrollTo(0, y);
+      window.scrollTo({ top: y, behavior: 'auto' });
+      document.documentElement.style.removeProperty('scroll-behavior');
     };
   }, []);
 
