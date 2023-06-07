@@ -69,8 +69,6 @@
     --blur-radius: 17px;
     --clip-path-value: calc(-1 * var(--blur-radius));
     animation: fade-in var(--animation-speed-1) var(--animation-ease-in-out-expo);
-    border-radius: 0 0 var(--dropdown-menu__border-radius--open)
-      var(--dropdown-menu__border-radius--open);
     box-shadow: 0 0 var(--blur-radius) 0 var(--color-gray-light);
     // `clip-path` needed to hide `box-shadow` overlap in field. 17px is the `box-shadow` blur radius.
     clip-path: inset(0px var(--clip-path-value) var(--clip-path-value) var(--clip-path-value));

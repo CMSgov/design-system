@@ -316,7 +316,6 @@ export const components: AnyTokenValues = {
     '__icon-size':                                '10px',
     '-item__border-width':                        '1px',
     '-item__border-color':                        t.color['gray-lighter'],
-    '-menu__border-radius--open':                 '3px',
   },
   
   'filter-chip': {
