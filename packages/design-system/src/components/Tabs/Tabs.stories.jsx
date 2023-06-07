@@ -10,7 +10,7 @@ export default {
   subcomponents: { TabPanel, Tab },
 };
 
-export const DefaultTabs = (args) => (
+export const Default = (args) => (
   <TabsComponent {...args}>
     <TabPanel id="summary" tab="Summary">
       The Bill of Rights is the first ten amendments to the United States Constitution.
@@ -58,6 +58,20 @@ export const DefaultTabs = (args) => (
         <li>18-year-old suffrage</li>
         <li>Congressional pay raises</li>
       </ol>
+    </TabPanel>
+  </TabsComponent>
+);
+
+export const Disabled = (args) => (
+  <TabsComponent {...args}>
+    <TabPanel id="summary" tab="Summary">
+      The Bill of Rights is the first ten amendments to the United States Constitution.
+    </TabPanel>
+    <TabPanel id="preamble" tab="Preamble">
+      We the People of the United States, in Order to form a more perfect Union, establish Justice,
+      insure domestic Tranquility, provide for the common defence, promote the general Welfare, and
+      secure the Blessings of Liberty to ourselves and our Posterity, do ordain and establish this
+      Constitution for the United States of America.
     </TabPanel>
     <TabPanel id="disabled" tab="Disabled" disabled>
       You should not see this.
