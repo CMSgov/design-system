@@ -3,6 +3,8 @@ title: Introducing a CSS reset
 order: 10
 ---
 
+import marginCollapse from '../../src/images/margin-collapse.png'
+
 The design system's CSS reset is a collection of HTML element-specific styles that simplifies the development process while providing cross-browser sensible defaults to build from.
 
 Our reset CSS is bundled with the rest of the design system's styles, so to use it all you need to do is [import the design system's CSS](/getting-started/for-developers/#including-the-css) using your preferred method. Even if you haven't imported one of our components, your application should visually align with the design system.
@@ -14,12 +16,37 @@ If you're curious to see what changes have been made, you can preview our reset 
 The CSS reset introduces globally-defined defaults that will impact the entire application once the CSS has been imported. These defaults include (but aren't limited to):
 
 - `box-sizing: border-box` is set on every element — including `*::before` and `*::after`. This ensures that the declared width of element is never exceeded due to padding or border.
+  - While this was a common CSS reset that teams were already applying, this may produce unexpected results for some teams. If an element suddenly has different spacing around it, it may need to explicitly be set to `box-sizing: content-box` (browser default) to restore its former behavior.
 - The `<html>` element has `scroll-behavior: smooth` set on `:focus-within`. This is a CSS-only solution that provides smooth anchor scrolling.
-- Animations, transitions, and smooth scroll are removed on all elements - including `*::before` and `*::after` for users who have `prefers-reduced-motion` enabled to respect their preferences.
 - The `<body>` element effectively replaces the `.ds-base` class, defining `font-family`, `font-size`, `line-height`, and `color`.
   - In addition, `<body>` now sets `background-color` to a theme's specified background.
-- The `outline` is removed on elements with the `tabindex="-1"` declared. This removes focus rings for non-interactive elements, e.g., when activating a skip link will then send focus to a `<main>` or heading element.
-- To avoid [margin collapse](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing), all elements will only rely on their respective top margins to better control layout. All bottom margins have been removed.
+- The `outline` is removed on elements with the [`tabindex="-1"`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex) declared. This removes focus rings for non-interactive elements, e.g., when activating a skip link will then send focus to a `<main>` or heading element.
+- For users who have [`prefers-reduced-motion`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion) enabled, animations, transitions, and smooth scroll are removed on all elements - including `*::before` and `*::after` to respect their preferences.
+
+## Spacing
+
+To make default spacing between elements less confusing and more consistent, we've limited our margins between components to one direction. Components now have only top or left margins, depending on whether they are [block or inline](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flow_layout/Block_and_inline_layout_in_normal_flow) elements. This avoids an historically troublesome concept in CSS known as [_margin collapse_](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing) (more info on this in the next section). This change means specifically that the following components have had their bottom margins removed:
+
+- Choice (check/radio)
+- Choice list
+- Choice checked children
+- Date fields
+  - Multi-input
+  - Single-input
+- Dropdown
+- Month picker
+- Text field
+- Review
+
+### Why is "margin collapse" a problem?
+
+While [margin collapse](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing) is an understandable concept, it is prone to producing unexpected results, especially when translating from designs to code. Consider the following annotated screenshot which shows the default spacing between a sample of components in the previous version:
+
+<div className="ds-u-measure--wide ds-u-text-align--center ds-u-margin-top--2">
+  <img src={marginCollapse} alt="Screenshot showing margins between components on a page in the previous version of the design system. Between a month picker and a text field, margins stack, causing there to be a total of 48 pixels betwen them. Between a paragraph of text and a dropdown, margins collapse, causing it to take the higher value of 24 pixels." className="ds-u-display--inline-block ds-u-border--1" />
+</div>
+
+The first thing you may notice is the wild inconsistency in spacing between these components. Between the month picker and text field, the bottom margin of the month picker and the top margin of the text field stack on top of each other, creating `48px` of total space. They failed to collapse into each other. In contrast, the margins between the paragraph of text and the dropdown component did collapse, which meant the higher value of `24px` was chosen by the browser as the space between the elements. While not shown in the annotations for lack of space, there is also some bottom margin below the text field that is stacking on the paragraph's top margin rather than collapsing into it! These issues can get more complicated in the context of applications. For this reason, we've followed the [US Web Design System's](https://designsystem.digital.gov/) lead and applied only top margins to our components.
 
 ## Typography
 
