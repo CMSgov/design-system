@@ -411,7 +411,7 @@
 --form-hint__font-size: 0.875rem;
 --form-error__color: #b20000;
 --form-error__color--inverse: #e8b3b3;
---icon__color__error: #b20000;
+--icon__color--error: #b20000;
 --icon__color--inverse: #ffffff;
 --icon__color--primary: #146a5d;
 --icon__color--success: #12890e;
