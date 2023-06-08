@@ -1,4 +1,4 @@
-/* Last modified on Thu Jun  8 10:28:43 CDT 2023 */
+/* Last modified on Thu Jun  8 10:44:35 CDT 2023 */
 :root, ::before, ::after, ::backdrop {
 --animation-ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
 --animation-speed-base: 1;
@@ -415,7 +415,7 @@
 --form-hint__color: #5a5a5a;
 --form-hint__color--inverse: #e9ecf1;
 --form-error__color: #e31c3d;
---form-error__color--inverse: #f7bbc5;
+--form-error__color--inverse: #f18e9e;
 --icon__color--error: #e31c3d;
 --icon__color--inverse: #ffffff;
 --icon__color--primary: #0071bc;
