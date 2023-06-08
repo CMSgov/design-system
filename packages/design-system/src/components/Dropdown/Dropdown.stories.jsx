@@ -16,14 +16,20 @@ export default {
 
 const dropdownOptions = [
   { label: '- Select an option -', value: '' },
-  { label: 'Option 1', value: '1' },
-  { label: 'Option 2', value: '2' },
-  { label: 'Option 3', value: '3' },
-  { label: 'Option 4', value: '4' },
-  { label: 'Option 5', value: '5' },
-  { label: 'Option 6', value: '6' },
-  { label: 'Option 7', value: '7' },
-  { label: 'Option 8', value: '8' },
+  { label: 'Confederated Tribes and Bands of the Yakama Nation', value: '1' },
+  { label: 'Confederated Tribes of the Chehalis Reservation', value: '2' },
+  { label: 'Confederated Tribes of the Colville Reservation', value: '3' },
+  { label: 'Cowlitz Indian Tribe', value: '4' },
+  {
+    label: 'Hoh Indian Tribe (formerly the Hoh Indian Tribe of the Hoh Indian Reservation)',
+    value: '5',
+  },
+  {
+    label:
+      'Nisqually Indian Tribe (formerly the Nisqually Indian Tribe of the Nisqually Reservation)',
+    value: '6',
+  },
+  { label: 'Lummi Tribe of the Lummi Reservation', value: '7' },
 ];
 
 const htmlOptGroups = (

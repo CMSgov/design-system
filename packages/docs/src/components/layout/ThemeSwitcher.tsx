@@ -29,6 +29,7 @@ const ThemeSwitcher = () => {
       options={themeOptions}
       value={currentTheme}
       onChange={onThemeChange}
+      inversed={true}
     />
   );
 };

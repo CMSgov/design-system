@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import mergeRefs from '../utilities/mergeRefs';
 import useAutofocus from '../utilities/useAutoFocus';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
+import { SvgIcon } from '../Icons';
 import { useSelect, UseSelectProps, UseSelectStateChangeOptions } from 'downshift';
 import { isOptGroupArray, parseChildren, validateProps } from './utils';
 import { uniqueId } from 'lodash';
@@ -236,6 +237,13 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     ),
   });
 
+  const caretIcon = (
+    <path d="M212.7 148.7c6.2-6.2 16.4-6.2 22.6 0l160 160c6.2 6.2 6.2 16.4 0 22.6s-16.4 6.2-22.6 0L224 182.6 75.3 331.3c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l160-160z" />
+  );
+  const checkIcon = (
+    <path d="M443.3 100.7c6.2 6.2 6.2 16.4 0 22.6l-272 272c-6.2 6.2-16.4 6.2-22.6 0l-144-144c-6.2-6.2-6.2-16.4 0-22.6s16.4-6.2 22.6 0L160 361.4l260.7-260.7c6.2-6.2 16.4-6.2 22.6 0z" />
+  );
+
   const menuContent = items.map((item, index) => {
     const { value, label, isOptGroup, className, ...extraAttrs } = item;
     return (
@@ -255,6 +263,17 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
           role: isOptGroup ? 'group' : undefined,
         })}
       >
+        {selectedItem === item && (
+          <span className="ds-c-dropdown__item-selected-indicator">
+            <SvgIcon
+              title="selected option icon"
+              viewBox="0 0 448 512"
+              className="ds-u-font-size--sm"
+            >
+              {checkIcon}
+            </SvgIcon>
+          </span>
+        )}
         {item.label}
       </li>
     );
@@ -264,7 +283,18 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     <div {...wrapperProps}>
       <FormLabel {...labelProps} fieldId={fieldProps.id} />
       <button {...buttonProps}>
-        <span id={buttonContentId}>{selectedItem.label}</span>
+        <span id={buttonContentId} className="ds-u-truncate">
+          {selectedItem.label}
+        </span>
+        <span className="ds-c-dropdown__caret">
+          <SvgIcon
+            title="expanded indicator icon"
+            viewBox="0 0 448 512"
+            className="ds-u-font-size--sm"
+          >
+            {caretIcon}
+          </SvgIcon>
+        </span>
       </button>
       <div className="ds-c-dropdown__menu-container" hidden={!isOpen}>
         <ul {...menuProps} aria-labelledby={undefined}>
