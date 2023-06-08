@@ -14,7 +14,7 @@
   // Medicare has a different gap for choice wrappers
   // If a theme doesn't have a gap for choice wrappers defined, it will fall back to the normal gap
   gap: var(--choice-wrapper__gap, 0.5rem);
-  margin-block-start: $spacer-1;
+  margin: $spacer-1 0;
   max-width: var(--measure-wide);
 
   // Medicare has a different gap for small choices
@@ -262,8 +262,7 @@ label,
 .ds-c-choice__checkedChild {
   border-inline-start: $spacer-half solid var(--choice__border-color--left);
   flex: 1 1 100%;
-  margin-block-end: $spacer-2;
-  margin-block-start: $spacer-1;
+  margin-bottom: $spacer-2;
   // @TODO: get rid of this calc
   // The origin of this 2px shift is fuzzy, it seems like it's based on
   // the border on alerts and healthcare.gov insets.
@@ -277,9 +276,5 @@ label,
 
   &--small {
     margin-inline-start: $spacer-1;
-  }
-
-  .ds-c-fieldset > div:last-child & {
-    margin-block-end: 0;
   }
 }
