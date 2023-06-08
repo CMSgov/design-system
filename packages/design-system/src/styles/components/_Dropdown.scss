@@ -57,6 +57,8 @@
   max-height: 320px;
   overflow-y: auto;
   position: absolute;
+  // Account for the button's bottom-margin
+  transform: translateY(-$spacer-half);
   width: 100%;
   z-index: var(--z-dialog);
 
