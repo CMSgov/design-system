@@ -178,4 +178,16 @@ describe('Dropdown', () => {
     const list = screen.getByRole('listbox');
     expect(list.children.length).toEqual(3);
   });
+
+  it('passes through a ref', () => {
+    const inputRefCallback = jest.fn();
+    render(
+      <Dropdown {...defaultProps} inputRef={inputRefCallback}>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+      </Dropdown>
+    );
+    expect(inputRefCallback).toHaveBeenCalled();
+  });
 });
