@@ -24,10 +24,12 @@ export default function useHighlightStatusMessageFn(
   return (args: A11yStatusMessageOptions<any>) => {
     if (prevHighlightedIndexRef.current !== args.highlightedIndex) {
       prevHighlightedIndexRef.current = args.highlightedIndex;
-      const label = args.highlightedItem.label;
-      const position = args.highlightedIndex + 1;
-      const total = args.resultCount;
-      return `${label}, (${position} of ${total})`;
+      if (args.highlightedItem) {
+        const label = args.highlightedItem.label;
+        const position = args.highlightedIndex + 1;
+        const total = args.resultCount;
+        return `${label}, (${position} of ${total})`;
+      }
     }
     return originalGetA11yStatusMessage(args);
   };
