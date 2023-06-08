@@ -83,7 +83,6 @@ export const PreventScrollExample = ({ isOpen: _isOpen, dialogOpen: _dialogOpen,
 
   return (
     <div className="ds-u-measure--base">
-      {dialogOpen && <Dialog {...args} onExit={hideModal} />}
       <h1>The United States Constitution</h1>
       <p>
         We the People of the United States, in Order to form a more perfect Union, establish
@@ -97,9 +96,12 @@ export const PreventScrollExample = ({ isOpen: _isOpen, dialogOpen: _dialogOpen,
         All legislative Powers herein granted shall be vested in a Congress of the United States,
         which shall consist of a Senate and House of Representatives.
       </p>
+
+      {dialogOpen && <Dialog {...args} onExit={hideModal} />}
       <Button onClick={showModal} size="big" variation="solid">
         Click to show modal
       </Button>
+
       <h3>Section 2: The House of Representatives</h3>
       <p>
         The House of Representatives shall be composed of Members chosen every second Year by the
