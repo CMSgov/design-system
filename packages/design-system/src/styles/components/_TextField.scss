@@ -7,7 +7,7 @@
   border-radius: var(--text-input__border-radius);
   color: var(--text-input__color);
   display: block;
-  margin-block-start: $spacer-half;
+  margin: $spacer-half 0;
   max-width: var(--form__max-width);
   outline: none;
   padding: var(--text-input__padding);
