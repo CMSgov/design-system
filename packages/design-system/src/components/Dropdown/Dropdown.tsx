@@ -231,6 +231,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   });
 
   if (!buttonProps['aria-activedescendant']) {
+    // This attribute being empty causes unexpected behavior in JAWS, so remove it
     delete buttonProps['aria-activedescendant'];
   }
 
