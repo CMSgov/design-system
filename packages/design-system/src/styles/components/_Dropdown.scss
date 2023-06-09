@@ -67,7 +67,6 @@
   &:not([hidden]) {
     --blur-radius: 17px;
     --clip-path-value: calc(-1 * var(--blur-radius));
-    animation: fade-in var(--animation-speed-1) var(--animation-ease-in-out-expo);
     box-shadow: 0 0 var(--blur-radius) 0 var(--color-gray-light);
     // `clip-path` needed to hide `box-shadow` overlap in field. 17px is the `box-shadow` blur radius.
     clip-path: inset(0px var(--clip-path-value) var(--clip-path-value) var(--clip-path-value));
@@ -77,16 +76,6 @@
 .ds-c-dropdown__menu {
   @include mixins.ds-unstyled-list;
   gap: 0;
-}
-
-// Animation keyframes for dropdown menu
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
 }
 
 // Base styles for grouped and individual dropdown elements
@@ -111,7 +100,6 @@
 // Styles for dropdown elements that are highlighted
 .ds-c-dropdown__item--highlighted {
   background-color: var(--color-primary-lightest);
-  transition: background-color var(--animation-speed-1) var(--animation-ease-in-out-expo);
 }
 
 // Styles for dropdown elements that are selected
