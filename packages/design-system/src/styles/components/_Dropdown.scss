@@ -106,6 +106,7 @@
 .ds-c-dropdown__item--selected {
   background-color: var(--color-primary);
   color: var(--color-white);
+  display: flex; // Prevents text from wrapping under icon
   font-weight: var(--font-weight-bold);
 }
 
