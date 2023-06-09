@@ -16,7 +16,6 @@
   display: flex;
   gap: 2ch;
   justify-content: space-between;
-  padding-inline-start: var(--spacer-3);
   text-align: start;
 
   // Removes inner outline on select elements in Firefox.
@@ -94,7 +93,7 @@
 .ds-c-dropdown__item,
 .ds-c-dropdown__item-group {
   cursor: default;
-  padding: var(--spacer-1) var(--spacer-3);
+  padding: var(--text-input__padding);
 
   &:last-child {
     border-block-end: none;
@@ -106,7 +105,7 @@
 }
 
 .ds-c-dropdown__menu--grouped .ds-c-dropdown__item {
-  padding-inline-start: var(--spacer-5);
+  padding-inline-start: var(--dropdown-option-group__padding);
 }
 
 // Styles for dropdown elements that are highlighted
