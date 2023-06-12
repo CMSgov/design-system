@@ -144,6 +144,7 @@ $breakpoints: (
 @mixin heading--5xl {
   @include heading;
   font-size: var(--font-size-3xl);
+  margin-block-start: 0;
 
   @media (min-width: $media-width-sm) {
     font-size: var(--font-size-4xl);
@@ -158,6 +159,7 @@ $breakpoints: (
   @include heading;
   font-size: var(--font-size-3xl);
   font-weight: var(--typography-heading-4xl__font-weight);
+  margin-block-start: 0;
 
   @media (min-width: $media-width-md) {
     font-size: var(--font-size-4xl);
