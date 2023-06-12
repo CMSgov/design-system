@@ -34,6 +34,8 @@ function findElementsOfType<T extends keyof JSX.IntrinsicElements>(
   types: T[],
   node: ReactNode
 ): ReactElement<any, T>[] {
+  console.log(node)
+  console.log('valid:', React.isValidElement(node))
   if (!node || !(React.isValidElement(node) || Array.isArray(node))) {
     // There's nothing to recurse on, and this is not the droid we're looking for
     return [];

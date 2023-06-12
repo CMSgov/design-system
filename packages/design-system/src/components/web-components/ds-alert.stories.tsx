@@ -24,3 +24,10 @@ const Template = (args) => (
 );
 
 export const Default = Template.bind({});
+
+// I can get the styles for the alert to show up in storybook if I have it running and
+// import `DsAlert from './ds-alert'` and use it like `<DsAlert ...>` and save and then
+// watch it error in Storybook and then revert the file and save, and then it shows the
+// styles correctly. I really wish I knew what was going on. If I refresh the page, it
+// goes back to being broken. Oh, and this is if I remove all the web-components imports
+// in the storybook preview.tsx file.

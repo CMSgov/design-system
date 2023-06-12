@@ -18,7 +18,7 @@ import type { Preview } from '@storybook/react';
 // The following import works to have working web components with their styles, but
 // the problem is that it imports the compiled versions out of `dist` rather than
 // `src`, so they don't update live as you change the source code
-import '@cmsgov/design-system/web-components';
+// import '@cmsgov/design-system/web-components';
 // import '../packages/design-system/src/components/web-components';
 
 // Rewire analytics events to log to the console

@@ -31,4 +31,4 @@ declare global {
   }
 }
 
-define('ds-alert', () => Alert, { attributes });
+export default define('ds-alert', () => Alert, { attributes });

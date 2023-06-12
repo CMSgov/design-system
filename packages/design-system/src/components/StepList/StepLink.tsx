@@ -16,7 +16,7 @@ export interface StepLinkProps {
   screenReaderText?: string;
   className?: string;
   onClick?: (href?: string, stepId?: string) => any;
-  component?: React.ComponentType<StepLinkComponentProps> | keyof JSX.IntrinsicElements;
+  component?: React.ComponentType<StepLinkComponentProps> | 'a' | 'button';
 }
 
 export const StepLink = (props: StepLinkProps) => {

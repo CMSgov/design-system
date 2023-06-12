@@ -30,4 +30,4 @@ declare global {
   }
 }
 
-define('ds-dropdown', () => Dropdown, { attributes });
+define('ds-dropdown', () => Dropdown, { attributes: attributes as any });

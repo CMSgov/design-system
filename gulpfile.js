@@ -312,6 +312,11 @@ exports.build = gulp.series(
   gulp.parallel(compileSass, compileReactComponents, compilePreactComponents)
 );
 
+exports.preact = gulp.series(
+  compileEsm(path.join(distPreactComponents, 'esm'), preactBabelConfig),
+  bundleWebComponents
+);
+
 /*
  * command line help
  */

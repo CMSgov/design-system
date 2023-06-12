@@ -1,4 +1,5 @@
 import React from 'react';
+import './ds-dropdown';
 
 export default {
   title: 'Web Components/Dropdown',
