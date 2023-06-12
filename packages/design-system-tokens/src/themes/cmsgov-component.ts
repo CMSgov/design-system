@@ -298,9 +298,7 @@ export const components: AnyTokenValues = {
 
   'dropdown': {
     '__background-color':                         t.color['white'],
-    '__icon-size':                                '10px',
-    '-item__border-width':                        '1px',
-    '-item__border-color':                        t.color['gray-lighter'],
+    '-option-group__padding':                     t.spacer['3'],
   },
 
   'filter-chip': {
