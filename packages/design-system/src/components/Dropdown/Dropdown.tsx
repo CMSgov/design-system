@@ -230,6 +230,11 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     'aria-labelledby': `${buttonContentId} ${labelId}`,
   });
 
+  if (!buttonProps['aria-activedescendant']) {
+    // This attribute being empty causes unexpected behavior in JAWS, so remove it
+    delete buttonProps['aria-activedescendant'];
+  }
+
   const menuProps = getMenuProps({
     className: classNames(
       'ds-c-dropdown__menu',

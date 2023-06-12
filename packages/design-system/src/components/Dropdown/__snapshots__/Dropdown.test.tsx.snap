@@ -101,7 +101,6 @@ exports[`Dropdown dropdown matches snapshot 1`] = `
     </span>
   </label>
   <button
-    aria-activedescendant=""
     aria-controls="dropdown__menu--4"
     aria-expanded="false"
     aria-haspopup="listbox"
@@ -211,7 +210,6 @@ exports[`Dropdown supports bottom placed error 1`] = `
       </span>
     </label>
     <button
-      aria-activedescendant=""
       aria-controls="dropdown__menu--24"
       aria-describedby="1_error"
       aria-expanded="false"
