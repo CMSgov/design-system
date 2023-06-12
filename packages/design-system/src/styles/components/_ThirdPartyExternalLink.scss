@@ -1,0 +1,9 @@
+@use '../layout' as *;
+
+.ds-c-external-link__icon {
+  height: 1em;
+  margin-inline-start: $spacer-1;
+  position: relative;
+  top: -2px;
+  width: 1em;
+}
