@@ -16,7 +16,6 @@
   display: flex;
   gap: 2ch;
   justify-content: space-between;
-  padding-inline-start: var(--spacer-3);
   text-align: start;
 
   // Removes inner outline on select elements in Firefox.
@@ -70,7 +69,6 @@
   &:not([hidden]) {
     --blur-radius: 17px;
     --clip-path-value: calc(-1 * var(--blur-radius));
-    animation: fade-in var(--animation-speed-1) var(--animation-ease-in-out-expo);
     box-shadow: 0 0 var(--blur-radius) 0 var(--color-gray-light);
     // `clip-path` needed to hide `box-shadow` overlap in field. 17px is the `box-shadow` blur radius.
     clip-path: inset(0px var(--clip-path-value) var(--clip-path-value) var(--clip-path-value));
@@ -82,21 +80,11 @@
   gap: 0;
 }
 
-// Animation keyframes for dropdown menu
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 // Base styles for grouped and individual dropdown elements
 .ds-c-dropdown__item,
 .ds-c-dropdown__item-group {
   cursor: default;
-  padding: var(--spacer-1) var(--spacer-3);
+  padding: var(--text-input__padding);
 
   &:last-child {
     border-block-end: none;
@@ -108,19 +96,19 @@
 }
 
 .ds-c-dropdown__menu--grouped .ds-c-dropdown__item {
-  padding-inline-start: var(--spacer-5);
+  padding-inline-start: var(--dropdown-option-group__padding);
 }
 
 // Styles for dropdown elements that are highlighted
 .ds-c-dropdown__item--highlighted {
   background-color: var(--color-primary-lightest);
-  transition: background-color var(--animation-speed-1) var(--animation-ease-in-out-expo);
 }
 
 // Styles for dropdown elements that are selected
 .ds-c-dropdown__item--selected {
   background-color: var(--color-primary);
   color: var(--color-white);
+  display: flex; // Prevents text from wrapping under icon
   font-weight: var(--font-weight-bold);
 }
 
