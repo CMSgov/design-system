@@ -6,7 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <table
-        class="ds-c-table ds-c-table--borderless ds-c-md-table--stacked ds-c-privacy-settings-table ds-u-margin-top--2 ds-u-lg-margin--0"
+        class="ds-c-table ds-c-table--borderless ds-c-md-table--stacked ds-c-privacy-settings-table ds-u-margin-top--2"
         role="table"
       >
         <thead
@@ -329,7 +329,7 @@ Object {
   </body>,
   "container": <div>
     <table
-      class="ds-c-table ds-c-table--borderless ds-c-md-table--stacked ds-c-privacy-settings-table ds-u-margin-top--2 ds-u-lg-margin--0"
+      class="ds-c-table ds-c-table--borderless ds-c-md-table--stacked ds-c-privacy-settings-table ds-u-margin-top--2"
       role="table"
     >
       <thead
