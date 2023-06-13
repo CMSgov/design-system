@@ -33,7 +33,7 @@ const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => 
     <header className={headerClassNames}>
       <h1 className="ds-text-heading--4xl">{title}</h1>
       {intro && (
-        <p className="ds-u-font-size--lg ds-u-measure--base ds-u-margin-top--1 ds-u-margin-bottom--0">
+        <p className="ds-u-font-size--lg ds-u-measure--base ds-u-margin-top--1 ds-u-margin-bottom--1">
           {intro}
         </p>
       )}

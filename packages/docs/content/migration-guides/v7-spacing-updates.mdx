@@ -1,0 +1,37 @@
+---
+title: Standardizing spacing in v7
+order: 40
+intro: We've removed all default bottom margins to make spacing between components predictable and consistent.
+---
+
+import marginCollapse from '../../src/images/margin-collapse.png'
+
+## Removal of bottom margins
+
+Before v7, some components had both top and bottom margins. This made the default spacing between them hard to predict, because those margins would either stack or [collapse](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_box_model/Mastering_margin_collapsing) depending on the combination of components and how the HTML around them was structured. To make default spacing between elements less confusing and more consistent, we've limited our margins between components to one direction. Components now have only top or left margins, depending on whether they are [block or inline](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flow_layout/Block_and_inline_layout_in_normal_flow) elements. This change means specifically that the following components have had their bottom margins removed:
+
+- Choice (check/radio)
+- Choice list
+- Choice checked children
+- Date fields
+  - Multi-input
+  - Single-input
+- Dropdown
+- Headings
+- Lists
+- Month picker
+- Paragraphs
+- Text field
+- Review
+
+If the gap below these components disappears in your application when upgrading, consider adding margin above the next item or adding it back in if you previously had to remove it.
+
+## Example of margin collapsing and stacking
+
+While margin collapse is an understandable concept, it is prone to producing unexpected results, especially when translating from designs to code. Consider the following annotated screenshot which shows the default spacing between a sample of components in the previous version:
+
+<div className="ds-u-measure--wide ds-u-text-align--center ds-u-margin-top--2">
+  <img src={marginCollapse} width={595} alt="Screenshot showing margins between components on a page in the previous version of the design system. Between a month picker and a text field, margins stack, causing there to be a total of 48 pixels betwen them. Between a paragraph of text and a dropdown, margins collapse, causing it to take the higher value of 24 pixels." className="ds-u-display--inline-block ds-u-border--1" />
+</div>
+
+The first thing you may notice is the wild inconsistency in spacing between these components. Between the month picker and text field, the bottom margin of the month picker and the top margin of the text field stack on top of each other, creating `48px` of total space. They failed to collapse into each other. In contrast, the margins between the paragraph of text and the dropdown component did collapse, which meant the higher value of `24px` was chosen by the browser as the space between the elements. While not shown in the annotations for lack of space, there is also some bottom margin below the text field that is stacking on the paragraph's top margin rather than collapsing into it! These issues can get more complicated in the context of applications. For this reason, we've followed the US Web Design System's lead and applied only top margins to our components.
