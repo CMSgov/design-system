@@ -83,8 +83,7 @@ dialog.fixed {
 .ds-c-dialog__header {
   align-items: flex-start;
   display: flex;
-  // Provide some spacing when the header only includes the close button
-  padding-block-end: $spacer-1;
+  padding-block-end: $spacer-2;
 }
 
 .ds-c-dialog__body {
