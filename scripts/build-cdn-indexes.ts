@@ -40,14 +40,14 @@ getSystems().forEach((sysinfo) => {
   ]);
 
   const preactExample = codeBlock([
-    `<script type="text/javascript" src="https://design.cms.gov/cdn/${system}/${version}/preact-components/bundle/preact.min.umd.js"></script>`,
-    `<script type="text/javascript" src="https://design.cms.gov/cdn/${system}/${version}/preact-components/bundle/preact-components.js"></script>`,
+    `<script src="https://design.cms.gov/cdn/${system}/${version}/preact-components/bundle/preact.min.umd.js"></script>`,
+    `<script src="https://design.cms.gov/cdn/${system}/${version}/preact-components/bundle/preact-components.js"></script>`,
   ]);
 
   const reactExample = codeBlock([
-    `<script type="text/javascript" src="https://design.cms.gov/cdn/${system}/${version}/react-components/bundle/react.production.min.js"></script>`,
-    `<script type="text/javascript" src="https://design.cms.gov/cdn/${system}/${version}/react-components/bundle/react-dom.production.min.js"></script>`,
-    `<script type="text/javascript" src="https://design.cms.gov/cdn/${system}/${version}/react-components/bundle/react-components.js"></script>`,
+    `<script src="https://design.cms.gov/cdn/${system}/${version}/react-components/bundle/react.production.min.js"></script>`,
+    `<script src="https://design.cms.gov/cdn/${system}/${version}/react-components/bundle/react-dom.production.min.js"></script>`,
+    `<script src="https://design.cms.gov/cdn/${system}/${version}/react-components/bundle/react-components.js"></script>`,
   ]);
 
   const htmlDoc = `<!DOCTYPE html>
