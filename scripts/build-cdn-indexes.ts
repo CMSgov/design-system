@@ -19,7 +19,7 @@ const getSystems = () => {
 const codeBlock = (lines: string[]) => {
   const escaped = lines.join('\n').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   return `
-    <pre class="ds-u-fill--gray-lightest ds-u-padding--1 ds-u-margin-y--1 ds-u-overflow--auto"><code>${escaped}</code></pre>
+    <pre class="ds-u-fill--gray-lightest ds-u-font-size--sm ds-u-padding--1 ds-u-margin-y--1 ds-u-overflow--auto"><code>${escaped}</code></pre>
     <ds-button size="small" onclick='navigator.clipboard.writeText(${JSON.stringify(
       lines
     )}.join("\\n"))'>Copy snippet</ds-button>
@@ -63,13 +63,13 @@ getSystems().forEach((sysinfo) => {
     <ds-usa-banner></ds-usa-banner>
     <header class="ds-base--inverse ds-u-padding-y--3">
       <div class="ds-l-container">
-        <h1 class="ds-text-heading--2xl">CMSDS CDN Assets for v${version} of the <a href="https://npmjs.com/package/@cmsgov/${system}/v/${version}">@cmsgov/${system} package</a>.</h1>
+        <h1 class="ds-text-heading--2xl">CDN package resource index</h1>
       </div>
     </header>
     <div class="ds-l-container ds-content ds-u-padding-y--4">
       <p class="ds-u-measure--wide">
-        You are viewing the CDN resource index for <strong>v${version}</strong> of the <a href="https://npmjs.com/package/@cmsgov/${system}/v/${version}">@cmsgov/${system} package</a>.
-        Those resources are currently loaded on this page. To understand how to use these resources, check out this page's source or the code snippets in the sections below.
+        You are viewing the CDN resource index for <strong>v${version}</strong> of the <a href="https://npmjs.com/package/@cmsgov/${system}/v/${version}">@cmsgov/${system}</a> package.
+        These resources are currently loaded on this page. To understand how to use these resources, check out this page's source or the code snippets in the sections below.
       </p>
       <p class="ds-u-measure--wide">
         See also:
