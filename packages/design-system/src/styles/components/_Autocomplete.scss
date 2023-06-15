@@ -29,6 +29,12 @@
 
 .ds-c-autocomplete__menu-item--highlighted {
   @extend .ds-c-dropdown__menu-item--highlighted;
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    background-color: Highlight;
+    color: HighlightText;
+    forced-color-adjust: none;
+    -ms-high-contrast-adjust: none;
+  }
 }
 
 .ds-c-autocomplete__list-item-message {

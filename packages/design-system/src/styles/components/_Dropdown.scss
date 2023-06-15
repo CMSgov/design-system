@@ -112,4 +112,10 @@
 
 .ds-c-dropdown__menu-item-selected-indicator {
   padding-inline-end: var(--spacer-1);
+
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    .ds-c-icon path {
+      fill: currentColor;
+    }
+  }
 }
