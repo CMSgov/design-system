@@ -47,11 +47,17 @@
 
 // Styles for the dropdown menu
 .ds-c-dropdown__menu-container {
+  --blur-radius: 17px;
+  --clip-path-value: calc(-1 * var(--blur-radius));
+
   background-color: var(--autocomplete__background-color);
   border: var(--text-input__border-width) solid var(--text-input__border-color);
   border-block-start: none;
   border-end-end-radius: var(--text-input__border-radius);
   border-end-start-radius: var(--text-input__border-radius);
+  box-shadow: 0 0 var(--blur-radius) 0 var(--color-gray-light);
+  // `clip-path` needed to hide `box-shadow` overlap in field. 17px is the `box-shadow` blur radius.
+  clip-path: inset(0px var(--clip-path-value) var(--clip-path-value) var(--clip-path-value));
   margin-block-start: calc(-1 * var(--text-input__border-width));
   max-height: 320px;
   overflow-y: auto;
@@ -61,15 +67,6 @@
 
   .ds-c-field--inverse + & {
     color: var(--color-base);
-  }
-
-  // When dropdown is open (not `hidden`), add border radius to bottom of menu
-  &:not([hidden]) {
-    --blur-radius: 17px;
-    --clip-path-value: calc(-1 * var(--blur-radius));
-    box-shadow: 0 0 var(--blur-radius) 0 var(--color-gray-light);
-    // `clip-path` needed to hide `box-shadow` overlap in field. 17px is the `box-shadow` blur radius.
-    clip-path: inset(0px var(--clip-path-value) var(--clip-path-value) var(--clip-path-value));
   }
 }
 
