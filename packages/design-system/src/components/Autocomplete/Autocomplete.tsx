@@ -187,28 +187,36 @@ export const Autocomplete = (props: AutocompleteProps) => {
     ...autocompleteProps
   } = props;
 
-  const { isOpen, getMenuProps, getInputProps, getItemProps, highlightedIndex, selectItem } =
-    useCombobox({
-      items: items ?? [],
-      itemToString,
-      inputId: id,
-      labelId,
-      menuId,
-      onSelectedItemChange:
-        onChange &&
-        ((changes: UseComboboxStateChangeOptions<any>) => {
-          // Map to old API where the first parameter is input value
-          onChange(changes.selectedItem, changes);
-        }),
-      onInputValueChange:
-        onInputValueChange &&
-        ((changes: UseComboboxStateChangeOptions<any>) => {
-          // Map to old API where the first parameter is input value
-          onInputValueChange(changes.inputValue, changes);
-        }),
-      getA11yStatusMessage: createFilteredA11yStatusMessageFn(getA11yStatusMessage, items),
-      ...autocompleteProps,
-    });
+  const {
+    isOpen,
+    getMenuProps,
+    getInputProps,
+    getItemProps,
+    highlightedIndex,
+    selectItem,
+    closeMenu,
+    setInputValue,
+  } = useCombobox({
+    items: items ?? [],
+    itemToString,
+    inputId: id,
+    labelId,
+    menuId,
+    onSelectedItemChange:
+      onChange &&
+      ((changes: UseComboboxStateChangeOptions<any>) => {
+        // Map to old API where the first parameter is input value
+        onChange(changes.selectedItem, changes);
+      }),
+    onInputValueChange:
+      onInputValueChange &&
+      ((changes: UseComboboxStateChangeOptions<any>) => {
+        // Map to old API where the first parameter is input value
+        onInputValueChange(changes.inputValue, changes);
+      }),
+    getA11yStatusMessage: createFilteredA11yStatusMessageFn(getA11yStatusMessage, items),
+    ...autocompleteProps,
+  });
 
   function renderItems() {
     // If we have results, create a mapped list
@@ -328,8 +336,8 @@ export const Autocomplete = (props: AutocompleteProps) => {
           aria-label={ariaClearLabel ?? t('autocomplete.ariaClearLabel')}
           className="ds-u-padding-right--0 ds-c-autocomplete__clear-btn"
           onClick={() => {
-            // How they clear selection in the docs
-            selectItem(null);
+            setInputValue('');
+            closeMenu();
           }}
           size="small"
           variation="ghost"
