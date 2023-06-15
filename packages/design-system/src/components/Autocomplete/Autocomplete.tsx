@@ -161,7 +161,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
   const labelId = useRef(props.labelId ?? uniqueId('autocomplete__label--')).current;
   const menuId = useRef(uniqueId('autocomplete__menu--')).current;
   const menuContainerId = useRef(uniqueId('autocomplete__menu-container--')).current;
-  const menuHeadingId = useRef(uniqueId('autocomplete__header--')).current;
+  const menuHeadingId = useRef(uniqueId('autocomplete__heading--')).current;
 
   const {
     ariaClearLabel,
@@ -216,8 +216,8 @@ export const Autocomplete = (props: AutocompleteProps) => {
       return items.map((item, index) => (
         <li
           aria-selected={highlightedIndex === index}
-          className={classNames(item.className, 'ds-c-autocomplete__list-item', {
-            'ds-c-autocomplete__list-item--active': highlightedIndex === index,
+          className={classNames(item.className, 'ds-c-autocomplete__menu-item', {
+            'ds-c-autocomplete__menu-item--highlighted': highlightedIndex === index,
           })}
           key={item.id}
           role="option"
@@ -231,7 +231,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
     // If we're waiting for results to load, show the non-selected message
     if (loading) {
       return (
-        <li aria-selected="false" className="ds-c-autocomplete__list-item--message" role="option">
+        <li aria-selected="false" className="ds-c-autocomplete__menu-item-message" role="option">
           {loadingMessage ?? t('autocomplete.loadingMessage')}
         </li>
       );
@@ -240,7 +240,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
     // If we have no results (empty array), show the non-selected message
     if (items) {
       return (
-        <li aria-selected="false" className="ds-c-autocomplete__list-item--message" role="option">
+        <li aria-selected="false" className="ds-c-autocomplete__menu-item-message" role="option">
           {noResultsMessage ?? t('autocomplete.noResultsMessage')}
         </li>
       );
@@ -266,7 +266,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
       const errorMessageClassName = classNames(
         child.props.errorMessageClassName,
         bottomError && 'ds-c-autocomplete__error-message',
-        bottomError && clearSearchButton && 'ds-c-autocomplete__error-message--clear-btn'
+        bottomError && clearSearchButton && 'ds-c-autocomplete__error-message-clear-btn'
       );
 
       const propOverrides = getInputProps({
@@ -293,7 +293,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
     });
   }
 
-  const rootClassName = classNames('ds-u-clearfix', 'ds-c-autocomplete', className);
+  const rootClassName = classNames('ds-c-autocomplete', className);
 
   let menuHeading;
   const menuProps = getMenuProps();
@@ -313,12 +313,12 @@ export const Autocomplete = (props: AutocompleteProps) => {
       {renderChildren()}
 
       <div
-        className="ds-c-autocomplete__list"
+        className="ds-c-autocomplete__menu-container"
         id={menuContainerId}
         hidden={!(isOpen && menuContent)}
       >
         {menuHeading}
-        <ul className="ds-c-list--bare" {...menuProps}>
+        <ul className="ds-c-autocomplete__menu" {...menuProps}>
           {menuContent}
         </ul>
       </div>

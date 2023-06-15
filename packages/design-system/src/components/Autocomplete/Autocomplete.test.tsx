@@ -101,7 +101,7 @@ describe('Autocomplete', () => {
 
   it('shows the menu when open', () => {
     const { container } = makeAutocomplete({ isOpen: true });
-    const child = container.querySelector('.ds-c-autocomplete__list');
+    const child = container.querySelector('.ds-c-autocomplete__menu-container');
     expect(child).not.toHaveAttribute('hidden');
   });
 
@@ -254,7 +254,7 @@ describe('Autocomplete', () => {
       userEvent.click(autocompleteField);
       userEvent.type(autocompleteField, 'c');
 
-      const menuContainer = container.querySelector('.ds-c-autocomplete__list');
+      const menuContainer = container.querySelector('.ds-c-autocomplete__menu-container');
       expect(menuContainer).not.toHaveAttribute('hidden');
 
       expect(autocompleteField.value).toEqual('c');
