@@ -256,9 +256,9 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
         key={value ?? label}
         className={classNames(
           className,
-          isOptGroup ? 'ds-c-dropdown__item-group' : 'ds-c-dropdown__item',
-          highlightedIndex === index && 'ds-c-dropdown__item--highlighted',
-          selectedItem === item && 'ds-c-dropdown__item--selected'
+          isOptGroup ? 'ds-c-dropdown__menu-item-group' : 'ds-c-dropdown__menu-item',
+          highlightedIndex === index && 'ds-c-dropdown__menu-item--highlighted',
+          selectedItem === item && 'ds-c-dropdown__menu-item--selected'
         )}
         {...extraAttrs}
         {...getItemProps({
@@ -269,7 +269,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
         })}
       >
         {selectedItem === item && (
-          <span className="ds-c-dropdown__item-selected-indicator">
+          <span className="ds-c-dropdown__menu-item-selected-indicator">
             <SvgIcon
               title="selected option icon"
               viewBox="0 0 448 512"

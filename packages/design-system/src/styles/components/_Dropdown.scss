@@ -79,37 +79,40 @@
 }
 
 // Base styles for grouped and individual dropdown elements
-.ds-c-dropdown__item,
-.ds-c-dropdown__item-group {
+.ds-c-dropdown__menu-item,
+.ds-c-dropdown__menu-item-group {
   cursor: default;
   padding: var(--text-input__padding);
-
-  &:last-child {
-    border-block-end: none;
-  }
 }
 
-.ds-c-dropdown__item-group {
+.ds-c-dropdown__menu-item-group {
   font-weight: var(--font-weight-bold);
 }
 
-.ds-c-dropdown__menu--grouped .ds-c-dropdown__item {
+.ds-c-dropdown__menu--grouped .ds-c-dropdown__menu-item {
   padding-inline-start: var(--dropdown-option-group__padding);
 }
 
 // Styles for dropdown elements that are highlighted
-.ds-c-dropdown__item--highlighted {
+.ds-c-dropdown__menu-item--highlighted {
   background-color: var(--color-primary-lightest);
 }
 
 // Styles for dropdown elements that are selected
-.ds-c-dropdown__item--selected {
+.ds-c-dropdown__menu-item--selected {
   background-color: var(--color-primary);
   color: var(--color-white);
   display: flex; // Prevents text from wrapping under icon
   font-weight: var(--font-weight-bold);
+
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    background-color: WindowText;
+    color: Window;
+    forced-color-adjust: none;
+    -ms-high-contrast-adjust: none;
+  }
 }
 
-.ds-c-dropdown__item-selected-indicator {
+.ds-c-dropdown__menu-item-selected-indicator {
   padding-inline-end: var(--spacer-1);
 }
