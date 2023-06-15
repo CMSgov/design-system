@@ -161,7 +161,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
   const labelId = useRef(props.labelId ?? uniqueId('autocomplete__label--')).current;
   const menuId = useRef(uniqueId('autocomplete__menu--')).current;
   const menuContainerId = useRef(uniqueId('autocomplete__menu-container--')).current;
-  const menuHeadingId = useRef(uniqueId('autocomplete__header--')).current;
+  const menuHeadingId = useRef(uniqueId('autocomplete__heading--')).current;
 
   const {
     ariaClearLabel,
