@@ -26,7 +26,6 @@ export default {
     clearSearchButton: true,
     loadingMessage: 'Loading...',
     noResultsMessage: 'No results',
-    itemToString: (item) => item.name,
   },
   subcomponents: { TextField },
 };
