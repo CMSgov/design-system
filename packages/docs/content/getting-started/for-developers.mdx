@@ -61,70 +61,33 @@ yarn add @cmsgov/ds-medicare-gov
 
 </ThemeContent>
 
-#### Package file structure
-
-Inside the npm package, you will find a `dist` folder, which contains all the files your project needs to integrate the design system. Your project should not be importing anything from the `src` directory. Here's a diagram of the folder contents:
-
-```
-└── dist
-    ├── components/
-    │   └── index.js        Compiled JS entry point (CommmonJS)
-    ├── css/
-    │   │── index.css       Compiled CSS entry point
-    │   └── ***-theme.css   Compiled Theme Variables
-    ├── esnext/
-    │   └── index.esm.js    Compiled JS entry point (ES Module)
-    ├── fonts/
-    ├── images/
-    ├── scss/               Contains Sass versions of theme variables
-    └── types/              Typescript definition files
-```
+Once you've installed the package, read the sections on [how to include the CSS](#including-the-css) and [importing the components into a JavaScript project](#importing-into-a-javascript-project).
 
 ### Option 2: Reference assets from the CDN
 
-You can also choose to load the assets directly from our content delivery network to your clients' browsers. A content delivery network (CDN) is a collection of servers that dynamically allocate resources dependent on the requester's geographic location in order to optimize the distribution of assets.
-
-Some benefits and applications for utilizing the design system via CDN are:
-
-- Quickly utilize design system code and style assets for development/prototyping
-- The CDN caches assets for fast loading and scales automatically in case of a large number of requests
-- Ability to utilize a specific version of the design system easily
-
-#### Packages
-
-Packages which are currently available for reference:
-
-- **design-system** - The core CMSDS (versions 3.4.0 and above)
-- **ds-healthcare-gov** - Healthcare.gov themed DS (versions 7.4.0 and above)
-- **ds-medicare-gov** - Medicare.gov themed DS (versions 5.4.0 and above)
-
-#### URL structure
+You can also choose to load the assets directly from our content delivery network (CDN) to your clients' browsers. All packages and their available versions are listed and linked to on our [CDN index page](https://design.cms.gov/cdn/). Each version index page lists all its available resources. CDN resources use the following URL convention:
 
 ```
 https://design.cms.gov/cdn/<package-name>/<version>/<resource>
 ```
 
-Where `package-name` is one of the packages named above, `version` is the version number and `resource` is the file being requested from the resources listed above.
+<Alert heading="What is a CDN and why would I use it?">
 
-#### Resources
+A content delivery network (CDN) is a collection of servers that dynamically allocate resources based on the requester's geographic location in order to optimize the distribution of assets. Some benefits and applications for utilizing the design system via CDN are:
 
-```
-  ├── css/
-  │   ├── index.css
-  │   └── ***-theme.css
-  └── js/
-      ├── react.production.min.js
-      ├── react-dom.production.min.js
-      └── bundle.js
-```
+- Quickly utilize design system code and style assets for development/prototyping
+- The CDN caches assets for fast loading and scales automatically in case of a large number of requests
+- Ability to utilize a specific version of the design system easily
 
-#### Example for including version 6.0.0 via CDN
+</Alert>
+
+#### Example loading CSS via CDN
 
 <ThemeContent onlyThemes={['core']}>
 
 ```html
-<link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/6.0.0/css/index.css" />
-<link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/6.0.0/css/core-theme.css" />
+<link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/7.0.0/css/index.css" />
+<link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/7.0.0/css/core-theme.css" />
 ```
 
 </ThemeContent>
@@ -132,8 +95,8 @@ Where `package-name` is one of the packages named above, `version` is the versio
 <ThemeContent onlyThemes={['healthcare']}>
 
 ```html
-<link rel="stylesheet" href="https://design.cms.gov/cdn/ds-healthcare-gov/10.0.0/css/index.css" />
-<link rel="stylesheet" href="https://design.cms.gov/cdn/ds-healthcare-gov/10.0.0/css/healthcare-theme.css" />
+<link rel="stylesheet" href="https://design.cms.gov/cdn/ds-healthcare-gov/11.0.0/css/index.css" />
+<link rel="stylesheet" href="https://design.cms.gov/cdn/ds-healthcare-gov/11.0.0/css/healthcare-theme.css" />
 ```
 
 </ThemeContent>
@@ -141,21 +104,37 @@ Where `package-name` is one of the packages named above, `version` is the versio
 <ThemeContent onlyThemes={['medicare']}>
 
 ```html
-<link rel="stylesheet" href="https://design.cms.gov/cdn/ds-medicare-gov/8.0.0/css/index.css" />
-<link rel="stylesheet" href="https://design.cms.gov/cdn/ds-medicare-gov/8.0.0/css/medicare-theme.css" />
+<link rel="stylesheet" href="https://design.cms.gov/cdn/ds-medicare-gov/9.0.0/css/index.css" />
+<link rel="stylesheet" href="https://design.cms.gov/cdn/ds-medicare-gov/9.0.0/css/medicare-theme.css" />
 ```
 
 </ThemeContent>
 
-#### Example for including version 6.0.0 Core JS via CDN
+#### Example loading web components via CDN
 
-If you do not already have React and React-DOM included in your page, include them before the design system js bundle.
+<ThemeContent onlyThemes={['core']}>
 
 ```html
-<script type="text/javascript" src="https://design.cms.gov/cdn/design-system/6.0.0/js/react.production.min.js"></script>
-<script type="text/javascript" src="https://design.cms.gov/cdn/design-system/6.0.0/js/react-dom.production.min.js"></script>
-<script type="text/javascript" src="https://design.cms.gov/cdn/design-system/6.0.0/js/bundle.js"></script>
+<script src="https://design.cms.gov/cdn/design-system/7.0.0/web-components/bundle/web-components.js"></script>
 ```
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+```html
+<script src="https://design.cms.gov/cdn/ds-healthcare-gov/11.0.0/web-components/bundle/web-components.js"></script>
+```
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+```html
+<script src="https://design.cms.gov/cdn/ds-medicare-gov/9.0.0/web-components/bundle/web-components.js"></script>
+```
+
+</ThemeContent>
 
 ### Option 3: Download assets directly
 
@@ -173,8 +152,8 @@ You will need to include both the main `index.css` along with a theme file which
 
 ```html
 <head>
-  <link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/6.0.0/css/index.css" />
-  <link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/6.0.0/css/core-theme.css" />
+  <link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/7.0.0/css/index.css" />
+  <link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/7.0.0/css/core-theme.css" />
 </head>
 ```
 
@@ -184,8 +163,8 @@ You will need to include both the main `index.css` along with a theme file which
 
 ```html
 <head>
-  <link rel="stylesheet" href="https://design.cms.gov/cdn/ds-healthcare-gov/10.0.0/css/index.css" />
-  <link rel="stylesheet" href="https://design.cms.gov/cdn/ds-healthcare-gov/10.0.0/css/healthcare-theme.css" />
+  <link rel="stylesheet" href="https://design.cms.gov/cdn/ds-healthcare-gov/11.0.0/css/index.css" />
+  <link rel="stylesheet" href="https://design.cms.gov/cdn/ds-healthcare-gov/11.0.0/css/healthcare-theme.css" />
 </head>
 ```
 
@@ -195,8 +174,8 @@ You will need to include both the main `index.css` along with a theme file which
 
 ```html
 <head>
-  <link rel="stylesheet" href="https://design.cms.gov/cdn/ds-medicare-gov/8.0.0/css/index.css" />
-  <link rel="stylesheet" href="https://design.cms.gov/cdn/ds-medicare-gov/8.0.0/css/medicare-theme.css" />
+  <link rel="stylesheet" href="https://design.cms.gov/cdn/ds-medicare-gov/9.0.0/css/index.css" />
+  <link rel="stylesheet" href="https://design.cms.gov/cdn/ds-medicare-gov/9.0.0/css/medicare-theme.css" />
 </head>
 ```
 
@@ -210,15 +189,15 @@ For projects that use an asset bundler, include the assets in whatever way your 
 <ThemeContent onlyThemes={['core']}>
 
 ```css
-@import '@cmsgov/design-system/dist/css/index';
-@import '@cmsgov/design-system/dist/css/core-theme';
+@import '@cmsgov/design-system/css/index';
+@import '@cmsgov/design-system/css/core-theme';
 ```
 
 Or you might import it from your JavaScript like this:
 
 ```js
-import '@cmsgov/design-system/dist/css/index.css';
-import '@cmsgov/design-system/dist/css/core-theme.css';
+import '@cmsgov/design-system/css/index.css';
+import '@cmsgov/design-system/css/core-theme.css';
 ```
 
 </ThemeContent>
@@ -226,15 +205,15 @@ import '@cmsgov/design-system/dist/css/core-theme.css';
 <ThemeContent onlyThemes={['healthcare']}>
 
 ```css
-@import '@cmsgov/ds-healthcare-gov/dist/css/index';
-@import '@cmsgov/ds-healthcare-gov/dist/css/healthcare-theme';
+@import '@cmsgov/ds-healthcare-gov/css/index';
+@import '@cmsgov/ds-healthcare-gov/css/healthcare-theme';
 ```
 
 Or you might import it from your JavaScript like this:
 
 ```js
-import '@cmsgov/ds-healthcare-gov/dist/css/index.css';
-import '@cmsgov/ds-healthcare-gov/dist/css/healthcare-theme.css';
+import '@cmsgov/ds-healthcare-gov/css/index.css';
+import '@cmsgov/ds-healthcare-gov/css/healthcare-theme.css';
 ```
 
 </ThemeContent>
@@ -242,15 +221,15 @@ import '@cmsgov/ds-healthcare-gov/dist/css/healthcare-theme.css';
 <ThemeContent onlyThemes={['medicare']}>
 
 ```css
-@import '@cmsgov/ds-medicare-gov/dist/css/index';
-@import '@cmsgov/ds-medicare-gov/dist/css/medicare-theme';
+@import '@cmsgov/ds-medicare-gov/css/index';
+@import '@cmsgov/ds-medicare-gov/css/medicare-theme';
 ```
 
 Or you might import it from your JavaScript like this:
 
 ```js
-import '@cmsgov/ds-medicare-gov/dist/css/index.css';
-import '@cmsgov/ds-medicare-gov/dist/css/medicare-theme.css';
+import '@cmsgov/ds-medicare-gov/css/index.css';
+import '@cmsgov/ds-medicare-gov/css/medicare-theme.css';
 ```
 
 </ThemeContent>

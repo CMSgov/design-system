@@ -2,7 +2,7 @@
 
 exports[`Autocomplete renders Autocomplete component 1`] = `
 <div
-  class="ds-u-clearfix ds-c-autocomplete"
+  class="ds-c-autocomplete"
 >
   <div
     class="ds-u-clearfix"
@@ -35,19 +35,19 @@ exports[`Autocomplete renders Autocomplete component 1`] = `
     />
   </div>
   <div
-    class="ds-c-autocomplete__list"
+    class="ds-c-autocomplete__menu-container"
     hidden=""
     id="autocomplete__menu-container--4"
   >
     <ul
       aria-labelledby="autocomplete__label--2"
-      class="ds-c-list--bare"
+      class="ds-c-autocomplete__menu"
       id="autocomplete__menu--3"
       role="listbox"
     >
       <li
         aria-selected="false"
-        class="ds-c-autocomplete__list-item"
+        class="ds-c-autocomplete__menu-item"
         id="downshift-0-item-0"
         role="option"
       >
@@ -69,7 +69,7 @@ exports[`Autocomplete renders item with custom className 1`] = `
 Array [
   <li
     aria-selected="false"
-    class="ds-c-autocomplete__list-item"
+    class="ds-c-autocomplete__menu-item"
     id="downshift-3-item-0"
     role="option"
   >
@@ -77,7 +77,7 @@ Array [
   </li>,
   <li
     aria-selected="false"
-    class="custom-class ds-c-autocomplete__list-item"
+    class="custom-class ds-c-autocomplete__menu-item"
     id="downshift-3-item-1"
     role="option"
   >
@@ -89,13 +89,13 @@ Array [
 exports[`Autocomplete renders items with children property 1`] = `
 <ul
   aria-labelledby="autocomplete__label--14"
-  class="ds-c-list--bare"
+  class="ds-c-autocomplete__menu"
   id="autocomplete__menu--15"
   role="listbox"
 >
   <li
     aria-selected="false"
-    class="ds-c-autocomplete__list-item"
+    class="ds-c-autocomplete__menu-item"
     id="downshift-2-item-0"
     role="option"
   >
@@ -106,7 +106,7 @@ exports[`Autocomplete renders items with children property 1`] = `
   </li>
   <li
     aria-selected="false"
-    class="ds-c-autocomplete__list-item"
+    class="ds-c-autocomplete__menu-item"
     id="downshift-2-item-1"
     role="option"
   >
@@ -117,7 +117,7 @@ exports[`Autocomplete renders items with children property 1`] = `
   </li>
   <li
     aria-selected="false"
-    class="ds-c-autocomplete__list-item"
+    class="ds-c-autocomplete__menu-item"
     id="downshift-2-item-2"
     role="option"
   >
@@ -128,7 +128,7 @@ exports[`Autocomplete renders items with children property 1`] = `
   </li>
   <li
     aria-selected="false"
-    class="ds-c-autocomplete__list-item"
+    class="ds-c-autocomplete__menu-item"
     id="downshift-2-item-3"
     role="option"
   >

@@ -26,6 +26,7 @@ const ThemeSwitcher = () => {
       label="Selected theme"
       name="theme-switcher"
       className="c-theme-switcher"
+      labelClassName="ds-u-margin-top--0"
       options={themeOptions}
       value={currentTheme}
       onChange={onThemeChange}
