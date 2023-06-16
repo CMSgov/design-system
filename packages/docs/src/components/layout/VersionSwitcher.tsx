@@ -2,6 +2,7 @@ import React, { ChangeEvent } from 'react';
 import corePackage from '../../../../design-system/package.json';
 import healthcarePackage from '../../../../ds-healthcare-gov/package.json';
 import medicarePackage from '../../../../ds-medicare-gov/package.json';
+import cmsgovPackage from '../../../../ds-cms-gov/package.json';
 import themes from '../../../../../themes.json';
 import versions from '../../../../../versions.json';
 import useTheme from '../../helpers/useTheme';
@@ -22,6 +23,8 @@ function getPackageData(theme: string) {
       return healthcarePackage;
     case 'medicare':
       return medicarePackage;
+    case 'cmsgov':
+      return cmsgovPackage;
   }
   return { version: '' };
 }
