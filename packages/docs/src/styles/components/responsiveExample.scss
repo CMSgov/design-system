@@ -15,6 +15,15 @@
   transform-origin: 0px 0px;
 }
 
+.c-responsive-example__scale {
+  background-color: var(--color-info-lightest);
+  bottom: 0;
+  font-size: var(--font-size-sm);
+  padding: $spacer-half $spacer-1;
+  position: absolute;
+  right: 0;
+}
+
 .c-responsive-example__button-list {
   flex-direction: row;
   gap: 0;

@@ -133,6 +133,9 @@ const ResponsiveExample = ({ storyId, title, theme }: ResponsiveExample) => {
             width={iframeWidth}
             style={{ transform: `scale(${iframeScale})` }}
           />
+          {iframeScale < 1 && (
+            <div className="c-responsive-example__scale">Scale: {iframeScale.toFixed(2)}</div>
+          )}
         </div>
       </div>
       <StorybookExampleFooter storyId={storyId} theme={theme} />
