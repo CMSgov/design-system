@@ -2,99 +2,87 @@ import React from 'react';
 import Button from './Button';
 import { NextIcon } from '../Icons';
 import Spinner from '../Spinner/Spinner';
+import type { Meta, StoryObj } from '@storybook/react';
 
-export default {
+const meta: Meta<typeof Button> = {
   title: 'Components/Button',
   component: Button,
-  argTypes: {
-    children: {
-      control: { type: 'text' },
-      type: { name: 'string', required: true },
-    },
-    disabled: {
-      control: { type: 'boolean' },
-    },
-    component: {
-      table: {
-        disable: true,
-      },
-    },
-    size: {
-      options: ['small', 'big'],
-    },
-    variation: {
-      options: ['solid', 'ghost'],
-    },
-  },
   args: {
     children: 'Your button text here',
     onDark: false,
   },
 };
+export default meta;
 
-const Template = ({ ...args }) => <Button {...args} />;
+type Story = StoryObj<typeof Button>;
 
-export const Default = Template.bind({});
-export const OnDark = Template.bind({});
-OnDark.args = {
-  onDark: true,
+export const Default: Story = {};
+
+export const OnDark: Story = {
+  args: {
+    onDark: true,
+  },
+  parameters: {
+    layout: 'fullscreen',
+    onDark: true,
+  },
 };
-OnDark.parameters = {
-  // Must supply `layout: 'fullscreen'` when we use `onDark: true`
-  onDark: true,
-  layout: 'fullscreen',
+
+export const IconButton: Story = {
+  args: {
+    children: (
+      <>
+        Button with icon <NextIcon />{' '}
+      </>
+    ),
+  },
 };
 
-export const IconButton = Template.bind({});
-IconButton.args = {
-  children: (
+export const SpinnerButton: Story = {
+  args: {
+    children: (
+      <>
+        <Spinner /> Loading...
+      </>
+    ),
+    variation: 'solid',
+  },
+};
+
+export const AnchorButton: Story = {
+  args: {
+    href: '!#',
+  },
+};
+
+export const VariationsOnDark: Story = {
+  decorators: [
+    (Story) => (
+      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+        <Story />
+      </div>
+    ),
+  ],
+  parameters: {
+    // Must supply `layout: 'fullscreen'` when we use `onDark: true`
+    onDark: true,
+    layout: 'fullscreen',
+  },
+  render: () => (
     <>
-      Button with icon <NextIcon />{' '}
+      <Button onDark>Outline</Button>
+      <Button onDark variation="solid">
+        Solid
+      </Button>
+      <Button onDark variation="ghost">
+        Ghost
+      </Button>
     </>
   ),
 };
 
-export const SpinnerButton = Template.bind({});
-SpinnerButton.args = {
-  children: (
-    <>
-      <Spinner /> Loading...
-    </>
-  ),
-  variation: 'solid',
-};
-
-export const AnchorButton = Template.bind({});
-AnchorButton.args = {
-  href: '!#',
-};
-
-export const VariationsOnDark = () => (
-  <>
-    <Button onDark>Outline</Button>
-    <Button onDark variation="solid">
-      Solid
-    </Button>
-    <Button onDark variation="ghost">
-      Ghost
-    </Button>
-  </>
-);
-VariationsOnDark.parameters = {
-  // Must supply `layout: 'fullscreen'` when we use `onDark: true`
-  onDark: true,
-  layout: 'fullscreen',
-};
-VariationsOnDark.decorators = [
-  (Story) => (
-    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-      <Story />
-    </div>
-  ),
-];
-
-export const AllAnchorButtons = () => {
-  return (
+export const AllAnchorButtons: Story = {
+  render: () => (
     <div style={{ display: 'flex', gap: '1rem', flexDirection: 'column' }}>
       <h4>Default and modified default</h4>
       <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
@@ -379,11 +367,11 @@ export const AllAnchorButtons = () => {
         </div>
       </div>
     </div>
-  );
+  ),
 };
 
-export const AllButtons = () => {
-  return (
+export const AllButtons: Story = {
+  render: () => (
     <div style={{ display: 'flex', gap: '1rem', flexDirection: 'column' }}>
       <h4>Default and modified default</h4>
       <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
@@ -654,5 +642,5 @@ export const AllButtons = () => {
         </div>
       </div>
     </div>
-  );
+  ),
 };
