@@ -9,9 +9,18 @@ The CMS Design System strives to work for as many people as possible, including 
 
 - Embed [accessibility and inclusive design practices](https://accessibility.digital.gov/) into our workflow.
 - Provide accessibility as a [checkpoint in new components](https://github.com/CMSgov/design-system/blob/main/.github/ISSUE_TEMPLATE/component-validation-checklist.md) created in the design system.
-- Add accessibility as a key aspect to much of the [component documentation](https://github.com/CMSgov/design-system/blob/main/guides/WRITING-DOCUMENTATION.md).
+- Add accessibility as a key aspect to much of the component documentation.
 - Conduct regular accessibility reviews of new and existing features and documentation for the design system.
-- Utilize [axe-webdriverjs](https://github.com/dequelabs/axe-webdriverjs) for automated accessibility testing in our end to end testing.
+- Use [Axe libraries](https://www.npmjs.com/package/@axe-core/playwright) for automated accessibility testing in our end to end testing.
+
+### We test with these assistive technology pairings
+
+| Operating system      | Browser                 | Screen reader         |
+| --------------------- | ----------------------- | --------------------- |
+| OS X 13.2.1 (Ventura) | Safari (latest version) | VoiceOver             |
+| Windows 10            | Chrome (latest version) | NVDA (latest version) |
+| Windows 10            | Edge (latest version)   | JAWS 2021             |
+| iOS (latest version)  | Safari (latest version) | N/A                   |
 
 ## What level we meet currently
 
@@ -25,11 +34,8 @@ More information on Section 508 can be found at:
 
 ## Current browser/technology support
 
-The current browser support for the design system [can be viewed here](/guidelines/browser-support/). We test with the following assistive technology pairings:
+The current browser support for the design system [can be viewed here](/guidelines/browser-support/). 
 
-- Windows 10 with Internet Explorer 11 and JAWS 2019.
-- Windows 10 with Firefox (latest) and NVDA (latest).
-- MacOS Mojave with Safari (latest) and VoiceOver (latest).
 
 ## How to provide feedback
 
