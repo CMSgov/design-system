@@ -33,11 +33,11 @@ While margin collapse is an understandable concept, it is prone to producing une
 <div className="ds-u-measure--wide ds-u-text-align--center ds-u-margin-top--2">
   <figure>
     <figcaption>Before</figcaption>
-    <img src={marginsBefore} width={500} alt="Screenshot showing margins between components on a page in the previous version of the design system. Between a heading and a paragraph of text, the margins stack, causing there to be a total of 34 pixels betwen them. Between a paragraph of text and a field label, the margins collapse, causing it to take the higher value of the two, which is 24 pixels." className="ds-u-display--inline-block" />
+    <img src={marginsBefore} width={500} alt="Screenshot showing margins between components on a page in the previous version of the design system. Between a choice list and a paragraph of text, the margins stack, causing there to be a total of 24 pixels betwen them. Between a paragraph of text and a field label, the margins collapse, causing it to take the higher value of the two, which is 24 pixels." className="ds-u-display--inline-block" />
   </figure>
 </div>
 
-In the above screenshot, notice the inconsistency in how spacing between elements is determined. Between a heading and a paragraph of text, the margins stack, causing there to be a total of 34 pixels betwen them. Between a paragraph of text and a field label, the margins collapse, causing it to take the higher value of the two, which is 24 pixels. Compare this with the following "after" screenshot:
+In the above screenshot, notice the inconsistency in how spacing between elements is determined. Between a choice list and a paragraph of text, the margins stack, causing there to be a total of 24 pixels betwen them. Between a paragraph of text and a field label, the margins collapse, causing it to take the higher value of the two, which is 24 pixels. There are also 4 pixels of padding below the last field. Compare this with the following "after" screenshot where all spacing comes from top margins:
 
 <div className="ds-u-measure--wide ds-u-text-align--center ds-u-margin-top--2">
   <figure>
