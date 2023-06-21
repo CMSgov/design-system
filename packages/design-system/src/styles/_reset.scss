@@ -59,20 +59,11 @@ h6 {
   // Heading tags inherit all font style rules to match body text;
   // This ensures semantics are distinct from appearance.
   font: inherit;
-  // margin applied to top of heading, informed by current margin size
   margin-block: 1.5em 0;
-
-  &:first-child {
-    margin-block-start: 0;
-  }
 }
 
 p {
   margin-block: 1em 0;
-
-  &:first-child {
-    margin-block-start: 0;
-  }
 }
 
 // These tags will naturally use 700 weight as bold
