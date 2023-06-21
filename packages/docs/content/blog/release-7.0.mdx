@@ -1,0 +1,54 @@
+---
+title: Release 7.0
+date: 2023-06-27
+intro: Normalizing CSS, standardizing spacing & colors, a new Dropdown, and more
+---
+
+import newDropdown from '../../src/images/new-dropdown.png';
+import versionSwitcher from '../../src/images/version-switcher.png';
+
+## What's new in 7.0
+
+### Normalized browser styles
+
+Each browser has default styles that it applies to various HTML elements. Not all browsers have the same default styles (called user-agent styles), which means that websites without custom CSS will look different when viewed from different browsers. Even when creating custom CSS, web developers must take those different default styles into account and make sure they are overridden appropriately. This can be tedious and error-prone, so a common practice among developers is to remove or normalize those user-agent styles with a collection of base CSS rules before applying any component CSS that controls the look-and-feel of the site.
+
+Until this point, the design system has avoided any global, sweeping CSS rules that might interfere with application CSS. However, because CSS normalization makes it easier to write CSS, teams have often applied their own normalization, which is not consistent across teams. Over the years, this has lead the design system team to apply more and more "defensive" CSS to account for variability in normalization rules. Teams would also rather be able to import the design system styles and get started creating an app rather than having to decide what sort of normalization they need first. Therefore the design system team has decided to include our own global CSS rules for normalization as part of the design system. For more information, [see our original RFC](https://github.com/CMSgov/design-system/discussions/2333) and the [new documentation page on CSS normalization](https://design.cms.gov/foundation/css-normalization).
+
+### Standardized component spacing
+
+Before v7, some components had both top and bottom margins. This made the default spacing between them hard to predict, because those margins would either stack or [collapse](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_box_model/Mastering_margin_collapsing) depending on the combination of components and how the HTML around them was structured. Now our components only have top margin, so there is no fighting between one component’s bottom margin and another component’s top margin. For more details about what components changed and how to address these changes in your application, please [refer to our migration guide on spacing changes in v7](https://design.cms.gov/migration-guides/v7-spacing-updates/).
+
+### Standardized colors
+
+With the expansion of the design system themes to include a fourth theme (CMS.gov), we noticed theme variables were inconsistent. In some cases colors and whole color palettes weren't being used and needed to be removed. We've cleaned up and reorganized these colors using design tokens and theming to provide a more intentional approach to color. For more details, please [see our full migration guide for color standardization in v7](https://design.cms.gov/migration-guides/v7-standardize-theme-colors/).
+
+### New dropdown component
+
+<div className="ds-u-measure--wide ds-u-text-align--center ds-u-margin-top--3">
+  <img src={newDropdown} width={494} className="ds-u-display--inline-block" alt="Screenshot of new dropdown component, where the dropdown menu is styled and branded instead of the browser default for HTML select elements" />
+</div>
+
+Several major versions ago we started abstracting the idea of a dropdown menu behind the Dropdown component, which has always been implemented with a native HTML select element. [This has been the U.S. Web Design System’s strategy as well](https://designsystem.digital.gov/components/select/). While the HTML select element tends to perform better with assistive tech than custom drop-down-menu solutions, it actually provides a poor user experience when applied to some of our applications’ use cases. Most notably, options with long text cause trouble in some browser and operating-system combinations where they are either truncated or clipped at the edge of screens.
+
+In this update, we’ve resolved this issue by implementing the component as an ARIA combobox. A side benefit is that CMS brands can now customize the look and feel of the menu. The component has been redesigned from the ground up, and our Autocomplete component has also been updated to match the new designs. [Check out the Dropdown page to see it in action](https://design.cms.gov/components/dropdown/).
+
+### New JavaScript libraries
+
+Up until this point, the only dynamic JavaScript components we have offered have used the [React library](https://react.dev/), which makes them harder to use outside of React contexts, like Drupal websites and Angular applications. Those product teams resorted to a build-your-own approach using our CSS and their HTML. While this works, it isn’t ideal for many reasons. In this release, we’ve worked towards making our components more framework-agnostic by providing two more JavaScript libraries under the same NPM and CDN package:
+
+- Full set of Preact components, a lighter-weight alternative to React that [can improve bundle sizes in some projects](https://github.com/CMSgov/design-system/discussions/2378)
+- Experimental subset of [web components](https://developer.mozilla.org/en-US/docs/Web/Web_Components), which are framework-agnostic components that use standard web APIs built into modern browsers
+
+Please [check out our new example projects on GitHub](https://github.com/CMSgov/design-system/tree/main/examples/) and [read our updated developer documentation](https://design.cms.gov/getting-started/for-developers/#using-components) for more details.
+
+### New version switcher for our docs
+
+<div className="ds-u-measure--wide ds-u-text-align--center ds-u-margin-top--3">
+  <img src={versionSwitcher} width={475} className="ds-u-display--inline-block" alt="" />
+</div>
+
+We’ve added a version switcher to our doc site so you can browse old documentation as far back as version 3.4.0 of our design-system core npm package. Version numbers listed in the dropdown will always correspond to the theme that is selected, since each theme corresponds to a child design system with its own versioning. We have plans to improve this version switcher in the next version to make the experience better and more accessible.
+
+## What's on deck
+
