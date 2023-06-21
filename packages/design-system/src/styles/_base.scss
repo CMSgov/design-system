@@ -310,7 +310,8 @@ $breakpoints: (
 .ds-text,
 .ds-text--lead,
 .ds-text-body--lg,
-.ds-text-body--md {
+.ds-text-body--md,
+.ds-text-body--sm {
   font-family: var(--typography-body__font-family);
   line-height: var(--font-line-height-base);
   margin-block: 1em;
