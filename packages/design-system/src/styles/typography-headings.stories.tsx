@@ -105,10 +105,3 @@ export const ResponsiveHeadings = () => (
     <h3 className="ds-text-heading--3xl">{heading} (3xl)</h3>
   </>
 );
-
-// an example for responsive headings -- referenced in doc site
-export const ResponsiveUtilityHeadings = () => (
-  <h1 className="ds-u-font-size--2xl ds-u-md-font-size--3xl ds-u-lg-font-size--4xl ds-u-margin-top--0">
-    Example responsive heading using utility classes
-  </h1>
-);
