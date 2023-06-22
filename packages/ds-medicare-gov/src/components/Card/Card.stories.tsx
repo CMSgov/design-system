@@ -1,19 +1,10 @@
 import React from 'react';
 import Card from './Card';
+import type { Meta, StoryObj } from '@storybook/react';
 
-export default {
+const meta: Meta<typeof Card> = {
   title: 'Medicare/Card',
   component: Card,
-  argTypes: {
-    children: {
-      control: { type: 'text' },
-      type: { name: 'string', required: true },
-    },
-    className: {
-      control: { type: 'text' },
-      type: { name: 'string', required: false },
-    },
-  },
   args: {
     children:
       'It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair...',
@@ -21,7 +12,8 @@ export default {
   },
   parameters: { theme: 'medicare' },
 };
+export default meta;
 
-const Template = ({ data, ...args }) => <Card {...args} />;
+type Story = StoryObj<typeof Card>;
 
-export const Default = Template.bind({});
+export const Default: Story = {};
