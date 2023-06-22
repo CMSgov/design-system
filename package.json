@@ -87,6 +87,7 @@
     "@storybook/addon-essentials": "^7.1.0-alpha.1",
     "@storybook/addon-links": "^7.1.0-alpha.1",
     "@storybook/addon-mdx-gfm": "^7.1.0-alpha.1",
+    "@storybook/addon-viewport": "7.1.0-alpha.1",
     "@storybook/react": "^7.1.0-alpha.1",
     "@storybook/react-webpack5": "^7.1.0-alpha.1",
     "@storybook/theming": "^7.1.0-alpha.1",

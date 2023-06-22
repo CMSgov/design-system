@@ -1,5 +1,6 @@
 import './storybookStyles.scss';
 import React from 'react';
+import { Preview } from '@storybook/react';
 import {
   setAlertSendsAnalytics,
   setButtonSendsAnalytics,
@@ -16,93 +17,46 @@ import type { UtagContainer } from '@cmsgov/design-system';
 // Rewire analytics events to log to the console
 (window as UtagContainer).utag = { link: console.log };
 
-const customViewports = {
+const breakpointViewportSizes = {
   extraSmall: {
-    name: 'Extra Small - 320px',
+    name: '$media-width-xs',
     styles: {
       width: '320px',
       height: '800px',
     },
+    type: 'mobile',
   },
   small: {
-    name: 'Small - 544px',
+    name: '$media-width-sm',
     styles: {
       width: '544px',
       height: '800px',
     },
+    type: 'mobile',
   },
   medium: {
-    name: 'Medium - 768px',
+    name: '$media-width-md',
     styles: {
       width: '768px',
       height: '800px',
     },
+    type: 'tablet',
   },
   large: {
-    name: 'Large - 1024px',
+    name: '$media-width-lg',
     styles: {
       width: '1024px',
       height: '800px',
     },
+    type: 'desktop',
   },
   extraLarge: {
-    name: 'Extra Large - 1280px',
+    name: '$media-width-xl',
     styles: {
       width: '1280px',
       height: '800px',
     },
-  },
-};
-
-export const parameters = {
-  actions: { argTypesRegex: '^on[A-Z].*' },
-  viewport: { viewports: customViewports },
-  controls: {
-    expanded: true,
-    matchers: {
-      color: /(background|color)$/i,
-      date: /Date$/,
-    },
-  },
-  backgrounds: { disable: true },
-};
-
-export const globalTypes = {
-  language: {
-    name: 'Language',
-    description: 'Internationalization language',
-    defaultValue: 'en',
-    toolbar: {
-      icon: 'globe',
-      items: [
-        { value: 'en', title: 'English' },
-        { value: 'es', title: 'Español' },
-      ],
-    },
-  },
-  analytics: {
-    name: 'Analytics',
-    description: 'Analytics settings',
-    defaultValue: 'off',
-    toolbar: {
-      icon: 'graphline',
-      items: [
-        { value: 'on', left: 'Analytics', title: 'Log to Actions' },
-        { value: 'off', left: 'Analytics', title: 'Off' },
-      ],
-    },
-  },
-  theme: {
-    name: 'Theme',
-    description: 'Current theme',
-    defaultValue: 'core',
-    toolbar: {
-      icon: 'paintbrush',
-      items: Object.keys(themes).map((key) => ({
-        value: key,
-        title: `${themes[key].displayName} theme`,
-      })),
-    },
+    type: 'desktop',
   },
 };
 
@@ -165,9 +119,65 @@ const analyticsSettingsDecorator = (Story, context) => {
   return <Story {...context} />;
 };
 
-export const decorators = [
-  onDarkDecorator,
-  languageSettingDecorator,
-  analyticsSettingsDecorator,
-  themeSettingDecorator,
-];
+const preview: Preview = {
+  globalTypes: {
+    language: {
+      name: 'Language',
+      description: 'Internationalization language',
+      defaultValue: 'en',
+      toolbar: {
+        icon: 'globe',
+        items: [
+          { value: 'en', title: 'English' },
+          { value: 'es', title: 'Español' },
+        ],
+      },
+    },
+    analytics: {
+      name: 'Analytics',
+      description: 'Analytics settings',
+      defaultValue: 'off',
+      toolbar: {
+        icon: 'graphline',
+        items: [
+          { value: 'on', title: 'Log to Actions' },
+          { value: 'off', title: 'Off' },
+        ],
+      },
+    },
+    theme: {
+      name: 'Theme',
+      description: 'Current theme',
+      defaultValue: 'core',
+      toolbar: {
+        icon: 'paintbrush',
+        items: Object.keys(themes).map((key) => ({
+          value: key,
+          title: `${themes[key].displayName} theme`,
+        })),
+      },
+    },
+  },
+  parameters: {
+    actions: { argTypesRegex: '^on[A-Z].*' },
+    backgrounds: { disable: true },
+    controls: {
+      expanded: true,
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/,
+      },
+    },
+    viewport: {
+      viewports: breakpointViewportSizes,
+    },
+  },
+  decorators: [
+    onDarkDecorator,
+    languageSettingDecorator,
+    analyticsSettingsDecorator,
+    themeSettingDecorator,
+  ],
+};
+
+export default preview;
