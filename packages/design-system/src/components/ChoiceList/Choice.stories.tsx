@@ -1,7 +1,8 @@
 import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
 import Choice from './Choice';
 
-export default {
+const meta: Meta<typeof Choice> = {
   title: 'Components/Choice',
   component: Choice,
   args: {
@@ -13,17 +14,9 @@ export default {
     errorMessage: 'You must agree to the terms and conditions before continuing',
     defaultChecked: false,
   },
-  argTypes: {
-    checkedChildren: { control: 'text' },
-    errorMessage: { control: 'text' },
-    hint: { control: 'text' },
-    label: { control: 'text' },
-    requirementLabel: { control: 'text' },
-    uncheckedChildren: { control: 'text' },
-    value: { control: 'text' },
-  },
 };
+export default meta;
 
-const Template = (args) => <Choice {...args} />;
+type Story = StoryObj<typeof Choice>;
 
-export const Default = Template.bind({});
+export const Default: Story = {};
