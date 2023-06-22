@@ -47,6 +47,10 @@ export interface DrawerProps {
    * Enables "sticky" position of Drawer footer element.
    */
   isFooterSticky?: boolean;
+  /**
+   * Pass `true` to have the dialog close when its backdrop pseudo-element is clicked
+   */
+  backdropClickExits?: boolean;
   onCloseClick: (event: React.MouseEvent | React.KeyboardEvent) => void;
 }
 
@@ -65,6 +69,7 @@ export const Drawer = (props: DrawerProps) => {
       className={classNames(props.className, 'ds-c-drawer')}
       exit={props.onCloseClick}
       showModal={props.hasFocusTrap}
+      backdropClickExits={props.backdropClickExits}
     >
       <div className="ds-c-drawer__window" tabIndex={-1} aria-labelledby={id.current}>
         <div className="ds-c-drawer__header">
