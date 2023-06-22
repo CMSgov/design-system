@@ -1,7 +1,7 @@
 import React from 'react';
 import TextField from './TextField';
 import { unmaskValue } from './maskHelpers';
-import { DATE_MASK, PHONE_MASK, SSN_MASK, ZIP_MASK, CURRENCY_MASK } from './useLabelMask';
+import { PHONE_MASK, SSN_MASK, ZIP_MASK, CURRENCY_MASK } from './useLabelMask';
 import { action } from '@storybook/addon-actions';
 import { useArgs } from '@storybook/client-api';
 
@@ -9,24 +9,12 @@ export default {
   title: 'Components/Text Field',
   component: TextField,
   argTypes: {
-    defaultValue: {
-      control: { type: 'text' },
-    },
-    errorMessage: {
-      control: { type: 'text' },
-    },
-    hint: {
-      control: { type: 'text' },
-    },
-    label: {
-      control: { type: 'text' },
-    },
-    requirementLabel: {
-      control: { type: 'text' },
-    },
-    rows: {
-      control: { type: 'number' },
-    },
+    defaultValue: { control: 'text' },
+    errorMessage: { control: 'text' },
+    hint: { control: 'text' },
+    label: { control: 'text' },
+    requirementLabel: { control: 'text' },
+    rows: { control: 'number' },
     size: {
       type: { name: 'string', required: false },
       description: 'Set the max-width of the input either to `small` or `medium`.',

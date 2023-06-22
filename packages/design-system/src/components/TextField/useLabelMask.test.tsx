@@ -9,7 +9,7 @@ import useLabelMask, {
   MaskFunction,
 } from './useLabelMask';
 import { render, screen } from '@testing-library/react';
-import { renderHook } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react-hooks';
 import userEvent from '@testing-library/user-event';
 
 describe('SSN_MASK', () => {
@@ -193,15 +193,23 @@ describe('useLabelMask', () => {
   it('shows masked value when focused', () => {
     const { result } = renderUseLabelMask({ value: '12' });
     renderInput(result.current.inputProps);
-    userEvent.click(screen.getByRole('textbox'));
+    // Can't really find an alternative that gets rid of the warnings
+    // eslint-disable-next-line testing-library/no-unnecessary-act
+    act(() => {
+      userEvent.click(screen.getByRole('textbox'));
+    });
     expect(render(result.current.labelMask).asFragment()).toMatchSnapshot();
   });
 
   it('shows unfilled mask when not focused', () => {
     const { result } = renderUseLabelMask({ value: '12250001' });
     renderInput(result.current.inputProps);
-    userEvent.click(screen.getByRole('textbox'));
-    userEvent.tab();
+    // Can't really find an alternative that gets rid of the warnings
+    // eslint-disable-next-line testing-library/no-unnecessary-act
+    act(() => {
+      userEvent.click(screen.getByRole('textbox'));
+      userEvent.tab();
+    });
     expect(render(result.current.labelMask).asFragment()).toMatchSnapshot();
   });
 

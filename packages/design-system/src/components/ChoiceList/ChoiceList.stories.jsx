@@ -8,9 +8,11 @@ export default {
   component: ChoiceList,
   argTypes: {
     choices: { control: false },
-    errorMessage: {
-      control: { type: 'text' },
-    },
+    hint: { control: 'text' },
+    label: { control: 'text' },
+    errorMessage: { control: 'text' },
+    // @TODO: deprecate, only size available is 'small'
+    size: { table: { disable: true } },
   },
   args: {
     choices: [
@@ -23,7 +25,6 @@ export default {
         },
       },
       { label: 'Choice 2', requirementLabel: 'Choice hint text', value: 'B' },
-      { label: 'Disabled choice 3', value: 'C', disabled: true },
     ],
   },
   subcomponents: { Alert, Choice },
@@ -41,7 +42,6 @@ DefaultCheckbox.args = {
 
 export const DefaultRadio = Template.bind({});
 DefaultRadio.args = {
-  errorMessage: 'Example error message',
   label: 'Radio example',
   name: 'radio_choices',
   type: 'radio',
@@ -54,18 +54,27 @@ SmallOption.args = {
   type: 'radio',
   size: 'small',
 };
+export const WithError = Template.bind({});
+WithError.args = {
+  errorMessage: 'Example error message',
+  label: 'Small size example',
+  name: 'size-variants',
+  type: 'radio',
+  size: 'small',
+};
 
 export const InverseOption = Template.bind({});
 InverseOption.args = {
   label: 'Inverse example',
-  errorMessage: 'Example error message',
   hint: 'Helpful hint text',
   name: 'inverse_choices_field',
   type: 'checkbox',
   inversed: true,
 };
 InverseOption.parameters = {
-  baseInverse: true,
+  // Must supply `layout: 'fullscreen'` when we use `onDark: true`
+  onDark: true,
+  layout: 'fullscreen',
 };
 
 export const DisabledCheckbox = Template.bind({});

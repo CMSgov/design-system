@@ -16,26 +16,13 @@ body {
   }
 }
 
-.page-content {
+.page-body {
   flex: 1 0 auto;
   max-width: 81rem;
 }
 
 @media (min-width: $media-width-lg) {
-  .page-content__content {
-    // removing margin for first heading on content pages
-    > :nth-child(2) {
-      margin-top: 0;
-    }
-    > h2 > h3,
-    > h4,
-    > h5,
-    > h6,
-    > p,
-    ul,
-    ol {
-      margin-bottom: 0;
-    }
+  .page-body__content {
     .ds-c-table {
       margin-top: $spacer-2;
       ol,
@@ -46,14 +33,8 @@ body {
   }
 }
 
-@media (max-width: $media-width-lg) {
-  .page-content__content {
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
-
-.page-content__content {
+.page-body__content,
+.page-body__content .ds-u-measure--wide {
   > h2 {
     @extend .ds-text-heading--2xl;
   }
@@ -93,7 +74,7 @@ body {
 
 .ds-c-badge {
   .ds-c-icon {
-    font-size: 10px;
+    font-size: 0.625rem;
   }
 }
 

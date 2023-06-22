@@ -18,7 +18,6 @@
 
 .ds-c-spinner {
   @include spinner-size($spacer-4, $spacer-4);
-  box-sizing: border-box;
   display: inline-block;
   position: relative;
 
@@ -31,7 +30,6 @@
   &::after {
     border-radius: var(--radius-circle);
     border-style: solid;
-    box-sizing: border-box;
     content: '';
     display: block;
     left: 0;
@@ -46,15 +44,13 @@
 
   &::after {
     animation: spin var(--animation-speed-4) infinite linear;
-    border-bottom-color: transparent;
-    border-left-color: inherit;
-    border-right-color: transparent;
-    border-top-color: transparent;
+    border-color: transparent;
+    border-inline-start-color: inherit;
     transform: translateZ(0);
 
     @media (-ms-high-contrast: active), (forced-colors: active) {
       border-color: WindowText;
-      border-left-color: Window;
+      border-inline-start-color: Window;
     }
   }
 }

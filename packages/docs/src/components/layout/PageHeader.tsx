@@ -26,14 +26,14 @@ const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => 
     'ds-u-padding-x--3',
     'ds-u-sm-padding-x--6',
     'ds-u-sm-padding-top--2',
-    showLinkBar ? 'ds-u-md-margin-bottom--7' : 'ds-u-md-margin-bottom--3'
+    showLinkBar && 'ds-u-margin-bottom--3 ds-u-lg-margin-bottom--7'
   );
 
   return (
     <header className={headerClassNames}>
       <h1 className="ds-text-heading--4xl">{title}</h1>
       {intro && (
-        <p className="ds-u-font-size--lg ds-u-measure--base ds-u-margin-top--1 ds-u-margin-bottom--0">
+        <p className="ds-u-font-size--lg ds-u-measure--base ds-u-margin-top--1 ds-u-margin-bottom--1">
           {intro}
         </p>
       )}
@@ -46,7 +46,7 @@ const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => 
             </a>
           )}
           {storyId && (
-            <a href={makeStorybookUrl(storyId, theme)} className="c-page-header__link">
+            <a href={makeStorybookUrl(storyId, theme, 'docs')} className="c-page-header__link">
               <img
                 alt="Storybook logo"
                 src={withPrefix('/images/storybook-icon.png')}

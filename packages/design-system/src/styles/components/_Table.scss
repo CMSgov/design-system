@@ -4,7 +4,6 @@
   border-collapse: collapse;
   border-spacing: 0;
   margin: 0;
-  text-align: left;
 
   th,
   thead td {
@@ -19,6 +18,7 @@
   td {
     border: 1px solid var(--table__border-color);
     padding: var(--table__padding);
+    text-align: start;
   }
 }
 
@@ -79,20 +79,8 @@
 
 .ds-c-table__caption {
   font-weight: var(--font-weight-bold);
-  margin-bottom: $spacer-1;
-  text-align: left;
-}
-
-.ds-c-table__cell--align-center {
-  text-align: center;
-}
-
-.ds-c-table__cell--align-right {
-  text-align: right;
-}
-
-.ds-c-table__cell--align-left {
-  text-align: left;
+  margin-block-end: $spacer-1;
+  text-align: start;
 }
 
 @mixin stacked-table-styles {
@@ -130,12 +118,12 @@
 
   th[data-title],
   td[data-title] {
-    // Add column heading via psuedo element
+    // Add column heading via pseudo element
     &::before {
       content: attr(data-title);
       display: block;
       font-weight: bold;
-      padding-bottom: $spacer-half;
+      padding-block-end: $spacer-half;
     }
   }
 

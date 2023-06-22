@@ -4,7 +4,7 @@
   }
 
   td:last-child {
-    // Avoid text wrapping on the radio buttons
-    min-width: 132px;
+    // Avoid text wrapping on the radio buttons. Use font-relative units
+    min-width: 18ch;
   }
 }

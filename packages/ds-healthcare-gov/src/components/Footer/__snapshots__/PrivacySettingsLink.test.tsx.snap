@@ -13,7 +13,7 @@ exports[`PrivacySettingsLink should render with custom class and children 1`] = 
 exports[`PrivacySettingsLink should render with default options 1`] = `
 <div>
   <button>
-    Privacy Settings
+    Privacy settings
   </button>
 </div>
 `;

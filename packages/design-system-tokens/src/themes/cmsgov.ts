@@ -65,6 +65,14 @@ export const themeColors: ColorTokens = {
   'secondary-darker':           color['emerald-700'],
   'secondary-darkest':          color['emerald-800'],
   //
+  'accent-primary-lightest':    color['dandelion-50'],
+  'accent-primary-lighter':     color['dandelion-100'],
+  'accent-primary-light':       color['dandelion-300'],
+  'accent-primary':             color['dandelion-500'],
+  'accent-primary-dark':        color['dandelion-600'],
+  'accent-primary-darker':      color['dandelion-700'],
+  'accent-primary-darkest':     color['dandelion-800'],
+  //
   'info-lightest':             color['deepsea-50'],
   'info-lighter':              color['deepsea-100'],
   'info-light':                color['deepsea-300'],
@@ -101,7 +109,7 @@ export const global: AnyTokenValues = {
   'nav-width':                  '951px',
   'site-margins':               '3rem',
   'site-margins-mobile':        '1.5rem',
-  'site-max-width':             '1040px',
+  'site-max-width':             '1104px',
   'text-max-width':             '53rem',
 };
 

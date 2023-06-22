@@ -11,6 +11,7 @@ import {
 export default {
   title: 'Medicare/Icons',
   component: RoundedStarIcon,
+  parameters: { theme: 'medicare' },
 };
 
 const iconData = [

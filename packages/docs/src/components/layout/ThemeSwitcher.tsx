@@ -25,10 +25,12 @@ const ThemeSwitcher = () => {
     <Dropdown
       label="Selected theme"
       name="theme-switcher"
-      options={themeOptions}
       className="c-theme-switcher"
+      labelClassName="ds-u-margin-top--0"
+      options={themeOptions}
       value={currentTheme}
       onChange={onThemeChange}
+      inversed={true}
     />
   );
 };

@@ -8,13 +8,7 @@
   border: var(--button__border-width) solid var(--borderColor, var(--button__border-color));
   border-radius: var(--button__border-radius);
   color: var(--color, var(--button__color));
-  cursor: pointer;
   display: inline-block;
-  font-family: var(--font-sans); // Needed to overwrite user agent button tag styles
-  font-size: var(
-    --fontSize,
-    var(--font-size-base)
-  ); // Needed to overwrite user agent button tag styles
   font-weight: var(--fontWeight, var(--button__font-weight));
   line-height: 1.3;
   padding: var(--space, #{$spacer-1 $spacer-3});
@@ -329,12 +323,12 @@
 }
 
 .ds-c-button--big {
-  --fontSize: var(--font-size-xl);
   --space: #{$spacer-2 $spacer-3};
+  font-size: var(--font-size-xl);
 }
 
 .ds-c-button--small {
-  --fontSize: var(--font-size-sm);
   --fontWeight: var(--font-weight-normal);
   --space: #{$spacer-half $spacer-1};
+  font-size: var(--font-size-sm);
 }

@@ -65,6 +65,14 @@ export const themeColors: ColorTokens = {
   'secondary-darker':           color['spring-700'],
   'secondary-darkest':          color['spring-800'],
   //
+  'accent-primary-lightest':    color['persimmon-50'],
+  'accent-primary-lighter':     color['persimmon-100'],
+  'accent-primary-light':       color['persimmon-300'],
+  'accent-primary':             color['persimmon-500'],
+  'accent-primary-dark':        color['persimmon-600'],
+  'accent-primary-darker':      color['persimmon-700'],
+  'accent-primary-darkest':     color['persimmon-800'],
+  //
   'info-lightest':              color['darksky-50'],
   'info-lighter':               color['darksky-100'],
   'info-light':                 color['darksky-300'],
@@ -112,14 +120,14 @@ export const global: AnyTokenValues = {
   'nav-width':                  '951px',
   'site-margins':               '3rem',
   'site-margins-mobile':        '1.5rem',
-  'site-max-width':             '1040px',
+  'site-max-width':             '1104px',
   'text-max-width':             '53rem',
 };
 
 const healthcareTheme: ThemeTokens = {
   animation,
   color: themeColors,
-  font: {
+  font: {    
     sans: font['family-open-sans'],
     serif: font['family-bitter'],
     ...font,

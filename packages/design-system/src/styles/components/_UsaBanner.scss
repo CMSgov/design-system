@@ -5,25 +5,21 @@
 .ds-c-usa-banner {
   background-color: var(--usa-banner__background-color);
   color: var(--usa-banner__color);
-  font-family: var(--font-sans);
   padding: 0;
 }
 
 .ds-c-usa-banner__header {
   align-items: flex-start;
   display: flex;
-  flex-direction: row;
-  font-size: 12px;
-  font-weight: var(--font-weight-normal);
+  font-size: var(--usa-banner-heading__font-size);
   line-height: 1.2;
   min-height: $spacer-4;
-  padding: $spacer-1 $spacer-2 $spacer-1 $spacer-2;
+  padding: $spacer-1 $spacer-2;
   position: relative;
 
   @media (min-width: $media-width-sm) {
     min-height: 0;
-    padding-bottom: 4px;
-    padding-top: 4px;
+    padding-block: $spacer-half;
   }
 }
 
@@ -32,14 +28,13 @@
 
   .ds-c-usa-banner__button {
     display: flex;
-    font-family: var(--font-sans);
-    padding: $spacer-1 $spacer-2 $spacer-1 $spacer-2;
+    padding: $spacer-1 $spacer-2;
     width: 100%;
   }
 
   &.ds-c-usa-banner__header--expanded {
     .ds-c-usa-banner__button {
-      padding-bottom: 0;
+      padding-block-end: 0;
     }
   }
 
@@ -54,9 +49,8 @@
   display: flex;
   height: $spacer-6;
   justify-content: center;
-  margin-left: auto;
-  margin-right: calc(-1 * #{$spacer-2});
-  margin-top: calc(-1 * #{$spacer-1});
+  margin-block-start: calc(-1 * #{$spacer-1});
+  margin-inline: auto calc(-1 * #{$spacer-2});
   width: $spacer-6;
 
   .ds-c-icon {
@@ -67,7 +61,7 @@
 
 .ds-c-usa-banner__header-flag {
   height: 11px;
-  margin-right: $spacer-1;
+  margin-inline-end: $spacer-1;
   width: $spacer-2;
 }
 
@@ -75,15 +69,14 @@
   display: inline;
   margin: 0;
   span {
-    margin-right: $spacer-1;
+    margin-inline-end: $spacer-1;
   }
 }
 
 .ds-c-usa-banner__header-action {
   color: var(--usa-banner-action__color);
   display: block;
-  margin-bottom: 0;
-  margin-top: 2px;
+  margin-block: 2px 0;
   text-decoration: underline;
 }
 
@@ -92,11 +85,9 @@
   border: 0;
   bottom: 0;
   box-shadow: none;
-  font-size: inherit;
-  line-height: inherit;
   margin: 0;
   padding: 0;
-  text-align: left;
+  text-align: start;
 
   &:focus {
     @include mixins.focus-styles;
@@ -108,14 +99,12 @@
 }
 
 .ds-c-usa-banner__content {
-  margin-left: auto;
-  margin-right: auto;
+  margin-inline: auto;
   overflow: hidden;
   padding: 4px $spacer-2 $spacer-2 $spacer-1;
 
   @media (min-width: $media-width-sm) {
-    padding-bottom: $spacer-3;
-    padding-top: $spacer-3;
+    padding-block: $spacer-3;
   }
 }
 
@@ -143,7 +132,7 @@
 .ds-c-usa-banner__icon {
   flex-shrink: 0;
   height: $spacer-5;
-  margin-right: $spacer-1;
+  margin-inline-end: $spacer-1;
   width: $spacer-5;
 
   &.ds-c-icon--lock-circle {
@@ -157,7 +146,6 @@
 
 .ds-c-usa-banner__lock-image {
   height: 0.75em;
-  vertical-align: inherit;
   width: auto;
 
   path {
@@ -173,7 +161,7 @@
 
 .ds-c-usa-banner__media-img {
   float: left;
-  margin-right: $spacer-1;
+  margin-inline-end: $spacer-1;
 }
 
 .ds-c-usa-banner__media-body {
@@ -183,7 +171,7 @@
 .ds-c-usa-banner__header--expanded {
   @media (min-width: $media-width-sm) {
     background-color: transparent;
-    padding-right: 0;
+    padding-inline-end: 0;
     .ds-c-usa-banner__button-text::after {
       transform: rotate(180deg);
     }

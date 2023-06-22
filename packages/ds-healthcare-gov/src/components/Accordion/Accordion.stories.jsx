@@ -12,6 +12,7 @@ export default {
     openItems: [0],
   },
   subcomponents: { AccordionItem },
+  parameters: { theme: 'healthcare' },
 };
 
 const Template = (args) => <Accordion {...args} />;

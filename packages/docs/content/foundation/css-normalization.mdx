@@ -1,0 +1,61 @@
+---
+title: CSS normalization
+order: 10
+---
+
+import { Alert } from '@cmsgov/design-system';
+
+The design system includes a set of global CSS rules that aim to normalize (remove the differences in) browser defaults. By making CSS normalization part of the design system, teams don't need to bring their own, and the design system CSS doesn't need to include extra defensive CSS to anticipate differences in normalization code across different products. Our global normalization rules do not completely reset element styles but instead set elements' base styles to sensible defaults, following current best practices.
+
+Our reset CSS is bundled with the rest of the design system's styles, so to use it all you need to do is [import the design system's CSS](/getting-started/for-developers/#including-the-css) using your preferred method. Even if you haven't imported one of our components, your application should visually align with the design system.
+
+<Alert heading="Why do we need to normalize CSS?" className="ds-u-measure--wide">
+
+  Each browser has default styles that it applies to various HTML elements. Not all browsers have the same default styles (called user-agent styles), which means that websites without custom CSS will look different when viewed from different browsers. Even when creating custom CSS, web developers must take those different default styles into account and make sure they are overridden appropriately. This can be tedious and error-prone, so a common practice among developers is to either remove or normalize (remove the differences in) those user-agent styles with a collection of base CSS rules before applying any CSS that controls the look-and-feel of the site.
+
+</Alert>
+
+## Global defaults
+
+Our normalization rules include some globally-defined defaults that will impact the entire application once the CSS has been imported. These defaults include (but aren't limited to):
+
+- `box-sizing: border-box` is set on every element — including `*::before` and `*::after`. This ensures that the declared width of element is never exceeded due to padding or border.
+  - While this was a common CSS reset that teams were already applying, this may produce unexpected results for some teams. If an element suddenly has different spacing around it, it may need to explicitly be set to `box-sizing: content-box` (browser default) to restore its former behavior.
+- The `<html>` element has `scroll-behavior: smooth` set on `:focus-within`. This is a CSS-only solution that provides smooth anchor scrolling.
+- The `<body>` element effectively replaces the `.ds-base` class, defining `font-family`, `font-size`, `line-height`, and `color`.
+  - In addition, `<body>` now sets `background-color` to a theme's specified background.
+- The `outline` is removed on elements with the [`tabindex="-1"`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex) declared. This removes focus rings for non-interactive elements, e.g., when activating a skip link will then send focus to a `<main>` or heading element.
+- For users who have [`prefers-reduced-motion`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion) enabled, animations, transitions, and smooth scroll are removed on all elements - including `*::before` and `*::after` to respect their preferences.
+
+## Typography
+
+### Headings
+
+All heading elements will receive the font styles defined by their parent element using the `font: inherit` rule. 
+
+[`font`](https://developer.mozilla.org/en-US/docs/Web/CSS/font) is a shorthand property that encompasses several font styles, but the key thing to note is a heading will now inherit the `font-family` and `font-size` of its parent or `<body>` element. This rule ensures the semantics of a heading element are distinct from its appearance. If you need to style a heading, refer to our [headings](/foundation/typography/headings/) or [utility class](/utilities/overview/) documentation.
+
+### Links
+
+Links behave as they previously did, with one exception—the `text-decoration-color` is now set to `currentColor`. This change was made under the assumption that all link underlines will have the same color as its text, regardless of that text's state.
+
+## Lists
+
+The `<ol>` and `<ul>` elements have been styled to match their [`.ds-c-list`](/foundation/typography/list/) counterpart, with one key difference - they use `flex` to better control list item spacing and assist with commonly used inline list patterns. If you find yourself in need of an inline list, you can add `flex-direction: row` locally to your project. Likewise, if the spacing between list elements isn't to your liking, `gap` can be changed to the value that fits your project best. Overall, using [flexbox](/utilities/flexbox/) to control spacing in lists should provide greater flexibility than the browser defaults could.
+
+<Alert heading="My inline list is broken!" variation="warn" className="ds-u-measure--wide">
+
+  If you had a `ul` and `ol` element prior to v7 that used [flexbox](/utilities/flexbox/) and it's suddenly stacking its list items vertically, you may need to add `flex-direction: row` to override its new `flex-direction: column` behavior. You may also need to adjust the `gap` property and override the new default.
+
+</Alert>
+
+One last change worth mentioning for lists is that unstyled lists are defined under the `role="list"` attribute. This makes something like `<ul role="list">` visually the same as applying the `.ds-c-list--bare` class. Because unstyled lists have [accessibility concerns](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type#accessibility_concerns), we opted to include this style rule to ensure proper markup is used.
+
+## Form elements
+
+Various form elements have been rebooted for simpler base styles. Here are some of the most notable changes:
+
+- The `<input>`, `<button>`, `<textarea>`, and `<select>` elements receive the font styles defined by their parent element using the `font: inherit` rule. 
+- All `:disabled` fields have `cursor: not-allowed` to prevent user confusion.
+- Checkboxes and radio buttons use `accent-color` (set to a theme's defined "checked" color). This makes sure the `:checked` state of these inputs matches the theme of your site, even if you aren't using our [Choice component](/components/checkbox/).
+- `<fieldset>` has no `border`, `margin`, or `padding` so they can be easily used as wrappers for individual inputs or groups of inputs.

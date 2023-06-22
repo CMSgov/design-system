@@ -4,18 +4,14 @@ intro: Dropdowns allow users to select one option from a temporary modal menu.
 core:
   githubLink: design-system/src/components/Dropdown
   sketchLink: dlpzO8L
-  storybookLink: components-dropdown--default-dropdown
+  storybookLink: components-dropdown--docs
 healthcare:
   sketchLink: eK07830
 ---
 
 ## Examples
 
-<StorybookExample
-  componentName="dropdown"
-  storyId="components-dropdown--default-dropdown"
-  minHeight={250}
-/>
+<StorybookExample componentName="dropdown" storyId="components-dropdown--default" minHeight={250} />
 
 ## Code
 
@@ -23,23 +19,19 @@ healthcare:
 
 Note that any _undocumented_ props that you pass to this component will be passed to the `select` element, so you can use this to set additional attributes if necessary.
 
-<PropTable componentName="Dropdown" />
+<SeeStorybookForReactGuidance storyId={'components-dropdown--docs'} />
 
 ### Styles
 
 The following CSS variables can be overridden to customize Dropdown components:
 
-<ComponentThemeOptions
-  componentname="dropdown"
-/>
+<ComponentThemeOptions componentname="dropdown" />
 
 #### Text Input Options
 
 This component also makes use of some text input styles, which can be customized by the following variables:
 
-<ComponentThemeOptions
-  componentname="text-input"
-/>
+<ComponentThemeOptions componentname="text-input" />
 
 ## Guidance
 

@@ -19,7 +19,7 @@ const EmbeddedExample = ({ children }: EmbeddedExampleProps) => {
   return (
     <section className="c-embedded-example">
       <div className="ds-u-border--1 ds-u-padding--2">{children}</div>
-      <ExampleFooter html={html} />
+      <ExampleFooter />
     </section>
   );
 };

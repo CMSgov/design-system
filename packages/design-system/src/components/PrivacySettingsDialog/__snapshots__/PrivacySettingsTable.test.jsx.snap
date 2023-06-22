@@ -6,7 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <table
-        class="ds-c-table ds-c-table--borderless ds-c-md-table--stacked ds-c-privacy-settings-table"
+        class="ds-c-table ds-c-table--borderless ds-c-md-table--stacked ds-c-privacy-settings-table ds-u-margin-top--2 ds-u-lg-margin--0"
         role="table"
       >
         <thead
@@ -16,24 +16,24 @@ Object {
             role="row"
           >
             <th
-              class="ds-c-table__cell--align-left"
-              id="header-category"
+              class="ds-u-text-align--left"
+              id="privacy-settings-header-category"
               role="columnheader"
               scope="col"
             >
               Category
             </th>
             <th
-              class="ds-c-table__cell--align-left"
-              id="header-description"
+              class="ds-u-text-align--left"
+              id="privacy-settings-header-description"
               role="columnheader"
               scope="col"
             >
               Description
             </th>
             <th
-              class="ds-c-table__cell--align-left"
-              id="header-status"
+              class="ds-u-text-align--left"
+              id="privacy-settings-header-status"
               role="columnheader"
               scope="col"
             >
@@ -48,25 +48,25 @@ Object {
             role="row"
           >
             <td
-              class="ds-c-table__cell--align-left"
+              class="ds-u-text-align--left"
               data-title="Category"
-              headers="header-category"
+              headers="privacy-settings-header-category"
               role="cell"
             >
               Advertising
             </td>
             <td
-              class="ds-c-table__cell--align-left"
+              class="ds-u-text-align--left"
               data-title="Description"
-              headers="header-description"
+              headers="privacy-settings-header-description"
               role="cell"
             >
-              We use digital advertising tools, such as web beacons, to track the effectiveness of our digital advertising outreach efforts. This helps us identify ads that are helpful to consumers and efficient for outreach. Selecting OFF will block this tracking.
+              We use digital advertising tools, such as web beacons, to track the effectiveness of our digital advertising outreach efforts. This helps us identify ads that are helpful to consumers and efficient for outreach. Select “Don’t allow” to block this tracking.
             </td>
             <td
-              class="ds-c-table__cell--align-left"
+              class="ds-u-text-align--left"
               data-title="Status"
-              headers="header-status"
+              headers="privacy-settings-header-status"
               role="cell"
             >
               <fieldset
@@ -141,25 +141,25 @@ Object {
             role="row"
           >
             <td
-              class="ds-c-table__cell--align-left"
+              class="ds-u-text-align--left"
               data-title="Category"
-              headers="header-category"
+              headers="privacy-settings-header-category"
               role="cell"
             >
               Social Media
             </td>
             <td
-              class="ds-c-table__cell--align-left"
+              class="ds-u-text-align--left"
               data-title="Description"
-              headers="header-description"
+              headers="privacy-settings-header-description"
               role="cell"
             >
-              If you share our content on Facebook, Twitter, or other social media accounts, we may track what Test.gov content you share. This helps us improve our social media outreach. Selecting OFF will block this tracking.
+              If you share our content on Facebook, Twitter, or other social media accounts, we may track what Test.gov content you share. This helps us improve our social media outreach. Select “Don’t allow” to block this tracking.
             </td>
             <td
-              class="ds-c-table__cell--align-left"
+              class="ds-u-text-align--left"
               data-title="Status"
-              headers="header-status"
+              headers="privacy-settings-header-status"
               role="cell"
             >
               <fieldset
@@ -234,25 +234,25 @@ Object {
             role="row"
           >
             <td
-              class="ds-c-table__cell--align-left"
+              class="ds-u-text-align--left"
               data-title="Category"
-              headers="header-category"
+              headers="privacy-settings-header-category"
               role="cell"
             >
               Web Analytics
             </td>
             <td
-              class="ds-c-table__cell--align-left"
+              class="ds-u-text-align--left"
               data-title="Description"
-              headers="header-description"
+              headers="privacy-settings-header-description"
               role="cell"
             >
-              We use a variety of tools to count, track, and analyze visits to Test.gov. This helps us understand how people use the site and where we should make improvements. Selecting OFF will block this tracking.
+              We use a variety of tools to count, track, and analyze visits to Test.gov. This helps us understand how people use the site and where we should make improvements. Select “Don’t allow” to block this tracking.
             </td>
             <td
-              class="ds-c-table__cell--align-left"
+              class="ds-u-text-align--left"
               data-title="Status"
-              headers="header-status"
+              headers="privacy-settings-header-status"
               role="cell"
             >
               <fieldset
@@ -329,7 +329,7 @@ Object {
   </body>,
   "container": <div>
     <table
-      class="ds-c-table ds-c-table--borderless ds-c-md-table--stacked ds-c-privacy-settings-table"
+      class="ds-c-table ds-c-table--borderless ds-c-md-table--stacked ds-c-privacy-settings-table ds-u-margin-top--2 ds-u-lg-margin--0"
       role="table"
     >
       <thead
@@ -339,24 +339,24 @@ Object {
           role="row"
         >
           <th
-            class="ds-c-table__cell--align-left"
-            id="header-category"
+            class="ds-u-text-align--left"
+            id="privacy-settings-header-category"
             role="columnheader"
             scope="col"
           >
             Category
           </th>
           <th
-            class="ds-c-table__cell--align-left"
-            id="header-description"
+            class="ds-u-text-align--left"
+            id="privacy-settings-header-description"
             role="columnheader"
             scope="col"
           >
             Description
           </th>
           <th
-            class="ds-c-table__cell--align-left"
-            id="header-status"
+            class="ds-u-text-align--left"
+            id="privacy-settings-header-status"
             role="columnheader"
             scope="col"
           >
@@ -371,25 +371,25 @@ Object {
           role="row"
         >
           <td
-            class="ds-c-table__cell--align-left"
+            class="ds-u-text-align--left"
             data-title="Category"
-            headers="header-category"
+            headers="privacy-settings-header-category"
             role="cell"
           >
             Advertising
           </td>
           <td
-            class="ds-c-table__cell--align-left"
+            class="ds-u-text-align--left"
             data-title="Description"
-            headers="header-description"
+            headers="privacy-settings-header-description"
             role="cell"
           >
-            We use digital advertising tools, such as web beacons, to track the effectiveness of our digital advertising outreach efforts. This helps us identify ads that are helpful to consumers and efficient for outreach. Selecting OFF will block this tracking.
+            We use digital advertising tools, such as web beacons, to track the effectiveness of our digital advertising outreach efforts. This helps us identify ads that are helpful to consumers and efficient for outreach. Select “Don’t allow” to block this tracking.
           </td>
           <td
-            class="ds-c-table__cell--align-left"
+            class="ds-u-text-align--left"
             data-title="Status"
-            headers="header-status"
+            headers="privacy-settings-header-status"
             role="cell"
           >
             <fieldset
@@ -464,25 +464,25 @@ Object {
           role="row"
         >
           <td
-            class="ds-c-table__cell--align-left"
+            class="ds-u-text-align--left"
             data-title="Category"
-            headers="header-category"
+            headers="privacy-settings-header-category"
             role="cell"
           >
             Social Media
           </td>
           <td
-            class="ds-c-table__cell--align-left"
+            class="ds-u-text-align--left"
             data-title="Description"
-            headers="header-description"
+            headers="privacy-settings-header-description"
             role="cell"
           >
-            If you share our content on Facebook, Twitter, or other social media accounts, we may track what Test.gov content you share. This helps us improve our social media outreach. Selecting OFF will block this tracking.
+            If you share our content on Facebook, Twitter, or other social media accounts, we may track what Test.gov content you share. This helps us improve our social media outreach. Select “Don’t allow” to block this tracking.
           </td>
           <td
-            class="ds-c-table__cell--align-left"
+            class="ds-u-text-align--left"
             data-title="Status"
-            headers="header-status"
+            headers="privacy-settings-header-status"
             role="cell"
           >
             <fieldset
@@ -557,25 +557,25 @@ Object {
           role="row"
         >
           <td
-            class="ds-c-table__cell--align-left"
+            class="ds-u-text-align--left"
             data-title="Category"
-            headers="header-category"
+            headers="privacy-settings-header-category"
             role="cell"
           >
             Web Analytics
           </td>
           <td
-            class="ds-c-table__cell--align-left"
+            class="ds-u-text-align--left"
             data-title="Description"
-            headers="header-description"
+            headers="privacy-settings-header-description"
             role="cell"
           >
-            We use a variety of tools to count, track, and analyze visits to Test.gov. This helps us understand how people use the site and where we should make improvements. Selecting OFF will block this tracking.
+            We use a variety of tools to count, track, and analyze visits to Test.gov. This helps us understand how people use the site and where we should make improvements. Select “Don’t allow” to block this tracking.
           </td>
           <td
-            class="ds-c-table__cell--align-left"
+            class="ds-u-text-align--left"
             data-title="Status"
-            headers="header-status"
+            headers="privacy-settings-header-status"
             role="cell"
           >
             <fieldset

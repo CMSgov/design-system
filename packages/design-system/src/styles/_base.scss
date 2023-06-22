@@ -29,19 +29,7 @@ $breakpoints: (
  * Body
  */
 
-%ds-base {
-  font-family: var(--font-sans);
-  font-size: var(--font-size-base);
-  line-height: var(--font-line-height-base);
-}
-
-.ds-base {
-  @extend %ds-base;
-  color: var(--color-base);
-}
-
 .ds-base--inverse {
-  @extend %ds-base;
   background-color: var(--color-background-inverse);
   color: var(--color-base-inverse);
 }
@@ -120,7 +108,6 @@ $breakpoints: (
   }
 }
 
-a,
 .ds-c-link {
   @extend %link;
 }
@@ -156,15 +143,14 @@ a,
 }
 
 @mixin heading-margins {
-  margin-bottom: 0.5em;
-  margin-top: 1.5em;
+  margin-block: 1.5em 0.5em;
 
   &:first-child {
-    margin-top: 0;
+    margin-block-start: 0;
   }
 
   &:last-child {
-    margin-bottom: 0;
+    margin-block-end: 0;
   }
 }
 
@@ -194,7 +180,11 @@ a,
 @mixin heading--3xl {
   @include heading;
   @include heading-margins;
-  font-size: 30px;
+
+  // There's no font size token for the mobile size heading--3xl style
+  // There's no space in our current font size token names to include it (what do you call a token between font-size-2xl and font-size-3xl?)
+  // Related to https://jira.cms.gov/browse/WNMGDS-2174
+  font-size: 1.875rem;
   font-weight: var(--typography-heading-3xl__font-weight);
 
   @media (min-width: $media-width-md) {
@@ -320,18 +310,18 @@ a,
 .ds-text,
 .ds-text--lead,
 .ds-text-body--lg,
-.ds-text-body--md {
+.ds-text-body--md,
+.ds-text-body--sm {
   font-family: var(--typography-body__font-family);
   line-height: var(--font-line-height-base);
-  margin-bottom: 1em;
-  margin-top: 1em;
+  margin-block: 1em;
 
   &:first-child {
-    margin-top: 0;
+    margin-block-start: 0;
   }
 
   &:last-child {
-    margin-bottom: 0;
+    margin-block-end: 0;
   }
 }
 

@@ -74,6 +74,11 @@ else
   echo "+ Version bumps completed ${GREEN}successfully!${NC}"
 fi
 
+echo "+ Updating versions.json for reference in docs."
+npx ts-node scripts/append-versions.ts
+git add -u
+git commit --amend --no-edit
+
 read_previous_commit_tags
 
 echo "+ Pushing tags and version to ${GREEN}${BRANCH}${NC}..."

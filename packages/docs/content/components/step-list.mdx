@@ -4,7 +4,7 @@ intro: A step list represents a user's progression through an application or mul
 core:
   githubLink: design-system/src/components/StepList
   sketchLink: Kv3oKlr
-  storybookLink: patterns-step-list--step-list-example
+  storybookLink: patterns-step-list--docs
 healthcare:
   sketchLink: 3OL0DZa
 ---
@@ -15,10 +15,7 @@ import { Badge } from '@cmsgov/design-system';
 
 The `StepList` component is the preferred method for building a step list, since it handles all the state logic necessary to produce its markup. A step is represented by an object with text, progress, and routing information and can optionally include an array of substeps as well as a description.
 
-<StorybookExample
-  componentName="step-list"
-  storyId="patterns-step-list--step-list-example"
-/>
+<StorybookExample componentName="step-list" storyId="patterns-step-list--step-list-example" />
 
 ## Code
 
@@ -34,9 +31,7 @@ The `StepList` component is the preferred method for building a step list, since
 
 The following CSS variables can be overridden to customize StepList patterns:
 
-<ComponentThemeOptions
-  componentname="steplist"
-/>
+<ComponentThemeOptions componentname="steplist" />
 
 #### Step Object
 

@@ -1,0 +1,47 @@
+---
+title: Standardizing spacing in v7
+order: 40
+intro: We've removed all default bottom margins to make spacing between components predictable and consistent.
+---
+
+import marginsBefore from '../../src/images/margins-before.png'
+import marginsAfter from '../../src/images/margins-after.png'
+
+## Removal of bottom margins
+
+Before v7, some components had both top and bottom margins. This made the default spacing between them hard to predict, because those margins would either stack or [collapse](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_box_model/Mastering_margin_collapsing) depending on the combination of components and how the HTML around them was structured. To make default spacing between elements less confusing and more consistent, we've limited our margins between components to one direction. Components now have only top or left margins, depending on whether they are [block or inline](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flow_layout/Block_and_inline_layout_in_normal_flow) elements. Notably, this is how the [U.S. Web Design System](https://designsystem.digital.gov/) approaches spacing. In this version, the following components have had their bottom margins removed:
+
+- Choice (check/radio)
+- Choice list
+- Choice checked children
+- Date fields
+  - Multi-input
+  - Single-input
+- Dropdown
+- Lists
+- Month picker
+- Paragraphs
+- Text field
+- Review
+
+If the gap below these components disappears in your application when upgrading, consider adding margin above the next item or adding it back in if you previously had to remove it.
+
+## Example of margin collapsing and stacking
+
+While margin collapse is an understandable concept, it is prone to producing unexpected results, especially when translating from designs to code. Consider the following annotated screenshot which shows the default spacing between a sample of components in the previous version:
+
+<div className="ds-u-measure--wide ds-u-text-align--center ds-u-margin-top--2">
+  <figure>
+    <figcaption>Before</figcaption>
+    <img src={marginsBefore} width={500} alt="Screenshot showing margins between components on a page in the previous version of the design system. Between a choice list and a paragraph of text, the margins stack, causing there to be a total of 24 pixels betwen them. Between a paragraph of text and a field label, the margins collapse, causing it to take the higher value of the two, which is 24 pixels." className="ds-u-display--inline-block" />
+  </figure>
+</div>
+
+In the above screenshot, notice the inconsistency in how spacing between elements is determined. Between a choice list and a paragraph of text, the margins stack, causing there to be a total of 24 pixels betwen them. Between a paragraph of text and a field label, the margins collapse, causing it to take the higher value of the two, which is 24 pixels. There are also 4 pixels of padding below the last field. Compare this with the following "after" screenshot where all spacing comes from top margins:
+
+<div className="ds-u-measure--wide ds-u-text-align--center ds-u-margin-top--2">
+  <figure>
+    <figcaption>After</figcaption>
+    <img src={marginsAfter} width={500} alt="fill in" className="ds-u-display--inline-block" />
+  </figure>
+</div>

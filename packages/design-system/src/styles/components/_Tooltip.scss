@@ -6,8 +6,6 @@
   // override user agent button styles
   background: none;
   border: 0;
-  display: inline-block;
-  margin: 0;
 }
 
 .ds-c-tooltip__container {
@@ -19,7 +17,7 @@
   text-decoration-style: dotted;
   text-underline-position: under;
 }
-// Chrome needs this offset becasue it handles text-underline-position differently and without this the underline runs into descending letters like g,j,q,p,y.
+// Chrome needs this offset because it handles text-underline-position differently and without this the underline runs into descending letters like g,j,q,p,y.
 @media all and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
   %trigger-underline-styles {
     text-underline-offset: $spacer-half;
@@ -28,10 +26,8 @@
 
 // Tooltip trigger style
 .ds-c-tooltip__trigger {
-  cursor: pointer;
   display: inline;
-  font-size: inherit;
-  font-weight: inherit;
+  font-weight: var(--font-weight-normal);
 }
 
 .ds-c-tooltip__trigger-icon {
@@ -64,12 +60,14 @@
 
 // Tooltip arrow
 .ds-c-tooltip__arrow {
+  box-sizing: content-box;
   height: $spacer-2;
   pointer-events: none;
   width: $spacer-2;
 
   &::after {
     background: var(--tooltip__background-color);
+    box-sizing: content-box;
     content: '';
     height: $spacer-1;
     left: 50%;
@@ -84,16 +82,14 @@
   border-radius: var(--radius-large);
   box-shadow: 0 0 17px var(--tooltip__box-shadow-color);
   color: var(--tooltip__color);
-  display: block;
-  font-weight: var(--font-weight-normal);
   padding: $spacer-2;
 
   // Remove tooltip content padding by default
   &:first-child {
-    margin-top: 0;
+    margin-block-start: 0;
   }
   &:last-child {
-    margin-bottom: 0;
+    margin-block-end: 0;
   }
 }
 
@@ -101,7 +97,7 @@
   align-items: flex-start;
   display: flex;
   justify-content: space-between;
-  margin-bottom: $spacer-1;
+  margin-block-end: $spacer-1;
 
   .ds-c-tooltip__close-button {
     // IE11 fix
@@ -115,6 +111,7 @@
 
 // The invisible area around the tooltip container that keeps the tooltip visible on hover
 .ds-c-tooltip__interactive-border {
+  box-sizing: content-box;
   height: 100%;
   opacity: 0;
   position: absolute;
@@ -129,7 +126,6 @@
   border-radius: var(--radius-large);
   border-style: solid;
   border-width: var(--tooltip__border-width);
-  box-sizing: border-box;
   display: none;
   opacity: 0;
 }
@@ -172,8 +168,8 @@
 .ds-c-tooltip[data-popper-placement^='top'] .ds-c-tooltip__arrow {
   top: 100%;
   &::after {
-    border-bottom: var(--tooltip__border-width) solid var(--tooltip__border-color);
-    border-right: var(--tooltip__border-width) solid var(--tooltip__border-color);
+    border-block-end: var(--tooltip__border-width) solid var(--tooltip__border-color);
+    border-inline-end: var(--tooltip__border-width) solid var(--tooltip__border-color);
     top: 1px;
     transform: translateX(-50%) translateY(-50%) rotate(45deg);
   }
@@ -182,8 +178,8 @@
 .ds-c-tooltip[data-popper-placement^='bottom'] .ds-c-tooltip__arrow {
   top: -8px;
   &::after {
-    border-left: var(--tooltip__border-width) solid var(--tooltip__border-color);
-    border-top: var(--tooltip__border-width) solid var(--tooltip__border-color);
+    border-block-start: var(--tooltip__border-width) solid var(--tooltip__border-color);
+    border-inline-start: var(--tooltip__border-width) solid var(--tooltip__border-color);
     bottom: 0;
     transform: translateX(-50%) translateY(-50%) rotate(45deg);
   }
@@ -192,8 +188,8 @@
 .ds-c-tooltip[data-popper-placement^='left'] .ds-c-tooltip__arrow {
   right: -8px;
   &::after {
-    border-right: var(--tooltip__border-width) solid var(--tooltip__border-color);
-    border-top: var(--tooltip__border-width) solid var(--tooltip__border-color);
+    border-block-start: var(--tooltip__border-width) solid var(--tooltip__border-color);
+    border-inline-end: var(--tooltip__border-width) solid var(--tooltip__border-color);
     left: 0;
     transform: translateX(50%) translateY(50%) rotate(45deg);
   }
@@ -202,8 +198,8 @@
 .ds-c-tooltip[data-popper-placement^='right'] .ds-c-tooltip__arrow {
   left: -8px;
   &::after {
-    border-bottom: var(--tooltip__border-width) solid var(--tooltip__border-color);
-    border-left: var(--tooltip__border-width) solid var(--tooltip__border-color);
+    border-block-end: var(--tooltip__border-width) solid var(--tooltip__border-color);
+    border-inline-start: var(--tooltip__border-width) solid var(--tooltip__border-color);
     left: -2px;
     transform: translateX(50%) translateY(50%) rotate(45deg);
   }

@@ -38,6 +38,7 @@ export default {
         type: 'code',
       },
     },
+    theme: 'medicare',
   },
 };
 

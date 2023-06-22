@@ -3,38 +3,25 @@
 
 .ds-c-accordion {
   color: var(--accordion__color);
-  line-height: var(--font-line-height-base);
-  margin: 0;
-  padding: 0;
-  width: 100%;
 }
 
 .ds-c-accordion__heading {
-  font-size: var(--font-size-base); // Needed to overwrite user agent heading tag styles
-  //   line-height: 0.9;
-  margin: 0;
-}
+  margin-block-start: 0;
 
-.ds-c-accordion__heading:not(:first-child) {
-  margin-top: $spacer-1;
+  &:not(:first-child) {
+    margin-block-start: $spacer-1;
+  }
 }
 
 .ds-c-accordion__button {
   background-color: var(--accordion__background-color);
   border: 0;
   border-radius: var(--accordion__border-radius);
-  box-shadow: none;
   color: var(--accordion-button__color);
-  cursor: pointer;
   display: flex;
-  font-family: var(--font-sans);
-  font-size: var(--font-size-base); // Needed to overwrite user agent heading tag styles
   font-weight: var(--font-weight-bold);
   justify-content: space-between;
-  margin: 0;
   padding: $spacer-2 $spacer-3 $spacer-2 $spacer-3;
-  text-align: left;
-  text-decoration: none;
   width: 100%;
 
   &:hover {
@@ -77,24 +64,21 @@
 
 .ds-c-accordion__content {
   background-color: var(--accordion-content__background-color);
-  line-height: var(--font-line-height-base);
-  margin-top: 0;
   overflow: auto;
   padding: $spacer-2 $spacer-3 $spacer-1 $spacer-4;
 
-  // Not sure why this first-child last-child is not working
-  :first-child {
-    margin-top: 0;
+  > :first-child {
+    margin-block-start: 0;
   }
-  :last-child {
-    margin-bottom: 0;
+  > :last-child {
+    margin-block-end: 0;
   }
 }
 
 .ds-c-accordion--bordered {
   .ds-c-accordion__content {
     border: var(--accordion__border-width) solid var(--accordion__border-color);
-    border-top: 0;
+    border-block-start: 0;
     padding: $spacer-2 $spacer-2;
   }
 }

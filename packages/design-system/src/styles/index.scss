@@ -1,6 +1,7 @@
 /**
  * Entry point, main modules loaded first
  */
+@use 'reset';
 @use 'layout';
 @use 'font';
 @use 'mixins';
@@ -63,6 +64,7 @@
 // Mask, LabelMask and Date field styles need useed
 // after TextField since they modify it
 @use 'components/TextField';
+@use 'components/ThirdPartyExternalLink';
 @use 'components/Tooltip';
 @use 'components/TooltipIcon';
 @use 'components/Mask';

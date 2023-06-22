@@ -3,60 +3,114 @@
 @use '../../../../design-system/src/styles/mixins';
 
 .hc-c-footer {
-  color: var(--color-muted);
+  background-color: var(--color-gray-lightest);
+  color: var(--color-base);
   font-size: var(--font-size-sm);
-
-  a {
-    color: currentColor;
-    text-decoration-color: transparent;
-
-    &:hover,
-    &:focus {
-      color: var(--color-primary-darker);
-    }
-  }
+  padding-block: var(--spacer-6);
 }
 
-.hc-c-footer__list {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  gap: $spacer-half;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+.hc-c-footer__site-links-row,
+.hc-c-footer__language-resource-links-row {
+  border-block-end: 1px solid var(--color-gray-lighter);
+  padding: var(--spacer-2);
 
-.hc-c-footer__inline-item {
-  align-items: center;
-  display: flex;
-  gap: $spacer-half;
-
-  // "Privacy Settings" link is a button
-  > button {
-    background-color: inherit;
-    border: 0;
-    color: currentColor;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: inherit;
+  ul[role='list'] {
+    flex-flow: row wrap;
+    margin: 0;
     padding: 0;
-    text-decoration: none;
+    row-gap: var(--spacer-1);
+  }
 
-    &:hover {
-      color: var(--color-primary-darker);
+  li {
+    line-height: 1.25;
+
+    // Don't accidentally select links in the privacy settings modal
+    > a {
+      color: currentColor;
+      text-decoration-color: transparent;
+
+      &:hover,
+      &:focus {
+        color: var(--color-primary-darker);
+      }
     }
-    &:focus {
-      @include mixins.focus-styles-link;
-      color: var(--color-primary-darker);
+
+    // "Privacy Settings" link is a button
+    > button {
+      background-color: inherit;
+      border: 0;
+      color: currentColor;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: inherit;
+      padding: 0;
       text-decoration: none;
+
+      &:hover {
+        color: var(--color-primary-darker);
+      }
+
+      &:focus {
+        @include mixins.focus-styles-link;
+        color: var(--color-primary-darker);
+        text-decoration: none;
+      }
     }
+  }
+
+  li:not(:last-child) {
+    border-inline-end: 1px solid currentColor;
   }
 }
 
-.hc-c-footer__delimiter {
-  background-color: currentColor;
-  border-radius: 50%;
-  height: var(--footer__list-marker-size);
-  width: var(--footer__list-marker-size);
+.hc-c-footer__site-links-row {
+  ul[role='list'] {
+    column-gap: var(--spacer-2);
+  }
+
+  li:not(:last-child) {
+    padding-inline-end: var(--spacer-2);
+  }
+}
+
+.hc-c-footer__language-resource-links-row {
+  ul[role='list'] {
+    column-gap: var(--spacer-1);
+  }
+
+  li:not(:last-child) {
+    padding-inline-end: var(--spacer-1);
+  }
+}
+
+.hc-c-footer__logo-row {
+  margin-block-start: var(--spacer-2);
+  margin-inline: var(--spacer-2);
+
+  @media (min-width: $media-width-md) {
+    align-items: center;
+    display: grid;
+    grid-template-columns: auto minmax(auto, 3.5fr);
+  }
+
+  .hc-c-logo {
+    padding-inline-end: var(--spacer-2);
+  }
+
+  .hc-c-logo__health,
+  .hc-c-logo__care,
+  .hc-c-logo__gov {
+    fill: var(--color-gray-dark);
+  }
+
+  .hc-c-footer__disclaimer {
+    @media (min-width: $media-width-md) {
+      border-inline-start: 1px solid var(--color-base);
+      padding-inline-start: var(--spacer-2);
+    }
+
+    > p {
+      margin: 0;
+    }
+  }
 }

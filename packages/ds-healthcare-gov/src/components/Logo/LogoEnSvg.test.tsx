@@ -7,4 +7,8 @@ describe('LogoEnSvg', function () {
     const { container } = render(<LogoEnSvg />);
     expect(container).toMatchSnapshot();
   });
+  it('updates the titleId when changed', () => {
+    const { container } = render(<LogoEnSvg titleId="foo" />);
+    expect(container.querySelector('title').id).toBe('foo');
+  });
 });

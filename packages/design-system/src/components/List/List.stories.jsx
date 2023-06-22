@@ -39,7 +39,9 @@ export const AllLists = () => (
 
 export const AllListsOnDark = AllLists.bind({});
 AllListsOnDark.parameters = {
-  baseInverse: true,
+  // Must supply `layout: 'fullscreen'` when we use `onDark: true`
+  onDark: true,
+  layout: 'fullscreen',
 };
 
 export const unorderedList = () => listMarkup('unordered');

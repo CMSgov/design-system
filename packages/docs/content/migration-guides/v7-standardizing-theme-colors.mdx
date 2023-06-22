@@ -1,0 +1,656 @@
+---
+title: Standardizing theme colors in v7
+order: 50
+intro: We've updated theme colors by removing non-semantic colors red, gold, green and coolblue and standardizing colors across themes.
+---
+
+import ColorMigrationTable from '../../src/components/content/ColorMigration/ColorMigrationTable.tsx';
+import { Alert } from '@cmsgov/design-system';
+
+## What this changes
+
+With the expansion of the design system themes to include a fourth theme (CMS.gov), we noticed theme variables were inconsistent. In some cases colors and whole color palettes weren't being used and needed to be removed. We've cleaned up and reorganized these colors using design tokens and theming to provide a more intentional approach to color.
+
+## Brand colors 
+
+### Primary
+
+We've updated the `primary` color to complete the spectrum from lightest to darkest. There are now more <code>primary</code> color values to use.
+
+<ThemeContent onlyThemes={['core']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--color-primary-lightest', value: '#e6f1f8' }, { name: '--color-primary-lightest', value: '#e6f1f8' }],
+    [null,                                                   { name: '--color-primary-lighter',  value: '#b3d4eb' }],
+    [null,                                                   { name: '--color-primary-light',    value: '#4d9cd0' }],
+    [{ name: '--color-primary',          value: '#0071bc' }, { name: '--color-primary',          value: '#0071bc' }],
+    [null,                                                   { name: '--color-primary-dark',     value: '#0066a9' }],
+    [{ name: '--color-primary-darker',   value: '#004f84' }, { name: '--color-primary-darker',   value: '#004f84' }],
+    [{ name: '--color-primary-darkest',  value: '#00395e' }, { name: '--color-primary-darkest',  value: '#00395e' }],
+  ]}
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['healthcare']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--color-primary-lightest', value: '#e6f0f4' }, { name: '--color-primary-lightest', value: '#e6f0f4' }],
+    [null,                                                   { name: '--color-primary-lighter',  value: '#b4d1de' }],
+    [null,                                                   { name: '--color-primary-light',    value: '#4f95b2' }],
+    [{ name: '--color-primary',          value: '#046791' }, { name: '--color-primary',          value: '#046791' }],
+    [null,                                                   { name: '--color-primary-dark',     value: '#045d83' }],
+    [{ name: '--color-primary-darker',   value: '#034866' }, { name: '--color-primary-darker',   value: '#034866' }],
+    [{ name: '--color-primary-darkest',  value: '#023449' }, { name: '--color-primary-darkest',  value: '#023449' }],
+  ]}
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['medicare']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [null,                                                   { name: '--color-primary-lightest', value: '#e8f0ef' }],
+    [null,                                                   { name: '--color-primary-lighter',  value: '#b9d2ce' }],
+    [null,                                                   { name: '--color-primary-light',    value: '#5b978e' }],
+    [{ name: '--color-primary',          value: '#146a5d' }, { name: '--color-primary',          value: '#146a5d' }],
+    [{ name: '--color-primary-dark',     value: '#125f54' }, { name: '--color-primary-dark',     value: '#125f54' }],
+    [{ name: '--color-primary-darker',   value: '#0e4a41' }, { name: '--color-primary-darker',   value: '#0e4a41' }],
+    [{ name: '--color-primary-darkest',  value: '#0a352f' }, { name: '--color-primary-darkest',  value: '#0a352f' }],
+  ]}
+/>
+
+#### Teal
+
+<Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
+  <b>What to do:</b> If you are using <code>teal</code> colors,
+  you'll need to update to use <code>primary</code> colors or another color from the <a href="/foundation/theme-colors/#primary-colors">theme colors</a>.
+</Alert>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--teal-100',          value: '#b9d2ce' }, null],
+    [{ name: '--teal-300',     value: '#5b978e' }, null],
+    [{ name: '--teal-500',   value: '#146a5d' }, null],
+    [{ name: '--teal-700',  value: '#0e4a41' }, null],
+  ]}
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['cmsgov']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--color-primary-lightest', value: '#e7e9f5' }, { name: '--color-primary-lightest', value: '#e7e9f5' }],
+    [{ name: '--color-primary-lighter',  value: '#b6bde0' }, { name: '--color-primary-lighter',  value: '#b6bde0' }],
+    [{ name: '--color-primary-light',    value: '#5666b8' }, { name: '--color-primary-light',    value: '#5666b8' }],
+    [{ name: '--color-primary',          value: '#0d2499' }, { name: '--color-primary',          value: '#0d2499' }],
+    [null,                                                   { name: '--color-primary-dark',     value: '#0c208a' }],
+    [{ name: '--color-primary-darker',   value: '#09196b' }, { name: '--color-primary-darker',   value: '#09196b' }],
+    [{ name: '--color-primary-darkest',  value: '#07124d' }, { name: '--color-primary-darkest',  value: '#07124d' }],
+  ]}
+/>
+
+</ThemeContent>
+
+### Secondary
+
+<ThemeContent onlyThemes={['core']}>
+
+
+One major shift with color standardization is updating the `secondary` color to use green system color tokens in the core and healthcare themes. In addition, we created the `info` status color and `secondary` colors have moved to the `info` color palette for informational components such as alerts, badges, and icons.
+
+
+<Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
+  <b>What to do:</b> If you are using <code>secondary</code> colors in your design,
+  you'll need to re-evaluate if that color should be remapped to a different <a href="/foundation/theme-colors/">theme color</a>.
+</Alert>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--color-secondary-lightest', value: '#e6f9fd' }, { name: '--color-secondary-lightest',  value: '#e7f3e7' }],
+    [{ name: '--color-secondary-lighter',  value: '#b3ecf8' }, { name: '--color-secondary-lighter',   value: '#89c487' }],
+    [{ name: '--color-secondary-light',    value: '#4ed2ee' }, { name: '--color-secondary-light',     value: '#2a9526' }],
+    [{ name: '--color-secondary',          value: '#02bfe7' }, { name: '--color-secondary',           value: '#12890e' }],
+    [{ name: '--color-secondary-dark',     value: '#02acd0' }, { name: '--color-secondary-dark',      value: '#107b0d' }],
+    [{ name: '--color-secondary-darker',   value: '#0186a2' }, { name: '--color-secondary-darker',    value: '#0d600a' }],
+    [{ name: '--color-secondary-darkest',  value: '#016074' }, { name: '--color-secondary-darkest',   value: '#094507' }],
+  ]}
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['healthcare']}>
+
+One major shift with color standardization is updating the `secondary` color to use green system color tokens in the core and healthcare themes. In addition, we created the `info` status color and `secondary` colors have moved to the `info` color palette for informational components such as alerts, badges, and icons.
+
+<Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
+  <b>What to do:</b> If you are using <code>secondary</code> colors in your design,
+  you'll need to re-evaluate if that color should be remapped to a different <a href="/foundation/theme-colors/">theme color</a>.
+</Alert>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--color-secondary-lightest', value: '#ecf4fa' }, { name: '--color-secondary-lightest',  value: '#e7f3e7' }],
+    [{ name: '--color-secondary-lighter',  value: '#c5dff1' }, { name: '--color-secondary-lighter',   value: '#89c487' }],
+    [{ name: '--color-secondary-light',    value: '#78b4dd' }, { name: '--color-secondary-light',     value: '#2a9526' }],
+    [{ name: '--color-secondary',          value: '#3e94cf' }, { name: '--color-secondary',           value: '#12890e' }],
+    [{ name: '--color-secondary-dark',     value: '#3885ba' }, { name: '--color-secondary-dark',      value: '#107b0d' }],
+    [{ name: '--color-secondary-darker',   value: '#2b6891' }, { name: '--color-secondary-darker',    value: '#0d600a' }],
+    [{ name: '--color-secondary-darkest',  value: '#1f4a68' }, { name: '--color-secondary-darkest',   value: '#094507' }],
+  ]}
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['medicare']}>
+
+Secondary colors didn't change for the Medicare theme.
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--color-secondary-lightest', value: '#e9ecf1' }, { name: '--color-secondary-lightest',  value: '#e9ecf1' }],
+    [{ name: '--color-secondary-lighter',  value: '#bcc5d4' }, { name: '--color-secondary-lighter',   value: '#bcc5d4' }],
+    [{ name: '--color-secondary-light',    value: '#62779b' }, { name: '--color-secondary-light',     value: '#62779b' }],
+    [{ name: '--color-secondary',          value: '#1e3c70' }, { name: '--color-secondary',           value: '#1e3c70' }],
+    [{ name: '--color-secondary-dark',     value: '#1b3665' }, { name: '--color-secondary-dark',      value: '#1b3665' }],
+    [{ name: '--color-secondary-darker',   value: '#152a4e' }, { name: '--color-secondary-darker',    value: '#152a4e' }],
+    [{ name: '--color-secondary-darkest',  value: '#0f1e38' }, { name: '--color-secondary-darkest',   value: '#0f1e38' }],
+  ]}
+/>
+
+#### Blue
+
+<Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
+  <b>What to do:</b> If you are using <code>blue</code> colors,
+  you'll need to update to use <code>secondary</code> colors or another color from the <a href="/foundation/theme-colors/#secondary-colors">theme colors</a>.
+</Alert>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--blue-100',          value: '#bcc5d4' }, null],
+    [{ name: '--blue-300',     value: '#62779b' }, null],
+    [{ name: '--blue-500',   value: '#1e3c70' }, null],
+    [{ name: '--blue-700',  value: '#152a4e' }, null],
+  ]}
+/>
+
+</ThemeContent>
+
+
+<ThemeContent onlyThemes={['cmsgov']}>
+
+Secondary colors didn't change for the CMS.gov theme.
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--color-secondary-lightest', value: '#ecfcf3' }, { name: '--color-secondary-lightest',  value: '#ecfcf3' }],
+    [{ name: '--color-secondary-lighter',  value: '#c6f6db' }, { name: '--color-secondary-lighter',   value: '#c6f6db' }],
+    [{ name: '--color-secondary-light',    value: '#7bebac' }, { name: '--color-secondary-light',     value: '#7bebac' }],
+    [{ name: '--color-secondary',          value: '#42e288' }, { name: '--color-secondary',           value: '#42e288' }],
+    [{ name: '--color-secondary-dark',     value: '#3bcb7a' }, { name: '--color-secondary-dark',      value: '#3bcb7a' }],
+    [{ name: '--color-secondary-darker',   value: '#2e9e5f' }, { name: '--color-secondary-darker',    value: '#2e9e5f' }],
+    [{ name: '--color-secondary-darkest',  value: '#217144' }, { name: '--color-secondary-darkest',   value: '#217144' }],
+  ]}
+/>
+
+</ThemeContent>
+
+
+## Status colors
+
+Status colors are used to communicate error, success, warning, or info statuses.
+
+### Informational 
+
+We added an informational color palette for informational alerts, badges, and icons.
+
+<Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
+  <b>What to do:</b> If you are using <code>secondary</code> colors for
+  informational elements, you'll need to update them to use <code>info</code> colors from the <a href="/foundation/theme-colors/#informational">theme colors</a>..
+</Alert>
+
+
+<ThemeContent onlyThemes={['core']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [null, { name: '--color-info-lightest', value: '#e6f9fd' }],
+    [null, { name: '--color-info-lighter',  value: '#b3ecf8' }],
+    [null, { name: '--color-info-light',    value: '#4ed2ee' }],
+    [null, { name: '--color-info',          value: '#02bfe7' }],
+    [null, { name: '--color-info-dark',     value: '#02acd0' }],
+    [null, { name: '--color-info-darker',   value: '#0186a2' }],
+    [null, { name: '--color-info-darkest',  value: '#016074' }],
+  ]}
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['healthcare']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [null, { name: '--color-info-lightest', value: '#ecf4fa' }],
+    [null, { name: '--color-info-lighter',  value: '#c5dff1' }],
+    [null, { name: '--color-info-light',    value: '#78b4dd' }],
+    [null, { name: '--color-info',          value: '#3e94cf' }],
+    [null, { name: '--color-info-dark',     value: '#3885ba' }],
+    [null, { name: '--color-info-darker',   value: '#2b6891' }],
+    [null, { name: '--color-info-darkest',  value: '#1f4a68' }],
+  ]}
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['medicare']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [null, { name: '--color-info-lightest', value: '#e9ecf1' }],
+    [null, { name: '--color-info-lighter',  value: '#bcc5d4' }],
+    [null, { name: '--color-info-light',    value: '#62779b' }],
+    [null, { name: '--color-info',          value: '#1e3c70' }],
+    [null, { name: '--color-info-dark',     value: '#1b3665' }],
+    [null, { name: '--color-info-darker',   value: '#152a4e' }],
+    [null, { name: '--color-info-darkest',  value: '#0f1e38' }],
+  ]}
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['cmsgov']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [null, { name: '--color-info-lightest', value: '#e7e9f5' }],
+    [null, { name: '--color-info-lighter',  value: '#b6bde0' }],
+    [null, { name: '--color-info-light',    value: '#5666b8' }],
+    [null, { name: '--color-info',          value: '#0d2499' }],
+    [null, { name: '--color-info-dark',     value: '#0c208a' }],
+    [null, { name: '--color-info-darker',   value: '#09196b' }],
+    [null, { name: '--color-info-darkest',  value: '#07124d' }],
+  ]}
+/>
+
+</ThemeContent>
+
+### Green
+
+Green is removed and was a non-semantic duplicate of `success`.
+
+<Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
+  <b>What to do:</b> If you are using <code>green</code> colors for success
+  states, you'll need to update to use <code>success</code> colors from the <a href="/foundation/theme-colors/#success">theme colors</a>.
+</Alert>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--color-green-lightest', value: '#e7f3e7' }, null],
+    [{ name: '--color-green-lighter',  value: '#89c487' }, null],
+    [{ name: '--color-green-light',    value: '#2a9526' }, null],
+    [{ name: '--color-green',          value: '#12890e' }, null],
+    [{ name: '--color-green-dark',     value: '#107b0d' }, null],
+    [{ name: '--color-green-darker',   value: '#0d600a' }, null],
+    [{ name: '--color-green-darkest',  value: '#094507' }, null],
+  ]}
+/>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--green-100', value: '#e7f3e7' }, null],
+    [{ name: '--green-300', value: '#b8dcb7' }, null],
+    [{ name: '--green-500', value: '#12890e' }, null],
+    [{ name: '--green-700', value: '#0d600a' }, null],
+  ]}
+/>
+
+</ThemeContent>
+
+### Gold
+
+Gold is removed and was a non-semantic duplicate of `warn`. 
+
+<Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
+  <b>What to do:</b> If you are using <code>gold</code> colors for
+  warning states, you'll need to update to use <code>warn</code> colors from the <a href="/foundation/theme-colors/#warn">theme colors</a>.
+</Alert>
+
+
+<ThemeContent neverThemes={['cmsgov']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--color-gold-lightest', value: '#fef9e9' }, null],
+    [{ name: '--color-gold-lighter',  value: '#fce28f' }, null],
+    [{ name: '--color-gold-light',    value: '#f9ca35' }, null],
+    [{ name: '--color-gold',          value: '#f8c41f' }, null],
+    [{ name: '--color-gold-dark',     value: '#dfb01c' }, null],
+    [{ name: '--color-gold-darker',   value: '#ae8916' }, null],
+    [{ name: '--color-gold-darkest',  value: '#7c6210' }, null],
+  ]}
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['cmsgov']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--color-gold-lightest', value: '#fffce6' }, null],
+    [{ name: '--color-gold-lighter',  value: '#fff284' }, null],
+    [{ name: '--color-gold-light',    value: '#ffe721' }, null],
+    [{ name: '--color-gold',          value: '#ffe400' }, null],
+    [{ name: '--color-gold-dark',     value: '#e6cd07' }, null],
+    [{ name: '--color-gold-darker',   value: '#b3a006' }, null],
+    [{ name: '--color-gold-darkest',  value: '#807204' }, null],
+  ]}
+/>
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+#### Yellow
+
+<Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
+  <b>What to do:</b> If you are using <code>yellow</code> colors,
+  you'll need to update to use <code>warning</code> colors or another color from the <a href="/foundation/theme-colors/#success">theme colors</a>.
+</Alert>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--yellow-100', value: '#fef9e9' }, null],
+    [{ name: '--yellow-300', value: '#fad662' }, null],
+    [{ name: '--yellow-500', value: '#f8c41f' }, null],
+    [{ name: '--yellow-700', value: '#dfb01c' }, null],
+  ]}
+/>
+</ThemeContent>
+
+### Red
+
+Red is removed and was a non-semantic duplicate of `error`. 
+
+<Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
+  <b>What to do:</b> If you are using <code>red</code> colors for error states,
+  you'll need to update to use <code>error</code> colors from the <a href="/foundation/theme-colors/#error">theme colors</a>.
+</Alert>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--color-red-lightest', value: '#fce8ec' }, null],
+    [{ name: '--color-red-lighter',  value: '#f7bbc5' }, null],
+    [{ name: '--color-red-light',    value: '#f18e9e' }, null],
+    [{ name: '--color-red',          value: '#e31c3d' }, null],
+    [{ name: '--color-red-dark',     value: '#cc1937' }, null],
+    [{ name: '--color-red-darker',   value: '#9f142b' }, null],
+    [{ name: '--color-red-darkest',  value: '#720e1f' }, null],
+  ]}
+/>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--red-100', value: '#f7e6e6' }, null],
+    [{ name: '--red-300', value: '#e8b3b3' }, null],
+    [{ name: '--red-500', value: '#b20000' }, null],
+    [{ name: '--red-700', value: '#a00000' }, null],
+  ]}
+/>
+
+</ThemeContent>
+
+## Neutral colors
+
+Grays have been standardized and use the same naming structure as other color palettes. 
+
+<Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
+  <b>What to do:</b> If you are using <code>gray</code> colors that have been
+  removed, you'll need to remap to a new neutral color from the <a href="/foundation/theme-colors/#neutral-colors">theme colors</a>.
+</Alert>
+
+<ThemeContent neverThemes={['medicare']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--color-gray-cool-light', value: '#e6f1f8' }, null],
+    [{ name: '--color-gray-warm-light', value: '#f2f2f2' }, null],
+    [{ name: '--color-gray-lightest',   value: '#f2f2f2' }, { name: '--color-gray-lightest',  value: '#f2f2f2' }],
+    [{ name: '--color-gray-lighter',    value: '#d9d9d9' }, { name: '--color-gray-lighter',   value: '#d9d9d9' }],
+    [{ name: '--color-gray-light',      value: '#a6a6a6' }, { name: '--color-gray-light',     value: '#a6a6a6' }],
+    [{ name: '--color-gray',            value: '#5a5a5a' }, { name: '--color-gray',           value: '#808080' }],
+    [{ name: '--color-gray-dark',       value: '#404040' }, { name: '--color-gray-dark',      value: '#5a5a5a' }],
+    [null,                                                  { name: '--color-gray-darker',    value: '#404040' }],
+    [null,                                                  { name: '--color-gray-darkest',   value: '#262626' }],
+    [{ name: '--color-gray-medium',     value: '#737373' }, null],
+    [{ name: '--color-gray-warm-dark',  value: '#404040' }, null],
+  ]}
+/>
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--color-gray-cool-light',   value: '#e6f1f8' }, null],
+    [{ name: '--color-gray-warm-light',   value: '#f2f2f2' }, null],
+    [{ name: '--color-gray-lightest',     value: '#f2f2f2' }, { name: '--color-gray-lightest',  value: '#f2f2f2' }],
+    [{ name: '--color-gray-lighter',      value: '#d9d9d9' }, { name: '--color-gray-lighter',   value: '#d9d9d9' }],
+    [{ name: '--color-gray-light',        value: '#737373' }, { name: '--color-gray-light',     value: '#a6a6a6' }],
+    [{ name: '--color-gray',              value: '#5a5a5a' }, { name: '--color-gray',           value: '#808080' }],
+    [{ name: '--color-gray-dark',         value: '#404040' }, { name: '--color-gray-dark',      value: '#5a5a5a' }],
+    [{ name: '--color-gray-darker',       value: '#262626' }, { name: '--color-gray-darker',    value: '#404040' }],
+    [null,                                                    { name: '--color-gray-darkest',   value: '#262626' }],
+    [{ name: '--color-gray-medium-light', value: '#a6a6a6' }, null],
+    [{ name: '--color-gray-medium',       value: '#737373' }, null],
+    [{ name: '--color-gray-warm-dark',    value: '#404040' }, null],
+  ]}
+/>
+
+<br />
+
+`--black` is removed.  
+
+<Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
+  <b>What to do:</b> If you are using <code>black</code> colors,
+  you'll need to update to use <code>neutral</code> colors or another color from the <a href="/foundation/theme-colors/#neutral-colors">theme colors</a>.
+</Alert>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--black-50',  value: '#f2f2f2' }, null],
+    [{ name: '--black-100', value: '#d9d9d9' }, null],
+    [{ name: '--black-200', value: '#737373' }, null],
+    [{ name: '--black-300', value: '#5a5a5a' }, null],
+    [{ name: '--black-500', value: '#404040' }, null],
+    [{ name: '--black-700', value: '#262626' }, null],
+  ]}
+/>
+
+</ThemeContent>
+
+### Color shift of neutrals
+
+<ThemeContent neverThemes={['medicare']}>
+
+Both `--color-gray` and `--color-gray-dark` are now lighter.
+
+<Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
+  <b>What to do:</b> You'll need to evaluate if you need to adjust the
+  <code>gray</code> color you are using to use a different neutral color from the <a href="/foundation/theme-colors/#neutral-colors">theme colors</a>. 
+</Alert>
+
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--color-gray', value: '#5a5a5a' }, { name: '--color-gray', value: '#808080' }],
+    [{ name: '--color-gray-dark', value: '#404040' }, { name: '--color-gray-dark', value: '#5a5a5a' }],
+  ]}
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['medicare']}>
+
+`--color-gray-light`, `--color-gray`, `--color-gray-dark`, `--color-gray-darker` are now lighter.
+
+<Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
+  <b>What to do:</b> You'll need to evaluate if you need to adjust the
+  <code>gray</code> color you are using to use a different neutral color from the <a href="/foundation/theme-colors/#neutral-colors">theme colors</a>. 
+</Alert>
+
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--color-gray-light', value: '#737373' }, { name: '--color-gray-light', value: '#a6a6a6' }],
+    [{ name: '--color-gray', value: '#5a5a5a' }, { name: '--color-gray', value: '#808080' }],
+    [{ name: '--color-gray-dark', value: '#404040' }, { name: '--color-gray-dark', value: '#5a5a5a' }],
+    [{ name: '--color-gray-darker', value: '#262626' }, { name: '--color-gray-darker', value: '#404040' }],
+  ]}
+/>
+
+</ThemeContent>
+
+## Coolblue
+
+Coolblue was unused in the design system and is removed. 
+
+<Alert variation="warn" weight="lightweight" hideIcon="true" className="ds-u-measure--wide">
+  <b>What to do:</b> If you are using <code>coolblue</code> colors, you'll need to
+  update to use a new <a href="/foundation/theme-colors/">theme color</a> instead.
+</Alert>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--color-coolblue-lightest', value: '#e6f0f4' }, null],
+    [{ name: '--color-coolblue-lighter',  value: '#82b3c8' }, null],
+    [{ name: '--color-coolblue-light',    value: '#046791' }, null],
+    [{ name: '--color-coolblue',          value: '#045d83' }, null],
+  ]}
+/>
+
+
+## Components impacted 
+
+### Alert 
+
+The alert component has been updated to use `info` colors for the left border color and background color. This change does not result in visual changes.
+
+### Autocomplete items
+
+The hover/selected state for autocomplete items in core and healthcare changed
+from using the `secondary` (now `info`) blue to the `primary` blue used in buttons.
+
+<ThemeContent onlyThemes={['core']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--autocomplete-item__background-color--active', value: '#016074' }, { name: '--autocomplete-item__background-color--active', value: '#00395e' }],
+  ]}
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['healthcare']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--autocomplete-item__background-color--active', value: '#1f4a68' }, { name: '--autocomplete-item__background-color--active', value: '#023449' }],
+  ]}
+/>
+
+</ThemeContent>
+
+### Calendar picker button
+
+Previously, `gray-cool-light` was mapped to the same system color token for all themes.
+
+When removing `gray-cool-light`, we remapped the background color for the hover
+state of [calendar picker](/components/date-field/date-picker/) buttons to `primary-lightest`. On all but the core theme, this results in a slight color shift for the background color of those day-picker buttons when hovered.
+
+<ThemeContent onlyThemes={['core']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--color-gray-cool-light', value: '#e6f1f8' }, { name: '--color-primary-lightest', value: '#e6f1f8' }],
+  ]}
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['healthcare']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--color-gray-cool-light', value: '#e6f1f8' }, { name: '--color-primary-lightest', value: '#e6f0f4' }],
+  ]}
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['medicare']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--color-gray-cool-light', value: '#e6f1f8' }, { name: '--color-primary-lightest', value: '#e8f0ef' }],
+  ]}
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['cmsgov']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--color-gray-cool-light', value: '#e6f1f8' }, { name: '--color-primary-lightest', value: '#e7e9f5' }],
+  ]}
+/>
+
+</ThemeContent>
+
+### Filter chip
+
+The `secondary` to `info` color shift in most themes forced us to make a
+decision about border and background colors for the filter chip. Previously
+most themes had a mismatch between these two colors. While the chosen colors
+depend on the brand, we've made sure the border and background match now.
+
+<ThemeContent onlyThemes={['core']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--filter-chip__background-color', value: '#e6f9fd' }, { name: '--filter-chip__background-color', value: '#e6f1f8' }],
+    [{ name: '--filter-chip__border-color',     value: '#0071bc' }, { name: '--filter-chip__border-color',     value: '#0071bc' }],
+  ]}
+  
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['healthcare']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--filter-chip__background-color', value: '#ecf4fa' }, { name: '--filter-chip__background-color', value: '#e6f0f4' }],
+    [{ name: '--filter-chip__border-color',     value: '#046791' }, { name: '--filter-chip__border-color',     value: '#046791' }],
+  ]}
+  
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['medicare']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--filter-chip__background-color', value: '#e9ecf1' }, { name: '--filter-chip__background-color', value: '#e9ecf1' }],
+    [{ name: '--filter-chip__border-color',     value: '#146a5d' }, { name: '--filter-chip__border-color',     value: '#1e3c70' }],
+  ]}
+  
+/>
+
+</ThemeContent>
+<ThemeContent onlyThemes={['cmsgov']}>
+
+<ColorMigrationTable
+  colorRows={[
+    [{ name: '--filter-chip__background-color', value: '#ecfcf3' }, { name: '--filter-chip__background-color', value: '#e7e9f5' }],
+    [{ name: '--filter-chip__border-color',     value: '#0d2499' }, { name: '--filter-chip__border-color',     value: '#0d2499' }],
+  ]}
+  
+/>
+
+</ThemeContent>

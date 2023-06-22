@@ -65,6 +65,14 @@ export const themeColors: ColorTokens = {
   'secondary-darker':           color['lapis-700'],
   'secondary-darkest':          color['lapis-800'],
   //
+  'accent-primary-lightest':    color['crimson-50'],
+  'accent-primary-lighter':     color['crimson-100'],
+  'accent-primary-light':       color['crimson-300'],
+  'accent-primary':             color['crimson-500'],
+  'accent-primary-dark':        color['crimson-600'],
+  'accent-primary-darker':      color['crimson-700'],
+  'accent-primary-darkest':     color['crimson-800'],
+  //
   'info-lightest':              color['lapis-50'],
   'info-lighter':               color['lapis-100'],
   'info-light':                 color['lapis-300'],
@@ -106,12 +114,12 @@ export const shadow: ShadowTokens = {
 
 const fonts: FontTokens = {
   ...font,
-  'size-lg': '20px',
-  'size-xl': '24px',
-  'size-2xl': '32px',
-  'size-3xl': '40px',
-  'size-4xl': '44px',
-  'size-5xl': '50px',
+  'size-lg': '1.25rem',
+  'size-xl': '1.5rem',
+  'size-2xl': '2rem',
+  'size-3xl': '2.5rem',
+  'size-4xl': '2.75rem',
+  'size-5xl': '3.125rem',
   sans: font['family-rubik'],
   montserrat: font['family-montserrat'],
   rubik: font['family-rubik'],
@@ -130,7 +138,7 @@ export const global: AnyTokenValues = {
   'nav-width':                  '951px',
   'site-margins':               '3rem',
   'site-margins-mobile':        '1.5rem',
-  'site-max-width':             '1040px',
+  'site-max-width':             '1104px',
   'text-max-width':             '53rem',
 };
 

@@ -7,11 +7,14 @@ export default {
   title: 'Components/MultiInputDateField',
   component: MultiInputDateField,
   argTypes: {
-    label: { control: false },
     errorMessage: {
       control: { type: 'text' },
       type: { name: 'string', required: true },
     },
+    label: { control: 'text' },
+    monthLabel: { control: 'text' },
+    yearLabel: { control: 'text' },
+    dayLabel: { control: 'text' },
   },
   subcomponents: { DateInput },
 };
@@ -39,6 +42,13 @@ const ControlledTemplate = ({ ...args }) => {
 
 export const MultiInputDateFieldDefault = Template.bind({});
 MultiInputDateFieldDefault.args = {
+  monthDefaultValue: '10',
+  dayDefaultValue: '31',
+  yearDefaultValue: '1965',
+};
+
+export const MultiInputDateFieldWithError = Template.bind({});
+MultiInputDateFieldWithError.args = {
   errorMessage: 'Please enter a year in the past',
   monthDefaultValue: '10',
   dayDefaultValue: '31',
@@ -58,5 +68,7 @@ InvertedMultiInputDateField.args = {
   inversed: true,
 };
 InvertedMultiInputDateField.parameters = {
-  baseInverse: true,
+  // Must supply `layout: 'fullscreen'` when we use `onDark: true`
+  onDark: true,
+  layout: 'fullscreen',
 };
