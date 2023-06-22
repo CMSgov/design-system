@@ -25,7 +25,7 @@ export * from './Table';
 export * from './Tabs';
 export * from './TextField';
 export * from './ThirdPartyExternalLink';
-// export * from './Tooltip';
+export * from './Tooltip';
 export * from './UsaBanner';
 export * from './VerticalNav';
 export * from './Icons';
