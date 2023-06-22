@@ -95,7 +95,7 @@ VariationsOnDark.decorators = [
 
 export const AllAnchorButtons = () => {
   return (
-    <div style={{ display: 'flex', gap: '1rem', flexDirection: 'column' }}>
+    <div style={{ display: 'flex', gap: '1rem', flexDirection: 'column' }} className="ds-content">
       <h4>Default and modified default</h4>
       <div className="" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
         <Button href="#!" size="big">
@@ -384,7 +384,7 @@ export const AllAnchorButtons = () => {
 
 export const AllButtons = () => {
   return (
-    <div style={{ display: 'flex', gap: '1rem', flexDirection: 'column' }}>
+    <div style={{ display: 'flex', gap: '1rem', flexDirection: 'column' }} className="ds-content">
       <h4>Default and modified default</h4>
       <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
         <Button size="big">Button</Button>

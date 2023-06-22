@@ -58,7 +58,7 @@ export const PrivacySettingsDialog = (props: PrivacySettingsDialogProps) => {
         </Button>
       }
     >
-      <p dangerouslySetInnerHTML={{ __html: intro }} />
+      <p className="ds-u-margin-top--0" dangerouslySetInnerHTML={{ __html: intro }} />
 
       <PrivacySettingsTable
         domain={domain}
