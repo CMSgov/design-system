@@ -13,15 +13,15 @@ import versionSwitcher from '../../src/images/version-switcher.png';
 
 Each browser has default styles that it applies to various HTML elements. Not all browsers have the same default styles (called user-agent styles), which means that websites without custom CSS will look different when viewed from different browsers. Even when creating custom CSS, web developers must take those different default styles into account and make sure they are overridden appropriately. This can be tedious and error-prone, so a common practice among developers is to remove or normalize those user-agent styles with a collection of base CSS rules before applying any component CSS that controls the look-and-feel of the site.
 
-Until this point, the design system has avoided any global, sweeping CSS rules that might interfere with application CSS. However, because CSS normalization makes it easier to write CSS, teams have often applied their own normalization, which is not consistent across teams. Over the years, this has lead the design system team to apply more and more "defensive" CSS to account for variability in normalization rules. Teams would also rather be able to import the design system styles and get started creating an app rather than having to decide what sort of normalization they need first. Therefore the design system team has decided to include our own global CSS rules for normalization as part of the design system. For more information, [see our original RFC](https://github.com/CMSgov/design-system/discussions/2333) and the [new documentation page on CSS normalization](https://design.cms.gov/foundation/css-normalization).
+Until this point, the design system has avoided any global, sweeping CSS rules that might interfere with application CSS. However, because CSS normalization makes it easier to write CSS, teams have often applied their own normalization, which is not consistent across teams. Over the years, this has lead the design system team to apply more and more "defensive" CSS to account for variability in normalization rules. Teams would also rather be able to import the design system styles and get started creating an app rather than having to decide what sort of normalization they need first. Therefore the design system team has decided to include our own global CSS rules for normalization as part of the design system. For more information, [see our original RFC](https://github.com/CMSgov/design-system/discussions/2333) and the [new documentation page on CSS normalization](/foundation/css-normalization).
 
 ### Standardized component spacing
 
-Before v7, some components had both top and bottom margins. This made the default spacing between them hard to predict, because those margins would either stack or [collapse](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_box_model/Mastering_margin_collapsing) depending on the combination of components and how the HTML around them was structured. Now our components only have top margin, so there is no fighting between one component’s bottom margin and another component’s top margin. For more details about what components changed and how to address these changes in your application, please [refer to our migration guide on spacing changes in v7](https://design.cms.gov/migration-guides/v7-spacing-updates/).
+Before v7, some components had both top and bottom margins. This made the default spacing between them hard to predict, because those margins would either stack or [collapse](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_box_model/Mastering_margin_collapsing) depending on the combination of components and how the HTML around them was structured. Now our components only have top margin, so there is no fighting between one component’s bottom margin and another component’s top margin. For more details about what components changed and how to address these changes in your application, please [refer to our migration guide on spacing changes in v7](/migration-guides/v7-spacing-updates/).
 
 ### Standardized colors
 
-With the expansion of the design system themes to include a fourth theme (CMS.gov), we noticed theme variables were inconsistent. In some cases colors and whole color palettes weren't being used and needed to be removed. We've cleaned up and reorganized these colors using design tokens and theming to provide a more intentional approach to color. For more details, please [see our full migration guide for color standardization in v7](https://design.cms.gov/migration-guides/v7-standardize-theme-colors/).
+With the expansion of the design system themes to include a fourth theme (CMS.gov), we noticed theme variables were inconsistent. In some cases colors and whole color palettes weren't being used and needed to be removed. We've cleaned up and reorganized these colors using design tokens and theming to provide a more intentional approach to color. For more details, please [see our full migration guide for color standardization in v7](/migration-guides/v7-standardize-theme-colors/).
 
 ### New dropdown component
 
@@ -31,7 +31,7 @@ With the expansion of the design system themes to include a fourth theme (CMS.go
 
 Several major versions ago we started abstracting the idea of a dropdown menu behind the Dropdown component, which has always been implemented with a native HTML select element. [This has been the U.S. Web Design System’s strategy as well](https://designsystem.digital.gov/components/select/). While the HTML select element tends to perform better with assistive tech than custom drop-down-menu solutions, it actually provides a poor user experience when applied to some of our applications’ use cases. Most notably, options with long text cause trouble in some browser and operating-system combinations where they are either truncated or clipped at the edge of screens.
 
-In this update, we’ve resolved this issue by implementing the component as an ARIA combobox. A side benefit is that CMS brands can now customize the look and feel of the menu. The component has been redesigned from the ground up, and our Autocomplete component has also been updated to match the new designs. [Check out the Dropdown page to see it in action](https://design.cms.gov/components/dropdown/).
+In this update, we’ve resolved this issue by implementing the component as an ARIA combobox. A side benefit is that CMS brands can now customize the look and feel of the menu. The component has been redesigned from the ground up, and our Autocomplete component has also been updated to match the new designs. [Check out the Dropdown page to see it in action](/components/dropdown/).
 
 ### New JavaScript libraries
 
@@ -40,7 +40,7 @@ Up until this point, the only dynamic JavaScript components we have offered have
 - Full set of Preact components, a lighter-weight alternative to React that [can improve bundle sizes in some projects](https://github.com/CMSgov/design-system/discussions/2378)
 - Experimental subset of [web components](https://developer.mozilla.org/en-US/docs/Web/Web_Components), which are framework-agnostic components that use standard web APIs built into modern browsers
 
-Please [check out our new example projects on GitHub](https://github.com/CMSgov/design-system/tree/main/examples/) and [read our updated developer documentation](https://design.cms.gov/getting-started/for-developers/#using-components) for more details.
+Please [check out our new example projects on GitHub](https://github.com/CMSgov/design-system/tree/main/examples/) and [read our updated developer documentation](/getting-started/for-developers/#using-components) for more details.
 
 ### New version switcher for our docs
 
@@ -52,3 +52,10 @@ We’ve added a version switcher to our doc site so you can browse old documenta
 
 ## What's on deck
 
+### Improving the doc site's theme/version switcher
+
+We have plans to improve the accessibility and overall user experience of switching versions and themes on our doc site, and it will involve alpha-testing a new design-system component. This component has existed in various forms in a handful of applications across medicare.gov and healthcare.gov, and we want to adopt it into the design system. Using it first on our doc site wil give us a way of informally trying out ideas before it goes through a more rigorous process of adoption.
+
+### Adding the USA banner to HealthCare.gov
+
+We'll be adding the [_USA Banner_](/components/usa-banner/) to [HealthCare.gov's header](/components/header/healthcare-header/) in the next version. Adding the banner [helps users identify our domains as official government websites](https://designsystem.digital.gov/components/banner/), and that's important in building confidence in the experience.
