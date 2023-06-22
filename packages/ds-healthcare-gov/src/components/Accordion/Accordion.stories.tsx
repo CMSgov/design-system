@@ -1,14 +1,14 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Accordion } from './Accordion';
-import { AccordionItem } from './AccordionItem';
+import { Accordion } from '@cmsgov/design-system';
+import { AccordionItem } from '@cmsgov/design-system';
 import { useArgs } from '@storybook/preview-api';
 
 const meta: Meta<typeof Accordion> = {
-  title: 'Components/Accordion',
+  title: 'Healthcare/Accordion',
   component: Accordion,
-  args: { bordered: true },
   subcomponents: { AccordionItem },
+  parameters: { theme: 'healthcare' },
 };
 export default meta;
 

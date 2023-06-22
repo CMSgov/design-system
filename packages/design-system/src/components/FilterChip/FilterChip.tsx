@@ -26,7 +26,7 @@ export interface FilterChipProps {
   /**
    * Function to call when filter chip is dismissed.
    */
-  onDelete: () => void;
+  onDelete: () => any;
   /**
    *  Use alternate thinner close icon in place of standard.
    */
@@ -34,7 +34,7 @@ export interface FilterChipProps {
   /**
    * Sets the size of the chip to larger version.
    */
-  size?: 'big';
+  size?: string;
 }
 
 export class FilterChip extends React.Component<FilterChipProps> {
