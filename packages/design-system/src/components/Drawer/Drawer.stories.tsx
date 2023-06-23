@@ -1,20 +1,14 @@
 import React from 'react';
 import { Title, Subtitle, Description, ArgsTable, PRIMARY_STORY } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
-import { useArgs } from '@storybook/client-api';
-
 import Drawer from './Drawer';
 import { Button } from '../Button';
+import type { Meta, StoryObj } from '@storybook/react';
+import { useArgs } from '@storybook/preview-api';
 
-export default {
+const meta: Meta<typeof Drawer> = {
   title: 'Components/Drawer',
-  component: Drawer,
-  argTypes: {
-    closeButtonText: { control: 'text' },
-    footerBody: { control: 'text' },
-    hasFocusTrap: { control: 'boolean' },
-    heading: { control: 'text' },
-  },
+  component: Drawer as any,
   args: {
     footerTitle: 'Footer Title',
     footerBody: <p className="ds-text ds-u-margin--0">Footer content</p>,
@@ -34,6 +28,9 @@ export default {
     },
   },
 };
+export default meta;
+
+type Story = StoryObj<typeof Drawer>;
 
 const drawerContent = (
   <>
@@ -63,39 +60,47 @@ const drawerContent = (
   </>
 );
 
-const Template = ({ data, ...args }) => <Drawer {...args}>{drawerContent}</Drawer>;
-
-export const DrawerDefault = Template.bind({});
-export const DrawerWithStickyPositioning = Template.bind({});
-DrawerWithStickyPositioning.args = {
-  isFooterSticky: true,
-  isHeaderSticky: true,
+const Template: Story = {
+  render: function Component(args) {
+    return <Drawer {...args}>{drawerContent}</Drawer>;
+  },
 };
 
-export const DrawerToggleWithDrawer = () => {
-  const [{ isDrawerVisible, ...args }, updateArgs] = useArgs();
-  const showDrawer = () => updateArgs({ isDrawerVisible: true });
-  const hideDrawer = (...params) => {
-    action('onCloseClick')(...params);
-    updateArgs({ isDrawerVisible: false });
-  };
+export const Default: Story = { ...Template };
+export const DrawerWithStickyPositioning: Story = {
+  ...Template,
+  args: {
+    isFooterSticky: true,
+    isHeaderSticky: true,
+  },
+};
 
-  return (
-    <>
-      {isDrawerVisible && (
-        <Drawer
-          {...args}
-          onCloseClick={hideDrawer}
-          footerTitle="Footer Title"
-          footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
-          heading="Drawer Heading"
-        >
-          {drawerContent}
-        </Drawer>
-      )}
-      <Button className="ds-c-drawer__toggle" variation="ghost" onClick={showDrawer}>
-        Drawer Toggle
-      </Button>
-    </>
-  );
+export const DrawerToggleWithDrawer: Story = {
+  render: function Component() {
+    const [{ isDrawerVisible, ...args }, updateArgs] = useArgs();
+    const showDrawer = () => updateArgs({ isDrawerVisible: true });
+    const hideDrawer = (...params) => {
+      action('onCloseClick')(...params);
+      updateArgs({ isDrawerVisible: false });
+    };
+
+    return (
+      <>
+        {isDrawerVisible && (
+          <Drawer
+            {...args}
+            onCloseClick={hideDrawer}
+            footerTitle="Footer Title"
+            footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
+            heading="Drawer Heading"
+          >
+            {drawerContent}
+          </Drawer>
+        )}
+        <Button className="ds-c-drawer__toggle" variation="ghost" onClick={showDrawer}>
+          Drawer Toggle
+        </Button>
+      </>
+    );
+  },
 };

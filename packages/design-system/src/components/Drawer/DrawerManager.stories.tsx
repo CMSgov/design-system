@@ -4,11 +4,11 @@ import { Title, Subtitle, Description } from '@storybook/addon-docs';
 import Drawer from './Drawer';
 import { DrawerManager, useDrawerManager } from './DrawerManager';
 import { Button } from '../Button';
+import type { Meta, StoryObj } from '@storybook/react';
 
-export default {
+const meta: Meta<typeof DrawerManager> = {
   title: 'Components/DrawerManager',
   component: DrawerManager,
-  // The Drawer was overlapping the docs page, so customizing the docs page to remove the examples
   parameters: {
     docs: {
       page: () => (
@@ -21,6 +21,9 @@ export default {
     },
   },
 };
+export default meta;
+
+type Story = StoryObj<typeof DrawerManager>;
 
 const drawerContent1 = {
   heading: 'Drawer Number One',
@@ -81,7 +84,7 @@ const drawerContent3 = {
   ),
 };
 
-const SingleDrawerWithToggle = (...args) => {
+const SingleDrawerWithToggle = (args) => {
   const { heading, children } = args[0];
   const { toggleClick, closeClick, isOpen } = useDrawerManager();
 
@@ -109,12 +112,14 @@ const SingleDrawerWithToggle = (...args) => {
   );
 };
 
-export const DrawerManagerDefault = () => {
-  return (
-    <DrawerManager>
-      <SingleDrawerWithToggle {...drawerContent1} />
-      <SingleDrawerWithToggle {...drawerContent2} />
-      <SingleDrawerWithToggle {...drawerContent3} />
-    </DrawerManager>
-  );
+export const Default: Story = {
+  render: function Component(args) {
+    return (
+      <DrawerManager>
+        <SingleDrawerWithToggle {...drawerContent1} />
+        <SingleDrawerWithToggle {...drawerContent2} />
+        <SingleDrawerWithToggle {...drawerContent3} />
+      </DrawerManager>
+    );
+  },
 };
