@@ -6,15 +6,16 @@ import Step from './Step';
 import StepLink from './StepLink';
 import SubStep from './SubStep';
 
-export default {
+import type { Meta, StoryObj } from '@storybook/react';
+
+const meta: Meta<typeof StepListComponent> = {
   title: 'Patterns/Step List',
   component: StepListComponent,
-  argTypes: {
-    steps: { control: false },
-    component: { control: false },
-  },
   subcomponents: { Step, StepLink, SubStep },
 };
+export default meta;
+
+type Story = StoryObj<typeof StepListComponent>;
 
 const Link = ({ className, ...props }) => (
   <a className={classNames(className, 'special-link')} {...props}>
@@ -79,4 +80,8 @@ const stepListStepData = [
   },
 ];
 
-export const StepListExample = (args) => <StepListComponent {...args} steps={stepListStepData} />;
+export const Default: Story = {
+  args: {
+    steps: stepListStepData as any,
+  },
+};

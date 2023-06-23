@@ -1,19 +1,14 @@
 import React from 'react';
 import { Title, Subtitle, Description, ArgsTable, PRIMARY_STORY } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
-import { useArgs } from '@storybook/client-api';
-
 import { HelpDrawer as Help } from './HelpDrawer';
 import { Button } from '../Button';
+import type { Meta, StoryObj } from '@storybook/react';
+import { useArgs } from '@storybook/preview-api';
 
-export default {
+const meta: Meta<typeof Help> = {
   title: 'Components/Help Drawer',
   component: Help,
-  argTypes: {
-    analytics: { control: 'boolean' },
-    closeButtonText: { control: 'text' },
-    hasFocusTrap: { control: 'boolean' },
-  },
   args: {
     footerTitle: 'Footer Title',
     footerBody: <p className="ds-text ds-u-margin--0">Footer content</p>,
@@ -33,6 +28,9 @@ export default {
     },
   },
 };
+export default meta;
+
+type Story = StoryObj<typeof Help>;
 
 const drawerContent = (
   <>
@@ -62,30 +60,32 @@ const drawerContent = (
   </>
 );
 
-export const HelpDrawer = () => {
-  const [{ isDrawerVisible, ...args }, updateArgs] = useArgs();
-  const showDrawer = () => updateArgs({ isDrawerVisible: true });
-  const hideDrawer = (...params) => {
-    action('onCloseClick')(...params);
-    updateArgs({ isDrawerVisible: false });
-  };
+export const Default: Story = {
+  render: function Component() {
+    const [{ isDrawerVisible, ...args }, updateArgs] = useArgs();
+    const showDrawer = () => updateArgs({ isDrawerVisible: true });
+    const hideDrawer = (...params) => {
+      action('onCloseClick')(...params);
+      updateArgs({ isDrawerVisible: false });
+    };
 
-  return (
-    <>
-      {isDrawerVisible && (
-        <Help
-          {...args}
-          onCloseClick={hideDrawer}
-          footerTitle="Footer Title"
-          footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
-          heading="HelpDrawer Heading"
-        >
-          {drawerContent}
-        </Help>
-      )}
-      <Button className="ds-c-drawer__toggle" variation="ghost" onClick={showDrawer}>
-        Toggle
-      </Button>
-    </>
-  );
+    return (
+      <>
+        {isDrawerVisible && (
+          <Help
+            {...args}
+            onCloseClick={hideDrawer}
+            footerTitle="Footer Title"
+            footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
+            heading="HelpDrawer Heading"
+          >
+            {drawerContent}
+          </Help>
+        )}
+        <Button className="ds-c-drawer__toggle" variation="ghost" onClick={showDrawer}>
+          Toggle
+        </Button>
+      </>
+    );
+  },
 };
