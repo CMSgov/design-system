@@ -1,10 +1,11 @@
 import React from 'react';
 import { Title, Subtitle, Description, ArgsTable, PRIMARY_STORY } from '@storybook/addon-docs';
-import { useArgs } from '@storybook/client-api';
-
 import HelpDrawerToggle from './HelpDrawerToggle';
 import HelpDrawer from './HelpDrawer';
-export default {
+import type { Meta, StoryObj } from '@storybook/react';
+import { useArgs } from '@storybook/preview-api';
+
+const meta: Meta<typeof HelpDrawer> = {
   title: 'Medicare/Help Drawer',
   component: HelpDrawer,
   args: {
@@ -26,6 +27,9 @@ export default {
     theme: 'medicare',
   },
 };
+export default meta;
+
+type Story = StoryObj<typeof HelpDrawer>;
 
 const drawerContent = (
   <>
@@ -55,57 +59,61 @@ const drawerContent = (
   </>
 );
 
-export const HelpDrawerToggleWithDrawer = () => {
-  const [{ isDrawerVisible }, setIsDrawerVisible] = useArgs();
+export const HelpDrawerToggleWithDrawer: Story = {
+  render: function Component(args) {
+    const [{ isDrawerVisible }, setIsDrawerVisible] = useArgs();
 
-  return (
-    <>
-      {isDrawerVisible && (
-        <HelpDrawer
-          onCloseClick={() => setIsDrawerVisible({ isDrawerVisible: false })}
-          heading="Drawer Heading"
+    return (
+      <>
+        {isDrawerVisible && (
+          <HelpDrawer
+            onCloseClick={() => setIsDrawerVisible({ isDrawerVisible: false })}
+            heading="Drawer Heading"
+          >
+            {drawerContent}
+          </HelpDrawer>
+        )}
+        <HelpDrawerToggle
+          showDrawer={() => setIsDrawerVisible({ isDrawerVisible: true })}
+          helpDrawerOpen={isDrawerVisible || false}
         >
-          {drawerContent}
-        </HelpDrawer>
-      )}
-      <HelpDrawerToggle
-        showDrawer={() => setIsDrawerVisible({ isDrawerVisible: true })}
-        helpDrawerOpen={isDrawerVisible || false}
-      >
-        Drawer Toggle
-      </HelpDrawerToggle>
-    </>
-  );
+          Drawer Toggle
+        </HelpDrawerToggle>
+      </>
+    );
+  },
 };
 
-export const HelpDrawerToggleOnDark = () => {
-  const [{ isDrawerVisible }, setIsDrawerVisible] = useArgs();
+export const HelpDrawerToggleOnDark: Story = {
+  render: function Component(args) {
+    const [{ isDrawerVisible }, setIsDrawerVisible] = useArgs();
 
-  return (
-    <>
-      {isDrawerVisible && (
-        <HelpDrawer
-          onCloseClick={() => setIsDrawerVisible({ isDrawerVisible: false })}
-          heading="Drawer Heading"
+    return (
+      <>
+        {isDrawerVisible && (
+          <HelpDrawer
+            onCloseClick={() => setIsDrawerVisible({ isDrawerVisible: false })}
+            heading="Drawer Heading"
+          >
+            {drawerContent}
+          </HelpDrawer>
+        )}
+        <HelpDrawerToggle
+          showDrawer={() => setIsDrawerVisible({ isDrawerVisible: true })}
+          helpDrawerOpen={isDrawerVisible || false}
+          className="ds-c-button--on-dark"
         >
-          {drawerContent}
-        </HelpDrawer>
-      )}
-      <HelpDrawerToggle
-        showDrawer={() => setIsDrawerVisible({ isDrawerVisible: true })}
-        helpDrawerOpen={isDrawerVisible || false}
-        className="ds-c-button--on-dark"
-      >
-        Drawer Toggle
-      </HelpDrawerToggle>
-    </>
-  );
-};
-HelpDrawerToggleOnDark.parameters = {
-  // Must supply `layout: 'fullscreen'` when we use `onDark: true`
-  onDark: true,
-  layout: 'fullscreen',
-};
-HelpDrawerToggleOnDark.args = {
-  onDark: true,
+          Drawer Toggle
+        </HelpDrawerToggle>
+      </>
+    );
+  },
+  parameters: {
+    // Must supply `layout: 'fullscreen'` when we use `onDark: true`
+    onDark: true,
+    layout: 'fullscreen',
+  },
+  args: {
+    onDark: true,
+  },
 };
