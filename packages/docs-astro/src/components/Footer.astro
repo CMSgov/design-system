@@ -1,13 +1,112 @@
 ---
-const today = new Date();
+import PrivacySettingsButton from './PrivacySettingsButton';
+import { HHSLogo } from '@cmsgov/design-system';
 ---
 
-<footer>
-	&copy; {today.getFullYear()} YOUR NAME HERE. All rights reserved.
+<footer class="c-footer ds-u-padding-x--3 ds-u-sm-padding-x--6">
+	<section class="c-footer__container">
+		<div class="c-footer__links">
+			<ul role="list">
+				<li>
+					<a
+						class="c-footer__link"
+						href="http://www.medicare.gov/about-us/plain-writing/plain-writing.html"
+						target="_blank"
+						rel="noreferrer"
+					>
+						Plain Writing
+					</a>
+				</li>
+				<li><PrivacySettingsButton client:idle /></li>
+				<li>
+					<a
+						class="c-footer__link"
+						href="https://cms.gov/privacy/"
+						target="_blank"
+						rel="noreferrer"
+					>
+						Privacy Policy
+					</a>
+				</li>
+				<li>
+					<a
+						class="c-footer__link"
+						href="https://designsystem.digital.gov/"
+						target="_blank"
+						rel="noreferrer"
+					>
+						U.S. Web Design System
+					</a>
+				</li>
+			</ul>			
+		</div>
+		<div class="ds-u-padding-top--2 ds-u-display--flex ds-u-align-items--center">
+			<HHSLogo />
+			<p class="ds-u-margin--0 ds-u-measure--wide c-footer__text">
+				A federal government website managed by the Centers for Medicare &amp; Medicaid Services
+				7500 Security Boulevard, Baltimore, MD 21124
+			</p>
+		</div>
+	</section>
 </footer>
-<style>
-	footer {
-		padding: 25px;
-		text-align: center;
+
+<style lang="scss" is:global>
+	@use '@cmsgov/design-system/src/styles/layout' as *;
+
+	.c-footer {
+		border-top: 2px solid var(--color-gray-lighter);
+		padding-block: 1.5rem;
+
+		.ds-c-icon--hhs-logo {
+			font-size: 2rem;
+			margin-right: $spacer-2;
+		}
+	}
+
+	.c-footer__container {
+		max-width: var(--site-max-width);
+		width: 100%;
+	}
+
+	.c-footer__links {
+		ul[role='list'] {
+			flex-flow: row wrap;
+			margin: 0;
+			padding: 0;
+			column-gap: var(--spacer-2);
+			row-gap: var(--spacer-1);
+		}
+
+		li {
+			line-height: 1.25;
+		}
+
+		.c-footer__link {
+			text-decoration-thickness: var(--link__text-decoration-thickness);
+			text-underline-offset: var(--link__text-decoration-offset);
+		}
+
+		.c-footer__link:not(:last-child) {
+			margin-right: $spacer-2;
+		}
+
+		button.c-footer__link {
+			all: inherit; /* removes all DS and browser button styling */
+			color: var(--link__color);
+			cursor: pointer;
+			display: inline;
+			text-decoration: underline;
+			text-decoration-thickness: var(--link__text-decoration-thickness);
+
+			&:hover {
+				color: var(--link__color--hover);
+			}
+		}
+	}
+
+	@media (max-width: $media-width-md) {
+		.c-footer__text {
+			font-size: var(--font-size-sm);
+		}
 	}
 </style>
