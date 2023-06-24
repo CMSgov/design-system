@@ -19,8 +19,14 @@ const LogosRow = function (props: LogosRowProps) {
           <HCgovLogo titleId="hc-c-footer__logo-title" />
         </Logo>
         <div className="hc-c-footer__disclaimer">
-          <p dangerouslySetInnerHTML={{ __html: props.t('footer.disclaimer-top') }} />
-          <p dangerouslySetInnerHTML={{ __html: props.t('footer.disclaimer-bottom') }} />
+          {/* Trademark language is only for the English translation of footer */}
+          {getLanguage() === 'en' && (
+            <p>
+              Health Insurance Marketplace<sup>&#174;</sup> is a registered trademark of the
+              Department of Health &amp; Human Services.
+            </p>
+          )}
+          <p dangerouslySetInnerHTML={{ __html: props.t('footer.disclaimer') }} />
         </div>
       </div>
     </div>
