@@ -90,10 +90,14 @@ exports[`LogosRow renders logos and address 1`] = `
         class="hc-c-footer__disclaimer"
       >
         <p>
-          footer.disclaimer-top
+          Health Insurance Marketplace
+          <sup>
+            ®
+          </sup>
+           is a registered trademark of the Department of Health & Human Services.
         </p>
         <p>
-          footer.disclaimer-bottom
+          footer.disclaimer
         </p>
       </div>
     </div>
