@@ -25,7 +25,18 @@ const gettingStarted = defineCollection({
   }),
 });
 
+const basicPageConfig = {
+  schema: z.object({
+    title: z.string(),
+  }),
+};
+
+const foundation = defineCollection(basicPageConfig);
+const guidelines = defineCollection(basicPageConfig);
+
 export const collections = {
   blog,
+  foundation,
+  guidelines,
   'getting-started': gettingStarted,
 };
