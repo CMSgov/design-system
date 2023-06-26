@@ -18,13 +18,6 @@ const blog = defineCollection({
   }),
 });
 
-const gettingStarted = defineCollection({
-  // Type-check frontmatter using a schema
-  schema: z.object({
-    title: z.string(),
-  }),
-});
-
 const basicPageConfig = {
   schema: z.object({
     title: z.string(),
@@ -33,6 +26,7 @@ const basicPageConfig = {
 
 const foundation = defineCollection(basicPageConfig);
 const guidelines = defineCollection(basicPageConfig);
+const gettingStarted = defineCollection(basicPageConfig);
 
 export const collections = {
   blog,

@@ -7,7 +7,10 @@ import BaseHead from '../components/BaseHead.astro';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 
-type Props = CollectionEntry<'foundation'>['data'] | CollectionEntry<'guidelines'>['data'];
+type Props =
+  | CollectionEntry<'foundation'>['data']
+  | CollectionEntry<'guidelines'>['data']
+  | CollectionEntry<'getting-started'>['data'];
 
 const { title } = Astro.props;
 ---
@@ -25,7 +28,7 @@ const { title } = Astro.props;
       <Navigation />
       <main class="ds-l-md-col ds-u-padding--0 ds-u-padding-bottom--4">
         <article>
-          <h1 class="title">{title}</h1>
+          <h1>{title}</h1>
           <hr />
           <slot />
         </article>

@@ -1,0 +1,34 @@
+---
+import { CollectionEntry, getCollection } from 'astro:content';
+import BasicPage from '../../layouts/BasicPage.astro';
+
+export async function getStaticPaths() {
+  async function getCollectionPaths(collection) {
+    const posts = await getCollection(collection);
+    return posts.map((post) => ({
+      params: {
+        collection,
+        slug: post.slug,
+      },
+      props: post,
+    }));
+  }
+
+  return [
+    ...(await getCollectionPaths('foundation')),
+    ...(await getCollectionPaths('guidelines')),
+    ...(await getCollectionPaths('getting-started')),
+  ];
+}
+type Props =
+  | CollectionEntry<'foundation'>
+  | CollectionEntry<'guidelines'>
+  | CollectionEntry<'getting-started'>;
+
+const post = Astro.props;
+const { Content } = await post.render();
+---
+
+<BasicPage {...post.data}>
+  <Content />
+</BasicPage>
