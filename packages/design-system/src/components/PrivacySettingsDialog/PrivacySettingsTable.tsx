@@ -73,7 +73,7 @@ export const PrivacySettingsTable = ({
 
   return (
     <Table
-      className="ds-c-privacy-settings-table ds-u-margin-top--2"
+      className="ds-c-privacy-settings-table ds-u-margin-top--2 ds-u-lg-margin--0"
       borderless
       stackable
       stackableBreakpoint="md"
