@@ -6,6 +6,10 @@ import { action } from '@storybook/addon-actions';
 const meta: Meta<typeof FilterChip> = {
   title: 'Components/Filter Chip',
   component: FilterChip,
+  args: {
+    label: 'Example Filter Chip',
+    size: 'default',
+  },
 };
 export default meta;
 

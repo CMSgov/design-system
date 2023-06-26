@@ -11,10 +11,11 @@ const meta: Meta<typeof Autocomplete> = {
   args: {
     // setting some defaults so controls turn on by default
     clearInputText: 'Clear search',
+    clearInputOnBlur: true,
     clearSearchButton: true,
     loadingMessage: 'Loading...',
     noResultsMessage: 'No results',
-  },
+  } as any,
 };
 export default meta;
 
@@ -61,7 +62,6 @@ function makeItem(name: string, children?: React.ReactNode) {
 
 export const Default: Story = {
   render: Template,
-
   args: {
     textFieldLabel: 'Enter and select a drug to see its cost under each plan',
     textFieldHint:
@@ -103,6 +103,7 @@ export const Default: Story = {
 };
 
 export const LabeledList: Story = {
+  render: Template,
   args: {
     textFieldLabel: 'Search for and select your county',
     textFieldHint:
@@ -122,6 +123,7 @@ export const LabeledList: Story = {
 };
 
 export const CustomMarkup: Story = {
+  render: Template,
   args: {
     textFieldLabel: 'Select a snack that starts with "C"',
     textFieldHint:
@@ -168,6 +170,7 @@ export const CustomMarkup: Story = {
 };
 
 export const LoadingMessage: Story = {
+  render: Template,
   args: {
     clearSearchButton: false,
     loading: true,
@@ -178,6 +181,7 @@ export const LoadingMessage: Story = {
 };
 
 export const NoResults: Story = {
+  render: Template,
   args: {
     items: [],
     clearSearchButton: false,

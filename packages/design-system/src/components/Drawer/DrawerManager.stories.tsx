@@ -84,7 +84,7 @@ const drawerContent3 = {
   ),
 };
 
-const SingleDrawerWithToggle = (args) => {
+const SingleDrawerWithToggle = (...args) => {
   const { heading, children } = args[0];
   const { toggleClick, closeClick, isOpen } = useDrawerManager();
 

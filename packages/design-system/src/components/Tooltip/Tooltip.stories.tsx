@@ -7,24 +7,48 @@ import type { Meta, StoryObj } from '@storybook/react';
 const meta: Meta<typeof Tooltip> = {
   title: 'Components/Tooltip',
   component: Tooltip as any,
+  decorators: [
+    (Story) => (
+      <div style={{ margin: '11rem auto', textAlign: 'center' }}>
+        <Story />
+      </div>
+    ),
+  ],
+  argTypes: {
+    placement: {
+      options: [
+        'auto',
+        'auto-start',
+        'auto-end',
+        'left',
+        'left-start',
+        'left-end',
+        'right',
+        'right-start',
+        'right-end',
+        'top',
+        'top-start',
+        'top-end',
+        'bottom',
+        'bottom-start',
+        'bottom-end',
+      ],
+      control: 'radio',
+    },
+  },
 };
 export default meta;
 
 type Story = StoryObj<typeof Tooltip>;
 
-export const Default: Story = {
+export const IconTrigger: Story = {
   render: function Component(args) {
     return (
-      <div style={{ margin: '11rem auto', textAlign: 'center' }}>
+      <>
+        <p className="ds-u-margin--0 ds-u-display--inline">Tooltip with icon trigger</p>
         <Tooltip {...(args as any)} />
-      </div>
+      </>
     );
-  },
-};
-
-export const IconTrigger: Story = {
-  render: function Component() {
-    return <p className="ds-u-margin--0 ds-u-display--inline">Tooltip with icon trigger</p>;
   },
   args: {
     ariaLabel: 'Label describing the subject of the tooltip',
@@ -35,8 +59,13 @@ export const IconTrigger: Story = {
 };
 
 export const InlineTrigger: Story = {
-  render: function Component() {
-    return <span>Tooltip with&nbsp;</span>;
+  render: function Component(args) {
+    return (
+      <>
+        <span>Tooltip with&nbsp;</span>
+        <Tooltip {...(args as any)} />
+      </>
+    );
   },
   args: {
     className: 'ds-c-tooltip__trigger-link',
@@ -87,11 +116,14 @@ export const TooltipWithCloseButton: Story = {
 };
 
 export const InversedTrigger: Story = {
-  render: function Component() {
+  render: function Component(args) {
     return (
-      <p className="ds-u-margin--0 ds-u-color--base-inverse ds-u-display--inline">
-        Tooltip with icon trigger
-      </p>
+      <>
+        <p className="ds-u-margin--0 ds-u-color--base-inverse ds-u-display--inline">
+          Tooltip with icon trigger
+        </p>
+        <Tooltip {...(args as any)} />
+      </>
     );
   },
   parameters: {

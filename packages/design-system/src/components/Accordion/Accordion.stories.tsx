@@ -7,7 +7,10 @@ import { useArgs } from '@storybook/preview-api';
 const meta: Meta<typeof Accordion> = {
   title: 'Components/Accordion',
   component: Accordion,
-  args: { bordered: true },
+  args: {
+    bordered: true,
+    openItems: [0],
+  } as any,
 };
 export default meta;
 

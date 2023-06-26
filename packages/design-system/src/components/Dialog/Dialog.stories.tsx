@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Dialog } from '@cmsgov/design-system';
 import { Button } from '@cmsgov/design-system';
-import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 
 const meta: Meta<typeof Dialog> = {
@@ -31,17 +30,17 @@ export default meta;
 
 type Story = StoryObj<typeof Dialog>;
 
-export const DialogExample: Story = {
+export const Default: Story = {
   render: function Component(args) {
-    const [{ dialogOpen }, updateArgs] = useArgs();
+    const [dialogOpen, updateOpen] = useState(false);
 
     const showModal = () => {
-      updateArgs({ dialogOpen: true });
+      updateOpen(true);
     };
 
     const hideModal = (...params) => {
       action('onExit')(...params);
-      updateArgs({ dialogOpen: false });
+      updateOpen(false);
     };
 
     return (
@@ -73,9 +72,9 @@ export const DialogExample: Story = {
 
 export const PreventScroll: Story = {
   render: function Component(args) {
-    const [{ dialogOpen }, updateArgs] = useArgs();
-    const showModal = () => updateArgs({ dialogOpen: true });
-    const hideModal = () => updateArgs({ dialogOpen: false });
+    const [dialogOpen, updateOpen] = useState(false);
+    const showModal = () => updateOpen(true);
+    const hideModal = () => updateOpen(false);
 
     return (
       <div className="ds-u-measure--base">
