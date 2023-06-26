@@ -13,7 +13,7 @@ export default meta;
 type Story = StoryObj<typeof Tooltip>;
 
 export const Default: Story = {
-  render: function Component(data, args) {
+  render: function Component(args) {
     return (
       <div style={{ margin: '11rem auto', textAlign: 'center' }}>
         <Tooltip {...(args as any)} />

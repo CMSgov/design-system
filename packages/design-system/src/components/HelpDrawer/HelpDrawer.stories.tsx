@@ -60,7 +60,7 @@ const drawerContent = (
   </>
 );
 
-export const Default: Story = {
+export const HelpDrawer: Story = {
   render: function Component() {
     const [{ isDrawerVisible, ...args }, updateArgs] = useArgs();
     const showDrawer = () => updateArgs({ isDrawerVisible: true });

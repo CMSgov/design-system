@@ -112,8 +112,8 @@ const SingleDrawerWithToggle = (args) => {
   );
 };
 
-export const Default: Story = {
-  render: function Component(args) {
+export const DrawerManagerDefault: Story = {
+  render: function Component() {
     return (
       <DrawerManager>
         <SingleDrawerWithToggle {...drawerContent1} />

@@ -13,7 +13,7 @@ export default meta;
 
 type Story = StoryObj<typeof FormLabel>;
 
-export const Default: Story = {};
+export const FormLabelDefault: Story = {};
 
 export const FormLabelWithHint: Story = {
   args: {

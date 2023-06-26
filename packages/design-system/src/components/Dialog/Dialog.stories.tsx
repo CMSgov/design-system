@@ -31,12 +31,14 @@ export default meta;
 
 type Story = StoryObj<typeof Dialog>;
 
-export const Default: Story = {
+export const DialogExample: Story = {
   render: function Component(args) {
     const [{ dialogOpen }, updateArgs] = useArgs();
-    const showModal = (evt) => {
+
+    const showModal = () => {
       updateArgs({ dialogOpen: true });
     };
+
     const hideModal = (...params) => {
       action('onExit')(...params);
       updateArgs({ dialogOpen: false });

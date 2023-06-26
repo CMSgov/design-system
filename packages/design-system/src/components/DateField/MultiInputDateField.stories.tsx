@@ -33,7 +33,7 @@ const ControlledTemplate: Story = {
   },
 };
 
-export const Default: Story = {
+export const MultiInputDateFieldDefault: Story = {
   args: {
     monthDefaultValue: '10',
     dayDefaultValue: '31',

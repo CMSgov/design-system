@@ -13,7 +13,7 @@ export default meta;
 
 type Story = StoryObj<typeof SkipNav>;
 
-export const Default: Story = {};
+export const SkipNavDefault: Story = {};
 
 export const SkipNavExample: Story = {
   decorators: [

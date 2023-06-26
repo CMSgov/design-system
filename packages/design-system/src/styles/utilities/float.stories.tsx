@@ -10,7 +10,6 @@ export default {
   },
 };
 
-// an example for responsive float -- referenced in doc site
 export const float = () => (
   <div className="ds-u-clearfix">
     <strong className="ds-u-margin--2">Inline text</strong>

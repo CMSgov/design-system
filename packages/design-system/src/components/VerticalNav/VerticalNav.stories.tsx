@@ -22,7 +22,7 @@ const Link = ({ className, ...props }) => (
   </a>
 );
 
-export const Default: Story = {
+export const DefaultVerticalNav: Story = {
   args: {
     selectedId: 'team',
     ariaNavLabel: 'Primary',

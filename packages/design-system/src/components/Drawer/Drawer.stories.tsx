@@ -60,15 +60,13 @@ const drawerContent = (
   </>
 );
 
-const Template: Story = {
+export const DrawerDefault: Story = {
   render: function Component(args) {
     return <Drawer {...args}>{drawerContent}</Drawer>;
   },
 };
-
-export const Default: Story = { ...Template };
 export const DrawerWithStickyPositioning: Story = {
-  ...Template,
+  ...DrawerDefault,
   args: {
     isFooterSticky: true,
     isHeaderSticky: true,

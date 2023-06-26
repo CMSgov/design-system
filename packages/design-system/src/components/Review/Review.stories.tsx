@@ -13,7 +13,7 @@ export default meta;
 
 type Story = StoryObj<typeof Review>;
 
-export const Default: Story = {
+export const DefaultReview: Story = {
   args: {
     children: 'This is an example of a default Review component.',
   },

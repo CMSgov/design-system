@@ -24,7 +24,7 @@ export default meta;
 
 type Story = StoryObj<typeof ChoiceList>;
 
-export const Default: Story = {
+export const DefaultCheckbox: Story = {
   args: {
     label: 'Checkbox example',
     hint: 'Helpful hint text',

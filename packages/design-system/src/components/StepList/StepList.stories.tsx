@@ -74,7 +74,7 @@ const stepListStepData = [
   },
 ];
 
-export const Default: Story = {
+export const StepListExample: Story = {
   args: {
     steps: stepListStepData as any,
   },
