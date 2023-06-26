@@ -12,6 +12,7 @@ import { setLanguage } from '@cmsgov/design-system/src/components/i18n';
 import { setLanguage as setLanguageFromPackage } from '@cmsgov/design-system';
 import themes from '../themes.json';
 import type { UtagContainer } from '@cmsgov/design-system';
+import type { Preview } from '@storybook/React';
 
 // Rewire analytics events to log to the console
 (window as UtagContainer).utag = { link: console.log };
@@ -54,19 +55,6 @@ const customViewports = {
   },
 };
 
-export const parameters = {
-  actions: { argTypesRegex: '^on[A-Z].*' },
-  viewport: { viewports: customViewports },
-  controls: {
-    expanded: true,
-    matchers: {
-      color: /(background|color)$/i,
-      date: /Date$/,
-    },
-  },
-  backgrounds: { disable: true },
-};
-
 export const globalTypes = {
   language: {
     name: 'Language',
@@ -105,6 +93,23 @@ export const globalTypes = {
     },
   },
 };
+
+const preview: Preview = {
+  parameters: {
+    actions: { argTypesRegex: '^on[A-Z].*' },
+    viewport: { viewports: customViewports },
+    controls: {
+      expanded: true,
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/,
+      },
+    },
+    backgrounds: { disable: true },
+  },
+};
+
+export default preview;
 
 const onDarkDecorator = (Story, context) => {
   let className;
