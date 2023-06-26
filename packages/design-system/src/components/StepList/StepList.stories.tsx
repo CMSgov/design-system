@@ -1,17 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
-
 import { StepList as StepListComponent } from './StepList';
-import Step from './Step';
-import StepLink from './StepLink';
-import SubStep from './SubStep';
-
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof StepListComponent> = {
   title: 'Patterns/Step List',
   component: StepListComponent,
-  subcomponents: { Step, StepLink, SubStep },
 };
 export default meta;
 

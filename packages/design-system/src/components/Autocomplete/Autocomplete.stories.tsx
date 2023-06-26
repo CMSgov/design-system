@@ -27,7 +27,6 @@ export default {
     loadingMessage: 'Loading...',
     noResultsMessage: 'No results',
   },
-  subcomponents: { TextField },
 };
 
 const Template = (args) => {

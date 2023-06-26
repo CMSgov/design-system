@@ -6,7 +6,7 @@ import { Button } from '@cmsgov/design-system';
 
 // @TODO: The typing here needs some work, removing any here causes a chain of problems
 const meta: Meta<typeof Dialog | any> = {
-  title: 'Components/Dialog',
+  title: 'Medicare/Components/Dialog',
   component: Dialog,
   args: {
     alert: false,

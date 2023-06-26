@@ -7,7 +7,6 @@ import { useArgs } from '@storybook/preview-api';
 const meta: Meta<typeof Accordion> = {
   title: 'Healthcare/Accordion',
   component: Accordion,
-  subcomponents: { AccordionItem },
   parameters: { theme: 'healthcare' },
 };
 export default meta;

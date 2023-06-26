@@ -1,13 +1,11 @@
 import React from 'react';
 import { Tabs as TabsComponent } from './Tabs';
 import TabPanel from './TabPanel';
-import Tab from './Tab';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof TabsComponent> = {
   title: 'Components/Tabs',
   component: TabsComponent,
-  subcomponents: { TabPanel, Tab },
 };
 export default meta;
 

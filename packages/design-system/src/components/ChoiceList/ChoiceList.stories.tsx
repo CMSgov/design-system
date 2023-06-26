@@ -2,7 +2,6 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Alert } from '../Alert';
 import ChoiceList from './ChoiceList';
-import Choice from './Choice';
 
 const meta: Meta<typeof ChoiceList> = {
   title: 'Components/ChoiceList',
@@ -20,7 +19,6 @@ const meta: Meta<typeof ChoiceList> = {
       { label: 'Choice 2', requirementLabel: 'Choice hint text', value: 'B' },
     ],
   },
-  subcomponents: { Alert, Choice },
 };
 export default meta;
 

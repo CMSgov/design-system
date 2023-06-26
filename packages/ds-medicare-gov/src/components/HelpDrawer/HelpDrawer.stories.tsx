@@ -11,7 +11,6 @@ const meta: Meta<typeof HelpDrawer> = {
   args: {
     heading: 'Drawer Heading',
   },
-  subcomponents: { HelpDrawerToggle },
   // The Drawer was overlapping the docs page, so customizing the docs page to remove the examples
   parameters: {
     docs: {

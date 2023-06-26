@@ -1,13 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
 import MultiInputDateField from './MultiInputDateField';
-import DateInput from './DateInput';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof MultiInputDateField> = {
   title: 'Components/MultiInputDateField',
   component: MultiInputDateField,
-  subcomponents: { DateInput },
 };
 export default meta;
 

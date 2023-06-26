@@ -5,10 +5,9 @@ import { Button } from '@cmsgov/design-system';
 import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 
-// @TODO: The typing here needs some work, removing any here causes a chain of problems
-const meta: Meta<typeof Dialog | any> = {
+const meta: Meta<typeof Dialog> = {
   title: 'Components/Dialog',
-  component: Dialog,
+  component: Dialog as any,
   args: {
     alert: false,
     closeButtonVariation: 'ghost',
@@ -32,10 +31,12 @@ export default meta;
 
 type Story = StoryObj<typeof Dialog>;
 
-export const DialogExample: Story = {
+export const Default: Story = {
   render: function Component(args) {
     const [{ dialogOpen }, updateArgs] = useArgs();
-    const showModal = () => updateArgs({ dialogOpen: true });
+    const showModal = (evt) => {
+      updateArgs({ dialogOpen: true });
+    };
     const hideModal = (...params) => {
       action('onExit')(...params);
       updateArgs({ dialogOpen: false });
@@ -68,7 +69,7 @@ export const DialogExample: Story = {
   },
 };
 
-export const PreventScrollExample: Story = {
+export const PreventScroll: Story = {
   render: function Component(args) {
     const [{ dialogOpen }, updateArgs] = useArgs();
     const showModal = () => updateArgs({ dialogOpen: true });

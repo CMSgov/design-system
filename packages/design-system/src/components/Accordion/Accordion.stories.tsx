@@ -8,7 +8,6 @@ const meta: Meta<typeof Accordion> = {
   title: 'Components/Accordion',
   component: Accordion,
   args: { bordered: true },
-  subcomponents: { AccordionItem },
 };
 export default meta;
 
