@@ -1,7 +1,8 @@
 import React from 'react';
 import PrivacySettingsDialog from './PrivacySettingsDialog';
+import type { Meta, StoryObj } from '@storybook/react';
 
-export default {
+const meta: Meta<typeof PrivacySettingsDialog> = {
   title: 'Components/PrivacySettingsDialog',
   component: PrivacySettingsDialog,
   args: {
@@ -9,7 +10,8 @@ export default {
     privacyPolicyUrl: 'https://youtu.be/dQw4w9WgXcQ',
   },
 };
+export default meta;
 
-const Template = (args) => <PrivacySettingsDialog {...args} />;
+type Story = StoryObj<typeof PrivacySettingsDialog>;
 
-export const Default = Template.bind({});
+export const Default: Story = {};

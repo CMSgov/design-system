@@ -1,21 +1,24 @@
 import React from 'react';
 import Logo from './Logo';
 import { setLanguage } from '@cmsgov/design-system';
+import type { Meta, StoryObj } from '@storybook/react';
 
-export default {
+const meta: Meta<typeof Logo> = {
   title: 'Healthcare/Logo',
   component: Logo,
   parameters: { theme: 'healthcare' },
 };
+export default meta;
 
-const Template = (args) => <Logo {...args} />;
+type Story = StoryObj<typeof Logo>;
 
-export const EnglishLogo = Template.bind({});
+export const EnglishLogo: Story = {};
 
-export const SpanishLogo = Template.bind({});
-SpanishLogo.decorators = [
-  (Story) => {
-    setLanguage('es');
-    return <Story />;
-  },
-];
+export const SpanishLogo: Story = {
+  decorators: [
+    (Story) => {
+      setLanguage('es');
+      return <Story />;
+    },
+  ],
+};

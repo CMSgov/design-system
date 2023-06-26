@@ -1,20 +1,19 @@
 import React from 'react';
 import Stars, { StarsProps } from './Stars';
+import type { Meta, StoryObj } from '@storybook/react';
 
-export default {
+const meta: Meta<typeof Stars> = {
   title: 'Medicare/Stars',
   component: Stars,
-  argTypes: {
-    number: {
-      control: { type: 'number', step: 0.5 },
-    },
-  },
   args: {
     number: 2.5,
   },
   parameters: { theme: 'medicare' },
 };
+export default meta;
 
-const Template = ({ ...args }) => <Stars {...(args as StarsProps)} />;
+type Story = StoryObj<typeof Stars>;
 
-export const Default = Template.bind({});
+export const Default: Story = {
+  render: ({ ...args }) => <Stars {...(args as StarsProps)} />,
+};
