@@ -5,6 +5,7 @@ import { SvgIcon, IconCommonProps } from './SvgIcon';
 const defaultProps = {
   className: '',
   viewBox: '0 0 252 252',
+  ariaHidden: false,
 };
 
 export function HHSLogo(props: IconCommonProps): React.ReactElement {
