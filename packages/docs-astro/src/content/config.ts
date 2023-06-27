@@ -24,13 +24,15 @@ const basicPageConfig = {
   }),
 };
 
-const foundation = defineCollection(basicPageConfig);
-const guidelines = defineCollection(basicPageConfig);
-const gettingStarted = defineCollection(basicPageConfig);
+export const basicCollections = {
+  foundation: defineCollection(basicPageConfig),
+  guidelines: defineCollection(basicPageConfig),
+  'getting-started': defineCollection(basicPageConfig),
+} as const;
+
+export type BasicCollection = keyof typeof basicCollections;
 
 export const collections = {
   blog,
-  foundation,
-  guidelines,
-  'getting-started': gettingStarted,
+  ...basicCollections,
 };

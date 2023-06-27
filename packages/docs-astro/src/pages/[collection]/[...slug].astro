@@ -1,10 +1,11 @@
 ---
 import { CollectionEntry, getCollection } from 'astro:content';
 import BasicPage from '../../components/layout/pages/BasicPage.astro';
+import type { BasicCollection } from '../../content/config';
 
 export async function getStaticPaths() {
-  async function getCollectionPaths(collection) {
-    const posts = await getCollection(collection);
+  async function getCollectionPaths(collection: BasicCollection) {
+    const posts: any[] = await getCollection(collection);
     return posts.map((post) => ({
       params: {
         collection,

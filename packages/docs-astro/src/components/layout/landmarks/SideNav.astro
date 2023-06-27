@@ -1,9 +1,19 @@
 ---
 import { getCollection } from 'astro:content';
 import { VerticalNav } from '@cmsgov/design-system';
+import type { BasicCollection } from '../../../content/config';
 
 const { pathname } = Astro.url;
 
+// TODO: Need to just ask how to get proper types returned when using a union type in getCollection
+async function getPages(collectionName: BasicCollection) {
+  const gettingStartedPages: any[] = await getCollection(collectionName);
+  const gettingStartedItems = gettingStartedPages.map((page) => ({
+    label: page.data.title,
+    selected: pathname.includes(`getting-started/${page.slug}`),
+    url: `/getting-started/${page.slug}`,
+  }));
+}
 
 const blogPages = await getCollection('blog');
 const blogItems = blogPages.map((page) => ({
