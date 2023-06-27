@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { AlertCircleIcon } from '../Icons/AlertCircleIcon';
+import { t } from '../i18n';
 
 /**
  * <InlineError> is an internal component used by <FormLabel>
@@ -31,6 +32,7 @@ export function InlineError({
   return (
     <span className={classes} id={id} aria-live="assertive" aria-atomic="true">
       <AlertCircleIcon viewBox={viewbox} />
+      <span className="ds-u-visibility--screen-reader">{`${t('inlineError.prefix')}: `}</span>
       {children}
     </span>
   );
