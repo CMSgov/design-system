@@ -9,8 +9,10 @@ The design system includes a set of global CSS rules that aim to normalize (remo
 
 Our reset CSS is bundled with the rest of the design system's styles, so to use it all you need to do is [import the design system's CSS](/getting-started/for-developers/#including-the-css) using your preferred method. Even if you haven't imported one of our components, your application should visually align with the design system.
 
-<Alert heading="Why do we need to normalize CSS?">
-Each browser has default styles that it applies to various HTML elements. Not all browsers have the same default styles (called user-agent styles), which means that websites without custom CSS will look different when viewed from different browsers. Even when creating custom CSS, web developers must take those different default styles into account and make sure they are overridden appropriately. This can be tedious and error-prone, so a common practice among developers is to either remove or normalize (remove the differences in) those user-agent styles with a collection of base CSS rules before applying any component CSS that controls the look-and-feel of the site.
+<Alert heading="Why do we need to normalize CSS?" className="ds-u-measure--wide">
+
+  Each browser has default styles that it applies to various HTML elements. Not all browsers have the same default styles (called user-agent styles), which means that websites without custom CSS will look different when viewed from different browsers. Even when creating custom CSS, web developers must take those different default styles into account and make sure they are overridden appropriately. This can be tedious and error-prone, so a common practice among developers is to either remove or normalize (remove the differences in) those user-agent styles with a collection of base CSS rules before applying any CSS that controls the look-and-feel of the site.
+
 </Alert>
 
 ## Global defaults
@@ -39,9 +41,13 @@ Links behave as they previously did, with one exception—the `text-decoration-c
 
 ## Lists
 
-The `<ol>` and `<ul>` elements have been styled to match their [`.ds-c-list`](/foundation/typography/list/) counterpart, with one key difference - they use `flex` to better control list item spacing and assist with commonly used inline list patterns.
+The `<ol>` and `<ul>` elements have been styled to match their [`.ds-c-list`](/foundation/typography/list/) counterpart, with one key difference - they use `flex` to better control list item spacing and assist with commonly used inline list patterns. If you find yourself in need of an inline list, you can add `flex-direction: row` locally to your project. Likewise, if the spacing between list elements isn't to your liking, `gap` can be changed to the value that fits your project best. Overall, using [flexbox](/utilities/flexbox/) to control spacing in lists should provide greater flexibility than the browser defaults could.
 
-If you find yourself in need of an inline list, you can add `flex-direction: row` locally to your project. Likewise, if the spacing between list elements isn't to your liking, `gap` can be changed to the value that fits your project best.
+<Alert heading="My inline list is broken!" variation="warn" className="ds-u-measure--wide">
+
+  If you had a `ul` and `ol` element prior to v7 that used [flexbox](/utilities/flexbox/) and it's suddenly stacking its list items vertically, you may need to add `flex-direction: row` to override its new `flex-direction: column` behavior. You may also need to adjust the `gap` property and override the new default.
+
+</Alert>
 
 One last change worth mentioning for lists is that unstyled lists are defined under the `role="list"` attribute. This makes something like `<ul role="list">` visually the same as applying the `.ds-c-list--bare` class. Because unstyled lists have [accessibility concerns](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type#accessibility_concerns), we opted to include this style rule to ensure proper markup is used.
 

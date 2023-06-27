@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import { useState, useRef, useEffect } from 'react';
 import { withPrefix } from 'gatsby';
 import classnames from 'classnames';
 import StorybookExampleFooter from './StorybookExampleFooter';
 
 // @TODO: grab these from tokens
-const breakpointOpts = {
-  xs: '360',
-  sm: '544',
-  md: '768',
-  lg: '1024',
-  xl: '1280',
-};
+const breakpoints = {
+  xs: 360,
+  sm: 544,
+  md: 768,
+  lg: 1024,
+  xl: 1280,
+} as const;
+
+const examplePadding = 16;
 
 interface ResponsiveExample {
   /**
@@ -36,65 +38,57 @@ interface ResponsiveExample {
  * To use this example, you must have a corresponding storybook story to reference
  */
 const ResponsiveExample = ({ storyId, title, theme }: ResponsiveExample) => {
-  const [iframeBreakpoint, setIframeBreakpoint] = useState<string>('xl');
-  const [iframeHeight, setiFrameHeight] = useState<number>(0);
-  const [exampleWrapperWidth, setExampleWrapperWidth] = useState<number>(0);
-  const iframeRef = useRef<HTMLIFrameElement>();
+  const rootRef = useRef<HTMLDivElement>();
   const exampleWrapperRef = useRef<HTMLDivElement>();
+  const [exampleWrapperWidth, setExampleWrapperWidth] = useState<number>(200);
+  const [iframeBreakpoint, setIframeBreakpoint] = useState<keyof typeof breakpoints>('md');
+  const [iframeHeight, setIFrameHeight] = useState<number>(200);
+  const iframeRef = useRef<HTMLIFrameElement>();
   const iframeUrl = withPrefix(
     `/storybook/iframe.html?id=${storyId}&viewMode=story&globals=theme:${theme}`
   );
 
+  const availableWidth = exampleWrapperWidth - 2 * examplePadding;
+  const iframeWidth = breakpoints[iframeBreakpoint];
+  const iframeScale = Math.min(1, availableWidth / iframeWidth);
+  const exampleWrapperHeight = iframeHeight * iframeScale + 2 * examplePadding;
+
+  function calcExampleWidth() {
+    setTimeout(() => {
+      if (rootRef.current) {
+        setExampleWrapperWidth(rootRef.current.offsetWidth);
+      }
+    }, 50);
+  }
+
+  useEffect(calcExampleWidth, [rootRef.current]);
+
   useEffect(() => {
     if (window) {
-      // on window resize, re-calculate the width of the wrapper
-      window.addEventListener('resize', handleWindowResize);
+      window.addEventListener('resize', calcExampleWidth);
     }
-    handleWindowResize();
-
-    const contentWindow = iframeRef.current.contentWindow;
 
     return () => {
-      if (contentWindow) {
-        contentWindow.removeEventListener('resize', handleIframeResize);
+      window.removeEventListener('resize', calcExampleWidth);
+      // Remove resize listener set in the onIFrameLoad handler
+      if (iframeRef.current?.contentWindow) {
+        iframeRef.current.contentWindow.removeEventListener('resize', handleIframeResize);
       }
-      window.removeEventListener('resize', handleWindowResize);
     };
   }, []);
-
-  // get & set the width of the example wrapper
-  const handleWindowResize = () => {
-    if (exampleWrapperRef.current) {
-      setExampleWrapperWidth(exampleWrapperRef.current.offsetWidth);
-    }
-  };
-
-  // calculate the scale at which the example should be shown
-  const getScale = () => {
-    if (exampleWrapperRef.current) {
-      return Math.min(1, exampleWrapperWidth / breakpointOpts[iframeBreakpoint]);
-    }
-  };
-
-  // calculate css height with fallback
-  const getHeight = () => {
-    const heightCalc = getScale() * iframeHeight;
-    return heightCalc ? heightCalc : '0';
-  };
 
   // when the iframe content resizes, recalculate the height at which it should be shown
   const handleIframeResize = () => {
     if (iframeRef.current) {
       const height = iframeRef.current.contentDocument.body.offsetHeight;
-      setiFrameHeight(height);
+      setIFrameHeight(height);
     }
   };
 
   // when the iframe's content loads, set up listener and calculate height of iframe
-  const onIframeLoad = () => {
+  const onIFrameLoad = () => {
     if (iframeRef.current) {
-      const contentWindow = iframeRef.current.contentWindow;
-      contentWindow.addEventListener('resize', handleIframeResize);
+      iframeRef.current.contentWindow.addEventListener('resize', handleIframeResize);
       iframeRef.current.contentDocument.documentElement.classList.add('ds-u-overflow--hidden');
       handleIframeResize();
     }
@@ -102,9 +96,9 @@ const ResponsiveExample = ({ storyId, title, theme }: ResponsiveExample) => {
 
   return (
     <>
-      <div className="c-responsive-example ds-u-border--1">
+      <div className="c-responsive-example ds-u-border--1" ref={rootRef}>
         <ol className="c-responsive-example__button-list ds-u-border-bottom--1 ds-l-row ds-u-margin--0 ds-u-padding-x--0">
-          {Object.keys(breakpointOpts).map((breakpointName) => (
+          {Object.keys(breakpoints).map((breakpointName: keyof typeof breakpoints) => (
             <li
               className="c-responsive-example__list-item ds-l-col ds-u-padding-x--0"
               key={`breakpoint-${breakpointName}`}
@@ -116,34 +110,32 @@ const ResponsiveExample = ({ storyId, title, theme }: ResponsiveExample) => {
                 onClick={() => setIframeBreakpoint(breakpointName)}
               >
                 <strong>{breakpointName}</strong>
-                <div className="ds-u-font-size--small">Width: {breakpointOpts[breakpointName]}</div>
+                <div className="ds-u-font-size--small">Width: {breakpoints[breakpointName]}</div>
               </button>
             </li>
           ))}
         </ol>
         <div
           className="c-responsive-example__example-wrapper "
-          style={{ height: getHeight() }}
+          style={{ height: exampleWrapperHeight }}
           ref={exampleWrapperRef}
         >
-          <div
-            className={`c-responsive-example__iframe-wrapper ${
-              iframeBreakpoint && `c-responsive-example__iframe-wrapper--width-${iframeBreakpoint}`
+          <iframe
+            referrerPolicy="no-referrer"
+            className={`c-responsive-example__iframe ${
+              iframeBreakpoint && `c-responsive-example__iframe--width-${iframeBreakpoint}`
             }`}
-            style={{ transform: `scale(${getScale()})` }}
-          >
-            <iframe
-              referrerPolicy="no-referrer"
-              className={`c-responsive-example__iframe ${
-                iframeBreakpoint && `c-responsive-example__iframe--width-${iframeBreakpoint}`
-              }`}
-              src={iframeUrl}
-              title={title}
-              ref={iframeRef}
-              onLoad={onIframeLoad}
-              height={iframeHeight}
-            />
-          </div>
+            src={iframeUrl}
+            title={title}
+            ref={iframeRef}
+            onLoad={onIFrameLoad}
+            height={iframeHeight}
+            width={iframeWidth}
+            style={{ transform: `scale(${iframeScale})` }}
+          />
+          {iframeScale < 1 && (
+            <div className="c-responsive-example__scale">Scale: {iframeScale.toFixed(2)}</div>
+          )}
         </div>
       </div>
       <StorybookExampleFooter storyId={storyId} theme={theme} />
