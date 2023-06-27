@@ -1,8 +1,7 @@
 ---
 import { SkipNav, UsaBanner } from '@cmsgov/design-system';
-import BaseHead from './BaseHead.astro';
-import SideNav from './SideNav.astro';
-import Footer from './Footer.astro';
+import BaseHead from '../landmarks/BaseHead.astro';
+import Footer from '../landmarks/Footer.astro';
 
 interface Props {
   title: string;
@@ -18,16 +17,12 @@ const { title, description } = Astro.props;
   <head>
     <BaseHead title={title} description={description ?? ""} />
   </head>
-
   <body>
     <SkipNav href="#main" />
     <UsaBanner className="ds-u-display--none ds-u-md-display--block" />
-    <div class="ds-l-row ds-u-margin--0 full-height">
-      <SideNav />
-      <main class="ds-l-md-col ds-u-padding--0 ds-u-padding-bottom--4">
-        <slot />
-      </main>
-    </div>
+    <main class="ds-l-container ds-u-padding-bottom--4">
+      <slot />
+    </main>
     <Footer />
   </body>
 </html>

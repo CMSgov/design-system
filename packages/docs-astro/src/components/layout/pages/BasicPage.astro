@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import SideNavLayout from '../SideNavLayout.astro';
+import SideNavLayout from '../layouts/SideNavLayout.astro';
 
 type Props =
   | CollectionEntry<'foundation'>['data']
@@ -8,6 +8,7 @@ type Props =
   | CollectionEntry<'getting-started'>['data'];
 
 const { title } = Astro.props;
+// TODO: Add a table of contents
 ---
 
 <SideNavLayout title={title}>
