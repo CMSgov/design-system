@@ -59,46 +59,6 @@ const breakpointViewportSizes = {
   },
 };
 
-export const globalTypes = {
-  language: {
-    name: 'Language',
-    description: 'Internationalization language',
-    defaultValue: 'en',
-    toolbar: {
-      icon: 'globe',
-      items: [
-        { value: 'en', title: 'English' },
-        { value: 'es', title: 'Español' },
-      ],
-    },
-  },
-  analytics: {
-    name: 'Analytics',
-    description: 'Analytics settings',
-    defaultValue: 'off',
-    toolbar: {
-      icon: 'graphline',
-      items: [
-        { value: 'on', left: 'Analytics', title: 'Log to Actions' },
-        { value: 'off', left: 'Analytics', title: 'Off' },
-      ],
-    },
-  },
-  theme: {
-    name: 'Theme',
-    description: 'Current theme',
-    defaultValue: 'core',
-    toolbar: {
-      icon: 'paintbrush',
-      items: Object.keys(themes).map((key) => ({
-        value: key,
-        title: `${themes[key].displayName} theme`,
-      })),
-    },
-    type: 'desktop',
-  },
-};
-
 const onDarkDecorator = (Story, context) => {
   let className;
   if (context.parameters.onDark) {
