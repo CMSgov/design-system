@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SingleInputDateField from './SingleInputDateField';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
-import { useArgs } from '@storybook/preview-api';
 
 const meta: Meta<typeof SingleInputDateField> = {
   title: 'Components/SingleInputDateField',
@@ -17,25 +16,26 @@ export default meta;
 
 type Story = StoryObj<typeof SingleInputDateField>;
 
-const Template = () => {
-  const [{ dateString, ...args }, updateArgs] = useArgs();
-  const onChange = (...params) => {
-    action('onChange')(...params);
-    updateArgs({ dateString: params[0] });
-  };
-  return (
-    <SingleInputDateField
-      {...args}
-      name="single-input-date-field"
-      label="Birthday"
-      value={dateString ?? ''}
-      onChange={onChange}
-    />
-  );
+export const Default: Story = {
+  render: function Component(args) {
+    const [dateString, updateDate] = useState();
+    const onChange = (...params) => {
+      action('onChange')(...params);
+      updateDate(params[0]);
+    };
+    return (
+      <SingleInputDateField
+        {...args}
+        name="single-input-date-field"
+        value={dateString ?? ''}
+        onChange={onChange}
+      />
+    );
+  },
 };
 
 export const WithPicker: Story = {
-  render: Template,
+  ...Default,
   args: {
     label: 'What day did you move?',
     hint: 'This date should be within the past 60 days in order to qualify',
@@ -51,7 +51,7 @@ export const WithPicker: Story = {
 };
 
 export const WithError = {
-  render: Template,
+  ...Default,
   args: {
     errorMessage: 'Example error message',
     ...WithPicker.args,

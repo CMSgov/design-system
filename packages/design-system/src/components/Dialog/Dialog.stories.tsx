@@ -30,7 +30,7 @@ export default meta;
 
 type Story = StoryObj<typeof Dialog>;
 
-export const Default: Story = {
+export const DialogExample: Story = {
   render: function Component(args) {
     const [dialogOpen, updateOpen] = useState(false);
 
@@ -70,7 +70,7 @@ export const Default: Story = {
   },
 };
 
-export const PreventScroll: Story = {
+export const PreventScrollExample: Story = {
   render: function Component(args) {
     const [dialogOpen, updateOpen] = useState(false);
     const showModal = () => updateOpen(true);

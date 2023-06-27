@@ -71,7 +71,7 @@ const multiHeaderTableData = {
   ],
 };
 
-export const Default: Story = {
+const Default: Story = {
   render: function Component(args) {
     return (
       <Table {...args}>
