@@ -128,11 +128,3 @@ export const ResponsiveHeadings: Story = {
     </>
   ),
 };
-
-export const ResponsiveUtilityHeadings = {
-  render: () => (
-    <h1 className="ds-u-font-size--2xl ds-u-md-font-size--3xl ds-u-lg-font-size--4xl">
-      Example responsive heading using utility classes
-    </h1>
-  ),
-};
