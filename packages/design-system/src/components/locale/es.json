@@ -70,6 +70,9 @@
     "usaLogo": "USA.gov – Gobierno más simple",
     "warning": "Advertencia"
   },
+  "inlineError": {
+    "prefix": "Error"
+  },
   "monthPicker": {
     "selectAllText": "Seleccionar todo",
     "clearAllText": "Borrar todo"

@@ -70,6 +70,9 @@
     "usaLogo": "USA.gov - Government Made Easy",
     "warning": "Warning"
   },
+  "inlineError": {
+    "prefix": "Error"
+  },
   "monthPicker": {
     "selectAllText": "Select all",
     "clearAllText": "Clear all"
