@@ -1,7 +1,10 @@
 ---
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
-import '../styles/global.css';
+import '../../styles/global.css';
+import '@cmsgov/design-system/css/index.css';
+import '@cmsgov/design-system/css/core-theme.css';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 
 export interface Props {
 	title: string;
@@ -11,7 +14,8 @@ export interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
+const { title: pageTitle, description = SITE_DESCRIPTION, image = '/placeholder-social.jpg' } = Astro.props;
+const title = pageTitle ? `${pageTitle} - ${SITE_TITLE}` : SITE_TITLE
 ---
 
 <!-- Global Metadata -->

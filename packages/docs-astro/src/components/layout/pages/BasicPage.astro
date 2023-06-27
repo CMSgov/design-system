@@ -1,0 +1,19 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import SideNavLayout from '../SideNavLayout.astro';
+
+type Props =
+  | CollectionEntry<'foundation'>['data']
+  | CollectionEntry<'guidelines'>['data']
+  | CollectionEntry<'getting-started'>['data'];
+
+const { title } = Astro.props;
+---
+
+<SideNavLayout title={title}>
+  <article>
+    <h1>{title}</h1>
+    <hr />
+    <slot />
+  </article>
+</SideNavLayout>

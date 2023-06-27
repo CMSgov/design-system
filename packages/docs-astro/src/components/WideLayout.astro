@@ -1,0 +1,28 @@
+---
+import { SkipNav, UsaBanner } from '@cmsgov/design-system';
+import BaseHead from './BaseHead.astro';
+import Footer from './Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  children: any;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description ?? ""} />
+  </head>
+  <body>
+    <SkipNav href="#main" />
+    <UsaBanner className="ds-u-display--none ds-u-md-display--block" />
+    <main class="ds-l-container ds-u-padding-bottom--4">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
