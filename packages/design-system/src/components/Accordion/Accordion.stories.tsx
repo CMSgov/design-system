@@ -9,8 +9,7 @@ const meta: Meta<typeof Accordion> = {
   component: Accordion,
   args: {
     bordered: true,
-    openItems: [0],
-  } as any,
+  },
 };
 export default meta;
 
@@ -43,6 +42,10 @@ export const Default: Story = {
 };
 
 export const Controlled: Story = {
+  args: {
+    bordered: true,
+    openItems: [0],
+  } as any,
   render: function Component(args) {
     const [{ openItems }, setOpenItems] = useArgs();
 
