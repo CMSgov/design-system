@@ -83,9 +83,9 @@ export const VariationsOnDark: Story = {
 
 export const AllAnchorButtons: Story = {
   render: () => (
-    <div style={{ display: 'flex', gap: '1rem', flexDirection: 'column' }}>
+    <div style={{ display: 'flex', gap: '1rem', flexDirection: 'column' }} className="ds-content">
       <h4>Default and modified default</h4>
-      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }} className="ds-content">
+      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }} className="">
         <Button href="#!" size="big">
           Anchor button
         </Button>
@@ -372,9 +372,9 @@ export const AllAnchorButtons: Story = {
 
 export const AllButtons: Story = {
   render: () => (
-    <div style={{ display: 'flex', gap: '1rem', flexDirection: 'column' }}>
+    <div style={{ display: 'flex', gap: '1rem', flexDirection: 'column' }} className="ds-content">
       <h4>Default and modified default</h4>
-      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }} className="ds-content">
+      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
         <Button size="big">Button</Button>
         <Button>Button</Button>
         <Button size="small">Button</Button>
