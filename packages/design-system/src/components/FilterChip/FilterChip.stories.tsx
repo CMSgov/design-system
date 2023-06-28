@@ -8,7 +8,6 @@ const meta: Meta<typeof FilterChip> = {
   component: FilterChip,
   args: {
     label: 'Example Filter Chip',
-    size: 'default',
   },
 };
 export default meta;
@@ -31,7 +30,7 @@ export const MultipleChips: Story = {
     return (
       <>
         {listOfChips.map((chipData) => (
-          <FilterChip key={chipData.label} {...chipData} onDelete={onDelete} />
+          <FilterChip key={chipData.label} {...(chipData as any)} onDelete={onDelete} />
         ))}
       </>
     );
