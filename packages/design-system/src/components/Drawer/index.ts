@@ -1,3 +1,4 @@
 export * from './Drawer';
 export * from './DrawerToggle';
-export * from './DrawerManager';
+// Can't release it right now with a focus-management bug
+// export * from './DrawerManager';
