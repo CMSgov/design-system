@@ -10,7 +10,6 @@ export default {
   },
 };
 
-// an example for responsive visibility -- referenced in doc site
 export const visibility = () => (
   <div>
     {['sm', 'md', 'lg', 'xl'].map((breakpoint) => (

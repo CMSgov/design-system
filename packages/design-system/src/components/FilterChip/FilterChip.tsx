@@ -26,7 +26,7 @@ export interface FilterChipProps {
   /**
    * Function to call when filter chip is dismissed.
    */
-  onDelete: () => void;
+  onDelete: () => any;
   /**
    *  Use alternate thinner close icon in place of standard.
    */

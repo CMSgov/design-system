@@ -138,7 +138,7 @@ Below is a list of required attributes that are used to configure the Consistent
 - headerType (optional): Allows teams to pass certain header types based on their needs
   - If the attribute is not included, the MAX header with the config attributes being used the same way they have been.
   - headerType = ‘MAX’ then the MAX header with the config attributes being used the same way they have been.
-  - headerType = ‘CSR’ and beneficiary={name:’Stephen’} then the CSR header should be displayed along with the name “Stephen” displayed.
+  - headerType = ‘CSR’ and `beneficiary={name:'Stephen'}` then the CSR header should be displayed along with the name “Stephen” displayed.
 - Active-nav-section (optional): designates where to show an underline within the CH menus to help the beneficiaries better understand “where they are” in terms of global navigation using the header.
   - Default
     - The header will detect whether or not the current page url matches any of the links in the Consistent Header. If there is a match, then the underline will remain on that CH menu selection after navigating to that new page.
@@ -157,7 +157,7 @@ The Consistent Header has two breakpoints and three versions. At the lower range
 
 - Desktop: >1024px
 - Tablet: 1024px - 768px
-- Mobile: <768px
+- Mobile: \<768px
 
 <div className="ds-u-measure--wide ds-u-margin-top--2">
   <img src={consistentHeaderBreakpointsImg} alt="" class="ds-u-border--1" />
