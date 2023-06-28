@@ -4,7 +4,7 @@ import BaseHead from '../landmarks/BaseHead.astro';
 import Footer from '../landmarks/Footer.astro';
 
 interface Props {
-  title: string;
+  title?: string;
   description?: string;
   children: any;
 }
@@ -15,7 +15,7 @@ const { title, description } = Astro.props;
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description ?? ""} />
+    <BaseHead title={title} description={description} />
   </head>
   <body>
     <SkipNav href="#main" />
