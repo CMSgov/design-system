@@ -1,4 +1,4 @@
-import { defineCollection, z } from 'astro:content';
+import { CollectionEntry, defineCollection, z } from 'astro:content';
 
 const blog = defineCollection({
   // Type-check frontmatter using a schema
@@ -31,6 +31,9 @@ export const basicCollections = {
 } as const;
 
 export type BasicCollection = keyof typeof basicCollections;
+export type BasicEntry<T = BasicCollection> = T extends BasicCollection
+  ? CollectionEntry<T>
+  : never;
 
 export const collections = {
   blog,
