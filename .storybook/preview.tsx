@@ -1,6 +1,5 @@
 import './storybookStyles.scss';
 import React from 'react';
-import { Preview } from '@storybook/react';
 import {
   setAlertSendsAnalytics,
   setButtonSendsAnalytics,
@@ -13,6 +12,7 @@ import { setLanguage } from '@cmsgov/design-system/src/components/i18n';
 import { setLanguage as setLanguageFromPackage } from '@cmsgov/design-system';
 import themes from '../themes.json';
 import type { UtagContainer } from '@cmsgov/design-system';
+import type { Preview } from '@storybook/react';
 
 // Rewire analytics events to log to the console
 (window as UtagContainer).utag = { link: console.log };
@@ -56,7 +56,6 @@ const breakpointViewportSizes = {
       width: '1280px',
       height: '800px',
     },
-    type: 'desktop',
   },
 };
 

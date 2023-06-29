@@ -1,25 +1,21 @@
 import React from 'react';
 import ThirdPartyExternalLink from './ThirdPartyExternalLink';
+import type { Meta, StoryObj } from '@storybook/react';
 
-export default {
+const meta: Meta<typeof ThirdPartyExternalLink> = {
   title: 'Components/ThirdPartyExternalLink',
   component: ThirdPartyExternalLink,
-  argTypes: {
-    children: { control: 'text' },
-    className: { control: 'text' },
-    href: { control: 'text' },
-    learnMoreUrl: { control: 'text' },
-    origin: { control: 'text' },
-  },
 };
+export default meta;
 
-const Template = (args) => <ThirdPartyExternalLink {...args} />;
+type Story = StoryObj<typeof ThirdPartyExternalLink>;
 
-export const Default = Template.bind({});
-Default.args = {
-  children: 'Link to external site',
-  className: 'foo',
-  href: 'https://www.google.com/',
-  learnMoreUrl: 'https://design.cms.gov/components/third-party-external-link/',
-  origin: 'CMS Design System',
+export const Default: Story = {
+  args: {
+    children: 'Link to external site',
+    className: 'foo',
+    href: 'https://www.google.com/',
+    learnMoreUrl: 'https://design.cms.gov/components/third-party-external-link/',
+    origin: 'CMS Design System',
+  },
 };

@@ -14,11 +14,14 @@
 // Storybook's styles change, we'll need to update these rules. It is used for
 // the decorator of on-dark stories.
 .on-dark-story {
-  height: 100vh;
   padding: 1rem;
 
   #storybook-docs & {
     padding: 30px 20px;
+  }
+
+  #storybook-root & {
+    height: 100vh;
   }
 }
 
