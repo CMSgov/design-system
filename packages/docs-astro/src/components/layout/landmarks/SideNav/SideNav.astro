@@ -1,0 +1,196 @@
+---
+import MobileMenuWrapper from './MobileMenuWrapper';
+import { getCollection } from 'astro:content';
+import { VerticalNav } from '@cmsgov/design-system';
+import type { BasicCollection, BasicEntry } from '../../../../content/config';
+
+const { pathname } = Astro.url;
+
+async function getItemFromCollection(collectionName: BasicCollection, label: string) {
+  const pages = (await getCollection(collectionName)) as BasicEntry[];
+  const items = pages.map((page) => ({
+    label: page.data.title,
+    selected: pathname.includes(`${collectionName}/${page.slug}`),
+    url: `/${collectionName}/${page.slug}`,
+  }));
+  return {
+    label,
+    selected: items.some(item => item.selected),
+    items: items,
+  }
+}
+
+const navItems = [
+  await getItemFromCollection('getting-started', 'Getting Started'),
+  await getItemFromCollection('guidelines', 'Guidelines'),
+  await getItemFromCollection('foundation', 'Foundation'),
+];
+---
+<MobileMenuWrapper client:load>
+  <VerticalNav
+    className="c-navigation__link-list"
+    items={navItems}
+    client:load
+  />
+</MobileMenuWrapper>
+
+<style lang="scss" is:global>
+	@use '@cmsgov/design-system/src/styles/layout' as *;
+
+  // Mobile
+  .c-navigation {
+    background-color: var(--color-gray-lightest);
+    width: 100%;
+
+    .c-navigation__mobile-header {
+      align-items: center;
+      display: flex;
+      gap: $spacer-2;
+      padding: $spacer-2;
+
+      button {
+        color: currentColor;
+      }
+    }
+
+    .c-navigation__title {
+      background-color: transparent;
+      color: currentColor;
+      font-size: var(--font-size-xl);
+      font-weight: var(--font-weight-bold);
+      text-decoration: none;
+    }
+
+    .c-navigation__link-list {
+      border-block: 1px solid var(--vertical-nav-item__border-color);
+      gap: 0;
+
+      .ds-c-vertical-nav__label--parent {
+        text-transform: capitalize;
+      }
+    }
+
+    .c-navigation__bottom-link {
+      background-color: transparent;
+      display: flex;
+      gap: 0.5em;
+
+      svg {
+        height: 1em;
+        width: auto;
+      }
+    }
+  }
+
+  .c-navigation__mobile-header,
+  .c-navigation__switchers-wrapper {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+
+  .c-navigation__switchers-wrapper {
+    padding: $spacer-2;
+  }
+
+  .c-navigation__links-wrapper {
+    background-color: var(--color-gray-lightest);
+    padding: $spacer-2;
+  }
+
+  .c-theme-switcher label {
+    margin-block-start: 0;
+  }
+
+  .c-theme-switcher .ds-c-field,
+  .c-version-switcher .ds-c-field {
+    max-width: none;
+  }
+
+  .c-navigation__menu {
+    display: none;
+  }
+
+  .c-navigation--open {
+    inset: 0;
+    overflow-y: auto;
+    position: fixed;
+    z-index: 1;
+
+    .c-navigation__mobile-header {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    .c-navigation__menu {
+      display: block;
+    }
+  }
+
+  // Desktop
+  @media (min-width: $media-width-md) {
+    .c-navigation {
+      // Set it to a fixed width that is wide enough for most links so that it
+      // doesn't jump around when we open and close subsections.
+      width: 17rem;
+
+      .c-navigation__mobile-header {
+        display: none;
+      }
+
+      .c-navigation__menu {
+        display: block;
+      }
+
+      .c-navigation__link-list {
+        .ds-c-vertical-nav__label {
+          background-color: transparent;
+          text-align: start;
+
+          &:hover,
+          &:visited:hover {
+            position: relative;
+            z-index: 1;
+
+            &:before {
+              background-color: var(--vertical-nav-item__color--hover);
+              bottom: 0;
+              content: '';
+              filter: opacity(0.05);
+              left: 0;
+              position: absolute;
+              right: 0;
+              top: 0;
+              z-index: -1;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    .c-navigation {
+      forced-color-adjust: none;
+      -ms-high-contrast-adjust: none;
+
+      .ds-c-vertical-nav__label--current[aria-expanded='true'] {
+        background-color: Highlight;
+        color: HighlightText;
+
+        path {
+          fill: HighlightText;
+        }
+      }
+
+      .ds-c-vertical-nav__label--parent {
+        background-color: Window;
+
+        path {
+          fill: WindowText;
+        }
+      }
+    }
+  }
+
+</style>

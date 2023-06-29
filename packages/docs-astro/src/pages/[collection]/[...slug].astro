@@ -1,9 +1,9 @@
 ---
-import { CollectionEntry, getCollection } from 'astro:content';
 import BasicPage from '../../components/layout/pages/BasicPage.astro';
-import type { BasicCollection, BasicEntry } from '../../content/config';
+import { BasicCollection, BasicEntry, basicCollectionKeys } from '../../content/config';
+import { getCollection } from 'astro:content';
 
-export async function getStaticPaths() {
+export function getStaticPaths() {
   async function getCollectionPaths(collection: BasicCollection) {
     const posts = (await getCollection(collection)) as BasicEntry[];
     return posts.map((post) => ({
@@ -15,16 +15,9 @@ export async function getStaticPaths() {
     }));
   }
 
-  return [
-    ...(await getCollectionPaths('foundation')),
-    ...(await getCollectionPaths('guidelines')),
-    ...(await getCollectionPaths('getting-started')),
-  ];
+  return Promise.all(basicCollectionKeys.map(key => getCollectionPaths(key)));
 }
-type Props =
-  | CollectionEntry<'foundation'>
-  | CollectionEntry<'guidelines'>
-  | CollectionEntry<'getting-started'>;
+type Props = BasicEntry;
 
 const post = Astro.props;
 const { Content } = await post.render();
