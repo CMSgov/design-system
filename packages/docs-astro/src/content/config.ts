@@ -1,9 +1,17 @@
 import { CollectionEntry, defineCollection, z } from 'astro:content';
 
+const basicSchema = {
+  title: z.string(),
+  intro: z.string().optional(),
+};
+const basicPageConfig = {
+  schema: z.object(basicSchema),
+};
+
 const blog = defineCollection({
   // Type-check frontmatter using a schema
   schema: z.object({
-    title: z.string(),
+    ...basicSchema,
     description: z.string(),
     // Transform string to Date object
     pubDate: z
@@ -18,17 +26,30 @@ const blog = defineCollection({
   }),
 });
 
-const basicPageConfig = {
+const components = defineCollection({
   schema: z.object({
-    title: z.string(),
+    ...basicSchema,
+    core: z.object({
+      githubLink: z.string(),
+      sketchLink: z.string(),
+      storybookLink: z.string(),
+    }),
+    healthcare: z.object({
+      sketchLink: z.string(),
+    }),
+    medicare: z.object({
+      sketchLink: z.string(),
+    }),
   }),
-};
+});
 
 export const basicCollections = {
   foundation: defineCollection(basicPageConfig),
   guidelines: defineCollection(basicPageConfig),
   'getting-started': defineCollection(basicPageConfig),
+  components,
 } as const;
+
 export type BasicCollection = keyof typeof basicCollections;
 export type BasicEntry<T = BasicCollection> = T extends BasicCollection
   ? CollectionEntry<T>

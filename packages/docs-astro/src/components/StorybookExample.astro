@@ -1,0 +1,27 @@
+---
+export interface Props {
+  /**
+   * story id from storybook url
+   * example: `components-[COMPONENT_NAME]--default`
+   */
+  storyId: string;
+}
+
+const { storyId } = Astro.props;
+
+// The idea I have is to import a stories file and create a custom renderer for that
+// story in Astro. It's a pretty tall order, and I don't know if it's feasible to
+// make it comprehensive and robust enough. I thought maybe I could read the files
+// and take the story config objects out of them without importing all of those
+// modules' dependencies, but there are often external pieces that make up those
+// story objects, not to mention the imported components themselves.
+
+// const story = require('../../../design-system/src/components/Alert/Alert.stories.tsx');
+// console.log(story);
+const stories = await import('../../../design-system/src/components/Alert/Alert.stories');
+const args = stories.Default.args;
+const Story = stories.Default.render ?? (() => null);
+// console.log(alert)
+---
+<!-- <section class="c-storybook-example">{render(args, {} as any)}</section> -->
+<section class="c-storybook-example"><Story {...args} /></section>
