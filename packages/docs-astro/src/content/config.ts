@@ -34,12 +34,16 @@ const components = defineCollection({
       sketchLink: z.string(),
       storybookLink: z.string(),
     }),
-    healthcare: z.object({
-      sketchLink: z.string(),
-    }),
-    medicare: z.object({
-      sketchLink: z.string(),
-    }),
+    healthcare: z
+      .object({
+        sketchLink: z.string(),
+      })
+      .optional(),
+    medicare: z
+      .object({
+        sketchLink: z.string(),
+      })
+      .optional(),
   }),
 });
 
