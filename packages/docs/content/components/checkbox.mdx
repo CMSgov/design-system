@@ -4,7 +4,7 @@ intro: Checkboxes allow users to select one or more options from a list.
 core:
   githubLink: design-system/src/components/ChoiceList
   sketchLink: 8yn3JK7
-  storybookLink: components-choicelist--docs
+  storybookLink: components-choice-list--docs
 healthcare:
   sketchLink: 4a7lxP3
 ---
@@ -18,7 +18,7 @@ A `ChoiceList` component can be used to render a [radio](/components/radio/) but
 <StorybookExample
   componentName="choiceList"
   sourceFilePath="components/ChoiceList/ChoiceList.tsx"
-  storyId="components-choicelist--default-checkbox"
+  storyId="components-choice-list--default-checkbox"
 />
 
 ### Checkbox children
@@ -28,20 +28,17 @@ Checkboxes can have optional checked or unchecked children that are conditionall
 <StorybookExample
   componentName="choice"
   sourceFilePath="components/ChoiceList/Choice.tsx"
-  storyId="components-choicelist--choice-children"
+  storyId="components-choice-list--choice-children"
 />
 
 ## Code
 
 ### React
 
-Checkboxes can be managed as a group using `<ChoiceList>` or individually using `<Choice>`.
-
-Note that each of the items in the `choices` array represents props that will be passed to an individual `<Choice>` component. You can therefore define any of the props listed in the <strong>`<Choice>` component</strong> table below, including all valid attributes of the [HTML input element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input).
-
-#### `<ChoiceList>` component
-
-<PropTable componentName="ChoiceList" />
+<ReactDocsLinks>
+  <ReactDocsLink storyId="components-choice--docs">Choice</ReactDocsLink>
+  <ReactDocsLink storyId="components-choice-list--docs">Choice List</ReactDocsLink>
+</ReactDocsLinks>
 
 #### `<Choice>` component
 

@@ -97,8 +97,13 @@ export interface TooltipProps {
 }
 
 /**
+ * Tooltips provide additional information upon hover, focus or click.
  * For information about how and when to use this component,
  * [refer to its full documentation page](https://design.cms.gov/components/tooltip/).
+ *
+ * When using the `<TooltipIcon>` as the only child of `<Tooltip>`, be sure to
+ * provide an `aria-label` on the `<Tooltip>` to ensure an accessible name for
+ * the trigger.
  */
 export const Tooltip = (props: TooltipProps) => {
   const popper = useRef(null);

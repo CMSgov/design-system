@@ -4,7 +4,7 @@ intro: Radio buttons allow users to select exactly one choice from a group.
 core:
   githubLink: design-system/src/components/ChoiceList
   sketchLink: eKVZm2P
-  storybookLink: components-choicelist--docs
+  storybookLink: components-choice-list--docs
 healthcare:
   sketchLink: paqdxPr
 medicare:
@@ -20,7 +20,7 @@ A `ChoiceList` component can be used to render a [radio](/components/radio/) but
 <StorybookExample
   componentName="choiceList-radio"
   sourceFilePath="components/ChoiceList/ChoiceList.tsx"
-  storyId="components-choicelist--default-radio"
+  storyId="components-choice-list--default-radio"
 />
 
 ### Radio button children
@@ -30,22 +30,17 @@ Radio buttons can have optional checked or unchecked children that are condition
 <StorybookExample
   componentName="choice"
   sourceFilePath="components/ChoiceList/Choice.tsx"
-  storyId="components-choicelist--choice-children"
+  storyId="components-choice-list--choice-children"
 />
 
 ## Code
 
 ### React
 
-Radio buttons can be managed as a group using `<ChoiceList>` or individually using `<Choice>`.
-
-Note that each of the items in the `choices` array represents props that will be passed to an individual `<Choice>` component. You can therefore define any of the props listed in the <strong>`<Choice>` component</strong> table below, including all valid attributes of the [HTML input element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input).
-
-#### `<ChoiceList>` component
-
-<PropTable componentName="ChoiceList" />
-
-#### `<Choice>` component
+<ReactDocsLinks>
+  <ReactDocsLink storyId="components-choice--docs">Choice</ReactDocsLink>
+  <ReactDocsLink storyId="components-choice-list--docs">Choice List</ReactDocsLink>
+</ReactDocsLinks>
 
 <PropTable componentName="Choice">
   <PropTableHtmlElementRow elements={['input']} />

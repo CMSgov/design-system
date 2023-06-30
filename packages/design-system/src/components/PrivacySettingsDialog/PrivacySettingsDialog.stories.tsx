@@ -4,7 +4,7 @@ import { Title, Subtitle, Description, ArgsTable, PRIMARY_STORY } from '@storybo
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof PrivacySettingsDialog> = {
-  title: 'Components/PrivacySettingsDialog',
+  title: 'Components/Privacy Settings Dialog',
   component: PrivacySettingsDialog,
   args: {
     domain: 'Test.gov',

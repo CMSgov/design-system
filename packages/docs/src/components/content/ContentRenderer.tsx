@@ -19,6 +19,8 @@ import SpacingUtilityExampleList from './SpacingUtilityExampleList';
 import StorybookExample from './StorybookExample';
 import TextColorList from './TextColorList';
 import ThemeContent from './ThemeContent';
+import ReactDocsLinks from './ReactDocsLinks';
+import ReactDocsLink from './ReactDocsLink';
 
 // adds DS styling to tables from markdown
 const TableWithClassnames = (props) => {
@@ -80,6 +82,8 @@ const customComponents = (theme) => ({
   pre: PreformattedWithLanguageClass,
   PropTable: (props) => <PropTable theme={theme} {...props} />,
   PropTableHtmlElementRow: (props) => <PropTableHtmlElementRow theme={theme} {...props} />,
+  ReactDocsLinks,
+  ReactDocsLink: (props) => <ReactDocsLink theme={theme} {...props} />,
   ResponsiveExample: (props) => <ResponsiveExample theme={theme} {...props} />,
   SeeStorybookForReactGuidance: (props) => (
     <SeeStorybookForReactGuidance theme={theme} {...props} />

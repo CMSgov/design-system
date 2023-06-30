@@ -4,7 +4,7 @@ import { Alert } from '../Alert';
 import ChoiceList from './ChoiceList';
 
 const meta: Meta<typeof ChoiceList> = {
-  title: 'Components/ChoiceList',
+  title: 'Components/Choice List',
   component: ChoiceList,
   args: {
     choices: [
