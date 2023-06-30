@@ -64,6 +64,8 @@ export const Default: Story = {
   },
 };
 
+export const Component = Dropdown;
+
 export const WithError: Story = {
   args: {
     options: dropdownOptions,

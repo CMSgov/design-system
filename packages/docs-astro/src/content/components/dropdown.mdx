@@ -8,6 +8,8 @@ core:
 healthcare:
   sketchLink: eK07830
 ---
-import StorybookExample from '../../components/StorybookExample.astro';
 
-<StorybookExample filename="design-system/src/components/Dropdown/Dropdown.stories" story="Default" />
+import Config, { Component, Default } from '../../../../design-system/src/components/Dropdown/Dropdown.stories.tsx';
+
+<Component {...Default.args} client:only />
+{/* <Config.component {...Default.args} client:only /> Does not work */}

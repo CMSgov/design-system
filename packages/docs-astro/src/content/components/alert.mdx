@@ -11,9 +11,11 @@ medicare:
   sketchLink: 1K9gg0y
 ---
 import StorybookExample from '../../components/StorybookExample.astro';
+import { Default } from '../../../../design-system/src/components/Alert/Alert.stories.tsx';
 
 ## Examples
 
 ### Informational (Default)
 
 <StorybookExample filename="design-system/src/components/Alert/Alert.stories" story="Default" />
+<Default.render {...Default.args} />
