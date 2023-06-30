@@ -107,7 +107,7 @@ export interface AutocompleteProps
   /**
    * Array of objects used to populate the suggestion list that appears below the input as users type.
    * Passing an empty array will show a "No results" message. If you do not yet want to show results,
-   * pass in `undefined` or `null`.
+   * this props should be undefined.
    */
   items?: AutocompleteItem[];
   /**
