@@ -1,5 +1,6 @@
 import './storybookStyles.scss';
 import React from 'react';
+import DocumentationTemplate from './DocumentationTemplate.mdx';
 import {
   setAlertSendsAnalytics,
   setButtonSendsAnalytics,
@@ -169,6 +170,9 @@ const preview: Preview = {
     },
     viewport: {
       viewports: breakpointViewportSizes,
+    },
+    docs: {
+      page: DocumentationTemplate,
     },
   },
   decorators: [
