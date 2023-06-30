@@ -54,6 +54,10 @@ export interface FormLabelProps {
   textClassName?: string;
 }
 
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/form-label/).
+ */
 export class FormLabel extends React.PureComponent<
   React.ComponentPropsWithRef<'label'> & React.ComponentPropsWithRef<'legend'> & FormLabelProps,
   any

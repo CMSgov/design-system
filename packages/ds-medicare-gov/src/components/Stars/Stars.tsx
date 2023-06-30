@@ -17,6 +17,10 @@ export interface StarsProps {
   ariaHidden?: boolean;
 }
 
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/stars/?theme=medicare).
+ */
 const Stars: FunctionComponent<StarsProps> = ({
   number,
   total,

@@ -69,6 +69,10 @@ interface MonthPickerProps extends FormFieldProps {
   clearAllText?: string;
 }
 
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/month-picker/).
+ */
 export const MonthPicker = (props: MonthPickerProps) => {
   const locale = fallbackLocale(getLanguage(), 'US');
   const months = getMonthNames(locale);

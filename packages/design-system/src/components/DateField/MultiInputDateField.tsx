@@ -131,6 +131,10 @@ export interface DateFieldProps extends Omit<FormFieldProps, 'label'> {
   yearValue?: DateFieldYearValue;
 }
 
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/date-field/multi-input-date-field/).
+ */
 export function MultiInputDateField(props: DateFieldProps): React.ReactElement {
   const { labelProps, fieldProps, wrapperProps, bottomError } = useFormLabel({
     label: t('dateField.label'),

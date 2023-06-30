@@ -72,6 +72,10 @@ type OtherProps = Omit<
 
 export type ButtonProps = CommonButtonProps & OtherProps;
 
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/button/).
+ */
 export const Button = (props: ButtonProps) => {
   const {
     analytics,

@@ -6,6 +6,10 @@ import { AnalyticsOverrideProps } from '../analytics';
 
 export interface HelpDrawerProps extends DrawerProps, AnalyticsOverrideProps {}
 
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/drawer/).
+ */
 export const HelpDrawer = (props: HelpDrawerProps) => {
   const {
     analytics,

@@ -46,6 +46,10 @@ export interface VerticalNavProps {
   onLinkClick?: (evt: React.MouseEvent | React.KeyboardEvent, id: string, url: string) => any;
 }
 
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/vertical-navigation/).
+ */
 export const VerticalNav = (props: VerticalNavProps): React.ReactElement => {
   const classes = classNames(
     {

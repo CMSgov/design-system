@@ -39,6 +39,10 @@ export interface StepListProps {
   substepsLabelText?: string;
 }
 
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/step-list/).
+ */
 export const StepList = ({
   steps,
   component,

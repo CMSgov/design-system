@@ -6,6 +6,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 const meta: Meta<typeof TabsComponent> = {
   title: 'Components/Tabs',
   component: TabsComponent,
+  subcomponents: { TabPanel },
 };
 export default meta;
 

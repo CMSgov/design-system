@@ -109,6 +109,10 @@ export type DropdownProps = BaseDropdownProps &
   OptionsOrChildren &
   Omit<React.ComponentPropsWithRef<'button'>, keyof BaseDropdownProps>;
 
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/dropdown/).
+ */
 export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   validateProps(props);
 

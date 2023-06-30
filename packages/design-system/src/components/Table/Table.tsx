@@ -79,6 +79,10 @@ function isTableCaption(child: React.ReactElement): boolean {
   return child && (child.type === TableCaption || componentName === 'TableCaption');
 }
 
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/table/).
+ */
 export class Table extends React.Component<
   Omit<React.ComponentPropsWithoutRef<'table'>, OmitProps> & TableProps,
   any

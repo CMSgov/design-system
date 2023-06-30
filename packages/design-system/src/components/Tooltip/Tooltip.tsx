@@ -96,6 +96,10 @@ export interface TooltipProps {
   zIndex?: number;
 }
 
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/tooltip/).
+ */
 export const Tooltip = (props: TooltipProps) => {
   const popper = useRef(null);
   const id = useRef(props.id ?? uniqueId('trigger_'));

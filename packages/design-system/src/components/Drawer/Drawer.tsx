@@ -50,6 +50,10 @@ export interface DrawerProps {
   onCloseClick: (event: React.MouseEvent | React.KeyboardEvent) => void;
 }
 
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/drawer/).
+ */
 export const Drawer = (props: DrawerProps) => {
   const headingRef = useRef(null);
   const id = useRef(props.headingId || uniqueId('drawer_'));
