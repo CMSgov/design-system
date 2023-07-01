@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import themes from '../../../../../themes.json';
 
-const sbID = 'components-singleinputdatefield--with-picker';
+const sbID = 'components-single-input-date-field--with-picker';
 const storyUrl = `http://localhost:6006/iframe.html?viewMode=story&id=${sbID}`;
 
 Object.keys(themes).forEach((theme) => {

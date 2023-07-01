@@ -3,7 +3,7 @@ import FormLabel from './FormLabel';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof FormLabel> = {
-  title: 'Components/FormLabel',
+  title: 'Components/Form Label',
   component: FormLabel as any,
   args: {
     children: 'Sample Label',

@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof SingleInputDateField> = {
-  title: 'Components/SingleInputDateField',
+  title: 'Components/Single Input Date Field',
   component: SingleInputDateField,
   args: {
     hint: 'Please enter your birthday',
