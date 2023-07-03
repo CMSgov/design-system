@@ -106,4 +106,30 @@ describe('Controlled accordion item', function () {
     userEvent.click(buttonEl);
     expect(onClick).toHaveBeenCalled();
   });
+  it('uses isControlledOpen as source of truth', () => {
+    const onChange = jest.fn();
+    const baseProps = { ...defaultProps, children: defaultChildren, onChange };
+    const { rerender } = renderAccordionItem({ ...baseProps, isControlledOpen: false });
+
+    const buttonEl = screen.getByRole('button');
+    expect(buttonEl).toHaveAttribute('aria-expanded', 'false');
+
+    rerender(
+      <AccordionItem {...baseProps} isControlledOpen={true}>
+        {defaultChildren}
+      </AccordionItem>
+    );
+    expect(buttonEl).toHaveAttribute('aria-expanded', 'true');
+
+    rerender(
+      <AccordionItem {...baseProps} isControlledOpen={false}>
+        {defaultChildren}
+      </AccordionItem>
+    );
+    expect(buttonEl).toHaveAttribute('aria-expanded', 'false');
+
+    // Even clicking the button shouldn't expand it if it's controlled
+    userEvent.click(buttonEl);
+    expect(buttonEl).toHaveAttribute('aria-expanded', 'false');
+  });
 });
