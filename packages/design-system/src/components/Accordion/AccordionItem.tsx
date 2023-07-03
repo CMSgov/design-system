@@ -62,6 +62,7 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
   heading,
   headingLevel = '2',
   id,
+  // TODO: Explore deprecating `isControlledOpen` in favor of `isOpen`
   isControlledOpen,
   onChange,
   closeIcon = (
@@ -87,9 +88,7 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
   const isControlled = !!onChange;
   const contentId = id || uniqueId('accordionItem_');
   const buttonId = `${contentId}-button`;
-  const [isOpen, setIsOpen] = useState(() => {
-    return isControlled ? isControlledOpen : defaultOpen;
-  });
+  const [isOpen, setIsOpen] = useState(isControlled ? isControlledOpen : defaultOpen);
 
   // Set the state for opening and closing an accordion item
   const handleClick = () => {
