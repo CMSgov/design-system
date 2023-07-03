@@ -121,6 +121,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   const {
     autoFocus,
     children,
+    className,
     fieldClassName,
     onChange,
     options,
@@ -205,6 +206,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     labelId,
     className: classNames(
       'ds-c-dropdown',
+      className,
       isOpen && 'ds-c-dropdown--open',
       size && `ds-c-field--${size}`
     ),
