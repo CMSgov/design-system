@@ -460,6 +460,7 @@
   position: relative;
 
   .rdp {
+    background-color: var(--color-background-dialog);
     border: 1px solid var(--color-gray-dark);
     border-radius: 8px;
     box-shadow: 0 0 17px 0 var(--color-gray-light);
