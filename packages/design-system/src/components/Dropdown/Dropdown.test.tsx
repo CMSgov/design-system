@@ -44,7 +44,14 @@ describe('Dropdown', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  it('applies additional classNames to button element', () => {
+  it('applies additional classes to root element', () => {
+    const { container } = makeDropdown({ className: 'bar' });
+    expect(container.firstChild).toHaveClass('bar');
+    // Make sure we're not replacing the other class names
+    expect(container.firstChild).toHaveClass('ds-c-dropdown');
+  });
+
+  it('applies additional classes to button element', () => {
     makeDropdown({ fieldClassName: 'foo' });
 
     const button = screen.getByRole('combobox');

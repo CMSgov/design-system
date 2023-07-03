@@ -125,12 +125,14 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   const {
     autoFocus,
     children,
+    className,
     fieldClassName,
     onChange,
     options,
     size,
     defaultValue,
     value,
+    inputRef,
     ...extraProps
   } = props;
 
@@ -209,6 +211,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     labelId,
     className: classNames(
       'ds-c-dropdown',
+      className,
       isOpen && 'ds-c-dropdown--open',
       size && `ds-c-field--${size}`
     ),
@@ -223,7 +226,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
 
   const buttonProps = getToggleButtonProps({
     ...fieldProps,
-    ref: mergeRefs([props.inputRef, useAutofocus<HTMLButtonElement>(props.autoFocus)]),
+    ref: mergeRefs([inputRef, useAutofocus<HTMLButtonElement>(props.autoFocus)]),
     className: classNames(
       'ds-c-dropdown__button',
       'ds-c-field',
