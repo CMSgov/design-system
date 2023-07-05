@@ -3,7 +3,7 @@ import PrivacySettingsDialog from './PrivacySettingsDialog';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof PrivacySettingsDialog> = {
-  title: 'Components/Privacy Settings Dialog',
+  title: 'Components/PrivacySettingsDialog',
   component: PrivacySettingsDialog,
   args: {
     domain: 'Test.gov',
