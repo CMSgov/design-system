@@ -159,16 +159,16 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   if (value !== undefined) {
     // Controlled component
     controlledSelectedItem = items.find((item) => value === item.value);
-    // if (!controlledSelectedItem) {
-    //   throw new Error(`Could not find option matching value: ${value}`);
-    // }
+    if (!controlledSelectedItem) {
+      console.warn(`Dropdown component could not find option matching value: ${value}`);
+    }
   } else {
     defaultSelectedItem =
       defaultValue !== undefined
         ? items.find((item) => defaultValue === item.value)
         : items.filter((item) => !item.isOptGroup)[0];
     if (!defaultSelectedItem) {
-      throw new Error('Dropdown component could not determine a default selected option');
+      console.warn('Dropdown component could not determine a default selected option');
     }
   }
 
@@ -292,7 +292,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
       <FormLabel {...labelProps} fieldId={fieldProps.id} />
       <button {...buttonProps}>
         <span id={buttonContentId} className="ds-u-truncate">
-          {selectedItem.label}
+          {selectedItem?.label}
         </span>
         <span className="ds-c-dropdown__caret">
           <SvgIcon

@@ -60,7 +60,7 @@ const htmlOptions = (
 
 export const Default: Story = {
   args: {
-    options: [],
+    options: dropdownOptions,
     label: 'Dropdown example',
     name: 'dropdown_field',
   },
@@ -146,6 +146,9 @@ export const InverseOption: Story = {
 
 export const Controlled: Story = {
   args: {
+    options: dropdownOptions,
+    label: 'Dropdown example',
+    name: 'dropdown_field',
     value: '3',
   },
   render: function Component(args) {
