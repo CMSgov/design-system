@@ -159,9 +159,9 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   if (value !== undefined) {
     // Controlled component
     controlledSelectedItem = items.find((item) => value === item.value);
-    if (!controlledSelectedItem) {
-      throw new Error(`Could not find option matching value: ${value}`);
-    }
+    // if (!controlledSelectedItem) {
+    //   throw new Error(`Could not find option matching value: ${value}`);
+    // }
   } else {
     defaultSelectedItem =
       defaultValue !== undefined
