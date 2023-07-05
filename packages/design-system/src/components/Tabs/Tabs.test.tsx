@@ -163,7 +163,7 @@ describe('Tabs', function () {
     const onChange = jest.fn();
     const children = createPanels(3);
     const baseProps = { onChange };
-    const { rerender } = renderTabs({ ...baseProps, selected: getPanelId(3) });
+    const { rerender } = renderTabs({ ...baseProps, selectedId: getPanelId(3) }, children);
     const tabEls = screen.getAllByRole('tab');
     const panelEls = screen.getAllByRole('tabpanel', { hidden: true });
 
@@ -174,14 +174,14 @@ describe('Tabs', function () {
     // Clicking the first tab shoudl call `onChange` but should do nothing else
     // because this is a controlled component
     tabEls[0].click();
-    expect(onChange).toHaveBeenCalledWith(getPanelId(1), getPanelId(2));
+    expect(onChange).toHaveBeenCalledWith(getPanelId(1), getPanelId(3));
     expect(panelEls[0].getAttribute('aria-hidden')).toBe('true');
     expect(panelEls[1].getAttribute('aria-hidden')).toBe('true');
     expect(panelEls[2].getAttribute('aria-hidden')).toBe('false');
 
     // But then if we re-render with a different panel selected, it should update
     rerender(
-      <Tabs {...baseProps} selected={getPanelId(2)}>
+      <Tabs {...baseProps} selectedId={getPanelId(2)}>
         {children}
       </Tabs>
     );
