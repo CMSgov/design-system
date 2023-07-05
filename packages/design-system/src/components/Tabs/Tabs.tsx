@@ -10,10 +10,17 @@ export interface TabsProps {
    */
   children: React.ReactNode;
   /**
-   * Sets the initial selected `TabPanel` state. If this isn't set, the first
-   * `TabPanel` will be selected.
+   * Sets the initial selected state to the specified `TabPanel` id. Use this
+   * for an uncontrolled component; otherwise, use the `selectedId` property.
+   * If no selected id is specified, the first `TabPanel` will be selected.
    */
   defaultSelectedId?: string;
+  /**
+   * Sets the initial selected state to the specified `TabPanel` id. Use this
+   * in combination with `onChange` for a controlled component; otherwise, set
+   * `defaultSelectedId`.
+   */
+  selectedId?: string;
   /**
    * A callback function that's invoked when the selected tab is changed.
    * `(selectedId, prevSelectedId) => void`
@@ -78,7 +85,10 @@ const panelTabId = (panel): string => {
  */
 export const Tabs = (props: TabsProps) => {
   const initialSelectedId = props.defaultSelectedId || getDefaultSelectedId(props);
-  const [selectedId, setSelectedId] = useState(initialSelectedId);
+  const [internalSelectedId, setSelectedId] = useState(initialSelectedId);
+  const isControlled = props.selectedId !== undefined;
+  const selectedId = isControlled ? props.selectedId : internalSelectedId;
+
   const listClasses = classnames('ds-c-tabs', props.tablistClassName);
   // using useRef hook to keep track of elements to focus
   const tabsRef = useRef({});
