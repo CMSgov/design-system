@@ -4,7 +4,7 @@ import { StepList as StepListComponent } from './StepList';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof StepListComponent> = {
-  title: 'Components/Step List',
+  title: 'Components/StepList',
   component: StepListComponent,
 };
 export default meta;
