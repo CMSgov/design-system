@@ -4,7 +4,7 @@ import MultiInputDateField from './MultiInputDateField';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof MultiInputDateField> = {
-  title: 'Components/Multi Input Date Field',
+  title: 'Components/MultiInputDateField',
   component: MultiInputDateField,
 };
 export default meta;
