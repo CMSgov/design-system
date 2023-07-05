@@ -8,11 +8,14 @@ import versions from '../../../../../versions.json';
 import useTheme from '../../helpers/useTheme';
 import { Dropdown } from '@cmsgov/design-system';
 
-function getVersionOptions(versions: string[]) {
-  return versions.map((version) => ({
-    label: version,
-    value: version,
-  }));
+function getVersionOptions(versions: string[], fallbackVersion) {
+  return versions.length
+    ? versions.map((version) => ({
+        label: version,
+        value: version,
+      }))
+    : // Temporary fallback for race condition with versions list
+      [{ label: fallbackVersion, value: fallbackVersion }];
 }
 
 function getPackageData(theme: string) {
@@ -57,7 +60,7 @@ const VersionSwitcher = () => {
       label="Documentation version"
       name="version-switcher"
       className="c-version-switcher"
-      options={getVersionOptions(themeVersions)}
+      options={getVersionOptions(themeVersions, currentVersion)}
       value={currentVersion}
       onChange={onVersionChange}
       inversed={true}
