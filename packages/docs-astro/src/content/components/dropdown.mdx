@@ -9,7 +9,7 @@ healthcare:
   sketchLink: eK07830
 ---
 
-import Config, { Component, Default } from '../../../../design-system/src/components/Dropdown/Dropdown.stories.tsx';
+import { Controlled } from '../../../../design-system/src/components/Dropdown/Dropdown.stories.tsx';
 
-<Component {...Default.args} client:only />
+<Controlled.render {...Controlled.args} client:only />
 {/* <Config.component {...Default.args} client:only /> Does not work */}
