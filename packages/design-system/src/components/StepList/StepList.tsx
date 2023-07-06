@@ -57,6 +57,88 @@ export interface StepListProps {
 /**
  * For information about how and when to use this component,
  * [refer to its full documentation page](https://design.cms.gov/components/step-list/).
+ *
+ * ## Start, Resume, and Edit links
+ *
+ * A user interacts with the steps through "Start", "Resume", and "Edit"
+ * links.
+ *
+ * In the React component, the links' `href` properties are determined by the
+ * `step` object's `href` property. One can also optionally pass an
+ * `onStepLinkClick` function that will cancel the default link behavior and call
+ * `onStepLinkClick` with `href` as a parameter for apps that handle routing with
+ * JavaScript.
+ *
+ * When a step has substeps and is incomplete, the `href` property should be set to
+ * match the `href` of the current substep—that is, the first incomplete substep.
+ * The "Edit" button will only appear on substeps that have been completed.
+ *
+ * ## Managing list state
+ *
+ * ### Substeps
+ *
+ * The `<StepList>` component takes an array of step objects. From there steps can
+ * be broken down infinitely into sub-steps. This allows us to have unique URLs for
+ * each part of a step; however, by default we only display two levels of this tree
+ * —the _step_ and _substep_. This default behavior should remain unchanged except
+ * for special circumstances. It is better not to overwhelm the user with showing
+ * all the substeps and giving them names.
+ *
+ * We do, nonetheless, encourage the use of sub-substeps that are not visible where
+ * these substeps span multiple pages and have their own unique URLs. If, for
+ * example, the user completes the first page of the `household > overall` substep
+ * where they list the household members but has not completed the second page
+ * where they define those members' relationships to each other, we want the
+ * "Resume" button to take them back to the relationships page and not the first
+ * page where they entered their names. This, of course, requires an extra
+ * steps-building process to update a top-level steps' `href` property by
+ * traversing the substep tree to find the first incomplete step. See the
+ * [Completed, started, and isNextStep](#completed-started-and-isnextstep) section
+ * below for an example JavaScript function that can change the `href` of steps
+ * based on their substeps.
+ *
+ * ### Completed, started, and isNextStep
+ *
+ * The _state_ of a step object will be defined for these purposes as the values
+ * of its `completed`, `started`, and `isNextStep` properties. These correspond to
+ * different visual states when rendered by the `<StepList>`, showing "Completed",
+ * "Resume", or "Start" respectively. For steps with substeps, the state should be
+ * representative of the collective states of its substeps. For example, if a step
+ * has substeps that have `completed: false`, that step should not have
+ * `completed: true` because not all of its substeps have been completed. Similarly
+ * a step can only be `started` if at least one of its substeps has been `started`.
+ * This should be true for each of the substep's substeps and so on. Below is an
+ * example function that can propagate this state information up from the smallest
+ * substep to the largest step before passing the steps array to the `<StepList>`
+ * component.
+ *
+ * ```js
+ * function propagateSubstepState(step) {
+ *   if (step.steps) {
+ *     const steps = step.steps.map(propagateSubstepState);
+ *     const newStep = {
+ *       ...step,
+ *       steps,
+ *       started: steps.some((s) => s.started),
+ *       completed: steps.every((s) => s.completed),
+ *     };
+ *     if (!newStep.completed) {
+ *       const nextStep = steps.find((s) => !s.completed);
+ *       newStep.href = nextStep.href;
+ *     }
+ *     return newStep;
+ *   } else {
+ *     return step;
+ *   }
+ * }
+ *
+ * // ...
+ * //
+ * // Render function:
+ *
+ * const steps = rawSteps.map(propagateSubstepState);
+ * return <StepList steps={steps} />;
+ * ```
  */
 export const StepList = ({
   steps,
