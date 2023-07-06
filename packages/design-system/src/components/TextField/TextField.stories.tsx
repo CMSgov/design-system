@@ -7,7 +7,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
 
 const meta: Meta<typeof TextField> = {
-  title: 'Components/Text Field',
+  title: 'Components/TextField',
   component: TextField,
   args: {
     label: 'Text Field Label',

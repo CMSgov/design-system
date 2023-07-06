@@ -7,7 +7,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
 
 const meta: Meta<typeof Help> = {
-  title: 'Components/Help Drawer',
+  title: 'Components/HelpDrawer',
   component: Help,
   args: {
     footerTitle: 'Footer Title',
