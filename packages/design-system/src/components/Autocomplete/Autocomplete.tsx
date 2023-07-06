@@ -105,7 +105,9 @@ export interface AutocompleteProps
    */
   itemToString?: UseComboboxProps<any>['itemToString'];
   /**
-   * Array of objects used to populate the suggestion list that appears below the input as users type. This array of objects is intended for an async data callback, and should conform to the prescribed shape to avoid errors.
+   * Array of objects used to populate the suggestion list that appears below the input as users type.
+   * Passing an empty array will show a "No results" message. If you do not yet want to show results,
+   * this props should be undefined.
    */
   items?: AutocompleteItem[];
   /**

@@ -3,14 +3,14 @@
 exports[`Dropdown accepts optgroup children 1`] = `
 <ul
   class="ds-c-dropdown__menu ds-c-dropdown__menu--grouped"
-  id="dropdown__menu--64"
+  id="dropdown__menu--68"
   role="listbox"
 >
   <li
     aria-selected="false"
     class="ds-c-dropdown__menu-item-group"
     disabled=""
-    id="downshift-15-item-0"
+    id="downshift-16-item-0"
     role="group"
   >
     Group A
@@ -18,7 +18,7 @@ exports[`Dropdown accepts optgroup children 1`] = `
   <li
     aria-selected="true"
     class="ds-c-dropdown__menu-item ds-c-dropdown__menu-item--highlighted ds-c-dropdown__menu-item--selected"
-    id="downshift-15-item-1"
+    id="downshift-16-item-1"
   >
     <span
       class="ds-c-dropdown__menu-item-selected-indicator"
@@ -27,7 +27,7 @@ exports[`Dropdown accepts optgroup children 1`] = `
         aria-hidden="true"
         class="ds-c-icon ds-u-font-size--sm"
         focusable="false"
-        id="icon-50"
+        id="icon-53"
         viewBox="0 0 448 512"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -41,14 +41,14 @@ exports[`Dropdown accepts optgroup children 1`] = `
   <li
     aria-selected="false"
     class="ds-c-dropdown__menu-item"
-    id="downshift-15-item-2"
+    id="downshift-16-item-2"
   >
     Option A-2
   </li>
   <li
     aria-selected="false"
     class="ds-c-dropdown__menu-item"
-    id="downshift-15-item-3"
+    id="downshift-16-item-3"
   >
     Option A-3
   </li>
@@ -56,7 +56,7 @@ exports[`Dropdown accepts optgroup children 1`] = `
     aria-selected="false"
     class="ds-c-dropdown__menu-item-group"
     disabled=""
-    id="downshift-15-item-4"
+    id="downshift-16-item-4"
     role="group"
   >
     Group B
@@ -64,21 +64,21 @@ exports[`Dropdown accepts optgroup children 1`] = `
   <li
     aria-selected="false"
     class="ds-c-dropdown__menu-item"
-    id="downshift-15-item-5"
+    id="downshift-16-item-5"
   >
     Option B-1
   </li>
   <li
     aria-selected="false"
     class="ds-c-dropdown__menu-item"
-    id="downshift-15-item-6"
+    id="downshift-16-item-6"
   >
     Option B-2
   </li>
   <li
     aria-selected="false"
     class="ds-c-dropdown__menu-item"
-    id="downshift-15-item-7"
+    id="downshift-16-item-7"
   >
     Option B-3
   </li>
@@ -200,8 +200,8 @@ exports[`Dropdown supports bottom placed error 1`] = `
   >
     <label
       class="ds-c-label"
-      for="dropdown__button--21"
-      id="dropdown__label--22"
+      for="dropdown__button--25"
+      id="dropdown__label--26"
     >
       <span
         class=""
@@ -210,21 +210,21 @@ exports[`Dropdown supports bottom placed error 1`] = `
       </span>
     </label>
     <button
-      aria-controls="dropdown__menu--24"
+      aria-controls="dropdown__menu--28"
       aria-describedby="1_error"
       aria-expanded="false"
       aria-haspopup="listbox"
       aria-invalid="true"
-      aria-labelledby="dropdown__button-content--23 dropdown__label--22"
+      aria-labelledby="dropdown__button-content--27 dropdown__label--26"
       class="ds-c-dropdown__button ds-c-field ds-c-field--error"
-      id="dropdown__button--21"
+      id="dropdown__button--25"
       name="dropdown"
       role="combobox"
       tabindex="0"
     >
       <span
         class="ds-u-truncate"
-        id="dropdown__button-content--23"
+        id="dropdown__button-content--27"
       >
         1
       </span>
@@ -235,7 +235,7 @@ exports[`Dropdown supports bottom placed error 1`] = `
           aria-hidden="true"
           class="ds-c-icon ds-u-font-size--sm"
           focusable="false"
-          id="icon-18"
+          id="icon-21"
           viewBox="0 0 448 512"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -251,13 +251,13 @@ exports[`Dropdown supports bottom placed error 1`] = `
     >
       <ul
         class="ds-c-dropdown__menu"
-        id="dropdown__menu--24"
+        id="dropdown__menu--28"
         role="listbox"
       >
         <li
           aria-selected="true"
           class="ds-c-dropdown__menu-item ds-c-dropdown__menu-item--selected"
-          id="downshift-5-item-0"
+          id="downshift-6-item-0"
         >
           <span
             class="ds-c-dropdown__menu-item-selected-indicator"
@@ -266,7 +266,7 @@ exports[`Dropdown supports bottom placed error 1`] = `
               aria-hidden="true"
               class="ds-c-icon ds-u-font-size--sm"
               focusable="false"
-              id="icon-19"
+              id="icon-22"
               viewBox="0 0 448 512"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -289,7 +289,7 @@ exports[`Dropdown supports bottom placed error 1`] = `
         aria-hidden="true"
         class="ds-c-icon ds-c-icon--alert-circle "
         focusable="false"
-        id="icon-20"
+        id="icon-23"
         viewBox="36 -12 186 186"
         xmlns="http://www.w3.org/2000/svg"
       >

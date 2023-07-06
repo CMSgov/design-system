@@ -7,9 +7,11 @@ const storySkipList = [
   'components-dropdown--option-groups',
   'components-dropdown--html-option-groups',
   'components-dropdown--html-options',
+  'components-dropdown--controlled', // Redundant
   'components-idle-timeout--default',
   'components-skip-nav--default-skip-nav',
   'components-skip-nav--skip-nav-example',
+  'components-tabs--controlled', // Redundant
   'foundations-layout-grid--equal-widths',
   'foundations-layout-grid--column-spanning',
   'foundations-layout-grid--fit-to-content',

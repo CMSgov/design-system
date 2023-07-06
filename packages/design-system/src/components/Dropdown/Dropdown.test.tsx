@@ -44,7 +44,14 @@ describe('Dropdown', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  it('applies additional classNames to button element', () => {
+  it('applies additional classes to root element', () => {
+    const { container } = makeDropdown({ className: 'bar' });
+    expect(container.firstChild).toHaveClass('bar');
+    // Make sure we're not replacing the other class names
+    expect(container.firstChild).toHaveClass('ds-c-dropdown');
+  });
+
+  it('applies additional classes to button element', () => {
     makeDropdown({ fieldClassName: 'foo' });
 
     const button = screen.getByRole('combobox');
@@ -189,5 +196,26 @@ describe('Dropdown', () => {
       </Dropdown>
     );
     expect(inputRefCallback).toHaveBeenCalled();
+  });
+
+  it('can be a controlled component', () => {
+    const onChange = jest.fn();
+    const options = generateOptions(3);
+    const baseProps = { ...defaultProps, onChange, options };
+    const { rerender } = render(<Dropdown {...baseProps} value="2" />);
+    const button = screen.getByRole('combobox');
+    expect(button.textContent).toEqual(options[1].label);
+
+    // Clicking an item should call `onChange` but should do nothing else
+    // because this is a controlled component
+    userEvent.click(button);
+    userEvent.keyboard('{arrowdown}');
+    userEvent.keyboard('{enter}');
+    expect(onChange).toHaveBeenCalled();
+    expect(button.textContent).toEqual(options[1].label);
+
+    // But then if we re-render with a different option selected, it should update
+    rerender(<Dropdown {...baseProps} value="3" />);
+    expect(button.textContent).toEqual(options[2].label);
   });
 });

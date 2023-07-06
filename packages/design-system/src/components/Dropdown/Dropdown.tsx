@@ -121,12 +121,14 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   const {
     autoFocus,
     children,
+    className,
     fieldClassName,
     onChange,
     options,
     size,
     defaultValue,
     value,
+    inputRef,
     ...extraProps
   } = props;
 
@@ -158,7 +160,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     // Controlled component
     controlledSelectedItem = items.find((item) => value === item.value);
     if (!controlledSelectedItem) {
-      throw new Error(`Could not find option matching value: ${value}`);
+      console.warn(`Dropdown component could not find option matching value: ${value}`);
     }
   } else {
     defaultSelectedItem =
@@ -166,7 +168,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
         ? items.find((item) => defaultValue === item.value)
         : items.filter((item) => !item.isOptGroup)[0];
     if (!defaultSelectedItem) {
-      throw new Error('Dropdown component could not determine a default selected option');
+      console.warn('Dropdown component could not determine a default selected option');
     }
   }
 
@@ -205,6 +207,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     labelId,
     className: classNames(
       'ds-c-dropdown',
+      className,
       isOpen && 'ds-c-dropdown--open',
       size && `ds-c-field--${size}`
     ),
@@ -219,7 +222,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
 
   const buttonProps = getToggleButtonProps({
     ...fieldProps,
-    ref: mergeRefs([props.inputRef, useAutofocus<HTMLButtonElement>(props.autoFocus)]),
+    ref: mergeRefs([inputRef, useAutofocus<HTMLButtonElement>(props.autoFocus)]),
     className: classNames(
       'ds-c-dropdown__button',
       'ds-c-field',
@@ -289,7 +292,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
       <FormLabel {...labelProps} fieldId={fieldProps.id} />
       <button {...buttonProps}>
         <span id={buttonContentId} className="ds-u-truncate">
-          {selectedItem.label}
+          {selectedItem?.label}
         </span>
         <span className="ds-c-dropdown__caret">
           <SvgIcon
