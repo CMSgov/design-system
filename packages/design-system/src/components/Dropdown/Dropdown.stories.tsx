@@ -1,6 +1,8 @@
 import React from 'react';
 import Dropdown from './Dropdown';
 import type { Meta, StoryObj } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
+import { useArgs } from '@storybook/preview-api';
 
 const meta: Meta<typeof Dropdown> = {
   title: 'Components/Dropdown',
@@ -139,5 +141,22 @@ export const InverseOption: Story = {
     // Must supply `layout: 'fullscreen'` when we use `onDark: true`
     onDark: true,
     layout: 'fullscreen',
+  },
+};
+
+export const Controlled: Story = {
+  args: {
+    options: dropdownOptions,
+    label: 'Dropdown example',
+    name: 'dropdown_field',
+    value: '3',
+  },
+  render: function Component(args) {
+    const [{ value }, updateArgs] = useArgs();
+    const onChange = (event) => {
+      action('onChange')(event);
+      updateArgs({ value: event.currentTarget.value });
+    };
+    return <Dropdown {...args} value={value} onChange={onChange} />;
   },
 };
