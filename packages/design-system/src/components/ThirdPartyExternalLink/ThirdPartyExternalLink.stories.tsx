@@ -3,7 +3,7 @@ import ThirdPartyExternalLink from './ThirdPartyExternalLink';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof ThirdPartyExternalLink> = {
-  title: 'Components/Third Party External Link',
+  title: 'Components/ThirdPartyExternalLink',
   component: ThirdPartyExternalLink,
 };
 export default meta;
