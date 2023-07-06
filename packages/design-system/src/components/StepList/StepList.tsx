@@ -4,8 +4,23 @@ import { StepLinkProps } from './StepLink';
 
 export interface StepListProps {
   /**
-   * An array of [step objects]({{root}}/patterns/step-list/#patterns.step-list.step-object) that contain
-   * text, state, [link/button URLs]({{root}}/patterns/step-list/#patterns.step-list.buttons) and other info needed to render steps.
+   * An array of `StepObjects` that contain text, state, link URLs, and other
+   * info needed to render steps.
+   *
+   * | Name                              | Type                      | Description                                                                                                                                                                              |
+   * | --------------------------------- | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   * | `completed`                       | `bool`                    | Whether the step has been completed                                                                                                                                                      |
+   * | `component`                       | `element, func`           | When provided, this will render the passed in component for link elements in this Step. This is useful when integrating with React Router's `<Link>` or using your own custom component. |
+   * | `description`                     | `string`                  | Additional text to dsiplay under (only rendered for top-level steps)                                                                                                                     |
+   * | `heading` (required)              | `string`                  | Text to display as the step heading                                                                                                                                                      |
+   * | `headingLevel`                    | `'1', '2', '3', '4', '5'` | Heading type to override default `<h2>`.                                                                                                                                                 |
+   * | `href` (required)                 | `string`                  | URL or partial URL that routes to the step. Will be passed to `onStepLinkClick` as first parameter                                                                                       |
+   * | `id`                              | `string`                  | Unique string representing the step. WIll be passed to `onStepLinkClick` as second parameter                                                                                             |
+   * | `isNextStep`                      | `bool`                    | Whether this is the next unstarted step                                                                                                                                                  |
+   * | `linkText`                        | `string`                  | Alternative text for the link or button for this step. Will override the defaults                                                                                                        |
+   * | `onClick`                         | `func`                    | `onClick` handler for this specific step's link/button                                                                                                                                   |
+   * | `started`                         | `bool`                    | Whether the step has been started                                                                                                                                                        |
+   * | `steps`                           | `StepObject[]`            | Array of substeps                                                                                                                                                                        |
    */
   steps: StepObject[];
   /**
