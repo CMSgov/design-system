@@ -3,7 +3,7 @@ import MonthPicker from './MonthPicker';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof MonthPicker> = {
-  title: 'Components/Month Picker',
+  title: 'Components/MonthPicker',
   component: MonthPicker,
   args: {
     hint: "Month Picker can receive optional help text, giving the user additional information of what's required.",

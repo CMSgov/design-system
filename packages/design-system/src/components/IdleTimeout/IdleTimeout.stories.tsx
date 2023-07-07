@@ -16,7 +16,7 @@ const DocsPage = () => (
 );
 
 const meta: Meta<typeof IdleTimeout> = {
-  title: 'Components/Idle Timeout',
+  title: 'Components/IdleTimeout',
   component: IdleTimeout,
   parameters: {
     docs: {

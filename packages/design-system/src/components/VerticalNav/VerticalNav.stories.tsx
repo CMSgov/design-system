@@ -4,7 +4,7 @@ import VerticalNav from './VerticalNav';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof VerticalNav> = {
-  title: 'Components/Vertical Nav',
+  title: 'Components/VerticalNav',
   component: VerticalNav,
   args: {
     collapsed: false,
