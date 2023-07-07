@@ -75,6 +75,13 @@ export type ChoiceListProps = BaseChoiceListProps &
  * For information about how and when to use this component, refer to the
  * [checkbox](https://design.cms.gov/components/checkbox/) and
  * [radio](https://design.cms.gov/components/radio/) documentation pages.
+ *
+ * Checkboxes and radios can be managed as a group using `<ChoiceList>` or
+ * individually using `<Choice>`. Note that each of the items in the `choices`
+ * array represents props that will be passed to an individual `<Choice>`
+ * component. You can therefore define any of the props listed in the `<Choice>`
+ * props table below, including all valid attributes of the
+ * [HTML input element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input).
  */
 export const ChoiceList: React.FC<ChoiceListProps> = (props: ChoiceListProps) => {
   const { onBlur, onComponentBlur, choices, ...listProps } = props;

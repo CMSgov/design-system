@@ -106,6 +106,11 @@ type OmitProps =
 const dsChoiceEmitter = new EvEmitter();
 
 /**
+ * This component passes any additional props to its underlying input element
+ * as attributes. See the corresponding MDN documentation for
+ * [input](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input) for
+ * a list of valid attributes.
+
  * For information about how and when to use this component, refer to the
  * [checkbox](https://design.cms.gov/components/checkbox/) and
  * [radio](https://design.cms.gov/components/radio/) documentation pages.

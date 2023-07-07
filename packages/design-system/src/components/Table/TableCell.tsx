@@ -60,6 +60,12 @@ export interface TableCellProps {
 
 type OmitProps = 'align' | 'children' | 'className' | 'headers' | 'id' | 'scope';
 
+/**
+ * `TableCell` dynamically renders a `<th>` or `<td>` element based on the
+ * parent component or user specified `component` prop. By default `TableCell`
+ * will automatically render a `<th>` element if the parent component is
+ * `TableHead`, otherwise it will render a `<td>` element.
+ */
 export const TableCell: React.FC<
   Omit<React.ComponentPropsWithoutRef<'th'>, OmitProps> &
     Omit<React.ComponentPropsWithoutRef<'td'>, OmitProps> &
