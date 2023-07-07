@@ -451,8 +451,9 @@ export const components: AnyTokenValues = {
     '__background-color':                         t.color['gray-lightest'],
     '__color':                                    t.color['black'],
     '-close__background-color':                   t.color['gray-light'],
-    '-action__color':                             t.color['primary-darker'],
+    '-action__color':                             t.color['primary'],
     '-lock-icon__color':                          t.color['success-light'],
+    '-building-icon__color':                      t.color['primary'],
     '-heading__font-size':                        '0.75rem',
   },
 
