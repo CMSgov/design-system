@@ -1,5 +1,6 @@
 import './storybookStyles.scss';
 import React from 'react';
+import DocumentationTemplate from './DocumentationTemplate.mdx';
 import {
   setAlertSendsAnalytics,
   setButtonSendsAnalytics,
@@ -79,7 +80,7 @@ const themeSettingDecorator = (Story, context) => {
   // specific to a brand and only make sense when viewed in that brand theme
   const theme = parameters.theme ?? globals.theme;
 
-  document.documentElement.setAttribute('data-theme', theme);
+  context.canvasElement.setAttribute('data-theme', theme);
 
   const themeCss = document.querySelector('link[title=themeCss]') as HTMLLinkElement;
   themeCss.href = `${theme}-theme.css`;
@@ -169,6 +170,9 @@ const preview: Preview = {
     },
     viewport: {
       viewports: breakpointViewportSizes,
+    },
+    docs: {
+      page: DocumentationTemplate,
     },
   },
   decorators: [

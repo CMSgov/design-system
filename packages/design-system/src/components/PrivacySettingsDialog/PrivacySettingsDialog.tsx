@@ -19,6 +19,11 @@ interface PrivacySettingsDialogProps {
   onExit: () => void;
 }
 
+/**
+ * The PrivacySettingsDialog allows users to adjust their privacy settings.
+ * Typically these settings are accessed from a button in the footer of a CMS
+ * website. Props allow for customizing on a per-domain basis.
+ */
 export const PrivacySettingsDialog = (props: PrivacySettingsDialogProps) => {
   const [localPrivacySettings, setLocalPrivacySettings] = useState(getPrivacySettings());
 

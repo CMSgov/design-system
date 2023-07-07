@@ -105,6 +105,11 @@ type OmitProps =
 /** Used to emit events to all Choice components */
 const dsChoiceEmitter = new EvEmitter();
 
+/**
+ * For information about how and when to use this component, refer to the
+ * [checkbox](https://design.cms.gov/components/checkbox/) and
+ * [radio](https://design.cms.gov/components/radio/) documentation pages.
+ */
 export class Choice extends React.PureComponent<
   Omit<React.ComponentPropsWithRef<'input'>, OmitProps> & ChoiceProps,
   any

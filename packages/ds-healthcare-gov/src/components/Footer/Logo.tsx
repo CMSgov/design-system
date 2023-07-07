@@ -29,6 +29,10 @@ interface LogoProps {
  *
  */
 
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/logos/healthcare-logo/).
+ */
 const Logo = (props: LogoProps) => {
   const style: any = {};
 

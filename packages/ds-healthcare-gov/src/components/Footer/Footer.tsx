@@ -31,6 +31,10 @@ export interface FooterProps {
   footerTop?: React.ReactNode;
 }
 
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/footer/healthcare-footer/?theme=healthcare).
+ */
 export const Footer = (props: FooterProps) => {
   const classes = classnames('hc-c-footer', props.className);
 

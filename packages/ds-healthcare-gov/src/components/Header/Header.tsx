@@ -133,9 +133,8 @@ export const VARIATION_NAMES = {
 };
 
 /**
- * The top-level component, responsible for maintaining the
- * header's state (like whether the mobile menu is expanded) and
- * determining which variation of the header to display
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/header/healthcare-header/?theme=healthcare).
  */
 export const Header = (props: HeaderProps) => {
   const [openMenu, setOpenMenu] = useState(false);

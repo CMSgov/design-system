@@ -79,6 +79,10 @@ const panelTabId = (panel): string => {
   return panel.props.tabId || `ds-c-tabs__item--${panel.props.id}`;
 };
 
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/tabs/).
+ */
 export const Tabs = (props: TabsProps) => {
   const initialSelectedId = props.defaultSelectedId || getDefaultSelectedId(props);
   const [internalSelectedId, setSelectedId] = useState(initialSelectedId);

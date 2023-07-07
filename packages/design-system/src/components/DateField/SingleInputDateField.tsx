@@ -79,6 +79,11 @@ export interface SingleInputDateFieldProps extends FormFieldProps {
   toYear?: number;
 }
 
+/**
+ * For information about how and when to use this component, refer to the
+ * [Single Input Date Field](https://design.cms.gov/components/date-field/single-input-date-field/) and
+ * [Calendar Picker](https://design.cms.gov/components/date-field/date-picker/) documentation pages.
+ */
 const SingleInputDateField = (props: SingleInputDateFieldProps) => {
   const {
     className,

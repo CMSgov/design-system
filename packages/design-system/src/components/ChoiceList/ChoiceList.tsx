@@ -71,6 +71,11 @@ export interface BaseChoiceListProps extends Omit<FormFieldProps, 'id'> {
 export type ChoiceListProps = BaseChoiceListProps &
   Omit<React.ComponentPropsWithRef<'fieldset'>, keyof BaseChoiceListProps>;
 
+/**
+ * For information about how and when to use this component, refer to the
+ * [checkbox](https://design.cms.gov/components/checkbox/) and
+ * [radio](https://design.cms.gov/components/radio/) documentation pages.
+ */
 export const ChoiceList: React.FC<ChoiceListProps> = (props: ChoiceListProps) => {
   const { onBlur, onComponentBlur, choices, ...listProps } = props;
 

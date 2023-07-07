@@ -85,6 +85,10 @@ const defaultMessageFormatter = (timeTilTimeout: number): React.ReactNode => {
 // local storage variable name
 const lastActiveCookieName = 'CMS_DS_IT_LAST_ACTIVE';
 
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/idle-timeout/).
+ */
 export const IdleTimeout = ({
   closeButtonText = 'Close',
   continueSessionText = 'Continue session',
