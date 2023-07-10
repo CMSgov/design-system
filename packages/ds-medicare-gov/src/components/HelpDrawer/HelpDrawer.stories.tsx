@@ -6,7 +6,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
 
 const meta: Meta<typeof HelpDrawer> = {
-  title: 'Medicare/Help Drawer',
+  title: 'Medicare/HelpDrawer',
   component: HelpDrawer,
   args: {
     heading: 'Drawer Heading',

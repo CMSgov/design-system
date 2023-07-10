@@ -4,7 +4,7 @@ import { setLanguage } from '../i18n';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof UsaBanner> = {
-  title: 'Components/USA Banner',
+  title: 'Components/UsaBanner',
   component: UsaBanner,
 };
 export default meta;

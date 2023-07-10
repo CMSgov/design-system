@@ -95,6 +95,10 @@ export interface BaseTextFieldProps extends Omit<FormFieldProps, 'id'> {
 export type TextFieldProps = BaseTextFieldProps &
   Omit<React.ComponentPropsWithRef<'input'>, keyof BaseTextFieldProps>;
 
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/text-field/).
+ */
 export const TextField: React.FC<TextFieldProps> = (props: TextFieldProps) => {
   const { mask, labelMask, ...textFieldProps } = props;
 

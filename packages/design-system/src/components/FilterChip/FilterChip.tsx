@@ -37,6 +37,10 @@ export interface FilterChipProps {
   size?: 'big';
 }
 
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/filter-chip/).
+ */
 export class FilterChip extends React.Component<FilterChipProps> {
   filterChipId: string;
 

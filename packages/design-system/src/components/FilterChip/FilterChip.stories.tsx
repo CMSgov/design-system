@@ -4,7 +4,7 @@ import { FilterChip } from './FilterChip';
 import { action } from '@storybook/addon-actions';
 
 const meta: Meta<typeof FilterChip> = {
-  title: 'Components/Filter Chip',
+  title: 'Components/FilterChip',
   component: FilterChip,
   args: {
     label: 'Example Filter Chip',
@@ -14,7 +14,7 @@ export default meta;
 
 type Story = StoryObj<typeof FilterChip>;
 
-export const SingleChip: Story = {};
+export const Default: Story = {};
 
 export const MultipleChips: Story = {
   render: function Component() {

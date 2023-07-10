@@ -23,6 +23,10 @@ export interface UsaBannerProps {
   id?: string;
 }
 
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/usa-banner/).
+ */
 export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBannerProps) => {
   const [isBannerOpen, setBannerOpen] = useState<boolean>(false);
   const [shouldRenderMobileView, setShouldRenderMobileView] = useState<boolean>(false);

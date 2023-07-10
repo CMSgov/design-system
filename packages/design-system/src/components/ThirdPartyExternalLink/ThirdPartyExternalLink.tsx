@@ -19,6 +19,10 @@ interface ThirdPartyExternalLinkProps {
   origin: string;
 }
 
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/third-party-external-link/).
+ */
 const ThirdPartyExternalLink = ({
   href,
   children,

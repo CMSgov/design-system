@@ -7,6 +7,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 const meta: Meta<typeof Tooltip> = {
   title: 'Components/Tooltip',
   component: Tooltip as any,
+  subcomponents: { TooltipIcon },
   decorators: [
     (Story) => (
       <div style={{ margin: '11rem auto', textAlign: 'center' }}>

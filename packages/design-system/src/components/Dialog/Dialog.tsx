@@ -93,6 +93,10 @@ export interface BaseDialogProps extends AnalyticsOverrideProps {
 export type DialogProps = BaseDialogProps &
   Omit<DialogHTMLAttributes<HTMLElement>, keyof BaseDialogProps>;
 
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/modal-dialog/).
+ */
 export const Dialog = (props: DialogProps) => {
   const {
     actions,

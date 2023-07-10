@@ -158,6 +158,10 @@ function isTextField(child: React.ReactElement): boolean {
   return child && (child.type === TextField || componentName === 'TextField');
 }
 
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/autocomplete/).
+ */
 export const Autocomplete = (props: AutocompleteProps) => {
   const id = useRef(props.id ?? uniqueId('autocomplete__input--')).current;
   const labelId = useRef(props.labelId ?? uniqueId('autocomplete__label--')).current;
