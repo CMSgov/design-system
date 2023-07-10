@@ -10,19 +10,28 @@
 }
 
 .ds-c-usa-banner__header {
+  // margin-inline: auto;
+  // max-width: var(--usa-banner__max-width);
+  // padding-inline: calc(var(--usa-banner-gutter-width) * 0.5);
   @extend .ds-l-container;
   // Applying display:grid to account for flag icon alignment with text elements in mobile/table viewports
   display: grid;
+  font-family: var(--usa-banner-heading__font-family);
   font-size: 0.75rem;
+  font-size: var(--usa-banner-heading__font-size);
   gap: 0.5ch 1ch;
   grid-template-areas:
     'icon text'
     'icon action';
   grid-template-columns: 1.5em auto;
-  line-height: 1.1;
+  line-height: var(--usa-banner-heading__line-height);
   min-height: 3rem;
   padding-block: 0.5rem;
   position: relative;
+
+  // @media (min-width: $media-width-sm) {
+  //   padding-inline: var(--grid-gutter-width);
+  // }
 
   @media (max-width: $media-width-md) {
     &.ds-c-usa-banner__header--expanded {
@@ -53,7 +62,7 @@
 }
 
 .ds-c-usa-banner__action {
-  color: var(--usa-banner-action__color);
+  color: var(--usa-banner-link__color);
   grid-area: action;
   margin: 0;
   text-decoration: underline;
@@ -84,6 +93,10 @@
   // Mobile/tablet, button is full-size of banner
   width: 100%;
 
+  &:focus {
+    @include mixins.focus-styles;
+  }
+
   @media (min-width: $media-width-md) {
     display: inline-block;
     height: fit-content;
@@ -113,11 +126,11 @@
 
 .ds-c-usa-banner__button-icon-container {
   [aria-expanded='true'] & {
-    background-color: var(--usa-banner-close__background-color);
+    background-color: var(--usa-banner-close-button__background-color--mobile);
     display: flex;
-    height: 3rem;
     inset: 0;
     inset-inline-start: initial;
+    min-height: 3rem;
     place-content: center;
     place-items: center;
     position: absolute;
@@ -130,14 +143,27 @@
 }
 
 .ds-c-usa-banner__button-icon {
-  color: var(--usa-banner-action__color);
+  color: var(--usa-banner-close-button__color--mobile);
   height: 1em;
   width: 1em;
 }
 
+.ds-c-usa-banner__guidance {
+  font-family: var(--usa-banner-panel__font-family);
+  font-size: var(--usa-banner-panel__font-size);
+  line-height: var(--usa-banner-panel__line-height);
+}
+
 .ds-c-usa-banner__guidance-container {
+  // margin-inline: auto;
+  // max-width: var(--usa-banner__max-width);
+  // padding-inline: calc(var(--usa-banner-gutter-width) * 0.5);
   @extend .ds-l-container;
   padding-block: 3rem 1.5rem;
+
+  // @media (min-width: $media-width-sm) {
+  //   padding-inline: var(--grid-gutter-width);
+  // }
 
   &:not([hidden]) {
     display: grid;
@@ -157,12 +183,12 @@
 
   // Domain guidance
   &:first-child {
-    --icon-color: var(--usa-banner-building-icon__color);
+    --icon-color: var(--usa-banner-domain-icon__color);
   }
 
   // Security guidance
   &:last-child {
-    --icon-color: var(--usa-banner-lock-icon__color);
+    --icon-color: var(--usa-banner-security-icon__color);
   }
 }
 
