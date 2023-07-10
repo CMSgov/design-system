@@ -38,16 +38,12 @@ module.exports = {
     ],
     // Importants should only be used in our utility classes if possible
     'declaration-no-important': [true, { severity: 'warning' }],
-    'function-max-empty-lines': 0,
     'function-no-unknown': [true, { ignoreFunctions: ['percentage', 'math.div'] }],
-    linebreaks: 'unix',
     'no-descending-specificity': null,
-    'no-empty-first-line': true,
     'no-invalid-position-at-import-rule': null,
     'order/order': ['custom-properties', 'declarations', 'rules'],
     'order/properties-alphabetical-order': true,
     'scss/dollar-variable-no-missing-interpolation': true,
     'scss/selector-no-redundant-nesting-selector': true,
-    'selector-pseudo-class-case': 'lower',
   },
 };
