@@ -32,21 +32,18 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
     setBannerOpen(!isBannerOpen);
   };
 
-  // TODO: I still think there's something here in reducing code duplication
   const actionText = (
-    <p className="ds-c-usa-banner__action">
+    <>
       {t('usaBanner.bannerActionText')}
       <ArrowIcon
         direction={isBannerOpen ? 'up' : 'down'}
         className="ds-c-usa-banner__action-icon"
       />
-    </p>
+    </>
   );
 
-  // TODO: Check translations to make sure it aligns with USWDS
-  // TODO: Create tokens for customizing the banner that matches USWDS tokens
   // TODO: Implement focus state
-  // TODO: Implement desktop view
+  // TODO: Create tokens for customizing the banner that matches USWDS tokens
   // TODO: Figure out alignment guidance for banner and global header - I added the container util class but this might need a prop to customize
 
   return (
@@ -59,13 +56,9 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
       >
         <UsaFlagIcon className="ds-c-usa-banner__header-icon" />
         <p className="ds-c-usa-banner__header-text">{t('usaBanner.bannerText')}</p>
-        {/* This is display text for mobile only; larger viewports changes this to display: none */}
-        <p className="ds-c-usa-banner__action">
-          {t('usaBanner.bannerActionText')}
-          <ArrowIcon
-            direction={isBannerOpen ? 'up' : 'down'}
-            className="ds-c-usa-banner__action-icon"
-          />
+        {/* This is display text for mobile/tablet only; display: none when on larger viewports */}
+        <p className="ds-c-usa-banner__action ds-u-display--flex ds-u-align-items--center ds-u-md-display--none">
+          {actionText}
         </p>
 
         <button
@@ -75,10 +68,12 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
           aria-expanded={isBannerOpen}
           aria-controls={id}
         >
-          {/* On mobile viewports, this is screen reader only text; larger viewports turns this text into the trigger button */}
-          <span className="ds-c-usa-banner__button-text">{t('usaBanner.bannerActionText')}</span>
+          {/* This is screen reader-only text on mobile/tablet; this is the trigger button on larger viewports */}
+          <span className="ds-c-usa-banner__button-text ds-u-md-display--flex ds-u-align-items--center">
+            {actionText}
+          </span>
 
-          {/* This is the trigger button for mobile viewports only; display:none when on larger viewports */}
+          {/* This is the trigger button for mobile/tablet viewports only; display:none when on larger viewports */}
           <span className="ds-c-usa-banner__button-icon-container" hidden={!isBannerOpen}>
             <CloseIconThin className="ds-c-usa-banner__button-icon" />
           </span>
@@ -102,8 +97,8 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
               <br />
               {t('usaBanner.httpsAText')} <strong> {t('usaBanner.httpsLockText')} </strong> (
               <LockIcon className="ds-c-usa-banner__inline-lock-icon" />){' '}
-              {t('usaBanner.httpsOrText')}
-              <strong> {t('usaBanner.httpsText')} </strong> {t('usaBanner.httpsDetailText')}
+              {t('usaBanner.httpsOrText')} <strong>{t('usaBanner.httpsText')}</strong>{' '}
+              {t('usaBanner.httpsDetailText')}
             </p>
           </div>
         </div>

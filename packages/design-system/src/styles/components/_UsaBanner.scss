@@ -11,20 +11,33 @@
 
 .ds-c-usa-banner__header {
   @extend .ds-l-container;
-  font-size: 0.75rem;
-  position: relative;
+  // Applying display:grid to account for flag icon alignment with text elements in mobile/table viewports
   display: grid;
-  padding-block: 0.5rem;
-  min-height: 3rem;
-  line-height: 1.1;
+  font-size: 0.75rem;
   gap: 0.5ch 1ch;
-  grid-template-columns: 1.5em auto;
   grid-template-areas:
     'icon text'
     'icon action';
+  grid-template-columns: 1.5em auto;
+  line-height: 1.1;
+  min-height: 3rem;
+  padding-block: 0.5rem;
+  position: relative;
 
-  &.ds-c-usa-banner__header--expanded {
-    padding-inline-end: 3.5rem;
+  @media (max-width: $media-width-md) {
+    &.ds-c-usa-banner__header--expanded {
+      // Additional padding needed to accommodate close button in expanded state
+      // Button is only visible in mobile/tablet viewports
+      padding-inline-end: 3.5rem;
+    }
+  }
+
+  @media (min-width: $media-width-md) {
+    align-items: center;
+    // Changing display:grid to flex for larger viewports
+    // The button goes from being a full-width element on mobile/tablet to something that looks like it's an inline link with text and needs to flow appropriately. Flex accomplishes this.
+    display: flex;
+    min-height: auto;
   }
 }
 
@@ -44,11 +57,9 @@
   grid-area: action;
   margin: 0;
   text-decoration: underline;
-  .ds-c-usa-banner__header--expanded & {
-    display: none;
-  }
 
-  @media (min-width: $media-width-sm) {
+  .ds-c-usa-banner__header--expanded & {
+    // When banner is expanded on mobile/tablet, action text goes away
     display: none;
   }
 }
@@ -56,37 +67,65 @@
 .ds-c-usa-banner__action-icon {
   color: currentColor;
   height: 0.75em;
-  width: 0.75em;
   margin-inline-start: 0.5ch;
+  // Needed to overwrite the vertical alignment of the icon so the action text appears aligned with the banner text. Applied utility flex classes on the action text to re-implement vertical alignment.
+  vertical-align: initial;
+  width: 0.75em;
 }
 
 .ds-c-usa-banner__button {
   background-color: transparent;
   border: 0;
+  color: var(--usa-banner-action__color);
+  cursor: pointer;
   inset: 0;
   inset-inline-start: initial;
   position: absolute;
-  cursor: pointer;
-  color: var(--usa-banner-action__color);
+  // Mobile/tablet, button is full-size of banner
+  width: 100%;
 
-  width: 100%; // mobile only
+  @media (min-width: $media-width-md) {
+    display: inline-block;
+    height: fit-content;
+    line-height: 1.1;
+    padding: 0;
+    position: relative;
+    text-align: start;
+    width: fit-content;
+  }
 }
 
 .ds-c-usa-banner__button-text {
+  // This element is screen-reader only on mobile/tablet
   @extend .ds-u-visibility--screen-reader;
+
+  @media (min-width: $media-width-md) {
+    // Need to overwrite specific screen reader only styles so the element becomes visible again on larger viewports
+    // Would be nice to have some more flexibility with our utils:
+    // - Offer an "only" option for visibility utils (e.g. .ds-u--only-md-visibility--screen-reader)
+    // - Offer a "not" option for visibility utils (e.g. .ds-u--not-md-visibility--screen-reader)
+    height: auto;
+    overflow: auto;
+    position: relative;
+    width: auto;
+  }
 }
 
 .ds-c-usa-banner__button-icon-container {
   [aria-expanded='true'] & {
+    background-color: var(--usa-banner-close__background-color);
+    display: flex;
+    height: 3rem;
     inset: 0;
     inset-inline-start: initial;
-    position: absolute;
-    background-color: var(--usa-banner-close__background-color);
-    height: 3rem;
-    width: 3rem;
-    display: flex;
     place-content: center;
     place-items: center;
+    position: absolute;
+    width: 3rem;
+
+    @media (min-width: $media-width-md) {
+      display: none;
+    }
   }
 }
 
@@ -96,9 +135,6 @@
   width: 1em;
 }
 
-.ds-c-usa-banner__guidance {
-}
-
 .ds-c-usa-banner__guidance-container {
   @extend .ds-l-container;
   padding-block: 3rem 1.5rem;
@@ -106,6 +142,10 @@
   &:not([hidden]) {
     display: grid;
     gap: 1.5rem;
+
+    @media (min-width: $media-width-md) {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 }
 
@@ -115,18 +155,21 @@
   grid-template-areas: 'icon text';
   grid-template-columns: min-content auto;
 
+  // Domain guidance
   &:first-child {
     --icon-color: var(--usa-banner-building-icon__color);
   }
+
+  // Security guidance
   &:last-child {
     --icon-color: var(--usa-banner-lock-icon__color);
   }
 }
 
 .ds-c-usa-banner__guidance-icon {
+  color: var(--icon-color);
   height: 2.5em;
   width: 2.5em;
-  color: var(--icon-color);
 }
 
 .ds-c-usa-banner__guidance-text {
@@ -137,189 +180,3 @@
   height: 0.75em;
   width: 0.75em;
 }
-
-// .ds-c-usa-banner {
-//   background-color: var(--usa-banner__background-color);
-//   color: var(--usa-banner__color);
-//   padding: 0;
-// }
-
-// .ds-c-usa-banner__header {
-//   align-items: flex-start;
-//   display: flex;
-//   font-size: var(--usa-banner-heading__font-size);
-//   line-height: 1.2;
-//   min-height: $spacer-4;
-//   padding: $spacer-1 $spacer-2;
-//   position: relative;
-
-//   @media (min-width: $media-width-sm) {
-//     min-height: 0;
-//     padding-block: $spacer-half;
-//   }
-// }
-
-// .ds-c-usa-banner__header--mobile {
-//   padding: 0;
-
-//   .ds-c-usa-banner__button {
-//     display: flex;
-//     padding: $spacer-1 $spacer-2;
-//     width: 100%;
-//   }
-
-//   &.ds-c-usa-banner__header--expanded {
-//     .ds-c-usa-banner__button {
-//       padding-block-end: 0;
-//     }
-//   }
-
-//   .ds-c-usa-banner__cta-wrapper {
-//     display: block;
-//   }
-// }
-
-// .ds-c-usa-banner__collapse-banner-container {
-//   align-items: center;
-//   background-color: var(--usa-banner-close__background-color);
-//   display: flex;
-//   height: $spacer-6;
-//   justify-content: center;
-//   margin-block-start: calc(-1 * #{$spacer-1});
-//   margin-inline: auto calc(-1 * #{$spacer-2});
-//   width: $spacer-6;
-
-//   .ds-c-icon {
-//     height: var(--font-size-lg);
-//     width: var(--font-size-lg);
-//   }
-// }
-
-// .ds-c-usa-banner__header-flag {
-//   height: 11px;
-//   margin-inline-end: $spacer-1;
-//   width: $spacer-2;
-// }
-
-// .ds-c-usa-banner__header-text {
-//   display: inline;
-//   margin: 0;
-//   span {
-//     margin-inline-end: $spacer-1;
-//   }
-// }
-
-// .ds-c-usa-banner__header-action {
-//   color: var(--usa-banner-action__color);
-//   display: block;
-//   margin-block: 2px 0;
-//   text-decoration: underline;
-// }
-
-// .ds-c-usa-banner__button {
-//   background-color: transparent;
-//   border: 0;
-//   bottom: 0;
-//   box-shadow: none;
-//   margin: 0;
-//   padding: 0;
-//   text-align: start;
-
-//   &:focus {
-//     @include mixins.focus-styles;
-//   }
-// }
-
-// .ds-c-usa-banner__button-text {
-//   @extend .ds-c-link;
-// }
-
-// .ds-c-usa-banner__content {
-//   margin-inline: auto;
-//   overflow: hidden;
-//   padding: 4px $spacer-2 $spacer-2 $spacer-1;
-
-//   @media (min-width: $media-width-sm) {
-//     padding-block: $spacer-3;
-//   }
-// }
-
-// .ds-c-usa-banner__guidance-container {
-//   display: flex;
-//   flex-direction: column;
-
-//   @media (min-width: $media-width-sm) {
-//     flex-flow: row nowrap;
-//   }
-// }
-
-// .ds-c-usa-banner__guidance {
-//   align-items: flex-start;
-//   display: flex;
-//   max-width: 64ex;
-//   padding: $spacer-2 12px 0 12px;
-
-//   @media (min-width: $media-width-sm) {
-//     padding: 0 $spacer-1;
-//     width: 50%;
-//   }
-// }
-
-// .ds-c-usa-banner__icon {
-//   flex-shrink: 0;
-//   height: $spacer-5;
-//   margin-inline-end: $spacer-1;
-//   width: $spacer-5;
-
-//   &.ds-c-icon--lock-circle {
-//     color: var(--usa-banner-lock-icon__color);
-
-//     @media (-ms-high-contrast: active), (forced-colors: active) {
-//       color: WindowText;
-//     }
-//   }
-// }
-
-// .ds-c-usa-banner__lock-image {
-//   height: 0.75em;
-//   width: auto;
-
-//   path {
-//     fill: currentColor;
-//   }
-
-//   @media (-ms-high-contrast: active), (forced-colors: active) {
-//     path {
-//       fill: WindowText;
-//     }
-//   }
-// }
-
-// .ds-c-usa-banner__media-img {
-//   float: left;
-//   margin-inline-end: $spacer-1;
-// }
-
-// .ds-c-usa-banner__media-body {
-//   margin: 0;
-// }
-
-// .ds-c-usa-banner__header--expanded {
-//   @media (min-width: $media-width-sm) {
-//     background-color: transparent;
-//     padding-inline-end: 0;
-//     .ds-c-usa-banner__button-text::after {
-//       transform: rotate(180deg);
-//     }
-//   }
-
-//   .ds-c-usa-banner__header-action {
-//     display: none;
-//   }
-// }
-
-// .ds-c-usa-banner__action-icon {
-//   color: var(--usa-banner__color);
-//   height: 10px;
-//   width: 10px;
-// }
