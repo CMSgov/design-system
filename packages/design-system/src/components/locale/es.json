@@ -135,19 +135,19 @@
     "collapse": "cerrar subnavegación"
   },
   "usaBanner": {
+    "flagIconTitle": "U.S. Bandera",
     "bannerLabel": "Un sitio oficial del Gobierno de Estados Unidos",
     "bannerText": "Un sitio oficial del Gobierno de Estados Unidos",
     "bannerActionText": "Así es como usted puede verificarlo",
     "domainHeaderText": "Los sitios web oficiales usan .gov",
     "domainAText": "Un sitio web",
-    "domainText": "pertenece a una organización oficial del Gobierno de Estados Unidos.",
-    "flagIconTitle": "U.S. Bandera",
     "govText": ".gov",
+    "domainText": "pertenece a una organización oficial del Gobierno de Estados Unidos.",
     "httpsHeaderText": "Los sitios web seguros .gov usan HTTPS",
-    "httpsOrText": "o",
-    "httpsText": "https://",
     "httpsAText": "Un",
     "httpsLockText": "candado",
+    "httpsOrText": "o",
+    "httpsText": "https://",
     "httpsDetailText": "significa que usted se conectó de forma segura a un sitio web .gov. Comparta información sensible sólo en sitios web oficiales y seguros."
   }
 }
