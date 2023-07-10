@@ -42,10 +42,6 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
     </>
   );
 
-  // TODO: Implement focus state
-  // TODO: Create tokens for customizing the banner that matches USWDS tokens
-  // TODO: Figure out alignment guidance for banner and global header - I added the container util class but this might need a prop to customize
-
   return (
     <section className={classes} aria-label={t('usaBanner.bannerLabel')}>
       <header
