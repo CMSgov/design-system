@@ -61,6 +61,10 @@ export interface BaseAlertProps extends AnalyticsOverrideProps {
 export type AlertProps = BaseAlertProps &
   Omit<React.ComponentPropsWithRef<'div'>, keyof BaseAlertProps>;
 
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/alert/).
+ */
 export const Alert: React.FC<AlertProps> = (props: AlertProps) => {
   const { headingRef, bodyRef } = useAlertAnalytics(props);
   const focusRef = useAutofocus(props.autoFocus);

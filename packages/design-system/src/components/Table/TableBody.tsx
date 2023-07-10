@@ -8,6 +8,9 @@ export interface TableBodyProps {
 
 type OmitProps = 'children';
 
+/**
+ * `TableBody` renders the `<tbody>` element and will typically contain `TableRow` elements to define table data.
+ */
 export const TableBody: React.FC<
   Omit<React.ComponentPropsWithoutRef<'tbody'>, OmitProps> & TableBodyProps
 > = ({ children, ...tableBodyProps }: TableBodyProps) => {

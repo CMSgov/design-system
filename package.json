@@ -5,9 +5,8 @@
   "repository": "https://github.com/CMSgov/design-system",
   "workspaces": [
     "packages/*"
-  ],
-  "scripts": {
-    "build": "yarn build:tokens && yarn build:core && yarn build:healthcare && yarn build:medicare && yarn build:prop-data && yarn build:cdn-index",
+  ],  "scripts": {
+    "build": "yarn build:tokens && yarn build:core && yarn build:healthcare && yarn build:medicare && yarn build:cdn-index",
     "build:core": "yarn gulp build",
     "build:healthcare": "yarn gulp build --package packages/ds-healthcare-gov",
     "build:medicare": "yarn gulp build --package packages/ds-medicare-gov",
@@ -16,8 +15,7 @@
     "build:storybook:docs": "./scripts/build-storybook.sh docs",
     "build:tokens": "yarn --cwd ./packages/design-system-tokens build:all",
     "build:cdn-index": "ts-node ./scripts/build-cdn-indexes.ts",
-    "build:docs": "yarn build:storybook:docs && yarn build:prop-data && yarn --cwd ./packages/docs build",
-    "build:prop-data": "node ./scripts/extractPropData.js",
+    "build:docs": "yarn build:storybook:docs && yarn --cwd ./packages/docs build",
     "check:maturity": "./scripts/maturityCheck.sh",
     "clean": "yarn clean:cache && yarn clean:modules",
     "clean:cache": "rm -rf packages/docs/.cache",
@@ -33,7 +31,7 @@
     "release:bump": "./scripts/bump-main.sh",
     "release:notes": "ts-node ./scripts/notes.ts",
     "serve:docs": "yarn --cwd ./packages/docs serve",
-    "start": "yarn build:storybook:docs && yarn build:prop-data && yarn --cwd ./packages/docs develop",
+    "start": "yarn build:storybook:docs && yarn --cwd ./packages/docs develop",
     "storybook": "storybook dev -p 6006",
     "test": "yarn test:unit && yarn test:a11y",
     "posttest": "yarn lint",

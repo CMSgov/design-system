@@ -43,6 +43,10 @@ const getHeading = (heading, headingLevel) => {
   }
 };
 
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/review/).
+ */
 export const Review = (props: ReviewProps) => {
   const handleClick = (event): void => {
     if (props.onEditClick) {

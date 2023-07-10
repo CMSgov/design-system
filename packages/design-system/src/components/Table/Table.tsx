@@ -79,6 +79,16 @@ function isTableCaption(child: React.ReactElement): boolean {
   return child && (child.type === TableCaption || componentName === 'TableCaption');
 }
 
+/**
+ * `Table` is a container component that contains `TableCaption`, `TableHead`
+ * and `TableBody` as children, as well as `TableRow` and `TableCell` for the
+ * table content. These components mostly follow ordinary HTML table semantics,
+ * but also include some additional responsive features including horizontal
+ * scrolling and vertically stacked rows.
+ *
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/table/).
+ */
 export class Table extends React.Component<
   Omit<React.ComponentPropsWithoutRef<'table'>, OmitProps> & TableProps,
   any

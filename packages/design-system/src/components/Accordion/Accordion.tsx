@@ -7,6 +7,9 @@ export interface AccordionProps {
    * Applies a border to the accordion content.
    */
   bordered?: boolean;
+  /**
+   * Children should consist of AccordionItems
+   */
   children?: React.ReactNode;
   /**
    * Class to be applied to the outer `<div>` that contains all accordion items.
@@ -31,6 +34,10 @@ const handleKeyDown = (e) => {
   }
 };
 
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/accordion/).
+ */
 export const Accordion: FunctionComponent<AccordionProps> = ({
   bordered,
   children,

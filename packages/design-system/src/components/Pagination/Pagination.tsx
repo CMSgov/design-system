@@ -128,6 +128,10 @@ function paginationBuilder(page: number, pages: number): number[] {
   return paginationRange;
 }
 
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/pagination/).
+ */
 function Pagination({
   ariaLabel,
   className,

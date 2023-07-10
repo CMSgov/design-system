@@ -79,6 +79,17 @@ const panelTabId = (panel): string => {
   return panel.props.tabId || `ds-c-tabs__item--${panel.props.id}`;
 };
 
+/**
+ * `Tabs` is a container component that manages the state of your tabs for you.
+ * In most cases, you'll want to use this component rather than the
+ * presentational components (`Tab`, `TabPanel`) on their own.
+ *
+ * A `TabPanel` is a presentational component which accepts a tab's content as
+ * its `children`.
+ *
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/tabs/).
+ */
 export const Tabs = (props: TabsProps) => {
   const initialSelectedId = props.defaultSelectedId || getDefaultSelectedId(props);
   const [internalSelectedId, setSelectedId] = useState(initialSelectedId);

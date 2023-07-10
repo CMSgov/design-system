@@ -7,25 +7,12 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
 
 const meta: Meta<typeof Help> = {
-  title: 'Components/Help Drawer',
+  title: 'Components/HelpDrawer',
   component: Help,
   args: {
     footerTitle: 'Footer Title',
     footerBody: <p className="ds-text ds-u-margin--0">Footer content</p>,
     heading: 'HelpDrawer Heading',
-  },
-  // The Drawer was overlapping the docs page, so customizing the docs page to remove the examples
-  parameters: {
-    docs: {
-      page: () => (
-        <>
-          <Title />
-          <Subtitle />
-          <Description />
-          <ArgsTable story={PRIMARY_STORY} />
-        </>
-      ),
-    },
   },
 };
 export default meta;
@@ -60,7 +47,7 @@ const drawerContent = (
   </>
 );
 
-export const HelpDrawer: Story = {
+export const Default: Story = {
   render: function Component() {
     const [{ isDrawerVisible, ...args }, updateArgs] = useArgs();
     const showDrawer = () => updateArgs({ isDrawerVisible: true });

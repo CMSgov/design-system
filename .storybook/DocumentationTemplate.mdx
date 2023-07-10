@@ -1,0 +1,31 @@
+import { Meta, Title, Subtitle, Description, Primary, ArgsTable, Stories } from '@storybook/blocks';
+
+<Meta isTemplate />
+
+<Title />
+<Subtitle />
+
+<Description />
+
+<Primary />
+
+## Props
+
+{/*
+  * Note that ArgsTable is technically deprecated in v7, but Storybook has yet
+  * to offer a solid alternative for stories with subcomponents. This args
+  * table will render multiple tabs when there is a `subcomponents` property
+  * present in the story meta. See the following discussions:
+  * 
+  *   - https://github.com/storybookjs/storybook/issues/21253
+  *   - https://github.com/storybookjs/storybook/issues/20782
+  * 
+  * If they remove this feature, the path forward may be to create our own
+  * custom "doc block" that uses the
+  * [useOf](https://storybook.js.org/docs/react/api/doc-block-useof) hook.
+  */}
+<ArgsTable />
+
+---
+
+<Stories />

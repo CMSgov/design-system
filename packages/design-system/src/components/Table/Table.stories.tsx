@@ -10,6 +10,13 @@ import type { Meta, StoryObj } from '@storybook/react';
 const meta: Meta<typeof Table> = {
   title: 'Components/Table',
   component: Table as any,
+  subcomponents: {
+    TableCaption,
+    TableHead,
+    TableRow,
+    TableCell,
+    TableBody,
+  },
 };
 export default meta;
 

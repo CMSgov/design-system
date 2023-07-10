@@ -25,6 +25,10 @@ export interface BadgeProps {
   variation?: BadgeVariation;
 }
 
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/badge/).
+ */
 export const Badge: React.FC<React.ComponentPropsWithRef<'span'> & BadgeProps> = (
   props: BadgeProps
 ) => {
