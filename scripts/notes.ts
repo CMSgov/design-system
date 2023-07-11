@@ -42,10 +42,19 @@ const icon: Icons = icons;
  * Current milestone reference
  */
 const chooseMilestone = () => {
-  let answer, milestone;
-  const milestoneQuery = JSON.parse(
-    execSync('gh api repos/CMSgov/design-system/milestones').toString()
-  );
+  let answer, milestone, milestoneQuery;
+  try {
+    const milestoneJSON = execSync('gh api repos/CMSgov/design-system/milestones').toString();
+    milestoneQuery = JSON.parse(milestoneJSON);
+  } catch (err) {
+    console.log(`${c.red('There was an error retrieving current milestones.')}`);
+    console.log(
+      `Please check to make sure you have the ${c.green(
+        'gh'
+      )} tool installed (https://cli.github.com)`
+    );
+    process.exit(1);
+  }
 
   if (milestoneQuery.length < 1) {
     console.error('There are currently no milestones defined.');
