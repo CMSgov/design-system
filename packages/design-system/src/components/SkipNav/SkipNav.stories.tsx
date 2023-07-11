@@ -3,7 +3,7 @@ import SkipNav from './SkipNav';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof SkipNav> = {
-  title: 'Components/Skip Nav',
+  title: 'Components/SkipNav',
   component: SkipNav,
   args: {
     href: '#main',

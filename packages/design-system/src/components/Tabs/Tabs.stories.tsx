@@ -8,6 +8,7 @@ import { useArgs } from '@storybook/preview-api';
 const meta: Meta<typeof TabsComponent> = {
   title: 'Components/Tabs',
   component: TabsComponent,
+  subcomponents: { TabPanel },
 };
 export default meta;
 

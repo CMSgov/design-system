@@ -18,6 +18,10 @@ interface SimpleFooterProps {
   language?: string;
 }
 
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/footer/medicare-footer/?theme=medicare).
+ */
 const SimpleFooter: FunctionComponent<SimpleFooterProps> = ({
   aboutMedicareLabel = 'About Medicare',
   medicareGlossaryLabel = 'Medicare Glossary',
