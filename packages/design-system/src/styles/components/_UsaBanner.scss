@@ -23,7 +23,6 @@
   // Applying display:grid to account for flag icon alignment with text elements in mobile/table viewports
   display: grid;
   font-family: var(--usa-banner-heading__font-family);
-  font-size: 0.75rem;
   font-size: var(--usa-banner-heading__font-size);
   gap: 0.5ch 1ch;
   grid-template-areas:
@@ -65,10 +64,8 @@
 }
 
 .ds-c-usa-banner__action {
-  color: var(--usa-banner-link__color);
   grid-area: action;
   margin: 0;
-  text-decoration: underline;
 
   .ds-c-usa-banner__header--expanded & {
     // When banner is expanded on mobile/tablet, action text goes away
@@ -113,8 +110,6 @@
 .ds-c-usa-banner__button-text {
   // This element is screen-reader only on mobile/tablet
   @extend .ds-u-visibility--screen-reader;
-  color: var(--usa-banner-link__color);
-  text-decoration: underline;
 
   @media (min-width: $media-width-md) {
     // Need to overwrite specific screen reader only styles so the element becomes visible again on larger viewports
@@ -125,6 +120,13 @@
     position: relative;
     width: auto;
   }
+}
+
+// When these elements are visible, they should look the same
+.ds-c-usa-banner__action,
+.ds-c-usa-banner__button-text {
+  color: var(--usa-banner-link__color);
+  text-decoration: underline;
 }
 
 .ds-c-usa-banner__button-icon-container {
