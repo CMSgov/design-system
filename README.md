@@ -70,6 +70,8 @@ These scripts can all be run from the root level of the repo:
   - Note that you need to build Storybook statically (`yarn build:storybook`) before you can run the tests
   - `yarn test:browser:update` updates reference screenshots used for visual regression testing. Update these only when we expect the visual changes
   - `yarn test:browser --project <name>` runs only one of the named projects found in [playwright.config.ts](/tests/browser/playwright.config.ts)
+  - `yarn test:browser:interaction` runs VRT interaction tests to validate visual state of components after interaction.
+  - `yarn test:browser:all` runs all VRT, static and interactive.
 - `yarn lint`
   - Runs just the linting portion of the tests, eslint and stylelint
 - `yarn deploy-demo`
@@ -78,6 +80,8 @@ These scripts can all be run from the root level of the repo:
   - Bumps package versions and tags a release commit. Read our [release guide on Confluence](https://confluence.cms.gov/x/CAsuK) for more info.
 - `yarn release:bump`
   - Bumps package versions in a branch off of `main` and creates a pr for these bumps using `gh`. Read our [release guide on Confluence](https://confluence.cms.gov/x/CAsuK) for more info.
+- `yarn release:notes`
+  - Generates draft release notes and associated ticket information from [GitHub Milestones](https://github.com/CMSgov/design-system/milestones) in the CMSDS public repository.
 
 ### Visual regression testing
 
@@ -93,6 +97,8 @@ Running the browser tests locally requires that you be signed into Docker or hav
    2. If differences are detected and expected, run `yarn test:browser:update`
 
 #### If running Locally:
+
+**Note that running without using the docker image will occasionally throw false positives, depending on your system configuration. It's recommended that you utilize Docker when running DS visual regression tests.**
 
 1. If you have run `npx playwright install` and installed the playwright dependencies locally you can run the tests using their yarn commands directly.
 2. For example, to run the CMSDS VRT Tests for inteaction states: `yarn playwright test --config tests/browser/interaction.config.ts`
