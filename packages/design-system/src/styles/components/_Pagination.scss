@@ -1,10 +1,10 @@
 @use '../layout' as *;
 
 .ds-c-pagination {
-  align-items: flex-end;
   align-items: center;
   display: flex;
   justify-content: space-between;
+
   .ds-c-pagination__pages {
     display: none;
     margin: 0;
@@ -15,15 +15,18 @@
       gap: 1ch;
     }
     @media (min-width: $media-width-sm + 1) {
-      display: inline-block;
+      align-items: center;
+      display: inline-flex;
     }
   }
+
   .ds-c-button {
     color: var(--pagination-link__color);
     font-weight: var(--font-weight-normal);
     min-width: 44px;
     padding: $spacer-1 0;
   }
+
   .ds-c-button--ghost {
     text-decoration: none;
 
@@ -37,6 +40,7 @@
     &:active {
       color: var(--pagination-link__color--active);
     }
+
     @media (-ms-high-contrast: active), (forced-colors: active) {
       border: 0;
       &:hover {
@@ -44,6 +48,7 @@
       }
     }
   }
+
   .ds-c-pagination__current-page {
     color: var(--pagination-current-page__color);
     font-size: var(--font-size-xl);
@@ -55,6 +60,7 @@
       text-decoration: none;
     }
   }
+
   .ds-c-pagination__overflow {
     border: 2px solid transparent;
     color: var(--pagination-overflow__color);
@@ -65,6 +71,7 @@
       border: 0;
     }
   }
+
   .ds-c-pagination__page-count {
     border: 2px solid transparent;
     color: var(--pagination-page-count__color);
@@ -78,6 +85,7 @@
       display: inline-block;
     }
   }
+
   .ds-c-pagination__nav {
     flex: 0 0 auto;
     text-decoration: none;
@@ -113,6 +121,7 @@
       }
     }
   }
+
   [aria-disabled='true'] {
     border: 1px solid transparent;
     color: var(--pagination-link__color--disabled);
@@ -126,6 +135,7 @@
       padding: $spacer-half $spacer-2;
     }
   }
+
   .ds-c-pagination__nav--img-container {
     display: inline-block;
     vertical-align: text-top;
@@ -136,6 +146,7 @@
       margin-inline-end: $spacer-half;
     }
   }
+
   .ds-c-pagination__nav--image {
     height: 18px;
     width: 18px;
@@ -146,6 +157,7 @@
       }
     }
   }
+
   &.ds-c-pagination--compact {
     .ds-c-pagination__page-count {
       display: inline;
