@@ -114,6 +114,7 @@
   // This element is screen-reader only on mobile/tablet
   @extend .ds-u-visibility--screen-reader;
   color: var(--usa-banner-link__color);
+  text-decoration: underline;
 
   @media (min-width: $media-width-md) {
     // Need to overwrite specific screen reader only styles so the element becomes visible again on larger viewports
