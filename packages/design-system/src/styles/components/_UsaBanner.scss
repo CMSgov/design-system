@@ -1,7 +1,6 @@
 @use '../layout' as *;
 @use '../mixins';
 @use '../base' as *;
-@use '../utilities/grid' as *;
 @use '../utilities/display-visibility' as *;
 
 .ds-c-usa-banner {
@@ -9,11 +8,18 @@
   color: var(--usa-banner-color);
 }
 
+.ds-c-usa-banner__header,
+.ds-c-usa-banner__guidance-container {
+  margin-inline: auto;
+  max-width: var(--usa-banner__max-width);
+  padding-inline: calc(var(--usa-banner-gutter-width) * 0.5);
+
+  @media (min-width: $media-width-sm) {
+    padding-inline: var(--usa-banner-gutter-width);
+  }
+}
+
 .ds-c-usa-banner__header {
-  // margin-inline: auto;
-  // max-width: var(--usa-banner__max-width);
-  // padding-inline: calc(var(--usa-banner-gutter-width) * 0.5);
-  @extend .ds-l-container;
   // Applying display:grid to account for flag icon alignment with text elements in mobile/table viewports
   display: grid;
   font-family: var(--usa-banner-heading__font-family);
@@ -29,11 +35,8 @@
   padding-block: 0.5rem;
   position: relative;
 
-  // @media (min-width: $media-width-sm) {
-  //   padding-inline: var(--grid-gutter-width);
-  // }
-
-  @media (max-width: $media-width-md) {
+  // Need to target viewport 1px larger than $media-width-md to ensure the layout is correct on the breakpoint
+  @media (max-width: ($media-width-sm + 1)) {
     &.ds-c-usa-banner__header--expanded {
       // Additional padding needed to accommodate close button in expanded state
       // Button is only visible in mobile/tablet viewports
@@ -85,7 +88,6 @@
 .ds-c-usa-banner__button {
   background-color: transparent;
   border: 0;
-  color: var(--usa-banner-action__color);
   cursor: pointer;
   inset: 0;
   inset-inline-start: initial;
@@ -111,6 +113,7 @@
 .ds-c-usa-banner__button-text {
   // This element is screen-reader only on mobile/tablet
   @extend .ds-u-visibility--screen-reader;
+  color: var(--usa-banner-link__color);
 
   @media (min-width: $media-width-md) {
     // Need to overwrite specific screen reader only styles so the element becomes visible again on larger viewports
@@ -118,7 +121,6 @@
     // - Offer an "only" option for visibility utils (e.g. .ds-u--only-md-visibility--screen-reader)
     // - Offer a "not" option for visibility utils (e.g. .ds-u--not-md-visibility--screen-reader)
     height: auto;
-    overflow: auto;
     position: relative;
     width: auto;
   }
@@ -144,6 +146,7 @@
 
 .ds-c-usa-banner__button-icon {
   color: var(--usa-banner-close-button__color--mobile);
+  font-size: inherit !important; // This is needed to overwrite mgov's custom CSS targeting this particular icon's class.
   height: 1em;
   width: 1em;
 }
@@ -155,15 +158,7 @@
 }
 
 .ds-c-usa-banner__guidance-container {
-  // margin-inline: auto;
-  // max-width: var(--usa-banner__max-width);
-  // padding-inline: calc(var(--usa-banner-gutter-width) * 0.5);
-  @extend .ds-l-container;
   padding-block: 3rem 1.5rem;
-
-  // @media (min-width: $media-width-sm) {
-  //   padding-inline: var(--grid-gutter-width);
-  // }
 
   &:not([hidden]) {
     display: grid;
