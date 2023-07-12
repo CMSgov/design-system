@@ -472,7 +472,7 @@ export const components: AnyTokenValues = {
   'usa-banner': {
     '__background-color':                         t.color['gray-lightest'],
     '__color':                                    t.color['base'],
-    '__max-width':                                t.global['site-max-width'],
+    '__max-width':                                'unset',
     '-gutter-width':                              t.global['grid-gutter-width'],
     '-heading__font-family':                      t.font['sans'],
     '-heading__line-height':                      '1.1',

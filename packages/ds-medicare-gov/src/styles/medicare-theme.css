@@ -503,7 +503,7 @@
 --typography-body__font-family: 'Rubik', sans-serif;
 --usa-banner__background-color: #f2f2f2;
 --usa-banner__color: #404040;
---usa-banner__max-width: 1104px;
+--usa-banner__max-width: unset;
 --usa-banner-gutter-width: 32px;
 --usa-banner-heading__font-family: 'Rubik', sans-serif;
 --usa-banner-heading__line-height: 1.1;
