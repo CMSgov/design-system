@@ -1,7 +1,6 @@
 @use '../layout' as *;
 @use '../mixins';
 @use '../base' as *;
-@use '../utilities/display-visibility' as *;
 
 .ds-c-usa-banner {
   background-color: var(--usa-banner__background-color);
@@ -107,18 +106,12 @@
   }
 }
 
+// This element is screen-reader only on mobile/tablet
 .ds-c-usa-banner__button-text {
-  // This element is screen-reader only on mobile/tablet
-  @extend .ds-u-visibility--screen-reader;
-
-  @media (min-width: $media-width-md) {
-    // Need to overwrite specific screen reader only styles so the element becomes visible again on larger viewports
-    // Would be nice to have some more flexibility with our utils:
-    // - Offer an "only" option for visibility utils (e.g. .ds-u--only-md-visibility--screen-reader)
-    // - Offer a "not" option for visibility utils (e.g. .ds-u--not-md-visibility--screen-reader)
-    height: auto;
-    position: relative;
-    width: auto;
+  // This element uses md-width display utility classes on the component
+  // As a result, this @media needs to be 1px smaller than the md breakpoint to ensure the utility classes are applied correctly
+  @media (max-width: ($media-width-md - 1)) {
+    @include mixins.visually-hidden;
   }
 }
 
