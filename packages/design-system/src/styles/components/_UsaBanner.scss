@@ -42,7 +42,8 @@
     }
   }
 
-  @media (min-width: $media-width-md) {
+  // Need to target viewport 1px larger than $media-width-md to ensure the layout is correct on the breakpoint
+  @media (min-width: ($media-width-md + 1)) {
     align-items: center;
     // Changing display:grid to flex for larger viewports
     // The button goes from being a full-width element on mobile/tablet to something that looks like it's an inline link with text and needs to flow appropriately. Flex accomplishes this.
