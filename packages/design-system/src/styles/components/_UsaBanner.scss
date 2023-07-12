@@ -3,8 +3,19 @@
 @use '../base' as *;
 
 .ds-c-usa-banner {
+  // The following local CSS vars aren't meant to be themed; they're meant to be consistent across all CMS properties.
+  // System font stack was chosen to avoid having users download unnecessary fonts just for the banner.
+  --font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+  --heading__font-size: 0.75rem;
+  --heading__line-height: 1.1;
+  --panel__font-size: 1rem;
+  --panel__line-height: 1.5;
+  --domain-icon__color: #2b6891;
+  --security-icon__color: #59ac56;
+
   background-color: var(--usa-banner__background-color);
   color: var(--usa-banner-color);
+  font-family: var(--font-family);
 }
 
 .ds-c-usa-banner__header,
@@ -21,16 +32,15 @@
 .ds-c-usa-banner__header {
   // Applying display:grid to account for flag icon alignment with text elements in mobile/table viewports
   display: grid;
-  font-family: var(--usa-banner-heading__font-family);
-  font-size: var(--usa-banner-heading__font-size);
+  font-size: var(--heading__font-size);
   gap: 0.5ch 1ch;
   grid-template-areas:
     'icon text'
     'icon action';
   grid-template-columns: 1.5em auto;
-  line-height: var(--usa-banner-heading__line-height);
+  line-height: var(--heading__line-height);
   min-height: 3rem;
-  padding-block: 0.5rem;
+  padding-block: 0.25rem;
   position: relative;
 
   // Need to target viewport 1px larger than $media-width-md to ensure the layout is correct on the breakpoint
@@ -149,9 +159,8 @@
 }
 
 .ds-c-usa-banner__guidance {
-  font-family: var(--usa-banner-panel__font-family);
-  font-size: var(--usa-banner-panel__font-size);
-  line-height: var(--usa-banner-panel__line-height);
+  font-size: var(--panel__font-size);
+  line-height: var(--panel__line-height);
 }
 
 .ds-c-usa-banner__guidance-container {
@@ -175,12 +184,12 @@
 
   // Domain guidance
   &:first-child {
-    --icon-color: var(--usa-banner-domain-icon__color);
+    --icon-color: var(--domain-icon__color);
   }
 
   // Security guidance
   &:last-child {
-    --icon-color: var(--usa-banner-security-icon__color);
+    --icon-color: var(--security-icon__color);
   }
 }
 
