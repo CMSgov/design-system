@@ -48,9 +48,11 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
 
   return (
     <section className={classes} aria-label={t('usaBanner.bannerLabel')}>
+      {/* Util class used to hardcode font-size across themes */}
       <header
         className={classNames(
           'ds-c-usa-banner__header',
+          'ds-u-font-size--sm',
           isBannerOpen && 'ds-c-usa-banner__header--expanded'
         )}
       >
@@ -79,7 +81,8 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
           </span>
         </button>
       </header>
-      <div className="ds-c-usa-banner__guidance">
+      {/* Util classes used to hardcode font treatment across themes */}
+      <div className="ds-c-usa-banner__guidance [ ds-u-leading--base ds-u-font-size--base ]">
         <div id={id} className="ds-c-usa-banner__guidance-container" hidden={!isBannerOpen}>
           <div className="ds-c-usa-banner__guidance-item">
             <BuildingCircleIcon className="ds-c-usa-banner__guidance-icon" />

@@ -6,12 +6,12 @@
   // The following local CSS vars aren't meant to be themed; they're meant to be consistent across all CMS properties.
   // System font stack was chosen to avoid having users download unnecessary fonts just for the banner.
   --font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
-  --heading__font-size: 0.875rem;
   --heading__line-height: 1.1;
-  --panel__font-size: 1rem;
-  --panel__line-height: 1.5;
-  --domain-icon__color: #2b6891;
-  --security-icon__color: #59ac56;
+
+  // Hardcoding colors to prevent themeing
+  // Couldn't use util classes because each theme has a different color scheme
+  --domain-icon__color: #0071bc; // ocean-500
+  --security-icon__color: #12890e; // spring-500
 
   background-color: var(--usa-banner__background-color);
   color: var(--usa-banner-color);
@@ -32,7 +32,6 @@
 .ds-c-usa-banner__header {
   // Applying display:grid to account for flag icon alignment with text elements in mobile/table viewports
   display: grid;
-  font-size: var(--heading__font-size);
   gap: 0.5ch 1ch;
   grid-template-areas:
     'icon text'
@@ -156,11 +155,6 @@
   font-size: inherit !important; // This is needed to overwrite mgov's custom CSS targeting this particular icon's class.
   height: 1em;
   width: 1em;
-}
-
-.ds-c-usa-banner__guidance {
-  font-size: var(--panel__font-size);
-  line-height: var(--panel__line-height);
 }
 
 .ds-c-usa-banner__guidance-container {

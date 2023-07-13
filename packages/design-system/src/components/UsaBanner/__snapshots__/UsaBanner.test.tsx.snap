@@ -2,7 +2,7 @@
 
 exports[`UsaBanner renders correctly 1`] = `
 <header
-  class="ds-c-usa-banner__header"
+  class="ds-c-usa-banner__header ds-u-font-size--sm"
 >
   <svg
     aria-hidden="true"
