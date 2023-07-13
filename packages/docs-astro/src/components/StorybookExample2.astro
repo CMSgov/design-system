@@ -1,0 +1,43 @@
+---
+export interface Props {
+  /**
+   * Relative to our packages folder
+   */
+  filename: string;
+  story?: string;
+}
+
+const { filename, story = 'Default' } = Astro.props;
+
+// The idea I have is to import a stories file and create a custom renderer for that
+// story in Astro. It's a pretty tall order, and I don't know if it's feasible to
+// make it comprehensive and robust enough. I thought maybe I could read the files
+// and take the story config objects out of them without importing all of those
+// modules' dependencies, but there are often external pieces that make up those
+// story objects, not to mention the imported components themselves.
+
+// const story = require('../../../design-system/src/components/Alert/Alert.stories.tsx');
+// console.log(story);
+// const stories = await import('../../../design-system/src/components/Alert/Alert.stories');
+// const stories = await import(`@cmsgov/${filename}`); // Astro/Vite can't handle these dynamic imports
+// const storyModules = await Astro.glob('../../../**/*.stories.tsx'); 
+const storyModuleImporters = import.meta.glob('../../../**/*.stories.embed.js');
+const entry = Object.entries(storyModuleImporters).find(([key]) => key.includes(filename));
+if (!entry) {
+  console.log(Object.keys(storyModuleImporters))
+  throw new Error(`Could not find story module '${filename}'`);
+}
+const [,importer] = entry;
+const stories = (await importer()) as any;
+const args = {...(stories.default?.args ?? {}), ...(stories[story].args ?? {})};
+const storyConfig = stories[story];
+if (!storyConfig) {
+  throw new Error(`Story ${story} not found in ${Object.keys(stories)}`);
+}
+const Story = storyConfig.render ?? stories.default?.component;
+// console.log(args)
+---
+<section class="c-storybook-example">
+  <Story {...args} client:load />
+</section>
+<!-- <section class="c-storybook-example">hello world</section> -->
