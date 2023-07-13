@@ -459,11 +459,20 @@ export const components: AnyTokenValues = {
 
   'usa-banner': {
     '__background-color':                         t.color['gray-lightest'],
-    '__color':                                    t.color['black'],
-    '-close__background-color':                   t.color['gray-light'],
-    '-action__color':                             t.color['primary-darker'],
-    '-lock-icon__color':                          t.color['success-light'],
-    '-heading__font-size':                        '0.75rem',
+    '__color':                                    t.color['base'],
+    '__max-width':                                t.global['site-max-width'],
+    '-gutter-width':                              t.global['grid-gutter-width'],
+    '-heading__font-family':                      t.font['sans'],
+    '-heading__line-height':                      '1.1',
+    '-heading__font-size':                        t.font['size-sm'],
+    '-panel__font-family':                        t.font['sans'],
+    '-panel__line-height':                        t.font['line-height-base'],
+    '-panel__font-size':                          t.font['size-base'],
+    '-link__color':                               t.color['primary'],
+    '-domain-icon__color':                        t.color['primary'],
+    '-security-icon__color':                      t.color['success-light'],
+    '-close-button__background-color--mobile':    t.color['gray-lighter'],
+    '-close-button__color--mobile':               t.color['primary'],
   },
 
   'vertical-nav': {

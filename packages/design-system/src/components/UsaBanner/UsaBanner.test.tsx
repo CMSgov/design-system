@@ -24,6 +24,8 @@ describe('UsaBanner', function () {
 
   it('adds className to root element', () => {
     renderBanner({ className: 'bar' });
-    expect(screen.getByLabelText('Official government website').className).toContain('bar');
+    expect(
+      screen.getByLabelText('Official website of the United States government').className
+    ).toContain('bar');
   });
 });
