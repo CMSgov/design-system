@@ -137,11 +137,23 @@ const getPRs = () => {
 const organizeNotes = (ghPrData: PRDetails[]) => {
   const notes: PRNote[] = [];
 
+  const matchLabels = (regex: RegExp, labels: string[]): string[] => {
+    return labels
+      .map((label) => {
+        const match = label.match(regex);
+        return match && match[1].toLowerCase();
+      })
+      .filter((match): match is string => !!match);
+  };
+
   ghPrData.forEach((pr: PRDetails) => {
     const note = {} as PRNote;
     if (!pr.labels?.length) return;
 
-    if (pr.labels.length !== 2) {
+    const types = matchLabels(/Type: (\w+)/i, pr.labels);
+    const impacts = matchLabels(/Impacts: (\w+)/i, pr.labels);
+
+    if (types.length !== 1 || impacts.length !== 1) {
       console.error(
         '\nPRs are required to have exactly one Impacts: label and at exactly one Type: label.'
       );
@@ -150,14 +162,8 @@ const organizeNotes = (ghPrData: PRDetails[]) => {
       process.exit(1);
     }
 
-    pr.labels.forEach((label) => {
-      const t = label.match(/Type: (\w+)/i);
-      const i = label.match(/Impacts: (\w+)/i);
-
-      if (t) note.type = t[1].toLowerCase();
-      if (i) note.impacts = i[1].toLowerCase();
-    });
-
+    note.type = types[0];
+    note.impacts = impacts[0];
     note.title = pr.title;
     note.pr_number = pr.ghpr;
 
