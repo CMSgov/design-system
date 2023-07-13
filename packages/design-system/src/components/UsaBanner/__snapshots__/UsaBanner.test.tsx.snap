@@ -2,23 +2,16 @@
 
 exports[`UsaBanner renders correctly 1`] = `
 <header
-  class="ds-c-usa-banner__header"
+  class="ds-c-usa-banner__header ds-u-font-size--sm"
 >
   <svg
-    aria-hidden="false"
-    aria-labelledby="icon-2__title"
-    class="ds-c-icon ds-c-icon--usa-flag ds-c-usa-banner__header-flag"
+    aria-hidden="true"
+    class="ds-c-icon ds-c-icon--usa-flag ds-c-usa-banner__header-icon"
     focusable="false"
     id="icon-2"
-    role="img"
     viewBox="0 0 16 11"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <title
-      id="icon-2__title"
-    >
-      U.S. Flag
-    </title>
     <g
       fill="none"
       fill-rule="evenodd"
@@ -48,21 +41,43 @@ exports[`UsaBanner renders correctly 1`] = `
   <p
     class="ds-c-usa-banner__header-text"
   >
-    <span>
-      An official website of the United States government
-    </span>
-    <button
-      aria-controls="gov-banner_1"
-      aria-expanded="false"
-      class="ds-c-usa-banner__button ds-c-usa-banner__button-text"
+    An official website of the United States government
+  </p>
+  <p
+    class="ds-c-usa-banner__action ds-u-display--flex ds-u-align-items--center ds-u-md-display--none"
+  >
+    Here's how you know
+    <svg
+      aria-hidden="true"
+      class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
+      direction="down"
+      focusable="false"
+      id="icon-3"
+      viewBox="0 0 320 512"
+      xmlns="http://www.w3.org/2000/svg"
     >
-      Here’s how you know
+      <path
+        d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"
+        fill="currentColor"
+      />
+    </svg>
+  </p>
+  <button
+    aria-controls="gov-banner_1"
+    aria-expanded="false"
+    class="ds-c-usa-banner__button"
+    type="button"
+  >
+    <span
+      class="ds-c-usa-banner__button-text ds-u-md-display--flex ds-u-align-items--center"
+    >
+      Here's how you know
       <svg
         aria-hidden="true"
-        class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon ds-u-margin-left--1"
+        class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
         direction="down"
         focusable="false"
-        id="icon-3"
+        id="icon-4"
         viewBox="0 0 320 512"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -71,7 +86,28 @@ exports[`UsaBanner renders correctly 1`] = `
           fill="currentColor"
         />
       </svg>
-    </button>
-  </p>
+    </span>
+    <span
+      class="ds-c-usa-banner__button-icon-container"
+      hidden=""
+    >
+      <svg
+        aria-hidden="true"
+        class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin ds-c-usa-banner__button-icon"
+        focusable="false"
+        id="icon-5"
+        viewBox="-2 -2 18 18"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 13.0332964L13.0332964 0M13.0332964 13.0332964L0 0"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-width="2"
+        />
+      </svg>
+    </span>
+  </button>
 </header>
 `;

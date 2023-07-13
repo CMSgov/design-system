@@ -43,7 +43,7 @@ export interface ThemeTokens {
   animation: AnimationTokens;
   color: ColorTokens;
   font: FontTokens;
-  global?: AnyTokenValues;
+  global: AnyTokenValues;
   measure: MeasureTokens;
   media: MediaWidthTokens;
   radius: BorderRadiusTokens;
