@@ -3,6 +3,7 @@ import FormLabel from '../FormLabel/FormLabel';
 import React from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
+import mergeIds from '../utilities/mergeIds';
 
 export type ChoiceSize = 'small';
 export type ChoiceType = 'checkbox' | 'radio';
@@ -227,7 +228,7 @@ export class Choice extends React.PureComponent<
     if (inputProps.onChange) delete inputProps.onChange;
 
     inputProps['aria-describedby'] =
-      classNames(this.hintId, inputProps['aria-describedby']) || undefined;
+      mergeIds(this.hintId, inputProps['aria-describedby']) || undefined;
 
     return (
       <div

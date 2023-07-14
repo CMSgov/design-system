@@ -3,6 +3,7 @@ import React, { MutableRefObject } from 'react';
 import TextField from '../TextField/TextField';
 import classNames from 'classnames';
 import { t } from '../i18n';
+import mergeIds from '../utilities/mergeIds';
 
 export type DateInputDayDefaultValue = string | number;
 export type DateInputDayValue = string | number;
@@ -217,7 +218,7 @@ export class DateInput extends React.PureComponent<DateInputProps> {
           }
         }}
         autoComplete={this.props.autoComplete && `bday-${type}`}
-        aria-describedby={classNames(this.props.labelId, this.props['aria-describedby'])}
+        aria-describedby={mergeIds(this.props.labelId, this.props['aria-describedby'])}
         aria-invalid={this.props[`${type}Invalid`]}
       />
     );

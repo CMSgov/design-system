@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
 import { FormLabelProps } from '../FormLabel/FormLabel';
 import { errorPlacementDefault } from '../flags';
+import mergeIds from '../utilities/mergeIds';
 
 // TODO: Reimplement focusTrigger in another place, like another hook
 
@@ -165,7 +166,7 @@ export function useFormLabel<T extends UseFormLabelProps>(props: T) {
     errorMessage,
     inversed,
     'aria-describedby':
-      classNames(props['aria-describedby'], errorElement && errorId, hintId) || undefined,
+      mergeIds(props['aria-describedby'], errorElement && errorId, hintId) || undefined,
     'aria-invalid': !wrapperIsFieldset ? ariaInvalid : undefined,
   };
 
