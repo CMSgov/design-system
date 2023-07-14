@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`InlineError renders inline error 1`] = `
+exports[`FieldError renders inline error 1`] = `
 <span
   aria-atomic="true"
   aria-live="assertive"
@@ -28,7 +28,7 @@ exports[`InlineError renders inline error 1`] = `
 </span>
 `;
 
-exports[`InlineError renders inverse error 1`] = `
+exports[`FieldError renders inverse error 1`] = `
 <span
   aria-atomic="true"
   aria-live="assertive"

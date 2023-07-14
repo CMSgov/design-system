@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import InlineError from './InlineError';
+import FieldError from './FieldError';
 
 const defaultProps = {
   children: 'Error message',
@@ -8,16 +8,16 @@ const defaultProps = {
   inversed: false,
 };
 
-function makeInlineError(customProps = {}) {
+function makeFieldError(customProps = {}) {
   const props = { ...defaultProps, ...customProps };
-  const component = <InlineError {...props} />;
+  const component = <FieldError {...props} />;
 
   return render(component);
 }
 
-describe('InlineError', function () {
+describe('FieldError', function () {
   it('renders inline error', () => {
-    makeInlineError();
+    makeFieldError();
 
     const error = screen.getByText('Error message');
     expect(error).toHaveClass('ds-c-field__error-message');
@@ -25,7 +25,7 @@ describe('InlineError', function () {
   });
 
   it('renders inverse error', () => {
-    makeInlineError({ inversed: true });
+    makeFieldError({ inversed: true });
 
     const error = screen.getByText('Error message');
     expect(error).toHaveClass('ds-c-field__error-message--inverse');

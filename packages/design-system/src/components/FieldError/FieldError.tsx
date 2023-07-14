@@ -4,23 +4,23 @@ import { AlertCircleIcon } from '../Icons/AlertCircleIcon';
 import { t } from '../i18n';
 
 /**
- * <InlineError> is an internal component used by <FormLabel>
- * <InlineError> is also exported for advanced design system use cases, where the internal component can be leveraged to build custom form components
+ * <FieldError> is an internal component used by <FormLabel>
+ * <FieldError> is also exported for advanced design system use cases, where the internal component can be leveraged to build custom form components
  */
 
-interface InlineErrorProps {
+interface FieldErrorProps {
   children?: React.ReactNode;
   className?: string;
   id?: string;
   inversed?: boolean;
 }
 
-export function InlineError({
+export function FieldError({
   children,
   className,
   id,
   inversed,
-}: InlineErrorProps): React.ReactElement {
+}: FieldErrorProps): React.ReactElement {
   const classes = classNames(
     'ds-c-inline-error',
     'ds-c-field__error-message',
@@ -38,4 +38,4 @@ export function InlineError({
   );
 }
 
-export default InlineError;
+export default FieldError;
