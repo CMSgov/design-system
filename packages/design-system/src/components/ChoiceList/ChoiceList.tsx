@@ -112,7 +112,7 @@ export const ChoiceList: React.FC<ChoiceListProps> = (props: ChoiceListProps) =>
     }, 20);
   };
 
-  const { labelProps, fieldProps, wrapperProps, bottomError } = useFormLabel({
+  const { labelProps, wrapperProps, bottomError } = useFormLabel({
     ...listProps,
     labelComponent: 'legend',
     wrapperIsFieldset: true,

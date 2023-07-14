@@ -8,7 +8,7 @@ import { t } from '../i18n';
  * <FieldError> is also exported for advanced design system use cases, where the internal component can be leveraged to build custom form components
  */
 
-interface FieldErrorProps {
+export interface FieldErrorProps {
   children?: React.ReactNode;
   className?: string;
   id?: string;
@@ -22,7 +22,7 @@ export function FieldError({
   inversed,
 }: FieldErrorProps): React.ReactElement {
   const classes = classNames(
-    'ds-c-inline-error',
+    'ds-c-inline-error', // For backwards compatibility
     'ds-c-field__error-message',
     { 'ds-c-field__error-message--inverse': inversed },
     className

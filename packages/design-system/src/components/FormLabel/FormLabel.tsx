@@ -1,6 +1,6 @@
-import InlineError from '../InlineError/InlineError';
 import React from 'react';
 import classNames from 'classnames';
+import { FieldHint } from '../FieldHint/FieldHint';
 
 export type FormLabelComponent = 'label' | 'legend';
 export interface FormLabelProps {
@@ -14,12 +14,10 @@ export interface FormLabelProps {
   className?: string;
   /** The root HTML element used to render the label */
   component?: FormLabelComponent;
-  /** Enable the error state by providing an error message. */
-  errorMessage?: React.ReactNode;
   /**
-   * Additional classes to be added to the error message
+   * Enable the error state by providing an error message.
    */
-  errorMessageClassName?: string;
+  errorMessage?: React.ReactNode;
   /**
    * The ID of the error message applied to this field.
    */
@@ -33,6 +31,10 @@ export interface FormLabelProps {
    * Additional hint text to display
    */
   hint?: React.ReactNode;
+  /**
+   * The ID of the hint element
+   */
+  hintId?: string;
   /**
    * A unique `id` for the label element. Useful for referencing the label from
    * other components with `aria-describedby`.
@@ -69,11 +71,11 @@ export const FormLabel = (props: ComponentProps) => {
     children,
     component,
     hint,
+    hintId,
     textClassName,
     className,
     inversed,
     errorMessage,
-    errorMessageClassName,
     errorId,
     requirementLabel,
     ...labelProps
@@ -81,46 +83,10 @@ export const FormLabel = (props: ComponentProps) => {
 
   let hintElement;
   if (hint || requirementLabel) {
-    const hintClasses = classNames('ds-c-field__hint', inversed && 'ds-c-field__hint--inverse');
-
-    let hintPadding;
-    let requirement = requirementLabel;
-
-    if (requirementLabel && hint) {
-      if (typeof requirementLabel === 'string') {
-        // Remove any existing spacing and punctuation
-        requirement = requirementLabel.trim().replace(/\.$/, '');
-        // Add punctuation after the requirementLabel so it doesn't run into the hint
-        requirement = requirementLabel + '.';
-      }
-
-      // Add space between hint and preceding requirementLabel
-      hintPadding = ' ';
-    }
-
     hintElement = (
-      <span className={hintClasses}>
-        {requirement}
-        {hintPadding}
+      <FieldHint requirementLabel={requirementLabel} inversed={inversed} id={hintId}>
         {hint}
-      </span>
-    );
-  }
-
-  let errorMessageElement;
-  if (errorMessage) {
-    // Include fallback for errorId
-    let inlineErrorId;
-    if (errorId) {
-      inlineErrorId = errorId;
-    } else if (fieldId) {
-      inlineErrorId = `${fieldId}-error`;
-    }
-
-    errorMessageElement = (
-      <InlineError id={inlineErrorId} inversed={inversed} className={errorMessageClassName}>
-        {errorMessage}
-      </InlineError>
+      </FieldHint>
     );
   }
 
@@ -128,11 +94,13 @@ export const FormLabel = (props: ComponentProps) => {
   const classes = classNames('ds-c-label', className, inversed && 'ds-c-label--inverse');
 
   return (
-    <ComponentType className={classes} htmlFor={fieldId} id={id} {...labelProps}>
-      <span className={classNames(textClassName)}>{children}</span>
+    <>
+      <ComponentType className={classes} htmlFor={fieldId} id={id} {...labelProps}>
+        <span className={classNames(textClassName)}>{children}</span>
+      </ComponentType>
       {hintElement}
-      {errorMessageElement}
-    </ComponentType>
+      {errorMessage}
+    </>
   );
 };
 

@@ -1,2 +1,2 @@
-export { default as InlineError } from './FieldError';
+export * from './InlineError';
 export * from './FieldError';
