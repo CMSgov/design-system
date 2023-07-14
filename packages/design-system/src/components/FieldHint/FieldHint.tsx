@@ -40,10 +40,10 @@ export const FieldHint = ({ children, id, inversed, requirementLabel }: FieldHin
   }
 
   return (
-    <span id={id} className={hintClasses}>
+    <div id={id} className={hintClasses}>
       {requirementLabel}
       {hintPadding}
       {children}
-    </span>
+    </div>
   );
 };

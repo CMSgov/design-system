@@ -7,6 +7,7 @@ import uniqueId from 'lodash/uniqueId';
 export type ChoiceSize = 'small';
 export type ChoiceType = 'checkbox' | 'radio';
 export type ChoiceValue = number | string;
+
 export interface ChoiceProps {
   /**
    * Sets the input's `checked` state. Use this in combination with `onChange`
@@ -125,6 +126,7 @@ export class Choice extends React.PureComponent<
     this.handleChange = this.handleChange.bind(this);
     this.handleUncheck = this.handleUncheck.bind(this);
     this.id = this.props.id || uniqueId(`${this.props.type}_${this.props.name}_`);
+    this.hintId = this.props.hint || this.props.requirementLabel ? `${this.id}_hint` : undefined;
 
     if (typeof this.props.checked === 'undefined') {
       this.isControlled = false;
@@ -154,6 +156,7 @@ export class Choice extends React.PureComponent<
 
   input: any;
   id: string;
+  hintId?: string;
   isControlled: boolean;
   uncheckEventName: string;
 
@@ -223,6 +226,9 @@ export class Choice extends React.PureComponent<
     if (inputProps.id) delete inputProps.id;
     if (inputProps.onChange) delete inputProps.onChange;
 
+    inputProps['aria-describedby'] =
+      classNames(this.hintId, inputProps['aria-describedby']) || undefined;
+
     return (
       <div
         className={className}
@@ -247,6 +253,7 @@ export class Choice extends React.PureComponent<
           <FormLabel
             className={labelClassName}
             fieldId={this.id}
+            hintId={this.hintId}
             {...{ errorMessage, errorMessageClassName, hint, inversed, requirementLabel }}
           >
             {label}
