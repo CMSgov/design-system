@@ -24,7 +24,6 @@ export const Default: Story = {};
 
 export const CheckedChildren: Story = {
   args: {
-    size: 'small',
     checkedChildren: (
       <Alert heading="You'll save more with this option" className="ds-c-choice__checkedChild">
         Based on the household information you provided, this option will give you the maximum

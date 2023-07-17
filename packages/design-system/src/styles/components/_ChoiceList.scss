@@ -20,7 +20,7 @@
     'check error-message'
     'checked-children checked-children';
   // grid-template-columns: var(--choice__size) auto;
-  grid-template-columns: minmax(var(--choice__size-small), max-content) auto;
+  grid-template-columns: min-content auto;
   margin-block-start: $spacer-1;
   max-width: var(--measure-wide);
   row-gap: 0;
