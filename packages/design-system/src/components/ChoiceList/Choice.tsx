@@ -4,6 +4,7 @@ import React from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
 import mergeIds from '../utilities/mergeIds';
+import { FieldError } from '../FieldError';
 
 export type ChoiceSize = 'small';
 export type ChoiceType = 'checkbox' | 'radio';
@@ -128,6 +129,7 @@ export class Choice extends React.PureComponent<
     this.handleUncheck = this.handleUncheck.bind(this);
     this.id = this.props.id || uniqueId(`${this.props.type}_${this.props.name}_`);
     this.hintId = this.props.hint || this.props.requirementLabel ? `${this.id}_hint` : undefined;
+    this.errorId = this.props.errorMessage ? `${this.id}_error` : undefined;
 
     if (typeof this.props.checked === 'undefined') {
       this.isControlled = false;
@@ -158,6 +160,7 @@ export class Choice extends React.PureComponent<
   input: any;
   id: string;
   hintId?: string;
+  errorId?: string;
   isControlled: boolean;
   uncheckEventName: string;
 
@@ -223,43 +226,56 @@ export class Choice extends React.PureComponent<
       'ds-c-choice--small': size === 'small',
     });
 
+    let errorElement;
+    if (errorMessage) {
+      errorElement = (
+        <FieldError id={this.errorId} inversed={inversed} className={errorMessageClassName}>
+          {errorMessage}
+        </FieldError>
+      );
+    }
+
     // Remove props we have our own implementations for
     if (inputProps.id) delete inputProps.id;
     if (inputProps.onChange) delete inputProps.onChange;
 
     inputProps['aria-describedby'] =
-      mergeIds(this.hintId, inputProps['aria-describedby']) || undefined;
+      mergeIds(this.errorId, this.hintId, inputProps['aria-describedby']) || undefined;
 
     return (
       <div
-        className={className}
+        className={classNames('ds-c-choice-wrapper', className)}
         aria-live={ariaLive ?? (checkedChildren ? 'polite' : null)}
         aria-relevant={ariaRelevant ?? (checkedChildren ? 'additions text' : null)}
         aria-atomic={ariaAtomic ?? (checkedChildren ? 'false' : null)}
       >
-        <div className="ds-c-choice-wrapper">
-          <input
-            className={inputClasses}
-            id={this.id}
-            onChange={this.handleChange}
-            disabled={disabled}
-            ref={(ref) => {
-              this.input = ref;
-              if (inputRef) {
-                inputRef(ref);
-              }
-            }}
-            {...inputProps}
-          />
-          <FormLabel
-            className={labelClassName}
-            fieldId={this.id}
-            hintId={this.hintId}
-            {...{ errorMessage, errorMessageClassName, hint, inversed, requirementLabel }}
-          >
-            {label}
-          </FormLabel>
-        </div>
+        <input
+          className={inputClasses}
+          id={this.id}
+          onChange={this.handleChange}
+          disabled={disabled}
+          ref={(ref) => {
+            this.input = ref;
+            if (inputRef) {
+              inputRef(ref);
+            }
+          }}
+          {...inputProps}
+        />
+        <FormLabel
+          className={labelClassName}
+          fieldId={this.id}
+          hintId={this.hintId}
+          {...{
+            errorMessage: errorElement,
+            errorMessageClassName,
+            hint,
+            inversed,
+            requirementLabel,
+          }}
+        >
+          {label}
+        </FormLabel>
         {this.checked() ? checkedChildren : uncheckedChildren}
       </div>
     );
