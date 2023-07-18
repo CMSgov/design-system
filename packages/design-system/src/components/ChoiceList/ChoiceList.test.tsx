@@ -85,7 +85,7 @@ describe('ChoiceList', () => {
       renderChoiceList();
       const legendEl = screen.getByText('Foo');
 
-      expect(legendEl.parentElement.tagName).toBe('LEGEND');
+      expect(legendEl.tagName).toBe('LEGEND');
     });
 
     it('passes checked prop', () => {
