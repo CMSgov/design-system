@@ -54,99 +54,88 @@ export interface FormLabelProps {
   textClassName?: string;
 }
 
+type ComponentProps = React.ComponentPropsWithRef<'label'> &
+  React.ComponentPropsWithRef<'legend'> &
+  FormLabelProps;
+
 /**
  * For information about how and when to use this component,
  * [refer to its full documentation page](https://design.cms.gov/components/form-label/).
  */
-export class FormLabel extends React.PureComponent<
-  React.ComponentPropsWithRef<'label'> & React.ComponentPropsWithRef<'legend'> & FormLabelProps,
-  any
-> {
-  static defaultProps = { component: 'label' };
+export const FormLabel = (props: ComponentProps) => {
+  const {
+    fieldId,
+    id,
+    children,
+    component,
+    hint,
+    textClassName,
+    className,
+    inversed,
+    errorMessage,
+    errorMessageClassName,
+    errorId,
+    requirementLabel,
+    ...labelProps
+  } = props;
 
-  hint(): React.ReactNode {
-    const { hint } = this.props;
-    let { requirementLabel } = this.props;
-    if (!hint && !requirementLabel) return;
+  let hintElement;
+  if (hint || requirementLabel) {
+    const hintClasses = classNames('ds-c-field__hint', inversed && 'ds-c-field__hint--inverse');
 
-    const classes = classNames('ds-c-field__hint', {
-      'ds-c-field__hint--inverse': this.props.inversed,
-    });
-
-    let hintPadding = null;
+    let hintPadding;
+    let requirement = requirementLabel;
 
     if (requirementLabel && hint) {
       if (typeof requirementLabel === 'string') {
         // Remove any existing spacing and punctuation
-        requirementLabel = requirementLabel.trim().replace(/\.$/, '');
+        requirement = requirementLabel.trim().replace(/\.$/, '');
         // Add punctuation after the requirementLabel so it doesn't run into the hint
-        requirementLabel = requirementLabel + '.';
+        requirement = requirementLabel + '.';
       }
 
       // Add space between hint and preceding requirementLabel
       hintPadding = ' ';
     }
 
-    return (
-      <span className={classes}>
-        {requirementLabel}
+    hintElement = (
+      <span className={hintClasses}>
+        {requirement}
         {hintPadding}
         {hint}
       </span>
     );
   }
 
-  errorMessage(): React.ReactNode {
-    if (this.props.errorMessage) {
-      // Include fallback for errorId
-      let errorId = null;
-      if (this.props.errorId) {
-        errorId = this.props.errorId;
-      } else if (this.props.fieldId) {
-        errorId = `${this.props.fieldId}-error`;
-      }
-
-      return (
-        <InlineError
-          id={errorId}
-          inversed={this.props.inversed}
-          className={this.props.errorMessageClassName}
-        >
-          {this.props.errorMessage}
-        </InlineError>
-      );
+  let errorMessageElement;
+  if (errorMessage) {
+    // Include fallback for errorId
+    let inlineErrorId;
+    if (errorId) {
+      inlineErrorId = errorId;
+    } else if (fieldId) {
+      inlineErrorId = `${fieldId}-error`;
     }
-  }
 
-  render() {
-    const {
-      fieldId,
-      id,
-      children,
-      component,
-      hint,
-      textClassName,
-      className,
-      inversed,
-      errorMessage,
-      errorMessageClassName,
-      errorId,
-      requirementLabel,
-      ...labelProps
-    } = this.props;
-    const ComponentType = this.props.component;
-    const classes = classNames('ds-c-label', className, {
-      'ds-c-label--inverse': inversed,
-    });
-
-    return (
-      <ComponentType className={classes} htmlFor={fieldId} id={id} {...labelProps}>
-        <span className={classNames(textClassName)}>{children}</span>
-        {this.hint()}
-        {this.errorMessage()}
-      </ComponentType>
+    errorMessageElement = (
+      <InlineError id={inlineErrorId} inversed={inversed} className={errorMessageClassName}>
+        {errorMessage}
+      </InlineError>
     );
   }
-}
+
+  const ComponentType = component;
+  const classes = classNames('ds-c-label', className, inversed && 'ds-c-label--inverse');
+
+  return (
+    <ComponentType className={classes} htmlFor={fieldId} id={id} {...labelProps}>
+      <span className={classNames(textClassName)}>{children}</span>
+      {hintElement}
+      {errorMessageElement}
+    </ComponentType>
+  );
+};
+
+FormLabel.defaultProps = { component: 'label' };
 
 export default FormLabel;
