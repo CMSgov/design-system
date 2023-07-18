@@ -51,7 +51,8 @@ export interface FormLabelProps {
    */
   requirementLabel?: React.ReactNode;
   /**
-   * Additional classes to be added to the label text.
+   * @deprecated Please just use `className` instead
+   * @hide-prop [Deprecated]
    */
   textClassName?: string;
 }
@@ -81,6 +82,12 @@ export const FormLabel = (props: ComponentProps) => {
     ...labelProps
   } = props;
 
+  if (process.env.NODE_ENV !== 'production' && textClassName) {
+    console.warn(
+      "[Deprecated]: Please use the 'className' prop instead of 'textClassName'. This prop is deprecated and will be removed in a future release."
+    );
+  }
+
   let hintElement;
   if (hint || requirementLabel) {
     hintElement = (
@@ -91,12 +98,17 @@ export const FormLabel = (props: ComponentProps) => {
   }
 
   const ComponentType = component;
-  const classes = classNames('ds-c-label', className, inversed && 'ds-c-label--inverse');
+  const classes = classNames(
+    'ds-c-label',
+    className,
+    inversed && 'ds-c-label--inverse',
+    textClassName
+  );
 
   return (
     <>
       <ComponentType className={classes} htmlFor={fieldId} id={id} {...labelProps}>
-        <span className={classNames(textClassName)}>{children}</span>
+        {children}
       </ComponentType>
       {hintElement}
       {errorMessage}
