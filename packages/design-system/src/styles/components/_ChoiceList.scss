@@ -9,7 +9,6 @@
 
 // Layout styles for wrapping choice container
 .ds-c-choice-wrapper {
-
   // Medicare has a different gap for choice wrappers
   // If a theme doesn't have a gap for choice wrappers defined, it will fall back to the normal gap
   column-gap: var(--choice-wrapper__gap, 0.5rem);
@@ -275,7 +274,6 @@ label,
 // Checked children container
 .ds-c-choice__checkedChild {
   border-inline-start: $spacer-half solid var(--choice__border-color--left);
-  flex: 1 1 100%;
   // If we were to make this span two columns in the grid, it would mess up the
   // width of the check column, which we want to only ever be the width of the
   // checkbox. We can't set the column width of the check column explicitly
