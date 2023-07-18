@@ -18,8 +18,7 @@
     'check hint'
     'check error-message'
     'checked-children checked-children';
-  // grid-template-columns: var(--choice__size) auto;
-  grid-template-columns: min-content auto;
+  grid-template-columns: min-content 1fr;
   margin-block-start: $spacer-1;
   max-width: var(--measure-wide);
   row-gap: 0;
@@ -28,7 +27,6 @@
   // If a theme doesn't have a gap for small choices defined, it will fall back to the normal gap
   &:has(.ds-c-choice--small) {
     column-gap: var(--choice-wrapper__gap--small, 0.5rem);
-    // grid-template-columns:
   }
 }
 
