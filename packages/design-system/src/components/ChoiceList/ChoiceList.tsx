@@ -112,7 +112,7 @@ export const ChoiceList: React.FC<ChoiceListProps> = (props: ChoiceListProps) =>
     }, 20);
   };
 
-  const { labelProps, fieldProps, wrapperProps, bottomError } = useFormLabel({
+  const { labelProps, wrapperProps, bottomError } = useFormLabel({
     ...listProps,
     labelComponent: 'legend',
     wrapperIsFieldset: true,
@@ -138,11 +138,6 @@ export const ChoiceList: React.FC<ChoiceListProps> = (props: ChoiceListProps) =>
           choiceProps.inputRef(ref);
         }
       },
-      // @ts-ignore: If I update the Choice props to inherit from the HTML element,
-      // I get a bunch of other TS errors that are out of scope to fix. We can
-      // probably clean it up by turning Choice into a functional component, and we
-      // may want to rethink our array of `choiceRefs` too.
-      'aria-describedby': fieldProps['aria-describedby'],
     };
 
     return <Choice key={choiceProps.value} {...completeChoiceProps} />;
