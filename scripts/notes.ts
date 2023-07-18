@@ -128,11 +128,22 @@ const getPRs = () => {
 const organizeNotes = (ghPrData: PRDetails[]) => {
   const notes: PRNote[] = [];
 
+  const matchLabels = (regex: RegExp, labels: string[]): string[] =>
+    labels
+      .map((label) => {
+        const match = label.match(regex);
+        return match && match[1].toLowerCase();
+      })
+      .filter((match): match is string => !!match);
+
   ghPrData.forEach((pr: PRDetails) => {
     const note = {} as PRNote;
     if (!pr.labels?.length) return;
 
-    if (pr.labels.length !== 2) {
+    const types = matchLabels(/Type: (\w+)/i, pr.labels);
+    const impacts = matchLabels(/Impacts: (\w+)/i, pr.labels);
+
+    if (types.length !== 1 || impacts.length !== 1) {
       console.error(
         '\nPRs are required to have exactly one Impacts: label and at exactly one Type: label.'
       );
@@ -141,14 +152,8 @@ const organizeNotes = (ghPrData: PRDetails[]) => {
       process.exit(1);
     }
 
-    pr.labels.forEach((label) => {
-      const t = label.match(/Type: (\w+)/i);
-      const i = label.match(/Impacts: (\w+)/i);
-
-      if (t) note.type = t[1].toLowerCase();
-      if (i) note.impacts = i[1].toLowerCase();
-    });
-
+    note.type = types[0];
+    note.impacts = impacts[0];
     note.title = pr.title;
     note.pr_number = pr.ghpr;
 
@@ -227,17 +232,26 @@ const makeNotesMD = (notes: PRNote[][]): string => {
  * Display jira links with associated title to copy/paste
  */
 const displayJiraTickets = (data: PRDetails[]) => {
+  const ticketRegex = /(\w+-\d+)/gi;
+
   console.log(`\n-- ${c.green('JIRA Tickets')} --`);
-  const notes = data
-    .filter((pr) => !pr.ticket?.toLowerCase().includes('ticket'))
-    .map((pr) => ({
-      ticket: `https://jira.cms.gov/browse/${pr.ticket?.replace(/(.+)\].*$/, '$1')}`,
-      title: pr.title,
-    }));
-  const unticketed = data.filter((pr) => pr.ticket?.toLowerCase().includes('ticket'));
-  notes.forEach((note) => console.log(`${note.ticket} - ${note.title}`));
+  data
+    .filter((pr) => pr.ticket?.match(ticketRegex))
+    .forEach((pr) => {
+      const ticketMatches = pr.ticket?.match(ticketRegex);
+      ticketMatches?.forEach((ticket) => {
+        const ticketUrl = `https://jira.cms.gov/browse/${ticket}`;
+        console.log(`- [${ticket}](${ticketUrl}) - ${pr.title}`);
+      });
+    });
+
   console.log(`\n-- ${c.yellow('Unticketed')} --`);
-  unticketed.forEach((note) => console.log(`${note.author} - ${note.ticket} - ${note.title}`));
+  data
+    .filter((pr) => !pr.ticket || !pr.ticket?.match(ticketRegex))
+    .forEach((pr) => {
+      const prUrl = `https://github.com/CMSgov/design-system/pull/${pr.ghpr}`;
+      console.log(`- [${pr.ticket}](${prUrl}) (${pr.author}) - ${pr.title}`);
+    });
 };
 
 /**
