@@ -9,8 +9,6 @@
 
 // Layout styles for wrapping choice container
 .ds-c-choice-wrapper {
-  // Medicare has a different gap for choice wrappers
-  // If a theme doesn't have a gap for choice wrappers defined, it will fall back to the normal gap
   column-gap: var(--choice-wrapper__gap, 0.5rem);
   display: grid;
   grid-template-areas:
@@ -23,8 +21,6 @@
   max-width: var(--measure-wide);
   row-gap: 0;
 
-  // Medicare has a different gap for small choices
-  // If a theme doesn't have a gap for small choices defined, it will fall back to the normal gap
   &:has(.ds-c-choice--small) {
     column-gap: var(--choice-wrapper__gap--small, 0.5rem);
   }
@@ -272,25 +268,12 @@ label,
 // Checked children container
 .ds-c-choice__checkedChild {
   border-inline-start: $spacer-half solid var(--choice__border-color--left);
-  // If we were to make this span two columns in the grid, it would mess up the
-  // width of the check column, which we want to only ever be the width of the
-  // checkbox. We can't set the column width of the check column explicitly
-  // because it requires that we know what size of checkbox we have, and that
-  // information is added by classes on the input itself.
   grid-area: checked-children;
   margin-block: $spacer-1 $spacer-2;
   // @TODO: get rid of this calc
   // The origin of this 2px shift is fuzzy, it seems like it's based on
   // the border on alerts and healthcare.gov insets.
-  // margin-inline-start: calc((var(--choice-wrapper__gap, 0.5rem) * -1) - (var(--choice__size) * 0.5)  + 2px);
   margin-inline-start: calc((var(--choice__size) * 0.5) - 2px);
-
-  // Medicare has a different gap for small choices
-  // If a theme doesn't have a gap for small choices defined, it will fall back to the normal gap
-  // &:has(.ds-c-choice--small) {
-  //   column-gap: var(--choice-wrapper__gap--small, 0.5rem);
-  // }
-
   padding: $spacer-2;
   padding-inline-end: 0;
 
