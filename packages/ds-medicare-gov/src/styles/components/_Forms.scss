@@ -7,41 +7,38 @@
 }
 
 .ds-c-label {
-  span:first-child {
-    font-family: var(--font-family-montserrat);
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-semibold);
-    letter-spacing: 0.5px;
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.5px;
 
-    text-transform: uppercase;
-  }
+  text-transform: uppercase;
 }
 
+// !!! Looking at this comment below, the opposite actually appears to be true.
+// !!! The main label is lowercase. Should fix or remove this
+//
 // All form labels inside `ds-c-fieldset` will be lowercase, except the <DateField> main form label
 // The <ChoiceList> form label and the day/month/year labels in <DateField> will be lowercase
 .ds-c-fieldset {
   > .ds-c-label:not([id^='datefield']) {
-    span:first-child {
-      text-transform: none;
-    }
+    text-transform: none;
   }
 }
 
 input[type='radio'] + .ds-c-label,
 input[type='checkbox'] + .ds-c-label {
-  span:first-child {
-    font-family: var(--font-family-rubik);
-    font-size: var(--font-size-md);
-    font-weight: var(--font-weight-normal);
-    letter-spacing: 0;
-    text-transform: none;
-  }
+  font-family: var(--font-family-rubik);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-normal);
+  letter-spacing: 0;
+  text-transform: none;
 }
 
-legend[id^='datefield_label'] {
-  + div {
-    span:first-child {
-      text-transform: none;
-    }
-  }
-}
+// legend[id^='datefield_label'] {
+//   + div {
+//     span:first-child {
+//       text-transform: none;
+//     }
+//   }
+// }
