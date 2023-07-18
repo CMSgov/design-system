@@ -4,65 +4,40 @@ exports[`FormLabel adds punctuation to requirementLabel when hint is also presen
 <label
   class="ds-c-label"
 >
-  <span
-    class=""
-  >
-    Hello world
-  </span>
-  <span
-    class="ds-c-field__hint"
-  >
-    Optional.
-     
-    Hint
-  </span>
+  Hello world
 </label>
 `;
 
 exports[`FormLabel is inversed 1`] = `
-<span
+<div
   class="ds-c-field__hint ds-c-field__hint--inverse"
 >
   Foo
-</span>
+</div>
 `;
 
 exports[`FormLabel renders as a legend element 1`] = `
 <legend
   class="ds-c-label"
 >
-  <span
-    class=""
-  >
-    Hello world
-  </span>
+  Hello world
 </legend>
 `;
 
 exports[`FormLabel renders label text 1`] = `
-<span
-  class=""
+<label
+  class="ds-c-label"
+  for="name"
 >
   Hello world
-</span>
+</label>
 `;
 
 exports[`FormLabel renders requirementLabel 1`] = `
 <label
   class="ds-c-label"
 >
-  <span
-    class=""
-  >
-    Hello world
-  </span>
-  <span
-    class="ds-c-field__hint"
-  >
-    <em>
-      It is really optional
-    </em>
-  </span>
+  Hello world
 </label>
 `;
 
@@ -71,10 +46,6 @@ exports[`FormLabel supports additional attributes 1`] = `
   aria-label="testing aria"
   class="ds-c-label ds-u-foo"
 >
-  <span
-    class=""
-  >
-    Hello world
-  </span>
+  Hello world
 </label>
 `;

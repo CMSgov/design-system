@@ -78,61 +78,45 @@ Object {
                   id="field_2-label"
                 >
                   <span
-                    class=""
+                    class="ds-u-visibility--screen-reader"
                   >
-                    <span
-                      class="ds-u-visibility--screen-reader"
-                    >
-                      Advertising
-                    </span>
+                    Advertising
                   </span>
                 </legend>
-                <div>
-                  <div
-                    class="ds-c-choice-wrapper"
+                <div
+                  class="ds-c-choice-wrapper"
+                >
+                  <input
+                    checked=""
+                    class="ds-c-choice"
+                    id="radio_cookie-c3_3"
+                    name="cookie-c3"
+                    type="radio"
+                    value="0"
+                  />
+                  <label
+                    class="ds-c-label"
+                    for="radio_cookie-c3_3"
                   >
-                    <input
-                      checked=""
-                      class="ds-c-choice"
-                      id="radio_cookie-c3_3"
-                      name="cookie-c3"
-                      type="radio"
-                      value="0"
-                    />
-                    <label
-                      class="ds-c-label"
-                      for="radio_cookie-c3_3"
-                    >
-                      <span
-                        class=""
-                      >
-                        Allow
-                      </span>
-                    </label>
-                  </div>
+                    Allow
+                  </label>
                 </div>
-                <div>
-                  <div
-                    class="ds-c-choice-wrapper"
+                <div
+                  class="ds-c-choice-wrapper"
+                >
+                  <input
+                    class="ds-c-choice"
+                    id="radio_cookie-c3_4"
+                    name="cookie-c3"
+                    type="radio"
+                    value="1"
+                  />
+                  <label
+                    class="ds-c-label"
+                    for="radio_cookie-c3_4"
                   >
-                    <input
-                      class="ds-c-choice"
-                      id="radio_cookie-c3_4"
-                      name="cookie-c3"
-                      type="radio"
-                      value="1"
-                    />
-                    <label
-                      class="ds-c-label"
-                      for="radio_cookie-c3_4"
-                    >
-                      <span
-                        class=""
-                      >
-                        Don't allow
-                      </span>
-                    </label>
-                  </div>
+                    Don't allow
+                  </label>
                 </div>
               </fieldset>
             </td>
@@ -171,61 +155,45 @@ Object {
                   id="field_5-label"
                 >
                   <span
-                    class=""
+                    class="ds-u-visibility--screen-reader"
                   >
-                    <span
-                      class="ds-u-visibility--screen-reader"
-                    >
-                      Social Media
-                    </span>
+                    Social Media
                   </span>
                 </legend>
-                <div>
-                  <div
-                    class="ds-c-choice-wrapper"
+                <div
+                  class="ds-c-choice-wrapper"
+                >
+                  <input
+                    class="ds-c-choice"
+                    id="radio_cookie-c4_6"
+                    name="cookie-c4"
+                    type="radio"
+                    value="0"
+                  />
+                  <label
+                    class="ds-c-label"
+                    for="radio_cookie-c4_6"
                   >
-                    <input
-                      class="ds-c-choice"
-                      id="radio_cookie-c4_6"
-                      name="cookie-c4"
-                      type="radio"
-                      value="0"
-                    />
-                    <label
-                      class="ds-c-label"
-                      for="radio_cookie-c4_6"
-                    >
-                      <span
-                        class=""
-                      >
-                        Allow
-                      </span>
-                    </label>
-                  </div>
+                    Allow
+                  </label>
                 </div>
-                <div>
-                  <div
-                    class="ds-c-choice-wrapper"
+                <div
+                  class="ds-c-choice-wrapper"
+                >
+                  <input
+                    checked=""
+                    class="ds-c-choice"
+                    id="radio_cookie-c4_7"
+                    name="cookie-c4"
+                    type="radio"
+                    value="1"
+                  />
+                  <label
+                    class="ds-c-label"
+                    for="radio_cookie-c4_7"
                   >
-                    <input
-                      checked=""
-                      class="ds-c-choice"
-                      id="radio_cookie-c4_7"
-                      name="cookie-c4"
-                      type="radio"
-                      value="1"
-                    />
-                    <label
-                      class="ds-c-label"
-                      for="radio_cookie-c4_7"
-                    >
-                      <span
-                        class=""
-                      >
-                        Don't allow
-                      </span>
-                    </label>
-                  </div>
+                    Don't allow
+                  </label>
                 </div>
               </fieldset>
             </td>
@@ -264,61 +232,45 @@ Object {
                   id="field_8-label"
                 >
                   <span
-                    class=""
+                    class="ds-u-visibility--screen-reader"
                   >
-                    <span
-                      class="ds-u-visibility--screen-reader"
-                    >
-                      Web Analytics
-                    </span>
+                    Web Analytics
                   </span>
                 </legend>
-                <div>
-                  <div
-                    class="ds-c-choice-wrapper"
+                <div
+                  class="ds-c-choice-wrapper"
+                >
+                  <input
+                    checked=""
+                    class="ds-c-choice"
+                    id="radio_cookie-c2_9"
+                    name="cookie-c2"
+                    type="radio"
+                    value="0"
+                  />
+                  <label
+                    class="ds-c-label"
+                    for="radio_cookie-c2_9"
                   >
-                    <input
-                      checked=""
-                      class="ds-c-choice"
-                      id="radio_cookie-c2_9"
-                      name="cookie-c2"
-                      type="radio"
-                      value="0"
-                    />
-                    <label
-                      class="ds-c-label"
-                      for="radio_cookie-c2_9"
-                    >
-                      <span
-                        class=""
-                      >
-                        Allow
-                      </span>
-                    </label>
-                  </div>
+                    Allow
+                  </label>
                 </div>
-                <div>
-                  <div
-                    class="ds-c-choice-wrapper"
+                <div
+                  class="ds-c-choice-wrapper"
+                >
+                  <input
+                    class="ds-c-choice"
+                    id="radio_cookie-c2_10"
+                    name="cookie-c2"
+                    type="radio"
+                    value="1"
+                  />
+                  <label
+                    class="ds-c-label"
+                    for="radio_cookie-c2_10"
                   >
-                    <input
-                      class="ds-c-choice"
-                      id="radio_cookie-c2_10"
-                      name="cookie-c2"
-                      type="radio"
-                      value="1"
-                    />
-                    <label
-                      class="ds-c-label"
-                      for="radio_cookie-c2_10"
-                    >
-                      <span
-                        class=""
-                      >
-                        Don't allow
-                      </span>
-                    </label>
-                  </div>
+                    Don't allow
+                  </label>
                 </div>
               </fieldset>
             </td>
@@ -401,61 +353,45 @@ Object {
                 id="field_2-label"
               >
                 <span
-                  class=""
+                  class="ds-u-visibility--screen-reader"
                 >
-                  <span
-                    class="ds-u-visibility--screen-reader"
-                  >
-                    Advertising
-                  </span>
+                  Advertising
                 </span>
               </legend>
-              <div>
-                <div
-                  class="ds-c-choice-wrapper"
+              <div
+                class="ds-c-choice-wrapper"
+              >
+                <input
+                  checked=""
+                  class="ds-c-choice"
+                  id="radio_cookie-c3_3"
+                  name="cookie-c3"
+                  type="radio"
+                  value="0"
+                />
+                <label
+                  class="ds-c-label"
+                  for="radio_cookie-c3_3"
                 >
-                  <input
-                    checked=""
-                    class="ds-c-choice"
-                    id="radio_cookie-c3_3"
-                    name="cookie-c3"
-                    type="radio"
-                    value="0"
-                  />
-                  <label
-                    class="ds-c-label"
-                    for="radio_cookie-c3_3"
-                  >
-                    <span
-                      class=""
-                    >
-                      Allow
-                    </span>
-                  </label>
-                </div>
+                  Allow
+                </label>
               </div>
-              <div>
-                <div
-                  class="ds-c-choice-wrapper"
+              <div
+                class="ds-c-choice-wrapper"
+              >
+                <input
+                  class="ds-c-choice"
+                  id="radio_cookie-c3_4"
+                  name="cookie-c3"
+                  type="radio"
+                  value="1"
+                />
+                <label
+                  class="ds-c-label"
+                  for="radio_cookie-c3_4"
                 >
-                  <input
-                    class="ds-c-choice"
-                    id="radio_cookie-c3_4"
-                    name="cookie-c3"
-                    type="radio"
-                    value="1"
-                  />
-                  <label
-                    class="ds-c-label"
-                    for="radio_cookie-c3_4"
-                  >
-                    <span
-                      class=""
-                    >
-                      Don't allow
-                    </span>
-                  </label>
-                </div>
+                  Don't allow
+                </label>
               </div>
             </fieldset>
           </td>
@@ -494,61 +430,45 @@ Object {
                 id="field_5-label"
               >
                 <span
-                  class=""
+                  class="ds-u-visibility--screen-reader"
                 >
-                  <span
-                    class="ds-u-visibility--screen-reader"
-                  >
-                    Social Media
-                  </span>
+                  Social Media
                 </span>
               </legend>
-              <div>
-                <div
-                  class="ds-c-choice-wrapper"
+              <div
+                class="ds-c-choice-wrapper"
+              >
+                <input
+                  class="ds-c-choice"
+                  id="radio_cookie-c4_6"
+                  name="cookie-c4"
+                  type="radio"
+                  value="0"
+                />
+                <label
+                  class="ds-c-label"
+                  for="radio_cookie-c4_6"
                 >
-                  <input
-                    class="ds-c-choice"
-                    id="radio_cookie-c4_6"
-                    name="cookie-c4"
-                    type="radio"
-                    value="0"
-                  />
-                  <label
-                    class="ds-c-label"
-                    for="radio_cookie-c4_6"
-                  >
-                    <span
-                      class=""
-                    >
-                      Allow
-                    </span>
-                  </label>
-                </div>
+                  Allow
+                </label>
               </div>
-              <div>
-                <div
-                  class="ds-c-choice-wrapper"
+              <div
+                class="ds-c-choice-wrapper"
+              >
+                <input
+                  checked=""
+                  class="ds-c-choice"
+                  id="radio_cookie-c4_7"
+                  name="cookie-c4"
+                  type="radio"
+                  value="1"
+                />
+                <label
+                  class="ds-c-label"
+                  for="radio_cookie-c4_7"
                 >
-                  <input
-                    checked=""
-                    class="ds-c-choice"
-                    id="radio_cookie-c4_7"
-                    name="cookie-c4"
-                    type="radio"
-                    value="1"
-                  />
-                  <label
-                    class="ds-c-label"
-                    for="radio_cookie-c4_7"
-                  >
-                    <span
-                      class=""
-                    >
-                      Don't allow
-                    </span>
-                  </label>
-                </div>
+                  Don't allow
+                </label>
               </div>
             </fieldset>
           </td>
@@ -587,61 +507,45 @@ Object {
                 id="field_8-label"
               >
                 <span
-                  class=""
+                  class="ds-u-visibility--screen-reader"
                 >
-                  <span
-                    class="ds-u-visibility--screen-reader"
-                  >
-                    Web Analytics
-                  </span>
+                  Web Analytics
                 </span>
               </legend>
-              <div>
-                <div
-                  class="ds-c-choice-wrapper"
+              <div
+                class="ds-c-choice-wrapper"
+              >
+                <input
+                  checked=""
+                  class="ds-c-choice"
+                  id="radio_cookie-c2_9"
+                  name="cookie-c2"
+                  type="radio"
+                  value="0"
+                />
+                <label
+                  class="ds-c-label"
+                  for="radio_cookie-c2_9"
                 >
-                  <input
-                    checked=""
-                    class="ds-c-choice"
-                    id="radio_cookie-c2_9"
-                    name="cookie-c2"
-                    type="radio"
-                    value="0"
-                  />
-                  <label
-                    class="ds-c-label"
-                    for="radio_cookie-c2_9"
-                  >
-                    <span
-                      class=""
-                    >
-                      Allow
-                    </span>
-                  </label>
-                </div>
+                  Allow
+                </label>
               </div>
-              <div>
-                <div
-                  class="ds-c-choice-wrapper"
+              <div
+                class="ds-c-choice-wrapper"
+              >
+                <input
+                  class="ds-c-choice"
+                  id="radio_cookie-c2_10"
+                  name="cookie-c2"
+                  type="radio"
+                  value="1"
+                />
+                <label
+                  class="ds-c-label"
+                  for="radio_cookie-c2_10"
                 >
-                  <input
-                    class="ds-c-choice"
-                    id="radio_cookie-c2_10"
-                    name="cookie-c2"
-                    type="radio"
-                    value="1"
-                  />
-                  <label
-                    class="ds-c-label"
-                    for="radio_cookie-c2_10"
-                  >
-                    <span
-                      class=""
-                    >
-                      Don't allow
-                    </span>
-                  </label>
-                </div>
+                  Don't allow
+                </label>
               </div>
             </fieldset>
           </td>

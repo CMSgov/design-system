@@ -100,11 +100,7 @@ exports[`Dropdown dropdown matches snapshot 1`] = `
     for="dropdown__button--1"
     id="dropdown__label--2"
   >
-    <span
-      class=""
-    >
-      Select an option
-    </span>
+    Select an option
   </label>
   <button
     aria-controls="dropdown__menu--4"
@@ -213,11 +209,7 @@ exports[`Dropdown supports bottom placed error 1`] = `
       for="dropdown__button--25"
       id="dropdown__label--26"
     >
-      <span
-        class=""
-      >
-        Select an option
-      </span>
+      Select an option
     </label>
     <button
       aria-controls="dropdown__menu--28"

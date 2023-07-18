@@ -12,11 +12,7 @@ exports[`Autocomplete renders Autocomplete component 1`] = `
       for="autocomplete__input--1"
       id="autocomplete__label--2"
     >
-      <span
-        class=""
-      >
-        autocomplete
-      </span>
+      autocomplete
     </label>
     <input
       aria-activedescendant=""
