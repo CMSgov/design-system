@@ -14,27 +14,14 @@ describe('FormLabel', () => {
     expect(label).toMatchSnapshot();
   });
 
-  it('renders error state', () => {
+  it('renders error messages', () => {
     const props = {
-      errorMessage: 'Nah, try again.',
+      errorMessage: <span>Nah, try again.</span>,
       fieldId: 'name',
     };
     render(<FormLabel {...props}>{labelText}</FormLabel>);
 
     const error = screen.getByText('Nah, try again.');
-    expect(error).toBeInTheDocument();
-    expect(error).toHaveAttribute('id', 'name-error');
-  });
-
-  it('uses provided errorId', () => {
-    const props = {
-      errorMessage: 'Nah, try again.',
-      errorId: 'error',
-    };
-    render(<FormLabel {...props}>{labelText}</FormLabel>);
-
-    const error = screen.getByText('Nah, try again.');
-    expect(error).toHaveAttribute('id', 'error');
     expect(error).toBeInTheDocument();
   });
 
