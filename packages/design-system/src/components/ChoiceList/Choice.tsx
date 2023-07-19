@@ -244,38 +244,40 @@ export class Choice extends React.PureComponent<
 
     return (
       <div
-        className={classNames('ds-c-choice-wrapper', className)}
+        className={className}
         aria-live={ariaLive ?? (checkedChildren ? 'polite' : null)}
         aria-relevant={ariaRelevant ?? (checkedChildren ? 'additions text' : null)}
         aria-atomic={ariaAtomic ?? (checkedChildren ? 'false' : null)}
       >
-        <input
-          className={inputClasses}
-          id={this.id}
-          onChange={this.handleChange}
-          disabled={disabled}
-          ref={(ref) => {
-            this.input = ref;
-            if (inputRef) {
-              inputRef(ref);
-            }
-          }}
-          {...inputProps}
-        />
-        <FormLabel
-          className={labelClassName}
-          fieldId={this.id}
-          hintId={this.hintId}
-          {...{
-            errorMessage: errorElement,
-            errorMessageClassName,
-            hint,
-            inversed,
-            requirementLabel,
-          }}
-        >
-          {label}
-        </FormLabel>
+        <div className="ds-c-choice-wrapper">
+          <input
+            className={inputClasses}
+            id={this.id}
+            onChange={this.handleChange}
+            disabled={disabled}
+            ref={(ref) => {
+              this.input = ref;
+              if (inputRef) {
+                inputRef(ref);
+              }
+            }}
+            {...inputProps}
+          />
+          <FormLabel
+            className={labelClassName}
+            fieldId={this.id}
+            hintId={this.hintId}
+            {...{
+              errorMessage: errorElement,
+              errorMessageClassName,
+              hint,
+              inversed,
+              requirementLabel,
+            }}
+          >
+            {label}
+          </FormLabel>
+        </div>
         {this.checked() ? checkedChildren : uncheckedChildren}
       </div>
     );

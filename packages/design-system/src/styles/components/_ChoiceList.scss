@@ -14,8 +14,7 @@
   grid-template-areas:
     'check label'
     'check hint'
-    'check error-message'
-    'checked-children checked-children';
+    'check error-message';
   grid-template-columns: min-content 1fr;
   margin-block-start: $spacer-1;
   max-width: var(--measure-wide);
@@ -268,7 +267,6 @@ label,
 // Checked children container
 .ds-c-choice__checkedChild {
   border-inline-start: $spacer-half solid var(--choice__border-color--left);
-  grid-area: checked-children;
   margin-block: $spacer-1 $spacer-2;
   // @TODO: get rid of this calc
   // The origin of this 2px shift is fuzzy, it seems like it's based on

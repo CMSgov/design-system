@@ -26,7 +26,7 @@ export const CheckedChildren: Story = {
   args: {
     defaultChecked: true,
     checkedChildren: (
-      <Alert heading="You'll save more with this option" className="ds-c-choice__checkedChild">
+      <Alert heading="You'll save more with this option" className="ds-u-margin-top--1">
         Based on the household information you provided, this option will give you the maximum
         savings. We are adding some filler text just to show what it looks like when you have a long
         alert as the checkedChildren of a Choice component.
