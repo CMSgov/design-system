@@ -1,47 +1,120 @@
 import React, { useState } from 'react';
-import { Button, Dropdown, DropdownOption } from '@cmsgov/design-system';
+import corePackage from '../../../../design-system/package.json';
+import healthcarePackage from '../../../../ds-healthcare-gov/package.json';
+import medicarePackage from '../../../../ds-medicare-gov/package.json';
+import cmsgovPackage from '../../../../ds-cms-gov/package.json';
+import themes from '../../../../../themes.json';
+import versions from '../../../../../versions.json';
+import useTheme from '../../helpers/useTheme';
+import { Button, Dropdown } from '@cmsgov/design-system';
 import { FilterDialog } from './FilterDialog';
+import { setQueryParam } from '../../helpers/urlUtils';
+
+const themeOptions = Object.keys(themes).map((key) => ({
+  label: themes[key].displayName,
+  value: key,
+}));
+
+function getVersionOptions(versions: string[]) {
+  return versions.map((version) => ({
+    label: version,
+    value: version,
+  }));
+}
+
+function getPackageData(theme: string) {
+  switch (theme) {
+    case 'healthcare':
+      return healthcarePackage;
+    case 'medicare':
+      return medicarePackage;
+    case 'cmsgov':
+      return cmsgovPackage;
+    case 'core':
+    default:
+      return corePackage;
+  }
+}
 
 export interface ThemeVersionDialogProps {
-  theme: string;
-  themes: DropdownOption[];
-  version: string;
-  versions: DropdownOption[];
-  onCancel(event: React.MouseEvent | React.KeyboardEvent): void;
-  onUpdate(theme: string, version: string);
+  onExit(...args: any[]): void;
 }
 
 export const ThemeVersionDialog = (props: ThemeVersionDialogProps) => {
-  const [theme, setTheme] = useState(props.theme);
-  const [version, setVersion] = useState(props.version);
+  const currentTheme = useTheme();
+  const currentVersion = getPackageData(currentTheme).version;
+  const [theme, setTheme] = useState(currentTheme);
+  const [version, setVersion] = useState(currentVersion);
+
+  const themeVersions = versions[themes[theme].packageName];
+
+  function handleUpdate() {
+    const themeChanged = theme === currentTheme;
+    const versionChanged = version === currentVersion;
+    if (versionChanged) {
+      // Since the version changed, we need to navigate to that version of the
+      // doc site, which is archived under design.cms.gov/v/
+
+      // We need to figure out the corresponding core version for this theme-
+      // specific version, because that's what's used in the archive url.
+      const versionIndex = themeVersions.indexOf(version);
+      const coreVersion = versions['design-system'][versionIndex];
+
+      // Start with our current path
+      let path = window.location.pathname;
+      if (path.startsWith('/v/')) {
+        // Our path indicates that we're already in an archived version, so we
+        // need to remove this part of the path before we append our new path.
+        path = path.replace(/^\/v\/.*?\//, '/');
+      }
+
+      // Assumption that theme is the only query parameter we have and we can
+      // just clobber the whole string with a new value
+      let query = '';
+      if (themeChanged) {
+        query = `theme=${theme}`;
+      }
+
+      const origin = window.location.origin;
+      const hash = window.location.hash;
+      const newUrl = `${origin}/v/${coreVersion}${path}${query}${hash}`;
+      window.location.href = newUrl;
+    } else if (themeChanged) {
+      // Only the theme changed, so we stay inside this current version of the
+      // design system and just change our theme query parameter and reload.
+      setQueryParam('theme', theme, true);
+    }
+
+    props.onExit();
+  }
 
   return (
     <FilterDialog
       heading="Design system switcher"
       actions={
         <>
-          <Button onClick={() => props.onUpdate(theme, version)} variation="solid">
+          <Button onClick={handleUpdate} variation="solid">
             Update content
           </Button>
-          <Button onClick={props.onCancel} variation="ghost">
+          <Button onClick={props.onExit} variation="ghost">
             Cancel
           </Button>
         </>
       }
-      onExit={props.onCancel}
+      onExit={props.onExit}
     >
       <Dropdown
         label="Select a theme"
         name="theme"
         labelClassName="ds-u-margin-top--0"
-        options={props.themes}
+        options={themeOptions}
         value={theme}
         onChange={(event) => setTheme(event.currentTarget.value)}
       />
       <Dropdown
         label="Select a version"
         name="version"
-        options={props.versions}
+        options={getVersionOptions(themeVersions)}
         value={version}
         onChange={(event) => setVersion(event.currentTarget.value)}
       />
