@@ -14,7 +14,6 @@ export * from './HelpDrawer';
 export * from './IdleTimeout';
 export * from './InlineError';
 export * from './MonthPicker';
-export * from './NativeDialog';
 export * from './Pagination';
 export * from './PrivacySettingsDialog';
 export * from './Review';
