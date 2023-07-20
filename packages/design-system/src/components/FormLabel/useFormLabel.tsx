@@ -144,13 +144,6 @@ export function useFormLabel<T extends UseFormLabelProps>(props: T) {
   const bottomError = errorPlacement === 'bottom' ? errorElement : undefined;
   const ariaInvalid = props['aria-invalid'] ?? !!errorMessage;
 
-  const ariaDescribedBy =
-    mergeIds(
-      props['aria-describedby'],
-      errorElement && errorId,
-      (hint || requirementLabel) && hintId
-    ) || undefined;
-
   const labelProps = {
     children: label,
     className: labelClassName,
@@ -172,14 +165,18 @@ export function useFormLabel<T extends UseFormLabelProps>(props: T) {
     id,
     errorMessage,
     inversed,
-    'aria-describedby': !wrapperIsFieldset ? ariaDescribedBy : undefined,
+    'aria-describedby':
+      mergeIds(
+        props['aria-describedby'],
+        errorElement && errorId,
+        (hint || requirementLabel) && hintId
+      ) || undefined,
     'aria-invalid': !wrapperIsFieldset ? ariaInvalid : undefined,
   };
 
   const wrapperClassNames = classNames({ 'ds-c-fieldset': wrapperIsFieldset }, className);
   const wrapperProps = {
     className: wrapperClassNames,
-    'aria-describedby': wrapperIsFieldset ? ariaDescribedBy : undefined,
     'aria-invalid': wrapperIsFieldset ? ariaInvalid : undefined,
   };
 
