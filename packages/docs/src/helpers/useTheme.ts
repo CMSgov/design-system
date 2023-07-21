@@ -11,29 +11,29 @@ const QUERY_PARAM_NAME = 'theme';
  * and return found value
  */
 function useTheme() {
-  const [theme, setTheme] = useState('core');
+  const themeQueryParam = getQueryParamValue(QUERY_PARAM_NAME);
+  const [theme, setTheme] = useState(themeQueryParam ?? 'core');
 
   useEffect(() => {
-    const themeQueryParam = getQueryParamValue(QUERY_PARAM_NAME);
-
     if (typeof window !== 'undefined') {
-      // query param found, set in local storage and return it
+      let newTheme;
       if (themeQueryParam !== null) {
+        // Query param found; set in local storage and in our local state
         localStorage.setItem(STORAGE_TOKEN_NAME, themeQueryParam);
-        setTheme(themeQueryParam);
+        newTheme = themeQueryParam;
       } else {
+        // No query param found, so check localStorage for a theme before
+        // falling back to core
         let newTheme = 'core';
-        // no query param, so check localStorage theme. if found, return otherwise return 'core'
         if (STORAGE_TOKEN_NAME in localStorage) {
           newTheme = localStorage.getItem(STORAGE_TOKEN_NAME);
         }
         // if no query param val was set, make sure to set it to the value in local storage or 'core' by default
         setQueryParam(QUERY_PARAM_NAME, newTheme);
+      }
+      if (newTheme !== theme) {
         setTheme(newTheme);
       }
-    } else {
-      // browser not found, return 'core'
-      setTheme(theme);
     }
   }, []);
   return theme;

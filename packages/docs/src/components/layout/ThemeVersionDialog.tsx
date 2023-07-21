@@ -58,20 +58,27 @@ export interface ThemeVersionDialogProps {
 
 export const ThemeVersionDialog = (props: ThemeVersionDialogProps) => {
   const currentTheme = useTheme();
+  console.log(currentTheme);
   const currentVersion = getPackageData(currentTheme).version;
   const [theme, setTheme] = useState(currentTheme);
   const [version, setVersion] = useState(currentVersion);
 
   function handleUpdate() {
+    // We need to figure out the corresponding core version for this theme-
+    // specific version, because that's what's used in the archive url.
+    const coreVersion = getVersionEquivalent('core', theme, version);
+    // Compare against the core version equivalent of what our version used to
+    // be, because it was specific to the theme. For instance, if our theme was
+    // healthcare and version 10, switching to core would mean our version is
+    // now 6, and we don't want to incorrectly conclude that the version
+    // changed.
+    const versionChanged =
+      coreVersion !== getVersionEquivalent('core', currentTheme, currentVersion);
     const themeChanged = theme !== currentTheme;
-    const versionChanged = version !== currentVersion;
+
     if (versionChanged) {
       // Since the version changed, we need to navigate to that version of the
       // doc site, which is archived under design.cms.gov/v/
-
-      // We need to figure out the corresponding core version for this theme-
-      // specific version, because that's what's used in the archive url.
-      const coreVersion = getVersionEquivalent('core', theme, version);
 
       // Start with our current path
       let path = window.location.pathname;
