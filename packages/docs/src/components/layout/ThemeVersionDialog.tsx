@@ -15,11 +15,27 @@ const themeOptions = Object.keys(themes).map((key) => ({
   value: key,
 }));
 
-function getVersionOptions(versions: string[]) {
-  return versions.map((version) => ({
+function getThemeVersions(theme: string) {
+  return versions[themes[theme].packageName];
+}
+
+function getVersionOptions(theme: string) {
+  return getThemeVersions(theme).map((version) => ({
     label: version,
     value: version,
   }));
+}
+
+/**
+ * Converts between equivalent versions of different themes that correspond to
+ * the same release. If a match can't be found, defaults to the latest version
+ * of the target theme.
+ */
+function getVersionEquivalent(toTheme: string, fromTheme: string, fromVersion: string): string {
+  const versionIndex = getThemeVersions(fromTheme).indexOf(fromVersion);
+  const toThemeVersions = getThemeVersions(toTheme);
+  const equivalentVersion = toThemeVersions[versionIndex] ?? toThemeVersions[0];
+  return equivalentVersion;
 }
 
 function getPackageData(theme: string) {
@@ -46,19 +62,16 @@ export const ThemeVersionDialog = (props: ThemeVersionDialogProps) => {
   const [theme, setTheme] = useState(currentTheme);
   const [version, setVersion] = useState(currentVersion);
 
-  const themeVersions = versions[themes[theme].packageName];
-
   function handleUpdate() {
-    const themeChanged = theme === currentTheme;
-    const versionChanged = version === currentVersion;
+    const themeChanged = theme !== currentTheme;
+    const versionChanged = version !== currentVersion;
     if (versionChanged) {
       // Since the version changed, we need to navigate to that version of the
       // doc site, which is archived under design.cms.gov/v/
 
       // We need to figure out the corresponding core version for this theme-
       // specific version, because that's what's used in the archive url.
-      const versionIndex = themeVersions.indexOf(version);
-      const coreVersion = versions['design-system'][versionIndex];
+      const coreVersion = getVersionEquivalent('core', theme, version);
 
       // Start with our current path
       let path = window.location.pathname;
@@ -87,7 +100,7 @@ export const ThemeVersionDialog = (props: ThemeVersionDialogProps) => {
 
     props.onExit();
   }
-
+  console.log(theme, version);
   return (
     <FilterDialog
       heading="Design system switcher"
@@ -109,12 +122,16 @@ export const ThemeVersionDialog = (props: ThemeVersionDialogProps) => {
         labelClassName="ds-u-margin-top--0"
         options={themeOptions}
         value={theme}
-        onChange={(event) => setTheme(event.currentTarget.value)}
+        onChange={(event) => {
+          const newTheme = event.currentTarget.value;
+          setTheme(newTheme);
+          setVersion(getVersionEquivalent(newTheme, theme, version));
+        }}
       />
       <Dropdown
         label="Select a version"
         name="version"
-        options={getVersionOptions(themeVersions)}
+        options={getVersionOptions(theme)}
         value={version}
         onChange={(event) => setVersion(event.currentTarget.value)}
       />

@@ -11,6 +11,7 @@ import { LocationInterface, NavDataQuery } from '../../helpers/graphQLTypes';
 import { DocsNavItem, convertToNavItems, organizeNavItems } from '../../helpers/navDataFormatUtils';
 import GithubIcon from '../icons/GithubIcon';
 import NewsIcon from '../icons/NewsIcon';
+import ThemeVersionDialog from './ThemeVersionDialog';
 
 interface DocSiteNavProps {
   location: LocationInterface;
@@ -62,6 +63,8 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
       setIsMobile(true);
     }
   }, [isMobile]);
+
+  const [isThemeVersionDialogOpen, setIsThemeVersionDialogOpen] = useState(false);
 
   const data: NavDataQuery = useStaticQuery(graphql`
     query SiteNavQuery {
@@ -132,6 +135,16 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
         <div className="c-navigation__switchers-wrapper">
           <ThemeSwitcher />
           <VersionSwitcher />
+          <Button
+            variation="ghost"
+            onDark
+            onClick={() => setIsThemeVersionDialogOpen(!isThemeVersionDialogOpen)}
+          >
+            Change theme or version
+          </Button>
+          {isThemeVersionDialogOpen ? (
+            <ThemeVersionDialog onExit={() => setIsThemeVersionDialogOpen(false)} />
+          ) : null}
         </div>
         <div className="c-navigation__links-wrapper">
           <SearchForm className="ds-u-md-display--none ds-u-margin--0 ds-u-padding-bottom--2" />
