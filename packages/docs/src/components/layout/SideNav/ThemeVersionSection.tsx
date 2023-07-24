@@ -11,11 +11,21 @@ export const ThemeVersionSection = () => {
 
   return (
     <>
-      <h3>{theme}</h3>
-      <h3>{version}</h3>
-      <Button variation="ghost" onDark onClick={() => setIsDialogOpen(!isDialogOpen)}>
-        Change theme or version
+      <div>
+        Theme: <strong>{theme}</strong>
+      </div>
+      <div>
+        Version: <strong>{version}</strong>
+      </div>
+      <Button
+        variation="ghost"
+        onDark
+        className="ds-u-padding-x--0"
+        onClick={() => setIsDialogOpen(!isDialogOpen)}
+      >
+        Change settings
       </Button>
+
       {isDialogOpen && (
         <ThemeVersionDialog theme={theme} version={version} onExit={() => setIsDialogOpen(false)} />
       )}

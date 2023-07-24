@@ -132,7 +132,7 @@ const SideNav = ({ location }: SideNavProps) => {
         // hidden attr applied on mobile breakpoints when nav is closed
         hidden={isMobile && !isMobileNavOpen}
       >
-        <div className="c-navigation__switchers-wrapper ds-base--inverse">
+        <div className="c-navigation__switchers-wrapper">
           <ThemeVersionSection />
         </div>
         <div className="c-navigation__links-wrapper">

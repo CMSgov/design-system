@@ -79,7 +79,6 @@ export const ThemeVersionDialog = (props: ThemeVersionDialogProps) => {
       <Dropdown
         label="Select a theme"
         name="theme"
-        labelClassName="ds-u-margin-top--0"
         options={getThemeOptions()}
         value={theme}
         onChange={(event) => {

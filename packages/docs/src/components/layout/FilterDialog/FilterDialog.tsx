@@ -56,7 +56,7 @@ export const FilterDialog = (props: FilterDialogProps) => {
     <NativeDialog className={classNames(props.className, 'ds-c-filter-dialog')} exit={props.onExit}>
       <div className="ds-c-filter-dialog__window" tabIndex={-1} aria-labelledby={headingId}>
         <div className="ds-c-filter-dialog__header">
-          <Heading id={headingId} className="ds-c-filter-dialog__header-heading" ref={headingRef}>
+          <Heading id={headingId} className="ds-c-filter-dialog__heading" ref={headingRef}>
             {props.heading}
           </Heading>
         </div>

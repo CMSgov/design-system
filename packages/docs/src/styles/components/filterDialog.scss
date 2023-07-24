@@ -1,7 +1,34 @@
+@use '@styles/_base' as *;
+
 .ds-c-filter-dialog {
+  background-color: var(--dialog__background-color);
+  border: none;
+  // TODO: Revisit shadow consistency across the design system
+  box-shadow: 0 7px 17px 0 var(--color-gray-light);
+  box-sizing: border-box;
+  color: var(--color-base); // Needed to override user-agent styles `canvasText`
+  left: unset;
+  margin: 0;
+  padding: var(--spacer-4);
+  position: absolute;
+  right: unset;
   z-index: var(--z-drawer);
+
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    outline: $spacer-2 solid WindowText;
+  }
+}
+
+.ds-c-filter-dialog__window:focus {
+  outline: none;
+}
+
+.ds-c-filter-dialog__heading {
+  @include heading--xl;
 }
 
 .ds-c-filter-dialog__actions {
-  margin-block-start: var(--spacer-2);
+  display: flex;
+  gap: var(--spacer-2);
+  margin-block-start: var(--spacer-4);
 }

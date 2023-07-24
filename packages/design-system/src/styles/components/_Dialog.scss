@@ -40,7 +40,7 @@ dialog.fixed {
   border: none;
   box-shadow: var(--shadow-base);
   box-sizing: border-box;
-  color: inherit; // Needed to override user-agent styles `canvasText`
+  color: var(--color-base); // Needed to override user-agent styles `canvasText`
   display: inline-block;
   margin-top: $spacer-6;
   max-width: var(--measure-base);
