@@ -13,7 +13,7 @@ export const ThemeVersionSection = () => {
     <>
       <h3>{theme}</h3>
       <h3>{version}</h3>
-      <Button variation="ghost" onClick={() => setIsDialogOpen(!isDialogOpen)}>
+      <Button variation="ghost" onDark onClick={() => setIsDialogOpen(!isDialogOpen)}>
         Change theme or version
       </Button>
       {isDialogOpen && (
