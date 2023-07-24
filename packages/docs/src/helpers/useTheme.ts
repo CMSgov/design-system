@@ -16,7 +16,7 @@ function useTheme() {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      let newTheme;
+      let newTheme = 'core';
       if (themeQueryParam !== null) {
         // Query param found; set in local storage and in our local state
         localStorage.setItem(STORAGE_TOKEN_NAME, themeQueryParam);
@@ -24,7 +24,6 @@ function useTheme() {
       } else {
         // No query param found, so check localStorage for a theme before
         // falling back to core
-        let newTheme = 'core';
         if (STORAGE_TOKEN_NAME in localStorage) {
           newTheme = localStorage.getItem(STORAGE_TOKEN_NAME);
         }
