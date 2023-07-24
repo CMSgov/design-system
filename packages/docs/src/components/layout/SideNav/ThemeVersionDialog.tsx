@@ -1,65 +1,18 @@
 import React, { useState } from 'react';
-import corePackage from '../../../../design-system/package.json';
-import healthcarePackage from '../../../../ds-healthcare-gov/package.json';
-import medicarePackage from '../../../../ds-medicare-gov/package.json';
-import cmsgovPackage from '../../../../ds-cms-gov/package.json';
-import themes from '../../../../../themes.json';
-import versions from '../../../../../versions.json';
-import useTheme from '../../helpers/useTheme';
 import { Button, Dropdown } from '@cmsgov/design-system';
-import { FilterDialog } from './FilterDialog';
-import { setQueryParam } from '../../helpers/urlUtils';
-
-const themeOptions = Object.keys(themes).map((key) => ({
-  label: themes[key].displayName,
-  value: key,
-}));
-
-function getThemeVersions(theme: string) {
-  return versions[themes[theme].packageName];
-}
-
-function getVersionOptions(theme: string) {
-  return getThemeVersions(theme).map((version) => ({
-    label: version,
-    value: version,
-  }));
-}
-
-/**
- * Converts between equivalent versions of different themes that correspond to
- * the same release. If a match can't be found, defaults to the latest version
- * of the target theme.
- */
-function getVersionEquivalent(toTheme: string, fromTheme: string, fromVersion: string): string {
-  const versionIndex = getThemeVersions(fromTheme).indexOf(fromVersion);
-  const toThemeVersions = getThemeVersions(toTheme);
-  const equivalentVersion = toThemeVersions[versionIndex] ?? toThemeVersions[0];
-  return equivalentVersion;
-}
-
-function getPackageData(theme: string) {
-  switch (theme) {
-    case 'healthcare':
-      return healthcarePackage;
-    case 'medicare':
-      return medicarePackage;
-    case 'cmsgov':
-      return cmsgovPackage;
-    case 'core':
-    default:
-      return corePackage;
-  }
-}
+import { FilterDialog } from '../FilterDialog';
+import { getThemeOptions, getVersionOptions, getVersionEquivalent } from './themeVersionData';
+import { setQueryParam } from '../../../helpers/urlUtils';
 
 export interface ThemeVersionDialogProps {
+  theme: string;
+  version: string;
   onExit(...args: any[]): void;
 }
 
 export const ThemeVersionDialog = (props: ThemeVersionDialogProps) => {
-  const currentTheme = useTheme();
-  console.log(currentTheme);
-  const currentVersion = getPackageData(currentTheme).version;
+  const currentTheme = props.theme;
+  const currentVersion = props.version;
   const [theme, setTheme] = useState(currentTheme);
   const [version, setVersion] = useState(currentVersion);
 
@@ -107,7 +60,7 @@ export const ThemeVersionDialog = (props: ThemeVersionDialogProps) => {
 
     props.onExit();
   }
-  console.log(theme, version);
+
   return (
     <FilterDialog
       heading="Design system switcher"
@@ -127,7 +80,7 @@ export const ThemeVersionDialog = (props: ThemeVersionDialogProps) => {
         label="Select a theme"
         name="theme"
         labelClassName="ds-u-margin-top--0"
-        options={themeOptions}
+        options={getThemeOptions()}
         value={theme}
         onChange={(event) => {
           const newTheme = event.currentTarget.value;

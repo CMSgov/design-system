@@ -1,6 +1,6 @@
 import React from 'react';
 import Footer from './DocSiteFooter';
-import Navigation from './DocSiteNavigation';
+import SideNav from './SideNav/SideNav';
 import PageHeader from './PageHeader';
 import TableOfContents from './TableOfContents';
 import TableOfContentsMobile from './TableOfContentsMobile';
@@ -88,7 +88,7 @@ const Layout = ({
       <HeaderFullWidth />
 
       <div className="ds-l-row ds-u-margin--0 full-height">
-        <Navigation location={location} />
+        <SideNav location={location} />
         <main
           id="main"
           className="ds-l-md-col ds-u-padding--0 ds-u-padding-bottom--4 ds-u-padding-top--2 page-main"
