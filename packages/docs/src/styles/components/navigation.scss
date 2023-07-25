@@ -50,7 +50,22 @@
 }
 
 .c-navigation__switchers-wrapper {
-  padding: $spacer-2;
+  padding: $spacer-3 $spacer-4;
+}
+
+.c-navigation__settings-button {
+  appearance: none;
+  background: none;
+  border: none;
+  color: inherit;
+  display: inline-block;
+  // Keep the hit area large by giving it $spacer-1 padding on top and bottom,
+  // but don't create extra vertical space below it.
+  margin-block-end: -$spacer-1;
+  padding: $spacer-1 0;
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-underline-offset: 0.125em;
 }
 
 .c-navigation__links-wrapper {

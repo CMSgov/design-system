@@ -67,7 +67,7 @@ export const ThemeVersionDialog = (props: ThemeVersionDialogProps) => {
       actions={
         <>
           <Button onClick={handleUpdate} variation="solid">
-            Update content
+            Switch versions
           </Button>
           <Button onClick={props.onExit} variation="ghost">
             Cancel
