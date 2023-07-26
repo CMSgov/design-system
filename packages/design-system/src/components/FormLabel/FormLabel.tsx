@@ -19,7 +19,10 @@ export interface FormLabelProps {
    */
   errorMessage?: React.ReactNode;
   /**
-   * The ID of the error message applied to this field.
+   * @deprecated The FormLabel is no longer responsible for rendering the
+   * error element from a string. A FieldError should be passed to it which
+   * already has an errorId applied.
+   * @hide-prop [Deprecated]
    */
   errorId?: string;
   /**

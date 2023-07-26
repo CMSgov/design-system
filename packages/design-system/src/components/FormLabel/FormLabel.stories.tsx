@@ -15,18 +15,6 @@ type Story = StoryObj<typeof FormLabel>;
 
 export const FormLabelDefault: Story = {};
 
-export const FormLabelWithHint: Story = {
-  args: {
-    hint: 'Example of a hint for a form label',
-  },
-};
-
-export const FormLabelWithError: Story = {
-  args: {
-    errorMessage: 'Example of an error for a form label',
-  },
-};
-
 export const InverseFormLabel: Story = {
   args: {
     inversed: true,
