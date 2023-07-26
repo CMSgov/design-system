@@ -268,7 +268,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
           item,
           index,
           disabled: isOptGroup,
-          role: isOptGroup ? 'group' : undefined,
+          role: isOptGroup ? 'group' : 'option',
         })}
       >
         {selectedItem === item && (

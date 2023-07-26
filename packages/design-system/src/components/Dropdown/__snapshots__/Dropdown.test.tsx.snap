@@ -19,6 +19,7 @@ exports[`Dropdown accepts optgroup children 1`] = `
     aria-selected="true"
     class="ds-c-dropdown__menu-item ds-c-dropdown__menu-item--highlighted ds-c-dropdown__menu-item--selected"
     id="downshift-16-item-1"
+    role="option"
   >
     <span
       class="ds-c-dropdown__menu-item-selected-indicator"
@@ -42,6 +43,7 @@ exports[`Dropdown accepts optgroup children 1`] = `
     aria-selected="false"
     class="ds-c-dropdown__menu-item"
     id="downshift-16-item-2"
+    role="option"
   >
     Option A-2
   </li>
@@ -49,6 +51,7 @@ exports[`Dropdown accepts optgroup children 1`] = `
     aria-selected="false"
     class="ds-c-dropdown__menu-item"
     id="downshift-16-item-3"
+    role="option"
   >
     Option A-3
   </li>
@@ -65,6 +68,7 @@ exports[`Dropdown accepts optgroup children 1`] = `
     aria-selected="false"
     class="ds-c-dropdown__menu-item"
     id="downshift-16-item-5"
+    role="option"
   >
     Option B-1
   </li>
@@ -72,6 +76,7 @@ exports[`Dropdown accepts optgroup children 1`] = `
     aria-selected="false"
     class="ds-c-dropdown__menu-item"
     id="downshift-16-item-6"
+    role="option"
   >
     Option B-2
   </li>
@@ -79,6 +84,7 @@ exports[`Dropdown accepts optgroup children 1`] = `
     aria-selected="false"
     class="ds-c-dropdown__menu-item"
     id="downshift-16-item-7"
+    role="option"
   >
     Option B-3
   </li>
@@ -148,6 +154,7 @@ exports[`Dropdown dropdown matches snapshot 1`] = `
         aria-selected="false"
         class="ds-c-dropdown__menu-item"
         id="downshift-0-item-0"
+        role="option"
       >
         1
       </li>
@@ -155,6 +162,7 @@ exports[`Dropdown dropdown matches snapshot 1`] = `
         aria-selected="true"
         class="ds-c-dropdown__menu-item ds-c-dropdown__menu-item--selected"
         id="downshift-0-item-1"
+        role="option"
       >
         <span
           class="ds-c-dropdown__menu-item-selected-indicator"
@@ -178,6 +186,7 @@ exports[`Dropdown dropdown matches snapshot 1`] = `
         aria-selected="false"
         class="ds-c-dropdown__menu-item"
         id="downshift-0-item-2"
+        role="option"
       >
         3
       </li>
@@ -185,6 +194,7 @@ exports[`Dropdown dropdown matches snapshot 1`] = `
         aria-selected="false"
         class="ds-c-dropdown__menu-item"
         id="downshift-0-item-3"
+        role="option"
       >
         4
       </li>
@@ -258,6 +268,7 @@ exports[`Dropdown supports bottom placed error 1`] = `
           aria-selected="true"
           class="ds-c-dropdown__menu-item ds-c-dropdown__menu-item--selected"
           id="downshift-6-item-0"
+          role="option"
         >
           <span
             class="ds-c-dropdown__menu-item-selected-indicator"
