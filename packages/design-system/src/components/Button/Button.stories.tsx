@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from './Button';
-import { NextIcon } from '../Icons';
+import { CloseIconThin } from '../Icons';
 import Spinner from '../Spinner/Spinner';
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -32,7 +32,7 @@ export const IconButton: Story = {
   args: {
     children: (
       <>
-        Button with icon <NextIcon />{' '}
+        Button with icon <CloseIconThin />{' '}
       </>
     ),
   },

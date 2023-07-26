@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { SvgIcon } from './SvgIcon';
-import { AddIcon } from './AddIcon';
 
 describe('SvgIcon', () => {
   const renderSvgIcon = (overrideProps?) => {
@@ -15,12 +14,6 @@ describe('SvgIcon', () => {
   it('passes through additional props', () => {
     renderSvgIcon({ 'data-testid': 'iconTest' });
     const iconEl = screen.getByTestId('iconTest');
-    expect(iconEl).toMatchSnapshot();
-  });
-
-  it('wrapper icon can pass through additional props', () => {
-    render(<AddIcon data-testid="addIconTest" />);
-    const iconEl = screen.getByTestId('addIconTest');
     expect(iconEl).toMatchSnapshot();
   });
 

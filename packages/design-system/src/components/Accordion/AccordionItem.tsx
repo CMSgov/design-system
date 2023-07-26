@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { AddIcon, RemoveIcon } from '../Icons';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
 import { t } from '../i18n';
@@ -66,18 +65,26 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
   isControlledOpen,
   onChange,
   closeIcon = (
-    <RemoveIcon
-      className="ds-c-accordion__button-icon"
-      title={t('accordion.close')}
-      ariaHidden={false}
-    />
+    <svg
+      aria-hidden="false"
+      className="ds-c-accordion__button-icon ds-c-icon ds-c-icon--remove "
+      id="icon-27"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M19 13H5v-2h14v2z"></path>
+    </svg>
   ),
   openIcon = (
-    <AddIcon
-      className="ds-c-accordion__button-icon"
-      title={t('accordion.open')}
-      ariaHidden={false}
-    />
+    <svg
+      aria-hidden="false"
+      className="ds-c-accordion__button-icon ds-c-icon ds-c-icon--add "
+      id="icon-1"
+      viewBox="3 3 18 18"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+    </svg>
   ),
 }) => {
   const contentClasses = classNames('ds-c-accordion__content', contentClassName);
