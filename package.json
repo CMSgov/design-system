@@ -5,9 +5,8 @@
   "repository": "https://github.com/CMSgov/design-system",
   "workspaces": [
     "packages/*"
-  ],
-  "scripts": {
-    "build": "yarn build:tokens && yarn build:core && yarn build:healthcare && yarn build:medicare && yarn build:prop-data && yarn build:cdn-index",
+  ],  "scripts": {
+    "build": "yarn build:tokens && yarn build:core && yarn build:healthcare && yarn build:medicare && yarn build:cmsgov && yarn build:prop-data && yarn build:cdn-index",
     "build:core": "yarn gulp build",
     "build:healthcare": "yarn gulp build --package packages/ds-healthcare-gov",
     "build:medicare": "yarn gulp build --package packages/ds-medicare-gov",
