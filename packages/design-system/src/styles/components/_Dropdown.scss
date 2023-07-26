@@ -59,14 +59,17 @@
   // `clip-path` needed to hide `box-shadow` overlap in field. 17px is the `box-shadow` blur radius.
   clip-path: inset(0px var(--clip-path-value) var(--clip-path-value) var(--clip-path-value));
   margin-block-start: calc(-1 * var(--text-input__border-width));
-  max-height: 320px;
-  overflow-y: auto;
   position: absolute;
   width: 100%;
   z-index: var(--z-dialog);
 
   .ds-c-field--inverse + & {
     color: var(--color-base);
+  }
+
+  ul {
+    max-height: 320px;
+    overflow-y: auto;
   }
 }
 
