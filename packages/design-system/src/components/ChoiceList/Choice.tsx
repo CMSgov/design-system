@@ -269,7 +269,6 @@ export class Choice extends React.PureComponent<
             hintId={this.hintId}
             {...{
               errorMessage: errorElement,
-              errorMessageClassName,
               hint,
               inversed,
               requirementLabel,

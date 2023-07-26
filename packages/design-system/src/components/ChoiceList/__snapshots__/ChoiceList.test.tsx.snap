@@ -12,39 +12,43 @@ exports[`ChoiceList Radio buttons and Checkboxes is a radio button group 1`] = `
     >
       Foo
     </legend>
-    <div
-      class="ds-c-choice-wrapper"
-    >
-      <input
-        class="ds-c-choice"
-        id="radio_spec-field_2"
-        name="spec-field"
-        type="radio"
-        value="1"
-      />
-      <label
-        class="ds-c-label"
-        for="radio_spec-field_2"
+    <div>
+      <div
+        class="ds-c-choice-wrapper"
       >
-        Choice 1
-      </label>
+        <input
+          class="ds-c-choice"
+          id="radio_spec-field_2"
+          name="spec-field"
+          type="radio"
+          value="1"
+        />
+        <label
+          class="ds-c-label"
+          for="radio_spec-field_2"
+        >
+          Choice 1
+        </label>
+      </div>
     </div>
-    <div
-      class="ds-c-choice-wrapper"
-    >
-      <input
-        class="ds-c-choice"
-        id="radio_spec-field_3"
-        name="spec-field"
-        type="radio"
-        value="2"
-      />
-      <label
-        class="ds-c-label"
-        for="radio_spec-field_3"
+    <div>
+      <div
+        class="ds-c-choice-wrapper"
       >
-        Choice 2
-      </label>
+        <input
+          class="ds-c-choice"
+          id="radio_spec-field_3"
+          name="spec-field"
+          type="radio"
+          value="2"
+        />
+        <label
+          class="ds-c-label"
+          for="radio_spec-field_3"
+        >
+          Choice 2
+        </label>
+      </div>
     </div>
   </fieldset>
 </DocumentFragment>

@@ -3,7 +3,6 @@
 exports[`MultiInputDateField renders 1`] = `
 <DocumentFragment>
   <fieldset
-    aria-describedby="field_snapshot-hint"
     aria-invalid="false"
     class="ds-c-fieldset"
   >
@@ -33,6 +32,7 @@ exports[`MultiInputDateField renders 1`] = `
           Month
         </label>
         <input
+          aria-describedby="field_snapshot-hint"
           aria-invalid="false"
           class="ds-c-field ds-c-field--month"
           id="field_snapshot"
@@ -60,6 +60,7 @@ exports[`MultiInputDateField renders 1`] = `
           Day
         </label>
         <input
+          aria-describedby="field_snapshot-hint"
           aria-invalid="false"
           class="ds-c-field ds-c-field--day"
           id="field_snapshot"
@@ -87,6 +88,7 @@ exports[`MultiInputDateField renders 1`] = `
           Year
         </label>
         <input
+          aria-describedby="field_snapshot-hint"
           aria-invalid="false"
           class="ds-c-field ds-c-field--year"
           id="field_snapshot"

@@ -232,10 +232,10 @@ describe('Choice', () => {
 
     it('applies correct aria attributes when checkedChildren is set', () => {
       const { container } = renderChoice(props);
-      const wrapper = container.querySelector('.ds-c-choice-wrapper');
-      expect(wrapper).toHaveAttribute('aria-live', 'polite');
-      expect(wrapper).toHaveAttribute('aria-relevant', 'additions text');
-      expect(wrapper).toHaveAttribute('aria-atomic', 'false');
+      const root = container.firstChild;
+      expect(root).toHaveAttribute('aria-live', 'polite');
+      expect(root).toHaveAttribute('aria-relevant', 'additions text');
+      expect(root).toHaveAttribute('aria-atomic', 'false');
     });
 
     it('allows for modification of aria attributes', () => {
@@ -245,10 +245,10 @@ describe('Choice', () => {
         'aria-relevant': 'text',
         'aria-atomic': 'true',
       });
-      const wrapper = container.querySelector('.ds-c-choice-wrapper');
-      expect(wrapper).toHaveAttribute('aria-live', 'off');
-      expect(wrapper).toHaveAttribute('aria-relevant', 'text');
-      expect(wrapper).toHaveAttribute('aria-atomic', 'true');
+      const root = container.firstChild;
+      expect(root).toHaveAttribute('aria-live', 'off');
+      expect(root).toHaveAttribute('aria-relevant', 'text');
+      expect(root).toHaveAttribute('aria-atomic', 'true');
     });
   });
 });

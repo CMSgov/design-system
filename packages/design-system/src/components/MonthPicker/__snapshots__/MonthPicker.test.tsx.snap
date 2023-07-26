@@ -39,242 +39,290 @@ exports[`MonthPicker renders a snapshot 1`] = `
       >
         <li>
           <div
-            class="ds-c-choice-wrapper ds-c-month-picker__month"
+            class="ds-c-month-picker__month"
           >
-            <input
-              aria-label="January"
-              class="ds-c-choice"
-              id="checkbox_months_2"
-              name="months"
-              type="checkbox"
-              value="1"
-            />
-            <label
-              class="ds-c-label"
-              for="checkbox_months_2"
+            <div
+              class="ds-c-choice-wrapper"
             >
-              Jan
-            </label>
+              <input
+                aria-label="January"
+                class="ds-c-choice"
+                id="checkbox_months_2"
+                name="months"
+                type="checkbox"
+                value="1"
+              />
+              <label
+                class="ds-c-label"
+                for="checkbox_months_2"
+              >
+                Jan
+              </label>
+            </div>
           </div>
         </li>
         <li>
           <div
-            class="ds-c-choice-wrapper ds-c-month-picker__month"
+            class="ds-c-month-picker__month"
           >
-            <input
-              aria-label="February"
-              class="ds-c-choice"
-              id="checkbox_months_3"
-              name="months"
-              type="checkbox"
-              value="2"
-            />
-            <label
-              class="ds-c-label"
-              for="checkbox_months_3"
+            <div
+              class="ds-c-choice-wrapper"
             >
-              Feb
-            </label>
+              <input
+                aria-label="February"
+                class="ds-c-choice"
+                id="checkbox_months_3"
+                name="months"
+                type="checkbox"
+                value="2"
+              />
+              <label
+                class="ds-c-label"
+                for="checkbox_months_3"
+              >
+                Feb
+              </label>
+            </div>
           </div>
         </li>
         <li>
           <div
-            class="ds-c-choice-wrapper ds-c-month-picker__month"
+            class="ds-c-month-picker__month"
           >
-            <input
-              aria-label="March"
-              class="ds-c-choice"
-              id="checkbox_months_4"
-              name="months"
-              type="checkbox"
-              value="3"
-            />
-            <label
-              class="ds-c-label"
-              for="checkbox_months_4"
+            <div
+              class="ds-c-choice-wrapper"
             >
-              Mar
-            </label>
+              <input
+                aria-label="March"
+                class="ds-c-choice"
+                id="checkbox_months_4"
+                name="months"
+                type="checkbox"
+                value="3"
+              />
+              <label
+                class="ds-c-label"
+                for="checkbox_months_4"
+              >
+                Mar
+              </label>
+            </div>
           </div>
         </li>
         <li>
           <div
-            class="ds-c-choice-wrapper ds-c-month-picker__month"
+            class="ds-c-month-picker__month"
           >
-            <input
-              aria-label="April"
-              class="ds-c-choice"
-              id="checkbox_months_5"
-              name="months"
-              type="checkbox"
-              value="4"
-            />
-            <label
-              class="ds-c-label"
-              for="checkbox_months_5"
+            <div
+              class="ds-c-choice-wrapper"
             >
-              Apr
-            </label>
+              <input
+                aria-label="April"
+                class="ds-c-choice"
+                id="checkbox_months_5"
+                name="months"
+                type="checkbox"
+                value="4"
+              />
+              <label
+                class="ds-c-label"
+                for="checkbox_months_5"
+              >
+                Apr
+              </label>
+            </div>
           </div>
         </li>
         <li>
           <div
-            class="ds-c-choice-wrapper ds-c-month-picker__month"
+            class="ds-c-month-picker__month"
           >
-            <input
-              aria-label="May"
-              class="ds-c-choice"
-              id="checkbox_months_6"
-              name="months"
-              type="checkbox"
-              value="5"
-            />
-            <label
-              class="ds-c-label"
-              for="checkbox_months_6"
+            <div
+              class="ds-c-choice-wrapper"
             >
-              May
-            </label>
+              <input
+                aria-label="May"
+                class="ds-c-choice"
+                id="checkbox_months_6"
+                name="months"
+                type="checkbox"
+                value="5"
+              />
+              <label
+                class="ds-c-label"
+                for="checkbox_months_6"
+              >
+                May
+              </label>
+            </div>
           </div>
         </li>
         <li>
           <div
-            class="ds-c-choice-wrapper ds-c-month-picker__month"
+            class="ds-c-month-picker__month"
           >
-            <input
-              aria-label="June"
-              class="ds-c-choice"
-              id="checkbox_months_7"
-              name="months"
-              type="checkbox"
-              value="6"
-            />
-            <label
-              class="ds-c-label"
-              for="checkbox_months_7"
+            <div
+              class="ds-c-choice-wrapper"
             >
-              Jun
-            </label>
+              <input
+                aria-label="June"
+                class="ds-c-choice"
+                id="checkbox_months_7"
+                name="months"
+                type="checkbox"
+                value="6"
+              />
+              <label
+                class="ds-c-label"
+                for="checkbox_months_7"
+              >
+                Jun
+              </label>
+            </div>
           </div>
         </li>
         <li>
           <div
-            class="ds-c-choice-wrapper ds-c-month-picker__month"
+            class="ds-c-month-picker__month"
           >
-            <input
-              aria-label="July"
-              class="ds-c-choice"
-              id="checkbox_months_8"
-              name="months"
-              type="checkbox"
-              value="7"
-            />
-            <label
-              class="ds-c-label"
-              for="checkbox_months_8"
+            <div
+              class="ds-c-choice-wrapper"
             >
-              Jul
-            </label>
+              <input
+                aria-label="July"
+                class="ds-c-choice"
+                id="checkbox_months_8"
+                name="months"
+                type="checkbox"
+                value="7"
+              />
+              <label
+                class="ds-c-label"
+                for="checkbox_months_8"
+              >
+                Jul
+              </label>
+            </div>
           </div>
         </li>
         <li>
           <div
-            class="ds-c-choice-wrapper ds-c-month-picker__month"
+            class="ds-c-month-picker__month"
           >
-            <input
-              aria-label="August"
-              class="ds-c-choice"
-              id="checkbox_months_9"
-              name="months"
-              type="checkbox"
-              value="8"
-            />
-            <label
-              class="ds-c-label"
-              for="checkbox_months_9"
+            <div
+              class="ds-c-choice-wrapper"
             >
-              Aug
-            </label>
+              <input
+                aria-label="August"
+                class="ds-c-choice"
+                id="checkbox_months_9"
+                name="months"
+                type="checkbox"
+                value="8"
+              />
+              <label
+                class="ds-c-label"
+                for="checkbox_months_9"
+              >
+                Aug
+              </label>
+            </div>
           </div>
         </li>
         <li>
           <div
-            class="ds-c-choice-wrapper ds-c-month-picker__month"
+            class="ds-c-month-picker__month"
           >
-            <input
-              aria-label="September"
-              class="ds-c-choice"
-              id="checkbox_months_10"
-              name="months"
-              type="checkbox"
-              value="9"
-            />
-            <label
-              class="ds-c-label"
-              for="checkbox_months_10"
+            <div
+              class="ds-c-choice-wrapper"
             >
-              Sep
-            </label>
+              <input
+                aria-label="September"
+                class="ds-c-choice"
+                id="checkbox_months_10"
+                name="months"
+                type="checkbox"
+                value="9"
+              />
+              <label
+                class="ds-c-label"
+                for="checkbox_months_10"
+              >
+                Sep
+              </label>
+            </div>
           </div>
         </li>
         <li>
           <div
-            class="ds-c-choice-wrapper ds-c-month-picker__month"
+            class="ds-c-month-picker__month"
           >
-            <input
-              aria-label="October"
-              class="ds-c-choice"
-              id="checkbox_months_11"
-              name="months"
-              type="checkbox"
-              value="10"
-            />
-            <label
-              class="ds-c-label"
-              for="checkbox_months_11"
+            <div
+              class="ds-c-choice-wrapper"
             >
-              Oct
-            </label>
+              <input
+                aria-label="October"
+                class="ds-c-choice"
+                id="checkbox_months_11"
+                name="months"
+                type="checkbox"
+                value="10"
+              />
+              <label
+                class="ds-c-label"
+                for="checkbox_months_11"
+              >
+                Oct
+              </label>
+            </div>
           </div>
         </li>
         <li>
           <div
-            class="ds-c-choice-wrapper ds-c-month-picker__month"
+            class="ds-c-month-picker__month"
           >
-            <input
-              aria-label="November"
-              class="ds-c-choice"
-              id="checkbox_months_12"
-              name="months"
-              type="checkbox"
-              value="11"
-            />
-            <label
-              class="ds-c-label"
-              for="checkbox_months_12"
+            <div
+              class="ds-c-choice-wrapper"
             >
-              Nov
-            </label>
+              <input
+                aria-label="November"
+                class="ds-c-choice"
+                id="checkbox_months_12"
+                name="months"
+                type="checkbox"
+                value="11"
+              />
+              <label
+                class="ds-c-label"
+                for="checkbox_months_12"
+              >
+                Nov
+              </label>
+            </div>
           </div>
         </li>
         <li>
           <div
-            class="ds-c-choice-wrapper ds-c-month-picker__month"
+            class="ds-c-month-picker__month"
           >
-            <input
-              aria-label="December"
-              class="ds-c-choice"
-              id="checkbox_months_13"
-              name="months"
-              type="checkbox"
-              value="12"
-            />
-            <label
-              class="ds-c-label"
-              for="checkbox_months_13"
+            <div
+              class="ds-c-choice-wrapper"
             >
-              Dec
-            </label>
+              <input
+                aria-label="December"
+                class="ds-c-choice"
+                id="checkbox_months_13"
+                name="months"
+                type="checkbox"
+                value="12"
+              />
+              <label
+                class="ds-c-label"
+                for="checkbox_months_13"
+              >
+                Dec
+              </label>
+            </div>
           </div>
         </li>
       </ol>
