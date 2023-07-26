@@ -29,6 +29,26 @@ import {
   SvgIcon,
   UsaFlagIcon,
   WarningIcon,
+  AddIconFoo,
+  AddIconBar,
+  AddIconBaz,
+  AlertCircleIconFoo,
+  AlertCircleIconBar,
+  AlertCircleIconBaz,
+  CalendarIconFoo,
+  CalendarIconBar,
+  CalendarIconBaz,
+  CheckIconFoo,
+  CheckIconBar,
+  CloseIconFoo,
+  CloseIconBar,
+  CloseIconBaz,
+  InfoCircleIconFoo,
+  InfoCircleIconBar,
+  InfoCircleIconBaz,
+  LockIconFoo,
+  LockIconBar,
+  LockIconBaz,
 } from './index';
 
 export default {
@@ -186,6 +206,106 @@ const iconData = [
     defaultTitle: 'Warning',
     component: <WarningIcon />,
     name: 'WarningIcon',
+  },
+  {
+    defaultTitle: 'Add Icon Foo',
+    component: <AddIconFoo />,
+    name: 'AddIconFoo',
+  },
+  {
+    defaultTitle: 'Add Icon Bar',
+    component: <AddIconBar />,
+    name: 'AddIconBar',
+  },
+  {
+    defaultTitle: 'Add Icon Baz',
+    component: <AddIconBaz />,
+    name: 'AddIconBaz',
+  },
+  {
+    defaultTitle: 'Alert Circle Icon Foo',
+    component: <AlertCircleIconFoo />,
+    name: 'AlertCircleIconFoo',
+  },
+  {
+    defaultTitle: 'Alert Circle Icon Bar',
+    component: <AlertCircleIconBar />,
+    name: 'AlertCircleIconBar',
+  },
+  {
+    defaultTitle: 'Alert Circle Icon Baz',
+    component: <AlertCircleIconBaz />,
+    name: 'AlertCircleIconBaz',
+  },
+  {
+    defaultTitle: 'Calendar Icon Foo',
+    component: <CalendarIconFoo />,
+    name: 'CalendarIconFoo',
+  },
+  {
+    defaultTitle: 'Calendar Icon Bar',
+    component: <CalendarIconBar />,
+    name: 'CalendarIconBar',
+  },
+  {
+    defaultTitle: 'Calendar Icon Baz',
+    component: <CalendarIconBaz />,
+    name: 'CalendarIconBaz',
+  },
+  {
+    defaultTitle: 'Check Icon Foo',
+    component: <CheckIconFoo />,
+    name: 'CheckIconFoo',
+  },
+  {
+    defaultTitle: 'Check Icon Bar',
+    component: <CheckIconBar />,
+    name: 'CheckIconBar',
+  },
+  {
+    defaultTitle: 'Close Icon Foo',
+    component: <CloseIconFoo />,
+    name: 'CloseIconFoo',
+  },
+  {
+    defaultTitle: 'Close Icon Bar',
+    component: <CloseIconBar />,
+    name: 'CloseIconBar',
+  },
+  {
+    defaultTitle: 'Close Icon Baz',
+    component: <CloseIconBaz />,
+    name: 'CloseIconBaz',
+  },
+  {
+    defaultTitle: 'Info Circle Icon Foo',
+    component: <InfoCircleIconFoo />,
+    name: 'InfoCircleIconFoo',
+  },
+  {
+    defaultTitle: 'Info Circle Icon Bar',
+    component: <InfoCircleIconBar />,
+    name: 'InfoCircleIconBar',
+  },
+  {
+    defaultTitle: 'Info Circle Icon Baz',
+    component: <InfoCircleIconBaz />,
+    name: 'InfoCircleIconBaz',
+  },
+  {
+    defaultTitle: 'Lock Icon Foo',
+    component: <LockIconFoo />,
+    name: 'LockIconFoo',
+  },
+  {
+    defaultTitle: 'Lock Icon Bar',
+    component: <LockIconBar />,
+    name: 'LockIconBar',
+  },
+  {
+    defaultTitle: 'Lock Icon Baz',
+    component: <LockIconBaz />,
+    name: 'LockIconBaz',
   },
 ];
 
