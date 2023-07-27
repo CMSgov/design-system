@@ -18,7 +18,6 @@
   grid-template-columns: min-content 1fr;
   margin-block-start: $spacer-1;
   max-width: var(--measure-wide);
-  row-gap: 0;
 
   &:has(.ds-c-choice--small) {
     column-gap: var(--choice-wrapper__gap--small, 0.5rem);
