@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import useTheme from '../../../helpers/useTheme';
 import ThemeVersionDialog from './ThemeVersionDialog';
-import { getPackageData } from './themeVersionData';
+import { getPackageData, getThemeDisplayName } from './themeVersionData';
 import { ArrowIcon } from '@cmsgov/design-system';
 
 export const ThemeVersionSection = () => {
   const theme = useTheme();
   const version = getPackageData(theme).version;
+  const themeDisplayName = getThemeDisplayName(theme);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   return (
     <>
       <div>
-        Theme: <strong>{theme}</strong>
+        Theme: <strong>{themeDisplayName}</strong>
       </div>
       <div>
         Version: <strong>{version}</strong>

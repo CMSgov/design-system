@@ -5,8 +5,12 @@ import cmsgovPackage from '../../../../../ds-cms-gov/package.json';
 import themes from '../../../../../../themes.json';
 import versions from '../../../../../../versions.json';
 
+export function getThemeDisplayName(theme: string): string {
+  return themes[theme].displayName;
+}
+
 const themeOptions = Object.keys(themes).map((key) => ({
-  label: themes[key].displayName,
+  label: getThemeDisplayName(key),
   value: key,
 }));
 
