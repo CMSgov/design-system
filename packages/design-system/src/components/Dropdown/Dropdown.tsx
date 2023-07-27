@@ -222,6 +222,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
 
   const buttonProps = getToggleButtonProps({
     ...fieldProps,
+    type: 'button',
     ref: mergeRefs([inputRef, useAutofocus<HTMLButtonElement>(props.autoFocus)]),
     className: classNames(
       'ds-c-dropdown__button',

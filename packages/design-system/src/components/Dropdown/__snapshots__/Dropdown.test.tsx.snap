@@ -117,6 +117,7 @@ exports[`Dropdown dropdown matches snapshot 1`] = `
     name="dropdown"
     role="combobox"
     tabindex="0"
+    type="button"
   >
     <span
       class="ds-u-truncate"
@@ -231,6 +232,7 @@ exports[`Dropdown supports bottom placed error 1`] = `
       name="dropdown"
       role="combobox"
       tabindex="0"
+      type="button"
     >
       <span
         class="ds-u-truncate"
