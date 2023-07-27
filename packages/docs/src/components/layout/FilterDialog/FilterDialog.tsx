@@ -35,13 +35,6 @@ export interface FilterDialogProps {
    * Ref to heading element
    */
   headingRef?: React.MutableRefObject<any>;
-  /**
-   * Called when the user triggers an exit event, like by pressing the ESC key.
-   * The parent of this component is responsible for showing or not showing the
-   * dialog, so this callback should make that happen. The dialog does not hide
-   * itself.
-   */
-  onExit(event: React.MouseEvent | React.KeyboardEvent): void;
 }
 
 /**
@@ -53,7 +46,11 @@ export const FilterDialog = (props: FilterDialogProps) => {
   const Heading = `h${props.headingLevel}` as const;
 
   return (
-    <NativeDialog className={classNames(props.className, 'ds-c-filter-dialog')} exit={props.onExit}>
+    <NativeDialog
+      className={classNames(props.className, 'ds-c-filter-dialog')}
+      // We're not using the NativeDialog as a modal, so exit is never called
+      exit={() => {}}
+    >
       <div className="ds-c-filter-dialog__window" tabIndex={-1} aria-labelledby={headingId}>
         <div className="ds-c-filter-dialog__header">
           <Heading id={headingId} className="ds-c-filter-dialog__heading" ref={headingRef}>
