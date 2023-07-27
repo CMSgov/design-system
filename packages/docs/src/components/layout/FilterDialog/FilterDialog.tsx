@@ -35,14 +35,19 @@ export interface FilterDialogProps {
    * Ref to heading element
    */
   headingRef?: React.MutableRefObject<any>;
+  /**
+   * A custom `id` attribute for the dialog element
+   */
+  id?: string;
 }
 
 /**
  *
  */
 export const FilterDialog = (props: FilterDialogProps) => {
+  const id = useRef(props.id || uniqueId('filter-dialog-')).current;
   const headingRef = mergeRefs([props.headingRef, useRef()]);
-  const headingId = useRef(props.headingId || uniqueId('filter-dialog-')).current;
+  const headingId = props.headingId ?? `${id}__heading`;
   const Heading = `h${props.headingLevel}` as const;
 
   return (
@@ -50,6 +55,7 @@ export const FilterDialog = (props: FilterDialogProps) => {
       className={classNames(props.className, 'ds-c-filter-dialog')}
       // We're not using the NativeDialog as a modal, so exit is never called
       exit={() => {}}
+      id={id}
     >
       <div className="ds-c-filter-dialog__window" tabIndex={-1} aria-labelledby={headingId}>
         <div className="ds-c-filter-dialog__header">

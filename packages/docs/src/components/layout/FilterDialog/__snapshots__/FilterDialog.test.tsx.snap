@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterDialog renders a dialog 1`] = `
+<dialog
+  class="a-custom-class ds-c-filter-dialog"
+  id="filter-dialog-1"
+  open=""
+  role="dialog"
+>
+  <div
+    aria-labelledby="filter-dialog-1__heading"
+    class="ds-c-filter-dialog__window"
+    tabindex="-1"
+  >
+    <div
+      class="ds-c-filter-dialog__header"
+    >
+      <h3
+        class="ds-c-filter-dialog__heading"
+        id="filter-dialog-1__heading"
+      >
+        FilterDialog heading
+      </h3>
+    </div>
+    <div
+      class="ds-c-filter-dialog__body"
+      tabindex="0"
+    >
+      Hello, this is the dialog content.
+    </div>
+    <div
+      class="ds-c-filter-dialog__actions"
+    >
+      <button
+        class="ds-c-button ds-c-button--solid"
+        type="button"
+      >
+        Submit
+      </button>
+      <button
+        class="ds-c-button ds-c-button--ghost"
+        type="button"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+</dialog>
+`;
