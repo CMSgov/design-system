@@ -22,7 +22,9 @@ export function FieldError({
   inversed,
 }: FieldErrorProps): React.ReactElement {
   const classes = classNames(
-    'ds-c-inline-error', // For backwards compatibility
+    // TODO: This class is being included for backwards compatibility, but the
+    // `ds-c-inline-error` class is deprecated and should be removed eventually
+    'ds-c-inline-error',
     'ds-c-field__error-message',
     { 'ds-c-field__error-message--inverse': inversed },
     className

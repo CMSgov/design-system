@@ -239,6 +239,9 @@ export class Choice extends React.PureComponent<
     if (inputProps.id) delete inputProps.id;
     if (inputProps.onChange) delete inputProps.onChange;
 
+    // All the fields that have multiple inputs need to pass down the root
+    // aria-describedby attribute (where the root hint and error messages are
+    // linked) down to the individual inputs
     inputProps['aria-describedby'] =
       mergeIds(this.errorId, this.hintId, inputProps['aria-describedby']) || undefined;
 

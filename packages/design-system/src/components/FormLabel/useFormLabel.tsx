@@ -91,7 +91,7 @@ export interface UseFormLabelProps extends FormFieldProps {
  *   - labelProps:   Props to be applied to a `FormLabel` (where we get the name)
  *   - fieldProps:   Props to be applied to the field (a.k.a., the input)
  *   - wrapperProps: Props to be applied to the wrapping element
- *   - errorElement:  A rendered React element representing a bottom-placed error
+ *   - errorElement: A rendered React element representing a field error
  *   - errorId:      The id (string) of the error-message element, in case we
  *                   need to reference it (currently only necessary to support
  *                   the FormControl component, which this hook aims to replace)
