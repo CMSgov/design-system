@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import useTheme from '../../../helpers/useTheme';
 import ThemeVersionDialog from './ThemeVersionDialog';
 import { getPackageData } from './themeVersionData';
-import { Button, SvgIcon } from '@cmsgov/design-system';
+import { ArrowIcon } from '@cmsgov/design-system';
 
 export const ThemeVersionSection = () => {
   const theme = useTheme();
@@ -21,7 +21,7 @@ export const ThemeVersionSection = () => {
         className="c-navigation__settings-button"
         onClick={() => setIsDialogOpen(!isDialogOpen)}
       >
-        Change settings
+        Change settings <ArrowIcon direction="down" />
       </button>
 
       {isDialogOpen && (
