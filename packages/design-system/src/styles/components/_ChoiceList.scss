@@ -22,6 +22,12 @@
   &:has(.ds-c-choice--small) {
     column-gap: var(--choice-wrapper__gap--small, 0.5rem);
   }
+
+  .ds-c-label,
+  .ds-c-field__hint--inverse,
+  .ds-c-field__error-message {
+    max-width: max-content;
+  }
 }
 
 label,
@@ -31,18 +37,16 @@ label,
     cursor: pointer;
     font-weight: var(--font-weight-normal);
     grid-area: label;
-    margin-block-start: 0;
 
     // Medicare has a different `translateY` for choice labels
     // If a theme doesn't have a `translateY` for choice labels defined, it will fall back to the normal `translateY`
-    margin-top: var(--choice__translateY, 0.25em);
-    max-width: max-content;
+    margin-block-start: var(--choice__translateY, 0.25em);
   }
 
   // Medicare has a different `translateY` for small choice labels
   // If a theme doesn't have a `translateY` for small choice labels defined, it will fall back to the normal `translateY`
   .ds-c-choice--small + & {
-    margin-top: -0.125em;
+    margin-block-start: -0.125em;
   }
 
   // Disabled label styles
