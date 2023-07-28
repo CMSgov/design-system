@@ -63,6 +63,14 @@ export const Default: Story = {
     options: dropdownOptions,
     label: 'Dropdown example',
     name: 'dropdown_field',
+    getA11yStatusMessage: (args) => {
+      console.log('Status', args);
+      return 'Hello world';
+    },
+    getA11ySelectionMessage: (args) => {
+      console.log('Selection', args);
+      return 'Hello world';
+    },
   },
 };
 
