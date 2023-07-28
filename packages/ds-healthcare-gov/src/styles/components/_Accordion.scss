@@ -1,10 +1,8 @@
 @use '../layout' as *;
 
-:root {
-  --accordion-icon-color: #0071bb;
-}
-
 .ds-c-accordion {
+  --accordion-icon-color: #0071bb;
+
   .ds-c-accordion__button {
     background-color: var(--accordion__background-color);
     color: var(--accordion-button__color);
@@ -18,6 +16,7 @@
       background-color: transparent;
       color: var(--color-primary-darker);
       text-decoration: underline;
+
       .ds-c-icon--minus-circle__circle,
       .ds-c-icon--plus-circle__circle {
         fill: var(--accordion-icon-color);
