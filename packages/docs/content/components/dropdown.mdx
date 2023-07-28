@@ -48,18 +48,63 @@ This component also makes use of some text input styles, which can be customized
 
 ### Usage
 
+- **Always use a label.** Make sure your dropdown has a label. Don’t replace it with the default menu option (for example, removing the “State” label and just having the dropdown read “Select a state” by default).
 - **Make sure to test.** Test dropdowns thoroughly with members of your target audience. Several usability experts suggest they should be the “UI of last resort.” Many users find them confusing and difficult to use.
-- **Avoid dependent options.** Avoid making options in one dropdown menu change based on the input to another. Users often don’t understand how selecting an item in one impacts another.
 - **Use a good default.** When most users will (or should) pick a particular option, make it the selected default. **If a good default is not an option**, use a descriptive placeholder like `- Select a state -` as the selected default.
-- **Avoid auto-submission.** Don’t use JavaScript to automatically submit the form (or do anything else) when an option is selected. Auto-submission disrupts screen readers because they select each option as they read them.
+- **Avoid using dropdown to change context.** Don't automatically change content on the page or navigate when a user selects a different value. [According to WCAG 2.1](https://www.w3.org/WAI/WCAG21/Understanding/on-input), you should warn users if changing a form control changes context.
+- **Avoid dependent options.** Avoid making options in one dropdown menu change based on the input to another. Users often don’t understand how selecting an item in one impacts another.
+- **Order alphabetically.** Present the options in alphabetical order as the default ordering when possible.
 
 **[View the "Forms" guidelines for additional guidance and best practices.](/patterns/forms/)**
 
-### Accessibility
+### Accessibility testing
 
-- **Customize accessibly.** If you customize the dropdown, ensure it continues to meet the the [accessibility requirements that apply to all form controls](https://designsystem.digital.gov/components/form-controls/).
-- **Always use a label.** Make sure your dropdown has a label. Don’t replace it with the default menu option (for example, removing the “State” label and just having the dropdown read “Select a state” by default).
-- **Avoid auto-submission.** Don’t use JavaScript to automatically submit the form (or do anything else) when an option is selected. Auto-submission disrupts screen readers because they select each option as they read them.
+#### General observations
+
+- The dropdown list should be closed by default.
+- When the dropdown list is displayed, `aria-expanded` is set to `true` and, conversely, set to `false` when the listbox is closed.
+- The dropdown button contains `aria-haspopup="listbox"`, while the listbox contains a `role="listbox"`.
+- The dropdown button contains an `aria-controls` attribute which maps to an `id` on the listbox.
+- Selected option text that is longer than the dropdown button will be truncated, but the full text of that option will be displayed on multiple lines in the dropdown list.
+ 
+#### Keyboard Testing
+
+- When the Dropdown is closed and has focus
+    - Users can open the listbox by pressing <kbd>Space</kbd>, <kbd>Enter</kbd>, the <kbd>Down arrow</kbd>, the <kbd>Up arrow</kbd>, <kbd>Alt</kbd> + <kbd>Up arrow</kbd> or <kbd>Alt</kbd> + <kbd>Down arrow</kbd>. When the listbox opens it highlights the current option
+    - If a user begins typing then the listbox will open and will highlight the first option that matches the typed character.
+    - If the same character is typed in succession, visual focus cycles among the options starting with that character.
+- When the Dropdown is open
+    - <kbd>Escape</kbd> key closes the options, sets visual focus on the combobox, and retains the current value.
+    - <kbd>Up arrow</kbd> and <kbd>Down arrow</kbd> keys should cycle through options.
+    - <kbd>Enter</kbd> key selects the currently focused option and closes the menu.
+    - <kbd>Space</kbd> key selects the currently focused option and closes the menu.
+    - If the same character is typed in succession, visual focus cycles among the options starting with that character.
+    - <kbd>Home</kbd> key moves visual focus to the first option.
+    - <kbd>End</kbd> key moves visual focus to the last option.
+
+#### Screen reader testing
+
+- When I navigate to the Dropdown
+    - If hints or errors are present, they are read
+- When the listbox is displayed
+    - [We need to implement this] I use the escape key and I hear it collapse and focus moves to the select
+    - I use the arrow keys to select an option and I hear the selected option is changed
+    - I select an option with the Enter or Space key and hear the selected option
+
+#### Mobile screen reader testing
+- I can swipe to focus on the component
+- I can hear the purpose of the element
+- It identifies itself as a combobox
+- I hear hints or errors are read
+- I hear it indicate which option is selected
+
+#### Pointer device testing
+- I select anywhere inside the the dropdown button to display or hide the listbox
+- I select an option by clicking anywhere inside the option list
+- I select an option and the `aria-selected` attribute is added to the currently selected option
+- If using a mouse, a hover state (highlighted state) is visible over each non-selected list options as I drag the mouse over them
+- I select an option and that option is displayed in the dropdown component and the listbox is hidden
+- I select anywhere outside the component to close the listbox when it is displaying.
 
 ### Related patterns
 
