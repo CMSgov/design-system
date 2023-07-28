@@ -1,8 +1,12 @@
 @use '../layout' as *;
 
 .hc-c-header {
+  --blur-radius: 10px;
+  --inset-rect: calc(-1 * var(--blur-radius));
+
   background-color: var(--color-background);
-  box-shadow: 0 0 10px 0 var(--color-gray-light);
+  box-shadow: 0 0 var(--blur-radius) 0 var(--color-gray-light);
+  clip-path: inset(0 var(--inset-rect) var(--inset-rect) var(--inset-rect));
   isolation: isolate;
 
   > .ds-l-container {
