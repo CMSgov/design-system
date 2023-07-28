@@ -8,7 +8,6 @@ import { useSelect, UseSelectProps, UseSelectStateChangeOptions } from 'downshif
 import { isOptGroupArray, parseChildren, validateProps } from './utils';
 import { uniqueId } from 'lodash';
 import useHighlightStatusMessageFn from './useHighlightStatusMessageFn';
-import useIgnoreRefillSelectionMessage from './useIgnoreRefillSelectionMessageFn';
 
 export type DropdownSize = 'small' | 'medium';
 export type DropdownValue = number | string;
@@ -200,7 +199,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     items,
     itemToString,
     getA11yStatusMessage: useHighlightStatusMessageFn(getA11yStatusMessage),
-    getA11ySelectionMessage: useIgnoreRefillSelectionMessage(getA11ySelectionMessage),
+    ...(getA11ySelectionMessage ? { getA11ySelectionMessage } : {}),
     onSelectedItemChange:
       onChange &&
       ((changes: UseSelectStateChangeOptions<any>) => {
