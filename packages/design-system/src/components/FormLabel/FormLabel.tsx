@@ -1,6 +1,6 @@
-import InlineError from '../InlineError/InlineError';
 import React from 'react';
 import classNames from 'classnames';
+import { FieldHint } from '../FieldHint/FieldHint';
 
 export type FormLabelComponent = 'label' | 'legend';
 export interface FormLabelProps {
@@ -14,14 +14,15 @@ export interface FormLabelProps {
   className?: string;
   /** The root HTML element used to render the label */
   component?: FormLabelComponent;
-  /** Enable the error state by providing an error message. */
+  /**
+   * Enable the error state by providing an error message.
+   */
   errorMessage?: React.ReactNode;
   /**
-   * Additional classes to be added to the error message
-   */
-  errorMessageClassName?: string;
-  /**
-   * The ID of the error message applied to this field.
+   * @deprecated The FormLabel is no longer responsible for rendering the
+   * error element from a string. A FieldError should be passed to it which
+   * already has an errorId applied.
+   * @hide-prop [Deprecated]
    */
   errorId?: string;
   /**
@@ -33,6 +34,10 @@ export interface FormLabelProps {
    * Additional hint text to display
    */
   hint?: React.ReactNode;
+  /**
+   * The ID of the hint element
+   */
+  hintId?: string;
   /**
    * A unique `id` for the label element. Useful for referencing the label from
    * other components with `aria-describedby`.
@@ -49,7 +54,8 @@ export interface FormLabelProps {
    */
   requirementLabel?: React.ReactNode;
   /**
-   * Additional classes to be added to the label text.
+   * @deprecated Please just use `className` instead
+   * @hide-prop [Deprecated]
    */
   textClassName?: string;
 }
@@ -69,70 +75,47 @@ export const FormLabel = (props: ComponentProps) => {
     children,
     component,
     hint,
+    hintId,
     textClassName,
     className,
     inversed,
     errorMessage,
-    errorMessageClassName,
     errorId,
     requirementLabel,
     ...labelProps
   } = props;
 
-  let hintElement;
-  if (hint || requirementLabel) {
-    const hintClasses = classNames('ds-c-field__hint', inversed && 'ds-c-field__hint--inverse');
-
-    let hintPadding;
-    let requirement = requirementLabel;
-
-    if (requirementLabel && hint) {
-      if (typeof requirementLabel === 'string') {
-        // Remove any existing spacing and punctuation
-        requirement = requirementLabel.trim().replace(/\.$/, '');
-        // Add punctuation after the requirementLabel so it doesn't run into the hint
-        requirement = requirementLabel + '.';
-      }
-
-      // Add space between hint and preceding requirementLabel
-      hintPadding = ' ';
-    }
-
-    hintElement = (
-      <span className={hintClasses}>
-        {requirement}
-        {hintPadding}
-        {hint}
-      </span>
+  if (process.env.NODE_ENV !== 'production' && textClassName) {
+    console.warn(
+      "[Deprecated]: Please use the 'className' prop instead of 'textClassName'. This prop is deprecated and will be removed in a future release."
     );
   }
 
-  let errorMessageElement;
-  if (errorMessage) {
-    // Include fallback for errorId
-    let inlineErrorId;
-    if (errorId) {
-      inlineErrorId = errorId;
-    } else if (fieldId) {
-      inlineErrorId = `${fieldId}-error`;
-    }
-
-    errorMessageElement = (
-      <InlineError id={inlineErrorId} inversed={inversed} className={errorMessageClassName}>
-        {errorMessage}
-      </InlineError>
+  let hintElement;
+  if (hint || requirementLabel) {
+    hintElement = (
+      <FieldHint requirementLabel={requirementLabel} inversed={inversed} id={hintId}>
+        {hint}
+      </FieldHint>
     );
   }
 
   const ComponentType = component;
-  const classes = classNames('ds-c-label', className, inversed && 'ds-c-label--inverse');
+  const classes = classNames(
+    'ds-c-label',
+    className,
+    inversed && 'ds-c-label--inverse',
+    textClassName
+  );
 
   return (
-    <ComponentType className={classes} htmlFor={fieldId} id={id} {...labelProps}>
-      <span className={classNames(textClassName)}>{children}</span>
+    <>
+      <ComponentType className={classes} htmlFor={fieldId} id={id} {...labelProps}>
+        {children}
+      </ComponentType>
       {hintElement}
-      {errorMessageElement}
-    </ComponentType>
+      {errorMessage}
+    </>
   );
 };
 

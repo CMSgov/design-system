@@ -10,17 +10,14 @@ exports[`SingleInputDateField renders without picker 1`] = `
       for="field_1"
       id="field_1-label"
     >
-      <span
-        class=""
-      >
-        Birthday
-      </span>
-      <span
-        class="ds-c-field__hint"
-      >
-        Please enter your birthday
-      </span>
+      Birthday
     </label>
+    <div
+      class="ds-c-field__hint"
+      id="field_1-hint"
+    >
+      Please enter your birthday
+    </div>
     <div
       class="ds-c-label-mask"
       id="labelmask_2"
@@ -41,7 +38,7 @@ exports[`SingleInputDateField renders without picker 1`] = `
       class="ds-c-single-input-date-field__field-wrapper"
     >
       <input
-        aria-describedby="labelmask_2"
+        aria-describedby="field_1-hint labelmask_2"
         aria-invalid="false"
         class="ds-c-field"
         id="field_1"
@@ -65,17 +62,14 @@ exports[`SingleInputDateField with picker renders with picker 1`] = `
       for="field_19"
       id="field_19-label"
     >
-      <span
-        class=""
-      >
-        What day did you move?
-      </span>
-      <span
-        class="ds-c-field__hint"
-      >
-        This date should be within the past 60 days in order to qualify
-      </span>
+      What day did you move?
     </label>
+    <div
+      class="ds-c-field__hint"
+      id="field_19-hint"
+    >
+      This date should be within the past 60 days in order to qualify
+    </div>
     <div
       class="ds-c-label-mask"
       id="labelmask_20"
@@ -96,7 +90,7 @@ exports[`SingleInputDateField with picker renders with picker 1`] = `
       class="ds-c-single-input-date-field__field-wrapper"
     >
       <input
-        aria-describedby="labelmask_20"
+        aria-describedby="field_19-hint labelmask_20"
         aria-invalid="false"
         class="ds-c-field"
         id="field_19"

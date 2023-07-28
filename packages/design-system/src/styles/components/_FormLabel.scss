@@ -33,6 +33,8 @@
   // If a theme doesn't have a font size for hint messages defined, it will fall back to inheriting the font size from its parent
   font-size: var(--form-hint__font-size, inherit);
   font-weight: var(--font-weight-normal);
+
+  max-width: var(--form__max-width);
 }
 
 .ds-c-field__hint--inverse {
@@ -43,6 +45,7 @@
   color: var(--form-error__color);
   display: block;
   font-weight: var(--font-weight-normal);
+  max-width: var(--form__max-width);
 }
 
 .ds-c-field__error-message--inverse {
@@ -51,8 +54,4 @@
 
 .ds-c-field__error-message--bottom {
   margin-block-start: $spacer-half;
-}
-
-.ds-c-choice + label .ds-c-field__hint {
-  flex-basis: 100%;
 }

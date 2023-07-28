@@ -154,7 +154,7 @@ export function MultiInputDateField(props: DateFieldProps): React.ReactElement {
   return (
     <fieldset {...wrapperProps}>
       <FormLabel {...labelProps} />
-      <DateInput {...fieldProps} labelId={labelProps.id} />
+      <DateInput {...fieldProps} />
       {bottomError}
     </fieldset>
   );

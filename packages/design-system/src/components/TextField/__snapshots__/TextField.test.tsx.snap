@@ -10,11 +10,7 @@ exports[`TextField renders 1`] = `
       for="field_1"
       id="field_1-label"
     >
-      <span
-        class=""
-      >
-        Foo
-      </span>
+      Foo
     </label>
     <input
       aria-invalid="false"
@@ -37,11 +33,7 @@ exports[`TextField renders with a label mask 1`] = `
       for="field_2"
       id="field_2-label"
     >
-      <span
-        class=""
-      >
-        Foo
-      </span>
+      Foo
     </label>
     <div
       class="ds-c-label-mask"
@@ -83,11 +75,7 @@ exports[`TextField renders with a mask 1`] = `
       for="field_4"
       id="field_4-label"
     >
-      <span
-        class=""
-      >
-        Foo
-      </span>
+      Foo
     </label>
     <div
       class="ds-c-field-mask ds-c-field-mask--currency"

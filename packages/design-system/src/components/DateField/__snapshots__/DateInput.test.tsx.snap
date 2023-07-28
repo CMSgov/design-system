@@ -13,14 +13,9 @@ exports[`DateInput renders with all defaultProps 1`] = `
         for="field_1"
         id="field_1-label"
       >
-        <span
-          class=""
-        >
-          Month
-        </span>
+        Month
       </label>
       <input
-        aria-describedby="1"
         aria-invalid="false"
         class="ds-c-field ds-c-field--month"
         id="field_1"
@@ -45,14 +40,9 @@ exports[`DateInput renders with all defaultProps 1`] = `
         for="field_2"
         id="field_2-label"
       >
-        <span
-          class=""
-        >
-          Day
-        </span>
+        Day
       </label>
       <input
-        aria-describedby="1"
         aria-invalid="false"
         class="ds-c-field ds-c-field--day"
         id="field_2"
@@ -77,14 +67,9 @@ exports[`DateInput renders with all defaultProps 1`] = `
         for="field_3"
         id="field_3-label"
       >
-        <span
-          class=""
-        >
-          year
-        </span>
+        year
       </label>
       <input
-        aria-describedby="1"
         aria-invalid="false"
         class="ds-c-field ds-c-field--year"
         id="field_3"

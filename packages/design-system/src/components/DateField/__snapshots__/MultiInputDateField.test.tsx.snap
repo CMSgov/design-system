@@ -10,17 +10,14 @@ exports[`MultiInputDateField renders 1`] = `
       class="ds-c-label"
       id="field_snapshot-label"
     >
-      <span
-        class=""
-      >
-        Date
-      </span>
-      <span
-        class="ds-c-field__hint"
-      >
-        For example: 4 / 28 / 1986
-      </span>
+      Date
     </legend>
+    <div
+      class="ds-c-field__hint"
+      id="field_snapshot-hint"
+    >
+      For example: 4 / 28 / 1986
+    </div>
     <div
       class="ds-c-datefield__container ds-l-form-row"
     >
@@ -32,14 +29,10 @@ exports[`MultiInputDateField renders 1`] = `
           for="field_snapshot"
           id="field_snapshot-label"
         >
-          <span
-            class=""
-          >
-            Month
-          </span>
+          Month
         </label>
         <input
-          aria-describedby="field_snapshot-label"
+          aria-describedby="field_snapshot-hint"
           aria-invalid="false"
           class="ds-c-field ds-c-field--month"
           id="field_snapshot"
@@ -64,14 +57,10 @@ exports[`MultiInputDateField renders 1`] = `
           for="field_snapshot"
           id="field_snapshot-label"
         >
-          <span
-            class=""
-          >
-            Day
-          </span>
+          Day
         </label>
         <input
-          aria-describedby="field_snapshot-label"
+          aria-describedby="field_snapshot-hint"
           aria-invalid="false"
           class="ds-c-field ds-c-field--day"
           id="field_snapshot"
@@ -96,14 +85,10 @@ exports[`MultiInputDateField renders 1`] = `
           for="field_snapshot"
           id="field_snapshot-label"
         >
-          <span
-            class=""
-          >
-            Year
-          </span>
+          Year
         </label>
         <input
-          aria-describedby="field_snapshot-label"
+          aria-describedby="field_snapshot-hint"
           aria-invalid="false"
           class="ds-c-field ds-c-field--year"
           id="field_snapshot"

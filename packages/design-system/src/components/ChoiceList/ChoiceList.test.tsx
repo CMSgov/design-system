@@ -81,40 +81,11 @@ describe('ChoiceList', () => {
       expect(fieldsetEl).toBeDefined();
     });
 
-    it('allows for modification of aria attributes', () => {
-      const choices = generateChoices(4, {
-        'aria-live': 'off',
-        'aria-relevant': 'text',
-        'aria-atomic': 'true',
-      });
-      choices[0].checked = true;
-      const { container } = renderChoiceList({ choices });
-      const wrapper = container.querySelector(':nth-child(3)');
-      expect(wrapper).toHaveAttribute('aria-live', 'off');
-      expect(wrapper).toHaveAttribute('aria-relevant', 'text');
-      expect(wrapper).toHaveAttribute('aria-atomic', 'true');
-      expect(wrapper).toMatchSnapshot();
-    });
-
-    it('applies correct aria attributes when checkedChildren is set', () => {
-      const choices = generateChoices(2, {
-        checkedChildren: <p>this is a test</p>,
-      });
-      choices[0].checked = true;
-      choices[1].checked = true;
-      const { container } = renderChoiceList({ choices });
-      const wrapper = container.querySelector(':nth-child(3)');
-      expect(wrapper).toHaveAttribute('aria-live', 'polite');
-      expect(wrapper).toHaveAttribute('aria-relevant', 'additions text');
-      expect(wrapper).toHaveAttribute('aria-atomic', 'false');
-      expect(container).toMatchSnapshot();
-    });
-
     it('renders the label prop as a legend element', () => {
       renderChoiceList();
       const legendEl = screen.getByText('Foo');
 
-      expect(legendEl.parentElement.tagName).toBe('LEGEND');
+      expect(legendEl.tagName).toBe('LEGEND');
     });
 
     it('passes checked prop', () => {

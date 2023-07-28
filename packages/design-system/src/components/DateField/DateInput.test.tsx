@@ -5,7 +5,6 @@ import userEvent from '@testing-library/user-event';
 import { render, screen } from '@testing-library/react';
 
 const defaultProps: DateInputProps = {
-  labelId: '1',
   dayName: 'day',
   dayLabel: 'Day',
   monthName: 'month',

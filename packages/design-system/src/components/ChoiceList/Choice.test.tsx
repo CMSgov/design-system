@@ -229,5 +229,26 @@ describe('Choice', () => {
       expect(screen.getByTestId('checked').textContent).toBe('I am checked');
       expect(screen.queryByTestId('unchecked')).toBeNull();
     });
+
+    it('applies correct aria attributes when checkedChildren is set', () => {
+      const { container } = renderChoice(props);
+      const root = container.firstChild;
+      expect(root).toHaveAttribute('aria-live', 'polite');
+      expect(root).toHaveAttribute('aria-relevant', 'additions text');
+      expect(root).toHaveAttribute('aria-atomic', 'false');
+    });
+
+    it('allows for modification of aria attributes', () => {
+      const { container } = renderChoice({
+        ...props,
+        'aria-live': 'off',
+        'aria-relevant': 'text',
+        'aria-atomic': 'true',
+      });
+      const root = container.firstChild;
+      expect(root).toHaveAttribute('aria-live', 'off');
+      expect(root).toHaveAttribute('aria-relevant', 'text');
+      expect(root).toHaveAttribute('aria-atomic', 'true');
+    });
   });
 });

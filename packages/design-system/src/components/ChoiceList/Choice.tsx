@@ -3,10 +3,13 @@ import FormLabel from '../FormLabel/FormLabel';
 import React from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
+import mergeIds from '../utilities/mergeIds';
+import { FieldError } from '../FieldError';
 
 export type ChoiceSize = 'small';
 export type ChoiceType = 'checkbox' | 'radio';
 export type ChoiceValue = number | string;
+
 export interface ChoiceProps {
   /**
    * Sets the input's `checked` state. Use this in combination with `onChange`
@@ -125,6 +128,8 @@ export class Choice extends React.PureComponent<
     this.handleChange = this.handleChange.bind(this);
     this.handleUncheck = this.handleUncheck.bind(this);
     this.id = this.props.id || uniqueId(`${this.props.type}_${this.props.name}_`);
+    this.hintId = this.props.hint || this.props.requirementLabel ? `${this.id}_hint` : undefined;
+    this.errorId = this.props.errorMessage ? `${this.id}_error` : undefined;
 
     if (typeof this.props.checked === 'undefined') {
       this.isControlled = false;
@@ -154,6 +159,8 @@ export class Choice extends React.PureComponent<
 
   input: any;
   id: string;
+  hintId?: string;
+  errorId?: string;
   isControlled: boolean;
   uncheckEventName: string;
 
@@ -219,9 +226,24 @@ export class Choice extends React.PureComponent<
       'ds-c-choice--small': size === 'small',
     });
 
+    let errorElement;
+    if (errorMessage) {
+      errorElement = (
+        <FieldError id={this.errorId} inversed={inversed} className={errorMessageClassName}>
+          {errorMessage}
+        </FieldError>
+      );
+    }
+
     // Remove props we have our own implementations for
     if (inputProps.id) delete inputProps.id;
     if (inputProps.onChange) delete inputProps.onChange;
+
+    // All the fields that have multiple inputs need to pass down the root
+    // aria-describedby attribute (where the root hint and error messages are
+    // linked) down to the individual inputs
+    inputProps['aria-describedby'] =
+      mergeIds(this.errorId, this.hintId, inputProps['aria-describedby']) || undefined;
 
     return (
       <div
@@ -247,7 +269,13 @@ export class Choice extends React.PureComponent<
           <FormLabel
             className={labelClassName}
             fieldId={this.id}
-            {...{ errorMessage, errorMessageClassName, hint, inversed, requirementLabel }}
+            hintId={this.hintId}
+            {...{
+              errorMessage: errorElement,
+              hint,
+              inversed,
+              requirementLabel,
+            }}
           >
             {label}
           </FormLabel>

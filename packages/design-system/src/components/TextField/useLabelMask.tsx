@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
 import { TextInputProps } from './TextInput';
+import mergeIds from '../utilities/mergeIds';
 
 export type MaskFunction = (rawInput: string, valueOnly?: boolean) => string;
 
@@ -175,7 +176,7 @@ export function useLabelMask(maskFn: MaskFunction, originalInputProps: TextInput
     },
     type: 'text',
     inputMode: 'numeric' as const,
-    'aria-describedby': classNames(originalInputProps['aria-describedby'], labelMaskId),
+    'aria-describedby': mergeIds(originalInputProps['aria-describedby'], labelMaskId),
   };
 
   let currentMask = maskFn(currentValue);

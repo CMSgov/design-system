@@ -36,10 +36,6 @@ export interface DateInputProps {
    */
   inversed?: boolean;
   /**
-   * A unique ID applied to the DateField label.
-   */
-  labelId: string;
-  /**
    * Called anytime any date input is blurred
    */
   onBlur?: (...args: any[]) => any;
@@ -217,7 +213,7 @@ export class DateInput extends React.PureComponent<DateInputProps> {
           }
         }}
         autoComplete={this.props.autoComplete && `bday-${type}`}
-        aria-describedby={this.props.labelId}
+        aria-describedby={this.props['aria-describedby']}
         aria-invalid={this.props[`${type}Invalid`]}
       />
     );

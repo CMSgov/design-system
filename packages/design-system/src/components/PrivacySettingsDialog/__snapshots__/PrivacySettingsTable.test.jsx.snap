@@ -78,13 +78,9 @@ Object {
                   id="field_2-label"
                 >
                   <span
-                    class=""
+                    class="ds-u-visibility--screen-reader"
                   >
-                    <span
-                      class="ds-u-visibility--screen-reader"
-                    >
-                      Advertising
-                    </span>
+                    Advertising
                   </span>
                 </legend>
                 <div>
@@ -103,11 +99,7 @@ Object {
                       class="ds-c-label"
                       for="radio_cookie-c3_3"
                     >
-                      <span
-                        class=""
-                      >
-                        Allow
-                      </span>
+                      Allow
                     </label>
                   </div>
                 </div>
@@ -126,11 +118,7 @@ Object {
                       class="ds-c-label"
                       for="radio_cookie-c3_4"
                     >
-                      <span
-                        class=""
-                      >
-                        Don't allow
-                      </span>
+                      Don't allow
                     </label>
                   </div>
                 </div>
@@ -171,13 +159,9 @@ Object {
                   id="field_5-label"
                 >
                   <span
-                    class=""
+                    class="ds-u-visibility--screen-reader"
                   >
-                    <span
-                      class="ds-u-visibility--screen-reader"
-                    >
-                      Social Media
-                    </span>
+                    Social Media
                   </span>
                 </legend>
                 <div>
@@ -195,11 +179,7 @@ Object {
                       class="ds-c-label"
                       for="radio_cookie-c4_6"
                     >
-                      <span
-                        class=""
-                      >
-                        Allow
-                      </span>
+                      Allow
                     </label>
                   </div>
                 </div>
@@ -219,11 +199,7 @@ Object {
                       class="ds-c-label"
                       for="radio_cookie-c4_7"
                     >
-                      <span
-                        class=""
-                      >
-                        Don't allow
-                      </span>
+                      Don't allow
                     </label>
                   </div>
                 </div>
@@ -264,13 +240,9 @@ Object {
                   id="field_8-label"
                 >
                   <span
-                    class=""
+                    class="ds-u-visibility--screen-reader"
                   >
-                    <span
-                      class="ds-u-visibility--screen-reader"
-                    >
-                      Web Analytics
-                    </span>
+                    Web Analytics
                   </span>
                 </legend>
                 <div>
@@ -289,11 +261,7 @@ Object {
                       class="ds-c-label"
                       for="radio_cookie-c2_9"
                     >
-                      <span
-                        class=""
-                      >
-                        Allow
-                      </span>
+                      Allow
                     </label>
                   </div>
                 </div>
@@ -312,11 +280,7 @@ Object {
                       class="ds-c-label"
                       for="radio_cookie-c2_10"
                     >
-                      <span
-                        class=""
-                      >
-                        Don't allow
-                      </span>
+                      Don't allow
                     </label>
                   </div>
                 </div>
@@ -401,13 +365,9 @@ Object {
                 id="field_2-label"
               >
                 <span
-                  class=""
+                  class="ds-u-visibility--screen-reader"
                 >
-                  <span
-                    class="ds-u-visibility--screen-reader"
-                  >
-                    Advertising
-                  </span>
+                  Advertising
                 </span>
               </legend>
               <div>
@@ -426,11 +386,7 @@ Object {
                     class="ds-c-label"
                     for="radio_cookie-c3_3"
                   >
-                    <span
-                      class=""
-                    >
-                      Allow
-                    </span>
+                    Allow
                   </label>
                 </div>
               </div>
@@ -449,11 +405,7 @@ Object {
                     class="ds-c-label"
                     for="radio_cookie-c3_4"
                   >
-                    <span
-                      class=""
-                    >
-                      Don't allow
-                    </span>
+                    Don't allow
                   </label>
                 </div>
               </div>
@@ -494,13 +446,9 @@ Object {
                 id="field_5-label"
               >
                 <span
-                  class=""
+                  class="ds-u-visibility--screen-reader"
                 >
-                  <span
-                    class="ds-u-visibility--screen-reader"
-                  >
-                    Social Media
-                  </span>
+                  Social Media
                 </span>
               </legend>
               <div>
@@ -518,11 +466,7 @@ Object {
                     class="ds-c-label"
                     for="radio_cookie-c4_6"
                   >
-                    <span
-                      class=""
-                    >
-                      Allow
-                    </span>
+                    Allow
                   </label>
                 </div>
               </div>
@@ -542,11 +486,7 @@ Object {
                     class="ds-c-label"
                     for="radio_cookie-c4_7"
                   >
-                    <span
-                      class=""
-                    >
-                      Don't allow
-                    </span>
+                    Don't allow
                   </label>
                 </div>
               </div>
@@ -587,13 +527,9 @@ Object {
                 id="field_8-label"
               >
                 <span
-                  class=""
+                  class="ds-u-visibility--screen-reader"
                 >
-                  <span
-                    class="ds-u-visibility--screen-reader"
-                  >
-                    Web Analytics
-                  </span>
+                  Web Analytics
                 </span>
               </legend>
               <div>
@@ -612,11 +548,7 @@ Object {
                     class="ds-c-label"
                     for="radio_cookie-c2_9"
                   >
-                    <span
-                      class=""
-                    >
-                      Allow
-                    </span>
+                    Allow
                   </label>
                 </div>
               </div>
@@ -635,11 +567,7 @@ Object {
                     class="ds-c-label"
                     for="radio_cookie-c2_10"
                   >
-                    <span
-                      class=""
-                    >
-                      Don't allow
-                    </span>
+                    Don't allow
                   </label>
                 </div>
               </div>
