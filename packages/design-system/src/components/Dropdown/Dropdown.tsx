@@ -183,6 +183,8 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     }
   }
 
+  const highlightStatusMessageFn = useHighlightStatusMessageFn();
+
   const {
     isOpen,
     selectedItem,
@@ -198,7 +200,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     menuId,
     items,
     itemToString,
-    getA11yStatusMessage: useHighlightStatusMessageFn(getA11yStatusMessage),
+    getA11yStatusMessage: getA11yStatusMessage ?? highlightStatusMessageFn,
     ...(getA11ySelectionMessage ? { getA11ySelectionMessage } : {}),
     onSelectedItemChange:
       onChange &&
