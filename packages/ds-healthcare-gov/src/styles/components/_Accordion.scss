@@ -1,8 +1,6 @@
 @use '../layout' as *;
 
 .ds-c-accordion {
-  --accordion-icon-color: #0071bb;
-
   .ds-c-accordion__button {
     background-color: var(--accordion__background-color);
     color: var(--accordion-button__color);
@@ -13,14 +11,14 @@
     padding: $spacer-1 $spacer-2 $spacer-1 $spacer-2;
 
     &:hover {
-      background-color: transparent;
-      color: var(--color-primary-darker);
+      --ds-c-accordion__button__color: var(--color-primary-darker);
       text-decoration: underline;
 
       .ds-c-icon--minus-circle__circle,
       .ds-c-icon--plus-circle__circle {
-        fill: var(--accordion-icon-color);
+        fill: currentColor;
       }
+
       .ds-c-icon--minus-circle__group,
       .ds-c-icon--plus-circle__group {
         fill: var(--color-white);
@@ -58,7 +56,6 @@
 
   .ds-c-icon {
     align-self: center;
-    color: var(--accordion-icon-color);
 
     // This variable only exists for the Healthcare Accordion CSS override
     // We need to create tokens specific to icon sizing instead of repurposing spacer-* or font-size-* tokens
