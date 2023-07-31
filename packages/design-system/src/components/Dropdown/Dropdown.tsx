@@ -87,6 +87,11 @@ export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
    * aria-live during certain interactions. [Read more on downshift docs.](https://github.com/downshift-js/downshift/tree/master/src/hooks/useSelect#geta11ystatusmessage)
    */
   getA11yStatusMessage?: UseSelectProps<any>['getA11yStatusMessage'];
+  /**
+   * Customize the default status messages announced to screen reader users via
+   * aria-live when a selection is made. [Read more on downshift docs.](https://github.com/downshift-js/downshift/tree/master/src/hooks/useSelect#geta11yselectionmessage)
+   */
+  getA11ySelectionMessage?: UseSelectProps<any>['getA11ySelectionMessage'];
 }
 
 type OptionsOrChildren =
@@ -133,6 +138,8 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     defaultValue,
     value,
     inputRef,
+    getA11yStatusMessage,
+    getA11ySelectionMessage,
     ...extraProps
   } = props;
 
@@ -176,6 +183,8 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     }
   }
 
+  const highlightStatusMessageFn = useHighlightStatusMessageFn();
+
   const {
     isOpen,
     selectedItem,
@@ -191,7 +200,8 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     menuId,
     items,
     itemToString,
-    getA11yStatusMessage: useHighlightStatusMessageFn(),
+    getA11yStatusMessage: getA11yStatusMessage ?? highlightStatusMessageFn,
+    ...(getA11ySelectionMessage ? { getA11ySelectionMessage } : {}),
     onSelectedItemChange:
       onChange &&
       ((changes: UseSelectStateChangeOptions<any>) => {
