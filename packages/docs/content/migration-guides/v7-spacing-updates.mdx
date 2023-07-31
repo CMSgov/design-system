@@ -4,8 +4,9 @@ order: 40
 intro: We've removed all default bottom margins to make spacing between components predictable and consistent.
 ---
 
-import marginsBefore from '../../src/images/margins-before.png'
-import marginsAfter from '../../src/images/margins-after.png'
+import marginsBefore from '../../src/images/margins-before.png';
+import marginsAfter from '../../src/images/margins-after.png';
+import { Alert } from '@cmsgov/design-system';
 
 ## Removal of bottom margins
 
@@ -25,6 +26,22 @@ Before v7, some components had both top and bottom margins. This made the defaul
 - Review
 
 If the gap below these components disappears in your application when upgrading, consider adding margin above the next item or adding it back in if you previously had to remove it.
+
+<Alert variation="warn" className="ds-u-measure--wide" heading="Spacing above zero-margin components">
+
+  Please note that some components in the design system have no default spacing around them because the context in which they're used can be varied. If you relied on any of the components in the list above to provide space before these zero-margin components, you'll need to add your own top-spacing to the zero-margin components that come after them. These zero-margin components are:
+
+  - Accordion
+  - Alert
+  - Button
+  - Horizontal rules (`<hr>`)
+  - Icons
+  - Pagination
+  - Spinner
+  - Table
+  - Tabs
+
+</Alert>
 
 ## Example of margin collapsing and stacking
 
