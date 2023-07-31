@@ -58,33 +58,19 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
   buttonClassName,
   children,
   contentClassName,
-  defaultOpen = false,
+  defaultOpen,
   heading,
-  headingLevel = '2',
+  headingLevel,
   id,
   // TODO: Explore deprecating `isControlledOpen` in favor of `isOpen`
   isControlledOpen,
   onChange,
-  closeIcon = (
-    <RemoveIcon
-      className="ds-c-accordion__button-icon"
-      title={t('accordion.close')}
-      ariaHidden={false}
-    />
-  ),
-  openIcon = (
-    <AddIcon
-      className="ds-c-accordion__button-icon"
-      title={t('accordion.open')}
-      ariaHidden={false}
-    />
-  ),
+  closeIcon,
+  openIcon,
 }) => {
   const contentClasses = classNames('ds-c-accordion__content', contentClassName);
   const buttonClasses = classNames('ds-c-accordion__button', buttonClassName);
   const HeadingTag = `h${headingLevel}` as const;
-  const CloseIcon = closeIcon as React.ReactNode;
-  const OpenIcon = openIcon as React.ReactNode;
   const isControlled = !!onChange;
   const contentId = id || uniqueId('accordionItem_');
   const buttonId = `${contentId}-button`;
@@ -114,7 +100,7 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
             type="button"
           >
             {heading}
-            {isItemOpen ? CloseIcon : OpenIcon}
+            {isItemOpen ? closeIcon : openIcon}
           </button>
         </HeadingTag>
         <div
@@ -128,6 +114,25 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
       </>
     );
   }
+};
+
+AccordionItem.defaultProps = {
+  defaultOpen: false,
+  headingLevel: '2',
+  closeIcon: (
+    <RemoveIcon
+      className="ds-c-accordion__button-icon"
+      title={t('accordion.close')}
+      ariaHidden={false}
+    />
+  ),
+  openIcon: (
+    <AddIcon
+      className="ds-c-accordion__button-icon"
+      title={t('accordion.open')}
+      ariaHidden={false}
+    />
+  ),
 };
 
 export default AccordionItem;
