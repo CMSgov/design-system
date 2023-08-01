@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import useTheme from '../../../helpers/useTheme';
 import ThemeDialog from './ThemeDialog';
 import VersionDialog from './VersionDialog';
@@ -11,6 +11,8 @@ export const ThemeVersionSection = () => {
   const themeDisplayName = getThemeDisplayName(theme);
   const [isThemeDialogOpen, setIsThemeDialogOpen] = useState(false);
   const [isVersionDialogOpen, setIsVersionDialogOpen] = useState(false);
+  const themeButtonRef = useRef<HTMLButtonElement>();
+  const versionButtonRef = useRef<HTMLButtonElement>();
 
   return (
     <>
@@ -19,12 +21,19 @@ export const ThemeVersionSection = () => {
         <button
           className="c-navigation__settings-button"
           onClick={() => setIsThemeDialogOpen(!isThemeDialogOpen)}
+          ref={themeButtonRef}
         >
           <span className="ds-u-visibility--screen-reader">Change</span> {themeDisplayName}{' '}
           <ArrowIcon direction="down" />
         </button>
         {isThemeDialogOpen && (
-          <ThemeDialog theme={theme} onExit={() => setIsThemeDialogOpen(false)} />
+          <ThemeDialog
+            theme={theme}
+            onExit={() => {
+              setIsThemeDialogOpen(false);
+              themeButtonRef.current?.focus();
+            }}
+          />
         )}
       </div>
       <div>
@@ -32,6 +41,7 @@ export const ThemeVersionSection = () => {
         <button
           className="c-navigation__settings-button"
           onClick={() => setIsVersionDialogOpen(!isVersionDialogOpen)}
+          ref={versionButtonRef}
         >
           <span className="ds-u-visibility--screen-reader">Change</span> {version}{' '}
           <ArrowIcon direction="down" />
@@ -40,7 +50,10 @@ export const ThemeVersionSection = () => {
           <VersionDialog
             theme={theme}
             version={version}
-            onExit={() => setIsVersionDialogOpen(false)}
+            onExit={() => {
+              setIsVersionDialogOpen(false);
+              versionButtonRef.current?.focus();
+            }}
           />
         )}
       </div>

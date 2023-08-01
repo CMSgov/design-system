@@ -1,3 +1,5 @@
+@use '@styles/mixins';
+
 // Mobile
 .c-navigation {
   background-color: var(--color-gray-lightest);
@@ -63,10 +65,14 @@
   // Keep the hit area large by giving it $spacer-1 padding on top and bottom,
   // but don't create extra vertical space below it.
   margin-block-end: -$spacer-1;
-  padding: $spacer-1 0;
+  padding: $spacer-1;
   text-decoration-line: underline;
   text-decoration-style: dashed;
   text-underline-offset: 0.125em;
+
+  &:focus {
+    @include mixins.focus-styles;
+  }
 
   .ds-c-icon {
     height: var(--font-size-sm);
