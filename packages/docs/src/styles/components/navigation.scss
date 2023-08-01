@@ -59,6 +59,7 @@
   border: none;
   color: inherit;
   display: inline-block;
+  font-weight: var(--font-weight-bold);
   // Keep the hit area large by giving it $spacer-1 padding on top and bottom,
   // but don't create extra vertical space below it.
   margin-block-end: -$spacer-1;

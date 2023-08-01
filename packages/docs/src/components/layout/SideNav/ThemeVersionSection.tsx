@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import useTheme from '../../../helpers/useTheme';
-import ThemeVersionDialog from './ThemeVersionDialog';
+import ThemeDialog from './ThemeDialog';
+import VersionDialog from './VersionDialog';
 import { getPackageData, getThemeDisplayName } from './themeVersionData';
 import { ArrowIcon } from '@cmsgov/design-system';
 
@@ -8,26 +9,41 @@ export const ThemeVersionSection = () => {
   const theme = useTheme();
   const version = getPackageData(theme).version;
   const themeDisplayName = getThemeDisplayName(theme);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isThemeDialogOpen, setIsThemeDialogOpen] = useState(false);
+  const [isVersionDialogOpen, setIsVersionDialogOpen] = useState(false);
 
   return (
     <>
       <div>
-        Theme: <strong>{themeDisplayName}</strong>
+        Theme:{' '}
+        <button
+          className="c-navigation__settings-button"
+          onClick={() => setIsThemeDialogOpen(!isThemeDialogOpen)}
+        >
+          <span className="ds-u-visibility--screen-reader">Change</span> {themeDisplayName}{' '}
+          <ArrowIcon direction="down" />
+        </button>
+        {isThemeDialogOpen && (
+          <ThemeDialog theme={theme} onExit={() => setIsThemeDialogOpen(false)} />
+        )}
       </div>
       <div>
-        Version: <strong>{version}</strong>
+        Version:{' '}
+        <button
+          className="c-navigation__settings-button"
+          onClick={() => setIsVersionDialogOpen(!isVersionDialogOpen)}
+        >
+          <span className="ds-u-visibility--screen-reader">Change</span> {version}{' '}
+          <ArrowIcon direction="down" />
+        </button>
+        {isVersionDialogOpen && (
+          <VersionDialog
+            theme={theme}
+            version={version}
+            onExit={() => setIsVersionDialogOpen(false)}
+          />
+        )}
       </div>
-      <button
-        className="c-navigation__settings-button"
-        onClick={() => setIsDialogOpen(!isDialogOpen)}
-      >
-        Change settings <ArrowIcon direction="down" />
-      </button>
-
-      {isDialogOpen && (
-        <ThemeVersionDialog theme={theme} version={version} onExit={() => setIsDialogOpen(false)} />
-      )}
     </>
   );
 };
