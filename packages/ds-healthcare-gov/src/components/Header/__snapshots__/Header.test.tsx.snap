@@ -49,7 +49,7 @@ exports[`Header renders Direct Enrollment banner 1`] = `
         An official website of the United States government
       </p>
       <p
-        class="ds-c-usa-banner__action ds-u-display--flex ds-u-align-items--center ds-u-md-display--none"
+        class="ds-c-usa-banner__action ds-u-align-items--center ds-u-md-display--none ds-u-display--flex"
       >
         Here's how you know
         <svg
@@ -476,7 +476,7 @@ exports[`Header renders Spanish header 1`] = `
         Un sitio oficial del Gobierno de Estados Unidos
       </p>
       <p
-        class="ds-c-usa-banner__action ds-u-display--flex ds-u-align-items--center ds-u-md-display--none"
+        class="ds-c-usa-banner__action ds-u-align-items--center ds-u-md-display--none ds-u-display--flex"
       >
         Así es como usted puede verificarlo
         <svg
@@ -910,7 +910,7 @@ exports[`Header renders full/homepage header 1`] = `
         An official website of the United States government
       </p>
       <p
-        class="ds-c-usa-banner__action ds-u-display--flex ds-u-align-items--center ds-u-md-display--none"
+        class="ds-c-usa-banner__action ds-u-align-items--center ds-u-md-display--none ds-u-display--flex"
       >
         Here's how you know
         <svg
@@ -1328,7 +1328,7 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
         An official website of the United States government
       </p>
       <p
-        class="ds-c-usa-banner__action ds-u-display--flex ds-u-align-items--center ds-u-md-display--none"
+        class="ds-c-usa-banner__action ds-u-align-items--center ds-u-md-display--none ds-u-display--flex"
       >
         Here's how you know
         <svg
@@ -1746,7 +1746,7 @@ exports[`Header renders logged-in header with firstName 1`] = `
         An official website of the United States government
       </p>
       <p
-        class="ds-c-usa-banner__action ds-u-display--flex ds-u-align-items--center ds-u-md-display--none"
+        class="ds-c-usa-banner__action ds-u-align-items--center ds-u-md-display--none ds-u-display--flex"
       >
         Here's how you know
         <svg
@@ -2169,7 +2169,7 @@ exports[`Header renders logged-in header without firstName 1`] = `
         An official website of the United States government
       </p>
       <p
-        class="ds-c-usa-banner__action ds-u-display--flex ds-u-align-items--center ds-u-md-display--none"
+        class="ds-c-usa-banner__action ds-u-align-items--center ds-u-md-display--none ds-u-display--flex"
       >
         Here's how you know
         <svg
