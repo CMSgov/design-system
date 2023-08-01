@@ -1,3 +1,5 @@
+@use 'mixins';
+
 /* Core root defaults */
 *,
 *::before,
@@ -115,11 +117,19 @@ hr {
 
 /* Lists */
 
-// Relying on `flex` to set `gap` spacing size on li elements
-// `gap` ensures even spacing and doesn't interfere with layout
-// if list given a `row` direction
-ol,
-ul {
+// Default list styles will be applied to lists that don't have the role="list"
+// attribute to ensure that...
+//   1. Lists used in text content will be consistently styled across
+//      applications and browsers
+//   2. Lists that shouldn't be styled have the proper role="list" attribute
+//      according to our list guidance, because Safari will not recognize
+//      unstyled lists as lists without that role attribute
+
+ol:not([role='list']),
+ul:not([role='list']) {
+  // Relying on `flex` to set `gap` spacing size on li elements
+  // `gap` ensures even spacing and doesn't interfere with layout
+  // if list given a `row` direction
   display: flex;
   flex-direction: column;
   gap: 0.5em;
@@ -127,12 +137,8 @@ ul {
   padding-inline-start: 2em;
 }
 
-// Tying unstyled list styles to a required a11y attribute
-// ensures proper markup structure
 [role='list'] {
-  gap: unset;
-  list-style: none;
-  padding: 0;
+  @include mixins.ds-unstyled-list;
 }
 
 li {
