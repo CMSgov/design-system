@@ -130,6 +130,7 @@ ul {
 // Tying unstyled list styles to a required a11y attribute
 // ensures proper markup structure
 [role='list'] {
+  gap: unset;
   list-style: none;
   padding: 0;
 }
