@@ -219,12 +219,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     ...extraProps,
     id,
     labelId,
-    className: classNames(
-      'ds-c-dropdown',
-      className,
-      isOpen && 'ds-c-dropdown--open',
-      size && `ds-c-field--${size}`
-    ),
+    className: classNames('ds-c-dropdown', className, isOpen && 'ds-c-dropdown--open'),
     labelComponent: 'label',
     wrapperIsFieldset: false,
   });
@@ -243,6 +238,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
       'ds-c-field',
       props.errorMessage && 'ds-c-field--error',
       props.inversed && 'ds-c-field--inverse',
+      size && `ds-c-field--${size}`,
       fieldClassName
     ),
     'aria-labelledby': `${buttonContentId} ${labelId}`,
@@ -252,6 +248,10 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     // This attribute being empty causes unexpected behavior in JAWS, so remove it
     delete buttonProps['aria-activedescendant'];
   }
+
+  const menuContainerProps = {
+    className: classNames('ds-c-dropdown__menu-container', size && `ds-c-field--${size}`),
+  };
 
   const menuProps = getMenuProps({
     className: classNames(
@@ -319,7 +319,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
           </SvgIcon>
         </span>
       </button>
-      <div className="ds-c-dropdown__menu-container" hidden={!isOpen}>
+      <div {...menuContainerProps} hidden={!isOpen}>
         <ul {...menuProps} aria-labelledby={undefined}>
           {menuContent}
         </ul>
