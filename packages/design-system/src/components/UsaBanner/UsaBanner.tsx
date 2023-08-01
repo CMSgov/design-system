@@ -51,15 +51,19 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
       {/* Util class used to hardcode font-size across themes */}
       <header
         className={classNames(
-          'ds-c-usa-banner__header',
-          'ds-u-font-size--sm',
+          'ds-c-usa-banner__header ds-u-font-size--sm',
           isBannerOpen && 'ds-c-usa-banner__header--expanded'
         )}
       >
         <UsaFlagIcon className="ds-c-usa-banner__header-icon" />
         <p className="ds-c-usa-banner__header-text">{t('usaBanner.bannerText')}</p>
         {/* This is display text for mobile/tablet only; display: none when on larger viewports */}
-        <p className="ds-c-usa-banner__action ds-u-display--flex ds-u-align-items--center ds-u-md-display--none">
+        <p
+          className={classNames(
+            'ds-c-usa-banner__action ds-u-align-items--center ds-u-md-display--none',
+            !isBannerOpen && 'ds-u-display--flex'
+          )}
+        >
           {actionText}
         </p>
 

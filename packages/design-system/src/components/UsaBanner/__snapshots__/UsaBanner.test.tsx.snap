@@ -44,7 +44,7 @@ exports[`UsaBanner renders correctly 1`] = `
     An official website of the United States government
   </p>
   <p
-    class="ds-c-usa-banner__action ds-u-display--flex ds-u-align-items--center ds-u-md-display--none"
+    class="ds-c-usa-banner__action ds-u-align-items--center ds-u-md-display--none ds-u-display--flex"
   >
     Here's how you know
     <svg
