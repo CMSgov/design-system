@@ -142,6 +142,8 @@ ul:not([role]) {
   padding-inline-start: 2em;
 }
 
+// Tie the application of unstyled-list styles to inclusion of a role attribute
+// that will "fix" Safari behavior outlined in the guidance. See above comment.
 [role='list']:where(ul, ol) {
   @include mixins.ds-unstyled-list;
 }
