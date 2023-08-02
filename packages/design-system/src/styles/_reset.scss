@@ -117,16 +117,21 @@ hr {
 
 /* Lists */
 
-// Default list styles will be applied to lists that don't have the role="list"
-// attribute to ensure that...
+// Default list styles will be applied to lists that don't have a `role`
+// attribute present to ensure that...
+//
 //   1. Lists used in text content will be consistently styled across
 //      applications and browsers
 //   2. Lists that shouldn't be styled have the proper role="list" attribute
 //      according to our list guidance, because Safari will not recognize
 //      unstyled lists as lists without that role attribute
+//
+// Note that we did not specify `role="list"` explicitly in the selectors
+// that create the exception to the default styling because there are other
+// legitimate roles that could be applied like `role="listbox"`.
 
-ol:not([role='list']),
-ul:not([role='list']) {
+ol:not([role]),
+ul:not([role]) {
   // Relying on `flex` to set `gap` spacing size on li elements
   // `gap` ensures even spacing and doesn't interfere with layout
   // if list given a `row` direction
@@ -137,7 +142,7 @@ ul:not([role='list']) {
   padding-inline-start: 2em;
 }
 
-[role='list'] {
+[role='list']:where(ul, ol) {
   @include mixins.ds-unstyled-list;
 }
 
