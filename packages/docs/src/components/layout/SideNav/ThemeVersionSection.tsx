@@ -23,7 +23,7 @@ export const ThemeVersionSection = () => {
           onClick={() => setIsThemeDialogOpen(!isThemeDialogOpen)}
           ref={themeButtonRef}
         >
-          <span className="ds-u-visibility--screen-reader">Change</span> {themeDisplayName}{' '}
+          {themeDisplayName} <span className="ds-u-visibility--screen-reader">(Change theme)</span>{' '}
           <ArrowIcon direction="down" />
         </button>
         {isThemeDialogOpen && (
@@ -43,7 +43,7 @@ export const ThemeVersionSection = () => {
           onClick={() => setIsVersionDialogOpen(!isVersionDialogOpen)}
           ref={versionButtonRef}
         >
-          <span className="ds-u-visibility--screen-reader">Change</span> {version}{' '}
+          {version} <span className="ds-u-visibility--screen-reader">(Change version)</span>{' '}
           <ArrowIcon direction="down" />
         </button>
         {isVersionDialogOpen && (
