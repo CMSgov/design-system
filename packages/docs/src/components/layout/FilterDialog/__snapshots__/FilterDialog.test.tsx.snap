@@ -21,6 +21,33 @@ exports[`FilterDialog renders a dialog 1`] = `
       >
         FilterDialog heading
       </h3>
+      <button
+        class="ds-c-close-button ds-c-filter-dialog__close"
+      >
+        <svg
+          aria-hidden="false"
+          aria-labelledby="icon-2__title"
+          class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin "
+          focusable="false"
+          id="icon-2"
+          role="img"
+          viewBox="-2 -2 18 18"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title
+            id="icon-2__title"
+          >
+            Close
+          </title>
+          <path
+            d="M0 13.0332964L13.0332964 0M13.0332964 13.0332964L0 0"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-width="2"
+          />
+        </svg>
+      </button>
     </div>
     <div
       class="ds-c-filter-dialog__body"
