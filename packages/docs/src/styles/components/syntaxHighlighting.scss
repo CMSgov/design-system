@@ -22,9 +22,22 @@ a code {
   text-decoration: underline;
 }
 
-.ds-c-alert code {
+.ds-c-alert code,
+kbd {
   // Semi-transparent so it matches the color of the alert better
   background-color: #c4c4c44f;
+}
+
+kbd {
+  border: 1px solid #b4b4b44f;
+  border-radius: 3px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 2px 0 0 rgba(255, 255, 255, 0.7) inset;
+  color: var(--color-black);
+  display: inline-block;
+  font-size: 0.85em;
+  line-height: 1;
+  padding: 2px 4px;
+  white-space: nowrap;
 }
 
 /**
