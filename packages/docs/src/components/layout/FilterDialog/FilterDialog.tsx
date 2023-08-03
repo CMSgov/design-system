@@ -3,6 +3,7 @@ import NativeDialog from '@cmsgov/design-system/src/components/NativeDialog/Nati
 import uniqueId from 'lodash/uniqueId';
 import classNames from 'classnames';
 import mergeRefs from '@cmsgov/design-system/src/components/utilities/mergeRefs.ts';
+import CloseButton from './CloseButton';
 
 export interface FilterDialogProps {
   /**
@@ -39,6 +40,13 @@ export interface FilterDialogProps {
    * A custom `id` attribute for the dialog element
    */
   id?: string;
+  /**
+   * Called when the user triggers an exit event, like by pressing the ESC key.
+   * The parent of this component is responsible for showing or not showing the
+   * dialog, so this callback should make that happen. The dialog does not hide
+   * itself.
+   */
+  onExit(event: React.MouseEvent | React.KeyboardEvent): void;
 }
 
 /**
@@ -62,6 +70,7 @@ export const FilterDialog = (props: FilterDialogProps) => {
           <Heading id={headingId} className="ds-c-filter-dialog__heading" ref={headingRef}>
             {props.heading}
           </Heading>
+          <CloseButton className="ds-c-filter-dialog__close" onClick={props.onExit} />
         </div>
         <div className={classNames('ds-c-filter-dialog__body')} tabIndex={0}>
           {props.children}

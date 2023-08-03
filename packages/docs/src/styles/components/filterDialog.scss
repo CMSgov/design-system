@@ -1,4 +1,5 @@
-@use '@styles/_base' as *;
+@use '@styles/base' as *;
+@use '@styles/mixins';
 
 .ds-c-filter-dialog {
   background-color: var(--dialog__background-color);
@@ -23,8 +24,15 @@
   outline: none;
 }
 
+.ds-c-filter-dialog__header {
+  align-items: center;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
 .ds-c-filter-dialog__heading {
   @include heading--xl;
+  margin-bottom: 0;
 }
 
 .ds-c-filter-dialog__actions {
@@ -33,4 +41,43 @@
   gap: var(--spacer-2);
   justify-content: flex-start;
   margin-block-start: var(--spacer-4);
+}
+
+.ds-c-filter-dialog__close {
+  display: inline-block;
+  margin-left: $spacer-2;
+}
+
+// TODO: Move this somewhere else if it's helpful to have a common "CloseButton" component for different dialogs
+.ds-c-close-button {
+  appearance: none;
+  background: none;
+  border: none;
+  color: var(--color-gray-dark);
+  // We need to have at least a 44px hit box size for the button, but we don't
+  // want to shift the X visually from the right edge, so we're adding an
+  // amount of padding that would be equivalent to the number of pixels we need
+  // to make up in a browser with default font sizes. Then we shift it to the
+  // right by that same amount to visually align the X with the right edge.
+  // Additionally, we'll bring in the top and bottom margin by the same amount
+  // to not visually shift the header row down. ASSUMPTION: This assumes we
+  // have sufficient spacing below a close button to not overlap with any other
+  // interactive elements.
+  padding: 0.625rem;
+  position: relative;
+  right: -0.625rem;
+
+  &:focus {
+    @include mixins.focus-styles;
+  }
+
+  &:hover,
+  &:hover:focus {
+    color: var(--color-gray-darker);
+  }
+
+  &:active,
+  &:active:focus {
+    color: var(--color-gray-darkest);
+  }
 }

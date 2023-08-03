@@ -33,6 +33,7 @@ export const ThemeVersionDialog = (props: ThemeVersionDialogProps) => {
           </Button>
         </>
       }
+      onExit={props.onExit}
     >
       <Dropdown
         label="Select a theme"
