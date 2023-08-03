@@ -1,8 +1,10 @@
 @use '../layout' as *;
 
 .hc-c-header {
+  --shadow: 10px;
+
   background-color: var(--color-background);
-  box-shadow: 0 0 10px 0 var(--color-gray-light);
+  box-shadow: 0 var(--shadow) var(--shadow) (calc(var(--shadow) * -1)) var(--color-gray-light);
   isolation: isolate;
 
   > .ds-l-container {
