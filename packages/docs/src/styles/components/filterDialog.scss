@@ -4,6 +4,7 @@
 .ds-c-filter-dialog {
   background-color: var(--dialog__background-color);
   border: none;
+  border-radius: var(--text-input__border-radius);
   // TODO: Revisit shadow consistency across the design system
   box-shadow: 0 7px 17px 0 var(--color-gray-light);
   box-sizing: border-box;
