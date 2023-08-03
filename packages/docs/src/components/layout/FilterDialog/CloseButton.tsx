@@ -24,7 +24,7 @@ export type CloseButtonProps = Omit<
  */
 export const CloseButton = ({ className, ...buttonAttributes }: CloseButtonProps) => (
   <button className={classNames('ds-c-close-button', className)} {...buttonAttributes}>
-    <CloseIconThin />
+    <CloseIconThin ariaHidden={false} />
   </button>
 );
 
