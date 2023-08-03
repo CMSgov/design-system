@@ -122,7 +122,7 @@ export const MonthPicker = (props: MonthPickerProps) => {
   const selectAllPressed = selectedMonths.length === NUM_MONTHS - disabledMonths.length;
   const clearAllPressed = selectedMonths.length === 0;
 
-  const { labelProps, fieldProps, wrapperProps, bottomError } = useFormLabel({
+  const { labelProps, wrapperProps, bottomError } = useFormLabel({
     ...props,
     className: classNames('ds-c-month-picker', props.className),
     labelComponent: 'legend',
@@ -140,7 +140,6 @@ export const MonthPicker = (props: MonthPickerProps) => {
           onClick={handleSelectAll}
           onDark={props.inversed}
           variation={props.buttonVariation}
-          aria-describedby={fieldProps['aria-describedby']}
         >
           {props.selectAllText ?? t('monthPicker.selectAllText')}
         </Button>
@@ -151,7 +150,6 @@ export const MonthPicker = (props: MonthPickerProps) => {
           onClick={handleClearAll}
           onDark={props.inversed}
           variation={props.buttonVariation}
-          aria-describedby={fieldProps['aria-describedby']}
         >
           {props.clearAllText ?? t('monthPicker.clearAllText')}
         </Button>
@@ -171,7 +169,6 @@ export const MonthPicker = (props: MonthPickerProps) => {
                 type="checkbox"
                 value={i + 1}
                 label={month}
-                aria-describedby={fieldProps['aria-describedby']}
               />
             </li>
           ))}

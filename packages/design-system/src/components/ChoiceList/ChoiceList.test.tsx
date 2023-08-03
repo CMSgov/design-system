@@ -21,6 +21,8 @@ function renderChoiceList(customProps = {}, choicesCount = 2) {
   const props = {
     choices: generateChoices(choicesCount),
     label: 'Foo',
+    hint: 'Psst! I know the answer',
+    errorMessage: 'Hey, you have to pick an answer',
     name: 'spec-field',
     type: 'radio' as ChoiceListType,
     onChange: () => {},
