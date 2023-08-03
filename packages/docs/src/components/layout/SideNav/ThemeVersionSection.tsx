@@ -2,13 +2,13 @@ import React, { useRef, useState } from 'react';
 import useTheme from '../../../helpers/useTheme';
 import ThemeDialog from './ThemeDialog';
 import VersionDialog from './VersionDialog';
-import { getPackageData, getThemeDisplayName } from './themeVersionData';
+import { getPackageData, getThemeData } from './themeVersionData';
 import { ArrowIcon } from '@cmsgov/design-system';
 
 export const ThemeVersionSection = () => {
   const theme = useTheme();
   const version = getPackageData(theme).version;
-  const themeDisplayName = getThemeDisplayName(theme);
+  const themeDisplayName = getThemeData(theme).displayName;
   const [isThemeDialogOpen, setIsThemeDialogOpen] = useState(false);
   const [isVersionDialogOpen, setIsVersionDialogOpen] = useState(false);
   const themeButtonRef = useRef<HTMLButtonElement>();

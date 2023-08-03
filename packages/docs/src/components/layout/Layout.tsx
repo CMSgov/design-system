@@ -15,6 +15,7 @@ import {
 import { withPrefix } from 'gatsby';
 
 import '../../styles/index.scss';
+import { getThemeData } from './SideNav/themeVersionData';
 
 interface LayoutProps {
   /**
@@ -57,10 +58,8 @@ const Layout = ({
   tableOfContentsData,
 }: LayoutProps) => {
   const env = 'prod';
-
-  const tabTitle = frontmatter?.title
-    ? `${frontmatter.title} - CMS Design System`
-    : 'CMS Design System';
+  const baseTitle = theme === 'core' ? 'CMS Design System' : getThemeData(theme).longName;
+  const tabTitle = frontmatter?.title ? `${frontmatter.title} - ${baseTitle}` : baseTitle;
 
   const pageId = slug ? `page--${slug.replace('/', '_')}` : null;
 
