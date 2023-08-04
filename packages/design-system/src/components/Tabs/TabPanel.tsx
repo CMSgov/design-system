@@ -17,7 +17,7 @@ export interface TabPanelProps {
    * The associated tab's label. Only applicable when the panel is a
    * child of `Tabs`.
    */
-  tab?: string;
+  tab?: React.ReactNode;
   /**
    * Additional classes for the associated tab. Only applicable when the panel
    * is a child of `Tabs`.
