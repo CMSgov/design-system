@@ -87,6 +87,11 @@ export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
    * aria-live during certain interactions. [Read more on downshift docs.](https://github.com/downshift-js/downshift/tree/master/src/hooks/useSelect#geta11ystatusmessage)
    */
   getA11yStatusMessage?: UseSelectProps<any>['getA11yStatusMessage'];
+  /**
+   * Customize the default status messages announced to screen reader users via
+   * aria-live when a selection is made. [Read more on downshift docs.](https://github.com/downshift-js/downshift/tree/master/src/hooks/useSelect#geta11yselectionmessage)
+   */
+  getA11ySelectionMessage?: UseSelectProps<any>['getA11ySelectionMessage'];
 }
 
 type OptionsOrChildren =
@@ -133,6 +138,8 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     defaultValue,
     value,
     inputRef,
+    getA11yStatusMessage,
+    getA11ySelectionMessage,
     ...extraProps
   } = props;
 
@@ -176,6 +183,8 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     }
   }
 
+  const highlightStatusMessageFn = useHighlightStatusMessageFn();
+
   const {
     isOpen,
     selectedItem,
@@ -191,7 +200,8 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     menuId,
     items,
     itemToString,
-    getA11yStatusMessage: useHighlightStatusMessageFn(),
+    getA11yStatusMessage: getA11yStatusMessage ?? highlightStatusMessageFn,
+    ...(getA11ySelectionMessage ? { getA11ySelectionMessage } : {}),
     onSelectedItemChange:
       onChange &&
       ((changes: UseSelectStateChangeOptions<any>) => {
@@ -209,12 +219,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     ...extraProps,
     id,
     labelId,
-    className: classNames(
-      'ds-c-dropdown',
-      className,
-      isOpen && 'ds-c-dropdown--open',
-      size && `ds-c-field--${size}`
-    ),
+    className: classNames('ds-c-dropdown', className, isOpen && 'ds-c-dropdown--open'),
     labelComponent: 'label',
     wrapperIsFieldset: false,
   });
@@ -226,12 +231,14 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
 
   const buttonProps = getToggleButtonProps({
     ...fieldProps,
+    type: 'button',
     ref: mergeRefs([inputRef, useAutofocus<HTMLButtonElement>(props.autoFocus)]),
     className: classNames(
       'ds-c-dropdown__button',
       'ds-c-field',
       props.errorMessage && 'ds-c-field--error',
       props.inversed && 'ds-c-field--inverse',
+      size && `ds-c-field--${size}`,
       fieldClassName
     ),
     'aria-labelledby': `${buttonContentId} ${labelId}`,
@@ -241,6 +248,10 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     // This attribute being empty causes unexpected behavior in JAWS, so remove it
     delete buttonProps['aria-activedescendant'];
   }
+
+  const menuContainerProps = {
+    className: classNames('ds-c-dropdown__menu-container', size && `ds-c-field--${size}`),
+  };
 
   const menuProps = getMenuProps({
     className: classNames(
@@ -272,7 +283,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
           item,
           index,
           disabled: isOptGroup,
-          role: isOptGroup ? 'group' : undefined,
+          role: isOptGroup ? 'group' : 'option',
         })}
       >
         {selectedItem === item && (
@@ -308,7 +319,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
           </SvgIcon>
         </span>
       </button>
-      <div className="ds-c-dropdown__menu-container" hidden={!isOpen}>
+      <div {...menuContainerProps} hidden={!isOpen}>
         <ul {...menuProps} aria-labelledby={undefined}>
           {menuContent}
         </ul>
