@@ -43,7 +43,7 @@ export const SkipNavExample: Story = {
           tabIndex={-1}
         >
           <h1 className="ds-u-margin-top--0">Main content</h1>
-          <p>After activiating the SkipNav, this element should have focus.</p>
+          <p>After activating the SkipNav, this element should have focus.</p>
           <p>
             Note that we added a focus ring for the purpose of demonstration, but please do not add
             a focus ring to your <code>main</code> element in production.
