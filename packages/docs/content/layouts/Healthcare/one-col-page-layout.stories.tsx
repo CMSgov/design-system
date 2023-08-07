@@ -5,6 +5,7 @@ export default {
   title: 'Patterns/One column page layout',
   parameters: {
     layout: 'fullscreen',
+    theme: 'healthcare',
   },
 };
 
