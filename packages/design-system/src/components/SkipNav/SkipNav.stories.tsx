@@ -34,7 +34,11 @@ export const SkipNavExample: Story = {
         </nav>
         <main id="main" className="ds-u-padding--3 ds-u-fill--gray-lightest" tabIndex={-1}>
           <h1 className="ds-u-margin--0">Main content</h1>
-          <p className="ds-u-margin--0">Clicking on the Skip Nav will focus this element.</p>
+          <p className="ds-u-margin--0">
+            Clicking on the Skip Nav will focus this element. Hit <kbd>TAB</kbd> again to focus on
+            the next link inside the main section.
+          </p>
+          <a href="#">A content link</a>
         </main>
       </div>
     ),
