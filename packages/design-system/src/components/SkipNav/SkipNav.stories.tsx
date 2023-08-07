@@ -27,7 +27,7 @@ export const SkipNavExample: Story = {
           </p>
         </div>
         <nav className="ds-u-padding--3">
-          <p className="ds-u-margin-top--0">Using the Skip Nav will skip over this section.</p>
+          <p className="ds-u-margin-top--0">Using the SkipNav will skip over this section.</p>
           <ul>
             <li>
               <a href="#">Navigation link 1</a>
