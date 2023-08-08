@@ -17,7 +17,6 @@
   ul[role='list'] {
     display: flex;
     flex-flow: row wrap;
-    flex-direction: column;
     row-gap: var(--spacer-1);
   }
 
