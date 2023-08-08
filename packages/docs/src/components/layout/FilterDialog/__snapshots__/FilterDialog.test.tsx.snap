@@ -23,6 +23,7 @@ exports[`FilterDialog renders a dialog 1`] = `
       </h3>
       <button
         class="ds-c-close-button ds-c-filter-dialog__close"
+        type="button"
       >
         <svg
           aria-hidden="false"
@@ -51,7 +52,6 @@ exports[`FilterDialog renders a dialog 1`] = `
     </div>
     <div
       class="ds-c-filter-dialog__body"
-      tabindex="0"
     >
       Hello, this is the dialog content.
     </div>
