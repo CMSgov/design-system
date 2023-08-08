@@ -60,9 +60,13 @@ describe('Dropdown', () => {
     expect(button).toHaveClass('ds-c-field');
   });
 
-  it('adds size classes to wrapper element', () => {
-    const { container } = makeDropdown({ size: 'small' });
-    expect(container.querySelector('.ds-c-dropdown')).toHaveClass('ds-c-field--small');
+  it('adds size classes to the appropriate elements', () => {
+    makeDropdown({ size: 'small' });
+    const button = screen.getByRole('combobox');
+    userEvent.click(button);
+    const listContainer = screen.getByRole('listbox').parentElement;
+    expect(button).toHaveClass('ds-c-field--small');
+    expect(listContainer).toHaveClass('ds-c-field--small');
   });
 
   it('adds inverse class to button', () => {

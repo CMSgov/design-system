@@ -76,12 +76,10 @@ export interface BaseDialogProps extends AnalyticsOverrideProps {
    */
   onEnter?(): void;
   /**
-   * This function needs to handles the state change of exiting (or deactivating) the modal.
-   * Maybe it's just a wrapper around `setState()`; or maybe you use some more involved
-   * Flux-inspired state management — whatever the case, this module leaves the state
-   * management up to you instead of making assumptions.
-   * That also makes it easier to create your own "close modal" buttons; because you
-   * have the function that closes the modal right there, written by you, at your disposal.
+   * Called when the user triggers an exit event, like by clicking the close
+   * button or pressing the ESC key. The parent of this component is
+   * responsible for showing or not showing the dialog, so you need to use this
+   * callback to make that happen. The dialog does not hide or remove itself.
    */
   onExit(event: React.MouseEvent | React.KeyboardEvent): void;
   /**
