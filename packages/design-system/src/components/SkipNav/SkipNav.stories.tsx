@@ -20,9 +20,14 @@ export const SkipNavExample: Story = {
     (Story) => (
       <div>
         {Story()}
+        <div className="ds-u-padding--3 ds-u-fill--gray-lightest">
+          <p className="ds-u-margin-top--0">Open this story in a dedicated tab.</p>
+          <p>
+            Press <kbd>TAB</kbd> to focus on the SkipNav link, then press <kbd>ENTER</kbd>
+          </p>
+        </div>
         <nav className="ds-u-padding--3">
-          <h1 className="ds-u-margin--0">Navigation</h1>
-          <p className="ds-u-margin--0">Clicking on the Skip Nav will skip over this section.</p>
+          <p className="ds-u-margin-top--0">Using the SkipNav will skip over this section.</p>
           <ul>
             <li>
               <a href="#">Navigation link 1</a>
@@ -32,9 +37,17 @@ export const SkipNavExample: Story = {
             </li>
           </ul>
         </nav>
-        <main id="main" className="ds-u-padding--3 ds-u-fill--gray-lightest" tabIndex={-1}>
-          <h1 className="ds-u-margin--0">Main content</h1>
-          <p className="ds-u-margin--0">Clicking on the Skip Nav will focus this element.</p>
+        <main
+          id="main"
+          className="ds-u-padding--3 ds-u-fill--gray-lightest ds-u-focus"
+          tabIndex={-1}
+        >
+          <h1 className="ds-u-margin-top--0">Main content</h1>
+          <p>After activating the SkipNav, this element should have focus.</p>
+          <p>
+            Note that we added a focus ring for the purpose of demonstration, but please do not add
+            a focus ring to your <code>main</code> element in production.
+          </p>
         </main>
       </div>
     ),
