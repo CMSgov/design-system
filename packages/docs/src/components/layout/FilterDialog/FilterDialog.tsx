@@ -72,9 +72,7 @@ export const FilterDialog = (props: FilterDialogProps) => {
           </Heading>
           <CloseButton className="ds-c-filter-dialog__close" onClick={props.onExit} />
         </div>
-        <div className={classNames('ds-c-filter-dialog__body')} tabIndex={0}>
-          {props.children}
-        </div>
+        <div className={classNames('ds-c-filter-dialog__body')}>{props.children}</div>
         <div className="ds-c-filter-dialog__actions">{props.actions}</div>
       </div>
     </NativeDialog>

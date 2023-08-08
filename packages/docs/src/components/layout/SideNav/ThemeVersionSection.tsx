@@ -21,6 +21,7 @@ export const ThemeVersionSection = () => {
         <button
           className="c-navigation__settings-button"
           onClick={() => setIsThemeDialogOpen(!isThemeDialogOpen)}
+          type="button"
           ref={themeButtonRef}
         >
           {themeDisplayName} <span className="ds-u-visibility--screen-reader">(Change theme)</span>{' '}
@@ -41,6 +42,7 @@ export const ThemeVersionSection = () => {
         <button
           className="c-navigation__settings-button"
           onClick={() => setIsVersionDialogOpen(!isVersionDialogOpen)}
+          type="button"
           ref={versionButtonRef}
         >
           {version} <span className="ds-u-visibility--screen-reader">(Change version)</span>{' '}
