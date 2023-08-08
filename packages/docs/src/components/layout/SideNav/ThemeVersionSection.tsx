@@ -4,13 +4,14 @@ import ThemeDialog from './ThemeDialog';
 import VersionDialog from './VersionDialog';
 import { getPackageData, getThemeData } from './themeVersionData';
 import { ArrowIcon } from '@cmsgov/design-system';
+import { useFilterDialogManager } from '../FilterDialog/FilterDialogManager';
 
 export const ThemeVersionSection = () => {
   const theme = useTheme();
   const version = getPackageData(theme).version;
   const themeDisplayName = getThemeData(theme).displayName;
-  const [isThemeDialogOpen, setIsThemeDialogOpen] = useState(false);
-  const [isVersionDialogOpen, setIsVersionDialogOpen] = useState(false);
+  const themeDialogProps = useFilterDialogManager();
+  const versionDialogProps = useFilterDialogManager();
   const themeButtonRef = useRef<HTMLButtonElement>();
   const versionButtonRef = useRef<HTMLButtonElement>();
 
@@ -20,18 +21,18 @@ export const ThemeVersionSection = () => {
         Theme:{' '}
         <button
           className="c-navigation__settings-button"
-          onClick={() => setIsThemeDialogOpen(!isThemeDialogOpen)}
+          onClick={themeDialogProps.toggleClick}
           type="button"
           ref={themeButtonRef}
         >
           {themeDisplayName} <span className="ds-u-visibility--screen-reader">(Change theme)</span>{' '}
           <ArrowIcon direction="down" />
         </button>
-        {isThemeDialogOpen && (
+        {themeDialogProps.isOpen && (
           <ThemeDialog
             theme={theme}
             onExit={() => {
-              setIsThemeDialogOpen(false);
+              themeDialogProps.closeClick();
               themeButtonRef.current?.focus();
             }}
           />
@@ -41,19 +42,19 @@ export const ThemeVersionSection = () => {
         Version:{' '}
         <button
           className="c-navigation__settings-button"
-          onClick={() => setIsVersionDialogOpen(!isVersionDialogOpen)}
+          onClick={versionDialogProps.toggleClick}
           type="button"
           ref={versionButtonRef}
         >
           {version} <span className="ds-u-visibility--screen-reader">(Change version)</span>{' '}
           <ArrowIcon direction="down" />
         </button>
-        {isVersionDialogOpen && (
+        {versionDialogProps.isOpen && (
           <VersionDialog
             theme={theme}
             version={version}
             onExit={() => {
-              setIsVersionDialogOpen(false);
+              versionDialogProps.closeClick();
               versionButtonRef.current?.focus();
             }}
           />
