@@ -89,7 +89,7 @@ const Layout = ({
 
       <div className="ds-l-row ds-u-margin--0 full-height">
         <SideNav location={location} />
-        <div className="ds-u-md-display--none ds-u-padding-x--3 ds-u-padding-top--3 ds-u-padding-bottom--1">
+        <div className="ds-u-md-display--none ds-u-padding-x--3 ds-u-padding-top--2">
           <ThemeVersionSection />
         </div>
         <main
