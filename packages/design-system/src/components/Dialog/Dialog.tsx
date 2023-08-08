@@ -78,8 +78,8 @@ export interface BaseDialogProps extends AnalyticsOverrideProps {
   /**
    * Called when the user triggers an exit event, like by clicking the close
    * button or pressing the ESC key. The parent of this component is
-   * responsible for showing or not showing the dialog, so this callback should
-   * make that happen. The dialog does not hide or remove itself.
+   * responsible for showing or not showing the dialog, so you need to use this
+   * callback to make that happen. The dialog does not hide or remove itself.
    */
   onExit(event: React.MouseEvent | React.KeyboardEvent): void;
   /**

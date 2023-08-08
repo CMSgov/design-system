@@ -43,8 +43,8 @@ export interface FilterDialogProps {
   /**
    * Called when the user triggers an exit event, like by pressing the ESC key.
    * The parent of this component is responsible for showing or not showing the
-   * dialog, so this callback should make that happen. The dialog does not hide
-   * itself.
+   * dialog, so you need to use this callback to make that happen. The dialog
+   * does not hide itself.
    */
   onExit(event: React.MouseEvent | React.KeyboardEvent): void;
 }
