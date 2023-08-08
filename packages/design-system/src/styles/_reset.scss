@@ -149,8 +149,8 @@ ul:not([role]) {
 }
 
 li {
-  > ul,
-  > ol {
+  > ul:not([role]),
+  > ol:not([role]) {
     margin-block: 0.5em 0;
   }
 }
