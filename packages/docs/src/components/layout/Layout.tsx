@@ -16,6 +16,7 @@ import { withPrefix } from 'gatsby';
 
 import '../../styles/index.scss';
 import { getThemeData } from './SideNav/themeVersionData';
+import ThemeVersionSection from './SideNav/ThemeVersionSection';
 
 interface LayoutProps {
   /**
@@ -88,6 +89,9 @@ const Layout = ({
 
       <div className="ds-l-row ds-u-margin--0 full-height">
         <SideNav location={location} />
+        <div className="ds-u-md-display--none ds-u-padding-x--3 ds-u-padding-top--3 ds-u-padding-bottom--1">
+          <ThemeVersionSection />
+        </div>
         <main
           id="main"
           className="ds-l-md-col ds-u-padding--0 ds-u-padding-bottom--4 ds-u-padding-top--2 page-main"

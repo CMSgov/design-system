@@ -59,16 +59,45 @@
   appearance: none;
   background: none;
   border: none;
-  color: inherit;
+  color: var(--link__color);
   display: inline-block;
   font-weight: var(--font-weight-bold);
-  // Keep the hit area large by giving it $spacer-1 padding on top and bottom,
-  // but don't create extra vertical space below it.
-  margin-block-end: -$spacer-1;
-  padding: $spacer-1;
+  // Keep the hit area large by giving it padding on top and bottom, but don't
+  // create extra vertical space below it. Amount calculated to make it at
+  // least 44px at a default font size.
+  margin-block-end: -0.75rem;
+  padding: 0.75rem;
   text-decoration-line: underline;
   text-decoration-style: dashed;
   text-underline-offset: 0.125em;
+
+  &:visited {
+    color: var(--link__color--visited);
+  }
+
+  &:hover {
+    color: var(--link__color--hover);
+  }
+
+  &:active {
+    color: var(--link__color--active);
+  }
+
+  .c-navigation__switchers-wrapper & {
+    color: var(--link-inverse__color);
+
+    &:visited {
+      color: var(--link-inverse__color--visited);
+    }
+
+    &:hover {
+      color: var(--link-inverse__color--hover);
+    }
+
+    &:active {
+      color: var(--link-inverse__color--active);
+    }
+  }
 
   &:focus {
     @include mixins.focus-styles;
