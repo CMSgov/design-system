@@ -47,6 +47,12 @@ export interface DrawerProps {
    * Enables "sticky" position of Drawer footer element.
    */
   isFooterSticky?: boolean;
+  /**
+   * Called when the user activates the close button or presses the ESC key if
+   * focus trapping is enabled. The parent of this component is responsible for
+   * showing or not showing the drawer, so you need to use this callback to
+   * make that happen. The dialog does not hide itself.
+   */
   onCloseClick: (event: React.MouseEvent | React.KeyboardEvent) => void;
 }
 

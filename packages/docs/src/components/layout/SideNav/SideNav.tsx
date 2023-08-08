@@ -4,15 +4,18 @@ import { Link } from 'gatsby';
 import classnames from 'classnames';
 import { Button, CloseIconThin, MenuIconThin, UsaBanner, VerticalNav } from '@cmsgov/design-system';
 import { useStaticQuery, graphql } from 'gatsby';
-import ThemeSwitcher from './ThemeSwitcher';
-import VersionSwitcher from './VersionSwitcher';
-import SearchForm from '../content/SearchForm';
-import { LocationInterface, NavDataQuery } from '../../helpers/graphQLTypes';
-import { DocsNavItem, convertToNavItems, organizeNavItems } from '../../helpers/navDataFormatUtils';
-import GithubIcon from '../icons/GithubIcon';
-import NewsIcon from '../icons/NewsIcon';
+import ThemeVersionSection from './ThemeVersionSection';
+import SearchForm from '../../content/SearchForm';
+import { LocationInterface, NavDataQuery } from '../../../helpers/graphQLTypes';
+import {
+  DocsNavItem,
+  convertToNavItems,
+  organizeNavItems,
+} from '../../../helpers/navDataFormatUtils';
+import GithubIcon from '../../icons/GithubIcon';
+import NewsIcon from '../../icons/NewsIcon';
 
-interface DocSiteNavProps {
+interface SideNavProps {
   location: LocationInterface;
 }
 
@@ -31,7 +34,7 @@ const GatsbyLink = (props: any /* See VerticalNavItemLabel.tsx */) => (
  * @returns {React Element}
  * @todo figure out which item is currently selected and mark & expand appropriately
  */
-const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
+const SideNav = ({ location }: SideNavProps) => {
   // Open/close state is controlled by toggleMenu()
   const [isMobileNavOpen, setMobileNavOpen] = useState<boolean>(false);
   const toggleMenu = () => {
@@ -129,9 +132,8 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
         // hidden attr applied on mobile breakpoints when nav is closed
         hidden={isMobile && !isMobileNavOpen}
       >
-        <div className="c-navigation__switchers-wrapper">
-          <ThemeSwitcher />
-          <VersionSwitcher />
+        <div className="c-navigation__switchers-wrapper ds-u-display--none ds-u-md-display--block">
+          <ThemeVersionSection />
         </div>
         <div className="c-navigation__links-wrapper">
           <SearchForm className="ds-u-md-display--none ds-u-margin--0 ds-u-padding-bottom--2" />
@@ -162,4 +164,4 @@ const DocSiteNavigation = ({ location }: DocSiteNavProps) => {
   );
 };
 
-export default DocSiteNavigation;
+export default SideNav;

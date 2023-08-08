@@ -2,7 +2,7 @@ import React from 'react';
 import { useRef, useEffect, useLayoutEffect, DialogHTMLAttributes } from 'react';
 import dialogPolyfill from './polyfill';
 
-interface NativeDialogProps extends Omit<DialogHTMLAttributes<HTMLElement>, 'children'> {
+export interface NativeDialogProps extends Omit<DialogHTMLAttributes<HTMLElement>, 'children'> {
   children: React.ReactNode;
   /**
    * Pass `true` to have the dialog close when its backdrop pseudo-element is clicked
@@ -26,7 +26,7 @@ interface NativeDialogProps extends Omit<DialogHTMLAttributes<HTMLElement>, 'chi
   showModal?: boolean;
 }
 
-const NativeDialog = ({
+export const NativeDialog = ({
   children,
   exit,
   showModal,

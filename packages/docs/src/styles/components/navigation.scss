@@ -1,3 +1,5 @@
+@use '@styles/mixins';
+
 // Mobile
 .c-navigation {
   background-color: var(--color-gray-lightest);
@@ -50,7 +52,59 @@
 }
 
 .c-navigation__switchers-wrapper {
-  padding: $spacer-2;
+  padding: $spacer-2 $spacer-2 $spacer-2 $spacer-4;
+}
+
+.c-navigation__settings-button {
+  appearance: none;
+  background: none;
+  border: none;
+  color: var(--link__color);
+  display: inline-block;
+  font-weight: var(--font-weight-bold);
+  // Keep the hit area large by giving it padding on top and bottom, calculated
+  // to be about 40px tall at a default font size
+  padding: 0.5rem;
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-underline-offset: 0.125em;
+
+  &:visited {
+    color: var(--link__color--visited);
+  }
+
+  &:hover {
+    color: var(--link__color--hover);
+  }
+
+  &:active {
+    color: var(--link__color--active);
+  }
+
+  .c-navigation__switchers-wrapper & {
+    color: var(--link-inverse__color);
+
+    &:visited {
+      color: var(--link-inverse__color--visited);
+    }
+
+    &:hover {
+      color: var(--link-inverse__color--hover);
+    }
+
+    &:active {
+      color: var(--link-inverse__color--active);
+    }
+  }
+
+  &:focus {
+    @include mixins.focus-styles;
+  }
+
+  .ds-c-icon {
+    height: var(--font-size-sm);
+    width: var(--font-size-sm);
+  }
 }
 
 .c-navigation__links-wrapper {
