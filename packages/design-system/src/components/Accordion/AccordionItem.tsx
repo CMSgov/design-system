@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AddIcon, RemoveIcon } from '../Icons';
+// import { AddIcon, RemoveIcon } from '../Icons';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
 import { t } from '../i18n';
@@ -119,20 +119,20 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
 AccordionItem.defaultProps = {
   defaultOpen: false,
   headingLevel: '2',
-  closeIcon: (
-    <RemoveIcon
-      className="ds-c-accordion__button-icon"
-      title={t('accordion.close')}
-      ariaHidden={false}
-    />
-  ),
-  openIcon: (
-    <AddIcon
-      className="ds-c-accordion__button-icon"
-      title={t('accordion.open')}
-      ariaHidden={false}
-    />
-  ),
+  // closeIcon: (
+  //   <RemoveIcon
+  //     className="ds-c-accordion__button-icon"
+  //     title={t('accordion.close')}
+  //     ariaHidden={false}
+  //   />
+  // ),
+  // openIcon: (
+  //   <AddIcon
+  //     className="ds-c-accordion__button-icon"
+  //     title={t('accordion.open')}
+  //     ariaHidden={false}
+  //   />
+  // ),
 };
 
 export default AccordionItem;

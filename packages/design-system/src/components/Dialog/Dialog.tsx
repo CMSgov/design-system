@@ -4,7 +4,7 @@ import NativeDialog from '../NativeDialog/NativeDialog';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
 import useDialogAnalytics from './useDialogAnalytics';
-import { CloseIcon } from '../Icons';
+// import { CloseIcon } from '../Icons';
 import { useEffect, useLayoutEffect, useRef, DialogHTMLAttributes } from 'react';
 import { t } from '../i18n';
 import { AnalyticsOverrideProps } from '../analytics';
@@ -185,7 +185,7 @@ export const Dialog = (props: DialogProps) => {
 
 Dialog.defaultProps = {
   closeButtonVariation: 'ghost',
-  closeIcon: <CloseIcon />,
+  // closeIcon: <CloseIcon />,
 };
 
 export default Dialog;

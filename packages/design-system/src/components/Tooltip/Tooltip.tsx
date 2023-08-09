@@ -12,7 +12,7 @@ import classNames from 'classnames';
 import { createPopper, Placement } from '@popperjs/core';
 import uniqueId from 'lodash/uniqueId';
 import { Button } from '../Button';
-import { CloseIconThin } from '../Icons';
+// import { CloseIconThin } from '../Icons';
 import usePrevious from '../utilities/usePrevious';
 
 export interface TooltipProps {
@@ -325,7 +325,7 @@ export const Tooltip = (props: TooltipProps) => {
                   onClick={handleCloseButtonClick}
                   aria-label={closeButtonLabel || 'Close'}
                 >
-                  <CloseIconThin />
+                  {/* <CloseIconThin /> */}
                 </Button>
               )}
             </div>

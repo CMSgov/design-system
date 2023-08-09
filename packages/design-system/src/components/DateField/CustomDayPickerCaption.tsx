@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowIcon } from '../Icons';
+// import { ArrowIcon } from '../Icons';
 import { CaptionDropdowns, CaptionProps, useDayPicker, useNavigation } from 'react-day-picker';
 
 /**
@@ -41,7 +41,7 @@ export function CustomDayPickerCaption(props: CaptionProps) {
         type="button"
         disabled={!previousMonth}
       >
-        <ArrowIcon direction="left" />
+        {/* <ArrowIcon direction="left" /> */}
       </button>
       <CaptionDropdowns displayMonth={props.displayMonth} id={props.id} />
       <button
@@ -51,7 +51,7 @@ export function CustomDayPickerCaption(props: CaptionProps) {
         type="button"
         disabled={!nextMonth}
       >
-        <ArrowIcon direction="right" />
+        {/* <ArrowIcon direction="right" /> */}
       </button>
     </div>
   );

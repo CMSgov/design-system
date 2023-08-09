@@ -1,5 +1,5 @@
 import React from 'react';
-import { InfoCircleIconThin } from '../Icons';
+// import { InfoCircleIconThin } from '../Icons';
 import { IconCommonProps } from '../Icons/SvgIcon';
 import classNames from 'classnames';
 
@@ -13,12 +13,12 @@ export interface TooltipIconProps extends IconCommonProps {
 export const TooltipIcon = ({ inversed, ...iconProps }: TooltipIconProps): React.ReactElement => {
   return (
     <span className="ds-c-tooltip-icon__container">
-      <InfoCircleIconThin
+      {/* <InfoCircleIconThin
         className={classNames('ds-c-tooltip-icon', {
           'ds-c-tooltip-icon--inverse': inversed,
         })}
         {...iconProps}
-      />
+      /> */}
     </span>
   );
 };

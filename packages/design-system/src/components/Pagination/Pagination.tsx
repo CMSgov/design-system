@@ -4,7 +4,7 @@ import Ellipses from './Ellipses';
 import Page from './Page';
 import { useCallback, useEffect, useState } from 'react';
 import classNames from 'classnames';
-import { ArrowIcon } from '../Icons';
+// import { ArrowIcon } from '../Icons';
 import { t } from '../i18n';
 
 export type PaginationHeadingLevel = '1' | '2' | '3' | '4' | '5' | '6';
@@ -230,8 +230,8 @@ function Pagination({
     }
   }
 
-  const startIcon = <ArrowIcon direction="left" className="ds-c-pagination__nav--image" />;
-  const endIcon = <ArrowIcon direction="right" className="ds-c-pagination__nav--image" />;
+  // const startIcon = <ArrowIcon direction="left" className="ds-c-pagination__nav--image" />;
+  // const endIcon = <ArrowIcon direction="right" className="ds-c-pagination__nav--image" />;
 
   const Heading = `h${headingLevel}` as const;
   const headingElement = (
@@ -261,7 +261,7 @@ function Pagination({
         aria-hidden={currentPage === 1 ? isNavigationHidden : false}
       >
         <span className="ds-c-pagination__nav--img-container ds-c-pagination__nav--img-container-previous">
-          {startIcon}
+          {/* {startIcon} */}
         </span>
         {startLabelText ?? t('pagination.startLabelText')}
       </Button>
@@ -292,7 +292,7 @@ function Pagination({
       >
         {endLabelText ?? t('pagination.endLabelText')}
         <span className="ds-c-pagination__nav--img-container ds-c-pagination__nav--img-container-next">
-          {endIcon}
+          {/* {endIcon} */}
         </span>
       </Button>
     </nav>

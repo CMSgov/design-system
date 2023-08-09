@@ -2,7 +2,7 @@ import React from 'react';
 import StepLink, { StepLinkProps } from './StepLink';
 import SubStep from './SubStep';
 import classNames from 'classnames';
-import { CheckIcon } from '../Icons';
+// import { CheckIcon } from '../Icons';
 import uniqueId from 'lodash/uniqueId';
 
 type HeadingLevel = '1' | '2' | '3' | '4' | '5';
@@ -83,7 +83,7 @@ export const Step = ({ step, ...props }: StepProps) => {
       <div className="ds-c-step__actions" role="region">
         {step.completed && (
           <div className="ds-c-step__completed-text">
-            <CheckIcon className="ds-c-icon-color--success" />
+            {/* <CheckIcon className="ds-c-icon-color--success" /> */}
             {props.completedText}
           </div>
         )}

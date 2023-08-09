@@ -3,14 +3,14 @@ import { useState } from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
 import { t } from '../i18n';
-import {
-  LockCircleIcon,
-  LockIcon,
-  UsaFlagIcon,
-  BuildingCircleIcon,
-  ArrowIcon,
-  CloseIconThin,
-} from '../Icons';
+// import {
+//   LockCircleIcon,
+//   LockIcon,
+//   UsaFlagIcon,
+//   BuildingCircleIcon,
+//   ArrowIcon,
+//   CloseIconThin,
+// } from '../Icons';
 
 export interface UsaBannerProps {
   /**
@@ -39,10 +39,10 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
   const actionText = (
     <>
       {t('usaBanner.bannerActionText')}
-      <ArrowIcon
+      {/* <ArrowIcon
         direction={isBannerOpen ? 'up' : 'down'}
         className="ds-c-usa-banner__action-icon"
-      />
+      /> */}
     </>
   );
 
@@ -55,7 +55,7 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
           isBannerOpen && 'ds-c-usa-banner__header--expanded'
         )}
       >
-        <UsaFlagIcon className="ds-c-usa-banner__header-icon" />
+        {/* <UsaFlagIcon className="ds-c-usa-banner__header-icon" /> */}
         <p className="ds-c-usa-banner__header-text">{t('usaBanner.bannerText')}</p>
         {/* This is display text for mobile/tablet only; display: none when on larger viewports */}
         <p
@@ -81,7 +81,7 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
 
           {/* This is the trigger button for mobile/tablet viewports only; display:none when on larger viewports */}
           <span className="ds-c-usa-banner__button-icon-container" hidden={!isBannerOpen}>
-            <CloseIconThin className="ds-c-usa-banner__button-icon" />
+            {/* <CloseIconThin className="ds-c-usa-banner__button-icon" /> */}
           </span>
         </button>
       </header>
@@ -89,7 +89,7 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
       <div className="ds-c-usa-banner__guidance [ ds-u-leading--base ds-u-font-size--base ]">
         <div id={id} className="ds-c-usa-banner__guidance-container" hidden={!isBannerOpen}>
           <div className="ds-c-usa-banner__guidance-item">
-            <BuildingCircleIcon className="ds-c-usa-banner__guidance-icon" />
+            {/* <BuildingCircleIcon className="ds-c-usa-banner__guidance-icon" /> */}
             <p className="ds-c-usa-banner__guidance-text">
               <strong>{t('usaBanner.domainHeaderText')}</strong>
               <br />
@@ -98,12 +98,12 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
             </p>
           </div>
           <div className="ds-c-usa-banner__guidance-item">
-            <LockCircleIcon className="ds-c-usa-banner__guidance-icon" />
+            {/* <LockCircleIcon className="ds-c-usa-banner__guidance-icon" /> */}
             <p className="ds-c-usa-banner__guidance-text">
               <strong>{t('usaBanner.httpsHeaderText')}</strong>
               <br />
               {t('usaBanner.httpsAText')} <strong> {t('usaBanner.httpsLockText')} </strong> (
-              <LockIcon className="ds-c-usa-banner__inline-lock-icon" />){' '}
+              {/* <LockIcon className="ds-c-usa-banner__inline-lock-icon" />){' '} */}
               {t('usaBanner.httpsOrText')} <strong>{t('usaBanner.httpsText')}</strong>{' '}
               {t('usaBanner.httpsDetailText')}
             </p>

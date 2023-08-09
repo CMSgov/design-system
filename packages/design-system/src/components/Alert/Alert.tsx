@@ -5,7 +5,7 @@ import mergeRefs from '../utilities/mergeRefs';
 import uniqueId from 'lodash/uniqueId';
 import useAutofocus from '../utilities/useAutoFocus';
 import useAlertAnalytics from './useAlertAnalytics';
-import { InfoCircleIcon, AlertCircleIcon, WarningIcon, CheckCircleIcon } from '../Icons';
+// import { InfoCircleIcon, AlertCircleIcon, WarningIcon, CheckCircleIcon } from '../Icons';
 import { t } from '../i18n';
 import { AnalyticsOverrideProps } from '../analytics';
 
@@ -126,16 +126,16 @@ export const Alert: React.FC<AlertProps> = (props: AlertProps) => {
       return null;
     }
 
-    switch (variation) {
-      case 'error':
-        return <AlertCircleIcon className={iconClass} />;
-      case 'success':
-        return <CheckCircleIcon className={iconClass} />;
-      case 'warn':
-        return <WarningIcon className={iconClass} />;
-      default:
-        return <InfoCircleIcon className={iconClass} />;
-    }
+    // switch (variation) {
+    //   case 'error':
+    //     return <AlertCircleIcon className={iconClass} />;
+    //   case 'success':
+    //     return <CheckCircleIcon className={iconClass} />;
+    //   case 'warn':
+    //     return <WarningIcon className={iconClass} />;
+    //   default:
+    //     return <InfoCircleIcon className={iconClass} />;
+    // }
   }
 
   return (

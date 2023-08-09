@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { Button } from '../Button';
 import { Dialog } from '../Dialog';
-import { ExternalLinkIcon } from '../Icons';
+// import { ExternalLinkIcon } from '../Icons';
 import { t } from '../i18n';
 import classNames from 'classnames';
 
@@ -43,7 +43,7 @@ const ThirdPartyExternalLink = ({
     <>
       <a className={classNames('ds-c-external-link', className)} onClick={open} href={href}>
         {children}
-        <ExternalLinkIcon className="ds-c-external-link__icon" />
+        {/* <ExternalLinkIcon className="ds-c-external-link__icon" /> */}
       </a>
       {showDialog && (
         <Dialog

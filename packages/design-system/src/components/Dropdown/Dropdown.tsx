@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import mergeRefs from '../utilities/mergeRefs';
 import useAutofocus from '../utilities/useAutoFocus';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
-import { SvgIcon } from '../Icons';
+// import { SvgIcon } from '../Icons';
 import { useSelect, UseSelectProps, UseSelectStateChangeOptions } from 'downshift';
 import { isOptGroupArray, parseChildren, validateProps } from './utils';
 import { uniqueId } from 'lodash';
@@ -288,13 +288,13 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
       >
         {selectedItem === item && (
           <span className="ds-c-dropdown__menu-item-selected-indicator">
-            <SvgIcon
+            {/* <SvgIcon
               title="selected option icon"
               viewBox="0 0 448 512"
               className="ds-u-font-size--sm"
             >
               {checkIcon}
-            </SvgIcon>
+            </SvgIcon> */}
           </span>
         )}
         {item.label}
@@ -310,13 +310,13 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
           {selectedItem?.label}
         </span>
         <span className="ds-c-dropdown__caret">
-          <SvgIcon
+          {/* <SvgIcon
             title="expanded indicator icon"
             viewBox="0 0 448 512"
             className="ds-u-font-size--sm"
           >
             {caretIcon}
-          </SvgIcon>
+          </SvgIcon> */}
         </span>
       </button>
       <div {...menuContainerProps} hidden={!isOpen}>
