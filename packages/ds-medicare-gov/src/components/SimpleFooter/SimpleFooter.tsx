@@ -5,7 +5,6 @@ import MedicaregovLogo from '../MedicaregovLogo/MedicaregovLogo';
 
 interface SimpleFooterProps {
   aboutMedicareLabel?: string;
-  medicareGlossaryLabel?: string;
   nondiscriminationLabel?: string;
   privacyPolicyLabel?: string;
   privacySettingLabel?: string;
@@ -24,7 +23,6 @@ interface SimpleFooterProps {
  */
 const SimpleFooter: FunctionComponent<SimpleFooterProps> = ({
   aboutMedicareLabel = 'About Medicare',
-  medicareGlossaryLabel = 'Medicare Glossary',
   nondiscriminationLabel = 'Nondiscrimination / Accessibility',
   privacyPolicyLabel = 'Privacy Policy',
   privacySettingLabel = 'Privacy Setting',
@@ -50,8 +48,6 @@ const SimpleFooter: FunctionComponent<SimpleFooterProps> = ({
       <div className="m-c-footer__linkRow">
         <div className="m-c-footer__links">
           <a href="https://www.medicare.gov/about-us">{aboutMedicareLabel}</a>
-          <span aria-hidden="true" className="m-c-footer__delimiter" />
-          <a href="https://www.medicare.gov/glossary/a">{medicareGlossaryLabel}</a>
         </div>
         <div>
           <a href="https://www.medicare.gov/about-us/accessibility-nondiscrimination-notice">
