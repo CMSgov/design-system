@@ -27,7 +27,7 @@ export * from './TextField';
 // export * from './Tooltip';
 // export * from './UsaBanner';
 // export * from './VerticalNav';
-export * from './Icons';
+// export * from './Icons';
 
 export * from './analytics';
 export * from './flags';
