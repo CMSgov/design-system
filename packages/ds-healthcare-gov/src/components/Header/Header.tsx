@@ -125,6 +125,11 @@ export interface HeaderProps {
    * Additional classes to be added to the Logo component
    */
   logoClassName?: string;
+  /**
+   * Temporary feature flag for showing or not showing the USA Banner above the
+   * header. Defaults to true
+   */
+  showUsaBanner?: boolean;
 }
 
 export const VARIATION_NAMES = {
@@ -205,7 +210,7 @@ export const Header = (props: HeaderProps) => {
 
   return (
     <>
-      <UsaBanner />
+      {props.showUsaBanner && <UsaBanner />}
       <header className={classes} role="banner" aria-label="global">
         <SkipNav href={props.skipNavHref} onClick={props.onSkipNavClick}>
           {t('header.skipNav')}
@@ -252,6 +257,7 @@ export const Header = (props: HeaderProps) => {
 };
 
 Header.defaultProps = {
+  showUsaBanner: true,
   skipNavHref: '#main',
 };
 
