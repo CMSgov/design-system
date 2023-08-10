@@ -15,9 +15,8 @@
   padding: var(--spacer-2);
 
   ul[role='list'] {
+    display: flex;
     flex-flow: row wrap;
-    margin: 0;
-    padding: 0;
     row-gap: var(--spacer-1);
   }
 
