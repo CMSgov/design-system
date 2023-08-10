@@ -35,18 +35,8 @@ module.exports = async ({ config }) => {
   // add SCSS support for CSS Modules
   config.module.rules.push(
     {
-      test: /\.svg$/i,
-      use: [
-        {
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]',
-            outputPath: 'images/',
-            publicPath: 'images/',
-          },
-        },
-        'url-loader',
-      ],
+      test: /\.svg/,
+      type: 'asset/resource',
     },
     {
       test: /\.(woff|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,

@@ -29,3 +29,4 @@
 // export * from './UsaLogo';
 // export * from './WarningIcon';
 // export * from './WhiteHouseLogo';
+export * from './Icon';
