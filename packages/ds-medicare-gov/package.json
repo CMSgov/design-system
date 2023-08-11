@@ -50,7 +50,7 @@
     "src"
   ],
   "dependencies": {
-    "@cmsgov/design-system": "7.0.4",
+    "@cmsgov/design-system": "7.0.5",
     "@types/react": "^18.2.6",
     "@types/react-dom": "^17.0.10"
   }
