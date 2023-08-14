@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { AddIcon, RemoveIcon } from '../Icons';
 import classNames from 'classnames';
-import uniqueId from 'lodash/uniqueId';
 import { t } from '../i18n';
+import useId from '../utilities/useId';
 
 export interface AccordionItemProps {
   /**
@@ -72,8 +72,8 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
   const buttonClasses = classNames('ds-c-accordion__button', buttonClassName);
   const HeadingTag = `h${headingLevel}` as const;
   const isControlled = !!onChange;
-  const contentId = id || uniqueId('accordionItem_');
-  const buttonId = `${contentId}-button`;
+  const contentId = useId('accordion-item--', id);
+  const buttonId = `${contentId}__button`;
   const [isOpen, setIsOpen] = useState(isControlled ? isControlledOpen : defaultOpen);
 
   // Set the state for opening and closing an accordion item
