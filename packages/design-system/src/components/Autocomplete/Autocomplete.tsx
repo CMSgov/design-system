@@ -19,10 +19,10 @@ import Button from '../Button/Button';
 import React, { useRef } from 'react';
 import TextField from '../TextField/TextField';
 import classNames from 'classnames';
-import uniqueId from 'lodash/uniqueId';
 import { errorPlacementDefault } from '../flags';
 import { t } from '../i18n';
 import createFilteredA11yStatusMessageFn from './createFilteredA11yStatusMessageFn';
+import useId from '../utilities/useId';
 
 export interface AutocompleteItem {
   /**
@@ -163,11 +163,11 @@ function isTextField(child: React.ReactElement): boolean {
  * [refer to its full documentation page](https://design.cms.gov/components/autocomplete/).
  */
 export const Autocomplete = (props: AutocompleteProps) => {
-  const id = useRef(props.id ?? uniqueId('autocomplete__input--')).current;
-  const labelId = useRef(props.labelId ?? uniqueId('autocomplete__label--')).current;
-  const menuId = useRef(uniqueId('autocomplete__menu--')).current;
-  const menuContainerId = useRef(uniqueId('autocomplete__menu-container--')).current;
-  const menuHeadingId = useRef(uniqueId('autocomplete__heading--')).current;
+  const id = useId('autocomplete--', props.id);
+  const labelId = props.labelId ?? `${id}__label`;
+  const menuId = `${id}__menu`;
+  const menuContainerId = `${id}__menu-container`;
+  const menuHeadingId = `${id}__heading`;
 
   const {
     ariaClearLabel,
