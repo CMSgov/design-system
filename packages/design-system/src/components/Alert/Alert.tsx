@@ -45,6 +45,10 @@ export interface BaseAlertProps extends AnalyticsOverrideProps {
    */
   hideIcon?: boolean;
   /**
+   * A unique ID for this element. A unique ID will be generated if one isn't provided.
+   */
+  id?: string;
+  /**
    * ARIA `role`, defaults to 'region'
    */
   role?: AlertRole;
@@ -68,7 +72,7 @@ export type AlertProps = BaseAlertProps &
 export const Alert: React.FC<AlertProps> = (props: AlertProps) => {
   const { headingRef, bodyRef } = useAlertAnalytics(props);
   const focusRef = useAutofocus(props.autoFocus);
-  const rootId = useId('alert--');
+  const rootId = useId('alert--', props.id);
   const headingId = props.headingId ?? `${rootId}__heading`;
   const a11yLabelId = `${rootId}__a11y-label`;
 
