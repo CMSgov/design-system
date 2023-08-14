@@ -43,11 +43,11 @@ export interface AccordionItemProps {
   /**
    * Icon to overwrite default close icon
    */
-  closeIcon?: React.ReactNode;
+  closeIconComponent?: React.ReactElement<any> | any | ((...args: any[]) => any);
   /**
    * Icon to overwrite default open icon
    */
-  openIcon?: React.ReactNode;
+  openIconComponent?: React.ReactElement<any> | any | ((...args: any[]) => any);
 }
 
 export interface AccordionItemState {
@@ -65,8 +65,8 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
   // TODO: Explore deprecating `isControlledOpen` in favor of `isOpen`
   isControlledOpen,
   onChange,
-  closeIcon,
-  openIcon,
+  closeIconComponent,
+  openIconComponent,
 }) => {
   const contentClasses = classNames('ds-c-accordion__content', contentClassName);
   const buttonClasses = classNames('ds-c-accordion__button', buttonClassName);
@@ -86,6 +86,25 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
   };
 
   const isItemOpen = isControlled ? isControlledOpen : isOpen;
+
+  const CloseIconComponent = closeIconComponent;
+  const OpenIconComponent = openIconComponent;
+  const closeIcon = (
+    <CloseIconComponent
+      className="ds-c-accordion__button-icon"
+      title={t('accordion.close')}
+      ariaHidden={false}
+      id={`${contentId}__icon`}
+    />
+  );
+  const openIcon = (
+    <OpenIconComponent
+      className="ds-c-accordion__button-icon"
+      title={t('accordion.open')}
+      ariaHidden={false}
+      id={`${contentId}__icon`}
+    />
+  );
 
   if (heading) {
     return (
@@ -119,20 +138,8 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
 AccordionItem.defaultProps = {
   defaultOpen: false,
   headingLevel: '2',
-  closeIcon: (
-    <RemoveIcon
-      className="ds-c-accordion__button-icon"
-      title={t('accordion.close')}
-      ariaHidden={false}
-    />
-  ),
-  openIcon: (
-    <AddIcon
-      className="ds-c-accordion__button-icon"
-      title={t('accordion.open')}
-      ariaHidden={false}
-    />
-  ),
+  closeIconComponent: RemoveIcon,
+  openIconComponent: AddIcon,
 };
 
 export default AccordionItem;
