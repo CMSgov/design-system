@@ -317,7 +317,6 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
       menuContent.push(renderItem(item, menuItemIndex++));
     }
   }
-  // console.log(items, optionsAndGroups, menuContent)
 
   return (
     <div {...wrapperProps}>
@@ -340,15 +339,6 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
         <ul {...menuProps} aria-labelledby={undefined}>
           {menuContent}
         </ul>
-        {/* <ul {...menuProps} aria-labelledby={undefined}>
-          <li role="group" aria-labelledby='bob'>
-            <div id="bob">Hello</div>
-            <ul role="presentation">
-            {menuContent}
-            </ul>
-          
-          </li>
-        </ul> */}
       </div>
       {bottomError}
     </div>
