@@ -157,6 +157,7 @@ exports[`ActionMenu logged-out version renders logged-out version 1`] = `
 <DocumentFragment>
   <ul
     class="hc-c-logged-out-links ds-c-list--bare ds-u-display--none ds-u-sm-display--flex"
+    role="list"
   >
     <li
       class="hc-c-logged-out-links__li"
