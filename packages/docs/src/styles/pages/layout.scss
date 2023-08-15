@@ -2,6 +2,10 @@ body {
   margin: 0;
 }
 
+.ds-c-usa-banner__header {
+  --usa-banner__max-width: initial;
+}
+
 .full-height {
   // viewport height minus the USA banner at the top
   height: calc(100vh - 22px);
