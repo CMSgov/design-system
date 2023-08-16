@@ -147,8 +147,8 @@ describe('Dropdown', () => {
       </Dropdown>
     );
     userEvent.click(screen.getByRole('combobox'));
+    expect(screen.getAllByRole('option').length).toEqual(6);
     const list = screen.getByRole('listbox');
-    expect(list.children.length).toEqual(8); // Group headings + options
     expect(list).toMatchSnapshot();
   });
 
@@ -174,7 +174,9 @@ describe('Dropdown', () => {
     render(<Dropdown {...defaultProps} options={options} />);
     userEvent.click(screen.getByRole('combobox'));
     const list = screen.getByRole('listbox');
-    expect(list.children.length).toEqual(8); // Group headings + options
+    expect(list.children.length).toEqual(2); // Groups
+    const items = screen.getAllByRole('option');
+    expect(items.length).toEqual(6);
   });
 
   it('accepts option children', () => {
