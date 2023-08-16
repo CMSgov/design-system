@@ -32,6 +32,7 @@ const dropdownOptions = [
 
 const htmlOptGroups = (
   <>
+    <option value="">- Select an option -</option>
     <optgroup label="Group A">
       <option value="a-1">Option A-1</option>
       <option value="a-2">Option A-2</option>
