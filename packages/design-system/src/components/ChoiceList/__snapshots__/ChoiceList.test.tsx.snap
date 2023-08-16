@@ -11,14 +11,14 @@ exports[`ChoiceList Radio buttons and Checkboxes allows for modification of aria
   >
     <input
       class="ds-c-choice"
-      id="radio_spec-field_18"
+      id="choice--18"
       name="spec-field"
       type="radio"
       value="2"
     />
     <label
       class="ds-c-label"
-      for="radio_spec-field_18"
+      for="choice--18"
     >
       <span
         class=""
@@ -57,14 +57,14 @@ exports[`ChoiceList Radio buttons and Checkboxes applies correct aria attributes
         <input
           checked=""
           class="ds-c-choice"
-          id="radio_spec-field_22"
+          id="choice--22"
           name="spec-field"
           type="radio"
           value="1"
         />
         <label
           class="ds-c-label"
-          for="radio_spec-field_22"
+          for="choice--22"
         >
           <span
             class=""
@@ -88,14 +88,14 @@ exports[`ChoiceList Radio buttons and Checkboxes applies correct aria attributes
         <input
           checked=""
           class="ds-c-choice"
-          id="radio_spec-field_23"
+          id="choice--23"
           name="spec-field"
           type="radio"
           value="2"
         />
         <label
           class="ds-c-label"
-          for="radio_spec-field_23"
+          for="choice--23"
         >
           <span
             class=""
@@ -134,14 +134,14 @@ exports[`ChoiceList Radio buttons and Checkboxes is a radio button group 1`] = `
       >
         <input
           class="ds-c-choice"
-          id="radio_spec-field_2"
+          id="choice--2"
           name="spec-field"
           type="radio"
           value="1"
         />
         <label
           class="ds-c-label"
-          for="radio_spec-field_2"
+          for="choice--2"
         >
           <span
             class=""
@@ -157,14 +157,14 @@ exports[`ChoiceList Radio buttons and Checkboxes is a radio button group 1`] = `
       >
         <input
           class="ds-c-choice"
-          id="radio_spec-field_3"
+          id="choice--3"
           name="spec-field"
           type="radio"
           value="2"
         />
         <label
           class="ds-c-label"
-          for="radio_spec-field_3"
+          for="choice--3"
         >
           <span
             class=""

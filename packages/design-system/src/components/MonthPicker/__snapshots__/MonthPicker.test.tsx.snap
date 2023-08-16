@@ -51,14 +51,14 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <input
                 aria-label="January"
                 class="ds-c-choice"
-                id="checkbox_months_2"
+                id="choice--2"
                 name="months"
                 type="checkbox"
                 value="1"
               />
               <label
                 class="ds-c-label"
-                for="checkbox_months_2"
+                for="choice--2"
               >
                 <span
                   class=""
@@ -79,14 +79,14 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <input
                 aria-label="February"
                 class="ds-c-choice"
-                id="checkbox_months_3"
+                id="choice--3"
                 name="months"
                 type="checkbox"
                 value="2"
               />
               <label
                 class="ds-c-label"
-                for="checkbox_months_3"
+                for="choice--3"
               >
                 <span
                   class=""
@@ -107,14 +107,14 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <input
                 aria-label="March"
                 class="ds-c-choice"
-                id="checkbox_months_4"
+                id="choice--4"
                 name="months"
                 type="checkbox"
                 value="3"
               />
               <label
                 class="ds-c-label"
-                for="checkbox_months_4"
+                for="choice--4"
               >
                 <span
                   class=""
@@ -135,14 +135,14 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <input
                 aria-label="April"
                 class="ds-c-choice"
-                id="checkbox_months_5"
+                id="choice--5"
                 name="months"
                 type="checkbox"
                 value="4"
               />
               <label
                 class="ds-c-label"
-                for="checkbox_months_5"
+                for="choice--5"
               >
                 <span
                   class=""
@@ -163,14 +163,14 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <input
                 aria-label="May"
                 class="ds-c-choice"
-                id="checkbox_months_6"
+                id="choice--6"
                 name="months"
                 type="checkbox"
                 value="5"
               />
               <label
                 class="ds-c-label"
-                for="checkbox_months_6"
+                for="choice--6"
               >
                 <span
                   class=""
@@ -191,14 +191,14 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <input
                 aria-label="June"
                 class="ds-c-choice"
-                id="checkbox_months_7"
+                id="choice--7"
                 name="months"
                 type="checkbox"
                 value="6"
               />
               <label
                 class="ds-c-label"
-                for="checkbox_months_7"
+                for="choice--7"
               >
                 <span
                   class=""
@@ -219,14 +219,14 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <input
                 aria-label="July"
                 class="ds-c-choice"
-                id="checkbox_months_8"
+                id="choice--8"
                 name="months"
                 type="checkbox"
                 value="7"
               />
               <label
                 class="ds-c-label"
-                for="checkbox_months_8"
+                for="choice--8"
               >
                 <span
                   class=""
@@ -247,14 +247,14 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <input
                 aria-label="August"
                 class="ds-c-choice"
-                id="checkbox_months_9"
+                id="choice--9"
                 name="months"
                 type="checkbox"
                 value="8"
               />
               <label
                 class="ds-c-label"
-                for="checkbox_months_9"
+                for="choice--9"
               >
                 <span
                   class=""
@@ -275,14 +275,14 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <input
                 aria-label="September"
                 class="ds-c-choice"
-                id="checkbox_months_10"
+                id="choice--10"
                 name="months"
                 type="checkbox"
                 value="9"
               />
               <label
                 class="ds-c-label"
-                for="checkbox_months_10"
+                for="choice--10"
               >
                 <span
                   class=""
@@ -303,14 +303,14 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <input
                 aria-label="October"
                 class="ds-c-choice"
-                id="checkbox_months_11"
+                id="choice--11"
                 name="months"
                 type="checkbox"
                 value="10"
               />
               <label
                 class="ds-c-label"
-                for="checkbox_months_11"
+                for="choice--11"
               >
                 <span
                   class=""
@@ -331,14 +331,14 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <input
                 aria-label="November"
                 class="ds-c-choice"
-                id="checkbox_months_12"
+                id="choice--12"
                 name="months"
                 type="checkbox"
                 value="11"
               />
               <label
                 class="ds-c-label"
-                for="checkbox_months_12"
+                for="choice--12"
               >
                 <span
                   class=""
@@ -359,14 +359,14 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <input
                 aria-label="December"
                 class="ds-c-choice"
-                id="checkbox_months_13"
+                id="choice--13"
                 name="months"
                 type="checkbox"
                 value="12"
               />
               <label
                 class="ds-c-label"
-                for="checkbox_months_13"
+                for="choice--13"
               >
                 <span
                   class=""

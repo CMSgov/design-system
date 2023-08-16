@@ -3,12 +3,13 @@
 exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external link dialog 1`] = `
 <dialog
   class="ds-c-dialog"
+  id="dialog--6"
   open=""
   role="dialog"
   style="z-index: 100149; top: 384px;"
 >
   <div
-    aria-labelledby="dialog-title_6"
+    aria-labelledby="dialog--6__heading"
     role="document"
     tabindex="-1"
   >
@@ -17,7 +18,7 @@ exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external l
     >
       <h1
         class="ds-h2"
-        id="dialog-title_6"
+        id="dialog--6__heading"
       >
         You are leaving bar.
       </h1>
@@ -30,7 +31,7 @@ exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external l
           aria-hidden="true"
           class="ds-c-icon ds-c-icon--close "
           focusable="false"
-          id="icon-7"
+          id="dialog--6__close-icon"
           viewBox="0 0 16 16"
           xmlns="http://www.w3.org/2000/svg"
         >
