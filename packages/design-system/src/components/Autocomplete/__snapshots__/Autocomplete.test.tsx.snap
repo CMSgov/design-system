@@ -48,7 +48,7 @@ exports[`Autocomplete renders Autocomplete component 1`] = `
       <li
         aria-selected="false"
         class="ds-c-autocomplete__menu-item"
-        id="downshift-0-item-0"
+        id="static-id__item--0"
         role="option"
       >
         Cook County, IL
@@ -70,7 +70,7 @@ Array [
   <li
     aria-selected="false"
     class="ds-c-autocomplete__menu-item"
-    id="downshift-4-item-0"
+    id="static-id__item--0"
     role="option"
   >
     Normal item
@@ -78,7 +78,7 @@ Array [
   <li
     aria-selected="false"
     class="custom-class ds-c-autocomplete__menu-item"
-    id="downshift-4-item-1"
+    id="static-id__item--1"
     role="option"
   >
     Special item
@@ -96,7 +96,7 @@ exports[`Autocomplete renders items with children property 1`] = `
   <li
     aria-selected="false"
     class="ds-c-autocomplete__menu-item"
-    id="downshift-2-item-0"
+    id="static-id__item--0"
     role="option"
   >
     Carrots 
@@ -107,7 +107,7 @@ exports[`Autocomplete renders items with children property 1`] = `
   <li
     aria-selected="false"
     class="ds-c-autocomplete__menu-item"
-    id="downshift-2-item-1"
+    id="static-id__item--1"
     role="option"
   >
     Cookies 
@@ -118,7 +118,7 @@ exports[`Autocomplete renders items with children property 1`] = `
   <li
     aria-selected="false"
     class="ds-c-autocomplete__menu-item"
-    id="downshift-2-item-2"
+    id="static-id__item--2"
     role="option"
   >
     Crackers 
@@ -129,7 +129,7 @@ exports[`Autocomplete renders items with children property 1`] = `
   <li
     aria-selected="false"
     class="ds-c-autocomplete__menu-item"
-    id="downshift-2-item-3"
+    id="static-id__item--3"
     role="option"
   >
     <a

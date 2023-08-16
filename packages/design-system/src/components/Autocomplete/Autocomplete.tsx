@@ -227,7 +227,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
           })}
           key={item.id}
           role="option"
-          {...getItemProps({ item })}
+          {...getItemProps({ item, id: `${id}__item--${index}` })}
         >
           {item.children ?? props.itemToString(item)}
         </li>
