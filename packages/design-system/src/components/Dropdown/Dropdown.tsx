@@ -257,7 +257,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
 
   const renderItem = (item: DropdownOption, index: number) => {
     const { value, label, className, ...extraAttrs } = item;
-    const isSelected = selectedItem.value === item.value;
+    const isSelected = selectedItem?.value === item.value;
     return (
       <li
         key={value}
