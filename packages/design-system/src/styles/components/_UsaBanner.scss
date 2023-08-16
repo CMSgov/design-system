@@ -32,22 +32,24 @@
 .ds-c-usa-banner__header {
   // Applying display:grid to account for flag icon alignment with text elements in mobile/table viewports
   display: grid;
-  gap: 0.5ch 1ch;
+  gap: 2px 1ch;
   grid-template-areas:
     'icon text'
-    'icon action';
+    'spacer action';
   grid-template-columns: 1.5em auto;
+  grid-template-rows: min-content min-content;
   line-height: var(--heading__line-height);
   min-height: 3rem;
-  padding-block: 0.25rem;
+  padding-block: 0.5rem;
   position: relative;
 
   // Need to target viewport 1px larger than $media-width-md to ensure the layout is correct on the breakpoint
-  @media (max-width: ($media-width-sm + 1)) {
+  @media (max-width: ($media-width-md + 1)) {
     &.ds-c-usa-banner__header--expanded {
       // Additional padding needed to accommodate close button in expanded state
+      // Padding is .ds-c-usa-banner__button-icon-container's width + .25rem for "gutter" between content and button
       // Button is only visible in mobile/tablet viewports
-      padding-inline-end: 3.5rem;
+      padding-inline-end: 3.25rem;
     }
   }
 
@@ -107,6 +109,7 @@
 
   @media (min-width: $media-width-md) {
     display: inline-block;
+    grid-area: action;
     height: fit-content;
     line-height: 1.1;
     padding: 0;
