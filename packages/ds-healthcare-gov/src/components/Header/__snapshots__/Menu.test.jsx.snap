@@ -8,6 +8,7 @@ exports[`Menu removes hidden state 1`] = `
   >
     <ul
       class="hc-c-menu__links ds-c-list ds-c-list--bare"
+      role="list"
     >
       <li
         class="ds-u-margin--0 "
@@ -43,6 +44,7 @@ exports[`Menu renders MenuList 1`] = `
   >
     <ul
       class="hc-c-menu__links ds-c-list ds-c-list--bare"
+      role="list"
     >
       <li
         class="ds-u-margin--0 "
