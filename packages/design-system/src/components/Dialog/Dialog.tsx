@@ -58,7 +58,7 @@ export interface BaseDialogProps extends AnalyticsOverrideProps {
   /**
    * The icon to display as part of the close button
    */
-  closeIcon?: React.ReactNode;
+  closeIconComponent?: React.ReactElement<any> | any | ((...args: any[]) => any);
   /**
    * Additional classes to be added to the header, which wraps the heading and
    * close button.
@@ -111,7 +111,7 @@ export const Dialog = (props: DialogProps) => {
     closeButtonSize,
     closeButtonText,
     closeButtonVariation,
-    closeIcon,
+    closeIconComponent,
     headerClassName,
     heading,
     id,
@@ -124,12 +124,15 @@ export const Dialog = (props: DialogProps) => {
   const rootId = useId('dialog--', id);
   const headingRef = useDialogAnalytics(props);
   const headingId = `${rootId}__heading`;
+  const closeIconId = `${rootId}__close-icon`;
 
   const dialogClassNames = classNames('ds-c-dialog', className, size && `ds-c-dialog--${size}`);
   const headerClassNames = classNames('ds-c-dialog__header', headerClassName);
   const actionsClassNames = classNames('ds-c-dialog__actions', actionsClassName);
 
   const containerRef = useRef<HTMLDivElement>();
+
+  const CloseIconComponent = closeIconComponent;
 
   useEffect(() => {
     if (onEnter) onEnter();
@@ -173,7 +176,7 @@ export const Dialog = (props: DialogProps) => {
             size={closeButtonSize}
             variation={closeButtonVariation}
           >
-            {closeIcon}
+            <CloseIconComponent id={closeIconId} />
             {closeButtonText ?? t('dialog.closeButtonText')}
           </Button>
         </header>
@@ -188,7 +191,7 @@ export const Dialog = (props: DialogProps) => {
 
 Dialog.defaultProps = {
   closeButtonVariation: 'ghost',
-  closeIcon: <CloseIcon />,
+  closeIconComponent: CloseIcon,
 };
 
 export default Dialog;

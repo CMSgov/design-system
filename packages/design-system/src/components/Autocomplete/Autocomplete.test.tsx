@@ -77,8 +77,8 @@ describe('Autocomplete', () => {
   it('generates ids when no id is provided', () => {
     makeAutocomplete({ isOpen: true, id: undefined });
     const idRegex = /autocomplete--\d+/;
-    expect(screen.getByRole('listbox').id.match(idRegex)).toBeTruthy();
-    expect(screen.getByRole('combobox').id.match(idRegex)).toBeTruthy();
+    expect(screen.getByRole('listbox').id).toMatch(idRegex);
+    expect(screen.getByRole('combobox').id).toMatch(idRegex);
   });
 
   it('renders item with custom className', () => {
