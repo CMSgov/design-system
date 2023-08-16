@@ -9,8 +9,8 @@ exports[`Autocomplete renders Autocomplete component 1`] = `
   >
     <label
       class="ds-c-label"
-      for="autocomplete__input--1"
-      id="autocomplete__label--2"
+      for="static-id"
+      id="static-id__label"
     >
       <span
         class=""
@@ -21,13 +21,13 @@ exports[`Autocomplete renders Autocomplete component 1`] = `
     <input
       aria-activedescendant=""
       aria-autocomplete="list"
-      aria-controls="autocomplete__menu--3"
+      aria-controls="static-id__menu"
       aria-expanded="false"
       aria-invalid="false"
-      aria-labelledby="autocomplete__label--2"
+      aria-labelledby="static-id__label"
       autocomplete="off"
       class="ds-c-field"
-      id="autocomplete__input--1"
+      id="static-id"
       name="autocomplete_field"
       role="combobox"
       type="text"
@@ -37,12 +37,12 @@ exports[`Autocomplete renders Autocomplete component 1`] = `
   <div
     class="ds-c-autocomplete__menu-container"
     hidden=""
-    id="autocomplete__menu-container--4"
+    id="static-id__menu-container"
   >
     <ul
-      aria-labelledby="autocomplete__label--2"
+      aria-labelledby="static-id__label"
       class="ds-c-autocomplete__menu"
-      id="autocomplete__menu--3"
+      id="static-id__menu"
       role="listbox"
     >
       <li
@@ -70,7 +70,7 @@ Array [
   <li
     aria-selected="false"
     class="ds-c-autocomplete__menu-item"
-    id="downshift-3-item-0"
+    id="downshift-4-item-0"
     role="option"
   >
     Normal item
@@ -78,7 +78,7 @@ Array [
   <li
     aria-selected="false"
     class="custom-class ds-c-autocomplete__menu-item"
-    id="downshift-3-item-1"
+    id="downshift-4-item-1"
     role="option"
   >
     Special item
@@ -88,9 +88,9 @@ Array [
 
 exports[`Autocomplete renders items with children property 1`] = `
 <ul
-  aria-labelledby="autocomplete__label--14"
+  aria-labelledby="static-id__label"
   class="ds-c-autocomplete__menu"
-  id="autocomplete__menu--15"
+  id="static-id__menu"
   role="listbox"
 >
   <li

@@ -10,6 +10,7 @@ function makeAutocomplete(customProps = {}) {
   const props = {
     items: defaultItems,
     children: <TextField label="autocomplete" name="autocomplete_field" />,
+    id: 'static-id',
     ...customProps,
   };
   return render(<Autocomplete {...props} />);
@@ -71,6 +72,13 @@ describe('Autocomplete', () => {
     makeAutocomplete({ items, isOpen: true });
     const ul = screen.getByRole('listbox');
     expect(ul).toMatchSnapshot();
+  });
+
+  it('generates ids when no id is provided', () => {
+    makeAutocomplete({ isOpen: true, id: undefined });
+    const idRegex = /autocomplete--\d+/;
+    expect(screen.getByRole('listbox').id.match(idRegex)).toBeTruthy();
+    expect(screen.getByRole('combobox').id.match(idRegex)).toBeTruthy();
   });
 
   it('renders item with custom className', () => {
