@@ -4,7 +4,7 @@ exports[`Date Label mask renders default mask, MM/DD/YYYY, when no input value s
 <DocumentFragment>
   <div
     class="ds-c-label-mask"
-    id="label-mask--1"
+    id="static-id__label-mask"
   >
     <span
       class=""
@@ -19,7 +19,8 @@ exports[`Date Label mask renders default mask, MM/DD/YYYY, when no input value s
     </span>
   </div>
   <input
-    aria-describedby="label-mask--1"
+    aria-describedby="static-id__label-mask"
+    id="static-id"
     inputmode="numeric"
     type="text"
     value=""
@@ -31,7 +32,7 @@ exports[`Phone Number Label mask renders default mask, ###-###-####, when no inp
 <DocumentFragment>
   <div
     class="ds-c-label-mask"
-    id="label-mask--101"
+    id="static-id__label-mask"
   >
     <span
       class=""
@@ -46,7 +47,8 @@ exports[`Phone Number Label mask renders default mask, ###-###-####, when no inp
     </span>
   </div>
   <input
-    aria-describedby="label-mask--101"
+    aria-describedby="static-id__label-mask"
+    id="static-id"
     inputmode="numeric"
     type="text"
     value=""
@@ -58,7 +60,7 @@ exports[`Social Security Number Label mask renders default mask, ###-##-####, wh
 <DocumentFragment>
   <div
     class="ds-c-label-mask"
-    id="label-mask--48"
+    id="static-id__label-mask"
   >
     <span
       class=""
@@ -73,7 +75,8 @@ exports[`Social Security Number Label mask renders default mask, ###-##-####, wh
     </span>
   </div>
   <input
-    aria-describedby="label-mask--48"
+    aria-describedby="static-id__label-mask"
+    id="static-id"
     inputmode="numeric"
     type="text"
     value=""
@@ -85,7 +88,7 @@ exports[`US Currency Label mask renders default mask, $, when no input value set
 <DocumentFragment>
   <div
     class="ds-c-label-mask"
-    id="label-mask--192"
+    id="static-id__label-mask"
   >
     <span
       class=""
@@ -100,7 +103,8 @@ exports[`US Currency Label mask renders default mask, $, when no input value set
     </span>
   </div>
   <input
-    aria-describedby="label-mask--192"
+    aria-describedby="static-id__label-mask"
+    id="static-id"
     inputmode="numeric"
     type="text"
     value=""
@@ -112,7 +116,7 @@ exports[`US Zip Code Label mask renders default mask, #####, when no input value
 <DocumentFragment>
   <div
     class="ds-c-label-mask"
-    id="label-mask--158"
+    id="static-id__label-mask"
   >
     <span
       class=""
@@ -127,7 +131,8 @@ exports[`US Zip Code Label mask renders default mask, #####, when no input value
     </span>
   </div>
   <input
-    aria-describedby="label-mask--158"
+    aria-describedby="static-id__label-mask"
+    id="static-id"
     inputmode="numeric"
     type="text"
     value=""
