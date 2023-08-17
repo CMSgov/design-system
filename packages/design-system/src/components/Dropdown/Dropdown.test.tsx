@@ -6,6 +6,7 @@ import Dropdown from './Dropdown';
 const defaultProps = {
   name: 'dropdown',
   label: 'Select an option',
+  id: 'static-id',
   onBlur: jest.fn(),
   onChange: jest.fn((e) => {
     e.stopPropagation();

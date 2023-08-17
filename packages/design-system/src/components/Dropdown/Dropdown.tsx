@@ -1,4 +1,4 @@
-import React, { useMemo, useRef } from 'react';
+import React, { useMemo } from 'react';
 import classNames from 'classnames';
 import mergeRefs from '../utilities/mergeRefs';
 import useAutofocus from '../utilities/useAutoFocus';
@@ -6,8 +6,8 @@ import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 import { SvgIcon } from '../Icons';
 import { useSelect, UseSelectProps, UseSelectStateChangeOptions } from 'downshift';
 import { isOptGroup, parseChildren, validateProps } from './utils';
-import { uniqueId } from 'lodash';
 import useHighlightStatusMessageFn from './useHighlightStatusMessageFn';
+import useId from '../utilities/useId';
 
 export type DropdownSize = 'small' | 'medium';
 export type DropdownValue = number | string;
@@ -116,10 +116,12 @@ export type DropdownProps = BaseDropdownProps &
 export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   validateProps(props);
 
-  const id = useRef(props.id ?? uniqueId('dropdown__button--')).current;
-  const labelId = useRef(props.labelId ?? uniqueId('dropdown__label--')).current;
-  const buttonContentId = useRef(uniqueId('dropdown__button-content--')).current;
-  const menuId = useRef(uniqueId('dropdown__menu--')).current;
+  const id = useId('dropdown__button--', props.id);
+  const labelId = props.labelId ?? `${id}__label`;
+  const buttonContentId = `${id}__button-content`;
+  const menuId = `${id}__menu`;
+  const caretIconId = `${id}__caret-icon`;
+  const selectedIconId = `${id}__selected-icon`;
 
   // Draw out certain props that we don't want to pass through as attributes
   const {
@@ -272,6 +274,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
           item,
           index,
           role: 'option',
+          id: `${id}__item--${index}`,
         })}
       >
         {isSelected && (
@@ -280,6 +283,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
               title="selected option icon"
               viewBox="0 0 448 512"
               className="ds-u-font-size--sm"
+              id={selectedIconId}
             >
               {checkIcon}
             </SvgIcon>
@@ -330,6 +334,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
             title="expanded indicator icon"
             viewBox="0 0 448 512"
             className="ds-u-font-size--sm"
+            id={caretIconId}
           >
             {caretIcon}
           </SvgIcon>
