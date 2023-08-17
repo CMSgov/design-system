@@ -120,8 +120,10 @@ export const ChoiceList: React.FC<ChoiceListProps> = (props: ChoiceListProps) =>
     id: useId('choice-list--', id),
   });
 
-  const choiceItems = choices.map((choiceProps) => {
+  const choiceItems = choices.map((choiceProps, index) => {
     const completeChoiceProps: ChoiceComponentProps = {
+      // Allow this to be overridden by the choiceProps
+      id: `${id}__choice--${index}`,
       ...choiceProps,
       inversed: props.inversed,
       name: props.name,
