@@ -3,6 +3,7 @@ title: Background Color
 ---
 
 import { Alert } from '@cmsgov/design-system';
+import ColorContrastGuidelines from '../../src/reusable-text-snippets/ColorContrastGuidelines.mdx';
 
 Use the background color utility to change the default background color of an element.
 
@@ -68,20 +69,14 @@ Use the background color utility to change the default background color of an el
     'gray',
     'gray-dark',
     'base',
-   'black',
+    'black',
   ]}
- preface=".ds-u-fill--"
+  preface=".ds-u-fill--"
 />
 
 ## Background Colors
 
-<ColorExampleList
-  colorNames={[
-    'background',
-    'background-inverse',
-  ]}
-  preface=".ds-u-fill--"
-/>
+<ColorExampleList colorNames={['background', 'background-inverse']} preface=".ds-u-fill--" />
 
 ## Status colors
 
@@ -116,6 +111,7 @@ Use the background color utility to change the default background color of an el
 />
 
 ### Warn
+
 <ColorExampleList
   colorNames={[
     'warn-lightest',
@@ -130,6 +126,7 @@ Use the background color utility to change the default background color of an el
 />
 
 ### Error
+
 <ColorExampleList
   colorNames={[
     'error-lightest',
@@ -150,3 +147,5 @@ Use the background color utility to change the default background color of an el
 ## Additional Colors
 
 <ColorExampleList colorNames={['muted-inverse', 'transparent']} preface=".ds-u-fill--" />
+
+<ColorContrastGuidelines />
