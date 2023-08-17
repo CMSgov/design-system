@@ -316,7 +316,7 @@ exports[`Dropdown supports bottom placed error 1`] = `
         aria-hidden="true"
         class="ds-c-icon ds-c-icon--alert-circle "
         focusable="false"
-        id="icon-10"
+        id="1_error__icon"
         viewBox="36 -12 186 186"
         xmlns="http://www.w3.org/2000/svg"
       >

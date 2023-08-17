@@ -11,6 +11,7 @@ import { DATE_MASK } from '../TextField/useLabelMask';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 import { TextInput } from '../TextField';
 import { t } from '../i18n';
+import useId from '../utilities/useId';
 
 export interface SingleInputDateFieldProps extends FormFieldProps {
   /**
@@ -95,6 +96,7 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
     toDate,
     toMonth,
     toYear,
+    id,
     ...remainingProps
   } = props;
   const withPicker =
@@ -124,6 +126,7 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
     ),
     labelComponent: 'label',
     wrapperIsFieldset: false,
+    id: useId('date-field--', id),
   });
   const inputRef = useRef<HTMLInputElement>();
   const { labelMask, inputProps } = useLabelMask(DATE_MASK, {

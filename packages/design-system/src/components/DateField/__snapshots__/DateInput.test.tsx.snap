@@ -10,8 +10,8 @@ exports[`DateInput renders with all defaultProps 1`] = `
     >
       <label
         class="ds-c-label ds-c-datefield__label"
-        for="field_1"
-        id="field_1-label"
+        for="text-field--1"
+        id="text-field--1__label"
       >
         <span
           class=""
@@ -23,7 +23,7 @@ exports[`DateInput renders with all defaultProps 1`] = `
         aria-describedby="1"
         aria-invalid="false"
         class="ds-c-field ds-c-field--month"
-        id="field_1"
+        id="text-field--1"
         inputmode="numeric"
         maxlength="2"
         name="month"
@@ -42,8 +42,8 @@ exports[`DateInput renders with all defaultProps 1`] = `
     >
       <label
         class="ds-c-label ds-c-datefield__label"
-        for="field_2"
-        id="field_2-label"
+        for="text-field--2"
+        id="text-field--2__label"
       >
         <span
           class=""
@@ -55,7 +55,7 @@ exports[`DateInput renders with all defaultProps 1`] = `
         aria-describedby="1"
         aria-invalid="false"
         class="ds-c-field ds-c-field--day"
-        id="field_2"
+        id="text-field--2"
         inputmode="numeric"
         maxlength="2"
         name="day"
@@ -74,8 +74,8 @@ exports[`DateInput renders with all defaultProps 1`] = `
     >
       <label
         class="ds-c-label ds-c-datefield__label"
-        for="field_3"
-        id="field_3-label"
+        for="text-field--3"
+        id="text-field--3__label"
       >
         <span
           class=""
@@ -87,7 +87,7 @@ exports[`DateInput renders with all defaultProps 1`] = `
         aria-describedby="1"
         aria-invalid="false"
         class="ds-c-field ds-c-field--year"
-        id="field_3"
+        id="text-field--3"
         inputmode="numeric"
         maxlength="4"
         name="Year"

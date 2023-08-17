@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
 import { TextInputProps } from './TextInput';
+import useId from '../utilities/useId';
 
 export type MaskFunction = (rawInput: string, valueOnly?: boolean) => string;
 
@@ -128,7 +129,8 @@ export const CURRENCY_MASK = makeMask(RE_CURRENCY, '$', (match) => {
 
 export function useLabelMask(maskFn: MaskFunction, originalInputProps: TextInputProps) {
   // TODO: Once we're on React 18, we can use the `useId` hook
-  const labelMaskId = useRef(uniqueId('labelmask_')).current;
+  const generatedId = useId('label-mask--');
+  const labelMaskId = originalInputProps.id ? `${originalInputProps.id}__label-mask` : generatedId;
   const [focused, setFocused] = useState(false);
   const { onFocus, onBlur, onChange } = originalInputProps;
   const value =

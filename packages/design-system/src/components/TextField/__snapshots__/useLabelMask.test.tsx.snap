@@ -4,7 +4,7 @@ exports[`useLabelMask renders the appropriate dom for a CURRENCY_MASK 1`] = `
 <DocumentFragment>
   <div
     class="ds-c-label-mask"
-    id="labelmask_9"
+    id="label-mask--9"
   >
     <span
       class=""
@@ -25,7 +25,7 @@ exports[`useLabelMask renders the appropriate dom for a PHONE_MASK 1`] = `
 <DocumentFragment>
   <div
     class="ds-c-label-mask"
-    id="labelmask_6"
+    id="label-mask--6"
   >
     <span
       class=""
@@ -46,7 +46,7 @@ exports[`useLabelMask renders the appropriate dom for a SSN_MASK 1`] = `
 <DocumentFragment>
   <div
     class="ds-c-label-mask"
-    id="labelmask_8"
+    id="label-mask--8"
   >
     <span
       class=""
@@ -67,7 +67,7 @@ exports[`useLabelMask renders the appropriate dom for a ZIP_MASK 1`] = `
 <DocumentFragment>
   <div
     class="ds-c-label-mask"
-    id="labelmask_7"
+    id="label-mask--7"
   >
     <span
       class=""
@@ -88,7 +88,7 @@ exports[`useLabelMask returns labelMask and input elements 1`] = `
 <DocumentFragment>
   <div
     class="ds-c-label-mask"
-    id="labelmask_1"
+    id="label-mask--1"
   >
     <span
       class=""
@@ -108,7 +108,7 @@ exports[`useLabelMask returns labelMask and input elements 1`] = `
 exports[`useLabelMask returns labelMask and input elements 2`] = `
 <DocumentFragment>
   <input
-    aria-describedby="labelmask_1"
+    aria-describedby="label-mask--1"
     inputmode="numeric"
     type="text"
     value=""
@@ -120,7 +120,7 @@ exports[`useLabelMask shows masked value when focused 1`] = `
 <DocumentFragment>
   <div
     class="ds-c-label-mask"
-    id="labelmask_2"
+    id="label-mask--2"
   >
     <span
       class="ds-u-visibility--screen-reader"
@@ -141,7 +141,7 @@ exports[`useLabelMask shows unfilled mask when not focused 1`] = `
 <DocumentFragment>
   <div
     class="ds-c-label-mask"
-    id="labelmask_4"
+    id="label-mask--4"
   >
     <span
       class=""

@@ -75,7 +75,7 @@ Object {
               >
                 <legend
                   class="ds-c-label"
-                  id="field_2-label"
+                  id="choice-list--2__label"
                 >
                   <span
                     class=""
@@ -168,7 +168,7 @@ Object {
               >
                 <legend
                   class="ds-c-label"
-                  id="field_5-label"
+                  id="choice-list--5__label"
                 >
                   <span
                     class=""
@@ -261,7 +261,7 @@ Object {
               >
                 <legend
                   class="ds-c-label"
-                  id="field_8-label"
+                  id="choice-list--8__label"
                 >
                   <span
                     class=""
@@ -398,7 +398,7 @@ Object {
             >
               <legend
                 class="ds-c-label"
-                id="field_2-label"
+                id="choice-list--2__label"
               >
                 <span
                   class=""
@@ -491,7 +491,7 @@ Object {
             >
               <legend
                 class="ds-c-label"
-                id="field_5-label"
+                id="choice-list--5__label"
               >
                 <span
                   class=""
@@ -584,7 +584,7 @@ Object {
             >
               <legend
                 class="ds-c-label"
-                id="field_8-label"
+                id="choice-list--8__label"
               >
                 <span
                   class=""
