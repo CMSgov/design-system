@@ -151,7 +151,6 @@ export function MultiInputDateField(props: DateFieldProps): React.ReactElement {
     id,
   });
 
-  delete fieldProps.id;
   delete fieldProps.errorId;
 
   return (

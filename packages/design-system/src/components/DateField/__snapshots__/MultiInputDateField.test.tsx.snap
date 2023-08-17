@@ -29,8 +29,8 @@ exports[`MultiInputDateField renders 1`] = `
       >
         <label
           class="ds-c-label ds-c-datefield__label"
-          for="text-field--snapshot"
-          id="text-field--snapshot__label"
+          for="date-field--snapshot__month"
+          id="date-field--snapshot__month__label"
         >
           <span
             class=""
@@ -42,7 +42,7 @@ exports[`MultiInputDateField renders 1`] = `
           aria-describedby="date-field--snapshot__label"
           aria-invalid="false"
           class="ds-c-field ds-c-field--month"
-          id="text-field--snapshot"
+          id="date-field--snapshot__month"
           inputmode="numeric"
           maxlength="2"
           name="month"
@@ -61,8 +61,8 @@ exports[`MultiInputDateField renders 1`] = `
       >
         <label
           class="ds-c-label ds-c-datefield__label"
-          for="text-field--snapshot"
-          id="text-field--snapshot__label"
+          for="date-field--snapshot__day"
+          id="date-field--snapshot__day__label"
         >
           <span
             class=""
@@ -74,7 +74,7 @@ exports[`MultiInputDateField renders 1`] = `
           aria-describedby="date-field--snapshot__label"
           aria-invalid="false"
           class="ds-c-field ds-c-field--day"
-          id="text-field--snapshot"
+          id="date-field--snapshot__day"
           inputmode="numeric"
           maxlength="2"
           name="day"
@@ -93,8 +93,8 @@ exports[`MultiInputDateField renders 1`] = `
       >
         <label
           class="ds-c-label ds-c-datefield__label"
-          for="text-field--snapshot"
-          id="text-field--snapshot__label"
+          for="date-field--snapshot__year"
+          id="date-field--snapshot__year__label"
         >
           <span
             class=""
@@ -106,7 +106,7 @@ exports[`MultiInputDateField renders 1`] = `
           aria-describedby="date-field--snapshot__label"
           aria-invalid="false"
           class="ds-c-field ds-c-field--year"
-          id="text-field--snapshot"
+          id="date-field--snapshot__year"
           inputmode="numeric"
           maxlength="4"
           name="year"
