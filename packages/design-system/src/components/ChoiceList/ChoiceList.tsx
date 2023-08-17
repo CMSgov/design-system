@@ -85,7 +85,8 @@ export type ChoiceListProps = BaseChoiceListProps &
  * [HTML input element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input).
  */
 export const ChoiceList: React.FC<ChoiceListProps> = (props: ChoiceListProps) => {
-  const { onBlur, onComponentBlur, choices, id, ...listProps } = props;
+  const { onBlur, onComponentBlur, choices, ...listProps } = props;
+  const id = useId('choice-list--', props.id);
 
   if (process.env.NODE_ENV !== 'production') {
     if (props.type !== 'checkbox' && props.choices.length === 1) {
@@ -117,7 +118,7 @@ export const ChoiceList: React.FC<ChoiceListProps> = (props: ChoiceListProps) =>
     ...listProps,
     labelComponent: 'legend',
     wrapperIsFieldset: true,
-    id: useId('choice-list--', id),
+    id,
   });
 
   const choiceItems = choices.map((choiceProps, index) => {
