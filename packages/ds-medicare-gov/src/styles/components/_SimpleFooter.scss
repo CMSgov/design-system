@@ -14,8 +14,7 @@
     color: var(--color-base) !important;
     display: inline-block;
     font-size: var(--font-size-sm);
-    margin-bottom: $spacer-1;
-    margin-top: 0;
+    line-height: 1;
     padding: 0;
     text-decoration-color: transparent;
     text-decoration-thickness: 1px;
@@ -35,57 +34,21 @@
 }
 
 .m-c-footer__delimiter {
-  align-self: center;
   background-color: var(--color-base);
   height: 1rem;
-  margin-block-end: $spacer-1;
   width: 1px;
 }
 
 .m-c-footer__linkRow {
+  align-items: center;
   border-color: var(--color-gray-lighter);
   border-style: solid;
   border-width: 1px 0;
 
   display: flex;
-  flex-direction: column;
-  margin-bottom: $spacer-1;
-  padding-bottom: $spacer-3;
-  padding-top: $spacer-3;
-
-  > div {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0 $spacer-2;
-  }
-
-  @media screen and (min-width: $media-width-sm) {
-    flex-direction: column;
-  }
-
-  @media screen and (min-width: $media-width-lg) {
-    justify-content: space-between;
-  }
-
-  @media screen and (min-width: $media-width-xl) {
-    flex-direction: row;
-  }
-
-  &--reverse {
-    flex-direction: column-reverse;
-
-    @media screen and (min-width: $media-width-sm) {
-      flex-direction: row;
-    }
-  }
-}
-
-.m-c-footer__links {
-  margin-bottom: $spacer-3;
-
-  @media screen and (min-width: $media-width-xl) {
-    margin-bottom: 0;
-  }
+  flex-wrap: wrap;
+  gap: $spacer-1 $spacer-2;
+  padding-block: $spacer-3;
 }
 
 .m-c-footer__identityRow {
