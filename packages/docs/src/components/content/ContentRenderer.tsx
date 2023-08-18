@@ -1,5 +1,6 @@
 import React from 'react';
 import Prism from 'prismjs';
+import { ThirdPartyExternalLink } from '@cmsgov/design-system';
 
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
@@ -67,6 +68,12 @@ const TextWithMaxWidth = (props: any, Component) => {
  * Each mapping has a key with the element name and a value of a functional component to be used for that element
  */
 const customComponents = (theme) => ({
+  a: (props) => {
+    if (props.href.startsWith('http')) {
+      return <ThirdPartyExternalLink {...props} />;
+    }
+    return <a {...props} />;
+  },
   ButtonMigrationTable: (props) => <ButtonMigrationTable theme={theme} {...props} />,
   ButtonVariationsTable: (props) => <ButtonVariationsTable theme={theme} {...props} />,
   code: CodeWithSyntaxHighlighting,
