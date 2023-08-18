@@ -7,7 +7,7 @@ const defaultProps: Omit<React.ComponentPropsWithRef<'textarea'>, OmitProps> &
   TextInputProps = {
   name: 'spec-field',
   inputRef: jest.fn(),
-  id: '1',
+  id: 'static-id',
   type: 'text',
   errorPlacement: 'top',
 };
