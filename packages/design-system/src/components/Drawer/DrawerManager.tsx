@@ -1,6 +1,6 @@
 import React from 'react';
-import { createContext, useState, useContext, useRef } from 'react';
-import uniqueId from 'lodash/uniqueId';
+import { createContext, useState, useContext } from 'react';
+import useId from '../utilities/useId';
 
 export const DrawerContext = createContext(null);
 
@@ -12,7 +12,7 @@ export const DrawerManager = (props: any) => {
 
 export const useDrawerManager = () => {
   const { currentID, setCurrentID } = useContext(DrawerContext);
-  const id = useRef(uniqueId('drawerManagerID')).current;
+  const id = useId();
 
   const isOpen = currentID === id;
   const toggleClick = () => setCurrentID(isOpen ? null : id);

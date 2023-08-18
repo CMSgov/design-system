@@ -48,7 +48,7 @@ export class FilterChip extends React.Component<FilterChipProps> {
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.filterChipId = props.id || uniqueId('filter_');
+    this.filterChipId = props.id ?? uniqueId('filter-chip--');
   }
 
   handleClick(): void {
@@ -76,9 +76,11 @@ export class FilterChip extends React.Component<FilterChipProps> {
       useAlternateIcon ? 'ds-c-filter-chip__clear-icon-alternate-container' : ''
     );
 
+    const iconId = `${this.filterChipId}__icon`;
+
     return (
       <button
-        id={`${this.filterChipId}`}
+        id={this.filterChipId}
         className={buttonClassNames}
         onClick={this.handleClick}
         onKeyDown={this.handleKeyDown}
@@ -95,7 +97,7 @@ export class FilterChip extends React.Component<FilterChipProps> {
           {ariaClearLabel ?? t('filterChip.ariaClearLabel')} {t('filterChip.filter', { label })} .
         </span>
         <span className={iconContainerClassNames}>
-          {useAlternateIcon ? <CloseIconThin /> : <CloseIcon />}
+          {useAlternateIcon ? <CloseIconThin id={iconId} /> : <CloseIcon id={iconId} />}
         </span>
       </button>
     );
