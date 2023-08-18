@@ -2,91 +2,105 @@
 
 exports[`Dropdown accepts optgroup children 1`] = `
 <ul
-  class="ds-c-dropdown__menu ds-c-dropdown__menu--grouped"
+  class="ds-c-dropdown__menu"
   id="dropdown__menu--72"
   role="listbox"
 >
   <li
-    aria-selected="false"
+    aria-labelledby="dropdown__button--69__group--0"
     class="ds-c-dropdown__menu-item-group"
-    disabled=""
-    id="downshift-17-item-0"
     role="group"
   >
-    Group A
-  </li>
-  <li
-    aria-selected="true"
-    class="ds-c-dropdown__menu-item ds-c-dropdown__menu-item--highlighted ds-c-dropdown__menu-item--selected"
-    id="downshift-17-item-1"
-    role="option"
-  >
-    <span
-      class="ds-c-dropdown__menu-item-selected-indicator"
+    <div
+      class="ds-c-dropdown__menu-item-group-label"
+      id="dropdown__button--69__group--0"
     >
-      <svg
-        aria-hidden="true"
-        class="ds-c-icon ds-u-font-size--sm"
-        focusable="false"
-        id="icon-56"
-        viewBox="0 0 448 512"
-        xmlns="http://www.w3.org/2000/svg"
+      Group A
+    </div>
+    <ul
+      role="presentation"
+    >
+      <li
+        aria-selected="false"
+        class="ds-c-dropdown__menu-item ds-c-dropdown__menu-item--highlighted ds-c-dropdown__menu-item--selected"
+        id="downshift-17-item-0"
+        role="option"
       >
-        <path
-          d="M443.3 100.7c6.2 6.2 6.2 16.4 0 22.6l-272 272c-6.2 6.2-16.4 6.2-22.6 0l-144-144c-6.2-6.2-6.2-16.4 0-22.6s16.4-6.2 22.6 0L160 361.4l260.7-260.7c6.2-6.2 16.4-6.2 22.6 0z"
-        />
-      </svg>
-    </span>
-    Option A-1
+        <span
+          class="ds-c-dropdown__menu-item-selected-indicator"
+        >
+          <svg
+            aria-hidden="true"
+            class="ds-c-icon ds-u-font-size--sm"
+            focusable="false"
+            id="icon-56"
+            viewBox="0 0 448 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M443.3 100.7c6.2 6.2 6.2 16.4 0 22.6l-272 272c-6.2 6.2-16.4 6.2-22.6 0l-144-144c-6.2-6.2-6.2-16.4 0-22.6s16.4-6.2 22.6 0L160 361.4l260.7-260.7c6.2-6.2 16.4-6.2 22.6 0z"
+            />
+          </svg>
+        </span>
+        Option A-1
+      </li>
+      <li
+        aria-selected="false"
+        class="ds-c-dropdown__menu-item"
+        id="downshift-17-item-1"
+        role="option"
+      >
+        Option A-2
+      </li>
+      <li
+        aria-selected="false"
+        class="ds-c-dropdown__menu-item"
+        id="downshift-17-item-2"
+        role="option"
+      >
+        Option A-3
+      </li>
+    </ul>
   </li>
   <li
-    aria-selected="false"
-    class="ds-c-dropdown__menu-item"
-    id="downshift-17-item-2"
-    role="option"
-  >
-    Option A-2
-  </li>
-  <li
-    aria-selected="false"
-    class="ds-c-dropdown__menu-item"
-    id="downshift-17-item-3"
-    role="option"
-  >
-    Option A-3
-  </li>
-  <li
-    aria-selected="false"
+    aria-labelledby="dropdown__button--69__group--1"
     class="ds-c-dropdown__menu-item-group"
-    disabled=""
-    id="downshift-17-item-4"
     role="group"
   >
-    Group B
-  </li>
-  <li
-    aria-selected="false"
-    class="ds-c-dropdown__menu-item"
-    id="downshift-17-item-5"
-    role="option"
-  >
-    Option B-1
-  </li>
-  <li
-    aria-selected="false"
-    class="ds-c-dropdown__menu-item"
-    id="downshift-17-item-6"
-    role="option"
-  >
-    Option B-2
-  </li>
-  <li
-    aria-selected="false"
-    class="ds-c-dropdown__menu-item"
-    id="downshift-17-item-7"
-    role="option"
-  >
-    Option B-3
+    <div
+      class="ds-c-dropdown__menu-item-group-label"
+      id="dropdown__button--69__group--1"
+    >
+      Group B
+    </div>
+    <ul
+      role="presentation"
+    >
+      <li
+        aria-selected="false"
+        class="ds-c-dropdown__menu-item"
+        id="downshift-17-item-3"
+        role="option"
+      >
+        Option B-1
+      </li>
+      <li
+        aria-selected="false"
+        class="ds-c-dropdown__menu-item"
+        id="downshift-17-item-4"
+        role="option"
+      >
+        Option B-2
+      </li>
+      <li
+        aria-selected="false"
+        class="ds-c-dropdown__menu-item"
+        id="downshift-17-item-5"
+        role="option"
+      >
+        Option B-3
+      </li>
+    </ul>
   </li>
 </ul>
 `;

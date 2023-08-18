@@ -2,9 +2,9 @@
 title: Text Color
 ---
 
-Use the text color utility to change the default text color of an element.
+import ColorContrastGuidelines from '../../../src/reusable-text-snippets/ColorContrastGuidelines.mdx';
 
-The options below offer color palette combinations that fall within the range of Section 508 compliant and WCAG 2.0 level AA standards which is a minimum color contrast ratio of 4.5:1.
+Use the text color utility to change the default text color of an element.
 
 **Format**: `.ds-u-color--[COLOR NAME]-[SHADE]`
 
@@ -147,10 +147,4 @@ Use the `.ds-u-color--inherit` utility class to inherit the color of the parent 
   </div>
 </EmbeddedExample>
 
-## Guidance
-
-### Accessibility
-
-WCAG (Web Content Accessibility Guidelines) ensure that content is accessible by everyone, regardless of disability or user device. To meet these standards, text and interactive elements should have a color contrast ratio of [at least 4.5:1](http://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html). This ensures that viewers who cannot see the full color spectrum are able to read the text.
-
-You can use the [WebAIM color contrast checker](https://webaim.org/resources/contrastchecker/) to test your color combinations.
+<ColorContrastGuidelines />

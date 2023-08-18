@@ -5,7 +5,7 @@ import useAutofocus from '../utilities/useAutoFocus';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 import { SvgIcon } from '../Icons';
 import { useSelect, UseSelectProps, UseSelectStateChangeOptions } from 'downshift';
-import { isOptGroupArray, parseChildren, validateProps } from './utils';
+import { isOptGroup, parseChildren, validateProps } from './utils';
 import { uniqueId } from 'lodash';
 import useHighlightStatusMessageFn from './useHighlightStatusMessageFn';
 
@@ -25,12 +25,7 @@ export interface DropdownOptGroup extends React.HTMLAttributes<'optgroup'> {
   label: string;
   options: DropdownOption[];
 }
-interface InternalItem extends React.HTMLAttributes<'option' | 'optgroup'> {
-  label: string;
-  value?: number | string;
-  isOptGroup?: boolean;
-}
-const itemToString = (item: InternalItem) => item.label;
+const itemToString = (item: DropdownOption) => item.label;
 
 export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
   /**
@@ -100,7 +95,7 @@ type OptionsOrChildren =
       /**
        * The list of options to be rendered. Each item must have a `label` and `value`.
        */
-      options: DropdownOption[] | DropdownOptGroup[];
+      options: Array<DropdownOption | DropdownOptGroup>;
     }
   | {
       /**
@@ -149,19 +144,17 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   // tried excluding them from the list we give to Downshift, but then the
   // highlighted index sticks on the last hovered selectable item when hovering
   // over a group heading, and it doesn't look very good.
-  const optionsOrOptGroups = options ?? parseChildren(children);
-  const items: InternalItem[] = useMemo(
+  const optionsAndGroups = options ?? parseChildren(children);
+  const items: DropdownOption[] = useMemo(
     () =>
-      !isOptGroupArray(optionsOrOptGroups)
-        ? optionsOrOptGroups
-        : optionsOrOptGroups.reduce((internalItems, optGroup) => {
-            internalItems.push({
-              label: optGroup.label,
-              isOptGroup: true,
-            });
-            internalItems.push(...optGroup.options);
-            return internalItems;
-          }, [] as InternalItem[]),
+      optionsAndGroups.reduce((onlyOptions, optionOrGroup) => {
+        if (isOptGroup(optionOrGroup)) {
+          onlyOptions.push(...optionOrGroup.options);
+        } else {
+          onlyOptions.push(optionOrGroup);
+        }
+        return onlyOptions;
+      }, []),
     [options, children]
   );
 
@@ -175,9 +168,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     }
   } else {
     defaultSelectedItem =
-      defaultValue !== undefined
-        ? items.find((item) => defaultValue === item.value)
-        : items.filter((item) => !item.isOptGroup)[0];
+      defaultValue !== undefined ? items.find((item) => defaultValue === item.value) : items[0];
     if (!defaultSelectedItem) {
       console.warn('Dropdown component could not determine a default selected option');
     }
@@ -254,10 +245,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   };
 
   const menuProps = getMenuProps({
-    className: classNames(
-      'ds-c-dropdown__menu',
-      isOptGroupArray(optionsOrOptGroups) && 'ds-c-dropdown__menu--grouped'
-    ),
+    className: 'ds-c-dropdown__menu',
   });
 
   const caretIcon = (
@@ -267,26 +255,26 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     <path d="M443.3 100.7c6.2 6.2 6.2 16.4 0 22.6l-272 272c-6.2 6.2-16.4 6.2-22.6 0l-144-144c-6.2-6.2-6.2-16.4 0-22.6s16.4-6.2 22.6 0L160 361.4l260.7-260.7c6.2-6.2 16.4-6.2 22.6 0z" />
   );
 
-  const menuContent = items.map((item, index) => {
-    const { value, label, isOptGroup, className, ...extraAttrs } = item;
+  const renderItem = (item: DropdownOption, index: number) => {
+    const { value, label, className, ...extraAttrs } = item;
+    const isSelected = selectedItem?.value === item.value;
     return (
       <li
-        key={value ?? label}
+        key={value}
         className={classNames(
           className,
-          isOptGroup ? 'ds-c-dropdown__menu-item-group' : 'ds-c-dropdown__menu-item',
+          'ds-c-dropdown__menu-item',
           highlightedIndex === index && 'ds-c-dropdown__menu-item--highlighted',
-          selectedItem === item && 'ds-c-dropdown__menu-item--selected'
+          isSelected && 'ds-c-dropdown__menu-item--selected'
         )}
         {...extraAttrs}
         {...getItemProps({
           item,
           index,
-          disabled: isOptGroup,
-          role: isOptGroup ? 'group' : 'option',
+          role: 'option',
         })}
       >
-        {selectedItem === item && (
+        {isSelected && (
           <span className="ds-c-dropdown__menu-item-selected-indicator">
             <SvgIcon
               title="selected option icon"
@@ -300,7 +288,35 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
         {item.label}
       </li>
     );
-  });
+  };
+
+  const menuContent = [];
+  let groupIndex = 0;
+  let menuItemIndex = 0;
+  for (const item of optionsAndGroups) {
+    if (isOptGroup(item)) {
+      const groupId = `${id}__group--${groupIndex++}`;
+      const { label, className, options, ...extraAttrs } = item;
+      menuContent.push(
+        <li
+          role="group"
+          aria-labelledby={groupId}
+          key={groupId}
+          className={classNames('ds-c-dropdown__menu-item-group', className)}
+          {...(extraAttrs as any)}
+        >
+          <div id={groupId} className="ds-c-dropdown__menu-item-group-label">
+            {label}
+          </div>
+          <ul role="presentation">
+            {options.map((groupedItem) => renderItem(groupedItem, menuItemIndex++))}
+          </ul>
+        </li>
+      );
+    } else {
+      menuContent.push(renderItem(item, menuItemIndex++));
+    }
+  }
 
   return (
     <div {...wrapperProps}>

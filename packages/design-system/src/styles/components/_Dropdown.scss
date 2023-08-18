@@ -79,16 +79,20 @@
 
 // Base styles for grouped and individual dropdown elements
 .ds-c-dropdown__menu-item,
-.ds-c-dropdown__menu-item-group {
+.ds-c-dropdown__menu-item-group-label {
   cursor: default;
   padding: var(--text-input__padding);
 }
 
-.ds-c-dropdown__menu-item-group {
+.ds-c-dropdown__menu-item-group-label {
   font-weight: var(--font-weight-bold);
 }
 
-.ds-c-dropdown__menu--grouped .ds-c-dropdown__menu-item {
+.ds-c-dropdown__menu-item-group ul[role='presentation'] {
+  @include mixins.ds-unstyled-list;
+}
+
+.ds-c-dropdown__menu-item-group .ds-c-dropdown__menu-item {
   padding-inline-start: var(--dropdown-option-group__padding);
 }
 
