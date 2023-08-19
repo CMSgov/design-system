@@ -3,6 +3,7 @@ import Dropdown from './Dropdown';
 import type { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { useArgs } from '@storybook/preview-api';
+import { MySelect } from './ReactAria';
 
 const meta: Meta<typeof Dropdown> = {
   title: 'Components/Dropdown',
@@ -158,6 +159,19 @@ export const Controlled: Story = {
       action('onChange')(event);
       updateArgs({ value: event.currentTarget.value });
     };
-    return <Dropdown {...args} value={value} onChange={onChange} />;
+    return (
+      <form method="get" action="http://localhost:8000/">
+        <input type="hidden" name="hello" value="yoyoyo" />
+        <Dropdown {...args} value={value} onChange={onChange} />
+        <button type="submit">Hello</button>
+      </form>
+    );
+  },
+};
+
+export const Bob: Story = {
+  args: {},
+  render: function Component(args) {
+    return MySelect;
   },
 };
