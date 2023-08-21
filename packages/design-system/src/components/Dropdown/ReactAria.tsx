@@ -1,8 +1,8 @@
-import React from 'react';
-import { Item, useSelectState } from 'react-stately';
+import React, { MutableRefObject, RefObject } from 'react';
+import { Item, ListState, useSelectState } from 'react-stately';
 import { HiddenSelect, useSelect } from 'react-aria';
 import { DismissButton, Overlay, usePopover } from 'react-aria';
-import type { AriaPopoverProps } from 'react-aria';
+import type { AriaPopoverProps, AriaListBoxOptions } from 'react-aria';
 import type { OverlayTriggerState } from 'react-stately';
 import { useButton } from 'react-aria';
 import { useListBox, useOption } from 'react-aria';
@@ -10,6 +10,11 @@ import { useListBox, useOption } from 'react-aria';
 interface PopoverProps extends Omit<AriaPopoverProps, 'popoverRef'> {
   children: React.ReactNode;
   state: OverlayTriggerState;
+}
+
+interface ListBoxProps<T> extends AriaListBoxOptions<T> {
+  state: ListState<T>;
+  ref?: MutableRefObject<T>;
 }
 
 function Popover({ children, state, ...props }: PopoverProps) {
@@ -42,15 +47,15 @@ function Popover({ children, state, ...props }: PopoverProps) {
   );
 }
 
-function ListBox(props) {
-  const ref = React.useRef(null);
-  const { listBoxRef = ref, state } = props;
-  const { listBoxProps } = useListBox(props, state, listBoxRef);
+function ListBox<T>(props: ListBoxProps<T>) {
+  const listBoxFallbackRef = React.useRef(null);
+  const { ref = listBoxFallbackRef, state } = props;
+  const { listBoxProps } = useListBox(props, state, ref);
 
   return (
     <ul
       {...listBoxProps}
-      ref={listBoxRef}
+      ref={ref}
       style={{
         margin: 0,
         padding: 0,
@@ -67,6 +72,58 @@ function ListBox(props) {
     </ul>
   );
 }
+
+// function DropdownMenu({children, state, ...props}) {
+//   const popoverRef = React.useRef(null);
+//   const { popoverProps, underlayProps } = usePopover(
+//     {
+//       ...props,
+//       popoverRef,
+//     },
+//     state
+//   );
+
+//   const listBoxFallbackRef = React.useRef(null);
+//   const { listBoxRef = listBoxFallbackRef, state } = props;
+//   const { listBoxProps } = useListBox(props, state, listBoxRef);
+
+//   return (
+//     <Overlay>
+//       <div {...underlayProps} style={{ position: 'fixed', inset: 0 }} />
+//       <div
+//         {...popoverProps}
+//         ref={popoverRef}
+//         style={{
+//           ...popoverProps.style,
+//           background: 'var(--page-background)',
+//           border: '1px solid gray',
+//         }}
+//       >
+//         <DismissButton onDismiss={state.close} />
+//         {children}
+//         <DismissButton onDismiss={state.close} />
+//       </div>
+//     </Overlay>
+//   );
+
+//     <ul
+//       {...listBoxProps}
+//       ref={listBoxRef}
+//       style={{
+//         margin: 0,
+//         padding: 0,
+//         listStyle: 'none',
+//         maxHeight: 150,
+//         overflow: 'auto',
+//         minWidth: 100,
+//         background: 'lightgray',
+//       }}
+//     >
+//       {[...state.collection].map((item) => (
+//         <Option key={item.key} item={item} state={state} />
+//       ))}
+//     </ul>
+// }
 
 function Option({ item, state }) {
   const ref = React.useRef(null);
