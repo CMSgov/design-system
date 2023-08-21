@@ -1,8 +1,62 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Tooltip renders custom id 1`] = `
+<DocumentFragment>
+  <div
+    class="ds-c-tooltip__container"
+  >
+    <button
+      aria-describedby="static-id"
+      aria-label="tooltip trigger"
+      class="ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
+      type="button"
+    >
+      <span
+        class="ds-c-tooltip-icon__container"
+      >
+        <svg
+          aria-hidden="true"
+          class="ds-c-icon ds-c-icon--info-circle-thin ds-c-tooltip-icon"
+          focusable="false"
+          id="icon--5"
+          viewBox="0 0 16 16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M8 16c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm1-3.7V6.4H7v5.9h2zM7 4.9c0 .6.3.9 1 .9s1-.3 1-.9c0-.3-.1-.5-.2-.7-.2-.1-.5-.2-.8-.2-.3 0-.6.1-.8.2-.1.2-.2.4-.2.7z"
+            fill-rule="nonzero"
+          />
+        </svg>
+      </span>
+    </button>
+    <div
+      aria-hidden="true"
+      class="ds-c-tooltip"
+      data-placement="top"
+      id="static-id"
+      role="tooltip"
+      style="max-width: 300px; z-index: 9999;"
+    >
+      <span
+        class="ds-c-tooltip__arrow"
+        data-popper-arrow="true"
+      />
+      <div
+        class="ds-c-tooltip__content"
+      >
+        Tooltip body content
+      </div>
+      <span
+        class="ds-c-tooltip__interactive-border"
+        style="left: -15px; top: -15px; border: 15px solid transparent; z-index: -999;"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
 exports[`Tooltip renders custom trigger component 1`] = `
 <a
-  aria-describedby="trigger_5"
   aria-label="tooltip trigger"
   class="ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
   tabindex="0"
@@ -14,7 +68,7 @@ exports[`Tooltip renders custom trigger component 1`] = `
       aria-hidden="true"
       class="ds-c-icon ds-c-icon--info-circle-thin ds-c-tooltip-icon"
       focusable="false"
-      id="icon--6"
+      id="icon--7"
       viewBox="0 0 16 16"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -29,7 +83,6 @@ exports[`Tooltip renders custom trigger component 1`] = `
 
 exports[`Tooltip renders default trigger icon 1`] = `
 <button
-  aria-describedby="trigger_1"
   aria-label="tooltip trigger"
   class="ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
   type="button"
@@ -59,7 +112,7 @@ exports[`Tooltip renders dialog tooltip 1`] = `
   aria-hidden="false"
   class="ds-c-tooltip ds-c-tooltip-enter ds-c-tooltip-enter-active"
   data-placement="top"
-  id="trigger_7"
+  id="tooltip-trigger--8"
   role="dialog"
   style="max-width: 300px; z-index: 9999;"
   tabindex="-1"
@@ -82,7 +135,6 @@ exports[`Tooltip renders inverse tooltip 1`] = `
     class="ds-c-tooltip__container"
   >
     <button
-      aria-describedby="trigger_3"
       aria-label="tooltip trigger"
       class="ds-c-tooltip__trigger ds-c-tooltip__trigger-icon ds-c-tooltip__trigger--inverse"
       type="button"
@@ -109,7 +161,7 @@ exports[`Tooltip renders inverse tooltip 1`] = `
       aria-hidden="true"
       class="ds-c-tooltip ds-c-tooltip--inverse"
       data-placement="top"
-      id="trigger_3"
+      id="tooltip-trigger--3"
       role="tooltip"
       style="max-width: 300px; z-index: 9999;"
     >
@@ -136,7 +188,7 @@ exports[`Tooltip tooltip with close renders heading element 1`] = `
   aria-hidden="false"
   class="ds-c-tooltip ds-c-tooltip-enter ds-c-tooltip-enter-active"
   data-placement="top"
-  id="trigger_17"
+  id="tooltip-trigger--18"
   role="dialog"
   style="max-width: 300px; z-index: 9999;"
   tabindex="-1"
@@ -163,7 +215,7 @@ exports[`Tooltip tooltip with close renders heading element and close button 1`]
   aria-hidden="false"
   class="ds-c-tooltip ds-c-tooltip-enter ds-c-tooltip-enter-active"
   data-placement="top"
-  id="trigger_20"
+  id="tooltip-trigger--21"
   role="dialog"
   style="max-width: 300px; z-index: 9999;"
   tabindex="-1"
@@ -188,7 +240,7 @@ exports[`Tooltip tooltip with close renders heading element and close button 1`]
           aria-hidden="true"
           class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin "
           focusable="false"
-          id="icon--22"
+          id="icon--23"
           viewBox="-2 -2 18 18"
           xmlns="http://www.w3.org/2000/svg"
         >

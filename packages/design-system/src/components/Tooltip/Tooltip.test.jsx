@@ -31,6 +31,11 @@ describe('Tooltip', function () {
     expect(asFragment()).toMatchSnapshot();
   });
 
+  it('renders custom id', () => {
+    const { asFragment } = renderTooltip({ id: 'static-id' });
+    expect(asFragment()).toMatchSnapshot();
+  });
+
   it('renders custom trigger component', () => {
     renderTooltip({
       component: 'a',

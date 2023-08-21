@@ -10,7 +10,7 @@ import FocusTrap from 'focus-trap-react';
 import { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import classNames from 'classnames';
 import { createPopper, Placement } from '@popperjs/core';
-import uniqueId from 'lodash/uniqueId';
+import useId from '../utilities/useId';
 import { Button } from '../Button';
 import { CloseIconThin } from '../Icons';
 import usePrevious from '../utilities/usePrevious';
@@ -107,7 +107,7 @@ export interface TooltipProps {
  */
 export const Tooltip = (props: TooltipProps) => {
   const popper = useRef(null);
-  const id = useRef(props.id ?? uniqueId('trigger_'));
+  const id = useId('tooltip-trigger--', props.id);
   const triggerElement = useRef(null);
   const tooltipElement = useRef(null);
 
@@ -212,6 +212,7 @@ export const Tooltip = (props: TooltipProps) => {
       className,
       component,
       dialog,
+      id,
       offset,
       onClose,
       onOpen,
@@ -260,7 +261,7 @@ export const Tooltip = (props: TooltipProps) => {
       <TriggerComponent
         type={TriggerComponent === 'button' ? 'button' : undefined}
         aria-label={ariaLabel || undefined}
-        aria-describedby={dialog ? undefined : id.current}
+        aria-describedby={dialog ? undefined : id}
         className={triggerClasses}
         ref={setTriggerElement}
         {...others}
@@ -298,7 +299,7 @@ export const Tooltip = (props: TooltipProps) => {
 
     const tooltipContent = (
       <div
-        id={id.current}
+        id={id}
         tabIndex={dialog ? -1 : null}
         ref={setTooltipElement}
         className={classNames('ds-c-tooltip', { 'ds-c-tooltip--inverse': inversed })}
@@ -344,8 +345,8 @@ export const Tooltip = (props: TooltipProps) => {
           <FocusTrap
             active={active}
             focusTrapOptions={{
-              fallbackFocus: () => document.getElementById(`${id.current}`).parentElement,
-              initialFocus: () => document.getElementById(`${id.current}`),
+              fallbackFocus: () => document.getElementById(`${id}`).parentElement,
+              initialFocus: () => document.getElementById(`${id}`),
               clickOutsideDeactivates: true,
             }}
           >
