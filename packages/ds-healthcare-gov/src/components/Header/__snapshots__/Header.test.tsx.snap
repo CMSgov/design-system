@@ -13,7 +13,7 @@ exports[`Header renders Direct Enrollment banner 1`] = `
         aria-hidden="true"
         class="ds-c-icon ds-c-icon--usa-flag ds-c-usa-banner__header-icon"
         focusable="false"
-        id="icon-11"
+        id="icon--11"
         viewBox="0 0 16 11"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -57,7 +57,7 @@ exports[`Header renders Direct Enrollment banner 1`] = `
           class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
           direction="down"
           focusable="false"
-          id="icon-12"
+          id="icon--12"
           viewBox="0 0 320 512"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -68,7 +68,7 @@ exports[`Header renders Direct Enrollment banner 1`] = `
         </svg>
       </p>
       <button
-        aria-controls="gov-banner_10"
+        aria-controls="usa-banner--10"
         aria-expanded="false"
         class="ds-c-usa-banner__button"
         type="button"
@@ -82,7 +82,7 @@ exports[`Header renders Direct Enrollment banner 1`] = `
             class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
             direction="down"
             focusable="false"
-            id="icon-13"
+            id="icon--13"
             viewBox="0 0 320 512"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -100,7 +100,7 @@ exports[`Header renders Direct Enrollment banner 1`] = `
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin ds-c-usa-banner__button-icon"
             focusable="false"
-            id="icon-14"
+            id="icon--14"
             viewBox="-2 -2 18 18"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -121,7 +121,7 @@ exports[`Header renders Direct Enrollment banner 1`] = `
       <div
         class="ds-c-usa-banner__guidance-container"
         hidden=""
-        id="gov-banner_10"
+        id="usa-banner--10"
       >
         <div
           class="ds-c-usa-banner__guidance-item"
@@ -130,7 +130,7 @@ exports[`Header renders Direct Enrollment banner 1`] = `
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--building-circle ds-c-usa-banner__guidance-icon"
             focusable="false"
-            id="icon-15"
+            id="icon--15"
             viewBox="0 0 54 54"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -175,7 +175,7 @@ exports[`Header renders Direct Enrollment banner 1`] = `
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--lock-circle ds-c-usa-banner__guidance-icon"
             focusable="false"
-            id="icon-16"
+            id="icon--16"
             viewBox="0 0 54 54"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -211,7 +211,7 @@ exports[`Header renders Direct Enrollment banner 1`] = `
               aria-hidden="true"
               class="ds-c-icon ds-c-icon--lock ds-c-usa-banner__inline-lock-icon"
               focusable="false"
-              id="icon-17"
+              id="icon--17"
               viewBox="0 0 52 64"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -371,7 +371,7 @@ exports[`Header renders Direct Enrollment banner 1`] = `
               aria-hidden="true"
               class="ds-c-icon ds-u-margin-right--1 ds-c-icon--menu"
               focusable="false"
-              id="icon-18"
+              id="icon--18"
               viewBox="0 0 448 512"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -442,7 +442,7 @@ exports[`Header renders Spanish header 1`] = `
         aria-hidden="true"
         class="ds-c-icon ds-c-icon--usa-flag ds-c-usa-banner__header-icon"
         focusable="false"
-        id="icon-38"
+        id="icon--38"
         viewBox="0 0 16 11"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -486,7 +486,7 @@ exports[`Header renders Spanish header 1`] = `
           class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
           direction="down"
           focusable="false"
-          id="icon-39"
+          id="icon--39"
           viewBox="0 0 320 512"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -497,7 +497,7 @@ exports[`Header renders Spanish header 1`] = `
         </svg>
       </p>
       <button
-        aria-controls="gov-banner_37"
+        aria-controls="usa-banner--37"
         aria-expanded="false"
         class="ds-c-usa-banner__button"
         type="button"
@@ -511,7 +511,7 @@ exports[`Header renders Spanish header 1`] = `
             class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
             direction="down"
             focusable="false"
-            id="icon-40"
+            id="icon--40"
             viewBox="0 0 320 512"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -529,7 +529,7 @@ exports[`Header renders Spanish header 1`] = `
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin ds-c-usa-banner__button-icon"
             focusable="false"
-            id="icon-41"
+            id="icon--41"
             viewBox="-2 -2 18 18"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -550,7 +550,7 @@ exports[`Header renders Spanish header 1`] = `
       <div
         class="ds-c-usa-banner__guidance-container"
         hidden=""
-        id="gov-banner_37"
+        id="usa-banner--37"
       >
         <div
           class="ds-c-usa-banner__guidance-item"
@@ -559,7 +559,7 @@ exports[`Header renders Spanish header 1`] = `
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--building-circle ds-c-usa-banner__guidance-icon"
             focusable="false"
-            id="icon-42"
+            id="icon--42"
             viewBox="0 0 54 54"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -604,7 +604,7 @@ exports[`Header renders Spanish header 1`] = `
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--lock-circle ds-c-usa-banner__guidance-icon"
             focusable="false"
-            id="icon-43"
+            id="icon--43"
             viewBox="0 0 54 54"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -640,7 +640,7 @@ exports[`Header renders Spanish header 1`] = `
               aria-hidden="true"
               class="ds-c-icon ds-c-icon--lock ds-c-usa-banner__inline-lock-icon"
               focusable="false"
-              id="icon-44"
+              id="icon--44"
               viewBox="0 0 52 64"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -816,7 +816,7 @@ exports[`Header renders Spanish header 1`] = `
               aria-hidden="true"
               class="ds-c-icon ds-u-margin-right--1 ds-c-icon--menu"
               focusable="false"
-              id="icon-45"
+              id="icon--45"
               viewBox="0 0 448 512"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -878,7 +878,7 @@ exports[`Header renders full/homepage header 1`] = `
         aria-hidden="true"
         class="ds-c-icon ds-c-icon--usa-flag ds-c-usa-banner__header-icon"
         focusable="false"
-        id="icon-2"
+        id="icon--2"
         viewBox="0 0 16 11"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -922,7 +922,7 @@ exports[`Header renders full/homepage header 1`] = `
           class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
           direction="down"
           focusable="false"
-          id="icon-3"
+          id="icon--3"
           viewBox="0 0 320 512"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -933,7 +933,7 @@ exports[`Header renders full/homepage header 1`] = `
         </svg>
       </p>
       <button
-        aria-controls="gov-banner_1"
+        aria-controls="usa-banner--1"
         aria-expanded="false"
         class="ds-c-usa-banner__button"
         type="button"
@@ -947,7 +947,7 @@ exports[`Header renders full/homepage header 1`] = `
             class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
             direction="down"
             focusable="false"
-            id="icon-4"
+            id="icon--4"
             viewBox="0 0 320 512"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -965,7 +965,7 @@ exports[`Header renders full/homepage header 1`] = `
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin ds-c-usa-banner__button-icon"
             focusable="false"
-            id="icon-5"
+            id="icon--5"
             viewBox="-2 -2 18 18"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -986,7 +986,7 @@ exports[`Header renders full/homepage header 1`] = `
       <div
         class="ds-c-usa-banner__guidance-container"
         hidden=""
-        id="gov-banner_1"
+        id="usa-banner--1"
       >
         <div
           class="ds-c-usa-banner__guidance-item"
@@ -995,7 +995,7 @@ exports[`Header renders full/homepage header 1`] = `
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--building-circle ds-c-usa-banner__guidance-icon"
             focusable="false"
-            id="icon-6"
+            id="icon--6"
             viewBox="0 0 54 54"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -1040,7 +1040,7 @@ exports[`Header renders full/homepage header 1`] = `
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--lock-circle ds-c-usa-banner__guidance-icon"
             focusable="false"
-            id="icon-7"
+            id="icon--7"
             viewBox="0 0 54 54"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -1076,7 +1076,7 @@ exports[`Header renders full/homepage header 1`] = `
               aria-hidden="true"
               class="ds-c-icon ds-c-icon--lock ds-c-usa-banner__inline-lock-icon"
               focusable="false"
-              id="icon-8"
+              id="icon--8"
               viewBox="0 0 52 64"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -1236,7 +1236,7 @@ exports[`Header renders full/homepage header 1`] = `
               aria-hidden="true"
               class="ds-c-icon ds-u-margin-right--1 ds-c-icon--menu"
               focusable="false"
-              id="icon-9"
+              id="icon--9"
               viewBox="0 0 448 512"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -1298,7 +1298,7 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
         aria-hidden="true"
         class="ds-c-icon ds-c-icon--usa-flag ds-c-usa-banner__header-icon"
         focusable="false"
-        id="icon-128"
+        id="icon--128"
         viewBox="0 0 16 11"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -1342,7 +1342,7 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
           class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
           direction="down"
           focusable="false"
-          id="icon-129"
+          id="icon--129"
           viewBox="0 0 320 512"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -1353,7 +1353,7 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
         </svg>
       </p>
       <button
-        aria-controls="gov-banner_127"
+        aria-controls="usa-banner--127"
         aria-expanded="false"
         class="ds-c-usa-banner__button"
         type="button"
@@ -1367,7 +1367,7 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
             class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
             direction="down"
             focusable="false"
-            id="icon-130"
+            id="icon--130"
             viewBox="0 0 320 512"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -1385,7 +1385,7 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin ds-c-usa-banner__button-icon"
             focusable="false"
-            id="icon-131"
+            id="icon--131"
             viewBox="-2 -2 18 18"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -1406,7 +1406,7 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
       <div
         class="ds-c-usa-banner__guidance-container"
         hidden=""
-        id="gov-banner_127"
+        id="usa-banner--127"
       >
         <div
           class="ds-c-usa-banner__guidance-item"
@@ -1415,7 +1415,7 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--building-circle ds-c-usa-banner__guidance-icon"
             focusable="false"
-            id="icon-132"
+            id="icon--132"
             viewBox="0 0 54 54"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -1460,7 +1460,7 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--lock-circle ds-c-usa-banner__guidance-icon"
             focusable="false"
-            id="icon-133"
+            id="icon--133"
             viewBox="0 0 54 54"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -1496,7 +1496,7 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
               aria-hidden="true"
               class="ds-c-icon ds-c-icon--lock ds-c-usa-banner__inline-lock-icon"
               focusable="false"
-              id="icon-134"
+              id="icon--134"
               viewBox="0 0 52 64"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -1656,7 +1656,7 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
               aria-hidden="true"
               class="ds-c-icon ds-u-margin-right--1 ds-c-icon--menu"
               focusable="false"
-              id="icon-135"
+              id="icon--135"
               viewBox="0 0 448 512"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -1718,7 +1718,7 @@ exports[`Header renders logged-in header with firstName 1`] = `
         aria-hidden="true"
         class="ds-c-icon ds-c-icon--usa-flag ds-c-usa-banner__header-icon"
         focusable="false"
-        id="icon-20"
+        id="icon--20"
         viewBox="0 0 16 11"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -1762,7 +1762,7 @@ exports[`Header renders logged-in header with firstName 1`] = `
           class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
           direction="down"
           focusable="false"
-          id="icon-21"
+          id="icon--21"
           viewBox="0 0 320 512"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -1773,7 +1773,7 @@ exports[`Header renders logged-in header with firstName 1`] = `
         </svg>
       </p>
       <button
-        aria-controls="gov-banner_19"
+        aria-controls="usa-banner--19"
         aria-expanded="false"
         class="ds-c-usa-banner__button"
         type="button"
@@ -1787,7 +1787,7 @@ exports[`Header renders logged-in header with firstName 1`] = `
             class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
             direction="down"
             focusable="false"
-            id="icon-22"
+            id="icon--22"
             viewBox="0 0 320 512"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -1805,7 +1805,7 @@ exports[`Header renders logged-in header with firstName 1`] = `
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin ds-c-usa-banner__button-icon"
             focusable="false"
-            id="icon-23"
+            id="icon--23"
             viewBox="-2 -2 18 18"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -1826,7 +1826,7 @@ exports[`Header renders logged-in header with firstName 1`] = `
       <div
         class="ds-c-usa-banner__guidance-container"
         hidden=""
-        id="gov-banner_19"
+        id="usa-banner--19"
       >
         <div
           class="ds-c-usa-banner__guidance-item"
@@ -1835,7 +1835,7 @@ exports[`Header renders logged-in header with firstName 1`] = `
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--building-circle ds-c-usa-banner__guidance-icon"
             focusable="false"
-            id="icon-24"
+            id="icon--24"
             viewBox="0 0 54 54"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -1880,7 +1880,7 @@ exports[`Header renders logged-in header with firstName 1`] = `
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--lock-circle ds-c-usa-banner__guidance-icon"
             focusable="false"
-            id="icon-25"
+            id="icon--25"
             viewBox="0 0 54 54"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -1916,7 +1916,7 @@ exports[`Header renders logged-in header with firstName 1`] = `
               aria-hidden="true"
               class="ds-c-icon ds-c-icon--lock ds-c-usa-banner__inline-lock-icon"
               focusable="false"
-              id="icon-26"
+              id="icon--26"
               viewBox="0 0 52 64"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -2055,7 +2055,7 @@ exports[`Header renders logged-in header with firstName 1`] = `
               aria-hidden="true"
               class="ds-c-icon ds-u-margin-right--1 ds-c-icon--menu"
               focusable="false"
-              id="icon-27"
+              id="icon--27"
               viewBox="0 0 448 512"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -2142,7 +2142,7 @@ exports[`Header renders logged-in header without firstName 1`] = `
         aria-hidden="true"
         class="ds-c-icon ds-c-icon--usa-flag ds-c-usa-banner__header-icon"
         focusable="false"
-        id="icon-29"
+        id="icon--29"
         viewBox="0 0 16 11"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -2186,7 +2186,7 @@ exports[`Header renders logged-in header without firstName 1`] = `
           class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
           direction="down"
           focusable="false"
-          id="icon-30"
+          id="icon--30"
           viewBox="0 0 320 512"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -2197,7 +2197,7 @@ exports[`Header renders logged-in header without firstName 1`] = `
         </svg>
       </p>
       <button
-        aria-controls="gov-banner_28"
+        aria-controls="usa-banner--28"
         aria-expanded="false"
         class="ds-c-usa-banner__button"
         type="button"
@@ -2211,7 +2211,7 @@ exports[`Header renders logged-in header without firstName 1`] = `
             class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
             direction="down"
             focusable="false"
-            id="icon-31"
+            id="icon--31"
             viewBox="0 0 320 512"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -2229,7 +2229,7 @@ exports[`Header renders logged-in header without firstName 1`] = `
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin ds-c-usa-banner__button-icon"
             focusable="false"
-            id="icon-32"
+            id="icon--32"
             viewBox="-2 -2 18 18"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -2250,7 +2250,7 @@ exports[`Header renders logged-in header without firstName 1`] = `
       <div
         class="ds-c-usa-banner__guidance-container"
         hidden=""
-        id="gov-banner_28"
+        id="usa-banner--28"
       >
         <div
           class="ds-c-usa-banner__guidance-item"
@@ -2259,7 +2259,7 @@ exports[`Header renders logged-in header without firstName 1`] = `
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--building-circle ds-c-usa-banner__guidance-icon"
             focusable="false"
-            id="icon-33"
+            id="icon--33"
             viewBox="0 0 54 54"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -2304,7 +2304,7 @@ exports[`Header renders logged-in header without firstName 1`] = `
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--lock-circle ds-c-usa-banner__guidance-icon"
             focusable="false"
-            id="icon-34"
+            id="icon--34"
             viewBox="0 0 54 54"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -2340,7 +2340,7 @@ exports[`Header renders logged-in header without firstName 1`] = `
               aria-hidden="true"
               class="ds-c-icon ds-c-icon--lock ds-c-usa-banner__inline-lock-icon"
               focusable="false"
-              id="icon-35"
+              id="icon--35"
               viewBox="0 0 52 64"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -2474,7 +2474,7 @@ exports[`Header renders logged-in header without firstName 1`] = `
               aria-hidden="true"
               class="ds-c-icon ds-u-margin-right--1 ds-c-icon--menu"
               focusable="false"
-              id="icon-36"
+              id="icon--36"
               viewBox="0 0 448 512"
               xmlns="http://www.w3.org/2000/svg"
             >

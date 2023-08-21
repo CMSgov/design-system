@@ -91,16 +91,16 @@ exports[`ThirdPartyExternalLink renders external link 1`] = `
   External site link
   <svg
     aria-hidden="false"
-    aria-labelledby="icon-1__title"
+    aria-labelledby="icon--1__title"
     class="ds-c-icon ds-c-icon--external-link ds-c-external-link__icon"
     focusable="false"
-    id="icon-1"
+    id="icon--1"
     role="img"
     viewBox="0 0 512 512"
     xmlns="http://www.w3.org/2000/svg"
   >
     <title
-      id="icon-1__title"
+      id="icon--1__title"
     >
       This link goes to an external site
     </title>

@@ -6,7 +6,7 @@ import { AddIcon } from './AddIcon';
 describe('SvgIcon', () => {
   const renderSvgIcon = (overrideProps?) => {
     return render(
-      <SvgIcon ariaHidden={false} title="test icon" id="test-icon" {...overrideProps}>
+      <SvgIcon ariaHidden={false} title="test icon" id="static-id" {...overrideProps}>
         <path />
       </SvgIcon>
     );
@@ -30,7 +30,7 @@ describe('SvgIcon', () => {
       const iconEl = screen.getByRole('img');
 
       expect(iconEl).toBeDefined();
-      expect(iconEl.getAttribute('aria-labelledby')).toEqual('test-icon__title');
+      expect(iconEl.getAttribute('aria-labelledby')).toEqual('static-id__title');
     });
 
     it('renders title', () => {
@@ -43,7 +43,7 @@ describe('SvgIcon', () => {
       renderSvgIcon({ description: 'i am a description of the svg' });
       const iconEl = screen.getByRole('img');
 
-      expect(iconEl.getAttribute('aria-labelledby')).toEqual('test-icon__title test-icon__desc');
+      expect(iconEl.getAttribute('aria-labelledby')).toEqual('static-id__title static-id__desc');
     });
   });
 

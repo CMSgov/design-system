@@ -68,7 +68,7 @@ exports[`Alert renders alert 1`] = `
     aria-hidden="true"
     class="ds-c-icon ds-c-icon--info-circle ds-c-alert__icon"
     focusable="false"
-    id="icon-1"
+    id="icon--1"
     viewBox="37 2 135 135"
     xmlns="http://www.w3.org/2000/svg"
   >

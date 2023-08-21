@@ -1,7 +1,6 @@
 import React from 'react';
-import { useState } from 'react';
 import classNames from 'classnames';
-import uniqueId from 'lodash/uniqueId';
+import useId from '../utilities/useId';
 
 export interface SvgIconProps {
   /**
@@ -60,9 +59,9 @@ export function SvgIcon({
 }: Omit<React.SVGProps<SVGSVGElement>, OmitProps> & SvgIconProps): React.ReactElement {
   const svgClasses = classNames('ds-c-icon', { 'ds-c-icon--inverse': inversed }, className);
 
-  const [iconId] = useState(id || uniqueId('icon-'));
-  const titleId = `${iconId}__title`;
-  const descriptionId = `${iconId}__desc`;
+  const rootId = useId('icon--', id);
+  const titleId = `${rootId}__title`;
+  const descriptionId = `${rootId}__desc`;
   const ariaLabelledBy = description ? `${titleId} ${descriptionId}` : titleId;
   const isSrVisible = !ariaHidden;
   const screenReaderProps = {};
@@ -76,7 +75,7 @@ export function SvgIcon({
       aria-hidden={ariaHidden}
       className={svgClasses}
       focusable={false}
-      id={iconId}
+      id={rootId}
       viewBox={viewBox}
       xmlns="http://www.w3.org/2000/svg"
       {...screenReaderProps}

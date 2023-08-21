@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import classNames from 'classnames';
-import uniqueId from 'lodash/uniqueId';
+import useId from '../utilities/useId';
 import { t } from '../i18n';
 import {
   LockCircleIcon,
@@ -30,7 +30,7 @@ export interface UsaBannerProps {
 export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBannerProps) => {
   const [isBannerOpen, setBannerOpen] = useState<boolean>(false);
   const classes = classNames('ds-c-usa-banner', props.className);
-  const id = props.id || uniqueId('gov-banner_');
+  const id = useId('usa-banner--', props.id);
 
   const toggleBanner = () => {
     setBannerOpen(!isBannerOpen);

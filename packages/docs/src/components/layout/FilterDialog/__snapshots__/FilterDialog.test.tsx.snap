@@ -27,16 +27,16 @@ exports[`FilterDialog renders a dialog 1`] = `
       >
         <svg
           aria-hidden="false"
-          aria-labelledby="icon-2__title"
+          aria-labelledby="icon--2__title"
           class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin "
           focusable="false"
-          id="icon-2"
+          id="icon--2"
           role="img"
           viewBox="-2 -2 18 18"
           xmlns="http://www.w3.org/2000/svg"
         >
           <title
-            id="icon-2__title"
+            id="icon--2__title"
           >
             Close
           </title>
