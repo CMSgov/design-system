@@ -18,7 +18,7 @@ export interface DrawerProps {
   children: React.ReactNode;
   className?: string;
   footerBody?: React.ReactNode;
-  footerTitle?: string;
+  footerTitle?: React.ReactNode;
   /**
    * Enables focus trap functionality within Drawer.
    */
@@ -26,7 +26,7 @@ export interface DrawerProps {
   /**
    * Text for the Drawer heading. Required because the `heading` will be focused on mount.
    */
-  heading: string | React.ReactNode;
+  heading: React.ReactNode;
   /**
    * A unique `id` to be used on heading element to label multiple instances of Drawer.
    */
