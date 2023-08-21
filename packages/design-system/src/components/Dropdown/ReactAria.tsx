@@ -7,16 +7,6 @@ import type { OverlayTriggerState } from 'react-stately';
 import { useButton } from 'react-aria';
 import { useListBox, useOption } from 'react-aria';
 
-function Button(props) {
-  const ref = props.buttonRef;
-  const { buttonProps } = useButton(props, ref);
-  return (
-    <button {...buttonProps} ref={ref} style={props.style}>
-      {props.children}
-    </button>
-  );
-}
-
 interface PopoverProps extends Omit<AriaPopoverProps, 'popoverRef'> {
   children: React.ReactNode;
   state: OverlayTriggerState;
@@ -80,7 +70,11 @@ function ListBox(props) {
 
 function Option({ item, state }) {
   const ref = React.useRef(null);
-  const { optionProps, isSelected, isFocused, isDisabled } = useOption({ key: item.key }, state, ref);
+  const { optionProps, isSelected, isFocused, isDisabled } = useOption(
+    { key: item.key },
+    state,
+    ref
+  );
 
   return (
     <li
@@ -110,6 +104,7 @@ function Select(props) {
   // Get props for child elements from useSelect
   const ref = React.useRef(null);
   const { labelProps, triggerProps, valueProps, menuProps } = useSelect(props, state, ref);
+  const { buttonProps } = useButton(triggerProps, ref);
 
   return (
     <div style={{ display: 'inline-block' }}>
@@ -121,14 +116,14 @@ function Select(props) {
         label={props.label}
         name={props.name}
       />
-      <Button {...triggerProps} buttonRef={ref} style={{ height: 30, fontSize: 14 }}>
+      <button {...buttonProps} ref={ref}>
         <span {...valueProps}>
           {state.selectedItem ? state.selectedItem.rendered : 'Select an option'}
         </span>
         <span aria-hidden="true" style={{ paddingLeft: 5 }}>
           ▼
         </span>
-      </Button>
+      </button>
       {state.isOpen && (
         <Popover state={state} triggerRef={ref} placement="bottom start">
           <ListBox {...menuProps} state={state} />
