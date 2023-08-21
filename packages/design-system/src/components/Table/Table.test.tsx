@@ -40,6 +40,12 @@ describe('Table', function () {
     expect(screen.getByRole('table')).toHaveClass('ds-c-table--striped');
   });
 
+  it('accepts custom id', () => {
+    makeTable({ id: 'static-id', scrollable: true });
+    const el = screen.getByRole('region');
+    expect(el).toMatchSnapshot();
+  });
+
   it('applies responsive stacked table', () => {
     makeTable({ stackable: true, stackableBreakpoint: 'lg' });
     const table = screen.getByRole('table');
