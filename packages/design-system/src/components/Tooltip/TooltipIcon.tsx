@@ -14,6 +14,7 @@ export const TooltipIcon = ({ inversed, ...iconProps }: TooltipIconProps): React
   return (
     <span className="ds-c-tooltip-icon__container">
       <InfoCircleIconThin
+        id={iconId}
         className={classNames('ds-c-tooltip-icon', {
           'ds-c-tooltip-icon--inverse': inversed,
         })}

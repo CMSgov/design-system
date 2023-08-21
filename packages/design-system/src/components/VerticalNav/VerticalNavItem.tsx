@@ -72,6 +72,7 @@ export interface VerticalNavItemProps {
 export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement => {
   const rootId = useId('vertical-nav-item--', props.id);
   const subnavId = `${rootId}__subnav`;
+  const iconId = `${rootId}__icon`;
 
   const [collapsed, setCollapsed] = useState(props.defaultCollapsed);
 
@@ -167,6 +168,7 @@ export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement
         selected={isSelected()}
         subnavId={subnavId}
         url={props.url}
+        iconId={iconId}
       />
       {hasSubnav() && (
         <VerticalNav

@@ -39,7 +39,7 @@ exports[`SvgIcon wrapper icon can pass through additional props 1`] = `
   class="ds-c-icon ds-c-icon--add "
   data-testid="addIconTest"
   focusable="false"
-  id="icon--1"
+  id="static-id"
   viewBox="3 3 18 18"
   xmlns="http://www.w3.org/2000/svg"
 >

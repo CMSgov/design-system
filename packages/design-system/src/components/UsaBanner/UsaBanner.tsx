@@ -30,7 +30,14 @@ export interface UsaBannerProps {
 export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBannerProps) => {
   const [isBannerOpen, setBannerOpen] = useState<boolean>(false);
   const classes = classNames('ds-c-usa-banner', props.className);
-  const id = useId('usa-banner--', props.id);
+  const rootId = useId('usa-banner--', props.id);
+  const panelId = `${rootId}__panel`;
+  const flagIconId = `${rootId}__flag-icon`;
+  const domainIconId = `${rootId}__domain-icon`;
+  const securityIconId = `${rootId}__security-icon`;
+  const inlineSecurityIconId = `${rootId}__inline-security-icon`;
+  const closeIconId = `${rootId}__close-icon`;
+  const chevronIconId = `${rootId}__chevron-icon`;
 
   const toggleBanner = () => {
     setBannerOpen(!isBannerOpen);
@@ -40,6 +47,7 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
     <>
       {t('usaBanner.bannerActionText')}
       <ArrowIcon
+        id={chevronIconId}
         direction={isBannerOpen ? 'up' : 'down'}
         className="ds-c-usa-banner__action-icon"
       />
@@ -55,7 +63,7 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
           isBannerOpen && 'ds-c-usa-banner__header--expanded'
         )}
       >
-        <UsaFlagIcon className="ds-c-usa-banner__header-icon" />
+        <UsaFlagIcon id={flagIconId} className="ds-c-usa-banner__header-icon" />
         <p className="ds-c-usa-banner__header-text">{t('usaBanner.bannerText')}</p>
         {/* This is display text for mobile/tablet only; display: none when on larger viewports */}
         <p
@@ -72,7 +80,7 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
           onClick={toggleBanner}
           className="ds-c-usa-banner__button"
           aria-expanded={isBannerOpen}
-          aria-controls={id}
+          aria-controls={panelId}
         >
           {/* This is screen reader-only text on mobile/tablet; this is the trigger button on larger viewports */}
           <span className="ds-c-usa-banner__button-text ds-u-md-display--flex ds-u-align-items--center">
@@ -81,15 +89,15 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
 
           {/* This is the trigger button for mobile/tablet viewports only; display:none when on larger viewports */}
           <span className="ds-c-usa-banner__button-icon-container" hidden={!isBannerOpen}>
-            <CloseIconThin className="ds-c-usa-banner__button-icon" />
+            <CloseIconThin id={closeIconId} className="ds-c-usa-banner__button-icon" />
           </span>
         </button>
       </header>
       {/* Util classes used to hardcode font treatment across themes */}
       <div className="ds-c-usa-banner__guidance [ ds-u-leading--base ds-u-font-size--base ]">
-        <div id={id} className="ds-c-usa-banner__guidance-container" hidden={!isBannerOpen}>
+        <div id={panelId} className="ds-c-usa-banner__guidance-container" hidden={!isBannerOpen}>
           <div className="ds-c-usa-banner__guidance-item">
-            <BuildingCircleIcon className="ds-c-usa-banner__guidance-icon" />
+            <BuildingCircleIcon id={domainIconId} className="ds-c-usa-banner__guidance-icon" />
             <p className="ds-c-usa-banner__guidance-text">
               <strong>{t('usaBanner.domainHeaderText')}</strong>
               <br />
@@ -98,13 +106,15 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
             </p>
           </div>
           <div className="ds-c-usa-banner__guidance-item">
-            <LockCircleIcon className="ds-c-usa-banner__guidance-icon" />
+            <LockCircleIcon id={securityIconId} className="ds-c-usa-banner__guidance-icon" />
             <p className="ds-c-usa-banner__guidance-text">
               <strong>{t('usaBanner.httpsHeaderText')}</strong>
               <br />
               {t('usaBanner.httpsAText')} <strong> {t('usaBanner.httpsLockText')} </strong> (
-              <LockIcon className="ds-c-usa-banner__inline-lock-icon" />){' '}
-              {t('usaBanner.httpsOrText')} <strong>{t('usaBanner.httpsText')}</strong>{' '}
+              <LockIcon
+                id={inlineSecurityIconId}
+                className="ds-c-usa-banner__inline-lock-icon"
+              />) {t('usaBanner.httpsOrText')} <strong>{t('usaBanner.httpsText')}</strong>{' '}
               {t('usaBanner.httpsDetailText')}
             </p>
           </div>

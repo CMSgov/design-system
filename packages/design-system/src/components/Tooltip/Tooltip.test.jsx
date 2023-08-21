@@ -12,6 +12,7 @@ const defaultProps = {
   className: 'ds-c-tooltip__trigger-icon',
   title: 'Tooltip body content',
   ariaLabel: triggerAriaLabelText,
+  id: 'static-id',
 };
 
 function renderTooltip(customProps = {}) {
@@ -28,11 +29,6 @@ describe('Tooltip', function () {
 
   it('renders inverse tooltip', () => {
     const { asFragment } = renderTooltip({ inversed: true });
-    expect(asFragment()).toMatchSnapshot();
-  });
-
-  it('renders custom id', () => {
-    const { asFragment } = renderTooltip({ id: 'static-id' });
     expect(asFragment()).toMatchSnapshot();
   });
 

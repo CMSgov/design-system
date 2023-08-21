@@ -37,7 +37,7 @@ exports[`Table applies responsive stacked table 1`] = `
 
 exports[`Table applies scrollable prop to table 1`] = `
 <div
-  aria-labelledby="table-caption--8"
+  aria-labelledby="static-id"
   aria-live="polite"
   aria-relevant="additions"
   class="ds-c-table__wrapper"
@@ -49,7 +49,7 @@ exports[`Table applies scrollable prop to table 1`] = `
   >
     <caption
       class="ds-c-table__caption"
-      id="table-caption--8"
+      id="static-id"
     >
       A great caption
     </caption>

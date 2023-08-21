@@ -19,7 +19,7 @@ describe('SvgIcon', () => {
   });
 
   it('wrapper icon can pass through additional props', () => {
-    render(<AddIcon data-testid="addIconTest" />);
+    render(<AddIcon id="static-id" data-testid="addIconTest" />);
     const iconEl = screen.getByTestId('addIconTest');
     expect(iconEl).toMatchSnapshot();
   });
