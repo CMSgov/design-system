@@ -104,7 +104,6 @@ exports[`ActionMenu logged-in version renders logged-in version 1`] = `
       aria-hidden="true"
       class="ds-c-icon ds-u-margin-right--1 ds-c-icon--menu"
       focusable="false"
-      id="icon--1"
       viewBox="0 0 448 512"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -136,7 +135,6 @@ exports[`ActionMenu logged-in version set aria-expanded to true 1`] = `
       aria-hidden="true"
       class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin ds-u-margin-right--1"
       focusable="false"
-      id="icon--2"
       viewBox="-2 -2 18 18"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -181,7 +179,6 @@ exports[`ActionMenu logged-out version renders logged-out version 1`] = `
       aria-hidden="true"
       class="ds-c-icon ds-u-margin-right--1 ds-c-icon--menu"
       focusable="false"
-      id="icon--4"
       viewBox="0 0 448 512"
       xmlns="http://www.w3.org/2000/svg"
     >

@@ -31,7 +31,6 @@ exports[`Step renders completed text and an edit link for completed steps 1`] = 
         aria-hidden="true"
         class="ds-c-icon ds-c-icon--check ds-c-icon-color--success"
         focusable="false"
-        id="icon--2"
         viewBox="0 0 16 12"
         xmlns="http://www.w3.org/2000/svg"
       >
