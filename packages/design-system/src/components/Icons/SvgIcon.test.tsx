@@ -6,7 +6,7 @@ import { AddIcon } from './AddIcon';
 describe('SvgIcon', () => {
   const renderSvgIcon = (overrideProps?) => {
     return render(
-      <SvgIcon ariaHidden={false} title="test icon" id="static-id" {...overrideProps}>
+      <SvgIcon ariaHidden={false} id="static-id" title="test icon" {...overrideProps}>
         <path />
       </SvgIcon>
     );
@@ -19,7 +19,7 @@ describe('SvgIcon', () => {
   });
 
   it('wrapper icon can pass through additional props', () => {
-    render(<AddIcon id="static-id" data-testid="addIconTest" />);
+    render(<AddIcon data-testid="addIconTest" />);
     const iconEl = screen.getByTestId('addIconTest');
     expect(iconEl).toMatchSnapshot();
   });
@@ -52,6 +52,12 @@ describe('SvgIcon', () => {
       renderSvgIcon({ ariaHidden: true });
       const iconEl = screen.queryByRole('img');
       expect(iconEl).toBe(null);
+    });
+
+    it('does not have an id', () => {
+      renderSvgIcon({ 'data-testid': 'testId', ariaHidden: true });
+      const iconEl = screen.getByTestId('testId');
+      expect(iconEl).not.toHaveAttribute('id');
     });
 
     it('renders without title or description"', () => {
