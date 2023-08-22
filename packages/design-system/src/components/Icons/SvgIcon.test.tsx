@@ -6,14 +6,14 @@ import { AddIcon } from './AddIcon';
 describe('SvgIcon', () => {
   const renderSvgIcon = (overrideProps?) => {
     return render(
-      <SvgIcon ariaHidden={false} id="static-id" title="test icon" {...overrideProps}>
+      <SvgIcon ariaHidden={false} title="test icon" {...overrideProps}>
         <path />
       </SvgIcon>
     );
   };
 
   it('passes through additional props', () => {
-    renderSvgIcon({ 'data-testid': 'iconTest' });
+    renderSvgIcon({ 'data-testid': 'iconTest', id: 'static-id' });
     const iconEl = screen.getByTestId('iconTest');
     expect(iconEl).toMatchSnapshot();
   });
@@ -26,7 +26,7 @@ describe('SvgIcon', () => {
 
   describe('when ariaHidden is false', () => {
     it('shows accessibility attributes', () => {
-      renderSvgIcon();
+      renderSvgIcon({ id: 'static-id' });
       const iconEl = screen.getByRole('img');
 
       expect(iconEl).toBeDefined();
@@ -34,13 +34,13 @@ describe('SvgIcon', () => {
     });
 
     it('renders title', () => {
-      renderSvgIcon();
+      renderSvgIcon({ id: 'static-id' });
       const iconEl = screen.getByTitle('test icon');
       expect(iconEl).toBeDefined();
     });
 
     it('updates aria-labelledby if description exists', () => {
-      renderSvgIcon({ description: 'i am a description of the svg' });
+      renderSvgIcon({ description: 'i am a description of the svg', id: 'static-id' });
       const iconEl = screen.getByRole('img');
 
       expect(iconEl.getAttribute('aria-labelledby')).toEqual('static-id__title static-id__desc');

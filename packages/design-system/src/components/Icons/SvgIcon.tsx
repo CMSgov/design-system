@@ -75,7 +75,7 @@ export function SvgIcon({
       aria-hidden={ariaHidden}
       className={svgClasses}
       focusable={false}
-      id={isSrVisible && rootId}
+      id={id ?? isSrVisible ? rootId : undefined}
       viewBox={viewBox}
       xmlns="http://www.w3.org/2000/svg"
       {...screenReaderProps}
