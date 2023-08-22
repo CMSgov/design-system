@@ -16,7 +16,7 @@ export interface IdleTimeoutProps {
   /**
    * The heading text for the warning dialog.
    */
-  heading?: string;
+  heading?: React.ReactNode;
   /**
    * The text for the button that ends the session in warning dialog.
    */
@@ -29,7 +29,7 @@ export interface IdleTimeoutProps {
    * A formatting function that returns the string to be used in the warning modal.
    * The formatting function is provided the timeTilTimeout (in minutes).
    */
-  formatMessage?: (timeTilTimeout: number) => string | React.ReactNode;
+  formatMessage?: (timeTilTimeout: number) => React.ReactNode;
   /**
    * Optional function that is called when the user chooses to keep the session alive. This function is called by the 'continue session' button or the 'close' button.
    * The IdleTimeout component will reset the countdown internally.
