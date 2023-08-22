@@ -33,6 +33,7 @@ exports[`Dropdown accepts optgroup children 1`] = `
             aria-hidden="true"
             class="ds-c-icon ds-u-font-size--sm"
             focusable="false"
+            id="static-id__selected-icon"
             viewBox="0 0 448 512"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -145,6 +146,7 @@ exports[`Dropdown dropdown matches snapshot 1`] = `
         aria-hidden="true"
         class="ds-c-icon ds-u-font-size--sm"
         focusable="false"
+        id="static-id__caret-icon"
         viewBox="0 0 448 512"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -184,6 +186,7 @@ exports[`Dropdown dropdown matches snapshot 1`] = `
             aria-hidden="true"
             class="ds-c-icon ds-u-font-size--sm"
             focusable="false"
+            id="static-id__selected-icon"
             viewBox="0 0 448 512"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -258,6 +261,7 @@ exports[`Dropdown supports bottom placed error 1`] = `
           aria-hidden="true"
           class="ds-c-icon ds-u-font-size--sm"
           focusable="false"
+          id="static-id__caret-icon"
           viewBox="0 0 448 512"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -289,6 +293,7 @@ exports[`Dropdown supports bottom placed error 1`] = `
               aria-hidden="true"
               class="ds-c-icon ds-u-font-size--sm"
               focusable="false"
+              id="static-id__selected-icon"
               viewBox="0 0 448 512"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -311,6 +316,7 @@ exports[`Dropdown supports bottom placed error 1`] = `
         aria-hidden="true"
         class="ds-c-icon ds-c-icon--alert-circle "
         focusable="false"
+        id="1_error__icon"
         viewBox="36 -12 186 186"
         xmlns="http://www.w3.org/2000/svg"
       >
