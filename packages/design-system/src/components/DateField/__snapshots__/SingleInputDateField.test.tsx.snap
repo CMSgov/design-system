@@ -111,16 +111,16 @@ exports[`SingleInputDateField with picker renders with picker 1`] = `
       >
         <svg
           aria-hidden="false"
-          aria-labelledby="icon-21__title"
+          aria-labelledby="icon--21__title"
           class="ds-c-icon ds-c-icon--calendar "
           focusable="false"
-          id="icon-21"
+          id="icon--21"
           role="img"
           viewBox="0 0 448 512"
           xmlns="http://www.w3.org/2000/svg"
         >
           <title
-            id="icon-21__title"
+            id="icon--21__title"
           >
             Open calendar picker dialog
           </title>
