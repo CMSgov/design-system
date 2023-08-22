@@ -120,8 +120,6 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   const labelId = props.labelId ?? `${id}__label`;
   const buttonContentId = `${id}__button-content`;
   const menuId = `${id}__menu`;
-  const caretIconId = `${id}__caret-icon`;
-  const selectedIconId = `${id}__selected-icon`;
 
   // Draw out certain props that we don't want to pass through as attributes
   const {
@@ -283,7 +281,6 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
               title="selected option icon"
               viewBox="0 0 448 512"
               className="ds-u-font-size--sm"
-              id={selectedIconId}
             >
               {selectedIcon}
             </SvgIcon>
@@ -334,7 +331,6 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
             title="expanded indicator icon"
             viewBox="0 0 448 512"
             className="ds-u-font-size--sm"
-            id={caretIconId}
           >
             {caretIcon}
           </SvgIcon>
