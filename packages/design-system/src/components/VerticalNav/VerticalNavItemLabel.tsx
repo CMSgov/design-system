@@ -75,9 +75,7 @@ export const VerticalNavItemLabel = (props: VerticalNavItemLabelProps): React.Re
   return (
     <LabelComponent {...commonProps} {...otherProps}>
       {props.label}
-      {props.hasSubnav && (
-        <ArrowIcon id={props.iconId} direction={props.collapsed ? 'down' : 'up'} />
-      )}
+      {props.hasSubnav && <ArrowIcon direction={props.collapsed ? 'down' : 'up'} />}
     </LabelComponent>
   );
 };
