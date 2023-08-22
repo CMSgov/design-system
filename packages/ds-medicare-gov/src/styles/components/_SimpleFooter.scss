@@ -52,80 +52,40 @@
 }
 
 .m-c-footer__identityRow {
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: center;
-  margin-bottom: $spacer-1;
-  padding-bottom: $spacer-1;
-  padding-top: $spacer-3;
+  align-items: center;
+  display: grid;
+  gap: $spacer-2;
+  grid-template-areas: 'mgov hhs' 'address address';
+  grid-template-columns: 1fr minmax(auto, 3rem);
+  padding-block: $spacer-3 $spacer-1;
 
-  @media screen and (min-width: $media-width-sm) {
-    flex-direction: row;
-    height: auto;
-    justify-content: space-between;
+  @media (min-width: $media-width-sm) {
+    grid-template-areas: 'mgov mgov' 'hhs address';
+    grid-template-columns: min-content minmax(min-content, 45ch);
   }
 
-  @media screen and (min-width: $media-width-md) {
-    align-items: center;
-  }
-
-  @media screen and (min-width: $media-width-lg) {
-    justify-content: space-between;
-  }
-
-  > * {
-    display: flex;
-    justify-content: center;
-
-    @media screen and (min-width: $media-width-md) {
-      align-items: center;
-    }
-  }
-
-  svg {
-    max-width: 100%;
-
-    .MgovLogoMedicare {
-      fill: var(--color-base) !important;
-    }
-  }
-
-  &--reverse {
-    flex-direction: column-reverse;
-
-    @media screen and (min-width: $media-width-sm) {
-      flex-direction: row;
-    }
+  @media (min-width: $media-width-lg) {
+    grid-template-areas: 'mgov hhs address';
+    grid-template-columns: 1fr max-content minmax(min-content, 411px);
   }
 }
 
-.m-c-footer__identityContent {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: $spacer-2;
+.m-c-footer__medicare-logo {
+  grid-area: mgov;
+  max-width: 100%;
 
-  @media screen and (min-width: $media-width-sm) {
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 0;
+  .MgovLogoMedicare {
+    fill: currentColor;
   }
+}
+
+.m-c-footer__hhs-logo {
+  grid-area: hhs;
 }
 
 .m-c-footer__contactAddress {
-  @extend .mct-p3;
   font-size: var(--font-size-sm);
-  line-height: 20px;
-  margin-bottom: $spacer-1;
-  margin-top: $spacer-2;
-  max-width: 411px;
-
-  @media screen and (min-width: $media-width-sm) {
-    margin-top: 0;
-  }
-
-  @media screen and (min-width: $media-width-md) {
-    margin-left: $spacer-3;
-  }
+  grid-area: address;
+  line-height: 1.25;
+  text-wrap: balance;
 }
