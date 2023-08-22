@@ -7,7 +7,6 @@ function renderVerticalNavItemLabel(customProps = {}) {
   const props: VerticalNavItemLabelProps = {
     label: 'Foo',
     subnavId: 'foo-subnav',
-    iconId: 'static-id',
     ...customProps,
   };
 
