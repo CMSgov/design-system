@@ -19,7 +19,6 @@ export interface VerticalNavItemLabelProps {
   selected?: boolean;
   subnavId: string;
   url?: string;
-  iconId?: string;
 }
 
 const DEFAULT_COMPONENT_TYPE = 'div';
