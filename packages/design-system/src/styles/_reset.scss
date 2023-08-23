@@ -130,8 +130,10 @@ hr {
 // that create the exception to the default styling because there are other
 // legitimate roles that could be applied like `role="listbox"`.
 
-ol:not([role]),
-ul:not([role]) {
+ol:not(:where([role])),
+ul:not(:where([role])),
+ol:where(.ds-c-list--bare),
+ul:where(.ds-c-list--bare) {
   // Relying on `flex` to set `gap` spacing size on li elements
   // `gap` ensures even spacing and doesn't interfere with layout
   // if list given a `row` direction
@@ -149,8 +151,8 @@ ul:not([role]) {
 }
 
 li {
-  > ul:not([role]),
-  > ol:not([role]) {
+  > ul:not(:where([role])),
+  > ol:not(:where([role])) {
     margin-block: 0.5em 0;
   }
 }
