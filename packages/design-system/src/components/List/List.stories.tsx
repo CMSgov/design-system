@@ -54,13 +54,3 @@ export const AllListsOnDark: Story = {
     layout: 'fullscreen',
   },
 };
-
-export const unorderedList: Story = {
-  render: () => <UnorderedList />,
-};
-export const orderedList: Story = {
-  render: () => <OrderedList />,
-};
-export const unstyledList: Story = {
-  render: () => <BareList />,
-};
