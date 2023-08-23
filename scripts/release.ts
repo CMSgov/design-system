@@ -34,7 +34,8 @@ function readLastPublishCommit() {
 async function undoLastCommit() {
   const { commitHash, tags } = readLastPublishCommit();
 
-  console.log(c.red('The following tags will be deleted locally and on origin\n'));
+  console.log(c.red('The last publish commit will be deleted locally and on origin.'));
+  console.log(c.red('The following tags will also be deleted locally and on origin:\n'));
   console.log(tags.join('\n'));
   console.log('\n');
 
@@ -51,9 +52,9 @@ async function undoLastCommit() {
   sh(`git push origin --delete ${tagsOneLine}`);
   console.log(c.green('Tags deleted.'));
 
-  sh(`git revert ${commitHash} --no-edit`);
-  sh('git push origin');
-  console.log(c.green('Publish commit reverted.'));
+  sh(`git reset --hard ${commitHash}~1`);
+  sh(`git push --force origin ${getCurrentBranch()}`);
+  console.log(c.green('Publish commit deleted.'));
 }
 
 async function bumpVersions() {
