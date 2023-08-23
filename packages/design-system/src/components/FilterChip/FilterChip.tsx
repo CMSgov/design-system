@@ -76,8 +76,6 @@ export class FilterChip extends React.Component<FilterChipProps> {
       useAlternateIcon ? 'ds-c-filter-chip__clear-icon-alternate-container' : ''
     );
 
-    const iconId = `${this.filterChipId}__icon`;
-
     return (
       <button
         id={this.filterChipId}
@@ -97,7 +95,7 @@ export class FilterChip extends React.Component<FilterChipProps> {
           {ariaClearLabel ?? t('filterChip.ariaClearLabel')} {t('filterChip.filter', { label })} .
         </span>
         <span className={iconContainerClassNames}>
-          {useAlternateIcon ? <CloseIconThin id={iconId} /> : <CloseIcon id={iconId} />}
+          {useAlternateIcon ? <CloseIconThin /> : <CloseIcon />}
         </span>
       </button>
     );

@@ -124,7 +124,6 @@ export const Dialog = (props: DialogProps) => {
   const rootId = useId('dialog--', id);
   const headingRef = useDialogAnalytics(props);
   const headingId = `${rootId}__heading`;
-  const closeIconId = `${rootId}__close-icon`;
 
   const dialogClassNames = classNames('ds-c-dialog', className, size && `ds-c-dialog--${size}`);
   const headerClassNames = classNames('ds-c-dialog__header', headerClassName);
@@ -176,7 +175,7 @@ export const Dialog = (props: DialogProps) => {
             size={closeButtonSize}
             variation={closeButtonVariation}
           >
-            <CloseIconComponent id={closeIconId} />
+            <CloseIconComponent />
             {closeButtonText ?? t('dialog.closeButtonText')}
           </Button>
         </header>

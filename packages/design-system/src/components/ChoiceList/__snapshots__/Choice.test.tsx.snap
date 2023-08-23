@@ -65,7 +65,6 @@ exports[`Choice applies errorMessage to label 1`] = `
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--alert-circle "
             focusable="false"
-            id="static-id-error__icon"
             viewBox="36 -12 186 186"
             xmlns="http://www.w3.org/2000/svg"
           >
