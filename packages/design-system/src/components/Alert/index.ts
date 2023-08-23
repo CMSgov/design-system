@@ -1,2 +1,2 @@
 export { default as Alert } from './Alert';
-export type Bob = 'hello world';
+export const Bob = 'hello world';
