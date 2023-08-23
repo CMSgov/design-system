@@ -129,6 +129,10 @@ hr {
 // Note that we did not specify `role="list"` explicitly in the selectors
 // that create the exception to the default styling because there are other
 // legitimate roles that could be applied like `role="listbox"`.
+//
+// Note also that `.ds-c-list--bare` is a special case where we do want to
+// inherit the normalized list styles for standardized spacing but then remove
+// the list styles of bullets or numbers.
 
 ol:not(:where([role])),
 ul:not(:where([role])),
