@@ -1,3 +1,5 @@
+import { useId } from 'react';
+
 export * from './Accordion';
 export * from './Alert';
 export * from './Autocomplete';
@@ -32,3 +34,4 @@ export * from './Icons';
 export * from './analytics';
 export * from './flags';
 export * from './i18n';
+export { default as useId } from './utilities/useId';
