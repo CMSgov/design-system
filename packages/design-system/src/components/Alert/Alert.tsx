@@ -137,6 +137,7 @@ export const Alert: React.FC<AlertProps> = (props: AlertProps) => {
         return <InfoCircleIcon className={iconClass} />;
     }
   }
+  console.log('hello world');
 
   return (
     <div
