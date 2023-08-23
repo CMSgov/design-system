@@ -96,13 +96,13 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
     toDate,
     toMonth,
     toYear,
-    id,
     ...remainingProps
   } = props;
   const withPicker =
     (fromDate != null || fromMonth != null || Number.isInteger(fromYear)) &&
     (toDate != null || toMonth != null || Number.isInteger(toYear));
   const [pickerVisible, setPickerVisible] = useState(false);
+  const id = useId('date-field--', props.id);
 
   // Set up change handlers
   function handleInputChange(event) {
@@ -126,7 +126,7 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
     ),
     labelComponent: 'label',
     wrapperIsFieldset: false,
-    id: useId('date-field--', id),
+    id,
   });
   const inputRef = useRef<HTMLInputElement>();
   const { labelMask, inputProps } = useLabelMask(DATE_MASK, {
@@ -169,6 +169,7 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
             <CalendarIcon
               ariaHidden={false}
               title={t(pickerVisible ? 'singleInputDateField.close' : 'singleInputDateField.open')}
+              id={`${id}__icon`}
             />
           </button>
         )}
