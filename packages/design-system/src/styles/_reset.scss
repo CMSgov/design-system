@@ -131,9 +131,7 @@ hr {
 // legitimate roles that could be applied like `role="listbox"`.
 
 ol:not([role]),
-ul:not([role]),
-ol:where(.ds-c-list--bare),
-ul:where(.ds-c-list--bare) {
+ul:not([role]) {
   // Relying on `flex` to set `gap` spacing size on li elements
   // `gap` ensures even spacing and doesn't interfere with layout
   // if list given a `row` direction
