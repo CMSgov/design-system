@@ -60,7 +60,7 @@ async function undoLastCommit() {
 async function bumpVersions() {
   console.log(c.green('Bumping package versions for release...'));
   const preBumpHash = getCurrentCommit();
-  sh('yarn lerna version --no-push --exact');
+  sh('npx lerna version --no-push --exact');
   const postBumpHash = getCurrentCommit();
 
   if (preBumpHash === postBumpHash) {
@@ -128,7 +128,7 @@ async function draftReleaseNotes() {
     return;
   }
 
-  sh(`yarn release:notes`);
+  sh(`npx release:notes`);
 }
 
 function printNextSteps() {
@@ -145,7 +145,7 @@ function printNextSteps() {
 (async () => {
   // Get command line args
   const argv = yargs(hideBin(process.argv))
-    .scriptName('yarn release')
+    .scriptName('npx release')
     .options({
       undo: {
         alias: 'u',
