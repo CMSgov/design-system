@@ -123,6 +123,7 @@ async function draftReleaseNotes() {
   const yes = await confirm({ message: `Would you like to draft some release notes?` });
   if (!yes) {
     console.log(c.green('Skipping release notes.'));
+    console.log(`You can come back to this later by running 'yarn release:notes'.`);
     return;
   }
 
