@@ -75,7 +75,10 @@ const ActionMenu = function (props: ActionMenuProps) {
   } else if (props.links.length) {
     content = (
       <>
-        <ul className="hc-c-logged-out-links ds-c-list--bare ds-u-display--none ds-u-sm-display--flex">
+        <ul
+          role="list"
+          className="hc-c-logged-out-links ds-c-list--bare ds-u-display--none ds-u-sm-display--flex"
+        >
           {props.links.map((link) => {
             return (
               <li key={link.href} className="hc-c-logged-out-links__li">

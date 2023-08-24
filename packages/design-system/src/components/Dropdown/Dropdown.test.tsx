@@ -60,9 +60,13 @@ describe('Dropdown', () => {
     expect(button).toHaveClass('ds-c-field');
   });
 
-  it('adds size classes to wrapper element', () => {
-    const { container } = makeDropdown({ size: 'small' });
-    expect(container.querySelector('.ds-c-dropdown')).toHaveClass('ds-c-field--small');
+  it('adds size classes to the appropriate elements', () => {
+    makeDropdown({ size: 'small' });
+    const button = screen.getByRole('combobox');
+    userEvent.click(button);
+    const listContainer = screen.getByRole('listbox').parentElement;
+    expect(button).toHaveClass('ds-c-field--small');
+    expect(listContainer).toHaveClass('ds-c-field--small');
   });
 
   it('adds inverse class to button', () => {
@@ -143,8 +147,8 @@ describe('Dropdown', () => {
       </Dropdown>
     );
     userEvent.click(screen.getByRole('combobox'));
+    expect(screen.getAllByRole('option').length).toEqual(6);
     const list = screen.getByRole('listbox');
-    expect(list.children.length).toEqual(8); // Group headings + options
     expect(list).toMatchSnapshot();
   });
 
@@ -170,7 +174,9 @@ describe('Dropdown', () => {
     render(<Dropdown {...defaultProps} options={options} />);
     userEvent.click(screen.getByRole('combobox'));
     const list = screen.getByRole('listbox');
-    expect(list.children.length).toEqual(8); // Group headings + options
+    expect(list.children.length).toEqual(2); // Groups
+    const items = screen.getAllByRole('option');
+    expect(items.length).toEqual(6);
   });
 
   it('accepts option children', () => {

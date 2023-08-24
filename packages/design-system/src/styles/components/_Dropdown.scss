@@ -49,6 +49,7 @@
 .ds-c-dropdown__menu-container {
   --blur-radius: 17px;
   --clip-path-value: calc(-1 * var(--blur-radius));
+  --max-height: 320px;
 
   background-color: var(--autocomplete__background-color);
   border: var(--text-input__border-width) solid var(--text-input__border-color);
@@ -59,8 +60,7 @@
   // `clip-path` needed to hide `box-shadow` overlap in field. 17px is the `box-shadow` blur radius.
   clip-path: inset(0px var(--clip-path-value) var(--clip-path-value) var(--clip-path-value));
   margin-block-start: calc(-1 * var(--text-input__border-width));
-  max-height: 320px;
-  overflow-y: auto;
+  max-height: var(--max-height);
   position: absolute;
   width: 100%;
   z-index: var(--z-dialog);
@@ -72,21 +72,27 @@
 
 .ds-c-dropdown__menu {
   @include mixins.ds-unstyled-list;
-  gap: 0;
+  // Allows for keyboard navigation of dropdown options, i.e., scrolling through options via arrow keys
+  max-height: calc(var(--max-height) - var(--text-input__border-width));
+  overflow-y: auto;
 }
 
 // Base styles for grouped and individual dropdown elements
 .ds-c-dropdown__menu-item,
-.ds-c-dropdown__menu-item-group {
+.ds-c-dropdown__menu-item-group-label {
   cursor: default;
   padding: var(--text-input__padding);
 }
 
-.ds-c-dropdown__menu-item-group {
+.ds-c-dropdown__menu-item-group-label {
   font-weight: var(--font-weight-bold);
 }
 
-.ds-c-dropdown__menu--grouped .ds-c-dropdown__menu-item {
+.ds-c-dropdown__menu-item-group ul[role='presentation'] {
+  @include mixins.ds-unstyled-list;
+}
+
+.ds-c-dropdown__menu-item-group .ds-c-dropdown__menu-item {
   padding-inline-start: var(--dropdown-option-group__padding);
 }
 

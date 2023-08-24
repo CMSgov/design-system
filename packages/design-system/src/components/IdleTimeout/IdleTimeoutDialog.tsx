@@ -14,7 +14,7 @@ export interface IdleTimeoutDialogProps {
   /**
    * The heading text for the warning dialog.
    */
-  heading?: string;
+  heading?: React.ReactNode;
   /**
    * The text for the button that ends the session in warning dialog.
    */
@@ -27,7 +27,7 @@ export interface IdleTimeoutDialogProps {
    * The message text for the warning dialog.
    * Note that using the token `<timeToTimeout>` will be replaced in the message text with the number of minutes until timeout.
    */
-  message: string | React.ReactNode;
+  message: React.ReactNode;
   /**
    * Function that is called when the user select the 'close' button for the dialog
    */

@@ -1,14 +1,20 @@
 {
   "name": "@cmsgov/ds-cms-gov",
-  "version": "7.0.1",
-  "private": true,
+  "version": "7.0.6",
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "bin": {
+    "cmsds-migrate": "./scripts/cmsds-migrate/src/main.mjs"
+  },
   "description": "A design system for CMS.gov products",
-  "license": "CC0-1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/CMSgov/design-system",
     "directory": "packages/ds-cms-gov"
   },
+  "license": "SEE LICENSE IN LICENSE.md",
   "keywords": [
     "design-system",
     "cms.gov"
@@ -47,7 +53,7 @@
     "src"
   ],
   "dependencies": {
-    "@cmsgov/design-system": "7.0.1",
+    "@cmsgov/design-system": "7.0.6",
     "@types/react": "^18.2.6",
     "@types/react-dom": "^17.0.10"
   }
