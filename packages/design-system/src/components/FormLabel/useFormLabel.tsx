@@ -1,10 +1,9 @@
 import React from 'react';
-import { useRef } from 'react';
 import InlineError from '../InlineError/InlineError';
 import classNames from 'classnames';
-import uniqueId from 'lodash/uniqueId';
 import { FormLabelProps } from '../FormLabel/FormLabel';
 import { errorPlacementDefault } from '../flags';
+import useId from '../utilities/useId';
 
 // TODO: Reimplement focusTrigger in another place, like another hook
 
@@ -92,10 +91,9 @@ export interface UseFormLabelProps extends FormFieldProps {
  */
 export function useFormLabel<T extends UseFormLabelProps>(props: T) {
   // TODO: Once we're on React 18, we can use the `useId` hook
-  const generatedId = useRef(uniqueId('field_')).current;
-  const id = props.id ?? generatedId;
-  const labelId = props.labelId ?? `${id}-label`;
-  const errorId = props.errorId ?? `${id}-error`;
+  const id = useId('field--', props.id);
+  const labelId = props.labelId ?? `${id}__label`;
+  const errorId = props.errorId ?? `${id}__error`;
 
   const {
     className,

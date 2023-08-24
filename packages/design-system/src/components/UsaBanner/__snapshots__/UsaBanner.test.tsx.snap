@@ -8,7 +8,6 @@ exports[`UsaBanner renders correctly 1`] = `
     aria-hidden="true"
     class="ds-c-icon ds-c-icon--usa-flag ds-c-usa-banner__header-icon"
     focusable="false"
-    id="icon-2"
     viewBox="0 0 16 11"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -52,7 +51,6 @@ exports[`UsaBanner renders correctly 1`] = `
       class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
       direction="down"
       focusable="false"
-      id="icon-3"
       viewBox="0 0 320 512"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -63,7 +61,7 @@ exports[`UsaBanner renders correctly 1`] = `
     </svg>
   </p>
   <button
-    aria-controls="gov-banner_1"
+    aria-controls="static-id__panel"
     aria-expanded="false"
     class="ds-c-usa-banner__button"
     type="button"
@@ -77,7 +75,6 @@ exports[`UsaBanner renders correctly 1`] = `
         class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
         direction="down"
         focusable="false"
-        id="icon-4"
         viewBox="0 0 320 512"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -95,7 +92,6 @@ exports[`UsaBanner renders correctly 1`] = `
         aria-hidden="true"
         class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin ds-c-usa-banner__button-icon"
         focusable="false"
-        id="icon-5"
         viewBox="-2 -2 18 18"
         xmlns="http://www.w3.org/2000/svg"
       >

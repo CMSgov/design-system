@@ -1,12 +1,13 @@
 import React from 'react';
 import { FunctionComponent } from 'react';
-import uniqueId from 'lodash/uniqueId';
+import { useId } from '@cmsgov/design-system';
 
 export interface MedicaregovLogoProps {
-  width?: string;
-  height?: string;
   className?: string;
   fill?: string;
+  height?: string;
+  id?: string;
+  width?: string;
 }
 
 /**
@@ -17,8 +18,9 @@ const MedicaregovLogo: FunctionComponent<MedicaregovLogoProps> = ({
   width = '273',
   height = '39',
   className = '',
+  id = undefined,
 }) => {
-  const titleId = uniqueId('medicare-gov-');
+  const titleId = useId('medicare-gov-logo--', id);
 
   return (
     <svg

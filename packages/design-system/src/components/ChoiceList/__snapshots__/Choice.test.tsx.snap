@@ -8,14 +8,14 @@ exports[`Choice accepts a node as innerHTML 1`] = `
     >
       <input
         class="ds-c-choice"
-        id="checkbox_foo_9"
+        id="static-id"
         name="foo"
         type="checkbox"
         value="boo"
       />
       <label
         class="ds-c-label"
-        for="checkbox_foo_9"
+        for="static-id"
       >
         <span
           class=""
@@ -41,14 +41,14 @@ exports[`Choice applies errorMessage to label 1`] = `
     >
       <input
         class="ds-c-choice"
-        id="checkbox_foo_12"
+        id="static-id"
         name="foo"
         type="checkbox"
         value="boo"
       />
       <label
         class="ds-c-label"
-        for="checkbox_foo_12"
+        for="static-id"
       >
         <span
           class=""
@@ -59,13 +59,12 @@ exports[`Choice applies errorMessage to label 1`] = `
           aria-atomic="true"
           aria-live="assertive"
           class="ds-c-inline-error ds-c-field__error-message"
-          id="checkbox_foo_12-error"
+          id="static-id-error"
         >
           <svg
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--alert-circle "
             focusable="false"
-            id="icon-13"
             viewBox="36 -12 186 186"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -94,14 +93,14 @@ exports[`Choice has a hint and requirementLabel 1`] = `
     >
       <input
         class="ds-c-choice"
-        id="checkbox_foo_8"
+        id="static-id"
         name="foo"
         type="checkbox"
         value="boo"
       />
       <label
         class="ds-c-label"
-        for="checkbox_foo_8"
+        for="static-id"
       >
         <span
           class=""
@@ -127,14 +126,14 @@ exports[`Choice is a checkbox 1`] = `
     >
       <input
         class="ds-c-choice"
-        id="checkbox_foo_2"
+        id="static-id"
         name="foo"
         type="checkbox"
         value="boo"
       />
       <label
         class="ds-c-label"
-        for="checkbox_foo_2"
+        for="static-id"
       >
         <span
           class=""
@@ -155,14 +154,14 @@ exports[`Choice is a radio 1`] = `
     >
       <input
         class="ds-c-choice"
-        id="radio_foo_1"
+        id="static-id"
         name="foo"
         type="radio"
         value="boo"
       />
       <label
         class="ds-c-label"
-        for="radio_foo_1"
+        for="static-id"
       >
         <span
           class=""
@@ -187,14 +186,14 @@ exports[`Choice nested content renders \`checkedChildren\` when checked 1`] = `
     >
       <input
         class="ds-c-choice"
-        id="checkbox_foo_24"
+        id="static-id"
         name="foo"
         type="checkbox"
         value="bar"
       />
       <label
         class="ds-c-label"
-        for="checkbox_foo_24"
+        for="static-id"
       >
         <span
           class=""
@@ -225,14 +224,14 @@ exports[`Choice nested content renders \`uncheckedChildren\` when not checked 1`
     >
       <input
         class="ds-c-choice"
-        id="checkbox_foo_23"
+        id="static-id"
         name="foo"
         type="checkbox"
         value="bar"
       />
       <label
         class="ds-c-label"
-        for="checkbox_foo_23"
+        for="static-id"
       >
         <span
           class=""

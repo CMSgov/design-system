@@ -2,7 +2,7 @@
 
 exports[`Tooltip renders custom trigger component 1`] = `
 <a
-  aria-describedby="trigger_5"
+  aria-describedby="static-id"
   aria-label="tooltip trigger"
   class="ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
   tabindex="0"
@@ -14,7 +14,6 @@ exports[`Tooltip renders custom trigger component 1`] = `
       aria-hidden="true"
       class="ds-c-icon ds-c-icon--info-circle-thin ds-c-tooltip-icon"
       focusable="false"
-      id="icon-6"
       viewBox="0 0 16 16"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -29,7 +28,7 @@ exports[`Tooltip renders custom trigger component 1`] = `
 
 exports[`Tooltip renders default trigger icon 1`] = `
 <button
-  aria-describedby="trigger_1"
+  aria-describedby="static-id"
   aria-label="tooltip trigger"
   class="ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
   type="button"
@@ -41,7 +40,6 @@ exports[`Tooltip renders default trigger icon 1`] = `
       aria-hidden="true"
       class="ds-c-icon ds-c-icon--info-circle-thin ds-c-tooltip-icon"
       focusable="false"
-      id="icon-2"
       viewBox="0 0 16 16"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -59,7 +57,7 @@ exports[`Tooltip renders dialog tooltip 1`] = `
   aria-hidden="false"
   class="ds-c-tooltip ds-c-tooltip-enter ds-c-tooltip-enter-active"
   data-placement="top"
-  id="trigger_7"
+  id="static-id"
   role="dialog"
   style="max-width: 300px; z-index: 9999;"
   tabindex="-1"
@@ -82,7 +80,7 @@ exports[`Tooltip renders inverse tooltip 1`] = `
     class="ds-c-tooltip__container"
   >
     <button
-      aria-describedby="trigger_3"
+      aria-describedby="static-id"
       aria-label="tooltip trigger"
       class="ds-c-tooltip__trigger ds-c-tooltip__trigger-icon ds-c-tooltip__trigger--inverse"
       type="button"
@@ -94,7 +92,6 @@ exports[`Tooltip renders inverse tooltip 1`] = `
           aria-hidden="true"
           class="ds-c-icon ds-c-icon--info-circle-thin ds-c-tooltip-icon"
           focusable="false"
-          id="icon-4"
           viewBox="0 0 16 16"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -109,7 +106,7 @@ exports[`Tooltip renders inverse tooltip 1`] = `
       aria-hidden="true"
       class="ds-c-tooltip ds-c-tooltip--inverse"
       data-placement="top"
-      id="trigger_3"
+      id="static-id"
       role="tooltip"
       style="max-width: 300px; z-index: 9999;"
     >
@@ -136,7 +133,7 @@ exports[`Tooltip tooltip with close renders heading element 1`] = `
   aria-hidden="false"
   class="ds-c-tooltip ds-c-tooltip-enter ds-c-tooltip-enter-active"
   data-placement="top"
-  id="trigger_17"
+  id="static-id"
   role="dialog"
   style="max-width: 300px; z-index: 9999;"
   tabindex="-1"
@@ -163,7 +160,7 @@ exports[`Tooltip tooltip with close renders heading element and close button 1`]
   aria-hidden="false"
   class="ds-c-tooltip ds-c-tooltip-enter ds-c-tooltip-enter-active"
   data-placement="top"
-  id="trigger_20"
+  id="static-id"
   role="dialog"
   style="max-width: 300px; z-index: 9999;"
   tabindex="-1"
@@ -188,7 +185,6 @@ exports[`Tooltip tooltip with close renders heading element and close button 1`]
           aria-hidden="true"
           class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin "
           focusable="false"
-          id="icon-22"
           viewBox="-2 -2 18 18"
           xmlns="http://www.w3.org/2000/svg"
         >
