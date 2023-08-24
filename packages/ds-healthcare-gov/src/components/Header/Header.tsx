@@ -130,10 +130,6 @@ export interface HeaderProps {
    * header. Defaults to true
    */
   showUsaBanner?: boolean;
-  /**
-   * A unique ID to be used for the USA Banner. A unique ID will be generated if one isn't provided.
-   */
-  bannerId?: string;
 }
 
 export const VARIATION_NAMES = {
