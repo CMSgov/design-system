@@ -9,7 +9,7 @@ function renderBanner(customProps = {}) {
 
 describe('UsaBanner', function () {
   it('renders correctly', () => {
-    renderBanner();
+    renderBanner({ id: 'static-id' });
     const header = screen.getByRole('banner');
     expect(header).toMatchSnapshot();
   });

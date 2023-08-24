@@ -62,7 +62,7 @@ exports[`HelpDrawer renders a snapshot 1`] = `
     role="dialog"
   >
     <div
-      aria-labelledby="drawer_2"
+      aria-labelledby="drawer--2"
       class="ds-c-drawer__window"
       tabindex="-1"
     >
@@ -71,7 +71,7 @@ exports[`HelpDrawer renders a snapshot 1`] = `
       >
         <h3
           class="ds-c-drawer__header-heading"
-          id="drawer_2"
+          id="drawer--2"
         >
           HelpDrawer title
         </h3>

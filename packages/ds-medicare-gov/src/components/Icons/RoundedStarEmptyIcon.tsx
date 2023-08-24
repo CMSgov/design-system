@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import uniqueId from 'lodash/uniqueId';
+import { useId } from '@cmsgov/design-system';
 import { SvgIcon } from '@cmsgov/design-system';
 import { IconCommonProps } from '@cmsgov/design-system';
 
@@ -10,9 +10,10 @@ const defaultProps = {
 };
 
 const RoundedStarEmptyIcon = (props: IconCommonProps) => {
-  const clipPath1 = uniqueId('empty_clip_path_');
-  const clipPath2 = uniqueId('empty_clip_path_');
-  const clipPath3 = uniqueId('empty_clip_path_');
+  const rootId = useId('icon-empty-star--', props.id);
+  const clipPath1 = `${rootId}__clip-path-1`;
+  const clipPath2 = `${rootId}__clip-path-2`;
+  const clipPath3 = `${rootId}__clip-path-3`;
 
   const iconCssClasses = classNames(
     'ds-c-icon--rounded-star',

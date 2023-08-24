@@ -8,6 +8,7 @@ import classNames from 'classnames';
 import { NUM_MONTHS, getMonthNames } from './getMonthNames';
 import { fallbackLocale, getLanguage, t } from '../i18n';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
+import useId from '../utilities/useId';
 
 const monthNumbers = (() => {
   const months = [];
@@ -74,6 +75,7 @@ interface MonthPickerProps extends FormFieldProps {
  * [refer to its full documentation page](https://design.cms.gov/components/month-picker/).
  */
 export const MonthPicker = (props: MonthPickerProps) => {
+  const id = useId('month-picker--', props.id);
   const locale = fallbackLocale(getLanguage(), 'US');
   const months = getMonthNames(locale);
   const monthsLong = getMonthNames(locale, false);
@@ -127,6 +129,7 @@ export const MonthPicker = (props: MonthPickerProps) => {
     className: classNames('ds-c-month-picker', props.className),
     labelComponent: 'legend',
     wrapperIsFieldset: true,
+    id,
   });
 
   return (
@@ -169,6 +172,7 @@ export const MonthPicker = (props: MonthPickerProps) => {
                 type="checkbox"
                 value={i + 1}
                 label={month}
+                id={`${id}__choice--${i + 1}`}
               />
             </li>
           ))}

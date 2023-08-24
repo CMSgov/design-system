@@ -71,7 +71,7 @@
 }
 
 .ds-c-dropdown__menu {
-  @include mixins.ds-unstyled-list;
+  @include mixins.unstyled-list;
   // Allows for keyboard navigation of dropdown options, i.e., scrolling through options via arrow keys
   max-height: calc(var(--max-height) - var(--text-input__border-width));
   overflow-y: auto;
@@ -89,7 +89,7 @@
 }
 
 .ds-c-dropdown__menu-item-group ul[role='presentation'] {
-  @include mixins.ds-unstyled-list;
+  @include mixins.unstyled-list;
 }
 
 .ds-c-dropdown__menu-item-group .ds-c-dropdown__menu-item {

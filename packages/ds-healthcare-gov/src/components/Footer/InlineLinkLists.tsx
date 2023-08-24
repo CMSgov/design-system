@@ -55,12 +55,12 @@ const InlineLinkLists = function (props: InlineLinkListsProps) {
       </div>
 
       <div className="hc-c-footer__language-resource-links-row">
-        <h4 id="global-footer-language-resources" className="ds-u-visibility--screen-reader">
+        <h4 id="hc-c-footer__language-resources" className="ds-u-visibility--screen-reader">
           Language resources
         </h4>
         <ul
           role="list"
-          aria-labelledby="global-footer-language-resources"
+          aria-labelledby="hc-c-footer__language-resources"
           className="hc-c-footer__list"
         >
           {Object.getOwnPropertyNames(languages).map(function (lang, index) {

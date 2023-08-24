@@ -2,12 +2,12 @@ import React from 'react';
 import { useRef } from 'react';
 import classNames from 'classnames';
 import mergeRefs from '../utilities/mergeRefs';
-import uniqueId from 'lodash/uniqueId';
 import useAutofocus from '../utilities/useAutoFocus';
 import useAlertAnalytics from './useAlertAnalytics';
 import { InfoCircleIcon, AlertCircleIcon, WarningIcon, CheckCircleIcon } from '../Icons';
 import { t } from '../i18n';
 import { AnalyticsOverrideProps } from '../analytics';
+import useId from '../utilities/useId';
 
 export type AlertHeadingLevel = '1' | '2' | '3' | '4' | '5' | '6';
 export type AlertRole = 'alert' | 'alertdialog' | 'region' | 'status';
@@ -45,6 +45,10 @@ export interface BaseAlertProps extends AnalyticsOverrideProps {
    */
   hideIcon?: boolean;
   /**
+   * A unique ID for this element. A unique ID will be generated if one isn't provided.
+   */
+  id?: string;
+  /**
    * ARIA `role`, defaults to 'region'
    */
   role?: AlertRole;
@@ -68,8 +72,9 @@ export type AlertProps = BaseAlertProps &
 export const Alert: React.FC<AlertProps> = (props: AlertProps) => {
   const { headingRef, bodyRef } = useAlertAnalytics(props);
   const focusRef = useAutofocus(props.autoFocus);
-  const headingId = useRef(props.headingId ?? uniqueId('alert_')).current;
-  const a11yLabelId = useRef(uniqueId('alert_a11y_label_')).current;
+  const rootId = useId('alert--', props.id);
+  const headingId = props.headingId ?? `${rootId}__heading`;
+  const a11yLabelId = `${rootId}__a11y-label`;
 
   if (process.env.NODE_ENV !== 'production') {
     if (!props.heading && !props.children) {
