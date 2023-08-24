@@ -129,21 +129,13 @@ hr {
 // Note that we did not specify `role="list"` explicitly in the selectors
 // that create the exception to the default styling because there are other
 // legitimate roles that could be applied like `role="listbox"`.
-//
-// Note also that `.ds-c-list--bare` is a special case where we do want to
-// inherit the normalized list styles for standardized spacing but then remove
-// the list styles of bullets or numbers.
 
 ol:not(:where([role])),
-ul:not(:where([role])),
-ol:where(.ds-c-list--bare),
-ul:where(.ds-c-list--bare) {
+ul:not(:where([role])) {
   // Relying on `flex` to set `gap` spacing size on li elements
   // `gap` ensures even spacing and doesn't interfere with layout
   // if list given a `row` direction
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
+  @include mixins.flex-list;
   margin-block: 1em 0;
   padding-inline-start: 2em;
 }
@@ -151,7 +143,7 @@ ul:where(.ds-c-list--bare) {
 // Tie the application of unstyled-list styles to inclusion of a role attribute
 // that will "fix" Safari behavior outlined in the guidance. See above comment.
 [role='list']:where(ul, ol) {
-  @include mixins.ds-unstyled-list;
+  @include mixins.unstyled-list;
 }
 
 li {

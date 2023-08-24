@@ -31,7 +31,15 @@
  * Lists
  */
 
-@mixin ds-unstyled-list {
+// Base properties for styling lists with flexbox, including a standard gap
+// between items
+@mixin flex-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+@mixin unstyled-list {
   list-style: none;
   margin: 0;
   padding: 0;
