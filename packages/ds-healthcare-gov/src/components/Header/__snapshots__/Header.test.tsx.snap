@@ -66,7 +66,7 @@ exports[`Header renders Direct Enrollment banner 1`] = `
         </svg>
       </p>
       <button
-        aria-controls="usa-banner--10__panel"
+        aria-controls="hc-c-header__usa-banner__panel"
         aria-expanded="false"
         class="ds-c-usa-banner__button"
         type="button"
@@ -117,7 +117,7 @@ exports[`Header renders Direct Enrollment banner 1`] = `
       <div
         class="ds-c-usa-banner__guidance-container"
         hidden=""
-        id="usa-banner--10__panel"
+        id="hc-c-header__usa-banner__panel"
       >
         <div
           class="ds-c-usa-banner__guidance-item"
@@ -487,7 +487,7 @@ exports[`Header renders Spanish header 1`] = `
         </svg>
       </p>
       <button
-        aria-controls="usa-banner--37__panel"
+        aria-controls="hc-c-header__usa-banner__panel"
         aria-expanded="false"
         class="ds-c-usa-banner__button"
         type="button"
@@ -538,7 +538,7 @@ exports[`Header renders Spanish header 1`] = `
       <div
         class="ds-c-usa-banner__guidance-container"
         hidden=""
-        id="usa-banner--37__panel"
+        id="hc-c-header__usa-banner__panel"
       >
         <div
           class="ds-c-usa-banner__guidance-item"
@@ -915,7 +915,7 @@ exports[`Header renders full/homepage header 1`] = `
         </svg>
       </p>
       <button
-        aria-controls="usa-banner--1__panel"
+        aria-controls="hc-c-header__usa-banner__panel"
         aria-expanded="false"
         class="ds-c-usa-banner__button"
         type="button"
@@ -966,7 +966,7 @@ exports[`Header renders full/homepage header 1`] = `
       <div
         class="ds-c-usa-banner__guidance-container"
         hidden=""
-        id="usa-banner--1__panel"
+        id="hc-c-header__usa-banner__panel"
       >
         <div
           class="ds-c-usa-banner__guidance-item"
@@ -1327,7 +1327,7 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
         </svg>
       </p>
       <button
-        aria-controls="usa-banner--127__panel"
+        aria-controls="hc-c-header__usa-banner__panel"
         aria-expanded="false"
         class="ds-c-usa-banner__button"
         type="button"
@@ -1378,7 +1378,7 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
       <div
         class="ds-c-usa-banner__guidance-container"
         hidden=""
-        id="usa-banner--127__panel"
+        id="hc-c-header__usa-banner__panel"
       >
         <div
           class="ds-c-usa-banner__guidance-item"
@@ -1739,7 +1739,7 @@ exports[`Header renders logged-in header with firstName 1`] = `
         </svg>
       </p>
       <button
-        aria-controls="usa-banner--19__panel"
+        aria-controls="hc-c-header__usa-banner__panel"
         aria-expanded="false"
         class="ds-c-usa-banner__button"
         type="button"
@@ -1790,7 +1790,7 @@ exports[`Header renders logged-in header with firstName 1`] = `
       <div
         class="ds-c-usa-banner__guidance-container"
         hidden=""
-        id="usa-banner--19__panel"
+        id="hc-c-header__usa-banner__panel"
       >
         <div
           class="ds-c-usa-banner__guidance-item"
@@ -2155,7 +2155,7 @@ exports[`Header renders logged-in header without firstName 1`] = `
         </svg>
       </p>
       <button
-        aria-controls="usa-banner--28__panel"
+        aria-controls="hc-c-header__usa-banner__panel"
         aria-expanded="false"
         class="ds-c-usa-banner__button"
         type="button"
@@ -2206,7 +2206,7 @@ exports[`Header renders logged-in header without firstName 1`] = `
       <div
         class="ds-c-usa-banner__guidance-container"
         hidden=""
-        id="usa-banner--28__panel"
+        id="hc-c-header__usa-banner__panel"
       >
         <div
           class="ds-c-usa-banner__guidance-item"
