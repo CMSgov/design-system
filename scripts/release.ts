@@ -9,10 +9,19 @@ const REVIEWERS = ['pwolfert', 'zarahzachz'];
 
 /**
  * Execute a shell command and wait for the response. Note that this does not
- * work for interactive commands. For that, use spawnSync.
+ * work for interactive commands. For that, use shI.
  */
 function sh(command: string): string {
   return execSync(command).toString().trim();
+}
+
+/**
+ * Uses node's `spawnSync` method to spawn an interactive process, which means
+ * you must pass all args as an array instead of including them in the command
+ * string.
+ */
+function shI(command: string, args: string[]) {
+  spawnSync(command, args, { stdio: 'inherit' });
 }
 
 function getCurrentCommit() {
@@ -64,7 +73,7 @@ async function undoLastCommit() {
 async function bumpVersions() {
   console.log(c.green('Bumping package versions for release...'));
   const preBumpHash = getCurrentCommit();
-  spawnSync('./node_modules/.bin/lerna', ['version', '--no-push', '--exact']);
+  shI('./node_modules/.bin/lerna', ['version', '--no-push', '--exact']);
   const postBumpHash = getCurrentCommit();
 
   if (preBumpHash === postBumpHash) {
@@ -132,7 +141,7 @@ async function draftReleaseNotes() {
     return;
   }
 
-  spawnSync('yarn', ['release:notes']);
+  shI('yarn', ['release:notes']);
 }
 
 function printNextSteps() {
