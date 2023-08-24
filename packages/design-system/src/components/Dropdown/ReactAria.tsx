@@ -1,5 +1,5 @@
 import React, { MutableRefObject, RefObject } from 'react';
-import { Item, ListState, useSelectState } from 'react-stately';
+import { Item, ListState, Section, useSelectState } from 'react-stately';
 import { HiddenSelect, useSelect } from 'react-aria';
 import { DismissButton, Overlay, usePopover } from 'react-aria';
 import type { AriaPopoverProps, AriaListBoxOptions } from 'react-aria';
@@ -56,6 +56,7 @@ function ListBox<T>(props: ListBoxProps<T>) {
   return (
     <ul
       {...listBoxProps}
+      className="ds-c-dropdown__menu"
       ref={ref}
       style={{
         margin: 0,
@@ -67,9 +68,13 @@ function ListBox<T>(props: ListBoxProps<T>) {
         background: 'lightgray',
       }}
     >
-      {[...state.collection].map((item) => (
-        <Option key={item.key} item={item} state={state} />
-      ))}
+      {[...state.collection].map((item) =>
+        item.type === 'section' ? (
+          <ListBoxSection key={item.key} section={item} state={state} />
+        ) : (
+          <Option key={item.key} item={item} state={state} />
+        )
+      )}
     </ul>
   );
 }
@@ -249,9 +254,11 @@ export const MySelect = (
     <Item>Green</Item>
     <Item>Blue</Item>
     <Item>Purple</Item>
-    <Item>Black</Item>
-    <Item>White</Item>
-    <Item>Lime</Item>
-    <Item>Fushsia</Item>
+    <Section title="Outside the color wheel">
+      <Item>Black</Item>
+      <Item>White</Item>
+      <Item>Lime</Item>
+      <Item>Fuchsia</Item>
+    </Section>
   </Select>
 );
