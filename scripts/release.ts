@@ -1,12 +1,16 @@
 import appendVersions from './append-versions';
 import c from 'chalk';
 import yargs from 'yargs';
-import { execSync } from 'node:child_process';
+import { execSync, spawnSync } from 'node:child_process';
 import { hideBin } from 'yargs/helpers';
 import { confirm } from '@inquirer/prompts';
 
 const REVIEWERS = ['pwolfert', 'zarahzachz'];
 
+/**
+ * Execute a shell command and wait for the response. Note that this does not
+ * work for interactive commands. For that, use spawnSync.
+ */
 function sh(command: string): string {
   return execSync(command).toString().trim();
 }
@@ -60,7 +64,7 @@ async function undoLastCommit() {
 async function bumpVersions() {
   console.log(c.green('Bumping package versions for release...'));
   const preBumpHash = getCurrentCommit();
-  sh('npx lerna version --no-push --exact');
+  spawnSync('./node_modules/.bin/lerna', ['version', '--no-push', '--exact']);
   const postBumpHash = getCurrentCommit();
 
   if (preBumpHash === postBumpHash) {
@@ -128,7 +132,7 @@ async function draftReleaseNotes() {
     return;
   }
 
-  sh(`npx release:notes`);
+  spawnSync('yarn', ['release:notes']);
 }
 
 function printNextSteps() {
