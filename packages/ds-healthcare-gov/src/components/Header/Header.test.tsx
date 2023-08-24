@@ -12,7 +12,7 @@ function makeHeader(props = {}) {
     props
   );
 
-  return render(<Header {...props} />);
+  return render(<Header bannerId="static-id" {...props} />);
 }
 
 describe('Header', function () {
