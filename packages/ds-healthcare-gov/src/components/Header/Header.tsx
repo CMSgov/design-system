@@ -7,7 +7,6 @@ import { SkipNav, UsaBanner } from '@cmsgov/design-system';
 import { t } from '../i18n';
 import classnames from 'classnames';
 import defaultMenuLinks from './defaultMenuLinks';
-import { useId } from '@cmsgov/design-system';
 
 export interface Link {
   href: string;
@@ -149,7 +148,6 @@ export const VARIATION_NAMES = {
 export const Header = (props: HeaderProps) => {
   const [openMenu, setOpenMenu] = useState(false);
   const isControlledMenu = props.isMenuOpen !== undefined && props.onMenuToggle !== undefined;
-  const bannerId = useId('usa-banner--', props.bannerId);
 
   /**
    * Determines which variation of the header should be displayed,
@@ -216,7 +214,7 @@ export const Header = (props: HeaderProps) => {
 
   return (
     <>
-      {props.showUsaBanner && <UsaBanner id={bannerId} />}
+      {props.showUsaBanner && <UsaBanner id="hc-c-header__usa-banner" />}
       <header className={classes} role="banner" aria-label="global">
         <SkipNav href={props.skipNavHref} onClick={props.onSkipNavClick}>
           {t('header.skipNav')}
