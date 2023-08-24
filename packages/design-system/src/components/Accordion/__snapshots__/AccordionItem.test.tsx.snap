@@ -6,25 +6,25 @@ exports[`AccordionItem renders an accordion item 1`] = `
     class="ds-c-accordion__heading"
   >
     <button
-      aria-controls="accordionItem_1"
+      aria-controls="static-id"
       aria-expanded="false"
       class="ds-c-accordion__button"
-      id="accordionItem_1-button"
+      id="static-id__button"
       type="button"
     >
       Heading for accordion item
       <svg
         aria-hidden="false"
-        aria-labelledby="icon-2__title"
+        aria-labelledby="static-id__icon__title"
         class="ds-c-icon ds-c-icon--add ds-c-accordion__button-icon"
         focusable="false"
-        id="icon-2"
+        id="static-id__icon"
         role="img"
         viewBox="3 3 18 18"
         xmlns="http://www.w3.org/2000/svg"
       >
         <title
-          id="icon-2__title"
+          id="static-id__icon__title"
         >
           Open
         </title>
@@ -35,10 +35,10 @@ exports[`AccordionItem renders an accordion item 1`] = `
     </button>
   </h2>
   <div
-    aria-labelledby="accordionItem_1-button"
+    aria-labelledby="static-id__button"
     class="ds-c-accordion__content"
     hidden=""
-    id="accordionItem_1"
+    id="static-id"
   >
     &lt;p&gt;Content for accordion item&lt;/p&gt;
   </div>

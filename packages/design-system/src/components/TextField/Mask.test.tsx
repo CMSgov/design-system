@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { unmaskValue } from './maskHelpers';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import TextInput from './TextInput';
 
 // Some tests are generated. When a new mask is added, add it here:
 const masks = ['currency', 'ssn', 'zip', 'phone'];
@@ -11,7 +12,7 @@ const masks = ['currency', 'ssn', 'zip', 'phone'];
 function renderMask(customProps = {}, inputProps = {}) {
   return render(
     <Mask {...customProps}>
-      <input name="foo" type="text" {...inputProps} />
+      <TextInput name="foo" type="text" {...inputProps} />
     </Mask>
   );
 }
@@ -78,7 +79,7 @@ describe('Mask', function () {
         const [text, setText] = useState('1000');
         return (
           <Mask mask="currency">
-            <input
+            <TextInput
               name="foo"
               type="text"
               value={text}
@@ -105,7 +106,7 @@ describe('Mask', function () {
         const [text, setText] = useState('1000');
         return (
           <Mask mask="currency">
-            <input name="foo" type="text" value={text} onChange={() => setText('2000')} />
+            <TextInput name="foo" type="text" value={text} onChange={() => setText('2000')} />
           </Mask>
         );
       }

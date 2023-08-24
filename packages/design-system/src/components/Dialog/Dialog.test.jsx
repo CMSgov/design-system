@@ -8,6 +8,7 @@ const defaultProps = {
   children: 'Foo',
   heading: 'dialog heading',
   onExit: jest.fn(),
+  id: 'static-id',
 };
 
 function renderDialog(props = {}) {
@@ -16,6 +17,13 @@ function renderDialog(props = {}) {
 }
 
 describe('Dialog', function () {
+  it('generates ids when no id is provided', () => {
+    renderDialog({ id: undefined });
+    const idRegex = /dialog--\d+/;
+    expect(screen.getByRole('dialog').id).toMatch(idRegex);
+    expect(screen.getByRole('heading').id).toMatch(idRegex);
+  });
+
   it('renders with additional classNames and size', () => {
     renderDialog({
       actions: <span>Pretend these are actions</span>,

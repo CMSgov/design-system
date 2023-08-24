@@ -75,7 +75,7 @@ Object {
               >
                 <legend
                   class="ds-c-label"
-                  id="field_2-label"
+                  id="choice-list--2__label"
                 >
                   <span
                     class=""
@@ -94,14 +94,14 @@ Object {
                     <input
                       checked=""
                       class="ds-c-choice"
-                      id="radio_cookie-c3_3"
+                      id="choice-list--2__choice--0"
                       name="cookie-c3"
                       type="radio"
                       value="0"
                     />
                     <label
                       class="ds-c-label"
-                      for="radio_cookie-c3_3"
+                      for="choice-list--2__choice--0"
                     >
                       <span
                         class=""
@@ -117,14 +117,14 @@ Object {
                   >
                     <input
                       class="ds-c-choice"
-                      id="radio_cookie-c3_4"
+                      id="choice-list--2__choice--1"
                       name="cookie-c3"
                       type="radio"
                       value="1"
                     />
                     <label
                       class="ds-c-label"
-                      for="radio_cookie-c3_4"
+                      for="choice-list--2__choice--1"
                     >
                       <span
                         class=""
@@ -168,7 +168,7 @@ Object {
               >
                 <legend
                   class="ds-c-label"
-                  id="field_5-label"
+                  id="choice-list--3__label"
                 >
                   <span
                     class=""
@@ -186,14 +186,14 @@ Object {
                   >
                     <input
                       class="ds-c-choice"
-                      id="radio_cookie-c4_6"
+                      id="choice-list--3__choice--0"
                       name="cookie-c4"
                       type="radio"
                       value="0"
                     />
                     <label
                       class="ds-c-label"
-                      for="radio_cookie-c4_6"
+                      for="choice-list--3__choice--0"
                     >
                       <span
                         class=""
@@ -210,14 +210,14 @@ Object {
                     <input
                       checked=""
                       class="ds-c-choice"
-                      id="radio_cookie-c4_7"
+                      id="choice-list--3__choice--1"
                       name="cookie-c4"
                       type="radio"
                       value="1"
                     />
                     <label
                       class="ds-c-label"
-                      for="radio_cookie-c4_7"
+                      for="choice-list--3__choice--1"
                     >
                       <span
                         class=""
@@ -261,7 +261,7 @@ Object {
               >
                 <legend
                   class="ds-c-label"
-                  id="field_8-label"
+                  id="choice-list--4__label"
                 >
                   <span
                     class=""
@@ -280,14 +280,14 @@ Object {
                     <input
                       checked=""
                       class="ds-c-choice"
-                      id="radio_cookie-c2_9"
+                      id="choice-list--4__choice--0"
                       name="cookie-c2"
                       type="radio"
                       value="0"
                     />
                     <label
                       class="ds-c-label"
-                      for="radio_cookie-c2_9"
+                      for="choice-list--4__choice--0"
                     >
                       <span
                         class=""
@@ -303,14 +303,14 @@ Object {
                   >
                     <input
                       class="ds-c-choice"
-                      id="radio_cookie-c2_10"
+                      id="choice-list--4__choice--1"
                       name="cookie-c2"
                       type="radio"
                       value="1"
                     />
                     <label
                       class="ds-c-label"
-                      for="radio_cookie-c2_10"
+                      for="choice-list--4__choice--1"
                     >
                       <span
                         class=""
@@ -398,7 +398,7 @@ Object {
             >
               <legend
                 class="ds-c-label"
-                id="field_2-label"
+                id="choice-list--2__label"
               >
                 <span
                   class=""
@@ -417,14 +417,14 @@ Object {
                   <input
                     checked=""
                     class="ds-c-choice"
-                    id="radio_cookie-c3_3"
+                    id="choice-list--2__choice--0"
                     name="cookie-c3"
                     type="radio"
                     value="0"
                   />
                   <label
                     class="ds-c-label"
-                    for="radio_cookie-c3_3"
+                    for="choice-list--2__choice--0"
                   >
                     <span
                       class=""
@@ -440,14 +440,14 @@ Object {
                 >
                   <input
                     class="ds-c-choice"
-                    id="radio_cookie-c3_4"
+                    id="choice-list--2__choice--1"
                     name="cookie-c3"
                     type="radio"
                     value="1"
                   />
                   <label
                     class="ds-c-label"
-                    for="radio_cookie-c3_4"
+                    for="choice-list--2__choice--1"
                   >
                     <span
                       class=""
@@ -491,7 +491,7 @@ Object {
             >
               <legend
                 class="ds-c-label"
-                id="field_5-label"
+                id="choice-list--3__label"
               >
                 <span
                   class=""
@@ -509,14 +509,14 @@ Object {
                 >
                   <input
                     class="ds-c-choice"
-                    id="radio_cookie-c4_6"
+                    id="choice-list--3__choice--0"
                     name="cookie-c4"
                     type="radio"
                     value="0"
                   />
                   <label
                     class="ds-c-label"
-                    for="radio_cookie-c4_6"
+                    for="choice-list--3__choice--0"
                   >
                     <span
                       class=""
@@ -533,14 +533,14 @@ Object {
                   <input
                     checked=""
                     class="ds-c-choice"
-                    id="radio_cookie-c4_7"
+                    id="choice-list--3__choice--1"
                     name="cookie-c4"
                     type="radio"
                     value="1"
                   />
                   <label
                     class="ds-c-label"
-                    for="radio_cookie-c4_7"
+                    for="choice-list--3__choice--1"
                   >
                     <span
                       class=""
@@ -584,7 +584,7 @@ Object {
             >
               <legend
                 class="ds-c-label"
-                id="field_8-label"
+                id="choice-list--4__label"
               >
                 <span
                   class=""
@@ -603,14 +603,14 @@ Object {
                   <input
                     checked=""
                     class="ds-c-choice"
-                    id="radio_cookie-c2_9"
+                    id="choice-list--4__choice--0"
                     name="cookie-c2"
                     type="radio"
                     value="0"
                   />
                   <label
                     class="ds-c-label"
-                    for="radio_cookie-c2_9"
+                    for="choice-list--4__choice--0"
                   >
                     <span
                       class=""
@@ -626,14 +626,14 @@ Object {
                 >
                   <input
                     class="ds-c-choice"
-                    id="radio_cookie-c2_10"
+                    id="choice-list--4__choice--1"
                     name="cookie-c2"
                     type="radio"
                     value="1"
                   />
                   <label
                     class="ds-c-label"
-                    for="radio_cookie-c2_10"
+                    for="choice-list--4__choice--1"
                   >
                     <span
                       class=""
