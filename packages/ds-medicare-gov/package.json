@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/ds-medicare-gov",
-  "version": "9.0.6",
+  "version": "9.1.0",
   "publishConfig": {
     "tag": "latest",
     "access": "public"
@@ -50,7 +50,7 @@
     "src"
   ],
   "dependencies": {
-    "@cmsgov/design-system": "7.0.6",
+    "@cmsgov/design-system": "7.1.0",
     "@types/react": "^18.2.6",
     "@types/react-dom": "^17.0.10"
   }
