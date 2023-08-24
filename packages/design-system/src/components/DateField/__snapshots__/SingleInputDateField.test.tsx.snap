@@ -7,8 +7,8 @@ exports[`SingleInputDateField renders without picker 1`] = `
   >
     <label
       class="ds-c-label"
-      for="date-field--1"
-      id="date-field--1__label"
+      for="static-id"
+      id="static-id__label"
     >
       <span
         class=""
@@ -23,7 +23,7 @@ exports[`SingleInputDateField renders without picker 1`] = `
     </label>
     <div
       class="ds-c-label-mask"
-      id="date-field--1__label-mask"
+      id="static-id__label-mask"
     >
       <span
         class=""
@@ -41,10 +41,10 @@ exports[`SingleInputDateField renders without picker 1`] = `
       class="ds-c-single-input-date-field__field-wrapper"
     >
       <input
-        aria-describedby="date-field--1__label-mask"
+        aria-describedby="static-id__label-mask"
         aria-invalid="false"
         class="ds-c-field"
-        id="date-field--1"
+        id="static-id"
         inputmode="numeric"
         name="single-input-date-field"
         type="text"
@@ -62,8 +62,8 @@ exports[`SingleInputDateField with picker renders with picker 1`] = `
   >
     <label
       class="ds-c-label"
-      for="date-field--19"
-      id="date-field--19__label"
+      for="static-id"
+      id="static-id__label"
     >
       <span
         class=""
@@ -78,7 +78,7 @@ exports[`SingleInputDateField with picker renders with picker 1`] = `
     </label>
     <div
       class="ds-c-label-mask"
-      id="date-field--19__label-mask"
+      id="static-id__label-mask"
     >
       <span
         class=""
@@ -96,10 +96,10 @@ exports[`SingleInputDateField with picker renders with picker 1`] = `
       class="ds-c-single-input-date-field__field-wrapper"
     >
       <input
-        aria-describedby="date-field--19__label-mask"
+        aria-describedby="static-id__label-mask"
         aria-invalid="false"
         class="ds-c-field"
-        id="date-field--19"
+        id="static-id"
         inputmode="numeric"
         name="single-input-date-field"
         type="text"
@@ -111,16 +111,16 @@ exports[`SingleInputDateField with picker renders with picker 1`] = `
       >
         <svg
           aria-hidden="false"
-          aria-labelledby="icon--21__title"
+          aria-labelledby="static-id__icon__title"
           class="ds-c-icon ds-c-icon--calendar "
           focusable="false"
-          id="icon--21"
+          id="static-id__icon"
           role="img"
           viewBox="0 0 448 512"
           xmlns="http://www.w3.org/2000/svg"
         >
           <title
-            id="icon--21__title"
+            id="static-id__icon__title"
           >
             Open calendar picker dialog
           </title>
