@@ -31,7 +31,7 @@ export interface BaseAlertProps extends AnalyticsOverrideProps {
   /**
    * Text for the alert heading
    */
-  heading?: string;
+  heading?: React.ReactNode;
   /**
    * Optional id used to link the `aria-labelledby` attribute to the heading. If not provided, a unique id will be automatically generated and used.
    */
