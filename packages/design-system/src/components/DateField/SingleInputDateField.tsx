@@ -11,6 +11,7 @@ import { DATE_MASK } from '../TextField/useLabelMask';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 import { TextInput } from '../TextField';
 import { t } from '../i18n';
+import useId from '../utilities/useId';
 
 export interface SingleInputDateFieldProps extends FormFieldProps {
   /**
@@ -101,6 +102,7 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
     (fromDate != null || fromMonth != null || Number.isInteger(fromYear)) &&
     (toDate != null || toMonth != null || Number.isInteger(toYear));
   const [pickerVisible, setPickerVisible] = useState(false);
+  const id = useId('date-field--', props.id);
 
   // Set up change handlers
   function handleInputChange(event) {
@@ -124,6 +126,7 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
     ),
     labelComponent: 'label',
     wrapperIsFieldset: false,
+    id,
   });
   const inputRef = useRef<HTMLInputElement>();
   const { labelMask, inputProps } = useLabelMask(DATE_MASK, {
@@ -166,6 +169,7 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
             <CalendarIcon
               ariaHidden={false}
               title={t(pickerVisible ? 'singleInputDateField.close' : 'singleInputDateField.open')}
+              id={`${id}__icon`}
             />
           </button>
         )}

@@ -124,7 +124,7 @@ export class Choice extends React.PureComponent<
     this.input = null;
     this.handleChange = this.handleChange.bind(this);
     this.handleUncheck = this.handleUncheck.bind(this);
-    this.id = this.props.id || uniqueId(`${this.props.type}_${this.props.name}_`);
+    this.id = this.props.id ?? uniqueId('choice--');
 
     if (typeof this.props.checked === 'undefined') {
       this.isControlled = false;

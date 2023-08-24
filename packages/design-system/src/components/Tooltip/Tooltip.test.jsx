@@ -12,6 +12,7 @@ const defaultProps = {
   className: 'ds-c-tooltip__trigger-icon',
   title: 'Tooltip body content',
   ariaLabel: triggerAriaLabelText,
+  id: 'static-id',
 };
 
 function renderTooltip(customProps = {}) {

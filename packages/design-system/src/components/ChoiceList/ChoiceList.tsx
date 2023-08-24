@@ -2,6 +2,7 @@ import Choice, { ChoiceProps as ChoiceComponentProps } from './Choice';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 import React from 'react';
 import classNames from 'classnames';
+import useId from '../utilities/useId';
 
 export type ChoiceListSize = 'small';
 export type ChoiceListType = 'checkbox' | 'radio';
@@ -10,7 +11,7 @@ export type ChoiceListType = 'checkbox' | 'radio';
 type OmitChoiceProp = 'inversed' | 'name' | 'onBlur' | 'onChange' | 'size' | 'type';
 export type ChoiceProps = Omit<ChoiceComponentProps, OmitChoiceProp>;
 
-export interface BaseChoiceListProps extends Omit<FormFieldProps, 'id'> {
+export interface BaseChoiceListProps extends FormFieldProps {
   /**
    * Array of [`Choice`]({{root}}/components/choice/#components.choice.react) data objects to be rendered.
    */
@@ -85,6 +86,7 @@ export type ChoiceListProps = BaseChoiceListProps &
  */
 export const ChoiceList: React.FC<ChoiceListProps> = (props: ChoiceListProps) => {
   const { onBlur, onComponentBlur, choices, ...listProps } = props;
+  const id = useId('choice-list--', props.id);
 
   if (process.env.NODE_ENV !== 'production') {
     if (props.type !== 'checkbox' && props.choices.length === 1) {
@@ -116,10 +118,13 @@ export const ChoiceList: React.FC<ChoiceListProps> = (props: ChoiceListProps) =>
     ...listProps,
     labelComponent: 'legend',
     wrapperIsFieldset: true,
+    id,
   });
 
-  const choiceItems = choices.map((choiceProps) => {
+  const choiceItems = choices.map((choiceProps, index) => {
     const completeChoiceProps: ChoiceComponentProps = {
+      // Allow this to be overridden by the choiceProps
+      id: `${id}__choice--${index}`,
       ...choiceProps,
       inversed: props.inversed,
       name: props.name,

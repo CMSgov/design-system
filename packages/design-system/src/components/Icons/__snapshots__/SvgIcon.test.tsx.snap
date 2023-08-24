@@ -3,16 +3,16 @@
 exports[`SvgIcon passes through additional props 1`] = `
 <svg
   aria-hidden="false"
-  aria-labelledby="test-icon__title"
+  aria-labelledby="static-id__title"
   class="ds-c-icon"
   data-testid="iconTest"
   focusable="false"
-  id="test-icon"
+  id="static-id"
   role="img"
   xmlns="http://www.w3.org/2000/svg"
 >
   <title
-    id="test-icon__title"
+    id="static-id__title"
   >
     test icon
   </title>
@@ -26,7 +26,6 @@ exports[`SvgIcon when ariaHidden is true renders without title or description" 1
   class="ds-c-icon"
   data-testid="testId"
   focusable="false"
-  id="test-icon"
   xmlns="http://www.w3.org/2000/svg"
 >
   <path />
@@ -39,7 +38,6 @@ exports[`SvgIcon wrapper icon can pass through additional props 1`] = `
   class="ds-c-icon ds-c-icon--add "
   data-testid="addIconTest"
   focusable="false"
-  id="icon-1"
   viewBox="3 3 18 18"
   xmlns="http://www.w3.org/2000/svg"
 >

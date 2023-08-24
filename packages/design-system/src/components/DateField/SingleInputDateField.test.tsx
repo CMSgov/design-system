@@ -9,6 +9,7 @@ const defaultProps = {
   name: 'single-input-date-field',
   value: '',
   onChange: jest.fn(),
+  id: 'static-id',
 };
 
 function renderField(props = {}) {
@@ -52,6 +53,7 @@ describe('SingleInputDateField', function () {
       hint: 'This date should be within the past 60 days in order to qualify',
       fromYear: new Date('01-02-2000').getFullYear(),
       toDate: new Date('01-02-2000'),
+      id: 'static-id',
     };
 
     function renderPicker(props = {}) {
@@ -61,6 +63,12 @@ describe('SingleInputDateField', function () {
     it('renders with picker', () => {
       const { asFragment } = renderPicker();
       expect(asFragment()).toMatchSnapshot();
+    });
+
+    it('generates ids when no id is provided', () => {
+      renderPicker({ id: undefined });
+      expect(screen.getByRole('textbox').id).toMatch(/date-field--\d+/);
+      expect(screen.getByRole('img').id).toMatch(/date-field--\d+__icon/);
     });
 
     // This is throwing many, many instances of this error:

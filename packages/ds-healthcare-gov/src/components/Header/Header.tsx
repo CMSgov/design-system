@@ -210,7 +210,7 @@ export const Header = (props: HeaderProps) => {
 
   return (
     <>
-      {props.showUsaBanner && <UsaBanner />}
+      {props.showUsaBanner && <UsaBanner id="hc-c-header__usa-banner" />}
       <header className={classes} role="banner" aria-label="global">
         <SkipNav href={props.skipNavHref} onClick={props.onSkipNavClick}>
           {t('header.skipNav')}

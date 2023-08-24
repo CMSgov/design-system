@@ -4,6 +4,7 @@ import Mask from './Mask';
 import TextInput from './TextInput';
 import classNames from 'classnames';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
+import useId from '../utilities/useId';
 
 export type TextFieldDefaultValue = string | number;
 export type TextFieldMask = 'currency' | 'phone' | 'ssn' | 'zip';
@@ -114,6 +115,7 @@ export const TextField: React.FC<TextFieldProps> = (props: TextFieldProps) => {
     ...textFieldProps,
     labelComponent: 'label',
     wrapperIsFieldset: false,
+    id: useId('text-field--', textFieldProps.id),
   });
 
   wrapperProps.className = classNames(

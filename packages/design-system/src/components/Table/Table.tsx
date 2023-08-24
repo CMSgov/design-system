@@ -26,6 +26,10 @@ export interface TableProps {
    */
   compact?: boolean;
   /**
+   * A unique ID prefix for all the table caption elements.
+   */
+  id?: string;
+  /**
    * Applies a horizontal scrollbar and scrollable notice on `TableCaption` when the `Table`'s contents exceed the container width.
    */
   scrollable?: boolean;
@@ -107,7 +111,7 @@ export class Table extends React.Component<
     this.state = {
       scrollActive: false,
     };
-    this.captionID = uniqueId('caption-');
+    this.captionId = props.id ?? uniqueId('table-caption--');
     this.container = 0;
     this.debounceHandleResize = debounce(this.handleResize.bind(this), 500);
 
@@ -137,7 +141,7 @@ export class Table extends React.Component<
     }
   }
 
-  captionID: string;
+  captionId: string;
   container: any;
   debounceHandleResize: (...args: any[]) => any;
 
@@ -153,7 +157,7 @@ export class Table extends React.Component<
         // Extend props on TableCaption before rendering.
         if (this.props.scrollable) {
           return React.cloneElement(child, {
-            _id: this.captionID,
+            _id: this.captionId,
             _scrollActive: this.state.scrollActive,
             _scrollableNotice: this.props.scrollableNotice,
           });
@@ -175,6 +179,7 @@ export class Table extends React.Component<
       scrollableNotice,
       warningDisabled,
       children,
+      id,
       ...tableProps
     } = this.props;
 
@@ -195,7 +200,7 @@ export class Table extends React.Component<
     const attributeScrollable = scrollable && {
       className: 'ds-c-table__wrapper',
       role: 'region',
-      'aria-labelledby': this.captionID,
+      'aria-labelledby': this.captionId,
       tabIndex: this.state.scrollActive ? 0 : null,
     };
     const contextValue = { stackable: !!stackable, warningDisabled: !!warningDisabled };

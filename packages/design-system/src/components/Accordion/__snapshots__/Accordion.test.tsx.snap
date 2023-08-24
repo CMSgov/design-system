@@ -12,22 +12,22 @@ exports[`Accordion renders accordion 1`] = `
         aria-controls="1"
         aria-expanded="false"
         class="ds-c-accordion__button"
-        id="1-button"
+        id="1__button"
         type="button"
       >
         First amendment
         <svg
           aria-hidden="false"
-          aria-labelledby="icon-1__title"
+          aria-labelledby="1__icon__title"
           class="ds-c-icon ds-c-icon--add ds-c-accordion__button-icon"
           focusable="false"
-          id="icon-1"
+          id="1__icon"
           role="img"
           viewBox="3 3 18 18"
           xmlns="http://www.w3.org/2000/svg"
         >
           <title
-            id="icon-1__title"
+            id="1__icon__title"
           >
             Open
           </title>
@@ -38,7 +38,7 @@ exports[`Accordion renders accordion 1`] = `
       </button>
     </h2>
     <div
-      aria-labelledby="1-button"
+      aria-labelledby="1__button"
       class="ds-c-accordion__content"
       hidden=""
       id="1"
@@ -54,22 +54,22 @@ exports[`Accordion renders accordion 1`] = `
         aria-controls="2"
         aria-expanded="false"
         class="ds-c-accordion__button"
-        id="2-button"
+        id="2__button"
         type="button"
       >
         Second amendment
         <svg
           aria-hidden="false"
-          aria-labelledby="icon-2__title"
+          aria-labelledby="2__icon__title"
           class="ds-c-icon ds-c-icon--add ds-c-accordion__button-icon"
           focusable="false"
-          id="icon-2"
+          id="2__icon"
           role="img"
           viewBox="3 3 18 18"
           xmlns="http://www.w3.org/2000/svg"
         >
           <title
-            id="icon-2__title"
+            id="2__icon__title"
           >
             Open
           </title>
@@ -80,7 +80,7 @@ exports[`Accordion renders accordion 1`] = `
       </button>
     </h2>
     <div
-      aria-labelledby="2-button"
+      aria-labelledby="2__button"
       class="ds-c-accordion__content"
       hidden=""
       id="2"

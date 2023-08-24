@@ -66,7 +66,12 @@ const TestLabelMask = (props: { mask: MaskFunction }) => {
   const [value, setValue] = useState('');
   return (
     <LabelMask labelMask={mask}>
-      <input type="text" value={value} onChange={(e) => setValue(e.currentTarget.value)} />
+      <input
+        type="text"
+        value={value}
+        onChange={(e) => setValue(e.currentTarget.value)}
+        id="static-id"
+      />
     </LabelMask>
   );
 };
