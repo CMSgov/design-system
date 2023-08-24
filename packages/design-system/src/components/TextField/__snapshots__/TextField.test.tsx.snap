@@ -7,8 +7,8 @@ exports[`TextField renders 1`] = `
   >
     <label
       class="ds-c-label"
-      for="field_1"
-      id="field_1-label"
+      for="static-id"
+      id="static-id__label"
     >
       <span
         class=""
@@ -19,7 +19,7 @@ exports[`TextField renders 1`] = `
     <input
       aria-invalid="false"
       class="ds-c-field"
-      id="field_1"
+      id="static-id"
       name="spec-field"
       type="text"
     />
@@ -34,8 +34,8 @@ exports[`TextField renders with a label mask 1`] = `
   >
     <label
       class="ds-c-label"
-      for="field_2"
-      id="field_2-label"
+      for="static-id"
+      id="static-id__label"
     >
       <span
         class=""
@@ -45,7 +45,7 @@ exports[`TextField renders with a label mask 1`] = `
     </label>
     <div
       class="ds-c-label-mask"
-      id="labelmask_3"
+      id="static-id__label-mask"
     >
       <span
         class=""
@@ -60,10 +60,10 @@ exports[`TextField renders with a label mask 1`] = `
       </span>
     </div>
     <input
-      aria-describedby="labelmask_3"
+      aria-describedby="static-id__label-mask"
       aria-invalid="false"
       class="ds-c-field"
-      id="field_2"
+      id="static-id"
       inputmode="numeric"
       name="spec-field"
       type="text"
@@ -80,8 +80,8 @@ exports[`TextField renders with a mask 1`] = `
   >
     <label
       class="ds-c-label"
-      for="field_4"
-      id="field_4-label"
+      for="static-id"
+      id="static-id__label"
     >
       <span
         class=""
@@ -100,7 +100,7 @@ exports[`TextField renders with a mask 1`] = `
       <input
         aria-invalid="false"
         class="ds-c-field ds-c-field--currency"
-        id="field_4"
+        id="static-id"
         inputmode="numeric"
         name="spec-field"
         pattern="[0-9.,-]*"

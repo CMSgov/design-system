@@ -85,15 +85,13 @@ const SimpleFooter: FunctionComponent<SimpleFooterProps> = ({
         <a href="https://www.medicare.gov/about-us/plain-writing">{plainWritingLabel}</a>
       </div>
       <div className="m-c-footer__identityRow">
-        <MedicaregovLogo />
-        <div className="m-c-footer__identityContent">
-          <HHSLogo />
-          <span className="m-c-footer__contactAddress">
-            {websiteInfo}
-            <br />
-            7500 Security Boulevard, Baltimore, MD 21244
-          </span>
-        </div>
+        <MedicaregovLogo className="m-c-footer__medicare-logo" />
+        <HHSLogo className="m-c-footer__hhs-logo" />
+        <span className="m-c-footer__contactAddress">
+          {websiteInfo}
+          <br />
+          7500 Security Boulevard, Baltimore, MD 21244
+        </span>
       </div>
     </footer>
   );

@@ -8,6 +8,7 @@ import { CloseIcon } from '../Icons';
 import { useEffect, useLayoutEffect, useRef, DialogHTMLAttributes } from 'react';
 import { t } from '../i18n';
 import { AnalyticsOverrideProps } from '../analytics';
+import useId from '../utilities/useId';
 
 export type DialogCloseButtonSize = 'small' | 'big';
 export type DialogSize = 'narrow' | 'wide' | 'full';
@@ -57,7 +58,7 @@ export interface BaseDialogProps extends AnalyticsOverrideProps {
   /**
    * The icon to display as part of the close button
    */
-  closeIcon?: React.ReactNode;
+  closeIconComponent?: React.ReactElement<any> | any | ((...args: any[]) => any);
   /**
    * Additional classes to be added to the header, which wraps the heading and
    * close button.
@@ -110,20 +111,27 @@ export const Dialog = (props: DialogProps) => {
     closeButtonSize,
     closeButtonText,
     closeButtonVariation,
-    closeIcon,
+    closeIconComponent,
     headerClassName,
     heading,
+    id,
     onEnter,
     onExit,
     size,
     ...modalProps
   } = props;
 
+  const rootId = useId('dialog--', id);
+  const headingRef = useDialogAnalytics(props);
+  const headingId = `${rootId}__heading`;
+
   const dialogClassNames = classNames('ds-c-dialog', className, size && `ds-c-dialog--${size}`);
   const headerClassNames = classNames('ds-c-dialog__header', headerClassName);
   const actionsClassNames = classNames('ds-c-dialog__actions', actionsClassName);
 
   const containerRef = useRef<HTMLDivElement>();
+
+  const CloseIconComponent = closeIconComponent;
 
   useEffect(() => {
     if (onEnter) onEnter();
@@ -151,11 +159,8 @@ export const Dialog = (props: DialogProps) => {
     };
   }, []);
 
-  const headingRef = useDialogAnalytics(props);
-  const headingId = useRef(uniqueId('dialog-title_')).current;
-
   return (
-    <NativeDialog className={dialogClassNames} showModal exit={onExit} {...modalProps}>
+    <NativeDialog className={dialogClassNames} showModal exit={onExit} {...modalProps} id={rootId}>
       <div role="document" ref={containerRef} tabIndex={-1} aria-labelledby={headingId}>
         <header className={headerClassNames}>
           {heading && (
@@ -170,7 +175,7 @@ export const Dialog = (props: DialogProps) => {
             size={closeButtonSize}
             variation={closeButtonVariation}
           >
-            {closeIcon}
+            <CloseIconComponent />
             {closeButtonText ?? t('dialog.closeButtonText')}
           </Button>
         </header>
@@ -185,7 +190,7 @@ export const Dialog = (props: DialogProps) => {
 
 Dialog.defaultProps = {
   closeButtonVariation: 'ghost',
-  closeIcon: <CloseIcon />,
+  closeIconComponent: CloseIcon,
 };
 
 export default Dialog;

@@ -12,6 +12,7 @@ const defaultProps: DateInputProps = {
   monthLabel: 'Month',
   yearName: 'Year',
   yearLabel: 'year',
+  id: 'static-id',
 };
 
 function renderDateInput(customProps: Partial<DateInputProps> = {}) {
