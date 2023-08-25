@@ -172,6 +172,26 @@ export const Controlled: Story = {
 export const Bob: Story = {
   args: {},
   render: function Component(args) {
-    return MySelect;
+    return (
+      <div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        {MySelect}
+      </div>
+    );
   },
 };
