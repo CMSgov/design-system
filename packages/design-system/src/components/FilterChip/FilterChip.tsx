@@ -48,7 +48,7 @@ export class FilterChip extends React.Component<FilterChipProps> {
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.filterChipId = props.id || uniqueId('filter_');
+    this.filterChipId = props.id ?? uniqueId('filter-chip--');
   }
 
   handleClick(): void {
@@ -78,7 +78,7 @@ export class FilterChip extends React.Component<FilterChipProps> {
 
     return (
       <button
-        id={`${this.filterChipId}`}
+        id={this.filterChipId}
         className={buttonClassNames}
         onClick={this.handleClick}
         onKeyDown={this.handleKeyDown}

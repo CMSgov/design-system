@@ -81,8 +81,8 @@ git commit --amend --no-edit
 
 read_previous_commit_tags
 
-echo "+ Pushing tags and version to ${GREEN}${BRANCH}${NC}..."
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
+echo "+ Pushing tags and version to ${GREEN}${BRANCH}${NC}..."
 git push --set-upstream origin $BRANCH
 git push origin $TAGS
 

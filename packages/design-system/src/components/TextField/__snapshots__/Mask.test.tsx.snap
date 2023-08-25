@@ -6,7 +6,8 @@ exports[`Mask renders mask 1`] = `
     class="ds-c-field-mask ds-c-field-mask--ssn"
   >
     <input
-      fieldclassname="ds-c-field--ssn"
+      aria-invalid="false"
+      class="ds-c-field ds-c-field--ssn"
       inputmode="numeric"
       name="foo"
       pattern="[0-9-*]*"
@@ -28,7 +29,8 @@ exports[`Mask renders mask overlay 1`] = `
       $
     </div>
     <input
-      fieldclassname="ds-c-field--currency"
+      aria-invalid="false"
+      class="ds-c-field ds-c-field--currency"
       inputmode="numeric"
       name="foo"
       pattern="[0-9.,-]*"

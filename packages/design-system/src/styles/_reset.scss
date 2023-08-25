@@ -130,14 +130,12 @@ hr {
 // that create the exception to the default styling because there are other
 // legitimate roles that could be applied like `role="listbox"`.
 
-ol:not([role]),
-ul:not([role]) {
+ol:not(:where([role])),
+ul:not(:where([role])) {
   // Relying on `flex` to set `gap` spacing size on li elements
   // `gap` ensures even spacing and doesn't interfere with layout
   // if list given a `row` direction
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
+  @include mixins.flex-list;
   margin-block: 1em 0;
   padding-inline-start: 2em;
 }
@@ -145,12 +143,12 @@ ul:not([role]) {
 // Tie the application of unstyled-list styles to inclusion of a role attribute
 // that will "fix" Safari behavior outlined in the guidance. See above comment.
 [role='list']:where(ul, ol) {
-  @include mixins.ds-unstyled-list;
+  @include mixins.unstyled-list;
 }
 
 li {
-  > ul:not([role]),
-  > ol:not([role]) {
+  > ul:not(:where([role])),
+  > ol:not(:where([role])) {
     margin-block: 0.5em 0;
   }
 }

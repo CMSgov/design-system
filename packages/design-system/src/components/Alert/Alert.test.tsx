@@ -17,12 +17,9 @@ function expectHasClass(className: string) {
 
 describe('Alert', function () {
   it('renders alert', () => {
-    renderAlert();
+    renderAlert({ id: 'static-id' });
     const alert = screen.getByRole('region');
-    expect(alert.className).toContain('ds-c-alert');
-
-    const body = screen.getByText(defaultText);
-    expect(body).toBeDefined();
+    expect(alert).toMatchSnapshot();
   });
 
   it('renders a heading', () => {

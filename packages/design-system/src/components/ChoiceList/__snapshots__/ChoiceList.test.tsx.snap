@@ -11,14 +11,14 @@ exports[`ChoiceList Radio buttons and Checkboxes allows for modification of aria
   >
     <input
       class="ds-c-choice"
-      id="radio_spec-field_18"
+      id="static-id__choice--1"
       name="spec-field"
       type="radio"
       value="2"
     />
     <label
       class="ds-c-label"
-      for="radio_spec-field_18"
+      for="static-id__choice--1"
     >
       <span
         class=""
@@ -38,7 +38,7 @@ exports[`ChoiceList Radio buttons and Checkboxes applies correct aria attributes
   >
     <legend
       class="ds-c-label"
-      id="field_21-label"
+      id="static-id__label"
     >
       <span
         class=""
@@ -57,14 +57,14 @@ exports[`ChoiceList Radio buttons and Checkboxes applies correct aria attributes
         <input
           checked=""
           class="ds-c-choice"
-          id="radio_spec-field_22"
+          id="static-id__choice--0"
           name="spec-field"
           type="radio"
           value="1"
         />
         <label
           class="ds-c-label"
-          for="radio_spec-field_22"
+          for="static-id__choice--0"
         >
           <span
             class=""
@@ -88,14 +88,14 @@ exports[`ChoiceList Radio buttons and Checkboxes applies correct aria attributes
         <input
           checked=""
           class="ds-c-choice"
-          id="radio_spec-field_23"
+          id="static-id__choice--1"
           name="spec-field"
           type="radio"
           value="2"
         />
         <label
           class="ds-c-label"
-          for="radio_spec-field_23"
+          for="static-id__choice--1"
         >
           <span
             class=""
@@ -120,7 +120,7 @@ exports[`ChoiceList Radio buttons and Checkboxes is a radio button group 1`] = `
   >
     <legend
       class="ds-c-label"
-      id="field_1-label"
+      id="static-id__label"
     >
       <span
         class=""
@@ -134,14 +134,14 @@ exports[`ChoiceList Radio buttons and Checkboxes is a radio button group 1`] = `
       >
         <input
           class="ds-c-choice"
-          id="radio_spec-field_2"
+          id="static-id__choice--0"
           name="spec-field"
           type="radio"
           value="1"
         />
         <label
           class="ds-c-label"
-          for="radio_spec-field_2"
+          for="static-id__choice--0"
         >
           <span
             class=""
@@ -157,14 +157,14 @@ exports[`ChoiceList Radio buttons and Checkboxes is a radio button group 1`] = `
       >
         <input
           class="ds-c-choice"
-          id="radio_spec-field_3"
+          id="static-id__choice--1"
           name="spec-field"
           type="radio"
           value="2"
         />
         <label
           class="ds-c-label"
-          for="radio_spec-field_3"
+          for="static-id__choice--1"
         >
           <span
             class=""

@@ -6,7 +6,11 @@ import TableCaption from './TableCaption';
 
 const makeTable = (customProps = {}) => {
   const children = <TableCaption>A great caption</TableCaption>;
-  render(<Table {...customProps}>{children}</Table>);
+  render(
+    <Table id="static-id" {...customProps}>
+      {children}
+    </Table>
+  );
 };
 
 describe('Table', function () {
@@ -38,6 +42,12 @@ describe('Table', function () {
   it('applies zebra stripe classes', () => {
     makeTable({ striped: true });
     expect(screen.getByRole('table')).toHaveClass('ds-c-table--striped');
+  });
+
+  it('accepts custom id', () => {
+    makeTable({ scrollable: true });
+    const el = screen.getByRole('region');
+    expect(el).toMatchSnapshot();
   });
 
   it('applies responsive stacked table', () => {
