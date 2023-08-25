@@ -18,6 +18,12 @@ interface ListBoxProps<T> extends AriaListBoxOptions<T> {
   ref?: MutableRefObject<T>;
 }
 
+interface DropdownMenuProps extends AriaListBoxOptions<HTMLUListElement> {
+  placement: AriaPopoverProps['placement'];
+  state: ListState<HTMLUListElement> & OverlayTriggerState;
+  triggerRef: AriaPopoverProps['triggerRef'];
+}
+
 function Popover({ children, state, ...props }: PopoverProps) {
   const popoverRef = React.useRef(null);
   const { popoverProps, underlayProps } = usePopover(
@@ -79,57 +85,60 @@ function ListBox<T>(props: ListBoxProps<T>) {
   );
 }
 
-// function DropdownMenu({children, state, ...props}) {
-//   const popoverRef = React.useRef(null);
-//   const { popoverProps, underlayProps } = usePopover(
-//     {
-//       ...props,
-//       popoverRef,
-//     },
-//     state
-//   );
+function DropdownMenu({ state, ...props }: DropdownMenuProps) {
+  const popoverRef = React.useRef(null);
+  const { popoverProps, underlayProps } = usePopover(
+    {
+      ...props,
+      popoverRef,
+    },
+    state
+  );
 
-//   const listBoxFallbackRef = React.useRef(null);
-//   const { listBoxRef = listBoxFallbackRef, state } = props;
-//   const { listBoxProps } = useListBox(props, state, listBoxRef);
+  const listBoxFallbackRef = React.useRef(null);
+  const listBoxRef = props.listBoxRef ?? listBoxFallbackRef;
+  const { listBoxProps } = useListBox(props, state, listBoxRef);
 
-//   return (
-//     <Overlay>
-//       <div {...underlayProps} style={{ position: 'fixed', inset: 0 }} />
-//       <div
-//         {...popoverProps}
-//         ref={popoverRef}
-//         style={{
-//           ...popoverProps.style,
-//           background: 'var(--page-background)',
-//           border: '1px solid gray',
-//         }}
-//       >
-//         <DismissButton onDismiss={state.close} />
-//         {children}
-//         <DismissButton onDismiss={state.close} />
-//       </div>
-//     </Overlay>
-//   );
-
-//     <ul
-//       {...listBoxProps}
-//       ref={listBoxRef}
-//       style={{
-//         margin: 0,
-//         padding: 0,
-//         listStyle: 'none',
-//         maxHeight: 150,
-//         overflow: 'auto',
-//         minWidth: 100,
-//         background: 'lightgray',
-//       }}
-//     >
-//       {[...state.collection].map((item) => (
-//         <Option key={item.key} item={item} state={state} />
-//       ))}
-//     </ul>
-// }
+  return (
+    <Overlay>
+      <div {...underlayProps} style={{ position: 'fixed', inset: 0 }} />
+      <div
+        {...popoverProps}
+        ref={popoverRef}
+        style={{
+          ...popoverProps.style,
+          background: 'var(--page-background)',
+          border: '1px solid gray',
+        }}
+      >
+        <DismissButton onDismiss={state.close} />
+        <ul
+          {...listBoxProps}
+          className="ds-c-dropdown__menu"
+          ref={listBoxRef}
+          style={{
+            margin: 0,
+            padding: 0,
+            listStyle: 'none',
+            maxHeight: 150,
+            overflow: 'auto',
+            minWidth: 100,
+            background: 'lightgray',
+          }}
+        >
+          {[...state.collection].map((item) =>
+            item.type === 'section' ? (
+              <ListBoxSection key={item.key} section={item} state={state} />
+            ) : (
+              <Option key={item.key} item={item} state={state} />
+            )
+          )}
+        </ul>
+        <DismissButton onDismiss={state.close} />
+      </div>
+    </Overlay>
+  );
+}
 
 function Option({ item, state }) {
   const ref = React.useRef(null);
@@ -218,7 +227,7 @@ function Select(props) {
   const ref = React.useRef(null);
   const { labelProps, triggerProps, valueProps, menuProps } = useSelect(props, state, ref);
   const { buttonProps } = useButton(triggerProps, ref);
-
+  console.log(menuProps);
   return (
     <div style={{ display: 'inline-block' }}>
       <div {...labelProps}>{props.label}</div>
@@ -238,7 +247,7 @@ function Select(props) {
         </span>
       </button>
       {state.isOpen && (
-        <Popover state={state} triggerRef={ref} placement="bottom start">
+        <Popover state={state} triggerRef={ref}>
           <ListBox {...menuProps} state={state} />
         </Popover>
       )}
