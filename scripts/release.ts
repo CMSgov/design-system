@@ -109,7 +109,7 @@ async function bumpMain() {
   console.log(c.green(`Creating a version-bump branch to merge into ${c.cyan('main')}...`));
 
   const d = new Date().getDate();
-  const m = new Date().getMonth();
+  const m = new Date().getMonth() + 1;
   const y = new Date().getFullYear();
   const H = new Date().getHours();
   const M = new Date().getMinutes();
