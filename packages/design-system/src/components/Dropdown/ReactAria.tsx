@@ -180,15 +180,6 @@ function ListBoxSection({ section, state }) {
   // a <ul> with the child items.
   return (
     <>
-      {section.key !== state.collection.getFirstKey() && (
-        <li
-          role="presentation"
-          style={{
-            borderTop: '1px solid gray',
-            margin: '2px 5px',
-          }}
-        />
-      )}
       <li {...itemProps}>
         {section.rendered && (
           <span
@@ -246,9 +237,10 @@ function Select(props) {
         </span>
       </button>
       {state.isOpen && (
-        <Popover state={state} triggerRef={ref}>
-          <ListBox {...menuProps} state={state} />
-        </Popover>
+        <DropdownMenu {...menuProps} state={state} triggerRef={ref} />
+        // <Popover state={state} triggerRef={ref}>
+        //   <ListBox {...menuProps} state={state} />
+        // </Popover>
       )}
     </div>
   );
