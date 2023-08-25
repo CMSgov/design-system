@@ -95,8 +95,7 @@ function DropdownMenu({ state, ...props }: DropdownMenuProps) {
     state
   );
 
-  const listBoxFallbackRef = React.useRef(null);
-  const listBoxRef = props.listBoxRef ?? listBoxFallbackRef;
+  const listBoxRef = React.useRef(null);
   const { listBoxProps } = useListBox(props, state, listBoxRef);
 
   return (
@@ -227,7 +226,7 @@ function Select(props) {
   const ref = React.useRef(null);
   const { labelProps, triggerProps, valueProps, menuProps } = useSelect(props, state, ref);
   const { buttonProps } = useButton(triggerProps, ref);
-  console.log(menuProps);
+
   return (
     <div style={{ display: 'inline-block' }}>
       <div {...labelProps}>{props.label}</div>
