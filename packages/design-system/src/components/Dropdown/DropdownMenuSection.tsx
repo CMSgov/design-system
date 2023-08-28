@@ -1,14 +1,14 @@
 import React from 'react';
 import { DropdownMenuOption } from './DropdownMenuOption';
-import { ListState, Section } from 'react-stately';
+import { ListState, Node } from 'react-stately';
 import { useListBoxSection } from 'react-aria';
 
-export interface DropdownMenuOptionProps {
-  section: Section;
-  state: ListState<HTMLUListElement>;
+export interface DropdownMenuOptionProps<T> {
+  section: Node<T>;
+  state: ListState<T>;
 }
 
-export function DropdownMenuSection({ section, state }) {
+export function DropdownMenuSection<T>({ section, state }: DropdownMenuOptionProps<T>) {
   const { itemProps, headingProps, groupProps } = useListBoxSection({
     heading: section.rendered,
     'aria-label': section['aria-label'],
@@ -24,7 +24,7 @@ export function DropdownMenuSection({ section, state }) {
         )}
         <ul {...groupProps}>
           {[...section.childNodes].map((node) => (
-            <DropdownMenuOption key={node.key} item={node} state={state} />
+            <DropdownMenuOption key={node.key} item={node} state={state} attributes={{}} />
           ))}
         </ul>
       </li>

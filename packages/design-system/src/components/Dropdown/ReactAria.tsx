@@ -212,12 +212,18 @@ import { DropdownMenu } from './DropdownMenu';
 
 function Select(props) {
   // Create state based on the incoming props
-  const state = useSelectState(props);
+  const state = useSelectState({
+    ...props,
+    onSelectionChange: (value: string) => {
+      console.log('hello');
+      triggerRef.current?.focus();
+    },
+  });
 
   // Get props for child elements from useSelect
-  const ref = React.useRef(null);
-  const { labelProps, triggerProps, valueProps, menuProps } = useSelect(props, state, ref);
-  const { buttonProps } = useButton(triggerProps, ref);
+  const triggerRef = React.useRef(null);
+  const { labelProps, triggerProps, valueProps, menuProps } = useSelect(props, state, triggerRef);
+  const { buttonProps } = useButton(triggerProps, triggerRef);
 
   return (
     <div style={{ display: 'inline-block' }}>
@@ -225,11 +231,11 @@ function Select(props) {
       <HiddenSelect
         isDisabled={props.isDisabled}
         state={state}
-        triggerRef={ref}
+        triggerRef={triggerRef}
         label={props.label}
         name={props.name}
       />
-      <button {...buttonProps} ref={ref}>
+      <button {...buttonProps} ref={triggerRef}>
         <span {...valueProps}>
           {state.selectedItem ? state.selectedItem.rendered : 'Select an option'}
         </span>
@@ -241,7 +247,7 @@ function Select(props) {
         <DropdownMenu
           {...menuProps}
           state={state}
-          triggerRef={ref}
+          triggerRef={triggerRef}
           className="ds-c-dropdown__menu-container"
         />
         // <Popover state={state} triggerRef={ref}>

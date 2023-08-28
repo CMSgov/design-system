@@ -1,15 +1,19 @@
 import React, { useRef } from 'react';
-import { Item, ListState } from 'react-stately';
+import { ListState, Node } from 'react-stately';
 import { useOption } from 'react-aria';
 import classNames from 'classnames';
 
-export interface DropdownMenuOptionProps {
-  item: Item;
-  state: ListState<HTMLUListElement>;
+export interface DropdownMenuOptionProps<T> {
+  item: Node<T>;
+  state: ListState<T>;
   attributes: React.HTMLAttributes<'option'>;
 }
 
-export function DropdownMenuOption({ attributes = {}, item, state }: DropdownMenuOptionProps) {
+export function DropdownMenuOption<T>({
+  attributes = {},
+  item,
+  state,
+}: DropdownMenuOptionProps<T>) {
   const ref = useRef(null);
   const { optionProps, isSelected, isFocused, isDisabled } = useOption(
     { key: item.key },
