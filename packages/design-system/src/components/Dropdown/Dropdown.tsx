@@ -253,6 +253,13 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   return (
     <div {...useFormLabelProps.wrapperProps} ref={wrapperRef}>
       <FormLabel {...labelProps} />
+      <HiddenSelect
+        isDisabled={props.disabled}
+        state={state}
+        triggerRef={triggerRef}
+        label={props.label}
+        name={props.name}
+      />
       <button {...buttonProps}>
         <span id={buttonContentId} className="ds-u-truncate">
           {state.selectedItem ? state.selectedItem.rendered : ''}
