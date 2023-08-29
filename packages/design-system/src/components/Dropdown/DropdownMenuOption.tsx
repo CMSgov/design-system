@@ -7,6 +7,7 @@ import classNames from 'classnames';
 export interface DropdownMenuOptionProps<T> {
   item: Node<T>;
   state: ListState<T>;
+  rootId?: string;
   attributes: React.HTMLAttributes<'option'>;
 }
 
@@ -14,6 +15,7 @@ export function DropdownMenuOption<T>({
   attributes = {},
   item,
   state,
+  rootId,
 }: DropdownMenuOptionProps<T>) {
   const ref = useRef(null);
   const { optionProps, isSelected, isFocused, isDisabled } = useOption(
@@ -33,6 +35,7 @@ export function DropdownMenuOption<T>({
   return (
     <li
       {...optionProps}
+      id={`${rootId}__item--${item.index}`}
       {...(attributes as React.HTMLAttributes<any>)}
       ref={ref}
       className={classNames(

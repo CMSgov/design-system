@@ -6,9 +6,10 @@ import { useListBoxSection } from 'react-aria';
 export interface DropdownMenuOptionProps<T> {
   section: Node<T>;
   state: ListState<T>;
+  rootId?: string;
 }
 
-export function DropdownMenuSection<T>({ section, state }: DropdownMenuOptionProps<T>) {
+export function DropdownMenuSection<T>({ section, state, rootId }: DropdownMenuOptionProps<T>) {
   const { itemProps, headingProps, groupProps } = useListBoxSection({
     heading: section.rendered,
     'aria-label': section['aria-label'],
@@ -24,7 +25,13 @@ export function DropdownMenuSection<T>({ section, state }: DropdownMenuOptionPro
         )}
         <ul {...groupProps}>
           {[...section.childNodes].map((node) => (
-            <DropdownMenuOption key={node.key} item={node} state={state} attributes={{}} />
+            <DropdownMenuOption
+              key={node.key}
+              item={node}
+              state={state}
+              rootId={rootId}
+              attributes={{}}
+            />
           ))}
         </ul>
       </li>

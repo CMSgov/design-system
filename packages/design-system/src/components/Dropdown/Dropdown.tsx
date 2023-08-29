@@ -182,8 +182,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
       <Item key="kangaroo">Kangaroo</Item>,
       <Item key="snake">Snake</Item>,
     ],
-    onSelectionChange: (value: string, ...args) => {
-      console.log(value, args);
+    onSelectionChange: (value: string) => {
       state.setFocused(true);
       // TODO: Get it to not fire an onBlur event when a selection is made
 
@@ -223,13 +222,10 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
 
   const useSelectProps = useSelect(props, state, triggerRef);
   const useButtonProps = useButton(useSelectProps.triggerProps, triggerRef);
-  // console.log('useButtonProps.buttonProps', useButtonProps.buttonProps)
-  // console.log('useFormLabelProps.fieldProps', useFormLabelProps.fieldProps)
 
   const buttonProps = {
     ...useButtonProps.buttonProps,
     ...useFormLabelProps.fieldProps,
-    type: 'button' as const,
     className: classNames(
       'ds-c-dropdown__button',
       'ds-c-field',
@@ -238,14 +234,10 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
       size && `ds-c-field--${size}`,
       fieldClassName
     ),
-    'aria-labelledby': `${buttonContentId} ${labelId}`,
     ref: mergeRefs([triggerRef, inputRef, useAutofocus<HTMLButtonElement>(props.autoFocus)]),
+    'aria-controls': menuId,
+    'aria-labelledby': `${buttonContentId} ${labelId}`,
   };
-
-  if (!buttonProps['aria-activedescendant']) {
-    // This attribute being empty causes unexpected behavior in JAWS, so remove it
-    delete buttonProps['aria-activedescendant'];
-  }
 
   const labelProps = {
     ...useSelectProps.labelProps,
@@ -257,69 +249,6 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   useClickOutsideHandler([wrapperRef], () => {
     state.setOpen(false);
   });
-
-  // const renderItem = (item: DropdownOption, index: number) => {
-  //   const { value, label, className, ...extraAttrs } = item;
-  //   const isSelected = selectedItem?.value === item.value;
-  //   return (
-  //     <li
-  //       key={value}
-  //       className={classNames(
-  //         className,
-  //         'ds-c-dropdown__menu-item',
-  //         highlightedIndex === index && 'ds-c-dropdown__menu-item--highlighted',
-  //         isSelected && 'ds-c-dropdown__menu-item--selected'
-  //       )}
-  //       {...extraAttrs}
-  //       {...getItemProps({
-  //         item,
-  //         index,
-  //         role: 'option',
-  //       })}
-  //     >
-  //       {isSelected && (
-  //         <span className="ds-c-dropdown__menu-item-selected-indicator">
-  //           <SvgIcon
-  //             title="selected option icon"
-  //             viewBox="0 0 448 512"
-  //             className="ds-u-font-size--sm"
-  //           >
-  //             {checkIcon}
-  //           </SvgIcon>
-  //         </span>
-  //       )}
-  //       {item.label}
-  //     </li>
-  //   );
-  // };
-
-  // const menuContent = [];
-  // let groupIndex = 0;
-  // let menuItemIndex = 0;
-  // for (const item of optionsAndGroups) {
-  //   if (isOptGroup(item)) {
-  //     const groupId = `${id}__group--${groupIndex++}`;
-  //     const { label, className, options, ...extraAttrs } = item;
-  //     menuContent.push(
-  //       <li
-  //         role="group"
-  //         aria-labelledby={groupId}
-  //         key={groupId}
-  //         className={classNames('ds-c-dropdown__menu-item-group', className)}
-  //         {...(extraAttrs as any)}
-  //       >
-  //         <div id={groupId} className="ds-c-dropdown__menu-item-group-label">
-  //           {label}
-  //         </div>
-  //         <ul role="presentation">
-  //           {options.map((groupedItem) => renderItem(groupedItem, menuItemIndex++))}
-  //         </ul>
-  //       </li>
-  //     );
-  //   } else {
-  //     menuContent.push(renderItem(item, menuItemIndex++));
-  //   }
-  // }
 
   return (
     <div {...useFormLabelProps.wrapperProps} ref={wrapperRef}>
@@ -341,9 +270,12 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
       {state.isOpen && (
         <DropdownMenu
           {...useSelectProps.menuProps}
+          className={classNames('ds-c-dropdown__menu-container', size && `ds-c-field--${size}`)}
+          labelId={labelId}
+          menuId={menuId}
+          rootId={id}
           state={state}
           triggerRef={triggerRef}
-          className="ds-c-dropdown__menu-container"
         />
       )}
       {useFormLabelProps.bottomError}
