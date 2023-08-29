@@ -226,7 +226,7 @@ function Select(props) {
   const { buttonProps } = useButton(triggerProps, triggerRef);
 
   return (
-    <div style={{ display: 'inline-block' }}>
+    <div style={{ display: 'inline-block' }} className="ds-c-dropdown">
       <div {...labelProps}>{props.label}</div>
       <HiddenSelect
         isDisabled={props.isDisabled}

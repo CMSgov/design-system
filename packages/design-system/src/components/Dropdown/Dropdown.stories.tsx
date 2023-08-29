@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Dropdown from './Dropdown';
 import type { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { useArgs } from '@storybook/preview-api';
 import { MySelect } from './ReactAria';
-import { Dialog } from '../index';
 
 const meta: Meta<typeof Dropdown> = {
   title: 'Components/Dropdown',
@@ -173,20 +172,7 @@ export const Controlled: Story = {
 export const Bob: Story = {
   args: {},
   render: function Component(args) {
-    const [show, setShow] = useState(true);
-
-    return show ? (
-      <Dialog heading="hello" onExit={() => setShow(false)}>
-        <Dropdown
-          {...{
-            options: dropdownOptions,
-            label: 'Dropdown example',
-            name: 'dropdown_field',
-            value: '3',
-          }}
-        />
-      </Dialog>
-    ) : undefined;
+    return MySelect;
   },
 };
 
