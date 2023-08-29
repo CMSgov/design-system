@@ -1,18 +1,24 @@
-import React, { useMemo, useRef } from 'react';
+import React, { RefObject, useMemo, useRef } from 'react';
 import classNames from 'classnames';
 import mergeRefs from '../utilities/mergeRefs';
 import useAutofocus from '../utilities/useAutoFocus';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 import { SvgIcon } from '../Icons';
-import { useSelect, UseSelectProps, UseSelectStateChangeOptions } from 'downshift';
 import { isOptGroup, parseChildren, validateProps } from './utils';
 import { uniqueId } from 'lodash';
-import useHighlightStatusMessageFn from './useHighlightStatusMessageFn';
+import { Item, ListState, Section, useSelectState } from 'react-stately';
+import { HiddenSelect, useButton, useSelect } from 'react-aria';
+import DropdownMenu from './DropdownMenu';
+import useClickOutsideHandler from '../utilities/useClickOutsideHandler';
+
+const caretIcon = (
+  <path d="M212.7 148.7c6.2-6.2 16.4-6.2 22.6 0l160 160c6.2 6.2 6.2 16.4 0 22.6s-16.4 6.2-22.6 0L224 182.6 75.3 331.3c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l160-160z" />
+);
 
 export type DropdownSize = 'small' | 'medium';
 export type DropdownValue = number | string;
 
-export interface DropdownChangeObject extends UseSelectStateChangeOptions<any> {
+export interface DropdownChangeObject {
   target: { value: string };
   currentTarget: { value: string };
 }
@@ -25,7 +31,6 @@ export interface DropdownOptGroup extends React.HTMLAttributes<'optgroup'> {
   label: string;
   options: DropdownOption[];
 }
-const itemToString = (item: DropdownOption) => item.label;
 
 export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
   /**
@@ -77,16 +82,6 @@ export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
    * for a controlled component; otherwise, set `defaultValue`.
    */
   value?: DropdownValue;
-  /**
-   * Customize the default status messages announced to screen reader users via
-   * aria-live during certain interactions. [Read more on downshift docs.](https://github.com/downshift-js/downshift/tree/master/src/hooks/useSelect#geta11ystatusmessage)
-   */
-  getA11yStatusMessage?: UseSelectProps<any>['getA11yStatusMessage'];
-  /**
-   * Customize the default status messages announced to screen reader users via
-   * aria-live when a selection is made. [Read more on downshift docs.](https://github.com/downshift-js/downshift/tree/master/src/hooks/useSelect#geta11yselectionmessage)
-   */
-  getA11ySelectionMessage?: UseSelectProps<any>['getA11ySelectionMessage'];
 }
 
 type OptionsOrChildren =
@@ -116,6 +111,9 @@ export type DropdownProps = BaseDropdownProps &
 export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   validateProps(props);
 
+  // TODO: Figure out a nice way to apply these to the appropriate elements, since
+  // react-aria doesn't have any props for specifying these through their API, and
+  // they randomly generate the ids.
   const id = useRef(props.id ?? uniqueId('dropdown__button--')).current;
   const labelId = useRef(props.labelId ?? uniqueId('dropdown__label--')).current;
   const buttonContentId = useRef(uniqueId('dropdown__button-content--')).current;
@@ -133,10 +131,10 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     defaultValue,
     value,
     inputRef,
-    getA11yStatusMessage,
-    getA11ySelectionMessage,
     ...extraProps
   } = props;
+
+  const triggerRef = useRef<HTMLButtonElement>();
 
   // Turn our options or optgroups into a flat array of selectable items that
   // we can pass to the Downshift `useSelect` hook. Even though the group
@@ -174,56 +172,62 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     }
   }
 
-  const highlightStatusMessageFn = useHighlightStatusMessageFn();
-
-  const {
-    isOpen,
-    selectedItem,
-    getToggleButtonProps,
-    getMenuProps,
-    getItemProps,
-    highlightedIndex,
-  } = useSelect({
-    defaultSelectedItem,
-    selectedItem: controlledSelectedItem,
-    toggleButtonId: id,
-    labelId,
-    menuId,
-    items,
-    itemToString,
-    getA11yStatusMessage: getA11yStatusMessage ?? highlightStatusMessageFn,
-    ...(getA11ySelectionMessage ? { getA11ySelectionMessage } : {}),
-    onSelectedItemChange:
-      onChange &&
-      ((changes: UseSelectStateChangeOptions<any>) => {
+  const state = useSelectState({
+    ...props,
+    children: [
+      <Item key="red panda">Red Panda</Item>,
+      <Item key="cat">Cat</Item>,
+      <Item key="dog">Dog</Item>,
+      <Item key="aardvark">Aardvark</Item>,
+      <Item key="kangaroo">Kangaroo</Item>,
+      <Item key="snake">Snake</Item>,
+    ],
+    onSelectionChange: (value: string, ...args) => {
+      console.log(value, args);
+      triggerRef.current?.focus();
+      if (onChange) {
         // Try to support the old API that passed an event object
-        const target = { value: changes.selectedItem.value };
+        const target = { value };
         onChange({
-          ...changes,
           target,
           currentTarget: target,
         });
-      }),
+      }
+    },
   });
+  // ((changes: UseSelectStateChangeOptions<any>) => {
+  //   // Try to support the old API that passed an event object
+  //   const target = { value: changes.selectedItem.value };
+  //   onChange({
+  //     ...changes,
+  //     target,
+  //     currentTarget: target,
+  //   });
 
-  const { labelProps, fieldProps, wrapperProps, bottomError } = useFormLabel({
+  const useFormLabelProps = useFormLabel({
     ...extraProps,
     id,
     labelId,
-    className: classNames('ds-c-dropdown', className, isOpen && 'ds-c-dropdown--open'),
+    className: classNames('ds-c-dropdown', className, state.isOpen && 'ds-c-dropdown--open'),
     labelComponent: 'label',
     wrapperIsFieldset: false,
   });
 
   // We don't want to pass these down to the button
-  delete fieldProps.errorMessage;
-  delete fieldProps.errorId;
-  delete fieldProps.inversed;
+  delete useFormLabelProps.fieldProps.errorMessage;
+  delete useFormLabelProps.fieldProps.errorId;
+  delete useFormLabelProps.fieldProps.inversed;
+  delete useFormLabelProps.fieldProps.onBlur;
 
-  const buttonProps = getToggleButtonProps({
-    ...fieldProps,
-    type: 'button',
-    ref: mergeRefs([inputRef, useAutofocus<HTMLButtonElement>(props.autoFocus)]),
+  const useSelectProps = useSelect(props, state, triggerRef);
+  const useButtonProps = useButton(useSelectProps.triggerProps, triggerRef);
+  // console.log('useButtonProps.buttonProps', useButtonProps.buttonProps)
+  // console.log('useFormLabelProps.fieldProps', useFormLabelProps.fieldProps)
+
+  const buttonProps = {
+    ...useButtonProps.buttonProps,
+    ...useFormLabelProps.fieldProps,
+    type: 'button' as const,
     className: classNames(
       'ds-c-dropdown__button',
       'ds-c-field',
@@ -233,97 +237,94 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
       fieldClassName
     ),
     'aria-labelledby': `${buttonContentId} ${labelId}`,
-  });
+    ref: mergeRefs([triggerRef, inputRef, useAutofocus<HTMLButtonElement>(props.autoFocus)]),
+  };
 
   if (!buttonProps['aria-activedescendant']) {
     // This attribute being empty causes unexpected behavior in JAWS, so remove it
     delete buttonProps['aria-activedescendant'];
   }
 
-  const menuContainerProps = {
-    className: classNames('ds-c-dropdown__menu-container', size && `ds-c-field--${size}`),
+  const labelProps = {
+    ...useSelectProps.labelProps,
+    ...useFormLabelProps.labelProps,
+    fieldId: useFormLabelProps.fieldProps.id,
   };
 
-  const menuProps = getMenuProps({
-    className: 'ds-c-dropdown__menu',
+  const wrapperRef = useRef<HTMLDivElement>();
+  useClickOutsideHandler([wrapperRef], () => {
+    state.setOpen(false);
   });
 
-  const caretIcon = (
-    <path d="M212.7 148.7c6.2-6.2 16.4-6.2 22.6 0l160 160c6.2 6.2 6.2 16.4 0 22.6s-16.4 6.2-22.6 0L224 182.6 75.3 331.3c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l160-160z" />
-  );
-  const checkIcon = (
-    <path d="M443.3 100.7c6.2 6.2 6.2 16.4 0 22.6l-272 272c-6.2 6.2-16.4 6.2-22.6 0l-144-144c-6.2-6.2-6.2-16.4 0-22.6s16.4-6.2 22.6 0L160 361.4l260.7-260.7c6.2-6.2 16.4-6.2 22.6 0z" />
-  );
+  // const renderItem = (item: DropdownOption, index: number) => {
+  //   const { value, label, className, ...extraAttrs } = item;
+  //   const isSelected = selectedItem?.value === item.value;
+  //   return (
+  //     <li
+  //       key={value}
+  //       className={classNames(
+  //         className,
+  //         'ds-c-dropdown__menu-item',
+  //         highlightedIndex === index && 'ds-c-dropdown__menu-item--highlighted',
+  //         isSelected && 'ds-c-dropdown__menu-item--selected'
+  //       )}
+  //       {...extraAttrs}
+  //       {...getItemProps({
+  //         item,
+  //         index,
+  //         role: 'option',
+  //       })}
+  //     >
+  //       {isSelected && (
+  //         <span className="ds-c-dropdown__menu-item-selected-indicator">
+  //           <SvgIcon
+  //             title="selected option icon"
+  //             viewBox="0 0 448 512"
+  //             className="ds-u-font-size--sm"
+  //           >
+  //             {checkIcon}
+  //           </SvgIcon>
+  //         </span>
+  //       )}
+  //       {item.label}
+  //     </li>
+  //   );
+  // };
 
-  const renderItem = (item: DropdownOption, index: number) => {
-    const { value, label, className, ...extraAttrs } = item;
-    const isSelected = selectedItem?.value === item.value;
-    return (
-      <li
-        key={value}
-        className={classNames(
-          className,
-          'ds-c-dropdown__menu-item',
-          highlightedIndex === index && 'ds-c-dropdown__menu-item--highlighted',
-          isSelected && 'ds-c-dropdown__menu-item--selected'
-        )}
-        {...extraAttrs}
-        {...getItemProps({
-          item,
-          index,
-          role: 'option',
-        })}
-      >
-        {isSelected && (
-          <span className="ds-c-dropdown__menu-item-selected-indicator">
-            <SvgIcon
-              title="selected option icon"
-              viewBox="0 0 448 512"
-              className="ds-u-font-size--sm"
-            >
-              {checkIcon}
-            </SvgIcon>
-          </span>
-        )}
-        {item.label}
-      </li>
-    );
-  };
-
-  const menuContent = [];
-  let groupIndex = 0;
-  let menuItemIndex = 0;
-  for (const item of optionsAndGroups) {
-    if (isOptGroup(item)) {
-      const groupId = `${id}__group--${groupIndex++}`;
-      const { label, className, options, ...extraAttrs } = item;
-      menuContent.push(
-        <li
-          role="group"
-          aria-labelledby={groupId}
-          key={groupId}
-          className={classNames('ds-c-dropdown__menu-item-group', className)}
-          {...(extraAttrs as any)}
-        >
-          <div id={groupId} className="ds-c-dropdown__menu-item-group-label">
-            {label}
-          </div>
-          <ul role="presentation">
-            {options.map((groupedItem) => renderItem(groupedItem, menuItemIndex++))}
-          </ul>
-        </li>
-      );
-    } else {
-      menuContent.push(renderItem(item, menuItemIndex++));
-    }
-  }
+  // const menuContent = [];
+  // let groupIndex = 0;
+  // let menuItemIndex = 0;
+  // for (const item of optionsAndGroups) {
+  //   if (isOptGroup(item)) {
+  //     const groupId = `${id}__group--${groupIndex++}`;
+  //     const { label, className, options, ...extraAttrs } = item;
+  //     menuContent.push(
+  //       <li
+  //         role="group"
+  //         aria-labelledby={groupId}
+  //         key={groupId}
+  //         className={classNames('ds-c-dropdown__menu-item-group', className)}
+  //         {...(extraAttrs as any)}
+  //       >
+  //         <div id={groupId} className="ds-c-dropdown__menu-item-group-label">
+  //           {label}
+  //         </div>
+  //         <ul role="presentation">
+  //           {options.map((groupedItem) => renderItem(groupedItem, menuItemIndex++))}
+  //         </ul>
+  //       </li>
+  //     );
+  //   } else {
+  //     menuContent.push(renderItem(item, menuItemIndex++));
+  //   }
+  // }
 
   return (
-    <div {...wrapperProps}>
-      <FormLabel {...labelProps} fieldId={fieldProps.id} />
+    <div {...useFormLabelProps.wrapperProps} ref={wrapperRef}>
+      <FormLabel {...labelProps} />
       <button {...buttonProps}>
         <span id={buttonContentId} className="ds-u-truncate">
-          {selectedItem?.label}
+          {state.selectedItem ? state.selectedItem.rendered : ''}
         </span>
         <span className="ds-c-dropdown__caret">
           <SvgIcon
@@ -335,12 +336,15 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
           </SvgIcon>
         </span>
       </button>
-      <div {...menuContainerProps} hidden={!isOpen}>
-        <ul {...menuProps} aria-labelledby={undefined}>
-          {menuContent}
-        </ul>
-      </div>
-      {bottomError}
+      {state.isOpen && (
+        <DropdownMenu
+          {...useSelectProps.menuProps}
+          state={state}
+          triggerRef={triggerRef}
+          className="ds-c-dropdown__menu-container"
+        />
+      )}
+      {useFormLabelProps.bottomError}
     </div>
   );
 };

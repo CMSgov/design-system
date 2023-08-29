@@ -99,6 +99,7 @@
 // Styles for dropdown elements that are highlighted
 .ds-c-dropdown__menu-item--highlighted {
   background-color: var(--color-primary-lightest);
+  outline: none;
 }
 
 // Styles for dropdown elements that are selected

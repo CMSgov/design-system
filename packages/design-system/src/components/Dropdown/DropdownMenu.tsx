@@ -2,56 +2,26 @@ import React, { useRef } from 'react';
 import { DropdownMenuOption } from './DropdownMenuOption';
 import { DropdownMenuSection } from './DropdownMenuSection';
 import { ListState, OverlayTriggerState } from 'react-stately';
-import {
-  AriaPopoverProps,
-  AriaListBoxOptions,
-  DismissButton,
-  Overlay,
-  usePopover,
-  useListBox,
-} from 'react-aria';
+import { AriaPopoverProps, AriaListBoxOptions, DismissButton, useListBox } from 'react-aria';
+import usePressEscapeHandler from '../utilities/usePressEscapeHandler';
 
 interface DropdownMenuProps<T> extends AriaListBoxOptions<T> {
   className?: string;
-  // placement: AriaPopoverProps['placement'];
   state: ListState<T> & OverlayTriggerState;
   triggerRef: AriaPopoverProps['triggerRef'];
 }
 
 export function DropdownMenu<T>({ className, state, ...props }: DropdownMenuProps<T>) {
-  const popoverRef = useRef(null);
-  const { popoverProps, underlayProps } = usePopover(
-    {
-      ...props,
-      popoverRef,
-    },
-    state
-  );
-  // console.log(state)
-
   const listBoxRef = useRef(null);
   const { listBoxProps } = useListBox(props, state, listBoxRef);
+  const containerRef = useRef();
+  usePressEscapeHandler(containerRef, () => {
+    state.setOpen(false);
+    (props.triggerRef.current as HTMLButtonElement)?.focus?.();
+  });
 
   return (
-    // <Overlay>
-    //   <div {...underlayProps} style={{ position: 'fixed', inset: 0 }} />
-    <div
-      // {...popoverProps}
-      // ref={popoverRef}
-      // This contains logic for opening the menu above the button if there's
-      // not enough space below, but our styles don't yet support that.
-      // style={popoverProps.style}
-      // But actually, it's not enough to make the styles undefined, because they
-      // seem to be able to write styles to it directly in the DOM using the ref
-      style={undefined}
-      className={className}
-      onKeyUp={(event) => {
-        if (event.code === 'Escape') {
-          state.setOpen(false);
-          (props.triggerRef.current as HTMLButtonElement)?.focus?.();
-        }
-      }}
-    >
+    <div className={className} ref={containerRef}>
       <DismissButton onDismiss={state.close} />
       <ul {...listBoxProps} className="ds-c-dropdown__menu" ref={listBoxRef}>
         {[...state.collection].map((item) =>
@@ -64,7 +34,6 @@ export function DropdownMenu<T>({ className, state, ...props }: DropdownMenuProp
       </ul>
       <DismissButton onDismiss={state.close} />
     </div>
-    //  </Overlay>
   );
 }
 
