@@ -5,11 +5,11 @@ import useAutofocus from '../utilities/useAutoFocus';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 import { SvgIcon } from '../Icons';
 import { isOptGroup, parseChildren, validateProps } from './utils';
-import { uniqueId } from 'lodash';
 import { Item, ListState, Section, useSelectState } from 'react-stately';
 import { HiddenSelect, useButton, useSelect } from 'react-aria';
 import DropdownMenu from './DropdownMenu';
 import useClickOutsideHandler from '../utilities/useClickOutsideHandler';
+import useId from '../utilities/useId';
 
 const caretIcon = (
   <path d="M212.7 148.7c6.2-6.2 16.4-6.2 22.6 0l160 160c6.2 6.2 6.2 16.4 0 22.6s-16.4 6.2-22.6 0L224 182.6 75.3 331.3c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l160-160z" />
@@ -114,10 +114,10 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   // TODO: Figure out a nice way to apply these to the appropriate elements, since
   // react-aria doesn't have any props for specifying these through their API, and
   // they randomly generate the ids.
-  const id = useRef(props.id ?? uniqueId('dropdown__button--')).current;
-  const labelId = useRef(props.labelId ?? uniqueId('dropdown__label--')).current;
-  const buttonContentId = useRef(uniqueId('dropdown__button-content--')).current;
-  const menuId = useRef(uniqueId('dropdown__menu--')).current;
+  const id = useId('dropdown__button--', props.id);
+  const labelId = props.labelId ?? `${id}__label`;
+  const buttonContentId = `${id}__button-content`;
+  const menuId = `${id}__menu`;
 
   // Draw out certain props that we don't want to pass through as attributes
   const {

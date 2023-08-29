@@ -7,6 +7,7 @@ import userEvent from '@testing-library/user-event';
 const defaultProps = {
   label: 'Foo',
   name: 'spec-field',
+  id: 'static-id',
 };
 
 function renderTextField(customProps = {}) {
@@ -29,9 +30,18 @@ describe('TextField', function () {
   it('can accept custom ids', () => {
     const id = 'custom-id';
     const labelId = 'custom-label-id';
-    const { container } = renderTextField({ id, labelId });
+    const errorId = 'custom-error-id';
+    const { container } = renderTextField({ id, labelId, errorId, errorMessage: 'hello' });
     expect(container.querySelector('input').id).toEqual(id);
     expect(container.querySelector('label').id).toEqual(labelId);
+    expect(container.querySelector('.ds-c-inline-error').id).toEqual(errorId);
+  });
+
+  it('generates ids when no id is provided', () => {
+    const { container } = renderTextField({ id: undefined });
+    const idRegex = /text-field--\d+/;
+    expect(container.querySelector('input').id).toMatch(idRegex);
+    expect(container.querySelector('label').id).toMatch(idRegex);
   });
 
   it('calls onChange when user types', () => {

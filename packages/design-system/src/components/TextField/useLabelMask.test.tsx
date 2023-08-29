@@ -173,7 +173,7 @@ describe('DATE_MASK', () => {
 });
 
 describe('useLabelMask', () => {
-  const defaultInputProps = { type: 'text', value: '' };
+  const defaultInputProps = { type: 'text', value: '', id: 'static-id' };
 
   function renderInput(props = {}) {
     return render(<input {...props} />);

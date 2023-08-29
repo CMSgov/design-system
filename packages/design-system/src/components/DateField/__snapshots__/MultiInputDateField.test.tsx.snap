@@ -8,7 +8,7 @@ exports[`MultiInputDateField renders 1`] = `
   >
     <legend
       class="ds-c-label"
-      id="field_snapshot-label"
+      id="date-field--snapshot__label"
     >
       <span
         class=""
@@ -29,8 +29,8 @@ exports[`MultiInputDateField renders 1`] = `
       >
         <label
           class="ds-c-label ds-c-datefield__label"
-          for="field_snapshot"
-          id="field_snapshot-label"
+          for="date-field--snapshot__month"
+          id="date-field--snapshot__month__label"
         >
           <span
             class=""
@@ -39,10 +39,10 @@ exports[`MultiInputDateField renders 1`] = `
           </span>
         </label>
         <input
-          aria-describedby="field_snapshot-label"
+          aria-describedby="date-field--snapshot__label"
           aria-invalid="false"
           class="ds-c-field ds-c-field--month"
-          id="field_snapshot"
+          id="date-field--snapshot__month"
           inputmode="numeric"
           maxlength="2"
           name="month"
@@ -61,8 +61,8 @@ exports[`MultiInputDateField renders 1`] = `
       >
         <label
           class="ds-c-label ds-c-datefield__label"
-          for="field_snapshot"
-          id="field_snapshot-label"
+          for="date-field--snapshot__day"
+          id="date-field--snapshot__day__label"
         >
           <span
             class=""
@@ -71,10 +71,10 @@ exports[`MultiInputDateField renders 1`] = `
           </span>
         </label>
         <input
-          aria-describedby="field_snapshot-label"
+          aria-describedby="date-field--snapshot__label"
           aria-invalid="false"
           class="ds-c-field ds-c-field--day"
-          id="field_snapshot"
+          id="date-field--snapshot__day"
           inputmode="numeric"
           maxlength="2"
           name="day"
@@ -93,8 +93,8 @@ exports[`MultiInputDateField renders 1`] = `
       >
         <label
           class="ds-c-label ds-c-datefield__label"
-          for="field_snapshot"
-          id="field_snapshot-label"
+          for="date-field--snapshot__year"
+          id="date-field--snapshot__year__label"
         >
           <span
             class=""
@@ -103,10 +103,10 @@ exports[`MultiInputDateField renders 1`] = `
           </span>
         </label>
         <input
-          aria-describedby="field_snapshot-label"
+          aria-describedby="date-field--snapshot__label"
           aria-invalid="false"
           class="ds-c-field ds-c-field--year"
-          id="field_snapshot"
+          id="date-field--snapshot__year"
           inputmode="numeric"
           maxlength="4"
           name="year"

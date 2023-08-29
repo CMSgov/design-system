@@ -9,8 +9,8 @@ exports[`Autocomplete renders Autocomplete component 1`] = `
   >
     <label
       class="ds-c-label"
-      for="autocomplete__input--1"
-      id="autocomplete__label--2"
+      for="static-id"
+      id="static-id__label"
     >
       <span
         class=""
@@ -21,13 +21,13 @@ exports[`Autocomplete renders Autocomplete component 1`] = `
     <input
       aria-activedescendant=""
       aria-autocomplete="list"
-      aria-controls="autocomplete__menu--3"
+      aria-controls="static-id__menu"
       aria-expanded="false"
       aria-invalid="false"
-      aria-labelledby="autocomplete__label--2"
+      aria-labelledby="static-id__label"
       autocomplete="off"
       class="ds-c-field"
-      id="autocomplete__input--1"
+      id="static-id"
       name="autocomplete_field"
       role="combobox"
       type="text"
@@ -37,18 +37,18 @@ exports[`Autocomplete renders Autocomplete component 1`] = `
   <div
     class="ds-c-autocomplete__menu-container"
     hidden=""
-    id="autocomplete__menu-container--4"
+    id="static-id__menu-container"
   >
     <ul
-      aria-labelledby="autocomplete__label--2"
+      aria-labelledby="static-id__label"
       class="ds-c-autocomplete__menu"
-      id="autocomplete__menu--3"
+      id="static-id__menu"
       role="listbox"
     >
       <li
         aria-selected="false"
         class="ds-c-autocomplete__menu-item"
-        id="downshift-0-item-0"
+        id="static-id__item--0"
         role="option"
       >
         Cook County, IL
@@ -70,7 +70,7 @@ Array [
   <li
     aria-selected="false"
     class="ds-c-autocomplete__menu-item"
-    id="downshift-3-item-0"
+    id="static-id__item--0"
     role="option"
   >
     Normal item
@@ -78,7 +78,7 @@ Array [
   <li
     aria-selected="false"
     class="custom-class ds-c-autocomplete__menu-item"
-    id="downshift-3-item-1"
+    id="static-id__item--1"
     role="option"
   >
     Special item
@@ -88,15 +88,15 @@ Array [
 
 exports[`Autocomplete renders items with children property 1`] = `
 <ul
-  aria-labelledby="autocomplete__label--14"
+  aria-labelledby="static-id__label"
   class="ds-c-autocomplete__menu"
-  id="autocomplete__menu--15"
+  id="static-id__menu"
   role="listbox"
 >
   <li
     aria-selected="false"
     class="ds-c-autocomplete__menu-item"
-    id="downshift-2-item-0"
+    id="static-id__item--0"
     role="option"
   >
     Carrots 
@@ -107,7 +107,7 @@ exports[`Autocomplete renders items with children property 1`] = `
   <li
     aria-selected="false"
     class="ds-c-autocomplete__menu-item"
-    id="downshift-2-item-1"
+    id="static-id__item--1"
     role="option"
   >
     Cookies 
@@ -118,7 +118,7 @@ exports[`Autocomplete renders items with children property 1`] = `
   <li
     aria-selected="false"
     class="ds-c-autocomplete__menu-item"
-    id="downshift-2-item-2"
+    id="static-id__item--2"
     role="option"
   >
     Crackers 
@@ -129,7 +129,7 @@ exports[`Autocomplete renders items with children property 1`] = `
   <li
     aria-selected="false"
     class="ds-c-autocomplete__menu-item"
-    id="downshift-2-item-3"
+    id="static-id__item--3"
     role="option"
   >
     <a
