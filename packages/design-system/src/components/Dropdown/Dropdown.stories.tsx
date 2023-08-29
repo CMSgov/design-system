@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Dropdown from './Dropdown';
 import type { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { useArgs } from '@storybook/preview-api';
 import { MySelect } from './ReactAria';
+import { Dialog } from '../index';
 
 const meta: Meta<typeof Dropdown> = {
   title: 'Components/Dropdown',
@@ -180,5 +181,37 @@ export const Frank: Story = {
   args: {},
   render: function Component(args) {
     return <button onKeyDownCapture={(event) => console.log(event)}>Hello</button>;
+  },
+};
+
+export const InDialog: Story = {
+  args: {},
+  render: function Component(args) {
+    const [show, setShow] = useState(true);
+
+    return (
+      <div>
+        {show && (
+          <Dialog heading="hello" onExit={() => setShow(false)}>
+            {MySelect}
+          </Dialog>
+        )}
+        <div className="ds-u-measure--base">
+          <h1>The United States Constitution</h1>
+          <p>
+            We the People of the United States, in Order to form a more perfect Union, establish
+            Justice, insure domestic Tranquility, provide for the common defence, promote the
+            general Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do
+            ordain and establish this Constitution for the United States of America.
+          </p>
+          <h2>Article I</h2>
+          <h3>Section 1: Congress</h3>
+          <p>
+            All legislative Powers herein granted shall be vested in a Congress of the United
+            States, which shall consist of a Senate and House of Representatives.
+          </p>
+        </div>
+      </div>
+    );
   },
 };
