@@ -184,7 +184,9 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     ],
     onSelectionChange: (value: string, ...args) => {
       console.log(value, args);
-      triggerRef.current?.focus();
+      state.setFocused(true);
+      // TODO: Get it to not fire an onBlur event when a selection is made
+
       if (onChange) {
         // Try to support the old API that passed an event object
         const target = { value };

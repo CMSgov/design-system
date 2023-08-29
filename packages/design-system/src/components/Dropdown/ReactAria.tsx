@@ -216,7 +216,7 @@ function Select(props) {
     ...props,
     onSelectionChange: (value: string) => {
       console.log('hello');
-      triggerRef.current?.focus();
+      state.setFocused(true);
     },
   });
 
