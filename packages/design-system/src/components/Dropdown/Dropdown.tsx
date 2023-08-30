@@ -172,16 +172,27 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     }
   }
 
+  const renderReactStatelyItem = (item: DropdownOption) => {
+    const { label, value, ...extraAttrs } = item;
+    return <Item key={value}>{label}</Item>;
+  };
+
+  const reactStatelyItems = optionsAndGroups.map((item) => {
+    if (isOptGroup(item)) {
+      const { label, options, ...extraAttrs } = item;
+      return (
+        <Section key={label} title={label}>
+          {options.map(renderReactStatelyItem)}
+        </Section>
+      );
+    } else {
+      return renderReactStatelyItem(item);
+    }
+  });
+
   const state = useSelectState({
     ...props,
-    children: [
-      <Item key="red panda">Red Panda</Item>,
-      <Item key="cat">Cat</Item>,
-      <Item key="dog">Dog</Item>,
-      <Item key="aardvark">Aardvark</Item>,
-      <Item key="kangaroo">Kangaroo</Item>,
-      <Item key="snake">Snake</Item>,
-    ],
+    children: reactStatelyItems,
     onSelectionChange: (value: string) => {
       state.setFocused(true);
       // TODO: Get it to not fire an onBlur event when a selection is made
