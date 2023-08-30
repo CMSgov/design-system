@@ -113,7 +113,6 @@ exports[`SingleInputDateField with picker renders with picker 1`] = `
           aria-hidden="false"
           aria-labelledby="static-id__icon__title"
           class="ds-c-icon ds-c-icon--calendar "
-          focusable="false"
           id="static-id__icon"
           role="img"
           viewBox="0 0 448 512"
