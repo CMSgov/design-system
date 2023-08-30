@@ -134,43 +134,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     ...extraProps
   } = props;
 
-  const triggerRef = useRef<HTMLButtonElement>();
-
-  // Turn our options or optgroups into a flat array of selectable items that
-  // we can pass to the Downshift `useSelect` hook. Even though the group
-  // headings are not selectable, Downshift wants to know about them. I've
-  // tried excluding them from the list we give to Downshift, but then the
-  // highlighted index sticks on the last hovered selectable item when hovering
-  // over a group heading, and it doesn't look very good.
   const optionsAndGroups = options ?? parseChildren(children);
-  const items: DropdownOption[] = useMemo(
-    () =>
-      optionsAndGroups.reduce((onlyOptions, optionOrGroup) => {
-        if (isOptGroup(optionOrGroup)) {
-          onlyOptions.push(...optionOrGroup.options);
-        } else {
-          onlyOptions.push(optionOrGroup);
-        }
-        return onlyOptions;
-      }, []),
-    [options, children]
-  );
-
-  let controlledSelectedItem;
-  let defaultSelectedItem;
-  if (value !== undefined) {
-    // Controlled component
-    controlledSelectedItem = items.find((item) => value === item.value);
-    if (!controlledSelectedItem) {
-      console.warn(`Dropdown component could not find option matching value: ${value}`);
-    }
-  } else {
-    defaultSelectedItem =
-      defaultValue !== undefined ? items.find((item) => defaultValue === item.value) : items[0];
-    if (!defaultSelectedItem) {
-      console.warn('Dropdown component could not determine a default selected option');
-    }
-  }
 
   const renderReactStatelyItem = (item: DropdownOption) => {
     const { label, value, ...extraAttrs } = item;
@@ -190,9 +154,22 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     }
   });
 
+  let fallbackValue = defaultValue;
+  if (fallbackValue === undefined) {
+    const firstOption = optionsAndGroups.find((optOrGroup) =>
+      !isOptGroup(optOrGroup) ? true : optOrGroup.options[0]
+    ) as DropdownOption;
+    if (firstOption) {
+      fallbackValue = firstOption.value;
+    } else {
+      console.warn('Dropdown component could not determine a default selected option');
+    }
+  }
+
   const state = useSelectState({
     ...props,
     children: reactStatelyItems,
+    selectedKey: value ?? fallbackValue,
     onSelectionChange: (value: string) => {
       state.setFocused(true);
       // TODO: Get it to not fire an onBlur event when a selection is made
@@ -231,6 +208,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   delete useFormLabelProps.fieldProps.inversed;
   delete useFormLabelProps.fieldProps.onBlur;
 
+  const triggerRef = useRef<HTMLButtonElement>();
   const useSelectProps = useSelect(props, state, triggerRef);
   const useButtonProps = useButton(useSelectProps.triggerProps, triggerRef);
 
