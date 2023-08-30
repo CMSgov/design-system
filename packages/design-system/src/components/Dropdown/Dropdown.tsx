@@ -264,10 +264,11 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
       {state.isOpen && (
         <DropdownMenu
           {...useSelectProps.menuProps}
-          className={classNames('ds-c-dropdown__menu-container', size && `ds-c-field--${size}`)}
+          componentClass="ds-c-dropdown"
           labelId={labelId}
           menuId={menuId}
           rootId={id}
+          size={size}
           state={state}
           triggerRef={triggerRef}
         />
