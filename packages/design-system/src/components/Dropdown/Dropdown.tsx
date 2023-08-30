@@ -125,6 +125,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     children,
     className,
     fieldClassName,
+    onBlur: userOnBlur,
     onChange,
     options,
     size,
@@ -171,8 +172,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     children: reactStatelyItems,
     selectedKey,
     onSelectionChange: (value: string) => {
-      state.setFocused(true);
-      // TODO: Get it to not fire an onBlur event when a selection is made
+      triggerRef.current?.focus?.();
 
       if (onChange) {
         // Try to support the old API that passed an event object
@@ -209,10 +209,24 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   delete useFormLabelProps.fieldProps.errorMessage;
   delete useFormLabelProps.fieldProps.errorId;
   delete useFormLabelProps.fieldProps.inversed;
-  delete useFormLabelProps.fieldProps.onBlur;
+
+  const onBlur = (event: React.FocusEvent<HTMLElement>) => {
+    // The active element is always the document body during a focus
+    // transition, so in order to check if the newly focused element
+    // is one of our other date inputs, we're going to have to wait
+    // a bit.
+    setTimeout(() => {
+      // Only call the user's onBlur handler if focus leaves the whole component
+      if (!wrapperRef.current?.contains(document.activeElement)) {
+        userOnBlur(event);
+        state.setOpen(false);
+      }
+    }, 20);
+  };
 
   const triggerRef = useRef<HTMLButtonElement>();
-  const useSelectProps = useSelect(props, state, triggerRef);
+  const useSelectProps = useSelect({ ...props, onBlur }, state, triggerRef);
+  // delete useSelectProps.triggerProps.onBlur;
   const useButtonProps = useButton(useSelectProps.triggerProps, triggerRef);
 
   const buttonProps = {

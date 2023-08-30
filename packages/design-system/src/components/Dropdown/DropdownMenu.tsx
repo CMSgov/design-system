@@ -44,13 +44,7 @@ export function DropdownMenu<T>({
           item.type === 'section' ? (
             <DropdownMenuSection key={item.key} section={item} state={state} rootId={rootId} />
           ) : (
-            <DropdownMenuOption
-              key={item.key}
-              item={item}
-              state={state}
-              rootId={rootId}
-              attributes={{}}
-            />
+            <DropdownMenuOption key={item.key} item={item} state={state} rootId={rootId} />
           )
         )}
       </ul>
