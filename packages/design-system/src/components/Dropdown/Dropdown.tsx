@@ -165,26 +165,27 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   }
   const [internalValueState, setInternalValueState] = useState(fallbackValue);
   const selectedKey = isControlled ? value : internalValueState;
+  const onSelectionChange = (value: string) => {
+    triggerRef.current?.focus?.();
+
+    if (onChange) {
+      // Try to support the old API that passed an event object
+      const target = { value };
+      onChange({
+        target,
+        currentTarget: target,
+      });
+    }
+    if (!isControlled) {
+      setInternalValueState(value);
+    }
+  };
 
   const state = useSelectState({
     ...props,
     children: reactStatelyItems,
     selectedKey,
-    onSelectionChange: (value: string) => {
-      triggerRef.current?.focus?.();
-
-      if (onChange) {
-        // Try to support the old API that passed an event object
-        const target = { value };
-        onChange({
-          target,
-          currentTarget: target,
-        });
-      }
-      if (!isControlled) {
-        setInternalValueState(value);
-      }
-    },
+    onSelectionChange,
   });
 
   const useFormLabelProps = useFormLabel({
@@ -242,9 +243,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   };
 
   const wrapperRef = useRef<HTMLDivElement>();
-  useClickOutsideHandler([wrapperRef], () => {
-    state.setOpen(false);
-  });
+  useClickOutsideHandler([wrapperRef], () => state.setOpen(false));
 
   return (
     <div {...useFormLabelProps.wrapperProps} ref={wrapperRef}>
