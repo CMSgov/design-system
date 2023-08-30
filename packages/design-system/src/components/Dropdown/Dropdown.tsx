@@ -187,14 +187,6 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
       }
     },
   });
-  // ((changes: UseSelectStateChangeOptions<any>) => {
-  //   // Try to support the old API that passed an event object
-  //   const target = { value: changes.selectedItem.value };
-  //   onChange({
-  //     ...changes,
-  //     target,
-  //     currentTarget: target,
-  //   });
 
   const useFormLabelProps = useFormLabel({
     ...extraProps,
