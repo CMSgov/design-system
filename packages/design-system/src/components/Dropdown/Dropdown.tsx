@@ -138,14 +138,18 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
 
   const renderReactStatelyItem = (item: DropdownOption) => {
     const { label, value, ...extraAttrs } = item;
-    return <Item key={value}>{label}</Item>;
+    return (
+      <Item {...extraAttrs} key={value}>
+        {label}
+      </Item>
+    );
   };
 
   const reactStatelyItems = optionsAndGroups.map((item) => {
     if (isOptGroup(item)) {
       const { label, options, ...extraAttrs } = item;
       return (
-        <Section key={label} title={label}>
+        <Section {...extraAttrs} key={label} title={label}>
           {options.map(renderReactStatelyItem)}
         </Section>
       );

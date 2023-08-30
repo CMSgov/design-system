@@ -15,24 +15,23 @@ export function DropdownMenuSection<T>({ section, state, rootId }: DropdownMenuO
     'aria-label': section['aria-label'],
   });
   const headingId = `${rootId}__group--${section.index}`;
-
+  console.log(section);
   return (
     <>
       <li {...itemProps} className="ds-c-dropdown__menu-item-group">
         {section.rendered && (
-          <div {...headingProps} id={headingId} className="ds-c-dropdown__menu-item-group-label">
+          <div
+            {...section.props}
+            {...headingProps}
+            id={headingId}
+            className="ds-c-dropdown__menu-item-group-label"
+          >
             {section.rendered}
           </div>
         )}
         <ul {...groupProps} aria-labelledby={headingId}>
           {[...section.childNodes].map((node) => (
-            <DropdownMenuOption
-              key={node.key}
-              item={node}
-              state={state}
-              rootId={rootId}
-              attributes={{}}
-            />
+            <DropdownMenuOption key={node.key} item={node} state={state} rootId={rootId} />
           ))}
         </ul>
       </li>
