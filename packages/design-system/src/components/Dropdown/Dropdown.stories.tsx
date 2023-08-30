@@ -3,7 +3,6 @@ import Dropdown from './Dropdown';
 import type { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { useArgs } from '@storybook/preview-api';
-import { MySelect } from './ReactAria';
 import { Dialog } from '../index';
 
 const meta: Meta<typeof Dropdown> = {
@@ -172,22 +171,12 @@ export const Controlled: Story = {
   },
 };
 
-export const Bob: Story = {
-  args: {},
-  render: function Component(args) {
-    return MySelect;
-  },
-};
-
-export const Frank: Story = {
-  args: {},
-  render: function Component(args) {
-    return <button onKeyDownCapture={(event) => console.log(event)}>Hello</button>;
-  },
-};
-
 export const InDialog: Story = {
-  args: {},
+  args: {
+    options: dropdownOptions,
+    label: 'Dropdown example',
+    name: 'dropdown_field',
+  },
   render: function Component(args) {
     const [show, setShow] = useState(true);
 
@@ -195,7 +184,7 @@ export const InDialog: Story = {
       <div>
         {show && (
           <Dialog heading="hello" onExit={() => setShow(false)}>
-            {MySelect}
+            <Dropdown {...args} />
           </Dialog>
         )}
         <div className="ds-u-measure--base">
