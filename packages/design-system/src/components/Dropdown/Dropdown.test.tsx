@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Dropdown from './Dropdown';
 
@@ -33,6 +33,10 @@ function makeDropdown(customProps = {}, optionsCount = 1) {
   return render(component);
 }
 
+function getButton() {
+  return screen.getByRole('button');
+}
+
 describe('Dropdown', () => {
   it('dropdown matches snapshot', () => {
     const { container } = makeDropdown(
@@ -55,7 +59,7 @@ describe('Dropdown', () => {
   it('applies additional classes to button element', () => {
     makeDropdown({ fieldClassName: 'foo' });
 
-    const button = screen.getByRole('combobox');
+    const button = getButton();
     expect(button).toHaveClass('foo');
     // Make sure we're not replacing the other class names
     expect(button).toHaveClass('ds-c-field');
@@ -63,7 +67,7 @@ describe('Dropdown', () => {
 
   it('adds size classes to the appropriate elements', () => {
     makeDropdown({ size: 'small' });
-    const button = screen.getByRole('combobox');
+    const button = getButton();
     userEvent.click(button);
     const listContainer = screen.getByRole('listbox').parentElement;
     expect(button).toHaveClass('ds-c-field--small');
@@ -72,13 +76,13 @@ describe('Dropdown', () => {
 
   it('adds inverse class to button', () => {
     makeDropdown({ inversed: true });
-    const button = screen.getByRole('combobox');
+    const button = getButton();
     expect(button).toHaveClass('ds-c-field--inverse');
   });
 
   it('has error', () => {
     makeDropdown({ errorMessage: 'Really bad error' });
-    const button = screen.getByRole('combobox', { name: /Really bad error/ });
+    const button = screen.getByRole('button', { name: /Really bad error/ });
     expect(button).toHaveAttribute('aria-invalid', 'true');
   });
 
@@ -89,7 +93,7 @@ describe('Dropdown', () => {
       errorId: '1_error',
     });
 
-    const button = screen.getByRole('combobox');
+    const button = getButton();
     expect(button).toHaveAttribute('aria-invalid', 'true');
     expect(button).toHaveAttribute('aria-describedby', '1_error');
     expect(button).toHaveClass('ds-c-field--error');
@@ -98,7 +102,7 @@ describe('Dropdown', () => {
 
   it('is disabled', () => {
     makeDropdown({ disabled: true });
-    const button = screen.getByRole('combobox');
+    const button = getButton();
     expect(button).toHaveAttribute('disabled');
   });
 
@@ -106,7 +110,7 @@ describe('Dropdown', () => {
     const onChange = jest.fn();
     const onBlur = jest.fn();
     makeDropdown({ value: '1', onChange, onBlur }, 5);
-    const button = screen.getByRole('combobox');
+    const button = getButton();
     userEvent.click(button);
     userEvent.keyboard('{arrowdown}');
     userEvent.keyboard('{enter}');
@@ -114,21 +118,34 @@ describe('Dropdown', () => {
     expect(onChange).toHaveBeenCalled();
   });
 
-  it('calls the onBlur handler', () => {
+  it('calls the onBlur handler', async () => {
     const onChange = jest.fn();
     const onBlur = jest.fn();
     makeDropdown({ defaultValue: '1', onChange, onBlur }, 10);
-    const button = screen.getByRole('combobox');
+    const button = getButton();
     userEvent.click(button);
-    expect(button).toHaveFocus();
     userEvent.tab();
+
+    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+    await act(async () => {
+      await sleep(40);
+    });
+
     expect(onBlur).toHaveBeenCalled();
     expect(onChange).not.toHaveBeenCalled();
   });
 
+  it('automatically focuses on the selected option when opening', () => {
+    makeDropdown({ defaultValue: '3' }, 10);
+    const button = getButton();
+    userEvent.click(button);
+    const options = screen.getAllByRole('option');
+    expect(options[2]).toHaveFocus();
+  });
+
   it('focuses automatically with autoFocus prop', () => {
     makeDropdown({ defaultValue: '1', autoFocus: true }, 10);
-    const button = screen.getByRole('combobox');
+    const button = getButton();
     expect(button).toHaveFocus();
   });
 
@@ -147,7 +164,7 @@ describe('Dropdown', () => {
         </optgroup>
       </Dropdown>
     );
-    userEvent.click(screen.getByRole('combobox'));
+    userEvent.click(getButton());
     expect(screen.getAllByRole('option').length).toEqual(6);
     const list = screen.getByRole('listbox');
     expect(list).toMatchSnapshot();
@@ -173,7 +190,7 @@ describe('Dropdown', () => {
       },
     ];
     render(<Dropdown {...defaultProps} options={options} />);
-    userEvent.click(screen.getByRole('combobox'));
+    userEvent.click(getButton());
     const list = screen.getByRole('listbox');
     expect(list.children.length).toEqual(2); // Groups
     const items = screen.getAllByRole('option');
@@ -188,7 +205,7 @@ describe('Dropdown', () => {
         <option value="3">Option 3</option>
       </Dropdown>
     );
-    userEvent.click(screen.getByRole('combobox'));
+    userEvent.click(getButton());
     const list = screen.getByRole('listbox');
     expect(list.children.length).toEqual(3);
   });
@@ -210,7 +227,7 @@ describe('Dropdown', () => {
     const options = generateOptions(3);
     const baseProps = { ...defaultProps, onChange, options };
     const { rerender } = render(<Dropdown {...baseProps} value="2" />);
-    const button = screen.getByRole('combobox');
+    const button = getButton();
     expect(button.textContent).toEqual(options[1].label);
 
     // Clicking an item should call `onChange` but should do nothing else
