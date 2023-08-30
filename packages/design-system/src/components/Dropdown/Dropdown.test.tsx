@@ -210,6 +210,36 @@ describe('Dropdown', () => {
     expect(list.children.length).toEqual(3);
   });
 
+  it('passes arbitrary attributes to rendered options', () => {
+    render(
+      <Dropdown {...defaultProps}>
+        <option value="1">Option 1</option>
+        <option value="2" data-hello-world="hi">
+          Option 2
+        </option>
+        <option value="3">Option 3</option>
+      </Dropdown>
+    );
+    userEvent.click(getButton());
+    const options = screen.getAllByRole('option');
+    expect(options[1]).toHaveAttribute('data-hello-world', 'hi');
+  });
+
+  it('passes arbitrary attributes to rendered optgroups', () => {
+    const { container } = render(
+      <Dropdown {...defaultProps}>
+        <option value="1">Option 1</option>
+        <optgroup label="Group B" id="group-label-id" data-extra-attribute="something">
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+        </optgroup>
+      </Dropdown>
+    );
+    userEvent.click(getButton());
+    const groupLabel = container.querySelector('#group-label-id');
+    expect(groupLabel).toHaveAttribute('data-extra-attribute', 'something');
+  });
+
   it('passes through a ref', () => {
     const inputRefCallback = jest.fn();
     render(

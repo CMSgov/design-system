@@ -14,7 +14,7 @@ export function DropdownMenuSection<T>({ section, state, rootId }: DropdownMenuO
     heading: section.rendered,
     'aria-label': section['aria-label'],
   });
-  const headingId = `${rootId}__group--${section.index}`;
+  const headingId = section.props.id ?? `${rootId}__group--${section.index}`;
 
   return (
     <>
