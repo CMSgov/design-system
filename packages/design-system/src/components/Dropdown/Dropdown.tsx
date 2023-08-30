@@ -1,10 +1,10 @@
-import React, { RefObject, useMemo, useRef } from 'react';
+import React, { RefObject, useMemo, useRef, useState } from 'react';
 import classNames from 'classnames';
 import mergeRefs from '../utilities/mergeRefs';
 import useAutofocus from '../utilities/useAutoFocus';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 import { SvgIcon } from '../Icons';
-import { isOptGroup, parseChildren, validateProps } from './utils';
+import { getFirstOptionValue, isOptGroup, parseChildren, validateProps } from './utils';
 import { Item, ListState, Section, useSelectState } from 'react-stately';
 import { HiddenSelect, useButton, useSelect } from 'react-aria';
 import DropdownMenu from './DropdownMenu';
@@ -158,22 +158,18 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     }
   });
 
+  const isControlled = value !== undefined;
   let fallbackValue = defaultValue;
-  if (fallbackValue === undefined) {
-    const firstOption = optionsAndGroups.find((optOrGroup) =>
-      !isOptGroup(optOrGroup) ? true : optOrGroup.options[0]
-    ) as DropdownOption;
-    if (firstOption) {
-      fallbackValue = firstOption.value;
-    } else {
-      console.warn('Dropdown component could not determine a default selected option');
-    }
+  if (!isControlled && fallbackValue === undefined) {
+    fallbackValue = getFirstOptionValue(optionsAndGroups);
   }
+  const [internalValueState, setInternalValueState] = useState(fallbackValue);
+  const selectedKey = isControlled ? value : internalValueState;
 
   const state = useSelectState({
     ...props,
     children: reactStatelyItems,
-    selectedKey: value ?? fallbackValue,
+    selectedKey,
     onSelectionChange: (value: string) => {
       state.setFocused(true);
       // TODO: Get it to not fire an onBlur event when a selection is made
@@ -185,6 +181,9 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
           target,
           currentTarget: target,
         });
+      }
+      if (!isControlled) {
+        setInternalValueState(value);
       }
     },
   });

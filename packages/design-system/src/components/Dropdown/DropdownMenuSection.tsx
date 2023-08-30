@@ -15,7 +15,7 @@ export function DropdownMenuSection<T>({ section, state, rootId }: DropdownMenuO
     'aria-label': section['aria-label'],
   });
   const headingId = `${rootId}__group--${section.index}`;
-  console.log(section);
+
   return (
     <>
       <li {...itemProps} className="ds-c-dropdown__menu-item-group">

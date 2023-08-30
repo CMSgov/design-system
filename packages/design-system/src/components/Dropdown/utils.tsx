@@ -1,5 +1,5 @@
 import React, { ReactNode, ReactElement } from 'react';
-import { DropdownProps, DropdownOption, DropdownOptGroup } from './Dropdown';
+import { DropdownProps, DropdownOption, DropdownOptGroup, DropdownValue } from './Dropdown';
 
 export function validateProps(props: DropdownProps) {
   if (process.env.NODE_ENV !== 'production') {
@@ -15,6 +15,19 @@ export function isOptGroup(
   optionsOrGroups: DropdownOption | DropdownOptGroup
 ): optionsOrGroups is DropdownOptGroup {
   return (optionsOrGroups as DropdownOptGroup).options !== undefined;
+}
+
+export function getFirstOptionValue(
+  optionsAndGroups: Array<DropdownOptGroup | DropdownOption>
+): DropdownValue | undefined {
+  for (const optOrGroup of optionsAndGroups) {
+    if (!isOptGroup(optOrGroup)) {
+      return optOrGroup.value;
+    } else if (optOrGroup.options[0]) {
+      return optOrGroup.options[0].value;
+    }
+  }
+  console.warn('Dropdown component could not determine a default selected option');
 }
 
 function findElementsOfType<T extends keyof JSX.IntrinsicElements>(
