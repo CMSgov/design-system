@@ -161,13 +161,7 @@ export const Controlled: Story = {
       action('onChange')(event);
       updateArgs({ value: event.currentTarget.value });
     };
-    return (
-      <form method="get" action="http://localhost:8000/">
-        <input type="hidden" name="hello" value="yoyoyo" />
-        <Dropdown {...args} value={value} onChange={onChange} />
-        <button type="submit">Hello</button>
-      </form>
-    );
+    return <Dropdown {...args} value={value} onChange={onChange} />;
   },
 };
 
