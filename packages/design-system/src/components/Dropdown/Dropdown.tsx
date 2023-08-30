@@ -113,9 +113,6 @@ export type DropdownProps = BaseDropdownProps &
 export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   validateProps(props);
 
-  // TODO: Figure out a nice way to apply these to the appropriate elements, since
-  // react-aria doesn't have any props for specifying these through their API, and
-  // they randomly generate the ids.
   const id = useId('dropdown__button--', props.id);
   const labelId = props.labelId ?? `${id}__label`;
   const buttonContentId = `${id}__button-content`;
