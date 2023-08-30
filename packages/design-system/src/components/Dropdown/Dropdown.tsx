@@ -1,18 +1,20 @@
-import React, { RefObject, useMemo, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import classNames from 'classnames';
 import mergeRefs from '../utilities/mergeRefs';
 import useAutofocus from '../utilities/useAutoFocus';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 import { SvgIcon } from '../Icons';
 import { getFirstOptionValue, isOptGroup, parseChildren, validateProps } from './utils';
-import { Item, ListState, Section, useSelectState } from 'react-stately';
+import { Item, Section, useSelectState } from 'react-stately';
 import { HiddenSelect, useButton, useSelect } from 'react-aria';
 import DropdownMenu from './DropdownMenu';
 import useClickOutsideHandler from '../utilities/useClickOutsideHandler';
 import useId from '../utilities/useId';
 
 const caretIcon = (
-  <path d="M212.7 148.7c6.2-6.2 16.4-6.2 22.6 0l160 160c6.2 6.2 6.2 16.4 0 22.6s-16.4 6.2-22.6 0L224 182.6 75.3 331.3c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l160-160z" />
+  <SvgIcon title="" viewBox="0 0 448 512" className="ds-u-font-size--sm">
+    <path d="M212.7 148.7c6.2-6.2 16.4-6.2 22.6 0l160 160c6.2 6.2 6.2 16.4 0 22.6s-16.4 6.2-22.6 0L224 182.6 75.3 331.3c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l160-160z" />
+  </SvgIcon>
 );
 
 export type DropdownSize = 'small' | 'medium';
@@ -218,7 +220,6 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
 
   const triggerRef = useRef<HTMLButtonElement>();
   const useSelectProps = useSelect({ ...props, onBlur }, state, triggerRef);
-  // delete useSelectProps.triggerProps.onBlur;
   const useButtonProps = useButton(useSelectProps.triggerProps, triggerRef);
 
   const buttonProps = {
@@ -262,15 +263,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
         <span id={buttonContentId} className="ds-u-truncate">
           {state.selectedItem ? state.selectedItem.rendered : ''}
         </span>
-        <span className="ds-c-dropdown__caret">
-          <SvgIcon
-            title="expanded indicator icon"
-            viewBox="0 0 448 512"
-            className="ds-u-font-size--sm"
-          >
-            {caretIcon}
-          </SvgIcon>
-        </span>
+        <span className="ds-c-dropdown__caret">{caretIcon}</span>
       </button>
       {state.isOpen && (
         <DropdownMenu
