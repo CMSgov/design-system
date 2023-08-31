@@ -8,6 +8,7 @@ import { DropdownSize } from './Dropdown';
 import classNames from 'classnames';
 
 interface DropdownMenuProps<T> extends AriaListBoxOptions<T> {
+  children?: React.ReactNode;
   componentClass: string;
   labelId: string;
   menuId: string;
@@ -18,6 +19,7 @@ interface DropdownMenuProps<T> extends AriaListBoxOptions<T> {
 }
 
 export function DropdownMenu<T>({
+  children,
   componentClass,
   labelId,
   menuId,
@@ -60,6 +62,7 @@ export function DropdownMenu<T>({
         className={`${componentClass}__menu`}
         ref={listBoxRef}
       >
+        {children}
         {[...state.collection].map((item) =>
           item.type === 'section' ? (
             <DropdownMenuSection key={item.key} section={item} {...sharedProps} />

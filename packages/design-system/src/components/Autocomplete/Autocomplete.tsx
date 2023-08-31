@@ -21,7 +21,6 @@ import TextField from '../TextField/TextField';
 import classNames from 'classnames';
 import { errorPlacementDefault } from '../flags';
 import { t } from '../i18n';
-import createFilteredA11yStatusMessageFn from './createFilteredA11yStatusMessageFn';
 import useId from '../utilities/useId';
 
 export interface AutocompleteItem {
@@ -45,6 +44,8 @@ export interface AutocompleteItem {
   /**
    * Whether this item should be counted as one of the results for the purpose of announcing the
    * result count to screen readers
+   * @deprecated This is no longer used, as we no longer have custom messaging for screen readers
+   * @hide-prop [Deprecated]
    */
   isResult?: boolean;
 }
@@ -94,8 +95,10 @@ export interface AutocompleteProps
   id?: string;
   /**
    * Customize the default status messages announced to screen reader users via aria-live when autocomplete results are populated. [Read more on downshift docs.](https://github.com/downshift-js/downshift/tree/master/src/hooks/useCombobox#geta11ystatusmessage)
+   * @deprecated This is deprecated in favor of autoFocus
+   * @hide-prop [Deprecated]
    */
-  getA11yStatusMessage?: UseComboboxProps<any>['getA11yStatusMessage'];
+  getA11yStatusMessage?: any;
   /**
    * Access a reference to the child `TextField`'s `input` element
    */
@@ -212,10 +215,15 @@ export const Autocomplete = (props: AutocompleteProps) => {
           // Map to old API where the first parameter is input value
           onInputValueChange(changes.inputValue, changes);
         }),
-      getA11yStatusMessage: createFilteredA11yStatusMessageFn(getA11yStatusMessage, items),
+      // getA11yStatusMessage: createFilteredA11yStatusMessageFn(getA11yStatusMessage, items),
       ...autocompleteProps,
     });
 
+  // onInputValueChange &&
+  //   (() => {
+  //     // Map to old API where the first parameter is input value
+  //     onInputValueChange(changes.inputValue, changes);
+  //   }),
   function renderItems() {
     // If we have results, create a mapped list
     if (items?.length) {
