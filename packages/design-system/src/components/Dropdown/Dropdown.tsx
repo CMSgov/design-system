@@ -27,11 +27,11 @@ export interface DropdownChangeObject {
 }
 
 export interface DropdownOption extends React.HTMLAttributes<'option'> {
-  label: string;
+  label: React.ReactNode;
   value: DropdownValue;
 }
 export interface DropdownOptGroup extends React.HTMLAttributes<'optgroup'> {
-  label: string;
+  label: React.ReactNode;
   options: DropdownOption[];
 }
 
