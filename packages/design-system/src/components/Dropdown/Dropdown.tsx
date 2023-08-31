@@ -217,7 +217,11 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   };
 
   const triggerRef = useRef<HTMLButtonElement>();
-  const useSelectProps = useSelect({ ...props, onBlur }, state, triggerRef);
+  const useSelectProps = useSelect(
+    { ...props, onBlur, isDisabled: props.disabled },
+    state,
+    triggerRef
+  );
   const useButtonProps = useButton(useSelectProps.triggerProps, triggerRef);
 
   const buttonProps = {
