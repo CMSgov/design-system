@@ -28,6 +28,10 @@
   &[aria-expanded='true'] {
     border-block-end-color: transparent;
   }
+
+  .ds-c-dropdown--open & {
+    @include mixins.focus-styles;
+  }
 }
 
 // Dropdown previously used a background image for the caret
