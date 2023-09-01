@@ -187,6 +187,7 @@ exports[`Dropdown dropdown matches snapshot 1`] = `
     class="ds-c-dropdown__button ds-c-field"
     id="static-id"
     name="dropdown"
+    role="combobox"
     type="button"
   >
     <span
@@ -266,6 +267,7 @@ exports[`Dropdown supports bottom placed error 1`] = `
       class="ds-c-dropdown__button ds-c-field ds-c-field--error"
       id="static-id"
       name="dropdown"
+      role="combobox"
       type="button"
     >
       <span

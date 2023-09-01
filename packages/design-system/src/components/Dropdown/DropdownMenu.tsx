@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { DropdownMenuOption } from './DropdownMenuOption';
 import { DropdownMenuSection } from './DropdownMenuSection';
 import { ListState, OverlayTriggerState } from 'react-stately';
@@ -33,16 +33,25 @@ export function DropdownMenu<T>({
     `${componentClass}__menu-container`,
     size && `ds-c-field--${size}`
   );
-  const containerRef = useRef();
+  const containerRef = useRef<HTMLDivElement>();
   usePressEscapeHandler(containerRef, () => {
     state.setOpen(false);
     (props.triggerRef.current as HTMLButtonElement)?.focus?.();
   });
 
+  function handleTabKey(event: React.KeyboardEvent<HTMLDivElement>) {
+    const TAB_KEY = 9;
+    if (event.keyCode === TAB_KEY || event.key === 'Tab') {
+      if (!state.selectionManager.selectedKeys.has(state.selectionManager.focusedKey)) {
+        state.selectionManager.setSelectedKeys([state.selectionManager.focusedKey]);
+      }
+    }
+  }
+
   const sharedProps = { state, rootId, componentClass };
 
   return (
-    <div className={containerClass} ref={containerRef}>
+    <div className={containerClass} ref={containerRef} onKeyDown={handleTabKey}>
       <DismissButton onDismiss={state.close} />
       <ul
         {...listBoxProps}

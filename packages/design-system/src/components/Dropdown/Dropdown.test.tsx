@@ -34,7 +34,7 @@ function makeDropdown(customProps = {}, optionsCount = 1) {
 }
 
 function getButton() {
-  return screen.getByRole('button');
+  return screen.getByRole('combobox');
 }
 
 describe('Dropdown', () => {
@@ -82,7 +82,7 @@ describe('Dropdown', () => {
 
   it('has error', () => {
     makeDropdown({ errorMessage: 'Really bad error' });
-    const button = screen.getByRole('button', { name: /Really bad error/ });
+    const button = screen.getByRole('combobox', { name: /Really bad error/ });
     expect(button).toHaveAttribute('aria-invalid', 'true');
   });
 
@@ -121,7 +121,16 @@ describe('Dropdown', () => {
   it('calls the onBlur handler', async () => {
     const onChange = jest.fn();
     const onBlur = jest.fn();
-    makeDropdown({ defaultValue: '1', onChange, onBlur }, 10);
+    render(
+      <>
+        <Dropdown
+          {...defaultProps}
+          {...{ defaultValue: '1', onChange, onBlur }}
+          options={generateOptions(10)}
+        />
+        <button>Another button to tab to</button>
+      </>
+    );
     const button = getButton();
     userEvent.click(button);
     userEvent.tab();
@@ -133,6 +142,48 @@ describe('Dropdown', () => {
 
     expect(onBlur).toHaveBeenCalled();
     expect(onChange).not.toHaveBeenCalled();
+  });
+
+  it('pressing Escape closes the menu without making a selection', () => {
+    const onChange = jest.fn();
+    makeDropdown({ value: '1', onChange }, 5);
+    const button = getButton();
+    userEvent.click(button);
+    userEvent.keyboard('{arrowdown}');
+    userEvent.keyboard('{escape}');
+    const list = screen.queryByRole('listbox');
+    expect(list).toBeFalsy();
+    expect(onChange).not.toHaveBeenCalled();
+  });
+
+  it('pressing Tab selects the focused item and blurs away', async () => {
+    const onChange = jest.fn();
+    const onBlur = jest.fn();
+    render(
+      <>
+        <Dropdown
+          {...defaultProps}
+          {...{ defaultValue: '1', onChange, onBlur }}
+          options={generateOptions(10)}
+        />
+        <button>Another button to tab to</button>
+      </>
+    );
+    const button = getButton();
+    userEvent.click(button);
+    userEvent.keyboard('{arrowdown}');
+    userEvent.tab();
+
+    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+    await act(async () => {
+      await sleep(40);
+    });
+
+    const list = screen.queryByRole('listbox');
+    expect(list).toBeFalsy();
+    expect(onChange).toHaveBeenCalled();
+    expect(onChange.mock.calls[0][0].currentTarget.value).toEqual('2');
+    expect(onBlur).toHaveBeenCalled();
   });
 
   it('automatically focuses on the selected option when opening', () => {
