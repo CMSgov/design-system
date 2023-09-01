@@ -17,12 +17,13 @@
 import { UseComboboxProps, UseComboboxStateChangeOptions, useCombobox } from 'downshift';
 import Button from '../Button/Button';
 import React, { useRef } from 'react';
-import TextField from '../TextField/TextField';
+
 import classNames from 'classnames';
 import { errorPlacementDefault } from '../flags';
 import { t } from '../i18n';
 import useId from '../utilities/useId';
-import { renderReactStatelyItems } from './utils';
+import { renderReactStatelyItems, renderStatusMessage, transformTextFieldChild } from './utils';
+import { useComboBoxState } from 'react-stately';
 
 export interface AutocompleteItem extends Omit<React.HTMLAttributes<'option'>, 'name'> {
   /**
@@ -146,18 +147,6 @@ export interface AutocompleteProps
 }
 
 /**
- * Determine if a React component is a TextField
- * @param {React.Node} child - a React component
- * @return {Boolean} Is this a TextField component?
- */
-function isTextField(child: React.ReactElement): boolean {
-  const componentName = (child.type as any)?.displayName || (child.type as any)?.name;
-
-  // Check child.type first and as a fallback, check child.type.displayName follow by child.type.name
-  return child && (child.type === TextField || componentName === 'TextField');
-}
-
-/**
  * For information about how and when to use this component,
  * [refer to its full documentation page](https://design.cms.gov/components/autocomplete/).
  */
@@ -192,6 +181,8 @@ export const Autocomplete = (props: AutocompleteProps) => {
     ...autocompleteProps
   } = props;
 
+
+
   const { isOpen, getMenuProps, getInputProps, getItemProps, highlightedIndex, selectItem } =
     useCombobox({
       items: items ?? [],
@@ -220,89 +211,62 @@ export const Autocomplete = (props: AutocompleteProps) => {
   //     // Map to old API where the first parameter is input value
   //     onInputValueChange(changes.inputValue, changes);
   //   }),
-  function renderItems() {
-    // If we have results, create a mapped list
-    if (items?.length) {
-      // return items.map((item, index) => (
-      //   <li
-      //     aria-selected={highlightedIndex === index}
-      //     className={classNames(item.className, 'ds-c-autocomplete__menu-item', {
-      //       'ds-c-autocomplete__menu-item--highlighted': highlightedIndex === index,
-      //     })}
-      //     key={item.id}
-      //     role="option"
-      //     {...getItemProps({ item, id: `${id}__item--${index}` })}
-      //   >
-      //     {item.children ?? props.itemToString(item)}
-      //   </li>
-      // ));
-      return renderReactStatelyItems(items);
-    }
 
+  // Determine what we'll show based on state
+  let reactStatelyItems = [];
+  let statusMessage;
+  if (items?.length) {
+    reactStatelyItems = renderReactStatelyItems(items);
+  } else if (loading) {
     // If we're waiting for results to load, show the non-selected message
-    if (loading) {
-      return (
-        <li aria-selected="false" className="ds-c-autocomplete__menu-item-message" role="option">
-          {loadingMessage ?? t('autocomplete.loadingMessage')}
-        </li>
-      );
-    }
-
+    statusMessage = renderStatusMessage(loadingMessage ?? t('autocomplete.loadingMessage'))
+  } else if (items) {
     // If we have no results (empty array), show the non-selected message
-    if (items) {
-      return (
-        <li aria-selected="false" className="ds-c-autocomplete__menu-item-message" role="option">
-          {noResultsMessage ?? t('autocomplete.noResultsMessage')}
-        </li>
-      );
-    }
-
-    return null;
+    statusMessage = renderStatusMessage(noResultsMessage ?? t('autocomplete.noResultsMessage'));
   }
 
-  function renderChildren(): React.ReactNode[] {
-    // Extend props on the TextField, by passing them
-    // through Downshift's `getInputProps` method
-    return React.Children.map(children, (child: React.ReactElement) => {
-      if (!isTextField(child)) {
-        return child;
-      }
+  const state = useComboBoxState({
+    ...props,
+    children: reactStatelyItems,
+    selectedKey,
+    onSelectionChange,
+  })
 
-      // The display of bottom placed errorMessages in TextField breaks the Autocomplete's UI design.
-      // Add errorMessageClassName to fix the styles for bottom placed errors
-      const bottomError =
-        (child.props.errorPlacement === 'bottom' || errorPlacementDefault() === 'bottom') &&
-        child.props.errorMessage != null;
+  const transformedChildren = transformTextFieldChild(children, (textField: React.ReactElement) => {
+    // The display of bottom placed errorMessages in TextField breaks the Autocomplete's UI design.
+    // Add errorMessageClassName to fix the styles for bottom placed errors
+    const bottomError =
+      (textField.props.errorPlacement === 'bottom' || errorPlacementDefault() === 'bottom') &&
+      textField.props.errorMessage != null;
 
-      const errorMessageClassName = classNames(
-        child.props.errorMessageClassName,
-        bottomError && 'ds-c-autocomplete__error-message',
-        bottomError && clearSearchButton && 'ds-c-autocomplete__error-message-clear-btn'
-      );
+    const errorMessageClassName = classNames(
+      textField.props.errorMessageClassName,
+      bottomError && 'ds-c-autocomplete__error-message',
+      bottomError && clearSearchButton && 'ds-c-autocomplete__error-message-clear-btn'
+    );
 
-      const propOverrides = getInputProps({
-        autoComplete: autoCompleteLabel,
-        autoFocus: autoFocus || focusTrigger,
-        id,
-        ref: inputRef,
-        onBlur: child.props.onBlur,
-        onChange: child.props.onChange,
-        onKeyDown: child.props.onKeyDown,
-      });
-
-      // Downshift wants to put a ref on the input, but we call it `inputRef` in
-      // the TextField component.
-      propOverrides.inputRef = propOverrides.ref;
-      delete propOverrides.ref;
-
-      // TypeScript doesn't want us to pass these to getInputProps because they're unknown
-      // to Downshift. They're part of our TextField prop definitions.
-      propOverrides.errorMessageClassName = errorMessageClassName;
-      propOverrides.labelId = labelId;
-
-      return React.cloneElement(child, propOverrides);
+    const propOverrides = getInputProps({
+      autoComplete: autoCompleteLabel,
+      autoFocus: autoFocus || focusTrigger,
+      id,
+      ref: inputRef,
+      onBlur: textField.props.onBlur,
+      onChange: textField.props.onChange,
+      onKeyDown: textField.props.onKeyDown,
     });
-  }
+
+    // Downshift wants to put a ref on the input, but we call it `inputRef` in
+    // the TextField component.
+    propOverrides.inputRef = propOverrides.ref;
+    delete propOverrides.ref;
+
+    // TypeScript doesn't want us to pass these to getInputProps because they're unknown
+    // to Downshift. They're part of our TextField prop definitions.
+    propOverrides.errorMessageClassName = errorMessageClassName;
+    propOverrides.labelId = labelId;
+
+    return React.cloneElement(textField, propOverrides);
+  });
 
   const rootClassName = classNames('ds-c-autocomplete', className);
 
@@ -317,12 +281,25 @@ export const Autocomplete = (props: AutocompleteProps) => {
     menuProps['aria-labelledby'] = `${menuHeadingId} ${menuProps['aria-labelledby'] ?? ''}`;
   }
 
-  const menuContent = renderItems();
-
   return (
     <div className={rootClassName}>
-      {renderChildren()}
+      {transformedChildren}
 
+      {state.isOpen && (
+        <DropdownMenu
+          {...useSelectProps.menuProps}
+          componentClass="ds-c-autocomplete__menu"
+          labelId={labelId}
+          menuId={menuId}
+          rootId={id}
+          size={size}
+          state={state}
+          triggerRef={triggerRef}
+        >
+          Hmm, we actually want the menuHeading outside the list...
+          {statusMessage}
+        </DropdownMenu>
+      )}
       <div
         className="ds-c-autocomplete__menu-container"
         id={menuContainerId}
@@ -330,7 +307,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
       >
         {menuHeading}
         <ul className="ds-c-autocomplete__menu" {...menuProps}>
-          {menuContent}
+          {statusMessage}
         </ul>
       </div>
 
