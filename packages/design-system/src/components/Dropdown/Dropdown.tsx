@@ -236,6 +236,9 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
       fieldClassName
     ),
     ref: mergeRefs([triggerRef, inputRef, useAutofocus<HTMLButtonElement>(props.autoFocus)]),
+    // Screen reader users are more familiar with this pattern. The react-aria library makes
+    // this a role="button" for useSelect.
+    role: 'combobox',
     'aria-controls': menuId,
     'aria-labelledby': `${buttonContentId} ${labelId}`,
   };
