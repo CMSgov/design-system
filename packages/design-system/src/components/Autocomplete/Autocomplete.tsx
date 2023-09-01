@@ -24,6 +24,8 @@ import { t } from '../i18n';
 import useId from '../utilities/useId';
 import { renderReactStatelyItems, renderStatusMessage, transformTextFieldChild } from './utils';
 import { useComboBoxState } from 'react-stately';
+import mergeRefs from '../utilities/mergeRefs';
+import { useComboBox } from 'react-aria';
 
 export interface AutocompleteItem extends Omit<React.HTMLAttributes<'option'>, 'name'> {
   /**
@@ -183,28 +185,28 @@ export const Autocomplete = (props: AutocompleteProps) => {
 
 
 
-  const { isOpen, getMenuProps, getInputProps, getItemProps, highlightedIndex, selectItem } =
-    useCombobox({
-      items: items ?? [],
-      itemToString,
-      inputId: id,
-      labelId,
-      menuId,
-      onSelectedItemChange:
-        onChange &&
-        ((changes: UseComboboxStateChangeOptions<any>) => {
-          // Map to old API where the first parameter is input value
-          onChange(changes.selectedItem, changes);
-        }),
-      onInputValueChange:
-        onInputValueChange &&
-        ((changes: UseComboboxStateChangeOptions<any>) => {
-          // Map to old API where the first parameter is input value
-          onInputValueChange(changes.inputValue, changes);
-        }),
-      // getA11yStatusMessage: createFilteredA11yStatusMessageFn(getA11yStatusMessage, items),
-      ...autocompleteProps,
-    });
+  // const { isOpen, getMenuProps, getInputProps, getItemProps, highlightedIndex, selectItem } =
+  //   useCombobox({
+  //     items: items ?? [],
+  //     itemToString,
+  //     inputId: id,
+  //     labelId,
+  //     menuId,
+  //     onSelectedItemChange:
+  //       onChange &&
+  //       ((changes: UseComboboxStateChangeOptions<any>) => {
+  //         // Map to old API where the first parameter is input value
+  //         onChange(changes.selectedItem, changes);
+  //       }),
+  //     onInputValueChange:
+  //       onInputValueChange &&
+  //       ((changes: UseComboboxStateChangeOptions<any>) => {
+  //         // Map to old API where the first parameter is input value
+  //         onInputValueChange(changes.inputValue, changes);
+  //       }),
+  //     // getA11yStatusMessage: createFilteredA11yStatusMessageFn(getA11yStatusMessage, items),
+  //     ...autocompleteProps,
+  //   });
 
   // onInputValueChange &&
   //   (() => {
@@ -228,11 +230,25 @@ export const Autocomplete = (props: AutocompleteProps) => {
   const state = useComboBoxState({
     ...props,
     children: reactStatelyItems,
-    selectedKey,
-    onSelectionChange,
+    // selectedKey,
+    // onSelectionChange,
   })
 
+  const useComboboxProps = useComboBox(
+    {
+      ...props,
+      inputRef,
+      buttonRef,
+      listBoxRef,
+      popoverRef
+    },
+    state
+  );
+
+  let size;
   const transformedChildren = transformTextFieldChild(children, (textField: React.ReactElement) => {
+    size = textField.props.size;
+
     // The display of bottom placed errorMessages in TextField breaks the Autocomplete's UI design.
     // Add errorMessageClassName to fix the styles for bottom placed errors
     const bottomError =
@@ -245,15 +261,15 @@ export const Autocomplete = (props: AutocompleteProps) => {
       bottomError && clearSearchButton && 'ds-c-autocomplete__error-message-clear-btn'
     );
 
-    const propOverrides = getInputProps({
+    const propOverrides = {
       autoComplete: autoCompleteLabel,
       autoFocus: autoFocus || focusTrigger,
       id,
-      ref: inputRef,
+      ref: mergeRefs([inputRef, useComboboxProps.inputRef]),
       onBlur: textField.props.onBlur,
       onChange: textField.props.onChange,
       onKeyDown: textField.props.onKeyDown,
-    });
+    };
 
     // Downshift wants to put a ref on the input, but we call it `inputRef` in
     // the TextField component.
