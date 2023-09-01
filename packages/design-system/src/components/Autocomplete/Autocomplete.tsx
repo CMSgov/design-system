@@ -22,8 +22,9 @@ import classNames from 'classnames';
 import { errorPlacementDefault } from '../flags';
 import { t } from '../i18n';
 import useId from '../utilities/useId';
+import { renderReactStatelyItems } from './utils';
 
-export interface AutocompleteItem {
+export interface AutocompleteItem extends Omit<React.HTMLAttributes<'option'>, 'name'> {
   /**
    * Unique identifier for this item
    */
@@ -36,11 +37,6 @@ export interface AutocompleteItem {
    * Custom React node as an alternative to a string-only `name`
    */
   children?: React.ReactNode;
-  /**
-   * Additional classes to be added to the root element.
-   * Useful for adding utility classes.
-   */
-  className?: string;
   /**
    * Whether this item should be counted as one of the results for the purpose of announcing the
    * result count to screen readers
@@ -227,19 +223,20 @@ export const Autocomplete = (props: AutocompleteProps) => {
   function renderItems() {
     // If we have results, create a mapped list
     if (items?.length) {
-      return items.map((item, index) => (
-        <li
-          aria-selected={highlightedIndex === index}
-          className={classNames(item.className, 'ds-c-autocomplete__menu-item', {
-            'ds-c-autocomplete__menu-item--highlighted': highlightedIndex === index,
-          })}
-          key={item.id}
-          role="option"
-          {...getItemProps({ item, id: `${id}__item--${index}` })}
-        >
-          {item.children ?? props.itemToString(item)}
-        </li>
-      ));
+      // return items.map((item, index) => (
+      //   <li
+      //     aria-selected={highlightedIndex === index}
+      //     className={classNames(item.className, 'ds-c-autocomplete__menu-item', {
+      //       'ds-c-autocomplete__menu-item--highlighted': highlightedIndex === index,
+      //     })}
+      //     key={item.id}
+      //     role="option"
+      //     {...getItemProps({ item, id: `${id}__item--${index}` })}
+      //   >
+      //     {item.children ?? props.itemToString(item)}
+      //   </li>
+      // ));
+      return renderReactStatelyItems(items);
     }
 
     // If we're waiting for results to load, show the non-selected message
