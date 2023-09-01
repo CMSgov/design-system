@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import classNames from 'classnames';
 import mergeRefs from '../utilities/mergeRefs';
 import useAutofocus from '../utilities/useAutoFocus';
@@ -10,6 +10,7 @@ import { HiddenSelect, useButton, useSelect } from 'react-aria';
 import DropdownMenu from './DropdownMenu';
 import useClickOutsideHandler from '../utilities/useClickOutsideHandler';
 import useId from '../utilities/useId';
+import debounce from '../utilities/debounce';
 
 const caretIcon = (
   <SvgIcon title="" viewBox="0 0 448 512" className="ds-u-font-size--sm">
@@ -202,19 +203,22 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   delete useFormLabelProps.fieldProps.errorId;
   delete useFormLabelProps.fieldProps.inversed;
 
-  const onBlur = (event: React.FocusEvent<HTMLElement>) => {
-    // The active element is always the document body during a focus
-    // transition, so in order to check if the newly focused element
-    // is one of our other date inputs, we're going to have to wait
-    // a bit.
-    setTimeout(() => {
+  const onBlur = useCallback(
+    // The active element is always the document body during a focus transition,
+    // so in order to check if the newly focused element is one of our other date
+    // inputs, we're going to have to wait a bit. We also have an issue with
+    // tabbing out firing two blur events, so debounce during that time too. In
+    // order for the debounce to work, we need to wrap this in a useCallback so
+    // don't create a new one on each render.
+    debounce((event: React.FocusEvent<HTMLElement>) => {
       // Only call the user's onBlur handler if focus leaves the whole component
       if (!wrapperRef.current?.contains(document.activeElement)) {
         userOnBlur(event);
         state.setOpen(false);
       }
-    }, 20);
-  };
+    }, 20),
+    [userOnBlur, state]
+  );
 
   const triggerRef = useRef<HTMLButtonElement>();
   const useSelectProps = useSelect(
