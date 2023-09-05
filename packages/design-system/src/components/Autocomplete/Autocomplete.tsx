@@ -184,7 +184,9 @@ export const Autocomplete = (props: AutocompleteProps) => {
           const selectedItem = items ? items.find((item) => selectedKey === item.id) : undefined;
           // We don't call onChange when the user deletes text, even though react-aria will call
           // this function with `null` if the input is cleared out. This is to maintain backwards
-          // compatability, but we could consider changing this behavior in the future.
+          // compatability, but we could consider changing this behavior in the future. If we
+          // decide to remove this check, we can also remove the explicit `onChange` call in the
+          // clear button handler.
           if (selectedItem) {
             onChange(selectedItem, state);
           }
@@ -256,7 +258,8 @@ export const Autocomplete = (props: AutocompleteProps) => {
           aria-label={ariaClearLabel ?? t('autocomplete.ariaClearLabel')}
           className="ds-u-padding-right--0 ds-c-autocomplete__clear-btn"
           onClick={() => {
-            state.setInputValue('');
+            state.setSelectedKey(null);
+            onChange(null, { ...state, inputValue: '' });
           }}
           size="small"
           variation="ghost"
