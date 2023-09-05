@@ -136,10 +136,7 @@ export interface AutocompleteProps
   /**
    * Called when the user selects an item and the selected item has changed. Called with the item that was selected and the new state. [Read more on downshift docs.](https://github.com/paypal/downshift#onchange)
    */
-  onChange?: (
-    selectedItem: AutocompleteItem,
-    stateAndHelpers: UseComboboxStateChangeOptions<any>
-  ) => void;
+  onChange?: (selectedItem: AutocompleteItem, state: ComboBoxState<any>) => void;
   /**
    * Called when the child `TextField` value changes. Returns a String `inputValue`. [Read more on downshift docs.](https://github.com/downshift-js/downshift#oninputvaluechange)
    */
@@ -204,12 +201,6 @@ export const Autocomplete = (props: AutocompleteProps) => {
   //     ...autocompleteProps,
   //   });
 
-  // onInputValueChange &&
-  //   (() => {
-  //     // Map to old API where the first parameter is input value
-  //     onInputValueChange(changes.inputValue, changes);
-  //   }),
-
   // Determine what we'll show based on state
   let reactStatelyItems = [];
   let statusMessage;
@@ -230,13 +221,17 @@ export const Autocomplete = (props: AutocompleteProps) => {
     ...props,
     children: reactStatelyItems,
     inputValue: textField.props.value,
-    onInputChange: (value) => {
-      // textField.props.onChange?.(event)
-      onInputValueChange(value, state);
-    },
-    onSelectionChange: (...args) => {
-      console.log(args);
-    },
+    onInputChange: onInputValueChange
+      ? (value) => {
+          onInputValueChange(value, state);
+        }
+      : undefined,
+    onSelectionChange: onChange
+      ? (selectedKey: string) => {
+          const selectedItem = items.find((item) => selectedKey === item.id);
+          onChange(selectedItem, state);
+        }
+      : undefined,
   });
 
   const inputRef = useRef<HTMLInputElement>();
@@ -264,9 +259,6 @@ export const Autocomplete = (props: AutocompleteProps) => {
     bottomError && clearSearchButton && 'ds-c-autocomplete__error-message-clear-btn'
   );
 
-  // console.log(state)
-  // console.log(textField.props.value)
-  // console.log(useComboboxProps.inputProps)
   const textFieldProps = {
     ...useComboboxProps.inputProps,
     autoComplete: autoCompleteLabel,
@@ -275,13 +267,6 @@ export const Autocomplete = (props: AutocompleteProps) => {
     id,
     labelId,
     inputRef: mergeRefs([inputRef, userInputRef]),
-    // If I uncomment this function, it clears the value faster than I can set it.
-    // I'm trying to figure out where to put the "inputValue" prop from https://react-spectrum.adobe.com/react-aria/useComboBox.html#fully-controlled
-    // Neither putting it in useComboBox or useComboBoxState seems to work
-    // onChange: (event) => {
-    //   textField.props.onChange?.(event)
-    //   onInputValueChange(event.currentTarget.value, state)
-    // }
   };
 
   const rootClassName = classNames('ds-c-autocomplete', className);
