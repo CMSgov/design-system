@@ -41,12 +41,7 @@ const Template = (args) => {
       onInputValueChange={onInputValueChange}
       items={filteredItems}
     >
-      <TextField
-        label={textFieldLabel}
-        hint={textFieldHint}
-        name="Downshift_autocomplete"
-        value={input}
-      />
+      <TextField label={textFieldLabel} hint={textFieldHint} name="autocomplete" value={input} />
     </Autocomplete>
   );
 };

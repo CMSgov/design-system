@@ -1,38 +1,20 @@
-/**
- * https://www.levelaccess.com/differences-aria-1-0-1-1-changes-rolecombobox/
- * https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
- * https://www.digitala11y.com/aria-autocomplete-properties/
- *
- * We have opted to retain the ARIA 1.0 markup pattern for comboboxes.
- * This was done because the ARIA 1.1 markup pattern triggers a different
- * behavior on containers with a role="combobox" attribute. WCAG refers to
- * this as a composite widget: https://www.w3.org/TR/wai-aria-1.1/#h-composite
- *
- * Our testing with screen readers, specifically JAWS, has been the deciding
- * factor in going back to the ARIA 1.0 markup pattern. There were a number
- * of conflicting interactions using the 1.1 markup pattern that felt like
- * an unacceptable regression of the user experience.
- */
-
-import { UseComboboxProps, UseComboboxStateChangeOptions } from 'downshift';
-import Button from '../Button/Button';
 import React, { useRef } from 'react';
-
-import classNames from 'classnames';
-import { errorPlacementDefault } from '../flags';
-import { t } from '../i18n';
-import useId from '../utilities/useId';
-import { renderReactStatelyItems, renderStatusMessage, getTextFieldChild } from './utils';
-import { ComboBoxState, useComboBoxState } from 'react-stately';
-import mergeRefs from '../utilities/mergeRefs';
-import { useComboBox } from 'react-aria';
+import Button from '../Button/Button';
 import DropdownMenu from '../Dropdown/DropdownMenu';
+import classNames from 'classnames';
+import mergeRefs from '../utilities/mergeRefs';
+import useId from '../utilities/useId';
+import { ComboBoxState, useComboBoxState } from 'react-stately';
+import { errorPlacementDefault } from '../flags';
+import { renderReactStatelyItems, renderStatusMessage, getTextFieldChild } from './utils';
+import { t } from '../i18n';
+import { useComboBox } from 'react-aria';
 
 export interface AutocompleteItem extends Omit<React.HTMLAttributes<'option'>, 'name'> {
   /**
    * Unique identifier for this item
    */
-  id?: string;
+  id: string;
   /**
    * Displayed value of the item. May alternatively provide a `children` value
    */
@@ -50,8 +32,7 @@ export interface AutocompleteItem extends Omit<React.HTMLAttributes<'option'>, '
   isResult?: boolean;
 }
 
-export interface AutocompleteProps
-  extends Omit<UseComboboxProps<any>, 'items' | 'onInputValueChange'> {
+export interface AutocompleteProps {
   /**
    * Screen reader-specific label for the Clear search `<button>`. Intended to provide a longer, more descriptive explanation of the button's behavior.
    */
@@ -105,8 +86,10 @@ export interface AutocompleteProps
   inputRef?: (...args: any[]) => any;
   /**
    * Used to determine the string value for the selected item (which is used to compute the `inputValue`). [Read more on downshift docs.](https://github.com/paypal/downshift#itemtostring)
+   * @deprecated This is no longer used.
+   * @hide-prop [Deprecated]
    */
-  itemToString?: UseComboboxProps<any>['itemToString'];
+  itemToString?: any;
   /**
    * Array of objects used to populate the suggestion list that appears below the input as users type.
    * Passing an empty array will show a "No results" message. If you do not yet want to show results,
@@ -151,8 +134,6 @@ export const Autocomplete = (props: AutocompleteProps) => {
   const id = useId('autocomplete--', props.id);
   const labelId = props.labelId ?? `${id}__label`;
   const menuId = `${id}__menu`;
-  const menuContainerId = `${id}__menu-container`;
-  const menuHeadingId = `${id}__heading`;
 
   const {
     ariaClearLabel,
@@ -163,43 +144,15 @@ export const Autocomplete = (props: AutocompleteProps) => {
     clearInputText,
     clearSearchButton,
     focusTrigger,
-    id: _id,
     inputRef: userInputRef,
     items,
-    itemToString,
     label,
-    labelId: _labelId,
     loading,
     loadingMessage,
     noResultsMessage,
     onChange,
     onInputValueChange,
-    getA11yStatusMessage,
-    ...autocompleteProps
   } = props;
-
-  // const { isOpen, getMenuProps, getInputProps, getItemProps, highlightedIndex, selectItem } =
-  //   useCombobox({
-  //     items: items ?? [],
-  //     itemToString,
-  //     inputId: id,
-  //     labelId,
-  //     menuId,
-  //     onSelectedItemChange:
-  //       onChange &&
-  //       ((changes: UseComboboxStateChangeOptions<any>) => {
-  //         // Map to old API where the first parameter is input value
-  //         onChange(changes.selectedItem, changes);
-  //       }),
-  //     onInputValueChange:
-  //       onInputValueChange &&
-  //       ((changes: UseComboboxStateChangeOptions<any>) => {
-  //         // Map to old API where the first parameter is input value
-  //         onInputValueChange(changes.inputValue, changes);
-  //       }),
-  //     // getA11yStatusMessage: createFilteredA11yStatusMessageFn(getA11yStatusMessage, items),
-  //     ...autocompleteProps,
-  //   });
 
   // Determine what we'll show based on state
   let reactStatelyItems = [];
@@ -245,6 +198,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
   const useComboboxProps = useComboBox(
     {
       ...props,
+      label: textField.props.label,
       inputRef,
       listBoxRef,
       popoverRef: listBoxRef,
@@ -276,17 +230,6 @@ export const Autocomplete = (props: AutocompleteProps) => {
 
   const rootClassName = classNames('ds-c-autocomplete', className);
 
-  let menuHeading;
-  // const menuProps = getMenuProps();
-  if (label && !loading) {
-    menuHeading = (
-      <h5 className="ds-c-autocomplete__label" id={menuHeadingId}>
-        {label}
-      </h5>
-    );
-    // menuProps['aria-labelledby'] = `${menuHeadingId} ${menuProps['aria-labelledby'] ?? ''}`;
-  }
-
   return (
     <div className={rootClassName} ref={wrapperRef}>
       {React.cloneElement(textField, textFieldProps)}
@@ -295,6 +238,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
         <DropdownMenu
           {...useComboboxProps.listBoxProps}
           componentClass="ds-c-autocomplete"
+          heading={label}
           labelId={labelId}
           menuId={menuId}
           rootId={id}
@@ -303,20 +247,9 @@ export const Autocomplete = (props: AutocompleteProps) => {
           triggerRef={wrapperRef}
           listBoxRef={listBoxRef}
         >
-          Hmm, we actually want the menuHeading outside the list...
           {statusMessage}
         </DropdownMenu>
       )}
-      {/* <div
-        className="ds-c-autocomplete__menu-container"
-        id={menuContainerId}
-        hidden={!(isOpen && menuContent)}
-      >
-        {menuHeading}
-        <ul className="ds-c-autocomplete__menu" {...menuProps}>
-          {statusMessage}
-        </ul>
-      </div> */}
 
       {clearSearchButton && (
         <Button
@@ -338,7 +271,6 @@ export const Autocomplete = (props: AutocompleteProps) => {
 Autocomplete.defaultProps = {
   autoCompleteLabel: 'off',
   clearSearchButton: true,
-  itemToString: (item): string => (item ? item.name : ''),
 };
 
 export default Autocomplete;

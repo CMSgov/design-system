@@ -10,6 +10,7 @@ import classNames from 'classnames';
 interface DropdownMenuProps<T> extends AriaListBoxOptions<T> {
   children?: React.ReactNode;
   componentClass: string;
+  heading?: React.ReactNode;
   labelId: string;
   menuId: string;
   rootId?: string;
@@ -22,6 +23,7 @@ interface DropdownMenuProps<T> extends AriaListBoxOptions<T> {
 export function DropdownMenu<T>({
   children,
   componentClass,
+  heading,
   labelId,
   menuId,
   rootId,
@@ -33,6 +35,7 @@ export function DropdownMenu<T>({
   const listBoxRef = props.listBoxRef ?? fallbackListBoxRef;
   const { listBoxProps } = useListBox(props, state, listBoxRef);
 
+  const headingId = `${rootId}__heading`;
   const containerClass = classNames(
     `${componentClass}__menu-container`,
     size && `ds-c-field--${size}`
@@ -57,10 +60,15 @@ export function DropdownMenu<T>({
   return (
     <div className={containerClass} ref={containerRef} onKeyDown={handleTabKey}>
       <DismissButton onDismiss={state.close} />
+      {heading && (
+        <h5 className="ds-c-autocomplete__label" id={headingId}>
+          {heading}
+        </h5>
+      )}
       <ul
         {...listBoxProps}
         id={menuId}
-        aria-labelledby={labelId}
+        aria-labelledby={classNames(labelId, heading && headingId)}
         className={`${componentClass}__menu`}
         ref={listBoxRef}
       >
