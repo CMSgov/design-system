@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { RefObject, useRef } from 'react';
 import { DropdownMenuOption } from './DropdownMenuOption';
 import { DropdownMenuSection } from './DropdownMenuSection';
 import { ListState, OverlayTriggerState } from 'react-stately';
@@ -16,6 +16,7 @@ interface DropdownMenuProps<T> extends AriaListBoxOptions<T> {
   size?: DropdownSize;
   state: ListState<T> & OverlayTriggerState;
   triggerRef: AriaPopoverProps['triggerRef'];
+  listBoxRef?: RefObject<any>;
 }
 
 export function DropdownMenu<T>({
@@ -28,7 +29,8 @@ export function DropdownMenu<T>({
   state,
   ...props
 }: DropdownMenuProps<T>) {
-  const listBoxRef = useRef(null);
+  const fallbackListBoxRef = useRef(null);
+  const listBoxRef = props.listBoxRef ?? fallbackListBoxRef;
   const { listBoxProps } = useListBox(props, state, listBoxRef);
 
   const containerClass = classNames(

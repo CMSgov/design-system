@@ -14,7 +14,7 @@
  * an unacceptable regression of the user experience.
  */
 
-import { UseComboboxProps, UseComboboxStateChangeOptions, useCombobox } from 'downshift';
+import { UseComboboxProps, UseComboboxStateChangeOptions } from 'downshift';
 import Button from '../Button/Button';
 import React, { useRef } from 'react';
 
@@ -22,10 +22,11 @@ import classNames from 'classnames';
 import { errorPlacementDefault } from '../flags';
 import { t } from '../i18n';
 import useId from '../utilities/useId';
-import { renderReactStatelyItems, renderStatusMessage, transformTextFieldChild } from './utils';
-import { useComboBoxState } from 'react-stately';
+import { renderReactStatelyItems, renderStatusMessage, getTextFieldChild } from './utils';
+import { ComboBoxState, useComboBoxState } from 'react-stately';
 import mergeRefs from '../utilities/mergeRefs';
 import { useComboBox } from 'react-aria';
+import DropdownMenu from '../Dropdown/DropdownMenu';
 
 export interface AutocompleteItem extends Omit<React.HTMLAttributes<'option'>, 'name'> {
   /**
@@ -142,10 +143,7 @@ export interface AutocompleteProps
   /**
    * Called when the child `TextField` value changes. Returns a String `inputValue`. [Read more on downshift docs.](https://github.com/downshift-js/downshift#oninputvaluechange)
    */
-  onInputValueChange?: (
-    inputValue: string,
-    stateAndHelpers: UseComboboxStateChangeOptions<any>
-  ) => void;
+  onInputValueChange?: (inputValue: string, state: ComboBoxState<any>) => void;
 }
 
 /**
@@ -169,7 +167,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
     clearSearchButton,
     focusTrigger,
     id: _id,
-    inputRef,
+    inputRef: userInputRef,
     items,
     itemToString,
     label,
@@ -182,8 +180,6 @@ export const Autocomplete = (props: AutocompleteProps) => {
     getA11yStatusMessage,
     ...autocompleteProps
   } = props;
-
-
 
   // const { isOpen, getMenuProps, getInputProps, getItemProps, highlightedIndex, selectItem } =
   //   useCombobox({
@@ -221,102 +217,107 @@ export const Autocomplete = (props: AutocompleteProps) => {
     reactStatelyItems = renderReactStatelyItems(items);
   } else if (loading) {
     // If we're waiting for results to load, show the non-selected message
-    statusMessage = renderStatusMessage(loadingMessage ?? t('autocomplete.loadingMessage'))
+    statusMessage = renderStatusMessage(loadingMessage ?? t('autocomplete.loadingMessage'));
   } else if (items) {
     // If we have no results (empty array), show the non-selected message
     statusMessage = renderStatusMessage(noResultsMessage ?? t('autocomplete.noResultsMessage'));
   }
 
+  const textField = getTextFieldChild(children);
+  const size = textField.props.size;
+
   const state = useComboBoxState({
     ...props,
     children: reactStatelyItems,
-    // selectedKey,
-    // onSelectionChange,
-  })
+    inputValue: textField.props.value,
+    onInputChange: (value) => {
+      // textField.props.onChange?.(event)
+      onInputValueChange(value, state);
+    },
+    onSelectionChange: (...args) => {
+      console.log(args);
+    },
+  });
 
+  const inputRef = useRef<HTMLInputElement>();
+  const listBoxRef = useRef<HTMLElement>();
+  const wrapperRef = useRef<HTMLDivElement>();
   const useComboboxProps = useComboBox(
     {
       ...props,
       inputRef,
-      buttonRef,
       listBoxRef,
-      popoverRef
+      popoverRef: listBoxRef,
     },
     state
   );
 
-  let size;
-  const transformedChildren = transformTextFieldChild(children, (textField: React.ReactElement) => {
-    size = textField.props.size;
+  // The display of bottom placed errorMessages in TextField breaks the Autocomplete's UI design.
+  // Add errorMessageClassName to fix the styles for bottom placed errors
+  const bottomError =
+    (textField.props.errorPlacement === 'bottom' || errorPlacementDefault() === 'bottom') &&
+    textField.props.errorMessage != null;
 
-    // The display of bottom placed errorMessages in TextField breaks the Autocomplete's UI design.
-    // Add errorMessageClassName to fix the styles for bottom placed errors
-    const bottomError =
-      (textField.props.errorPlacement === 'bottom' || errorPlacementDefault() === 'bottom') &&
-      textField.props.errorMessage != null;
+  const errorMessageClassName = classNames(
+    textField.props.errorMessageClassName,
+    bottomError && 'ds-c-autocomplete__error-message',
+    bottomError && clearSearchButton && 'ds-c-autocomplete__error-message-clear-btn'
+  );
 
-    const errorMessageClassName = classNames(
-      textField.props.errorMessageClassName,
-      bottomError && 'ds-c-autocomplete__error-message',
-      bottomError && clearSearchButton && 'ds-c-autocomplete__error-message-clear-btn'
-    );
-
-    const propOverrides = {
-      autoComplete: autoCompleteLabel,
-      autoFocus: autoFocus || focusTrigger,
-      id,
-      ref: mergeRefs([inputRef, useComboboxProps.inputRef]),
-      onBlur: textField.props.onBlur,
-      onChange: textField.props.onChange,
-      onKeyDown: textField.props.onKeyDown,
-    };
-
-    // Downshift wants to put a ref on the input, but we call it `inputRef` in
-    // the TextField component.
-    propOverrides.inputRef = propOverrides.ref;
-    delete propOverrides.ref;
-
-    // TypeScript doesn't want us to pass these to getInputProps because they're unknown
-    // to Downshift. They're part of our TextField prop definitions.
-    propOverrides.errorMessageClassName = errorMessageClassName;
-    propOverrides.labelId = labelId;
-
-    return React.cloneElement(textField, propOverrides);
-  });
+  // console.log(state)
+  // console.log(textField.props.value)
+  // console.log(useComboboxProps.inputProps)
+  const textFieldProps = {
+    ...useComboboxProps.inputProps,
+    autoComplete: autoCompleteLabel,
+    autoFocus: autoFocus || focusTrigger,
+    errorMessageClassName,
+    id,
+    labelId,
+    inputRef: mergeRefs([inputRef, userInputRef]),
+    // If I uncomment this function, it clears the value faster than I can set it.
+    // I'm trying to figure out where to put the "inputValue" prop from https://react-spectrum.adobe.com/react-aria/useComboBox.html#fully-controlled
+    // Neither putting it in useComboBox or useComboBoxState seems to work
+    // onChange: (event) => {
+    //   textField.props.onChange?.(event)
+    //   onInputValueChange(event.currentTarget.value, state)
+    // }
+  };
 
   const rootClassName = classNames('ds-c-autocomplete', className);
 
   let menuHeading;
-  const menuProps = getMenuProps();
+  // const menuProps = getMenuProps();
   if (label && !loading) {
     menuHeading = (
       <h5 className="ds-c-autocomplete__label" id={menuHeadingId}>
         {label}
       </h5>
     );
-    menuProps['aria-labelledby'] = `${menuHeadingId} ${menuProps['aria-labelledby'] ?? ''}`;
+    // menuProps['aria-labelledby'] = `${menuHeadingId} ${menuProps['aria-labelledby'] ?? ''}`;
   }
 
   return (
-    <div className={rootClassName}>
-      {transformedChildren}
+    <div className={rootClassName} ref={wrapperRef}>
+      {React.cloneElement(textField, textFieldProps)}
 
       {state.isOpen && (
         <DropdownMenu
-          {...useSelectProps.menuProps}
-          componentClass="ds-c-autocomplete__menu"
+          {...useComboboxProps.listBoxProps}
+          componentClass="ds-c-autocomplete"
           labelId={labelId}
           menuId={menuId}
           rootId={id}
           size={size}
           state={state}
-          triggerRef={triggerRef}
+          triggerRef={wrapperRef}
+          listBoxRef={listBoxRef}
         >
           Hmm, we actually want the menuHeading outside the list...
           {statusMessage}
         </DropdownMenu>
       )}
-      <div
+      {/* <div
         className="ds-c-autocomplete__menu-container"
         id={menuContainerId}
         hidden={!(isOpen && menuContent)}
@@ -325,15 +326,14 @@ export const Autocomplete = (props: AutocompleteProps) => {
         <ul className="ds-c-autocomplete__menu" {...menuProps}>
           {statusMessage}
         </ul>
-      </div>
+      </div> */}
 
       {clearSearchButton && (
         <Button
           aria-label={ariaClearLabel ?? t('autocomplete.ariaClearLabel')}
           className="ds-u-padding-right--0 ds-c-autocomplete__clear-btn"
           onClick={() => {
-            // How they clear selection in the docs
-            selectItem(null);
+            state.setInputValue('');
           }}
           size="small"
           variation="ghost"
