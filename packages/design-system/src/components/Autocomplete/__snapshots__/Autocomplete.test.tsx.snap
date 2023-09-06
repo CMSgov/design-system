@@ -8,6 +8,7 @@ exports[`Autocomplete renders Autocomplete component 1`] = `
     class="ds-u-clearfix"
   >
     <label
+      aria-hidden="true"
       class="ds-c-label"
       for="static-id"
       id="static-id__label"
@@ -19,27 +20,37 @@ exports[`Autocomplete renders Autocomplete component 1`] = `
       </span>
     </label>
     <input
-      aria-activedescendant=""
       aria-autocomplete="list"
       aria-controls="static-id__menu"
-      aria-expanded="false"
+      aria-expanded="true"
       aria-invalid="false"
       aria-labelledby="static-id__label"
       autocomplete="off"
+      autocorrect="off"
       class="ds-c-field"
       id="static-id"
       name="autocomplete_field"
       role="combobox"
+      spellcheck="false"
       type="text"
-      value=""
+      value="c"
     />
   </div>
   <div
     class="ds-c-autocomplete__menu-container"
-    hidden=""
-    id="static-id__menu-container"
   >
+    <div
+      aria-hidden="true"
+      style="border: 0px; clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
+    >
+      <button
+        aria-label="Dismiss"
+        id="react-aria-7"
+        tabindex="-1"
+      />
+    </div>
     <ul
+      aria-label="Suggestions"
       aria-labelledby="static-id__label"
       class="ds-c-autocomplete__menu"
       id="static-id__menu"
@@ -48,14 +59,26 @@ exports[`Autocomplete renders Autocomplete component 1`] = `
       <li
         aria-selected="false"
         class="ds-c-autocomplete__menu-item"
+        data-key="kRf6c2fY"
         id="static-id__item--0"
         role="option"
       >
         Cook County, IL
       </li>
     </ul>
+    <div
+      aria-hidden="true"
+      style="border: 0px; clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
+    >
+      <button
+        aria-label="Dismiss"
+        id="react-aria-10"
+        tabindex="-1"
+      />
+    </div>
   </div>
   <button
+    aria-hidden="true"
     aria-label="Clear search to try again"
     class="ds-c-button ds-c-button--small ds-c-button--ghost ds-u-padding-right--0 ds-c-autocomplete__clear-btn"
     type="button"
@@ -70,6 +93,7 @@ Array [
   <li
     aria-selected="false"
     class="ds-c-autocomplete__menu-item"
+    data-key="1a"
     id="static-id__item--0"
     role="option"
   >
@@ -78,6 +102,7 @@ Array [
   <li
     aria-selected="false"
     class="custom-class ds-c-autocomplete__menu-item"
+    data-key="5b"
     id="static-id__item--1"
     role="option"
   >
@@ -88,6 +113,7 @@ Array [
 
 exports[`Autocomplete renders items with children property 1`] = `
 <ul
+  aria-label="Suggestions"
   aria-labelledby="static-id__label"
   class="ds-c-autocomplete__menu"
   id="static-id__menu"
@@ -96,6 +122,7 @@ exports[`Autocomplete renders items with children property 1`] = `
   <li
     aria-selected="false"
     class="ds-c-autocomplete__menu-item"
+    data-key="1"
     id="static-id__item--0"
     role="option"
   >
@@ -107,6 +134,7 @@ exports[`Autocomplete renders items with children property 1`] = `
   <li
     aria-selected="false"
     class="ds-c-autocomplete__menu-item"
+    data-key="2"
     id="static-id__item--1"
     role="option"
   >
@@ -118,6 +146,7 @@ exports[`Autocomplete renders items with children property 1`] = `
   <li
     aria-selected="false"
     class="ds-c-autocomplete__menu-item"
+    data-key="3"
     id="static-id__item--2"
     role="option"
   >
@@ -129,6 +158,7 @@ exports[`Autocomplete renders items with children property 1`] = `
   <li
     aria-selected="false"
     class="ds-c-autocomplete__menu-item"
+    data-key="4"
     id="static-id__item--3"
     role="option"
   >

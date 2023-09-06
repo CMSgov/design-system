@@ -7,7 +7,7 @@ import { getOptionId } from '../Dropdown/DropdownMenuOption';
 export function renderReactStatelyItems(items: AutocompleteItem[]) {
   return items.map(({ id, name, children, isResult, ...extraAttrs }: AutocompleteItem) => (
     <Item {...extraAttrs} key={id}>
-      {name ?? children}
+      {children ?? name}
     </Item>
   ));
 }

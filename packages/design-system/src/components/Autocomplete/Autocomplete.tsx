@@ -124,11 +124,11 @@ export interface AutocompleteProps {
   /**
    * Called when the user selects an item and the selected item has changed. Called with the item that was selected and the new state. [Read more on downshift docs.](https://github.com/paypal/downshift#onchange)
    */
-  onChange?: (selectedItem: AutocompleteItem, state: ComboBoxState<any>) => void;
+  onChange?: (selectedItem: AutocompleteItem) => void;
   /**
    * Called when the child `TextField` value changes. Returns a String `inputValue`. [Read more on downshift docs.](https://github.com/downshift-js/downshift#oninputvaluechange)
    */
-  onInputValueChange?: (inputValue: string, state: ComboBoxState<any>) => void;
+  onInputValueChange?: (inputValue: string) => void;
 }
 
 /**
@@ -182,7 +182,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
     inputValue: textField.props.value,
     onInputChange: onInputValueChange
       ? (value) => {
-          onInputValueChange(value, state);
+          onInputValueChange(value);
         }
       : undefined,
     onSelectionChange: onChange
@@ -194,7 +194,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
           // decide to remove this check, we can also remove the explicit `onChange` call in the
           // clear button handler.
           if (selectedItem) {
-            onChange(selectedItem, state);
+            onChange(selectedItem);
           }
         }
       : undefined,
@@ -206,6 +206,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
   const useComboboxProps = useComboBox(
     {
       ...autocompleteProps,
+      name: textField.props.name,
       label: textField.props.label,
       inputRef,
       listBoxRef,
@@ -270,7 +271,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
           className="ds-u-padding-right--0 ds-c-autocomplete__clear-btn"
           onClick={() => {
             state.setSelectedKey(null);
-            onChange(null, { ...state, inputValue: '' });
+            onChange?.(null, { ...state, inputValue: '' });
           }}
           size="small"
           variation="ghost"
