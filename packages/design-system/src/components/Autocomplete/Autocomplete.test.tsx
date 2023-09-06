@@ -208,7 +208,7 @@ describe('Autocomplete', () => {
     userEvent.click(clearButton);
 
     expect(autocompleteField.value).toBe('');
-    expect(onChange).toHaveBeenLastCalledWith(null, expect.objectContaining({ inputValue: '' }));
+    expect(onChange).toHaveBeenLastCalledWith(null);
   });
 
   it('Should select list items by keyboard', () => {
