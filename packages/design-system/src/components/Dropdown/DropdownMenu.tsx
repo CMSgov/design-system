@@ -2,7 +2,7 @@ import React, { RefObject, useRef } from 'react';
 import { DropdownMenuOption } from './DropdownMenuOption';
 import { DropdownMenuSection } from './DropdownMenuSection';
 import { ListState, OverlayTriggerState } from 'react-stately';
-import { AriaPopoverProps, AriaListBoxOptions, DismissButton, useListBox } from 'react-aria';
+import { AriaPopoverProps, AriaListBoxOptions, useListBox } from 'react-aria';
 import usePressEscapeHandler from '../utilities/usePressEscapeHandler';
 import { DropdownSize } from './Dropdown';
 import classNames from 'classnames';
@@ -59,7 +59,6 @@ export function DropdownMenu<T>({
 
   return (
     <div className={containerClass} ref={containerRef} onKeyDown={handleTabKey}>
-      <DismissButton onDismiss={state.close} />
       {heading && (
         <h5 className="ds-c-autocomplete__label" id={headingId}>
           {heading}
@@ -81,7 +80,6 @@ export function DropdownMenu<T>({
           )
         )}
       </ul>
-      <DismissButton onDismiss={state.close} />
     </div>
   );
 }

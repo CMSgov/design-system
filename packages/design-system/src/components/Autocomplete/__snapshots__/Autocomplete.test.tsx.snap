@@ -39,16 +39,6 @@ exports[`Autocomplete renders Autocomplete component 1`] = `
   <div
     class="ds-c-autocomplete__menu-container"
   >
-    <div
-      aria-hidden="true"
-      style="border: 0px; clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
-    >
-      <button
-        aria-label="Dismiss"
-        id="react-aria-7"
-        tabindex="-1"
-      />
-    </div>
     <ul
       aria-label="Suggestions"
       aria-labelledby="static-id__label"
@@ -66,16 +56,6 @@ exports[`Autocomplete renders Autocomplete component 1`] = `
         Cook County, IL
       </li>
     </ul>
-    <div
-      aria-hidden="true"
-      style="border: 0px; clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
-    >
-      <button
-        aria-label="Dismiss"
-        id="react-aria-10"
-        tabindex="-1"
-      />
-    </div>
   </div>
   <button
     aria-hidden="true"
