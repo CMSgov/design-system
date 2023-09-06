@@ -150,7 +150,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     if (isOptGroup(item)) {
       const { label, options, ...extraAttrs } = item;
       return (
-        <Section {...extraAttrs} key={index} title={label}>
+        <Section {...extraAttrs} key={`group-${index}`} title={label}>
           {options.map(renderReactStatelyItem)}
         </Section>
       );
