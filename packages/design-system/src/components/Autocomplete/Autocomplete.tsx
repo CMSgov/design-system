@@ -152,6 +152,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
     noResultsMessage,
     onChange,
     onInputValueChange,
+    ...autocompleteProps
   } = props;
 
   // Determine what we'll show based on state
@@ -171,7 +172,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
   const size = textField.props.size;
 
   const state = useComboBoxState({
-    ...props,
+    ...autocompleteProps,
     children: reactStatelyItems,
     inputValue: textField.props.value,
     onInputChange: onInputValueChange
@@ -199,7 +200,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
   const wrapperRef = useRef<HTMLDivElement>();
   const useComboboxProps = useComboBox(
     {
-      ...props,
+      ...autocompleteProps,
       label: textField.props.label,
       inputRef,
       listBoxRef,
@@ -236,7 +237,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
     <div className={rootClassName} ref={wrapperRef}>
       {React.cloneElement(textField, textFieldProps)}
 
-      {state.isOpen && (
+      {(state.isOpen || (state.isFocused && statusMessage)) && (
         <DropdownMenu
           {...useComboboxProps.listBoxProps}
           componentClass="ds-c-autocomplete"
