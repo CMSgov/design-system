@@ -243,6 +243,10 @@ export const Autocomplete = (props: AutocompleteProps) => {
     labelId,
     inputRef: mergeRefs([inputRef, userInputRef]),
   };
+  // My hypothesis is that the special stuff they're doing to keyboard events (what I
+  // wrote a PR to Adobe Spectrum about) is interfering with its ability to pick up on
+  // the keyboard controls. It works in React but not Preact.
+  // console.log(textFieldProps.onKeyDown)
 
   const rootClassName = classNames('ds-c-autocomplete', className);
 
