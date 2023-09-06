@@ -23,10 +23,15 @@ function open() {
 }
 
 describe('Autocomplete', () => {
-  it('renders Autocomplete component', () => {
+  it('renders a closed Autocomplete component', () => {
     const { container } = makeAutocomplete();
-    open();
-    expect(container.firstChild).toMatchSnapshot();
+    const input = screen.getByRole('combobox');
+    expect(input).toBeInTheDocument();
+    const labelId = input.getAttribute('aria-labelledby');
+    const label = container.querySelector(`#${labelId}`);
+    expect(label).toBeInTheDocument();
+    expect(screen.getByRole('button')).toBeInTheDocument();
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
   });
 
   it('renders items', () => {

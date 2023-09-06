@@ -137,7 +137,6 @@ export interface AutocompleteProps {
  */
 export const Autocomplete = (props: AutocompleteProps) => {
   const id = useId('autocomplete--', props.id);
-  const labelId = props.labelId ?? `${id}__label`;
   const menuId = `${id}__menu`;
 
   const {
@@ -152,7 +151,8 @@ export const Autocomplete = (props: AutocompleteProps) => {
     inputRef: userInputRef,
     items,
     itemToString,
-    label,
+    label: menuHeading,
+    labelId: menuHeadingId,
     loading,
     loadingMessage,
     noResultsMessage,
@@ -176,6 +176,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
 
   const textField = getTextFieldChild(children);
   const size = textField.props.size;
+  const labelId = textField.props.labelId ?? `${id}__label`;
 
   const state = useComboBoxState({
     ...autocompleteProps,
@@ -253,8 +254,8 @@ export const Autocomplete = (props: AutocompleteProps) => {
         <DropdownMenu
           {...useComboboxProps.listBoxProps}
           componentClass="ds-c-autocomplete"
-          heading={label}
-          labelId={labelId}
+          heading={menuHeading}
+          labelId={menuHeadingId}
           menuId={menuId}
           rootId={id}
           size={size}
