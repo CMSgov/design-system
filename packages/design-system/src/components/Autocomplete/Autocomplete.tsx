@@ -4,7 +4,6 @@ import DropdownMenu from '../Dropdown/DropdownMenu';
 import classNames from 'classnames';
 import mergeRefs from '../utilities/mergeRefs';
 import useId from '../utilities/useId';
-import { ComboBoxState, useComboBoxState } from '../react-aria';
 import { errorPlacementDefault } from '../flags';
 import {
   renderReactStatelyItems,
@@ -13,7 +12,7 @@ import {
   getActiveDescendant,
 } from './utils';
 import { t } from '../i18n';
-import { useComboBox } from '../react-aria';
+import { useComboBox, useComboBoxState } from '../react-aria';
 
 export interface AutocompleteItem extends Omit<React.HTMLAttributes<'option'>, 'name'> {
   /**
@@ -80,8 +79,8 @@ export interface AutocompleteProps {
    */
   id?: string;
   /**
-   * Customize the default status messages announced to screen reader users via aria-live when autocomplete results are populated. [Read more on downshift docs.](https://github.com/downshift-js/downshift/tree/master/src/hooks/useCombobox#geta11ystatusmessage)
-   * @deprecated This is deprecated in favor of autoFocus
+   * Customize the default status messages announced to screen reader users via aria-live when autocomplete results are populated.
+   * @deprecated This is no longer used
    * @hide-prop [Deprecated]
    */
   getA11yStatusMessage?: any;
@@ -122,11 +121,11 @@ export interface AutocompleteProps {
    */
   noResultsMessage?: React.ReactNode;
   /**
-   * Called when the user selects an item and the selected item has changed. Called with the item that was selected and the new state. [Read more on downshift docs.](https://github.com/paypal/downshift#onchange)
+   * Called when the user selects an item and the selected item has changed. Called with the item that was selected.
    */
   onChange?: (selectedItem: AutocompleteItem) => void;
   /**
-   * Called when the child `TextField` value changes. Returns a String `inputValue`. [Read more on downshift docs.](https://github.com/downshift-js/downshift#oninputvaluechange)
+   * Called when the child `TextField` value changes. Is called with a string representing the input value.
    */
   onInputValueChange?: (inputValue: string) => void;
 }
