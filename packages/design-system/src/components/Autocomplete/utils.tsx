@@ -1,7 +1,8 @@
 import React, { ReactElement, ReactNode } from 'react';
 import { AutocompleteItem } from './Autocomplete';
-import { Item } from 'react-stately';
+import { ComboBoxState, Item } from 'react-stately';
 import { TextField } from '../TextField';
+import { getOptionId } from '../Dropdown/DropdownMenuOption';
 
 export function renderReactStatelyItems(items: AutocompleteItem[]) {
   return items.map(({ id, name, children, isResult, ...extraAttrs }: AutocompleteItem) => (
@@ -40,4 +41,17 @@ export function getTextFieldChild(children: ReactNode): ReactElement | undefined
     }
   });
   return textField;
+}
+
+/**
+ * Assumes that it will find the item, so only use in cases where react-aria
+ * would define an aria-activedescendent
+ */
+export function getActiveDescendant(
+  rootId: string,
+  state: ComboBoxState<object>,
+  items: AutocompleteItem[]
+): string {
+  const index = (items ?? []).findIndex((item) => state.selectionManager.focusedKey === item.id);
+  return getOptionId(rootId, index);
 }

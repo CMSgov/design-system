@@ -6,7 +6,12 @@ import mergeRefs from '../utilities/mergeRefs';
 import useId from '../utilities/useId';
 import { ComboBoxState, useComboBoxState } from 'react-stately';
 import { errorPlacementDefault } from '../flags';
-import { renderReactStatelyItems, renderStatusMessage, getTextFieldChild } from './utils';
+import {
+  renderReactStatelyItems,
+  renderStatusMessage,
+  getTextFieldChild,
+  getActiveDescendant,
+} from './utils';
 import { t } from '../i18n';
 import { useComboBox } from 'react-aria';
 
@@ -225,6 +230,11 @@ export const Autocomplete = (props: AutocompleteProps) => {
     ...useComboboxProps.inputProps,
     autoComplete: autoCompleteLabel,
     autoFocus: autoFocus || focusTrigger,
+    'aria-activedescendant': useComboboxProps.inputProps['aria-activedescendant']
+      ? getActiveDescendant(id, state, items)
+      : undefined,
+    'aria-controls': menuId,
+    'aria-labelledby': labelId,
     errorMessageClassName,
     id,
     labelId,
