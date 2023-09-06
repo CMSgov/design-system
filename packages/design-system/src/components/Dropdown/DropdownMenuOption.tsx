@@ -36,11 +36,13 @@ export function DropdownMenuOption<T>({
     </span>
   );
 
+  const { textValue, ...extraAttrs } = item.props;
+
   return (
     <li
       {...optionProps}
       id={getOptionId(rootId, item.index)}
-      {...item.props}
+      {...extraAttrs}
       ref={ref}
       className={classNames(
         item.props.className,

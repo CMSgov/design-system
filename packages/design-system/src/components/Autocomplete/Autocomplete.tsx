@@ -90,11 +90,11 @@ export interface AutocompleteProps {
    */
   inputRef?: (...args: any[]) => any;
   /**
-   * Used to determine the string value for the selected item (which is used to compute the `inputValue`). [Read more on downshift docs.](https://github.com/paypal/downshift#itemtostring)
-   * @deprecated This is no longer used.
+   * Used to determine the string value for the selected item (which is used to compute the `inputValue`).
+   * @deprecated Please provide a `name` property to each item instead.
    * @hide-prop [Deprecated]
    */
-  itemToString?: any;
+  itemToString?: (item: AutocompleteItem) => string;
   /**
    * Array of objects used to populate the suggestion list that appears below the input as users type.
    * Passing an empty array will show a "No results" message. If you do not yet want to show results,
@@ -151,6 +151,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
     focusTrigger,
     inputRef: userInputRef,
     items,
+    itemToString,
     label,
     loading,
     loadingMessage,
@@ -164,7 +165,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
   let reactStatelyItems = [];
   let statusMessage;
   if (items?.length) {
-    reactStatelyItems = renderReactStatelyItems(items);
+    reactStatelyItems = renderReactStatelyItems(items, itemToString);
   } else if (loading) {
     // If we're waiting for results to load, show the non-selected message
     statusMessage = renderStatusMessage(loadingMessage ?? t('autocomplete.loadingMessage'));

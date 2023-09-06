@@ -72,6 +72,7 @@ describe('Autocomplete', () => {
       },
       {
         id: '4',
+        name: 'Search all snacks',
         children: <a href="https://duckduckgo.com/?q=snacks">Search all snacks</a>,
       },
     ];

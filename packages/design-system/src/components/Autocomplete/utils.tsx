@@ -1,15 +1,21 @@
 import React, { ReactElement, ReactNode } from 'react';
-import { AutocompleteItem } from './Autocomplete';
+import { AutocompleteProps, AutocompleteItem } from './Autocomplete';
 import { ComboBoxState, Item } from 'react-stately';
 import { TextField } from '../TextField';
 import { getOptionId } from '../Dropdown/DropdownMenuOption';
 
-export function renderReactStatelyItems(items: AutocompleteItem[]) {
-  return items.map(({ id, name, children, isResult, ...extraAttrs }: AutocompleteItem) => (
-    <Item {...extraAttrs} key={id}>
-      {children ?? name}
-    </Item>
-  ));
+export function renderReactStatelyItems(
+  items: AutocompleteItem[],
+  itemToString: AutocompleteProps['itemToString']
+) {
+  return items.map((item: AutocompleteItem) => {
+    const { id, name, children, isResult, ...extraAttrs } = item;
+    return (
+      <Item {...extraAttrs} textValue={name ?? itemToString?.(item)} key={id}>
+        {children ?? name}
+      </Item>
+    );
+  });
 }
 
 export function renderStatusMessage(message: ReactNode) {
