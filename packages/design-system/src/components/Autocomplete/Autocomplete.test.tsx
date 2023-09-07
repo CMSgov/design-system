@@ -19,8 +19,34 @@ function makeAutocomplete(customProps = {}) {
 describe('Autocomplete', () => {
   it('renders Autocomplete component', () => {
     const { container } = makeAutocomplete();
-    const page = container.firstChild;
-    expect(page).toMatchSnapshot();
+
+    const wrapperEl = container.querySelectorAll('.ds-c-autocomplete');
+    expect(wrapperEl.length).toEqual(1);
+
+    const input = screen.getByRole('combobox');
+    expect(input).toBeInTheDocument();
+    expect(input).toHaveAttribute('aria-autocomplete', 'list');
+    expect(input).toHaveAttribute('aria-controls');
+    expect(input).toHaveAttribute('aria-activedescendant');
+    expect(input).toHaveAttribute('aria-expanded', 'false');
+    expect(input).toHaveAttribute('role', 'combobox');
+    expect(input).toHaveAttribute('type', 'text');
+
+    const menuEl = container.querySelector('.ds-c-autocomplete__menu-container');
+    expect(menuEl).toBeInTheDocument();
+    expect(menuEl).toHaveAttribute('hidden');
+
+    const list = screen.queryByRole('listbox');
+    expect(list).not.toBeInTheDocument();
+
+    const item = screen.queryByRole('option');
+    expect(item).not.toBeInTheDocument();
+
+    const button = screen.getByRole('button');
+    expect(button).toBeInTheDocument();
+    expect(button.classList).toContain('ds-c-autocomplete__clear-btn');
+    expect(button).toHaveAttribute('type', 'button');
+    expect(button).toHaveAccessibleName('Clear search to try again');
   });
 
   it('renders items', () => {
@@ -117,13 +143,6 @@ describe('Autocomplete', () => {
     makeAutocomplete({ clearSearchButton: false });
 
     expect(screen.queryByRole('button')).not.toBeInTheDocument();
-  });
-
-  it('renders default class names', () => {
-    const { container } = makeAutocomplete();
-    const child = container.querySelectorAll('.ds-c-autocomplete');
-
-    expect(child.length).toEqual(1);
   });
 
   it('renders custom class names', () => {
