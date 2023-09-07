@@ -20,11 +20,46 @@ describe('TextField', function () {
   });
 
   it('renders with a label mask', () => {
-    expect(renderTextField({ labelMask: DATE_MASK }).asFragment()).toMatchSnapshot();
+    const { container } = renderTextField({ labelMask: DATE_MASK });
+
+    const label = container.querySelector('.ds-c-label');
+    expect(label).toBeInTheDocument();
+
+    const mask = container.querySelector('.ds-c-label-mask');
+    expect(mask).toBeInTheDocument();
+    expect(mask.querySelectorAll('span')).toHaveLength(2);
+    expect(mask.textContent).toContain('MM/DD/YYYY');
+
+    const input = screen.getByRole('textbox');
+    expect(input).toBeInTheDocument();
+    expect(input).toHaveAttribute('type', 'text');
+    expect(input).toHaveAttribute('inputmode', 'numeric');
+    expect(input).toHaveAttribute('aria-describedby');
+    expect(input).toHaveAttribute('aria-invalid', 'false');
   });
 
   it('renders with a mask', () => {
-    expect(renderTextField({ mask: 'currency' }).asFragment()).toMatchSnapshot();
+    const { container } = renderTextField({ mask: 'currency' });
+
+    const label = container.querySelector('.ds-c-label');
+    expect(label).toBeInTheDocument();
+
+    const mask = container.querySelector('.ds-c-field-mask--currency');
+    expect(mask).toBeInTheDocument();
+    expect(mask.firstElementChild.classList).toContain('ds-c-field__before--currency');
+    expect(mask.textContent).toContain('$');
+
+    const input = screen.getByRole('textbox');
+    expect(input).toBeInTheDocument();
+    expect(input).toHaveAttribute('type', 'text');
+    expect(input).toHaveAttribute('inputmode', 'numeric');
+    expect(input).toHaveAttribute('aria-invalid', 'false');
+    expect(input.classList).toContain('ds-c-field--currency');
+  });
+
+  it('has value when set', () => {
+    const { container } = renderTextField({ value: 'foo' });
+    expect(container.querySelector('input')).toHaveValue('foo');
   });
 
   it('can accept custom ids', () => {
