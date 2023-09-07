@@ -42,6 +42,10 @@
   }
 }
 
+.ds-c-autocomplete__menu-item-selected-indicator {
+  display: none;
+}
+
 // Need a custom class so the bottom error message does not conflict with the clear search button
 .ds-c-autocomplete__error-message {
   float: left;

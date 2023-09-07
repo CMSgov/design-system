@@ -4,6 +4,10 @@ import { SvgIcon } from '../Icons';
 import { useOption } from 'react-aria';
 import classNames from 'classnames';
 
+export function getOptionId(rootId: string, index: number): string {
+  return `${rootId}__item--${index}`;
+}
+
 export interface DropdownMenuOptionProps<T> {
   componentClass: string;
   item: Node<T>;
@@ -32,11 +36,13 @@ export function DropdownMenuOption<T>({
     </span>
   );
 
+  const { textValue, ...extraAttrs } = item.props;
+
   return (
     <li
       {...optionProps}
-      id={`${rootId}__item--${item.index}`}
-      {...item.props}
+      id={getOptionId(rootId, item.index)}
+      {...extraAttrs}
       ref={ref}
       className={classNames(
         item.props.className,

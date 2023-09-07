@@ -1,24 +1,29 @@
-import React, { useEffect, useRef } from 'react';
+import React, { RefObject, useRef } from 'react';
 import { DropdownMenuOption } from './DropdownMenuOption';
 import { DropdownMenuSection } from './DropdownMenuSection';
 import { ListState, OverlayTriggerState } from 'react-stately';
-import { AriaPopoverProps, AriaListBoxOptions, DismissButton, useListBox } from 'react-aria';
+import { AriaPopoverProps, AriaListBoxOptions, useListBox } from 'react-aria';
 import usePressEscapeHandler from '../utilities/usePressEscapeHandler';
 import { DropdownSize } from './Dropdown';
 import classNames from 'classnames';
 
 interface DropdownMenuProps<T> extends AriaListBoxOptions<T> {
+  children?: React.ReactNode;
   componentClass: string;
+  heading?: React.ReactNode;
   labelId: string;
   menuId: string;
   rootId?: string;
   size?: DropdownSize;
   state: ListState<T> & OverlayTriggerState;
   triggerRef: AriaPopoverProps['triggerRef'];
+  listBoxRef?: RefObject<any>;
 }
 
 export function DropdownMenu<T>({
+  children,
   componentClass,
+  heading,
   labelId,
   menuId,
   rootId,
@@ -26,9 +31,11 @@ export function DropdownMenu<T>({
   state,
   ...props
 }: DropdownMenuProps<T>) {
-  const listBoxRef = useRef(null);
+  const fallbackListBoxRef = useRef(null);
+  const listBoxRef = props.listBoxRef ?? fallbackListBoxRef;
   const { listBoxProps } = useListBox(props, state, listBoxRef);
 
+  const headingId = `${rootId}__heading`;
   const containerClass = classNames(
     `${componentClass}__menu-container`,
     size && `ds-c-field--${size}`
@@ -52,14 +59,19 @@ export function DropdownMenu<T>({
 
   return (
     <div className={containerClass} ref={containerRef} onKeyDown={handleTabKey}>
-      <DismissButton onDismiss={state.close} />
+      {heading && (
+        <h5 className="ds-c-autocomplete__label" id={headingId}>
+          {heading}
+        </h5>
+      )}
       <ul
         {...listBoxProps}
         id={menuId}
-        aria-labelledby={labelId}
+        aria-labelledby={classNames(labelId, heading && headingId)}
         className={`${componentClass}__menu`}
         ref={listBoxRef}
       >
+        {children}
         {[...state.collection].map((item) =>
           item.type === 'section' ? (
             <DropdownMenuSection key={item.key} section={item} {...sharedProps} />
@@ -68,7 +80,6 @@ export function DropdownMenu<T>({
           )
         )}
       </ul>
-      <DismissButton onDismiss={state.close} />
     </div>
   );
 }

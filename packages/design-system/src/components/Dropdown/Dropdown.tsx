@@ -27,11 +27,11 @@ export interface DropdownChangeObject {
 }
 
 export interface DropdownOption extends React.HTMLAttributes<'option'> {
-  label: string;
+  label: React.ReactNode;
   value: DropdownValue;
 }
 export interface DropdownOptGroup extends React.HTMLAttributes<'optgroup'> {
-  label: string;
+  label: React.ReactNode;
   options: DropdownOption[];
 }
 
@@ -146,11 +146,11 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     );
   };
 
-  const reactStatelyItems = optionsAndGroups.map((item) => {
+  const reactStatelyItems = optionsAndGroups.map((item, index) => {
     if (isOptGroup(item)) {
       const { label, options, ...extraAttrs } = item;
       return (
-        <Section {...extraAttrs} key={label} title={label}>
+        <Section {...extraAttrs} key={`group-${index}`} title={label}>
           {options.map(renderReactStatelyItem)}
         </Section>
       );

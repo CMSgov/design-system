@@ -63,7 +63,7 @@ function parseOptionElement(option: ReactElement<any, 'option'>): DropdownOption
   const { value, children, ...extraAttributes } = option.props;
   return {
     value,
-    label: children?.toString?.() ?? '', // Probably should throw an error
+    label: children,
     ...extraAttributes,
   };
 }
