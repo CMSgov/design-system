@@ -10,7 +10,6 @@ import useLabelMask, {
 } from './useLabelMask';
 import { render, screen } from '@testing-library/react';
 import { act, renderHook } from '@testing-library/react-hooks';
-// import { act, renderHook } from '@testing-library/preact-hooks';
 import userEvent from '@testing-library/user-event';
 
 describe('SSN_MASK', () => {

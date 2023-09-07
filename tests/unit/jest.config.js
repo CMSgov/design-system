@@ -5,7 +5,6 @@ const preactModuleMapper = usePreact
       '^react-dom/test-utils$': 'preact/test-utils',
       '^react-dom$': 'preact/compat',
       '^react/jsx-runtime$': 'preact/jsx-runtime',
-      '^@testing-library/react$': '@testing-library/preact',
       '^@testing-library/react-hooks$': '@testing-library/preact-hooks',
     }
   : {};
