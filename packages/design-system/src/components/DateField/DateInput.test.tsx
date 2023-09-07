@@ -3,7 +3,6 @@ import { createRef } from 'react';
 import DateInput, { DateInputProps } from './DateInput';
 import userEvent from '@testing-library/user-event';
 import { render, screen } from '@testing-library/react';
-import { each } from 'lodash';
 
 const defaultProps: DateInputProps = {
   labelId: '1',
