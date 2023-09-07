@@ -92,7 +92,6 @@ Object {
                     class="ds-c-choice-wrapper"
                   >
                     <input
-                      checked=""
                       class="ds-c-choice"
                       id="choice-list--2__choice--0"
                       name="cookie-c3"
@@ -208,7 +207,6 @@ Object {
                     class="ds-c-choice-wrapper"
                   >
                     <input
-                      checked=""
                       class="ds-c-choice"
                       id="choice-list--3__choice--1"
                       name="cookie-c4"
@@ -278,7 +276,6 @@ Object {
                     class="ds-c-choice-wrapper"
                   >
                     <input
-                      checked=""
                       class="ds-c-choice"
                       id="choice-list--4__choice--0"
                       name="cookie-c2"
@@ -415,7 +412,6 @@ Object {
                   class="ds-c-choice-wrapper"
                 >
                   <input
-                    checked=""
                     class="ds-c-choice"
                     id="choice-list--2__choice--0"
                     name="cookie-c3"
@@ -531,7 +527,6 @@ Object {
                   class="ds-c-choice-wrapper"
                 >
                   <input
-                    checked=""
                     class="ds-c-choice"
                     id="choice-list--3__choice--1"
                     name="cookie-c4"
@@ -601,7 +596,6 @@ Object {
                   class="ds-c-choice-wrapper"
                 >
                   <input
-                    checked=""
                     class="ds-c-choice"
                     id="choice-list--4__choice--0"
                     name="cookie-c2"

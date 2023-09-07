@@ -1,6 +1,7 @@
 import React from 'react';
 import TextInput, { OmitProps, TextInputProps } from './TextInput';
 import { fireEvent, render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 const defaultProps: Omit<React.ComponentPropsWithRef<'textarea'>, OmitProps> &
   Omit<React.ComponentPropsWithRef<'input'>, OmitProps> &
@@ -83,7 +84,7 @@ describe('TextInput', function () {
   it('has a value', () => {
     const value = 'Yay';
     renderInput({ value, onChange: () => {} });
-    expect(getInput().getAttribute('value')).toBe(value);
+    expect(getInput()).toHaveValue(value);
   });
 
   it('shows 5 rows of text', () => {
@@ -142,7 +143,7 @@ describe('TextInput', function () {
   it('calls onChange', () => {
     const onChange = jest.fn();
     renderInput({ onChange });
-    fireEvent.change(getInput(), { target: { value: 'hello world' } });
+    userEvent.type(getInput(), 'hello world');
     expect(onChange).toHaveBeenCalled();
   });
 });

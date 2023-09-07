@@ -30,7 +30,6 @@ exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external l
         <svg
           aria-hidden="true"
           class="ds-c-icon ds-c-icon--close "
-          focusable="false"
           viewBox="0 0 16 16"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -92,7 +91,6 @@ exports[`ThirdPartyExternalLink renders external link 1`] = `
     aria-hidden="false"
     aria-labelledby="icon--1__title"
     class="ds-c-icon ds-c-icon--external-link ds-c-external-link__icon"
-    focusable="false"
     id="icon--1"
     role="img"
     viewBox="0 0 512 512"

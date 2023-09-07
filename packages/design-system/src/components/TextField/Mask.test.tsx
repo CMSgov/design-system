@@ -42,13 +42,32 @@ describe('Mask', function () {
   });
 
   it('renders mask', () => {
-    const { asFragment } = renderMask({ mask: 'ssn' });
-    expect(asFragment()).toMatchSnapshot();
+    const { container } = renderMask({ mask: 'ssn' });
+
+    expect(container.querySelector('.ds-c-field-mask--ssn')).toBeInTheDocument();
+
+    const input = screen.getByRole('textbox');
+    expect(input).toHaveAttribute('aria-invalid', 'false');
+    expect(input.classList).toContain('ds-c-field--ssn');
+    expect(input).toHaveAttribute('type', 'text');
+    expect(input).toHaveAttribute('pattern', '[0-9-*]*');
+    expect(input).toHaveAttribute('inputmode', 'numeric');
   });
 
   it('renders mask overlay', () => {
-    const { asFragment } = renderMask({ mask: 'currency' });
-    expect(asFragment()).toMatchSnapshot();
+    const { container } = renderMask({ mask: 'currency' });
+    const inputPrefix = container.querySelector('.ds-c-field__before--currency');
+
+    expect(inputPrefix.parentElement).toHaveClass('ds-c-field-mask--currency');
+    expect(inputPrefix.classList).toContain('ds-c-field__before');
+    expect(inputPrefix.textContent).toBe('$');
+
+    const input = screen.getByRole('textbox');
+    expect(input).toHaveAttribute('aria-invalid', 'false');
+    expect(input.classList).toContain('ds-c-field--currency');
+    expect(input).toHaveAttribute('type', 'text');
+    expect(input).toHaveAttribute('pattern', '[0-9.,-]*');
+    expect(input).toHaveAttribute('inputmode', 'numeric');
   });
 
   it('calls onBlur when the value is the same', () => {
