@@ -3928,6 +3928,14 @@ function $6179b936705e76d3$export$ae780daf29e6d456(props) {
   if (!handler) return;
   let shouldStopPropagation = true;
   return (e) => {
+    // Mutates the original event object to support Preact because we aren't dealing
+    // with synthetic events. The event object that Preact passes to this function
+    // does not have very many of its "own" properties; rather, it inherits most of
+    // its properties from KeyboardEvents, which means using the spread operator will
+    // not transfer the properties to our new `event` object. If we were to either
+    // try to copying the properties from the original event's prototype or using
+    // that original event as the prototype of this new object, we would actually get
+    // an illegal-invokation error as soon as we started using it.
     let event = Object.assign(e, {
       stopPropagation() {
         // console.error(
