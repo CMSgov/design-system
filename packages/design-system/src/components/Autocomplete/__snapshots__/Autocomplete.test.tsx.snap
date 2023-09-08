@@ -5,6 +5,7 @@ Array [
   <li
     aria-selected="false"
     class="ds-c-autocomplete__menu-item"
+    data-key="1a"
     id="static-id__item--0"
     role="option"
   >
@@ -13,6 +14,7 @@ Array [
   <li
     aria-selected="false"
     class="custom-class ds-c-autocomplete__menu-item"
+    data-key="5b"
     id="static-id__item--1"
     role="option"
   >
@@ -23,7 +25,8 @@ Array [
 
 exports[`Autocomplete renders items with children property 1`] = `
 <ul
-  aria-labelledby="static-id__label"
+  aria-label="Suggestions"
+  aria-labelledby=""
   class="ds-c-autocomplete__menu"
   id="static-id__menu"
   role="listbox"
@@ -31,6 +34,7 @@ exports[`Autocomplete renders items with children property 1`] = `
   <li
     aria-selected="false"
     class="ds-c-autocomplete__menu-item"
+    data-key="1"
     id="static-id__item--0"
     role="option"
   >
@@ -42,6 +46,7 @@ exports[`Autocomplete renders items with children property 1`] = `
   <li
     aria-selected="false"
     class="ds-c-autocomplete__menu-item"
+    data-key="2"
     id="static-id__item--1"
     role="option"
   >
@@ -53,6 +58,7 @@ exports[`Autocomplete renders items with children property 1`] = `
   <li
     aria-selected="false"
     class="ds-c-autocomplete__menu-item"
+    data-key="3"
     id="static-id__item--2"
     role="option"
   >
@@ -64,6 +70,7 @@ exports[`Autocomplete renders items with children property 1`] = `
   <li
     aria-selected="false"
     class="ds-c-autocomplete__menu-item"
+    data-key="4"
     id="static-id__item--3"
     role="option"
   >

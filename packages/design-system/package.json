@@ -66,6 +66,8 @@
     "lodash": "^4.17.21",
     "preactement": "1.8.4",
     "prop-types": "^15.8.1",
+    "react-aria":"^3.27.0",
+    "react-stately":"^3.25.0",
     "react-day-picker": "8.0.5",
     "react-transition-group": "^4.4.5"
   },

@@ -28,6 +28,10 @@
   &[aria-expanded='true'] {
     border-block-end-color: transparent;
   }
+
+  .ds-c-dropdown--open & {
+    @include mixins.focus-styles;
+  }
 }
 
 // Dropdown previously used a background image for the caret
@@ -88,7 +92,7 @@
   font-weight: var(--font-weight-bold);
 }
 
-.ds-c-dropdown__menu-item-group ul[role='presentation'] {
+.ds-c-dropdown__menu-item-group ul[role='group'] {
   @include mixins.unstyled-list;
 }
 
@@ -99,6 +103,7 @@
 // Styles for dropdown elements that are highlighted
 .ds-c-dropdown__menu-item--highlighted {
   background-color: var(--color-primary-lightest);
+  outline: none;
 }
 
 // Styles for dropdown elements that are selected
