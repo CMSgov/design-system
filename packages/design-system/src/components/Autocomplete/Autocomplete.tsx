@@ -180,6 +180,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
 
   const state = useComboBoxState({
     ...autocompleteProps,
+    allowsCustomValue: true,
     children: reactStatelyItems,
     inputValue: textField.props.value,
     onInputChange: onInputValueChange
