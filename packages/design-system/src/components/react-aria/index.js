@@ -3928,23 +3928,16 @@ function $6179b936705e76d3$export$ae780daf29e6d456(props) {
   if (!handler) return;
   let shouldStopPropagation = true;
   return (e) => {
-    let event = {
-      ...e,
-      preventDefault() {
-        e.preventDefault();
-      },
-      isDefaultPrevented() {
-        return e.isDefaultPrevented();
-      },
+    let event = Object.assign(e, {
       stopPropagation() {
-        console.error(
-          'stopPropagation is now the default behavior for events in React Spectrum. You can use continuePropagation() to revert this behavior.'
-        );
+        // console.error(
+        //   'stopPropagation is now the default behavior for events in React Spectrum. You can use continuePropagation() to revert this behavior.'
+        // );
       },
       continuePropagation() {
         shouldStopPropagation = false;
       },
-    };
+    });
     handler(event);
     if (shouldStopPropagation) e.stopPropagation();
   };
