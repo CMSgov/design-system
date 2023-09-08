@@ -1,7 +1,7 @@
 import React from 'react';
 import { DropdownMenuOption } from './DropdownMenuOption';
-import { ListState, Node } from 'react-stately';
-import { useListBoxSection } from 'react-aria';
+import { ListState, Node } from '../react-aria';
+import { useListBoxSection } from '../react-aria';
 
 export interface DropdownMenuOptionProps<T> {
   componentClass: string;

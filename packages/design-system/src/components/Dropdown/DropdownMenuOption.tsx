@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
-import { ListState, Node } from 'react-stately';
+import { ListState, Node } from '../react-aria';
 import { SvgIcon } from '../Icons';
-import { useOption } from 'react-aria';
+import { useOption } from '../react-aria';
 import classNames from 'classnames';
 
 export function getOptionId(rootId: string, index: number): string {

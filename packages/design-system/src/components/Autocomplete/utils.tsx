@@ -1,6 +1,6 @@
 import React, { ReactElement, ReactNode } from 'react';
 import { AutocompleteProps, AutocompleteItem } from './Autocomplete';
-import { ComboBoxState, Item } from 'react-stately';
+import { ComboBoxState, Item } from '../react-aria';
 import { TextField } from '../TextField';
 import { getOptionId } from '../Dropdown/DropdownMenuOption';
 

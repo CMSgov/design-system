@@ -4,7 +4,7 @@ import DropdownMenu from '../Dropdown/DropdownMenu';
 import classNames from 'classnames';
 import mergeRefs from '../utilities/mergeRefs';
 import useId from '../utilities/useId';
-import { ComboBoxState, useComboBoxState } from 'react-stately';
+import { ComboBoxState, useComboBoxState } from '../react-aria';
 import { errorPlacementDefault } from '../flags';
 import {
   renderReactStatelyItems,
@@ -13,7 +13,7 @@ import {
   getActiveDescendant,
 } from './utils';
 import { t } from '../i18n';
-import { useComboBox } from 'react-aria';
+import { useComboBox } from '../react-aria';
 
 export interface AutocompleteItem extends Omit<React.HTMLAttributes<'option'>, 'name'> {
   /**
