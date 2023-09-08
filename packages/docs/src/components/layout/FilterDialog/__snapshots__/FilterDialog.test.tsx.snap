@@ -29,7 +29,6 @@ exports[`FilterDialog renders a dialog 1`] = `
           aria-hidden="false"
           aria-labelledby="icon--2__title"
           class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin "
-          focusable="false"
           id="icon--2"
           role="img"
           viewBox="-2 -2 18 18"

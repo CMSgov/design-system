@@ -38,7 +38,6 @@ exports[`Dropdown accepts optgroup children 1`] = `
           <svg
             aria-hidden="true"
             class="ds-c-icon ds-u-font-size--sm"
-            focusable="false"
             viewBox="0 0 448 512"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -202,7 +201,6 @@ exports[`Dropdown dropdown matches snapshot 1`] = `
       <svg
         aria-hidden="true"
         class="ds-c-icon ds-u-font-size--sm"
-        focusable="false"
         viewBox="0 0 448 512"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -282,7 +280,6 @@ exports[`Dropdown supports bottom placed error 1`] = `
         <svg
           aria-hidden="true"
           class="ds-c-icon ds-u-font-size--sm"
-          focusable="false"
           viewBox="0 0 448 512"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -301,7 +298,6 @@ exports[`Dropdown supports bottom placed error 1`] = `
       <svg
         aria-hidden="true"
         class="ds-c-icon ds-c-icon--alert-circle "
-        focusable="false"
         viewBox="36 -12 186 186"
         xmlns="http://www.w3.org/2000/svg"
       >

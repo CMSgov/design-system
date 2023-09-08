@@ -25,13 +25,30 @@ function open() {
 describe('Autocomplete', () => {
   it('renders a closed Autocomplete component', () => {
     const { container } = makeAutocomplete();
+
+    const wrapperEl = container.querySelectorAll('.ds-c-autocomplete');
+    expect(wrapperEl.length).toEqual(1);
+
     const input = screen.getByRole('combobox');
     expect(input).toBeInTheDocument();
+    expect(input).toHaveAttribute('aria-autocomplete', 'list');
+    expect(input).toHaveAttribute('aria-controls');
+    expect(input).toHaveAttribute('aria-expanded', 'false');
+    expect(input).toHaveAttribute('role', 'combobox');
+    expect(input).toHaveAttribute('type', 'text');
+
     const labelId = input.getAttribute('aria-labelledby');
     const label = container.querySelector(`#${labelId}`);
     expect(label).toBeInTheDocument();
-    expect(screen.getByRole('button')).toBeInTheDocument();
-    expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
+
+    const menuEl = container.querySelector('.ds-c-autocomplete__menu-container');
+    expect(menuEl).not.toBeInTheDocument();
+
+    const button = screen.getByRole('button');
+    expect(button).toBeInTheDocument();
+    expect(button.classList).toContain('ds-c-autocomplete__clear-btn');
+    expect(button).toHaveAttribute('type', 'button');
+    expect(button).toHaveAccessibleName('Clear search to try again');
   });
 
   it('renders items', () => {
@@ -136,13 +153,6 @@ describe('Autocomplete', () => {
     makeAutocomplete({ clearSearchButton: false });
 
     expect(screen.queryByRole('button')).not.toBeInTheDocument();
-  });
-
-  it('renders default class names', () => {
-    const { container } = makeAutocomplete();
-    const child = container.querySelectorAll('.ds-c-autocomplete');
-
-    expect(child.length).toEqual(1);
   });
 
   it('renders custom class names', () => {

@@ -13,7 +13,6 @@ exports[`Tooltip renders custom trigger component 1`] = `
     <svg
       aria-hidden="true"
       class="ds-c-icon ds-c-icon--info-circle-thin ds-c-tooltip-icon"
-      focusable="false"
       viewBox="0 0 16 16"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -39,7 +38,6 @@ exports[`Tooltip renders default trigger icon 1`] = `
     <svg
       aria-hidden="true"
       class="ds-c-icon ds-c-icon--info-circle-thin ds-c-tooltip-icon"
-      focusable="false"
       viewBox="0 0 16 16"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -91,7 +89,6 @@ exports[`Tooltip renders inverse tooltip 1`] = `
         <svg
           aria-hidden="true"
           class="ds-c-icon ds-c-icon--info-circle-thin ds-c-tooltip-icon"
-          focusable="false"
           viewBox="0 0 16 16"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -184,7 +181,6 @@ exports[`Tooltip tooltip with close renders heading element and close button 1`]
         <svg
           aria-hidden="true"
           class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin "
-          focusable="false"
           viewBox="-2 -2 18 18"
           xmlns="http://www.w3.org/2000/svg"
         >

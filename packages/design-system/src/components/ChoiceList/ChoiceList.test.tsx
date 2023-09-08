@@ -110,9 +110,8 @@ describe('ChoiceList', () => {
     it('applies correct aria attributes when checkedChildren is set', () => {
       const choices = generateChoices(2, {
         checkedChildren: <p>this is a test</p>,
+        defaultChecked: true,
       });
-      choices[0].checked = true;
-      choices[1].checked = true;
       const { container } = renderChoiceList({ choices });
       const wrapper = container.querySelector(':nth-child(3)');
       expect(wrapper).toHaveAttribute('aria-live', 'polite');
