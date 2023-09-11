@@ -44,7 +44,6 @@ Object.values(stories).forEach((story) => {
 
       test(`with ${theme} theme`, async ({ page }) => {
         await page.goto(`${storyUrl}&globals=theme:${theme}`);
-        await page.evaluate(() => window.scrollTo(0, 0));
         await expect(page).toHaveScreenshot(`${story.id}-${theme}.png`, { fullPage: true });
       });
     });
