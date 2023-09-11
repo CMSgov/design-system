@@ -277,7 +277,10 @@ export const Autocomplete = (props: AutocompleteProps) => {
           className="ds-u-padding-right--0 ds-c-autocomplete__clear-btn"
           onClick={() => {
             state.setSelectedKey(null);
-            onChange?.(null);
+            state.setInputValue('');
+            if (state.selectedKey) {
+              onChange?.(null);
+            }
           }}
           size="small"
           variation="ghost"
