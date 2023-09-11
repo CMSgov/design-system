@@ -12,7 +12,8 @@ import {
   getActiveDescendant,
 } from './utils';
 import { t } from '../i18n';
-import { useComboBox, useComboBoxState } from '../react-aria';
+import { useComboBox } from '../react-aria'; // from react-aria
+import { useComboBoxState } from '../react-aria'; // from react-stately
 
 export interface AutocompleteItem extends Omit<React.HTMLAttributes<'option'>, 'name'> {
   /**
