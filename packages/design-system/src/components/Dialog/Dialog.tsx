@@ -160,7 +160,14 @@ export const Dialog = (props: DialogProps) => {
   }, []);
 
   return (
-    <NativeDialog className={dialogClassNames} showModal exit={onExit} {...modalProps} id={rootId}>
+    <NativeDialog
+      className={dialogClassNames}
+      showModal
+      exit={onExit}
+      {...modalProps}
+      id={rootId}
+      boundingBoxRef={containerRef}
+    >
       <div
         className="ds-c-dialog__window"
         role="document"
