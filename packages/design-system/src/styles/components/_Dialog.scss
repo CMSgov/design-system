@@ -61,14 +61,17 @@ dialog.fixed {
   text-align: start;
   width: 95%; // provide space for the background layer to peek through
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
-    outline: $spacer-2 solid WindowText;
-  }
-
   // We set default focus to the role="document" div, but we don't want
   // to show the default focus halo
   &:focus {
     outline: none;
+  }
+
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    &,
+    &:focus {
+      outline: $spacer-2 solid WindowText;
+    }
   }
 }
 
