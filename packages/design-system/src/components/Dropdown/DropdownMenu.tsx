@@ -57,6 +57,20 @@ export function DropdownMenu<T>({
 
   const sharedProps = { state, rootId, componentClass };
 
+  // These must be mutually exclusive, because when we force the menu to render open when
+  // react-aria's state doesn't consider it open (state.isOpen), it seems to actually
+  // render unexpected items. Currently we don't have a reason to render both at the same
+  // time, so this is fine.
+  const contents =
+    children ??
+    [...state.collection].map((item) =>
+      item.type === 'section' ? (
+        <DropdownMenuSection key={item.key} section={item} {...sharedProps} />
+      ) : (
+        <DropdownMenuOption key={item.key} item={item} {...sharedProps} />
+      )
+    );
+
   return (
     <div className={containerClass} ref={containerRef} onKeyDown={handleTabKey}>
       {heading && (
@@ -71,14 +85,7 @@ export function DropdownMenu<T>({
         className={`${componentClass}__menu`}
         ref={listBoxRef}
       >
-        {children}
-        {[...state.collection].map((item) =>
-          item.type === 'section' ? (
-            <DropdownMenuSection key={item.key} section={item} {...sharedProps} />
-          ) : (
-            <DropdownMenuOption key={item.key} item={item} {...sharedProps} />
-          )
-        )}
+        {contents}
       </ul>
     </div>
   );
