@@ -3,7 +3,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Dialog } from './Dialog';
 import { Button } from '@cmsgov/design-system';
 import { action } from '@storybook/addon-actions';
-import { Dropdown } from '../index';
 
 const meta: Meta<typeof Dialog> = {
   title: 'Components/Dialog',
@@ -15,15 +14,6 @@ const meta: Meta<typeof Dialog> = {
       <div>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan diam vitae metus
         lacinia, eget tempor purus placerat.
-        <Dropdown name="hello" label="Hello">
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-          <option value="3">Option 3</option>
-          <option value="4">Option 4</option>
-          <option value="5">Option 5</option>
-          <option value="6">Option 6</option>
-          <option value="7">Option 7</option>
-        </Dropdown>
       </div>
     ),
     heading: 'Dialog Heading',
