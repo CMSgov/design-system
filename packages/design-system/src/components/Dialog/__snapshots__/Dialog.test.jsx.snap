@@ -3,6 +3,7 @@
 exports[`Dialog close button text and variation can be changed 1`] = `
 <div
   aria-labelledby="static-id__heading"
+  class="ds-c-dialog__window"
   role="document"
   tabindex="-1"
 >
@@ -50,6 +51,7 @@ exports[`Dialog close button text and variation can be changed 1`] = `
 exports[`Dialog renders with additional classNames and size 1`] = `
 <div
   aria-labelledby="static-id__heading"
+  class="ds-c-dialog__window"
   role="document"
   tabindex="-1"
 >

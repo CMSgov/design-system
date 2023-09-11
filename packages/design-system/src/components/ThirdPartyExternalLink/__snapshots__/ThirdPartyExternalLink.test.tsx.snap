@@ -10,6 +10,7 @@ exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external l
 >
   <div
     aria-labelledby="dialog--6__heading"
+    class="ds-c-dialog__window"
     role="document"
     tabindex="-1"
   >
