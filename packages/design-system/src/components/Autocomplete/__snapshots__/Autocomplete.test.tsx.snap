@@ -1,75 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Autocomplete renders Autocomplete component 1`] = `
-<div
-  class="ds-c-autocomplete"
->
-  <div
-    class="ds-u-clearfix"
-  >
-    <label
-      class="ds-c-label"
-      for="static-id"
-      id="static-id__label"
-    >
-      <span
-        class=""
-      >
-        autocomplete
-      </span>
-    </label>
-    <input
-      aria-activedescendant=""
-      aria-autocomplete="list"
-      aria-controls="static-id__menu"
-      aria-expanded="false"
-      aria-invalid="false"
-      aria-labelledby="static-id__label"
-      autocomplete="off"
-      class="ds-c-field"
-      id="static-id"
-      name="autocomplete_field"
-      role="combobox"
-      type="text"
-      value=""
-    />
-  </div>
-  <div
-    class="ds-c-autocomplete__menu-container"
-    hidden=""
-    id="static-id__menu-container"
-  >
-    <ul
-      aria-labelledby="static-id__label"
-      class="ds-c-autocomplete__menu"
-      id="static-id__menu"
-      role="listbox"
-    >
-      <li
-        aria-selected="false"
-        class="ds-c-autocomplete__menu-item"
-        id="static-id__item--0"
-        role="option"
-      >
-        Cook County, IL
-      </li>
-    </ul>
-  </div>
-  <button
-    aria-label="Clear search to try again"
-    class="ds-c-button ds-c-button--small ds-c-button--ghost ds-u-padding-right--0 ds-c-autocomplete__clear-btn"
-    type="button"
-  >
-    Clear search
-  </button>
-</div>
-`;
-
 exports[`Autocomplete renders item with custom className 1`] = `
 Array [
   <li
     aria-selected="false"
     class="ds-c-autocomplete__menu-item"
+    data-key="1a"
     id="static-id__item--0"
     role="option"
   >
@@ -78,6 +14,7 @@ Array [
   <li
     aria-selected="false"
     class="custom-class ds-c-autocomplete__menu-item"
+    data-key="5b"
     id="static-id__item--1"
     role="option"
   >
@@ -88,7 +25,8 @@ Array [
 
 exports[`Autocomplete renders items with children property 1`] = `
 <ul
-  aria-labelledby="static-id__label"
+  aria-label="Suggestions"
+  aria-labelledby=""
   class="ds-c-autocomplete__menu"
   id="static-id__menu"
   role="listbox"
@@ -96,6 +34,7 @@ exports[`Autocomplete renders items with children property 1`] = `
   <li
     aria-selected="false"
     class="ds-c-autocomplete__menu-item"
+    data-key="1"
     id="static-id__item--0"
     role="option"
   >
@@ -107,6 +46,7 @@ exports[`Autocomplete renders items with children property 1`] = `
   <li
     aria-selected="false"
     class="ds-c-autocomplete__menu-item"
+    data-key="2"
     id="static-id__item--1"
     role="option"
   >
@@ -118,6 +58,7 @@ exports[`Autocomplete renders items with children property 1`] = `
   <li
     aria-selected="false"
     class="ds-c-autocomplete__menu-item"
+    data-key="3"
     id="static-id__item--2"
     role="option"
   >
@@ -129,6 +70,7 @@ exports[`Autocomplete renders items with children property 1`] = `
   <li
     aria-selected="false"
     class="ds-c-autocomplete__menu-item"
+    data-key="4"
     id="static-id__item--3"
     role="option"
   >

@@ -62,8 +62,6 @@ The `<Autocomplete>` component also makes use of a text field, which can be cust
 
 ### Usage
 
-- `<Autocomplete>` makes use of the `<Downshift>` component, maintained by Paypal: [Downshift docs on Github](https://github.com/paypal/downshift). The above documented props are only those directly exposed by the `<Autocomplete>` component, but you can pass props specific to `<Downshift>` here as well, e.g. you can set the [`inputValue`](https://github.com/downshift-js/downshift#inputvalue) prop if you'd like to provide an initial value to the component or control the input more directly.
-- We continue to use the [ARIA 1.0 Combobox With List Autocomplete](https://www.w3.org/TR/wai-aria-practices-1.1/examples/combobox/aria1.0pattern/combobox-autocomplete-list.html) pattern. This decision was made ensures good compatibility with assistive devices (JAWS, NVDA, VoiceOver). This was done because the ARIA 1.1 markup pattern triggers a different behavior on containers with a role="combobox" attribute.
 - Don't use placeholder text in autocomplete fields. Try to write a descriptive label that identifies what the user is searching for. People who have cognitive or visual disabilities have additional problems with placeholder text.
 - The length of the text field provides a hint to users as to how much text to write. Do not ask users to write paragraphs of text in this component; use a `textarea` instead.
 
@@ -75,18 +73,12 @@ The `<Autocomplete>` component also makes use of a text field, which can be cust
 - `<Autocomplete>` allows developers to add hint text in the `<label>` element. This hint `<span>` is added to the markup by passing a `String` into the `hint` prop.
 - `<Autocomplete>` has a button (styled visually as a link) to clear the search, and refocus the `<input>` element. This resets the local state `selectedItem` to `null`, and will re-read the label and screenreader hint text.
 
-### Focus Management
-
-- `<Autocomplete>` has a Boolean prop called `focusTrigger`. Adding this prop will set keyboard focus on the internal `<Textfield>`. Focus is set immediately when the `componentDidMount()` lifecycle method fires.
-- In most cases, this isn't needed. It's useful when components are added dynamically, after the application has been rendered. All major screen readers (JAWS, NVDA, VoiceOver) have been tested with this feature, and announce the new input correctly.
-- Instances that contain the `focusTrigger` prop may fire Downshift's [onInputValueChange](https://github.com/paypal/downshift#oninputvaluechange) method, causing the `inputValue` to be set back to an empty string. In these cases, you may want to access Downshift's [state reducer](https://github.com/paypal/downshift#statereducer) and manage your component's local state for `blur` and `click` events.
-
 ## Component maturity
 
 <MaturityChecklist
   a11yStandards={true}
   color={true}
-  forcedColors={false}
+  forcedColors={true}
   screenReaders={true}
   keyboardNavigable={true}
   storybook={true}

@@ -17,7 +17,6 @@ exports[`AccordionItem renders an accordion item 1`] = `
         aria-hidden="false"
         aria-labelledby="static-id__icon__title"
         class="ds-c-icon ds-c-icon--add ds-c-accordion__button-icon"
-        focusable="false"
         id="static-id__icon"
         role="img"
         viewBox="3 3 18 18"

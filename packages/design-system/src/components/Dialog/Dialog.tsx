@@ -160,8 +160,21 @@ export const Dialog = (props: DialogProps) => {
   }, []);
 
   return (
-    <NativeDialog className={dialogClassNames} showModal exit={onExit} {...modalProps} id={rootId}>
-      <div role="document" ref={containerRef} tabIndex={-1} aria-labelledby={headingId}>
+    <NativeDialog
+      className={dialogClassNames}
+      showModal
+      exit={onExit}
+      {...modalProps}
+      id={rootId}
+      boundingBoxRef={containerRef}
+    >
+      <div
+        className="ds-c-dialog__window"
+        role="document"
+        ref={containerRef}
+        tabIndex={-1}
+        aria-labelledby={headingId}
+      >
         <header className={headerClassNames}>
           {heading && (
             <h1 className="ds-h2" id={headingId} ref={headingRef}>

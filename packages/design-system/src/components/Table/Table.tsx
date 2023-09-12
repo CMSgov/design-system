@@ -5,6 +5,7 @@ import TableContext from './TableContext';
 import classNames from 'classnames';
 import get from 'lodash/get';
 import uniqueId from 'lodash/uniqueId';
+import debounce from '../utilities/debounce';
 
 export type TableStackableBreakpoint = 'sm' | 'md' | 'lg';
 
@@ -59,17 +60,6 @@ export interface TableProps {
 }
 
 type OmitProps = 'children' | 'className';
-
-function debounce<Params extends any[]>(fn: (...args: Params) => any, ms: number) {
-  let timer: NodeJS.Timeout;
-  return (...args: any[]) => {
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-      timer = null;
-      fn.apply(this, args);
-    }, ms);
-  };
-}
 
 /**
  * Determine if a React component is a TableCaption
