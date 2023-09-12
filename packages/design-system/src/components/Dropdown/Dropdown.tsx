@@ -85,6 +85,20 @@ export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
    * for a controlled component; otherwise, set `defaultValue`.
    */
   value?: DropdownValue;
+  /**
+   * Customize the default status messages announced to screen reader users via
+   * aria-live during certain interactions.
+   * @deprecated This option is not currently supported.
+   * @hide-prop [Deprecated]
+   */
+  getA11yStatusMessage?: any;
+  /**
+   * Customize the default status messages announced to screen reader users via
+   * aria-live when a selection is made.
+   * @deprecated This option is not currently supported.
+   * @hide-prop [Deprecated]
+   */
+  getA11ySelectionMessage?: any;
 }
 
 type OptionsOrChildren =
@@ -132,6 +146,8 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     defaultValue,
     value,
     inputRef,
+    getA11yStatusMessage,
+    getA11ySelectionMessage,
     ...extraProps
   } = props;
 
