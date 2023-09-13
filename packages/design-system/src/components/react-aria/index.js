@@ -14,7 +14,7 @@ function _check_private_redeclaration(obj, privateCollection) {
     throw new TypeError('Cannot initialize the same private elements twice on an object');
   }
 }
-function _class_private_field_init(obj, privateMap, value) {
+function _$2(obj, privateMap, value) {
   _check_private_redeclaration(obj, privateMap);
   privateMap.set(obj, value);
 }
@@ -29,7 +29,7 @@ function _class_apply_descriptor_get(receiver, descriptor) {
 
   return descriptor.value;
 }
-function _class_private_field_get(receiver, privateMap) {
+function _$1(receiver, privateMap) {
   var descriptor = _class_extract_field_descriptor(receiver, privateMap, 'get');
   return _class_apply_descriptor_get(receiver, descriptor);
 }
@@ -45,14 +45,11 @@ function _class_apply_descriptor_set(receiver, descriptor, value) {
     descriptor.value = value;
   }
 }
-function _class_private_field_set(receiver, privateMap, value) {
+function _(receiver, privateMap, value) {
   var descriptor = _class_extract_field_descriptor(receiver, privateMap, 'set');
   _class_apply_descriptor_set(receiver, descriptor, value);
   return value;
 }
-const _$1 = _class_private_field_get;
-const _$2 = _class_private_field_init;
-const _ = _class_private_field_set;
 
 /*
  * Copyright 2020 Adobe. All rights reserved.
