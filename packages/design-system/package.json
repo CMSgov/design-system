@@ -66,7 +66,7 @@
     "preactement": "1.8.4",
     "prop-types": "^15.8.1",
     "react-aria": "^3.27.0",
-    "react-day-picker": "8.0.5",
+    "react-day-picker": "8.8.2",
     "react-stately": "^3.25.0",
     "react-transition-group": "^4.4.5"
   },
