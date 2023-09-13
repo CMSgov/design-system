@@ -93,14 +93,25 @@ export const getLatestVersions = () => {
 };
 const versions = getLatestVersions();
 
-export const getLatestCoreTag = () => {
-  const tagResults = execSync(
-    `git ls-remote --tags --sort tag origin | grep "${themes.core.packageName}" | tail -1`
-  )
+function getLatestCoreTag() {
+  try {
+    execSync('git fetch --tags');
+  } catch (error) {
+    console.error(
+      'Failed to fetch tags from origin. This is likely due to a local conflict. Please resolve and try again.'
+    );
+    const hintCommand = c.cyan('git fetch origin tag <tagname>');
+    console.error(
+      `Hint: If you want to force a remote tag to override your local one, try '${hintCommand}''`
+    );
+    process.exit(1);
+  }
+
+  const tagResults = execSync(`git tag -l | grep "${themes.core.packageName}" | tail -1`)
     .toString()
     .trim();
   return tagResults.replace(/\w+\s+refs\/tags\/(.*)$/gi, '$1');
-};
+}
 const latestCoreTag = getLatestCoreTag();
 
 /**
