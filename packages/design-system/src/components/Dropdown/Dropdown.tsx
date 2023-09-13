@@ -229,7 +229,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     debounce((event: React.FocusEvent<HTMLElement>) => {
       // Only call the user's onBlur handler if focus leaves the whole component
       if (!wrapperRef.current?.contains(document.activeElement)) {
-        userOnBlur(event);
+        userOnBlur?.(event);
         state.setOpen(false);
       }
     }, 20),
