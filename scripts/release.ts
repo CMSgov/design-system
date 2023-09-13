@@ -44,6 +44,19 @@ function readLastPublishCommit() {
   return { commitHash, commitMessage, tags };
 }
 
+function verifyDependencies() {
+  try {
+    sh('gh --version');
+  } catch (error) {
+    console.log(
+      `Please check to make sure you have the ${c.green(
+        'gh'
+      )} tool installed (https://cli.github.com)`
+    );
+    process.exit(1);
+  }
+}
+
 async function undoLastCommit() {
   const { commitHash, tags } = readLastPublishCommit();
 
@@ -174,6 +187,7 @@ function printNextSteps() {
     if (argv.undo) {
       await undoLastCommit();
     } else {
+      verifyDependencies();
       await bumpVersions();
       await bumpMain();
       await draftReleaseNotes();
