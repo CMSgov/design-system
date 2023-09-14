@@ -1,28 +1,11 @@
 import appendVersions from './append-versions';
 import c from 'chalk';
 import yargs from 'yargs';
-import { execSync, spawnSync } from 'node:child_process';
+import { sh, shI, verifyGhInstalled } from './utils';
 import { hideBin } from 'yargs/helpers';
 import { confirm } from '@inquirer/prompts';
 
 const REVIEWERS = ['pwolfert', 'zarahzachz'];
-
-/**
- * Execute a shell command and wait for the response. Note that this does not
- * work for interactive commands. For that, use shI.
- */
-function sh(command: string): string {
-  return execSync(command).toString().trim();
-}
-
-/**
- * Uses node's `spawnSync` method to spawn an interactive process, which means
- * you must pass all args as an array instead of including them in the command
- * string.
- */
-function shI(command: string, args: string[]) {
-  spawnSync(command, args, { stdio: 'inherit' });
-}
 
 function getCurrentCommit() {
   return sh('git rev-parse HEAD');
@@ -42,19 +25,6 @@ function readLastPublishCommit() {
   }
 
   return { commitHash, commitMessage, tags };
-}
-
-function verifyDependencies() {
-  try {
-    sh('gh --version');
-  } catch (error) {
-    console.log(
-      `Please check to make sure you have the ${c.green(
-        'gh'
-      )} tool installed (https://cli.github.com)`
-    );
-    process.exit(1);
-  }
 }
 
 async function undoLastCommit() {
@@ -187,7 +157,7 @@ function printNextSteps() {
     if (argv.undo) {
       await undoLastCommit();
     } else {
-      verifyDependencies();
+      verifyGhInstalled();
       await bumpVersions();
       await bumpMain();
       await draftReleaseNotes();
