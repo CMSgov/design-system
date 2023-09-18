@@ -3,7 +3,7 @@ import DeConsumerMessage from './DeConsumerMessage';
 import Logo from '../Logo/Logo';
 import Menu from './Menu';
 import React, { useState } from 'react';
-import { SkipNav } from '@cmsgov/design-system';
+import { SkipNav, UsaBanner } from '@cmsgov/design-system';
 import { t } from '../i18n';
 import classnames from 'classnames';
 import defaultMenuLinks from './defaultMenuLinks';
@@ -125,6 +125,11 @@ export interface HeaderProps {
    * Additional classes to be added to the Logo component
    */
   logoClassName?: string;
+  /**
+   * Temporary feature flag for showing or not showing the USA Banner above the
+   * header. Defaults to true
+   */
+  showUsaBanner?: boolean;
 }
 
 export const VARIATION_NAMES = {
@@ -204,51 +209,55 @@ export const Header = (props: HeaderProps) => {
     : defaultLinksForVariation;
 
   return (
-    <header className={classes} role="banner" aria-label="global">
-      <SkipNav href={props.skipNavHref} onClick={props.onSkipNavClick}>
-        {t('header.skipNav')}
-      </SkipNav>
+    <>
+      {props.showUsaBanner && <UsaBanner id="hc-c-header__usa-banner" />}
+      <header className={classes} role="banner" aria-label="global">
+        <SkipNav href={props.skipNavHref} onClick={props.onSkipNavClick}>
+          {t('header.skipNav')}
+        </SkipNav>
 
-      <div className="ds-l-container">
-        <div className="ds-l-row ds-u-align-items--center ds-u-flex-wrap--nowrap ds-u-padding-y--2">
-          <a
-            href={props.primaryDomain ? props.primaryDomain : '/'}
-            className="hc-c-logo-link ds-l-col ds-l-col--auto"
-          >
-            <Logo className={props.logoClassName ?? ''} />
-          </a>
+        <div className="ds-l-container">
+          <div className="ds-l-row ds-u-align-items--center ds-u-flex-wrap--nowrap ds-u-padding-y--2">
+            <a
+              href={props.primaryDomain ? props.primaryDomain : '/'}
+              className="hc-c-logo-link ds-l-col ds-l-col--auto"
+            >
+              <Logo className={props.logoClassName ?? ''} />
+            </a>
 
-          <nav
-            aria-label="Profile, applications, and coverage"
-            id="hc-c-header__actions"
-            className="hc-c-header__actions ds-l-col ds-l-col--auto ds-u-margin-left--auto ds-u-font-weight--bold"
-          >
-            <ActionMenu
-              t={t}
-              firstName={props.firstName}
-              onMenuToggleClick={handleMenuToggleClick}
-              loggedIn={props.loggedIn}
-              open={isControlledMenu ? props.isMenuOpen : openMenu}
-              links={links}
-            />
-            <Menu
-              beforeLinks={beforeMenuLinks()}
-              links={links}
-              open={isControlledMenu ? props.isMenuOpen : openMenu}
-              submenuTop={props.submenuTop}
-              submenuBottom={props.submenuBottom}
-            />
-          </nav>
+            <nav
+              aria-label="Profile, applications, and coverage"
+              id="hc-c-header__actions"
+              className="hc-c-header__actions ds-l-col ds-l-col--auto ds-u-margin-left--auto ds-u-font-weight--bold"
+            >
+              <ActionMenu
+                t={t}
+                firstName={props.firstName}
+                onMenuToggleClick={handleMenuToggleClick}
+                loggedIn={props.loggedIn}
+                open={isControlledMenu ? props.isMenuOpen : openMenu}
+                links={links}
+              />
+              <Menu
+                beforeLinks={beforeMenuLinks()}
+                links={links}
+                open={isControlledMenu ? props.isMenuOpen : openMenu}
+                submenuTop={props.submenuTop}
+                submenuBottom={props.submenuBottom}
+              />
+            </nav>
+          </div>
         </div>
-      </div>
 
-      {props.deConsumer && <DeConsumerMessage t={t} deBrokerName={props.deBrokerName} />}
-      {props.headerBottom}
-    </header>
+        {props.deConsumer && <DeConsumerMessage t={t} deBrokerName={props.deBrokerName} />}
+        {props.headerBottom}
+      </header>
+    </>
   );
 };
 
 Header.defaultProps = {
+  showUsaBanner: true,
   skipNavHref: '#main',
 };
 

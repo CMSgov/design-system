@@ -9,6 +9,7 @@ const defaultProps = {
   name: 'single-input-date-field',
   value: '',
   onChange: jest.fn(),
+  id: 'static-id',
 };
 
 function renderField(props = {}) {
@@ -21,8 +22,30 @@ function getInput() {
 
 describe('SingleInputDateField', function () {
   it('renders without picker', () => {
-    const { asFragment } = renderField();
-    expect(asFragment()).toMatchSnapshot();
+    const { container } = renderField();
+
+    expect(container.querySelector('.ds-c-single-input-date-field')).toBeInTheDocument();
+
+    const label = container.querySelector('.ds-c-label');
+    expect(label.textContent).toContain('Birthday');
+
+    const hint = container.querySelector('.ds-c-field__hint');
+    expect(hint.textContent).toContain('Please enter your birthday');
+
+    const mask = container.querySelector('.ds-c-label-mask');
+    expect(mask).toBeInTheDocument();
+    expect(mask.textContent).toContain('MM/DD/YYYY');
+    expect(mask.querySelectorAll('span')).toHaveLength(2);
+
+    const input = screen.getByRole('textbox');
+    expect(input).toBeInTheDocument();
+    expect(input.parentElement).toHaveClass('ds-c-single-input-date-field__field-wrapper');
+    expect(input).toHaveAttribute('type', 'text');
+    expect(input).toHaveAttribute('inputmode', 'numeric');
+    expect(input).toHaveAttribute('aria-describedby');
+    expect(input).toHaveAttribute('aria-invalid', 'false');
+
+    expect(screen.queryByRole('button')).not.toBeInTheDocument();
   });
 
   it('masks in label', function () {
@@ -52,6 +75,7 @@ describe('SingleInputDateField', function () {
       hint: 'This date should be within the past 60 days in order to qualify',
       fromYear: new Date('01-02-2000').getFullYear(),
       toDate: new Date('01-02-2000'),
+      id: 'static-id',
     };
 
     function renderPicker(props = {}) {
@@ -59,8 +83,32 @@ describe('SingleInputDateField', function () {
     }
 
     it('renders with picker', () => {
-      const { asFragment } = renderPicker();
-      expect(asFragment()).toMatchSnapshot();
+      const { container } = renderPicker();
+
+      expect(
+        container.querySelector('.ds-c-single-input-date-field--with-picker')
+      ).toBeInTheDocument();
+      expect(container.querySelector('.ds-c-label')).toBeInTheDocument();
+      expect(container.querySelector('.ds-c-label-mask')).toBeInTheDocument();
+      expect(
+        container.querySelector('.ds-c-single-input-date-field__field-wrapper')
+      ).toBeInTheDocument();
+      expect(screen.getByRole('textbox')).toBeInTheDocument();
+
+      const button = screen.getByRole('button');
+      expect(button).toBeInTheDocument();
+      expect(button).toHaveClass('ds-c-single-input-date-field__button');
+      expect(button.firstElementChild.tagName).toBe('svg');
+      expect(button.firstElementChild.classList).toContain('ds-c-icon--calendar');
+
+      userEvent.click(button);
+      expect(screen.getByRole('dialog')).toBeInTheDocument();
+    });
+
+    it('generates ids when no id is provided', () => {
+      renderPicker({ id: undefined });
+      expect(screen.getByRole('textbox').id).toMatch(/date-field--\d+/);
+      expect(screen.getByRole('img').id).toMatch(/date-field--\d+__icon/);
     });
 
     // This is throwing many, many instances of this error:

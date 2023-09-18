@@ -1,10 +1,9 @@
-import { execSync } from 'node:child_process';
 import * as themes from '../themes.json';
-import { writeFileSync } from 'node:fs';
 import _ from 'lodash';
-
-const chalk = require('chalk');
-const prompt = require('readline-sync');
+import c from 'chalk';
+import { confirm, select } from '@inquirer/prompts';
+import { writeFileSync } from 'node:fs';
+import { sh, verifyGhInstalled } from './utils';
 
 interface PRDetails {
   author: string;
@@ -22,10 +21,10 @@ interface PRNote {
   pr_number: number;
 }
 
+type Versions = { [key: string]: string };
+
 type Themes = typeof themes | any;
 const theme: Themes = themes;
-
-const c = chalk;
 
 const icons = {
   breaking: '🚨',
@@ -41,10 +40,11 @@ const icon: Icons = icons;
 /**
  * Current milestone reference
  */
-const chooseMilestone = () => {
-  let answer, milestone, milestoneQuery;
+async function chooseMilestone() {
+  let milestone;
+  let milestoneQuery;
   try {
-    const milestoneJSON = execSync('gh api repos/CMSgov/design-system/milestones').toString();
+    const milestoneJSON = sh('gh api repos/CMSgov/design-system/milestones');
     milestoneQuery = JSON.parse(milestoneJSON);
   } catch (err) {
     console.log(`${c.red('There was an error retrieving current milestones.')}`);
@@ -57,61 +57,59 @@ const chooseMilestone = () => {
   }
 
   if (milestoneQuery.length < 1) {
-    console.error('There are currently no milestones defined.');
+    throw Error('There are currently no milestones defined.');
   } else if (milestoneQuery.length === 1) {
     milestone = milestoneQuery[0];
   } else {
-    console.log(c.yellow('Current Milestones:'));
-    milestoneQuery.forEach((ms: any, i: number) => {
-      console.log(`  ${i + 1}. ${c.cyan(ms.title)}`);
+    milestone = await select({
+      message: 'Select an open milestone',
+      choices: milestoneQuery.map((ms: any) => ({ name: ms.title, value: ms })),
     });
-    answer = prompt.question('Which milestone? (number): ').trim();
-    if (answer >= 0 && answer < milestoneQuery.length + 1) {
-      milestone = milestoneQuery[answer - 1];
-    } else {
-      console.log(c.red(`Please enter a number between 1 and ${milestoneQuery.length}`));
-    }
   }
   return milestone;
-};
+}
+
+function fetchTags() {
+  try {
+    sh('git fetch --tags', true);
+  } catch (error) {
+    console.error(
+      'Failed to fetch tags from origin. This is likely due to a local conflict. Please resolve and try again.\n'
+    );
+    console.error(c.red((error as Error)?.message));
+    const hintCommand = c.cyan('git fetch origin tag <tagname>');
+    console.error(
+      `Hint: If you want to force a remote tag to override your local one, try '${hintCommand}''`
+    );
+    process.exit(1);
+  }
+}
+
+function getLatestPackageTag(packageName: string): string {
+  return sh(`git tag -l | grep "${packageName}@" | tail -1`);
+}
 
 /**
  * Grabs latest tag from each theme and returns an array of `theme: version` items.
  */
-export const getLatestVersions = () => {
-  const versions: { [key: string]: string } = {};
-  Object.entries(themes).forEach((theme) => {
-    const pkgn = theme[1].packageName;
-    const vers = execSync(
-      `git ls-remote --tags --sort committerdate origin | grep "${pkgn}" | tail -1`
-    )
-      .toString()
-      .trim();
-    versions[theme[0]] = vers.replace(/\w+\s+refs\/tags\/@cmsgov\/.*@(.*)$/, '$1');
+function getLatestVersions() {
+  const versions: Versions = {};
+  Object.entries(themes).forEach(([key, theme]) => {
+    const tag = getLatestPackageTag(theme.packageName);
+    versions[key] = tag.replace(/@cmsgov\/.*@(.*)$/, '$1');
   });
   return versions;
-};
-const versions = getLatestVersions();
-
-export const getLatestCoreTag = () => {
-  const tagResults = execSync(
-    `git ls-remote --tags --sort tag origin | grep "${themes.core.packageName}" | tail -1`
-  )
-    .toString()
-    .trim();
-  return tagResults.replace(/\w+\s+refs\/tags\/(.*)$/gi, '$1');
-};
-const latestCoreTag = getLatestCoreTag();
+}
 
 /**
  * Get list of PR's associated with the current milestone formatted
  * for our use as a PRDetails object.
  */
-const getPRs = () => {
+function getPRs(milestoneTitle: string) {
   const prData = JSON.parse(
     // limit to 200 results so we get more than the 30 default
-    execSync(
-      `gh pr list --search milestone:'"${title}"' --state merged -L 200 --json title,url,labels,number,author,mergeCommit`
+    sh(
+      `gh pr list --search milestone:'"${milestoneTitle}"' --state merged -L 200 --json title,url,labels,number,author,mergeCommit`
     ).toString()
   );
   const prs: PRDetails[] = prData.map((pr: any) => {
@@ -125,7 +123,7 @@ const getPRs = () => {
     };
   });
   return prs;
-};
+}
 
 /**
  * Organizes Note(s) by the category/section they should belong in.
@@ -134,7 +132,7 @@ const getPRs = () => {
  * will be presented in each of those sections. An item will also be placed
  * in multiple type categories if it belongs to multiple.
  */
-const organizeNotes = (ghPrData: PRDetails[]) => {
+function organizeNotes(ghPrData: PRDetails[]) {
   const notes: PRNote[] = [];
 
   const matchLabels = (regex: RegExp, labels: string[]): string[] =>
@@ -184,9 +182,9 @@ const organizeNotes = (ghPrData: PRDetails[]) => {
     .value();
 
   return sorted;
-};
+}
 
-const makeNotesMD = (notes: PRNote[][]): string => {
+function makeNotesMD(notes: PRNote[][], versions: Versions): string {
   let md = '';
   let lastSystem = '';
   let lastType = '';
@@ -235,12 +233,12 @@ const makeNotesMD = (notes: PRNote[][]): string => {
     }
   });
   return md + '\n';
-};
+}
 
 /**
  * Display jira links with associated title to copy/paste
  */
-const displayJiraTickets = (data: PRDetails[]) => {
+function displayJiraTickets(data: PRDetails[]) {
   const ticketRegex = /(\w+-\d+)/gi;
 
   console.log(`\n-- ${c.green('JIRA Tickets')} --`);
@@ -261,62 +259,64 @@ const displayJiraTickets = (data: PRDetails[]) => {
       const prUrl = `https://github.com/CMSgov/design-system/pull/${pr.ghpr}`;
       console.log(`- [${pr.ticket}](${prUrl}) (${pr.author}) - ${pr.title}`);
     });
-};
+}
 
 /**
  * Writes notes to fs and uses gh-cli to create notes for latest @cmsgov tag
  */
-const publishNotes = (notes: string) => {
-  const fn = `${versions.core}-release-notes.md`;
-
-  writeFileSync(fn, notes, { encoding: 'utf8' });
-
-  let successUrl: string;
+function publishNotes(notes: string, versions: Versions, tag: string) {
   const draftPre = versions.core.includes('beta') ? '--draft --prerelease' : '--draft';
+  const fn = `./${versions.core}-release-notes.md`;
+  writeFileSync(fn, notes, { encoding: 'utf8' });
+  const successUrl = sh(
+    `gh release create ${tag} ${draftPre} --title ${versions.core} --notes-file ${fn}`,
+    true
+  );
+  sh(`rm ${fn}`, true);
 
+  console.log(`\n-- ${c.blueBright('Success!')} --`);
+  console.log('A draft for these notes can be found at the url below.');
+  console.log(c.redBright('Please validate and update as needed before release.\n'));
+  console.log(successUrl);
+}
+
+(async () => {
+  verifyGhInstalled();
   try {
-    successUrl = execSync(
-      `gh release create ${latestCoreTag} ${draftPre} --title ${versions.core} --notes-file ./${fn}`,
-      { encoding: 'utf8' }
+    /**
+     * Starting point for generating notes
+     */
+    const milestone = await chooseMilestone();
+    const { title, open_issues, closed_issues } = milestone;
+    console.log(
+      `Current milestone ${c.green(milestone.title)} with ${
+        open_issues > 0 ? c.redBright(open_issues) : c.gray(open_issues)
+      } open issues and ${c.magenta(closed_issues)} closed issues.`
     );
-    console.log(`\n-- ${c.blueBright('Success!')} --`);
-    console.log('A draft for these notes can be found at the url below.');
-    console.log(c.redBright('Please validate and update as needed before release.\n'));
-    console.log(successUrl);
+
+    fetchTags();
+    const latestCoreTag = getLatestPackageTag(themes.core.packageName);
+    const versions = getLatestVersions();
+
+    const prs = getPRs(title);
+    const organizedPRs = organizeNotes(prs);
+    const notesMD = makeNotesMD(organizedPRs, versions).trim();
+
+    displayJiraTickets(prs);
+
+    console.log(`\n-- ${c.cyan('Notes')} --`);
+    console.log(notesMD);
+    console.log('');
+
+    const publishOk = await confirm({
+      message: 'Do these notes look OK to publish as a Draft? (Y/n): ',
+    });
+    if (publishOk) {
+      publishNotes(notesMD, versions, latestCoreTag);
+    }
     process.exit(0);
   } catch (err) {
     console.error(err);
     process.exit(1);
   }
-};
-
-/**
- * Starting point for generating notes
- */
-const milestone = chooseMilestone();
-const { title, open_issues, closed_issues } = milestone;
-console.log(
-  `\nCurrent milestone ${c.green(milestone.title)} with ${
-    open_issues > 0 ? c.redBright(open_issues) : c.gray(open_issues)
-  } open issues and ${c.magenta(closed_issues)} closed issues.`
-);
-
-const prs = getPRs();
-const organizedPRs = organizeNotes(prs);
-const notesMD = makeNotesMD(organizedPRs).trim();
-
-displayJiraTickets(prs);
-
-console.log(`\n-- ${c.cyan('Notes')} --`);
-console.log(notesMD);
-
-const publishOk = prompt
-  .question('\nDo these notes look OK to publish as a Draft? (Y/n): ')
-  .trim()
-  .toLowerCase();
-
-if (publishOk === 'y' || publishOk === '') {
-  publishNotes(notesMD);
-} else {
-  process.exit(0);
-}
+})();

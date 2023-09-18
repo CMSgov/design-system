@@ -3,6 +3,7 @@ import DateInput from './DateInput';
 import defaultDateFormatter from './defaultDateFormatter';
 import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
 import { t } from '../i18n';
+import useId from '../utilities/useId';
 
 export type DateFieldDayDefaultValue = string | number;
 export type DateFieldDayValue = string | number;
@@ -136,6 +137,7 @@ export interface DateFieldProps extends Omit<FormFieldProps, 'label'> {
  * [refer to its full documentation page](https://design.cms.gov/components/date-field/multi-input-date-field/).
  */
 export function MultiInputDateField(props: DateFieldProps): React.ReactElement {
+  const id = useId('date-field--', props.id);
   const { labelProps, fieldProps, wrapperProps, bottomError } = useFormLabel({
     label: t('dateField.label'),
     hint: t('dateField.hint'),
@@ -146,9 +148,9 @@ export function MultiInputDateField(props: DateFieldProps): React.ReactElement {
     ...props,
     labelComponent: 'legend',
     wrapperIsFieldset: true,
+    id,
   });
 
-  delete fieldProps.id;
   delete fieldProps.errorId;
 
   return (

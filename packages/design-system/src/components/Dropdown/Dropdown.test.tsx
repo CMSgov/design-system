@@ -1,11 +1,12 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Dropdown from './Dropdown';
 
 const defaultProps = {
   name: 'dropdown',
   label: 'Select an option',
+  id: 'static-id',
   onBlur: jest.fn(),
   onChange: jest.fn((e) => {
     e.stopPropagation();
@@ -32,6 +33,10 @@ function makeDropdown(customProps = {}, optionsCount = 1) {
   return render(component);
 }
 
+function getButton() {
+  return screen.getByRole('combobox');
+}
+
 describe('Dropdown', () => {
   it('dropdown matches snapshot', () => {
     const { container } = makeDropdown(
@@ -54,20 +59,24 @@ describe('Dropdown', () => {
   it('applies additional classes to button element', () => {
     makeDropdown({ fieldClassName: 'foo' });
 
-    const button = screen.getByRole('combobox');
+    const button = getButton();
     expect(button).toHaveClass('foo');
     // Make sure we're not replacing the other class names
     expect(button).toHaveClass('ds-c-field');
   });
 
-  it('adds size classes to wrapper element', () => {
-    const { container } = makeDropdown({ size: 'small' });
-    expect(container.querySelector('.ds-c-dropdown')).toHaveClass('ds-c-field--small');
+  it('adds size classes to the appropriate elements', () => {
+    makeDropdown({ size: 'small' });
+    const button = getButton();
+    userEvent.click(button);
+    const listContainer = screen.getByRole('listbox').parentElement;
+    expect(button).toHaveClass('ds-c-field--small');
+    expect(listContainer).toHaveClass('ds-c-field--small');
   });
 
   it('adds inverse class to button', () => {
     makeDropdown({ inversed: true });
-    const button = screen.getByRole('combobox');
+    const button = getButton();
     expect(button).toHaveClass('ds-c-field--inverse');
   });
 
@@ -79,7 +88,7 @@ describe('Dropdown', () => {
       errorId,
     });
 
-    const button = screen.getByRole('combobox');
+    const button = getButton();
     expect(button).toHaveAttribute('aria-invalid', 'true');
     expect(button).toHaveAttribute('aria-describedby', errorId);
     expect(button).toHaveClass('ds-c-field--error');
@@ -108,7 +117,7 @@ describe('Dropdown', () => {
 
   it('is disabled', () => {
     makeDropdown({ disabled: true });
-    const button = screen.getByRole('combobox');
+    const button = getButton();
     expect(button).toHaveAttribute('disabled');
   });
 
@@ -116,7 +125,7 @@ describe('Dropdown', () => {
     const onChange = jest.fn();
     const onBlur = jest.fn();
     makeDropdown({ value: '1', onChange, onBlur }, 5);
-    const button = screen.getByRole('combobox');
+    const button = getButton();
     userEvent.click(button);
     userEvent.keyboard('{arrowdown}');
     userEvent.keyboard('{enter}');
@@ -124,21 +133,85 @@ describe('Dropdown', () => {
     expect(onChange).toHaveBeenCalled();
   });
 
-  it('calls the onBlur handler', () => {
+  it('calls the onBlur handler', async () => {
     const onChange = jest.fn();
     const onBlur = jest.fn();
-    makeDropdown({ defaultValue: '1', onChange, onBlur }, 10);
-    const button = screen.getByRole('combobox');
+    render(
+      <>
+        <Dropdown
+          {...defaultProps}
+          {...{ defaultValue: '1', onChange, onBlur }}
+          options={generateOptions(10)}
+        />
+        <button>Another button to tab to</button>
+      </>
+    );
+    const button = getButton();
     userEvent.click(button);
-    expect(button).toHaveFocus();
     userEvent.tab();
+
+    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+    await act(async () => {
+      await sleep(40);
+    });
+
     expect(onBlur).toHaveBeenCalled();
     expect(onChange).not.toHaveBeenCalled();
   });
 
+  it('pressing Escape closes the menu without making a selection', () => {
+    const onChange = jest.fn();
+    makeDropdown({ value: '1', onChange }, 5);
+    const button = getButton();
+    userEvent.click(button);
+    userEvent.keyboard('{arrowdown}');
+    userEvent.keyboard('{escape}');
+    const list = screen.queryByRole('listbox');
+    expect(list).toBeFalsy();
+    expect(onChange).not.toHaveBeenCalled();
+  });
+
+  it('pressing Tab selects the focused item and blurs away', async () => {
+    const onChange = jest.fn();
+    const onBlur = jest.fn();
+    render(
+      <>
+        <Dropdown
+          {...defaultProps}
+          {...{ defaultValue: '1', onChange, onBlur }}
+          options={generateOptions(10)}
+        />
+        <button>Another button to tab to</button>
+      </>
+    );
+    const button = getButton();
+    userEvent.click(button);
+    userEvent.keyboard('{arrowdown}');
+    userEvent.tab();
+
+    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+    await act(async () => {
+      await sleep(40);
+    });
+
+    const list = screen.queryByRole('listbox');
+    expect(list).toBeFalsy();
+    expect(onChange).toHaveBeenCalled();
+    expect(onChange.mock.calls[0][0].currentTarget.value).toEqual('2');
+    expect(onBlur).toHaveBeenCalled();
+  });
+
+  it('automatically focuses on the selected option when opening', () => {
+    makeDropdown({ defaultValue: '3' }, 10);
+    const button = getButton();
+    userEvent.click(button);
+    const options = screen.getAllByRole('option');
+    expect(options[2]).toHaveFocus();
+  });
+
   it('focuses automatically with autoFocus prop', () => {
     makeDropdown({ defaultValue: '1', autoFocus: true }, 10);
-    const button = screen.getByRole('combobox');
+    const button = getButton();
     expect(button).toHaveFocus();
   });
 
@@ -157,9 +230,9 @@ describe('Dropdown', () => {
         </optgroup>
       </Dropdown>
     );
-    userEvent.click(screen.getByRole('combobox'));
+    userEvent.click(getButton());
+    expect(screen.getAllByRole('option').length).toEqual(6);
     const list = screen.getByRole('listbox');
-    expect(list.children.length).toEqual(8); // Group headings + options
     expect(list).toMatchSnapshot();
   });
 
@@ -183,9 +256,11 @@ describe('Dropdown', () => {
       },
     ];
     render(<Dropdown {...defaultProps} options={options} />);
-    userEvent.click(screen.getByRole('combobox'));
+    userEvent.click(getButton());
     const list = screen.getByRole('listbox');
-    expect(list.children.length).toEqual(8); // Group headings + options
+    expect(list.children.length).toEqual(2); // Groups
+    const items = screen.getAllByRole('option');
+    expect(items.length).toEqual(6);
   });
 
   it('accepts option children', () => {
@@ -196,9 +271,39 @@ describe('Dropdown', () => {
         <option value="3">Option 3</option>
       </Dropdown>
     );
-    userEvent.click(screen.getByRole('combobox'));
+    userEvent.click(getButton());
     const list = screen.getByRole('listbox');
     expect(list.children.length).toEqual(3);
+  });
+
+  it('passes arbitrary attributes to rendered options', () => {
+    render(
+      <Dropdown {...defaultProps}>
+        <option value="1">Option 1</option>
+        <option value="2" data-hello-world="hi">
+          Option 2
+        </option>
+        <option value="3">Option 3</option>
+      </Dropdown>
+    );
+    userEvent.click(getButton());
+    const options = screen.getAllByRole('option');
+    expect(options[1]).toHaveAttribute('data-hello-world', 'hi');
+  });
+
+  it('passes arbitrary attributes to rendered optgroups', () => {
+    const { container } = render(
+      <Dropdown {...defaultProps}>
+        <option value="1">Option 1</option>
+        <optgroup label="Group B" id="group-label-id" data-extra-attribute="something">
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+        </optgroup>
+      </Dropdown>
+    );
+    userEvent.click(getButton());
+    const groupLabel = container.querySelector('#group-label-id');
+    expect(groupLabel).toHaveAttribute('data-extra-attribute', 'something');
   });
 
   it('passes through a ref', () => {
@@ -218,7 +323,7 @@ describe('Dropdown', () => {
     const options = generateOptions(3);
     const baseProps = { ...defaultProps, onChange, options };
     const { rerender } = render(<Dropdown {...baseProps} value="2" />);
-    const button = screen.getByRole('combobox');
+    const button = getButton();
     expect(button.textContent).toEqual(options[1].label);
 
     // Clicking an item should call `onChange` but should do nothing else

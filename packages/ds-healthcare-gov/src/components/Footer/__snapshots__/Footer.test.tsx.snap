@@ -95,12 +95,12 @@ exports[`Footer renders basic footer 1`] = `
       >
         <h4
           class="ds-u-visibility--screen-reader"
-          id="global-footer-language-resources"
+          id="hc-c-footer__language-resources"
         >
           Language resources
         </h4>
         <ul
-          aria-labelledby="global-footer-language-resources"
+          aria-labelledby="hc-c-footer__language-resources"
           class="hc-c-footer__list"
           role="list"
         >
@@ -456,12 +456,12 @@ exports[`Footer renders basic footer with props 1`] = `
       >
         <h4
           class="ds-u-visibility--screen-reader"
-          id="global-footer-language-resources"
+          id="hc-c-footer__language-resources"
         >
           Language resources
         </h4>
         <ul
-          aria-labelledby="global-footer-language-resources"
+          aria-labelledby="hc-c-footer__language-resources"
           class="hc-c-footer__list"
           role="list"
         >

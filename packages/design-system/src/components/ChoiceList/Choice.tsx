@@ -127,9 +127,9 @@ export class Choice extends React.PureComponent<
     this.input = null;
     this.handleChange = this.handleChange.bind(this);
     this.handleUncheck = this.handleUncheck.bind(this);
-    this.id = this.props.id || uniqueId(`${this.props.type}_${this.props.name}_`);
-    this.hintId = this.props.hint || this.props.requirementLabel ? `${this.id}_hint` : undefined;
-    this.errorId = this.props.errorMessage ? `${this.id}_error` : undefined;
+    this.id = this.props.id ?? uniqueId('choice--');
+    this.hintId = this.props.hint || this.props.requirementLabel ? `${this.id}__hint` : undefined;
+    this.errorId = this.props.errorMessage ? `${this.id}__error` : undefined;
 
     if (typeof this.props.checked === 'undefined') {
       this.isControlled = false;

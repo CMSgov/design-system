@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterDialog renders a dialog 1`] = `
+<dialog
+  class="a-custom-class ds-c-filter-dialog"
+  id="filter-dialog-1"
+  open=""
+  role="dialog"
+>
+  <div
+    aria-labelledby="filter-dialog-1__heading"
+    class="ds-c-filter-dialog__window"
+    tabindex="-1"
+  >
+    <div
+      class="ds-c-filter-dialog__header"
+    >
+      <h3
+        class="ds-c-filter-dialog__heading"
+        id="filter-dialog-1__heading"
+      >
+        FilterDialog heading
+      </h3>
+      <button
+        class="ds-c-close-button ds-c-filter-dialog__close"
+        type="button"
+      >
+        <svg
+          aria-hidden="false"
+          aria-labelledby="icon--2__title"
+          class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin "
+          id="icon--2"
+          role="img"
+          viewBox="-2 -2 18 18"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title
+            id="icon--2__title"
+          >
+            Close
+          </title>
+          <path
+            d="M0 13.0332964L13.0332964 0M13.0332964 13.0332964L0 0"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-width="2"
+          />
+        </svg>
+      </button>
+    </div>
+    <div
+      class="ds-c-filter-dialog__body"
+    >
+      Hello, this is the dialog content.
+    </div>
+    <div
+      class="ds-c-filter-dialog__actions"
+    >
+      <button
+        class="ds-c-button ds-c-button--solid"
+        type="button"
+      >
+        Submit
+      </button>
+      <button
+        class="ds-c-button ds-c-button--ghost"
+        type="button"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+</dialog>
+`;

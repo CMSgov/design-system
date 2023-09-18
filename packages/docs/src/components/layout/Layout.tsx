@@ -1,6 +1,6 @@
 import React from 'react';
 import Footer from './DocSiteFooter';
-import Navigation from './DocSiteNavigation';
+import SideNav from './SideNav/SideNav';
 import PageHeader from './PageHeader';
 import TableOfContents from './TableOfContents';
 import TableOfContentsMobile from './TableOfContentsMobile';
@@ -15,6 +15,9 @@ import {
 import { withPrefix } from 'gatsby';
 
 import '../../styles/index.scss';
+import { getThemeData } from './SideNav/themeVersionData';
+import ThemeVersionSection from './SideNav/ThemeVersionSection';
+import FilterDialogManager from './FilterDialog/FilterDialogManager';
 
 interface LayoutProps {
   /**
@@ -57,10 +60,8 @@ const Layout = ({
   tableOfContentsData,
 }: LayoutProps) => {
   const env = 'prod';
-
-  const tabTitle = frontmatter?.title
-    ? `${frontmatter.title} - CMS Design System`
-    : 'CMS Design System';
+  const baseTitle = theme === 'core' ? 'CMS Design System' : getThemeData(theme).longName;
+  const tabTitle = frontmatter?.title ? `${frontmatter.title} - ${baseTitle}` : baseTitle;
 
   const pageId = slug ? `page--${slug.replace('/', '_')}` : null;
 
@@ -88,13 +89,18 @@ const Layout = ({
       <HeaderFullWidth />
 
       <div className="ds-l-row ds-u-margin--0 full-height">
-        <Navigation location={location} />
+        <FilterDialogManager>
+          <SideNav location={location} />
+          <div className="ds-u-md-display--none ds-u-padding-x--3 ds-u-padding-top--2">
+            <ThemeVersionSection />
+          </div>
+        </FilterDialogManager>
         <main
           id="main"
           className="ds-l-md-col ds-u-padding--0 ds-u-padding-bottom--4 ds-u-padding-top--2 page-main"
         >
           {pageHeader ? pageHeader : <PageHeader frontmatter={frontmatter} theme={theme} />}
-          <article className="ds-u-md-display--flex ds-u-padding-x--3 ds-u-sm-padding-x--6 ds-u-sm-padding-bottom--6 ds-u-sm-padding-top--1 ds-u-padding-bottom--3 page-body">
+          <article className="ds-u-md-display--flex ds-u-padding-x--3 ds-u-sm-padding-x--6 ds-u-sm-padding-bottom--6 ds-u-padding-top--1 ds-u-padding-bottom--3 page-body">
             <div className="ds-l-row">
               <div className="ds-l-lg-col--9">
                 <div className="ds-u-display--block ds-u-lg-display--none ds-u-margin-bottom--3">

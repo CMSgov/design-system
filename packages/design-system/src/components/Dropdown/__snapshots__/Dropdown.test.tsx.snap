@@ -2,91 +2,121 @@
 
 exports[`Dropdown accepts optgroup children 1`] = `
 <ul
-  class="ds-c-dropdown__menu ds-c-dropdown__menu--grouped"
-  id="dropdown__menu--68"
+  aria-labelledby="static-id__label"
+  class="ds-c-dropdown__menu"
+  id="static-id__menu"
   role="listbox"
+  tabindex="-1"
 >
   <li
-    aria-selected="false"
     class="ds-c-dropdown__menu-item-group"
-    disabled=""
-    id="downshift-16-item-0"
-    role="group"
+    role="presentation"
   >
-    Group A
-  </li>
-  <li
-    aria-selected="true"
-    class="ds-c-dropdown__menu-item ds-c-dropdown__menu-item--highlighted ds-c-dropdown__menu-item--selected"
-    id="downshift-16-item-1"
-    role="option"
-  >
-    <span
-      class="ds-c-dropdown__menu-item-selected-indicator"
+    <div
+      class="ds-c-dropdown__menu-item-group-label"
+      id="static-id__group--0"
+      role="presentation"
+      title="Group A"
     >
-      <svg
-        aria-hidden="true"
-        class="ds-c-icon ds-u-font-size--sm"
-        focusable="false"
-        id="icon-53"
-        viewBox="0 0 448 512"
-        xmlns="http://www.w3.org/2000/svg"
+      Group A
+    </div>
+    <ul
+      aria-labelledby="static-id__group--0"
+      role="group"
+    >
+      <li
+        aria-selected="true"
+        class="ds-c-dropdown__menu-item ds-c-dropdown__menu-item--highlighted ds-c-dropdown__menu-item--selected"
+        data-key="a-1"
+        id="static-id__item--0"
+        role="option"
+        tabindex="0"
       >
-        <path
-          d="M443.3 100.7c6.2 6.2 6.2 16.4 0 22.6l-272 272c-6.2 6.2-16.4 6.2-22.6 0l-144-144c-6.2-6.2-6.2-16.4 0-22.6s16.4-6.2 22.6 0L160 361.4l260.7-260.7c6.2-6.2 16.4-6.2 22.6 0z"
-        />
-      </svg>
-    </span>
-    Option A-1
+        <span
+          class="ds-c-dropdown__menu-item-selected-indicator"
+        >
+          <svg
+            aria-hidden="true"
+            class="ds-c-icon ds-u-font-size--sm"
+            viewBox="0 0 448 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M443.3 100.7c6.2 6.2 6.2 16.4 0 22.6l-272 272c-6.2 6.2-16.4 6.2-22.6 0l-144-144c-6.2-6.2-6.2-16.4 0-22.6s16.4-6.2 22.6 0L160 361.4l260.7-260.7c6.2-6.2 16.4-6.2 22.6 0z"
+            />
+          </svg>
+        </span>
+        Option A-1
+      </li>
+      <li
+        aria-selected="false"
+        class="ds-c-dropdown__menu-item"
+        data-key="a-2"
+        id="static-id__item--1"
+        role="option"
+        tabindex="-1"
+      >
+        Option A-2
+      </li>
+      <li
+        aria-selected="false"
+        class="ds-c-dropdown__menu-item"
+        data-key="a-3"
+        id="static-id__item--2"
+        role="option"
+        tabindex="-1"
+      >
+        Option A-3
+      </li>
+    </ul>
   </li>
   <li
-    aria-selected="false"
-    class="ds-c-dropdown__menu-item"
-    id="downshift-16-item-2"
-    role="option"
-  >
-    Option A-2
-  </li>
-  <li
-    aria-selected="false"
-    class="ds-c-dropdown__menu-item"
-    id="downshift-16-item-3"
-    role="option"
-  >
-    Option A-3
-  </li>
-  <li
-    aria-selected="false"
     class="ds-c-dropdown__menu-item-group"
-    disabled=""
-    id="downshift-16-item-4"
-    role="group"
+    role="presentation"
   >
-    Group B
-  </li>
-  <li
-    aria-selected="false"
-    class="ds-c-dropdown__menu-item"
-    id="downshift-16-item-5"
-    role="option"
-  >
-    Option B-1
-  </li>
-  <li
-    aria-selected="false"
-    class="ds-c-dropdown__menu-item"
-    id="downshift-16-item-6"
-    role="option"
-  >
-    Option B-2
-  </li>
-  <li
-    aria-selected="false"
-    class="ds-c-dropdown__menu-item"
-    id="downshift-16-item-7"
-    role="option"
-  >
-    Option B-3
+    <div
+      class="ds-c-dropdown__menu-item-group-label"
+      id="static-id__group--1"
+      role="presentation"
+      title="Group B"
+    >
+      Group B
+    </div>
+    <ul
+      aria-labelledby="static-id__group--1"
+      role="group"
+    >
+      <li
+        aria-selected="false"
+        class="ds-c-dropdown__menu-item"
+        data-key="b-1"
+        id="static-id__item--3"
+        role="option"
+        tabindex="-1"
+      >
+        Option B-1
+      </li>
+      <li
+        aria-selected="false"
+        class="ds-c-dropdown__menu-item"
+        data-key="b-2"
+        id="static-id__item--4"
+        role="option"
+        tabindex="-1"
+      >
+        Option B-2
+      </li>
+      <li
+        aria-selected="false"
+        class="ds-c-dropdown__menu-item"
+        data-key="b-3"
+        id="static-id__item--5"
+        role="option"
+        tabindex="-1"
+      >
+        Option B-3
+      </li>
+    </ul>
   </li>
 </ul>
 `;
@@ -97,26 +127,67 @@ exports[`Dropdown dropdown matches snapshot 1`] = `
 >
   <label
     class="ds-c-label"
-    for="dropdown__button--1"
-    id="dropdown__label--2"
+    id="static-id__label"
   >
     Select an option
   </label>
+  <div
+    aria-hidden="true"
+    data-a11y-ignore="aria-hidden-focus"
+    data-testid="hidden-select-container"
+    style="border: 0px; clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
+  >
+    <input
+      style="font-size: 16px;"
+      tabindex="-1"
+      type="text"
+    />
+    <label>
+      Select an option
+      <select
+        name="dropdown"
+        size="4"
+        tabindex="-1"
+      >
+        <option />
+        <option
+          value="1"
+        >
+          1
+        </option>
+        <option
+          value="2"
+        >
+          2
+        </option>
+        <option
+          value="3"
+        >
+          3
+        </option>
+        <option
+          value="4"
+        >
+          4
+        </option>
+      </select>
+    </label>
+  </div>
   <button
-    aria-controls="dropdown__menu--4"
+    aria-controls="static-id__menu"
     aria-expanded="false"
     aria-haspopup="listbox"
     aria-invalid="false"
-    aria-labelledby="dropdown__button-content--3 dropdown__label--2"
+    aria-labelledby="static-id__button-content static-id__label"
     class="ds-c-dropdown__button ds-c-field"
-    id="dropdown__button--1"
+    id="static-id"
     name="dropdown"
     role="combobox"
-    tabindex="0"
+    type="button"
   >
     <span
       class="ds-u-truncate"
-      id="dropdown__button-content--3"
+      id="static-id__button-content"
     >
       2
     </span>
@@ -126,8 +197,6 @@ exports[`Dropdown dropdown matches snapshot 1`] = `
       <svg
         aria-hidden="true"
         class="ds-c-icon ds-u-font-size--sm"
-        focusable="false"
-        id="icon-2"
         viewBox="0 0 448 512"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -137,65 +206,6 @@ exports[`Dropdown dropdown matches snapshot 1`] = `
       </svg>
     </span>
   </button>
-  <div
-    class="ds-c-dropdown__menu-container"
-    hidden=""
-  >
-    <ul
-      class="ds-c-dropdown__menu"
-      id="dropdown__menu--4"
-      role="listbox"
-    >
-      <li
-        aria-selected="false"
-        class="ds-c-dropdown__menu-item"
-        id="downshift-0-item-0"
-        role="option"
-      >
-        1
-      </li>
-      <li
-        aria-selected="true"
-        class="ds-c-dropdown__menu-item ds-c-dropdown__menu-item--selected"
-        id="downshift-0-item-1"
-        role="option"
-      >
-        <span
-          class="ds-c-dropdown__menu-item-selected-indicator"
-        >
-          <svg
-            aria-hidden="true"
-            class="ds-c-icon ds-u-font-size--sm"
-            focusable="false"
-            id="icon-3"
-            viewBox="0 0 448 512"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M443.3 100.7c6.2 6.2 6.2 16.4 0 22.6l-272 272c-6.2 6.2-16.4 6.2-22.6 0l-144-144c-6.2-6.2-6.2-16.4 0-22.6s16.4-6.2 22.6 0L160 361.4l260.7-260.7c6.2-6.2 16.4-6.2 22.6 0z"
-            />
-          </svg>
-        </span>
-        2
-      </li>
-      <li
-        aria-selected="false"
-        class="ds-c-dropdown__menu-item"
-        id="downshift-0-item-2"
-        role="option"
-      >
-        3
-      </li>
-      <li
-        aria-selected="false"
-        class="ds-c-dropdown__menu-item"
-        id="downshift-0-item-3"
-        role="option"
-      >
-        4
-      </li>
-    </ul>
-  </div>
 </div>
 `;
 
@@ -209,8 +219,6 @@ exports[`Dropdown shows error message 1`] = `
   <svg
     aria-hidden="true"
     class="ds-c-icon ds-c-icon--alert-circle "
-    focusable="false"
-    id="icon-17"
     viewBox="36 -12 186 186"
     xmlns="http://www.w3.org/2000/svg"
   >

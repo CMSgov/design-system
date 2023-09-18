@@ -2,12 +2,13 @@ import React from 'react';
 import { useRef, useEffect, useLayoutEffect, DialogHTMLAttributes } from 'react';
 import dialogPolyfill from './polyfill';
 
-interface NativeDialogProps extends Omit<DialogHTMLAttributes<HTMLElement>, 'children'> {
+export interface NativeDialogProps extends Omit<DialogHTMLAttributes<HTMLElement>, 'children'> {
   children: React.ReactNode;
   /**
    * Pass `true` to have the dialog close when its backdrop pseudo-element is clicked
    */
   backdropClickExits?: boolean;
+  boundingBoxRef?: React.MutableRefObject<any>;
   /**
    * Function called to close dialog.
    */
@@ -26,11 +27,12 @@ interface NativeDialogProps extends Omit<DialogHTMLAttributes<HTMLElement>, 'chi
   showModal?: boolean;
 }
 
-const NativeDialog = ({
+export const NativeDialog = ({
   children,
   exit,
   showModal,
   backdropClickExits,
+  boundingBoxRef,
   ...dialogProps
 }: NativeDialogProps) => {
   const dialogRef = useRef(null);
@@ -50,18 +52,29 @@ const NativeDialog = ({
     };
   }, [showModal]);
 
-  // Bind and unbind event listeners on mount and unmount
+  // Bind and unbind cancel event listeners on mount and unmount
   useEffect(() => {
     const dialogNode = dialogRef.current;
-
     const handleCancel = (event) => {
       event.preventDefault();
       exit();
     };
     dialogNode.addEventListener('cancel', handleCancel);
+    return () => {
+      dialogNode.removeEventListener('cancel', handleCancel);
+    };
+  }, [exit]);
 
+  // Bind and unbind click event listeners on mount and unmount
+  useEffect(() => {
+    if (!backdropClickExits) {
+      return;
+    }
+
+    const dialogNode = dialogRef.current;
     const handleClick = (event) => {
-      const rect = dialogNode.getBoundingClientRect();
+      const boundingNode = boundingBoxRef?.current ?? dialogRef.current;
+      const rect = boundingNode.getBoundingClientRect();
       const isInDialog =
         rect.top <= event.clientY &&
         event.clientY <= rect.top + rect.height &&
@@ -71,15 +84,9 @@ const NativeDialog = ({
         exit();
       }
     };
-    if (backdropClickExits) {
-      dialogNode.addEventListener('click', handleClick);
-    }
-
+    dialogNode.addEventListener('click', handleClick);
     return () => {
-      dialogNode.removeEventListener('cancel', handleCancel);
-      if (backdropClickExits) {
-        dialogNode.removeEventListener('click', handleClick);
-      }
+      dialogNode.removeEventListener('click', handleClick);
     };
   }, [exit, backdropClickExits]);
 

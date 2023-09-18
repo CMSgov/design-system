@@ -20,6 +20,7 @@ function generateChoices(length: number, customProps = {}) {
 function renderChoiceList(customProps = {}, choicesCount = 2) {
   const props = {
     choices: generateChoices(choicesCount),
+    id: 'static-id',
     label: 'Foo',
     hint: 'Psst! I know the answer',
     errorMessage: 'Hey, you have to pick an answer',
@@ -81,6 +82,16 @@ describe('ChoiceList', () => {
       const fieldsetEl = screen.getByRole('group');
 
       expect(fieldsetEl).toBeDefined();
+    });
+
+    it('generates ids when no id is provided', () => {
+      const { container } = renderChoiceList({ id: undefined });
+      expect(container.querySelector('legend').id).toMatch(/choice-list--\d+/);
+
+      const choices = screen.getAllByRole('radio');
+      const choiceIdRegex = /choice--\d+/;
+      expect(choices[0].id).toMatch(choiceIdRegex);
+      expect(choices[1].id).toMatch(choiceIdRegex);
     });
 
     it('renders the label prop as a legend element', () => {

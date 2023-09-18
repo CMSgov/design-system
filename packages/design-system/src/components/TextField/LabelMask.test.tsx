@@ -66,7 +66,12 @@ const TestLabelMask = (props: { mask: MaskFunction }) => {
   const [value, setValue] = useState('');
   return (
     <LabelMask labelMask={mask}>
-      <input type="text" value={value} onChange={(e) => setValue(e.currentTarget.value)} />
+      <input
+        type="text"
+        value={value}
+        onChange={(e) => setValue(e.currentTarget.value)}
+        id="static-id"
+      />
     </LabelMask>
   );
 };
@@ -75,13 +80,18 @@ allMasks.forEach((currentMask) => {
   describe(`${currentMask.name} Label mask`, function () {
     it(`renders default mask, ${currentMask.default}, when no input value set`, () => {
       const { container, asFragment } = render(<TestLabelMask mask={currentMask.mask} />);
-      const mask = container.querySelector('.ds-c-label-mask');
+
       const input = container.querySelector('input');
+      expect(input).toHaveValue('');
+      expect(input).toHaveAttribute('inputmode', 'numeric');
+      expect(input).toHaveAttribute('type', 'text');
 
-      expect(input.value).toBe('');
+      const mask = container.querySelector('.ds-c-label-mask');
       expect(mask.textContent).toContain(currentMask.default);
-
-      expect(asFragment()).toMatchSnapshot();
+      expect(mask.firstChild.textContent).toContain(currentMask.default);
+      expect(mask.lastChild).toHaveAttribute('aria-hidden', 'true');
+      expect(mask.lastChild).toHaveClass('ds-u-display--none');
+      expect(mask.lastChild.textContent).toContain(currentMask.default);
     });
 
     describe('updates label mask to reflect', () => {

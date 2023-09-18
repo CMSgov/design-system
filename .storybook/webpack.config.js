@@ -2,6 +2,16 @@ const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+const usePreact = Boolean(process.env.PREACT && JSON.parse(process.env.PREACT));
+const preactAliases = usePreact
+  ? {
+      react: 'preact/compat',
+      'react-dom/test-utils': 'preact/test-utils',
+      'react-dom': 'preact/compat', // Must be below test-utils
+      'react/jsx-runtime': 'preact/jsx-runtime',
+    }
+  : {};
+
 module.exports = async ({ config }) => {
   config.plugins.push(
     new MiniCssExtractPlugin(),
@@ -81,10 +91,7 @@ module.exports = async ({ config }) => {
       __dirname,
       '../packages/design-system/src/styles/'
     ),
-    react: 'preact/compat',
-    'react-dom/test-utils': 'preact/test-utils',
-    'react-dom': 'preact/compat', // Must be below test-utils
-    'react/jsx-runtime': 'preact/jsx-runtime',
+    ...preactAliases,
   };
 
   return config;

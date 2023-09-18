@@ -8,6 +8,7 @@ import { CloseIcon } from '../Icons';
 import { useEffect, useLayoutEffect, useRef, DialogHTMLAttributes } from 'react';
 import { t } from '../i18n';
 import { AnalyticsOverrideProps } from '../analytics';
+import useId from '../utilities/useId';
 
 export type DialogCloseButtonSize = 'small' | 'big';
 export type DialogSize = 'narrow' | 'wide' | 'full';
@@ -57,7 +58,7 @@ export interface BaseDialogProps extends AnalyticsOverrideProps {
   /**
    * The icon to display as part of the close button
    */
-  closeIcon?: React.ReactNode;
+  closeIconComponent?: React.ReactElement<any> | any | ((...args: any[]) => any);
   /**
    * Additional classes to be added to the header, which wraps the heading and
    * close button.
@@ -76,12 +77,10 @@ export interface BaseDialogProps extends AnalyticsOverrideProps {
    */
   onEnter?(): void;
   /**
-   * This function needs to handles the state change of exiting (or deactivating) the modal.
-   * Maybe it's just a wrapper around `setState()`; or maybe you use some more involved
-   * Flux-inspired state management — whatever the case, this module leaves the state
-   * management up to you instead of making assumptions.
-   * That also makes it easier to create your own "close modal" buttons; because you
-   * have the function that closes the modal right there, written by you, at your disposal.
+   * Called when the user triggers an exit event, like by clicking the close
+   * button or pressing the ESC key. The parent of this component is
+   * responsible for showing or not showing the dialog, so you need to use this
+   * callback to make that happen. The dialog does not hide or remove itself.
    */
   onExit(event: React.MouseEvent | React.KeyboardEvent): void;
   /**
@@ -112,20 +111,27 @@ export const Dialog = (props: DialogProps) => {
     closeButtonSize,
     closeButtonText,
     closeButtonVariation,
-    closeIcon,
+    closeIconComponent,
     headerClassName,
     heading,
+    id,
     onEnter,
     onExit,
     size,
     ...modalProps
   } = props;
 
+  const rootId = useId('dialog--', id);
+  const headingRef = useDialogAnalytics(props);
+  const headingId = `${rootId}__heading`;
+
   const dialogClassNames = classNames('ds-c-dialog', className, size && `ds-c-dialog--${size}`);
   const headerClassNames = classNames('ds-c-dialog__header', headerClassName);
   const actionsClassNames = classNames('ds-c-dialog__actions', actionsClassName);
 
   const containerRef = useRef<HTMLDivElement>();
+
+  const CloseIconComponent = closeIconComponent;
 
   useEffect(() => {
     if (onEnter) onEnter();
@@ -153,12 +159,22 @@ export const Dialog = (props: DialogProps) => {
     };
   }, []);
 
-  const headingRef = useDialogAnalytics(props);
-  const headingId = useRef(uniqueId('dialog-title_')).current;
-
   return (
-    <NativeDialog className={dialogClassNames} showModal exit={onExit} {...modalProps}>
-      <div role="document" ref={containerRef} tabIndex={-1} aria-labelledby={headingId}>
+    <NativeDialog
+      className={dialogClassNames}
+      showModal
+      exit={onExit}
+      {...modalProps}
+      id={rootId}
+      boundingBoxRef={containerRef}
+    >
+      <div
+        className="ds-c-dialog__window"
+        role="document"
+        ref={containerRef}
+        tabIndex={-1}
+        aria-labelledby={headingId}
+      >
         <header className={headerClassNames}>
           {heading && (
             <h1 className="ds-h2" id={headingId} ref={headingRef}>
@@ -172,7 +188,7 @@ export const Dialog = (props: DialogProps) => {
             size={closeButtonSize}
             variation={closeButtonVariation}
           >
-            {closeIcon}
+            <CloseIconComponent />
             {closeButtonText ?? t('dialog.closeButtonText')}
           </Button>
         </header>
@@ -187,7 +203,7 @@ export const Dialog = (props: DialogProps) => {
 
 Dialog.defaultProps = {
   closeButtonVariation: 'ghost',
-  closeIcon: <CloseIcon />,
+  closeIconComponent: CloseIcon,
 };
 
 export default Dialog;

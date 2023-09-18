@@ -2,7 +2,8 @@
 
 exports[`Dialog close button text and variation can be changed 1`] = `
 <div
-  aria-labelledby="dialog-title_3"
+  aria-labelledby="static-id__heading"
+  class="ds-c-dialog__window"
   role="document"
   tabindex="-1"
 >
@@ -11,7 +12,7 @@ exports[`Dialog close button text and variation can be changed 1`] = `
   >
     <h1
       class="ds-h2"
-      id="dialog-title_3"
+      id="static-id__heading"
     >
       dialog heading
     </h1>
@@ -23,8 +24,6 @@ exports[`Dialog close button text and variation can be changed 1`] = `
       <svg
         aria-hidden="true"
         class="ds-c-icon ds-c-icon--close "
-        focusable="false"
-        id="icon-4"
         viewBox="0 0 16 16"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -51,7 +50,8 @@ exports[`Dialog close button text and variation can be changed 1`] = `
 
 exports[`Dialog renders with additional classNames and size 1`] = `
 <div
-  aria-labelledby="dialog-title_1"
+  aria-labelledby="static-id__heading"
+  class="ds-c-dialog__window"
   role="document"
   tabindex="-1"
 >
@@ -60,7 +60,7 @@ exports[`Dialog renders with additional classNames and size 1`] = `
   >
     <h1
       class="ds-h2"
-      id="dialog-title_1"
+      id="static-id__heading"
     >
       dialog heading
     </h1>
@@ -72,8 +72,6 @@ exports[`Dialog renders with additional classNames and size 1`] = `
       <svg
         aria-hidden="true"
         class="ds-c-icon ds-c-icon--close "
-        focusable="false"
-        id="icon-2"
         viewBox="0 0 16 16"
         xmlns="http://www.w3.org/2000/svg"
       >

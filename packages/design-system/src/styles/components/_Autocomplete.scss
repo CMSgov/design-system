@@ -27,6 +27,11 @@
   padding: var(--text-input__padding);
 }
 
+.ds-c-autocomplete__menu-item-message {
+  color: var(--autocomplete-item-message__font-color);
+  padding: var(--text-input__padding);
+}
+
 .ds-c-autocomplete__menu-item--highlighted {
   @extend .ds-c-dropdown__menu-item--highlighted;
   @media (-ms-high-contrast: active), (forced-colors: active) {
@@ -37,9 +42,8 @@
   }
 }
 
-.ds-c-autocomplete__list-item-message {
-  color: var(--autocomplete-item-message__font-color);
-  padding: $spacer-1;
+.ds-c-autocomplete__menu-item-selected-indicator {
+  display: none;
 }
 
 // Need a custom class so the bottom error message does not conflict with the clear search button

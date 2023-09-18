@@ -5,7 +5,8 @@
   "repository": "https://github.com/CMSgov/design-system",
   "workspaces": [
     "packages/*"
-  ],  "scripts": {
+  ],
+  "scripts": {
     "build": "yarn build:tokens && yarn build:core && yarn build:healthcare && yarn build:medicare && yarn build:cmsgov && yarn build:cdn-index",
     "build:core": "yarn gulp build",
     "build:healthcare": "yarn gulp build --package packages/ds-healthcare-gov",
@@ -27,12 +28,12 @@
     "precommit": "lint-staged",
     "prepare": "husky install",
     "prettier": "yarn prettier --write 'packages/**/*.{js,jsx,tsx,scss,html,md,mdx,json}'",
-    "release": "./scripts/bump-and-tag-release.sh",
-    "release:bump": "./scripts/bump-main.sh",
+    "release": "ts-node ./scripts/release.ts",
     "release:notes": "ts-node ./scripts/notes.ts",
     "serve:docs": "yarn --cwd ./packages/docs serve",
     "start": "yarn build:storybook:docs && yarn --cwd ./packages/docs develop",
     "storybook": "storybook dev -p 6006",
+    "storybook:preact": "PREACT=true storybook dev -p 6006",
     "test": "yarn test:unit && yarn test:a11y",
     "posttest": "yarn lint",
     "test:unit:coverage": "yarn test:unit --collectCoverage",
@@ -80,6 +81,7 @@
     "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.21.4",
     "@babel/register": "^7.8.4",
+    "@inquirer/prompts": "^3.0.3",
     "@playwright/test": "1.31.0",
     "@storybook/addon-actions": "^7.1.0-alpha.1",
     "@storybook/addon-essentials": "^7.1.0-alpha.1",
@@ -90,6 +92,8 @@
     "@storybook/react-webpack5": "^7.1.0-alpha.1",
     "@storybook/theming": "^7.1.0-alpha.1",
     "@testing-library/jest-dom": "^5.10.1",
+    "@testing-library/preact": "^3.2.3",
+    "@testing-library/preact-hooks": "^1.1.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/react-hooks": "^3.7.0",
     "@testing-library/user-event": "^13.5.0",
@@ -122,7 +126,7 @@
     "http-server": "^14.1.1",
     "husky": "^7.0.0",
     "jest": "^27.5.1",
-    "lerna": "^3.20.0",
+    "lerna": "^5.6.2",
     "lint-staged": "^10.0.8",
     "marked": "4.2.4",
     "mini-css-extract-plugin": "^1",
@@ -135,7 +139,6 @@
     "react-app-polyfill": "^3.0.0",
     "react-dom": "17.0.2",
     "react-test-renderer": "17.0.2",
-    "readline-sync": "^1.4.10",
     "sass": "^1.53.0",
     "sass-loader": "10.2.1",
     "storybook": "^7.1.0-alpha.1",
@@ -148,7 +151,8 @@
     "typescript": "^4.9.5",
     "url-loader": "^4.1.1",
     "webpack": "^5.76.0",
-    "webpack-stream": "^7.0.0"
+    "webpack-stream": "^7.0.0",
+    "yargs": "^17.7.2"
   },
   "engines": {
     "node": ">=11.0.0",

@@ -8,6 +8,7 @@ const defaultProps = {
   value: 'boo',
   type: 'checkbox' as ChoiceType,
   label: 'George Washington',
+  id: 'static-id',
 };
 
 function renderChoice(customProps = {}) {
@@ -149,7 +150,7 @@ describe('Choice', () => {
       </div>
     );
 
-    const idRegex = new RegExp(`checkbox_${props.name}_[0-9]+`);
+    const idRegex = /choice--\d+/;
     const labels = container.querySelectorAll('label');
     const labelA = labels[0];
     const labelB = labels[1];

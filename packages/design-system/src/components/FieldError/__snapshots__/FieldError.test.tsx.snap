@@ -10,8 +10,6 @@ exports[`FieldError renders inline error 1`] = `
   <svg
     aria-hidden="true"
     class="ds-c-icon ds-c-icon--alert-circle "
-    focusable="false"
-    id="icon-1"
     viewBox="36 -12 186 186"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -38,8 +36,6 @@ exports[`FieldError renders inverse error 1`] = `
   <svg
     aria-hidden="true"
     class="ds-c-icon ds-c-icon--alert-circle "
-    focusable="false"
-    id="icon-2"
     viewBox="36 -12 186 186"
     xmlns="http://www.w3.org/2000/svg"
   >

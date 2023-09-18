@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import classNames from 'classnames';
-import uniqueId from 'lodash/uniqueId';
+import useId from '../utilities/useId';
 import { t } from '../i18n';
 import {
   LockCircleIcon,
@@ -30,7 +30,8 @@ export interface UsaBannerProps {
 export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBannerProps) => {
   const [isBannerOpen, setBannerOpen] = useState<boolean>(false);
   const classes = classNames('ds-c-usa-banner', props.className);
-  const id = props.id || uniqueId('gov-banner_');
+  const rootId = useId('usa-banner--', props.id);
+  const panelId = `${rootId}__panel`;
 
   const toggleBanner = () => {
     setBannerOpen(!isBannerOpen);
@@ -51,15 +52,19 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
       {/* Util class used to hardcode font-size across themes */}
       <header
         className={classNames(
-          'ds-c-usa-banner__header',
-          'ds-u-font-size--sm',
+          'ds-c-usa-banner__header ds-u-font-size--sm',
           isBannerOpen && 'ds-c-usa-banner__header--expanded'
         )}
       >
         <UsaFlagIcon className="ds-c-usa-banner__header-icon" />
         <p className="ds-c-usa-banner__header-text">{t('usaBanner.bannerText')}</p>
         {/* This is display text for mobile/tablet only; display: none when on larger viewports */}
-        <p className="ds-c-usa-banner__action ds-u-display--flex ds-u-align-items--center ds-u-md-display--none">
+        <p
+          className={classNames(
+            'ds-c-usa-banner__action ds-u-align-items--center ds-u-md-display--none',
+            !isBannerOpen && 'ds-u-display--flex'
+          )}
+        >
           {actionText}
         </p>
 
@@ -68,7 +73,7 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
           onClick={toggleBanner}
           className="ds-c-usa-banner__button"
           aria-expanded={isBannerOpen}
-          aria-controls={id}
+          aria-controls={panelId}
         >
           {/* This is screen reader-only text on mobile/tablet; this is the trigger button on larger viewports */}
           <span className="ds-c-usa-banner__button-text ds-u-md-display--flex ds-u-align-items--center">
@@ -83,7 +88,7 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
       </header>
       {/* Util classes used to hardcode font treatment across themes */}
       <div className="ds-c-usa-banner__guidance [ ds-u-leading--base ds-u-font-size--base ]">
-        <div id={id} className="ds-c-usa-banner__guidance-container" hidden={!isBannerOpen}>
+        <div id={panelId} className="ds-c-usa-banner__guidance-container" hidden={!isBannerOpen}>
           <div className="ds-c-usa-banner__guidance-item">
             <BuildingCircleIcon className="ds-c-usa-banner__guidance-icon" />
             <p className="ds-c-usa-banner__guidance-text">

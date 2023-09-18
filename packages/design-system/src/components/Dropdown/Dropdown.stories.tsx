@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Dropdown from './Dropdown';
 import type { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { useArgs } from '@storybook/preview-api';
+import { Dialog } from '../index';
 
 const meta: Meta<typeof Dropdown> = {
   title: 'Components/Dropdown',
@@ -32,12 +33,13 @@ const dropdownOptions = [
 
 const htmlOptGroups = (
   <>
+    <option value="">- Select an option -</option>
     <optgroup label="Group A">
       <option value="a-1">Option A-1</option>
       <option value="a-2">Option A-2</option>
       <option value="a-3">Option A-3</option>
     </optgroup>
-    <optgroup label="Group B">
+    <optgroup label="Group B" data-extra-attribute="something">
       <option value="b-1">Option B-1</option>
       <option value="b-2">Option B-2</option>
       <option value="b-3">Option B-3</option>
@@ -54,7 +56,9 @@ const htmlOptions = (
     <option value="5">Option 5</option>
     <option value="6">Option 6</option>
     <option value="7">Option 7</option>
-    <option value="8">Option 8</option>
+    <option value="8" data-extra-attribute="something">
+      Option 8
+    </option>
   </>
 );
 

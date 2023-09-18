@@ -5,6 +5,7 @@ import { useRef } from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
 import { t } from '../i18n';
+import useId from '../utilities/useId';
 
 // TODO: closeButtonText, heading should be a string, but it is being used as a node in MCT,
 // until we provide a better solution for customization, we type it as a node.
@@ -18,7 +19,7 @@ export interface DrawerProps {
   children: React.ReactNode;
   className?: string;
   footerBody?: React.ReactNode;
-  footerTitle?: string;
+  footerTitle?: React.ReactNode;
   /**
    * Enables focus trap functionality within Drawer.
    */
@@ -26,7 +27,7 @@ export interface DrawerProps {
   /**
    * Text for the Drawer heading. Required because the `heading` will be focused on mount.
    */
-  heading: string | React.ReactNode;
+  heading: React.ReactNode;
   /**
    * A unique `id` to be used on heading element to label multiple instances of Drawer.
    */
@@ -47,6 +48,12 @@ export interface DrawerProps {
    * Enables "sticky" position of Drawer footer element.
    */
   isFooterSticky?: boolean;
+  /**
+   * Called when the user activates the close button or presses the ESC key if
+   * focus trapping is enabled. The parent of this component is responsible for
+   * showing or not showing the drawer, so you need to use this callback to
+   * make that happen. The dialog does not hide itself.
+   */
   onCloseClick: (event: React.MouseEvent | React.KeyboardEvent) => void;
 }
 
@@ -56,7 +63,7 @@ export interface DrawerProps {
  */
 export const Drawer = (props: DrawerProps) => {
   const headingRef = useRef(null);
-  const id = useRef(props.headingId || uniqueId('drawer_'));
+  const headingId = useId('drawer--', props.headingId);
 
   const Heading = `h${props.headingLevel}` as const;
 
@@ -66,10 +73,10 @@ export const Drawer = (props: DrawerProps) => {
       exit={props.onCloseClick}
       showModal={props.hasFocusTrap}
     >
-      <div className="ds-c-drawer__window" tabIndex={-1} aria-labelledby={id.current}>
+      <div className="ds-c-drawer__window" tabIndex={-1} aria-labelledby={headingId}>
         <div className="ds-c-drawer__header">
           <Heading
-            id={id.current}
+            id={headingId}
             className="ds-c-drawer__header-heading"
             ref={(el) => {
               headingRef.current = el;

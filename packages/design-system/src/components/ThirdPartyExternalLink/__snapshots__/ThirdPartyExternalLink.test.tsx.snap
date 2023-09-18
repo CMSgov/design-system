@@ -3,12 +3,14 @@
 exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external link dialog 1`] = `
 <dialog
   class="ds-c-dialog"
+  id="dialog--6"
   open=""
   role="dialog"
   style="z-index: 100149; top: 384px;"
 >
   <div
-    aria-labelledby="dialog-title_6"
+    aria-labelledby="dialog--6__heading"
+    class="ds-c-dialog__window"
     role="document"
     tabindex="-1"
   >
@@ -17,7 +19,7 @@ exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external l
     >
       <h1
         class="ds-h2"
-        id="dialog-title_6"
+        id="dialog--6__heading"
       >
         You are leaving bar.
       </h1>
@@ -29,8 +31,6 @@ exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external l
         <svg
           aria-hidden="true"
           class="ds-c-icon ds-c-icon--close "
-          focusable="false"
-          id="icon-7"
           viewBox="0 0 16 16"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -90,16 +90,15 @@ exports[`ThirdPartyExternalLink renders external link 1`] = `
   External site link
   <svg
     aria-hidden="false"
-    aria-labelledby="icon-1__title"
+    aria-labelledby="icon--1__title"
     class="ds-c-icon ds-c-icon--external-link ds-c-external-link__icon"
-    focusable="false"
-    id="icon-1"
+    id="icon--1"
     role="img"
     viewBox="0 0 512 512"
     xmlns="http://www.w3.org/2000/svg"
   >
     <title
-      id="icon-1__title"
+      id="icon--1__title"
     >
       This link goes to an external site
     </title>
