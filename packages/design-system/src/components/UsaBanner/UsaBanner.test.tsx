@@ -1,10 +1,21 @@
 import React from 'react';
-import UsaBanner from './UsaBanner';
+import UsaBanner, { UsaBannerProps } from './UsaBanner';
 import { fireEvent, render, screen } from '@testing-library/react';
+
+import register from 'preact-custom-element';
+register(UsaBanner, 'ds-usa-banner');
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'ds-usa-banner': UsaBannerProps;
+    }
+  }
+}
 
 function renderBanner(customProps = {}) {
   const props = Object.assign({}, customProps);
-  return render(<UsaBanner {...props} />);
+  // return render(<UsaBanner {...props} />);
+  return render(<ds-usa-banner {...props}></ds-usa-banner>);
 }
 
 describe('UsaBanner', function () {
@@ -23,7 +34,7 @@ describe('UsaBanner', function () {
   });
 
   it('adds className to root element', () => {
-    renderBanner({ className: 'bar' });
+    renderBanner({ 'class-name': 'bar' });
     expect(
       screen.getByLabelText('Official website of the United States government').className
     ).toContain('bar');
