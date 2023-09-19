@@ -1,27 +1,15 @@
 import React from 'react';
-import Badge, { BadgeProps } from './Badge';
+import Badge from './Badge';
 import { render, screen } from '@testing-library/react';
-
-import register from 'preact-custom-element';
-register(Badge, 'ds-badge');
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'ds-badge': BadgeProps;
-    }
-  }
-}
 
 const defaultProps = {
   children: 'Foo',
 };
 function renderBadge(props = {}) {
-  // return render(<Badge {...defaultProps} {...props} />);
-  return render(<ds-badge {...defaultProps} {...props}></ds-badge>);
+  return render(<Badge {...defaultProps} {...props} />);
 }
 
 describe('Badge', () => {
-  // inserting multiples of Foo
   it('should render a default badge', () => {
     renderBadge();
     const badge = screen.getByText('Foo');
@@ -40,10 +28,8 @@ describe('Badge', () => {
     expect(badge.className).toContain('ds-c-badge--big');
   });
 
-  // adding class-name multiple times?
-  it.skip('should render custom classNames', () => {
-    // renderBadge({ className: 'bar' });
-    render(<ds-badge class-name="bar">Foo</ds-badge>);
+  it('should render custom classNames', () => {
+    renderBadge({ className: 'bar' });
     const badge = screen.getByText('Foo');
     expect(badge.className).toContain('bar');
   });

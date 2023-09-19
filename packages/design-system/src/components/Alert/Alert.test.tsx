@@ -4,22 +4,11 @@ import { UtagContainer } from '../analytics';
 import { setAlertSendsAnalytics } from '../flags';
 import { render, screen } from '@testing-library/react';
 
-import register from 'preact-custom-element';
-register(Alert, 'ds-alert');
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'ds-alert': AlertProps;
-    }
-  }
-}
-
 const defaultText = 'Ruhroh';
 
 function renderAlert(props: AlertProps = {}) {
   // eslint-disable-next-line react/no-children-prop
-  // return render(<Alert children={defaultText} {...props} />);
-  return render(<ds-alert {...props}>{defaultText}</ds-alert>);
+  return render(<Alert children={defaultText} {...props} />);
 }
 
 function expectHasClass(className: string) {
@@ -27,8 +16,7 @@ function expectHasClass(className: string) {
 }
 
 describe('Alert', function () {
-  // WC renders <slot> in snaps
-  it.skip('renders alert', () => {
+  it('renders alert', () => {
     renderAlert({ id: 'static-id' });
     const alert = screen.getByRole('region');
     expect(alert).toMatchSnapshot();
@@ -53,9 +41,8 @@ describe('Alert', function () {
   it('renders additional className and role prop', () => {
     const className = 'ds-u-test';
     const role = 'alert';
-    renderAlert({ 'class-name': className, role });
-    const alert = document.querySelector('.ds-c-alert');
-    expect(alert.className).toContain(className);
+    renderAlert({ className, role });
+    expect(screen.getByRole(role).className).toContain(className);
   });
 
   it('renders HTML children', () => {
@@ -65,7 +52,7 @@ describe('Alert', function () {
   });
 
   it('hides icon', () => {
-    renderAlert({ 'hide-icon': true });
+    renderAlert({ hideIcon: true });
     expectHasClass('ds-c-alert--hide-icon');
   });
 
@@ -75,21 +62,17 @@ describe('Alert', function () {
     expect(alert.tabIndex).toBe(-1);
   });
 
-  // experiencing similar issues to analytics hook; is it hooks WC has issues with?
   it('sets tabIndex when alertRef is passed', () => {
     const alertRef = jest.fn();
-    renderAlert({ 'alert-ref': alertRef });
+    renderAlert({ alertRef });
     const alert = screen.getByRole('region');
     expect(alert.tabIndex).toBe(-1);
     expect(alertRef).toHaveBeenCalled();
   });
 
-  // adding native attrs to WC results in multiples being added throughout component
-  // seems like we need to apply native attrs using setAttribute
   it('renders additional attributes', () => {
     const ariaLabel = 'additional aria alert';
-    const { container } = renderAlert();
-    container.querySelector('.ds-c-alert').setAttribute('aria-label', ariaLabel);
+    renderAlert({ 'aria-label': ariaLabel });
     const alert = screen.getByLabelText(ariaLabel);
     expect(alert).toBeInTheDocument();
   });
@@ -165,21 +148,19 @@ describe('Alert', function () {
       expect(tealiumMock).not.toBeCalled();
     });
 
-    // same issue as Button getting analytics hook working
-    // results are inverted in following 2 tests
-    it.skip('disables analytics tracking', () => {
+    it('disables analytics tracking', () => {
       renderAlert({ heading: 'dialog heading', variation: 'error', analytics: false });
       expect(tealiumMock).not.toBeCalled();
     });
 
-    it.skip('setting analytics to true overrides flag value', () => {
+    it('setting analytics to true overrides flag value', () => {
       setAlertSendsAnalytics(false);
       renderAlert({ heading: 'dialog heading', variation: 'error', analytics: true });
       expect(tealiumMock).toHaveBeenCalled();
     });
 
     it('overrides analytics event content', () => {
-      renderAlert({ variation: 'success', 'analytics-label-override': 'other heading' });
+      renderAlert({ variation: 'success', analyticsLabelOverride: 'other heading' });
       expect(tealiumMock.mock.lastCall).toMatchSnapshot();
       expect(tealiumMock).toHaveBeenCalledTimes(1);
     });
