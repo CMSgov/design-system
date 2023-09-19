@@ -19,6 +19,10 @@ function getPackageVersion(packageName: string): string {
   return packageData.version;
 }
 
+// We only care about the first digit in the version string (the major version)
+const getMajorVersion = parseInt;
+const isBetaVersion = (version: string) => version.includes('beta');
+
 export function appendVersions() {
   const versions = readJson(versionsFileName);
 
@@ -36,10 +40,18 @@ export function cullBetaVersions() {
   for (const theme of Object.values(themes)) {
     const currentVersion = getPackageVersion(theme.packageName);
 
-    const isOldBeta = (version: string) =>
-      version.includes('beta') &&
-      // We only care about the first digit in the version string (the major version)
-      parseInt(version) < parseInt(currentVersion);
+    const isOldBeta = (version: string) => {
+      if (!isBetaVersion(version)) {
+        return false;
+      }
+
+      const isOld = getMajorVersion(version) < getMajorVersion(currentVersion);
+      const isBetaForReleasedVersion =
+        getMajorVersion(version) === getMajorVersion(currentVersion) &&
+        !isBetaVersion(currentVersion);
+
+      return isOld || isBetaForReleasedVersion;
+    };
 
     versions[theme.packageName] = versions[theme.packageName].filter(
       (version: string) => !isOldBeta(version)
