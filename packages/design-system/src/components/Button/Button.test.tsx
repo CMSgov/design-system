@@ -134,8 +134,8 @@ describe('Button', () => {
       const analyticsParentHeading = 'Hello World';
       const analyticsParentType = 'div';
       renderButton({
-        analyticsParentHeading: analyticsParentHeading,
-        analyticsParentType: analyticsParentType,
+        analyticsParentHeading,
+        analyticsParentType,
       });
       fireEvent.click(screen.getByRole('button'));
       expect(tealiumMock).toBeCalledWith(
