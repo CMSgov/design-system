@@ -1,13 +1,21 @@
 const usePreact = Boolean(process.env.PREACT && JSON.parse(process.env.PREACT));
-const preactModuleMapper = usePreact
+const useWebComponents = Boolean(process.env.WC && JSON.parse(process.env.WC));
+const preactModuleMapper =
+  usePreact || useWebComponents
+    ? {
+        '^react$': 'preact/compat',
+        '^react-dom/test-utils$': 'preact/test-utils',
+        '^react-dom$': 'preact/compat',
+        '^react/jsx-runtime$': 'preact/jsx-runtime',
+        '^@testing-library/react-hooks$': '@testing-library/preact-hooks',
+      }
+    : {};
+
+const conditionalWebComponentsConfig = useWebComponents
   ? {
-      '^react$': 'preact/compat',
-      '^react-dom/test-utils$': 'preact/test-utils',
-      '^react-dom$': 'preact/compat',
-      '^react/jsx-runtime$': 'preact/jsx-runtime',
-      '^@testing-library/react-hooks$': '@testing-library/preact-hooks',
+      testMatch: ['<rootDir>/design-system/src/components/web-components/**/*.test.[jt]s(x)?'],
     }
-  : {};
+  : { testPathIgnorePatterns: ['<rootDir>/design-system/src/components/web-components'] };
 
 module.exports = {
   rootDir: '../../packages',
@@ -23,6 +31,7 @@ module.exports = {
     'docs/public/',
     'docs/static',
   ],
+  ...conditionalWebComponentsConfig,
   coverageDirectory: `<rootDir>/../tests/unit/coverage-data`,
   coveragePathIgnorePatterns: ['/node_modules/'],
   transformIgnorePatterns: ['node_modules(?!/@cmsgov)'],
