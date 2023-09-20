@@ -1,9 +1,9 @@
-import appendVersions from './append-versions';
 import c from 'chalk';
 import yargs from 'yargs';
-import { sh, shI, verifyGhInstalled } from './utils';
-import { hideBin } from 'yargs/helpers';
+import { updateVersions, cullBetaVersions } from './versions';
 import { confirm } from '@inquirer/prompts';
+import { hideBin } from 'yargs/helpers';
+import { sh, shI, verifyGhInstalled } from './utils';
 
 const REVIEWERS = ['pwolfert', 'zarahzachz'];
 
@@ -54,6 +54,8 @@ async function undoLastCommit() {
 }
 
 async function bumpVersions() {
+  const { tags } = readLastPublishCommit();
+
   console.log(c.green('Bumping package versions for release...'));
   const preBumpHash = getCurrentCommit();
   shI('./node_modules/.bin/lerna', ['version', '--no-push', '--exact']);
@@ -66,7 +68,7 @@ async function bumpVersions() {
 
   console.log(c.green('Package versions bumped successfully.'));
   console.log(c.green('Updating versions.json for reference in docs...'));
-  appendVersions();
+  updateVersions();
   sh('git add -u');
   sh('git commit --amend --no-edit');
   console.log(c.green('Updated versions.json.'));
@@ -74,7 +76,7 @@ async function bumpVersions() {
   console.log(c.green('Pushing to origin...'));
   sh(`git push --set-upstream origin ${getCurrentBranch()}`);
   console.log(c.green('Pushed bump commit to origin.'));
-  sh(`git push origin ${readLastPublishCommit().tags.join(' ')}`);
+  sh(`git push origin ${tags.join(' ')}`);
   console.log(c.green('Pushed tags to origin.'));
 }
 

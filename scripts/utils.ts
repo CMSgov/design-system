@@ -31,3 +31,7 @@ export function verifyGhInstalled() {
     process.exit(1);
   }
 }
+
+export function versionFromTag(tag: string): string {
+  return tag.replace(/@cmsgov\/.*@(.*)$/, '$1');
+}
