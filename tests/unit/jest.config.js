@@ -11,13 +11,11 @@ const preactModuleMapper =
       }
     : {};
 
-const matchWebComponentTests = useWebComponents && {
-  testMatch: ['<rootDir>/design-system/src/components/web-components/**/*.test.[jt]s(x)?'],
-};
-
-const ignoreWebComponentTests = !useWebComponents && {
-  testPathIgnorePatterns: ['<rootDir>/design-system/src/components/web-components'],
-};
+const conditionalWebComponentsConfig = useWebComponents
+  ? {
+      testMatch: ['<rootDir>/design-system/src/components/web-components/**/*.test.[jt]s(x)?'],
+    }
+  : { testPathIgnorePatterns: ['<rootDir>/design-system/src/components/web-components'] };
 
 module.exports = {
   rootDir: '../../packages',
@@ -25,7 +23,6 @@ module.exports = {
   testURL: 'http://localhost',
   setupFiles: [require.resolve('react-app-polyfill/stable')],
   setupFilesAfterEnv: [`<rootDir>/../tests/unit/setupTests.js`],
-  ...matchWebComponentTests,
   testPathIgnorePatterns: [
     'dist/',
     'node_modules/',
@@ -34,7 +31,7 @@ module.exports = {
     'docs/public/',
     'docs/static',
   ],
-  ...ignoreWebComponentTests,
+  ...conditionalWebComponentsConfig,
   coverageDirectory: `<rootDir>/../tests/unit/coverage-data`,
   coveragePathIgnorePatterns: ['/node_modules/'],
   transformIgnorePatterns: ['node_modules(?!/@cmsgov)'],
