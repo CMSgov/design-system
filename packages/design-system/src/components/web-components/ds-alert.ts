@@ -9,6 +9,13 @@ const attributes = [
   'role',
   'weight',
   'variation',
+  'analytics',
+  'analytics-label-override',
+  'analytics-event-type-override',
+  'analytics-parent-heading',
+  'analytics-parent-type',
+  'id',
+  'alert-ref',
 ];
 
 define('ds-alert', () => Alert, { attributes });
