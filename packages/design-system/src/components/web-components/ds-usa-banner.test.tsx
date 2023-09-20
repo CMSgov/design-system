@@ -1,16 +1,16 @@
 import React from 'react';
-import UsaBanner, { UsaBannerProps } from '../UsaBanner/UsaBanner';
 import { fireEvent, render, screen } from '@testing-library/react';
+import './ds-usa-banner';
 
-import register from 'preact-custom-element';
-register(UsaBanner, 'ds-usa-banner');
+/* eslint-disable @typescript-eslint/no-namespace */
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      'ds-usa-banner': UsaBannerProps;
+      'ds-usa-banner': any;
     }
   }
 }
+/* eslint-enable */
 
 function renderBanner(customProps = {}) {
   const props = Object.assign({}, customProps);

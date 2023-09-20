@@ -71,22 +71,20 @@ exports[`Button renders as an anchor with custom prop 1`] = `
 <a
   class="ds-c-button"
   href="/example"
+  parent="[object HTMLElement]"
   target="_blank"
 >
-  <slot>
-    Foo
-  </slot>
+  Foo
 </a>
 `;
 
 exports[`Button renders as button 1`] = `
 <button
   class="ds-c-button"
+  parent="[object HTMLElement]"
   type="button"
 >
-  <slot>
-    Foo
-  </slot>
+  Foo
 </button>
 `;
 
@@ -94,11 +92,10 @@ exports[`Button renders disabled anchor correctly 1`] = `
 <a
   aria-disabled="true"
   class="ds-c-button"
+  parent="[object HTMLElement]"
   role="link"
 >
-  <slot>
-    Link button
-  </slot>
+  Link button
 </a>
 `;
 
@@ -106,10 +103,9 @@ exports[`Button renders disabled button 1`] = `
 <button
   class="ds-c-button"
   disabled=""
+  parent="[object HTMLElement]"
   type="button"
 >
-  <slot>
-    Foo
-  </slot>
+  Foo
 </button>
 `;

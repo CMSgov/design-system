@@ -1,24 +1,22 @@
 import React from 'react';
-import Badge, { BadgeProps } from '../Badge/Badge';
 import { render, screen } from '@testing-library/react';
+import './ds-badge';
 
-import register from 'preact-custom-element';
-register(Badge, 'ds-badge');
+/* eslint-disable @typescript-eslint/no-namespace */
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      'ds-badge': BadgeProps;
+      'ds-badge': any;
     }
   }
 }
+/* eslint-enable */
 
 function renderBadge(props = {}) {
   return render(<ds-badge {...props}>Foo</ds-badge>);
 }
 
-// Skipping entire test suite because Badge isn't working as a WC as expected
-describe.skip('Badge', () => {
-  // inserting multiples of Foo
+describe('Badge', () => {
   it('should render a default badge', () => {
     renderBadge();
     const badge = screen.getByText('Foo');
@@ -37,7 +35,6 @@ describe.skip('Badge', () => {
     expect(badge.className).toContain('ds-c-badge--big');
   });
 
-  // adding class-name multiple times?
   it('should render custom classNames', () => {
     renderBadge({ 'class-name': 'bar' });
     const badge = screen.getByText('Foo');

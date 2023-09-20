@@ -1,18 +1,18 @@
 import React from 'react';
-import Button, { ButtonProps } from '../Button/Button';
 import { UtagContainer } from '../analytics';
 import { setButtonSendsAnalytics } from '../flags';
 import { fireEvent, render, screen } from '@testing-library/react';
+import './ds-button';
 
-import register from 'preact-custom-element';
-register(Button, 'ds-button');
+/* eslint-disable @typescript-eslint/no-namespace */
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      'ds-button': ButtonProps;
+      'ds-button': any;
     }
   }
 }
+/* eslint-enable */
 
 const defaultProps = {
   children: 'Foo',
@@ -23,10 +23,6 @@ function renderButton(props = {}) {
 }
 
 describe('Button', () => {
-  // WC includes <slot> in snaps
-  // Jest uses JSDOM to simulate a browser env and JSDOM doesn't support all custom elements features.
-  // Rendering a WC in Jest doesn't include slotted elements, instead it shows raw HTML, which includes <slot>.
-  // We don't see <slot> in our browsers because browsers natively support WC.
   it('renders as button', () => {
     renderButton();
     expect(screen.getByRole('button')).toMatchSnapshot();
@@ -125,15 +121,13 @@ describe('Button', () => {
       expect(tealiumMock.mock.calls[0]).toMatchSnapshot();
     });
 
-    // analytics hooks are not working
-    // results of following 2 tests are inverted
     it.skip('disables analytics event tracking', () => {
       renderButton({ analytics: false });
       fireEvent.click(screen.getByRole('button'));
       expect(tealiumMock).not.toBeCalled();
     });
 
-    it.skip('setting analytics to true overrides flag value', () => {
+    it('setting analytics to true overrides flag value', () => {
       setButtonSendsAnalytics(false);
       renderButton({ analytics: true });
       fireEvent.click(screen.getByRole('button'));

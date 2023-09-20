@@ -1,24 +1,22 @@
 import React from 'react';
-import Alert, { AlertProps } from '../Alert/Alert';
 import { UtagContainer } from '../analytics';
 import { setAlertSendsAnalytics } from '../flags';
 import { render, screen } from '@testing-library/react';
-import register from 'preact-custom-element';
+import './ds-alert';
 
-register(Alert, 'ds-alert');
-
-// Typically, defining this interface would allow for kebab-case props, but isn't on Alert for some reason.
+/* eslint-disable @typescript-eslint/no-namespace */
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      'ds-alert': AlertProps;
+      'ds-alert': any;
     }
   }
 }
+/* eslint-enable */
 
 const defaultText = 'Ruhroh';
 
-function renderAlert(props: AlertProps = {}) {
+function renderAlert(props = {}) {
   return render(<ds-alert {...props}>{defaultText}</ds-alert>);
 }
 
@@ -27,7 +25,6 @@ function expectHasClass(className: string) {
 }
 
 describe('Alert', function () {
-  // WC renders <slot> in snaps
   it('renders alert', () => {
     renderAlert({ id: 'static-id' });
     const alert = screen.getByRole('region');
@@ -78,7 +75,6 @@ describe('Alert', function () {
     expect(alert.tabIndex).toBe(-1);
   });
 
-  // experiencing similar issues to analytics hook; is it hooks WC has issues with?
   it.skip('sets tabIndex when alertRef is passed', () => {
     const alertRef = jest.fn();
     renderAlert({ 'alert-ref': alertRef });
@@ -158,8 +154,6 @@ describe('Alert', function () {
       expect(tealiumMock).not.toBeCalled();
     });
 
-    // same issue as Button getting analytics hook working
-    // results are inverted in following 2 tests
     it.skip('disables analytics tracking', () => {
       renderAlert({ heading: 'dialog heading', variation: 'error', analytics: false });
       expect(tealiumMock).not.toBeCalled();
