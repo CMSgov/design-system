@@ -23,23 +23,16 @@ function getPackageVersion(packageName: string): string {
 const getMajorVersion = parseInt;
 const isBetaVersion = (version: string) => version.includes('beta');
 
-export function appendVersions() {
+export function updateVersions() {
   const versions = readJson(versionsFileName);
 
   for (const theme of Object.values(themes)) {
     const currentVersion = getPackageVersion(theme.packageName);
+
+    // Add the new version to the beginning of the list
     versions[theme.packageName].unshift(currentVersion);
-  }
 
-  writeJson(versionsFileName, versions);
-}
-
-export function cullBetaVersions() {
-  const versions = readJson(versionsFileName);
-
-  for (const theme of Object.values(themes)) {
-    const currentVersion = getPackageVersion(theme.packageName);
-
+    // Cull old beta versions in the list
     const isOldBeta = (version: string) => {
       if (!isBetaVersion(version)) {
         return false;
@@ -52,7 +45,6 @@ export function cullBetaVersions() {
 
       return isOld || isBetaForReleasedVersion;
     };
-
     versions[theme.packageName] = versions[theme.packageName].filter(
       (version: string) => !isOldBeta(version)
     );

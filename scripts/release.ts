@@ -1,6 +1,6 @@
 import c from 'chalk';
 import yargs from 'yargs';
-import { appendVersions, cullBetaVersions } from './versions';
+import { updateVersions, cullBetaVersions } from './versions';
 import { confirm } from '@inquirer/prompts';
 import { hideBin } from 'yargs/helpers';
 import { sh, shI, verifyGhInstalled } from './utils';
@@ -68,11 +68,7 @@ async function bumpVersions() {
 
   console.log(c.green('Package versions bumped successfully.'));
   console.log(c.green('Updating versions.json for reference in docs...'));
-  appendVersions();
-  // If this isn't a beta version, we want to clean up previous beta tags
-  if (!tags.some((tag) => tag.includes('beta'))) {
-    cullBetaVersions();
-  }
+  updateVersions();
   sh('git add -u');
   sh('git commit --amend --no-edit');
   console.log(c.green('Updated versions.json.'));
