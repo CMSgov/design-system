@@ -3,7 +3,7 @@ import _ from 'lodash';
 import c from 'chalk';
 import { confirm, select } from '@inquirer/prompts';
 import { writeFileSync } from 'node:fs';
-import { sh, verifyGhInstalled } from './utils';
+import { sh, verifyGhInstalled, versionFromTag } from './utils';
 
 interface PRDetails {
   author: string;
@@ -95,8 +95,7 @@ function getLatestPackageTag(packageName: string): string {
 function getLatestVersions() {
   const versions: Versions = {};
   Object.entries(themes).forEach(([key, theme]) => {
-    const tag = getLatestPackageTag(theme.packageName);
-    versions[key] = tag.replace(/@cmsgov\/.*@(.*)$/, '$1');
+    versions[key] = versionFromTag(getLatestPackageTag(theme.packageName));
   });
   return versions;
 }

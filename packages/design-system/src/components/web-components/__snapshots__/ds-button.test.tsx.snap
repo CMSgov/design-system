@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Analytics overrides analytics event tracking on open 1`] = `
+Array [
+  Object {
+    "button_style": "default",
+    "button_type": "button",
+    "event_action": "engaged default button",
+    "event_category": "ui interaction",
+    "event_extension": "Design system integration",
+    "event_label": "alternate content",
+    "event_name": "button_engagement",
+    "event_type": "ui interaction",
+    "ga_eventAction": "engaged default button",
+    "ga_eventCategory": "ui interaction",
+    "ga_eventLabel": "alternate content",
+    "ga_eventValue": "",
+    "parent_component_heading": " ",
+    "parent_component_type": " ",
+    "text": "alternate content",
+  },
+]
+`;
+
+exports[`Button Analytics sends anchor analytics event 1`] = `
+Array [
+  Object {
+    "button_style": "default",
+    "button_type": "link",
+    "event_action": "engaged default button",
+    "event_category": "ui interaction",
+    "event_extension": "Design system integration",
+    "event_label": "Foo: #/somewhere-over-the-rainbow",
+    "event_name": "button_engagement",
+    "event_type": "ui interaction",
+    "ga_eventAction": "engaged default button",
+    "ga_eventCategory": "ui interaction",
+    "ga_eventLabel": "Foo: #/somewhere-over-the-rainbow",
+    "ga_eventValue": "",
+    "link_url": "#/somewhere-over-the-rainbow",
+    "parent_component_heading": " ",
+    "parent_component_type": " ",
+    "text": "Foo",
+  },
+]
+`;
+
+exports[`Button Analytics sends button analytics event 1`] = `
+Array [
+  Object {
+    "button_style": "default",
+    "button_type": "button",
+    "event_action": "engaged default button",
+    "event_category": "ui interaction",
+    "event_extension": "Design system integration",
+    "event_label": "Foo",
+    "event_name": "button_engagement",
+    "event_type": "ui interaction",
+    "ga_eventAction": "engaged default button",
+    "ga_eventCategory": "ui interaction",
+    "ga_eventLabel": "Foo",
+    "ga_eventValue": "",
+    "parent_component_heading": " ",
+    "parent_component_type": " ",
+    "text": "Foo",
+  },
+]
+`;
+
+exports[`Button renders as an anchor with custom prop 1`] = `
+<a
+  class="ds-c-button"
+  href="/example"
+  parent="[object HTMLElement]"
+  target="_blank"
+>
+  Foo
+</a>
+`;
+
+exports[`Button renders as button 1`] = `
+<button
+  class="ds-c-button"
+  parent="[object HTMLElement]"
+  type="button"
+>
+  Foo
+</button>
+`;
+
+exports[`Button renders disabled anchor correctly 1`] = `
+<a
+  aria-disabled="true"
+  class="ds-c-button"
+  parent="[object HTMLElement]"
+  role="link"
+>
+  Link button
+</a>
+`;
+
+exports[`Button renders disabled button 1`] = `
+<button
+  class="ds-c-button"
+  disabled=""
+  parent="[object HTMLElement]"
+  type="button"
+>
+  Foo
+</button>
+`;

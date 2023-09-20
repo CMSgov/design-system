@@ -1,12 +1,19 @@
 import React from 'react';
-import Badge from './Badge';
 import { render, screen } from '@testing-library/react';
+import './ds-badge';
 
-const defaultProps = {
-  children: 'Foo',
-};
+/* eslint-disable @typescript-eslint/no-namespace */
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'ds-badge': any;
+    }
+  }
+}
+/* eslint-enable */
+
 function renderBadge(props = {}) {
-  return render(<Badge {...defaultProps} {...props} />);
+  return render(<ds-badge {...props}>Foo</ds-badge>);
 }
 
 describe('Badge', () => {
@@ -29,7 +36,7 @@ describe('Badge', () => {
   });
 
   it('should render custom classNames', () => {
-    renderBadge({ className: 'bar' });
+    renderBadge({ 'class-name': 'bar' });
     const badge = screen.getByText('Foo');
     expect(badge.className).toContain('bar');
   });

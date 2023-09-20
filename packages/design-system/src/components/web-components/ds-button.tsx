@@ -16,6 +16,7 @@ const attributes = [
   'analytics-event-type-override',
   'analytics-parent-heading',
   'analytics-parent-type',
+  'target',
 ];
 
 interface WrapperProps extends Omit<ButtonProps, 'isAlternate' | 'onDark' | 'analytics'> {
