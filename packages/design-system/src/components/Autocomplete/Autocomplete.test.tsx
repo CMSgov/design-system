@@ -22,6 +22,14 @@ function open() {
   userEvent.type(autocompleteField, 'c');
 }
 
+function expectMenuToBeOpen() {
+  expect(screen.getByRole('listbox')).toBeInTheDocument();
+}
+
+function expectMenuToBeClosed() {
+  expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
+}
+
 describe('Autocomplete', () => {
   it('renders a closed Autocomplete component', () => {
     const { container } = makeAutocomplete();
@@ -53,10 +61,9 @@ describe('Autocomplete', () => {
 
   it('renders items', () => {
     makeAutocomplete();
-    open();
 
-    const list = screen.getByRole('listbox');
-    expect(list).toBeInTheDocument();
+    open();
+    expectMenuToBeOpen();
 
     const items = screen.getByRole('option');
     expect(items).toBeInTheDocument();
@@ -119,10 +126,9 @@ describe('Autocomplete', () => {
       { id: '5b', name: 'Special item', className: 'custom-class' },
     ];
     makeAutocomplete({ items });
-    open();
 
-    const list = screen.queryByRole('listbox');
-    expect(list).toBeInTheDocument();
+    open();
+    expectMenuToBeOpen();
 
     const listItems = screen.queryAllByRole('option');
     expect(listItems[1]).toHaveClass('custom-class');
@@ -132,7 +138,7 @@ describe('Autocomplete', () => {
   it('renders Autocomplete component without items', () => {
     makeAutocomplete({ items: undefined });
     open();
-    expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
+    expectMenuToBeClosed();
   });
 
   it('renders Autocomplete component no results', () => {
@@ -143,10 +149,18 @@ describe('Autocomplete', () => {
   });
 
   it('shows the menu when open', () => {
-    const { container } = makeAutocomplete();
+    makeAutocomplete();
     open();
-    const child = container.querySelector('.ds-c-autocomplete__menu-container');
-    expect(child).not.toHaveAttribute('hidden');
+    expectMenuToBeOpen();
+  });
+
+  it('opens the menu when focusing on an input that has text in it', () => {
+    makeAutocomplete({
+      children: <TextField label="autocomplete" name="autocomplete_field" value="abc" />,
+    });
+    const autocompleteField = screen.getByRole('combobox');
+    autocompleteField.focus();
+    expectMenuToBeOpen();
   });
 
   it('does not render a clear search button when clearSearchButton is set to false', () => {
@@ -270,18 +284,17 @@ describe('Autocomplete', () => {
   });
 
   it('Closes the listbox when ESC is pressed', () => {
-    const { container } = makeAutocomplete();
+    makeAutocomplete();
     const autocompleteField = screen.getByRole('combobox') as HTMLInputElement;
     userEvent.click(autocompleteField);
     userEvent.type(autocompleteField, 'c');
 
-    const menuContainer = container.querySelector('.ds-c-autocomplete__menu-container');
-    expect(menuContainer).toBeInTheDocument();
+    expectMenuToBeOpen();
 
     expect(autocompleteField.value).toEqual('c');
 
     userEvent.type(autocompleteField, '{esc}');
 
-    expect(menuContainer).not.toBeInTheDocument();
+    expectMenuToBeClosed();
   });
 });
