@@ -1,6 +1,6 @@
-import { define } from 'preactement';
+import register from '@amindunited/preact-custom-element';
 import Badge from '../Badge/Badge';
 
 const attributes = ['class-name', 'size', 'variation'];
 
-define('ds-badge', () => Badge, { attributes });
+register(Badge, 'ds-badge', attributes as any);
