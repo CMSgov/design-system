@@ -243,11 +243,14 @@ export const Autocomplete = (props: AutocompleteProps) => {
     id,
     labelId,
     inputRef: mergeRefs([inputRef, userInputRef]),
+    // Restores previous functionality where if you had typed characters into the text
+    // field to get results and then blur away and come back, it'll open the results
+    // list again without having to press anything on the keyboard.
+    onFocus: (event) => {
+      useComboboxProps.inputProps.onFocus?.(event);
+      state.open();
+    },
   };
-  // My hypothesis is that the special stuff they're doing to keyboard events (what I
-  // wrote a PR to Adobe Spectrum about) is interfering with its ability to pick up on
-  // the keyboard controls. It works in React but not Preact.
-  // console.log(textFieldProps.onKeyDown)
 
   const rootClassName = classNames('ds-c-autocomplete', className);
 
