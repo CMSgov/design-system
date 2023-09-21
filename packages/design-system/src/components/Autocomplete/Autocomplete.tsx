@@ -132,6 +132,23 @@ export interface AutocompleteProps {
 }
 
 /**
+ * The Autocomplete component wraps a TextField component and turns it into a combobox,
+ * where a user can type into the text field and see matching results. They can then
+ * select one of these results from the list, which will trigger an `onChange` event on
+ * the Autocomplete.
+ *
+ * The two event handlers that should be used when this is a controlled component are
+ * `onChange` and `onInputValueChange`. They are defined on the Autocomplete component
+ * and not its child TextField component.
+ *
+ * As the user types and `onInputValueChange` is called, you should be supplying relevant
+ * results to the Autocomplete through the `items` prop. The `items` prop is an array of
+ * objects. Passing an empty array will show a "No results" message. If you do not yet
+ * want to show results—for instance, because they haven't typed enough characters yet to
+ * make a database call—the `items` prop should remain be undefined. If you are still
+ * loading the results, use the `loading` boolean prop to display the loading message to
+ * the user.
+ *
  * For information about how and when to use this component,
  * [refer to its full documentation page](https://design.cms.gov/components/autocomplete/).
  */
