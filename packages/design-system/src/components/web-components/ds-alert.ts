@@ -31,4 +31,6 @@ declare global {
   }
 }
 
+console.log('hello')
+
 export default define('ds-alert', () => Alert, { attributes });

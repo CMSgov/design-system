@@ -1,5 +1,5 @@
 import React from 'react';
-import './ds-alert';
+// import './ds-alert';
 
 export default {
   title: 'Web Components/Alert',
@@ -31,3 +31,9 @@ export const Default = Template.bind({});
 // styles correctly. I really wish I knew what was going on. If I refresh the page, it
 // goes back to being broken. Oh, and this is if I remove all the web-components imports
 // in the storybook preview.tsx file.
+
+// I think I figured out why. The `define` function will only return a component function
+// [if it detects that `window` is undefined](https://github.com/jahilldev/component-elements/blob/main/packages/preactement/src/define.ts#L31C1-L32).
+// Somehow during hot reloading it must think that window is undefined and return a
+// component function, which is actually just basically a Preact component and not a true
+// web component
