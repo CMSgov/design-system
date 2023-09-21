@@ -1,7 +1,7 @@
 @use '../layout' as *;
 
 @mixin badge-high-contrast-mode-remove-color() {
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     background-color: windowText;
     color: window;
     forced-color-adjust: none;
@@ -24,7 +24,7 @@
   }
 
   > span {
-    @media (-ms-high-contrast: active), (forced-colors: active) {
+    @media (forced-colors: active) {
       border: none;
       clip: auto;
       height: auto;

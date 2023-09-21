@@ -113,7 +113,7 @@
   display: flex; // Prevents text from wrapping under icon
   font-weight: var(--font-weight-bold);
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     background-color: WindowText;
     color: Window;
     forced-color-adjust: none;
@@ -124,7 +124,7 @@
 .ds-c-dropdown__menu-item-selected-indicator {
   padding-inline-end: var(--spacer-1);
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     .ds-c-icon path {
       fill: currentColor;
     }

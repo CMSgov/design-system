@@ -92,7 +92,7 @@
   vertical-align: middle;
   width: 1em;
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     fill: ButtonText;
   }
 }

@@ -34,7 +34,7 @@
     }
   }
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     border: 1px solid windowText;
     border-inline-start: var(--alert-bar__width) solid windowText;
   }
@@ -47,7 +47,7 @@
 .ds-c-alert__a11y-label {
   margin-inline-end: 0.5rem;
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     /* stylelint-disable declaration-no-important -- needed to overwrite screen reader utility styles */
     border: none !important;
     clip: auto !important;
