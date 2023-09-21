@@ -194,7 +194,7 @@ describe('Autocomplete', () => {
     });
   });
 
-  it('Should set the input value correctly when a listbox selection is clicked', () => {
+  it('should set the input value correctly when a listbox selection is clicked', () => {
     const onChange = jest.fn();
     makeAutocomplete({ onChange });
     const autocompleteField = screen.getByRole('combobox') as HTMLInputElement;
@@ -208,7 +208,7 @@ describe('Autocomplete', () => {
     expect(onChange).toHaveBeenCalledWith(defaultItems[0]);
   });
 
-  it('Should set the input value to empty when "Clear search" is clicked', () => {
+  it('should set the input value to empty when "Clear search" is clicked', () => {
     makeAutocomplete();
     const autocompleteField = screen.getByRole('combobox') as HTMLInputElement;
     userEvent.click(autocompleteField);
@@ -223,7 +223,7 @@ describe('Autocomplete', () => {
     expect(autocompleteField.value).toBe('');
   });
 
-  it('Should call onChange with null item when "Clear search" is clicked', () => {
+  it('should call onChange with null item when "Clear search" is clicked', () => {
     const onChange = jest.fn();
     makeAutocomplete({ onChange });
     const autocompleteField = screen.getByRole('combobox') as HTMLInputElement;
@@ -240,7 +240,7 @@ describe('Autocomplete', () => {
     expect(onChange).toHaveBeenLastCalledWith(null);
   });
 
-  it('Should select list items by keyboard', () => {
+  it('should select list items by keyboard', () => {
     const onChange = jest.fn();
     makeAutocomplete({ onChange });
     const autocompleteField = screen.getByRole('combobox') as HTMLInputElement;
@@ -253,7 +253,7 @@ describe('Autocomplete', () => {
     expect(onChange).toHaveBeenCalledWith(defaultItems[0]);
   });
 
-  it('Should not call onChange when an item was not selected', () => {
+  it('should not call onChange when an item was not selected', () => {
     const onChange = jest.fn();
     makeAutocomplete({ onChange });
     const autocompleteField = screen.getByRole('combobox') as HTMLInputElement;
@@ -264,7 +264,7 @@ describe('Autocomplete', () => {
     expect(onChange).not.toHaveBeenCalled();
   });
 
-  it('Should clear the input value by keyboard', () => {
+  it('should clear the input value by keyboard', () => {
     makeAutocomplete();
     const autocompleteField = screen.getByRole('combobox') as HTMLInputElement;
     autocompleteField.focus();
@@ -283,7 +283,7 @@ describe('Autocomplete', () => {
     expect(autocompleteField.value).toBe('');
   });
 
-  it('Closes the listbox when ESC is pressed', () => {
+  it('closes the listbox when ESC is pressed', () => {
     makeAutocomplete();
     const autocompleteField = screen.getByRole('combobox') as HTMLInputElement;
     userEvent.click(autocompleteField);
@@ -296,5 +296,26 @@ describe('Autocomplete', () => {
     userEvent.type(autocompleteField, '{esc}');
 
     expectMenuToBeClosed();
+  });
+
+  it("calls child TextField's event handlers", () => {
+    const props = {
+      label: 'autocomplete',
+      name: 'autocomplete_field',
+      onFocus: jest.fn(),
+      onChange: jest.fn(),
+      onKeyDown: jest.fn(),
+      // onTouchEnd : jest.fn(), Doesn't look like we can actually test onTouchEnd
+      onBlur: jest.fn(),
+    };
+    makeAutocomplete({ children: <TextField {...props} /> });
+    const field = screen.getByRole('combobox');
+    userEvent.click(field);
+    expect(props.onFocus).toHaveBeenCalledTimes(1);
+    userEvent.type(field, 'c');
+    expect(props.onKeyDown).toHaveBeenCalledTimes(1);
+    expect(props.onChange).toHaveBeenCalledTimes(1);
+    userEvent.tab();
+    expect(props.onBlur).toHaveBeenCalledTimes(1);
   });
 });
