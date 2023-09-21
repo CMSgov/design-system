@@ -1,5 +1,6 @@
 import React from 'react';
-// import './ds-alert';
+import DsAlert from './ds-alert';
+console.log(DsAlert);
 
 export default {
   title: 'Web Components/Alert',
