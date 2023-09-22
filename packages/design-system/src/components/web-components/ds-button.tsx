@@ -1,5 +1,5 @@
 import React from 'react';
-import register from '@amindunited/preact-custom-element';
+import { define } from 'preactement';
 import Button, { ButtonProps } from '../Button/Button';
 
 const attributes = [
@@ -21,11 +21,11 @@ const attributes = [
 
 interface WrapperProps extends Omit<ButtonProps, 'isAlternate' | 'onDark' | 'analytics'> {
   analytics?: string;
-  'is-alternate'?: string;
-  'on-dark'?: string;
+  isAlternate?: string;
+  onDark?: string;
 }
 
-const Wrapper = ({ 'is-alternate': isAlternate, 'on-dark': onDark, analytics, ...otherProps }: WrapperProps) => (
+const Wrapper = ({ isAlternate, onDark, analytics, ...otherProps }: WrapperProps) => (
   <Button
     {...otherProps}
     {...{
@@ -36,4 +36,4 @@ const Wrapper = ({ 'is-alternate': isAlternate, 'on-dark': onDark, analytics, ..
   />
 );
 
-register(Wrapper, 'ds-button', attributes as any);
+define('ds-button', () => Wrapper, { attributes });

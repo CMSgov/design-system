@@ -1,4 +1,4 @@
-import register from '@amindunited/preact-custom-element';
+import { define } from 'preactement';
 import Dropdown from '../Dropdown/Dropdown';
 
 const attributes = [
@@ -30,4 +30,4 @@ declare global {
   }
 }
 
-register(Dropdown, 'ds-dropdown', attributes as any);
+define('ds-dropdown', () => Dropdown, {attributes} as any);

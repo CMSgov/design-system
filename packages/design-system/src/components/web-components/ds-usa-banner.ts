@@ -1,6 +1,6 @@
-import register from '@amindunited/preact-custom-element';
+import { define } from 'preactement';
 import UsaBanner from '../UsaBanner/UsaBanner';
 
 const attributes = ['class-name', 'id'];
 
-register(UsaBanner, 'ds-usa-banner', attributes as any);
+define('ds-usa-banner', () => UsaBanner, { attributes });
