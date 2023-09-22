@@ -265,7 +265,26 @@ export const Autocomplete = (props: AutocompleteProps) => {
     // list again without having to press anything on the keyboard.
     onFocus: (event) => {
       useComboboxProps.inputProps.onFocus?.(event);
+      textField.props.onFocus?.(event);
       state.open();
+    },
+    // Allow the user to continue to attach their own event handlers to the TextField.
+    // The following event handlers would normally be overwritten by useCombobox.
+    onChange: (event) => {
+      useComboboxProps.inputProps.onChange?.(event);
+      textField.props.onChange?.(event);
+    },
+    onBlur: (event) => {
+      useComboboxProps.inputProps.onBlur?.(event);
+      textField.props.onBlur?.(event);
+    },
+    onTouchEnd: (event) => {
+      useComboboxProps.inputProps.onTouchEnd?.(event);
+      textField.props.onTouchEnd?.(event);
+    },
+    onKeyDown: (event) => {
+      useComboboxProps.inputProps.onKeyDown?.(event);
+      textField.props.onKeyDown?.(event);
     },
   };
 
