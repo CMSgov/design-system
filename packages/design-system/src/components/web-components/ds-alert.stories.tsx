@@ -18,9 +18,13 @@ export default {
 };
 
 const Template = (args) => (
-  <ds-alert variation={args.variation} heading={args.heading}>
-    This is an example of a success alert. If you want to see an error alert, click the button
-    below.
+  <ds-alert variation={args.variation} heading={args.heading} key={JSON.stringify(args)}>
+    {args.children ?? (
+      <>
+        This is an example of a success alert. If you want to see an error alert, click the button
+        below.
+      </>
+    )}
   </ds-alert>
 );
 
