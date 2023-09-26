@@ -24,7 +24,7 @@ export interface HintProps {
 }
 
 export const Hint = ({ children, id, inversed, requirementLabel }: HintProps) => {
-  const hintClasses = classNames('ds-c-field__hint', inversed && 'ds-c-field__hint--inverse');
+  const hintClasses = classNames('ds-c-hint', inversed && 'ds-c-hint--inverse');
 
   let hintPadding;
   if (requirementLabel && children) {

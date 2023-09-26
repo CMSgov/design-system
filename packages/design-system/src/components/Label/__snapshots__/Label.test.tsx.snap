@@ -10,7 +10,7 @@ exports[`Label adds punctuation to requirementLabel when hint is also present 1`
 
 exports[`Label is inversed 1`] = `
 <div
-  class="ds-c-field__hint ds-c-field__hint--inverse"
+  class="ds-c-hint ds-c-hint--inverse"
 >
   Foo
 </div>

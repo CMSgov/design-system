@@ -24,7 +24,7 @@
   }
 
   .ds-c-label,
-  .ds-c-field__hint--inverse,
+  .ds-c-hint--inverse,
   .ds-c-inline-error {
     max-width: max-content;
   }
@@ -68,7 +68,7 @@ label,
   }
 }
 
-.ds-c-choice-wrapper > .ds-c-field__hint {
+.ds-c-choice-wrapper > .ds-c-hint {
   grid-area: hint;
 }
 

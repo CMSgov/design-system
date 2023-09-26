@@ -14,7 +14,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
       Months
     </legend>
     <div
-      class="ds-c-field__hint"
+      class="ds-c-hint"
       id="month-picker--1__hint"
     >
       Guess and test

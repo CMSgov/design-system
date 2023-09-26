@@ -14,7 +14,7 @@ exports[`ChoiceList Radio buttons and Checkboxes is a radio button group 1`] = `
       Foo
     </legend>
     <div
-      class="ds-c-field__hint"
+      class="ds-c-hint"
       id="static-id__hint"
     >
       Psst! I know the answer

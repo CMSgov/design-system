@@ -82,7 +82,7 @@ describe('Label', () => {
     render(<Label {...props}>{labelText}</Label>);
 
     const inversedHint = screen.getByText('Foo');
-    expect(inversedHint).toHaveClass('ds-c-field__hint ds-c-field__hint--inverse');
+    expect(inversedHint).toHaveClass('ds-c-hint ds-c-hint--inverse');
     expect(inversedHint).toMatchSnapshot();
   });
 

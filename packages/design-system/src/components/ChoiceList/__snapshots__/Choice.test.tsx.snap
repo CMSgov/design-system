@@ -98,7 +98,7 @@ exports[`Choice has a hint and requirementLabel 1`] = `
         George Washington
       </label>
       <div
-        class="ds-c-field__hint"
+        class="ds-c-hint"
         id="static-id__hint"
       >
         Optional. Hello world
