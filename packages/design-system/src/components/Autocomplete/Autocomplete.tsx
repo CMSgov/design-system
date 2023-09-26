@@ -294,7 +294,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
     // If the items come in significantly later than when the user started typing,
     // react-stately will not realize that it should be showing those results. There
     // might be items, but `isOpen` will be false 🤦‍♂️.
-    if (items && items !== oldItems && items.length !== oldItems?.length) {
+    if (state.isFocused && items && items !== oldItems && items.length !== oldItems?.length) {
       state.open();
     }
   }, [items]);
