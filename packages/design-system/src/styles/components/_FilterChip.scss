@@ -65,7 +65,7 @@
     top: 3px;
     width: 10px;
 
-    @media (-ms-high-contrast: active), (forced-colors: active) {
+    @media (forced-colors: active) {
       path {
         fill: ButtonText;
       }

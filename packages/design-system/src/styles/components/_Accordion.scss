@@ -33,7 +33,7 @@
     @include mixins.focus-styles;
   }
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     background-color: LinkText;
     color: window;
     forced-color-adjust: none;
@@ -55,7 +55,7 @@
     height: 1.25em;
     width: 1.25em;
 
-    @media (-ms-high-contrast: active), (forced-colors: active) {
+    @media (forced-colors: active) {
       path {
         fill: Window;
       }

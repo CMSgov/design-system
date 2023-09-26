@@ -19,7 +19,7 @@
   font-weight: var(--font-weight-normal);
   padding: 0;
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     padding: $spacer-half $spacer-2;
   }
 }
@@ -58,7 +58,7 @@
     max-width: var(--measure-base);
   }
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     border: 1px solid WindowText;
     border-left: $spacer-3 solid WindowText;
   }
@@ -88,7 +88,7 @@
     flex: 0 0 auto;
   }
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     border-block-end: 1px solid ButtonText;
   }
 }
@@ -130,7 +130,7 @@
     flex: 1 1 auto;
   }
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     border-block-start: 1px solid ButtonText;
   }
 }
