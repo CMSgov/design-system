@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import Button from '../Button/Button';
 import DropdownMenu from '../Dropdown/DropdownMenu';
 import classNames from 'classnames';
@@ -14,7 +14,6 @@ import {
 import { t } from '../i18n';
 import { useComboBox } from '../react-aria'; // from react-aria
 import { useComboBoxState } from '../react-aria'; // from react-stately
-import usePrevious from '../utilities/usePrevious';
 
 export interface AutocompleteItem extends Omit<React.HTMLAttributes<'option'>, 'name'> {
   /**
@@ -288,16 +287,6 @@ export const Autocomplete = (props: AutocompleteProps) => {
       textField.props.onKeyDown?.(event);
     },
   };
-
-  const oldItems = usePrevious(items);
-  useEffect(() => {
-    // If the items come in significantly later than when the user started typing,
-    // react-stately will not realize that it should be showing those results. There
-    // might be items, but `isOpen` will be false 🤦‍♂️.
-    if (items && items !== oldItems && items.length !== oldItems?.length) {
-      state.open();
-    }
-  }, [items]);
 
   const rootClassName = classNames('ds-c-autocomplete', className);
 
