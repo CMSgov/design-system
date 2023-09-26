@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FormLabel adds punctuation to requirementLabel when hint is also present 1`] = `
+exports[`Label adds punctuation to requirementLabel when hint is also present 1`] = `
 <label
   class="ds-c-label"
 >
@@ -8,7 +8,7 @@ exports[`FormLabel adds punctuation to requirementLabel when hint is also presen
 </label>
 `;
 
-exports[`FormLabel is inversed 1`] = `
+exports[`Label is inversed 1`] = `
 <div
   class="ds-c-field__hint ds-c-field__hint--inverse"
 >
@@ -16,7 +16,7 @@ exports[`FormLabel is inversed 1`] = `
 </div>
 `;
 
-exports[`FormLabel renders as a legend element 1`] = `
+exports[`Label renders as a legend element 1`] = `
 <legend
   class="ds-c-label"
 >
@@ -24,7 +24,7 @@ exports[`FormLabel renders as a legend element 1`] = `
 </legend>
 `;
 
-exports[`FormLabel renders label text 1`] = `
+exports[`Label renders label text 1`] = `
 <label
   class="ds-c-label"
   for="name"
@@ -33,7 +33,7 @@ exports[`FormLabel renders label text 1`] = `
 </label>
 `;
 
-exports[`FormLabel renders requirementLabel 1`] = `
+exports[`Label renders requirementLabel 1`] = `
 <label
   class="ds-c-label"
 >
@@ -41,7 +41,7 @@ exports[`FormLabel renders requirementLabel 1`] = `
 </label>
 `;
 
-exports[`FormLabel supports additional attributes 1`] = `
+exports[`Label supports additional attributes 1`] = `
 <label
   aria-label="testing aria"
   class="ds-c-label ds-u-foo"

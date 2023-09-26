@@ -1,2 +1,2 @@
-export { default as FormLabel } from './FormLabel';
+export { Label as FormLabel } from '../Label';
 export * from './useFormLabel';

@@ -1,5 +1,5 @@
 import EvEmitter from 'ev-emitter';
-import FormLabel from '../FormLabel/FormLabel';
+import { Label } from '../Label';
 import React from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
@@ -266,7 +266,7 @@ export class Choice extends React.PureComponent<
             }}
             {...inputProps}
           />
-          <FormLabel
+          <Label
             className={labelClassName}
             fieldId={this.id}
             hintId={this.hintId}
@@ -278,7 +278,7 @@ export class Choice extends React.PureComponent<
             }}
           >
             {label}
-          </FormLabel>
+          </Label>
         </div>
         {this.checked() ? checkedChildren : uncheckedChildren}
       </div>

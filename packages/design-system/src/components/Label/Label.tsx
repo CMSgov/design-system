@@ -2,8 +2,8 @@ import React from 'react';
 import classNames from 'classnames';
 import { FieldHint } from '../FieldHint/FieldHint';
 
-export type FormLabelComponent = 'label' | 'legend';
-export interface FormLabelProps {
+export type LabelComponent = 'label' | 'legend';
+export interface LabelProps {
   /**
    * Label text or HTML.
    */
@@ -13,13 +13,13 @@ export interface FormLabelProps {
    */
   className?: string;
   /** The root HTML element used to render the label */
-  component?: FormLabelComponent;
+  component?: LabelComponent;
   /**
    * Enable the error state by providing an error message.
    */
   errorMessage?: React.ReactNode;
   /**
-   * @deprecated The FormLabel is no longer responsible for rendering the
+   * @deprecated The Label is no longer responsible for rendering the
    * error element from a string. A FieldError should be passed to it which
    * already has an errorId applied.
    * @hide-prop [Deprecated]
@@ -62,13 +62,13 @@ export interface FormLabelProps {
 
 type ComponentProps = React.ComponentPropsWithRef<'label'> &
   React.ComponentPropsWithRef<'legend'> &
-  FormLabelProps;
+  LabelProps;
 
 /**
  * For information about how and when to use this component,
  * [refer to its full documentation page](https://design.cms.gov/components/form-label/).
  */
-export const FormLabel = (props: ComponentProps) => {
+export const Label = (props: ComponentProps) => {
   const {
     fieldId,
     id,
@@ -119,6 +119,6 @@ export const FormLabel = (props: ComponentProps) => {
   );
 };
 
-FormLabel.defaultProps = { component: 'label' };
+Label.defaultProps = { component: 'label' };
 
-export default FormLabel;
+export default Label;

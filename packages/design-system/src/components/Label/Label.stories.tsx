@@ -1,5 +1,5 @@
 import React from 'react';
-import FormLabel from './FormLabel';
+import FormLabel from './Label';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof FormLabel> = {

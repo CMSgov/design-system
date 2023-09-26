@@ -1,13 +1,13 @@
 import React from 'react';
-import FormLabel from './FormLabel';
+import Label from './Label';
 import { render, screen } from '@testing-library/react';
 
-describe('FormLabel', () => {
+describe('Label', () => {
   const labelText = 'Hello world';
 
   it('renders label text', () => {
     const props = { fieldId: 'name' };
-    render(<FormLabel {...props}>{labelText}</FormLabel>);
+    render(<Label {...props}>{labelText}</Label>);
 
     const label = screen.getByText(labelText);
     expect(label).toBeInTheDocument();
@@ -19,7 +19,7 @@ describe('FormLabel', () => {
       errorMessage: <span>Nah, try again.</span>,
       fieldId: 'name',
     };
-    render(<FormLabel {...props}>{labelText}</FormLabel>);
+    render(<Label {...props}>{labelText}</Label>);
 
     const error = screen.getByText('Nah, try again.');
     expect(error).toBeInTheDocument();
@@ -27,7 +27,7 @@ describe('FormLabel', () => {
 
   it('renders hint string', () => {
     const props = { hint: 'President #44' };
-    render(<FormLabel {...props}>{labelText}</FormLabel>);
+    render(<Label {...props}>{labelText}</Label>);
 
     const hint = screen.getByText('President #44');
     expect(hint).toBeInTheDocument();
@@ -37,7 +37,7 @@ describe('FormLabel', () => {
     const props = {
       hint: <strong>President #44</strong>,
     };
-    render(<FormLabel {...props}>{labelText}</FormLabel>);
+    render(<Label {...props}>{labelText}</Label>);
 
     const hint = screen.getByText('President #44');
     expect(hint).toBeInTheDocument();
@@ -47,7 +47,7 @@ describe('FormLabel', () => {
     const props = {
       requirementLabel: <em>It is really optional</em>,
     };
-    const { container } = render(<FormLabel {...props}>{labelText}</FormLabel>);
+    const { container } = render(<Label {...props}>{labelText}</Label>);
 
     const requirement = container.querySelector('label');
     expect(requirement).toBeInTheDocument();
@@ -60,14 +60,14 @@ describe('FormLabel', () => {
       requirementLabel: React.ReactNode;
     }
     const props: PropDef = { hint: 'Hint', requirementLabel: 'Optional' };
-    const { container } = render(<FormLabel {...props}>{labelText}</FormLabel>);
+    const { container } = render(<Label {...props}>{labelText}</Label>);
 
     const label = container.querySelector('label');
     expect(label).toMatchSnapshot();
   });
 
   it('renders as a legend element', () => {
-    const { container } = render(<FormLabel component="legend">{labelText}</FormLabel>);
+    const { container } = render(<Label component="legend">{labelText}</Label>);
 
     const legend = container.querySelector('legend');
     expect(legend).toBeInTheDocument();
@@ -79,7 +79,7 @@ describe('FormLabel', () => {
       hint: 'Foo',
       inversed: true,
     };
-    render(<FormLabel {...props}>{labelText}</FormLabel>);
+    render(<Label {...props}>{labelText}</Label>);
 
     const inversedHint = screen.getByText('Foo');
     expect(inversedHint).toHaveClass('ds-c-field__hint ds-c-field__hint--inverse');
@@ -88,7 +88,7 @@ describe('FormLabel', () => {
 
   it('supports additional attributes', () => {
     const props = { className: 'ds-u-foo', 'aria-label': 'testing aria' };
-    const { container } = render(<FormLabel {...props}>{labelText}</FormLabel>);
+    const { container } = render(<Label {...props}>{labelText}</Label>);
 
     const label = container.querySelector('label');
     expect(label).toHaveAttribute('aria-label', 'testing aria');

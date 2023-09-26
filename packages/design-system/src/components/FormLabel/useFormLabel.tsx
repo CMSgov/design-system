@@ -3,7 +3,7 @@ import FieldError from '../FieldError/FieldError';
 import classNames from 'classnames';
 import mergeIds from '../utilities/mergeIds';
 import useId from '../utilities/useId';
-import { FormLabelProps } from '../FormLabel/FormLabel';
+import { LabelProps } from '../Label';
 import { errorPlacementDefault } from '../flags';
 
 // TODO: Reimplement focusTrigger in another place, like another hook
@@ -11,7 +11,7 @@ import { errorPlacementDefault } from '../flags';
 // Some of the FormLabel's props we pass on to the component prop definitions.
 // TODO: This could use a better name
 type PassedOnFormLabelProps = Omit<
-  FormLabelProps,
+  LabelProps,
   'children' | 'className' | 'component' | 'fieldId' | 'id' | 'errorMessage'
 >;
 

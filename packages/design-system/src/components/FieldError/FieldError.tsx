@@ -5,7 +5,7 @@ import { t } from '../i18n';
 import useId from '../utilities/useId';
 
 /**
- * <FieldError> is an internal component used by <FormLabel>
+ * <FieldError> is an internal component used by <Label>
  * <FieldError> is also exported for advanced design system use cases, where the internal component can be leveraged to build custom form components
  */
 
