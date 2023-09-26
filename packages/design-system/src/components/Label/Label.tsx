@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { FieldHint } from '../FieldHint/FieldHint';
+import { Hint } from '../Hint/Hint';
 
 export type LabelComponent = 'label' | 'legend';
 export interface LabelProps {
@@ -94,9 +94,9 @@ export const Label = (props: ComponentProps) => {
   let hintElement;
   if (hint || requirementLabel) {
     hintElement = (
-      <FieldHint requirementLabel={requirementLabel} inversed={inversed} id={hintId}>
+      <Hint requirementLabel={requirementLabel} inversed={inversed} id={hintId}>
         {hint}
-      </FieldHint>
+      </Hint>
     );
   }
 
