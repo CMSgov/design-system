@@ -13,7 +13,11 @@ function makeAutocomplete(customProps = {}) {
     id: 'static-id',
     ...customProps,
   };
-  return render(<Autocomplete {...props} />);
+  return <Autocomplete {...props} />;
+}
+
+function renderAutocomplete(customProps = {}) {
+  return render(makeAutocomplete(customProps));
 }
 
 function open() {
@@ -30,9 +34,13 @@ function expectMenuToBeClosed() {
   expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
 }
 
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 describe('Autocomplete', () => {
   it('renders a closed Autocomplete component', () => {
-    const { container } = makeAutocomplete();
+    const { container } = renderAutocomplete();
 
     const wrapperEl = container.querySelectorAll('.ds-c-autocomplete');
     expect(wrapperEl.length).toEqual(1);
@@ -60,7 +68,7 @@ describe('Autocomplete', () => {
   });
 
   it('renders items', () => {
-    makeAutocomplete();
+    renderAutocomplete();
 
     open();
     expectMenuToBeOpen();
@@ -106,14 +114,14 @@ describe('Autocomplete', () => {
       },
     ];
 
-    makeAutocomplete({ items });
+    renderAutocomplete({ items });
     open();
     const ul = screen.getByRole('listbox');
     expect(ul).toMatchSnapshot();
   });
 
   it('generates ids when no id is provided', () => {
-    makeAutocomplete({ id: undefined });
+    renderAutocomplete({ id: undefined });
     open();
     const idRegex = /autocomplete--\d+/;
     expect(screen.getByRole('listbox').id).toMatch(idRegex);
@@ -125,7 +133,7 @@ describe('Autocomplete', () => {
       { id: '1a', name: 'Normal item' },
       { id: '5b', name: 'Special item', className: 'custom-class' },
     ];
-    makeAutocomplete({ items });
+    renderAutocomplete({ items });
 
     open();
     expectMenuToBeOpen();
@@ -136,26 +144,26 @@ describe('Autocomplete', () => {
   });
 
   it('renders Autocomplete component without items', () => {
-    makeAutocomplete({ items: undefined });
+    renderAutocomplete({ items: undefined });
     open();
     expectMenuToBeClosed();
   });
 
   it('renders Autocomplete component no results', () => {
-    makeAutocomplete({ items: [] });
+    renderAutocomplete({ items: [] });
     open();
     expect(screen.queryByRole('listbox').children.length).toEqual(1);
     expect(screen.queryByRole('option')).toHaveTextContent('No results');
   });
 
   it('shows the menu when open', () => {
-    makeAutocomplete();
+    renderAutocomplete();
     open();
     expectMenuToBeOpen();
   });
 
   it('opens the menu when focusing on an input that has text in it', () => {
-    makeAutocomplete({
+    renderAutocomplete({
       children: <TextField label="autocomplete" name="autocomplete_field" value="abc" />,
     });
     const autocompleteField = screen.getByRole('combobox');
@@ -163,14 +171,24 @@ describe('Autocomplete', () => {
     expectMenuToBeOpen();
   });
 
+  it('opens the menu if typing resulted in results that were delayed by async data fetching', async () => {
+    const { rerender } = renderAutocomplete({ items: undefined });
+    const autocompleteField = screen.getByRole('combobox');
+    userEvent.click(autocompleteField);
+    userEvent.type(autocompleteField, 'ac');
+    await sleep(100);
+    rerender(makeAutocomplete({ items: defaultItems }));
+    expectMenuToBeOpen();
+  });
+
   it('does not render a clear search button when clearSearchButton is set to false', () => {
-    makeAutocomplete({ clearSearchButton: false });
+    renderAutocomplete({ clearSearchButton: false });
 
     expect(screen.queryByRole('button')).not.toBeInTheDocument();
   });
 
   it('renders custom class names', () => {
-    const { container } = makeAutocomplete({ className: 'additional-class' });
+    const { container } = renderAutocomplete({ className: 'additional-class' });
     const child = container.querySelector('.ds-c-autocomplete');
 
     expect(child).toHaveClass('additional-class');
@@ -178,7 +196,7 @@ describe('Autocomplete', () => {
 
   describe('default props', () => {
     it('defaults ariaClearLabel', () => {
-      makeAutocomplete();
+      renderAutocomplete();
       const button = screen.getByRole('button');
       expect(button).toBeInTheDocument();
 
@@ -186,7 +204,7 @@ describe('Autocomplete', () => {
     });
 
     it('defaults clearInputText', () => {
-      makeAutocomplete();
+      renderAutocomplete();
       const button = screen.getByRole('button');
       expect(button).toBeInTheDocument();
 
@@ -196,7 +214,7 @@ describe('Autocomplete', () => {
 
   it('should set the input value correctly when a listbox selection is clicked', () => {
     const onChange = jest.fn();
-    makeAutocomplete({ onChange });
+    renderAutocomplete({ onChange });
     const autocompleteField = screen.getByRole('combobox') as HTMLInputElement;
     userEvent.click(autocompleteField);
     userEvent.type(autocompleteField, 'c');
@@ -209,7 +227,7 @@ describe('Autocomplete', () => {
   });
 
   it('should set the input value to empty when "Clear search" is clicked', () => {
-    makeAutocomplete();
+    renderAutocomplete();
     const autocompleteField = screen.getByRole('combobox') as HTMLInputElement;
     userEvent.click(autocompleteField);
     userEvent.type(autocompleteField, 'c');
@@ -225,7 +243,7 @@ describe('Autocomplete', () => {
 
   it('should call onChange with null item when "Clear search" is clicked', () => {
     const onChange = jest.fn();
-    makeAutocomplete({ onChange });
+    renderAutocomplete({ onChange });
     const autocompleteField = screen.getByRole('combobox') as HTMLInputElement;
     userEvent.click(autocompleteField);
     userEvent.type(autocompleteField, 'c');
@@ -242,7 +260,7 @@ describe('Autocomplete', () => {
 
   it('should select list items by keyboard', () => {
     const onChange = jest.fn();
-    makeAutocomplete({ onChange });
+    renderAutocomplete({ onChange });
     const autocompleteField = screen.getByRole('combobox') as HTMLInputElement;
     userEvent.click(autocompleteField);
     userEvent.type(autocompleteField, 'c');
@@ -255,7 +273,7 @@ describe('Autocomplete', () => {
 
   it('should not call onChange when an item was not selected', () => {
     const onChange = jest.fn();
-    makeAutocomplete({ onChange });
+    renderAutocomplete({ onChange });
     const autocompleteField = screen.getByRole('combobox') as HTMLInputElement;
     userEvent.click(autocompleteField);
     userEvent.type(autocompleteField, 'c');
@@ -265,7 +283,7 @@ describe('Autocomplete', () => {
   });
 
   it('should clear the input value by keyboard', () => {
-    makeAutocomplete();
+    renderAutocomplete();
     const autocompleteField = screen.getByRole('combobox') as HTMLInputElement;
     autocompleteField.focus();
     userEvent.click(autocompleteField);
@@ -284,7 +302,7 @@ describe('Autocomplete', () => {
   });
 
   it('closes the listbox when ESC is pressed', () => {
-    makeAutocomplete();
+    renderAutocomplete();
     const autocompleteField = screen.getByRole('combobox') as HTMLInputElement;
     userEvent.click(autocompleteField);
     userEvent.type(autocompleteField, 'c');
@@ -308,7 +326,7 @@ describe('Autocomplete', () => {
       // onTouchEnd : jest.fn(), Doesn't look like we can actually test onTouchEnd
       onBlur: jest.fn(),
     };
-    makeAutocomplete({ children: <TextField {...props} /> });
+    renderAutocomplete({ children: <TextField {...props} /> });
     const field = screen.getByRole('combobox');
     userEvent.click(field);
     expect(props.onFocus).toHaveBeenCalledTimes(1);
