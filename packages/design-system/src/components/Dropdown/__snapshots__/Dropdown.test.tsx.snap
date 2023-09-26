@@ -213,7 +213,7 @@ exports[`Dropdown shows error message 1`] = `
 <span
   aria-atomic="true"
   aria-live="assertive"
-  class="ds-c-inline-error ds-c-field__error-message"
+  class="ds-c-inline-error"
   id="my-error"
 >
   <svg

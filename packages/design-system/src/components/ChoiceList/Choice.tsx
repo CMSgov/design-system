@@ -4,7 +4,7 @@ import React from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
 import mergeIds from '../utilities/mergeIds';
-import { FieldError } from '../FieldError';
+import { InlineError } from '../InlineError';
 
 export type ChoiceSize = 'small';
 export type ChoiceType = 'checkbox' | 'radio';
@@ -229,9 +229,9 @@ export class Choice extends React.PureComponent<
     let errorElement;
     if (errorMessage) {
       errorElement = (
-        <FieldError id={this.errorId} inversed={inversed} className={errorMessageClassName}>
+        <InlineError id={this.errorId} inversed={inversed} className={errorMessageClassName}>
           {errorMessage}
-        </FieldError>
+        </InlineError>
       );
     }
 

@@ -20,7 +20,7 @@ export interface LabelProps {
   errorMessage?: React.ReactNode;
   /**
    * @deprecated The Label is no longer responsible for rendering the
-   * error element from a string. A FieldError should be passed to it which
+   * error element from a string. A InlineError should be passed to it which
    * already has an errorId applied.
    * @hide-prop [Deprecated]
    */

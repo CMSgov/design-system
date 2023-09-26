@@ -52,7 +52,7 @@ exports[`Choice applies errorMessage to label 1`] = `
       <span
         aria-atomic="true"
         aria-live="assertive"
-        class="ds-c-inline-error ds-c-field__error-message"
+        class="ds-c-inline-error"
         id="static-id__error"
       >
         <svg

@@ -1,5 +1,5 @@
 import React from 'react';
-import FieldError from '../FieldError/FieldError';
+import InlineError from '../InlineError/InlineError';
 import classNames from 'classnames';
 import mergeIds from '../utilities/mergeIds';
 import useId from '../utilities/useId';
@@ -127,16 +127,16 @@ export function useFormLabel<T extends UseFormLabelProps>(props: T) {
   } = props;
 
   const errorElement = errorMessage ? (
-    <FieldError
+    <InlineError
       id={errorId}
       inversed={inversed}
       className={classNames(
         errorMessageClassName,
-        errorPlacement === 'bottom' && 'ds-c-field__error-message--bottom'
+        errorPlacement === 'bottom' && 'ds-c-inline-error--bottom'
       )}
     >
       {errorMessage}
-    </FieldError>
+    </InlineError>
   ) : undefined;
   const topError = errorPlacement === 'top' ? errorElement : undefined;
   const bottomError = errorPlacement === 'bottom' ? errorElement : undefined;

@@ -40,18 +40,3 @@
 .ds-c-field__hint--inverse {
   color: var(--form-hint__color--inverse);
 }
-
-.ds-c-field__error-message {
-  color: var(--form-error__color);
-  display: block;
-  font-weight: var(--font-weight-normal);
-  max-width: var(--form__max-width);
-}
-
-.ds-c-field__error-message--inverse {
-  color: var(--form-error__color--inverse);
-}
-
-.ds-c-field__error-message--bottom {
-  margin-block-start: $spacer-half;
-}

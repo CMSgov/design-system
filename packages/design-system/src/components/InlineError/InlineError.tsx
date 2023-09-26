@@ -18,11 +18,8 @@ export function InlineError({
   inversed,
 }: InlineErrorProps): React.ReactElement {
   const classes = classNames(
-    // TODO: This class is being included for backwards compatibility, but the
-    // `ds-c-inline-error` class is deprecated and should be removed eventually
     'ds-c-inline-error',
-    'ds-c-field__error-message',
-    { 'ds-c-field__error-message--inverse': inversed },
+    { 'ds-c-inline-error--inverse': inversed },
     className
   );
   const viewbox = '36 -12 186 186';
