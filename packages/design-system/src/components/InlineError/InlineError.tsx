@@ -4,24 +4,19 @@ import { AlertCircleIcon } from '../Icons/AlertCircleIcon';
 import { t } from '../i18n';
 import useId from '../utilities/useId';
 
-/**
- * <FieldError> is an internal component used by <Label>
- * <FieldError> is also exported for advanced design system use cases, where the internal component can be leveraged to build custom form components
- */
-
-export interface FieldErrorProps {
+interface InlineErrorProps {
   children?: React.ReactNode;
   className?: string;
   id?: string;
   inversed?: boolean;
 }
 
-export function FieldError({
+export function InlineError({
   children,
   className,
   id,
   inversed,
-}: FieldErrorProps): React.ReactElement {
+}: InlineErrorProps): React.ReactElement {
   const classes = classNames(
     // TODO: This class is being included for backwards compatibility, but the
     // `ds-c-inline-error` class is deprecated and should be removed eventually
@@ -46,4 +41,4 @@ export function FieldError({
   );
 }
 
-export default FieldError;
+export default InlineError;
