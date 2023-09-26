@@ -1,21 +1,21 @@
 import React from 'react';
-import FormLabel from './Label';
+import Label from './Label';
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta<typeof FormLabel> = {
-  title: 'Components/FormLabel',
-  component: FormLabel as any,
+const meta: Meta<typeof Label> = {
+  title: 'Components/Label',
+  component: Label as any,
   args: {
     children: 'Sample Label',
   },
 };
 export default meta;
 
-type Story = StoryObj<typeof FormLabel>;
+type Story = StoryObj<typeof Label>;
 
-export const FormLabelDefault: Story = {};
+export const LabelDefault: Story = {};
 
-export const InverseFormLabel: Story = {
+export const InverseLabel: Story = {
   args: {
     inversed: true,
   },
