@@ -60,7 +60,7 @@ export interface LabelProps {
   textClassName?: string;
 }
 
-type ComponentProps = React.ComponentPropsWithRef<'label'> &
+type LabelComponentProps = React.ComponentPropsWithRef<'label'> &
   React.ComponentPropsWithRef<'legend'> &
   LabelProps;
 
@@ -68,7 +68,7 @@ type ComponentProps = React.ComponentPropsWithRef<'label'> &
  * For information about how and when to use this component,
  * [refer to its full documentation page](https://design.cms.gov/components/form-label/).
  */
-export const Label = (props: ComponentProps) => {
+export const Label = (props: LabelComponentProps) => {
   const {
     fieldId,
     id,
