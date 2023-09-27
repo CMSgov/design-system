@@ -16,13 +16,13 @@
 
 import { UseComboboxProps, UseComboboxStateChangeOptions, useCombobox } from 'downshift';
 import Button from '../Button/Button';
-import React, { useRef } from 'react';
-import TextField from '../TextField/TextField';
+import React from 'react';
 import classNames from 'classnames';
 import { errorPlacementDefault } from '../flags';
 import { t } from '../i18n';
 import createFilteredA11yStatusMessageFn from './createFilteredA11yStatusMessageFn';
 import useId from '../utilities/useId';
+import { isTextField, renderStatusMessage } from './utils';
 
 export interface AutocompleteItem {
   /**
@@ -147,18 +147,6 @@ export interface AutocompleteProps
 }
 
 /**
- * Determine if a React component is a TextField
- * @param {React.Node} child - a React component
- * @return {Boolean} Is this a TextField component?
- */
-function isTextField(child: React.ReactElement): boolean {
-  const componentName = (child.type as any)?.displayName || (child.type as any)?.name;
-
-  // Check child.type first and as a fallback, check child.type.displayName follow by child.type.name
-  return child && (child.type === TextField || componentName === 'TextField');
-}
-
-/**
  * For information about how and when to use this component,
  * [refer to its full documentation page](https://design.cms.gov/components/autocomplete/).
  */
@@ -236,20 +224,12 @@ export const Autocomplete = (props: AutocompleteProps) => {
 
     // If we're waiting for results to load, show the non-selected message
     if (loading) {
-      return (
-        <li aria-selected="false" className="ds-c-autocomplete__menu-item-message" role="option">
-          {loadingMessage ?? t('autocomplete.loadingMessage')}
-        </li>
-      );
+      return renderStatusMessage(loadingMessage ?? t('autocomplete.loadingMessage'));
     }
 
     // If we have no results (empty array), show the non-selected message
     if (items) {
-      return (
-        <li aria-selected="false" className="ds-c-autocomplete__menu-item-message" role="option">
-          {noResultsMessage ?? t('autocomplete.noResultsMessage')}
-        </li>
-      );
+      return renderStatusMessage(noResultsMessage ?? t('autocomplete.noResultsMessage'));
     }
 
     return null;
