@@ -74,14 +74,6 @@ describe('Alert', function () {
     expect(alert.tabIndex).toBe(-1);
   });
 
-  it.skip('sets tabIndex when alertRef is passed', () => {
-    const alertRef = jest.fn();
-    renderAlert({ 'alert-ref': alertRef });
-    const alert = screen.getByRole('region');
-    expect(alert.tabIndex).toBe(-1);
-    expect(alertRef).toHaveBeenCalled();
-  });
-
   describe('a11y labels', () => {
     it('renders default a11y label', () => {
       renderAlert();

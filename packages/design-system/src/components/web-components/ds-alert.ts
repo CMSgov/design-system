@@ -15,7 +15,6 @@ const attributes = [
   'analytics-parent-heading',
   'analytics-parent-type',
   'id',
-  'alert-ref',
 ];
 
 define('ds-alert', () => Alert, { attributes });
