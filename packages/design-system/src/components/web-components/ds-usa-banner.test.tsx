@@ -19,9 +19,8 @@ function renderBanner(customProps = {}) {
 
 describe('UsaBanner', function () {
   it('renders correctly', () => {
-    renderBanner({ id: 'static-id' });
-    const header = screen.getByRole('banner');
-    expect(header).toMatchSnapshot();
+    const { asFragment } = renderBanner({ id: 'static-id' });
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('applies additional class names to expanded banner', () => {

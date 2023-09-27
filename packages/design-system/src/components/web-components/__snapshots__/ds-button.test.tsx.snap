@@ -68,44 +68,69 @@ Array [
 `;
 
 exports[`Button renders as an anchor with custom prop 1`] = `
-<a
-  class="ds-c-button"
-  href="/example"
-  parent="[object HTMLElement]"
-  target="_blank"
->
-  Foo
-</a>
+<DocumentFragment>
+  <ds-button
+    href="/example"
+    target="_blank"
+    type="submit"
+  >
+    <a
+      class="ds-c-button"
+      href="/example"
+      parent="[object HTMLElement]"
+      target="_blank"
+    >
+      Foo
+    </a>
+  </ds-button>
+</DocumentFragment>
 `;
 
 exports[`Button renders as button 1`] = `
-<button
-  class="ds-c-button"
-  parent="[object HTMLElement]"
-  type="button"
->
-  Foo
-</button>
+<DocumentFragment>
+  <ds-button>
+    <button
+      class="ds-c-button"
+      parent="[object HTMLElement]"
+      type="button"
+    >
+      Foo
+    </button>
+  </ds-button>
+</DocumentFragment>
 `;
 
 exports[`Button renders disabled anchor correctly 1`] = `
-<a
-  aria-disabled="true"
-  class="ds-c-button"
-  parent="[object HTMLElement]"
-  role="link"
->
-  Link button
-</a>
+<DocumentFragment>
+  <ds-button
+    disabled="true"
+    href="#!"
+  >
+    <a
+      aria-disabled="true"
+      class="ds-c-button"
+      parent="[object HTMLElement]"
+      role="link"
+    >
+      Link button
+    </a>
+  </ds-button>
+</DocumentFragment>
 `;
 
 exports[`Button renders disabled button 1`] = `
-<button
-  class="ds-c-button"
-  disabled=""
-  parent="[object HTMLElement]"
-  type="button"
->
-  Foo
-</button>
+<DocumentFragment>
+  <ds-button
+    disabled="true"
+  >
+    <button
+      class="ds-c-button"
+      disabled=""
+      parent="[object HTMLElement]"
+      type="button"
+    >
+      Foo
+    </button>
+  </ds-button>
+</DocumentFragment>
 `;

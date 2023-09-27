@@ -26,9 +26,8 @@ function expectHasClass(className: string) {
 
 describe('Alert', function () {
   it('renders alert', () => {
-    renderAlert({ id: 'static-id' });
-    const alert = screen.getByRole('region');
-    expect(alert).toMatchSnapshot();
+    const { asFragment } = renderAlert({ id: 'static-id' });
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('renders a heading', () => {

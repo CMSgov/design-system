@@ -24,8 +24,8 @@ function renderButton(props = {}) {
 
 describe('Button', () => {
   it('renders as button', () => {
-    renderButton();
-    expect(screen.getByRole('button')).toMatchSnapshot();
+    const { asFragment } = renderButton();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('renders as submit button', () => {
@@ -34,26 +34,26 @@ describe('Button', () => {
   });
 
   it('renders disabled button', () => {
-    renderButton({ disabled: true });
-    expect(screen.getByRole('button')).toMatchSnapshot();
+    const { asFragment } = renderButton({ disabled: true });
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('renders as an anchor with custom prop', () => {
-    renderButton({
+    const { asFragment } = renderButton({
       href: '/example',
       target: '_blank',
       type: 'submit',
     });
-    expect(screen.getByRole('link')).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('renders disabled anchor correctly', () => {
-    renderButton({
+    const { asFragment } = renderButton({
       href: '#!',
       disabled: true,
       children: 'Link button',
     });
-    expect(screen.getByRole('link')).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('applies additional classes', () => {
