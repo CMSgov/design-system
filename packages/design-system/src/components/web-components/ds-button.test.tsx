@@ -74,14 +74,11 @@ describe('Button', () => {
     expect(button.classList.contains('ds-c-button--small')).toBe(true);
   });
 
-  // I think there's a naming issue with the `onDark` prop.
-  // Because it starts with `on`, it's not rendering the class like you'd expect. I think it assumes its an event handler?
-  // Other props like `isAlternate` are work as expected.
-  it.skip('applies disabled, inverse, alternate, and variation classes together', () => {
+  it('applies disabled, inverse, alternate, and variation classes together', () => {
     renderButton({
       href: '#!',
       disabled: true,
-      'on-dark': true,
+      'is-on-dark': true,
       'is-alternate': true,
       variation: 'ghost',
     });
