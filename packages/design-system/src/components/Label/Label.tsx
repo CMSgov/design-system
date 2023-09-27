@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Hint } from '../Hint/Hint';
+import { Hint } from '../Hint';
+import { InlineError } from '../InlineError';
 
 export type LabelComponent = 'label' | 'legend';
 export interface LabelProps {
@@ -15,6 +16,9 @@ export interface LabelProps {
   /** The root HTML element used to render the label */
   component?: LabelComponent;
   /**
+   * @deprecated Hints are now their own component called `Hint`.
+   * @hide-prop [Deprecated]
+   *
    * Enable the error state by providing an error message.
    */
   errorMessage?: React.ReactNode;
@@ -31,10 +35,16 @@ export interface LabelProps {
    */
   fieldId?: string;
   /**
+   * @deprecated Hints are now their own component called `Hint`.
+   * @hide-prop [Deprecated]
+   *
    * Additional hint text to display
    */
   hint?: React.ReactNode;
   /**
+   * @deprecated Please render your error message directly with the 'InlineError' component instead of passing to `Label`
+   * @hide-prop [Deprecated]
+   *
    * The ID of the hint element
    */
   hintId?: string;
@@ -91,6 +101,18 @@ export const Label = (props: LabelComponentProps) => {
     );
   }
 
+  if (process.env.NODE_ENV !== 'production' && (hint || hintId)) {
+    console.warn(
+      "[Deprecated]: Hints are now their own component called 'Hint'. Please render your 'Hint' directly instead of passing them to 'Label'."
+    );
+  }
+
+  if (process.env.NODE_ENV !== 'production' && errorMessage) {
+    console.warn(
+      "[Deprecated]: Passing 'errorMessage' to the 'Label' component is now deprecated. Please render your error message directly with the 'InlineError' component instead."
+    );
+  }
+
   let hintElement;
   if (hint || requirementLabel) {
     hintElement = (
@@ -98,6 +120,11 @@ export const Label = (props: LabelComponentProps) => {
         {hint}
       </Hint>
     );
+  }
+
+  let errorElement = errorMessage;
+  if (typeof errorMessage === 'string') {
+    errorElement = <InlineError id={errorId}>{errorMessage}</InlineError>;
   }
 
   const ComponentType = component;
@@ -114,7 +141,7 @@ export const Label = (props: LabelComponentProps) => {
         {children}
       </ComponentType>
       {hintElement}
-      {errorMessage}
+      {errorElement}
     </>
   );
 };
