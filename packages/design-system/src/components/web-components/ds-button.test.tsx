@@ -118,15 +118,15 @@ describe('Button', () => {
       expect(tealiumMock.mock.calls[0]).toMatchSnapshot();
     });
 
-    it.skip('disables analytics event tracking', () => {
-      renderButton({ analytics: false });
+    it('disables analytics event tracking', () => {
+      renderButton({ analytics: 'false' });
       fireEvent.click(screen.getByRole('button'));
       expect(tealiumMock).not.toBeCalled();
     });
 
     it('setting analytics to true overrides flag value', () => {
       setButtonSendsAnalytics(false);
-      renderButton({ analytics: true });
+      renderButton({ analytics: 'true' });
       fireEvent.click(screen.getByRole('button'));
       expect(tealiumMock).toHaveBeenCalled();
     });
