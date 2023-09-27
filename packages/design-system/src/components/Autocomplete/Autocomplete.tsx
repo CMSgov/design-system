@@ -295,7 +295,14 @@ export const Autocomplete = (props: AutocompleteProps) => {
     // react-stately will not realize that it should be showing those results. There
     // might be items, but `isOpen` will be false 🤦‍♂️.
     if (state.isFocused && items && items !== oldItems) {
-      state.open();
+      const itemsJson = JSON.stringify(items);
+      const oldItemsJson = JSON.stringify(oldItems);
+      // Only open it if the actual data changed. This whole useEffect is a hack, and
+      // we need to get really specific here if we don't want there to be problems.
+      if (itemsJson !== oldItemsJson) {
+        console.log(itemsJson, oldItemsJson);
+        state.open();
+      }
     }
   }, [items]);
 
