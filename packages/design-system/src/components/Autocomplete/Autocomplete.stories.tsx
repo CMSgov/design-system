@@ -25,7 +25,7 @@ const Template = (args) => {
   const { items, textFieldLabel, textFieldHint, ...autocompleteArgs } = args;
   const [input, setInput] = useState('');
   const onInputValueChange = (...args) => {
-    action('onInputValueChange')(args);
+    action('onInputValueChange');
     setInput(args[0]);
   };
   let filteredItems = null;
@@ -41,7 +41,12 @@ const Template = (args) => {
       onInputValueChange={onInputValueChange}
       items={filteredItems}
     >
-      <TextField label={textFieldLabel} hint={textFieldHint} name="autocomplete" value={input} />
+      <TextField
+        label={textFieldLabel}
+        hint={textFieldHint}
+        name="Downshift_autocomplete"
+        value={input}
+      />
     </Autocomplete>
   );
 };
