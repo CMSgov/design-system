@@ -24,16 +24,21 @@ type Story = StoryObj<typeof Autocomplete>;
 const Template = (args) => {
   const { items, textFieldLabel, textFieldHint, ...autocompleteArgs } = args;
   const [input, setInput] = useState('');
+  const [filteredItems, setFilteredItems] = useState(null);
   const onInputValueChange = (...args) => {
     action('onInputValueChange')(args);
     setInput(args[0]);
+
+    setTimeout(() => {
+      let filteredItems = null;
+      if (input.length > 0) {
+        filteredItems = items.filter(
+          (item) => !item.name || item.name.toLowerCase().includes(input.toLowerCase())
+        );
+      }
+      setFilteredItems(filteredItems);
+    }, 1000);
   };
-  let filteredItems = null;
-  if (input.length > 0) {
-    filteredItems = items.filter(
-      (item) => !item.name || item.name.toLowerCase().includes(input.toLowerCase())
-    );
-  }
   return (
     <Autocomplete
       {...autocompleteArgs}
