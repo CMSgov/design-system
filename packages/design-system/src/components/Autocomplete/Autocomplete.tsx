@@ -199,6 +199,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
   const state = useComboBoxState({
     ...autocompleteProps,
     allowsCustomValue: true,
+    allowsEmptyCollection: true,
     children: reactStatelyItems,
     inputValue: textField.props.value,
     onInputChange: onInputValueChange
@@ -289,22 +290,22 @@ export const Autocomplete = (props: AutocompleteProps) => {
     },
   };
 
-  const oldItems = usePrevious(items);
-  useEffect(() => {
-    // If the items come in significantly later than when the user started typing,
-    // react-stately will not realize that it should be showing those results. There
-    // might be items, but `isOpen` will be false 🤦‍♂️.
-    if (state.isFocused && items && items !== oldItems) {
-      const itemsJson = JSON.stringify(items);
-      const oldItemsJson = JSON.stringify(oldItems);
-      // Only open it if the actual data changed. This whole useEffect is a hack, and
-      // we need to get really specific here if we don't want there to be problems.
-      if (itemsJson !== oldItemsJson) {
-        console.log(itemsJson, oldItemsJson);
-        state.open();
-      }
-    }
-  }, [items]);
+  // const oldItems = usePrevious(items);
+  // useEffect(() => {
+  //   // If the items come in significantly later than when the user started typing,
+  //   // react-stately will not realize that it should be showing those results. There
+  //   // might be items, but `isOpen` will be false 🤦‍♂️.
+  //   if (state.isFocused && items && items !== oldItems) {
+  //     const itemsJson = JSON.stringify(items);
+  //     const oldItemsJson = JSON.stringify(oldItems);
+  //     // Only open it if the actual data changed. This whole useEffect is a hack, and
+  //     // we need to get really specific here if we don't want there to be problems.
+  //     if (itemsJson !== oldItemsJson) {
+  //       console.log(itemsJson, oldItemsJson);
+  //       state.open();
+  //     }
+  //   }
+  // }, [items]);
 
   const rootClassName = classNames('ds-c-autocomplete', className);
 
@@ -312,7 +313,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
     <div className={rootClassName} ref={wrapperRef}>
       {React.cloneElement(textField, textFieldProps)}
 
-      {(state.isOpen || (state.isFocused && statusMessage)) && (
+      {((state.isOpen && reactStatelyItems.length > 0) || (state.isFocused && statusMessage)) && (
         <DropdownMenu
           {...useComboboxProps.listBoxProps}
           componentClass="ds-c-autocomplete"
