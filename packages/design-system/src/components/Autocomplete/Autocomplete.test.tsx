@@ -338,4 +338,28 @@ describe('Autocomplete', () => {
     userEvent.tab();
     expect(props.onBlur).toHaveBeenCalledTimes(1);
   });
+
+  it('allows arbitrary props to remain on the TextField', () => {
+    const props = {
+      label: 'autocomplete',
+      name: 'autocomplete_field',
+      placeholder: 'Hello world!',
+      fieldClassName: 'a-custom-class',
+    };
+    renderAutocomplete({ children: <TextField {...props} /> });
+    const field = screen.getByRole('combobox');
+    expect(field).toHaveAttribute('placeholder', props.placeholder);
+    expect(field).toHaveClass(props.fieldClassName);
+  });
+
+  it('inherits size prop from the TextField', () => {
+    const { container } = renderAutocomplete({
+      children: <TextField label="autocomplete" name="field" size="medium" />,
+    });
+    const field = screen.getByRole('combobox');
+    expect(field).toHaveClass('ds-c-field--medium');
+    open();
+    const menuContainer = container.querySelector('.ds-c-autocomplete__menu-container');
+    expect(menuContainer).toHaveClass('ds-c-field--medium');
+  });
 });
