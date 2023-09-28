@@ -224,6 +224,7 @@ describe('Autocomplete', () => {
 
     expect(autocompleteField.value).toBe('Cook County, IL');
     expect(onChange).toHaveBeenCalledWith(defaultItems[0]);
+    expectMenuToBeClosed();
   });
 
   it('should set the input value to empty when "Clear search" is clicked', () => {
@@ -269,6 +270,7 @@ describe('Autocomplete', () => {
 
     expect(autocompleteField.value).toBe('Cook County, IL');
     expect(onChange).toHaveBeenCalledWith(defaultItems[0]);
+    expectMenuToBeClosed();
   });
 
   it('should not call onChange when an item was not selected', () => {
