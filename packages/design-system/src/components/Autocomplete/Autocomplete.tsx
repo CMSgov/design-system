@@ -10,6 +10,7 @@ import {
   renderStatusMessage,
   getTextFieldChild,
   getActiveDescendant,
+  removeUndefined,
 } from './utils';
 import { t } from '../i18n';
 import { useComboBox } from '../react-aria'; // from react-aria
@@ -248,7 +249,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
     bottomError && clearSearchButton && 'ds-c-autocomplete__error-message-clear-btn'
   );
 
-  const textFieldProps = {
+  const textFieldProps = removeUndefined({
     ...useComboboxProps.inputProps,
     autoComplete: autoCompleteLabel,
     autoFocus: autoFocus || focusTrigger,
@@ -287,7 +288,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
       useComboboxProps.inputProps.onKeyDown?.(event);
       textField.props.onKeyDown?.(event);
     },
-  };
+  });
 
   const oldItems = usePrevious(items);
   useEffect(() => {

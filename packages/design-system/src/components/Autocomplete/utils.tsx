@@ -61,3 +61,12 @@ export function getActiveDescendant(
   const index = (items ?? []).findIndex((item) => state.selectionManager.focusedKey === item.id);
   return getOptionId(rootId, index);
 }
+
+/**
+ * Mutates the original object, deleting properties whose values are undefined.
+ * Returns the object.
+ */
+export function removeUndefined<T>(obj: T): T {
+  Object.keys(obj).forEach((key) => obj[key] === undefined && delete obj[key]);
+  return obj;
+}
