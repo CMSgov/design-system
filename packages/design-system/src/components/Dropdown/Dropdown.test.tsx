@@ -34,7 +34,7 @@ function makeDropdown(customProps = {}, optionsCount = 1) {
 }
 
 function getButton() {
-  return screen.getByRole('combobox');
+  return screen.getByRole('button', { name: RegExp(defaultProps.label) });
 }
 
 describe('Dropdown', () => {
@@ -82,7 +82,7 @@ describe('Dropdown', () => {
 
   it('has error', () => {
     makeDropdown({ errorMessage: 'Really bad error' });
-    const button = screen.getByRole('combobox', { name: /Really bad error/ });
+    const button = screen.getByRole('button', { name: /Really bad error/ });
     expect(button).toHaveAttribute('aria-invalid', 'true');
   });
 
