@@ -224,6 +224,7 @@ describe('Autocomplete', () => {
 
     expect(autocompleteField.value).toBe('Cook County, IL');
     expect(onChange).toHaveBeenCalledWith(defaultItems[0]);
+    expectMenuToBeClosed();
   });
 
   it('should set the input value to empty when "Clear search" is clicked', () => {
@@ -269,6 +270,7 @@ describe('Autocomplete', () => {
 
     expect(autocompleteField.value).toBe('Cook County, IL');
     expect(onChange).toHaveBeenCalledWith(defaultItems[0]);
+    expectMenuToBeClosed();
   });
 
   it('should not call onChange when an item was not selected', () => {
@@ -335,5 +337,29 @@ describe('Autocomplete', () => {
     expect(props.onChange).toHaveBeenCalledTimes(1);
     userEvent.tab();
     expect(props.onBlur).toHaveBeenCalledTimes(1);
+  });
+
+  it('allows arbitrary props to remain on the TextField', () => {
+    const props = {
+      label: 'autocomplete',
+      name: 'autocomplete_field',
+      placeholder: 'Hello world!',
+      fieldClassName: 'a-custom-class',
+    };
+    renderAutocomplete({ children: <TextField {...props} /> });
+    const field = screen.getByRole('combobox');
+    expect(field).toHaveAttribute('placeholder', props.placeholder);
+    expect(field).toHaveClass(props.fieldClassName);
+  });
+
+  it('inherits size prop from the TextField', () => {
+    const { container } = renderAutocomplete({
+      children: <TextField label="autocomplete" name="field" size="medium" />,
+    });
+    const field = screen.getByRole('combobox');
+    expect(field).toHaveClass('ds-c-field--medium');
+    open();
+    const menuContainer = container.querySelector('.ds-c-autocomplete__menu-container');
+    expect(menuContainer).toHaveClass('ds-c-field--medium');
   });
 });

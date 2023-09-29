@@ -4976,7 +4976,7 @@ function $628037886ba31236$export$f9d5c8beee7d008d(props, state, ref) {
 let $5e3802645cc19319$var$refCountMap = new WeakMap();
 let $5e3802645cc19319$var$observerStack = [];
 function $5e3802645cc19319$export$1c3ebcada18427bf(targets, root = document.body) {
-  let visibleNodes = new Set(targets);
+  let visibleNodes = new Set(targets.filter((target) => target));
   let hiddenNodes = new Set();
   let walk = (root) => {
     // Keep live announcer and top layer elements (e.g. toasts) visible.
