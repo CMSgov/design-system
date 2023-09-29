@@ -1,6 +1,6 @@
 import c from 'chalk';
 import yargs from 'yargs';
-import { updateVersions, cullBetaVersions } from './versions';
+import { updateVersions } from './versions';
 import { confirm } from '@inquirer/prompts';
 import { hideBin } from 'yargs/helpers';
 import { sh, shI, verifyGhInstalled } from './utils';
