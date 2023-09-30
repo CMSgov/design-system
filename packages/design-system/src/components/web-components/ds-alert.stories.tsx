@@ -6,7 +6,7 @@ export default {
   title: 'Web Components/Alert',
   argTypes: {
     variation: {
-      options: ['default', 'success', 'warn', 'error'],
+      options: [undefined, 'success', 'warn', 'error'],
       control: { type: 'radio' },
     },
     children: { control: 'text' },
