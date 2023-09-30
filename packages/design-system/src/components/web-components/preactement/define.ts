@@ -96,10 +96,6 @@ function setupElement<T>(component: ComponentFunction<T>, options: IOptions = {}
         set(v) {
           if (this.__mounted) {
             this.attributeChangedCallback(name, null, v);
-          } else {
-            if (!this.__properties) this.__properties = {};
-            this.__properties[name] = v;
-            this.connectedCallback();
           }
   
           const type = typeof v;
