@@ -88,6 +88,33 @@ function setupElement<T>(component: ComponentFunction<T>, options: IOptions = {}
     CustomElement.prototype.attributeChangedCallback = onAttributeChange;
     CustomElement.prototype.disconnectedCallback = onDisconnected;
 
+    attributes.forEach((name) => {
+      Object.defineProperty(CustomElement.prototype, name, {
+        get() {
+          return this.__properties[name];
+        },
+        set(v) {
+          if (this.__mounted) {
+            this.attributeChangedCallback(name, null, v);
+          } else {
+            if (!this.__properties) this.__properties = {};
+            this.__properties[name] = v;
+            this.connectedCallback();
+          }
+  
+          const type = typeof v;
+          if (
+            v == null ||
+            type === 'string' ||
+            type === 'boolean' ||
+            type === 'number'
+          ) {
+            this.setAttribute(name, v);
+          }
+        },
+      });
+    });
+
     return CustomElement;
   }
 
