@@ -1,0 +1,36 @@
+import React, { useEffect } from 'react';
+import { action } from '@storybook/addon-actions';
+import DsButton from './ds-button';
+console.log(DsButton);
+
+export default {
+  title: 'Web Components/Button',
+  argTypes: {
+    variation: {
+      options: [undefined, 'solid', 'ghost'],
+      control: { type: 'radio' },
+    },
+    children: { control: 'text' },
+  },
+  args: {},
+};
+
+const Template = (args) => {
+  useEffect(() => {
+    const onChange = (event) => {
+      action('onChange')(event);
+    };
+    const button = document.querySelector('ds-button');
+    button.addEventListener('click', onChange);
+    return () => {
+      button.removeEventListener('click', onChange);
+    };
+  });
+  return (
+    <ds-button variation={args.variation} key={JSON.stringify(args)}>
+      {args.children ?? <>Your button text is here</>}
+    </ds-button>
+  );
+};
+
+export const Default = Template.bind({});
