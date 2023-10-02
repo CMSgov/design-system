@@ -61,7 +61,7 @@ label,
   .ds-c-choice.ds-c-choice--inverse:disabled + & {
     cursor: not-allowed;
 
-    @media (-ms-high-contrast: active), (forced-colors: active) {
+    @media (forced-colors: active) {
       color: GrayText;
     }
   }
@@ -131,7 +131,7 @@ label,
       box-shadow: inset 0 0 4em 1em var(--choice__border-color--disabled);
     }
 
-    @media (-ms-high-contrast: active), (forced-colors: active) {
+    @media (forced-colors: active) {
       border-color: GrayText;
     }
   }
@@ -165,7 +165,7 @@ label,
   }
 
   &:disabled {
-    @media (-ms-high-contrast: active), (forced-colors: active) {
+    @media (forced-colors: active) {
       &::after {
         border-color: GrayText;
       }
@@ -182,7 +182,7 @@ label,
     height: var(--choice__size-radio);
     width: var(--choice__size-radio);
 
-    @media (-ms-high-contrast: active), (forced-colors: active) {
+    @media (forced-colors: active) {
       background-color: WindowText;
       box-shadow: none;
     }
@@ -198,7 +198,7 @@ label,
         box-shadow: inset 0 0 4em 1em var(--choice__border-color--disabled);
       }
 
-      @media (-ms-high-contrast: active), (forced-colors: active) {
+      @media (forced-colors: active) {
         border-color: GrayText;
 
         &::before {
@@ -228,7 +228,7 @@ label,
     background-color: var(--choice__background-color--disabled--inverse);
     border-color: var(--choice__border-color--disabled--inverse);
 
-    @media (-ms-high-contrast: active), (forced-colors: active) {
+    @media (forced-colors: active) {
       border-color: GrayText;
     }
   }

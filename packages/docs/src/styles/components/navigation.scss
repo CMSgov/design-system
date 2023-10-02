@@ -172,7 +172,7 @@
   }
 }
 
-@media (-ms-high-contrast: active), (forced-colors: active) {
+@media (forced-colors: active) {
   .c-navigation {
     forced-color-adjust: none;
     -ms-high-contrast-adjust: none;

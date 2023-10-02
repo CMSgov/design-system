@@ -67,7 +67,7 @@ dialog.fixed {
     outline: none;
   }
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     &,
     &:focus {
       outline: $spacer-2 solid WindowText;
@@ -116,14 +116,14 @@ dialog.fixed {
     font-size: var(--dialog-icon__size);
     margin: 0 $spacer-half;
 
-    @media (-ms-high-contrast: active), (forced-colors: active) {
+    @media (forced-colors: active) {
       path {
         fill: ButtonText;
       }
     }
   }
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     padding: $spacer-half $spacer-2;
   }
 }

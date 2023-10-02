@@ -365,7 +365,7 @@
   background-color: var(--rdp-active-color);
   color: white;
 }
-@media (-ms-high-contrast: active), (forced-colors: active) {
+@media (forced-colors: active) {
   .rdp-button[aria-disabled='true'] {
     border-color: GrayText;
     color: GrayText;
@@ -436,7 +436,7 @@
     color: var(--pagination-link__color--disabled);
     pointer-events: none;
 
-    @media (-ms-high-contrast: active), (forced-colors: active) {
+    @media (forced-colors: active) {
       border: 0;
       color: GrayText;
       cursor: not-allowed;

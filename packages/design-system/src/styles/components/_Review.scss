@@ -6,7 +6,7 @@
   justify-content: space-between;
   padding-block: $spacer-2;
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     a:hover {
       text-decoration: none;
     }
