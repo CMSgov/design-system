@@ -1,9 +1,9 @@
 import React from 'react';
-import FieldError from '../FieldError/FieldError';
+import InlineError from '../InlineError/InlineError';
 import classNames from 'classnames';
 import mergeIds from '../utilities/mergeIds';
 import useId from '../utilities/useId';
-import { FormLabelProps } from '../FormLabel/FormLabel';
+import { LabelProps } from '../Label';
 import { errorPlacementDefault } from '../flags';
 
 // TODO: Reimplement focusTrigger in another place, like another hook
@@ -11,7 +11,7 @@ import { errorPlacementDefault } from '../flags';
 // Some of the FormLabel's props we pass on to the component prop definitions.
 // TODO: This could use a better name
 type PassedOnFormLabelProps = Omit<
-  FormLabelProps,
+  LabelProps,
   'children' | 'className' | 'component' | 'fieldId' | 'id' | 'errorMessage'
 >;
 
@@ -127,16 +127,16 @@ export function useFormLabel<T extends UseFormLabelProps>(props: T) {
   } = props;
 
   const errorElement = errorMessage ? (
-    <FieldError
+    <InlineError
       id={errorId}
       inversed={inversed}
       className={classNames(
         errorMessageClassName,
-        errorPlacement === 'bottom' && 'ds-c-field__error-message--bottom'
+        errorPlacement === 'bottom' && 'ds-c-inline-error--bottom'
       )}
     >
       {errorMessage}
-    </FieldError>
+    </InlineError>
   ) : undefined;
   const topError = errorPlacement === 'top' ? errorElement : undefined;
   const bottomError = errorPlacement === 'bottom' ? errorElement : undefined;

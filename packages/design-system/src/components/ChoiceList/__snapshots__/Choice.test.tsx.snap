@@ -52,7 +52,7 @@ exports[`Choice applies errorMessage to label 1`] = `
       <span
         aria-atomic="true"
         aria-live="assertive"
-        class="ds-c-inline-error ds-c-field__error-message"
+        class="ds-c-inline-error"
         id="static-id__error"
       >
         <svg
@@ -98,7 +98,7 @@ exports[`Choice has a hint and requirementLabel 1`] = `
         George Washington
       </label>
       <div
-        class="ds-c-field__hint"
+        class="ds-c-hint"
         id="static-id__hint"
       >
         Optional. Hello world

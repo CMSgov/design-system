@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-export interface FieldHintProps {
+export interface HintProps {
   /**
    * Hint text or HTML
    */
@@ -23,8 +23,8 @@ export interface FieldHintProps {
   requirementLabel?: React.ReactNode;
 }
 
-export const FieldHint = ({ children, id, inversed, requirementLabel }: FieldHintProps) => {
-  const hintClasses = classNames('ds-c-field__hint', inversed && 'ds-c-field__hint--inverse');
+export const Hint = ({ children, id, inversed, requirementLabel }: HintProps) => {
+  const hintClasses = classNames('ds-c-hint', inversed && 'ds-c-hint--inverse');
 
   let hintPadding;
   if (requirementLabel && children) {

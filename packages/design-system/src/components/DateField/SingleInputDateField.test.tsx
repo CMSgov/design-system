@@ -29,7 +29,7 @@ describe('SingleInputDateField', function () {
     const label = container.querySelector('.ds-c-label');
     expect(label.textContent).toContain('Birthday');
 
-    const hint = container.querySelector('.ds-c-field__hint');
+    const hint = container.querySelector('.ds-c-hint');
     expect(hint.textContent).toContain('Please enter your birthday');
 
     const mask = container.querySelector('.ds-c-label-mask');
