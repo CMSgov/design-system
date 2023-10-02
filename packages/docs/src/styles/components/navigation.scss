@@ -101,8 +101,8 @@
   }
 
   .ds-c-icon {
-    height: var(--font-size-sm);
-    width: var(--font-size-sm);
+    aspect-ratio: 1;
+    width: var(--font-size-sm, 0.875em);
   }
 }
 

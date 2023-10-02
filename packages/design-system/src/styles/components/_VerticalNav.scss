@@ -98,9 +98,9 @@
   }
 
   .ds-c-icon {
+    aspect-ratio: 1;
     color: var(--vertical-nav-label-icon__color);
-    height: var(--font-size-md);
-    width: var(--font-size-md);
+    width: var(--font-size-md, 1em);
 
     @media (forced-colors: active) {
       path {
