@@ -11,6 +11,7 @@ export default {
       control: { type: 'radio' },
     },
     children: { control: 'text' },
+    'is-alternate': { control: 'boolean' },
   },
   args: {},
 };
@@ -27,7 +28,7 @@ const Template = (args) => {
     };
   });
   return (
-    <ds-button variation={args.variation} key={JSON.stringify(args)}>
+    <ds-button {...args} key={JSON.stringify(args)}>
       {args.children ?? <>Your button text is here</>}
     </ds-button>
   );
