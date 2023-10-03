@@ -34,7 +34,7 @@ function makeDropdown(customProps = {}, optionsCount = 1) {
 }
 
 function getButton() {
-  return screen.getByRole('combobox');
+  return screen.getByRole('button', { name: RegExp(defaultProps.label) });
 }
 
 describe('Dropdown', () => {

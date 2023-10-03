@@ -1,6 +1,6 @@
 import c from 'chalk';
 import yargs from 'yargs';
-import { updateVersions, cullBetaVersions } from './versions';
+import { updateVersions } from './versions';
 import { confirm } from '@inquirer/prompts';
 import { hideBin } from 'yargs/helpers';
 import { sh, shI, verifyGhInstalled } from './utils';
@@ -54,8 +54,6 @@ async function undoLastCommit() {
 }
 
 async function bumpVersions() {
-  const { tags } = readLastPublishCommit();
-
   console.log(c.green('Bumping package versions for release...'));
   const preBumpHash = getCurrentCommit();
   shI('./node_modules/.bin/lerna', ['version', '--no-push', '--exact']);
@@ -76,7 +74,7 @@ async function bumpVersions() {
   console.log(c.green('Pushing to origin...'));
   sh(`git push --set-upstream origin ${getCurrentBranch()}`);
   console.log(c.green('Pushed bump commit to origin.'));
-  sh(`git push origin ${tags.join(' ')}`);
+  sh(`git push origin ${readLastPublishCommit().tags.join(' ')}`);
   console.log(c.green('Pushed tags to origin.'));
 }
 
