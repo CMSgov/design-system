@@ -4,11 +4,20 @@ import './ds-alert';
 export default {
   title: 'Web Components/Alert',
   argTypes: {
+    children: { control: 'text' },
+    // 'hide-icon': { control: 'boolean' }, uncomment when we support the 'hide-icon' boolean string
+    role: {
+      options: ['alert', 'alertdialog', 'region', 'status'],
+      control: { type: 'radio' },
+    },
     variation: {
       options: [undefined, 'success', 'warn', 'error'],
       control: { type: 'radio' },
     },
-    children: { control: 'text' },
+    weight: {
+      options: [undefined, 'lightweight'],
+      control: { type: 'radio' },
+    },
   },
   args: {
     variation: 'success',
@@ -17,7 +26,7 @@ export default {
 };
 
 const Template = (args) => (
-  <ds-alert variation={args.variation} heading={args.heading} key={JSON.stringify(args)}>
+  <ds-alert {...args} key={JSON.stringify(args)}>
     {args.children ?? (
       <>
         This is an example of a success alert. If you want to see an error alert, click the button

@@ -5,12 +5,17 @@ import './ds-button';
 export default {
   title: 'Web Components/Button',
   argTypes: {
+    children: { control: 'text' },
+    'class-name': { control: 'text' },
+    'is-alternate': { control: 'boolean' },
+    size: {
+      options: [undefined, 'big', 'small'],
+      control: { type: 'radio' },
+    },
     variation: {
       options: [undefined, 'solid', 'ghost'],
       control: { type: 'radio' },
     },
-    children: { control: 'text' },
-    'is-alternate': { control: 'boolean' },
   },
   args: {},
 };
