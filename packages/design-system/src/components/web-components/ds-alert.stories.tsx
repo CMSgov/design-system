@@ -1,6 +1,5 @@
 import React from 'react';
-import DsAlert from './ds-alert';
-console.log(DsAlert);
+import './ds-alert';
 
 export default {
   title: 'Web Components/Alert',
@@ -29,16 +28,3 @@ const Template = (args) => (
 );
 
 export const Default = Template.bind({});
-
-// I can get the styles for the alert to show up in storybook if I have it running and
-// import `DsAlert from './ds-alert'` and use it like `<DsAlert ...>` and save and then
-// watch it error in Storybook and then revert the file and save, and then it shows the
-// styles correctly. I really wish I knew what was going on. If I refresh the page, it
-// goes back to being broken. Oh, and this is if I remove all the web-components imports
-// in the storybook preview.tsx file.
-
-// I think I figured out why. The `define` function will only return a component function
-// [if it detects that `window` is undefined](https://github.com/jahilldev/component-elements/blob/main/packages/preactement/src/define.ts#L31C1-L32).
-// Somehow during hot reloading it must think that window is undefined and return a
-// component function, which is actually just basically a Preact component and not a true
-// web component

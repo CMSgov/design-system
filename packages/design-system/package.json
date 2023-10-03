@@ -44,6 +44,7 @@
   "module": "dist/react-components/esm/index.js",
   "types": "dist/react-components/types/index.d.ts",
   "sideEffects": [
+    "./src/components/web-components/*",
     "./dist/preact-components/esm/web-components/*.js"
   ],
   "files": [

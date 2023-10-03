@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { action } from '@storybook/addon-actions';
-import DsButton from './ds-button';
-console.log(DsButton);
+import './ds-button';
 
 export default {
   title: 'Web Components/Button',
