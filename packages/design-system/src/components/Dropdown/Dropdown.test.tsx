@@ -34,7 +34,7 @@ function makeDropdown(customProps = {}, optionsCount = 1) {
 }
 
 function getButton() {
-  return screen.getByRole('combobox');
+  return screen.getByRole('button', { name: RegExp(defaultProps.label) });
 }
 
 describe('Dropdown', () => {
@@ -105,7 +105,7 @@ describe('Dropdown', () => {
       errorId,
     });
 
-    const button = screen.getByRole('combobox');
+    const button = getButton();
     expect(button).toHaveAttribute('aria-invalid', 'true');
     expect(button).toHaveAttribute('aria-describedby', errorId);
     expect(button).toHaveClass('ds-c-field--error');

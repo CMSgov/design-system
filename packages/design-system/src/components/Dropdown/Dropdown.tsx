@@ -257,11 +257,16 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
       fieldClassName
     ),
     ref: mergeRefs([triggerRef, inputRef, useAutofocus<HTMLButtonElement>(props.autoFocus)]),
-    // Screen reader users are more familiar with this pattern. The react-aria library makes
-    // this a role="button" for useSelect.
-    role: 'combobox',
     'aria-controls': menuId,
     'aria-labelledby': `${buttonContentId} ${labelId}`,
+    // TODO: Someday we may want to add this `combobox` role back to the button, but right
+    // now desktop VoiceOver has an issue. It seems to interpret the selected value in the
+    // button as user input that needs to be checked for spelling (default setting). It
+    // therefore announces anything it deems misspelled as such. The `react-aria` authors
+    // likely ran into the same issue, since they leave it off for `useSelect` buttons.
+    // Adding the combobox role in the future can help because screen reader users are more
+    // familiar with the combobox pattern.
+    // role: 'combobox',
   };
 
   const labelProps = {
