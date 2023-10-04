@@ -41,6 +41,19 @@ const makeComponentSwatches = (components) => {
   return swatches;
 };
 
+function updateSwatches(oldSwatches, newSwatches) {
+  const swatchMap = oldSwatches.reduce((map, swatch) => {
+    map[swatch.name] = swatch;
+    return map;
+  }, {});
+
+  for (const newSwatch of newSwatches) {
+    swatchMap[newSwatch.name] = newSwatch;
+  }
+
+  return Object.values(swatchMap);
+}
+
 export default function () {
   let tokenData = {};
 
@@ -63,12 +76,11 @@ export default function () {
   }
 
   const doc = sketch.getSelectedDocument();
-  doc.swatches = [];
+  // doc.swatches = [];
 
-  const colorSwatches = tokenData.color
+  const newSwatches = tokenData.color
     ? makeColorSwatches(tokenData.color)
     : makeComponentSwatches(tokenData);
-  colorSwatches.forEach((swatch) => {
-    doc.swatches.push(swatch);
-  });
+
+  doc.swatches = updateSwatches(doc.swatches, newSwatches);
 }
