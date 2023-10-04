@@ -80,24 +80,39 @@ describe('Dropdown', () => {
     expect(button).toHaveClass('ds-c-field--inverse');
   });
 
-  it('has error', () => {
-    makeDropdown({ errorMessage: 'Really bad error' });
-    const button = screen.getByRole('button', { name: /Really bad error/ });
-    expect(button).toHaveAttribute('aria-invalid', 'true');
-  });
-
-  it('supports bottom placed error', () => {
+  it('shows error message', () => {
+    const errorId = 'my-error';
     const { container } = makeDropdown({
       errorMessage: 'Error',
-      errorPlacement: 'bottom',
-      errorId: '1_error',
+      errorPlacement: 'top',
+      errorId,
     });
 
     const button = getButton();
     expect(button).toHaveAttribute('aria-invalid', 'true');
-    expect(button).toHaveAttribute('aria-describedby', '1_error');
+    expect(button).toHaveAttribute('aria-describedby', errorId);
     expect(button).toHaveClass('ds-c-field--error');
-    expect(container).toMatchSnapshot();
+
+    const error = container.querySelector(`#${errorId}`);
+    expect(error).toMatchSnapshot();
+  });
+
+  it('supports bottom placed error', () => {
+    const errorId = 'my-error';
+    const { container } = makeDropdown({
+      errorMessage: 'Error',
+      errorPlacement: 'bottom',
+      errorId,
+    });
+
+    const button = getButton();
+    expect(button).toHaveAttribute('aria-invalid', 'true');
+    expect(button).toHaveAttribute('aria-describedby', errorId);
+    expect(button).toHaveClass('ds-c-field--error');
+
+    const dropdown = container.querySelector('.ds-c-dropdown');
+    const error = container.querySelector(`#${errorId}`);
+    expect(dropdown.lastChild).toEqual(error);
   });
 
   it('is disabled', () => {

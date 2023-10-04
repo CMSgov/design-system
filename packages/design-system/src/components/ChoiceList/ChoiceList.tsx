@@ -1,5 +1,6 @@
 import Choice, { ChoiceProps as ChoiceComponentProps } from './Choice';
-import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
+import { FormFieldProps, useFormLabel } from '../FormLabel';
+import { Label } from '../Label';
 import React from 'react';
 import classNames from 'classnames';
 import useId from '../utilities/useId';
@@ -114,7 +115,7 @@ export const ChoiceList: React.FC<ChoiceListProps> = (props: ChoiceListProps) =>
     }, 20);
   };
 
-  const { labelProps, fieldProps, wrapperProps, bottomError } = useFormLabel({
+  const { labelProps, wrapperProps, bottomError } = useFormLabel({
     ...listProps,
     labelComponent: 'legend',
     wrapperIsFieldset: true,
@@ -150,7 +151,7 @@ export const ChoiceList: React.FC<ChoiceListProps> = (props: ChoiceListProps) =>
 
   return (
     <fieldset {...wrapperProps}>
-      <FormLabel {...labelProps} />
+      <Label {...labelProps} />
       {choiceItems}
       {bottomError}
     </fieldset>

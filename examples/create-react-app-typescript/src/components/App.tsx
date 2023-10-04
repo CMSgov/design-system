@@ -9,7 +9,7 @@ import ChoiceListExample from './Examples/ChoiceListExample';
 import DateFieldExample from './Examples/DateFieldExample';
 import DropdownExample from './Examples/DropdownExample';
 import FilterChipExample from './Examples/FilterChipExample';
-import FormLabelExample from './Examples/FormLabelExample';
+import LabelExample from './Examples/LabelExample';
 import HelpDrawerExample from './Examples/HelpDrawerExample';
 import MaskedFieldExample from './Examples/MaskedFieldExample';
 import ModalDialogExample from './Examples/ModalDialogExample';
@@ -51,7 +51,7 @@ function App() {
         <DateFieldExample />
         <DropdownExample />
         <FilterChipExample />
-        <FormLabelExample />
+        <LabelExample />
         <HelpDrawerExample />
         <MaskedFieldExample />
         <ModalDialogExample />

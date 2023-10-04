@@ -29,7 +29,6 @@ describe('MultiInputDateField', () => {
     const inputs = screen.getAllByRole('textbox');
     expect(inputs).toHaveLength(3);
     inputs.forEach((input) => {
-      expect(input).toHaveAttribute('aria-describedby');
       expect(input).toHaveAttribute('aria-invalid', 'false');
       expect(input).toHaveAttribute('inputmode', 'numeric');
       expect(input).toHaveAttribute('pattern', '[0-9]*');

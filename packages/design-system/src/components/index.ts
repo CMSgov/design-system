@@ -13,6 +13,7 @@ export * from './FormLabel';
 export * from './HelpDrawer';
 export * from './IdleTimeout';
 export * from './InlineError';
+export * from './Label';
 export * from './MonthPicker';
 export * from './Pagination';
 export * from './PrivacySettingsDialog';

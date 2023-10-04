@@ -2,7 +2,8 @@ import React, { useCallback, useRef, useState } from 'react';
 import classNames from 'classnames';
 import mergeRefs from '../utilities/mergeRefs';
 import useAutofocus from '../utilities/useAutoFocus';
-import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
+import { FormFieldProps, useFormLabel } from '../FormLabel';
+import { Label } from '../Label';
 import { SvgIcon } from '../Icons';
 import { getFirstOptionValue, isOptGroup, parseChildren, validateProps } from './utils';
 import { Item, Section, useSelectState } from '../react-aria'; // from react-stately
@@ -279,7 +280,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
 
   return (
     <div {...useFormLabelProps.wrapperProps} ref={wrapperRef}>
-      <FormLabel {...labelProps} />
+      <Label {...labelProps} />
       <HiddenSelect
         isDisabled={props.disabled}
         state={state}

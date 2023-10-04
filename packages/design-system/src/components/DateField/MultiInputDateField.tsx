@@ -1,7 +1,8 @@
 import React from 'react';
 import DateInput from './DateInput';
 import defaultDateFormatter from './defaultDateFormatter';
-import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
+import { FormFieldProps, useFormLabel } from '../FormLabel';
+import { Label } from '../Label';
 import { t } from '../i18n';
 import useId from '../utilities/useId';
 
@@ -155,8 +156,8 @@ export function MultiInputDateField(props: DateFieldProps): React.ReactElement {
 
   return (
     <fieldset {...wrapperProps}>
-      <FormLabel {...labelProps} />
-      <DateInput {...fieldProps} labelId={labelProps.id} />
+      <Label {...labelProps} />
+      <DateInput {...fieldProps} />
       {bottomError}
     </fieldset>
   );
