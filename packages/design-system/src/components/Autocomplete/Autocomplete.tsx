@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Button from '../Button/Button';
 import DropdownMenu from '../Dropdown/DropdownMenu';
 import classNames from 'classnames';
@@ -10,10 +10,12 @@ import {
   renderStatusMessage,
   getTextFieldChild,
   getActiveDescendant,
+  removeUndefined,
 } from './utils';
 import { t } from '../i18n';
 import { useComboBox } from '../react-aria'; // from react-aria
 import { useComboBoxState } from '../react-aria'; // from react-stately
+import usePrevious from '../utilities/usePrevious';
 
 export interface AutocompleteItem extends Omit<React.HTMLAttributes<'option'>, 'name'> {
   /**
@@ -132,6 +134,23 @@ export interface AutocompleteProps {
 }
 
 /**
+ * The Autocomplete component wraps a TextField component and turns it into a combobox,
+ * where a user can type into the text field and see matching results. They can then
+ * select one of these results from the list, which will trigger an `onChange` event on
+ * the Autocomplete.
+ *
+ * The two event handlers that should be used when this is a controlled component are
+ * `onChange` and `onInputValueChange`. They are defined on the Autocomplete component
+ * and not its child TextField component.
+ *
+ * As the user types and `onInputValueChange` is called, you should be supplying relevant
+ * results to the Autocomplete through the `items` prop. The `items` prop is an array of
+ * objects. Passing an empty array will show a "No results" message. If you do not yet
+ * want to show results—for instance, because they haven't typed enough characters yet to
+ * make a database call—the `items` prop should remain be undefined. If you are still
+ * loading the results, use the `loading` boolean prop to display the loading message to
+ * the user.
+ *
  * For information about how and when to use this component,
  * [refer to its full documentation page](https://design.cms.gov/components/autocomplete/).
  */
@@ -181,6 +200,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
   const state = useComboBoxState({
     ...autocompleteProps,
     allowsCustomValue: true,
+    allowsEmptyCollection: true,
     children: reactStatelyItems,
     inputValue: textField.props.value,
     onInputChange: onInputValueChange
@@ -230,7 +250,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
     bottomError && clearSearchButton && 'ds-c-autocomplete__error-message-clear-btn'
   );
 
-  const textFieldProps = {
+  const textFieldProps = removeUndefined({
     ...useComboboxProps.inputProps,
     autoComplete: autoCompleteLabel,
     autoFocus: autoFocus || focusTrigger,
@@ -243,11 +263,33 @@ export const Autocomplete = (props: AutocompleteProps) => {
     id,
     labelId,
     inputRef: mergeRefs([inputRef, userInputRef]),
-  };
-  // My hypothesis is that the special stuff they're doing to keyboard events (what I
-  // wrote a PR to Adobe Spectrum about) is interfering with its ability to pick up on
-  // the keyboard controls. It works in React but not Preact.
-  // console.log(textFieldProps.onKeyDown)
+    // Restores previous functionality where if you had typed characters into the text
+    // field to get results and then blur away and come back, it'll open the results
+    // list again without having to press anything on the keyboard.
+    onFocus: (event) => {
+      useComboboxProps.inputProps.onFocus?.(event);
+      textField.props.onFocus?.(event);
+      state.open();
+    },
+    // Allow the user to continue to attach their own event handlers to the TextField.
+    // The following event handlers would normally be overwritten by useCombobox.
+    onChange: (event) => {
+      useComboboxProps.inputProps.onChange?.(event);
+      textField.props.onChange?.(event);
+    },
+    onBlur: (event) => {
+      useComboboxProps.inputProps.onBlur?.(event);
+      textField.props.onBlur?.(event);
+    },
+    onTouchEnd: (event) => {
+      useComboboxProps.inputProps.onTouchEnd?.(event);
+      textField.props.onTouchEnd?.(event);
+    },
+    onKeyDown: (event) => {
+      useComboboxProps.inputProps.onKeyDown?.(event);
+      textField.props.onKeyDown?.(event);
+    },
+  });
 
   const rootClassName = classNames('ds-c-autocomplete', className);
 
@@ -255,7 +297,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
     <div className={rootClassName} ref={wrapperRef}>
       {React.cloneElement(textField, textFieldProps)}
 
-      {(state.isOpen || (state.isFocused && statusMessage)) && (
+      {((state.isOpen && reactStatelyItems.length > 0) || (state.isFocused && statusMessage)) && (
         <DropdownMenu
           {...useComboboxProps.listBoxProps}
           componentClass="ds-c-autocomplete"

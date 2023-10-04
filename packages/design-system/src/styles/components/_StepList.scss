@@ -4,7 +4,7 @@
   margin-block-start: $spacer-4;
   padding-inline-start: 42px;
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     a:hover {
       text-decoration: none;
     }
@@ -43,7 +43,7 @@
       width: $spacer-4;
     }
 
-    @media (-ms-high-contrast: active), (forced-colors: active) {
+    @media (forced-colors: active) {
       border-color: GrayText;
       color: GrayText;
       forced-color-adjust: none;
@@ -79,7 +79,7 @@
     background: var(--steplist__background-color--current);
   }
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     &::before {
       background-color: Highlight;
       color: Window;
@@ -101,7 +101,7 @@
     background: var(--steplist-step__background-color--completed);
   }
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     &::before {
       background-color: WindowText;
       color: Window;
@@ -138,7 +138,7 @@
     width: 16px;
   }
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     .ds-c-icon-color--success {
       color: WindowText;
     }

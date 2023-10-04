@@ -10,11 +10,7 @@ exports[`TextField renders 1`] = `
       for="static-id"
       id="static-id__label"
     >
-      <span
-        class=""
-      >
-        Foo
-      </span>
+      Foo
     </label>
     <input
       aria-invalid="false"

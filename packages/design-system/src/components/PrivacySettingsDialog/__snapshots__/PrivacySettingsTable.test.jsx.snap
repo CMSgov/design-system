@@ -78,13 +78,9 @@ Object {
                   id="choice-list--2__label"
                 >
                   <span
-                    class=""
+                    class="ds-u-visibility--screen-reader"
                   >
-                    <span
-                      class="ds-u-visibility--screen-reader"
-                    >
-                      Advertising
-                    </span>
+                    Advertising
                   </span>
                 </legend>
                 <div>
@@ -102,11 +98,7 @@ Object {
                       class="ds-c-label"
                       for="choice-list--2__choice--0"
                     >
-                      <span
-                        class=""
-                      >
-                        Allow
-                      </span>
+                      Allow
                     </label>
                   </div>
                 </div>
@@ -125,11 +117,7 @@ Object {
                       class="ds-c-label"
                       for="choice-list--2__choice--1"
                     >
-                      <span
-                        class=""
-                      >
-                        Don't allow
-                      </span>
+                      Don't allow
                     </label>
                   </div>
                 </div>
@@ -170,13 +158,9 @@ Object {
                   id="choice-list--3__label"
                 >
                   <span
-                    class=""
+                    class="ds-u-visibility--screen-reader"
                   >
-                    <span
-                      class="ds-u-visibility--screen-reader"
-                    >
-                      Social Media
-                    </span>
+                    Social Media
                   </span>
                 </legend>
                 <div>
@@ -194,11 +178,7 @@ Object {
                       class="ds-c-label"
                       for="choice-list--3__choice--0"
                     >
-                      <span
-                        class=""
-                      >
-                        Allow
-                      </span>
+                      Allow
                     </label>
                   </div>
                 </div>
@@ -217,11 +197,7 @@ Object {
                       class="ds-c-label"
                       for="choice-list--3__choice--1"
                     >
-                      <span
-                        class=""
-                      >
-                        Don't allow
-                      </span>
+                      Don't allow
                     </label>
                   </div>
                 </div>
@@ -262,13 +238,9 @@ Object {
                   id="choice-list--4__label"
                 >
                   <span
-                    class=""
+                    class="ds-u-visibility--screen-reader"
                   >
-                    <span
-                      class="ds-u-visibility--screen-reader"
-                    >
-                      Web Analytics
-                    </span>
+                    Web Analytics
                   </span>
                 </legend>
                 <div>
@@ -286,11 +258,7 @@ Object {
                       class="ds-c-label"
                       for="choice-list--4__choice--0"
                     >
-                      <span
-                        class=""
-                      >
-                        Allow
-                      </span>
+                      Allow
                     </label>
                   </div>
                 </div>
@@ -309,11 +277,7 @@ Object {
                       class="ds-c-label"
                       for="choice-list--4__choice--1"
                     >
-                      <span
-                        class=""
-                      >
-                        Don't allow
-                      </span>
+                      Don't allow
                     </label>
                   </div>
                 </div>
@@ -398,13 +362,9 @@ Object {
                 id="choice-list--2__label"
               >
                 <span
-                  class=""
+                  class="ds-u-visibility--screen-reader"
                 >
-                  <span
-                    class="ds-u-visibility--screen-reader"
-                  >
-                    Advertising
-                  </span>
+                  Advertising
                 </span>
               </legend>
               <div>
@@ -422,11 +382,7 @@ Object {
                     class="ds-c-label"
                     for="choice-list--2__choice--0"
                   >
-                    <span
-                      class=""
-                    >
-                      Allow
-                    </span>
+                    Allow
                   </label>
                 </div>
               </div>
@@ -445,11 +401,7 @@ Object {
                     class="ds-c-label"
                     for="choice-list--2__choice--1"
                   >
-                    <span
-                      class=""
-                    >
-                      Don't allow
-                    </span>
+                    Don't allow
                   </label>
                 </div>
               </div>
@@ -490,13 +442,9 @@ Object {
                 id="choice-list--3__label"
               >
                 <span
-                  class=""
+                  class="ds-u-visibility--screen-reader"
                 >
-                  <span
-                    class="ds-u-visibility--screen-reader"
-                  >
-                    Social Media
-                  </span>
+                  Social Media
                 </span>
               </legend>
               <div>
@@ -514,11 +462,7 @@ Object {
                     class="ds-c-label"
                     for="choice-list--3__choice--0"
                   >
-                    <span
-                      class=""
-                    >
-                      Allow
-                    </span>
+                    Allow
                   </label>
                 </div>
               </div>
@@ -537,11 +481,7 @@ Object {
                     class="ds-c-label"
                     for="choice-list--3__choice--1"
                   >
-                    <span
-                      class=""
-                    >
-                      Don't allow
-                    </span>
+                    Don't allow
                   </label>
                 </div>
               </div>
@@ -582,13 +522,9 @@ Object {
                 id="choice-list--4__label"
               >
                 <span
-                  class=""
+                  class="ds-u-visibility--screen-reader"
                 >
-                  <span
-                    class="ds-u-visibility--screen-reader"
-                  >
-                    Web Analytics
-                  </span>
+                  Web Analytics
                 </span>
               </legend>
               <div>
@@ -606,11 +542,7 @@ Object {
                     class="ds-c-label"
                     for="choice-list--4__choice--0"
                   >
-                    <span
-                      class=""
-                    >
-                      Allow
-                    </span>
+                    Allow
                   </label>
                 </div>
               </div>
@@ -629,11 +561,7 @@ Object {
                     class="ds-c-label"
                     for="choice-list--4__choice--1"
                   >
-                    <span
-                      class=""
-                    >
-                      Don't allow
-                    </span>
+                    Don't allow
                   </label>
                 </div>
               </div>

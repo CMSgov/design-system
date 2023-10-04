@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Label adds punctuation to requirementLabel when hint is also present 1`] = `
+<label
+  class="ds-c-label"
+>
+  Hello world
+</label>
+`;
+
+exports[`Label is inversed 1`] = `
+<div
+  class="ds-c-hint ds-c-hint--inverse"
+>
+  Foo
+</div>
+`;
+
+exports[`Label renders as a legend element 1`] = `
+<legend
+  class="ds-c-label"
+>
+  Hello world
+</legend>
+`;
+
+exports[`Label renders label text 1`] = `
+<label
+  class="ds-c-label"
+  for="name"
+>
+  Hello world
+</label>
+`;
+
+exports[`Label renders requirementLabel 1`] = `
+<label
+  class="ds-c-label"
+>
+  Hello world
+</label>
+`;
+
+exports[`Label supports additional attributes 1`] = `
+<label
+  aria-label="testing aria"
+  class="ds-c-label ds-u-foo"
+>
+  Hello world
+</label>
+`;

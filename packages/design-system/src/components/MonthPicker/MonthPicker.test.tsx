@@ -7,6 +7,9 @@ import { setLanguage } from '@cmsgov/design-system';
 const defaultProps = {
   name: 'months',
   label: 'Months',
+  hint: 'Guess and test',
+  errorMessage:
+    'Only odd-numbered months accepted until July, except on leap years, then only prime-numbered months that have an "A" in them',
   selectAllText: 'Select all',
   clearAllText: 'Clear all',
 };
