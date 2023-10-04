@@ -606,12 +606,12 @@ function __skpm_run(key, context) {
             };
 
             /* WEBPACK VAR INJECTION */
-          }.call(
+          }).call(
             this,
             __webpack_require__(
               /*! ./node_modules/promise-polyfill/lib/index.js */ './node_modules/promise-polyfill/lib/index.js'
             )
-          ));
+          );
 
           /***/
         },
@@ -1747,12 +1747,12 @@ function __skpm_run(key, context) {
             module.exports = Promise;
 
             /* WEBPACK VAR INJECTION */
-          }.call(
+          }).call(
             this,
             __webpack_require__(
               /*! ./../../timers-browserify/main.js */ './node_modules/timers-browserify/main.js'
             ).setImmediate
-          ));
+          );
 
           /***/
         },
@@ -1954,13 +1954,13 @@ function __skpm_run(key, context) {
             );
 
             /* WEBPACK VAR INJECTION */
-          }.call(
+          }).call(
             this,
             __webpack_require__(
               /*! ./../webpack/buildin/global.js */ './node_modules/webpack/buildin/global.js'
             ),
             __webpack_require__(/*! ./../process/browser.js */ './node_modules/process/browser.js')
-          ));
+          );
 
           /***/
         },
@@ -2038,12 +2038,12 @@ function __skpm_run(key, context) {
               (this && this.clearImmediate);
 
             /* WEBPACK VAR INJECTION */
-          }.call(
+          }).call(
             this,
             __webpack_require__(
               /*! ./../webpack/buildin/global.js */ './node_modules/webpack/buildin/global.js'
             )
-          ));
+          );
 
           /***/
         },
@@ -2198,6 +2198,45 @@ function __skpm_run(key, context) {
             return swatches;
           };
 
+          var makeComponentSwatches = function makeComponentSwatches(components) {
+            var hexRegex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+            var swatches = [];
+
+            for (
+              var _i2 = 0, _Object$entries2 = Object.entries(components);
+              _i2 < _Object$entries2.length;
+              _i2++
+            ) {
+              var _Object$entries2$_i = _slicedToArray(_Object$entries2[_i2], 2),
+                componentName = _Object$entries2$_i[0],
+                componentTokens = _Object$entries2$_i[1];
+
+              for (
+                var _i3 = 0, _Object$entries3 = Object.entries(componentTokens);
+                _i3 < _Object$entries3.length;
+                _i3++
+              ) {
+                var _Object$entries3$_i = _slicedToArray(_Object$entries3[_i3], 2),
+                  tokenName = _Object$entries3$_i[0],
+                  tokenValue = _Object$entries3$_i[1];
+
+                if (hexRegex.test(tokenValue)) {
+                  swatches.push(
+                    sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Swatch.from({
+                      name: 'components/'
+                        .concat(componentName, '/')
+                        .concat(componentName)
+                        .concat(tokenName),
+                      color: tokenValue,
+                    })
+                  );
+                }
+              }
+            }
+
+            return swatches;
+          };
+
           /* harmony default export */ __webpack_exports__['default'] = function () {
             var tokenData = {};
             var jsonFile = _skpm_dialog__WEBPACK_IMPORTED_MODULE_1___default.a.showOpenDialogSync({
@@ -2229,8 +2268,11 @@ function __skpm_run(key, context) {
             }
 
             var doc = sketch__WEBPACK_IMPORTED_MODULE_0___default.a.getSelectedDocument();
-            doc.swatches = [];
-            var colorSwatches = makeColorSwatches(tokenData.color);
+            console.log(doc.swatches); // doc.swatches = [];
+
+            var colorSwatches = tokenData.color
+              ? makeColorSwatches(tokenData.color)
+              : makeComponentSwatches(tokenData);
             colorSwatches.forEach(function (swatch) {
               doc.swatches.push(swatch);
             });
