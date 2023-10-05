@@ -5,7 +5,7 @@ export default {
   title: 'Web Components/Alert',
   argTypes: {
     children: { control: 'text' },
-    // 'hide-icon': { control: 'boolean' }, uncomment when we support the 'hide-icon' boolean string
+    'hide-icon': { control: 'boolean' },
     role: {
       options: ['alert', 'alertdialog', 'region', 'status'],
       control: { type: 'radio' },
