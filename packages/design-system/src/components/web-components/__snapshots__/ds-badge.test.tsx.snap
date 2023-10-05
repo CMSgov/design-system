@@ -1,10 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Badge should render a default badge 1`] = `
-<span
-  class="ds-c-badge"
-  parent="[object HTMLElement]"
->
-  Foo
-</span>
+<DocumentFragment>
+  <ds-badge>
+    <span
+      class="ds-c-badge"
+      parent="[object HTMLElement]"
+    >
+      Foo
+    </span>
+  </ds-badge>
+</DocumentFragment>
 `;
