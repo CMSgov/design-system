@@ -5,7 +5,7 @@ export default {
   title: 'Web Components/UsaBanner',
   argTypes: {
     'class-name': { control: 'text' },
-    id: { control: 'text' },
+    'root-id': { control: 'text' },
   },
 };
 
