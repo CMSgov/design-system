@@ -77,11 +77,6 @@ export const ErrorField: Story = {
   },
 };
 
-export const SuccessField: Story = {
-  ...UncontrolledTemplate,
-  args: { fieldClassName: 'ds-c-field--success' },
-};
-
 export const DisabledField: Story = {
   ...UncontrolledTemplate,
   args: { disabled: true },

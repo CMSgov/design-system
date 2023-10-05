@@ -429,13 +429,11 @@ export const components: AnyTokenValues = {
     // Medicare is the only theme that has a custom width token for its borders on disabled fields
     '__border-width--disabled':                   '1px',
     '__border-width--error':                      '3px',
-    '__border-width--success':                    '3px',
     '__border-color':                             t.color['gray'],
     '__border-color--disabled':                   t.color['gray-darker'],
     '__border-color--error':                      t.color['error'],
     '__border-color--error--inverse':             t.color['error-lighter'],
     '__border-color--inverse':                    t.color['gray'],
-    '__border-color--success':                    t.color['success-light'],
     '__color':                                    t.color['gray-darker'],
     '__divider-color':                            t.color['gray-light'],
     '__padding':                                  t.spacer['2'],
