@@ -18,9 +18,8 @@ function renderBadge(props = {}) {
 
 describe('Badge', () => {
   it('should render a default badge', () => {
-    renderBadge();
-    const badge = screen.getByText('Foo');
-    expect(badge).toMatchSnapshot();
+    const { asFragment } = renderBadge();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('applies variation classes', () => {
