@@ -15,15 +15,16 @@ const attributes = [
   'analytics-event-type-override',
   'analytics-parent-heading',
   'analytics-parent-type',
-  'id',
+  'root-id',
 ];
 
 interface WrapperProps extends Omit<AlertProps, 'hideIcon'> {
   hideIcon?: string;
+  rootId?: string;
 }
 
-const Wrapper = ({ hideIcon, ...otherProps }: WrapperProps) => (
-  <Alert {...otherProps} hideIcon={hideIcon && Boolean(JSON.parse(hideIcon))} />
+const Wrapper = ({ hideIcon, rootId, ...otherProps }: WrapperProps) => (
+  <Alert {...otherProps} hideIcon={hideIcon && Boolean(JSON.parse(hideIcon))} id={rootId} />
 );
 
 define('ds-alert', () => Wrapper, { attributes });

@@ -18,6 +18,7 @@ export default {
       options: [undefined, 'lightweight'],
       control: { type: 'radio' },
     },
+    'root-id': { control: 'text' },
   },
   args: {
     variation: 'success',
