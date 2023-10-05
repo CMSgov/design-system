@@ -9,6 +9,6 @@ export default {
   },
 };
 
-const Template = (args) => <ds-usa-banner {...args} />;
+const Template = (args) => <ds-usa-banner {...args} key={JSON.stringify(args)} />;
 
 export const Default = Template.bind({});
