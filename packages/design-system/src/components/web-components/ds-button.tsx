@@ -29,9 +29,11 @@ interface WrapperProps extends Omit<ButtonProps, 'isAlternate' | 'onDark' | 'ana
 const Wrapper = ({ isAlternate, isOnDark, analytics, ...otherProps }: WrapperProps) => (
   <Button
     {...otherProps}
-    isAlternate={isAlternate && Boolean(JSON.parse(isAlternate))}
-    onDark={isOnDark && Boolean(JSON.parse(isOnDark))}
-    analytics={analytics && Boolean(JSON.parse(analytics))}
+    {...{
+      isAlternate: isAlternate && Boolean(JSON.parse(isAlternate)),
+      onDark: isOnDark && Boolean(JSON.parse(isOnDark)),
+      analytics: analytics && Boolean(JSON.parse(analytics)),
+    }}
   />
 );
 
