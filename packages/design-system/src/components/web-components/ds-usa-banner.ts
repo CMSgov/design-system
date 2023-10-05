@@ -1,4 +1,4 @@
-import { define } from 'preactement';
+import { define } from './preactement/define';
 import UsaBanner from '../UsaBanner/UsaBanner';
 
 const attributes = ['class-name', 'id'];

@@ -1,4 +1,4 @@
-import { define } from 'preactement';
+import { define } from './preactement/define';
 import Alert from '../Alert/Alert';
 
 const attributes = [

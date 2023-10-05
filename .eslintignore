@@ -14,3 +14,4 @@ packages/coverage/**
 packages/design-system-tokens/sketch/cmsds-token-importer/cmsds-token-importer.sketchplugin/**
 packages/design-system/scripts/cmsds-migrate/test/**
 packages/design-system/src/components/react-aria/**
+packages/design-system/src/components/web-components/preactement/**

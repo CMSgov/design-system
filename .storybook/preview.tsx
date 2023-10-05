@@ -9,7 +9,7 @@ import {
   setErrorPlacementDefault,
 } from '../packages/design-system/src/components/flags';
 import { setHeaderSendsAnalytics } from '../packages/ds-healthcare-gov/src/components/flags';
-import { setLanguage } from '@cmsgov/design-system/src/components/i18n';
+import { setLanguage } from '../packages/design-system/src/components/i18n';
 import { setLanguage as setLanguageFromPackage } from '@cmsgov/design-system';
 import themes from '../themes.json';
 import type { UtagContainer } from '@cmsgov/design-system';
