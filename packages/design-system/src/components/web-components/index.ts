@@ -12,7 +12,7 @@ export * from '../analytics';
 export * from '../flags';
 export * from '../i18n';
 
-export * from './ds-alert';
-export * from './ds-badge';
-export * from './ds-button';
-export * from './ds-usa-banner';
+import './ds-alert';
+import './ds-badge';
+import './ds-button';
+import './ds-usa-banner';

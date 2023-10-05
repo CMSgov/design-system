@@ -27,11 +27,10 @@ describe('SingleInputDateField', function () {
     expect(container.querySelector('.ds-c-single-input-date-field')).toBeInTheDocument();
 
     const label = container.querySelector('.ds-c-label');
-    expect(label.querySelectorAll('span')).toHaveLength(2);
-    expect(label.firstElementChild.textContent).toContain('Birthday');
+    expect(label.textContent).toContain('Birthday');
 
-    expect(label.lastElementChild.classList).toContain('ds-c-field__hint');
-    expect(label.lastElementChild.textContent).toContain('Please enter your birthday');
+    const hint = container.querySelector('.ds-c-hint');
+    expect(hint.textContent).toContain('Please enter your birthday');
 
     const mask = container.querySelector('.ds-c-label-mask');
     expect(mask).toBeInTheDocument();

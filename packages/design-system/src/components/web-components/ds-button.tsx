@@ -1,5 +1,5 @@
 import React from 'react';
-import { define } from 'preactement';
+import { define } from './preactement/define';
 import Button, { ButtonProps } from '../Button/Button';
 
 const attributes = [

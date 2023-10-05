@@ -11,7 +11,6 @@ const meta: Meta<typeof Autocomplete> = {
   args: {
     // setting some defaults so controls turn on by default
     clearInputText: 'Clear search',
-    clearInputOnBlur: true,
     clearSearchButton: true,
     loadingMessage: 'Loading...',
     noResultsMessage: 'No results',

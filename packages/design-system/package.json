@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/design-system",
-  "version": "8.0.0",
+  "version": "8.0.2",
   "publishConfig": {
     "access": "public",
     "tag": "latest"
@@ -44,6 +44,7 @@
   "module": "dist/react-components/esm/index.js",
   "types": "dist/react-components/types/index.d.ts",
   "sideEffects": [
+    "./src/components/web-components/*",
     "./dist/preact-components/esm/web-components/*.js"
   ],
   "files": [
