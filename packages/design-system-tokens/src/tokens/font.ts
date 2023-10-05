@@ -4,10 +4,10 @@
 import { FontTokens, to } from '../lib/types';
 
 const font = to<FontTokens>()({
-  'family-open-sans': "'Open Sans', Helvetica, sans-serif",
-  'family-rubik': "'Rubik', sans-serif",
-  'family-montserrat': "'Montserrat', sans-serif",
-  'family-bitter': 'Bitter, Georgia, serif',
+  'family-open-sans': "'Open Sans', Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif",
+  'family-rubik': "Rubik, Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', source-sans-pro, sans-serif",
+  'family-montserrat': "Montserrat, Avenir, Corbel, 'URW Gothic', source-sans-pro, sans-serif",
+  'family-bitter': "Bitter, Superclarendon, 'Bookman Old Style', 'URW Bookman', 'URW Bookman L', 'Georgia Pro', Georgia, serif",
   'line-height-reset': 1,
   'line-height-heading': 1.3,
   'line-height-base': 1.5,
