@@ -9,12 +9,7 @@ interface WrapperProps extends UsaBannerProps {
 }
 
 const Wrapper = ({ rootId, ...otherProps }: WrapperProps) => (
-  <UsaBanner
-    {...otherProps}
-    {...{
-      id: rootId,
-    }}
-  />
+  <UsaBanner {...otherProps} id={rootId} />
 );
 
 define('ds-usa-banner', () => Wrapper, { attributes });
