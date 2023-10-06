@@ -163,6 +163,8 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     );
   };
 
+  console.log(optionsAndGroups)
+
   const reactStatelyItems = optionsAndGroups.map((item, index) => {
     if (isOptGroup(item)) {
       const { label, options, ...extraAttrs } = item;
