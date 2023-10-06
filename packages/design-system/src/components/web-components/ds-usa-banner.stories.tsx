@@ -4,7 +4,6 @@ import './ds-usa-banner';
 export default {
   title: 'Web Components/UsaBanner',
   argTypes: {
-    'class-name': { control: 'text' },
     'root-id': { control: 'text' },
   },
 };
