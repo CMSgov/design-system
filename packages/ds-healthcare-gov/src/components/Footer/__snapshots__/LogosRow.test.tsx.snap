@@ -18,6 +18,7 @@ exports[`LogosRow renders logos and address 1`] = `
           <svg
             aria-labelledby="hc-c-footer__logo-title"
             height="25"
+            role="img"
             viewBox="0 0 253.05 31.65"
             width="200"
             xmlns="http://www.w3.org/2000/svg"
