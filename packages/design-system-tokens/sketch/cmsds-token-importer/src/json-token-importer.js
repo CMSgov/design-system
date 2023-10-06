@@ -1,6 +1,21 @@
 import sketch from 'sketch';
 import dialog from '@skpm/dialog';
-import { readFileSync } from '@skpm/fs';
+import themes from '../../../../../themes.json';
+import coreTheme from '../../../dist/core.tokens.json';
+import coreComponents from '../../../dist/core-component.tokens.json';
+import healthcareTheme from '../../../dist/healthcare.tokens.json';
+import healthcareComponents from '../../../dist/healthcare-component.tokens.json';
+import medicareTheme from '../../../dist/medicare.tokens.json';
+import medicareComponents from '../../../dist/medicare-component.tokens.json';
+import cmsgovTheme from '../../../dist/cmsgov.tokens.json';
+import cmsgovComponents from '../../../dist/cmsgov-component.tokens.json';
+
+const tokens = {
+  core: { themeColors: coreTheme.color, components: coreComponents },
+  healthcare: { themeColors: healthcareTheme.color, components: healthcareComponents },
+  medicare: { themeColors: medicareTheme.color, components: medicareComponents },
+  cmsgov: { themeColors: cmsgovTheme.color, components: cmsgovComponents },
+};
 
 /*
  * Split tokens into groups based on root name and store in category,
@@ -15,7 +30,7 @@ const makeColorSwatches = (colorTokens) => {
     let colorName = key.match(/(^[A-Za-z]*)-?[A-Za-z\d]*?-?[A-Za-z\d]*?-?[A-Za-z\d]*?$/);
     colorName = colorName === null ? (colorName = '') : colorName[1] + '/';
     let currentSwatch = sketch.Swatch.from({
-      name: `${colorName}/${key}`,
+      name: `theme colors/${colorName}/${key}`,
       color: value,
     });
     swatches.push(currentSwatch);
@@ -55,32 +70,23 @@ function updateSwatches(oldSwatches, newSwatches) {
 }
 
 export default function () {
-  let tokenData = {};
+  const themeNames = Object.values(themes).map((theme) => theme.displayName);
 
-  const jsonFile = dialog.showOpenDialogSync({
-    message: 'Must be a CMSDS valid JSON Token file.',
-    buttonLabel: 'Import',
-    filters: [{ name: 'Json Data', extensions: ['json', 'tokens', 'tokens.json'] }],
-    properties: ['openFile'],
+  const themeIndex = dialog.showMessageBoxSync({
+    title: 'Switch theme',
+    message: 'Which theme?',
+    buttons: themeNames,
   });
 
-  if (jsonFile) {
-    try {
-      const importedFile = readFileSync(jsonFile[0]);
-      tokenData = JSON.parse(importedFile);
-    } catch (err) {
-      console.error(err);
-    }
-  } else {
-    sketch.UI.alert('Importing Error', 'Could not open selected file.');
-  }
+  const themeKey = Object.keys(themes)[themeIndex];
+  const themeName = themes[themeKey].displayName;
+  const themeTokens = tokens[themeKey];
+  console.log(themeTokens);
 
   const doc = sketch.getSelectedDocument();
-  // doc.swatches = [];
 
-  const newSwatches = tokenData.color
-    ? makeColorSwatches(tokenData.color)
-    : makeComponentSwatches(tokenData);
+  doc.swatches = updateSwatches(doc.swatches, makeColorSwatches(themeTokens.themeColors));
+  doc.swatches = updateSwatches(doc.swatches, makeComponentSwatches(themeTokens.components));
 
-  doc.swatches = updateSwatches(doc.swatches, newSwatches);
+  sketch.UI.message(`Switched to ${themeName}`);
 }
