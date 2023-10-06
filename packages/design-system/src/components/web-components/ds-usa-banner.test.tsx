@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import './ds-usa-banner';
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -19,22 +19,17 @@ function renderBanner(customProps = {}) {
 
 describe('UsaBanner', function () {
   it('renders correctly', () => {
-    const { asFragment } = renderBanner({ id: 'static-id' });
+    const { asFragment } = renderBanner({ 'root-id': 'static-id' });
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('applies additional class names to expanded banner', () => {
-    renderBanner();
-    const openButton = screen.getByRole('button');
-    fireEvent.click(openButton);
-    const header = screen.getByRole('banner');
-    expect(header.className).toContain('ds-c-usa-banner__header--expanded');
-  });
-
-  it('adds className to root element', () => {
-    renderBanner({ 'class-name': 'bar' });
-    expect(
-      screen.getByLabelText('Official website of the United States government').className
-    ).toContain('bar');
+  it('generates ids when no id is provided', () => {
+    const { container } = renderBanner();
+    const idRegex = /usa-banner--\d+/;
+    const button = screen.getByRole('button');
+    const panelId = button.getAttribute('aria-controls');
+    const panel = container.querySelector(`#${panelId}`);
+    expect(panel).toBeInTheDocument();
+    expect(panel.id).toMatch(idRegex);
   });
 });
