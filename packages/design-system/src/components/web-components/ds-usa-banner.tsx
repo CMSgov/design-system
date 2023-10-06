@@ -2,7 +2,10 @@ import React from 'react';
 import { define } from './preactement/define';
 import { UsaBanner, UsaBannerProps } from '../UsaBanner/index';
 
-const attributes = ['class-name', 'root-id'];
+const attributes = [
+  // Purposely leaving out `className` because it's unnecessary
+  'root-id',
+];
 
 interface WrapperProps extends UsaBannerProps {
   rootId?: string;
