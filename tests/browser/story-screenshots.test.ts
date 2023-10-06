@@ -21,6 +21,7 @@ const storySkipList = [
   'healthcare-privacysettingslink--custom-content',
   'web-components-alert--default',
   'web-components-button--default',
+  'web-components-usabanner--default',
 ];
 
 const isSmokeTest = Boolean(process.env.SMOKE && JSON.parse(process.env.SMOKE));

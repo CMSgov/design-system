@@ -3,7 +3,7 @@
 exports[`UsaBanner renders correctly 1`] = `
 <DocumentFragment>
   <ds-usa-banner
-    id="static-id"
+    root-id="static-id"
   >
     <section
       aria-label="Official website of the United States government"

@@ -1,1 +1,1 @@
-export { default as UsaBanner } from './UsaBanner';
+export * from './UsaBanner';

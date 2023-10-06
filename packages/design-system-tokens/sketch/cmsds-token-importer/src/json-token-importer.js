@@ -23,6 +23,37 @@ const makeColorSwatches = (colorTokens) => {
   return swatches;
 };
 
+const makeComponentSwatches = (components) => {
+  const hexRegex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+  const swatches = [];
+  for (const [componentName, componentTokens] of Object.entries(components)) {
+    for (const [tokenName, tokenValue] of Object.entries(componentTokens)) {
+      if (hexRegex.test(tokenValue)) {
+        swatches.push(
+          sketch.Swatch.from({
+            name: `components/${componentName}/${componentName}${tokenName}`,
+            color: tokenValue,
+          })
+        );
+      }
+    }
+  }
+  return swatches;
+};
+
+function updateSwatches(oldSwatches, newSwatches) {
+  const swatchMap = oldSwatches.reduce((map, swatch) => {
+    map[swatch.name] = swatch;
+    return map;
+  }, {});
+
+  for (const newSwatch of newSwatches) {
+    swatchMap[newSwatch.name] = newSwatch;
+  }
+
+  return Object.values(swatchMap);
+}
+
 export default function () {
   let tokenData = {};
 
@@ -45,10 +76,11 @@ export default function () {
   }
 
   const doc = sketch.getSelectedDocument();
-  doc.swatches = [];
+  // doc.swatches = [];
 
-  const colorSwatches = makeColorSwatches(tokenData.color);
-  colorSwatches.forEach((swatch) => {
-    doc.swatches.push(swatch);
-  });
+  const newSwatches = tokenData.color
+    ? makeColorSwatches(tokenData.color)
+    : makeComponentSwatches(tokenData);
+
+  doc.swatches = updateSwatches(doc.swatches, newSwatches);
 }
