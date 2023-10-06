@@ -247,6 +247,7 @@ exports[`Header renders Direct Enrollment banner 1`] = `
             <svg
               aria-labelledby="hc-c-logo__title"
               height="25"
+              role="img"
               viewBox="0 0 253.05 31.65"
               width="200"
               xmlns="http://www.w3.org/2000/svg"
@@ -660,6 +661,7 @@ exports[`Header renders Spanish header 1`] = `
             <svg
               aria-labelledby="hc-c-logo__title"
               height="25"
+              role="img"
               viewBox="0 0 313.54 31.74"
               width="237"
               xmlns="http://www.w3.org/2000/svg"
@@ -1080,6 +1082,7 @@ exports[`Header renders full/homepage header 1`] = `
             <svg
               aria-labelledby="hc-c-logo__title"
               height="25"
+              role="img"
               viewBox="0 0 253.05 31.65"
               width="200"
               xmlns="http://www.w3.org/2000/svg"
@@ -1484,6 +1487,7 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
             <svg
               aria-labelledby="hc-c-logo__title"
               height="25"
+              role="img"
               viewBox="0 0 253.05 31.65"
               width="200"
               xmlns="http://www.w3.org/2000/svg"
@@ -1888,6 +1892,7 @@ exports[`Header renders logged-in header with firstName 1`] = `
             <svg
               aria-labelledby="hc-c-logo__title"
               height="25"
+              role="img"
               viewBox="0 0 253.05 31.65"
               width="200"
               xmlns="http://www.w3.org/2000/svg"
@@ -2296,6 +2301,7 @@ exports[`Header renders logged-in header without firstName 1`] = `
             <svg
               aria-labelledby="hc-c-logo__title"
               height="25"
+              role="img"
               viewBox="0 0 253.05 31.65"
               width="200"
               xmlns="http://www.w3.org/2000/svg"
