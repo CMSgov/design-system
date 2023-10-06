@@ -1,5 +1,5 @@
 import React from 'react';
-import { define } from 'preactement';
+import { define } from './preactement/define';
 import Button, { ButtonProps } from '../Button/Button';
 
 const attributes = [
@@ -7,30 +7,31 @@ const attributes = [
   'disabled',
   'href',
   'is-alternate',
-  'on-dark',
+  'is-on-dark',
   'size',
   'type',
   'variation',
+  'target',
   'analytics',
   'analytics-label-override',
   'analytics-event-type-override',
   'analytics-parent-heading',
   'analytics-parent-type',
-  'target',
 ];
 
+// Mapping `onDark` to `isOnDark` because props starting with "on" indicate an event handler and tests fail due to this expectation
 interface WrapperProps extends Omit<ButtonProps, 'isAlternate' | 'onDark' | 'analytics'> {
   analytics?: string;
   isAlternate?: string;
-  onDark?: string;
+  isOnDark?: string;
 }
 
-const Wrapper = ({ isAlternate, onDark, analytics, ...otherProps }: WrapperProps) => (
+const Wrapper = ({ isAlternate, isOnDark, analytics, ...otherProps }: WrapperProps) => (
   <Button
     {...otherProps}
     {...{
       isAlternate: isAlternate && Boolean(JSON.parse(isAlternate)),
-      onDark: onDark && Boolean(JSON.parse(onDark)),
+      onDark: isOnDark && Boolean(JSON.parse(isOnDark)),
       analytics: analytics && Boolean(JSON.parse(analytics)),
     }}
   />
