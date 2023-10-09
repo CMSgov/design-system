@@ -1545,8 +1545,6 @@ var _dist_medicare_component_tokens_json__WEBPACK_IMPORTED_MODULE_8___namespace 
 var _dist_cmsgov_tokens_json__WEBPACK_IMPORTED_MODULE_9___namespace = /*#__PURE__*/__webpack_require__.t(/*! ../../../dist/cmsgov.tokens.json */ "../../dist/cmsgov.tokens.json", 1);
 /* harmony import */ var _dist_cmsgov_component_tokens_json__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../dist/cmsgov-component.tokens.json */ "../../dist/cmsgov-component.tokens.json");
 var _dist_cmsgov_component_tokens_json__WEBPACK_IMPORTED_MODULE_10___namespace = /*#__PURE__*/__webpack_require__.t(/*! ../../../dist/cmsgov-component.tokens.json */ "../../dist/cmsgov-component.tokens.json", 1);
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -1570,7 +1568,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var tokens = {
+var tokensByTheme = {
   core: {
     themeColors: _dist_core_tokens_json__WEBPACK_IMPORTED_MODULE_3__.color,
     components: _dist_core_component_tokens_json__WEBPACK_IMPORTED_MODULE_4__
@@ -1588,39 +1586,62 @@ var tokens = {
     components: _dist_cmsgov_component_tokens_json__WEBPACK_IMPORTED_MODULE_10__
   }
 };
-/*
- * Split tokens into groups based on root name and store in category,
- * based on first word before '-'. Allows keys with up to 4 dash separators.
- *
- * @param colorTokens - An object which contains color name:value pairs
- * @returns An array of Swatch objects created by the Sketch API
- */
 
-var makeColorSwatches = function makeColorSwatches(colorTokens) {
-  var swatches = [];
+function loadSwatchMap(doc) {
+  return doc.swatches.reduce(function (map, swatch) {
+    map[swatch.name] = swatch;
+    return map;
+  }, {});
+}
 
-  for (var _i = 0, _Object$entries = Object.entries(colorTokens); _i < _Object$entries.length; _i++) {
+function saveSwatchMap(doc, swatchMap) {
+  doc.swatches = Object.values(swatchMap); // From ChatGTP - the doc.sketchObject.saveDocument doesn't seem to be a thing, but
+  // doc.save() doesn't work to update the colors either. I think ChatGPT is wrong, and
+  // I can't just assign `swatchMap[name].color = color;`. Now that I fixed the typo in
+  // that line, I see that I get an error that I can't reassign a readonly value.
+
+  doc.sketchObject.reloadInspector(); // Refresh the Sketch inspector
+  // doc.sketchObject.saveDocument(() => {}); // Save the document to apply changes
+  // doc.save()
+}
+
+function updateOrAddSwatch(swatchMap, name, color) {
+  if (swatchMap[name]) {
+    // The only other way I know to supply the Sketch's low-level `updateWithColor`
+    // is with `MSColor.colorWithHex_alpha("#0094FF", 1)`, but the problem is that right
+    // now all our color tokens are defined with the alpha channel in the hexadecimal,
+    // and I don't want to bother with parsing it out, so I'm just going to create a new
+    // swatch every time.
+    // swatchMap[name].sketchObject.updateWithColor(newSwatch.referencingColor);
+    swatchMap[name].sketchObject.updateWithColor(MSColor.colorWithHex_alpha(color, 1));
+    var swatchContainer = sketch__WEBPACK_IMPORTED_MODULE_0___default.a.getSelectedDocument().sketchObject.documentData().sharedSwatches();
+    swatchContainer.updateReferencesToSwatch(swatchMap[name].sketchObject);
+  } else {
+    var newSwatch = sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Swatch.from({
+      name: name,
+      color: color
+    });
+    swatchMap[name] = newSwatch;
+  }
+}
+
+function updateSwatchesFromTheme(doc, themeTokens) {
+  var swatchMap = loadSwatchMap(doc);
+
+  for (var _i = 0, _Object$entries = Object.entries(themeTokens.themeColors); _i < _Object$entries.length; _i++) {
     var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
         key = _Object$entries$_i[0],
         value = _Object$entries$_i[1];
 
-    var colorName = key.match(/(^[A-Za-z]*)-?[A-Za-z\d]*?-?[A-Za-z\d]*?-?[A-Za-z\d]*?$/);
-    colorName = colorName === null ? colorName = '' : colorName[1] + '/';
-    var currentSwatch = sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Swatch.from({
-      name: "theme colors/".concat(colorName, "/").concat(key),
-      color: value
-    });
-    swatches.push(currentSwatch);
+    // The name of the color is what comes before the first hyphen (if there's a hyphen)
+    var colorName = key.split('-')[0];
+    var swatchName = "theme colors/".concat(colorName, "/").concat(key);
+    updateOrAddSwatch(swatchMap, swatchName, value);
   }
 
-  return swatches;
-};
-
-var makeComponentSwatches = function makeComponentSwatches(components) {
   var hexRegex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
-  var swatches = [];
 
-  for (var _i2 = 0, _Object$entries2 = Object.entries(components); _i2 < _Object$entries2.length; _i2++) {
+  for (var _i2 = 0, _Object$entries2 = Object.entries(themeTokens.components); _i2 < _Object$entries2.length; _i2++) {
     var _Object$entries2$_i = _slicedToArray(_Object$entries2[_i2], 2),
         componentName = _Object$entries2$_i[0],
         componentTokens = _Object$entries2$_i[1];
@@ -1631,38 +1652,14 @@ var makeComponentSwatches = function makeComponentSwatches(components) {
           tokenValue = _Object$entries3$_i[1];
 
       if (hexRegex.test(tokenValue)) {
-        swatches.push(sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Swatch.from({
-          name: "components/".concat(componentName, "/").concat(componentName).concat(tokenName),
-          color: tokenValue
-        }));
+        var _swatchName = "components/".concat(componentName, "/").concat(componentName).concat(tokenName);
+
+        updateOrAddSwatch(swatchMap, _swatchName, tokenValue);
       }
     }
   }
 
-  return swatches;
-};
-
-function updateSwatches(oldSwatches, newSwatches) {
-  var swatchMap = oldSwatches.reduce(function (map, swatch) {
-    map[swatch.name] = swatch;
-    return map;
-  }, {});
-
-  var _iterator = _createForOfIteratorHelper(newSwatches),
-      _step;
-
-  try {
-    for (_iterator.s(); !(_step = _iterator.n()).done;) {
-      var newSwatch = _step.value;
-      swatchMap[newSwatch.name] = newSwatch;
-    }
-  } catch (err) {
-    _iterator.e(err);
-  } finally {
-    _iterator.f();
-  }
-
-  return Object.values(swatchMap);
+  saveSwatchMap(doc, swatchMap);
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
@@ -1676,11 +1673,9 @@ function updateSwatches(oldSwatches, newSwatches) {
   });
   var themeKey = Object.keys(_themes_json__WEBPACK_IMPORTED_MODULE_2__)[themeIndex];
   var themeName = _themes_json__WEBPACK_IMPORTED_MODULE_2__[themeKey].displayName;
-  var themeTokens = tokens[themeKey];
-  console.log(themeTokens);
+  var themeTokens = tokensByTheme[themeKey];
   var doc = sketch__WEBPACK_IMPORTED_MODULE_0___default.a.getSelectedDocument();
-  doc.swatches = updateSwatches(doc.swatches, makeColorSwatches(themeTokens.themeColors));
-  doc.swatches = updateSwatches(doc.swatches, makeComponentSwatches(themeTokens.components));
+  updateSwatchesFromTheme(doc, themeTokens);
   sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.message("Switched to ".concat(themeName));
 });
 

@@ -10,68 +10,74 @@ import medicareComponents from '../../../dist/medicare-component.tokens.json';
 import cmsgovTheme from '../../../dist/cmsgov.tokens.json';
 import cmsgovComponents from '../../../dist/cmsgov-component.tokens.json';
 
-const tokens = {
+const tokensByTheme = {
   core: { themeColors: coreTheme.color, components: coreComponents },
   healthcare: { themeColors: healthcareTheme.color, components: healthcareComponents },
   medicare: { themeColors: medicareTheme.color, components: medicareComponents },
   cmsgov: { themeColors: cmsgovTheme.color, components: cmsgovComponents },
 };
 
-/*
- * Split tokens into groups based on root name and store in category,
- * based on first word before '-'. Allows keys with up to 4 dash separators.
- *
- * @param colorTokens - An object which contains color name:value pairs
- * @returns An array of Swatch objects created by the Sketch API
- */
-const makeColorSwatches = (colorTokens) => {
-  const swatches = [];
-  for (const [key, value] of Object.entries(colorTokens)) {
-    let colorName = key.match(/(^[A-Za-z]*)-?[A-Za-z\d]*?-?[A-Za-z\d]*?-?[A-Za-z\d]*?$/);
-    colorName = colorName === null ? (colorName = '') : colorName[1] + '/';
-    let currentSwatch = sketch.Swatch.from({
-      name: `theme colors/${colorName}/${key}`,
-      color: value,
-    });
-    swatches.push(currentSwatch);
-  }
-  return swatches;
-};
-
-const makeComponentSwatches = (components) => {
-  const hexRegex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
-  const swatches = [];
-  for (const [componentName, componentTokens] of Object.entries(components)) {
-    for (const [tokenName, tokenValue] of Object.entries(componentTokens)) {
-      if (hexRegex.test(tokenValue)) {
-        swatches.push(
-          sketch.Swatch.from({
-            name: `components/${componentName}/${componentName}${tokenName}`,
-            color: tokenValue,
-          })
-        );
-      }
-    }
-  }
-  return swatches;
-};
-
-function updateSwatches(oldSwatches, newSwatches) {
-  const swatchMap = oldSwatches.reduce((map, swatch) => {
+function loadSwatchMap(doc) {
+  return doc.swatches.reduce((map, swatch) => {
     map[swatch.name] = swatch;
     return map;
   }, {});
+}
 
-  for (const newSwatch of newSwatches) {
-    swatchMap[newSwatch.name] = newSwatch;
+function saveSwatchMap(doc, swatchMap) {
+  doc.swatches = Object.values(swatchMap);
+  // From ChatGTP - the doc.sketchObject.saveDocument doesn't seem to be a thing, but
+  // doc.save() doesn't work to update the colors either. I think ChatGPT is wrong, and
+  // I can't just assign `swatchMap[name].color = color;`. Now that I fixed the typo in
+  // that line, I see that I get an error that I can't reassign a readonly value.
+  doc.sketchObject.reloadInspector(); // Refresh the Sketch inspector
+  // doc.sketchObject.saveDocument(() => {}); // Save the document to apply changes
+  // doc.save()
+}
+
+function updateOrAddSwatch(swatchMap, name, color) {
+  if (swatchMap[name]) {
+    // The only other way I know to supply the Sketch's low-level `updateWithColor`
+    // is with `MSColor.colorWithHex_alpha("#0094FF", 1)`, but the problem is that right
+    // now all our color tokens are defined with the alpha channel in the hexadecimal,
+    // and I don't want to bother with parsing it out, so I'm just going to create a new
+    // swatch every time.
+    // swatchMap[name].sketchObject.updateWithColor(newSwatch.referencingColor);
+
+    swatchMap[name].sketchObject.updateWithColor(MSColor.colorWithHex_alpha(color, 1));
+    let swatchContainer = sketch.getSelectedDocument().sketchObject.documentData().sharedSwatches();
+    swatchContainer.updateReferencesToSwatch(swatchMap[name].sketchObject);
+  } else {
+    const newSwatch = sketch.Swatch.from({ name, color });
+    swatchMap[name] = newSwatch;
+  }
+}
+
+function updateSwatchesFromTheme(doc, themeTokens) {
+  const swatchMap = loadSwatchMap(doc);
+
+  for (const [key, value] of Object.entries(themeTokens.themeColors)) {
+    // The name of the color is what comes before the first hyphen (if there's a hyphen)
+    const colorName = key.split('-')[0];
+    const swatchName = `theme colors/${colorName}/${key}`;
+    updateOrAddSwatch(swatchMap, swatchName, value);
   }
 
-  return Object.values(swatchMap);
+  const hexRegex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+  for (const [componentName, componentTokens] of Object.entries(themeTokens.components)) {
+    for (const [tokenName, tokenValue] of Object.entries(componentTokens)) {
+      if (hexRegex.test(tokenValue)) {
+        const swatchName = `components/${componentName}/${componentName}${tokenName}`;
+        updateOrAddSwatch(swatchMap, swatchName, tokenValue);
+      }
+    }
+  }
+
+  saveSwatchMap(doc, swatchMap);
 }
 
 export default function () {
   const themeNames = Object.values(themes).map((theme) => theme.displayName);
-
   const themeIndex = dialog.showMessageBoxSync({
     title: 'Switch theme',
     message: 'Which theme?',
@@ -80,13 +86,10 @@ export default function () {
 
   const themeKey = Object.keys(themes)[themeIndex];
   const themeName = themes[themeKey].displayName;
-  const themeTokens = tokens[themeKey];
-  console.log(themeTokens);
+  const themeTokens = tokensByTheme[themeKey];
 
   const doc = sketch.getSelectedDocument();
-
-  doc.swatches = updateSwatches(doc.swatches, makeColorSwatches(themeTokens.themeColors));
-  doc.swatches = updateSwatches(doc.swatches, makeComponentSwatches(themeTokens.components));
+  updateSwatchesFromTheme(doc, themeTokens);
 
   sketch.UI.message(`Switched to ${themeName}`);
 }
