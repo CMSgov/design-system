@@ -33,7 +33,7 @@ function parseHtml(this: CustomElement): ComponentFactory<{}> {
 
 function convertToVDom(this: CustomElement, node: Element) {
   if (node.nodeType === 3) {
-    return node.textContent?.trim() || '';
+    return node.textContent || '';
   }
 
   if (node.nodeType !== 1) {
