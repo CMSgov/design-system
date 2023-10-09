@@ -1706,6 +1706,24 @@ function __skpm_run(key, context) {
             );
           }
 
+          function _unsupportedIterableToArray(o, minLen) {
+            if (!o) return;
+            if (typeof o === 'string') return _arrayLikeToArray(o, minLen);
+            var n = Object.prototype.toString.call(o).slice(8, -1);
+            if (n === 'Object' && o.constructor) n = o.constructor.name;
+            if (n === 'Map' || n === 'Set') return Array.from(o);
+            if (n === 'Arguments' || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))
+              return _arrayLikeToArray(o, minLen);
+          }
+
+          function _arrayLikeToArray(arr, len) {
+            if (len == null || len > arr.length) len = arr.length;
+            for (var i = 0, arr2 = new Array(len); i < len; i++) {
+              arr2[i] = arr[i];
+            }
+            return arr2;
+          }
+
           function _iterableToArrayLimit(arr, i) {
             var _i =
               arr == null
@@ -1736,51 +1754,6 @@ function __skpm_run(key, context) {
 
           function _arrayWithHoles(arr) {
             if (Array.isArray(arr)) return arr;
-          }
-
-          function _toConsumableArray(arr) {
-            return (
-              _arrayWithoutHoles(arr) ||
-              _iterableToArray(arr) ||
-              _unsupportedIterableToArray(arr) ||
-              _nonIterableSpread()
-            );
-          }
-
-          function _nonIterableSpread() {
-            throw new TypeError(
-              'Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.'
-            );
-          }
-
-          function _unsupportedIterableToArray(o, minLen) {
-            if (!o) return;
-            if (typeof o === 'string') return _arrayLikeToArray(o, minLen);
-            var n = Object.prototype.toString.call(o).slice(8, -1);
-            if (n === 'Object' && o.constructor) n = o.constructor.name;
-            if (n === 'Map' || n === 'Set') return Array.from(o);
-            if (n === 'Arguments' || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))
-              return _arrayLikeToArray(o, minLen);
-          }
-
-          function _iterableToArray(iter) {
-            if (
-              (typeof Symbol !== 'undefined' && iter[Symbol.iterator] != null) ||
-              iter['@@iterator'] != null
-            )
-              return Array.from(iter);
-          }
-
-          function _arrayWithoutHoles(arr) {
-            if (Array.isArray(arr)) return _arrayLikeToArray(arr);
-          }
-
-          function _arrayLikeToArray(arr, len) {
-            if (len == null || len > arr.length) len = arr.length;
-            for (var i = 0, arr2 = new Array(len); i < len; i++) {
-              arr2[i] = arr[i];
-            }
-            return arr2;
           }
 
           var tokensByTheme = {
@@ -1816,32 +1789,28 @@ function __skpm_run(key, context) {
               swatchContainer.updateReferencesToSwatch(swatch.sketchObject);
             }); // For some reason, the above code isn't enough. I also need to find and replace all
             // swatch references in the doc. Only both of these solutions together seems to work
-
-            doc.pages.forEach(function (page) {
-              page.layers.forEach(function (layer) {
-                // Check if the layer has a fill or a border
-                if (layer.style && (layer.style.fills || layer.style.borders)) {
-                  // Iterate through the fills and borders of the layer
-                  []
-                    .concat(
-                      _toConsumableArray(layer.style.fills || []),
-                      _toConsumableArray(layer.style.borders || [])
-                    )
-                    .forEach(function (style) {
-                      // Check if the fill or border has a swatch with the oldSwatchName
-                      // console.log(style.fillType)
-                      // console.log(style)
-                      // console.log('swatch', style.swatch)
-                      // if (style.fillType === Swatch) {
-                      //   // Replace the swatch with the newSwatchName
-                      //   style.swatch = swatchMap[style.swatch.name];
-                      // }
-                    });
-                }
-              });
-            });
-            doc.swatches = Object.values(swatchMap);
-            doc.sketchObject.reloadInspector(); // Refresh the Sketch inspector
+            // doc.pages.forEach((page) => {
+            //   page.layers.forEach((layer) => {
+            //     // Check if the layer has a fill or a border
+            //     if (layer.style && (layer.style.fills || layer.style.borders)) {
+            //       // Iterate through the fills and borders of the layer
+            //       [...(layer.style.fills || []), ...(layer.style.borders || [])].forEach((style) => {
+            //         // Check if the fill or border has a swatch with the oldSwatchName
+            //         // console.log(style.fillType)
+            //         // console.log(style)
+            //         console.log('swatch', style.swatch);
+            //         // The following code throws errors in the console, and yet without it the
+            //         // swatches don't get updated
+            //         if (style.fillType === Swatch) {
+            //           // Replace the swatch with the newSwatchName
+            //           style.swatch = swatchMap[style.swatch.name];
+            //         }
+            //       });
+            //     }
+            //   });
+            // });
+            // doc.swatches = Object.values(swatchMap);
+            // doc.sketchObject.reloadInspector(); // Refresh the Sketch inspector
           }
 
           function updateOrAddSwatch(swatchMap, name, color) {

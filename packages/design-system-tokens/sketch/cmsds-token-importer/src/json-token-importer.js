@@ -33,29 +33,29 @@ function saveSwatchMap(doc, swatchMap) {
 
   // For some reason, the above code isn't enough. I also need to find and replace all
   // swatch references in the doc. Only both of these solutions together seems to work
-  doc.pages.forEach((page) => {
-    page.layers.forEach((layer) => {
-      // Check if the layer has a fill or a border
-      if (layer.style && (layer.style.fills || layer.style.borders)) {
-        // Iterate through the fills and borders of the layer
-        [...(layer.style.fills || []), ...(layer.style.borders || [])].forEach((style) => {
-          // Check if the fill or border has a swatch with the oldSwatchName
-          // console.log(style.fillType)
-          // console.log(style)
-          console.log('swatch', style.swatch);
-          // The following code throws errors in the console, and yet without it the
-          // swatches don't get updated
-          if (style.fillType === Swatch) {
-            // Replace the swatch with the newSwatchName
-            style.swatch = swatchMap[style.swatch.name];
-          }
-        });
-      }
-    });
-  });
+  // doc.pages.forEach((page) => {
+  //   page.layers.forEach((layer) => {
+  //     // Check if the layer has a fill or a border
+  //     if (layer.style && (layer.style.fills || layer.style.borders)) {
+  //       // Iterate through the fills and borders of the layer
+  //       [...(layer.style.fills || []), ...(layer.style.borders || [])].forEach((style) => {
+  //         // Check if the fill or border has a swatch with the oldSwatchName
+  //         // console.log(style.fillType)
+  //         // console.log(style)
+  //         console.log('swatch', style.swatch);
+  //         // The following code throws errors in the console, and yet without it the
+  //         // swatches don't get updated
+  //         if (style.fillType === Swatch) {
+  //           // Replace the swatch with the newSwatchName
+  //           style.swatch = swatchMap[style.swatch.name];
+  //         }
+  //       });
+  //     }
+  //   });
+  // });
 
-  doc.swatches = Object.values(swatchMap);
-  doc.sketchObject.reloadInspector(); // Refresh the Sketch inspector
+  // doc.swatches = Object.values(swatchMap);
+  // doc.sketchObject.reloadInspector(); // Refresh the Sketch inspector
 }
 
 function updateOrAddSwatch(swatchMap, name, color) {
