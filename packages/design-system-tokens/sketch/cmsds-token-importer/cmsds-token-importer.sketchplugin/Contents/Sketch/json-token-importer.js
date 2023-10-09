@@ -1545,6 +1545,14 @@ var _dist_medicare_component_tokens_json__WEBPACK_IMPORTED_MODULE_8___namespace 
 var _dist_cmsgov_tokens_json__WEBPACK_IMPORTED_MODULE_9___namespace = /*#__PURE__*/__webpack_require__.t(/*! ../../../dist/cmsgov.tokens.json */ "../../dist/cmsgov.tokens.json", 1);
 /* harmony import */ var _dist_cmsgov_component_tokens_json__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../dist/cmsgov-component.tokens.json */ "../../dist/cmsgov-component.tokens.json");
 var _dist_cmsgov_component_tokens_json__WEBPACK_IMPORTED_MODULE_10___namespace = /*#__PURE__*/__webpack_require__.t(/*! ../../../dist/cmsgov-component.tokens.json */ "../../dist/cmsgov-component.tokens.json", 1);
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -1606,21 +1614,22 @@ function saveSwatchMap(doc, swatchMap) {
 }
 
 function updateOrAddSwatch(swatchMap, name, color) {
+  var newSwatch = sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Swatch.from({
+    name: name,
+    color: color
+  });
+
   if (swatchMap[name]) {
     // The only other way I know to supply the Sketch's low-level `updateWithColor`
     // is with `MSColor.colorWithHex_alpha("#0094FF", 1)`, but the problem is that right
     // now all our color tokens are defined with the alpha channel in the hexadecimal,
     // and I don't want to bother with parsing it out, so I'm just going to create a new
     // swatch every time.
-    // swatchMap[name].sketchObject.updateWithColor(newSwatch.referencingColor);
-    swatchMap[name].sketchObject.updateWithColor(MSColor.colorWithHex_alpha(color, 1));
+    swatchMap[name].sketchObject.updateWithColor(newSwatch.referencingColor); // swatchMap[name].sketchObject.updateWithColor(MSColor.colorWithHex_alpha(color, 1));
+
     var swatchContainer = sketch__WEBPACK_IMPORTED_MODULE_0___default.a.getSelectedDocument().sketchObject.documentData().sharedSwatches();
     swatchContainer.updateReferencesToSwatch(swatchMap[name].sketchObject);
   } else {
-    var newSwatch = sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Swatch.from({
-      name: name,
-      color: color
-    });
     swatchMap[name] = newSwatch;
   }
 }
@@ -1659,6 +1668,21 @@ function updateSwatchesFromTheme(doc, themeTokens) {
     }
   }
 
+  doc.pages.forEach(function (page) {
+    page.layers.forEach(function (layer) {
+      // Check if the layer has a fill or a border
+      if (layer.style && (layer.style.fills || layer.style.borders)) {
+        // Iterate through the fills and borders of the layer
+        [].concat(_toConsumableArray(layer.style.fills || []), _toConsumableArray(layer.style.borders || [])).forEach(function (style) {
+          // Check if the fill or border has a swatch with the oldSwatchName
+          if (style.fillType === Swatch) {
+            // Replace the swatch with the newSwatchName
+            style.swatch = swatchMap[style.swatch.name];
+          }
+        });
+      }
+    });
+  });
   saveSwatchMap(doc, swatchMap);
 }
 

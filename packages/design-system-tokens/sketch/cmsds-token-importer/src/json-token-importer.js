@@ -36,19 +36,19 @@ function saveSwatchMap(doc, swatchMap) {
 }
 
 function updateOrAddSwatch(swatchMap, name, color) {
+  const newSwatch = sketch.Swatch.from({ name, color });
   if (swatchMap[name]) {
     // The only other way I know to supply the Sketch's low-level `updateWithColor`
     // is with `MSColor.colorWithHex_alpha("#0094FF", 1)`, but the problem is that right
     // now all our color tokens are defined with the alpha channel in the hexadecimal,
     // and I don't want to bother with parsing it out, so I'm just going to create a new
     // swatch every time.
-    // swatchMap[name].sketchObject.updateWithColor(newSwatch.referencingColor);
+    swatchMap[name].sketchObject.updateWithColor(newSwatch.referencingColor);
 
-    swatchMap[name].sketchObject.updateWithColor(MSColor.colorWithHex_alpha(color, 1));
+    // swatchMap[name].sketchObject.updateWithColor(MSColor.colorWithHex_alpha(color, 1));
     let swatchContainer = sketch.getSelectedDocument().sketchObject.documentData().sharedSwatches();
     swatchContainer.updateReferencesToSwatch(swatchMap[name].sketchObject);
   } else {
-    const newSwatch = sketch.Swatch.from({ name, color });
     swatchMap[name] = newSwatch;
   }
 }
@@ -72,6 +72,22 @@ function updateSwatchesFromTheme(doc, themeTokens) {
       }
     }
   }
+
+  doc.pages.forEach((page) => {
+    page.layers.forEach((layer) => {
+      // Check if the layer has a fill or a border
+      if (layer.style && (layer.style.fills || layer.style.borders)) {
+        // Iterate through the fills and borders of the layer
+        [...(layer.style.fills || []), ...(layer.style.borders || [])].forEach((style) => {
+          // Check if the fill or border has a swatch with the oldSwatchName
+          if (style.fillType === Swatch) {
+            // Replace the swatch with the newSwatchName
+            style.swatch = swatchMap[style.swatch.name];
+          }
+        });
+      }
+    });
+  });
 
   saveSwatchMap(doc, swatchMap);
 }
