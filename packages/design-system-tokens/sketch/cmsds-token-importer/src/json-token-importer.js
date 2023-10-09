@@ -17,82 +17,56 @@ const tokensByTheme = {
   cmsgov: { themeColors: cmsgovTheme.color, components: cmsgovComponents },
 };
 
-function loadSwatchMap(doc) {
-  return doc.swatches.reduce((map, swatch) => {
-    map[swatch.name] = swatch;
-    return map;
-  }, {});
-}
-
-function saveSwatchMap(doc, swatchMap) {
-  // Update all references to the swatches in the doc
-  const swatchContainer = doc.sketchObject.documentData().sharedSwatches();
-  doc.swatches.forEach((swatch) => {
-    swatchContainer.updateReferencesToSwatch(swatch.sketchObject);
-  });
-
-  // For some reason, the above code isn't enough. I also need to find and replace all
-  // swatch references in the doc. Only both of these solutions together seems to work
-  // doc.pages.forEach((page) => {
-  //   page.layers.forEach((layer) => {
-  //     // Check if the layer has a fill or a border
-  //     if (layer.style && (layer.style.fills || layer.style.borders)) {
-  //       // Iterate through the fills and borders of the layer
-  //       [...(layer.style.fills || []), ...(layer.style.borders || [])].forEach((style) => {
-  //         // Check if the fill or border has a swatch with the oldSwatchName
-  //         // console.log(style.fillType)
-  //         // console.log(style)
-  //         console.log('swatch', style.swatch);
-  //         // The following code throws errors in the console, and yet without it the
-  //         // swatches don't get updated
-  //         if (style.fillType === Swatch) {
-  //           // Replace the swatch with the newSwatchName
-  //           style.swatch = swatchMap[style.swatch.name];
-  //         }
-  //       });
-  //     }
-  //   });
-  // });
-
-  // doc.swatches = Object.values(swatchMap);
-  // doc.sketchObject.reloadInspector(); // Refresh the Sketch inspector
-}
-
-function updateOrAddSwatch(swatchMap, name, color) {
-  const newSwatch = sketch.Swatch.from({ name, color });
-  if (swatchMap[name]) {
-    // The only other way I know to supply the Sketch's low-level `updateWithColor`
-    // is with `MSColor.colorWithHex_alpha("#0094FF", 1)`, but the problem is that right
-    // now all our color tokens are defined with the alpha channel in the hexadecimal,
-    // and I don't want to bother with parsing it out, so I'm just going to create a new
-    // swatch every time.
-    swatchMap[name].sketchObject.updateWithColor(newSwatch.referencingColor);
-  } else {
-    swatchMap[name] = newSwatch;
-  }
-}
-
 function updateSwatchesFromTheme(doc, themeTokens) {
-  const swatchMap = loadSwatchMap(doc);
+  const newSwatches = [];
 
+  // Add theme colors
   for (const [key, value] of Object.entries(themeTokens.themeColors)) {
     // The name of the color is what comes before the first hyphen (if there's a hyphen)
     const colorName = key.split('-')[0];
     const swatchName = `theme colors/${colorName}/${key}`;
-    updateOrAddSwatch(swatchMap, swatchName, value);
+    newSwatches.push(
+      sketch.Swatch.from({
+        name: swatchName,
+        color: value,
+      })
+    );
   }
 
+  // Add component colors
   const hexRegex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
   for (const [componentName, componentTokens] of Object.entries(themeTokens.components)) {
     for (const [tokenName, tokenValue] of Object.entries(componentTokens)) {
       if (hexRegex.test(tokenValue)) {
         const swatchName = `components/${componentName}/${componentName}${tokenName}`;
-        updateOrAddSwatch(swatchMap, swatchName, tokenValue);
+        newSwatches.push(
+          sketch.Swatch.from({
+            name: swatchName,
+            color: tokenValue,
+          })
+        );
       }
     }
   }
 
-  saveSwatchMap(doc, swatchMap);
+  // Update the document with new swatches
+  const oldSwatchMap = doc.swatches.reduce((map, swatch) => {
+    map[swatch.name] = swatch;
+    return map;
+  }, {});
+  for (const newSwatch of newSwatches) {
+    if (oldSwatchMap[newSwatch.name]) {
+      oldSwatchMap[newSwatch.name].sketchObject.updateWithColor(newSwatch.referencingColor);
+    } else {
+      doc.swatches.push(newSwatch);
+    }
+  }
+
+  // Update all references to the swatches in the doc
+  const swatchContainer = doc.sketchObject.documentData().sharedSwatches();
+  doc.swatches.forEach((swatch) => {
+    swatchContainer.updateReferencesToSwatch(swatch.sketchObject);
+  });
 }
 
 export default function () {

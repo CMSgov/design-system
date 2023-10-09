@@ -1775,64 +1775,8 @@ function __skpm_run(key, context) {
             },
           };
 
-          function loadSwatchMap(doc) {
-            return doc.swatches.reduce(function (map, swatch) {
-              map[swatch.name] = swatch;
-              return map;
-            }, {});
-          }
-
-          function saveSwatchMap(doc, swatchMap) {
-            // Update all references to the swatches in the doc
-            var swatchContainer = doc.sketchObject.documentData().sharedSwatches();
-            doc.swatches.forEach(function (swatch) {
-              swatchContainer.updateReferencesToSwatch(swatch.sketchObject);
-            }); // For some reason, the above code isn't enough. I also need to find and replace all
-            // swatch references in the doc. Only both of these solutions together seems to work
-            // doc.pages.forEach((page) => {
-            //   page.layers.forEach((layer) => {
-            //     // Check if the layer has a fill or a border
-            //     if (layer.style && (layer.style.fills || layer.style.borders)) {
-            //       // Iterate through the fills and borders of the layer
-            //       [...(layer.style.fills || []), ...(layer.style.borders || [])].forEach((style) => {
-            //         // Check if the fill or border has a swatch with the oldSwatchName
-            //         // console.log(style.fillType)
-            //         // console.log(style)
-            //         console.log('swatch', style.swatch);
-            //         // The following code throws errors in the console, and yet without it the
-            //         // swatches don't get updated
-            //         if (style.fillType === Swatch) {
-            //           // Replace the swatch with the newSwatchName
-            //           style.swatch = swatchMap[style.swatch.name];
-            //         }
-            //       });
-            //     }
-            //   });
-            // });
-            // doc.swatches = Object.values(swatchMap);
-            // doc.sketchObject.reloadInspector(); // Refresh the Sketch inspector
-          }
-
-          function updateOrAddSwatch(swatchMap, name, color) {
-            var newSwatch = sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Swatch.from({
-              name: name,
-              color: color,
-            });
-
-            if (swatchMap[name]) {
-              // The only other way I know to supply the Sketch's low-level `updateWithColor`
-              // is with `MSColor.colorWithHex_alpha("#0094FF", 1)`, but the problem is that right
-              // now all our color tokens are defined with the alpha channel in the hexadecimal,
-              // and I don't want to bother with parsing it out, so I'm just going to create a new
-              // swatch every time.
-              swatchMap[name].sketchObject.updateWithColor(newSwatch.referencingColor);
-            } else {
-              swatchMap[name] = newSwatch;
-            }
-          }
-
           function updateSwatchesFromTheme(doc, themeTokens) {
-            var swatchMap = loadSwatchMap(doc);
+            var newSwatches = []; // Add theme colors
 
             for (
               var _i = 0, _Object$entries = Object.entries(themeTokens.themeColors);
@@ -1846,8 +1790,13 @@ function __skpm_run(key, context) {
               // The name of the color is what comes before the first hyphen (if there's a hyphen)
               var colorName = key.split('-')[0];
               var swatchName = 'theme colors/'.concat(colorName, '/').concat(key);
-              updateOrAddSwatch(swatchMap, swatchName, value);
-            }
+              newSwatches.push(
+                sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Swatch.from({
+                  name: swatchName,
+                  color: value,
+                })
+              );
+            } // Add component colors
 
             var hexRegex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
 
@@ -1875,12 +1824,37 @@ function __skpm_run(key, context) {
                     .concat(componentName)
                     .concat(tokenName);
 
-                  updateOrAddSwatch(swatchMap, _swatchName, tokenValue);
+                  newSwatches.push(
+                    sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Swatch.from({
+                      name: _swatchName,
+                      color: tokenValue,
+                    })
+                  );
                 }
               }
-            }
+            } // Update the document with new swatches
 
-            saveSwatchMap(doc, swatchMap);
+            var oldSwatchMap = doc.swatches.reduce(function (map, swatch) {
+              map[swatch.name] = swatch;
+              return map;
+            }, {});
+
+            for (var _i4 = 0, _newSwatches = newSwatches; _i4 < _newSwatches.length; _i4++) {
+              var newSwatch = _newSwatches[_i4];
+
+              if (oldSwatchMap[newSwatch.name]) {
+                oldSwatchMap[newSwatch.name].sketchObject.updateWithColor(
+                  newSwatch.referencingColor
+                );
+              } else {
+                doc.swatches.push(newSwatch);
+              }
+            } // Update all references to the swatches in the doc
+
+            var swatchContainer = doc.sketchObject.documentData().sharedSwatches();
+            doc.swatches.forEach(function (swatch) {
+              swatchContainer.updateReferencesToSwatch(swatch.sketchObject);
+            });
           }
 
           /* harmony default export */ __webpack_exports__['default'] = function () {
