@@ -164,6 +164,7 @@ ol.ds-c-step__substeps {
 
   &::before {
     content: '\2022';
+    font: inherit;
     left: calc(-1 * #{$spacer-3});
     position: relative;
   }
