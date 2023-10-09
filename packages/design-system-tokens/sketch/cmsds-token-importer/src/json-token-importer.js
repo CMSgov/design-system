@@ -25,14 +25,37 @@ function loadSwatchMap(doc) {
 }
 
 function saveSwatchMap(doc, swatchMap) {
+  // Update all references to the swatches in the doc
+  const swatchContainer = doc.sketchObject.documentData().sharedSwatches();
+  doc.swatches.forEach((swatch) => {
+    swatchContainer.updateReferencesToSwatch(swatch.sketchObject);
+  });
+
+  // For some reason, the above code isn't enough. I also need to find and replace all
+  // swatch references in the doc. Only both of these solutions together seems to work
+  doc.pages.forEach((page) => {
+    page.layers.forEach((layer) => {
+      // Check if the layer has a fill or a border
+      if (layer.style && (layer.style.fills || layer.style.borders)) {
+        // Iterate through the fills and borders of the layer
+        [...(layer.style.fills || []), ...(layer.style.borders || [])].forEach((style) => {
+          // Check if the fill or border has a swatch with the oldSwatchName
+          // console.log(style.fillType)
+          // console.log(style)
+          console.log('swatch', style.swatch);
+          // The following code throws errors in the console, and yet without it the
+          // swatches don't get updated
+          if (style.fillType === Swatch) {
+            // Replace the swatch with the newSwatchName
+            style.swatch = swatchMap[style.swatch.name];
+          }
+        });
+      }
+    });
+  });
+
   doc.swatches = Object.values(swatchMap);
-  // From ChatGTP - the doc.sketchObject.saveDocument doesn't seem to be a thing, but
-  // doc.save() doesn't work to update the colors either. I think ChatGPT is wrong, and
-  // I can't just assign `swatchMap[name].color = color;`. Now that I fixed the typo in
-  // that line, I see that I get an error that I can't reassign a readonly value.
   doc.sketchObject.reloadInspector(); // Refresh the Sketch inspector
-  // doc.sketchObject.saveDocument(() => {}); // Save the document to apply changes
-  // doc.save()
 }
 
 function updateOrAddSwatch(swatchMap, name, color) {
@@ -44,10 +67,6 @@ function updateOrAddSwatch(swatchMap, name, color) {
     // and I don't want to bother with parsing it out, so I'm just going to create a new
     // swatch every time.
     swatchMap[name].sketchObject.updateWithColor(newSwatch.referencingColor);
-
-    // swatchMap[name].sketchObject.updateWithColor(MSColor.colorWithHex_alpha(color, 1));
-    let swatchContainer = sketch.getSelectedDocument().sketchObject.documentData().sharedSwatches();
-    swatchContainer.updateReferencesToSwatch(swatchMap[name].sketchObject);
   } else {
     swatchMap[name] = newSwatch;
   }
@@ -72,22 +91,6 @@ function updateSwatchesFromTheme(doc, themeTokens) {
       }
     }
   }
-
-  doc.pages.forEach((page) => {
-    page.layers.forEach((layer) => {
-      // Check if the layer has a fill or a border
-      if (layer.style && (layer.style.fills || layer.style.borders)) {
-        // Iterate through the fills and borders of the layer
-        [...(layer.style.fills || []), ...(layer.style.borders || [])].forEach((style) => {
-          // Check if the fill or border has a swatch with the oldSwatchName
-          if (style.fillType === Swatch) {
-            // Replace the swatch with the newSwatchName
-            style.swatch = swatchMap[style.swatch.name];
-          }
-        });
-      }
-    });
-  });
 
   saveSwatchMap(doc, swatchMap);
 }
