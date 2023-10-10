@@ -145,12 +145,12 @@ describe('Alert', function () {
       expect(tealiumMock).not.toBeCalled();
     });
 
-    it.skip('disables analytics tracking', () => {
+    it('disables analytics tracking', () => {
       renderAlert({ heading: 'dialog heading', variation: 'error', analytics: false });
       expect(tealiumMock).not.toBeCalled();
     });
 
-    it.skip('setting analytics to true overrides flag value', () => {
+    it('setting analytics to true overrides flag value', () => {
       setAlertSendsAnalytics(false);
       renderAlert({ heading: 'dialog heading', variation: 'error', analytics: true });
       expect(tealiumMock).toHaveBeenCalled();

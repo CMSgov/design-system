@@ -18,13 +18,21 @@ const attributes = [
   'root-id',
 ];
 
-interface WrapperProps extends Omit<AlertProps, 'hideIcon'> {
+interface WrapperProps extends Omit<AlertProps, 'hideIcon' | 'analytics'> {
+  analytics?: string;
   hideIcon?: string;
   rootId?: string;
 }
 
-const Wrapper = ({ hideIcon, rootId, ...otherProps }: WrapperProps) => (
-  <Alert {...otherProps} hideIcon={hideIcon && Boolean(JSON.parse(hideIcon))} id={rootId} />
+const Wrapper = ({ analytics, hideIcon, rootId, ...otherProps }: WrapperProps) => (
+  <Alert
+    {...otherProps}
+    {...{
+      analytics: analytics && Boolean(JSON.parse(analytics)),
+      hideIcon: hideIcon && Boolean(JSON.parse(hideIcon)),
+    }}
+    id={rootId}
+  />
 );
 
 define('ds-alert', () => Wrapper, { attributes });
