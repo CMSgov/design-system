@@ -97,14 +97,9 @@ function setupElement<T>(component: ComponentFunction<T>, options: IOptions = {}
           if (this.__mounted) {
             this.attributeChangedCallback(name, null, v);
           }
-  
+
           const type = typeof v;
-          if (
-            v == null ||
-            type === 'string' ||
-            type === 'boolean' ||
-            type === 'number'
-          ) {
+          if (v == null || type === 'string' || type === 'boolean' || type === 'number') {
             this.setAttribute(name, v);
           }
         },
@@ -240,6 +235,7 @@ function finaliseComponent(this: CustomElement, component: ComponentFactory<IPro
     parent: this,
     children: this.__children,
   };
+  console.log(props);
 
   render(h(component, props), this);
 }

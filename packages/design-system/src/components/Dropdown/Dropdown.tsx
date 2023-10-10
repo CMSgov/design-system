@@ -152,6 +152,8 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     ...extraProps
   } = props;
 
+  // console.log(children)
+
   const optionsAndGroups = options ?? parseChildren(children);
 
   const renderReactStatelyItem = (item: DropdownOption) => {
@@ -163,7 +165,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     );
   };
 
-  console.log(optionsAndGroups)
+  // console.log(optionsAndGroups)
 
   const reactStatelyItems = optionsAndGroups.map((item, index) => {
     if (isOptGroup(item)) {
