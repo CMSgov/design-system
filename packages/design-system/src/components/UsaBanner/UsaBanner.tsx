@@ -94,7 +94,8 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
             <p className="ds-c-usa-banner__guidance-text">
               <strong>{t('usaBanner.domainHeaderText')}</strong>
               <br />
-              {t('usaBanner.domainAText')} <strong> {t('usaBanner.govText')}</strong>{' '}
+              {`${t('usaBanner.domainAText')} `}
+              <strong>{` ${t('usaBanner.govText')} `}</strong>
               {t('usaBanner.domainText')}
             </p>
           </div>
@@ -103,9 +104,11 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
             <p className="ds-c-usa-banner__guidance-text">
               <strong>{t('usaBanner.httpsHeaderText')}</strong>
               <br />
-              {t('usaBanner.httpsAText')} <strong> {t('usaBanner.httpsLockText')} </strong> (
-              <LockIcon className="ds-c-usa-banner__inline-lock-icon" />){' '}
-              {t('usaBanner.httpsOrText')} <strong>{t('usaBanner.httpsText')}</strong>{' '}
+              {`${t('usaBanner.httpsAText')} `}
+              <strong>{`${t('usaBanner.httpsLockText')} `}</strong>
+              (<LockIcon className="ds-c-usa-banner__inline-lock-icon" />)
+              <span>{` ${t('usaBanner.httpsOrText')}`}</span>
+              <strong>{` ${t('usaBanner.httpsText')} `}</strong>
               {t('usaBanner.httpsDetailText')}
             </p>
           </div>

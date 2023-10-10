@@ -148,13 +148,10 @@ exports[`Header renders Direct Enrollment banner 1`] = `
               Official websites use .gov
             </strong>
             <br />
-            A
-             
+            A 
             <strong>
-               
-              .gov
+               .gov 
             </strong>
-             
             website belongs to an official government organization in the United States.
           </p>
         </div>
@@ -187,14 +184,11 @@ exports[`Header renders Direct Enrollment banner 1`] = `
               Secure .gov websites use HTTPS
             </strong>
             <br />
-            A
-             
+            A 
             <strong>
-               
-              lock
-               
+              lock 
             </strong>
-             (
+            (
             <svg
               aria-hidden="true"
               class="ds-c-icon ds-c-icon--lock ds-c-usa-banner__inline-lock-icon"
@@ -207,13 +201,12 @@ exports[`Header renders Direct Enrollment banner 1`] = `
               />
             </svg>
             )
-             
-            or
-             
+            <span>
+               or
+            </span>
             <strong>
-              https://
+               https:// 
             </strong>
-             
             means you've safely connected to the .gov website. Share sensitive information only on official, secure websites.
           </p>
         </div>
@@ -562,13 +555,10 @@ exports[`Header renders Spanish header 1`] = `
               Los sitios web oficiales usan .gov
             </strong>
             <br />
-            Un sitio web
-             
+            Un sitio web 
             <strong>
-               
-              .gov
+               .gov 
             </strong>
-             
             pertenece a una organización oficial del Gobierno de Estados Unidos.
           </p>
         </div>
@@ -601,14 +591,11 @@ exports[`Header renders Spanish header 1`] = `
               Los sitios web seguros .gov usan HTTPS
             </strong>
             <br />
-            Un
-             
+            Un 
             <strong>
-               
-              candado
-               
+              candado 
             </strong>
-             (
+            (
             <svg
               aria-hidden="true"
               class="ds-c-icon ds-c-icon--lock ds-c-usa-banner__inline-lock-icon"
@@ -621,13 +608,12 @@ exports[`Header renders Spanish header 1`] = `
               />
             </svg>
             )
-             
-            o
-             
+            <span>
+               o
+            </span>
             <strong>
-              https://
+               https:// 
             </strong>
-             
             significa que usted se conectó de forma segura a un sitio web .gov. Comparta información sensible sólo en sitios web oficiales y seguros.
           </p>
         </div>
@@ -983,13 +969,10 @@ exports[`Header renders full/homepage header 1`] = `
               Official websites use .gov
             </strong>
             <br />
-            A
-             
+            A 
             <strong>
-               
-              .gov
+               .gov 
             </strong>
-             
             website belongs to an official government organization in the United States.
           </p>
         </div>
@@ -1022,14 +1005,11 @@ exports[`Header renders full/homepage header 1`] = `
               Secure .gov websites use HTTPS
             </strong>
             <br />
-            A
-             
+            A 
             <strong>
-               
-              lock
-               
+              lock 
             </strong>
-             (
+            (
             <svg
               aria-hidden="true"
               class="ds-c-icon ds-c-icon--lock ds-c-usa-banner__inline-lock-icon"
@@ -1042,13 +1022,12 @@ exports[`Header renders full/homepage header 1`] = `
               />
             </svg>
             )
-             
-            or
-             
+            <span>
+               or
+            </span>
             <strong>
-              https://
+               https:// 
             </strong>
-             
             means you've safely connected to the .gov website. Share sensitive information only on official, secure websites.
           </p>
         </div>
@@ -1388,13 +1367,10 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
               Official websites use .gov
             </strong>
             <br />
-            A
-             
+            A 
             <strong>
-               
-              .gov
+               .gov 
             </strong>
-             
             website belongs to an official government organization in the United States.
           </p>
         </div>
@@ -1427,14 +1403,11 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
               Secure .gov websites use HTTPS
             </strong>
             <br />
-            A
-             
+            A 
             <strong>
-               
-              lock
-               
+              lock 
             </strong>
-             (
+            (
             <svg
               aria-hidden="true"
               class="ds-c-icon ds-c-icon--lock ds-c-usa-banner__inline-lock-icon"
@@ -1447,13 +1420,12 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
               />
             </svg>
             )
-             
-            or
-             
+            <span>
+               or
+            </span>
             <strong>
-              https://
+               https:// 
             </strong>
-             
             means you've safely connected to the .gov website. Share sensitive information only on official, secure websites.
           </p>
         </div>
@@ -1793,13 +1765,10 @@ exports[`Header renders logged-in header with firstName 1`] = `
               Official websites use .gov
             </strong>
             <br />
-            A
-             
+            A 
             <strong>
-               
-              .gov
+               .gov 
             </strong>
-             
             website belongs to an official government organization in the United States.
           </p>
         </div>
@@ -1832,14 +1801,11 @@ exports[`Header renders logged-in header with firstName 1`] = `
               Secure .gov websites use HTTPS
             </strong>
             <br />
-            A
-             
+            A 
             <strong>
-               
-              lock
-               
+              lock 
             </strong>
-             (
+            (
             <svg
               aria-hidden="true"
               class="ds-c-icon ds-c-icon--lock ds-c-usa-banner__inline-lock-icon"
@@ -1852,13 +1818,12 @@ exports[`Header renders logged-in header with firstName 1`] = `
               />
             </svg>
             )
-             
-            or
-             
+            <span>
+               or
+            </span>
             <strong>
-              https://
+               https:// 
             </strong>
-             
             means you've safely connected to the .gov website. Share sensitive information only on official, secure websites.
           </p>
         </div>
@@ -2202,13 +2167,10 @@ exports[`Header renders logged-in header without firstName 1`] = `
               Official websites use .gov
             </strong>
             <br />
-            A
-             
+            A 
             <strong>
-               
-              .gov
+               .gov 
             </strong>
-             
             website belongs to an official government organization in the United States.
           </p>
         </div>
@@ -2241,14 +2203,11 @@ exports[`Header renders logged-in header without firstName 1`] = `
               Secure .gov websites use HTTPS
             </strong>
             <br />
-            A
-             
+            A 
             <strong>
-               
-              lock
-               
+              lock 
             </strong>
-             (
+            (
             <svg
               aria-hidden="true"
               class="ds-c-icon ds-c-icon--lock ds-c-usa-banner__inline-lock-icon"
@@ -2261,13 +2220,12 @@ exports[`Header renders logged-in header without firstName 1`] = `
               />
             </svg>
             )
-             
-            or
-             
+            <span>
+               or
+            </span>
             <strong>
-              https://
+               https:// 
             </strong>
-             
             means you've safely connected to the .gov website. Share sensitive information only on official, secure websites.
           </p>
         </div>
