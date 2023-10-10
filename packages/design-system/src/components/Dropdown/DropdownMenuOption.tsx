@@ -38,6 +38,20 @@ export function DropdownMenuOption<T>({
 
   const { textValue, ...extraAttrs } = item.props;
 
+  // // Workaround for react/react-aria #1513
+  // React.useEffect(() => {
+  //   ref.current?.addEventListener('touchend', (event: TouchEvent) => {
+  //     event.preventDefault();
+  //   }, { passive: false, once: true });
+  // }, []);
+  // React.useEffect(() => {
+  //   const listener = (event: TouchEvent) => {  event.preventDefault(); }
+  //   ref.current?.addEventListener('touchend', listener, { passive: false });
+  //   return () => {
+  //     ref.current?.removeEventListener('touchend', listener);
+  //   }
+  // }, []);
+
   return (
     <li
       {...optionProps}

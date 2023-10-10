@@ -168,6 +168,7 @@ export const TapThrough: Story = {
   render: function Component(args) {
     const onClick = (event) => {
       action('red button activated!')(event);
+      alert('ahhh!');
     };
 
     return (

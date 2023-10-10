@@ -46,6 +46,24 @@ export function DropdownMenu<T>({
     (props.triggerRef.current as HTMLButtonElement)?.focus?.();
   });
 
+  // Workaround for react/react-aria #1513
+  // React.useEffect(() => {
+  //   const listener = (event: TouchEvent) => {  event.preventDefault(); }
+  //   containerRef.current?.addEventListener('touchend', listener, { passive: false, once: true });
+  //   return () => {
+  //     containerRef.current?.removeEventListener('touchend', listener);
+  //   }
+  // }, []);
+  React.useEffect(() => {
+    const listener = (event: TouchEvent) => {
+      event.preventDefault();
+    };
+    containerRef.current?.addEventListener('touchend', listener, { passive: false });
+    return () => {
+      containerRef.current?.removeEventListener('touchend', listener);
+    };
+  }, []);
+
   function handleTabKey(event: React.KeyboardEvent<HTMLDivElement>) {
     const TAB_KEY = 9;
     if (event.keyCode === TAB_KEY || event.key === 'Tab') {
