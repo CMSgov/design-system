@@ -8,6 +8,9 @@ import { Dialog } from '../index';
 const meta: Meta<typeof Dropdown> = {
   title: 'Components/Dropdown',
   component: Dropdown,
+  args: {
+    name: 'dropdown-field',
+  },
 };
 export default meta;
 
@@ -66,7 +69,6 @@ export const Default: Story = {
   args: {
     options: dropdownOptions,
     label: 'Dropdown example',
-    name: 'dropdown_field',
   },
 };
 
@@ -76,7 +78,6 @@ export const WithError: Story = {
     errorMessage: 'Example error message',
     hint: 'Helpful hint text',
     label: 'Error example',
-    name: 'error_dropdown_field',
   },
 };
 
@@ -85,7 +86,6 @@ export const Disabled: Story = {
     options: dropdownOptions,
     label: 'Disabled example',
     disabled: true,
-    name: 'disabled_dropdown_field',
   },
 };
 
@@ -110,7 +110,6 @@ export const OptionGroups: Story = {
       },
     ],
     label: 'Option groups example',
-    name: 'optgroups_dropdown_field',
   },
 };
 
@@ -118,7 +117,6 @@ export const HtmlOptionGroups: Story = {
   args: {
     options: undefined,
     label: 'Option group example',
-    name: 'custom_dropdown_field',
     children: htmlOptGroups,
   },
 };
@@ -127,7 +125,6 @@ export const HtmlOptions: Story = {
   args: {
     options: undefined,
     label: 'Option group example',
-    name: 'custom_dropdown_field',
     children: htmlOptions,
   },
 };
@@ -138,7 +135,6 @@ export const InverseOption: Story = {
     errorMessage: 'Example error message',
     hint: 'Helpful hint text',
     label: 'Inverse example',
-    name: 'inverse_dropdown_field',
     inversed: true,
   },
   parameters: {
@@ -152,7 +148,6 @@ export const Controlled: Story = {
   args: {
     options: dropdownOptions,
     label: 'Dropdown example',
-    name: 'dropdown_field',
     value: '3',
   },
   render: function Component(args) {
@@ -162,5 +157,31 @@ export const Controlled: Story = {
       updateArgs({ value: event.currentTarget.value });
     };
     return <Dropdown {...args} value={value} onChange={onChange} />;
+  },
+};
+
+export const TapThrough: Story = {
+  args: {
+    options: dropdownOptions,
+    label: 'Dropdown with other items',
+  },
+  render: function Component(args) {
+    const onClick = (event) => {
+      action('red button activated!')(event);
+    };
+
+    return (
+      <div>
+        <Dropdown {...args} />
+        <div className="ds-u-margin-top--2">
+          <button
+            style={{ background: 'red', padding: '16px 32px', color: 'white' }}
+            onClick={onClick}
+          >
+            Donʼt press this button!
+          </button>
+        </div>
+      </div>
+    );
   },
 };
