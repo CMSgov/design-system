@@ -159,30 +159,3 @@ export const Controlled: Story = {
     return <Dropdown {...args} value={value} onChange={onChange} />;
   },
 };
-
-export const TapThrough: Story = {
-  args: {
-    options: dropdownOptions,
-    label: 'Dropdown with other items',
-  },
-  render: function Component(args) {
-    const onClick = (event) => {
-      action('red button activated!')(event);
-      alert('ahhh!');
-    };
-
-    return (
-      <div>
-        <Dropdown {...args} />
-        <div className="ds-u-margin-top--2">
-          <button
-            style={{ background: 'red', padding: '16px 32px', color: 'white' }}
-            onClick={onClick}
-          >
-            Donʼt press this button!
-          </button>
-        </div>
-      </div>
-    );
-  },
-};
