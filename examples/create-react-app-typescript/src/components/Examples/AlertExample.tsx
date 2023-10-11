@@ -1,7 +1,7 @@
 import { Alert } from '@cmsgov/design-system';
 import React from 'react';
 
-function AlertExample(): React.ReactElement {
+function AlertExample() {
   return (
     <div>
       <h2>Alert Example</h2>

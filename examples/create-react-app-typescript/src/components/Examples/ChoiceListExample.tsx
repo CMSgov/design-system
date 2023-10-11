@@ -1,7 +1,7 @@
 import { ChoiceList } from '@cmsgov/design-system';
 import React from 'react';
 
-function ChoiceListExample(): React.ReactElement {
+function ChoiceListExample() {
   return (
     <div>
       <h2>ChoiceList Example</h2>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextField } from '@cmsgov/design-system';
 
-function MaskedFieldExample(): React.ReactElement {
+function MaskedFieldExample() {
   return (
     <div>
       <h2>Masked Field Example</h2>

@@ -1,5 +1,5 @@
 import { Badge } from '@cmsgov/design-system';
-import React, { useState } from 'react';
+import React from 'react';
 import AccordionExample from './Examples/AccordionExample';
 import AlertExample from './Examples/AlertExample';
 import AutocompleteExample from './Examples/AutocompleteExample';
@@ -25,8 +25,6 @@ import VerticalNavigationExample from './Examples/VerticalNavigationExample';
 import usflag from '../images/us_flag_small.png';
 
 function App() {
-  const [showModal, setShowModal] = useState(false);
-
   return (
     <div className="ds-base">
       <header className="ds-u-padding--3 ds-u-sm-padding--6 ds-u-display--block ds-u-fill--primary-darkest">

@@ -1,14 +1,14 @@
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableRow,
-} from '@cmsgov/design-system';
+// import {
+//   Table,
+//   TableBody,
+//   TableCaption,
+//   TableCell,
+//   TableHead,
+//   TableRow,
+// } from '@cmsgov/design-system';
 import React from 'react';
 
-function TableExample(): React.ReactElement {
+function TableExample() {
   return (
     <div>
       <h2>Table Example</h2>

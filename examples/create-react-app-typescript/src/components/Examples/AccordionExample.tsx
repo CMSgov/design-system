@@ -1,7 +1,7 @@
 import { Accordion, AccordionItem } from '@cmsgov/design-system';
 import React from 'react';
 
-function AccordionExample(): React.ReactElement {
+function AccordionExample() {
   return (
     <div>
       <h2>Accordion Example</h2>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FilterChip } from '@cmsgov/design-system';
 
-function FilterChipExample(): React.ReactElement {
+function FilterChipExample() {
   const [showFilterChip, setShowFilterChip] = useState(true);
 
   return (

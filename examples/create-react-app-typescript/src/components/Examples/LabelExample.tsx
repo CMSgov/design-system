@@ -1,7 +1,7 @@
 import { Label } from '@cmsgov/design-system';
 import React from 'react';
 
-function LabelExample(): React.ReactElement {
+function LabelExample() {
   return (
     <div>
       <h2>Label Example</h2>
