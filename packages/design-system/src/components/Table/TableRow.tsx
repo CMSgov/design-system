@@ -1,6 +1,6 @@
 import React from 'react';
 
-export interface TableRowProps {
+interface BaseTableRowProps {
   /**
    * The table row contents, usually `TableCell`.
    */
@@ -13,9 +13,10 @@ export interface TableRowProps {
 
 type OmitProps = 'children';
 
-export const TableRow: React.FC<
-  Omit<React.ComponentPropsWithoutRef<'tr'>, OmitProps> & TableRowProps
-> = ({ children, _isTableHeadChild, ...tableRowProps }: TableRowProps) => {
+export type TableRowProps = Omit<React.ComponentPropsWithoutRef<'tr'>, OmitProps> &
+  BaseTableRowProps;
+
+export const TableRow = ({ children, _isTableHeadChild, ...tableRowProps }: TableRowProps) => {
   const renderChildren = () => {
     return React.Children.map(children, (child: React.ReactElement) => {
       // Extend props before rendering.
