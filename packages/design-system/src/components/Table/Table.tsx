@@ -1,14 +1,28 @@
+import React, { useEffect, useRef, useState } from 'react';
 import Alert from '../Alert/Alert';
-import React from 'react';
 import TableCaption from './TableCaption';
 import TableContext from './TableContext';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
 import debounce from '../utilities/debounce';
+import useId from '../utilities/useId';
+
+/**
+ * Determine if a ReactNode is a TableCaption
+ */
+function isTableCaption(child?: React.ReactNode): child is React.ReactElement {
+  if (!child || !React.isValidElement(child)) {
+    return false;
+  }
+
+  // Check child.type first and as a fallback, check child.type.displayName follow by child.type.name
+  const componentName = (child.type as any)?.displayName || (child.type as any)?.name;
+  return child.type === TableCaption || componentName === 'TableCaption';
+}
 
 export type TableStackableBreakpoint = 'sm' | 'md' | 'lg';
 
-export interface TableProps {
+interface BaseTableProps {
   /**
    * Applies the borderless variation of the table.
    */
@@ -60,18 +74,7 @@ export interface TableProps {
 
 type OmitProps = 'children' | 'className';
 
-/**
- * Determine if a ReactNode is a TableCaption
- */
-function isTableCaption(child?: React.ReactNode): child is React.ReactElement {
-  if (!child || !React.isValidElement(child)) {
-    return false;
-  }
-
-  // Check child.type first and as a fallback, check child.type.displayName follow by child.type.name
-  const componentName = (child.type as any)?.displayName || (child.type as any)?.name;
-  return child.type === TableCaption || componentName === 'TableCaption';
-}
+export type TableProps = Omit<React.ComponentPropsWithoutRef<'table'>, OmitProps> & BaseTableProps;
 
 /**
  * `Table` is a container component that contains `TableCaption`, `TableHead`
@@ -83,139 +86,116 @@ function isTableCaption(child?: React.ReactNode): child is React.ReactElement {
  * For information about how and when to use this component,
  * [refer to its full documentation page](https://design.cms.gov/components/table/).
  */
-export class Table extends React.Component<
-  Omit<React.ComponentPropsWithoutRef<'table'>, OmitProps> & TableProps,
-  any
-> {
-  static defaultProps = {
-    scrollableNotice: (
-      <Alert className="ds-c-table__scroll-alert" role="status">
-        <p className="ds-c-alert__text">Scroll using arrow keys to see more</p>
-      </Alert>
-    ),
-    stackableBreakpoint: 'sm',
+export const Table = ({
+  borderless,
+  className,
+  compact,
+  stackable,
+  stackableBreakpoint,
+  striped,
+  scrollable,
+  scrollableNotice,
+  warningDisabled,
+  children,
+  id,
+  ...tableProps
+}: TableProps) => {
+  const [scrollActive, setScrollActive] = useState(false);
+  const captionId = useId('table-caption--', id);
+
+  if (process.env.NODE_ENV !== 'production') {
+    if (
+      scrollable &&
+      Array.isArray(children) &&
+      !children.some((child: React.ReactElement) => isTableCaption(child))
+    ) {
+      console.warn(
+        'The children prop in `Table` must include `TableCaption` component for scrollable tables.'
+      );
+    }
+  }
+
+  const containerRef = useRef();
+  useEffect(() => {
+    if (!window || !scrollable) {
+      return;
+    }
+
+    const handleResize = () => {
+      if (containerRef.current) {
+        const { scrollWidth, clientWidth } = containerRef.current;
+        setScrollActive(scrollWidth > clientWidth);
+      }
+    };
+    handleResize();
+
+    const debounceHandleResize = debounce(handleResize, 500);
+    window.addEventListener('resize', debounceHandleResize);
+    return () => {
+      window.removeEventListener('resize', debounceHandleResize);
+    };
+  }, [setScrollActive, scrollable]);
+
+  const classes = classNames(
+    'ds-c-table',
+    borderless ? 'ds-c-table--borderless' : null,
+    compact ? 'ds-c-table--compact' : null,
+    striped ? 'ds-c-table--striped' : null,
+    stackable ? `ds-c-${stackableBreakpoint}-table--stacked` : null,
+    className
+  );
+
+  /**
+   * Makes table container focusable and displays the scrollable notice when table width exceeds viewport
+   * by setting `tabIndex = 0` attribute.
+   * This provides context for screen readers to the table's <caption> via aria-labelleby
+   */
+  const attributeScrollable = scrollable && {
+    className: 'ds-c-table__wrapper',
+    role: 'region',
+    'aria-labelledby': captionId,
+    tabIndex: scrollActive ? 0 : null,
   };
+  const contextValue = { stackable: !!stackable, warningDisabled: !!warningDisabled };
 
-  constructor(props: TableProps) {
-    super(props);
-    this.state = {
-      scrollActive: false,
-    };
-    this.captionId = props.id ?? uniqueId('table-caption--');
-    this.container = 0;
-    this.debounceHandleResize = debounce(this.handleResize.bind(this), 500);
-
-    if (process.env.NODE_ENV !== 'production') {
-      if (
-        props.scrollable &&
-        Array.isArray(props.children) &&
-        !props.children.some((child: React.ReactElement) => isTableCaption(child))
-      ) {
-        console.warn(
-          'The children prop in `Table` must include `TableCaption` component for scrollable tables.'
-        );
+  const renderedChildren = React.Children.map(children, (child: React.ReactElement) => {
+    if (isTableCaption(child)) {
+      // Extend props on TableCaption before rendering.
+      if (scrollable) {
+        return React.cloneElement(child, {
+          _id: captionId,
+          _scrollActive: scrollActive,
+          _scrollableNotice: scrollableNotice,
+        });
       }
     }
-  }
+    return child;
+  });
 
-  componentDidMount(): void {
-    if (this.props.scrollable) {
-      window.addEventListener('resize', this.debounceHandleResize);
-      this.handleResize();
-    }
-  }
-
-  componentWillUnmount(): void {
-    if (this.props.scrollable) {
-      window.removeEventListener('resize', this.debounceHandleResize);
-    }
-  }
-
-  captionId: string;
-  container: any;
-  debounceHandleResize: (...args: any[]) => any;
-
-  handleResize(): void {
-    const { scrollWidth, clientWidth } = this.container;
-    const scrollActive = scrollWidth > clientWidth;
-    this.setState({ scrollActive });
-  }
-
-  render() {
-    const {
-      borderless,
-      className,
-      compact,
-      stackable,
-      stackableBreakpoint,
-      striped,
-      scrollable,
-      scrollableNotice,
-      warningDisabled,
-      children,
-      id,
-      ...tableProps
-    } = this.props;
-
-    const classes = classNames(
-      'ds-c-table',
-      borderless ? 'ds-c-table--borderless' : null,
-      compact ? 'ds-c-table--compact' : null,
-      striped ? 'ds-c-table--striped' : null,
-      stackable ? `ds-c-${stackableBreakpoint}-table--stacked` : null,
-      className
-    );
-
-    /**
-     * Makes table container focusable and displays the scrollable notice when table width exceeds viewport
-     * by setting `tabIndex = 0` attribute.
-     * This provides context for screen readers to the table's <caption> via aria-labelleby
-     */
-    const attributeScrollable = scrollable && {
-      className: 'ds-c-table__wrapper',
-      role: 'region',
-      'aria-labelledby': this.captionId,
-      tabIndex: this.state.scrollActive ? 0 : null,
-    };
-    const contextValue = { stackable: !!stackable, warningDisabled: !!warningDisabled };
-
-    const renderedChildren = React.Children.map(children, (child: React.ReactElement) => {
-      if (isTableCaption(child)) {
-        // Extend props on TableCaption before rendering.
-        if (scrollable) {
-          return React.cloneElement(child, {
-            _id: this.captionId,
-            _scrollActive: this.state.scrollActive,
-            _scrollableNotice: scrollableNotice,
-          });
-        }
-      }
-      return child;
-    });
-
-    return scrollable ? (
-      <div
-        ref={(container) => {
-          this.container = container;
-        }}
-        aria-live="polite"
-        aria-relevant="additions"
-        {...attributeScrollable}
-      >
-        <TableContext.Provider value={contextValue}>
-          <table className={classes} role="table" {...tableProps}>
-            {renderedChildren}
-          </table>
-        </TableContext.Provider>
-      </div>
-    ) : (
+  return scrollable ? (
+    <div ref={containerRef} aria-live="polite" aria-relevant="additions" {...attributeScrollable}>
       <TableContext.Provider value={contextValue}>
         <table className={classes} role="table" {...tableProps}>
           {renderedChildren}
         </table>
       </TableContext.Provider>
-    );
-  }
-}
+    </div>
+  ) : (
+    <TableContext.Provider value={contextValue}>
+      <table className={classes} role="table" {...tableProps}>
+        {renderedChildren}
+      </table>
+    </TableContext.Provider>
+  );
+};
+
+Table.defaultProps = {
+  scrollableNotice: (
+    <Alert className="ds-c-table__scroll-alert" role="status">
+      <p className="ds-c-alert__text">Scroll using arrow keys to see more</p>
+    </Alert>
+  ),
+  stackableBreakpoint: 'sm',
+};
 
 export default Table;
