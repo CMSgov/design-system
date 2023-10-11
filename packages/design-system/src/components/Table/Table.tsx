@@ -3,7 +3,6 @@ import React from 'react';
 import TableCaption from './TableCaption';
 import TableContext from './TableContext';
 import classNames from 'classnames';
-import get from 'lodash/get';
 import uniqueId from 'lodash/uniqueId';
 import debounce from '../utilities/debounce';
 
@@ -62,15 +61,16 @@ export interface TableProps {
 type OmitProps = 'children' | 'className';
 
 /**
- * Determine if a React component is a TableCaption
- * @param {React.Node} child - a React component
- * @return {Boolean} Is this a TableCaption component?
+ * Determine if a ReactNode is a TableCaption
  */
-function isTableCaption(child: React.ReactElement): boolean {
-  const componentName = get(child, 'type.displayName') || get(child, 'type.name');
+function isTableCaption(child?: React.ReactNode): child is React.ReactElement {
+  if (!child || !React.isValidElement(child)) {
+    return false;
+  }
 
   // Check child.type first and as a fallback, check child.type.displayName follow by child.type.name
-  return child && (child.type === TableCaption || componentName === 'TableCaption');
+  const componentName = (child.type as any)?.displayName || (child.type as any)?.name;
+  return child.type === TableCaption || componentName === 'TableCaption';
 }
 
 /**
