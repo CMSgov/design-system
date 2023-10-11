@@ -141,22 +141,6 @@ export class Table extends React.Component<
     this.setState({ scrollActive });
   }
 
-  renderChildren(): React.ReactNode[] {
-    return React.Children.map(this.props.children, (child: React.ReactElement) => {
-      if (isTableCaption(child)) {
-        // Extend props on TableCaption before rendering.
-        if (this.props.scrollable) {
-          return React.cloneElement(child, {
-            _id: this.captionId,
-            _scrollActive: this.state.scrollActive,
-            _scrollableNotice: this.props.scrollableNotice,
-          });
-        }
-      }
-      return child;
-    });
-  }
-
   render() {
     const {
       borderless,
@@ -195,6 +179,20 @@ export class Table extends React.Component<
     };
     const contextValue = { stackable: !!stackable, warningDisabled: !!warningDisabled };
 
+    const renderedChildren = React.Children.map(children, (child: React.ReactElement) => {
+      if (isTableCaption(child)) {
+        // Extend props on TableCaption before rendering.
+        if (scrollable) {
+          return React.cloneElement(child, {
+            _id: this.captionId,
+            _scrollActive: this.state.scrollActive,
+            _scrollableNotice: scrollableNotice,
+          });
+        }
+      }
+      return child;
+    });
+
     return scrollable ? (
       <div
         ref={(container) => {
@@ -206,14 +204,14 @@ export class Table extends React.Component<
       >
         <TableContext.Provider value={contextValue}>
           <table className={classes} role="table" {...tableProps}>
-            {this.renderChildren()}
+            {renderedChildren}
           </table>
         </TableContext.Provider>
       </div>
     ) : (
       <TableContext.Provider value={contextValue}>
         <table className={classes} role="table" {...tableProps}>
-          {this.renderChildren()}
+          {renderedChildren}
         </table>
       </TableContext.Provider>
     );
