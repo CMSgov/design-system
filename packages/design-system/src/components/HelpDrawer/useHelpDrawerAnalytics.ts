@@ -34,6 +34,7 @@ export default function useHelpDrawerAnalytics({
       event_label: eventHeadingText,
       event_extension: eventExtensionText,
       heading: eventHeadingText,
+      text: eventHeadingText,
       ...eventAttributes,
     });
   }
