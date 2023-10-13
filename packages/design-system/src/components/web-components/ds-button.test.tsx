@@ -90,6 +90,22 @@ describe('Button', () => {
     expect(link.classList.contains('ds-c-button')).toBe(true);
   });
 
+  it('fires a custom event on click', () => {
+    renderButton();
+    const buttonRoot = document.querySelector('ds-button');
+    const buttonEl = screen.getByRole('button');
+    const mockHandler = jest.fn();
+    buttonRoot.addEventListener('foo-click', mockHandler);
+    fireEvent.click(buttonEl);
+    expect(mockHandler).toHaveBeenCalledTimes(1);
+    expect(mockHandler).toHaveBeenCalledWith(
+      expect.objectContaining({
+        EventTarget: buttonEl,
+      })
+    );
+    buttonRoot.removeEventListener('foo-click', mockHandler);
+  });
+
   describe('Analytics', () => {
     let tealiumMock;
 

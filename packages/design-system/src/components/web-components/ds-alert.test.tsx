@@ -1,7 +1,7 @@
 import React from 'react';
 import { UtagContainer } from '../analytics';
 import { setAlertSendsAnalytics } from '../flags';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import './ds-alert';
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -109,6 +109,16 @@ describe('Alert', function () {
       const id = alert.getAttribute('aria-labelledby');
       expect(alert.querySelector(`#${id}`).textContent).toContain('Notice');
     });
+  });
+
+  it('fires a custom event on load', () => {
+    renderAlert();
+    const alertRoot = document.querySelector('ds-alert');
+    const mockHandler = jest.fn();
+    alertRoot.addEventListener('foo-analytics-event', mockHandler);
+    fireEvent.load(alertRoot);
+    expect(mockHandler).toHaveBeenCalledTimes(1);
+    alertRoot.removeEventListener('foo-analytics-event', mockHandler);
   });
 
   describe('Analytics event tracking', () => {
