@@ -1,6 +1,10 @@
 import React from 'react';
 import { useOf } from '@storybook/blocks';
 
+function optToString(opt: undefined | string) {
+  return opt === undefined ? 'undefined' : `"${opt}"`;
+}
+
 function getTypeLabel(argType: any) {
   // Actually, this type isn't very good
   // const inferredType = argType.type?.name;
@@ -18,7 +22,7 @@ function getTypeLabel(argType: any) {
       case 'radio':
       case 'inline-radio':
       case 'select':
-        return argType.options?.map((opt) => `"${opt}"`).join(' | ');
+        return argType.options?.map(optToString).join(' | ');
     }
   }
 }
@@ -29,7 +33,7 @@ function getTypeLabel(argType: any) {
  * - if a meta reference is passed, it renders the stories' title
  * - if nothing is passed, it defaults to the primary story
  */
-export const MyDocBlock = ({ of }) => {
+export const CustomArgsTable = ({ of }) => {
   const resolvedOf = useOf(of || 'story', ['story', 'meta']);
   const argTypes = resolvedOf.type === 'story' ? resolvedOf.story.argTypes : {};
   console.log(argTypes);
@@ -60,7 +64,7 @@ export const MyDocBlock = ({ of }) => {
               </td>
               <td>
                 {argType.description && (
-                  <div>
+                  <div style={{ marginBottom: '4px' }}>
                     <p>{argType.description}</p>
                   </div>
                 )}
