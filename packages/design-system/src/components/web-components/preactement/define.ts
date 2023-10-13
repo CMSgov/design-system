@@ -65,7 +65,7 @@ function define<P = {}>(
  * -------------------------------- */
 
 function setupElement<T>(component: ComponentFunction<T>, options: IOptions = {}): any {
-  const { attributes = [], events = [] } = options;
+  const { attributes = [] } = options;
 
   if (typeof Reflect !== 'undefined' && Reflect.construct) {
     const CustomElement = function () {
@@ -107,6 +107,7 @@ function setupElement<T>(component: ComponentFunction<T>, options: IOptions = {}
       });
     });
 
+    // This works, but it clobbers pre-existing event handlers made via `addEventListener`
     // events.forEach((name) => {
     //   Object.defineProperty(CustomElement.prototype, name, {
     //     set(v) {
@@ -200,8 +201,7 @@ function onConnected(this: CustomElement) {
     children = h(parseHtml.call(this), {});
   }
 
-  this.__properties = { ...this.__slots, ...data, ...attributes };
-  this.__events = eventCallbacks;
+  this.__properties = { ...this.__slots, ...data, ...attributes, ...eventCallbacks };
   this.__children = children || [];
 
   this.removeAttribute('server');
@@ -280,7 +280,6 @@ function finaliseComponent(this: CustomElement, component: ComponentFactory<IPro
 
   const props = {
     ...this.__properties,
-    ...this.__events,
     parent: this,
     children: this.__children,
   };
