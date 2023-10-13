@@ -2,10 +2,11 @@ import React from 'react';
 import { useOf } from '@storybook/blocks';
 
 function getTypeLabel(argType: any) {
-  const inferredType = argType.type?.name;
-  if (inferredType) {
-    return inferredType;
-  }
+  // Actually, this type isn't very good
+  // const inferredType = argType.type?.name;
+  // if (inferredType) {
+  //   return inferredType;
+  // }
 
   const controlType = argType.control?.type;
   if (controlType) {
