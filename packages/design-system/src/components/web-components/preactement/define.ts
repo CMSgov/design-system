@@ -12,6 +12,7 @@ import {
 } from './shared';
 import { parseHtml } from './parse';
 import { IOptions, ComponentFunction } from './model';
+import { kebabCaseIt } from 'case-it/kebab';
 
 /* -----------------------------------
  *
@@ -64,7 +65,7 @@ function define<P = {}>(
  * -------------------------------- */
 
 function setupElement<T>(component: ComponentFunction<T>, options: IOptions = {}): any {
-  const { attributes = [] } = options;
+  const { attributes = [], events = [] } = options;
 
   if (typeof Reflect !== 'undefined' && Reflect.construct) {
     const CustomElement = function () {
@@ -97,19 +98,24 @@ function setupElement<T>(component: ComponentFunction<T>, options: IOptions = {}
           if (this.__mounted) {
             this.attributeChangedCallback(name, null, v);
           }
-  
+
           const type = typeof v;
-          if (
-            v == null ||
-            type === 'string' ||
-            type === 'boolean' ||
-            type === 'number'
-          ) {
+          if (v == null || type === 'string' || type === 'boolean' || type === 'number') {
             this.setAttribute(name, v);
           }
         },
       });
     });
+
+    // events.forEach((name) => {
+    //   Object.defineProperty(CustomElement.prototype, name, {
+    //     set(v) {
+    //       if (this.__mounted) {
+    //         this.attributeChangedCallback(name, null, v);
+    //       }
+    //     },
+    //   });
+    // });
 
     return CustomElement;
   }
@@ -138,6 +144,40 @@ function setupElement<T>(component: ComponentFunction<T>, options: IOptions = {}
   };
 }
 
+function proxyEvents(props, eventNames, CustomElement) {
+  const callbacks = {};
+
+  (eventNames || []).forEach((name) => {
+    const customName = kebabCaseIt(name.replace('on', 'ds'));
+    let existingCallback = () => null;
+
+    // Don't know why `existingCallback` is being defined
+    // Why would a callback already be defined in props?
+    if (props && props[name]) {
+      existingCallback = props[name].bind({});
+    }
+
+    const customCb = (event) => {
+      const customEvent = new CustomEvent(customName, {
+        ...event,
+        composed: true,
+        bubbles: true,
+        detail: {
+          target: event.target,
+        },
+      });
+
+      CustomElement.dispatchEvent(customEvent);
+
+      existingCallback();
+    };
+
+    callbacks[name] = customCb;
+  });
+
+  return callbacks;
+}
+
 /* -----------------------------------
  *
  * Connected
@@ -150,6 +190,8 @@ function onConnected(this: CustomElement) {
   const json = this.querySelector('[type="application/json"]');
   const data = parseJson.call(this, props || json?.innerHTML || '{}');
 
+  const eventCallbacks = proxyEvents(this.__properties, this.__options.events, this);
+
   json?.remove();
 
   let children = this.__children;
@@ -159,6 +201,7 @@ function onConnected(this: CustomElement) {
   }
 
   this.__properties = { ...this.__slots, ...data, ...attributes };
+  this.__events = eventCallbacks;
   this.__children = children || [];
 
   this.removeAttribute('server');
@@ -237,6 +280,7 @@ function finaliseComponent(this: CustomElement, component: ComponentFactory<IPro
 
   const props = {
     ...this.__properties,
+    ...this.__events,
     parent: this,
     children: this.__children,
   };
