@@ -9,5 +9,4 @@ This shows the usage of CMS design system preact components from the CDN:
 
 ## Getting started
 
-1. Run `./copy.sh` (Temporary step until we've deployed to the CDN)
 1. Open `index.html` in a browser.
