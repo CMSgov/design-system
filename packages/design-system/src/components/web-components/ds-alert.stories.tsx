@@ -1,4 +1,5 @@
 import React from 'react';
+import WebComponentDocTemplate from '../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import './ds-alert';
 
 export default {
@@ -23,6 +24,11 @@ export default {
   args: {
     variation: 'success',
     heading: 'Yay!',
+  },
+  parameters: {
+    docs: {
+      page: WebComponentDocTemplate,
+    },
   },
 };
 
