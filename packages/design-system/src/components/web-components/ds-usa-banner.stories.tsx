@@ -1,10 +1,16 @@
 import React from 'react';
+import WebComponentDocTemplate from '../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import './ds-usa-banner';
 
 export default {
   title: 'Web Components/UsaBanner',
   argTypes: {
     'root-id': { control: 'text' },
+  },
+  parameters: {
+    docs: {
+      page: WebComponentDocTemplate,
+    },
   },
 };
 

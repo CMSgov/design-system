@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import WebComponentDocTemplate from '../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { action } from '@storybook/addon-actions';
 import './ds-button';
 
@@ -18,6 +19,11 @@ export default {
     },
   },
   args: {},
+  parameters: {
+    docs: {
+      page: WebComponentDocTemplate,
+    },
+  },
 };
 
 const Template = (args) => {
