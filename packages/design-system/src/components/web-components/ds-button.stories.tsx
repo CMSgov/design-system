@@ -6,14 +6,23 @@ import './ds-button';
 export default {
   title: 'Web Components/Button',
   argTypes: {
-    children: { control: 'text' },
-    'class-name': { control: 'text' },
-    'is-alternate': { control: 'boolean' },
+    children: { description: 'Label text or HTML', control: 'text' },
+    'class-name': {
+      description: 'Additional classes to be added to the root button element.',
+      control: 'text',
+    },
+    'is-alternate': {
+      description:
+        'Applies the alternate color to a Button. By default, Button uses the `main` color.',
+      control: 'boolean',
+    },
     size: {
+      description: 'A string corresponding to Button size classes.',
       options: [undefined, 'big', 'small'],
       control: { type: 'radio' },
     },
     variation: {
+      description: 'A string corresponding to Button variation classes.',
       options: [undefined, 'solid', 'ghost'],
       control: { type: 'radio' },
     },
