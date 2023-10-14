@@ -1,8 +1,18 @@
 import React from 'react';
 import { useOf } from '@storybook/blocks';
 
-function optToString(opt: undefined | string) {
-  return opt === undefined ? 'undefined' : `"${opt}"`;
+function joinElements(elements, delimiter) {
+  return elements.map((el, index) => (
+    <React.Fragment key={index}>
+      {index > 0 && delimiter}
+      {el}
+    </React.Fragment>
+  ));
+}
+
+function optToCodeBlock(opt: undefined | string) {
+  const formattedOpt = opt === undefined ? 'undefined' : `"${opt}"`;
+  return <code>{formattedOpt}</code>;
 }
 
 function getTypeLabel(argType: any) {
@@ -16,13 +26,13 @@ function getTypeLabel(argType: any) {
   if (controlType) {
     switch (controlType) {
       case 'text':
-        return 'string';
+        return <code>string</code>;
       case 'boolean':
-        return 'boolean';
+        return <code>boolean</code>;
       case 'radio':
       case 'inline-radio':
       case 'select':
-        return argType.options?.map(optToString).join(' | ');
+        return joinElements(argType.options?.map(optToCodeBlock), ' | ');
     }
   }
 }
@@ -43,45 +53,35 @@ export const CustomArgsTable = ({ of }) => {
     <table className="docblock-argstable">
       <thead className="docblock-argstable-head">
         <tr>
-          <th>
+          <th style={{ minWidth: '10rem' }}>
             <span>Name</span>
           </th>
           <th>
             <span>Description</span>
           </th>
           <th>
-            <span>Default</span>
+            <span>Values</span>
           </th>
         </tr>
       </thead>
       <tbody className="docblock-argstable-body">
-        {Object.entries(argTypes).map(([key, argType]) => {
-          const typeLabel = getTypeLabel(argType);
-          return (
-            <tr>
-              <td>
-                <strong>{key}</strong>
-              </td>
-              <td>
-                {argType.description && (
-                  <div style={{ marginBottom: '4px' }}>
-                    <p>{argType.description}</p>
-                  </div>
-                )}
-                {typeLabel && (
-                  <div>
-                    <p>
-                      <code>{typeLabel}</code>
-                    </p>
-                  </div>
-                )}
-              </td>
-              <td>
-                <span>-</span>
-              </td>
-            </tr>
-          );
-        })}
+        {Object.entries(argTypes).map(([key, argType]) => (
+          <tr>
+            <td>
+              <strong>{key}</strong>
+            </td>
+            <td>
+              {argType.description && (
+                <div style={{ marginBottom: '4px' }}>
+                  <p>{argType.description}</p>
+                </div>
+              )}
+            </td>
+            <td>
+              <p>{getTypeLabel(argType)}</p>
+            </td>
+          </tr>
+        ))}
       </tbody>
     </table>
   );
