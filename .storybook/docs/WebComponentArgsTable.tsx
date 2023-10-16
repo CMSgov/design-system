@@ -16,19 +16,17 @@ function optToCodeBlock(opt: undefined | string) {
 }
 
 function getTypeLabel(argType: any) {
-  // Actually, this type isn't very good
-  // const inferredType = argType.type?.name;
-  // if (inferredType) {
-  //   return inferredType;
-  // }
-
   const controlType = argType.control?.type;
   if (controlType) {
     switch (controlType) {
       case 'text':
         return <code>string</code>;
       case 'boolean':
-        return <code>boolean</code>;
+        return (
+          <>
+            <code>"true"</code> | <code>"false"</code>
+          </>
+        );
       case 'radio':
       case 'inline-radio':
       case 'select':
@@ -43,7 +41,7 @@ function getTypeLabel(argType: any) {
  * - if a meta reference is passed, it renders the stories' title
  * - if nothing is passed, it defaults to the primary story
  */
-export const CustomArgsTable = ({ of }) => {
+export const WebComponentArgsTable = ({ of }) => {
   const resolvedOf = useOf(of || 'story', ['story', 'meta']);
   const argTypes = resolvedOf.type === 'story' ? resolvedOf.story.argTypes : {};
   console.log(argTypes);

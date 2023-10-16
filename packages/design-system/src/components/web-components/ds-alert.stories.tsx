@@ -13,9 +13,13 @@ export default {
       control: 'text',
       description: 'Text for the alert heading',
     },
-    'hide-icon': { control: 'boolean' },
+    'hide-icon': {
+      description: 'Set to "true" to hide the icon',
+      control: 'boolean',
+    },
     role: {
-      options: ['alert', 'alertdialog', 'region', 'status'],
+      description: 'ARIA `role`, defaults to "region"',
+      options: [undefined, 'alert', 'alertdialog', 'region', 'status'],
       control: { type: 'radio' },
     },
     variation: {
