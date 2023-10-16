@@ -11,6 +11,9 @@ import { alertSendsAnalytics } from '../flags';
 export default function useAlertAnalytics({
   analytics,
   analyticsLabelOverride,
+  // `onAnalyticsEvent = defaultAnalyticsFunction` : our WC define function overwrites the default analytics function
+  // Possible analytics event fix: bake the event into component or define function or make it a separate config in the WC file
+  // Where wb are used - do we even want the default analytics function?
   onAnalyticsEvent = defaultAnalyticsFunction,
   variation,
 }: AlertProps) {
@@ -29,7 +32,7 @@ export default function useAlertAnalytics({
 
       const eventHeadingText = analyticsLabelOverride ?? content;
       if (!eventHeadingText) {
-        console.error('No content found for Dialog analytics event');
+        console.error('No content found for Alert analytics event');
         return;
       }
 
