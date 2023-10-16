@@ -6,7 +6,10 @@ import './ds-button';
 export default {
   title: 'Web Components/Button',
   argTypes: {
-    children: { description: 'Label text or HTML', control: 'text' },
+    children: {
+      description: 'Label text or HTML',
+      control: 'text',
+    },
     'class-name': {
       description: 'Additional classes to be added to the root button element.',
       control: 'text',

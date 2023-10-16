@@ -5,8 +5,14 @@ import './ds-alert';
 export default {
   title: 'Web Components/Alert',
   argTypes: {
-    children: { control: 'text', description: "The alert's body content" },
-    heading: { control: 'text', description: 'Text for the alert heading' },
+    children: {
+      control: 'text',
+      description: "The alert's body content",
+    },
+    heading: {
+      control: 'text',
+      description: 'Text for the alert heading',
+    },
     'hide-icon': { control: 'boolean' },
     role: {
       options: ['alert', 'alertdialog', 'region', 'status'],
