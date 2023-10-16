@@ -1,15 +1,6 @@
 import React from 'react';
 import { useOf } from '@storybook/blocks';
 
-function joinElements(elements, delimiter) {
-  return elements.map((el, index) => (
-    <React.Fragment key={index}>
-      {index > 0 && delimiter}
-      {el}
-    </React.Fragment>
-  ));
-}
-
 function optToCodeBlock(opt: undefined | string) {
   const formattedOpt = opt === undefined ? 'undefined' : `"${opt}"`;
   return <code>{formattedOpt}</code>;
@@ -24,13 +15,14 @@ function getTypeLabel(argType: any) {
       case 'boolean':
         return (
           <>
-            <code>"true"</code> | <code>"false"</code>
+            <code>"true"</code>
+            <code>"false"</code>
           </>
         );
       case 'radio':
       case 'inline-radio':
       case 'select':
-        return joinElements(argType.options?.map(optToCodeBlock), ' | ');
+        return argType.options?.map(optToCodeBlock);
     }
   }
 }
