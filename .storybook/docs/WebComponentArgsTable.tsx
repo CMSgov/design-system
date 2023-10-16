@@ -50,7 +50,7 @@ export const WebComponentArgsTable = ({ of }) => {
             <span>Description</span>
           </th>
           <th>
-            <span>Values</span>
+            <span>Accepted values</span>
           </th>
         </tr>
       </thead>
