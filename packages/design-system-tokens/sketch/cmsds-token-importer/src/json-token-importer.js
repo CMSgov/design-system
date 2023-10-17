@@ -11,17 +11,17 @@ import cmsgovTheme from '../../../dist/cmsgov.tokens.json';
 import cmsgovComponents from '../../../dist/cmsgov-component.tokens.json';
 
 const tokensByTheme = {
-  core: { themeColors: coreTheme.color, components: coreComponents },
-  healthcare: { themeColors: healthcareTheme.color, components: healthcareComponents },
-  medicare: { themeColors: medicareTheme.color, components: medicareComponents },
-  cmsgov: { themeColors: cmsgovTheme.color, components: cmsgovComponents },
+  core: { ...coreTheme, components: coreComponents },
+  healthcare: { ...healthcareTheme, components: healthcareComponents },
+  medicare: { ...medicareTheme, components: medicareComponents },
+  cmsgov: { ...cmsgovTheme, components: cmsgovComponents },
 };
 
 function updateSwatchesFromTheme(doc, themeTokens) {
   const newSwatches = [];
 
   // Add theme colors
-  for (const [key, value] of Object.entries(themeTokens.themeColors)) {
+  for (const [key, value] of Object.entries(themeTokens.color)) {
     // The name of the color is what comes before the first hyphen (if there's a hyphen)
     const colorName = key.split('-')[0];
     const swatchName = `theme colors/${colorName}/${key}`;
@@ -69,6 +69,112 @@ function updateSwatchesFromTheme(doc, themeTokens) {
   });
 }
 
+function updateTextStylesFromTheme(doc, themeTokens) {
+  let fontSize = themeTokens.font['size-base'];
+  if (typeof fontSize === 'string') {
+    if (fontSize.includes('rem')) {
+      fontSize = parseFloat(fontSize) * 16;
+    } else {
+      fontSize = parseInt(fontSize, 10);
+    }
+  }
+
+  let lineHeight = themeTokens.font['line-height-base'];
+  if (typeof lineHeight === 'number') {
+    lineHeight = lineHeight * fontSize;
+  } else {
+    lineHeight = parseInt(lineHeight, 10);
+  }
+
+  let fontWeight = themeTokens.font['weight-normal'];
+  switch (fontWeight) {
+    case 100: // Thin
+      fontWeight = 0;
+      break;
+    case 200: // Extra-Light
+      fontWeight = 1;
+      break;
+    case 300: // Light
+      fontWeight = 3;
+      break;
+    case 400: // Normal/Regular
+      fontWeight = 6;
+      break;
+    case 500: // Medium
+      fontWeight = 7;
+      break;
+    case 600: // Semi-Bold
+      fontWeight = 9;
+      break;
+    case 700: // Bold
+      fontWeight = 10;
+      break;
+    case 800: // Extra-Bold
+      fontWeight = 11;
+      break;
+    case 900: // Black
+      fontWeight = 12;
+      break;
+    default:
+      fontWeight = 6;
+      break;
+  }
+
+  const fontFamily = themeTokens.components.typography['-body__font-family']
+    .split(',')[0]
+    .replaceAll('"', '')
+    .replaceAll("'", '')
+    .trim();
+
+  const name = '_test/base';
+  const defaultTextStyle = new sketch.Style({
+    fontFamily,
+    fontSize,
+    fontWeight,
+    textColor: themeTokens.color.base,
+    lineHeight,
+  });
+
+  const existingStyle = doc.sharedTextStyles.find((style) => style.name === name);
+  if (existingStyle) {
+    const oldFontFamily = existingStyle.style.fontFamily; // just for debugging purposes
+    existingStyle.style = defaultTextStyle;
+    console.log(existingStyle);
+    // existingStyle.style.fontFamily = defaultTextStyle.fontFamily;
+    // existingStyle.style.fontSize = defaultTextStyle.fontSize;
+    // existingStyle.style.fontWeight = defaultTextStyle.fontWeight;
+    // existingStyle.style.textColor = defaultTextStyle.textColor;
+    // existingStyle.style.lineHeight = defaultTextStyle.lineHeight;
+
+    let x = 0;
+    console.log('----');
+    const updateId = existingStyle.style.id;
+    doc.pages.forEach((page) => {
+      page.layers.forEach((layer) => {
+        if (layer.style && layer.style.fontFamily === oldFontFamily) {
+          console.log(layer, layer.style);
+        }
+        // if (layer.style && layer.style.id === updateId) {
+        //   console.log(layer.style.id)
+        //   // console.log(layer)
+        //   layer.style = existingStyle.style;
+        // }
+        // if (x > 10) return;
+        // // Check if the layer has a fill or a border
+        if (layer.style) {
+          console.log(layer.style);
+          x++;
+        }
+      });
+    });
+  } else {
+    doc.sharedTextStyles.push({
+      name,
+      style: defaultTextStyle,
+    });
+  }
+}
+
 export default function () {
   const themeNames = Object.values(themes).map((theme) => theme.displayName);
   const themeIndex = dialog.showMessageBoxSync({
@@ -83,6 +189,7 @@ export default function () {
 
   const doc = sketch.getSelectedDocument();
   updateSwatchesFromTheme(doc, themeTokens);
+  updateTextStylesFromTheme(doc, themeTokens);
 
   sketch.UI.message(`Switched to ${themeName}`);
 }

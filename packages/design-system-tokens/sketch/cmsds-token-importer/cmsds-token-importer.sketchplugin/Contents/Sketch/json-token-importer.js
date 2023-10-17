@@ -1756,30 +1756,89 @@ function __skpm_run(key, context) {
             if (Array.isArray(arr)) return arr;
           }
 
+          function ownKeys(object, enumerableOnly) {
+            var keys = Object.keys(object);
+            if (Object.getOwnPropertySymbols) {
+              var symbols = Object.getOwnPropertySymbols(object);
+              enumerableOnly &&
+                (symbols = symbols.filter(function (sym) {
+                  return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+                })),
+                keys.push.apply(keys, symbols);
+            }
+            return keys;
+          }
+
+          function _objectSpread(target) {
+            for (var i = 1; i < arguments.length; i++) {
+              var source = null != arguments[i] ? arguments[i] : {};
+              i % 2
+                ? ownKeys(Object(source), !0).forEach(function (key) {
+                    _defineProperty(target, key, source[key]);
+                  })
+                : Object.getOwnPropertyDescriptors
+                ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source))
+                : ownKeys(Object(source)).forEach(function (key) {
+                    Object.defineProperty(
+                      target,
+                      key,
+                      Object.getOwnPropertyDescriptor(source, key)
+                    );
+                  });
+            }
+            return target;
+          }
+
+          function _defineProperty(obj, key, value) {
+            if (key in obj) {
+              Object.defineProperty(obj, key, {
+                value: value,
+                enumerable: true,
+                configurable: true,
+                writable: true,
+              });
+            } else {
+              obj[key] = value;
+            }
+            return obj;
+          }
+
           var tokensByTheme = {
-            core: {
-              themeColors: _dist_core_tokens_json__WEBPACK_IMPORTED_MODULE_3__.color,
-              components: _dist_core_component_tokens_json__WEBPACK_IMPORTED_MODULE_4__,
-            },
-            healthcare: {
-              themeColors: _dist_healthcare_tokens_json__WEBPACK_IMPORTED_MODULE_5__.color,
-              components: _dist_healthcare_component_tokens_json__WEBPACK_IMPORTED_MODULE_6__,
-            },
-            medicare: {
-              themeColors: _dist_medicare_tokens_json__WEBPACK_IMPORTED_MODULE_7__.color,
-              components: _dist_medicare_component_tokens_json__WEBPACK_IMPORTED_MODULE_8__,
-            },
-            cmsgov: {
-              themeColors: _dist_cmsgov_tokens_json__WEBPACK_IMPORTED_MODULE_9__.color,
-              components: _dist_cmsgov_component_tokens_json__WEBPACK_IMPORTED_MODULE_10__,
-            },
+            core: _objectSpread(
+              _objectSpread({}, _dist_core_tokens_json__WEBPACK_IMPORTED_MODULE_3__),
+              {},
+              {
+                components: _dist_core_component_tokens_json__WEBPACK_IMPORTED_MODULE_4__,
+              }
+            ),
+            healthcare: _objectSpread(
+              _objectSpread({}, _dist_healthcare_tokens_json__WEBPACK_IMPORTED_MODULE_5__),
+              {},
+              {
+                components: _dist_healthcare_component_tokens_json__WEBPACK_IMPORTED_MODULE_6__,
+              }
+            ),
+            medicare: _objectSpread(
+              _objectSpread({}, _dist_medicare_tokens_json__WEBPACK_IMPORTED_MODULE_7__),
+              {},
+              {
+                components: _dist_medicare_component_tokens_json__WEBPACK_IMPORTED_MODULE_8__,
+              }
+            ),
+            cmsgov: _objectSpread(
+              _objectSpread({}, _dist_cmsgov_tokens_json__WEBPACK_IMPORTED_MODULE_9__),
+              {},
+              {
+                components: _dist_cmsgov_component_tokens_json__WEBPACK_IMPORTED_MODULE_10__,
+              }
+            ),
           };
 
           function updateSwatchesFromTheme(doc, themeTokens) {
             var newSwatches = []; // Add theme colors
 
             for (
-              var _i = 0, _Object$entries = Object.entries(themeTokens.themeColors);
+              var _i = 0, _Object$entries = Object.entries(themeTokens.color);
               _i < _Object$entries.length;
               _i++
             ) {
@@ -1857,6 +1916,132 @@ function __skpm_run(key, context) {
             });
           }
 
+          function updateTextStylesFromTheme(doc, themeTokens) {
+            var fontSize = themeTokens.font['size-base'];
+
+            if (typeof fontSize === 'string') {
+              if (fontSize.includes('rem')) {
+                fontSize = parseFloat(fontSize) * 16;
+              } else {
+                fontSize = parseInt(fontSize, 10);
+              }
+            }
+
+            var lineHeight = themeTokens.font['line-height-base'];
+
+            if (typeof lineHeight === 'number') {
+              lineHeight = lineHeight * fontSize;
+            } else {
+              lineHeight = parseInt(lineHeight, 10);
+            }
+
+            var fontWeight = themeTokens.font['weight-normal'];
+
+            switch (fontWeight) {
+              case 100:
+                // Thin
+                fontWeight = 0;
+                break;
+
+              case 200:
+                // Extra-Light
+                fontWeight = 1;
+                break;
+
+              case 300:
+                // Light
+                fontWeight = 3;
+                break;
+
+              case 400:
+                // Normal/Regular
+                fontWeight = 6;
+                break;
+
+              case 500:
+                // Medium
+                fontWeight = 7;
+                break;
+
+              case 600:
+                // Semi-Bold
+                fontWeight = 9;
+                break;
+
+              case 700:
+                // Bold
+                fontWeight = 10;
+                break;
+
+              case 800:
+                // Extra-Bold
+                fontWeight = 11;
+                break;
+
+              case 900:
+                // Black
+                fontWeight = 12;
+                break;
+
+              default:
+                fontWeight = 6;
+                break;
+            }
+
+            var fontFamily = themeTokens.components.typography['-body__font-family']
+              .split(',')[0]
+              .replaceAll('"', '')
+              .replaceAll("'", '')
+              .trim();
+            var name = '_test/base';
+            var defaultTextStyle = new sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Style({
+              fontFamily: fontFamily,
+              fontSize: fontSize,
+              fontWeight: fontWeight,
+              textColor: themeTokens.color.base,
+              lineHeight: lineHeight,
+            });
+            var existingStyle = doc.sharedTextStyles.find(function (style) {
+              return style.name === name;
+            });
+
+            if (existingStyle) {
+              // existingStyle.style = defaultTextStyle;
+              console.log(existingStyle); // existingStyle.style.fontFamily = defaultTextStyle.fontFamily;
+              // existingStyle.style.fontSize = defaultTextStyle.fontSize;
+              // existingStyle.style.fontWeight = defaultTextStyle.fontWeight;
+              // existingStyle.style.textColor = defaultTextStyle.textColor;
+              // existingStyle.style.lineHeight = defaultTextStyle.lineHeight;
+
+              var x = 0;
+              console.log('----');
+              var updateId = existingStyle.style.id;
+              doc.pages.forEach(function (page) {
+                page.layers.forEach(function (layer) {
+                  if (layer.style && layer.style.fontFamily === existingStyle.style.fontFamily) {
+                    console.log(layer, layer.style);
+                  } // if (layer.style && layer.style.id === updateId) {
+                  //   console.log(layer.style.id)
+                  //   // console.log(layer)
+                  //   layer.style = existingStyle.style;
+                  // }
+                  // if (x > 10) return;
+                  // // Check if the layer has a fill or a border
+
+                  if (layer.style) {
+                    console.log(layer.style);
+                    x++;
+                  }
+                });
+              });
+            } else {
+              doc.sharedTextStyles.push({
+                name: name,
+                style: defaultTextStyle,
+              });
+            }
+          }
+
           /* harmony default export */ __webpack_exports__['default'] = function () {
             var themeNames = Object.values(_themes_json__WEBPACK_IMPORTED_MODULE_2__).map(function (
               theme
@@ -1875,6 +2060,7 @@ function __skpm_run(key, context) {
             var themeTokens = tokensByTheme[themeKey];
             var doc = sketch__WEBPACK_IMPORTED_MODULE_0___default.a.getSelectedDocument();
             updateSwatchesFromTheme(doc, themeTokens);
+            updateTextStylesFromTheme(doc, themeTokens);
             sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.message(
               'Switched to '.concat(themeName)
             );
