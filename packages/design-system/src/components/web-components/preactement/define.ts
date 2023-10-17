@@ -145,10 +145,14 @@ function setupElement<T>(component: ComponentFunction<T>, options: IOptions = {}
   };
 }
 
+// Using part of Voorhoede's register function to implement custom event handlers
+// https://github.com/voorhoede/preact-web-components-demo/blob/main/src/lib/register.js#L158
 function proxyEvents(props, eventNames, CustomElement) {
   const callbacks = {};
 
   (eventNames || []).forEach((name) => {
+    // Convert the event name to a kebab-case format and replace 'on' with 'ds'
+    // This prevents the custom events from conflicting with the native events
     const customName = kebabCaseIt(name.replace('on', 'ds'));
     let existingCallback = () => null;
 
@@ -158,6 +162,8 @@ function proxyEvents(props, eventNames, CustomElement) {
       existingCallback = props[name].bind({});
     }
 
+    // The callback created here is passed when the custom element's connectedCallback is called
+    // Dispatches a custom event when called
     const customCb = (event) => {
       const customEvent = new CustomEvent(customName, {
         ...event,
@@ -191,7 +197,7 @@ function onConnected(this: CustomElement) {
   const json = this.querySelector('[type="application/json"]');
   const data = parseJson.call(this, props || json?.innerHTML || '{}');
 
-  const eventCallbacks = proxyEvents(this.__properties, this.__options.events, this);
+  const eventHandlers = proxyEvents(this.__properties, this.__options.events, this);
 
   json?.remove();
 
@@ -201,7 +207,7 @@ function onConnected(this: CustomElement) {
     children = h(parseHtml.call(this), {});
   }
 
-  this.__properties = { ...this.__slots, ...data, ...attributes, ...eventCallbacks };
+  this.__properties = { ...this.__slots, ...data, ...attributes, ...eventHandlers };
   this.__children = children || [];
 
   this.removeAttribute('server');
