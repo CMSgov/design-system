@@ -11,9 +11,6 @@ import { alertSendsAnalytics } from '../flags';
 export default function useAlertAnalytics({
   analytics,
   analyticsLabelOverride,
-  // `onAnalyticsEvent = defaultAnalyticsFunction` : our WC define function overwrites the default analytics function
-  // Possible analytics event fix: bake the event into component or define function or make it a separate config in the WC file
-  // Where wb are used - do we even want the default analytics function?
   onAnalyticsEvent = defaultAnalyticsFunction,
   variation,
 }: AlertProps) {

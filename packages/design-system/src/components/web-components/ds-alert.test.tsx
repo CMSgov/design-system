@@ -1,7 +1,7 @@
 import React from 'react';
 import { UtagContainer } from '../analytics';
 import { setAlertSendsAnalytics } from '../flags';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import './ds-alert';
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -122,8 +122,12 @@ describe('Alert', function () {
   });
 
   // Skipping this group of tests temporarily; we need to revisit how define handles callback functions
-  // Currently, callbacks are being overwritten, however the analytics events call default functions when the event isn't defined.
+  // In usAlertAnalytics, `onAnalyticsEvent = defaultAnalyticsFunction`
+  // Callbacks are being overwritten and the analytics events calls a default function when the event isn't defined.
   // This default function gets overwritten and we end up with undefined analytics data.
+
+  // Possible analytics event fix: bake the event into component or define function or make it a separate config in the WC file
+  // Where wb are used - do we even want the default analytics function?
   describe.skip('Analytics event tracking', () => {
     let tealiumMock;
 
