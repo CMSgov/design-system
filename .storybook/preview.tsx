@@ -1,6 +1,6 @@
 import './storybookStyles.scss';
 import React from 'react';
-import DocumentationTemplate from './DocumentationTemplate.mdx';
+import DocumentationTemplate from './docs/DocumentationTemplate.mdx';
 import {
   setAlertSendsAnalytics,
   setButtonSendsAnalytics,
