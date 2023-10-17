@@ -3,6 +3,7 @@ import themes from '../../../../../themes.json';
 type ThemeName = keyof typeof themes;
 
 export interface ThemeContentProps {
+  id?: string;
   children: React.ReactElement;
   /**
    * One of the available theme names in lowercase as presented in ThemeNames
@@ -30,14 +31,24 @@ const ThemeContent = (props: ThemeContentProps) => {
     (onlyThemes && onlyThemes.includes(theme as ThemeName)) ||
     (neverThemes && !neverThemes.includes(theme as ThemeName))
   ) {
+    console.log('👍', props.id);
     // Must be wrapped in a div to match what we have in the else block below in order to
     // avoid elements not being matched correctly during rehydration
-    return <div>{children}</div>;
+    return (
+      <div id={props.id} hidden={false}>
+        {children}
+      </div>
+    );
   } else {
+    console.log('🥷', props.id, onlyThemes, neverThemes);
     // Hide the content that falls outside our theme conditions rather than not rendering it,
     // because not rendering it will cause rehydration problems in certain edge cases that
     // produce wild results.
-    return <div hidden>{children}</div>;
+    return (
+      <div id={props.id} hidden>
+        {children}
+      </div>
+    );
   }
 };
 
