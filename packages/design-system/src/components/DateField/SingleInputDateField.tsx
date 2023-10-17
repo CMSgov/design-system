@@ -166,6 +166,9 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
             onClick={() => setPickerVisible(!pickerVisible)}
             type="button"
             ref={calendarButtonRef}
+            // The `?? ''` after `hintId` is only to support v8.0, which doesn't have a `hintId`.
+            // It can be removed after we're done supporting v8.0.
+            aria-describedby={`${labelProps.id} ${labelProps.hintId ?? ''}`}
           >
             <CalendarIcon
               ariaHidden={false}
