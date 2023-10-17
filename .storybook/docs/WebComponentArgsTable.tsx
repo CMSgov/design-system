@@ -36,8 +36,6 @@ function getTypeLabel(argType: any) {
 export const WebComponentArgsTable = ({ of }) => {
   const resolvedOf = useOf(of || 'story', ['story', 'meta']);
   const argTypes = resolvedOf.type === 'story' ? resolvedOf.story.argTypes : {};
-  console.log(argTypes);
-  // Not sure what to do yet about defaults
 
   return (
     <table className="docblock-argstable">
