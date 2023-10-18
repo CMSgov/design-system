@@ -17,13 +17,13 @@ import { Badge } from '@cmsgov/design-system';
 
 ### Informational (Default)
 
-<ThemeContent id="hello-1" onlyThemes={['healthcare']}>
+<ThemeContent onlyThemes={['healthcare']}>
 
 Provides supplementary information, or highlights a tool or step available to the user, that may be helpful to users regarding their current action or task, but is optional or not critical. Can provide guidance on what the user needs to do to proceed. Provides additional information, such as definitions, explanations, or criteria, that the user may find helpful as they answer questions with unfamiliar terminology or policy considerations.
 
 </ThemeContent>
 
-<ThemeContent id="hello-2" onlyThemes={['medicare']}>
+<ThemeContent onlyThemes={['medicare']}>
 
 Does not require an icon.
 
@@ -35,13 +35,13 @@ Provides supplementary information, or highlights a tool or step available to th
 
 ### Error
 
-<ThemeContent id="hello-3" onlyThemes={['healthcare']}>
+<ThemeContent onlyThemes={['healthcare']}>
 
 Informs users of an error or critical failure. Often used to block them from proceeding until they resolve the issue including system alerts.
 
 </ThemeContent>
 
-<ThemeContent id="hello-4" onlyThemes={['medicare']}>
+<ThemeContent onlyThemes={['medicare']}>
 
 Requires an icon.
 
@@ -53,13 +53,13 @@ Informs users of an error or critical failure. Often used to block them from pro
 
 ### Warning
 
-<ThemeContent id="hello-5" onlyThemes={['healthcare']}>
+<ThemeContent onlyThemes={['healthcare']}>
 
 Informs users that their entry or selection may have unexpected or undesirable results, some of which may not be easily undone. Highlights information a user should be aware of in order to help them avoid taking an action that is likely to result in a negative outcome or understand when content/data is missing from the page.
 
 </ThemeContent>
 
-<ThemeContent id="hello-6" onlyThemes={['medicare']}>
+<ThemeContent onlyThemes={['medicare']}>
 
 Requires an icon.
 
@@ -71,13 +71,13 @@ Informs users that their entry or selection may have unexpected or undesirable r
 
 ### Success
 
-<ThemeContent id="hello-7" onlyThemes={['healthcare']}>
+<ThemeContent onlyThemes={['healthcare']}>
 
 Confirms the successful completion of a step or task, or receipt of information provided by the user. Suggests a path forward that may be beneficial to the user, based on their selections or entries.
 
 </ThemeContent>
 
-<ThemeContent id="hello-8" onlyThemes={['medicare']}>
+<ThemeContent onlyThemes={['medicare']}>
 
 Does not require an icon.
 
@@ -87,7 +87,7 @@ Confirms the successful completion of a step or task, or receipt of information 
 
 <StorybookExample componentName="success alert" storyId="components-alert--success" />
 
-<ThemeContent id="hello-9" onlyThemes={['medicare']}>
+<ThemeContent onlyThemes={['medicare']}>
 
 ### Note
 
@@ -101,7 +101,7 @@ Explains concepts which may include math or maybe not.
 
 ### Lightweight
 
-<ThemeContent id="hello-10" onlyThemes={['medicare']}>
+<ThemeContent onlyThemes={['medicare']}>
 
 <Badge variation="alert">
   <CloseIconThin /> Unused by Medicare.
@@ -109,13 +109,13 @@ Explains concepts which may include math or maybe not.
 
 </ThemeContent>
 
-<ThemeContent id="hello-11" onlyThemes={['healthcare']}>
+<ThemeContent onlyThemes={['healthcare']}>
 
 Used to show important but not as urgent messages as standard alerts.
 
 </ThemeContent>
 
-<ThemeContent id="hello-12" neverThemes={['medicare']}>
+<ThemeContent neverThemes={['medicare']}>
 
 <StorybookExample componentName="lightweight alert" storyId="components-alert--lightweight" />
 
@@ -155,7 +155,7 @@ This component has analytics tracking available. Please see our developer docume
 - Confirming the successful competition of a task.
 - Providing key supplementary or contextual information to support the successful completion of tasks or aid overall comprehension.
 
-<ThemeContent id="hello-13" onlyThemes={['medicare']}>
+<ThemeContent onlyThemes={['medicare']}>
 
 ### Don't use
 
@@ -181,7 +181,7 @@ This component has analytics tracking available. Please see our developer docume
 - Can be displayed statically on page load or dynamically loaded.
 - When the user is required to do something in response to an alert, let them know what they need to do and make that task as easy as possible.
 
-<ThemeContent id="hello-14" onlyThemes={['healthcare']}>
+<ThemeContent onlyThemes={['healthcare']}>
 
 - Having icons is the preferred use for alerts. Some alerts might have a large amount of content and may need the extra space and in those cases the icon can be removed. Removing the icon should be considered a exception. Validate the design and spacing on mobile to help make this decision.
 
@@ -198,7 +198,7 @@ This component has analytics tracking available. Please see our developer docume
 
 ### Accessibility
 
-<ThemeContent id="hello-15" onlyThemes={['healthcare']}>
+<ThemeContent onlyThemes={['healthcare']}>
 
 If dynamically loaded, be mindful of when the alert displays on the page. For example, an alert could appear on a page due to an error or progressive disclosure. Where and how the content appears visually should align with how and when a screen reader user hears the content. Errors need immediate attention, but content through progressive disclosure may not.
 
@@ -212,7 +212,7 @@ If dynamically loaded, be mindful of when the alert displays on the page. For ex
 - If you choose to shift focus to the Alert, be mindful that using other techniques like `role="alert"`, and `aria-live="polite"` will cause some browser and screen reader combinations to read out the content more than once. Typically, shifting focus alone will be enough to alert screen readers of the content.
 - Do not visually hide alert messages on the page and then make them visible when they are needed. Users of older assistive technologies may still be able to perceive the alert messages even if they are not currently applicable.
 
-<ThemeContent id="hello-16" onlyThemes={['healthcare']}>
+<ThemeContent onlyThemes={['healthcare']}>
 
 ### Content
 
