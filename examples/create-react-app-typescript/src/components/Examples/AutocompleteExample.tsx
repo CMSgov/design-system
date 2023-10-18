@@ -1,7 +1,7 @@
 import { Autocomplete, TextField } from '@cmsgov/design-system';
 import React from 'react';
 
-function AutocompleteExample(): React.ReactElement {
+function AutocompleteExample() {
   return (
     <div>
       <h2>Autocomplete Example</h2>

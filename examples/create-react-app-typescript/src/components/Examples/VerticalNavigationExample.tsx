@@ -1,7 +1,7 @@
 import React from 'react';
 import { VerticalNav } from '@cmsgov/design-system';
 
-function VerticalNavigationExample(): React.ReactElement {
+function VerticalNavigationExample() {
   return (
     <div>
       <h2>VerticalNav Example</h2>

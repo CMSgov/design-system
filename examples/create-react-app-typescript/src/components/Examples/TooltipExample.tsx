@@ -1,7 +1,7 @@
 import { Tooltip, TooltipIcon } from '@cmsgov/design-system';
 import React from 'react';
 
-function TooltipExample(): React.ReactElement {
+function TooltipExample() {
   return (
     <div>
       <h2>Tooltip Example</h2>
