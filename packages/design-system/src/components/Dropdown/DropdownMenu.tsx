@@ -1,4 +1,4 @@
-import React, { RefObject, useRef } from 'react';
+import React, { RefObject, useEffect, useRef } from 'react';
 import { DropdownMenuOption } from './DropdownMenuOption';
 import { DropdownMenuSection } from './DropdownMenuSection';
 import { ListState, OverlayTriggerState } from '../react-aria'; // from react-stately
@@ -45,6 +45,17 @@ export function DropdownMenu<T>({
     state.setOpen(false);
     (props.triggerRef.current as HTMLButtonElement)?.focus?.();
   });
+
+  // Workaround for react/react-aria #1513
+  useEffect(() => {
+    const listener = (event: TouchEvent) => {
+      event.preventDefault();
+    };
+    containerRef.current?.addEventListener('touchend', listener, { passive: false });
+    return () => {
+      containerRef.current?.removeEventListener('touchend', listener);
+    };
+  }, []);
 
   function handleTabKey(event: React.KeyboardEvent<HTMLDivElement>) {
     const TAB_KEY = 9;

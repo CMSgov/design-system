@@ -14,6 +14,7 @@ type IComponent = any;
 
 interface IOptions<F = any, W = any> {
   attributes?: string[];
+  events?: string[];
   formatProps?: (props: any) => F;
   wrapComponent?: (child: any) => W;
 }
@@ -40,6 +41,7 @@ interface CustomElement<C = any, I = any> extends HTMLElement {
   __mounted: boolean;
   __component: C;
   __properties?: IProps;
+  __events?: IProps;
   __slots?: { [index: string]: any };
   __instance?: I;
   __children?: any;
