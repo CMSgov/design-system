@@ -153,9 +153,9 @@ exports[`UsaBanner renders correctly 1`] = `
               <br />
               A 
               <strong>
-                 .gov
+                 .gov 
               </strong>
-               website belongs to an official government organization in the United States.
+              website belongs to an official government organization in the United States.
             </p>
           </div>
           <div
@@ -189,9 +189,9 @@ exports[`UsaBanner renders correctly 1`] = `
               <br />
               A 
               <strong>
-                 lock 
+                lock 
               </strong>
-               (
+              (
               <svg
                 aria-hidden="true"
                 class="ds-c-icon ds-c-icon--lock ds-c-usa-banner__inline-lock-icon"
@@ -203,11 +203,14 @@ exports[`UsaBanner renders correctly 1`] = `
                   fill-rule="evenodd"
                 />
               </svg>
-              ) or 
+              )
+              <span>
+                 or
+              </span>
               <strong>
-                https://
+                 https:// 
               </strong>
-               means you've safely connected to the .gov website. Share sensitive information only on official, secure websites.
+              means you've safely connected to the .gov website. Share sensitive information only on official, secure websites.
             </p>
           </div>
         </div>

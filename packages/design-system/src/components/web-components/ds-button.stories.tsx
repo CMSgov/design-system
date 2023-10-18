@@ -44,9 +44,9 @@ const Template = (args) => {
       action('onChange')(event);
     };
     const button = document.querySelector('ds-button');
-    button.addEventListener('click', onChange);
+    button.addEventListener('ds-click', onChange);
     return () => {
-      button.removeEventListener('click', onChange);
+      button.removeEventListener('ds-click', onChange);
     };
   });
   return (
