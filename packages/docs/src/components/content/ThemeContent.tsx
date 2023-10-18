@@ -30,14 +30,9 @@ const ThemeContent = (props: ThemeContentProps) => {
     (onlyThemes && onlyThemes.includes(theme as ThemeName)) ||
     (neverThemes && !neverThemes.includes(theme as ThemeName))
   ) {
-    // Must be wrapped in a div to match what we have in the else block below in order to
-    // avoid elements not being matched correctly during rehydration
-    return <div>{children}</div>;
+    return children;
   } else {
-    // Hide the content that falls outside our theme conditions rather than not rendering it,
-    // because not rendering it will cause rehydration problems in certain edge cases that
-    // produce wild results.
-    return <div hidden>{children}</div>;
+    return null;
   }
 };
 
