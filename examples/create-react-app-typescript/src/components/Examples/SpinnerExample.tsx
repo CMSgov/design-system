@@ -1,7 +1,7 @@
 import React from 'react';
 import { Spinner } from '@cmsgov/design-system';
 
-function SpinnerExample(): React.ReactElement {
+function SpinnerExample() {
   return (
     <div>
       <h2>Spinner Example</h2>

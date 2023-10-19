@@ -1,7 +1,7 @@
 import { DateField } from '@cmsgov/design-system';
 import React from 'react';
 
-function DateFieldExample(): React.ReactElement {
+function DateFieldExample() {
   return (
     <div>
       <h2>DateField Example</h2>

@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/design-system",
-  "version": "8.0.2",
+  "version": "8.0.3",
   "publishConfig": {
     "access": "public",
     "tag": "latest"
@@ -64,7 +64,7 @@
     "ev-emitter": "^1.1.1",
     "focus-trap-react": "^10.0.0",
     "lodash": "^4.17.21",
-    "preactement": "1.8.4",
+    "preactement": "1.8.5",
     "prop-types": "^15.8.1",
     "react-aria": "^3.27.0",
     "react-day-picker": "8.0.5",
@@ -73,6 +73,7 @@
   },
   "devDependencies": {
     "chalk": "^5.0.1",
+    "case-it": "^1.0.1",
     "globby": "^13.1.2",
     "inquirer": "^9.0.2",
     "ora": "^6.1.2",

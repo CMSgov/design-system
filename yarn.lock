@@ -8413,6 +8413,11 @@ capital-case@^1.0.4:
     tslib "^2.0.3"
     upper-case-first "^2.0.2"
 
+case-it@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/case-it/-/case-it-1.0.1.tgz#bf161e9cb5c557302f854d130a42c04fe85a8f24"
+  integrity sha512-hxjXhD5fWVfBv2DglhN22wqtGTdImfpRyUB3FGofZL9LgHhyFwr+7Zbtqxj53W9DPzzDTfBuDB4XkeaGFGUijA==
+
 case-sensitive-paths-webpack-plugin@^2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/case-sensitive-paths-webpack-plugin/-/case-sensitive-paths-webpack-plugin-2.4.0.tgz#db64066c6422eed2e08cc14b986ca43796dbc6d4"
@@ -18624,10 +18629,10 @@ preact@10.11.3:
   resolved "https://registry.yarnpkg.com/preact/-/preact-10.11.3.tgz#8a7e4ba19d3992c488b0785afcc0f8aa13c78d19"
   integrity sha512-eY93IVpod/zG3uMF22Unl8h9KkrcKIRs2EGar8hwLZZDU1lkjph303V9HZBwufh2s736U6VXuhD109LYqPoffg==
 
-preactement@1.8.4:
-  version "1.8.4"
-  resolved "https://registry.yarnpkg.com/preactement/-/preactement-1.8.4.tgz#3e047566c502801770b5fcacf43cf5f48c8b964b"
-  integrity sha512-RxWc0kDu5mDVDbcO7jDzxJMwKBITxjy4zogqxXafTDS715hHj6mTBmulPDYA2sw/qINDmZP14Bj6ZL8s8uktGA==
+preactement@1.8.5:
+  version "1.8.5"
+  resolved "https://registry.yarnpkg.com/preactement/-/preactement-1.8.5.tgz#bd0ecb6c14ec8103d78d7f48d1c60031dd882e8c"
+  integrity sha512-amNlPLvhOz4ZImozZb3nizziiOGAmjLPPHGgKYE0192QsPALqq/lXECyzP6twsrvdidM0ay8zGHR1rgSKJxejw==
 
 prebuild-install@^7.1.1:
   version "7.1.1"

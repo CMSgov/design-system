@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextField } from '@cmsgov/design-system';
 
-function TextFieldExample(): React.ReactElement {
+function TextFieldExample() {
   return (
     <div>
       <h2>TextField Example</h2>
