@@ -167,7 +167,7 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
             ref={calendarButtonRef}
             // The `?? ''` after `hintId` is only to support v8.0, which doesn't have a `hintId`.
             // It can be removed after we're done supporting v8.0.
-            aria-describedby={`${labelProps.id} ${labelProps.hintId ?? ''}`}
+            aria-describedby={`${labelProps.id}`}
           >
             <CalendarIcon
               ariaHidden={false}
