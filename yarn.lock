@@ -8413,6 +8413,11 @@ capital-case@^1.0.4:
     tslib "^2.0.3"
     upper-case-first "^2.0.2"
 
+case-it@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/case-it/-/case-it-1.0.1.tgz#bf161e9cb5c557302f854d130a42c04fe85a8f24"
+  integrity sha512-hxjXhD5fWVfBv2DglhN22wqtGTdImfpRyUB3FGofZL9LgHhyFwr+7Zbtqxj53W9DPzzDTfBuDB4XkeaGFGUijA==
+
 case-sensitive-paths-webpack-plugin@^2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/case-sensitive-paths-webpack-plugin/-/case-sensitive-paths-webpack-plugin-2.4.0.tgz#db64066c6422eed2e08cc14b986ca43796dbc6d4"

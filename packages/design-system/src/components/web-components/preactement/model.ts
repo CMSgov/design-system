@@ -20,6 +20,7 @@ type ComponentAsync<P = {}> =
 
 interface IOptions {
   attributes?: string[];
+  events?: string[];
   formatProps?: <P = any>(props: P) => P;
   wrapComponent?: <P>(child: ComponentFactory<P>) => ComponentFactory<P>;
 }

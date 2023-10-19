@@ -24,7 +24,7 @@ export interface TableCaptionProps {
   _scrollableNotice?: React.ReactNode;
 }
 
-export const TableCaption: React.FC<TableCaptionProps> = ({
+export const TableCaption = ({
   children,
   className,
   _id,

@@ -1,7 +1,7 @@
 import { Pagination } from '@cmsgov/design-system';
 import React from 'react';
 
-function PaginationExample(): React.ReactElement {
+function PaginationExample() {
   return (
     <div>
       <h2>Pagination Example</h2>

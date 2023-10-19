@@ -63,9 +63,8 @@ exports[`Alert renders alert 1`] = `
     id="static-id"
   >
     <div
-      aria-labelledby="static-id__a11y-label"
+      aria-labelledby="alert--1__a11y-label"
       class="ds-c-alert"
-      id="static-id"
       parent="[object HTMLElement]"
       role="region"
     >
@@ -81,11 +80,11 @@ exports[`Alert renders alert 1`] = `
       </svg>
       <div
         class="ds-c-alert__body"
-        id="static-id__heading"
+        id="alert--1__heading"
       >
         <span
           class="ds-c-alert__a11y-label ds-u-visibility--screen-reader"
-          id="static-id__a11y-label"
+          id="alert--1__a11y-label"
         >
           Notice: 
         </span>

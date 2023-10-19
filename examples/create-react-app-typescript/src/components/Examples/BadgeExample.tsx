@@ -2,7 +2,7 @@ import { Badge } from '@cmsgov/design-system';
 import React from 'react';
 import usflag from '../../images/us_flag_small.png';
 
-function BadgeExample(): React.ReactElement {
+function BadgeExample() {
   return (
     <div>
       <h2>Badge Example</h2>
