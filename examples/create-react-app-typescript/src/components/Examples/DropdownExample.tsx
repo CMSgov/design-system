@@ -1,7 +1,7 @@
 import { Dropdown } from '@cmsgov/design-system';
 import React from 'react';
 
-function DropdownExample(): React.ReactElement {
+function DropdownExample() {
   const dropdownOptions = [
     { label: '- Select an option -', value: '' },
     { label: 'Option 1', value: '1' },
