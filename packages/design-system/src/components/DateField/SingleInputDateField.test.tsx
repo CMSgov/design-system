@@ -102,7 +102,7 @@ describe('SingleInputDateField', function () {
       const button = screen.getByRole('button');
       expect(button).toBeInTheDocument();
       expect(button).toHaveClass('ds-c-single-input-date-field__button');
-      expect(button).toHaveAttribute('aria-describedby', `${label.id} ${hint.id}`);
+      expect(button).toHaveAttribute('aria-describedby', `${label.id}`);
       expect(button.firstElementChild.tagName).toBe('svg');
       expect(button.firstElementChild.classList).toContain('ds-c-icon--calendar');
 
