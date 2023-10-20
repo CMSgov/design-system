@@ -12,7 +12,7 @@ import ComponentThemeOptions from './ComponentThemeOptions';
 import EmbeddedExample from './EmbeddedExample';
 import MaturityChecklist from './MaturityChecklist';
 import ResponsiveExample from './ResponsiveExample';
-import SeeStorybookForReactGuidance from './SeeStorybookForReactGuidance';
+import SeeStorybookForGuidance from './SeeStorybookForGuidance';
 import SpacingUtilityExampleList from './SpacingUtilityExampleList';
 import StorybookExample from './StorybookExample';
 import TextColorList from './TextColorList';
@@ -81,9 +81,7 @@ const customComponents = (theme) => ({
   ReactDocsLinks,
   ReactDocsLink: (props) => <ReactDocsLink theme={theme} {...props} />,
   ResponsiveExample: (props) => <ResponsiveExample theme={theme} {...props} />,
-  SeeStorybookForReactGuidance: (props) => (
-    <SeeStorybookForReactGuidance theme={theme} {...props} />
-  ),
+  SeeStorybookForGuidance: (props) => <SeeStorybookForGuidance theme={theme} {...props} />,
   SpacingUtilityExampleList: (props) => <SpacingUtilityExampleList theme={theme} {...props} />,
   StorybookExample: (props) => <StorybookExample theme={theme} {...props} />,
   table: TableWithClassnames,
