@@ -30,6 +30,7 @@
     "prettier": "yarn prettier --write 'packages/**/*.{js,jsx,tsx,scss,html,md,mdx,json}'",
     "release": "ts-node ./scripts/release.ts",
     "release:notes": "ts-node ./scripts/notes.ts",
+    "release:patch": "ts-node ./scripts/patch.ts",
     "serve:docs": "yarn --cwd ./packages/docs serve",
     "start": "yarn build:storybook:docs && yarn --cwd ./packages/docs develop",
     "storybook": "storybook dev -p 6006",

@@ -1,5 +1,6 @@
 import c from 'chalk';
 import { execSync, spawnSync } from 'node:child_process';
+import { select } from '@inquirer/prompts';
 
 /**
  * Execute a shell command and wait for the response. Note that this does not
@@ -30,4 +31,29 @@ export function verifyGhInstalled() {
     );
     process.exit(1);
   }
+}
+
+/**
+ * Fetch open milestones and let one be selected. Returns a GH milestone object.
+ */
+export async function chooseMilestone() {
+  const milestoneJSON = sh('gh api repos/CMSgov/design-system/milestones');
+  const milestoneQuery = JSON.parse(milestoneJSON);
+
+  let milestone;
+  if (milestoneQuery.length < 1) {
+    throw Error('There are currently no milestones defined.');
+  } else if (milestoneQuery.length === 1) {
+    milestone = milestoneQuery[0];
+  } else {
+    milestone = await select({
+      message: 'Select an open milestone',
+      choices: milestoneQuery.map((ms: any) => ({ name: ms.title, value: ms })),
+    });
+  }
+  return milestone;
+}
+
+export function versionFromTag(tag: string): string {
+  return tag.replace(/@cmsgov\/.*@(.*)$/, '$1');
 }
