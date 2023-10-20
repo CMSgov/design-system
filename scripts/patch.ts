@@ -45,6 +45,9 @@ function formatPr({ title, mergeCommit }: PullRequest) {
       message: 'Do you want to cherry-pick them onto your current branch now? (Y/n): ',
     });
     if (ok) {
+      console.log(
+        "Cool, good luck! Kicking off the cherry-picking process, but you'll have to take it from here. If you run into merge conflicts, just work through them and follow git's instructions to `git cherry-pick --continue` until you're done. May the Force be with you."
+      );
       shI('git', ['cherry-pick', ...commits]);
     } else {
       console.log(
