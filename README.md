@@ -77,9 +77,11 @@ These scripts can all be run from the root level of the repo:
 - `yarn deploy-demo`
   - Builds the doc site locally and deploys it to a branch-specific path on GitHub Pages. The terminal will display the URL where the demo was deployed to after it is done running.
 - `yarn release`
-  - Bumps package versions and tags a release commit. Read our [release guide on Confluence](https://confluence.cms.gov/x/CAsuK) for more info.
+  - Interactive script that bumps package versions, tags a release commit, drafts notes, and more. Read our [release guide on Confluence](https://confluence.cms.gov/x/CAsuK) for more info.
 - `yarn release:notes`
-  - Generates draft release notes and associated ticket information from [GitHub Milestones](https://github.com/CMSgov/design-system/milestones) in the CMSDS public repository.
+  - Interactive script that generates draft release notes and associated ticket information from [GitHub Milestones](https://github.com/CMSgov/design-system/milestones) in the CMSDS public repository.
+- `yarn release:patch`
+  - Interactive script that collects the merge commits from pull requests associated with a given milestone and cherry-picks them onto the current branch (use with release branch)
 
 ### Visual regression testing
 
