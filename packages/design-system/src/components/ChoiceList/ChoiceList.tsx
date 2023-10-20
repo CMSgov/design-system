@@ -14,7 +14,7 @@ export type ChoiceProps = Omit<ChoiceComponentProps, OmitChoiceProp>;
 
 export interface BaseChoiceListProps extends FormFieldProps {
   /**
-   * Array of [`Choice`]({{root}}/components/choice/#components.choice.react) data objects to be rendered.
+   * Array of objects representing the props for each Choice in the ChoiceList
    */
   choices: ChoiceProps[];
   /**
@@ -30,7 +30,7 @@ export interface BaseChoiceListProps extends FormFieldProps {
    */
   hint?: React.ReactNode;
   /**
-   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
+   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields](https://design.cms.gov/patterns/Forms/forms/#required-and-optional-fields).
    */
   requirementLabel?: React.ReactNode;
   /**
