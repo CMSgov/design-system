@@ -46,8 +46,10 @@ function formatPr({ title, mergeCommit }: PullRequest) {
     });
     if (ok) {
       console.log(
-        "Cool, good luck! Kicking off the cherry-picking process, but you'll have to take it from here. If you run into merge conflicts, just work through them and follow git's instructions to `git cherry-pick --continue` until you're done. May the Force be with you."
+        "Cool, good luck! Kicking off the cherry-picking process, but you'll have to take it from here. If you run into merge conflicts, just work through them and follow git's instructions to `git cherry-pick --continue` until you're done."
       );
+      console.log('');
+      console.log('May the Force be with you...');
       console.log('');
       console.log('------------------------------------------------------------');
       console.log('');
