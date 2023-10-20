@@ -10,6 +10,7 @@ Object.keys(themes).forEach((theme) => {
   test(`Dropdown open: ${theme}`, async ({ page }) => {
     await page.goto(storyUrl(theme, 'components-dropdown--default'));
     await page.getByRole('button').click();
+    await page.getByRole('listbox').waitFor();
     await page.keyboard.press('ArrowDown');
     await expect(page).toHaveScreenshot(`dropdown--open--${theme}.png`, { fullPage: true });
   });
@@ -17,6 +18,7 @@ Object.keys(themes).forEach((theme) => {
   test(`Dropdown open with option groups: ${theme}`, async ({ page }) => {
     await page.goto(storyUrl(theme, 'components-dropdown--option-groups'));
     await page.getByRole('button').click();
+    await page.getByRole('listbox').waitFor();
     await page.keyboard.press('ArrowDown');
     await expect(page).toHaveScreenshot(`dropdown-optgroups--open--${theme}.png`, {
       fullPage: true,
