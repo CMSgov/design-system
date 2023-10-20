@@ -9,6 +9,8 @@ healthcare:
   sketchLink: 25qAbzl
 ---
 
+import { Alert } from '@cmsgov/design-system';
+
 ## Example
 
 <StorybookExample
@@ -38,6 +40,27 @@ To change the language in which a component is rendered, use the dropdown menu c
 The following CSS variables can be overridden to customize UsaBanner components:
 
 <ComponentThemeOptions componentname="usa-banner" />
+
+<Alert weight="lightweight">
+
+<p className="ds-c-alert__text">
+  The USA Banner uses predefined variables from a theme's global tokens to determine the default
+  width of its content and gutters (padding).
+</p>
+
+For most applications this should be sufficient, but for others with custom layouts it can result in the banner's content appearing misaligned with the content of the rest of a page. To fix this, you can customize the `--usa-banner__max-width` and `--usa-banner-gutter-width` variables to match the application's page width and gutter width.
+
+To illustrate how this works, here's an example of how to customize the banner's width and gutter width for an application with more narrow content:
+
+```css
+/* These values can be whatever you need them to be */
+:root {
+  --usa-banner__max-width: 600px;
+  --usa-banner-gutter-width: 1rem;
+}
+```
+
+</Alert>
 
 ## Guidance
 
