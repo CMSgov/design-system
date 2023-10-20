@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import c from 'chalk';
-import { chooseMilestone, sh, verifyGhInstalled } from './utils';
+import { chooseMilestone, sh, shI, verifyGhInstalled } from './utils';
 import { confirm } from '@inquirer/prompts';
 
 type MergeCommit = { oid: string };
@@ -30,6 +30,7 @@ function formatPr({ title, mergeCommit }: PullRequest) {
     const command = `gh pr list --search '${query}' --state merged -L 200 --json title,mergeCommit,mergedAt`;
     const unsortedPrs = JSON.parse(sh(command).toString());
     const prs: PullRequest[] = _.sortBy(unsortedPrs, [getPrMergeTime]);
+    const commits = prs.map((pr) => pr.mergeCommit?.oid ?? '');
 
     console.log(
       `The following pull requests were found for milestone ${c.green(milestone.title)}:`
@@ -44,7 +45,13 @@ function formatPr({ title, mergeCommit }: PullRequest) {
       message: 'Do you want to cherry-pick them onto your current branch now? (Y/n): ',
     });
     if (ok) {
-      console.log('woohoo');
+      shI('git', ['cherry-pick', ...commits]);
+    } else {
+      console.log(
+        "Okay, cherry-picking operation aborted. If you want to run it yourself, here's the command: "
+      );
+      console.log('');
+      console.log(c.cyan(`git cherry-pick ${commits.join(' ')}`));
     }
 
     process.exit(0);
