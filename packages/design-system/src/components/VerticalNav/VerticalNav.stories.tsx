@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import VerticalNav from './VerticalNav';
+import VerticalNavItem from './VerticalNavItem';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof VerticalNav> = {
@@ -10,6 +11,7 @@ const meta: Meta<typeof VerticalNav> = {
     collapsed: false,
     nested: false,
   },
+  subcomponents: { VerticalNavItem },
 };
 export default meta;
 
