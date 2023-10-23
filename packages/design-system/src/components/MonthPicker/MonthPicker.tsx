@@ -31,7 +31,7 @@ interface MonthPickerProps extends FormFieldProps {
    */
   className?: string;
   /**
-   * Variation string to be applied to buttons. See [Button component]({{root}}/components/button/#components.button.react)
+   * Variation string to be applied to buttons. See [Button component](https://design.cms.gov/storybook/?path=/docs/components-button--docs)
    */
   buttonVariation?: ButtonVariation;
   /**

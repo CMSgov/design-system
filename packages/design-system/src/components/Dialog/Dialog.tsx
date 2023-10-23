@@ -43,7 +43,7 @@ export interface BaseDialogProps extends AnalyticsOverrideProps {
    */
   className?: string;
   /**
-   * Size of the close button. See [Button component]({{root}}/components/button/#components.button.react)
+   * Size of the close button. See [Button component](https://design.cms.gov/storybook/?path=/docs/components-button--docs)
    */
   closeButtonSize?: DialogCloseButtonSize;
   /**
@@ -52,7 +52,7 @@ export interface BaseDialogProps extends AnalyticsOverrideProps {
    */
   closeButtonText?: React.ReactNode;
   /**
-   * Variation string to be applied to close button component. See [Button component]({{root}}/components/button/#components.button.react)
+   * Variation string to be applied to close button component. See [Button component](https://design.cms.gov/storybook/?path=/docs/components-button--docs)
    */
   closeButtonVariation?: ButtonVariation;
   /**
