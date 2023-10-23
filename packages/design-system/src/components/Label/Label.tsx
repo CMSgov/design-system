@@ -58,9 +58,7 @@ export interface LabelProps {
    */
   inversed?: boolean;
   /**
-   * Text showing the requirement (ie. "Optional", or "Required").
-   * In most cases, this should be used to indicate which fields are optional.
-   * See the [form guidelines]({{root}}/guidelines/forms/) for more info.
+   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields](https://design.cms.gov/patterns/Forms/forms/#required-and-optional-fields).
    */
   requirementLabel?: React.ReactNode;
   /**
