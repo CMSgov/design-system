@@ -18,7 +18,7 @@ export interface HintProps {
   /**
    * Text showing the requirement (ie. "Optional", or "Required").
    * In most cases, this should be used to indicate which fields are optional.
-   * See the [form guidelines]({{root}}/guidelines/forms/) for more info.
+   * See the [form guidelines](https://design.cms.gov/patterns/Forms/forms/) for more info.
    */
   requirementLabel?: React.ReactNode;
 }
