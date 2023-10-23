@@ -2,7 +2,7 @@ const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const usePreact = Boolean(process.env.PREACT && JSON.parse(process.env.PREACT));
+const usePreact = Boolean(JSON.parse(process.env.PREACT ?? 'true'));
 const preactAliases = usePreact
   ? {
       react: 'preact/compat',

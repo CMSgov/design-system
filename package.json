@@ -34,7 +34,7 @@
     "serve:docs": "yarn --cwd ./packages/docs serve",
     "start": "yarn build:storybook:docs && yarn --cwd ./packages/docs develop",
     "storybook": "storybook dev -p 6006",
-    "storybook:preact": "PREACT=true storybook dev -p 6006",
+    "storybook:react": "PREACT=false storybook dev -p 6006",
     "test": "yarn test:unit && yarn test:a11y",
     "posttest": "yarn lint",
     "test:unit:coverage": "yarn test:unit --collectCoverage",
