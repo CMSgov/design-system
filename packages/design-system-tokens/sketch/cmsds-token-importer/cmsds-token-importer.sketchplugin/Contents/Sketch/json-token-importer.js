@@ -1593,6 +1593,176 @@ function __skpm_run(key, context) {
           /***/
         },
 
+      /***/ './src/color.js':
+        /*!**********************!*\
+  !*** ./src/color.js ***!
+  \**********************/
+        /*! exports provided: updateSwatchesFromTheme */
+        /***/ function (module, __webpack_exports__, __webpack_require__) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony export (binding) */ __webpack_require__.d(
+            __webpack_exports__,
+            'updateSwatchesFromTheme',
+            function () {
+              return updateSwatchesFromTheme;
+            }
+          );
+          /* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+            /*! sketch */ 'sketch'
+          );
+          /* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(sketch__WEBPACK_IMPORTED_MODULE_0__);
+          function _slicedToArray(arr, i) {
+            return (
+              _arrayWithHoles(arr) ||
+              _iterableToArrayLimit(arr, i) ||
+              _unsupportedIterableToArray(arr, i) ||
+              _nonIterableRest()
+            );
+          }
+
+          function _nonIterableRest() {
+            throw new TypeError(
+              'Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.'
+            );
+          }
+
+          function _unsupportedIterableToArray(o, minLen) {
+            if (!o) return;
+            if (typeof o === 'string') return _arrayLikeToArray(o, minLen);
+            var n = Object.prototype.toString.call(o).slice(8, -1);
+            if (n === 'Object' && o.constructor) n = o.constructor.name;
+            if (n === 'Map' || n === 'Set') return Array.from(o);
+            if (n === 'Arguments' || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))
+              return _arrayLikeToArray(o, minLen);
+          }
+
+          function _arrayLikeToArray(arr, len) {
+            if (len == null || len > arr.length) len = arr.length;
+            for (var i = 0, arr2 = new Array(len); i < len; i++) {
+              arr2[i] = arr[i];
+            }
+            return arr2;
+          }
+
+          function _iterableToArrayLimit(arr, i) {
+            var _i =
+              arr == null
+                ? null
+                : (typeof Symbol !== 'undefined' && arr[Symbol.iterator]) || arr['@@iterator'];
+            if (_i == null) return;
+            var _arr = [];
+            var _n = true;
+            var _d = false;
+            var _s, _e;
+            try {
+              for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
+                _arr.push(_s.value);
+                if (i && _arr.length === i) break;
+              }
+            } catch (err) {
+              _d = true;
+              _e = err;
+            } finally {
+              try {
+                if (!_n && _i['return'] != null) _i['return']();
+              } finally {
+                if (_d) throw _e;
+              }
+            }
+            return _arr;
+          }
+
+          function _arrayWithHoles(arr) {
+            if (Array.isArray(arr)) return arr;
+          }
+
+          function updateSwatchesFromTheme(doc, themeTokens) {
+            var newSwatches = []; // Add theme colors
+
+            for (
+              var _i = 0, _Object$entries = Object.entries(themeTokens.color);
+              _i < _Object$entries.length;
+              _i++
+            ) {
+              var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
+                key = _Object$entries$_i[0],
+                value = _Object$entries$_i[1];
+
+              // The name of the color is what comes before the first hyphen (if there's a hyphen)
+              var colorName = key.split('-')[0];
+              var swatchName = 'theme colors/'.concat(colorName, '/').concat(key);
+              newSwatches.push(
+                sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Swatch.from({
+                  name: swatchName,
+                  color: value,
+                })
+              );
+            } // Add component colors
+
+            var hexRegex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+
+            for (
+              var _i2 = 0, _Object$entries2 = Object.entries(themeTokens.components);
+              _i2 < _Object$entries2.length;
+              _i2++
+            ) {
+              var _Object$entries2$_i = _slicedToArray(_Object$entries2[_i2], 2),
+                componentName = _Object$entries2$_i[0],
+                componentTokens = _Object$entries2$_i[1];
+
+              for (
+                var _i3 = 0, _Object$entries3 = Object.entries(componentTokens);
+                _i3 < _Object$entries3.length;
+                _i3++
+              ) {
+                var _Object$entries3$_i = _slicedToArray(_Object$entries3[_i3], 2),
+                  tokenName = _Object$entries3$_i[0],
+                  tokenValue = _Object$entries3$_i[1];
+
+                if (hexRegex.test(tokenValue)) {
+                  var _swatchName = 'components/'
+                    .concat(componentName, '/')
+                    .concat(componentName)
+                    .concat(tokenName);
+
+                  newSwatches.push(
+                    sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Swatch.from({
+                      name: _swatchName,
+                      color: tokenValue,
+                    })
+                  );
+                }
+              }
+            } // Update the document with new swatches
+
+            var oldSwatchMap = doc.swatches.reduce(function (map, swatch) {
+              map[swatch.name] = swatch;
+              return map;
+            }, {});
+
+            for (var _i4 = 0, _newSwatches = newSwatches; _i4 < _newSwatches.length; _i4++) {
+              var newSwatch = _newSwatches[_i4];
+
+              if (oldSwatchMap[newSwatch.name]) {
+                oldSwatchMap[newSwatch.name].sketchObject.updateWithColor(
+                  newSwatch.referencingColor
+                );
+              } else {
+                doc.swatches.push(newSwatch);
+              }
+            } // Update all references to the swatches in the doc
+
+            var swatchContainer = doc.sketchObject.documentData().sharedSwatches();
+            doc.swatches.forEach(function (swatch) {
+              swatchContainer.updateReferencesToSwatch(swatch.sketchObject);
+            });
+          }
+
+          /***/
+        },
+
       /***/ './src/json-token-importer.js':
         /*!************************************!*\
   !*** ./src/json-token-importer.js ***!
@@ -1691,71 +1861,12 @@ function __skpm_run(key, context) {
               /*! ../../../dist/cmsgov-component.tokens.json */ '../../dist/cmsgov-component.tokens.json',
               1
             );
-          function _slicedToArray(arr, i) {
-            return (
-              _arrayWithHoles(arr) ||
-              _iterableToArrayLimit(arr, i) ||
-              _unsupportedIterableToArray(arr, i) ||
-              _nonIterableRest()
-            );
-          }
-
-          function _nonIterableRest() {
-            throw new TypeError(
-              'Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.'
-            );
-          }
-
-          function _unsupportedIterableToArray(o, minLen) {
-            if (!o) return;
-            if (typeof o === 'string') return _arrayLikeToArray(o, minLen);
-            var n = Object.prototype.toString.call(o).slice(8, -1);
-            if (n === 'Object' && o.constructor) n = o.constructor.name;
-            if (n === 'Map' || n === 'Set') return Array.from(o);
-            if (n === 'Arguments' || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))
-              return _arrayLikeToArray(o, minLen);
-          }
-
-          function _arrayLikeToArray(arr, len) {
-            if (len == null || len > arr.length) len = arr.length;
-            for (var i = 0, arr2 = new Array(len); i < len; i++) {
-              arr2[i] = arr[i];
-            }
-            return arr2;
-          }
-
-          function _iterableToArrayLimit(arr, i) {
-            var _i =
-              arr == null
-                ? null
-                : (typeof Symbol !== 'undefined' && arr[Symbol.iterator]) || arr['@@iterator'];
-            if (_i == null) return;
-            var _arr = [];
-            var _n = true;
-            var _d = false;
-            var _s, _e;
-            try {
-              for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
-                _arr.push(_s.value);
-                if (i && _arr.length === i) break;
-              }
-            } catch (err) {
-              _d = true;
-              _e = err;
-            } finally {
-              try {
-                if (!_n && _i['return'] != null) _i['return']();
-              } finally {
-                if (_d) throw _e;
-              }
-            }
-            return _arr;
-          }
-
-          function _arrayWithHoles(arr) {
-            if (Array.isArray(arr)) return arr;
-          }
-
+          /* harmony import */ var _color__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+            /*! ./color */ './src/color.js'
+          );
+          /* harmony import */ var _text__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+            /*! ./text */ './src/text.js'
+          );
           function ownKeys(object, enumerableOnly) {
             var keys = Object.keys(object);
             if (Object.getOwnPropertySymbols) {
@@ -1833,229 +1944,6 @@ function __skpm_run(key, context) {
               }
             ),
           };
-
-          function updateSwatchesFromTheme(doc, themeTokens) {
-            var newSwatches = []; // Add theme colors
-
-            for (
-              var _i = 0, _Object$entries = Object.entries(themeTokens.color);
-              _i < _Object$entries.length;
-              _i++
-            ) {
-              var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
-                key = _Object$entries$_i[0],
-                value = _Object$entries$_i[1];
-
-              // The name of the color is what comes before the first hyphen (if there's a hyphen)
-              var colorName = key.split('-')[0];
-              var swatchName = 'theme colors/'.concat(colorName, '/').concat(key);
-              newSwatches.push(
-                sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Swatch.from({
-                  name: swatchName,
-                  color: value,
-                })
-              );
-            } // Add component colors
-
-            var hexRegex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
-
-            for (
-              var _i2 = 0, _Object$entries2 = Object.entries(themeTokens.components);
-              _i2 < _Object$entries2.length;
-              _i2++
-            ) {
-              var _Object$entries2$_i = _slicedToArray(_Object$entries2[_i2], 2),
-                componentName = _Object$entries2$_i[0],
-                componentTokens = _Object$entries2$_i[1];
-
-              for (
-                var _i3 = 0, _Object$entries3 = Object.entries(componentTokens);
-                _i3 < _Object$entries3.length;
-                _i3++
-              ) {
-                var _Object$entries3$_i = _slicedToArray(_Object$entries3[_i3], 2),
-                  tokenName = _Object$entries3$_i[0],
-                  tokenValue = _Object$entries3$_i[1];
-
-                if (hexRegex.test(tokenValue)) {
-                  var _swatchName = 'components/'
-                    .concat(componentName, '/')
-                    .concat(componentName)
-                    .concat(tokenName);
-
-                  newSwatches.push(
-                    sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Swatch.from({
-                      name: _swatchName,
-                      color: tokenValue,
-                    })
-                  );
-                }
-              }
-            } // Update the document with new swatches
-
-            var oldSwatchMap = doc.swatches.reduce(function (map, swatch) {
-              map[swatch.name] = swatch;
-              return map;
-            }, {});
-
-            for (var _i4 = 0, _newSwatches = newSwatches; _i4 < _newSwatches.length; _i4++) {
-              var newSwatch = _newSwatches[_i4];
-
-              if (oldSwatchMap[newSwatch.name]) {
-                oldSwatchMap[newSwatch.name].sketchObject.updateWithColor(
-                  newSwatch.referencingColor
-                );
-              } else {
-                doc.swatches.push(newSwatch);
-              }
-            } // Update all references to the swatches in the doc
-
-            var swatchContainer = doc.sketchObject.documentData().sharedSwatches();
-            doc.swatches.forEach(function (swatch) {
-              swatchContainer.updateReferencesToSwatch(swatch.sketchObject);
-            });
-          }
-
-          function updateTextStylesFromTheme(doc, themeTokens) {
-            var fontSize = themeTokens.font['size-base'];
-
-            if (typeof fontSize === 'string') {
-              if (fontSize.includes('rem')) {
-                fontSize = parseFloat(fontSize) * 16;
-              } else {
-                fontSize = parseInt(fontSize, 10);
-              }
-            }
-
-            var lineHeight = themeTokens.font['line-height-base'];
-
-            if (typeof lineHeight === 'number') {
-              lineHeight = lineHeight * fontSize;
-            } else {
-              lineHeight = parseInt(lineHeight, 10);
-            }
-
-            var fontWeight = themeTokens.font['weight-normal'];
-
-            switch (fontWeight) {
-              case 100:
-                // Thin
-                fontWeight = 0;
-                break;
-
-              case 200:
-                // Extra-Light
-                fontWeight = 1;
-                break;
-
-              case 300:
-                // Light
-                fontWeight = 3;
-                break;
-
-              case 400:
-                // Normal/Regular
-                fontWeight = 6;
-                break;
-
-              case 500:
-                // Medium
-                fontWeight = 7;
-                break;
-
-              case 600:
-                // Semi-Bold
-                fontWeight = 9;
-                break;
-
-              case 700:
-                // Bold
-                fontWeight = 10;
-                break;
-
-              case 800:
-                // Extra-Bold
-                fontWeight = 11;
-                break;
-
-              case 900:
-                // Black
-                fontWeight = 12;
-                break;
-
-              default:
-                fontWeight = 6;
-                break;
-            }
-
-            var fontFamily = themeTokens.components.typography['-body__font-family']
-              .split(',')[0]
-              .replaceAll('"', '')
-              .replaceAll("'", '')
-              .trim();
-            var name = '_test/base';
-            var defaultTextStyle = new sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Style({
-              fontFamily: fontFamily,
-              fontSize: fontSize,
-              fontWeight: fontWeight,
-              textColor: themeTokens.color.base,
-              lineHeight: lineHeight,
-            });
-            var existingStyle = doc.sharedTextStyles.find(function (style) {
-              return style.name === name;
-            });
-            console.log(existingStyle.id);
-
-            if (existingStyle) {
-              // const oldFontFamily = existingStyle.style.fontFamily; // just for debugging purposes
-              existingStyle.style = defaultTextStyle; // console.log(existingStyle);
-              // existingStyle.style.fontFamily = defaultTextStyle.fontFamily;
-              // existingStyle.style.fontSize = defaultTextStyle.fontSize;
-              // existingStyle.style.fontWeight = defaultTextStyle.fontWeight;
-              // existingStyle.style.textColor = defaultTextStyle.textColor;
-              // existingStyle.style.lineHeight = defaultTextStyle.lineHeight;
-              // let x = 0;
-
-              console.log('----'); // const updateId = existingStyle.style.id;
-
-              doc.pages.forEach(function (page) {
-                page.layers.forEach(function (layer) {
-                  (layer.layers || []).forEach(function (l) {
-                    if (l.sharedStyleId === existingStyle.id) {
-                      console.log('found one!!'); // l.style = existingStyle.style;
-                      // l.sharedStyleId = existingStyle.id;
-
-                      l.sharedStyle = existingStyle;
-                      l.style = existingStyle.style;
-                      console.log(l);
-                    }
-                  }); // if (layer.style && layer.style.fontFamily === oldFontFamily) {
-                  //   console.log(layer, layer.style);
-                  // }
-                  // if (layer.style && layer.style.id === existingStyle.id) {
-                  //   console.log('found it!!')
-                  // }
-                  // if (layer.style && layer.style.id === updateId) {
-                  //   console.log(layer.style.id)
-                  //   // console.log(layer)
-                  //   layer.style = existingStyle.style;
-                  // }
-                  // if (x > 10) return;
-                  // // Check if the layer has a fill or a border
-                  // if (layer.style) {
-                  //   console.log(layer.style);
-                  //   x++;
-                  // }
-                });
-              });
-            } else {
-              doc.sharedTextStyles.push({
-                name: name,
-                style: defaultTextStyle,
-              });
-            }
-          }
-
           /* harmony default export */ __webpack_exports__['default'] = function () {
             var themeNames = Object.values(_themes_json__WEBPACK_IMPORTED_MODULE_2__).map(function (
               theme
@@ -2073,12 +1961,249 @@ function __skpm_run(key, context) {
             var themeName = _themes_json__WEBPACK_IMPORTED_MODULE_2__[themeKey].displayName;
             var themeTokens = tokensByTheme[themeKey];
             var doc = sketch__WEBPACK_IMPORTED_MODULE_0___default.a.getSelectedDocument();
-            updateSwatchesFromTheme(doc, themeTokens);
-            updateTextStylesFromTheme(doc, themeTokens);
+            Object(_color__WEBPACK_IMPORTED_MODULE_11__['updateSwatchesFromTheme'])(
+              doc,
+              themeTokens
+            );
+            Object(_text__WEBPACK_IMPORTED_MODULE_12__['updateTextStylesFromTheme'])(
+              doc,
+              themeTokens
+            );
             sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.message(
               'Switched to '.concat(themeName)
             );
           };
+
+          /***/
+        },
+
+      /***/ './src/text.js':
+        /*!*********************!*\
+  !*** ./src/text.js ***!
+  \*********************/
+        /*! exports provided: updateTextStylesFromTheme */
+        /***/ function (module, __webpack_exports__, __webpack_require__) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony export (binding) */ __webpack_require__.d(
+            __webpack_exports__,
+            'updateTextStylesFromTheme',
+            function () {
+              return updateTextStylesFromTheme;
+            }
+          );
+          /* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+            /*! sketch */ 'sketch'
+          );
+          /* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(sketch__WEBPACK_IMPORTED_MODULE_0__);
+          function _createForOfIteratorHelper(o, allowArrayLike) {
+            var it = (typeof Symbol !== 'undefined' && o[Symbol.iterator]) || o['@@iterator'];
+            if (!it) {
+              if (
+                Array.isArray(o) ||
+                (it = _unsupportedIterableToArray(o)) ||
+                (allowArrayLike && o && typeof o.length === 'number')
+              ) {
+                if (it) o = it;
+                var i = 0;
+                var F = function F() {};
+                return {
+                  s: F,
+                  n: function n() {
+                    if (i >= o.length) return { done: true };
+                    return { done: false, value: o[i++] };
+                  },
+                  e: function e(_e) {
+                    throw _e;
+                  },
+                  f: F,
+                };
+              }
+              throw new TypeError(
+                'Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.'
+              );
+            }
+            var normalCompletion = true,
+              didErr = false,
+              err;
+            return {
+              s: function s() {
+                it = it.call(o);
+              },
+              n: function n() {
+                var step = it.next();
+                normalCompletion = step.done;
+                return step;
+              },
+              e: function e(_e2) {
+                didErr = true;
+                err = _e2;
+              },
+              f: function f() {
+                try {
+                  if (!normalCompletion && it.return != null) it.return();
+                } finally {
+                  if (didErr) throw err;
+                }
+              },
+            };
+          }
+
+          function _unsupportedIterableToArray(o, minLen) {
+            if (!o) return;
+            if (typeof o === 'string') return _arrayLikeToArray(o, minLen);
+            var n = Object.prototype.toString.call(o).slice(8, -1);
+            if (n === 'Object' && o.constructor) n = o.constructor.name;
+            if (n === 'Map' || n === 'Set') return Array.from(o);
+            if (n === 'Arguments' || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))
+              return _arrayLikeToArray(o, minLen);
+          }
+
+          function _arrayLikeToArray(arr, len) {
+            if (len == null || len > arr.length) len = arr.length;
+            for (var i = 0, arr2 = new Array(len); i < len; i++) {
+              arr2[i] = arr[i];
+            }
+            return arr2;
+          }
+
+          function parseFontSize(tokenValue) {
+            if (typeof tokenValue === 'string') {
+              if (tokenValue.includes('rem')) {
+                return parseFloat(tokenValue) * 16;
+              } else {
+                return parseInt(tokenValue, 10);
+              }
+            }
+
+            return tokenValue;
+          }
+
+          function parseLineHeight(tokenValue, fontSizePixels) {
+            if (typeof tokenValue === 'number') {
+              return tokenValue * fontSizePixels;
+            } else {
+              return parseInt(tokenValue, 10);
+            }
+          }
+
+          function parseFontWeight(tokenValue) {
+            switch (tokenValue) {
+              case 100:
+                // Thin
+                return 0;
+
+              case 200:
+                // Extra-Light
+                return 1;
+
+              case 300:
+                // Light
+                return 3;
+
+              case 400:
+                // Normal/Regular
+                return 6;
+
+              case 500:
+                // Medium
+                return 7;
+
+              case 600:
+                // Semi-Bold
+                return 9;
+
+              case 700:
+                // Bold
+                return 10;
+
+              case 800:
+                // Extra-Bold
+                return 11;
+
+              case 900:
+                // Black
+                return 12;
+
+              default:
+                return 6;
+            }
+          }
+
+          function parseFontFamily(tokenValue) {
+            // Only return the first one, and remove all quotes
+            return tokenValue.split(',')[0].replaceAll('"', '').replaceAll("'", '').trim();
+          }
+
+          function updateLayerTextStyleReferences(layer, sharedTextStyle) {
+            if (layer.sharedStyleId === sharedTextStyle.id) {
+              layer.sharedStyle = sharedTextStyle;
+              layer.style = sharedTextStyle.style;
+            }
+
+            if (layer.layers) {
+              var _iterator = _createForOfIteratorHelper(layer.layers),
+                _step;
+
+              try {
+                for (_iterator.s(); !(_step = _iterator.n()).done; ) {
+                  var childLayer = _step.value;
+                  updateLayerTextStyleReferences(childLayer, sharedTextStyle);
+                }
+              } catch (err) {
+                _iterator.e(err);
+              } finally {
+                _iterator.f();
+              }
+            }
+          }
+
+          function updateTextStyleReferences(doc, sharedTextStyle) {
+            var _iterator2 = _createForOfIteratorHelper(doc.pages),
+              _step2;
+
+            try {
+              for (_iterator2.s(); !(_step2 = _iterator2.n()).done; ) {
+                var page = _step2.value;
+                updateLayerTextStyleReferences(page, sharedTextStyle);
+              }
+            } catch (err) {
+              _iterator2.e(err);
+            } finally {
+              _iterator2.f();
+            }
+          }
+
+          function updateTextStylesFromTheme(doc, themeTokens) {
+            var fontSize = parseFontSize(themeTokens.font['size-base']);
+            var lineHeight = parseLineHeight(themeTokens.font['line-height-base'], fontSize);
+            var fontWeight = parseFontWeight(themeTokens.font['weight-normal']);
+            var fontFamily = parseFontFamily(
+              themeTokens.components.typography['-body__font-family']
+            );
+            var name = '_test/base';
+            var defaultTextStyle = new sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Style({
+              fontFamily: fontFamily,
+              fontSize: fontSize,
+              fontWeight: fontWeight,
+              textColor: themeTokens.color.base,
+              lineHeight: lineHeight,
+            });
+            var existingStyle = doc.sharedTextStyles.find(function (style) {
+              return style.name === name;
+            });
+
+            if (existingStyle) {
+              existingStyle.style = defaultTextStyle;
+              updateTextStyleReferences(doc, existingStyle);
+            } else {
+              doc.sharedTextStyles.push({
+                name: name,
+                style: defaultTextStyle,
+              });
+            }
+          }
 
           /***/
         },
