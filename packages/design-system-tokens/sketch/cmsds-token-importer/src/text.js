@@ -147,7 +147,45 @@ function updateComponentTextStyles(doc, componentName, componentTokens, defaultT
   }
 
   const namePrefix = `_test/${componentName}/`;
-  console.log(rawTextStyles);
+  for (const textStyleName in rawTextStyles) {
+    const rawValues = rawTextStyles[textStyleName];
+
+    const fontFamily = rawValues.fontFamily
+      ? parseFontFamily(rawValues.fontFamily)
+      : defaultTextStyle.fontFamily;
+    const fontSize = rawValues.fontSize
+      ? parseFontSize(rawValues.fontSize)
+      : defaultTextStyle.fontSize;
+    const fontWeight = rawValues.fontWeight
+      ? parseFontWeight(rawValues.fontWeight)
+      : defaultTextStyle.fontWeight;
+    const textColor = rawValues.textColor
+      ? parseFontFamily(rawValues.textColor)
+      : defaultTextStyle.textColor;
+    const lineHeight = rawValues.lineHeight
+      ? parseLineHeight(rawValues.lineHeight, fontSize)
+      : defaultTextStyle.lineHeight;
+
+    const style = new sketch.Style({
+      fontFamily,
+      fontSize,
+      fontWeight,
+      textColor,
+      lineHeight,
+    });
+    // console.log({
+    //   name: `${namePrefix}${textStyleName}`,
+    //   style: {
+    //     fontFamily,
+    //     fontSize,
+    //     fontWeight,
+    //     textColor,
+    //     lineHeight,
+    //   }
+    // })
+
+    updateSharedTextStyle(doc, `${namePrefix}${textStyleName}`, style);
+  }
 }
 
 export function updateTextStylesFromTheme(doc, themeTokens) {

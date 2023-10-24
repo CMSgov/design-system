@@ -2309,7 +2309,43 @@ function __skpm_run(key, context) {
             }
 
             var namePrefix = '_test/'.concat(componentName, '/');
-            console.log(rawTextStyles);
+
+            for (var _textStyleName in rawTextStyles) {
+              var rawValues = rawTextStyles[_textStyleName];
+              var fontFamily = rawValues.fontFamily
+                ? parseFontFamily(rawValues.fontFamily)
+                : defaultTextStyle.fontFamily;
+              var fontSize = rawValues.fontSize
+                ? parseFontSize(rawValues.fontSize)
+                : defaultTextStyle.fontSize;
+              var fontWeight = rawValues.fontWeight
+                ? parseFontWeight(rawValues.fontWeight)
+                : defaultTextStyle.fontWeight;
+              var textColor = rawValues.textColor
+                ? parseFontFamily(rawValues.textColor)
+                : defaultTextStyle.textColor;
+              var lineHeight = rawValues.lineHeight
+                ? parseLineHeight(rawValues.lineHeight, fontSize)
+                : defaultTextStyle.lineHeight;
+              var style = new sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Style({
+                fontFamily: fontFamily,
+                fontSize: fontSize,
+                fontWeight: fontWeight,
+                textColor: textColor,
+                lineHeight: lineHeight,
+              }); // console.log({
+              //   name: `${namePrefix}${textStyleName}`,
+              //   style: {
+              //     fontFamily,
+              //     fontSize,
+              //     fontWeight,
+              //     textColor,
+              //     lineHeight,
+              //   }
+              // })
+
+              updateSharedTextStyle(doc, ''.concat(namePrefix).concat(_textStyleName), style);
+            }
           }
 
           function updateTextStylesFromTheme(doc, themeTokens) {
