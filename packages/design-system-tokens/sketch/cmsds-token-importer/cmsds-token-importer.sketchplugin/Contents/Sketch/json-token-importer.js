@@ -1997,6 +1997,53 @@ function __skpm_run(key, context) {
           );
           /* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0___default =
             /*#__PURE__*/ __webpack_require__.n(sketch__WEBPACK_IMPORTED_MODULE_0__);
+          function _slicedToArray(arr, i) {
+            return (
+              _arrayWithHoles(arr) ||
+              _iterableToArrayLimit(arr, i) ||
+              _unsupportedIterableToArray(arr, i) ||
+              _nonIterableRest()
+            );
+          }
+
+          function _nonIterableRest() {
+            throw new TypeError(
+              'Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.'
+            );
+          }
+
+          function _iterableToArrayLimit(arr, i) {
+            var _i =
+              arr == null
+                ? null
+                : (typeof Symbol !== 'undefined' && arr[Symbol.iterator]) || arr['@@iterator'];
+            if (_i == null) return;
+            var _arr = [];
+            var _n = true;
+            var _d = false;
+            var _s, _e;
+            try {
+              for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
+                _arr.push(_s.value);
+                if (i && _arr.length === i) break;
+              }
+            } catch (err) {
+              _d = true;
+              _e = err;
+            } finally {
+              try {
+                if (!_n && _i['return'] != null) _i['return']();
+              } finally {
+                if (_d) throw _e;
+              }
+            }
+            return _arr;
+          }
+
+          function _arrayWithHoles(arr) {
+            if (Array.isArray(arr)) return arr;
+          }
+
           function _createForOfIteratorHelper(o, allowArrayLike) {
             var it = (typeof Symbol !== 'undefined' && o[Symbol.iterator]) || o['@@iterator'];
             if (!it) {
@@ -2014,8 +2061,8 @@ function __skpm_run(key, context) {
                     if (i >= o.length) return { done: true };
                     return { done: false, value: o[i++] };
                   },
-                  e: function e(_e) {
-                    throw _e;
+                  e: function e(_e2) {
+                    throw _e2;
                   },
                   f: F,
                 };
@@ -2036,9 +2083,9 @@ function __skpm_run(key, context) {
                 normalCompletion = step.done;
                 return step;
               },
-              e: function e(_e2) {
+              e: function e(_e3) {
                 didErr = true;
-                err = _e2;
+                err = _e3;
               },
               f: function f() {
                 try {
@@ -2135,6 +2182,10 @@ function __skpm_run(key, context) {
             // Only return the first one, and remove all quotes
             return tokenValue.split(',')[0].replaceAll('"', '').replaceAll("'", '').trim();
           }
+          /**
+           * Recursive function that looks through a layer and its children to find
+           * references to a particular shared text style and updates that layer's style
+           */
 
           function updateLayerTextStyleReferences(layer, sharedTextStyle) {
             if (layer.sharedStyleId === sharedTextStyle.id) {
@@ -2158,50 +2209,125 @@ function __skpm_run(key, context) {
               }
             }
           }
+          /**
+           * Updates a shared text style by name. Shared text styles are named styles
+           * that exist in a special place in the Sketch UI, similar to color swatches.
+           * Shared text styles wrap a `style` object, so they can't be used directly
+           * in the document. We have to go find the places where the layers reference
+           * the shared text style by id and then update their `style` property.
+           */
 
-          function updateTextStyleReferences(doc, sharedTextStyle) {
-            var _iterator2 = _createForOfIteratorHelper(doc.pages),
-              _step2;
+          function updateSharedTextStyle(doc, name, newStyle) {
+            // Find and update the existing style or add a new one
+            var existingSharedStyle = doc.sharedTextStyles.find(function (style) {
+              return style.name === name;
+            });
 
-            try {
-              for (_iterator2.s(); !(_step2 = _iterator2.n()).done; ) {
-                var page = _step2.value;
-                updateLayerTextStyleReferences(page, sharedTextStyle);
+            if (existingSharedStyle) {
+              // Update the existing style with our new style info
+              existingSharedStyle.style = newStyle; // And update references to it in the doc
+
+              var _iterator2 = _createForOfIteratorHelper(doc.pages),
+                _step2;
+
+              try {
+                for (_iterator2.s(); !(_step2 = _iterator2.n()).done; ) {
+                  var page = _step2.value;
+                  updateLayerTextStyleReferences(page, existingSharedStyle);
+                }
+              } catch (err) {
+                _iterator2.e(err);
+              } finally {
+                _iterator2.f();
               }
-            } catch (err) {
-              _iterator2.e(err);
-            } finally {
-              _iterator2.f();
+            } else {
+              doc.sharedTextStyles.push({
+                name: name,
+                style: newStyle,
+              });
             }
           }
+          /**
+           * Creates the equivalent of the CSS reset styles for text to be used in all
+           * the places where more specific text styles do not exist. Can be used in
+           * whole or in part.
+           */
 
-          function updateTextStylesFromTheme(doc, themeTokens) {
+          function createBaseStyle(themeTokens) {
             var fontSize = parseFontSize(themeTokens.font['size-base']);
             var lineHeight = parseLineHeight(themeTokens.font['line-height-base'], fontSize);
             var fontWeight = parseFontWeight(themeTokens.font['weight-normal']);
             var fontFamily = parseFontFamily(
               themeTokens.components.typography['-body__font-family']
             );
-            var name = '_test/base';
-            var defaultTextStyle = new sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Style({
+            return new sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Style({
               fontFamily: fontFamily,
               fontSize: fontSize,
               fontWeight: fontWeight,
               textColor: themeTokens.color.base,
               lineHeight: lineHeight,
             });
-            var existingStyle = doc.sharedTextStyles.find(function (style) {
-              return style.name === name;
-            });
+          }
 
-            if (existingStyle) {
-              existingStyle.style = defaultTextStyle;
-              updateTextStyleReferences(doc, existingStyle);
-            } else {
-              doc.sharedTextStyles.push({
-                name: name,
-                style: defaultTextStyle,
-              });
+          var tokenNamePatterns = {
+            textColor: /^(.*)__color(.*)$/,
+            fontSize: /^(.*)__font-size(.*)$/,
+            fontWeight: /^(.*)__font-weight(.*)$/,
+            fontFamily: /^(.*)__font-family(.*)$/,
+            lineHeight: /^(.*)__line-height(.*)$/,
+          };
+          /**
+           * Expects the token keys to be the full names of the tokens
+           */
+
+          function updateComponentTextStyles(
+            doc,
+            componentName,
+            componentTokens,
+            defaultTextStyle
+          ) {
+            var rawTextStyles = {};
+
+            for (var tokenName in componentTokens) {
+              var fullTokenName = ''.concat(componentName).concat(tokenName);
+
+              for (var propertyName in tokenNamePatterns) {
+                var matchResults = fullTokenName.match(tokenNamePatterns[propertyName]);
+
+                if (matchResults) {
+                  // Combine the categories before with the qualifiers after. For example, the text
+                  // "vertical-nav-label__color--current" --> "vertical-nav-label--current"
+                  var textStyleName = matchResults.slice(1).join('');
+
+                  if (!rawTextStyles[textStyleName]) {
+                    rawTextStyles[textStyleName] = {};
+                  }
+
+                  rawTextStyles[textStyleName][propertyName] = componentTokens[tokenName];
+                }
+              }
+            }
+
+            var namePrefix = '_test/'.concat(componentName, '/');
+            console.log(rawTextStyles);
+          }
+
+          function updateTextStylesFromTheme(doc, themeTokens) {
+            // Default text style is used to fill in missing values in other text styles
+            // that come from the tokens
+            var defaultTextStyle = createBaseStyle(themeTokens);
+            updateSharedTextStyle(doc, '_test/base', defaultTextStyle);
+
+            for (
+              var _i = 0, _Object$entries = Object.entries(themeTokens.components);
+              _i < _Object$entries.length;
+              _i++
+            ) {
+              var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
+                componentName = _Object$entries$_i[0],
+                componentTokens = _Object$entries$_i[1];
+
+              updateComponentTextStyles(doc, componentName, componentTokens, defaultTextStyle);
             }
           }
 
