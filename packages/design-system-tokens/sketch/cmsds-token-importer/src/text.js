@@ -1,4 +1,5 @@
 import sketch from 'sketch';
+import { updateSharedStyleReferences } from './updateSharedStyleReferences';
 
 function parseFontSize(tokenValue) {
   if (typeof tokenValue === 'string') {
@@ -48,49 +49,6 @@ function parseFontWeight(tokenValue) {
 function parseFontFamily(tokenValue) {
   // Only return the first one, and remove all quotes
   return tokenValue.split(',')[0].replaceAll('"', '').replaceAll("'", '').trim();
-}
-
-/**
- * Recursive function that looks through a layer and its children to find
- * references to a particular shared text style and updates that layer's style
- */
-function updateLayerTextStyleReferences(layer, sharedTextStyle) {
-  if (layer.sharedStyleId === sharedTextStyle.id) {
-    layer.sharedStyle = sharedTextStyle;
-    layer.style = sharedTextStyle.style;
-  }
-
-  if (layer.layers) {
-    for (const childLayer of layer.layers) {
-      updateLayerTextStyleReferences(childLayer, sharedTextStyle);
-    }
-  }
-}
-
-/**
- * Updates a shared text style by name. Shared text styles are named styles
- * that exist in a special place in the Sketch UI, similar to color swatches.
- * Shared text styles wrap a `style` object, so they can't be used directly
- * in the document. We have to go find the places where the layers reference
- * the shared text style by id and then update their `style` property.
- */
-function updateSharedTextStyle(doc, name, newStyle) {
-  // Find and update the existing style or add a new one
-  const existingSharedStyle = doc.sharedTextStyles.find((style) => style.name === name);
-  if (existingSharedStyle) {
-    // Update the existing style with our new style info
-    existingSharedStyle.style = newStyle;
-
-    // And update references to it in the doc
-    for (const page of doc.pages) {
-      updateLayerTextStyleReferences(page, existingSharedStyle);
-    }
-  } else {
-    doc.sharedTextStyles.push({
-      name,
-      style: newStyle,
-    });
-  }
 }
 
 /**
@@ -173,18 +131,8 @@ function updateComponentTextStyles(doc, componentName, componentTokens, defaultT
       textColor,
       lineHeight,
     });
-    // console.log({
-    //   name: `${namePrefix}${textStyleName}`,
-    //   style: {
-    //     fontFamily,
-    //     fontSize,
-    //     fontWeight,
-    //     textColor,
-    //     lineHeight,
-    //   }
-    // })
 
-    updateSharedTextStyle(doc, `${namePrefix}${textStyleName}`, style);
+    updateSharedStyleReferences(doc, `${namePrefix}${textStyleName}`, style);
   }
 }
 
@@ -193,7 +141,7 @@ export function updateTextStylesFromTheme(doc, themeTokens) {
   // that come from the tokens
   const defaultTextStyle = createBaseStyle(themeTokens);
 
-  updateSharedTextStyle(doc, '_test/base', defaultTextStyle);
+  updateSharedStyleReferences(doc, '_test/base', defaultTextStyle);
 
   for (const [componentName, componentTokens] of Object.entries(themeTokens.components)) {
     updateComponentTextStyles(doc, componentName, componentTokens, defaultTextStyle);

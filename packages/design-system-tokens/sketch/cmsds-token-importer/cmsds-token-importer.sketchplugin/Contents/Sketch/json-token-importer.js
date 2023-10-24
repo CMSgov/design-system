@@ -1997,6 +1997,10 @@ function __skpm_run(key, context) {
           );
           /* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0___default =
             /*#__PURE__*/ __webpack_require__.n(sketch__WEBPACK_IMPORTED_MODULE_0__);
+          /* harmony import */ var _updateSharedStyleReferences__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(
+              /*! ./updateSharedStyleReferences */ './src/updateSharedStyleReferences.js'
+            );
           function _slicedToArray(arr, i) {
             return (
               _arrayWithHoles(arr) ||
@@ -2010,6 +2014,24 @@ function __skpm_run(key, context) {
             throw new TypeError(
               'Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.'
             );
+          }
+
+          function _unsupportedIterableToArray(o, minLen) {
+            if (!o) return;
+            if (typeof o === 'string') return _arrayLikeToArray(o, minLen);
+            var n = Object.prototype.toString.call(o).slice(8, -1);
+            if (n === 'Object' && o.constructor) n = o.constructor.name;
+            if (n === 'Map' || n === 'Set') return Array.from(o);
+            if (n === 'Arguments' || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))
+              return _arrayLikeToArray(o, minLen);
+          }
+
+          function _arrayLikeToArray(arr, len) {
+            if (len == null || len > arr.length) len = arr.length;
+            for (var i = 0, arr2 = new Array(len); i < len; i++) {
+              arr2[i] = arr[i];
+            }
+            return arr2;
           }
 
           function _iterableToArrayLimit(arr, i) {
@@ -2042,77 +2064,6 @@ function __skpm_run(key, context) {
 
           function _arrayWithHoles(arr) {
             if (Array.isArray(arr)) return arr;
-          }
-
-          function _createForOfIteratorHelper(o, allowArrayLike) {
-            var it = (typeof Symbol !== 'undefined' && o[Symbol.iterator]) || o['@@iterator'];
-            if (!it) {
-              if (
-                Array.isArray(o) ||
-                (it = _unsupportedIterableToArray(o)) ||
-                (allowArrayLike && o && typeof o.length === 'number')
-              ) {
-                if (it) o = it;
-                var i = 0;
-                var F = function F() {};
-                return {
-                  s: F,
-                  n: function n() {
-                    if (i >= o.length) return { done: true };
-                    return { done: false, value: o[i++] };
-                  },
-                  e: function e(_e2) {
-                    throw _e2;
-                  },
-                  f: F,
-                };
-              }
-              throw new TypeError(
-                'Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.'
-              );
-            }
-            var normalCompletion = true,
-              didErr = false,
-              err;
-            return {
-              s: function s() {
-                it = it.call(o);
-              },
-              n: function n() {
-                var step = it.next();
-                normalCompletion = step.done;
-                return step;
-              },
-              e: function e(_e3) {
-                didErr = true;
-                err = _e3;
-              },
-              f: function f() {
-                try {
-                  if (!normalCompletion && it.return != null) it.return();
-                } finally {
-                  if (didErr) throw err;
-                }
-              },
-            };
-          }
-
-          function _unsupportedIterableToArray(o, minLen) {
-            if (!o) return;
-            if (typeof o === 'string') return _arrayLikeToArray(o, minLen);
-            var n = Object.prototype.toString.call(o).slice(8, -1);
-            if (n === 'Object' && o.constructor) n = o.constructor.name;
-            if (n === 'Map' || n === 'Set') return Array.from(o);
-            if (n === 'Arguments' || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))
-              return _arrayLikeToArray(o, minLen);
-          }
-
-          function _arrayLikeToArray(arr, len) {
-            if (len == null || len > arr.length) len = arr.length;
-            for (var i = 0, arr2 = new Array(len); i < len; i++) {
-              arr2[i] = arr[i];
-            }
-            return arr2;
           }
 
           function parseFontSize(tokenValue) {
@@ -2181,71 +2132,6 @@ function __skpm_run(key, context) {
           function parseFontFamily(tokenValue) {
             // Only return the first one, and remove all quotes
             return tokenValue.split(',')[0].replaceAll('"', '').replaceAll("'", '').trim();
-          }
-          /**
-           * Recursive function that looks through a layer and its children to find
-           * references to a particular shared text style and updates that layer's style
-           */
-
-          function updateLayerTextStyleReferences(layer, sharedTextStyle) {
-            if (layer.sharedStyleId === sharedTextStyle.id) {
-              layer.sharedStyle = sharedTextStyle;
-              layer.style = sharedTextStyle.style;
-            }
-
-            if (layer.layers) {
-              var _iterator = _createForOfIteratorHelper(layer.layers),
-                _step;
-
-              try {
-                for (_iterator.s(); !(_step = _iterator.n()).done; ) {
-                  var childLayer = _step.value;
-                  updateLayerTextStyleReferences(childLayer, sharedTextStyle);
-                }
-              } catch (err) {
-                _iterator.e(err);
-              } finally {
-                _iterator.f();
-              }
-            }
-          }
-          /**
-           * Updates a shared text style by name. Shared text styles are named styles
-           * that exist in a special place in the Sketch UI, similar to color swatches.
-           * Shared text styles wrap a `style` object, so they can't be used directly
-           * in the document. We have to go find the places where the layers reference
-           * the shared text style by id and then update their `style` property.
-           */
-
-          function updateSharedTextStyle(doc, name, newStyle) {
-            // Find and update the existing style or add a new one
-            var existingSharedStyle = doc.sharedTextStyles.find(function (style) {
-              return style.name === name;
-            });
-
-            if (existingSharedStyle) {
-              // Update the existing style with our new style info
-              existingSharedStyle.style = newStyle; // And update references to it in the doc
-
-              var _iterator2 = _createForOfIteratorHelper(doc.pages),
-                _step2;
-
-              try {
-                for (_iterator2.s(); !(_step2 = _iterator2.n()).done; ) {
-                  var page = _step2.value;
-                  updateLayerTextStyleReferences(page, existingSharedStyle);
-                }
-              } catch (err) {
-                _iterator2.e(err);
-              } finally {
-                _iterator2.f();
-              }
-            } else {
-              doc.sharedTextStyles.push({
-                name: name,
-                style: newStyle,
-              });
-            }
           }
           /**
            * Creates the equivalent of the CSS reset styles for text to be used in all
@@ -2333,18 +2219,12 @@ function __skpm_run(key, context) {
                 fontWeight: fontWeight,
                 textColor: textColor,
                 lineHeight: lineHeight,
-              }); // console.log({
-              //   name: `${namePrefix}${textStyleName}`,
-              //   style: {
-              //     fontFamily,
-              //     fontSize,
-              //     fontWeight,
-              //     textColor,
-              //     lineHeight,
-              //   }
-              // })
-
-              updateSharedTextStyle(doc, ''.concat(namePrefix).concat(_textStyleName), style);
+              });
+              Object(
+                _updateSharedStyleReferences__WEBPACK_IMPORTED_MODULE_1__[
+                  'updateSharedStyleReferences'
+                ]
+              )(doc, ''.concat(namePrefix).concat(_textStyleName), style);
             }
           }
 
@@ -2352,7 +2232,11 @@ function __skpm_run(key, context) {
             // Default text style is used to fill in missing values in other text styles
             // that come from the tokens
             var defaultTextStyle = createBaseStyle(themeTokens);
-            updateSharedTextStyle(doc, '_test/base', defaultTextStyle);
+            Object(
+              _updateSharedStyleReferences__WEBPACK_IMPORTED_MODULE_1__[
+                'updateSharedStyleReferences'
+              ]
+            )(doc, '_test/base', defaultTextStyle);
 
             for (
               var _i = 0, _Object$entries = Object.entries(themeTokens.components);
@@ -2364,6 +2248,205 @@ function __skpm_run(key, context) {
                 componentTokens = _Object$entries$_i[1];
 
               updateComponentTextStyles(doc, componentName, componentTokens, defaultTextStyle);
+            }
+          }
+
+          /***/
+        },
+
+      /***/ './src/updateSharedStyleReferences.js':
+        /*!********************************************!*\
+  !*** ./src/updateSharedStyleReferences.js ***!
+  \********************************************/
+        /*! exports provided: updateSharedStyleReferences */
+        /***/ function (module, __webpack_exports__, __webpack_require__) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony export (binding) */ __webpack_require__.d(
+            __webpack_exports__,
+            'updateSharedStyleReferences',
+            function () {
+              return updateSharedStyleReferences;
+            }
+          );
+          function _createForOfIteratorHelper(o, allowArrayLike) {
+            var it = (typeof Symbol !== 'undefined' && o[Symbol.iterator]) || o['@@iterator'];
+            if (!it) {
+              if (
+                Array.isArray(o) ||
+                (it = _unsupportedIterableToArray(o)) ||
+                (allowArrayLike && o && typeof o.length === 'number')
+              ) {
+                if (it) o = it;
+                var i = 0;
+                var F = function F() {};
+                return {
+                  s: F,
+                  n: function n() {
+                    if (i >= o.length) return { done: true };
+                    return { done: false, value: o[i++] };
+                  },
+                  e: function e(_e) {
+                    throw _e;
+                  },
+                  f: F,
+                };
+              }
+              throw new TypeError(
+                'Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.'
+              );
+            }
+            var normalCompletion = true,
+              didErr = false,
+              err;
+            return {
+              s: function s() {
+                it = it.call(o);
+              },
+              n: function n() {
+                var step = it.next();
+                normalCompletion = step.done;
+                return step;
+              },
+              e: function e(_e2) {
+                didErr = true;
+                err = _e2;
+              },
+              f: function f() {
+                try {
+                  if (!normalCompletion && it.return != null) it.return();
+                } finally {
+                  if (didErr) throw err;
+                }
+              },
+            };
+          }
+
+          function _unsupportedIterableToArray(o, minLen) {
+            if (!o) return;
+            if (typeof o === 'string') return _arrayLikeToArray(o, minLen);
+            var n = Object.prototype.toString.call(o).slice(8, -1);
+            if (n === 'Object' && o.constructor) n = o.constructor.name;
+            if (n === 'Map' || n === 'Set') return Array.from(o);
+            if (n === 'Arguments' || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))
+              return _arrayLikeToArray(o, minLen);
+          }
+
+          function _arrayLikeToArray(arr, len) {
+            if (len == null || len > arr.length) len = arr.length;
+            for (var i = 0, arr2 = new Array(len); i < len; i++) {
+              arr2[i] = arr[i];
+            }
+            return arr2;
+          }
+
+          var sharedStylesRefsById;
+          var sharedStylesByName;
+          /**
+           * Recursive function that looks through a layer and its children to find
+           * references to shared styles and add them to the map
+           */
+
+          function findSharedStyleReferences(layer, refsById) {
+            var layers = layer.layers,
+              sharedStyleId = layer.sharedStyleId;
+
+            if (sharedStyleId) {
+              if (!refsById[sharedStyleId]) {
+                refsById[sharedStyleId] = [];
+              }
+
+              refsById[sharedStyleId].push(layer);
+            }
+
+            if (layers) {
+              var _iterator = _createForOfIteratorHelper(layers),
+                _step;
+
+              try {
+                for (_iterator.s(); !(_step = _iterator.n()).done; ) {
+                  var childLayer = _step.value;
+                  findSharedStyleReferences(childLayer, refsById);
+                }
+              } catch (err) {
+                _iterator.e(err);
+              } finally {
+                _iterator.f();
+              }
+            }
+          }
+
+          function getSharedStyleReferencesById(doc) {
+            if (!sharedStylesRefsById) {
+              sharedStylesRefsById = {};
+
+              var _iterator2 = _createForOfIteratorHelper(doc.pages),
+                _step2;
+
+              try {
+                for (_iterator2.s(); !(_step2 = _iterator2.n()).done; ) {
+                  var page = _step2.value;
+                  findSharedStyleReferences(page, sharedStylesRefsById);
+                }
+              } catch (err) {
+                _iterator2.e(err);
+              } finally {
+                _iterator2.f();
+              }
+            }
+
+            return sharedStylesRefsById;
+          }
+
+          function getSharedStylesByName(doc) {
+            if (!sharedStylesByName) {
+              sharedStylesByName = doc.sharedTextStyles.reduce(function (obj, style) {
+                obj[style.name] = style;
+                return obj;
+              }, {});
+            }
+
+            return sharedStylesByName;
+          }
+          /**
+           * Updates a shared style by name. Shared styles are named styles that exist in
+           * a special place in the Sketch UI, similar to color swatches. Shared styles
+           * wrap a `style` object, so they can't be used directly in the document. We
+           * have to go find the places where the layers reference the shared style by id
+           * and then update their `style` property.
+           */
+
+          function updateSharedStyleReferences(doc, name, newStyle) {
+            var refsById = getSharedStyleReferencesById(doc);
+            var sharedStylesByName = getSharedStylesByName(doc);
+            var existingSharedStyle = sharedStylesByName[name];
+
+            if (existingSharedStyle) {
+              // Update the existing style with our new style info
+              existingSharedStyle.style = newStyle;
+              var refs = refsById[existingSharedStyle.id];
+
+              if (refs) {
+                var _iterator3 = _createForOfIteratorHelper(refs),
+                  _step3;
+
+                try {
+                  for (_iterator3.s(); !(_step3 = _iterator3.n()).done; ) {
+                    var layer = _step3.value;
+                    layer.sharedStyle = existingSharedStyle;
+                    layer.style = existingSharedStyle.style;
+                  }
+                } catch (err) {
+                  _iterator3.e(err);
+                } finally {
+                  _iterator3.f();
+                }
+              }
+            } else {
+              doc.sharedTextStyles.push({
+                name: name,
+                style: newStyle,
+              });
             }
           }
 
