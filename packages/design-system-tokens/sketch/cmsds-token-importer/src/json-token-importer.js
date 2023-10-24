@@ -136,24 +136,38 @@ function updateTextStylesFromTheme(doc, themeTokens) {
   });
 
   const existingStyle = doc.sharedTextStyles.find((style) => style.name === name);
+  console.log(existingStyle.id);
   if (existingStyle) {
-    const oldFontFamily = existingStyle.style.fontFamily; // just for debugging purposes
+    // const oldFontFamily = existingStyle.style.fontFamily; // just for debugging purposes
     existingStyle.style = defaultTextStyle;
-    console.log(existingStyle);
+    // console.log(existingStyle);
     // existingStyle.style.fontFamily = defaultTextStyle.fontFamily;
     // existingStyle.style.fontSize = defaultTextStyle.fontSize;
     // existingStyle.style.fontWeight = defaultTextStyle.fontWeight;
     // existingStyle.style.textColor = defaultTextStyle.textColor;
     // existingStyle.style.lineHeight = defaultTextStyle.lineHeight;
 
-    let x = 0;
+    // let x = 0;
     console.log('----');
-    const updateId = existingStyle.style.id;
+    // const updateId = existingStyle.style.id;
     doc.pages.forEach((page) => {
       page.layers.forEach((layer) => {
-        if (layer.style && layer.style.fontFamily === oldFontFamily) {
-          console.log(layer, layer.style);
-        }
+        (layer.layers || []).forEach((l) => {
+          if (l.sharedStyleId === existingStyle.id) {
+            console.log('found one!!');
+            // l.style = existingStyle.style;
+            // l.sharedStyleId = existingStyle.id;
+            l.sharedStyle = existingStyle;
+            l.style = existingStyle.style;
+            console.log(l);
+          }
+        });
+        // if (layer.style && layer.style.fontFamily === oldFontFamily) {
+        //   console.log(layer, layer.style);
+        // }
+        // if (layer.style && layer.style.id === existingStyle.id) {
+        //   console.log('found it!!')
+        // }
         // if (layer.style && layer.style.id === updateId) {
         //   console.log(layer.style.id)
         //   // console.log(layer)
@@ -161,10 +175,10 @@ function updateTextStylesFromTheme(doc, themeTokens) {
         // }
         // if (x > 10) return;
         // // Check if the layer has a fill or a border
-        if (layer.style) {
-          console.log(layer.style);
-          x++;
-        }
+        // if (layer.style) {
+        //   console.log(layer.style);
+        //   x++;
+        // }
       });
     });
   } else {

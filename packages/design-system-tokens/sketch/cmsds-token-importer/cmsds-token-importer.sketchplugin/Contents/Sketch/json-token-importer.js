@@ -2004,34 +2004,48 @@ function __skpm_run(key, context) {
             var existingStyle = doc.sharedTextStyles.find(function (style) {
               return style.name === name;
             });
+            console.log(existingStyle.id);
 
             if (existingStyle) {
-              // existingStyle.style = defaultTextStyle;
-              console.log(existingStyle); // existingStyle.style.fontFamily = defaultTextStyle.fontFamily;
+              // const oldFontFamily = existingStyle.style.fontFamily; // just for debugging purposes
+              existingStyle.style = defaultTextStyle; // console.log(existingStyle);
+              // existingStyle.style.fontFamily = defaultTextStyle.fontFamily;
               // existingStyle.style.fontSize = defaultTextStyle.fontSize;
               // existingStyle.style.fontWeight = defaultTextStyle.fontWeight;
               // existingStyle.style.textColor = defaultTextStyle.textColor;
               // existingStyle.style.lineHeight = defaultTextStyle.lineHeight;
+              // let x = 0;
 
-              var x = 0;
-              console.log('----');
-              var updateId = existingStyle.style.id;
+              console.log('----'); // const updateId = existingStyle.style.id;
+
               doc.pages.forEach(function (page) {
                 page.layers.forEach(function (layer) {
-                  if (layer.style && layer.style.fontFamily === existingStyle.style.fontFamily) {
-                    console.log(layer, layer.style);
-                  } // if (layer.style && layer.style.id === updateId) {
+                  (layer.layers || []).forEach(function (l) {
+                    if (l.sharedStyleId === existingStyle.id) {
+                      console.log('found one!!'); // l.style = existingStyle.style;
+                      // l.sharedStyleId = existingStyle.id;
+
+                      l.sharedStyle = existingStyle;
+                      l.style = existingStyle.style;
+                      console.log(l);
+                    }
+                  }); // if (layer.style && layer.style.fontFamily === oldFontFamily) {
+                  //   console.log(layer, layer.style);
+                  // }
+                  // if (layer.style && layer.style.id === existingStyle.id) {
+                  //   console.log('found it!!')
+                  // }
+                  // if (layer.style && layer.style.id === updateId) {
                   //   console.log(layer.style.id)
                   //   // console.log(layer)
                   //   layer.style = existingStyle.style;
                   // }
                   // if (x > 10) return;
                   // // Check if the layer has a fill or a border
-
-                  if (layer.style) {
-                    console.log(layer.style);
-                    x++;
-                  }
+                  // if (layer.style) {
+                  //   console.log(layer.style);
+                  //   x++;
+                  // }
                 });
               });
             } else {
