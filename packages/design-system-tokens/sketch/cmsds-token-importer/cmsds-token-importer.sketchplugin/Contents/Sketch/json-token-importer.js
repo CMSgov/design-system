@@ -2194,8 +2194,6 @@ function __skpm_run(key, context) {
               }
             }
 
-            var namePrefix = '_test/'.concat(componentName, '/');
-
             for (var _textStyleName in rawTextStyles) {
               var rawValues = rawTextStyles[_textStyleName];
               var fontFamily = rawValues.fontFamily
@@ -2224,7 +2222,7 @@ function __skpm_run(key, context) {
                 _updateSharedStyleReferences__WEBPACK_IMPORTED_MODULE_1__[
                   'updateSharedStyleReferences'
                 ]
-              )(doc, ''.concat(namePrefix).concat(_textStyleName), style);
+              )(doc, ''.concat(componentName, '/').concat(_textStyleName), style);
             }
           }
 
@@ -2236,7 +2234,7 @@ function __skpm_run(key, context) {
               _updateSharedStyleReferences__WEBPACK_IMPORTED_MODULE_1__[
                 'updateSharedStyleReferences'
               ]
-            )(doc, '_test/base', defaultTextStyle);
+            )(doc, 'base', defaultTextStyle);
 
             for (
               var _i = 0, _Object$entries = Object.entries(themeTokens.components);

@@ -104,7 +104,6 @@ function updateComponentTextStyles(doc, componentName, componentTokens, defaultT
     }
   }
 
-  const namePrefix = `_test/${componentName}/`;
   for (const textStyleName in rawTextStyles) {
     const rawValues = rawTextStyles[textStyleName];
 
@@ -132,7 +131,7 @@ function updateComponentTextStyles(doc, componentName, componentTokens, defaultT
       lineHeight,
     });
 
-    updateSharedStyleReferences(doc, `${namePrefix}${textStyleName}`, style);
+    updateSharedStyleReferences(doc, `${componentName}/${textStyleName}`, style);
   }
 }
 
@@ -140,8 +139,7 @@ export function updateTextStylesFromTheme(doc, themeTokens) {
   // Default text style is used to fill in missing values in other text styles
   // that come from the tokens
   const defaultTextStyle = createBaseStyle(themeTokens);
-
-  updateSharedStyleReferences(doc, '_test/base', defaultTextStyle);
+  updateSharedStyleReferences(doc, 'base', defaultTextStyle);
 
   for (const [componentName, componentTokens] of Object.entries(themeTokens.components)) {
     updateComponentTextStyles(doc, componentName, componentTokens, defaultTextStyle);
