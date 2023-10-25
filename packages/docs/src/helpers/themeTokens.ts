@@ -11,25 +11,25 @@ import {
   CmsgovComponentTheme,
 } from 'design-system-tokens/src/themes';
 
-const themes = {
+export const themeTokens = {
   core: { ...CoreTheme, components: CoreComponentTheme },
   healthcare: { ...HealthcareTheme, components: HealthcareComponentTheme },
   medicare: { ...MedicareTheme, components: MedicareComponentTheme },
   cmsgov: { ...CmsgovTheme, components: CmsgovComponentTheme },
 };
 
-export type ThemeName = keyof typeof themes;
+export type ThemeName = keyof typeof themeTokens;
 
 export function getThemeColorValue(themeName: ThemeName, colorName: string): string {
-  return String(themes[themeName].color[colorName]);
+  return String(themeTokens[themeName].color[colorName]);
 }
 
 export function getThemeColorName(themeName: ThemeName, colorValue: string): string | undefined {
-  return findKey(themes[themeName].color, (value) => String(value) === colorValue);
+  return findKey(themeTokens[themeName].color, (value) => String(value) === colorValue);
 }
 
 export function getComponentVariables(themeName: ThemeName, componentName: string) {
-  return themes[themeName].components[componentName];
+  return themeTokens[themeName].components[componentName];
 }
 
 export function getSystemColorTokenFromValue(colorValue: string): string {

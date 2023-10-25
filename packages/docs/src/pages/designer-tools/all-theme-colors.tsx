@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '../../components/layout/Layout';
 import { MdxQuery } from '../../helpers/graphQLTypes';
+import AllThemesColorTable from '../../components/designer-tools/AllThemesColorTable';
 
 const DesignerToolThemeColorsPage = ({ location }: MdxQuery) => {
   const theme = 'core';
@@ -12,8 +13,9 @@ const DesignerToolThemeColorsPage = ({ location }: MdxQuery) => {
       location={location}
       slug="all-theme-colors"
       theme={theme}
+      fullWidth
     >
-      <div>Hello world</div>
+      <AllThemesColorTable />
     </Layout>
   );
 };
