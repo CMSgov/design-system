@@ -26,7 +26,7 @@ export const exportJson = (fileDescriptors: FileDescriptor[], outPath: string): 
       filename = `${outPath}/cmsds.tokens.json`;
     } else {
       // it's a theme file
-      filename = `${outPath}/${file.parentDirectoryName}-${file.baseName}.tokens.json`;
+      filename = `${outPath}/${file.baseName}.tokens.json`;
       writeFile(filename, JSON.stringify(tokenOutput[file.baseName], null, 4));
     }
   });
