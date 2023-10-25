@@ -6,8 +6,8 @@ export default {
   argTypes: {
     children: { control: false },
     options: { control: false },
-    requirementLabel: { control: 'text' },
-    errorMessage: { control: 'text' },
+    'requirement-label': { control: 'text' },
+    'error-message': { control: 'text' },
     hint: { control: 'text' },
     label: { control: 'text' },
   },
@@ -18,7 +18,7 @@ export default {
 };
 
 const Template = (args) => (
-  <ds-dropdown key={JSON.stringify(args)}>
+  <ds-dropdown {...args} key={JSON.stringify(args)}>
     <>
       <option value="1">Option 1</option>
       <option value="2">Option 2</option>
