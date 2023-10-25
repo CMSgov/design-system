@@ -74,7 +74,7 @@ export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
   onBlur?: (...args: any[]) => any;
   onChange?: (change: DropdownChangeObject) => any;
   /**
-   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
+   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields](https://design.cms.gov/patterns/Forms/forms/#required-and-optional-fields).
    */
   requirementLabel?: React.ReactNode;
   /**

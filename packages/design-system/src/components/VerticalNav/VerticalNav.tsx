@@ -31,7 +31,7 @@ export interface VerticalNavProps {
   selectedId?: string;
   id?: string;
   /**
-   * An array of [`VerticalNavItem`]({{root}}/components/vertical-nav/#components.vertical-nav.VerticalNavItem) data objects
+   * Array of objects representing the props for each VerticalNavItem in the VerticalNav. See the `VerticalNavItem` tab above this table.
    */
   items: VerticalNavItemProps[];
   /**

@@ -1,7 +1,7 @@
 import { MonthPicker } from '@cmsgov/design-system';
 import React from 'react';
 
-function MonthPickerExample(): React.ReactElement {
+function MonthPickerExample() {
   return (
     <div>
       <h2>MonthPicker Example</h2>

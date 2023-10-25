@@ -2048,6 +2048,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _skpm_dialog__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_skpm_dialog__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _skpm_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @skpm/fs */ "./node_modules/@skpm/fs/index.js");
 /* harmony import */ var _skpm_fs__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_skpm_fs__WEBPACK_IMPORTED_MODULE_2__);
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -2091,6 +2093,55 @@ var makeColorSwatches = function makeColorSwatches(colorTokens) {
   return swatches;
 };
 
+var makeComponentSwatches = function makeComponentSwatches(components) {
+  var hexRegex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+  var swatches = [];
+
+  for (var _i2 = 0, _Object$entries2 = Object.entries(components); _i2 < _Object$entries2.length; _i2++) {
+    var _Object$entries2$_i = _slicedToArray(_Object$entries2[_i2], 2),
+        componentName = _Object$entries2$_i[0],
+        componentTokens = _Object$entries2$_i[1];
+
+    for (var _i3 = 0, _Object$entries3 = Object.entries(componentTokens); _i3 < _Object$entries3.length; _i3++) {
+      var _Object$entries3$_i = _slicedToArray(_Object$entries3[_i3], 2),
+          tokenName = _Object$entries3$_i[0],
+          tokenValue = _Object$entries3$_i[1];
+
+      if (hexRegex.test(tokenValue)) {
+        swatches.push(sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Swatch.from({
+          name: "components/".concat(componentName, "/").concat(componentName).concat(tokenName),
+          color: tokenValue
+        }));
+      }
+    }
+  }
+
+  return swatches;
+};
+
+function updateSwatches(oldSwatches, newSwatches) {
+  var swatchMap = oldSwatches.reduce(function (map, swatch) {
+    map[swatch.name] = swatch;
+    return map;
+  }, {});
+
+  var _iterator = _createForOfIteratorHelper(newSwatches),
+      _step;
+
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var newSwatch = _step.value;
+      swatchMap[newSwatch.name] = newSwatch;
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+
+  return Object.values(swatchMap);
+}
+
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   var tokenData = {};
   var jsonFile = _skpm_dialog__WEBPACK_IMPORTED_MODULE_1___default.a.showOpenDialogSync({
@@ -2114,12 +2165,10 @@ var makeColorSwatches = function makeColorSwatches(colorTokens) {
     sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.alert('Importing Error', 'Could not open selected file.');
   }
 
-  var doc = sketch__WEBPACK_IMPORTED_MODULE_0___default.a.getSelectedDocument();
-  doc.swatches = [];
-  var colorSwatches = makeColorSwatches(tokenData.color);
-  colorSwatches.forEach(function (swatch) {
-    doc.swatches.push(swatch);
-  });
+  var doc = sketch__WEBPACK_IMPORTED_MODULE_0___default.a.getSelectedDocument(); // doc.swatches = [];
+
+  var newSwatches = tokenData.color ? makeColorSwatches(tokenData.color) : makeComponentSwatches(tokenData);
+  doc.swatches = updateSwatches(doc.swatches, newSwatches);
 });
 
 /***/ }),

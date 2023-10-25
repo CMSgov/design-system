@@ -10,7 +10,7 @@ Object.keys(themes).forEach((theme) => {
   test(`Mask partial text entry: ${theme}`, async ({ page }) => {
     await page.goto(`${storyUrl}&globals=theme:${theme}`);
     const elem = page.locator('input.ds-c-field');
-    await elem.type('22');
+    await elem.type('22', { delay: 220 });
     await expect(page).toHaveScreenshot(`mask--text-entry--${theme}.png`, { fullPage: true });
   });
 

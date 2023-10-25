@@ -20,6 +20,7 @@ const storySkipList = [
   'healthcare-privacysettingslink--default',
   'healthcare-privacysettingslink--custom-content',
   'web-components-alert--default',
+  'web-components-badge--default',
   'web-components-button--default',
   'web-components-usabanner--default',
 ];

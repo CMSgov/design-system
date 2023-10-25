@@ -12,6 +12,7 @@ import {
 } from './shared';
 import { parseHtml } from './parse';
 import { IOptions, ComponentFunction } from './model';
+import { kebabCaseIt } from 'case-it/kebab';
 
 /* -----------------------------------
  *
@@ -106,6 +107,17 @@ function setupElement<T>(component: ComponentFunction<T>, options: IOptions = {}
       });
     });
 
+    // This works, but it clobbers pre-existing event handlers made via `addEventListener`
+    // events.forEach((name) => {
+    //   Object.defineProperty(CustomElement.prototype, name, {
+    //     set(v) {
+    //       if (this.__mounted) {
+    //         this.attributeChangedCallback(name, null, v);
+    //       }
+    //     },
+    //   });
+    // });
+
     return CustomElement;
   }
 
@@ -133,6 +145,46 @@ function setupElement<T>(component: ComponentFunction<T>, options: IOptions = {}
   };
 }
 
+// Using part of Voorhoede's register function to implement custom event handlers
+// https://github.com/voorhoede/preact-web-components-demo/blob/main/src/lib/register.js#L158
+function proxyEvents(props, eventNames, CustomElement) {
+  const callbacks = {};
+
+  (eventNames || []).forEach((name) => {
+    // Convert the event name to a kebab-case format and replace 'on' with 'ds'
+    // This prevents the custom events from conflicting with the native events
+    const customName = kebabCaseIt(name.replace('on', 'ds'));
+    let existingCallback = () => null;
+
+    // Don't know why `existingCallback` is being defined
+    // Why would a callback already be defined in props?
+    if (props && props[name]) {
+      existingCallback = props[name].bind({});
+    }
+
+    // The callback created here is passed when the custom element's connectedCallback is called
+    // Dispatches a custom event when called
+    const customCb = (event) => {
+      const customEvent = new CustomEvent(customName, {
+        ...event,
+        composed: true,
+        bubbles: true,
+        detail: {
+          target: event.target,
+        },
+      });
+
+      CustomElement.dispatchEvent(customEvent);
+
+      existingCallback();
+    };
+
+    callbacks[name] = customCb;
+  });
+
+  return callbacks;
+}
+
 /* -----------------------------------
  *
  * Connected
@@ -145,6 +197,8 @@ function onConnected(this: CustomElement) {
   const json = this.querySelector('[type="application/json"]');
   const data = parseJson.call(this, props || json?.innerHTML || '{}');
 
+  const eventHandlers = proxyEvents(this.__properties, this.__options.events, this);
+
   json?.remove();
 
   let children = this.__children;
@@ -153,7 +207,7 @@ function onConnected(this: CustomElement) {
     children = h(parseHtml.call(this), {});
   }
 
-  this.__properties = { ...this.__slots, ...data, ...attributes };
+  this.__properties = { ...this.__slots, ...data, ...attributes, ...eventHandlers };
   this.__children = children || [];
 
   this.removeAttribute('server');
