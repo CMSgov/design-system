@@ -1,6 +1,6 @@
 import React from 'react';
 import { define } from './preactement/define';
-import { Dropdown } from '../Dropdown';
+import { Dropdown, DropdownProps } from '../Dropdown';
 
 const attributes = [
   'auto-focus',
@@ -8,13 +8,15 @@ const attributes = [
   'disabled',
   'error-message',
   'error-placement',
-  'requirements-label',
   'field-class-name',
+  'options',
   'label',
   'label-class-name',
   'label-id',
   'name',
+  'requirements-label',
   'role',
+  'root-id',
   'size',
   'value',
   'default-value',
@@ -35,4 +37,17 @@ declare global {
 }
 /* eslint-enable */
 
-define('ds-dropdown', () => Dropdown, { attributes } as any);
+interface WrapperProps extends Omit<DropdownProps, 'options'> {
+  options?: string | DropdownProps['options'];
+  rootId?: string;
+}
+
+const Wrapper = ({ options, rootId, ...otherProps }: WrapperProps) => (
+  <Dropdown
+    {...otherProps}
+    options={typeof options === 'string' ? JSON.parse(options) : options}
+    id={rootId}
+  />
+);
+
+define('ds-dropdown', () => Wrapper, { attributes } as any);
