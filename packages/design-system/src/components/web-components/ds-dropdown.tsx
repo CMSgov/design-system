@@ -42,12 +42,19 @@ interface WrapperProps extends Omit<DropdownProps, 'options'> {
   rootId?: string;
 }
 
-const Wrapper = ({ options, rootId, ...otherProps }: WrapperProps) => (
+const Wrapper = ({ children, options, rootId, ...otherProps }: WrapperProps) => (
   <Dropdown
     {...otherProps}
     options={typeof options === 'string' ? JSON.parse(options) : options}
     id={rootId}
-  />
+  >
+    {/*
+     * The type definitions for having children vs options is a little finicky and unhelpful
+     * for the web component because options and children can be added later, so I'm setting
+     * the type to `any`.
+     */}
+    {children as any}
+  </Dropdown>
 );
 
 define('ds-dropdown', () => Wrapper, { attributes } as any);
