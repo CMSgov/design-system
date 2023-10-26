@@ -60,7 +60,7 @@ function createBaseStyle(themeTokens) {
   const fontSize = parseFontSize(themeTokens.font['size-base']);
   const lineHeight = parseLineHeight(themeTokens.font['line-height-base'], fontSize);
   const fontWeight = parseFontWeight(themeTokens.font['weight-normal']);
-  const fontFamily = parseFontFamily(themeTokens.components.typography['-body__font-family']);
+  const fontFamily = parseFontFamily(themeTokens.components['typography-body']['__font-family']);
 
   return new sketch.Style({
     fontFamily,
@@ -146,19 +146,30 @@ export function updateTextStylesFromTheme(doc, themeTokens) {
   const defaultTextStyle = createBaseStyle(themeTokens);
   updateSharedStyleReferences(doc, 'base', defaultTextStyle);
 
-  const { typography, link, ...components } = themeTokens.components;
+  const {
+    'typography-heading': heading,
+    'typography-body': body,
+    link,
+    ...components
+  } = themeTokens.components;
 
   updateComponentTextStyles(doc, {
-    componentName: 'typography',
-    componentTokens: typography,
+    componentName: 'typography-heading',
+    componentTokens: heading,
     defaultTextStyle,
-    folder: 'typography',
+    folder: 'typography/heading',
+  });
+  updateComponentTextStyles(doc, {
+    componentName: 'typography-body',
+    componentTokens: body,
+    defaultTextStyle,
+    folder: 'typography/body',
   });
   updateComponentTextStyles(doc, {
     componentName: 'link',
     componentTokens: link,
     defaultTextStyle,
-    folder: 'typography',
+    folder: 'typography/link',
   });
 
   for (const [componentName, componentTokens] of Object.entries(components)) {

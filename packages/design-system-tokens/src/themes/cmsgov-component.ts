@@ -434,15 +434,18 @@ export const components: AnyTokenValues = {
     '-trigger__color':                            t.color['primary'],
   },
 
-  'typography': {
-    '-heading__font-family':                      'inherit',
-    '-heading__font-weight':                      t.font['weight-bold'],
-    '-heading-4xl__font-weight':                  'inherit',
-    '-heading-3xl__font-weight':                  'inherit',
-    '-heading-lg__font-weight':                   t.font['weight-bold'],
-    '-heading-md__font-weight':                   t.font['weight-bold'],
-    '-heading-sm__font-weight':                   t.font['weight-normal'],
-    '-body__font-family':                         t.font['family-open-sans'],
+  'typography-heading': {
+    '__font-family':                              'inherit',
+    '__font-weight':                              t.font['weight-bold'],
+    '-4xl__font-weight':                          'inherit',
+    '-3xl__font-weight':                          'inherit',
+    '-lg__font-weight':                           t.font['weight-bold'],
+    '-md__font-weight':                           t.font['weight-bold'],
+    '-sm__font-weight':                           t.font['weight-normal'],
+  },
+
+  'typography-body': {
+    '__font-family':                              t.font['family-open-sans'],
   },
 
   'usa-banner': {
