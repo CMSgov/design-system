@@ -48,12 +48,7 @@ const Wrapper = ({ children, options, rootId, ...otherProps }: WrapperProps) => 
     options={typeof options === 'string' ? JSON.parse(options) : options}
     id={rootId}
   >
-    {/*
-     * The type definitions for having children vs options is a little finicky and unhelpful
-     * for the web component because options and children can be added later, so I'm setting
-     * the type to `any`.
-     */}
-    {children as any}
+    {options ? undefined : children}
   </Dropdown>
 );
 
