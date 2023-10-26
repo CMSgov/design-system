@@ -82,7 +82,10 @@ const tokenNamePatterns = {
 /**
  * Expects the token keys to be the full names of the tokens
  */
-function updateComponentTextStyles(doc, componentName, componentTokens, defaultTextStyle) {
+function updateComponentTextStyles(
+  doc,
+  { componentName, componentTokens, defaultTextStyle, folder }
+) {
   const rawTextStyles = {};
 
   for (const tokenName in componentTokens) {
@@ -131,7 +134,9 @@ function updateComponentTextStyles(doc, componentName, componentTokens, defaultT
       lineHeight,
     });
 
-    updateSharedStyleReferences(doc, `${componentName}/${textStyleName}`, style);
+    const name = `${folder}/${textStyleName}`;
+
+    updateSharedStyleReferences(doc, name, style);
   }
 }
 
@@ -141,7 +146,27 @@ export function updateTextStylesFromTheme(doc, themeTokens) {
   const defaultTextStyle = createBaseStyle(themeTokens);
   updateSharedStyleReferences(doc, 'base', defaultTextStyle);
 
-  for (const [componentName, componentTokens] of Object.entries(themeTokens.components)) {
-    updateComponentTextStyles(doc, componentName, componentTokens, defaultTextStyle);
+  const { typography, link, ...components } = themeTokens.components;
+
+  updateComponentTextStyles(doc, {
+    componentName: 'typography',
+    componentTokens: typography,
+    defaultTextStyle,
+    folder: 'typography',
+  });
+  updateComponentTextStyles(doc, {
+    componentName: 'link',
+    componentTokens: link,
+    defaultTextStyle,
+    folder: 'typography',
+  });
+
+  for (const [componentName, componentTokens] of Object.entries(components)) {
+    updateComponentTextStyles(doc, {
+      componentName,
+      componentTokens,
+      defaultTextStyle,
+      folder: `components/${componentName}`,
+    });
   }
 }

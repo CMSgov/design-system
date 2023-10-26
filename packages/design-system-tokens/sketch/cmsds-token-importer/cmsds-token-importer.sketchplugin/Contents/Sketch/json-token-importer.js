@@ -2001,6 +2001,8 @@ function __skpm_run(key, context) {
             __webpack_require__(
               /*! ./updateSharedStyleReferences */ './src/updateSharedStyleReferences.js'
             );
+          var _excluded = ['typography', 'link'];
+
           function _slicedToArray(arr, i) {
             return (
               _arrayWithHoles(arr) ||
@@ -2064,6 +2066,35 @@ function __skpm_run(key, context) {
 
           function _arrayWithHoles(arr) {
             if (Array.isArray(arr)) return arr;
+          }
+
+          function _objectWithoutProperties(source, excluded) {
+            if (source == null) return {};
+            var target = _objectWithoutPropertiesLoose(source, excluded);
+            var key, i;
+            if (Object.getOwnPropertySymbols) {
+              var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+              for (i = 0; i < sourceSymbolKeys.length; i++) {
+                key = sourceSymbolKeys[i];
+                if (excluded.indexOf(key) >= 0) continue;
+                if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+                target[key] = source[key];
+              }
+            }
+            return target;
+          }
+
+          function _objectWithoutPropertiesLoose(source, excluded) {
+            if (source == null) return {};
+            var target = {};
+            var sourceKeys = Object.keys(source);
+            var key, i;
+            for (i = 0; i < sourceKeys.length; i++) {
+              key = sourceKeys[i];
+              if (excluded.indexOf(key) >= 0) continue;
+              target[key] = source[key];
+            }
+            return target;
           }
 
           function parseFontSize(tokenValue) {
@@ -2166,12 +2197,11 @@ function __skpm_run(key, context) {
            * Expects the token keys to be the full names of the tokens
            */
 
-          function updateComponentTextStyles(
-            doc,
-            componentName,
-            componentTokens,
-            defaultTextStyle
-          ) {
+          function updateComponentTextStyles(doc, _ref) {
+            var componentName = _ref.componentName,
+              componentTokens = _ref.componentTokens,
+              defaultTextStyle = _ref.defaultTextStyle,
+              folder = _ref.folder;
             var rawTextStyles = {};
 
             for (var tokenName in componentTokens) {
@@ -2218,11 +2248,12 @@ function __skpm_run(key, context) {
                 textColor: textColor,
                 lineHeight: lineHeight,
               });
+              var name = ''.concat(folder, '/').concat(_textStyleName);
               Object(
                 _updateSharedStyleReferences__WEBPACK_IMPORTED_MODULE_1__[
                   'updateSharedStyleReferences'
                 ]
-              )(doc, ''.concat(componentName, '/').concat(_textStyleName), style);
+              )(doc, name, style);
             }
           }
 
@@ -2236,8 +2267,26 @@ function __skpm_run(key, context) {
               ]
             )(doc, 'base', defaultTextStyle);
 
+            var _themeTokens$componen = themeTokens.components,
+              typography = _themeTokens$componen.typography,
+              link = _themeTokens$componen.link,
+              components = _objectWithoutProperties(_themeTokens$componen, _excluded);
+
+            updateComponentTextStyles(doc, {
+              componentName: 'typography',
+              componentTokens: typography,
+              defaultTextStyle: defaultTextStyle,
+              folder: 'typography',
+            });
+            updateComponentTextStyles(doc, {
+              componentName: 'link',
+              componentTokens: link,
+              defaultTextStyle: defaultTextStyle,
+              folder: 'typography',
+            });
+
             for (
-              var _i = 0, _Object$entries = Object.entries(themeTokens.components);
+              var _i = 0, _Object$entries = Object.entries(components);
               _i < _Object$entries.length;
               _i++
             ) {
@@ -2245,7 +2294,12 @@ function __skpm_run(key, context) {
                 componentName = _Object$entries$_i[0],
                 componentTokens = _Object$entries$_i[1];
 
-              updateComponentTextStyles(doc, componentName, componentTokens, defaultTextStyle);
+              updateComponentTextStyles(doc, {
+                componentName: componentName,
+                componentTokens: componentTokens,
+                defaultTextStyle: defaultTextStyle,
+                folder: 'components/'.concat(componentName),
+              });
             }
           }
 
