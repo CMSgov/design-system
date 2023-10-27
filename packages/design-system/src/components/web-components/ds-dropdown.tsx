@@ -47,20 +47,17 @@ interface WrapperProps extends Omit<DropdownProps, 'options' | 'autoFocus'> {
   rootId?: string;
 }
 
-const Wrapper = ({ children, options, rootId, ...otherProps }: WrapperProps) => {
-  console.log(otherProps);
-  return (
-    <Dropdown
-      {...otherProps}
-      autoFocus={parseBooleanAttr(otherProps.autofocus)}
-      disabled={parseBooleanAttr(otherProps.disabled)}
-      aria-disabled={parseBooleanAttr(otherProps.ariaDisabled)}
-      options={typeof options === 'string' ? JSON.parse(options) : options}
-      id={rootId}
-    >
-      {options ? undefined : children}
-    </Dropdown>
-  );
-};
+const Wrapper = ({ children, options, rootId, ...otherProps }: WrapperProps) => (
+  <Dropdown
+    {...otherProps}
+    autoFocus={parseBooleanAttr(otherProps.autofocus)}
+    disabled={parseBooleanAttr(otherProps.disabled)}
+    aria-disabled={parseBooleanAttr(otherProps.ariaDisabled)}
+    options={typeof options === 'string' ? JSON.parse(options) : options}
+    id={rootId}
+  >
+    {options ? undefined : children}
+  </Dropdown>
+);
 
 define('ds-dropdown', () => Wrapper, { attributes, events: ['onChange', 'onBlur'] } as any);
