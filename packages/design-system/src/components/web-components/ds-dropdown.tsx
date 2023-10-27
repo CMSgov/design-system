@@ -1,9 +1,13 @@
 import React from 'react';
 import { define } from './preactement/define';
 import { Dropdown, DropdownProps } from '../Dropdown';
+import { parseBooleanAttr } from './wrapperUtils';
 
 const attributes = [
+  // Using the lowercase HTML attribute name rather than `auto-focus` so it's
+  // more natural. There's no reason for us to worry about name collisions.
   'autofocus',
+  'aria-disabled',
   'class-name',
   'disabled',
   'error-message',
@@ -43,15 +47,20 @@ interface WrapperProps extends Omit<DropdownProps, 'options' | 'autoFocus'> {
   rootId?: string;
 }
 
-const Wrapper = ({ autofocus, children, options, rootId, ...otherProps }: WrapperProps) => (
-  <Dropdown
-    {...otherProps}
-    autoFocus={autofocus !== undefined && autofocus !== 'false'}
-    options={typeof options === 'string' ? JSON.parse(options) : options}
-    id={rootId}
-  >
-    {options ? undefined : children}
-  </Dropdown>
-);
+const Wrapper = ({ children, options, rootId, ...otherProps }: WrapperProps) => {
+  console.log(otherProps);
+  return (
+    <Dropdown
+      {...otherProps}
+      autoFocus={parseBooleanAttr(otherProps.autofocus)}
+      disabled={parseBooleanAttr(otherProps.disabled)}
+      aria-disabled={parseBooleanAttr(otherProps.ariaDisabled)}
+      options={typeof options === 'string' ? JSON.parse(options) : options}
+      id={rootId}
+    >
+      {options ? undefined : children}
+    </Dropdown>
+  );
+};
 
 define('ds-dropdown', () => Wrapper, { attributes, events: ['onChange', 'onBlur'] } as any);

@@ -23,6 +23,8 @@ export default {
   title: 'Web Components/Dropdown',
   argTypes: {
     autofocus: { control: 'boolean' },
+    disabled: { control: 'boolean' },
+    'aria-disabled': { control: 'boolean' },
     children: { control: false },
     options: { control: false },
     'requirement-label': { control: 'text' },
@@ -58,7 +60,7 @@ const options = [
 ];
 
 const Template = (args) => (
-  <ds-dropdown {...args} key={JSON.stringify(args)} options={JSON.stringify(options)} autofocus />
+  <ds-dropdown {...args} key={JSON.stringify(args)} options={JSON.stringify(options)} />
 );
 
 export const Default = Template.bind({});
