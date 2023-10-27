@@ -2,7 +2,7 @@
  * Medicare.gov CMSDS Theme
  */
 
-import { animation, color, fontFamily, measure, media, radius, spacer, z } from '../tokens';
+import { animation, color, fontFamily, fontSize, measure, media, radius, spacer, z } from '../tokens';
 import { FontTokens, ThemeTokens, ColorTokens, ShadowTokens, AnyTokenValues } from '../lib/types';
 
 export const themeColors: ColorTokens = {
@@ -118,9 +118,17 @@ const font: FontTokens = {
   'rubik':                      fontFamily['family-rubik'],
   'size-lg':                    '1.25rem',
   'size-xl':                    '1.5rem',
+  'size-2xl--mobile':           '1.75rem',
   'size-2xl':                   '2rem',
+  'size-3xl--mobile':           fontSize['60'],
   'size-3xl':                   '2.5rem',
+  'size-4xl--mobile':           '2.5rem',
   'size-4xl':                   '2.75rem',
+  // TODO: I'm not changing this because I don't want to introduce a style chanage right now,
+  // but this value doesn't make sense. It means that the 5xl and 4xl headings are the same
+  // size on mobile. I've checked that that's what's in production right now in storybook (v8)
+  'size-5xl--mobile':           '2.5rem', 
+  'size-5xl--tablet':           '2.75rem',
   'size-5xl':                   '3.125rem',
   'line-height-reset':          1,
   'line-height-heading':        1.3,
