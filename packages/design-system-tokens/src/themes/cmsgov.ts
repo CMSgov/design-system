@@ -2,8 +2,8 @@
  * CMSgov CMSDS Theme
  */
 
-import { animation, color, font, measure, media, radius, spacer, z } from '../tokens';
-import { ThemeTokens, ColorTokens, AnyTokenValues, ShadowTokens } from '../lib/types';
+import { animation, color, fontFamily, fontSize, measure, media, radius, spacer, z } from '../tokens';
+import { ThemeTokens, ColorTokens, AnyTokenValues, ShadowTokens, FontTokens } from '../lib/types';
 
 export const themeColors: ColorTokens = {
   //
@@ -73,13 +73,13 @@ export const themeColors: ColorTokens = {
   'accent-primary-darker':      color['dandelion-700'],
   'accent-primary-darkest':     color['dandelion-800'],
   //
-  'info-lightest':             color['deepsea-50'],
-  'info-lighter':              color['deepsea-100'],
-  'info-light':                color['deepsea-300'],
-  'info':                      color['deepsea-500'],
-  'info-dark':                 color['deepsea-600'],
-  'info-darker':               color['deepsea-700'],
-  'info-darkest':              color['deepsea-800'],
+  'info-lightest':              color['deepsea-50'],
+  'info-lighter':               color['deepsea-100'],
+  'info-light':                 color['deepsea-300'],
+  'info':                       color['deepsea-500'],
+  'info-dark':                  color['deepsea-600'],
+  'info-darker':                color['deepsea-700'],
+  'info-darkest':               color['deepsea-800'],
   //
   'success-lightest':           color['spring-50'],
   'success-lighter':            color['spring-100'],
@@ -98,6 +98,28 @@ export const themeColors: ColorTokens = {
   'warn-darkest':               color['dandelion-800'],
   //
   'visited':                    color['windsor-500'],
+};
+
+const font: FontTokens = {
+  'sans':                       fontFamily['family-open-sans'],
+  'serif':                      fontFamily['family-bitter'],
+  'size-base':                  fontSize['20'],
+  'size-sm':                    fontSize['10'],
+  'size-md':                    fontSize['20'],
+  'size-lg':                    fontSize['30'],
+  'size-xl':                    fontSize['40'],
+  'size-2xl':                   fontSize['50'],
+  'size-3xl':                   fontSize['70'],
+  'size-4xl':                   fontSize['80'],
+  'size-5xl':                   fontSize['90'],
+  'line-height-reset':          1,
+  'line-height-heading':        1.3,
+  'line-height-base':           1.5,
+  'line-height-lead':           1.7,
+  'weight-light':               300,
+  'weight-normal':              400,
+  'weight-semibold':            600,
+  'weight-bold':                700,
 };
 
 export const global: AnyTokenValues = {
@@ -127,19 +149,7 @@ export const shadow: ShadowTokens = {
 const cmsgovTheme: ThemeTokens = {
   animation,
   color: themeColors,
-  font: {
-    sans: font['family-open-sans'],
-    serif: font['family-bitter'],
-    ...font,
-    'line-height-reset': 1,
-  'line-height-heading': 1.3,
-  'line-height-base': 1.5,
-  'line-height-lead': 1.7,
-    'weight-light': 300,
-    'weight-normal': 400,
-    'weight-semibold': 600,
-    'weight-bold': 700,
-  },
+  font,
   global,
   measure,
   media,

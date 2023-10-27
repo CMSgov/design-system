@@ -2,7 +2,7 @@
  * Medicare.gov CMSDS Theme
  */
 
-import { animation, color, font, measure, media, radius, spacer, z } from '../tokens';
+import { animation, color, fontFamily, measure, media, radius, spacer, z } from '../tokens';
 import { FontTokens, ThemeTokens, ColorTokens, ShadowTokens, AnyTokenValues } from '../lib/types';
 
 export const themeColors: ColorTokens = {
@@ -104,7 +104,7 @@ export const shadow: ShadowTokens = {
   'focus':                      `inset 0 0 0 1px ${themeColors['base']}`,
   'focus-inverse':              `inset 0 0 0 1px ${themeColors['base']}`,
   'focus-link':                 `0 3px ${themeColors['base']}`,
-  'box-card': '0 2px 3px 0 rgba(50, 50, 50, 0.23)',
+  'box-card':                   '0 2px 3px 0 rgba(50, 50, 50, 0.23)',
   'base-offset-x':              '2px',
   'base-offset-y':              '2px',
   'base-blur-radius':           '4px',
@@ -112,25 +112,24 @@ export const shadow: ShadowTokens = {
   'base':                       '2px 2px 4px',
 };
 
-const fonts: FontTokens = {
-  ...font,
-  'size-lg': '1.25rem',
-  'size-xl': '1.5rem',
-  'size-2xl': '2rem',
-  'size-3xl': '2.5rem',
-  'size-4xl': '2.75rem',
-  'size-5xl': '3.125rem',
-  sans: font['family-rubik'],
-  montserrat: font['family-montserrat'],
-  rubik: font['family-rubik'],
-  'line-height-reset': 1,
-  'line-height-heading': 1.3,
-  'line-height-base': 1.5,
-  'line-height-lead': 1.7,
-  'weight-light': 400,
-  'weight-normal': 400,
-  'weight-semibold': 600,
-  'weight-bold': 600,
+const font: FontTokens = {
+  'sans':                       fontFamily['family-rubik'],
+  'montserrat':                 fontFamily['family-montserrat'],
+  'rubik':                      fontFamily['family-rubik'],
+  'size-lg':                    '1.25rem',
+  'size-xl':                    '1.5rem',
+  'size-2xl':                   '2rem',
+  'size-3xl':                   '2.5rem',
+  'size-4xl':                   '2.75rem',
+  'size-5xl':                   '3.125rem',
+  'line-height-reset':          1,
+  'line-height-heading':        1.3,
+  'line-height-base':           1.5,
+  'line-height-lead':           1.7,
+  'weight-light':               400,
+  'weight-normal':              400,
+  'weight-semibold':            600,
+  'weight-bold':                600,
 }
 
 export const global: AnyTokenValues = {
@@ -149,7 +148,7 @@ export const global: AnyTokenValues = {
 const medicareTheme: ThemeTokens = {
   animation,
   color: themeColors,
-  font: fonts,
+  font,
   global,
   measure,
   media,
