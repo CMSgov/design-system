@@ -1,86 +1,88 @@
 import sketch from 'sketch';
 import dialog from '@skpm/dialog';
-import { readFileSync } from '@skpm/fs';
+import themes from '../../../../../themes.json';
+import coreTheme from '../../../dist/core.tokens.json';
+import coreComponents from '../../../dist/core-component.tokens.json';
+import healthcareTheme from '../../../dist/healthcare.tokens.json';
+import healthcareComponents from '../../../dist/healthcare-component.tokens.json';
+import medicareTheme from '../../../dist/medicare.tokens.json';
+import medicareComponents from '../../../dist/medicare-component.tokens.json';
+import cmsgovTheme from '../../../dist/cmsgov.tokens.json';
+import cmsgovComponents from '../../../dist/cmsgov-component.tokens.json';
 
-/*
- * Split tokens into groups based on root name and store in category,
- * based on first word before '-'. Allows keys with up to 4 dash separators.
- *
- * @param colorTokens - An object which contains color name:value pairs
- * @returns An array of Swatch objects created by the Sketch API
- */
-const makeColorSwatches = (colorTokens) => {
-  const swatches = [];
-  for (const [key, value] of Object.entries(colorTokens)) {
-    let colorName = key.match(/(^[A-Za-z]*)-?[A-Za-z\d]*?-?[A-Za-z\d]*?-?[A-Za-z\d]*?$/);
-    colorName = colorName === null ? (colorName = '') : colorName[1] + '/';
-    let currentSwatch = sketch.Swatch.from({
-      name: `${colorName}/${key}`,
-      color: value,
-    });
-    swatches.push(currentSwatch);
-  }
-  return swatches;
+const tokensByTheme = {
+  core: { themeColors: coreTheme.color, components: coreComponents },
+  healthcare: { themeColors: healthcareTheme.color, components: healthcareComponents },
+  medicare: { themeColors: medicareTheme.color, components: medicareComponents },
+  cmsgov: { themeColors: cmsgovTheme.color, components: cmsgovComponents },
 };
 
-const makeComponentSwatches = (components) => {
+function updateSwatchesFromTheme(doc, themeTokens) {
+  const newSwatches = [];
+
+  // Add theme colors
+  for (const [key, value] of Object.entries(themeTokens.themeColors)) {
+    // The name of the color is what comes before the first hyphen (if there's a hyphen)
+    const colorName = key.split('-')[0];
+    const swatchName = `theme colors/${colorName}/${key}`;
+    newSwatches.push(
+      sketch.Swatch.from({
+        name: swatchName,
+        color: value,
+      })
+    );
+  }
+
+  // Add component colors
   const hexRegex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
-  const swatches = [];
-  for (const [componentName, componentTokens] of Object.entries(components)) {
+  for (const [componentName, componentTokens] of Object.entries(themeTokens.components)) {
     for (const [tokenName, tokenValue] of Object.entries(componentTokens)) {
       if (hexRegex.test(tokenValue)) {
-        swatches.push(
+        const swatchName = `components/${componentName}/${componentName}${tokenName}`;
+        newSwatches.push(
           sketch.Swatch.from({
-            name: `components/${componentName}/${componentName}${tokenName}`,
+            name: swatchName,
             color: tokenValue,
           })
         );
       }
     }
   }
-  return swatches;
-};
 
-function updateSwatches(oldSwatches, newSwatches) {
-  const swatchMap = oldSwatches.reduce((map, swatch) => {
+  // Update the document with new swatches
+  const oldSwatchMap = doc.swatches.reduce((map, swatch) => {
     map[swatch.name] = swatch;
     return map;
   }, {});
-
   for (const newSwatch of newSwatches) {
-    swatchMap[newSwatch.name] = newSwatch;
+    if (oldSwatchMap[newSwatch.name]) {
+      oldSwatchMap[newSwatch.name].sketchObject.updateWithColor(newSwatch.referencingColor);
+    } else {
+      doc.swatches.push(newSwatch);
+    }
   }
 
-  return Object.values(swatchMap);
+  // Update all references to the swatches in the doc
+  const swatchContainer = doc.sketchObject.documentData().sharedSwatches();
+  doc.swatches.forEach((swatch) => {
+    swatchContainer.updateReferencesToSwatch(swatch.sketchObject);
+  });
 }
 
 export default function () {
-  let tokenData = {};
-
-  const jsonFile = dialog.showOpenDialogSync({
-    message: 'Must be a CMSDS valid JSON Token file.',
-    buttonLabel: 'Import',
-    filters: [{ name: 'Json Data', extensions: ['json', 'tokens', 'tokens.json'] }],
-    properties: ['openFile'],
+  const themeNames = Object.values(themes).map((theme) => theme.displayName);
+  const themeIndex = dialog.showMessageBoxSync({
+    title: 'Switch theme',
+    message: 'Which theme?',
+    buttons: themeNames,
   });
 
-  if (jsonFile) {
-    try {
-      const importedFile = readFileSync(jsonFile[0]);
-      tokenData = JSON.parse(importedFile);
-    } catch (err) {
-      console.error(err);
-    }
-  } else {
-    sketch.UI.alert('Importing Error', 'Could not open selected file.');
-  }
+  const themeKey = Object.keys(themes)[themeIndex];
+  const themeName = themes[themeKey].displayName;
+  const themeTokens = tokensByTheme[themeKey];
 
   const doc = sketch.getSelectedDocument();
-  // doc.swatches = [];
+  updateSwatchesFromTheme(doc, themeTokens);
 
-  const newSwatches = tokenData.color
-    ? makeColorSwatches(tokenData.color)
-    : makeComponentSwatches(tokenData);
-
-  doc.swatches = updateSwatches(doc.swatches, newSwatches);
+  sketch.UI.message(`Switched to ${themeName}`);
 }
