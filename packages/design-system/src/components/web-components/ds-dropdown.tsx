@@ -19,7 +19,6 @@ const attributes = [
   'label-id',
   'name',
   'requirements-label',
-  'role',
   'root-id',
   'size',
   'value',

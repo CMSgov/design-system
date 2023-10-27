@@ -3,19 +3,6 @@ import WebComponentDocTemplate from '../../../../../.storybook/docs/WebComponent
 import { action } from '@storybook/addon-actions';
 import './ds-dropdown';
 
-// 'auto-focus',
-// 'class-name',
-// 'disabled',
-// 'error-message',
-// 'error-placement',
-// 'field-class-name',
-// 'name',
-// 'requirements-label',
-// 'role',
-// 'size',
-// 'value',
-// 'default-value',
-
 const options = [
   { label: 'Confederated Tribes and Bands of the Yakama Nation', value: '1' },
   { label: 'Confederated Tribes of the Chehalis Reservation', value: '2' },
@@ -29,20 +16,28 @@ export default {
       description: 'Sets the focus on the dropdown when it is first added to the document.',
       control: 'boolean',
     },
-    disabled: { description: 'Disables the entire field.', control: 'boolean' },
     children: { control: false },
     'class-name': {
       description: 'Additional classes to be added to the root button element.',
       control: 'text',
     },
-    options: {
+    'default-value': {
       description:
-        'The list of options to be rendered as an array of objects. If it is defined as an attribute in HTML, it needs to be stringified. Each item must have a `label` and `value`.',
-      control: 'object',
+        'Sets the initial selected state. Using this attribute instead of `value` means that the select will maintain its own internal selection state.',
+      control: 'text',
     },
-    'requirement-label': { control: 'text' },
+    disabled: { description: 'Disables the entire field.', control: 'boolean' },
     'error-message': {
       description: 'Enable the error state by providing an error message',
+      control: 'text',
+    },
+    'error-placement': {
+      description: 'Location of the error message relative to the field input',
+      options: [undefined, 'top', 'bottom'],
+      control: { type: 'radio' },
+    },
+    'field-class-name': {
+      description: 'Additional classes to be added to the dropdown button element',
       control: 'text',
     },
     hint: {
@@ -67,10 +62,21 @@ export default {
         'The `name` is applied to a hidden select element that holds the selected value for the purpose of native HTML form support',
       control: 'text',
     },
+    options: {
+      description:
+        'The list of options to be rendered as an array of objects. If it is defined as an attribute in HTML, it needs to be stringified. Each item must have a `label` and `value`.',
+      control: 'object',
+    },
+    'requirement-label': { control: 'text' },
     size: {
       description: 'Sets the max-width of the input either to `"small"` or `"medium"`',
       options: [undefined, 'medium', 'small'],
       control: { type: 'radio' },
+    },
+    value: {
+      description:
+        'Sets the selected value. Using this attribute instead of `default-value` means the dropdown will not maintain its own internal selection state.',
+      control: 'text',
     },
   },
   args: {
