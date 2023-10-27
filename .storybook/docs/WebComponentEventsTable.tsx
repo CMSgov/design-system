@@ -23,7 +23,7 @@ export const WebComponentEventsTable = ({ of }) => {
         <p>{event?.description ?? ''}</p>
       </td>
       <td>
-        <p>{event.detail}</p>
+        <p>{event.eventObjectDescription}</p>
       </td>
     </tr>
   ));
@@ -41,9 +41,7 @@ export const WebComponentEventsTable = ({ of }) => {
               <span>Description</span>
             </th>
             <th>
-              <span>
-                <code>event.details</code>
-              </span>
+              <span>Event object</span>
             </th>
           </tr>
         </thead>
