@@ -3,7 +3,7 @@ import { define } from './preactement/define';
 import { Dropdown, DropdownProps } from '../Dropdown';
 
 const attributes = [
-  'auto-focus',
+  'autofocus',
   'class-name',
   'disabled',
   'error-message',
@@ -37,14 +37,16 @@ declare global {
 }
 /* eslint-enable */
 
-interface WrapperProps extends Omit<DropdownProps, 'options'> {
+interface WrapperProps extends Omit<DropdownProps, 'options' | 'autoFocus'> {
+  autofocus?: string;
   options?: string | DropdownProps['options'];
   rootId?: string;
 }
 
-const Wrapper = ({ children, options, rootId, ...otherProps }: WrapperProps) => (
+const Wrapper = ({ autofocus, children, options, rootId, ...otherProps }: WrapperProps) => (
   <Dropdown
     {...otherProps}
+    autoFocus={autofocus !== undefined && autofocus !== 'false'}
     options={typeof options === 'string' ? JSON.parse(options) : options}
     id={rootId}
   >
@@ -52,4 +54,4 @@ const Wrapper = ({ children, options, rootId, ...otherProps }: WrapperProps) => 
   </Dropdown>
 );
 
-define('ds-dropdown', () => Wrapper, { attributes } as any);
+define('ds-dropdown', () => Wrapper, { attributes, events: ['onChange', 'onBlur'] } as any);

@@ -248,6 +248,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   const buttonProps = {
     ...useButtonProps.buttonProps,
     ...useFormLabelProps.fieldProps,
+    name: undefined,
     className: classNames(
       'ds-c-dropdown__button',
       'ds-c-field',

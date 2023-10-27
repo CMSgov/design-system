@@ -1,9 +1,28 @@
 import React from 'react';
 import './ds-dropdown';
 
+// 'auto-focus',
+// 'class-name',
+// 'disabled',
+// 'error-message',
+// 'error-placement',
+// 'field-class-name',
+// 'options',
+// 'label',
+// 'label-class-name',
+// 'label-id',
+// 'name',
+// 'requirements-label',
+// 'role',
+// 'root-id',
+// 'size',
+// 'value',
+// 'default-value',
+
 export default {
   title: 'Web Components/Dropdown',
   argTypes: {
+    autofocus: { control: 'boolean' },
     children: { control: false },
     options: { control: false },
     'requirement-label': { control: 'text' },
@@ -39,7 +58,7 @@ const options = [
 ];
 
 const Template = (args) => (
-  <ds-dropdown {...args} key={JSON.stringify(args)} options={JSON.stringify(options)} />
+  <ds-dropdown {...args} key={JSON.stringify(args)} options={JSON.stringify(options)} autofocus />
 );
 
 export const Default = Template.bind({});
