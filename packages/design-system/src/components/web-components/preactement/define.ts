@@ -289,7 +289,6 @@ function finaliseComponent(this: CustomElement, component: ComponentFactory<IPro
     parent: this,
     children: this.__children,
   };
-  console.log(props);
 
   render(h(component, props), this);
 }

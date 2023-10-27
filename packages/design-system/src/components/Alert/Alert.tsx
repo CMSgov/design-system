@@ -116,7 +116,6 @@ export const Alert: React.FC<AlertProps> = (props: AlertProps) => {
     weight && `ds-c-alert--${weight}`,
     className
   );
-  console.log(children);
 
   const a11yLabelText = t(`alert.${variation ?? 'defaultLabel'}`);
   const a11yLabel = (
