@@ -1,5 +1,6 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import './ds-dropdown';
 
 const defaultAttrs = {
@@ -39,59 +40,61 @@ describe('Button', () => {
     expect(button).not.toHaveAttribute('disabled');
   });
 
-  // it('applies additional classes', () => {
-  //   renderDropdown({ 'class-name': 'foobar' });
-  //   const button = screen.getByRole('button');
-  //   expect(button.classList.contains('foobar')).toBe(true);
-  // });
+  it('applies additional classes to the wrapper', () => {
+    const { container } = renderDropdown({ 'class-name': 'foobar' });
+    const wrapper = container.querySelector('.ds-c-dropdown');
+    expect(wrapper).toHaveClass('foobar');
+  });
 
-  // it('applies variation classes', () => {
-  //   renderDropdown({ variation: 'solid' });
-  //   const button = screen.getByRole('button');
-  //   expect(button.classList.contains('ds-c-button--solid')).toBe(true);
-  // });
+  it('applies additional classes to the dropdown button', () => {
+    renderDropdown({ 'field-class-name': 'foobar' });
+    const button = screen.getByRole('button');
+    expect(button).toHaveClass('foobar');
+  });
 
-  // it('applies size classes', () => {
-  //   renderDropdown({ size: 'small' });
-  //   const button = screen.getByRole('button');
-  //   expect(button.classList.contains('ds-c-button--small')).toBe(true);
-  // });
+  it('applies size classes', () => {
+    renderDropdown({ size: 'small' });
+    const button = screen.getByRole('button');
+    expect(button.classList.contains('ds-c-field--small')).toBe(true);
+  });
 
-  // it('applies disabled, inverse, alternate, and variation classes together', () => {
-  //   renderDropdown({
-  //     href: '#!',
-  //     disabled: true,
-  //     'is-on-dark': true,
-  //     'is-alternate': true,
-  //     variation: 'ghost',
-  //   });
-  //   const link = screen.getByRole('link');
-  //   expect(link.hasAttribute('href')).toBe(false);
-  //   expect(link.classList.contains('ds-c-button--ghost')).toBe(true);
-  //   expect(link.classList.contains('ds-c-button--on-dark')).toBe(true);
-  //   expect(link.classList.contains('ds-c-button--alternate')).toBe(true);
-  //   expect(link.classList.contains('ds-c-button')).toBe(true);
-  // });
+  it('fires a custom ds-change event', () => {
+    renderDropdown();
 
-  // it('fires a custom click event on click', () => {
-  //   renderDropdown();
-  //   const buttonRoot = document.querySelector('ds-button');
-  //   const buttonEl = screen.getByRole('button');
-  //   const mockHandler = jest.fn();
-  //   buttonRoot.addEventListener('ds-click', mockHandler);
-  //   fireEvent.click(buttonEl);
-  //   expect(mockHandler).toHaveBeenCalledTimes(1);
-  //   buttonRoot.removeEventListener('ds-click', mockHandler);
-  // });
+    const dropdownRoot = document.querySelector('ds-dropdown');
+    const mockHandler = jest.fn();
+    dropdownRoot.addEventListener('ds-change', mockHandler);
 
-  // it('fires a custom analytics event on click', () => {
-  //   renderDropdown({ analytics: 'true' });
-  //   const buttonRoot = document.querySelector('ds-button');
-  //   const buttonEl = screen.getByRole('button');
-  //   const mockHandler = jest.fn();
-  //   buttonRoot.addEventListener('ds-analytics-event', mockHandler);
-  //   fireEvent.click(buttonEl);
-  //   expect(mockHandler).toHaveBeenCalledTimes(1);
-  //   buttonRoot.removeEventListener('ds-analytics-event', mockHandler);
-  // });
+    const button = screen.getByRole('button');
+    userEvent.click(button);
+    userEvent.keyboard('{arrowdown}');
+    userEvent.keyboard('{enter}');
+
+    expect(mockHandler).toHaveBeenCalledTimes(1);
+    dropdownRoot.removeEventListener('ds-change', mockHandler);
+  });
+
+  it('fires a custom ds-blur event', async () => {
+    renderDropdown();
+
+    const dropdownRoot = document.querySelector('ds-dropdown');
+    const onBlur = jest.fn();
+    const onChange = jest.fn();
+    dropdownRoot.addEventListener('ds-blur', onBlur);
+    dropdownRoot.addEventListener('ds-change', onChange);
+
+    const button = screen.getByRole('button');
+    userEvent.click(button);
+    userEvent.tab();
+
+    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+    await act(async () => {
+      await sleep(40);
+    });
+
+    expect(onBlur).toHaveBeenCalledTimes(1);
+    expect(onChange).not.toHaveBeenCalled();
+    dropdownRoot.removeEventListener('ds-blur', onBlur);
+    dropdownRoot.removeEventListener('ds-change', onChange);
+  });
 });

@@ -129,10 +129,15 @@ const Template = (args) => {
     const onChange = (event) => {
       action('ds-change')(event);
     };
+    const onBlur = (event) => {
+      action('ds-blur')(event);
+    };
     const dropdown = document.querySelector('ds-dropdown');
     dropdown.addEventListener('ds-change', onChange);
+    dropdown.addEventListener('ds-blur', onBlur);
     return () => {
       dropdown.removeEventListener('ds-change', onChange);
+      dropdown.removeEventListener('ds-blur', onBlur);
     };
   });
   return (
