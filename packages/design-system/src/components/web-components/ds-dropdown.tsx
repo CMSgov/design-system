@@ -40,8 +40,11 @@ declare global {
 }
 /* eslint-enable */
 
-interface WrapperProps extends Omit<DropdownProps, 'options' | 'autoFocus'> {
+interface WrapperProps
+  extends Omit<DropdownProps, 'options' | 'autoFocus' | 'disabled' | 'ariaDisabled'> {
   autofocus?: string;
+  ariaDisabled?: string;
+  disabled?: string;
   options?: string | DropdownProps['options'];
   rootId?: string;
 }
