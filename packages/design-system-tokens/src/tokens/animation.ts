@@ -2,7 +2,7 @@
  * CMSDS Animation Tokens
  */
 import { AnimationTokens, to } from '../lib/types';
-import time from './time';
+import {time} from './time';
 
 const SPEED_BASE = 1;
 
