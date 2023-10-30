@@ -1,14 +1,16 @@
 @use '../layout' as *;
 
 .ds-c-label {
-  font-weight: var(--font-weight-bold);
+  font-family: var(--label__font-family);
+  font-size: var(--label__font-size);
+  font-weight: var(--label__font-weight);
   max-width: var(--form__max-width);
   // Remove default padding on <legend> elements:
   padding: 0;
 }
 
 .ds-c-label--inverse {
-  color: var(--form-label__color--inverse);
+  color: var(--label__color--inverse);
 }
 
 // Applies to "Checkbox & Radio" and "Date field"

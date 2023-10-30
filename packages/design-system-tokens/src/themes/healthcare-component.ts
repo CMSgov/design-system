@@ -324,7 +324,6 @@ export const components: AnyTokenValues = {
     '__max-width':                                '460px',
     '__max-width--small':                         '6em',
     '__max-width--medium':                        '12em',
-    '-label__color--inverse':                     t.color['base-inverse'],
     '-hint__color':                               t.color['muted'],
     '-hint__color--inverse':                      t.color['muted-inverse'],
     '-error__color':                              t.color['error'],
@@ -341,6 +340,13 @@ export const components: AnyTokenValues = {
 
   'inset': {
     '__border-width':                             t.spacer['half']
+  },
+
+  'label': {
+    '__color--inverse':                           t.color['base-inverse'],
+    '__font-family':                              'inherit',
+    '__font-size':                                'inherit',
+    '__font-weight':                              t.font['weight-bold'],
   },
 
   'link': {
@@ -455,7 +461,7 @@ export const components: AnyTokenValues = {
   },
 
   'typography-body': {
-    '__font-family':                              t.font['family-open-sans'],
+    '__font-family':                              t.font['sans'],
   },
 
   'usa-banner': {

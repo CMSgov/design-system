@@ -315,7 +315,6 @@ export const components: AnyTokenValues = {
   },
 
   'form': {
-    '-label__color--inverse':                     t.color['base-inverse'],
     '__max-width':                                '460px',
     '__max-width--small':                         '6em',
     '__max-width--medium':                        '12em',
@@ -331,6 +330,13 @@ export const components: AnyTokenValues = {
     '__color--primary':                           t.color['primary'],
     '__color--success':                           t.color['success'],
     '__color--warn':                              t.color['warn'],
+  },
+
+  'label': {
+    '__color--inverse':                           t.color['base-inverse'],
+    '__font-family':                              'inherit',
+    '__font-size':                                'inherit',
+    '__font-weight':                              t.font['weight-bold'],
   },
 
   'link': {
@@ -445,7 +451,7 @@ export const components: AnyTokenValues = {
   },
 
   'typography-body': {
-    'font-family':                                t.font['family-open-sans'],
+    'font-family':                                t.font['sans'],
   },
 
   'usa-banner': {

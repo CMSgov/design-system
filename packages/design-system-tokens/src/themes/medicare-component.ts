@@ -330,7 +330,6 @@ export const components: AnyTokenValues = {
   },
   
   'form': {
-    '-label__color--inverse':                     t.color['base-inverse'],
     '__max-width':                                '460px',
     '__max-width--small':                         '6em',
     '__max-width--medium':                        '12em',
@@ -348,6 +347,13 @@ export const components: AnyTokenValues = {
     '__color--primary':                           t.color['primary'],
     '__color--success':                           t.color['success'],
     '__color--warn':                              t.color['warn'],
+  },
+
+  'label': {
+    '__color--inverse':                           t.color['base-inverse'],
+    '__font-family':                              t.font['montserrat'],
+    '__font-size':                                t.font['size-sm'],
+    '__font-weight':                              t.font['weight-bold'], // the medicare override used to be "semibold", but those weights are the same in medicare
   },
   
   'link': {
@@ -457,7 +463,7 @@ export const components: AnyTokenValues = {
   },
 
   'typography-heading': {
-    '__font-family':                              t.font['family-montserrat'],
+    '__font-family':                              t.font['montserrat'],
     '__font-weight':                              t.font['weight-semibold'],
     '-4xl__font-weight':                          t.font['weight-semibold'],
     '-3xl__font-weight':                          t.font['weight-semibold'],
