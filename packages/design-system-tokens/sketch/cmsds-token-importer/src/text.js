@@ -137,9 +137,6 @@ function updateComponentTextStyles(
       ? parseKerning(rawValues.kerning, fontSize)
       : defaultTextStyle.kerning;
     const textTransform = rawValues.textTransform ?? defaultTextStyle.textTransform;
-    if (rawValues.kerning) {
-      console.log(rawValues.kerning, kerning);
-    }
 
     const style = new sketch.Style({
       fontFamily,
