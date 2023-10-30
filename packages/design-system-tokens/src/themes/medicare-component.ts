@@ -354,6 +354,8 @@ export const components: AnyTokenValues = {
     '__font-family':                              t.font['montserrat'],
     '__font-size':                                t.font['size-sm'],
     '__font-weight':                              t.font['weight-bold'], // the medicare override used to be "semibold", but those weights are the same in medicare
+    '__letter-spacing':                           '0.5px',
+    '__text-transform':                           'uppercase',
   },
   
   'link': {
@@ -473,7 +475,7 @@ export const components: AnyTokenValues = {
   },
 
   'typography-body': {
-    '__font-family':                              t.font['family-rubik'],
+    '__font-family':                              t.font['rubik'],
   },
 
   'usa-banner': {

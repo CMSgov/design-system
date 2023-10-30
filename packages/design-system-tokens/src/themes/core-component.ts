@@ -337,6 +337,8 @@ export const components: AnyTokenValues = {
     '__font-family':                              'inherit',
     '__font-size':                                'inherit',
     '__font-weight':                              t.font['weight-bold'],
+    '__letter-spacing':                           'inherit',
+    '__text-transform':                           'inherit',
   },
 
   'link': {

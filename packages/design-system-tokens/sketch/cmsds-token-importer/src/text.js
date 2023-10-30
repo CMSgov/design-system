@@ -51,6 +51,10 @@ function parseFontFamily(tokenValue) {
   return tokenValue.split(',')[0].replaceAll('"', '').replaceAll("'", '').trim();
 }
 
+function parseKerning(tokenValue) {
+  return parseFontSize(tokenValue);
+}
+
 /**
  * Creates the equivalent of the CSS reset styles for text to be used in all
  * the places where more specific text styles do not exist. Can be used in
@@ -68,6 +72,8 @@ function createBaseStyle(themeTokens) {
     fontWeight,
     textColor: themeTokens.color.base,
     lineHeight,
+    kerning: 0,
+    textTransform: 'none',
   });
 }
 
@@ -77,6 +83,8 @@ const tokenNamePatterns = {
   fontWeight: /^(.*)__font-weight(.*)$/,
   fontFamily: /^(.*)__font-family(.*)$/,
   lineHeight: /^(.*)__line-height(.*)$/,
+  kerning: /^(.*)__letter-spacing(.*)$/,
+  textTransform: /^(.*)__text-transform(.*)$/,
 };
 
 /**
@@ -125,6 +133,10 @@ function updateComponentTextStyles(
     const lineHeight = rawValues.lineHeight
       ? parseLineHeight(rawValues.lineHeight, fontSize)
       : defaultTextStyle.lineHeight;
+    const kerning = rawValues.kerning
+      ? parseKerning(rawValues.kerning, fontSize)
+      : defaultTextStyle.kerning;
+    const textTransform = rawValues.textTransform ?? defaultTextStyle.textTransform;
 
     const style = new sketch.Style({
       fontFamily,
@@ -132,6 +144,8 @@ function updateComponentTextStyles(
       fontWeight,
       textColor,
       lineHeight,
+      kerning,
+      textTransform,
     });
 
     const name = `${folder}/${textStyleName}`;
