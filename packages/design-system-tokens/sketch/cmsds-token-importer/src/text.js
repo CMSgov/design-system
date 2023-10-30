@@ -6,7 +6,7 @@ function parseFontSize(tokenValue) {
     if (tokenValue.includes('rem')) {
       return parseFloat(tokenValue) * 16;
     } else {
-      return parseInt(tokenValue, 10);
+      return parseFloat(tokenValue);
     }
   }
 
@@ -137,6 +137,9 @@ function updateComponentTextStyles(
       ? parseKerning(rawValues.kerning, fontSize)
       : defaultTextStyle.kerning;
     const textTransform = rawValues.textTransform ?? defaultTextStyle.textTransform;
+    if (rawValues.kerning) {
+      console.log(rawValues.kerning, kerning);
+    }
 
     const style = new sketch.Style({
       fontFamily,

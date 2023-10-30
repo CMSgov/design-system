@@ -2102,7 +2102,7 @@ function __skpm_run(key, context) {
               if (tokenValue.includes('rem')) {
                 return parseFloat(tokenValue) * 16;
               } else {
-                return parseInt(tokenValue, 10);
+                return parseFloat(tokenValue);
               }
             }
 
@@ -2259,6 +2259,11 @@ function __skpm_run(key, context) {
                 _rawValues$textTransf !== void 0
                   ? _rawValues$textTransf
                   : defaultTextStyle.textTransform;
+
+              if (rawValues.kerning) {
+                console.log(rawValues.kerning, kerning);
+              }
+
               var style = new sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Style({
                 fontFamily: fontFamily,
                 fontSize: fontSize,
