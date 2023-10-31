@@ -107,7 +107,7 @@ export interface TooltipProps {
  */
 export const Tooltip = (props: TooltipProps) => {
   const popper = useRef(null);
-  const id = useId('tooltip-trigger--', props.id);
+  const contentId = useId('tooltip-trigger--', props.id);
   const triggerElement = useRef(null);
   const tooltipElement = useRef(null);
 
@@ -212,7 +212,7 @@ export const Tooltip = (props: TooltipProps) => {
       className,
       component,
       dialog,
-      // id,
+      id,
       offset,
       onClose,
       onOpen,
@@ -257,12 +257,11 @@ export const Tooltip = (props: TooltipProps) => {
           onBlur: (event) => handleBlur(event),
         };
 
-    console.log('🐶 ', id);
     return (
       <TriggerComponent
         type={TriggerComponent === 'button' ? 'button' : undefined}
         aria-label={ariaLabel || undefined}
-        aria-describedby={id}
+        aria-describedby={contentId}
         className={triggerClasses}
         ref={setTriggerElement}
         {...others}
@@ -300,7 +299,7 @@ export const Tooltip = (props: TooltipProps) => {
 
     const tooltipContent = (
       <div
-        id={id}
+        id={contentId}
         tabIndex={dialog ? -1 : null}
         ref={setTooltipElement}
         className={classNames('ds-c-tooltip', { 'ds-c-tooltip--inverse': inversed })}

@@ -8,7 +8,5 @@ import { useRef } from 'react';
  * our own with `useRef` and lodash.
  */
 export default function useId(prefix?: string, providedId?: string) {
-  console.log('📏 ', providedId);
-  console.log('🍕 ', uniqueId(prefix));
   return useRef(providedId ?? uniqueId(prefix)).current;
 }
