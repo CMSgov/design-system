@@ -11,7 +11,7 @@ export const fontFamily = to<FontTokens>()({
 });
 
 export const fontSize = to<FontTokens>()({
-  '10': '0.875rem',
+  '10': '.875rem',
   '20': '1rem',
   '30': '1.125rem',
   '40': '1.3125rem',

@@ -86,7 +86,7 @@
 --font-montserrat: Montserrat, Avenir, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
 --font-rubik: Rubik, Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', source-sans-pro, sans-serif;
 --font-size-base: 1rem;
---font-size-sm: 0.875rem;
+--font-size-sm: .875rem;
 --font-size-md: 1rem;
 --font-size-lg: 1.25rem;
 --font-size-xl: 1.5rem;
@@ -416,7 +416,7 @@
 --icon__color--warn: #f8c41f;
 --label__color--inverse: #ffffff;
 --label__font-family: Montserrat, Avenir, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
---label__font-size: 0.875rem;
+--label__font-size: .875rem;
 --label__font-weight: 600;
 --label__letter-spacing: 0.5px;
 --label__text-transform: uppercase;
@@ -504,6 +504,20 @@
 --typography-heading-lg__font-weight: 600;
 --typography-heading-md__font-weight: 600;
 --typography-heading-sm__font-weight: 600;
+--typography-heading-base__font-size: 1rem;
+--typography-heading-sm__font-size: .875rem;
+--typography-heading-md__font-size: 1rem;
+--typography-heading-lg__font-size: 1.25rem;
+--typography-heading-xl__font-size: 1.5rem;
+--typography-heading-2xl__font-size--mobile: 1.75rem;
+--typography-heading-2xl__font-size: 2rem;
+--typography-heading-3xl__font-size--mobile: 1.875rem;
+--typography-heading-3xl__font-size: 2.5rem;
+--typography-heading-4xl__font-size--mobile: 2.5rem;
+--typography-heading-4xl__font-size: 2.75rem;
+--typography-heading-5xl__font-size--mobile: 2.5rem;
+--typography-heading-5xl__font-size--tablet: 2.75rem;
+--typography-heading-5xl__font-size: 3.125rem;
 --typography-body__font-family: Rubik, Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', source-sans-pro, sans-serif;
 --usa-banner__background-color: #f2f2f2;
 --usa-banner__color: #404040;
@@ -511,7 +525,7 @@
 --usa-banner-gutter-width: 32px;
 --usa-banner-heading__font-family: Rubik, Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', source-sans-pro, sans-serif;
 --usa-banner-heading__line-height: 1.1;
---usa-banner-heading__font-size: 0.875rem;
+--usa-banner-heading__font-size: .875rem;
 --usa-banner-panel__font-family: Rubik, Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', source-sans-pro, sans-serif;
 --usa-banner-panel__line-height: 1.5;
 --usa-banner-panel__font-size: 1rem;
