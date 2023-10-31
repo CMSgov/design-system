@@ -324,7 +324,6 @@ export const components: AnyTokenValues = {
     '__max-width':                                '460px',
     '__max-width--small':                         '6em',
     '__max-width--medium':                        '12em',
-    '-label__color--inverse':                     t.color['base-inverse'],
     '-hint__color':                               t.color['muted'],
     '-hint__color--inverse':                      t.color['muted-inverse'],
     '-error__color':                              t.color['error'],
@@ -341,6 +340,15 @@ export const components: AnyTokenValues = {
 
   'inset': {
     '__border-width':                             t.spacer['half']
+  },
+
+  'label': {
+    '__color--inverse':                           t.color['base-inverse'],
+    '__font-family':                              'inherit',
+    '__font-size':                                'inherit',
+    '__font-weight':                              t.font['weight-bold'],
+    '__letter-spacing':                           'inherit',
+    '__text-transform':                           'inherit',
   },
 
   'link': {
@@ -444,15 +452,32 @@ export const components: AnyTokenValues = {
     '-trigger__color':                            t.color['primary'],
   },
 
-  'typography': {
-    '-heading__font-family':                      'inherit',
-    '-heading__font-weight':                      t.font['weight-bold'],
-    '-heading-4xl__font-weight':                  'inherit',
-    '-heading-3xl__font-weight':                  'inherit',
-    '-heading-lg__font-weight':                   t.font['weight-bold'],
-    '-heading-md__font-weight':                   t.font['weight-bold'],
-    '-heading-sm__font-weight':                   t.font['weight-normal'],
-    '-body__font-family':                         t.font['family-open-sans'],
+  'typography-heading': {
+    '__font-family':                              'inherit',
+    '__font-weight':                              t.font['weight-bold'],
+    '-4xl__font-weight':                          'inherit',
+    '-3xl__font-weight':                          'inherit',
+    '-lg__font-weight':                           t.font['weight-bold'],
+    '-md__font-weight':                           t.font['weight-bold'],
+    '-sm__font-weight':                           t.font['weight-normal'],
+    '-sm__font-size':                             t.font['size-sm'],
+    '-base__font-size':                           t.font['size-base'],
+    '-md__font-size':                             t.font['size-md'],
+    '-lg__font-size':                             t.font['size-lg'],
+    '-xl__font-size':                             t.font['size-xl'],
+    '-2xl__font-size--mobile':                    t.font['size-2xl--mobile'],
+    '-2xl__font-size':                            t.font['size-2xl'],
+    '-3xl__font-size--mobile':                    t.font['size-3xl--mobile'],
+    '-3xl__font-size':                            t.font['size-3xl'],
+    '-4xl__font-size--mobile':                    t.font['size-4xl--mobile'],
+    '-4xl__font-size':                            t.font['size-4xl'],
+    '-5xl__font-size--mobile':                    t.font['size-5xl--mobile'],
+    '-5xl__font-size--tablet':                    t.font['size-5xl--tablet'],
+    '-5xl__font-size':                            t.font['size-5xl'],
+  },
+
+  'typography-body': {
+    '__font-family':                              t.font['sans'],
   },
 
   'usa-banner': {
