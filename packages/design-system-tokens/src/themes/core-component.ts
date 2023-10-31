@@ -467,7 +467,7 @@ export const components: AnyTokenValues = {
   },
 
   'typography-body': {
-    'font-family':                                t.font['sans'],
+    '__font-family':                              t.font['sans'],
   },
 
   'usa-banner': {

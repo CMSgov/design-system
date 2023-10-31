@@ -507,7 +507,7 @@
 --typography-heading-5xl__font-size--mobile: 2.25rem;
 --typography-heading-5xl__font-size--tablet: 3rem;
 --typography-heading-5xl__font-size: 3.75rem;
---typography-bodyfont-family: 'Open Sans', Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+--typography-body__font-family: 'Open Sans', Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
 --usa-banner__background-color: #f2f2f2;
 --usa-banner__color: #262626;
 --usa-banner__max-width: 1104px;
