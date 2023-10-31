@@ -59,6 +59,24 @@ export const IconTrigger: Story = {
   },
 };
 
+export const idTest: Story = {
+  render: function Component(args) {
+    return (
+      <>
+        <p className="ds-u-margin--0 ds-u-display--inline">Tooltip with icon trigger</p>
+        <Tooltip {...(args as any)} />
+      </>
+    );
+  },
+  args: {
+    ariaLabel: 'Label describing the subject of the tooltip',
+    id: 'test-id-foo',
+    className: 'ds-c-tooltip__trigger-icon ds-u-display--inline',
+    title: 'Tooltip trigger uses <TooltipIcon> for the trigger content',
+    children: <TooltipIcon />,
+  },
+};
+
 export const InlineTrigger: Story = {
   render: function Component(args) {
     return (

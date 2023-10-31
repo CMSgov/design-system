@@ -212,7 +212,7 @@ export const Tooltip = (props: TooltipProps) => {
       className,
       component,
       dialog,
-      id,
+      // id,
       offset,
       onClose,
       onOpen,
@@ -257,11 +257,12 @@ export const Tooltip = (props: TooltipProps) => {
           onBlur: (event) => handleBlur(event),
         };
 
+    console.log('🐶 ', id);
     return (
       <TriggerComponent
         type={TriggerComponent === 'button' ? 'button' : undefined}
         aria-label={ariaLabel || undefined}
-        aria-describedby={dialog ? undefined : id}
+        aria-describedby={id}
         className={triggerClasses}
         ref={setTriggerElement}
         {...others}
