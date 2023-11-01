@@ -107,7 +107,7 @@ export interface TooltipProps {
  */
 export const Tooltip = (props: TooltipProps) => {
   const popper = useRef(null);
-  const id = useId('tooltip-trigger--', props.id);
+  const contentId = useId('tooltip-trigger--', props.id);
   const triggerElement = useRef(null);
   const tooltipElement = useRef(null);
 
@@ -261,7 +261,7 @@ export const Tooltip = (props: TooltipProps) => {
       <TriggerComponent
         type={TriggerComponent === 'button' ? 'button' : undefined}
         aria-label={ariaLabel || undefined}
-        aria-describedby={dialog ? undefined : id}
+        aria-describedby={dialog ? undefined : contentId}
         className={triggerClasses}
         ref={setTriggerElement}
         {...others}
@@ -299,7 +299,7 @@ export const Tooltip = (props: TooltipProps) => {
 
     const tooltipContent = (
       <div
-        id={id}
+        id={contentId}
         tabIndex={dialog ? -1 : null}
         ref={setTooltipElement}
         className={classNames('ds-c-tooltip', { 'ds-c-tooltip--inverse': inversed })}
@@ -345,8 +345,8 @@ export const Tooltip = (props: TooltipProps) => {
           <FocusTrap
             active={active}
             focusTrapOptions={{
-              fallbackFocus: () => document.getElementById(`${id}`).parentElement,
-              initialFocus: () => document.getElementById(`${id}`),
+              fallbackFocus: () => document.getElementById(`${contentId}`).parentElement,
+              initialFocus: () => document.getElementById(`${contentId}`),
               clickOutsideDeactivates: true,
             }}
           >
