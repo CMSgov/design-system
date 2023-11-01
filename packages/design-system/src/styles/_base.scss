@@ -156,24 +156,24 @@ $breakpoints: (
 
 @mixin heading--5xl {
   @include heading;
-  font-size: var(--font-size-3xl);
+  font-size: var(--typography-heading-5xl__font-size--mobile);
 
   @media (min-width: $media-width-sm) {
-    font-size: var(--font-size-4xl);
+    font-size: var(--typography-heading-5xl__font-size--tablet);
   }
 
   @media (min-width: $media-width-md) {
-    font-size: var(--font-size-5xl);
+    font-size: var(--typography-heading-5xl__font-size);
   }
 }
 
 @mixin heading--4xl {
   @include heading;
-  font-size: var(--font-size-3xl);
+  font-size: var(--typography-heading-4xl__font-size--mobile);
   font-weight: var(--typography-heading-4xl__font-weight);
 
   @media (min-width: $media-width-md) {
-    font-size: var(--font-size-4xl);
+    font-size: var(--typography-heading-4xl__font-size);
   }
 }
 
@@ -181,40 +181,41 @@ $breakpoints: (
   @include heading;
   @include heading-margins;
 
-  // There's no font size token for the mobile size heading--3xl style
-  // There's no space in our current font size token names to include it (what do you call a token between font-size-2xl and font-size-3xl?)
-  // Related to https://jira.cms.gov/browse/WNMGDS-2174
-  font-size: 1.875rem;
+  font-size: var(--typography-heading-3xl__font-size--mobile);
   font-weight: var(--typography-heading-3xl__font-weight);
 
   @media (min-width: $media-width-md) {
-    font-size: var(--font-size-3xl);
+    font-size: var(--typography-heading-3xl__font-size);
   }
 }
 
 @mixin heading--2xl {
   @include heading;
   @include heading-margins;
-  font-size: var(--font-size-2xl);
+  font-size: var(--typography-heading-2xl__font-size--mobile);
+
+  @media (min-width: $media-width-md) {
+    font-size: var(--typography-heading-2xl__font-size);
+  }
 }
 
 @mixin heading--xl {
   @include heading;
   @include heading-margins;
-  font-size: var(--font-size-xl);
+  font-size: var(--typography-heading-xl__font-size);
 }
 
 @mixin heading--lg {
   @include heading;
   @include heading-margins;
-  font-size: var(--font-size-lg);
+  font-size: var(--typography-heading-lg__font-size);
   font-weight: var(--typography-heading-lg__font-weight);
 }
 
 @mixin heading--md {
   @include heading;
   @include heading-margins;
-  font-size: var(--font-size-md);
+  font-size: var(--typography-heading-md__font-size);
   font-weight: var(--typography-heading-md__font-weight);
 }
 
@@ -222,7 +223,7 @@ $breakpoints: (
   @include heading;
   @include heading-margins;
   color: var(--color-muted);
-  font-size: var(--font-size-sm);
+  font-size: var(--typography-heading-sm__font-size);
   font-weight: var(--typography-heading-sm__font-weight);
 }
 
@@ -327,14 +328,14 @@ $breakpoints: (
 
 .ds-text--lead,
 .ds-text-body--lg {
-  font-size: var(--font-size-lg);
+  font-size: var(--typography-heading-lg__font-size);
 }
 
 .ds-text,
 .ds-text-body--md {
-  font-size: var(--font-size-base);
+  font-size: var(--typography-heading-base__font-size);
 }
 
 .ds-text-body--sm {
-  font-size: var(--font-size-sm);
+  font-size: var(--typography-heading-sm__font-size);
 }

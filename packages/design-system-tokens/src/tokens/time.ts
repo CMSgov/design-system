@@ -4,7 +4,7 @@
 import { TimeTokens, to } from '../lib/types';
 
 // in seconds
-const time = to<TimeTokens>()({
+export const time = to<TimeTokens>()({
   'duration-instantly': 0,
   'duration-immediately': 0.05,
   'duration-faster': 0.25,
@@ -14,5 +14,3 @@ const time = to<TimeTokens>()({
   'duration-second': 1,
   'duration-paused': 3.2,
 });
-
-export default time;

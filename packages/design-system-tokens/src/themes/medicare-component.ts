@@ -330,7 +330,6 @@ export const components: AnyTokenValues = {
   },
   
   'form': {
-    '-label__color--inverse':                     t.color['base-inverse'],
     '__max-width':                                '460px',
     '__max-width--small':                         '6em',
     '__max-width--medium':                        '12em',
@@ -348,6 +347,15 @@ export const components: AnyTokenValues = {
     '__color--primary':                           t.color['primary'],
     '__color--success':                           t.color['success'],
     '__color--warn':                              t.color['warn'],
+  },
+
+  'label': {
+    '__color--inverse':                           t.color['base-inverse'],
+    '__font-family':                              t.font['montserrat'],
+    '__font-size':                                t.font['size-sm'],
+    '__font-weight':                              t.font['weight-bold'], // the medicare override used to be "semibold", but those weights are the same in medicare
+    '__letter-spacing':                           '0.5px',
+    '__text-transform':                           'uppercase',
   },
   
   'link': {
@@ -456,15 +464,32 @@ export const components: AnyTokenValues = {
     '-trigger__color':                            t.color['base'],
   },
 
-  'typography': {
-    '-heading__font-family':                      t.font['family-montserrat'],
-    '-heading__font-weight':                      t.font['weight-semibold'],
-    '-heading-4xl__font-weight':                  t.font['weight-semibold'],
-    '-heading-3xl__font-weight':                  t.font['weight-semibold'],
-    '-heading-lg__font-weight':                   t.font['weight-semibold'],
-    '-heading-md__font-weight':                   t.font['weight-semibold'],
-    '-heading-sm__font-weight':                   t.font['weight-semibold'],
-    '-body__font-family':                         t.font['family-rubik'],
+  'typography-heading': {
+    '__font-family':                              t.font['montserrat'],
+    '__font-weight':                              t.font['weight-semibold'],
+    '-4xl__font-weight':                          t.font['weight-semibold'],
+    '-3xl__font-weight':                          t.font['weight-semibold'],
+    '-lg__font-weight':                           t.font['weight-semibold'],
+    '-md__font-weight':                           t.font['weight-semibold'],
+    '-sm__font-weight':                           t.font['weight-semibold'],
+    '-base__font-size':                           t.font['size-base'],
+    '-sm__font-size':                             t.font['size-sm'],
+    '-md__font-size':                             t.font['size-md'],
+    '-lg__font-size':                             t.font['size-lg'],
+    '-xl__font-size':                             t.font['size-xl'],
+    '-2xl__font-size--mobile':                    t.font['size-2xl--mobile'],
+    '-2xl__font-size':                            t.font['size-2xl'],
+    '-3xl__font-size--mobile':                    t.font['size-3xl--mobile'],
+    '-3xl__font-size':                            t.font['size-3xl'],
+    '-4xl__font-size--mobile':                    t.font['size-4xl--mobile'],
+    '-4xl__font-size':                            t.font['size-4xl'],
+    '-5xl__font-size--mobile':                    t.font['size-5xl--mobile'],
+    '-5xl__font-size--tablet':                    t.font['size-5xl--tablet'],
+    '-5xl__font-size':                            t.font['size-5xl'],
+  },
+
+  'typography-body': {
+    '__font-family':                              t.font['rubik'],
   },
 
   'usa-banner': {
