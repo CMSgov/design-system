@@ -345,8 +345,8 @@ export const Tooltip = (props: TooltipProps) => {
           <FocusTrap
             active={active}
             focusTrapOptions={{
-              fallbackFocus: () => document.getElementById(`${id}`).parentElement,
-              initialFocus: () => document.getElementById(`${id}`),
+              fallbackFocus: () => document.getElementById(`${contentId}`).parentElement,
+              initialFocus: () => document.getElementById(`${contentId}`),
               clickOutsideDeactivates: true,
             }}
           >
