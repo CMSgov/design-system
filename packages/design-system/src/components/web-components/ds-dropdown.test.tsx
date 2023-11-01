@@ -28,12 +28,6 @@ describe('Button', () => {
     expect(button).toHaveAttribute('disabled');
   });
 
-  it('renders disabled', () => {
-    renderDropdown({ disabled: 'true' });
-    const button = screen.getByRole('button');
-    expect(button).toHaveAttribute('disabled');
-  });
-
   it('does not render disabled when passed false', () => {
     renderDropdown({ disabled: 'false' });
     const button = screen.getByRole('button');
