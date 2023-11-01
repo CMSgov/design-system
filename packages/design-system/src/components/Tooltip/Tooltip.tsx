@@ -261,7 +261,7 @@ export const Tooltip = (props: TooltipProps) => {
       <TriggerComponent
         type={TriggerComponent === 'button' ? 'button' : undefined}
         aria-label={ariaLabel || undefined}
-        aria-describedby={contentId}
+        aria-describedby={dialog ? undefined : contentId}
         className={triggerClasses}
         ref={setTriggerElement}
         {...others}
