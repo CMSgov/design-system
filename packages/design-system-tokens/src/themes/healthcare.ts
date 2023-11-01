@@ -2,8 +2,8 @@
  * Healthcare.gov Default CMSDS Theme
  */
 
-import { animation, color, font, measure, media, radius, spacer, z } from '../tokens';
-import { ThemeTokens, ColorTokens, ShadowTokens, AnyTokenValues } from '../lib/types';
+import { animation, color, fontFamily, fontSize, measure, media, radius, spacer, z } from '../tokens';
+import { ThemeTokens, ColorTokens, ShadowTokens, AnyTokenValues, FontTokens } from '../lib/types';
 
 export const themeColors: ColorTokens = {
   //
@@ -100,6 +100,33 @@ export const themeColors: ColorTokens = {
   'visited':                    color['windsor-500'],
 }
 
+const font: FontTokens = {
+  'sans':                       fontFamily['family-open-sans'],
+  'serif':                      fontFamily['family-bitter'],
+  'size-base':                  fontSize['20'],
+  'size-sm':                    fontSize['10'],
+  'size-md':                    fontSize['20'],
+  'size-lg':                    fontSize['30'],
+  'size-xl':                    fontSize['40'],
+  'size-2xl--mobile':           fontSize['50'],
+  'size-2xl':                   fontSize['50'],
+  'size-3xl--mobile':           fontSize['60'],
+  'size-3xl':                   fontSize['70'],
+  'size-4xl--mobile':           fontSize['70'],
+  'size-4xl':                   fontSize['80'],
+  'size-5xl--mobile':           fontSize['70'],
+  'size-5xl--tablet':           fontSize['80'],
+  'size-5xl':                   fontSize['90'],
+  'line-height-reset':          1,
+  'line-height-heading':        1.3,
+  'line-height-base':           1.5,
+  'line-height-lead':           1.7,
+  'weight-light':               300,
+  'weight-normal':              400,
+  'weight-semibold':            600,
+  'weight-bold':                700,
+};
+
 export const shadow: ShadowTokens = {
   'focus':                      `inset 0 0 0 1px ${themeColors['base']}`,
   'focus-inverse':              `inset 0 0 0 1px ${themeColors['base']}`,
@@ -127,11 +154,7 @@ export const global: AnyTokenValues = {
 const healthcareTheme: ThemeTokens = {
   animation,
   color: themeColors,
-  font: {    
-    sans: font['family-open-sans'],
-    serif: font['family-bitter'],
-    ...font,
-  },
+  font,
   global,
   measure,
   media,
