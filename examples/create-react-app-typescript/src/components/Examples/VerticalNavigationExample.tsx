@@ -1,5 +1,5 @@
 import React from 'react';
-import { VerticalNav } from '@cmsgov/design-system';
+import { VerticalNav } from '@cmsgov/ds-healthcare-gov';
 
 function VerticalNavigationExample() {
   return (

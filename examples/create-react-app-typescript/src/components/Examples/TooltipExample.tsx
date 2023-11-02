@@ -1,4 +1,4 @@
-import { Tooltip, TooltipIcon } from '@cmsgov/design-system';
+import { Tooltip, TooltipIcon } from '@cmsgov/ds-healthcare-gov';
 import React from 'react';
 
 function TooltipExample() {

@@ -1,4 +1,4 @@
-import { Button } from '@cmsgov/design-system';
+import { Button } from '@cmsgov/ds-healthcare-gov';
 import React from 'react';
 
 function ButtonExample() {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextField } from '@cmsgov/design-system';
+import { TextField } from '@cmsgov/ds-healthcare-gov';
 
 function MaskedFieldExample() {
   return (

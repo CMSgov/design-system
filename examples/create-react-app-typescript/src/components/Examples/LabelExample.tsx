@@ -1,4 +1,4 @@
-import { Label } from '@cmsgov/design-system';
+import { Label } from '@cmsgov/ds-healthcare-gov';
 import React from 'react';
 
 function LabelExample() {

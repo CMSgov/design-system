@@ -1,4 +1,4 @@
-import { DateField } from '@cmsgov/design-system';
+import { DateField } from '@cmsgov/ds-healthcare-gov';
 import React from 'react';
 
 function DateFieldExample() {
