@@ -56,7 +56,7 @@ const ActionMenu = function (props: ActionMenuProps) {
       ) : (
         <MenuIcon className="ds-u-margin-right--1" />
       )}
-      <span>{props.t('header.menu')}</span>
+      {props.t('header.menu')}
     </Button>
   );
 
