@@ -1,4 +1,4 @@
-import { Alert } from '@cmsgov/ds-healthcare-gov';
+import { Alert } from '@cmsgov/design-system';
 import React from 'react';
 
 function AlertExample() {

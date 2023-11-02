@@ -1,4 +1,4 @@
-import { TabPanel, Tabs } from '@cmsgov/ds-healthcare-gov';
+import { TabPanel, Tabs } from '@cmsgov/design-system';
 import React from 'react';
 
 function TabsExample() {

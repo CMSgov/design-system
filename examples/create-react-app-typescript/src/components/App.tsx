@@ -1,5 +1,5 @@
-import { Header } from '@cmsgov/ds-healthcare-gov';
-import React, { useState } from 'react';
+import { Badge } from '@cmsgov/design-system';
+import React from 'react';
 import AccordionExample from './Examples/AccordionExample';
 import AlertExample from './Examples/AlertExample';
 import AutocompleteExample from './Examples/AutocompleteExample';
@@ -25,11 +25,19 @@ import VerticalNavigationExample from './Examples/VerticalNavigationExample';
 import usflag from '../images/us_flag_small.png';
 
 function App() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   return (
     <div className="ds-base">
-      <Header loggedIn isMenuOpen={isMenuOpen} onMenuToggle={() => setIsMenuOpen(!isMenuOpen)} />
+      <header className="ds-u-padding--3 ds-u-sm-padding--6 ds-u-display--block ds-u-fill--primary-darkest">
+        <h1 className="ds-u-margin--0 ds-u-color--white ds-u-font-size--display ds-u-text-align--center">
+          Hello, world!
+        </h1>
+        <div className="ds-u-text-align--center">
+          <Badge variation="info" size="big">
+            <img className="c-usa-banner__header-flag" src={usflag} alt="U.S. flag" />
+            &nbsp;CMS Design system
+          </Badge>
+        </div>
+      </header>
 
       <div className="ds-l-container">
         <AccordionExample />
