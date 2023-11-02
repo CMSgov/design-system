@@ -51,7 +51,7 @@ export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
    */
   fieldClassName?: string;
   /**
-   * Sets the focus on the button during the first mount
+   * Sets the focus on the dropdown when it is first added to the document.
    */
   autoFocus?: boolean;
   /**
@@ -248,6 +248,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   const buttonProps = {
     ...useButtonProps.buttonProps,
     ...useFormLabelProps.fieldProps,
+    name: undefined,
     className: classNames(
       'ds-c-dropdown__button',
       'ds-c-field',

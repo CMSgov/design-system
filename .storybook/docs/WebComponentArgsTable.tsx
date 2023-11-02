@@ -23,15 +23,14 @@ function getTypeLabel(argType: any) {
       case 'inline-radio':
       case 'select':
         return argType.options?.map(optToCodeBlock);
+      case 'object':
+        return 'See description';
     }
   }
 }
 
 /**
- * A block that displays the story name or title from the of prop
- * - if a story reference is passed, it renders the story name
- * - if a meta reference is passed, it renders the stories' title
- * - if nothing is passed, it defaults to the primary story
+ * A table documenting a web component's supported attributes
  */
 export const WebComponentArgsTable = ({ of }) => {
   const resolvedOf = useOf(of || 'story', ['story', 'meta']);
