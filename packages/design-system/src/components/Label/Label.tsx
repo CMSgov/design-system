@@ -61,11 +61,6 @@ export interface LabelProps {
    * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields](https://design.cms.gov/patterns/Forms/forms/#required-and-optional-fields).
    */
   requirementLabel?: React.ReactNode;
-  /**
-   * @deprecated Please just use `className` instead
-   * @hide-prop [Deprecated]
-   */
-  textClassName?: string;
 }
 
 type LabelComponentProps = React.ComponentPropsWithRef<'label'> &
@@ -84,7 +79,6 @@ export const Label = (props: LabelComponentProps) => {
     component,
     hint,
     hintId,
-    textClassName,
     className,
     inversed,
     errorMessage,
@@ -92,12 +86,6 @@ export const Label = (props: LabelComponentProps) => {
     requirementLabel,
     ...labelProps
   } = props;
-
-  if (process.env.NODE_ENV !== 'production' && textClassName) {
-    console.warn(
-      "[Deprecated]: Please use the 'className' prop instead of 'textClassName'. This prop is deprecated and will be removed in a future release."
-    );
-  }
 
   if (process.env.NODE_ENV !== 'production' && (hint || hintId)) {
     console.warn(
@@ -126,12 +114,7 @@ export const Label = (props: LabelComponentProps) => {
   }
 
   const ComponentType = component;
-  const classes = classNames(
-    'ds-c-label',
-    className,
-    inversed && 'ds-c-label--inverse',
-    textClassName
-  );
+  const classes = classNames('ds-c-label', className, inversed && 'ds-c-label--inverse');
 
   return (
     <>
