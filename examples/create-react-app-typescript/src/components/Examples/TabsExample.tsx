@@ -1,7 +1,7 @@
 import { TabPanel, Tabs } from '@cmsgov/design-system';
 import React from 'react';
 
-function TabsExample(): React.ReactElement {
+function TabsExample() {
   return (
     <div>
       <h2>Tabs Example</h2>

@@ -27,11 +27,10 @@ describe('SingleInputDateField', function () {
     expect(container.querySelector('.ds-c-single-input-date-field')).toBeInTheDocument();
 
     const label = container.querySelector('.ds-c-label');
-    expect(label.querySelectorAll('span')).toHaveLength(2);
-    expect(label.firstElementChild.textContent).toContain('Birthday');
+    expect(label.textContent).toContain('Birthday');
 
-    expect(label.lastElementChild.classList).toContain('ds-c-field__hint');
-    expect(label.lastElementChild.textContent).toContain('Please enter your birthday');
+    const hint = container.querySelector('.ds-c-hint');
+    expect(hint.textContent).toContain('Please enter your birthday');
 
     const mask = container.querySelector('.ds-c-label-mask');
     expect(mask).toBeInTheDocument();
@@ -86,10 +85,13 @@ describe('SingleInputDateField', function () {
     it('renders with picker', () => {
       const { container } = renderPicker();
 
+      const label = container.querySelector('.ds-c-label');
+      const hint = container.querySelector('.ds-c-hint');
+
       expect(
         container.querySelector('.ds-c-single-input-date-field--with-picker')
       ).toBeInTheDocument();
-      expect(container.querySelector('.ds-c-label')).toBeInTheDocument();
+      expect(label).toBeInTheDocument();
       expect(container.querySelector('.ds-c-label-mask')).toBeInTheDocument();
       expect(
         container.querySelector('.ds-c-single-input-date-field__field-wrapper')
@@ -99,6 +101,7 @@ describe('SingleInputDateField', function () {
       const button = screen.getByRole('button');
       expect(button).toBeInTheDocument();
       expect(button).toHaveClass('ds-c-single-input-date-field__button');
+      expect(button).toHaveAttribute('aria-describedby', `${label.id} ${hint.id}`);
       expect(button.firstElementChild.tagName).toBe('svg');
       expect(button.firstElementChild.classList).toContain('ds-c-icon--calendar');
 

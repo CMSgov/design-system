@@ -7,7 +7,8 @@ import { ChangeEvent, useState } from 'react';
 import classNames from 'classnames';
 import { NUM_MONTHS, getMonthNames } from './getMonthNames';
 import { fallbackLocale, getLanguage, t } from '../i18n';
-import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
+import { FormFieldProps, useFormLabel } from '../FormLabel';
+import { Label } from '../Label';
 import useId from '../utilities/useId';
 
 const monthNumbers = (() => {
@@ -30,7 +31,7 @@ interface MonthPickerProps extends FormFieldProps {
    */
   className?: string;
   /**
-   * Variation string to be applied to buttons. See [Button component]({{root}}/components/button/#components.button.react)
+   * Variation string to be applied to buttons. See [Button component](https://design.cms.gov/storybook/?path=/docs/components-button--docs)
    */
   buttonVariation?: ButtonVariation;
   /**
@@ -134,7 +135,7 @@ export const MonthPicker = (props: MonthPickerProps) => {
 
   return (
     <fieldset {...wrapperProps}>
-      <FormLabel {...labelProps} />
+      <Label {...labelProps} />
       <div className="ds-c-month-picker__buttons ds-u-clearfix">
         <Button
           aria-pressed={selectAllPressed}

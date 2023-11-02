@@ -3,7 +3,8 @@ import LabelMask from './LabelMask';
 import Mask from './Mask';
 import TextInput from './TextInput';
 import classNames from 'classnames';
-import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
+import { FormFieldProps, useFormLabel } from '../FormLabel';
+import { Label } from '../Label';
 import useId from '../utilities/useId';
 
 export type TextFieldDefaultValue = string | number;
@@ -38,7 +39,7 @@ export interface BaseTextFieldProps extends Omit<FormFieldProps, 'id'> {
    */
   inputRef?: (...args: any[]) => any;
   /**
-   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
+   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields](https://design.cms.gov/patterns/Forms/forms/#required-and-optional-fields).
    */
   requirementLabel?: React.ReactNode;
   /**
@@ -133,7 +134,7 @@ export const TextField: React.FC<TextFieldProps> = (props: TextFieldProps) => {
 
   return (
     <div {...wrapperProps}>
-      <FormLabel {...labelProps} />
+      <Label {...labelProps} />
       {mask && <Mask mask={mask}>{input}</Mask>}
       {labelMask && <LabelMask labelMask={labelMask}>{input}</LabelMask>}
       {!mask && !labelMask && input}

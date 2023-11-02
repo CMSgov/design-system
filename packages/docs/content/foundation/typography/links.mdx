@@ -17,7 +17,8 @@ import loremIpsumGenerator from '../../../src/helpers/loremIpsumGenerator';
 
 <Alert heading="Typography sizing updates!">
   <p class="ds-c-alert__text">
-    We've updated typography sizing variables and class names to separate semantics from presentation. Read about{' '}
+    We've updated typography sizing variables and class names to separate semantics from
+    presentation. Read about{' '}
     <a href="/migration-guides/agnostic-typography-classes">how you can update</a>.
   </p>
 </Alert>
@@ -29,29 +30,34 @@ The only base HTML element the design system applies styling to is the `<a>` ele
 ### On light background
 
 <EmbeddedExample>
-  <p><a href="javascript:void(0);">This is a text link</a> on a light background.</p>
-  <p><a href="https://design.cms.gov/">This is a visited link</a>.</p>
+  <p>
+    <a href="javascript:void(0);">This is a text link</a> on a light background.
+  </p>
+  <p>
+    <a href="https://design.cms.gov/">This is a visited link</a>.
+  </p>
 </EmbeddedExample>
 
 ### On dark background
 
 <EmbeddedExample>
   <div class="ds-base ds-base--inverse ds-u-padding--1">
-    <p><a href="javascript:void(0);">This is a text link</a> on a dark background.</p>
-    <p><a href="https://design.cms.gov/">This is a visited link</a> on a dark background.</p>
+    <p>
+      <a href="javascript:void(0);">This is a text link</a> on a dark background.
+    </p>
+    <p>
+      <a href="https://design.cms.gov/">This is a visited link</a> on a dark background.
+    </p>
   </div>
 </EmbeddedExample>
 
 ## Code
 
-### Styles
+### Style customization
 
 The following CSS variables can be overridden to customize links:
 
-<ComponentThemeOptions
-  componentname="link"
-/>
-
+<ComponentThemeOptions componentname="link" />
 
 ## Guidance
 
@@ -69,25 +75,23 @@ Never use a link to say “click here.” A nondescript link forces users to bac
 
 <ThemeContent onlyThemes={['healthcare']}>
 
-All links in the body of a page should look like they are clickable from the initial state.  A link that looks clickable could have some different styles depending on if it is a navigational element like an accordion component or a drop down menu. Color alone isn't enough of a style difference for usability and accessibility reason. On hover states also aren't enough for the same reasons ann mobile doesn't have an on hover state.
+All links in the body of a page should look like they are clickable from the initial state. A link that looks clickable could have some different styles depending on if it is a navigational element like an accordion component or a drop down menu. Color alone isn't enough of a style difference for usability and accessibility reason. On hover states also aren't enough for the same reasons ann mobile doesn't have an on hover state.
 
-The standard style for clickable elements is a color change from plain text and underline style.  No matter what element it is, it should appear clickable if it is clickable either through the use of text treatment and/or icon use.
+The standard style for clickable elements is a color change from plain text and underline style. No matter what element it is, it should appear clickable if it is clickable either through the use of text treatment and/or icon use.
 
 - Active: #046792, Open Sans Regular, text-decoration: underline
-- Hover: #057eb2, Open Sans Regular, text-decoration: underline 
-- Visited: #01435f, Open Sans Regular, text-decoration: underline 
-- Usage: Body text links shown in-line with other text on the page. These links will likely link to internal webpages or external websites. 
+- Hover: #057eb2, Open Sans Regular, text-decoration: underline
+- Visited: #01435f, Open Sans Regular, text-decoration: underline
+- Usage: Body text links shown in-line with other text on the page. These links will likely link to internal webpages or external websites.
 - NOTE: If the in-line body text link is associated with bold text, then it should also be bold.
 
 </ThemeContent>
 
-
 <ThemeContent onlyThemes={['medicare']}>
-All links in the body of a page should look like they are clickable from the initial state.  A link that looks clickable could have some different styles depending on if it is a navigational element like an accordion component or a drop down menu. 
+All links in the body of a page should look like they are clickable from the initial state.  A link that looks clickable could have some different styles depending on if it is a navigational element like an accordion component or a drop down menu.
 
 <b>The standard style for clickable elements is an underline style.</b>  No matter what element it is, it should look clickable if it is clickable. Exceptions to this guideline would be navigational elements like top and footer menus, back buttons, and side navigational elements. 
 </ThemeContent>
-
 
 ### When to use
 

@@ -1,0 +1,30 @@
+@use '../layout' as *;
+
+.ds-c-label {
+  font-family: var(--label__font-family);
+  font-size: var(--label__font-size);
+  font-weight: var(--label__font-weight);
+  letter-spacing: var(--label__letter-spacing);
+  max-width: var(--form__max-width);
+  // Remove default padding on <legend> elements:
+  padding: 0;
+  text-transform: var(--label__text-transform);
+}
+
+.ds-c-label--inverse {
+  color: var(--label__color--inverse);
+}
+
+// Applies to "Checkbox & Radio" and "Date field"
+.ds-c-fieldset {
+  // We apply the same margin as a label, since in the context of a fieldset
+  // this would be a <legend>. See .ds-c-fieldset > .ds-c-label for more info.
+  margin: $spacer-3 0 0;
+  min-width: 0;
+}
+
+// Webkit won't render a top margin on a fieldset's <legend>, so we apply
+// the top margin to the fieldset instead.
+.ds-c-fieldset > .ds-c-label:first-child {
+  margin-block-start: 0;
+}

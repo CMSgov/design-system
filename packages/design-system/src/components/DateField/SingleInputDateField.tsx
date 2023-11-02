@@ -8,7 +8,8 @@ import useLabelMask from '../TextField/useLabelMask';
 import useClickOutsideHandler from '../utilities/useClickOutsideHandler';
 import usePressEscapeHandler from '../utilities/usePressEscapeHandler';
 import { DATE_MASK } from '../TextField/useLabelMask';
-import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
+import { FormFieldProps, useFormLabel } from '../FormLabel';
+import { Label } from '../Label';
 import { TextInput } from '../TextField';
 import { t } from '../i18n';
 import useId from '../utilities/useId';
@@ -155,7 +156,7 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
 
   return (
     <div {...wrapperProps}>
-      <FormLabel {...labelProps} />
+      <Label {...labelProps} />
       {labelMask}
       <div className="ds-c-single-input-date-field__field-wrapper">
         <TextInput {...inputProps} />
@@ -165,6 +166,9 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
             onClick={() => setPickerVisible(!pickerVisible)}
             type="button"
             ref={calendarButtonRef}
+            // The `?? ''` after `hintId` is only to support v8.0, which doesn't have a `hintId`.
+            // It can be removed after we're done supporting v8.0.
+            aria-describedby={`${labelProps.id} ${labelProps.hintId ?? ''}`}
           >
             <CalendarIcon
               ariaHidden={false}

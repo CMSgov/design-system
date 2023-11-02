@@ -115,6 +115,123 @@ function __skpm_run(key, context) {
   })(
     /************************************************************************/
     /******/ {
+      /***/ '../../../../themes.json':
+        /*!****************************************************************!*\
+  !*** /Users/patrickwolfert/Projects/design-system/themes.json ***!
+  \****************************************************************/
+        /*! exports provided: core, cmsgov, healthcare, medicare, default */
+        /***/ function (module) {
+          module.exports = JSON.parse(
+            '{"core":{"displayName":"Core","longName":"Design System","packageName":"design-system","urlNpm":"https://www.npmjs.com/package/@cmsgov/design-system"},"cmsgov":{"displayName":"CMS.gov","longName":"CMS.gov Design System","packageName":"ds-cms-gov","urlNpm":"https://www.npmjs.com/package/@cmsgov/ds-cms-gov"},"healthcare":{"displayName":"HealthCare.gov","longName":"Healthcare.gov Design System","packageName":"ds-healthcare-gov","urlNpm":"https://www.npmjs.com/package/@cmsgov/ds-healthcare-gov"},"medicare":{"displayName":"Medicare.gov","longName":"Medicare.gov Design System","packageName":"ds-medicare-gov","urlNpm":"https://www.npmjs.com/package/@cmsgov/ds-medicare-gov"}}'
+          );
+
+          /***/
+        },
+
+      /***/ '../../dist/cmsgov-component.tokens.json':
+        /*!********************************************************************************************************************!*\
+  !*** /Users/patrickwolfert/Projects/design-system/packages/design-system-tokens/dist/cmsgov-component.tokens.json ***!
+  \********************************************************************************************************************/
+        /*! exports provided: accordion, alert, autocomplete, badge, button, button-alt, button-dark, button-dark-alt, button-solid, button-solid-alt, button-solid-dark, button-solid-dark-alt, button-ghost, button-ghost-alt, button-ghost-dark, button-ghost-dark-alt, choice, day-picker, dialog, drawer, dropdown, filter-chip, form, icon, label, link, pagination, review, steplist, spinner, table, tabs, text-input, tooltip, typography-heading, typography-body, usa-banner, vertical-nav, default */
+        /***/ function (module) {
+          module.exports = JSON.parse(
+            '{"accordion":{"__color":"#262626","__background-color":"#e7e9f5","__background-color--hover":"#b6bde0","__border-color":"#f2f2f2","__border-radius":"20px 20px 0 0","__border-width":"1px","-button__color":"#262626","-content__background-color":"#ffffff"},"alert":{"__background-color":"#e7e9f5","__background-color--error":"#fce8ec","__background-color--lightweight":"#ffffff","__background-color--success":"#e7f3e7","__background-color--warn":"#fffce6","__border-left-color":"#0d2499","__border-color--error":"#e31c3d","__border-color--success":"#12890e","__border-color--warn":"#ffe400","__font-color":"#262626","__icon-size":"40px","__padding":"16px","-bar__width":"8px","-link__font-color":"#09196b","-link__font-color--hover":"#07124d","-link__font-color--focus":"#07124d","-link__font-color--active":"#07124d"},"autocomplete":{"__background-color":"#ffffff","__border-color":"#d9d9d9","-item__font-color":"#0d2499","-item__background-color--active":"#0d2499","-item__font-color--active":"#ffffff","-item-message__font-color":"#0d2499"},"badge":{"__background-color":"#f2f2f2","__background-color--alert":"#e31c3d","__background-color--info":"#0d2499","__background-color--success":"#12890e","__background-color--warn":"#ffe400","__font-color":"#262626","__font-color--alert":"#ffffff","__font-color--info":"#ffffff","__font-color--success":"#ffffff","__font-color--warn":"#262626","__border-radius":"4px"},"button":{"__background-color--active":"#e7e9f5","__background-color--disabled":"#f2f2f2","__background-color--hover":"#ffe400","__background-color":"transparent","__border-color--active":"#0d2499","__border-color--disabled":"#d9d9d9","__border-color--hover":"#0d2499","__border-color":"#0d2499","__border-radius":"9999px","__border-width":"2px","__color--active":"#07124d","__color--disabled":"#5a5a5a","__color--hover":"#09196b","__color":"#0d2499","__font-weight":700,"-icon__fill":"currentColor"},"button-alt":{"__background-color--active":"#d9d9d9","__background-color--disabled":"transparent","__background-color--hover":"#ffe400","__background-color":"transparent","__border-color--active":"currentColor","__border-color--disabled":"currentColor","__border-color--hover":"currentColor","__border-color":"currentColor","__color--active":"#07124d","__color--disabled":"#d9d9d9","__color--hover":"#09196b","__color":"#0d2499"},"button-dark":{"__background-color--active":"transparent","__background-color--disabled":"transparent","__background-color--hover":"transparent","__background-color":"transparent","__border-color--active":"currentColor","__border-color--disabled":"currentColor","__border-color--hover":"currentColor","__border-color":"currentColor","__color--active":"#d9d9d9","__color--disabled":"#5a5a5a","__color--hover":"#f2f2f2","__color":"#ffffff"},"button-dark-alt":{"__background-color--active":"transparent","__background-color--disabled":"transparent","__background-color--hover":"transparent","__background-color":"transparent","__border-color--active":"currentColor","__border-color--disabled":"currentColor","__border-color--hover":"currentColor","__border-color":"currentColor","__color--active":"#7bebac","__color--disabled":"#5a5a5a","__color--hover":"#c6f6db","__color":"#ecfcf3"},"button-solid":{"__background-color--active":"#e7e9f5","__background-color--disabled":"#f2f2f2","__background-color--hover":"#ffe400","__background-color":"#0d2499","__border-color--active":"#0d2499","__border-color--disabled":"#d9d9d9","__border-color--hover":"#0d2499","__border-color":"#0d2499","__color--active":"#0d2499","__color--disabled":"#5a5a5a","__color--hover":"#0d2499","__color":"#ffffff"},"button-solid-alt":{"__background-color--active":"#e7e9f5","__background-color--disabled":"#f2f2f2","__background-color--hover":"#ffe400","__background-color":"#0d2499","__border-color--active":"#0d2499","__border-color--disabled":"#d9d9d9","__border-color--hover":"#0d2499","__border-color":"#0d2499","__color--active":"#0d2499","__color--disabled":"#5a5a5a","__color--hover":"#0d2499","__color":"#ffffff"},"button-solid-dark":{"__background-color--active":"#d9d9d9","__background-color--disabled":"#404040","__background-color--hover":"#f2f2f2","__background-color":"#ffffff","__border-color--active":"#d9d9d9","__border-color--disabled":"#404040","__border-color--hover":"#f2f2f2","__border-color":"#ffffff","__color--active":"#262626","__color--disabled":"#262626","__color--hover":"#262626","__color":"#262626"},"button-solid-dark-alt":{"__background-color--active":"#42e288","__background-color--disabled":"#404040","__background-color--hover":"#7bebac","__background-color":"#c6f6db","__border-color--active":"#42e288","__border-color--disabled":"#404040","__border-color--hover":"#7bebac","__border-color":"#c6f6db","__color--active":"#262626","__color--disabled":"#262626","__color--hover":"#262626","__color":"#262626"},"button-ghost":{"__background-color--active":"transparent","__background-color--disabled":"transparent","__background-color--hover":"#ffe400","__background-color":"transparent","__border-color--active":"transparent","__border-color--disabled":"transparent","__border-color--hover":"transparent","__border-color":"transparent","__color--active":"#0d2499","__color--disabled":"#5a5a5a","__color--hover":"#0d2499","__color":"#0d2499"},"button-ghost-alt":{"__background-color--active":"transparent","__background-color--disabled":"transparent","__background-color--hover":"#ffe400","__background-color":"transparent","__border-color--active":"transparent","__border-color--disabled":"transparent","__border-color--hover":"transparent","__border-color":"transparent","__color--active":"#0d2499","__color--disabled":"#5a5a5a","__color--hover":"#0d2499","__color":"#0d2499"},"button-ghost-dark":{"__background-color--active":"transparent","__background-color--disabled":"transparent","__background-color--hover":"transparent","__background-color":"transparent","__border-color--active":"transparent","__border-color--disabled":"transparent","__border-color--hover":"transparent","__border-color":"transparent","__color--active":"#d9d9d9","__color--disabled":"#5a5a5a","__color--hover":"#f2f2f2","__color":"#ffffff"},"button-ghost-dark-alt":{"__background-color--active":"transparent","__background-color--disabled":"transparent","__background-color--hover":"transparent","__background-color":"transparent","__border-color--active":"transparent","__border-color--disabled":"transparent","__border-color--hover":"transparent","__border-color":"transparent","__color--active":"#42e288","__color--disabled":"#5a5a5a","__color--hover":"#7bebac","__color":"#c6f6db"},"choice":{"__background-color":"#ffffff","__background-color--checked":"#0d2499","__background-color--disabled":"#d9d9d9","__background-color--inverse":"#ffffff00","__background-color--disabled--inverse":"#e9ecf126","__border-color":"#262626","__border-color--checked":"#0d2499","__border-color--disabled":"#a6a6a6","__border-color--error":"#262626","__border-color--error--inverse":"#ffffff","__border-color--inverse":"#ffffff","__border-color--left":"#0d2499","__border-color--focus":"#09196b","__border-color--disabled--inverse":"#a6a6a6","__border-radius":"0px","__border-width":"2px","__color--unchecked":"#ffffff","__color--disabled":"#5a5a5a","__size":"32px","__size--small":"20px","__size-radio":"22px","__size-radio--small":"12px","-label__color--disabled":"#5a5a5a","-label__color--disabled--inverse":"#e9ecf1"},"day-picker":{"-button__background-color--hover":"#e7e9f5"},"dialog":{"__background-color":"#ffffff","__padding":"32px","-overlay__background-color":"#00000080","-icon__size":"0.8125rem"},"drawer":{"__animation-timing":"0.3s","__background-color":"#ffffff","__border-color":"#d9d9d9","-close__color":"#000000","-header__background-color":"#f2f2f2","-footer__background-color":"#e7e9f5","-toggle__background-color--hover":"#0d2499","-toggle__color--hover":"#ffffff","-toggle__background-color--hover--inverse":"#ffffff","-toggle__color--hover--inverse":"#404040"},"dropdown":{"__background-color":"#ffffff","-option-group__padding":"24px"},"filter-chip":{"__border-radius":"9999px","__background-color":"#e7e9f5","__border-color":"#0d2499","__color":"#262626","__background-color--active":"#0d2499","__border-color--active":"#0d2499","__color--active":"#ffffff","-icon__color":"#262626","-icon__color-active":"#ffffff","-icon__container-size":"18px"},"form":{"__max-width":"460px","__max-width--small":"6em","__max-width--medium":"12em","-hint__color":"#5a5a5a","-hint__color--inverse":"#e9ecf1","-error__color":"#e31c3d","-error__color--inverse":"#f18e9e"},"icon":{"__color--error":"#e31c3d","__color--inverse":"#ffffff","__color--primary":"#0d2499","__color--success":"#12890e","__color--warn":"#ffe400"},"label":{"__color--inverse":"#ffffff","__font-family":"inherit","__font-size":"inherit","__font-weight":700,"__letter-spacing":"inherit","__text-transform":"inherit"},"link":{"__color":"#0d2499","__color--active":"#262626","__color--hover":"#0d2499","__color--visited":"#4c2c92","-inverse__color":"#ffffff","-inverse__color--active":"#e9ecf1","-inverse__color--hover":"#e9ecf1","-inverse__color--visited":"#e9ecf1","__text-decoration-offset":"4px","__text-decoration-thickness":"2.4px","__text-decoration-thickness--hover":"2.4px"},"pagination":{"-link__color":"#0d2499","-link__color--hover":"#09196b","-link__color--active":"#07124d","-link__color--focus":"#09196b","-link__color--disabled":"#d9d9d9","-current-page__color":"#262626","-overflow__color":"#5a5a5a","-page-count__color":"#5a5a5a"},"review":{"__border-color":"#d9d9d9"},"steplist":{"__color":"#5a5a5a","__color--current":"#0d2499","__background-color--current":"#0d2499","-step__color":"#5a5a5a","-step__border-color":"#d9d9d9","-step__border-color--default":"#5a5a5a","-step__color--current":"#ffffff","-step__color--completed":"#262626","-step__background-color--completed":"#262626"},"spinner":{"__background-color":"#ffffff","__color":"#262626","__background-color--inverse":"#07124d","__color--inverse":"#ffffff"},"table":{"__padding":"16px","__border-color":"#d9d9d9","-header__background-color":"#e7e9f5","-striped__background-color":"#f2f2f2","-striped-header__background-color":"#f2f2f2"},"tabs":{"__border-color":"#d9d9d9","__background-color":"#ffffff","__background-color--hover":"#e7e9f5","__background-color--disabled":"#d9d9d9","__background-color--selected":"#ffffff","__color":"#262626","__color--hover":"#0d2499","__color--active":"#09196b","__color--disabled":"#404040","__color--selected":"#0d2499","__border-color--disabled":"#d9d9d9","__border-color--selected":"#0d2499","-panel__background-color":"#ffffff"},"text-input":{"__line-height":"1.3","__background-color--disabled":"#d9d9d9","__border-width":"2px","__border-width--error":"3px","__border-color":"#262626","__border-color--disabled":"#a6a6a6","__border-color--error":"#e31c3d","__border-color--error--inverse":"#f18e9e","__border-color--inverse":"#000000","__color":"#262626","__divider-color":"#a6a6a6","__padding":"8px","__border-radius":"3px"},"tooltip":{"__background-color":"#ffffff","__border-color":"#404040","__border-color--active":"#0d249940","__border-color--inverse-active":"#ffffff40","__border-width":"1px","__color":"#262626","__box-shadow-color":"#a6a6a6","-icon__color":"#0d2499","-icon__color--inverse":"#ffffff","-trigger__color":"#0d2499"},"typography-heading":{"__font-family":"inherit","__font-weight":700,"-4xl__font-weight":"inherit","-3xl__font-weight":"inherit","-lg__font-weight":700,"-md__font-weight":700,"-sm__font-weight":400,"-base__font-size":"1rem","-sm__font-size":"0.875rem","-md__font-size":"1rem","-lg__font-size":"1.125rem","-xl__font-size":"1.3125rem","-2xl__font-size--mobile":"1.5rem","-2xl__font-size":"1.5rem","-3xl__font-size--mobile":"1.875rem","-3xl__font-size":"2.25rem","-4xl__font-size--mobile":"2.25rem","-4xl__font-size":"3rem","-5xl__font-size--mobile":"2.25rem","-5xl__font-size--tablet":"3rem","-5xl__font-size":"3.75rem"},"typography-body":{"__font-family":"\'Open Sans\', Inter, Roboto, \'Helvetica Neue\', \'Arial Nova\', \'Nimbus Sans\', Arial, sans-serif"},"usa-banner":{"__background-color":"#f2f2f2","__color":"#262626","__max-width":"1104px","-gutter-width":"32px","-heading__font-family":"\'Open Sans\', Inter, Roboto, \'Helvetica Neue\', \'Arial Nova\', \'Nimbus Sans\', Arial, sans-serif","-heading__line-height":"1.1","-heading__font-size":"0.875rem","-panel__font-family":"\'Open Sans\', Inter, Roboto, \'Helvetica Neue\', \'Arial Nova\', \'Nimbus Sans\', Arial, sans-serif","-panel__line-height":1.5,"-panel__font-size":"1rem","-link__color":"#0d2499","-domain-icon__color":"#0d2499","-security-icon__color":"#59ac56","-close-button__background-color--mobile":"#d9d9d9","-close-button__color--mobile":"#0d2499"},"vertical-nav":{"-item__background-color--hover":"#f2f2f2","-item__color--hover":"#0d2499","-item__border-color":"#5a5a5a","-label__color":"#262626","-label-icon__color":"#262626","-label__border-color--current":"#0d2499","-label__color--current":"#0d2499"}}'
+          );
+
+          /***/
+        },
+
+      /***/ '../../dist/cmsgov.tokens.json':
+        /*!**********************************************************************************************************!*\
+  !*** /Users/patrickwolfert/Projects/design-system/packages/design-system-tokens/dist/cmsgov.tokens.json ***!
+  \**********************************************************************************************************/
+        /*! exports provided: animation, color, font, global, measure, media, radius, shadow, spacer, z, default */
+        /***/ function (module) {
+          module.exports = JSON.parse(
+            '{"animation":{"ease-in-out-expo":"cubic-bezier(1, 0, 0, 1)","speed-base":1,"speed-1":"0.25s","speed-2":"0.3s","speed-3":"0.5s","speed-4":"0.8s"},"color":{"white":"#ffffff","black":"#000000","transparent":"#ffffff00","transparent-black-alpha50":"#00000080","transparent-black-alpha25":"#00000040","transparent-white-alpha50":"#ffffff80","transparent-white-alpha25":"#ffffff40","background":"#ffffff","background-dialog":"#ffffff","background-dialog-mask":"#00000080","background-inverse":"#07124d","base":"#262626","base-inverse":"#ffffff","border":"#d9d9d9","border-dark":"#0f1e38","border-inverse":"#ffffff","error-lightest":"#fce8ec","error-lighter":"#f7bbc5","error-light":"#f18e9e","error":"#e31c3d","error-dark":"#cc1937","error-darker":"#9f142b","error-darkest":"#720e1f","focus-light":"#ffffff","focus-dark":"#bd13b8","gray-lightest":"#f2f2f2","gray-lighter":"#d9d9d9","gray-light":"#a6a6a6","gray":"#808080","gray-dark":"#5a5a5a","gray-darker":"#404040","gray-darkest":"#262626","muted":"#5a5a5a","muted-inverse":"#e9ecf1","primary-lightest":"#e7e9f5","primary-lighter":"#b6bde0","primary-light":"#5666b8","primary":"#0d2499","primary-dark":"#0c208a","primary-darker":"#09196b","primary-darkest":"#07124d","secondary-lightest":"#ecfcf3","secondary-lighter":"#c6f6db","secondary-light":"#7bebac","secondary":"#42e288","secondary-dark":"#3bcb7a","secondary-darker":"#2e9e5f","secondary-darkest":"#217144","accent-primary-lightest":"#fffce6","accent-primary-lighter":"#fff7b5","accent-primary-light":"#ffec52","accent-primary":"#ffe400","accent-primary-dark":"#e6cd07","accent-primary-darker":"#b3a006","accent-primary-darkest":"#807204","info-lightest":"#e7e9f5","info-lighter":"#b6bde0","info-light":"#5666b8","info":"#0d2499","info-dark":"#0c208a","info-darker":"#09196b","info-darkest":"#07124d","success-lightest":"#e7f3e7","success-lighter":"#b8dcb7","success-light":"#59ac56","success":"#12890e","success-dark":"#107b0d","success-darker":"#0d600a","success-darkest":"#094507","warn-lightest":"#fffce6","warn-lighter":"#fff7b5","warn-light":"#ffec52","warn":"#ffe400","warn-dark":"#e6cd07","warn-darker":"#b3a006","warn-darkest":"#807204","visited":"#4c2c92"},"font":{"sans":"\'Open Sans\', Inter, Roboto, \'Helvetica Neue\', \'Arial Nova\', \'Nimbus Sans\', Arial, sans-serif","serif":"Bitter, Superclarendon, \'Bookman Old Style\', \'URW Bookman\', \'URW Bookman L\', \'Georgia Pro\', Georgia, serif","size-base":"1rem","size-sm":"0.875rem","size-md":"1rem","size-lg":"1.125rem","size-xl":"1.3125rem","size-2xl--mobile":"1.5rem","size-2xl":"1.5rem","size-3xl--mobile":"1.875rem","size-3xl":"2.25rem","size-4xl--mobile":"2.25rem","size-4xl":"3rem","size-5xl--mobile":"2.25rem","size-5xl--tablet":"3rem","size-5xl":"3.75rem","line-height-reset":1,"line-height-heading":1.3,"line-height-base":1.5,"line-height-lead":1.7,"weight-light":300,"weight-normal":400,"weight-semibold":600,"weight-bold":700},"global":{"article-max-width":"600px","grid-columns":"12","grid-gutter-width":"32px","grid-form-gutter-width":"16px","lead-max-width":"77rem","nav-width":"951px","site-margins":"3rem","site-margins-mobile":"1.5rem","site-max-width":"1104px","text-max-width":"53rem"},"measure":{"narrow":"45ex","base":"65ex","wide":"80ex"},"media":{"width-xs":"0px","width-sm":"544px","width-md":"768px","width-lg":"1024px","width-xl":"1280px"},"radius":{"circle":"100%","default":"3px","large":"8px","medium":"4px","pill":"9999px","small":"2px"},"shadow":{"focus":"inset 0 0 0 1px #262626","focus-inverse":"inset 0 0 0 1px #262626","focus-link":"0 3px #262626","base-offset-x":"2px","base-offset-y":"2px","base-blur-radius":"4px","base-color":"#00000040","base":"2px 2px 4px"},"spacer":{"1":"8px","2":"16px","3":"24px","4":"32px","5":"40px","6":"48px","7":"56px","none":"0px","half":"4px"},"z":{"deep":-99999,"default":1,"drawer":500,"dialog":1000,"popup":6000,"spinner":9050}}'
+          );
+
+          /***/
+        },
+
+      /***/ '../../dist/core-component.tokens.json':
+        /*!******************************************************************************************************************!*\
+  !*** /Users/patrickwolfert/Projects/design-system/packages/design-system-tokens/dist/core-component.tokens.json ***!
+  \******************************************************************************************************************/
+        /*! exports provided: accordion, alert, autocomplete, badge, button, button-alt, button-dark, button-dark-alt, button-solid, button-solid-alt, button-solid-dark, button-solid-dark-alt, button-ghost, button-ghost-alt, button-ghost-dark, button-ghost-dark-alt, choice, day-picker, dialog, drawer, dropdown, filter-chip, form, icon, label, link, pagination, review, steplist, spinner, table, tabs, text-input, tooltip, typography-heading, typography-body, usa-banner, vertical-nav, default */
+        /***/ function (module) {
+          module.exports = JSON.parse(
+            '{"accordion":{"__color":"#262626","__background-color":"#f2f2f2","__background-color--hover":"#d9d9d9","__border-color":"#f2f2f2","__border-radius":0,"__border-width":"4px","-button__color":"#262626","-content__background-color":"#ffffff"},"alert":{"__background-color":"#e6f9fd","__background-color--error":"#fce8ec","__background-color--lightweight":"#ffffff","__background-color--success":"#e7f3e7","__background-color--warn":"#fef9e9","__border-left-color":"#02bfe7","__border-color--error":"#e31c3d","__border-color--success":"#12890e","__border-color--warn":"#f8c41f","__font-color":"#262626","__icon-size":"40px","__padding":"16px","-bar__width":"8px","-link__font-color":"#004f84","-link__font-color--hover":"#00395e","-link__font-color--focus":"#00395e","-link__font-color--active":"#00395e"},"autocomplete":{"__background-color":"#ffffff","__border-color":"#d9d9d9","-item__font-color":"#0071bc","-item__background-color--active":"#00395e","-item__font-color--active":"#ffffff","-item-message__font-color":"#5a5a5a"},"badge":{"__background-color":"#5a5a5a","__background-color--alert":"#e31c3d","__background-color--info":"#0071bc","__background-color--success":"#12890e","__background-color--warn":"#f8c41f","__font-color":"#ffffff","__font-color--alert":"#ffffff","__font-color--info":"#ffffff","__font-color--success":"#ffffff","__font-color--warn":"#262626","__border-radius":"9999px"},"button":{"__background-color--active":"#d9d9d9","__background-color--disabled":"transparent","__background-color--hover":"#f2f2f2","__background-color":"transparent","__border-color--active":"currentColor","__border-color--disabled":"currentColor","__border-color--hover":"currentColor","__border-color":"currentColor","__border-radius":"3px","__border-width":"1px","__color--active":"#00395e","__color--disabled":"#d9d9d9","__color--hover":"#004f84","__color":"#0071bc","__font-weight":700,"-icon__fill":"currentColor"},"button-alt":{"__background-color--active":"#d9d9d9","__background-color--disabled":"transparent","__background-color--hover":"#f2f2f2","__background-color":"transparent","__border-color--active":"currentColor","__border-color--disabled":"currentColor","__border-color--hover":"currentColor","__border-color":"currentColor","__color--active":"#094507","__color--disabled":"#d9d9d9","__color--hover":"#0d600a","__color":"#12890e"},"button-dark":{"__background-color--active":"transparent","__background-color--disabled":"transparent","__background-color--hover":"transparent","__background-color":"transparent","__border-color--active":"currentColor","__border-color--disabled":"currentColor","__border-color--hover":"currentColor","__border-color":"currentColor","__color--active":"#d9d9d9","__color--disabled":"#5a5a5a","__color--hover":"#ffffff","__color":"#f2f2f2"},"button-dark-alt":{"__background-color--active":"transparent","__background-color--disabled":"transparent","__background-color--hover":"transparent","__background-color":"transparent","__border-color--active":"currentColor","__border-color--disabled":"currentColor","__border-color--hover":"currentColor","__border-color":"currentColor","__color--active":"#59ac56","__color--disabled":"#5a5a5a","__color--hover":"#e7f3e7","__color":"#b8dcb7"},"button-solid":{"__background-color--active":"#00395e","__background-color--disabled":"#d9d9d9","__background-color--hover":"#004f84","__background-color":"#0071bc","__border-color--active":"#00395e","__border-color--disabled":"#d9d9d9","__border-color--hover":"#004f84","__border-color":"#0071bc","__color--active":"#ffffff","__color--disabled":"#404040","__color--hover":"#ffffff","__color":"#ffffff"},"button-solid-alt":{"__background-color--active":"#094507","__background-color--disabled":"#d9d9d9","__background-color--hover":"#0d600a","__background-color":"#12890e","__border-color--active":"#094507","__border-color--disabled":"#d9d9d9","__border-color--hover":"#0d600a","__border-color":"#12890e","__color--active":"#ffffff","__color--disabled":"#404040","__color--hover":"#ffffff","__color":"#ffffff"},"button-solid-dark":{"__background-color--active":"#d9d9d9","__background-color--disabled":"#404040","__background-color--hover":"#ffffff","__background-color":"#f2f2f2","__border-color--active":"#d9d9d9","__border-color--disabled":"#404040","__border-color--hover":"#ffffff","__border-color":"#f2f2f2","__color--active":"#262626","__color--disabled":"#262626","__color--hover":"#262626","__color":"#262626"},"button-solid-dark-alt":{"__background-color--active":"#12890e","__background-color--disabled":"#404040","__background-color--hover":"#e7f3e7","__background-color":"#b8dcb7","__border-color--active":"#12890e","__border-color--disabled":"#404040","__border-color--hover":"#e7f3e7","__border-color":"#b8dcb7","__color--active":"#262626","__color--disabled":"#262626","__color--hover":"#262626","__color":"#262626"},"button-ghost":{"__background-color--active":"transparent","__background-color--disabled":"transparent","__background-color--hover":"transparent","__background-color":"transparent","__border-color--active":"transparent","__border-color--disabled":"transparent","__border-color--hover":"transparent","__border-color":"transparent","__color--active":"#00395e","__color--disabled":"#d9d9d9","__color--hover":"#004f84","__color":"#0071bc"},"button-ghost-alt":{"__background-color--active":"transparent","__background-color--disabled":"transparent","__background-color--hover":"transparent","__background-color":"transparent","__border-color--active":"transparent","__border-color--disabled":"transparent","__border-color--hover":"transparent","__border-color":"transparent","__color--active":"#094507","__color--disabled":"#d9d9d9","__color--hover":"#0d600a","__color":"#12890e"},"button-ghost-dark":{"__background-color--active":"transparent","__background-color--disabled":"transparent","__background-color--hover":"transparent","__background-color":"transparent","__border-color--active":"transparent","__border-color--disabled":"transparent","__border-color--hover":"transparent","__border-color":"transparent","__color--active":"#d9d9d9","__color--disabled":"#5a5a5a","__color--hover":"#ffffff","__color":"#f2f2f2"},"button-ghost-dark-alt":{"__background-color--active":"transparent","__background-color--disabled":"transparent","__background-color--hover":"transparent","__background-color":"transparent","__border-color--active":"transparent","__border-color--disabled":"transparent","__border-color--hover":"transparent","__border-color":"transparent","__color--active":"#12890e","__color--disabled":"#5a5a5a","__color--hover":"#e7f3e7","__color":"#b8dcb7"},"choice":{"__background-color":"#ffffff","__background-color--checked":"#0071bc","__background-color--disabled":"#d9d9d9","__background-color--inverse":"#ffffff00","__background-color--disabled--inverse":"#e9ecf126","__border-color":"#262626","__border-color--checked":"#0071bc","__border-color--disabled":"#a6a6a6","__border-color--error":"#262626","__border-color--error--inverse":"#ffffff","__border-color--inverse":"#ffffff","__border-color--left":"#0071bc","__border-color--focus":"#004f84","__border-color--disabled--inverse":"#a6a6a6","__border-radius":"0px","__border-width":"2px","__color--unchecked":"#ffffff","__color--disabled":"#5a5a5a","__size":"32px","__size--small":"20px","__size-radio":"22px","__size-radio--small":"12px","-label__color--disabled":"#5a5a5a","-label__color--disabled--inverse":"#e9ecf1"},"day-picker":{"-button__background-color--hover":"#e6f1f8"},"dialog":{"__background-color":"#ffffff","__padding":"32px","-overlay__background-color":"#00000080","-icon__size":"0.8125rem"},"drawer":{"__animation-timing":"0.3s","__background-color":"#ffffff","__border-color":"#d9d9d9","-close__color":"#000000","-header__background-color":"#f2f2f2","-footer__background-color":"#e6f9fd","-toggle__background-color--hover":"#02bfe7","-toggle__color--hover":"#ffffff","-toggle__background-color--hover--inverse":"#ffffff","-toggle__color--hover--inverse":"#404040"},"dropdown":{"__background-color":"#ffffff","-option-group__padding":"24px"},"filter-chip":{"__border-radius":"9999px","__background-color":"#e6f1f8","__border-color":"#0071bc","__color":"#262626","__background-color--active":"#0071bc","__border-color--active":"#0071bc","__color--active":"#ffffff","-icon__color":"#262626","-icon__color-active":"#ffffff","-icon__container-size":"18px"},"form":{"__max-width":"460px","__max-width--small":"6em","__max-width--medium":"12em","-hint__color":"#5a5a5a","-hint__color--inverse":"#e9ecf1","-error__color":"#e31c3d","-error__color--inverse":"#f7bbc5"},"icon":{"__color--error":"#e31c3d","__color--inverse":"#ffffff","__color--primary":"#0071bc","__color--success":"#12890e","__color--warn":"#f8c41f"},"label":{"__color--inverse":"#ffffff","__font-family":"inherit","__font-size":"inherit","__font-weight":700,"__letter-spacing":"inherit","__text-transform":"inherit"},"link":{"__color":"#0071bc","__color--active":"#00395e","__color--hover":"#004f84","__color--visited":"#4c2c92","-inverse__color":"#ffffff","-inverse__color--active":"#e9ecf1","-inverse__color--hover":"#e9ecf1","-inverse__color--visited":"#e9ecf1","__text-decoration-offset":"auto","__text-decoration-thickness":"1px","__text-decoration-thickness--hover":"1px"},"pagination":{"-link__color":"#0071bc","-link__color--hover":"#004f84","-link__color--active":"#00395e","-link__color--focus":"#004f84","-link__color--disabled":"#d9d9d9","-current-page__color":"#262626","-overflow__color":"#5a5a5a","-page-count__color":"#5a5a5a"},"review":{"__border-color":"#d9d9d9"},"steplist":{"__color":"#5a5a5a","__color--current":"#0071bc","__background-color--current":"#0071bc","-step__color":"#5a5a5a","-step__border-color":"#d9d9d9","-step__border-color--default":"#5a5a5a","-step__color--current":"#ffffff","-step__color--completed":"#262626","-step__background-color--completed":"#262626"},"spinner":{"__background-color":"#ffffff","__color":"#262626","__background-color--inverse":"#00395e","__color--inverse":"#ffffff"},"table":{"__padding":"16px","__border-color":"#000000","-header__background-color":"#f2f2f2","-striped__background-color":"#f2f2f2","-striped-header__background-color":"#f2f2f2"},"tabs":{"__border-color":"#d9d9d9","__background-color":"#ffffff","__background-color--hover":"#ffffff","__background-color--disabled":"#d9d9d9","__background-color--selected":"#ffffff","__color":"#262626","__color--hover":"#0071bc","__color--active":"#004f84","__color--disabled":"#404040","__color--selected":"#0071bc","__border-color--disabled":"#d9d9d9","__border-color--selected":"#0071bc","-panel__background-color":"#ffffff"},"text-input":{"__line-height":"1.3","__background-color--disabled":"#d9d9d9","__border-width":"2px","__border-width--error":"3px","__border-color":"#262626","__border-color--disabled":"#a6a6a6","__border-color--error":"#e31c3d","__border-color--error--inverse":"#f7bbc5","__border-color--inverse":"#000000","__color":"#262626","__divider-color":"#a6a6a6","__padding":"8px","__border-radius":"3px"},"tooltip":{"__background-color":"#ffffff","__border-color":"#404040","__border-color--active":"#0071bc40","__border-color--inverse-active":"#ffffff40","__border-width":"1px","__color":"#262626","__box-shadow-color":"#a6a6a6","-icon__color":"#0071bc","-icon__color--inverse":"#ffffff","-trigger__color":"#0071bc"},"typography-heading":{"__font-family":"inherit","__font-weight":700,"-4xl__font-weight":"inherit","-3xl__font-weight":"inherit","-lg__font-weight":700,"-md__font-weight":700,"-sm__font-weight":400,"-base__font-size":"1rem","-sm__font-size":"0.875rem","-md__font-size":"1rem","-lg__font-size":"1.125rem","-xl__font-size":"1.3125rem","-2xl__font-size--mobile":"1.5rem","-2xl__font-size":"1.5rem","-3xl__font-size--mobile":"1.875rem","-3xl__font-size":"2.25rem","-4xl__font-size--mobile":"2.25rem","-4xl__font-size":"3rem","-5xl__font-size--mobile":"2.25rem","-5xl__font-size--tablet":"3rem","-5xl__font-size":"3.75rem"},"typography-body":{"font-family":"\'Open Sans\', Inter, Roboto, \'Helvetica Neue\', \'Arial Nova\', \'Nimbus Sans\', Arial, sans-serif"},"usa-banner":{"__background-color":"#f2f2f2","__color":"#262626","__max-width":"1104px","-gutter-width":"32px","-heading__font-family":"\'Open Sans\', Inter, Roboto, \'Helvetica Neue\', \'Arial Nova\', \'Nimbus Sans\', Arial, sans-serif","-heading__line-height":"1.1","-heading__font-size":"0.875rem","-panel__font-family":"\'Open Sans\', Inter, Roboto, \'Helvetica Neue\', \'Arial Nova\', \'Nimbus Sans\', Arial, sans-serif","-panel__line-height":1.5,"-panel__font-size":"1rem","-link__color":"#0071bc","-domain-icon__color":"#0071bc","-security-icon__color":"#59ac56","-close-button__background-color--mobile":"#d9d9d9","-close-button__color--mobile":"#0071bc"},"vertical-nav":{"-item__background-color--hover":"#f2f2f2","-item__color--hover":"#0071bc","-item__border-color":"#5a5a5a","-label__color":"#262626","-label-icon__color":"#262626","-label__border-color--current":"#0071bc","-label__color--current":"#0071bc"}}'
+          );
+
+          /***/
+        },
+
+      /***/ '../../dist/core.tokens.json':
+        /*!********************************************************************************************************!*\
+  !*** /Users/patrickwolfert/Projects/design-system/packages/design-system-tokens/dist/core.tokens.json ***!
+  \********************************************************************************************************/
+        /*! exports provided: animation, color, font, global, measure, media, radius, shadow, spacer, z, default */
+        /***/ function (module) {
+          module.exports = JSON.parse(
+            '{"animation":{"ease-in-out-expo":"cubic-bezier(1, 0, 0, 1)","speed-base":1,"speed-1":"0.25s","speed-2":"0.3s","speed-3":"0.5s","speed-4":"0.8s"},"color":{"white":"#ffffff","black":"#000000","transparent":"#ffffff00","transparent-black-alpha50":"#00000080","transparent-black-alpha25":"#00000040","transparent-white-alpha50":"#ffffff80","transparent-white-alpha25":"#ffffff40","background":"#ffffff","background-dialog":"#ffffff","background-dialog-mask":"#00000080","background-inverse":"#00395e","base":"#262626","base-inverse":"#ffffff","border":"#d9d9d9","border-dark":"#0f1e38","border-inverse":"#ffffff","error-lightest":"#fce8ec","error-lighter":"#f7bbc5","error-light":"#eb6077","error":"#e31c3d","error-dark":"#cc1937","error-darker":"#9f142b","error-darkest":"#720e1f","focus-light":"#ffffff","focus-dark":"#bd13b8","gray-lightest":"#f2f2f2","gray-lighter":"#d9d9d9","gray-light":"#a6a6a6","gray":"#808080","gray-dark":"#5a5a5a","gray-darker":"#404040","gray-darkest":"#262626","muted":"#5a5a5a","muted-inverse":"#e9ecf1","primary-lightest":"#e6f1f8","primary-lighter":"#b3d4eb","primary-light":"#4d9cd0","primary":"#0071bc","primary-dark":"#0066a9","primary-darker":"#004f84","primary-darkest":"#00395e","secondary-lightest":"#e7f3e7","secondary-lighter":"#b8dcb7","secondary-light":"#59ac56","secondary":"#12890e","secondary-dark":"#107b0d","secondary-darker":"#0d600a","secondary-darkest":"#094507","accent-primary-lightest":"#fcebe6","accent-primary-lighter":"#f5c3b3","accent-primary-light":"#e7724f","accent-primary":"#dd3603","accent-primary-dark":"#c73103","accent-primary-darker":"#9b2602","accent-primary-darkest":"#6f1b02","info-lightest":"#e6f9fd","info-lighter":"#b3ecf8","info-light":"#4ed2ee","info":"#02bfe7","info-dark":"#02acd0","info-darker":"#0186a2","info-darkest":"#016074","success-lightest":"#e7f3e7","success-lighter":"#b8dcb7","success-light":"#59ac56","success":"#12890e","success-dark":"#107b0d","success-darker":"#0d600a","success-darkest":"#094507","warn-lightest":"#fef9e9","warn-lighter":"#fdedbc","warn-light":"#fad662","warn":"#f8c41f","warn-dark":"#dfb01c","warn-darker":"#ae8916","warn-darkest":"#7c6210","visited":"#4c2c92"},"font":{"sans":"\'Open Sans\', Inter, Roboto, \'Helvetica Neue\', \'Arial Nova\', \'Nimbus Sans\', Arial, sans-serif","serif":"Bitter, Superclarendon, \'Bookman Old Style\', \'URW Bookman\', \'URW Bookman L\', \'Georgia Pro\', Georgia, serif","size-base":"1rem","size-sm":"0.875rem","size-md":"1rem","size-lg":"1.125rem","size-xl":"1.3125rem","size-2xl--mobile":"1.5rem","size-2xl":"1.5rem","size-3xl--mobile":"1.875rem","size-3xl":"2.25rem","size-4xl--mobile":"2.25rem","size-4xl":"3rem","size-5xl--mobile":"2.25rem","size-5xl--tablet":"3rem","size-5xl":"3.75rem","line-height-reset":1,"line-height-heading":1.3,"line-height-base":1.5,"line-height-lead":1.7,"weight-light":300,"weight-normal":400,"weight-semibold":600,"weight-bold":700},"global":{"article-max-width":"600px","grid-columns":"12","grid-gutter-width":"32px","grid-form-gutter-width":"16px","lead-max-width":"77rem","nav-width":"951px","site-margins":"3rem","site-margins-mobile":"1.5rem","site-max-width":"1104px","text-max-width":"53rem"},"measure":{"narrow":"45ex","base":"65ex","wide":"80ex"},"media":{"width-xs":"0px","width-sm":"544px","width-md":"768px","width-lg":"1024px","width-xl":"1280px"},"radius":{"circle":"100%","default":"3px","large":"8px","medium":"4px","pill":"9999px","small":"2px"},"shadow":{"focus":"inset 0 0 0 1px #262626","focus-inverse":"inset 0 0 0 1px #262626","focus-link":"0 3px #262626","base-offset-x":"2px","base-offset-y":"2px","base-blur-radius":"4px","base-color":"#00000040","base":"2px 2px 4px"},"spacer":{"1":"8px","2":"16px","3":"24px","4":"32px","5":"40px","6":"48px","7":"56px","none":"0px","half":"4px"},"z":{"deep":-99999,"default":1,"drawer":500,"dialog":1000,"popup":6000,"spinner":9050}}'
+          );
+
+          /***/
+        },
+
+      /***/ '../../dist/healthcare-component.tokens.json':
+        /*!************************************************************************************************************************!*\
+  !*** /Users/patrickwolfert/Projects/design-system/packages/design-system-tokens/dist/healthcare-component.tokens.json ***!
+  \************************************************************************************************************************/
+        /*! exports provided: accordion, alert, autocomplete, badge, button, button-alt, button-dark, button-dark-alt, button-solid, button-solid-alt, button-solid-dark, button-solid-dark-alt, button-ghost, button-ghost-alt, button-ghost-dark, button-ghost-dark-alt, choice, day-picker, dialog, drawer, dropdown, filter-chip, footer, form, icon, inset, label, link, pagination, review, steplist, spinner, table, tabs, text-input, tooltip, typography-heading, typography-body, usa-banner, vertical-nav, default */
+        /***/ function (module) {
+          module.exports = JSON.parse(
+            '{"accordion":{"__color":"#262626","__background-color":"#ffffff00","__background-color--hover":"#ffffff00","__border-color":"#ffffff00","__border-radius":0,"__border-width":"4px","-button__color":"#046791","-content__background-color":"#ffffff00","-icon__size":"0.875rem"},"alert":{"__background-color":"#ecf4fa","__background-color--error":"#fce8ec","__background-color--lightweight":"#ffffff","__background-color--success":"#e7f3e7","__background-color--warn":"#fef9e9","__border-left-color":"#3e94cf","__border-color--error":"#e31c3d","__border-color--success":"#12890e","__border-color--warn":"#f8c41f","__font-color":"#262626","__icon-size":"40px","__padding":"16px","-bar__width":"8px","-link__font-color":"#034866","-link__font-color--hover":"#023449","-link__font-color--focus":"#023449","-link__font-color--active":"#023449"},"autocomplete":{"__background-color":"#ffffff","__border-color":"#d9d9d9","-item__font-color":"#046791","-item__background-color--active":"#023449","-item__font-color--active":"#ffffff","-item-message__font-color":"#5a5a5a"},"badge":{"__background-color":"#5a5a5a","__background-color--alert":"#e31c3d","__background-color--info":"#046791","__background-color--success":"#12890e","__background-color--warn":"#f8c41f","__font-color":"#ffffff","__font-color--alert":"#ffffff","__font-color--info":"#ffffff","__font-color--success":"#ffffff","__font-color--warn":"#262626","__border-radius":"9999px"},"button":{"__background-color--active":"#023449","__background-color--disabled":"#ffffff","__background-color--hover":"#046791","__background-color":"#ffffff","__border-color--active":"#023449","__border-color--disabled":"currentColor","__border-color--hover":"#046791","__border-color":"currentColor","__border-radius":"3px","__border-width":"2px","__color--active":"#ffffff","__color--disabled":"#d9d9d9","__color--hover":"#ffffff","__color":"#046791","__font-weight":700,"-icon__fill":"currentColor"},"button-alt":{"__background-color--active":"#023449","__background-color--disabled":"#ffffff","__background-color--hover":"#046791","__background-color":"#ffffff","__border-color--active":"#023449","__border-color--disabled":"currentColor","__border-color--hover":"#046791","__border-color":"currentColor","__color--active":"#ffffff","__color--disabled":"#d9d9d9","__color--hover":"#ffffff","__color":"#046791"},"button-dark":{"__background-color--active":"transparent","__background-color--disabled":"transparent","__background-color--hover":"transparent","__background-color":"transparent","__border-color--active":"currentColor","__border-color--disabled":"currentColor","__border-color--hover":"currentColor","__border-color":"currentColor","__color--active":"#d9d9d9","__color--disabled":"#5a5a5a","__color--hover":"#f2f2f2","__color":"#ffffff"},"button-dark-alt":{"__background-color--active":"transparent","__background-color--disabled":"transparent","__background-color--hover":"transparent","__background-color":"transparent","__border-color--active":"currentColor","__border-color--disabled":"currentColor","__border-color--hover":"currentColor","__border-color":"currentColor","__color--active":"#d9d9d9","__color--disabled":"#5a5a5a","__color--hover":"#f2f2f2","__color":"#ffffff"},"button-solid":{"__background-color--active":"#094507","__background-color--disabled":"#d9d9d9","__background-color--hover":"#0d600a","__background-color":"#12890e","__border-color--active":"#094507","__border-color--disabled":"#d9d9d9","__border-color--hover":"#0d600a","__border-color":"#12890e","__color--active":"#ffffff","__color--disabled":"#404040","__color--hover":"#ffffff","__color":"#ffffff"},"button-solid-alt":{"__background-color--active":"#023449","__background-color--disabled":"#d9d9d9","__background-color--hover":"#034866","__background-color":"#046791","__border-color--active":"#023449","__border-color--disabled":"#d9d9d9","__border-color--hover":"#034866","__border-color":"#046791","__color--active":"#ffffff","__color--disabled":"#404040","__color--hover":"#ffffff","__color":"#ffffff"},"button-solid-dark":{"__background-color--active":"#d9d9d9","__background-color--disabled":"#404040","__background-color--hover":"#f2f2f2","__background-color":"#ffffff","__border-color--active":"#d9d9d9","__border-color--disabled":"#404040","__border-color--hover":"#f2f2f2","__border-color":"#ffffff","__color--active":"#262626","__color--disabled":"#262626","__color--hover":"#262626","__color":"#262626"},"button-solid-dark-alt":{"__background-color--active":"#046791","__background-color--disabled":"#404040","__background-color--hover":"#4f95b2","__background-color":"#b4d1de","__border-color--active":"#046791","__border-color--disabled":"#404040","__border-color--hover":"#4f95b2","__border-color":"#b4d1de","__color--active":"#262626","__color--disabled":"#262626","__color--hover":"#262626","__color":"#262626"},"button-ghost":{"__background-color--active":"transparent","__background-color--disabled":"transparent","__background-color--hover":"transparent","__background-color":"transparent","__border-color--active":"transparent","__border-color--disabled":"transparent","__border-color--hover":"transparent","__border-color":"transparent","__color--active":"#023449","__color--disabled":"#d9d9d9","__color--hover":"#034866","__color":"#046791"},"button-ghost-alt":{"__background-color--active":"transparent","__background-color--disabled":"transparent","__background-color--hover":"transparent","__background-color":"transparent","__border-color--active":"transparent","__border-color--disabled":"transparent","__border-color--hover":"transparent","__border-color":"transparent","__color--active":"#023449","__color--disabled":"#d9d9d9","__color--hover":"#034866","__color":"#046791"},"button-ghost-dark":{"__background-color--active":"transparent","__background-color--disabled":"transparent","__background-color--hover":"transparent","__background-color":"transparent","__border-color--active":"transparent","__border-color--disabled":"transparent","__border-color--hover":"transparent","__border-color":"transparent","__color--active":"#d9d9d9","__color--disabled":"#5a5a5a","__color--hover":"#f2f2f2","__color":"#ffffff"},"button-ghost-dark-alt":{"__background-color--active":"transparent","__background-color--disabled":"transparent","__background-color--hover":"transparent","__background-color":"transparent","__border-color--active":"transparent","__border-color--disabled":"transparent","__border-color--hover":"transparent","__border-color":"transparent","__color--active":"#d9d9d9","__color--disabled":"#5a5a5a","__color--hover":"#f2f2f2","__color":"#ffffff"},"choice":{"__background-color":"#ffffff","__background-color--checked":"#046791","__background-color--disabled":"#d9d9d9","__background-color--inverse":"#ffffff00","__background-color--disabled--inverse":"#e9ecf126","__border-color":"#262626","__border-color--checked":"#046791","__border-color--disabled":"#a6a6a6","__border-color--error":"#e31c3d","__border-color--error--inverse":"#eb6077","__border-color--inverse":"#ffffff","__border-color--left":"#046791","__border-color--focus":"#034866","__border-color--disabled--inverse":"#a6a6a6","__border-radius":"0px","__border-width":"2px","__color--unchecked":"#ffffff","__color--disabled":"#5a5a5a","__size":"32px","__size--small":"20px","__size-radio":"22px","__size-radio--small":"12px","-label__color--disabled":"#5a5a5a","-label__color--disabled--inverse":"#e9ecf1"},"day-picker":{"-button__background-color--hover":"#e6f0f4"},"dialog":{"__background-color":"#ffffff","__padding":"32px","-overlay__background-color":"#00000080","-icon__size":"0.8125rem"},"drawer":{"__animation-timing":"0.3s","__background-color":"#ffffff","__border-color":"#d9d9d9","-close__color":"#000000","-header__background-color":"#f2f2f2","-footer__background-color":"#ecf4fa","-toggle__background-color--hover":"#3e94cf","-toggle__color--hover":"#ffffff","-toggle__background-color--hover--inverse":"#ffffff","-toggle__color--hover--inverse":"#404040"},"dropdown":{"__background-color":"#ffffff","-option-group__padding":"24px"},"filter-chip":{"__border-radius":"9999px","__background-color":"#e6f0f4","__border-color":"#046791","__color":"#262626","__background-color--active":"#046791","__border-color--active":"#046791","__color--active":"#ffffff","-icon__color":"#262626","-icon__color-active":"#ffffff","-icon__container-size":"18px"},"footer":{"__list-marker-size":"2px"},"form":{"__max-width":"460px","__max-width--small":"6em","__max-width--medium":"12em","-hint__color":"#5a5a5a","-hint__color--inverse":"#e9ecf1","-error__color":"#e31c3d","-error__color--inverse":"#f7bbc5"},"icon":{"__color--error":"#e31c3d","__color--inverse":"#ffffff","__color--primary":"#046791","__color--success":"#12890e","__color--warn":"#f8c41f"},"inset":{"__border-width":"4px"},"label":{"__color--inverse":"#ffffff","__font-family":"inherit","__font-size":"inherit","__font-weight":700,"__letter-spacing":"inherit","__text-transform":"inherit"},"link":{"__color":"#046791","__color--active":"#023449","__color--hover":"#034866","__color--visited":"#4c2c92","-inverse__color":"#ffffff","-inverse__color--active":"#e9ecf1","-inverse__color--hover":"#e9ecf1","-inverse__color--visited":"#e9ecf1","__text-decoration-offset":"auto","__text-decoration-thickness":"1px","__text-decoration-thickness--hover":"1px"},"pagination":{"-link__color":"#046791","-link__color--hover":"#034866","-link__color--active":"#023449","-link__color--focus":"#034866","-link__color--disabled":"#d9d9d9","-current-page__color":"#262626","-overflow__color":"#5a5a5a","-page-count__color":"#5a5a5a"},"review":{"__border-color":"#d9d9d9"},"steplist":{"__color":"#5a5a5a","__color--current":"#046791","__background-color--current":"#046791","-step__color":"#5a5a5a","-step__border-color":"#d9d9d9","-step__border-color--default":"#5a5a5a","-step__color--current":"#ffffff","-step__color--completed":"#262626","-step__background-color--completed":"#262626"},"spinner":{"__background-color":"#ffffff","__color":"#262626","__background-color--inverse":"#00395e","__color--inverse":"#ffffff"},"table":{"__padding":"16px","__border-color":"#000000","-header__background-color":"#f2f2f2","-striped__background-color":"#f2f2f2","-striped-header__background-color":"#f2f2f2"},"tabs":{"__border-color":"#d9d9d9","__background-color":"#ffffff","__background-color--hover":"#ffffff","__background-color--disabled":"#d9d9d9","__background-color--selected":"#ffffff","__color":"#262626","__color--hover":"#046791","__color--active":"#034866","__color--disabled":"#404040","__color--selected":"#046791","__border-color--disabled":"#d9d9d9","__border-color--selected":"#046791","-panel__background-color":"#ffffff"},"text-input":{"__line-height":"1.3","__background-color--disabled":"#d9d9d9","__border-width":"2px","__border-width--error":"3px","__border-color":"#262626","__border-color--disabled":"#a6a6a6","__border-color--error":"#e31c3d","__border-color--error--inverse":"#eb6077","__border-color--inverse":"#000000","__color":"#262626","__divider-color":"#a6a6a6","__padding":"8px","__border-radius":"0"},"tooltip":{"__background-color":"#ffffff","__border-color":"#404040","__border-color--active":"#04679140","__border-color--inverse-active":"#ffffff40","__border-width":"1px","__color":"#262626","__box-shadow-color":"#a6a6a6","-icon__color":"#046791","-icon__color--inverse":"#ffffff","-trigger__color":"#046791"},"typography-heading":{"__font-family":"inherit","__font-weight":700,"-4xl__font-weight":"inherit","-3xl__font-weight":"inherit","-lg__font-weight":700,"-md__font-weight":700,"-sm__font-weight":400,"-sm__font-size":"0.875rem","-base__font-size":"1rem","-md__font-size":"1rem","-lg__font-size":"1.125rem","-xl__font-size":"1.3125rem","-2xl__font-size--mobile":"1.5rem","-2xl__font-size":"1.5rem","-3xl__font-size--mobile":"1.875rem","-3xl__font-size":"2.25rem","-4xl__font-size--mobile":"2.25rem","-4xl__font-size":"3rem","-5xl__font-size--mobile":"2.25rem","-5xl__font-size--tablet":"3rem","-5xl__font-size":"3.75rem"},"typography-body":{"__font-family":"\'Open Sans\', Inter, Roboto, \'Helvetica Neue\', \'Arial Nova\', \'Nimbus Sans\', Arial, sans-serif"},"usa-banner":{"__background-color":"#f2f2f2","__color":"#262626","__max-width":"1104px","-gutter-width":"32px","-heading__font-family":"\'Open Sans\', Inter, Roboto, \'Helvetica Neue\', \'Arial Nova\', \'Nimbus Sans\', Arial, sans-serif","-heading__line-height":"1.1","-heading__font-size":"0.875rem","-panel__font-family":"\'Open Sans\', Inter, Roboto, \'Helvetica Neue\', \'Arial Nova\', \'Nimbus Sans\', Arial, sans-serif","-panel__line-height":1.5,"-panel__font-size":"1rem","-link__color":"#046791","-domain-icon__color":"#046791","-security-icon__color":"#59ac56","-close-button__background-color--mobile":"#d9d9d9","-close-button__color--mobile":"#046791"},"vertical-nav":{"-item__background-color--hover":"#f2f2f2","-item__color--hover":"#046791","-item__border-color":"#5a5a5a","-label__color":"#262626","-label-icon__color":"#262626","-label__border-color--current":"#046791","-label__color--current":"#046791"}}'
+          );
+
+          /***/
+        },
+
+      /***/ '../../dist/healthcare.tokens.json':
+        /*!**************************************************************************************************************!*\
+  !*** /Users/patrickwolfert/Projects/design-system/packages/design-system-tokens/dist/healthcare.tokens.json ***!
+  \**************************************************************************************************************/
+        /*! exports provided: animation, color, font, global, measure, media, radius, shadow, spacer, z, default */
+        /***/ function (module) {
+          module.exports = JSON.parse(
+            '{"animation":{"ease-in-out-expo":"cubic-bezier(1, 0, 0, 1)","speed-base":1,"speed-1":"0.25s","speed-2":"0.3s","speed-3":"0.5s","speed-4":"0.8s"},"color":{"white":"#ffffff","black":"#000000","transparent":"#ffffff00","transparent-black-alpha50":"#00000080","transparent-black-alpha25":"#00000040","transparent-white-alpha50":"#ffffff80","transparent-white-alpha25":"#ffffff40","background":"#ffffff","background-dialog":"#ffffff","background-dialog-mask":"#00000080","background-inverse":"#00395e","base":"#262626","base-inverse":"#ffffff","border":"#d9d9d9","border-dark":"#0f1e38","border-inverse":"#ffffff","error-lightest":"#fce8ec","error-lighter":"#f7bbc5","error-light":"#eb6077","error":"#e31c3d","error-dark":"#cc1937","error-darker":"#9f142b","error-darkest":"#720e1f","focus-light":"#ffffff","focus-dark":"#dd3603","gray-lightest":"#f2f2f2","gray-lighter":"#d9d9d9","gray-light":"#a6a6a6","gray":"#808080","gray-dark":"#5a5a5a","gray-darker":"#404040","gray-darkest":"#262626","muted":"#5a5a5a","muted-inverse":"#e9ecf1","primary-lightest":"#e6f0f4","primary-lighter":"#b4d1de","primary-light":"#4f95b2","primary":"#046791","primary-dark":"#045d83","primary-darker":"#034866","primary-darkest":"#023449","secondary-lightest":"#e7f3e7","secondary-lighter":"#b8dcb7","secondary-light":"#59ac56","secondary":"#12890e","secondary-dark":"#107b0d","secondary-darker":"#0d600a","secondary-darkest":"#094507","accent-primary-lightest":"#fcebe6","accent-primary-lighter":"#f5c3b3","accent-primary-light":"#e7724f","accent-primary":"#dd3603","accent-primary-dark":"#c73103","accent-primary-darker":"#9b2602","accent-primary-darkest":"#6f1b02","info-lightest":"#ecf4fa","info-lighter":"#c5dff1","info-light":"#78b4dd","info":"#3e94cf","info-dark":"#3885ba","info-darker":"#2b6891","info-darkest":"#1f4a68","success-lightest":"#e7f3e7","success-lighter":"#b8dcb7","success-light":"#59ac56","success":"#12890e","success-dark":"#107b0d","success-darker":"#0d600a","success-darkest":"#094507","warn-lightest":"#fef9e9","warn-lighter":"#fdedbc","warn-light":"#fad662","warn":"#f8c41f","warn-dark":"#dfb01c","warn-darker":"#ae8916","warn-darkest":"#7c6210","visited":"#4c2c92"},"font":{"sans":"\'Open Sans\', Inter, Roboto, \'Helvetica Neue\', \'Arial Nova\', \'Nimbus Sans\', Arial, sans-serif","serif":"Bitter, Superclarendon, \'Bookman Old Style\', \'URW Bookman\', \'URW Bookman L\', \'Georgia Pro\', Georgia, serif","size-base":"1rem","size-sm":"0.875rem","size-md":"1rem","size-lg":"1.125rem","size-xl":"1.3125rem","size-2xl--mobile":"1.5rem","size-2xl":"1.5rem","size-3xl--mobile":"1.875rem","size-3xl":"2.25rem","size-4xl--mobile":"2.25rem","size-4xl":"3rem","size-5xl--mobile":"2.25rem","size-5xl--tablet":"3rem","size-5xl":"3.75rem","line-height-reset":1,"line-height-heading":1.3,"line-height-base":1.5,"line-height-lead":1.7,"weight-light":300,"weight-normal":400,"weight-semibold":600,"weight-bold":700},"global":{"article-max-width":"600px","grid-columns":"12","grid-gutter-width":"32px","grid-form-gutter-width":"16px","lead-max-width":"77rem","nav-width":"951px","site-margins":"3rem","site-margins-mobile":"1.5rem","site-max-width":"1104px","text-max-width":"53rem"},"measure":{"narrow":"45ex","base":"65ex","wide":"80ex"},"media":{"width-xs":"0px","width-sm":"544px","width-md":"768px","width-lg":"1024px","width-xl":"1280px"},"radius":{"circle":"100%","default":"3px","large":"8px","medium":"4px","pill":"9999px","small":"2px"},"shadow":{"focus":"inset 0 0 0 1px #262626","focus-inverse":"inset 0 0 0 1px #262626","focus-link":"0 3px #262626","base-offset-x":"2px","base-offset-y":"2px","base-blur-radius":"4px","base-color":"#00000040","base":"2px 2px 4px"},"spacer":{"1":"8px","2":"16px","3":"24px","4":"32px","5":"40px","6":"48px","7":"56px","none":"0px","half":"4px"},"z":{"deep":-99999,"default":1,"drawer":500,"dialog":1000,"popup":6000,"spinner":9050}}'
+          );
+
+          /***/
+        },
+
+      /***/ '../../dist/medicare-component.tokens.json':
+        /*!**********************************************************************************************************************!*\
+  !*** /Users/patrickwolfert/Projects/design-system/packages/design-system-tokens/dist/medicare-component.tokens.json ***!
+  \**********************************************************************************************************************/
+        /*! exports provided: accordion, alert, autocomplete, badge, button, button-alt, button-dark, button-dark-alt, button-solid, button-solid-alt, button-solid-dark, button-solid-dark-alt, button-ghost, button-ghost-alt, button-ghost-dark, button-ghost-dark-alt, choice, datefield, day-picker, dialog, drawer, dropdown, filter-chip, form, icon, label, link, pagination, review, steplist, spinner, table, tabs, text-input, tooltip, typography-heading, typography-body, usa-banner, vertical-nav, default */
+        /***/ function (module) {
+          module.exports = JSON.parse(
+            '{"accordion":{"__color":"#404040","__background-color":"#f2f2f2","__background-color--hover":"#d9d9d9","__border-color":"#f2f2f2","__border-radius":0,"__border-width":"4px","-button__color":"#404040","-content__background-color":"#ffffff"},"alert":{"__background-color":"#e9ecf1","__background-color--error":"#f7e6e6","__background-color--lightweight":"#ffffff","__background-color--success":"#e7f3e7","__background-color--warn":"#fef9e9","__border-left-color":"#1e3c70","__border-color--error":"#b20000","__border-color--success":"#12890e","__border-color--warn":"#f8c41f","__font-color":"#404040","__icon-size":"40px","__padding":"16px","-bar__width":"8px","-link__font-color":"#1e3c70","-link__font-color--hover":"#1b3665","-link__font-color--focus":"#0f1e38","-link__font-color--active":"#0f1e38"},"autocomplete":{"__background-color":"#ffffff","__border-color":"#d9d9d9","-item__font-color":"#146a5d","-item__background-color--active":"#0f1e38","-item__font-color--active":"#ffffff","-item-message__font-color":"#5a5a5a"},"badge":{"__background-color":"#5a5a5a","__background-color--alert":"#b20000","__background-color--info":"#146a5d","__background-color--success":"#12890e","__background-color--warn":"#f8c41f","__font-color":"#ffffff","__font-color--alert":"#ffffff","__font-color--info":"#ffffff","__font-color--success":"#ffffff","__font-color--warn":"#404040","__border-radius":"9999px"},"button":{"__background-color--active":"#ffffff","__background-color--disabled":"#ffffff","__background-color--hover":"#1b3665","__background-color":"#ffffff","__border-color--active":"#62779b","__border-color--disabled":"currentColor","__border-color--hover":"#1b3665","__border-color":"currentColor","__border-radius":"3px","__border-width":"1px","__color--active":"#62779b","__color--disabled":"#d9d9d9","__color--hover":"#ffffff","__color":"#1e3c70","__font-weight":400,"-icon__fill":"currentColor"},"button-alt":{"__background-color--active":"#ffffff","__background-color--disabled":"#ffffff","__background-color--hover":"#125f54","__background-color":"#ffffff","__border-color--active":"#5b978e","__border-color--disabled":"currentColor","__border-color--hover":"#125f54","__border-color":"currentColor","__color--active":"#5b978e","__color--disabled":"#d9d9d9","__color--hover":"#ffffff","__color":"#146a5d"},"button-dark":{"__background-color--active":"transparent","__background-color--disabled":"transparent","__background-color--hover":"transparent","__background-color":"transparent","__border-color--active":"currentColor","__border-color--disabled":"currentColor","__border-color--hover":"currentColor","__border-color":"currentColor","__color--active":"#d9d9d9","__color--disabled":"#5a5a5a","__color--hover":"#f2f2f2","__color":"#ffffff"},"button-dark-alt":{"__background-color--active":"transparent","__background-color--disabled":"transparent","__background-color--hover":"transparent","__background-color":"transparent","__border-color--active":"currentColor","__border-color--disabled":"currentColor","__border-color--hover":"currentColor","__border-color":"currentColor","__color--active":"#62779b","__color--disabled":"#5a5a5a","__color--hover":"#bcc5d4","__color":"#e9ecf1"},"button-solid":{"__background-color--active":"#5b978e","__background-color--disabled":"#d9d9d9","__background-color--hover":"#125f54","__background-color":"#146a5d","__border-color--active":"#5b978e","__border-color--disabled":"#d9d9d9","__border-color--hover":"#125f54","__border-color":"#146a5d","__color--active":"#ffffff","__color--disabled":"#404040","__color--hover":"#ffffff","__color":"#ffffff"},"button-solid-alt":{"__background-color--active":"#62779b","__background-color--disabled":"#d9d9d9","__background-color--hover":"#1b3665","__background-color":"#1e3c70","__border-color--active":"#62779b","__border-color--disabled":"#d9d9d9","__border-color--hover":"#1b3665","__border-color":"#1e3c70","__color--active":"#ffffff","__color--disabled":"#404040","__color--hover":"#ffffff","__color":"#ffffff"},"button-solid-dark":{"__background-color--active":"#ffffff","__background-color--disabled":"#d9d9d9","__background-color--hover":"#125f54","__background-color":"#ffffff","__border-color--active":"#ffffff","__border-color--disabled":"#d9d9d9","__border-color--hover":"#125f54","__border-color":"#ffffff","__color--active":"#5b978e","__color--disabled":"#404040","__color--hover":"#ffffff","__color":"#146a5d"},"button-solid-dark-alt":{"__background-color--active":"#ffffff","__background-color--disabled":"#d9d9d9","__background-color--hover":"#1b3665","__background-color":"#ffffff","__border-color--active":"#ffffff","__border-color--disabled":"#d9d9d9","__border-color--hover":"#1b3665","__border-color":"#ffffff","__color--active":"#62779b","__color--disabled":"#404040","__color--hover":"#ffffff","__color":"#1e3c70"},"button-ghost":{"__background-color--active":"transparent","__background-color--disabled":"transparent","__background-color--hover":"transparent","__background-color":"transparent","__border-color--active":"transparent","__border-color--disabled":"transparent","__border-color--hover":"transparent","__border-color":"transparent","__color--active":"#62779b","__color--disabled":"#d9d9d9","__color--hover":"#1b3665","__color":"#1e3c70"},"button-ghost-alt":{"__background-color--active":"transparent","__background-color--disabled":"transparent","__background-color--hover":"transparent","__background-color":"transparent","__border-color--active":"transparent","__border-color--disabled":"transparent","__border-color--hover":"transparent","__border-color":"transparent","__color--active":"#5b978e","__color--disabled":"#d9d9d9","__color--hover":"#0e4a41","__color":"#146a5d"},"button-ghost-dark":{"__background-color--active":"transparent","__background-color--disabled":"transparent","__background-color--hover":"transparent","__background-color":"transparent","__border-color--active":"transparent","__border-color--disabled":"transparent","__border-color--hover":"transparent","__border-color":"transparent","__color--active":"#d9d9d9","__color--disabled":"#5a5a5a","__color--hover":"#f2f2f2","__color":"#ffffff"},"button-ghost-dark-alt":{"__background-color--active":"transparent","__background-color--disabled":"transparent","__background-color--hover":"transparent","__background-color":"transparent","__border-color--active":"transparent","__border-color--disabled":"transparent","__border-color--hover":"transparent","__border-color":"transparent","__color--active":"#d9d9d9","__color--disabled":"#5a5a5a","__color--hover":"#f2f2f2","__color":"#ffffff"},"choice":{"__background-color":"#ffffff","__background-color--checked":"#1e3c70","__background-color--disabled":"#d9d9d9","__background-color--inverse":"#ffffff00","__background-color--disabled--inverse":"#e9ecf126","__border-color":"#5a5a5a","__border-color--checked":"#1e3c70","__border-color--disabled":"#a6a6a6","__border-color--error":"#808080","__border-color--error--inverse":"#ffffff","__border-color--hover":"#1e3c70","__border-color--inverse":"#ffffff","__border-color--left":"#146a5d","__border-color--focus":"#0e4a41","__border-color--disabled--inverse":"#a6a6a6","__border-radius":"3px","__border-width":"2px","__color--unchecked":"#ffffff","__color--disabled":"#5a5a5a","__size":"24px","__size--small":"20px","__size-radio":"16px","__size-radio--small":"12px","__translateY":"0.125em","-label__color--disabled":"#5a5a5a","-label__color--disabled--inverse":"#e9ecf1","-wrapper__gap":"1rem","-wrapper__gap--small":"0.75rem"},"datefield":{"-separator__display":"none"},"day-picker":{"-button__background-color--hover":"#e8f0ef"},"dialog":{"__background-color":"#ffffff","__padding":"32px","-overlay__background-color":"#00000080","-icon__size":"1.375rem"},"drawer":{"__animation-timing":"0.3s","__background-color":"#ffffff","__border-color":"#d9d9d9","-close__color":"#000000","-header__background-color":"#ffffff00","-footer__background-color":"#e9ecf1","-toggle__background-color--hover":"#1e3c70","-toggle__color--hover":"#ffffff","-toggle__background-color--hover--inverse":"#ffffff","-toggle__color--hover--inverse":"#5a5a5a"},"dropdown":{"__background-color":"#ffffff","-option-group__padding":"32px"},"filter-chip":{"__border-radius":"9999px","__background-color":"#e9ecf1","__border-color":"#1e3c70","__color":"#404040","__background-color--active":"#146a5d","__border-color--active":"#146a5d","__color--active":"#ffffff","-icon__color":"#404040","-icon__color-active":"#ffffff","-icon__container-size":"18px"},"form":{"__max-width":"460px","__max-width--small":"6em","__max-width--medium":"12em","-hint__color":"#5a5a5a","-hint__color--inverse":"#e9ecf1","-hint__font-size":"0.875rem","-error__color":"#b20000","-error__color--inverse":"#e8b3b3"},"icon":{"__color--error":"#b20000","__color--inverse":"#ffffff","__color--primary":"#146a5d","__color--success":"#12890e","__color--warn":"#f8c41f"},"label":{"__color--inverse":"#ffffff","__font-family":"Montserrat, Avenir, Corbel, \'URW Gothic\', source-sans-pro, sans-serif","__font-size":"0.875rem","__font-weight":600,"__letter-spacing":"0.5px","__text-transform":"uppercase"},"link":{"__color":"#1e3c70","__color--active":"#1b3665","__color--hover":"#1b3665","__color--visited":"#590000","-inverse__color":"#ffffff","-inverse__color--active":"#d9d9d9","-inverse__color--hover":"#d9d9d9","-inverse__color--visited":"#d9d9d9","__text-decoration-offset":"3px","__text-decoration-thickness":"1px","__text-decoration-thickness--hover":"2px"},"pagination":{"-link__color":"#146a5d","-link__color--hover":"#0e4a41","-link__color--active":"#0a352f","-link__color--focus":"#0e4a41","-link__color--disabled":"#d9d9d9","-current-page__color":"#404040","-overflow__color":"#5a5a5a","-page-count__color":"#5a5a5a"},"review":{"__border-color":"#d9d9d9"},"steplist":{"__color":"#5a5a5a","__color--current":"#146a5d","__background-color--current":"#146a5d","-step__color":"#5a5a5a","-step__border-color":"#d9d9d9","-step__border-color--default":"#5a5a5a","-step__color--current":"#ffffff","-step__color--completed":"#404040","-step__background-color--completed":"#404040"},"spinner":{"__background-color":"#ffffff","__color":"#404040","__background-color--inverse":"#146a5d","__color--inverse":"#ffffff"},"table":{"__padding":"16px","__border-color":"#000000","-header__background-color":"#f2f2f2","-striped__background-color":"#f2f2f2","-striped-header__background-color":"#f2f2f2"},"tabs":{"__border-color":"#d9d9d9","__background-color":"#ffffff","__background-color--hover":"#ffffff","__background-color--disabled":"#d9d9d9","__background-color--selected":"#ffffff","__color":"#404040","__color--hover":"#146a5d","__color--active":"#0e4a41","__color--disabled":"#404040","__color--selected":"#146a5d","__border-color--disabled":"#d9d9d9","__border-color--selected":"#146a5d","-panel__background-color":"#ffffff"},"text-input":{"__line-height":"1.3","__background-color--disabled":"#d9d9d9","__border-width":"2px","__border-width--disabled":"1px","__border-width--error":"3px","__border-color":"#808080","__border-color--disabled":"#404040","__border-color--error":"#b20000","__border-color--error--inverse":"#e8b3b3","__border-color--inverse":"#808080","__color":"#404040","__divider-color":"#a6a6a6","__padding":"16px","__border-radius":"3px","-currency-icon__line-height":"1","-currency-icon__spacing":"32px"},"tooltip":{"__background-color":"#ffffff","__border-color":"#404040","__border-color--active":"#146a5d40","__border-color--inverse-active":"#ffffff40","__border-width":"1px","__color":"#404040","__box-shadow-color":"#808080","-icon__color":"#146a5d","-icon__color--inverse":"#ffffff","-trigger__color":"#404040"},"typography-heading":{"__font-family":"Montserrat, Avenir, Corbel, \'URW Gothic\', source-sans-pro, sans-serif","__font-weight":600,"-4xl__font-weight":600,"-3xl__font-weight":600,"-lg__font-weight":600,"-md__font-weight":600,"-sm__font-weight":600,"-base__font-size":"1rem","-sm__font-size":"0.875rem","-md__font-size":"1rem","-lg__font-size":"1.25rem","-xl__font-size":"1.5rem","-2xl__font-size--mobile":"1.75rem","-2xl__font-size":"2rem","-3xl__font-size--mobile":"1.875rem","-3xl__font-size":"2.5rem","-4xl__font-size--mobile":"2.5rem","-4xl__font-size":"2.75rem","-5xl__font-size--mobile":"2.5rem","-5xl__font-size--tablet":"2.75rem","-5xl__font-size":"3.125rem"},"typography-body":{"__font-family":"Rubik, Seravek, \'Gill Sans Nova\', Ubuntu, Calibri, \'DejaVu Sans\', source-sans-pro, sans-serif"},"usa-banner":{"__background-color":"#f2f2f2","__color":"#404040","__max-width":"unset","-gutter-width":"32px","-heading__font-family":"Rubik, Seravek, \'Gill Sans Nova\', Ubuntu, Calibri, \'DejaVu Sans\', source-sans-pro, sans-serif","-heading__line-height":"1.1","-heading__font-size":"0.875rem","-panel__font-family":"Rubik, Seravek, \'Gill Sans Nova\', Ubuntu, Calibri, \'DejaVu Sans\', source-sans-pro, sans-serif","-panel__line-height":1.5,"-panel__font-size":"1rem","-link__color":"#146a5d","-domain-icon__color":"#146a5d","-security-icon__color":"#59ac56","-close-button__background-color--mobile":"#d9d9d9","-close-button__color--mobile":"#146a5d"},"vertical-nav":{"-item__background-color--hover":"#f2f2f2","-item__color--hover":"#146a5d","-item__border-color":"#5a5a5a","-label__color":"#404040","-label-icon__color":"#404040","-label__border-color--current":"#146a5d","-label__color--current":"#146a5d"}}'
+          );
+
+          /***/
+        },
+
+      /***/ '../../dist/medicare.tokens.json':
+        /*!************************************************************************************************************!*\
+  !*** /Users/patrickwolfert/Projects/design-system/packages/design-system-tokens/dist/medicare.tokens.json ***!
+  \************************************************************************************************************/
+        /*! exports provided: animation, color, font, global, measure, media, radius, shadow, spacer, z, default */
+        /***/ function (module) {
+          module.exports = JSON.parse(
+            '{"animation":{"ease-in-out-expo":"cubic-bezier(1, 0, 0, 1)","speed-base":1,"speed-1":"0.25s","speed-2":"0.3s","speed-3":"0.5s","speed-4":"0.8s"},"color":{"white":"#ffffff","black":"#000000","transparent":"#ffffff00","transparent-black-alpha50":"#00000080","transparent-black-alpha25":"#00000040","transparent-white-alpha50":"#ffffff80","transparent-white-alpha25":"#ffffff40","background":"#ffffff","background-dialog":"#ffffff","background-dialog-mask":"#00000080","background-inverse":"#146a5d","base":"#404040","base-inverse":"#ffffff","border":"#d9d9d9","border-dark":"#0f1e38","border-inverse":"#ffffff","error-lightest":"#f7e6e6","error-lighter":"#e8b3b3","error-light":"#c94d4d","error":"#b20000","error-dark":"#a00000","error-darker":"#7d0000","error-darkest":"#590000","focus-light":"#ffffff","focus-dark":"#c97532","gray-lightest":"#f2f2f2","gray-lighter":"#d9d9d9","gray-light":"#a6a6a6","gray":"#808080","gray-dark":"#5a5a5a","gray-darker":"#404040","gray-darkest":"#262626","muted":"#5a5a5a","muted-inverse":"#e9ecf1","primary-lightest":"#e8f0ef","primary-lighter":"#b9d2ce","primary-light":"#5b978e","primary":"#146a5d","primary-dark":"#125f54","primary-darker":"#0e4a41","primary-darkest":"#0a352f","secondary-lightest":"#e9ecf1","secondary-lighter":"#bcc5d4","secondary-light":"#62779b","secondary":"#1e3c70","secondary-dark":"#1b3665","secondary-darker":"#152a4e","secondary-darkest":"#0f1e38","accent-primary-lightest":"#f7e6e6","accent-primary-lighter":"#e8b3b3","accent-primary-light":"#c94d4d","accent-primary":"#b20000","accent-primary-dark":"#a00000","accent-primary-darker":"#7d0000","accent-primary-darkest":"#590000","info-lightest":"#e9ecf1","info-lighter":"#bcc5d4","info-light":"#62779b","info":"#1e3c70","info-dark":"#1b3665","info-darker":"#152a4e","info-darkest":"#0f1e38","success-lightest":"#e7f3e7","success-lighter":"#b8dcb7","success-light":"#59ac56","success":"#12890e","success-dark":"#107b0d","success-darker":"#0d600a","success-darkest":"#094507","warn-lightest":"#fef9e9","warn-lighter":"#fdedbc","warn-light":"#fad662","warn":"#f8c41f","warn-dark":"#dfb01c","warn-darker":"#ae8916","warn-darkest":"#7c6210","visited":"#590000"},"font":{"sans":"Rubik, Seravek, \'Gill Sans Nova\', Ubuntu, Calibri, \'DejaVu Sans\', source-sans-pro, sans-serif","montserrat":"Montserrat, Avenir, Corbel, \'URW Gothic\', source-sans-pro, sans-serif","rubik":"Rubik, Seravek, \'Gill Sans Nova\', Ubuntu, Calibri, \'DejaVu Sans\', source-sans-pro, sans-serif","size-base":"1rem","size-sm":"0.875rem","size-md":"1rem","size-lg":"1.25rem","size-xl":"1.5rem","size-2xl--mobile":"1.75rem","size-2xl":"2rem","size-3xl--mobile":"1.875rem","size-3xl":"2.5rem","size-4xl--mobile":"2.5rem","size-4xl":"2.75rem","size-5xl--mobile":"2.5rem","size-5xl--tablet":"2.75rem","size-5xl":"3.125rem","line-height-reset":1,"line-height-heading":1.3,"line-height-base":1.5,"line-height-lead":1.7,"weight-light":400,"weight-normal":400,"weight-semibold":600,"weight-bold":600},"global":{"article-max-width":"600px","grid-columns":"12","grid-gutter-width":"32px","grid-form-gutter-width":"16px","lead-max-width":"77rem","nav-width":"951px","site-margins":"3rem","site-margins-mobile":"1.5rem","site-max-width":"1104px","text-max-width":"53rem"},"measure":{"narrow":"45ex","base":"65ex","wide":"80ex"},"media":{"width-xs":"0px","width-sm":"544px","width-md":"768px","width-lg":"1024px","width-xl":"1280px"},"radius":{"circle":"100%","default":"3px","large":"8px","medium":"4px","pill":"9999px","small":"2px"},"shadow":{"focus":"inset 0 0 0 1px #404040","focus-inverse":"inset 0 0 0 1px #404040","focus-link":"0 3px #404040","box-card":"0 2px 3px 0 rgba(50, 50, 50, 0.23)","base-offset-x":"2px","base-offset-y":"2px","base-blur-radius":"4px","base-color":"#00000040","base":"2px 2px 4px"},"spacer":{"1":"8px","2":"16px","3":"24px","4":"32px","5":"40px","6":"48px","7":"56px","none":"0px","half":"4px"},"z":{"deep":-99999,"default":1,"drawer":500,"dialog":1000,"popup":6000,"spinner":9050}}'
+          );
+
+          /***/
+        },
+
       /***/ './node_modules/@skpm/dialog/lib/index.js':
         /*!************************************************!*\
   !*** ./node_modules/@skpm/dialog/lib/index.js ***!
@@ -606,614 +723,12 @@ function __skpm_run(key, context) {
             };
 
             /* WEBPACK VAR INJECTION */
-          }.call(
+          }).call(
             this,
             __webpack_require__(
               /*! ./node_modules/promise-polyfill/lib/index.js */ './node_modules/promise-polyfill/lib/index.js'
             )
-          ));
-
-          /***/
-        },
-
-      /***/ './node_modules/@skpm/fs/index.js':
-        /*!****************************************!*\
-  !*** ./node_modules/@skpm/fs/index.js ***!
-  \****************************************/
-        /*! no static exports found */
-        /***/ function (module, exports, __webpack_require__) {
-          // TODO: async. Should probably be done with NSFileHandle and some notifications
-          // TODO: file descriptor. Needs to be done with NSFileHandle
-          var Buffer = __webpack_require__(/*! buffer */ 'buffer').Buffer;
-          var utils = __webpack_require__(/*! ./utils */ './node_modules/@skpm/fs/utils.js');
-          var parseStat = utils.parseStat;
-          var fsError = utils.fsError;
-          var fsErrorForPath = utils.fsErrorForPath;
-          var encodingFromOptions = utils.encodingFromOptions;
-          var NOT_IMPLEMENTED = utils.NOT_IMPLEMENTED;
-
-          module.exports.constants = {
-            F_OK: 0,
-            R_OK: 4,
-            W_OK: 2,
-            X_OK: 1,
-          };
-
-          module.exports.access = NOT_IMPLEMENTED('access');
-
-          module.exports.accessSync = function (path, mode) {
-            mode = mode | 0;
-            var fileManager = NSFileManager.defaultManager();
-
-            switch (mode) {
-              case 0:
-                canAccess = module.exports.existsSync(path);
-                break;
-              case 1:
-                canAccess = Boolean(Number(fileManager.isExecutableFileAtPath(path)));
-                break;
-              case 2:
-                canAccess = Boolean(Number(fileManager.isWritableFileAtPath(path)));
-                break;
-              case 3:
-                canAccess =
-                  Boolean(Number(fileManager.isExecutableFileAtPath(path))) &&
-                  Boolean(Number(fileManager.isWritableFileAtPath(path)));
-                break;
-              case 4:
-                canAccess = Boolean(Number(fileManager.isReadableFileAtPath(path)));
-                break;
-              case 5:
-                canAccess =
-                  Boolean(Number(fileManager.isReadableFileAtPath(path))) &&
-                  Boolean(Number(fileManager.isExecutableFileAtPath(path)));
-                break;
-              case 6:
-                canAccess =
-                  Boolean(Number(fileManager.isReadableFileAtPath(path))) &&
-                  Boolean(Number(fileManager.isWritableFileAtPath(path)));
-                break;
-              case 7:
-                canAccess =
-                  Boolean(Number(fileManager.isReadableFileAtPath(path))) &&
-                  Boolean(Number(fileManager.isWritableFileAtPath(path))) &&
-                  Boolean(Number(fileManager.isExecutableFileAtPath(path)));
-                break;
-            }
-
-            if (!canAccess) {
-              throw new Error("Can't access " + String(path));
-            }
-          };
-
-          module.exports.appendFile = NOT_IMPLEMENTED('appendFile');
-
-          module.exports.appendFileSync = function (file, data, options) {
-            if (!module.exports.existsSync(file)) {
-              return module.exports.writeFileSync(file, data, options);
-            }
-
-            var handle = NSFileHandle.fileHandleForWritingAtPath(file);
-            handle.seekToEndOfFile();
-
-            var encoding = encodingFromOptions(options, 'utf8');
-
-            var nsdata = Buffer.from(
-              data,
-              encoding === 'NSData' || encoding === 'buffer' ? undefined : encoding
-            ).toNSData();
-
-            handle.writeData(nsdata);
-          };
-
-          module.exports.chmod = NOT_IMPLEMENTED('chmod');
-
-          module.exports.chmodSync = function (path, mode) {
-            var err = MOPointer.alloc().init();
-            var fileManager = NSFileManager.defaultManager();
-            fileManager.setAttributes_ofItemAtPath_error(
-              {
-                NSFilePosixPermissions: mode,
-              },
-              path,
-              err
-            );
-
-            if (err.value() !== null) {
-              throw fsErrorForPath(path, undefined, err.value());
-            }
-          };
-
-          module.exports.chown = NOT_IMPLEMENTED('chown');
-          module.exports.chownSync = NOT_IMPLEMENTED('chownSync');
-
-          module.exports.close = NOT_IMPLEMENTED('close');
-          module.exports.closeSync = NOT_IMPLEMENTED('closeSync');
-
-          module.exports.copyFile = NOT_IMPLEMENTED('copyFile');
-
-          module.exports.copyFileSync = function (path, dest, flags) {
-            var err = MOPointer.alloc().init();
-            var fileManager = NSFileManager.defaultManager();
-            fileManager.copyItemAtPath_toPath_error(path, dest, err);
-
-            if (err.value() !== null) {
-              throw fsErrorForPath(path, false, err.value());
-            }
-          };
-
-          module.exports.createReadStream = NOT_IMPLEMENTED('createReadStream');
-          module.exports.createWriteStream = NOT_IMPLEMENTED('createWriteStream');
-
-          module.exports.exists = NOT_IMPLEMENTED('exists');
-
-          module.exports.existsSync = function (path) {
-            var fileManager = NSFileManager.defaultManager();
-            return Boolean(Number(fileManager.fileExistsAtPath(path)));
-          };
-
-          module.exports.fchmod = NOT_IMPLEMENTED('fchmod');
-          module.exports.fchmodSync = NOT_IMPLEMENTED('fchmodSync');
-          module.exports.fchown = NOT_IMPLEMENTED('fchown');
-          module.exports.fchownSync = NOT_IMPLEMENTED('fchownSync');
-          module.exports.fdatasync = NOT_IMPLEMENTED('fdatasync');
-          module.exports.fdatasyncSync = NOT_IMPLEMENTED('fdatasyncSync');
-          module.exports.fstat = NOT_IMPLEMENTED('fstat');
-          module.exports.fstatSync = NOT_IMPLEMENTED('fstatSync');
-          module.exports.fsync = NOT_IMPLEMENTED('fsync');
-          module.exports.fsyncSync = NOT_IMPLEMENTED('fsyncSync');
-          module.exports.ftruncate = NOT_IMPLEMENTED('ftruncate');
-          module.exports.ftruncateSync = NOT_IMPLEMENTED('ftruncateSync');
-          module.exports.futimes = NOT_IMPLEMENTED('futimes');
-          module.exports.futimesSync = NOT_IMPLEMENTED('futimesSync');
-
-          module.exports.lchmod = NOT_IMPLEMENTED('lchmod');
-          module.exports.lchmodSync = NOT_IMPLEMENTED('lchmodSync');
-          module.exports.lchown = NOT_IMPLEMENTED('lchown');
-          module.exports.lchownSync = NOT_IMPLEMENTED('lchownSync');
-
-          module.exports.link = NOT_IMPLEMENTED('link');
-
-          module.exports.linkSync = function (existingPath, newPath) {
-            var err = MOPointer.alloc().init();
-            var fileManager = NSFileManager.defaultManager();
-            fileManager.linkItemAtPath_toPath_error(existingPath, newPath, err);
-
-            if (err.value() !== null) {
-              throw fsErrorForPath(existingPath, undefined, err.value());
-            }
-          };
-
-          module.exports.lstat = NOT_IMPLEMENTED('lstat');
-
-          module.exports.lstatSync = function (path) {
-            var err = MOPointer.alloc().init();
-            var fileManager = NSFileManager.defaultManager();
-            var result = fileManager.attributesOfItemAtPath_error(path, err);
-
-            if (err.value() !== null) {
-              throw fsErrorForPath(path, undefined, err.value());
-            }
-
-            return parseStat(result);
-          };
-
-          module.exports.mkdir = NOT_IMPLEMENTED('mkdir');
-
-          module.exports.mkdirSync = function (path, options) {
-            var mode = 0o777;
-            var recursive = false;
-            if (options && options.mode) {
-              mode = options.mode;
-            }
-            if (options && options.recursive) {
-              recursive = options.recursive;
-            }
-            if (typeof options === 'number') {
-              mode = options;
-            }
-            var err = MOPointer.alloc().init();
-            var fileManager = NSFileManager.defaultManager();
-            fileManager.createDirectoryAtPath_withIntermediateDirectories_attributes_error(
-              path,
-              recursive,
-              {
-                NSFilePosixPermissions: mode,
-              },
-              err
-            );
-
-            if (err.value() !== null) {
-              throw new Error(err.value());
-            }
-          };
-
-          module.exports.mkdtemp = NOT_IMPLEMENTED('mkdtemp');
-
-          module.exports.mkdtempSync = function (path) {
-            function makeid() {
-              var text = '';
-              var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
-              for (var i = 0; i < 6; i++)
-                text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-              return text;
-            }
-            var tempPath = path + makeid();
-            module.exports.mkdirSync(tempPath);
-            return tempPath;
-          };
-
-          module.exports.open = NOT_IMPLEMENTED('open');
-          module.exports.openSync = NOT_IMPLEMENTED('openSync');
-
-          module.exports.read = NOT_IMPLEMENTED('read');
-
-          module.exports.readdir = NOT_IMPLEMENTED('readdir');
-
-          module.exports.readdirSync = function (path, options) {
-            var encoding = encodingFromOptions(options, 'utf8');
-            var fileManager = NSFileManager.defaultManager();
-            var paths = fileManager.subpathsAtPath(path);
-            var arr = [];
-            for (var i = 0; i < paths.length; i++) {
-              var pathName = paths[i];
-              arr.push(encoding === 'buffer' ? Buffer.from(pathName) : String(pathName));
-            }
-            return arr;
-          };
-
-          module.exports.readFile = NOT_IMPLEMENTED('readFile');
-
-          module.exports.readFileSync = function (path, options) {
-            var encoding = encodingFromOptions(options, 'buffer');
-            var fileManager = NSFileManager.defaultManager();
-            var data = fileManager.contentsAtPath(path);
-            if (!data) {
-              throw fsErrorForPath(path, false);
-            }
-
-            var buffer = Buffer.from(data);
-
-            if (encoding === 'buffer') {
-              return buffer;
-            } else if (encoding === 'NSData') {
-              return buffer.toNSData();
-            } else {
-              return buffer.toString(encoding);
-            }
-          };
-
-          module.exports.readlink = NOT_IMPLEMENTED('readlink');
-
-          module.exports.readlinkSync = function (path) {
-            var err = MOPointer.alloc().init();
-            var fileManager = NSFileManager.defaultManager();
-            var result = fileManager.destinationOfSymbolicLinkAtPath_error(path, err);
-
-            if (err.value() !== null) {
-              throw fsErrorForPath(path, undefined, err.value());
-            }
-
-            return String(result);
-          };
-
-          module.exports.readSync = NOT_IMPLEMENTED('readSync');
-
-          module.exports.realpath = NOT_IMPLEMENTED('realpath');
-          module.exports.realpath.native = NOT_IMPLEMENTED('realpath.native');
-
-          module.exports.realpathSync = function (path) {
-            return String(NSString.stringWithString(path).stringByResolvingSymlinksInPath());
-          };
-
-          module.exports.realpathSync.native = NOT_IMPLEMENTED('realpathSync.native');
-
-          module.exports.rename = NOT_IMPLEMENTED('rename');
-
-          module.exports.renameSync = function (oldPath, newPath) {
-            var err = MOPointer.alloc().init();
-            var fileManager = NSFileManager.defaultManager();
-            fileManager.moveItemAtPath_toPath_error(oldPath, newPath, err);
-
-            var error = err.value();
-
-            if (error !== null) {
-              // if there is already a file, we need to overwrite it
-              if (String(error.domain()) === 'NSCocoaErrorDomain' && Number(error.code()) === 516) {
-                var err2 = MOPointer.alloc().init();
-                fileManager.replaceItemAtURL_withItemAtURL_backupItemName_options_resultingItemURL_error(
-                  NSURL.fileURLWithPath(newPath),
-                  NSURL.fileURLWithPath(oldPath),
-                  null,
-                  NSFileManagerItemReplacementUsingNewMetadataOnly,
-                  null,
-                  err2
-                );
-                if (err2.value() !== null) {
-                  throw fsErrorForPath(oldPath, undefined, err2.value());
-                }
-              } else {
-                throw fsErrorForPath(oldPath, undefined, error);
-              }
-            }
-          };
-
-          module.exports.rmdir = NOT_IMPLEMENTED('rmdir');
-
-          module.exports.rmdirSync = function (path) {
-            var err = MOPointer.alloc().init();
-            var fileManager = NSFileManager.defaultManager();
-            var isDirectory = module.exports.lstatSync(path).isDirectory();
-            if (!isDirectory) {
-              throw fsError('ENOTDIR', {
-                path: path,
-                syscall: 'rmdir',
-              });
-            }
-            fileManager.removeItemAtPath_error(path, err);
-
-            if (err.value() !== null) {
-              throw fsErrorForPath(path, true, err.value(), 'rmdir');
-            }
-          };
-
-          module.exports.stat = NOT_IMPLEMENTED('stat');
-
-          // the only difference with lstat is that we resolve symlinks
-          //
-          // > lstat() is identical to stat(), except that if pathname is a symbolic
-          // > link, then it returns information about the link itself, not the file
-          // > that it refers to.
-          // http://man7.org/linux/man-pages/man2/lstat.2.html
-          module.exports.statSync = function (path) {
-            return module.exports.lstatSync(module.exports.realpathSync(path));
-          };
-
-          module.exports.symlink = NOT_IMPLEMENTED('symlink');
-
-          module.exports.symlinkSync = function (target, path) {
-            var err = MOPointer.alloc().init();
-            var fileManager = NSFileManager.defaultManager();
-            var result = fileManager.createSymbolicLinkAtPath_withDestinationPath_error(
-              path,
-              target,
-              err
-            );
-
-            if (err.value() !== null) {
-              throw new Error(err.value());
-            }
-          };
-
-          module.exports.truncate = NOT_IMPLEMENTED('truncate');
-
-          module.exports.truncateSync = function (path, len) {
-            var hFile = NSFileHandle.fileHandleForUpdatingAtPath(sFilePath);
-            hFile.truncateFileAtOffset(len || 0);
-            hFile.closeFile();
-          };
-
-          module.exports.unlink = NOT_IMPLEMENTED('unlink');
-
-          module.exports.unlinkSync = function (path) {
-            var err = MOPointer.alloc().init();
-            var fileManager = NSFileManager.defaultManager();
-            var isDirectory = module.exports.lstatSync(path).isDirectory();
-            if (isDirectory) {
-              throw fsError('EPERM', {
-                path: path,
-                syscall: 'unlink',
-              });
-            }
-            var result = fileManager.removeItemAtPath_error(path, err);
-
-            if (err.value() !== null) {
-              throw fsErrorForPath(path, false, err.value());
-            }
-          };
-
-          module.exports.unwatchFile = NOT_IMPLEMENTED('unwatchFile');
-
-          module.exports.utimes = NOT_IMPLEMENTED('utimes');
-
-          module.exports.utimesSync = function (path, aTime, mTime) {
-            var err = MOPointer.alloc().init();
-            var fileManager = NSFileManager.defaultManager();
-            var result = fileManager.setAttributes_ofItemAtPath_error(
-              {
-                NSFileModificationDate: aTime,
-              },
-              path,
-              err
-            );
-
-            if (err.value() !== null) {
-              throw fsErrorForPath(path, undefined, err.value());
-            }
-          };
-
-          module.exports.watch = NOT_IMPLEMENTED('watch');
-          module.exports.watchFile = NOT_IMPLEMENTED('watchFile');
-
-          module.exports.write = NOT_IMPLEMENTED('write');
-
-          module.exports.writeFile = NOT_IMPLEMENTED('writeFile');
-
-          module.exports.writeFileSync = function (path, data, options) {
-            var encoding = encodingFromOptions(options, 'utf8');
-
-            var nsdata = Buffer.from(
-              data,
-              encoding === 'NSData' || encoding === 'buffer' ? undefined : encoding
-            ).toNSData();
-
-            nsdata.writeToFile_atomically(path, true);
-          };
-
-          module.exports.writeSync = NOT_IMPLEMENTED('writeSync');
-
-          /***/
-        },
-
-      /***/ './node_modules/@skpm/fs/utils.js':
-        /*!****************************************!*\
-  !*** ./node_modules/@skpm/fs/utils.js ***!
-  \****************************************/
-        /*! no static exports found */
-        /***/ function (module, exports, __webpack_require__) {
-          module.exports.parseStat = function parseStat(result) {
-            return {
-              dev: String(result.NSFileDeviceIdentifier),
-              // ino: 48064969, The file system specific "Inode" number for the file.
-              mode: result.NSFileType | result.NSFilePosixPermissions,
-              nlink: Number(result.NSFileReferenceCount),
-              uid: String(result.NSFileOwnerAccountID),
-              gid: String(result.NSFileGroupOwnerAccountID),
-              // rdev: 0, A numeric device identifier if the file is considered "special".
-              size: Number(result.NSFileSize),
-              // blksize: 4096, The file system block size for i/o operations.
-              // blocks: 8, The number of blocks allocated for this file.
-              atimeMs: Number(result.NSFileModificationDate.timeIntervalSince1970()) * 1000,
-              mtimeMs: Number(result.NSFileModificationDate.timeIntervalSince1970()) * 1000,
-              ctimeMs: Number(result.NSFileModificationDate.timeIntervalSince1970()) * 1000,
-              birthtimeMs: Number(result.NSFileCreationDate.timeIntervalSince1970()) * 1000,
-              atime: new Date(
-                Number(result.NSFileModificationDate.timeIntervalSince1970()) * 1000 + 0.5
-              ), // the 0.5 comes from the node source. Not sure why it's added but in doubt...
-              mtime: new Date(
-                Number(result.NSFileModificationDate.timeIntervalSince1970()) * 1000 + 0.5
-              ),
-              ctime: new Date(
-                Number(result.NSFileModificationDate.timeIntervalSince1970()) * 1000 + 0.5
-              ),
-              birthtime: new Date(
-                Number(result.NSFileCreationDate.timeIntervalSince1970()) * 1000 + 0.5
-              ),
-              isBlockDevice: function () {
-                return result.NSFileType === NSFileTypeBlockSpecial;
-              },
-              isCharacterDevice: function () {
-                return result.NSFileType === NSFileTypeCharacterSpecial;
-              },
-              isDirectory: function () {
-                return result.NSFileType === NSFileTypeDirectory;
-              },
-              isFIFO: function () {
-                return false;
-              },
-              isFile: function () {
-                return result.NSFileType === NSFileTypeRegular;
-              },
-              isSocket: function () {
-                return result.NSFileType === NSFileTypeSocket;
-              },
-              isSymbolicLink: function () {
-                return result.NSFileType === NSFileTypeSymbolicLink;
-              },
-            };
-          };
-
-          var ERRORS = {
-            EPERM: {
-              message: 'operation not permitted',
-              errno: -1,
-            },
-            ENOENT: {
-              message: 'no such file or directory',
-              errno: -2,
-            },
-            EACCES: {
-              message: 'permission denied',
-              errno: -13,
-            },
-            ENOTDIR: {
-              message: 'not a directory',
-              errno: -20,
-            },
-            EISDIR: {
-              message: 'illegal operation on a directory',
-              errno: -21,
-            },
-          };
-
-          function fsError(code, options) {
-            var error = new Error(
-              code +
-                ': ' +
-                ERRORS[code].message +
-                ', ' +
-                (options.syscall || '') +
-                (options.path ? " '" + options.path + "'" : '')
-            );
-
-            Object.keys(options).forEach(function (k) {
-              error[k] = options[k];
-            });
-
-            error.code = code;
-            error.errno = ERRORS[code].errno;
-
-            return error;
-          }
-
-          module.exports.fsError = fsError;
-
-          module.exports.fsErrorForPath = function fsErrorForPath(path, shouldBeDir, err, syscall) {
-            var fileManager = NSFileManager.defaultManager();
-            var doesExist = fileManager.fileExistsAtPath(path);
-            if (!doesExist) {
-              return fsError('ENOENT', {
-                path: path,
-                syscall: syscall || 'open',
-              });
-            }
-            var isReadable = fileManager.isReadableFileAtPath(path);
-            if (!isReadable) {
-              return fsError('EACCES', {
-                path: path,
-                syscall: syscall || 'open',
-              });
-            }
-            if (typeof shouldBeDir !== 'undefined') {
-              var isDirectory = __webpack_require__(
-                /*! ./index */ './node_modules/@skpm/fs/index.js'
-              )
-                .lstatSync(path)
-                .isDirectory();
-              if (isDirectory && !shouldBeDir) {
-                return fsError('EISDIR', {
-                  path: path,
-                  syscall: syscall || 'read',
-                });
-              } else if (!isDirectory && shouldBeDir) {
-                return fsError('ENOTDIR', {
-                  path: path,
-                  syscall: syscall || 'read',
-                });
-              }
-            }
-            return new Error(err || 'Unknown error while manipulating ' + path);
-          };
-
-          module.exports.encodingFromOptions = function encodingFromOptions(options, defaultValue) {
-            return options && options.encoding
-              ? String(options.encoding)
-              : options
-              ? String(options)
-              : defaultValue;
-          };
-
-          module.exports.NOT_IMPLEMENTED = function NOT_IMPLEMENTED(name) {
-            return function () {
-              throw new Error(
-                'fs.' +
-                  name +
-                  ' is not implemented yet. If you feel like implementing it, any contribution will be gladly accepted on https://github.com/skpm/fs'
-              );
-            };
-          };
+          );
 
           /***/
         },
@@ -1747,12 +1262,12 @@ function __skpm_run(key, context) {
             module.exports = Promise;
 
             /* WEBPACK VAR INJECTION */
-          }.call(
+          }).call(
             this,
             __webpack_require__(
               /*! ./../../timers-browserify/main.js */ './node_modules/timers-browserify/main.js'
             ).setImmediate
-          ));
+          );
 
           /***/
         },
@@ -1954,13 +1469,13 @@ function __skpm_run(key, context) {
             );
 
             /* WEBPACK VAR INJECTION */
-          }.call(
+          }).call(
             this,
             __webpack_require__(
               /*! ./../webpack/buildin/global.js */ './node_modules/webpack/buildin/global.js'
             ),
             __webpack_require__(/*! ./../process/browser.js */ './node_modules/process/browser.js')
-          ));
+          );
 
           /***/
         },
@@ -2038,12 +1553,12 @@ function __skpm_run(key, context) {
               (this && this.clearImmediate);
 
             /* WEBPACK VAR INJECTION */
-          }.call(
+          }).call(
             this,
             __webpack_require__(
               /*! ./../webpack/buildin/global.js */ './node_modules/webpack/buildin/global.js'
             )
-          ));
+          );
 
           /***/
         },
@@ -2078,29 +1593,26 @@ function __skpm_run(key, context) {
           /***/
         },
 
-      /***/ './src/json-token-importer.js':
-        /*!************************************!*\
-  !*** ./src/json-token-importer.js ***!
-  \************************************/
-        /*! exports provided: default */
+      /***/ './src/color.js':
+        /*!**********************!*\
+  !*** ./src/color.js ***!
+  \**********************/
+        /*! exports provided: updateSwatchesFromTheme */
         /***/ function (module, __webpack_exports__, __webpack_require__) {
           'use strict';
           __webpack_require__.r(__webpack_exports__);
+          /* harmony export (binding) */ __webpack_require__.d(
+            __webpack_exports__,
+            'updateSwatchesFromTheme',
+            function () {
+              return updateSwatchesFromTheme;
+            }
+          );
           /* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
             /*! sketch */ 'sketch'
           );
           /* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0___default =
             /*#__PURE__*/ __webpack_require__.n(sketch__WEBPACK_IMPORTED_MODULE_0__);
-          /* harmony import */ var _skpm_dialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-            /*! @skpm/dialog */ './node_modules/@skpm/dialog/lib/index.js'
-          );
-          /* harmony import */ var _skpm_dialog__WEBPACK_IMPORTED_MODULE_1___default =
-            /*#__PURE__*/ __webpack_require__.n(_skpm_dialog__WEBPACK_IMPORTED_MODULE_1__);
-          /* harmony import */ var _skpm_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-            /*! @skpm/fs */ './node_modules/@skpm/fs/index.js'
-          );
-          /* harmony import */ var _skpm_fs__WEBPACK_IMPORTED_MODULE_2___default =
-            /*#__PURE__*/ __webpack_require__.n(_skpm_fs__WEBPACK_IMPORTED_MODULE_2__);
           function _slicedToArray(arr, i) {
             return (
               _arrayWithHoles(arr) ||
@@ -2166,19 +1678,11 @@ function __skpm_run(key, context) {
             if (Array.isArray(arr)) return arr;
           }
 
-          /*
-           * Split tokens into groups based on root name and store in category,
-           * based on first word before '-'. Allows keys with up to 4 dash separators.
-           *
-           * @param colorTokens - An object which contains color name:value pairs
-           * @returns An array of Swatch objects created by the Sketch API
-           */
-
-          var makeColorSwatches = function makeColorSwatches(colorTokens) {
-            var swatches = [];
+          function updateSwatchesFromTheme(doc, themeTokens) {
+            var newSwatches = []; // Add theme colors
 
             for (
-              var _i = 0, _Object$entries = Object.entries(colorTokens);
+              var _i = 0, _Object$entries = Object.entries(themeTokens.color);
               _i < _Object$entries.length;
               _i++
             ) {
@@ -2186,66 +1690,844 @@ function __skpm_run(key, context) {
                 key = _Object$entries$_i[0],
                 value = _Object$entries$_i[1];
 
-              var colorName = key.match(/(^[A-Za-z]*)-?[A-Za-z\d]*?-?[A-Za-z\d]*?-?[A-Za-z\d]*?$/);
-              colorName = colorName === null ? (colorName = '') : colorName[1] + '/';
-              var currentSwatch = sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Swatch.from({
-                name: ''.concat(colorName, '/').concat(key),
-                color: value,
-              });
-              swatches.push(currentSwatch);
-            }
-
-            return swatches;
-          };
-
-          /* harmony default export */ __webpack_exports__['default'] = function () {
-            var tokenData = {};
-            var jsonFile = _skpm_dialog__WEBPACK_IMPORTED_MODULE_1___default.a.showOpenDialogSync({
-              message: 'Must be a CMSDS valid JSON Token file.',
-              buttonLabel: 'Import',
-              filters: [
-                {
-                  name: 'Json Data',
-                  extensions: ['json', 'tokens', 'tokens.json'],
-                },
-              ],
-              properties: ['openFile'],
-            });
-
-            if (jsonFile) {
-              try {
-                var importedFile = Object(_skpm_fs__WEBPACK_IMPORTED_MODULE_2__['readFileSync'])(
-                  jsonFile[0]
-                );
-                tokenData = JSON.parse(importedFile);
-              } catch (err) {
-                console.error(err);
-              }
-            } else {
-              sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.alert(
-                'Importing Error',
-                'Could not open selected file.'
+              // The name of the color is what comes before the first hyphen (if there's a hyphen)
+              var colorName = key.split('-')[0];
+              var swatchName = 'theme colors/'.concat(colorName, '/').concat(key);
+              newSwatches.push(
+                sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Swatch.from({
+                  name: swatchName,
+                  color: value,
+                })
               );
-            }
+            } // Add component colors
 
-            var doc = sketch__WEBPACK_IMPORTED_MODULE_0___default.a.getSelectedDocument();
-            doc.swatches = [];
-            var colorSwatches = makeColorSwatches(tokenData.color);
-            colorSwatches.forEach(function (swatch) {
-              doc.swatches.push(swatch);
+            var hexRegex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+
+            for (
+              var _i2 = 0, _Object$entries2 = Object.entries(themeTokens.components);
+              _i2 < _Object$entries2.length;
+              _i2++
+            ) {
+              var _Object$entries2$_i = _slicedToArray(_Object$entries2[_i2], 2),
+                componentName = _Object$entries2$_i[0],
+                componentTokens = _Object$entries2$_i[1];
+
+              for (
+                var _i3 = 0, _Object$entries3 = Object.entries(componentTokens);
+                _i3 < _Object$entries3.length;
+                _i3++
+              ) {
+                var _Object$entries3$_i = _slicedToArray(_Object$entries3[_i3], 2),
+                  tokenName = _Object$entries3$_i[0],
+                  tokenValue = _Object$entries3$_i[1];
+
+                if (hexRegex.test(tokenValue)) {
+                  var _swatchName = 'components/'
+                    .concat(componentName, '/')
+                    .concat(componentName)
+                    .concat(tokenName);
+
+                  newSwatches.push(
+                    sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Swatch.from({
+                      name: _swatchName,
+                      color: tokenValue,
+                    })
+                  );
+                }
+              }
+            } // Update the document with new swatches
+
+            var oldSwatchMap = doc.swatches.reduce(function (map, swatch) {
+              map[swatch.name] = swatch;
+              return map;
+            }, {});
+
+            for (var _i4 = 0, _newSwatches = newSwatches; _i4 < _newSwatches.length; _i4++) {
+              var newSwatch = _newSwatches[_i4];
+
+              if (oldSwatchMap[newSwatch.name]) {
+                oldSwatchMap[newSwatch.name].sketchObject.updateWithColor(
+                  newSwatch.referencingColor
+                );
+              } else {
+                doc.swatches.push(newSwatch);
+              }
+            } // Update all references to the swatches in the doc
+
+            var swatchContainer = doc.sketchObject.documentData().sharedSwatches();
+            doc.swatches.forEach(function (swatch) {
+              swatchContainer.updateReferencesToSwatch(swatch.sketchObject);
             });
+          }
+
+          /***/
+        },
+
+      /***/ './src/json-token-importer.js':
+        /*!************************************!*\
+  !*** ./src/json-token-importer.js ***!
+  \************************************/
+        /*! exports provided: default */
+        /***/ function (module, __webpack_exports__, __webpack_require__) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+            /*! sketch */ 'sketch'
+          );
+          /* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(sketch__WEBPACK_IMPORTED_MODULE_0__);
+          /* harmony import */ var _skpm_dialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+            /*! @skpm/dialog */ './node_modules/@skpm/dialog/lib/index.js'
+          );
+          /* harmony import */ var _skpm_dialog__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(_skpm_dialog__WEBPACK_IMPORTED_MODULE_1__);
+          /* harmony import */ var _themes_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+            /*! ../../../../../themes.json */ '../../../../themes.json'
+          );
+          var _themes_json__WEBPACK_IMPORTED_MODULE_2___namespace =
+            /*#__PURE__*/ __webpack_require__.t(
+              /*! ../../../../../themes.json */ '../../../../themes.json',
+              1
+            );
+          /* harmony import */ var _dist_core_tokens_json__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(
+              /*! ../../../dist/core.tokens.json */ '../../dist/core.tokens.json'
+            );
+          var _dist_core_tokens_json__WEBPACK_IMPORTED_MODULE_3___namespace =
+            /*#__PURE__*/ __webpack_require__.t(
+              /*! ../../../dist/core.tokens.json */ '../../dist/core.tokens.json',
+              1
+            );
+          /* harmony import */ var _dist_core_component_tokens_json__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(
+              /*! ../../../dist/core-component.tokens.json */ '../../dist/core-component.tokens.json'
+            );
+          var _dist_core_component_tokens_json__WEBPACK_IMPORTED_MODULE_4___namespace =
+            /*#__PURE__*/ __webpack_require__.t(
+              /*! ../../../dist/core-component.tokens.json */ '../../dist/core-component.tokens.json',
+              1
+            );
+          /* harmony import */ var _dist_healthcare_tokens_json__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(
+              /*! ../../../dist/healthcare.tokens.json */ '../../dist/healthcare.tokens.json'
+            );
+          var _dist_healthcare_tokens_json__WEBPACK_IMPORTED_MODULE_5___namespace =
+            /*#__PURE__*/ __webpack_require__.t(
+              /*! ../../../dist/healthcare.tokens.json */ '../../dist/healthcare.tokens.json',
+              1
+            );
+          /* harmony import */ var _dist_healthcare_component_tokens_json__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(
+              /*! ../../../dist/healthcare-component.tokens.json */ '../../dist/healthcare-component.tokens.json'
+            );
+          var _dist_healthcare_component_tokens_json__WEBPACK_IMPORTED_MODULE_6___namespace =
+            /*#__PURE__*/ __webpack_require__.t(
+              /*! ../../../dist/healthcare-component.tokens.json */ '../../dist/healthcare-component.tokens.json',
+              1
+            );
+          /* harmony import */ var _dist_medicare_tokens_json__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(
+              /*! ../../../dist/medicare.tokens.json */ '../../dist/medicare.tokens.json'
+            );
+          var _dist_medicare_tokens_json__WEBPACK_IMPORTED_MODULE_7___namespace =
+            /*#__PURE__*/ __webpack_require__.t(
+              /*! ../../../dist/medicare.tokens.json */ '../../dist/medicare.tokens.json',
+              1
+            );
+          /* harmony import */ var _dist_medicare_component_tokens_json__WEBPACK_IMPORTED_MODULE_8__ =
+            __webpack_require__(
+              /*! ../../../dist/medicare-component.tokens.json */ '../../dist/medicare-component.tokens.json'
+            );
+          var _dist_medicare_component_tokens_json__WEBPACK_IMPORTED_MODULE_8___namespace =
+            /*#__PURE__*/ __webpack_require__.t(
+              /*! ../../../dist/medicare-component.tokens.json */ '../../dist/medicare-component.tokens.json',
+              1
+            );
+          /* harmony import */ var _dist_cmsgov_tokens_json__WEBPACK_IMPORTED_MODULE_9__ =
+            __webpack_require__(
+              /*! ../../../dist/cmsgov.tokens.json */ '../../dist/cmsgov.tokens.json'
+            );
+          var _dist_cmsgov_tokens_json__WEBPACK_IMPORTED_MODULE_9___namespace =
+            /*#__PURE__*/ __webpack_require__.t(
+              /*! ../../../dist/cmsgov.tokens.json */ '../../dist/cmsgov.tokens.json',
+              1
+            );
+          /* harmony import */ var _dist_cmsgov_component_tokens_json__WEBPACK_IMPORTED_MODULE_10__ =
+            __webpack_require__(
+              /*! ../../../dist/cmsgov-component.tokens.json */ '../../dist/cmsgov-component.tokens.json'
+            );
+          var _dist_cmsgov_component_tokens_json__WEBPACK_IMPORTED_MODULE_10___namespace =
+            /*#__PURE__*/ __webpack_require__.t(
+              /*! ../../../dist/cmsgov-component.tokens.json */ '../../dist/cmsgov-component.tokens.json',
+              1
+            );
+          /* harmony import */ var _color__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+            /*! ./color */ './src/color.js'
+          );
+          /* harmony import */ var _text__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+            /*! ./text */ './src/text.js'
+          );
+          function ownKeys(object, enumerableOnly) {
+            var keys = Object.keys(object);
+            if (Object.getOwnPropertySymbols) {
+              var symbols = Object.getOwnPropertySymbols(object);
+              enumerableOnly &&
+                (symbols = symbols.filter(function (sym) {
+                  return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+                })),
+                keys.push.apply(keys, symbols);
+            }
+            return keys;
+          }
+
+          function _objectSpread(target) {
+            for (var i = 1; i < arguments.length; i++) {
+              var source = null != arguments[i] ? arguments[i] : {};
+              i % 2
+                ? ownKeys(Object(source), !0).forEach(function (key) {
+                    _defineProperty(target, key, source[key]);
+                  })
+                : Object.getOwnPropertyDescriptors
+                ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source))
+                : ownKeys(Object(source)).forEach(function (key) {
+                    Object.defineProperty(
+                      target,
+                      key,
+                      Object.getOwnPropertyDescriptor(source, key)
+                    );
+                  });
+            }
+            return target;
+          }
+
+          function _defineProperty(obj, key, value) {
+            if (key in obj) {
+              Object.defineProperty(obj, key, {
+                value: value,
+                enumerable: true,
+                configurable: true,
+                writable: true,
+              });
+            } else {
+              obj[key] = value;
+            }
+            return obj;
+          }
+
+          var tokensByTheme = {
+            core: _objectSpread(
+              _objectSpread({}, _dist_core_tokens_json__WEBPACK_IMPORTED_MODULE_3__),
+              {},
+              {
+                components: _dist_core_component_tokens_json__WEBPACK_IMPORTED_MODULE_4__,
+              }
+            ),
+            healthcare: _objectSpread(
+              _objectSpread({}, _dist_healthcare_tokens_json__WEBPACK_IMPORTED_MODULE_5__),
+              {},
+              {
+                components: _dist_healthcare_component_tokens_json__WEBPACK_IMPORTED_MODULE_6__,
+              }
+            ),
+            medicare: _objectSpread(
+              _objectSpread({}, _dist_medicare_tokens_json__WEBPACK_IMPORTED_MODULE_7__),
+              {},
+              {
+                components: _dist_medicare_component_tokens_json__WEBPACK_IMPORTED_MODULE_8__,
+              }
+            ),
+            cmsgov: _objectSpread(
+              _objectSpread({}, _dist_cmsgov_tokens_json__WEBPACK_IMPORTED_MODULE_9__),
+              {},
+              {
+                components: _dist_cmsgov_component_tokens_json__WEBPACK_IMPORTED_MODULE_10__,
+              }
+            ),
+          };
+          /* harmony default export */ __webpack_exports__['default'] = function () {
+            var themeNames = Object.values(_themes_json__WEBPACK_IMPORTED_MODULE_2__).map(function (
+              theme
+            ) {
+              return theme.displayName;
+            });
+            var themeIndex = _skpm_dialog__WEBPACK_IMPORTED_MODULE_1___default.a.showMessageBoxSync(
+              {
+                title: 'Switch theme',
+                message: 'Which theme?',
+                buttons: themeNames,
+              }
+            );
+            var themeKey = Object.keys(_themes_json__WEBPACK_IMPORTED_MODULE_2__)[themeIndex];
+            var themeName = _themes_json__WEBPACK_IMPORTED_MODULE_2__[themeKey].displayName;
+            var themeTokens = tokensByTheme[themeKey];
+            var doc = sketch__WEBPACK_IMPORTED_MODULE_0___default.a.getSelectedDocument();
+            Object(_color__WEBPACK_IMPORTED_MODULE_11__['updateSwatchesFromTheme'])(
+              doc,
+              themeTokens
+            );
+            Object(_text__WEBPACK_IMPORTED_MODULE_12__['updateTextStylesFromTheme'])(
+              doc,
+              themeTokens
+            );
+            sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.message(
+              'Switched to '.concat(themeName)
+            );
           };
 
           /***/
         },
 
-      /***/ buffer:
-        /*!*************************!*\
-  !*** external "buffer" ***!
-  \*************************/
-        /*! no static exports found */
-        /***/ function (module, exports) {
-          module.exports = require('buffer');
+      /***/ './src/text.js':
+        /*!*********************!*\
+  !*** ./src/text.js ***!
+  \*********************/
+        /*! exports provided: updateTextStylesFromTheme */
+        /***/ function (module, __webpack_exports__, __webpack_require__) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony export (binding) */ __webpack_require__.d(
+            __webpack_exports__,
+            'updateTextStylesFromTheme',
+            function () {
+              return updateTextStylesFromTheme;
+            }
+          );
+          /* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+            /*! sketch */ 'sketch'
+          );
+          /* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(sketch__WEBPACK_IMPORTED_MODULE_0__);
+          /* harmony import */ var _updateSharedStyleReferences__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(
+              /*! ./updateSharedStyleReferences */ './src/updateSharedStyleReferences.js'
+            );
+          var _excluded = ['typography-heading', 'typography-body', 'link'];
+
+          function _slicedToArray(arr, i) {
+            return (
+              _arrayWithHoles(arr) ||
+              _iterableToArrayLimit(arr, i) ||
+              _unsupportedIterableToArray(arr, i) ||
+              _nonIterableRest()
+            );
+          }
+
+          function _nonIterableRest() {
+            throw new TypeError(
+              'Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.'
+            );
+          }
+
+          function _unsupportedIterableToArray(o, minLen) {
+            if (!o) return;
+            if (typeof o === 'string') return _arrayLikeToArray(o, minLen);
+            var n = Object.prototype.toString.call(o).slice(8, -1);
+            if (n === 'Object' && o.constructor) n = o.constructor.name;
+            if (n === 'Map' || n === 'Set') return Array.from(o);
+            if (n === 'Arguments' || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))
+              return _arrayLikeToArray(o, minLen);
+          }
+
+          function _arrayLikeToArray(arr, len) {
+            if (len == null || len > arr.length) len = arr.length;
+            for (var i = 0, arr2 = new Array(len); i < len; i++) {
+              arr2[i] = arr[i];
+            }
+            return arr2;
+          }
+
+          function _iterableToArrayLimit(arr, i) {
+            var _i =
+              arr == null
+                ? null
+                : (typeof Symbol !== 'undefined' && arr[Symbol.iterator]) || arr['@@iterator'];
+            if (_i == null) return;
+            var _arr = [];
+            var _n = true;
+            var _d = false;
+            var _s, _e;
+            try {
+              for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
+                _arr.push(_s.value);
+                if (i && _arr.length === i) break;
+              }
+            } catch (err) {
+              _d = true;
+              _e = err;
+            } finally {
+              try {
+                if (!_n && _i['return'] != null) _i['return']();
+              } finally {
+                if (_d) throw _e;
+              }
+            }
+            return _arr;
+          }
+
+          function _arrayWithHoles(arr) {
+            if (Array.isArray(arr)) return arr;
+          }
+
+          function _objectWithoutProperties(source, excluded) {
+            if (source == null) return {};
+            var target = _objectWithoutPropertiesLoose(source, excluded);
+            var key, i;
+            if (Object.getOwnPropertySymbols) {
+              var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+              for (i = 0; i < sourceSymbolKeys.length; i++) {
+                key = sourceSymbolKeys[i];
+                if (excluded.indexOf(key) >= 0) continue;
+                if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+                target[key] = source[key];
+              }
+            }
+            return target;
+          }
+
+          function _objectWithoutPropertiesLoose(source, excluded) {
+            if (source == null) return {};
+            var target = {};
+            var sourceKeys = Object.keys(source);
+            var key, i;
+            for (i = 0; i < sourceKeys.length; i++) {
+              key = sourceKeys[i];
+              if (excluded.indexOf(key) >= 0) continue;
+              target[key] = source[key];
+            }
+            return target;
+          }
+
+          function parseFontSize(tokenValue) {
+            if (typeof tokenValue === 'string') {
+              if (tokenValue.includes('rem')) {
+                return parseFloat(tokenValue) * 16;
+              } else {
+                return parseFloat(tokenValue);
+              }
+            }
+
+            return tokenValue;
+          }
+
+          function parseLineHeight(tokenValue, fontSizePixels) {
+            if (typeof tokenValue === 'number') {
+              return tokenValue * fontSizePixels;
+            } else {
+              return parseInt(tokenValue, 10);
+            }
+          }
+
+          function parseFontWeight(tokenValue) {
+            switch (tokenValue) {
+              case 100:
+                // Thin
+                return 0;
+
+              case 200:
+                // Extra-Light
+                return 1;
+
+              case 300:
+                // Light
+                return 3;
+
+              case 400:
+                // Normal/Regular
+                return 6;
+
+              case 500:
+                // Medium
+                return 7;
+
+              case 600:
+                // Semi-Bold
+                return 9;
+
+              case 700:
+                // Bold
+                return 10;
+
+              case 800:
+                // Extra-Bold
+                return 11;
+
+              case 900:
+                // Black
+                return 12;
+
+              default:
+                return 6;
+            }
+          }
+
+          function parseFontFamily(tokenValue) {
+            // Only return the first one, and remove all quotes
+            return tokenValue.split(',')[0].replaceAll('"', '').replaceAll("'", '').trim();
+          }
+
+          function parseKerning(tokenValue) {
+            return parseFontSize(tokenValue);
+          }
+          /**
+           * Creates the equivalent of the CSS reset styles for text to be used in all
+           * the places where more specific text styles do not exist. Can be used in
+           * whole or in part.
+           */
+
+          function createBaseStyle(themeTokens) {
+            var fontSize = parseFontSize(themeTokens.font['size-base']);
+            var lineHeight = parseLineHeight(themeTokens.font['line-height-base'], fontSize);
+            var fontWeight = parseFontWeight(themeTokens.font['weight-normal']);
+            var fontFamily = parseFontFamily(
+              themeTokens.components['typography-body']['__font-family']
+            );
+            return new sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Style({
+              fontFamily: fontFamily,
+              fontSize: fontSize,
+              fontWeight: fontWeight,
+              textColor: themeTokens.color.base,
+              lineHeight: lineHeight,
+              kerning: 0,
+              textTransform: 'none',
+            });
+          }
+
+          var tokenNamePatterns = {
+            textColor: /^(.*)__color(.*)$/,
+            fontSize: /^(.*)__font-size(.*)$/,
+            fontWeight: /^(.*)__font-weight(.*)$/,
+            fontFamily: /^(.*)__font-family(.*)$/,
+            lineHeight: /^(.*)__line-height(.*)$/,
+            kerning: /^(.*)__letter-spacing(.*)$/,
+            textTransform: /^(.*)__text-transform(.*)$/,
+          };
+          /**
+           * Expects the token keys to be the full names of the tokens
+           */
+
+          function updateComponentTextStyles(doc, _ref) {
+            var componentName = _ref.componentName,
+              componentTokens = _ref.componentTokens,
+              defaultTextStyle = _ref.defaultTextStyle,
+              folder = _ref.folder;
+            var rawTextStyles = {};
+
+            for (var tokenName in componentTokens) {
+              var fullTokenName = ''.concat(componentName).concat(tokenName);
+
+              for (var propertyName in tokenNamePatterns) {
+                var matchResults = fullTokenName.match(tokenNamePatterns[propertyName]);
+
+                if (matchResults) {
+                  // Combine the categories before with the qualifiers after. For example, the text
+                  // "vertical-nav-label__color--current" --> "vertical-nav-label--current"
+                  var textStyleName = matchResults.slice(1).join('');
+
+                  if (!rawTextStyles[textStyleName]) {
+                    rawTextStyles[textStyleName] = {};
+                  }
+
+                  rawTextStyles[textStyleName][propertyName] = componentTokens[tokenName];
+                }
+              }
+            }
+
+            for (var _textStyleName in rawTextStyles) {
+              var _rawValues$textTransf;
+
+              var rawValues = rawTextStyles[_textStyleName];
+              var fontFamily = rawValues.fontFamily
+                ? parseFontFamily(rawValues.fontFamily)
+                : defaultTextStyle.fontFamily;
+              var fontSize = rawValues.fontSize
+                ? parseFontSize(rawValues.fontSize)
+                : defaultTextStyle.fontSize;
+              var fontWeight = rawValues.fontWeight
+                ? parseFontWeight(rawValues.fontWeight)
+                : defaultTextStyle.fontWeight;
+              var textColor = rawValues.textColor
+                ? parseFontFamily(rawValues.textColor)
+                : defaultTextStyle.textColor;
+              var lineHeight = rawValues.lineHeight
+                ? parseLineHeight(rawValues.lineHeight, fontSize)
+                : defaultTextStyle.lineHeight;
+              var kerning = rawValues.kerning
+                ? parseKerning(rawValues.kerning, fontSize)
+                : defaultTextStyle.kerning;
+              var textTransform =
+                (_rawValues$textTransf = rawValues.textTransform) !== null &&
+                _rawValues$textTransf !== void 0
+                  ? _rawValues$textTransf
+                  : defaultTextStyle.textTransform;
+              var style = new sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Style({
+                fontFamily: fontFamily,
+                fontSize: fontSize,
+                fontWeight: fontWeight,
+                textColor: textColor,
+                lineHeight: lineHeight,
+                kerning: kerning,
+                textTransform: textTransform,
+              });
+              var name = ''.concat(folder, '/').concat(_textStyleName);
+              Object(
+                _updateSharedStyleReferences__WEBPACK_IMPORTED_MODULE_1__[
+                  'updateSharedStyleReferences'
+                ]
+              )(doc, name, style);
+            }
+          }
+
+          function updateTextStylesFromTheme(doc, themeTokens) {
+            // Default text style is used to fill in missing values in other text styles
+            // that come from the tokens
+            var defaultTextStyle = createBaseStyle(themeTokens);
+            Object(
+              _updateSharedStyleReferences__WEBPACK_IMPORTED_MODULE_1__[
+                'updateSharedStyleReferences'
+              ]
+            )(doc, 'base', defaultTextStyle);
+
+            var _themeTokens$componen = themeTokens.components,
+              heading = _themeTokens$componen['typography-heading'],
+              body = _themeTokens$componen['typography-body'],
+              link = _themeTokens$componen.link,
+              components = _objectWithoutProperties(_themeTokens$componen, _excluded);
+
+            updateComponentTextStyles(doc, {
+              componentName: 'typography-heading',
+              componentTokens: heading,
+              defaultTextStyle: defaultTextStyle,
+              folder: 'typography/heading',
+            });
+            updateComponentTextStyles(doc, {
+              componentName: 'typography-body',
+              componentTokens: body,
+              defaultTextStyle: defaultTextStyle,
+              folder: 'typography/body',
+            });
+            updateComponentTextStyles(doc, {
+              componentName: 'link',
+              componentTokens: link,
+              defaultTextStyle: defaultTextStyle,
+              folder: 'typography/link',
+            });
+
+            for (
+              var _i = 0, _Object$entries = Object.entries(components);
+              _i < _Object$entries.length;
+              _i++
+            ) {
+              var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
+                componentName = _Object$entries$_i[0],
+                componentTokens = _Object$entries$_i[1];
+
+              updateComponentTextStyles(doc, {
+                componentName: componentName,
+                componentTokens: componentTokens,
+                defaultTextStyle: defaultTextStyle,
+                folder: 'components/'.concat(componentName),
+              });
+            }
+          }
+
+          /***/
+        },
+
+      /***/ './src/updateSharedStyleReferences.js':
+        /*!********************************************!*\
+  !*** ./src/updateSharedStyleReferences.js ***!
+  \********************************************/
+        /*! exports provided: updateSharedStyleReferences */
+        /***/ function (module, __webpack_exports__, __webpack_require__) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony export (binding) */ __webpack_require__.d(
+            __webpack_exports__,
+            'updateSharedStyleReferences',
+            function () {
+              return updateSharedStyleReferences;
+            }
+          );
+          function _createForOfIteratorHelper(o, allowArrayLike) {
+            var it = (typeof Symbol !== 'undefined' && o[Symbol.iterator]) || o['@@iterator'];
+            if (!it) {
+              if (
+                Array.isArray(o) ||
+                (it = _unsupportedIterableToArray(o)) ||
+                (allowArrayLike && o && typeof o.length === 'number')
+              ) {
+                if (it) o = it;
+                var i = 0;
+                var F = function F() {};
+                return {
+                  s: F,
+                  n: function n() {
+                    if (i >= o.length) return { done: true };
+                    return { done: false, value: o[i++] };
+                  },
+                  e: function e(_e) {
+                    throw _e;
+                  },
+                  f: F,
+                };
+              }
+              throw new TypeError(
+                'Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.'
+              );
+            }
+            var normalCompletion = true,
+              didErr = false,
+              err;
+            return {
+              s: function s() {
+                it = it.call(o);
+              },
+              n: function n() {
+                var step = it.next();
+                normalCompletion = step.done;
+                return step;
+              },
+              e: function e(_e2) {
+                didErr = true;
+                err = _e2;
+              },
+              f: function f() {
+                try {
+                  if (!normalCompletion && it.return != null) it.return();
+                } finally {
+                  if (didErr) throw err;
+                }
+              },
+            };
+          }
+
+          function _unsupportedIterableToArray(o, minLen) {
+            if (!o) return;
+            if (typeof o === 'string') return _arrayLikeToArray(o, minLen);
+            var n = Object.prototype.toString.call(o).slice(8, -1);
+            if (n === 'Object' && o.constructor) n = o.constructor.name;
+            if (n === 'Map' || n === 'Set') return Array.from(o);
+            if (n === 'Arguments' || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))
+              return _arrayLikeToArray(o, minLen);
+          }
+
+          function _arrayLikeToArray(arr, len) {
+            if (len == null || len > arr.length) len = arr.length;
+            for (var i = 0, arr2 = new Array(len); i < len; i++) {
+              arr2[i] = arr[i];
+            }
+            return arr2;
+          }
+
+          var sharedStylesRefsById;
+          var sharedStylesByName;
+          /**
+           * Recursive function that looks through a layer and its children to find
+           * references to shared styles and add them to the map
+           */
+
+          function findSharedStyleReferences(layer, refsById) {
+            var layers = layer.layers,
+              sharedStyleId = layer.sharedStyleId;
+
+            if (sharedStyleId) {
+              if (!refsById[sharedStyleId]) {
+                refsById[sharedStyleId] = [];
+              }
+
+              refsById[sharedStyleId].push(layer);
+            }
+
+            if (layers) {
+              var _iterator = _createForOfIteratorHelper(layers),
+                _step;
+
+              try {
+                for (_iterator.s(); !(_step = _iterator.n()).done; ) {
+                  var childLayer = _step.value;
+                  findSharedStyleReferences(childLayer, refsById);
+                }
+              } catch (err) {
+                _iterator.e(err);
+              } finally {
+                _iterator.f();
+              }
+            }
+          }
+
+          function getSharedStyleReferencesById(doc) {
+            if (!sharedStylesRefsById) {
+              sharedStylesRefsById = {};
+
+              var _iterator2 = _createForOfIteratorHelper(doc.pages),
+                _step2;
+
+              try {
+                for (_iterator2.s(); !(_step2 = _iterator2.n()).done; ) {
+                  var page = _step2.value;
+                  findSharedStyleReferences(page, sharedStylesRefsById);
+                }
+              } catch (err) {
+                _iterator2.e(err);
+              } finally {
+                _iterator2.f();
+              }
+            }
+
+            return sharedStylesRefsById;
+          }
+
+          function getSharedStylesByName(doc) {
+            if (!sharedStylesByName) {
+              sharedStylesByName = doc.sharedTextStyles.reduce(function (obj, style) {
+                obj[style.name] = style;
+                return obj;
+              }, {});
+            }
+
+            return sharedStylesByName;
+          }
+          /**
+           * Updates a shared style by name. Shared styles are named styles that exist in
+           * a special place in the Sketch UI, similar to color swatches. Shared styles
+           * wrap a `style` object, so they can't be used directly in the document. We
+           * have to go find the places where the layers reference the shared style by id
+           * and then update their `style` property.
+           */
+
+          function updateSharedStyleReferences(doc, name, newStyle) {
+            var refsById = getSharedStyleReferencesById(doc);
+            var sharedStylesByName = getSharedStylesByName(doc);
+            var existingSharedStyle = sharedStylesByName[name];
+
+            if (existingSharedStyle) {
+              // Update the existing style with our new style info
+              existingSharedStyle.style = newStyle;
+              var refs = refsById[existingSharedStyle.id];
+
+              if (refs) {
+                var _iterator3 = _createForOfIteratorHelper(refs),
+                  _step3;
+
+                try {
+                  for (_iterator3.s(); !(_step3 = _iterator3.n()).done; ) {
+                    var layer = _step3.value;
+                    layer.sharedStyle = existingSharedStyle;
+                    layer.style = existingSharedStyle.style;
+                  }
+                } catch (err) {
+                  _iterator3.e(err);
+                } finally {
+                  _iterator3.f();
+                }
+              }
+            } else {
+              doc.sharedTextStyles.push({
+                name: name,
+                style: newStyle,
+              });
+            }
+          }
 
           /***/
         },

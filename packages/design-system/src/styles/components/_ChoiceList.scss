@@ -9,46 +9,47 @@
 
 // Layout styles for wrapping choice container
 .ds-c-choice-wrapper {
-  display: flex;
-
-  // Medicare has a different gap for choice wrappers
-  // If a theme doesn't have a gap for choice wrappers defined, it will fall back to the normal gap
-  gap: var(--choice-wrapper__gap, 0.5rem);
+  column-gap: var(--choice-wrapper__gap, 0.5rem);
+  display: grid;
+  grid-template-areas:
+    'check label'
+    'check hint'
+    'check error-message';
+  grid-template-columns: min-content 1fr;
   margin-block-start: $spacer-1;
   max-width: var(--measure-wide);
 
-  // Medicare has a different gap for small choices
-  // If a theme doesn't have a gap for small choices defined, it will fall back to the normal gap
   &:has(.ds-c-choice--small) {
-    gap: var(--choice-wrapper__gap--small, 0.5rem);
+    column-gap: var(--choice-wrapper__gap--small, 0.5rem);
+  }
+
+  .ds-c-label,
+  .ds-c-hint--inverse,
+  .ds-c-inline-error {
+    max-width: max-content;
   }
 }
 
-// Styles for label
-.ds-c-choice + label,
-.ds-c-choice + .ds-c-label {
-  cursor: pointer;
-  flex-basis: min-content;
-  flex-grow: 1;
-  font-weight: var(--font-weight-normal);
-  margin-block-start: 0;
-  max-width: max-content;
-
-  // Medicare has a different `translateY` for choice labels
-  // If a theme doesn't have a `translateY` for choice labels defined, it will fall back to the normal `translateY`
-  transform: translateY(var(--choice__translateY, 0.25em));
-}
-
-// Medicare has a different `translateY` for small choice labels
-// If a theme doesn't have a `translateY` for small choice labels defined, it will fall back to the normal `translateY`
-.ds-c-choice--small + label,
-.ds-c-choice--small + .ds-c-label {
-  transform: translateY(-0.125em);
-}
-
-// Disabled label styles
 label,
 .ds-c-label {
+  // Styles for label
+  .ds-c-choice + & {
+    cursor: pointer;
+    font-weight: var(--font-weight-normal);
+    grid-area: label;
+
+    // Medicare has a different `translateY` for choice labels
+    // If a theme doesn't have a `translateY` for choice labels defined, it will fall back to the normal `translateY`
+    margin-block-start: var(--choice__translateY, 0.25em);
+  }
+
+  // Medicare has a different `translateY` for small choice labels
+  // If a theme doesn't have a `translateY` for small choice labels defined, it will fall back to the normal `translateY`
+  .ds-c-choice--small + & {
+    margin-block-start: -0.125em;
+  }
+
+  // Disabled label styles
   .ds-c-choice:disabled + & {
     color: var(--choice-label__color--disabled);
   }
@@ -67,6 +68,14 @@ label,
   }
 }
 
+.ds-c-choice-wrapper > .ds-c-hint {
+  grid-area: hint;
+}
+
+.ds-c-choice-wrapper > .ds-c-inline-error {
+  grid-area: error-message;
+}
+
 // Styles inherited by both checkbox and radio
 .ds-c-choice {
   align-items: center;
@@ -76,7 +85,7 @@ label,
   border-radius: var(--choice__border-radius);
   cursor: pointer;
   display: grid;
-  flex-shrink: 0;
+  grid-area: check;
   height: var(--choice__size);
   justify-items: center;
   margin: 0;
@@ -261,7 +270,6 @@ label,
 // Checked children container
 .ds-c-choice__checkedChild {
   border-inline-start: $spacer-half solid var(--choice__border-color--left);
-  flex: 1 1 100%;
   margin-block: $spacer-1 $spacer-2;
   // @TODO: get rid of this calc
   // The origin of this 2px shift is fuzzy, it seems like it's based on

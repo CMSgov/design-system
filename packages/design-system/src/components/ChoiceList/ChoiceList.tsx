@@ -1,5 +1,6 @@
 import Choice, { ChoiceProps as ChoiceComponentProps } from './Choice';
-import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
+import { FormFieldProps, useFormLabel } from '../FormLabel';
+import { Label } from '../Label';
 import React from 'react';
 import classNames from 'classnames';
 import useId from '../utilities/useId';
@@ -13,7 +14,7 @@ export type ChoiceProps = Omit<ChoiceComponentProps, OmitChoiceProp>;
 
 export interface BaseChoiceListProps extends FormFieldProps {
   /**
-   * Array of [`Choice`]({{root}}/components/choice/#components.choice.react) data objects to be rendered.
+   * Array of objects representing the props for each Choice in the ChoiceList
    */
   choices: ChoiceProps[];
   /**
@@ -29,7 +30,7 @@ export interface BaseChoiceListProps extends FormFieldProps {
    */
   hint?: React.ReactNode;
   /**
-   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
+   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields](https://design.cms.gov/patterns/Forms/forms/#required-and-optional-fields).
    */
   requirementLabel?: React.ReactNode;
   /**
@@ -114,7 +115,7 @@ export const ChoiceList: React.FC<ChoiceListProps> = (props: ChoiceListProps) =>
     }, 20);
   };
 
-  const { labelProps, fieldProps, wrapperProps, bottomError } = useFormLabel({
+  const { labelProps, wrapperProps, bottomError } = useFormLabel({
     ...listProps,
     labelComponent: 'legend',
     wrapperIsFieldset: true,
@@ -150,7 +151,7 @@ export const ChoiceList: React.FC<ChoiceListProps> = (props: ChoiceListProps) =>
 
   return (
     <fieldset {...wrapperProps}>
-      <FormLabel {...labelProps} />
+      <Label {...labelProps} />
       {choiceItems}
       {bottomError}
     </fieldset>

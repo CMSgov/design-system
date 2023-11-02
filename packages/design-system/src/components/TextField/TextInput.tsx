@@ -1,6 +1,7 @@
 import React from 'react';
 import { FunctionComponent } from 'react';
 import classNames from 'classnames';
+import mergeIds from '../utilities/mergeIds';
 
 export type TextInputDefaultValue = string | number;
 export type TextInputRows = number | string;
@@ -146,7 +147,7 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
       // Link input to bottom placed error message
       // Use of the classNames function for this is confusing
       aria-describedby={
-        classNames(
+        mergeIds(
           props['aria-describedby'],
           errorPlacement === 'bottom' && errorMessage && errorId
         ) || undefined

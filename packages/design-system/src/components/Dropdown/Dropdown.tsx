@@ -2,7 +2,8 @@ import React, { useCallback, useRef, useState } from 'react';
 import classNames from 'classnames';
 import mergeRefs from '../utilities/mergeRefs';
 import useAutofocus from '../utilities/useAutoFocus';
-import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
+import { FormFieldProps, useFormLabel } from '../FormLabel';
+import { Label } from '../Label';
 import { SvgIcon } from '../Icons';
 import { getFirstOptionValue, isOptGroup, parseChildren, validateProps } from './utils';
 import { Item, Section, useSelectState } from '../react-aria'; // from react-stately
@@ -50,7 +51,7 @@ export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
    */
   fieldClassName?: string;
   /**
-   * Sets the focus on the button during the first mount
+   * Sets the focus on the dropdown when it is first added to the document.
    */
   autoFocus?: boolean;
   /**
@@ -73,7 +74,7 @@ export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
   onBlur?: (...args: any[]) => any;
   onChange?: (change: DropdownChangeObject) => any;
   /**
-   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
+   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields](https://design.cms.gov/patterns/Forms/forms/#required-and-optional-fields).
    */
   requirementLabel?: React.ReactNode;
   /**
@@ -247,6 +248,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   const buttonProps = {
     ...useButtonProps.buttonProps,
     ...useFormLabelProps.fieldProps,
+    name: undefined,
     className: classNames(
       'ds-c-dropdown__button',
       'ds-c-field',
@@ -279,7 +281,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
 
   return (
     <div {...useFormLabelProps.wrapperProps} ref={wrapperRef}>
-      <FormLabel {...labelProps} />
+      <Label {...labelProps} />
       <HiddenSelect
         isDisabled={props.disabled}
         state={state}

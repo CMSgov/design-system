@@ -10,8 +10,7 @@ Object.keys(themes).forEach((theme) => {
   test(`Tooltip interaction: ${theme}`, async ({ page }) => {
     await page.goto(`${storyUrl}&globals=theme:${theme}`);
     await page.getByRole('button').click();
-    await expect(page).toHaveScreenshot(`tooltip--open-interactive--${theme}.png`, {
-      fullPage: true,
-    });
+    await page.getByRole('dialog').waitFor();
+    await expect(page).toHaveScreenshot(`tooltip--open-interactive--${theme}.png`);
   });
 });

@@ -1,9 +1,9 @@
 import * as themes from '../themes.json';
 import _ from 'lodash';
 import c from 'chalk';
-import { confirm, select } from '@inquirer/prompts';
+import { confirm } from '@inquirer/prompts';
 import { writeFileSync } from 'node:fs';
-import { sh, verifyGhInstalled, versionFromTag } from './utils';
+import { chooseMilestone, sh, verifyGhInstalled, versionFromTag } from './utils';
 
 interface PRDetails {
   author: string;
@@ -36,38 +36,6 @@ const icons = {
 
 type Icons = typeof icons | any;
 const icon: Icons = icons;
-
-/**
- * Current milestone reference
- */
-async function chooseMilestone() {
-  let milestone;
-  let milestoneQuery;
-  try {
-    const milestoneJSON = sh('gh api repos/CMSgov/design-system/milestones');
-    milestoneQuery = JSON.parse(milestoneJSON);
-  } catch (err) {
-    console.log(`${c.red('There was an error retrieving current milestones.')}`);
-    console.log(
-      `Please check to make sure you have the ${c.green(
-        'gh'
-      )} tool installed (https://cli.github.com)`
-    );
-    process.exit(1);
-  }
-
-  if (milestoneQuery.length < 1) {
-    throw Error('There are currently no milestones defined.');
-  } else if (milestoneQuery.length === 1) {
-    milestone = milestoneQuery[0];
-  } else {
-    milestone = await select({
-      message: 'Select an open milestone',
-      choices: milestoneQuery.map((ms: any) => ({ name: ms.title, value: ms })),
-    });
-  }
-  return milestone;
-}
 
 function fetchTags() {
   try {

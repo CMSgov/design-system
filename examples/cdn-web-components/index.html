@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <title>CDN Example</title>
-    <link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/6.0.0/css/index.css" />
+    <link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/8.0.2/css/index.css" />
     <link
       rel="stylesheet"
-      href="https://design.cms.gov/cdn/design-system/6.0.0/css/core-theme.css"
+      href="https://design.cms.gov/cdn/design-system/8.0.2/css/core-theme.css"
     />
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -43,15 +43,20 @@
 
         <h2 class="ds-text-heading--2xl">Adding machine</h2>
         <form id="calculator">
+          <ds-dropdown
+            id="operation"
+            name="operation"
+            options='[{"label":"Addition","value":"addition"},{"label":"Subtraction","value":"subtraction"}]'
+          ></ds-dropdown>
           <div
-            class="ds-u-display--flex ds-u-align-items--center ds-u-margin-bottom--2"
+            class="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2"
             style="gap: var(--spacer-2)"
           >
             <input type="number" id="a" name="a" value="20" class="ds-c-field ds-c-field--small" />
-            +
+            <span id="sign">+</span>
             <input type="number" id="b" name="b" value="30" class="ds-c-field ds-c-field--small" />
             =
-            <output name="result" for="a b">50</output>
+            <output name="result" for="a b"></output>
           </div>
           <ds-button variation="solid" type="submit">Calculate</ds-button>
         </form>
@@ -62,7 +67,7 @@
       Must load the JavaScript after your page HTML or else it won't evaluate
       the custom design-system elements that already exist on the page
     -->
-    <script src="dist/js/web-components.js"></script>
+    <script src="https://design.cms.gov/cdn/design-system/8.0.2/web-components/bundle/web-components.js"></script>
     <script>
       document.getElementById('the-button').addEventListener('click', function () {
         const oldAlert = document.getElementById('alert');
@@ -74,10 +79,18 @@
         oldAlert.remove();
       });
 
+      document.getElementById('operation').addEventListener('ds-change', function (e) {
+        const sign = e.detail.target.value === 'addition' ? '+' : '-';
+        document.getElementById('sign').innerHTML = sign;
+      });
+
       document.getElementById('calculator').addEventListener('submit', function (e) {
         e.preventDefault();
-        const { a, b, result } = e.currentTarget;
-        result.value = parseInt(a.value) + parseInt(b.value);
+        const { a, b, operation, result } = e.currentTarget;
+        const intA = parseInt(a.value);
+        const intB = parseInt(b.value);
+        console.log(operation.value);
+        result.value = operation.value === 'addition' ? intA + intB : intA - intB;
       });
     </script>
   </body>
