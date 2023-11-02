@@ -181,7 +181,6 @@ exports[`Dropdown dropdown matches snapshot 1`] = `
     aria-labelledby="static-id__button-content static-id__label"
     class="ds-c-dropdown__button ds-c-field"
     id="static-id"
-    name="dropdown"
     type="button"
   >
     <span
