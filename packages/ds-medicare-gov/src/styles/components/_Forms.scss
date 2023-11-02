@@ -6,14 +6,6 @@
   }
 }
 
-.ds-c-label {
-  font-family: var(--font-family-montserrat);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-semibold);
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-}
-
 // All form labels inside `ds-c-fieldset` will be lowercase, except the
 // MultiInputDateField day/month/year labels
 .ds-c-fieldset {
@@ -24,7 +16,7 @@
 
 input[type='radio'] + .ds-c-label,
 input[type='checkbox'] + .ds-c-label {
-  font-family: var(--font-family-rubik);
+  font-family: var(--font-rubik);
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-normal);
   letter-spacing: 0;

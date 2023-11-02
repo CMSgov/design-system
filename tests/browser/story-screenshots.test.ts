@@ -22,6 +22,7 @@ const storySkipList = [
   'web-components-alert--default',
   'web-components-badge--default',
   'web-components-button--default',
+  'web-components-dropdown--default',
   'web-components-usabanner--default',
 ];
 

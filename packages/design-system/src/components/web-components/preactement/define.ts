@@ -165,6 +165,10 @@ function proxyEvents(props, eventNames, CustomElement) {
     // The callback created here is passed when the custom element's connectedCallback is called
     // Dispatches a custom event when called
     const customCb = (event) => {
+      // TODO: We might need to start customizing this function for certain callbacks because
+      // not all of our handler functions use an event as the parameter. We might need to
+      // allow the caller of the define function to pass custom callbacks for certain events
+      // that return the custom event.
       const customEvent = new CustomEvent(customName, {
         ...event,
         composed: true,

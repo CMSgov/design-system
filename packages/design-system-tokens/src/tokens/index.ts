@@ -1,9 +1,9 @@
-export { default as animation } from './animation';
-export { default as radius } from './radius';
-export { default as color } from './color';
-export { default as font } from './font';
-export { default as media } from './media';
-export { default as measure } from './measure';
-export { default as spacer } from './spacer';
-export { default as time } from './time';
-export { default as z } from './zIndex';
+export * from './animation';
+export * from './radius';
+export * from './color';
+export * from './font';
+export * from './media';
+export * from './measure';
+export * from './spacer';
+export * from './time';
+export * from './zIndex';
