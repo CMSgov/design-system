@@ -96,18 +96,29 @@ function updateComponentTextStyles(
 ) {
   const rawTextStyles = {};
 
+  // Go through each token and put it into a bucket based on information stored in its key
   for (const tokenName in componentTokens) {
     const fullTokenName = `${componentName}${tokenName}`;
 
     for (const propertyName in tokenNamePatterns) {
       const matchResults = fullTokenName.match(tokenNamePatterns[propertyName]);
       if (matchResults) {
-        // Combine the categories before with the qualifiers after. For example, the text
-        // "vertical-nav-label__color--current" --> "vertical-nav-label--current"
-        const textStyleName = matchResults.slice(1).join('');
+        const [prefix, suffix] = matchResults.slice(1);
+        // Leave out the particular property name when coming up with the name for
+        // the text style, which is a group of properties.
+        const textStyleName = `${prefix}${suffix}`;
 
         if (!rawTextStyles[textStyleName]) {
-          rawTextStyles[textStyleName] = {};
+          let parentStyleName;
+          if (suffix) {
+            parentStyleName = prefix;
+          } else if (prefix !== componentName) {
+            parentStyleName = componentName;
+          }
+
+          rawTextStyles[textStyleName] = {
+            parentStyleName,
+          };
         }
 
         rawTextStyles[textStyleName][propertyName] = componentTokens[tokenName];
@@ -115,28 +126,46 @@ function updateComponentTextStyles(
     }
   }
 
-  for (const textStyleName in rawTextStyles) {
-    const rawValues = rawTextStyles[textStyleName];
+  // Recursive function that will climb up the inheritance tree for a particular
+  // style property and return the first valid value it finds, defaulting to the
+  // defaultTextStyle if nothing else is found.
+  const getProperty = (textStyleName, propertyName, parseFn) => {
+    const rawTextStyle = rawTextStyles[textStyleName];
+    if (rawTextStyle) {
+      const rawValue = rawTextStyle[propertyName];
+      if (rawValue !== undefined) {
+        return parseFn(rawValue);
+      } else if (rawTextStyle.parentStyleName) {
+        return getProperty(rawTextStyle.parentStyleName, propertyName, parseFn);
+      }
+    }
 
-    const fontFamily = rawValues.fontFamily
-      ? parseFontFamily(rawValues.fontFamily)
-      : defaultTextStyle.fontFamily;
-    const fontSize = rawValues.fontSize
-      ? parseFontSize(rawValues.fontSize)
-      : defaultTextStyle.fontSize;
-    const fontWeight = rawValues.fontWeight
-      ? parseFontWeight(rawValues.fontWeight)
-      : defaultTextStyle.fontWeight;
-    const textColor = rawValues.textColor
-      ? parseFontFamily(rawValues.textColor)
-      : defaultTextStyle.textColor;
-    const lineHeight = rawValues.lineHeight
-      ? parseLineHeight(rawValues.lineHeight, fontSize)
-      : defaultTextStyle.lineHeight;
-    const kerning = rawValues.kerning
-      ? parseKerning(rawValues.kerning, fontSize)
-      : defaultTextStyle.kerning;
-    const textTransform = rawValues.textTransform ?? defaultTextStyle.textTransform;
+    return defaultTextStyle[propertyName];
+  };
+
+  // Recursive function that builds the full name of a style, which looks like
+  // a path of folders in Sketch (e.g. "choice/choice-label/choice-label--disabled")
+  const getFullNamePath = (textStyleName) => {
+    const parent = rawTextStyles[textStyleName]?.parentStyleName;
+    if (parent) {
+      return `${getFullNamePath(parent)}/${textStyleName}`;
+    } else {
+      return `${folder}/${textStyleName}`;
+    }
+  };
+
+  // console.log(rawTextStyles);
+
+  for (const textStyleName in rawTextStyles) {
+    const fontFamily = getProperty(textStyleName, 'fontFamily', (v) => parseFontFamily(v));
+    const fontSize = getProperty(textStyleName, 'fontSize', (v) => parseFontSize(v));
+    const fontWeight = getProperty(textStyleName, 'fontWeight', (v) => parseFontWeight(v));
+    const textColor = getProperty(textStyleName, 'textColor', (v) => parseFontFamily(v));
+    const lineHeight = getProperty(textStyleName, 'lineHeight', (v) =>
+      parseLineHeight(v, fontSize)
+    );
+    const kerning = getProperty(textStyleName, 'kerning', (v) => parseKerning(v));
+    const textTransform = getProperty(textStyleName, 'textTransform', (v) => v);
 
     const style = new sketch.Style({
       fontFamily,
@@ -148,8 +177,17 @@ function updateComponentTextStyles(
       textTransform,
     });
 
-    const name = `${folder}/${textStyleName}`;
+    const name = getFullNamePath(textStyleName);
 
+    // console.log(name, {
+    //   fontFamily,
+    //   fontSize,
+    //   fontWeight,
+    //   textColor,
+    //   lineHeight,
+    //   kerning,
+    //   textTransform,
+    // });
     updateSharedStyleReferences(doc, name, style);
   }
 }
@@ -171,19 +209,19 @@ export function updateTextStylesFromTheme(doc, themeTokens) {
     componentName: 'typography-heading',
     componentTokens: heading,
     defaultTextStyle,
-    folder: 'typography/heading',
+    folder: 'typography',
   });
   updateComponentTextStyles(doc, {
     componentName: 'typography-body',
     componentTokens: body,
     defaultTextStyle,
-    folder: 'typography/body',
+    folder: 'typography',
   });
   updateComponentTextStyles(doc, {
     componentName: 'link',
     componentTokens: link,
     defaultTextStyle,
-    folder: 'typography/link',
+    folder: 'typography',
   });
 
   for (const [componentName, componentTokens] of Object.entries(components)) {
@@ -191,7 +229,7 @@ export function updateTextStylesFromTheme(doc, themeTokens) {
       componentName,
       componentTokens,
       defaultTextStyle,
-      folder: `components/${componentName}`,
+      folder: 'components',
     });
   }
 }
