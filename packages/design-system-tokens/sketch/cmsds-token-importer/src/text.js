@@ -164,9 +164,10 @@ function updateComponentTextStyles(
       const rawValue = rawTextStyle[propertyName];
       if (rawValue !== undefined) {
         const parsedValue = parseFn(rawValue);
-        // Sometimes the value is "inherit" or "currentColor" or something else
-        // that can't be parsed; in those cases, we want to fall back on the
-        // parent's value, so check that it's valid before returning.
+        // Sometimes the value is "inherit" or "currentColor" or something else that can't
+        // be parsed; in those cases, we want to fall back on the parent's value, so check
+        // that it's valid before returning. If the parse functions return anything other
+        // than null or undefined, it's a valid value.
         if (parsedValue != null) {
           return parsedValue;
         }
@@ -179,8 +180,6 @@ function updateComponentTextStyles(
 
     return defaultTextStyle[propertyName];
   };
-
-  // console.log(rawTextStyles);
 
   for (const textStyleName in rawTextStyles) {
     const fontFamily = getProperty(textStyleName, 'fontFamily', parseFontFamily);
@@ -205,15 +204,6 @@ function updateComponentTextStyles(
 
     const name = `${folder}/${textStyleName}`;
 
-    // console.log(name, {
-    //   fontFamily,
-    //   fontSize,
-    //   fontWeight,
-    //   textColor,
-    //   lineHeight,
-    //   kerning,
-    //   textTransform,
-    // });
     updateSharedStyleReferences(doc, name, style);
   }
 }
