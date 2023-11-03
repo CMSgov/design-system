@@ -2262,23 +2262,6 @@ function __skpm_run(key, context) {
               }
 
               return defaultTextStyle[propertyName];
-            }; // Recursive function that builds the full name of a style, which looks like
-            // a path of folders in Sketch (e.g. "choice/choice-label/choice-label--disabled")
-
-            var getFullNamePath = function getFullNamePath(textStyleName) {
-              var _rawTextStyles$textSt;
-
-              var parent =
-                (_rawTextStyles$textSt = rawTextStyles[textStyleName]) === null ||
-                _rawTextStyles$textSt === void 0
-                  ? void 0
-                  : _rawTextStyles$textSt.parentStyleName;
-
-              if (parent) {
-                return ''.concat(getFullNamePath(parent), '/').concat(textStyleName);
-              } else {
-                return ''.concat(folder, '/').concat(textStyleName);
-              }
             }; // console.log(rawTextStyles);
 
             var _loop = function _loop(_textStyleName) {
@@ -2312,7 +2295,7 @@ function __skpm_run(key, context) {
                 kerning: kerning,
                 textTransform: textTransform,
               });
-              var name = getFullNamePath(_textStyleName); // console.log(name, {
+              var name = ''.concat(folder, '/').concat(_textStyleName); // console.log(name, {
               //   fontFamily,
               //   fontSize,
               //   fontWeight,
@@ -2354,19 +2337,19 @@ function __skpm_run(key, context) {
               componentName: 'typography-heading',
               componentTokens: heading,
               defaultTextStyle: defaultTextStyle,
-              folder: 'typography',
+              folder: 'typography/heading',
             });
             updateComponentTextStyles(doc, {
               componentName: 'typography-body',
               componentTokens: body,
               defaultTextStyle: defaultTextStyle,
-              folder: 'typography',
+              folder: 'typography/body',
             });
             updateComponentTextStyles(doc, {
               componentName: 'link',
               componentTokens: link,
               defaultTextStyle: defaultTextStyle,
-              folder: 'typography',
+              folder: 'typography/link',
             });
 
             for (
@@ -2382,7 +2365,7 @@ function __skpm_run(key, context) {
                 componentName: componentName,
                 componentTokens: componentTokens,
                 defaultTextStyle: defaultTextStyle,
-                folder: 'components',
+                folder: 'components/'.concat(componentName),
               });
             }
           }

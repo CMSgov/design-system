@@ -143,17 +143,6 @@ function updateComponentTextStyles(
     return defaultTextStyle[propertyName];
   };
 
-  // Recursive function that builds the full name of a style, which looks like
-  // a path of folders in Sketch (e.g. "choice/choice-label/choice-label--disabled")
-  const getFullNamePath = (textStyleName) => {
-    const parent = rawTextStyles[textStyleName]?.parentStyleName;
-    if (parent) {
-      return `${getFullNamePath(parent)}/${textStyleName}`;
-    } else {
-      return `${folder}/${textStyleName}`;
-    }
-  };
-
   // console.log(rawTextStyles);
 
   for (const textStyleName in rawTextStyles) {
@@ -177,7 +166,7 @@ function updateComponentTextStyles(
       textTransform,
     });
 
-    const name = getFullNamePath(textStyleName);
+    const name = `${folder}/${textStyleName}`;
 
     // console.log(name, {
     //   fontFamily,
@@ -209,19 +198,19 @@ export function updateTextStylesFromTheme(doc, themeTokens) {
     componentName: 'typography-heading',
     componentTokens: heading,
     defaultTextStyle,
-    folder: 'typography',
+    folder: 'typography/heading',
   });
   updateComponentTextStyles(doc, {
     componentName: 'typography-body',
     componentTokens: body,
     defaultTextStyle,
-    folder: 'typography',
+    folder: 'typography/body',
   });
   updateComponentTextStyles(doc, {
     componentName: 'link',
     componentTokens: link,
     defaultTextStyle,
-    folder: 'typography',
+    folder: 'typography/link',
   });
 
   for (const [componentName, componentTokens] of Object.entries(components)) {
@@ -229,7 +218,7 @@ export function updateTextStylesFromTheme(doc, themeTokens) {
       componentName,
       componentTokens,
       defaultTextStyle,
-      folder: 'components',
+      folder: `components/${componentName}`,
     });
   }
 }
