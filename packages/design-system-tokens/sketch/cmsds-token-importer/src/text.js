@@ -137,11 +137,18 @@ function updateComponentTextStyles(
         // the text style, which is a group of properties.
         const textStyleName = `${prefix}${suffix}`;
 
+        // If we don't yet have an entry for this text style, make one
         if (!rawTextStyles[textStyleName]) {
+          // Figure out if there's a parent style that this should inherit from
+          // based on the naming conventions
           let parentStyleName;
           if (suffix) {
+            // Example: if prefix = "button" and suffix = "--hover", the parent
+            // of the hover styles is the regular "button" styles.
             parentStyleName = prefix;
           } else if (prefix !== componentName) {
+            // Example: if prefix = "button-alt" and componentName = "button",
+            // the parent of the "button-alt" styles is the "button" styles.
             parentStyleName = componentName;
           }
 
