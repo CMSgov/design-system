@@ -2099,25 +2099,41 @@ function __skpm_run(key, context) {
 
           function parseFontSize(tokenValue) {
             if (typeof tokenValue === 'string') {
+              var parsed;
+
               if (tokenValue.includes('rem')) {
-                return parseFloat(tokenValue) * 16;
+                parsed = parseFloat(tokenValue) * 16;
               } else {
-                return parseFloat(tokenValue);
+                parsed = parseFloat(tokenValue);
+              }
+
+              if (!isNaN(parsed)) {
+                return parsed;
               }
             }
 
-            return tokenValue;
+            return null;
           }
 
           function parseLineHeight(tokenValue, fontSizePixels) {
             if (typeof tokenValue === 'number') {
               return tokenValue * fontSizePixels;
-            } else {
-              return parseInt(tokenValue, 10);
             }
+
+            var parsed = parseInt(tokenValue, 10);
+
+            if (!isNaN(parsed)) {
+              return parsed;
+            }
+
+            return null;
           }
 
           function parseFontWeight(tokenValue) {
+            if (tokenValue === 'inherit') {
+              return null;
+            }
+
             switch (tokenValue) {
               case 100:
                 // Thin
@@ -2161,12 +2177,26 @@ function __skpm_run(key, context) {
           }
 
           function parseFontFamily(tokenValue) {
-            // Only return the first one, and remove all quotes
+            if (tokenValue === 'inherit') {
+              return null;
+            } // Only return the first one, and remove all quotes
+
             return tokenValue.split(',')[0].replaceAll('"', '').replaceAll("'", '').trim();
           }
 
           function parseKerning(tokenValue) {
             return parseFontSize(tokenValue);
+          }
+
+          function parseTextTransform(tokenValue) {
+            switch (tokenValue) {
+              case 'none':
+              case 'uppercase':
+              case 'lowercase':
+                return tokenValue;
+            }
+
+            return null;
           }
           /**
            * Creates the equivalent of the CSS reset styles for text to be used in all
@@ -2255,8 +2285,16 @@ function __skpm_run(key, context) {
                 var rawValue = rawTextStyle[propertyName];
 
                 if (rawValue !== undefined) {
-                  return parseFn(rawValue);
-                } else if (rawTextStyle.parentStyleName) {
+                  var parsedValue = parseFn(rawValue); // Sometimes the value is "inherit" or "currentColor" or something else
+                  // that can't be parsed; in those cases, we want to fall back on the
+                  // parent's value, so check that it's valid before returning.
+
+                  if (parsedValue != null) {
+                    return parsedValue;
+                  }
+                }
+
+                if (rawTextStyle.parentStyleName) {
                   return getProperty(rawTextStyle.parentStyleName, propertyName, parseFn);
                 }
               }
@@ -2265,27 +2303,15 @@ function __skpm_run(key, context) {
             }; // console.log(rawTextStyles);
 
             var _loop = function _loop(_textStyleName) {
-              var fontFamily = getProperty(_textStyleName, 'fontFamily', function (v) {
-                return parseFontFamily(v);
-              });
-              var fontSize = getProperty(_textStyleName, 'fontSize', function (v) {
-                return parseFontSize(v);
-              });
-              var fontWeight = getProperty(_textStyleName, 'fontWeight', function (v) {
-                return parseFontWeight(v);
-              });
-              var textColor = getProperty(_textStyleName, 'textColor', function (v) {
-                return parseFontFamily(v);
-              });
+              var fontFamily = getProperty(_textStyleName, 'fontFamily', parseFontFamily);
+              var fontSize = getProperty(_textStyleName, 'fontSize', parseFontSize);
+              var fontWeight = getProperty(_textStyleName, 'fontWeight', parseFontWeight);
+              var textColor = getProperty(_textStyleName, 'textColor', parseFontFamily);
               var lineHeight = getProperty(_textStyleName, 'lineHeight', function (v) {
                 return parseLineHeight(v, fontSize);
               });
-              var kerning = getProperty(_textStyleName, 'kerning', function (v) {
-                return parseKerning(v);
-              });
-              var textTransform = getProperty(_textStyleName, 'textTransform', function (v) {
-                return v;
-              });
+              var kerning = getProperty(_textStyleName, 'kerning', parseKerning);
+              var textTransform = getProperty(_textStyleName, 'textTransform', parseTextTransform);
               var style = new sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Style({
                 fontFamily: fontFamily,
                 fontSize: fontSize,

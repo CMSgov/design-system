@@ -3,25 +3,39 @@ import { updateSharedStyleReferences } from './updateSharedStyleReferences';
 
 function parseFontSize(tokenValue) {
   if (typeof tokenValue === 'string') {
+    let parsed;
     if (tokenValue.includes('rem')) {
-      return parseFloat(tokenValue) * 16;
+      parsed = parseFloat(tokenValue) * 16;
     } else {
-      return parseFloat(tokenValue);
+      parsed = parseFloat(tokenValue);
+    }
+
+    if (!isNaN(parsed)) {
+      return parsed;
     }
   }
 
-  return tokenValue;
+  return null;
 }
 
 function parseLineHeight(tokenValue, fontSizePixels) {
   if (typeof tokenValue === 'number') {
     return tokenValue * fontSizePixels;
-  } else {
-    return parseInt(tokenValue, 10);
   }
+
+  const parsed = parseInt(tokenValue, 10);
+  if (!isNaN(parsed)) {
+    return parsed;
+  }
+
+  return null;
 }
 
 function parseFontWeight(tokenValue) {
+  if (tokenValue === 'inherit') {
+    return null;
+  }
+
   switch (tokenValue) {
     case 100: // Thin
       return 0;
@@ -47,12 +61,27 @@ function parseFontWeight(tokenValue) {
 }
 
 function parseFontFamily(tokenValue) {
+  if (tokenValue === 'inherit') {
+    return null;
+  }
+
   // Only return the first one, and remove all quotes
   return tokenValue.split(',')[0].replaceAll('"', '').replaceAll("'", '').trim();
 }
 
 function parseKerning(tokenValue) {
   return parseFontSize(tokenValue);
+}
+
+function parseTextTransform(tokenValue) {
+  switch (tokenValue) {
+    case 'none':
+    case 'uppercase':
+    case 'lowercase':
+      return tokenValue;
+  }
+
+  return null;
 }
 
 /**
@@ -134,8 +163,16 @@ function updateComponentTextStyles(
     if (rawTextStyle) {
       const rawValue = rawTextStyle[propertyName];
       if (rawValue !== undefined) {
-        return parseFn(rawValue);
-      } else if (rawTextStyle.parentStyleName) {
+        const parsedValue = parseFn(rawValue);
+        // Sometimes the value is "inherit" or "currentColor" or something else
+        // that can't be parsed; in those cases, we want to fall back on the
+        // parent's value, so check that it's valid before returning.
+        if (parsedValue != null) {
+          return parsedValue;
+        }
+      }
+
+      if (rawTextStyle.parentStyleName) {
         return getProperty(rawTextStyle.parentStyleName, propertyName, parseFn);
       }
     }
@@ -146,15 +183,15 @@ function updateComponentTextStyles(
   // console.log(rawTextStyles);
 
   for (const textStyleName in rawTextStyles) {
-    const fontFamily = getProperty(textStyleName, 'fontFamily', (v) => parseFontFamily(v));
-    const fontSize = getProperty(textStyleName, 'fontSize', (v) => parseFontSize(v));
-    const fontWeight = getProperty(textStyleName, 'fontWeight', (v) => parseFontWeight(v));
-    const textColor = getProperty(textStyleName, 'textColor', (v) => parseFontFamily(v));
+    const fontFamily = getProperty(textStyleName, 'fontFamily', parseFontFamily);
+    const fontSize = getProperty(textStyleName, 'fontSize', parseFontSize);
+    const fontWeight = getProperty(textStyleName, 'fontWeight', parseFontWeight);
+    const textColor = getProperty(textStyleName, 'textColor', parseFontFamily);
     const lineHeight = getProperty(textStyleName, 'lineHeight', (v) =>
       parseLineHeight(v, fontSize)
     );
-    const kerning = getProperty(textStyleName, 'kerning', (v) => parseKerning(v));
-    const textTransform = getProperty(textStyleName, 'textTransform', (v) => v);
+    const kerning = getProperty(textStyleName, 'kerning', parseKerning);
+    const textTransform = getProperty(textStyleName, 'textTransform', parseTextTransform);
 
     const style = new sketch.Style({
       fontFamily,
