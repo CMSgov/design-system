@@ -328,14 +328,14 @@ $breakpoints: (
 
 .ds-text--lead,
 .ds-text-body--lg {
-  font-size: var(--typography-heading-lg__font-size);
+  font-size: var(--font-size-lg);
 }
 
 .ds-text,
 .ds-text-body--md {
-  font-size: var(--typography-heading-base__font-size);
+  font-size: var(--font-size-base);
 }
 
 .ds-text-body--sm {
-  font-size: var(--typography-heading-sm__font-size);
+  font-size: var(--font-size-sm);
 }
