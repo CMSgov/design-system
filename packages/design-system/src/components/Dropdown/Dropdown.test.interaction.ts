@@ -31,7 +31,7 @@ Object.keys(themes).forEach((theme) => {
 });
 
 // Don't need to test these in all themes
-test.only('Dropdown scrolls to selected item', async ({ page }) => {
+test('Dropdown scrolls to selected item', async ({ page }) => {
   await page.goto(storyUrl('core', 'components-dropdown--default'));
   await page.getByRole('button').click();
   // Cannot figure out an alternative to this wait time
