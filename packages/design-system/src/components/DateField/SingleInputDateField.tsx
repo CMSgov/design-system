@@ -15,7 +15,7 @@ import { TextInputProps } from '../TextField/TextInput';
 import { t } from '../i18n';
 import useId from '../utilities/useId';
 
-export interface BaseSingleInputDateFieldProps extends FormFieldProps {
+interface BaseSingleInputDateFieldProps extends FormFieldProps {
   /**
    * The `input` field's `name` attribute
    */
