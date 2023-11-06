@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { ListState, Node } from '../react-aria'; // from react-stately
+import { ListState, Node, OverlayTriggerState } from '../react-aria'; // from react-stately
 import { SvgIcon } from '../Icons';
 import { useOption } from '../react-aria'; // from react-aria
 import classNames from 'classnames';
@@ -11,7 +11,7 @@ export function getOptionId(rootId: string, index: number): string {
 export interface DropdownMenuOptionProps<T> {
   componentClass: string;
   item: Node<T>;
-  state: ListState<T>;
+  state: ListState<T> & OverlayTriggerState;
   rootId?: string;
 }
 
