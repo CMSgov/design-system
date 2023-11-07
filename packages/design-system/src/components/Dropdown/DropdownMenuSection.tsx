@@ -1,12 +1,12 @@
 import React from 'react';
 import { DropdownMenuOption } from './DropdownMenuOption';
-import { ListState, Node } from '../react-aria'; // from react-stately
+import { ListState, Node, OverlayTriggerState } from '../react-aria'; // from react-stately
 import { useListBoxSection } from '../react-aria'; // from react-aria
 
 export interface DropdownMenuOptionProps<T> {
   componentClass: string;
   section: Node<T>;
-  state: ListState<T>;
+  state: ListState<T> & OverlayTriggerState;
   rootId?: string;
 }
 
