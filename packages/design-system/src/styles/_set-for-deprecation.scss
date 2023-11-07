@@ -1,0 +1,18 @@
+// Classes included in this file are set for deprecation and will be removed in the next major release.
+
+// The `--debugger` variable is used to show what soon-to-be deprecated classes are being used in the browser.
+// By default, the value is set to `false`. To enable the debugger, set the variable to `true` in the :root selector.
+:where(html) {
+  --debugger: false;
+}
+
+// Include the soon-to-be deprecated classes here (remove them from their original files).
+// This makes it easier to find all the soon-to-be deprecated classes in one place and delete them.
+
+// This adds a border to all soon-to-be deprecated classes.
+// When the class is deprecated, remove it from the list below.
+@container style(--debugger: true) {
+  // .soon-to-be-deprecated-class {
+  //   border: 2px solid magenta;
+  // }
+}
