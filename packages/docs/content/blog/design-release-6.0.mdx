@@ -1,0 +1,59 @@
+---
+title: Sketch UI Kit release 6.0.0
+date: 2023-11-09
+intro: Sketch Cleanup / Design Debt work to improve accuracy and consistency in Sketch UI design libraries. Applies to Core, HealthCare & Medicare
+---
+
+import sketchLinkScreenshot from '../../src/images/sketch-link-screenshot.png';
+
+Sketch Cleanup / Design Debt work to improve accuracy and consistency in Sketch UI design libraries. Applies to Core, HealthCare & Medicare
+
+### 🛠 Fixed
+
+1. **Reset UI kit styles** to link to the themes and to match our [theme tokens](https://design.cms.gov/foundation/system-color-tokens).
+2. **Layout bugs fixed** so that symbols behave as expected:
+    1. Table symbols
+    2. Tab panel symbols
+    3. Form Label symbols
+    4. Help Drawer
+3. **Organized Text styles** and example boards by deleting and merging unused/duplicate styles and merging split art boards. For more information on typography classes, check out our [migration guide.](https://design.cms.gov/migration-guides/agnostic-typography-classes/?theme=healthcare)
+
+### 💅 Changed
+
+1. **Standardized breakpoint naming conventions** to “Large”, “Medium” and “Small”
+    1. A mix of terminology was being used to refer to breakpoints for different symbols and styles, from more abstract labels (Large, Medium, Small) to device-specific labels (Desktop, Tablet, Mobile). 
+    2. We chose one approach and applied it consistently to our symbols and styles.
+    3. The abstract naming approach better facilitates design and code alignment. See [breakpoint guidelines](https://design.cms.gov/foundation/layout-grid/responsive-design) for descriptions of Small, Medium, Large, and XL breakpoints.
+
+### 🚀 Added
+
+1. **New components and patterns added**
+    1. Experimental modular alert symbol
+    2. Add/Edit/Remove pattern symbol
+    3. Autocomplete component
+    4. Filter Chip component symbols
+    5. Ordered and unordered list components + unordered list pattern
+    6. Subcomponent for hint text for Core UI toolkit
+2. **Symbol treatments:**
+    1. Inline and multi line link treatments added:
+        1. Checkbox component
+        2. Radio component
+    2. Added Big/Small buttons and Icon left/right buttons  
+    3. Updated modal dialog to include multiple sizes and variables
+3. **In page section labeling** added to all example artboards
+
+### 📚 Updating your Sketch Library
+
+Double check your Sketch library to confirm that you are using the latest version. We recommend enabling Sketch’s [Auto-download Libraries](https://www.sketch.com/updates/auto-download-libraries/) feature—located in the Libraries tab of the Settings window in the Mac app. This feature will automatically download and update Libraries as soon as they become available.
+
+Referencing the shared Sketch libraries:
+
+- [Core UI Kit](https://www.sketch.com/s/bffbfeb1-59a1-48dd-842f-a1e0566e457f) & [theme](https://www.sketch.com/s/8f09eda7-81dc-452f-849b-f0d9b6336229)
+- [HealthCare UI Kit](https://www.sketch.com/s/4da17849-4fab-4684-b2ef-fe63ba7ff10b) & [theme](https://www.sketch.com/s/234cfe38-a500-4405-84fc-769c1449ee47)
+- [Medicare UI Kit](https://www.sketch.com/s/c242aee5-25e9-4684-ac7d-0f084ffeb782) & [theme](https://www.sketch.com/s/781c18c9-ba8b-4c7d-a7c3-64b4a9f618db)
+  
+💎 The subheading of each component documentation page includes a direct link to the corresponding Sketch component page.
+
+<div className="ds-u-measure--wide ds-u-text-align--center ds-u-margin-top--3">
+  <img src={sketchLinkScreenshot} width={685} className="ds-u-display--inline-block" alt="Screenshot of the page headings on this doc site where the link to Sketch assets is highlighted" />
+</div>
