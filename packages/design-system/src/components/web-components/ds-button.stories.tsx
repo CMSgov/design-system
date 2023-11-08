@@ -43,13 +43,13 @@ export default {
 
 const Template = (args) => {
   useEffect(() => {
-    const onChange = (event) => {
-      action('onChange')(event);
+    const onClick = (event) => {
+      action('ds-click')(event);
     };
     const button = document.querySelector('ds-button');
-    button.addEventListener('ds-click', onChange);
+    button.addEventListener('ds-click', onClick);
     return () => {
-      button.removeEventListener('ds-click', onChange);
+      button.removeEventListener('ds-click', onClick);
     };
   });
   return (

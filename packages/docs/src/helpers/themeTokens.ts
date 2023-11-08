@@ -1,4 +1,4 @@
-import colorTokens from 'design-system-tokens/src/tokens/color';
+import { color as colorTokens } from 'design-system-tokens/src/tokens/color';
 import findKey from 'lodash/findKey';
 import {
   CoreTheme,

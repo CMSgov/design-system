@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { ListState, Node } from '../react-aria'; // from react-stately
+import React, { useEffect, useRef } from 'react';
+import { ListState, Node, OverlayTriggerState } from '../react-aria'; // from react-stately
 import { SvgIcon } from '../Icons';
 import { useOption } from '../react-aria'; // from react-aria
 import classNames from 'classnames';
@@ -11,7 +11,7 @@ export function getOptionId(rootId: string, index: number): string {
 export interface DropdownMenuOptionProps<T> {
   componentClass: string;
   item: Node<T>;
-  state: ListState<T>;
+  state: ListState<T> & OverlayTriggerState;
   rootId?: string;
 }
 
@@ -37,6 +37,15 @@ export function DropdownMenuOption<T>({
   );
 
   const { textValue, ...extraAttrs } = item.props;
+
+  // Work around [this issue](https://github.com/adobe/react-spectrum/issues/4974) by manually
+  // scrolling the selected option into view. At the time of writing this, we are using
+  // `@react-aria/selection` version 3.16.1
+  useEffect(() => {
+    if (state.isOpen && isSelected) {
+      ref.current?.scrollIntoView({ block: 'nearest' });
+    }
+  }, [isSelected, state.isOpen]);
 
   return (
     <li

@@ -4,7 +4,7 @@
 
 import { to, ColorTokens } from '../lib/types';
 
-const color = to<ColorTokens>()({
+export const color = to<ColorTokens>()({
   'transparent':     '#ffffff00',
 
   // White
@@ -255,5 +255,3 @@ const color = to<ColorTokens>()({
   'copper-1000':     '#140c05',
 
 });
-
-export default color;
