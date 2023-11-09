@@ -362,4 +362,14 @@ describe('Autocomplete', () => {
     const menuContainer = container.querySelector('.ds-c-autocomplete__menu-container');
     expect(menuContainer).toHaveClass('ds-c-field--medium');
   });
+
+  it('can have a disabled TextField', () => {
+    renderAutocomplete({
+      children: <TextField label="autocomplete" name="field" disabled />,
+    });
+    const field = screen.getByRole('combobox');
+    expect(field).toHaveAttribute('disabled');
+    const clearButton = screen.getByText('Clear search');
+    expect(clearButton).toHaveAttribute('disabled');
+  });
 });
