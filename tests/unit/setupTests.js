@@ -19,6 +19,8 @@ window.matchMedia = (query) => ({
 window.scroll = () => {};
 window.scrollTo = () => {};
 
+Element.prototype.scrollIntoView = () => {};
+
 const localStorageMock = (function () {
   return {
     getItem: jest.fn((itemName) => (itemName === 'CMS_DS_IT_LAST_ACTIVE' ? 1643811720 : null)),
