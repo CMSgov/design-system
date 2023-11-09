@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/ds-cms-gov",
-  "version": "8.0.3",
+  "version": "8.0.4",
   "publishConfig": {
     "access": "public",
     "tag": "latest"
@@ -53,7 +53,7 @@
     "src"
   ],
   "dependencies": {
-    "@cmsgov/design-system": "8.0.3",
+    "@cmsgov/design-system": "8.0.4",
     "@types/react": "^18.2.6",
     "@types/react-dom": "^17.0.10"
   }
