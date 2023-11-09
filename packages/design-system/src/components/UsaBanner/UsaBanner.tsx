@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import useId from '../utilities/useId';
 import { t } from '../i18n';
@@ -28,6 +28,25 @@ export interface UsaBannerProps {
  * [refer to its full documentation page](https://design.cms.gov/components/usa-banner/).
  */
 export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBannerProps) => {
+  // Logic to see deprecated CSS in use
+  useEffect(() => {
+    window.addEventListener('load', handleRefresh);
+
+    return () => {
+      window.removeEventListener('load', handleRefresh);
+    };
+  }, []);
+
+  // If --debugger is not set and env is PROD, set --debugger to true
+  const handleRefresh = () => {
+    if (
+      process.env.NODE_ENV !== 'production' &&
+      getComputedStyle(document.documentElement).getPropertyValue('--debugger').length === 0
+    ) {
+      document.documentElement.style.setProperty('--debugger', 'true');
+    }
+  };
+
   const [isBannerOpen, setBannerOpen] = useState<boolean>(false);
   const classes = classNames('ds-c-usa-banner', props.className);
   const rootId = useId('usa-banner--', props.id);
