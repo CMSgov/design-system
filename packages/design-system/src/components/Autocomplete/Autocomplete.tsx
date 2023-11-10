@@ -16,6 +16,7 @@ import { t } from '../i18n';
 import { useComboBox } from '../react-aria'; // from react-aria
 import { useComboBoxState } from '../react-aria'; // from react-stately
 import usePrevious from '../utilities/usePrevious';
+import { ErrorPlacement } from '../InlineError/useInlineError';
 
 export interface AutocompleteItem extends Omit<React.HTMLAttributes<'option'>, 'name'> {
   /**
@@ -242,7 +243,8 @@ export const Autocomplete = (props: AutocompleteProps) => {
   // The display of bottom placed errorMessages in TextField breaks the Autocomplete's UI design.
   // Add errorMessageClassName to fix the styles for bottom placed errors
   const bottomError =
-    (textField.props.errorPlacement === 'bottom' || errorPlacementDefault() === 'bottom') &&
+    (textField.props.errorPlacement === ErrorPlacement.Bottom ||
+      errorPlacementDefault() === ErrorPlacement.Bottom) &&
     textField.props.errorMessage != null;
 
   const errorMessageClassName = classNames(

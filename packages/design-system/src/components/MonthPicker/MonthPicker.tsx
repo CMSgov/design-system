@@ -19,8 +19,6 @@ const monthNumbers = (() => {
   return months;
 })();
 
-export type MonthPickerErrorPlacement = 'top' | 'bottom';
-
 interface MonthPickerProps extends FormFieldProps {
   /**
    * The `input` field's `name` attribute

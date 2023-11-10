@@ -2,12 +2,12 @@ import React from 'react';
 import { FunctionComponent } from 'react';
 import classNames from 'classnames';
 import mergeIds from '../utilities/mergeIds';
+import { ErrorPlacement } from '../InlineError/useInlineError';
 
 export type TextInputDefaultValue = string | number;
 export type TextInputRows = number | string;
 export type TextInputSize = 'small' | 'medium';
 export type TextInputValue = string | number;
-export type TextInputErrorPlacement = 'top' | 'bottom';
 
 export type OmitProps = 'size' | 'ref';
 
@@ -31,7 +31,7 @@ export type TextInputProps = Omit<React.ComponentPropsWithoutRef<'input'>, OmitP
   /**
    * Location of the error message relative to the field input
    */
-  errorPlacement?: TextInputErrorPlacement;
+  errorPlacement?: ErrorPlacement;
   /**
    * Additional classes to be added to the field element
    */
@@ -149,7 +149,7 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
       aria-describedby={
         mergeIds(
           props['aria-describedby'],
-          errorPlacement === 'bottom' && errorMessage && errorId
+          errorPlacement === ErrorPlacement.Bottom && errorMessage && errorId
         ) || undefined
       }
     />

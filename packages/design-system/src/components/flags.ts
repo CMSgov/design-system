@@ -1,3 +1,5 @@
+import { ErrorPlacement } from './InlineError/useInlineError';
+
 type errorPlacementValue = 'top' | 'bottom';
 
 interface flagsType {
@@ -10,7 +12,7 @@ interface flagsType {
 
 // featureFlags.js
 const flags: flagsType = {
-  ERROR_PLACEMENT_DEFAULT: 'top',
+  ERROR_PLACEMENT_DEFAULT: ErrorPlacement.Top,
   ALERT_SENDS_ANALYTICS: false,
   BUTTON_SENDS_ANALYTICS: false,
   DIALOG_SENDS_ANALYTICS: false,
