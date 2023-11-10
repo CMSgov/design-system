@@ -40,13 +40,7 @@ const Template = (args) => {
       onInputValueChange={onInputValueChange}
       items={filteredItems}
     >
-      <TextField
-        label={textFieldLabel}
-        hint={textFieldHint}
-        name="autocomplete"
-        value={input}
-        disabled
-      />
+      <TextField label={textFieldLabel} hint={textFieldHint} name="autocomplete" value={input} />
     </Autocomplete>
   );
 };
