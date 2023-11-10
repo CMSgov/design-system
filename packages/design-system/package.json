@@ -74,7 +74,7 @@
   "devDependencies": {
     "chalk": "^5.0.1",
     "case-it": "^1.0.1",
-    "globby": "^13.1.2",
+    "globby": "^14.0.0",
     "inquirer": "^9.0.2",
     "ora": "^6.1.2",
     "yargs": "^17.5.1"
