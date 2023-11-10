@@ -1,1 +1,2 @@
-export { default as InlineError } from './InlineError';
+export * from './InlineError';
+export * from './useInlineError';
