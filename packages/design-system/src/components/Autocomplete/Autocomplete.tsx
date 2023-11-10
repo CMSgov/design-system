@@ -231,6 +231,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
       ...autocompleteProps,
       name: textField.props.name,
       label: textField.props.label,
+      isDisabled: textField.props.disabled,
       inputRef,
       listBoxRef,
       popoverRef: listBoxRef,
@@ -327,6 +328,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
           }}
           size="small"
           variation="ghost"
+          disabled={textField.props.disabled}
         >
           {clearInputText ?? t('autocomplete.clearInputText')}
         </Button>
