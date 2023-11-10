@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import classNames from 'classnames';
+import useCssDebugger from '../utilities/useCssDebugger';
 import useId from '../utilities/useId';
 import { t } from '../i18n';
 import {
@@ -28,6 +29,8 @@ export interface UsaBannerProps {
  * [refer to its full documentation page](https://design.cms.gov/components/usa-banner/).
  */
 export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBannerProps) => {
+  useCssDebugger();
+
   const [isBannerOpen, setBannerOpen] = useState<boolean>(false);
   const classes = classNames('ds-c-usa-banner', props.className);
   const rootId = useId('usa-banner--', props.id);
