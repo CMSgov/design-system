@@ -15,7 +15,7 @@ import { Button } from '../Button';
 import { CloseIconThin } from '../Icons';
 import usePrevious from '../utilities/usePrevious';
 
-export interface TooltipProps {
+export interface BaseTooltipProps {
   /**
    * Classes applied to the tooltip trigger when the tooltip is active
    */
@@ -95,6 +95,25 @@ export interface TooltipProps {
    */
   zIndex?: number;
 }
+
+// Similarly to the Button component, we want to expand the props type definition to
+// permit pass-through props for the most commonly used underlying components.
+// However, unlike in Button, we have not removed the ability for applications to
+// define a custom `component` prop, which means there are theoretically props
+// specific to that component type which will not be available in the TooltipProps
+// definition. The strategy here is to keep the types simple by including just the
+// possible attributes of button and anchor, but it comes at the expense of accuracy.
+// If applications have extra props for their custom components, they will need to
+// tell TypeScript to ignore those props for now. We'd like to revisit Tooltip in
+// the future and improve it.
+type OtherProps = Omit<
+  // All other props that could be passed to buttons or anchors
+  React.ComponentPropsWithRef<'button'> & React.ComponentPropsWithRef<'a'>,
+  // Omit any properties that we're defining on our own `BaseTooltipProps`
+  keyof BaseTooltipProps
+>;
+
+export type TooltipProps = BaseTooltipProps & OtherProps;
 
 /**
  * Tooltips provide additional information upon hover, focus or click.

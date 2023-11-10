@@ -53,8 +53,12 @@ function fetchTags() {
   }
 }
 
+/**
+ * Gets the most recent tag created for the given package. The assumption here is that
+ * the latest tag is the one we want to create release notes about.
+ */
 function getLatestPackageTag(packageName: string): string {
-  return sh(`git tag -l | grep "${packageName}@" | tail -1`);
+  return sh(`git tag -l --sort=-v:refname | grep "${packageName}@" | head -1`);
 }
 
 /**
