@@ -34,6 +34,11 @@ import {
 export default {
   title: 'Components/Icons',
   component: SvgIcon,
+  parameters: {
+    docs: {
+      underlyingHtmlElements: ['svg'],
+    },
+  },
 };
 
 const iconData = [

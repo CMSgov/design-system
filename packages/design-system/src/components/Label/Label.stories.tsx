@@ -8,6 +8,11 @@ const meta: Meta<typeof Label> = {
   args: {
     children: 'Sample Label',
   },
+  parameters: {
+    docs: {
+      underlyingHtmlElements: ['label', 'legend'],
+    },
+  },
 };
 export default meta;
 

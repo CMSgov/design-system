@@ -17,6 +17,11 @@ const meta: Meta<typeof Table> = {
     TableCell,
     TableBody,
   },
+  parameters: {
+    docs: {
+      underlyingHtmlElements: ['table'],
+    },
+  },
 };
 export default meta;
 

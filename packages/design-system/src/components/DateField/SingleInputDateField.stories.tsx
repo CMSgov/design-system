@@ -11,6 +11,11 @@ const meta: Meta<typeof SingleInputDateField> = {
     label: 'Birthday',
     name: 'single-input-date-field',
   },
+  parameters: {
+    docs: {
+      underlyingHtmlElements: ['input'],
+    },
+  },
 };
 export default meta;
 

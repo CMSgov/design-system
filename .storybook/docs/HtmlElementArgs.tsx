@@ -2,6 +2,11 @@ import React from 'react';
 import humanizeList from 'humanize-react';
 import { useOf } from '@storybook/blocks';
 
+interface HtmlElementArgsProps {
+  attributes?: boolean;
+  of?: any;
+}
+
 /**
  * If the component we're documenting passes extra props through to an HTML element,
  * we want to include documentation about that. Rather than listing out all the
@@ -11,7 +16,7 @@ import { useOf } from '@storybook/blocks';
  * determine if it should show this addtional text and what elements' documentation
  * it should link to.
  */
-export const HtmlElementArgs = ({ of }) => {
+export const HtmlElementArgs = ({ attributes, of }) => {
   const resolvedOf = useOf(of || 'story', ['story', 'meta']);
   if (resolvedOf.type !== 'story') {
     return null;
@@ -33,7 +38,7 @@ export const HtmlElementArgs = ({ of }) => {
 
   return (
     <>
-      <h3 id="additional-props">Additional props</h3>
+      <h3 id="additional-props">Additional {attributes ? 'attributes' : 'props'}</h3>
       <p>
         This component passes any additional props to its underlying {formattedElementNames} element
         as attributes. See the corresponding MDN documentation for {formattedElementLinks} for a

@@ -11,6 +11,11 @@ const meta: Meta<typeof Dropdown> = {
   args: {
     name: 'dropdown-field',
   },
+  parameters: {
+    docs: {
+      underlyingHtmlElements: ['button'],
+    },
+  },
 };
 export default meta;
 
