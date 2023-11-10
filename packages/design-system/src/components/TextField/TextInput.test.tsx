@@ -10,7 +10,6 @@ const defaultProps: Omit<React.ComponentPropsWithRef<'textarea'>, OmitProps> &
   inputRef: jest.fn(),
   id: 'static-id',
   type: 'text',
-  errorPlacement: 'top',
 };
 
 function renderInput(props = {}) {
@@ -53,7 +52,6 @@ describe('TextInput', function () {
 
   it('has error', () => {
     renderInput({ errorMessage: 'Error' });
-    expect(getInput().getAttribute('aria-invalid')).toBe('true');
     expect(getInput().classList.contains('ds-c-field--error')).toBe(true);
   });
 
@@ -61,12 +59,8 @@ describe('TextInput', function () {
     renderInput({
       errorMessage: 'Error',
       errorPlacement: 'bottom',
-      errorId: '1_error',
-      'aria-describedby': '1_label',
     });
 
-    expect(getInput().getAttribute('aria-invalid')).toBe('true');
-    expect(getInput().getAttribute('aria-describedby')).toBe('1_label 1_error');
     expect(getInput().classList.contains('ds-c-field--error')).toBe(true);
     expect(getInput()).toMatchSnapshot();
   });

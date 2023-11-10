@@ -1,12 +1,9 @@
 import React from 'react';
 import InlineError from './InlineError';
 import classNames from 'classnames';
-import { errorPlacementDefault } from '../flags';
+import { ErrorPlacement, errorPlacementDefault } from '../flags';
 
-export enum ErrorPlacement {
-  Top = 'top',
-  Bottom = 'bottom',
-}
+export { ErrorPlacement };
 
 // TODO: We should conditionally return an errorId, because we want to be able
 // to include it in the aria-describedby without conditional logic in the component
@@ -74,7 +71,7 @@ export function useInlineError<T extends UseInlineErrorProps>(props: T) {
   const invalid = props['aria-invalid'] ?? !!errorMessage;
 
   return {
-    errorId,
+    errorId: errorMessage ? errorId : undefined,
     invalid,
     topError,
     bottomError,

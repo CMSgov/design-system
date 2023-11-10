@@ -13,6 +13,7 @@ exports[`TextField renders 1`] = `
       Foo
     </label>
     <input
+      aria-describedby=""
       aria-invalid="false"
       class="ds-c-field"
       id="static-id"

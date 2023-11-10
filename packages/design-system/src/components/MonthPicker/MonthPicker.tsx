@@ -3,13 +3,15 @@ import React from 'react';
 import 'core-js/stable/array/includes';
 import Button, { ButtonVariation } from '../Button/Button';
 import Choice from '../ChoiceList/Choice';
-import { ChangeEvent, useState } from 'react';
 import classNames from 'classnames';
+import describeField from '../utilities/describeField';
+import useId from '../utilities/useId';
+import { ChangeEvent, useState } from 'react';
 import { NUM_MONTHS, getMonthNames } from './getMonthNames';
 import { fallbackLocale, getLanguage, t } from '../i18n';
 import { FormFieldProps, useFormLabel } from '../FormLabel';
 import { Label } from '../Label';
-import useId from '../utilities/useId';
+import { useInlineError } from '../InlineError/useInlineError';
 
 const monthNumbers = (() => {
   const months = [];
@@ -123,7 +125,8 @@ export const MonthPicker = (props: MonthPickerProps) => {
   const selectAllPressed = selectedMonths.length === NUM_MONTHS - disabledMonths.length;
   const clearAllPressed = selectedMonths.length === 0;
 
-  const { labelProps, wrapperProps, bottomError } = useFormLabel({
+  const { errorId, topError, bottomError, invalid } = useInlineError({ id, ...props });
+  const { labelProps, wrapperProps, hintId } = useFormLabel({
     ...props,
     className: classNames('ds-c-month-picker', props.className),
     labelComponent: 'legend',
@@ -132,8 +135,13 @@ export const MonthPicker = (props: MonthPickerProps) => {
   });
 
   return (
-    <fieldset {...wrapperProps}>
+    <fieldset
+      {...wrapperProps}
+      aria-invalid={invalid}
+      aria-describedby={describeField({ ...props, hintId, errorId })}
+    >
       <Label {...labelProps} />
+      {topError}
       <div className="ds-c-month-picker__buttons ds-u-clearfix">
         <Button
           aria-pressed={selectAllPressed}

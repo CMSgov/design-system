@@ -23,10 +23,6 @@ export type TextInputProps = Omit<React.ComponentPropsWithoutRef<'input'>, OmitP
    */
   defaultValue?: TextInputDefaultValue;
   disabled?: boolean;
-  /**
-   * The ID of the error message applied to the Select field.
-   */
-  errorId?: string;
   errorMessage?: React.ReactNode;
   /**
    * Location of the error message relative to the field input
@@ -93,7 +89,6 @@ export type SingleLineTextInputProps = TextInputProps;
 const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => {
   const {
     ariaLabel,
-    errorId,
     errorMessage,
     errorPlacement,
     fieldClassName,
@@ -140,18 +135,8 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
       // @ts-ignore: The ClipboardEventHandler for textareas and inputs are incompatible, and TS
       // is failing to infer which one is being used here based on ComponentType.
       onCopyCapture={onCopyCapture}
-      // This can be purposefully overwritten by an 'aria-invalid' defined in inputProps
-      aria-invalid={!!errorMessage}
       {...inputProps}
       aria-label={ariaLabel || props['aria-label']}
-      // Link input to bottom placed error message
-      // Use of the classNames function for this is confusing
-      aria-describedby={
-        mergeIds(
-          props['aria-describedby'],
-          errorPlacement === ErrorPlacement.Bottom && errorMessage && errorId
-        ) || undefined
-      }
     />
   );
 };

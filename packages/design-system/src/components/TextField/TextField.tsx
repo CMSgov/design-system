@@ -6,6 +6,8 @@ import classNames from 'classnames';
 import { FormFieldProps, useFormLabel } from '../FormLabel';
 import { Label } from '../Label';
 import useId from '../utilities/useId';
+import { useInlineError } from '../InlineError/useInlineError';
+import describeField from '../utilities/describeField';
 
 export type TextFieldDefaultValue = string | number;
 export type TextFieldMask = 'currency' | 'phone' | 'ssn' | 'zip';
@@ -103,6 +105,7 @@ export type TextFieldProps = BaseTextFieldProps &
  */
 export const TextField: React.FC<TextFieldProps> = (props: TextFieldProps) => {
   const { mask, labelMask, ...textFieldProps } = props;
+  const id = useId('text-field--', textFieldProps.id);
 
   if (process.env.NODE_ENV !== 'production') {
     if (props.type === 'number') {
@@ -112,11 +115,12 @@ export const TextField: React.FC<TextFieldProps> = (props: TextFieldProps) => {
     }
   }
 
-  const { labelProps, fieldProps, wrapperProps, bottomError } = useFormLabel({
+  const { errorId, topError, bottomError, invalid } = useInlineError({ id, ...props });
+  const { labelProps, fieldProps, wrapperProps, hintId } = useFormLabel({
     ...textFieldProps,
     labelComponent: 'label',
     wrapperIsFieldset: false,
-    id: useId('text-field--', textFieldProps.id),
+    id,
   });
 
   wrapperProps.className = classNames(
@@ -129,12 +133,15 @@ export const TextField: React.FC<TextFieldProps> = (props: TextFieldProps) => {
       type={TextField.defaultProps.type} // Appeases TypeScript
       inversed={props.inversed}
       {...fieldProps}
+      aria-invalid={invalid}
+      aria-describedby={describeField({ ...props, errorId, hintId })}
     />
   );
 
   return (
     <div {...wrapperProps}>
       <Label {...labelProps} />
+      {topError}
       {mask && <Mask mask={mask}>{input}</Mask>}
       {labelMask && <LabelMask labelMask={labelMask}>{input}</LabelMask>}
       {!mask && !labelMask && input}

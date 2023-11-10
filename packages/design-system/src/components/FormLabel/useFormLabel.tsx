@@ -4,7 +4,6 @@ import classNames from 'classnames';
 import mergeIds from '../utilities/mergeIds';
 import useId from '../utilities/useId';
 import { LabelProps } from '../Label';
-import { errorPlacementDefault } from '../flags';
 
 // TODO: Reimplement focusTrigger in another place, like another hook
 
@@ -24,22 +23,6 @@ export interface FormFieldProps extends PassedOnFormLabelProps {
    * Additional classes to be added to the root element.
    */
   className?: string;
-  /**
-   * The ID of the error message applied to this field.
-   */
-  errorId?: string;
-  /**
-   * Location of the error message relative to the field input
-   */
-  errorPlacement?: 'top' | 'bottom';
-  /**
-   * Enable the error state by providing an error message.
-   */
-  errorMessage?: React.ReactNode;
-  /**
-   * Additional classes to be added to the error message
-   */
-  errorMessageClassName?: string;
   /**
    * A unique `id` for the field element. Useful for referencing the field from
    * other components with `aria-describedby`.
@@ -106,7 +89,6 @@ export function useFormLabel<T extends UseFormLabelProps>(props: T) {
   // TODO: Once we're on React 18, we can use the `useId` hook
   const id = useId('field--', props.id);
   const labelId = props.labelId ?? `${id}__label`;
-  const errorId = props.errorId ?? `${id}__error`;
   const hintId = props.hintId ?? `${id}__hint`;
 
   const {
@@ -116,9 +98,6 @@ export function useFormLabel<T extends UseFormLabelProps>(props: T) {
     labelComponent,
     // Throw away this value and don't pass it to `fieldProps`
     labelId: _labelId,
-    errorMessage,
-    errorMessageClassName,
-    errorPlacement = errorPlacementDefault(),
     hint,
     requirementLabel,
     inversed,
@@ -126,35 +105,10 @@ export function useFormLabel<T extends UseFormLabelProps>(props: T) {
     ...remainingProps
   } = props;
 
-  const errorElement = errorMessage ? (
-    <InlineError
-      id={errorId}
-      inversed={inversed}
-      className={classNames(
-        errorMessageClassName,
-        errorPlacement === 'bottom' && 'ds-c-inline-error--bottom'
-      )}
-    >
-      {errorMessage}
-    </InlineError>
-  ) : undefined;
-  const topError = errorPlacement === 'top' ? errorElement : undefined;
-  const bottomError = errorPlacement === 'bottom' ? errorElement : undefined;
-  const ariaInvalid = props['aria-invalid'] ?? !!errorMessage;
-
-  const ariaDescribedBy =
-    mergeIds(
-      props['aria-describedby'],
-      errorElement && errorId,
-      (hint || requirementLabel) && hintId
-    ) || undefined;
-
   const labelProps = {
     children: label,
     className: labelClassName,
     component: labelComponent,
-    errorMessage: topError,
-    errorId,
     // Avoid using `for` attribute for components with multiple inputs
     // i.e. ChoiceList, DateField, and other components that use `fieldset`
     fieldId: wrapperIsFieldset ? undefined : id,
@@ -168,20 +122,20 @@ export function useFormLabel<T extends UseFormLabelProps>(props: T) {
   const fieldProps = {
     ...remainingProps,
     id,
-    errorMessage,
     inversed,
-    'aria-describedby': !wrapperIsFieldset ? ariaDescribedBy : undefined,
-    'aria-invalid': !wrapperIsFieldset ? ariaInvalid : undefined,
   };
 
   const wrapperClassNames = classNames({ 'ds-c-fieldset': wrapperIsFieldset }, className);
   const wrapperProps = {
     className: wrapperClassNames,
-    'aria-describedby': wrapperIsFieldset ? ariaDescribedBy : undefined,
-    'aria-invalid': wrapperIsFieldset ? ariaInvalid : undefined,
   };
 
-  return { labelProps, fieldProps, wrapperProps, bottomError, errorId };
+  return {
+    labelProps,
+    fieldProps,
+    wrapperProps,
+    hintId: hint || requirementLabel ? hintId : undefined,
+  };
 }
 
 export default useFormLabel;
