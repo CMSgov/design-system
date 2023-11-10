@@ -15,6 +15,11 @@ const meta: Meta = {
     },
     children: { control: 'text' },
   },
+  parameters: {
+    docs: {
+      underlyingHtmlElements: ['span'],
+    },
+  },
 };
 
 export default meta;
