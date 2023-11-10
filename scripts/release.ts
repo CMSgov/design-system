@@ -68,6 +68,9 @@ async function bumpVersions() {
   console.log(c.green('Updating versions.json for reference in docs...'));
   updateVersions();
   sh('git add -u');
+  // Note that this creates a new commit hash that will not match the tag that Lerna
+  // created. That tagged commit will no longer have a branch associated with it.
+  // This is possibly something that could be improved in the future. - Patrick
   sh('git commit --amend --no-edit');
   console.log(c.green('Updated versions.json.'));
 
