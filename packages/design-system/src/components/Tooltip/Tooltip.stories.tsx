@@ -37,6 +37,11 @@ const meta: Meta<typeof Tooltip> = {
       control: 'radio',
     },
   },
+  parameters: {
+    docs: {
+      underlyingHtmlElements: ['a', 'button'],
+    },
+  },
 };
 export default meta;
 

@@ -23,6 +23,7 @@ const meta: Meta<typeof Dialog> = {
       source: {
         type: 'code',
       },
+      underlyingHtmlElements: ['dialog'],
     },
   },
 };
