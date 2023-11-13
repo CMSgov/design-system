@@ -103,6 +103,8 @@ function createBaseStyle(themeTokens) {
     lineHeight,
     kerning: 0,
     textTransform: 'none',
+    // For some reason Sketch always adds a border to these styles! Tell it not to!
+    borders: [],
   });
 }
 
@@ -207,6 +209,8 @@ function updateComponentTextStyles(
       lineHeight,
       kerning,
       textTransform,
+      // For some reason Sketch always adds a border to these styles! Tell it not to!
+      borders: [],
     });
 
     const name = `${folder}/${textStyleName}`;

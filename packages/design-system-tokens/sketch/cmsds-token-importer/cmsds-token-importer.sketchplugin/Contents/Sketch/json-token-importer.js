@@ -2219,6 +2219,8 @@ function __skpm_run(key, context) {
               lineHeight: lineHeight,
               kerning: 0,
               textTransform: 'none',
+              // For some reason Sketch always adds a border to these styles! Tell it not to!
+              borders: [],
             });
           }
 
@@ -2255,14 +2257,20 @@ function __skpm_run(key, context) {
                     suffix = _matchResults$slice2[1]; // Leave out the particular property name when coming up with the name for
                   // the text style, which is a group of properties.
 
-                  var textStyleName = ''.concat(prefix).concat(suffix);
+                  var textStyleName = ''.concat(prefix).concat(suffix); // If we don't yet have an entry for this text style, make one
 
                   if (!rawTextStyles[textStyleName]) {
+                    // Figure out if there's a parent style that this should inherit from
+                    // based on the naming conventions
                     var parentStyleName = void 0;
 
                     if (suffix) {
+                      // Example: if prefix = "button" and suffix = "--hover", the parent
+                      // of the hover styles is the regular "button" styles.
                       parentStyleName = prefix;
                     } else if (prefix !== componentName) {
+                      // Example: if prefix = "button-alt" and componentName = "button",
+                      // the parent of the "button-alt" styles is the "button" styles.
                       parentStyleName = componentName;
                     }
 
@@ -2285,9 +2293,10 @@ function __skpm_run(key, context) {
                 var rawValue = rawTextStyle[propertyName];
 
                 if (rawValue !== undefined) {
-                  var parsedValue = parseFn(rawValue); // Sometimes the value is "inherit" or "currentColor" or something else
-                  // that can't be parsed; in those cases, we want to fall back on the
-                  // parent's value, so check that it's valid before returning.
+                  var parsedValue = parseFn(rawValue); // Sometimes the value is "inherit" or "currentColor" or something else that can't
+                  // be parsed; in those cases, we want to fall back on the parent's value, so check
+                  // that it's valid before returning. If the parse functions return anything other
+                  // than null or undefined, it's a valid value.
 
                   if (parsedValue != null) {
                     return parsedValue;
@@ -2300,7 +2309,7 @@ function __skpm_run(key, context) {
               }
 
               return defaultTextStyle[propertyName];
-            }; // console.log(rawTextStyles);
+            };
 
             var _loop = function _loop(_textStyleName) {
               var fontFamily = getProperty(_textStyleName, 'fontFamily', parseFontFamily);
@@ -2320,17 +2329,10 @@ function __skpm_run(key, context) {
                 lineHeight: lineHeight,
                 kerning: kerning,
                 textTransform: textTransform,
+                // For some reason Sketch always adds a border to these styles! Tell it not to!
+                borders: [],
               });
-              var name = ''.concat(folder, '/').concat(_textStyleName); // console.log(name, {
-              //   fontFamily,
-              //   fontSize,
-              //   fontWeight,
-              //   textColor,
-              //   lineHeight,
-              //   kerning,
-              //   textTransform,
-              // });
-
+              var name = ''.concat(folder, '/').concat(_textStyleName);
               Object(
                 _updateSharedStyleReferences__WEBPACK_IMPORTED_MODULE_1__[
                   'updateSharedStyleReferences'
