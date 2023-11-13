@@ -56,19 +56,17 @@ $breakpoints: (
   }
 
   @each $breakpoint in map-keys($breakpoints) {
-    @media (min-width: $value) {
-      .ds-u-#{$breakpoint}-font-size--small,
-      .ds-u-#{$breakpoint}-font-size--lead,
-      .ds-u-#{$breakpoint}-font-size--display,
-      .ds-u-#{$breakpoint}-font-size--title,
-      .ds-u-#{$breakpoint}-font-size--h1,
-      .ds-u-#{$breakpoint}-font-size--h2,
-      .ds-u-#{$breakpoint}-font-size--h3,
-      .ds-u-#{$breakpoint}-font-size--h4,
-      .ds-u-#{$breakpoint}-font-size--h5,
-      .ds-u-#{$breakpoint}-font-size--h6 {
-        @include debug;
-      }
+    .ds-u-#{$breakpoint}-font-size--small,
+    .ds-u-#{$breakpoint}-font-size--lead,
+    .ds-u-#{$breakpoint}-font-size--display,
+    .ds-u-#{$breakpoint}-font-size--title,
+    .ds-u-#{$breakpoint}-font-size--h1,
+    .ds-u-#{$breakpoint}-font-size--h2,
+    .ds-u-#{$breakpoint}-font-size--h3,
+    .ds-u-#{$breakpoint}-font-size--h4,
+    .ds-u-#{$breakpoint}-font-size--h5,
+    .ds-u-#{$breakpoint}-font-size--h6 {
+      @include debug;
     }
   }
 }
