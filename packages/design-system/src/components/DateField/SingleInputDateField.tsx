@@ -11,10 +11,11 @@ import { DATE_MASK } from '../TextField/useLabelMask';
 import { FormFieldProps, useFormLabel } from '../FormLabel';
 import { Label } from '../Label';
 import { TextInput } from '../TextField';
+import { TextInputProps } from '../TextField/TextInput';
 import { t } from '../i18n';
 import useId from '../utilities/useId';
 
-export interface SingleInputDateFieldProps extends FormFieldProps {
+interface BaseSingleInputDateFieldProps extends FormFieldProps {
   /**
    * The `input` field's `name` attribute
    */
@@ -80,6 +81,9 @@ export interface SingleInputDateFieldProps extends FormFieldProps {
    */
   toYear?: number;
 }
+
+export type SingleInputDateFieldProps = BaseSingleInputDateFieldProps &
+  Omit<TextInputProps, keyof BaseSingleInputDateFieldProps | 'type'>;
 
 /**
  * For information about how and when to use this component, refer to the

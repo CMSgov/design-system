@@ -105,6 +105,7 @@ export default {
           description: 'Dispatched whenever the dropdown loses focus.',
         },
       },
+      underlyingHtmlElements: ['button'],
     },
   },
 };

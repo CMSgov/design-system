@@ -15,6 +15,11 @@ const meta: Meta<typeof Choice> = {
     errorMessage: 'You must agree to the terms and conditions before continuing',
     defaultChecked: false,
   },
+  parameters: {
+    docs: {
+      underlyingHtmlElements: ['input'],
+    },
+  },
 };
 export default meta;
 

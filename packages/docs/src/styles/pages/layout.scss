@@ -116,6 +116,10 @@ ul:not([class]) li,
   margin-bottom: $spacer-1;
 }
 
+ol ol {
+  list-style-type: lower-alpha;
+}
+
 img {
   display: block;
   max-width: 100%;

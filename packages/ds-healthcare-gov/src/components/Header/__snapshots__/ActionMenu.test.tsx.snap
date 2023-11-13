@@ -111,7 +111,9 @@ exports[`ActionMenu logged-in version renders logged-in version 1`] = `
         fill="currentColor"
       />
     </svg>
-    header.menu
+    <span>
+      header.menu
+    </span>
   </button>
 </DocumentFragment>
 `;
@@ -144,7 +146,9 @@ exports[`ActionMenu logged-in version set aria-expanded to true 1`] = `
         stroke-width="2"
       />
     </svg>
-    header.menu
+    <span>
+      header.menu
+    </span>
   </button>
 </DocumentFragment>
 `;
@@ -184,7 +188,9 @@ exports[`ActionMenu logged-out version renders logged-out version 1`] = `
         fill="currentColor"
       />
     </svg>
-    header.menu
+    <span>
+      header.menu
+    </span>
   </button>
 </DocumentFragment>
 `;

@@ -358,7 +358,9 @@ exports[`Header renders Direct Enrollment banner 1`] = `
                 fill="currentColor"
               />
             </svg>
-            Menu
+            <span>
+              Menu
+            </span>
           </button>
           <div
             class="hc-c-menu"
@@ -781,7 +783,9 @@ exports[`Header renders Spanish header 1`] = `
                 fill="currentColor"
               />
             </svg>
-            Menú
+            <span>
+              Menú
+            </span>
           </button>
           <div
             class="hc-c-menu"
@@ -1179,7 +1183,9 @@ exports[`Header renders full/homepage header 1`] = `
                 fill="currentColor"
               />
             </svg>
-            Menu
+            <span>
+              Menu
+            </span>
           </button>
           <div
             class="hc-c-menu"
@@ -1577,7 +1583,9 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
                 fill="currentColor"
               />
             </svg>
-            Menu
+            <span>
+              Menu
+            </span>
           </button>
           <div
             class="hc-c-menu"
@@ -1954,7 +1962,9 @@ exports[`Header renders logged-in header with firstName 1`] = `
                 fill="currentColor"
               />
             </svg>
-            Menu
+            <span>
+              Menu
+            </span>
           </button>
           <div
             class="hc-c-menu"
@@ -2351,7 +2361,9 @@ exports[`Header renders logged-in header without firstName 1`] = `
                 fill="currentColor"
               />
             </svg>
-            Menu
+            <span>
+              Menu
+            </span>
           </button>
           <div
             class="hc-c-menu"

@@ -15,6 +15,11 @@ const meta: Meta<typeof TextField> = {
     onBlur: action('onBlur'),
     name: 'text-field-story',
   },
+  parameters: {
+    docs: {
+      underlyingHtmlElements: ['input'],
+    },
+  },
 };
 export default meta;
 

@@ -1,46 +1,48 @@
 @use '../base' as *;
 
-// To Do: Remove the semantic classes h1, h2, h3, display, title, etc... after deprecating
+// WNMGDS-2146: Deprecate semantic font-size classes
+// Refer to `_set-for-deprecation.scss` for complete list
+// Classes marked with 💀 are deprecated and will be removed in the next major release
 
-.ds-u-font-size--h5,
-.ds-u-font-size--sm,
-.ds-u-font-size--small {
+.ds-u-font-size--h5, // 💀 - also this appears to be a typo but it's too late to fix now!
+.ds-u-font-size--small, // 💀
+.ds-u-font-size--sm {
   font-size: var(--font-size-sm) !important;
 }
 
-.ds-u-font-size--h5,
+.ds-u-font-size--h5, // 💀
 .ds-u-font-size--base,
 .ds-u-font-size--md {
   font-size: var(--font-size-base) !important;
 }
 
-.ds-u-font-size--h4,
-.ds-u-font-size--lg,
-.ds-u-font-size--lead {
+.ds-u-font-size--h4, // 💀
+.ds-u-font-size--lead, // 💀 
+.ds-u-font-size--lg {
   font-size: var(--font-size-lg) !important;
 }
 
-.ds-u-font-size--h3,
+.ds-u-font-size--h3, // 💀
 .ds-u-font-size--xl {
   font-size: var(--font-size-xl) !important;
 }
 
-.ds-u-font-size--h2,
+.ds-u-font-size--h2, // 💀
 .ds-u-font-size--2xl {
   font-size: var(--font-size-2xl) !important;
 }
 
-.ds-u-font-size--h1,
+.ds-u-font-size--h1, // 💀
 .ds-u-font-size--3xl {
   font-size: var(--font-size-3xl) !important;
 }
 
-.ds-u-font-size--title,
+.ds-u-font-size--title, // 💀
 .ds-u-font-size--4xl {
   font-size: var(--font-size-4xl) !important;
 }
 
-.ds-u-font-size--display,
+.ds-u-font-size--display, // 💀
 .ds-u-font-size--5xl {
   font-size: var(--font-size-5xl) !important;
 }
@@ -49,7 +51,7 @@
   $value: map-get($breakpoints, $breakpoint);
 
   @media (min-width: $value) {
-    .ds-u-#{$breakpoint}-font-size--small,
+    .ds-u-#{$breakpoint}-font-size--small, // 💀
     .ds-u-#{$breakpoint}-font-size--sm {
       font-size: var(--font-size-sm) !important;
     }
@@ -58,39 +60,35 @@
       font-size: var(--font-size-base) !important;
     }
 
-    .ds-u-#{$breakpoint}-font-size--lg,
-    .ds-u-#{$breakpoint}-font-size--lead {
+    .ds-u-#{$breakpoint}-font-size--h4, // 💀
+    .ds-u-#{$breakpoint}-font-size--lead, // 💀 
+    .ds-u-#{$breakpoint}-font-size--lg {
       font-size: var(--font-size-lg) !important;
     }
 
-    .ds-u-#{$breakpoint}-font-size--display,
+    .ds-u-#{$breakpoint}-font-size--display, // 💀
     .ds-u-#{$breakpoint}-font-size--5xl {
       font-size: var(--font-size-5xl) !important;
     }
 
-    .ds-u-#{$breakpoint}-font-size--title,
+    .ds-u-#{$breakpoint}-font-size--title, // 💀
     .ds-u-#{$breakpoint}-font-size--4xl {
       font-size: var(--font-size-4xl) !important;
     }
 
-    .ds-u-#{$breakpoint}-font-size--h1,
+    .ds-u-#{$breakpoint}-font-size--h1, // 💀
     .ds-u-#{$breakpoint}-font-size--3xl {
       font-size: var(--font-size-3xl) !important;
     }
 
-    .ds-u-#{$breakpoint}-font-size--h2,
+    .ds-u-#{$breakpoint}-font-size--h2, // 💀
     .ds-u-#{$breakpoint}-font-size--2xl {
       font-size: var(--font-size-2xl) !important;
     }
 
-    .ds-u-#{$breakpoint}-font-size--h3,
+    .ds-u-#{$breakpoint}-font-size--h3, // 💀
     .ds-u-#{$breakpoint}-font-size--xl {
       font-size: var(--font-size-xl) !important;
-    }
-
-    .ds-u-#{$breakpoint}-font-size--h4,
-    .ds-u-#{$breakpoint}-font-size--lg {
-      font-size: var(--font-size-lg) !important;
     }
   }
 }
