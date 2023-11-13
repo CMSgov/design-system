@@ -2,18 +2,12 @@
 
 // Imported to access $breakpoints to generate utility classes.
 // Remove with semantic font-size classes
-@use './layout' as *; // 💀
-$breakpoints: (
-  sm: $media-width-sm,
-  md: $media-width-md,
-  lg: $media-width-lg,
-  xl: $media-width-xl,
-) !default; // 💀
+$breakpoints: sm, md, lg, xl; // 💀
 
 // This adds a border to all soon-to-be deprecated classes.
 // When the class is deprecated, remove it from the list below.
 
-@mixin debug {
+@mixin deprecate {
   border: 2px solid lawngreen;
   padding-block-end: 0.5rem;
   position: relative;
@@ -52,10 +46,10 @@ $breakpoints: (
   .ds-u-font-size--lead,
   .ds-u-font-size--title,
   .ds-u-font-size--display {
-    @include debug;
+    @include deprecate;
   }
 
-  @each $breakpoint in map-keys($breakpoints) {
+  @each $breakpoint in $breakpoints {
     .ds-u-#{$breakpoint}-font-size--small,
     .ds-u-#{$breakpoint}-font-size--lead,
     .ds-u-#{$breakpoint}-font-size--display,
@@ -66,7 +60,7 @@ $breakpoints: (
     .ds-u-#{$breakpoint}-font-size--h4,
     .ds-u-#{$breakpoint}-font-size--h5,
     .ds-u-#{$breakpoint}-font-size--h6 {
-      @include debug;
+      @include deprecate;
     }
   }
 }
