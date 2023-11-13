@@ -21,13 +21,13 @@ export const AllHeadings: Story = {
   render: function Component() {
     return (
       <>
-        <h1 className="ds-text-heading--5xl ds-u-font-size--display">{heading} (5xl)</h1>
-        <h1 className="ds-text-heading--4xl ds-u-font-size--h3">{heading} (4xl)</h1>
-        <h1 className="ds-text-heading--3xl ds-u-md-font-size--h3">{heading} (3xl)</h1>
-        <h1 className="ds-text-heading--2xl ds-h3">{heading} (2xl)</h1>
-        <h1 className="ds-text-heading--xl ds-text">{heading} (xl)</h1>
-        <h1 className="ds-text-heading--lg ds-display">{heading} (lg)</h1>
-        <h1 className="ds-text-heading--md ds-u-sm-font-size--small">{heading} (md)</h1>
+        <h1 className="ds-text-heading--5xl">{heading} (5xl)</h1>
+        <h1 className="ds-text-heading--4xl">{heading} (4xl)</h1>
+        <h1 className="ds-text-heading--3xl">{heading} (3xl)</h1>
+        <h1 className="ds-text-heading--2xl">{heading} (2xl)</h1>
+        <h1 className="ds-text-heading--xl">{heading} (xl)</h1>
+        <h1 className="ds-text-heading--lg">{heading} (lg)</h1>
+        <h1 className="ds-text-heading--md">{heading} (md)</h1>
         <h1 className="ds-text-heading--sm">{heading} (sm)</h1>
       </>
     );
