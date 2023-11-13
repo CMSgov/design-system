@@ -11,7 +11,7 @@ interface DescribeFieldProps {
  * `aria-describedby`, `errorId`, and `hintId` props.
  */
 export function describeField(props: DescribeFieldProps) {
-  return mergeIds(props['aria-describedby'], props.errorId, props.hintId);
+  return mergeIds(props['aria-describedby'], props.errorId, props.hintId) || undefined;
 }
 
 export default describeField;
