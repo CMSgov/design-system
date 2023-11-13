@@ -4,6 +4,8 @@ import { Label } from '../Label';
 import React from 'react';
 import classNames from 'classnames';
 import useId from '../utilities/useId';
+import { useInlineError, UseInlineErrorProps } from '../InlineError/useInlineError';
+import describeField from '../utilities/describeField';
 
 export type ChoiceListSize = 'small';
 export type ChoiceListType = 'checkbox' | 'radio';
@@ -115,7 +117,8 @@ export const ChoiceList: React.FC<ChoiceListProps> = (props: ChoiceListProps) =>
     }, 20);
   };
 
-  const { labelProps, wrapperProps, bottomError } = useFormLabel({
+  const { errorId, topError, bottomError, invalid } = useInlineError({ id, ...props });
+  const { labelProps, wrapperProps, hintId } = useFormLabel({
     ...listProps,
     labelComponent: 'legend',
     wrapperIsFieldset: true,
@@ -150,8 +153,13 @@ export const ChoiceList: React.FC<ChoiceListProps> = (props: ChoiceListProps) =>
   });
 
   return (
-    <fieldset {...wrapperProps}>
+    <fieldset
+      {...wrapperProps}
+      aria-invalid={invalid}
+      aria-describedby={describeField({ ...props, hintId, errorId })}
+    >
       <Label {...labelProps} />
+      {topError}
       {choiceItems}
       {bottomError}
     </fieldset>

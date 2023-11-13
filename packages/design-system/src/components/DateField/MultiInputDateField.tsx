@@ -5,6 +5,8 @@ import { FormFieldProps, useFormLabel } from '../FormLabel';
 import { Label } from '../Label';
 import { t } from '../i18n';
 import useId from '../utilities/useId';
+import { useInlineError } from '../InlineError/useInlineError';
+import describeField from '../utilities/describeField';
 
 export type DateFieldDayDefaultValue = string | number;
 export type DateFieldDayValue = string | number;
@@ -139,7 +141,8 @@ export interface DateFieldProps extends Omit<FormFieldProps, 'label'> {
  */
 export function MultiInputDateField(props: DateFieldProps): React.ReactElement {
   const id = useId('date-field--', props.id);
-  const { labelProps, fieldProps, wrapperProps, bottomError } = useFormLabel({
+  const { errorId, topError, bottomError, invalid } = useInlineError({ id, ...props });
+  const { labelProps, fieldProps, wrapperProps, hintId } = useFormLabel({
     label: t('dateField.label'),
     hint: t('dateField.hint'),
     dayName: 'day',
@@ -152,11 +155,14 @@ export function MultiInputDateField(props: DateFieldProps): React.ReactElement {
     id,
   });
 
-  delete fieldProps.errorId;
-
   return (
-    <fieldset {...wrapperProps}>
+    <fieldset
+      {...wrapperProps}
+      aria-invalid={invalid}
+      aria-describedby={describeField({ ...props, hintId, errorId })}
+    >
       <Label {...labelProps} />
+      {topError}
       <DateInput {...fieldProps} />
       {bottomError}
     </fieldset>

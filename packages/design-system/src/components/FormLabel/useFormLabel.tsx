@@ -1,9 +1,8 @@
 import React from 'react';
-import InlineError from '../InlineError/InlineError';
 import classNames from 'classnames';
-import mergeIds from '../utilities/mergeIds';
 import useId from '../utilities/useId';
 import { LabelProps } from '../Label';
+import { UseInlineErrorProps } from '../InlineError/useInlineError';
 
 // TODO: Reimplement focusTrigger in another place, like another hook
 
@@ -12,7 +11,8 @@ import { LabelProps } from '../Label';
 type PassedOnFormLabelProps = Omit<
   LabelProps,
   'children' | 'className' | 'component' | 'fieldId' | 'id' | 'errorMessage'
->;
+> &
+  Omit<UseInlineErrorProps, 'id'>;
 
 /**
  * This is the set of public-facing props that each component that uses `useFormLabel`
@@ -96,12 +96,22 @@ export function useFormLabel<T extends UseFormLabelProps>(props: T) {
     label,
     labelClassName,
     labelComponent,
-    // Throw away this value and don't pass it to `fieldProps`
-    labelId: _labelId,
     hint,
     requirementLabel,
     inversed,
     wrapperIsFieldset,
+
+    // Remove these from the pass-through props
+    errorId,
+    errorMessage,
+    errorMessageClassName,
+    errorPlacement,
+    labelId: _labelId,
+    // TODO: Figure out a nice way to calculate the remaining pass-through props that still
+    // allows us to break up this hook into multiple smaller hooks. There are certain props
+    // that we just know we don't want to pass down to the field, and it seems a shame to
+    // duplicate that logic everywhere.
+
     ...remainingProps
   } = props;
 
