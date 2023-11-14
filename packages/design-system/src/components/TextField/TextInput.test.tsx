@@ -51,18 +51,8 @@ describe('TextInput', function () {
   });
 
   it('has error', () => {
-    renderInput({ errorMessage: 'Error' });
+    renderInput({ 'aria-invalid': true });
     expect(getInput().classList.contains('ds-c-field--error')).toBe(true);
-  });
-
-  it('handles bottom placed error', () => {
-    renderInput({
-      errorMessage: 'Error',
-      errorPlacement: 'bottom',
-    });
-
-    expect(getInput().classList.contains('ds-c-field--error')).toBe(true);
-    expect(getInput()).toMatchSnapshot();
   });
 
   it('has inversed theme', () => {

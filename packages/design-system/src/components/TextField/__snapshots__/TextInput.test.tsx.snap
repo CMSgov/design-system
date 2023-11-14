@@ -1,14 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TextInput handles bottom placed error 1`] = `
-<input
-  class="ds-c-field ds-c-field--error"
-  id="static-id"
-  name="spec-field"
-  type="text"
-/>
-`;
-
 exports[`TextInput is a textarea 1`] = `
 <textarea
   class="ds-c-field"
