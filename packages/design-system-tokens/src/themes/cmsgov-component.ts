@@ -450,7 +450,6 @@ export const components: AnyTokenValues = {
     '-lg__font-weight':                           t.font['weight-bold'],
     '-md__font-weight':                           t.font['weight-bold'],
     '-sm__font-weight':                           t.font['weight-normal'],
-    '-base__font-size':                           t.font['size-base'],
     '-sm__font-size':                             t.font['size-sm'],
     '-md__font-size':                             t.font['size-md'],
     '-lg__font-size':                             t.font['size-lg'],
