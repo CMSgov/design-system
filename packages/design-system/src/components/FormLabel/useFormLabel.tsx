@@ -89,15 +89,12 @@ export function useFormLabel<T extends UseFormLabelProps>(props: T) {
   // TODO: Once we're on React 18, we can use the `useId` hook
   const id = useId('field--', props.id);
   const labelId = props.labelId ?? `${id}__label`;
-  const hintId = props.hintId ?? `${id}__hint`;
 
   const {
     className,
     label,
     labelClassName,
     labelComponent,
-    hint,
-    requirementLabel,
     inversed,
     wrapperIsFieldset,
 
@@ -106,6 +103,9 @@ export function useFormLabel<T extends UseFormLabelProps>(props: T) {
     errorMessage,
     errorMessageClassName,
     errorPlacement,
+    hint,
+    hintId,
+    requirementLabel,
     labelId: _labelId,
     // TODO: Figure out a nice way to calculate the remaining pass-through props that still
     // allows us to break up this hook into multiple smaller hooks. There are certain props
@@ -122,10 +122,7 @@ export function useFormLabel<T extends UseFormLabelProps>(props: T) {
     // Avoid using `for` attribute for components with multiple inputs
     // i.e. ChoiceList, DateField, and other components that use `fieldset`
     fieldId: wrapperIsFieldset ? undefined : id,
-    hint,
-    hintId,
     id: labelId,
-    requirementLabel,
     inversed,
   };
 
@@ -144,7 +141,6 @@ export function useFormLabel<T extends UseFormLabelProps>(props: T) {
     labelProps,
     fieldProps,
     wrapperProps,
-    hintId: hint || requirementLabel ? hintId : undefined,
   };
 }
 

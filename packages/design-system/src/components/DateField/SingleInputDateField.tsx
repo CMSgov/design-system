@@ -17,6 +17,7 @@ import useId from '../utilities/useId';
 import { useInlineError } from '../InlineError/useInlineError';
 import describeField from '../utilities/describeField';
 import mergeIds from '../utilities/mergeIds';
+import { useHint } from '../Hint/useHint';
 
 interface BaseSingleInputDateFieldProps extends FormFieldProps {
   /**
@@ -126,7 +127,8 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
 
   // Collect all the props and elements for the input and its labels
   const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
-  const { labelProps, fieldProps, wrapperProps, hintId } = useFormLabel({
+  const { hintId, hintElement } = useHint({ ...props, id });
+  const { labelProps, fieldProps, wrapperProps } = useFormLabel({
     ...remainingProps,
     className: classNames(
       'ds-c-single-input-date-field',
@@ -165,6 +167,7 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
   return (
     <div {...wrapperProps}>
       <Label {...labelProps} />
+      {hintElement}
       {topError}
       {labelMask}
       <div className="ds-c-single-input-date-field__field-wrapper">

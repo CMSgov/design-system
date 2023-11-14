@@ -12,6 +12,7 @@ import { fallbackLocale, getLanguage, t } from '../i18n';
 import { FormFieldProps, useFormLabel } from '../FormLabel';
 import { Label } from '../Label';
 import { useInlineError } from '../InlineError/useInlineError';
+import { useHint } from '../Hint/useHint';
 
 const monthNumbers = (() => {
   const months = [];
@@ -126,7 +127,8 @@ export const MonthPicker = (props: MonthPickerProps) => {
   const clearAllPressed = selectedMonths.length === 0;
 
   const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
-  const { labelProps, wrapperProps, hintId } = useFormLabel({
+  const { hintId, hintElement } = useHint({ ...props, id });
+  const { labelProps, wrapperProps } = useFormLabel({
     ...props,
     className: classNames('ds-c-month-picker', props.className),
     labelComponent: 'legend',
@@ -141,6 +143,7 @@ export const MonthPicker = (props: MonthPickerProps) => {
       aria-describedby={describeField({ ...props, hintId, errorId })}
     >
       <Label {...labelProps} />
+      {hintElement}
       {topError}
       <div className="ds-c-month-picker__buttons ds-u-clearfix">
         <Button
