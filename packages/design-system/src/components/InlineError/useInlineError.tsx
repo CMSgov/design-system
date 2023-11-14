@@ -36,6 +36,12 @@ export interface UseInlineErrorProps {
   inversed?: boolean;
 }
 
+/**
+ * Hook that takes the props for a form field component, extracts the props relevant
+ * to the error message, and conditionally renders an `InlineError` in the `topError`
+ * or `bottomError` property based on the `errorPlacement` and the presence of an
+ * `errorMessage`.
+ */
 export function useInlineError<T extends UseInlineErrorProps>(props: T) {
   const errorId = props.errorId ?? `${props.id}__error`;
   const {
