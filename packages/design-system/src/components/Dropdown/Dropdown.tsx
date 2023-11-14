@@ -15,6 +15,8 @@ import debounce from '../utilities/debounce';
 import { useInlineError } from '../InlineError/useInlineError';
 import describeField from '../utilities/describeField';
 import { useHint } from '../Hint/useHint';
+import cleanFieldProps from '../utilities/cleanFieldProps';
+import useLabelProps from '../Label/useLabelProps';
 
 const caretIcon = (
   <SvgIcon title="" viewBox="0 0 448 512" className="ds-u-font-size--sm">
@@ -133,7 +135,6 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   validateProps(props);
 
   const id = useId('dropdown__button--', props.id);
-  const labelId = props.labelId ?? `${id}__label`;
   const buttonContentId = `${id}__button-content`;
   const menuId = `${id}__menu`;
 
@@ -150,6 +151,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     defaultValue,
     value,
     inputRef,
+    inversed,
     getA11yStatusMessage,
     getA11ySelectionMessage,
     ...extraProps
@@ -211,17 +213,6 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
 
   const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
   const { hintId, hintElement } = useHint({ ...props, id });
-  const useFormLabelProps = useFormLabel({
-    ...extraProps,
-    id,
-    labelId,
-    className: classNames('ds-c-dropdown', className, state.isOpen && 'ds-c-dropdown--open'),
-    labelComponent: 'label',
-    wrapperIsFieldset: false,
-  });
-
-  // We don't want to pass these down to the button
-  delete useFormLabelProps.fieldProps.inversed;
 
   const onBlur = useCallback(
     // The active element is always the document body during a focus transition,
@@ -248,21 +239,28 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   );
   const useButtonProps = useButton(useSelectProps.triggerProps, triggerRef);
 
+  const labelProps = {
+    ...useSelectProps.labelProps,
+    ...useLabelProps({ ...props, id }),
+    fieldId: id,
+  };
+
   const buttonProps = {
     ...useButtonProps.buttonProps,
-    ...useFormLabelProps.fieldProps,
+    ...cleanFieldProps(extraProps),
+    id,
     name: undefined,
     className: classNames(
       'ds-c-dropdown__button',
       'ds-c-field',
       props.errorMessage && 'ds-c-field--error',
-      props.inversed && 'ds-c-field--inverse',
+      inversed && 'ds-c-field--inverse',
       size && `ds-c-field--${size}`,
       fieldClassName
     ),
     ref: mergeRefs([triggerRef, inputRef, useAutofocus<HTMLButtonElement>(props.autoFocus)]),
     'aria-controls': menuId,
-    'aria-labelledby': `${buttonContentId} ${labelId}`,
+    'aria-labelledby': `${buttonContentId} ${labelProps.id}`,
     'aria-invalid': invalid,
     'aria-describedby': describeField({ ...props, hintId, errorId }),
     // TODO: Someday we may want to add this `combobox` role back to the button, but right
@@ -275,17 +273,14 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     // role: 'combobox',
   };
 
-  const labelProps = {
-    ...useSelectProps.labelProps,
-    ...useFormLabelProps.labelProps,
-    fieldId: useFormLabelProps.fieldProps.id,
-  };
-
   const wrapperRef = useRef<HTMLDivElement>();
   useClickOutsideHandler([wrapperRef], () => state.setOpen(false));
 
   return (
-    <div {...useFormLabelProps.wrapperProps} ref={wrapperRef}>
+    <div
+      className={classNames('ds-c-dropdown', className, state.isOpen && 'ds-c-dropdown--open')}
+      ref={wrapperRef}
+    >
       <Label {...labelProps} />
       {hintElement}
       {topError}
@@ -306,7 +301,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
         <DropdownMenu
           {...useSelectProps.menuProps}
           componentClass="ds-c-dropdown"
-          labelId={labelId}
+          labelId={labelProps.id}
           menuId={menuId}
           rootId={id}
           size={size}
