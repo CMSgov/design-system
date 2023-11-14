@@ -23,11 +23,6 @@ export type TextInputProps = Omit<React.ComponentPropsWithoutRef<'input'>, OmitP
    */
   defaultValue?: TextInputDefaultValue;
   disabled?: boolean;
-  errorMessage?: React.ReactNode;
-  /**
-   * Location of the error message relative to the field input
-   */
-  errorPlacement?: ErrorPlacement;
   /**
    * Additional classes to be added to the field element
    */
@@ -89,8 +84,6 @@ export type SingleLineTextInputProps = TextInputProps;
 const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => {
   const {
     ariaLabel,
-    errorMessage,
-    errorPlacement,
     fieldClassName,
     inversed,
     multiline,
@@ -107,7 +100,7 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
   const classes = classNames(
     'ds-c-field',
     {
-      'ds-c-field--error': errorMessage,
+      'ds-c-field--error': props['aria-invalid'],
       'ds-c-field--inverse': inversed,
     },
     size && `ds-c-field--${size}`,
