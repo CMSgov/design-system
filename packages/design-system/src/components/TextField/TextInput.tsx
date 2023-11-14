@@ -1,8 +1,6 @@
 import React from 'react';
 import { FunctionComponent } from 'react';
 import classNames from 'classnames';
-import mergeIds from '../utilities/mergeIds';
-import { ErrorPlacement } from '../InlineError/useInlineError';
 
 export type TextInputDefaultValue = string | number;
 export type TextInputRows = number | string;
