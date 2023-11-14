@@ -198,6 +198,7 @@ describe('Dropdown', () => {
     expect(list).toBeFalsy();
     expect(onChange).toHaveBeenCalled();
     expect(onChange.mock.calls[0][0].currentTarget.value).toEqual('2');
+    expect(onChange.mock.calls[0][0].currentTarget.name).toEqual('dropdown');
     expect(onBlur).toHaveBeenCalled();
   });
 
