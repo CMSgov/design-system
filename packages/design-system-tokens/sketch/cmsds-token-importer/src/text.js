@@ -66,7 +66,7 @@ function parseFontFamily(tokenValue) {
   }
 
   // Only return the first one, and remove all quotes
-  return tokenValue.split(',')[0].replaceAll('"', '').replaceAll("'", '').trim();
+  return tokenValue.split(',')[0].replace(/["']/g, '').trim();
 }
 
 function parseKerning(tokenValue) {
