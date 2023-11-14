@@ -24,6 +24,10 @@ export interface UseHintProps {
   requirementLabel?: React.ReactNode;
 }
 
+/**
+ * Hook that takes the props for a form field component, extracts the props relevant
+ * to the Hint, and conditionally renders the hint if it is needed.
+ */
 export function useHint<T extends UseHintProps>(props: T) {
   const { hint, inversed, requirementLabel } = props;
 
