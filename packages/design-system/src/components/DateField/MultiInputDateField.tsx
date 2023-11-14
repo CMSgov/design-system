@@ -141,7 +141,7 @@ export interface DateFieldProps extends Omit<FormFieldProps, 'label'> {
  */
 export function MultiInputDateField(props: DateFieldProps): React.ReactElement {
   const id = useId('date-field--', props.id);
-  const { errorId, topError, bottomError, invalid } = useInlineError({ id, ...props });
+  const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
   const { labelProps, fieldProps, wrapperProps, hintId } = useFormLabel({
     label: t('dateField.label'),
     hint: t('dateField.hint'),

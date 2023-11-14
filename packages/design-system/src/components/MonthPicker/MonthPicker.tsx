@@ -125,7 +125,7 @@ export const MonthPicker = (props: MonthPickerProps) => {
   const selectAllPressed = selectedMonths.length === NUM_MONTHS - disabledMonths.length;
   const clearAllPressed = selectedMonths.length === 0;
 
-  const { errorId, topError, bottomError, invalid } = useInlineError({ id, ...props });
+  const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
   const { labelProps, wrapperProps, hintId } = useFormLabel({
     ...props,
     className: classNames('ds-c-month-picker', props.className),

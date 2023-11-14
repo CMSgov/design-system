@@ -125,7 +125,7 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
   }
 
   // Collect all the props and elements for the input and its labels
-  const { errorId, topError, bottomError, invalid } = useInlineError({ id, ...props });
+  const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
   const { labelProps, fieldProps, wrapperProps, hintId } = useFormLabel({
     ...remainingProps,
     className: classNames(

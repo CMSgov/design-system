@@ -115,7 +115,7 @@ export const TextField: React.FC<TextFieldProps> = (props: TextFieldProps) => {
     }
   }
 
-  const { errorId, topError, bottomError, invalid } = useInlineError({ id, ...props });
+  const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
   const { labelProps, fieldProps, wrapperProps, hintId } = useFormLabel({
     ...textFieldProps,
     labelComponent: 'label',

@@ -117,7 +117,7 @@ export const ChoiceList: React.FC<ChoiceListProps> = (props: ChoiceListProps) =>
     }, 20);
   };
 
-  const { errorId, topError, bottomError, invalid } = useInlineError({ id, ...props });
+  const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
   const { labelProps, wrapperProps, hintId } = useFormLabel({
     ...listProps,
     labelComponent: 'legend',

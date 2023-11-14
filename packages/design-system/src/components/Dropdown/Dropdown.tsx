@@ -208,7 +208,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     onSelectionChange,
   });
 
-  const { errorId, topError, bottomError, invalid } = useInlineError({ id, ...props });
+  const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
   const useFormLabelProps = useFormLabel({
     ...extraProps,
     id,
