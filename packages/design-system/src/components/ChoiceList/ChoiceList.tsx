@@ -1,5 +1,5 @@
 import Choice, { ChoiceProps as ChoiceComponentProps } from './Choice';
-import { FormFieldProps, useFormLabel } from '../FormLabel';
+import { FormFieldProps } from '../FormLabel';
 import { Label } from '../Label';
 import React from 'react';
 import classNames from 'classnames';
@@ -7,6 +7,7 @@ import useId from '../utilities/useId';
 import { useInlineError, UseInlineErrorProps } from '../InlineError/useInlineError';
 import describeField from '../utilities/describeField';
 import { useHint } from '../Hint/useHint';
+import useLabelProps from '../Label/useLabelProps';
 
 export type ChoiceListSize = 'small';
 export type ChoiceListType = 'checkbox' | 'radio';
@@ -89,7 +90,7 @@ export type ChoiceListProps = BaseChoiceListProps &
  * [HTML input element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input).
  */
 export const ChoiceList: React.FC<ChoiceListProps> = (props: ChoiceListProps) => {
-  const { onBlur, onComponentBlur, choices, ...listProps } = props;
+  const { onBlur, onComponentBlur, choices } = props;
   const id = useId('choice-list--', props.id);
 
   if (process.env.NODE_ENV !== 'production') {
@@ -120,12 +121,7 @@ export const ChoiceList: React.FC<ChoiceListProps> = (props: ChoiceListProps) =>
 
   const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
   const { hintId, hintElement } = useHint({ ...props, id });
-  const { labelProps, wrapperProps } = useFormLabel({
-    ...listProps,
-    labelComponent: 'legend',
-    wrapperIsFieldset: true,
-    id,
-  });
+  const labelProps = useLabelProps({ ...props, id });
 
   const choiceItems = choices.map((choiceProps, index) => {
     const completeChoiceProps: ChoiceComponentProps = {
@@ -156,11 +152,11 @@ export const ChoiceList: React.FC<ChoiceListProps> = (props: ChoiceListProps) =>
 
   return (
     <fieldset
-      {...wrapperProps}
       aria-invalid={invalid}
       aria-describedby={describeField({ ...props, hintId, errorId })}
+      className={classNames('ds-c-fieldset', props.className)}
     >
-      <Label {...labelProps} />
+      <Label component="legend" {...labelProps} />
       {hintElement}
       {topError}
       {choiceItems}

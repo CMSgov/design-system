@@ -1,13 +1,16 @@
 import React from 'react';
 import DateInput from './DateInput';
 import defaultDateFormatter from './defaultDateFormatter';
-import { FormFieldProps, useFormLabel } from '../FormLabel';
+import { FormFieldProps } from '../FormLabel';
 import { Label } from '../Label';
 import { t } from '../i18n';
 import useId from '../utilities/useId';
 import { useInlineError } from '../InlineError/useInlineError';
 import describeField from '../utilities/describeField';
 import { useHint } from '../Hint/useHint';
+import useLabelProps from '../Label/useLabelProps';
+import cleanFieldProps from '../utilities/cleanFieldProps';
+import classNames from 'classnames';
 
 export type DateFieldDayDefaultValue = string | number;
 export type DateFieldDayValue = string | number;
@@ -144,25 +147,23 @@ export function MultiInputDateField(props: DateFieldProps): React.ReactElement {
   const id = useId('date-field--', props.id);
   const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
   const { hintId, hintElement } = useHint({ hint: t('dateField.hint'), ...props, id });
-  const { labelProps, fieldProps, wrapperProps } = useFormLabel({
-    label: t('dateField.label'),
+  const labelProps = useLabelProps({ label: t('dateField.label'), ...props, id });
+  const fieldProps = {
+    ...cleanFieldProps(props),
+    id,
     dayName: 'day',
     monthName: 'month',
     yearName: 'year',
     dateFormatter: defaultDateFormatter,
-    ...props,
-    labelComponent: 'legend',
-    wrapperIsFieldset: true,
-    id,
-  });
+  };
 
   return (
     <fieldset
-      {...wrapperProps}
       aria-invalid={invalid}
       aria-describedby={describeField({ ...props, hintId, errorId })}
+      className={classNames('ds-c-fieldset', props.className)}
     >
-      <Label {...labelProps} />
+      <Label component="legend" {...labelProps} />
       {hintElement}
       {topError}
       <DateInput {...fieldProps} />

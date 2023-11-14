@@ -9,10 +9,11 @@ import useId from '../utilities/useId';
 import { ChangeEvent, useState } from 'react';
 import { NUM_MONTHS, getMonthNames } from './getMonthNames';
 import { fallbackLocale, getLanguage, t } from '../i18n';
-import { FormFieldProps, useFormLabel } from '../FormLabel';
+import { FormFieldProps } from '../FormLabel';
 import { Label } from '../Label';
 import { useInlineError } from '../InlineError/useInlineError';
 import { useHint } from '../Hint/useHint';
+import useLabelProps from '../Label/useLabelProps';
 
 const monthNumbers = (() => {
   const months = [];
@@ -128,21 +129,15 @@ export const MonthPicker = (props: MonthPickerProps) => {
 
   const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
   const { hintId, hintElement } = useHint({ ...props, id });
-  const { labelProps, wrapperProps } = useFormLabel({
-    ...props,
-    className: classNames('ds-c-month-picker', props.className),
-    labelComponent: 'legend',
-    wrapperIsFieldset: true,
-    id,
-  });
+  const labelProps = useLabelProps({ ...props, id });
 
   return (
     <fieldset
-      {...wrapperProps}
       aria-invalid={invalid}
       aria-describedby={describeField({ ...props, hintId, errorId })}
+      className={classNames('ds-c-fieldset', 'ds-c-month-picker', props.className)}
     >
-      <Label {...labelProps} />
+      <Label component="legend" {...labelProps} />
       {hintElement}
       {topError}
       <div className="ds-c-month-picker__buttons ds-u-clearfix">
