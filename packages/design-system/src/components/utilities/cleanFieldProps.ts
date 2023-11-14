@@ -7,6 +7,11 @@ type PropsToExclude = Omit<
   'id' | 'inversed'
 >;
 
+/**
+ * Cleans all the props associated with labels, hints, and error messages so they aren't
+ * passed to a field element (like an input), where they will likely not be valid props
+ * or HTML attributes.
+ */
 export function cleanFieldProps<T extends PropsToExclude>(props: T): Omit<T, keyof PropsToExclude> {
   const newProps = { ...props };
 
