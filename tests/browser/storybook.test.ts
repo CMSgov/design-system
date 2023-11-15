@@ -65,8 +65,6 @@ Object.values(stories).forEach((story) => {
         test(`passes a11y checks`, async ({ browserName }) => {
           test.skip(browserName !== 'chromium', 'Only run bother a11y tests in one browser');
 
-          await page.goto(`${storyUrl}&globals=theme:${theme}`);
-
           switch (story.id) {
             case 'components-drawer--drawer-default':
             case 'components-drawer--drawer-with-sticky-positioning':
