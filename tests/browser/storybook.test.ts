@@ -51,9 +51,8 @@ Object.values(stories).forEach((story) => {
 
       test.describe(`with ${theme} theme`, () => {
         let page;
-        let isDesktopChrome;
 
-        test.beforeAll(async ({ browser }) => {
+        test.beforeAll(async ({ browser, browserName }) => {
           const context = await browser.newContext();
           page = await context.newPage();
           await page.goto(`${storyUrl}&globals=theme:${theme}`);
@@ -63,8 +62,8 @@ Object.values(stories).forEach((story) => {
           await expect(page).toHaveScreenshot(`${story.id}-${theme}.png`, { fullPage: true });
         });
 
-        test(`passes a11y checks`, async () => {
-          test.skip(!isDesktopChrome, 'Only run a11y tests in one browser');
+        test(`passes a11y checks`, async ({ browserName }) => {
+          test.skip(browserName !== 'chromium', 'Only run bother a11y tests in one browser');
 
           await page.goto(`${storyUrl}&globals=theme:${theme}`);
 
