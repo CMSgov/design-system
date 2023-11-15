@@ -1,12 +1,13 @@
 import { test, expect } from '@playwright/test';
 import { stories } from '../../storybook-static/stories.json';
 import themes from '../../themes.json';
+import expectNoAxeViolations from './expectNoAxeViolations';
 
 const storySkipList = [
-  'components-dialog--prevent-scroll-example',
-  'components-dropdown--option-groups',
-  'components-dropdown--html-option-groups',
-  'components-dropdown--html-options',
+  'components-dialog--prevent-scroll-example', // Redundant
+  'components-dropdown--option-groups', // Redundant in its unopened state
+  'components-dropdown--html-option-groups', // Redundant
+  'components-dropdown--html-options', // Redundant
   'components-dropdown--controlled', // Redundant
   'components-idletimeout--default',
   'components-skipnav--default-skip-nav',
@@ -19,6 +20,7 @@ const storySkipList = [
   'patterns-one-column-page-layout--one-column-page-layout',
   'healthcare-privacysettingslink--default',
   'healthcare-privacysettingslink--custom-content',
+  // Skip all web components for now
   'web-components-alert--default',
   'web-components-badge--default',
   'web-components-button--default',
@@ -47,9 +49,38 @@ Object.values(stories).forEach((story) => {
       // During smoke tests, only take screenshots in core of core components
       if (isSmokeTest && (theme !== 'core' || storyNotInCore)) return;
 
-      test(`with ${theme} theme`, async ({ page }) => {
-        await page.goto(`${storyUrl}&globals=theme:${theme}`);
-        await expect(page).toHaveScreenshot(`${story.id}-${theme}.png`, { fullPage: true });
+      test.describe(`with ${theme} theme`, () => {
+        let page;
+        let isDesktopChrome;
+
+        test.beforeAll(async ({ browser }) => {
+          const context = await browser.newContext();
+          page = await context.newPage();
+          await page.goto(`${storyUrl}&globals=theme:${theme}`);
+        });
+
+        test(`matches snapshot`, async () => {
+          await expect(page).toHaveScreenshot(`${story.id}-${theme}.png`, { fullPage: true });
+        });
+
+        test(`passes a11y checks`, async () => {
+          test.skip(!isDesktopChrome, 'Only run a11y tests in one browser');
+
+          await page.goto(`${storyUrl}&globals=theme:${theme}`);
+
+          switch (story.id) {
+            case 'components-drawer--drawer-default':
+            case 'components-drawer--drawer-with-sticky-positioning':
+              await page.waitForTimeout(1000);
+              break;
+            default:
+              // Slight delay needed for all tests to account for false positives with color-contrast
+              await page.waitForTimeout(100);
+              break;
+          }
+
+          await expectNoAxeViolations(page);
+        });
       });
     });
   });
