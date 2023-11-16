@@ -15,30 +15,33 @@ test.describe('Docs', () => {
         await page.goto(docUrl);
 
         const argsData: string[][] = [];
-        const argsTable = page.locator('.docblock-argstable');
+        const argsTable = page.locator('.docblock-argstable').first();
 
         // Not all doc pages have an args table, but we should wait a bit to see if one loads
         try {
           await argsTable.waitFor({ timeout: 1000 });
-          const rows = await argsTable.locator('tr').all();
-          for (const row of rows) {
-            const cells = await row.locator('> td').all();
-            if (cells.length) {
-              const rowData: string[] = [];
-              for (const cell of cells) {
-                rowData.push(await cell.innerText());
-              }
-              argsData.push(rowData);
-            }
-          }
-          // Sort by the arg name so we get consistent results. We don't care about the
-          // order they show up in in the docs, so optimize for not having to update
-          // snapshots as frequently.
-          const sortedData = sortBy(argsData, [0]);
-          await expect(JSON.stringify(sortedData, null, 2)).toMatchSnapshot();
         } catch (e) {
           await expect('no args table').toMatchSnapshot();
+          return;
         }
+
+        const rows = await argsTable.locator('tr').all();
+        for (const row of rows) {
+          const cells = await row.locator('> td').all();
+          if (cells.length) {
+            const rowData: string[] = [];
+            for (const cell of cells) {
+              rowData.push(await cell.innerText());
+            }
+            argsData.push(rowData);
+          }
+        }
+
+        // Sort by the arg name so we get consistent results. We don't care about the
+        // order they show up in in the docs, so optimize for not having to update
+        // snapshots as frequently.
+        const sortedData = sortBy(argsData, [0]);
+        await expect(JSON.stringify(sortedData, null, 2)).toMatchSnapshot();
       });
     });
   });
