@@ -1,5 +1,11 @@
 /**
- * This config is for testing the storybook docs, which don't need to run in all the browsers
+ * This config is for testing the storybook docs, which don't need to run in all the browsers.
+ *
+ * To debug these in a browser, run the following command:
+ *
+ * ```
+ * yarn playwright test --config tests/browser/storybook-docs.config.ts --headed --debug
+ * ```
  */
 
 import { default as config } from './playwright.config';
