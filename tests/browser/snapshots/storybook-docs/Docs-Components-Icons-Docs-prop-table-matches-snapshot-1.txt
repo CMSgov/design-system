@@ -1,0 +1,42 @@
+[
+  [
+    "ariaHidden",
+    "Describes the value of the aria-hidden attribute on the SVG. Defaulted to true with the assumption that most icons are decorative. If the icon does not have any associated label text, set this to false and ensure a title is provided for improved accessibility.\n\nboolean",
+    "true"
+  ],
+  [
+    "className",
+    "Additional CSS classes to be added to the svg element\nstring",
+    "-"
+  ],
+  [
+    "children*",
+    "The elements that make up the SVG\nReactNode",
+    "-"
+  ],
+  [
+    "description",
+    "Long-text description of any SVG. Use for complex icons, otherwise title prop will suffice.\nstring",
+    "-"
+  ],
+  [
+    "id",
+    "A custom id attribute for the SVG\nstring",
+    "-"
+  ],
+  [
+    "inversed",
+    "If true sets inverse fill color.\nboolean",
+    "false"
+  ],
+  [
+    "title*",
+    "The descriptive name for the SVG icon\nstring",
+    "-"
+  ],
+  [
+    "viewBox",
+    "A string describing the viewbox of the SVG.\n\nIt is recommended that the icon is centered and fill up the default viewport size. See this blog post for further explanation on viewBox and how to use it.\n\nstring",
+    "-"
+  ]
+]

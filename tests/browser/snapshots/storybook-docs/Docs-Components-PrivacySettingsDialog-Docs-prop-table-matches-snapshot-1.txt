@@ -1,0 +1,26 @@
+[
+  [
+    "domain*",
+    "string",
+    "-",
+    ""
+  ],
+  [
+    "privacyPolicyUrl*",
+    "string",
+    "-",
+    ""
+  ],
+  [
+    "thirdPartyPoliciesUrl",
+    "string",
+    "-",
+    "Set string"
+  ],
+  [
+    "onExit*",
+    "() => void",
+    "-",
+    "-"
+  ]
+]

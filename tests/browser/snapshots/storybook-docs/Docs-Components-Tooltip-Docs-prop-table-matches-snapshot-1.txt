@@ -1,0 +1,107 @@
+[
+  [
+    "activeClassName",
+    "Classes applied to the tooltip trigger when the tooltip is active\nstring",
+    "-"
+  ],
+  [
+    "ariaLabel",
+    "Helpful description of the tooltip for screenreaders\nstring",
+    "-"
+  ],
+  [
+    "children*",
+    "Tooltip trigger content\nReactNode",
+    "-"
+  ],
+  [
+    "className",
+    "Classes applied to the tooltip trigger\nstring",
+    "-"
+  ],
+  [
+    "closeButtonLabel",
+    "Configurable text for the aria-label of the tooltip's close button\nstring",
+    "-"
+  ],
+  [
+    "component",
+    "When provided, will render the passed in component for the tooltip trigger. Typically will be a button, a, or rarely an input element.\nany",
+    "button"
+  ],
+  [
+    "contentHeading",
+    "Heading for the tooltip content. This will show above 'title' content and inline with 'closeButton' if closeButton is set\nReactNode",
+    "-"
+  ],
+  [
+    "dialog",
+    "Tooltip that behaves like a dialog, i.e. a tooltip that only appears on click, traps focus, and contains interactive content. For more information, see Deque's tooltip dialog documentation\nboolean",
+    "-"
+  ],
+  [
+    "id",
+    "id applied to tooltip body container element. If not provided, a unique id will be automatically generated and used.\nstring",
+    "-"
+  ],
+  [
+    "interactiveBorder",
+    "Sets the size of the invisible border around interactive tooltips that prevents it from immediately hiding when the cursor leaves the tooltip.\nnumber",
+    "15"
+  ],
+  [
+    "inversed",
+    "boolean",
+    "-"
+  ],
+  [
+    "offset",
+    "Applies skidding and distance offsets to the tooltip relative to the trigger. See the popperjs docs for more info.\n[number, number]",
+    "[0, 5]"
+  ],
+  [
+    "onClose",
+    "Called when the tooltip is hidden\n() => any",
+    "-"
+  ],
+  [
+    "onOpen",
+    "Called when the tooltip is shown\n() => any",
+    "-"
+  ],
+  [
+    "placement",
+    "Placement of the tooltip body relative to the trigger. See the popperjs docs for more info.\n\"top\"\n\"bottom\"\n\"auto\"\n\"auto-start\"\n\"auto-end\"\n\"right\"\n\"left\"\n\"top-start\"\nShow 7 more...",
+    "\"top\""
+  ],
+  [
+    "maxWidth",
+    "maxWidth styling applied to the tooltip body\nstring",
+    "\"300px\""
+  ],
+  [
+    "showCloseButton",
+    "Determines if close button is shown in tooltip. It is recommended that the close button is only used if dialog=true\nboolean",
+    "-"
+  ],
+  [
+    "title*",
+    "Content inside the tooltip body or popover. If contains interactive elements use the dialog prop.\nReactNode",
+    "-"
+  ],
+  [
+    "transitionDuration",
+    "Duration of the react-transition-group CSSTransition. See the timeout option for more info.\nnumber",
+    "250"
+  ],
+  [
+    "zIndex",
+    "zIndex styling applied to the tooltip body\nnumber",
+    "9999"
+  ],
+  [
+    "ref",
+    "Ref<HTMLButtonElement> & Ref<HTMLAnchorElement>",
+    "-"
+  ]
+]

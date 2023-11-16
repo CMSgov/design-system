@@ -1,0 +1,114 @@
+[
+  [
+    "ariaClearLabel",
+    "Screen reader-specific label for the Clear search <button>. Intended to provide a longer, more descriptive explanation of the button's behavior.\nstring",
+    "-"
+  ],
+  [
+    "autoCompleteLabel",
+    "Control the TextField autocomplete attribute. Defaults to \"off\" to support accessibility. Read more.\nstring",
+    "\"off\""
+  ],
+  [
+    "children*",
+    "Must contain a TextField component\nReactNode",
+    "-"
+  ],
+  [
+    "className",
+    "Additional classes to be added to the root element. Useful for adding utility classes.\n\nstring",
+    "-"
+  ],
+  [
+    "clearInputText",
+    "Text rendered on the page if clearInput prop is passed. Default is \"Clear search\".\nReactNode",
+    "-"
+  ],
+  [
+    "clearSearchButton",
+    "Removes the Clear search button when set to false\nboolean",
+    "true"
+  ],
+  [
+    "autoFocus",
+    "boolean",
+    "-"
+  ],
+  [
+    "focusTrigger",
+    "boolean\nDeprecated: This is deprecated in favor of autoFocus",
+    "Deprecated: This is deprecated in favor of autoFocus",
+    "-"
+  ],
+  [
+    "Deprecated: This is deprecated in favor of autoFocus"
+  ],
+  [
+    "id",
+    "A unique id to be passed to the child TextField. If no id is passed as a prop, the Autocomplete component will auto-generate one. This prop was provided in cases where an id might need to be passed to multiple components, such as the htmlFor attribute on a label and the id of an input.\n\nstring",
+    "-"
+  ],
+  [
+    "getA11yStatusMessage",
+    "Customize the default status messages announced to screen reader users via aria-live when autocomplete results are populated.\nany\nDeprecated: This is no longer used",
+    "Deprecated: This is no longer used",
+    "-"
+  ],
+  [
+    "Deprecated: This is no longer used"
+  ],
+  [
+    "inputRef",
+    "Access a reference to the child TextField's input element\n(...args: any[]) => any",
+    "-"
+  ],
+  [
+    "itemToString",
+    "Used to determine the string value for the selected item (which is used to compute the inputValue).\n(item: AutocompleteItem) => string\nDeprecated: Please provide a `name` property to each item instead.",
+    "Deprecated: Please provide a `name` property to each item instead.",
+    "-"
+  ],
+  [
+    "Deprecated: Please provide a `name` property to each item instead."
+  ],
+  [
+    "items",
+    "Array of objects used to populate the suggestion list that appears below the input as users type. Passing an empty array will show a \"No results\" message. If you do not yet want to show results, this props should be undefined.\n\nAutocompleteItem[]",
+    "-"
+  ],
+  [
+    "label",
+    "Adds a heading to the top of the autocomplete list. This can be used to convey to the user that they're required to select an option from the autocomplete list.\nReactNode",
+    "-"
+  ],
+  [
+    "labelId",
+    "A unique id to be used on the child TextField label tag\nstring",
+    "-"
+  ],
+  [
+    "loading",
+    "Can be called when the items array is being fetched remotely, or will be delayed for more than 1-2 seconds.\nboolean",
+    "-"
+  ],
+  [
+    "loadingMessage",
+    "Message users will see when the loading prop is passed to Autocomplete.\nReactNode",
+    "-"
+  ],
+  [
+    "noResultsMessage",
+    "Message users will see when the items array returns empty and the loading prop is passed to <Autocomplete />.\nReactNode",
+    "-"
+  ],
+  [
+    "onChange",
+    "Called when the user selects an item and the selected item has changed. Called with the item that was selected.\n(selectedItem: AutocompleteItem) => void",
+    "-"
+  ],
+  [
+    "onInputValueChange",
+    "Called when the child TextField value changes. Is called with a string representing the input value.\n(inputValue: string) => void",
+    "-"
+  ]
+]

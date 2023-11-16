@@ -1,5 +1,5 @@
 import { test, expect, BrowserContext, Page } from '@playwright/test';
-import { stories } from '../../storybook-static/stories.json';
+import { stories as storiesObject } from '../../storybook-static/stories.json';
 import themes from '../../themes.json';
 import expectNoAxeViolations from './expectNoAxeViolations';
 
@@ -31,18 +31,18 @@ const storySkipList = [
 const isSmokeTest = Boolean(process.env.SMOKE && JSON.parse(process.env.SMOKE));
 const a11yTestProjects = ['chromium', 'Mobile Chrome'];
 
-Object.values(stories).forEach((story) => {
+const stories = Object.values(storiesObject).filter((story) => story.name !== 'Docs');
+const themeKeys = Object.keys(themes).filter((key) => !themes[key].incomplete);
+
+stories.forEach((story) => {
   if (storySkipList.includes(story.id)) return;
 
   test.describe(`${story.title}/${story.name}`, () => {
     const storyUrl = `http://localhost:6006/iframe.html?viewMode=story&id=${story.id}`;
 
-    Object.keys(themes).forEach((theme) => {
+    themeKeys.forEach((theme) => {
       const storyNotInTheme = !story.importPath.includes(themes[theme].packageName);
       const storyNotInCore = !story.importPath.includes(themes['core'].packageName);
-      const storyIsDocPage = story.name === 'Docs';
-
-      if (themes[theme].incomplete || storyIsDocPage) return;
 
       // Don't capture theme-specific components outside their themes, all themes get core components
       if (storyNotInTheme && storyNotInCore) return;

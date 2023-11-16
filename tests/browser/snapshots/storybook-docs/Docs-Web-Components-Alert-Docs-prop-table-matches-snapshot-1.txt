@@ -1,0 +1,37 @@
+[
+  [
+    "variation",
+    "A string corresponding to the `Alert` variation classes",
+    "undefined\"success\"\"warn\"\"error\""
+  ],
+  [
+    "heading",
+    "Text for the alert heading",
+    "string"
+  ],
+  [
+    "children",
+    "The alert's body content",
+    "string"
+  ],
+  [
+    "hide-icon",
+    "Set to \"true\" to hide the icon",
+    "\"true\"\"false\""
+  ],
+  [
+    "role",
+    "ARIA `role`, defaults to \"region\"",
+    "undefined\"alert\"\"alertdialog\"\"region\"\"status\""
+  ],
+  [
+    "weight",
+    "A string corresponding to the `Alert` weight classes",
+    "undefined\"lightweight\""
+  ],
+  [
+    "root-id",
+    "A unique ID for this element. A unique ID will be generated if one isn't provided.",
+    "string"
+  ]
+]

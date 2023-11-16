@@ -1,0 +1,27 @@
+[
+  [
+    "className",
+    "Additional classes to be added to the root badge element. Useful for adding utility classes.\n\nstring",
+    "-"
+  ],
+  [
+    "children",
+    "Label text or HTML.\nReactNode",
+    "-"
+  ],
+  [
+    "size",
+    "Sets the font size of the Badge. Only supports 'big'\n\"big\"",
+    "-"
+  ],
+  [
+    "variation",
+    "A string corresponding to the badge-component variation classes\n\"info\"\n\"success\"\n\"warn\"\n\"alert\"",
+    "-"
+  ],
+  [
+    "ref",
+    "Ref<HTMLSpanElement>",
+    "-"
+  ]
+]

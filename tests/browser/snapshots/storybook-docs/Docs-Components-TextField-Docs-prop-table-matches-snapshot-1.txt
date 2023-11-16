@@ -1,0 +1,170 @@
+[
+  [
+    "ariaLabel",
+    "Apply an aria-label to the text field to provide additional context to assistive devices.\n\nstring",
+    "-"
+  ],
+  [
+    "defaultValue",
+    "Sets the initial value. Use this for an uncontrolled component; otherwise, use the value property.\n\nTextFieldDefaultValue",
+    "-"
+  ],
+  [
+    "disabled",
+    "boolean",
+    "-"
+  ],
+  [
+    "fieldClassName",
+    "string",
+    "-"
+  ],
+  [
+    "autoFocus",
+    "boolean",
+    "-"
+  ],
+  [
+    "id",
+    "A unique id to be used on the text field.\nstring",
+    "-"
+  ],
+  [
+    "inputRef",
+    "Access a reference to the input or textarea element\n(...args: any[]) => any",
+    "-"
+  ],
+  [
+    "requirementLabel",
+    "Text showing the requirement (\"Required\", \"Optional\", etc.). See Required and Optional Fields.\nReactNode",
+    "-"
+  ],
+  [
+    "inversed",
+    "Applies the \"inverse\" UI theme\nboolean",
+    "-"
+  ],
+  [
+    "labelMask",
+    "Applies date format masking to the input value entered and renders to a text field above the input. Passing true to valueOnly will return just the formatted value entered.\n\n(rawInput: string, valueOnly?: boolean) => string",
+    "-"
+  ],
+  [
+    "mask",
+    "Apply formatting to the field that's unique to the value you expect to be entered. Depending on the mask, the field's appearance and functionality may be affected.\n\n\"currency\"\n\"phone\"\n\"ssn\"\n\"zip\"",
+    "-"
+  ],
+  [
+    "multiline",
+    "Whether or not the text field is a multiline text field\nboolean",
+    "-"
+  ],
+  [
+    "name*",
+    "string",
+    "-"
+  ],
+  [
+    "numeric",
+    "Sets inputMode, type, and pattern to improve accessibility and consistency for number fields. Use this prop instead of type=\"number\", see here for more information.\nboolean",
+    "-"
+  ],
+  [
+    "onBlur",
+    "(...args: any[]) => any",
+    "-"
+  ],
+  [
+    "onChange",
+    "(...args: any[]) => any",
+    "-"
+  ],
+  [
+    "pattern",
+    "string",
+    "-"
+  ],
+  [
+    "rows",
+    "Optionally specify the number of visible text lines for the field. Only applicable if this is a multiline field.\n\nTextFieldRows",
+    "-"
+  ],
+  [
+    "size",
+    "Set the max-width of the input either to 'small' or 'medium'.\n\"small\"\n\"medium\"",
+    "-"
+  ],
+  [
+    "type",
+    "HTML input type attribute. If you are using type=number please use the numeric prop instead.\nstring",
+    "\"text\""
+  ],
+  [
+    "value",
+    "Sets the input's value. Use this in combination with onChange for a controlled component; otherwise, set defaultValue.\n\nTextFieldValue",
+    "-"
+  ],
+  [
+    "className",
+    "Additional classes to be added to the root element.\nstring",
+    "-"
+  ],
+  [
+    "label*",
+    "Label for the field.\nReactNode",
+    "-"
+  ],
+  [
+    "errorMessage",
+    "Enable the error state by providing an error message.\nReactNode",
+    "-"
+  ],
+  [
+    "errorId",
+    "The ID of the error message applied to this field.\nstring",
+    "-"
+  ],
+  [
+    "hint",
+    "ReactNode\nDeprecated: Hints are now their own component called `Hint`.",
+    "Deprecated: Hints are now their own component called `Hint`.",
+    "-"
+  ],
+  [
+    "Deprecated: Hints are now their own component called `Hint`."
+  ],
+  [
+    "hintId",
+    "string\nDeprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`",
+    "Deprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`",
+    "-"
+  ],
+  [
+    "Deprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`"
+  ],
+  [
+    "errorPlacement",
+    "Location of the error message relative to the field input\n\"top\"\n\"bottom\"",
+    "-"
+  ],
+  [
+    "errorMessageClassName",
+    "Additional classes to be added to the error message\nstring",
+    "-"
+  ],
+  [
+    "labelClassName",
+    "Additional classes to be added to the field label\nstring",
+    "-"
+  ],
+  [
+    "labelId",
+    "A unique id to be used on the field label. If one isn't provided, a unique ID will be generated.\n\nstring",
+    "-"
+  ],
+  [
+    "ref",
+    "Ref<HTMLInputElement>",
+    "-"
+  ]
+]

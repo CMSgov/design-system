@@ -1,0 +1,63 @@
+[
+  [
+    "ref",
+    "Ref<HTMLLabelElement> & Ref<HTMLLegendElement>",
+    "-"
+  ],
+  [
+    "component",
+    "The root HTML element used to render the label\n\"label\"\n\"legend\"",
+    "\"label\""
+  ],
+  [
+    "errorMessage",
+    "ReactNode\nDeprecated: Hints are now their own component called `Hint`.",
+    "Deprecated: Hints are now their own component called `Hint`.",
+    "-"
+  ],
+  [
+    "Deprecated: Hints are now their own component called `Hint`."
+  ],
+  [
+    "errorId",
+    "string\nDeprecated: The Label is no longer responsible for rendering the error element from a string. A InlineError should be passed to it which already has an errorId applied.",
+    "Deprecated: The Label is no longer responsible for rendering the error element from a string. A InlineError should be passed to it which already has an errorId applied.",
+    "-"
+  ],
+  [
+    "Deprecated: The Label is no longer responsible for rendering the error element from a string. A InlineError should be passed to it which already has an errorId applied."
+  ],
+  [
+    "fieldId",
+    "The ID of the field this label is for. This is used for the label's for attribute and any related ARIA attributes, such as for the error message.\n\nstring",
+    "-"
+  ],
+  [
+    "hint",
+    "ReactNode\nDeprecated: Hints are now their own component called `Hint`.",
+    "Deprecated: Hints are now their own component called `Hint`.",
+    "-"
+  ],
+  [
+    "Deprecated: Hints are now their own component called `Hint`."
+  ],
+  [
+    "hintId",
+    "string\nDeprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`",
+    "Deprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`",
+    "-"
+  ],
+  [
+    "Deprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`"
+  ],
+  [
+    "inversed",
+    "Set to true to apply the \"inverse\" theme\nboolean",
+    "-"
+  ],
+  [
+    "requirementLabel",
+    "Text showing the requirement (\"Required\", \"Optional\", etc.). See Required and Optional Fields.\nReactNode",
+    "-"
+  ]
+]

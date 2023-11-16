@@ -1,0 +1,27 @@
+[
+  [
+    "href*",
+    "External link url. The destination.\nstring",
+    "-"
+  ],
+  [
+    "children*",
+    "External link text. This text will appear in the button triggering the dialog.\nstring",
+    "-"
+  ],
+  [
+    "className",
+    "Additional classes to be applied to the external link button.\nstring",
+    "-"
+  ],
+  [
+    "learnMoreUrl",
+    "Specify the URL User's should visit to learn more about your application's external link policy.\nstring",
+    "\"\""
+  ],
+  [
+    "origin*",
+    "Text informing the user where they are. This text will appear in both the dialog heading and body.\nstring",
+    "-"
+  ]
+]

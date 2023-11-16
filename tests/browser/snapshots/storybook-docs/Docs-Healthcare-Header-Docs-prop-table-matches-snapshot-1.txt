@@ -1,0 +1,107 @@
+[
+  [
+    "className",
+    "Additional classes to be added to the root <header> element.\nstring",
+    "-"
+  ],
+  [
+    "switchLocaleLink",
+    "For applications that handle their own locale switching. Overrides the default locale link. This takes precedence over the subpath prop.\n\nstring",
+    "-"
+  ],
+  [
+    "loggedIn",
+    "Indicate that a user is logged-in.\nboolean",
+    "-"
+  ],
+  [
+    "hideLoginLink",
+    "When set to true, do not display the Login text in the upper right of the header\n\nboolean",
+    "-"
+  ],
+  [
+    "hideLogoutLink",
+    "When set to true, even if logged in the Logout link will not render\nboolean",
+    "-"
+  ],
+  [
+    "hideLanguageSwitch",
+    "When set to true, do not display the the switch locale link\nboolean",
+    "-"
+  ],
+  [
+    "firstName",
+    "For logged-in users, pass in their first name to display in the header\nstring",
+    "-"
+  ],
+  [
+    "subpath",
+    "For applications hosted at paths other than the root healthcare.gov/ cuidadodesalud.gov. This string will be appended to the end of the language links so as to keep the user within the same part of the site when switching languages.\n\nstring",
+    "-"
+  ],
+  [
+    "primaryDomain",
+    "The primary, or root domain where the majority of header links should be hosted. By default, links render with relative paths, but providing this prop will force all links to render with absolute paths based on the provided string. The string should include the protocol (http:// or https://) and the domain only, with no trailing slash. For example, if the provided string is https://test.healthcare.gov, the login link will render as https://test.healthcare.gov/login instead of just /login. Note that this is only really necessary if your application is hosted on a subdomain, such as https://localhelp.healthcare.gov, where relative links would direct the user to the wrong location, e.g. the link to /login would incorrectly direct the user to https://localhelp.healthcare.gov/login when it should direct the user to https://healthcare.gov/login.\n\nstring",
+    "-"
+  ],
+  [
+    "skipNavHref",
+    "A URL hash used for the \"Skip to main content\" link. This is typically the id of your \"main\" content area (ie. #main).\n\nstring",
+    "\"#main\""
+  ],
+  [
+    "onSkipNavClick",
+    "An onClick handler used for the \"Skip to main content\" link. This can be used in cases where one would need to manually set the focus on the content area (e.g. where hash routing is being used).\n\n(...args: any[]) => any",
+    "-"
+  ],
+  [
+    "deConsumer",
+    "Indicates when a consumer is coming from a Direct Enrollment flow. This will include additional messaging and modify some of the links.\n\nboolean",
+    "-"
+  ],
+  [
+    "deBrokerName",
+    "Used in conjunction with deConsumer, the Direct Enrollment broker's name is used in some of the messaging displayed to the consumer.\n\nstring",
+    "-"
+  ],
+  [
+    "links",
+    "Optionally pass in an array of link objects to override the default set of menu links. This may be useful if you need to customize the links on a page-by-page basis. To reference the default set of menu links, you can import the defaultMenuLinks method.\n\nLink[]",
+    "-"
+  ],
+  [
+    "submenuTop",
+    "Optionally pass a React component to render within the menu. Useful for when you need more control over what appears in the menu than what's provided by the links prop, e.g. a search input. Will appear above any links provided by the defaultMenuLinks method or the links provided by the links prop.\n\nReactNode",
+    "-"
+  ],
+  [
+    "submenuBottom",
+    "Same as submenuTop, except it will appear below any links provided by the defaultMenuLinks method or the links provided by the links prop.\n\nReactNode",
+    "-"
+  ],
+  [
+    "headerBottom",
+    "Element added to display content on Header bottom section\nReactNode",
+    "-"
+  ],
+  [
+    "isMenuOpen",
+    "Open and handler function for fully controlled menu behavior\nboolean",
+    "-"
+  ],
+  [
+    "onMenuToggle",
+    "() => void",
+    "-"
+  ],
+  [
+    "logoClassName",
+    "Additional classes to be added to the Logo component\nstring",
+    "-"
+  ],
+  [
+    "showUsaBanner",
+    "Temporary feature flag for showing or not showing the USA Banner above the header. Defaults to true\n\nboolean",
+    "true"
+  ]
+]
