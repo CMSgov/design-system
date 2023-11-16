@@ -1,5 +1,30 @@
 [
   [
+    "analytics",
+    "Analytics events tracking is enabled by default. Set this value to false to disable tracking for this component instance.\n\nboolean",
+    "-"
+  ],
+  [
+    "analyticsEventTypeOverride",
+    "If you need the event_type to be overridden for your use case, you can provide an alternate string here. Suggested values can be found in the EventType enum.\n\nstring",
+    "-"
+  ],
+  [
+    "analyticsLabelOverride",
+    "An override for the dynamic content sent to analytics services. By default this content comes from the heading.\n\nIn cases where this component’s heading may contain sensitive information, use this prop to override what is sent to analytics.\n\nstring",
+    "-"
+  ],
+  [
+    "analyticsParentHeading",
+    "If needed for analytics, pass heading text of parent component of button.\nstring",
+    "-"
+  ],
+  [
+    "analyticsParentType",
+    "If needed for analytics, pass type of parent component of button.\nstring",
+    "-"
+  ],
+  [
     "children*",
     "Label text or HTML\nReactNode",
     "-"
@@ -30,6 +55,11 @@
     "false"
   ],
   [
+    "onAnalyticsEvent",
+    "Optional callback that will intercept analytics events for this component. If none is specified, the design system will use the default analytics function, which can be overwritten globally with setDefaultAnalyticsFunction.\n\n(event: AnalyticsEvent) => void",
+    "-"
+  ],
+  [
     "onClick",
     "Returns the SyntheticEvent. Not called when the Button is disabled.\n\n(...args: any[]) => any",
     "-"
@@ -38,6 +68,11 @@
     "onDark",
     "Defines a color palette best used when Button is placed on a dark background-color. By default, Button uses a light color palette.\n\nboolean",
     "false"
+  ],
+  [
+    "ref",
+    "Ref<HTMLButtonElement> & Ref<HTMLAnchorElement>",
+    "-"
   ],
   [
     "size",
@@ -52,41 +87,6 @@
   [
     "variation",
     "A string corresponding to Button variation classes.\n\"solid\"\n\"ghost\"",
-    "-"
-  ],
-  [
-    "analytics",
-    "Analytics events tracking is enabled by default. Set this value to false to disable tracking for this component instance.\n\nboolean",
-    "-"
-  ],
-  [
-    "analyticsLabelOverride",
-    "An override for the dynamic content sent to analytics services. By default this content comes from the heading.\n\nIn cases where this component’s heading may contain sensitive information, use this prop to override what is sent to analytics.\n\nstring",
-    "-"
-  ],
-  [
-    "analyticsEventTypeOverride",
-    "If you need the event_type to be overridden for your use case, you can provide an alternate string here. Suggested values can be found in the EventType enum.\n\nstring",
-    "-"
-  ],
-  [
-    "onAnalyticsEvent",
-    "Optional callback that will intercept analytics events for this component. If none is specified, the design system will use the default analytics function, which can be overwritten globally with setDefaultAnalyticsFunction.\n\n(event: AnalyticsEvent) => void",
-    "-"
-  ],
-  [
-    "analyticsParentHeading",
-    "If needed for analytics, pass heading text of parent component of button.\nstring",
-    "-"
-  ],
-  [
-    "analyticsParentType",
-    "If needed for analytics, pass type of parent component of button.\nstring",
-    "-"
-  ],
-  [
-    "ref",
-    "Ref<HTMLButtonElement> & Ref<HTMLAnchorElement>",
     "-"
   ]
 ]

@@ -6,6 +6,12 @@
     ""
   ],
   [
+    "onExit*",
+    "() => void",
+    "-",
+    "-"
+  ],
+  [
     "privacyPolicyUrl*",
     "string",
     "-",
@@ -16,11 +22,5 @@
     "string",
     "-",
     "Set string"
-  ],
-  [
-    "onExit*",
-    "() => void",
-    "-",
-    "-"
   ]
 ]

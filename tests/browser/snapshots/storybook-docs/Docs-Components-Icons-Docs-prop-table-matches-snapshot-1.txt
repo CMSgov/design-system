@@ -5,13 +5,13 @@
     "true"
   ],
   [
-    "className",
-    "Additional CSS classes to be added to the svg element\nstring",
+    "children*",
+    "The elements that make up the SVG\nReactNode",
     "-"
   ],
   [
-    "children*",
-    "The elements that make up the SVG\nReactNode",
+    "className",
+    "Additional CSS classes to be added to the svg element\nstring",
     "-"
   ],
   [

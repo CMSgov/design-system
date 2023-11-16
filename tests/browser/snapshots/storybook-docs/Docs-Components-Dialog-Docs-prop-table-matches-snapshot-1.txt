@@ -15,6 +15,21 @@
     "-"
   ],
   [
+    "analytics",
+    "Analytics events tracking is enabled by default. Set this value to false to disable tracking for this component instance.\n\nboolean",
+    "-"
+  ],
+  [
+    "analyticsEventTypeOverride",
+    "If you need the event_type to be overridden for your use case, you can provide an alternate string here. Suggested values can be found in the EventType enum.\n\nstring",
+    "-"
+  ],
+  [
+    "analyticsLabelOverride",
+    "An override for the dynamic content sent to analytics services. By default this content comes from the heading.\n\nIn cases where this component’s heading may contain sensitive information, use this prop to override what is sent to analytics.\n\nstring",
+    "-"
+  ],
+  [
     "ariaCloseLabel",
     "Aria label for the close button\nstring",
     "-"
@@ -65,6 +80,11 @@
     "-"
   ],
   [
+    "onAnalyticsEvent",
+    "Optional callback that will intercept analytics events for this component. If none is specified, the design system will use the default analytics function, which can be overwritten globally with setDefaultAnalyticsFunction.\n\n(event: AnalyticsEvent) => void",
+    "-"
+  ],
+  [
     "onEnter",
     "This function is called after the modal opens\n() => void",
     "-"
@@ -77,26 +97,6 @@
   [
     "size",
     "The Dialog's size parameter.\n\"narrow\"\n\"wide\"\n\"full\"",
-    "-"
-  ],
-  [
-    "analytics",
-    "Analytics events tracking is enabled by default. Set this value to false to disable tracking for this component instance.\n\nboolean",
-    "-"
-  ],
-  [
-    "analyticsLabelOverride",
-    "An override for the dynamic content sent to analytics services. By default this content comes from the heading.\n\nIn cases where this component’s heading may contain sensitive information, use this prop to override what is sent to analytics.\n\nstring",
-    "-"
-  ],
-  [
-    "analyticsEventTypeOverride",
-    "If you need the event_type to be overridden for your use case, you can provide an alternate string here. Suggested values can be found in the EventType enum.\n\nstring",
-    "-"
-  ],
-  [
-    "onAnalyticsEvent",
-    "Optional callback that will intercept analytics events for this component. If none is specified, the design system will use the default analytics function, which can be overwritten globally with setDefaultAnalyticsFunction.\n\n(event: AnalyticsEvent) => void",
     "-"
   ]
 ]

@@ -1,52 +1,23 @@
 [
   [
+    "Deprecated: Hints are now their own component called `Hint`."
+  ],
+  [
+    "Deprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`"
+  ],
+  [
     "autoComplete",
     "Adds autocomplete attributes bday-day, bday-month and bday-year to the corresponding <MultiInputDateField> inputs\nboolean",
     "-"
   ],
   [
+    "className",
+    "Additional classes to be added to the root element.\nstring",
+    "-"
+  ],
+  [
     "dateFormatter",
     "Optional method to format the input field values. If this method is provided, the returned value will be passed as a second argument to the onBlur and onChange callbacks. This method receives an object as its only argument, in the shape of: { day, month, year }\n\nBy default dateFormatter will be set to the defaultDateFormatter function, which prevents days/months more than 2 digits & years more than 4 digits.\n\n(...args: any[]) => any",
-    "-"
-  ],
-  [
-    "label",
-    "The primary label, rendered above the individual month/day/year fields\nReactNode",
-    "-"
-  ],
-  [
-    "labelId",
-    "A unique ID to be used for the MultiInputDateField label. If one isn't provided, a unique ID will be generated.\nstring",
-    "-"
-  ],
-  [
-    "requirementLabel",
-    "Text showing the requirement (\"Required\", \"Optional\", etc.). See Required and Optional Fields.\nReactNode",
-    "-"
-  ],
-  [
-    "onBlur",
-    "Called anytime any date input is blurred\n(...args: any[]) => any",
-    "-"
-  ],
-  [
-    "onComponentBlur",
-    "Called when any date input is blurred and the focus does not land on one of the other date inputs inside this component (i.e., when the whole component loses focus)\n\n(...args: any[]) => any",
-    "-"
-  ],
-  [
-    "onChange",
-    "Called anytime any date input is changed\n(...args: any[]) => any",
-    "-"
-  ],
-  [
-    "dayLabel",
-    "Label for the day field\nReactNode",
-    "-"
-  ],
-  [
-    "dayName",
-    "name for the day input field\nstring",
     "-"
   ],
   [
@@ -65,18 +36,73 @@
     "-"
   ],
   [
+    "dayLabel",
+    "Label for the day field\nReactNode",
+    "-"
+  ],
+  [
+    "dayName",
+    "name for the day input field\nstring",
+    "-"
+  ],
+  [
     "dayValue",
     "Sets the day input's value. Use this in combination with onChange for a controlled component; otherwise, set dayDefaultValue.\n\nDateFieldDayValue",
     "-"
   ],
   [
-    "monthLabel",
-    "Label for the month field\nReactNode",
+    "errorId",
+    "The ID of the error message applied to this field.\nstring",
     "-"
   ],
   [
-    "monthName",
-    "name for the month input field\nstring",
+    "errorMessage",
+    "Enable the error state by providing an error message.\nReactNode",
+    "-"
+  ],
+  [
+    "errorMessageClassName",
+    "Additional classes to be added to the error message\nstring",
+    "-"
+  ],
+  [
+    "errorPlacement",
+    "Location of the error message relative to the field input\n\"top\"\n\"bottom\"",
+    "-"
+  ],
+  [
+    "hint",
+    "ReactNode\nDeprecated: Hints are now their own component called `Hint`.",
+    "-"
+  ],
+  [
+    "hintId",
+    "string\nDeprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`",
+    "-"
+  ],
+  [
+    "id",
+    "A unique id for the field element. Useful for referencing the field from other components with aria-describedby.\n\nstring",
+    "-"
+  ],
+  [
+    "inversed",
+    "Set to true to apply the \"inverse\" theme\nboolean",
+    "-"
+  ],
+  [
+    "label",
+    "The primary label, rendered above the individual month/day/year fields\nReactNode",
+    "-"
+  ],
+  [
+    "labelClassName",
+    "Additional classes to be added to the field label\nstring",
+    "-"
+  ],
+  [
+    "labelId",
+    "A unique ID to be used for the MultiInputDateField label. If one isn't provided, a unique ID will be generated.\nstring",
     "-"
   ],
   [
@@ -95,8 +121,38 @@
     "-"
   ],
   [
+    "monthLabel",
+    "Label for the month field\nReactNode",
+    "-"
+  ],
+  [
+    "monthName",
+    "name for the month input field\nstring",
+    "-"
+  ],
+  [
     "monthValue",
     "Sets the month input's value. Use this in combination with onChange for a controlled component; otherwise, set monthDefaultValue.\n\nDateFieldMonthValue",
+    "-"
+  ],
+  [
+    "onBlur",
+    "Called anytime any date input is blurred\n(...args: any[]) => any",
+    "-"
+  ],
+  [
+    "onChange",
+    "Called anytime any date input is changed\n(...args: any[]) => any",
+    "-"
+  ],
+  [
+    "onComponentBlur",
+    "Called when any date input is blurred and the focus does not land on one of the other date inputs inside this component (i.e., when the whole component loses focus)\n\n(...args: any[]) => any",
+    "-"
+  ],
+  [
+    "requirementLabel",
+    "Text showing the requirement (\"Required\", \"Optional\", etc.). See Required and Optional Fields.\nReactNode",
     "-"
   ],
   [
@@ -127,64 +183,6 @@
   [
     "yearValue",
     "Sets the year input's value. Use this in combination with onChange for a controlled component; otherwise, set yearDefaultValue.\n\nDateFieldYearValue",
-    "-"
-  ],
-  [
-    "className",
-    "Additional classes to be added to the root element.\nstring",
-    "-"
-  ],
-  [
-    "id",
-    "A unique id for the field element. Useful for referencing the field from other components with aria-describedby.\n\nstring",
-    "-"
-  ],
-  [
-    "inversed",
-    "Set to true to apply the \"inverse\" theme\nboolean",
-    "-"
-  ],
-  [
-    "errorMessage",
-    "Enable the error state by providing an error message.\nReactNode",
-    "-"
-  ],
-  [
-    "errorId",
-    "The ID of the error message applied to this field.\nstring",
-    "-"
-  ],
-  [
-    "hint",
-    "ReactNode\nDeprecated: Hints are now their own component called `Hint`.",
-    "Deprecated: Hints are now their own component called `Hint`.",
-    "-"
-  ],
-  [
-    "Deprecated: Hints are now their own component called `Hint`."
-  ],
-  [
-    "hintId",
-    "string\nDeprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`",
-    "Deprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`",
-    "-"
-  ],
-  [
-    "Deprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`"
-  ],
-  [
-    "errorPlacement",
-    "Location of the error message relative to the field input\n\"top\"\n\"bottom\"",
-    "-"
-  ],
-  [
-    "errorMessageClassName",
-    "Additional classes to be added to the error message\nstring",
-    "-"
-  ],
-  [
-    "labelClassName",
-    "Additional classes to be added to the field label\nstring",
     "-"
   ]
 ]

@@ -1,8 +1,15 @@
 [
   [
-    "ref",
-    "Ref<HTMLLabelElement> & Ref<HTMLLegendElement>",
-    "-"
+    "Deprecated: Hints are now their own component called `Hint`."
+  ],
+  [
+    "Deprecated: Hints are now their own component called `Hint`."
+  ],
+  [
+    "Deprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`"
+  ],
+  [
+    "Deprecated: The Label is no longer responsible for rendering the error element from a string. A InlineError should be passed to it which already has an errorId applied."
   ],
   [
     "component",
@@ -10,22 +17,14 @@
     "\"label\""
   ],
   [
-    "errorMessage",
-    "ReactNode\nDeprecated: Hints are now their own component called `Hint`.",
-    "Deprecated: Hints are now their own component called `Hint`.",
-    "-"
-  ],
-  [
-    "Deprecated: Hints are now their own component called `Hint`."
-  ],
-  [
     "errorId",
     "string\nDeprecated: The Label is no longer responsible for rendering the error element from a string. A InlineError should be passed to it which already has an errorId applied.",
-    "Deprecated: The Label is no longer responsible for rendering the error element from a string. A InlineError should be passed to it which already has an errorId applied.",
     "-"
   ],
   [
-    "Deprecated: The Label is no longer responsible for rendering the error element from a string. A InlineError should be passed to it which already has an errorId applied."
+    "errorMessage",
+    "ReactNode\nDeprecated: Hints are now their own component called `Hint`.",
+    "-"
   ],
   [
     "fieldId",
@@ -35,24 +34,21 @@
   [
     "hint",
     "ReactNode\nDeprecated: Hints are now their own component called `Hint`.",
-    "Deprecated: Hints are now their own component called `Hint`.",
     "-"
-  ],
-  [
-    "Deprecated: Hints are now their own component called `Hint`."
   ],
   [
     "hintId",
     "string\nDeprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`",
-    "Deprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`",
     "-"
-  ],
-  [
-    "Deprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`"
   ],
   [
     "inversed",
     "Set to true to apply the \"inverse\" theme\nboolean",
+    "-"
+  ],
+  [
+    "ref",
+    "Ref<HTMLLabelElement> & Ref<HTMLLegendElement>",
     "-"
   ],
   [

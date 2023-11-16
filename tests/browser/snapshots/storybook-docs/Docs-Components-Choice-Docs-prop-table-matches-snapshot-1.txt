@@ -1,10 +1,5 @@
 [
   [
-    "ref",
-    "Ref<HTMLInputElement>",
-    "-"
-  ],
-  [
     "checked",
     "Sets the input's checked state. Use this in combination with onChange for a controlled component; otherwise, set defaultChecked.\n\nboolean",
     "-"
@@ -15,28 +10,8 @@
     "-"
   ],
   [
-    "uncheckedChildren",
-    "Content to be shown when the choice is not checked\nReactNode",
-    "-"
-  ],
-  [
     "className",
     "Additional classes to be added to the root div element.\nstring",
-    "-"
-  ],
-  [
-    "inputClassName",
-    "Additional classes to be added to the input element.\nstring",
-    "-"
-  ],
-  [
-    "label",
-    "Label text or HTML.\nReactNode",
-    "-"
-  ],
-  [
-    "labelClassName",
-    "Additional classes to be added to the FormLabel.\nstring",
     "-"
   ],
   [
@@ -60,11 +35,6 @@
     "-"
   ],
   [
-    "inputRef",
-    "Access a reference to the input element\n(...args: any[]) => any",
-    "-"
-  ],
-  [
     "hint",
     "Additional hint text to display below the choice's label\nReactNode",
     "-"
@@ -75,8 +45,13 @@
     "-"
   ],
   [
-    "requirementLabel",
-    "Text showing the requirement (\"Required\", \"Optional\", etc.). See Required and Optional Fields.\nReactNode",
+    "inputClassName",
+    "Additional classes to be added to the input element.\nstring",
+    "-"
+  ],
+  [
+    "inputRef",
+    "Access a reference to the input element\n(...args: any[]) => any",
     "-"
   ],
   [
@@ -85,8 +60,13 @@
     "-"
   ],
   [
-    "size",
-    "\"small\"",
+    "label",
+    "Label text or HTML.\nReactNode",
+    "-"
+  ],
+  [
+    "labelClassName",
+    "Additional classes to be added to the FormLabel.\nstring",
     "-"
   ],
   [
@@ -105,8 +85,28 @@
     "-"
   ],
   [
+    "ref",
+    "Ref<HTMLInputElement>",
+    "-"
+  ],
+  [
+    "requirementLabel",
+    "Text showing the requirement (\"Required\", \"Optional\", etc.). See Required and Optional Fields.\nReactNode",
+    "-"
+  ],
+  [
+    "size",
+    "\"small\"",
+    "-"
+  ],
+  [
     "type*",
     "Sets the type to render checkbox fields or radio buttons\n\"radio\"\n\"checkbox\"",
+    "-"
+  ],
+  [
+    "uncheckedChildren",
+    "Content to be shown when the choice is not checked\nReactNode",
     "-"
   ],
   [

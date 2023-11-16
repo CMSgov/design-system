@@ -1,7 +1,23 @@
 [
   [
+    "Deprecated: Hints are now their own component called `Hint`."
+  ],
+  [
+    "Deprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`"
+  ],
+  [
     "ariaLabel",
     "Apply an aria-label to the text field to provide additional context to assistive devices.\n\nstring",
+    "-"
+  ],
+  [
+    "autoFocus",
+    "boolean",
+    "-"
+  ],
+  [
+    "className",
+    "Additional classes to be added to the root element.\nstring",
     "-"
   ],
   [
@@ -15,13 +31,38 @@
     "-"
   ],
   [
+    "errorId",
+    "The ID of the error message applied to this field.\nstring",
+    "-"
+  ],
+  [
+    "errorMessage",
+    "Enable the error state by providing an error message.\nReactNode",
+    "-"
+  ],
+  [
+    "errorMessageClassName",
+    "Additional classes to be added to the error message\nstring",
+    "-"
+  ],
+  [
+    "errorPlacement",
+    "Location of the error message relative to the field input\n\"top\"\n\"bottom\"",
+    "-"
+  ],
+  [
     "fieldClassName",
     "string",
     "-"
   ],
   [
-    "autoFocus",
-    "boolean",
+    "hint",
+    "ReactNode\nDeprecated: Hints are now their own component called `Hint`.",
+    "-"
+  ],
+  [
+    "hintId",
+    "string\nDeprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`",
     "-"
   ],
   [
@@ -35,13 +76,23 @@
     "-"
   ],
   [
-    "requirementLabel",
-    "Text showing the requirement (\"Required\", \"Optional\", etc.). See Required and Optional Fields.\nReactNode",
+    "inversed",
+    "Applies the \"inverse\" UI theme\nboolean",
     "-"
   ],
   [
-    "inversed",
-    "Applies the \"inverse\" UI theme\nboolean",
+    "label*",
+    "Label for the field.\nReactNode",
+    "-"
+  ],
+  [
+    "labelClassName",
+    "Additional classes to be added to the field label\nstring",
+    "-"
+  ],
+  [
+    "labelId",
+    "A unique id to be used on the field label. If one isn't provided, a unique ID will be generated.\n\nstring",
     "-"
   ],
   [
@@ -85,6 +136,16 @@
     "-"
   ],
   [
+    "ref",
+    "Ref<HTMLInputElement>",
+    "-"
+  ],
+  [
+    "requirementLabel",
+    "Text showing the requirement (\"Required\", \"Optional\", etc.). See Required and Optional Fields.\nReactNode",
+    "-"
+  ],
+  [
     "rows",
     "Optionally specify the number of visible text lines for the field. Only applicable if this is a multiline field.\n\nTextFieldRows",
     "-"
@@ -102,69 +163,6 @@
   [
     "value",
     "Sets the input's value. Use this in combination with onChange for a controlled component; otherwise, set defaultValue.\n\nTextFieldValue",
-    "-"
-  ],
-  [
-    "className",
-    "Additional classes to be added to the root element.\nstring",
-    "-"
-  ],
-  [
-    "label*",
-    "Label for the field.\nReactNode",
-    "-"
-  ],
-  [
-    "errorMessage",
-    "Enable the error state by providing an error message.\nReactNode",
-    "-"
-  ],
-  [
-    "errorId",
-    "The ID of the error message applied to this field.\nstring",
-    "-"
-  ],
-  [
-    "hint",
-    "ReactNode\nDeprecated: Hints are now their own component called `Hint`.",
-    "Deprecated: Hints are now their own component called `Hint`.",
-    "-"
-  ],
-  [
-    "Deprecated: Hints are now their own component called `Hint`."
-  ],
-  [
-    "hintId",
-    "string\nDeprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`",
-    "Deprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`",
-    "-"
-  ],
-  [
-    "Deprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`"
-  ],
-  [
-    "errorPlacement",
-    "Location of the error message relative to the field input\n\"top\"\n\"bottom\"",
-    "-"
-  ],
-  [
-    "errorMessageClassName",
-    "Additional classes to be added to the error message\nstring",
-    "-"
-  ],
-  [
-    "labelClassName",
-    "Additional classes to be added to the field label\nstring",
-    "-"
-  ],
-  [
-    "labelId",
-    "A unique id to be used on the field label. If one isn't provided, a unique ID will be generated.\n\nstring",
-    "-"
-  ],
-  [
-    "ref",
-    "Ref<HTMLInputElement>",
     "-"
   ]
 ]

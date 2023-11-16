@@ -1,12 +1,17 @@
 [
   [
+    "children",
+    "Label text or HTML.\nReactNode",
+    "-"
+  ],
+  [
     "className",
     "Additional classes to be added to the root badge element. Useful for adding utility classes.\n\nstring",
     "-"
   ],
   [
-    "children",
-    "Label text or HTML.\nReactNode",
+    "ref",
+    "Ref<HTMLSpanElement>",
     "-"
   ],
   [
@@ -17,11 +22,6 @@
   [
     "variation",
     "A string corresponding to the badge-component variation classes\n\"info\"\n\"success\"\n\"warn\"\n\"alert\"",
-    "-"
-  ],
-  [
-    "ref",
-    "Ref<HTMLSpanElement>",
     "-"
   ]
 ]

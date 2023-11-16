@@ -1,7 +1,7 @@
 [
   [
-    "id",
-    "Id for filter chip button. If not provided, a unique id will be automatically generated and used.\nstring",
+    "ariaClearLabel",
+    "Labels filter action, i.e., \"Remove.\" For screenreader support.\nstring",
     "-"
   ],
   [
@@ -10,13 +10,13 @@
     "-"
   ],
   [
-    "label*",
-    "Text for the filter chip.\nstring",
+    "id",
+    "Id for filter chip button. If not provided, a unique id will be automatically generated and used.\nstring",
     "-"
   ],
   [
-    "ariaClearLabel",
-    "Labels filter action, i.e., \"Remove.\" For screenreader support.\nstring",
+    "label*",
+    "Text for the filter chip.\nstring",
     "-"
   ],
   [
@@ -25,13 +25,13 @@
     "-"
   ],
   [
-    "useAlternateIcon",
-    "Use alternate thinner close icon in place of standard.\nboolean",
+    "size",
+    "Sets the size of the chip to larger version.\n\"big\"",
     "-"
   ],
   [
-    "size",
-    "Sets the size of the chip to larger version.\n\"big\"",
+    "useAlternateIcon",
+    "Use alternate thinner close icon in place of standard.\nboolean",
     "-"
   ]
 ]

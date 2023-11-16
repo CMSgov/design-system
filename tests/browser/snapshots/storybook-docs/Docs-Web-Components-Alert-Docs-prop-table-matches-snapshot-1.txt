@@ -1,17 +1,12 @@
 [
   [
-    "variation",
-    "A string corresponding to the `Alert` variation classes",
-    "undefined\"success\"\"warn\"\"error\""
+    "children",
+    "The alert's body content",
+    "string"
   ],
   [
     "heading",
     "Text for the alert heading",
-    "string"
-  ],
-  [
-    "children",
-    "The alert's body content",
     "string"
   ],
   [
@@ -25,13 +20,18 @@
     "undefined\"alert\"\"alertdialog\"\"region\"\"status\""
   ],
   [
-    "weight",
-    "A string corresponding to the `Alert` weight classes",
-    "undefined\"lightweight\""
-  ],
-  [
     "root-id",
     "A unique ID for this element. A unique ID will be generated if one isn't provided.",
     "string"
+  ],
+  [
+    "variation",
+    "A string corresponding to the `Alert` variation classes",
+    "undefined\"success\"\"warn\"\"error\""
+  ],
+  [
+    "weight",
+    "A string corresponding to the `Alert` weight classes",
+    "undefined\"lightweight\""
   ]
 ]

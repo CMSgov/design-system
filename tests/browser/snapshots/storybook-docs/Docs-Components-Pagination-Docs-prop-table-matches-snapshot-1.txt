@@ -20,6 +20,16 @@
     "-"
   ],
   [
+    "endAriaLabel",
+    "Sets custom ARIA label on end navigation. Added for language support. Label structure should be the equivalent of: Next Page. Optional.\nstring",
+    "-"
+  ],
+  [
+    "endLabelText",
+    "Sets custom label on end navigation. Added for language support. Optional.\nstring",
+    "-"
+  ],
+  [
     "headingLevel",
     "Heading type to override default <h2>.\n\"1\"\n\"2\"\n\"3\"\n\"4\"\n\"5\"\n\"6\"",
     "\"2\""
@@ -40,23 +50,13 @@
     "-"
   ],
   [
-    "startLabelText",
-    "Sets custom label on start navigation. Added for language support. Optional.\nstring",
-    "-"
-  ],
-  [
     "startAriaLabel",
     "Sets custom ARIA label on start navigation. Added for language support. Label structure should be the equivalent of: Previous Page. Optional.\nstring",
     "-"
   ],
   [
-    "endLabelText",
-    "Sets custom label on end navigation. Added for language support. Optional.\nstring",
-    "-"
-  ],
-  [
-    "endAriaLabel",
-    "Sets custom ARIA label on end navigation. Added for language support. Label structure should be the equivalent of: Next Page. Optional.\nstring",
+    "startLabelText",
+    "Sets custom label on start navigation. Added for language support. Optional.\nstring",
     "-"
   ],
   [

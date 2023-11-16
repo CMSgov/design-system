@@ -1,10 +1,5 @@
 [
   [
-    "href*",
-    "External link url. The destination.\nstring",
-    "-"
-  ],
-  [
     "children*",
     "External link text. This text will appear in the button triggering the dialog.\nstring",
     "-"
@@ -12,6 +7,11 @@
   [
     "className",
     "Additional classes to be applied to the external link button.\nstring",
+    "-"
+  ],
+  [
+    "href*",
+    "External link url. The destination.\nstring",
     "-"
   ],
   [

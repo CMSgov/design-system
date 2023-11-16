@@ -1,23 +1,5 @@
 [
   [
-    "timeToTimeout*",
-    "Defines the amount of minutes of idle activity until the session is timed out\nnumber",
-    "-",
-    ""
-  ],
-  [
-    "timeToWarning*",
-    "Defines the amount of minutes of idle activity that will trigger the warning message.\nnumber",
-    "-",
-    ""
-  ],
-  [
-    "onTimeout*",
-    "Function that is called when the timeout countdown reaches zero.\n(...args: any[]) => any",
-    "-",
-    "-"
-  ],
-  [
     "closeButtonText",
     "The text for the dialog's 'close' button\nstring",
     "\"Close\"",
@@ -28,12 +10,6 @@
     "The text for the 'continue session' button in warning dialog.\nstring",
     "\"Continue session\"",
     "Set string"
-  ],
-  [
-    "heading",
-    "The heading text for the warning dialog.\nReactNode",
-    "Are you still there?",
-    "Set object"
   ],
   [
     "endSessionButtonText",
@@ -54,6 +30,12 @@
     "-"
   ],
   [
+    "heading",
+    "The heading text for the warning dialog.\nReactNode",
+    "Are you still there?",
+    "Set object"
+  ],
+  [
     "onSessionContinue",
     "Optional function that is called when the user chooses to keep the session alive. This function is called by the 'continue session' button or the 'close' button. The IdleTimeout component will reset the countdown internally.\n\n(...args: any[]) => any",
     "-",
@@ -66,9 +48,27 @@
     "-"
   ],
   [
+    "onTimeout*",
+    "Function that is called when the timeout countdown reaches zero.\n(...args: any[]) => any",
+    "-",
+    "-"
+  ],
+  [
     "showSessionEndButton",
     "Describes if the button to manually end session should be shown in the warning dialog.\nboolean",
     "false",
     "Set boolean"
+  ],
+  [
+    "timeToTimeout*",
+    "Defines the amount of minutes of idle activity until the session is timed out\nnumber",
+    "-",
+    ""
+  ],
+  [
+    "timeToWarning*",
+    "Defines the amount of minutes of idle activity that will trigger the warning message.\nnumber",
+    "-",
+    ""
   ]
 ]

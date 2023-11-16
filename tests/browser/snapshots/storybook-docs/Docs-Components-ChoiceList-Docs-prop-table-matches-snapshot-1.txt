@@ -1,5 +1,8 @@
 [
   [
+    "Deprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`"
+  ],
+  [
     "choices*",
     "Array of objects representing the props for each Choice in the ChoiceList\nChoiceProps[]",
     "-"
@@ -15,13 +18,38 @@
     "-"
   ],
   [
+    "errorId",
+    "The ID of the error message applied to this field.\nstring",
+    "-"
+  ],
+  [
+    "errorMessage",
+    "Enable the error state by providing an error message.\nReactNode",
+    "-"
+  ],
+  [
+    "errorMessageClassName",
+    "Additional classes to be added to the error message\nstring",
+    "-"
+  ],
+  [
+    "errorPlacement",
+    "Location of the error message relative to the field input\n\"top\"\n\"bottom\"",
+    "-"
+  ],
+  [
     "hint",
     "Additional hint text to display\nReactNode",
     "-"
   ],
   [
-    "requirementLabel",
-    "Text showing the requirement (\"Required\", \"Optional\", etc.). See Required and Optional Fields.\nReactNode",
+    "hintId",
+    "string\nDeprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`",
+    "-"
+  ],
+  [
+    "id",
+    "A unique id for the field element. Useful for referencing the field from other components with aria-describedby.\n\nstring",
     "-"
   ],
   [
@@ -40,6 +68,11 @@
     "-"
   ],
   [
+    "labelId",
+    "A unique id to be used on the field label. If one isn't provided, a unique ID will be generated.\n\nstring",
+    "-"
+  ],
+  [
     "name*",
     "The field's name attribute\nstring",
     "-"
@@ -50,13 +83,23 @@
     "-"
   ],
   [
+    "onChange",
+    "(...args: any[]) => any",
+    "-"
+  ],
+  [
     "onComponentBlur",
     "Called when any choice is blurred and the focus does not land on one of the other choices inside this component (i.e., when the whole component loses focus)\n\n(...args: any[]) => any",
     "-"
   ],
   [
-    "onChange",
-    "(...args: any[]) => any",
+    "ref",
+    "Ref<HTMLFieldSetElement>",
+    "-"
+  ],
+  [
+    "requirementLabel",
+    "Text showing the requirement (\"Required\", \"Optional\", etc.). See Required and Optional Fields.\nReactNode",
     "-"
   ],
   [
@@ -67,50 +110,6 @@
   [
     "type*",
     "Sets the type to render checkbox fields or radio buttons\n\"radio\"\n\"checkbox\"",
-    "-"
-  ],
-  [
-    "errorId",
-    "The ID of the error message applied to this field.\nstring",
-    "-"
-  ],
-  [
-    "errorPlacement",
-    "Location of the error message relative to the field input\n\"top\"\n\"bottom\"",
-    "-"
-  ],
-  [
-    "errorMessage",
-    "Enable the error state by providing an error message.\nReactNode",
-    "-"
-  ],
-  [
-    "errorMessageClassName",
-    "Additional classes to be added to the error message\nstring",
-    "-"
-  ],
-  [
-    "id",
-    "A unique id for the field element. Useful for referencing the field from other components with aria-describedby.\n\nstring",
-    "-"
-  ],
-  [
-    "labelId",
-    "A unique id to be used on the field label. If one isn't provided, a unique ID will be generated.\n\nstring",
-    "-"
-  ],
-  [
-    "hintId",
-    "string\nDeprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`",
-    "Deprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`",
-    "-"
-  ],
-  [
-    "Deprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`"
-  ],
-  [
-    "ref",
-    "Ref<HTMLFieldSetElement>",
     "-"
   ]
 ]

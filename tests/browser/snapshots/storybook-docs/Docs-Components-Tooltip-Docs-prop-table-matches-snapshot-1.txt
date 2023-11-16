@@ -55,6 +55,11 @@
     "-"
   ],
   [
+    "maxWidth",
+    "maxWidth styling applied to the tooltip body\nstring",
+    "\"300px\""
+  ],
+  [
     "offset",
     "Applies skidding and distance offsets to the tooltip relative to the trigger. See the popperjs docs for more info.\n[number, number]",
     "[0, 5]"
@@ -75,9 +80,9 @@
     "\"top\""
   ],
   [
-    "maxWidth",
-    "maxWidth styling applied to the tooltip body\nstring",
-    "\"300px\""
+    "ref",
+    "Ref<HTMLButtonElement> & Ref<HTMLAnchorElement>",
+    "-"
   ],
   [
     "showCloseButton",
@@ -98,10 +103,5 @@
     "zIndex",
     "zIndex styling applied to the tooltip body\nnumber",
     "9999"
-  ],
-  [
-    "ref",
-    "Ref<HTMLButtonElement> & Ref<HTMLAnchorElement>",
-    "-"
   ]
 ]

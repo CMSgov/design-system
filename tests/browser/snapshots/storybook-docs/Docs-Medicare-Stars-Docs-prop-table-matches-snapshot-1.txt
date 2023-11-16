@@ -1,5 +1,10 @@
 [
   [
+    "ariaHidden",
+    "Describes if the stars should be hidden from a screen reader.\nboolean",
+    "false"
+  ],
+  [
     "number*",
     "Describes the number of stars to be filled in (in .5 increments)\nnumber",
     "-"
@@ -8,10 +13,5 @@
     "total",
     "Describes the total number of stars to be displayed.\nnumber",
     "-"
-  ],
-  [
-    "ariaHidden",
-    "Describes if the stars should be hidden from a screen reader.\nboolean",
-    "false"
   ]
 ]

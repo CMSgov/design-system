@@ -1,7 +1,13 @@
 [
   [
-    "name*",
-    "The input field's name attribute\nstring",
+    "Deprecated: Hints are now their own component called `Hint`."
+  ],
+  [
+    "Deprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`"
+  ],
+  [
+    "buttonVariation",
+    "Variation string to be applied to buttons. See Button component\n\"solid\"\n\"ghost\"",
     "-"
   ],
   [
@@ -10,18 +16,8 @@
     "-"
   ],
   [
-    "buttonVariation",
-    "Variation string to be applied to buttons. See Button component\n\"solid\"\n\"ghost\"",
-    "-"
-  ],
-  [
-    "disabledMonths",
-    "Array of month numbers, where 1 is January, and any month included is disabled for selection.\n\nnumber[]",
-    "-"
-  ],
-  [
-    "selectedMonths",
-    "Array of month numbers, where 1 is January, and any month included is selected. This will render a read-only field. If the field should be mutable, use defaultSelectedMonths.\n\nnumber[]",
+    "clearAllText",
+    "The text for the \"Clear all\" button for internationalization\nstring",
     "-"
   ],
   [
@@ -30,38 +26,13 @@
     "-"
   ],
   [
-    "onChange",
-    "A callback function that's invoked when a month's checked state is changed. Note: This callback is not called when a month is selected or deselected via the \"Select all\" or \"Clear all\" buttons – use the onSelectAll and onClearAll event handlers for those instances.\n\n(event: ChangeEvent<HTMLInputElement>) => any",
-    "-"
-  ],
-  [
-    "onSelectAll",
-    "() => any",
-    "-"
-  ],
-  [
-    "onClearAll",
-    "() => any",
-    "-"
-  ],
-  [
-    "selectAllText",
-    "The text for the \"Select all\" button for internationalization\nstring",
-    "-"
-  ],
-  [
-    "clearAllText",
-    "The text for the \"Clear all\" button for internationalization\nstring",
+    "disabledMonths",
+    "Array of month numbers, where 1 is January, and any month included is disabled for selection.\n\nnumber[]",
     "-"
   ],
   [
     "errorId",
     "The ID of the error message applied to this field.\nstring",
-    "-"
-  ],
-  [
-    "errorPlacement",
-    "Location of the error message relative to the field input\n\"top\"\n\"bottom\"",
     "-"
   ],
   [
@@ -75,8 +46,28 @@
     "-"
   ],
   [
+    "errorPlacement",
+    "Location of the error message relative to the field input\n\"top\"\n\"bottom\"",
+    "-"
+  ],
+  [
+    "hint",
+    "ReactNode\nDeprecated: Hints are now their own component called `Hint`.",
+    "-"
+  ],
+  [
+    "hintId",
+    "string\nDeprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`",
+    "-"
+  ],
+  [
     "id",
     "A unique id for the field element. Useful for referencing the field from other components with aria-describedby.\n\nstring",
+    "-"
+  ],
+  [
+    "inversed",
+    "Set to true to apply the \"inverse\" theme\nboolean",
     "-"
   ],
   [
@@ -95,31 +86,38 @@
     "-"
   ],
   [
-    "inversed",
-    "Set to true to apply the \"inverse\" theme\nboolean",
+    "name*",
+    "The input field's name attribute\nstring",
     "-"
   ],
   [
-    "hint",
-    "ReactNode\nDeprecated: Hints are now their own component called `Hint`.",
-    "Deprecated: Hints are now their own component called `Hint`.",
+    "onChange",
+    "A callback function that's invoked when a month's checked state is changed. Note: This callback is not called when a month is selected or deselected via the \"Select all\" or \"Clear all\" buttons – use the onSelectAll and onClearAll event handlers for those instances.\n\n(event: ChangeEvent<HTMLInputElement>) => any",
     "-"
   ],
   [
-    "Deprecated: Hints are now their own component called `Hint`."
-  ],
-  [
-    "hintId",
-    "string\nDeprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`",
-    "Deprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`",
+    "onClearAll",
+    "() => any",
     "-"
   ],
   [
-    "Deprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`"
+    "onSelectAll",
+    "() => any",
+    "-"
   ],
   [
     "requirementLabel",
     "Text showing the requirement (\"Required\", \"Optional\", etc.). See Required and Optional Fields.\nReactNode",
+    "-"
+  ],
+  [
+    "selectAllText",
+    "The text for the \"Select all\" button for internationalization\nstring",
+    "-"
+  ],
+  [
+    "selectedMonths",
+    "Array of month numbers, where 1 is January, and any month included is selected. This will render a read-only field. If the field should be mutable, use defaultSelectedMonths.\n\nnumber[]",
     "-"
   ]
 ]

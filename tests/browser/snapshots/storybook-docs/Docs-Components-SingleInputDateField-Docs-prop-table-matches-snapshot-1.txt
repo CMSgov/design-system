@@ -1,40 +1,53 @@
 [
   [
-    "name*",
-    "The input field's name attribute\nstring",
+    "Deprecated: Hints are now their own component called `Hint`."
+  ],
+  [
+    "Deprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`"
+  ],
+  [
+    "ariaLabel",
+    "Apply an aria-label to the text field to provide additional context to assistive devices.\n\nstring",
     "-"
   ],
   [
-    "onBlur",
-    "Called anytime any date input is blurred\n(event: FocusEvent<HTMLInputElement, Element>) => any",
-    "-"
-  ],
-  [
-    "onChange*",
-    "Called anytime any date input is changed. This function is called with two arguments. The first argument should be used to update whatever state your application uses to supply back to this component's value prop in a controlled component pattern.\n\n(updatedValue: string, formattedValue: string) => any\nupdatedValue\tThe input's new value\nformattedValue\tThe input's new value with date formatting applied, included for convenience. Do not use this value as the component's `value` prop. An appropriate use for this value would be to run date-validation checks against it.",
-    "updatedValue",
-    "The input's new value",
-    "formattedValue",
-    "The input's new value with date formatting applied, included for convenience. Do not use this value as the component's `value` prop. An appropriate use for this value would be to run date-validation checks against it.",
-    "-"
-  ],
-  [
-    "updatedValue",
-    "The input's new value"
-  ],
-  [
-    "formattedValue",
-    "The input's new value with date formatting applied, included for convenience. Do not use this value as the component's `value` prop. An appropriate use for this value would be to run date-validation checks against it."
-  ],
-  [
-    "value",
-    "Sets the input's value. Use in combination with an onChange handler to implement a controlled component pattern. This component expects the value to match whatever string the user types (i.e., the first argument provided to your onChange handler).\n\nstring",
+    "className",
+    "Additional classes to be added to the root element.\nstring",
     "-"
   ],
   [
     "defaultMonth",
     "The initial month to show in the calendar picker. If not provided, defaults to the month of the currently selected date.\n\nDate",
     "-"
+  ],
+  [
+    "errorId",
+    "The ID of the error message applied to this field.\nstring",
+    "-"
+  ],
+  [
+    "errorMessage",
+    "Enable the error state by providing an error message.\nReactNode",
+    "-"
+  ],
+  [
+    "errorMessageClassName",
+    "Additional classes to be added to the error message\nstring",
+    "-"
+  ],
+  [
+    "errorPlacement",
+    "Location of the error message relative to the field input\n\"top\"\n\"bottom\"",
+    "-"
+  ],
+  [
+    "fieldClassName",
+    "Additional classes to be added to the field element\nstring",
+    "-"
+  ],
+  [
+    "formattedValue",
+    "The input's new value with date formatting applied, included for convenience. Do not use this value as the component's `value` prop. An appropriate use for this value would be to run date-validation checks against it."
   ],
   [
     "fromDate",
@@ -52,48 +65,28 @@
     "-"
   ],
   [
-    "toDate",
-    "Latest day to end month navigation in the calendar picker. (This does not restrict dates entered manually.)\n\nDate",
+    "hint",
+    "ReactNode\nDeprecated: Hints are now their own component called `Hint`.",
     "-"
   ],
   [
-    "toMonth",
-    "Latest month to end month navigation in the calendar picker. (This does not restrict dates entered manually.)\n\nDate",
-    "-"
-  ],
-  [
-    "toYear",
-    "Latest year to end month navigation in the calendar picker. (This does not restrict dates entered manually.)\n\nnumber",
-    "-"
-  ],
-  [
-    "className",
-    "Additional classes to be added to the root element.\nstring",
-    "-"
-  ],
-  [
-    "errorId",
-    "The ID of the error message applied to this field.\nstring",
-    "-"
-  ],
-  [
-    "errorPlacement",
-    "Location of the error message relative to the field input\n\"top\"\n\"bottom\"",
-    "-"
-  ],
-  [
-    "errorMessage",
-    "Enable the error state by providing an error message.\nReactNode",
-    "-"
-  ],
-  [
-    "errorMessageClassName",
-    "Additional classes to be added to the error message\nstring",
+    "hintId",
+    "string\nDeprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`",
     "-"
   ],
   [
     "id",
     "A unique id for the field element. Useful for referencing the field from other components with aria-describedby.\n\nstring",
+    "-"
+  ],
+  [
+    "inputRef",
+    "(...args: any[]) => any",
+    "-"
+  ],
+  [
+    "inversed",
+    "Set to true to apply the \"inverse\" theme\nboolean",
     "-"
   ],
   [
@@ -112,41 +105,33 @@
     "-"
   ],
   [
-    "inversed",
-    "Set to true to apply the \"inverse\" theme\nboolean",
+    "multiline",
+    "Whether or not the text field is a multiline text field\nboolean",
     "-"
   ],
   [
-    "hint",
-    "ReactNode\nDeprecated: Hints are now their own component called `Hint`.",
-    "Deprecated: Hints are now their own component called `Hint`.",
-    "-"
-  ],
-  [
-    "Deprecated: Hints are now their own component called `Hint`."
-  ],
-  [
-    "hintId",
-    "string\nDeprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`",
-    "Deprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`",
-    "-"
-  ],
-  [
-    "Deprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`"
-  ],
-  [
-    "requirementLabel",
-    "Text showing the requirement (\"Required\", \"Optional\", etc.). See Required and Optional Fields.\nReactNode",
-    "-"
-  ],
-  [
-    "ariaLabel",
-    "Apply an aria-label to the text field to provide additional context to assistive devices.\n\nstring",
+    "name*",
+    "The input field's name attribute\nstring",
     "-"
   ],
   [
     "numeric",
     "Sets inputMode, type, and pattern to improve accessibility and consistency for number fields. Use this prop instead of type=\"number\", see here for more information.\nboolean",
+    "-"
+  ],
+  [
+    "onBlur",
+    "Called anytime any date input is blurred\n(event: FocusEvent<HTMLInputElement, Element>) => any",
+    "-"
+  ],
+  [
+    "onChange*",
+    "Called anytime any date input is changed. This function is called with two arguments. The first argument should be used to update whatever state your application uses to supply back to this component's value prop in a controlled component pattern.\n\n(updatedValue: string, formattedValue: string) => any\nupdatedValue\tThe input's new value\nformattedValue\tThe input's new value with date formatting applied, included for convenience. Do not use this value as the component's `value` prop. An appropriate use for this value would be to run date-validation checks against it.",
+    "-"
+  ],
+  [
+    "requirementLabel",
+    "Text showing the requirement (\"Required\", \"Optional\", etc.). See Required and Optional Fields.\nReactNode",
     "-"
   ],
   [
@@ -160,18 +145,27 @@
     "-"
   ],
   [
-    "fieldClassName",
-    "Additional classes to be added to the field element\nstring",
+    "toDate",
+    "Latest day to end month navigation in the calendar picker. (This does not restrict dates entered manually.)\n\nDate",
     "-"
   ],
   [
-    "inputRef",
-    "(...args: any[]) => any",
+    "toMonth",
+    "Latest month to end month navigation in the calendar picker. (This does not restrict dates entered manually.)\n\nDate",
     "-"
   ],
   [
-    "multiline",
-    "Whether or not the text field is a multiline text field\nboolean",
+    "toYear",
+    "Latest year to end month navigation in the calendar picker. (This does not restrict dates entered manually.)\n\nnumber",
+    "-"
+  ],
+  [
+    "updatedValue",
+    "The input's new value"
+  ],
+  [
+    "value",
+    "Sets the input's value. Use in combination with an onChange handler to implement a controlled component pattern. This component expects the value to match whatever string the user types (i.e., the first argument provided to your onChange handler).\n\nstring",
     "-"
   ]
 ]

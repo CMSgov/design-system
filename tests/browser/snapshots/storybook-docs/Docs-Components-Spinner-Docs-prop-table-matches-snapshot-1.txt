@@ -10,13 +10,13 @@
     "-"
   ],
   [
-    "inversed",
-    "Applies the inverse theme styling\nboolean",
+    "filled",
+    "Adds a background behind the spinner for extra contrast\nboolean",
     "-"
   ],
   [
-    "filled",
-    "Adds a background behind the spinner for extra contrast\nboolean",
+    "inversed",
+    "Applies the inverse theme styling\nboolean",
     "-"
   ],
   [

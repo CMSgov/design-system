@@ -1,3 +1,4 @@
+import sortBy from 'lodash/sortBy';
 import { test, expect } from '@playwright/test';
 import { stories as storiesObject } from '../../storybook-static/stories.json';
 
@@ -18,10 +19,10 @@ test.describe('Docs', () => {
 
         // Not all doc pages have an args table, but we should wait a bit to see if one loads
         try {
-          await argsTable.waitFor({ timeout: 500 });
+          await argsTable.waitFor({ timeout: 1000 });
           const rows = await argsTable.locator('tr').all();
           for (const row of rows) {
-            const cells = await row.locator('td').all();
+            const cells = await row.locator('> td').all();
             if (cells.length) {
               const rowData: string[] = [];
               for (const cell of cells) {
@@ -30,7 +31,11 @@ test.describe('Docs', () => {
               argsData.push(rowData);
             }
           }
-          await expect(JSON.stringify(argsData, null, 2)).toMatchSnapshot();
+          // Sort by the arg name so we get consistent results. We don't care about the
+          // order they show up in in the docs, so optimize for not having to update
+          // snapshots as frequently.
+          const sortedData = sortBy(argsData, [0]);
+          await expect(JSON.stringify(sortedData, null, 2)).toMatchSnapshot();
         } catch (e) {
           await expect('no args table').toMatchSnapshot();
         }

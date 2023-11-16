@@ -1,25 +1,13 @@
 [
   [
-    "footerTitle",
-    "ReactNode",
-    "-",
-    ""
-  ],
-  [
-    "footerBody",
-    "ReactNode",
-    "-",
-    "RAW\nfooterBody : {\ntype : \"p\"\nprops : {...} 3 keys\nkey : undefined\nref : undefined\n__k : null\n__ : null\n__b : 0\n__e : null\n__d : undefined\n__c : null\n__h : null\nconstructor : undefined\n__v : -1\n__source : undefined\n__self : undefined\n$$typeof : Symbol(react.element)\n}"
-  ],
-  [
-    "heading*",
-    "Text for the Drawer heading. Required because the heading will be focused on mount.\nReactNode",
-    "-",
-    ""
-  ],
-  [
     "ariaLabel",
     "Gives more context to screen readers on the Drawer close button.\nstring",
+    "-",
+    "Set string"
+  ],
+  [
+    "className",
+    "string",
     "-",
     "Set string"
   ],
@@ -36,16 +24,28 @@
     "solid\nghost"
   ],
   [
-    "className",
-    "string",
+    "footerBody",
+    "ReactNode",
     "-",
-    "Set string"
+    "RAW\nfooterBody : {\ntype : \"p\"\nprops : {...} 3 keys\nkey : undefined\nref : undefined\n__k : null\n__ : null\n__b : 0\n__e : null\n__d : undefined\n__c : null\n__h : null\nconstructor : undefined\n__v : -1\n__source : undefined\n__self : undefined\n$$typeof : Symbol(react.element)\n}"
+  ],
+  [
+    "footerTitle",
+    "ReactNode",
+    "-",
+    ""
   ],
   [
     "hasFocusTrap",
     "Enables focus trap functionality within Drawer.\nboolean",
     "false",
     "Set boolean"
+  ],
+  [
+    "heading*",
+    "Text for the Drawer heading. Required because the heading will be focused on mount.\nReactNode",
+    "-",
+    ""
   ],
   [
     "headingId",
@@ -66,14 +66,14 @@
     "Set object"
   ],
   [
-    "isHeaderSticky",
-    "Enables \"sticky\" position of Drawer header element.\nboolean",
+    "isFooterSticky",
+    "Enables \"sticky\" position of Drawer footer element.\nboolean",
     "-",
     "Set boolean"
   ],
   [
-    "isFooterSticky",
-    "Enables \"sticky\" position of Drawer footer element.\nboolean",
+    "isHeaderSticky",
+    "Enables \"sticky\" position of Drawer header element.\nboolean",
     "-",
     "Set boolean"
   ],

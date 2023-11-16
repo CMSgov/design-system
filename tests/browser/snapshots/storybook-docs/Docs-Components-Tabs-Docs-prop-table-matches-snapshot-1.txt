@@ -10,13 +10,13 @@
     "-"
   ],
   [
-    "selectedId",
-    "Sets the initial selected state to the specified TabPanel id. Use this in combination with onChange for a controlled component; otherwise, set defaultSelectedId.\n\nstring",
+    "onChange",
+    "A callback function that's invoked when the selected tab is changed. (selectedId, prevSelectedId) => void\n\n(selectedId: string, prevSelectedId: string) => any",
     "-"
   ],
   [
-    "onChange",
-    "A callback function that's invoked when the selected tab is changed. (selectedId, prevSelectedId) => void\n\n(selectedId: string, prevSelectedId: string) => any",
+    "selectedId",
+    "Sets the initial selected state to the specified TabPanel id. Use this in combination with onChange for a controlled component; otherwise, set defaultSelectedId.\n\nstring",
     "-"
   ],
   [

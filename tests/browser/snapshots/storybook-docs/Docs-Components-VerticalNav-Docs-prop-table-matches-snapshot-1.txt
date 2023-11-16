@@ -20,11 +20,6 @@
     "-"
   ],
   [
-    "selectedId",
-    "The id of the selected VerticalNavItem. This will also set the selected prop on the item's parents.\n\nstring",
-    "-"
-  ],
-  [
     "id",
     "string",
     "-"
@@ -42,6 +37,11 @@
   [
     "onLinkClick",
     "Called when one of the nav links is clicked, with the following arguments: SyntheticEvent, id, url\n\n(evt: MouseEvent<Element, MouseEvent> | KeyboardEvent<Element>, id: string, url: string) => any",
+    "-"
+  ],
+  [
+    "selectedId",
+    "The id of the selected VerticalNavItem. This will also set the selected prop on the item's parents.\n\nstring",
     "-"
   ]
 ]
