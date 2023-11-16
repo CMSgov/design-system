@@ -29,6 +29,7 @@ const storySkipList = [
 ];
 
 const isSmokeTest = Boolean(process.env.SMOKE && JSON.parse(process.env.SMOKE));
+const a11yTestProjects = ['chromium', 'Mobile Chrome'];
 
 Object.values(stories).forEach((story) => {
   if (storySkipList.includes(story.id)) return;
@@ -67,8 +68,11 @@ Object.values(stories).forEach((story) => {
           await expect(page).toHaveScreenshot(`${story.id}-${theme}.png`, { fullPage: true });
         });
 
-        test(`passes a11y checks`, async ({ browserName }) => {
-          test.skip(browserName !== 'chromium', 'Only run bother a11y tests in one browser');
+        test(`passes a11y checks`, async ({ browser }, workerInfo) => {
+          test.skip(
+            !a11yTestProjects.includes(workerInfo.project.name),
+            "Don't run redundant a11y tests"
+          );
           test.skip(
             theme === 'medicare',
             'Temporarily skipping medicare a11y tests until we can fix them'
