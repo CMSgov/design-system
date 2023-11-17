@@ -1,27 +1,25 @@
-import React from 'react';
-import { useRef, useState } from 'react';
-import { CalendarIcon } from '../Icons/CalendarIcon';
+import React, { useRef, useState } from 'react';
 import CustomDayPicker from './CustomDayPicker';
 import classNames from 'classnames';
+import cleanFieldProps from '../utilities/cleanFieldProps';
+import describeField from '../utilities/describeField';
 import isMatch from 'date-fns/isMatch';
+import mergeIds from '../utilities/mergeIds';
 import useLabelMask from '../TextField/useLabelMask';
 import useClickOutsideHandler from '../utilities/useClickOutsideHandler';
 import usePressEscapeHandler from '../utilities/usePressEscapeHandler';
+import useId from '../utilities/useId';
+import { CalendarIcon } from '../Icons/CalendarIcon';
 import { DATE_MASK } from '../TextField/useLabelMask';
-import { FormFieldProps } from '../FormLabel';
 import { Label } from '../Label';
 import { TextInput } from '../TextField';
 import { TextInputProps } from '../TextField/TextInput';
 import { t } from '../i18n';
-import useId from '../utilities/useId';
-import { useInlineError } from '../InlineError/useInlineError';
-import describeField from '../utilities/describeField';
-import mergeIds from '../utilities/mergeIds';
-import { useHint } from '../Hint/useHint';
-import useLabelProps from '../Label/useLabelProps';
-import cleanFieldProps from '../utilities/cleanFieldProps';
+import { useLabelProps, UseLabelPropsProps } from '../Label/useLabelProps';
+import { useHint, UseHintProps } from '../Hint/useHint';
+import { useInlineError, UseInlineErrorProps } from '../InlineError/useInlineError';
 
-interface BaseSingleInputDateFieldProps extends FormFieldProps {
+interface BaseSingleInputDateFieldProps {
   /**
    * The `input` field's `name` attribute
    */
@@ -41,6 +39,14 @@ interface BaseSingleInputDateFieldProps extends FormFieldProps {
    *   use for this value would be to run date-validation checks against it.
    */
   onChange: (updatedValue: string, formattedValue: string) => any;
+  /**
+   * A unique ID for this element. A unique ID will be generated if one isn't provided.
+   */
+  id?: string;
+  /**
+   * Set to `true` to apply the "inverse" color scheme
+   */
+  inversed?: boolean;
   /**
    * Sets the input's `value`. Use in combination with an `onChange` handler to implement
    * a _controlled component_ pattern. This component expects the `value` to match
@@ -89,7 +95,8 @@ interface BaseSingleInputDateFieldProps extends FormFieldProps {
 }
 
 export type SingleInputDateFieldProps = BaseSingleInputDateFieldProps &
-  Omit<TextInputProps, keyof BaseSingleInputDateFieldProps | 'type'>;
+  Omit<TextInputProps, keyof BaseSingleInputDateFieldProps | 'type'> &
+  Omit<UseLabelPropsProps & UseHintProps & UseInlineErrorProps, 'id' | 'inversed'>;
 
 /**
  * For information about how and when to use this component, refer to the

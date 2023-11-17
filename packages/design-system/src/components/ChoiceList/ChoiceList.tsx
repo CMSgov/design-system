@@ -4,7 +4,7 @@ import React from 'react';
 import classNames from 'classnames';
 import describeField from '../utilities/describeField';
 import useId from '../utilities/useId';
-import useLabelProps, { UseLabelPropsProps } from '../Label/useLabelProps';
+import { useLabelProps, UseLabelPropsProps } from '../Label/useLabelProps';
 import { useHint, UseHintProps } from '../Hint/useHint';
 import { useInlineError, UseInlineErrorProps } from '../InlineError/useInlineError';
 
