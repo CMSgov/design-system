@@ -32,7 +32,6 @@ const cssVarExporter = (inputType: string): number => {
   const fileData = getFileDescriptors(INPUT_PATH + inputType);
   const outputPath = `${OUTPUT_PATH}/css-vars`;
 
-  console.log('🤡 running!');
   return exportCssVars(fileData, outputPath);
 };
 
