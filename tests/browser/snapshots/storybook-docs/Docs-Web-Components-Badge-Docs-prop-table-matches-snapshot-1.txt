@@ -1,0 +1,17 @@
+[
+  [
+    "children",
+    "Sets the badge's content",
+    "string"
+  ],
+  [
+    "size",
+    "Sets the size of a badge",
+    "\"default\"\"big\""
+  ],
+  [
+    "variation",
+    "Sets the variation, or color, of a badge",
+    "undefined\"info\"\"success\"\"warn\"\"alert\""
+  ]
+]

@@ -1,0 +1,52 @@
+[
+  [
+    "borderless",
+    "Applies the borderless variation of the table.\nboolean",
+    "-"
+  ],
+  [
+    "children*",
+    "The table contents, usually TableCaption, TableHead and TableBody.\nReactNode",
+    "-"
+  ],
+  [
+    "className",
+    "Additional classes to be added to the root table element.\nstring",
+    "-"
+  ],
+  [
+    "compact",
+    "Applies the compact variation of the table.\nboolean",
+    "-"
+  ],
+  [
+    "scrollable",
+    "Applies a horizontal scrollbar and scrollable notice on TableCaption when the Table's contents exceed the container width.\nboolean",
+    "-"
+  ],
+  [
+    "scrollableNotice",
+    "Additional text or content to display when the horizontal scrollbar is visible to give the user notice of the scroll behavior. This prop will only be used when the Table scrollable prop is set and the table width is wider than the viewport.\n\nReactNode",
+    "<Alert />"
+  ],
+  [
+    "stackable",
+    "A stackable variation of the table. When stackable is set, id or headers prop is required in Table\n\nboolean",
+    "-"
+  ],
+  [
+    "stackableBreakpoint",
+    "Applies responsive styles to vertically stacked rows at different viewport sizes.\n\"sm\"\n\"md\"\n\"lg\"",
+    "\"sm\""
+  ],
+  [
+    "striped",
+    "A striped variation of the table.\nboolean",
+    "-"
+  ],
+  [
+    "warningDisabled",
+    "Disables the warning message on development console when a responsive stackable table cell does not contain an id or headers. It's recommended that accessibility with screen readers is tested to ensure the stacked table meets the requirement.\n\nboolean",
+    "-"
+  ]
+]

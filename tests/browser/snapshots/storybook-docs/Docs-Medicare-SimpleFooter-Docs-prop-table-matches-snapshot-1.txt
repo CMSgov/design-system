@@ -1,0 +1,52 @@
+[
+  [
+    "aboutMedicareLabel",
+    "string",
+    "\"About\""
+  ],
+  [
+    "language",
+    "Adds a proptype for changing language for the 'Privacy Setting' modal. See tealium documentation about 'Consent Preferences Manager', for more info.\nstring",
+    "\"en\""
+  ],
+  [
+    "linkingPolicyLabel",
+    "string",
+    "\"Linking policy\""
+  ],
+  [
+    "nondiscriminationLabel",
+    "string",
+    "\"Accessibility\""
+  ],
+  [
+    "onClickLinkAnalytics",
+    "(url: string) => void",
+    "-"
+  ],
+  [
+    "plainWritingLabel",
+    "string",
+    "\"Plain writing\""
+  ],
+  [
+    "privacyPolicyLabel",
+    "string",
+    "\"Privacy policy\""
+  ],
+  [
+    "privacySettingLabel",
+    "string",
+    "\"Privacy setting\""
+  ],
+  [
+    "usingThisSiteLabel",
+    "string",
+    "\"Using this site\""
+  ],
+  [
+    "websiteInfo",
+    "string",
+    "\"A federal government website managed and paid for by the U.S. Centers for Medicare and Medicaid Services.\""
+  ]
+]

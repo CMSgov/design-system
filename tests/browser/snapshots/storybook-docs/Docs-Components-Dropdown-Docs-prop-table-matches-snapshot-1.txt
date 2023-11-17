@@ -1,0 +1,154 @@
+[
+  [
+    "Deprecated: Hints are now their own component called `Hint`."
+  ],
+  [
+    "Deprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`"
+  ],
+  [
+    "Deprecated: This option is not currently supported."
+  ],
+  [
+    "Deprecated: This option is not currently supported."
+  ],
+  [
+    "autoFocus",
+    "Sets the focus on the dropdown when it is first added to the document.\nboolean",
+    "-"
+  ],
+  [
+    "children",
+    "Used to define custom dropdown options (i.e. option groups). Alternative to options prop.\nReactNode",
+    "-"
+  ],
+  [
+    "className",
+    "Additional classes to be added to the root element.\nstring",
+    "-"
+  ],
+  [
+    "defaultValue",
+    "Sets the initial selected state. Use this for an uncontrolled component; otherwise, use the value property.\n\nDropdownValue",
+    "-"
+  ],
+  [
+    "disabled",
+    "Disables the entire field.\nboolean",
+    "-"
+  ],
+  [
+    "errorId",
+    "The ID of the error message applied to this field.\nstring",
+    "-"
+  ],
+  [
+    "errorMessage",
+    "Enable the error state by providing an error message.\nReactNode",
+    "-"
+  ],
+  [
+    "errorMessageClassName",
+    "Additional classes to be added to the error message\nstring",
+    "-"
+  ],
+  [
+    "errorPlacement",
+    "Location of the error message relative to the field input\n\"top\"\n\"bottom\"",
+    "-"
+  ],
+  [
+    "fieldClassName",
+    "Additional classes to be added to the dropdown button element\nstring",
+    "-"
+  ],
+  [
+    "getA11ySelectionMessage",
+    "Customize the default status messages announced to screen reader users via aria-live when a selection is made.\n\nany\nDeprecated: This option is not currently supported.",
+    "-"
+  ],
+  [
+    "getA11yStatusMessage",
+    "Customize the default status messages announced to screen reader users via aria-live during certain interactions.\n\nany\nDeprecated: This option is not currently supported.",
+    "-"
+  ],
+  [
+    "hint",
+    "ReactNode\nDeprecated: Hints are now their own component called `Hint`.",
+    "-"
+  ],
+  [
+    "hintId",
+    "string\nDeprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`",
+    "-"
+  ],
+  [
+    "id",
+    "A unique ID to be used for the button element. If one isn't provided, a unique ID will be generated. / Additional hint text to display\n\nstring",
+    "-"
+  ],
+  [
+    "inputRef",
+    "Access a reference to the button element\n(...args: any[]) => any",
+    "-"
+  ],
+  [
+    "inversed",
+    "Applies the \"inverse\" UI theme\nboolean",
+    "-"
+  ],
+  [
+    "label*",
+    "Label for the field.\nReactNode",
+    "-"
+  ],
+  [
+    "labelClassName",
+    "Additional classes to be added to the field label\nstring",
+    "-"
+  ],
+  [
+    "labelId",
+    "A unique id to be used on the field label. If one isn't provided, a unique ID will be generated.\n\nstring",
+    "-"
+  ],
+  [
+    "name*",
+    "The field's name attribute\nstring",
+    "-"
+  ],
+  [
+    "onBlur",
+    "(...args: any[]) => any",
+    "-"
+  ],
+  [
+    "onChange",
+    "(change: DropdownChangeObject) => any",
+    "-"
+  ],
+  [
+    "options",
+    "The list of options to be rendered. Each item must have a label and value.\n(DropdownOption | DropdownOptGroup)[]",
+    "-"
+  ],
+  [
+    "ref",
+    "Ref<HTMLButtonElement>",
+    "-"
+  ],
+  [
+    "requirementLabel",
+    "Text showing the requirement (\"Required\", \"Optional\", etc.). See Required and Optional Fields.\nReactNode",
+    "-"
+  ],
+  [
+    "size",
+    "Sets the max-width of the input either to 'small' or 'medium'.\n\"small\"\n\"medium\"",
+    "-"
+  ],
+  [
+    "value",
+    "Sets the field's value. Use this in combination with onChange for a controlled component; otherwise, set defaultValue.\n\nDropdownValue",
+    "-"
+  ]
+]

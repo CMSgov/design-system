@@ -1,0 +1,123 @@
+[
+  [
+    "Deprecated: Hints are now their own component called `Hint`."
+  ],
+  [
+    "Deprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`"
+  ],
+  [
+    "buttonVariation",
+    "Variation string to be applied to buttons. See Button component\n\"solid\"\n\"ghost\"",
+    "-"
+  ],
+  [
+    "className",
+    "Additional classes to be added to the root element.\nstring",
+    "-"
+  ],
+  [
+    "clearAllText",
+    "The text for the \"Clear all\" button for internationalization\nstring",
+    "-"
+  ],
+  [
+    "defaultSelectedMonths",
+    "Array of month numbers, where 1 is January, and any month included is selected by default. Sets the initial checked state for the 12 month checkboxes. Use this for an uncontrolled component; otherwise, use the selectedMonths property.\n\nnumber[]",
+    "-"
+  ],
+  [
+    "disabledMonths",
+    "Array of month numbers, where 1 is January, and any month included is disabled for selection.\n\nnumber[]",
+    "-"
+  ],
+  [
+    "errorId",
+    "The ID of the error message applied to this field.\nstring",
+    "-"
+  ],
+  [
+    "errorMessage",
+    "Enable the error state by providing an error message.\nReactNode",
+    "-"
+  ],
+  [
+    "errorMessageClassName",
+    "Additional classes to be added to the error message\nstring",
+    "-"
+  ],
+  [
+    "errorPlacement",
+    "Location of the error message relative to the field input\n\"top\"\n\"bottom\"",
+    "-"
+  ],
+  [
+    "hint",
+    "ReactNode\nDeprecated: Hints are now their own component called `Hint`.",
+    "-"
+  ],
+  [
+    "hintId",
+    "string\nDeprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`",
+    "-"
+  ],
+  [
+    "id",
+    "A unique id for the field element. Useful for referencing the field from other components with aria-describedby.\n\nstring",
+    "-"
+  ],
+  [
+    "inversed",
+    "Set to true to apply the \"inverse\" theme\nboolean",
+    "-"
+  ],
+  [
+    "label*",
+    "Label for the field.\nReactNode",
+    "-"
+  ],
+  [
+    "labelClassName",
+    "Additional classes to be added to the field label\nstring",
+    "-"
+  ],
+  [
+    "labelId",
+    "A unique id to be used on the field label. If one isn't provided, a unique ID will be generated.\n\nstring",
+    "-"
+  ],
+  [
+    "name*",
+    "The input field's name attribute\nstring",
+    "-"
+  ],
+  [
+    "onChange",
+    "A callback function that's invoked when a month's checked state is changed. Note: This callback is not called when a month is selected or deselected via the \"Select all\" or \"Clear all\" buttons – use the onSelectAll and onClearAll event handlers for those instances.\n\n(event: ChangeEvent<HTMLInputElement>) => any",
+    "-"
+  ],
+  [
+    "onClearAll",
+    "() => any",
+    "-"
+  ],
+  [
+    "onSelectAll",
+    "() => any",
+    "-"
+  ],
+  [
+    "requirementLabel",
+    "Text showing the requirement (\"Required\", \"Optional\", etc.). See Required and Optional Fields.\nReactNode",
+    "-"
+  ],
+  [
+    "selectAllText",
+    "The text for the \"Select all\" button for internationalization\nstring",
+    "-"
+  ],
+  [
+    "selectedMonths",
+    "Array of month numbers, where 1 is January, and any month included is selected. This will render a read-only field. If the field should be mutable, use defaultSelectedMonths.\n\nnumber[]",
+    "-"
+  ]
+]

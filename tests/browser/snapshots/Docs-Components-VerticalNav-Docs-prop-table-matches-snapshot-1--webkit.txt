@@ -1,0 +1,47 @@
+[
+  [
+    "ariaNavLabel",
+    "An optional arial label for the <nav> element in this component. This prop is necessary when there is more than one nav element on a page.\n\nstring\n",
+    "-"
+  ],
+  [
+    "className",
+    "Additional classes to be added to the root element\nstring\n",
+    "-"
+  ],
+  [
+    "collapsed",
+    "Whether or not the menu is in a collapsed state\nboolean\n",
+    "false\n"
+  ],
+  [
+    "component",
+    "When provided, this will render the passed in component for all VerticalNavItems. This is useful when integrating with React Router's <Link> or using your own custom component. If more specific control is needed, each VerticalNavItem object also accepts a component prop.\n\nany\n",
+    "-"
+  ],
+  [
+    "selectedId",
+    "The id of the selected VerticalNavItem. This will also set the selected prop on the item's parents.\n\nstring\n",
+    "-"
+  ],
+  [
+    "id",
+    "string\n",
+    "-"
+  ],
+  [
+    "items*",
+    "Array of objects representing the props for each VerticalNavItem in the VerticalNav. See the VerticalNavItem tab above this table.\nVerticalNavItemProps[]\n",
+    "-"
+  ],
+  [
+    "nested",
+    "Indicates this list is nested within another nav item.\nboolean\n",
+    "-"
+  ],
+  [
+    "onLinkClick",
+    "Called when one of the nav links is clicked, with the following arguments: SyntheticEvent, id, url\n\n(evt: MouseEvent<Element, MouseEvent> | KeyboardEvent<Element>, id: string, url: string) => any\n",
+    "-"
+  ]
+]
