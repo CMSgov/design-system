@@ -1,22 +1,21 @@
 import React, { useCallback, useRef, useState } from 'react';
+import DropdownMenu from './DropdownMenu';
+import debounce from '../utilities/debounce';
+import describeField from '../utilities/describeField';
 import classNames from 'classnames';
+import cleanFieldProps from '../utilities/cleanFieldProps';
 import mergeRefs from '../utilities/mergeRefs';
+import useClickOutsideHandler from '../utilities/useClickOutsideHandler';
+import useId from '../utilities/useId';
 import useAutofocus from '../utilities/useAutoFocus';
-import { FormFieldProps } from '../FormLabel';
 import { Label } from '../Label';
 import { SvgIcon } from '../Icons';
 import { getFirstOptionValue, isOptGroup, parseChildren, validateProps } from './utils';
 import { Item, Section, useSelectState } from '../react-aria'; // from react-stately
 import { HiddenSelect, useButton, useSelect } from '../react-aria'; // from react-aria
-import DropdownMenu from './DropdownMenu';
-import useClickOutsideHandler from '../utilities/useClickOutsideHandler';
-import useId from '../utilities/useId';
-import debounce from '../utilities/debounce';
-import { useInlineError } from '../InlineError/useInlineError';
-import describeField from '../utilities/describeField';
-import { useHint } from '../Hint/useHint';
-import cleanFieldProps from '../utilities/cleanFieldProps';
-import useLabelProps from '../Label/useLabelProps';
+import { useLabelProps, UseLabelPropsProps } from '../Label/useLabelProps';
+import { useHint, UseHintProps } from '../Hint/useHint';
+import { useInlineError, UseInlineErrorProps } from '../InlineError/useInlineError';
 
 const caretIcon = (
   <SvgIcon title="" viewBox="0 0 448 512" className="ds-u-font-size--sm">
@@ -28,8 +27,8 @@ export type DropdownSize = 'small' | 'medium';
 export type DropdownValue = number | string;
 
 export interface DropdownChangeObject {
-  target: { value: string, name: string };
-  currentTarget: { value: string, name: string };
+  target: { value: string; name: string };
+  currentTarget: { value: string; name: string };
 }
 
 export interface DropdownOption extends React.HTMLAttributes<'option'> {
@@ -41,7 +40,11 @@ export interface DropdownOptGroup extends React.HTMLAttributes<'optgroup'> {
   options: DropdownOption[];
 }
 
-export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
+export interface BaseDropdownProps {
+  /**
+   * Sets the focus on the dropdown when it is first added to the document.
+   */
+  autoFocus?: boolean;
   /**
    * Sets the initial selected state. Use this for an uncontrolled component;
    * otherwise, use the `value` property.
@@ -52,15 +55,15 @@ export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
    */
   disabled?: boolean;
   /**
+   * Additional classes to be added to the root element.
+   */
+  className?: string;
+  /**
    * Additional classes to be added to the dropdown button element
    */
   fieldClassName?: string;
   /**
-   * Sets the focus on the dropdown when it is first added to the document.
-   */
-  autoFocus?: boolean;
-  /**
-   * A unique ID to be used for the `button` element. If one isn't provided, a unique ID will be generated.  /**
+   * A unique ID to be used for the `button` element. If one isn't provided, a unique ID will be generated.
    * Additional hint text to display
    */
   id?: string;
@@ -69,7 +72,7 @@ export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
    */
   inputRef?: (...args: any[]) => any;
   /**
-   * Applies the "inverse" UI theme
+   * Set to `true` to apply the "inverse" color scheme
    */
   inversed?: boolean;
   /**
@@ -125,7 +128,8 @@ type OptionsOrChildren =
 
 export type DropdownProps = BaseDropdownProps &
   OptionsOrChildren &
-  Omit<React.ComponentPropsWithRef<'button'>, keyof BaseDropdownProps>;
+  Omit<React.ComponentPropsWithRef<'button'>, keyof BaseDropdownProps> &
+  Omit<UseLabelPropsProps & UseHintProps & UseInlineErrorProps, 'id' | 'inversed'>;
 
 /**
  * For information about how and when to use this component,

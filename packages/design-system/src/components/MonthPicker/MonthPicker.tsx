@@ -7,13 +7,12 @@ import classNames from 'classnames';
 import describeField from '../utilities/describeField';
 import useId from '../utilities/useId';
 import { ChangeEvent, useState } from 'react';
+import { Label } from '../Label';
 import { NUM_MONTHS, getMonthNames } from './getMonthNames';
 import { fallbackLocale, getLanguage, t } from '../i18n';
-import { FormFieldProps } from '../FormLabel';
-import { Label } from '../Label';
-import { useInlineError } from '../InlineError/useInlineError';
-import { useHint } from '../Hint/useHint';
-import useLabelProps from '../Label/useLabelProps';
+import { useLabelProps, UseLabelPropsProps } from '../Label/useLabelProps';
+import { useHint, UseHintProps } from '../Hint/useHint';
+import { useInlineError, UseInlineErrorProps } from '../InlineError/useInlineError';
 
 const monthNumbers = (() => {
   const months = [];
@@ -23,7 +22,7 @@ const monthNumbers = (() => {
   return months;
 })();
 
-interface MonthPickerProps extends FormFieldProps {
+interface BaseMonthPickerProps {
   /**
    * The `input` field's `name` attribute
    */
@@ -60,6 +59,14 @@ interface MonthPickerProps extends FormFieldProps {
    * via the "Select all" or "Clear all" buttons – use the `onSelectAll` and
    * `onClearAll` event handlers for those instances.
    */
+  /**
+   * A unique ID for this element. A unique ID will be generated if one isn't provided.
+   */
+  id?: string;
+  /**
+   * Set to `true` to apply the "inverse" color scheme
+   */
+  inversed?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => any;
   onSelectAll?: () => any;
   onClearAll?: () => any;
@@ -72,6 +79,9 @@ interface MonthPickerProps extends FormFieldProps {
    */
   clearAllText?: string;
 }
+
+export type MonthPickerProps = BaseMonthPickerProps &
+  Omit<UseLabelPropsProps & UseHintProps & UseInlineErrorProps, 'id' | 'inversed'>;
 
 /**
  * For information about how and when to use this component,

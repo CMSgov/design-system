@@ -3,14 +3,13 @@ import LabelMask from './LabelMask';
 import Mask from './Mask';
 import TextInput from './TextInput';
 import classNames from 'classnames';
-import { FormFieldProps } from '../FormLabel';
-import { Label } from '../Label';
-import useId from '../utilities/useId';
-import { useInlineError } from '../InlineError/useInlineError';
-import describeField from '../utilities/describeField';
-import { useHint } from '../Hint/useHint';
-import useLabelProps from '../Label/useLabelProps';
 import cleanFieldProps from '../utilities/cleanFieldProps';
+import describeField from '../utilities/describeField';
+import useId from '../utilities/useId';
+import { Label } from '../Label';
+import { useLabelProps, UseLabelPropsProps } from '../Label/useLabelProps';
+import { useHint, UseHintProps } from '../Hint/useHint';
+import { useInlineError, UseInlineErrorProps } from '../InlineError/useInlineError';
 
 export type TextFieldDefaultValue = string | number;
 export type TextFieldMask = 'currency' | 'phone' | 'ssn' | 'zip';
@@ -18,12 +17,20 @@ export type TextFieldRows = number | string;
 export type TextFieldSize = 'small' | 'medium';
 export type TextFieldValue = string | number;
 
-export interface BaseTextFieldProps extends Omit<FormFieldProps, 'id'> {
+interface BaseTextFieldProps {
   /**
    * Apply an `aria-label` to the text field to provide additional
    * context to assistive devices.
    */
   ariaLabel?: string;
+  /*
+   * Sets the focus on the select during the first mount
+   */
+  autoFocus?: boolean;
+  /**
+   * Additional classes to be added to the root element.
+   */
+  className?: string;
   /**
    * Sets the initial value. Use this for an uncontrolled component; otherwise,
    * use the `value` property.
@@ -31,10 +38,6 @@ export interface BaseTextFieldProps extends Omit<FormFieldProps, 'id'> {
   defaultValue?: TextFieldDefaultValue;
   disabled?: boolean;
   fieldClassName?: string;
-  /*
-   * Sets the focus on the select during the first mount
-   */
-  autoFocus?: boolean;
   /**
    * A unique `id` to be used on the text field.
    */
@@ -44,11 +47,7 @@ export interface BaseTextFieldProps extends Omit<FormFieldProps, 'id'> {
    */
   inputRef?: (...args: any[]) => any;
   /**
-   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields](https://design.cms.gov/patterns/Forms/forms/#required-and-optional-fields).
-   */
-  requirementLabel?: React.ReactNode;
-  /**
-   * Applies the "inverse" UI theme
+   * Set to `true` to apply the "inverse" color scheme
    */
   inversed?: boolean;
   /**
@@ -100,7 +99,8 @@ export interface BaseTextFieldProps extends Omit<FormFieldProps, 'id'> {
 }
 
 export type TextFieldProps = BaseTextFieldProps &
-  Omit<React.ComponentPropsWithRef<'input'>, keyof BaseTextFieldProps>;
+  Omit<React.ComponentPropsWithRef<'input'>, keyof BaseTextFieldProps> &
+  Omit<UseLabelPropsProps & UseHintProps & UseInlineErrorProps, 'id' | 'inversed'>;
 
 /**
  * For information about how and when to use this component,

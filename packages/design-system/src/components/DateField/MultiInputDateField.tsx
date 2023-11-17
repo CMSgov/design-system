@@ -18,7 +18,7 @@ export type DateFieldMonthValue = string | number;
 export type DateFieldYearDefaultValue = string | number;
 export type DateFieldYearValue = string | number;
 
-export interface BaseDateFieldProps {
+interface BaseDateFieldProps {
   /**
    * Adds `autocomplete` attributes `bday-day`, `bday-month` and `bday-year` to the corresponding `<MultiInputDateField>` inputs
    */
