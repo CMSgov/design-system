@@ -8,7 +8,7 @@ import useLabelMask from '../TextField/useLabelMask';
 import useClickOutsideHandler from '../utilities/useClickOutsideHandler';
 import usePressEscapeHandler from '../utilities/usePressEscapeHandler';
 import { DATE_MASK } from '../TextField/useLabelMask';
-import { FormFieldProps, useFormLabel } from '../FormLabel';
+import { FormFieldProps } from '../FormLabel';
 import { Label } from '../Label';
 import { TextInput } from '../TextField';
 import { TextInputProps } from '../TextField/TextInput';

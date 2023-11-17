@@ -2,7 +2,7 @@ import React, { useCallback, useRef, useState } from 'react';
 import classNames from 'classnames';
 import mergeRefs from '../utilities/mergeRefs';
 import useAutofocus from '../utilities/useAutoFocus';
-import { FormFieldProps, useFormLabel } from '../FormLabel';
+import { FormFieldProps } from '../FormLabel';
 import { Label } from '../Label';
 import { SvgIcon } from '../Icons';
 import { getFirstOptionValue, isOptGroup, parseChildren, validateProps } from './utils';
