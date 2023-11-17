@@ -79,15 +79,30 @@ copySassLayoutTokens.displayName = '📎 copying layout tokens to src/styles fol
  * Copy theme files from styles/themes to dist
  */
 const copyThemes = (cb) => {
-  const themeFiles = `${srcPath}/styles/*-theme.css`;
+  const tokensFiles = `${tokensPackageFiles}/css-vars/*-theme.css`;
 
   gulp
-    .src(themeFiles)
+    .src(tokensFiles)
     .pipe(gulp.dest(path.join(distPath, 'css')))
     .on('end', cb);
 };
 
 copyThemes.displayName = '📎 copying themes to dist/css folder';
+
+/**
+ * Copy theme files into docs
+ */
+const copyThemesToDocs = (cb) => {
+  const tokensFiles = `${tokensPackageFiles}/css-vars/*-theme.css`;
+
+  gulp
+    .src(tokensFiles)
+    .pipe(gulp.dest(path.join('docs', 'static', 'themes')))
+    .on('end', cb);
+};
+
+copyThemesToDocs.displayName = '📎 copying themes to docs folder';
+
 /**
  * compile sass assets to css, copy to /dist/css folder
  */
@@ -326,7 +341,14 @@ const displayHelp = (cb) => {
 log('🪴 building the cmsds');
 exports.build = gulp.series(
   cleanDist,
-  gulp.parallel(copySassLayoutTokens, copyThemes, copyImages, copyFonts, copyJSON),
+  gulp.parallel(
+    copySassLayoutTokens,
+    copyThemes,
+    copyThemesToDocs,
+    copyImages,
+    copyFonts,
+    copyJSON
+  ),
   gulp.parallel(compileSass, compileReactComponents, compilePreactComponents)
 );
 
