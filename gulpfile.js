@@ -17,6 +17,7 @@ const log = require('fancy-log');
 const svgmin = require('gulp-svgmin');
 const webpack = require('webpack-stream');
 const generateWebpackConfig = require('./webpack.config');
+const rename = require('gulp-rename');
 
 /*
  * command line arguments and global variables
@@ -26,6 +27,7 @@ const willMinifySvg = args.minifySvg ?? false;
 const rootPath = args.package ?? path.join('packages', 'design-system');
 const isCore = rootPath.includes('design-system') ?? false;
 
+const tokensPackageFiles = path.join('packages', 'design-system-tokens', 'dist');
 const corePackageFiles = path.join('packages', 'design-system', 'dist');
 const distPath = path.join(rootPath, 'dist');
 const distReactComponents = path.join(distPath, 'react-components');
@@ -56,6 +58,22 @@ const cleanDist = (cb) => {
   cb();
 };
 cleanDist.displayName = '🧹 cleaning up dist path';
+
+/**
+ * Copy Sass layout files from design-system-tokens to theme styles folder
+ */
+
+const copySassLayoutTokens = (cb) => {
+  const sassLayoutTokensFiles = `${tokensPackageFiles}/css-vars/*-layout-tokens.scss`;
+
+  gulp
+    .src(sassLayoutTokensFiles)
+    .pipe(rename('_layout.scss'))
+    .pipe(gulp.dest(path.join(srcPath, 'styles')))
+    .on('end', cb);
+};
+
+copySassLayoutTokens.displayName = '📎 copying layout tokens to src/styles folder';
 
 /**
  * Copy theme files from styles/themes to dist
@@ -308,7 +326,7 @@ const displayHelp = (cb) => {
 log('🪴 building the cmsds');
 exports.build = gulp.series(
   cleanDist,
-  gulp.parallel(copyThemes, copyImages, copyFonts, copyJSON),
+  gulp.parallel(copySassLayoutTokens, copyThemes, copyImages, copyFonts, copyJSON),
   gulp.parallel(compileSass, compileReactComponents, compilePreactComponents)
 );
 
