@@ -33,6 +33,10 @@ export interface BaseChoiceListProps {
    */
   id?: string;
   /**
+   * Set to `true` to apply the "inverse" color scheme
+   */
+  inversed?: boolean;
+  /**
    * The field's `name` attribute
    */
   name: string;
