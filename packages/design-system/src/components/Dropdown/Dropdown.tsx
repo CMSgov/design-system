@@ -23,8 +23,8 @@ export type DropdownSize = 'small' | 'medium';
 export type DropdownValue = number | string;
 
 export interface DropdownChangeObject {
-  target: { value: string };
-  currentTarget: { value: string };
+  target: { value: string, name: string };
+  currentTarget: { value: string, name: string };
 }
 
 export interface DropdownOption extends React.HTMLAttributes<'option'> {
@@ -188,7 +188,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
 
     if (onChange) {
       // Try to support the old API that passed an event object
-      const target = { value };
+      const target = { value, name: props.name };
       onChange({
         target,
         currentTarget: target,
