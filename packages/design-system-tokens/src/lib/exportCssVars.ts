@@ -132,7 +132,7 @@ const mapCssVariablesToValues = (importedModule: any, sep: string) => {
  * @returns An exit code based on success writing output
  */
 export const exportCssVars = (fileDescriptors: FileDescriptor[], outPath: string): number => {
-  const groupByTheme = fileDescriptors.reduce((acc: any, file: any) => {
+  const groupByTheme = fileDescriptors.reduce((acc: Record<string, any[]>, file) => {
     const theme = file.baseName.split('-')[0];
     if (!acc[theme]) {
       acc[theme] = [];
@@ -141,10 +141,10 @@ export const exportCssVars = (fileDescriptors: FileDescriptor[], outPath: string
     return acc;
   }, {});
 
-  Object.entries(groupByTheme).forEach(([theme, files]: any) => {
+  Object.entries(groupByTheme).forEach(([theme, files]) => {
     let output = '';
 
-    files.reverse().forEach((file: any) => {
+    files.reverse().forEach((file) => {
       const importedModule = require(`${file.moduleImportName}`);
       // component files do not need a separator
       const sep = file.baseName.includes('component') ? '' : '-';
