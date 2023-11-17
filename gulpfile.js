@@ -35,12 +35,24 @@ const distPreactComponents = path.join(distPath, 'preact-components');
 const distWebComponents = path.join(distPath, 'web-components');
 const srcPath = path.join(rootPath, 'src');
 const imageCorePath = path.join(corePackageFiles, 'images');
-const sassCorePath = path.join(corePackageFiles, 'styles');
 const fontsCorePath = path.join(corePackageFiles, 'fonts');
 
 const nameTask = (fn, displayName) => {
   fn.displayName = displayName;
   return fn;
+};
+
+const theme = () => {
+  let theme = 'core';
+  if (rootPath.includes('ds-cms-gov')) {
+    theme = 'cmsgov';
+  } else if (rootPath.includes('ds-healthcare-gov')) {
+    theme = 'healthcare';
+  } else if (rootPath.includes('ds-medicare')) {
+    theme = 'medicare';
+  }
+
+  return theme;
 };
 
 /**
@@ -64,7 +76,7 @@ cleanDist.displayName = '🧹 cleaning up dist path';
  */
 
 const copySassLayoutTokens = (cb) => {
-  const sassLayoutTokensFiles = `${tokensPackageFiles}/css-vars/*-layout-tokens.scss`;
+  const sassLayoutTokensFiles = `${tokensPackageFiles}/css-vars/${theme()}-layout-tokens.scss`;
 
   gulp
     .src(sassLayoutTokensFiles)
@@ -79,7 +91,7 @@ copySassLayoutTokens.displayName = '📎 copying layout tokens to src/styles fol
  * Copy theme files from styles/themes to dist
  */
 const copyThemes = (cb) => {
-  const tokensFiles = `${tokensPackageFiles}/css-vars/*-theme.css`;
+  const tokensFiles = `${tokensPackageFiles}/css-vars/${theme()}-theme.css`;
 
   gulp
     .src(tokensFiles)
@@ -97,7 +109,7 @@ const copyThemesToDocs = (cb) => {
 
   gulp
     .src(tokensFiles)
-    .pipe(gulp.dest(path.join('docs', 'static', 'themes')))
+    .pipe(gulp.dest(path.join('packages', 'docs', 'static', 'themes')))
     .on('end', cb);
 };
 
@@ -109,12 +121,11 @@ copyThemesToDocs.displayName = '📎 copying themes to docs folder';
 const compileSass = (cb) => {
   const envDev = process.env.NODE_ENV === 'development';
 
-  const sassSourcePaths = isCore
-    ? `${srcPath}/styles/**/*.scss`
-    : [`${sassCorePath}/**/*.scss`, `${srcPath}/styles/**/*.scss`];
+  const sassSourcePaths = `${tokensPackageFiles}/scss/${theme()}-*.scss`;
 
   gulp
     .src(sassSourcePaths)
+    .pipe(gulp.dest(path.join(distPath, 'scss')))
     .pipe(gulpif(envDev, sourcemaps.init()))
     .pipe(sass({ outputStyle: 'expanded' }))
     .pipe(gulpif(envDev, sourcemaps.write()))
