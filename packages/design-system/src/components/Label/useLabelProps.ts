@@ -7,7 +7,7 @@ export interface UseLabelPropsProps {
    */
   label: React.ReactNode;
   /**
-   * Additional classes to be added to the field label
+   * Additional classes to be added to the label
    */
   labelClassName?: string;
   /**

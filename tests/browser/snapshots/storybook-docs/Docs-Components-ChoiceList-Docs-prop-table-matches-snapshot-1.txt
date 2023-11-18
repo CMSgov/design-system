@@ -1,8 +1,5 @@
 [
   [
-    "Deprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`"
-  ],
-  [
     "choices*",
     "Array of objects representing the props for each Choice in the ChoiceList\nChoiceProps[]",
     "-"
@@ -19,7 +16,7 @@
   ],
   [
     "errorId",
-    "The ID of the error message applied to this field.\nstring",
+    "The ID of the error message applied to this field. If none is provided, the id will be derived from the id prop for the field.\n\nstring",
     "-"
   ],
   [
@@ -44,27 +41,27 @@
   ],
   [
     "hintId",
-    "string\nDeprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`",
+    "The ID of the hint element\nstring",
     "-"
   ],
   [
     "id",
-    "A unique id for the field element. Useful for referencing the field from other components with aria-describedby.\n\nstring",
+    "A unique ID for this element. A unique ID will be generated if one isn't provided.\nstring",
     "-"
   ],
   [
     "inversed",
-    "Applies the \"inverse\" UI theme\nboolean",
+    "Set to true to apply the \"inverse\" color scheme\nboolean",
     "-"
   ],
   [
     "label*",
-    "Label for the field\nReactNode",
+    "Label for the field.\nReactNode",
     "-"
   ],
   [
     "labelClassName",
-    "Additional classes to be added to the FormLabel.\nstring",
+    "Additional classes to be added to the label\nstring",
     "-"
   ],
   [

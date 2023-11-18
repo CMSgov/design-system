@@ -54,12 +54,6 @@ interface BaseMonthPickerProps {
    */
   defaultSelectedMonths?: number[];
   /**
-   * A callback function that's invoked when a month's checked state is changed.
-   * Note: This callback is not called when a month is selected or deselected
-   * via the "Select all" or "Clear all" buttons – use the `onSelectAll` and
-   * `onClearAll` event handlers for those instances.
-   */
-  /**
    * A unique ID for this element. A unique ID will be generated if one isn't provided.
    */
   id?: string;
@@ -67,6 +61,12 @@ interface BaseMonthPickerProps {
    * Set to `true` to apply the "inverse" color scheme
    */
   inversed?: boolean;
+  /**
+   * A callback function that's invoked when a month's checked state is changed.
+   * Note: This callback is not called when a month is selected or deselected
+   * via the "Select all" or "Clear all" buttons – use the `onSelectAll` and
+   * `onClearAll` event handlers for those instances.
+   */
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => any;
   onSelectAll?: () => any;
   onClearAll?: () => any;
