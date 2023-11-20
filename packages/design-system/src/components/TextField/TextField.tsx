@@ -3,12 +3,14 @@ import LabelMask from './LabelMask';
 import Mask from './Mask';
 import TextInput from './TextInput';
 import classNames from 'classnames';
-import { FormFieldProps, useFormLabel } from '../FormLabel';
+import { FormFieldProps } from '../FormLabel';
 import { Label } from '../Label';
 import useId from '../utilities/useId';
 import { useInlineError } from '../InlineError/useInlineError';
 import describeField from '../utilities/describeField';
 import { useHint } from '../Hint/useHint';
+import useLabelProps from '../Label/useLabelProps';
+import cleanFieldProps from '../utilities/cleanFieldProps';
 
 export type TextFieldDefaultValue = string | number;
 export type TextFieldMask = 'currency' | 'phone' | 'ssn' | 'zip';
@@ -105,8 +107,8 @@ export type TextFieldProps = BaseTextFieldProps &
  * [refer to its full documentation page](https://design.cms.gov/components/text-field/).
  */
 export const TextField: React.FC<TextFieldProps> = (props: TextFieldProps) => {
-  const { mask, labelMask, ...textFieldProps } = props;
-  const id = useId('text-field--', textFieldProps.id);
+  const { id: originalId, mask, labelMask, className, ...remainingProps } = props;
+  const id = useId('text-field--', originalId);
 
   if (process.env.NODE_ENV !== 'production') {
     if (props.type === 'number') {
@@ -118,31 +120,27 @@ export const TextField: React.FC<TextFieldProps> = (props: TextFieldProps) => {
 
   const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
   const { hintId, hintElement } = useHint({ ...props, id });
-  const { labelProps, fieldProps, wrapperProps } = useFormLabel({
-    ...textFieldProps,
-    labelComponent: 'label',
-    wrapperIsFieldset: false,
-    id,
-  });
-
-  wrapperProps.className = classNames(
-    'ds-u-clearfix', // fixes issue where the label's margin is collapsed
-    wrapperProps.className
-  );
+  const labelProps = useLabelProps({ ...props, id });
 
   const input = (
     <TextInput
-      type={TextField.defaultProps.type} // Appeases TypeScript
-      inversed={props.inversed}
-      {...fieldProps}
+      // TypeScript doesn't know we set this in .defaultProps
+      type={TextField.defaultProps.type}
+      {...cleanFieldProps(remainingProps)}
+      id={id}
       aria-invalid={invalid}
       aria-describedby={describeField({ ...props, errorId, hintId })}
     />
   );
 
   return (
-    <div {...wrapperProps}>
-      <Label {...labelProps} />
+    <div
+      className={classNames(
+        'ds-u-clearfix', // fixes issue where the label's margin is collapsed
+        className
+      )}
+    >
+      <Label {...labelProps} fieldId={id} />
       {hintElement}
       {topError}
       {mask && <Mask mask={mask}>{input}</Mask>}

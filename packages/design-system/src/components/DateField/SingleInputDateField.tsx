@@ -8,7 +8,7 @@ import useLabelMask from '../TextField/useLabelMask';
 import useClickOutsideHandler from '../utilities/useClickOutsideHandler';
 import usePressEscapeHandler from '../utilities/usePressEscapeHandler';
 import { DATE_MASK } from '../TextField/useLabelMask';
-import { FormFieldProps, useFormLabel } from '../FormLabel';
+import { FormFieldProps } from '../FormLabel';
 import { Label } from '../Label';
 import { TextInput } from '../TextField';
 import { TextInputProps } from '../TextField/TextInput';
@@ -18,6 +18,8 @@ import { useInlineError } from '../InlineError/useInlineError';
 import describeField from '../utilities/describeField';
 import mergeIds from '../utilities/mergeIds';
 import { useHint } from '../Hint/useHint';
+import useLabelProps from '../Label/useLabelProps';
+import cleanFieldProps from '../utilities/cleanFieldProps';
 
 interface BaseSingleInputDateFieldProps extends FormFieldProps {
   /**
@@ -128,25 +130,18 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
   // Collect all the props and elements for the input and its labels
   const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
   const { hintId, hintElement } = useHint({ ...props, id });
-  const { labelProps, fieldProps, wrapperProps } = useFormLabel({
-    ...remainingProps,
-    className: classNames(
-      'ds-c-single-input-date-field',
-      { 'ds-c-single-input-date-field--with-picker': withPicker },
-      className
-    ),
-    labelComponent: 'label',
-    wrapperIsFieldset: false,
-    id,
-  });
+  const labelProps = useLabelProps({ ...props, id });
   const inputRef = useRef<HTMLInputElement>();
   const { labelMask, inputProps } = useLabelMask(DATE_MASK, {
-    ...fieldProps,
+    ...cleanFieldProps(remainingProps),
+    id,
     onChange: handleInputChange,
     type: 'text',
     inputRef: (el) => {
       inputRef.current = el;
     },
+    'aria-invalid': invalid,
+    'aria-describedby': describeField({ ...props, errorId, hintId }),
   });
 
   // Handle alternate ways of closing the day picker
@@ -165,17 +160,19 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
   const date = validDateString ? new Date(dateString) : null;
 
   return (
-    <div {...wrapperProps}>
-      <Label {...labelProps} />
+    <div
+      className={classNames(
+        'ds-c-single-input-date-field',
+        withPicker && 'ds-c-single-input-date-field--with-picker',
+        className
+      )}
+    >
+      <Label {...labelProps} fieldId={id} />
       {hintElement}
       {topError}
       {labelMask}
       <div className="ds-c-single-input-date-field__field-wrapper">
-        <TextInput
-          {...inputProps}
-          aria-invalid={invalid}
-          aria-describedby={describeField({ ...props, hintId, errorId })}
-        />
+        <TextInput {...inputProps} />
         {withPicker && (
           <button
             className="ds-c-single-input-date-field__button"
