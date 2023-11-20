@@ -12,6 +12,8 @@ import DropdownMenu from './DropdownMenu';
 import useClickOutsideHandler from '../utilities/useClickOutsideHandler';
 import useId from '../utilities/useId';
 import debounce from '../utilities/debounce';
+import { useInlineError } from '../InlineError/useInlineError';
+import describeField from '../utilities/describeField';
 
 const caretIcon = (
   <SvgIcon title="" viewBox="0 0 448 512" className="ds-u-font-size--sm">
@@ -206,6 +208,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     onSelectionChange,
   });
 
+  const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
   const useFormLabelProps = useFormLabel({
     ...extraProps,
     id,
@@ -216,8 +219,6 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   });
 
   // We don't want to pass these down to the button
-  delete useFormLabelProps.fieldProps.errorMessage;
-  delete useFormLabelProps.fieldProps.errorId;
   delete useFormLabelProps.fieldProps.inversed;
 
   const onBlur = useCallback(
@@ -260,6 +261,8 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     ref: mergeRefs([triggerRef, inputRef, useAutofocus<HTMLButtonElement>(props.autoFocus)]),
     'aria-controls': menuId,
     'aria-labelledby': `${buttonContentId} ${labelId}`,
+    'aria-invalid': invalid,
+    'aria-describedby': describeField({ ...props, hintId: useFormLabelProps.hintId, errorId }),
     // TODO: Someday we may want to add this `combobox` role back to the button, but right
     // now desktop VoiceOver has an issue. It seems to interpret the selected value in the
     // button as user input that needs to be checked for spelling (default setting). It
@@ -282,6 +285,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   return (
     <div {...useFormLabelProps.wrapperProps} ref={wrapperRef}>
       <Label {...labelProps} />
+      {topError}
       <HiddenSelect
         isDisabled={props.disabled}
         state={state}
@@ -307,7 +311,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
           triggerRef={triggerRef}
         />
       )}
-      {useFormLabelProps.bottomError}
+      {bottomError}
     </div>
   );
 };

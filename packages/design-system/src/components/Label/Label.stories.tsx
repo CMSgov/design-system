@@ -5,6 +5,11 @@ import type { Meta, StoryObj } from '@storybook/react';
 const meta: Meta<typeof Label> = {
   title: 'Components/Label',
   component: Label as any,
+  argTypes: {
+    errorMessage: { control: 'text' },
+    hint: { control: 'text' },
+    requirementLabel: { control: 'text' },
+  },
   args: {
     children: 'Sample Label',
   },
