@@ -61,7 +61,7 @@ These scripts can all be run from the root level of the repo:
   - Runs JS unit tests for all packages
   - `yarn test:unit:update` updates [Jest snapshots](http://facebook.github.io/jest/docs/en/snapshot-testing.html)
 - `yarn test:browser`
-  - Runs acessibility and visual-regression tests using [Playwright](https://playwright.dev/). See [Visual regression testing](#visual-regression-testing) section below for details.
+  - Runs accessibility and visual-regression tests using [Playwright](https://playwright.dev/). See [Visual regression testing](#visual-regression-testing) section below for details.
   - Note that you need to build Storybook statically (`yarn build:storybook`) before you can run the tests
   - `yarn test:browser:update` updates reference screenshots used for visual regression testing. Update these only when we expect the visual changes
   - `yarn test:browser --project <name>` runs only one of the named projects found in [playwright.config.ts](/tests/browser/playwright.config.ts)
