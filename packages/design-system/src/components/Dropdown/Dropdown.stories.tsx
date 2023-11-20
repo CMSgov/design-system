@@ -11,6 +11,11 @@ const meta: Meta<typeof Dropdown> = {
   args: {
     name: 'dropdown-field',
   },
+  argTypes: {
+    errorMessage: { control: 'text' },
+    hint: { control: 'text' },
+    requirementLabel: { control: 'text' },
+  },
   parameters: {
     docs: {
       underlyingHtmlElements: ['button'],

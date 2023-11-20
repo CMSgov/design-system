@@ -9,6 +9,11 @@ const meta: Meta<typeof MonthPicker> = {
     hint: "Month Picker can receive optional help text, giving the user additional information of what's required.",
     inversed: false,
   },
+  argTypes: {
+    errorMessage: { control: 'text' },
+    hint: { control: 'text' },
+    requirementLabel: { control: 'text' },
+  },
 };
 export default meta;
 
