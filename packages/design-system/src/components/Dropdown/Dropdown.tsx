@@ -14,6 +14,7 @@ import useId from '../utilities/useId';
 import debounce from '../utilities/debounce';
 import { useInlineError } from '../InlineError/useInlineError';
 import describeField from '../utilities/describeField';
+import { useHint } from '../Hint/useHint';
 
 const caretIcon = (
   <SvgIcon title="" viewBox="0 0 448 512" className="ds-u-font-size--sm">
@@ -209,6 +210,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   });
 
   const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
+  const { hintId, hintElement } = useHint({ ...props, id });
   const useFormLabelProps = useFormLabel({
     ...extraProps,
     id,
@@ -262,7 +264,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     'aria-controls': menuId,
     'aria-labelledby': `${buttonContentId} ${labelId}`,
     'aria-invalid': invalid,
-    'aria-describedby': describeField({ ...props, hintId: useFormLabelProps.hintId, errorId }),
+    'aria-describedby': describeField({ ...props, hintId, errorId }),
     // TODO: Someday we may want to add this `combobox` role back to the button, but right
     // now desktop VoiceOver has an issue. It seems to interpret the selected value in the
     // button as user input that needs to be checked for spelling (default setting). It
@@ -285,6 +287,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   return (
     <div {...useFormLabelProps.wrapperProps} ref={wrapperRef}>
       <Label {...labelProps} />
+      {hintElement}
       {topError}
       <HiddenSelect
         isDisabled={props.disabled}

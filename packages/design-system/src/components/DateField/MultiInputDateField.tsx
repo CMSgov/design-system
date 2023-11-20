@@ -7,6 +7,7 @@ import { t } from '../i18n';
 import useId from '../utilities/useId';
 import { useInlineError } from '../InlineError/useInlineError';
 import describeField from '../utilities/describeField';
+import { useHint } from '../Hint/useHint';
 
 export type DateFieldDayDefaultValue = string | number;
 export type DateFieldDayValue = string | number;
@@ -142,9 +143,9 @@ export interface DateFieldProps extends Omit<FormFieldProps, 'label'> {
 export function MultiInputDateField(props: DateFieldProps): React.ReactElement {
   const id = useId('date-field--', props.id);
   const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
-  const { labelProps, fieldProps, wrapperProps, hintId } = useFormLabel({
+  const { hintId, hintElement } = useHint({ hint: t('dateField.hint'), ...props, id });
+  const { labelProps, fieldProps, wrapperProps } = useFormLabel({
     label: t('dateField.label'),
-    hint: t('dateField.hint'),
     dayName: 'day',
     monthName: 'month',
     yearName: 'year',
@@ -162,6 +163,7 @@ export function MultiInputDateField(props: DateFieldProps): React.ReactElement {
       aria-describedby={describeField({ ...props, hintId, errorId })}
     >
       <Label {...labelProps} />
+      {hintElement}
       {topError}
       <DateInput {...fieldProps} />
       {bottomError}

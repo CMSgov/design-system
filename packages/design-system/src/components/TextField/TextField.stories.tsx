@@ -15,6 +15,11 @@ const meta: Meta<typeof TextField> = {
     onBlur: action('onBlur'),
     name: 'text-field-story',
   },
+  argTypes: {
+    errorMessage: { control: 'text' },
+    hint: { control: 'text' },
+    requirementLabel: { control: 'text' },
+  },
   parameters: {
     docs: {
       underlyingHtmlElements: ['input'],

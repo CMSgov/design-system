@@ -8,6 +8,7 @@ import { Label } from '../Label';
 import useId from '../utilities/useId';
 import { useInlineError } from '../InlineError/useInlineError';
 import describeField from '../utilities/describeField';
+import { useHint } from '../Hint/useHint';
 
 export type TextFieldDefaultValue = string | number;
 export type TextFieldMask = 'currency' | 'phone' | 'ssn' | 'zip';
@@ -116,7 +117,8 @@ export const TextField: React.FC<TextFieldProps> = (props: TextFieldProps) => {
   }
 
   const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
-  const { labelProps, fieldProps, wrapperProps, hintId } = useFormLabel({
+  const { hintId, hintElement } = useHint({ ...props, id });
+  const { labelProps, fieldProps, wrapperProps } = useFormLabel({
     ...textFieldProps,
     labelComponent: 'label',
     wrapperIsFieldset: false,
@@ -141,6 +143,7 @@ export const TextField: React.FC<TextFieldProps> = (props: TextFieldProps) => {
   return (
     <div {...wrapperProps}>
       <Label {...labelProps} />
+      {hintElement}
       {topError}
       {mask && <Mask mask={mask}>{input}</Mask>}
       {labelMask && <LabelMask labelMask={labelMask}>{input}</LabelMask>}

@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import useId from '../utilities/useId';
 import { useInlineError, UseInlineErrorProps } from '../InlineError/useInlineError';
 import describeField from '../utilities/describeField';
+import { useHint } from '../Hint/useHint';
 
 export type ChoiceListSize = 'small';
 export type ChoiceListType = 'checkbox' | 'radio';
@@ -118,7 +119,8 @@ export const ChoiceList: React.FC<ChoiceListProps> = (props: ChoiceListProps) =>
   };
 
   const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
-  const { labelProps, wrapperProps, hintId } = useFormLabel({
+  const { hintId, hintElement } = useHint({ ...props, id });
+  const { labelProps, wrapperProps } = useFormLabel({
     ...listProps,
     labelComponent: 'legend',
     wrapperIsFieldset: true,
@@ -159,6 +161,7 @@ export const ChoiceList: React.FC<ChoiceListProps> = (props: ChoiceListProps) =>
       aria-describedby={describeField({ ...props, hintId, errorId })}
     >
       <Label {...labelProps} />
+      {hintElement}
       {topError}
       {choiceItems}
       {bottomError}

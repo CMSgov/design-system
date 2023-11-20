@@ -21,6 +21,8 @@ const meta: Meta<typeof ChoiceList> = {
   },
   argTypes: {
     errorMessage: { control: 'text' },
+    hint: { control: 'text' },
+    requirementLabel: { control: 'text' },
   },
 };
 export default meta;
