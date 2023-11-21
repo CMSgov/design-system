@@ -17,6 +17,8 @@ const attributes = [
   'label',
   'label-class-name',
   'label-id',
+  'hint',
+  'hint-id',
   'name',
   'requirements-label',
   'root-id',
