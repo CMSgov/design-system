@@ -175,14 +175,14 @@ export const Table = ({
   return scrollable ? (
     <div ref={containerRef} aria-live="polite" aria-relevant="additions" {...attributeScrollable}>
       <TableContext.Provider value={contextValue}>
-        <table className={classes} role="table" {...tableProps}>
+        <table className={classes} {...tableProps}>
           {renderedChildren}
         </table>
       </TableContext.Provider>
     </div>
   ) : (
     <TableContext.Provider value={contextValue}>
-      <table className={classes} role="table" {...tableProps}>
+      <table className={classes} {...tableProps}>
         {renderedChildren}
       </table>
     </TableContext.Provider>
