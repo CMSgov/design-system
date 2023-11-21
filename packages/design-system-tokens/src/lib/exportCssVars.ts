@@ -144,15 +144,44 @@ export const exportCssVars = (fileDescriptors: FileDescriptor[], outPath: string
   Object.entries(groupByTheme).forEach(([theme, files]) => {
     let output = '';
 
-    files.reverse().forEach((file) => {
-      const importedModule = require(`${file.moduleImportName}`);
-      // component files do not need a separator
-      const sep = file.baseName.includes('component') ? '' : '-';
-      const layoutFilename = `${outPath}/${theme}-layout-tokens.scss`;
-      writeSassLayout(layoutFilename, file, importedModule, sep);
+    // files
+    //   .filter((file) => file.baseName.includes('component') === false)
+    //   .forEach((file) => {
+    //     const importedModule = require(`${file.moduleImportName}`);
+    //     // Global token files need a separator
+    //     const sep = '-';
 
+    //     const scssFilename = `${outPath}/${theme}-core-tokens.scss`;
+    //     writeSassLayout(scssFilename, file, importedModule, sep);
+
+    //     cssOutput += mapCssVariablesToValues(importedModule, sep);
+    //   });
+
+    // files
+    //   .filter((file) => file.baseName.includes('component') === true)
+    //   .forEach((file) => {
+    //     const importedModule = require(`${file.moduleImportName}`);
+    //     // Component files do not need a separator
+    //     const sep = '';
+    //     cssOutput += mapCssVariablesToValues(importedModule, sep);
+    //   });
+
+    files.forEach((file) => {
+      const importedModule = require(`${file.moduleImportName}`);
+      // Component files do not need a separator
+      let sep = '';
       output += mapCssVariablesToValues(importedModule, sep);
+
+      // Scss files are only generated from global token files
+      if (!file.baseName.includes('component')) {
+        // Global token files need a separator
+        sep = '-';
+
+        const scssFilename = `${outPath}/${theme}-core-tokens.scss`;
+        writeSassLayout(scssFilename, file, importedModule, sep);
+      }
     });
+
     const cssVarFilename = `${outPath}/${theme}-theme.css`;
     writeFile(cssVarFilename, ':root, ::before, ::after, ::backdrop {\n' + output + '}');
   });
