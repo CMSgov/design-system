@@ -72,22 +72,6 @@ const cleanDist = (cb) => {
 cleanDist.displayName = '🧹 cleaning up dist path';
 
 /**
- * Copy Sass layout files from design-system-tokens to theme styles folder
- */
-
-const copySassLayoutTokens = (cb) => {
-  const sassLayoutTokensFiles = `${tokensPackageFiles}/css-vars/${theme()}-layout-tokens.scss`;
-
-  gulp
-    .src(sassLayoutTokensFiles)
-    .pipe(rename('_layout.scss'))
-    .pipe(gulp.dest(path.join(srcPath, 'styles')))
-    .on('end', cb);
-};
-
-copySassLayoutTokens.displayName = '📎 copying layout tokens to src/styles folder';
-
-/**
  * Copy theme files from styles/themes to dist
  */
 const copyThemes = (cb) => {
@@ -352,14 +336,7 @@ const displayHelp = (cb) => {
 log('🪴 building the cmsds');
 exports.build = gulp.series(
   cleanDist,
-  gulp.parallel(
-    copySassLayoutTokens,
-    copyThemes,
-    copyThemesToDocs,
-    copyImages,
-    copyFonts,
-    copyJSON
-  ),
+  gulp.parallel(copyThemes, copyThemesToDocs, copyImages, copyFonts, copyJSON),
   gulp.parallel(compileSass, compileReactComponents, compilePreactComponents)
 );
 
