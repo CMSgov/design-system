@@ -144,28 +144,6 @@ export const exportCssVars = (fileDescriptors: FileDescriptor[], outPath: string
   Object.entries(groupByTheme).forEach(([theme, files]) => {
     let output = '';
 
-    // files
-    //   .filter((file) => file.baseName.includes('component') === false)
-    //   .forEach((file) => {
-    //     const importedModule = require(`${file.moduleImportName}`);
-    //     // Global token files need a separator
-    //     const sep = '-';
-
-    //     const scssFilename = `${outPath}/${theme}-core-tokens.scss`;
-    //     writeSassLayout(scssFilename, file, importedModule, sep);
-
-    //     cssOutput += mapCssVariablesToValues(importedModule, sep);
-    //   });
-
-    // files
-    //   .filter((file) => file.baseName.includes('component') === true)
-    //   .forEach((file) => {
-    //     const importedModule = require(`${file.moduleImportName}`);
-    //     // Component files do not need a separator
-    //     const sep = '';
-    //     cssOutput += mapCssVariablesToValues(importedModule, sep);
-    //   });
-
     files.forEach((file) => {
       const importedModule = require(`${file.moduleImportName}`);
       // Component files do not need a separator
