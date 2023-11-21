@@ -1,0 +1,47 @@
+[
+  [
+    "children*",
+    "Review component's body content.\nReactNode",
+    "-"
+  ],
+  [
+    "className",
+    "string",
+    "-"
+  ],
+  [
+    "editAriaLabel",
+    "Optional label to give screen readers longer, more descriptive text to explain the context of an edit link.\n\nstring",
+    "-"
+  ],
+  [
+    "editContent",
+    "An optional node in place of the edit link. If this defined, no edit link will be shown.\nReactNode",
+    "-"
+  ],
+  [
+    "editHref",
+    "Href for the edit link. If this is undefined, no edit link will be shown.\nstring",
+    "-"
+  ],
+  [
+    "editText",
+    "ReactNode",
+    "-"
+  ],
+  [
+    "heading",
+    "ReactNode",
+    "-"
+  ],
+  [
+    "headingLevel",
+    "Heading type to override default <h3>.\n\"1\"\n\"2\"\n\"3\"\n\"4\"\n\"5\"\n\"6\"",
+    "\"3\""
+  ],
+  [
+    "onEditClick",
+    "An optional function that is executed on edit link click. The event and props.editHref value are passed to this function.\n\n(...args: any[]) => any",
+    "-"
+  ]
+]

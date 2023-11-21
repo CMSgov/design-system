@@ -1,0 +1,67 @@
+[
+  [
+    "ariaLabel",
+    "Defines aria-label on wrapping Pagination element. Since this exists on a <nav> element, the word \"navigation\" should be omitted from this label. Optional.\nstring",
+    "-"
+  ],
+  [
+    "className",
+    "Class to be applied to parent <nav> element of Pagination component. Optional.\nstring",
+    "-"
+  ],
+  [
+    "compact",
+    "Renders compact layout. Optional.\nboolean",
+    "false"
+  ],
+  [
+    "currentPage*",
+    "Defines active page in Pagination.\nnumber",
+    "-"
+  ],
+  [
+    "endAriaLabel",
+    "Sets custom ARIA label on end navigation. Added for language support. Label structure should be the equivalent of: Next Page. Optional.\nstring",
+    "-"
+  ],
+  [
+    "endLabelText",
+    "Sets custom label on end navigation. Added for language support. Optional.\nstring",
+    "-"
+  ],
+  [
+    "headingLevel",
+    "Heading type to override default <h2>.\n\"1\"\n\"2\"\n\"3\"\n\"4\"\n\"5\"\n\"6\"",
+    "\"2\""
+  ],
+  [
+    "isNavigationHidden",
+    "Determines if navigation is hidden when current page is the first or last of Pagination page set. Optional.\nboolean",
+    "false"
+  ],
+  [
+    "onPageChange*",
+    "A callback function used to handle state changes.\n(evt: MouseEvent<Element, MouseEvent>, page: number) => void",
+    "-"
+  ],
+  [
+    "renderHref*",
+    "Defines application-specific routing in url for links.\n(page: number) => string",
+    "-"
+  ],
+  [
+    "startAriaLabel",
+    "Sets custom ARIA label on start navigation. Added for language support. Label structure should be the equivalent of: Previous Page. Optional.\nstring",
+    "-"
+  ],
+  [
+    "startLabelText",
+    "Sets custom label on start navigation. Added for language support. Optional.\nstring",
+    "-"
+  ],
+  [
+    "totalPages*",
+    "Sets total number of pages in Pagination component.\nnumber",
+    "-"
+  ]
+]

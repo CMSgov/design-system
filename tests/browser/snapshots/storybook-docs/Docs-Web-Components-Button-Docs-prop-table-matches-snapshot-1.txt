@@ -1,0 +1,27 @@
+[
+  [
+    "children",
+    "Label text or HTML",
+    "string"
+  ],
+  [
+    "class-name",
+    "Additional classes to be added to the root button element.",
+    "string"
+  ],
+  [
+    "is-alternate",
+    "Applies the alternate color to a Button. By default, Button uses the `main` color.",
+    "\"true\"\"false\""
+  ],
+  [
+    "size",
+    "A string corresponding to Button size classes.",
+    "undefined\"big\"\"small\""
+  ],
+  [
+    "variation",
+    "A string corresponding to Button variation classes.",
+    "undefined\"solid\"\"ghost\""
+  ]
+]

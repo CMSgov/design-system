@@ -1,0 +1,12 @@
+[
+  [
+    "className",
+    "Additional classes to be added to the root section element\nstring",
+    "-"
+  ],
+  [
+    "id",
+    "A unique ID to be applied to the banner content. A unique ID will be generated if one isn't provided.\nstring",
+    "-"
+  ]
+]
