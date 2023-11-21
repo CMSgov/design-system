@@ -17,7 +17,6 @@ const log = require('fancy-log');
 const svgmin = require('gulp-svgmin');
 const webpack = require('webpack-stream');
 const generateWebpackConfig = require('./webpack.config');
-const rename = require('gulp-rename');
 
 /*
  * command line arguments and global variables
@@ -35,6 +34,7 @@ const distPreactComponents = path.join(distPath, 'preact-components');
 const distWebComponents = path.join(distPath, 'web-components');
 const srcPath = path.join(rootPath, 'src');
 const imageCorePath = path.join(corePackageFiles, 'images');
+const sassCorePath = path.join(corePackageFiles, 'styles');
 const fontsCorePath = path.join(corePackageFiles, 'fonts');
 
 const nameTask = (fn, displayName) => {
@@ -72,18 +72,32 @@ const cleanDist = (cb) => {
 cleanDist.displayName = '🧹 cleaning up dist path';
 
 /**
- * Copy theme files from styles/themes to dist
+ * Copy CSS theme files from styles/themes to dist
  */
-const copyThemes = (cb) => {
-  const tokensFiles = `${tokensPackageFiles}/css-vars/${theme()}-theme.css`;
+const copyCssThemes = (cb) => {
+  const cssTokensFiles = `${tokensPackageFiles}/css-vars/${theme()}-theme.css`;
 
   gulp
-    .src(tokensFiles)
+    .src(cssTokensFiles)
     .pipe(gulp.dest(path.join(distPath, 'css')))
     .on('end', cb);
 };
 
-copyThemes.displayName = '📎 copying themes to dist/css folder';
+copyCssThemes.displayName = '📎 copying CSS themes to dist/css folder';
+
+/**
+ * Copy SCSS theme files from styles/themes to dist
+ */
+const copyScssThemes = (cb) => {
+  const scssTokensFiles = `${tokensPackageFiles}/scss/${theme()}-*.scss`;
+
+  gulp
+    .src(scssTokensFiles)
+    .pipe(gulp.dest(path.join(distPath, 'scss')))
+    .on('end', cb);
+};
+
+copyScssThemes.displayName = '📎 copying SCSS themes to dist/scss folder';
 
 /**
  * Copy theme files into docs
@@ -105,11 +119,12 @@ copyThemesToDocs.displayName = '📎 copying themes to docs folder';
 const compileSass = (cb) => {
   const envDev = process.env.NODE_ENV === 'development';
 
-  const sassSourcePaths = `${tokensPackageFiles}/scss/${theme()}-*.scss`;
+  const sassSourcePaths = isCore
+    ? `${srcPath}/styles/**/*.scss`
+    : [`${sassCorePath}/**/*.scss`, `${srcPath}/styles/**/*.scss`];
 
   gulp
     .src(sassSourcePaths)
-    .pipe(gulp.dest(path.join(distPath, 'scss')))
     .pipe(gulpif(envDev, sourcemaps.init()))
     .pipe(sass({ outputStyle: 'expanded' }))
     .pipe(gulpif(envDev, sourcemaps.write()))
@@ -336,7 +351,7 @@ const displayHelp = (cb) => {
 log('🪴 building the cmsds');
 exports.build = gulp.series(
   cleanDist,
-  gulp.parallel(copyThemes, copyThemesToDocs, copyImages, copyFonts, copyJSON),
+  gulp.parallel(copyCssThemes, copyScssThemes, copyThemesToDocs, copyImages, copyFonts, copyJSON),
   gulp.parallel(compileSass, compileReactComponents, compilePreactComponents)
 );
 
