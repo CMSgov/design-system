@@ -100,20 +100,6 @@ const copyScssThemes = (cb) => {
 copyScssThemes.displayName = '📎 copying SCSS themes to dist/scss folder';
 
 /**
- * Copy theme files into docs
- */
-const copyThemesToDocs = (cb) => {
-  const tokensFiles = `${tokensPackageFiles}/css-vars/*-theme.css`;
-
-  gulp
-    .src(tokensFiles)
-    .pipe(gulp.dest(path.join('packages', 'docs', 'static', 'themes')))
-    .on('end', cb);
-};
-
-copyThemesToDocs.displayName = '📎 copying themes to docs folder';
-
-/**
  * compile sass assets to css, copy to /dist/css folder
  */
 const compileSass = (cb) => {
@@ -351,7 +337,7 @@ const displayHelp = (cb) => {
 log('🪴 building the cmsds');
 exports.build = gulp.series(
   cleanDist,
-  gulp.parallel(copyCssThemes, copyScssThemes, copyThemesToDocs, copyImages, copyFonts, copyJSON),
+  gulp.parallel(copyCssThemes, copyScssThemes, copyImages, copyFonts, copyJSON),
   gulp.parallel(compileSass, compileReactComponents, compilePreactComponents)
 );
 
