@@ -155,7 +155,7 @@ export const exportCssVars = (fileDescriptors: FileDescriptor[], outPath: string
         // Global token files need a separator
         sep = '-';
 
-        const sassFilename = `${outPath}/${theme}-core-tokens.scss`;
+        const sassFilename = `${outPath}/${theme}-layout-tokens.scss`;
         writeSassLayout(sassFilename, file, importedModule, sep);
       }
     });
