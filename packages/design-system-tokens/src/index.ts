@@ -20,19 +20,13 @@ const tokenExporter = (inputType: string, exportType: string): number => {
       return exportCsv(fileData, outputPath);
     case 'json':
       return exportJson(fileData, outputPath);
+    case 'css-vars':
+      return exportCssVars(fileData, outputPath);
     case 'scss':
       return exportScssVars(fileData, outputPath);
     default:
       return 0;
   }
-};
-
-// main token export function, returns exit status (0 success, 1 failure)
-const cssVarExporter = (inputType: string): number => {
-  const fileData = getFileDescriptors(INPUT_PATH + inputType);
-  const outputPath = `${OUTPUT_PATH}/css-vars`;
-
-  return exportCssVars(fileData, outputPath);
 };
 
 (() => {
@@ -65,12 +59,7 @@ const cssVarExporter = (inputType: string): number => {
   if (!INPUT_TYPES.includes(inputType)) help(`valid import types are: ${INPUT_TYPES}`);
   if (!EXPORT_TYPES.includes(exportType)) help(`valid export types are: ${EXPORT_TYPES}`);
 
-  let res;
-  if (exportType === 'css-vars') {
-    res = cssVarExporter(inputType);
-  } else {
-    res = tokenExporter(inputType, exportType);
-  }
+  const res = tokenExporter(inputType, exportType);
 
   process.exit(res);
 })();
