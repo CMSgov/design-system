@@ -13,24 +13,30 @@ const EXPORT_TYPES = ['csv', 'json', 'css-vars', 'scss'];
 // main token export function, returns exit status (0 success, 1 failure)
 const tokenExporter = (inputType: string, exportType: string): number => {
   const fileData = getFileDescriptors(INPUT_PATH + inputType);
+  const outputPath = `${OUTPUT_PATH}/${exportType}`;
 
   switch (exportType) {
     case 'csv':
-      return exportCsv(fileData, OUTPUT_PATH);
+      return exportCsv(fileData, outputPath);
     case 'json':
-      return exportJson(fileData, OUTPUT_PATH);
+      return exportJson(fileData, outputPath);
     case 'css-vars':
-      return exportCssVars(fileData, OUTPUT_PATH);
+      return exportCssVars(fileData, outputPath);
     case 'scss':
-      return exportScssVars(fileData, OUTPUT_PATH);
+      return exportScssVars(fileData, outputPath);
     default:
       return 0;
   }
 };
 
 (() => {
-  // create dist output path if it does not exist
-  if (!fs.existsSync(OUTPUT_PATH)) fs.mkdirSync(OUTPUT_PATH);
+  // create dist/exportType output path if it does not exist
+  for (const type of EXPORT_TYPES) {
+    const path = `${OUTPUT_PATH}/${type}`;
+    if (!fs.existsSync(path)) {
+      fs.mkdirSync(path, { recursive: true });
+    }
+  }
 
   const help = (error: string) => {
     console.log(`\n error: ${error}`);
