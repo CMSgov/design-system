@@ -1,13 +1,12 @@
 import Choice, { ChoiceProps as ChoiceComponentProps } from './Choice';
-import { FormFieldProps } from '../FormLabel';
 import { Label } from '../Label';
 import React from 'react';
 import classNames from 'classnames';
-import useId from '../utilities/useId';
-import { useInlineError, UseInlineErrorProps } from '../InlineError/useInlineError';
 import describeField from '../utilities/describeField';
-import { useHint } from '../Hint/useHint';
-import useLabelProps from '../Label/useLabelProps';
+import useId from '../utilities/useId';
+import { useLabelProps, UseLabelPropsProps } from '../Label/useLabelProps';
+import { useHint, UseHintProps } from '../Hint/useHint';
+import { useInlineError, UseInlineErrorProps } from '../InlineError/useInlineError';
 
 export type ChoiceListSize = 'small';
 export type ChoiceListType = 'checkbox' | 'radio';
@@ -16,7 +15,7 @@ export type ChoiceListType = 'checkbox' | 'radio';
 type OmitChoiceProp = 'inversed' | 'name' | 'onBlur' | 'onChange' | 'size' | 'type';
 export type ChoiceProps = Omit<ChoiceComponentProps, OmitChoiceProp>;
 
-export interface BaseChoiceListProps extends FormFieldProps {
+export interface BaseChoiceListProps {
   /**
    * Array of objects representing the props for each Choice in the ChoiceList
    */
@@ -30,25 +29,13 @@ export interface BaseChoiceListProps extends FormFieldProps {
    */
   disabled?: boolean;
   /**
-   * Additional hint text to display
+   * A unique ID for this element. A unique ID will be generated if one isn't provided.
    */
-  hint?: React.ReactNode;
+  id?: string;
   /**
-   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields](https://design.cms.gov/patterns/Forms/forms/#required-and-optional-fields).
-   */
-  requirementLabel?: React.ReactNode;
-  /**
-   * Applies the "inverse" UI theme
+   * Set to `true` to apply the "inverse" color scheme
    */
   inversed?: boolean;
-  /**
-   * Label for the field
-   */
-  label: React.ReactNode;
-  /**
-   * Additional classes to be added to the `FormLabel`.
-   */
-  labelClassName?: string;
   /**
    * The field's `name` attribute
    */
@@ -75,7 +62,8 @@ export interface BaseChoiceListProps extends FormFieldProps {
 }
 
 export type ChoiceListProps = BaseChoiceListProps &
-  Omit<React.ComponentPropsWithRef<'fieldset'>, keyof BaseChoiceListProps>;
+  Omit<React.ComponentPropsWithRef<'fieldset'>, keyof BaseChoiceListProps> &
+  Omit<UseLabelPropsProps & UseHintProps & UseInlineErrorProps, 'id' | 'inversed'>;
 
 /**
  * For information about how and when to use this component, refer to the

@@ -1,11 +1,5 @@
 [
   [
-    "Deprecated: Hints are now their own component called `Hint`."
-  ],
-  [
-    "Deprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`"
-  ],
-  [
     "buttonVariation",
     "Variation string to be applied to buttons. See Button component\n\"solid\"\n\"ghost\"",
     "-"
@@ -32,7 +26,7 @@
   ],
   [
     "errorId",
-    "The ID of the error message applied to this field.\nstring",
+    "The ID of the error message applied to this field. If none is provided, the id will be derived from the id prop for the field.\n\nstring",
     "-"
   ],
   [
@@ -52,22 +46,22 @@
   ],
   [
     "hint",
-    "ReactNode\nDeprecated: Hints are now their own component called `Hint`.",
+    "Additional hint text to display\nReactNode",
     "-"
   ],
   [
     "hintId",
-    "string\nDeprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`",
+    "The ID of the hint element\nstring",
     "-"
   ],
   [
     "id",
-    "A unique id for the field element. Useful for referencing the field from other components with aria-describedby.\n\nstring",
+    "A unique ID for this element. A unique ID will be generated if one isn't provided.\nstring",
     "-"
   ],
   [
     "inversed",
-    "Set to true to apply the \"inverse\" theme\nboolean",
+    "Set to true to apply the \"inverse\" color scheme\nboolean",
     "-"
   ],
   [
@@ -77,7 +71,7 @@
   ],
   [
     "labelClassName",
-    "Additional classes to be added to the field label\nstring",
+    "Additional classes to be added to the label\nstring",
     "-"
   ],
   [
