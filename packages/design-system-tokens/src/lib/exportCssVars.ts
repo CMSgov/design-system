@@ -148,7 +148,6 @@ export const exportCssVars = (fileDescriptors: FileDescriptor[], outPath: string
       const importedModule = require(`${file.moduleImportName}`);
       // Component files do not need a separator
       let sep = '';
-      output += mapCssVariablesToValues(importedModule, sep);
 
       // SCSS files are only generated from global token files
       if (!file.baseName.includes('component')) {
@@ -158,6 +157,8 @@ export const exportCssVars = (fileDescriptors: FileDescriptor[], outPath: string
         const sassFilename = `${outPath}/${theme}-layout-tokens.scss`;
         writeSassLayout(sassFilename, file, importedModule, sep);
       }
+
+      output += mapCssVariablesToValues(importedModule, sep);
     });
 
     const cssVarFilename = `${outPath}/${theme}-theme.css`;
