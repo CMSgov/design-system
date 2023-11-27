@@ -26,6 +26,7 @@ const willMinifySvg = args.minifySvg ?? false;
 const rootPath = args.package ?? path.join('packages', 'design-system');
 const isCore = rootPath.includes('design-system') ?? false;
 
+const tokensPackageFiles = path.join('packages', 'design-system-tokens', 'dist');
 const corePackageFiles = path.join('packages', 'design-system', 'dist');
 const distPath = path.join(rootPath, 'dist');
 const distReactComponents = path.join(distPath, 'react-components');
@@ -39,6 +40,19 @@ const fontsCorePath = path.join(corePackageFiles, 'fonts');
 const nameTask = (fn, displayName) => {
   fn.displayName = displayName;
   return fn;
+};
+
+const theme = () => {
+  let theme = 'core';
+  if (rootPath.includes('ds-cms-gov')) {
+    theme = 'cmsgov';
+  } else if (rootPath.includes('ds-healthcare-gov')) {
+    theme = 'healthcare';
+  } else if (rootPath.includes('ds-medicare')) {
+    theme = 'medicare';
+  }
+
+  return theme;
 };
 
 /**
@@ -58,18 +72,33 @@ const cleanDist = (cb) => {
 cleanDist.displayName = '🧹 cleaning up dist path';
 
 /**
- * Copy theme files from styles/themes to dist
+ * Copy CSS theme files from styles/themes to dist
  */
-const copyThemes = (cb) => {
-  const themeFiles = `${srcPath}/styles/*-theme.css`;
+const copyCssThemes = (cb) => {
+  const cssTokensFiles = `${tokensPackageFiles}/css-vars/${theme()}-theme.css`;
 
   gulp
-    .src(themeFiles)
+    .src(cssTokensFiles)
     .pipe(gulp.dest(path.join(distPath, 'css')))
     .on('end', cb);
 };
 
-copyThemes.displayName = '📎 copying themes to dist/css folder';
+copyCssThemes.displayName = '📎 copying CSS themes to dist/css folder';
+
+/**
+ * Copy SCSS theme files from styles/themes to dist
+ */
+const copyScssThemes = (cb) => {
+  const scssTokensFiles = `${tokensPackageFiles}/scss/${theme()}-*.scss`;
+
+  gulp
+    .src(scssTokensFiles)
+    .pipe(gulp.dest(path.join(distPath, 'scss')))
+    .on('end', cb);
+};
+
+copyScssThemes.displayName = '📎 copying SCSS themes to dist/scss folder';
+
 /**
  * compile sass assets to css, copy to /dist/css folder
  */
@@ -308,7 +337,7 @@ const displayHelp = (cb) => {
 log('🪴 building the cmsds');
 exports.build = gulp.series(
   cleanDist,
-  gulp.parallel(copyThemes, copyImages, copyFonts, copyJSON),
+  gulp.parallel(copyCssThemes, copyScssThemes, copyImages, copyFonts, copyJSON),
   gulp.parallel(compileSass, compileReactComponents, compilePreactComponents)
 );
 

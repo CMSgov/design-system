@@ -22,7 +22,7 @@ const config: StorybookConfig = {
     `../packages/ds-medicare-gov/src/**/${extensionGlob}`,
     `../packages/docs/content/**/${extensionGlob}`,
   ],
-  staticDirs: ['./static/'],
+  staticDirs: ['../packages/design-system-tokens/dist/css-vars'],
   framework: {
     name: '@storybook/react-webpack5',
     options: {},

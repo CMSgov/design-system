@@ -16,6 +16,10 @@
 
 <!-- Feel free to remove items or sections that are not applicable -->
 
+### If this is a change to design:
+
+- [ ] If visual regression image references have been changed, design **MUST** be assigned to review. In this instance, **designer approval is a requirement** before the PR can be merged.
+
 ### If this is a change to code:
 
 - [ ] Created or updated unit tests to cover any new or modified code

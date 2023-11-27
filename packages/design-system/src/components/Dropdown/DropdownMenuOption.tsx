@@ -62,7 +62,8 @@ export function DropdownMenuOption<T>({
       )}
     >
       {isSelected && selectedIndicator}
-      {item.rendered}
+      {/* Wrapping in a span fixes an issue with Google Translate */}
+      <span>{item.rendered}</span>
     </li>
   );
 }

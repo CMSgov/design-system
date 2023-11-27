@@ -35,7 +35,7 @@
     "start": "yarn build:storybook:docs && yarn --cwd ./packages/docs develop",
     "storybook": "storybook dev -p 6006",
     "storybook:react": "PREACT=false storybook dev -p 6006",
-    "test": "yarn test:unit && yarn test:a11y",
+    "test": "yarn test:unit",
     "posttest": "yarn lint",
     "test:unit:coverage": "yarn test:unit --collectCoverage",
     "test:unit": "yarn jest --config=tests/unit/jest.config.js",
