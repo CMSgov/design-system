@@ -83,10 +83,6 @@ stories.forEach((story) => {
             case 'components-drawer--drawer-with-sticky-positioning':
               await page.waitForTimeout(1000);
               break;
-            case 'components-table--scrollable-table':
-              // Temporarily skip this until we can solve the error
-              test.skip();
-              break;
             default:
               // Slight delay needed for all tests to account for false positives with color-contrast
               await page.waitForTimeout(100);
