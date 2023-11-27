@@ -10,7 +10,6 @@ exports[`Table accepts custom id 1`] = `
 >
   <table
     class="ds-c-table"
-    role="table"
   >
     <caption
       class="ds-c-table__caption"
@@ -25,7 +24,6 @@ exports[`Table accepts custom id 1`] = `
 exports[`Table applies responsive stacked table 1`] = `
 <table
   class="ds-c-table ds-c-lg-table--stacked"
-  role="table"
 >
   <caption
     class="ds-c-table__caption"
@@ -45,7 +43,6 @@ exports[`Table applies scrollable prop to table 1`] = `
 >
   <table
     class="ds-c-table"
-    role="table"
   >
     <caption
       class="ds-c-table__caption"

@@ -9,7 +9,9 @@ Array [
     id="static-id__item--0"
     role="option"
   >
-    Normal item
+    <span>
+      Normal item
+    </span>
   </li>,
   <li
     aria-selected="false"
@@ -18,7 +20,9 @@ Array [
     id="static-id__item--1"
     role="option"
   >
-    Special item
+    <span>
+      Special item
+    </span>
   </li>,
 ]
 `;
@@ -38,10 +42,12 @@ exports[`Autocomplete renders items with children property 1`] = `
     id="static-id__item--0"
     role="option"
   >
-    Carrots 
-    <strong>
-      (1)
-    </strong>
+    <span>
+      Carrots 
+      <strong>
+        (1)
+      </strong>
+    </span>
   </li>
   <li
     aria-selected="false"
@@ -50,10 +56,12 @@ exports[`Autocomplete renders items with children property 1`] = `
     id="static-id__item--1"
     role="option"
   >
-    Cookies 
-    <strong>
-      (3)
-    </strong>
+    <span>
+      Cookies 
+      <strong>
+        (3)
+      </strong>
+    </span>
   </li>
   <li
     aria-selected="false"
@@ -62,10 +70,12 @@ exports[`Autocomplete renders items with children property 1`] = `
     id="static-id__item--2"
     role="option"
   >
-    Crackers 
-    <strong>
-      (2)
-    </strong>
+    <span>
+      Crackers 
+      <strong>
+        (2)
+      </strong>
+    </span>
   </li>
   <li
     aria-selected="false"
@@ -74,11 +84,13 @@ exports[`Autocomplete renders items with children property 1`] = `
     id="static-id__item--3"
     role="option"
   >
-    <a
-      href="https://duckduckgo.com/?q=snacks"
-    >
-      Search all snacks
-    </a>
+    <span>
+      <a
+        href="https://duckduckgo.com/?q=snacks"
+      >
+        Search all snacks
+      </a>
+    </span>
   </li>
 </ul>
 `;

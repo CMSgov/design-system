@@ -7,7 +7,6 @@ Object {
     <div>
       <table
         class="ds-c-table ds-c-table--borderless ds-c-md-table--stacked ds-c-privacy-settings-table ds-u-margin-top--2 ds-u-lg-margin--0"
-        role="table"
       >
         <thead
           role="rowgroup"
@@ -291,7 +290,6 @@ Object {
   "container": <div>
     <table
       class="ds-c-table ds-c-table--borderless ds-c-md-table--stacked ds-c-privacy-settings-table ds-u-margin-top--2 ds-u-lg-margin--0"
-      role="table"
     >
       <thead
         role="rowgroup"
