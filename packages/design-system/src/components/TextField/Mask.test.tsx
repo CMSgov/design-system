@@ -47,7 +47,6 @@ describe('Mask', function () {
     expect(container.querySelector('.ds-c-field-mask--ssn')).toBeInTheDocument();
 
     const input = screen.getByRole('textbox');
-    expect(input).toHaveAttribute('aria-invalid', 'false');
     expect(input.classList).toContain('ds-c-field--ssn');
     expect(input).toHaveAttribute('type', 'text');
     expect(input).toHaveAttribute('pattern', '[0-9-*]*');
@@ -63,7 +62,6 @@ describe('Mask', function () {
     expect(inputPrefix.textContent).toBe('$');
 
     const input = screen.getByRole('textbox');
-    expect(input).toHaveAttribute('aria-invalid', 'false');
     expect(input.classList).toContain('ds-c-field--currency');
     expect(input).toHaveAttribute('type', 'text');
     expect(input).toHaveAttribute('pattern', '[0-9.,-]*');

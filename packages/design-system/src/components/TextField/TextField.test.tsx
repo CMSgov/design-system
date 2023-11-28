@@ -58,7 +58,7 @@ describe('TextField', function () {
   });
 
   it('has value when set', () => {
-    const { container } = renderTextField({ value: 'foo' });
+    const { container } = renderTextField({ value: 'foo', onChange: jest.fn() });
     expect(container.querySelector('input')).toHaveValue('foo');
   });
 

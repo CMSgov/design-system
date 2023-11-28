@@ -1,11 +1,5 @@
 [
   [
-    "Deprecated: Hints are now their own component called `Hint`."
-  ],
-  [
-    "Deprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`"
-  ],
-  [
     "autoComplete",
     "Adds autocomplete attributes bday-day, bday-month and bday-year to the corresponding <MultiInputDateField> inputs\nboolean",
     "-"
@@ -52,7 +46,7 @@
   ],
   [
     "errorId",
-    "The ID of the error message applied to this field.\nstring",
+    "The ID of the error message applied to this field. If none is provided, the id will be derived from the id prop for the field.\n\nstring",
     "-"
   ],
   [
@@ -72,37 +66,37 @@
   ],
   [
     "hint",
-    "ReactNode\nDeprecated: Hints are now their own component called `Hint`.",
+    "Additional hint text to display\nReactNode",
     "-"
   ],
   [
     "hintId",
-    "string\nDeprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`",
+    "The ID of the hint element\nstring",
     "-"
   ],
   [
     "id",
-    "A unique id for the field element. Useful for referencing the field from other components with aria-describedby.\n\nstring",
+    "A unique ID prefix for all the text fields\nstring",
     "-"
   ],
   [
     "inversed",
-    "Set to true to apply the \"inverse\" theme\nboolean",
+    "Set to true to apply the \"inverse\" color scheme\nboolean",
     "-"
   ],
   [
-    "label",
-    "The primary label, rendered above the individual month/day/year fields\nReactNode",
+    "label*",
+    "Label for the field.\nReactNode",
     "-"
   ],
   [
     "labelClassName",
-    "Additional classes to be added to the field label\nstring",
+    "Additional classes to be added to the label\nstring",
     "-"
   ],
   [
     "labelId",
-    "A unique ID to be used for the MultiInputDateField label. If one isn't provided, a unique ID will be generated.\nstring",
+    "A unique id to be used on the field label. If one isn't provided, a unique ID will be generated.\n\nstring",
     "-"
   ],
   [

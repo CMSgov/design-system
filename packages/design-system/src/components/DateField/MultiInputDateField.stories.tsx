@@ -6,6 +6,11 @@ import type { Meta, StoryObj } from '@storybook/react';
 const meta: Meta<typeof MultiInputDateField> = {
   title: 'Components/MultiInputDateField',
   component: MultiInputDateField,
+  argTypes: {
+    errorMessage: { control: 'text' },
+    hint: { control: 'text' },
+    requirementLabel: { control: 'text' },
+  },
 };
 export default meta;
 
