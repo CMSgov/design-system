@@ -73,6 +73,7 @@
 }
 
 .ds-c-alert__body {
+  min-width: 0; // Allows it to shrink as necessary to fit in the parent
   padding-inline-start: $spacer-2;
 }
 
