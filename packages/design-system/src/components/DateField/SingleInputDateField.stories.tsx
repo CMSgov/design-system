@@ -11,6 +11,11 @@ const meta: Meta<typeof SingleInputDateField> = {
     label: 'Birthday',
     name: 'single-input-date-field',
   },
+  argTypes: {
+    errorMessage: { control: 'text' },
+    hint: { control: 'text' },
+    requirementLabel: { control: 'text' },
+  },
   parameters: {
     docs: {
       underlyingHtmlElements: ['input'],

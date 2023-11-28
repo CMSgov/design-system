@@ -1,21 +1,25 @@
-import React from 'react';
-import { useRef, useState } from 'react';
-import { CalendarIcon } from '../Icons/CalendarIcon';
+import React, { useRef, useState } from 'react';
 import CustomDayPicker from './CustomDayPicker';
 import classNames from 'classnames';
+import cleanFieldProps from '../utilities/cleanFieldProps';
+import describeField from '../utilities/describeField';
 import isMatch from 'date-fns/isMatch';
+import mergeIds from '../utilities/mergeIds';
 import useLabelMask from '../TextField/useLabelMask';
 import useClickOutsideHandler from '../utilities/useClickOutsideHandler';
 import usePressEscapeHandler from '../utilities/usePressEscapeHandler';
+import useId from '../utilities/useId';
+import { CalendarIcon } from '../Icons/CalendarIcon';
 import { DATE_MASK } from '../TextField/useLabelMask';
-import { FormFieldProps, useFormLabel } from '../FormLabel';
 import { Label } from '../Label';
 import { TextInput } from '../TextField';
 import { TextInputProps } from '../TextField/TextInput';
 import { t } from '../i18n';
-import useId from '../utilities/useId';
+import { useLabelProps, UseLabelPropsProps } from '../Label/useLabelProps';
+import { useHint, UseHintProps } from '../Hint/useHint';
+import { useInlineError, UseInlineErrorProps } from '../InlineError/useInlineError';
 
-interface BaseSingleInputDateFieldProps extends FormFieldProps {
+interface BaseSingleInputDateFieldProps {
   /**
    * The `input` field's `name` attribute
    */
@@ -35,6 +39,14 @@ interface BaseSingleInputDateFieldProps extends FormFieldProps {
    *   use for this value would be to run date-validation checks against it.
    */
   onChange: (updatedValue: string, formattedValue: string) => any;
+  /**
+   * A unique ID for this element. A unique ID will be generated if one isn't provided.
+   */
+  id?: string;
+  /**
+   * Set to `true` to apply the "inverse" color scheme
+   */
+  inversed?: boolean;
   /**
    * Sets the input's `value`. Use in combination with an `onChange` handler to implement
    * a _controlled component_ pattern. This component expects the `value` to match
@@ -83,7 +95,8 @@ interface BaseSingleInputDateFieldProps extends FormFieldProps {
 }
 
 export type SingleInputDateFieldProps = BaseSingleInputDateFieldProps &
-  Omit<TextInputProps, keyof BaseSingleInputDateFieldProps | 'type'>;
+  Omit<TextInputProps, keyof BaseSingleInputDateFieldProps | 'type'> &
+  Omit<UseLabelPropsProps & UseHintProps & UseInlineErrorProps, 'id' | 'inversed'>;
 
 /**
  * For information about how and when to use this component, refer to the
@@ -122,25 +135,20 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
   }
 
   // Collect all the props and elements for the input and its labels
-  const { labelProps, fieldProps, wrapperProps, bottomError } = useFormLabel({
-    ...remainingProps,
-    className: classNames(
-      'ds-c-single-input-date-field',
-      { 'ds-c-single-input-date-field--with-picker': withPicker },
-      className
-    ),
-    labelComponent: 'label',
-    wrapperIsFieldset: false,
-    id,
-  });
+  const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
+  const { hintId, hintElement } = useHint({ ...props, id });
+  const labelProps = useLabelProps({ ...props, id });
   const inputRef = useRef<HTMLInputElement>();
   const { labelMask, inputProps } = useLabelMask(DATE_MASK, {
-    ...fieldProps,
+    ...cleanFieldProps(remainingProps),
+    id,
     onChange: handleInputChange,
     type: 'text',
     inputRef: (el) => {
       inputRef.current = el;
     },
+    'aria-invalid': invalid,
+    'aria-describedby': describeField({ ...props, errorId, hintId }),
   });
 
   // Handle alternate ways of closing the day picker
@@ -159,8 +167,16 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
   const date = validDateString ? new Date(dateString) : null;
 
   return (
-    <div {...wrapperProps}>
-      <Label {...labelProps} />
+    <div
+      className={classNames(
+        'ds-c-single-input-date-field',
+        withPicker && 'ds-c-single-input-date-field--with-picker',
+        className
+      )}
+    >
+      <Label {...labelProps} fieldId={id} />
+      {hintElement}
+      {topError}
       {labelMask}
       <div className="ds-c-single-input-date-field__field-wrapper">
         <TextInput {...inputProps} />
@@ -170,9 +186,7 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
             onClick={() => setPickerVisible(!pickerVisible)}
             type="button"
             ref={calendarButtonRef}
-            // The `?? ''` after `hintId` is only to support v8.0, which doesn't have a `hintId`.
-            // It can be removed after we're done supporting v8.0.
-            aria-describedby={`${labelProps.id} ${labelProps.hintId ?? ''}`}
+            aria-describedby={mergeIds(labelProps.id, hintId)}
           >
             <CalendarIcon
               ariaHidden={false}

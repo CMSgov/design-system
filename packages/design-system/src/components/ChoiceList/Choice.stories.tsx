@@ -15,6 +15,9 @@ const meta: Meta<typeof Choice> = {
     errorMessage: 'You must agree to the terms and conditions before continuing',
     defaultChecked: false,
   },
+  argTypes: {
+    requirementLabel: { control: 'text' },
+  },
   parameters: {
     docs: {
       underlyingHtmlElements: ['input'],

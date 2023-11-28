@@ -1,9 +1,12 @@
 import Choice, { ChoiceProps as ChoiceComponentProps } from './Choice';
-import { FormFieldProps, useFormLabel } from '../FormLabel';
 import { Label } from '../Label';
 import React from 'react';
 import classNames from 'classnames';
+import describeField from '../utilities/describeField';
 import useId from '../utilities/useId';
+import { useLabelProps, UseLabelPropsProps } from '../Label/useLabelProps';
+import { useHint, UseHintProps } from '../Hint/useHint';
+import { useInlineError, UseInlineErrorProps } from '../InlineError/useInlineError';
 
 export type ChoiceListSize = 'small';
 export type ChoiceListType = 'checkbox' | 'radio';
@@ -12,7 +15,7 @@ export type ChoiceListType = 'checkbox' | 'radio';
 type OmitChoiceProp = 'inversed' | 'name' | 'onBlur' | 'onChange' | 'size' | 'type';
 export type ChoiceProps = Omit<ChoiceComponentProps, OmitChoiceProp>;
 
-export interface BaseChoiceListProps extends FormFieldProps {
+export interface BaseChoiceListProps {
   /**
    * Array of objects representing the props for each Choice in the ChoiceList
    */
@@ -26,25 +29,13 @@ export interface BaseChoiceListProps extends FormFieldProps {
    */
   disabled?: boolean;
   /**
-   * Additional hint text to display
+   * A unique ID for this element. A unique ID will be generated if one isn't provided.
    */
-  hint?: React.ReactNode;
+  id?: string;
   /**
-   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields](https://design.cms.gov/patterns/Forms/forms/#required-and-optional-fields).
-   */
-  requirementLabel?: React.ReactNode;
-  /**
-   * Applies the "inverse" UI theme
+   * Set to `true` to apply the "inverse" color scheme
    */
   inversed?: boolean;
-  /**
-   * Label for the field
-   */
-  label: React.ReactNode;
-  /**
-   * Additional classes to be added to the `FormLabel`.
-   */
-  labelClassName?: string;
   /**
    * The field's `name` attribute
    */
@@ -71,7 +62,8 @@ export interface BaseChoiceListProps extends FormFieldProps {
 }
 
 export type ChoiceListProps = BaseChoiceListProps &
-  Omit<React.ComponentPropsWithRef<'fieldset'>, keyof BaseChoiceListProps>;
+  Omit<React.ComponentPropsWithRef<'fieldset'>, keyof BaseChoiceListProps> &
+  Omit<UseLabelPropsProps & UseHintProps & UseInlineErrorProps, 'id' | 'inversed'>;
 
 /**
  * For information about how and when to use this component, refer to the
@@ -86,7 +78,7 @@ export type ChoiceListProps = BaseChoiceListProps &
  * [HTML input element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input).
  */
 export const ChoiceList: React.FC<ChoiceListProps> = (props: ChoiceListProps) => {
-  const { onBlur, onComponentBlur, choices, ...listProps } = props;
+  const { onBlur, onComponentBlur, choices } = props;
   const id = useId('choice-list--', props.id);
 
   if (process.env.NODE_ENV !== 'production') {
@@ -115,12 +107,9 @@ export const ChoiceList: React.FC<ChoiceListProps> = (props: ChoiceListProps) =>
     }, 20);
   };
 
-  const { labelProps, wrapperProps, bottomError } = useFormLabel({
-    ...listProps,
-    labelComponent: 'legend',
-    wrapperIsFieldset: true,
-    id,
-  });
+  const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
+  const { hintId, hintElement } = useHint({ ...props, id });
+  const labelProps = useLabelProps({ ...props, id });
 
   const choiceItems = choices.map((choiceProps, index) => {
     const completeChoiceProps: ChoiceComponentProps = {
@@ -150,8 +139,14 @@ export const ChoiceList: React.FC<ChoiceListProps> = (props: ChoiceListProps) =>
   });
 
   return (
-    <fieldset {...wrapperProps}>
-      <Label {...labelProps} />
+    <fieldset
+      aria-invalid={invalid}
+      aria-describedby={describeField({ ...props, hintId, errorId })}
+      className={classNames('ds-c-fieldset', props.className)}
+    >
+      <Label component="legend" {...labelProps} />
+      {hintElement}
+      {topError}
       {choiceItems}
       {bottomError}
     </fieldset>
