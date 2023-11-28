@@ -110,7 +110,7 @@ const ResponsiveExample = ({ storyId, title, theme }: ResponsiveExample) => {
                 onClick={() => setIframeBreakpoint(breakpointName)}
               >
                 <strong>{breakpointName}</strong>
-                <div className="ds-u-font-size--small">Width: {breakpoints[breakpointName]}</div>
+                <div className="ds-u-font-size--sm">Width: {breakpoints[breakpointName]}</div>
               </button>
             </li>
           ))}
