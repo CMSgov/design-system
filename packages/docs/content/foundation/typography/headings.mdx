@@ -41,27 +41,20 @@ Sans-serifs have been proven to be easier to read on-screen and are incredibly a
 The design system doesn't style base HTML typography elements (like `h1`, `h2`, `p`, etc) unless they're inside an element with the [ds-content class](/foundation/typography/content). Instead, it provides heading classes (available on this page) corresponding to visual sizes. These classes can be applied to any heading elements, irrespective of their semantic heading level (`h1` to `h6`). This approach allows teams to first choose the semantic heading level that make the most sense for the document and its accessibility and then choose a visual heading size class that fits the page's visual hierarchy.
 
 <Alert variation="warn" heading="First and last children">
-  <p>
 
   The design system heading styles have alternate margins for headings that are the first or last child of their parent element. Headings that are the first child have no top margin, and headings that are last children have no bottom margin. Some examples of what we mean:
-
-  </p>
-  <p>
 
   ```html
     <form>
       <h1>I'm the first child of my parent.</h1>
       <h1>I'm not the first child of my parent</h1>
       <div>
-        <h2>I'm actually the first child of my parent even
-          though I'm not the first heading on the page</h2>
+        <h2>I'm actually the first child of my parent even though I'm not the first heading on the page</h2>
         <h2>I'm the last child of my parent</h2>
       </div>
       <h1>I'm also the last child of my parent</h1>
     </form>
   ```
-
-  </p>
 
 </Alert>
 
