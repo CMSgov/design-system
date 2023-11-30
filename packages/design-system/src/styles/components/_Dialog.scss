@@ -1,4 +1,5 @@
 @use '../layout' as *;
+@use '../base';
 
 // Start polyfill styles
 dialog {
@@ -93,10 +94,28 @@ dialog.fixed {
 }
 
 .ds-c-dialog__header {
-  align-items: flex-start;
+  align-items: center;
   display: flex;
+  gap: $spacer-1;
+  justify-content: space-between;
   // Provide some spacing when the header only includes the close button
-  padding-block-end: $spacer-1;
+  padding-block-end: $spacer-3;
+}
+
+.ds-c-dialog__heading {
+  @include base.heading--2xl;
+  line-height: 1;
+  margin: 0;
+}
+
+.ds-c-dialog__close {
+  .ds-c-icon {
+    @media (forced-colors: active) {
+      path {
+        fill: ButtonText;
+      }
+    }
+  }
 }
 
 .ds-c-dialog__body {
@@ -105,27 +124,6 @@ dialog.fixed {
 
 .ds-c-dialog__actions {
   margin-block-start: $spacer-3;
-}
-
-.ds-c-dialog__close {
-  margin-inline-start: auto;
-  padding: 0 $spacer-1 0 $spacer-half;
-
-  .ds-c-icon {
-    // We need to create tokens specific to icon sizing instead of repurposing spacer-* or font-size-* tokens
-    font-size: var(--dialog-icon__size);
-    margin: 0 $spacer-half;
-
-    @media (forced-colors: active) {
-      path {
-        fill: ButtonText;
-      }
-    }
-  }
-
-  @media (forced-colors: active) {
-    padding: $spacer-half $spacer-2;
-  }
 }
 
 .ds--dialog-open {

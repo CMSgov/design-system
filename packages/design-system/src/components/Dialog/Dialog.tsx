@@ -1,16 +1,13 @@
 import React from 'react';
-import Button, { ButtonVariation } from '../Button/Button';
+import CloseButton from '../CloseButton/CloseButton';
 import NativeDialog from '../NativeDialog/NativeDialog';
 import classNames from 'classnames';
-import uniqueId from 'lodash/uniqueId';
 import useDialogAnalytics from './useDialogAnalytics';
-import { CloseIcon } from '../Icons';
+import useId from '../utilities/useId';
 import { useEffect, useLayoutEffect, useRef, DialogHTMLAttributes } from 'react';
 import { t } from '../i18n';
 import { AnalyticsOverrideProps } from '../analytics';
-import useId from '../utilities/useId';
 
-export type DialogCloseButtonSize = 'small' | 'big';
 export type DialogSize = 'narrow' | 'wide' | 'full';
 
 export interface BaseDialogProps extends AnalyticsOverrideProps {
@@ -42,23 +39,6 @@ export interface BaseDialogProps extends AnalyticsOverrideProps {
    * Additional classes to be added to the root dialog element.
    */
   className?: string;
-  /**
-   * Size of the close button. See [Button component](https://design.cms.gov/storybook/?path=/docs/components-button--docs)
-   */
-  closeButtonSize?: DialogCloseButtonSize;
-  /**
-   * For internationalization purposes, the text for the "Close" button must be
-   * passed in as a prop.
-   */
-  closeButtonText?: React.ReactNode;
-  /**
-   * Variation string to be applied to close button component. See [Button component](https://design.cms.gov/storybook/?path=/docs/components-button--docs)
-   */
-  closeButtonVariation?: ButtonVariation;
-  /**
-   * The icon to display as part of the close button
-   */
-  closeIconComponent?: React.ReactElement<any> | any | ((...args: any[]) => any);
   /**
    * Additional classes to be added to the header, which wraps the heading and
    * close button.
@@ -108,10 +88,6 @@ export const Dialog = (props: DialogProps) => {
     ariaCloseLabel,
     children,
     className,
-    closeButtonSize,
-    closeButtonText,
-    closeButtonVariation,
-    closeIconComponent,
     headerClassName,
     heading,
     id,
@@ -130,8 +106,6 @@ export const Dialog = (props: DialogProps) => {
   const actionsClassNames = classNames('ds-c-dialog__actions', actionsClassName);
 
   const containerRef = useRef<HTMLDivElement>();
-
-  const CloseIconComponent = closeIconComponent;
 
   useEffect(() => {
     if (onEnter) onEnter();
@@ -177,20 +151,15 @@ export const Dialog = (props: DialogProps) => {
       >
         <header className={headerClassNames}>
           {heading && (
-            <h1 className="ds-h2" id={headingId} ref={headingRef}>
+            <h1 className="ds-c-dialog__heading" id={headingId} ref={headingRef}>
               {heading}
             </h1>
           )}
-          <Button
+          <CloseButton
             aria-label={ariaCloseLabel ?? t('dialog.ariaCloseLabel')}
             className="ds-c-dialog__close"
             onClick={onExit}
-            size={closeButtonSize}
-            variation={closeButtonVariation}
-          >
-            <CloseIconComponent />
-            {closeButtonText ?? t('dialog.closeButtonText')}
-          </Button>
+          />
         </header>
         <main role="main" className="ds-c-dialog__body">
           <div id="dialog-content">{children}</div>
@@ -199,11 +168,6 @@ export const Dialog = (props: DialogProps) => {
       </div>
     </NativeDialog>
   );
-};
-
-Dialog.defaultProps = {
-  closeButtonVariation: 'ghost',
-  closeIconComponent: CloseIcon,
 };
 
 export default Dialog;
