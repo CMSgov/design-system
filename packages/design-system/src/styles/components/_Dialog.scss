@@ -104,6 +104,10 @@ dialog.fixed {
 
 .ds-c-dialog__heading {
   @include base.heading--2xl;
+  // Resetting the normal heading line-height to make sure there is no extra space above
+  // the text that throws it off its top alignment with the close button and the edge of
+  // the dialog's inner padding. Makes multi-line headings a little tighter, but the
+  // designers are okay with that.
   line-height: 1;
   margin: 0;
 }
