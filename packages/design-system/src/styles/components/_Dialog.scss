@@ -94,7 +94,7 @@ dialog.fixed {
 }
 
 .ds-c-dialog__header {
-  align-items: center;
+  align-items: flex-start;
   display: flex;
   gap: $spacer-1;
   justify-content: space-between;
