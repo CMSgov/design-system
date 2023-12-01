@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import useId from '../utilities/useId';
 import { CloseIconThin } from '../Icons';
 
 interface BaseCloseButtonProps {
@@ -22,14 +23,18 @@ export type CloseButtonProps = Omit<
 /**
  *
  */
-export const CloseButton = ({ className, ...buttonAttributes }: CloseButtonProps) => (
-  <button
-    className={classNames('ds-c-close-button', className)}
-    type="button"
-    {...buttonAttributes}
-  >
-    <CloseIconThin ariaHidden={false} />
-  </button>
-);
+export const CloseButton = ({ className, id: idProp, ...buttonAttributes }: CloseButtonProps) => {
+  const id = useId('close-button--', idProp);
+  return (
+    <button
+      className={classNames('ds-c-close-button', className)}
+      type="button"
+      id={id}
+      {...buttonAttributes}
+    >
+      <CloseIconThin ariaHidden={false} id={`${id}__icon`} />
+    </button>
+  );
+};
 
 export default CloseButton;

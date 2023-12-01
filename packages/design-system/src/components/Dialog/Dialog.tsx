@@ -158,6 +158,7 @@ export const Dialog = (props: DialogProps) => {
           <CloseButton
             aria-label={ariaCloseLabel ?? t('dialog.ariaCloseLabel')}
             className="ds-c-dialog__close"
+            id={`${rootId}__close`}
             onClick={onExit}
           />
         </header>
