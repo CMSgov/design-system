@@ -5,6 +5,10 @@ import { CloseIconThin } from '../Icons';
 
 interface BaseCloseButtonProps {
   /**
+   * An aria-label is required since the button content is only an X
+   */
+  'aria-label': string;
+  /**
    * Additional classes to be added to the button element.
    */
   className?: string;
