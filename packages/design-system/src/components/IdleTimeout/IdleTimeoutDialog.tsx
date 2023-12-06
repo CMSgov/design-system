@@ -4,10 +4,6 @@ import { Button } from '../Button';
 
 export interface IdleTimeoutDialogProps {
   /**
-   *  The text for the dialog's 'close' button
-   */
-  closeButtonText?: string;
-  /**
    * The text for the 'continue session' button in warning dialog.
    */
   continueSessionText: string;
@@ -49,7 +45,6 @@ export interface IdleTimeoutDialogProps {
 }
 
 export const IdleTimeoutDialog = ({
-  closeButtonText,
   continueSessionText,
   heading,
   endSessionButtonText,
@@ -88,7 +83,6 @@ export const IdleTimeoutDialog = ({
       heading={heading}
       actions={renderDialogActions()}
       onExit={onClose}
-      closeButtonText={closeButtonText}
     >
       {message}
     </Dialog>

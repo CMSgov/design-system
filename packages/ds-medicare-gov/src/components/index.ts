@@ -16,5 +16,4 @@ export { default as SimpleFooter } from './SimpleFooter';
 export { default as Card } from './Card';
 export { default as Stars } from './Stars';
 export * from './HelpDrawer';
-export * from './Dialog';
 export * from './Icons';

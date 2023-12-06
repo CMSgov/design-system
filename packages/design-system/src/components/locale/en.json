@@ -29,8 +29,7 @@
     "yearLabel": "Year"
   },
   "dialog": {
-    "ariaCloseLabel": "Close modal dialog",
-    "closeButtonText": "Close"
+    "ariaCloseLabel": "Close modal dialog"
   },
   "drawer": {
     "ariaLabel": "Close help drawer",
