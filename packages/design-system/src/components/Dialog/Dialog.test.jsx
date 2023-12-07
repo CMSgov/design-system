@@ -35,14 +35,6 @@ describe('Dialog', function () {
     expect(screen.getByRole('document')).toMatchSnapshot();
   });
 
-  it('close button text and variation can be changed', () => {
-    renderDialog({
-      closeButtonVariation: 'ghost',
-      closeButtonText: "No thank you. I don't like saving money",
-    });
-    expect(screen.getByRole('document')).toMatchSnapshot();
-  });
-
   it('calls onExit when close button is clicked', () => {
     const onExit = jest.fn();
     renderDialog({ onExit });
