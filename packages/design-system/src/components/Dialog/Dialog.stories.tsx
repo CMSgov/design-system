@@ -9,7 +9,6 @@ const meta: Meta<typeof Dialog> = {
   component: Dialog as any,
   args: {
     alert: false,
-    closeButtonVariation: 'ghost',
     children: (
       <div>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan diam vitae metus

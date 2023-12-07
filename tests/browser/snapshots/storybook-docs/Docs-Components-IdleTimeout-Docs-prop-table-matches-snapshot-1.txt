@@ -1,11 +1,5 @@
 [
   [
-    "closeButtonText",
-    "The text for the dialog's 'close' button\nstring",
-    "\"Close\"",
-    "Set string"
-  ],
-  [
     "continueSessionText",
     "The text for the 'continue session' button in warning dialog.\nstring",
     "\"Continue session\"",

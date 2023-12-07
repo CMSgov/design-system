@@ -49,7 +49,6 @@ const ThirdPartyExternalLink = ({
         <Dialog
           onExit={close}
           heading={t('thirdPartyExternalLink.dialogHeading', { origin })}
-          closeButtonText=""
           actions={[
             <Button variation="solid" key="external-link__confirm" href={href}>
               {t('thirdPartyExternalLink.confirmationButtonText')}
