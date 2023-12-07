@@ -6,10 +6,6 @@ import { checkPassiveSupport } from './utilities/checkPassive';
 
 export interface IdleTimeoutProps {
   /**
-   *  The text for the dialog's 'close' button
-   */
-  closeButtonText?: string;
-  /**
    * The text for the 'continue session' button in warning dialog.
    */
   continueSessionText?: string;
@@ -90,7 +86,6 @@ const lastActiveCookieName = 'CMS_DS_IT_LAST_ACTIVE';
  * [refer to its full documentation page](https://design.cms.gov/components/idle-timeout/).
  */
 export const IdleTimeout = ({
-  closeButtonText = 'Close',
   continueSessionText = 'Continue session',
   heading = 'Are you still there?',
   endSessionButtonText = 'Logout',
@@ -235,7 +230,6 @@ export const IdleTimeout = ({
       onSessionContinue={handleSessionContinue}
       onSessionForcedEnd={handleSessionForcedEnd}
       showSessionEndButton={showSessionEndButton}
-      closeButtonText={closeButtonText}
       onClose={handleSessionContinue}
     />
   ) : null;
