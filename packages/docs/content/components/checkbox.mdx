@@ -89,18 +89,46 @@ This component also makes use of form field styles, which can be customized by t
 - You may need to add the className `.ds-u-margin--0` to your child element(s) to avoid extra top margin
 - If you opt for smaller radio buttons or checkboxes, add className `.ds-c-choice__checkedChild--small` to your checked child container
 
-### Accessibility
+### Accessibility testing
 
-- Surround a related set of choices with a `<fieldset>`. The `<legend>` provides context for the grouping. Do not use `fieldset` and `legend` for a single checkbox.
-- Some screen readers read the `legend` text for each `fieldset`, so it should be brief and descriptive.
+#### General observations
+
+- No other interactive elements (such as links or buttons) should be included inside the label or hint text.
+- A group of checkboxes should be wrapped in a `<fieldset>` that includes a `<legend>` element within.
+  - The `<legend>` provides context for the grouping, much like a label.
+  - Do not use `fieldset` and `legend` for a single checkbox element.
 - Each input should have a semantic `id` attribute, and its corresponding `label` should have the same value in its `for` attribute.
-- The custom checkboxes and radio buttons here are accessible to screen readers because the default fields are moved off-screen.
-- `checkedChildren` will be announced to screen readers when they are exposed. They have been tested with the following devices:
-  - Windows 10 + Internet Explorer 11 + JAWS screen reader
-  - Windows 10 + Chrome + JAWS
-  - Windows10 - Firefox + NVDA
-    - NVDA reads out the `<select>` label and every `<option>` value
-  - MacOS Mojave + Safari + VoiceOver
+
+#### Keyboard testing
+
+- All checkboxes can be accessed using only the tab key.
+- The spacebar is used to check/uncheck a focussed checkbox.
+- There is a visible focus state.
+- The change in state is visible.
+
+#### Screen reader testing
+
+**For desktop users**
+
+- Some screen readers read the `legend` text for each form element within, so it should be brief and descriptive.
+- Each label should be announced for every checkbox.
+- The checkbox element should be identified with a role of checkbox.
+- If hints or errors are present, they are read after the label.
+- In a checkbox group, I should hear the question or title related to them via a legend inside a fieldset.
+- When the checkbox is selected, that state is read out.
+
+**For mobile users**
+
+- All the above from the desktop screen reader experience apply.
+- Swiping focuses on a checkbox.
+- Doubletapping with the checkbox in focus makes a selection and announces its been selected.
+
+#### Pointer device testing
+
+- Users may select either the text label or the checkbox itself to select an option.
+- Click/tap target area is a minimum of 24x24px.
+
+Read our Form Validations guidance for communicating to users about form errors and how to fix them.
 
 ### Related patterns
 
