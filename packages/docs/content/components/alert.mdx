@@ -191,7 +191,7 @@ Used to show important but not as urgent messages as standard alerts.
 
 <ThemeContent onlyThemes={['healthcare']}>
 
-**For dynamic alerts**
+#### For dynamic alerts
 
 - If dynamically loaded, be mindful of when the alert displays on the page. For example, an alert could appear on a page due to an error or progressive disclosure. Where and how the content appears visually should align with how and when a screen reader user hears the content. Errors need immediate attention, but content through progressive disclosure may not.
 - For dynamic alert content that is injected into the page when it changes, use the `aria-live` attribute, set on an empty element available on page load. The value of the `aria-live` attribute is used to update assistive technologies on the degree of importance.
@@ -204,17 +204,17 @@ Used to show important but not as urgent messages as standard alerts.
 
 #### Accessibility testing
 
-**General**
+##### General
 
 - The alert should have a [unique, accessible name](https://www.w3.org/WAI/ARIA/apg/practices/names-and-descriptions/).
 - The alert purpose should be clear in the context of the whole page.
 
-**Keyboard testing**
+##### Keyboard testing
 
 - When using features that trigger the display of an alert, I should see or hear the alert announced, but focus DOES NOT transfer automatically when the alert appears.
 - When using features that trigger the display of an [alert dialog (modal)](/components/modal-dialog/), I should see or hear the alert announced, and focus DOES transfer automatically when the alert appears.
 
-**Screen reader testing**
+##### Screen reader testing
 
 When using a screen reader (NVDA, JAWS, VoiceOver, TalkBack):
 
