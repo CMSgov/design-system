@@ -4,15 +4,18 @@
 
 ## Contents
 
-- [Packages](#packages)
-- [Running locally](#running-locally)
-  - [Getting started](#getting-started)
-  - [Scripts](#scripts)
-  - [Visual regression testing](#visual-regression-testing)
-- [Design assets](#design-assets)
-- [Examples](#examples)
-- [Contributing](#contributing)
-- [Contact](#contact)
+- [CMS Design System](#cms-design-system)
+  - [Contents](#contents)
+  - [Packages](#packages)
+  - [Running locally](#running-locally)
+    - [Scripts](#scripts)
+    - [Visual regression testing](#visual-regression-testing)
+      - [If using Docker:](#if-using-docker)
+      - [If running Locally:](#if-running-locally)
+  - [Design Assets](#design-assets)
+  - [Examples](#examples)
+  - [Contributing](#contributing)
+  - [Contact](#contact)
 
 ## Packages
 
