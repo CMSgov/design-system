@@ -1,45 +1,54 @@
 .c-footer {
-  border-top: 2px solid var(--color-gray-lighter);
-  padding-top: 1.5rem;
+  background-color: var(--color-gray-lightest);
+  color: var(--color-base);
+  font-size: var(--font-size-sm);
+  grid-area: footer;
+  min-width: 100%;
+  padding-block: var(--spacer-6);
 
-  .c-footer__container {
-    max-width: var(--site-max-width);
+  .ds-l-container {
+    margin-inline: unset;
     width: 100%;
   }
 
-  .ds-c-icon--hhs-logo {
-    font-size: 2rem;
-    margin-right: $spacer-2;
+  .c-footer__links {
+    border-block-end: 1px solid var(--color-gray-lighter);
+    column-gap: var(--spacer-2);
+    display: flex;
+    flex-flow: row wrap;
+    padding: var(--spacer-2);
   }
-}
 
-.c-footer__links {
   .c-footer__link {
-    display: inline-block;
-    text-decoration-thickness: var(--link__text-decoration-thickness);
-    text-underline-offset: var(--link__text-decoration-offset);
-  }
+    line-height: 1.25;
 
-  .c-footer__link:not(:last-child) {
-    margin-right: $spacer-2;
-  }
+    &:not(:last-child) {
+      border-inline-end: 1px solid currentColor;
+      padding-inline-end: var(--spacer-2);
+    }
 
-  button.c-footer__link {
-    all: inherit; /* removes all DS and browser button styling */
-    color: var(--link__color);
-    cursor: pointer;
-    display: inline;
-    text-decoration: underline;
-    text-decoration-thickness: var(--link__text-decoration-thickness);
+    a {
+      color: currentColor;
+      text-decoration-color: transparent;
 
-    &:hover {
-      color: var(--link__color--hover);
+      &:hover,
+      &:focus {
+        color: var(--color-primary-darker);
+      }
     }
   }
-}
 
-@media (max-width: $media-width-md) {
-  .c-footer__text {
-    font-size: var(--font-size-sm);
+  .c-footer__info {
+    margin-block-start: var(--spacer-2);
+    margin-inline: var(--spacer-2);
+
+    @media (min-width: $media-width-md) {
+      border-inline-start: 1px solid var(--color-base);
+      padding-inline-start: var(--spacer-2);
+    }
+
+    p {
+      margin: 0;
+    }
   }
 }

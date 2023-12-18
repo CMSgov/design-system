@@ -2,7 +2,7 @@
 
 // Mobile
 .c-navigation {
-  background-color: var(--color-gray-lightest);
+  background-color: var(--color-white);
   width: 100%;
 
   .c-navigation__header {
@@ -33,6 +33,7 @@
   }
 
   .c-navigation__bottom-link {
+    align-items: center;
     background-color: transparent;
     display: flex;
     gap: 0.5em;
@@ -40,6 +41,10 @@
     svg {
       height: 1em;
       width: auto;
+    }
+
+    path {
+      fill: currentColor;
     }
   }
 }
@@ -51,6 +56,10 @@
 }
 
 .c-navigation__switchers-wrapper {
+
+  border-radius: 0.75em;
+  margin: $spacer-2;
+  margin-block-end: 0;
   padding: $spacer-2 $spacer-2 $spacer-2 $spacer-4;
 }
 
@@ -107,7 +116,6 @@
 }
 
 .c-navigation__links-wrapper {
-  background-color: var(--color-gray-lightest);
   padding: $spacer-2;
 }
 
