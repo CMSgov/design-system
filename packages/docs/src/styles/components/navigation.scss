@@ -53,10 +53,14 @@
 .c-navigation__switchers-wrapper {
   background-color: var(--color-primary);
   color: var(--color-white);
+
+  .ds-c-button:active,
+  .ds-c-button:active:focus {
+    color: currentColor;
+  }
 }
 
 .c-navigation__switchers-wrapper {
-
   border-radius: 0.75em;
   margin: $spacer-2;
   margin-block-end: 0;
