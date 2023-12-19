@@ -6,7 +6,7 @@ const meta: Meta<typeof InlineError> = {
   title: 'Components/InlineError',
   component: InlineError as any,
   args: {
-    children: 'Sample InlineError',
+    children: 'A date of birth cannot be in the future.',
   },
   parameters: {
     docs: {

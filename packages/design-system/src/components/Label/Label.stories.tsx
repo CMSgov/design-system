@@ -20,7 +20,7 @@ const meta: Meta<typeof Label> = {
     ref: disabledArg,
   },
   args: {
-    children: 'Sample Label',
+    children: 'Your date of birth',
   },
   parameters: {
     docs: {

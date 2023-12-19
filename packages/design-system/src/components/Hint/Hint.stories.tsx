@@ -6,7 +6,8 @@ const meta: Meta<typeof Hint> = {
   title: 'Components/Hint',
   component: Hint as any,
   args: {
-    children: 'Sample Hint',
+    children:
+      'If a married couple files a joint return, either spouse may be the primary taxpayer.',
   },
   parameters: {
     docs: {
