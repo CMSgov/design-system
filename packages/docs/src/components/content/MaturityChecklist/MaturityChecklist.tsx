@@ -27,7 +27,7 @@ interface MaturityChecklistProps {
  *
  */
 const MaturityChecklist = (props: MaturityChecklistProps) => (
-  <section>
+  <>
     <p>
       For more information about how we tested and validated our work for each checklist item,{' '}
       <a href="https://github.com/CMSgov/design-system/blob/main/COMPONENT_MATURITY.md">
@@ -37,7 +37,7 @@ const MaturityChecklist = (props: MaturityChecklistProps) => (
     </p>
 
     <h3>Accessibility</h3>
-    <ul className="ds-c-list--bare">
+    <ul role="list" className="ds-c-list--bare">
       <MaturityChecklistItem title="Color" status={props.color}>
         Meets AA color contrast standards for accessibility and color blindness.
       </MaturityChecklistItem>
@@ -56,7 +56,7 @@ const MaturityChecklist = (props: MaturityChecklistProps) => (
     </ul>
 
     <h3>Code</h3>
-    <ul className="ds-c-list--bare">
+    <ul role="list" className="ds-c-list--bare">
       <MaturityChecklistItem title="Storybook" status={props.storybook}>
         Component has stories to cover all defined props.
       </MaturityChecklistItem>
@@ -69,7 +69,7 @@ const MaturityChecklist = (props: MaturityChecklistProps) => (
     </ul>
 
     {/* <h3>Design</h3>
-    <ul className="ds-c-list--bare">
+    <ul role="list" className="ds-c-list--bare">
       <MaturityChecklistItem title="Sketch UI-kit" status={props.completeUiKit}>
         Includes all Sketch symbols for defined options.
       </MaturityChecklistItem>
@@ -79,7 +79,7 @@ const MaturityChecklist = (props: MaturityChecklistProps) => (
     </ul> */}
 
     <h3>Tokens</h3>
-    <ul className="ds-c-list--bare">
+    <ul role="list" className="ds-c-list--bare">
       <MaturityChecklistItem title="Code" status={props.tokensInCode}>
         Tokens implemented in code.
       </MaturityChecklistItem>
@@ -87,7 +87,7 @@ const MaturityChecklist = (props: MaturityChecklistProps) => (
         Tokens implemented in the Sketch.
       </MaturityChecklistItem>
     </ul>
-  </section>
+  </>
 );
 
 export default MaturityChecklist;
