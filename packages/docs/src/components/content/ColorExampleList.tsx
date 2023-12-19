@@ -23,7 +23,7 @@ interface ColorExampleListProps {
  * support semi-transparent colors like the `ColorRamps` component does.
  */
 const ColorExampleList = ({ colorNames, preface, theme }: ColorExampleListProps) => (
-  <div className="ds-u-measure--wide ds-u-margin-top--2">
+  <div className="ds-u-margin-top--2">
     {colorNames.map((name) => (
       <ColorExampleRow
         name={name}

@@ -58,7 +58,7 @@ const PreformattedWithLanguageClass = (props: any) => {
 };
 
 const TextWithMaxWidth = (props: any, Component) => {
-  const className = `ds-u-measure--wide ${props.className || ''}`;
+  const className = `${props.className || ''}`;
   return <Component {...props} className={className} />;
 };
 
