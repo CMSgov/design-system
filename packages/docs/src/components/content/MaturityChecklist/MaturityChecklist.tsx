@@ -36,7 +36,9 @@ const MaturityChecklist = (props: MaturityChecklistProps) => (
       .
     </p>
 
-    <h3>Accessibility</h3>
+    <h3 className="ds-u-font-size--base ds-u-font-weight--normal ds-u-margin-top--3">
+      Accessibility
+    </h3>
     <ul role="list" className="ds-c-list--bare">
       <MaturityChecklistItem title="Color" status={props.color}>
         Meets AA color contrast standards for accessibility and color blindness.
@@ -55,7 +57,7 @@ const MaturityChecklist = (props: MaturityChecklistProps) => (
       </MaturityChecklistItem>
     </ul>
 
-    <h3>Code</h3>
+    <h3 className="ds-u-font-size--base ds-u-font-weight--normal ds-u-margin-top--3">Code</h3>
     <ul role="list" className="ds-c-list--bare">
       <MaturityChecklistItem title="Storybook" status={props.storybook}>
         Component has stories to cover all defined props.
@@ -68,7 +70,7 @@ const MaturityChecklist = (props: MaturityChecklistProps) => (
       </MaturityChecklistItem>
     </ul>
 
-    {/* <h3>Design</h3>
+    {/* <h3 className="ds-u-font-size--base ds-u-font-weight--normal ds-u-margin-top--3">Design</h3>
     <ul role="list" className="ds-c-list--bare">
       <MaturityChecklistItem title="Sketch UI-kit" status={props.completeUiKit}>
         Includes all Sketch symbols for defined options.
@@ -78,7 +80,7 @@ const MaturityChecklist = (props: MaturityChecklistProps) => (
       </MaturityChecklistItem>
     </ul> */}
 
-    <h3>Tokens</h3>
+    <h3 className="ds-u-font-size--base ds-u-font-weight--normal ds-u-margin-top--3">Tokens</h3>
     <ul role="list" className="ds-c-list--bare">
       <MaturityChecklistItem title="Code" status={props.tokensInCode}>
         Tokens implemented in code.

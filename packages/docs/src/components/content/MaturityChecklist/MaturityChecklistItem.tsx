@@ -18,8 +18,9 @@ const MaturityChecklistItem = ({ status, title, children }: MaturityChecklistIte
     className={classNames('c-maturity-checklist-item', status === null && 'ds-u-color--gray-light')}
   >
     <div className="c-maturity-checklist-item__description">
-      <h4 className="c-maturity-checklist-item__title">{title}</h4>
-      <div>{children}</div>
+      <p className="ds-u-margin-y--0">
+        <strong>{title}:</strong> {children}
+      </p>
     </div>
     <div className="c-maturity-checklist-item__status">
       <Status status={status} />
