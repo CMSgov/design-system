@@ -32,4 +32,4 @@ export default meta;
 
 type Story = StoryObj<typeof Label>;
 
-export const LabelDefault: Story = {};
+export const Default: Story = {};
