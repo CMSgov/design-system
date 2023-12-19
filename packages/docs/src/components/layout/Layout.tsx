@@ -107,7 +107,7 @@ const Layout = ({
           className="ds-u-measure--wide ds-l-md-col ds-u-padding--0 ds-u-padding-bottom--4 ds-u-padding-top--2 page-main"
         >
           {pageHeader ? pageHeader : <PageHeader frontmatter={frontmatter} theme={theme} />}
-          <article className="ds-u-padding-x--3 ds-u-sm-padding-x--6 ds-u-sm-padding-bottom--6 ds-u-padding-top--1 ds-u-padding-bottom--3">
+          <article className="page-body__content ds-u-padding-x--3 ds-u-sm-padding-x--6 ds-u-sm-padding-bottom--6 ds-u-padding-top--1 ds-u-padding-bottom--3">
             {children}
           </article>
         </main>

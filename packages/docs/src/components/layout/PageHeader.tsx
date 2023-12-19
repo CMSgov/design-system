@@ -13,9 +13,11 @@ const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => 
   const { title, intro } = frontmatter;
 
   return (
-    <hgroup className="c-page-header">
-      <h1>{title}</h1>
-      {intro && <p>{intro}</p>}
+    <hgroup className="c-page-header ds-u-padding-x--3 ds-u-sm-padding-x--6 ds-u-sm-padding-top--2">
+      <h1 className="ds-text-heading--4xl">{title}</h1>
+      {intro && (
+        <p className="ds-u-font-size--lg ds-u-margin-top--1 ds-u-margin-bottom--1">{intro}</p>
+      )}
     </hgroup>
   );
 };
