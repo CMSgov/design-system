@@ -1,24 +1,24 @@
 ---
-title: Label & Legend
-intro: Labels & legends describe individual form fields or fieldsets.
+title: Hint
+intro: Hint text is used in combination with a Label to provide extra instructions or context for form fields.
 core:
-  githubLink: design-system/src/components/Label
-  storybookLink: components-label--docs
+  githubLink: design-system/src/components/Hint
+  storybookLink: components-hint--docs
 ---
 
 ## Examples
 
 <StorybookExample
-  componentName="formLabel"
-  sourceFilePath="components/Label/Label.tsx"
-  storyId="components-label--default"
+  componentName="hint"
+  sourceFilePath="components/Hint/Hint.tsx"
+  storyId="components-hint--default"
 />
 
 ## Code
 
 ### React
 
-<SeeStorybookForGuidance storyId={'components-label--docs'} />
+<SeeStorybookForGuidance storyId={'components-hint--docs'} />
 
 ### Style customization
 
@@ -27,21 +27,6 @@ The following CSS variables can be overridden to customize Form components:
 <ComponentThemeOptions componentname="form" />
 
 ## Guidance
-
-### Label
-
-- Each form field should have a `<label>`. Never use a field's placeholder attribute as the primary way to label the field.
-- Each form field should have a clear, brief, and descriptive label.
-- Labels should have a `for` attribute, referencing the corresponding input's unique `id` attribute. Only one label can be associated to each unique form element.
-- Labels should be placed above their fields.
-- Label text should be short and in sentence case.
-- Avoid colons at the end of labels.
-- Don't use a field's placeholder attribute as the primary way to label the field.
-
-### Legend
-
-- Use a single legend for fieldset (this is required). One example of a common use of fieldset and legend is a question with radio button options for answers. The question text and radio buttons are wrapped in a fieldset, with the question itself being inside the legend tag.
-- Avoid links in legends when possible. Links inside legends are not read by some screen readers, namely JAWS. If you need a pattern like this, put the link outside of the legend element, but keep all other useful hint text in the legend.
 
 #### Content
 
