@@ -113,12 +113,20 @@ export const Label = (props: LabelComponentProps) => {
     errorElement = <InlineError id={errorId}>{errorMessage}</InlineError>;
   }
 
+  let htmlFor = fieldId;
+  if (component === 'legend' && fieldId) {
+    console.warn(
+      'The `for` attribute is invalid for legends. Omitting `fieldId` from rendered element.'
+    );
+    htmlFor = undefined;
+  }
+
   const ComponentType = component;
   const classes = classNames('ds-c-label', className, inversed && 'ds-c-label--inverse');
 
   return (
     <>
-      <ComponentType className={classes} htmlFor={fieldId} id={id} {...labelProps}>
+      <ComponentType className={classes} htmlFor={htmlFor} id={id} {...labelProps}>
         {children}
       </ComponentType>
       {hintElement}
