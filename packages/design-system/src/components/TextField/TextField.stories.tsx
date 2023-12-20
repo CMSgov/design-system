@@ -10,7 +10,7 @@ const meta: Meta<typeof TextField> = {
   title: 'Components/TextField',
   component: TextField,
   args: {
-    label: 'Text Field Label',
+    label: 'Enter some text.',
     onChange: action('onChange'),
     onBlur: action('onBlur'),
     name: 'text-field-story',
@@ -82,8 +82,8 @@ export const MultilineField: Story = {
 export const ErrorField: Story = {
   ...UncontrolledTemplate,
   args: {
-    errorMessage: 'Example error message',
-    hint: 'Helpful hint text',
+    errorMessage: 'This is an example error message.',
+    hint: 'This is where you put helpful hint text.',
   },
 };
 
@@ -144,8 +144,8 @@ export const LabelMaskedPhone: Story = {
   ...ControlledTemplate,
   args: {
     name: 'labelMask-phone',
-    label: 'Enter your phone number',
-    hint: 'Only enter an area code + 7 digit phone number where you can be reached.',
+    label: 'Enter your phone number.',
+    hint: 'This is a 10-digit phone number where you can be reached.',
     labelMask: 'PHONE_MASK' as any,
     numeric: true,
   },
@@ -155,8 +155,8 @@ export const LabelMaskedSSN: Story = {
   ...ControlledTemplate,
   args: {
     name: 'labelMask-ssn',
-    label: 'Enter your social security number',
-    hint: 'Please enter your SSA administered Social Security Number',
+    label: 'Enter your Social Security Number.',
+    hint: 'This number was administered to you by the Social Security Administration.',
     labelMask: 'SSN_MASK' as any,
     numeric: true,
   },
@@ -166,8 +166,8 @@ export const LabelMaskedPostalCode: Story = {
   ...ControlledTemplate,
   args: {
     name: 'labelMask-zipcode',
-    label: 'Enter your postal service zip code',
-    hint: 'Please enter your Zip Code',
+    label: 'Enter your postal service ZIP code.',
+    hint: 'This is the five-digit ZIP code where you receive your mail.',
     labelMask: 'ZIP_MASK' as any,
     numeric: true,
   },
@@ -177,8 +177,8 @@ export const LabelMaskedCurrency: Story = {
   ...ControlledTemplate,
   args: {
     name: 'labelMask-currency',
-    label: 'Enter a dollar amount',
-    hint: 'Please enter a dollar amount',
+    label: 'Enter your estimated yearly income.',
+    hint: 'This should be a dollar amount.',
     labelMask: 'CURRENCY_MASK' as any,
     numeric: true,
   },
