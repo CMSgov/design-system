@@ -1,6 +1,6 @@
 ---
 title: Inline Error
-intro: Inline errors are error messages that are paired directly with form fields.
+intro: Inline errors give validation feedback for specific form fields.
 core:
   githubLink: design-system/src/components/InlineError
   storybookLink: components-inlineerror--docs
@@ -28,48 +28,18 @@ The following CSS variables can be overridden to customize Form components:
 
 ## Guidance
 
-### Label
-
-- Each form field should have a `<label>`. Never use a field's placeholder attribute as the primary way to label the field.
-- Each form field should have a clear, brief, and descriptive label.
-- Labels should have a `for` attribute, referencing the corresponding input's unique `id` attribute. Only one label can be associated to each unique form element.
-- Labels should be placed above their fields.
-- Label text should be short and in sentence case.
-- Avoid colons at the end of labels.
-- Don't use a field's placeholder attribute as the primary way to label the field.
-
-### Legend
-
-- Use a single legend for fieldset (this is required). One example of a common use of fieldset and legend is a question with radio button options for answers. The question text and radio buttons are wrapped in a fieldset, with the question itself being inside the legend tag.
-- Avoid links in legends when possible. Links inside legends are not read by some screen readers, namely JAWS. If you need a pattern like this, put the link outside of the legend element, but keep all other useful hint text in the legend.
+- Inline errors are built in to all design-system form fields but can be used on their own to create custom fields.
+- Inline errors should sit either directly above or below the input, depending on the theme defaults.
+- Visually align inline validation messages with the input fields, so people using screen magnifiers can read them quickly.
+- The form field should have an `aria-describedby` attribute that references the `id` of the error message.
 
 #### Content
 
-- Describe what the user needs to do when the field is selected
-- Use a phrase or complete sentence
-- Start with an action verb and pair it with a noun to help it be clearer. Example: Enter your age.
-- Use the fewest words possible (i.e. don't use "please")
-- Use sentence case
-- Be consistent with punctuation at the end of a phrase or sentence
-- Be consistent with phrase and sentence structure
-
-### Hint text
-
-- Place hint text within the field's `<label>` element.
-- Place hint text where appropriate depending on what content it's helping to explain
-- Use hint text for supporting contextual help, which will always be shown.
-- Hint text should sit between a form label and the input.
-- Use lower visual style (i.e., lighter gray than the form label or the input option) so it won't compete for users' attention with the field label.
-- Use hint text to indicate which inputs are optional when there are more required fields than optional.
-- Hint text can also appear after an input box when the text is being used to show the value someone should be entering in the field (e.g., income amount input box displays text after the input box to highlight the amount should be "monthly income".)
-
-#### Content
-
-- Use when appropriate to support a form label (Goes below the form label in a lighter weight font)
-- Describe how to best answer the question/form label
-- Use the fewest words possible (i.e. don't use "please")
-- Use sentence case
-- End with a period
+- Describe what the user still needs to do in a mandatory field that has been left incomplete or unanswered,  or answered incorrectly.
+- Repeat what the form label is asking the user to do, but with slightly more detail.
+- Use sentence case.
+- End with a period.
+- Use the fewest words possible (i.e., don't use "please").
 
 ## Learn More
 
