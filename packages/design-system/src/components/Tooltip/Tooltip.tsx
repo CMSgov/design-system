@@ -1,9 +1,4 @@
 import React from 'react';
-// Polyfills required for IE11 compatibility
-// Features used by app or its dependencies (i.e. @popperjs/core in Tooltip)
-import 'core-js/stable/object/assign';
-import 'core-js/stable/array/find';
-import 'core-js/features/promise';
 // TODO: Update react-transition-group once we update react peer dep
 import CSSTransition from 'react-transition-group/CSSTransition';
 import FocusTrap from 'focus-trap-react';
