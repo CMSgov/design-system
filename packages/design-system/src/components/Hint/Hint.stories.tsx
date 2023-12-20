@@ -9,6 +9,9 @@ const meta: Meta<typeof Hint> = {
     children:
       'If a married couple files a joint return, either spouse may be the primary taxpayer.',
   },
+  argTypes: {
+    requirementLabel: { control: 'text' },
+  },
   parameters: {
     docs: {
       underlyingHtmlElements: ['div'],
