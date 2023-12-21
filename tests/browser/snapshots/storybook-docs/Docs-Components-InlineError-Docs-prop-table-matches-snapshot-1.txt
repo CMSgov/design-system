@@ -1,0 +1,22 @@
+[
+  [
+    "children",
+    "Error text or HTML\nReactNode",
+    "-"
+  ],
+  [
+    "className",
+    "Additional classes to be added to the root element.\nstring",
+    "-"
+  ],
+  [
+    "id",
+    "The ID of the error element\nstring",
+    "-"
+  ],
+  [
+    "inversed",
+    "Set to true to apply the \"inverse\" theme\nboolean",
+    "-"
+  ]
+]

@@ -5,9 +5,21 @@ import { t } from '../i18n';
 import useId from '../utilities/useId';
 
 interface InlineErrorProps {
+  /**
+   * Error text or HTML
+   */
   children?: React.ReactNode;
+  /**
+   * Additional classes to be added to the root element.
+   */
   className?: string;
+  /**
+   * The ID of the error element
+   */
   id?: string;
+  /**
+   * Set to `true` to apply the "inverse" theme
+   */
   inversed?: boolean;
 }
 
@@ -16,6 +28,7 @@ export function InlineError({
   className,
   id,
   inversed,
+  ...otherProps
 }: InlineErrorProps): React.ReactElement {
   const classes = classNames(
     'ds-c-inline-error',
@@ -26,6 +39,7 @@ export function InlineError({
 
   return (
     <span
+      {...otherProps}
       className={classes}
       id={useId('inline-error--', id)}
       aria-live="assertive"

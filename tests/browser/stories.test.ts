@@ -9,7 +9,10 @@ const storySkipList = [
   'components-dropdown--html-option-groups', // Redundant
   'components-dropdown--html-options', // Redundant
   'components-dropdown--controlled', // Redundant
+  'components-hint--default', // Captured by individual form fields
   'components-idletimeout--default',
+  'components-inlineerror--default', // Captured by individual form fields
+  'components-label--default', // Captured by individual form fields
   'components-skipnav--default-skip-nav',
   'components-skipnav--skip-nav-example',
   'components-tabs--controlled', // Redundant
