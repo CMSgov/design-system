@@ -68,8 +68,12 @@ type LabelComponentProps = React.ComponentPropsWithRef<'label'> &
   LabelProps;
 
 /**
+ * The Label component describes individual form fields (as a `<label>`) or fieldsets (as
+ * a `<legend>`). They are built in to all form fields in the design system, but they can
+ * also be used on their own to create custom fields.
+ *
  * For information about how and when to use this component,
- * [refer to its full documentation page](https://design.cms.gov/components/form-label/).
+ * [refer to its full documentation page](https://design.cms.gov/components/label/).
  */
 export const Label = (props: LabelComponentProps) => {
   const {
