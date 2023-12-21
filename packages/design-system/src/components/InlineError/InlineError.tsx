@@ -23,6 +23,14 @@ interface InlineErrorProps {
   inversed?: boolean;
 }
 
+/**
+ * Inline errors are error messages that are paired directly with form fields.
+ * They are built in to all form fields in the design system, but they can also
+ * be used on their own to create custom fields.
+ *
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/inline-error/).
+ */
 export function InlineError({
   children,
   className,
