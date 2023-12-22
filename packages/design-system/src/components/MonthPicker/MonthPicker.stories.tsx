@@ -22,14 +22,14 @@ type Story = StoryObj<typeof MonthPicker>;
 export const Default: Story = {
   args: {
     name: 'DefaultMonthPicker',
-    label: 'Select a month from Default Month Picker',
+    label: 'Select a month from Default Month Picker.',
   },
 };
 
 export const Selected: Story = {
   args: {
     name: 'SelectedMonthPicker',
-    label: 'Select additional months from Selected Month Picker',
+    label: 'Select additional months from Selected Month Picker.',
     hint: 'Preselected values are `readonly` when `selectedMonths` property is used. For mutable values, use the `defaultSelectedMonths` property.',
     selectedMonths: [1, 2, 3, 4, 5, 6],
   },
@@ -38,7 +38,7 @@ export const Selected: Story = {
 export const Disabled: Story = {
   args: {
     name: 'DisabledMonthPicker',
-    label: 'Select available months from Disabled Month Picker',
+    label: 'Select available months from Disabled Month Picker.',
     disabledMonths: [7, 8, 9, 10, 11, 12],
   },
 };
@@ -55,7 +55,7 @@ export const WithError: Story = {
 export const Inverse: Story = {
   args: {
     name: 'InverseMonthPicker',
-    label: 'Select a month from Inverse Month Picker',
+    label: 'Select a month from Inverse Month Picker.',
     inversed: true,
   },
   parameters: {
@@ -68,7 +68,7 @@ export const Inverse: Story = {
 export const InverseSelected: Story = {
   args: {
     name: 'InverseSelectedMonthPicker',
-    label: 'Select additional months from Inverse Selected Month Picker',
+    label: 'Select additional months from Inverse Selected Month Picker.',
     hint: 'Preselected values are `readonly` when `selectedMonths` property is used. For mutable values, use the `defaultSelectedMonths` property.',
     inversed: true,
     selectedMonths: [1, 2, 3, 4, 5, 6],
@@ -83,7 +83,7 @@ export const InverseSelected: Story = {
 export const InverseDisabled: Story = {
   args: {
     name: 'InverseDisabledMonthPicker',
-    label: 'Select available months from Inverse Disabled Month Picker',
+    label: 'Select available months from Inverse Disabled Month Picker.',
     inversed: true,
     disabledMonths: [7, 8, 9, 10, 11, 12],
   },
