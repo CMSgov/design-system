@@ -1,5 +1,4 @@
 import React from 'react';
-import classnames from 'classnames';
 import LogoEnSvg from './LogoEnSvg';
 import LogoEsSvg from './LogoEsSvg';
 import { getLanguage } from '@cmsgov/design-system';
@@ -11,11 +10,11 @@ export interface LogoProps {
 
 export function Logo(props: LogoProps) {
   return (
-    <span className={classnames('hc-c-logo', props.className)}>
+    <span className="hc-c-logo">
       {getLanguage() === 'es' ? (
-        <LogoEsSvg titleId={props.titleId} />
+        <LogoEsSvg titleId={props.titleId} className={props.className ?? ''} />
       ) : (
-        <LogoEnSvg titleId={props.titleId} />
+        <LogoEnSvg titleId={props.titleId} className={props.className ?? ''} />
       )}
     </span>
   );
