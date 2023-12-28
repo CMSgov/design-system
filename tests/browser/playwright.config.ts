@@ -61,13 +61,17 @@ const allProjects = [
 ];
 
 const smokeTestProjects = [
+  // {
+  //   name: 'chromium',
+  //   use: { ...devices['Desktop Chrome'] },
+  // },
+  // {
+  //   name: 'Mobile Chrome',
+  //   use: { ...devices['Pixel 5'] },
+  // },
   {
-    name: 'chromium',
-    use: { ...devices['Desktop Chrome'] },
-  },
-  {
-    name: 'Mobile Chrome',
-    use: { ...devices['Pixel 5'] },
+    name: 'chromium-forced-colors',
+    use: { ...devices['Desktop Chrome'], contextOptions: { forcedColors: 'active' as const } },
   },
 ];
 
