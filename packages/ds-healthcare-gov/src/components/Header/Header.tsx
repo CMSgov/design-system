@@ -122,9 +122,21 @@ export interface HeaderProps {
   isMenuOpen?: boolean;
   onMenuToggle?: () => void;
   /**
-   * Additional classes to be added to the Logo component
+   * Additional classes to be added
    */
-  logoClassName?: string;
+  customClassNames?: {
+    headerLogo?: string;
+    languageLink?: string;
+    loginLink?: string;
+  };
+  /**
+   * Additional ids to be added
+   */
+  customIds?: {
+    headerLogo?: string;
+    languageLink?: string;
+    loginLink?: string;
+  };
   /**
    * Temporary feature flag for showing or not showing the USA Banner above the
    * header. Defaults to true
@@ -222,7 +234,10 @@ export const Header = (props: HeaderProps) => {
               href={props.primaryDomain ? props.primaryDomain : '/'}
               className="hc-c-logo-link ds-l-col ds-l-col--auto"
             >
-              <Logo className={props.logoClassName ?? ''} />
+              <Logo
+                className={props.customClassNames?.headerLogo ?? ''}
+                titleId={props.customIds?.headerLogo ?? ''}
+              />
             </a>
 
             <nav
