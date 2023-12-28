@@ -1,0 +1,56 @@
+---
+title: Separating labels, hints, and errors in v9
+order: 60
+intro: Labels, hints, and error messages are now in separate elements for better accessibility and flexibility
+---
+
+import { Alert } from '@cmsgov/design-system';
+
+## What changed and why
+
+Before this change, hints and error messages were being rendered inside the `<label>`. There was an exception to this when fields had bottom-placed errors, in which case the error messages would be rendered below the field in their own element and linked to the field via `aria-describedby`. Here are some problems we found with that strategy:
+
+1. Links and other interactive content in the hints and error messages would interfere with assistive technology by being inside the `<label>`.
+2. Hints and error messages were harder to customize and style being inside the `<label>` element and its React component.
+3. Error-message placement being variable but rendered by the [Label](/components/label) component (previously called `FormLabel`) made the code harder to reason about, and that difficulty extended to custom fields made by application teams.
+4. Error-message placement being variable and implemented differently in the markup lead to inconsistent screen-reader experiences
+
+Some of these reasons affected our team more than application teams, but the main reason we set about separating them was that first acccessibility concern. Interactive content needs to have its own home separate from the `<label>` element, and that policy needs to be clear and easy to implement by everyone.
+
+The snippets below show a general idea of what the HTML looked like before and after.
+
+### Before
+
+Simplified representation of the HTML before the change:
+
+```html
+<div>
+  <label class="ds-c-label" for="text-field--1" id="text-field--1__label">
+    <span>Text Field Label</span>
+    <span class="ds-c-field__hint">Helpful hint text</span>
+    <span class="ds-c-inline-error">
+      <svg ... />
+      Example error message
+    </span>
+  </label>
+  <input id="text-field--1" />
+</div>
+```
+
+### After
+
+Simplified representation of the HTML after the change:
+
+```html
+<div>
+  <label class="ds-c-label" for="text-field--1">Text Field Label</label>
+  <div id="text-field--1__hint" class="ds-c-hint">Helpful hint text</div>
+  <div id="text-field--1__error" class="ds-c-inline-error">
+    <svg ... />
+    Example error message
+  </div>
+  <input id="text-field--1" aria-describedby="text-field--1__error text-field--1__hint" />
+</div>
+```
+
+## 
