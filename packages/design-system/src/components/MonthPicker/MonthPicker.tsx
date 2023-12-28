@@ -101,7 +101,7 @@ export const MonthPicker = (props: MonthPickerProps) => {
     if (props.onChange) {
       props.onChange(event);
     }
-
+    console.log('isControlled ', isControlled);
     if (!isControlled) {
       const month = parseInt(event.target.value);
       const newSelectedMonths = selectedMonths.slice();

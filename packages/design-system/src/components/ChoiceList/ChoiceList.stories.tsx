@@ -31,24 +31,24 @@ type Story = StoryObj<typeof ChoiceList>;
 
 export const DefaultCheckbox: Story = {
   args: {
-    label: 'Checkbox example',
-    hint: 'Helpful hint text',
-    name: 'checkbox_choices',
+    label: 'Check some boxes.',
+    hint: 'This is some helpful hint text.',
+    name: 'checkbox-choices',
     type: 'checkbox',
   },
 };
 
 export const DefaultRadio: Story = {
   args: {
-    label: 'Radio example',
-    name: 'radio_choices',
+    label: 'Choose an option.',
+    name: 'radio-choices',
     type: 'radio',
   },
 };
 
 export const SmallOption: Story = {
   args: {
-    label: 'Small size example',
+    label: 'Choose a small option.',
     name: 'size-variants',
     type: 'radio',
     size: 'small',
@@ -57,19 +57,18 @@ export const SmallOption: Story = {
 
 export const WithError: Story = {
   args: {
-    errorMessage: 'Example error message',
-    label: 'Small size example',
-    name: 'size-variants',
+    errorMessage: 'This is an example error message.',
+    label: 'Choose an option.',
+    name: 'radio-choices',
     type: 'radio',
-    size: 'small',
   },
 };
 
 export const InverseOption: Story = {
   args: {
-    label: 'Inverse example',
-    hint: 'Helpful hint text',
-    name: 'inverse_choices_field',
+    label: 'Choose an option.',
+    hint: 'This component is on an inversed background.',
+    name: 'inverse-choices',
     type: 'checkbox',
     inversed: true,
   },
@@ -82,8 +81,9 @@ export const InverseOption: Story = {
 
 export const DisabledCheckbox: Story = {
   args: {
-    label: 'Disabled checkbox example',
-    name: 'checkbox_choices',
+    label: 'Check some boxes.',
+    hint: 'These checkboxes are disabled.',
+    name: 'disabled-checkbox-choices',
     type: 'checkbox',
     choices: [
       { label: 'Disabled choice A', value: 'A', disabled: true },
@@ -94,8 +94,9 @@ export const DisabledCheckbox: Story = {
 
 export const DisabledRadio: Story = {
   args: {
-    label: 'Disabled radio example',
-    name: 'radio_choices',
+    label: 'Choose an option.',
+    hint: 'These radio buttons are disabled.',
+    name: 'disabled-radio-choices',
     type: 'radio',
     choices: [
       { label: 'Disabled choice A', value: 'A', disabled: true },
@@ -108,7 +109,12 @@ export const ChoiceChildren: Story = {
   args: {
     name: 'radio_choices',
     type: 'radio',
-    label: 'Example choices with checked children',
+    label: 'Choose an option.',
+    hint: (
+      <>
+        This example shows choices with <em>checked children</em>.
+      </>
+    ),
     choices: [
       {
         label: 'Choice 1',
