@@ -8,7 +8,7 @@ import { Alert } from '@cmsgov/design-system';
 
 ## What changed and why
 
-Before this change, hints and error messages were being rendered inside the `<label>`. There was an exception to this when fields had bottom-placed errors, in which case the error messages would be rendered below the field in their own element and linked to the field via `aria-describedby`. Here are some problems we found with that strategy:
+Before this change, hints and error messages were being rendered inside a form field's `<label>` element. One exception was for fields with bottom-placed errors, where the error message would go below the field in its own element and linked to the field via `aria-describedby`. Here are some problems we found with the strategy of putting everything inside `<label>`:
 
 1. Links and other interactive content in the hints and error messages would interfere with assistive technology by being inside the `<label>`.
 2. Hints and error messages were harder to customize and style being inside the `<label>` element and its React component.
