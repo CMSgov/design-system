@@ -29,6 +29,8 @@ export interface FooterProps {
    * Element to be added to display content for top footer section changes
    */
   footerTop?: React.ReactNode;
+  logoId?: string;
+  logoClassName?: string;
 }
 
 /**
@@ -42,7 +44,7 @@ export const Footer = (props: FooterProps) => {
     <footer className={classes} role="contentinfo">
       {props.footerTop}
       <InlineLinkLists t={t} primaryDomain={props.primaryDomain} />
-      <LogosRow t={t} />
+      <LogosRow t={t} logoId={props.logoId} logoClassName={props.logoClassName} />
     </footer>
   );
 };
