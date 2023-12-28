@@ -71,7 +71,13 @@ const smokeTestProjects = [
   // },
   {
     name: 'chromium-forced-colors',
-    use: { ...devices['Desktop Chrome'], contextOptions: { forcedColors: 'active' as const } },
+    use: {
+      ...devices['Desktop Firefox'],
+      contextOptions: { forcedColors: 'active' as const },
+      launchOptions: {
+        firefoxUserPrefs: { 'ui.caretBlinkTime': 0 },
+      },
+    },
   },
 ];
 
