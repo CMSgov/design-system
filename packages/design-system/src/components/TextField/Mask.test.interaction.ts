@@ -11,7 +11,7 @@ Object.keys(themes).forEach((theme) => {
     await page.goto(`${storyUrl}&globals=theme:${theme}`);
     const elem = page.locator('input.ds-c-field');
     await elem.type('22', { delay: 220 });
-    await expect(page).toHaveScreenshot(`mask--text-entry--${theme}.png`, { fullPage: true });
+    await expect(page).toHaveScreenshot(`mask--text-entry--${theme}.png`, { caret: 'hide' });
   });
 
   test(`Mask partial text entry and exit: ${theme}`, async ({ page }) => {
@@ -20,7 +20,7 @@ Object.keys(themes).forEach((theme) => {
     await elem.type('221', { delay: 220 });
     await elem.press('Tab');
     await expect(page).toHaveScreenshot(`mask--text-entry-and-exit--${theme}.png`, {
-      fullPage: true,
+      caret: 'hide',
     });
   });
 });
