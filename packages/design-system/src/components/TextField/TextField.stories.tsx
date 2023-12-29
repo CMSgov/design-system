@@ -110,7 +110,7 @@ export const AllMaskedFields: Story = {
           name="phone_example"
           onBlur={(evt) => console.log('Unmasked value: ', unmaskValue(evt.target.value, 'phone'))}
           type="tel"
-          defaultValue="1234567890"
+          defaultValue="2314567890"
         />
         <TextField
           label="Social security number (SSN)"

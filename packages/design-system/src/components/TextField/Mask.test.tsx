@@ -159,26 +159,26 @@ describe('Mask', function () {
 
   describe('Phone', () => {
     it('accepts partial phone #', () => {
-      renderMask({ mask: 'phone' }, { value: '123' });
-      expect(getInput().value).toBe('123');
+      renderMask({ mask: 'phone' }, { value: '231' });
+      expect(getInput().value).toBe('231');
     });
 
     it('accepts unexpectedly long value', () => {
-      renderMask({ mask: 'phone' }, { value: '123456789000' });
+      renderMask({ mask: 'phone' }, { value: '231456789000' });
       // Yes, this is invalid, but it should be up to to the app
       // to surface an error in these cases. The mask shouldn't
       // be changing the raw value a user has entered.
-      expect(getInput().value).toBe('123-456-789000');
+      expect(getInput().value).toBe('231-456-789000');
     });
 
     it('accepts masked phone #', () => {
-      renderMask({ mask: 'phone' }, { value: '123-456-7890' });
-      expect(getInput().value).toBe('123-456-7890');
+      renderMask({ mask: 'phone' }, { value: '231-456-7890' });
+      expect(getInput().value).toBe('231-456-7890');
     });
 
     it('masks phone #', () => {
-      renderMask({ mask: 'phone' }, { value: '1234567890' });
-      expect(getInput().value).toBe('123-456-7890');
+      renderMask({ mask: 'phone' }, { value: '2314567890' });
+      expect(getInput().value).toBe('231-456-7890');
     });
   });
 

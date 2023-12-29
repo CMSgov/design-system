@@ -110,7 +110,7 @@ describe('maskHelpers', function () {
       const name = 'phone';
 
       expect(unmaskValue('', name)).toBe('');
-      expect(unmaskValue(' 123-456-7890 ', name)).toBe('1234567890');
+      expect(unmaskValue(' 231-456-7890 ', name)).toBe('2314567890');
     });
   });
 });
