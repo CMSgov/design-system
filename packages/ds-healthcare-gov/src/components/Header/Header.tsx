@@ -3,7 +3,7 @@ import DeConsumerMessage from './DeConsumerMessage';
 import Logo from '../Logo/Logo';
 import Menu from './Menu';
 import React, { useState } from 'react';
-import { _NativeDialog as NativeDialog, SkipNav, UsaBanner } from '@cmsgov/design-system';
+import { SkipNav, UsaBanner } from '@cmsgov/design-system';
 import { t } from '../i18n';
 import classnames from 'classnames';
 import defaultMenuLinks from './defaultMenuLinks';
@@ -236,21 +236,16 @@ export const Header = (props: HeaderProps) => {
                 firstName={props.firstName}
                 onMenuToggleClick={handleMenuToggleClick}
                 loggedIn={props.loggedIn}
-                open={props.isMenuOpen}
+                open={isMenuOpen}
                 links={links}
               />
-
-              {isMenuOpen && (
-                <NativeDialog id="hc-c-menu" className="hc-c-menu" exit={handleMenuToggleClick}>
-                  <Menu
-                    beforeLinks={beforeMenuLinks()}
-                    links={links}
-                    open={true}
-                    submenuTop={props.submenuTop}
-                    submenuBottom={props.submenuBottom}
-                  />
-                </NativeDialog>
-              )}
+              <Menu
+                beforeLinks={beforeMenuLinks()}
+                links={links}
+                open={isMenuOpen}
+                submenuTop={props.submenuTop}
+                submenuBottom={props.submenuBottom}
+              />
             </nav>
           </div>
         </div>

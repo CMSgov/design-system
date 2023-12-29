@@ -5,7 +5,6 @@ import Drawer from './Drawer';
 import { Button } from '../Button';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
-import { ChoiceList } from '../index';
 
 const meta: Meta<typeof Drawer> = {
   title: 'Components/Drawer',
@@ -99,15 +98,6 @@ export const DrawerToggleWithDrawer: Story = {
         <Button className="ds-c-drawer__toggle" variation="ghost" onClick={showDrawer}>
           Drawer Toggle
         </Button>
-        <ChoiceList
-          label="Radio buttons"
-          name="radio-buttons"
-          type="radio"
-          choices={[
-            { value: 'hello', label: 'Hello' },
-            { value: 'world', label: 'World' },
-          ]}
-        />
       </>
     );
   },

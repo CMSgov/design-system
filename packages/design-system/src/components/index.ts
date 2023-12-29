@@ -15,7 +15,6 @@ export * from './IdleTimeout';
 export * from './InlineError';
 export * from './Label';
 export * from './MonthPicker';
-export { NativeDialog as _NativeDialog } from './NativeDialog';
 export * from './Pagination';
 export * from './PrivacySettingsDialog';
 export * from './Review';
