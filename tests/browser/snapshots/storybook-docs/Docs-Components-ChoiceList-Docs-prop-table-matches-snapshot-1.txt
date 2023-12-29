@@ -1,0 +1,112 @@
+[
+  [
+    "choices*",
+    "Array of objects representing the props for each Choice in the ChoiceList\nChoiceProps[]",
+    "-"
+  ],
+  [
+    "className",
+    "Additional classes to be added to the root element.\nstring",
+    "-"
+  ],
+  [
+    "disabled",
+    "Disables the entire field.\nboolean",
+    "-"
+  ],
+  [
+    "errorId",
+    "The ID of the error message applied to this field. If none is provided, the id will be derived from the id prop for the field.\n\nstring",
+    "-"
+  ],
+  [
+    "errorMessage",
+    "Enable the error state by providing an error message.\nReactNode",
+    "-"
+  ],
+  [
+    "errorMessageClassName",
+    "Additional classes to be added to the error message\nstring",
+    "-"
+  ],
+  [
+    "errorPlacement",
+    "Location of the error message relative to the field input\n\"top\"\n\"bottom\"",
+    "-"
+  ],
+  [
+    "hint",
+    "Additional hint text to display\nReactNode",
+    "-"
+  ],
+  [
+    "hintId",
+    "The ID of the hint element\nstring",
+    "-"
+  ],
+  [
+    "id",
+    "A unique ID for this element. A unique ID will be generated if one isn't provided.\nstring",
+    "-"
+  ],
+  [
+    "inversed",
+    "Set to true to apply the \"inverse\" color scheme\nboolean",
+    "-"
+  ],
+  [
+    "label*",
+    "Label for the field.\nReactNode",
+    "-"
+  ],
+  [
+    "labelClassName",
+    "Additional classes to be added to the label\nstring",
+    "-"
+  ],
+  [
+    "labelId",
+    "A unique id to be used on the field label. If one isn't provided, a unique ID will be generated.\n\nstring",
+    "-"
+  ],
+  [
+    "name*",
+    "The field's name attribute\nstring",
+    "-"
+  ],
+  [
+    "onBlur",
+    "Called anytime any choice is blurred\n(...args: any[]) => any",
+    "-"
+  ],
+  [
+    "onChange",
+    "(...args: any[]) => any",
+    "-"
+  ],
+  [
+    "onComponentBlur",
+    "Called when any choice is blurred and the focus does not land on one of the other choices inside this component (i.e., when the whole component loses focus)\n\n(...args: any[]) => any",
+    "-"
+  ],
+  [
+    "ref",
+    "Ref<HTMLFieldSetElement>",
+    "-"
+  ],
+  [
+    "requirementLabel",
+    "Text showing the requirement (\"Required\", \"Optional\", etc.). See Required and Optional Fields.\nReactNode",
+    "-"
+  ],
+  [
+    "size",
+    "Sets the size of the checkbox or radio button\n\"small\"",
+    "-"
+  ],
+  [
+    "type*",
+    "Sets the type to render checkbox fields or radio buttons\n\"radio\"\n\"checkbox\"",
+    "-"
+  ]
+]

@@ -1,0 +1,27 @@
+[
+  [
+    "className",
+    "string",
+    "\"\""
+  ],
+  [
+    "fill",
+    "string",
+    "-"
+  ],
+  [
+    "height",
+    "string",
+    "\"39\""
+  ],
+  [
+    "id",
+    "string",
+    "-"
+  ],
+  [
+    "width",
+    "string",
+    "\"273\""
+  ]
+]

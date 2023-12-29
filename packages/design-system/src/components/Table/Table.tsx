@@ -172,20 +172,20 @@ export const Table = ({
     return child;
   });
 
-  return scrollable ? (
-    <div ref={containerRef} aria-live="polite" aria-relevant="additions" {...attributeScrollable}>
-      <TableContext.Provider value={contextValue}>
-        <table className={classes} role="table" {...tableProps}>
-          {renderedChildren}
-        </table>
-      </TableContext.Provider>
-    </div>
-  ) : (
+  const table = (
     <TableContext.Provider value={contextValue}>
-      <table className={classes} role="table" {...tableProps}>
+      <table className={classes} {...tableProps}>
         {renderedChildren}
       </table>
     </TableContext.Provider>
+  );
+
+  return scrollable ? (
+    <div ref={containerRef} aria-live="polite" aria-relevant="additions" {...attributeScrollable}>
+      {table}
+    </div>
+  ) : (
+    table
   );
 };
 

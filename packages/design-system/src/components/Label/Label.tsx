@@ -68,8 +68,12 @@ type LabelComponentProps = React.ComponentPropsWithRef<'label'> &
   LabelProps;
 
 /**
+ * The Label component describes individual form fields (as a `<label>`) or fieldsets (as
+ * a `<legend>`). They are built in to all form fields in the design system, but they can
+ * also be used on their own to create custom fields.
+ *
  * For information about how and when to use this component,
- * [refer to its full documentation page](https://design.cms.gov/components/form-label/).
+ * [refer to its full documentation page](https://design.cms.gov/components/label/).
  */
 export const Label = (props: LabelComponentProps) => {
   const {
@@ -113,12 +117,20 @@ export const Label = (props: LabelComponentProps) => {
     errorElement = <InlineError id={errorId}>{errorMessage}</InlineError>;
   }
 
+  let htmlFor = fieldId;
+  if (component === 'legend' && fieldId) {
+    console.warn(
+      'The `for` attribute is invalid for legends. Omitting `fieldId` from rendered element.'
+    );
+    htmlFor = undefined;
+  }
+
   const ComponentType = component;
   const classes = classNames('ds-c-label', className, inversed && 'ds-c-label--inverse');
 
   return (
     <>
-      <ComponentType className={classes} htmlFor={fieldId} id={id} {...labelProps}>
+      <ComponentType className={classes} htmlFor={htmlFor} id={id} {...labelProps}>
         {children}
       </ComponentType>
       {hintElement}

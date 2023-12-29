@@ -6,7 +6,7 @@ import { render, screen } from '@testing-library/react';
 
 describe('MultiInputDateField', () => {
   it('renders', () => {
-    const { container } = render(<MultiInputDateField />);
+    const { container } = render(<MultiInputDateField label="A date field" />);
 
     expect(container.querySelectorAll('label')).toHaveLength(3);
     expect(screen.getAllByText('/')).toHaveLength(2);

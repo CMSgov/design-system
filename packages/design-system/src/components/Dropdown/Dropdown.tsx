@@ -1,17 +1,21 @@
 import React, { useCallback, useRef, useState } from 'react';
+import DropdownMenu from './DropdownMenu';
+import debounce from '../utilities/debounce';
+import describeField from '../utilities/describeField';
 import classNames from 'classnames';
+import cleanFieldProps from '../utilities/cleanFieldProps';
 import mergeRefs from '../utilities/mergeRefs';
+import useClickOutsideHandler from '../utilities/useClickOutsideHandler';
+import useId from '../utilities/useId';
 import useAutofocus from '../utilities/useAutoFocus';
-import { FormFieldProps, useFormLabel } from '../FormLabel';
 import { Label } from '../Label';
 import { SvgIcon } from '../Icons';
 import { getFirstOptionValue, isOptGroup, parseChildren, validateProps } from './utils';
 import { Item, Section, useSelectState } from '../react-aria'; // from react-stately
 import { HiddenSelect, useButton, useSelect } from '../react-aria'; // from react-aria
-import DropdownMenu from './DropdownMenu';
-import useClickOutsideHandler from '../utilities/useClickOutsideHandler';
-import useId from '../utilities/useId';
-import debounce from '../utilities/debounce';
+import { useLabelProps, UseLabelPropsProps } from '../Label/useLabelProps';
+import { useHint, UseHintProps } from '../Hint/useHint';
+import { useInlineError, UseInlineErrorProps } from '../InlineError/useInlineError';
 
 const caretIcon = (
   <SvgIcon title="" viewBox="0 0 448 512" className="ds-u-font-size--sm">
@@ -23,8 +27,8 @@ export type DropdownSize = 'small' | 'medium';
 export type DropdownValue = number | string;
 
 export interface DropdownChangeObject {
-  target: { value: string };
-  currentTarget: { value: string };
+  target: { value: string; name: string };
+  currentTarget: { value: string; name: string };
 }
 
 export interface DropdownOption extends React.HTMLAttributes<'option'> {
@@ -36,7 +40,11 @@ export interface DropdownOptGroup extends React.HTMLAttributes<'optgroup'> {
   options: DropdownOption[];
 }
 
-export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
+export interface BaseDropdownProps {
+  /**
+   * Sets the focus on the dropdown when it is first added to the document.
+   */
+  autoFocus?: boolean;
   /**
    * Sets the initial selected state. Use this for an uncontrolled component;
    * otherwise, use the `value` property.
@@ -47,15 +55,15 @@ export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
    */
   disabled?: boolean;
   /**
+   * Additional classes to be added to the root element.
+   */
+  className?: string;
+  /**
    * Additional classes to be added to the dropdown button element
    */
   fieldClassName?: string;
   /**
-   * Sets the focus on the dropdown when it is first added to the document.
-   */
-  autoFocus?: boolean;
-  /**
-   * A unique ID to be used for the `button` element. If one isn't provided, a unique ID will be generated.  /**
+   * A unique ID to be used for the `button` element. If one isn't provided, a unique ID will be generated.
    * Additional hint text to display
    */
   id?: string;
@@ -64,7 +72,7 @@ export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
    */
   inputRef?: (...args: any[]) => any;
   /**
-   * Applies the "inverse" UI theme
+   * Set to `true` to apply the "inverse" color scheme
    */
   inversed?: boolean;
   /**
@@ -120,7 +128,8 @@ type OptionsOrChildren =
 
 export type DropdownProps = BaseDropdownProps &
   OptionsOrChildren &
-  Omit<React.ComponentPropsWithRef<'button'>, keyof BaseDropdownProps>;
+  Omit<React.ComponentPropsWithRef<'button'>, keyof BaseDropdownProps> &
+  Omit<UseLabelPropsProps & UseHintProps & UseInlineErrorProps, 'id' | 'inversed'>;
 
 /**
  * For information about how and when to use this component,
@@ -130,7 +139,6 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   validateProps(props);
 
   const id = useId('dropdown__button--', props.id);
-  const labelId = props.labelId ?? `${id}__label`;
   const buttonContentId = `${id}__button-content`;
   const menuId = `${id}__menu`;
 
@@ -147,6 +155,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     defaultValue,
     value,
     inputRef,
+    inversed,
     getA11yStatusMessage,
     getA11ySelectionMessage,
     ...extraProps
@@ -188,7 +197,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
 
     if (onChange) {
       // Try to support the old API that passed an event object
-      const target = { value };
+      const target = { value, name: props.name };
       onChange({
         target,
         currentTarget: target,
@@ -206,19 +215,8 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     onSelectionChange,
   });
 
-  const useFormLabelProps = useFormLabel({
-    ...extraProps,
-    id,
-    labelId,
-    className: classNames('ds-c-dropdown', className, state.isOpen && 'ds-c-dropdown--open'),
-    labelComponent: 'label',
-    wrapperIsFieldset: false,
-  });
-
-  // We don't want to pass these down to the button
-  delete useFormLabelProps.fieldProps.errorMessage;
-  delete useFormLabelProps.fieldProps.errorId;
-  delete useFormLabelProps.fieldProps.inversed;
+  const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
+  const { hintId, hintElement } = useHint({ ...props, id });
 
   const onBlur = useCallback(
     // The active element is always the document body during a focus transition,
@@ -245,21 +243,30 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   );
   const useButtonProps = useButton(useSelectProps.triggerProps, triggerRef);
 
+  const labelProps = {
+    ...useSelectProps.labelProps,
+    ...useLabelProps({ ...props, id }),
+    fieldId: id,
+  };
+
   const buttonProps = {
     ...useButtonProps.buttonProps,
-    ...useFormLabelProps.fieldProps,
+    ...cleanFieldProps(extraProps),
+    id,
     name: undefined,
     className: classNames(
       'ds-c-dropdown__button',
       'ds-c-field',
       props.errorMessage && 'ds-c-field--error',
-      props.inversed && 'ds-c-field--inverse',
+      inversed && 'ds-c-field--inverse',
       size && `ds-c-field--${size}`,
       fieldClassName
     ),
     ref: mergeRefs([triggerRef, inputRef, useAutofocus<HTMLButtonElement>(props.autoFocus)]),
     'aria-controls': menuId,
-    'aria-labelledby': `${buttonContentId} ${labelId}`,
+    'aria-labelledby': `${buttonContentId} ${labelProps.id}`,
+    'aria-invalid': invalid,
+    'aria-describedby': describeField({ ...props, hintId, errorId }),
     // TODO: Someday we may want to add this `combobox` role back to the button, but right
     // now desktop VoiceOver has an issue. It seems to interpret the selected value in the
     // button as user input that needs to be checked for spelling (default setting). It
@@ -270,18 +277,17 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     // role: 'combobox',
   };
 
-  const labelProps = {
-    ...useSelectProps.labelProps,
-    ...useFormLabelProps.labelProps,
-    fieldId: useFormLabelProps.fieldProps.id,
-  };
-
   const wrapperRef = useRef<HTMLDivElement>();
   useClickOutsideHandler([wrapperRef], () => state.setOpen(false));
 
   return (
-    <div {...useFormLabelProps.wrapperProps} ref={wrapperRef}>
+    <div
+      className={classNames('ds-c-dropdown', className, state.isOpen && 'ds-c-dropdown--open')}
+      ref={wrapperRef}
+    >
       <Label {...labelProps} />
+      {hintElement}
+      {topError}
       <HiddenSelect
         isDisabled={props.disabled}
         state={state}
@@ -299,7 +305,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
         <DropdownMenu
           {...useSelectProps.menuProps}
           componentClass="ds-c-dropdown"
-          labelId={labelId}
+          labelId={labelProps.id}
           menuId={menuId}
           rootId={id}
           size={size}
@@ -307,7 +313,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
           triggerRef={triggerRef}
         />
       )}
-      {useFormLabelProps.bottomError}
+      {bottomError}
     </div>
   );
 };

@@ -1,0 +1,37 @@
+[
+  [
+    "ariaClearLabel",
+    "Labels filter action, i.e., \"Remove.\" For screenreader support.\nstring",
+    "-"
+  ],
+  [
+    "className",
+    "Class to be applied to the outer <div> that contains filter chip button.\nstring",
+    "-"
+  ],
+  [
+    "id",
+    "Id for filter chip button. If not provided, a unique id will be automatically generated and used.\nstring",
+    "-"
+  ],
+  [
+    "label*",
+    "Text for the filter chip.\nstring",
+    "-"
+  ],
+  [
+    "onDelete*",
+    "Function to call when filter chip is dismissed.\n() => any",
+    "-"
+  ],
+  [
+    "size",
+    "Sets the size of the chip to larger version.\n\"big\"",
+    "-"
+  ],
+  [
+    "useAlternateIcon",
+    "Use alternate thinner close icon in place of standard.\nboolean",
+    "-"
+  ]
+]

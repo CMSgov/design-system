@@ -53,25 +53,20 @@ These scripts can all be run from the root level of the repo:
   - **Before** running `start` run the `build` command
 - `yarn storybook`
   - Starts storybook for easier local development for the core package
-  - `yarn storybook:healthcare` starts storybook for healthcare stories & styles
-  - `yarn storybook:medicare` starts storybook for medicare stories & styles
+  - `yarn storybook:react` starts Storybook with React instead of Preact
 - `yarn test`
-  - Runs JS unit tests
-  - Runs a11y accessibility tests against core storybook stories
+  - Alias of `yarn test:unit`
 - `yarn test:unit`
   - Runs JS unit tests for all packages
   - `yarn test:unit:update` updates [Jest snapshots](http://facebook.github.io/jest/docs/en/snapshot-testing.html)
-- `yarn test:a11y`
-  - Runs accessibility tests for design-system package only
-  - `yarn test:a11y:healthcare` to run the Healthcare.gov Design System's accessibility tests
-  - `yarn test:a11y:medicare` to run the Medicare.gov Design System's accessibility tests
 - `yarn test:browser`
-  - Runs visual regression tests using [Playwright](https://playwright.dev/). See [Visual regression testing](#visual-regression-testing) section below for details.
+  - Runs accessibility and visual-regression tests using [Playwright](https://playwright.dev/). See [Visual regression testing](#visual-regression-testing) section below for details.
   - Note that you need to build Storybook statically (`yarn build:storybook`) before you can run the tests
   - `yarn test:browser:update` updates reference screenshots used for visual regression testing. Update these only when we expect the visual changes
   - `yarn test:browser --project <name>` runs only one of the named projects found in [playwright.config.ts](/tests/browser/playwright.config.ts)
   - `yarn test:browser:interaction` runs VRT interaction tests to validate visual state of components after interaction.
   - `yarn test:browser:all` runs all VRT, static and interactive.
+  - `yarn test:browser:storybook-docs` checks for regressions in prop tables in storybook docs
 - `yarn lint`
   - Runs just the linting portion of the tests, eslint and stylelint
 - `yarn deploy-demo`

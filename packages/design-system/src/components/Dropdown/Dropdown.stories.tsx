@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Dropdown from './Dropdown';
 import type { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { useArgs } from '@storybook/preview-api';
-import { Dialog } from '../index';
 
 const meta: Meta<typeof Dropdown> = {
   title: 'Components/Dropdown',
   component: Dropdown,
   args: {
     name: 'dropdown-field',
+  },
+  argTypes: {
+    errorMessage: { control: 'text' },
+    hint: { control: 'text' },
+    requirementLabel: { control: 'text' },
   },
   parameters: {
     docs: {
@@ -73,16 +77,16 @@ const htmlOptions = (
 export const Default: Story = {
   args: {
     options: dropdownOptions,
-    label: 'Dropdown example',
+    label: 'Select your tribe name.',
   },
 };
 
 export const WithError: Story = {
   args: {
     options: dropdownOptions,
-    errorMessage: 'Example error message',
-    hint: 'Helpful hint text',
-    label: 'Error example',
+    errorMessage: 'This is an example error message.',
+    hint: 'This is where you put helpful hint text.',
+    label: 'Select your tribe name.',
   },
 };
 
@@ -114,14 +118,16 @@ export const OptionGroups: Story = {
         ],
       },
     ],
-    label: 'Option groups example',
+    label: 'Select an option.',
+    hint: 'This is an option-group example.',
   },
 };
 
 export const HtmlOptionGroups: Story = {
   args: {
     options: undefined,
-    label: 'Option group example',
+    label: 'Select an option.',
+    hint: 'In this example, options and groups are defined as HTML.',
     children: htmlOptGroups,
   },
 };
@@ -129,7 +135,8 @@ export const HtmlOptionGroups: Story = {
 export const HtmlOptions: Story = {
   args: {
     options: undefined,
-    label: 'Option group example',
+    label: 'Select an option.',
+    hint: 'In this example, options defined as HTML.',
     children: htmlOptions,
   },
 };
@@ -137,9 +144,9 @@ export const HtmlOptions: Story = {
 export const InverseOption: Story = {
   args: {
     options: dropdownOptions,
-    errorMessage: 'Example error message',
-    hint: 'Helpful hint text',
-    label: 'Inverse example',
+    errorMessage: 'This is an example error message.',
+    hint: 'This component is on an inversed background.',
+    label: 'Select your tribe name.',
     inversed: true,
   },
   parameters: {
@@ -152,7 +159,8 @@ export const InverseOption: Story = {
 export const Controlled: Story = {
   args: {
     options: dropdownOptions,
-    label: 'Dropdown example',
+    label: 'Select your tribe name.',
+    hint: 'In this example, the selected value is controlled by the parent component.',
     value: '3',
   },
   render: function Component(args) {

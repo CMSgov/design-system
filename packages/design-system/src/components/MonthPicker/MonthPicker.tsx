@@ -3,13 +3,16 @@ import React from 'react';
 import 'core-js/stable/array/includes';
 import Button, { ButtonVariation } from '../Button/Button';
 import Choice from '../ChoiceList/Choice';
-import { ChangeEvent, useState } from 'react';
 import classNames from 'classnames';
+import describeField from '../utilities/describeField';
+import useId from '../utilities/useId';
+import { ChangeEvent, useState } from 'react';
+import { Label } from '../Label';
 import { NUM_MONTHS, getMonthNames } from './getMonthNames';
 import { fallbackLocale, getLanguage, t } from '../i18n';
-import { FormFieldProps, useFormLabel } from '../FormLabel';
-import { Label } from '../Label';
-import useId from '../utilities/useId';
+import { useLabelProps, UseLabelPropsProps } from '../Label/useLabelProps';
+import { useHint, UseHintProps } from '../Hint/useHint';
+import { useInlineError, UseInlineErrorProps } from '../InlineError/useInlineError';
 
 const monthNumbers = (() => {
   const months = [];
@@ -19,9 +22,7 @@ const monthNumbers = (() => {
   return months;
 })();
 
-export type MonthPickerErrorPlacement = 'top' | 'bottom';
-
-interface MonthPickerProps extends FormFieldProps {
+interface BaseMonthPickerProps {
   /**
    * The `input` field's `name` attribute
    */
@@ -53,6 +54,14 @@ interface MonthPickerProps extends FormFieldProps {
    */
   defaultSelectedMonths?: number[];
   /**
+   * A unique ID for this element. A unique ID will be generated if one isn't provided.
+   */
+  id?: string;
+  /**
+   * Set to `true` to apply the "inverse" color scheme
+   */
+  inversed?: boolean;
+  /**
    * A callback function that's invoked when a month's checked state is changed.
    * Note: This callback is not called when a month is selected or deselected
    * via the "Select all" or "Clear all" buttons – use the `onSelectAll` and
@@ -70,6 +79,9 @@ interface MonthPickerProps extends FormFieldProps {
    */
   clearAllText?: string;
 }
+
+export type MonthPickerProps = BaseMonthPickerProps &
+  Omit<UseLabelPropsProps & UseHintProps & UseInlineErrorProps, 'id' | 'inversed'>;
 
 /**
  * For information about how and when to use this component,
@@ -89,7 +101,7 @@ export const MonthPicker = (props: MonthPickerProps) => {
     if (props.onChange) {
       props.onChange(event);
     }
-
+    console.log('isControlled ', isControlled);
     if (!isControlled) {
       const month = parseInt(event.target.value);
       const newSelectedMonths = selectedMonths.slice();
@@ -125,17 +137,19 @@ export const MonthPicker = (props: MonthPickerProps) => {
   const selectAllPressed = selectedMonths.length === NUM_MONTHS - disabledMonths.length;
   const clearAllPressed = selectedMonths.length === 0;
 
-  const { labelProps, wrapperProps, bottomError } = useFormLabel({
-    ...props,
-    className: classNames('ds-c-month-picker', props.className),
-    labelComponent: 'legend',
-    wrapperIsFieldset: true,
-    id,
-  });
+  const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
+  const { hintId, hintElement } = useHint({ ...props, id });
+  const labelProps = useLabelProps({ ...props, id });
 
   return (
-    <fieldset {...wrapperProps}>
-      <Label {...labelProps} />
+    <fieldset
+      aria-invalid={invalid}
+      aria-describedby={describeField({ ...props, hintId, errorId })}
+      className={classNames('ds-c-fieldset', 'ds-c-month-picker', props.className)}
+    >
+      <Label component="legend" {...labelProps} />
+      {hintElement}
+      {topError}
       <div className="ds-c-month-picker__buttons ds-u-clearfix">
         <Button
           aria-pressed={selectAllPressed}

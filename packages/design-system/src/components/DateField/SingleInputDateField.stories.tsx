@@ -7,9 +7,14 @@ const meta: Meta<typeof SingleInputDateField> = {
   title: 'Components/SingleInputDateField',
   component: SingleInputDateField,
   args: {
-    hint: 'Please enter your birthday',
-    label: 'Birthday',
+    hint: 'If you were born on a leap day, entering the date will either crash our servers or open a portal to an alternate dimension.',
+    label: 'Enter your date of birth.',
     name: 'single-input-date-field',
+  },
+  argTypes: {
+    errorMessage: { control: 'text' },
+    hint: { control: 'text' },
+    requirementLabel: { control: 'text' },
   },
   parameters: {
     docs: {
@@ -43,7 +48,7 @@ export const WithPicker: Story = {
   ...Default,
   args: {
     label: 'What day did you move?',
-    hint: 'This date should be within the past 60 days in order to qualify',
+    hint: 'This date should be within the past 60 days in order to qualify.',
     fromYear: new Date().getFullYear(),
     // TODO: Due to some unknown issue with this story that causes us to lose args
     // defined with query parameters, we can't supply a specific date in the
@@ -58,7 +63,7 @@ export const WithPicker: Story = {
 export const WithError = {
   ...Default,
   args: {
-    errorMessage: 'Example error message',
+    errorMessage: 'This is an example error message.',
     ...WithPicker.args,
   },
 };
