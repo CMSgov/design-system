@@ -26,12 +26,9 @@ Simplified representation of the HTML before the change:
 ```html
 <div>
   <label class="ds-c-label" for="text-field--1" id="text-field--1__label">
-    <span>Text Field Label</span>
+    <span>Text field label</span>
     <span class="ds-c-field__hint">Helpful hint text</span>
-    <span class="ds-c-inline-error">
-      <svg ... />
-      Example error message
-    </span>
+    <span class="ds-c-inline-error">Example error message</span>
   </label>
   <input id="text-field--1" />
 </div>
@@ -43,12 +40,9 @@ Simplified representation of the HTML after the change:
 
 ```html
 <div>
-  <label class="ds-c-label" for="text-field--1">Text Field Label</label>
-  <div id="text-field--1__hint" class="ds-c-hint">Helpful hint text</div>
-  <div id="text-field--1__error" class="ds-c-inline-error">
-    <svg ... />
-    Example error message
-  </div>
+  <label class="ds-c-label" for="text-field--1">Text field label</label>
+  <p id="text-field--1__hint" class="ds-c-hint">Helpful hint text</p>
+  <p id="text-field--1__error" class="ds-c-inline-error">Example error message</p>
   <input id="text-field--1" aria-describedby="text-field--1__error text-field--1__hint" />
 </div>
 ```
