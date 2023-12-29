@@ -92,6 +92,7 @@ const ActionMenu = function (props: ActionMenuProps) {
                   // packages/design-system/src/components/Alert/Alert.tsx#L114
                   onClick={() => sendHeaderEvent(link.label.toString(), link.href)}
                   className={classnames('hc-c-logged-out-links__link', link.className)}
+                  id={link.id}
                 >
                   {link.label}
                 </a>

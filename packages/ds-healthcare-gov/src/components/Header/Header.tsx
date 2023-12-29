@@ -14,6 +14,7 @@ export interface Link {
   // TODO: I don't think this is necessary to require - PW
   ariaLabel: string;
   className?: string;
+  id?: string;
   onClick?: (...args: any[]) => any;
 }
 
@@ -214,6 +215,10 @@ export const Header = (props: HeaderProps) => {
     hideLogoutLink: props.hideLogoutLink,
     hideLanguageSwitch: props.hideLanguageSwitch,
     customLinksPassedIn: hasCustomLinks,
+    loginLinkId: props.customIds?.loginLink,
+    loginLinkClass: props.customClassNames?.loginLink,
+    languageLinkId: props.customIds?.languageLink,
+    languageLinkClass: props.customClassNames?.languageLink,
   })[variation()];
 
   const links = hasCustomLinks
@@ -236,7 +241,7 @@ export const Header = (props: HeaderProps) => {
             >
               <Logo
                 className={props.customClassNames?.headerLogo ?? ''}
-                titleId={props.customIds?.headerLogo ?? ''}
+                wrapperId={props.customIds?.headerLogo ?? ''}
               />
             </a>
 

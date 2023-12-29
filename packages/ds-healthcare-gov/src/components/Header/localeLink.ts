@@ -7,7 +7,9 @@ export default function localeLink(
   t: TFunction,
   locale: Language,
   subpath = '',
-  switchLocaleLink?: string
+  switchLocaleLink?: string,
+  languageLinkId?: string,
+  languageLinkClass?: string
 ) {
   const defaultLocaleLink = languageMatches(locale, 'es')
     ? `https://www.healthcare.gov/${subpath}`
@@ -16,5 +18,7 @@ export default function localeLink(
     label: languageMatches(locale, 'es') ? t('header.english') : t('header.español'),
     ariaLabel: t('header.langAriaLabel'),
     href: switchLocaleLink ?? defaultLocaleLink,
+    id: languageLinkId,
+    className: languageLinkClass,
   };
 }
