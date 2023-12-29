@@ -4,8 +4,6 @@ order: 60
 intro: Labels, hints, and error messages are now in separate elements for better accessibility and flexibility
 ---
 
-import { Alert } from '@cmsgov/design-system';
-
 ## What changed and why
 
 Before this change, hints and error messages were being rendered inside a form field's `<label>` element. One exception was for fields with bottom-placed errors, where the error message would go below the field in its own element and linked to the field via `aria-describedby`. Here are some problems we found with the strategy of putting everything inside `<label>`:
@@ -56,15 +54,15 @@ You don't need to change anything unless your application does any of the follow
 
 If your application does either of the above, see the following sections for guidance on what you might need to change.
 
-### 1. Updating markup or label-component usage
+### Updating markup or label-component usage
 
 If you were using the `<FormLabel>` React component, there are a couple changes you need to know about and address:
 
 1. `<FormLabel>` has been renamed to `<Label>`
-2. `<FormLabel>` / `<Label>` is no longer responsible for rendering the hint text and inline-error messages. This functionality has been deprecated. Instead, you need to use [Hint](/components/hint) and [InlineError](/components/inline-error) directly.
+2. `<Label>` is no longer responsible for rendering the hint text and inline-error messages. This functionality has been deprecated. Instead, you need to use [Hint](/components/hint) and [InlineError](/components/inline-error) directly.
 
 If you were writing your own markup, make note of how the structure has changed in this new update and make changes accordingly. Most notably, do not put your hints and errors inside the `<label>` element.
 
-### 2. Updating custom styles for labels, hints, and inline errors
+### Updating custom styles for labels, hints, and inline errors
 
 If you were previously applying custom styles to labels, hints, and/or inline errors, you may have to update your CSS selectors. While these elements being independent means [inheritance will no longer cause issues](https://github.com/CMSgov/design-system/issues/1219), if your custom styles relied on this inheritance, they will need to be updated.
