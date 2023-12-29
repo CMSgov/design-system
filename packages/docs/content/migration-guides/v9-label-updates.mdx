@@ -47,4 +47,24 @@ Simplified representation of the HTML after the change:
 </div>
 ```
 
-## 
+## Do I need to update my code?
+
+You don't need to change anything unless your application does any of the following:
+
+1. Creates custom form fields by either using `<FormLabel>` directly or by writing your own label markup
+2. Applies custom styles to labels, hints, or inline errors
+
+If your application does either of the above, see the following sections for guidance on what you might need to change.
+
+### 1. Updating markup or label-component usage
+
+If you were using the `<FormLabel>` React component, there are a couple changes you need to know about and address:
+
+1. `<FormLabel>` has been renamed to `<Label>`
+2. `<FormLabel>` / `<Label>` is no longer responsible for rendering the hint text and inline-error messages. This functionality has been deprecated. Instead, you need to use [Hint](/components/hint) and [InlineError](/components/inline-error) directly.
+
+If you were writing your own markup, make note of how the structure has changed in this new update and make changes accordingly. Most notably, do not put your hints and errors inside the `<label>` element.
+
+### 2. Updating custom styles for labels, hints, and inline errors
+
+If you were previously applying custom styles to labels, hints, and/or inline errors, you may have to update your CSS selectors. While these elements being independent means [inheritance will no longer cause issues](https://github.com/CMSgov/design-system/issues/1219), if your custom styles relied on this inheritance, they will need to be updated.
