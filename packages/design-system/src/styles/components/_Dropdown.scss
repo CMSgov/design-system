@@ -104,6 +104,13 @@
 .ds-c-dropdown__menu-item--highlighted {
   background-color: var(--color-primary-lightest);
   outline: none;
+
+  @media (forced-colors: active) {
+    background-color: Highlight;
+    color: HighlightText;
+    forced-color-adjust: none;
+    -ms-high-contrast-adjust: none;
+  }
 }
 
 // Styles for dropdown elements that are selected

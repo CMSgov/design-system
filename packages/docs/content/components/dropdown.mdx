@@ -46,7 +46,7 @@ This component also makes use of some text input styles, which can be customized
 - **Fewer than seven options.** Use [radio buttons](/components/radio) or [checkboxes](/components/checkbox/) instead.
 - **More than 15 options.** If the list of options is very long. Let users type the same information into a text input that suggests possible options instead.
 - **Multi-select.** If you need to allow users to select more than one option at once. Users often don’t understand how to select multiple items from dropdowns. Use [checkboxes](/components/checkbox) instead.
-- **Site navigation.** Use the [navigation components](/components/vertical-nav/) instead.
+- **Site navigation.** Use the [navigation components](/components/vertical-navigation/) instead.
 
 ### Usage
 
@@ -59,9 +59,11 @@ This component also makes use of some text input styles, which can be customized
 
 **[View the "Forms" guidelines for additional guidance and best practices.](/patterns/Forms/forms/)**
 
-### Accessibility testing
+### Accessibility
 
-#### General observations
+#### Accessibility testing
+
+##### General observations
 
 - The dropdown list should be closed by default.
 - When the dropdown list is displayed, `aria-expanded` is set to `true` and, conversely, set to `false` when the listbox is closed.
@@ -69,7 +71,7 @@ This component also makes use of some text input styles, which can be customized
 - The dropdown button contains an `aria-controls` attribute which maps to an `id` on the listbox.
 - Selected option text that is longer than the dropdown button will be truncated, but the full text of that option will be displayed on multiple lines in the dropdown list.
 
-#### Keyboard testing
+##### Keyboard testing
 
 - When the Dropdown is closed and has focus
   - Users can open the listbox by pressing <kbd>Space</kbd>, <kbd>Enter</kbd>, <kbd>Down</kbd>, <kbd>Up</kbd>, <kbd>Alt</kbd> + <kbd>Up</kbd> or <kbd>Alt</kbd> + <kbd>Down</kbd>. When the listbox opens it highlights the current option
@@ -85,7 +87,7 @@ This component also makes use of some text input styles, which can be customized
   - <kbd>Home</kbd> key moves visual focus to the first option.
   - <kbd>End</kbd> key moves visual focus to the last option.
 
-#### Screen reader testing
+##### Screen reader testing
 
 - When I navigate to the Dropdown
   - If hints or errors are present, they are read.
@@ -95,7 +97,7 @@ This component also makes use of some text input styles, which can be customized
 
 <!-- [We need to implement this] I use the escape key and I hear it collapse and focus moves to the select -->
 
-#### Mobile screen reader testing
+##### Mobile screen reader testing
 
 - I can swipe to focus on the component.
 - I can hear the purpose of the element.
@@ -103,7 +105,7 @@ This component also makes use of some text input styles, which can be customized
 - I hear hints or errors are read.
 - I hear it indicate which option is selected.
 
-#### Pointer device testing
+##### Pointer device testing
 
 - I select anywhere inside the the dropdown button to display or hide the listbox.
 - I select an option by clicking anywhere inside the option list.
