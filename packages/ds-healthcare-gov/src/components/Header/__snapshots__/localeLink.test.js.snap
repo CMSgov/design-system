@@ -3,7 +3,9 @@
 exports[`localeLink returns English link 1`] = `
 Object {
   "ariaLabel": "header.langAriaLabel",
+  "className": undefined,
   "href": "https://www.healthcare.gov/",
+  "id": undefined,
   "label": "header.english",
 }
 `;
@@ -11,7 +13,9 @@ Object {
 exports[`localeLink returns English link with custom switch link 1`] = `
 Object {
   "ariaLabel": "header.langAriaLabel",
+  "className": undefined,
   "href": "https://localhelp.healthcare.gov",
+  "id": undefined,
   "label": "header.english",
 }
 `;
@@ -19,7 +23,9 @@ Object {
 exports[`localeLink returns English link with subpath 1`] = `
 Object {
   "ariaLabel": "header.langAriaLabel",
+  "className": undefined,
   "href": "https://www.healthcare.gov/tax-tool/",
+  "id": undefined,
   "label": "header.english",
 }
 `;
@@ -27,7 +33,9 @@ Object {
 exports[`localeLink returns Spanish link 1`] = `
 Object {
   "ariaLabel": "header.langAriaLabel",
+  "className": undefined,
   "href": "https://www.cuidadodesalud.gov/es/",
+  "id": undefined,
   "label": "header.español",
 }
 `;
@@ -35,7 +43,9 @@ Object {
 exports[`localeLink returns Spanish link with custom switch link 1`] = `
 Object {
   "ariaLabel": "header.langAriaLabel",
+  "className": undefined,
   "href": "https://ayudalocal.cuidadodesalud.gov/es",
+  "id": undefined,
   "label": "header.español",
 }
 `;
@@ -43,7 +53,19 @@ Object {
 exports[`localeLink returns Spanish link with subpath 1`] = `
 Object {
   "ariaLabel": "header.langAriaLabel",
+  "className": undefined,
   "href": "https://www.cuidadodesalud.gov/es/tax-tool/",
+  "id": undefined,
   "label": "header.español",
+}
+`;
+
+exports[`localeLink returns link with custom class and id 1`] = `
+Object {
+  "ariaLabel": "header.langAriaLabel",
+  "className": "custom-class",
+  "href": "https://www.healthcare.gov/",
+  "id": "custom-id",
+  "label": "header.english",
 }
 `;

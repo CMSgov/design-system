@@ -240,8 +240,8 @@ export const Header = (props: HeaderProps) => {
               className="hc-c-logo-link ds-l-col ds-l-col--auto"
             >
               <Logo
-                className={props.customClassNames?.headerLogo ?? ''}
-                wrapperId={props.customIds?.headerLogo ?? ''}
+                className={props.customClassNames?.headerLogo}
+                wrapperId={props.customIds?.headerLogo}
               />
             </a>
 

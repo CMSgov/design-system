@@ -13,7 +13,9 @@ Object {
     },
     Object {
       "ariaLabel": "CuidadoDeSalud.gov en Español",
+      "className": undefined,
       "href": "https://www.cuidadodesalud.gov/es/",
+      "id": undefined,
       "label": "Español",
     },
     Object {
@@ -25,11 +27,15 @@ Object {
   "logged-out": Array [
     Object {
       "ariaLabel": "CuidadoDeSalud.gov en Español",
+      "className": undefined,
       "href": "https://www.cuidadodesalud.gov/es/",
+      "id": undefined,
       "label": "Español",
     },
     Object {
+      "className": undefined,
       "href": "/login",
+      "id": undefined,
       "identifier": "login",
       "label": "Log in",
     },
@@ -50,7 +56,9 @@ Object {
     },
     Object {
       "ariaLabel": "CuidadoDeSalud.gov en Español",
+      "className": undefined,
       "href": "https://www.cuidadodesalud.gov/es/",
+      "id": undefined,
       "label": "Español",
     },
     Object {
@@ -62,11 +70,15 @@ Object {
   "logged-out": Array [
     Object {
       "ariaLabel": "CuidadoDeSalud.gov en Español",
+      "className": undefined,
       "href": "https://www.cuidadodesalud.gov/es/",
+      "id": undefined,
       "label": "Español",
     },
     Object {
+      "className": undefined,
       "href": "https://www.healthcare.gov/login",
+      "id": undefined,
       "identifier": "login",
       "label": "Log in",
     },
@@ -87,7 +99,9 @@ Object {
     },
     Object {
       "ariaLabel": "CuidadoDeSalud.gov en Español",
+      "className": undefined,
       "href": "https://ayudalocal.cuidadodesalud.gov/es",
+      "id": undefined,
       "label": "Español",
     },
     Object {
@@ -99,11 +113,15 @@ Object {
   "logged-out": Array [
     Object {
       "ariaLabel": "CuidadoDeSalud.gov en Español",
+      "className": undefined,
       "href": "https://ayudalocal.cuidadodesalud.gov/es",
+      "id": undefined,
       "label": "Español",
     },
     Object {
+      "className": undefined,
       "href": "/login",
+      "id": undefined,
       "identifier": "login",
       "label": "Log in",
     },
@@ -124,7 +142,9 @@ Object {
     },
     Object {
       "ariaLabel": "CuidadoDeSalud.gov en Español",
+      "className": undefined,
       "href": "https://www.cuidadodesalud.gov/es/tax-tool/",
+      "id": undefined,
       "label": "Español",
     },
     Object {
@@ -136,11 +156,15 @@ Object {
   "logged-out": Array [
     Object {
       "ariaLabel": "CuidadoDeSalud.gov en Español",
+      "className": undefined,
       "href": "https://www.cuidadodesalud.gov/es/tax-tool/",
+      "id": undefined,
       "label": "Español",
     },
     Object {
+      "className": undefined,
       "href": "/login",
+      "id": undefined,
       "identifier": "login",
       "label": "Log in",
     },
@@ -161,7 +185,9 @@ Object {
     },
     Object {
       "ariaLabel": "Healthcare.gov in English",
+      "className": undefined,
       "href": "https://www.healthcare.gov/",
+      "id": undefined,
       "label": "English",
     },
     Object {
@@ -173,11 +199,15 @@ Object {
   "logged-out": Array [
     Object {
       "ariaLabel": "Healthcare.gov in English",
+      "className": undefined,
       "href": "https://www.healthcare.gov/",
+      "id": undefined,
       "label": "English",
     },
     Object {
+      "className": undefined,
       "href": "/login",
+      "id": undefined,
       "identifier": "login",
       "label": "Iniciar sesión",
     },
@@ -198,7 +228,9 @@ Object {
     },
     Object {
       "ariaLabel": "Healthcare.gov in English",
+      "className": undefined,
       "href": "https://www.healthcare.gov/",
+      "id": undefined,
       "label": "English",
     },
     Object {
@@ -210,11 +242,15 @@ Object {
   "logged-out": Array [
     Object {
       "ariaLabel": "Healthcare.gov in English",
+      "className": undefined,
       "href": "https://www.healthcare.gov/",
+      "id": undefined,
       "label": "English",
     },
     Object {
+      "className": undefined,
       "href": "https://www.cuidadodesalud.gov/login",
+      "id": undefined,
       "identifier": "login",
       "label": "Iniciar sesión",
     },
@@ -235,7 +271,9 @@ Object {
     },
     Object {
       "ariaLabel": "Healthcare.gov in English",
+      "className": undefined,
       "href": "https://localhelp.healthcare.gov",
+      "id": undefined,
       "label": "English",
     },
     Object {
@@ -247,11 +285,15 @@ Object {
   "logged-out": Array [
     Object {
       "ariaLabel": "Healthcare.gov in English",
+      "className": undefined,
       "href": "https://localhelp.healthcare.gov",
+      "id": undefined,
       "label": "English",
     },
     Object {
+      "className": undefined,
       "href": "/login",
+      "id": undefined,
       "identifier": "login",
       "label": "Iniciar sesión",
     },
@@ -272,7 +314,9 @@ Object {
     },
     Object {
       "ariaLabel": "Healthcare.gov in English",
+      "className": undefined,
       "href": "https://www.healthcare.gov/tax-tool/",
+      "id": undefined,
       "label": "English",
     },
     Object {
@@ -284,11 +328,15 @@ Object {
   "logged-out": Array [
     Object {
       "ariaLabel": "Healthcare.gov in English",
+      "className": undefined,
       "href": "https://www.healthcare.gov/tax-tool/",
+      "id": undefined,
       "label": "English",
     },
     Object {
+      "className": undefined,
       "href": "/login",
+      "id": undefined,
       "identifier": "login",
       "label": "Iniciar sesión",
     },
@@ -315,7 +363,9 @@ Object {
   ],
   "logged-out": Array [
     Object {
+      "className": undefined,
       "href": "/login",
+      "id": undefined,
       "identifier": "login",
       "label": "Log in",
     },
@@ -336,7 +386,9 @@ Object {
     },
     Object {
       "ariaLabel": "CuidadoDeSalud.gov en Español",
+      "className": undefined,
       "href": "https://www.cuidadodesalud.gov/es/",
+      "id": undefined,
       "label": "Español",
     },
     Object {
@@ -348,7 +400,9 @@ Object {
   "logged-out": Array [
     Object {
       "ariaLabel": "CuidadoDeSalud.gov en Español",
+      "className": undefined,
       "href": "https://www.cuidadodesalud.gov/es/",
+      "id": undefined,
       "label": "Español",
     },
   ],
@@ -368,18 +422,24 @@ Object {
     },
     Object {
       "ariaLabel": "CuidadoDeSalud.gov en Español",
+      "className": undefined,
       "href": "https://www.cuidadodesalud.gov/es/",
+      "id": undefined,
       "label": "Español",
     },
   ],
   "logged-out": Array [
     Object {
       "ariaLabel": "CuidadoDeSalud.gov en Español",
+      "className": undefined,
       "href": "https://www.cuidadodesalud.gov/es/",
+      "id": undefined,
       "label": "Español",
     },
     Object {
+      "className": undefined,
       "href": "/login",
+      "id": undefined,
       "identifier": "login",
       "label": "Log in",
     },
@@ -392,7 +452,9 @@ Object {
   "logged-in": Array [
     Object {
       "ariaLabel": "CuidadoDeSalud.gov en Español",
+      "className": undefined,
       "href": "https://www.cuidadodesalud.gov/es/",
+      "id": undefined,
       "label": "Español",
     },
     Object {
@@ -404,11 +466,15 @@ Object {
   "logged-out": Array [
     Object {
       "ariaLabel": "CuidadoDeSalud.gov en Español",
+      "className": undefined,
       "href": "https://www.cuidadodesalud.gov/es/",
+      "id": undefined,
       "label": "Español",
     },
     Object {
+      "className": undefined,
       "href": "/login",
+      "id": undefined,
       "identifier": "login",
       "label": "Log in",
     },

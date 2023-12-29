@@ -2,21 +2,36 @@
 
 exports[`loginLink returns /login link 1`] = `
 Object {
+  "className": undefined,
   "href": "/login",
+  "id": undefined,
   "label": "header.login",
 }
 `;
 
 exports[`loginLink returns link with absolute URL 1`] = `
 Object {
+  "className": undefined,
   "href": "https://www.healthcare.gov/login",
+  "id": undefined,
+  "label": "header.login",
+}
+`;
+
+exports[`loginLink returns link with custom class and id 1`] = `
+Object {
+  "className": "custom-class",
+  "href": "https://www.healthcare.gov/login",
+  "id": "custom-id",
   "label": "header.login",
 }
 `;
 
 exports[`loginLink returns link with deConsumer param 1`] = `
 Object {
+  "className": undefined,
   "href": "/login?check_de=1",
+  "id": undefined,
   "label": "header.login",
 }
 `;

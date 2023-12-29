@@ -13,4 +13,10 @@ describe('loginLink', () => {
   it('returns link with absolute URL', () => {
     expect(loginLink(translate, false, 'https://www.healthcare.gov')).toMatchSnapshot();
   });
+
+  it('returns link with custom class and id', () => {
+    expect(
+      loginLink(translate, false, 'https://www.healthcare.gov', 'custom-id', 'custom-class')
+    ).toMatchSnapshot();
+  });
 });
