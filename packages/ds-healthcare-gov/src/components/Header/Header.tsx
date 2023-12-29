@@ -3,7 +3,7 @@ import DeConsumerMessage from './DeConsumerMessage';
 import Logo from '../Logo/Logo';
 import Menu from './Menu';
 import React, { useState } from 'react';
-import { SkipNav, UsaBanner } from '@cmsgov/design-system';
+import { _NativeDialog as NativeDialog, SkipNav, UsaBanner } from '@cmsgov/design-system';
 import { t } from '../i18n';
 import classnames from 'classnames';
 import defaultMenuLinks from './defaultMenuLinks';
@@ -142,8 +142,9 @@ export const VARIATION_NAMES = {
  * [refer to its full documentation page](https://design.cms.gov/components/header/healthcare-header/?theme=healthcare).
  */
 export const Header = (props: HeaderProps) => {
-  const [openMenu, setOpenMenu] = useState(false);
   const isControlledMenu = props.isMenuOpen !== undefined && props.onMenuToggle !== undefined;
+  const [internalIsMenuOpenState, setInternalIsMenuOpenState] = useState(false);
+  const isMenuOpen = isControlledMenu ? props.isMenuOpen : internalIsMenuOpenState;
 
   /**
    * Determines which variation of the header should be displayed,
@@ -184,10 +185,10 @@ export const Header = (props: HeaderProps) => {
    */
   function handleMenuToggleClick() {
     if (!isControlledMenu) {
-      setOpenMenu(!openMenu);
-    } else {
-      props.onMenuToggle();
+      setInternalIsMenuOpenState(!isMenuOpen);
     }
+
+    props.onMenuToggle?.();
   }
 
   const classes = classnames(`hc-c-header hc-c-header--${variation()}`, props.className);
@@ -235,16 +236,21 @@ export const Header = (props: HeaderProps) => {
                 firstName={props.firstName}
                 onMenuToggleClick={handleMenuToggleClick}
                 loggedIn={props.loggedIn}
-                open={isControlledMenu ? props.isMenuOpen : openMenu}
+                open={props.isMenuOpen}
                 links={links}
               />
-              <Menu
-                beforeLinks={beforeMenuLinks()}
-                links={links}
-                open={isControlledMenu ? props.isMenuOpen : openMenu}
-                submenuTop={props.submenuTop}
-                submenuBottom={props.submenuBottom}
-              />
+
+              {isMenuOpen && (
+                <NativeDialog id="hc-c-menu" className="hc-c-menu" exit={handleMenuToggleClick}>
+                  <Menu
+                    beforeLinks={beforeMenuLinks()}
+                    links={links}
+                    open={true}
+                    submenuTop={props.submenuTop}
+                    submenuBottom={props.submenuBottom}
+                  />
+                </NativeDialog>
+              )}
             </nav>
           </div>
         </div>

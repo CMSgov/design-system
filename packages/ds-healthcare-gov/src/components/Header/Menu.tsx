@@ -20,12 +20,12 @@ interface MenuProps {
 }
 
 const Menu = (props: MenuProps) => {
-  const classes = classnames('hc-c-menu', {
-    'hc-c-menu--open': props.open,
-  });
+  // const classes = classnames('hc-c-menu', {
+  //   'hc-c-menu--open': props.open,
+  // });
 
   return (
-    <div id="hc-c-menu" hidden={!props.open} className={classes}>
+    <div>
       {props.submenuTop}
       {props.beforeLinks}
       {props.links && <MenuLinks links={props.links} />}

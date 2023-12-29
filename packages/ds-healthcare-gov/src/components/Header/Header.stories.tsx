@@ -2,6 +2,7 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import Header from './Header';
 import { useArgs } from '@storybook/preview-api';
+import { ChoiceList } from '@cmsgov/design-system';
 
 // Because the DS exports the wrapped Header component, Header props are not shown in the args table
 // TODO: look into later if storybook is used more publicly
@@ -29,6 +30,22 @@ export const LoggedInHeader: Story = {
   args: {
     loggedIn: true,
   },
+  render: function Component(args) {
+    return (
+      <>
+        <Header {...args} />
+        <ChoiceList
+          label="Radio buttons"
+          name="radio-buttons"
+          type="radio"
+          choices={[
+            { value: 'hello', label: 'Hello' },
+            { value: 'world', label: 'World' },
+          ]}
+        />
+      </>
+    );
+  },
 };
 
 export const LoggedOutHeader: Story = {};
@@ -40,6 +57,19 @@ export const LoggedInControlledHeader: Story = {
   },
   render: function Component(args) {
     const [{ isMenuOpen }, updateArgs] = useArgs();
-    return <Header {...args} onMenuToggle={() => updateArgs({ isMenuOpen: !isMenuOpen })} />;
+    return (
+      <>
+        <Header {...args} onMenuToggle={() => updateArgs({ isMenuOpen: !isMenuOpen })} />
+        <ChoiceList
+          label="Radio buttons"
+          name="radio-buttons"
+          type="radio"
+          choices={[
+            { value: 'hello', label: 'Hello' },
+            { value: 'world', label: 'World' },
+          ]}
+        />
+      </>
+    );
   },
 };
