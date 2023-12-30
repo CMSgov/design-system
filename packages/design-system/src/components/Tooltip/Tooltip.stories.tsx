@@ -3,6 +3,7 @@ import Tooltip from './Tooltip';
 import TooltipIcon from './TooltipIcon';
 import Button from '../Button/Button';
 import type { Meta, StoryObj } from '@storybook/react';
+import { ChoiceList } from '../index';
 
 const meta: Meta<typeof Tooltip> = {
   title: 'Components/Tooltip',
@@ -51,8 +52,21 @@ export const IconTrigger: Story = {
   render: function Component(args) {
     return (
       <>
-        <p className="ds-u-margin--0 ds-u-display--inline">Tooltip with icon trigger</p>
-        <Tooltip {...(args as any)} />
+        <p className="ds-u-margin--0 ds-u-display--inline">
+          Tooltip with icon trigger <Tooltip {...(args as any)} placement="bottom" />
+        </p>
+
+        <p style={{ maxWidth: '113px', margin: '0 auto' }}>
+          <ChoiceList
+            label="Radio buttons"
+            name="radio-buttons"
+            type="radio"
+            choices={[
+              { value: 'hello', label: 'Hello' },
+              { value: 'world', label: 'World' },
+            ]}
+          />
+        </p>
       </>
     );
   },
