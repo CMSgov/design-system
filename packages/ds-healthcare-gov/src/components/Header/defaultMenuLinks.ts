@@ -1,6 +1,5 @@
 import { Link, VARIATION_NAMES } from './Header';
 import localeLink from './localeLink';
-import loginLink from './loginLink';
 import { t, getLanguage, languageMatches } from '../i18n';
 
 export enum LinkIdentifier {
@@ -67,7 +66,10 @@ export function defaultMenuLinks(options: DefaultMenuLinkOptions = {}) {
   }
 
   if (!hideLoginLink) {
-    const logLink = loginLink(t, deConsumer, primaryDomain);
+    const logLink = {
+      label: t('header.login'),
+      href: deConsumer ? `${primaryDomain}/login?check_de=1` : `${primaryDomain}/login`,
+    };
     loggedOut.push(Object.assign({ identifier: LinkIdentifier.LOGIN }, logLink));
   }
 
