@@ -5,7 +5,8 @@
 
   background-color: var(--color-background);
   box-shadow: 0 var(--shadow) var(--shadow) (calc(var(--shadow) * -1)) var(--color-gray-light);
-  isolation: isolate;
+  position: relative;
+  z-index: 1;
 
   > .ds-l-container {
     position: relative;

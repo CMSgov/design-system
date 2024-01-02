@@ -211,12 +211,11 @@ export const Header = (props: HeaderProps) => {
 
   return (
     <>
+      <SkipNav href={props.skipNavHref} onClick={props.onSkipNavClick}>
+        {t('header.skipNav')}
+      </SkipNav>
       {props.showUsaBanner && <UsaBanner id="hc-c-header__usa-banner" />}
       <header className={classes} role="banner" aria-label="global">
-        <SkipNav href={props.skipNavHref} onClick={props.onSkipNavClick}>
-          {t('header.skipNav')}
-        </SkipNav>
-
         <div className="ds-l-container">
           <div className="ds-l-row ds-u-align-items--center ds-u-flex-wrap--nowrap ds-u-padding-y--2">
             <a
