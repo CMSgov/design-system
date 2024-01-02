@@ -92,7 +92,16 @@ export const DisabledField: Story = {
   args: { disabled: true },
 };
 
+const disabledArg = {
+  table: {
+    disable: true,
+  },
+};
+
 export const AllMaskedFields: Story = {
+  argTypes: {
+    labelMask: disabledArg,
+  },
   render: function Component(args) {
     return (
       <>
@@ -149,6 +158,9 @@ export const LabelMaskedPhone: Story = {
     labelMask: 'PHONE_MASK' as any,
     numeric: true,
   },
+  argTypes: {
+    mask: disabledArg,
+  },
 };
 
 export const LabelMaskedSSN: Story = {
@@ -159,6 +171,9 @@ export const LabelMaskedSSN: Story = {
     hint: 'This number was administered to you by the Social Security Administration.',
     labelMask: 'SSN_MASK' as any,
     numeric: true,
+  },
+  argTypes: {
+    mask: disabledArg,
   },
 };
 
@@ -171,6 +186,9 @@ export const LabelMaskedPostalCode: Story = {
     labelMask: 'ZIP_MASK' as any,
     numeric: true,
   },
+  argTypes: {
+    mask: disabledArg,
+  },
 };
 
 export const LabelMaskedCurrency: Story = {
@@ -181,5 +199,8 @@ export const LabelMaskedCurrency: Story = {
     hint: 'This should be a dollar amount.',
     labelMask: 'CURRENCY_MASK' as any,
     numeric: true,
+  },
+  argTypes: {
+    mask: disabledArg,
   },
 };
