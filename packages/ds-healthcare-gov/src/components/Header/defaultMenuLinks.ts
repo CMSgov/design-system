@@ -1,6 +1,5 @@
 import { Link, VARIATION_NAMES } from './Header';
-import localeLink from './localeLink';
-import { t, getLanguage, languageMatches } from '../i18n';
+import { t, languageMatches } from '../i18n';
 
 export enum LinkIdentifier {
   LOGIN = 'login',
@@ -38,8 +37,7 @@ export function defaultMenuLinks(options: DefaultMenuLinkOptions = {}) {
     hideLanguageSwitch,
     customLinksPassedIn,
   } = options;
-  const isSpanish = languageMatches('es', getLanguage());
-  const ffmLocalePath = isSpanish ? 'es_MX' : 'en_US';
+  const isSpanish = languageMatches('es');
 
   // NOTE: order matters here and links will be displayed in order added to the arrays
   const loggedOut = [];
@@ -49,6 +47,7 @@ export function defaultMenuLinks(options: DefaultMenuLinkOptions = {}) {
   // respective variations. This means the language and login will show even if a custom set
   // of links is passed in.
   if (!customLinksPassedIn) {
+    const ffmLocalePath = isSpanish ? 'es_MX' : 'en_US';
     loggedIn.push({
       label: t('header.myApplicationsAndCoverage'),
       href: `${primaryDomain}/marketplace/auth/global/${ffmLocalePath}/myProfile#landingPage`,
@@ -75,11 +74,11 @@ export function defaultMenuLinks(options: DefaultMenuLinkOptions = {}) {
   }
 
   if (!hideLoginLink) {
-    const logLink = {
+    loggedOut.push({
+      identifier: LinkIdentifier.LOGIN,
       label: t('header.login'),
       href: deConsumer ? `${primaryDomain}/login?check_de=1` : `${primaryDomain}/login`,
-    };
-    loggedOut.push(Object.assign({ identifier: LinkIdentifier.LOGIN }, logLink));
+    });
   }
 
   if (!hideLogoutLink) {
