@@ -49,7 +49,7 @@ export const WithPicker: Story = {
   args: {
     label: 'What day did you move?',
     hint: 'This date should be within the past 60 days in order to qualify.',
-    fromYear: new Date().getFullYear(),
+    fromYear: 2023,
     // TODO: Due to some unknown issue with this story that causes us to lose args
     // defined with query parameters, we can't supply a specific date in the
     // browser interaction tests in order to get consistent screenshots. We want
