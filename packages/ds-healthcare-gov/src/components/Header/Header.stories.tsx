@@ -34,15 +34,17 @@ export const LoggedInHeader: Story = {
     return (
       <>
         <Header {...args} />
-        <ChoiceList
-          label="Radio buttons"
-          name="radio-buttons"
-          type="radio"
-          choices={[
-            { value: 'hello', label: 'Hello' },
-            { value: 'world', label: 'World' },
-          ]}
-        />
+        <div style={{ marginTop: '-72px' }}>
+          <ChoiceList
+            label="Radio buttons"
+            name="radio-buttons"
+            type="radio"
+            choices={[
+              { value: 'hello', label: 'Hello' },
+              { value: 'world', label: 'World' },
+            ]}
+          />
+        </div>
       </>
     );
   },
@@ -60,15 +62,17 @@ export const LoggedInControlledHeader: Story = {
     return (
       <>
         <Header {...args} onMenuToggle={() => updateArgs({ isMenuOpen: !isMenuOpen })} />
-        <ChoiceList
-          label="Radio buttons"
-          name="radio-buttons"
-          type="radio"
-          choices={[
-            { value: 'hello', label: 'Hello' },
-            { value: 'world', label: 'World' },
-          ]}
-        />
+        <div style={{ marginTop: '-45px' }}>
+          <ChoiceList
+            label="Radio buttons"
+            name="radio-buttons"
+            type="radio"
+            choices={[
+              { value: 'hello', label: 'Hello' },
+              { value: 'world', label: 'World' },
+            ]}
+          />
+        </div>
       </>
     );
   },
