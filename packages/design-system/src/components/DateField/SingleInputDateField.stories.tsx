@@ -56,7 +56,7 @@ export const WithPicker: Story = {
     // to set this to an arbitrary date in the past so it always takes a screenshot
     // of the same calendar view every time. If we can solve the root problem, we
     // can move this setting of the toDate to the `.test.interaction.ts` file.
-    toDate: new Date(1676498194272),
+    toDate: new Date('2023-02-15T21:56:34.272Z'),
   },
 };
 
