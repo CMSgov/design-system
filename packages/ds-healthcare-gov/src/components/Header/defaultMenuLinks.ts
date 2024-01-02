@@ -60,7 +60,16 @@ export function defaultMenuLinks(options: DefaultMenuLinkOptions = {}) {
   }
 
   if (!hideLanguageSwitch) {
-    const locLink = localeLink(t, getLanguage() ?? getLanguage(), subpath, switchLocaleLink);
+    const defaultLocaleLink = isSpanish
+      ? `https://www.healthcare.gov/${subpath}`
+      : `https://www.cuidadodesalud.gov/es/${subpath}`;
+
+    const locLink = {
+      label: isSpanish ? t('header.english') : t('header.español'),
+      ariaLabel: t('header.langAriaLabel'),
+      href: switchLocaleLink ?? defaultLocaleLink,
+    };
+
     loggedOut.push(locLink);
     loggedIn.push(locLink);
   }
