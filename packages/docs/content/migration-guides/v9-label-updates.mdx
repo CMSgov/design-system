@@ -1,7 +1,7 @@
 ---
 title: Separating labels, hints, and errors in v9
-order: 60
-intro: Labels, hints, and error messages are now in separate elements for better accessibility and flexibility
+order: 30
+intro: Labels, hints, and error messages are now in separate elements for better accessibility and flexibility.
 ---
 
 ## What changed and why
@@ -11,7 +11,7 @@ Before this change, hints and error messages were being rendered inside a form f
 1. Links and other interactive content in the hints and error messages would interfere with assistive technology by being inside the `<label>`.
 2. Hints and error messages were harder to customize and style being inside the `<label>` element and its React component.
 3. Error-message placement being variable but rendered by the [Label](/components/label) component (previously called `FormLabel`) made the code harder to reason about, and that difficulty extended to custom fields made by application teams.
-4. Error-message placement being variable and implemented differently in the markup lead to inconsistent screen-reader experiences
+4. Error-message placement being variable and implemented differently in the markup lead to inconsistent screen-reader experiences.
 
 Some of these reasons affected our team more than application teams, but the main reason we set about separating them was that first acccessibility concern. Interactive content needs to have its own home separate from the `<label>` element, and that policy needs to be clear and easy to implement by everyone.
 
@@ -49,8 +49,8 @@ Simplified representation of the HTML after the change:
 
 You don't need to change anything unless your application does any of the following:
 
-1. Creates custom form fields by either using `<FormLabel>` directly or by writing your own label markup
-2. Applies custom styles to labels, hints, or inline errors
+1. Creates custom form fields by either using `<FormLabel>` directly or by writing your own label markup.
+2. Applies custom styles to labels, hints, or inline errors.
 
 If your application does either of the above, see the following sections for guidance on what you might need to change.
 
@@ -58,7 +58,7 @@ If your application does either of the above, see the following sections for gui
 
 If you were using the `<FormLabel>` React component, there are a couple changes you need to know about and address:
 
-1. `<FormLabel>` has been renamed to `<Label>`
+1. `<FormLabel>` has been renamed to `<Label>`.
 2. `<Label>` is no longer responsible for rendering the hint text and inline-error messages. This functionality has been deprecated. Instead, you need to use [Hint](/components/hint) and [InlineError](/components/inline-error) directly.
 
 If you were writing your own markup, make note of how the structure has changed in this new update and make changes accordingly. Most notably, do not put your hints and errors inside the `<label>` element.
