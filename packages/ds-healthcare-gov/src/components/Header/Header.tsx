@@ -146,8 +146,6 @@ export const Header = (props: HeaderProps) => {
   const [internalIsMenuOpenState, setInternalIsMenuOpenState] = useState(false);
   const isMenuOpen = isControlledMenu ? props.isMenuOpen : internalIsMenuOpenState;
 
-  const variation = props.loggedIn ? VARIATION_NAMES.LOGGED_IN : VARIATION_NAMES.LOGGED_OUT;
-
   /**
    * Event handler for when the "Menu" or "Close" button
    * within ActionMenu is clicked.
@@ -160,6 +158,7 @@ export const Header = (props: HeaderProps) => {
     props.onMenuToggle?.();
   }
 
+  const variation = props.loggedIn ? VARIATION_NAMES.LOGGED_IN : VARIATION_NAMES.LOGGED_OUT;
   const classes = classnames(`hc-c-header hc-c-header--${variation}`, props.className);
 
   const hasCustomLinks = !!props.links;
