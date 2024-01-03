@@ -147,7 +147,6 @@ export const Header = (props: HeaderProps) => {
   const isMenuOpen = isControlledMenu ? props.isMenuOpen : internalIsMenuOpenState;
 
   const variation = props.loggedIn ? VARIATION_NAMES.LOGGED_IN : VARIATION_NAMES.LOGGED_OUT;
-  const isLoggedIn = variation === VARIATION_NAMES.LOGGED_IN;
 
   /**
    * Event handler for when the "Menu" or "Close" button
@@ -180,7 +179,7 @@ export const Header = (props: HeaderProps) => {
     : defaultLinksForVariation;
 
   const beforeMenuLinks =
-    isLoggedIn && props.firstName ? (
+    props.loggedIn && props.firstName ? (
       <div className="ds-u-sm-display--none ds-u-border-bottom--1 ds-u-margin-x--1 ds-u-padding-y--1 hc-c-header__name">
         {props.firstName}
       </div>
