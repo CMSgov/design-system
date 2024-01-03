@@ -146,38 +146,8 @@ export const Header = (props: HeaderProps) => {
   const [internalIsMenuOpenState, setInternalIsMenuOpenState] = useState(false);
   const isMenuOpen = isControlledMenu ? props.isMenuOpen : internalIsMenuOpenState;
 
-  /**
-   * Determines which variation of the header should be displayed,
-   * based on the props being passed into the component.
-   * @returns {String} Variation name
-   */
-  function variation(): string {
-    if (props.loggedIn) {
-      // Logged-in state, with minimal navigation
-      return VARIATION_NAMES.LOGGED_IN;
-    } else {
-      // Logged-out state, either Learn or Product
-      return VARIATION_NAMES.LOGGED_OUT;
-    }
-  }
-
-  function isLoggedIn() {
-    return variation() === VARIATION_NAMES.LOGGED_IN;
-  }
-
-  /**
-   * Content rendered within <Menu>, before the list of links
-   * @returns {Node}
-   */
-  function beforeMenuLinks(): JSX.Element {
-    if (isLoggedIn() && props.firstName) {
-      return (
-        <div className="ds-u-sm-display--none ds-u-border-bottom--1 ds-u-margin-x--1 ds-u-padding-y--1 hc-c-header__name">
-          {props.firstName}
-        </div>
-      );
-    }
-  }
+  const variation = props.loggedIn ? VARIATION_NAMES.LOGGED_IN : VARIATION_NAMES.LOGGED_OUT;
+  const isLoggedIn = variation === VARIATION_NAMES.LOGGED_IN;
 
   /**
    * Event handler for when the "Menu" or "Close" button
@@ -191,7 +161,7 @@ export const Header = (props: HeaderProps) => {
     props.onMenuToggle?.();
   }
 
-  const classes = classnames(`hc-c-header hc-c-header--${variation()}`, props.className);
+  const classes = classnames(`hc-c-header hc-c-header--${variation}`, props.className);
 
   const hasCustomLinks = !!props.links;
   const defaultLinksForVariation = defaultMenuLinks({
@@ -203,11 +173,18 @@ export const Header = (props: HeaderProps) => {
     hideLogoutLink: props.hideLogoutLink,
     hideLanguageSwitch: props.hideLanguageSwitch,
     customLinksPassedIn: hasCustomLinks,
-  })[variation()];
+  })[variation];
 
   const links = hasCustomLinks
     ? props.links.concat(defaultLinksForVariation)
     : defaultLinksForVariation;
+
+  const beforeMenuLinks =
+    isLoggedIn && props.firstName ? (
+      <div className="ds-u-sm-display--none ds-u-border-bottom--1 ds-u-margin-x--1 ds-u-padding-y--1 hc-c-header__name">
+        {props.firstName}
+      </div>
+    ) : undefined;
 
   return (
     <>
@@ -239,7 +216,7 @@ export const Header = (props: HeaderProps) => {
                 links={links}
               />
               <Menu
-                beforeLinks={beforeMenuLinks()}
+                beforeLinks={beforeMenuLinks}
                 links={links}
                 open={isMenuOpen}
                 submenuTop={props.submenuTop}
