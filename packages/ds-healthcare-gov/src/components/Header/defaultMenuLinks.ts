@@ -29,7 +29,7 @@ export interface DefaultMenuLinkOptions {
 export function defaultMenuLinks(options: DefaultMenuLinkOptions = {}) {
   const {
     deConsumer,
-    subpath,
+    subpath = '',
     primaryDomain = '',
     switchLocaleLink,
     hideLoginLink,
