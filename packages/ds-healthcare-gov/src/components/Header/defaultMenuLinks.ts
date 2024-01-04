@@ -21,6 +21,10 @@ export interface DefaultMenuLinkOptions {
   hideLogoutLink?: boolean;
   hideLanguageSwitch?: boolean;
   customLinksPassedIn?: boolean;
+  loginLinkId?: string;
+  loginLinkClass?: string;
+  languageLinkId?: string;
+  languageLinkClass?: string;
 }
 
 /**
@@ -38,6 +42,10 @@ export function defaultMenuLinks(options: DefaultMenuLinkOptions = {}) {
     hideLogoutLink,
     hideLanguageSwitch,
     customLinksPassedIn,
+    loginLinkId,
+    loginLinkClass,
+    languageLinkId,
+    languageLinkClass,
   } = options;
   const isSpanish = languageMatches('es', getLanguage());
   const ffmLocalePath = isSpanish ? 'es_MX' : 'en_US';
@@ -61,13 +69,20 @@ export function defaultMenuLinks(options: DefaultMenuLinkOptions = {}) {
   }
 
   if (!hideLanguageSwitch) {
-    const locLink = localeLink(t, getLanguage() ?? getLanguage(), subpath, switchLocaleLink);
+    const locLink = localeLink(
+      t,
+      getLanguage() ?? getLanguage(),
+      subpath,
+      switchLocaleLink,
+      languageLinkId,
+      languageLinkClass
+    );
     loggedOut.push(locLink);
     loggedIn.push(locLink);
   }
 
   if (!hideLoginLink) {
-    const logLink = loginLink(t, deConsumer, primaryDomain);
+    const logLink = loginLink(t, deConsumer, primaryDomain, loginLinkId, loginLinkClass);
     loggedOut.push(Object.assign({ identifier: LinkIdentifier.LOGIN }, logLink));
   }
 

@@ -14,6 +14,7 @@ export interface Link {
   // TODO: I don't think this is necessary to require - PW
   ariaLabel: string;
   className?: string;
+  id?: string;
   onClick?: (...args: any[]) => any;
 }
 
@@ -122,9 +123,21 @@ export interface HeaderProps {
   isMenuOpen?: boolean;
   onMenuToggle?: () => void;
   /**
-   * Additional classes to be added to the Logo component
+   * Additional classes to be added
    */
-  logoClassName?: string;
+  customClassNames?: {
+    headerLogo?: string;
+    languageLink?: string;
+    loginLink?: string;
+  };
+  /**
+   * Additional ids to be added
+   */
+  customIds?: {
+    headerLogo?: string;
+    languageLink?: string;
+    loginLink?: string;
+  };
   /**
    * Temporary feature flag for showing or not showing the USA Banner above the
    * header. Defaults to true
@@ -203,6 +216,10 @@ export const Header = (props: HeaderProps) => {
     hideLogoutLink: props.hideLogoutLink,
     hideLanguageSwitch: props.hideLanguageSwitch,
     customLinksPassedIn: hasCustomLinks,
+    loginLinkId: props.customIds?.loginLink,
+    loginLinkClass: props.customClassNames?.loginLink,
+    languageLinkId: props.customIds?.languageLink,
+    languageLinkClass: props.customClassNames?.languageLink,
   })[variation()];
 
   const links = hasCustomLinks
@@ -222,7 +239,10 @@ export const Header = (props: HeaderProps) => {
               href={props.primaryDomain ? props.primaryDomain : '/'}
               className="hc-c-logo-link ds-l-col ds-l-col--auto"
             >
-              <Logo className={props.logoClassName ?? ''} />
+              <Logo
+                className={props.customClassNames?.headerLogo}
+                wrapperId={props.customIds?.headerLogo}
+              />
             </a>
 
             <nav

@@ -137,10 +137,38 @@ describe('Header', function () {
   it('should render custom classes provided for Logo', () => {
     const customClass = 'custom-class-logo';
     const { baseElement } = makeHeader({
-      logoClassName: customClass,
+      customClassNames: { headerLogo: customClass },
     });
     const logo = baseElement.querySelector('.hc-c-logo');
     expect(logo.className.includes(customClass)).toBe(true);
+  });
+
+  it('should render custom class and id provided for language switch link', () => {
+    const customClass = 'custom-class-lang';
+    const customId = 'custom-id-lang';
+    makeHeader({
+      customClassNames: { languageLink: customClass },
+      customIds: { languageLink: customId },
+    });
+
+    const languageSwitch = screen.getAllByText('Español')[0];
+    expect(languageSwitch).toBeInTheDocument();
+    expect(languageSwitch.className.includes(customClass)).toBe(true);
+    expect(languageSwitch.id.includes(customId)).toBe(true);
+  });
+
+  it('should render custom class and id provided for login link', () => {
+    const customClass = 'custom-class-login';
+    const customId = 'custom-id-login';
+    makeHeader({
+      customClassNames: { loginLink: customClass },
+      customIds: { loginLink: customId },
+    });
+
+    const loginLink = screen.queryAllByText('Log in')[0];
+    expect(loginLink).toBeInTheDocument();
+    expect(loginLink.className.includes(customClass)).toBe(true);
+    expect(loginLink.id.includes(customId)).toBe(true);
   });
 
   it('should render custom classes provided within links', () => {

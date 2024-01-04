@@ -29,4 +29,10 @@ describe('localeLink', () => {
       localeLink(translate, 'es', undefined, 'https://localhelp.healthcare.gov')
     ).toMatchSnapshot();
   });
+
+  it('returns link with custom class and id', () => {
+    expect(
+      localeLink(translate, 'es', undefined, undefined, 'custom-id', 'custom-class')
+    ).toMatchSnapshot();
+  });
 });
