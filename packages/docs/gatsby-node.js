@@ -63,6 +63,12 @@ exports.createPages = async ({ graphql, actions }) => {
     toPath: '/components/label/',
     isPermanent: true,
   });
+
+  createRedirect({
+    fromPath: '/foundation/list/',
+    toPath: '/foundation/lists/',
+    isPermanent: true,
+  });
 };
 
 exports.onCreateBabelConfig = ({ actions }) => {
