@@ -2,6 +2,12 @@
 
 exports[`Header renders Direct Enrollment banner 1`] = `
 <div>
+  <a
+    class="ds-c-skip-nav"
+    href="#main"
+  >
+    Skip to main content
+  </a>
   <section
     aria-label="Official website of the United States government"
     class="ds-c-usa-banner"
@@ -218,12 +224,6 @@ exports[`Header renders Direct Enrollment banner 1`] = `
     class="hc-c-header hc-c-header--logged-out"
     role="banner"
   >
-    <a
-      class="ds-c-skip-nav"
-      href="#main"
-    >
-      Skip to main content
-    </a>
     <div
       class="ds-l-container"
     >
@@ -411,6 +411,12 @@ exports[`Header renders Direct Enrollment banner 1`] = `
 
 exports[`Header renders Spanish header 1`] = `
 <div>
+  <a
+    class="ds-c-skip-nav"
+    href="#main"
+  >
+    Ir al contenido principal
+  </a>
   <section
     aria-label="Un sitio oficial del Gobierno de Estados Unidos"
     class="ds-c-usa-banner"
@@ -627,12 +633,6 @@ exports[`Header renders Spanish header 1`] = `
     class="hc-c-header hc-c-header--logged-out"
     role="banner"
   >
-    <a
-      class="ds-c-skip-nav"
-      href="#main"
-    >
-      Ir al contenido principal
-    </a>
     <div
       class="ds-l-container"
     >
@@ -827,6 +827,12 @@ exports[`Header renders Spanish header 1`] = `
 
 exports[`Header renders full/homepage header 1`] = `
 <div>
+  <a
+    class="ds-c-skip-nav"
+    href="#main"
+  >
+    Skip to main content
+  </a>
   <section
     aria-label="Official website of the United States government"
     class="ds-c-usa-banner"
@@ -1043,12 +1049,6 @@ exports[`Header renders full/homepage header 1`] = `
     class="hc-c-header hc-c-header--logged-out"
     role="banner"
   >
-    <a
-      class="ds-c-skip-nav"
-      href="#main"
-    >
-      Skip to main content
-    </a>
     <div
       class="ds-l-container"
     >
@@ -1227,6 +1227,12 @@ exports[`Header renders full/homepage header 1`] = `
 
 exports[`Header renders links with absolute URLs if provided a primaryDomain prop 1`] = `
 <div>
+  <a
+    class="ds-c-skip-nav"
+    href="#main"
+  >
+    Skip to main content
+  </a>
   <section
     aria-label="Official website of the United States government"
     class="ds-c-usa-banner"
@@ -1443,12 +1449,6 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
     class="hc-c-header hc-c-header--logged-out"
     role="banner"
   >
-    <a
-      class="ds-c-skip-nav"
-      href="#main"
-    >
-      Skip to main content
-    </a>
     <div
       class="ds-l-container"
     >
@@ -1627,6 +1627,12 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
 
 exports[`Header renders logged-in header with firstName 1`] = `
 <div>
+  <a
+    class="ds-c-skip-nav"
+    href="#main"
+  >
+    Skip to main content
+  </a>
   <section
     aria-label="Official website of the United States government"
     class="ds-c-usa-banner"
@@ -1843,12 +1849,6 @@ exports[`Header renders logged-in header with firstName 1`] = `
     class="hc-c-header hc-c-header--logged-in"
     role="banner"
   >
-    <a
-      class="ds-c-skip-nav"
-      href="#main"
-    >
-      Skip to main content
-    </a>
     <div
       class="ds-l-container"
     >
@@ -2031,6 +2031,12 @@ exports[`Header renders logged-in header with firstName 1`] = `
 
 exports[`Header renders logged-in header without firstName 1`] = `
 <div>
+  <a
+    class="ds-c-skip-nav"
+    href="#main"
+  >
+    Skip to main content
+  </a>
   <section
     aria-label="Official website of the United States government"
     class="ds-c-usa-banner"
@@ -2247,12 +2253,6 @@ exports[`Header renders logged-in header without firstName 1`] = `
     class="hc-c-header hc-c-header--logged-in"
     role="banner"
   >
-    <a
-      class="ds-c-skip-nav"
-      href="#main"
-    >
-      Skip to main content
-    </a>
     <div
       class="ds-l-container"
     >

@@ -142,8 +142,9 @@ export const VARIATION_NAMES = {
  * [refer to its full documentation page](https://design.cms.gov/components/header/healthcare-header/?theme=healthcare).
  */
 export const Header = (props: HeaderProps) => {
-  const [openMenu, setOpenMenu] = useState(false);
   const isControlledMenu = props.isMenuOpen !== undefined && props.onMenuToggle !== undefined;
+  const [internalIsMenuOpenState, setInternalIsMenuOpenState] = useState(false);
+  const isMenuOpen = isControlledMenu ? props.isMenuOpen : internalIsMenuOpenState;
 
   /**
    * Determines which variation of the header should be displayed,
@@ -184,10 +185,10 @@ export const Header = (props: HeaderProps) => {
    */
   function handleMenuToggleClick() {
     if (!isControlledMenu) {
-      setOpenMenu(!openMenu);
-    } else {
-      props.onMenuToggle();
+      setInternalIsMenuOpenState(!isMenuOpen);
     }
+
+    props.onMenuToggle?.();
   }
 
   const classes = classnames(`hc-c-header hc-c-header--${variation()}`, props.className);
@@ -210,12 +211,11 @@ export const Header = (props: HeaderProps) => {
 
   return (
     <>
+      <SkipNav href={props.skipNavHref} onClick={props.onSkipNavClick}>
+        {t('header.skipNav')}
+      </SkipNav>
       {props.showUsaBanner && <UsaBanner id="hc-c-header__usa-banner" />}
       <header className={classes} role="banner" aria-label="global">
-        <SkipNav href={props.skipNavHref} onClick={props.onSkipNavClick}>
-          {t('header.skipNav')}
-        </SkipNav>
-
         <div className="ds-l-container">
           <div className="ds-l-row ds-u-align-items--center ds-u-flex-wrap--nowrap ds-u-padding-y--2">
             <a
@@ -235,13 +235,13 @@ export const Header = (props: HeaderProps) => {
                 firstName={props.firstName}
                 onMenuToggleClick={handleMenuToggleClick}
                 loggedIn={props.loggedIn}
-                open={isControlledMenu ? props.isMenuOpen : openMenu}
+                open={isMenuOpen}
                 links={links}
               />
               <Menu
                 beforeLinks={beforeMenuLinks()}
                 links={links}
-                open={isControlledMenu ? props.isMenuOpen : openMenu}
+                open={isMenuOpen}
                 submenuTop={props.submenuTop}
                 submenuBottom={props.submenuBottom}
               />
