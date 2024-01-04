@@ -75,11 +75,6 @@
     "-"
   ],
   [
-    "showUsaBanner",
-    "Temporary feature flag for showing or not showing the USA Banner above the header. Defaults to true\n\nboolean",
-    "true"
-  ],
-  [
     "skipNavHref",
     "A URL hash used for the \"Skip to main content\" link. This is typically the id of your \"main\" content area (ie. #main).\n\nstring",
     "\"#main\""
