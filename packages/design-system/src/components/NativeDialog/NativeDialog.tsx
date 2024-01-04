@@ -27,6 +27,9 @@ export interface NativeDialogProps extends Omit<DialogHTMLAttributes<HTMLElement
   showModal?: boolean;
 }
 
+/**
+ * This is an internal component and may change without warning. Use at your own risk!
+ */
 export const NativeDialog = ({
   children,
   exit,
