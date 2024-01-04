@@ -55,16 +55,16 @@ export const NativeDialog = ({
     };
   }, [showModal]);
 
-  // Bind and unbind cancel event listeners on mount and unmount
+  // Bind and unbind close event listeners on mount and unmount
   useEffect(() => {
     const dialogNode = dialogRef.current;
     const handleCancel = (event) => {
       event.preventDefault();
       exit();
     };
-    dialogNode.addEventListener('cancel', handleCancel);
+    dialogNode.addEventListener('close', handleCancel);
     return () => {
-      dialogNode.removeEventListener('cancel', handleCancel);
+      dialogNode.removeEventListener('close', handleCancel);
     };
   }, [exit]);
 
