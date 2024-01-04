@@ -75,6 +75,7 @@ const ActionMenu = function (props: ActionMenuProps) {
   } else if (props.links.length) {
     content = (
       <>
+        {/* This stuff is hidden on extra-small screens and is duplicately rendered by the Menu 😭 */}
         <ul
           role="list"
           className="hc-c-logged-out-links ds-c-list--bare ds-u-display--none ds-u-sm-display--flex"

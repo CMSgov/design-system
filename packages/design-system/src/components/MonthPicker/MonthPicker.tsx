@@ -1,6 +1,4 @@
 import React from 'react';
-// Polyfills required for IE11 compatibility
-import 'core-js/stable/array/includes';
 import Button, { ButtonVariation } from '../Button/Button';
 import Choice from '../ChoiceList/Choice';
 import classNames from 'classnames';
