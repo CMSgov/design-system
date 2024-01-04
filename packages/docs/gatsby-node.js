@@ -1,3 +1,4 @@
+const redirects = require('./redirects.json');
 const path = require('path');
 const express = require('express');
 
@@ -58,16 +59,12 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   });
 
-  createRedirect({
-    fromPath: '/components/form-label/',
-    toPath: '/components/label/',
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath: '/foundation/list/',
-    toPath: '/foundation/lists/',
-    isPermanent: true,
+  redirects.forEach((redirect) => {
+    createRedirect({
+      fromPath: redirect.fromPath,
+      toPath: redirect.toPath,
+      isPermanent: true,
+    });
   });
 };
 
