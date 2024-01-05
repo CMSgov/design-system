@@ -13,13 +13,13 @@ exports[`ChoiceList Radio buttons and Checkboxes is a radio button group 1`] = `
     >
       Foo
     </legend>
-    <div
+    <p
       class="ds-c-hint"
       id="static-id__hint"
     >
       Psst! I know the answer
-    </div>
-    <span
+    </p>
+    <p
       aria-atomic="true"
       aria-live="assertive"
       class="ds-c-inline-error"
@@ -41,7 +41,7 @@ exports[`ChoiceList Radio buttons and Checkboxes is a radio button group 1`] = `
         Error: 
       </span>
       Hey, you have to pick an answer
-    </span>
+    </p>
     <div>
       <div
         class="ds-c-choice-wrapper"
