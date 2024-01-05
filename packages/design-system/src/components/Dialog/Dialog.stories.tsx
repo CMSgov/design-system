@@ -74,7 +74,10 @@ export const PreventScrollExample: Story = {
   render: function Component(args) {
     const [dialogOpen, updateOpen] = useState(false);
     const showModal = () => updateOpen(true);
-    const hideModal = () => updateOpen(false);
+    const hideModal = (...params) => {
+      action('onExit')(...params);
+      updateOpen(false);
+    };
 
     return (
       <div className="ds-u-measure--base">

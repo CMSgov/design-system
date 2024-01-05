@@ -46,29 +46,32 @@ export const NativeDialog = ({
     dialogPolyfill.registerDialog(dialogRef.current);
   });
 
-  // Open and close the dialog with the appropriate method on mount and unmount
+  // Call imperative show and close functions on mount/unmount
   useEffect(() => {
     const dialogNode = dialogRef.current;
+
+    // Show the modal
     showModal ? dialogNode.showModal() : dialogNode.show();
-    return () => {
-      dialogNode.close();
-    };
-  }, [showModal]);
 
-  // Bind and unbind close event listeners on mount and unmount
-  useEffect(() => {
-    const dialogNode = dialogRef.current;
-    const handleCancel = (event) => {
+    // Bind close event listener for ESC press
+    const handleClose = (event) => {
       event.preventDefault();
-      exit();
+      exit(event);
     };
-    dialogNode.addEventListener('close', handleCancel);
-    return () => {
-      dialogNode.removeEventListener('close', handleCancel);
-    };
-  }, [exit]);
+    dialogNode.addEventListener('close', handleClose);
 
-  // Bind and unbind click event listeners on mount and unmount
+    return () => {
+      // Remove the close event handler first, or it will be tripped by our manual close call
+      dialogNode.removeEventListener('close', handleClose);
+
+      // It's possible for the element to already be closed, so check first to avoid an error
+      if (dialogNode.open) {
+        dialogNode.close();
+      }
+    };
+  }, [showModal, exit]);
+
+  // Bind and unbind backdrop click event listeners on mount and unmount
   useEffect(() => {
     if (!backdropClickExits) {
       return;
