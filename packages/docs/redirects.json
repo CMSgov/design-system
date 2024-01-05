@@ -6,5 +6,9 @@
   {
     "fromPath": "/foundation/list/",
     "toPath": "/foundation/lists/"
+  },
+  {
+    "fromPath": "/guidelines/browser-support/",
+    "toPath": "/guidelines/support-policies/"
   }
 ]
