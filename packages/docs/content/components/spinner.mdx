@@ -100,7 +100,7 @@ The following CSS variables can be overridden to customize Spinner components:
 
 ### Accessibility
 
-- The Spinner element should have an [`aria-valuetext`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-valuetext) attribute with a value of `loading` to provide a human readable text alternative for screen readers.
+- The Spinner element should have an [`aria-valuetext`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-valuetext_attribute) attribute with a value of `loading` to provide a human readable text alternative for screen readers.
 - When placed within a parent container, the parent element should include several ARIA attributes: `aria-relevant`, `aria-live`, and optionally `aria-atomic`.
   - `aria-relevant` may include `additions`, `text`, and `removals`. If a section will have items added or removed, use `additions removals`. If there will be additions or text changes without explicit removals, use `additions text`.
   - `aria-live` should be set to `polite` for a screen reader to speak the changes whenever the user is idle. `aria-live="assertive"` should only be used in situations that require a user&rsquo;s immediate attention.
