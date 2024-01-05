@@ -220,7 +220,7 @@ exports[`Dropdown dropdown matches snapshot 1`] = `
 `;
 
 exports[`Dropdown shows error message 1`] = `
-<span
+<p
   aria-atomic="true"
   aria-live="assertive"
   class="ds-c-inline-error"
@@ -242,5 +242,5 @@ exports[`Dropdown shows error message 1`] = `
     Error: 
   </span>
   Error
-</span>
+</p>
 `;
