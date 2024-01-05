@@ -1,11 +1,11 @@
-import { DateField } from '@cmsgov/design-system';
+import { MultiInputDateField } from '@cmsgov/design-system';
 import React from 'react';
 
-function DateFieldExample() {
+function MultiInputDateFieldExample() {
   return (
     <div>
-      <h2>DateField Example</h2>
-      <DateField
+      <h2>MultiInputDateField Example</h2>
+      <MultiInputDateField
         label="Date of birth"
         errorMessage="Please enter a year in the past"
         monthDefaultValue="10"
@@ -17,4 +17,4 @@ function DateFieldExample() {
   );
 }
 
-export default DateFieldExample;
+export default MultiInputDateFieldExample;
