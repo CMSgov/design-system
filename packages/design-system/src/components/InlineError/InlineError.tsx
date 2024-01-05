@@ -46,7 +46,7 @@ export function InlineError({
   const viewbox = '36 -12 186 186';
 
   return (
-    <span
+    <p
       {...otherProps}
       className={classes}
       id={useId('inline-error--', id)}
@@ -56,7 +56,7 @@ export function InlineError({
       <AlertCircleIcon viewBox={viewbox} />
       <span className="ds-u-visibility--screen-reader">{`${t('inlineError.prefix')}: `}</span>
       {children}
-    </span>
+    </p>
   );
 }
 

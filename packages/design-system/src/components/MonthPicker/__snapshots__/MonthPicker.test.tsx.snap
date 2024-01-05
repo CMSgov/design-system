@@ -13,13 +13,13 @@ exports[`MonthPicker renders a snapshot 1`] = `
     >
       Months
     </legend>
-    <div
+    <p
       class="ds-c-hint"
       id="month-picker--1__hint"
     >
       Guess and test
-    </div>
-    <span
+    </p>
+    <p
       aria-atomic="true"
       aria-live="assertive"
       class="ds-c-inline-error"
@@ -41,7 +41,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
         Error: 
       </span>
       Only odd-numbered months accepted until July, except on leap years, then only prime-numbered months that have an "A" in them
-    </span>
+    </p>
     <div
       class="ds-c-month-picker__buttons ds-u-clearfix"
     >
