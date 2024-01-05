@@ -9,11 +9,11 @@ exports[`Label Deprecated hint and error functionality adds punctuation to requi
 `;
 
 exports[`Label is inversed 1`] = `
-<div
+<p
   class="ds-c-hint ds-c-hint--inverse"
 >
   Foo
-</div>
+</p>
 `;
 
 exports[`Label renders as a legend element 1`] = `
