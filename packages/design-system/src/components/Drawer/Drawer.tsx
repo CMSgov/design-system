@@ -48,6 +48,7 @@ export interface DrawerProps {
    * Enables "sticky" position of Drawer footer element.
    */
   isFooterSticky?: boolean;
+  isOpen: boolean;
   /**
    * Called when the user activates the close button or presses the ESC key if
    * focus trapping is enabled. The parent of this component is responsible for
@@ -72,6 +73,7 @@ export const Drawer = (props: DrawerProps) => {
       className={classNames(props.className, 'ds-c-drawer')}
       exit={props.onCloseClick}
       showModal={props.hasFocusTrap}
+      isOpen={props.isOpen}
     >
       <div className="ds-c-drawer__window" tabIndex={-1} aria-labelledby={headingId}>
         <div className="ds-c-drawer__header">

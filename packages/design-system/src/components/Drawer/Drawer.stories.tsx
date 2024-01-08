@@ -84,17 +84,16 @@ export const DrawerToggleWithDrawer: Story = {
 
     return (
       <>
-        {isDrawerVisible && (
-          <Drawer
-            {...args}
-            onCloseClick={hideDrawer}
-            footerTitle="Footer Title"
-            footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
-            heading="Drawer Heading"
-          >
-            {drawerContent}
-          </Drawer>
-        )}
+        <Drawer
+          {...args}
+          onCloseClick={hideDrawer}
+          footerTitle="Footer Title"
+          footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
+          heading="Drawer Heading"
+          isOpen={isDrawerVisible}
+        >
+          {drawerContent}
+        </Drawer>
         <Button className="ds-c-drawer__toggle" variation="ghost" onClick={showDrawer}>
           Drawer Toggle
         </Button>

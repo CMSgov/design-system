@@ -9,6 +9,7 @@ export interface NativeDialogProps extends Omit<DialogHTMLAttributes<HTMLElement
    */
   backdropClickExits?: boolean;
   boundingBoxRef?: React.MutableRefObject<any>;
+  isOpen: boolean;
   /**
    * Function called to close dialog.
    */
@@ -33,6 +34,7 @@ export interface NativeDialogProps extends Omit<DialogHTMLAttributes<HTMLElement
 export const NativeDialog = ({
   children,
   exit,
+  isOpen,
   showModal,
   backdropClickExits,
   boundingBoxRef,
@@ -50,8 +52,14 @@ export const NativeDialog = ({
   useEffect(() => {
     const dialogNode = dialogRef.current;
 
-    // Show the modal
-    showModal ? dialogNode.showModal() : dialogNode.show();
+    // Show or hide the dialog based on `isOpen` value
+    if (isOpen) {
+      if (!dialogNode.open) {
+        showModal ? dialogNode.showModal() : dialogNode.show();
+      }
+    } else if (dialogNode.open) {
+      dialogNode.close();
+    }
 
     // Bind close event listener for ESC press
     const handleClose = (event) => {
@@ -69,7 +77,7 @@ export const NativeDialog = ({
         dialogNode.close();
       }
     };
-  }, [showModal, exit]);
+  }, [isOpen, showModal, exit]);
 
   // Bind and unbind backdrop click event listeners on mount and unmount
   useEffect(() => {

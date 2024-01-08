@@ -52,6 +52,7 @@ export interface BaseDialogProps extends AnalyticsOverrideProps {
    * A custom `id` attribute for the dialog element
    */
   id?: string;
+  isOpen: boolean;
   /**
    * This function is called after the modal opens
    */
@@ -120,18 +121,21 @@ export const Dialog = (props: DialogProps) => {
   // because we need to grab the window scroll position before the dialog renders
   // and messes it up.
   useLayoutEffect(() => {
-    // https://css-tricks.com/prevent-page-scrolling-when-a-modal-is-open/
-    const y = window.scrollY ?? 0;
-    const bodyClass = 'ds--dialog-open';
-    document.body.classList.add(bodyClass);
-    document.body.style.setProperty('--body_top--dialog-open', `-${y}px`);
-    document.documentElement.style.setProperty('scroll-behavior', 'auto');
-    return () => {
+    if (modalProps.isOpen) {
+      // https://css-tricks.com/prevent-page-scrolling-when-a-modal-is-open/
+      const y = window.scrollY ?? 0;
+      const bodyClass = 'ds--dialog-open';
+      document.body.classList.add(bodyClass);
+      document.body.style.setProperty('--body_top--dialog-open', `-${y}px`);
+      document.documentElement.style.setProperty('scroll-behavior', 'auto');
+    } else {
+      const y = window.scrollY ?? 0;
+      const bodyClass = 'ds--dialog-open';
       document.body.classList.remove(bodyClass);
       window.scrollTo({ top: y, behavior: 'auto' });
       document.documentElement.style.removeProperty('scroll-behavior');
-    };
-  }, []);
+    }
+  }, [modalProps.isOpen]);
 
   return (
     <NativeDialog
