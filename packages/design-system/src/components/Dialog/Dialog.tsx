@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useEffect, useLayoutEffect, useRef, DialogHTMLAttributes } from 'react';
 import CloseButton from '../CloseButton/CloseButton';
 import NativeDialog from '../NativeDialog/NativeDialog';
 import classNames from 'classnames';
 import useDialogAnalytics from './useDialogAnalytics';
 import useId from '../utilities/useId';
-import { useEffect, useLayoutEffect, useRef, DialogHTMLAttributes } from 'react';
 import { t } from '../i18n';
 import { AnalyticsOverrideProps } from '../analytics';
 

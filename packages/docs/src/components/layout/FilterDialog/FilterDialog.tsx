@@ -62,7 +62,7 @@ export const FilterDialog = (props: FilterDialogProps) => {
     <NativeDialog
       className={classNames(props.className, 'ds-c-filter-dialog')}
       // We're not using the NativeDialog as a modal, so exit is never called
-      exit={() => {}}
+      exit={() => null}
       id={id}
     >
       <div className="ds-c-filter-dialog__window" tabIndex={-1} aria-labelledby={headingId}>

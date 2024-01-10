@@ -26,6 +26,7 @@ const LogosRow = function (props: LogosRowProps) {
               Department of Health &amp; Human Services.
             </p>
           )}
+          {/* eslint-disable-next-line react/no-danger -- Known-safe source */}
           <p dangerouslySetInnerHTML={{ __html: props.t('footer.disclaimer') }} />
         </div>
       </div>
