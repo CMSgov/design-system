@@ -6,7 +6,8 @@ import AutocompleteExample from './Examples/AutocompleteExample';
 import BadgeExample from './Examples/BadgeExample';
 import ButtonExample from './Examples/ButtonExample';
 import ChoiceListExample from './Examples/ChoiceListExample';
-import DateFieldExample from './Examples/DateFieldExample';
+import SingleInputDateFieldExample from './Examples/SingleInputDateFieldExample';
+import MultiInputDateFieldExample from './Examples/MultiInputDateFieldExample';
 import DropdownExample from './Examples/DropdownExample';
 import FilterChipExample from './Examples/FilterChipExample';
 import LabelExample from './Examples/LabelExample';
@@ -28,7 +29,7 @@ function App() {
   return (
     <div className="ds-base">
       <header className="ds-u-padding--3 ds-u-sm-padding--6 ds-u-display--block ds-u-fill--primary-darkest">
-        <h1 className="ds-u-margin--0 ds-u-color--white ds-u-font-size--display ds-u-text-align--center">
+        <h1 className="ds-text-heading--5xl ds-u-margin--0 ds-u-color--white ds-u-text-align--center">
           Hello, world!
         </h1>
         <div className="ds-u-text-align--center">
@@ -46,7 +47,8 @@ function App() {
         <BadgeExample />
         <ButtonExample />
         <ChoiceListExample />
-        <DateFieldExample />
+        <SingleInputDateFieldExample />
+        <MultiInputDateFieldExample />
         <DropdownExample />
         <FilterChipExample />
         <LabelExample />

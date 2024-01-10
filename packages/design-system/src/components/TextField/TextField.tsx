@@ -116,13 +116,19 @@ export const TextField: React.FC<TextFieldProps> = (props: TextFieldProps) => {
         `Please use the 'numeric' prop instead of 'type="number"' unless your user research suggests otherwise.`
       );
     }
+
+    if (mask && labelMask) {
+      console.warn(
+        "The 'mask' and 'labelMask' fields are mutually exclusive. Please use either one or the other."
+      );
+    }
   }
 
   const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
   const { hintId, hintElement } = useHint({ ...props, id });
   const labelProps = useLabelProps({ ...props, id });
 
-  const input = (
+  let input = (
     <TextInput
       // TypeScript doesn't know we set this in .defaultProps
       type={TextField.defaultProps.type}
@@ -132,6 +138,13 @@ export const TextField: React.FC<TextFieldProps> = (props: TextFieldProps) => {
       aria-describedby={describeField({ ...props, errorId, hintId })}
     />
   );
+
+  // See if we need to wrap the input based on some props
+  if (mask) {
+    input = <Mask mask={mask}>{input}</Mask>;
+  } else if (labelMask) {
+    input = <LabelMask labelMask={labelMask}>{input}</LabelMask>;
+  }
 
   return (
     <div
@@ -143,9 +156,7 @@ export const TextField: React.FC<TextFieldProps> = (props: TextFieldProps) => {
       <Label {...labelProps} fieldId={id} />
       {hintElement}
       {topError}
-      {mask && <Mask mask={mask}>{input}</Mask>}
-      {labelMask && <LabelMask labelMask={labelMask}>{input}</LabelMask>}
-      {!mask && !labelMask && input}
+      {input}
       {bottomError}
     </div>
   );

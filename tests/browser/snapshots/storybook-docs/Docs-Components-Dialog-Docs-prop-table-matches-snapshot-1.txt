@@ -45,26 +45,6 @@
     "-"
   ],
   [
-    "closeButtonSize",
-    "Size of the close button. See Button component\n\"big\"\n\"small\"",
-    "-"
-  ],
-  [
-    "closeButtonText",
-    "For internationalization purposes, the text for the \"Close\" button must be passed in as a prop.\n\nReactNode",
-    "-"
-  ],
-  [
-    "closeButtonVariation",
-    "Variation string to be applied to close button component. See Button component\n\"solid\"\n\"ghost\"",
-    "\"ghost\""
-  ],
-  [
-    "closeIconComponent",
-    "The icon to display as part of the close button\nany",
-    "CloseIcon( ... )"
-  ],
-  [
     "headerClassName",
     "Additional classes to be added to the header, which wraps the heading and close button.\n\nstring",
     "-"
