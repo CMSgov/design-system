@@ -6,7 +6,7 @@ import {
   useAnalyticsContent,
   eventExtensionText,
 } from '../analytics';
-import { dialogSendsAnalytics } from '../flags';
+import { config } from '../config';
 
 export function useDialogAnalytics({
   analytics,
@@ -17,7 +17,7 @@ export function useDialogAnalytics({
     content: string | undefined,
     eventAttributes: { event_name: string; event_action: string }
   ) {
-    if (analytics !== true && (!dialogSendsAnalytics() || analytics === false)) {
+    if (analytics !== true && (!config().dialogSendsAnalytics || analytics === false)) {
       return;
     }
 

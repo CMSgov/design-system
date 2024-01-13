@@ -12,7 +12,7 @@
  *
  */
 
-import { ErrorPlacement, setErrorPlacementDefault } from '@cmsgov/design-system';
+import { config } from '@cmsgov/design-system';
 
 export * from '@cmsgov/design-system';
 export * from './Accordion';
@@ -22,7 +22,4 @@ export * from './Logo';
 
 export * from './flags';
 
-/**
- * Healthcare.gov Flags
- */
-setErrorPlacementDefault(ErrorPlacement.Bottom);
+config(config.HEALTHCARE_DEFAULTS);

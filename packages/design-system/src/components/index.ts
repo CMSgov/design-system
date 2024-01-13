@@ -31,6 +31,7 @@ export * from './VerticalNav';
 export * from './Icons';
 
 export * from './analytics';
+export * from './config';
 export * from './flags';
 export * from './i18n';
 export { default as useId } from './utilities/useId';

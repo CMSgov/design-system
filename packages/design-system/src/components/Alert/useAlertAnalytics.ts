@@ -6,7 +6,7 @@ import {
   eventExtensionText,
 } from '../analytics';
 import { AlertProps } from './Alert';
-import { alertSendsAnalytics } from '../flags';
+import { config } from '../config';
 
 export default function useAlertAnalytics({
   analytics,
@@ -18,7 +18,7 @@ export default function useAlertAnalytics({
   const [headingRef, bodyRef] = useAnalyticsContent({
     componentName: 'Alert',
     onMount: (content: string | undefined) => {
-      if (analytics !== true && (!alertSendsAnalytics() || analytics === false)) {
+      if (analytics !== true && (!config().alertSendsAnalytics || analytics === false)) {
         return;
       }
 

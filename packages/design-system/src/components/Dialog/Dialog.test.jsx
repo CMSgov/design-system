@@ -1,6 +1,6 @@
 import React from 'react';
 import Dialog from './Dialog';
-import { setDialogSendsAnalytics } from '../flags';
+import { config } from '../config';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 
@@ -55,7 +55,7 @@ describe('Dialog', function () {
     };
 
     beforeEach(() => {
-      setDialogSendsAnalytics(true);
+      config({ dialogSendsAnalytics: true });
       tealiumMock = jest.fn();
       window.utag = {
         link: tealiumMock,
@@ -63,7 +63,7 @@ describe('Dialog', function () {
     });
 
     afterEach(() => {
-      setDialogSendsAnalytics(false);
+      config({ dialogSendsAnalytics: false });
       jest.resetAllMocks();
     });
 
@@ -93,7 +93,7 @@ describe('Dialog', function () {
     });
 
     it('setting analytics to true overrides flag value', () => {
-      setDialogSendsAnalytics(false);
+      config({ dialogSendsAnalytics: false });
       renderDialog({ analytics: true });
       expect(tealiumMock).toHaveBeenCalled();
     });

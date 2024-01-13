@@ -19,7 +19,7 @@ describe('sendHeaderEvent', () => {
   });
 
   it('should not send an analytics event when feature flag is off', () => {
-    setHeaderSendsAnalytics(false);
+    config({ headerSendsAnalytics: false });
     sendHeaderEvent("Don't look at me!");
     expect(window.utag.link).not.toHaveBeenCalled();
   });

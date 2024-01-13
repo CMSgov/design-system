@@ -6,7 +6,7 @@ import {
   eventExtensionText,
 } from '../analytics';
 import { HelpDrawerProps } from './HelpDrawer';
-import { helpDrawerSendsAnalytics } from '../flags';
+import { config } from '../config';
 
 export default function useHelpDrawerAnalytics({
   analytics,
@@ -17,7 +17,7 @@ export default function useHelpDrawerAnalytics({
     content: string | undefined,
     eventAttributes: { event_name: string; event_action: string }
   ) {
-    if (analytics !== true && (!helpDrawerSendsAnalytics() || analytics === false)) {
+    if (analytics !== true && (!config().helpDrawerSendsAnalytics || analytics === false)) {
       return;
     }
 

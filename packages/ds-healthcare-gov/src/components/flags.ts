@@ -1,11 +1,9 @@
-const flags = {
-  HEADER_SENDS_ANALYTICS: true,
-};
+import { config } from '@cmsgov/design-system';
 
 export function headerSendsAnalytics() {
-  return flags.HEADER_SENDS_ANALYTICS;
+  return config().headerSendsAnalytics;
 }
 
 export function setHeaderSendsAnalytics(value: boolean) {
-  flags.HEADER_SENDS_ANALYTICS = value;
+  config({ headerSendsAnalytics: value });
 }

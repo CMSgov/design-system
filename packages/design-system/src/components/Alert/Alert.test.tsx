@@ -1,7 +1,7 @@
 import React from 'react';
 import Alert, { AlertProps } from './Alert';
 import { UtagContainer } from '../analytics';
-import { setAlertSendsAnalytics } from '../flags';
+import { config } from '../config';
 import { render, screen } from '@testing-library/react';
 
 const defaultText = 'Ruhroh';
@@ -118,7 +118,7 @@ describe('Alert', function () {
     let tealiumMock;
 
     beforeEach(() => {
-      setAlertSendsAnalytics(true);
+      config({ alertSendsAnalytics: true });
       tealiumMock = jest.fn();
       (window as any as UtagContainer).utag = {
         link: tealiumMock,
@@ -126,7 +126,7 @@ describe('Alert', function () {
     });
 
     afterEach(() => {
-      setAlertSendsAnalytics(false);
+      config({ alertSendsAnalytics: false });
       jest.resetAllMocks();
     });
 
@@ -154,7 +154,7 @@ describe('Alert', function () {
     });
 
     it('setting analytics to true overrides flag value', () => {
-      setAlertSendsAnalytics(false);
+      config({ alertSendsAnalytics: false });
       renderAlert({ heading: 'dialog heading', variation: 'error', analytics: true });
       expect(tealiumMock).toHaveBeenCalled();
     });
