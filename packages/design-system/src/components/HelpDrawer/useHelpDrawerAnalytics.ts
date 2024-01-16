@@ -24,7 +24,7 @@ export default function useHelpDrawerAnalytics({
     const eventHeadingText = analyticsLabelOverride ?? content;
 
     if (!eventHeadingText) {
-      console.error('No content found for Dialog analytics event');
+      console.error('No content found for Help Drawer analytics event');
       return;
     }
 
