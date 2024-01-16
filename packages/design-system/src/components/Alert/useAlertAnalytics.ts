@@ -1,17 +1,11 @@
-import {
-  defaultAnalyticsFunction,
-  EventCategory,
-  EventType,
-  useAnalyticsContent,
-  eventExtensionText,
-} from '../analytics';
+import { EventCategory, EventType, useAnalyticsContent, eventExtensionText } from '../analytics';
 import { AlertProps } from './Alert';
 import { config } from '../config';
 
 export default function useAlertAnalytics({
   analytics,
   analyticsLabelOverride,
-  onAnalyticsEvent = defaultAnalyticsFunction,
+  onAnalyticsEvent = config().defaultAnalyticsFunction,
   variation,
 }: AlertProps) {
   // Order matters! Content comes from the heading first and falls back to body if heading doesn't exist

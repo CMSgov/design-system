@@ -1,7 +1,6 @@
 import { ButtonProps } from './Button';
 import { config } from '../config';
 import {
-  defaultAnalyticsFunction,
   EventCategory,
   EventType,
   getAnalyticsContentFromRefs,
@@ -15,7 +14,7 @@ export default function useButtonAnalytics({
   analyticsParentHeading,
   analyticsParentType,
   href,
-  onAnalyticsEvent = defaultAnalyticsFunction,
+  onAnalyticsEvent = config().defaultAnalyticsFunction,
   type,
   variation,
 }: ButtonProps) {

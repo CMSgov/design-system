@@ -122,7 +122,7 @@ describe('Alert', function () {
   });
 
   // Skipping this group of tests temporarily; we need to revisit how define handles callback functions
-  // In usAlertAnalytics, `onAnalyticsEvent = defaultAnalyticsFunction`
+  // In usAlertAnalytics, `onAnalyticsEvent = config().defaultAnalyticsFunction`
   // Callbacks are being overwritten and the analytics events calls a default function when the event isn't defined.
   // This default function gets overwritten and we end up with undefined analytics data.
 

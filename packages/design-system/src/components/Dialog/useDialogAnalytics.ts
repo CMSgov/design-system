@@ -1,17 +1,11 @@
 import { DialogProps } from './Dialog';
-import {
-  defaultAnalyticsFunction,
-  EventCategory,
-  EventType,
-  useAnalyticsContent,
-  eventExtensionText,
-} from '../analytics';
+import { EventCategory, EventType, useAnalyticsContent, eventExtensionText } from '../analytics';
 import { config } from '../config';
 
 export function useDialogAnalytics({
   analytics,
   analyticsLabelOverride,
-  onAnalyticsEvent = defaultAnalyticsFunction,
+  onAnalyticsEvent = config().defaultAnalyticsFunction,
 }: DialogProps) {
   function sendDialogEvent(
     content: string | undefined,

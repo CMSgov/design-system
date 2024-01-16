@@ -71,3 +71,16 @@ export function config(incomingConfig?: PartialConfig): Config {
 
 config.DEFAULTS = DEFAULTS;
 config.HEALTHCARE_DEFAULTS = HEALTHCARE_DEFAULTS;
+
+// Deprecated stuff
+
+export function setDefaultAnalyticsFunction(analyticsFunction: AnalyticsFunction) {
+  if (process.env.NODE_ENV !== 'production') {
+    console.warn(
+      'The `setDefaultAnalyticsFunction` function is deprecated. Please use `config` instead.'
+    );
+  }
+  config({ defaultAnalyticsFunction: analyticsFunction });
+}
+
+export const defaultAnalyticsFunction = config().defaultAnalyticsFunction;
