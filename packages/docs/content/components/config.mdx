@@ -40,16 +40,4 @@ Some brands choose to put their [inline errors](/components/inline-error/) above
 
 ### Analytics
 
-Analytics event tracking is **disabled by default**. There are two ways you can enable or disable analytics in your application:
-
-1. At the application level, globally for all instances of a component with the `config` function
-2. At the component-instance level by using the `analytics` prop
-
-The `analytics` prop on a particular component instance will always override whatever the global flag is set to. For instance, you can turn on analytics globally for all alerts using the flag but turn it off for a particular `Alert` on a particular page by setting `analytics={false}` on that `Alert`. It works the other way around too.
-
-Here is the list of each flag-setting config property for analytics:
-
-- `alertSendsAnalytics`
-- `buttonSendsAnalytics`
-- `dialogSendsAnalytics`
-- `helpDrawerSendsAnalytics`
+[See component analytics documentation](/components/analytics/).
