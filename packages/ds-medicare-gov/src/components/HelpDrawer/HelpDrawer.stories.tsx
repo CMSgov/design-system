@@ -59,7 +59,7 @@ const drawerContent = (
 );
 
 export const HelpDrawerToggleWithDrawer: Story = {
-  render: function Component() {
+  render: function Component(args) {
     const [{ isDrawerVisible }, setIsDrawerVisible] = useArgs();
 
     return (
@@ -84,7 +84,7 @@ export const HelpDrawerToggleWithDrawer: Story = {
 };
 
 export const HelpDrawerToggleOnDark: Story = {
-  render: function Component() {
+  render: function Component(args) {
     const [{ isDrawerVisible }, setIsDrawerVisible] = useArgs();
 
     return (
