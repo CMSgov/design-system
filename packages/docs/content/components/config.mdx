@@ -1,0 +1,55 @@
+---
+title: Global config
+order: -9
+---
+
+While each of the code components can be configured on an individual basis, applications may want to configure some global settings for their components so they don't have to repeat the configuration for, say, every instance of a button. As of version 9 of the `@cmsgov/design-system` package, the controls for the various global configuration options have been rolled up into a single function that can be called to set or get global design-system settings.
+
+## Calling the `config` function
+
+Because these are global settings, you'll want to put this code somewhere universal to your application. It should **NOT** be a place that is called multiple times like a React render function. Typically this would go in some sort of `index` or `main` module if you bundle your JavaScript, but it's highly dependent on the structure of your app or website. Here's an example of calling this function.
+
+```js
+// Import from the package that corresponds to your theme (one of these):
+import { config } from '@cmsgov/design-system';
+import { config } from '@cmsgov/ds-cms-gov';
+import { config } from '@cmsgov/ds-healthcare-gov';
+import { config } from '@cmsgov/ds-medicare-gov';
+
+// Then call the config function with your configuration settings
+config({ alertSendsAnalytics: true });
+```
+
+Note that the return value of the function is the design system's current global configuration (see the example below).
+
+```js
+import { config, ErrorPlacement } from '@cmsgov/design-system';
+
+if (config().errorPlacementDefault === ErrorPlacement.Top) {
+  console.log('Be careful up there, errors!');
+}
+```
+
+## Configuration options
+
+A full list of config options can be found in [the config module source](https://github.com/CMSgov/design-system/blob/main/packages/design-system/src/components/config.ts), but the following sections explain some of them in more detail.
+
+### Error placement
+
+Some brands choose to put their [inline errors](/components/inline-error/) above each form field, and some choose to place them directly below. This can be changed by setting the `errorPlacementDefault` boolean. Note that individual component instances can override this global setting through the `errorPlacement` prop (for React/Preact components) or `error-placement` attribute (for web components).
+
+### Analytics
+
+Analytics event tracking is **disabled by default**. There are two ways you can enable or disable analytics in your application:
+
+1. At the application level, globally for all instances of a component with the `config` function
+2. At the component-instance level by using the `analytics` prop
+
+The `analytics` prop on a particular component instance will always override whatever the global flag is set to. For instance, you can turn on analytics globally for all alerts using the flag but turn it off for a particular `Alert` on a particular page by setting `analytics={false}` on that `Alert`. It works the other way around too.
+
+Here is the list of each flag-setting config property for analytics:
+
+- `alertSendsAnalytics`
+- `buttonSendsAnalytics`
+- `dialogSendsAnalytics`
+- `helpDrawerSendsAnalytics`

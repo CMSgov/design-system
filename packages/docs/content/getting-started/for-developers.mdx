@@ -484,7 +484,7 @@ As an example, to turn analytics on globally for alerts, put this code somewhere
 <ThemeContent onlyThemes={['core']}>
 
 ```js
-import { setAlertSendsAnalytics } from '@cmsgov/design-system';
+import { config } from '@cmsgov/design-system';
 config({ alertSendsAnalytics: true });
 ```
 
@@ -493,7 +493,7 @@ config({ alertSendsAnalytics: true });
 <ThemeContent onlyThemes={['healthcare']}>
 
 ```js
-import { setAlertSendsAnalytics } from '@cmsgov/ds-healthcare-gov';
+import { config } from '@cmsgov/ds-healthcare-gov';
 config({ alertSendsAnalytics: true });
 ```
 
@@ -502,18 +502,18 @@ config({ alertSendsAnalytics: true });
 <ThemeContent onlyThemes={['medicare']}>
 
 ```js
-import { setAlertSendsAnalytics } from '@cmsgov/ds-medicare-gov';
+import { config } from '@cmsgov/ds-medicare-gov';
 config({ alertSendsAnalytics: true });
 ```
 
 </ThemeContent>
 
-Here is the list of each flag-setting function for analytics:
+Here is the list of each flag-setting config property for analytics:
 
-- `setAlertSendsAnalytics`
-- `setButtonSendsAnalytics`
-- `setDialogSendsAnalytics`
-- `setHelpDrawerSendsAnalytics`
+- `alertSendsAnalytics`
+- `buttonSendsAnalytics`
+- `dialogSendsAnalytics`
+- `helpDrawerSendsAnalytics`
 
 ### Handling the events
 
