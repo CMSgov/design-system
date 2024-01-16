@@ -97,7 +97,7 @@ export const themeColors: ColorTokens = {
   'warn-darker':                color['dandelion-700'],
   'warn-darkest':               color['dandelion-800'],
   //
-  'visited':                    color['windsor-500'],
+  'visited':                    color['orchid-800'],
 };
 
 const font: FontTokens = {
