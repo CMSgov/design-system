@@ -12,14 +12,10 @@
  *
  */
 
-import { config } from '@cmsgov/design-system';
-
 export * from '@cmsgov/design-system';
 export * from './Accordion';
 export * from './Footer';
 export * from './Header';
 export * from './Logo';
 
-export * from './flags';
-
-config(config.HEALTHCARE_DEFAULTS);
+export * from './config';
