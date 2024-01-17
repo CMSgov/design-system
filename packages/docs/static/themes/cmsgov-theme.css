@@ -261,7 +261,7 @@
 --link__color: #0d2499;
 --link__color--active: #262626;
 --link__color--hover: #0d2499;
---link__color--visited: #4c2c92;
+--link__color--visited: #5f0a5c;
 --link-inverse__color: #ffffff;
 --link-inverse__color--active: #e9ecf1;
 --link-inverse__color--hover: #e9ecf1;
@@ -457,7 +457,7 @@
 --color-warn-dark: #e6cd07;
 --color-warn-darker: #b3a006;
 --color-warn-darkest: #807204;
---color-visited: #4c2c92;
+--color-visited: #5f0a5c;
 --font-sans: 'Open Sans', Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
 --font-serif: Bitter, Superclarendon, 'Bookman Old Style', 'URW Bookman', 'URW Bookman L', 'Georgia Pro', Georgia, serif;
 --font-size-base: 1rem;
