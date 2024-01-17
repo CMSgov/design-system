@@ -56,30 +56,29 @@ const iconData = [
 ];
 
 export const AvailableIcons = () => (
-  <>
-    <table className="ds-c-table">
-      <thead>
-        <tr>
-          <th>Icon Component</th>
-          <th>Example</th>
-          <th>
-            Default <code>title</code> attribute
-          </th>
-          <th>Notes</th>
+  <table className="ds-c-table">
+    <thead>
+      <tr>
+        <th>Icon Component</th>
+        <th>Example</th>
+        <th>
+          Default <code>title</code> attribute
+        </th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      {iconData.map(({ defaultTitle, component, name, notes }) => (
+        <tr key={name}>
+          <td>
+            <code>{name}</code>
+          </td>
+          <td className="ds-u-text-align--center">{component}</td>
+          <td>{defaultTitle}</td>
+          {/* eslint-disable-next-line react/no-danger -- Story with known text */}
+          <td dangerouslySetInnerHTML={{ __html: notes }} />
         </tr>
-      </thead>
-      <tbody>
-        {iconData.map(({ defaultTitle, component, name, notes }) => (
-          <tr key={name}>
-            <td>
-              <code>{name}</code>
-            </td>
-            <td className="ds-u-text-align--center">{component}</td>
-            <td>{defaultTitle}</td>
-            <td dangerouslySetInnerHTML={{ __html: notes }} />
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </>
+      ))}
+    </tbody>
+  </table>
 );
