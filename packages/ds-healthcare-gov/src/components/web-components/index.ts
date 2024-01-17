@@ -10,11 +10,6 @@
  * modules during tree-shaking.
  */
 
-import { config } from '@cmsgov/design-system';
+import '../config';
 
 export * from '@cmsgov/design-system/web-components';
-
-/**
- * Healthcare.gov Flags
- */
-config(config.HEALTHCARE_DEFAULTS);

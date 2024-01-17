@@ -39,7 +39,7 @@ export interface Config {
    */
   helpDrawerSendsAnalytics: boolean;
   /**
-   * Controls whether the header component send analytics data.
+   * Controls whether the header component send analytics data. Defaults to true.
    */
   headerSendsAnalytics: boolean;
 }
@@ -59,6 +59,7 @@ export const DEFAULTS: Config = Object.freeze({
 export const HEALTHCARE_DEFAULTS: Config = {
   ...DEFAULTS,
   errorPlacementDefault: ErrorPlacement.Bottom,
+  headerSendsAnalytics: true,
 };
 
 const _config = { ...DEFAULTS };

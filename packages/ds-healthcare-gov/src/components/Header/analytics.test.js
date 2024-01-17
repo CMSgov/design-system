@@ -1,5 +1,5 @@
 import { sendHeaderEvent } from './analytics';
-import { setHeaderSendsAnalytics } from '../flags';
+import { config } from '../config';
 
 describe('sendHeaderEvent', () => {
   beforeEach(() => {

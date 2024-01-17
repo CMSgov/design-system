@@ -1,4 +1,5 @@
-import { config, eventExtensionText } from '@cmsgov/design-system';
+import { eventExtensionText } from '@cmsgov/design-system';
+import { config } from '../config';
 
 export function sendHeaderEvent(linkText: string, linkUrl?: string) {
   if (config().headerSendsAnalytics) {
