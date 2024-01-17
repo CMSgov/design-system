@@ -26,6 +26,7 @@ const OPEN = (_state: ClosedState): OpenState => {
 
 const CLOSE = (state: OpenState): ClosedState => {
   document.body.classList.remove(CLASS_NAME);
+  document.body.style.removeProperty(PROPERTY_NAME);
   window.scrollTo({ top: state.bodyScrollY, behavior: 'auto' });
   document.documentElement.style.removeProperty('scroll-behavior');
   return {
