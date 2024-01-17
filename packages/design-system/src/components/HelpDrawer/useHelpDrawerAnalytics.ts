@@ -18,7 +18,7 @@ export default function useHelpDrawerAnalytics({
     const eventHeadingText = analyticsLabelOverride ?? content;
 
     if (!eventHeadingText) {
-      console.error('No content found for Dialog analytics event');
+      console.error('No content found for Help Drawer analytics event');
       return;
     }
 
@@ -33,7 +33,6 @@ export default function useHelpDrawerAnalytics({
   }
 
   const [headingRef] = useAnalyticsContent({
-    componentName: 'Dialog',
     onMount: (content: string | undefined) => {
       sendHelpDrawerEvent(content, {
         event_name: 'help_drawer_opened',

@@ -1,4 +1,3 @@
-import React from 'react';
 import MonthPicker from './MonthPicker';
 import type { Meta, StoryObj } from '@storybook/react';
 

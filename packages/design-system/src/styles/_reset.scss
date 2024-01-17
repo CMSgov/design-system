@@ -18,6 +18,7 @@ html:focus-within {
     scroll-behavior: auto;
   }
 
+  /* stylelint-disable declaration-no-important -- Override animations */
   *,
   *::before,
   *::after {
@@ -27,6 +28,7 @@ html:focus-within {
     transition-duration: 0.01ms !important;
   }
 }
+/* stylelint-enable declaration-no-important */
 
 /* Core body defaults */
 

@@ -3,7 +3,6 @@ import StepLink, { StepLinkProps } from './StepLink';
 import SubStep from './SubStep';
 import classNames from 'classnames';
 import { CheckIcon } from '../Icons';
-import uniqueId from 'lodash/uniqueId';
 
 type HeadingLevel = '1' | '2' | '3' | '4' | '5';
 
