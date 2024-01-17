@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CloseButton from '../CloseButton/CloseButton';
 import NativeDialog from '../NativeDialog/NativeDialog';
 import classNames from 'classnames';
@@ -106,6 +106,8 @@ export const Dialog = (props: DialogProps) => {
   const headerClassNames = classNames('ds-c-dialog__header', headerClassName);
   const actionsClassNames = classNames('ds-c-dialog__actions', actionsClassName);
 
+  const [bodyScrollY, setBodyScrollY] = useState(0);
+
   const containerRef = useRef<HTMLDivElement>();
 
   useEffect(() => {
@@ -121,18 +123,17 @@ export const Dialog = (props: DialogProps) => {
   // because we need to grab the window scroll position before the dialog renders
   // and messes it up.
   useLayoutEffect(() => {
+    const bodyClass = 'ds--dialog-open';
     if (modalProps.isOpen) {
       // https://css-tricks.com/prevent-page-scrolling-when-a-modal-is-open/
       const y = window.scrollY ?? 0;
-      const bodyClass = 'ds--dialog-open';
+      setBodyScrollY(y);
       document.body.classList.add(bodyClass);
       document.body.style.setProperty('--body_top--dialog-open', `-${y}px`);
       document.documentElement.style.setProperty('scroll-behavior', 'auto');
     } else {
-      const y = window.scrollY ?? 0;
-      const bodyClass = 'ds--dialog-open';
       document.body.classList.remove(bodyClass);
-      window.scrollTo({ top: y, behavior: 'auto' });
+      window.scrollTo({ top: bodyScrollY, behavior: 'auto' });
       document.documentElement.style.removeProperty('scroll-behavior');
     }
   }, [modalProps.isOpen]);
