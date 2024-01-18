@@ -48,7 +48,7 @@ function closeActiveDrawer() {
 }
 
 describe('DrawerManager', () => {
-  it('toggles active state of single dialog', async () => {
+  it('toggles active state of single dialog', () => {
     renderDrawerManager();
 
     // Open the first one
@@ -61,7 +61,7 @@ describe('DrawerManager', () => {
     expect(screen.queryByRole('dialog')).toBe(null);
   });
 
-  it('closes the first dialog when the second dialog is openend', async () => {
+  it('closes the first dialog when the second dialog is openend', () => {
     renderDrawerManager();
     const toggle1 = screen.getByText('toggle drawer one');
     const toggle2 = screen.getByText('toggle drawer two');
@@ -82,12 +82,14 @@ describe('DrawerManager', () => {
     // Open and close the first one and check focus
     userEvent.click(toggle1);
     closeActiveDrawer();
+    await new Promise((r) => setTimeout(r, 500));
     expect(toggle1).toEqual(document.activeElement);
 
     // If two are opened, make sure the last one's toggle gets focus
     userEvent.click(toggle2);
     userEvent.click(toggle3);
     closeActiveDrawer();
+    await new Promise((r) => setTimeout(r, 500));
     expect(toggle3).toEqual(document.activeElement);
   });
 });
