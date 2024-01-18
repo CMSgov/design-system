@@ -58,13 +58,17 @@ export const NativeDialog = ({
   useEffect(() => {
     const dialogNode = dialogRef.current;
 
-    // Show or hide the dialog based on `isOpen` value
+    // Show or hide the dialog based on `isOpen` value. The `dialogNode.open` property is
+    // a read-only value that will tell us if our dialog DOM element is actually in the
+    // open state.
     if (isOpen) {
       if (!dialogNode.open) {
         showModal ? dialogNode.showModal() : dialogNode.show();
       }
-    } else if (dialogNode.open) {
-      dialogNode.close();
+    } else {
+      if (dialogNode.open) {
+        dialogNode.close();
+      }
     }
 
     // Bind close event listener for ESC press
