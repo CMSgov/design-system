@@ -42,10 +42,13 @@ export const NativeDialog = ({
 }: NativeDialogProps) => {
   const dialogRef = useRef(null);
 
-  if (process.env.NODE_ENV !== 'production') {
-    console.warn(
-      "The 'isOpen' prop is now used to control the state of Dialogs and Drawers. Please do not conditionally render these components to control their state. All Dialogs and Drawers will become invisible without this prop in the next major release. Using this prop will fix a focus-management issue that affects accessibility."
-    );
+  if (isOpen === undefined) {
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn(
+        "The 'isOpen' prop is now used to control the state of Dialogs and Drawers. Please do not conditionally render these components to control their state. All Dialogs and Drawers will become invisible without this prop in the next major release. Using this prop will fix a focus-management issue that affects accessibility."
+      );
+    }
+    isOpen = true;
   }
 
   // Register dialog with the polyfill if necessary
