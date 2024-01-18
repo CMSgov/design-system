@@ -90,16 +90,7 @@ export const NativeDialog = ({
     dialogNode.addEventListener('close', handleClose);
 
     return () => {
-      // Doh! I'm always closing in the cleanup function when, in fact, it will execute the
-      // cleanup function for more reasons than just de-rendering the component. It can also
-      // execute the cleanup function just because isOpen changed!
-      // // Remove the close event handler first, or it will be tripped by our manual close call
-      // dialogNode.removeEventListener('close', handleClose);
-      // // It's possible for the element to already be closed, so check first to avoid an error
-      // if (dialogNode.open) {
-      //   console.log(heading, 'closing in cleanup function')
-      //   dialogNode.close();
-      // }
+      dialogNode.removeEventListener('close', handleClose);
     };
   }, [isOpen, showModal, exit]);
 
