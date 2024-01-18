@@ -87,18 +87,12 @@ const drawerContent3 = {
 const SingleDrawerWithToggle = (...args) => {
   const { heading, children } = args[0];
   const { toggleClick, closeClick, isOpen } = useDrawerManager();
-  console.log(heading, '(Story)', isOpen ? 'isOpen' : '!isOpen');
-
-  function onCloseClick(...params) {
-    console.log(heading, '(Story) onCloseClick called');
-    closeClick(...params);
-  }
 
   return (
     <>
       <Drawer
         {...args}
-        onCloseClick={onCloseClick}
+        onCloseClick={closeClick}
         footerTitle="Footer Title"
         footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
         heading={heading}
