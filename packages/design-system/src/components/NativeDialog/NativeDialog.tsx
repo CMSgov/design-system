@@ -63,29 +63,34 @@ export const NativeDialog = ({
   // Call imperative show and close functions on mount/unmount
   useEffect(() => {
     const dialogNode = dialogRef.current;
-    const heading = dialogNode.querySelector('.ds-c-drawer__header-heading').textContent;
+    // const heading = dialogNode.querySelector('.ds-c-drawer__header-heading').textContent;
 
     // Show or hide the dialog based on `isOpen` value. The `dialogNode.open` property is
     // a read-only value that will tell us if our dialog DOM element is actually in the
     // open state.
+    let closingBecauseOfProp = false;
     if (isOpen) {
-      console.log(heading, 'isOpen');
+      // console.log(heading, 'isOpen');
       if (!dialogNode.open) {
-        console.log(heading, 'dialog is not open, so calling show function');
+        // console.log(heading, 'dialog is not open, so calling show function');
         showModal ? dialogNode.showModal() : dialogNode.show();
       }
     } else {
-      console.log(heading, '!isOpen');
+      // console.log(heading, '!isOpen');
       if (dialogNode.open) {
-        console.log(heading, 'dialog is open, so calling close function');
+        // console.log(heading, 'dialog is open, so calling close function');
         dialogNode.close();
+        closingBecauseOfProp = true;
       }
     }
 
     // Bind close event listener for ESC press
     const handleClose = (event) => {
       event.preventDefault();
-      exit(event);
+      // Only call the exit handler if the parent didn't close it by setting isOpen to false
+      if (!closingBecauseOfProp) {
+        exit(event);
+      }
     };
     dialogNode.addEventListener('close', handleClose);
 
