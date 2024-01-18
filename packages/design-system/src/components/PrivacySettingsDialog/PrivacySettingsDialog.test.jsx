@@ -17,6 +17,7 @@ const defaultProps = {
   privacyPolicyUrl: 'https://www.healthcare.gov/privacy/',
   thirdPartyPoliciesUrl: 'https://www.healthcare.gov/third-party-privacy-policies/',
   onExit: () => {},
+  isOpen: true,
 };
 
 function renderComponent(props) {

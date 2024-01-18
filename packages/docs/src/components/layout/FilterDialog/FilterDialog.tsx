@@ -41,6 +41,10 @@ export interface FilterDialogProps {
    */
   id?: string;
   /**
+   * Controls whether the dialog is in an open state
+   */
+  isOpen: boolean;
+  /**
    * Called when the user triggers an exit event, like by pressing the ESC key.
    * The parent of this component is responsible for showing or not showing the
    * dialog, so you need to use this callback to make that happen. The dialog
@@ -64,6 +68,7 @@ export const FilterDialog = (props: FilterDialogProps) => {
       // We're not using the NativeDialog as a modal, so exit is never called
       exit={() => null}
       id={id}
+      isOpen={props.isOpen}
     >
       <div className="ds-c-filter-dialog__window" tabIndex={-1} aria-labelledby={headingId}>
         <div className="ds-c-filter-dialog__header">

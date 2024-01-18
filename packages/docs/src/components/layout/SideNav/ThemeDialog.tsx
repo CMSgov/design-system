@@ -6,6 +6,7 @@ import { setQueryParam } from '../../../helpers/urlUtils';
 
 export interface ThemeVersionDialogProps {
   theme: string;
+  isOpen: boolean;
   onExit(...args: any[]): void;
 }
 
@@ -33,6 +34,7 @@ export const ThemeVersionDialog = (props: ThemeVersionDialogProps) => {
           </Button>
         </>
       }
+      isOpen={props.isOpen}
       onExit={props.onExit}
     >
       <Dropdown

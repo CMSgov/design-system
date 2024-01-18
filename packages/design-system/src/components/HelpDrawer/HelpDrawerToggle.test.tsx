@@ -7,6 +7,7 @@ const defaultProps = {
   helpDrawerOpen: false,
   inline: false,
   showDrawer: jest.fn(),
+  isOpen: true,
 };
 
 function renderToggle(customProps?) {
