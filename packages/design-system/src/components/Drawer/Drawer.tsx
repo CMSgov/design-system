@@ -1,9 +1,7 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Button, { ButtonVariation } from '../Button/Button';
 import NativeDialog from '../NativeDialog/NativeDialog';
-import { useRef } from 'react';
 import classNames from 'classnames';
-import uniqueId from 'lodash/uniqueId';
 import { t } from '../i18n';
 import useId from '../utilities/useId';
 

@@ -18,7 +18,7 @@ describe('Label', () => {
     let warn;
 
     beforeEach(() => {
-      warn = jest.spyOn(console, 'warn').mockImplementation(() => {});
+      warn = jest.spyOn(console, 'warn').mockImplementation(() => null);
     });
 
     afterEach(() => {

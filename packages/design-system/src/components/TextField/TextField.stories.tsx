@@ -4,7 +4,6 @@ import { unmaskValue } from './maskHelpers';
 import { PHONE_MASK, SSN_MASK, ZIP_MASK, CURRENCY_MASK } from './useLabelMask';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
-import { useArgs } from '@storybook/preview-api';
 
 const meta: Meta<typeof TextField> = {
   title: 'Components/TextField',
@@ -110,7 +109,7 @@ export const AllMaskedFields: Story = {
   argTypes: {
     labelMask: disabledArg,
   },
-  render: function Component(args) {
+  render: function Component() {
     return (
       <>
         <TextField

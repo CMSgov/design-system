@@ -1,5 +1,4 @@
-import React, { useLayoutEffect } from 'react';
-import { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { withPrefix } from 'gatsby';
 import classnames from 'classnames';
 import StorybookExampleFooter from './StorybookExampleFooter';

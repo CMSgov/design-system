@@ -3,7 +3,6 @@ import Alert from '../Alert/Alert';
 import TableCaption from './TableCaption';
 import TableContext from './TableContext';
 import classNames from 'classnames';
-import uniqueId from 'lodash/uniqueId';
 import debounce from '../utilities/debounce';
 import useId from '../utilities/useId';
 

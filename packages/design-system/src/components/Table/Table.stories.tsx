@@ -98,8 +98,8 @@ const Default: Story = {
           </TableRow>
         </TableHead>
         <TableBody>
-          {tableTemplateData.data.map((dataItem, index) => (
-            <TableRow key={index}>
+          {tableTemplateData.data.map((dataItem) => (
+            <TableRow key={dataItem.documentTitle}>
               {tableTemplateData.headings.map((heading) => (
                 <TableCell
                   key={`${heading.displayName}-${dataItem[heading.propName]}`}
@@ -133,7 +133,7 @@ export const StackableTable: Story = {
 };
 
 export const MultiHeaderTable: Story = {
-  render: function Component(args) {
+  render: function Component() {
     return (
       <Table>
         <TableCaption>Household members</TableCaption>
