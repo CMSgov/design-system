@@ -1,23 +1,17 @@
-import {
-  defaultAnalyticsFunction,
-  EventCategory,
-  EventType,
-  useAnalyticsContent,
-  eventExtensionText,
-} from '../analytics';
+import { EventCategory, EventType, useAnalyticsContent, eventExtensionText } from '../analytics';
 import { HelpDrawerProps } from './HelpDrawer';
-import { helpDrawerSendsAnalytics } from '../flags';
+import { config } from '../config';
 
 export default function useHelpDrawerAnalytics({
   analytics,
   analyticsLabelOverride,
-  onAnalyticsEvent = defaultAnalyticsFunction,
+  onAnalyticsEvent = config().defaultAnalyticsFunction,
 }: HelpDrawerProps) {
   function sendHelpDrawerEvent(
     content: string | undefined,
     eventAttributes: { event_name: string; event_action: string }
   ) {
-    if (analytics !== true && (!helpDrawerSendsAnalytics() || analytics === false)) {
+    if (analytics !== true && (!config().helpDrawerSendsAnalytics || analytics === false)) {
       return;
     }
 

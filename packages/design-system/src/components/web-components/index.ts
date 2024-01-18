@@ -9,7 +9,7 @@
  */
 
 export * from '../analytics';
-export * from '../flags';
+export * from '../config';
 export * from '../i18n';
 
 import './ds-alert';

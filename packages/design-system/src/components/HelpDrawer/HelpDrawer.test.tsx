@@ -1,7 +1,7 @@
 import React from 'react';
 import HelpDrawer, { HelpDrawerProps } from './HelpDrawer';
 import { UtagContainer } from '../analytics';
-import { setHelpDrawerSendsAnalytics } from '../flags';
+import { config } from '../config';
 import { fireEvent, render, screen } from '@testing-library/react';
 
 const defaultProps = {
@@ -40,7 +40,7 @@ describe('HelpDrawer', () => {
     let tealiumMock;
 
     beforeEach(() => {
-      setHelpDrawerSendsAnalytics(true);
+      config({ helpDrawerSendsAnalytics: true });
       tealiumMock = jest.fn();
       (window as any as UtagContainer).utag = {
         link: tealiumMock,
@@ -48,7 +48,7 @@ describe('HelpDrawer', () => {
     });
 
     afterEach(() => {
-      setHelpDrawerSendsAnalytics(false);
+      config({ helpDrawerSendsAnalytics: false });
       jest.resetAllMocks();
     });
 
@@ -68,7 +68,7 @@ describe('HelpDrawer', () => {
     });
 
     it('setting analytics to true overrides flag value', () => {
-      setHelpDrawerSendsAnalytics(false);
+      config({ helpDrawerSendsAnalytics: false });
       renderHelpDrawer({ analytics: true, onCloseClick: jest.fn() });
       expect(tealiumMock).toHaveBeenCalled();
     });

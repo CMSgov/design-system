@@ -1,14 +1,7 @@
 import './storybookStyles.scss';
 import React from 'react';
 import DocumentationTemplate from './docs/DocumentationTemplate.mdx';
-import {
-  setAlertSendsAnalytics,
-  setButtonSendsAnalytics,
-  setDialogSendsAnalytics,
-  setHelpDrawerSendsAnalytics,
-  setErrorPlacementDefault,
-} from '../packages/design-system/src/components/flags';
-import { setHeaderSendsAnalytics } from '../packages/ds-healthcare-gov/src/components/flags';
+import { config } from '../packages/design-system/src/components/config';
 import { setLanguage } from '../packages/design-system/src/components/i18n';
 import { setLanguage as setLanguageFromPackage } from '@cmsgov/design-system';
 import themes from '../themes.json';
@@ -85,8 +78,11 @@ const themeSettingDecorator = (Story, context) => {
   const themeCss = document.querySelector('link[title=themeCss]') as HTMLLinkElement;
   themeCss.href = `${theme}-theme.css`;
 
-  // Child design system flag settings could be handled better in the future
-  setErrorPlacementDefault(theme === 'healthcare' ? 'bottom' : 'top');
+  if (theme === 'healthcare') {
+    config(config.HEALTHCARE_DEFAULTS);
+  } else {
+    config(config.DEFAULTS);
+  }
 
   return <Story {...context} />;
 };
@@ -110,11 +106,13 @@ const analyticsSettingsDecorator = (Story, context) => {
 
   const on = analytics === 'on';
 
-  setAlertSendsAnalytics(on);
-  setButtonSendsAnalytics(on);
-  setDialogSendsAnalytics(on);
-  setHelpDrawerSendsAnalytics(on);
-  setHeaderSendsAnalytics(on);
+  config({
+    alertSendsAnalytics: on,
+    buttonSendsAnalytics: on,
+    dialogSendsAnalytics: on,
+    helpDrawerSendsAnalytics: on,
+    headerSendsAnalytics: on,
+  });
 
   return <Story {...context} />;
 };

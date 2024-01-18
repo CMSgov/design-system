@@ -1,7 +1,7 @@
 import React from 'react';
 import InlineError from './InlineError';
 import classNames from 'classnames';
-import { ErrorPlacement, errorPlacementDefault } from '../flags';
+import { ErrorPlacement, config } from '../config';
 
 export { ErrorPlacement };
 
@@ -47,7 +47,7 @@ export function useInlineError<T extends UseInlineErrorProps>(props: T) {
   const {
     errorMessage,
     errorMessageClassName,
-    errorPlacement = errorPlacementDefault(),
+    errorPlacement = config().errorPlacementDefault,
     inversed,
   } = props;
 
