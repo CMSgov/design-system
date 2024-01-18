@@ -63,16 +63,21 @@ export const NativeDialog = ({
   // Call imperative show and close functions on mount/unmount
   useEffect(() => {
     const dialogNode = dialogRef.current;
+    const heading = dialogNode.querySelector('.ds-c-drawer__header-heading').textContent;
 
     // Show or hide the dialog based on `isOpen` value. The `dialogNode.open` property is
     // a read-only value that will tell us if our dialog DOM element is actually in the
     // open state.
     if (isOpen) {
+      console.log(heading, 'isOpen');
       if (!dialogNode.open) {
+        console.log(heading, 'dialog is not open, so calling show function');
         showModal ? dialogNode.showModal() : dialogNode.show();
       }
     } else {
+      console.log(heading, '!isOpen');
       if (dialogNode.open) {
+        console.log(heading, 'dialog is open, so calling close function');
         dialogNode.close();
       }
     }
@@ -85,13 +90,16 @@ export const NativeDialog = ({
     dialogNode.addEventListener('close', handleClose);
 
     return () => {
-      // Remove the close event handler first, or it will be tripped by our manual close call
-      dialogNode.removeEventListener('close', handleClose);
-
-      // It's possible for the element to already be closed, so check first to avoid an error
-      if (dialogNode.open) {
-        dialogNode.close();
-      }
+      // Doh! I'm always closing in the cleanup function when, in fact, it will execute the
+      // cleanup function for more reasons than just de-rendering the component. It can also
+      // execute the cleanup function just because isOpen changed!
+      // // Remove the close event handler first, or it will be tripped by our manual close call
+      // dialogNode.removeEventListener('close', handleClose);
+      // // It's possible for the element to already be closed, so check first to avoid an error
+      // if (dialogNode.open) {
+      //   console.log(heading, 'closing in cleanup function')
+      //   dialogNode.close();
+      // }
     };
   }, [isOpen, showModal, exit]);
 
