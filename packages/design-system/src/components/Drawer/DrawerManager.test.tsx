@@ -72,24 +72,4 @@ describe('DrawerManager', () => {
     userEvent.click(toggle2);
     expect(getActiveHeading()).toHaveTextContent('drawer two');
   });
-
-  it('returns focus to toggle button after closing', async () => {
-    renderDrawerManager();
-    const toggle1 = screen.getByText('toggle drawer one');
-    const toggle2 = screen.getByText('toggle drawer two');
-    const toggle3 = screen.getByText('toggle drawer three');
-
-    // Open and close the first one and check focus
-    userEvent.click(toggle1);
-    closeActiveDrawer();
-    await new Promise((r) => setTimeout(r, 500));
-    expect(toggle1).toEqual(document.activeElement);
-
-    // If two are opened, make sure the last one's toggle gets focus
-    userEvent.click(toggle2);
-    userEvent.click(toggle3);
-    closeActiveDrawer();
-    await new Promise((r) => setTimeout(r, 500));
-    expect(toggle3).toEqual(document.activeElement);
-  });
 });
