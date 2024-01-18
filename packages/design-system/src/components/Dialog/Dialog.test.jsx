@@ -7,13 +7,20 @@ import { act } from 'react-dom/test-utils';
 const defaultProps = {
   children: 'Foo',
   heading: 'dialog heading',
+  isOpen: true,
   onExit: jest.fn(),
   id: 'static-id',
 };
 
 function renderDialog(props = {}) {
   // eslint-disable-next-line react/no-children-prop
-  return render(<Dialog {...defaultProps} {...props} />);
+  const result = render(<Dialog {...defaultProps} {...props} />);
+  return {
+    ...result,
+    rerenderDialog(newProps = {}) {
+      return result.rerender(<Dialog {...defaultProps} {...newProps} />);
+    },
+  };
 }
 
 describe('Dialog', function () {
@@ -40,6 +47,22 @@ describe('Dialog', function () {
     renderDialog({ onExit });
     fireEvent.click(screen.getByRole('button'));
     expect(onExit.mock.calls.length).toBe(1);
+  });
+
+  it('is closed until isOpen is set to true', () => {
+    const { rerenderDialog } = renderDialog({ isOpen: false });
+    expect(screen.queryByRole('dialog')).toBe(null);
+    rerenderDialog({ isOpen: true });
+    expect(screen.getByRole('dialog').open).toBe(true);
+  });
+
+  // TODO: Remove this when we remove this functionality in v10
+  it('opens if the isOpen prop is undefined', () => {
+    const warn = jest.spyOn(console, 'warn').mockImplementation(() => null);
+    renderDialog({ isOpen: undefined });
+    expect(screen.getByRole('dialog').open).toBe(true);
+    expect(warn).toHaveBeenCalled();
+    warn.mockReset();
   });
 
   describe('Analytics event tracking', () => {
