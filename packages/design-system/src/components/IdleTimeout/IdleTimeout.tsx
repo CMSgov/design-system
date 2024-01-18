@@ -220,7 +220,7 @@ export const IdleTimeout = ({
     setShowWarning(false);
   };
 
-  return showWarning ? (
+  return (
     <IdleTimeoutDialog
       continueSessionText={continueSessionText}
       heading={heading}
@@ -231,8 +231,9 @@ export const IdleTimeout = ({
       onSessionForcedEnd={handleSessionForcedEnd}
       showSessionEndButton={showSessionEndButton}
       onClose={handleSessionContinue}
+      isOpen={showWarning}
     />
-  ) : null;
+  );
 };
 
 export default IdleTimeout;

@@ -46,6 +46,9 @@ export interface DrawerProps {
    * Enables "sticky" position of Drawer footer element.
    */
   isFooterSticky?: boolean;
+  /**
+   * Controls whether the dialog is in an open state
+   */
   isOpen: boolean;
   /**
    * Called when the user activates the close button or presses the ESC key if

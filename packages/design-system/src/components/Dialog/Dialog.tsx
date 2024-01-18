@@ -52,6 +52,9 @@ export interface BaseDialogProps extends AnalyticsOverrideProps {
    * A custom `id` attribute for the dialog element
    */
   id?: string;
+  /**
+   * Controls whether the dialog is in an open state
+   */
   isOpen: boolean;
   /**
    * This function is called after the modal opens

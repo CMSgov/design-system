@@ -20,6 +20,10 @@ export interface IdleTimeoutDialogProps {
    */
   endSessionUrl?: string;
   /**
+   * Controls whether the dialog is in an open state
+   */
+  isOpen: boolean;
+  /**
    * The message text for the warning dialog.
    * Note that using the token `<timeToTimeout>` will be replaced in the message text with the number of minutes until timeout.
    */
@@ -49,6 +53,7 @@ export const IdleTimeoutDialog = ({
   heading,
   endSessionButtonText,
   endSessionUrl,
+  isOpen,
   message,
   onClose,
   onSessionContinue,
@@ -80,6 +85,7 @@ export const IdleTimeoutDialog = ({
     <Dialog
       alert
       id="session-timeout-dialog"
+      isOpen={isOpen}
       heading={heading}
       actions={renderDialogActions()}
       onExit={onClose}

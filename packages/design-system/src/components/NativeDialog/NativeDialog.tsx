@@ -9,6 +9,9 @@ export interface NativeDialogProps extends Omit<DialogHTMLAttributes<HTMLElement
    */
   backdropClickExits?: boolean;
   boundingBoxRef?: React.MutableRefObject<any>;
+  /**
+   * Controls whether the dialog is in an open state
+   */
   isOpen: boolean;
   /**
    * Function called to close dialog.
