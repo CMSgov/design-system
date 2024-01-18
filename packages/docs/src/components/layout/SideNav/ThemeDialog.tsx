@@ -6,7 +6,7 @@ import { setQueryParam } from '../../../helpers/urlUtils';
 
 export interface ThemeVersionDialogProps {
   theme: string;
-  isOpen: boolean;
+  isOpen?: boolean;
   onExit(...args: any[]): void;
 }
 

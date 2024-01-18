@@ -12,7 +12,7 @@ export interface NativeDialogProps extends Omit<DialogHTMLAttributes<HTMLElement
   /**
    * Controls whether the dialog is in an open state
    */
-  isOpen: boolean;
+  isOpen?: boolean;
   /**
    * Function called to close dialog.
    */

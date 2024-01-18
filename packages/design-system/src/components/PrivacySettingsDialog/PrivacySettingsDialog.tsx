@@ -20,7 +20,7 @@ interface PrivacySettingsDialogProps {
   /**
    * Controls whether the dialog is in an open state
    */
-  isOpen: boolean;
+  isOpen?: boolean;
 }
 
 /**

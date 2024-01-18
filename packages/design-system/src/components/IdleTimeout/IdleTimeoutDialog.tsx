@@ -22,7 +22,7 @@ export interface IdleTimeoutDialogProps {
   /**
    * Controls whether the dialog is in an open state
    */
-  isOpen: boolean;
+  isOpen?: boolean;
   /**
    * The message text for the warning dialog.
    * Note that using the token `<timeToTimeout>` will be replaced in the message text with the number of minutes until timeout.

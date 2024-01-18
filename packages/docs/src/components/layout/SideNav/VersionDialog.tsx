@@ -6,7 +6,7 @@ import { getVersionOptions, getVersionEquivalent } from './themeVersionData';
 export interface ThemeVersionDialogProps {
   theme: string;
   version: string;
-  isOpen: boolean;
+  isOpen?: boolean;
   onExit(...args: any[]): void;
 }
 
