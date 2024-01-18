@@ -90,17 +90,16 @@ const SingleDrawerWithToggle = (...args) => {
 
   return (
     <>
-      {isOpen && (
-        <Drawer
-          {...args}
-          onCloseClick={closeClick}
-          footerTitle="Footer Title"
-          footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
-          heading={heading}
-        >
-          {children}
-        </Drawer>
-      )}
+      <Drawer
+        {...args}
+        onCloseClick={closeClick}
+        footerTitle="Footer Title"
+        footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
+        heading={heading}
+        isOpen={isOpen}
+      >
+        {children}
+      </Drawer>
       <Button
         className="ds-c-drawer__toggle ds-u-margin-bottom--2"
         variation="ghost"
