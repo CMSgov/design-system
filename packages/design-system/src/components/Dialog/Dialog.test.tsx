@@ -3,6 +3,7 @@ import Dialog from './Dialog';
 import { config } from '../config';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
+import { UtagContainer } from '../index';
 
 const defaultProps = {
   children: 'Foo',
@@ -80,7 +81,7 @@ describe('Dialog', function () {
     beforeEach(() => {
       config({ dialogSendsAnalytics: true });
       tealiumMock = jest.fn();
-      window.utag = {
+      (window as any as UtagContainer).utag = {
         link: tealiumMock,
       };
     });
