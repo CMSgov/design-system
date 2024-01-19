@@ -155,19 +155,17 @@ describe('Idle Timeout', () => {
   });
 
   it('should update message time if timeToTimeout changes', () => {
-    const formatMessage = jest.fn();
-    const { rerender } = renderIdleTimeout({ formatMessage });
-    rerender(<IdleTimeout {...defaultProps} timeToTimeout={10} formatMessage={formatMessage} />);
+    const { rerender } = renderIdleTimeout();
+    rerender(<IdleTimeout {...defaultProps} timeToTimeout={10} />);
     showWarning();
-    expect(formatMessage).toHaveBeenNthCalledWith(1, 7);
+    expect(screen.getByRole('dialog')).toHaveTextContent('Your session will end in 7 minutes');
   });
 
   it('should update message time if timeToWarning changes', () => {
-    const formatMessage = jest.fn();
-    const { rerender } = renderIdleTimeout({ formatMessage });
-    rerender(<IdleTimeout {...defaultProps} timeToWarning={4} formatMessage={formatMessage} />);
+    const { rerender } = renderIdleTimeout();
+    rerender(<IdleTimeout {...defaultProps} timeToWarning={4} />);
     showWarning(1644051720); // start time + (4 * 60000ms) (4 minutes)
-    expect(formatMessage).toHaveBeenNthCalledWith(1, 1);
+    expect(screen.getByRole('dialog')).toHaveTextContent('Your session will end in 1 minute');
   });
 
   it('default formatMessage should replace time in message', () => {

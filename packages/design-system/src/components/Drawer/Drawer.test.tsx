@@ -4,29 +4,49 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 const defaultProps = {
+  children: <p>content</p>,
   footerBody: (
     <div>
       <p>Some footer content</p>
     </div>
   ),
   footerTitle: 'Footer title',
+  isOpen: true,
   onCloseClick: jest.fn(),
   heading: 'Drawer title',
 };
 
-function renderDrawer(overwriteProps = {}) {
-  const props = Object.assign({}, defaultProps, overwriteProps);
-  return render(
-    <Drawer {...props}>
-      <p>content</p>
-    </Drawer>
-  );
+function renderDrawer(props = {}) {
+  // eslint-disable-next-line react/no-children-prop
+  const result = render(<Drawer {...defaultProps} {...props} />);
+  return {
+    ...result,
+    rerenderDrawer(newProps = {}) {
+      return result.rerender(<Drawer {...defaultProps} {...newProps} />);
+    },
+  };
 }
 
 describe('Drawer', () => {
   it('renders a dialog', () => {
     renderDrawer();
     expect(screen.getByRole('dialog')).toMatchSnapshot();
+  });
+
+  it('is closed until isOpen is set to true', () => {
+    const { rerenderDrawer } = renderDrawer({ isOpen: false });
+    expect(screen.queryByRole('dialog')).toBe(null);
+    rerenderDrawer({ isOpen: true });
+    expect((screen.getByRole('dialog') as HTMLDialogElement).open).toBe(true);
+  });
+
+  // TODO: Remove this when we remove this functionality in v10
+  it('opens if the isOpen prop is undefined', () => {
+    const warn = jest.spyOn(console, 'warn').mockImplementation(() => null);
+    renderDrawer({ isOpen: undefined });
+    expect((screen.getByRole('dialog') as HTMLDialogElement).open).toBe(true);
+    expect(warn).toHaveBeenCalled();
+    warn.mockReset();
   });
 
   describe('onCloseClick', () => {

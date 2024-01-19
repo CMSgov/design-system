@@ -49,22 +49,21 @@ export const DialogExample: Story = {
           Click to show modal
         </Button>
 
-        {dialogOpen && (
-          <Dialog
-            {...args}
-            onExit={hideModal}
-            actions={
-              <>
-                <button className="ds-c-button ds-c-button--solid ds-u-margin-right--1" key="solid">
-                  Dialog action
-                </button>
-                <button className="ds-c-button ds-c-button--ghost" key="cancel" onClick={hideModal}>
-                  Cancel
-                </button>
-              </>
-            }
-          />
-        )}
+        <Dialog
+          {...args}
+          onExit={hideModal}
+          actions={
+            <>
+              <button className="ds-c-button ds-c-button--solid ds-u-margin-right--1" key="solid">
+                Dialog action
+              </button>
+              <button className="ds-c-button ds-c-button--ghost" key="cancel" onClick={hideModal}>
+                Cancel
+              </button>
+            </>
+          }
+          isOpen={dialogOpen}
+        />
       </>
     );
   },
@@ -95,7 +94,7 @@ export const PreventScrollExample: Story = {
           which shall consist of a Senate and House of Representatives.
         </p>
 
-        {dialogOpen && <Dialog {...args} onExit={hideModal} />}
+        <Dialog {...args} onExit={hideModal} isOpen={dialogOpen} />
         <Button onClick={showModal} size="big" variation="solid">
           Click to show modal
         </Button>

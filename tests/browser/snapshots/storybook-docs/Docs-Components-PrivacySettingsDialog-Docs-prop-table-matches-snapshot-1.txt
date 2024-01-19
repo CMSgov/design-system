@@ -6,6 +6,12 @@
     ""
   ],
   [
+    "isOpen",
+    "Controls whether the dialog is in an open state\nboolean",
+    "-",
+    "Set boolean"
+  ],
+  [
     "onExit*",
     "() => void",
     "-",
