@@ -78,7 +78,10 @@ export interface BaseChoiceProps {
 
 export type ChoiceProps = BaseChoiceProps &
   Omit<React.ComponentPropsWithRef<'input'>, keyof BaseChoiceProps> &
-  Omit<UseLabelPropsProps & UseHintProps & UseInlineErrorProps, 'id' | 'inversed'>;
+  Omit<
+    UseLabelPropsProps & UseHintProps & UseInlineErrorProps,
+    'id' | 'inversed' | 'errorPlacement'
+  >;
 
 /** Used to emit events to all Choice components */
 const dsChoiceEmitter = new EvEmitter();
