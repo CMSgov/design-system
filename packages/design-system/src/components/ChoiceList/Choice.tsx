@@ -1,16 +1,24 @@
+import React, { useEffect, useState } from 'react';
 import EvEmitter from 'ev-emitter';
-import { Label } from '../Label';
-import React from 'react';
 import classNames from 'classnames';
-import uniqueId from 'lodash/uniqueId';
-import mergeIds from '../utilities/mergeIds';
-import { InlineError } from '../InlineError';
+import useId from '../utilities/useId';
+import { Label } from '../Label';
+import { UseInlineErrorProps, useInlineError } from '../InlineError/useInlineError';
+import { UseLabelPropsProps, useLabelProps } from '../Label/useLabelProps';
+import { UseHintProps, useHint } from '../Hint/useHint';
+import cleanFieldProps from '../utilities/cleanFieldProps';
+import describeField from '../utilities/describeField';
 
 export type ChoiceSize = 'small';
 export type ChoiceType = 'checkbox' | 'radio';
 export type ChoiceValue = number | string;
 
-export interface ChoiceProps {
+export interface BaseChoiceProps {
+  /**
+   * Sets the initial `checked` state. Use this for an uncontrolled component;
+   * otherwise, use the `checked` property.
+   */
+  defaultChecked?: boolean;
   /**
    * Sets the input's `checked` state. Use this in combination with `onChange`
    * for a controlled component; otherwise, set `defaultChecked`.
@@ -27,6 +35,10 @@ export interface ChoiceProps {
    */
   uncheckedChildren?: React.ReactNode;
   /**
+   * Disables the entire field.
+   */
+  disabled?: boolean;
+  /**
    * Additional classes to be added to the root `div` element.
    */
   className?: string;
@@ -35,41 +47,14 @@ export interface ChoiceProps {
    */
   inputClassName?: string;
   /**
-   * Label text or HTML.
-   */
-  label?: React.ReactNode;
-  /**
-   * Additional classes to be added to the `FormLabel`.
-   */
-  labelClassName?: string;
-  /**
-   * Sets the initial `checked` state. Use this for an uncontrolled component;
-   * otherwise, use the `checked` property.
-   */
-  defaultChecked?: boolean;
-  disabled?: boolean;
-  errorMessage?: React.ReactNode;
-  /**
-   * Additional classes to be added to the error message
-   */
-  errorMessageClassName?: string;
-  /**
    * Access a reference to the `input` element
    */
   inputRef?: (...args: any[]) => any;
-  /**
-   * Additional hint text to display below the choice's label
-   */
-  hint?: React.ReactNode;
   /**
    * A unique ID to be used for the input field, as well as the label's
    * `for` attribute. A unique ID will be generated if one isn't provided.
    */
   id?: string;
-  /**
-   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields](https://design.cms.gov/patterns/Forms/forms/#required-and-optional-fields).
-   */
-  requirementLabel?: React.ReactNode;
   /**
    * Applies the "inverse" UI theme
    */
@@ -91,19 +76,9 @@ export interface ChoiceProps {
   value: ChoiceValue;
 }
 
-type OmitProps =
-  | 'size'
-  | 'type'
-  | 'value'
-  | 'label'
-  | 'checked'
-  | 'defaultChecked'
-  | 'onBlur'
-  | 'onChange'
-  | 'name'
-  | 'id'
-  | 'className'
-  | 'disabled';
+export type ChoiceProps = BaseChoiceProps &
+  Omit<React.ComponentPropsWithRef<'input'>, keyof BaseChoiceProps> &
+  Omit<UseLabelPropsProps & UseHintProps & UseInlineErrorProps, 'id' | 'inversed'>;
 
 /** Used to emit events to all Choice components */
 const dsChoiceEmitter = new EvEmitter();
@@ -118,172 +93,96 @@ const dsChoiceEmitter = new EvEmitter();
  * [checkbox](https://design.cms.gov/components/checkbox/) and
  * [radio](https://design.cms.gov/components/radio/) documentation pages.
  */
-export class Choice extends React.PureComponent<
-  Omit<React.ComponentPropsWithRef<'input'>, OmitProps> & ChoiceProps,
-  any
-> {
-  constructor(props: ChoiceProps) {
-    super(props);
-    this.input = null;
-    this.handleChange = this.handleChange.bind(this);
-    this.handleUncheck = this.handleUncheck.bind(this);
-    this.id = this.props.id ?? uniqueId('choice--');
-    this.hintId = this.props.hint || this.props.requirementLabel ? `${this.id}__hint` : undefined;
-    this.errorId = this.props.errorMessage ? `${this.id}__error` : undefined;
+export const Choice = (props: ChoiceProps) => {
+  const initialCheckedState = props.checked ?? props.defaultChecked;
+  const [internalCheckedState, setChecked] = useState(initialCheckedState);
+  const isControlled = props.checked !== undefined;
+  const checked = isControlled ? props.checked : internalCheckedState;
+  const radioCheckedEventName = `${props.name}-radio-checked`;
 
-    if (typeof this.props.checked === 'undefined') {
-      this.isControlled = false;
-      // Since this isn't a controlled component, we need a way
-      // to track when the value has changed. This can then be used
-      // to identify when to toggle the visibility of (un)checkedChildren
-      this.state = { checked: this.props.defaultChecked };
-    } else {
-      this.isControlled = true;
-    }
-  }
+  const id = useId('choice--', props.id);
 
-  componentDidMount(): void {
-    // Event emitters are only relevant for uncontrolled radio buttons
-    if (!this.isControlled && this.props.type === 'radio') {
-      this.uncheckEventName = `${this.props.name}-uncheck`;
-      dsChoiceEmitter.on(this.uncheckEventName, this.handleUncheck);
-    }
-  }
+  const { errorId, topError, bottomError } = useInlineError({ ...props, id });
+  const { hintId, hintElement } = useHint({ ...props, id });
+  const labelProps = useLabelProps({ ...props, id });
 
-  componentWillUnmount(): void {
-    // Unbind event emitters are only relevant for uncontrolled radio buttons
-    if (!this.isControlled && this.props.type === 'radio') {
-      dsChoiceEmitter.off(this.uncheckEventName, this.handleUncheck);
-    }
-  }
-
-  input: any;
-  id: string;
-  hintId?: string;
-  errorId?: string;
-  isControlled: boolean;
-  uncheckEventName: string;
-
-  checked(): boolean {
-    if (this.isControlled) {
-      return this.props.checked;
+  // Subscribe to changes from other radio buttons in the same group
+  useEffect(() => {
+    // This logic only applies to uncontrolled radio groups
+    if (props.type !== 'radio' || isControlled) {
+      return;
     }
 
-    return this.state.checked;
-  }
+    const handleRadioChecked = (checkedId: string) => {
+      // Used to also have `&& this.input.checked !== this.state.checked`. I can't currently see
+      // why this is needed and am going to try it without
+      if (checkedId !== id) {
+        setChecked(false);
+      }
+    };
 
-  /**
-   * A radio button doesn't receive an onChange event when it is unchecked,
-   * so we fire an "uncheck" event when any radio option is selected. This
-   * allows us to check each radio options' checked state.
-   * @param {String} checkedId - ID of the checked radio option
-   */
-  handleUncheck(checkedId: string): void {
-    if (checkedId !== this.id && this.input.checked !== this.state.checked) {
-      this.setState({ checked: this.input.checked });
+    dsChoiceEmitter.on(radioCheckedEventName, handleRadioChecked);
+    return () => {
+      dsChoiceEmitter.off(radioCheckedEventName, handleRadioChecked);
+    };
+  }, [setChecked]);
+
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>): void {
+    if (props.onChange) {
+      props.onChange(event);
     }
-  }
 
-  handleChange(evt: React.ChangeEvent<HTMLInputElement>): void {
-    if (this.props.onChange) {
-      this.props.onChange(evt);
-    }
+    if (!isControlled) {
+      setChecked(event.target.checked);
 
-    if (!this.isControlled) {
-      this.setState({ checked: evt.target.checked });
-
-      if (this.props.type === 'radio' && evt.target.checked) {
-        // Emit the uncheck event so other radio options update their state
-        dsChoiceEmitter.emitEvent(this.uncheckEventName, [this.id]);
+      if (props.type === 'radio' && event.target.checked) {
+        // Emit an event so other radio options can uncheck themselves
+        dsChoiceEmitter.emitEvent(radioCheckedEventName, [id]);
       }
     }
   }
 
-  render() {
-    const {
-      'aria-live': ariaLive,
-      'aria-relevant': ariaRelevant,
-      'aria-atomic': ariaAtomic,
-      checkedChildren,
-      className,
-      disabled,
-      errorMessage,
-      errorMessageClassName,
-      hint,
-      inversed,
-      inputClassName,
-      label,
-      labelClassName,
-      requirementLabel,
-      size,
-      uncheckedChildren,
-      inputRef,
-      ...inputProps
-    } = this.props;
+  const {
+    'aria-live': ariaLive,
+    'aria-relevant': ariaRelevant,
+    'aria-atomic': ariaAtomic,
+    className,
+    inversed,
+    inputClassName,
+    inputRef,
+    size,
+    checkedChildren,
+    uncheckedChildren,
+    ...inputProps
+  } = props;
 
-    const inputClasses = classNames(inputClassName, 'ds-c-choice', {
-      'ds-c-choice--inverse': inversed,
-      'ds-c-choice--small': size === 'small',
-    });
-
-    let errorElement;
-    if (errorMessage) {
-      errorElement = (
-        <InlineError id={this.errorId} inversed={inversed} className={errorMessageClassName}>
-          {errorMessage}
-        </InlineError>
-      );
-    }
-
-    // Remove props we have our own implementations for
-    if (inputProps.id) delete inputProps.id;
-    if (inputProps.onChange) delete inputProps.onChange;
-
-    // All the fields that have multiple inputs need to pass down the root
-    // aria-describedby attribute (where the root hint and error messages are
-    // linked) down to the individual inputs
-    inputProps['aria-describedby'] =
-      mergeIds(this.errorId, this.hintId, inputProps['aria-describedby']) || undefined;
-
-    return (
-      <div
-        className={className}
-        aria-live={ariaLive ?? (checkedChildren ? 'polite' : null)}
-        aria-relevant={ariaRelevant ?? (checkedChildren ? 'additions text' : null)}
-        aria-atomic={ariaAtomic ?? (checkedChildren ? 'false' : null)}
-      >
-        <div className="ds-c-choice-wrapper">
-          <input
-            className={inputClasses}
-            id={this.id}
-            onChange={this.handleChange}
-            disabled={disabled}
-            ref={(ref) => {
-              this.input = ref;
-              if (inputRef) {
-                inputRef(ref);
-              }
-            }}
-            {...inputProps}
-          />
-          <Label
-            className={labelClassName}
-            fieldId={this.id}
-            hintId={this.hintId}
-            {...{
-              errorMessage: errorElement,
-              hint,
-              inversed,
-              requirementLabel,
-            }}
-          >
-            {label}
-          </Label>
-        </div>
-        {this.checked() ? checkedChildren : uncheckedChildren}
+  return (
+    <div
+      className={className}
+      aria-live={ariaLive ?? (checkedChildren ? 'polite' : null)}
+      aria-relevant={ariaRelevant ?? (checkedChildren ? 'additions text' : null)}
+      aria-atomic={ariaAtomic ?? (checkedChildren ? 'false' : null)}
+    >
+      <div className="ds-c-choice-wrapper">
+        <input
+          {...cleanFieldProps(inputProps)}
+          id={id}
+          className={classNames(inputClassName, 'ds-c-choice', {
+            'ds-c-choice--inverse': inversed,
+            'ds-c-choice--small': size === 'small',
+          })}
+          onChange={handleChange}
+          ref={inputRef}
+          aria-describedby={describeField({ ...props, errorId, hintId })}
+        />
+        <Label {...labelProps} fieldId={id} />
+        {hintElement}
+        {topError}
+        {bottomError}
       </div>
-    );
-  }
-}
+      {checked ? checkedChildren : uncheckedChildren}
+    </div>
+  );
+};
 
 export default Choice;

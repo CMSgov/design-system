@@ -227,6 +227,7 @@ exports[`Footer renders basic footer 1`] = `
                                   <label
                                     class="ds-c-label"
                                     for="choice-list--3__choice--0"
+                                    id="choice-list--3__choice--0__label"
                                   >
                                     Allow
                                   </label>
@@ -246,6 +247,7 @@ exports[`Footer renders basic footer 1`] = `
                                   <label
                                     class="ds-c-label"
                                     for="choice-list--3__choice--1"
+                                    id="choice-list--3__choice--1__label"
                                   >
                                     Don't allow
                                   </label>
@@ -308,6 +310,7 @@ exports[`Footer renders basic footer 1`] = `
                                   <label
                                     class="ds-c-label"
                                     for="choice-list--4__choice--0"
+                                    id="choice-list--4__choice--0__label"
                                   >
                                     Allow
                                   </label>
@@ -327,6 +330,7 @@ exports[`Footer renders basic footer 1`] = `
                                   <label
                                     class="ds-c-label"
                                     for="choice-list--4__choice--1"
+                                    id="choice-list--4__choice--1__label"
                                   >
                                     Don't allow
                                   </label>
@@ -389,6 +393,7 @@ exports[`Footer renders basic footer 1`] = `
                                   <label
                                     class="ds-c-label"
                                     for="choice-list--5__choice--0"
+                                    id="choice-list--5__choice--0__label"
                                   >
                                     Allow
                                   </label>
@@ -408,6 +413,7 @@ exports[`Footer renders basic footer 1`] = `
                                   <label
                                     class="ds-c-label"
                                     for="choice-list--5__choice--1"
+                                    id="choice-list--5__choice--1__label"
                                   >
                                     Don't allow
                                   </label>
@@ -960,6 +966,7 @@ exports[`Footer renders basic footer with props 1`] = `
                                   <label
                                     class="ds-c-label"
                                     for="choice-list--8__choice--0"
+                                    id="choice-list--8__choice--0__label"
                                   >
                                     Allow
                                   </label>
@@ -979,6 +986,7 @@ exports[`Footer renders basic footer with props 1`] = `
                                   <label
                                     class="ds-c-label"
                                     for="choice-list--8__choice--1"
+                                    id="choice-list--8__choice--1__label"
                                   >
                                     Don't allow
                                   </label>
@@ -1041,6 +1049,7 @@ exports[`Footer renders basic footer with props 1`] = `
                                   <label
                                     class="ds-c-label"
                                     for="choice-list--9__choice--0"
+                                    id="choice-list--9__choice--0__label"
                                   >
                                     Allow
                                   </label>
@@ -1060,6 +1069,7 @@ exports[`Footer renders basic footer with props 1`] = `
                                   <label
                                     class="ds-c-label"
                                     for="choice-list--9__choice--1"
+                                    id="choice-list--9__choice--1__label"
                                   >
                                     Don't allow
                                   </label>
@@ -1122,6 +1132,7 @@ exports[`Footer renders basic footer with props 1`] = `
                                   <label
                                     class="ds-c-label"
                                     for="choice-list--10__choice--0"
+                                    id="choice-list--10__choice--0__label"
                                   >
                                     Allow
                                   </label>
@@ -1141,6 +1152,7 @@ exports[`Footer renders basic footer with props 1`] = `
                                   <label
                                     class="ds-c-label"
                                     for="choice-list--10__choice--1"
+                                    id="choice-list--10__choice--1__label"
                                   >
                                     Don't allow
                                   </label>
