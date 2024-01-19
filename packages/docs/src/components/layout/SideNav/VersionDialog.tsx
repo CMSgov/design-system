@@ -6,6 +6,7 @@ import { getVersionOptions, getVersionEquivalent } from './themeVersionData';
 export interface ThemeVersionDialogProps {
   theme: string;
   version: string;
+  isOpen?: boolean;
   onExit(...args: any[]): void;
 }
 
@@ -51,6 +52,7 @@ export const ThemeVersionDialog = (props: ThemeVersionDialogProps) => {
           </Button>
         </>
       }
+      isOpen={props.isOpen}
       onExit={props.onExit}
     >
       <Dropdown

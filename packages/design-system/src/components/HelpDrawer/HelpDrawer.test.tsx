@@ -13,6 +13,7 @@ const defaultProps = {
   footerTitle: 'Footer title',
   onCloseClick: jest.fn(),
   heading: 'HelpDrawer title',
+  isOpen: true,
 };
 
 function renderHelpDrawer(props: Partial<HelpDrawerProps> = {}) {
