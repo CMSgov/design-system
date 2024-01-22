@@ -72,6 +72,7 @@ export const getFileDescriptors = (rootPath: string): FileDescriptor[] => {
 export const writeFile = (filename: string, fileData: string): number => {
   try {
     fs.writeFileSync(filename, fileData);
+    // eslint-disable-next-line no-console
     console.log(`:: wrote ${filename}`);
     return 0;
   } catch (err) {
