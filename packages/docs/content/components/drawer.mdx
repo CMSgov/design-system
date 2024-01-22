@@ -51,9 +51,6 @@ A header and/or footer can have a "sticky" position if the following properties 
   minHeight={300}
 />
 
-<!--
-DrawerManager documentation commented out until we're ready to release the component
-
 ### Managing multiple drawers
 
 If you have multiple `<Drawer>`'s on a page, you can utilize the `<DrawerManager>` context provider along with the `useDrawerManager()` hook to manage the state of these drawers so that only one will remain open at a time. The hook provides functions to toggle state of the drawer via click, to close the drawer and to get the open status of the drawer.
@@ -63,25 +60,21 @@ Since this component utilizes React [Context](https://react.dev/learn/passing-da
 A minimal example of implementation:
 
 ```js
-import { DrawerManager, useDrawerManager } from '@cmsgov/design-system';
+import { Button, DrawerManager, useDrawerManager } from '@cmsgov/design-system';
 
 const ManagedDrawer = (props) => {
-  const { toggleClick, closeClick, isOpen } = useDrawerManager();
+  const { toggleDrawer, closeDrawer, isDrawerOpen } = useDrawerManager();
 
   return (
     <>
-      {isOpen && (
-        <Drawer onCloseClick={closeClick} {...props} />
-      )}
-      <Button
-        className="ds-c-drawer__toggle"
-        variation="ghost"
-        onClick={toggleClick}
+      <Drawer
+        {...props}
+        onCloseClick={closeDrawer}
+        isOpen={isDrawerOpen}
       >
-        Toggle {props.heading}
-      </Button>
+      <Button onClick={toggleDrawer}>Click to open drawer</Button>
     </>
-  )
+  );
 }
 
 export default function App() {
@@ -93,7 +86,6 @@ export default function App() {
   </DrawerManager>
 }
 ```
--->
 
 ## Code
 
