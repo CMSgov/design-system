@@ -5,11 +5,54 @@ import useId from '../utilities/useId';
 export const DrawerContext = createContext(null);
 
 /**
- * If you have multiple `<Drawer>`'s on a page, you can utilize the `<DrawerManager>`
- * context provider along with the `useDrawerManager()` hook to manage the state of these
- * drawers so that only one will remain open at a time. The hook provides functions to
- * open the drawer, close the drawer, and toggle it as well as a boolean that represents
- * its open status. This is the object the `useDrawerManager` hook returns:
+ * The `DrawerManager` feature is useful when there are multiple help drawer links on a
+ * page, as it defines the behavior of what happens when a user already has one open and
+ * tries to open another. The `DrawerManager` manages the simplest behavior of closing
+ * all other drawers when a new one opens.
+ *
+ * At the top level of your app or page, you can
+ * define a `<DrawerManager>` [_context provider_](https://react.dev/learn/passing-data-deeply-with-context)
+ * and then in specific parts of your app that manage individual drawers, you can tap into
+ * the management behavior by calling the `useDrawerManager` hook. The hook provides the
+ * open/closed status of the drawer as well as functions for opening, closing, or toggling
+ * the drawer.
+ *
+ * Here is a minimal example of implementation:
+ *
+ * ```tsx
+ * import { Button, DrawerManager, useDrawerManager } from '@cmsgov/design-system';
+ *
+ * const ManagedDrawer = (props) => {
+ *   const { toggleDrawer, closeDrawer, isDrawerOpen } = useDrawerManager();
+ *
+ *   return (
+ *     <>
+ *       <Drawer
+ *         {...props}
+ *         onCloseClick={closeDrawer}
+ *         isOpen={isDrawerOpen}
+ *       >
+ *       <Button onClick={toggleDrawer}>Click to open drawer</Button>
+ *     </>
+ *   );
+ * }
+ *
+ * // Using components that use the `useDrawerManager` hook inside an app that is
+ * // wrapped in a `DrawerManager` context provider:
+ *
+ * function App() {
+ *   return (
+ *     <DrawerManager>
+ *       ... any content
+ *       <ManagedDrawer {...propsForDrawer1} />
+ *       <ManagedDrawer {...propsForDrawer2} />
+ *       <ManagedDrawer {...propsForDrawer3} />
+ *     </DrawerManager>
+ *   );
+ * }
+ * ```
+ *
+ * Here is a description of the object that the hook returns:
  *
  * ```ts
  * {
@@ -20,12 +63,7 @@ export const DrawerContext = createContext(null);
  * }
  * ```
  *
- * Since this component utilizes React [Context](https://react.dev/learn/passing-data-deeply-with-context),
- * any number of components/content items can be within the `DrawerManager` provider and
- * will not be effected by it.
- *
- * For information about how and when to use this component,
- * [refer to its full documentation page](https://design.cms.gov/components/drawer/).
+ * [See also the documentation on the drawer component](https://design.cms.gov/components/drawer/).
  */
 export const DrawerManager = (props: any) => {
   const [currentID, setCurrentID] = useState(null);
