@@ -1,4 +1,3 @@
-import React from 'react';
 import { ThirdPartyExternalLink } from '@cmsgov/design-system';
 
 ThirdPartyExternalLink.defaultProps = {

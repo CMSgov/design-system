@@ -26,7 +26,7 @@ function renderChoiceList(customProps = {}, choicesCount = 2) {
     errorMessage: 'Hey, you have to pick an answer',
     name: 'spec-field',
     type: 'radio' as ChoiceListType,
-    onChange: () => {},
+    onChange: () => null,
     ...customProps,
   };
   return render(<ChoiceList {...props} />);

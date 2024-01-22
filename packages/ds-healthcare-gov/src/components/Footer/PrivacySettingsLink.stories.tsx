@@ -1,4 +1,3 @@
-import React from 'react';
 import PrivacySettingsLink from './PrivacySettingsLink';
 import type { Meta, StoryObj } from '@storybook/react';
 

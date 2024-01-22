@@ -62,6 +62,12 @@ module.exports = {
       },
     },
     {
+      files: ['./packages/**/*.{js,jsx,ts,tsx}'],
+      rules: {
+        'no-console': ['error', { allow: ['warn', 'error'] }],
+      },
+    },
+    {
       files: ['*.jsx'],
       rules: {
         'jsx-quotes': 'off',
@@ -90,8 +96,9 @@ module.exports = {
       },
     },
     {
-      files: ['*.stories.jsx'],
+      files: ['*.stories.{jsx,tsx}'],
       rules: {
+        'no-console': 'off',
         'react/prop-types': 'off',
         'react/no-array-index-key': 'off',
       },

@@ -14,6 +14,7 @@ const defaultProps = {
   className: 'a-custom-class',
   heading: 'FilterDialog heading',
   onExit: jest.fn(),
+  isOpen: true,
 };
 
 function renderFilterDialog(overwriteProps = {}) {

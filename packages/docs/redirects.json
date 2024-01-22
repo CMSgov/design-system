@@ -1,0 +1,14 @@
+[
+  {
+    "fromPath": "/components/form-label/",
+    "toPath": "/components/label/"
+  },
+  {
+    "fromPath": "/foundation/list/",
+    "toPath": "/foundation/lists/"
+  },
+  {
+    "fromPath": "/guidelines/browser-support/",
+    "toPath": "/guidelines/support-policies/"
+  }
+]

@@ -4,7 +4,7 @@ import DropdownMenu from '../Dropdown/DropdownMenu';
 import classNames from 'classnames';
 import mergeRefs from '../utilities/mergeRefs';
 import useId from '../utilities/useId';
-import { errorPlacementDefault } from '../flags';
+import { config } from '../config';
 import {
   renderReactStatelyItems,
   renderStatusMessage,
@@ -243,7 +243,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
   // Add errorMessageClassName to fix the styles for bottom placed errors
   const bottomError =
     (textField.props.errorPlacement === ErrorPlacement.Bottom ||
-      errorPlacementDefault() === ErrorPlacement.Bottom) &&
+      config().errorPlacementDefault === ErrorPlacement.Bottom) &&
     textField.props.errorMessage != null;
 
   const errorMessageClassName = classNames(

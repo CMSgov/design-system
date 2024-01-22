@@ -1,7 +1,6 @@
 import { ButtonProps } from './Button';
-import { buttonSendsAnalytics } from '../flags';
+import { config } from '../config';
 import {
-  defaultAnalyticsFunction,
   EventCategory,
   EventType,
   getAnalyticsContentFromRefs,
@@ -15,14 +14,14 @@ export default function useButtonAnalytics({
   analyticsParentHeading,
   analyticsParentType,
   href,
-  onAnalyticsEvent = defaultAnalyticsFunction,
+  onAnalyticsEvent = config().defaultAnalyticsFunction,
   type,
   variation,
 }: ButtonProps) {
   const contentRef = useRef();
 
   function sendButtonEvent() {
-    if (analytics !== true && (!buttonSendsAnalytics() || analytics === false)) {
+    if (analytics !== true && (!config().buttonSendsAnalytics || analytics === false)) {
       return;
     }
 

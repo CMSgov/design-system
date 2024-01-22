@@ -104,14 +104,3 @@ export function sendLinkEvent(event: AnalyticsEvent) {
 }
 
 export type AnalyticsFunction = typeof sendLinkEvent;
-
-export let defaultAnalyticsFunction = sendLinkEvent;
-
-/**
- * Allows applications to override the default `onAnalyticsEvent` function
- * across the whole system. To override it for a single component instance,
- * use the `onAnalyticsEvent` prop instead.
- */
-export function setDefaultAnalyticsFunction(analyticsFunction: AnalyticsFunction) {
-  defaultAnalyticsFunction = analyticsFunction;
-}
