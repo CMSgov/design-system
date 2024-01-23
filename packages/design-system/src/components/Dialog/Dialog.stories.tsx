@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Dialog } from './Dialog';
 import { Button } from '@cmsgov/design-system';
 import { action } from '@storybook/addon-actions';
+import { useDialog } from './useDialog';
+import { TextField } from '../index';
 
 const meta: Meta<typeof Dialog> = {
   title: 'Components/Dialog',
@@ -54,12 +56,12 @@ export const DialogExample: Story = {
           onExit={hideModal}
           actions={
             <>
-              <button className="ds-c-button ds-c-button--solid ds-u-margin-right--1" key="solid">
+              <Button variation="solid" className="ds-u-margin-right--1">
                 Dialog action
-              </button>
-              <button className="ds-c-button ds-c-button--ghost" key="cancel" onClick={hideModal}>
+              </Button>
+              <Button variation="ghost" onClick={hideModal}>
                 Cancel
-              </button>
+              </Button>
             </>
           }
           isOpen={dialogOpen}
@@ -133,6 +135,54 @@ export const PreventScrollExample: Story = {
           the sole Power of Impeachment.
         </p>
       </div>
+    );
+  },
+};
+
+export const UseDialogExample: Story = {
+  name: 'useDialog Example',
+  render: function Component() {
+    const { dialog, openDialog } = useDialog<boolean>(({ resolveClose, isOpen }) => (
+      <Dialog
+        heading="Confirm deletion"
+        onExit={() => resolveClose(false)}
+        actions={
+          <>
+            <Button
+              variation="solid"
+              onClick={() => resolveClose(true)}
+              className="ds-u-margin-right--1"
+            >
+              Delete
+            </Button>
+            <Button variation="ghost" onClick={() => resolveClose(false)}>
+              Cancel
+            </Button>
+          </>
+        }
+        isOpen={isOpen}
+      >
+        Are you sure you want to delete your account? All in-progress applications will be deleted
+        and your information cleared from the system.
+      </Dialog>
+    ));
+
+    async function handleDelete() {
+      const result = await openDialog();
+      if (result) {
+        alert(
+          'Pretend you have been redirected to a page that confirms that your account was deleted.'
+        );
+      }
+    }
+
+    return (
+      <>
+        <Button onClick={handleDelete} variation="solid">
+          Delete account
+        </Button>
+        {dialog}
+      </>
     );
   },
 };
