@@ -185,12 +185,10 @@ Used to show important but not as urgent messages as standard alerts.
 - Use alerts sparingly as to avoid creating too much "noise" in screen readers, making it difficult to understand the overall layout of the page.
 - Users who are viewing the content need it to be placed in an effective location and to draw attention even when CSS is turned off. Content can help here too, using word choices that make the importance of the message clear.
 - Users who hear this content through assistive technology, such as a screen reader, will need to be alerted when the alert component visually appears, and that can be done using `aria-live`.
-  - E.g., NVDA needs a fraction of a second to catch up with changes in the DOM, use a `setTimeout` to delay displaying the alert.
 - Users who are using a keyboard to navigate the page will need to be able to access the alert and its content in the right order.
 - Do not visually hide alert messages on the page and then make them visible when they are needed. Users of older assistive technologies may still be able to perceive the alert messages even if they are not currently applicable.
 - Use the <abbr title="Accessible rich internet applications">ARIA</abbr> `role="alert"` to inform assistive technologies of a time-sensitive and important message that is not interactive. If the message is interactive, use the `role="alertdialog"` instead. Both include an implicit use of `aria-live="assertive"`. Refer to the [Dialog component’s full documentation](/components/modal-dialog/) when using `role="alertdialog"`.
 - If you have multiple alert components on a page, tailor the accessible text to differentiate between each by using an `aria-label` or `aria-labelledby` attribute.
-- The element referenced by the `aria-describedby`
 
 <ThemeContent onlyThemes={['healthcare']}>
 
@@ -205,7 +203,7 @@ Used to show important but not as urgent messages as standard alerts.
   <div aria-live="polite" aria-relevant="additions removals"></div>
   ```
 
-  And whn the user performs an action that displays an alert:
+  And when the user performs an action that displays an alert, add the alert to the existing `<div>`:
 
   ```html
   <div aria-live="polite" aria-relevant="additions removals">
