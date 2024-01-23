@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Dialog } from './Dialog';
 import { Button } from '@cmsgov/design-system';
 import { action } from '@storybook/addon-actions';
+import { useDialog } from './useDialog';
+import { TextField } from '../index';
 
 const meta: Meta<typeof Dialog> = {
   title: 'Components/Dialog',
@@ -49,22 +51,21 @@ export const DialogExample: Story = {
           Click to show modal
         </Button>
 
-        {dialogOpen && (
-          <Dialog
-            {...args}
-            onExit={hideModal}
-            actions={
-              <>
-                <button className="ds-c-button ds-c-button--solid ds-u-margin-right--1" key="solid">
-                  Dialog action
-                </button>
-                <button className="ds-c-button ds-c-button--ghost" key="cancel" onClick={hideModal}>
-                  Cancel
-                </button>
-              </>
-            }
-          />
-        )}
+        <Dialog
+          {...args}
+          onExit={hideModal}
+          actions={
+            <>
+              <Button variation="solid" className="ds-u-margin-right--1">
+                Dialog action
+              </Button>
+              <Button variation="ghost" onClick={hideModal}>
+                Cancel
+              </Button>
+            </>
+          }
+          isOpen={dialogOpen}
+        />
       </>
     );
   },
@@ -95,7 +96,7 @@ export const PreventScrollExample: Story = {
           which shall consist of a Senate and House of Representatives.
         </p>
 
-        {dialogOpen && <Dialog {...args} onExit={hideModal} />}
+        <Dialog {...args} onExit={hideModal} isOpen={dialogOpen} />
         <Button onClick={showModal} size="big" variation="solid">
           Click to show modal
         </Button>
@@ -134,6 +135,74 @@ export const PreventScrollExample: Story = {
           the sole Power of Impeachment.
         </p>
       </div>
+    );
+  },
+};
+
+/**
+ * The `useDialog` hook provides an alternative imperative interface for managing the
+ * open state of a modal dialog and waiting asynchronously for the final result of the
+ * user's interaction with the modal. While React leans heavily on declarative
+ * programming for building maintainable apps, there are cases where a more imperative
+ * style can save a lot of code. In those cases, being able to call a function to open
+ * the dialog and then wait on the response before performing the next action can make
+ * application logic a lot easier to read, reason about, and manage.
+ *
+ * To use the `useDialog` hook, you pass it a render function for the dialog, and it
+ * returns the rendered dialog and a function for opening the dialog and getting back
+ * a resolution when the dialog is closed.
+ *
+ * Note that you need to render the returned `dialog` element even if it's not open at
+ * the moment. It needs to be in the DOM in order for the browser and assistive tech to
+ * be able to properly interact with it.
+ *
+ * Note also that you're in complete control over what value the `openDialog` promise
+ * resolves to by what you pass to the `resolveClose` function in your render function.
+ */
+export const UseDialogExample: Story = {
+  name: 'useDialog Example',
+  render: function Component() {
+    const { dialog, openDialog } = useDialog<boolean>(({ resolveClose, isOpen }) => (
+      <Dialog
+        heading="Confirm deletion"
+        onExit={() => resolveClose(false)}
+        actions={
+          <>
+            <Button
+              variation="solid"
+              onClick={() => resolveClose(true)}
+              className="ds-u-margin-right--1"
+            >
+              Delete
+            </Button>
+            <Button variation="ghost" onClick={() => resolveClose(false)}>
+              Cancel
+            </Button>
+          </>
+        }
+        isOpen={isOpen}
+      >
+        Are you sure you want to delete your account? All in-progress applications will be deleted
+        and your information cleared from the system.
+      </Dialog>
+    ));
+
+    async function handleDelete() {
+      const result = await openDialog();
+      if (result) {
+        alert(
+          'Pretend you have been redirected to a page that confirms that your account was deleted.'
+        );
+      }
+    }
+
+    return (
+      <>
+        <Button onClick={handleDelete} variation="solid">
+          Delete account
+        </Button>
+        {dialog}
+      </>
     );
   },
 };

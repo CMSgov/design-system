@@ -67,11 +67,10 @@ describe('ThirdPartyExternalLink', () => {
 
       userEvent.click(getLink());
 
-      const dialog = screen.getByRole('dialog');
-      expect(dialog).toBeInTheDocument();
+      expect(screen.getByRole('dialog')).toBeInTheDocument();
 
       userEvent.click(screen.getByText('Cancel'));
-      expect(dialog).not.toBeInTheDocument();
+      expect(screen.queryByRole('dialog')).toBe(null);
     });
 
     it('renders custom origin text in heading and body', () => {
