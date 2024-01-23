@@ -7,17 +7,17 @@ import { Drawer } from './Drawer';
 import { DrawerManager, useDrawerManager } from './DrawerManager';
 
 const SingleDrawer = ({ heading }) => {
-  const { toggleClick, closeClick, isOpen } = useDrawerManager();
+  const { openDrawer, toggleDrawer, closeDrawer, isDrawerOpen } = useDrawerManager();
 
   return (
     <>
-      <Drawer isOpen={isOpen} onCloseClick={closeClick} heading={heading}>
+      <Drawer isOpen={isDrawerOpen} onCloseClick={closeDrawer} heading={heading}>
         A drawer for {heading}
       </Drawer>
 
-      <Button className="ds-c-drawer__toggle" variation="ghost" onClick={toggleClick}>
-        toggle {heading}
-      </Button>
+      <Button onClick={toggleDrawer}>toggle {heading}</Button>
+
+      <Button onClick={openDrawer}>open {heading}</Button>
     </>
   );
 };
@@ -48,11 +48,24 @@ function closeActiveDrawer() {
 }
 
 describe('DrawerManager', () => {
+  it('opens a single dialog', () => {
+    renderDrawerManager();
+
+    // Open the first one
+    userEvent.click(screen.getByText('open drawer one'));
+
+    // And close it
+    closeActiveDrawer();
+
+    // Make sure it's closed
+    expect(screen.queryByRole('dialog')).toBe(null);
+  });
+
   it('toggles active state of single dialog', () => {
     renderDrawerManager();
 
     // Open the first one
-    userEvent.click(screen.getAllByRole('button')[0]);
+    userEvent.click(screen.getByText('toggle drawer one'));
 
     // And close it
     closeActiveDrawer();
