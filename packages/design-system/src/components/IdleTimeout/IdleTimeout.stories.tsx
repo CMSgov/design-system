@@ -1,7 +1,6 @@
 import React from 'react';
 import IdleTimeout from './IdleTimeout';
 import IdleTimeoutDialog from './IdleTimeoutDialog';
-// import { Title, Subtitle, Description, ArgsTable, PRIMARY_STORY } from '@storybook/addon-docs';
 import { Title, Subtitle, Description, ArgsTable } from '@storybook/blocks';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
