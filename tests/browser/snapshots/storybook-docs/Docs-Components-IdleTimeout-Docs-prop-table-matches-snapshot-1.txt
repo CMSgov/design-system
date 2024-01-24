@@ -1,15 +1,15 @@
 [
   [
     "continueSessionText",
-    "The text for the 'continue session' button in warning dialog.\nstring",
-    "\"Continue session\"",
-    "Set string"
+    "The text for the 'continue session' button in warning dialog.\nReactNode",
+    "Continue session",
+    "Set object"
   ],
   [
     "endSessionButtonText",
-    "The text for the button that ends the session in warning dialog.\nstring",
-    "\"Logout\"",
-    "Set string"
+    "The text for the button that ends the session in warning dialog.\nReactNode",
+    "Logout",
+    "Set object"
   ],
   [
     "endSessionUrl",
