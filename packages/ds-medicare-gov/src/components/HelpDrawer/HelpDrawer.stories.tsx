@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import HelpDrawerToggle from './HelpDrawerToggle';
 import HelpDrawer from './HelpDrawer';
+// Need this in order for the generated ArgsTable to work
+import { HelpDrawer as CoreHelpDrawer } from '../../../../design-system/src/components/HelpDrawer/HelpDrawer';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof HelpDrawer> = {
   title: 'Medicare/HelpDrawer',
-  component: HelpDrawer,
+  component: CoreHelpDrawer,
   args: {
     heading: 'Drawer Heading',
   },
