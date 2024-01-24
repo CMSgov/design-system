@@ -56,16 +56,15 @@ export const Default: Story = {
 
     return (
       <>
-        {isDrawerVisible && (
-          <HelpDrawer
-            onCloseClick={hideDrawer}
-            footerTitle="Footer Title"
-            footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
-            heading="HelpDrawer Heading"
-          >
-            {drawerContent}
-          </HelpDrawer>
-        )}
+        <HelpDrawer
+          onCloseClick={hideDrawer}
+          footerTitle="Footer Title"
+          footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
+          heading="HelpDrawer Heading"
+          isOpen={isDrawerVisible}
+        >
+          {drawerContent}
+        </HelpDrawer>
         <Button className="ds-c-drawer__toggle" variation="ghost" onClick={showDrawer}>
           Toggle
         </Button>

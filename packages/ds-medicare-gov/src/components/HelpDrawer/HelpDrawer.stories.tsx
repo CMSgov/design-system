@@ -59,11 +59,9 @@ export const HelpDrawerToggleWithDrawer: Story = {
 
     return (
       <>
-        {isDrawerVisible && (
-          <HelpDrawer onCloseClick={hideDrawer} heading="Drawer Heading">
-            {drawerContent}
-          </HelpDrawer>
-        )}
+        <HelpDrawer onCloseClick={hideDrawer} heading="Drawer Heading" isOpen={isDrawerVisible}>
+          {drawerContent}
+        </HelpDrawer>
         <HelpDrawerToggle showDrawer={showDrawer} helpDrawerOpen={isDrawerVisible || false}>
           Drawer Toggle
         </HelpDrawerToggle>
