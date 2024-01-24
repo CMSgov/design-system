@@ -1,12 +1,12 @@
 ---
 title: Release 9.0
 date: 2024-01-25
-intro: Differentiating between labels, hints, and errors, standardizing dialog close buttons, and refining typography design tokens.
+intro: Differentiating between labels, hints, and errors, standardizing dialog close buttons, improving drawers and dialogs, and refining typography design tokens.
 ---
 
 import dialogXClose from '../../src/images/dialog-x-close.png';
 
-Along with a host of bugfixes and minor improvements, this major release focused on differentiating between labels, hints, and errors, standardizing dialog close buttons, and refining typography design tokens. This release is scheduled for late January, 2024 and is [currently available in beta form](https://github.com/CMSgov/design-system/releases). Read the sections below for more details about this release.
+Along with a host of bugfixes and minor improvements, this major release focused on differentiating between labels, hints, and errors, standardizing dialog close buttons, improving drawers and dialogs, and refining typography design tokens. This release is scheduled for late January, 2024 and is [currently available in beta form](https://github.com/CMSgov/design-system/releases). Read the sections below for more details about this release.
 
 ## Whatʼs new in 9.0
 
@@ -23,6 +23,17 @@ Dialog close buttons have gotten a visual refresh. All themes have standardized 
 </div>
 
 This refreshed "X" button has a large hit area to make sure it is still easy to tap and click, and it still provides the same amount of context for screen-readers as before.
+
+### Improving drawers and dialogs
+
+We fixed [a focus-management bug in drawers and dialogs](https://github.com/CMSgov/design-system/pull/2890), but it required a small API change to the React components. Now instead of conditionally rendering them to show or hide, you pass an `isOpen` prop to control their visibility. The old API will be supported until the next major version, but a drawer or dialog will still have the bug until it is updated.
+
+While [the change required in application code](https://github.com/CMSgov/design-system/pull/2890) is straightforward, it's still a change, and wouldn't it be nice if you got something more out of the deal besides a bugfix? What if you could get some new features for drawers and dialogs too? We were thinking the same thing, so we're releasing a couple new convenience features.
+
+1. The new `DrawerManager` feature helps you manage multiple drawers in a page. [Read all about the `DrawerManager` here](/storybook/?path=/docs/components-drawermanager--docs).
+2. The new `useDialog` hook provides an alternative imperative interface for opening a modal dialog and waiting asynchronously for the final result of the user's interaction with the modal. [Read about the new `useDialog` hook here](/storybook/?path=/docs/components-dialog--docs#usedialog-example).
+
+We hope you find these two new tools useful. Let us know if you have feedback!
 
 ### Refining typography design tokens
 
