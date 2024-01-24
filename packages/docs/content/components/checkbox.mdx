@@ -97,7 +97,9 @@ This component also makes use of form field styles, which can be customized by t
 - A group of checkboxes should be wrapped in a `<fieldset>` that includes a `<legend>` element within.
   - The `<legend>` provides context for the grouping, much like a label.
   - Do not use `fieldset` and `legend` for a single checkbox element.
+- Normally an individual checkbox should not be a required field to complete a form but a checkbox group may be.
 - Each input should have a semantic `id` attribute, and its corresponding `label` should have the same value in its `for` attribute.
+- Be mindful of color contrast ratios between the checkbox and its background color. For instance, a dark green or blue behind the component will most likely cause problems for users. [Read our guidance on color for more information](https://design.cms.gov/foundation/system-color-tokens/#accessibility-considerations).
 
 #### Keyboard testing
 
@@ -121,7 +123,7 @@ This component also makes use of form field styles, which can be customized by t
 
 - All the above from the desktop screen reader experience apply.
 - Swiping focuses on a checkbox.
-- Doubletapping with the checkbox in focus makes a selection and announces its been selected.
+- Double tapping with the checkbox in focus makes a selection and announces its been selected.
 
 #### Pointer device testing
 
