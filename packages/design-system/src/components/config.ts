@@ -1,9 +1,5 @@
 import { AnalyticsFunction, sendLinkEvent } from './analytics';
-
-export enum ErrorPlacement {
-  Top = 'top',
-  Bottom = 'bottom',
-}
+import type { ErrorPlacement } from './InlineError/useInlineError';
 
 export interface Config {
   /**
@@ -47,7 +43,7 @@ export interface Config {
 export type PartialConfig = Partial<Config>;
 
 export const DEFAULTS: Config = Object.freeze({
-  errorPlacementDefault: ErrorPlacement.Top,
+  errorPlacementDefault: 'top',
   defaultAnalyticsFunction: sendLinkEvent,
   alertSendsAnalytics: false,
   buttonSendsAnalytics: false,
@@ -58,7 +54,7 @@ export const DEFAULTS: Config = Object.freeze({
 
 export const HEALTHCARE_DEFAULTS: Config = {
   ...DEFAULTS,
-  errorPlacementDefault: ErrorPlacement.Bottom,
+  errorPlacementDefault: 'bottom',
   headerSendsAnalytics: true,
 };
 
