@@ -12,7 +12,13 @@ Along with a host of bugfixes and minor improvements, this major release focused
 
 ### Differentiating between labels, hints, and inline errors
 
-Weʼve restructured form-field labels to improve accessibility, customizability, and clarity of guidance. [Weʼve explained this change in more detail in this migration guide](/migration-guides/v9-label-updates), but the gist is that labels used to contain hints and inline-error messages and now theyʼre separate components. The React components for the various design system form fields handle this change automatically, as they all have labels, hints, and error text built in. Making them separate elements makes them easier to style predictably. Moving the hint and error text out of the HTML `<label>` elements makes them an appropriate place to put interactive content, because assistive technology expects labels to be free of interactive elements. Not having a place to put interactive help resources for a field was a problem, and application teams had no path clear forward. We hope these changes can be leveraged to create even more helpful and accessible forms for delivering important government services.
+Weʼve restructured form-field labels to improve accessibility, customizability, and clarity of guidance. You can read about this change in more detail in [this migration guide](https://github.com/migration-guides/v9-label-updates), but the gist is that labels used to contain both hints and inline-error messages and now theyʼre separate components.
+
+Making them separate elements makes them easier to style predictably, and moving the hint and error text out of the HTML `<label>` elements makes them an appropriate place to put interactive content.
+
+The React components for the various design system form fields handle this change automatically, as they all have labels, hints, and error text built in. Unless youʼve built custom form fields for your application, the impact of this change should be minimal.
+
+We hope these changes can be leveraged to create even more helpful and accessible forms for delivering important government services.
 
 ### Standardizing dialog close buttons
 
@@ -26,14 +32,14 @@ This refreshed "X" button has a large hit area to make sure it is still easy to 
 
 ### Improving drawers and dialogs
 
-We fixed [a focus-management bug in drawers and dialogs](https://github.com/CMSgov/design-system/pull/2890), but it required a small API change to the React components. Now instead of conditionally rendering them to show or hide, you pass an `isOpen` prop to control their visibility. The old API will be supported until the next major version, but a drawer or dialog will still have the bug until it is updated.
+We fixed [a focus-management bug in drawers and dialogs](https://github.com/CMSgov/design-system/pull/2890), but it required a small API change to the React components. Now instead of conditionally rendering them to show or hide, you pass an `isOpen` prop to control their visibility. **The old API will be supported until the next major version**, but a drawer or dialog will still have the bug until it is updated.
 
 While [the change required in application code](https://github.com/CMSgov/design-system/pull/2890) is straightforward, it's still a change, and wouldn't it be nice if you got something more out of the deal besides a bugfix? What if you could get some new features for drawers and dialogs too? We were thinking the same thing, so we're releasing a couple new convenience features.
 
 1. The new `DrawerManager` feature helps you manage multiple drawers in a page. [Read all about the `DrawerManager` here](/storybook/?path=/docs/components-drawermanager--docs).
 2. The new `useDialog` hook provides an alternative imperative interface for opening a modal dialog and waiting asynchronously for the final result of the user's interaction with the modal. [Read about the new `useDialog` hook here](/storybook/?path=/docs/components-dialog--docs#usedialog-example).
 
-We hope you find these two new tools useful. Let us know if you have feedback!
+We hope you find these two new tools useful. [Let us know if you have feedback!](/contact)
 
 ### Refining typography design tokens
 
