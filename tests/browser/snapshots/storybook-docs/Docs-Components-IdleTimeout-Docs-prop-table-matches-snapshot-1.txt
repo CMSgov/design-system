@@ -1,68 +1,57 @@
 [
   [
     "continueSessionText",
-    "The text for the 'continue session' button in warning dialog.\nstring",
-    "\"Continue session\"",
-    "Set string"
+    "The text for the 'continue session' button in warning dialog.\nReactNode",
+    "Continue session"
   ],
   [
     "endSessionButtonText",
-    "The text for the button that ends the session in warning dialog.\nstring",
-    "\"Logout\"",
-    "Set string"
+    "The text for the button that ends the session in warning dialog.\nReactNode",
+    "Logout"
   ],
   [
     "endSessionUrl",
     "The URL to direct to when the user intentionally ends the session.\nstring",
-    "\"/logout\"",
-    "Set string"
+    "\"/logout\""
   ],
   [
     "formatMessage",
     "A formatting function that returns the string to be used in the warning modal. The formatting function is provided the timeTilTimeout (in minutes).\n\n(timeTilTimeout: number) => ReactNode",
-    "(timeTilTimeout: number): React.ReactNode => { const unitOfTime = timeTilTimeout === 1 ? 'minute' : 'minutes'; return ( <p> You&apos;ve been inactive for a while. <br /> Your session will end in{' '} <strong> {timeTilTimeout} {unitOfTime} </strong> . <br /> <br /> Select &quot;Continue session&quot; below if you want more time. </p> ); }",
-    "-"
+    "(timeTilTimeout: number): React.ReactNode => { const unitOfTime = timeTilTimeout === 1 ? 'minute' : 'minutes'; return ( <p> You&apos;ve been inactive for a while. <br /> Your session will end in{' '} <strong> {timeTilTimeout} {unitOfTime} </strong> . <br /> <br /> Select &quot;Continue session&quot; below if you want more time. </p> ); }"
   ],
   [
     "heading",
     "The heading text for the warning dialog.\nReactNode",
-    "Are you still there?",
-    "Set object"
+    "Are you still there?"
   ],
   [
     "onSessionContinue",
     "Optional function that is called when the user chooses to keep the session alive. This function is called by the 'continue session' button or the 'close' button. The IdleTimeout component will reset the countdown internally.\n\n(...args: any[]) => any",
-    "-",
     "-"
   ],
   [
     "onSessionForcedEnd",
     "Optional function that is called when the session is manually ended by user. If not provided, the behavior of onTimeout will be used.\n\n(...args: any[]) => any",
-    "-",
     "-"
   ],
   [
     "onTimeout*",
     "Function that is called when the timeout countdown reaches zero.\n(...args: any[]) => any",
-    "-",
     "-"
   ],
   [
     "showSessionEndButton",
     "Describes if the button to manually end session should be shown in the warning dialog.\nboolean",
-    "false",
-    "Set boolean"
+    "false"
   ],
   [
     "timeToTimeout*",
     "Defines the amount of minutes of idle activity until the session is timed out\nnumber",
-    "-",
-    ""
+    "-"
   ],
   [
     "timeToWarning*",
     "Defines the amount of minutes of idle activity that will trigger the warning message.\nnumber",
-    "-",
-    ""
+    "-"
   ]
 ]
