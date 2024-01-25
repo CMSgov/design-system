@@ -91,7 +91,6 @@ export const ErrorField: Story = {
   args: {
     errorMessage: 'This is an example error message.',
     hint: 'This is where you put helpful hint text.',
-    errorPlacement: 'bottom',
   },
 };
 
