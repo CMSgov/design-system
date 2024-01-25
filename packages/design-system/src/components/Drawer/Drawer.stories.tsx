@@ -1,5 +1,5 @@
 import React from 'react';
-import { Title, Subtitle, Description, ArgsTable, PRIMARY_STORY } from '@storybook/addon-docs';
+import { Title, Subtitle, Description, ArgsTable } from '@storybook/blocks';
 import { action } from '@storybook/addon-actions';
 import Drawer from './Drawer';
 import { Button } from '../Button';
@@ -22,7 +22,7 @@ const meta: Meta<typeof Drawer> = {
           <Title />
           <Subtitle />
           <Description />
-          <ArgsTable story={PRIMARY_STORY} />
+          <ArgsTable />
         </>
       ),
     },

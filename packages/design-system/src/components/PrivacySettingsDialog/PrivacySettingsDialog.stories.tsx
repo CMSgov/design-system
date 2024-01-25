@@ -1,6 +1,6 @@
 import React from 'react';
 import PrivacySettingsDialog from './PrivacySettingsDialog';
-import { Title, Subtitle, Description, ArgsTable, PRIMARY_STORY } from '@storybook/addon-docs';
+import { Title, Subtitle, Description, ArgsTable } from '@storybook/blocks';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof PrivacySettingsDialog> = {
@@ -18,7 +18,7 @@ const meta: Meta<typeof PrivacySettingsDialog> = {
           <Title />
           <Subtitle />
           <Description />
-          <ArgsTable story={PRIMARY_STORY} />
+          <ArgsTable />
         </>
       ),
     },

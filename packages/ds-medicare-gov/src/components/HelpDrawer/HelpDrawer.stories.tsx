@@ -1,5 +1,5 @@
 import React from 'react';
-import { Title, Subtitle, Description, ArgsTable, PRIMARY_STORY } from '@storybook/addon-docs';
+import { Title, Subtitle, Description, ArgsTable } from '@storybook/blocks';
 import HelpDrawerToggle from './HelpDrawerToggle';
 import HelpDrawer from './HelpDrawer';
 import type { Meta, StoryObj } from '@storybook/react';
@@ -19,7 +19,7 @@ const meta: Meta<typeof HelpDrawer> = {
           <Title />
           <Subtitle />
           <Description />
-          <ArgsTable story={PRIMARY_STORY} />
+          <ArgsTable />
         </>
       ),
     },
