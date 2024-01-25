@@ -4,6 +4,7 @@ export enum ErrorPlacement {
   Top = 'top',
   Bottom = 'bottom',
 }
+export type ErrorPlacementType = `${ErrorPlacement}`;
 
 export interface Config {
   /**
@@ -11,7 +12,7 @@ export interface Config {
    * of the error message relative to the field input. Accepts string values of 'top' or
    * 'bottom'.
    */
-  errorPlacementDefault: ErrorPlacement;
+  errorPlacementDefault: ErrorPlacementType;
   /**
    * Changing this setting allows applications to override the default `onAnalyticsEvent`
    * handler function for all analytics-enabled components. To override it for a single
@@ -89,12 +90,12 @@ export function setDefaultAnalyticsFunction(analyticsFunction: AnalyticsFunction
 
 export const defaultAnalyticsFunction = config().defaultAnalyticsFunction;
 
-export function errorPlacementDefault(): ErrorPlacement {
+export function errorPlacementDefault(): ErrorPlacementType {
   depWarning('setDefaultAnalyticsFunction');
   return config().errorPlacementDefault;
 }
 
-export function setErrorPlacementDefault(value: ErrorPlacement): void {
+export function setErrorPlacementDefault(value: ErrorPlacementType): void {
   depWarning('setErrorPlacementDefault');
   config({ errorPlacementDefault: value });
 }

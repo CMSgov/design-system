@@ -1,7 +1,7 @@
 import React from 'react';
 import InlineError from './InlineError';
 import classNames from 'classnames';
-import { ErrorPlacement, config } from '../config';
+import { ErrorPlacement, ErrorPlacementType, config } from '../config';
 
 export { ErrorPlacement };
 
@@ -17,7 +17,7 @@ export interface UseInlineErrorProps {
   /**
    * Location of the error message relative to the field input
    */
-  errorPlacement?: ErrorPlacement;
+  errorPlacement?: ErrorPlacementType;
   /**
    * Enable the error state by providing an error message.
    */
