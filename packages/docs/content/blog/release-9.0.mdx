@@ -1,12 +1,12 @@
 ---
 title: Release 9.0
 date: 2024-01-25
-intro: Differentiating between labels, hints, and errors, standardizing dialog close buttons, improving the drawer and dialog APIs, and refining typography design tokens.
+intro: Differentiating between labels, hints, and errors, standardizing dialog close buttons, improving the drawer and dialog APIs, consolidating configuration functions, and refining typography design tokens.
 ---
 
 import dialogXClose from '../../src/images/dialog-x-close.png';
 
-Along with a host of bugfixes and minor improvements, this major release focused on differentiating between labels, hints, and errors, standardizing dialog close buttons, improving the drawer and dialog APIs, and refining typography design tokens. This release is scheduled for late January, 2024 and is [currently available in beta form](https://github.com/CMSgov/design-system/releases). Read the sections below for more details about this release.
+Along with a host of bugfixes and minor improvements, this major release focused on differentiating between labels, hints, and errors, standardizing dialog close buttons, improving the drawer and dialog APIs, consolidating configuration functions, and refining typography design tokens. This release is scheduled for late January, 2024 and is [currently available in beta form](https://github.com/CMSgov/design-system/releases). Read the sections below for more details about this release.
 
 ## Whatʼs new in 9.0
 
@@ -40,6 +40,10 @@ While [the change required in application code](https://github.com/CMSgov/design
 2. The new `useDialog` hook provides an alternative imperative interface for opening a modal dialog and waiting asynchronously for the final result of the user's interaction with the modal. [Read about the new `useDialog` hook here](/storybook/?path=/docs/components-dialog--docs#usedialog-example).
 
 We hope you find these two new tools useful. [Let us know if you have feedback!](/contact)
+
+### Consolidating configuration functions
+
+As of version 9 of the `@cmsgov/design-system` package, the controls for the various global configuration options have been rolled up into a single function that can be called to set or get global design-system settings. You can read more about it on the new [global config documentation page](/components/config).
 
 ### Refining typography design tokens
 
