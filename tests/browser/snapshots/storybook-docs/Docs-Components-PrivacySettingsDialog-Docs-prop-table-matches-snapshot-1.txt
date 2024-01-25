@@ -2,25 +2,26 @@
   [
     "domain*",
     "string",
-    "-",
-    ""
+    "-"
+  ],
+  [
+    "isOpen",
+    "Controls whether the dialog is in an open state\nboolean",
+    "-"
   ],
   [
     "onExit*",
     "() => void",
-    "-",
     "-"
   ],
   [
     "privacyPolicyUrl*",
     "string",
-    "-",
-    ""
+    "-"
   ],
   [
     "thirdPartyPoliciesUrl",
     "string",
-    "-",
-    "Set string"
+    "-"
   ]
 ]

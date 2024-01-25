@@ -4,7 +4,7 @@ import DropdownMenu from '../Dropdown/DropdownMenu';
 import classNames from 'classnames';
 import mergeRefs from '../utilities/mergeRefs';
 import useId from '../utilities/useId';
-import { errorPlacementDefault } from '../flags';
+import { config } from '../config';
 import {
   renderReactStatelyItems,
   renderStatusMessage,
@@ -15,7 +15,6 @@ import {
 import { t } from '../i18n';
 import { useComboBox } from '../react-aria'; // from react-aria
 import { useComboBoxState } from '../react-aria'; // from react-stately
-import { ErrorPlacement } from '../InlineError/useInlineError';
 
 export interface AutocompleteItem extends Omit<React.HTMLAttributes<'option'>, 'name'> {
   /**
@@ -242,8 +241,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
   // The display of bottom placed errorMessages in TextField breaks the Autocomplete's UI design.
   // Add errorMessageClassName to fix the styles for bottom placed errors
   const bottomError =
-    (textField.props.errorPlacement === ErrorPlacement.Bottom ||
-      errorPlacementDefault() === ErrorPlacement.Bottom) &&
+    (textField.props.errorPlacement === 'bottom' || config().errorPlacementDefault === 'bottom') &&
     textField.props.errorMessage != null;
 
   const errorMessageClassName = classNames(

@@ -1,6 +1,4 @@
 import React from 'react';
-import { Title, Subtitle, Description } from '@storybook/addon-docs';
-
 import Drawer from './Drawer';
 import { DrawerManager, useDrawerManager } from './DrawerManager';
 import { Button } from '../Button';
@@ -9,17 +7,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 const meta: Meta<typeof DrawerManager> = {
   title: 'Components/DrawerManager',
   component: DrawerManager,
-  parameters: {
-    docs: {
-      page: () => (
-        <>
-          <Title />
-          <Subtitle />
-          <Description />
-        </>
-      ),
-    },
-  },
 };
 export default meta;
 
@@ -86,25 +73,24 @@ const drawerContent3 = {
 
 const SingleDrawerWithToggle = (...args) => {
   const { heading, children } = args[0];
-  const { toggleClick, closeClick, isOpen } = useDrawerManager();
+  const { toggleDrawer, closeDrawer, isDrawerOpen } = useDrawerManager();
 
   return (
     <>
-      {isOpen && (
-        <Drawer
-          {...args}
-          onCloseClick={closeClick}
-          footerTitle="Footer Title"
-          footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
-          heading={heading}
-        >
-          {children}
-        </Drawer>
-      )}
+      <Drawer
+        {...args}
+        onCloseClick={closeDrawer}
+        footerTitle="Footer Title"
+        footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
+        heading={heading}
+        isOpen={isDrawerOpen}
+      >
+        {children}
+      </Drawer>
       <Button
         className="ds-c-drawer__toggle ds-u-margin-bottom--2"
         variation="ghost"
-        onClick={toggleClick}
+        onClick={toggleDrawer}
       >
         {heading}
       </Button>

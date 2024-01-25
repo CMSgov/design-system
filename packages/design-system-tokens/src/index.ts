@@ -39,12 +39,12 @@ const tokenExporter = (inputType: string, exportType: string): number => {
   }
 
   const help = (error: string) => {
-    console.log(`\n error: ${error}`);
-    console.log('-------------------------------------------------------------');
-    console.log(' usage : yarn build input_type output_type');
-    console.log(`         where input_type can be ${INPUT_TYPES}`);
-    console.log(`         and output_type can be ${EXPORT_TYPES}`);
-    console.log('-------------------------------------------------------------\n');
+    console.error(`\n error: ${error}`);
+    console.error('-------------------------------------------------------------');
+    console.error(' usage : yarn build input_type output_type');
+    console.error(`         where input_type can be ${INPUT_TYPES}`);
+    console.error(`         and output_type can be ${EXPORT_TYPES}`);
+    console.error('-------------------------------------------------------------\n');
     process.exit(1);
   };
 

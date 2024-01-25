@@ -1,14 +1,12 @@
-import React from 'react';
-import { Title, Subtitle, Description, ArgsTable, PRIMARY_STORY } from '@storybook/addon-docs';
-import { action } from '@storybook/addon-actions';
-import { HelpDrawer as Help } from './HelpDrawer';
+import React, { useState } from 'react';
+import { HelpDrawer } from './HelpDrawer';
 import { Button } from '../Button';
+import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
-import { useArgs } from '@storybook/preview-api';
 
-const meta: Meta<typeof Help> = {
+const meta: Meta<typeof HelpDrawer> = {
   title: 'Components/HelpDrawer',
-  component: Help,
+  component: HelpDrawer,
   args: {
     footerTitle: 'Footer Title',
     footerBody: <p className="ds-text ds-u-margin--0">Footer content</p>,
@@ -17,7 +15,7 @@ const meta: Meta<typeof Help> = {
 };
 export default meta;
 
-type Story = StoryObj<typeof Help>;
+type Story = StoryObj<typeof HelpDrawer>;
 
 const drawerContent = (
   <>
@@ -49,26 +47,24 @@ const drawerContent = (
 
 export const Default: Story = {
   render: function Component() {
-    const [{ isDrawerVisible, ...args }, updateArgs] = useArgs();
-    const showDrawer = () => updateArgs({ isDrawerVisible: true });
+    const [isDrawerVisible, setIsDrawerVisible] = useState(false);
+    const showDrawer = () => setIsDrawerVisible(true);
     const hideDrawer = (...params) => {
       action('onCloseClick')(...params);
-      updateArgs({ isDrawerVisible: false });
+      setIsDrawerVisible(false);
     };
 
     return (
       <>
-        {isDrawerVisible && (
-          <Help
-            {...args}
-            onCloseClick={hideDrawer}
-            footerTitle="Footer Title"
-            footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
-            heading="HelpDrawer Heading"
-          >
-            {drawerContent}
-          </Help>
-        )}
+        <HelpDrawer
+          onCloseClick={hideDrawer}
+          footerTitle="Footer Title"
+          footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
+          heading="HelpDrawer Heading"
+          isOpen={isDrawerVisible}
+        >
+          {drawerContent}
+        </HelpDrawer>
         <Button className="ds-c-drawer__toggle" variation="ghost" onClick={showDrawer}>
           Toggle
         </Button>

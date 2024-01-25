@@ -1,9 +1,7 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Button, { ButtonVariation } from '../Button/Button';
 import NativeDialog from '../NativeDialog/NativeDialog';
-import { useRef } from 'react';
 import classNames from 'classnames';
-import uniqueId from 'lodash/uniqueId';
 import { t } from '../i18n';
 import useId from '../utilities/useId';
 
@@ -49,6 +47,10 @@ export interface DrawerProps {
    */
   isFooterSticky?: boolean;
   /**
+   * Controls whether the dialog is in an open state
+   */
+  isOpen?: boolean;
+  /**
    * Called when the user activates the close button or presses the ESC key if
    * focus trapping is enabled. The parent of this component is responsible for
    * showing or not showing the drawer, so you need to use this callback to
@@ -72,6 +74,7 @@ export const Drawer = (props: DrawerProps) => {
       className={classNames(props.className, 'ds-c-drawer')}
       exit={props.onCloseClick}
       showModal={props.hasFocusTrap}
+      isOpen={props.isOpen}
     >
       <div className="ds-c-drawer__window" tabIndex={-1} aria-labelledby={headingId}>
         <div className="ds-c-drawer__header">

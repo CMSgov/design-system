@@ -1,5 +1,5 @@
 import React from 'react';
-import { Title, Subtitle, Description, ArgsTable, PRIMARY_STORY } from '@storybook/addon-docs';
+import { Title, Subtitle, Description, ArgsTable } from '@storybook/blocks';
 import { action } from '@storybook/addon-actions';
 import Drawer from './Drawer';
 import { Button } from '../Button';
@@ -22,7 +22,7 @@ const meta: Meta<typeof Drawer> = {
           <Title />
           <Subtitle />
           <Description />
-          <ArgsTable story={PRIMARY_STORY} />
+          <ArgsTable />
         </>
       ),
     },
@@ -84,17 +84,16 @@ export const DrawerToggleWithDrawer: Story = {
 
     return (
       <>
-        {isDrawerVisible && (
-          <Drawer
-            {...args}
-            onCloseClick={hideDrawer}
-            footerTitle="Footer Title"
-            footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
-            heading="Drawer Heading"
-          >
-            {drawerContent}
-          </Drawer>
-        )}
+        <Drawer
+          {...args}
+          onCloseClick={hideDrawer}
+          footerTitle="Footer Title"
+          footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
+          heading="Drawer Heading"
+          isOpen={isDrawerVisible ?? false}
+        >
+          {drawerContent}
+        </Drawer>
         <Button className="ds-c-drawer__toggle" variation="ghost" onClick={showDrawer}>
           Drawer Toggle
         </Button>

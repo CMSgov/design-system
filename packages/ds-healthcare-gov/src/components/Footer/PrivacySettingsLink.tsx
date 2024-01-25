@@ -1,7 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PrivacySettingsDialog } from '@cmsgov/design-system';
-import { useState } from 'react';
-
 import { tWithLanguage } from '../i18n';
 
 interface PrivacySettingsLinkProps {
@@ -20,14 +18,13 @@ export const PrivacySettingsLink = (props: PrivacySettingsLinkProps) => {
       <button className={props.className} onClick={openDialog}>
         {props.children || t('footer.privacySettings')}
       </button>
-      {showDialog && (
-        <PrivacySettingsDialog
-          onExit={closeDialog}
-          domain="HealthCare.gov"
-          privacyPolicyUrl="https://www.healthcare.gov/privacy/"
-          thirdPartyPoliciesUrl="https://www.healthcare.gov/third-party-privacy-policies/"
-        />
-      )}
+      <PrivacySettingsDialog
+        isOpen={showDialog}
+        onExit={closeDialog}
+        domain="HealthCare.gov"
+        privacyPolicyUrl="https://www.healthcare.gov/privacy/"
+        thirdPartyPoliciesUrl="https://www.healthcare.gov/third-party-privacy-policies/"
+      />
     </>
   );
 };

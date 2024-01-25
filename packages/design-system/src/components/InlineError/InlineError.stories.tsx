@@ -1,4 +1,3 @@
-import React from 'react';
 import { InlineError } from './InlineError';
 import type { Meta, StoryObj } from '@storybook/react';
 

@@ -1,28 +1,18 @@
-import React from 'react';
-import { Title, Subtitle, Description, ArgsTable, PRIMARY_STORY } from '@storybook/addon-docs';
+import React, { useState } from 'react';
 import HelpDrawerToggle from './HelpDrawerToggle';
 import HelpDrawer from './HelpDrawer';
+// Need this in order for the generated ArgsTable to work
+import { HelpDrawer as CoreHelpDrawer } from '../../../../design-system/src/components/HelpDrawer/HelpDrawer';
+import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
-import { useArgs } from '@storybook/preview-api';
 
 const meta: Meta<typeof HelpDrawer> = {
   title: 'Medicare/HelpDrawer',
-  component: HelpDrawer,
+  component: CoreHelpDrawer,
   args: {
     heading: 'Drawer Heading',
   },
-  // The Drawer was overlapping the docs page, so customizing the docs page to remove the examples
   parameters: {
-    docs: {
-      page: () => (
-        <>
-          <Title />
-          <Subtitle />
-          <Description />
-          <ArgsTable story={PRIMARY_STORY} />
-        </>
-      ),
-    },
     theme: 'medicare',
   },
 };
@@ -59,23 +49,20 @@ const drawerContent = (
 );
 
 export const HelpDrawerToggleWithDrawer: Story = {
-  render: function Component(args) {
-    const [{ isDrawerVisible }, setIsDrawerVisible] = useArgs();
+  render: function Component() {
+    const [isDrawerVisible, setIsDrawerVisible] = useState(false);
+    const showDrawer = () => setIsDrawerVisible(true);
+    const hideDrawer = (...params) => {
+      action('onCloseClick')(...params);
+      setIsDrawerVisible(false);
+    };
 
     return (
       <>
-        {isDrawerVisible && (
-          <HelpDrawer
-            onCloseClick={() => setIsDrawerVisible({ isDrawerVisible: false })}
-            heading="Drawer Heading"
-          >
-            {drawerContent}
-          </HelpDrawer>
-        )}
-        <HelpDrawerToggle
-          showDrawer={() => setIsDrawerVisible({ isDrawerVisible: true })}
-          helpDrawerOpen={isDrawerVisible || false}
-        >
+        <HelpDrawer onCloseClick={hideDrawer} heading="Drawer Heading" isOpen={isDrawerVisible}>
+          {drawerContent}
+        </HelpDrawer>
+        <HelpDrawerToggle showDrawer={showDrawer} helpDrawerOpen={isDrawerVisible || false}>
           Drawer Toggle
         </HelpDrawerToggle>
       </>
@@ -84,21 +71,23 @@ export const HelpDrawerToggleWithDrawer: Story = {
 };
 
 export const HelpDrawerToggleOnDark: Story = {
-  render: function Component(args) {
-    const [{ isDrawerVisible }, setIsDrawerVisible] = useArgs();
+  render: function Component() {
+    const [isDrawerVisible, setIsDrawerVisible] = useState(false);
+    const showDrawer = () => setIsDrawerVisible(true);
+    const hideDrawer = (...params) => {
+      action('onCloseClick')(...params);
+      setIsDrawerVisible(false);
+    };
 
     return (
       <>
         {isDrawerVisible && (
-          <HelpDrawer
-            onCloseClick={() => setIsDrawerVisible({ isDrawerVisible: false })}
-            heading="Drawer Heading"
-          >
+          <HelpDrawer onCloseClick={hideDrawer} heading="Drawer Heading">
             {drawerContent}
           </HelpDrawer>
         )}
         <HelpDrawerToggle
-          showDrawer={() => setIsDrawerVisible({ isDrawerVisible: true })}
+          showDrawer={showDrawer}
           helpDrawerOpen={isDrawerVisible || false}
           className="ds-c-button--on-dark"
         >

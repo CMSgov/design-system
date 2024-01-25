@@ -10,6 +10,10 @@ export interface NativeDialogProps extends Omit<DialogHTMLAttributes<HTMLElement
   backdropClickExits?: boolean;
   boundingBoxRef?: React.MutableRefObject<any>;
   /**
+   * Controls whether the dialog is in an open state
+   */
+  isOpen?: boolean;
+  /**
    * Function called to close dialog.
    */
   exit: (...args: any[]) => any;
@@ -33,12 +37,22 @@ export interface NativeDialogProps extends Omit<DialogHTMLAttributes<HTMLElement
 export const NativeDialog = ({
   children,
   exit,
+  isOpen,
   showModal,
   backdropClickExits,
   boundingBoxRef,
   ...dialogProps
 }: NativeDialogProps) => {
   const dialogRef = useRef(null);
+
+  if (isOpen === undefined) {
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn(
+        "The 'isOpen' prop is now used to control the state of Dialogs and Drawers. Please do not conditionally render these components to control their state. All Dialogs and Drawers will become invisible without this prop in the next major release. Using this prop will fix a focus-management issue that affects accessibility."
+      );
+    }
+    isOpen = true;
+  }
 
   // Register dialog with the polyfill if necessary
   useLayoutEffect(() => {
@@ -50,26 +64,35 @@ export const NativeDialog = ({
   useEffect(() => {
     const dialogNode = dialogRef.current;
 
-    // Show the modal
-    showModal ? dialogNode.showModal() : dialogNode.show();
+    // Show or hide the dialog based on `isOpen` value. The `dialogNode.open` property is
+    // a read-only value that will tell us if our dialog DOM element is actually in the
+    // open state.
+    let closingBecauseOfProp = false;
+    if (isOpen) {
+      if (!dialogNode.open) {
+        showModal ? dialogNode.showModal() : dialogNode.show();
+      }
+    } else {
+      if (dialogNode.open) {
+        dialogNode.close();
+        closingBecauseOfProp = true;
+      }
+    }
 
     // Bind close event listener for ESC press
     const handleClose = (event) => {
       event.preventDefault();
-      exit(event);
+      // Only call the exit handler if the parent didn't close it by setting isOpen to false
+      if (!closingBecauseOfProp) {
+        exit(event);
+      }
     };
     dialogNode.addEventListener('close', handleClose);
 
     return () => {
-      // Remove the close event handler first, or it will be tripped by our manual close call
       dialogNode.removeEventListener('close', handleClose);
-
-      // It's possible for the element to already be closed, so check first to avoid an error
-      if (dialogNode.open) {
-        dialogNode.close();
-      }
     };
-  }, [showModal, exit]);
+  }, [isOpen, showModal, exit]);
 
   // Bind and unbind backdrop click event listeners on mount and unmount
   useEffect(() => {
