@@ -13,7 +13,7 @@ export interface PrivacySettings {
 const defaultSettings: PrivacySettings = { 0: '0', c3: '0', c2: '0', c1: '0', c4: '0' };
 
 function isNonBrowserEnv() {
-  return typeof window === 'undefined';
+  return typeof window === 'undefined' || typeof document === 'undefined';
 }
 
 /**
@@ -70,17 +70,20 @@ function writeCookie(name: string, value: string) {
 }
 
 export function getPrivacySettings(): PrivacySettings {
-  if (isNonBrowserEnv()) {
-    // Return a dummy object for non-browser build environments
-    return defaultSettings;
+  const cookieString = readCookie(COOKIE_KEY);
+  if (!cookieString) {
+    if (COOKIE_DOMAIN) {
+      // This is a domain where we should already have a cookie defined
+      throw new Error(
+        `Privacy settings error: ${COOKIE_KEY} is not set. Check to make sure your app has Tealium enabled.`
+      );
+    } else {
+      // This must be some kind of test or non-production environment, so just return
+      // some default settings.
+      return defaultSettings;
+    }
   }
 
-  const cookieString = readCookie(COOKIE_KEY);
-  if (!cookieString && COOKIE_DOMAIN) {
-    throw new Error(
-      `Privacy settings error: ${COOKIE_KEY} is not set. Check to make sure your app has Tealium enabled.`
-    );
-  }
   const pairs = cookieString.split('|');
   const settings = pairs.reduce((obj, pair) => {
     const [key, value] = pair.split(':');
@@ -96,9 +99,4 @@ export function setPrivacySettings(settings: PrivacySettings) {
     .join('|');
 
   writeCookie(COOKIE_KEY, cookieString);
-}
-
-// Set a default if we're not on a .gov environment
-if (!COOKIE_DOMAIN && !readCookie(COOKIE_KEY)) {
-  setPrivacySettings(defaultSettings);
 }
