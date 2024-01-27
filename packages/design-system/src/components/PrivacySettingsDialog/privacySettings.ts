@@ -2,13 +2,27 @@ export const COOKIE_KEY = 'OPTOUTMULTI';
 export const COOKIE_MAX_AGE = 365 * 3; // 3 years
 export const COOKIE_DOMAIN = getCookieDomain();
 
+export interface PrivacySettings {
+  '0': '0' | '1';
+  c3: '0' | '1';
+  c2: '0' | '1';
+  c1: '0' | '1';
+  c4: '0' | '1';
+}
+
+const defaultSettings: PrivacySettings = { 0: '0', c3: '0', c2: '0', c1: '0', c4: '0' };
+
+function isNonBrowserEnv() {
+  return typeof window === 'undefined';
+}
+
 /**
  * Returns a string for the cookie's domain that will work for all subdomains
  * of the current domain (e.g. "healthcare.gov") unless we're not on a .gov
  * site right now.
  */
 export function getCookieDomain() {
-  if (typeof window === 'undefined') {
+  if (isNonBrowserEnv()) {
     return;
   }
 
@@ -27,7 +41,7 @@ export function getCookieDomain() {
 }
 
 function readCookie(name: string) {
-  if (typeof document === 'undefined') {
+  if (isNonBrowserEnv()) {
     return;
   }
 
@@ -42,7 +56,7 @@ function readCookie(name: string) {
 }
 
 function writeCookie(name: string, value: string) {
-  if (typeof document === 'undefined') {
+  if (isNonBrowserEnv()) {
     return;
   }
 
@@ -55,15 +69,12 @@ function writeCookie(name: string, value: string) {
   document.cookie = `${base}${age}${domain}${path}`;
 }
 
-export interface PrivacySettings {
-  '0': '0' | '1';
-  c3: '0' | '1';
-  c2: '0' | '1';
-  c1: '0' | '1';
-  c4: '0' | '1';
-}
-
 export function getPrivacySettings(): PrivacySettings {
+  if (isNonBrowserEnv()) {
+    // Return a dummy object for non-browser build environments
+    return defaultSettings;
+  }
+
   const cookieString = readCookie(COOKIE_KEY);
   if (!cookieString && COOKIE_DOMAIN) {
     throw new Error(
@@ -89,5 +100,5 @@ export function setPrivacySettings(settings: PrivacySettings) {
 
 // Set a default if we're not on a .gov environment
 if (!COOKIE_DOMAIN && !readCookie(COOKIE_KEY)) {
-  setPrivacySettings({ 0: '0', c3: '0', c2: '0', c1: '0', c4: '0' });
+  setPrivacySettings(defaultSettings);
 }
