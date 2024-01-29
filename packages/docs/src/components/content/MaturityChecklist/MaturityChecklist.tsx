@@ -84,21 +84,21 @@ const MaturityChecklist = (props: MaturityChecklistProps) => {
         },
       ],
     },
-    {
-      title: 'Design',
-      items: [
-        {
-          title: 'Sketch UI-kit',
-          description: 'Includes all Sketch symbols for defined options.',
-          status: props.items['completeUiKit'],
-        },
-        {
-          title: 'Responsive',
-          description: 'All Sketch symbols designed for small and large breakpoints.',
-          status: props.items['responsiveUiKit'],
-        },
-      ],
-    },
+    // {
+    //   title: 'Design',
+    //   items: [
+    //     {
+    //       title: 'Sketch UI-kit',
+    //       description: 'Includes all Sketch symbols for defined options.',
+    //       status: props.items['completeUiKit'],
+    //     },
+    //     {
+    //       title: 'Responsive',
+    //       description: 'All Sketch symbols designed for small and large breakpoints.',
+    //       status: props.items['responsiveUiKit'],
+    //     },
+    //   ],
+    // },
     {
       title: 'Tokens',
       items: [
