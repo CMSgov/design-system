@@ -11,10 +11,10 @@ pre {
 }
 
 code {
-  display: inline-block;
   font-size: 0.9em;
   margin: 1px;
   padding: 0 $spacer-half;
+  white-space: nowrap;
 }
 
 a code {
