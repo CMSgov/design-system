@@ -11,125 +11,11 @@ medicare:
   sketchLink: 1K9gg0y
 ---
 
-import { Badge } from '@cmsgov/design-system';
+import { Accordion, AccordionItem, Badge } from '@cmsgov/design-system';
 
-## Examples
+<StorybookExample componentName="alert" storyId="components-alert--default" hideFooter="true" />
 
-### Informational (Default)
-
-<ThemeContent onlyThemes={['healthcare']}>
-
-Provides supplementary information, or highlights a tool or step available to the user, that may be helpful to users regarding their current action or task, but is optional or not critical. Can provide guidance on what the user needs to do to proceed. Provides additional information, such as definitions, explanations, or criteria, that the user may find helpful as they answer questions with unfamiliar terminology or policy considerations.
-
-</ThemeContent>
-
-<ThemeContent onlyThemes={['medicare']}>
-
-Does not require an icon.
-
-Provides supplementary information, or highlights a tool or step available to the user, that may be helpful to users regarding their current action or task, but is optional or not critical. Can provide guidance on what the user needs to do to proceed.
-
-</ThemeContent>
-
-<StorybookExample componentName="alert" storyId="components-alert--default" />
-
-### Error
-
-<ThemeContent onlyThemes={['healthcare']}>
-
-Informs users of an error or critical failure. Often used to block them from proceeding until they resolve the issue including system alerts.
-
-</ThemeContent>
-
-<ThemeContent onlyThemes={['medicare']}>
-
-Requires an icon.
-
-Informs users of an error or critical failure. Often used to block them from proceeding until they resolve the issue including system alerts.
-
-</ThemeContent>
-
-<StorybookExample componentName="error alert" storyId="components-alert--error" />
-
-### Warning
-
-<ThemeContent onlyThemes={['healthcare']}>
-
-Informs users that their entry or selection may have unexpected or undesirable results, some of which may not be easily undone. Highlights information a user should be aware of in order to help them avoid taking an action that is likely to result in a negative outcome or understand when content/data is missing from the page.
-
-</ThemeContent>
-
-<ThemeContent onlyThemes={['medicare']}>
-
-Requires an icon.
-
-Informs users that their entry or selection may have unexpected or undesirable results, some of which may not be easily undone.
-
-</ThemeContent>
-
-<StorybookExample componentName="warning alert" storyId="components-alert--warning" />
-
-### Success
-
-<ThemeContent onlyThemes={['healthcare']}>
-
-Confirms the successful completion of a step or task, or receipt of information provided by the user. Suggests a path forward that may be beneficial to the user, based on their selections or entries.
-
-</ThemeContent>
-
-<ThemeContent onlyThemes={['medicare']}>
-
-Does not require an icon.
-
-Confirms the successful completion of a step or task, or receipt of information provided by the user.
-
-</ThemeContent>
-
-<StorybookExample componentName="success alert" storyId="components-alert--success" />
-
-<ThemeContent onlyThemes={['medicare']}>
-
-### Note
-
-Not in the design system yet.
-
-Does not require an icon.
-
-Explains concepts which may include math or maybe not.
-
-</ThemeContent>
-
-### Lightweight
-
-<ThemeContent onlyThemes={['medicare']}>
-
-<Badge variation="alert">
-  <CloseIconThin /> Unused by Medicare.
-</Badge>
-
-</ThemeContent>
-
-<ThemeContent onlyThemes={['healthcare']}>
-
-Used to show important but not as urgent messages as standard alerts.
-
-</ThemeContent>
-
-<ThemeContent neverThemes={['medicare']}>
-
-<StorybookExample componentName="lightweight alert" storyId="components-alert--lightweight" />
-
-</ThemeContent>
-
-## Guidance
-
-### Usage
-
-- Don’t overdo it — too many notifications will either overwhelm or annoy the user and are likely to be ignored.
-- Write the message in concise, human readable language; avoid jargon and computer code.
-- Don’t include notifications that aren’t related to the user’s current goal.
-- When the user is required to do something in response to an alert, let them know what they need to do and make that task as easy as possible.
-- Be mindful of other elements on the page that may compete for the user’s attention.
+## How it works
 
 ### When to use
 
@@ -139,21 +25,30 @@ Used to show important but not as urgent messages as standard alerts.
 - Confirming the successful competition of a task.
 - Providing key supplementary or contextual information to support the successful completion of tasks or aid overall comprehension.
 
-<ThemeContent onlyThemes={['medicare']}>
-
-### Don't use
-
-- You need to display alerts that aren’t related to the user’s current goal.
-
-</ThemeContent>
-
 ### When to consider alternatives
 
 - On long forms, always include in-line validation in addition to any error messages that appear at the top of the form. When possible, simplify forms by rewriting and where possible, splitting long forms across multiple pages
 - If an action will result in destroying a user’s work (for example, deleting an application) use a more intrusive pattern, such as a confirmation modal dialogue, to allow the user to confirm that this is what they want.
 - When you need to display content that isn't related to the user’s current goal.
 
-**When the alert is for an error:**
+### Dos
+
+- Do write the message in concise, human readable language; avoid jargon and computer code.
+- Do let the user know what they need to do when they're required to do something in response to an alert and make that task as easy as possible.
+- Do be mindful of other elements on the page that may compete for the user’s attention.
+
+### Don'ts
+
+- Don’t overdo it — too many notifications will either overwhelm or annoy the user and are likely to be ignored.
+- Don’t include notifications that aren’t related to the user’s current goal.
+
+<ThemeContent onlyThemes={['medicare']}>
+
+- Don't display alerts that aren’t related to the user’s current goal.
+
+</ThemeContent>
+
+## For error alerts
 
 - Be polite in error messages — don’t place blame on the user.
 - Users generally won’t read documentation but will read a message that helps them resolve an error; include some educational material in your error message.
@@ -296,9 +191,113 @@ When using a screen reader (NVDA, JAWS, VoiceOver, TalkBack):
 
 </ThemeContent>
 
-## Learn more
+## Examples
 
-- [18F Content Guide \- Active voice](https://content-guide.18f.gov/active-voice/)
+### Informational (Default)
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+Provides supplementary information, or highlights a tool or step available to the user, that may be helpful to users regarding their current action or task, but is optional or not critical. Can provide guidance on what the user needs to do to proceed. Provides additional information, such as definitions, explanations, or criteria, that the user may find helpful as they answer questions with unfamiliar terminology or policy considerations.
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+Does not require an icon.
+
+Provides supplementary information, or highlights a tool or step available to the user, that may be helpful to users regarding their current action or task, but is optional or not critical. Can provide guidance on what the user needs to do to proceed.
+
+</ThemeContent>
+
+<StorybookExample componentName="alert" storyId="components-alert--default" />
+
+### Error
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+Informs users of an error or critical failure. Often used to block them from proceeding until they resolve the issue including system alerts.
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+Requires an icon.
+
+Informs users of an error or critical failure. Often used to block them from proceeding until they resolve the issue including system alerts.
+
+</ThemeContent>
+
+<StorybookExample componentName="error alert" storyId="components-alert--error" />
+
+### Warning
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+Informs users that their entry or selection may have unexpected or undesirable results, some of which may not be easily undone. Highlights information a user should be aware of in order to help them avoid taking an action that is likely to result in a negative outcome or understand when content/data is missing from the page.
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+Requires an icon.
+
+Informs users that their entry or selection may have unexpected or undesirable results, some of which may not be easily undone.
+
+</ThemeContent>
+
+<StorybookExample componentName="warning alert" storyId="components-alert--warning" />
+
+### Success
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+Confirms the successful completion of a step or task, or receipt of information provided by the user. Suggests a path forward that may be beneficial to the user, based on their selections or entries.
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+Does not require an icon.
+
+Confirms the successful completion of a step or task, or receipt of information provided by the user.
+
+</ThemeContent>
+
+<StorybookExample componentName="success alert" storyId="components-alert--success" />
+
+<ThemeContent onlyThemes={['medicare']}>
+
+### Note
+
+Not in the design system yet.
+
+Does not require an icon.
+
+Explains concepts which may include math or maybe not.
+
+</ThemeContent>
+
+### Lightweight
+
+<ThemeContent onlyThemes={['medicare']}>
+
+<Badge variation="alert">
+  <CloseIconThin /> Unused by Medicare.
+</Badge>
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+Used to show important but not as urgent messages as standard alerts.
+
+</ThemeContent>
+
+<ThemeContent neverThemes={['medicare']}>
+
+<StorybookExample componentName="lightweight alert" storyId="components-alert--lightweight" />
+
+</ThemeContent>
 
 ## Component maturity
 
@@ -317,22 +316,26 @@ When using a screen reader (NVDA, JAWS, VoiceOver, TalkBack):
   tokensInSketch={true}
 />
 
-## Code
+## Learn more
 
-### React
+[18F Content Guide \- Active voice](https://content-guide.18f.gov/active-voice/)
+
+## Resources
+
+### Design
+
+Sketch symbol
+
+### Development
+
+This component has analytics tracking available. Please see our developer documentation about [using analytics in the design system](/getting-started/for-developers/#analytics).
 
 <SeeStorybookForGuidance storyId={'components-alert--docs'} />
 
-### Experimental Web Components
-
 <SeeStorybookForGuidance tech="wc" storyId={'web-components-alert--docs'} />
 
-### Style customization
-
-The following CSS variables can be overridden to customize Alert components:
-
-<ComponentThemeOptions componentname="alert" />
-
-### Analytics
-
-This component has analytics tracking available. Please see our developer documentation about [using analytics in the design system](/getting-started/for-developers/#analytics).
+<Accordion className="ds-u-margin-top--2">
+  <AccordionItem heading="CSS variable overrides to customize this component">
+    <ComponentThemeOptions componentname="alert" />
+  </AccordionItem>
+</Accordion>
