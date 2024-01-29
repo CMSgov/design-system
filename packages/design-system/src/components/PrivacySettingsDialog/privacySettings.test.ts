@@ -1,11 +1,8 @@
 import { COOKIE_KEY, getPrivacySettings, setPrivacySettings } from './privacySettings';
 
-describe('default privacy settings', function () {
-  it('sets cookie with default values if not set', () => {
-    const expectedValue = encodeURI('0:0|c3:0|c2:0|c1:0|c4:0');
-    expect(document.cookie).toEqual(`${COOKIE_KEY}=${expectedValue}`);
-  });
-});
+function removeCookie() {
+  document.cookie = `${COOKIE_KEY}=1; expires=1 Jan 1970 00:00:00 GMT;`;
+}
 
 describe('getPrivacySettings', function () {
   it('reads cookie string into settings object', () => {
@@ -17,6 +14,17 @@ describe('getPrivacySettings', function () {
       c2: '1',
       c1: '0',
       c4: '1',
+    });
+  });
+
+  it('returns default settings if no cookie is set', () => {
+    removeCookie();
+    expect(getPrivacySettings()).toEqual({
+      0: '0',
+      c3: '0',
+      c2: '0',
+      c1: '0',
+      c4: '0',
     });
   });
 });
