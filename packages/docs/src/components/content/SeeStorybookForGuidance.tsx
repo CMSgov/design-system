@@ -1,4 +1,5 @@
 import React from 'react';
+import { withPrefix } from 'gatsby';
 import { makeStorybookUrl } from '../../helpers/urlUtils';
 
 // Create a link component that uses urlUtils to create the link
@@ -25,9 +26,17 @@ const SeeStorybookForGuidance = ({
   tech = 'react',
 }: StorybookExampleFooterProps) => {
   return (
-    <a href={makeStorybookUrl(storyId, theme, 'docs')}>
-      {tech === 'react' ? 'Preact/React' : 'Web component'} documentation for Storybook
-    </a>
+    <p>
+      <a href={makeStorybookUrl(storyId, theme, 'docs')} className="ds-u-display--flex">
+        <img
+          alt=""
+          src={withPrefix('/images/storybook-icon.png')}
+          className="ds-u-display--inline ds-u-margin-right--1"
+          style={{ height: '1.25em' }}
+        />{' '}
+        {tech === 'react' ? 'Preact/React' : 'Web component'} documentation for Storybook
+      </a>
+    </p>
   );
 };
 
