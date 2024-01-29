@@ -175,7 +175,9 @@ const MaturityChecklist = (props: MaturityChecklistProps) => {
         <div className="c-maturity-checklist__incomplete-items">
           <>
             <h3>Incomplete criteria</h3>
-            <ul role="list">{incompleteCriteria}</ul>
+            <ul role="list" className="c-maturity-checklist__list">
+              {incompleteCriteria}
+            </ul>
           </>
         </div>
       )}
