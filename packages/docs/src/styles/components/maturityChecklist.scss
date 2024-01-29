@@ -1,20 +1,48 @@
-.c-maturity-checklist-item {
+.c-maturity-checklist {
+  background-color: var(--color-gray-lightest);
+  padding: $spacer-4;
+
+  > h2 {
+    @extend .ds-text-heading--xl;
+  }
+
+  > * + * {
+    margin-block: $spacer-2;
+  }
+}
+
+.c-maturity-checklist__progress {
+  align-items: center;
   display: flex;
-  margin-top: $spacer-2;
+  font-size: var(--font-size-lg);
+  gap: $spacer-2;
+
+  p {
+    margin: 0;
+  }
 }
 
-.c-maturity-checklist-item__title {
-  margin-bottom: 0;
-  margin-top: 0;
-  padding-top: 1px; // Aligns with status text
+.c-maturity-checklist__incomplete-items {
+  h3 {
+    font-weight: var(--font-weight-semibold);
+    margin-block-end: $spacer-2;
+  }
 }
 
-.c-maturity-checklist-item__status {
-  min-width: 150px;
-  order: -1;
+.c-maturity-checklist__list {
+  h3 {
+    font-weight: var(--font-weight-bold);
+  }
+}
 
-  > svg,
-  > span {
-    vertical-align: middle;
+.c-maturity-checklist__item {
+  align-items: center;
+  display: grid;
+  gap: $spacer-2;
+  grid-template-columns: 12ch auto;
+  margin-block: $spacer-2;
+
+  p {
+    margin: 0;
   }
 }
