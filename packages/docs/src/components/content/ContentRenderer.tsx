@@ -9,6 +9,7 @@ import ButtonVariationsTable from './ButtonVariationsTable';
 import ColorExampleList from './ColorExampleList';
 import ColorRamps from './ColorRamps';
 import ComponentThemeOptions from './ComponentThemeOptions';
+import DesignResourceLink from './DesignResourceLink';
 import EmbeddedExample from './EmbeddedExample';
 import MaturityChecklist from './MaturityChecklist';
 import ResponsiveExample from './ResponsiveExample';
@@ -73,6 +74,7 @@ const customComponents = (theme) => ({
   ColorExampleList: (props) => <ColorExampleList theme={theme} {...props} />,
   ColorRamps,
   ComponentThemeOptions: (props) => <ComponentThemeOptions theme={theme} {...props} />,
+  DesignResourceLink: (props) => <DesignResourceLink theme={theme} {...props} />,
   EmbeddedExample,
   MaturityChecklist,
   ol: (props) => TextWithMaxWidth(props, 'ol'),
