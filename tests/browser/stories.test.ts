@@ -5,10 +5,12 @@ import expectNoAxeViolations from './expectNoAxeViolations';
 
 const storySkipList = [
   'components-dialog--prevent-scroll-example', // Redundant
+  'components-dialog--use-dialog-example', // Redundant
   'components-dropdown--option-groups', // Redundant in its unopened state
   'components-dropdown--html-option-groups', // Redundant
   'components-dropdown--html-options', // Redundant
   'components-dropdown--controlled', // Redundant
+  'components-helpdrawer--default', // Redundant
   'components-hint--default', // Captured by individual form fields
   'components-idletimeout--default',
   'components-inlineerror--default', // Captured by individual form fields

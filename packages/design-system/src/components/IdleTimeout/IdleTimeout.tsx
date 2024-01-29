@@ -8,7 +8,7 @@ export interface IdleTimeoutProps {
   /**
    * The text for the 'continue session' button in warning dialog.
    */
-  continueSessionText?: string;
+  continueSessionText?: React.ReactNode;
   /**
    * The heading text for the warning dialog.
    */
@@ -16,7 +16,7 @@ export interface IdleTimeoutProps {
   /**
    * The text for the button that ends the session in warning dialog.
    */
-  endSessionButtonText?: string;
+  endSessionButtonText?: React.ReactNode;
   /**
    * The URL to direct to when the user intentionally ends the session.
    */

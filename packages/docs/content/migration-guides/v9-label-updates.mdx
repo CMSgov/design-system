@@ -30,6 +30,17 @@ Simplified representation of the HTML before the change:
   </label>
   <input id="text-field--1" />
 </div>
+
+<!-- Or with a bottom-placed error... -->
+
+<div>
+  <label class="ds-c-label" for="text-field--1" id="text-field--1__label">
+    <span>Text field label</span>
+    <span class="ds-c-field__hint">Helpful hint text</span>
+  </label>
+  <input id="text-field--1" aria-describedby="text-field--1__error" />
+  <span id="text-field--1__error" class="ds-c-inline-error">Example error message</span>
+</div>
 ```
 
 ### After
@@ -65,4 +76,4 @@ If you were writing your own markup, make note of how the structure has changed 
 
 ### Updating custom styles for labels, hints, and inline errors
 
-If you were previously applying custom styles to labels, hints, and/or inline errors, you may have to update your CSS selectors. While these elements being independent means [inheritance will no longer cause issues](https://github.com/CMSgov/design-system/issues/1219), if your custom styles relied on this inheritance, they will need to be updated.
+If you were previously applying custom styles to labels, hints, and/or inline errors, you may have to update your CSS selectors. While these elements being independent [eliminates certain inheritance-related issues](https://github.com/CMSgov/design-system/issues/1219), some teams may have come to rely on this inheritance in their custom styles.
