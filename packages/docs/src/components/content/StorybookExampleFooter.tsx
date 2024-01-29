@@ -13,15 +13,16 @@ interface StorybookExampleFooterProps {
    * Current theme
    */
   theme: string;
+  hidden?: boolean;
 }
 
 /**
  * Goes below storybook-based examples and allows people to click a link to go directly
  * to the story within Storybook.
  */
-const StorybookExampleFooter = ({ theme, storyId }: StorybookExampleFooterProps) => {
+const StorybookExampleFooter = ({ theme, storyId, hidden }: StorybookExampleFooterProps) => {
   return (
-    <div className="c-storybook-example-footer">
+    <div hidden={hidden} className="c-storybook-example-footer">
       <ExampleFooter
         sourceLink={
           <Button
