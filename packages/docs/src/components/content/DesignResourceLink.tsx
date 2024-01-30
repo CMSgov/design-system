@@ -1,5 +1,6 @@
 import React from 'react';
 import { withPrefix } from 'gatsby';
+import { FrontmatterInterface } from '../../helpers/graphQLTypes';
 import { makeSketchUrl } from '../../helpers/urlUtils';
 
 interface DesignResourceLinkProps {
@@ -7,10 +8,13 @@ interface DesignResourceLinkProps {
    * Current theme name.
    */
   theme: string;
-  sketchId: string;
+  frontmatter: FrontmatterInterface;
 }
 
-const DesignResourceLink = ({ sketchId, theme }: DesignResourceLinkProps) => {
+const DesignResourceLink = ({ theme, frontmatter }: DesignResourceLinkProps) => {
+  const themeLinks = frontmatter[theme];
+  const sketchId = themeLinks?.sketchLink || null;
+
   return (
     <p>
       <a href={makeSketchUrl(sketchId, theme)} className="ds-u-display--flex">

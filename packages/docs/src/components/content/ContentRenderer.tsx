@@ -20,6 +20,7 @@ import TextColorList from './TextColorList';
 import ThemeContent from './ThemeContent';
 import ReactDocsLinks from './ReactDocsLinks';
 import ReactDocsLink from './ReactDocsLink';
+import { FrontmatterInterface } from '../../helpers/graphQLTypes';
 
 // adds DS styling to tables from markdown
 const TableWithClassnames = (props) => {
@@ -67,14 +68,16 @@ const TextWithMaxWidth = (props: any, Component) => {
  * A mapping of custom components for mdx syntax
  * Each mapping has a key with the element name and a value of a functional component to be used for that element
  */
-const customComponents = (theme) => ({
+const customComponents = (frontmatter, theme) => ({
   ButtonMigrationTable: (props) => <ButtonMigrationTable theme={theme} {...props} />,
   ButtonVariationsTable: (props) => <ButtonVariationsTable theme={theme} {...props} />,
   code: CodeWithSyntaxHighlighting,
   ColorExampleList: (props) => <ColorExampleList theme={theme} {...props} />,
   ColorRamps,
   ComponentThemeOptions: (props) => <ComponentThemeOptions theme={theme} {...props} />,
-  DesignResourceLink: (props) => <DesignResourceLink theme={theme} {...props} />,
+  DesignResourceLink: (props) => (
+    <DesignResourceLink frontmatter={frontmatter} theme={theme} {...props} />
+  ),
   EmbeddedExample,
   MaturityChecklist,
   ol: (props) => TextWithMaxWidth(props, 'ol'),
@@ -98,6 +101,7 @@ interface ContentRendererProps {
    * Usually the `data.body.mdx` property from a `mdx` graphQL query
    */
   data: string;
+  frontmatter?: FrontmatterInterface;
   /**
    * Current theme
    */
@@ -108,9 +112,9 @@ interface ContentRendererProps {
  * ContentRenderer - a component to standardize the steps needed to display MDX content as page content
  * @see https://www.gatsbyjs.com/plugins/gatsby-plugin-mdx/#components for details
  */
-const ContentRenderer = ({ data, theme }: ContentRendererProps) => {
+const ContentRenderer = ({ data, frontmatter, theme }: ContentRendererProps) => {
   return (
-    <MDXProvider components={customComponents(theme)}>
+    <MDXProvider components={customComponents(frontmatter, theme)}>
       <MDXRenderer>{data}</MDXRenderer>
     </MDXProvider>
   );
