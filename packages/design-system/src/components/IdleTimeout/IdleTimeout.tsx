@@ -66,7 +66,9 @@ const defaultMessageFormatter = (timeTilTimeout: number): React.ReactNode => {
 
   return (
     <p>
-      {t('idleTimeoutDialog.message')}
+      {t('idleTimeoutDialog.messageLine1')}
+      <br />
+      {t('idleTimeoutDialog.messageLine2')}
       <strong>
         {timeTilTimeout} {unitOfTime}
       </strong>

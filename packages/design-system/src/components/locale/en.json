@@ -71,7 +71,8 @@
   },
   "idleTimeoutDialog": {
     "heading": "Are you still there?",
-    "message": "You've been inactive for a while.<br />Your session will end in ",
+    "messageLine1": "You've been inactive for a while.",
+    "messageLine2": "Your session will end in ",
     "min": "minute",
     "mins": "minutes",
     "continueSessionMessage": "Select \"Continue session\" below if you want more time.",

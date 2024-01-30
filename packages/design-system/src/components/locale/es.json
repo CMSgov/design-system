@@ -71,7 +71,8 @@
   },
   "idleTimeoutDialog": {
     "heading": "¿Sigue ahí?",
-    "message": "Ha estado inactivo por un tiempo.<br />Su sesión terminará en ",
+    "messageLine1": "Ha estado inactivo por un tiempo.",
+    "messageLine2": "Su sesión terminará en ",
     "min": "minuto",
     "mins": "minutos",
     "continueSessionMessage": "Seleccione \"Continuar sesión\" a continuación si desea más tiempo.",
