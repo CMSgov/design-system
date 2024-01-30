@@ -1,6 +1,5 @@
 import { FileDescriptor } from './types';
-import { flatten } from './utility';
-import { writeFile } from './file';
+import { flattenTokens, writeFile } from './file';
 
 /**
  * Writes an SCSS file that contains token variables
@@ -20,7 +19,7 @@ const writeSassFile = (
   let output = '';
 
   Object.entries(importedModule.default).forEach(([section]) => {
-    tokenItems = flatten(importedModule.default[section]);
+    tokenItems = flattenTokens(importedModule.default[section]);
     // core needs !default everywhere
     const defaultInclude = file.baseName.includes('core') ? ' !default' : '';
 
