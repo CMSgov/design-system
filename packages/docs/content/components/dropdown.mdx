@@ -131,16 +131,18 @@ This component also makes use of some text input styles, which can be customized
 Because Dropdown is now a custom built solution using Adobe Spectrum instead of a native `<select>` element, [Axe flags the use of a hidden input as a false positive](https://github.com/adobe/react-spectrum/wiki/Known-accessibility-false-positives#picker). This is a known issue but not considered a problem.
 
 <MaturityChecklist
-  a11yStandards={false}
-  color={true}
-  forcedColors={true}
-  screenReaders={true}
-  keyboardNavigable={true}
-  storybook={true}
-  responsive={true}
-  spanish={null}
-  completeUiKit={false}
-  responsiveUiKit={false}
-  tokensInCode={true}
-  tokensInSketch={true}
+  items={{
+    a11yStandards: false,
+    color: true,
+    forcedColors: true,
+    screenReaders: true,
+    keyboardNavigable: true,
+    storybook: true,
+    responsive: true,
+    spanish: null,
+    completeUiKit: false,
+    responsiveUiKit: false,
+    tokensInCode: true,
+    tokensInSketch: true,
+  }}
 />
