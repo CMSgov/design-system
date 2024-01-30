@@ -69,6 +69,15 @@
     "usaLogo": "USA.gov - Government Made Easy",
     "warning": "Warning"
   },
+  "idleTimeoutDialog": {
+    "heading": "Are you still there?",
+    "message": "You've been inactive for a while.<br />Your session will end in ",
+    "min": "minute",
+    "mins": "minutes",
+    "continueSessionMessage": "Select \"Continue session\" below if you want more time.",
+    "continueSessionButtonText": "Continue session",
+    "endSessionButtonText": "Logout"
+  },
   "inlineError": {
     "prefix": "Error"
   },

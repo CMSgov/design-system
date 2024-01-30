@@ -173,7 +173,7 @@ describe('Idle Timeout', () => {
     showWarning();
     const dialogBodyText = screen.getByRole('main');
     expect(dialogBodyText.firstChild.textContent).toEqual(
-      `You've been inactive for a while.Your session will end in 2 minutes.Select "Continue session" below if you want more time.`
+      `You've been inactive for a while.<br />Your session will end in 2 minutes.Select "Continue session" below if you want more time.`
     );
   });
 
@@ -182,7 +182,7 @@ describe('Idle Timeout', () => {
     showWarning(MOCK_START_TIME + 4 * 60000); // setting time to match timeToWarning in this test
     const dialogBodyText = screen.getByRole('main');
     expect(dialogBodyText.firstChild.textContent).toEqual(
-      `You've been inactive for a while.Your session will end in 1 minute.Select "Continue session" below if you want more time.`
+      `You've been inactive for a while.<br />Your session will end in 1 minute.Select "Continue session" below if you want more time.`
     );
   });
 
