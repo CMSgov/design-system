@@ -5,7 +5,7 @@ import { makeStorybookUrl } from '../../helpers/urlUtils';
 // Create a link component that uses urlUtils to create the link
 // to the storybook page for the component
 
-interface StorybookExampleFooterProps {
+interface SeeStorybookForGuidanceProps {
   /**
    * ID of the component's doc page in Storybook.
    */
@@ -24,7 +24,7 @@ const SeeStorybookForGuidance = ({
   theme,
   storyId,
   tech = 'react',
-}: StorybookExampleFooterProps) => {
+}: SeeStorybookForGuidanceProps) => {
   return (
     <p>
       <a href={makeStorybookUrl(storyId, theme, 'docs')} className="ds-u-display--flex">
