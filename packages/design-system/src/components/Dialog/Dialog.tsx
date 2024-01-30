@@ -120,7 +120,7 @@ export const Dialog = (props: DialogProps) => {
     containerRef.current?.focus();
   }, [containerRef]);
 
-  useBodyScrollPrevention(modalProps.isOpen);
+  useBodyScrollPrevention(modalProps.isOpen ?? true);
 
   return (
     <NativeDialog
