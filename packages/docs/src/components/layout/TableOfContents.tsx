@@ -50,7 +50,7 @@ export const TableOfContentsFeedback = ({ slug }: TableOfContentsFeedbackProps) 
     <h2 className="c-table-of-contents__heading ds-u-margin-top--0 ds-u-margin-bottom--1 ds-u-md-margin-top--6 ds-u-font-size--base">
       Have ideas?{' '}
     </h2>
-    <ul role="list" className="ds-u-md-margin-y--2">
+    <ul role="list" className="ds-u-md-margin-bottom--2">
       <li>
         <Link to="/contact">Contact the team</Link>
       </li>
