@@ -16,6 +16,15 @@ function areSetsEqual<T>(a: Set<T>, b: Set<T>) {
   return a.size === b.size && [...a].every((item) => b.has(item));
 }
 
+/*
+
+Collections:
+  System - everything
+  Theme - subset of system
+  Components - mapping theme subset to actual components
+
+*/
+
 export function readJsonFiles(files: string[]) {
   const tokensJsonByFile: FlattenedTokensByFile = {};
 
