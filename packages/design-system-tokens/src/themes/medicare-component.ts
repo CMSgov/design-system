@@ -282,6 +282,7 @@ export const components: AnyTokenValues = {
   // Medicare is the only theme with datefield tokens
   'datefield': {
     '-separator__display':                       'none',
+    '__padding':                                  '1em',
   },
 
   'day-picker': {
