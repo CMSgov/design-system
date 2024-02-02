@@ -52,12 +52,20 @@ export const TableOfContentsFeedback = ({ slug }: TableOfContentsFeedbackProps) 
     </h2>
     <ul role="list" className="ds-u-md-margin-bottom--2">
       <li>
-        <Link to="/contact">Contact the team</Link>
+        <Link to="/contact">Ask a question</Link>
+      </li>
+      <li>
+        <a href="https://github.com/CMSgov/design-system/blob/main/CONTRIBUTING.md">
+          Start a contribution on GitHub
+        </a>
       </li>
       <li>
         <a href="https://github.com/CMSgov/design-system/discussions">
           Start a discussion on GitHub
         </a>
+      </li>
+      <li>
+        <Link to="/contact">Contact the team</Link>
       </li>
       {typeof slug !== 'undefined' ? (
         <li>

@@ -186,8 +186,9 @@ const MaturityChecklist = (props: MaturityChecklistProps) => {
         <h3>What does this mean?</h3>
 
         <p>
-          Each component is test against the following items to gauge the component&apos;s maturity.
-          When using incomplete components, consider the unmet criteria as applied to your product.
+          Each component is tested against the following items to gauge the component&apos;s
+          maturity. When using incomplete components, consider the unmet criteria as applied to your
+          product.
         </p>
 
         <p>
