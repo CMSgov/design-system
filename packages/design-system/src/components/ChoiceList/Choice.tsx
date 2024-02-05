@@ -117,8 +117,7 @@ export const Choice = (props: ChoiceProps) => {
     }
 
     const handleRadioChecked = (checkedId: string) => {
-      // Used to also have `&& this.input.checked !== this.state.checked`. I can't currently see
-      // why this is needed and am going to try it without
+      // A radio button in this group was just checked. If it wasn't this one, uncheck this one
       if (checkedId !== id) {
         setChecked(false);
       }
