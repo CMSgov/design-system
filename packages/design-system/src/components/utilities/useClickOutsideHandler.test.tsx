@@ -11,10 +11,6 @@ const TestComponentWithHook = ({ callbackFn }) => {
   return <div ref={divRef}>Hello World.</div>;
 };
 
-TestComponentWithHook.propTypes = {
-  callbackFn: typeof jest.fn(),
-};
-
 describe('useClickOutsideHandler', () => {
   it('should call callback on mousedown outside of element', () => {
     const callback = jest.fn();
