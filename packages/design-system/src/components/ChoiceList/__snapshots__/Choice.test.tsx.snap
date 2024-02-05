@@ -16,6 +16,7 @@ exports[`Choice accepts a node as innerHTML 1`] = `
       <label
         class="ds-c-label"
         for="static-id"
+        id="static-id__label"
       >
         <p>
           <strong>
@@ -46,6 +47,7 @@ exports[`Choice applies errorMessage to label 1`] = `
       <label
         class="ds-c-label"
         for="static-id"
+        id="static-id__label"
       >
         George Washington
       </label>
@@ -94,6 +96,7 @@ exports[`Choice has a hint and requirementLabel 1`] = `
       <label
         class="ds-c-label"
         for="static-id"
+        id="static-id__label"
       >
         George Washington
       </label>
@@ -124,6 +127,7 @@ exports[`Choice is a checkbox 1`] = `
       <label
         class="ds-c-label"
         for="static-id"
+        id="static-id__label"
       >
         George Washington
       </label>
@@ -148,6 +152,7 @@ exports[`Choice is a radio 1`] = `
       <label
         class="ds-c-label"
         for="static-id"
+        id="static-id__label"
       >
         George Washington
       </label>
@@ -176,6 +181,7 @@ exports[`Choice nested content renders \`checkedChildren\` when checked 1`] = `
       <label
         class="ds-c-label"
         for="static-id"
+        id="static-id__label"
       >
         George Washington
       </label>
@@ -210,6 +216,7 @@ exports[`Choice nested content renders \`uncheckedChildren\` when not checked 1`
       <label
         class="ds-c-label"
         for="static-id"
+        id="static-id__label"
       >
         George Washington
       </label>
