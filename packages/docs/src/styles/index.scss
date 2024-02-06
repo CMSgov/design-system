@@ -27,3 +27,19 @@
 @import 'components/tableOfContents.scss';
 @import 'components/spacingUtilityExampleList.scss';
 @import 'components/video.scss';
+
+// Docs site uses core theme, but wants healthcare Accordion style overrides
+// SCSS file includes logic, but lacks variable values
+@import '@cmsgov/ds-healthcare-gov/src/styles/components/_Accordion.scss';
+
+// Need to locally define variable values because Hgov variables are no longer being imported into the docs site
+.ds-c-accordion {
+  --accordion__background-color: #ffffff00;
+  --accordion-button__color: #0071bc;
+  --accordion-content__background-color: #ffffff00;
+  --accordion-icon__size: 0.875rem;
+
+  .ds-c-accordion__button {
+    padding-inline: 0;
+  }
+}

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Accordion, AccordionItem } from '@cmsgov/design-system';
+import { Accordion } from '@cmsgov/design-system';
+import { AccordionItem } from '@cmsgov/ds-healthcare-gov';
 import {
   TableOfContentsFeedback,
   TableOfContentsProps,
