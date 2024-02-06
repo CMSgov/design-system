@@ -86,7 +86,7 @@ const Layout = ({
           rel="stylesheet"
           type="text/css"
           title="docThemeCss"
-          href={withPrefix(`themes/${theme}-theme.css`)}
+          href={withPrefix(`themes/core-theme.css`)}
         />
       </Helmet>
       <SkipNav href="#main" />
