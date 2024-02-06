@@ -30,16 +30,76 @@
 
 // Docs site uses core theme, but wants healthcare Accordion style overrides
 // SCSS file includes logic, but lacks variable values
-@import '@cmsgov/ds-healthcare-gov/src/styles/components/_Accordion.scss';
-
-// Need to locally define variable values because Hgov variables are no longer being imported into the docs site
 .ds-c-accordion {
+  // Need to locally define variable values because Hgov variables are no longer being imported into the docs site
   --accordion__background-color: #ffffff00;
   --accordion-button__color: #0071bc;
   --accordion-content__background-color: #ffffff00;
   --accordion-icon__size: 0.875rem;
 
   .ds-c-accordion__button {
-    padding-inline: 0;
+    background-color: var(--accordion__background-color);
+    color: var(--accordion-button__color);
+    column-gap: $spacer-1;
+    flex-direction: row-reverse;
+    font-weight: var(--font-weight-normal);
+    justify-content: flex-end;
+    padding: $spacer-1 0 $spacer-1 0;
+
+    &:hover {
+      --ds-c-accordion__button__color: var(--color-primary-darker);
+      text-decoration: underline;
+
+      .ds-c-icon--minus-circle__circle,
+      .ds-c-icon--plus-circle__circle {
+        fill: currentColor;
+      }
+
+      .ds-c-icon--minus-circle__group,
+      .ds-c-icon--plus-circle__group {
+        fill: var(--color-white);
+      }
+    }
+
+    @media (forced-colors: active) {
+      background-color: LinkText;
+      color: window;
+      forced-color-adjust: none;
+      -ms-high-contrast-adjust: none;
+
+      &:hover,
+      &:focus {
+        background-color: window;
+        color: LinkText;
+        forced-color-adjust: none;
+        -ms-high-contrast-adjust: none;
+        outline: $spacer-half solid LinkText;
+        outline-offset: calc(-1 * #{$spacer-half});
+
+        .ds-c-icon--plus-circle__circle,
+        .ds-c-icon--minus-circle__circle {
+          fill: Window;
+          stroke: WindowText;
+        }
+
+        .ds-c-icon--plus-circle__group,
+        .ds-c-icon--minus-circle__group {
+          fill: WindowText;
+        }
+      }
+    }
+  }
+
+  > .ds-c-icon {
+    align-self: center;
+
+    // This variable only exists for the Healthcare Accordion CSS override
+    // We need to create tokens specific to icon sizing instead of repurposing spacer-* or font-size-* tokens
+    font-size: var(--accordion-icon__size);
+  }
+
+  .ds-c-accordion__content {
+    background-color: var(--accordion-content__background-color);
+    padding: $spacer-1 $spacer-2 $spacer-1 $spacer-5;
   }
 }
