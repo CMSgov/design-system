@@ -73,7 +73,7 @@ const Layout = ({
   const pageId = slug ? `page--${slug.replace('/', '_')}` : null;
 
   return (
-    <div className="ds-base" data-theme={theme} id={pageId}>
+    <div data-theme={theme} id={pageId}>
       <Helmet
         title={tabTitle}
         htmlAttributes={{
