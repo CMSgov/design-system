@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import EvEmitter from 'ev-emitter';
 import classNames from 'classnames';
 import useId from '../utilities/useId';
+import { InlineError } from '../InlineError';
 import { Label } from '../Label';
-import { UseInlineErrorProps, useInlineError } from '../InlineError/useInlineError';
+import { UseInlineErrorProps } from '../InlineError/useInlineError';
 import { UseLabelPropsProps, useLabelProps } from '../Label/useLabelProps';
 import { UseHintProps, useHint } from '../Hint/useHint';
 import cleanFieldProps from '../utilities/cleanFieldProps';
@@ -105,9 +106,19 @@ export const Choice = (props: ChoiceProps) => {
 
   const id = useId('choice--', props.id);
 
-  const { errorId, topError, bottomError } = useInlineError({ ...props, id });
   const { hintId, hintElement } = useHint({ ...props, id });
   const labelProps = useLabelProps({ ...props, id });
+
+  let errorId;
+  let errorElement;
+  if (props.errorMessage) {
+    errorId = props.errorId ?? `${props.id}__error`;
+    errorElement = (
+      <InlineError id={errorId} inversed={props.inversed} className={props.errorMessageClassName}>
+        {props.errorMessage}
+      </InlineError>
+    );
+  }
 
   // Subscribe to changes from other radio buttons in the same group
   useEffect(() => {
@@ -179,8 +190,7 @@ export const Choice = (props: ChoiceProps) => {
         />
         <Label {...labelProps} fieldId={id} />
         {hintElement}
-        {topError}
-        {bottomError}
+        {errorElement}
       </div>
       {checked ? checkedChildren : uncheckedChildren}
     </div>
