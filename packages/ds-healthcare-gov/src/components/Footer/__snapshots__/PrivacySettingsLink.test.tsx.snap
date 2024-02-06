@@ -173,6 +173,7 @@ exports[`PrivacySettingsLink should render with custom class and children 1`] = 
                         <label
                           class="ds-c-label"
                           for="choice-list--8__choice--0"
+                          id="choice-list--8__choice--0__label"
                         >
                           Allow
                         </label>
@@ -192,6 +193,7 @@ exports[`PrivacySettingsLink should render with custom class and children 1`] = 
                         <label
                           class="ds-c-label"
                           for="choice-list--8__choice--1"
+                          id="choice-list--8__choice--1__label"
                         >
                           Don't allow
                         </label>
@@ -254,6 +256,7 @@ exports[`PrivacySettingsLink should render with custom class and children 1`] = 
                         <label
                           class="ds-c-label"
                           for="choice-list--9__choice--0"
+                          id="choice-list--9__choice--0__label"
                         >
                           Allow
                         </label>
@@ -273,6 +276,7 @@ exports[`PrivacySettingsLink should render with custom class and children 1`] = 
                         <label
                           class="ds-c-label"
                           for="choice-list--9__choice--1"
+                          id="choice-list--9__choice--1__label"
                         >
                           Don't allow
                         </label>
@@ -335,6 +339,7 @@ exports[`PrivacySettingsLink should render with custom class and children 1`] = 
                         <label
                           class="ds-c-label"
                           for="choice-list--10__choice--0"
+                          id="choice-list--10__choice--0__label"
                         >
                           Allow
                         </label>
@@ -354,6 +359,7 @@ exports[`PrivacySettingsLink should render with custom class and children 1`] = 
                         <label
                           class="ds-c-label"
                           for="choice-list--10__choice--1"
+                          id="choice-list--10__choice--1__label"
                         >
                           Don't allow
                         </label>
@@ -552,6 +558,7 @@ exports[`PrivacySettingsLink should render with default options 1`] = `
                         <label
                           class="ds-c-label"
                           for="choice-list--3__choice--0"
+                          id="choice-list--3__choice--0__label"
                         >
                           Allow
                         </label>
@@ -571,6 +578,7 @@ exports[`PrivacySettingsLink should render with default options 1`] = `
                         <label
                           class="ds-c-label"
                           for="choice-list--3__choice--1"
+                          id="choice-list--3__choice--1__label"
                         >
                           Don't allow
                         </label>
@@ -633,6 +641,7 @@ exports[`PrivacySettingsLink should render with default options 1`] = `
                         <label
                           class="ds-c-label"
                           for="choice-list--4__choice--0"
+                          id="choice-list--4__choice--0__label"
                         >
                           Allow
                         </label>
@@ -652,6 +661,7 @@ exports[`PrivacySettingsLink should render with default options 1`] = `
                         <label
                           class="ds-c-label"
                           for="choice-list--4__choice--1"
+                          id="choice-list--4__choice--1__label"
                         >
                           Don't allow
                         </label>
@@ -714,6 +724,7 @@ exports[`PrivacySettingsLink should render with default options 1`] = `
                         <label
                           class="ds-c-label"
                           for="choice-list--5__choice--0"
+                          id="choice-list--5__choice--0__label"
                         >
                           Allow
                         </label>
@@ -733,6 +744,7 @@ exports[`PrivacySettingsLink should render with default options 1`] = `
                         <label
                           class="ds-c-label"
                           for="choice-list--5__choice--1"
+                          id="choice-list--5__choice--1__label"
                         >
                           Don't allow
                         </label>

@@ -96,6 +96,7 @@ Object {
                     <label
                       class="ds-c-label"
                       for="choice-list--2__choice--0"
+                      id="choice-list--2__choice--0__label"
                     >
                       Allow
                     </label>
@@ -115,6 +116,7 @@ Object {
                     <label
                       class="ds-c-label"
                       for="choice-list--2__choice--1"
+                      id="choice-list--2__choice--1__label"
                     >
                       Don't allow
                     </label>
@@ -176,6 +178,7 @@ Object {
                     <label
                       class="ds-c-label"
                       for="choice-list--3__choice--0"
+                      id="choice-list--3__choice--0__label"
                     >
                       Allow
                     </label>
@@ -195,6 +198,7 @@ Object {
                     <label
                       class="ds-c-label"
                       for="choice-list--3__choice--1"
+                      id="choice-list--3__choice--1__label"
                     >
                       Don't allow
                     </label>
@@ -256,6 +260,7 @@ Object {
                     <label
                       class="ds-c-label"
                       for="choice-list--4__choice--0"
+                      id="choice-list--4__choice--0__label"
                     >
                       Allow
                     </label>
@@ -275,6 +280,7 @@ Object {
                     <label
                       class="ds-c-label"
                       for="choice-list--4__choice--1"
+                      id="choice-list--4__choice--1__label"
                     >
                       Don't allow
                     </label>
@@ -379,6 +385,7 @@ Object {
                   <label
                     class="ds-c-label"
                     for="choice-list--2__choice--0"
+                    id="choice-list--2__choice--0__label"
                   >
                     Allow
                   </label>
@@ -398,6 +405,7 @@ Object {
                   <label
                     class="ds-c-label"
                     for="choice-list--2__choice--1"
+                    id="choice-list--2__choice--1__label"
                   >
                     Don't allow
                   </label>
@@ -459,6 +467,7 @@ Object {
                   <label
                     class="ds-c-label"
                     for="choice-list--3__choice--0"
+                    id="choice-list--3__choice--0__label"
                   >
                     Allow
                   </label>
@@ -478,6 +487,7 @@ Object {
                   <label
                     class="ds-c-label"
                     for="choice-list--3__choice--1"
+                    id="choice-list--3__choice--1__label"
                   >
                     Don't allow
                   </label>
@@ -539,6 +549,7 @@ Object {
                   <label
                     class="ds-c-label"
                     for="choice-list--4__choice--0"
+                    id="choice-list--4__choice--0__label"
                   >
                     Allow
                   </label>
@@ -558,6 +569,7 @@ Object {
                   <label
                     class="ds-c-label"
                     for="choice-list--4__choice--1"
+                    id="choice-list--4__choice--1__label"
                   >
                     Don't allow
                   </label>
