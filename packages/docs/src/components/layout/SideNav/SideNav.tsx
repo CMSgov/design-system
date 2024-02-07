@@ -12,11 +12,13 @@ import {
   convertToNavItems,
   organizeNavItems,
 } from '../../../helpers/navDataFormatUtils';
+import { getThemeColorValue } from '../../../helpers/themeTokens';
 import GithubIcon from '../../icons/GithubIcon';
 import NewsIcon from '../../icons/NewsIcon';
 
 interface SideNavProps {
   location: LocationInterface;
+  theme: 'core' | 'healthcare' | 'medicare' | 'cmsgov';
 }
 
 /**
@@ -34,7 +36,7 @@ const GatsbyLink = (props: any /* See VerticalNavItemLabel.tsx */) => (
  * @returns {React Element}
  * @todo figure out which item is currently selected and mark & expand appropriately
  */
-const SideNav = ({ location }: SideNavProps) => {
+const SideNav = ({ location, theme }: SideNavProps) => {
   // Open/close state is controlled by toggleMenu()
   const [isMobileNavOpen, setMobileNavOpen] = useState<boolean>(false);
   const toggleMenu = () => {
@@ -132,7 +134,10 @@ const SideNav = ({ location }: SideNavProps) => {
         // hidden attr applied on mobile breakpoints when nav is closed
         hidden={isMobile && !isMobileNavOpen}
       >
-        <div className="c-navigation__switchers-wrapper ds-u-display--none ds-u-md-display--block">
+        <div
+          className="c-navigation__switchers-wrapper ds-u-display--none ds-u-md-display--block"
+          style={{ backgroundColor: getThemeColorValue(theme, 'core') }}
+        >
           <ThemeVersionSection />
         </div>
         <div className="c-navigation__links-wrapper">

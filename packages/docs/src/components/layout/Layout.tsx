@@ -43,7 +43,7 @@ interface LayoutProps {
   /**
    * Current theme name
    */
-  theme: string;
+  theme: 'core' | 'healthcare' | 'medicare' | 'cmsgov';
   /**
    * list of heading items to be used in table of contents
    */
@@ -97,7 +97,7 @@ const Layout = ({
 
       <div className="ds-l-row ds-u-margin--0 full-height">
         <FilterDialogManager>
-          <SideNav location={location} />
+          <SideNav theme={theme} location={location} />
           <div className="ds-u-md-display--none ds-u-padding-x--3 ds-u-padding-top--2">
             <ThemeVersionSection />
           </div>
