@@ -136,7 +136,7 @@ const SideNav = ({ location, theme }: SideNavProps) => {
       >
         <div
           className="c-navigation__switchers-wrapper ds-u-display--none ds-u-md-display--block"
-          style={{ backgroundColor: getThemeColorValue(theme, 'core') }}
+          style={{ backgroundColor: getThemeColorValue(theme, 'primary') }}
         >
           <ThemeVersionSection />
         </div>
