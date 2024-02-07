@@ -1,6 +1,3 @@
-// including medicare fonts in build for use with medicare theme
-@import '@cmsgov/ds-medicare-gov/src/styles/fonts';
-
 // @styles is aliased in gatsby-node.js
 @import '@styles/layout';
 @import '@styles/index.scss';
@@ -9,6 +6,7 @@
 @import 'pages/layout.scss';
 @import 'pages/search.scss';
 
+@import 'components/accordionOverride.scss';
 @import 'components/buttonMigrationTable.scss';
 @import 'components/buttonVariationsTable.scss';
 @import 'components/codeSnippet.scss';
@@ -30,11 +28,3 @@
 @import 'components/tableOfContents.scss';
 @import 'components/spacingUtilityExampleList.scss';
 @import 'components/video.scss';
-
-[data-theme='healthcare'] {
-  @import '@cmsgov/ds-healthcare-gov/src/styles/components/index';
-}
-
-[data-theme='medicare'] {
-  @import '@cmsgov/ds-medicare-gov/src/styles/components/index';
-}

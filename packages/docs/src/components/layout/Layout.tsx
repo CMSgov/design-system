@@ -73,7 +73,7 @@ const Layout = ({
   const pageId = slug ? `page--${slug.replace('/', '_')}` : null;
 
   return (
-    <div className="ds-base" data-theme={theme} id={pageId}>
+    <div id={pageId}>
       <Helmet
         title={tabTitle}
         htmlAttributes={{
@@ -86,7 +86,7 @@ const Layout = ({
           rel="stylesheet"
           type="text/css"
           title="docThemeCss"
-          href={withPrefix(`themes/${theme}-theme.css`)}
+          href={withPrefix(`themes/core-theme.css`)}
         />
       </Helmet>
       <SkipNav href="#main" />
