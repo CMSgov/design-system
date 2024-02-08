@@ -280,7 +280,6 @@ export const components: AnyTokenValues = {
     '__background-color':                         t.color['white'],
     '__padding':                                  t.spacer['4'],
     '-overlay__background-color':                 t.color['background-dialog-mask'],
-    '-icon__size':                                '0.8125rem',
   },
 
   'drawer': {
