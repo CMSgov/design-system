@@ -218,6 +218,7 @@
 --choice-wrapper__gap: 1rem;
 --choice-wrapper__gap--small: 0.75rem;
 --datefield-separator__display: none;
+--datefield__padding: 1em;
 --day-picker-button__background-color--hover: #e8f0ef;
 --dialog__background-color: #ffffff;
 --dialog__padding: 32px;
@@ -253,11 +254,6 @@
 --form-hint__font-size: 0.875rem;
 --form-error__color: #b20000;
 --form-error__color--inverse: #e8b3b3;
---icon__color--error: #b20000;
---icon__color--inverse: #ffffff;
---icon__color--primary: #146a5d;
---icon__color--success: #12890e;
---icon__color--warn: #f8c41f;
 --label__color--inverse: #ffffff;
 --label__font-family: Montserrat, Avenir, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
 --label__font-size: .875rem;

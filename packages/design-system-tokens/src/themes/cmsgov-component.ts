@@ -324,14 +324,6 @@ export const components: AnyTokenValues = {
     '-error__color--inverse':                     t.color['error-light'],
   },
 
-  'icon': {
-    '__color--error':                             t.color['error'],
-    '__color--inverse':                           t.color['white'],
-    '__color--primary':                           t.color['primary'],
-    '__color--success':                           t.color['success'],
-    '__color--warn':                              t.color['warn'],
-  },
-
   'label': {
     '__color--inverse':                           t.color['base-inverse'],
     '__font-family':                              'inherit',
