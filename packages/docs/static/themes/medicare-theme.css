@@ -249,12 +249,11 @@
 --form__max-width: 460px;
 --form__max-width--small: 6em;
 --form__max-width--medium: 12em;
---form-hint__color: #5a5a5a;
---form-hint__color--inverse: #e9ecf1;
---form-hint__font-size: 0.875rem;
---form-error__color: #b20000;
---form-error__color--inverse: #e8b3b3;
---label__color--inverse: #ffffff;
+--hint__color: #5a5a5a;
+--hint__color--inverse: #e9ecf1;
+--hint__font-size: 0.875rem;
+--inline-error__color: #b20000;
+--inline-error__color--inverse: #e8b3b3;
 --label__font-family: Montserrat, Avenir, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
 --label__font-size: .875rem;
 --label__font-weight: 600;

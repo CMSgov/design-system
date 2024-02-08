@@ -318,14 +318,19 @@ export const components: AnyTokenValues = {
     '__max-width':                                '460px',
     '__max-width--small':                         '6em',
     '__max-width--medium':                        '12em',
-    '-hint__color':                               t.color['muted'],
-    '-hint__color--inverse':                      t.color['muted-inverse'],
-    '-error__color':                              t.color['error'],
-    '-error__color--inverse':                     t.color['error-light'],
+  },
+
+  'hint': {
+    '__color':                                    t.color['muted'],
+    '__color--inverse':                           t.color['muted-inverse'],
+  },
+
+  'inline-error': {
+    '__color':                                    t.color['error'],
+    '__color--inverse':                           t.color['error-light'],
   },
 
   'label': {
-    '__color--inverse':                           t.color['base-inverse'],
     '__font-family':                              'inherit',
     '__font-size':                                'inherit',
     '__font-weight':                              t.font['weight-bold'],

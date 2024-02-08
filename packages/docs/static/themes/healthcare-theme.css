@@ -245,12 +245,11 @@
 --form__max-width: 460px;
 --form__max-width--small: 6em;
 --form__max-width--medium: 12em;
---form-hint__color: #5a5a5a;
---form-hint__color--inverse: #e9ecf1;
---form-error__color: #e31c3d;
---form-error__color--inverse: #f7bbc5;
+--hint__color: #5a5a5a;
+--hint__color--inverse: #e9ecf1;
+--inline-error__color: #e31c3d;
+--inline-error__color--inverse: #f7bbc5;
 --inset__border-width: 4px;
---label__color--inverse: #ffffff;
 --label__font-family: inherit;
 --label__font-size: inherit;
 --label__font-weight: 700;
