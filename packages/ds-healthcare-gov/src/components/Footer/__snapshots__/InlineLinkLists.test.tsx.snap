@@ -466,12 +466,12 @@ exports[`InlineLinkLists renders lists of links 1`] = `
     <div
       class="hc-c-footer__language-resource-links-row"
     >
-      <h4
+      <p
         class="ds-u-visibility--screen-reader"
         id="hc-c-footer__language-resources"
       >
         Language resources
-      </h4>
+      </p>
       <ul
         aria-labelledby="hc-c-footer__language-resources"
         class="hc-c-footer__list"
@@ -1099,12 +1099,12 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
     <div
       class="hc-c-footer__language-resource-links-row"
     >
-      <h4
+      <p
         class="ds-u-visibility--screen-reader"
         id="hc-c-footer__language-resources"
       >
         Language resources
-      </h4>
+      </p>
       <ul
         aria-labelledby="hc-c-footer__language-resources"
         class="hc-c-footer__list"

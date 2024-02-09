@@ -3,6 +3,7 @@
 exports[`Footer renders basic footer 1`] = `
 <div>
   <footer
+    aria-label="global"
     class="hc-c-footer"
     role="contentinfo"
   >
@@ -470,12 +471,12 @@ exports[`Footer renders basic footer 1`] = `
       <div
         class="hc-c-footer__language-resource-links-row"
       >
-        <h4
+        <p
           class="ds-u-visibility--screen-reader"
           id="hc-c-footer__language-resources"
         >
           Language resources
-        </h4>
+        </p>
         <ul
           aria-labelledby="hc-c-footer__language-resources"
           class="hc-c-footer__list"
@@ -742,6 +743,7 @@ exports[`Footer renders basic footer 1`] = `
 exports[`Footer renders basic footer with props 1`] = `
 <div>
   <footer
+    aria-label="global"
     class="hc-c-footer ds-t-test-class"
     role="contentinfo"
   >
@@ -1209,12 +1211,12 @@ exports[`Footer renders basic footer with props 1`] = `
       <div
         class="hc-c-footer__language-resource-links-row"
       >
-        <h4
+        <p
           class="ds-u-visibility--screen-reader"
           id="hc-c-footer__language-resources"
         >
           Language resources
-        </h4>
+        </p>
         <ul
           aria-labelledby="hc-c-footer__language-resources"
           class="hc-c-footer__list"

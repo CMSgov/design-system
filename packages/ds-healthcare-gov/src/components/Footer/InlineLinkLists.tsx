@@ -55,9 +55,9 @@ const InlineLinkLists = function (props: InlineLinkListsProps) {
       </div>
 
       <div className="hc-c-footer__language-resource-links-row">
-        <h4 id="hc-c-footer__language-resources" className="ds-u-visibility--screen-reader">
+        <p id="hc-c-footer__language-resources" className="ds-u-visibility--screen-reader">
           Language resources
-        </h4>
+        </p>
         <ul
           role="list"
           aria-labelledby="hc-c-footer__language-resources"

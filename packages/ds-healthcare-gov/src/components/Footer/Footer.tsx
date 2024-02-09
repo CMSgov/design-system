@@ -39,7 +39,7 @@ export const Footer = (props: FooterProps) => {
   const classes = classnames('hc-c-footer', props.className);
 
   return (
-    <footer className={classes} role="contentinfo">
+    <footer className={classes} role="contentinfo" aria-label="global">
       {props.footerTop}
       <InlineLinkLists t={t} primaryDomain={props.primaryDomain} />
       <LogosRow t={t} />
