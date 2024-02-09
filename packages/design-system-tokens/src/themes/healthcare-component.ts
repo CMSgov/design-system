@@ -31,7 +31,7 @@ export const components: AnyTokenValues = {
     '__border-color--success':                    t.color['success'],
     '__border-color--warn':                       t.color['warn'],
     '__font-color':                               t.color['base'],
-    '__icon-size':                                t.spacer['5'],
+    '__icon-size':                                t.font['size-2xl'],
     '__padding':                                  t.spacer['2'],
     '-bar__width':                                t.spacer['1'],
     '-link__font-color':                          t.color['primary-darker'],
