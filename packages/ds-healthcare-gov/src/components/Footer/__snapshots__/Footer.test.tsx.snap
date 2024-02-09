@@ -3,7 +3,6 @@
 exports[`Footer renders basic footer 1`] = `
 <div>
   <footer
-    aria-label="global"
     class="hc-c-footer"
     role="contentinfo"
   >
@@ -743,7 +742,6 @@ exports[`Footer renders basic footer 1`] = `
 exports[`Footer renders basic footer with props 1`] = `
 <div>
   <footer
-    aria-label="global"
     class="hc-c-footer ds-t-test-class"
     role="contentinfo"
   >
