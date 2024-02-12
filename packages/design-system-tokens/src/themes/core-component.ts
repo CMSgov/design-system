@@ -268,9 +268,9 @@ export const components: AnyTokenValues = {
   },
 
   'dialog': {
-    '__background-color':                         t.color['white'],
+    '__background-color':                         t.color['background'],
     '__padding':                                  t.spacer['4'],
-    '-overlay__background-color':                 t.color['background-dialog-mask'],
+    '-overlay__background-color':                 t.color['transparent-black-alpha50'],
     '-icon__size':                                '0.8125rem',
   },
 

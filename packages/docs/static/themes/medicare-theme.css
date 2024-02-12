@@ -212,6 +212,7 @@
 --choice-wrapper__gap: 1rem;
 --choice-wrapper__gap--small: 0.75rem;
 --datefield-separator__display: none;
+--datefield__padding: 1em;
 --day-picker-button__background-color--hover: #e8f0ef;
 --dialog__background-color: #ffffff;
 --dialog__padding: 32px;
@@ -390,8 +391,6 @@
 --color-transparent-white-alpha50: #ffffff80;
 --color-transparent-white-alpha25: #ffffff40;
 --color-background: #ffffff;
---color-background-dialog: #ffffff;
---color-background-dialog-mask: #00000080;
 --color-background-inverse: #146a5d;
 --color-base: #404040;
 --color-base-inverse: #ffffff;
