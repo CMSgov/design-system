@@ -56,7 +56,7 @@ const languages = {
     href: '/language-resource/#tagalog',
   },
   vi: {
-    label: 'tiếng việt',
+    label: 'Tiếng Việt',
     href: '/language-resource/#vietnamese',
   },
 };
