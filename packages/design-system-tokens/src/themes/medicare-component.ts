@@ -38,15 +38,6 @@ export const components: AnyTokenValues = {
     '-link__font-color--active':                  t.color['secondary-darkest'],
   },
   
-  'autocomplete': {
-    '__background-color':                         t.color['white'],
-    '__border-color':                             t.color['gray-lighter'],
-    '-item__font-color':                          t.color['primary'],
-    '-item__background-color--active':            t.color['secondary-darkest'],
-    '-item__font-color--active':                  t.color['white'],
-    '-item-message__font-color':                  t.color['muted'],
-  },
-  
   'badge': {
     '__background-color':                         t.color['gray-dark'],
     '__background-color--alert':                  t.color['error'],
@@ -310,11 +301,6 @@ export const components: AnyTokenValues = {
     // This variable is only used in a medicare style override, and it's weird. Why doesn't
     // it just behave like a normal inverse link?
     '-toggle__color--hover--inverse':             t.color['gray-dark'], 
-  },
-  
-  'dropdown': {
-    '__background-color':                         t.color['white'],
-    '-option-group__padding':                     t.spacer['4'],
   },
   
   'filter-chip': {

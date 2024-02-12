@@ -38,15 +38,6 @@ export const components: AnyTokenValues = {
     '-link__font-color--active':                  t.color['primary-darkest'],
   },
 
-  'autocomplete': {
-    '__background-color':                         t.color['white'],
-    '__border-color':                             t.color['gray-lighter'],
-    '-item__font-color':                          t.color['primary'],
-    '-item__background-color--active':            t.color['primary'],
-    '-item__font-color--active':                  t.color['white'],
-    '-item-message__font-color':                  t.color['primary'],
-  },
-
   'badge': {
     '__background-color':                         t.color['gray-lightest'],
     '__background-color--alert':                  t.color['error'],
@@ -294,11 +285,6 @@ export const components: AnyTokenValues = {
     '-toggle__color--hover':                      t.color['white'],
     '-toggle__background-color--hover--inverse':  t.color['white'],
     '-toggle__color--hover--inverse':             t.color['gray-darker'],
-  },
-
-  'dropdown': {
-    '__background-color':                         t.color['white'],
-    '-option-group__padding':                     t.spacer['3'],
   },
 
   'filter-chip': {
