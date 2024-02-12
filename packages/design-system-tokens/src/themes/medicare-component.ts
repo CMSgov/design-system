@@ -292,8 +292,8 @@ export const components: AnyTokenValues = {
     '__border-color':                             t.color['border'],
     '-close__color':                              t.color['black'],
     '-header__background-color':                  t.color['transparent'],
-    '-footer__background-color':                  t.color['info-lightest'],
-    '-toggle__background-color--hover':           t.color['info'],
+    '-footer__background-color':                  t.color['secondary-lightest'],
+    '-toggle__background-color--hover':           t.color['secondary'],
     '-toggle__color--hover':                      t.color['white'],
     '-toggle__background-color--hover--inverse':  t.color['white'],
     // I wonder if we can get rid of this variable and just use link-inverse__color--hover
