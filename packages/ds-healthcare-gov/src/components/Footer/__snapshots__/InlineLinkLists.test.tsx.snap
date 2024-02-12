@@ -624,7 +624,7 @@ exports[`InlineLinkLists renders lists of links 1`] = `
             href="/language-resource/#vietnamese"
             lang="vi"
           >
-            tiếng việt
+            Tiếng Việt
           </a>
         </li>
       </ul>
@@ -1257,7 +1257,7 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
             href="https://www.healthcare.gov/language-resource/#vietnamese"
             lang="vi"
           >
-            tiếng việt
+            Tiếng Việt
           </a>
         </li>
       </ul>
