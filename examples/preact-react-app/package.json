@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@cmsgov/design-system": "file:../../packages/design-system",
+    "@cmsgov/design-system": "9.0.1",
     "preact": "^10.11.3"
   },
   "devDependencies": {
