@@ -1,7 +1,7 @@
 @use '../layout' as *;
 
 .ds-c-inline-error {
-  color: var(--form-error__color);
+  color: var(--inline-error__color);
   display: block;
   font-weight: var(--font-weight-normal);
   margin-block: 0;
@@ -9,7 +9,7 @@
 }
 
 .ds-c-inline-error--inverse {
-  color: var(--form-error__color--inverse);
+  color: var(--inline-error__color--inverse);
 }
 
 .ds-c-inline-error--bottom {
