@@ -143,7 +143,7 @@ function printNextSteps() {
 
 (async () => {
   // Get command line args
-  const argv = yargs(hideBin(process.argv))
+  const argv = await yargs(hideBin(process.argv))
     .scriptName('npx release')
     .options({
       undo: {
