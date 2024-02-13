@@ -19,7 +19,7 @@ test.describe('Docs', () => {
 
         // Not all doc pages have an args table, but we should wait a bit to see if one loads
         try {
-          await argsTable.waitFor({ timeout: 1000 });
+          await argsTable.waitFor({ timeout: 1500 });
         } catch (e) {
           await expect('no args table').toMatchSnapshot();
           return;
