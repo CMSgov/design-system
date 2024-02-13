@@ -1,5 +1,5 @@
 {
-  "name": "react-app-example",
+  "name": "preact-react-app-example",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
