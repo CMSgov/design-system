@@ -29,7 +29,7 @@ export const components: AnyTokenValues = {
     '__border-color--success':                    t.color['success'],
     '__border-color--warn':                       t.color['warn'],
     '__font-color':                               t.color['base'],
-    '__icon-size':                                t.spacer['5'],
+    '__icon-size':                                '1.5rem',
     '__padding':                                  t.spacer['2'],
     '-bar__width':                                t.spacer['1'],
     '-link__font-color':                          t.color['secondary'],
@@ -284,7 +284,6 @@ export const components: AnyTokenValues = {
     '__background-color':                         t.color['white'],
     '__padding':                                  t.spacer['4'],
     '-overlay__background-color':                 t.color['background-dialog-mask'],
-    '-icon__size':                                '1.375rem',
   },
   
   'drawer': {
@@ -320,24 +319,21 @@ export const components: AnyTokenValues = {
     '__max-width':                                '460px',
     '__max-width--small':                         '6em',
     '__max-width--medium':                        '12em',
-    '-hint__color':                               t.color['muted'],
-    '-hint__color--inverse':                      t.color['muted-inverse'],
-    // Medicare is the only theme with a custom font-size token for hint messages
-    '-hint__font-size':                           '0.875rem',
-    '-error__color':                              t.color['error'],
-    '-error__color--inverse':                     t.color['error-lighter'],
   },
 
-  'icon': {
-    '__color--error':                             t.color['error'],
-    '__color--inverse':                           t.color['white'],
-    '__color--primary':                           t.color['primary'],
-    '__color--success':                           t.color['success'],
-    '__color--warn':                              t.color['warn'],
+  'hint': {
+    '__color':                                    t.color['muted'],
+    '__color--inverse':                           t.color['muted-inverse'],
+    // Medicare is the only theme with a custom font-size token for hint messages
+    '__font-size':                                '0.875rem',
+  },
+
+  'inline-error': {
+    '__color':                                    t.color['error'],
+    '__color--inverse':                           t.color['error-lighter'],
   },
 
   'label': {
-    '__color--inverse':                           t.color['base-inverse'],
     '__font-family':                              t.font['montserrat'],
     '__font-size':                                t.font['size-sm'],
     '__font-weight':                              t.font['weight-bold'], // the medicare override used to be "semibold", but those weights are the same in medicare
@@ -396,9 +392,9 @@ export const components: AnyTokenValues = {
   'table': {
     '__padding':                                  t.spacer['2'],
     '__border-color':                             t.color['black'],
+    '__background-color--striped':                t.color['gray-lightest'],
     '-header__background-color':                  t.color['gray-lightest'],
-    '-striped__background-color':                 t.color['gray-lightest'],
-    '-striped-header__background-color':          t.color['gray-lightest'],
+    '-header__background-color--striped':         t.color['gray-lightest'],
   },
 
   'tabs': {
