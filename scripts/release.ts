@@ -56,7 +56,7 @@ async function undoLastCommit() {
 async function bumpVersions() {
   console.log(c.green('Bumping package versions for release...'));
   const preBumpHash = getCurrentCommit();
-  shI('./node_modules/.bin/lerna', ['version', '--no-push', '--exact']);
+  shI('./node_modules/.bin/lerna', ['version', '--no-push', '--no-private', '--exact']);
   const postBumpHash = getCurrentCommit();
 
   if (preBumpHash === postBumpHash) {
