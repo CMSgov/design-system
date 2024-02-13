@@ -1,7 +1,7 @@
 {
   "npmClient": "yarn",
-  "packages": ["packages/*", "examples/*"],
-  "ignoreChanges": ["packages/design-system-tokens/**", "packages/docs/**", "examples/**"],
+  "packages": ["packages/*"],
+  "ignoreChanges": ["packages/design-system-tokens/**", "packages/docs/**"],
   "version": "independent",
   "useWorkspaces": true
 }
