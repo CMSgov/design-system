@@ -17,6 +17,6 @@
   },
   "sideEffects": false,
   "scripts": {
-    "build": "webpack --mode production --progress"
+    "build": "webpack build --mode production --progress"
   }
 }

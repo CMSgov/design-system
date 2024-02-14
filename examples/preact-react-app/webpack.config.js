@@ -5,6 +5,16 @@ const CopyPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 
+const dsDist = path.resolve(
+  __dirname,
+  '..',
+  '..',
+  'node_modules',
+  '@cmsgov',
+  'design-system',
+  'dist'
+);
+
 const config = {
   entry: './src/scripts/index.js',
   output: {
@@ -25,9 +35,9 @@ const config = {
     }),
     new CopyPlugin({
       patterns: [
-        { from: 'node_modules/@cmsgov/design-system/dist/fonts', to: '../fonts' },
-        { from: 'node_modules/@cmsgov/design-system/dist/images', to: '../images' },
-        { from: 'node_modules/@cmsgov/design-system/dist/css', to: '../css' },
+        { from: path.join(dsDist, 'fonts'), to: '../fonts' },
+        { from: path.join(dsDist, 'images'), to: '../images' },
+        { from: path.join(dsDist, 'css'), to: '../css' },
       ],
     }),
   ],
