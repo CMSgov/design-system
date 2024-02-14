@@ -1,7 +1,6 @@
 ---
 import '@cmsgov/design-system/css/index.css';
 import '@cmsgov/design-system/css/core-theme.css';
-import { SkipNav, UsaBanner } from '@cmsgov/design-system';
 
 interface Props {
 	title: string;
@@ -21,11 +20,7 @@ const { title } = Astro.props;
 		<title>{title} - CMSDS Astro Example</title>
 	</head>
 	<body class="ds-content">
-		<SkipNav href="#main" client:load />
-    <UsaBanner client:idle />
-		<main id="main">
-			<slot />
-		</main>
+		<slot />
 	</body>
 </html>
 

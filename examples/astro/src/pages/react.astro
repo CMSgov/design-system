@@ -23,10 +23,13 @@ import TextFieldExample from '../components/react/TextFieldExample';
 import TooltipExample from '../components/react/TooltipExample';
 import UsaBannerExample from '../components/react/UsaBannerExample';
 import VerticalNavigationExample from '../components/react/VerticalNavigationExample';
+import { SkipNav, UsaBanner } from '@cmsgov/design-system';
 ---
 
 <Layout title="React component examples">
-  <div class="ds-l-container">
+  <SkipNav href="#main" client:load />
+  <UsaBanner client:idle />
+  <main id="main" class="ds-l-container">
     <h1 class="ds-text-heading--4xl ds-u-margin-top--2">
       React component examples
     </h1>
@@ -54,5 +57,5 @@ import VerticalNavigationExample from '../components/react/VerticalNavigationExa
     <TooltipExample client:visible />
     <UsaBannerExample client:visible />
     <VerticalNavigationExample client:visible />
-  </div>
+  </main>
 </Layout>
