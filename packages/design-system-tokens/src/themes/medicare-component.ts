@@ -68,7 +68,6 @@ export const components: AnyTokenValues = {
     '__color--hover':                             t.color['white'],
     '__color':                                    t.color['secondary'],
     '__font-weight':                              t.font['weight-normal'],
-    '-icon__fill':                                'currentColor',
   },
 
   'button-alt': {
