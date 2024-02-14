@@ -16,8 +16,6 @@ export const themeColors: ColorTokens = {
   'transparent-white-alpha25':  color['white-alpha25'],
   //
   'background':                 color['white-solid'],
-  'background-dialog':          color['white-solid'],
-  'background-dialog-mask':     color['black-alpha50'],
   'background-inverse':         color['ocean-800'],
   //
   'base':                       color['granite-900'],
