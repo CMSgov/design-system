@@ -30,12 +30,14 @@ const { title } = Astro.props;
 	}
 
 	/* This is a hack to get around the bad first-child rule */
-	astro-island > h1,
-	astro-island > h2,
-	astro-island > h3,
-	astro-island > h4,
-	astro-island > h5,
-	astro-island > h6 {
-		margin-block-start: 1.5em !important;
+	astro-island {
+		> h1,
+		> h2,
+		> h3,
+		> h4,
+		> h5,
+		> h6 {
+			margin-block-start: 1.5em !important;
+		}
 	}
 </style>
