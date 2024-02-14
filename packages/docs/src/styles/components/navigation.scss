@@ -141,7 +141,6 @@
 .ds-c-vertical-nav__label {
   &:hover,
   :visited:hover {
-    // --vertical-nav-item__background-color--hover: var(--color-primary-lightest);
     --vertical-nav-item__background-color--hover: color-mix(
       in srgb,
       var(--color-primary-lightest),
