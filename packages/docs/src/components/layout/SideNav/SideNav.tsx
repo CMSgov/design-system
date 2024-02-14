@@ -106,9 +106,9 @@ const SideNav = ({ location }: SideNavProps) => {
       })}
     >
       <UsaBanner className="ds-u-display--block ds-u-md-display--none" />
-      <header className="c-navigation__header ds-u-md-display--block ds-u-md-display--none">
+      <header className="c-navigation__header ds-u-md-display--none">
         <Button
-          className="ds-u-md-display--none ds-u-padding-left--0 ds-u-padding-right--1"
+          className="ds-u-padding-left--0 ds-u-padding-right--1"
           variation="ghost"
           aria-expanded={isMobileNavOpen}
           aria-controls="c-navigation__menu"
