@@ -1,5 +1,5 @@
 const gulp = require('gulp');
-const sass = require('gulp-sass');
+const sass = require('gulp-sass')(require('sass'));
 
 /**
  * Copy the static assets from the design system, such as the fonts and images.
@@ -35,4 +35,4 @@ gulp.task('css', function () {
     .pipe(gulp.dest('./dist/styles/cmsds'));
 });
 
-gulp.task('default', gulp.series('copy-design-system', 'sass'));
+gulp.task('default', gulp.series('copy-design-system', 'css', 'sass'));
