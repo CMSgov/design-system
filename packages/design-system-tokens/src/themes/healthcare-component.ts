@@ -62,7 +62,7 @@ export const components: AnyTokenValues = {
     '__border-color--active':                     t.color['primary-darkest'],
     '__border-color--disabled':                   t.color['gray-lighter'],
     '__border-color--hover':                      t.color['primary'],
-    '__border-color':                             t.color['white'],
+    '__border-color':                             t.color['primary'],
     '__border-radius':                            t.radius['default'],
     '__border-width':                             '2px',
     '__color--active':                            t.color['white'],
