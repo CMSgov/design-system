@@ -2,7 +2,7 @@
   [
     "aria-valuetext",
     "The text announced to screen readers\nstring",
-    "-"
+    "\"t('spinner.ariaText')\""
   ],
   [
     "className",
