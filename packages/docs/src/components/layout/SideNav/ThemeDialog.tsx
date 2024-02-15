@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { Button, Dropdown } from '@cmsgov/design-system';
+import React, { useEffect, useRef, useState } from 'react';
+import '@cmsgov/design-system/web-components';
+import { Button } from '@cmsgov/design-system';
 import { FilterDialog } from '../FilterDialog/index';
 import { getThemeOptions } from './themeVersionData';
 import { setQueryParam } from '../../../helpers/urlUtils';
@@ -12,6 +13,7 @@ export interface ThemeVersionDialogProps {
 
 export const ThemeVersionDialog = (props: ThemeVersionDialogProps) => {
   const [theme, setTheme] = useState(props.theme);
+  const dropdownRef = useRef<HTMLElement>();
 
   function handleUpdate() {
     if (theme !== props.theme) {
@@ -20,6 +22,16 @@ export const ThemeVersionDialog = (props: ThemeVersionDialogProps) => {
 
     props.onExit();
   }
+
+  useEffect(() => {
+    function handleChange(event) {
+      setTheme(event.detail.target.value);
+    }
+    dropdownRef.current?.addEventListener('ds-change', handleChange);
+    return () => {
+      dropdownRef.current?.removeEventListener('ds-change', handleChange);
+    };
+  }, [dropdownRef]);
 
   return (
     <FilterDialog
@@ -37,12 +49,12 @@ export const ThemeVersionDialog = (props: ThemeVersionDialogProps) => {
       isOpen={props.isOpen}
       onExit={props.onExit}
     >
-      <Dropdown
+      <ds-dropdown
         label="Select a theme"
         name="theme"
-        options={getThemeOptions()}
+        options={JSON.stringify(getThemeOptions())}
         value={theme}
-        onChange={(event) => setTheme(event.currentTarget.value)}
+        ref={dropdownRef}
       />
     </FilterDialog>
   );

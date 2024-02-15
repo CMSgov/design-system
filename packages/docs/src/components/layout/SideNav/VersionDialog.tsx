@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { Button, Dropdown } from '@cmsgov/design-system';
+import React, { useEffect, useRef, useState } from 'react';
+import '@cmsgov/design-system/web-components';
+import { Button } from '@cmsgov/design-system';
 import { FilterDialog } from '../FilterDialog';
 import { getVersionOptions, getVersionEquivalent } from './themeVersionData';
 
@@ -12,6 +13,7 @@ export interface ThemeVersionDialogProps {
 
 export const ThemeVersionDialog = (props: ThemeVersionDialogProps) => {
   const [version, setVersion] = useState(props.version);
+  const dropdownRef = useRef<HTMLElement>();
 
   function handleUpdate() {
     if (version !== props.version) {
@@ -39,6 +41,16 @@ export const ThemeVersionDialog = (props: ThemeVersionDialogProps) => {
     props.onExit();
   }
 
+  useEffect(() => {
+    function handleChange(event) {
+      setVersion(event.detail.target.value);
+    }
+    dropdownRef.current?.addEventListener('ds-change', handleChange);
+    return () => {
+      dropdownRef.current?.removeEventListener('ds-change', handleChange);
+    };
+  }, [dropdownRef]);
+
   return (
     <FilterDialog
       heading="Design system switcher"
@@ -55,12 +67,12 @@ export const ThemeVersionDialog = (props: ThemeVersionDialogProps) => {
       isOpen={props.isOpen}
       onExit={props.onExit}
     >
-      <Dropdown
+      <ds-dropdown
         label="Select a version"
         name="version"
-        options={getVersionOptions(props.theme)}
+        options={JSON.stringify(getVersionOptions(props.theme))}
         value={version}
-        onChange={(event) => setVersion(event.currentTarget.value)}
+        ref={dropdownRef}
       />
     </FilterDialog>
   );
