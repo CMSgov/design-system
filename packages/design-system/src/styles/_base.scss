@@ -145,11 +145,11 @@ $breakpoints: (
 @mixin heading-margins {
   margin-block: 1.5em 0.5em;
 
-  &:first-child {
+  &:where(:first-child) {
     margin-block-start: 0;
   }
 
-  &:last-child {
+  &:where(:last-child) {
     margin-block-end: 0;
   }
 }
