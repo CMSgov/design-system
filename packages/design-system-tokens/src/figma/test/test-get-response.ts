@@ -19,8 +19,6 @@ const response: ApiGetLocalVariablesResponse = {
         modes: [
           { modeId: 'ModeId:21', name: 'core' },
           { modeId: 'ModeId:22', name: 'cmsgov' },
-          { modeId: 'ModeId:23', name: 'healthcare' },
-          { modeId: 'ModeId:24', name: 'medicare' },
         ],
         defaultModeId: 'ModeId:21',
         remote: false,
@@ -251,9 +249,7 @@ const response: ApiGetLocalVariablesResponse = {
         resolvedType: 'COLOR',
         valuesByMode: {
           'ModeId:21': { type: 'VARIABLE_ALIAS', id: 'oce300' },
-          'ModeId:22': { type: 'VARIABLE_ALIAS', id: 'oce300' },
-          'ModeId:23': { type: 'VARIABLE_ALIAS', id: 'oce300' },
-          'ModeId:24': { type: 'VARIABLE_ALIAS', id: 'oce300' },
+          'ModeId:22': { type: 'VARIABLE_ALIAS', id: 'oce050' },
         },
         scopes: ['ALL_SCOPES'],
         hiddenFromPublishing: false,
@@ -269,9 +265,7 @@ const response: ApiGetLocalVariablesResponse = {
         resolvedType: 'COLOR',
         valuesByMode: {
           'ModeId:21': { type: 'VARIABLE_ALIAS', id: 'oce500' },
-          'ModeId:22': { type: 'VARIABLE_ALIAS', id: 'oce500' },
-          'ModeId:23': { type: 'VARIABLE_ALIAS', id: 'oce500' },
-          'ModeId:24': { type: 'VARIABLE_ALIAS', id: 'oce500' },
+          'ModeId:22': { type: 'VARIABLE_ALIAS', id: 'oce100' },
         },
         scopes: ['ALL_SCOPES'],
         hiddenFromPublishing: false,

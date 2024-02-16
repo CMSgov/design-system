@@ -11,6 +11,13 @@ import {
   VariableCodeSyntax,
 } from './FigmaApi.js';
 import { RgbaObject, hexToRgba, isHex, rgbToHex } from '../lib/colorUtils';
+import { Token, TokensFile, TokenOrTokenGroup } from './tokenTypes.js';
+
+export type FlattenedTokensByFile = {
+  [fileName: string]: {
+    [tokenName: string]: Token;
+  };
+};
 
 function areSetsEqual<T>(a: Set<T>, b: Set<T>) {
   return a.size === b.size && [...a].every((item) => b.has(item));
@@ -246,15 +253,10 @@ function tokenAndVariableDifferences(token: Token, variable: Variable | null) {
   return differences;
 }
 
-export function generatePostVariablesPayload(
-  tokensByFile: FlattenedTokensByFile,
-  localVariables: ApiGetLocalVariablesResponse
-) {
-  const localVariableCollectionsByName: { [name: string]: VariableCollection } = {};
-  const localVariablesByCollectionAndName: {
-    [variableCollectionId: string]: { [variableName: string]: Variable };
-  } = {};
-
+export function getCollectionsByName(localVariables: ApiGetLocalVariablesResponse): {
+  [name: string]: VariableCollection;
+} {
+  const localVariableCollectionsByName = {};
   Object.values(localVariables.meta.variableCollections).forEach((collection) => {
     // Skip over remote collections because we can't modify them
     if (collection.remote) {
@@ -267,7 +269,13 @@ export function generatePostVariablesPayload(
 
     localVariableCollectionsByName[collection.name] = collection;
   });
+  return localVariableCollectionsByName;
+}
 
+export function getVariablesByCollection(localVariables: ApiGetLocalVariablesResponse): {
+  [variableCollectionId: string]: { [variableName: string]: Variable };
+} {
+  const localVariablesByCollectionAndName = {};
   Object.values(localVariables.meta.variables).forEach((variable) => {
     // Skip over remote variables because we can't modify them
     if (variable.remote) {
@@ -280,11 +288,15 @@ export function generatePostVariablesPayload(
 
     localVariablesByCollectionAndName[variable.variableCollectionId][variable.name] = variable;
   });
+  return localVariablesByCollectionAndName;
+}
 
-  // console.log(
-  //   'Local variable collections in Figma file:',
-  //   Object.keys(localVariableCollectionsByName),
-  // )
+export function generatePostVariablesPayload(
+  tokensByFile: FlattenedTokensByFile,
+  localVariables: ApiGetLocalVariablesResponse
+) {
+  const localVariableCollectionsByName = getCollectionsByName(localVariables);
+  const localVariablesByCollectionAndName = getVariablesByCollection(localVariables);
 
   const postVariablesPayload: ApiPostVariablesPayload = {
     variableCollections: [],

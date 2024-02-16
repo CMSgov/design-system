@@ -1,0 +1,30 @@
+{
+  "theme": {
+    "color": {
+      "primary-light": {
+        "$type": "color",
+        "$value": "{color.ocean.50}",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "primary": {
+        "$type": "color",
+        "$value": "{color.ocean.100}",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      }
+    }
+  }
+}

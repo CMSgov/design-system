@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getVariablesByCollection returns a nested object organizing variables into collections 1`] = `
+Object {
+  "codeSyntax": Object {},
+  "description": "",
+  "hiddenFromPublishing": false,
+  "id": "oce050",
+  "key": "color/ocean/50",
+  "name": "color/ocean/50",
+  "remote": false,
+  "resolvedType": "COLOR",
+  "scopes": Array [
+    "ALL_SCOPES",
+  ],
+  "valuesByMode": Object {
+    "ModeId:1": Object {
+      "a": 1,
+      "b": 0.9725490212440491,
+      "g": 0.9450980424880981,
+      "r": 0.9019607901573181,
+    },
+  },
+  "variableCollectionId": "VariableCollectionId:111",
+}
+`;
+
+exports[`getVariablesByCollection returns a nested object organizing variables into collections 2`] = `
+Object {
+  "codeSyntax": Object {},
+  "description": "",
+  "hiddenFromPublishing": false,
+  "id": "pri300",
+  "key": "theme/color/primary",
+  "name": "theme/color/primary",
+  "remote": false,
+  "resolvedType": "COLOR",
+  "scopes": Array [
+    "ALL_SCOPES",
+  ],
+  "valuesByMode": Object {
+    "ModeId:21": Object {
+      "id": "oce500",
+      "type": "VARIABLE_ALIAS",
+    },
+    "ModeId:22": Object {
+      "id": "oce500",
+      "type": "VARIABLE_ALIAS",
+    },
+    "ModeId:23": Object {
+      "id": "oce500",
+      "type": "VARIABLE_ALIAS",
+    },
+    "ModeId:24": Object {
+      "id": "oce500",
+      "type": "VARIABLE_ALIAS",
+    },
+  },
+  "variableCollectionId": "VariableCollectionId:222",
+}
+`;
