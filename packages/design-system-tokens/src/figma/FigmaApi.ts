@@ -42,7 +42,7 @@ interface VariableAlias {
 export type VariableValue = boolean | number | string | Color | VariableAlias;
 
 export type VariableScope = 'ALL_SCOPES' | VariableFloatScopes | VariableColorScopes;
-type VariableFloatScopes = 'TEXT_CONTENT' | 'WIDTH_HEIGHT' | 'GAP';
+type VariableFloatScopes = 'TEXT_CONTENT' | 'WIDTH_HEIGHT' | 'GAP' | 'CORNER_RADIUS';
 type VariableColorScopes = 'ALL_FILLS' | 'FRAME_FILL' | 'SHAPE_FILL' | 'TEXT_FILL' | 'STROKE_COLOR';
 
 export type VariableCodeSyntax = { WEB?: string; ANDROID?: string; iOS?: string };
