@@ -192,5 +192,141 @@ Object {
       },
     },
   },
+  "Theme.cmsgov.json": Object {
+    "theme": Object {
+      "color": Object {
+        "primary": Object {
+          "$description": "",
+          "$extensions": Object {
+            "com.figma": Object {
+              "codeSyntax": Object {},
+              "hiddenFromPublishing": false,
+              "scopes": Array [
+                "ALL_SCOPES",
+              ],
+            },
+          },
+          "$type": "color",
+          "$value": "{color.ocean.500}",
+        },
+        "primary-light": Object {
+          "$description": "",
+          "$extensions": Object {
+            "com.figma": Object {
+              "codeSyntax": Object {},
+              "hiddenFromPublishing": false,
+              "scopes": Array [
+                "ALL_SCOPES",
+              ],
+            },
+          },
+          "$type": "color",
+          "$value": "{color.ocean.300}",
+        },
+      },
+    },
+  },
+  "Theme.core.json": Object {
+    "theme": Object {
+      "color": Object {
+        "primary": Object {
+          "$description": "",
+          "$extensions": Object {
+            "com.figma": Object {
+              "codeSyntax": Object {},
+              "hiddenFromPublishing": false,
+              "scopes": Array [
+                "ALL_SCOPES",
+              ],
+            },
+          },
+          "$type": "color",
+          "$value": "{color.ocean.500}",
+        },
+        "primary-light": Object {
+          "$description": "",
+          "$extensions": Object {
+            "com.figma": Object {
+              "codeSyntax": Object {},
+              "hiddenFromPublishing": false,
+              "scopes": Array [
+                "ALL_SCOPES",
+              ],
+            },
+          },
+          "$type": "color",
+          "$value": "{color.ocean.300}",
+        },
+      },
+    },
+  },
+  "Theme.healthcare.json": Object {
+    "theme": Object {
+      "color": Object {
+        "primary": Object {
+          "$description": "",
+          "$extensions": Object {
+            "com.figma": Object {
+              "codeSyntax": Object {},
+              "hiddenFromPublishing": false,
+              "scopes": Array [
+                "ALL_SCOPES",
+              ],
+            },
+          },
+          "$type": "color",
+          "$value": "{color.ocean.500}",
+        },
+        "primary-light": Object {
+          "$description": "",
+          "$extensions": Object {
+            "com.figma": Object {
+              "codeSyntax": Object {},
+              "hiddenFromPublishing": false,
+              "scopes": Array [
+                "ALL_SCOPES",
+              ],
+            },
+          },
+          "$type": "color",
+          "$value": "{color.ocean.300}",
+        },
+      },
+    },
+  },
+  "Theme.medicare.json": Object {
+    "theme": Object {
+      "color": Object {
+        "primary": Object {
+          "$description": "",
+          "$extensions": Object {
+            "com.figma": Object {
+              "codeSyntax": Object {},
+              "hiddenFromPublishing": false,
+              "scopes": Array [
+                "ALL_SCOPES",
+              ],
+            },
+          },
+          "$type": "color",
+          "$value": "{color.ocean.500}",
+        },
+        "primary-light": Object {
+          "$description": "",
+          "$extensions": Object {
+            "com.figma": Object {
+              "codeSyntax": Object {},
+              "hiddenFromPublishing": false,
+              "scopes": Array [
+                "ALL_SCOPES",
+              ],
+            },
+          },
+          "$type": "color",
+          "$value": "{color.ocean.300}",
+        },
+      },
+    },
+  },
 }
 `;
