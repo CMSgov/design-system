@@ -1,0 +1,196 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tokenFilesFromLocalVariables matches snapshot 1`] = `
+Object {
+  "System.Value.json": Object {
+    "color": Object {
+      "ocean": Object {
+        "100": Object {
+          "$description": "",
+          "$extensions": Object {
+            "com.figma": Object {
+              "codeSyntax": Object {},
+              "hiddenFromPublishing": false,
+              "scopes": Array [
+                "ALL_SCOPES",
+              ],
+            },
+          },
+          "$type": "color",
+          "$value": "#b3d4eb",
+        },
+        "200": Object {
+          "$description": "",
+          "$extensions": Object {
+            "com.figma": Object {
+              "codeSyntax": Object {},
+              "hiddenFromPublishing": false,
+              "scopes": Array [
+                "ALL_SCOPES",
+              ],
+            },
+          },
+          "$type": "color",
+          "$value": "#80b8de",
+        },
+        "300": Object {
+          "$description": "",
+          "$extensions": Object {
+            "com.figma": Object {
+              "codeSyntax": Object {},
+              "hiddenFromPublishing": false,
+              "scopes": Array [
+                "ALL_SCOPES",
+              ],
+            },
+          },
+          "$type": "color",
+          "$value": "#4d9cd0",
+        },
+        "400": Object {
+          "$description": "",
+          "$extensions": Object {
+            "com.figma": Object {
+              "codeSyntax": Object {},
+              "hiddenFromPublishing": false,
+              "scopes": Array [
+                "ALL_SCOPES",
+              ],
+            },
+          },
+          "$type": "color",
+          "$value": "#1a7fc3",
+        },
+        "50": Object {
+          "$description": "",
+          "$extensions": Object {
+            "com.figma": Object {
+              "codeSyntax": Object {},
+              "hiddenFromPublishing": false,
+              "scopes": Array [
+                "ALL_SCOPES",
+              ],
+            },
+          },
+          "$type": "color",
+          "$value": "#e6f1f8",
+        },
+        "500": Object {
+          "$description": "",
+          "$extensions": Object {
+            "com.figma": Object {
+              "codeSyntax": Object {},
+              "hiddenFromPublishing": false,
+              "scopes": Array [
+                "ALL_SCOPES",
+              ],
+            },
+          },
+          "$type": "color",
+          "$value": "#0071bc",
+        },
+      },
+      "transparent": Object {
+        "$description": "",
+        "$extensions": Object {
+          "com.figma": Object {
+            "codeSyntax": Object {},
+            "hiddenFromPublishing": false,
+            "scopes": Array [
+              "ALL_SCOPES",
+            ],
+          },
+        },
+        "$type": "color",
+        "$value": "#ffffff00",
+      },
+    },
+    "radius": Object {
+      "circle": Object {
+        "$description": "",
+        "$extensions": Object {
+          "com.figma": Object {
+            "codeSyntax": Object {},
+            "hiddenFromPublishing": false,
+            "scopes": Array [
+              "CORNER_RADIUS",
+            ],
+          },
+        },
+        "$type": "number",
+        "$value": 100,
+      },
+      "default": Object {
+        "$description": "",
+        "$extensions": Object {
+          "com.figma": Object {
+            "codeSyntax": Object {},
+            "hiddenFromPublishing": false,
+            "scopes": Array [
+              "CORNER_RADIUS",
+            ],
+          },
+        },
+        "$type": "number",
+        "$value": 3,
+      },
+      "large": Object {
+        "$description": "",
+        "$extensions": Object {
+          "com.figma": Object {
+            "codeSyntax": Object {},
+            "hiddenFromPublishing": false,
+            "scopes": Array [
+              "CORNER_RADIUS",
+            ],
+          },
+        },
+        "$type": "number",
+        "$value": 8,
+      },
+      "medium": Object {
+        "$description": "",
+        "$extensions": Object {
+          "com.figma": Object {
+            "codeSyntax": Object {},
+            "hiddenFromPublishing": false,
+            "scopes": Array [
+              "CORNER_RADIUS",
+            ],
+          },
+        },
+        "$type": "number",
+        "$value": 4,
+      },
+      "pill": Object {
+        "$description": "",
+        "$extensions": Object {
+          "com.figma": Object {
+            "codeSyntax": Object {},
+            "hiddenFromPublishing": false,
+            "scopes": Array [
+              "CORNER_RADIUS",
+            ],
+          },
+        },
+        "$type": "number",
+        "$value": 9999,
+      },
+      "small": Object {
+        "$description": "",
+        "$extensions": Object {
+          "com.figma": Object {
+            "codeSyntax": Object {},
+            "hiddenFromPublishing": false,
+            "scopes": Array [
+              "CORNER_RADIUS",
+            ],
+          },
+        },
+        "$type": "number",
+        "$value": 2,
+      },
+    },
+  },
+}
+`;
