@@ -15,13 +15,18 @@ const Example = function () {
       <UsaBanner />
       <header className="ds-base--inverse ds-u-padding-y--3">
         <div className="ds-l-container">
-          <span className="ds-h3">ExampleWebsite.gov</span>
+          <span className="ds-text-heading--xl">ExampleWebsite.gov</span>
         </div>
       </header>
 
       <div className="ds-l-container ds-u-padding-top--2">
         <div className="ds-u-measure--base">
-          <h1 className="ds-h1">Preact Example</h1>
+          <h1 className="ds-h1">Preact React-app example</h1>
+          <p className="ds-u-margin-bottom--2">
+            What&apos;s different about this example is that we&apos;re actually using the React
+            version of the design system but swapping out the React library for Preact at
+            build-time.
+          </p>
           <Alert heading="Hello world">
             <p className="ds-c-alert__text">You did it! You&rsquo;ve run the example.</p>
             {open && (

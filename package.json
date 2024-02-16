@@ -4,7 +4,8 @@
   "description": "A set of open source design and front-end development resources for creating Section 508 compliant, responsive, and consistent websites.",
   "repository": "https://github.com/CMSgov/design-system",
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "examples/*"
   ],
   "scripts": {
     "build": "yarn build:tokens && yarn build:core && yarn build:healthcare && yarn build:medicare && yarn build:cmsgov && yarn build:cdn-index",
