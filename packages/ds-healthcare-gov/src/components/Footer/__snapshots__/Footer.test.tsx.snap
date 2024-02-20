@@ -227,6 +227,7 @@ exports[`Footer renders basic footer 1`] = `
                                   <label
                                     class="ds-c-label"
                                     for="choice-list--3__choice--0"
+                                    id="choice-list--3__choice--0__label"
                                   >
                                     Allow
                                   </label>
@@ -246,6 +247,7 @@ exports[`Footer renders basic footer 1`] = `
                                   <label
                                     class="ds-c-label"
                                     for="choice-list--3__choice--1"
+                                    id="choice-list--3__choice--1__label"
                                   >
                                     Don't allow
                                   </label>
@@ -308,6 +310,7 @@ exports[`Footer renders basic footer 1`] = `
                                   <label
                                     class="ds-c-label"
                                     for="choice-list--4__choice--0"
+                                    id="choice-list--4__choice--0__label"
                                   >
                                     Allow
                                   </label>
@@ -327,6 +330,7 @@ exports[`Footer renders basic footer 1`] = `
                                   <label
                                     class="ds-c-label"
                                     for="choice-list--4__choice--1"
+                                    id="choice-list--4__choice--1__label"
                                   >
                                     Don't allow
                                   </label>
@@ -389,6 +393,7 @@ exports[`Footer renders basic footer 1`] = `
                                   <label
                                     class="ds-c-label"
                                     for="choice-list--5__choice--0"
+                                    id="choice-list--5__choice--0__label"
                                   >
                                     Allow
                                   </label>
@@ -408,6 +413,7 @@ exports[`Footer renders basic footer 1`] = `
                                   <label
                                     class="ds-c-label"
                                     for="choice-list--5__choice--1"
+                                    id="choice-list--5__choice--1__label"
                                   >
                                     Don't allow
                                   </label>
@@ -464,12 +470,12 @@ exports[`Footer renders basic footer 1`] = `
       <div
         class="hc-c-footer__language-resource-links-row"
       >
-        <h4
+        <p
           class="ds-u-visibility--screen-reader"
           id="hc-c-footer__language-resources"
         >
           Language resources
-        </h4>
+        </p>
         <ul
           aria-labelledby="hc-c-footer__language-resources"
           class="hc-c-footer__list"
@@ -622,7 +628,7 @@ exports[`Footer renders basic footer 1`] = `
               href="/language-resource/#vietnamese"
               lang="vi"
             >
-              tiếng việt
+              Tiếng Việt
             </a>
           </li>
         </ul>
@@ -960,6 +966,7 @@ exports[`Footer renders basic footer with props 1`] = `
                                   <label
                                     class="ds-c-label"
                                     for="choice-list--8__choice--0"
+                                    id="choice-list--8__choice--0__label"
                                   >
                                     Allow
                                   </label>
@@ -979,6 +986,7 @@ exports[`Footer renders basic footer with props 1`] = `
                                   <label
                                     class="ds-c-label"
                                     for="choice-list--8__choice--1"
+                                    id="choice-list--8__choice--1__label"
                                   >
                                     Don't allow
                                   </label>
@@ -1041,6 +1049,7 @@ exports[`Footer renders basic footer with props 1`] = `
                                   <label
                                     class="ds-c-label"
                                     for="choice-list--9__choice--0"
+                                    id="choice-list--9__choice--0__label"
                                   >
                                     Allow
                                   </label>
@@ -1060,6 +1069,7 @@ exports[`Footer renders basic footer with props 1`] = `
                                   <label
                                     class="ds-c-label"
                                     for="choice-list--9__choice--1"
+                                    id="choice-list--9__choice--1__label"
                                   >
                                     Don't allow
                                   </label>
@@ -1122,6 +1132,7 @@ exports[`Footer renders basic footer with props 1`] = `
                                   <label
                                     class="ds-c-label"
                                     for="choice-list--10__choice--0"
+                                    id="choice-list--10__choice--0__label"
                                   >
                                     Allow
                                   </label>
@@ -1141,6 +1152,7 @@ exports[`Footer renders basic footer with props 1`] = `
                                   <label
                                     class="ds-c-label"
                                     for="choice-list--10__choice--1"
+                                    id="choice-list--10__choice--1__label"
                                   >
                                     Don't allow
                                   </label>
@@ -1197,12 +1209,12 @@ exports[`Footer renders basic footer with props 1`] = `
       <div
         class="hc-c-footer__language-resource-links-row"
       >
-        <h4
+        <p
           class="ds-u-visibility--screen-reader"
           id="hc-c-footer__language-resources"
         >
           Language resources
-        </h4>
+        </p>
         <ul
           aria-labelledby="hc-c-footer__language-resources"
           class="hc-c-footer__list"
@@ -1355,7 +1367,7 @@ exports[`Footer renders basic footer with props 1`] = `
               href="https://www.healthcare.gov/language-resource/#vietnamese"
               lang="vi"
             >
-              tiếng việt
+              Tiếng Việt
             </a>
           </li>
         </ul>

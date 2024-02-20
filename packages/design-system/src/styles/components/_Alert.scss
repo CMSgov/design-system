@@ -66,10 +66,14 @@
   display: flex;
 }
 
-.ds-c-alert__icon {
+.ds-c-alert__icon.ds-c-icon {
   flex-shrink: 0;
-  font-size: var(--font-size-lg);
+  font-size: var(--alert__icon-size);
+  // Make height and width directly relative to the font size so the alert icon-size
+  // variable can be used accurately in Figma too.
+  height: 1em;
   margin-inline-start: $spacer-1;
+  width: 1em;
 }
 
 .ds-c-alert__body {

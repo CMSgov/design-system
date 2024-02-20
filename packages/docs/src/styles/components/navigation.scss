@@ -11,8 +11,13 @@
     gap: $spacer-2;
     padding: $spacer-2;
 
-    button {
+    > button {
       color: currentColor;
+
+      &:hover,
+      &:focus:hover {
+        color: currentColor;
+      }
     }
   }
 
@@ -133,42 +138,23 @@
   }
 }
 
+.ds-c-vertical-nav__label {
+  &:hover,
+  :visited:hover {
+    --vertical-nav-item__background-color--hover: color-mix(
+      in srgb,
+      var(--color-primary-lightest),
+      transparent 50%
+    );
+  }
+}
+
 // Desktop
 @media (min-width: $media-width-md) {
   .c-navigation {
     // Set it to a fixed width that is wide enough for most links so that it
     // doesn't jump around when we open and close subsections.
     width: 17rem;
-
-    .c-navigation__header {
-      padding-block-end: $spacer-1;
-      padding-block-start: $spacer-4;
-    }
-
-    .c-navigation__link-list {
-      .ds-c-vertical-nav__label {
-        background-color: transparent;
-        text-align: start;
-
-        &:hover,
-        &:visited:hover {
-          position: relative;
-          z-index: 1;
-
-          &:before {
-            background-color: var(--vertical-nav-item__color--hover);
-            bottom: 0;
-            content: '';
-            filter: opacity(0.05);
-            left: 0;
-            position: absolute;
-            right: 0;
-            top: 0;
-            z-index: -1;
-          }
-        }
-      }
-    }
   }
 }
 

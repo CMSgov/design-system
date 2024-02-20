@@ -53,13 +53,13 @@
   thead {
     th,
     tr {
-      background-color: var(--table-striped-header__background-color);
+      background-color: var(--table-header__background-color--striped);
     }
   }
 
   tbody {
     tr:nth-child(even) {
-      background-color: var(--table-striped__background-color);
+      background-color: var(--table__background-color--striped);
     }
 
     tr:nth-child(odd)::before {

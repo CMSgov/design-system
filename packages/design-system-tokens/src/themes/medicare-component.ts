@@ -29,22 +29,13 @@ export const components: AnyTokenValues = {
     '__border-color--success':                    t.color['success'],
     '__border-color--warn':                       t.color['warn'],
     '__font-color':                               t.color['base'],
-    '__icon-size':                                t.spacer['5'],
+    '__icon-size':                                '1.5rem',
     '__padding':                                  t.spacer['2'],
     '-bar__width':                                t.spacer['1'],
     '-link__font-color':                          t.color['secondary'],
     '-link__font-color--hover':                   t.color['secondary-dark'],
     '-link__font-color--focus':                   t.color['secondary-darkest'],
     '-link__font-color--active':                  t.color['secondary-darkest'],
-  },
-  
-  'autocomplete': {
-    '__background-color':                         t.color['white'],
-    '__border-color':                             t.color['gray-lighter'],
-    '-item__font-color':                          t.color['primary'],
-    '-item__background-color--active':            t.color['secondary-darkest'],
-    '-item__font-color--active':                  t.color['white'],
-    '-item-message__font-color':                  t.color['muted'],
   },
   
   'badge': {
@@ -67,9 +58,9 @@ export const components: AnyTokenValues = {
     '__background-color--hover':                  t.color['secondary-dark'],
     '__background-color':                         t.color['white'],
     '__border-color--active':                     t.color['secondary-light'],
-    '__border-color--disabled':                   'currentColor',
+    '__border-color--disabled':                   t.color['gray-lighter'],
     '__border-color--hover':                      t.color['secondary-dark'],
-    '__border-color':                             'currentColor',
+    '__border-color':                             t.color['secondary'],
     '__border-radius':                            t.radius['default'],
     '__border-width':                             '1px',
     '__color--active':                            t.color['secondary-light'],
@@ -77,7 +68,6 @@ export const components: AnyTokenValues = {
     '__color--hover':                             t.color['white'],
     '__color':                                    t.color['secondary'],
     '__font-weight':                              t.font['weight-normal'],
-    '-icon__fill':                                'currentColor',
   },
 
   'button-alt': {
@@ -86,9 +76,9 @@ export const components: AnyTokenValues = {
     '__background-color--hover':                  t.color['primary-dark'],
     '__background-color':                         t.color['white'],
     '__border-color--active':                     t.color['primary-light'],
-    '__border-color--disabled':                   'currentColor',
+    '__border-color--disabled':                   t.color['gray-lighter'],
     '__border-color--hover':                      t.color['primary-dark'],
-    '__border-color':                             'currentColor',
+    '__border-color':                             t.color['primary'],
     '__color--active':                            t.color['primary-light'],
     '__color--disabled':                          t.color['gray-lighter'],
     '__color--hover':                             t.color['white'],
@@ -100,10 +90,10 @@ export const components: AnyTokenValues = {
     '__background-color--disabled':               'transparent',
     '__background-color--hover':                  'transparent',
     '__background-color':                         'transparent',
-    '__border-color--active':                     'currentColor',
-    '__border-color--disabled':                   'currentColor',
-    '__border-color--hover':                      'currentColor',
-    '__border-color':                             'currentColor',
+    '__border-color--active':                     t.color['gray-lighter'],
+    '__border-color--disabled':                   t.color['gray-dark'],
+    '__border-color--hover':                      t.color['gray-lightest'],
+    '__border-color':                             t.color['white'],
     '__color--active':                            t.color['gray-lighter'],
     '__color--disabled':                          t.color['gray-dark'],
     '__color--hover':                             t.color['gray-lightest'],
@@ -115,10 +105,10 @@ export const components: AnyTokenValues = {
     '__background-color--disabled':               'transparent',
     '__background-color--hover':                  'transparent',
     '__background-color':                         'transparent',
-    '__border-color--active':                     'currentColor',
-    '__border-color--disabled':                   'currentColor',
-    '__border-color--hover':                      'currentColor',
-    '__border-color':                             'currentColor',
+    '__border-color--active':                     t.color['secondary-light'],
+    '__border-color--disabled':                   t.color['gray-dark'],
+    '__border-color--hover':                      t.color['secondary-lighter'],
+    '__border-color':                             t.color['secondary-lightest'],
     '__color--active':                            t.color['secondary-light'],
     '__color--disabled':                          t.color['gray-dark'],
     '__color--hover':                             t.color['secondary-lighter'],
@@ -282,6 +272,7 @@ export const components: AnyTokenValues = {
   // Medicare is the only theme with datefield tokens
   'datefield': {
     '-separator__display':                       'none',
+    '__padding':                                  '1em',
   },
 
   'day-picker': {
@@ -289,10 +280,9 @@ export const components: AnyTokenValues = {
   },
   
   'dialog': {
-    '__background-color':                         t.color['white'],
+    '__background-color':                         t.color['background'],
     '__padding':                                  t.spacer['4'],
-    '-overlay__background-color':                 t.color['background-dialog-mask'],
-    '-icon__size':                                '1.375rem',
+    '-overlay__background-color':                 t.color['transparent-black-alpha50'],
   },
   
   'drawer': {
@@ -309,11 +299,6 @@ export const components: AnyTokenValues = {
     // This variable is only used in a medicare style override, and it's weird. Why doesn't
     // it just behave like a normal inverse link?
     '-toggle__color--hover--inverse':             t.color['gray-dark'], 
-  },
-  
-  'dropdown': {
-    '__background-color':                         t.color['white'],
-    '-option-group__padding':                     t.spacer['4'],
   },
   
   'filter-chip': {
@@ -333,24 +318,21 @@ export const components: AnyTokenValues = {
     '__max-width':                                '460px',
     '__max-width--small':                         '6em',
     '__max-width--medium':                        '12em',
-    '-hint__color':                               t.color['muted'],
-    '-hint__color--inverse':                      t.color['muted-inverse'],
-    // Medicare is the only theme with a custom font-size token for hint messages
-    '-hint__font-size':                           '0.875rem',
-    '-error__color':                              t.color['error'],
-    '-error__color--inverse':                     t.color['error-lighter'],
   },
 
-  'icon': {
-    '__color--error':                             t.color['error'],
-    '__color--inverse':                           t.color['white'],
-    '__color--primary':                           t.color['primary'],
-    '__color--success':                           t.color['success'],
-    '__color--warn':                              t.color['warn'],
+  'hint': {
+    '__color':                                    t.color['muted'],
+    '__color--inverse':                           t.color['muted-inverse'],
+    // Medicare is the only theme with a custom font-size token for hint messages
+    '__font-size':                                '0.875rem',
+  },
+
+  'inline-error': {
+    '__color':                                    t.color['error'],
+    '__color--inverse':                           t.color['error-lighter'],
   },
 
   'label': {
-    '__color--inverse':                           t.color['base-inverse'],
     '__font-family':                              t.font['montserrat'],
     '__font-size':                                t.font['size-sm'],
     '__font-weight':                              t.font['weight-bold'], // the medicare override used to be "semibold", but those weights are the same in medicare
@@ -409,9 +391,9 @@ export const components: AnyTokenValues = {
   'table': {
     '__padding':                                  t.spacer['2'],
     '__border-color':                             t.color['black'],
+    '__background-color--striped':                t.color['gray-lightest'],
     '-header__background-color':                  t.color['gray-lightest'],
-    '-striped__background-color':                 t.color['gray-lightest'],
-    '-striped-header__background-color':          t.color['gray-lightest'],
+    '-header__background-color--striped':         t.color['gray-lightest'],
   },
 
   'tabs': {

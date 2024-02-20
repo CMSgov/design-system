@@ -21,12 +21,17 @@
   ],
   [
     "disabled",
-    "boolean",
+    "Disables the entire field.\nboolean",
+    "-"
+  ],
+  [
+    "errorId",
+    "The ID of the error message applied to this field. If none is provided, the id will be derived from the id prop for the field.\n\nstring",
     "-"
   ],
   [
     "errorMessage",
-    "ReactNode",
+    "Enable the error state by providing an error message.\nReactNode",
     "-"
   ],
   [
@@ -36,7 +41,12 @@
   ],
   [
     "hint",
-    "Additional hint text to display below the choice's label\nReactNode",
+    "Additional hint text to display\nReactNode",
+    "-"
+  ],
+  [
+    "hintId",
+    "The ID of the hint element\nstring",
     "-"
   ],
   [
@@ -60,13 +70,18 @@
     "-"
   ],
   [
-    "label",
-    "Label text or HTML.\nReactNode",
+    "label*",
+    "Label for the field.\nReactNode",
     "-"
   ],
   [
     "labelClassName",
-    "Additional classes to be added to the FormLabel.\nstring",
+    "Additional classes to be added to the label\nstring",
+    "-"
+  ],
+  [
+    "labelId",
+    "A unique id to be used on the field label. If one isn't provided, a unique ID will be generated.\n\nstring",
     "-"
   ],
   [

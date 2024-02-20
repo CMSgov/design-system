@@ -56,6 +56,7 @@ exports[`ChoiceList Radio buttons and Checkboxes is a radio button group 1`] = `
         <label
           class="ds-c-label"
           for="static-id__choice--0"
+          id="static-id__choice--0__label"
         >
           Choice 1
         </label>
@@ -75,6 +76,7 @@ exports[`ChoiceList Radio buttons and Checkboxes is a radio button group 1`] = `
         <label
           class="ds-c-label"
           for="static-id__choice--1"
+          id="static-id__choice--1__label"
         >
           Choice 2
         </label>

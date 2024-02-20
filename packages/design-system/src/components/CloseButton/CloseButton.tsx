@@ -31,10 +31,10 @@ export const CloseButton = ({ className, id: idProp, ...buttonAttributes }: Clos
   const id = useId('close-button--', idProp);
   return (
     <button
-      className={classNames('ds-c-close-button', className)}
       type="button"
-      id={id}
       {...buttonAttributes}
+      className={classNames('ds-c-close-button', className)}
+      id={id}
     >
       <CloseIconThin ariaHidden={false} id={`${id}__icon`} />
     </button>

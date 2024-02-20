@@ -12,7 +12,7 @@
 .ds-c-dropdown__button.ds-c-field {
   align-items: center;
   appearance: none;
-  background-color: var(--dropdown__background-color);
+  background-color: var(--color-background);
   display: flex;
   gap: 2ch;
   justify-content: space-between;
@@ -49,7 +49,7 @@
   --clip-path-value: calc(-1 * var(--blur-radius));
   --max-height: 320px;
 
-  background-color: var(--autocomplete__background-color);
+  background-color: var(--color-background);
   border: var(--text-input__border-width) solid var(--text-input__border-color);
   border-block-start: none;
   border-end-end-radius: var(--text-input__border-radius);
@@ -91,7 +91,8 @@
 }
 
 .ds-c-dropdown__menu-item-group .ds-c-dropdown__menu-item {
-  padding-inline-start: var(--dropdown-option-group__padding);
+  // We should actually make this a multiple of text input padding probably
+  padding-inline-start: calc(var(--text-input__padding) + var(--spacer-2));
 }
 
 // Styles for dropdown elements that are highlighted
