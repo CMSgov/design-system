@@ -1,3 +1,4 @@
+import * as fs from 'fs';
 import { rgbToHex } from '../lib/colorUtils';
 import { ApiGetLocalVariablesResponse, Variable } from './FigmaApi';
 
@@ -79,4 +80,14 @@ export function tokenFilesFromLocalVariables(localVariablesResponse: ApiGetLocal
   });
 
   return tokenFiles;
+}
+
+export function writeTokenFiles(tokensDir, tokensByFile) {
+  if (!fs.existsSync(tokensDir)) {
+    fs.mkdirSync(tokensDir);
+  }
+
+  Object.entries(tokensByFile).forEach(([fileName, fileContent]) => {
+    fs.writeFileSync(`${tokensDir}/${fileName}`, JSON.stringify(fileContent, null, 2));
+  });
 }

@@ -5,16 +5,16 @@ import c from 'chalk';
 import path from 'path';
 import { generatePostVariablesPayload, readTokenFiles } from './translateTokensToFigma';
 
+const TOKENS_DIR = path.resolve(__dirname, '..', 'tokens');
+
 async function main() {
   if (!process.env.PERSONAL_ACCESS_TOKEN || !process.env.FILE_KEY) {
     throw new Error('PERSONAL_ACCESS_TOKEN and FILE_KEY environemnt variables are required');
   }
   const fileKey = process.env.FILE_KEY;
 
-  // TODO: Replace this with our own token aggregator
-  const TOKENS_DIR = path.resolve(__dirname, '..', 'tokens');
   const tokensByFile = readTokenFiles(TOKENS_DIR);
-  console.log('Read tokens files:', Object.keys(tokensByFile));
+  console.log('Read token files:', Object.keys(tokensByFile));
 
   const api = new FigmaApi(process.env.PERSONAL_ACCESS_TOKEN);
   const localVariables = await api.getLocalVariables(fileKey);
