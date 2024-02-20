@@ -26,7 +26,7 @@ function areSetsEqual<T>(a: Set<T>, b: Set<T>) {
 export function readTokenFiles(tokensDir: string): FlattenedTokensByFile {
   const files = fs.readdirSync(tokensDir).map((file: string) => `${tokensDir}/${file}`);
 
-  const tokensJsonByFile = {};
+  const tokensJsonByFile: FlattenedTokensByFile = {};
 
   const seenCollectionsAndModes = new Set<string>();
 
