@@ -35,8 +35,12 @@ function tokenValueFromVariable(
   }
 }
 
-export function tokenFilesFromLocalVariables(localVariablesResponse: ApiGetLocalVariablesResponse) {
-  const tokenFiles: { [fileName: string]: any } = {};
+type TokensByFile = { [fileName: string]: any };
+
+export function tokenFilesFromLocalVariables(
+  localVariablesResponse: ApiGetLocalVariablesResponse
+): TokensByFile {
+  const tokenFiles: TokensByFile = {};
   const localVariableCollections = localVariablesResponse.meta.variableCollections;
   const localVariables = localVariablesResponse.meta.variables;
 
@@ -82,7 +86,7 @@ export function tokenFilesFromLocalVariables(localVariablesResponse: ApiGetLocal
   return tokenFiles;
 }
 
-export function writeTokenFiles(tokensDir, tokensByFile) {
+export function writeTokenFiles(tokensDir: string, tokensByFile: TokensByFile) {
   if (!fs.existsSync(tokensDir)) {
     fs.mkdirSync(tokensDir);
   }
