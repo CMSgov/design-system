@@ -1,9 +1,6 @@
 import React from 'react';
 import { getSystemColorTokenFromValue } from '../../helpers/themeTokens';
-import {
-  hexHasTransparency,
-  pickTextColor,
-} from 'packages/design-system-tokens/src/lib/colorUtils';
+import { hexHasTransparency, pickTextColor } from 'design-system-tokens/src/lib/colorUtils';
 import { HexValue } from 'design-system-tokens/src/lib/types';
 
 const DARK_TEXT = 'var(--color-base)';
