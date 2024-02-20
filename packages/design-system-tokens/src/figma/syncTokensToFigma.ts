@@ -1,7 +1,8 @@
 /* eslint-disable no-console */
 import 'dotenv/config';
-import * as fs from 'fs';
 import FigmaApi from './FigmaApi';
+import c from 'chalk';
+import path from 'path';
 import { generatePostVariablesPayload, readTokenFiles } from './translateTokensToFigma';
 
 async function main() {
@@ -11,9 +12,8 @@ async function main() {
   const fileKey = process.env.FILE_KEY;
 
   // TODO: Replace this with our own token aggregator
-  const TOKENS_DIR = 'tokens';
-  const tokensFiles = fs.readdirSync(TOKENS_DIR).map((file: string) => `${TOKENS_DIR}/${file}`);
-  const tokensByFile = readTokenFiles(tokensFiles);
+  const TOKENS_DIR = path.resolve(__dirname, '..', 'tokens');
+  const tokensByFile = readTokenFiles(TOKENS_DIR);
   console.log('Read tokens files:', Object.keys(tokensByFile));
 
   const api = new FigmaApi(process.env.PERSONAL_ACCESS_TOKEN);
@@ -21,7 +21,7 @@ async function main() {
   const postVariablesPayload = generatePostVariablesPayload(tokensByFile, localVariables);
 
   if (Object.values(postVariablesPayload).every((value) => value.length === 0)) {
-    console.log(green('✅ Tokens are already up to date with the Figma file'));
+    console.log(c.green('✅ Tokens are already up to date with the Figma file'));
     return;
   }
 
@@ -45,7 +45,7 @@ async function main() {
     console.log('Updated variable mode values', postVariablesPayload.variableModeValues);
   }
 
-  console.log(green('✅ Figma file has been updated with the new tokens'));
+  console.log(c.green('✅ Figma file has been updated with the new tokens'));
 }
 
 main();
