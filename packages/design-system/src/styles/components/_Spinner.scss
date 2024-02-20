@@ -48,7 +48,7 @@
     border-inline-start-color: inherit;
     transform: translateZ(0);
 
-    @media (-ms-high-contrast: active), (forced-colors: active) {
+    @media (forced-colors: active) {
       border-color: WindowText;
       border-inline-start-color: Window;
     }

@@ -20,10 +20,13 @@ function generateChoices(length: number, customProps = {}) {
 function renderChoiceList(customProps = {}, choicesCount = 2) {
   const props = {
     choices: generateChoices(choicesCount),
+    id: 'static-id',
     label: 'Foo',
+    hint: 'Psst! I know the answer',
+    errorMessage: 'Hey, you have to pick an answer',
     name: 'spec-field',
     type: 'radio' as ChoiceListType,
-    onChange: () => {},
+    onChange: () => null,
     ...customProps,
   };
   return render(<ChoiceList {...props} />);
@@ -81,40 +84,21 @@ describe('ChoiceList', () => {
       expect(fieldsetEl).toBeDefined();
     });
 
-    it('allows for modification of aria attributes', () => {
-      const choices = generateChoices(4, {
-        'aria-live': 'off',
-        'aria-relevant': 'text',
-        'aria-atomic': 'true',
-      });
-      choices[0].checked = true;
-      const { container } = renderChoiceList({ choices });
-      const wrapper = container.querySelector(':nth-child(3)');
-      expect(wrapper).toHaveAttribute('aria-live', 'off');
-      expect(wrapper).toHaveAttribute('aria-relevant', 'text');
-      expect(wrapper).toHaveAttribute('aria-atomic', 'true');
-      expect(wrapper).toMatchSnapshot();
-    });
+    it('generates ids when no id is provided', () => {
+      const { container } = renderChoiceList({ id: undefined });
+      expect(container.querySelector('legend').id).toMatch(/choice-list--\d+/);
 
-    it('applies correct aria attributes when checkedChildren is set', () => {
-      const choices = generateChoices(2, {
-        checkedChildren: <p>this is a test</p>,
-      });
-      choices[0].checked = true;
-      choices[1].checked = true;
-      const { container } = renderChoiceList({ choices });
-      const wrapper = container.querySelector(':nth-child(3)');
-      expect(wrapper).toHaveAttribute('aria-live', 'polite');
-      expect(wrapper).toHaveAttribute('aria-relevant', 'additions text');
-      expect(wrapper).toHaveAttribute('aria-atomic', 'false');
-      expect(container).toMatchSnapshot();
+      const choices = screen.getAllByRole('radio');
+      const choiceIdRegex = /choice--\d+/;
+      expect(choices[0].id).toMatch(choiceIdRegex);
+      expect(choices[1].id).toMatch(choiceIdRegex);
     });
 
     it('renders the label prop as a legend element', () => {
       renderChoiceList();
       const legendEl = screen.getByText('Foo');
 
-      expect(legendEl.parentElement.tagName).toBe('LEGEND');
+      expect(legendEl.tagName).toBe('LEGEND');
     });
 
     it('passes checked prop', () => {

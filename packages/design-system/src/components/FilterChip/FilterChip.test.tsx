@@ -8,6 +8,7 @@ describe('FilterChip', () => {
     const defaultProps = {
       label: 'Foo',
       onDelete: jest.fn(),
+      id: 'static-id',
     };
     const props = { ...defaultProps, ...customProps };
     return render(<FilterChip {...props} />);
@@ -17,7 +18,7 @@ describe('FilterChip', () => {
     renderFilterChip();
     const chipEl = screen.getByRole('button');
     expect(chipEl.querySelector('.ds-c-filter-chip__label').textContent).toEqual('Foo');
-    expect(chipEl.innerHTML).toMatchSnapshot();
+    expect(chipEl).toMatchSnapshot();
   });
 
   it('should use different aria label if provided', () => {
@@ -26,6 +27,12 @@ describe('FilterChip', () => {
     expect(chipEl.querySelector('.ds-u-visibility--screen-reader').textContent).toEqual(
       'Clear Foo filter .'
     );
+  });
+
+  it('generates an id when no id is provided', () => {
+    renderFilterChip({ id: undefined });
+    const idRegex = /filter-chip--\d+/;
+    expect(screen.getByRole('button').id).toMatch(idRegex);
   });
 
   describe('onDelete', () => {
@@ -83,6 +90,6 @@ describe('FilterChip', () => {
 
     expect(iconContainerEl).toBeDefined();
     expect(iconContainerEl.classList).toContain('ds-c-filter-chip__clear-icon-alternate-container');
-    expect(iconContainerEl.innerHTML).toMatchSnapshot();
+    expect(iconContainerEl).toMatchSnapshot();
   });
 });

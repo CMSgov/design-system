@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import Button from '../Button/Button';
 import Ellipses from './Ellipses';
 import Page from './Page';
-import { useCallback, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { ArrowIcon } from '../Icons';
 import { t } from '../i18n';
@@ -196,7 +195,7 @@ function Pagination({
      * Renders all Page components in range (3 pages) to Pagination component.
      */
 
-    pageRange.map((page) => {
+    pageRange.forEach((page) => {
       pages.push(
         <Page
           href={renderHref(page)}
@@ -265,7 +264,6 @@ function Pagination({
         </span>
         {startLabelText ?? t('pagination.startLabelText')}
       </Button>
-
       <span
         className="ds-c-pagination__page-count"
         dangerouslySetInnerHTML={{

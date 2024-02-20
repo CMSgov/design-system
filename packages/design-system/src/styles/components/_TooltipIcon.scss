@@ -10,7 +10,7 @@
   vertical-align: middle;
   width: $spacer-3;
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     border-color: Window;
   }
 }
@@ -27,7 +27,7 @@
   top: 0;
   width: $spacer-2;
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     path {
       fill: ButtonText;
     }

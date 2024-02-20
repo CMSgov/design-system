@@ -25,7 +25,7 @@
       }
     }
 
-    @media (-ms-high-contrast: active), (forced-colors: active) {
+    @media (forced-colors: active) {
       background-color: LinkText;
       color: window;
       forced-color-adjust: none;

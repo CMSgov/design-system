@@ -41,7 +41,6 @@ describe('Tabs', function () {
     expect(tabEls.length).toBe(1);
     const firstTab = tabEls[0];
     expect(firstTab.classList).toContain('bar');
-    expect(firstTab.id).toBe(`ds-c-tabs__item--panel-1`);
     expect(firstTab.getAttribute('aria-controls')).toBe(getPanelId(1));
     expect(firstTab.getAttribute('href')).toBe('/foo');
     expect(firstTab.textContent).toBe('Tab 1');
@@ -61,6 +60,34 @@ describe('Tabs', function () {
 
     expect(tabList.classList).toContain(className);
     expect(tabList.classList).toContain('ds-c-tabs');
+  });
+
+  it('generates tab ids when no tabId is defined', () => {
+    renderTabs(undefined, createPanels(2));
+    const tabs = screen.getAllByRole('tab');
+    expect(tabs[0].id).toEqual('panel-1__tab');
+    expect(tabs[1].id).toEqual('panel-2__tab');
+
+    const panels = screen.getAllByRole('tabpanel');
+    expect(panels[0].getAttribute('aria-labelledby')).toEqual(tabs[0].id);
+  });
+
+  it('applies the tabId to the tab element', () => {
+    renderTabs(undefined, [
+      <TabPanel key="lunch" id="lunch" tabId="lunch-tab" tab="Lunch Menu">
+        Food
+      </TabPanel>,
+      <TabPanel key="dinner" id="dinner" tabId="dinner-tab" tab="Dinner menu">
+        Food
+      </TabPanel>,
+    ]);
+
+    const tabs = screen.getAllByRole('tab');
+    expect(tabs[0].id).toEqual('lunch-tab');
+    expect(tabs[1].id).toEqual('dinner-tab');
+
+    const panels = screen.getAllByRole('tabpanel');
+    expect(panels[0].getAttribute('aria-labelledby')).toEqual(tabs[0].id);
   });
 
   it('selects the first tab by default', () => {

@@ -12,21 +12,19 @@
 .ds-c-dropdown__button.ds-c-field {
   align-items: center;
   appearance: none;
-  background-color: var(--dropdown__background-color);
+  background-color: var(--color-background);
   display: flex;
   gap: 2ch;
   justify-content: space-between;
   text-align: start;
 
-  // Removes inner outline on select elements in Firefox.
-  &:-moz-focusring {
-    color: transparent;
-    text-shadow: 0 0 0 #000;
-  }
-
   // Due to the shadow overlay, the border needs to be transparent to avoid a light gray line divider
   &[aria-expanded='true'] {
     border-block-end-color: transparent;
+  }
+
+  .ds-c-dropdown--open & {
+    @include mixins.focus-styles;
   }
 }
 
@@ -51,7 +49,7 @@
   --clip-path-value: calc(-1 * var(--blur-radius));
   --max-height: 320px;
 
-  background-color: var(--autocomplete__background-color);
+  background-color: var(--color-background);
   border: var(--text-input__border-width) solid var(--text-input__border-color);
   border-block-start: none;
   border-end-end-radius: var(--text-input__border-radius);
@@ -71,7 +69,7 @@
 }
 
 .ds-c-dropdown__menu {
-  @include mixins.ds-unstyled-list;
+  @include mixins.unstyled-list;
   // Allows for keyboard navigation of dropdown options, i.e., scrolling through options via arrow keys
   max-height: calc(var(--max-height) - var(--text-input__border-width));
   overflow-y: auto;
@@ -88,17 +86,26 @@
   font-weight: var(--font-weight-bold);
 }
 
-.ds-c-dropdown__menu-item-group ul[role='presentation'] {
-  @include mixins.ds-unstyled-list;
+.ds-c-dropdown__menu-item-group ul[role='group'] {
+  @include mixins.unstyled-list;
 }
 
 .ds-c-dropdown__menu-item-group .ds-c-dropdown__menu-item {
-  padding-inline-start: var(--dropdown-option-group__padding);
+  // We should actually make this a multiple of text input padding probably
+  padding-inline-start: calc(var(--text-input__padding) + var(--spacer-2));
 }
 
 // Styles for dropdown elements that are highlighted
 .ds-c-dropdown__menu-item--highlighted {
   background-color: var(--color-primary-lightest);
+  outline: none;
+
+  @media (forced-colors: active) {
+    background-color: Highlight;
+    color: HighlightText;
+    forced-color-adjust: none;
+    -ms-high-contrast-adjust: none;
+  }
 }
 
 // Styles for dropdown elements that are selected
@@ -108,7 +115,7 @@
   display: flex; // Prevents text from wrapping under icon
   font-weight: var(--font-weight-bold);
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     background-color: WindowText;
     color: Window;
     forced-color-adjust: none;
@@ -119,7 +126,7 @@
 .ds-c-dropdown__menu-item-selected-indicator {
   padding-inline-end: var(--spacer-1);
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     .ds-c-icon path {
       fill: currentColor;
     }

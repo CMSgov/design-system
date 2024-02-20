@@ -5,21 +5,19 @@
     <title>Design System</title>
     <!-- In a real project this will contain a href link to your local CSS file, 
       while in this case we are using a CDN as an example -->
-    <link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/6.0.0/css/index.css" />
+    <link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/9.0.1/css/index.css" />
     <!-- In this case we're loading the core-theme styles which include all the CSS
       variables for the core CMSDS theme, a theme must be loaded for the styles to work -->
     <link
       rel="stylesheet"
-      href="https://design.cms.gov/cdn/design-system/6.0.0/css/core-theme.css"
+      href="https://design.cms.gov/cdn/design-system/9.0.1/css/core-theme.css"
     />
-    <link rel="stylesheet" href="style.css" />
   </head>
   <body class="ds-base ds-l-container">
-    <header class="ds-u-display--block">
-      <h1 class="ds-text-heading--5xl">Example 1: Article</h1>
-    </header>
-    <hr />
+    <h1 class="ds-text-heading--5xl">HTML/CSS example</h1>
 
+    <h2 class="ds-text-heading--4xl">Example 1: Article</h2>
+    <hr />
     <article class="ds-u-measure--wide ds-u-margin-y--5">
       <h1 class="ds-text-heading--3xl">How the U.S. Government Is&nbsp;Organized</h1>
 
@@ -167,7 +165,7 @@
         </li>
       </ul>
 
-      <h3 class="ds-h3">Judge/Justice Confirmation Process</h3>
+      <h3 class="ds-text-heading--2xl">Judge/Justice Confirmation Process</h3>
 
       <p class="ds-text">
         Appointments for Supreme Court justices and other federal judgeships follow the same basic
@@ -213,7 +211,7 @@
         </li>
       </ul>
 
-      <h3 class="ds-h3">Filibusters and the “Nuclear Option”</h3>
+      <h3 class="ds-text-heading--2xl">Filibusters and the “Nuclear Option”</h3>
 
       <p class="ds-text">
         Prior to November 2013, all federal judgeship nominations required 60 votes to reach cloture
@@ -234,80 +232,15 @@
       </p>
     </article>
 
-    <header class="ds-u-display--block">
-      <h1 class="ds-text-heading--5xl">Example 2: Form</h1>
-    </header>
+    <h2 class="ds-text-heading--4xl">Example 2: Responsive</h2>
     <hr />
-
-    <article class="ds-u-margin-y--5">
-      <h1 class="ds-text-heading--3xl">Report an issue</h1>
-      <p class="ds-text ds-u-measure--base">
-        Please fill out the fields below to report your issue. After you've reported an issue,
-        you'll receive a response within 24 hours.
-      </p>
-
-      <div class="ds-c-alert ds-c-alert--error">
-        <div class="ds-c-alert__body">
-          <h2 class="ds-c-alert__heading">1 error with your application</h2>
-          <p class="ds-c-alert__text">Please enter your last name.</p>
-        </div>
-      </div>
-
-      <form>
-        <label class="ds-c-label" for="input-firstname">First name</label>
-        <input class="ds-c-field" id="input-firstname" name="firstname" type="text" />
-
-        <label class="ds-c-label" for="input-lastname">
-          <strong>Last name</strong>
-
-          <span class="ds-c-field__hint ds-u-color--error" id="input-lastname-message" role="alert">
-            A last name is required
-          </span>
-        </label>
-        <input
-          class="ds-c-field ds-c-field--error"
-          id="input-lastname"
-          name="lastname"
-          type="text"
-        />
-
-        <label class="ds-c-label" for="input-description">Describe your issue</label>
-        <textarea class="ds-c-field" id="input-description" name="description" rows="6"></textarea>
-
-        <fieldset class="ds-c-fieldset">
-          <legend class="ds-c-label">Have you contacted us about this issue before?</legend>
-
-          <div class="ds-c-choice-wrapper">
-            <input class="ds-c-choice" id="input-yes" type="radio" name="duplicate" value="yes" />
-            <label class="ds-u-display--inline-block ds-u-margin-right--3" for="input-yes"
-              >Yes</label
-            >
-          </div>
-
-          <div class="ds-c-choice-wrapper">
-            <input class="ds-c-choice" id="input-no" type="radio" name="duplicate" value="no" />
-            <label class="ds-u-display--inline-block" for="input-no">No</label>
-          </div>
-        </fieldset>
-
-        <button class="ds-c-button ds-c-button--solid ds-u-margin-top--3" type="submit">
-          <span id="spinner" class="ds-c-spinner ds-u-display--none"></span>
-          Report issue
-        </button>
-        <a class="ds-c-button" href="#">Cancel</a>
-      </form>
-    </article>
-
-    <header class="ds-u-display--block">
-      <h1 class="ds-text-heading--5xl">Example 3: Responsive</h1>
-    </header>
-    <hr />
-
-    <article class="ds-u-border--1 ds-u-radius ds-u-padding--2 ds-u-md-padding--4">
+    <article class="ds-u-margin-y--3 ds-u-border--1 ds-u-radius ds-u-padding--2 ds-u-md-padding--4">
       <div class="ds-u-clearfix ds-u-margin-bottom--2">
         <img class="ds-u-float--left ds-u-margin-right--2" width="60" src="logo.svg" alt="Acme" />
         <div>
-          <h1 class="ds-u-margin-bottom--0 ds-h4 ds-u-md-font-size--h2">Acme Health Insurance</h1>
+          <h1 class="ds-u-margin-bottom--0 ds-text-heading--xl ds-u-md-font-size--h2">
+            Acme Health Insurance
+          </h1>
           <p class="ds-text ds-u-color--muted ds-u-margin-top--0 ds-u-leading--heading">
             Enrolled on 12/14/2019 - Covered until 12/31/2020
           </p>

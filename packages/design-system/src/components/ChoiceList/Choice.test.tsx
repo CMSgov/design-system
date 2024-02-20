@@ -8,6 +8,7 @@ const defaultProps = {
   value: 'boo',
   type: 'checkbox' as ChoiceType,
   label: 'George Washington',
+  id: 'static-id',
 };
 
 function renderChoice(customProps = {}) {
@@ -149,7 +150,7 @@ describe('Choice', () => {
       </div>
     );
 
-    const idRegex = new RegExp(`checkbox_${props.name}_[0-9]+`);
+    const idRegex = /choice--\d+/;
     const labels = container.querySelectorAll('label');
     const labelA = labels[0];
     const labelB = labels[1];
@@ -198,6 +199,62 @@ describe('Choice', () => {
     });
   });
 
+  describe('radio groups', () => {
+    it('uncontrolled radios uncheck when sibling checked', () => {
+      const commonProps = {
+        name: 'foo',
+        type: 'radio' as const,
+      };
+
+      render(
+        <>
+          <Choice {...commonProps} label="A" value="a" id="a" defaultChecked />
+          <Choice {...commonProps} label="B" value="b" id="b" />
+          <Choice {...commonProps} label="C" value="c" id="c" />
+        </>
+      );
+
+      const getRadio = (label: string) => screen.getByLabelText(label) as HTMLInputElement;
+
+      expect(getRadio('A').checked).toBe(true);
+      expect(getRadio('B').checked).toBe(false);
+      expect(getRadio('C').checked).toBe(false);
+
+      userEvent.click(getRadio('B'));
+
+      expect(getRadio('A').checked).toBe(false);
+      expect(getRadio('B').checked).toBe(true);
+      expect(getRadio('C').checked).toBe(false);
+    });
+
+    it('controlled radios do not uncheck when sibling checked', () => {
+      const commonProps = {
+        name: 'foo',
+        type: 'radio' as const,
+      };
+
+      render(
+        <>
+          <Choice {...commonProps} label="A" value="a" id="a" checked />
+          <Choice {...commonProps} label="B" value="b" id="b" checked={false} />
+          <Choice {...commonProps} label="C" value="c" id="c" checked={false} />
+        </>
+      );
+
+      const getRadio = (label: string) => screen.getByLabelText(label) as HTMLInputElement;
+
+      expect(getRadio('A').checked).toBe(true);
+      expect(getRadio('B').checked).toBe(false);
+      expect(getRadio('C').checked).toBe(false);
+
+      userEvent.click(getRadio('B'));
+
+      expect(getRadio('A').checked).toBe(true);
+      expect(getRadio('B').checked).toBe(false);
+      expect(getRadio('C').checked).toBe(false);
+    });
+  });
+
   describe('nested content', () => {
     const props = {
       checkedChildren: (
@@ -228,6 +285,27 @@ describe('Choice', () => {
       expect(asFragment()).toMatchSnapshot();
       expect(screen.getByTestId('checked').textContent).toBe('I am checked');
       expect(screen.queryByTestId('unchecked')).toBeNull();
+    });
+
+    it('applies correct aria attributes when checkedChildren is set', () => {
+      const { container } = renderChoice(props);
+      const root = container.firstChild;
+      expect(root).toHaveAttribute('aria-live', 'polite');
+      expect(root).toHaveAttribute('aria-relevant', 'additions text');
+      expect(root).toHaveAttribute('aria-atomic', 'false');
+    });
+
+    it('allows for modification of aria attributes', () => {
+      const { container } = renderChoice({
+        ...props,
+        'aria-live': 'off',
+        'aria-relevant': 'text',
+        'aria-atomic': 'true',
+      });
+      const root = container.firstChild;
+      expect(root).toHaveAttribute('aria-live', 'off');
+      expect(root).toHaveAttribute('aria-relevant', 'text');
+      expect(root).toHaveAttribute('aria-atomic', 'true');
     });
   });
 });

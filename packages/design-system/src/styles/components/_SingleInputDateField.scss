@@ -31,6 +31,7 @@
 
 .rdp {
   margin: 1em;
+  z-index: 1;
 }
 
 /* Hide elements for devices that are not screen readers */
@@ -365,7 +366,7 @@
   background-color: var(--rdp-active-color);
   color: white;
 }
-@media (-ms-high-contrast: active), (forced-colors: active) {
+@media (forced-colors: active) {
   .rdp-button[aria-disabled='true'] {
     border-color: GrayText;
     color: GrayText;
@@ -436,7 +437,7 @@
     color: var(--pagination-link__color--disabled);
     pointer-events: none;
 
-    @media (-ms-high-contrast: active), (forced-colors: active) {
+    @media (forced-colors: active) {
       border: 0;
       color: GrayText;
       cursor: not-allowed;
@@ -460,7 +461,7 @@
   position: relative;
 
   .rdp {
-    background-color: var(--color-background-dialog);
+    background-color: var(--color-background);
     border: 1px solid var(--color-gray-dark);
     border-radius: 8px;
     box-shadow: 0 0 17px 0 var(--color-gray-light);
@@ -501,7 +502,11 @@
   }
 
   .ds-c-field {
-    max-width: 108px;
+    max-width: 12ch;
+    padding: var(
+      --datefield__padding,
+      0.5em
+    ); // override the padding from the field component to use relative sizing
   }
 
   .ds-c-single-input-date-field__button {

@@ -34,7 +34,7 @@
     }
   }
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     border: 1px solid windowText;
     border-inline-start: var(--alert-bar__width) solid windowText;
   }
@@ -47,7 +47,7 @@
 .ds-c-alert__a11y-label {
   margin-inline-end: 0.5rem;
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     /* stylelint-disable declaration-no-important -- needed to overwrite screen reader utility styles */
     border: none !important;
     clip: auto !important;
@@ -66,13 +66,18 @@
   display: flex;
 }
 
-.ds-c-alert__icon {
+.ds-c-alert__icon.ds-c-icon {
   flex-shrink: 0;
-  font-size: var(--font-size-lg);
+  font-size: var(--alert__icon-size);
+  // Make height and width directly relative to the font size so the alert icon-size
+  // variable can be used accurately in Figma too.
+  height: 1em;
   margin-inline-start: $spacer-1;
+  width: 1em;
 }
 
 .ds-c-alert__body {
+  min-width: 0; // Allows it to shrink as necessary to fit in the parent
   padding-inline-start: $spacer-2;
 }
 

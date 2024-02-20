@@ -3,7 +3,7 @@
  */
 import { to, SpacerTokens } from '../lib/types';
 
-const spacer = to<SpacerTokens>()({
+export const spacer = to<SpacerTokens>()({
   none: '0px',
   half: '4px',
   1: '8px',
@@ -15,4 +15,3 @@ const spacer = to<SpacerTokens>()({
   7: '56px',
 });
 
-export default spacer;

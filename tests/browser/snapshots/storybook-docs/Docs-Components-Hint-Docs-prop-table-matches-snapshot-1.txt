@@ -1,0 +1,27 @@
+[
+  [
+    "children",
+    "Hint text or HTML\nReactNode",
+    "-"
+  ],
+  [
+    "className",
+    "Additional classes to be added to the root element.\nstring",
+    "-"
+  ],
+  [
+    "id*",
+    "The ID of the hint element. This is required in order to link the element to a field input via aria-describedby\n\nstring",
+    "-"
+  ],
+  [
+    "inversed",
+    "Set to true to apply the \"inverse\" theme\nboolean",
+    "-"
+  ],
+  [
+    "requirementLabel",
+    "Text showing the requirement (ie. \"Optional\", or \"Required\"). In most cases, this should be used to indicate which fields are optional. See the form guidelines for more info.\n\nReactNode",
+    "-"
+  ]
+]

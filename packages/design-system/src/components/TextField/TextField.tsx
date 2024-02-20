@@ -3,7 +3,13 @@ import LabelMask from './LabelMask';
 import Mask from './Mask';
 import TextInput from './TextInput';
 import classNames from 'classnames';
-import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
+import cleanFieldProps from '../utilities/cleanFieldProps';
+import describeField from '../utilities/describeField';
+import useId from '../utilities/useId';
+import { Label } from '../Label';
+import { useLabelProps, UseLabelPropsProps } from '../Label/useLabelProps';
+import { useHint, UseHintProps } from '../Hint/useHint';
+import { useInlineError, UseInlineErrorProps } from '../InlineError/useInlineError';
 
 export type TextFieldDefaultValue = string | number;
 export type TextFieldMask = 'currency' | 'phone' | 'ssn' | 'zip';
@@ -11,12 +17,20 @@ export type TextFieldRows = number | string;
 export type TextFieldSize = 'small' | 'medium';
 export type TextFieldValue = string | number;
 
-export interface BaseTextFieldProps extends Omit<FormFieldProps, 'id'> {
+interface BaseTextFieldProps {
   /**
    * Apply an `aria-label` to the text field to provide additional
    * context to assistive devices.
    */
   ariaLabel?: string;
+  /*
+   * Sets the focus on the select during the first mount
+   */
+  autoFocus?: boolean;
+  /**
+   * Additional classes to be added to the root element.
+   */
+  className?: string;
   /**
    * Sets the initial value. Use this for an uncontrolled component; otherwise,
    * use the `value` property.
@@ -24,10 +38,6 @@ export interface BaseTextFieldProps extends Omit<FormFieldProps, 'id'> {
   defaultValue?: TextFieldDefaultValue;
   disabled?: boolean;
   fieldClassName?: string;
-  /*
-   * Sets the focus on the select during the first mount
-   */
-  autoFocus?: boolean;
   /**
    * A unique `id` to be used on the text field.
    */
@@ -37,11 +47,7 @@ export interface BaseTextFieldProps extends Omit<FormFieldProps, 'id'> {
    */
   inputRef?: (...args: any[]) => any;
   /**
-   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
-   */
-  requirementLabel?: React.ReactNode;
-  /**
-   * Applies the "inverse" UI theme
+   * Set to `true` to apply the "inverse" color scheme
    */
   inversed?: boolean;
   /**
@@ -93,14 +99,16 @@ export interface BaseTextFieldProps extends Omit<FormFieldProps, 'id'> {
 }
 
 export type TextFieldProps = BaseTextFieldProps &
-  Omit<React.ComponentPropsWithRef<'input'>, keyof BaseTextFieldProps>;
+  Omit<React.ComponentPropsWithRef<'input'>, keyof BaseTextFieldProps> &
+  Omit<UseLabelPropsProps & UseHintProps & UseInlineErrorProps, 'id' | 'inversed'>;
 
 /**
  * For information about how and when to use this component,
  * [refer to its full documentation page](https://design.cms.gov/components/text-field/).
  */
 export const TextField: React.FC<TextFieldProps> = (props: TextFieldProps) => {
-  const { mask, labelMask, ...textFieldProps } = props;
+  const { id: originalId, mask, labelMask, className, ...remainingProps } = props;
+  const id = useId('text-field--', originalId);
 
   if (process.env.NODE_ENV !== 'production') {
     if (props.type === 'number') {
@@ -108,33 +116,47 @@ export const TextField: React.FC<TextFieldProps> = (props: TextFieldProps) => {
         `Please use the 'numeric' prop instead of 'type="number"' unless your user research suggests otherwise.`
       );
     }
+
+    if (mask && labelMask) {
+      console.warn(
+        "The 'mask' and 'labelMask' fields are mutually exclusive. Please use either one or the other."
+      );
+    }
   }
 
-  const { labelProps, fieldProps, wrapperProps, bottomError } = useFormLabel({
-    ...textFieldProps,
-    labelComponent: 'label',
-    wrapperIsFieldset: false,
-  });
+  const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
+  const { hintId, hintElement } = useHint({ ...props, id });
+  const labelProps = useLabelProps({ ...props, id });
 
-  wrapperProps.className = classNames(
-    'ds-u-clearfix', // fixes issue where the label's margin is collapsed
-    wrapperProps.className
-  );
-
-  const input = (
+  let input = (
     <TextInput
-      type={TextField.defaultProps.type} // Appeases TypeScript
-      inversed={props.inversed}
-      {...fieldProps}
+      // TypeScript doesn't know we set this in .defaultProps
+      type={TextField.defaultProps.type}
+      {...cleanFieldProps(remainingProps)}
+      id={id}
+      aria-invalid={invalid}
+      aria-describedby={describeField({ ...props, errorId, hintId })}
     />
   );
 
+  // See if we need to wrap the input based on some props
+  if (mask) {
+    input = <Mask mask={mask}>{input}</Mask>;
+  } else if (labelMask) {
+    input = <LabelMask labelMask={labelMask}>{input}</LabelMask>;
+  }
+
   return (
-    <div {...wrapperProps}>
-      <FormLabel {...labelProps} />
-      {mask && <Mask mask={mask}>{input}</Mask>}
-      {labelMask && <LabelMask labelMask={labelMask}>{input}</LabelMask>}
-      {!mask && !labelMask && input}
+    <div
+      className={classNames(
+        'ds-u-clearfix', // fixes issue where the label's margin is collapsed
+        className
+      )}
+    >
+      <Label {...labelProps} fieldId={id} />
+      {hintElement}
+      {topError}
+      {input}
       {bottomError}
     </div>
   );

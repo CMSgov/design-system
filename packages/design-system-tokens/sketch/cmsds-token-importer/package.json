@@ -15,7 +15,7 @@
     "sketch-assets-file": "sketch-assets/icons.sketch"
   },
   "scripts": {
-    "build": "skpm-build",
+    "build": "yarn --cwd ../../ build themes json && skpm-build",
     "watch": "skpm-build --watch",
     "start": "skpm-build --watch --run",
     "postinstall": "npm run build && skpm-link"

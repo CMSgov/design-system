@@ -3,12 +3,13 @@ import { useState } from 'react';
 import VerticalNav from './VerticalNav';
 import VerticalNavItemLabel from './VerticalNavItemLabel';
 import classNames from 'classnames';
-import uniqueId from 'lodash/uniqueId';
+import useId from '../utilities/useId';
 
 export type VerticalNavItemComponent = React.ReactElement<any> | any | ((...args: any[]) => any);
 
 export interface VerticalNavItemProps {
   /**
+   * Internal prop passed from the parent VerticalNav
    * @hide-prop This gets passed through from the parent VerticalNav to a nested VerticalNav
    */
   _selectedId?: string;
@@ -70,8 +71,8 @@ export interface VerticalNavItemProps {
 }
 
 export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement => {
-  const id = props.id || uniqueId('VerticalNavItem_');
-  const subnavId = `${id}__subnav`;
+  const rootId = useId('vertical-nav-item--', props.id);
+  const subnavId = `${rootId}__subnav`;
 
   const [collapsed, setCollapsed] = useState(props.defaultCollapsed);
 
@@ -81,7 +82,7 @@ export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement
    */
   const handleClick = (evt: React.MouseEvent | React.KeyboardEvent): void => {
     if (props.onClick) {
-      props.onClick(evt, id, props.url);
+      props.onClick(evt, rootId, props.url);
     }
   };
 
@@ -89,7 +90,7 @@ export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement
     setCollapsed(!collapsed);
 
     if (props.onSubnavToggle) {
-      props.onSubnavToggle(id, collapsed);
+      props.onSubnavToggle(rootId, collapsed);
     }
   };
 

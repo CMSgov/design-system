@@ -3,6 +3,7 @@ import React, { MutableRefObject } from 'react';
 import TextField from '../TextField/TextField';
 import classNames from 'classnames';
 import { t } from '../i18n';
+import uniqueId from 'lodash/uniqueId';
 
 export type DateInputDayDefaultValue = string | number;
 export type DateInputDayValue = string | number;
@@ -36,9 +37,9 @@ export interface DateInputProps {
    */
   inversed?: boolean;
   /**
-   * A unique ID applied to the DateField label.
+   * A unique ID prefix for all the text fields
    */
-  labelId: string;
+  id?: string;
   /**
    * Called anytime any date input is blurred
    */
@@ -138,8 +139,10 @@ export class DateInput extends React.PureComponent<DateInputProps> {
     super(props);
     this.handleBlur = this.handleBlur.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.id = props.id ?? uniqueId('date-input--');
   }
 
+  id: string;
   monthInput: any;
   dayInput: any;
   yearInput: any;
@@ -207,6 +210,7 @@ export class DateInput extends React.PureComponent<DateInputProps> {
         fieldClassName={classNames(`ds-c-field--${type}`, {
           'ds-c-field--error': this.props[`${type}Invalid`],
         })}
+        id={`${this.id}__${type}`}
         inputRef={(el) => {
           this[`${type}Input`] = el;
           const ref = this.props[`${type}FieldRef`];
@@ -217,7 +221,6 @@ export class DateInput extends React.PureComponent<DateInputProps> {
           }
         }}
         autoComplete={this.props.autoComplete && `bday-${type}`}
-        aria-describedby={this.props.labelId}
         aria-invalid={this.props[`${type}Invalid`]}
       />
     );

@@ -1,4 +1,3 @@
-import React from 'react';
 import Spinner from './Spinner';
 import type { Meta, StoryObj } from '@storybook/react';
 

@@ -6,6 +6,8 @@
 @use 'font';
 @use 'mixins';
 @use 'base';
+@use 'set-for-deprecation';
+@use 'web-components';
 
 /**
  * Utilities
@@ -44,11 +46,14 @@
 @use 'components/Badge';
 @use 'components/Button';
 @use 'components/ChoiceList';
+@use 'components/CloseButton';
 @use 'components/Dialog';
 @use 'components/Drawer';
 @use 'components/Dropdown';
 @use 'components/FilterChip';
-@use 'components/FormLabel';
+@use 'components/Hint';
+@use 'components/InlineError';
+@use 'components/Label';
 @use 'components/List';
 @use 'components/MonthPicker';
 @use 'components/Pagination';

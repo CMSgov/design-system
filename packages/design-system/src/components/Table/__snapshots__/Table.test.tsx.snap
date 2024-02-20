@@ -1,9 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Table accepts custom id 1`] = `
+<div
+  aria-labelledby="static-id"
+  aria-live="polite"
+  aria-relevant="additions"
+  class="ds-c-table__wrapper"
+  role="region"
+>
+  <table
+    class="ds-c-table"
+  >
+    <caption
+      class="ds-c-table__caption"
+      id="static-id"
+    >
+      A great caption
+    </caption>
+  </table>
+</div>
+`;
+
 exports[`Table applies responsive stacked table 1`] = `
 <table
   class="ds-c-table ds-c-lg-table--stacked"
-  role="table"
 >
   <caption
     class="ds-c-table__caption"
@@ -15,7 +35,7 @@ exports[`Table applies responsive stacked table 1`] = `
 
 exports[`Table applies scrollable prop to table 1`] = `
 <div
-  aria-labelledby="caption-8"
+  aria-labelledby="static-id"
   aria-live="polite"
   aria-relevant="additions"
   class="ds-c-table__wrapper"
@@ -23,11 +43,10 @@ exports[`Table applies scrollable prop to table 1`] = `
 >
   <table
     class="ds-c-table"
-    role="table"
   >
     <caption
       class="ds-c-table__caption"
-      id="caption-8"
+      id="static-id"
     >
       A great caption
     </caption>

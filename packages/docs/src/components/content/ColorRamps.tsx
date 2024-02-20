@@ -1,5 +1,5 @@
 import React from 'react';
-import colorTokens from 'design-system-tokens/src/tokens/color';
+import { color as colorTokens } from 'design-system-tokens/src/tokens/color';
 import ColorExampleRow from './ColorExampleRow';
 
 interface SwatchColor {

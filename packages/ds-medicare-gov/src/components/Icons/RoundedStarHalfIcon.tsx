@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import uniqueId from 'lodash/uniqueId';
+import { useId } from '@cmsgov/design-system';
 import { SvgIcon } from '@cmsgov/design-system';
 import { IconCommonProps } from '@cmsgov/design-system';
 
@@ -10,11 +10,12 @@ const defaultProps = {
 };
 
 const RoundedStarHalfIcon = (props: IconCommonProps) => {
-  const clipPath1 = uniqueId('clip_path_');
-  const clipPath2 = uniqueId('clip_path_');
-  const clipPath3 = uniqueId('clip_path_');
-  const filterId = uniqueId('star_filter_');
-  const maskId = uniqueId('star_mask_');
+  const rootId = useId('icon-half-star--', props.id);
+  const clipPath1 = `${rootId}__clip-path-1`;
+  const clipPath2 = `${rootId}__clip-path-2`;
+  const clipPath3 = `${rootId}__clip-path-3`;
+  const filterId = `${rootId}__filter`;
+  const maskId = `${rootId}__mask`;
 
   const iconCssClasses = classNames(
     'ds-c-icon--rounded-star',

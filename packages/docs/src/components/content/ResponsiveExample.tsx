@@ -1,5 +1,4 @@
-import React, { useLayoutEffect } from 'react';
-import { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { withPrefix } from 'gatsby';
 import classnames from 'classnames';
 import StorybookExampleFooter from './StorybookExampleFooter';
@@ -110,7 +109,7 @@ const ResponsiveExample = ({ storyId, title, theme }: ResponsiveExample) => {
                 onClick={() => setIframeBreakpoint(breakpointName)}
               >
                 <strong>{breakpointName}</strong>
-                <div className="ds-u-font-size--small">Width: {breakpoints[breakpointName]}</div>
+                <div className="ds-u-font-size--sm">Width: {breakpoints[breakpointName]}</div>
               </button>
             </li>
           ))}

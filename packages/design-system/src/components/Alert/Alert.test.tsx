@@ -1,7 +1,7 @@
 import React from 'react';
 import Alert, { AlertProps } from './Alert';
 import { UtagContainer } from '../analytics';
-import { setAlertSendsAnalytics } from '../flags';
+import { config } from '../config';
 import { render, screen } from '@testing-library/react';
 
 const defaultText = 'Ruhroh';
@@ -17,12 +17,9 @@ function expectHasClass(className: string) {
 
 describe('Alert', function () {
   it('renders alert', () => {
-    renderAlert();
+    renderAlert({ id: 'static-id' });
     const alert = screen.getByRole('region');
-    expect(alert.className).toContain('ds-c-alert');
-
-    const body = screen.getByText(defaultText);
-    expect(body).toBeDefined();
+    expect(alert).toMatchSnapshot();
   });
 
   it('renders a heading', () => {
@@ -45,8 +42,7 @@ describe('Alert', function () {
     const className = 'ds-u-test';
     const role = 'alert';
     renderAlert({ className, role });
-    const alert = screen.getByRole(role);
-    expect(alert.className).toContain(className);
+    expect(screen.getByRole(role).className).toContain(className);
   });
 
   it('renders HTML children', () => {
@@ -122,7 +118,7 @@ describe('Alert', function () {
     let tealiumMock;
 
     beforeEach(() => {
-      setAlertSendsAnalytics(true);
+      config({ alertSendsAnalytics: true });
       tealiumMock = jest.fn();
       (window as any as UtagContainer).utag = {
         link: tealiumMock,
@@ -130,7 +126,7 @@ describe('Alert', function () {
     });
 
     afterEach(() => {
-      setAlertSendsAnalytics(false);
+      config({ alertSendsAnalytics: false });
       jest.resetAllMocks();
     });
 
@@ -158,7 +154,7 @@ describe('Alert', function () {
     });
 
     it('setting analytics to true overrides flag value', () => {
-      setAlertSendsAnalytics(false);
+      config({ alertSendsAnalytics: false });
       renderAlert({ heading: 'dialog heading', variation: 'error', analytics: true });
       expect(tealiumMock).toHaveBeenCalled();
     });

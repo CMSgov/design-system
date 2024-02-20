@@ -1,54 +1,39 @@
 import sketch from 'sketch';
 import dialog from '@skpm/dialog';
-import { readFileSync } from '@skpm/fs';
+import themes from '../../../../../themes.json';
+import coreTheme from '../../../dist/core.tokens.json';
+import coreComponents from '../../../dist/core-component.tokens.json';
+import healthcareTheme from '../../../dist/healthcare.tokens.json';
+import healthcareComponents from '../../../dist/healthcare-component.tokens.json';
+import medicareTheme from '../../../dist/medicare.tokens.json';
+import medicareComponents from '../../../dist/medicare-component.tokens.json';
+import cmsgovTheme from '../../../dist/cmsgov.tokens.json';
+import cmsgovComponents from '../../../dist/cmsgov-component.tokens.json';
+import { updateSwatchesFromTheme } from './color';
+import { updateTextStylesFromTheme } from './text';
 
-/*
- * Split tokens into groups based on root name and store in category,
- * based on first word before '-'. Allows keys with up to 4 dash separators.
- *
- * @param colorTokens - An object which contains color name:value pairs
- * @returns An array of Swatch objects created by the Sketch API
- */
-const makeColorSwatches = (colorTokens) => {
-  const swatches = [];
-  for (const [key, value] of Object.entries(colorTokens)) {
-    let colorName = key.match(/(^[A-Za-z]*)-?[A-Za-z\d]*?-?[A-Za-z\d]*?-?[A-Za-z\d]*?$/);
-    colorName = colorName === null ? (colorName = '') : colorName[1] + '/';
-    let currentSwatch = sketch.Swatch.from({
-      name: `${colorName}/${key}`,
-      color: value,
-    });
-    swatches.push(currentSwatch);
-  }
-  return swatches;
+const tokensByTheme = {
+  core: { ...coreTheme, components: coreComponents },
+  healthcare: { ...healthcareTheme, components: healthcareComponents },
+  medicare: { ...medicareTheme, components: medicareComponents },
+  cmsgov: { ...cmsgovTheme, components: cmsgovComponents },
 };
 
 export default function () {
-  let tokenData = {};
-
-  const jsonFile = dialog.showOpenDialogSync({
-    message: 'Must be a CMSDS valid JSON Token file.',
-    buttonLabel: 'Import',
-    filters: [{ name: 'Json Data', extensions: ['json', 'tokens', 'tokens.json'] }],
-    properties: ['openFile'],
+  const themeNames = Object.values(themes).map((theme) => theme.displayName);
+  const themeIndex = dialog.showMessageBoxSync({
+    title: 'Switch theme',
+    message: 'Which theme?',
+    buttons: themeNames,
   });
 
-  if (jsonFile) {
-    try {
-      const importedFile = readFileSync(jsonFile[0]);
-      tokenData = JSON.parse(importedFile);
-    } catch (err) {
-      console.error(err);
-    }
-  } else {
-    sketch.UI.alert('Importing Error', 'Could not open selected file.');
-  }
+  const themeKey = Object.keys(themes)[themeIndex];
+  const themeName = themes[themeKey].displayName;
+  const themeTokens = tokensByTheme[themeKey];
 
   const doc = sketch.getSelectedDocument();
-  doc.swatches = [];
+  updateSwatchesFromTheme(doc, themeTokens);
+  updateTextStylesFromTheme(doc, themeTokens);
 
-  const colorSwatches = makeColorSwatches(tokenData.color);
-  colorSwatches.forEach((swatch) => {
-    doc.swatches.push(swatch);
-  });
+  sketch.UI.message(`Switched to ${themeName}`);
 }

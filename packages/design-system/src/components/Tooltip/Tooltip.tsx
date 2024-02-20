@@ -1,21 +1,16 @@
 import React from 'react';
-// Polyfills required for IE11 compatibility
-// Features used by app or its dependencies (i.e. @popperjs/core in Tooltip)
-import 'core-js/stable/object/assign';
-import 'core-js/stable/array/find';
-import 'core-js/features/promise';
 // TODO: Update react-transition-group once we update react peer dep
 import CSSTransition from 'react-transition-group/CSSTransition';
 import FocusTrap from 'focus-trap-react';
 import { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import classNames from 'classnames';
 import { createPopper, Placement } from '@popperjs/core';
-import uniqueId from 'lodash/uniqueId';
+import useId from '../utilities/useId';
 import { Button } from '../Button';
 import { CloseIconThin } from '../Icons';
 import usePrevious from '../utilities/usePrevious';
 
-export interface TooltipProps {
+export interface BaseTooltipProps {
   /**
    * Classes applied to the tooltip trigger when the tooltip is active
    */
@@ -96,6 +91,25 @@ export interface TooltipProps {
   zIndex?: number;
 }
 
+// Similarly to the Button component, we want to expand the props type definition to
+// permit pass-through props for the most commonly used underlying components.
+// However, unlike in Button, we have not removed the ability for applications to
+// define a custom `component` prop, which means there are theoretically props
+// specific to that component type which will not be available in the TooltipProps
+// definition. The strategy here is to keep the types simple by including just the
+// possible attributes of button and anchor, but it comes at the expense of accuracy.
+// If applications have extra props for their custom components, they will need to
+// tell TypeScript to ignore those props for now. We'd like to revisit Tooltip in
+// the future and improve it.
+type OtherProps = Omit<
+  // All other props that could be passed to buttons or anchors
+  React.ComponentPropsWithRef<'button'> & React.ComponentPropsWithRef<'a'>,
+  // Omit any properties that we're defining on our own `BaseTooltipProps`
+  keyof BaseTooltipProps
+>;
+
+export type TooltipProps = BaseTooltipProps & OtherProps;
+
 /**
  * Tooltips provide additional information upon hover, focus or click.
  * For information about how and when to use this component,
@@ -107,7 +121,7 @@ export interface TooltipProps {
  */
 export const Tooltip = (props: TooltipProps) => {
   const popper = useRef(null);
-  const id = useRef(props.id ?? uniqueId('trigger_'));
+  const contentId = useId('tooltip-trigger--', props.id);
   const triggerElement = useRef(null);
   const tooltipElement = useRef(null);
 
@@ -212,6 +226,7 @@ export const Tooltip = (props: TooltipProps) => {
       className,
       component,
       dialog,
+      id,
       offset,
       onClose,
       onOpen,
@@ -260,7 +275,7 @@ export const Tooltip = (props: TooltipProps) => {
       <TriggerComponent
         type={TriggerComponent === 'button' ? 'button' : undefined}
         aria-label={ariaLabel || undefined}
-        aria-describedby={dialog ? undefined : id.current}
+        aria-describedby={dialog ? undefined : contentId}
         className={triggerClasses}
         ref={setTriggerElement}
         {...others}
@@ -298,7 +313,7 @@ export const Tooltip = (props: TooltipProps) => {
 
     const tooltipContent = (
       <div
-        id={id.current}
+        id={contentId}
         tabIndex={dialog ? -1 : null}
         ref={setTooltipElement}
         className={classNames('ds-c-tooltip', { 'ds-c-tooltip--inverse': inversed })}
@@ -344,8 +359,8 @@ export const Tooltip = (props: TooltipProps) => {
           <FocusTrap
             active={active}
             focusTrapOptions={{
-              fallbackFocus: () => document.getElementById(`${id.current}`).parentElement,
-              initialFocus: () => document.getElementById(`${id.current}`),
+              fallbackFocus: () => document.getElementById(`${contentId}`).parentElement,
+              initialFocus: () => document.getElementById(`${contentId}`),
               clickOutsideDeactivates: true,
             }}
           >

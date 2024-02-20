@@ -33,6 +33,10 @@ module.exports = {
         'include',
         // TODO: At some point we will be switching from 'import' to 'use'
         'import',
+        // SCSS at-rules
+        'forward',
+        'container',
+        'each',
       ],
       { severity: 'warning' },
     ],

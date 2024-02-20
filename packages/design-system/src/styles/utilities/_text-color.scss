@@ -60,6 +60,10 @@
   color: var(--color-gray-light) !important;
 }
 
+.ds-u-color--gray-dark:not(:focus) {
+  color: var(--color-gray-dark) !important;
+}
+
 .ds-u-color--muted:not(:focus) {
   color: var(--color-muted) !important;
 }

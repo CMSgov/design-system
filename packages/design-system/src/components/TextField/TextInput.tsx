@@ -6,7 +6,6 @@ export type TextInputDefaultValue = string | number;
 export type TextInputRows = number | string;
 export type TextInputSize = 'small' | 'medium';
 export type TextInputValue = string | number;
-export type TextInputErrorPlacement = 'top' | 'bottom';
 
 export type OmitProps = 'size' | 'ref';
 
@@ -22,15 +21,6 @@ export type TextInputProps = Omit<React.ComponentPropsWithoutRef<'input'>, OmitP
    */
   defaultValue?: TextInputDefaultValue;
   disabled?: boolean;
-  /**
-   * The ID of the error message applied to the Select field.
-   */
-  errorId?: string;
-  errorMessage?: React.ReactNode;
-  /**
-   * Location of the error message relative to the field input
-   */
-  errorPlacement?: TextInputErrorPlacement;
   /**
    * Additional classes to be added to the field element
    */
@@ -92,9 +82,6 @@ export type SingleLineTextInputProps = TextInputProps;
 const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => {
   const {
     ariaLabel,
-    errorId,
-    errorMessage,
-    errorPlacement,
     fieldClassName,
     inversed,
     multiline,
@@ -111,7 +98,7 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
   const classes = classNames(
     'ds-c-field',
     {
-      'ds-c-field--error': errorMessage,
+      'ds-c-field--error': props['aria-invalid'],
       'ds-c-field--inverse': inversed,
     },
     size && `ds-c-field--${size}`,
@@ -139,18 +126,8 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
       // @ts-ignore: The ClipboardEventHandler for textareas and inputs are incompatible, and TS
       // is failing to infer which one is being used here based on ComponentType.
       onCopyCapture={onCopyCapture}
-      // This can be purposefully overwritten by an 'aria-invalid' defined in inputProps
-      aria-invalid={!!errorMessage}
       {...inputProps}
       aria-label={ariaLabel || props['aria-label']}
-      // Link input to bottom placed error message
-      // Use of the classNames function for this is confusing
-      aria-describedby={
-        classNames(
-          props['aria-describedby'],
-          errorPlacement === 'bottom' && errorMessage && errorId
-        ) || undefined
-      }
     />
   );
 };

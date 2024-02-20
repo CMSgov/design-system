@@ -1,6 +1,6 @@
 import React from 'react';
 
-export interface TableHeadProps {
+interface BaseTableHeadProps {
   /**
    * The table head contents, usually `TableRow`.
    */
@@ -9,9 +9,10 @@ export interface TableHeadProps {
 
 type OmitProps = 'children';
 
-export const TableHead: React.FC<
-  Omit<React.ComponentPropsWithoutRef<'thead'>, OmitProps> & TableHeadProps
-> = ({ children, ...tableHeadProps }: TableHeadProps) => {
+export type TableHeadProps = Omit<React.ComponentPropsWithoutRef<'thead'>, OmitProps> &
+  BaseTableHeadProps;
+
+export const TableHead = ({ children, ...tableHeadProps }: TableHeadProps) => {
   const renderChildren = () => {
     return React.Children.map(children, (child: React.ReactElement) => {
       // Extend props before rendering.

@@ -1,0 +1,74 @@
+---
+title: Label & Legend
+intro: Labels & legends describe individual form fields or fieldsets.
+core:
+  githubLink: design-system/src/components/Label
+  storybookLink: components-label--docs
+---
+
+## Examples
+
+<StorybookExample
+  componentName="formLabel"
+  sourceFilePath="components/Label/Label.tsx"
+  storyId="components-label--default"
+/>
+
+## Code
+
+### React
+
+<SeeStorybookForGuidance storyId={'components-label--docs'} />
+
+### Style customization
+
+The following CSS variables can be overridden to customize Form components:
+
+<ComponentThemeOptions componentname="form" />
+
+## Guidance
+
+- Labels/Legends are built in to all design-system form fields but can be used on their own to create custom fields.
+- Label/Legend text should be short and in sentence case.
+- Avoid colons at the end of labels and legends.
+- Don't place links or other interactive text in labels or legends. Those should go in the [hint text](/components/hint).
+- Don't use a field's placeholder attribute as the primary way to label the field.
+
+### Label
+
+- Each form field should have a clear, brief, and descriptive label.
+- Labels should have a `for` attribute, referencing the corresponding input's unique `id` attribute. Only one label can be associated to each unique form element.
+- Labels should be placed above their fields.
+
+### Legend
+
+- Use a single legend for fieldset (this is required). One example of a common use of fieldset and legend is a question with radio button options for answers. The question text and radio buttons are wrapped in a fieldset, with the question itself being inside the legend tag.
+
+### Content
+
+- Describe what the user needs to do when the field is selected.
+- Use a phrase or complete sentence.
+- Start with an action verb and pair it with a noun to help it be clearer. Example: `Enter your age.`
+- Use the fewest words possible (i.e. don't use "please").
+- Use sentence case.
+
+## Learn More
+
+- [Form Guidelines](/patterns/Forms/forms/)
+
+## Component maturity
+
+<MaturityChecklist
+  a11yStandards={true}
+  color={true}
+  forcedColors={true}
+  screenReaders={true}
+  keyboardNavigable={null}
+  storybook={true}
+  responsive={true}
+  spanish={true}
+  completeUiKit={false}
+  responsiveUiKit={false}
+  tokensInCode={true}
+  tokensInSketch={true}
+/>

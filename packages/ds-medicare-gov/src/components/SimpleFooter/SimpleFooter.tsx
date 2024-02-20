@@ -76,7 +76,7 @@ const SimpleFooter: FunctionComponent<SimpleFooterProps> = ({
           {privacySettingLabel}
         </Button>
         <span aria-hidden="true" className="m-c-footer__delimiter" />
-        <a href="https://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/index.html">
+        <a href="https://www.cms.gov/about-cms/information-systems/privacy/linking-outside-websites">
           {linkingPolicyLabel}
         </a>
         <span aria-hidden="true" className="m-c-footer__delimiter" />

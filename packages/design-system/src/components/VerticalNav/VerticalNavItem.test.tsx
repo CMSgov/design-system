@@ -130,7 +130,7 @@ describe('VerticalNavItem', () => {
 
     beforeEach(() => {
       props = {
-        id: 'mock-nav',
+        id: 'static-id',
         items: [
           { label: 'Child 1' },
           { label: 'Child 2' },
@@ -146,10 +146,10 @@ describe('VerticalNavItem', () => {
       renderVerticalNavItem(props);
 
       const labelEl = screen.getByText('Foo');
-      expect(labelEl.getAttribute('aria-controls')).toBe('mock-nav__subnav');
+      expect(labelEl.getAttribute('aria-controls')).toBe('static-id__subnav');
 
       const subNavEl = screen.getAllByRole('list')[0];
-      expect(subNavEl.id).toEqual('mock-nav__subnav');
+      expect(subNavEl.id).toEqual('static-id__subnav');
       expect(subNavEl.classList).toContain('ds-c-vertical-nav__subnav');
       expect(subNavEl.classList).not.toContain('ds-c-vertical-nav__collapsed');
     });

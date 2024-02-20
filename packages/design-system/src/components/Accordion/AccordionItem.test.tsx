@@ -6,6 +6,7 @@ import userEvent from '@testing-library/user-event';
 const defaultChildren = '<p>Content for accordion item</p>';
 const defaultProps = {
   heading: 'Heading for accordion item',
+  id: 'static-id',
 };
 
 function renderAccordionItem(customProps = {}) {
@@ -59,14 +60,14 @@ describe('AccordionItem', function () {
   });
 
   it('renders an id automatically', () => {
-    renderAccordionItem();
+    renderAccordionItem({ heading: defaultProps.heading });
 
     const buttonEl = screen.getByRole('button');
     const contentEl = screen.getByText(defaultChildren);
 
-    expect(buttonEl).toHaveAttribute('aria-controls');
+    expect(buttonEl).toHaveAttribute('aria-controls', contentEl.id);
     expect(buttonEl).toHaveAttribute('id');
-    expect(contentEl).toHaveAttribute('aria-labelledby');
+    expect(contentEl).toHaveAttribute('aria-labelledby', buttonEl.id);
     expect(contentEl).toHaveAttribute('id');
   });
 
@@ -77,8 +78,8 @@ describe('AccordionItem', function () {
     const contentEl = screen.getByText(defaultChildren);
 
     expect(buttonEl).toHaveAttribute('aria-controls', 'test-id');
-    expect(buttonEl).toHaveAttribute('id', 'test-id-button');
-    expect(contentEl).toHaveAttribute('aria-labelledby', 'test-id-button');
+    expect(buttonEl).toHaveAttribute('id', 'test-id__button');
+    expect(contentEl).toHaveAttribute('aria-labelledby', 'test-id__button');
     expect(contentEl).toHaveAttribute('id', 'test-id');
   });
 

@@ -1,33 +1,50 @@
-import React, { useMemo, useRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
+import DropdownMenu from './DropdownMenu';
+import debounce from '../utilities/debounce';
+import describeField from '../utilities/describeField';
 import classNames from 'classnames';
+import cleanFieldProps from '../utilities/cleanFieldProps';
 import mergeRefs from '../utilities/mergeRefs';
+import useClickOutsideHandler from '../utilities/useClickOutsideHandler';
+import useId from '../utilities/useId';
 import useAutofocus from '../utilities/useAutoFocus';
-import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
+import { Label } from '../Label';
 import { SvgIcon } from '../Icons';
-import { useSelect, UseSelectProps, UseSelectStateChangeOptions } from 'downshift';
-import { isOptGroup, parseChildren, validateProps } from './utils';
-import { uniqueId } from 'lodash';
-import useHighlightStatusMessageFn from './useHighlightStatusMessageFn';
+import { getFirstOptionValue, isOptGroup, parseChildren, validateProps } from './utils';
+import { Item, Section, useSelectState } from '../react-aria'; // from react-stately
+import { HiddenSelect, useButton, useSelect } from '../react-aria'; // from react-aria
+import { useLabelProps, UseLabelPropsProps } from '../Label/useLabelProps';
+import { useHint, UseHintProps } from '../Hint/useHint';
+import { useInlineError, UseInlineErrorProps } from '../InlineError/useInlineError';
+
+const caretIcon = (
+  <SvgIcon title="" viewBox="0 0 448 512" className="ds-u-font-size--sm">
+    <path d="M212.7 148.7c6.2-6.2 16.4-6.2 22.6 0l160 160c6.2 6.2 6.2 16.4 0 22.6s-16.4 6.2-22.6 0L224 182.6 75.3 331.3c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l160-160z" />
+  </SvgIcon>
+);
 
 export type DropdownSize = 'small' | 'medium';
 export type DropdownValue = number | string;
 
-export interface DropdownChangeObject extends UseSelectStateChangeOptions<any> {
-  target: { value: string };
-  currentTarget: { value: string };
+export interface DropdownChangeObject {
+  target: { value: string; name: string };
+  currentTarget: { value: string; name: string };
 }
 
 export interface DropdownOption extends React.HTMLAttributes<'option'> {
-  label: string;
+  label: React.ReactNode;
   value: DropdownValue;
 }
 export interface DropdownOptGroup extends React.HTMLAttributes<'optgroup'> {
-  label: string;
+  label: React.ReactNode;
   options: DropdownOption[];
 }
-const itemToString = (item: DropdownOption) => item.label;
 
-export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
+export interface BaseDropdownProps {
+  /**
+   * Sets the focus on the dropdown when it is first added to the document.
+   */
+  autoFocus?: boolean;
   /**
    * Sets the initial selected state. Use this for an uncontrolled component;
    * otherwise, use the `value` property.
@@ -38,15 +55,15 @@ export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
    */
   disabled?: boolean;
   /**
+   * Additional classes to be added to the root element.
+   */
+  className?: string;
+  /**
    * Additional classes to be added to the dropdown button element
    */
   fieldClassName?: string;
   /**
-   * Sets the focus on the button during the first mount
-   */
-  autoFocus?: boolean;
-  /**
-   * A unique ID to be used for the `button` element. If one isn't provided, a unique ID will be generated.  /**
+   * A unique ID to be used for the `button` element. If one isn't provided, a unique ID will be generated.
    * Additional hint text to display
    */
   id?: string;
@@ -55,7 +72,7 @@ export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
    */
   inputRef?: (...args: any[]) => any;
   /**
-   * Applies the "inverse" UI theme
+   * Set to `true` to apply the "inverse" color scheme
    */
   inversed?: boolean;
   /**
@@ -65,7 +82,7 @@ export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
   onBlur?: (...args: any[]) => any;
   onChange?: (change: DropdownChangeObject) => any;
   /**
-   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
+   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields](https://design.cms.gov/patterns/Forms/forms/#required-and-optional-fields).
    */
   requirementLabel?: React.ReactNode;
   /**
@@ -79,14 +96,18 @@ export interface BaseDropdownProps extends Omit<FormFieldProps, 'id'> {
   value?: DropdownValue;
   /**
    * Customize the default status messages announced to screen reader users via
-   * aria-live during certain interactions. [Read more on downshift docs.](https://github.com/downshift-js/downshift/tree/master/src/hooks/useSelect#geta11ystatusmessage)
+   * aria-live during certain interactions.
+   * @deprecated This option is not currently supported.
+   * @hide-prop [Deprecated]
    */
-  getA11yStatusMessage?: UseSelectProps<any>['getA11yStatusMessage'];
+  getA11yStatusMessage?: any;
   /**
    * Customize the default status messages announced to screen reader users via
-   * aria-live when a selection is made. [Read more on downshift docs.](https://github.com/downshift-js/downshift/tree/master/src/hooks/useSelect#geta11yselectionmessage)
+   * aria-live when a selection is made.
+   * @deprecated This option is not currently supported.
+   * @hide-prop [Deprecated]
    */
-  getA11ySelectionMessage?: UseSelectProps<any>['getA11ySelectionMessage'];
+  getA11ySelectionMessage?: any;
 }
 
 type OptionsOrChildren =
@@ -107,7 +128,8 @@ type OptionsOrChildren =
 
 export type DropdownProps = BaseDropdownProps &
   OptionsOrChildren &
-  Omit<React.ComponentPropsWithRef<'button'>, keyof BaseDropdownProps>;
+  Omit<React.ComponentPropsWithRef<'button'>, keyof BaseDropdownProps> &
+  Omit<UseLabelPropsProps & UseHintProps & UseInlineErrorProps, 'id' | 'inversed'>;
 
 /**
  * For information about how and when to use this component,
@@ -116,10 +138,9 @@ export type DropdownProps = BaseDropdownProps &
 export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   validateProps(props);
 
-  const id = useRef(props.id ?? uniqueId('dropdown__button--')).current;
-  const labelId = useRef(props.labelId ?? uniqueId('dropdown__label--')).current;
-  const buttonContentId = useRef(uniqueId('dropdown__button-content--')).current;
-  const menuId = useRef(uniqueId('dropdown__menu--')).current;
+  const id = useId('dropdown__button--', props.id);
+  const buttonContentId = `${id}__button-content`;
+  const menuId = `${id}__menu`;
 
   // Draw out certain props that we don't want to pass through as attributes
   const {
@@ -127,219 +148,171 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     children,
     className,
     fieldClassName,
+    onBlur: userOnBlur,
     onChange,
     options,
     size,
     defaultValue,
     value,
     inputRef,
+    inversed,
     getA11yStatusMessage,
     getA11ySelectionMessage,
     ...extraProps
   } = props;
 
-  // Turn our options or optgroups into a flat array of selectable items that
-  // we can pass to the Downshift `useSelect` hook. Even though the group
-  // headings are not selectable, Downshift wants to know about them. I've
-  // tried excluding them from the list we give to Downshift, but then the
-  // highlighted index sticks on the last hovered selectable item when hovering
-  // over a group heading, and it doesn't look very good.
   const optionsAndGroups = options ?? parseChildren(children);
-  const items: DropdownOption[] = useMemo(
-    () =>
-      optionsAndGroups.reduce((onlyOptions, optionOrGroup) => {
-        if (isOptGroup(optionOrGroup)) {
-          onlyOptions.push(...optionOrGroup.options);
-        } else {
-          onlyOptions.push(optionOrGroup);
-        }
-        return onlyOptions;
-      }, []),
-    [options, children]
+
+  const renderReactStatelyItem = (item: DropdownOption) => {
+    const { label, value, ...extraAttrs } = item;
+    return (
+      <Item {...extraAttrs} key={value}>
+        {label}
+      </Item>
+    );
+  };
+
+  const reactStatelyItems = optionsAndGroups.map((item, index) => {
+    if (isOptGroup(item)) {
+      const { label, options, ...extraAttrs } = item;
+      return (
+        <Section {...extraAttrs} key={`group-${index}`} title={label}>
+          {options.map(renderReactStatelyItem)}
+        </Section>
+      );
+    } else {
+      return renderReactStatelyItem(item);
+    }
+  });
+
+  const isControlled = value !== undefined;
+  let fallbackValue = defaultValue;
+  if (!isControlled && fallbackValue === undefined) {
+    fallbackValue = getFirstOptionValue(optionsAndGroups);
+  }
+  const [internalValueState, setInternalValueState] = useState(fallbackValue);
+  const selectedKey = isControlled ? value : internalValueState;
+  const onSelectionChange = (value: string) => {
+    triggerRef.current?.focus?.();
+
+    if (onChange) {
+      // Try to support the old API that passed an event object
+      const target = { value, name: props.name };
+      onChange({
+        target,
+        currentTarget: target,
+      });
+    }
+    if (!isControlled) {
+      setInternalValueState(value);
+    }
+  };
+
+  const state = useSelectState({
+    ...props,
+    children: reactStatelyItems,
+    selectedKey,
+    onSelectionChange,
+  });
+
+  const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
+  const { hintId, hintElement } = useHint({ ...props, id });
+
+  const onBlur = useCallback(
+    // The active element is always the document body during a focus transition,
+    // so in order to check if the newly focused element is one of our other date
+    // inputs, we're going to have to wait a bit. We also have an issue with
+    // tabbing out firing two blur events, so debounce during that time too. In
+    // order for the debounce to work, we need to wrap this in a useCallback so
+    // don't create a new one on each render.
+    debounce((event: React.FocusEvent<HTMLElement>) => {
+      // Only call the user's onBlur handler if focus leaves the whole component
+      if (!wrapperRef.current?.contains(document.activeElement)) {
+        userOnBlur?.(event);
+        state.setOpen(false);
+      }
+    }, 20),
+    [userOnBlur, state]
   );
 
-  let controlledSelectedItem;
-  let defaultSelectedItem;
-  if (value !== undefined) {
-    // Controlled component
-    controlledSelectedItem = items.find((item) => value === item.value);
-    if (!controlledSelectedItem) {
-      console.warn(`Dropdown component could not find option matching value: ${value}`);
-    }
-  } else {
-    defaultSelectedItem =
-      defaultValue !== undefined ? items.find((item) => defaultValue === item.value) : items[0];
-    if (!defaultSelectedItem) {
-      console.warn('Dropdown component could not determine a default selected option');
-    }
-  }
+  const triggerRef = useRef<HTMLButtonElement>();
+  const useSelectProps = useSelect(
+    { ...props, onBlur, isDisabled: props.disabled },
+    state,
+    triggerRef
+  );
+  const useButtonProps = useButton(useSelectProps.triggerProps, triggerRef);
 
-  const highlightStatusMessageFn = useHighlightStatusMessageFn();
+  const labelProps = {
+    ...useSelectProps.labelProps,
+    ...useLabelProps({ ...props, id }),
+    fieldId: id,
+  };
 
-  const {
-    isOpen,
-    selectedItem,
-    getToggleButtonProps,
-    getMenuProps,
-    getItemProps,
-    highlightedIndex,
-  } = useSelect({
-    defaultSelectedItem,
-    selectedItem: controlledSelectedItem,
-    toggleButtonId: id,
-    labelId,
-    menuId,
-    items,
-    itemToString,
-    getA11yStatusMessage: getA11yStatusMessage ?? highlightStatusMessageFn,
-    ...(getA11ySelectionMessage ? { getA11ySelectionMessage } : {}),
-    onSelectedItemChange:
-      onChange &&
-      ((changes: UseSelectStateChangeOptions<any>) => {
-        // Try to support the old API that passed an event object
-        const target = { value: changes.selectedItem.value };
-        onChange({
-          ...changes,
-          target,
-          currentTarget: target,
-        });
-      }),
-  });
-
-  const { labelProps, fieldProps, wrapperProps, bottomError } = useFormLabel({
-    ...extraProps,
+  const buttonProps = {
+    ...useButtonProps.buttonProps,
+    ...cleanFieldProps(extraProps),
     id,
-    labelId,
-    className: classNames('ds-c-dropdown', className, isOpen && 'ds-c-dropdown--open'),
-    labelComponent: 'label',
-    wrapperIsFieldset: false,
-  });
-
-  // We don't want to pass these down to the button
-  delete fieldProps.errorMessage;
-  delete fieldProps.errorId;
-  delete fieldProps.inversed;
-
-  const buttonProps = getToggleButtonProps({
-    ...fieldProps,
-    type: 'button',
-    ref: mergeRefs([inputRef, useAutofocus<HTMLButtonElement>(props.autoFocus)]),
+    name: undefined,
     className: classNames(
       'ds-c-dropdown__button',
       'ds-c-field',
       props.errorMessage && 'ds-c-field--error',
-      props.inversed && 'ds-c-field--inverse',
+      inversed && 'ds-c-field--inverse',
       size && `ds-c-field--${size}`,
       fieldClassName
     ),
-    'aria-labelledby': `${buttonContentId} ${labelId}`,
-  });
-
-  if (!buttonProps['aria-activedescendant']) {
-    // This attribute being empty causes unexpected behavior in JAWS, so remove it
-    delete buttonProps['aria-activedescendant'];
-  }
-
-  const menuContainerProps = {
-    className: classNames('ds-c-dropdown__menu-container', size && `ds-c-field--${size}`),
+    ref: mergeRefs([triggerRef, inputRef, useAutofocus<HTMLButtonElement>(props.autoFocus)]),
+    'aria-controls': menuId,
+    'aria-labelledby': `${buttonContentId} ${labelProps.id}`,
+    'aria-invalid': invalid,
+    'aria-describedby': describeField({ ...props, hintId, errorId }),
+    // TODO: Someday we may want to add this `combobox` role back to the button, but right
+    // now desktop VoiceOver has an issue. It seems to interpret the selected value in the
+    // button as user input that needs to be checked for spelling (default setting). It
+    // therefore announces anything it deems misspelled as such. The `react-aria` authors
+    // likely ran into the same issue, since they leave it off for `useSelect` buttons.
+    // Adding the combobox role in the future can help because screen reader users are more
+    // familiar with the combobox pattern.
+    // role: 'combobox',
   };
 
-  const menuProps = getMenuProps({
-    className: 'ds-c-dropdown__menu',
-  });
-
-  const caretIcon = (
-    <path d="M212.7 148.7c6.2-6.2 16.4-6.2 22.6 0l160 160c6.2 6.2 6.2 16.4 0 22.6s-16.4 6.2-22.6 0L224 182.6 75.3 331.3c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l160-160z" />
-  );
-  const checkIcon = (
-    <path d="M443.3 100.7c6.2 6.2 6.2 16.4 0 22.6l-272 272c-6.2 6.2-16.4 6.2-22.6 0l-144-144c-6.2-6.2-6.2-16.4 0-22.6s16.4-6.2 22.6 0L160 361.4l260.7-260.7c6.2-6.2 16.4-6.2 22.6 0z" />
-  );
-
-  const renderItem = (item: DropdownOption, index: number) => {
-    const { value, label, className, ...extraAttrs } = item;
-    const isSelected = selectedItem?.value === item.value;
-    return (
-      <li
-        key={value}
-        className={classNames(
-          className,
-          'ds-c-dropdown__menu-item',
-          highlightedIndex === index && 'ds-c-dropdown__menu-item--highlighted',
-          isSelected && 'ds-c-dropdown__menu-item--selected'
-        )}
-        {...extraAttrs}
-        {...getItemProps({
-          item,
-          index,
-          role: 'option',
-        })}
-      >
-        {isSelected && (
-          <span className="ds-c-dropdown__menu-item-selected-indicator">
-            <SvgIcon
-              title="selected option icon"
-              viewBox="0 0 448 512"
-              className="ds-u-font-size--sm"
-            >
-              {checkIcon}
-            </SvgIcon>
-          </span>
-        )}
-        {item.label}
-      </li>
-    );
-  };
-
-  const menuContent = [];
-  let groupIndex = 0;
-  let menuItemIndex = 0;
-  for (const item of optionsAndGroups) {
-    if (isOptGroup(item)) {
-      const groupId = `${id}__group--${groupIndex++}`;
-      const { label, className, options, ...extraAttrs } = item;
-      menuContent.push(
-        <li
-          role="group"
-          aria-labelledby={groupId}
-          key={groupId}
-          className={classNames('ds-c-dropdown__menu-item-group', className)}
-          {...(extraAttrs as any)}
-        >
-          <div id={groupId} className="ds-c-dropdown__menu-item-group-label">
-            {label}
-          </div>
-          <ul role="presentation">
-            {options.map((groupedItem) => renderItem(groupedItem, menuItemIndex++))}
-          </ul>
-        </li>
-      );
-    } else {
-      menuContent.push(renderItem(item, menuItemIndex++));
-    }
-  }
+  const wrapperRef = useRef<HTMLDivElement>();
+  useClickOutsideHandler([wrapperRef], () => state.setOpen(false));
 
   return (
-    <div {...wrapperProps}>
-      <FormLabel {...labelProps} fieldId={fieldProps.id} />
+    <div
+      className={classNames('ds-c-dropdown', className, state.isOpen && 'ds-c-dropdown--open')}
+      ref={wrapperRef}
+    >
+      <Label {...labelProps} />
+      {hintElement}
+      {topError}
+      <HiddenSelect
+        isDisabled={props.disabled}
+        state={state}
+        triggerRef={triggerRef}
+        label={props.label}
+        name={props.name}
+      />
       <button {...buttonProps}>
         <span id={buttonContentId} className="ds-u-truncate">
-          {selectedItem?.label}
+          {state.selectedItem ? state.selectedItem.rendered : ''}
         </span>
-        <span className="ds-c-dropdown__caret">
-          <SvgIcon
-            title="expanded indicator icon"
-            viewBox="0 0 448 512"
-            className="ds-u-font-size--sm"
-          >
-            {caretIcon}
-          </SvgIcon>
-        </span>
+        <span className="ds-c-dropdown__caret">{caretIcon}</span>
       </button>
-      <div {...menuContainerProps} hidden={!isOpen}>
-        <ul {...menuProps} aria-labelledby={undefined}>
-          {menuContent}
-        </ul>
-      </div>
+      {state.isOpen && (
+        <DropdownMenu
+          {...useSelectProps.menuProps}
+          componentClass="ds-c-dropdown"
+          labelId={labelProps.id}
+          menuId={menuId}
+          rootId={id}
+          size={size}
+          state={state}
+          triggerRef={triggerRef}
+        />
+      )}
       {bottomError}
     </div>
   );

@@ -1,0 +1,78 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Web-component examples">
+  <ds-usa-banner></ds-usa-banner>
+
+  <main id="main" class="ds-l-container">
+    <h1 class="ds-text-heading--4xl ds-u-margin-top--2">
+      Web-component examples
+    </h1>
+  
+    <div class="ds-u-measure--base">
+      <p>
+        This is an example showing how to use our library of interactive web components.
+      </p>
+
+      <ds-alert
+        variation="success"
+        heading="You've loaded the web-components example"
+        class-name="ds-u-margin-y--2"
+        id="alert"
+      >
+        <p id="alert-content">
+          This is an example of a success alert. If you want to see an error alert, click the
+          button below.
+        </p>
+        <ds-button variation="solid" is-alternate="true" id="the-button" class="ds-u-margin-top--1">Break things</ds-button>
+      </ds-alert>
+
+      <h2 class="ds-text-heading--2xl">Adding machine</h2>
+      <form id="calculator">
+        <ds-dropdown
+          id="operation"
+          name="operation"
+          options='[{"label":"Addition","value":"addition"},{"label":"Subtraction","value":"subtraction"}]'
+        ></ds-dropdown>
+        <div
+          class="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2"
+          style="gap: var(--spacer-2)"
+        >
+          <input type="number" id="a" name="a" value="20" class="ds-c-field ds-c-field--small" />
+          <span id="sign">+</span>
+          <input type="number" id="b" name="b" value="30" class="ds-c-field ds-c-field--small" />
+          =
+          <output name="result" for="a b"></output>
+        </div>
+        <ds-button variation="solid" type="submit">Calculate</ds-button>
+      </form>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  document.getElementById('the-button').addEventListener('click', function () {
+    const oldAlert = document.getElementById('alert');
+    const newAlert = document.createElement('ds-alert');
+    newAlert.setAttribute('variation', 'error');
+    newAlert.setAttribute('heading', 'Oh no, something went wrong!');
+    newAlert.innerHTML = "I can't believe you pressed the button.";
+    oldAlert.parentElement.insertBefore(newAlert, oldAlert);
+    oldAlert.remove();
+  });
+
+  document.getElementById('operation').addEventListener('ds-change', function (e) {
+    const sign = e.detail.target.value === 'addition' ? '+' : '-';
+    document.getElementById('sign').innerHTML = sign;
+  });
+
+  document.getElementById('calculator').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const { a, b, operation, result } = e.currentTarget;
+    const intA = parseInt(a.value);
+    const intB = parseInt(b.value);
+    console.log(operation.value);
+    result.value = operation.value === 'addition' ? intA + intB : intA - intB;
+  });
+</script>
+<script src="@cmsgov/design-system/web-components"></script>

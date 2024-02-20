@@ -17,18 +17,19 @@ import loremIpsumGenerator from '../../../src/helpers/loremIpsumGenerator';
 
 <Alert heading="Typography sizing updates!">
   <p class="ds-c-alert__text">
-    We've updated typography sizing variables and class names to separate semantics from presentation. Read about{' '}
+    We've updated typography sizing variables and class names to separate semantics from
+    presentation. Read about{' '}
     <a href="/migration-guides/agnostic-typography-classes">how you can update</a>.
   </p>
 </Alert>
 
 <ThemeContent onlyThemes={['healthcare']}>
 
-Open Sans serves as the base font for the site. The full Open Sans type family consists of a variety of weights including light, regular, semibold, bold, and extrabold which allows for a wide range of type treatments and hierarchies within a page while still maintaining a unified look and feel. 
+Open Sans serves as the base font for the site. The full Open Sans type family consists of a variety of weights including light, regular, semibold, bold, and extrabold which allows for a wide range of type treatments and hierarchies within a page while still maintaining a unified look and feel.
 
-Sans-serifs have been proven to be easier to read on-screen and are incredibly adaptable when resized and displayed across different platforms and browsers. Accordingly, Open Sans is used for body type, secondary and tertiary headlines, and instructional text. 
+Sans-serifs have been proven to be easier to read on-screen and are incredibly adaptable when resized and displayed across different platforms and browsers. Accordingly, Open Sans is used for body type, secondary and tertiary headlines, and instructional text.
 
-**Web font stack:** Open Sans > Helvetica > Arial > Verdana > Sans-Serif 
+**Web font stack:** Open Sans > Helvetica > Arial > Verdana > Sans-Serif
 
 - Open Sans font is used for headings and body content.
 - Standard body text is Open Sans Regular, 16px, #333, 24px line-height, 32px bottom-margin on paragraphs.
@@ -61,7 +62,7 @@ Used for emphasis and should be used sparingly.
 
 ### Medium body text
 
- `.ds-text-body--md`
+`.ds-text-body--md`
 
 <ThemeContent onlyThemes={['healthcare']}>
 
@@ -81,11 +82,11 @@ The default font size for most content within Medicare.gov
 
 ### Small body text
 
-`.ds-text-body--sm` 
+`.ds-text-body--sm`
 
 <ThemeContent onlyThemes={['healthcare']}>
 
-Only used for footnotes, fine print, and legal jargon. 
+Only used for footnotes, fine print, and legal jargon.
 
 </ThemeContent>
 
@@ -99,9 +100,9 @@ Only used for footnotes, fine print, and legal jargon.
   <p class="ds-text-body--sm">{loremIpsumGenerator('l')}</p>
 </EmbeddedExample>
 
-## Code 
+## Code
 
-### Styles
+### Style customization
 
 The following CSS variables can be overridden to change the type sizes:
 
@@ -113,14 +114,14 @@ The following CSS variables can be overridden to change the type sizes:
 
 <ThemeContent onlyThemes={['medicare', 'healthcare']}>
 
-### Don't 
+### Don't
 
 </ThemeContent>
 
 <ThemeContent onlyThemes={['medicare']}>
 
 - Don't use Rubik font for headers
-- Don't use a header that is smaller than the body font size 
+- Don't use a header that is smaller than the body font size
 - Don't have stray headers in the body of your page
 
 </ThemeContent>
@@ -130,14 +131,16 @@ The following CSS variables can be overridden to change the type sizes:
 - Don't use italic text.
 
 ### Mobile and small screens
+
 Header sizes should be reduced on mobile screen sizes. Header sizes can be reduced depending on the designers discretion but can generally use this guide for reducing your header sizes.
 
 #### Body
+
 Small to Large Body text - No change in size unless header size is smaller than the body size
 
 ### Font Weights
-There is only one bold font option for paragraph styles (Open Sans font). Open Sans 600 (Semibold) is the only bold option that should be used. There are no bold options for headers.
 
+There is only one bold font option for paragraph styles (Open Sans font). Open Sans 600 (Semibold) is the only bold option that should be used. There are no bold options for headers.
 
 ### Layout
 
@@ -149,9 +152,9 @@ There should always be a parent/child relationship between headers and content o
 - Every page should have one heading 1 (H1)
 - Headings style appearing under H1 should follow a logical order for information design and supporting various assistive technology devices/software.
 
-### Captions 
+### Captions
 
-Generally, most content on Healthcare.gov should be 16px or higher. 
+Generally, most content on Healthcare.gov should be 16px or higher.
 Captions, disclaimers, footnotes and text that is there for legal reasons can use the small heading and body styles.
 
 </ThemeContent>
@@ -162,14 +165,14 @@ Captions, disclaimers, footnotes and text that is there for legal reasons can us
 - The Rubrik font is used for body content.
 - The Montserrat font is used for headers, some menu components, and the big button (Landing).
 - The smallest paragraph text for legibility to the Medicare audience should not be smaller than 16 px (except for legal/caption text).
-- Uppercase font should not be used (exception for form elements).  
-  
+- Uppercase font should not be used (exception for form elements).
+
 ### Body styles
 
 There are 4 text styles that can be used.
 
 - Default style - Is the default text style for body content
-- Link style - Links use the Rubrik font and will always be blue. 
+- Link style - Links use the Rubrik font and will always be blue.
 - Text on dark backgrounds - Used for text on dark backgrounds.
 - Text links on dark backgrounds - Used for links on dark backgrounds.
 
@@ -192,12 +195,12 @@ Small to Large Body text has no change in size unless header size is smaller tha
 ### Paragraph widths
 
 - The base paragraph width (~65 characters) is the preferred width for paragraphs.
-- You can opt for a wider (~80 characters) or narrower (~45 characters) paragraph width. 
+- You can opt for a wider (~80 characters) or narrower (~45 characters) paragraph width.
 - This paragraph width improves the readability of text and helps users with certain reading or visual disabilities that have trouble keeping their place when reading long lines of text. See W3C guidance for more info.
 
 ### Captions
 
-- Generally, most content should be 16px or higher. 
+- Generally, most content should be 16px or higher.
 - Captions, disclaimers, footnotes and text that is there for legal reasons can use the <code>ds-text-heading--sm</code> and <code>ds-text-body--sm</code> styles.
 
 </ThemeContent>

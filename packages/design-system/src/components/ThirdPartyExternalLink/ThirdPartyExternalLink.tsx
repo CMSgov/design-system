@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Button } from '../Button';
 import { Dialog } from '../Dialog';
 import { ExternalLinkIcon } from '../Icons';
@@ -45,26 +44,24 @@ const ThirdPartyExternalLink = ({
         {children}
         <ExternalLinkIcon className="ds-c-external-link__icon" />
       </a>
-      {showDialog && (
-        <Dialog
-          onExit={close}
-          heading={t('thirdPartyExternalLink.dialogHeading', { origin })}
-          closeButtonText=""
-          actions={[
-            <Button variation="solid" key="external-link__confirm" href={href}>
-              {t('thirdPartyExternalLink.confirmationButtonText')}
-            </Button>,
-            <Button variation="ghost" onClick={close} key="external-link__cancel">
-              {t('thirdPartyExternalLink.cancelButtonText')}
-            </Button>,
-          ]}
-        >
-          <p>{t('thirdPartyExternalLink.dialogBody')}</p>
-          <p>
-            <a href={learnMoreUrl}>{t('thirdPartyExternalLink.learnMoreText')}</a>.
-          </p>
-        </Dialog>
-      )}
+      <Dialog
+        onExit={close}
+        heading={t('thirdPartyExternalLink.dialogHeading', { origin })}
+        actions={[
+          <Button variation="solid" key="external-link__confirm" href={href}>
+            {t('thirdPartyExternalLink.confirmationButtonText')}
+          </Button>,
+          <Button variation="ghost" onClick={close} key="external-link__cancel">
+            {t('thirdPartyExternalLink.cancelButtonText')}
+          </Button>,
+        ]}
+        isOpen={showDialog}
+      >
+        <p>{t('thirdPartyExternalLink.dialogBody')}</p>
+        <p>
+          <a href={learnMoreUrl}>{t('thirdPartyExternalLink.learnMoreText')}</a>.
+        </p>
+      </Dialog>
     </>
   );
 };

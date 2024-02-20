@@ -22,7 +22,8 @@ export interface AnalyticsOverrideProps {
   /**
    * Optional callback that will intercept analytics events for this component.
    * If none is specified, the design system will use the default analytics
-   * function, which can be overwritten globally with `setDefaultAnalyticsFunction`.
+   * function, which can be overwritten globally with the `defaultAnalyticsFunction`
+   * config property.
    */
   onAnalyticsEvent?: AnalyticsFunction;
 }

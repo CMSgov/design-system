@@ -1,4 +1,3 @@
-import React from 'react';
 import UsaBanner from './UsaBanner';
 import type { Meta, StoryObj } from '@storybook/react';
 

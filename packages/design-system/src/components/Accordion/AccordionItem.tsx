@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { AddIcon, RemoveIcon } from '../Icons';
 import classNames from 'classnames';
-import uniqueId from 'lodash/uniqueId';
 import { t } from '../i18n';
+import useId from '../utilities/useId';
 
 export interface AccordionItemProps {
   /**
@@ -43,11 +43,11 @@ export interface AccordionItemProps {
   /**
    * Icon to overwrite default close icon
    */
-  closeIcon?: React.ReactNode;
+  closeIconComponent?: React.ReactElement<any> | any | ((...args: any[]) => any);
   /**
    * Icon to overwrite default open icon
    */
-  openIcon?: React.ReactNode;
+  openIconComponent?: React.ReactElement<any> | any | ((...args: any[]) => any);
 }
 
 export interface AccordionItemState {
@@ -65,15 +65,15 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
   // TODO: Explore deprecating `isControlledOpen` in favor of `isOpen`
   isControlledOpen,
   onChange,
-  closeIcon,
-  openIcon,
+  closeIconComponent,
+  openIconComponent,
 }) => {
   const contentClasses = classNames('ds-c-accordion__content', contentClassName);
   const buttonClasses = classNames('ds-c-accordion__button', buttonClassName);
   const HeadingTag = `h${headingLevel}` as const;
   const isControlled = !!onChange;
-  const contentId = id || uniqueId('accordionItem_');
-  const buttonId = `${contentId}-button`;
+  const contentId = useId('accordion-item--', id);
+  const buttonId = `${contentId}__button`;
   const [isOpen, setIsOpen] = useState(isControlled ? isControlledOpen : defaultOpen);
 
   // Set the state for opening and closing an accordion item
@@ -86,6 +86,25 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
   };
 
   const isItemOpen = isControlled ? isControlledOpen : isOpen;
+
+  const CloseIconComponent = closeIconComponent;
+  const OpenIconComponent = openIconComponent;
+  const closeIcon = (
+    <CloseIconComponent
+      className="ds-c-accordion__button-icon"
+      title={t('accordion.close')}
+      ariaHidden={false}
+      id={`${contentId}__icon`}
+    />
+  );
+  const openIcon = (
+    <OpenIconComponent
+      className="ds-c-accordion__button-icon"
+      title={t('accordion.open')}
+      ariaHidden={false}
+      id={`${contentId}__icon`}
+    />
+  );
 
   if (heading) {
     return (
@@ -119,20 +138,8 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
 AccordionItem.defaultProps = {
   defaultOpen: false,
   headingLevel: '2',
-  closeIcon: (
-    <RemoveIcon
-      className="ds-c-accordion__button-icon"
-      title={t('accordion.close')}
-      ariaHidden={false}
-    />
-  ),
-  openIcon: (
-    <AddIcon
-      className="ds-c-accordion__button-icon"
-      title={t('accordion.open')}
-      ariaHidden={false}
-    />
-  ),
+  closeIconComponent: RemoveIcon,
+  openIconComponent: AddIcon,
 };
 
 export default AccordionItem;

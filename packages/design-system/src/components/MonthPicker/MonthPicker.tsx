@@ -1,13 +1,16 @@
 import React from 'react';
-// Polyfills required for IE11 compatibility
-import 'core-js/stable/array/includes';
 import Button, { ButtonVariation } from '../Button/Button';
 import Choice from '../ChoiceList/Choice';
-import { ChangeEvent, useState } from 'react';
 import classNames from 'classnames';
+import describeField from '../utilities/describeField';
+import useId from '../utilities/useId';
+import { ChangeEvent, useState } from 'react';
+import { Label } from '../Label';
 import { NUM_MONTHS, getMonthNames } from './getMonthNames';
 import { fallbackLocale, getLanguage, t } from '../i18n';
-import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
+import { useLabelProps, UseLabelPropsProps } from '../Label/useLabelProps';
+import { useHint, UseHintProps } from '../Hint/useHint';
+import { useInlineError, UseInlineErrorProps } from '../InlineError/useInlineError';
 
 const monthNumbers = (() => {
   const months = [];
@@ -17,9 +20,7 @@ const monthNumbers = (() => {
   return months;
 })();
 
-export type MonthPickerErrorPlacement = 'top' | 'bottom';
-
-interface MonthPickerProps extends FormFieldProps {
+interface BaseMonthPickerProps {
   /**
    * The `input` field's `name` attribute
    */
@@ -29,7 +30,7 @@ interface MonthPickerProps extends FormFieldProps {
    */
   className?: string;
   /**
-   * Variation string to be applied to buttons. See [Button component]({{root}}/components/button/#components.button.react)
+   * Variation string to be applied to buttons. See [Button component](https://design.cms.gov/storybook/?path=/docs/components-button--docs)
    */
   buttonVariation?: ButtonVariation;
   /**
@@ -51,6 +52,14 @@ interface MonthPickerProps extends FormFieldProps {
    */
   defaultSelectedMonths?: number[];
   /**
+   * A unique ID for this element. A unique ID will be generated if one isn't provided.
+   */
+  id?: string;
+  /**
+   * Set to `true` to apply the "inverse" color scheme
+   */
+  inversed?: boolean;
+  /**
    * A callback function that's invoked when a month's checked state is changed.
    * Note: This callback is not called when a month is selected or deselected
    * via the "Select all" or "Clear all" buttons – use the `onSelectAll` and
@@ -69,11 +78,15 @@ interface MonthPickerProps extends FormFieldProps {
   clearAllText?: string;
 }
 
+export type MonthPickerProps = BaseMonthPickerProps &
+  Omit<UseLabelPropsProps & UseHintProps & UseInlineErrorProps, 'id' | 'inversed'>;
+
 /**
  * For information about how and when to use this component,
  * [refer to its full documentation page](https://design.cms.gov/components/month-picker/).
  */
 export const MonthPicker = (props: MonthPickerProps) => {
+  const id = useId('month-picker--', props.id);
   const locale = fallbackLocale(getLanguage(), 'US');
   const months = getMonthNames(locale);
   const monthsLong = getMonthNames(locale, false);
@@ -122,16 +135,19 @@ export const MonthPicker = (props: MonthPickerProps) => {
   const selectAllPressed = selectedMonths.length === NUM_MONTHS - disabledMonths.length;
   const clearAllPressed = selectedMonths.length === 0;
 
-  const { labelProps, wrapperProps, bottomError } = useFormLabel({
-    ...props,
-    className: classNames('ds-c-month-picker', props.className),
-    labelComponent: 'legend',
-    wrapperIsFieldset: true,
-  });
+  const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
+  const { hintId, hintElement } = useHint({ ...props, id });
+  const labelProps = useLabelProps({ ...props, id });
 
   return (
-    <fieldset {...wrapperProps}>
-      <FormLabel {...labelProps} />
+    <fieldset
+      aria-invalid={invalid}
+      aria-describedby={describeField({ ...props, hintId, errorId })}
+      className={classNames('ds-c-fieldset', 'ds-c-month-picker', props.className)}
+    >
+      <Label component="legend" {...labelProps} />
+      {hintElement}
+      {topError}
       <div className="ds-c-month-picker__buttons ds-u-clearfix">
         <Button
           aria-pressed={selectAllPressed}
@@ -169,6 +185,7 @@ export const MonthPicker = (props: MonthPickerProps) => {
                 type="checkbox"
                 value={i + 1}
                 label={month}
+                id={`${id}__choice--${i + 1}`}
               />
             </li>
           ))}

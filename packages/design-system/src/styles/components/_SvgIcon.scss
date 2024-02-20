@@ -8,7 +8,7 @@
   vertical-align: middle;
   width: 1.5em;
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     fill: WindowText;
 
     path {
@@ -20,27 +20,27 @@
 
 // Icon color variations
 .ds-c-icon-color--primary {
-  color: var(--icon__color--primary);
+  color: var(--color-primary);
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     color: WindowText;
   }
 }
 
 .ds-c-icon-color--inverse {
-  color: var(--icon__color--inverse);
+  color: var(--color-base-inverse);
 }
 
 .ds-c-icon-color--error {
-  color: var(--icon__color--error);
+  color: var(--color-error);
 }
 
 .ds-c-icon-color--warn {
-  color: var(--icon__color--warn);
+  color: var(--color-warn);
 }
 
 .ds-c-icon-color--success {
-  color: var(--icon__color--success);
+  color: var(--color-success);
 }
 
 // Specific icon variations
@@ -60,13 +60,13 @@
 .ds-c-icon--pdf__text {
   fill: var(--color-white);
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     fill: Window;
   }
 }
 
 .ds-c-icon--star {
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     path {
       fill: Window;
       stroke: WindowText;
@@ -75,7 +75,7 @@
 }
 
 .ds-c-icon--star-filled {
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     path {
       fill: WindowText;
       stroke: WindowText;
@@ -84,7 +84,7 @@
 }
 
 .ds-c-icon--usa-flag {
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     forced-color-adjust: none;
     -ms-high-contrast-adjust: none;
 
@@ -105,7 +105,7 @@
 }
 
 .ds-c-icon--minus-circle {
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     .ds-c-icon--minus-circle__circle {
       fill: Window;
       stroke: WindowText;
@@ -118,7 +118,7 @@
 }
 
 .ds-c-icon--plus-circle {
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     .ds-c-icon--plus-circle__circle {
       fill: Window;
       stroke: WindowText;

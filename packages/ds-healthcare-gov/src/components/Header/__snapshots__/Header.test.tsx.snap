@@ -2,6 +2,12 @@
 
 exports[`Header renders Direct Enrollment banner 1`] = `
 <div>
+  <a
+    class="ds-c-skip-nav"
+    href="#main"
+  >
+    Skip to main content
+  </a>
   <section
     aria-label="Official website of the United States government"
     class="ds-c-usa-banner"
@@ -12,8 +18,6 @@ exports[`Header renders Direct Enrollment banner 1`] = `
       <svg
         aria-hidden="true"
         class="ds-c-icon ds-c-icon--usa-flag ds-c-usa-banner__header-icon"
-        focusable="false"
-        id="icon-11"
         viewBox="0 0 16 11"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -56,8 +60,6 @@ exports[`Header renders Direct Enrollment banner 1`] = `
           aria-hidden="true"
           class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
           direction="down"
-          focusable="false"
-          id="icon-12"
           viewBox="0 0 320 512"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -68,7 +70,7 @@ exports[`Header renders Direct Enrollment banner 1`] = `
         </svg>
       </p>
       <button
-        aria-controls="gov-banner_10"
+        aria-controls="hc-c-header__usa-banner__panel"
         aria-expanded="false"
         class="ds-c-usa-banner__button"
         type="button"
@@ -81,8 +83,6 @@ exports[`Header renders Direct Enrollment banner 1`] = `
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
             direction="down"
-            focusable="false"
-            id="icon-13"
             viewBox="0 0 320 512"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -99,8 +99,6 @@ exports[`Header renders Direct Enrollment banner 1`] = `
           <svg
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin ds-c-usa-banner__button-icon"
-            focusable="false"
-            id="icon-14"
             viewBox="-2 -2 18 18"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -121,7 +119,7 @@ exports[`Header renders Direct Enrollment banner 1`] = `
       <div
         class="ds-c-usa-banner__guidance-container"
         hidden=""
-        id="gov-banner_10"
+        id="hc-c-header__usa-banner__panel"
       >
         <div
           class="ds-c-usa-banner__guidance-item"
@@ -129,8 +127,6 @@ exports[`Header renders Direct Enrollment banner 1`] = `
           <svg
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--building-circle ds-c-usa-banner__guidance-icon"
-            focusable="false"
-            id="icon-15"
             viewBox="0 0 54 54"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -158,13 +154,10 @@ exports[`Header renders Direct Enrollment banner 1`] = `
               Official websites use .gov
             </strong>
             <br />
-            A
-             
+            A 
             <strong>
-               
-              .gov
+               .gov 
             </strong>
-             
             website belongs to an official government organization in the United States.
           </p>
         </div>
@@ -174,8 +167,6 @@ exports[`Header renders Direct Enrollment banner 1`] = `
           <svg
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--lock-circle ds-c-usa-banner__guidance-icon"
-            focusable="false"
-            id="icon-16"
             viewBox="0 0 54 54"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -199,19 +190,14 @@ exports[`Header renders Direct Enrollment banner 1`] = `
               Secure .gov websites use HTTPS
             </strong>
             <br />
-            A
-             
+            A 
             <strong>
-               
-              lock
-               
+              lock 
             </strong>
-             (
+            (
             <svg
               aria-hidden="true"
               class="ds-c-icon ds-c-icon--lock ds-c-usa-banner__inline-lock-icon"
-              focusable="false"
-              id="icon-17"
               viewBox="0 0 52 64"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -221,13 +207,12 @@ exports[`Header renders Direct Enrollment banner 1`] = `
               />
             </svg>
             )
-             
-            or
-             
+            <span>
+               or
+            </span>
             <strong>
-              https://
+               https:// 
             </strong>
-             
             means you've safely connected to the .gov website. Share sensitive information only on official, secure websites.
           </p>
         </div>
@@ -239,12 +224,6 @@ exports[`Header renders Direct Enrollment banner 1`] = `
     class="hc-c-header hc-c-header--logged-out"
     role="banner"
   >
-    <a
-      class="ds-c-skip-nav"
-      href="#main"
-    >
-      Skip to main content
-    </a>
     <div
       class="ds-l-container"
     >
@@ -261,6 +240,7 @@ exports[`Header renders Direct Enrollment banner 1`] = `
             <svg
               aria-labelledby="hc-c-logo__title"
               height="25"
+              role="img"
               viewBox="0 0 253.05 31.65"
               width="200"
               xmlns="http://www.w3.org/2000/svg"
@@ -370,8 +350,6 @@ exports[`Header renders Direct Enrollment banner 1`] = `
             <svg
               aria-hidden="true"
               class="ds-c-icon ds-u-margin-right--1 ds-c-icon--menu"
-              focusable="false"
-              id="icon-18"
               viewBox="0 0 448 512"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -380,7 +358,9 @@ exports[`Header renders Direct Enrollment banner 1`] = `
                 fill="currentColor"
               />
             </svg>
-            Menu
+            <span>
+              Menu
+            </span>
           </button>
           <div
             class="hc-c-menu"
@@ -431,6 +411,12 @@ exports[`Header renders Direct Enrollment banner 1`] = `
 
 exports[`Header renders Spanish header 1`] = `
 <div>
+  <a
+    class="ds-c-skip-nav"
+    href="#main"
+  >
+    Ir al contenido principal
+  </a>
   <section
     aria-label="Un sitio oficial del Gobierno de Estados Unidos"
     class="ds-c-usa-banner"
@@ -441,8 +427,6 @@ exports[`Header renders Spanish header 1`] = `
       <svg
         aria-hidden="true"
         class="ds-c-icon ds-c-icon--usa-flag ds-c-usa-banner__header-icon"
-        focusable="false"
-        id="icon-38"
         viewBox="0 0 16 11"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -485,8 +469,6 @@ exports[`Header renders Spanish header 1`] = `
           aria-hidden="true"
           class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
           direction="down"
-          focusable="false"
-          id="icon-39"
           viewBox="0 0 320 512"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -497,7 +479,7 @@ exports[`Header renders Spanish header 1`] = `
         </svg>
       </p>
       <button
-        aria-controls="gov-banner_37"
+        aria-controls="hc-c-header__usa-banner__panel"
         aria-expanded="false"
         class="ds-c-usa-banner__button"
         type="button"
@@ -510,8 +492,6 @@ exports[`Header renders Spanish header 1`] = `
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
             direction="down"
-            focusable="false"
-            id="icon-40"
             viewBox="0 0 320 512"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -528,8 +508,6 @@ exports[`Header renders Spanish header 1`] = `
           <svg
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin ds-c-usa-banner__button-icon"
-            focusable="false"
-            id="icon-41"
             viewBox="-2 -2 18 18"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -550,7 +528,7 @@ exports[`Header renders Spanish header 1`] = `
       <div
         class="ds-c-usa-banner__guidance-container"
         hidden=""
-        id="gov-banner_37"
+        id="hc-c-header__usa-banner__panel"
       >
         <div
           class="ds-c-usa-banner__guidance-item"
@@ -558,8 +536,6 @@ exports[`Header renders Spanish header 1`] = `
           <svg
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--building-circle ds-c-usa-banner__guidance-icon"
-            focusable="false"
-            id="icon-42"
             viewBox="0 0 54 54"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -587,13 +563,10 @@ exports[`Header renders Spanish header 1`] = `
               Los sitios web oficiales usan .gov
             </strong>
             <br />
-            Un sitio web
-             
+            Un sitio web 
             <strong>
-               
-              .gov
+               .gov 
             </strong>
-             
             pertenece a una organización oficial del Gobierno de Estados Unidos.
           </p>
         </div>
@@ -603,8 +576,6 @@ exports[`Header renders Spanish header 1`] = `
           <svg
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--lock-circle ds-c-usa-banner__guidance-icon"
-            focusable="false"
-            id="icon-43"
             viewBox="0 0 54 54"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -628,19 +599,14 @@ exports[`Header renders Spanish header 1`] = `
               Los sitios web seguros .gov usan HTTPS
             </strong>
             <br />
-            Un
-             
+            Un 
             <strong>
-               
-              candado
-               
+              candado 
             </strong>
-             (
+            (
             <svg
               aria-hidden="true"
               class="ds-c-icon ds-c-icon--lock ds-c-usa-banner__inline-lock-icon"
-              focusable="false"
-              id="icon-44"
               viewBox="0 0 52 64"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -650,13 +616,12 @@ exports[`Header renders Spanish header 1`] = `
               />
             </svg>
             )
-             
-            o
-             
+            <span>
+               o
+            </span>
             <strong>
-              https://
+               https:// 
             </strong>
-             
             significa que usted se conectó de forma segura a un sitio web .gov. Comparta información sensible sólo en sitios web oficiales y seguros.
           </p>
         </div>
@@ -668,12 +633,6 @@ exports[`Header renders Spanish header 1`] = `
     class="hc-c-header hc-c-header--logged-out"
     role="banner"
   >
-    <a
-      class="ds-c-skip-nav"
-      href="#main"
-    >
-      Ir al contenido principal
-    </a>
     <div
       class="ds-l-container"
     >
@@ -690,6 +649,7 @@ exports[`Header renders Spanish header 1`] = `
             <svg
               aria-labelledby="hc-c-logo__title"
               height="25"
+              role="img"
               viewBox="0 0 313.54 31.74"
               width="237"
               xmlns="http://www.w3.org/2000/svg"
@@ -815,8 +775,6 @@ exports[`Header renders Spanish header 1`] = `
             <svg
               aria-hidden="true"
               class="ds-c-icon ds-u-margin-right--1 ds-c-icon--menu"
-              focusable="false"
-              id="icon-45"
               viewBox="0 0 448 512"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -825,7 +783,9 @@ exports[`Header renders Spanish header 1`] = `
                 fill="currentColor"
               />
             </svg>
-            Menú
+            <span>
+              Menú
+            </span>
           </button>
           <div
             class="hc-c-menu"
@@ -867,6 +827,12 @@ exports[`Header renders Spanish header 1`] = `
 
 exports[`Header renders full/homepage header 1`] = `
 <div>
+  <a
+    class="ds-c-skip-nav"
+    href="#main"
+  >
+    Skip to main content
+  </a>
   <section
     aria-label="Official website of the United States government"
     class="ds-c-usa-banner"
@@ -877,8 +843,6 @@ exports[`Header renders full/homepage header 1`] = `
       <svg
         aria-hidden="true"
         class="ds-c-icon ds-c-icon--usa-flag ds-c-usa-banner__header-icon"
-        focusable="false"
-        id="icon-2"
         viewBox="0 0 16 11"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -921,8 +885,6 @@ exports[`Header renders full/homepage header 1`] = `
           aria-hidden="true"
           class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
           direction="down"
-          focusable="false"
-          id="icon-3"
           viewBox="0 0 320 512"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -933,7 +895,7 @@ exports[`Header renders full/homepage header 1`] = `
         </svg>
       </p>
       <button
-        aria-controls="gov-banner_1"
+        aria-controls="hc-c-header__usa-banner__panel"
         aria-expanded="false"
         class="ds-c-usa-banner__button"
         type="button"
@@ -946,8 +908,6 @@ exports[`Header renders full/homepage header 1`] = `
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
             direction="down"
-            focusable="false"
-            id="icon-4"
             viewBox="0 0 320 512"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -964,8 +924,6 @@ exports[`Header renders full/homepage header 1`] = `
           <svg
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin ds-c-usa-banner__button-icon"
-            focusable="false"
-            id="icon-5"
             viewBox="-2 -2 18 18"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -986,7 +944,7 @@ exports[`Header renders full/homepage header 1`] = `
       <div
         class="ds-c-usa-banner__guidance-container"
         hidden=""
-        id="gov-banner_1"
+        id="hc-c-header__usa-banner__panel"
       >
         <div
           class="ds-c-usa-banner__guidance-item"
@@ -994,8 +952,6 @@ exports[`Header renders full/homepage header 1`] = `
           <svg
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--building-circle ds-c-usa-banner__guidance-icon"
-            focusable="false"
-            id="icon-6"
             viewBox="0 0 54 54"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -1023,13 +979,10 @@ exports[`Header renders full/homepage header 1`] = `
               Official websites use .gov
             </strong>
             <br />
-            A
-             
+            A 
             <strong>
-               
-              .gov
+               .gov 
             </strong>
-             
             website belongs to an official government organization in the United States.
           </p>
         </div>
@@ -1039,8 +992,6 @@ exports[`Header renders full/homepage header 1`] = `
           <svg
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--lock-circle ds-c-usa-banner__guidance-icon"
-            focusable="false"
-            id="icon-7"
             viewBox="0 0 54 54"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -1064,19 +1015,14 @@ exports[`Header renders full/homepage header 1`] = `
               Secure .gov websites use HTTPS
             </strong>
             <br />
-            A
-             
+            A 
             <strong>
-               
-              lock
-               
+              lock 
             </strong>
-             (
+            (
             <svg
               aria-hidden="true"
               class="ds-c-icon ds-c-icon--lock ds-c-usa-banner__inline-lock-icon"
-              focusable="false"
-              id="icon-8"
               viewBox="0 0 52 64"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -1086,13 +1032,12 @@ exports[`Header renders full/homepage header 1`] = `
               />
             </svg>
             )
-             
-            or
-             
+            <span>
+               or
+            </span>
             <strong>
-              https://
+               https:// 
             </strong>
-             
             means you've safely connected to the .gov website. Share sensitive information only on official, secure websites.
           </p>
         </div>
@@ -1104,12 +1049,6 @@ exports[`Header renders full/homepage header 1`] = `
     class="hc-c-header hc-c-header--logged-out"
     role="banner"
   >
-    <a
-      class="ds-c-skip-nav"
-      href="#main"
-    >
-      Skip to main content
-    </a>
     <div
       class="ds-l-container"
     >
@@ -1126,6 +1065,7 @@ exports[`Header renders full/homepage header 1`] = `
             <svg
               aria-labelledby="hc-c-logo__title"
               height="25"
+              role="img"
               viewBox="0 0 253.05 31.65"
               width="200"
               xmlns="http://www.w3.org/2000/svg"
@@ -1235,8 +1175,6 @@ exports[`Header renders full/homepage header 1`] = `
             <svg
               aria-hidden="true"
               class="ds-c-icon ds-u-margin-right--1 ds-c-icon--menu"
-              focusable="false"
-              id="icon-9"
               viewBox="0 0 448 512"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -1245,7 +1183,9 @@ exports[`Header renders full/homepage header 1`] = `
                 fill="currentColor"
               />
             </svg>
-            Menu
+            <span>
+              Menu
+            </span>
           </button>
           <div
             class="hc-c-menu"
@@ -1287,6 +1227,12 @@ exports[`Header renders full/homepage header 1`] = `
 
 exports[`Header renders links with absolute URLs if provided a primaryDomain prop 1`] = `
 <div>
+  <a
+    class="ds-c-skip-nav"
+    href="#main"
+  >
+    Skip to main content
+  </a>
   <section
     aria-label="Official website of the United States government"
     class="ds-c-usa-banner"
@@ -1297,8 +1243,6 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
       <svg
         aria-hidden="true"
         class="ds-c-icon ds-c-icon--usa-flag ds-c-usa-banner__header-icon"
-        focusable="false"
-        id="icon-128"
         viewBox="0 0 16 11"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -1341,8 +1285,6 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
           aria-hidden="true"
           class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
           direction="down"
-          focusable="false"
-          id="icon-129"
           viewBox="0 0 320 512"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -1353,7 +1295,7 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
         </svg>
       </p>
       <button
-        aria-controls="gov-banner_127"
+        aria-controls="hc-c-header__usa-banner__panel"
         aria-expanded="false"
         class="ds-c-usa-banner__button"
         type="button"
@@ -1366,8 +1308,6 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
             direction="down"
-            focusable="false"
-            id="icon-130"
             viewBox="0 0 320 512"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -1384,8 +1324,6 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
           <svg
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin ds-c-usa-banner__button-icon"
-            focusable="false"
-            id="icon-131"
             viewBox="-2 -2 18 18"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -1406,7 +1344,7 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
       <div
         class="ds-c-usa-banner__guidance-container"
         hidden=""
-        id="gov-banner_127"
+        id="hc-c-header__usa-banner__panel"
       >
         <div
           class="ds-c-usa-banner__guidance-item"
@@ -1414,8 +1352,6 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
           <svg
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--building-circle ds-c-usa-banner__guidance-icon"
-            focusable="false"
-            id="icon-132"
             viewBox="0 0 54 54"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -1443,13 +1379,10 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
               Official websites use .gov
             </strong>
             <br />
-            A
-             
+            A 
             <strong>
-               
-              .gov
+               .gov 
             </strong>
-             
             website belongs to an official government organization in the United States.
           </p>
         </div>
@@ -1459,8 +1392,6 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
           <svg
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--lock-circle ds-c-usa-banner__guidance-icon"
-            focusable="false"
-            id="icon-133"
             viewBox="0 0 54 54"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -1484,19 +1415,14 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
               Secure .gov websites use HTTPS
             </strong>
             <br />
-            A
-             
+            A 
             <strong>
-               
-              lock
-               
+              lock 
             </strong>
-             (
+            (
             <svg
               aria-hidden="true"
               class="ds-c-icon ds-c-icon--lock ds-c-usa-banner__inline-lock-icon"
-              focusable="false"
-              id="icon-134"
               viewBox="0 0 52 64"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -1506,13 +1432,12 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
               />
             </svg>
             )
-             
-            or
-             
+            <span>
+               or
+            </span>
             <strong>
-              https://
+               https:// 
             </strong>
-             
             means you've safely connected to the .gov website. Share sensitive information only on official, secure websites.
           </p>
         </div>
@@ -1524,12 +1449,6 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
     class="hc-c-header hc-c-header--logged-out"
     role="banner"
   >
-    <a
-      class="ds-c-skip-nav"
-      href="#main"
-    >
-      Skip to main content
-    </a>
     <div
       class="ds-l-container"
     >
@@ -1546,6 +1465,7 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
             <svg
               aria-labelledby="hc-c-logo__title"
               height="25"
+              role="img"
               viewBox="0 0 253.05 31.65"
               width="200"
               xmlns="http://www.w3.org/2000/svg"
@@ -1655,8 +1575,6 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
             <svg
               aria-hidden="true"
               class="ds-c-icon ds-u-margin-right--1 ds-c-icon--menu"
-              focusable="false"
-              id="icon-135"
               viewBox="0 0 448 512"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -1665,7 +1583,9 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
                 fill="currentColor"
               />
             </svg>
-            Menu
+            <span>
+              Menu
+            </span>
           </button>
           <div
             class="hc-c-menu"
@@ -1707,6 +1627,12 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
 
 exports[`Header renders logged-in header with firstName 1`] = `
 <div>
+  <a
+    class="ds-c-skip-nav"
+    href="#main"
+  >
+    Skip to main content
+  </a>
   <section
     aria-label="Official website of the United States government"
     class="ds-c-usa-banner"
@@ -1717,8 +1643,6 @@ exports[`Header renders logged-in header with firstName 1`] = `
       <svg
         aria-hidden="true"
         class="ds-c-icon ds-c-icon--usa-flag ds-c-usa-banner__header-icon"
-        focusable="false"
-        id="icon-20"
         viewBox="0 0 16 11"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -1761,8 +1685,6 @@ exports[`Header renders logged-in header with firstName 1`] = `
           aria-hidden="true"
           class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
           direction="down"
-          focusable="false"
-          id="icon-21"
           viewBox="0 0 320 512"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -1773,7 +1695,7 @@ exports[`Header renders logged-in header with firstName 1`] = `
         </svg>
       </p>
       <button
-        aria-controls="gov-banner_19"
+        aria-controls="hc-c-header__usa-banner__panel"
         aria-expanded="false"
         class="ds-c-usa-banner__button"
         type="button"
@@ -1786,8 +1708,6 @@ exports[`Header renders logged-in header with firstName 1`] = `
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
             direction="down"
-            focusable="false"
-            id="icon-22"
             viewBox="0 0 320 512"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -1804,8 +1724,6 @@ exports[`Header renders logged-in header with firstName 1`] = `
           <svg
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin ds-c-usa-banner__button-icon"
-            focusable="false"
-            id="icon-23"
             viewBox="-2 -2 18 18"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -1826,7 +1744,7 @@ exports[`Header renders logged-in header with firstName 1`] = `
       <div
         class="ds-c-usa-banner__guidance-container"
         hidden=""
-        id="gov-banner_19"
+        id="hc-c-header__usa-banner__panel"
       >
         <div
           class="ds-c-usa-banner__guidance-item"
@@ -1834,8 +1752,6 @@ exports[`Header renders logged-in header with firstName 1`] = `
           <svg
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--building-circle ds-c-usa-banner__guidance-icon"
-            focusable="false"
-            id="icon-24"
             viewBox="0 0 54 54"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -1863,13 +1779,10 @@ exports[`Header renders logged-in header with firstName 1`] = `
               Official websites use .gov
             </strong>
             <br />
-            A
-             
+            A 
             <strong>
-               
-              .gov
+               .gov 
             </strong>
-             
             website belongs to an official government organization in the United States.
           </p>
         </div>
@@ -1879,8 +1792,6 @@ exports[`Header renders logged-in header with firstName 1`] = `
           <svg
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--lock-circle ds-c-usa-banner__guidance-icon"
-            focusable="false"
-            id="icon-25"
             viewBox="0 0 54 54"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -1904,19 +1815,14 @@ exports[`Header renders logged-in header with firstName 1`] = `
               Secure .gov websites use HTTPS
             </strong>
             <br />
-            A
-             
+            A 
             <strong>
-               
-              lock
-               
+              lock 
             </strong>
-             (
+            (
             <svg
               aria-hidden="true"
               class="ds-c-icon ds-c-icon--lock ds-c-usa-banner__inline-lock-icon"
-              focusable="false"
-              id="icon-26"
               viewBox="0 0 52 64"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -1926,13 +1832,12 @@ exports[`Header renders logged-in header with firstName 1`] = `
               />
             </svg>
             )
-             
-            or
-             
+            <span>
+               or
+            </span>
             <strong>
-              https://
+               https:// 
             </strong>
-             
             means you've safely connected to the .gov website. Share sensitive information only on official, secure websites.
           </p>
         </div>
@@ -1944,12 +1849,6 @@ exports[`Header renders logged-in header with firstName 1`] = `
     class="hc-c-header hc-c-header--logged-in"
     role="banner"
   >
-    <a
-      class="ds-c-skip-nav"
-      href="#main"
-    >
-      Skip to main content
-    </a>
     <div
       class="ds-l-container"
     >
@@ -1966,6 +1865,7 @@ exports[`Header renders logged-in header with firstName 1`] = `
             <svg
               aria-labelledby="hc-c-logo__title"
               height="25"
+              role="img"
               viewBox="0 0 253.05 31.65"
               width="200"
               xmlns="http://www.w3.org/2000/svg"
@@ -2054,8 +1954,6 @@ exports[`Header renders logged-in header with firstName 1`] = `
             <svg
               aria-hidden="true"
               class="ds-c-icon ds-u-margin-right--1 ds-c-icon--menu"
-              focusable="false"
-              id="icon-27"
               viewBox="0 0 448 512"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -2064,7 +1962,9 @@ exports[`Header renders logged-in header with firstName 1`] = `
                 fill="currentColor"
               />
             </svg>
-            Menu
+            <span>
+              Menu
+            </span>
           </button>
           <div
             class="hc-c-menu"
@@ -2131,6 +2031,12 @@ exports[`Header renders logged-in header with firstName 1`] = `
 
 exports[`Header renders logged-in header without firstName 1`] = `
 <div>
+  <a
+    class="ds-c-skip-nav"
+    href="#main"
+  >
+    Skip to main content
+  </a>
   <section
     aria-label="Official website of the United States government"
     class="ds-c-usa-banner"
@@ -2141,8 +2047,6 @@ exports[`Header renders logged-in header without firstName 1`] = `
       <svg
         aria-hidden="true"
         class="ds-c-icon ds-c-icon--usa-flag ds-c-usa-banner__header-icon"
-        focusable="false"
-        id="icon-29"
         viewBox="0 0 16 11"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -2185,8 +2089,6 @@ exports[`Header renders logged-in header without firstName 1`] = `
           aria-hidden="true"
           class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
           direction="down"
-          focusable="false"
-          id="icon-30"
           viewBox="0 0 320 512"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -2197,7 +2099,7 @@ exports[`Header renders logged-in header without firstName 1`] = `
         </svg>
       </p>
       <button
-        aria-controls="gov-banner_28"
+        aria-controls="hc-c-header__usa-banner__panel"
         aria-expanded="false"
         class="ds-c-usa-banner__button"
         type="button"
@@ -2210,8 +2112,6 @@ exports[`Header renders logged-in header without firstName 1`] = `
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
             direction="down"
-            focusable="false"
-            id="icon-31"
             viewBox="0 0 320 512"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -2228,8 +2128,6 @@ exports[`Header renders logged-in header without firstName 1`] = `
           <svg
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin ds-c-usa-banner__button-icon"
-            focusable="false"
-            id="icon-32"
             viewBox="-2 -2 18 18"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -2250,7 +2148,7 @@ exports[`Header renders logged-in header without firstName 1`] = `
       <div
         class="ds-c-usa-banner__guidance-container"
         hidden=""
-        id="gov-banner_28"
+        id="hc-c-header__usa-banner__panel"
       >
         <div
           class="ds-c-usa-banner__guidance-item"
@@ -2258,8 +2156,6 @@ exports[`Header renders logged-in header without firstName 1`] = `
           <svg
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--building-circle ds-c-usa-banner__guidance-icon"
-            focusable="false"
-            id="icon-33"
             viewBox="0 0 54 54"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -2287,13 +2183,10 @@ exports[`Header renders logged-in header without firstName 1`] = `
               Official websites use .gov
             </strong>
             <br />
-            A
-             
+            A 
             <strong>
-               
-              .gov
+               .gov 
             </strong>
-             
             website belongs to an official government organization in the United States.
           </p>
         </div>
@@ -2303,8 +2196,6 @@ exports[`Header renders logged-in header without firstName 1`] = `
           <svg
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--lock-circle ds-c-usa-banner__guidance-icon"
-            focusable="false"
-            id="icon-34"
             viewBox="0 0 54 54"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -2328,19 +2219,14 @@ exports[`Header renders logged-in header without firstName 1`] = `
               Secure .gov websites use HTTPS
             </strong>
             <br />
-            A
-             
+            A 
             <strong>
-               
-              lock
-               
+              lock 
             </strong>
-             (
+            (
             <svg
               aria-hidden="true"
               class="ds-c-icon ds-c-icon--lock ds-c-usa-banner__inline-lock-icon"
-              focusable="false"
-              id="icon-35"
               viewBox="0 0 52 64"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -2350,13 +2236,12 @@ exports[`Header renders logged-in header without firstName 1`] = `
               />
             </svg>
             )
-             
-            or
-             
+            <span>
+               or
+            </span>
             <strong>
-              https://
+               https:// 
             </strong>
-             
             means you've safely connected to the .gov website. Share sensitive information only on official, secure websites.
           </p>
         </div>
@@ -2368,12 +2253,6 @@ exports[`Header renders logged-in header without firstName 1`] = `
     class="hc-c-header hc-c-header--logged-in"
     role="banner"
   >
-    <a
-      class="ds-c-skip-nav"
-      href="#main"
-    >
-      Skip to main content
-    </a>
     <div
       class="ds-l-container"
     >
@@ -2390,6 +2269,7 @@ exports[`Header renders logged-in header without firstName 1`] = `
             <svg
               aria-labelledby="hc-c-logo__title"
               height="25"
+              role="img"
               viewBox="0 0 253.05 31.65"
               width="200"
               xmlns="http://www.w3.org/2000/svg"
@@ -2473,8 +2353,6 @@ exports[`Header renders logged-in header without firstName 1`] = `
             <svg
               aria-hidden="true"
               class="ds-c-icon ds-u-margin-right--1 ds-c-icon--menu"
-              focusable="false"
-              id="icon-36"
               viewBox="0 0 448 512"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -2483,7 +2361,9 @@ exports[`Header renders logged-in header without firstName 1`] = `
                 fill="currentColor"
               />
             </svg>
-            Menu
+            <span>
+              Menu
+            </span>
           </button>
           <div
             class="hc-c-menu"

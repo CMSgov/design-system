@@ -8,6 +8,7 @@ exports[`Logo renders English logo 1`] = `
     <svg
       aria-labelledby="hc-c-logo__title"
       height="25"
+      role="img"
       viewBox="0 0 253.05 31.65"
       width="200"
       xmlns="http://www.w3.org/2000/svg"
@@ -86,6 +87,7 @@ exports[`Logo renders Spanish logo 1`] = `
     <svg
       aria-labelledby="hc-c-logo__title"
       height="25"
+      role="img"
       viewBox="0 0 313.54 31.74"
       width="237"
       xmlns="http://www.w3.org/2000/svg"

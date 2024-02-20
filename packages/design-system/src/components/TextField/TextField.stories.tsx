@@ -1,19 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TextField from './TextField';
 import { unmaskValue } from './maskHelpers';
 import { PHONE_MASK, SSN_MASK, ZIP_MASK, CURRENCY_MASK } from './useLabelMask';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
-import { useArgs } from '@storybook/preview-api';
 
 const meta: Meta<typeof TextField> = {
   title: 'Components/TextField',
   component: TextField,
   args: {
-    label: 'Text Field Label',
+    label: 'Enter some text.',
     onChange: action('onChange'),
     onBlur: action('onBlur'),
     name: 'text-field-story',
+  },
+  argTypes: {
+    errorMessage: { control: 'text' },
+    hint: { control: 'text' },
+    requirementLabel: { control: 'text' },
+    value: { control: 'text' },
+  },
+  parameters: {
+    docs: {
+      underlyingHtmlElements: ['input'],
+    },
   },
 };
 export default meta;
@@ -45,17 +55,24 @@ const UncontrolledTemplate: Story = {
 
 const ControlledTemplate: Story = {
   render: function Component(args) {
-    const [_, updateArgs] = useArgs();
+    // Updating the actual args on every keystroke is hard for Storybook to keep up with,
+    // so we want to treat this story like other components of ours which can either be
+    // controlled or uncontrolled. The TextField itself is always controlled by our story,
+    // but whether this story is controlled by args depends on whether the user has
+    // supplied a new value of the `value` arg to this story.
+    const [localValue, setLocalValue] = useState();
+    const value = args.value ?? localValue ?? '';
     const onChange = (event) => {
       action('onChange')(event);
-      updateArgs({ value: event.currentTarget.value });
+      setLocalValue(event.currentTarget.value);
     };
 
-    if (args.labelMask) {
-      args.labelMask = getMaskFunction(args.labelMask as any);
+    let labelMask = args.labelMask;
+    if (labelMask) {
+      labelMask = getMaskFunction(args.labelMask as any);
     }
 
-    return <TextField {...args} onChange={onChange} />;
+    return <TextField {...args} labelMask={labelMask} value={value} onChange={onChange} />;
   },
 };
 
@@ -72,14 +89,9 @@ export const MultilineField: Story = {
 export const ErrorField: Story = {
   ...UncontrolledTemplate,
   args: {
-    errorMessage: 'Example error message',
-    hint: 'Helpful hint text',
+    errorMessage: 'This is an example error message.',
+    hint: 'This is where you put helpful hint text.',
   },
-};
-
-export const SuccessField: Story = {
-  ...UncontrolledTemplate,
-  args: { fieldClassName: 'ds-c-field--success' },
 };
 
 export const DisabledField: Story = {
@@ -87,8 +99,17 @@ export const DisabledField: Story = {
   args: { disabled: true },
 };
 
+const disabledArg = {
+  table: {
+    disable: true,
+  },
+};
+
 export const AllMaskedFields: Story = {
-  render: function Component(args) {
+  argTypes: {
+    labelMask: disabledArg,
+  },
+  render: function Component() {
     return (
       <>
         <TextField
@@ -139,10 +160,13 @@ export const LabelMaskedPhone: Story = {
   ...ControlledTemplate,
   args: {
     name: 'labelMask-phone',
-    label: 'Enter your phone number',
-    hint: 'Only enter an area code + 7 digit phone number where you can be reached.',
+    label: 'Enter your phone number.',
+    hint: 'This is a 10-digit phone number where you can be reached.',
     labelMask: 'PHONE_MASK' as any,
     numeric: true,
+  },
+  argTypes: {
+    mask: disabledArg,
   },
 };
 
@@ -150,10 +174,13 @@ export const LabelMaskedSSN: Story = {
   ...ControlledTemplate,
   args: {
     name: 'labelMask-ssn',
-    label: 'Enter your social security number',
-    hint: 'Please enter your SSA administered Social Security Number',
+    label: 'Enter your Social Security Number.',
+    hint: 'This number was administered to you by the Social Security Administration.',
     labelMask: 'SSN_MASK' as any,
     numeric: true,
+  },
+  argTypes: {
+    mask: disabledArg,
   },
 };
 
@@ -161,10 +188,13 @@ export const LabelMaskedPostalCode: Story = {
   ...ControlledTemplate,
   args: {
     name: 'labelMask-zipcode',
-    label: 'Enter your postal service zip code',
-    hint: 'Please enter your Zip Code',
+    label: 'Enter your postal service ZIP code.',
+    hint: 'This is the five-digit ZIP code where you receive your mail.',
     labelMask: 'ZIP_MASK' as any,
     numeric: true,
+  },
+  argTypes: {
+    mask: disabledArg,
   },
 };
 
@@ -172,9 +202,12 @@ export const LabelMaskedCurrency: Story = {
   ...ControlledTemplate,
   args: {
     name: 'labelMask-currency',
-    label: 'Enter a dollar amount',
-    hint: 'Please enter a dollar amount',
+    label: 'Enter your estimated yearly income.',
+    hint: 'This should be a dollar amount.',
     labelMask: 'CURRENCY_MASK' as any,
     numeric: true,
+  },
+  argTypes: {
+    mask: disabledArg,
   },
 };

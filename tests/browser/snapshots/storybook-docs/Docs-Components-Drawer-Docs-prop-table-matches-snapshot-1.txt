@@ -1,0 +1,77 @@
+[
+  [
+    "ariaLabel",
+    "Gives more context to screen readers on the Drawer close button.\nstring",
+    "-"
+  ],
+  [
+    "className",
+    "string",
+    "-"
+  ],
+  [
+    "closeButtonText",
+    "ReactNode",
+    "-"
+  ],
+  [
+    "closeButtonVariation",
+    "\"solid\"\n\"ghost\"",
+    "-"
+  ],
+  [
+    "footerBody",
+    "ReactNode",
+    "-"
+  ],
+  [
+    "footerTitle",
+    "ReactNode",
+    "-"
+  ],
+  [
+    "hasFocusTrap",
+    "Enables focus trap functionality within Drawer.\nboolean",
+    "false"
+  ],
+  [
+    "heading*",
+    "Text for the Drawer heading. Required because the heading will be focused on mount.\nReactNode",
+    "-"
+  ],
+  [
+    "headingId",
+    "A unique id to be used on heading element to label multiple instances of Drawer.\nstring",
+    "-"
+  ],
+  [
+    "headingLevel",
+    "Heading type to override default <h3>\n\"1\"\n\"2\"\n\"3\"\n\"4\"\n\"5\"",
+    "\"3\""
+  ],
+  [
+    "headingRef",
+    "Ref to heading element\nMutableRefObject<any>",
+    "-"
+  ],
+  [
+    "isFooterSticky",
+    "Enables \"sticky\" position of Drawer footer element.\nboolean",
+    "-"
+  ],
+  [
+    "isHeaderSticky",
+    "Enables \"sticky\" position of Drawer header element.\nboolean",
+    "-"
+  ],
+  [
+    "isOpen",
+    "Controls whether the dialog is in an open state\nboolean",
+    "-"
+  ],
+  [
+    "onCloseClick*",
+    "Called when the user activates the close button or presses the ESC key if focus trapping is enabled. The parent of this component is responsible for showing or not showing the drawer, so you need to use this callback to make that happen. The dialog does not hide itself.\n\n(event: MouseEvent<Element, MouseEvent> | KeyboardEvent<Element>) => void",
+    "-"
+  ]
+]

@@ -1,23 +1,17 @@
 import { DialogProps } from './Dialog';
-import {
-  defaultAnalyticsFunction,
-  EventCategory,
-  EventType,
-  useAnalyticsContent,
-  eventExtensionText,
-} from '../analytics';
-import { dialogSendsAnalytics } from '../flags';
+import { EventCategory, EventType, useAnalyticsContent, eventExtensionText } from '../analytics';
+import { config } from '../config';
 
 export function useDialogAnalytics({
   analytics,
   analyticsLabelOverride,
-  onAnalyticsEvent = defaultAnalyticsFunction,
+  onAnalyticsEvent = config().defaultAnalyticsFunction,
 }: DialogProps) {
   function sendDialogEvent(
     content: string | undefined,
     eventAttributes: { event_name: string; event_action: string }
   ) {
-    if (analytics !== true && (!dialogSendsAnalytics() || analytics === false)) {
+    if (analytics !== true && (!config().dialogSendsAnalytics || analytics === false)) {
       return;
     }
 
@@ -39,7 +33,6 @@ export function useDialogAnalytics({
   }
 
   const [headingRef] = useAnalyticsContent({
-    componentName: 'Dialog',
     onMount: (content: string | undefined) => {
       sendDialogEvent(content, {
         event_name: 'modal_impression',

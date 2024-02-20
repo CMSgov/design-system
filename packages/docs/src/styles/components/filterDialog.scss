@@ -16,7 +16,7 @@
   right: unset;
   z-index: var(--z-drawer);
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     outline: $spacer-2 solid WindowText;
   }
 }

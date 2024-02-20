@@ -76,7 +76,7 @@ const getDefaultSelectedId = (props): string => {
  * @return {String} Tab ID
  */
 const panelTabId = (panel): string => {
-  return panel.props.tabId || `ds-c-tabs__item--${panel.props.id}`;
+  return panel.props.tabId ?? `${panel.props.id}__tab`;
 };
 
 /**

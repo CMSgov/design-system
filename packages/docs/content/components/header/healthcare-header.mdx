@@ -37,7 +37,7 @@ The HealthCare.gov header component varies depending on the user's state (ie. lo
 
 ### React
 
-<SeeStorybookForReactGuidance storyId={'healthcare-header--docs'} />
+<SeeStorybookForGuidance storyId={'healthcare-header--docs'} />
 
 ### Google Analytics
 
@@ -51,7 +51,7 @@ Import and set the `setHeaderSendsAnalytics` feature flag to `false` in your app
 
 ```js
 import { setHeaderSendsAnalytics } from '@cmsgov/<design-system-package>';
-setHeaderSendsAnalytics(false);
+config({ headerSendsAnalytics: false });
 ```
 
 ## Component maturity

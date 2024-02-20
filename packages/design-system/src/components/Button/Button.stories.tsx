@@ -11,6 +11,11 @@ const meta: Meta<typeof Button> = {
     children: 'Your button text here',
     onDark: false,
   },
+  parameters: {
+    docs: {
+      underlyingHtmlElements: ['a', 'button'],
+    },
+  },
 };
 export default meta;
 

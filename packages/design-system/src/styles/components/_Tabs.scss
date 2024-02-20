@@ -81,7 +81,7 @@
       transform: scale3d(1, 1, 1);
     }
 
-    @media (-ms-high-contrast: active), (forced-colors: active) {
+    @media (forced-colors: active) {
       border-color: windowText;
       border-bottom-color: window;
       color: windowText;
@@ -111,7 +111,7 @@
     border-color: var(--tabs__border-color--disabled);
     color: var(--tabs__color--disabled);
 
-    @media (-ms-high-contrast: active), (forced-colors: active) {
+    @media (forced-colors: active) {
       color: GrayText;
       cursor: not-allowed;
     }

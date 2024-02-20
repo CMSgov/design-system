@@ -5,13 +5,13 @@ import userEvent from '@testing-library/user-event';
 import { render, screen } from '@testing-library/react';
 
 const defaultProps: DateInputProps = {
-  labelId: '1',
   dayName: 'day',
   dayLabel: 'Day',
   monthName: 'month',
   monthLabel: 'Month',
-  yearName: 'Year',
-  yearLabel: 'year',
+  yearName: 'year',
+  yearLabel: 'Year',
+  id: 'static-id',
 };
 
 function renderDateInput(customProps: Partial<DateInputProps> = {}) {
@@ -25,8 +25,32 @@ function expectInvalid(textField: HTMLElement) {
 
 describe('DateInput', () => {
   it('renders with all defaultProps', () => {
-    const { asFragment } = renderDateInput();
-    expect(asFragment()).toMatchSnapshot();
+    renderDateInput();
+
+    const inputs = screen.getAllByRole('textbox');
+    const monthLabel = screen.getByLabelText(/month/i);
+    const dayLabel = screen.getByLabelText(/day/i);
+    const yearLabel = screen.getByLabelText(/year/i);
+
+    expect(monthLabel).toHaveClass('ds-c-field--month');
+    expect(monthLabel).toHaveAttribute('name', 'month');
+    expect(monthLabel).toHaveAttribute('maxlength', '2');
+
+    expect(dayLabel).toHaveClass('ds-c-field--day');
+    expect(dayLabel).toHaveAttribute('name', 'day');
+    expect(dayLabel).toHaveAttribute('maxlength', '2');
+
+    expect(yearLabel).toHaveClass('ds-c-field--year');
+    expect(yearLabel).toHaveAttribute('name', 'year');
+    expect(yearLabel).toHaveAttribute('maxlength', '4');
+
+    inputs.forEach((input) => {
+      expect(input).toHaveAttribute('inputmode', 'numeric');
+      expect(input).toHaveAttribute('pattern', '[0-9]*');
+      expect(input).toHaveAttribute('type', 'text');
+    });
+
+    expect(screen.queryAllByText('/')).toHaveLength(2);
   });
 
   it('is inversed', async () => {

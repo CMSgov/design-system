@@ -6,14 +6,14 @@ import { AddIcon } from './AddIcon';
 describe('SvgIcon', () => {
   const renderSvgIcon = (overrideProps?) => {
     return render(
-      <SvgIcon ariaHidden={false} title="test icon" id="test-icon" {...overrideProps}>
+      <SvgIcon ariaHidden={false} title="test icon" {...overrideProps}>
         <path />
       </SvgIcon>
     );
   };
 
   it('passes through additional props', () => {
-    renderSvgIcon({ 'data-testid': 'iconTest' });
+    renderSvgIcon({ 'data-testid': 'iconTest', id: 'static-id' });
     const iconEl = screen.getByTestId('iconTest');
     expect(iconEl).toMatchSnapshot();
   });
@@ -26,24 +26,24 @@ describe('SvgIcon', () => {
 
   describe('when ariaHidden is false', () => {
     it('shows accessibility attributes', () => {
-      renderSvgIcon();
+      renderSvgIcon({ id: 'static-id' });
       const iconEl = screen.getByRole('img');
 
       expect(iconEl).toBeDefined();
-      expect(iconEl.getAttribute('aria-labelledby')).toEqual('test-icon__title');
+      expect(iconEl.getAttribute('aria-labelledby')).toEqual('static-id__title');
     });
 
     it('renders title', () => {
-      renderSvgIcon();
+      renderSvgIcon({ id: 'static-id' });
       const iconEl = screen.getByTitle('test icon');
       expect(iconEl).toBeDefined();
     });
 
     it('updates aria-labelledby if description exists', () => {
-      renderSvgIcon({ description: 'i am a description of the svg' });
+      renderSvgIcon({ description: 'i am a description of the svg', id: 'static-id' });
       const iconEl = screen.getByRole('img');
 
-      expect(iconEl.getAttribute('aria-labelledby')).toEqual('test-icon__title test-icon__desc');
+      expect(iconEl.getAttribute('aria-labelledby')).toEqual('static-id__title static-id__desc');
     });
   });
 
@@ -52,6 +52,12 @@ describe('SvgIcon', () => {
       renderSvgIcon({ ariaHidden: true });
       const iconEl = screen.queryByRole('img');
       expect(iconEl).toBe(null);
+    });
+
+    it('does not have an id', () => {
+      renderSvgIcon({ 'data-testid': 'testId', ariaHidden: true });
+      const iconEl = screen.getByTestId('testId');
+      expect(iconEl).not.toHaveAttribute('id');
     });
 
     it('renders without title or description"', () => {

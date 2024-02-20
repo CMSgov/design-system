@@ -7,7 +7,7 @@ export type TableCellScope = 'row' | 'col' | 'rowgroup' | 'colgroup';
 export type TableCellAlign = 'center' | 'left' | 'right';
 export type TableCellComponent = 'td' | 'th';
 
-export interface TableCellProps {
+interface BaseTableCellProps {
   /**
    * Set the text-align on the table cell content. Options: left, center, right.
    */
@@ -60,17 +60,17 @@ export interface TableCellProps {
 
 type OmitProps = 'align' | 'children' | 'className' | 'headers' | 'id' | 'scope';
 
+export type TableCellProps = Omit<React.ComponentPropsWithoutRef<'th'>, OmitProps> &
+  Omit<React.ComponentPropsWithoutRef<'td'>, OmitProps> &
+  BaseTableCellProps;
+
 /**
  * `TableCell` dynamically renders a `<th>` or `<td>` element based on the
  * parent component or user specified `component` prop. By default `TableCell`
  * will automatically render a `<th>` element if the parent component is
  * `TableHead`, otherwise it will render a `<td>` element.
  */
-export const TableCell: React.FC<
-  Omit<React.ComponentPropsWithoutRef<'th'>, OmitProps> &
-    Omit<React.ComponentPropsWithoutRef<'td'>, OmitProps> &
-    TableCellProps
-> = ({
+export const TableCell = ({
   align,
   children,
   className,

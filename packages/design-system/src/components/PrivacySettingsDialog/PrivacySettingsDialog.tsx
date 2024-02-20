@@ -17,6 +17,10 @@ interface PrivacySettingsDialogProps {
   privacyPolicyUrl: string;
   thirdPartyPoliciesUrl?: string;
   onExit: () => void;
+  /**
+   * Controls whether the dialog is in an open state
+   */
+  isOpen?: boolean;
 }
 
 /**
@@ -62,6 +66,7 @@ export const PrivacySettingsDialog = (props: PrivacySettingsDialogProps) => {
           {t('privacy.save')}
         </Button>
       }
+      isOpen={props.isOpen}
     >
       <p className="ds-u-margin-top--0" dangerouslySetInnerHTML={{ __html: intro }} />
 

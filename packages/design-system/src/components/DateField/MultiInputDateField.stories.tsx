@@ -6,34 +6,20 @@ import type { Meta, StoryObj } from '@storybook/react';
 const meta: Meta<typeof MultiInputDateField> = {
   title: 'Components/MultiInputDateField',
   component: MultiInputDateField,
+  argTypes: {
+    errorMessage: { control: 'text' },
+    hint: { control: 'text' },
+    requirementLabel: { control: 'text' },
+  },
+  args: {
+    label: 'Enter your date of birth.',
+  },
 };
 export default meta;
 
 type Story = StoryObj<typeof MultiInputDateField>;
 
-const ControlledTemplate: Story = {
-  render: function Component(args) {
-    const [dateState, setDateState] = useState({ month: '10', day: '30', year: '1980' });
-
-    return (
-      <MultiInputDateField
-        {...args}
-        label={
-          <span>
-            Controlled example using <code>dateFormatter</code>
-          </span>
-        }
-        hint="Try to enter a date with invalid number of digits"
-        monthValue={dateState.month}
-        dayValue={dateState.day}
-        yearValue={dateState.year}
-        onChange={(e, dateObject) => setDateState(dateObject)}
-      />
-    );
-  },
-};
-
-export const MultiInputDateFieldDefault: Story = {
+export const Default: Story = {
   args: {
     monthDefaultValue: '10',
     dayDefaultValue: '31',
@@ -41,7 +27,7 @@ export const MultiInputDateFieldDefault: Story = {
   },
 };
 
-export const MultiInputDateFieldWithError: Story = {
+export const WithError: Story = {
   args: {
     errorMessage: 'Please enter a year in the past',
     monthDefaultValue: '10',
@@ -51,11 +37,26 @@ export const MultiInputDateFieldWithError: Story = {
   },
 };
 
-export const ControlledMultiInputDateField: Story = {
-  ...ControlledTemplate,
+export const Controlled: Story = {
+  args: {
+    hint: 'In this example, the month, day, and year values are controlled by the parent component.',
+  },
+  render: function Component(args) {
+    const [dateState, setDateState] = useState({ month: '10', day: '30', year: '1980' });
+
+    return (
+      <MultiInputDateField
+        {...args}
+        monthValue={dateState.month}
+        dayValue={dateState.day}
+        yearValue={dateState.year}
+        onChange={(e, dateObject) => setDateState(dateObject)}
+      />
+    );
+  },
 };
 
-export const InvertedMultiInputDateField: Story = {
+export const Inverted: Story = {
   args: {
     errorMessage: 'Please enter a year in the past',
     monthDefaultValue: '10',

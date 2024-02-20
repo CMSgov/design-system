@@ -1,0 +1,56 @@
+---
+title: Release 9.0
+date: 2024-01-25
+intro: Differentiating between labels, hints, and errors, standardizing dialog close buttons, improving the drawer and dialog APIs, consolidating configuration functions, and refining typography design tokens.
+---
+
+import dialogXClose from '../../src/images/dialog-x-close.png';
+
+Along with a host of bugfixes and minor improvements, this major release focused on differentiating between labels, hints, and errors, standardizing dialog close buttons, improving the drawer and dialog APIs, consolidating configuration functions, and refining typography design tokens. This release is scheduled for late January, 2024 and is [currently available in beta form](https://github.com/CMSgov/design-system/releases). Read the sections below for more details about this release.
+
+## Whatʼs new in 9.0
+
+### Differentiating between labels, hints, and inline errors
+
+Weʼve restructured form-field labels to improve accessibility, customizability, and clarity of guidance. You can read about this change in more detail in [this migration guide](/migration-guides/v9-label-updates), but the gist is that labels used to contain both hints and inline-error messages and now theyʼre separate components.
+
+Making them separate elements makes them easier to style predictably, and moving the hint and error text out of the HTML `<label>` elements makes them an appropriate place to put interactive content.
+
+The React components for the various design system form fields handle this change automatically, as they all have labels, hints, and error text built in. Unless youʼve built custom form fields for your application, the impact of this change should be minimal.
+
+We hope these changes can be leveraged to create even more helpful and accessible forms for delivering important government services.
+
+### Standardizing dialog close buttons
+
+Dialog close buttons have gotten a visual refresh. All themes have standardized on an "X" for close, which is a familiar part of the digital interface vernacular that is succinct and compact.
+
+<div className="ds-u-measure--wide ds-u-text-align--center ds-u-margin-top--3">
+  <img src={dialogXClose} width={600} className="ds-u-display--inline-block" alt="Screenshots showing the X close button in the dialog in unfocused and focused modes" />
+</div>
+
+This refreshed "X" button has a large hit area to make sure it is still easy to tap and click, and it still provides the same amount of context for screen-readers as before.
+
+### Improving drawers and dialogs
+
+We fixed [a focus-management bug in drawers and dialogs](https://github.com/CMSgov/design-system/pull/2890), but it required a small API change to the React components. Now instead of conditionally rendering them to show or hide, you pass an `isOpen` prop to control their visibility. **The old API will be supported until the next major version**, but a drawer or dialog will still have the bug until it is updated.
+
+While [the change required in application code](https://github.com/CMSgov/design-system/pull/2890) is straightforward, it's still a change, and wouldn't it be nice if you got something more out of the deal besides a bugfix? What if you could get some new features for drawers and dialogs too? We were thinking the same thing, so we're releasing a couple new convenience features.
+
+1. The new `DrawerManager` feature helps you manage multiple drawers in a page. [Read all about the `DrawerManager` here](/storybook/?path=/docs/components-drawermanager--docs).
+2. The new `useDialog` hook provides an alternative imperative interface for opening a modal dialog and waiting asynchronously for the final result of the user's interaction with the modal. [Read about the new `useDialog` hook here](/storybook/?path=/docs/components-dialog--docs#usedialog-example).
+
+We hope you find these two new tools useful. [Let us know if you have feedback!](/contact)
+
+### Consolidating configuration functions
+
+As of version 9 of the `@cmsgov/design-system` package, the controls for the various global configuration options have been rolled up into a single function that can be called to set or get global design-system settings. You can read more about it on the new [global config documentation page](/components/config).
+
+### Refining typography design tokens
+
+If youʼve been keeping up with our release publications, youʼve seen our design-token system grow and evolve. The next stage of token development is leveraging them more in the design tools we use at CMS. This means translating more of the detailed typography information that was previously only represented in CSS into our token system so we can have greater parity between code and design tools. [Check out our code release notes](https://github.com/CMSgov/design-system/releases) for details about how these changes have affected our CSS variables.
+
+## Whatʼs on deck
+
+### Figma to come to the CMS Design System!
+
+The _core_ and _child_ design system UI Kits will be moving from Sketch to Figma in the first program increment of 2024. CMS will continually iterate on and improve the integration process with Figma to unlock greater design and development capabilities. We're excited for this migration and all it will mean for product teams and the design system team and our collaboration!

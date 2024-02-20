@@ -7,9 +7,9 @@ import { render, screen } from '@testing-library/react';
 const defaultProps = {
   domain: 'Test.gov',
   privacySettings: [
-    { ...privacySettingConfigs[0], value: '0' },
-    { ...privacySettingConfigs[1], value: '1' },
-    { ...privacySettingConfigs[2], value: '0' },
+    { ...privacySettingConfigs[0], defaultValue: '0', defaultChecked: false },
+    { ...privacySettingConfigs[1], defaultValue: '1', defaultChecked: false },
+    { ...privacySettingConfigs[2], defaultValue: '0', defaultChecked: false },
   ],
   setPrivacySetting: jest.fn(),
 };

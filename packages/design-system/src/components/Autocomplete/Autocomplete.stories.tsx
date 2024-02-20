@@ -11,7 +11,6 @@ const meta: Meta<typeof Autocomplete> = {
   args: {
     // setting some defaults so controls turn on by default
     clearInputText: 'Clear search',
-    clearInputOnBlur: true,
     clearSearchButton: true,
     loadingMessage: 'Loading...',
     noResultsMessage: 'No results',
@@ -25,7 +24,7 @@ const Template = (args) => {
   const { items, textFieldLabel, textFieldHint, ...autocompleteArgs } = args;
   const [input, setInput] = useState('');
   const onInputValueChange = (...args) => {
-    action('onInputValueChange');
+    action('onInputValueChange')(args);
     setInput(args[0]);
   };
   let filteredItems = null;
@@ -33,7 +32,6 @@ const Template = (args) => {
     filteredItems = items.filter(
       (item) => !item.name || item.name.toLowerCase().includes(input.toLowerCase())
     );
-    filteredItems.forEach((item) => console.log(item));
   }
   return (
     <Autocomplete
@@ -42,12 +40,7 @@ const Template = (args) => {
       onInputValueChange={onInputValueChange}
       items={filteredItems}
     >
-      <TextField
-        label={textFieldLabel}
-        hint={textFieldHint}
-        name="Downshift_autocomplete"
-        value={input}
-      />
+      <TextField label={textFieldLabel} hint={textFieldHint} name="autocomplete" value={input} />
     </Autocomplete>
   );
 };
@@ -63,7 +56,7 @@ function makeItem(name: string, children?: React.ReactNode) {
 export const Default: Story = {
   render: Template,
   args: {
-    textFieldLabel: 'Enter and select a drug to see its cost under each plan',
+    textFieldLabel: 'Enter and select a drug to see its cost under each plan.',
     textFieldHint:
       'Type a letter to see results, then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
     items: [
@@ -105,7 +98,7 @@ export const Default: Story = {
 export const LabeledList: Story = {
   render: Template,
   args: {
-    textFieldLabel: 'Search for and select your county',
+    textFieldLabel: 'Search for and select your county.',
     textFieldHint:
       'Type "C" then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
     label: 'Select from the options below:',
@@ -125,7 +118,7 @@ export const LabeledList: Story = {
 export const CustomMarkup: Story = {
   render: Template,
   args: {
-    textFieldLabel: 'Select a snack that starts with "C"',
+    textFieldLabel: 'Select a snack that starts with "C".',
     textFieldHint:
       'Type "C" to start seeing a list of snacks. Clicking the last item should not change the input value to "Search all snacks"',
     label: 'Select from the options below:',
@@ -175,7 +168,7 @@ export const LoadingMessage: Story = {
     clearSearchButton: false,
     loading: true,
     items: [],
-    textFieldLabel: 'This will only show a loading message',
+    textFieldLabel: 'This will only show a loading message.',
     textFieldHint: 'List should return string Loading to simulate async data call.',
   } as any,
 };
@@ -185,7 +178,7 @@ export const NoResults: Story = {
   args: {
     items: [],
     clearSearchButton: false,
-    textFieldLabel: 'This will show a "no results" message',
+    textFieldLabel: 'This will show a "no results" message.',
     textFieldHint: "Start typing, but you'll only get a loading message.",
   } as any,
 };

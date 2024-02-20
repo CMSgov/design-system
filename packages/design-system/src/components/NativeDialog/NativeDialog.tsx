@@ -8,6 +8,11 @@ export interface NativeDialogProps extends Omit<DialogHTMLAttributes<HTMLElement
    * Pass `true` to have the dialog close when its backdrop pseudo-element is clicked
    */
   backdropClickExits?: boolean;
+  boundingBoxRef?: React.MutableRefObject<any>;
+  /**
+   * Controls whether the dialog is in an open state
+   */
+  isOpen?: boolean;
   /**
    * Function called to close dialog.
    */
@@ -26,14 +31,28 @@ export interface NativeDialogProps extends Omit<DialogHTMLAttributes<HTMLElement
   showModal?: boolean;
 }
 
+/**
+ * This is an internal component and may change without warning. Use at your own risk!
+ */
 export const NativeDialog = ({
   children,
   exit,
+  isOpen,
   showModal,
   backdropClickExits,
+  boundingBoxRef,
   ...dialogProps
 }: NativeDialogProps) => {
   const dialogRef = useRef(null);
+
+  if (isOpen === undefined) {
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn(
+        "The 'isOpen' prop is now used to control the state of Dialogs and Drawers. Please do not conditionally render these components to control their state. All Dialogs and Drawers will become invisible without this prop in the next major release. Using this prop will fix a focus-management issue that affects accessibility."
+      );
+    }
+    isOpen = true;
+  }
 
   // Register dialog with the polyfill if necessary
   useLayoutEffect(() => {
@@ -41,27 +60,50 @@ export const NativeDialog = ({
     dialogPolyfill.registerDialog(dialogRef.current);
   });
 
-  // Open and close the dialog with the appropriate method on mount and unmount
-  useEffect(() => {
-    const dialogNode = dialogRef.current;
-    showModal ? dialogNode.showModal() : dialogNode.show();
-    return () => {
-      dialogNode.close();
-    };
-  }, [showModal]);
-
-  // Bind and unbind event listeners on mount and unmount
+  // Call imperative show and close functions on mount/unmount
   useEffect(() => {
     const dialogNode = dialogRef.current;
 
-    const handleCancel = (event) => {
+    // Show or hide the dialog based on `isOpen` value. The `dialogNode.open` property is
+    // a read-only value that will tell us if our dialog DOM element is actually in the
+    // open state.
+    let closingBecauseOfProp = false;
+    if (isOpen) {
+      if (!dialogNode.open) {
+        showModal ? dialogNode.showModal() : dialogNode.show();
+      }
+    } else {
+      if (dialogNode.open) {
+        dialogNode.close();
+        closingBecauseOfProp = true;
+      }
+    }
+
+    // Bind close event listener for ESC press
+    const handleClose = (event) => {
       event.preventDefault();
-      exit();
+      // Only call the exit handler if the parent didn't close it by setting isOpen to false
+      if (!closingBecauseOfProp) {
+        exit(event);
+      }
     };
-    dialogNode.addEventListener('cancel', handleCancel);
+    dialogNode.addEventListener('close', handleClose);
 
+    return () => {
+      dialogNode.removeEventListener('close', handleClose);
+    };
+  }, [isOpen, showModal, exit]);
+
+  // Bind and unbind backdrop click event listeners on mount and unmount
+  useEffect(() => {
+    if (!backdropClickExits) {
+      return;
+    }
+
+    const dialogNode = dialogRef.current;
     const handleClick = (event) => {
-      const rect = dialogNode.getBoundingClientRect();
+      const boundingNode = boundingBoxRef?.current ?? dialogRef.current;
+      const rect = boundingNode.getBoundingClientRect();
       const isInDialog =
         rect.top <= event.clientY &&
         event.clientY <= rect.top + rect.height &&
@@ -71,15 +113,9 @@ export const NativeDialog = ({
         exit();
       }
     };
-    if (backdropClickExits) {
-      dialogNode.addEventListener('click', handleClick);
-    }
-
+    dialogNode.addEventListener('click', handleClick);
     return () => {
-      dialogNode.removeEventListener('cancel', handleCancel);
-      if (backdropClickExits) {
-        dialogNode.removeEventListener('click', handleClick);
-      }
+      dialogNode.removeEventListener('click', handleClick);
     };
   }, [exit, backdropClickExits]);
 

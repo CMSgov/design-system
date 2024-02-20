@@ -29,8 +29,7 @@
     "yearLabel": "Año"
   },
   "dialog": {
-    "ariaCloseLabel": "Cerrar cuadro de diálogo modal",
-    "closeButtonText": "Cerrar"
+    "ariaCloseLabel": "Cerrar cuadro de diálogo modal"
   },
   "drawer": {
     "ariaLabel": "Cerrar ventana de ayuda",
@@ -69,6 +68,16 @@
     "starHalf": "Media Estrella",
     "usaLogo": "USA.gov – Gobierno más simple",
     "warning": "Advertencia"
+  },
+  "idleTimeoutDialog": {
+    "heading": "¿Sigue ahí?",
+    "messageLine1": "Ha estado inactivo por un tiempo.",
+    "messageLine2": "Su sesión terminará en ",
+    "min": "minuto",
+    "mins": "minutos",
+    "continueSessionMessage": "Seleccione \"Continuar sesión\" a continuación si desea más tiempo.",
+    "continueSessionButtonText": "Continuar sesión",
+    "endSessionButtonText": "Salir"
   },
   "inlineError": {
     "prefix": "Error"

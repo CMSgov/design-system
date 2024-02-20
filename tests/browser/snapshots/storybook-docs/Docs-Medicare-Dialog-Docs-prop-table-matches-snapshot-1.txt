@@ -1,0 +1,12 @@
+[
+  [
+    "closeButtonVariation",
+    "unknown",
+    "'ghost'"
+  ],
+  [
+    "closeIconComponent",
+    "unknown",
+    "CloseIcon"
+  ]
+]

@@ -1,0 +1,17 @@
+@use '../layout' as *;
+
+.ds-c-inline-error {
+  color: var(--inline-error__color);
+  display: block;
+  font-weight: var(--font-weight-normal);
+  margin-block: 0;
+  max-width: var(--form__max-width);
+}
+
+.ds-c-inline-error--inverse {
+  color: var(--inline-error__color--inverse);
+}
+
+.ds-c-inline-error--bottom {
+  margin-block-start: $spacer-half;
+}

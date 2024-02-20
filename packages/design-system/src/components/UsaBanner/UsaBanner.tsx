@@ -1,7 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
 import classNames from 'classnames';
-import uniqueId from 'lodash/uniqueId';
+import useCssDebugger from '../utilities/useCssDebugger';
+import useId from '../utilities/useId';
 import { t } from '../i18n';
 import {
   LockCircleIcon,
@@ -28,9 +29,12 @@ export interface UsaBannerProps {
  * [refer to its full documentation page](https://design.cms.gov/components/usa-banner/).
  */
 export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBannerProps) => {
+  useCssDebugger();
+
   const [isBannerOpen, setBannerOpen] = useState<boolean>(false);
   const classes = classNames('ds-c-usa-banner', props.className);
-  const id = props.id || uniqueId('gov-banner_');
+  const rootId = useId('usa-banner--', props.id);
+  const panelId = `${rootId}__panel`;
 
   const toggleBanner = () => {
     setBannerOpen(!isBannerOpen);
@@ -72,7 +76,7 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
           onClick={toggleBanner}
           className="ds-c-usa-banner__button"
           aria-expanded={isBannerOpen}
-          aria-controls={id}
+          aria-controls={panelId}
         >
           {/* This is screen reader-only text on mobile/tablet; this is the trigger button on larger viewports */}
           <span className="ds-c-usa-banner__button-text ds-u-md-display--flex ds-u-align-items--center">
@@ -87,13 +91,14 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
       </header>
       {/* Util classes used to hardcode font treatment across themes */}
       <div className="ds-c-usa-banner__guidance [ ds-u-leading--base ds-u-font-size--base ]">
-        <div id={id} className="ds-c-usa-banner__guidance-container" hidden={!isBannerOpen}>
+        <div id={panelId} className="ds-c-usa-banner__guidance-container" hidden={!isBannerOpen}>
           <div className="ds-c-usa-banner__guidance-item">
             <BuildingCircleIcon className="ds-c-usa-banner__guidance-icon" />
             <p className="ds-c-usa-banner__guidance-text">
               <strong>{t('usaBanner.domainHeaderText')}</strong>
               <br />
-              {t('usaBanner.domainAText')} <strong> {t('usaBanner.govText')}</strong>{' '}
+              {`${t('usaBanner.domainAText')} `}
+              <strong>{` ${t('usaBanner.govText')} `}</strong>
               {t('usaBanner.domainText')}
             </p>
           </div>
@@ -102,9 +107,11 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
             <p className="ds-c-usa-banner__guidance-text">
               <strong>{t('usaBanner.httpsHeaderText')}</strong>
               <br />
-              {t('usaBanner.httpsAText')} <strong> {t('usaBanner.httpsLockText')} </strong> (
-              <LockIcon className="ds-c-usa-banner__inline-lock-icon" />){' '}
-              {t('usaBanner.httpsOrText')} <strong>{t('usaBanner.httpsText')}</strong>{' '}
+              {`${t('usaBanner.httpsAText')} `}
+              <strong>{`${t('usaBanner.httpsLockText')} `}</strong>
+              (<LockIcon className="ds-c-usa-banner__inline-lock-icon" />)
+              <span>{` ${t('usaBanner.httpsOrText')}`}</span>
+              <strong>{` ${t('usaBanner.httpsText')} `}</strong>
               {t('usaBanner.httpsDetailText')}
             </p>
           </div>

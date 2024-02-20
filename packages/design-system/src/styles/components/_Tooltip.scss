@@ -44,7 +44,7 @@
   color: var(--tooltip-trigger__color);
   padding: 0;
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     color: ButtonText;
   }
 }
@@ -53,7 +53,7 @@
   @extend %link-inverse;
   @extend %trigger-underline-styles;
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     color: ButtonText;
   }
 }

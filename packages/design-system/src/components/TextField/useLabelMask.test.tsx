@@ -173,7 +173,7 @@ describe('DATE_MASK', () => {
 });
 
 describe('useLabelMask', () => {
-  const defaultInputProps = { type: 'text', value: '' };
+  const defaultInputProps = { type: 'text', value: '', id: 'static-id' };
 
   function renderInput(props = {}) {
     return render(<input {...props} />);
@@ -186,8 +186,17 @@ describe('useLabelMask', () => {
   it('returns labelMask and input elements', () => {
     const { result } = renderUseLabelMask();
     const { labelMask, inputProps } = result.current;
-    expect(render(labelMask).asFragment()).toMatchSnapshot();
-    expect(renderInput(inputProps).asFragment()).toMatchSnapshot();
+
+    const mask = render(labelMask).container.querySelector('.ds-c-label-mask');
+
+    expect(mask).toBeInTheDocument();
+    expect(mask.querySelectorAll('span')).toHaveLength(2);
+    expect(mask.textContent).toContain('MM/DD/YYYY');
+
+    const input = renderInput(inputProps).container.querySelector('input');
+    expect(input).toBeInTheDocument();
+    expect(input).toHaveAttribute('type', 'text');
+    expect(input).toHaveAttribute('inputmode', 'numeric');
   });
 
   it('shows masked value when focused', () => {
