@@ -18,7 +18,7 @@ export const themeColors: ColorTokens = {
   'background':                 color['white-solid'],
   'background-inverse':         color['ocean-800'],
   //
-  'base':                       color['granite-900'],
+  'base':                       color['granite-500'],
   'base-inverse':               color['white-solid'],
   //
   'border':                     color['granite-100'],

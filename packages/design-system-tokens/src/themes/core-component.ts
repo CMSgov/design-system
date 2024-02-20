@@ -56,7 +56,7 @@ export const components: AnyTokenValues = {
     '__background-color--active':                 t.color['gray-lighter'],
     '__background-color--disabled':               'transparent',
     '__background-color--hover':                  t.color['gray-lightest'],
-    '__background-color':                         'transparent',
+    '__background-color':                         'goldenrod',
     '__border-color--active':                     t.color['primary-darkest'],
     '__border-color--disabled':                   t.color['gray-lighter'],
     '__border-color--hover':                      t.color['primary-darker'],

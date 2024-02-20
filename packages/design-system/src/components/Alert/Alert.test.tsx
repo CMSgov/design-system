@@ -4,7 +4,7 @@ import { UtagContainer } from '../analytics';
 import { config } from '../config';
 import { render, screen } from '@testing-library/react';
 
-const defaultText = 'Ruhroh';
+const defaultText = 'uh-oh spaghetti-os';
 
 function renderAlert(props: AlertProps = {}) {
   // eslint-disable-next-line react/no-children-prop
@@ -30,7 +30,7 @@ describe('Alert', function () {
 
   it('appears as an error', () => {
     renderAlert({ variation: 'error' });
-    expectHasClass('ds-c-alert--error');
+    expectHasClass('ds-c-alert--werr');
   });
 
   it('appears as a lightweight alert', () => {
