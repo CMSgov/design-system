@@ -2,7 +2,7 @@
 import 'dotenv/config';
 import * as fs from 'fs';
 import FigmaApi from './FigmaApi';
-import { generatePostVariablesPayload, readJsonFiles } from './translateTokensToFigma';
+import { generatePostVariablesPayload, readTokenFiles } from './translateTokensToFigma';
 
 async function main() {
   if (!process.env.PERSONAL_ACCESS_TOKEN || !process.env.FILE_KEY) {
@@ -13,7 +13,7 @@ async function main() {
   // TODO: Replace this with our own token aggregator
   const TOKENS_DIR = 'tokens';
   const tokensFiles = fs.readdirSync(TOKENS_DIR).map((file: string) => `${TOKENS_DIR}/${file}`);
-  const tokensByFile = readJsonFiles(tokensFiles);
+  const tokensByFile = readTokenFiles(tokensFiles);
   console.log('Read tokens files:', Object.keys(tokensByFile));
 
   const api = new FigmaApi(process.env.PERSONAL_ACCESS_TOKEN);

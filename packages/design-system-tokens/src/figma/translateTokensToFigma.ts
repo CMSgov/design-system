@@ -23,17 +23,10 @@ function areSetsEqual<T>(a: Set<T>, b: Set<T>) {
   return a.size === b.size && [...a].every((item) => b.has(item));
 }
 
-/*
+export function readTokenFiles(tokensDir: string): FlattenedTokensByFile {
+  const files = fs.readdirSync(tokensDir).map((file: string) => `${tokensDir}/${file}`);
 
-Collections:
-  System - everything
-  Theme - subset of system
-  Components - mapping theme subset to actual components
-
-*/
-
-export function readJsonFiles(files: string[]) {
-  const tokensJsonByFile: FlattenedTokensByFile = {};
+  const tokensJsonByFile = {};
 
   const seenCollectionsAndModes = new Set<string>();
 

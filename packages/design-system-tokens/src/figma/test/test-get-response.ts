@@ -276,3 +276,12 @@ const response: ApiGetLocalVariablesResponse = {
 };
 
 export default response;
+
+export const emptyResponse = {
+  status: 200,
+  error: false,
+  meta: {
+    variableCollections: {},
+    variables: {},
+  },
+};

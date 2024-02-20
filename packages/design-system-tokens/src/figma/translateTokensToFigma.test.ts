@@ -1,8 +1,10 @@
-import testGetResponse from './test/test-get-response';
+import path from 'path';
+import testGetResponse, { emptyResponse } from './test/test-get-response';
 import {
   generatePostVariablesPayload,
   getCollectionsByName,
   getVariablesByCollection,
+  readTokenFiles,
 } from './translateTokensToFigma';
 
 describe('getCollectionsByName', () => {
@@ -23,9 +25,16 @@ describe('getVariablesByCollection', () => {
   });
 });
 
-// describe('generatePostVariablesPayload', () => {
-//   it('matches snapshot', () => {
-//     const payload = generatePostVariablesPayload(, testGetResponse);
+describe('generatePostVariablesPayload', () => {
+  it('uploads nothing new when variables already match tokens', () => {
+    const tokens = readTokenFiles(path.resolve(__dirname, 'test', 'tokens'));
+    const payload = generatePostVariablesPayload(tokens, testGetResponse);
+    expect(payload).toMatchSnapshot();
+  });
 
-//   });
-// })
+  it('includes actions for adding everything when variables are empty', () => {
+    const tokens = readTokenFiles(path.resolve(__dirname, 'test', 'tokens'));
+    const payload = generatePostVariablesPayload(tokens, emptyResponse);
+    expect(payload).toMatchSnapshot();
+  });
+});
