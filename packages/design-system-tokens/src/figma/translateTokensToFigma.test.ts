@@ -27,13 +27,13 @@ describe('getVariablesByCollection', () => {
 
 describe('generatePostVariablesPayload', () => {
   it('uploads nothing new when variables already match tokens', () => {
-    const tokens = readTokenFiles(path.resolve(__dirname, 'test', 'tokens'));
+    const tokens = readTokenFiles(path.resolve(__dirname, '..', 'test', 'tokens'));
     const payload = generatePostVariablesPayload(tokens, testGetResponse);
     expect(payload).toMatchSnapshot();
   });
 
   it('includes actions for adding everything when variables are empty', () => {
-    const tokens = readTokenFiles(path.resolve(__dirname, 'test', 'tokens'));
+    const tokens = readTokenFiles(path.resolve(__dirname, '..', 'test', 'tokens'));
     const payload = generatePostVariablesPayload(tokens, emptyResponse);
     expect(payload).toMatchSnapshot();
   });
