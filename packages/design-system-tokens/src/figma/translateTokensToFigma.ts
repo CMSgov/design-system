@@ -63,6 +63,10 @@ function flattenTokensFile(tokensFile: TokensFile) {
   return flattenedTokens;
 }
 
+function isToken(obj: TokenOrTokenGroup): obj is Token {
+  return obj.$value !== undefined;
+}
+
 function traverseCollection({
   key,
   object,
@@ -77,7 +81,7 @@ function traverseCollection({
     return;
   }
 
-  if (object.$value !== undefined) {
+  if (isToken(object)) {
     tokens[key] = object;
   } else {
     Object.entries<TokenOrTokenGroup>(object).forEach(([key2, object2]) => {
@@ -246,10 +250,13 @@ function tokenAndVariableDifferences(token: Token, variable: Variable | null) {
   return differences;
 }
 
-export function getCollectionsByName(localVariables: ApiGetLocalVariablesResponse): {
+type CollectionsByName = {
   [name: string]: VariableCollection;
-} {
-  const localVariableCollectionsByName = {};
+};
+export function getCollectionsByName(
+  localVariables: ApiGetLocalVariablesResponse
+): CollectionsByName {
+  const localVariableCollectionsByName: CollectionsByName = {};
   Object.values(localVariables.meta.variableCollections).forEach((collection) => {
     // Skip over remote collections because we can't modify them
     if (collection.remote) {
@@ -265,10 +272,13 @@ export function getCollectionsByName(localVariables: ApiGetLocalVariablesRespons
   return localVariableCollectionsByName;
 }
 
-export function getVariablesByCollection(localVariables: ApiGetLocalVariablesResponse): {
+type VariablesByCollection = {
   [variableCollectionId: string]: { [variableName: string]: Variable };
-} {
-  const localVariablesByCollectionAndName = {};
+};
+export function getVariablesByCollection(
+  localVariables: ApiGetLocalVariablesResponse
+): VariablesByCollection {
+  const localVariablesByCollectionAndName: VariablesByCollection = {};
   Object.values(localVariables.meta.variables).forEach((variable) => {
     // Skip over remote variables because we can't modify them
     if (variable.remote) {
