@@ -1,6 +1,5 @@
 import { FileDescriptor } from './types';
-import { flatten } from './utility';
-import { writeFile } from './file';
+import { flattenTokens, writeFile } from './file';
 
 /**
  * Some Sass variables are required to accomplish Sassy things like loops,
@@ -74,7 +73,7 @@ const writeSassLayout = (
   let output = '';
 
   Object.entries(importedModule.default).forEach(([section]) => {
-    tokenItems = flatten(importedModule.default[section]);
+    tokenItems = flattenTokens(importedModule.default[section]);
     // core requires !default for each style
     const defaultInclude = file.baseName.includes('core') ? ' !default' : '';
 
@@ -108,7 +107,7 @@ const mapCssVariablesToValues = (importedModule: any, sep: string) => {
   let output = '';
 
   Object.entries(importedModule.default).forEach(([section]) => {
-    tokenItems = flatten(importedModule.default[section]);
+    tokenItems = flattenTokens(importedModule.default[section]);
 
     output += formatTokensAsCssVars(
       tokenItems,

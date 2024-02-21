@@ -1,6 +1,5 @@
 import { FileDescriptor } from './types';
-import { writeFile } from './file';
-import { flatten } from './utility';
+import { flattenTokens, writeFile } from './file';
 
 /**
  * Formats an object containing key/value token pairs as a single string containing
@@ -54,7 +53,7 @@ export const exportCsv = (fileDescriptors: FileDescriptor[], outPath: string): n
       filename = `${outPath}/${file.baseName}-theme.csv`;
 
       Object.entries(importedModule.default).forEach(([section]) => {
-        tokenItems = flatten(importedModule.default[section]);
+        tokenItems = flattenTokens(importedModule.default[section]);
         output += formatTokensAsCSV(tokenItems, section, sep);
       });
 

@@ -3,7 +3,7 @@
  */
 
 import { default as t } from './core'
-import { hexOpacity } from '../lib/utility'
+import { hexOpacity } from '../lib/colorUtils'
 import { AnyTokenValues } from '../lib/types'
 
 export const components: AnyTokenValues = {
