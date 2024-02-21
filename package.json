@@ -36,6 +36,8 @@
     "start": "yarn build:storybook:docs && yarn --cwd ./packages/docs develop",
     "storybook": "storybook dev -p 6006",
     "storybook:react": "PREACT=false storybook dev -p 6006",
+    "sync:tokens-to-figma": "yarn --cwd ./packages/design-system-tokens sync:to-figma",
+    "sync:tokens-from-figma": "yarn --cwd ./packages/design-system-tokens sync:from-figma",
     "test": "yarn test:unit",
     "posttest": "yarn lint",
     "test:unit:coverage": "yarn test:unit --collectCoverage",

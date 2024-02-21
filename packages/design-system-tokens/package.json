@@ -12,7 +12,9 @@
   "scripts": {
     "build": "ts-node ./src/index.ts",
     "build:all": "yarn clean && yarn build themes css-vars && yarn build themes scss",
-    "clean": "rm -rf dist/*"
+    "clean": "rm -rf dist/*",
+    "sync:to-figma": "ts-node ./src/figma/syncTokensToFigma.ts",
+    "sync:from-figma": "ts-node ./src/figma/syncFigmaToTokens.ts"
   },
   "dependencies": {}
 }
