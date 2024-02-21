@@ -1,6 +1,6 @@
-import exportCssVars from './lib/exportCssVars';
-import exportScssVars from './lib/exportScssVars';
-import { getFileDescriptors } from './lib/file';
+import exportCssVars from './exportCssVars';
+import exportScssVars from './exportScssVars';
+import { getFileDescriptors } from '../lib/file';
 
 const INPUT_PATH = `${process.cwd()}/src/`;
 const DIST_DIR = 'dist';

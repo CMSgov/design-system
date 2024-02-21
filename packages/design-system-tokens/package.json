@@ -10,8 +10,7 @@
     "typescript": "^4.9.5"
   },
   "scripts": {
-    "build": "ts-node ./src/index.ts",
-    "build:all": "yarn clean && yarn build themes css-vars && yarn build themes scss",
+    "build": "ts-node ./src/css/index.ts",
     "clean": "rm -rf dist/*",
     "sync:to-figma": "ts-node ./src/figma/syncTokensToFigma.ts",
     "sync:from-figma": "ts-node ./src/figma/syncFigmaToTokens.ts"

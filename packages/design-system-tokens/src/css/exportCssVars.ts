@@ -1,6 +1,6 @@
 import fs from 'fs';
-import { FileDescriptor } from './types';
-import { flattenTokens, writeFile } from './file';
+import { FileDescriptor } from '../lib/types';
+import { flattenTokens, writeFile } from '../lib/file';
 
 /**
  * Some Sass variables are required to accomplish Sassy things like loops,
