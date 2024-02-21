@@ -116,7 +116,7 @@ exports[`Footer renders basic footer 1`] = `
                   role="main"
                 >
                   <div
-                    id="dialog-content"
+                    id="dialog--1__content"
                   >
                     <p
                       class="ds-u-margin-top--0"
@@ -855,7 +855,7 @@ exports[`Footer renders basic footer with props 1`] = `
                   role="main"
                 >
                   <div
-                    id="dialog-content"
+                    id="dialog--6__content"
                   >
                     <p
                       class="ds-u-margin-top--0"

@@ -62,7 +62,7 @@ exports[`PrivacySettingsLink should render with custom class and children 1`] = 
         role="main"
       >
         <div
-          id="dialog-content"
+          id="dialog--6__content"
         >
           <p
             class="ds-u-margin-top--0"
@@ -447,7 +447,7 @@ exports[`PrivacySettingsLink should render with default options 1`] = `
         role="main"
       >
         <div
-          id="dialog-content"
+          id="dialog--1__content"
         >
           <p
             class="ds-u-margin-top--0"

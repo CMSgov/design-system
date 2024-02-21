@@ -112,7 +112,7 @@ exports[`InlineLinkLists renders lists of links 1`] = `
                 role="main"
               >
                 <div
-                  id="dialog-content"
+                  id="dialog--1__content"
                 >
                   <p
                     class="ds-u-margin-top--0"
@@ -745,7 +745,7 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
                 role="main"
               >
                 <div
-                  id="dialog-content"
+                  id="dialog--11__content"
                 >
                   <p
                     class="ds-u-margin-top--0"
