@@ -24,7 +24,10 @@ function areSetsEqual<T>(a: Set<T>, b: Set<T>) {
 }
 
 export function readTokenFiles(tokensDir: string): FlattenedTokensByFile {
-  const files = fs.readdirSync(tokensDir).map((file: string) => `${tokensDir}/${file}`);
+  const files = fs
+    .readdirSync(tokensDir)
+    .filter(isValidTokenFileName)
+    .map((fileName: string) => `${tokensDir}/${fileName}`);
 
   const tokensJsonByFile: FlattenedTokensByFile = {};
 
@@ -96,14 +99,21 @@ function traverseCollection({
   }
 }
 
-function collectionAndModeFromFileName(fileName: string) {
+function isValidTokenFileName(fileName: string) {
   const fileNameParts = fileName.split('.');
-  if (fileNameParts.length < 3) {
+  if (fileNameParts.length < 3 || fileNameParts[2]?.toLowerCase() !== 'json') {
+    return false;
+  }
+  return true;
+}
+
+function collectionAndModeFromFileName(fileName: string) {
+  if (!isValidTokenFileName(fileName)) {
     throw new Error(
       `Invalid tokens file name: ${fileName}. File names must be in the format: {collectionName}.{modeName}.json`
     );
   }
-  const [collectionName, modeName] = fileNameParts;
+  const [collectionName, modeName] = fileName.split('.');
   return { collectionName, modeName };
 }
 
