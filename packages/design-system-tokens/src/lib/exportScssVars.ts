@@ -1,3 +1,4 @@
+import fs from 'fs';
 import { FileDescriptor } from './types';
 import { flattenTokens, writeFile } from './file';
 
@@ -43,6 +44,10 @@ const writeSassFile = (
  * @returns An exit code based on success writing output
  */
 export const exportScssVars = (fileDescriptors: FileDescriptor[], outPath: string): number => {
+  if (!fs.existsSync(outPath)) {
+    fs.mkdirSync(outPath, { recursive: true });
+  }
+
   fileDescriptors.forEach((file) => {
     const importedModule = require(`${file.moduleImportName}`);
     // component files do not need a separator

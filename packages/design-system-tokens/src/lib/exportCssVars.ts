@@ -1,3 +1,4 @@
+import fs from 'fs';
 import { FileDescriptor } from './types';
 import { flattenTokens, writeFile } from './file';
 
@@ -131,6 +132,10 @@ const mapCssVariablesToValues = (importedModule: any, sep: string) => {
  * @returns An exit code based on success writing output
  */
 export const exportCssVars = (fileDescriptors: FileDescriptor[], outPath: string): number => {
+  if (!fs.existsSync(outPath)) {
+    fs.mkdirSync(outPath, { recursive: true });
+  }
+
   const groupByTheme = fileDescriptors.reduce((acc: Record<string, any[]>, file) => {
     const theme = file.baseName.split('-')[0];
     if (!acc[theme]) {
