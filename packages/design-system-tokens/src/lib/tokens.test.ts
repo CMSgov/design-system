@@ -10,7 +10,7 @@ describe('readTokenFiles', () => {
 
   it('flattens tokens', () => {
     const systemTokens = tokens['System.Value.json'];
-    expect(systemTokens).toHaveProperty('color/ocean/50');
-    expect(systemTokens).toHaveProperty('radius/default');
+    expect(systemTokens['color.ocean.50']).toBeDefined();
+    expect(systemTokens['radius.default']).toBeDefined();
   });
 });

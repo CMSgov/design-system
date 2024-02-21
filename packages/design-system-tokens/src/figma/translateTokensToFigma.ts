@@ -264,8 +264,10 @@ export function generatePostVariablesPayload(
     const localVariablesByName = localVariablesByCollectionAndName[variableCollection?.id] || {};
 
     Object.entries(tokens).forEach(([tokenName, token]) => {
-      const variable = localVariablesByName[tokenName];
-      const variableId = variable ? variable.id : tokenName;
+      // In the W3C Tokens spec, nesting is represented by `.`, but Figma uses `/`
+      const variableName = tokenName.replace(/\./g, '/');
+      const variable = localVariablesByName[variableName];
+      const variableId = variable ? variable.id : variableName;
       const variableInPayload = postVariablesPayload.variables!.find(
         (v) => v.id === variableId && v.variableCollectionId === variableCollectionId
       );
@@ -277,7 +279,7 @@ export function generatePostVariablesPayload(
         postVariablesPayload.variables!.push({
           action: 'CREATE',
           id: variableId,
-          name: tokenName,
+          name: variableName,
           variableCollectionId,
           resolvedType: variableResolvedTypeFromToken(token),
           ...differences,
