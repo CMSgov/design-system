@@ -3,7 +3,8 @@ import 'dotenv/config';
 import FigmaApi from './FigmaApi';
 import c from 'chalk';
 import path from 'path';
-import { generatePostVariablesPayload, readTokenFiles } from './translateTokensToFigma';
+import { generatePostVariablesPayload } from './translateTokensToFigma';
+import { readTokenFiles } from '../lib/tokens';
 
 const TOKENS_DIR = path.resolve(__dirname, '..', 'tokens');
 

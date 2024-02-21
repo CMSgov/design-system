@@ -4,8 +4,8 @@ import {
   generatePostVariablesPayload,
   getCollectionsByName,
   getVariablesByCollection,
-  readTokenFiles,
 } from './translateTokensToFigma';
+import { readTokenFiles } from '../lib/tokens';
 
 describe('getCollectionsByName', () => {
   it('returns an object of collections keyed by name', () => {
