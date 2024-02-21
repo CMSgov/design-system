@@ -11,11 +11,7 @@ export interface RgbaObject {
   a?: number;
 }
 
-export function rgbToHex({ r, g, b, a }: RgbaObject) {
-  if (a === undefined) {
-    a = 1;
-  }
-
+export function rgbToHex({ r, g, b, a = 1 }: RgbaObject) {
   const toHex = (value: number) => {
     const hex = Math.round(value * 255).toString(16);
     return hex.length === 1 ? '0' + hex : hex;
