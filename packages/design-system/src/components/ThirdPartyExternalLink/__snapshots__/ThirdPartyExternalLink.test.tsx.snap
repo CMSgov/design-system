@@ -58,7 +58,7 @@ exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external l
       role="main"
     >
       <div
-        id="dialog-content"
+        id="dialog--8__content"
       >
         <p>
           You're about to connect to a third-party site. Select CONTINUE to proceed or CANCEL to stay on this site.
