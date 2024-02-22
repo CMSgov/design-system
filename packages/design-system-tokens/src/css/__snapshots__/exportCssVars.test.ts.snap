@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tokenFilesToCssFiles works 1`] = `
+Object {
+  "cmsgov-theme.css": ":root, ::before, ::after, ::backdrop {
+--theme-color-primary-light: \\"#e6f1f8\\";
+--theme-color-primary: \\"#b3d4eb\\";
+}",
+  "core-theme.css": ":root, ::before, ::after, ::backdrop {
+--theme-color-primary-light: \\"#4d9cd0\\";
+--theme-color-primary: \\"#0071bc\\";
+}",
+}
+`;

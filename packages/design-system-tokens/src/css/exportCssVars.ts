@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs';
 import { FileDescriptor } from '../lib/types';
 import { flattenTokens, writeFile } from '../lib/file';
-import { FlattenedTokens, FlattenedTokensByFile, readTokenFiles } from '../lib/tokens';
+import { FlattenedTokens, FlattenedTokensByFile, readTokenFiles, Token } from '../lib/tokens';
 
 /**
  * Some Sass variables are required to accomplish Sassy things like loops,
@@ -174,17 +174,61 @@ export const exportCssVars = (fileDescriptors: FileDescriptor[], outPath: string
   return 0;
 };
 
-export function generateCssVarsFromTokens(tokens: FlattenedTokens): string {}
+function isAlias(value: string) {
+  return value.toString().trim().charAt(0) === '{';
+}
+
+function resolveTokenValue(
+  token: Token,
+  themeTokens: FlattenedTokens,
+  systemTokens: FlattenedTokens
+): string {
+  if (typeof token.$value === 'string' && isAlias(token.$value)) {
+    // Assume aliases are in the format {group.subgroup.token} with any number of optional groups/subgroups
+    const aliasedTokenName = token.$value.trim().replace(/[{}]/g, '');
+
+    // Token aliases are assumed to be unique
+    const aliasedToken = themeTokens[aliasedTokenName] ?? systemTokens[aliasedTokenName];
+    if (!aliasedToken) {
+      throw new Error(`No token found for alias {${aliasedTokenName}}`);
+    }
+
+    // TODO: After we've merged a version of this that has been verified to be 1-1 with
+    // the previous script, we could use `var(--some-other-token)` instead of always
+    // resolving all the way down to the literal value.
+    return resolveTokenValue(aliasedToken, themeTokens, systemTokens);
+  } else {
+    // TODO: Actually try to convert the value into an appropriate string base on the $type
+    return JSON.stringify(token.$value);
+  }
+}
+
+export function generateCssVarsFromTokens(
+  themeTokens: FlattenedTokens,
+  systemTokens: FlattenedTokens
+): string {
+  const vars = Object.entries(themeTokens).map(([key, token]) => {
+    const varName = key.replace(/\./g, '-'); // TODO: It's actually a mix of - and __
+    const varValue = resolveTokenValue(token, themeTokens, systemTokens);
+    return `--${varName}: ${varValue};`;
+  });
+  return vars.join('\n');
+}
 
 export function tokenFilesToCssFiles(tokensByFile: FlattenedTokensByFile): {
   [fileName: string]: string;
 } {
+  const systemTokens = tokensByFile['System.Value.json'];
+  if (!systemTokens) {
+    throw new Error('Could not find entry for system tokens');
+  }
+
   return Object.keys(tokensByFile)
     .filter((fileName) => fileName.startsWith('Theme.'))
     .reduce((obj, fileName) => {
       const themeName = fileName.split('.')[1];
-      const tokens = tokensByFile[fileName];
-      const cssVars = generateCssVarsFromTokens(tokens);
+      const themeTokens = tokensByFile[fileName];
+      const cssVars = generateCssVarsFromTokens(themeTokens, systemTokens);
       const cssFileContents = `:root, ::before, ::after, ::backdrop {\n${cssVars}\n}`;
       const cssFileName = `${themeName}-theme.css`;
       obj[cssFileName] = cssFileContents;
