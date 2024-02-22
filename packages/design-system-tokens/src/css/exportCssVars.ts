@@ -146,18 +146,42 @@ export const exportCssVars = (fileDescriptors: FileDescriptor[], outPath: string
 };
 */
 
+/**
+ * Whether or not a given system token is included in the exported theme file. We don't
+ * actually want to include every system token as a CSS variable, but some of them we do.
+ */
+function isIncludedSystemToken(tokenName: string): boolean {
+  return !tokenName.startsWith('color') && !tokenName.startsWith('font');
+}
+
+/**
+ * Whether or not this token value is an alias of another token.
+ */
 function isAlias(value: string) {
   return value.toString().trim().charAt(0) === '{';
 }
 
+/**
+ * Resolves the value of the token to one we actually want to print in our output file.
+ *
+ * By supplying a `renderVariableAlias` function, we're telling the resolver how to
+ * render references to other tokens within the theme and that we want to reference them
+ * by name (for example, `--alert__background-color: var(--color-primary-lightest)`). We
+ * will only reference a system token by name if it's one of the system tokens that is
+ * being included in the exported theme files.
+ */
 function resolveTokenValue(
   token: Token,
-  themeTokens: FlattenedTokens,
-  systemTokens: FlattenedTokens
+  resolveConfig: {
+    themeTokens: FlattenedTokens;
+    systemTokens: FlattenedTokens;
+    renderVariableAlias?: (name: string) => string;
+  }
 ): string {
   if (typeof token.$value === 'string' && isAlias(token.$value)) {
     // Assume aliases are in the format {group.subgroup.token} with any number of optional groups/subgroups
     const aliasedTokenName = token.$value.trim().replace(/[{}]/g, '');
+    const { themeTokens, systemTokens, renderVariableAlias } = resolveConfig;
 
     // Token aliases are assumed to be unique
     const aliasedToken = themeTokens[aliasedTokenName] ?? systemTokens[aliasedTokenName];
@@ -165,10 +189,16 @@ function resolveTokenValue(
       throw new Error(`No token found for alias {${aliasedTokenName}}`);
     }
 
-    // TODO: After we've merged a version of this that has been verified to be 1-1 with
-    // the previous script, we could use `var(--some-other-token)` instead of always
-    // resolving all the way down to the literal value.
-    return resolveTokenValue(aliasedToken, themeTokens, systemTokens);
+    // TODO: Enable this after we've merged a version of this that has been verified to
+    // be 1-1 with the previous script
+    if (
+      renderVariableAlias &&
+      (aliasedTokenName in themeTokens || isIncludedSystemToken(aliasedTokenName))
+    ) {
+      return renderVariableAlias(aliasedTokenName);
+    }
+
+    return resolveTokenValue(aliasedToken, resolveConfig);
   } else {
     // TODO: Actually try to convert the value into an appropriate string base on the $type
     return JSON.stringify(token.$value);
@@ -187,18 +217,42 @@ export function tokenNameToVarName(tokenName: string) {
   }
 }
 
+/**
+ * Generates all the CSS variables definitions for a specific theme based on that theme's
+ * tokens and the system tokens. This can later be dropped into a CSS file and saved.
+ */
 export function generateCssVarsFromTokens(
   themeTokens: FlattenedTokens,
   systemTokens: FlattenedTokens
 ): string {
-  const vars = Object.entries(themeTokens).map(([key, token]) => {
+  // When we're resolving token values, we need some additional information that doesn't
+  // change from token to token.
+  const resolveConfig = {
+    themeTokens,
+    systemTokens,
+    renderVariableAlias: (name: string) => `var(--${tokenNameToVarName(name)})`,
+  };
+
+  // We actually do include some of the system tokens but only a subset
+  const tokenEntries = [
+    ...Object.entries(themeTokens),
+    ...Object.entries(systemTokens).filter(([name]) => isIncludedSystemToken(name)),
+  ];
+
+  const vars = tokenEntries.map(([key, token]) => {
     const varName = tokenNameToVarName(key);
-    const varValue = resolveTokenValue(token, themeTokens, systemTokens);
+    const varValue = resolveTokenValue(token, resolveConfig);
     return `--${varName}: ${varValue};`;
   });
+
   return vars.join('\n');
 }
 
+/**
+ * Generates all the CSS files from the pre-processed token files and returns them as
+ * strings keyed by the intended file name. These can later be written into real files as
+ * needed by the calling script.
+ */
 export function tokenFilesToCssFiles(tokensByFile: FlattenedTokensByFile): OutputFiles {
   const systemTokens = tokensByFile['System.Value.json'];
   if (!systemTokens) {

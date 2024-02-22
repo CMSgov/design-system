@@ -5,14 +5,26 @@ Object {
   "cmsgov-theme.css": ":root, ::before, ::after, ::backdrop {
 --color-primary-light: \\"#e6f1f8\\";
 --color-primary: \\"#b3d4eb\\";
---alert__background-color: \\"#e6f1f8\\";
---alert__border-color: \\"#1a7fc3\\";
+--alert__background-color: var(--color-primary-light);
+--alert__border-color: var(--color-primary);
+--radius-circle: 100;
+--radius-default: 3;
+--radius-large: 8;
+--radius-medium: 4;
+--radius-pill: 9999;
+--radius-small: 2;
 }",
   "core-theme.css": ":root, ::before, ::after, ::backdrop {
 --color-primary-light: \\"#4d9cd0\\";
 --color-primary: \\"#0071bc\\";
---alert__background-color: \\"#e6f1f8\\";
---alert__border-color: \\"#0071bc\\";
+--alert__background-color: var(--color-primary-light);
+--alert__border-color: var(--color-primary);
+--radius-circle: 100;
+--radius-default: 3;
+--radius-large: 8;
+--radius-medium: 4;
+--radius-pill: 9999;
+--radius-small: 2;
 }",
 }
 `;

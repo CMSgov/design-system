@@ -31,7 +31,7 @@
     "alert": {
       "background-color": {
         "$type": "color",
-        "$value": "{color.ocean.50}",
+        "$value": "{theme.color.primary-light}",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -43,7 +43,7 @@
       },
       "border-color": {
         "$type": "color",
-        "$value": "{color.ocean.500}",
+        "$value": "{theme.color.primary}",
         "$description": "",
         "$extensions": {
           "com.figma": {
