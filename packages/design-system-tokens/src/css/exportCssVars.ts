@@ -1,5 +1,5 @@
+import path from 'path';
 import fs from 'fs';
-import themes from '../../../../themes.json';
 import { FileDescriptor } from '../lib/types';
 import { flattenTokens, writeFile } from '../lib/file';
 import { FlattenedTokens, FlattenedTokensByFile, readTokenFiles } from '../lib/tokens';
@@ -174,24 +174,35 @@ export const exportCssVars = (fileDescriptors: FileDescriptor[], outPath: string
   return 0;
 };
 
-export function generateCssVars(tokens: FlattenedTokens): string {}
+export function generateCssVarsFromTokens(tokens: FlattenedTokens): string {}
+
+export function tokenFilesToCssFiles(tokensByFile: FlattenedTokensByFile): {
+  [fileName: string]: string;
+} {
+  return Object.keys(tokensByFile)
+    .filter((fileName) => fileName.startsWith('Theme.'))
+    .reduce((obj, fileName) => {
+      const themeName = fileName.split('.')[1];
+      const tokens = tokensByFile[fileName];
+      const cssVars = generateCssVarsFromTokens(tokens);
+      const cssFileContents = `:root, ::before, ::after, ::backdrop {\n${cssVars}\n}`;
+      const cssFileName = `${themeName}-theme.css`;
+      obj[cssFileName] = cssFileContents;
+      return obj;
+    }, {});
+}
 
 export async function writeCssVars(tokensDir: string, outputDir: string): Promise<string[]> {
   const tokensByFile = readTokenFiles(tokensDir);
-  const themeNames = Object.keys(themes);
+  const cssFiles = tokenFilesToCssFiles(tokensByFile);
 
   // Write the files for each theme concurrently
   const filesWritten = await Promise.all(
-    themeNames.map(async (themeName) => {
-      const tokens = tokensByFile[`Theme.${themeName}.json`];
-      if (!tokens) {
-        throw new Error(`Cannot find theme tokens file for ${themeName}`);
-      }
-      const cssVars = generateCssVars(tokens);
-      const cssFileContents = `:root, ::before, ::after, ::backdrop {\n${cssVars}\n}`;
-      const cssFileName = `${outputDir}/${themeName}-theme.css`;
-      await fs.promises.writeFile(cssFileName, cssFileContents);
-      return cssFileName;
+    Object.keys(cssFiles).map(async (fileName) => {
+      const contents = cssFiles[fileName];
+      const fullPath = path.join(outputDir, fileName);
+      await fs.promises.writeFile(fullPath, contents);
+      return fullPath;
     })
   );
 
