@@ -1,15 +1,20 @@
-import exportCssVars from './exportCssVars';
-import exportScssVars from './exportScssVars';
-import { getFileDescriptors } from '../lib/file';
+import path from 'path';
+import writeFiles from './writeFiles';
+import { readTokenFiles } from '../lib/tokens';
+import { tokenFilesToCssFiles } from './exportCssVars';
+import { tokenFilesToScssFiles, tokenFilesToScssLayoutFiles } from './exportScssVars';
 
-const INPUT_PATH = `${process.cwd()}/src/`;
+const TOKENS_DIR = path.join(process.cwd(), 'src', 'tokens');
 const DIST_DIR = 'dist';
 
-(() => {
+(async () => {
   try {
-    const fileData = getFileDescriptors(INPUT_PATH);
-    exportCssVars(fileData, `${DIST_DIR}/css-vars`);
-    exportScssVars(fileData, `${DIST_DIR}/scss`);
+    const tokensByFile = readTokenFiles(TOKENS_DIR);
+    await Promise.all([
+      writeFiles(`${DIST_DIR}/css-vars`, tokenFilesToCssFiles(tokensByFile)),
+      writeFiles(`${DIST_DIR}/css-vars`, tokenFilesToScssLayoutFiles(tokensByFile)),
+      writeFiles(`${DIST_DIR}/scss`, tokenFilesToScssFiles(tokensByFile)),
+    ]);
   } catch (error) {
     if (error instanceof Error) {
       console.error(error.message);
