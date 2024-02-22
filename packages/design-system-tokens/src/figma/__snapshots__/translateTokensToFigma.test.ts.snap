@@ -128,6 +128,22 @@ Object {
       "variableId": "theme/color/primary",
     },
     Object {
+      "modeId": "cmsgov",
+      "value": Object {
+        "id": "theme/color/primary-light",
+        "type": "VARIABLE_ALIAS",
+      },
+      "variableId": "component/alert/background-color",
+    },
+    Object {
+      "modeId": "cmsgov",
+      "value": Object {
+        "id": "theme/color/primary",
+        "type": "VARIABLE_ALIAS",
+      },
+      "variableId": "component/alert/border-color",
+    },
+    Object {
       "modeId": "core",
       "value": Object {
         "id": "color/ocean/300",
@@ -142,6 +158,22 @@ Object {
         "type": "VARIABLE_ALIAS",
       },
       "variableId": "theme/color/primary",
+    },
+    Object {
+      "modeId": "core",
+      "value": Object {
+        "id": "theme/color/primary-light",
+        "type": "VARIABLE_ALIAS",
+      },
+      "variableId": "component/alert/background-color",
+    },
+    Object {
+      "modeId": "core",
+      "value": Object {
+        "id": "theme/color/primary",
+        "type": "VARIABLE_ALIAS",
+      },
+      "variableId": "component/alert/border-color",
     },
   ],
   "variableModes": Array [
@@ -360,6 +392,32 @@ Object {
       ],
       "variableCollectionId": "Theme",
     },
+    Object {
+      "action": "CREATE",
+      "codeSyntax": Object {},
+      "description": "",
+      "hiddenFromPublishing": false,
+      "id": "component/alert/background-color",
+      "name": "component/alert/background-color",
+      "resolvedType": "COLOR",
+      "scopes": Array [
+        "ALL_SCOPES",
+      ],
+      "variableCollectionId": "Theme",
+    },
+    Object {
+      "action": "CREATE",
+      "codeSyntax": Object {},
+      "description": "",
+      "hiddenFromPublishing": false,
+      "id": "component/alert/border-color",
+      "name": "component/alert/border-color",
+      "resolvedType": "COLOR",
+      "scopes": Array [
+        "ALL_SCOPES",
+      ],
+      "variableCollectionId": "Theme",
+    },
   ],
 }
 `;
@@ -403,7 +461,7 @@ Object {
   "codeSyntax": Object {},
   "description": "",
   "hiddenFromPublishing": false,
-  "id": "pri300",
+  "id": "pri500",
   "key": "theme/color/primary",
   "name": "theme/color/primary",
   "remote": false,

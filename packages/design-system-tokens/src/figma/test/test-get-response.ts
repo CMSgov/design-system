@@ -280,8 +280,8 @@ const response: ApiGetLocalVariablesResponse = {
         variableCollectionId: 'VariableCollectionId:222',
         resolvedType: 'COLOR',
         valuesByMode: {
-          'ModeId:21': { type: 'VARIABLE_ALIAS', id: 'oce050' },
-          'ModeId:22': { type: 'VARIABLE_ALIAS', id: 'oce050' },
+          'ModeId:21': { type: 'VARIABLE_ALIAS', id: 'pri300' },
+          'ModeId:22': { type: 'VARIABLE_ALIAS', id: 'pri300' },
         },
         scopes: ['ALL_SCOPES'],
         hiddenFromPublishing: false,
@@ -296,8 +296,8 @@ const response: ApiGetLocalVariablesResponse = {
         variableCollectionId: 'VariableCollectionId:222',
         resolvedType: 'COLOR',
         valuesByMode: {
-          'ModeId:21': { type: 'VARIABLE_ALIAS', id: 'oce500' },
-          'ModeId:22': { type: 'VARIABLE_ALIAS', id: 'oce400' },
+          'ModeId:21': { type: 'VARIABLE_ALIAS', id: 'pri500' },
+          'ModeId:22': { type: 'VARIABLE_ALIAS', id: 'pri500' },
         },
         scopes: ['ALL_SCOPES'],
         hiddenFromPublishing: false,
