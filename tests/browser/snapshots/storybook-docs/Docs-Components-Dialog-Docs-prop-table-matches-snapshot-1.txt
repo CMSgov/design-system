@@ -32,7 +32,7 @@
   [
     "ariaCloseLabel",
     "Aria label for the close button\nstring",
-    "-"
+    "\"t('dialog.ariaCloseLabel')\""
   ],
   [
     "backdropClickExits",

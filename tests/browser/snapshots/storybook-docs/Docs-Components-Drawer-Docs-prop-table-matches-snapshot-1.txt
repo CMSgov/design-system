@@ -2,7 +2,7 @@
   [
     "ariaLabel",
     "Gives more context to screen readers on the Drawer close button.\nstring",
-    "-"
+    "\"t('drawer.ariaLabel')\""
   ],
   [
     "className",
@@ -12,7 +12,7 @@
   [
     "closeButtonText",
     "ReactNode",
-    "-"
+    "t('drawer.closeButtonText')"
   ],
   [
     "closeButtonVariation",
