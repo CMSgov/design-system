@@ -57,10 +57,12 @@ export type TokensFile = {
   [key: string]: TokenOrTokenGroup;
 };
 
+export type FlattenedTokens = {
+  [tokenName: string]: Token;
+};
+
 export type FlattenedTokensByFile = {
-  [fileName: string]: {
-    [tokenName: string]: Token;
-  };
+  [fileName: string]: FlattenedTokens;
 };
 
 function flattenTokensFile(tokensFile: TokensFile) {
