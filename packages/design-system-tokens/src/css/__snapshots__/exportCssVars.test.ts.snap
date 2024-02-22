@@ -3,12 +3,16 @@
 exports[`tokenFilesToCssFiles works 1`] = `
 Object {
   "cmsgov-theme.css": ":root, ::before, ::after, ::backdrop {
---theme-color-primary-light: \\"#e6f1f8\\";
---theme-color-primary: \\"#b3d4eb\\";
+--color-primary-light: \\"#e6f1f8\\";
+--color-primary: \\"#b3d4eb\\";
+--alert__background-color: \\"#e6f1f8\\";
+--alert__border-color: \\"#1a7fc3\\";
 }",
   "core-theme.css": ":root, ::before, ::after, ::backdrop {
---theme-color-primary-light: \\"#4d9cd0\\";
---theme-color-primary: \\"#0071bc\\";
+--color-primary-light: \\"#4d9cd0\\";
+--color-primary: \\"#0071bc\\";
+--alert__background-color: \\"#e6f1f8\\";
+--alert__border-color: \\"#0071bc\\";
 }",
 }
 `;

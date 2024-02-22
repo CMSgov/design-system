@@ -26,5 +26,33 @@
         }
       }
     }
+  },
+  "component": {
+    "alert": {
+      "background-color": {
+        "$type": "color",
+        "$value": "{color.ocean.50}",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "border-color": {
+        "$type": "color",
+        "$value": "{color.ocean.500}",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      }
+    }
   }
 }

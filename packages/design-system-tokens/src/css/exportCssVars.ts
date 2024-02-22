@@ -175,12 +175,24 @@ function resolveTokenValue(
   }
 }
 
+export function tokenNameToVarName(tokenName: string) {
+  const parts = tokenName.split('.');
+  if (parts.includes('component')) {
+    const property = parts.pop();
+    const groups = parts.filter((part) => part !== 'component');
+    return `${groups.join('-')}__${property}`;
+  } else {
+    const groupNamesToTrim = ['theme'];
+    return parts.filter((part) => !groupNamesToTrim.includes(part)).join('-');
+  }
+}
+
 export function generateCssVarsFromTokens(
   themeTokens: FlattenedTokens,
   systemTokens: FlattenedTokens
 ): string {
   const vars = Object.entries(themeTokens).map(([key, token]) => {
-    const varName = key.replace(/\./g, '-'); // TODO: It's actually a mix of - and __
+    const varName = tokenNameToVarName(key);
     const varValue = resolveTokenValue(token, themeTokens, systemTokens);
     return `--${varName}: ${varValue};`;
   });
