@@ -65,7 +65,7 @@ export const Review = (props: ReviewProps) => {
       {props.editContent}
       {!props.editContent && props.editHref && (
         <a onClick={handleClick} href={props.editHref} aria-label={props.editAriaLabel}>
-          {props.editText ?? t('review.editText')}
+          {props.editText}
         </a>
       )}
     </div>
@@ -73,6 +73,7 @@ export const Review = (props: ReviewProps) => {
 };
 
 Review.defaultProps = {
+  editText: t('review.editText'),
   headingLevel: '3',
 };
 

@@ -55,8 +55,8 @@ export const VerticalNavItemLabel = (props: VerticalNavItemLabelProps): React.Re
 
   let otherProps;
   if (LabelComponent === 'button') {
-    const collapsedLabel = props.ariaCollapsedStateButtonLabel ?? t('verticalNav.expand');
-    const expandedLabel = props.ariaExpandedStateButtonLabel ?? t('verticalNav.collapse');
+    const collapsedLabel = props.ariaCollapsedStateButtonLabel;
+    const expandedLabel = props.ariaExpandedStateButtonLabel;
 
     otherProps = {
       'aria-controls': props.subnavId,
@@ -77,6 +77,11 @@ export const VerticalNavItemLabel = (props: VerticalNavItemLabelProps): React.Re
       {props.hasSubnav && <ArrowIcon direction={props.collapsed ? 'down' : 'up'} />}
     </LabelComponent>
   );
+};
+
+VerticalNavItemLabel.defaultProps = {
+  ariaCollapsedStateButtonLabel: t('verticalNav.expand'),
+  ariaExpandedStateButtonLabel: t('verticalNav.collapse'),
 };
 
 export default VerticalNavItemLabel;

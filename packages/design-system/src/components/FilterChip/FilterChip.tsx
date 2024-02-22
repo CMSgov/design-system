@@ -90,13 +90,17 @@ export const FilterChip = ({
         {label}
       </span>
       <span id={`${filterChipId}-instructions`} className="ds-u-visibility--screen-reader">
-        {ariaClearLabel ?? t('filterChip.ariaClearLabel')} {t('filterChip.filter', { label })} .
+        {ariaClearLabel} {t('filterChip.filter', { label })} .
       </span>
       <span className={iconContainerClassNames}>
         {useAlternateIcon ? <CloseIconThin /> : <CloseIcon />}
       </span>
     </button>
   );
+};
+
+FilterChip.defaultProps = {
+  ariaClearLabel: t('filterChip.ariaClearLabel'),
 };
 
 export default FilterChip;
