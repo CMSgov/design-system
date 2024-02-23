@@ -17,19 +17,12 @@ exports[`Accordion renders accordion 1`] = `
       >
         First amendment
         <svg
-          aria-hidden="false"
-          aria-labelledby="1__icon__title"
+          aria-hidden="true"
           class="ds-c-icon ds-c-icon--add ds-c-accordion__button-icon"
           id="1__icon"
-          role="img"
           viewBox="3 3 18 18"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <title
-            id="1__icon__title"
-          >
-            Open
-          </title>
           <path
             d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
           />
@@ -58,19 +51,12 @@ exports[`Accordion renders accordion 1`] = `
       >
         Second amendment
         <svg
-          aria-hidden="false"
-          aria-labelledby="2__icon__title"
+          aria-hidden="true"
           class="ds-c-icon ds-c-icon--add ds-c-accordion__button-icon"
           id="2__icon"
-          role="img"
           viewBox="3 3 18 18"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <title
-            id="2__icon__title"
-          >
-            Open
-          </title>
           <path
             d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
           />
