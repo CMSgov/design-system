@@ -9,6 +9,7 @@ import {
 } from './FigmaApi.js';
 import { RgbaObject, hexToRgba, isHex, rgbToHex } from '../lib/colorUtils';
 import { FlattenedTokensByFile, Token, collectionAndModeFromFileName } from '../lib/tokens';
+import { dimensionToPixelNumber } from '../lib/dimensionUtils';
 
 function areSetsEqual<T>(a: Set<T>, b: Set<T>) {
   return a.size === b.size && [...a].every((item) => b.has(item));
@@ -19,6 +20,7 @@ function variableResolvedTypeFromToken(token: Token) {
     case 'color':
       return 'COLOR';
     case 'number':
+    case 'dimension':
       return 'FLOAT';
     case 'string':
       return 'STRING';
@@ -72,6 +74,8 @@ function variableValueFromToken(
     };
   } else if (typeof token.$value === 'string' && token.$type === 'color') {
     return parseColor(token.$value);
+  } else if (token.$type === 'dimension') {
+    return dimensionToPixelNumber(token.$value + '');
   } else {
     return token.$value;
   }

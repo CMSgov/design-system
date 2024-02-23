@@ -13,6 +13,7 @@ Object {
 --radius-medium: 4;
 --radius-pill: 9999;
 --radius-small: 2;
+--spacer-1: \\"8px\\";
 }",
   "core-theme.css": ":root, ::before, ::after, ::backdrop {
 --color-primary-light: \\"#4d9cd0\\";
@@ -25,6 +26,7 @@ Object {
 --radius-medium: 4;
 --radius-pill: 9999;
 --radius-small: 2;
+--spacer-1: \\"8px\\";
 }",
 }
 `;
@@ -40,7 +42,8 @@ $radius-default: 3;
 $radius-large: 8;
 $radius-medium: 4;
 $radius-pill: 9999;
-$radius-small: 2;",
+$radius-small: 2;
+$spacer-1: \\"8px\\";",
   "core-theme.scss": "$color-primary-light: \\"#4d9cd0\\" !default;
 $color-primary: \\"#0071bc\\" !default;
 $alert__background-color: $color-primary-light !default;
@@ -50,12 +53,14 @@ $radius-default: 3 !default;
 $radius-large: 8 !default;
 $radius-medium: 4 !default;
 $radius-pill: 9999 !default;
-$radius-small: 2 !default;",
+$radius-small: 2 !default;
+$spacer-1: \\"8px\\" !default;",
 }
 `;
 
 exports[`tokenFilesToScssLayoutFiles matches snapshot 1`] = `
 Object {
-  "layout.scss": "",
+  "layout.scss": "$spacer-1: \\"8px\\";
+$spacer-1: \\"8px\\";",
 }
 `;

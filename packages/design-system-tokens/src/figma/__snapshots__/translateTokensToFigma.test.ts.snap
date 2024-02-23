@@ -112,6 +112,11 @@ Object {
       "variableId": "radius/small",
     },
     Object {
+      "modeId": "Value",
+      "value": 8,
+      "variableId": "spacer/1",
+    },
+    Object {
       "modeId": "cmsgov",
       "value": Object {
         "id": "color/ocean/50",
@@ -363,6 +368,19 @@ Object {
       "resolvedType": "FLOAT",
       "scopes": Array [
         "CORNER_RADIUS",
+      ],
+      "variableCollectionId": "System",
+    },
+    Object {
+      "action": "CREATE",
+      "codeSyntax": Object {},
+      "description": "",
+      "hiddenFromPublishing": false,
+      "id": "spacer/1",
+      "name": "spacer/1",
+      "resolvedType": "FLOAT",
+      "scopes": Array [
+        "ALL_SCOPES",
       ],
       "variableCollectionId": "System",
     },
