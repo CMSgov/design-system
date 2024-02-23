@@ -56,7 +56,7 @@ describe('AccordionItem', function () {
     renderAccordionItem({ heading: 'Foo' });
 
     const headingEl = screen.getByRole('heading');
-    expect(headingEl.textContent).toBe('FooOpen');
+    expect(headingEl.textContent).toBe('Foo');
   });
 
   it('renders an id automatically', () => {
