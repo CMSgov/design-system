@@ -103,13 +103,13 @@ Object {
     },
     Object {
       "modeId": "Value",
-      "value": 9999,
-      "variableId": "radius/pill",
+      "value": 2,
+      "variableId": "radius/small",
     },
     Object {
       "modeId": "Value",
-      "value": 2,
-      "variableId": "radius/small",
+      "value": 9999,
+      "variableId": "radius/pill",
     },
     Object {
       "modeId": "Value",
@@ -350,8 +350,8 @@ Object {
       "codeSyntax": Object {},
       "description": "",
       "hiddenFromPublishing": false,
-      "id": "radius/pill",
-      "name": "radius/pill",
+      "id": "radius/small",
+      "name": "radius/small",
       "resolvedType": "FLOAT",
       "scopes": Array [
         "CORNER_RADIUS",
@@ -363,8 +363,8 @@ Object {
       "codeSyntax": Object {},
       "description": "",
       "hiddenFromPublishing": false,
-      "id": "radius/small",
-      "name": "radius/small",
+      "id": "radius/pill",
+      "name": "radius/pill",
       "resolvedType": "FLOAT",
       "scopes": Array [
         "CORNER_RADIUS",

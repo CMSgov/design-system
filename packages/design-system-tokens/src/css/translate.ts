@@ -83,9 +83,14 @@ function resolveTokenValue(
     }
 
     return resolveTokenValue(aliasedToken, resolveConfig);
-  } else {
+  } else if (token.$type === 'number') {
+    return token.$value + '';
+  } else if (typeof token.$value === 'string') {
     // TODO: Actually try to convert the value into an appropriate string base on the $type
-    return JSON.stringify(token.$value);
+    return token.$value;
+  } else {
+    console.error(token);
+    throw new Error("We don't support non-string values yet. Implement it!");
   }
 }
 

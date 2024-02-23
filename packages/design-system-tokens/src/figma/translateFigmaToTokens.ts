@@ -66,9 +66,14 @@ function tokenFromVariable(
   if ($type === 'number') {
     const remVars = ['lead-max-width', 'site-margins', 'site-margins-mobile', 'text-max-width'];
     const pxVars = ['grid/gutter-width', 'grid/form-gutter-width', 'nav-width', 'site-max-width'];
-    if (
-      variable.name.startsWith('spacer') ||
+    if (variable.name === 'radius/circle') {
+      // The number is a percentage
+      $type = 'dimension';
+      $value = `${$value}%`;
+    } else if (
       variable.name.startsWith('media') ||
+      variable.name.startsWith('radius') ||
+      variable.name.startsWith('spacer') ||
       pxVars.includes(variable.name)
     ) {
       // The number is a pixel value

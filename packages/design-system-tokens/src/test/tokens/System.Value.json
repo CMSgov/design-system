@@ -85,8 +85,8 @@
   },
   "radius": {
     "circle": {
-      "$type": "number",
-      "$value": 100,
+      "$type": "dimension",
+      "$value": "100%",
       "$description": "",
       "$extensions": {
         "com.figma": {
@@ -97,8 +97,8 @@
       }
     },
     "default": {
-      "$type": "number",
-      "$value": 3,
+      "$type": "dimension",
+      "$value": "3px",
       "$description": "",
       "$extensions": {
         "com.figma": {
@@ -109,8 +109,8 @@
       }
     },
     "large": {
-      "$type": "number",
-      "$value": 8,
+      "$type": "dimension",
+      "$value": "8px",
       "$description": "",
       "$extensions": {
         "com.figma": {
@@ -121,20 +121,8 @@
       }
     },
     "medium": {
-      "$type": "number",
-      "$value": 4,
-      "$description": "",
-      "$extensions": {
-        "com.figma": {
-          "hiddenFromPublishing": false,
-          "scopes": ["CORNER_RADIUS"],
-          "codeSyntax": {}
-        }
-      }
-    },
-    "pill": {
-      "$type": "number",
-      "$value": 9999,
+      "$type": "dimension",
+      "$value": "4px",
       "$description": "",
       "$extensions": {
         "com.figma": {
@@ -145,8 +133,20 @@
       }
     },
     "small": {
-      "$type": "number",
-      "$value": 2,
+      "$type": "dimension",
+      "$value": "2px",
+      "$description": "",
+      "$extensions": {
+        "com.figma": {
+          "hiddenFromPublishing": false,
+          "scopes": ["CORNER_RADIUS"],
+          "codeSyntax": {}
+        }
+      }
+    },
+    "pill": {
+      "$type": "dimension",
+      "$value": "9999px",
       "$description": "",
       "$extensions": {
         "com.figma": {
