@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`tokenFilesToCssFiles works 1`] = `
+exports[`tokenFilesToCssFiles matches snapshot 1`] = `
 Object {
   "cmsgov-theme.css": ":root, ::before, ::after, ::backdrop {
 --color-primary-light: \\"#e6f1f8\\";
@@ -26,5 +26,36 @@ Object {
 --radius-pill: 9999;
 --radius-small: 2;
 }",
+}
+`;
+
+exports[`tokenFilesToScssFiles matches snapshot 1`] = `
+Object {
+  "cmsgov-theme.scss": "$color-primary-light: \\"#e6f1f8\\";
+$color-primary: \\"#b3d4eb\\";
+$alert__background-color: $color-primary-light;
+$alert__border-color: $color-primary;
+$radius-circle: 100;
+$radius-default: 3;
+$radius-large: 8;
+$radius-medium: 4;
+$radius-pill: 9999;
+$radius-small: 2;",
+  "core-theme.scss": "$color-primary-light: \\"#4d9cd0\\" !default;
+$color-primary: \\"#0071bc\\" !default;
+$alert__background-color: $color-primary-light !default;
+$alert__border-color: $color-primary !default;
+$radius-circle: 100 !default;
+$radius-default: 3 !default;
+$radius-large: 8 !default;
+$radius-medium: 4 !default;
+$radius-pill: 9999 !default;
+$radius-small: 2 !default;",
+}
+`;
+
+exports[`tokenFilesToScssLayoutFiles matches snapshot 1`] = `
+Object {
+  "layout.scss": "",
 }
 `;

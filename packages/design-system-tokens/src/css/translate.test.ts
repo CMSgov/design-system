@@ -1,6 +1,13 @@
 import path from 'path';
 import { readTokenFiles } from '../lib/tokens';
-import { tokenFilesToCssFiles, tokenNameToVarName } from './translate';
+import {
+  tokenFilesToCssFiles,
+  tokenFilesToScssFiles,
+  tokenFilesToScssLayoutFiles,
+  tokenNameToVarName,
+} from './translate';
+
+const tokensByFile = readTokenFiles(path.resolve(__dirname, '..', 'test', 'tokens'));
 
 describe('tokenNameToVarName', () => {
   it('handles component tokens correctly', () => {
@@ -25,9 +32,19 @@ describe('tokenNameToVarName', () => {
 });
 
 describe('tokenFilesToCssFiles', () => {
-  const tokensByFile = readTokenFiles(path.resolve(__dirname, '..', 'test', 'tokens'));
-
-  it('works', () => {
+  it('matches snapshot', () => {
     expect(tokenFilesToCssFiles(tokensByFile)).toMatchSnapshot();
+  });
+});
+
+describe('tokenFilesToScssFiles', () => {
+  it('matches snapshot', () => {
+    expect(tokenFilesToScssFiles(tokensByFile)).toMatchSnapshot();
+  });
+});
+
+describe('tokenFilesToScssLayoutFiles', () => {
+  it('matches snapshot', () => {
+    expect(tokenFilesToScssLayoutFiles(tokensByFile)).toMatchSnapshot();
   });
 });
