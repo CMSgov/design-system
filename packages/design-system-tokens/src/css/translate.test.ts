@@ -1,6 +1,6 @@
 import path from 'path';
 import { readTokenFiles } from '../lib/tokens';
-import { tokenFilesToCssFiles, tokenNameToVarName } from './exportCssVars';
+import { tokenFilesToCssFiles, tokenNameToVarName } from './translate';
 
 describe('tokenNameToVarName', () => {
   it('handles component tokens correctly', () => {

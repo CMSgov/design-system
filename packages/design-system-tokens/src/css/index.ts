@@ -1,8 +1,11 @@
 import path from 'path';
 import writeFiles from './writeFiles';
 import { readTokenFiles } from '../lib/tokens';
-import { tokenFilesToCssFiles } from './exportCssVars';
-import { tokenFilesToScssFiles, tokenFilesToScssLayoutFiles } from './exportScssVars';
+import {
+  tokenFilesToCssFiles,
+  tokenFilesToScssFiles,
+  tokenFilesToScssLayoutFiles,
+} from './translate';
 
 const TOKENS_DIR = path.join(process.cwd(), 'src', 'tokens');
 const DIST_DIR = 'dist';
