@@ -55,13 +55,12 @@ export const VerticalNavItemLabel = (props: VerticalNavItemLabelProps): React.Re
 
   let otherProps;
   if (LabelComponent === 'button') {
-    const collapsedLabel = props.ariaCollapsedStateButtonLabel;
-    const expandedLabel = props.ariaExpandedStateButtonLabel;
-
     otherProps = {
       'aria-controls': props.subnavId,
       'aria-expanded': !props.collapsed,
-      title: props.collapsed ? collapsedLabel : expandedLabel,
+      title: props.collapsed
+        ? props.ariaCollapsedStateButtonLabel
+        : props.ariaExpandedStateButtonLabel,
     };
   } else if (LabelComponent !== DEFAULT_COMPONENT_TYPE) {
     // Apply href if <a> or custom component type
