@@ -7,7 +7,7 @@ import {
   tokenNameToVarName,
 } from './translate';
 
-const tokensByFile = readTokenFiles(path.resolve(__dirname, '..', 'test', 'tokens'));
+const tokensByFile = readTokenFiles(path.resolve(__dirname, '..', '__mocks__', 'tokens'));
 
 describe('tokenNameToVarName', () => {
   it('handles component tokens correctly', () => {

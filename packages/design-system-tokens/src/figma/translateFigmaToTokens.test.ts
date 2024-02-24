@@ -1,7 +1,7 @@
-import testResponse from './test/test-get-response';
-import systemTokens from '../test/tokens/System.Value.json';
-import coreTokens from '../test/tokens/Theme.core.json';
-import cmsgovTokens from '../test/tokens/Theme.cmsgov.json';
+import testResponse from './__mocks__/test-get-response';
+import systemTokens from '../__mocks__/tokens/System.Value.json';
+import coreTokens from '../__mocks__/tokens/Theme.core.json';
+import cmsgovTokens from '../__mocks__/tokens/Theme.cmsgov.json';
 import { tokenFilesFromLocalVariables } from './translateFigmaToTokens';
 
 describe('tokenFilesFromLocalVariables', () => {
