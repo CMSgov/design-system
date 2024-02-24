@@ -33,8 +33,8 @@ There are _three_ main tiers for our design tokens organized into _two_ general 
 
 1. System-level tokens
 2. Theme-level tokens, which derive their values from system-level tokens
-3. Theme-wide semantic tokens, which can be applied to multiple component tokens
-4. Component tokens
+   1. Theme-wide semantic tokens, which can be applied to multiple component tokens
+   2. Component tokens
 
 ### System tokens
 
