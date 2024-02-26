@@ -1,8 +1,4 @@
 {
-  "accordion": {
-    "close": "Close",
-    "open": "Open"
-  },
   "alert": {
     "defaultLabel": "Notice",
     "error": "Alert",
