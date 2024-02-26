@@ -57,6 +57,7 @@ export const VerticalNavItemLabel = (props: VerticalNavItemLabelProps): React.Re
   if (LabelComponent === 'button') {
     const collapsedLabel = props.ariaCollapsedStateButtonLabel ?? t('verticalNav.expand');
     const expandedLabel = props.ariaExpandedStateButtonLabel ?? t('verticalNav.collapse');
+
     otherProps = {
       'aria-controls': props.subnavId,
       'aria-expanded': !props.collapsed,
