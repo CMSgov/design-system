@@ -5,6 +5,7 @@ import TableContext from './TableContext';
 import classNames from 'classnames';
 import debounce from '../utilities/debounce';
 import useId from '../utilities/useId';
+import { t } from '../i18n';
 
 /**
  * Determine if a ReactNode is a TableCaption
@@ -47,10 +48,9 @@ interface BaseTableProps {
    */
   scrollable?: boolean;
   /**
-   * Additional text or content to display when the horizontal scrollbar is visible to give the user notice of the scroll behavior.
-   * This prop will only be used when the `Table` `scrollable` prop is set and the table width is wider than the viewport.
+   * Sets the text that appears in the Alert that appears when the table becomes scrollable.
    */
-  scrollableNotice?: React.ReactNode;
+  scrollableNoticeText?: string;
   /**
    * A stackable variation of the table.
    * When `stackable` is set, `id` or `headers` prop is required in `Table`
@@ -87,16 +87,16 @@ export type TableProps = Omit<React.ComponentPropsWithoutRef<'table'>, OmitProps
  */
 export const Table = ({
   borderless,
+  children,
   className,
   compact,
+  id,
+  scrollable,
+  scrollableNoticeText,
   stackable,
   stackableBreakpoint,
   striped,
-  scrollable,
-  scrollableNotice,
   warningDisabled,
-  children,
-  id,
   ...tableProps
 }: TableProps) => {
   const [scrollActive, setScrollActive] = useState(false);
@@ -164,7 +164,13 @@ export const Table = ({
         return React.cloneElement(child, {
           _id: captionId,
           _scrollActive: scrollActive,
-          _scrollableNotice: scrollableNotice,
+          _scrollableNotice: (
+            <Alert className="ds-c-table__scroll-alert" role="status">
+              <p className="ds-c-alert__text">
+                {scrollableNoticeText ?? t('table.scrollableNoticeText')}
+              </p>
+            </Alert>
+          ),
         });
       }
     }
@@ -189,11 +195,6 @@ export const Table = ({
 };
 
 Table.defaultProps = {
-  scrollableNotice: (
-    <Alert className="ds-c-table__scroll-alert" role="status">
-      <p className="ds-c-alert__text">Scroll using arrow keys to see more</p>
-    </Alert>
-  ),
   stackableBreakpoint: 'sm',
 };
 

@@ -25,9 +25,9 @@
     "-"
   ],
   [
-    "scrollableNotice",
-    "Additional text or content to display when the horizontal scrollbar is visible to give the user notice of the scroll behavior. This prop will only be used when the Table scrollable prop is set and the table width is wider than the viewport.\n\nReactNode",
-    "<Alert />"
+    "scrollableNoticeText",
+    "Sets the text that appears in the Alert that appears when the table becomes scrollable.\nstring",
+    "-"
   ],
   [
     "stackable",

@@ -128,6 +128,9 @@
   "spinner": {
     "ariaText": "Loading"
   },
+  "table": {
+    "scrollableNoticeText": "Scroll using arrow keys to see more"
+  },
   "thirdPartyExternalLink": {
     "dialogHeading": "You are leaving {{origin}}.",
     "dialogBody": "You're about to connect to a third-party site. Select CONTINUE to proceed or CANCEL to stay on this site.",
