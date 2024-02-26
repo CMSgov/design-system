@@ -12,7 +12,7 @@ interface ThirdPartyExternalLinkProps {
   children: string;
   /** Additional classes to be applied to the external link button. */
   className?: string;
-  /** Specify the URL User's should visit to learn more about your application's external link policy. */
+  /** Specify the URL users should visit to learn more about your application's external link policy. */
   learnMoreUrl?: string;
   /** Text informing the user where they are. This text will appear in both the dialog heading and body. */
   origin: string;
@@ -64,10 +64,6 @@ const ThirdPartyExternalLink = ({
       </Dialog>
     </>
   );
-};
-
-ThirdPartyExternalLink.defaultProps = {
-  learnMoreUrl: '',
 };
 
 export default ThirdPartyExternalLink;

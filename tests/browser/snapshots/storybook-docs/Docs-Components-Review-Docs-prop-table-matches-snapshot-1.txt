@@ -27,7 +27,7 @@
   [
     "editText",
     "ReactNode",
-    "t('review.editText')"
+    "-"
   ],
   [
     "heading",

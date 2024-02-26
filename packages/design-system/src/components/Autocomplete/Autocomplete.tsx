@@ -186,10 +186,10 @@ export const Autocomplete = (props: AutocompleteProps) => {
     reactStatelyItems = renderReactStatelyItems(items, itemToString);
   } else if (loading) {
     // If we're waiting for results to load, show the non-selected message
-    statusMessage = renderStatusMessage(loadingMessage);
+    statusMessage = renderStatusMessage(loadingMessage ?? t('autocomplete.loadingMessage'));
   } else if (items) {
     // If we have no results (empty array), show the non-selected message
-    statusMessage = renderStatusMessage(noResultsMessage);
+    statusMessage = renderStatusMessage(noResultsMessage ?? t('autocomplete.noResultsMessage'));
   }
 
   const textField = getTextFieldChild(children);
@@ -316,7 +316,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
 
       {clearSearchButton && (
         <Button
-          aria-label={ariaClearLabel}
+          aria-label={ariaClearLabel ?? t('autocomplete.ariaClearLabel')}
           className="ds-u-padding-right--0 ds-c-autocomplete__clear-btn"
           onClick={() => {
             state.setSelectedKey(null);
@@ -329,7 +329,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
           variation="ghost"
           disabled={textField.props.disabled}
         >
-          {clearInputText}
+          {clearInputText ?? t('autocomplete.clearInputText')}
         </Button>
       )}
     </div>
@@ -337,12 +337,8 @@ export const Autocomplete = (props: AutocompleteProps) => {
 };
 
 Autocomplete.defaultProps = {
-  ariaClearLabel: t('autocomplete.ariaClearLabel'),
   autoCompleteLabel: 'off',
-  clearInputText: t('autocomplete.clearInputText'),
   clearSearchButton: true,
-  loadingMessage: t('autocomplete.loadingMessage'),
-  noResultsMessage: t('autocomplete.noResultsMessage'),
 };
 
 export default Autocomplete;

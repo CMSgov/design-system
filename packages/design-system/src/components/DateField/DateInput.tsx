@@ -204,7 +204,7 @@ export class DateInput extends React.PureComponent<DateInputProps> {
         {...sharedTextFieldProps}
         defaultValue={this.props[`${type}DefaultValue`]}
         value={this.props[`${type}Value`]}
-        label={this.props[`${type}Label`]}
+        label={this.props[`${type}Label`] ?? t(`dateField.${type}Label`)}
         name={this.props[`${type}Name`]}
         maxLength={maxLength}
         fieldClassName={classNames(`ds-c-field--${type}`, {
@@ -237,12 +237,6 @@ export class DateInput extends React.PureComponent<DateInputProps> {
       </div>
     );
   }
-
-  static defaultProps = {
-    dayLabel: t('dateField.dayLabel'),
-    monthLabel: t('dateField.monthLabel'),
-    yearLabel: t('dateField.yearLabel'),
-  };
 }
 
 export default DateInput;

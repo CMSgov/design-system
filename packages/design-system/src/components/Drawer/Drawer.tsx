@@ -91,13 +91,13 @@ export const Drawer = (props: DrawerProps) => {
             {props.heading}
           </Heading>
           <Button
-            aria-label={props.ariaLabel}
+            aria-label={props.ariaLabel ?? t('drawer.ariaLabel')}
             className="ds-c-drawer__close-button"
             size="small"
             onClick={props.onCloseClick}
             variation={props.closeButtonVariation}
           >
-            {props.closeButtonText}
+            {props.closeButtonText ?? t('drawer.closeButtonText')}
           </Button>
         </div>
         <div
@@ -120,8 +120,6 @@ export const Drawer = (props: DrawerProps) => {
 };
 
 Drawer.defaultProps = {
-  ariaLabel: t('drawer.ariaLabel'),
-  closeButtonText: t('drawer.closeButtonText'),
   hasFocusTrap: false,
   headingLevel: '3',
 };

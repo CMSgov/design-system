@@ -235,7 +235,7 @@ function Pagination({
   const Heading = `h${headingLevel}` as const;
   const headingElement = (
     <Heading id="pagination-heading">
-      {ariaLabel} -{' '}
+      {ariaLabel ?? t('pagination.ariaLabel')} -{' '}
       {t('pagination.pageXOfY', {
         number: `${currentPage}`,
         total: `${totalPages}`,
@@ -253,7 +253,7 @@ function Pagination({
         variation="ghost"
         href={renderHref(currentPage - 1)}
         onClick={pageChange(currentPage - 1)}
-        aria-label={startAriaLabel}
+        aria-label={startAriaLabel ?? t('pagination.startAriaLabel')}
         className="ds-c-pagination__nav"
         disabled={currentPage === 1}
         style={{ visibility: currentPage === 1 && isNavigationHidden ? 'hidden' : 'visible' }}
@@ -262,7 +262,7 @@ function Pagination({
         <span className="ds-c-pagination__nav--img-container ds-c-pagination__nav--img-container-previous">
           {startIcon}
         </span>
-        {startLabelText}
+        {startLabelText ?? t('pagination.startLabelText')}
       </Button>
       <span
         className="ds-c-pagination__page-count"
@@ -280,7 +280,7 @@ function Pagination({
         variation="ghost"
         href={renderHref(currentPage + 1)}
         onClick={pageChange(currentPage + 1)}
-        aria-label={endAriaLabel}
+        aria-label={endAriaLabel ?? t('pagination.endAriaLabel')}
         className="ds-c-pagination__nav"
         disabled={currentPage === totalPages}
         style={{
@@ -288,7 +288,7 @@ function Pagination({
         }}
         aria-hidden={currentPage === totalPages ? isNavigationHidden : false}
       >
-        {endLabelText}
+        {endLabelText ?? t('pagination.endLabelText')}
         <span className="ds-c-pagination__nav--img-container ds-c-pagination__nav--img-container-next">
           {endIcon}
         </span>
@@ -298,14 +298,9 @@ function Pagination({
 }
 
 Pagination.defaultProps = {
-  ariaLabel: t('pagination.ariaLabel'),
   compact: false,
-  endAriaLabel: t('pagination.endAriaLabel'),
-  endLabelText: t('pagination.endLabelText'),
   headingLevel: '2',
   isNavigationHidden: false,
-  startAriaLabel: t('pagination.startAriaLabel'),
-  startLabelText: t('pagination.startLabelText'),
 };
 
 export default Pagination;

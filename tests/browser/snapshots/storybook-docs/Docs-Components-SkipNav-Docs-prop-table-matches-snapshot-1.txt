@@ -2,7 +2,7 @@
   [
     "children",
     "Skip nav label\nReactNode",
-    "t('skipNav.default')"
+    "-"
   ],
   [
     "href*",

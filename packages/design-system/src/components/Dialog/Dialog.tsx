@@ -146,7 +146,7 @@ export const Dialog = (props: DialogProps) => {
             </h1>
           )}
           <CloseButton
-            aria-label={ariaCloseLabel}
+            aria-label={ariaCloseLabel ?? t('dialog.ariaCloseLabel')}
             className="ds-c-dialog__close"
             id={`${rootId}__close`}
             onClick={onExit}
@@ -159,10 +159,6 @@ export const Dialog = (props: DialogProps) => {
       </div>
     </NativeDialog>
   );
-};
-
-Dialog.defaultProps = {
-  ariaCloseLabel: t('dialog.ariaCloseLabel'),
 };
 
 export default Dialog;

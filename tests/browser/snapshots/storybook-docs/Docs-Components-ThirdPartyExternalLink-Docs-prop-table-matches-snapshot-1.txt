@@ -16,8 +16,8 @@
   ],
   [
     "learnMoreUrl",
-    "Specify the URL User's should visit to learn more about your application's external link policy.\nstring",
-    "\"\""
+    "Specify the URL users should visit to learn more about your application's external link policy.\nstring",
+    "-"
   ],
   [
     "origin*",
