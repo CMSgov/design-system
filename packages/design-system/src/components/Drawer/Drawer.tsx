@@ -120,8 +120,8 @@ export const Drawer = (props: DrawerProps) => {
 };
 
 Drawer.defaultProps = {
-  headingLevel: '3',
   hasFocusTrap: false,
+  headingLevel: '3',
 };
 
 export default Drawer;
