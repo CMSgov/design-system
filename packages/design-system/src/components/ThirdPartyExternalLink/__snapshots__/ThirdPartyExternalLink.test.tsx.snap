@@ -64,9 +64,7 @@ exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external l
           You're about to connect to a third-party site. Select CONTINUE to proceed or CANCEL to stay on this site.
         </p>
         <p>
-          <a
-            href=""
-          >
+          <a>
             Learn more about links to third-party sites
           </a>
           .
