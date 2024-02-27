@@ -58,6 +58,7 @@
     "@types/react": "^18.2.6",
     "@types/react-dom": "^17.0.10",
     "@types/react-transition-group": "^4.4.5",
+    "case-it": "^1.0.1",
     "classnames": "^2.2.5",
     "date-fns": "^2.28.0",
     "ev-emitter": "^1.1.1",
@@ -71,7 +72,6 @@
     "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
-    "case-it": "^1.0.1",
     "chalk": "^5.0.1",
     "globby": "^13.1.2",
     "inquirer": "^9.0.2",
