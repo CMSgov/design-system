@@ -66,4 +66,6 @@ const ThirdPartyExternalLink = ({
   );
 };
 
+ThirdPartyExternalLink.defaultProps = {};
+
 export default ThirdPartyExternalLink;
