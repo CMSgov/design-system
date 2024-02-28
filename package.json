@@ -73,8 +73,13 @@
     ]
   },
   "browserslist": [
-    "> 2%",
-    "Last 2 versions"
+    ">2% in US",
+    "last 2 Chrome versions",
+    "last 2 Firefox version",
+    "last 2 Edge major versions",
+    "last 2 Safari major versions",
+    "last 2 iOS major versions",
+    "not dead"
   ],
   "devDependencies": {
     "@axe-core/playwright": "^4.4.4",
