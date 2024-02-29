@@ -4,12 +4,13 @@
 // to only bundle imported components. Without this optimization, all components will be imported
 // your build process.
 
-import { Alert, Button, Drawer, UsaBanner } from '@cmsgov/design-system';
+import { Alert, Button, Drawer, UsaBanner, SingleInputDateField } from '@cmsgov/design-system';
 import { render } from 'preact';
 import { useState } from 'preact/hooks';
 
 const Example = function () {
   const [open, setOpen] = useState(false);
+  const [dateString, updateDate] = useState('');
   return (
     <div>
       <UsaBanner />
@@ -44,6 +45,15 @@ const Example = function () {
               Learn more
             </Button>
           </Alert>
+          <SingleInputDateField
+            hint="If you were born on a leap day, entering the date will either crash our servers or open a portal to an alternate dimension."
+            label="Enter your date of birth."
+            name="single-input-date-field"
+            fromYear={2023}
+            toYear={2023}
+            value={dateString}
+            onChange={updateDate}
+          />
         </div>
       </div>
     </div>
