@@ -73,15 +73,14 @@ export function getPrivacySettings(): PrivacySettings {
   const cookieString = readCookie(COOKIE_KEY);
   if (!cookieString) {
     if (COOKIE_DOMAIN) {
-      // This is a domain where we should already have a cookie defined
-      throw new Error(
-        `Privacy settings error: ${COOKIE_KEY} is not set. Check to make sure your app has Tealium enabled.`
+      // This is a domain where we should already have a cookie defined, so let the
+      // developers know that Tealium isn't loaded.
+      console.error(
+        `Privacy settings error: ${COOKIE_KEY} cookie is not set. Check to make sure your app has Tealium enabled.`
       );
-    } else {
-      // This must be some kind of test or non-production environment, so just return
-      // some default settings.
-      return defaultSettings;
     }
+
+    return defaultSettings;
   }
 
   const pairs = cookieString.split('|');
