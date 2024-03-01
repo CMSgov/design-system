@@ -54,6 +54,7 @@
     "test:browser:storybook-docs": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.31.0-focal yarn playwright test --config tests/browser/storybook-docs.config.ts",
     "test:browser:storybook-docs:update": "yarn build:storybook && yarn test:browser:storybook-docs -u",
     "test:browser:examples": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.31.0-focal yarn playwright test --config tests/browser/examples.config.ts",
+    "test:browser:examples:update": "yarn build:examples && yarn test:browser:examples -u",
     "type-check": "yarn tsc --noEmit"
   },
   "husky": {
