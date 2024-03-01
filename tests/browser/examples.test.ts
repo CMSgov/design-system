@@ -29,3 +29,24 @@ test.describe('cdn-web-components', () => {
     await expect(page).toHaveScreenshot('cdn-web-components.png', { fullPage: true });
   });
 });
+
+test.describe('preact-app', () => {
+  test('matches snapshot', async ({ page }) => {
+    await page.goto(`${DOMAIN}/preact-app`);
+    await expect(page).toHaveScreenshot('preact-app.png', { fullPage: true });
+  });
+});
+
+test.describe('preact-react-app', () => {
+  test('matches snapshot', async ({ page }) => {
+    await page.goto(`${DOMAIN}/preact-react-app`);
+    await expect(page).toHaveScreenshot('preact-react-app.png', { fullPage: true });
+  });
+});
+
+test.describe('react-app', () => {
+  test('matches snapshot', async ({ page }) => {
+    await page.goto(`${DOMAIN}/react-app`);
+    await expect(page).toHaveScreenshot('react-app.png', { fullPage: true });
+  });
+});
