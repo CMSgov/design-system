@@ -16,6 +16,7 @@ import { default as config } from './playwright.config';
 
 config.snapshotPathTemplate = 'snapshots/examples/{arg}/{arg}--{projectName}{ext}';
 config.testMatch = /examples\.test\.ts/;
+config.testIgnore = undefined;
 config.webServer = {
   command: 'yarn http-server -p 8080 examples',
   port: 8080,
