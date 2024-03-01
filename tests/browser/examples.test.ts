@@ -2,33 +2,20 @@ import { test, expect } from '@playwright/test';
 
 const DOMAIN = 'http://localhost:8080';
 
-test.describe('cdn-html-css', () => {
-  test('matches snapshot', async ({ page }) => {
-    await page.goto(`${DOMAIN}/cdn-html-css`);
-    await expect(page).toHaveScreenshot('cdn-html-css.png', { fullPage: true });
+function testCdnExample(exampleName: string) {
+  test.describe(exampleName, () => {
+    test('matches snapshot', async ({ page }) => {
+      // Wait until network idle so we're sure to get the fonts
+      await page.goto(`${DOMAIN}/${exampleName}`, { waitUntil: 'networkidle' });
+      await expect(page).toHaveScreenshot(`${exampleName}.png`, { fullPage: true });
+    });
   });
-});
+}
 
-test.describe('cdn-preact', () => {
-  test('matches snapshot', async ({ page }) => {
-    await page.goto(`${DOMAIN}/cdn-preact`);
-    await expect(page).toHaveScreenshot('cdn-preact.png', { fullPage: true });
-  });
-});
-
-test.describe('cdn-react', () => {
-  test('matches snapshot', async ({ page }) => {
-    await page.goto(`${DOMAIN}/cdn-react`);
-    await expect(page).toHaveScreenshot('cdn-react.png', { fullPage: true });
-  });
-});
-
-test.describe('cdn-web-components', () => {
-  test('matches snapshot', async ({ page }) => {
-    await page.goto(`${DOMAIN}/cdn-web-components`);
-    await expect(page).toHaveScreenshot('cdn-web-components.png', { fullPage: true });
-  });
-});
+testCdnExample('cdn-html-css');
+testCdnExample('cdn-preact');
+testCdnExample('cdn-react');
+testCdnExample('cdn-web-components');
 
 test.describe('preact-app', () => {
   test('matches snapshot', async ({ page }) => {
