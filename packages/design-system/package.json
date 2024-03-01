@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/design-system",
-  "version": "9.0.1",
+  "version": "9.0.2",
   "publishConfig": {
     "access": "public",
     "tag": "latest"
