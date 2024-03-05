@@ -65,6 +65,7 @@ These scripts can all be run from the root level of the repo:
   - `yarn test:browser:update` updates reference screenshots used for visual regression testing. Update these only when we expect the visual changes
   - `yarn test:browser --project <name>` runs only one of the named projects found in [playwright.config.ts](/tests/browser/playwright.config.ts)
   - `yarn test:browser:interaction` runs VRT interaction tests to validate visual state of components after interaction.
+  - `yarn test:browser:examples` runs VRT tests for our example projects.
   - `yarn test:browser:all` runs all VRT, static and interactive.
   - `yarn test:browser:storybook-docs` checks for regressions in prop tables in storybook docs
 - `yarn lint`
