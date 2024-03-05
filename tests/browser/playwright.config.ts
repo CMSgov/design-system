@@ -76,10 +76,10 @@ const smokeTestProjects = [
  */
 const config: PlaywrightTestConfig = {
   testDir: './',
-  testIgnore: 'storybook-docs.test.ts',
+  testIgnore: ['storybook-docs.test.ts', 'examples.test.ts'],
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
-  snapshotPathTemplate: 'snapshots/{arg}--{projectName}{ext}',
+  snapshotPathTemplate: 'snapshots/stories/{arg}--{projectName}{ext}',
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.
