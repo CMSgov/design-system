@@ -37,3 +37,15 @@ test.describe('react-app', () => {
     await expect(page).toHaveScreenshot('react-app.png', { fullPage: true });
   });
 });
+
+test.describe('astro', () => {
+  test('react page matches snapshot', async ({ page }) => {
+    await page.goto(`${DOMAIN}/astro/dist/react`);
+    await expect(page).toHaveScreenshot('astro-react.png', { fullPage: true });
+  });
+
+  test('web-components page matches snapshot', async ({ page }) => {
+    await page.goto(`${DOMAIN}/astro/dist/web-components`);
+    await expect(page).toHaveScreenshot('astro-web-components.png', { fullPage: true });
+  });
+});
