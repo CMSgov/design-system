@@ -245,9 +245,7 @@ function Pagination({
 
   return (
     <nav className={classes} aria-labelledby="pagination-heading" {...rest}>
-      <span aria-live="polite" role="status" className="ds-u-visibility--screen-reader">
-        {headingElement}
-      </span>
+      <span className="ds-u-visibility--screen-reader">{headingElement}</span>
 
       <Button
         variation="ghost"

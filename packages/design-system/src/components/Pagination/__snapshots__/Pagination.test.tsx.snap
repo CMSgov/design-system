@@ -46,9 +46,7 @@ exports[`Pagination should render component 1`] = `
     class="ds-c-pagination"
   >
     <span
-      aria-live="polite"
       class="ds-u-visibility--screen-reader"
-      role="status"
     >
       <h2
         id="pagination-heading"
@@ -153,9 +151,7 @@ exports[`Pagination with compact prop enabled should render compact variant 1`] 
     class="ds-c-pagination ds-c-pagination--compact"
   >
     <span
-      aria-live="polite"
       class="ds-u-visibility--screen-reader"
-      role="status"
     >
       <h2
         id="pagination-heading"
