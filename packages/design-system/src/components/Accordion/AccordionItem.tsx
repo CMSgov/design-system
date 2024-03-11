@@ -113,7 +113,6 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
         </HeadingTag>
         <div
           className={contentClasses}
-          aria-labelledby={buttonId}
           id={contentId}
           hidden={isControlled ? !isControlledOpen : !isOpen}
         >
