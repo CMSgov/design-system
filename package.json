@@ -18,7 +18,7 @@
     "build:tokens": "yarn --cwd ./packages/design-system-tokens build:all",
     "build:cdn-index": "ts-node ./scripts/build-cdn-indexes.ts",
     "build:docs": "yarn build:storybook:docs && yarn --cwd ./packages/docs build",
-    "build:examples": "yarn --cwd ./examples/preact-app build && yarn --cwd ./examples/preact-react-app build && yarn --cwd ./examples/react-app build",
+    "build:examples": "yarn --cwd ./examples/astro build --base /astro/dist && yarn --cwd ./examples/preact-app build && yarn --cwd ./examples/preact-react-app build && yarn --cwd ./examples/react-app build",
     "check:maturity": "./scripts/maturityCheck.sh",
     "clean": "yarn clean:cache && yarn clean:modules",
     "clean:cache": "rm -rf packages/docs/.cache",
@@ -34,6 +34,7 @@
     "release:notes": "ts-node ./scripts/notes.ts",
     "release:patch": "ts-node ./scripts/patch.ts",
     "serve:docs": "yarn --cwd ./packages/docs serve",
+    "serve:examples": "yarn http-server -p 8080 examples",
     "start": "yarn build:storybook:docs && yarn --cwd ./packages/docs develop",
     "storybook": "storybook dev -p 6006",
     "storybook:react": "PREACT=false storybook dev -p 6006",
@@ -76,8 +77,12 @@
     ]
   },
   "browserslist": [
-    "> 2%",
-    "Last 2 versions"
+    ">2% in US and not dead",
+    "last 6 Chrome versions",
+    "last 6 Firefox versions",
+    "last 6 Edge major versions",
+    "Safari >= 15",
+    "iOS >= 15"
   ],
   "devDependencies": {
     "@axe-core/playwright": "^4.4.4",
