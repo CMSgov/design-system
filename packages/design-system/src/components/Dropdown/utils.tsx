@@ -61,9 +61,13 @@ function findElementsOfType<T extends keyof JSX.IntrinsicElements>(
 
 function parseOptionElement(option: ReactElement<any, 'option'>): DropdownOption {
   const { value, children, ...extraAttributes } = option.props;
+  // The web-component Preact parser sometimes wraps text content in an array, but
+  // react-aria doesn't like that because it wants its labels/children to only be
+  // strings, or it will warn "<Item> with non-plain text contents is unsupported".
+  const label = children.length === 1 ? children[0] : children;
   return {
     value,
-    label: children,
+    label,
     ...extraAttributes,
   };
 }
