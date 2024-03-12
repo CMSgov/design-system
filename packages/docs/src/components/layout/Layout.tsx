@@ -43,7 +43,7 @@ interface LayoutProps {
   /**
    * Current theme name
    */
-  theme: string;
+  theme: 'core' | 'healthcare' | 'medicare' | 'cmsgov';
   /**
    * list of heading items to be used in table of contents
    */
@@ -73,7 +73,7 @@ const Layout = ({
   const pageId = slug ? `page--${slug.replace('/', '_')}` : null;
 
   return (
-    <div className="ds-base" data-theme={theme} id={pageId}>
+    <div id={pageId}>
       <Helmet
         title={tabTitle}
         htmlAttributes={{
@@ -86,7 +86,7 @@ const Layout = ({
           rel="stylesheet"
           type="text/css"
           title="docThemeCss"
-          href={withPrefix(`themes/${theme}-theme.css`)}
+          href={withPrefix(`themes/core-theme.css`)}
         />
       </Helmet>
       <SkipNav href="#main" />
@@ -97,7 +97,7 @@ const Layout = ({
 
       <div className="ds-l-row ds-u-margin--0 full-height">
         <FilterDialogManager>
-          <SideNav location={location} />
+          <SideNav theme={theme} location={location} />
           <div className="ds-u-md-display--none ds-u-padding-x--3 ds-u-padding-top--2">
             <ThemeVersionSection />
           </div>

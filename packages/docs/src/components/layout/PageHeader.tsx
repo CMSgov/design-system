@@ -48,7 +48,7 @@ const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => 
           {storyId && (
             <a href={makeStorybookUrl(storyId, theme, 'docs')} className="c-page-header__link">
               <img
-                alt="Storybook logo"
+                alt=""
                 src={withPrefix('/images/storybook-icon.png')}
                 className="ds-u-display--inline c-page-header__icon"
               />
@@ -58,7 +58,7 @@ const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => 
           {sketchId && (
             <a href={makeSketchUrl(sketchId, theme)} className="c-page-header__link">
               <img
-                alt="Sketch logo"
+                alt=""
                 src={withPrefix('/images/sketch-icon.png')}
                 className="ds-u-display--inline c-page-header__icon"
               />

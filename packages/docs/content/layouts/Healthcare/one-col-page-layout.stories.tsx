@@ -13,7 +13,7 @@ export const OneColumnPageLayout = () => {
   return (
     <>
       <Header />
-      <main className="ds-base ds-l-container example-grid">
+      <main className="ds-l-container example-grid">
         <div className="ds-l-row">
           <div className="ds-l-col--12">
             <b>Page header</b>
