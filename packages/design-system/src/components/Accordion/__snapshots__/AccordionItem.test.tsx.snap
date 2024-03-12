@@ -27,7 +27,6 @@ exports[`AccordionItem renders an accordion item 1`] = `
     </button>
   </h2>
   <div
-    aria-labelledby="static-id__button"
     class="ds-c-accordion__content"
     hidden=""
     id="static-id"
