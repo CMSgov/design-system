@@ -16,8 +16,12 @@
     "typecheck": "tsc --noEmit"
   },
   "browserslist": [
-    "> 2%",
-    "Last 2 versions"
+    ">2% in US and not dead",
+    "last 6 Chrome versions",
+    "last 6 Firefox versions",
+    "last 6 Edge major versions",
+    "Safari >= 15",
+    "iOS >= 15"
   ],
   "dependencies": {
     "@cmsgov/design-system": "9.0.2",
