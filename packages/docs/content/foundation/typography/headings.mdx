@@ -12,7 +12,7 @@ medicare:
   sketchLink: ZOarvL7
 ---
 
-import { Alert, Badge } from '@cmsgov/design-system';
+import { Alert, Badge, CloseIconThin } from '@cmsgov/design-system';
 import loremIpsumGenerator from '../../../src/helpers/loremIpsumGenerator';
 
 <Alert heading="Typography sizing updates!">
@@ -165,20 +165,21 @@ This is an optional header design.
 
 <Alert variation="warn" heading="First and last children">
 
-  The design system heading styles have alternate margins for headings that are the first or last child of their parent element. Headings that are the first child have no top margin, and headings that are last children have no bottom margin. Some examples of what we mean:
+The design system heading styles have alternate margins for headings that are the first or last child of their parent element. Headings that are the first child have no top margin, and headings that are last children have no bottom margin. Some examples of what we mean:
 
-  ```html
-    <main>
-      <h1>I'm the first child of my parent.</h1>
-      <h2>I'm not the first child of my parent</h2>
-      <div>
-        <h2>I'm actually the first child of my parent even
-          though I'm not the first heading on the page</h2>
-        <h2>I'm the last child of my parent</h2>
-      </div>
-      <h2>I'm also the last child of my parent</h2>
-    </main>
-  ```
+```html
+<main>
+  <h1>I'm the first child of my parent.</h1>
+  <h2>I'm not the first child of my parent</h2>
+  <div>
+    <h2>
+      I'm actually the first child of my parent even though I'm not the first heading on the page
+    </h2>
+    <h2>I'm the last child of my parent</h2>
+  </div>
+  <h2>I'm also the last child of my parent</h2>
+</main>
+```
 
 </Alert>
 
