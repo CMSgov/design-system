@@ -26,6 +26,11 @@ With this move, [as we mentioned in our previous blog post](/blog/#sasscss-chang
 When we created the [single-input date field](/components/date-field/single-input-date-field/) a while back, we introduced a new masking pattern called the [label-mask](/components/text-field/label-masked-field/). Now that we've been using it internally for a few months, we've decided to open it up for use as a drop-in replacement for our old [input-mask](/components/text-field/input-masked-field/) pattern. The label-mask now supports every feature that the old input-mask supported, with the additional improvement that the Social Security Number (SSN) field now automatically obfuscates the SSN when the input doesn't have focus by only showing the last four digits.
 
 <div className="ds-u-text-align--center">
+  <img
+    src={ssnInput}
+    alt="Animated screen capture of inputting a Social Security Number using the new label-mask pattern"
+    className="ds-u-display--inline-block"
+  />
 </div>
 
 Hiding the SSN is previously something application teams had to implement themselves to use the SSN field and maintain their users' privacy. You can [read more about the label-mask pattern](/components/text-field/label-masked-field/)—what it is and why we built it—on the new documentation page.
@@ -50,6 +55,12 @@ For these reasons we decided to migrate all the content from the DSM into our do
 In our [3.6.0 release](https://github.com/CMSgov/design-system/releases/tag/%40cmsgov%2Fdesign-system%403.6.0) we established design tokens for the design system including system color tokens. System color tokens are the complete set of color tokens from which themes are built.
 
 <div className="ds-u-text-align--center">
+  <img
+    src={swatches}
+    alt="Color ramps from the 'System Color Tokens' page, showing a range of light to dark shades of a color"
+    className="ds-u-display--inline-block"
+    width="400"
+  />
 </div>
 
 In this release we've added a page to the design system to show all color tokens in an easy-to-read and scannable way. We're exposing this base set of tokens to better highlight the design decisions made within a particular theme. Think of them as [a complete box of crayons](/foundation/system-color-tokens/). Our themes make use of certain colors from the crayon box but not all of them.
@@ -71,6 +82,12 @@ Designers can fall into that same trap. We want to label and organize every laye
 In this non-breaking change, we shook the proverbial rug out in all three UI Kits, neatly re-aligned their categories, and listed layers alphabetically from top to bottom.
 
 <div className="ds-u-text-align--center ds-u-margin-y--3">
+  <img
+    src={sketchThumbs}
+    alt="Three colorful boxes with text, each showing the name and version number of a CMSDS UI Kit theme"
+    className="ds-u-display--inline-block"
+    width="430px"
+  />
 </div>
 
 Oh, and we added some fancy new thumbnails to the files to help visually separate them in Sketch cloud! Check out our “New Years Fresh Scent” [Design System 3.0.1 UI Kits](https://www.sketch.com/workspace/7688a8c5-c5a5-4944-bd1d-81f2169122ef/p/e0c14ddc-de5f-42bb-815d-be8ba96c39d1).
