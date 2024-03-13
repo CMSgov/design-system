@@ -135,10 +135,6 @@
     "cancelButtonText": "Cancelar",
     "learnMoreText": "Más información sobre enlaces a sitios de terceros"
   },
-  "verticalNav": {
-    "expand": "expandir subnavegación",
-    "collapse": "cerrar subnavegación"
-  },
   "usaBanner": {
     "flagIconTitle": "U.S. Bandera",
     "bannerLabel": "Un sitio oficial del Gobierno de Estados Unidos",
