@@ -26,6 +26,7 @@ $breakpoints: sm, md, lg, xl; // 💀
   }
 }
 @container style(--debugger: true) {
+  // Remove in v10
   .ds-display,
   .ds-title,
   .ds-h1,
@@ -49,6 +50,7 @@ $breakpoints: sm, md, lg, xl; // 💀
     @include deprecate;
   }
 
+  // Remove in v10
   @each $breakpoint in $breakpoints {
     .ds-u-#{$breakpoint}-font-size--small,
     .ds-u-#{$breakpoint}-font-size--lead,
@@ -62,5 +64,10 @@ $breakpoints: sm, md, lg, xl; // 💀
     .ds-u-#{$breakpoint}-font-size--h6 {
       @include deprecate;
     }
+  }
+
+  // Remove in v11
+  .ds-u-truncate {
+    @include deprecate;
   }
 }
