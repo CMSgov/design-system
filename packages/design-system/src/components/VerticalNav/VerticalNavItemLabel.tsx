@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
 import { ArrowIcon } from '../Icons';
-import { t } from '../i18n';
 
 export type VerticalNavItemLabelComponent =
   | React.ReactElement<any>
@@ -9,8 +8,6 @@ export type VerticalNavItemLabelComponent =
   | ((...args: any[]) => any);
 
 export interface VerticalNavItemLabelProps {
-  ariaCollapsedStateButtonLabel?: string;
-  ariaExpandedStateButtonLabel?: string;
   collapsed?: boolean;
   component?: VerticalNavItemLabelComponent;
   hasSubnav?: boolean;
@@ -55,13 +52,9 @@ export const VerticalNavItemLabel = (props: VerticalNavItemLabelProps): React.Re
 
   let otherProps;
   if (LabelComponent === 'button') {
-    const collapsedLabel = props.ariaCollapsedStateButtonLabel ?? t('verticalNav.expand');
-    const expandedLabel = props.ariaExpandedStateButtonLabel ?? t('verticalNav.collapse');
-
     otherProps = {
       'aria-controls': props.subnavId,
       'aria-expanded': !props.collapsed,
-      title: props.collapsed ? collapsedLabel : expandedLabel,
     };
   } else if (LabelComponent !== DEFAULT_COMPONENT_TYPE) {
     // Apply href if <a> or custom component type
