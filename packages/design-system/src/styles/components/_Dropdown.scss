@@ -28,6 +28,13 @@
   }
 }
 
+.ds-c-dropdown__label-text {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 // Dropdown previously used a background image for the caret
 // Caret is now an SVG icon that is rotated based on aria-expanded set on its parent
 // Rotation (and potential animation) couldn't be handled on the background element, but can now that it's its own element
