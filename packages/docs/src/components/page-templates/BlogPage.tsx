@@ -39,7 +39,7 @@ const BlogPage = ({ data, location }: MdxQuery) => {
         </header>
       }
     >
-      <div className="ds-u-measure--wide">
+      <div>
         <ContentRenderer data={body} theme={theme} />
         <PageFeedback />
         <div className="ds-u-margin-top--4">{backLink}</div>

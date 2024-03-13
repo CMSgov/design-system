@@ -5,7 +5,7 @@ intro: Shipping CSS instead of Sass, introducing new masked fields, streamlining
 ---
 
 import scssToCssImg from '../../src/images/scss-to-css.svg';
-import sketchThumbs from '../../src/images/sketch-3.0.1-thumbs.png'
+import sketchThumbs from '../../src/images/sketch-3.0.1-thumbs.png';
 import ssnInput from '../../src/images/ssn-input.gif';
 import swatches from '../../src/images/swatches.png';
 
@@ -15,7 +15,7 @@ import swatches from '../../src/images/swatches.png';
 
 Previously we had two options for teams consuming our design system styles: CSS and Sass. Importing our Sass files was the only way to gain access to useful design-system variables like color and spacing tokens. Projects that used CSS only had to hard-code things like primary color into their projects. Over this program increment, we shifted to using [CSS Custom Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) throughout our stylesheets, and now we can pass those custom properties on to product teams.
 
-<div className="ds-u-measure--wide ds-u-text-align--center ds-u-margin-y--3">
+<div className="ds-u-text-align--center ds-u-margin-y--3">
   <img src={scssToCssImg} alt="Sass to CSS" className="ds-u-display--inline-block" height="100" />
 </div>
 
@@ -25,8 +25,12 @@ With this move, [as we mentioned in our previous blog post](/blog/#sasscss-chang
 
 When we created the [single-input date field](/components/date-field/single-input-date-field/) a while back, we introduced a new masking pattern called the [label-mask](/components/text-field/label-masked-field/). Now that we've been using it internally for a few months, we've decided to open it up for use as a drop-in replacement for our old [input-mask](/components/text-field/input-masked-field/) pattern. The label-mask now supports every feature that the old input-mask supported, with the additional improvement that the Social Security Number (SSN) field now automatically obfuscates the SSN when the input doesn't have focus by only showing the last four digits.
 
-<div className="ds-u-measure--wide ds-u-text-align--center">
-  <img src={ssnInput} alt="Animated screen capture of inputting a Social Security Number using the new label-mask pattern" className="ds-u-display--inline-block" />
+<div className="ds-u-text-align--center">
+  <img
+    src={ssnInput}
+    alt="Animated screen capture of inputting a Social Security Number using the new label-mask pattern"
+    className="ds-u-display--inline-block"
+  />
 </div>
 
 Hiding the SSN is previously something application teams had to implement themselves to use the SSN field and maintain their users' privacy. You can [read more about the label-mask pattern](/components/text-field/label-masked-field/)—what it is and why we built it—on the new documentation page.
@@ -35,11 +39,11 @@ Hiding the SSN is previously something application teams had to implement themse
 
 Back in 2020, we started using InVision DSM to capture specific documentation and guidance in addition to the documentation sites. InVision DSM allowed for more non-technical users to contribute documentation and guidance to the design system. The DSM solved one problem of allowing team members an easy way to create and update content. In addition, the DSM has proved that making it easier to update and maintain content using a WYSIWYG-type editor is helpful for the design system. We made a lot of good progress in collaborating on specific Healthcare and Medicare guidance for product teams.
 
-However, the DSM also created divergence in several important areas:  
-  
+However, the DSM also created divergence in several important areas:
+
 - Child design systems didn't inherit content from core
-    - Contributors were writing the same content multiple times
-    - Product teams need to visit multiple sites to consume necessary guidance
+  - Contributors were writing the same content multiple times
+  - Product teams need to visit multiple sites to consume necessary guidance
 - DSM guidance and code library fell out of sync
 - Two different groups were responsible for updating two different doc sites (devs & designers)
 - Engineers favored GitHub-based doc site for its parity with code, while designers looked to the DSM for up-to-date guidance
@@ -50,8 +54,13 @@ For these reasons we decided to migrate all the content from the DSM into our do
 
 In our [3.6.0 release](https://github.com/CMSgov/design-system/releases/tag/%40cmsgov%2Fdesign-system%403.6.0) we established design tokens for the design system including system color tokens. System color tokens are the complete set of color tokens from which themes are built.
 
-<div className="ds-u-measure--wide ds-u-text-align--center">
-  <img src={swatches} alt="Color ramps from the 'System Color Tokens' page, showing a range of light to dark shades of a color" className="ds-u-display--inline-block" width="400" />
+<div className="ds-u-text-align--center">
+  <img
+    src={swatches}
+    alt="Color ramps from the 'System Color Tokens' page, showing a range of light to dark shades of a color"
+    className="ds-u-display--inline-block"
+    width="400"
+  />
 </div>
 
 In this release we've added a page to the design system to show all color tokens in an easy-to-read and scannable way. We're exposing this base set of tokens to better highlight the design decisions made within a particular theme. Think of them as [a complete box of crayons](/foundation/system-color-tokens/). Our themes make use of certain colors from the crayon box but not all of them.
@@ -72,8 +81,13 @@ Designers can fall into that same trap. We want to label and organize every laye
 
 In this non-breaking change, we shook the proverbial rug out in all three UI Kits, neatly re-aligned their categories, and listed layers alphabetically from top to bottom.
 
-<div className="ds-u-measure--wide ds-u-text-align--center ds-u-margin-y--3">
-  <img src={sketchThumbs} alt="Three colorful boxes with text, each showing the name and version number of a CMSDS UI Kit theme" className="ds-u-display--inline-block" width="430px" />
+<div className="ds-u-text-align--center ds-u-margin-y--3">
+  <img
+    src={sketchThumbs}
+    alt="Three colorful boxes with text, each showing the name and version number of a CMSDS UI Kit theme"
+    className="ds-u-display--inline-block"
+    width="430px"
+  />
 </div>
 
 Oh, and we added some fancy new thumbnails to the files to help visually separate them in Sketch cloud! Check out our “New Years Fresh Scent” [Design System 3.0.1 UI Kits](https://www.sketch.com/workspace/7688a8c5-c5a5-4944-bd1d-81f2169122ef/p/e0c14ddc-de5f-42bb-815d-be8ba96c39d1).
@@ -83,6 +97,7 @@ Oh, and we added some fancy new thumbnails to the files to help visually separat
 ### Future font updates
 
 The design system team is turning its attention towards improving our font offerings. Our goals in this initiative are to…
+
 - Allow font sizes to adapt to user preferences
 - Improve performance with a variety of operating systems under poor network conditions
 - Treat fonts and their utilities with more consistency across our design system themes
