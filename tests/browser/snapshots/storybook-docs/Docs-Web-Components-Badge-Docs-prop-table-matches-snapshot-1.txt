@@ -1,10 +1,5 @@
 [
   [
-    "children",
-    "Sets the badge's content",
-    "string"
-  ],
-  [
     "size",
     "Sets the size of a badge",
     "\"default\"\"big\""

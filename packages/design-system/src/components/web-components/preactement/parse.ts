@@ -22,7 +22,7 @@ function parseHtml(this: CustomElement): ComponentFactory<{}> {
 
   const result = convertToVDom.call(this, dom);
 
-  return () => result;
+  return result;
 }
 
 /* -----------------------------------

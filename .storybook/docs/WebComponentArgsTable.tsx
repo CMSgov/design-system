@@ -52,23 +52,25 @@ export const WebComponentArgsTable = ({ of }) => {
         </tr>
       </thead>
       <tbody className="docblock-argstable-body">
-        {Object.entries(argTypes).map(([key, argType]) => (
-          <tr>
-            <td>
-              <strong>{key}</strong>
-            </td>
-            <td>
-              {argType.description && (
-                <div style={{ marginBottom: '4px' }}>
-                  <p>{argType.description}</p>
-                </div>
-              )}
-            </td>
-            <td>
-              <p>{getTypeLabel(argType)}</p>
-            </td>
-          </tr>
-        ))}
+        {Object.entries(argTypes)
+          .filter(([_key, argType]) => !argType.table?.disable)
+          .map(([key, argType]) => (
+            <tr>
+              <td>
+                <strong>{key}</strong>
+              </td>
+              <td>
+                {argType.description && (
+                  <div style={{ marginBottom: '4px' }}>
+                    <p>{argType.description}</p>
+                  </div>
+                )}
+              </td>
+              <td>
+                <p>{getTypeLabel(argType)}</p>
+              </td>
+            </tr>
+          ))}
       </tbody>
     </table>
   );

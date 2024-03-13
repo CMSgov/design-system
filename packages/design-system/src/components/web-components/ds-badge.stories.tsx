@@ -6,8 +6,9 @@ export default {
   title: 'Web Components/Badge',
   argTypes: {
     children: {
-      control: 'text',
-      description: "Sets the badge's content",
+      table: {
+        disable: true,
+      },
     },
     variation: {
       description: 'Sets the variation, or color, of a badge',
