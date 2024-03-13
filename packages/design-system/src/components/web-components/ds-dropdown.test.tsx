@@ -22,6 +22,24 @@ describe('Button', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
+  it('renders a dropdown using html options', () => {
+    const { asFragment } = render(
+      <ds-dropdown label={defaultAttrs.label}>
+        <>
+          <optgroup label="Group A">
+            <option value="a-1">Option A-1</option>
+            <option value="a-2">Option A-2</option>
+          </optgroup>
+          <optgroup label="Group B">
+            <option value="b-1">Option B-1</option>
+            <option value="b-2">Option B-2</option>
+          </optgroup>
+        </>
+      </ds-dropdown>
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+
   it('renders disabled dropdown', () => {
     renderDropdown({ disabled: 'true' });
     const button = screen.getByRole('button');

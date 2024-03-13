@@ -5,8 +5,8 @@ import './ds-dropdown';
 
 const options = [
   { label: 'Confederated Tribes and Bands of the Yakama Nation', value: '1' },
-  { label: 'Confederated Tribes of the Chehalis Reservation', value: '2' },
-  { label: 'Confederated Tribes of the Colville Reservation', value: '3' },
+  { label: 'Cowlitz Indian Tribe', value: '4' },
+  { label: 'Lummi Tribe of the Lummi Reservation', value: '7' },
 ];
 
 export default {
@@ -82,7 +82,7 @@ export default {
   args: {
     label: 'Dropdown example',
     name: 'dropdown_field',
-    options,
+    options: JSON.stringify(options),
   },
   parameters: {
     docs: {
@@ -110,24 +110,6 @@ export default {
   },
 };
 
-/*
-
-TODO: Make it so we can specify options through inner html and not just through
-an options array.
-
-<ds-dropdown {...args} key={JSON.stringify(args)}>
-  <option value="1">Option 1</option>
-  <option value="2">Option 2</option>
-  <option value="3">Option 3</option>
-  <option value="4">Option 4</option>
-  <option value="5">Option 5</option>
-  <option value="6">Option 6</option>
-  <option value="7">Option 7</option>
-  <option value="8">Option 8</option>
-</ds-dropdown>
-
-*/
-
 const Template = (args) => {
   useEffect(() => {
     const onChange = (event) => {
@@ -144,9 +126,59 @@ const Template = (args) => {
       dropdown.removeEventListener('ds-blur', onBlur);
     };
   });
-  return (
-    <ds-dropdown {...args} key={JSON.stringify(args)} options={JSON.stringify(args.options)} />
-  );
+
+  return <ds-dropdown {...args} key={JSON.stringify(args)} />;
 };
 
 export const Default = Template.bind({});
+
+const htmlOptions = (
+  <>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+    <option value="3">Option 3</option>
+    <option value="4">Option 4</option>
+    <option value="5">Option 5</option>
+    <option value="6">Option 6</option>
+    <option value="7">Option 7</option>
+    <option value="8" data-extra-attribute="something">
+      Option 8
+    </option>
+  </>
+);
+
+export const HtmlOptions = {
+  render: Template,
+  args: {
+    options: undefined,
+    label: 'Select an option.',
+    hint: 'In this example, options defined as HTML.',
+    children: htmlOptions,
+  },
+};
+
+const htmlOptGroups = (
+  <>
+    <option value="">- Select an option -</option>
+    <optgroup label="Group A">
+      <option value="a-1">Option A-1</option>
+      <option value="a-2">Option A-2</option>
+      <option value="a-3">Option A-3</option>
+    </optgroup>
+    <optgroup label="Group B" data-extra-attribute="something">
+      <option value="b-1">Option B-1</option>
+      <option value="b-2">Option B-2</option>
+      <option value="b-3">Option B-3</option>
+    </optgroup>
+  </>
+);
+
+export const HtmlOptionGroups = {
+  render: Template,
+  args: {
+    options: undefined,
+    label: 'Select an option.',
+    hint: 'In this example, options and groups are defined as HTML.',
+    children: htmlOptGroups,
+  },
+};

@@ -6,8 +6,9 @@ export default {
   title: 'Web Components/Alert',
   argTypes: {
     children: {
-      control: 'text',
-      description: "The alert's body content",
+      table: {
+        disable: true,
+      },
     },
     heading: {
       control: 'text',

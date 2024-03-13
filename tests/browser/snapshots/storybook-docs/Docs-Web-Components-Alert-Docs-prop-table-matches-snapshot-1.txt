@@ -1,10 +1,5 @@
 [
   [
-    "children",
-    "The alert's body content",
-    "string"
-  ],
-  [
     "heading",
     "Text for the alert heading",
     "string"
