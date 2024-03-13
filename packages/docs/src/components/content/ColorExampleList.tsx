@@ -25,7 +25,7 @@ interface ColorExampleListProps {
  */
 const ColorExampleList = ({ colorNames, preface, theme }: ColorExampleListProps) =>
   clientOnly(
-    <div className="ds-u-measure--wide ds-u-margin-top--2">
+    <div className="ds-u-margin-top--2">
       {colorNames.map((name) => (
         <ColorExampleRow
           name={name}
