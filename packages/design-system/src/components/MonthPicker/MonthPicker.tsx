@@ -139,6 +139,10 @@ export const MonthPicker = (props: MonthPickerProps) => {
   const { hintId, hintElement } = useHint({ ...props, id });
   const labelProps = useLabelProps({ ...props, id });
 
+  // 🥑
+  // https://www.w3.org/TR/wai--1.2/#group
+  //    - "aria-invalid (state) (deprecated on this role in ARIA 1.2)"
+
   return (
     <fieldset
       aria-invalid={invalid}

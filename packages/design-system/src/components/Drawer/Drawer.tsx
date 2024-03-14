@@ -69,6 +69,9 @@ export const Drawer = (props: DrawerProps) => {
 
   const Heading = `h${props.headingLevel}` as const;
 
+  // 🥑
+  // Why is `tabIndex` needed here?
+  // `aria-labelledby` not allowed on `role="generic"` element
   return (
     <NativeDialog
       className={classNames(props.className, 'ds-c-drawer')}

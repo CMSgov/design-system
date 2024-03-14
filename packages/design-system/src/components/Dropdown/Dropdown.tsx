@@ -265,6 +265,10 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     ref: mergeRefs([triggerRef, inputRef, useAutofocus<HTMLButtonElement>(props.autoFocus)]),
     'aria-controls': menuId,
     'aria-labelledby': `${buttonContentId} ${labelProps.id}`,
+
+    // 🥑
+    // https://www.w3.org/TR/wai-aria-1.2/#button
+    //    - "aria-invalid (state) (deprecated on this role in ARIA 1.2)"
     'aria-invalid': invalid,
     'aria-describedby': describeField({ ...props, hintId, errorId }),
     // TODO: Someday we may want to add this `combobox` role back to the button, but right

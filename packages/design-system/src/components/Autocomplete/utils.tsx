@@ -18,6 +18,10 @@ export function renderReactStatelyItems(
   });
 }
 
+// 🥑
+// https://www.w3.org/TR/wai-aria-1.2/#option
+//    - "Default for aria-selected is false."
+// Could remove `aria-selected="false"` from the `li` element.
 export function renderStatusMessage(message: ReactNode) {
   return (
     <li aria-selected="false" className="ds-c-autocomplete__menu-item-message" role="option">

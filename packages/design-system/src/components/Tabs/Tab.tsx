@@ -79,6 +79,9 @@ export const Tab = forwardRef((props: TabProps, ref: any) => {
       {props.children}
     </a>
   ) : (
+    // 🥑
+    // https://www.w3.org/TR/wai-aria-1.2/#generic
+    //    - "aria-disabled (state) (deprecated on this role in ARIA 1.2)"
     <span aria-disabled="true" {...sharedTabProps}>
       {props.children}
     </span>

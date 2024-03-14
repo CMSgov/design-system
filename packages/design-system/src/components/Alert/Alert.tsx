@@ -143,6 +143,13 @@ export const Alert: React.FC<AlertProps> = (props: AlertProps) => {
   }
 
   return (
+    // 🥑
+    // This component supports a variety of roles and I have questions about their inclusion.
+    //   - `alertDialog` (https://www.w3.org/TR/wai-aria-1.2/#alertdialog) requires a lot of dialog functionality that isn't available by simply applying this role alone (no focus trapping, no auto focussing on interactive element inside Alert, etc.)
+    //   - `alert` (https://www.w3.org/TR/wai-aria-1.2/#alert) and `status` (https://www.w3.org/TR/wai-aria-1.2/#status) state that element shouldn't manage focus, but this component is using `tabIndex` to make it focusable.
+    //   - Unsure if `alert` should be allowed since it's for "important, and usually time-sensitive, information"
+    // tl;dr - I think this component might just need `region` role, and `tabIndex` should be removed.
+
     <div
       className={classes}
       ref={mergeRefs([alertRef, focusRef])}

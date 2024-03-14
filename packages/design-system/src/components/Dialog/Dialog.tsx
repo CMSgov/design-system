@@ -123,6 +123,11 @@ export const Dialog = (props: DialogProps) => {
 
   useBodyScrollPrevention(modalProps.isOpen ?? true);
 
+  // 🥑
+  // Is `tabIndex` necessary here? It's not clear why it's being set to -1.
+  // It's also not clear why the `role` attribute is being set to `document`.
+  // Should this allow for more flexible heading tags? Locked into `h1` for now.
+  // Can we remove `role="main"` from the `main` element?
   return (
     <NativeDialog
       className={dialogClassNames}

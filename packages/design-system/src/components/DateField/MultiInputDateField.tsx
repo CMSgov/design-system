@@ -159,6 +159,9 @@ export function MultiInputDateField(props: DateFieldProps): React.ReactElement {
     dateFormatter: defaultDateFormatter,
   };
 
+  // 🥑
+  // https://www.w3.org/TR/wai-aria-1.2/#group
+  //    - "aria-invalid (state) (deprecated on this role in ARIA 1.2)"
   return (
     <fieldset
       aria-invalid={invalid}

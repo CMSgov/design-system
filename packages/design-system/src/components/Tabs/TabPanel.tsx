@@ -41,6 +41,9 @@ export const TabPanel = (props: TabPanelProps) => {
   const classes = classnames('ds-c-tabs__panel', props.className);
 
   return (
+    // 🥑
+    // https://www.w3.org/TR/wai-aria-1.2/#tabpanel
+    //    - "aria-disabled (state) (deprecated on this role in ARIA 1.2)"
     <div
       aria-labelledby={props.tabId}
       aria-hidden={!props.selected}
