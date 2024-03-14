@@ -6,7 +6,7 @@ export type VerticalNavComponent = React.ReactElement<any> | any | ((...args: an
 
 export interface VerticalNavProps {
   /**
-   * An optional arial label for the `<nav>` element in this component.
+   * An optional aria label for the `<nav>` element in this component.
    * This prop is necessary when there is more than one nav element on a page.
    */
   ariaNavLabel?: string;
