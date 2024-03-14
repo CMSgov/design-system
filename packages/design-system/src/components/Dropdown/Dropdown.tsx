@@ -296,7 +296,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
         name={props.name}
       />
       <button {...buttonProps}>
-        <span id={buttonContentId} className="ds-u-truncate">
+        <span id={buttonContentId} className="ds-c-dropdown__label-text">
           {state.selectedItem ? state.selectedItem.rendered : ''}
         </span>
         <span className="ds-c-dropdown__caret">{caretIcon}</span>
