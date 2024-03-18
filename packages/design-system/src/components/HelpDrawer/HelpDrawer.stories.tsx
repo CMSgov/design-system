@@ -9,7 +9,7 @@ const meta: Meta<typeof HelpDrawer> = {
   component: HelpDrawer,
   args: {
     footerTitle: 'Footer Title',
-    footerBody: <p className="ds-text ds-u-margin--0">Footer content</p>,
+    footerBody: <p className="ds-text-body--md ds-u-margin--0">Footer content</p>,
     heading: 'HelpDrawer Heading',
   },
 };
@@ -59,7 +59,7 @@ export const Default: Story = {
         <HelpDrawer
           onCloseClick={hideDrawer}
           footerTitle="Footer Title"
-          footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
+          footerBody={<p className="ds-text-body--md ds-u-margin--0">Footer content</p>}
           heading="HelpDrawer Heading"
           isOpen={isDrawerVisible}
         >
