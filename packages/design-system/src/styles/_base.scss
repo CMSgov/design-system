@@ -261,46 +261,34 @@ $breakpoints: (
   color: var(--color-muted-inverse);
 }
 
-// WNMGDS-2146: Deprecate semantic font-size classes
-// Refer to `_set-for-deprecation.scss` for complete list
-// Classes marked with 💀 are deprecated and will be removed in the next major release
-
-.ds-display, // 💀
 .ds-text-heading--5xl {
   @include heading--5xl;
 }
 
-.ds-title, // 💀
 .ds-text-heading--4xl {
   @include heading--4xl;
 }
 
-.ds-h1, // 💀
 .ds-text-heading--3xl {
   @include heading--3xl;
 }
 
-.ds-h2, // 💀
 .ds-text-heading--2xl {
   @include heading--2xl;
 }
 
-.ds-h3, // 💀
 .ds-text-heading--xl {
   @include heading--xl;
 }
 
-.ds-h4, // 💀
 .ds-text-heading--lg {
   @include heading--lg;
 }
 
-.ds-h5, // 💀
 .ds-text-heading--md {
   @include heading--md;
 }
 
-.ds-h6, // 💀
 .ds-text-heading--sm {
   @include heading--sm;
 
@@ -309,8 +297,6 @@ $breakpoints: (
   }
 }
 
-.ds-text, // 💀
-.ds-text--lead, // 💀
 .ds-text-body--lg,
 .ds-text-body--md,
 .ds-text-body--sm {
@@ -327,12 +313,10 @@ $breakpoints: (
   }
 }
 
-.ds-text--lead, // 💀
 .ds-text-body--lg {
   font-size: var(--font-size-lg);
 }
 
-.ds-text, // 💀
 .ds-text-body--md {
   font-size: var(--font-size-base);
 }
