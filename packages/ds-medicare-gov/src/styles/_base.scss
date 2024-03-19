@@ -29,14 +29,6 @@ svg {
  */
 
 // Specific style overrides that are not easily affected via variables alone.
-.ds-display,
-.ds-title,
-.ds-h1,
-.ds-h2,
-.ds-h3,
-.ds-h4,
-.ds-h5,
-.ds-h6,
 .ds-text-heading--5xl,
 .ds-text-heading--4xl,
 .ds-text-heading--3xl,
@@ -56,7 +48,6 @@ svg {
   }
 }
 
-.ds-h1,
 .ds-text-heading--3xl {
   line-height: $spacer-5;
   margin-bottom: 44px;
@@ -66,7 +57,6 @@ svg {
   }
 }
 
-.ds-h2,
 .ds-text-heading--2xl {
   line-height: $spacer-5;
   margin-bottom: 44px;
@@ -76,25 +66,21 @@ svg {
   }
 }
 
-.ds-h3,
 .ds-text-heading--xl {
   line-height: $spacer-4;
   margin-bottom: $spacer-4;
 }
 
-.ds-h4,
 .ds-text-heading--lg {
   line-height: 28px;
   margin-bottom: $spacer-3;
 }
 
-.ds-h5,
 .ds-text-heading--md {
   line-height: $spacer-3;
   margin-bottom: $spacer-2;
 }
 
-.ds-h6,
 .ds-text-heading--sm {
   line-height: 20px;
   margin-bottom: $spacer-1;

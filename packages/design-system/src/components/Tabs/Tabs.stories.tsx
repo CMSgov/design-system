@@ -25,7 +25,7 @@ const tabPanels = [
     Constitution for the United States of America.
   </TabPanel>,
   <TabPanel key="amendments" id="amendments" tab="Amendments">
-    <h2 className="ds-h4">Bill of Rights</h2>
+    <h2 className="ds-text-heading--lg">Bill of Rights</h2>
 
     <ol className="ds-c-list">
       <li>Freedoms, Petitions, Assembly</li>
@@ -40,7 +40,7 @@ const tabPanels = [
       <li>States’ rights</li>
     </ol>
 
-    <h2 className="ds-h4">Later Amendments</h2>
+    <h2 className="ds-text-heading--lg">Later Amendments</h2>
 
     <ol className="ds-c-list" start={11}>
       <li>Lawsuits against states</li>
