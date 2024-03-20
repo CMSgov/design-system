@@ -46,7 +46,7 @@ describe('Alert', function () {
   });
 
   it('renders HTML children', () => {
-    renderAlert({ children: <p className="ds-text">{defaultText}</p> });
+    renderAlert({ children: <p className="ds-text-body--md">{defaultText}</p> });
     const alert = screen.getByRole('region');
     expect(alert.textContent).toContain(defaultText);
   });
