@@ -1,6 +1,6 @@
 {
   "name": "react-app-example",
-  "version": "1.0.0",
+  "version": "9.0.2",
   "private": true,
   "dependencies": {
     "@cmsgov/design-system": "9.0.2",
