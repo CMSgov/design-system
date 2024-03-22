@@ -18,8 +18,9 @@ function getCurrentBranch() {
 function readLastPublishCommit() {
   const commitHash = getCurrentCommit();
   const commitMessage = sh('git log -1 --pretty=%B');
-  const tags = commitMessage.match(/@.*$/gm);
-
+  // Only make tags for the actual design system packages
+  const tags = commitMessage.match(/@cmsgov\/(?:design-system@|ds-).*$/gm);
+  console.log(tags);
   if (!tags) {
     throw Error('The previous commit was not a publish commit. Cannot read tags!');
   }
