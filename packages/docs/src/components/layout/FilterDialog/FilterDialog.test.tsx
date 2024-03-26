@@ -1,4 +1,4 @@
-import React from 'react';
+import { createRef } from 'react';
 import FilterDialog from './FilterDialog';
 import { render, screen } from '@testing-library/react';
 import { Button } from '@cmsgov/design-system';
@@ -29,7 +29,7 @@ describe('FilterDialog', () => {
   });
 
   it('passes a ref to the heading', () => {
-    const headingRef = React.createRef<HTMLHeadingElement>();
+    const headingRef = createRef<HTMLHeadingElement>();
     renderFilterDialog({ headingRef });
     expect(headingRef.current.textContent).toEqual(defaultProps.heading);
   });

@@ -1,4 +1,3 @@
-import React from 'react';
 import Logo from './Logo';
 import { setLanguage } from '@cmsgov/design-system';
 import type { Meta, StoryObj } from '@storybook/react';

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import Status from './Status';
 import classNames from 'classnames';
 

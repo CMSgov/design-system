@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button, CloseIconThin, MenuIcon, TFunction } from '@cmsgov/design-system';
 import { SyntheticEvent } from 'react';
 import classnames from 'classnames';

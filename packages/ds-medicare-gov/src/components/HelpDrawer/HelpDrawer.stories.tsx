@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import HelpDrawerToggle from './HelpDrawerToggle';
 import HelpDrawer from './HelpDrawer';
 // Need this in order for the generated ArgsTable to work

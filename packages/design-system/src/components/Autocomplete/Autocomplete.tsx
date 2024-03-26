@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
+import * as React from 'react';
 import Button from '../Button/Button';
 import DropdownMenu from '../Dropdown/DropdownMenu';
 import classNames from 'classnames';

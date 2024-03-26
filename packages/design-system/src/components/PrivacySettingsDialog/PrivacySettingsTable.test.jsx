@@ -1,4 +1,3 @@
-import React from 'react';
 import PrivacySettingsTable from './PrivacySettingsTable';
 import userEvent from '@testing-library/user-event';
 import { privacySettingConfigs } from './PrivacySettingsDialog';

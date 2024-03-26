@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { useState, useEffect, useCallback } from 'react';
 import useInterval from './useInterval';
 import IdleTimeoutDialog from './IdleTimeoutDialog';

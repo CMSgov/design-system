@@ -1,5 +1,4 @@
 import { MonthPicker } from '@cmsgov/design-system';
-import React from 'react';
 
 function MonthPickerExample() {
   return (

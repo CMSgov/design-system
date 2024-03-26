@@ -1,5 +1,4 @@
 import { Alert } from '@cmsgov/design-system';
-import React from 'react';
 
 function AlertExample() {
   return (

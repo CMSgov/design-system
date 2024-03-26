@@ -1,5 +1,6 @@
 import { DateObject } from './defaultDateFormatter';
-import React, { MutableRefObject } from 'react';
+import { MutableRefObject } from 'react';
+import * as React from 'react';
 import TextField from '../TextField/TextField';
 import classNames from 'classnames';
 import { t } from '../i18n';

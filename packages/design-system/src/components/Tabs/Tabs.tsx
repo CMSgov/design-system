@@ -1,4 +1,5 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
+import * as React from 'react';
 import Tab from './Tab';
 import TabPanel, { TabPanelProps } from './TabPanel';
 import classnames from 'classnames';

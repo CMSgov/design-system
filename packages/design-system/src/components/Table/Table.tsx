@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import * as React from 'react';
 import Alert from '../Alert/Alert';
 import TableCaption from './TableCaption';
 import TableContext from './TableContext';

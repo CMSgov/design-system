@@ -1,4 +1,5 @@
-import React, { useCallback, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
+import * as React from 'react';
 import DropdownMenu from './DropdownMenu';
 import debounce from '../utilities/debounce';
 import describeField from '../utilities/describeField';

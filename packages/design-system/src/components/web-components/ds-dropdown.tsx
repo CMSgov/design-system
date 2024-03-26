@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { define } from './preactement/define';
 import { Dropdown, DropdownProps } from '../Dropdown';
 import { parseBooleanAttr } from './wrapperUtils';

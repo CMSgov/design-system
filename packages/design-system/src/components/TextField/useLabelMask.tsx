@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { TextInputProps } from './TextInput';

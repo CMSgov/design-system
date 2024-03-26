@@ -2,7 +2,7 @@
 // to only bundle imported components. Without this optimization, all components will be imported
 // your build process.
 import { Alert, Button, Drawer, UsaBanner } from '@cmsgov/design-system';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ReactDOM from 'react-dom';
 
 const Example = function () {

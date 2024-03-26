@@ -1,4 +1,3 @@
-import React from 'react';
 import CmsLogo from '../icons/CmsLogo';
 import SearchForm from '../content/SearchForm';
 

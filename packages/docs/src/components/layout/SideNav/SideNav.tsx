@@ -1,4 +1,3 @@
-import React from 'react';
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'gatsby';
 import classnames from 'classnames';

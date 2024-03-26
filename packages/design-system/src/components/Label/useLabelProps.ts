@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { LabelProps } from '../Label';
 
 export interface UseLabelPropsProps {
