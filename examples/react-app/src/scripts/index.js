@@ -3,6 +3,7 @@
 // your build process.
 import { Alert, Button, Drawer, UsaBanner } from '@cmsgov/design-system';
 import { useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 
 const Example = function () {
