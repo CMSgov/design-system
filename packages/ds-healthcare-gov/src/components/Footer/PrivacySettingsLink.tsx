@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import * as React from 'react';
+import type * as React from 'react';
 import { PrivacySettingsDialog } from '@cmsgov/design-system';
 import { tWithLanguage } from '../i18n';
 

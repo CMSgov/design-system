@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import MenuLinks from './MenuLinks';
 import classnames from 'classnames';
 import { DefaultLink } from './defaultMenuLinks';

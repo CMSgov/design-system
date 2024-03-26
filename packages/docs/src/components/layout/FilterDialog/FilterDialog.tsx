@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import * as React from 'react';
+import type * as React from 'react';
 import NativeDialog from '@cmsgov/design-system/src/components/NativeDialog/NativeDialog.tsx';
 import uniqueId from 'lodash/uniqueId';
 import classNames from 'classnames';

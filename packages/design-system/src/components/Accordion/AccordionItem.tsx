@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import * as React from 'react';
+import type * as React from 'react';
 import { AddIcon, RemoveIcon } from '../Icons';
 import classNames from 'classnames';
 import useId from '../utilities/useId';

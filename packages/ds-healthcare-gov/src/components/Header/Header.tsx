@@ -3,7 +3,7 @@ import DeConsumerMessage from './DeConsumerMessage';
 import Logo from '../Logo/Logo';
 import Menu from './Menu';
 import { useState } from 'react';
-import * as React from 'react';
+import type * as React from 'react';
 import { SkipNav, UsaBanner } from '@cmsgov/design-system';
 import { t } from '../i18n';
 import classnames from 'classnames';

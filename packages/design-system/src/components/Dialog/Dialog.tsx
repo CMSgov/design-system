@@ -1,5 +1,5 @@
 import { useEffect, useRef, DialogHTMLAttributes } from 'react';
-import * as React from 'react';
+import type * as React from 'react';
 import CloseButton from '../CloseButton/CloseButton';
 import NativeDialog from '../NativeDialog/NativeDialog';
 import classNames from 'classnames';

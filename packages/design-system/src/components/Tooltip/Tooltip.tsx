@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 // TODO: Update react-transition-group once we update react peer dep
 import CSSTransition from 'react-transition-group/CSSTransition';
 import FocusTrap from 'focus-trap-react';

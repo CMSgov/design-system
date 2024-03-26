@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import { useRef, useEffect, useLayoutEffect, DialogHTMLAttributes } from 'react';
 import dialogPolyfill from './polyfill';
 

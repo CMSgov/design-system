@@ -1,5 +1,5 @@
-import { useRef } from 'react';
-import * as React from 'react';
+import { cloneElement, useRef } from 'react';
+import type * as React from 'react';
 import Button from '../Button/Button';
 import DropdownMenu from '../Dropdown/DropdownMenu';
 import classNames from 'classnames';
@@ -296,7 +296,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
 
   return (
     <div className={rootClassName} ref={wrapperRef}>
-      {React.cloneElement(textField, textFieldProps)}
+      {cloneElement(textField, textFieldProps)}
 
       {((state.isOpen && reactStatelyItems.length > 0) || (state.isFocused && statusMessage)) && (
         <DropdownMenu

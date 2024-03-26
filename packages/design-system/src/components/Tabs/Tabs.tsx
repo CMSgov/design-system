@@ -1,5 +1,5 @@
-import { useState, useRef } from 'react';
-import * as React from 'react';
+import { Children, cloneElement, isValidElement, useState, useRef } from 'react';
+import type * as React from 'react';
 import Tab from './Tab';
 import TabPanel, { TabPanelProps } from './TabPanel';
 import classnames from 'classnames';
@@ -62,7 +62,7 @@ const getDefaultSelectedId = (props): string => {
 
   // TODO: Use the panelChildren method to pass in an array
   // of panels, instead of doing it here...
-  React.Children.forEach(props.children, function (child) {
+  Children.forEach(props.children, function (child) {
     if (isTabPanel(child) && !selectedId) {
       selectedId = child.props.id;
     }
@@ -112,7 +112,7 @@ export const Tabs = (props: TabsProps) => {
   };
 
   const panelChildren = (): React.ReactNode[] => {
-    return React.Children.toArray(props.children).filter(isTabPanel);
+    return Children.toArray(props.children).filter(isTabPanel);
   };
 
   const handleSelectedTabChange = (newSelectedId: string): void => {
@@ -165,12 +165,12 @@ export const Tabs = (props: TabsProps) => {
   };
 
   const renderChildren = (): React.ReactNode => {
-    return React.Children.map(props.children, (child) => {
-      if (isTabPanel(child) && React.isValidElement(child)) {
+    return Children.map(props.children, (child) => {
+      if (isTabPanel(child) && isValidElement(child)) {
         // Extend props on panels before rendering. Also removes any props
         // that don't need passed into TabPanel but are used to generate
         // the Tab components
-        return React.cloneElement(child as React.ReactElement<TabPanelProps>, {
+        return cloneElement(child as React.ReactElement<TabPanelProps>, {
           selected: selectedId === child.props.id,
           tab: undefined,
           tabHref: undefined,

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import InlineLinkLists from './InlineLinkLists';
 import LogosRow from './LogosRow';
 import classnames from 'classnames';

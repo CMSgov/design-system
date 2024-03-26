@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import Footer from './DocSiteFooter';
 import SideNav from './SideNav/SideNav';
 import PageHeader from './PageHeader';

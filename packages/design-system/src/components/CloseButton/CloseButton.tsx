@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import classNames from 'classnames';
 import useId from '../utilities/useId';
 import { CloseIconThin } from '../Icons';

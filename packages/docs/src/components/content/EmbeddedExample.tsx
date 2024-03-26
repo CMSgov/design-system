@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 /* eslint-disable react/no-danger */
 import ReactDOMServer from 'react-dom/server';
 import ExampleFooter from './ExampleFooter';

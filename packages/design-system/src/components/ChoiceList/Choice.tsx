@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import * as React from 'react';
+import type * as React from 'react';
 import EvEmitter from 'ev-emitter';
 import classNames from 'classnames';
 import useId from '../utilities/useId';

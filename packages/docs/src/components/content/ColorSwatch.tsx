@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 
 interface ColorSwatchProps extends React.ComponentPropsWithRef<'svg'> {
   colorTokenName: string;

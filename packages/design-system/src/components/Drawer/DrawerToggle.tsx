@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import Button, { ButtonProps } from '../Button/Button';
 import { useEffect, useRef } from 'react';
 import classNames from 'classnames';

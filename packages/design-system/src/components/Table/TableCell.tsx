@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import { useContext } from 'react';
 import TableContext from './TableContext';
 import classNames from 'classnames';

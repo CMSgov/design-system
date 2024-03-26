@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import * as React from 'react';
+import type * as React from 'react';
 import Button from '../Button/Button';
 import Ellipses from './Ellipses';
 import Page from './Page';

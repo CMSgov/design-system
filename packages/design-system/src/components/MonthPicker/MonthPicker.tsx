@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import Button, { ButtonVariation } from '../Button/Button';
 import Choice from '../ChoiceList/Choice';
 import classNames from 'classnames';
