@@ -7,39 +7,15 @@ import type { Meta, StoryObj } from '@storybook/react';
 const meta: Meta<typeof Tooltip> = {
   title: 'Components/Tooltip',
   component: Tooltip as any,
-  subcomponents: { TooltipIcon },
-  decorators: [
-    (Story) => (
-      <div style={{ margin: '11rem auto', textAlign: 'center' }}>
-        <Story />
-      </div>
-    ),
-  ],
   argTypes: {
-    placement: {
-      options: [
-        'auto',
-        'auto-start',
-        'auto-end',
-        'left',
-        'left-start',
-        'left-end',
-        'right',
-        'right-start',
-        'right-end',
-        'top',
-        'top-start',
-        'top-end',
-        'bottom',
-        'bottom-start',
-        'bottom-end',
-      ],
-      control: 'radio',
-    },
+    children: { control: 'text' },
+    id: { control: 'text' },
+    label: { control: 'text' },
+    offset: { control: 'text' },
   },
   parameters: {
     docs: {
-      underlyingHtmlElements: ['a', 'button'],
+      underlyingHtmlElements: ['button'],
     },
   },
 };
@@ -47,101 +23,55 @@ export default meta;
 
 type Story = StoryObj<typeof Tooltip>;
 
-export const IconTrigger: Story = {
-  render: function Component(args) {
+export const Block: Story = {
+  render: ({ ...args }) => {
     return (
-      <>
-        <p className="ds-u-margin--0 ds-u-display--inline">Tooltip with icon trigger</p>
-        <Tooltip {...(args as any)} />
-      </>
+      <Tooltip block label={args.label} id={args.id}>
+        {args.children}
+      </Tooltip>
     );
   },
   args: {
-    ariaLabel: 'Label describing the subject of the tooltip',
-    className: 'ds-c-tooltip__trigger-icon ds-u-display--inline',
-    title: 'Tooltip trigger uses <TooltipIcon> for the trigger content',
-    children: <TooltipIcon />,
-  },
-};
-
-export const InlineTrigger: Story = {
-  render: function Component(args) {
-    return (
-      <>
-        <span>Tooltip with&nbsp;</span>
-        <Tooltip {...(args as any)} />
-      </>
-    );
-  },
-  args: {
-    className: 'ds-c-tooltip__trigger-link',
-    component: 'a',
-    title: 'Tooltip trigger uses <a> for the trigger, styled with dotted underline',
-    children: 'inline trigger',
-  },
-};
-
-export const InteractiveContent: Story = {
-  args: {
-    dialog: true,
-    className: 'ds-c-button',
-    component: 'button',
-    title: (
-      <>
-        <p className="ds-u-margin--0">
-          Tooltip dialogs only activate on click and include a focus trap. Intended for tooltips
-          with complex layout and <a href="/#">interactive elements</a>
-        </p>
-        <Button
-          size="small"
-          className="ds-u-margin-top--2"
-          href="https://dequeuniversity.com/library/aria/tooltip-dialog"
-        >
-          More info
-        </Button>
-      </>
+    label: 'Tooltip trigger',
+    id: 'foo',
+    children: (
+      <p>
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 Lo and behold! I am a tooltip!{' '}
+        <a href="!#" target="_blank">
+          Here is an interactive element (link).
+        </a>{' '}
+        Focus on me!
+      </p>
     ),
-    children: 'Tooltip with interactive content',
   },
 };
 
-export const TooltipWithCloseButton: Story = {
-  args: {
-    dialog: true,
-    title: (
-      <>
-        Entering your Social Security Number helps the plan confirm with your state that you have
-        Medicaid.
-      </>
-    ),
-    children: 'Tooltip trigger',
-    contentHeading: 'Really long Heading for tooltip',
-    showCloseButton: true,
-    className: 'ds-c-button',
-  },
-};
-
-export const InversedTrigger: Story = {
-  render: function Component(args) {
+export const Inline: Story = {
+  render: ({ ...args }) => {
     return (
-      <>
-        <p className="ds-u-margin--0 ds-u-color--base-inverse ds-u-display--inline">
-          Tooltip with icon trigger
-        </p>
-        <Tooltip {...(args as any)} />
-      </>
+      <p>
+        This is an &nbsp;
+        <Tooltip label={args.label} id={args.id}>
+          {args.children}
+        </Tooltip>
+        ; it best renders within a block of text. The use of an icon button as a trigger allows for
+        better text flow.
+      </p>
     );
   },
-  parameters: {
-    // Must supply `layout: 'fullscreen'` when we use `onDark: true`
-    onDark: true,
-    layout: 'fullscreen',
-  },
   args: {
-    ariaLabel: 'Label describing the subject of the tooltip',
-    className: 'ds-c-tooltip__trigger-icon ds-u-display--inline',
-    title: 'Tooltip trigger uses <TooltipIcon> for the trigger content',
-    children: <TooltipIcon inversed />,
-    inversed: true,
+    label: 'inline tooltip trigger',
+    id: 'bar',
+    children: (
+      <p>
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 Lo and behold! I am a tooltip!{' '}
+        <a href="!#" target="_blank">
+          Here is an interactive element (link).
+        </a>{' '}
+        Focus on me!
+      </p>
+    ),
   },
 };
