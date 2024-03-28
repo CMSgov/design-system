@@ -103,13 +103,18 @@ Object {
     },
     Object {
       "modeId": "Value",
+      "value": 2,
+      "variableId": "radius/small",
+    },
+    Object {
+      "modeId": "Value",
       "value": 9999,
       "variableId": "radius/pill",
     },
     Object {
       "modeId": "Value",
-      "value": 2,
-      "variableId": "radius/small",
+      "value": 8,
+      "variableId": "spacer/1",
     },
     Object {
       "modeId": "cmsgov",
@@ -128,6 +133,22 @@ Object {
       "variableId": "theme/color/primary",
     },
     Object {
+      "modeId": "cmsgov",
+      "value": Object {
+        "id": "theme/color/primary-light",
+        "type": "VARIABLE_ALIAS",
+      },
+      "variableId": "component/alert/background-color",
+    },
+    Object {
+      "modeId": "cmsgov",
+      "value": Object {
+        "id": "theme/color/primary",
+        "type": "VARIABLE_ALIAS",
+      },
+      "variableId": "component/alert/border-color",
+    },
+    Object {
       "modeId": "core",
       "value": Object {
         "id": "color/ocean/300",
@@ -142,6 +163,22 @@ Object {
         "type": "VARIABLE_ALIAS",
       },
       "variableId": "theme/color/primary",
+    },
+    Object {
+      "modeId": "core",
+      "value": Object {
+        "id": "theme/color/primary-light",
+        "type": "VARIABLE_ALIAS",
+      },
+      "variableId": "component/alert/background-color",
+    },
+    Object {
+      "modeId": "core",
+      "value": Object {
+        "id": "theme/color/primary",
+        "type": "VARIABLE_ALIAS",
+      },
+      "variableId": "component/alert/border-color",
     },
   ],
   "variableModes": Array [
@@ -313,6 +350,19 @@ Object {
       "codeSyntax": Object {},
       "description": "",
       "hiddenFromPublishing": false,
+      "id": "radius/small",
+      "name": "radius/small",
+      "resolvedType": "FLOAT",
+      "scopes": Array [
+        "CORNER_RADIUS",
+      ],
+      "variableCollectionId": "System",
+    },
+    Object {
+      "action": "CREATE",
+      "codeSyntax": Object {},
+      "description": "",
+      "hiddenFromPublishing": false,
       "id": "radius/pill",
       "name": "radius/pill",
       "resolvedType": "FLOAT",
@@ -326,11 +376,11 @@ Object {
       "codeSyntax": Object {},
       "description": "",
       "hiddenFromPublishing": false,
-      "id": "radius/small",
-      "name": "radius/small",
+      "id": "spacer/1",
+      "name": "spacer/1",
       "resolvedType": "FLOAT",
       "scopes": Array [
-        "CORNER_RADIUS",
+        "ALL_SCOPES",
       ],
       "variableCollectionId": "System",
     },
@@ -354,6 +404,32 @@ Object {
       "hiddenFromPublishing": false,
       "id": "theme/color/primary",
       "name": "theme/color/primary",
+      "resolvedType": "COLOR",
+      "scopes": Array [
+        "ALL_SCOPES",
+      ],
+      "variableCollectionId": "Theme",
+    },
+    Object {
+      "action": "CREATE",
+      "codeSyntax": Object {},
+      "description": "",
+      "hiddenFromPublishing": false,
+      "id": "component/alert/background-color",
+      "name": "component/alert/background-color",
+      "resolvedType": "COLOR",
+      "scopes": Array [
+        "ALL_SCOPES",
+      ],
+      "variableCollectionId": "Theme",
+    },
+    Object {
+      "action": "CREATE",
+      "codeSyntax": Object {},
+      "description": "",
+      "hiddenFromPublishing": false,
+      "id": "component/alert/border-color",
+      "name": "component/alert/border-color",
       "resolvedType": "COLOR",
       "scopes": Array [
         "ALL_SCOPES",
@@ -403,7 +479,7 @@ Object {
   "codeSyntax": Object {},
   "description": "",
   "hiddenFromPublishing": false,
-  "id": "pri300",
+  "id": "pri500",
   "key": "theme/color/primary",
   "name": "theme/color/primary",
   "remote": false,

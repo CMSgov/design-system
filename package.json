@@ -15,7 +15,7 @@
     "build:cmsgov": "yarn gulp build --package packages/ds-cms-gov",
     "build:storybook": "./scripts/build-storybook.sh",
     "build:storybook:docs": "./scripts/build-storybook.sh docs",
-    "build:tokens": "yarn --cwd ./packages/design-system-tokens build:all",
+    "build:tokens": "yarn --cwd ./packages/design-system-tokens build",
     "build:cdn-index": "ts-node ./scripts/build-cdn-indexes.ts",
     "build:docs": "yarn build:storybook:docs && yarn --cwd ./packages/docs build",
     "build:examples": "yarn --cwd ./examples/astro build --base /astro/dist && yarn --cwd ./examples/preact-app build && yarn --cwd ./examples/preact-react-app build && yarn --cwd ./examples/react-app build",

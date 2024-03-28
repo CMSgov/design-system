@@ -76,7 +76,7 @@
     "globby": "^13.1.2",
     "inquirer": "^9.0.2",
     "ora": "^6.1.2",
-    "yargs": "^17.5.1"
+    "yargs": "^17.7.2"
   },
   "peerDependencies": {
     "react": ">=17.0.0",
