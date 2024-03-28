@@ -1,6 +1,6 @@
 // Deliminate chunks of integers
 const maskDeliminatedRegex = {
-  phone: /(\d{3})(\d{1,3})?(\d+)?/,
+  phone: /([2-9]\d{2})(\d{1,3})?(\d+)?/,
   ssn: /([*\d]{3})([*\d]{1,2})?([*\d]+)?/,
   zip: /(\d{5})(\d*)/,
 };
