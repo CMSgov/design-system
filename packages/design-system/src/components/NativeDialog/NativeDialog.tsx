@@ -1,6 +1,6 @@
 import type * as React from 'react';
 import { useRef, useEffect, useLayoutEffect, DialogHTMLAttributes } from 'react';
-import dialogPolyfill from './polyfill';
+import { shimDialogElement } from './shim';
 
 export interface NativeDialogProps extends Omit<DialogHTMLAttributes<HTMLElement>, 'children'> {
   children: React.ReactNode;
@@ -56,8 +56,7 @@ export const NativeDialog = ({
 
   // Register dialog with the polyfill if necessary
   useLayoutEffect(() => {
-    // The registerDialog function itself determines if the polyfill needs to be applied
-    dialogPolyfill.registerDialog(dialogRef.current);
+    shimDialogElement(dialogRef.current);
   });
 
   // Call imperative show and close functions on mount/unmount
