@@ -1,4 +1,5 @@
-import React, { Children } from 'react';
+import { Children } from 'react';
+import type * as React from 'react';
 import humanizeList from 'humanize-react';
 
 interface ReactDocsLinksProps {

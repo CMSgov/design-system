@@ -1,4 +1,3 @@
-import React from 'react';
 import { createContext, useState, useContext, useRef } from 'react';
 import uniqueId from 'lodash/uniqueId';
 

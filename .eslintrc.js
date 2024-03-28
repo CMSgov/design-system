@@ -1,5 +1,10 @@
 module.exports = {
-  extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:react-hooks/recommended'],
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+    'plugin:react/jsx-runtime',
+  ],
   env: {
     browser: true,
     es6: true,

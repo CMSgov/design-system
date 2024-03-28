@@ -1,4 +1,4 @@
-import React from 'react';
+import type * as React from 'react';
 import { getSystemColorTokenFromValue } from '../../helpers/themeTokens';
 import { hexHasTransparency, pickTextColor } from 'design-system-tokens/src/lib/colorUtils';
 import { HexValue } from 'design-system-tokens/src/lib/types';

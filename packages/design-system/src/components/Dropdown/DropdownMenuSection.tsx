@@ -1,4 +1,3 @@
-import React from 'react';
 import { DropdownMenuOption } from './DropdownMenuOption';
 import { ListState, Node, OverlayTriggerState } from '../react-aria'; // from react-stately
 import { useListBoxSection } from '../react-aria'; // from react-aria

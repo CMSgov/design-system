@@ -1,4 +1,3 @@
-import React from 'react';
 import HelpDrawer, { HelpDrawerProps } from './HelpDrawer';
 import { UtagContainer } from '../analytics';
 import { config } from '../config';

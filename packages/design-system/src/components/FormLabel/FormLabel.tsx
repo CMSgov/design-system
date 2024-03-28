@@ -1,4 +1,4 @@
-import React from 'react';
+import type * as React from 'react';
 import { Label, LabelProps } from '../Label';
 
 type LabelComponentProps = React.ComponentPropsWithRef<'label'> &

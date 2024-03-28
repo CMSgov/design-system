@@ -1,4 +1,3 @@
-import React from 'react';
 import StepList from './StepList';
 import { generateStep } from './__mocks__/generateStep';
 import { render, screen } from '@testing-library/react';

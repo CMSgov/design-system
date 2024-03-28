@@ -1,4 +1,3 @@
-import React from 'react';
 import NativeDialog from './NativeDialog';
 import { render, screen } from '@testing-library/react';
 

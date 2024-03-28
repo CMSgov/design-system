@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Dialog } from './Dialog';
 import { Button } from '@cmsgov/design-system';

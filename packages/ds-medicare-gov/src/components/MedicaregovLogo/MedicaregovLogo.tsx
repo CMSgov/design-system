@@ -1,4 +1,3 @@
-import React from 'react';
 import { FunctionComponent } from 'react';
 import { useId } from '@cmsgov/design-system';
 

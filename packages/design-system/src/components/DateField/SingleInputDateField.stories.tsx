@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import SingleInputDateField from './SingleInputDateField';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';

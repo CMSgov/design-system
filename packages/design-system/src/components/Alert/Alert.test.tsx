@@ -1,4 +1,3 @@
-import React from 'react';
 import Alert, { AlertProps } from './Alert';
 import { UtagContainer } from '../analytics';
 import { config } from '../config';

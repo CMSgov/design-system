@@ -1,4 +1,3 @@
-import React from 'react';
 import { define } from './preactement/define';
 import { Alert, AlertProps } from '../Alert';
 

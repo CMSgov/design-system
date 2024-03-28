@@ -1,4 +1,3 @@
-import React from 'react';
 import { define } from './preactement/define';
 import { UsaBanner, UsaBannerProps } from '../UsaBanner/index';
 

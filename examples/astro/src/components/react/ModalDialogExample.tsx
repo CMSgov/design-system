@@ -1,5 +1,5 @@
 import { Button, Dialog } from '@cmsgov/design-system';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 function ModalDialogExample() {
   const [showExampleModal, setShowExampleModal] = useState(false);

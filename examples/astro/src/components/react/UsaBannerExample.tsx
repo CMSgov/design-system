@@ -1,4 +1,3 @@
-import React from 'react';
 import { UsaBanner } from '@cmsgov/design-system';
 
 function UsaBannerExample() {

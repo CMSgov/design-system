@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TextField } from '@cmsgov/design-system';
 import { useFlexSearch } from 'react-use-flexsearch';
 import { useStaticQuery, graphql } from 'gatsby';
