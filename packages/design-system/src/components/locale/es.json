@@ -128,6 +128,9 @@
   "spinner": {
     "ariaText": "Cargando"
   },
+  "table": {
+    "scrollableNoticeText": "Desplácese usando las teclas de flecha para ver más"
+  },
   "thirdPartyExternalLink": {
     "dialogHeading": "Está saliendo de {{origin}}.",
     "dialogBody": "Está a punto de conectarse a un sitio de terceros. Seleccione CONTINUAR para continuar o CANCELAR para permanecer en este sitio.",
