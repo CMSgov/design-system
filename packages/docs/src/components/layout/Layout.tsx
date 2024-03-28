@@ -23,7 +23,7 @@ interface LayoutProps {
   /**
    * The elements to appear in the main page content, below the page heading
    */
-  children: React.ReactElement;
+  children: React.ReactNode;
   /**
    * page metadata
    */
