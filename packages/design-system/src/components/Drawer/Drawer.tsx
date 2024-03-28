@@ -48,6 +48,10 @@ export interface DrawerProps {
    */
   isFooterSticky?: boolean;
   /**
+   * Pass `true` to have the dialog close when its backdrop pseudo-element is clicked
+   */
+  backdropClickExits?: boolean;
+  /**
    * Controls whether the dialog is in an open state
    */
   isOpen?: boolean;
@@ -75,6 +79,7 @@ export const Drawer = (props: DrawerProps) => {
       className={classNames(props.className, 'ds-c-drawer')}
       exit={props.onCloseClick}
       showModal={props.hasFocusTrap}
+      backdropClickExits={props.backdropClickExits}
       isOpen={props.isOpen}
     >
       <div className="ds-c-drawer__window" tabIndex={-1} aria-labelledby={headingId}>
