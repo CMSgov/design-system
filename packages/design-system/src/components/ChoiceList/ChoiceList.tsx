@@ -139,6 +139,9 @@ export const ChoiceList: React.FC<ChoiceListProps> = (props: ChoiceListProps) =>
   });
 
   return (
+    // 🥑
+    // https://www.w3.org/TR/wai-aria-1.2/#group
+    //    - "aria-invalid (state) (deprecated on this role in ARIA 1.2)"
     <fieldset
       aria-invalid={invalid}
       aria-describedby={describeField({ ...props, hintId, errorId })}
