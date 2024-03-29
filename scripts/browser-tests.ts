@@ -1,9 +1,8 @@
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
-import { sh } from './utils';
-import { spawnSync } from 'node:child_process';
+import { sh, shI } from './utils';
 
-const DOCKER_IMAGE = 'mcr.microsoft.com/playwright:v1.25.0-focal';
+const DOCKER_IMAGE = 'mcr.microsoft.com/playwright:v1.31.0-focal';
 
 function verifyPlaywrightInstalled() {
   try {
@@ -44,22 +43,39 @@ function verifyPlaywrightInstalled() {
     })
     .help().argv;
 
-  const envVars: string[] = [];
-  if (argv.smoke) {
-    envVars.push('SMOKE=true');
-  }
-
-  const configArg = `--config ${argv.config}`;
-  const extraArgs = argv._.join(' ');
-  const playwrightCommand = `yarn playwright test ${configArg} ${extraArgs}`;
+  // Create the array of args for the playwright command
+  const configArgs = ['--config', argv.config];
+  const extraArgs = argv._.map((v) => '' + v);
+  const playwrightArgs = ['test', ...configArgs, ...extraArgs];
 
   if (argv.docker) {
-    const envArgs = envVars.map((assignment) => `--env ${assignment}`).join(' ');
-    const dockerCommand = `docker run --rm --network host -v $(pwd):/work/ -w /work/ ${envArgs} ${DOCKER_IMAGE}`;
-    sh(`${dockerCommand} ${playwrightCommand}`);
+    // Create the array of args for the docker command
+    const dockerArgs = [
+      ...['run', '--rm', '--network', 'host', '-v', `${process.cwd()}:/work/`, '-w', '/work/'],
+      // Environment vars need to be passed to the docker container
+      ...(argv.smoke ? ['--env', 'SMOKE=true'] : []),
+      DOCKER_IMAGE,
+      ...['yarn', 'playwright', ...playwrightArgs],
+    ];
+
+    // And run docker
+    shI('docker', dockerArgs);
   } else {
+    // To run outside of docker, we need to have Playwright installed separately
     verifyPlaywrightInstalled();
-    const envArgs = envVars.join(' ');
-    sh(`${envArgs} ${playwrightCommand}`);
+
+    // Environment vars need to be passed to the spawned process through the config object
+    let config;
+    if (argv.smoke) {
+      config = {
+        env: {
+          ...process.env,
+          SMOKE: 'true',
+        },
+      };
+    }
+
+    // Run Playwright directly through yarn
+    shI('yarn', ['playwright', ...playwrightArgs], config);
   }
 })();
