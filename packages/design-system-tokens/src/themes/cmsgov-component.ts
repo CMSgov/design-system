@@ -373,9 +373,8 @@ export const components: AnyTokenValues = {
   'table': {
     '__padding':                                  t.spacer['2'],
     '__border-color':                             t.color['gray-lighter'],
-    '__background-color--striped':                t.color['gray-lightest'],
+    '__background-color--striped':                t.color['primary-lightest'],
     '-header__background-color':                  t.color['primary-lightest'],
-    '-header__background-color--striped':         t.color['gray-lightest'],
   },
 
   'tabs': {
