@@ -48,7 +48,7 @@
     "test:unit:preact": "PREACT=true yarn jest --config=tests/unit/jest.config.js",
     "test:unit:wc": "WC=true yarn jest --config=tests/unit/jest.config.js",
     "test:browser:all": "yarn test:browser && yarn test:browser:interaction && yarn test:browser:storybook-docs",
-    "test:browser": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.31.0-focal yarn playwright test --config tests/browser/playwright.config.ts",
+    "test:browser": "ts-node ./scripts/browser-tests.ts",
     "test:browser:smoke": "docker run --rm --network host -v $(pwd):/work/ -w /work/ --env SMOKE=true mcr.microsoft.com/playwright:v1.31.0-focal yarn playwright test --config tests/browser/playwright.config.ts",
     "test:browser:interaction": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.31.0-focal yarn playwright test --config tests/browser/interaction.config.ts",
     "test:browser:update": "yarn build:storybook && yarn test:browser -u && yarn test:browser:interaction -u",
