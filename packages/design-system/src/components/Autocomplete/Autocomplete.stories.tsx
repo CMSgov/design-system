@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import type * as React from 'react';
 import Autocomplete from './Autocomplete';
 import TextField from '../TextField/TextField';
 import uniqueId from 'lodash/uniqueId';

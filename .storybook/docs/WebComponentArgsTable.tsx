@@ -1,4 +1,3 @@
-import React from 'react';
 import { useOf } from '@storybook/blocks';
 
 function optToCodeBlock(opt: undefined | string) {

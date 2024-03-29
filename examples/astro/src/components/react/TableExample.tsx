@@ -6,7 +6,6 @@ import {
   TableHead,
   TableRow,
 } from '@cmsgov/design-system';
-import React from 'react';
 
 function TableExample() {
   return (

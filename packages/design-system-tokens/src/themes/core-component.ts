@@ -375,7 +375,6 @@ export const components: AnyTokenValues = {
     '__border-color':                             t.color['black'],
     '__background-color--striped':                t.color['gray-lightest'],
     '-header__background-color':                  t.color['gray-lightest'],
-    '-header__background-color--striped':         t.color['gray-lightest'],
   },
 
   'tabs': {

@@ -1,4 +1,4 @@
-import React from 'react';
+import type * as React from 'react';
 import { useRef, useEffect, useLayoutEffect, DialogHTMLAttributes } from 'react';
 import { shimDialogElement } from './shim';
 

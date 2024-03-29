@@ -1,5 +1,3 @@
-import React from 'react';
-
 const spacingTokens = [
   { name: '0', value: '0px' },
   { name: '05', value: '4px' },

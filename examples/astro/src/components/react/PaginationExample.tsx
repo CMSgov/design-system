@@ -1,5 +1,5 @@
 import { Pagination } from '@cmsgov/design-system';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 function PaginationExample() {
   const [page, setPage] = useState(5);

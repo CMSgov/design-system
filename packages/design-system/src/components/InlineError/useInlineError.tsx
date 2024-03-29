@@ -1,4 +1,4 @@
-import React from 'react';
+import type * as React from 'react';
 import InlineError from './InlineError';
 import classNames from 'classnames';
 import { config } from '../config';

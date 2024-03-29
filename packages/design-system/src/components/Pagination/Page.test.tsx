@@ -1,4 +1,3 @@
-import React from 'react';
 import Page from './Page';
 import { render, screen } from '@testing-library/react';
 

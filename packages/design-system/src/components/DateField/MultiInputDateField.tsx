@@ -1,4 +1,4 @@
-import React from 'react';
+import type * as React from 'react';
 import DateInput from './DateInput';
 import defaultDateFormatter from './defaultDateFormatter';
 import cleanFieldProps from '../utilities/cleanFieldProps';

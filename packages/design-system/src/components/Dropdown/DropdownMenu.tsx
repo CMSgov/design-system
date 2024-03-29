@@ -1,4 +1,5 @@
-import React, { RefObject, useEffect, useRef } from 'react';
+import { RefObject, useEffect, useRef } from 'react';
+import type * as React from 'react';
 import { DropdownMenuOption } from './DropdownMenuOption';
 import { DropdownMenuSection } from './DropdownMenuSection';
 import { ListState, OverlayTriggerState } from '../react-aria'; // from react-stately

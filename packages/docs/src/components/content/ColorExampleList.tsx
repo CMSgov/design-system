@@ -1,4 +1,3 @@
-import React from 'react';
 import ColorExampleRow from './ColorExampleRow';
 import { getThemeColorValue, ThemeName } from '../../helpers/themeTokens';
 import { clientOnly } from '../../helpers/clientOnly';

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { HelpDrawer } from './HelpDrawer';
 import { Button } from '../Button';
 import { action } from '@storybook/addon-actions';

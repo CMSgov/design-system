@@ -1,4 +1,3 @@
-import React from 'react';
 import Stars, { StarsProps } from './Stars';
 import type { Meta, StoryObj } from '@storybook/react';
 

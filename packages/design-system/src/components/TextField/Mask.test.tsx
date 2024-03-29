@@ -1,4 +1,3 @@
-import React from 'react';
 import Mask from './Mask';
 import { useState } from 'react';
 import { unmaskValue } from './maskHelpers';

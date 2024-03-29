@@ -1,5 +1,4 @@
 import { Dropdown } from '@cmsgov/design-system';
-import React from 'react';
 
 function DropdownExample() {
   const dropdownOptions = [
