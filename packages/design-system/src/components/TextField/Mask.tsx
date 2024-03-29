@@ -1,4 +1,5 @@
-import React from 'react';
+import { Children, PureComponent, cloneElement, isValidElement } from 'react';
+import type * as React from 'react';
 import classNames from 'classnames';
 import { maskValue, unmaskValue } from './maskHelpers';
 
@@ -29,7 +30,7 @@ export interface MaskProps {
   mask?: MaskMask;
 }
 
-export class Mask extends React.PureComponent<MaskProps, any> {
+export class Mask extends PureComponent<MaskProps, any> {
   constructor(props: MaskProps) {
     super(props);
 
@@ -48,8 +49,8 @@ export class Mask extends React.PureComponent<MaskProps, any> {
     }
 
     const fieldProps = this.field().props;
-    const prevField = React.Children.only(prevProps.children);
-    const prevFieldProps = React.isValidElement(prevField) ? prevField.props : {};
+    const prevField = Children.only(prevProps.children);
+    const prevFieldProps = isValidElement(prevField) ? prevField.props : {};
     const isControlled = fieldProps.value !== undefined;
     if (isControlled && prevFieldProps.value !== fieldProps.value) {
       const { mask } = this.props;
@@ -75,7 +76,7 @@ export class Mask extends React.PureComponent<MaskProps, any> {
    * @returns {React.ReactElement} Child TextField
    */
   field(): React.ReactElement {
-    return React.Children.only(this.props.children as React.ReactElement);
+    return Children.only(this.props.children as React.ReactElement);
   }
 
   /**
@@ -129,7 +130,7 @@ export class Mask extends React.PureComponent<MaskProps, any> {
     const { mask } = this.props;
     const field = this.field();
 
-    const modifiedTextField = React.cloneElement(field, {
+    const modifiedTextField = cloneElement(field, {
       defaultValue: undefined,
       fieldClassName: classNames(field.props.fieldClassName, `ds-c-field--${mask}`),
       onBlur: (evt) => this.handleBlur(evt, field),

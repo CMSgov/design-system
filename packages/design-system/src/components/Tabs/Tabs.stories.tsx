@@ -1,4 +1,3 @@
-import React from 'react';
 import { Tabs as TabsComponent } from './Tabs';
 import TabPanel from './TabPanel';
 import type { Meta, StoryObj } from '@storybook/react';

@@ -1,4 +1,3 @@
-import React from 'react';
 import classnames from 'classnames';
 import { DefaultLink, LinkIdentifier } from './defaultMenuLinks';
 import { Link } from './Header';

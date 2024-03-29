@@ -1,4 +1,3 @@
-import React from 'react';
 import { color as colorTokens } from 'design-system-tokens/src/tokens/color';
 import ColorExampleRow from './ColorExampleRow';
 

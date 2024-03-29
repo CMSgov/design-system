@@ -1,4 +1,3 @@
-import React from 'react';
 import PrivacySettingsDialog from './PrivacySettingsDialog';
 import { Title, Subtitle, Description, ArgsTable } from '@storybook/blocks';
 import type { Meta, StoryObj } from '@storybook/react';

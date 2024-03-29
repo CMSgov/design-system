@@ -1,4 +1,3 @@
-import React from 'react';
 import Drawer from './Drawer';
 import { DrawerManager, useDrawerManager } from './DrawerManager';
 import { Button } from '../Button';

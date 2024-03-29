@@ -1,4 +1,3 @@
-import React from 'react';
 import PrivacySettingsLink from './PrivacySettingsLink';
 import languages from './languages';
 import { TFunction } from '@cmsgov/design-system';

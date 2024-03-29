@@ -1,4 +1,5 @@
-import React from 'react';
+import { Children, cloneElement } from 'react';
+import type * as React from 'react';
 import { useLabelMask, MaskFunction } from './useLabelMask';
 
 export interface LabelMaskProps {
@@ -17,9 +18,9 @@ export interface LabelMaskProps {
 }
 
 const LabelMask = (props: LabelMaskProps) => {
-  const field = React.Children.only(props.children as React.ReactElement);
+  const field = Children.only(props.children as React.ReactElement);
   const { labelMask, inputProps } = useLabelMask(props.labelMask, field.props);
-  const input = React.cloneElement(field, inputProps);
+  const input = cloneElement(field, inputProps);
 
   return (
     <>

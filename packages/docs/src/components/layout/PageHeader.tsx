@@ -1,4 +1,3 @@
-import React from 'react';
 import { FrontmatterInterface } from '../../helpers/graphQLTypes';
 import { withPrefix } from 'gatsby';
 import { makeGithubUrl, makeSketchUrl, makeStorybookUrl } from '../../helpers/urlUtils';

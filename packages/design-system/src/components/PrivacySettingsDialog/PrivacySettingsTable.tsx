@@ -1,4 +1,3 @@
-import React from 'react';
 import { ChoiceList } from '../ChoiceList/index';
 import { Table, TableHead, TableRow, TableCell, TableBody } from '../Table/index';
 import { t } from '../i18n';

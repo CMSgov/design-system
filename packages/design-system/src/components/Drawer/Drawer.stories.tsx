@@ -1,4 +1,3 @@
-import React from 'react';
 import { Title, Subtitle, Description, ArgsTable } from '@storybook/blocks';
 import { action } from '@storybook/addon-actions';
 import Drawer from './Drawer';

@@ -1,4 +1,3 @@
-import React from 'react';
 import Dropdown from './Dropdown';
 import type { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';

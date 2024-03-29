@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import type * as React from 'react';
 import { AddIcon, RemoveIcon } from '../Icons';
 import classNames from 'classnames';
 import useId from '../utilities/useId';

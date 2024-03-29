@@ -1,4 +1,4 @@
-import React, { ReactElement, ReactNode } from 'react';
+import { isValidElement, Children, ReactElement, ReactNode } from 'react';
 import { AutocompleteProps, AutocompleteItem } from './Autocomplete';
 import { ComboBoxState, Item } from '../react-aria'; // from react-stately
 import { TextField } from '../TextField';
@@ -30,7 +30,7 @@ export function renderStatusMessage(message: ReactNode) {
  * Determine if a React component is a TextField
  */
 function isTextField(child?: ReactNode): child is ReactElement {
-  if (!child || !React.isValidElement(child)) {
+  if (!child || !isValidElement(child)) {
     return false;
   }
 
@@ -41,7 +41,7 @@ function isTextField(child?: ReactNode): child is ReactElement {
 
 export function getTextFieldChild(children: ReactNode): ReactElement | undefined {
   let textField;
-  React.Children.forEach(children, (child) => {
+  Children.forEach(children, (child) => {
     if (isTextField(child)) {
       textField = child;
     }

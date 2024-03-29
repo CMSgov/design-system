@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { ListState, Node, OverlayTriggerState } from '../react-aria'; // from react-stately
 import { SvgIcon } from '../Icons';
 import { useOption } from '../react-aria'; // from react-aria

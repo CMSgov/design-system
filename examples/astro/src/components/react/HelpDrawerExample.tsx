@@ -1,5 +1,5 @@
 import { HelpDrawer, HelpDrawerToggle } from '@cmsgov/design-system';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 function HelpDrawerExample() {
   const [showHelpDrawer, setShowHelpDrawer] = useState(false);

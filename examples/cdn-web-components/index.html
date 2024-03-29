@@ -4,10 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>CDN Example</title>
-    <link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/9.0.1/css/index.css" />
     <link
       rel="stylesheet"
-      href="https://design.cms.gov/cdn/design-system/9.0.1/css/core-theme.css"
+      href="https://design.cms.gov/cdn/design-system/10.0.0-beta.1/css/index.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://design.cms.gov/cdn/design-system/10.0.0-beta.1/css/core-theme.css"
     />
   </head>
   <body class="ds-base">
@@ -43,7 +46,7 @@
 
         <h2 class="ds-text-heading--2xl">Adding machine</h2>
         <form id="calculator">
-          <ds-dropdown id="operation" name="operation">
+          <ds-dropdown id="operation" name="operation" label="Operation">
             <option value="addition">Addition</option>
             <option value="subtraction">Subtraction</option>
           </ds-dropdown>
@@ -66,7 +69,7 @@
       Must load the JavaScript after your page HTML or else it won't evaluate
       the custom design-system elements that already exist on the page
     -->
-    <script src="https://design.cms.gov/cdn/design-system/9.0.1/web-components/bundle/web-components.js"></script>
+    <script src="https://design.cms.gov/cdn/design-system/10.0.0-beta.1/web-components/bundle/web-components.js"></script>
     <script>
       document.getElementById('the-button').addEventListener('click', function () {
         const oldAlert = document.getElementById('alert');

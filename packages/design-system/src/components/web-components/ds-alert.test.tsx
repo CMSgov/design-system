@@ -1,4 +1,3 @@
-import React from 'react';
 import { UtagContainer } from '../analytics';
 import { config } from '../config';
 import { render, screen } from '@testing-library/react';

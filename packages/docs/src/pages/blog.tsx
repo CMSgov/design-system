@@ -1,4 +1,3 @@
-import React from 'react';
 import Layout from '../components/layout/Layout';
 import useTheme from '../helpers/useTheme';
 import { BlogQuery } from '../helpers/graphQLTypes';
