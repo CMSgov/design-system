@@ -104,6 +104,7 @@ There are a lot of tests, so it can be helpful to constrain the tests you run lo
 - Playwright's `--debug` flag is another helpful argument because it will pause and allow you to step through the tests.
 - Don't forget that you can run a subset of tests by using Playwright's `--grep` argument.
 - Remember that passing `--no-build` will skip re-building the source material like Storybook stories if you haven't made any changes to them and are only changing the tests themselves.
+- Here's an example of a command you might run to debug the dropdown tests: `yarn test:browser:interaction --no-docker --no-build --headed --debug --ignore-snapshots --grep "Dropdown"`
 
 ## Design Assets
 
