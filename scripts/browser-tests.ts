@@ -43,6 +43,15 @@ function verifyPlaywrightInstalled() {
     })
     .help().argv;
 
+  // Build whatever is necessary to run these tests
+  if (argv.build) {
+    if (argv.config.includes('examples.config.ts')) {
+      shI('yarn', ['build:examples']);
+    } else {
+      shI('yarn', ['build:storybook']);
+    }
+  }
+
   // Create the array of args for the playwright command
   const configArgs = ['--config', argv.config];
   const extraArgs = argv._.map((v) => '' + v);
