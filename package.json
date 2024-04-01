@@ -44,7 +44,6 @@
     "posttest": "yarn lint",
     "test:unit:coverage": "yarn test:unit --collectCoverage",
     "test:unit": "yarn jest --config=tests/unit/jest.config.js",
-    "test:unit:update": "yarn test:unit --updateSnapshot",
     "test:unit:preact": "PREACT=true yarn jest --config=tests/unit/jest.config.js",
     "test:unit:wc": "WC=true yarn jest --config=tests/unit/jest.config.js",
     "test:browser": "ts-node ./scripts/browser-tests.ts",
