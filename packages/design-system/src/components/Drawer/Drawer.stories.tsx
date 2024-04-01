@@ -1,4 +1,4 @@
-import { Title, Subtitle, Description, ArgsTable } from '@storybook/blocks';
+import { Title, Subtitle, Description, ArgTypes } from '@storybook/blocks';
 import { action } from '@storybook/addon-actions';
 import Drawer from './Drawer';
 import { Button } from '../Button';
@@ -21,7 +21,7 @@ const meta: Meta<typeof Drawer> = {
           <Title />
           <Subtitle />
           <Description />
-          <ArgsTable />
+          <ArgTypes of={Drawer} />
         </>
       ),
     },
