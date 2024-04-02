@@ -106,8 +106,14 @@ export const Success = {
   ...AlertTemplate,
   args: {
     heading: 'Your application has been submitted',
-    children:
-      'You successfully submitted your application. You will receive a confirmation email within 24 hours. If you do not receive an email, please contact us at 1-800-555-5555 (TTY: 1-855-555-5555).',
+    children: (
+      <>
+        You successfully submitted your application. You will receive a confirmation email within 24
+        hours. If you do not receive an email, please contact us at{' '}
+        <a href="tel:+1-800-555-5555">1-800-555-5555</a> (TTY:{' '}
+        <a href="tel:+1-855-555-5555">1-855-555-5555</a>).
+      </>
+    ),
     variation: 'success',
   },
 };
@@ -124,8 +130,13 @@ export const Error = {
   ...AlertTemplate,
   args: {
     heading: 'There was a problem saving your information',
-    children:
-      'Please review the information you entered and try again. If you continue to have problems, please contact us at 1-800-555-5555 (TTY: 1-855-555-5555).',
+    children: (
+      <>
+        Please review the information you entered and try again. If you continue to have problems,
+        please contact us at <a href="tel:+1-800-555-5555">1-800-555-5555</a> (TTY:{' '}
+        <a href="tel:+1-855-555-5555">1-855-555-5555</a>).
+      </>
+    ),
     variation: 'error',
   },
 };
