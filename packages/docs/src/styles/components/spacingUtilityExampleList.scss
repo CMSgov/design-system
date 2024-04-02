@@ -2,6 +2,7 @@
   align-items: center;
   display: flex;
   margin-bottom: $spacer-2;
+
   code {
     margin-left: $spacer-2;
   }
@@ -12,7 +13,7 @@
   display: inline-flex;
 }
 
-.c-spacing-utility-example__item:after {
+.c-spacing-utility-example__item::after {
   background: var(--color-white);
   content: '';
   display: table;
@@ -20,7 +21,7 @@
   width: $spacer-4;
 }
 
-.c-spacing-utility-example--margin .c-spacing-utility-example__item:after {
+.c-spacing-utility-example--margin .c-spacing-utility-example__item::after {
   border: 1px solid var(--color-black);
   box-sizing: border-box;
   width: ($spacer-4 + 2px);
