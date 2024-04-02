@@ -19,7 +19,7 @@
 }
 
 // Chrome needs this offset because it handles text-underline-position differently and without this the underline runs into descending letters like g,j,q,p,y.
-@media all and (resolution >= 0) and (resolution >= 0.001dpcm) {
+@media (resolution >= 0.001dpcm) {
   %trigger-underline-styles {
     text-underline-offset: $spacer-half;
   }
