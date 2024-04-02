@@ -3,11 +3,6 @@
   "version": "0.0.1",
   "private": true,
   "description": "CMSDS Design System Tokens",
-  "devDependencies": {
-    "@types/node": "^17.0.22",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.4.3"
-  },
   "scripts": {
     "build": "ts-node ./src/index.ts",
     "build:all": "yarn clean && yarn build themes css-vars && yarn build themes scss",
