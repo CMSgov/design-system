@@ -1,10 +1,14 @@
 @use '../layout' as *;
 @use '../mixins';
 
-// Wraps all label and dropdown markup
-.ds-c-dropdown {
+%dropdown {
   max-width: var(--form__max-width);
   position: relative;
+}
+
+// Wraps all label and dropdown markup
+.ds-c-dropdown {
+  @extend %dropdown;
 }
 
 // Dropdown uses a <button> to fake a <select> element
@@ -50,8 +54,7 @@
   }
 }
 
-// Styles for the dropdown menu
-.ds-c-dropdown__menu-container {
+%dropdown-container {
   --blur-radius: 17px;
   --clip-path-value: calc(-1 * var(--blur-radius));
   --max-height: 320px;
@@ -76,12 +79,21 @@
   }
 }
 
-.ds-c-dropdown__menu {
+// Styles for the dropdown menu
+.ds-c-dropdown__menu-container {
+  @extend %dropdown-container;
+}
+
+%dropdown-menu {
   @include mixins.unstyled-list;
 
   // Allows for keyboard navigation of dropdown options, i.e., scrolling through options via arrow keys
   max-height: calc(var(--max-height) - var(--text-input__border-width));
   overflow-y: auto;
+}
+
+.ds-c-dropdown__menu {
+  @extend %dropdown-menu;
 }
 
 // Base styles for grouped and individual dropdown elements
@@ -104,8 +116,7 @@
   padding-inline-start: calc(var(--text-input__padding) + var(--spacer-2));
 }
 
-// Styles for dropdown elements that are highlighted
-.ds-c-dropdown__menu-item--highlighted {
+%dropdown-item-highlight {
   background-color: var(--color-primary-lightest);
   outline: none;
 
@@ -115,6 +126,11 @@
     forced-color-adjust: none;
     -ms-high-contrast-adjust: none;
   }
+}
+
+// Styles for dropdown elements that are highlighted
+.ds-c-dropdown__menu-item--highlighted {
+  @extend %dropdown-item-highlight;
 }
 
 // Styles for dropdown elements that are selected

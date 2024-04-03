@@ -25,7 +25,6 @@ module.exports = {
     'selector-class-pattern': null,
     'value-keyword-case': ['lower', { ignoreKeywords: ['currentColor', 'optimizeSpeed'] }],
     'order/order': ['custom-properties', 'declarations', 'rules'],
-    'scss/at-extend-no-missing-placeholder': null,
     'scss/at-mixin-pattern': null,
     'scss/comment-no-empty': null,
     'scss/dollar-variable-empty-line-before': null,
