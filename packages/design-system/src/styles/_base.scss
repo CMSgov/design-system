@@ -262,7 +262,7 @@ $breakpoints: (
   }
 
   :where(ul, ol) {
-    @extend %list;
+    @extend .ds-c-list;
   }
 }
 

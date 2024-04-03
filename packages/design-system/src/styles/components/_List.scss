@@ -1,13 +1,9 @@
 @use '../layout' as *;
 @use '../mixins';
 
-%list {
+.ds-c-list {
   margin-block: $spacer-2;
   padding-inline-start: $spacer-4;
-}
-
-.ds-c-list {
-  @extend %list;
 }
 
 .ds-c-list--bare {

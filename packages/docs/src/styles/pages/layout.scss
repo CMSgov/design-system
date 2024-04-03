@@ -38,7 +38,6 @@ body {
   }
 }
 
-/* stylelint-disable scss/at-extend-no-missing-placeholder -- Docs site can break this rule */
 .page-body__content,
 .page-body__content .ds-u-measure--wide {
   > h2 {
@@ -85,7 +84,6 @@ body {
     margin-top: $spacer-2;
   }
 }
-/* stylelint-enable  */
 
 .ds-c-badge {
   .ds-c-icon {

@@ -5,7 +5,7 @@
 // Autocomplete styles extend Dropdown styles
 
 .ds-c-autocomplete {
-  @extend %dropdown;
+  @extend .ds-c-dropdown;
 }
 
 .ds-c-autocomplete__label {
@@ -14,11 +14,11 @@
 }
 
 .ds-c-autocomplete__menu-container {
-  @extend %dropdown-container;
+  @extend .ds-c-dropdown__menu-container;
 }
 
 .ds-c-autocomplete__menu {
-  @extend %dropdown-menu;
+  @extend .ds-c-dropdown__menu;
 }
 
 // Experienced an error using `@extend .ds-c-dropdown__menu-item` where it wouldn't compile styles for this class.
@@ -33,7 +33,7 @@
 }
 
 .ds-c-autocomplete__menu-item--highlighted {
-  @extend %dropdown-item-highlight;
+  @extend .ds-c-dropdown__menu-item--highlighted;
 
   @media (forced-colors: active) {
     background-color: Highlight;
