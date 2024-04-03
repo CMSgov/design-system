@@ -32,10 +32,6 @@ export const components: AnyTokenValues = {
     '__icon-size':                                '1.5rem',
     '__padding':                                  t.spacer['2'],
     '-bar__width':                                t.spacer['1'],
-    '-link__font-color':                          t.color['primary-darker'],
-    '-link__font-color--hover':                   t.color['primary-darkest'],
-    '-link__font-color--focus':                   t.color['primary-darkest'],
-    '-link__font-color--active':                  t.color['primary-darkest'],
   },
 
   'badge': {
