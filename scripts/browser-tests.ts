@@ -57,6 +57,7 @@ function verifyPlaywrightInstalled() {
   const extraArgs = argv._.map((v) => '' + v);
   const playwrightArgs = ['test', ...configArgs, ...extraArgs];
 
+  let result;
   if (argv.docker) {
     // Create the array of args for the docker command
     const dockerArgs = [
@@ -68,7 +69,7 @@ function verifyPlaywrightInstalled() {
     ];
 
     // And run docker
-    shI('docker', dockerArgs);
+    result = shI('docker', dockerArgs);
   } else {
     // To run outside of docker, we need to have Playwright installed separately
     verifyPlaywrightInstalled();
@@ -85,6 +86,10 @@ function verifyPlaywrightInstalled() {
     }
 
     // Run Playwright directly through yarn
-    shI('yarn', ['playwright', ...playwrightArgs], config);
+    result = shI('yarn', ['playwright', ...playwrightArgs], config);
+  }
+
+  if (result.error || result.status !== 0) {
+    process.exit(result.status || 1);
   }
 })();
