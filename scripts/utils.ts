@@ -21,7 +21,7 @@ export function shI(
   args: string[],
   config: SpawnSyncOptionsWithBufferEncoding = {}
 ) {
-  spawnSync(command, args, { stdio: 'inherit', ...config });
+  return spawnSync(command, args, { stdio: 'inherit', ...config });
 }
 
 export function verifyGhInstalled() {
