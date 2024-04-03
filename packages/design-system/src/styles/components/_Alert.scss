@@ -7,23 +7,6 @@
   display: flex;
   padding: var(--alert__padding);
 
-  a:not(.ds-c-button),
-  .ds-c-link {
-    color: var(--alert-link__font-color);
-
-    &:hover {
-      color: var(--alert-link__font-color--hover);
-    }
-
-    &:focus {
-      color: var(--alert-link__font-color--focus);
-    }
-
-    &:active {
-      color: var(--alert-link__font-color--active);
-    }
-  }
-
   ul {
     &:last-child {
       margin-block-end: 0;
