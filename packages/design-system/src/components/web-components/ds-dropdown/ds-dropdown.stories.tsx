@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import WebComponentDocTemplate from '../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
+import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { action } from '@storybook/addon-actions';
 import './ds-dropdown';
 

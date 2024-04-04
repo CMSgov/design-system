@@ -1,5 +1,5 @@
-import { define } from './preactement/define';
-import { UsaBanner, UsaBannerProps } from '../UsaBanner/index';
+import { define } from '../preactement/define';
+import { UsaBanner, UsaBannerProps } from '../../UsaBanner';
 
 const attributes = [
   // Purposely leaving out `className` because it's unnecessary
