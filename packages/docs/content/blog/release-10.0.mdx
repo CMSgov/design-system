@@ -1,0 +1,28 @@
+---
+title: Release 10.0
+date: 2024-04-09
+intro: Reduced JavaScript bundle sizes, improved web components, removed deprecated font classes, and cleaned up tokens
+---
+
+## Reduced JavaScript bundle sizes
+
+We've reduced our JavaScript bundle size by 23% since the last version. This is primarily due to two changes we've made:
+
+1. **We've updated our `browserslist` config** to exclude long-unsupported Internet Explorer and increase coverage of more popular browsers. The effect of this change is that we're both increasing the number of users we support statistically while also reducing the amount of code needed to support older browsers. The React-component bundle shrunk by 20%, and Preact- web-component bundles saw similar reductions. Note that you are building your own bundle, your own `browserslist` configuration will determine the final bundle size. Thanks to the CCXP team for prompting us to update this configuration!
+2. **We've dropped React 16 support and switched to their new JSX transform**. Doing that allowed us to remove unused React imports and reduce the size of our code, whether you use our bundle or bundle yourself. This change resulted in about a 4% reduction in code.
+
+These reductions should increase performance for our end-users, which is exciting for us! We actually have even more optimizations planned for later this year, so stay tuned.  
+
+## Improved web components
+
+During this past program increment, we ran a web-components pilot program with two brave product teams to test and iterate on our experimental web components. While we haven't yet expanded the _number_ of web components in our library, we refined the underlying technology and improved the user experience for developers. Due to the success of this program, we'll be expanding our web-component offerings in the next major release.  
+
+## Removed deprecated font classes
+
+Way back in version 2.5, [we changed the naming of our font classes](https://design.cms.gov/migration-guides/agnostic-typography-classes/) to make them more flexible. Until the previous major version, we relied on people reading documentation or hearing about the change through word-of-mouth, but then we created a visual way of alerting application teams when they used deprecated CSS classes. Now that that deprecation warning has been in code for a full release cycle, we're finally removing the deprecated classes.  
+  
+If your team is still using `ds-h1` or similar deprecated classes, you can use our migration script (`npm run cmsds-migrate` or `yarn cmsds-migrate`) to automatically update your old classes to the new classes.  
+
+## Cleaned up tokens during Figma migration
+
+Our Figma migration has given us a chance to reorganize and streamline many of our design tokens. As a result, there are several CSS variable renames and removals you should be aware of. Please read our code release notes for more details.
