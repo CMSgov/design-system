@@ -118,6 +118,7 @@ export const color = to<ColorTokens>()({
   'deepsea-1000':    '#01040f',
 
   // Greens
+  'spring-40':       '#f6faf5',
   'spring-50':       '#e7f3e7',
   'spring-100':      '#b8dcb7',
   'spring-200':      '#89c487',
@@ -155,6 +156,7 @@ export const color = to<ColorTokens>()({
   'emerald-1000':    '#07170e',
   
   // Reds
+  'rose-40':         '#fef5f7',
   'rose-50':         '#fce8ec',
   'rose-100':        '#f7bbc5',
   'rose-200':        '#f18e9e',

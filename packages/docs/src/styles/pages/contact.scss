@@ -1,3 +1,4 @@
+/* stylelint-disable selector-id-pattern -- Need to understand more before removing/refactoring */
 #page--not-in-sidebar_contact {
   h2 {
     align-items: center;
@@ -5,3 +6,4 @@
     gap: 1rem;
   }
 }
+/* stylelint-enable */

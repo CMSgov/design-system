@@ -62,8 +62,9 @@
   border-end-end-radius: var(--text-input__border-radius);
   border-end-start-radius: var(--text-input__border-radius);
   box-shadow: 0 0 var(--blur-radius) 0 var(--color-gray-light);
+
   // `clip-path` needed to hide `box-shadow` overlap in field. 17px is the `box-shadow` blur radius.
-  clip-path: inset(0px var(--clip-path-value) var(--clip-path-value) var(--clip-path-value));
+  clip-path: inset(0 var(--clip-path-value) var(--clip-path-value) var(--clip-path-value));
   margin-block-start: calc(-1 * var(--text-input__border-width));
   max-height: var(--max-height);
   position: absolute;
@@ -77,6 +78,7 @@
 
 .ds-c-dropdown__menu {
   @include mixins.unstyled-list;
+
   // Allows for keyboard navigation of dropdown options, i.e., scrolling through options via arrow keys
   max-height: calc(var(--max-height) - var(--text-input__border-width));
   overflow-y: auto;

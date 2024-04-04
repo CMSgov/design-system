@@ -31,7 +31,7 @@ kbd {
 kbd {
   border: 1px solid #b4b4b44f;
   border-radius: 3px;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 2px 0 0 rgba(255, 255, 255, 0.7) inset;
+  box-shadow: 0 1px 1px rgb(0 0 0 / 20%), 0 2px 0 0 rgb(255 255 255 / 70%) inset;
   color: var(--color-black);
   display: inline-block;
   font-size: 0.85em;
@@ -56,7 +56,6 @@ pre[class*='language-'] {
   color: #545454;
   hyphens: none;
   line-height: 1.5;
-
   tab-size: 4;
   text-align: left;
   white-space: pre;
@@ -147,6 +146,7 @@ pre[class*='language-'] {
 .token.bold {
   font-weight: bold;
 }
+
 .token.italic {
   font-style: italic;
 }
@@ -161,7 +161,7 @@ pre[class*='language-'] {
 
 /* Line highlight */
 .line-highlight {
-  background: rgba(183, 134, 11, 0.075);
+  background: rgb(183 134 11 / 7.5%);
   border-bottom: 1px solid #b8860b;
   border-top: 1px solid #b8860b;
 }
@@ -171,7 +171,7 @@ pre[class*='language-'] {
   border-right: 1px solid #aa5d00;
 }
 
-.line-numbers-rows > span:before {
+.line-numbers-rows > span::before {
   color: #696969;
 }
 

@@ -14,6 +14,5 @@
     "clean": "rm -rf dist/*",
     "sync:to-figma": "ts-node ./src/figma/syncTokensToFigma.ts",
     "sync:from-figma": "ts-node ./src/figma/syncFigmaToTokens.ts"
-  },
-  "dependencies": {}
+  }
 }

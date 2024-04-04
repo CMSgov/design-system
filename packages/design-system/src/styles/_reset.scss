@@ -138,6 +138,7 @@ ul:not(:where([role])) {
   // `gap` ensures even spacing and doesn't interfere with layout
   // if list given a `row` direction
   @include mixins.flex-list;
+
   margin-block: 1em 0;
   padding-inline-start: 2em;
 }

@@ -7,6 +7,7 @@
 
 @mixin focus-styles {
   box-shadow: 0 0 0 3px var(--color-focus-light), 0 0 4px 6px var(--color-focus-dark);
+
   // Add support for Windows High Contrast Mode (WHCM)
   // The transparent color only shows when WHCM is triggered
   outline: 3px solid transparent;
@@ -63,8 +64,8 @@
 }
 
 @mixin flexbox-col($size) {
-  flex: 0 0 percentage(math.div($size, $grid-columns));
-  max-width: percentage(math.div($size, $grid-columns)); // IE10+ and Firefox
+  flex: 0 0 math.percentage(math.div($size, $grid-columns));
+  max-width: math.percentage(math.div($size, $grid-columns)); // IE10+ and Firefox
 }
 
 @mixin equal-width-flexbox-col() {
@@ -109,6 +110,7 @@
   padding: 0;
   position: absolute;
   width: 1px;
+
   // Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1241631
   word-wrap: normal;
 }
