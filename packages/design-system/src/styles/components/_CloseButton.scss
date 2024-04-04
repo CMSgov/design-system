@@ -5,6 +5,7 @@
   background: none;
   border: none;
   color: var(--color-gray-dark);
+
   // We need to have at least a 44px hit box size for the button, but we don't
   // want to shift the X visually from the right edge, so we're adding an
   // amount of padding that would be equivalent to the number of pixels we need
