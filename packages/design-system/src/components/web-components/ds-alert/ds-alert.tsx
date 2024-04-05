@@ -1,5 +1,5 @@
-import { define } from './preactement/define';
-import { Alert, AlertProps } from '../Alert';
+import { define } from '../preactement/define';
+import { Alert, AlertProps } from '../../Alert';
 
 const attributes = [
   'class-name',

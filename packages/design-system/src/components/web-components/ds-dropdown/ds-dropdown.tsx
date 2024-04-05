@@ -1,7 +1,7 @@
 import type * as React from 'react';
-import { define } from './preactement/define';
-import { Dropdown, DropdownProps } from '../Dropdown';
-import { parseBooleanAttr } from './wrapperUtils';
+import { define } from '../preactement/define';
+import { Dropdown, DropdownProps } from '../../Dropdown';
+import { parseBooleanAttr } from '../wrapperUtils';
 
 const attributes = [
   // Using the lowercase HTML attribute name rather than `auto-focus` so it's
