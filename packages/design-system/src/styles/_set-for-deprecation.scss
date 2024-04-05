@@ -22,9 +22,7 @@
   }
 }
 
+/* stylelint-disable block-no-empty -- Ignore until new deprecation rules are added */
 @container style(--debugger: true) {
-  // Remove in v11
-  .ds-u-truncate {
-    @include deprecate;
-  }
 }
+/* stylelint-enable */
