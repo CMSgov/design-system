@@ -1,4 +1,5 @@
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
+import { webComponentDecorator } from '../storybook';
 import './ds-inline-error';
 
 export default {
@@ -30,12 +31,11 @@ export default {
       underlyingHtmlElements: ['span'],
     },
   },
+  decorators: [webComponentDecorator],
 };
 
 const Template = ({ 'text content': text, ...args }) => (
-  <ds-inline-error {...args} key={JSON.stringify({ text, ...args })}>
-    {text}
-  </ds-inline-error>
+  <ds-inline-error {...args}>{text}</ds-inline-error>
 );
 
 export const Default = Template.bind({});
