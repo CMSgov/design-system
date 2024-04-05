@@ -1,4 +1,5 @@
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
+import { webComponentDecorator } from '../storybook';
 import './ds-alert';
 
 export default {
@@ -50,10 +51,11 @@ export default {
       },
     },
   },
+  decorators: [webComponentDecorator],
 };
 
 const Template = (args) => (
-  <ds-alert {...args} key={JSON.stringify(args)}>
+  <ds-alert {...args}>
     {args.children ?? (
       <>
         This is an example of a success alert. If you want to see an error alert, click the button
