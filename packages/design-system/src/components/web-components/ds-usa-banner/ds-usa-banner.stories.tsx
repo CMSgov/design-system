@@ -1,4 +1,4 @@
-import WebComponentDocTemplate from '../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
+import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import './ds-usa-banner';
 
 export default {

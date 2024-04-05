@@ -1,5 +1,5 @@
-import { define } from './preactement/define';
-import Button, { ButtonProps } from '../Button/Button';
+import { define } from '../preactement/define';
+import Button, { ButtonProps } from '../../Button/Button';
 
 const attributes = [
   'class-name',

@@ -1,5 +1,5 @@
-import { UtagContainer } from '../analytics';
-import { config } from '../config';
+import { UtagContainer } from '../../analytics/index';
+import { config } from '../../config';
 import { render, screen } from '@testing-library/react';
 import './ds-alert';
 
