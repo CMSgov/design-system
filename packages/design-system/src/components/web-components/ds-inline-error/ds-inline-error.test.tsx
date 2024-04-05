@@ -16,18 +16,18 @@ function renderInlineError(props = {}) {
 }
 
 describe('InlineError', () => {
-  it('should render a default badge', () => {
+  it('should render a default inline-error', () => {
     const { asFragment } = renderInlineError();
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('should render a big badge', () => {
+  it('should apply an inverse class', () => {
     renderInlineError({ inversed: true });
     const inlineError = screen.getByText('Foo');
     expect(inlineError.className).toContain('ds-c-inline-error--inverse');
   });
 
-  it('should render custom classNames', () => {
+  it('should apply custom classes', () => {
     renderInlineError({ 'class-name': 'bar' });
     const inlineError = screen.getByText('Foo');
     expect(inlineError.className).toContain('bar');
