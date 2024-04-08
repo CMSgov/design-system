@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { action } from '@storybook/addon-actions';
 import './ds-dropdown';
+import { webComponentDecorator } from '../storybook';
 
 const options = [
   { label: 'Confederated Tribes and Bands of the Yakama Nation', value: '1' },
@@ -112,6 +113,7 @@ export default {
       underlyingHtmlElements: ['button'],
     },
   },
+  decorators: [webComponentDecorator],
 };
 
 const Template = (args) => {
@@ -131,7 +133,7 @@ const Template = (args) => {
     };
   });
 
-  return <ds-dropdown {...args} key={JSON.stringify(args)} />;
+  return <ds-dropdown {...args} />;
 };
 
 export const Default = Template.bind({});

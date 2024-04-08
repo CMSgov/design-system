@@ -1,4 +1,5 @@
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
+import { webComponentDecorator } from '../storybook';
 import './ds-badge';
 
 export default {
@@ -34,12 +35,11 @@ export default {
       underlyingHtmlElements: ['span'],
     },
   },
+  decorators: [webComponentDecorator],
 };
 
 const Template = (args) => (
-  <ds-badge {...args} key={JSON.stringify(args)}>
-    {args.children ?? <>Default badge text</>}
-  </ds-badge>
+  <ds-badge {...args}>{args.children ?? <>Default badge text</>}</ds-badge>
 );
 
 export const Default = Template.bind({});
