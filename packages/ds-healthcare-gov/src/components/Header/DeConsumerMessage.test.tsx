@@ -1,4 +1,3 @@
-import React from 'react';
 import DeConsumerMessage from './DeConsumerMessage';
 import { render } from '@testing-library/react';
 

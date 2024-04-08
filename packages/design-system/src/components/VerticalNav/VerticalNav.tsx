@@ -1,4 +1,4 @@
-import React from 'react';
+import type * as React from 'react';
 import VerticalNavItem, { VerticalNavItemProps } from './VerticalNavItem';
 import classNames from 'classnames';
 

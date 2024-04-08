@@ -1,4 +1,3 @@
-import React from 'react';
 import { Title, Subtitle, Description, ArgsTable } from '@storybook/blocks';
 import { action } from '@storybook/addon-actions';
 import Drawer from './Drawer';
@@ -11,7 +10,7 @@ const meta: Meta<typeof Drawer> = {
   component: Drawer as any,
   args: {
     footerTitle: 'Footer Title',
-    footerBody: <p className="ds-text ds-u-margin--0">Footer content</p>,
+    footerBody: <p className="ds-text-body--md ds-u-margin--0">Footer content</p>,
     heading: 'Drawer Heading',
   },
   // The Drawer was overlapping the docs page, so customizing the docs page to remove the examples
@@ -88,7 +87,7 @@ export const DrawerToggleWithDrawer: Story = {
           {...args}
           onCloseClick={hideDrawer}
           footerTitle="Footer Title"
-          footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
+          footerBody={<p className="ds-text-body--md ds-u-margin--0">Footer content</p>}
           heading="Drawer Heading"
           isOpen={isDrawerVisible ?? false}
         >

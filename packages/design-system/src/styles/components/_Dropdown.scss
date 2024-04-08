@@ -28,6 +28,13 @@
   }
 }
 
+.ds-c-dropdown__label-text {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 // Dropdown previously used a background image for the caret
 // Caret is now an SVG icon that is rotated based on aria-expanded set on its parent
 // Rotation (and potential animation) couldn't be handled on the background element, but can now that it's its own element
@@ -55,8 +62,9 @@
   border-end-end-radius: var(--text-input__border-radius);
   border-end-start-radius: var(--text-input__border-radius);
   box-shadow: 0 0 var(--blur-radius) 0 var(--color-gray-light);
+
   // `clip-path` needed to hide `box-shadow` overlap in field. 17px is the `box-shadow` blur radius.
-  clip-path: inset(0px var(--clip-path-value) var(--clip-path-value) var(--clip-path-value));
+  clip-path: inset(0 var(--clip-path-value) var(--clip-path-value) var(--clip-path-value));
   margin-block-start: calc(-1 * var(--text-input__border-width));
   max-height: var(--max-height);
   position: absolute;
@@ -70,6 +78,7 @@
 
 .ds-c-dropdown__menu {
   @include mixins.unstyled-list;
+
   // Allows for keyboard navigation of dropdown options, i.e., scrolling through options via arrow keys
   max-height: calc(var(--max-height) - var(--text-input__border-width));
   overflow-y: auto;

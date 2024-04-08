@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, DialogHTMLAttributes } from 'react';
+import { useEffect, useRef, DialogHTMLAttributes } from 'react';
+import type * as React from 'react';
 import CloseButton from '../CloseButton/CloseButton';
 import NativeDialog from '../NativeDialog/NativeDialog';
 import classNames from 'classnames';
@@ -104,6 +105,7 @@ export const Dialog = (props: DialogProps) => {
   const rootId = useId('dialog--', id);
   const headingRef = useDialogAnalytics(props);
   const headingId = `${rootId}__heading`;
+  const contentId = `${rootId}__content`;
 
   const dialogClassNames = classNames('ds-c-dialog', className, size && `ds-c-dialog--${size}`);
   const headerClassNames = classNames('ds-c-dialog__header', headerClassName);
@@ -152,7 +154,7 @@ export const Dialog = (props: DialogProps) => {
           />
         </header>
         <main role="main" className="ds-c-dialog__body">
-          <div id="dialog-content">{children}</div>
+          <div id={contentId}>{children}</div>
           {actions && <div className={actionsClassNames}>{actions}</div>}
         </main>
       </div>

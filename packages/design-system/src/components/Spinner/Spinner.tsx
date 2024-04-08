@@ -1,4 +1,4 @@
-import React from 'react';
+import type * as React from 'react';
 import classNames from 'classnames';
 import { t } from '../i18n';
 
@@ -47,14 +47,15 @@ export const Spinner: React.FunctionComponent<SpinnerProps> = (props: SpinnerPro
 
   return (
     <span className={className} role={props.role}>
-      <span className="ds-u-visibility--screen-reader">{props['aria-valuetext']}</span>
+      <span className="ds-u-visibility--screen-reader">
+        {props['aria-valuetext'] ?? t('spinner.ariaText')}
+      </span>
     </span>
   );
 };
 
 Spinner.defaultProps = {
   role: 'status',
-  'aria-valuetext': t('spinner.ariaText'),
 };
 
 export default Spinner;

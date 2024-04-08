@@ -1,5 +1,4 @@
 import { Accordion, AccordionItem } from '@cmsgov/design-system';
-import React from 'react';
 
 function AccordionExample() {
   return (

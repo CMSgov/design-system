@@ -1,5 +1,6 @@
 import { DateObject } from './defaultDateFormatter';
-import React, { MutableRefObject } from 'react';
+import { MutableRefObject, PureComponent } from 'react';
+import type * as React from 'react';
 import TextField from '../TextField/TextField';
 import classNames from 'classnames';
 import { t } from '../i18n';
@@ -134,7 +135,7 @@ export interface DateInputProps {
   yearValue?: DateInputYearValue;
 }
 
-export class DateInput extends React.PureComponent<DateInputProps> {
+export class DateInput extends PureComponent<DateInputProps> {
   constructor(props: DateInputProps) {
     super(props);
     this.handleBlur = this.handleBlur.bind(this);

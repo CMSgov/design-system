@@ -1,4 +1,3 @@
-import React from 'react';
 import PrivacySettingsLink from './PrivacySettingsLink';
 import { render } from '@testing-library/react';
 

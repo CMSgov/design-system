@@ -3,6 +3,29 @@ import path from 'path';
 import { FileDescriptor } from './types';
 
 /**
+ * Flattens an object into a single dimension by reducing into initialObject recursively
+ *
+ * @param obj - The object to be flattened
+ * @param initialObject - The initial object to append to
+ * @returns The initial object and subobjects as an object with no subobjects
+ */
+export const flattenTokens = (
+  obj: Record<string, any>,
+  initialObject: Record<string, any> = {}
+): Record<string, any> => {
+  Object.entries(obj).reduce((accumulator, [key, val]) => {
+    if (typeof val === 'object') {
+      flattenTokens(val, accumulator);
+    } else {
+      initialObject[key] = val;
+    }
+    return accumulator;
+  }, initialObject);
+
+  return initialObject;
+};
+
+/**
  * Given a root path string and an empty string array, returns a
  * string array containing all files under the given path via
  * recursive search.

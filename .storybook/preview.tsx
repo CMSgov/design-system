@@ -1,5 +1,4 @@
 import './storybookStyles.scss';
-import React from 'react';
 import DocumentationTemplate from './docs/DocumentationTemplate.mdx';
 import { config } from '../packages/design-system/src/components/config';
 import { setLanguage } from '../packages/design-system/src/components/i18n';

@@ -3,7 +3,7 @@
  */
 
 import { default as t } from './core'
-import { hexOpacity } from '../lib/utility'
+import { hexOpacity } from '../lib/colorUtils'
 import { AnyTokenValues } from '../lib/types'
 
 export const components: AnyTokenValues = {
@@ -32,10 +32,6 @@ export const components: AnyTokenValues = {
     '__icon-size':                                '1.5rem',
     '__padding':                                  t.spacer['2'],
     '-bar__width':                                t.spacer['1'],
-    '-link__font-color':                          t.color['primary-darker'],
-    '-link__font-color--hover':                   t.color['primary-darkest'],
-    '-link__font-color--focus':                   t.color['primary-darkest'],
-    '-link__font-color--active':                  t.color['primary-darkest'],
   },
 
   'badge': {
@@ -375,7 +371,6 @@ export const components: AnyTokenValues = {
     '__border-color':                             t.color['black'],
     '__background-color--striped':                t.color['gray-lightest'],
     '-header__background-color':                  t.color['gray-lightest'],
-    '-header__background-color--striped':         t.color['gray-lightest'],
   },
 
   'tabs': {

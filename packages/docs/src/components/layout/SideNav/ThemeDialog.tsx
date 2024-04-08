@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button, Dropdown } from '@cmsgov/design-system';
 import { FilterDialog } from '../FilterDialog/index';
 import { getThemeOptions } from './themeVersionData';

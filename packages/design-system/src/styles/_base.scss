@@ -64,6 +64,7 @@ $breakpoints: (
     text-decoration-color: var(--link__color--hover);
     text-decoration-thickness: var(--link__text-decoration-thickness--hover);
   }
+
   &:focus,
   &:focus:visited {
     @include mixins.focus-styles-link;
@@ -98,6 +99,7 @@ $breakpoints: (
   &:focus,
   &:focus:visited {
     @include mixins.focus-styles-link;
+
     color: var(--link__color);
   }
 
@@ -127,7 +129,7 @@ $breakpoints: (
  * Also exclude '.ds-c-tooltip__trigger-link' as we need to set
  * text decoration styles for the tooltip trigger links
  */
-.ds-base--inverse a:not(.ds-c-button):not(.ds-c-tooltip__trigger-link) {
+.ds-base--inverse a:not(.ds-c-button, .ds-c-tooltip__trigger-link) {
   @extend %link-inverse;
 }
 
@@ -145,17 +147,18 @@ $breakpoints: (
 @mixin heading-margins {
   margin-block: 1.5em 0.5em;
 
-  &:first-child {
+  &:where(:first-child) {
     margin-block-start: 0;
   }
 
-  &:last-child {
+  &:where(:last-child) {
     margin-block-end: 0;
   }
 }
 
 @mixin heading--5xl {
   @include heading;
+
   font-size: var(--typography-heading-5xl__font-size--mobile);
 
   @media (min-width: $media-width-sm) {
@@ -169,6 +172,7 @@ $breakpoints: (
 
 @mixin heading--4xl {
   @include heading;
+
   font-size: var(--typography-heading-4xl__font-size--mobile);
   font-weight: var(--typography-heading-4xl__font-weight);
 
@@ -192,6 +196,7 @@ $breakpoints: (
 @mixin heading--2xl {
   @include heading;
   @include heading-margins;
+
   font-size: var(--typography-heading-2xl__font-size--mobile);
 
   @media (min-width: $media-width-md) {
@@ -202,12 +207,14 @@ $breakpoints: (
 @mixin heading--xl {
   @include heading;
   @include heading-margins;
+
   font-size: var(--typography-heading-xl__font-size);
 }
 
 @mixin heading--lg {
   @include heading;
   @include heading-margins;
+
   font-size: var(--typography-heading-lg__font-size);
   font-weight: var(--typography-heading-lg__font-weight);
 }
@@ -215,6 +222,7 @@ $breakpoints: (
 @mixin heading--md {
   @include heading;
   @include heading-margins;
+
   font-size: var(--typography-heading-md__font-size);
   font-weight: var(--typography-heading-md__font-weight);
 }
@@ -222,6 +230,7 @@ $breakpoints: (
 @mixin heading--sm {
   @include heading;
   @include heading-margins;
+
   color: var(--color-muted);
   font-size: var(--typography-heading-sm__font-size);
   font-weight: var(--typography-heading-sm__font-weight);
@@ -261,46 +270,34 @@ $breakpoints: (
   color: var(--color-muted-inverse);
 }
 
-// WNMGDS-2146: Deprecate semantic font-size classes
-// Refer to `_set-for-deprecation.scss` for complete list
-// Classes marked with 💀 are deprecated and will be removed in the next major release
-
-.ds-display, // 💀
 .ds-text-heading--5xl {
   @include heading--5xl;
 }
 
-.ds-title, // 💀
 .ds-text-heading--4xl {
   @include heading--4xl;
 }
 
-.ds-h1, // 💀
 .ds-text-heading--3xl {
   @include heading--3xl;
 }
 
-.ds-h2, // 💀
 .ds-text-heading--2xl {
   @include heading--2xl;
 }
 
-.ds-h3, // 💀
 .ds-text-heading--xl {
   @include heading--xl;
 }
 
-.ds-h4, // 💀
 .ds-text-heading--lg {
   @include heading--lg;
 }
 
-.ds-h5, // 💀
 .ds-text-heading--md {
   @include heading--md;
 }
 
-.ds-h6, // 💀
 .ds-text-heading--sm {
   @include heading--sm;
 
@@ -309,8 +306,6 @@ $breakpoints: (
   }
 }
 
-.ds-text, // 💀
-.ds-text--lead, // 💀
 .ds-text-body--lg,
 .ds-text-body--md,
 .ds-text-body--sm {
@@ -327,12 +322,10 @@ $breakpoints: (
   }
 }
 
-.ds-text--lead, // 💀
 .ds-text-body--lg {
   font-size: var(--font-size-lg);
 }
 
-.ds-text, // 💀
 .ds-text-body--md {
   font-size: var(--font-size-base);
 }

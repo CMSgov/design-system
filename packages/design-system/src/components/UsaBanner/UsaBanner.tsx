@@ -1,4 +1,4 @@
-import React from 'react';
+import type * as React from 'react';
 import { useState } from 'react';
 import classNames from 'classnames';
 import useCssDebugger from '../utilities/useCssDebugger';

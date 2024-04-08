@@ -21,7 +21,7 @@ const Example = function () {
 
       <div className="ds-l-container ds-u-padding-top--2">
         <div className="ds-u-measure--base">
-          <h1 className="ds-h1">Preact React-app example</h1>
+          <h1 className="ds-text-heading--3xl">Preact React-app example</h1>
           <p className="ds-u-margin-bottom--2">
             What&apos;s different about this example is that we&apos;re actually using the React
             version of the design system but swapping out the React library for Preact at

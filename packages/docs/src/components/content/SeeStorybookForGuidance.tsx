@@ -1,4 +1,3 @@
-import React from 'react';
 import { makeStorybookUrl } from '../../helpers/urlUtils';
 
 // Create a link component that uses urlUtils to create the link

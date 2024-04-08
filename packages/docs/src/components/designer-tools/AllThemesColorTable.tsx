@@ -1,4 +1,4 @@
-import React from 'react';
+import type * as React from 'react';
 import themes from '../../../../../themes.json';
 import {
   ThemeName,
@@ -14,7 +14,7 @@ import {
   TableBody,
   TableCell,
 } from '@cmsgov/design-system';
-import { hexHasTransparency, pickTextColor } from 'design-system-tokens/src/lib/utility';
+import { hexHasTransparency, pickTextColor } from 'design-system-tokens/src/lib/colorUtils';
 import { HexValue } from 'design-system-tokens/src/lib/types';
 
 const DARK_TEXT = 'var(--color-base)';

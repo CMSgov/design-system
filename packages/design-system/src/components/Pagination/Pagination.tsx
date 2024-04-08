@@ -1,4 +1,5 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
+import type * as React from 'react';
 import Button from '../Button/Button';
 import Ellipses from './Ellipses';
 import Page from './Page';
@@ -245,9 +246,7 @@ function Pagination({
 
   return (
     <nav className={classes} aria-labelledby="pagination-heading" {...rest}>
-      <span aria-live="polite" role="status" className="ds-u-visibility--screen-reader">
-        {headingElement}
-      </span>
+      <span className="ds-u-visibility--screen-reader">{headingElement}</span>
 
       <Button
         variation="ghost"

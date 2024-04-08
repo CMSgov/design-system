@@ -1,4 +1,3 @@
-import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Accordion } from '@cmsgov/design-system';
 import AccordionItem from './AccordionItem';

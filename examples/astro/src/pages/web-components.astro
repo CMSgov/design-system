@@ -32,8 +32,11 @@ import Layout from '../layouts/Layout.astro';
         <ds-dropdown
           id="operation"
           name="operation"
-          options='[{"label":"Addition","value":"addition"},{"label":"Subtraction","value":"subtraction"}]'
-        ></ds-dropdown>
+          label="Operation"
+        >
+          <option value="addition">Addition</option>
+          <option value="subtraction">Subtraction</option>
+        </ds-dropdown>
         <div
           class="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2"
           style="gap: var(--spacer-2)"

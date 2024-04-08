@@ -1,4 +1,3 @@
-import React from 'react';
 import Logo from './Logo';
 import { Logo as HCgovLogo } from '../Logo';
 import { getLanguage } from '@cmsgov/design-system';

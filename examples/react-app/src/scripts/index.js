@@ -2,7 +2,7 @@
 // to only bundle imported components. Without this optimization, all components will be imported
 // your build process.
 import { Alert, Button, Drawer, UsaBanner } from '@cmsgov/design-system';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ReactDOM from 'react-dom';
 
 const Example = function () {
@@ -18,7 +18,7 @@ const Example = function () {
 
       <div className="ds-l-container ds-u-padding-top--2">
         <div className="ds-u-measure--base">
-          <h1 className="ds-text-heading--xl">React-app example</h1>
+          <h1 className="ds-text-heading--3xl">React-app example</h1>
           <Alert heading="Hello world">
             <p className="ds-c-alert__text">You did it! You&rsquo;ve ran the example.</p>
             {open && (

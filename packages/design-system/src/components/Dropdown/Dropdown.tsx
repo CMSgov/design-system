@@ -1,4 +1,5 @@
-import React, { useCallback, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
+import type * as React from 'react';
 import DropdownMenu from './DropdownMenu';
 import debounce from '../utilities/debounce';
 import describeField from '../utilities/describeField';
@@ -296,7 +297,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
         name={props.name}
       />
       <button {...buttonProps}>
-        <span id={buttonContentId} className="ds-u-truncate">
+        <span id={buttonContentId} className="ds-c-dropdown__label-text">
           {state.selectedItem ? state.selectedItem.rendered : ''}
         </span>
         <span className="ds-c-dropdown__caret">{caretIcon}</span>

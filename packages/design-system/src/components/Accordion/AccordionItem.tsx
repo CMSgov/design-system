@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import type * as React from 'react';
 import { AddIcon, RemoveIcon } from '../Icons';
 import classNames from 'classnames';
-import { t } from '../i18n';
 import useId from '../utilities/useId';
 
 export interface AccordionItemProps {
@@ -90,20 +90,10 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
   const CloseIconComponent = closeIconComponent;
   const OpenIconComponent = openIconComponent;
   const closeIcon = (
-    <CloseIconComponent
-      className="ds-c-accordion__button-icon"
-      title={t('accordion.close')}
-      ariaHidden={false}
-      id={`${contentId}__icon`}
-    />
+    <CloseIconComponent className="ds-c-accordion__button-icon" id={`${contentId}__icon`} />
   );
   const openIcon = (
-    <OpenIconComponent
-      className="ds-c-accordion__button-icon"
-      title={t('accordion.open')}
-      ariaHidden={false}
-      id={`${contentId}__icon`}
-    />
+    <OpenIconComponent className="ds-c-accordion__button-icon" id={`${contentId}__icon`} />
   );
 
   if (heading) {
@@ -124,7 +114,6 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
         </HeadingTag>
         <div
           className={contentClasses}
-          aria-labelledby={buttonId}
           id={contentId}
           hidden={isControlled ? !isControlledOpen : !isOpen}
         >

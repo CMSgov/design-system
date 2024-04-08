@@ -1,4 +1,3 @@
-import React from 'react';
 import { Dialog } from './Dialog';
 import { useDialog } from './useDialog';
 import { act, renderHook } from '@testing-library/react-hooks';

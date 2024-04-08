@@ -1,5 +1,4 @@
 import { MultiInputDateField } from '@cmsgov/design-system';
-import React from 'react';
 
 function MultiInputDateFieldExample() {
   return (

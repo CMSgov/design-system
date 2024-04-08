@@ -1,4 +1,3 @@
-import React from 'react';
 import TextField from './TextField';
 import { render, screen } from '@testing-library/react';
 import { DATE_MASK } from './useLabelMask';

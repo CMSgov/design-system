@@ -9,6 +9,7 @@
     padding-inline: $spacer-7;
   }
 
+  /* stylelint-disable declaration-no-important -- evaluate links when mgov footer is refactored */
   .SimpleFooter__linkButton,
   a {
     color: var(--color-base) !important;
@@ -31,6 +32,7 @@
     color: var(--color-base) !important;
     cursor: pointer;
   }
+  /* stylelint-enable */
 }
 
 .m-c-footer__delimiter {
@@ -44,7 +46,6 @@
   border-color: var(--color-gray-lighter);
   border-style: solid;
   border-width: 1px 0;
-
   display: flex;
   flex-wrap: wrap;
   gap: $spacer-1 $spacer-2;

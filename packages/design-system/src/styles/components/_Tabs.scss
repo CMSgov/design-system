@@ -39,8 +39,9 @@
   padding: $spacer-2 $spacer-1;
   position: relative;
   text-decoration: none;
+
   // Temporarily disable animation
-  //transition: border-bottom-color $animation-speed-2 $ease-in-out-expo;
+  // transition: border-bottom-color $animation-speed-2 $ease-in-out-expo;
 
   @media (min-width: $media-width-sm) {
     padding-inline: $spacer-2;
@@ -73,6 +74,7 @@
     border-block-end-color: var(
       --tabs__background-color--selected
     ); // Essentially turning off the bottom border
+
     color: var(--tabs__color--selected);
     pointer-events: none;
 

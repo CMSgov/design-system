@@ -1,4 +1,3 @@
-import React from 'react';
 import Table from './Table';
 import TableCaption from './TableCaption';
 import TableHead from './TableHead';
@@ -40,18 +39,42 @@ const tableTemplateData = {
       description:
         'Statement adopted by the Continental Congress declaring independence from the British Empire.',
       links: (
-        <a href="# ">
-          {' '}
+        <a href="https://billofrightsinstitute.org/founding-documents/declaration-of-independence/">
           https://billofrightsinstitute.org/founding-documents/declaration-of-independence/
         </a>
       ),
       year: '1776',
     },
     {
+      documentTitle: 'Articles of Confederation',
+      description: 'This document served as the United Statesʼ first constitution.',
+      links: (
+        <a href="https://www.archives.gov/milestone-documents/articles-of-confederation">
+          https://www.archives.gov/milestone-documents/articles-of-confederation
+        </a>
+      ),
+      year: '1777',
+    },
+    {
+      documentTitle: 'The Constitution',
+      description:
+        'Replaced the Articles of Confederation with a new form of government. It created a federal system with a national government composed of 3 separated powers, and included both reserved and concurrent powers of states',
+      links: (
+        <a href="https://billofrightsinstitute.org/primary-sources/constitution">
+          https://billofrightsinstitute.org/primary-sources/constitution
+        </a>
+      ),
+      year: '1787',
+    },
+    {
       documentTitle: 'Bill of Rights',
       description:
         'The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.',
-      links: <a href="# ">https://billofrightsinstitute.org/founding-documents/bill-of-rights/</a>,
+      links: (
+        <a href="https://billofrightsinstitute.org/founding-documents/bill-of-rights/">
+          https://billofrightsinstitute.org/founding-documents/bill-of-rights/
+        </a>
+      ),
       year: '1791',
     },
   ],
@@ -83,11 +106,11 @@ const multiHeaderTableData = {
   ],
 };
 
-const Default: Story = {
+export const Default: Story = {
   render: function Component(args) {
     return (
       <Table {...args}>
-        <TableCaption>Table</TableCaption>
+        <TableCaption>Founding documents</TableCaption>
         <TableHead>
           <TableRow>
             {tableTemplateData.headings.map(({ displayName, propName }) => (
@@ -114,13 +137,6 @@ const Default: Story = {
         </TableBody>
       </Table>
     );
-  },
-};
-
-export const ScrollableTable: Story = {
-  ...Default,
-  args: {
-    scrollable: true,
   },
 };
 
