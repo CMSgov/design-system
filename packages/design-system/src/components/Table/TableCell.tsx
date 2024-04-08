@@ -1,6 +1,4 @@
 import type * as React from 'react';
-import { useContext } from 'react';
-import TableContext from './TableContext';
 import classNames from 'classnames';
 
 export type TableCellScope = 'row' | 'col' | 'rowgroup' | 'colgroup';
@@ -44,10 +42,6 @@ interface BaseTableCellProps {
    */
   scope?: TableCellScope;
   /**
-   * Additional classes to be added to the stacked Title element.
-   */
-  stackedClassName?: string;
-  /**
    * Table data cell's corresponding header title, this stacked title is displayed as the row header
    * when a responsive table is vertically stacked.
    */
@@ -79,39 +73,14 @@ export const TableCell = ({
   id,
   scope,
   stackedTitle,
-  stackedClassName,
   _isTableHeadChild,
   ...tableCellProps
 }: TableCellProps) => {
-  const { stackable, warningDisabled } = useContext(TableContext);
-
   let Component;
   if (component) {
     Component = component;
   } else {
     Component = _isTableHeadChild ? 'th' : 'td';
-  }
-  if (process.env.NODE_ENV !== 'production' && stackable && !warningDisabled) {
-    // Provide warning message for `id` prop for cells with parent component of `TableHead`
-    if (_isTableHeadChild) {
-      if (!id && children) {
-        console.warn(
-          'The id prop in `TableCell` is required for stackable tables. This prop is needed to assign an id to a heading in the responsive stacked view.'
-        );
-      }
-    } else if (Component === 'td') {
-      // Provide warning message for stacktable `headers` and `stackedTitle` props
-      if (!headers) {
-        console.warn(
-          'The headers prop in `TableCell` is required for stackable tables. This prop is needed to associate the headings with data cells in the responsive stacked view.'
-        );
-      }
-      if (!stackedTitle) {
-        console.warn(
-          'The stackedTitle prop in `TableCell` is required for stackable tables. This prop is displayed for the data cell in the responsive stacked view.'
-        );
-      }
-    }
   }
 
   let role = 'cell';
@@ -129,7 +98,7 @@ export const TableCell = ({
   const alignClassName = align ? `ds-u-text-align--${align}` : null;
   const classes = classNames(alignClassName, className);
 
-  // The data attributes `data-title` is access by CSS to generates row header content for stacked table
+  // The data attributes `data-title` is accessed by CSS to generate row header content for stacked table
   return (
     <Component
       className={classes}

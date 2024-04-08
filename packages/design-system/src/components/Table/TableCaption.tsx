@@ -10,33 +10,13 @@ export interface TableCaptionProps {
    * Additional classes to be added to the caption element.
    */
   className?: string;
-  /**
-   * @hide-prop This gets passed from the parent `Table` component when the table `scrollable` prop is set.
-   */
-  _id?: string;
-  /**
-   * @hide-prop This gets passed from the parent `Table` component when the table `scrollable` prop is set.
-   */
-  _scrollActive?: boolean;
-  /**
-   * @hide-prop This gets passed from the parent `Table` component when the table `scrollable` prop is set.
-   */
-  _scrollableNotice?: React.ReactNode;
 }
 
-export const TableCaption = ({
-  children,
-  className,
-  _id,
-  _scrollActive,
-  _scrollableNotice,
-  ...tableCaptionProps
-}: TableCaptionProps) => {
+export const TableCaption = ({ children, className, ...tableCaptionProps }: TableCaptionProps) => {
   const classes = classNames('ds-c-table__caption', className);
   return (
-    <caption className={classes} id={_id} {...tableCaptionProps}>
+    <caption className={classes} {...tableCaptionProps}>
       {children}
-      {_scrollActive && _scrollableNotice}
     </caption>
   );
 };
