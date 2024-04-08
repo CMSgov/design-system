@@ -1,9 +1,10 @@
 @use '../layout' as *;
 
+// should tables have a default background color?
+// tables are currently transparent except for headers
 .ds-c-table {
   border-collapse: collapse;
   border-spacing: 0;
-  margin: 0;
 
   th,
   thead td {
@@ -41,6 +42,7 @@
   }
 }
 
+// deprecate dense?
 .ds-c-table--compact,
 .ds-c-table--dense {
   th,
@@ -59,15 +61,6 @@
       background-color: transparent;
     }
   }
-}
-
-.ds-c-table__wrapper {
-  overflow-x: auto;
-}
-
-.ds-c-table__scroll-alert {
-  font-weight: var(--font-weight-normal);
-  margin: $spacer-1 0;
 }
 
 .ds-c-table__caption {
@@ -109,6 +102,7 @@
     }
   }
 
+  // use of content is sus here
   th[data-title],
   td[data-title] {
     // Add column heading via pseudo element
@@ -128,9 +122,11 @@
   }
 }
 
-.ds-c-table--stacked {
-  @include stacked-table-styles;
-}
+// should we have an option that makes only stacked tables?
+// this doesn't seem to be used anywhere
+// .ds-c-table--stacked {
+//   @include stacked-table-styles;
+// }
 
 .ds-c-sm-table--stacked {
   @media (max-width: $media-width-sm) {
