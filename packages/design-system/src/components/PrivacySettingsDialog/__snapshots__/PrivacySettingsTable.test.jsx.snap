@@ -6,7 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <table
-        class="ds-c-table ds-c-table--borderless ds-c-md-table--stacked ds-c-privacy-settings-table ds-u-margin-top--2 ds-u-lg-margin--0"
+        class="ds-c-table ds-c-md-table--stacked ds-c-table--borderless ds-c-privacy-settings-table ds-u-margin-top--2 ds-u-lg-margin--0"
       >
         <thead
           role="rowgroup"
@@ -74,7 +74,7 @@ Object {
               >
                 <legend
                   class="ds-c-label"
-                  id="choice-list--2__label"
+                  id="choice-list--1__label"
                 >
                   <span
                     class="ds-u-visibility--screen-reader"
@@ -88,15 +88,15 @@ Object {
                   >
                     <input
                       class="ds-c-choice"
-                      id="choice-list--2__choice--0"
+                      id="choice-list--1__choice--0"
                       name="cookie-c3"
                       type="radio"
                       value="0"
                     />
                     <label
                       class="ds-c-label"
-                      for="choice-list--2__choice--0"
-                      id="choice-list--2__choice--0__label"
+                      for="choice-list--1__choice--0"
+                      id="choice-list--1__choice--0__label"
                     >
                       Allow
                     </label>
@@ -108,15 +108,15 @@ Object {
                   >
                     <input
                       class="ds-c-choice"
-                      id="choice-list--2__choice--1"
+                      id="choice-list--1__choice--1"
                       name="cookie-c3"
                       type="radio"
                       value="1"
                     />
                     <label
                       class="ds-c-label"
-                      for="choice-list--2__choice--1"
-                      id="choice-list--2__choice--1__label"
+                      for="choice-list--1__choice--1"
+                      id="choice-list--1__choice--1__label"
                     >
                       Don't allow
                     </label>
@@ -156,7 +156,7 @@ Object {
               >
                 <legend
                   class="ds-c-label"
-                  id="choice-list--3__label"
+                  id="choice-list--2__label"
                 >
                   <span
                     class="ds-u-visibility--screen-reader"
@@ -170,15 +170,15 @@ Object {
                   >
                     <input
                       class="ds-c-choice"
-                      id="choice-list--3__choice--0"
+                      id="choice-list--2__choice--0"
                       name="cookie-c4"
                       type="radio"
                       value="0"
                     />
                     <label
                       class="ds-c-label"
-                      for="choice-list--3__choice--0"
-                      id="choice-list--3__choice--0__label"
+                      for="choice-list--2__choice--0"
+                      id="choice-list--2__choice--0__label"
                     >
                       Allow
                     </label>
@@ -190,15 +190,15 @@ Object {
                   >
                     <input
                       class="ds-c-choice"
-                      id="choice-list--3__choice--1"
+                      id="choice-list--2__choice--1"
                       name="cookie-c4"
                       type="radio"
                       value="1"
                     />
                     <label
                       class="ds-c-label"
-                      for="choice-list--3__choice--1"
-                      id="choice-list--3__choice--1__label"
+                      for="choice-list--2__choice--1"
+                      id="choice-list--2__choice--1__label"
                     >
                       Don't allow
                     </label>
@@ -238,7 +238,7 @@ Object {
               >
                 <legend
                   class="ds-c-label"
-                  id="choice-list--4__label"
+                  id="choice-list--3__label"
                 >
                   <span
                     class="ds-u-visibility--screen-reader"
@@ -252,15 +252,15 @@ Object {
                   >
                     <input
                       class="ds-c-choice"
-                      id="choice-list--4__choice--0"
+                      id="choice-list--3__choice--0"
                       name="cookie-c2"
                       type="radio"
                       value="0"
                     />
                     <label
                       class="ds-c-label"
-                      for="choice-list--4__choice--0"
-                      id="choice-list--4__choice--0__label"
+                      for="choice-list--3__choice--0"
+                      id="choice-list--3__choice--0__label"
                     >
                       Allow
                     </label>
@@ -272,15 +272,15 @@ Object {
                   >
                     <input
                       class="ds-c-choice"
-                      id="choice-list--4__choice--1"
+                      id="choice-list--3__choice--1"
                       name="cookie-c2"
                       type="radio"
                       value="1"
                     />
                     <label
                       class="ds-c-label"
-                      for="choice-list--4__choice--1"
-                      id="choice-list--4__choice--1__label"
+                      for="choice-list--3__choice--1"
+                      id="choice-list--3__choice--1__label"
                     >
                       Don't allow
                     </label>
@@ -295,7 +295,7 @@ Object {
   </body>,
   "container": <div>
     <table
-      class="ds-c-table ds-c-table--borderless ds-c-md-table--stacked ds-c-privacy-settings-table ds-u-margin-top--2 ds-u-lg-margin--0"
+      class="ds-c-table ds-c-md-table--stacked ds-c-table--borderless ds-c-privacy-settings-table ds-u-margin-top--2 ds-u-lg-margin--0"
     >
       <thead
         role="rowgroup"
@@ -363,7 +363,7 @@ Object {
             >
               <legend
                 class="ds-c-label"
-                id="choice-list--2__label"
+                id="choice-list--1__label"
               >
                 <span
                   class="ds-u-visibility--screen-reader"
@@ -377,15 +377,15 @@ Object {
                 >
                   <input
                     class="ds-c-choice"
-                    id="choice-list--2__choice--0"
+                    id="choice-list--1__choice--0"
                     name="cookie-c3"
                     type="radio"
                     value="0"
                   />
                   <label
                     class="ds-c-label"
-                    for="choice-list--2__choice--0"
-                    id="choice-list--2__choice--0__label"
+                    for="choice-list--1__choice--0"
+                    id="choice-list--1__choice--0__label"
                   >
                     Allow
                   </label>
@@ -397,15 +397,15 @@ Object {
                 >
                   <input
                     class="ds-c-choice"
-                    id="choice-list--2__choice--1"
+                    id="choice-list--1__choice--1"
                     name="cookie-c3"
                     type="radio"
                     value="1"
                   />
                   <label
                     class="ds-c-label"
-                    for="choice-list--2__choice--1"
-                    id="choice-list--2__choice--1__label"
+                    for="choice-list--1__choice--1"
+                    id="choice-list--1__choice--1__label"
                   >
                     Don't allow
                   </label>
@@ -445,7 +445,7 @@ Object {
             >
               <legend
                 class="ds-c-label"
-                id="choice-list--3__label"
+                id="choice-list--2__label"
               >
                 <span
                   class="ds-u-visibility--screen-reader"
@@ -459,15 +459,15 @@ Object {
                 >
                   <input
                     class="ds-c-choice"
-                    id="choice-list--3__choice--0"
+                    id="choice-list--2__choice--0"
                     name="cookie-c4"
                     type="radio"
                     value="0"
                   />
                   <label
                     class="ds-c-label"
-                    for="choice-list--3__choice--0"
-                    id="choice-list--3__choice--0__label"
+                    for="choice-list--2__choice--0"
+                    id="choice-list--2__choice--0__label"
                   >
                     Allow
                   </label>
@@ -479,15 +479,15 @@ Object {
                 >
                   <input
                     class="ds-c-choice"
-                    id="choice-list--3__choice--1"
+                    id="choice-list--2__choice--1"
                     name="cookie-c4"
                     type="radio"
                     value="1"
                   />
                   <label
                     class="ds-c-label"
-                    for="choice-list--3__choice--1"
-                    id="choice-list--3__choice--1__label"
+                    for="choice-list--2__choice--1"
+                    id="choice-list--2__choice--1__label"
                   >
                     Don't allow
                   </label>
@@ -527,7 +527,7 @@ Object {
             >
               <legend
                 class="ds-c-label"
-                id="choice-list--4__label"
+                id="choice-list--3__label"
               >
                 <span
                   class="ds-u-visibility--screen-reader"
@@ -541,15 +541,15 @@ Object {
                 >
                   <input
                     class="ds-c-choice"
-                    id="choice-list--4__choice--0"
+                    id="choice-list--3__choice--0"
                     name="cookie-c2"
                     type="radio"
                     value="0"
                   />
                   <label
                     class="ds-c-label"
-                    for="choice-list--4__choice--0"
-                    id="choice-list--4__choice--0__label"
+                    for="choice-list--3__choice--0"
+                    id="choice-list--3__choice--0__label"
                   >
                     Allow
                   </label>
@@ -561,15 +561,15 @@ Object {
                 >
                   <input
                     class="ds-c-choice"
-                    id="choice-list--4__choice--1"
+                    id="choice-list--3__choice--1"
                     name="cookie-c2"
                     type="radio"
                     value="1"
                   />
                   <label
                     class="ds-c-label"
-                    for="choice-list--4__choice--1"
-                    id="choice-list--4__choice--1__label"
+                    for="choice-list--3__choice--1"
+                    id="choice-list--3__choice--1__label"
                   >
                     Don't allow
                   </label>

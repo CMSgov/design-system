@@ -43,34 +43,10 @@ describe('Table', function () {
     expect(screen.getByRole('table')).toHaveClass('ds-c-table--striped');
   });
 
-  it('accepts custom id', () => {
-    makeTable({ scrollable: true });
-    const el = screen.getByRole('region');
-    expect(el).toMatchSnapshot();
-  });
-
-  it('applies responsive stacked table', () => {
-    makeTable({ stackable: true, stackableBreakpoint: 'lg' });
+  it('applies responsive stacked table to given breakpoint', () => {
+    makeTable({ stackableBreakpoint: 'lg' });
     const table = screen.getByRole('table');
     expect(table).toHaveClass('ds-c-lg-table--stacked');
     expect(table).toMatchSnapshot();
-  });
-
-  it('applies scrollable prop to table', () => {
-    makeTable({ scrollable: true });
-    const scrollableRegion = screen.getByRole('region');
-
-    expect(scrollableRegion).toHaveClass('ds-c-table__wrapper');
-    expect(scrollableRegion).toHaveAttribute('aria-live', 'polite');
-    expect(scrollableRegion).toHaveAttribute('aria-relevant', 'additions');
-    expect(scrollableRegion).toMatchSnapshot();
-  });
-
-  it('scroll table aria-labelledby matches caption id', () => {
-    makeTable({ scrollable: true });
-    const region = screen.getByRole('region').attributes['id'];
-    const caption = screen.getByText('A great caption').attributes['aria-labelledby'];
-
-    expect(region).toEqual(caption);
   });
 });

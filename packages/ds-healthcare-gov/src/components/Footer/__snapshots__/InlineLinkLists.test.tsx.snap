@@ -132,7 +132,7 @@ exports[`InlineLinkLists renders lists of links 1`] = `
                     .
                   </p>
                   <table
-                    class="ds-c-table ds-c-table--borderless ds-c-md-table--stacked ds-c-privacy-settings-table ds-u-margin-top--2 ds-u-lg-margin--0"
+                    class="ds-c-table ds-c-md-table--stacked ds-c-table--borderless ds-c-privacy-settings-table ds-u-margin-top--2 ds-u-lg-margin--0"
                   >
                     <thead
                       role="rowgroup"
@@ -200,7 +200,7 @@ exports[`InlineLinkLists renders lists of links 1`] = `
                           >
                             <legend
                               class="ds-c-label"
-                              id="choice-list--3__label"
+                              id="choice-list--2__label"
                             >
                               <span
                                 class="ds-u-visibility--screen-reader"
@@ -215,15 +215,15 @@ exports[`InlineLinkLists renders lists of links 1`] = `
                                 <input
                                   checked=""
                                   class="ds-c-choice"
-                                  id="choice-list--3__choice--0"
+                                  id="choice-list--2__choice--0"
                                   name="cookie-c3"
                                   type="radio"
                                   value="0"
                                 />
                                 <label
                                   class="ds-c-label"
-                                  for="choice-list--3__choice--0"
-                                  id="choice-list--3__choice--0__label"
+                                  for="choice-list--2__choice--0"
+                                  id="choice-list--2__choice--0__label"
                                 >
                                   Allow
                                 </label>
@@ -235,15 +235,15 @@ exports[`InlineLinkLists renders lists of links 1`] = `
                               >
                                 <input
                                   class="ds-c-choice"
-                                  id="choice-list--3__choice--1"
+                                  id="choice-list--2__choice--1"
                                   name="cookie-c3"
                                   type="radio"
                                   value="1"
                                 />
                                 <label
                                   class="ds-c-label"
-                                  for="choice-list--3__choice--1"
-                                  id="choice-list--3__choice--1__label"
+                                  for="choice-list--2__choice--1"
+                                  id="choice-list--2__choice--1__label"
                                 >
                                   Don't allow
                                 </label>
@@ -283,7 +283,7 @@ exports[`InlineLinkLists renders lists of links 1`] = `
                           >
                             <legend
                               class="ds-c-label"
-                              id="choice-list--4__label"
+                              id="choice-list--3__label"
                             >
                               <span
                                 class="ds-u-visibility--screen-reader"
@@ -298,15 +298,15 @@ exports[`InlineLinkLists renders lists of links 1`] = `
                                 <input
                                   checked=""
                                   class="ds-c-choice"
-                                  id="choice-list--4__choice--0"
+                                  id="choice-list--3__choice--0"
                                   name="cookie-c4"
                                   type="radio"
                                   value="0"
                                 />
                                 <label
                                   class="ds-c-label"
-                                  for="choice-list--4__choice--0"
-                                  id="choice-list--4__choice--0__label"
+                                  for="choice-list--3__choice--0"
+                                  id="choice-list--3__choice--0__label"
                                 >
                                   Allow
                                 </label>
@@ -318,15 +318,15 @@ exports[`InlineLinkLists renders lists of links 1`] = `
                               >
                                 <input
                                   class="ds-c-choice"
-                                  id="choice-list--4__choice--1"
+                                  id="choice-list--3__choice--1"
                                   name="cookie-c4"
                                   type="radio"
                                   value="1"
                                 />
                                 <label
                                   class="ds-c-label"
-                                  for="choice-list--4__choice--1"
-                                  id="choice-list--4__choice--1__label"
+                                  for="choice-list--3__choice--1"
+                                  id="choice-list--3__choice--1__label"
                                 >
                                   Don't allow
                                 </label>
@@ -366,7 +366,7 @@ exports[`InlineLinkLists renders lists of links 1`] = `
                           >
                             <legend
                               class="ds-c-label"
-                              id="choice-list--5__label"
+                              id="choice-list--4__label"
                             >
                               <span
                                 class="ds-u-visibility--screen-reader"
@@ -381,15 +381,15 @@ exports[`InlineLinkLists renders lists of links 1`] = `
                                 <input
                                   checked=""
                                   class="ds-c-choice"
-                                  id="choice-list--5__choice--0"
+                                  id="choice-list--4__choice--0"
                                   name="cookie-c2"
                                   type="radio"
                                   value="0"
                                 />
                                 <label
                                   class="ds-c-label"
-                                  for="choice-list--5__choice--0"
-                                  id="choice-list--5__choice--0__label"
+                                  for="choice-list--4__choice--0"
+                                  id="choice-list--4__choice--0__label"
                                 >
                                   Allow
                                 </label>
@@ -401,15 +401,15 @@ exports[`InlineLinkLists renders lists of links 1`] = `
                               >
                                 <input
                                   class="ds-c-choice"
-                                  id="choice-list--5__choice--1"
+                                  id="choice-list--4__choice--1"
                                   name="cookie-c2"
                                   type="radio"
                                   value="1"
                                 />
                                 <label
                                   class="ds-c-label"
-                                  for="choice-list--5__choice--1"
-                                  id="choice-list--5__choice--1__label"
+                                  for="choice-list--4__choice--1"
+                                  id="choice-list--4__choice--1__label"
                                 >
                                   Don't allow
                                 </label>
@@ -692,11 +692,11 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
           </button>
           <dialog
             class="ds-c-dialog ds-c-dialog--full"
-            id="dialog--11"
+            id="dialog--9"
             role="dialog"
           >
             <div
-              aria-labelledby="dialog--11__heading"
+              aria-labelledby="dialog--9__heading"
               class="ds-c-dialog__window"
               role="document"
               tabindex="-1"
@@ -706,27 +706,27 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
               >
                 <h1
                   class="ds-c-dialog__heading"
-                  id="dialog--11__heading"
+                  id="dialog--9__heading"
                 >
                   HealthCare.gov privacy settings
                 </h1>
                 <button
                   aria-label="Close modal dialog"
                   class="ds-c-close-button ds-c-dialog__close"
-                  id="dialog--11__close"
+                  id="dialog--9__close"
                   type="button"
                 >
                   <svg
                     aria-hidden="false"
-                    aria-labelledby="dialog--11__close__icon__title"
+                    aria-labelledby="dialog--9__close__icon__title"
                     class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin "
-                    id="dialog--11__close__icon"
+                    id="dialog--9__close__icon"
                     role="img"
                     viewBox="-2 -2 18 18"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <title
-                      id="dialog--11__close__icon__title"
+                      id="dialog--9__close__icon__title"
                     >
                       Close
                     </title>
@@ -745,7 +745,7 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
                 role="main"
               >
                 <div
-                  id="dialog--11__content"
+                  id="dialog--9__content"
                 >
                   <p
                     class="ds-u-margin-top--0"
@@ -765,7 +765,7 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
                     .
                   </p>
                   <table
-                    class="ds-c-table ds-c-table--borderless ds-c-md-table--stacked ds-c-privacy-settings-table ds-u-margin-top--2 ds-u-lg-margin--0"
+                    class="ds-c-table ds-c-md-table--stacked ds-c-table--borderless ds-c-privacy-settings-table ds-u-margin-top--2 ds-u-lg-margin--0"
                   >
                     <thead
                       role="rowgroup"
@@ -833,7 +833,7 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
                           >
                             <legend
                               class="ds-c-label"
-                              id="choice-list--13__label"
+                              id="choice-list--10__label"
                             >
                               <span
                                 class="ds-u-visibility--screen-reader"
@@ -848,15 +848,15 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
                                 <input
                                   checked=""
                                   class="ds-c-choice"
-                                  id="choice-list--13__choice--0"
+                                  id="choice-list--10__choice--0"
                                   name="cookie-c3"
                                   type="radio"
                                   value="0"
                                 />
                                 <label
                                   class="ds-c-label"
-                                  for="choice-list--13__choice--0"
-                                  id="choice-list--13__choice--0__label"
+                                  for="choice-list--10__choice--0"
+                                  id="choice-list--10__choice--0__label"
                                 >
                                   Allow
                                 </label>
@@ -868,15 +868,15 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
                               >
                                 <input
                                   class="ds-c-choice"
-                                  id="choice-list--13__choice--1"
+                                  id="choice-list--10__choice--1"
                                   name="cookie-c3"
                                   type="radio"
                                   value="1"
                                 />
                                 <label
                                   class="ds-c-label"
-                                  for="choice-list--13__choice--1"
-                                  id="choice-list--13__choice--1__label"
+                                  for="choice-list--10__choice--1"
+                                  id="choice-list--10__choice--1__label"
                                 >
                                   Don't allow
                                 </label>
@@ -916,7 +916,7 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
                           >
                             <legend
                               class="ds-c-label"
-                              id="choice-list--14__label"
+                              id="choice-list--11__label"
                             >
                               <span
                                 class="ds-u-visibility--screen-reader"
@@ -931,15 +931,15 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
                                 <input
                                   checked=""
                                   class="ds-c-choice"
-                                  id="choice-list--14__choice--0"
+                                  id="choice-list--11__choice--0"
                                   name="cookie-c4"
                                   type="radio"
                                   value="0"
                                 />
                                 <label
                                   class="ds-c-label"
-                                  for="choice-list--14__choice--0"
-                                  id="choice-list--14__choice--0__label"
+                                  for="choice-list--11__choice--0"
+                                  id="choice-list--11__choice--0__label"
                                 >
                                   Allow
                                 </label>
@@ -951,15 +951,15 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
                               >
                                 <input
                                   class="ds-c-choice"
-                                  id="choice-list--14__choice--1"
+                                  id="choice-list--11__choice--1"
                                   name="cookie-c4"
                                   type="radio"
                                   value="1"
                                 />
                                 <label
                                   class="ds-c-label"
-                                  for="choice-list--14__choice--1"
-                                  id="choice-list--14__choice--1__label"
+                                  for="choice-list--11__choice--1"
+                                  id="choice-list--11__choice--1__label"
                                 >
                                   Don't allow
                                 </label>
@@ -999,7 +999,7 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
                           >
                             <legend
                               class="ds-c-label"
-                              id="choice-list--15__label"
+                              id="choice-list--12__label"
                             >
                               <span
                                 class="ds-u-visibility--screen-reader"
@@ -1014,15 +1014,15 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
                                 <input
                                   checked=""
                                   class="ds-c-choice"
-                                  id="choice-list--15__choice--0"
+                                  id="choice-list--12__choice--0"
                                   name="cookie-c2"
                                   type="radio"
                                   value="0"
                                 />
                                 <label
                                   class="ds-c-label"
-                                  for="choice-list--15__choice--0"
-                                  id="choice-list--15__choice--0__label"
+                                  for="choice-list--12__choice--0"
+                                  id="choice-list--12__choice--0__label"
                                 >
                                   Allow
                                 </label>
@@ -1034,15 +1034,15 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
                               >
                                 <input
                                   class="ds-c-choice"
-                                  id="choice-list--15__choice--1"
+                                  id="choice-list--12__choice--1"
                                   name="cookie-c2"
                                   type="radio"
                                   value="1"
                                 />
                                 <label
                                   class="ds-c-label"
-                                  for="choice-list--15__choice--1"
-                                  id="choice-list--15__choice--1__label"
+                                  for="choice-list--12__choice--1"
+                                  id="choice-list--12__choice--1__label"
                                 >
                                   Don't allow
                                 </label>

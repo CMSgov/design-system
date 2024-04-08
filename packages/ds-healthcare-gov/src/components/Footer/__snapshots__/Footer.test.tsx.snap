@@ -136,7 +136,7 @@ exports[`Footer renders basic footer 1`] = `
                       .
                     </p>
                     <table
-                      class="ds-c-table ds-c-table--borderless ds-c-md-table--stacked ds-c-privacy-settings-table ds-u-margin-top--2 ds-u-lg-margin--0"
+                      class="ds-c-table ds-c-md-table--stacked ds-c-table--borderless ds-c-privacy-settings-table ds-u-margin-top--2 ds-u-lg-margin--0"
                     >
                       <thead
                         role="rowgroup"
@@ -204,7 +204,7 @@ exports[`Footer renders basic footer 1`] = `
                             >
                               <legend
                                 class="ds-c-label"
-                                id="choice-list--3__label"
+                                id="choice-list--2__label"
                               >
                                 <span
                                   class="ds-u-visibility--screen-reader"
@@ -219,15 +219,15 @@ exports[`Footer renders basic footer 1`] = `
                                   <input
                                     checked=""
                                     class="ds-c-choice"
-                                    id="choice-list--3__choice--0"
+                                    id="choice-list--2__choice--0"
                                     name="cookie-c3"
                                     type="radio"
                                     value="0"
                                   />
                                   <label
                                     class="ds-c-label"
-                                    for="choice-list--3__choice--0"
-                                    id="choice-list--3__choice--0__label"
+                                    for="choice-list--2__choice--0"
+                                    id="choice-list--2__choice--0__label"
                                   >
                                     Allow
                                   </label>
@@ -239,15 +239,15 @@ exports[`Footer renders basic footer 1`] = `
                                 >
                                   <input
                                     class="ds-c-choice"
-                                    id="choice-list--3__choice--1"
+                                    id="choice-list--2__choice--1"
                                     name="cookie-c3"
                                     type="radio"
                                     value="1"
                                   />
                                   <label
                                     class="ds-c-label"
-                                    for="choice-list--3__choice--1"
-                                    id="choice-list--3__choice--1__label"
+                                    for="choice-list--2__choice--1"
+                                    id="choice-list--2__choice--1__label"
                                   >
                                     Don't allow
                                   </label>
@@ -287,7 +287,7 @@ exports[`Footer renders basic footer 1`] = `
                             >
                               <legend
                                 class="ds-c-label"
-                                id="choice-list--4__label"
+                                id="choice-list--3__label"
                               >
                                 <span
                                   class="ds-u-visibility--screen-reader"
@@ -302,15 +302,15 @@ exports[`Footer renders basic footer 1`] = `
                                   <input
                                     checked=""
                                     class="ds-c-choice"
-                                    id="choice-list--4__choice--0"
+                                    id="choice-list--3__choice--0"
                                     name="cookie-c4"
                                     type="radio"
                                     value="0"
                                   />
                                   <label
                                     class="ds-c-label"
-                                    for="choice-list--4__choice--0"
-                                    id="choice-list--4__choice--0__label"
+                                    for="choice-list--3__choice--0"
+                                    id="choice-list--3__choice--0__label"
                                   >
                                     Allow
                                   </label>
@@ -322,15 +322,15 @@ exports[`Footer renders basic footer 1`] = `
                                 >
                                   <input
                                     class="ds-c-choice"
-                                    id="choice-list--4__choice--1"
+                                    id="choice-list--3__choice--1"
                                     name="cookie-c4"
                                     type="radio"
                                     value="1"
                                   />
                                   <label
                                     class="ds-c-label"
-                                    for="choice-list--4__choice--1"
-                                    id="choice-list--4__choice--1__label"
+                                    for="choice-list--3__choice--1"
+                                    id="choice-list--3__choice--1__label"
                                   >
                                     Don't allow
                                   </label>
@@ -370,7 +370,7 @@ exports[`Footer renders basic footer 1`] = `
                             >
                               <legend
                                 class="ds-c-label"
-                                id="choice-list--5__label"
+                                id="choice-list--4__label"
                               >
                                 <span
                                   class="ds-u-visibility--screen-reader"
@@ -385,15 +385,15 @@ exports[`Footer renders basic footer 1`] = `
                                   <input
                                     checked=""
                                     class="ds-c-choice"
-                                    id="choice-list--5__choice--0"
+                                    id="choice-list--4__choice--0"
                                     name="cookie-c2"
                                     type="radio"
                                     value="0"
                                   />
                                   <label
                                     class="ds-c-label"
-                                    for="choice-list--5__choice--0"
-                                    id="choice-list--5__choice--0__label"
+                                    for="choice-list--4__choice--0"
+                                    id="choice-list--4__choice--0__label"
                                   >
                                     Allow
                                   </label>
@@ -405,15 +405,15 @@ exports[`Footer renders basic footer 1`] = `
                                 >
                                   <input
                                     class="ds-c-choice"
-                                    id="choice-list--5__choice--1"
+                                    id="choice-list--4__choice--1"
                                     name="cookie-c2"
                                     type="radio"
                                     value="1"
                                   />
                                   <label
                                     class="ds-c-label"
-                                    for="choice-list--5__choice--1"
-                                    id="choice-list--5__choice--1__label"
+                                    for="choice-list--4__choice--1"
+                                    id="choice-list--4__choice--1__label"
                                   >
                                     Don't allow
                                   </label>
@@ -802,11 +802,11 @@ exports[`Footer renders basic footer with props 1`] = `
             </button>
             <dialog
               class="ds-c-dialog ds-c-dialog--full"
-              id="dialog--6"
+              id="dialog--5"
               role="dialog"
             >
               <div
-                aria-labelledby="dialog--6__heading"
+                aria-labelledby="dialog--5__heading"
                 class="ds-c-dialog__window"
                 role="document"
                 tabindex="-1"
@@ -816,27 +816,27 @@ exports[`Footer renders basic footer with props 1`] = `
                 >
                   <h1
                     class="ds-c-dialog__heading"
-                    id="dialog--6__heading"
+                    id="dialog--5__heading"
                   >
                     HealthCare.gov privacy settings
                   </h1>
                   <button
                     aria-label="Close modal dialog"
                     class="ds-c-close-button ds-c-dialog__close"
-                    id="dialog--6__close"
+                    id="dialog--5__close"
                     type="button"
                   >
                     <svg
                       aria-hidden="false"
-                      aria-labelledby="dialog--6__close__icon__title"
+                      aria-labelledby="dialog--5__close__icon__title"
                       class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin "
-                      id="dialog--6__close__icon"
+                      id="dialog--5__close__icon"
                       role="img"
                       viewBox="-2 -2 18 18"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <title
-                        id="dialog--6__close__icon__title"
+                        id="dialog--5__close__icon__title"
                       >
                         Close
                       </title>
@@ -855,7 +855,7 @@ exports[`Footer renders basic footer with props 1`] = `
                   role="main"
                 >
                   <div
-                    id="dialog--6__content"
+                    id="dialog--5__content"
                   >
                     <p
                       class="ds-u-margin-top--0"
@@ -875,7 +875,7 @@ exports[`Footer renders basic footer with props 1`] = `
                       .
                     </p>
                     <table
-                      class="ds-c-table ds-c-table--borderless ds-c-md-table--stacked ds-c-privacy-settings-table ds-u-margin-top--2 ds-u-lg-margin--0"
+                      class="ds-c-table ds-c-md-table--stacked ds-c-table--borderless ds-c-privacy-settings-table ds-u-margin-top--2 ds-u-lg-margin--0"
                     >
                       <thead
                         role="rowgroup"
@@ -943,7 +943,7 @@ exports[`Footer renders basic footer with props 1`] = `
                             >
                               <legend
                                 class="ds-c-label"
-                                id="choice-list--8__label"
+                                id="choice-list--6__label"
                               >
                                 <span
                                   class="ds-u-visibility--screen-reader"
@@ -958,15 +958,15 @@ exports[`Footer renders basic footer with props 1`] = `
                                   <input
                                     checked=""
                                     class="ds-c-choice"
-                                    id="choice-list--8__choice--0"
+                                    id="choice-list--6__choice--0"
                                     name="cookie-c3"
                                     type="radio"
                                     value="0"
                                   />
                                   <label
                                     class="ds-c-label"
-                                    for="choice-list--8__choice--0"
-                                    id="choice-list--8__choice--0__label"
+                                    for="choice-list--6__choice--0"
+                                    id="choice-list--6__choice--0__label"
                                   >
                                     Allow
                                   </label>
@@ -978,15 +978,15 @@ exports[`Footer renders basic footer with props 1`] = `
                                 >
                                   <input
                                     class="ds-c-choice"
-                                    id="choice-list--8__choice--1"
+                                    id="choice-list--6__choice--1"
                                     name="cookie-c3"
                                     type="radio"
                                     value="1"
                                   />
                                   <label
                                     class="ds-c-label"
-                                    for="choice-list--8__choice--1"
-                                    id="choice-list--8__choice--1__label"
+                                    for="choice-list--6__choice--1"
+                                    id="choice-list--6__choice--1__label"
                                   >
                                     Don't allow
                                   </label>
@@ -1026,7 +1026,7 @@ exports[`Footer renders basic footer with props 1`] = `
                             >
                               <legend
                                 class="ds-c-label"
-                                id="choice-list--9__label"
+                                id="choice-list--7__label"
                               >
                                 <span
                                   class="ds-u-visibility--screen-reader"
@@ -1041,15 +1041,15 @@ exports[`Footer renders basic footer with props 1`] = `
                                   <input
                                     checked=""
                                     class="ds-c-choice"
-                                    id="choice-list--9__choice--0"
+                                    id="choice-list--7__choice--0"
                                     name="cookie-c4"
                                     type="radio"
                                     value="0"
                                   />
                                   <label
                                     class="ds-c-label"
-                                    for="choice-list--9__choice--0"
-                                    id="choice-list--9__choice--0__label"
+                                    for="choice-list--7__choice--0"
+                                    id="choice-list--7__choice--0__label"
                                   >
                                     Allow
                                   </label>
@@ -1061,15 +1061,15 @@ exports[`Footer renders basic footer with props 1`] = `
                                 >
                                   <input
                                     class="ds-c-choice"
-                                    id="choice-list--9__choice--1"
+                                    id="choice-list--7__choice--1"
                                     name="cookie-c4"
                                     type="radio"
                                     value="1"
                                   />
                                   <label
                                     class="ds-c-label"
-                                    for="choice-list--9__choice--1"
-                                    id="choice-list--9__choice--1__label"
+                                    for="choice-list--7__choice--1"
+                                    id="choice-list--7__choice--1__label"
                                   >
                                     Don't allow
                                   </label>
@@ -1109,7 +1109,7 @@ exports[`Footer renders basic footer with props 1`] = `
                             >
                               <legend
                                 class="ds-c-label"
-                                id="choice-list--10__label"
+                                id="choice-list--8__label"
                               >
                                 <span
                                   class="ds-u-visibility--screen-reader"
@@ -1124,15 +1124,15 @@ exports[`Footer renders basic footer with props 1`] = `
                                   <input
                                     checked=""
                                     class="ds-c-choice"
-                                    id="choice-list--10__choice--0"
+                                    id="choice-list--8__choice--0"
                                     name="cookie-c2"
                                     type="radio"
                                     value="0"
                                   />
                                   <label
                                     class="ds-c-label"
-                                    for="choice-list--10__choice--0"
-                                    id="choice-list--10__choice--0__label"
+                                    for="choice-list--8__choice--0"
+                                    id="choice-list--8__choice--0__label"
                                   >
                                     Allow
                                   </label>
@@ -1144,15 +1144,15 @@ exports[`Footer renders basic footer with props 1`] = `
                                 >
                                   <input
                                     class="ds-c-choice"
-                                    id="choice-list--10__choice--1"
+                                    id="choice-list--8__choice--1"
                                     name="cookie-c2"
                                     type="radio"
                                     value="1"
                                   />
                                   <label
                                     class="ds-c-label"
-                                    for="choice-list--10__choice--1"
-                                    id="choice-list--10__choice--1__label"
+                                    for="choice-list--8__choice--1"
+                                    id="choice-list--8__choice--1__label"
                                   >
                                     Don't allow
                                   </label>
