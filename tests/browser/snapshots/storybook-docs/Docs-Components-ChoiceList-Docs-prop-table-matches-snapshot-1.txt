@@ -1,7 +1,7 @@
 [
   [
     "choices*",
-    "Array of objects representing the props for each Choice in the ChoiceList\nChoiceProps[]",
+    "Array of objects representing the props for each Choice in the ChoiceList\nOmit<ChoiceProps, \"name\" | \"type\">[]",
     "-"
   ],
   [
