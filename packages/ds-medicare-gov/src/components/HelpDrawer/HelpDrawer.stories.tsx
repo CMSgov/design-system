@@ -25,6 +25,7 @@ const meta: Meta<typeof HelpDrawer> = {
   parameters: {
     theme: 'medicare',
     docs: {
+      // Customize so we can exclude the backdropClickExits
       page: () => (
         <>
           <Title />
