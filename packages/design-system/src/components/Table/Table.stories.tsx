@@ -40,7 +40,7 @@ const tableTemplateData = {
         'Statement adopted by the Continental Congress declaring independence from the British Empire.',
       links: (
         <a href="https://billofrightsinstitute.org/founding-documents/declaration-of-independence/">
-          https://billofrightsinstitute.org/founding-documents/declaration-of-independence/
+          Declaration of Independence
         </a>
       ),
       year: '1776',
@@ -50,7 +50,7 @@ const tableTemplateData = {
       description: 'This document served as the United Statesʼ first constitution.',
       links: (
         <a href="https://www.archives.gov/milestone-documents/articles-of-confederation">
-          https://www.archives.gov/milestone-documents/articles-of-confederation
+          Articles of Confederation
         </a>
       ),
       year: '1777',
@@ -60,9 +60,7 @@ const tableTemplateData = {
       description:
         'Replaced the Articles of Confederation with a new form of government. It created a federal system with a national government composed of 3 separated powers, and included both reserved and concurrent powers of states',
       links: (
-        <a href="https://billofrightsinstitute.org/primary-sources/constitution">
-          https://billofrightsinstitute.org/primary-sources/constitution
-        </a>
+        <a href="https://billofrightsinstitute.org/primary-sources/constitution">Constitution</a>
       ),
       year: '1787',
     },
@@ -72,7 +70,7 @@ const tableTemplateData = {
         'The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.',
       links: (
         <a href="https://billofrightsinstitute.org/founding-documents/bill-of-rights/">
-          https://billofrightsinstitute.org/founding-documents/bill-of-rights/
+          Bill of Rights
         </a>
       ),
       year: '1791',
@@ -140,55 +138,48 @@ export const Default: Story = {
   },
 };
 
-export const StackableTable: Story = {
-  ...Default,
-  args: {
-    stackable: true,
-    stackableBreakpoint: 'md',
-  },
-};
-
-export const MultiHeaderTable: Story = {
-  render: function Component() {
-    return (
-      <Table>
-        <TableCaption>Household members</TableCaption>
-        <col />
-        <colgroup span={2} />
-        <colgroup span={2} />
-        <TableHead>
-          <TableRow>
-            <TableCell component="td" rowSpan={1} />
-            <TableCell component="th" colSpan={2} scope="colgroup">
-              Address
-            </TableCell>
-            <TableCell colSpan={2} scope="colgroup">
-              Employment
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            {multiHeaderTableData.headings.map(({ displayName }) => (
-              <TableCell component="th" scope="col" key={displayName}>
-                {displayName}
-              </TableCell>
-            ))}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {multiHeaderTableData.data.map((dataItem, index) => (
-            <TableRow key={index}>
-              {multiHeaderTableData.headings.map((heading) => (
-                <TableCell
-                  key={`${heading.displayName}-${dataItem[heading.displayName]}`}
-                  component={heading.bodyComponent || ('td' as any)}
-                >
-                  {dataItem[heading.propName]}
-                </TableCell>
-              ))}
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    );
-  },
-};
+// This UI doesn't seem to work with stackable layout
+// export const MultiHeaderTable: Story = {
+//   render: function Component() {
+//     return (
+//       <Table>
+//         <TableCaption>Household members</TableCaption>
+//         <col />
+//         <colgroup span={2} />
+//         <colgroup span={2} />
+//         <TableHead>
+//           <TableRow>
+//             <TableCell component="td" rowSpan={1} />
+//             <TableCell component="th" colSpan={2} scope="colgroup">
+//               Address
+//             </TableCell>
+//             <TableCell colSpan={2} scope="colgroup">
+//               Employment
+//             </TableCell>
+//           </TableRow>
+//           <TableRow>
+//             {multiHeaderTableData.headings.map(({ displayName }) => (
+//               <TableCell component="th" scope="col" key={displayName}>
+//                 {displayName}
+//               </TableCell>
+//             ))}
+//           </TableRow>
+//         </TableHead>
+//         <TableBody>
+//           {multiHeaderTableData.data.map((dataItem, index) => (
+//             <TableRow key={index}>
+//               {multiHeaderTableData.headings.map((heading) => (
+//                 <TableCell
+//                   key={`${heading.displayName}-${dataItem[heading.displayName]}`}
+//                   component={heading.bodyComponent || ('td' as any)}
+//                 >
+//                   {dataItem[heading.propName]}
+//                 </TableCell>
+//               ))}
+//             </TableRow>
+//           ))}
+//         </TableBody>
+//       </Table>
+//     );
+//   },
+// };
