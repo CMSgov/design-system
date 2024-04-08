@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Hint should render a default hint 1`] = `
+<DocumentFragment>
+  <ds-hint>
+    <p
+      class="ds-c-hint"
+      parent="[object HTMLElement]"
+    >
+      Foo
+    </p>
+  </ds-hint>
+</DocumentFragment>
+`;

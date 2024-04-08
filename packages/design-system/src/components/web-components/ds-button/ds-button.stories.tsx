@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { action } from '@storybook/addon-actions';
 import './ds-button';
+import { webComponentDecorator } from '../storybook';
 
 export default {
   title: 'Web Components/Button',
@@ -36,6 +37,7 @@ export default {
       underlyingHtmlElements: ['a', 'button'],
     },
   },
+  decorators: [webComponentDecorator],
 };
 
 const Template = (args) => {
@@ -49,11 +51,7 @@ const Template = (args) => {
       button.removeEventListener('ds-click', onClick);
     };
   });
-  return (
-    <ds-button {...args} key={JSON.stringify(args)}>
-      {args.children ?? <>Your button text is here</>}
-    </ds-button>
-  );
+  return <ds-button {...args}>{args.children ?? <>Your button text is here</>}</ds-button>;
 };
 
 export const Default = Template.bind({});
