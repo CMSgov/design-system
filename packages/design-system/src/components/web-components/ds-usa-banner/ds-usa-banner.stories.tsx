@@ -1,4 +1,5 @@
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
+import { webComponentDecorator } from '../storybook';
 import './ds-usa-banner';
 
 export default {
@@ -18,8 +19,9 @@ export default {
       },
     },
   },
+  decorators: [webComponentDecorator],
 };
 
-const Template = (args) => <ds-usa-banner {...args} key={JSON.stringify(args)} />;
+const Template = (args) => <ds-usa-banner {...args} />;
 
 export const Default = Template.bind({});
