@@ -1,0 +1,12 @@
+[
+  [
+    "inversed",
+    "Set to \"true\" to apply the \"inverse\" theme",
+    "\"true\"\"false\""
+  ],
+  [
+    "root-id",
+    "A unique ID for this element. A unique ID will be generated if one isn't provided.",
+    "string"
+  ]
+]
