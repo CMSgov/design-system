@@ -13,6 +13,10 @@ export interface DrawerProps {
    * Gives more context to screen readers on the Drawer close button.
    */
   ariaLabel?: string;
+  /**
+   * Pass `true` to have the dialog close when its backdrop pseudo-element is clicked
+   */
+  backdropClickExits?: boolean;
   closeButtonText?: React.ReactNode;
   closeButtonVariation?: ButtonVariation;
   children: React.ReactNode;
@@ -47,10 +51,6 @@ export interface DrawerProps {
    * Enables "sticky" position of Drawer footer element.
    */
   isFooterSticky?: boolean;
-  /**
-   * Pass `true` to have the dialog close when its backdrop pseudo-element is clicked
-   */
-  backdropClickExits?: boolean;
   /**
    * Controls whether the dialog is in an open state
    */
