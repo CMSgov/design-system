@@ -13,6 +13,10 @@ export interface DrawerProps {
    * Gives more context to screen readers on the Drawer close button.
    */
   ariaLabel?: string;
+  /**
+   * Pass `true` to have the dialog close when its backdrop pseudo-element is clicked
+   */
+  backdropClickExits?: boolean;
   closeButtonText?: React.ReactNode;
   closeButtonVariation?: ButtonVariation;
   children: React.ReactNode;
@@ -75,6 +79,7 @@ export const Drawer = (props: DrawerProps) => {
       className={classNames(props.className, 'ds-c-drawer')}
       exit={props.onCloseClick}
       showModal={props.hasFocusTrap}
+      backdropClickExits={props.backdropClickExits}
       isOpen={props.isOpen}
     >
       <div className="ds-c-drawer__window" tabIndex={-1} aria-labelledby={headingId}>
