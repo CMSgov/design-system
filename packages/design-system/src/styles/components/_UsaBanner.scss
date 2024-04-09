@@ -17,6 +17,10 @@
   background-color: var(--usa-banner__background-color);
   color: var(--usa-banner-color);
   font-family: var(--font-family);
+
+  // These styles are needed to prevent abutting elements from obscuring focus styles
+  position: relative;
+  z-index: 10;
 }
 
 .ds-c-usa-banner__header,
