@@ -47,7 +47,9 @@ stories.forEach((story) => {
 
     themeKeys.forEach((theme) => {
       const storyNotInTheme = !story.importPath.includes(themes[theme].packageName);
-      const storyNotInCore = !story.importPath.includes(themes['core'].packageName);
+      const storyNotInCore =
+        !story.importPath.includes(themes['core'].packageName) &&
+        !story.importPath.includes('packages/docs');
 
       // Don't capture theme-specific components outside their themes, all themes get core components
       if (storyNotInTheme && storyNotInCore) return;
