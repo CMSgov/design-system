@@ -55,6 +55,9 @@ dialog.fixed {
   box-sizing: border-box;
   color: var(--color-base); // Needed to override user-agent styles `canvasText`
   display: block;
+
+  // Reset so font size of ancestor elements don't affect the dialog
+  font-size: var(--font-size-base);
   margin: auto;
   margin-block-start: $spacer-6;
   max-width: var(--measure-base);
