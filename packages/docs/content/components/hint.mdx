@@ -44,6 +44,16 @@ The following CSS variables can be overridden to customize Form components:
 - End with a period.
 - Be consistent with phrase and sentence structure.
 
+### Accessibility testing
+
+#### General observations
+
+- Hints should be linked to their corresponding input fields via an `aria-describedby` attribute on the input.
+
+#### Screen reader testing
+
+- When the input field gets focus, its label should be read first and then its hint after a slight delay.
+
 ## Learn More
 
 - [Form Guidelines](/patterns/Forms/forms/)

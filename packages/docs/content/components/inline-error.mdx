@@ -41,6 +41,16 @@ The following CSS variables can be overridden to customize Form components:
 - Use sentence case.
 - End with a period.
 
+### Accessibility testing
+
+#### General observations
+
+- Inline error messages should be linked to their corresponding input fields via an `aria-describedby` attribute on the input.
+
+#### Screen reader testing
+
+- When the input field gets focus, its label should be read first and then its hint (if it has one) and its error message.
+
 ## Learn More
 
 - [Form Guidelines](/patterns/Forms/forms/)
