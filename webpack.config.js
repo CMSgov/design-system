@@ -4,7 +4,8 @@ const { ProvidePlugin } = require('webpack');
 
 const nodeModules = path.resolve(__dirname, 'node_modules');
 const coreDist = path.resolve(__dirname, 'packages', 'design-system', 'dist');
-const coreWC = path.join(coreDist, 'preact-components', 'esm', 'web-components');
+const coreEsm = path.join(coreDist, 'preact-components', 'esm');
+const coreWC = path.join(coreEsm, 'web-components');
 
 /**
  *
@@ -56,12 +57,46 @@ function generateWebpackConfig({ preact = false, webComponents = false }) {
     // }
     entry = {
       all: path.resolve(coreWC, 'index.js'),
-      base: [path.resolve(coreWC, 'base.js'), 'preact/jsx-runtime', 'classnames'],
-      'ds-alert': {
-        import: path.resolve(coreWC, 'ds-alert', 'ds-alert.js'),
-        dependOn: 'base',
-        runtime: false,
-      },
+      base: [
+        path.resolve(coreEsm, 'analytics'),
+        path.resolve(coreEsm, 'config'),
+        path.resolve(coreEsm, 'i18n'),
+        path.resolve(coreEsm, 'utilities', 'useId'),
+        path.resolve(coreWC, 'preactement', 'define'),
+        // path.resolve(coreWC, 'base.js'),
+        'preact/jsx-runtime',
+        'preact/hooks',
+        'preact/compat',
+        // These ones are used in enough of them that it warrants pulling them out
+        'classnames',
+      ],
+      ...[
+        'ds-alert',
+        'ds-badge',
+        'ds-button',
+        'ds-dropdown',
+        'ds-hint',
+        'ds-inline-error',
+        'ds-label',
+        'ds-usa-banner',
+      ].reduce((obj, component) => {
+        obj[component] = {
+          import: path.resolve(coreWC, component, `${component}.js`),
+          dependOn: 'base',
+          runtime: false,
+        };
+        return obj;
+      }, {}),
+      // 'ds-alert': {
+      //   import: path.resolve(coreWC, 'ds-alert', 'ds-alert.js'),
+      //   dependOn: 'base',
+      //   runtime: false,
+      // },
+      // 'ds-usa-banner': {
+      //   import: path.resolve(coreWC, 'ds-usa-banner', 'ds-usa-banner.js'),
+      //   dependOn: 'base',
+      //   runtime: false,
+      // },
     };
   } else {
     // If we're not bundling these as web components, don't include the react

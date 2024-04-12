@@ -1,4 +1,4 @@
-import { define } from '../base';
+import { define } from '../preactement/define';
 import { Alert, AlertProps } from '../../Alert';
 
 const attributes = [
