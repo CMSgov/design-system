@@ -12,6 +12,12 @@
       rel="stylesheet"
       href="https://design.cms.gov/cdn/design-system/10.0.0-beta.1/css/core-theme.css"
     />
+    <script src="base.js"></script>
+    <script src="ds-alert.js"></script>
+    <script src="ds-badge.js"></script>
+    <script src="ds-button.js"></script>
+    <script src="ds-dropdown.js"></script>
+    <script src="ds-usa-banner.js"></script>
   </head>
   <body class="ds-base">
     <ds-usa-banner></ds-usa-banner>
@@ -69,7 +75,7 @@
       Must load the JavaScript after your page HTML or else it won't evaluate
       the custom design-system elements that already exist on the page
     -->
-    <script src="https://design.cms.gov/cdn/design-system/10.0.0-beta.1/web-components/bundle/web-components.js"></script>
+    <!-- <script src="https://design.cms.gov/cdn/design-system/10.0.0-beta.1/web-components/bundle/web-components.js"></script> -->
     <script>
       document.getElementById('the-button').addEventListener('click', function () {
         const oldAlert = document.getElementById('alert');
