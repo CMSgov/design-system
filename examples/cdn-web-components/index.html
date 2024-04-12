@@ -12,84 +12,64 @@
       rel="stylesheet"
       href="https://design.cms.gov/cdn/design-system/10.0.0-beta.1/css/core-theme.css"
     />
-    <script src="base.js"></script>
-    <script src="ds-alert.js"></script>
-    <script src="ds-badge.js"></script>
-    <script src="ds-button.js"></script>
-    <script src="ds-dropdown.js"></script>
-    <script src="ds-usa-banner.js"></script>
+    <script src="base.js" async="false"></script>
+    <script src="ds-alert.js" async="false"></script>
+    <script src="ds-badge.js" async="false"></script>
+    <script src="ds-button.js" async="false"></script>
+    <script src="ds-dropdown.js" async="false"></script>
+    <script src="ds-usa-banner.js" async="false"></script>
   </head>
   <body class="ds-base">
-    <template id="page-template">
-      <ds-usa-banner></ds-usa-banner>
+    <ds-usa-banner></ds-usa-banner>
 
-      <header class="ds-base--inverse ds-u-padding-y--3">
-        <div class="ds-l-container">
-          <span class="ds-h3">ExampleWebsite.gov</span>
-          <ds-badge variation="info" class="ds-u-margin-left--2">CMS Design System</ds-badge>
-        </div>
-      </header>
-
-      <div class="ds-l-container ds-u-padding-top--2">
-        <div class="ds-u-measure--base">
-          <h1 class="ds-text-heading--3xl">CDN Example</h1>
-          <p>
-            This is an example showing how to use the CDN and our library of interactive web
-            components.
-          </p>
-
-          <ds-alert
-            variation="success"
-            heading="You've loaded the web-components example"
-            class-name="ds-u-margin-y--2"
-            id="alert"
-          >
-            <p id="alert-content">
-              This is an example of a success alert. If you want to see an error alert, click the
-              button below.
-            </p>
-            <ds-button variation="solid" is-alternate="true" id="the-button"
-              >Break things</ds-button
-            >
-          </ds-alert>
-
-          <h2 class="ds-text-heading--2xl">Adding machine</h2>
-          <form id="calculator">
-            <ds-dropdown id="operation" name="operation" label="Operation">
-              <option value="addition">Addition</option>
-              <option value="subtraction">Subtraction</option>
-            </ds-dropdown>
-            <div
-              class="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2"
-              style="gap: var(--spacer-2)"
-            >
-              <input
-                type="number"
-                id="a"
-                name="a"
-                value="20"
-                class="ds-c-field ds-c-field--small"
-              />
-              <span id="sign">+</span>
-              <input
-                type="number"
-                id="b"
-                name="b"
-                value="30"
-                class="ds-c-field ds-c-field--small"
-              />
-              =
-              <output name="result" for="a b"></output>
-            </div>
-            <ds-button variation="solid" type="submit">Calculate</ds-button>
-          </form>
-        </div>
+    <header class="ds-base--inverse ds-u-padding-y--3">
+      <div class="ds-l-container">
+        <span class="ds-h3">ExampleWebsite.gov</span>
+        <ds-badge variation="info" class="ds-u-margin-left--2">CMS Design System</ds-badge>
       </div>
-    </template>
-    <script>
-      const template = document.getElementById('page-template');
-      document.body.appendChild(template.content.cloneNode(true));
-    </script>
+    </header>
+
+    <div class="ds-l-container ds-u-padding-top--2">
+      <div class="ds-u-measure--base">
+        <h1 class="ds-text-heading--3xl">CDN Example</h1>
+        <p>
+          This is an example showing how to use the CDN and our library of interactive web
+          components.
+        </p>
+
+        <ds-alert
+          variation="success"
+          heading="You've loaded the web-components example"
+          class-name="ds-u-margin-y--2"
+          id="alert"
+        >
+          <p id="alert-content">
+            This is an example of a success alert. If you want to see an error alert, click the
+            button below.
+          </p>
+          <ds-button variation="solid" is-alternate="true" id="the-button">Break things</ds-button>
+        </ds-alert>
+
+        <h2 class="ds-text-heading--2xl">Adding machine</h2>
+        <form id="calculator">
+          <ds-dropdown id="operation" name="operation" label="Operation">
+            <option value="addition">Addition</option>
+            <option value="subtraction">Subtraction</option>
+          </ds-dropdown>
+          <div
+            class="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2"
+            style="gap: var(--spacer-2)"
+          >
+            <input type="number" id="a" name="a" value="20" class="ds-c-field ds-c-field--small" />
+            <span id="sign">+</span>
+            <input type="number" id="b" name="b" value="30" class="ds-c-field ds-c-field--small" />
+            =
+            <output name="result" for="a b"></output>
+          </div>
+          <ds-button variation="solid" type="submit">Calculate</ds-button>
+        </form>
+      </div>
+    </div>
     <!--
       Must load the JavaScript after your page HTML or else it won't evaluate
       the custom design-system elements that already exist on the page
