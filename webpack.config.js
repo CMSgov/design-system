@@ -53,21 +53,33 @@ function generateWebpackConfig({ preact = false, webComponents = false }) {
     //     // }
     //   }
     // }
-    entry = {
-      all: path.resolve(coreDist, 'preact-components', 'esm', 'web-components', 'index.js'),
-      base: path.resolve(coreDist, 'preact-components', 'esm', 'web-components', 'base.js'),
-      'ds-alert': {
-        import: path.resolve(
-          coreDist,
-          'preact-components',
-          'esm',
-          'web-components',
-          'ds-alert',
-          'ds-alert.js'
-        ),
-        dependOn: 'base',
+    (optimization = {
+      splitChunks: {
+        cacheGroups: {
+          vendor: {
+            test: (module) =>
+              module.resource.includes('node_modules') || module.resource.includes('preactement'),
+            name: 'vendors',
+            chunks: 'all',
+          },
+        },
       },
-    };
+    }),
+      (entry = {
+        all: path.resolve(coreDist, 'preact-components', 'esm', 'web-components', 'index.js'),
+        // base: path.resolve(coreDist, 'preact-components', 'esm', 'web-components', 'base.js'),
+        'ds-alert': {
+          import: path.resolve(
+            coreDist,
+            'preact-components',
+            'esm',
+            'web-components',
+            'ds-alert',
+            'ds-alert.js'
+          ),
+          // dependOn: 'base',
+        },
+      });
   } else {
     // If we're not bundling these as web components, don't include the react
     // or preact runtimes in our bundle because our customers need to interact
