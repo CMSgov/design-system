@@ -17,10 +17,6 @@
   background-color: var(--usa-banner__background-color);
   color: var(--usa-banner-color);
   font-family: var(--font-family);
-
-  // These styles are needed to prevent abutting elements from obscuring focus styles
-  position: relative;
-  z-index: 10;
 }
 
 .ds-c-usa-banner__header,
@@ -112,6 +108,10 @@
 
   &:focus {
     @include mixins.focus-styles;
+
+    @media (max-width: ($media-width-md - 1px)) {
+      @include mixins.focus-styles-inset;
+    }
   }
 
   @media (min-width: $media-width-md) {
@@ -146,9 +146,8 @@
   [aria-expanded='true'] & {
     background-color: var(--usa-banner-close-button__background-color--mobile);
     display: flex;
-    inset: 0;
+    inset: 0.25em 0.25em 0.25em 0;
     inset-inline-start: initial;
-    min-height: 3rem;
     place-content: center;
     place-items: center;
     position: absolute;
