@@ -4,6 +4,7 @@ const { ProvidePlugin } = require('webpack');
 
 const nodeModules = path.resolve(__dirname, 'node_modules');
 const coreDist = path.resolve(__dirname, 'packages', 'design-system', 'dist');
+const coreWC = path.join(coreDist, 'preact-components', 'esm', 'web-components');
 
 /**
  *
@@ -53,33 +54,15 @@ function generateWebpackConfig({ preact = false, webComponents = false }) {
     //     // }
     //   }
     // }
-    (optimization = {
-      splitChunks: {
-        cacheGroups: {
-          vendor: {
-            test: (module) =>
-              module.resource.includes('node_modules') || module.resource.includes('preactement'),
-            name: 'vendors',
-            chunks: 'all',
-          },
-        },
+    entry = {
+      all: path.resolve(coreWC, 'index.js'),
+      base: [path.resolve(coreWC, 'base.js'), 'preact/jsx-runtime', 'classnames'],
+      'ds-alert': {
+        import: path.resolve(coreWC, 'ds-alert', 'ds-alert.js'),
+        dependOn: 'base',
+        runtime: false,
       },
-    }),
-      (entry = {
-        all: path.resolve(coreDist, 'preact-components', 'esm', 'web-components', 'index.js'),
-        // base: path.resolve(coreDist, 'preact-components', 'esm', 'web-components', 'base.js'),
-        'ds-alert': {
-          import: path.resolve(
-            coreDist,
-            'preact-components',
-            'esm',
-            'web-components',
-            'ds-alert',
-            'ds-alert.js'
-          ),
-          // dependOn: 'base',
-        },
-      });
+    };
   } else {
     // If we're not bundling these as web components, don't include the react
     // or preact runtimes in our bundle because our customers need to interact
