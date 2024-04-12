@@ -17,6 +17,7 @@ const log = require('fancy-log');
 const svgmin = require('gulp-svgmin');
 const webpack = require('webpack-stream');
 const generateWebpackConfig = require('./webpack.config');
+const named = require('vinyl-named');
 
 /*
  * command line arguments and global variables
@@ -274,6 +275,7 @@ const compileTypescriptDefs = (tsConfig = {}) =>
 const bundleJs = (options) => (cb) => {
   gulp
     .src(options.entryPath)
+    .pipe(named())
     .pipe(webpack(generateWebpackConfig(options)))
     .pipe(gulp.dest(options.dest))
     .on('end', cb);
@@ -293,7 +295,10 @@ const bundlePreactComponents = bundleJs({
 bundlePreactComponents.displayName = '📦 bundling preact components for cdn distribution';
 
 const bundleWebComponents = bundleJs({
-  entryPath: path.resolve(distPreactComponents, 'esm', 'web-components', 'index.js'),
+  entryPath: [
+    path.resolve(distPreactComponents, 'esm', 'web-components', 'index.js'),
+    path.resolve(distPreactComponents, 'esm', 'web-components', 'ds-alert', 'ds-alert.js'),
+  ],
   dest: path.join(distWebComponents, 'bundle'),
   preact: true,
   webComponents: true,
@@ -338,7 +343,7 @@ log('🪴 building the cmsds');
 exports.build = gulp.series(
   cleanDist,
   gulp.parallel(copyCssThemes, copyScssThemes, copyImages, copyFonts, copyJSON),
-  gulp.parallel(compileSass, compileReactComponents, compilePreactComponents)
+  gulp.parallel(/*compileSass, compileReactComponents, */ compilePreactComponents)
 );
 
 /*
