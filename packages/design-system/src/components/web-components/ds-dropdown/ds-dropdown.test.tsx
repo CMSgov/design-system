@@ -63,6 +63,22 @@ describe('Button', () => {
     expect(button).toHaveClass('foobar');
   });
 
+  it('applies requirement-label to hint text', () => {
+    const { container } = renderDropdown({ 'requirement-label': 'Optional' });
+    const button = screen.getByRole('button');
+    const hintId = button.getAttribute('aria-describedby');
+    const hint = container.querySelector(`#${hintId}`);
+    expect(hint).toContainHTML('Optional');
+  });
+
+  it('renders an error message', () => {
+    const { container } = renderDropdown({ 'error-message': 'Uh-oh!' });
+    const button = screen.getByRole('button');
+    const errorId = button.getAttribute('aria-describedby');
+    const error = container.querySelector(`#${errorId}`);
+    expect(error).toContainHTML('Uh-oh!');
+  });
+
   it('applies size classes', () => {
     renderDropdown({ size: 'small' });
     const button = screen.getByRole('button');
