@@ -20,7 +20,7 @@ const attributes = [
   'hint',
   'hint-id',
   'name',
-  'requirements-label',
+  'requirement-label',
   'root-id',
   'size',
   'value',
