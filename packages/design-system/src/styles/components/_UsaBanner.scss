@@ -94,17 +94,26 @@
 }
 
 .ds-c-usa-banner__button {
+  align-items: stretch;
   background-color: transparent;
   border: 0;
   cursor: pointer;
+  display: flex;
   inset: 0;
   inset-inline-start: initial;
+  justify-content: end;
+  padding: 0;
   position: absolute;
+
   // Mobile/tablet, button is full-size of banner
   width: 100%;
 
   &:focus {
     @include mixins.focus-styles;
+
+    @media (max-width: ($media-width-md - 1px)) {
+      @include mixins.focus-styles-inset;
+    }
   }
 
   @media (min-width: $media-width-md) {
@@ -112,7 +121,6 @@
     grid-area: action;
     height: fit-content;
     line-height: 1.1;
-    padding: 0;
     position: relative;
     text-align: start;
     width: fit-content;
@@ -139,12 +147,8 @@
   [aria-expanded='true'] & {
     background-color: var(--usa-banner-close-button__background-color--mobile);
     display: flex;
-    inset: 0;
-    inset-inline-start: initial;
-    min-height: 3rem;
     place-content: center;
     place-items: center;
-    position: absolute;
     width: 3rem;
 
     @media (min-width: $media-width-md) {

@@ -27,6 +27,12 @@
   text-decoration: underline;
 }
 
+@mixin focus-styles-inset {
+  box-shadow: none;
+  outline: 0.25em solid var(--color-focus-dark);
+  outline-offset: -0.25em;
+}
+
 /**
  * Lists
  */
