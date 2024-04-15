@@ -22,7 +22,7 @@ import { kebabCaseIt } from 'case-it/kebab';
 
 function define<P = {}>(
   tagName: string,
-  child: ComponentFunction<P>,
+  componentFunction: ComponentFunction<P>,
   options: IOptions = {}
 ): FunctionComponent<P> {
   const { wrapComponent } = options;
@@ -30,24 +30,22 @@ function define<P = {}>(
   const elementTag = getElementTag(tagName);
 
   if (!preRender) {
-    customElements.define(elementTag, setupElement(child, options));
+    customElements.define(elementTag, setupElement(componentFunction, options));
 
     return;
   }
 
-  const content = child();
+  let component = componentFunction();
 
-  if (isPromise(content)) {
+  if (isPromise(component)) {
     throw new Error(`${ErrorTypes.Promise} : <${tagName}>`);
   }
 
-  let component = content;
-  const attributes: Record<string, any> = { server: true };
-
   if (wrapComponent) {
-    component = wrapComponent(content);
+    component = wrapComponent(component);
   }
 
+  const attributes: Record<string, any> = { server: true };
   return (props: P) =>
     h(elementTag, attributes, [
       h('script', {
@@ -64,7 +62,7 @@ function define<P = {}>(
  *
  * -------------------------------- */
 
-function setupElement<T>(component: ComponentFunction<T>, options: IOptions = {}): any {
+function setupElement<T>(componentFunction: ComponentFunction<T>, options: IOptions = {}): any {
   const { attributes = [] } = options;
 
   if (typeof Reflect !== 'undefined' && Reflect.construct) {
@@ -72,7 +70,7 @@ function setupElement<T>(component: ComponentFunction<T>, options: IOptions = {}
       const element = Reflect.construct(HTMLElement, [], CustomElement);
 
       element.__mounted = false;
-      element.__component = component;
+      element.__componentFunction = componentFunction;
       element.__properties = {};
       element.__slots = {};
       element.__children = void 0;
@@ -107,23 +105,12 @@ function setupElement<T>(component: ComponentFunction<T>, options: IOptions = {}
       });
     });
 
-    // This works, but it clobbers pre-existing event handlers made via `addEventListener`
-    // events.forEach((name) => {
-    //   Object.defineProperty(CustomElement.prototype, name, {
-    //     set(v) {
-    //       if (this.__mounted) {
-    //         this.attributeChangedCallback(name, null, v);
-    //       }
-    //     },
-    //   });
-    // });
-
     return CustomElement;
   }
 
   return class CustomElement extends HTMLElement {
     __mounted = false;
-    __component = component;
+    __componentFunction = componentFunction;
     __properties = {};
     __slots = {};
     __children = void 0;
@@ -217,16 +204,16 @@ function onConnected(this: CustomElement) {
   this.removeAttribute('server');
   this.innerHTML = '';
 
-  const response = this.__component();
-  const renderer = (result: ComponentFactory) => finaliseComponent.call(this, result);
+  const result = this.__componentFunction();
+  const renderer = (component: ComponentFactory) => finaliseComponent.call(this, component);
 
-  if (isPromise(response)) {
-    getAsyncComponent(response, this.tagName).then(renderer);
+  if (isPromise(result)) {
+    getAsyncComponent(result, this.tagName).then(renderer);
 
     return;
   }
 
-  renderer(response);
+  renderer(result);
 }
 
 /* -----------------------------------
@@ -252,7 +239,7 @@ function onAttributeChange(this: CustomElement, name: string, original: string, 
 
   this.__properties = props;
 
-  render(h(this.__instance, { ...props, parent: this, children: this.__children }), this);
+  render(h(this.__component, { ...props, parent: this, children: this.__children }), this);
 }
 
 /* -----------------------------------
@@ -285,7 +272,7 @@ function finaliseComponent(this: CustomElement, component: ComponentFactory<IPro
     component = wrapComponent(component);
   }
 
-  this.__instance = component;
+  this.__component = component;
   this.__mounted = true;
 
   const props = {

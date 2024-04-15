@@ -37,13 +37,13 @@ enum ErrorTypes {
  *
  * -------------------------------- */
 
-interface CustomElement<C = any, I = any> extends HTMLElement {
+interface CustomElement<CF = any, C = any> extends HTMLElement {
   __mounted: boolean;
-  __component: C;
+  __componentFunction: CF;
+  __component?: C;
   __properties?: IProps;
   __events?: IProps;
   __slots?: { [index: string]: any };
-  __instance?: I;
   __children?: any;
   __options: IOptions;
 }
