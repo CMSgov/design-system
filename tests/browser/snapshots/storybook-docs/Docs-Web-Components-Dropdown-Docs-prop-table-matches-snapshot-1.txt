@@ -45,6 +45,11 @@
     "string"
   ],
   [
+    "inversed",
+    "Set to \"true\" to apply the \"inverse\" theme",
+    "\"true\"\"false\""
+  ],
+  [
     "label",
     "Label text or HTML.",
     "string"

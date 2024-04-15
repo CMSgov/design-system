@@ -79,6 +79,20 @@ describe('Button', () => {
     expect(error).toContainHTML('Uh-oh!');
   });
 
+  it('applies inverse class', () => {
+    const { container } = renderDropdown({
+      inversed: 'true',
+      hint: 'Hello',
+      'error-message': 'Ahh!!',
+    });
+    const inversedLabel = container.querySelector('.ds-c-label--inverse');
+    const inversedHint = container.querySelector('.ds-c-hint--inverse');
+    const inversedError = container.querySelector('.ds-c-inline-error--inverse');
+    expect(inversedLabel).toBeInTheDocument();
+    expect(inversedHint).toBeInTheDocument();
+    expect(inversedError).toBeInTheDocument();
+  });
+
   it('applies size classes', () => {
     renderDropdown({ size: 'small' });
     const button = screen.getByRole('button');
