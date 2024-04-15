@@ -41,13 +41,31 @@ declare global {
 }
 /* eslint-enable */
 
-interface WrapperProps extends Omit<ChoiceProps, 'disabled'> {
+interface WrapperProps extends Omit<ChoiceProps, 'checked' | 'defaultChecked' | 'disabled'> {
   disabled?: string;
   rootId?: string;
+  defaultChecked?: string;
+  checked?: string;
+  checkedChildren?: string;
+  uncheckedChildren?: string;
 }
 
-const Wrapper = ({ rootId, ...otherProps }: WrapperProps) => (
-  <Choice {...otherProps} disabled={parseBooleanAttr(otherProps.disabled)} id={rootId}></Choice>
+const Wrapper = ({
+  checkedChildren,
+  uncheckedChildren,
+  checked,
+  defaultChecked,
+  rootId,
+  ...otherProps
+}: WrapperProps) => (
+  <Choice
+    {...otherProps}
+    checked={parseBooleanAttr(defaultChecked) || parseBooleanAttr(checked)}
+    disabled={parseBooleanAttr(otherProps.disabled)}
+    id={rootId}
+    checkedChildren={checkedChildren}
+    uncheckedChildren={otherProps['unchecked-children']}
+  ></Choice>
 );
 
 define('ds-choice', () => Wrapper, { attributes, events: ['onChange', 'onBlur'] } as any);
