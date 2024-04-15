@@ -19,6 +19,7 @@ const attributes = [
   'label-id',
   'hint',
   'hint-id',
+  'inversed',
   'name',
   'requirement-label',
   'root-id',
@@ -43,10 +44,11 @@ declare global {
 /* eslint-enable */
 
 interface WrapperProps
-  extends Omit<DropdownProps, 'options' | 'autoFocus' | 'disabled' | 'ariaDisabled'> {
+  extends Omit<DropdownProps, 'options' | 'autoFocus' | 'disabled' | 'ariaDisabled' | 'inversed'> {
   autofocus?: string;
   ariaDisabled?: string;
   disabled?: string;
+  inversed?: string;
   options?: string | DropdownProps['options'];
   rootId?: string;
 }
@@ -59,6 +61,7 @@ const Wrapper = ({ children, options, rootId, ...otherProps }: WrapperProps) => 
     aria-disabled={parseBooleanAttr(otherProps.ariaDisabled)}
     options={typeof options === 'string' ? JSON.parse(options) : options}
     id={rootId}
+    inversed={parseBooleanAttr(otherProps.inversed)}
   >
     {options ? undefined : children}
   </Dropdown>
