@@ -109,10 +109,18 @@
   &:focus {
     @include mixins.focus-styles;
 
+    // .ds-c-usa-banner__button-icon-container {
+    //   inset: 0.25em 0.25em 0.25em 0;
+    // }
+
     @media (max-width: ($media-width-md - 1px)) {
       @include mixins.focus-styles-inset;
     }
   }
+
+  // .ds-c-usa-banner__button-icon-container {
+  //   inset: 0;
+  // }
 
   @media (min-width: $media-width-md) {
     display: inline-block;
@@ -143,10 +151,18 @@
 }
 
 .ds-c-usa-banner__button-icon-container {
+  [aria-expanded='true']:focus & {
+    border-color: var(--color-focus-dark);
+  }
+
   [aria-expanded='true'] & {
     background-color: var(--usa-banner-close-button__background-color--mobile);
+
+    // To ensure close button receives focus border, adding border style that swaps color when focussed
+    border: 0.25em solid var(--usa-banner-close-button__background-color--mobile);
+    border-inline-start: 0;
     display: flex;
-    inset: 0.25em 0.25em 0.25em 0;
+    inset: 0;
     inset-inline-start: initial;
     place-content: center;
     place-items: center;
