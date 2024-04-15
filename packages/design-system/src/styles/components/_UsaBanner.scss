@@ -102,6 +102,10 @@
   inset: 0;
   inset-inline-start: initial;
   position: absolute;
+  display: flex;
+  align-items: stretch;
+  justify-content: end;
+  padding: 0;
 
   // Mobile/tablet, button is full-size of banner
   width: 100%;
@@ -109,25 +113,16 @@
   &:focus {
     @include mixins.focus-styles;
 
-    // .ds-c-usa-banner__button-icon-container {
-    //   inset: 0.25em 0.25em 0.25em 0;
-    // }
-
     @media (max-width: ($media-width-md - 1px)) {
       @include mixins.focus-styles-inset;
     }
   }
-
-  // .ds-c-usa-banner__button-icon-container {
-  //   inset: 0;
-  // }
 
   @media (min-width: $media-width-md) {
     display: inline-block;
     grid-area: action;
     height: fit-content;
     line-height: 1.1;
-    padding: 0;
     position: relative;
     text-align: start;
     width: fit-content;
@@ -151,22 +146,11 @@
 }
 
 .ds-c-usa-banner__button-icon-container {
-  [aria-expanded='true']:focus & {
-    border-color: var(--color-focus-dark);
-  }
-
   [aria-expanded='true'] & {
     background-color: var(--usa-banner-close-button__background-color--mobile);
-
-    // To ensure close button receives focus border, adding border style that swaps color when focussed
-    border: 0.25em solid var(--usa-banner-close-button__background-color--mobile);
-    border-inline-start: 0;
     display: flex;
-    inset: 0;
-    inset-inline-start: initial;
     place-content: center;
     place-items: center;
-    position: absolute;
     width: 3rem;
 
     @media (min-width: $media-width-md) {
