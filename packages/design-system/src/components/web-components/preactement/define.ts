@@ -90,23 +90,8 @@ function createCustomElement<T>(
       onDisconnected.call(this);
     }
 
-    /**
-     * Uses Preact to render the component to this element, using props derived from the
-     * current value of `this.__properties` and `this.__children`.
-     */
     public renderPreactComponent() {
-      if (!this.__component) {
-        console.error(ErrorTypes.Missing, `: <${this.tagName.toLowerCase()}>`);
-        return;
-      }
-
-      const props = {
-        ...this.__properties,
-        parent: this,
-        children: this.__children,
-      };
-
-      render(h(this.__component, props), this);
+      renderPreactComponent.call(this);
     }
   }
 
@@ -267,6 +252,25 @@ function onAttributeChange(this: CustomElement, name: string, original: string, 
  */
 function onDisconnected(this: CustomElement) {
   render(null, this);
+}
+
+/**
+ * Render the Preact component to this element, using props derived from the current
+ * value of `this.__properties` and `this.__children`.
+ */
+function renderPreactComponent(this: CustomElement) {
+  if (!this.__component) {
+    console.error(ErrorTypes.Missing, `: <${this.tagName.toLowerCase()}>`);
+    return;
+  }
+
+  const props = {
+    ...this.__properties,
+    parent: this,
+    children: this.__children,
+  };
+
+  render(h(this.__component, props), this);
 }
 
 /* -----------------------------------
