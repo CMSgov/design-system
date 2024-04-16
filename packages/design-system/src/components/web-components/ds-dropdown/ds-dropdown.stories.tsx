@@ -45,6 +45,10 @@ export default {
       description: 'Hint text or HTML',
       control: 'text',
     },
+    inversed: {
+      description: 'Set to "true" to apply the "inverse" theme',
+      control: 'boolean',
+    },
     label: {
       description: 'Label text or HTML.',
       control: 'text',
