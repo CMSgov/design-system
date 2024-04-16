@@ -65,50 +65,7 @@ function define<P = {}>(
 function setupElement<T>(componentFunction: ComponentFunction<T>, options: IOptions = {}): any {
   const { attributes = [] } = options;
 
-  if (typeof Reflect !== 'undefined' && Reflect.construct) {
-    const CustomElement = function () {
-      const element = Reflect.construct(HTMLElement, [], CustomElement);
-
-      element.__mounted = false;
-      element.__componentFunction = componentFunction;
-      element.__properties = {};
-      element.__slots = {};
-      element.__children = void 0;
-      element.__options = options;
-
-      return element;
-    };
-
-    CustomElement.observedAttributes = ['props', ...attributes];
-
-    CustomElement.prototype = Object.create(HTMLElement.prototype);
-    CustomElement.prototype.constructor = CustomElement;
-    CustomElement.prototype.connectedCallback = onConnected;
-    CustomElement.prototype.attributeChangedCallback = onAttributeChange;
-    CustomElement.prototype.disconnectedCallback = onDisconnected;
-
-    attributes.forEach((name) => {
-      Object.defineProperty(CustomElement.prototype, name, {
-        get() {
-          return this.__properties[name];
-        },
-        set(v) {
-          if (this.__mounted) {
-            this.attributeChangedCallback(name, null, v);
-          }
-
-          const type = typeof v;
-          if (v == null || type === 'string' || type === 'boolean' || type === 'number') {
-            this.setAttribute(name, v);
-          }
-        },
-      });
-    });
-
-    return CustomElement;
-  }
-
-  return class CustomElement extends HTMLElement {
+  class CustomElement extends HTMLElement {
     __mounted = false;
     __componentFunction = componentFunction;
     __properties = {};
@@ -129,7 +86,27 @@ function setupElement<T>(componentFunction: ComponentFunction<T>, options: IOpti
     public disconnectedCallback() {
       onDisconnected.call(this);
     }
-  };
+  }
+
+  attributes.forEach((name) => {
+    Object.defineProperty(CustomElement.prototype, name, {
+      get() {
+        return this.__properties[name];
+      },
+      set(v) {
+        if (this.__mounted) {
+          this.attributeChangedCallback(name, null, v);
+        }
+
+        const type = typeof v;
+        if (v == null || type === 'string' || type === 'boolean' || type === 'number') {
+          this.setAttribute(name, v);
+        }
+      },
+    });
+  });
+
+  return CustomElement;
 }
 
 // Using part of Voorhoede's register function to implement custom event handlers
