@@ -29,6 +29,7 @@
     border: 1px solid var(--filter-chip__border-color--active);
     color: var(--filter-chip__color--active);
   }
+
   &:focus {
     @include mixins.focus-styles;
   }

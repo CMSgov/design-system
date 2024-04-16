@@ -196,7 +196,7 @@ exports[`Dropdown dropdown matches snapshot 1`] = `
     type="button"
   >
     <span
-      class="ds-u-truncate"
+      class="ds-c-dropdown__label-text"
       id="static-id__button-content"
     >
       2

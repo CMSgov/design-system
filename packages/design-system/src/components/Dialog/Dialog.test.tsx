@@ -1,4 +1,3 @@
-import React from 'react';
 import Dialog from './Dialog';
 import { config } from '../config';
 import { fireEvent, render, screen } from '@testing-library/react';

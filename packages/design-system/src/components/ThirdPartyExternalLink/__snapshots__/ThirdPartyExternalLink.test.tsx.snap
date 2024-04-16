@@ -6,7 +6,6 @@ exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external l
   id="dialog--8"
   open=""
   role="dialog"
-  style="z-index: 100149; top: 384px;"
 >
   <div
     aria-labelledby="dialog--8__heading"
@@ -64,9 +63,7 @@ exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external l
           You're about to connect to a third-party site. Select CONTINUE to proceed or CANCEL to stay on this site.
         </p>
         <p>
-          <a
-            href=""
-          >
+          <a>
             Learn more about links to third-party sites
           </a>
           .

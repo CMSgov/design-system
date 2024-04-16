@@ -1,4 +1,3 @@
-import React from 'react';
 import Drawer from './Drawer';
 import { DrawerManager, useDrawerManager } from './DrawerManager';
 import { Button } from '../Button';
@@ -81,7 +80,7 @@ const SingleDrawerWithToggle = (...args) => {
         {...args}
         onCloseClick={closeDrawer}
         footerTitle="Footer Title"
-        footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
+        footerBody={<p className="ds-text-body--md ds-u-margin--0">Footer content</p>}
         heading={heading}
         isOpen={isDrawerOpen}
       >

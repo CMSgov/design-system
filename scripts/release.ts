@@ -18,7 +18,8 @@ function getCurrentBranch() {
 function readLastPublishCommit() {
   const commitHash = getCurrentCommit();
   const commitMessage = sh('git log -1 --pretty=%B');
-  const tags = commitMessage.match(/@.*$/gm);
+  // Only make tags for the actual design system packages
+  const tags = commitMessage.match(/@cmsgov\/(?:design-system@|ds-).*$/gm);
 
   if (!tags) {
     throw Error('The previous commit was not a publish commit. Cannot read tags!');
@@ -56,7 +57,7 @@ async function undoLastCommit() {
 async function bumpVersions() {
   console.log(c.green('Bumping package versions for release...'));
   const preBumpHash = getCurrentCommit();
-  shI('./node_modules/.bin/lerna', ['version', '--no-push', '--no-private', '--exact']);
+  shI('./node_modules/.bin/lerna', ['version', '--no-push', '--exact']);
   const postBumpHash = getCurrentCommit();
 
   if (preBumpHash === postBumpHash) {
@@ -144,7 +145,7 @@ function printNextSteps() {
 (async () => {
   // Get command line args
   const argv = await yargs(hideBin(process.argv))
-    .scriptName('npx release')
+    .scriptName('yarn release')
     .options({
       undo: {
         alias: 'u',

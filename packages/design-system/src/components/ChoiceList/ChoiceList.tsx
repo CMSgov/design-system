@@ -1,6 +1,6 @@
 import Choice, { ChoiceProps as ChoiceComponentProps } from './Choice';
 import { Label } from '../Label';
-import React from 'react';
+import type * as React from 'react';
 import classNames from 'classnames';
 import describeField from '../utilities/describeField';
 import useId from '../utilities/useId';
@@ -19,7 +19,7 @@ export interface BaseChoiceListProps {
   /**
    * Array of objects representing the props for each Choice in the ChoiceList
    */
-  choices: ChoiceProps[];
+  choices: Omit<ChoiceProps, 'name' | 'type'>[];
   /**
    * Additional classes to be added to the root element.
    */

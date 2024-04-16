@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FilterChip } from '@cmsgov/design-system';
 
 function FilterChipExample() {

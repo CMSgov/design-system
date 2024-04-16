@@ -1,4 +1,3 @@
-import React from 'react';
 import { Spinner } from '@cmsgov/design-system';
 
 function SpinnerExample() {

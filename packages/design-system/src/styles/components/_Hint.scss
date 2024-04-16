@@ -6,7 +6,6 @@
   // If a theme doesn't have a font size for hint messages defined, it will fall back to inheriting the font size from its parent
   font-size: var(--hint__font-size, inherit);
   font-weight: var(--font-weight-normal);
-
   margin-block: 0;
   max-width: var(--form__max-width);
 }

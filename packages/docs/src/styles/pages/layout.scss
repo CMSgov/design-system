@@ -29,6 +29,7 @@ body {
   .page-body__content {
     .ds-c-table {
       margin-top: $spacer-2;
+
       ol,
       ul {
         margin-top: 0;
@@ -42,15 +43,19 @@ body {
   > h2 {
     @extend .ds-text-heading--2xl;
   }
+
   > h3 {
     @extend .ds-text-heading--xl;
   }
+
   > h4 {
     @extend .ds-text-heading--lg;
   }
+
   > h5 {
     @extend .ds-text-heading--md;
   }
+
   > h6 {
     @extend .ds-text-heading--sm;
   }
@@ -59,18 +64,22 @@ body {
   .c-configuration-options .ds-c-table {
     width: 100%;
   }
+
   .c-configuration-options th,
   .c-prop-table th {
     background-color: var(--color-gray-lightest);
   }
+
   .c-configuration-options td,
   .c-prop-table td {
     border-color: var(--color-gray-lighter);
   }
+
   .c-configuration-options p,
   .c-prop-table p {
     font-size: var(--font-size-sm);
   }
+
   .ds-c-alert {
     margin-top: $spacer-2;
   }
@@ -91,7 +100,7 @@ blockquote {
   padding: $spacer-2 $spacer-2 $spacer-2 $spacer-6;
   position: relative;
 
-  &:before {
+  &::before {
     color: var(--color-gray-light);
     content: '\201C';
     font-family: var(--font-serif);

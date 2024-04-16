@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/cms-design-system-docs",
-  "version": "9.0.1",
+  "version": "10.0.0-beta.3",
   "private": true,
   "description": "CMS Design System Documentation",
   "keywords": [
@@ -16,11 +16,15 @@
     "typecheck": "tsc --noEmit"
   },
   "browserslist": [
-    "> 2%",
-    "Last 2 versions"
+    ">2% in US and not dead",
+    "last 6 Chrome versions",
+    "last 6 Firefox versions",
+    "last 6 Edge major versions",
+    "Safari >= 15",
+    "iOS >= 15"
   ],
   "dependencies": {
-    "@cmsgov/design-system": "9.0.1",
+    "@cmsgov/design-system": "10.0.0-beta.3",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "classnames": "^2.3.1",
@@ -49,9 +53,5 @@
     "@types/react": "^18.2.6",
     "@types/react-dom": "^17.0.10",
     "copyfiles": "^2.4.1"
-  },
-  "peerDependencies": {
-    "react": ">=16.0.0",
-    "react-dom": ">=16.0.0"
   }
 }

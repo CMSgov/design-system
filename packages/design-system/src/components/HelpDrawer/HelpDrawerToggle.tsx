@@ -1,4 +1,4 @@
-import React from 'react';
+import type * as React from 'react';
 import DrawerToggle, { DrawerToggleProps } from '../Drawer/DrawerToggle';
 import classNames from 'classnames';
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import { createRef } from 'react';
 import DateInput, { DateInputProps } from './DateInput';
 import userEvent from '@testing-library/user-event';

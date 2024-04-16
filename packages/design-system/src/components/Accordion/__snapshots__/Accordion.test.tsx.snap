@@ -30,7 +30,6 @@ exports[`Accordion renders accordion 1`] = `
       </button>
     </h2>
     <div
-      aria-labelledby="1__button"
       class="ds-c-accordion__content"
       hidden=""
       id="1"
@@ -64,7 +63,6 @@ exports[`Accordion renders accordion 1`] = `
       </button>
     </h2>
     <div
-      aria-labelledby="2__button"
       class="ds-c-accordion__content"
       hidden=""
       id="2"

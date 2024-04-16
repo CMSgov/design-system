@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { SingleInputDateField } from '@cmsgov/design-system';
 
 function SingleInputDateFieldExample() {

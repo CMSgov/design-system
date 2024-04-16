@@ -1,4 +1,3 @@
-import React from 'react';
 import classNames from 'classnames';
 import ColorSwatch from './ColorSwatch';
 import { getThemeColorValue, ThemeName } from '../../helpers/themeTokens';

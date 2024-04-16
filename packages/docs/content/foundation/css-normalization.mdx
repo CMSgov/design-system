@@ -9,9 +9,9 @@ The design system includes a set of global CSS rules that aim to normalize (remo
 
 Our reset CSS is bundled with the rest of the design system's styles, so to use it all you need to do is [import the design system's CSS](/getting-started/for-developers/#including-the-css) using your preferred method. Even if you haven't imported one of our components, your application should visually align with the design system.
 
-<Alert heading="Why do we need to normalize CSS?" className="ds-u-measure--wide">
+<Alert heading="Why do we need to normalize CSS?">
 
-  Each browser has default styles that it applies to various HTML elements. Not all browsers have the same default styles (called user-agent styles), which means that websites without custom CSS will look different when viewed from different browsers. Even when creating custom CSS, web developers must take those different default styles into account and make sure they are overridden appropriately. This can be tedious and error-prone, so a common practice among developers is to either remove or normalize (remove the differences in) those user-agent styles with a collection of base CSS rules before applying any CSS that controls the look-and-feel of the site.
+Each browser has default styles that it applies to various HTML elements. Not all browsers have the same default styles (called user-agent styles), which means that websites without custom CSS will look different when viewed from different browsers. Even when creating custom CSS, web developers must take those different default styles into account and make sure they are overridden appropriately. This can be tedious and error-prone, so a common practice among developers is to either remove or normalize (remove the differences in) those user-agent styles with a collection of base CSS rules before applying any CSS that controls the look-and-feel of the site.
 
 </Alert>
 
@@ -31,7 +31,7 @@ Our normalization rules include some globally-defined defaults that will impact 
 
 ### Headings
 
-All heading elements will receive the font styles defined by their parent element using the `font: inherit` rule. 
+All heading elements will receive the font styles defined by their parent element using the `font: inherit` rule.
 
 [`font`](https://developer.mozilla.org/en-US/docs/Web/CSS/font) is a shorthand property that encompasses several font styles, but the key thing to note is a heading will now inherit the `font-family` and `font-size` of its parent or `<body>` element. This rule ensures the semantics of a heading element are distinct from its appearance. If you need to style a heading, refer to our [headings](/foundation/typography/headings/) or [utility class](/utilities/overview/) documentation.
 
@@ -45,11 +45,12 @@ The `<ol>` and `<ul>` elements have been styled to match their [`.ds-c-list`](/f
 
 If you want a particular list to be unstyled, add a `role="list"` attribute. Applying this attribute will both avoid the default normalization styles that come with the design system and apply additional CSS to strip it of browser default styling. You can [read more about the accessibility concern of unstyled lists here](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type#accessibility_concerns) and how adding the list role will help.
 
-<Alert heading="My inline list is broken!" variation="warn" className="ds-u-measure--wide">
+<Alert heading="My inline list is broken!" variation="warn">
 
-  If you had a `ul` and `ol` element prior to v7 that used [flexbox](/utilities/flexbox/) to lay items out horizontally and it's suddenly stacking its list items vertically, you have two options:
-  1. Add a `role="list"` attribute, which will disable the default normalization rules. ([See list guidance](/foundation/typography/list/#accessibility))
-  2. Add `flex-direction: row` to override its new `flex-direction: column` behavior. You may also need to adjust the `gap` property and override the new default.
+If you had a `ul` and `ol` element prior to v7 that used [flexbox](/utilities/flexbox/) to lay items out horizontally and it's suddenly stacking its list items vertically, you have two options:
+
+1. Add a `role="list"` attribute, which will disable the default normalization rules. ([See list guidance](/foundation/typography/list/#accessibility))
+2. Add `flex-direction: row` to override its new `flex-direction: column` behavior. You may also need to adjust the `gap` property and override the new default.
 
 </Alert>
 
@@ -57,7 +58,7 @@ If you want a particular list to be unstyled, add a `role="list"` attribute. App
 
 Various form elements have been rebooted for simpler base styles. Here are some of the most notable changes:
 
-- The `<input>`, `<button>`, `<textarea>`, and `<select>` elements receive the font styles defined by their parent element using the `font: inherit` rule. 
+- The `<input>`, `<button>`, `<textarea>`, and `<select>` elements receive the font styles defined by their parent element using the `font: inherit` rule.
 - All `:disabled` fields have `cursor: not-allowed` to prevent user confusion.
 - Checkboxes and radio buttons use `accent-color` (set to a theme's defined "checked" color). This makes sure the `:checked` state of these inputs matches the theme of your site, even if you aren't using our [Choice component](/components/checkbox/).
 - `<fieldset>` has no `border`, `margin`, or `padding` so they can be easily used as wrappers for individual inputs or groups of inputs.

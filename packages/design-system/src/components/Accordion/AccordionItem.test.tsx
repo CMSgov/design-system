@@ -1,4 +1,3 @@
-import React from 'react';
 import AccordionItem from './AccordionItem';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -67,7 +66,6 @@ describe('AccordionItem', function () {
 
     expect(buttonEl).toHaveAttribute('aria-controls', contentEl.id);
     expect(buttonEl).toHaveAttribute('id');
-    expect(contentEl).toHaveAttribute('aria-labelledby', buttonEl.id);
     expect(contentEl).toHaveAttribute('id');
   });
 
@@ -79,7 +77,6 @@ describe('AccordionItem', function () {
 
     expect(buttonEl).toHaveAttribute('aria-controls', 'test-id');
     expect(buttonEl).toHaveAttribute('id', 'test-id__button');
-    expect(contentEl).toHaveAttribute('aria-labelledby', 'test-id__button');
     expect(contentEl).toHaveAttribute('id', 'test-id');
   });
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import humanizeList from 'humanize-react';
 import { useOf } from '@storybook/blocks';
 

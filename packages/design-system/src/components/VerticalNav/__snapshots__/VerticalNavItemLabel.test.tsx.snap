@@ -28,7 +28,6 @@ exports[`VerticalNavItemLabel with subnav shows a down arrow when collapsed 1`] 
     aria-controls="foo-subnav"
     aria-expanded="false"
     class="ds-c-vertical-nav__label ds-c-vertical-nav__label--parent"
-    title="Expand sub-navigation"
   >
     Foo
     <svg
@@ -53,7 +52,6 @@ exports[`VerticalNavItemLabel with subnav shows an up arrow when not collapsed 1
     aria-controls="foo-subnav"
     aria-expanded="true"
     class="ds-c-vertical-nav__label ds-c-vertical-nav__label--parent"
-    title="Collapse sub-navigation"
   >
     Foo
     <svg

@@ -18,6 +18,7 @@
 
 .ds-c-spinner {
   @include spinner-size($spacer-4, $spacer-4);
+
   display: inline-block;
   position: relative;
 
@@ -57,6 +58,7 @@
 
 .ds-c-spinner--filled {
   @include spinner-size($spacer-4, $spacer-6);
+
   background-color: var(--spinner__background-color);
   border-radius: 50%;
   color: var(--spinner__color);
@@ -65,6 +67,7 @@
 
   &.ds-c-spinner--inverse {
     background-color: var(--spinner__background-color--inverse);
+
     &:not(:focus) {
       color: var(--spinner__color--inverse);
     }
@@ -91,6 +94,7 @@
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }

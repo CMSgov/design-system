@@ -1,4 +1,3 @@
-import React from 'react';
 import PrivacySettingsTable from './PrivacySettingsTable';
 import { Button } from '../Button/index';
 import { Dialog } from '../Dialog/index';

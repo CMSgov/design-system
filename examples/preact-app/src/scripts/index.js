@@ -30,7 +30,7 @@ const Example = function () {
 
       <div className="ds-l-container ds-u-padding-top--2">
         <div className="ds-u-measure--base">
-          <h1 className="ds-h1">Preact-app example</h1>
+          <h1 className="ds-text-heading--3xl">Preact-app example</h1>
           <Alert heading="Hello world">
             <p className="ds-c-alert__text">You did it! You&rsquo;ve run the example.</p>
             {open && (

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { ArgsTable, Description, Primary, Subtitle, Title } from '@storybook/blocks';
+import { useState } from 'react';
 import { HelpDrawer } from './HelpDrawer';
 import { Button } from '../Button';
 import { action } from '@storybook/addon-actions';
@@ -7,10 +8,32 @@ import type { Meta, StoryObj } from '@storybook/react';
 const meta: Meta<typeof HelpDrawer> = {
   title: 'Components/HelpDrawer',
   component: HelpDrawer,
+  argTypes: {
+    backdropClickExits: {
+      // Until this pattern has solidified, we're not going to advertize this feature.
+      table: {
+        disable: true,
+      },
+    },
+  },
   args: {
     footerTitle: 'Footer Title',
-    footerBody: <p className="ds-text ds-u-margin--0">Footer content</p>,
+    footerBody: <p className="ds-text-body--md ds-u-margin--0">Footer content</p>,
     heading: 'HelpDrawer Heading',
+  },
+  parameters: {
+    docs: {
+      // Customize so we can exclude the backdropClickExits
+      page: () => (
+        <>
+          <Title />
+          <Subtitle />
+          <Description />
+          <Primary />
+          <ArgsTable exclude={['backdropClickExits']} />
+        </>
+      ),
+    },
   },
 };
 export default meta;
@@ -59,7 +82,7 @@ export const Default: Story = {
         <HelpDrawer
           onCloseClick={hideDrawer}
           footerTitle="Footer Title"
-          footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
+          footerBody={<p className="ds-text-body--md ds-u-margin--0">Footer content</p>}
           heading="HelpDrawer Heading"
           isOpen={isDrawerVisible}
         >
