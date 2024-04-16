@@ -27,10 +27,10 @@ import Layout from '../layouts/Layout.astro';
         <ds-button variation="solid" is-alternate="true" id="the-button" class="ds-u-margin-top--1">Break things</ds-button>
       </ds-alert>
 
-      <ds-choice label="foo" type="checkbox" name="bar">
-        <!-- <div slot="checked-children">
+      <ds-choice type="checkbox" id="baz" label="foo" name="bar">
+        <div slot="checked-children">
           <ds-alert variation="error">checked child</ds-alert>
-        </div> -->
+        </div>
         <div slot="unchecked-children">
           <ds-alert>unchecked child</ds-alert>
         </div>
@@ -61,6 +61,25 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </main>
 </Layout>
+      
+<style>
+  ds-choice[default-checked=true], ds-choice[checked=true] {
+    & [slot="checked-children"] {
+      display: block;
+    }
+    & [slot="unchecked-children"] {
+      display: none;
+    }
+  }
+  ds-choice[default-checked=false], ds-choice[checked=false] {
+    & [slot="checked-children"] {
+      display: none;
+    }
+    & [slot="unchecked-children"] {
+      display: block;
+    }
+  }
+</style>
 
 <script>
   document.getElementById('the-button').addEventListener('click', function () {
