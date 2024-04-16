@@ -172,14 +172,15 @@ function proxyEvents(props, eventNames, CustomElement) {
  * See [Custom element lifecycle callbacks](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements#custom_element_lifecycle_callbacks)
  * for more details.
  */
-function onConnected(this: CustomElement) {
+async function onConnected(this: CustomElement) {
   const attributes = getElementAttributes.call(this);
-  const props = this.getAttribute('props');
+  const propsAttribute = this.getAttribute('props');
   const json = this.querySelector('[type="application/json"]');
-  const data = parseJson.call(this, props || json?.innerHTML || '{}');
+  const data = parseJson.call(this, propsAttribute || json?.innerHTML || '{}');
 
   const eventHandlers = proxyEvents(this.__properties, this.__options.events, this);
 
+  // Remove the json script tag from the DOM after we've used it
   json?.remove();
 
   let children = this.__children;
@@ -188,51 +189,34 @@ function onConnected(this: CustomElement) {
     children = parseHtml.call(this);
   }
 
+  // Save these properties for use in subsequent renders
   this.__properties = { ...this.__slots, ...data, ...attributes, ...eventHandlers };
   this.__children = children || [];
 
-  this.removeAttribute('server');
-  this.innerHTML = '';
-
-  const result = this.__componentFunction();
-  const renderer = (component: ComponentFactory) => finaliseComponent.call(this, component);
-
-  if (isPromise(result)) {
-    getAsyncComponent(result, this.tagName).then(renderer);
-
-    return;
+  let component = this.__componentFunction();
+  if (isPromise(component)) {
+    component = await getAsyncComponent(component, this.tagName);
   }
-
-  renderer(result);
-}
-
-/* -----------------------------------
- *
- * Finalise
- *
- * -------------------------------- */
-
-function finaliseComponent(this: CustomElement, component: ComponentFactory<IProps>) {
-  const { tagName } = this;
-  const { wrapComponent } = this.__options;
 
   if (!component) {
-    console.error(ErrorTypes.Missing, `: <${tagName.toLowerCase()}>`);
-
+    console.error(ErrorTypes.Missing, `: <${this.tagName.toLowerCase()}>`);
     return;
   }
 
+  const { wrapComponent } = this.__options;
   if (wrapComponent) {
     component = wrapComponent(component);
   }
 
   this.__component = component;
   this.__mounted = true;
+  this.removeAttribute('server');
+  this.innerHTML = '';
 
   const props = {
     ...this.__properties,
     parent: this,
-    children: this.__children,
+    children,
   };
 
   render(h(component, props), this);
