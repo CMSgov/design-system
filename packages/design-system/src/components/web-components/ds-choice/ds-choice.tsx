@@ -41,30 +41,22 @@ declare global {
 }
 /* eslint-enable */
 
-interface WrapperProps extends Omit<ChoiceProps, 'checked' | 'defaultChecked' | 'disabled'> {
-  disabled?: string;
-  rootId?: string;
-  defaultChecked?: string;
+interface WrapperProps
+  extends Omit<ChoiceProps, 'checked' | 'defaultChecked' | 'disabled' | 'inversed'> {
   checked?: string;
-  checkedChildren?: string;
-  uncheckedChildren?: string;
+  defaultChecked?: string;
+  disabled?: string;
+  inversed?: string;
+  rootId?: string;
 }
 
-const Wrapper = ({
-  checkedChildren,
-  uncheckedChildren,
-  checked,
-  defaultChecked,
-  rootId,
-  ...otherProps
-}: WrapperProps) => (
+const Wrapper = ({ checked, defaultChecked, rootId, ...otherProps }: WrapperProps) => (
   <Choice
     {...otherProps}
     checked={parseBooleanAttr(defaultChecked) || parseBooleanAttr(checked)}
     disabled={parseBooleanAttr(otherProps.disabled)}
     id={rootId}
-    checkedChildren={checkedChildren}
-    uncheckedChildren={otherProps['unchecked-children']}
+    inversed={parseBooleanAttr(otherProps.inversed)}
   ></Choice>
 );
 

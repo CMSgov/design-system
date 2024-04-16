@@ -41,10 +41,10 @@ export default {
         "A unique ID to be used for the input field, as well as the label's `for` attribute. A unique ID will be generated if one isn't provided.",
       control: 'text',
     },
-    // inversed: {
-    //   description: 'Applies the "inverse" UI theme',
-    //   control: 'boolean',
-    // },
+    inversed: {
+      description: 'Applies the "inverse" UI theme',
+      control: 'boolean',
+    },
     size: {
       description: 'Sets the size of the input to `"small"`',
       options: [undefined, 'small'],
@@ -137,7 +137,16 @@ const Template = (args) => {
     };
   });
 
-  return <ds-choice {...args} />;
+  return (
+    <ds-choice {...args}>
+      <div slot="checked-children">
+        <ds-alert variation="error">checked children</ds-alert>
+      </div>
+      <div slot="unchecked-children">
+        <ds-alert>unchecked children</ds-alert>
+      </div>
+    </ds-choice>
+  );
 };
 
 export const Default = Template.bind({});
@@ -146,7 +155,5 @@ export const CheckedChildren = {
   render: Template,
   args: {
     'default-checked': true,
-    'checked-children': <p>checked</p>,
-    'unchecked-children': <p>unchecked</p>,
   },
 };
