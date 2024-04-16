@@ -27,6 +27,15 @@ import Layout from '../layouts/Layout.astro';
         <ds-button variation="solid" is-alternate="true" id="the-button" class="ds-u-margin-top--1">Break things</ds-button>
       </ds-alert>
 
+      <ds-choice label="foo" type="checkbox" name="bar">
+        <!-- <div slot="checked-children">
+          <ds-alert variation="error">checked child</ds-alert>
+        </div> -->
+        <div slot="unchecked-children">
+          <ds-alert>unchecked child</ds-alert>
+        </div>
+      </ds-choice>
+
       <h2 class="ds-text-heading--2xl">Adding machine</h2>
       <form id="calculator">
         <ds-dropdown
