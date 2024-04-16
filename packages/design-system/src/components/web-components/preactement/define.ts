@@ -30,7 +30,7 @@ function define<P = {}>(
   const elementTag = getElementTag(tagName);
 
   if (!preRender) {
-    customElements.define(elementTag, setupElement(componentFunction, options));
+    customElements.define(elementTag, createCustomElement(componentFunction, options));
 
     return;
   }
@@ -56,13 +56,16 @@ function define<P = {}>(
     ]);
 }
 
-/* -----------------------------------
- *
- * Setup
- *
- * -------------------------------- */
-
-function setupElement<T>(componentFunction: ComponentFunction<T>, options: IOptions = {}): any {
+/**
+ * Returns a custom element class for this component, which the browser can use to
+ * instantiate new instances of the web component when it finds one in the DOM. The
+ * expectation is that the returned class (the constructor) will be passed to the
+ * `customElements.define` function to register it with the browser.
+ */
+function createCustomElement<T>(
+  componentFunction: ComponentFunction<T>,
+  options: IOptions = {}
+): any {
   const { attributes = [] } = options;
 
   class CustomElement extends HTMLElement {
@@ -109,8 +112,15 @@ function setupElement<T>(componentFunction: ComponentFunction<T>, options: IOpti
   return CustomElement;
 }
 
-// Using part of Voorhoede's register function to implement custom event handlers
-// https://github.com/voorhoede/preact-web-components-demo/blob/main/src/lib/register.js#L158
+/**
+ * Defines custom events on an instance of the custom element (the actual element)
+ * according to the provided list of event names and makes sure those events are
+ * correctly dispatched when the underlying Preact component calls its corresponding
+ * event-handler callbacks.
+ *
+ * This was inspired by Voorhoede's register function here:
+ * https://github.com/voorhoede/preact-web-components-demo/blob/main/src/lib/register.js#L158
+ */
 function proxyEvents(props, eventNames, CustomElement) {
   const callbacks = {};
 
@@ -153,12 +163,15 @@ function proxyEvents(props, eventNames, CustomElement) {
   return callbacks;
 }
 
-/* -----------------------------------
+/**
+ * Called each time one of these custom elements is added to the document and does all
+ * the magic to make the thing work. It gathers the attributes, slots, and event handler
+ * functions and packages them up to send to the underlying Preact component as props
+ * through a Preact render call.
  *
- * Connected
- *
- * -------------------------------- */
-
+ * See [Custom element lifecycle callbacks](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements#custom_element_lifecycle_callbacks)
+ * for more details.
+ */
 function onConnected(this: CustomElement) {
   const attributes = getElementAttributes.call(this);
   const props = this.getAttribute('props');
@@ -195,42 +208,6 @@ function onConnected(this: CustomElement) {
 
 /* -----------------------------------
  *
- * Attribute
- *
- * -------------------------------- */
-
-function onAttributeChange(this: CustomElement, name: string, original: string, updated: string) {
-  if (!this.__mounted) {
-    return;
-  }
-
-  updated = updated == null ? void 0 : updated;
-
-  let props = this.__properties;
-
-  if (name === 'props') {
-    props = { ...props, ...parseJson.call(this, updated) };
-  } else {
-    props[getPropKey(name)] = updated;
-  }
-
-  this.__properties = props;
-
-  render(h(this.__component, { ...props, parent: this, children: this.__children }), this);
-}
-
-/* -----------------------------------
- *
- * Disconnected
- *
- * -------------------------------- */
-
-function onDisconnected(this: CustomElement) {
-  render(null, this);
-}
-
-/* -----------------------------------
- *
  * Finalise
  *
  * -------------------------------- */
@@ -259,6 +236,41 @@ function finaliseComponent(this: CustomElement, component: ComponentFactory<IPro
   };
 
   render(h(component, props), this);
+}
+
+/**
+ * Called when attributes are changed, added, removed, or replaced. Gathers up the prop
+ * changes and merges them with the previously defined props and uses those props to
+ * re-render the underlying Preact component.
+ *
+ * See [Custom element lifecycle callbacks](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements#custom_element_lifecycle_callbacks)
+ * for more details.
+ */
+function onAttributeChange(this: CustomElement, name: string, original: string, updated: string) {
+  if (!this.__mounted) {
+    return;
+  }
+
+  updated = updated == null ? void 0 : updated;
+
+  let props = this.__properties;
+
+  if (name === 'props') {
+    props = { ...props, ...parseJson.call(this, updated) };
+  } else {
+    props[getPropKey(name)] = updated;
+  }
+
+  this.__properties = props;
+
+  render(h(this.__component, { ...props, parent: this, children: this.__children }), this);
+}
+
+/**
+ * Called each time the element is removed from the document.
+ */
+function onDisconnected(this: CustomElement) {
+  render(null, this);
 }
 
 /* -----------------------------------
