@@ -1,6 +1,5 @@
-import { h, render, ComponentFactory, FunctionComponent } from 'preact';
+import { h, render, FunctionComponent } from 'preact';
 import {
-  IProps,
   ErrorTypes,
   CustomElement,
   isPromise,
@@ -68,9 +67,10 @@ function createCustomElement<T>(
 ): any {
   const { attributes = [] } = options;
 
-  class CustomElement extends HTMLElement {
+  class TheCustomElement extends HTMLElement implements CustomElement {
     __mounted = false;
     __componentFunction = componentFunction;
+    __component;
     __properties = {};
     __slots = {};
     __children = void 0;
@@ -89,10 +89,29 @@ function createCustomElement<T>(
     public disconnectedCallback() {
       onDisconnected.call(this);
     }
+
+    /**
+     * Uses Preact to render the component to this element, using props derived from the
+     * current value of `this.__properties` and `this.__children`.
+     */
+    public renderPreactComponent() {
+      if (!this.__component) {
+        console.error(ErrorTypes.Missing, `: <${this.tagName.toLowerCase()}>`);
+        return;
+      }
+
+      const props = {
+        ...this.__properties,
+        parent: this,
+        children: this.__children,
+      };
+
+      render(h(this.__component, props), this);
+    }
   }
 
   attributes.forEach((name) => {
-    Object.defineProperty(CustomElement.prototype, name, {
+    Object.defineProperty(TheCustomElement.prototype, name, {
       get() {
         return this.__properties[name];
       },
@@ -109,7 +128,7 @@ function createCustomElement<T>(
     });
   });
 
-  return CustomElement;
+  return TheCustomElement;
 }
 
 /**
@@ -210,16 +229,9 @@ async function onConnected(this: CustomElement) {
 
   this.__component = component;
   this.__mounted = true;
-  this.removeAttribute('server');
   this.innerHTML = '';
-
-  const props = {
-    ...this.__properties,
-    parent: this,
-    children,
-  };
-
-  render(h(component, props), this);
+  this.removeAttribute('server');
+  this.renderPreactComponent();
 }
 
 /**
@@ -247,7 +259,7 @@ function onAttributeChange(this: CustomElement, name: string, original: string, 
 
   this.__properties = props;
 
-  render(h(this.__component, { ...props, parent: this, children: this.__children }), this);
+  this.renderPreactComponent();
 }
 
 /**
