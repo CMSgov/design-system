@@ -28,7 +28,7 @@ The following CSS variables can be overridden to customize Form components:
 
 ## Guidance
 
-- Labels/Legends are built in to all design-system form fields but can be used on their own to create custom fields.
+- Labels/Legends are built into all design-system form fields but can be used on their own to create custom fields.
 - Label/Legend text should be short and in sentence case.
 - Avoid colons at the end of labels and legends.
 - Don't place links or other interactive text in labels or legends. Those should go in the [hint text](/components/hint).
@@ -42,15 +42,16 @@ The following CSS variables can be overridden to customize Form components:
 
 ### Legend
 
-- Use a single legend for fieldset (this is required). One example of a common use of fieldset and legend is a question with radio button options for answers. The question text and radio buttons are wrapped in a fieldset, with the question itself being inside the legend tag.
+- Use a single legend for fieldset (required). One example of a common use of fieldset and legend is a question with radio button options for answers. The question text and radio buttons are wrapped in a fieldset, with the question itself being inside the legend tag.
 
 ### Content
 
-- Describe what the user needs to do when the field is selected.
-- Use a phrase or complete sentence.
-- Start with an action verb and pair it with a noun to help it be clearer. Example: `Enter your age.`
-- Use the fewest words possible (i.e. don't use "please").
 - Use sentence case.
+- Content style for labels varies based on the user experience and its goals.
+  - Form fields can use traditional labels for many items. (Examples: "First name," "Last name," "Address," etc.) Traditional labels don’t need punctuation.
+  - Form labels and decision helpers can use completes sentences (imperatives or questions) for user understanding or conversational feel. (Examples: "Tell us why you need a faster decision." "Select a reason for your request." "Do you want to see costs when you compare X?" "Do you have another mailing address?") Include punctuation.
+- For imperative labels, start with an action verb and pair it with a noun to help it be clearer. Example: "Enter your age."
+- Use the fewest words possible. Don't use "please" or add unnecessary explanation/context in your label. Instead, use hint text or hint text with a help drawer link to provide information the user must have to correctly enter their answer. 
 
 ### Accessibility testing
 
