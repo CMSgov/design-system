@@ -87,8 +87,6 @@ export default {
     'requirement-label': { control: 'text' },
   },
   args: {
-    'checked-children': 'Checked children',
-    'unchecked-children': 'Unchecked children',
     type: 'checkbox',
     label: 'I agree to the above terms and conditions',
     hint: 'This is some additional hint text',
@@ -107,8 +105,13 @@ export default {
           description: 'Dispatched whenever the choice `checked` value changes.',
           eventObjectDescription: (
             <>
-              <code>event.details.target.value</code> - The <code>value</code> of the selected
-              option
+              <p>
+                <code>event.details.target.value</code> - The <code>value</code> of the selected
+                option
+              </p>
+              <p>
+                <code>event.details.target.checked</code> - A boolean representing the checked state
+              </p>
             </>
           ),
         },
@@ -122,7 +125,11 @@ export default {
   decorators: [webComponentDecorator],
 };
 
-const Template = (args) => {
+const Template = ({
+  'checked-children': checkedChildren,
+  'unchecked-children': uncheckedChildren,
+  ...args
+}) => {
   useEffect(() => {
     const onChange = (event) => {
       action('ds-change')(event);
@@ -141,14 +148,28 @@ const Template = (args) => {
 
   return (
     <ds-choice {...args}>
-      <div slot="checked-children">
-        <div className="ds-c-alert">{args['checked-children']}</div>
-      </div>
-      <div slot="unchecked-children">
-        <div className="ds-c-alert">{args['unchecked-children']}</div>
-      </div>
+      {checkedChildren && (
+        <div slot="checked-children">
+          <div className="ds-c-alert ds-u-margin-top--1">{checkedChildren}</div>
+        </div>
+      )}
+      {uncheckedChildren && (
+        <div slot="unchecked-children">
+          <div className="ds-c-alert ds-u-margin-top--1">{uncheckedChildren}</div>
+        </div>
+      )}
     </ds-choice>
   );
 };
 
 export const Default = Template.bind({});
+
+export const CheckedChildren = {
+  render: Template,
+  args: {
+    'default-checked': 'true',
+    'checked-children':
+      // Note that we're hard-coding an alert around it in the template for now
+      'Based on the household information you provided, this option will give you the maximum savings. We are adding some filler text just to show what it looks like when you have a long alert as the checkedChildren of a Choice component.',
+  },
+};
