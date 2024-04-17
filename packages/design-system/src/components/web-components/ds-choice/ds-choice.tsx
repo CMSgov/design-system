@@ -53,7 +53,8 @@ interface WrapperProps
 const Wrapper = ({ checked, defaultChecked, rootId, ...otherProps }: WrapperProps) => (
   <Choice
     {...otherProps}
-    checked={parseBooleanAttr(defaultChecked) || parseBooleanAttr(checked)}
+    checked={checked && Boolean(JSON.parse(checked))}
+    defaultChecked={defaultChecked && Boolean(JSON.parse(defaultChecked))}
     disabled={parseBooleanAttr(otherProps.disabled)}
     id={rootId}
     inversed={parseBooleanAttr(otherProps.inversed)}

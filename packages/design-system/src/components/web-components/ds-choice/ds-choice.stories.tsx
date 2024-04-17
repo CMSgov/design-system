@@ -21,11 +21,11 @@ export default {
     'checked-children': {
       description:
         'Content to be shown when the choice is checked. See **Checked children and the expose within pattern** on the Guidance tab for detailed instructions.',
-      control: 'object',
+      control: 'text',
     },
     'unchecked-children': {
       description: 'Content to be shown when the choice is not checked',
-      control: 'object',
+      control: 'text',
     },
     disabled: { description: 'Disables the entire field.', control: 'boolean' },
     'class-name': {
@@ -87,6 +87,8 @@ export default {
     'requirement-label': { control: 'text' },
   },
   args: {
+    'checked-children': 'Checked children',
+    'unchecked-children': 'Unchecked children',
     type: 'checkbox',
     label: 'I agree to the above terms and conditions',
     hint: 'This is some additional hint text',
@@ -139,13 +141,13 @@ const Template = (args) => {
 
   return (
     <ds-choice {...args}>
-      {!!args.checked || !!args['default-checked'] ? (
+      {args.checked || args['default-checked'] ? (
         <div slot="checked-children">
-          <ds-alert variation="error">checked children</ds-alert>
+          <div className="ds-c-alert">{args['checked-children']}</div>
         </div>
       ) : (
         <div slot="unchecked-children">
-          <ds-alert>unchecked children</ds-alert>
+          <div className="ds-c-alert">{args['unchecked-children']}</div>
         </div>
       )}
     </ds-choice>
@@ -153,10 +155,3 @@ const Template = (args) => {
 };
 
 export const Default = Template.bind({});
-
-export const CheckedChildren = {
-  render: Template,
-  args: {
-    'default-checked': true,
-  },
-};
