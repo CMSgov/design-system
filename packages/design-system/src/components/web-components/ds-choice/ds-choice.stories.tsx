@@ -141,15 +141,12 @@ const Template = (args) => {
 
   return (
     <ds-choice {...args}>
-      {args.checked || args['default-checked'] ? (
-        <div slot="checked-children">
-          <div className="ds-c-alert">{args['checked-children']}</div>
-        </div>
-      ) : (
-        <div slot="unchecked-children">
-          <div className="ds-c-alert">{args['unchecked-children']}</div>
-        </div>
-      )}
+      <div slot="checked-children">
+        <div className="ds-c-alert">{args['checked-children']}</div>
+      </div>
+      <div slot="unchecked-children">
+        <div className="ds-c-alert">{args['unchecked-children']}</div>
+      </div>
     </ds-choice>
   );
 };
