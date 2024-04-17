@@ -1,21 +1,20 @@
-import Choice, { ChoiceProps, ChoiceType } from './Choice';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import './ds-choice';
 
-const defaultProps = {
+const defaultAttrs = {
   name: 'foo',
   value: 'boo',
-  type: 'checkbox' as ChoiceType,
+  type: 'checkbox',
   label: 'George Washington',
   id: 'static-id',
 };
 
-function renderChoice(customProps = {}) {
-  const props: ChoiceProps = { ...defaultProps, ...customProps };
-  return render(<Choice {...props} />);
+function renderChoice(customAttrs = {}) {
+  return render(<ds-choice {...defaultAttrs} {...customAttrs} />);
 }
 
-describe.skip('Choice', () => {
+describe('Choice', () => {
   it('is a radio', () => {
     const { asFragment } = renderChoice({ type: 'radio' });
     expect(asFragment()).toMatchSnapshot();
@@ -52,12 +51,12 @@ describe.skip('Choice', () => {
   });
 
   it('is defaultChecked', () => {
-    renderChoice({ defaultChecked: true });
+    renderChoice({ 'default-checked': true });
     const el = screen.getByRole('checkbox');
     expect(el).toBeChecked();
   });
 
-  it('is required', () => {
+  it.skip('is required', () => {
     renderChoice({ required: true });
     const input = screen.queryByLabelText('George Washington');
     expect(input).toBeRequired();
@@ -66,37 +65,26 @@ describe.skip('Choice', () => {
   it('has a hint and requirementLabel', () => {
     const { asFragment } = renderChoice({
       hint: 'Hello world',
-      requirementLabel: 'Optional',
-    });
-    expect(asFragment()).toMatchSnapshot();
-  });
-
-  it('accepts a node as innerHTML', () => {
-    const { asFragment } = renderChoice({
-      label: (
-        <p>
-          <strong>Hello</strong> World
-        </p>
-      ),
+      'requirement-label': 'Optional',
     });
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('applies custom class to input', () => {
-    renderChoice({ inputClassName: 'foo' });
+    renderChoice({ 'input-class-name': 'foo' });
     const input = screen.getByLabelText('George Washington');
     expect(input).toHaveClass('foo');
   });
 
   it('applies custom class to label', () => {
-    const { container } = renderChoice({ labelClassName: 'bar' });
+    const { container } = renderChoice({ 'label-class-name': 'bar' });
     const label = container.querySelector('label');
     expect(label).toHaveClass('bar');
   });
 
   it('applies errorMessage to label', () => {
     const errorMessage = "Hey! You can't do that!";
-    const { asFragment } = renderChoice({ errorMessage });
+    const { asFragment } = renderChoice({ 'error-message': errorMessage });
     expect(asFragment()).toMatchSnapshot();
   });
 
@@ -131,7 +119,7 @@ describe.skip('Choice', () => {
   });
 
   it('accepts a custom id', () => {
-    renderChoice({ id: 'custom_id' });
+    renderChoice({ 'root-id': 'custom_id' });
     const el = screen.getByRole('checkbox');
     expect(el.id).toBe('custom_id');
   });
@@ -139,13 +127,13 @@ describe.skip('Choice', () => {
   it('generates a unique id', () => {
     const props = {
       name: 'presidents',
-      label: defaultProps.label,
-      type: defaultProps.type,
+      label: defaultAttrs.label,
+      type: defaultAttrs.type,
     };
     const { container } = render(
       <div>
-        <Choice value="a" {...props} />
-        <Choice value="b" {...props} />
+        <ds-choice value="a" {...props} />
+        <ds-choice value="b" {...props} />
       </div>
     );
 
@@ -198,87 +186,42 @@ describe.skip('Choice', () => {
     });
   });
 
-  describe('radio groups', () => {
-    it('uncontrolled radios uncheck when sibling checked', () => {
-      const commonProps = {
-        name: 'foo',
-        type: 'radio' as const,
-      };
-
-      render(
-        <>
-          <Choice {...commonProps} label="A" value="a" id="a" defaultChecked />
-          <Choice {...commonProps} label="B" value="b" id="b" />
-          <Choice {...commonProps} label="C" value="c" id="c" />
-        </>
-      );
-
-      const getRadio = (label: string) => screen.getByLabelText(label) as HTMLInputElement;
-
-      expect(getRadio('A').checked).toBe(true);
-      expect(getRadio('B').checked).toBe(false);
-      expect(getRadio('C').checked).toBe(false);
-
-      userEvent.click(getRadio('B'));
-
-      expect(getRadio('A').checked).toBe(false);
-      expect(getRadio('B').checked).toBe(true);
-      expect(getRadio('C').checked).toBe(false);
-    });
-
-    it('controlled radios do not uncheck when sibling checked', () => {
-      const commonProps = {
-        name: 'foo',
-        type: 'radio' as const,
-      };
-
-      render(
-        <>
-          <Choice {...commonProps} label="A" value="a" id="a" checked />
-          <Choice {...commonProps} label="B" value="b" id="b" checked={false} />
-          <Choice {...commonProps} label="C" value="c" id="c" checked={false} />
-        </>
-      );
-
-      const getRadio = (label: string) => screen.getByLabelText(label) as HTMLInputElement;
-
-      expect(getRadio('A').checked).toBe(true);
-      expect(getRadio('B').checked).toBe(false);
-      expect(getRadio('C').checked).toBe(false);
-
-      userEvent.click(getRadio('B'));
-
-      expect(getRadio('A').checked).toBe(true);
-      expect(getRadio('B').checked).toBe(false);
-      expect(getRadio('C').checked).toBe(false);
-    });
-  });
-
   describe('nested content', () => {
-    const props = {
-      checkedChildren: (
-        <strong data-testid="checked" className="checked-child">
-          I am checked
-        </strong>
-      ),
-      uncheckedChildren: (
-        <strong data-testid="unchecked" className="unchecked-child">
-          I am unchecked
-        </strong>
-      ),
-      name: 'foo',
-      value: 'bar',
-    };
-
     it('renders `uncheckedChildren` when not checked', () => {
-      const { asFragment } = renderChoice(props);
+      const { asFragment } = render(
+        <ds-choice name="foo" value="bar">
+          <div slot="checked-children">
+            <strong data-testid="checked" className="checked-child">
+              I am checked
+            </strong>
+          </div>
+          <div slot="unchecked-children">
+            <strong data-testid="unchecked" className="unchecked-child">
+              I am unchecked
+            </strong>
+          </div>
+        </ds-choice>
+      );
       expect(asFragment()).toMatchSnapshot();
       expect(screen.getByTestId('unchecked').textContent).toBe('I am unchecked');
       expect(screen.queryByTestId('checked')).toBeNull();
     });
 
     it('renders `checkedChildren` when checked', () => {
-      const { asFragment } = renderChoice(props);
+      const { asFragment } = render(
+        <ds-choice type="checkbox" name="foo" value="bar">
+          <div slot="checked-children">
+            <strong data-testid="checked" className="checked-child">
+              I am checked
+            </strong>
+          </div>
+          <div slot="unchecked-children">
+            <strong data-testid="unchecked" className="unchecked-child">
+              I am unchecked
+            </strong>
+          </div>
+        </ds-choice>
+      );
       const el = screen.getByRole('checkbox');
       userEvent.click(el);
       expect(asFragment()).toMatchSnapshot();
@@ -287,21 +230,42 @@ describe.skip('Choice', () => {
     });
 
     it('applies correct aria attributes when checkedChildren is set', () => {
-      const { container } = renderChoice(props);
-      const root = container.firstChild;
+      const { container } = render(
+        <ds-choice name="foo" value="bar">
+          <div slot="checked-children">
+            <strong data-testid="checked" className="checked-child">
+              I am checked
+            </strong>
+          </div>
+          <div slot="unchecked-children">
+            <strong data-testid="unchecked" className="unchecked-child">
+              I am unchecked
+            </strong>
+          </div>
+        </ds-choice>
+      );
+      const root = container.firstChild.firstChild;
       expect(root).toHaveAttribute('aria-live', 'polite');
       expect(root).toHaveAttribute('aria-relevant', 'additions text');
       expect(root).toHaveAttribute('aria-atomic', 'false');
     });
 
-    it('allows for modification of aria attributes', () => {
-      const { container } = renderChoice({
-        ...props,
-        'aria-live': 'off',
-        'aria-relevant': 'text',
-        'aria-atomic': 'true',
-      });
-      const root = container.firstChild;
+    it.skip('allows for modification of aria attributes', () => {
+      const { container } = render(
+        <ds-choice name="foo" value="bar" aria-live="off" aria-relevant="text" aria-atomic="true">
+          <div slot="checked-children">
+            <strong data-testid="checked" className="checked-child">
+              I am checked
+            </strong>
+          </div>
+          <div slot="unchecked-children">
+            <strong data-testid="unchecked" className="unchecked-child">
+              I am unchecked
+            </strong>
+          </div>
+        </ds-choice>
+      );
+      const root = container.firstChild.firstChild;
       expect(root).toHaveAttribute('aria-live', 'off');
       expect(root).toHaveAttribute('aria-relevant', 'text');
       expect(root).toHaveAttribute('aria-atomic', 'true');
