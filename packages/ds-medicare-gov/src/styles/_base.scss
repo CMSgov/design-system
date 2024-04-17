@@ -41,6 +41,7 @@ svg {
     color: var(--color-primary);
     text-decoration-color: var(--color-primary-light);
     text-underline-offset: 3px;
+
     &:hover {
       color: var(--color-primary-darker);
       text-decoration-color: var(--color-primary-darker);
@@ -51,6 +52,7 @@ svg {
 .ds-text-heading--3xl {
   line-height: $spacer-5;
   margin-bottom: 44px;
+
   @media screen and (min-width: $media-width-md) {
     line-height: $spacer-6;
     margin-bottom: 52px;
@@ -60,6 +62,7 @@ svg {
 .ds-text-heading--2xl {
   line-height: $spacer-5;
   margin-bottom: 44px;
+
   @media screen and (max-width: $media-width-md) {
     line-height: $spacer-5;
     margin-bottom: 44px;

@@ -66,6 +66,7 @@
   color: var(--link__color);
   display: inline-block;
   font-weight: var(--font-weight-bold);
+
   // Keep the hit area large by giving it padding on top and bottom, calculated
   // to be about 40px tall at a default font size
   padding: 0.5rem;

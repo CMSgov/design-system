@@ -78,7 +78,6 @@ label,
 
 // Styles inherited by both checkbox and radio
 .ds-c-choice {
-  align-items: center;
   appearance: none;
   background-color: var(--choice__background-color);
   border: var(--choice__border-width) solid var(--choice__border-color);
@@ -87,9 +86,9 @@ label,
   display: grid;
   grid-area: check;
   height: var(--choice__size);
-  justify-items: center;
   margin: 0;
   place-content: center;
+  place-items: center;
   position: relative;
   width: var(--choice__size);
 
@@ -271,6 +270,7 @@ label,
 .ds-c-choice__checkedChild {
   border-inline-start: $spacer-half solid var(--choice__border-color--left);
   margin-block: $spacer-1 $spacer-2;
+
   // @TODO: get rid of this calc
   // The origin of this 2px shift is fuzzy, it seems like it's based on
   // the border on alerts and healthcare.gov insets.

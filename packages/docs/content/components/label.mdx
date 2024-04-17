@@ -53,6 +53,22 @@ The following CSS variables can be overridden to customize Form components:
 - For imperative labels, start with an action verb and pair it with a noun to help it be clearer. Example: "Enter your age."
 - Use the fewest words possible. Don't use "please" or add unnecessary explanation/context in your label. Instead, use hint text or hint text with a help drawer link to provide information the user must have to correctly enter their answer. 
 
+### Accessibility testing
+
+#### General observations
+
+- Labels should be linked to their corresponding input fields via the `for` attribute. The `for` attribute of the label must exactly match the unique `id` of the related form control.
+- No other interactive elements (such as links or buttons) should be included inside the label.
+- Label text should meet [size and contrast requirements](/foundation/typography/body/#accessibility).
+
+#### Screen reader testing
+
+- When the label's input field gets focus, the label should be read out.
+
+#### Pointer device testing
+
+- Clicking the label should focus on its input field.
+
 ## Learn More
 
 - [Form Guidelines](/patterns/Forms/forms/)

@@ -4,8 +4,6 @@
 // Start polyfill styles
 dialog {
   background-color: var(--dialog__background-color);
-  height: -moz-fit-content;
-  height: -webkit-fit-content;
   height: fit-content;
   left: 0;
   margin: auto;
@@ -34,6 +32,7 @@ dialog.fixed {
   top: 50%;
   transform: translate(0, -50%);
 }
+
 // End polyfill styles
 
 .ds-c-dialog {
@@ -55,6 +54,9 @@ dialog.fixed {
   box-sizing: border-box;
   color: var(--color-base); // Needed to override user-agent styles `canvasText`
   display: block;
+
+  // Reset so font size of ancestor elements don't affect the dialog
+  font-size: var(--font-size-base);
   margin: auto;
   margin-block-start: $spacer-6;
   max-width: var(--measure-base);
@@ -98,12 +100,14 @@ dialog.fixed {
   display: flex;
   gap: $spacer-1;
   justify-content: space-between;
+
   // Provide some spacing when the header only includes the close button
   padding-block-end: $spacer-3;
 }
 
 .ds-c-dialog__heading {
   @include base.heading--2xl;
+
   // Resetting the normal heading line-height to make sure there is no extra space above
   // the text that throws it off its top alignment with the close button and the edge of
   // the dialog's inner padding. Makes multi-line headings a little tighter, but the
