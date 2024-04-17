@@ -27,12 +27,9 @@ import Layout from '../layouts/Layout.astro';
         <ds-button variation="solid" is-alternate="true" id="the-button" class="ds-u-margin-top--1">Break things</ds-button>
       </ds-alert>
 
-      <ds-choice type="checkbox" id="baz" label="foo" name="bar">
+      <ds-choice type="checkbox" label="I agree to the terms and conditions" name="agree">
         <div slot="checked-children">
-          <div class="ds-c-alert">checked child</div>
-        </div>
-        <div slot="unchecked-children">
-          <div class="ds-c-alert">unchecked child</div>
+          <div class="ds-c-alert ds-u-margin-top--1">Cool, we hoped you'd check this box.</div>
         </div>
       </ds-choice>
 
