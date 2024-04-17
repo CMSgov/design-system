@@ -10,6 +10,7 @@ const attributes = [
   'default-checked',
   'disabled',
   'error-message',
+  'error-id',
   'hint-id',
   'hint',
   'input-class-name',

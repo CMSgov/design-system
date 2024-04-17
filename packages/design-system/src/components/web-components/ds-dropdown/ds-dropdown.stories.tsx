@@ -32,6 +32,11 @@ export default {
       description: 'Enable the error state by providing an error message',
       control: 'text',
     },
+    'error-id': {
+      description:
+        'The ID of the error message applied to this field. If none is provided, the id will be derived from the `root-id` attribute.',
+      control: 'text',
+    },
     'error-placement': {
       description: 'Location of the error message relative to the field input',
       options: [undefined, 'top', 'bottom'],
@@ -43,6 +48,10 @@ export default {
     },
     hint: {
       description: 'Hint text or HTML',
+      control: 'text',
+    },
+    'hint-id': {
+      description: 'The ID of the hint element',
       control: 'text',
     },
     inversed: {
