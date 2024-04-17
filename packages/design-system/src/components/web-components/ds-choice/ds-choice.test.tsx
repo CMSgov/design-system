@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import './ds-choice';
 
@@ -156,40 +156,47 @@ describe('Choice', () => {
     expect(labelB.getAttribute('for')).toBe(inputB.id);
   });
 
-  describe('event handlers and emitters', () => {
-    let props;
+  it('fires a custom ds-change event', () => {
+    renderChoice();
 
-    beforeEach(() => {
-      props = {
-        onBlur: jest.fn(),
-        onChange: jest.fn(),
-      };
+    const choiceRoot = document.querySelector('ds-choice');
+    const mockHandler = jest.fn();
+    choiceRoot.addEventListener('ds-change', mockHandler);
+
+    const input = screen.getByRole('checkbox');
+    userEvent.click(input);
+
+    expect(mockHandler).toHaveBeenCalledTimes(1);
+    choiceRoot.removeEventListener('ds-change', mockHandler);
+  });
+
+  it('fires a custom ds-blur event', async () => {
+    renderChoice();
+
+    const choiceRoot = document.querySelector('ds-choice');
+    const onBlur = jest.fn();
+    const onChange = jest.fn();
+    choiceRoot.addEventListener('ds-blur', onBlur);
+    choiceRoot.addEventListener('ds-change', onChange);
+
+    userEvent.tab();
+    userEvent.tab();
+
+    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+    await act(async () => {
+      await sleep(40);
     });
 
-    it('calls the onChange handler', () => {
-      renderChoice(props);
-      const el = screen.getByRole('checkbox');
-      userEvent.click(el);
-
-      expect(props.onBlur).toHaveBeenCalledTimes(0);
-      expect(props.onChange).toHaveBeenCalledTimes(1);
-    });
-
-    it('calls the onBlur handler', () => {
-      renderChoice(props);
-      const el = screen.getByLabelText('George Washington');
-      el.focus();
-      userEvent.tab();
-
-      expect(props.onBlur).toHaveBeenCalledTimes(1);
-      expect(props.onChange).toHaveBeenCalledTimes(0);
-    });
+    expect(onBlur).toHaveBeenCalledTimes(1);
+    expect(onChange).not.toHaveBeenCalled();
+    choiceRoot.removeEventListener('ds-blur', onBlur);
+    choiceRoot.removeEventListener('ds-change', onChange);
   });
 
   describe('nested content', () => {
-    it('renders `uncheckedChildren` when not checked', () => {
+    it('renders checked and unchecked children appropriately', () => {
       const { asFragment } = render(
-        <ds-choice name="foo" value="bar">
+        <ds-choice {...defaultAttrs}>
           <div slot="checked-children">
             <strong data-testid="checked" className="checked-child">
               I am checked
@@ -205,33 +212,18 @@ describe('Choice', () => {
       expect(asFragment()).toMatchSnapshot();
       expect(screen.getByTestId('unchecked').textContent).toBe('I am unchecked');
       expect(screen.queryByTestId('checked')).toBeNull();
-    });
 
-    it('renders `checkedChildren` when checked', () => {
-      const { asFragment } = render(
-        <ds-choice type="checkbox" name="foo" value="bar">
-          <div slot="checked-children">
-            <strong data-testid="checked" className="checked-child">
-              I am checked
-            </strong>
-          </div>
-          <div slot="unchecked-children">
-            <strong data-testid="unchecked" className="unchecked-child">
-              I am unchecked
-            </strong>
-          </div>
-        </ds-choice>
-      );
-      const el = screen.getByRole('checkbox');
-      userEvent.click(el);
-      expect(asFragment()).toMatchSnapshot();
+      // Then check it and see if it re-rendered
+      const input = screen.getByRole('checkbox');
+      userEvent.click(input);
+
       expect(screen.getByTestId('checked').textContent).toBe('I am checked');
       expect(screen.queryByTestId('unchecked')).toBeNull();
     });
 
     it('applies correct aria attributes when checkedChildren is set', () => {
       const { container } = render(
-        <ds-choice name="foo" value="bar">
+        <ds-choice {...defaultAttrs}>
           <div slot="checked-children">
             <strong data-testid="checked" className="checked-child">
               I am checked
@@ -252,7 +244,7 @@ describe('Choice', () => {
 
     it.skip('allows for modification of aria attributes', () => {
       const { container } = render(
-        <ds-choice name="foo" value="bar" aria-live="off" aria-relevant="text" aria-atomic="true">
+        <ds-choice {...defaultAttrs} aria-live="off" aria-relevant="text" aria-atomic="true">
           <div slot="checked-children">
             <strong data-testid="checked" className="checked-child">
               I am checked

@@ -170,51 +170,14 @@ exports[`Choice is a radio 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Choice nested content renders \`checkedChildren\` when checked 1`] = `
+exports[`Choice nested content renders checked and unchecked children appropriately 1`] = `
 <DocumentFragment>
   <ds-choice
+    id="static-id"
+    label="George Washington"
     name="foo"
     type="checkbox"
-    value="bar"
-  >
-    <div
-      aria-atomic="false"
-      aria-live="polite"
-      aria-relevant="additions text"
-    >
-      <div
-        class="ds-c-choice-wrapper"
-      >
-        <input
-          class="ds-c-choice"
-          id="choice--24"
-          name="foo"
-          parent="[object HTMLElement]"
-          type="checkbox"
-          value="bar"
-        />
-        <label
-          class="ds-c-label"
-          for="choice--24"
-          id="choice--24__label"
-        />
-      </div>
-      <strong
-        class="checked-child"
-        data-testid="checked"
-      >
-        I am checked
-      </strong>
-    </div>
-  </ds-choice>
-</DocumentFragment>
-`;
-
-exports[`Choice nested content renders \`uncheckedChildren\` when not checked 1`] = `
-<DocumentFragment>
-  <ds-choice
-    name="foo"
-    value="bar"
+    value="boo"
   >
     <div
       aria-atomic="false"
@@ -229,12 +192,16 @@ exports[`Choice nested content renders \`uncheckedChildren\` when not checked 1`
           id="choice--23"
           name="foo"
           parent="[object HTMLElement]"
+          type="checkbox"
+          value="boo"
         />
         <label
           class="ds-c-label"
           for="choice--23"
           id="choice--23__label"
-        />
+        >
+          George Washington
+        </label>
       </div>
       <strong
         class="unchecked-child"
