@@ -52,6 +52,22 @@ The following CSS variables can be overridden to customize Form components:
 - Use the fewest words possible (i.e. don't use "please").
 - Use sentence case.
 
+### Accessibility testing
+
+#### General observations
+
+- Labels should be linked to their corresponding input fields via the `for` attribute. The `for` attribute of the label must exactly match the unique `id` of the related form control.
+- No other interactive elements (such as links or buttons) should be included inside the label.
+- Label text should meet [size and contrast requirements](/foundation/typography/body/#accessibility).
+
+#### Screen reader testing
+
+- When the label's input field gets focus, the label should be read out.
+
+#### Pointer device testing
+
+- Clicking the label should focus on its input field.
+
 ## Learn More
 
 - [Form Guidelines](/patterns/Forms/forms/)
