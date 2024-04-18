@@ -13,12 +13,19 @@ import { parseHtml } from './parse';
 import { IOptions, ComponentFunction } from './model';
 import { kebabCaseIt } from 'case-it/kebab';
 
-/* -----------------------------------
+/**
+ * Registers the provided Preact component as a custom element in the browser. It can
+ * also generate a custom element with props ready for hydration if run on the server.
  *
- * Define
+ * @param tagName - a valid custom element name (must include at least one hyphen)
+ * @param componentFunction - Function that returns the Preact component factory used to
+ * render this custom element to the DOM. Can be async for dynamic imports. For example,
+ * a valid value could be `() => Alert`, where `Alert` is a Preact component.
+ * @param options - additional information used to create the custom component out of a
+ * Preact component. (See type definition for details.)
  *
- * -------------------------------- */
-
+ * @returns undefined or an SSR component (if executed in a non-browser environment)
+ */
 function define<P = {}>(
   tagName: string,
   componentFunction: ComponentFunction<P>,
