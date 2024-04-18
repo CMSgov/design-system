@@ -26,7 +26,7 @@ import { kebabCaseIt } from 'case-it/kebab';
  *
  * @returns undefined or an SSR component (if executed in a non-browser environment)
  */
-function define<P = {}>(
+export function define<P = {}>(
   tagName: string,
   componentFunction: ComponentFunction<P>,
   options: IOptions = {}
@@ -288,11 +288,3 @@ function renderPreactComponent(this: CustomElement) {
 
   render(h(this.__component, props), this);
 }
-
-/* -----------------------------------
- *
- * Export
- *
- * -------------------------------- */
-
-export { define };
