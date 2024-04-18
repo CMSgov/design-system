@@ -72,6 +72,7 @@ function generateWebpackConfig({ preact = false, webComponents = false }) {
         'classnames',
       ],
       ...[
+        // TODO: Read the web-components folder for `ds-` prefixed folders instead of hardcoding
         'ds-alert',
         'ds-badge',
         'ds-button',

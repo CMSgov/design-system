@@ -99,6 +99,7 @@ function createCustomElement<T>(
     }
 
     public attributeChangedCallback(...args) {
+      console.log('attributeChangedCallback', ...args);
       onAttributeChange.call(this, ...args);
     }
 
@@ -243,7 +244,7 @@ async function onConnected(this: CustomElement) {
  * See [Custom element lifecycle callbacks](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements#custom_element_lifecycle_callbacks)
  * for more details.
  */
-function onAttributeChange(this: CustomElement, name: string, original: string, updated: string) {
+function onAttributeChange(this: CustomElement, name: string, _original: string, updated: string) {
   if (!this.__mounted) {
     return;
   }
@@ -285,6 +286,12 @@ function renderPreactComponent(this: CustomElement) {
     parent: this,
     children: this.__children,
   };
+
+  // Now what would happen if we did `this.innerHTML = '';` before each render?
+  console.log('rendering', this.tagName);
+  this.innerHTML = '';
+  // Hmm, it's calling this render function twice when I change the variation of an alert.
+  // Looks like it's calling onAttributeChange twice.
 
   render(h(this.__component, props), this);
 }
