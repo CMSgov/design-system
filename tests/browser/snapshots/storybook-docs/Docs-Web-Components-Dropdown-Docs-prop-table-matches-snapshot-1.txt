@@ -25,6 +25,11 @@
     "\"true\"\"false\""
   ],
   [
+    "error-id",
+    "The ID of the error message applied to this field. If none is provided, the id will be derived from the `root-id` attribute.",
+    "string"
+  ],
+  [
     "error-message",
     "Enable the error state by providing an error message",
     "string"
@@ -42,6 +47,11 @@
   [
     "hint",
     "Hint text or HTML",
+    "string"
+  ],
+  [
+    "hint-id",
+    "The ID of the hint element",
     "string"
   ],
   [
