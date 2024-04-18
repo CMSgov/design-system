@@ -23,23 +23,32 @@ function define<P = {}>(
   tagName: string,
   componentFunction: ComponentFunction<P>,
   options: IOptions = {}
-): FunctionComponent<P> {
-  const { wrapComponent } = options;
-  const preRender = typeof window === 'undefined';
+): FunctionComponent<P> | undefined {
   const elementTag = getElementTag(tagName);
 
-  if (!preRender) {
+  if (typeof window === 'undefined') {
+    return createServerSideRenderFunction(elementTag, componentFunction, options);
+  } else {
     customElements.define(elementTag, createCustomElement(componentFunction, options));
-
-    return;
   }
+}
 
+/**
+ * Custom elements don't work in server-side-rendering contexts, so return a Preact/React
+ * component that can be rendered to the page.
+ */
+function createServerSideRenderFunction<P = {}>(
+  elementTag: string,
+  componentFunction: ComponentFunction<P>,
+  options: IOptions = {}
+): FunctionComponent<P> {
   let component = componentFunction();
 
   if (isPromise(component)) {
-    throw new Error(`${ErrorTypes.Promise} : <${tagName}>`);
+    throw new Error(`${ErrorTypes.Promise} : <${elementTag}>`);
   }
 
+  const { wrapComponent } = options;
   if (wrapComponent) {
     component = wrapComponent(component);
   }
