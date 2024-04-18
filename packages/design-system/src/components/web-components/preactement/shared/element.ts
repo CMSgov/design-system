@@ -1,5 +1,5 @@
 import { getAttributeProps } from './parse';
-import { IComponent, CustomElement } from './model';
+import { IComponent, CustomElement, ErrorTypes } from './model';
 
 /* -----------------------------------
  *
@@ -40,8 +40,11 @@ function getComponentResult(response: IComponent, tagName: string) {
 function getElementTag(tagName: string) {
   let result = tagName.toLowerCase();
 
-  if (result.indexOf('-') < 0) {
-    result = 'component-' + result;
+  if (!result.includes('-')) {
+    throw new Error(
+      `${ErrorTypes.Tag} : <${tagName}>` +
+        '\n\nhttps://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/define#valid_custom_element_names\n'
+    );
   }
 
   return result;
