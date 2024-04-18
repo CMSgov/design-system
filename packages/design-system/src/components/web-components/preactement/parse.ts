@@ -20,7 +20,7 @@ function parseHtml(this: CustomElement): VNode | string {
     return void 0;
   }
 
-  const { vnode, slots } = convertToVDom(dom, this.__slots);
+  const { vnode, slots } = convertToVDom(dom);
   this.__slots = slots;
 
   return vnode;
