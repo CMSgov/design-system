@@ -1,4 +1,4 @@
-import { h, ComponentFactory, Fragment } from 'preact';
+import { h, ComponentFactory, Fragment, VNode } from 'preact';
 import {
   CustomElement,
   getDocument,
@@ -13,16 +13,17 @@ import {
  *
  * -------------------------------- */
 
-function parseHtml(this: CustomElement): ComponentFactory<{}> {
+function parseHtml(this: CustomElement): VNode | string {
   const dom = getDocument(this.innerHTML);
 
   if (!dom) {
     return void 0;
   }
 
-  const result = convertToVDom.call(this, dom);
+  const { vnode, slots } = convertToVDom(dom, this.__slots);
+  this.__slots = slots;
 
-  return result;
+  return vnode;
 }
 
 /* -----------------------------------
@@ -31,40 +32,54 @@ function parseHtml(this: CustomElement): ComponentFactory<{}> {
  *
  * -------------------------------- */
 
-function convertToVDom(this: CustomElement, node: Element) {
+type Slots = { [k: string]: VNode<any> | string };
+
+function convertToVDom(
+  node: Node,
+  slots: Slots = {}
+): { vnode: VNode<any> | string | null; slots: Slots } {
   if (node.nodeType === 3) {
-    return node.textContent || '';
+    return { vnode: node.textContent || '', slots };
   }
 
   if (node.nodeType !== 1) {
-    return null;
+    return { vnode: null, slots };
   }
 
   const nodeName = String(node.nodeName).toLowerCase();
   const childNodes = Array.from(node.childNodes);
+  const children = [];
+  for (const childNode of childNodes) {
+    const { vnode, slots: childSlots } = convertToVDom(childNode, slots);
+    slots = { ...slots, ...childSlots };
+    children.push(vnode);
+  }
 
-  const children = () => childNodes.map((child) => convertToVDom.call(this, child));
-  const { slot, ...props } = getAttributeObject(node.attributes);
+  const { slot, ...props } = getAttributeObject((node as Element).attributes);
 
   if (nodeName === 'script') {
-    return null;
+    return { vnode: null, slots };
   }
 
   if (nodeName === 'body') {
-    return h(Fragment, {}, children());
+    return { vnode: h(Fragment, {}, children), slots };
   }
 
   if (selfClosingTags.includes(nodeName)) {
-    return h(nodeName, props);
+    return { vnode: h(nodeName, props), slots };
   }
 
   if (slot) {
-    this.__slots[getPropKey(slot)] = getSlotChildren(children());
-
-    return null;
+    return {
+      vnode: null,
+      slots: {
+        ...slots,
+        [getPropKey(slot)]: getSlotChildren(children),
+      },
+    };
   }
 
-  return h(nodeName, props, children());
+  return { vnode: h(nodeName, props, children), slots };
 }
 
 /* -----------------------------------
@@ -73,7 +88,7 @@ function convertToVDom(this: CustomElement, node: Element) {
  *
  * -------------------------------- */
 
-function getSlotChildren(children: JSX.Element[]) {
+function getSlotChildren(children: Array<VNode | string | null>) {
   const isString = (item) => typeof item === 'string';
 
   if (children.every(isString)) {

@@ -50,18 +50,18 @@ describe('parse', () => {
       const testKey = 'testSlot';
 
       it('should remove <* slot="{key}"> and apply to props', () => {
-        const slots = {};
         const slotValue = 'slotValue';
 
         const slotHtml = `<em slot="${testKey}">${slotValue}</em>`;
         const headingHtml = `<h1>${testHeading}</h1>`;
         const testHtml = `<section>${headingHtml}${slotHtml}</section>`;
 
-        const result = parseHtml.call({ innerHTML: testHtml, __slots: slots });
+        const elementObject = { innerHTML: testHtml };
+        const result = parseHtml.call(elementObject);
         const { container } = render(result);
 
         expect(container.innerHTML).toEqual(`<section>${headingHtml}</section>`);
-        expect(slots).toEqual({ [testKey]: slotValue });
+        expect(elementObject.__slots).toEqual({ [testKey]: slotValue });
       });
     });
   });
