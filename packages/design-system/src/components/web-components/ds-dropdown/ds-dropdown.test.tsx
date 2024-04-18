@@ -15,7 +15,7 @@ function renderDropdown(attrs = {}) {
   return render(<ds-dropdown {...defaultAttrs} {...attrs} />);
 }
 
-describe('Button', () => {
+describe('Dropdown', () => {
   it('renders a dropdown', () => {
     const { asFragment } = renderDropdown();
     expect(asFragment()).toMatchSnapshot();

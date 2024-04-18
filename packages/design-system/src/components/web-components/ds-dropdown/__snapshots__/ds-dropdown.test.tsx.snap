@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button renders a dropdown 1`] = `
+exports[`Dropdown renders a dropdown 1`] = `
 <DocumentFragment>
   <ds-dropdown
     label="Dropdown label"
@@ -89,7 +89,7 @@ exports[`Button renders a dropdown 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Button renders a dropdown using html options 1`] = `
+exports[`Dropdown renders a dropdown using html options 1`] = `
 <DocumentFragment>
   <ds-dropdown
     label="Dropdown label"
