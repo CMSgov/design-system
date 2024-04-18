@@ -99,7 +99,7 @@ function createCustomElement<T>(
     }
 
     public attributeChangedCallback(...args) {
-      console.log('attributeChangedCallback', ...args);
+      // console.log('attributeChangedCallback', ...args);
       onAttributeChange.call(this, ...args);
     }
 
@@ -288,7 +288,7 @@ function renderPreactComponent(this: CustomElement) {
   };
 
   // Now what would happen if we did `this.innerHTML = '';` before each render?
-  console.log('rendering', this.tagName);
+  // console.log('rendering', this.tagName);
   this.innerHTML = '';
   // Hmm, it's calling this render function twice when I change the variation of an alert.
   // Looks like it's calling onAttributeChange twice.
