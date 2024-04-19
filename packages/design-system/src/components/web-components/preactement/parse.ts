@@ -20,7 +20,7 @@ function parseHtml(this: CustomElement): VNode | string {
     return void 0;
   }
 
-  const { vnode, slots } = convertToVDom(dom);
+  const { vnode, slots } = domToVirtual(dom);
   this.__slots = slots;
 
   return vnode;
@@ -28,13 +28,13 @@ function parseHtml(this: CustomElement): VNode | string {
 
 /* -----------------------------------
  *
- * convertToVDom
+ * domToVirtual
  *
  * -------------------------------- */
 
 type Slots = { [k: string]: VNode<any> | string };
 
-function convertToVDom(
+export function domToVirtual(
   node: Node,
   slots: Slots = {}
 ): { vnode: VNode<any> | string | null; slots: Slots } {
@@ -50,7 +50,7 @@ function convertToVDom(
   const childNodes = Array.from(node.childNodes);
   const children = [];
   for (const childNode of childNodes) {
-    const { vnode, slots: childSlots } = convertToVDom(childNode, slots);
+    const { vnode, slots: childSlots } = domToVirtual(childNode, slots);
     slots = { ...slots, ...childSlots };
     children.push(vnode);
   }

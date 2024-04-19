@@ -8,8 +8,9 @@ import {
   getPropKey,
   getElementAttributes,
   getAsyncComponent,
+  getDocument,
 } from './shared';
-import { parseHtml } from './parse';
+import { domToVirtual, parseHtml } from './parse';
 import { IOptions, ComponentFunction } from './model';
 import { kebabCaseIt } from 'case-it/kebab';
 
@@ -204,15 +205,15 @@ async function onConnected(this: CustomElement) {
   // Remove the json script tag from the DOM after we've used it
   json?.remove();
 
-  let children = this.__children;
+  // let children = this.__children;
 
-  if (!this.__mounted && !this.hasAttribute('server')) {
-    children = parseHtml.call(this);
-  }
+  // if (!this.__mounted && !this.hasAttribute('server')) {
+  //   children = parseHtml.call(this);
+  // }
 
   // Save these properties for use in subsequent renders
-  this.__properties = { ...this.__slots, ...data, ...attributes, ...eventHandlers };
-  this.__children = children || [];
+  this.__properties = { ...data, ...attributes, ...eventHandlers };
+  // this.__children = children || [];
 
   let component = this.__componentFunction();
   if (isPromise(component)) {
@@ -230,10 +231,10 @@ async function onConnected(this: CustomElement) {
   }
 
   this.__component = component;
-  this.__mounted = true;
-  this.innerHTML = '';
+  // this.innerHTML = '';
   this.removeAttribute('server');
   this.renderPreactComponent();
+  this.__mounted = true;
 }
 
 /**
@@ -276,22 +277,108 @@ function onDisconnected(this: CustomElement) {
  * value of `this.__properties` and `this.__children`.
  */
 function renderPreactComponent(this: CustomElement) {
+  console.log(this.tagName, 'rendering ');
   if (!this.__component) {
     console.error(ErrorTypes.Missing, `: <${this.tagName.toLowerCase()}>`);
     return;
   }
 
+  if (!this.hasAttribute('server')) {
+    // Check if there's new content outside of the component root, which will become our
+    // new this.__children and this.__slots.
+    console.log(this.tagName, 'innerHTML', this.innerHTML);
+    let dom = getDocument(this.innerHTML);
+    if (dom) {
+      const componentRoot = dom.querySelector('.component-root') as HTMLElement;
+      // if (this.__children) {
+      //   // Only ignore existing component roots if we've previously
+      //   // stored some children. Otherwise, we're going to end up clearing the only
+      //   // possible children we have, which in this case is likely a previously rendered
+      //   // custom element that was stringified and clobbered by its parent.
+      //   if (componentRoot) {
+      //     componentRoot.remove();
+      //   }
+      // } else {
+
+      // }
+
+      if (componentRoot) {
+        componentRoot.remove();
+        console.log(this.tagName, 'does it exist after removing?', componentRoot);
+      }
+
+      if (componentRoot && !this.__children) {
+        console.log(
+          this.tagName,
+          "there's a component root without children! it also has",
+          dom.childNodes
+        );
+      }
+      const hasNothingElse = dom.childNodes.length === 0;
+      if (!this.__children && hasNothingElse && componentRoot) {
+        // If we don't have children or anything else but a componentRoot, use the
+        // componentRoot. It probably means this was a previously rendered custom element
+        // that was stringified by its parent and re-initialized, which means it would
+        // be a fresh instance without any memory of past renders.
+        dom = componentRoot;
+        console.log(this.tagName, "!!!!! there's a component root without children !!!!!!");
+      }
+
+      // if (componentRoot && !this.__children) {
+      //   console.log(this.tagName, "there's a component root without children!!!")
+      // }
+      // console.log(this.tagName, '__children 1', this.__children)
+      // console.log(this.tagName, 'dom', dom)
+      // if (componentRoot) {
+      //   componentRoot.remove();
+      // }
+      if (dom.childNodes.length) {
+        console.log(
+          this.tagName,
+          "hey, there's something here, so we're gonna update the __children"
+        );
+        const { vnode, slots } = domToVirtual(dom);
+        this.__children = vnode || [];
+        console.log(this.tagName, '__children 2', this.__children);
+        this.__slots = slots;
+      }
+    }
+  }
+
+  console.log(this.tagName, '__children 3', this.__children);
   const props = {
     ...this.__properties,
     parent: this,
     children: this.__children,
+    slots: this.__slots,
   };
+
+  // WAIT, WHAT THE HECK? THERE'S AN ALERT INSIDE THE BUTTON INSIDE THE ALERT!!
 
   // Now what would happen if we did `this.innerHTML = '';` before each render?
   // console.log('rendering', this.tagName);
-  this.innerHTML = '';
+  // this.innerHTML = '';
+  // console.log(this.childNodes)
   // Hmm, it's calling this render function twice when I change the variation of an alert.
   // Looks like it's calling onAttributeChange twice.
 
-  render(h(this.__component, props), this);
+  console.log(
+    this.tagName,
+    'found .component-root elements',
+    this.querySelectorAll('.component-root')
+  );
+  let componentRoot = this.querySelector('.component-root');
+  if (!componentRoot) {
+    componentRoot = document.createElement('span');
+    componentRoot.classList.add('component-root');
+    this.appendChild(componentRoot);
+  }
+  for (const childNode of this.childNodes) {
+    if (childNode !== componentRoot) {
+      console.log(this.tagName, 'removing', childNode);
+      childNode.remove();
+    }
+  }
+
+  render(h(this.__component, props), componentRoot);
 }
