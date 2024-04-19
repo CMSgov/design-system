@@ -17,4 +17,5 @@ import './ds-badge';
 import './ds-button';
 import './ds-choice';
 import './ds-dropdown';
+import './ds-skip-nav';
 import './ds-usa-banner';
