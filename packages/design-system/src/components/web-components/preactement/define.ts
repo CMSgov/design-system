@@ -89,6 +89,7 @@ function createCustomElement<T>(
     __component;
     __properties = {};
     __options = options;
+    __mutationObserver;
 
     static observedAttributes = ['props', ...attributes];
 
@@ -182,6 +183,14 @@ function proxyEvents(props, eventNames, CustomElement) {
   return callbacks;
 }
 
+function setupMutationObserver(this: CustomElement) {
+  this.__mutationObserver = new MutationObserver((mutations: MutationRecord[]) => {
+    if (mutations.find((mutation: MutationRecord) => mutation.type === 'childList')) {
+      this.renderPreactComponent();
+    }
+  });
+}
+
 /**
  * Called each time one of these custom elements is added to the document and does all
  * the magic to make the thing work. It gathers the attributes, slots, and event handler
@@ -219,6 +228,8 @@ async function onConnected(this: CustomElement) {
   if (wrapComponent) {
     component = wrapComponent(component);
   }
+
+  setupMutationObserver.call(this);
 
   this.__component = component;
   this.removeAttribute('server');
@@ -259,6 +270,7 @@ function onAttributeChange(this: CustomElement, name: string, _original: string,
  */
 function onDisconnected(this: CustomElement) {
   render(null, this);
+  this.__mutationObserver?.disconnect();
 }
 
 function isTemplate(childNode: ChildNode): childNode is HTMLTemplateElement {
@@ -309,6 +321,9 @@ function renderPreactComponent(this: CustomElement) {
     return;
   }
 
+  // Let the mutation observer know we're making changes internally
+  this.__mutationObserver?.disconnect();
+
   let template: HTMLTemplateElement | undefined = [...this.childNodes].find(isTemplate);
   if (!template) {
     template = document.createElement('template');
@@ -334,4 +349,7 @@ function renderPreactComponent(this: CustomElement) {
   render(h(this.__component, props), this);
 
   this.appendChild(template);
+
+  // Reinstate the mutation observer to watch for user changes
+  this.__mutationObserver.observe(this, { childList: true });
 }
