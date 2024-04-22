@@ -1,6 +1,6 @@
 import type * as React from 'react';
 import { define } from '../preactement/define';
-import { Spinner, SpinnerProps } from '../../Spinner';
+import { Spinner } from '../../Spinner';
 import { parseBooleanAttr } from '../wrapperUtils';
 
 const attributes = ['aria-valuetext', 'class-name', 'inversed', 'filled', 'role', 'size'] as const;
@@ -20,14 +20,7 @@ declare global {
 }
 /* eslint-enable */
 
-// Mapping `ariaValuetext` to `aria-valuetext` because prop getting confused with native attr.
-interface WrapperProps extends Omit<SpinnerProps, 'aria-valuetext' | 'filled' | 'inversed'> {
-  ariaValuetext?: string;
-  filled?: string;
-  inversed?: string;
-}
-
-const Wrapper = ({ ariaValuetext, ...otherProps }: WrapperProps) => (
+const Wrapper = ({ ariaValuetext, ...otherProps }) => (
   <Spinner
     {...otherProps}
     aria-valuetext={ariaValuetext}
