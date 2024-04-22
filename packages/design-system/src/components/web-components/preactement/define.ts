@@ -306,7 +306,7 @@ function renderPreactComponent(this: CustomElement) {
     ...this.__properties,
     parent: this,
     children,
-    slots,
+    ...slots,
   };
 
   // Remove everything but the template so we have a clean slate to render our component
