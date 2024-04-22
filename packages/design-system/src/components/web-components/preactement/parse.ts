@@ -33,6 +33,15 @@ function nodeToPreactVNode(node: Node, slots: Slots = {}): VNodeInfo {
   //     slots
   //   }
   // }
+  if (nodeName === 'template') {
+    const templateProps = {
+      dangerouslySetInnerHTML: { __html: (node as HTMLTemplateElement).innerHTML },
+    };
+    return {
+      vnode: h(nodeName, templateProps),
+      slots,
+    };
+  }
   const childNodes = Array.from(node.childNodes);
   const children = [];
   for (const childNode of childNodes) {
