@@ -284,7 +284,24 @@ function unwrapTemplateVNode(vnode: VNode): VNode {
 
 /**
  * Render the Preact component to this element, using props derived from the current
- * value of `this.__properties` and `this.__children`.
+ * value of `this.__properties` and input HTML. After it has rendered once, we have to
+ * avoid using the rendered output as the input of any subsequent renders. Since we
+ * cannot guarantee that it will be re-rendered by the existing CustomElement instance
+ * in browser memory (because a re-render by a parent can destroy this), we must cache
+ * the original input in the DOM itself in the form of a `<template>` element. The
+ * `<template>` element also gives us the added bonus of parsing our HTML automatically
+ * and making it available to use to convert directly into Preact's VNode format. If we
+ * were to try to use the rendered Preact output as input for subsequent renders, we
+ * would get nested, duplicated elements, like so:
+ *
+ * <ds-button>
+ *   <button>
+ *     <button>Hello</button>
+ *   <button>
+ * </ds-button>
+ *
+ * Users can also replace the content by setting the innerHTML to something new, and
+ * we'll just treat it as new input if we don't find the cached template element!
  */
 function renderPreactComponent(this: CustomElement) {
   if (!this.__component) {
