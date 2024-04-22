@@ -295,6 +295,13 @@ function renderPreactComponent(this: CustomElement) {
     return;
   }
 
+  // Default to the root of it for rendering on the server. We're avoiding direct DOM
+  // operations on the server.
+  // TODO: Test to see if this is not even something we need to worry about on the server
+  // because my hypothesis is that this function doesn't get called on the "server".
+  let componentRoot = this;
+  let componentInput;
+
   if (!this.hasAttribute('server')) {
     // Check if there's new content outside of the component root, which will become our
     // new this.__children and this.__slots.
@@ -304,18 +311,6 @@ function renderPreactComponent(this: CustomElement) {
       const childNodes = [...dom.childNodes];
       const componentRoot = childNodes.filter(isComponentRoot)?.[0];
       const otherNodes = childNodes.filter((childNode) => !isComponentRoot(childNode));
-
-      // if (this.__children) {
-      //   // Only ignore existing component roots if we've previously
-      //   // stored some children. Otherwise, we're going to end up clearing the only
-      //   // possible children we have, which in this case is likely a previously rendered
-      //   // custom element that was stringified and clobbered by its parent.
-      //   if (componentRoot) {
-      //     componentRoot.remove();
-      //   }
-      // } else {
-
-      // }
 
       if (componentRoot && !this.__children) {
         console.log(
@@ -334,11 +329,6 @@ function renderPreactComponent(this: CustomElement) {
         console.log(this.tagName, "!!!!! there's a component root without children !!!!!!");
       }
 
-      // if (componentRoot && !this.__children) {
-      //   console.log(this.tagName, "there's a component root without children!!!")
-      // }
-      // console.log(this.tagName, '__children 1', this.__children)
-      // console.log(this.tagName, 'dom', dom)
       if (componentRoot) {
         componentRoot.remove();
       }
@@ -355,6 +345,18 @@ function renderPreactComponent(this: CustomElement) {
         this.__slots = slots;
       }
     }
+
+    componentRoot = [...this.childNodes].find(isComponentRoot) as HTMLElement;
+    if (!componentRoot) {
+      console.log(this.tagName, 'no component root found; creating one');
+      componentRoot = document.createElement('span');
+      componentRoot.classList.add('component-root');
+      this.appendChild(componentRoot);
+    }
+
+    [...this.childNodes]
+      .filter((childNode) => childNode !== componentRoot)
+      .forEach((childNode) => childNode.remove());
   }
 
   console.log(this.tagName, '__children 3', this.__children);
@@ -364,41 +366,6 @@ function renderPreactComponent(this: CustomElement) {
     children: this.__children,
     slots: this.__slots,
   };
-
-  // WAIT, WHAT THE HECK? THERE'S AN ALERT INSIDE THE BUTTON INSIDE THE ALERT!!
-
-  // Now what would happen if we did `this.innerHTML = '';` before each render?
-  // console.log('rendering', this.tagName);
-  // this.innerHTML = '';
-  // console.log(this.childNodes)
-  // Hmm, it's calling this render function twice when I change the variation of an alert.
-  // Looks like it's calling onAttributeChange twice.
-
-  let componentRoot = [...this.childNodes].find(isComponentRoot) as HTMLElement;
-  if (!componentRoot) {
-    console.log(this.tagName, 'no component root found; creating one');
-    componentRoot = document.createElement('span');
-    componentRoot.classList.add('component-root');
-    this.appendChild(componentRoot);
-  }
-  // console.log(this.tagName, 'innerHTML before removal', this.innerHTML);
-  [...this.childNodes]
-    .filter((childNode) => childNode !== componentRoot)
-    .forEach((childNode) => childNode.remove());
-  // console.log(nodesToRemove)
-  // This didn't work because it only iterated through 3 out of 6 nodes in Alert. I needed
-  // to convert the node list to a real array to get all the elements as true members
-  // for (let i = 0; i < this.childNodes.length; i++) {
-  //   const childNode = this.childNodes[i];
-  //   if (childNode !== componentRoot) {
-  //     console.log(this.tagName, 'removing', childNode);
-  //     // childNode.remove();
-  //     this.removeChild(childNode);
-  //   } else {
-  //     console.log(this.tagName, 'not removing', childNode);
-  //   }
-  // }
-  // console.log(this.tagName, 'innerHTML after removal', this.innerHTML);
 
   render(h(this.__component, props), componentRoot);
 }
