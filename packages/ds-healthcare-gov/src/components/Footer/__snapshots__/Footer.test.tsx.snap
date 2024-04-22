@@ -62,25 +62,23 @@ exports[`Footer renders basic footer 1`] = `
               Privacy settings
             </button>
             <dialog
+              aria-labelledby="dialog--1__heading"
               class="ds-c-dialog ds-c-dialog--full"
               id="dialog--1"
               role="dialog"
             >
               <div
-                aria-labelledby="dialog--1__heading"
                 class="ds-c-dialog__window"
-                role="document"
-                tabindex="-1"
               >
                 <header
                   class="ds-c-dialog__header"
                 >
-                  <h1
+                  <h2
                     class="ds-c-dialog__heading"
                     id="dialog--1__heading"
                   >
                     HealthCare.gov privacy settings
-                  </h1>
+                  </h2>
                   <button
                     aria-label="Close modal dialog"
                     class="ds-c-close-button ds-c-dialog__close"
@@ -113,7 +111,6 @@ exports[`Footer renders basic footer 1`] = `
                 </header>
                 <main
                   class="ds-c-dialog__body"
-                  role="main"
                 >
                   <div
                     id="dialog--1__content"
@@ -804,25 +801,23 @@ exports[`Footer renders basic footer with props 1`] = `
               Privacy settings
             </button>
             <dialog
+              aria-labelledby="dialog--6__heading"
               class="ds-c-dialog ds-c-dialog--full"
               id="dialog--6"
               role="dialog"
             >
               <div
-                aria-labelledby="dialog--6__heading"
                 class="ds-c-dialog__window"
-                role="document"
-                tabindex="-1"
               >
                 <header
                   class="ds-c-dialog__header"
                 >
-                  <h1
+                  <h2
                     class="ds-c-dialog__heading"
                     id="dialog--6__heading"
                   >
                     HealthCare.gov privacy settings
-                  </h1>
+                  </h2>
                   <button
                     aria-label="Close modal dialog"
                     class="ds-c-close-button ds-c-dialog__close"
@@ -855,7 +850,6 @@ exports[`Footer renders basic footer with props 1`] = `
                 </header>
                 <main
                   class="ds-c-dialog__body"
-                  role="main"
                 >
                   <div
                     id="dialog--6__content"

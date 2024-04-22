@@ -2,26 +2,24 @@
 
 exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external link dialog 1`] = `
 <dialog
+  aria-labelledby="dialog--8__heading"
   class="ds-c-dialog"
   id="dialog--8"
   open=""
   role="dialog"
 >
   <div
-    aria-labelledby="dialog--8__heading"
     class="ds-c-dialog__window"
-    role="document"
-    tabindex="-1"
   >
     <header
       class="ds-c-dialog__header"
     >
-      <h1
+      <h2
         class="ds-c-dialog__heading"
         id="dialog--8__heading"
       >
         You are leaving bar.
-      </h1>
+      </h2>
       <button
         aria-label="Close modal dialog"
         class="ds-c-close-button ds-c-dialog__close"
@@ -54,7 +52,6 @@ exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external l
     </header>
     <main
       class="ds-c-dialog__body"
-      role="main"
     >
       <div
         id="dialog--8__content"

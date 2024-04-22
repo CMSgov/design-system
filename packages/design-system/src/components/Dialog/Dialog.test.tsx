@@ -32,14 +32,15 @@ describe('Dialog', function () {
   });
 
   it('renders with additional classNames and size', () => {
-    renderDialog({
+    const { container } = renderDialog({
       actions: <span>Pretend these are actions</span>,
       actionsClassName: 'test-action',
       className: 'test-dialog',
       headerClassName: 'test-header',
       size: 'full',
     });
-    expect(screen.getByRole('document')).toMatchSnapshot();
+
+    expect(container.querySelector('.ds-c-dialog__window')).toMatchSnapshot();
   });
 
   it('calls onExit when close button is clicked', () => {
