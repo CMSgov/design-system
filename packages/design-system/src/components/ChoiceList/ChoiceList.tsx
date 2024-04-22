@@ -143,6 +143,7 @@ export const ChoiceList: React.FC<ChoiceListProps> = (props: ChoiceListProps) =>
       aria-invalid={invalid}
       aria-describedby={describeField({ ...props, hintId, errorId })}
       className={classNames('ds-c-fieldset', props.className)}
+      role={props.type === 'radio' ? 'radiogroup' : 'listbox'}
     >
       <Label component="legend" {...labelProps} />
       {hintElement}

@@ -71,6 +71,7 @@ Object {
               <fieldset
                 aria-invalid="false"
                 class="ds-c-fieldset ds-u-margin-top--0"
+                role="radiogroup"
               >
                 <legend
                   class="ds-c-label"
@@ -153,6 +154,7 @@ Object {
               <fieldset
                 aria-invalid="false"
                 class="ds-c-fieldset ds-u-margin-top--0"
+                role="radiogroup"
               >
                 <legend
                   class="ds-c-label"
@@ -235,6 +237,7 @@ Object {
               <fieldset
                 aria-invalid="false"
                 class="ds-c-fieldset ds-u-margin-top--0"
+                role="radiogroup"
               >
                 <legend
                   class="ds-c-label"
@@ -360,6 +363,7 @@ Object {
             <fieldset
               aria-invalid="false"
               class="ds-c-fieldset ds-u-margin-top--0"
+              role="radiogroup"
             >
               <legend
                 class="ds-c-label"
@@ -442,6 +446,7 @@ Object {
             <fieldset
               aria-invalid="false"
               class="ds-c-fieldset ds-u-margin-top--0"
+              role="radiogroup"
             >
               <legend
                 class="ds-c-label"
@@ -524,6 +529,7 @@ Object {
             <fieldset
               aria-invalid="false"
               class="ds-c-fieldset ds-u-margin-top--0"
+              role="radiogroup"
             >
               <legend
                 class="ds-c-label"

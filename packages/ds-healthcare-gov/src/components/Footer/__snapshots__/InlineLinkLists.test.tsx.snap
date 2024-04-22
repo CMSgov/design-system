@@ -197,6 +197,7 @@ exports[`InlineLinkLists renders lists of links 1`] = `
                           <fieldset
                             aria-invalid="false"
                             class="ds-c-fieldset ds-u-margin-top--0"
+                            role="radiogroup"
                           >
                             <legend
                               class="ds-c-label"
@@ -280,6 +281,7 @@ exports[`InlineLinkLists renders lists of links 1`] = `
                           <fieldset
                             aria-invalid="false"
                             class="ds-c-fieldset ds-u-margin-top--0"
+                            role="radiogroup"
                           >
                             <legend
                               class="ds-c-label"
@@ -363,6 +365,7 @@ exports[`InlineLinkLists renders lists of links 1`] = `
                           <fieldset
                             aria-invalid="false"
                             class="ds-c-fieldset ds-u-margin-top--0"
+                            role="radiogroup"
                           >
                             <legend
                               class="ds-c-label"
@@ -830,6 +833,7 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
                           <fieldset
                             aria-invalid="false"
                             class="ds-c-fieldset ds-u-margin-top--0"
+                            role="radiogroup"
                           >
                             <legend
                               class="ds-c-label"
@@ -913,6 +917,7 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
                           <fieldset
                             aria-invalid="false"
                             class="ds-c-fieldset ds-u-margin-top--0"
+                            role="radiogroup"
                           >
                             <legend
                               class="ds-c-label"
@@ -996,6 +1001,7 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
                           <fieldset
                             aria-invalid="false"
                             class="ds-c-fieldset ds-u-margin-top--0"
+                            role="radiogroup"
                           >
                             <legend
                               class="ds-c-label"

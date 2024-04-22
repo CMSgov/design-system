@@ -147,6 +147,7 @@ exports[`PrivacySettingsLink should render with custom class and children 1`] = 
                   <fieldset
                     aria-invalid="false"
                     class="ds-c-fieldset ds-u-margin-top--0"
+                    role="radiogroup"
                   >
                     <legend
                       class="ds-c-label"
@@ -230,6 +231,7 @@ exports[`PrivacySettingsLink should render with custom class and children 1`] = 
                   <fieldset
                     aria-invalid="false"
                     class="ds-c-fieldset ds-u-margin-top--0"
+                    role="radiogroup"
                   >
                     <legend
                       class="ds-c-label"
@@ -313,6 +315,7 @@ exports[`PrivacySettingsLink should render with custom class and children 1`] = 
                   <fieldset
                     aria-invalid="false"
                     class="ds-c-fieldset ds-u-margin-top--0"
+                    role="radiogroup"
                   >
                     <legend
                       class="ds-c-label"
@@ -532,6 +535,7 @@ exports[`PrivacySettingsLink should render with default options 1`] = `
                   <fieldset
                     aria-invalid="false"
                     class="ds-c-fieldset ds-u-margin-top--0"
+                    role="radiogroup"
                   >
                     <legend
                       class="ds-c-label"
@@ -615,6 +619,7 @@ exports[`PrivacySettingsLink should render with default options 1`] = `
                   <fieldset
                     aria-invalid="false"
                     class="ds-c-fieldset ds-u-margin-top--0"
+                    role="radiogroup"
                   >
                     <legend
                       class="ds-c-label"
@@ -698,6 +703,7 @@ exports[`PrivacySettingsLink should render with default options 1`] = `
                   <fieldset
                     aria-invalid="false"
                     class="ds-c-fieldset ds-u-margin-top--0"
+                    role="radiogroup"
                   >
                     <legend
                       class="ds-c-label"

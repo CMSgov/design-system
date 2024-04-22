@@ -201,6 +201,7 @@ exports[`Footer renders basic footer 1`] = `
                             <fieldset
                               aria-invalid="false"
                               class="ds-c-fieldset ds-u-margin-top--0"
+                              role="radiogroup"
                             >
                               <legend
                                 class="ds-c-label"
@@ -284,6 +285,7 @@ exports[`Footer renders basic footer 1`] = `
                             <fieldset
                               aria-invalid="false"
                               class="ds-c-fieldset ds-u-margin-top--0"
+                              role="radiogroup"
                             >
                               <legend
                                 class="ds-c-label"
@@ -367,6 +369,7 @@ exports[`Footer renders basic footer 1`] = `
                             <fieldset
                               aria-invalid="false"
                               class="ds-c-fieldset ds-u-margin-top--0"
+                              role="radiogroup"
                             >
                               <legend
                                 class="ds-c-label"
@@ -940,6 +943,7 @@ exports[`Footer renders basic footer with props 1`] = `
                             <fieldset
                               aria-invalid="false"
                               class="ds-c-fieldset ds-u-margin-top--0"
+                              role="radiogroup"
                             >
                               <legend
                                 class="ds-c-label"
@@ -1023,6 +1027,7 @@ exports[`Footer renders basic footer with props 1`] = `
                             <fieldset
                               aria-invalid="false"
                               class="ds-c-fieldset ds-u-margin-top--0"
+                              role="radiogroup"
                             >
                               <legend
                                 class="ds-c-label"
@@ -1106,6 +1111,7 @@ exports[`Footer renders basic footer with props 1`] = `
                             <fieldset
                               aria-invalid="false"
                               class="ds-c-fieldset ds-u-margin-top--0"
+                              role="radiogroup"
                             >
                               <legend
                                 class="ds-c-label"
