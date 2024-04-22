@@ -2,9 +2,15 @@ import { h, Fragment, VNode } from 'preact';
 import { getAttributeObject, selfClosingTags, getPropKey } from './shared';
 
 type Slots = { [k: string]: VNode<any> | string };
-type VNodeInfo = { vnode: VNode<any> | string | null; slots: Slots };
 
-export function templateToPreactVNode(template: HTMLTemplateElement): VNodeInfo {
+/**
+ * Takes a template element and converts its content into a Preact VNode and also
+ * extracts slot-element information.
+ */
+export function templateToPreactVNode(template: HTMLTemplateElement): {
+  vnode: VNode;
+  slots: Slots;
+} {
   const slots = {};
   const childVNodes = [];
   for (const childElement of template.content.children) {
@@ -16,7 +22,10 @@ export function templateToPreactVNode(template: HTMLTemplateElement): VNodeInfo 
   return { vnode, slots };
 }
 
-function nodeToPreactVNode(node: Node, slots: Slots = {}): VNodeInfo {
+function nodeToPreactVNode(
+  node: Node,
+  slots: Slots = {}
+): { vnode: VNode<any> | string | null; slots: Slots } {
   if (node.nodeType === 3) {
     return { vnode: node.textContent || '', slots };
   }
@@ -26,14 +35,11 @@ function nodeToPreactVNode(node: Node, slots: Slots = {}): VNodeInfo {
   }
 
   const nodeName = String(node.nodeName).toLowerCase();
-  // if (nodeName === 'template') {
-  //   const templateVNode = templateToPreactVNode(node as HTMLTemplateElement).vnode
-  //   return {
-  //     vnode: h(nodeName, getAttributeObject((node as Element).attributes), templateVNode),
-  //     slots
-  //   }
-  // }
+
   if (nodeName === 'template') {
+    // If we don't do this, Preact will clobber the information inside this template.
+    // I've tried parsing the template.content here, but it didn't work, and that
+    // would have been unnecessary processing anyway.
     const templateProps = {
       dangerouslySetInnerHTML: { __html: (node as HTMLTemplateElement).innerHTML },
     };
@@ -42,6 +48,7 @@ function nodeToPreactVNode(node: Node, slots: Slots = {}): VNodeInfo {
       slots,
     };
   }
+
   const childNodes = Array.from(node.childNodes);
   const children = [];
   for (const childNode of childNodes) {

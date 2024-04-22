@@ -1,4 +1,4 @@
-import { h, render, FunctionComponent } from 'preact';
+import { h, render, FunctionComponent, VNode } from 'preact';
 import {
   ErrorTypes,
   CustomElement,
@@ -276,12 +276,27 @@ function isTemplate(childNode: ChildNode): childNode is HTMLTemplateElement {
 }
 
 /**
+ * Because bare text content in the root of a template element doesn't get parsed into
+ * its document fragment by the browser, we need to wrap our input content in an element
+ * when we create it. We will then need to unwrap it when we're ready to render that
+ * content with Preact (see `unwrapTemplateVNode` function).
+ */
+function wrapTemplateHtml(html: string) {
+  return `<span>${html}</span>`;
+}
+
+/**
+ * See `wrapTemplateHtml` function.
+ */
+function unwrapTemplateVNode(vnode: VNode): VNode {
+  return vnode.props.children[0].props.children;
+}
+
+/**
  * Render the Preact component to this element, using props derived from the current
  * value of `this.__properties` and `this.__children`.
  */
 function renderPreactComponent(this: CustomElement) {
-  this.log('rendering with this innerHTML to start:\n', this.innerHTML);
-
   if (!this.__component) {
     console.error(ErrorTypes.Missing, `: <${this.tagName.toLowerCase()}>`);
     return;
@@ -290,18 +305,13 @@ function renderPreactComponent(this: CustomElement) {
   let template: HTMLTemplateElement | undefined = [...this.childNodes].find(isTemplate);
   if (!template) {
     template = document.createElement('template');
-    template.innerHTML = '<span>' + this.innerHTML + '</span>';
-
-    this.log('creating template with this innerHTML:\n', this.innerHTML);
-    this.log('template children:\n', template.content.children);
-  } else {
-    this.log('we actually found a template with this innerHTML\n', template.innerHTML);
+    template.innerHTML = wrapTemplateHtml(this.innerHTML);
   }
 
-  this.log('converting these template children:\n', template.content.children);
-  const { vnode: children, slots } = templateToPreactVNode(template);
+  const { vnode, slots } = templateToPreactVNode(template);
 
-  this.log('using these preact children:\n', children);
+  const children = unwrapTemplateVNode(vnode);
+
   const props = {
     ...this.__properties,
     parent: this,
@@ -312,13 +322,9 @@ function renderPreactComponent(this: CustomElement) {
   // Remove everything but the template so we have a clean slate to render our component
   [...this.childNodes]
     .filter((childNode) => childNode !== template)
-    .forEach((childNode) => {
-      console.log('removing', childNode);
-      childNode.remove();
-    });
+    .forEach((childNode) => childNode.remove());
 
-  this.log('has this innerHTML right before calling preact render:\n', this.innerHTML);
   render(h(this.__component, props), this);
+
   this.appendChild(template);
-  this.log('has this innerHTML right after calling preact render:\n', this.innerHTML);
 }
