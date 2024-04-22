@@ -44,9 +44,9 @@ interface CustomElement<CF = any, C = any> extends HTMLElement {
   __component?: C;
   __properties?: IProps;
   __events?: IProps;
-  __slots?: { [index: string]: any };
   __options: IOptions;
 
+  log(...args: any[]): void;
   renderPreactComponent(): void;
 }
 

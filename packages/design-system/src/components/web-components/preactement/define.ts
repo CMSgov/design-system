@@ -8,9 +8,8 @@ import {
   getPropKey,
   getElementAttributes,
   getAsyncComponent,
-  getDocument,
 } from './shared';
-import { domToVirtual, parseHtml } from './parse';
+import { templateToPreactVNode } from './parse';
 import { IOptions, ComponentFunction } from './model';
 import { kebabCaseIt } from 'case-it/kebab';
 
@@ -92,8 +91,6 @@ function createCustomElement<T>(
     __componentFunction = componentFunction;
     __component;
     __properties = {};
-    __slots = {};
-    __children = void 0;
     __options = options;
     __id = counter++;
 
@@ -114,6 +111,10 @@ function createCustomElement<T>(
 
     public renderPreactComponent() {
       renderPreactComponent.call(this);
+    }
+
+    public log(...args: any[]) {
+      console.log(`${this.tagName} (${(this as any).__id})`, ...args);
     }
   }
 
@@ -209,15 +210,8 @@ async function onConnected(this: CustomElement) {
   // Remove the json script tag from the DOM after we've used it
   json?.remove();
 
-  // let children = this.__children;
-
-  // if (!this.__mounted && !this.hasAttribute('server')) {
-  //   children = parseHtml.call(this);
-  // }
-
   // Save these properties for use in subsequent renders
   this.__properties = { ...data, ...attributes, ...eventHandlers };
-  // this.__children = children || [];
 
   let component = this.__componentFunction();
   if (isPromise(component)) {
@@ -273,15 +267,12 @@ function onAttributeChange(this: CustomElement, name: string, _original: string,
  * Called each time the element is removed from the document.
  */
 function onDisconnected(this: CustomElement) {
-  console.log((this as any).__id, 'disconnected');
+  this.log('disconnected');
   render(null, this);
 }
 
-function isComponentRoot(childNode: ChildNode): boolean {
-  return (
-    !!(childNode as HTMLElement).classList &&
-    (childNode as HTMLElement).classList.contains('component-root')
-  );
+function isTemplate(childNode: ChildNode): childNode is HTMLTemplateElement {
+  return childNode.nodeName.toLowerCase() === 'template';
 }
 
 /**
@@ -289,83 +280,45 @@ function isComponentRoot(childNode: ChildNode): boolean {
  * value of `this.__properties` and `this.__children`.
  */
 function renderPreactComponent(this: CustomElement) {
-  console.log((this as any).__id, this.tagName, 'rendering ');
+  this.log('rendering with this innerHTML to start:\n', this.innerHTML);
+
   if (!this.__component) {
     console.error(ErrorTypes.Missing, `: <${this.tagName.toLowerCase()}>`);
     return;
   }
 
-  // Default to the root of it for rendering on the server. We're avoiding direct DOM
-  // operations on the server.
-  // TODO: Test to see if this is not even something we need to worry about on the server
-  // because my hypothesis is that this function doesn't get called on the "server".
-  let componentRoot = this;
-  let componentInput;
+  let template: HTMLTemplateElement | undefined = [...this.childNodes].find(isTemplate);
+  if (!template) {
+    template = document.createElement('template');
+    template.innerHTML = '<span>' + this.innerHTML + '</span>';
 
-  if (!this.hasAttribute('server')) {
-    // Check if there's new content outside of the component root, which will become our
-    // new this.__children and this.__slots.
-    console.log(this.tagName, 'innerHTML\n', this.innerHTML);
-    let dom = getDocument(this.innerHTML);
-    if (dom) {
-      const childNodes = [...dom.childNodes];
-      const componentRoot = childNodes.filter(isComponentRoot)?.[0];
-      const otherNodes = childNodes.filter((childNode) => !isComponentRoot(childNode));
-
-      if (componentRoot && !this.__children) {
-        console.log(
-          this.tagName,
-          "there's a component root without children! it also has",
-          dom.childNodes
-        );
-      }
-
-      if (!this.__children && otherNodes.length === 0 && componentRoot) {
-        // If we don't have children or anything else but a componentRoot, use the
-        // componentRoot. It probably means this was a previously rendered custom element
-        // that was stringified by its parent and re-initialized, which means it would
-        // be a fresh instance without any memory of past renders.
-        dom = getDocument((componentRoot as HTMLElement).innerHTML);
-        console.log(this.tagName, "!!!!! there's a component root without children !!!!!!");
-      }
-
-      if (componentRoot) {
-        componentRoot.remove();
-      }
-      if (dom.childNodes.length) {
-        console.log(
-          this.tagName,
-          "hey, there's something here, so we're gonna update the __children\n",
-          dom.innerHTML
-        );
-        // Oh, here's the mistake
-        const { vnode, slots } = domToVirtual(dom);
-        this.__children = vnode || [];
-        console.log(this.tagName, '__children 2', this.__children);
-        this.__slots = slots;
-      }
-    }
-
-    componentRoot = [...this.childNodes].find(isComponentRoot) as HTMLElement;
-    if (!componentRoot) {
-      console.log(this.tagName, 'no component root found; creating one');
-      componentRoot = document.createElement('span');
-      componentRoot.classList.add('component-root');
-      this.appendChild(componentRoot);
-    }
-
-    [...this.childNodes]
-      .filter((childNode) => childNode !== componentRoot)
-      .forEach((childNode) => childNode.remove());
+    this.log('creating template with this innerHTML:\n', this.innerHTML);
+    this.log('template children:\n', template.content.children);
+  } else {
+    this.log('we actually found a template with this innerHTML\n', template.innerHTML);
   }
 
-  console.log(this.tagName, '__children 3', this.__children);
+  this.log('converting these template children:\n', template.content.children);
+  const { vnode: children, slots } = templateToPreactVNode(template);
+
+  this.log('using these preact children:\n', children);
   const props = {
     ...this.__properties,
     parent: this,
-    children: this.__children,
-    slots: this.__slots,
+    children,
+    slots,
   };
 
-  render(h(this.__component, props), componentRoot);
+  // Remove everything but the template so we have a clean slate to render our component
+  [...this.childNodes]
+    .filter((childNode) => childNode !== template)
+    .forEach((childNode) => {
+      console.log('removing', childNode);
+      childNode.remove();
+    });
+
+  this.log('has this innerHTML right before calling preact render:\n', this.innerHTML);
+  render(h(this.__component, props), this);
+  this.appendChild(template);
+  this.log('has this innerHTML right after calling preact render:\n', this.innerHTML);
 }

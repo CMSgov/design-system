@@ -1,43 +1,22 @@
-import { h, ComponentFactory, Fragment, VNode } from 'preact';
-import {
-  CustomElement,
-  getDocument,
-  getAttributeObject,
-  selfClosingTags,
-  getPropKey,
-} from './shared';
-
-/* -----------------------------------
- *
- * parseHtml
- *
- * -------------------------------- */
-
-function parseHtml(this: CustomElement): VNode | string {
-  const dom = getDocument(this.innerHTML);
-
-  if (!dom) {
-    return void 0;
-  }
-
-  const { vnode, slots } = domToVirtual(dom);
-  this.__slots = slots;
-
-  return vnode;
-}
-
-/* -----------------------------------
- *
- * domToVirtual
- *
- * -------------------------------- */
+import { h, Fragment, VNode } from 'preact';
+import { getAttributeObject, selfClosingTags, getPropKey } from './shared';
 
 type Slots = { [k: string]: VNode<any> | string };
+type VNodeInfo = { vnode: VNode<any> | string | null; slots: Slots };
 
-export function domToVirtual(
-  node: Node,
-  slots: Slots = {}
-): { vnode: VNode<any> | string | null; slots: Slots } {
+export function templateToPreactVNode(template: HTMLTemplateElement): VNodeInfo {
+  const slots = {};
+  const childVNodes = [];
+  for (const childElement of template.content.children) {
+    const { vnode, slots: childSlots } = nodeToPreactVNode(childElement, slots);
+    Object.assign(slots, childSlots);
+    childVNodes.push(vnode);
+  }
+  const vnode = h(Fragment, {}, childVNodes);
+  return { vnode, slots };
+}
+
+function nodeToPreactVNode(node: Node, slots: Slots = {}): VNodeInfo {
   if (node.nodeType === 3) {
     return { vnode: node.textContent || '', slots };
   }
@@ -47,11 +26,18 @@ export function domToVirtual(
   }
 
   const nodeName = String(node.nodeName).toLowerCase();
+  // if (nodeName === 'template') {
+  //   const templateVNode = templateToPreactVNode(node as HTMLTemplateElement).vnode
+  //   return {
+  //     vnode: h(nodeName, getAttributeObject((node as Element).attributes), templateVNode),
+  //     slots
+  //   }
+  // }
   const childNodes = Array.from(node.childNodes);
   const children = [];
   for (const childNode of childNodes) {
-    const { vnode, slots: childSlots } = domToVirtual(childNode, slots);
-    slots = { ...slots, ...childSlots };
+    const { vnode, slots: childSlots } = nodeToPreactVNode(childNode, slots);
+    Object.assign(slots, childSlots);
     children.push(vnode);
   }
 
@@ -82,12 +68,6 @@ export function domToVirtual(
   return { vnode: h(nodeName, props, children), slots };
 }
 
-/* -----------------------------------
- *
- * getSlotChildren
- *
- * -------------------------------- */
-
 function getSlotChildren(children: Array<VNode | string | null>) {
   const isString = (item) => typeof item === 'string';
 
@@ -97,11 +77,3 @@ function getSlotChildren(children: Array<VNode | string | null>) {
 
   return h(Fragment, {}, children);
 }
-
-/* -----------------------------------
- *
- * Export
- *
- * -------------------------------- */
-
-export { parseHtml };
