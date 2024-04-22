@@ -275,7 +275,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     // likely ran into the same issue, since they leave it off for `useSelect` buttons.
     // Adding the combobox role in the future can help because screen reader users are more
     // familiar with the combobox pattern.
-    // role: 'combobox',
+    role: 'combobox',
   };
 
   const wrapperRef = useRef<HTMLDivElement>();
