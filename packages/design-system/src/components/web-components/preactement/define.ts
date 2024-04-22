@@ -13,9 +13,6 @@ import { templateToPreactVNode } from './parse';
 import { IOptions, ComponentFunction } from './model';
 import { kebabCaseIt } from 'case-it/kebab';
 
-// TODO: This is just for debugging!
-let counter = 0;
-
 /**
  * Registers the provided Preact component as a custom element in the browser. It can
  * also generate a custom element with props ready for hydration if run on the server.
@@ -92,7 +89,6 @@ function createCustomElement<T>(
     __component;
     __properties = {};
     __options = options;
-    __id = counter++;
 
     static observedAttributes = ['props', ...attributes];
 
@@ -111,10 +107,6 @@ function createCustomElement<T>(
 
     public renderPreactComponent() {
       renderPreactComponent.call(this);
-    }
-
-    public log(...args: any[]) {
-      console.log(`${this.tagName} (${(this as any).__id})`, ...args);
     }
   }
 
@@ -229,7 +221,6 @@ async function onConnected(this: CustomElement) {
   }
 
   this.__component = component;
-  // this.innerHTML = '';
   this.removeAttribute('server');
   this.renderPreactComponent();
   this.__mounted = true;
@@ -267,7 +258,6 @@ function onAttributeChange(this: CustomElement, name: string, _original: string,
  * Called each time the element is removed from the document.
  */
 function onDisconnected(this: CustomElement) {
-  this.log('disconnected');
   render(null, this);
 }
 
