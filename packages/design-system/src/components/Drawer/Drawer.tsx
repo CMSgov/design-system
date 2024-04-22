@@ -81,8 +81,9 @@ export const Drawer = (props: DrawerProps) => {
       showModal={props.hasFocusTrap}
       backdropClickExits={props.backdropClickExits}
       isOpen={props.isOpen}
+      aria-labelledby={headingId}
     >
-      <div className="ds-c-drawer__window" tabIndex={-1} aria-labelledby={headingId}>
+      <div className="ds-c-drawer__window" autoFocus>
         <div className="ds-c-drawer__header">
           <Heading
             id={headingId}
