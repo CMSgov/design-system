@@ -144,6 +144,7 @@ export const MonthPicker = (props: MonthPickerProps) => {
       aria-invalid={invalid}
       aria-describedby={describeField({ ...props, hintId, errorId })}
       className={classNames('ds-c-fieldset', 'ds-c-month-picker', props.className)}
+      role="listbox"
     >
       <Label component="legend" {...labelProps} />
       {hintElement}
