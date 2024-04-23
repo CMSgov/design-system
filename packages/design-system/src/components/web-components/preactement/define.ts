@@ -357,6 +357,10 @@ function renderPreactComponent(this: CustomElement) {
     ...slots,
   };
 
+  // TODO: Clearing everything before the Preact component render only appears to be
+  // necessary for the unit tests. I haven't figured out why yet.
+  [...this.childNodes].forEach((childNode) => childNode.remove());
+
   // Render the Preact component to the root of this custom element
   render(h(this.__component, props), this);
 
