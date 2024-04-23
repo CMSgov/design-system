@@ -98,7 +98,6 @@ function createCustomElement<T>(
     }
 
     public attributeChangedCallback(...args) {
-      // console.log('attributeChangedCallback', ...args);
       onAttributeChange.call(this, ...args);
     }
 
@@ -321,7 +320,8 @@ function renderPreactComponent(this: CustomElement) {
     return;
   }
 
-  // Let the mutation observer know we're making changes internally
+  // We don't want the mutation observer responding to all the changes we make in this
+  // function, or we'll get an endless feedback loop of change and re-render.
   this.__mutationObserver?.disconnect();
 
   let template: HTMLTemplateElement | undefined = [...this.childNodes].find(isTemplate);
