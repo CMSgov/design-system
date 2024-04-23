@@ -12,6 +12,7 @@ exports[`Label should render a basic label 1`] = `
     >
       Foo
     </label>
+    <template />
   </ds-label>
 </DocumentFragment>
 `;
