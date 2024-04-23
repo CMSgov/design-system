@@ -51,7 +51,7 @@ export default {
       },
     },
   },
-  // decorators: [webComponentDecorator],
+  decorators: [webComponentDecorator],
 };
 
 const Template = (args) => (
