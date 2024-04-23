@@ -27,6 +27,7 @@ exports[`InlineError should render a default inline-error 1`] = `
       </span>
       Foo
     </p>
+    <template />
   </ds-inline-error>
 </DocumentFragment>
 `;
