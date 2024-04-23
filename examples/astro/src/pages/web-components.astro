@@ -14,6 +14,8 @@ import Layout from '../layouts/Layout.astro';
         This is an example showing how to use our library of interactive web components.
       </p>
 
+      <ds-spinner aria-valuetext="aria sets spinner label!">children don't set spinner label</ds-spinner>
+
       <ds-alert
         variation="success"
         heading="You've loaded the web-components example"
@@ -26,6 +28,12 @@ import Layout from '../layouts/Layout.astro';
         </p>
         <ds-button variation="solid" is-alternate="true" id="the-button" class="ds-u-margin-top--1">Break things</ds-button>
       </ds-alert>
+
+      <ds-choice type="checkbox" label="I agree to the terms and conditions" name="agree">
+        <div slot="checked-children">
+          <div class="ds-c-alert ds-u-margin-top--1">Cool, we hoped you'd check this box.</div>
+        </div>
+      </ds-choice>
 
       <h2 class="ds-text-heading--2xl">Adding machine</h2>
       <form id="calculator">

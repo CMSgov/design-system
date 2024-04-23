@@ -29,6 +29,7 @@ enum ErrorTypes {
   Promise = 'Error: Promises cannot be used for SSR',
   Missing = 'Error: Cannot find component in provided function',
   Json = 'Error: Invalid JSON string passed to component',
+  Tag = 'Error: Invalid tag name for custom element. Must include a `-`',
 }
 
 /* -----------------------------------
@@ -37,15 +38,17 @@ enum ErrorTypes {
  *
  * -------------------------------- */
 
-interface CustomElement<C = any, I = any> extends HTMLElement {
+interface CustomElement<CF = any, C = any> extends HTMLElement {
   __mounted: boolean;
-  __component: C;
+  __componentFunction: CF;
+  __component?: C;
   __properties?: IProps;
   __events?: IProps;
   __slots?: { [index: string]: any };
-  __instance?: I;
   __children?: any;
   __options: IOptions;
+
+  renderPreactComponent(): void;
 }
 
 /* -----------------------------------
