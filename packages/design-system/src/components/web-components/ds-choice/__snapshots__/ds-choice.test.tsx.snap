@@ -55,6 +55,7 @@ exports[`Choice applies errorMessage to label 1`] = `
         </p>
       </div>
     </div>
+    <template />
   </ds-choice>
 </DocumentFragment>
 `;
@@ -98,6 +99,7 @@ exports[`Choice has a hint and requirementLabel 1`] = `
         </p>
       </div>
     </div>
+    <template />
   </ds-choice>
 </DocumentFragment>
 `;
@@ -132,6 +134,7 @@ exports[`Choice is a checkbox 1`] = `
         </label>
       </div>
     </div>
+    <template />
   </ds-choice>
 </DocumentFragment>
 `;
@@ -166,6 +169,7 @@ exports[`Choice is a radio 1`] = `
         </label>
       </div>
     </div>
+    <template />
   </ds-choice>
 </DocumentFragment>
 `;
@@ -210,6 +214,7 @@ exports[`Choice nested content renders checked and unchecked children appropriat
         I am unchecked
       </strong>
     </div>
+    <template />
   </ds-choice>
 </DocumentFragment>
 `;

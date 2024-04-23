@@ -9,6 +9,7 @@ exports[`Badge should render a default badge 1`] = `
     >
       Foo
     </span>
+    <template />
   </ds-badge>
 </DocumentFragment>
 `;

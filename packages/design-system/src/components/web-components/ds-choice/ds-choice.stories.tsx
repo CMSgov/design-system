@@ -159,12 +159,12 @@ const Template = ({
     <ds-choice {...args}>
       {checkedChildren && (
         <div slot="checked-children">
-          <div className="ds-c-alert ds-u-margin-top--1">{checkedChildren}</div>
+          <ds-alert className="ds-u-margin-top--1">{checkedChildren}</ds-alert>
         </div>
       )}
       {uncheckedChildren && (
         <div slot="unchecked-children">
-          <div className="ds-c-alert ds-u-margin-top--1">{uncheckedChildren}</div>
+          <ds-alert className="ds-u-margin-top--1">{uncheckedChildren}</ds-alert>
         </div>
       )}
     </ds-choice>
