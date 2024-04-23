@@ -1,4 +1,4 @@
-import { h, render, FunctionComponent } from 'preact';
+import { h, render, FunctionComponent, VNode } from 'preact';
 import {
   ErrorTypes,
   CustomElement,
@@ -9,7 +9,7 @@ import {
   getElementAttributes,
   getAsyncComponent,
 } from './shared';
-import { parseHtml } from './parse';
+import { templateToPreactVNode } from './parse';
 import { IOptions, ComponentFunction } from './model';
 import { kebabCaseIt } from 'case-it/kebab';
 
@@ -88,9 +88,8 @@ function createCustomElement<T>(
     __componentFunction = componentFunction;
     __component;
     __properties = {};
-    __slots = {};
-    __children = void 0;
     __options = options;
+    __mutationObserver;
 
     static observedAttributes = ['props', ...attributes];
 
@@ -184,6 +183,29 @@ function proxyEvents(props, eventNames, CustomElement) {
 }
 
 /**
+ * Creates a mutation observer that watches for additions and removals to the child
+ * nodes at the root of the custom element and calls the render function when it
+ * detects changes. This allows users to set the inner HTML and expect the component
+ * to update. For instance, a user can take a `<ds-button>` that is already in the
+ * DOM and update its content with code like the following:
+ *
+ *   button.innerHTML = '<ds-spinner></ds-spinner> Loading'.
+ *
+ * And the button will re-render itself so that its subtree resembles this (simplified):
+ *
+ *   <ds-button>
+ *     <button><ds-spinner></ds-spinner> Loading</button>
+ *   </ds-button>
+ */
+function setupMutationObserver(this: CustomElement) {
+  this.__mutationObserver = new MutationObserver((mutations: MutationRecord[]) => {
+    if (mutations.find((mutation: MutationRecord) => mutation.type === 'childList')) {
+      this.renderPreactComponent();
+    }
+  });
+}
+
+/**
  * Called each time one of these custom elements is added to the document and does all
  * the magic to make the thing work. It gathers the attributes, slots, and event handler
  * functions and packages them up to send to the underlying Preact component as props
@@ -203,15 +225,8 @@ async function onConnected(this: CustomElement) {
   // Remove the json script tag from the DOM after we've used it
   json?.remove();
 
-  let children = this.__children;
-
-  if (!this.__mounted && !this.hasAttribute('server')) {
-    children = parseHtml.call(this);
-  }
-
   // Save these properties for use in subsequent renders
-  this.__properties = { ...this.__slots, ...data, ...attributes, ...eventHandlers };
-  this.__children = children || [];
+  this.__properties = { ...data, ...attributes, ...eventHandlers };
 
   let component = this.__componentFunction();
   if (isPromise(component)) {
@@ -228,11 +243,12 @@ async function onConnected(this: CustomElement) {
     component = wrapComponent(component);
   }
 
+  setupMutationObserver.call(this);
+
   this.__component = component;
-  this.__mounted = true;
-  this.innerHTML = '';
   this.removeAttribute('server');
   this.renderPreactComponent();
+  this.__mounted = true;
 }
 
 /**
@@ -243,7 +259,7 @@ async function onConnected(this: CustomElement) {
  * See [Custom element lifecycle callbacks](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements#custom_element_lifecycle_callbacks)
  * for more details.
  */
-function onAttributeChange(this: CustomElement, name: string, original: string, updated: string) {
+function onAttributeChange(this: CustomElement, name: string, _original: string, updated: string) {
   if (!this.__mounted) {
     return;
   }
@@ -268,11 +284,50 @@ function onAttributeChange(this: CustomElement, name: string, original: string, 
  */
 function onDisconnected(this: CustomElement) {
   render(null, this);
+  this.__mutationObserver?.disconnect();
+}
+
+function isTemplate(childNode: ChildNode): childNode is HTMLTemplateElement {
+  return childNode.nodeName.toLowerCase() === 'template';
+}
+
+/**
+ * Because bare text content in the root of a template element doesn't get parsed into
+ * its document fragment by the browser, we need to wrap our input content in an element
+ * when we create it. We will then need to unwrap it when we're ready to render that
+ * content with Preact (see `unwrapTemplateVNode` function).
+ */
+function wrapTemplateHtml(html: string) {
+  return `<span>${html}</span>`;
+}
+
+/**
+ * See `wrapTemplateHtml` function.
+ */
+function unwrapTemplateVNode(vnode: VNode): VNode {
+  return vnode.props.children[0].props.children;
 }
 
 /**
  * Render the Preact component to this element, using props derived from the current
- * value of `this.__properties` and `this.__children`.
+ * value of `this.__properties` and input HTML. After it has rendered once, we have to
+ * avoid using the rendered output as the input of any subsequent renders. Since we
+ * cannot guarantee that it will be re-rendered by the existing CustomElement instance
+ * in browser memory (because a re-render by a parent can destroy this), we must cache
+ * the original input in the DOM itself in the form of a `<template>` element. The
+ * `<template>` element also gives us the added bonus of parsing our HTML automatically
+ * and making it available to use to convert directly into Preact's VNode format. If we
+ * were to try to use the rendered Preact output as input for subsequent renders, we
+ * would get nested, duplicated elements, like so:
+ *
+ * <ds-button>
+ *   <button>
+ *     <button>Hello</button>
+ *   <button>
+ * </ds-button>
+ *
+ * Users can also replace the content by setting the innerHTML to something new, and
+ * we'll just treat it as new input if we don't find the cached template element!
  */
 function renderPreactComponent(this: CustomElement) {
   if (!this.__component) {
@@ -280,11 +335,38 @@ function renderPreactComponent(this: CustomElement) {
     return;
   }
 
+  // We don't want the mutation observer responding to all the changes we make in this
+  // function, or we'll get an endless feedback loop of change and re-render.
+  this.__mutationObserver?.disconnect();
+
+  let template: HTMLTemplateElement | undefined = [...this.childNodes].find(isTemplate);
+  if (!template) {
+    template = document.createElement('template');
+    template.innerHTML = wrapTemplateHtml(this.innerHTML);
+  }
+
+  const { vnode, slots } = templateToPreactVNode(template);
+
+  const children = unwrapTemplateVNode(vnode);
+
+  // These are the props we'll pass to the Preact component
   const props = {
     ...this.__properties,
     parent: this,
-    children: this.__children,
+    children,
+    ...slots,
   };
 
+  // TODO: Clearing everything before the Preact component render only appears to be
+  // necessary for the unit tests. I haven't figured out why yet.
+  [...this.childNodes].forEach((childNode) => childNode.remove());
+
+  // Render the Preact component to the root of this custom element
   render(h(this.__component, props), this);
+
+  // The Preact render would have removed this template, so add it back in
+  this.appendChild(template);
+
+  // Reinstate the mutation observer to watch for user changes
+  this.__mutationObserver.observe(this, { childList: true });
 }
