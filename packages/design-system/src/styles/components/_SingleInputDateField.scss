@@ -67,12 +67,12 @@
   border: 2px solid transparent;
 }
 
-.rdp-button[aria-disabled='true'] {
+.rdp-button[disabled='true'] {
   opacity: 0.25;
   pointer-events: none;
 }
 
-.rdp-button:not([aria-disabled='true']) {
+.rdp-button:not([disabled='true']) {
   cursor: pointer;
 }
 
@@ -83,7 +83,7 @@
   color: inherit;
 }
 
-.rdp-button:hover:not([aria-disabled='true']) {
+.rdp-button:hover:not([disabled='true']) {
   background-color: var(--rdp-background-color);
 }
 
@@ -282,15 +282,15 @@
   font-weight: bold;
 }
 
-.rdp-day_selected:not([aria-disabled='true']),
-.rdp-day_selected:focus:not([aria-disabled='true']),
-.rdp-day_selected:active:not([aria-disabled='true']),
-.rdp-day_selected:hover:not([aria-disabled='true']) {
+.rdp-day_selected:not([disabled='true']),
+.rdp-day_selected:focus:not([disabled='true']),
+.rdp-day_selected:active:not([disabled='true']),
+.rdp-day_selected:hover:not([disabled='true']) {
   background-color: var(--rdp-accent-color);
   color: white;
 }
 
-.rdp-day_selected:focus:not([aria-disabled='true']) {
+.rdp-day_selected:focus:not([disabled='true']) {
   border: var(--rdp-outline-selected);
 }
 
@@ -358,24 +358,24 @@
 }
 
 .rdp-button:active,
-.rdp-button:active:hover:not([aria-disabled='true']),
-.rdp-day_selected:active:not([aria-disabled='true']),
-.rdp-day_selected:active:hover:not([aria-disabled='true']) {
+.rdp-button:active:hover:not([disabled='true']),
+.rdp-day_selected:active:not([disabled='true']),
+.rdp-day_selected:active:hover:not([disabled='true']) {
   background-color: var(--rdp-active-color);
   color: white;
 }
 
 @media (forced-colors: active) {
-  .rdp-button[aria-disabled='true'] {
+  .rdp-button[disabled='true'] {
     border-color: GrayText;
     color: GrayText;
     opacity: 1;
   }
 
-  .rdp-day_selected:not([aria-disabled='true']),
-  .rdp-day_selected:focus:not([aria-disabled='true']),
-  .rdp-day_selected:active:not([aria-disabled='true']),
-  .rdp-day_selected:hover:not([aria-disabled='true']) {
+  .rdp-day_selected:not([disabled='true']),
+  .rdp-day_selected:focus:not([disabled='true']),
+  .rdp-day_selected:active:not([disabled='true']),
+  .rdp-day_selected:hover:not([disabled='true']) {
     background-color: Highlight;
     border-color: Highlight;
     color: Field;
