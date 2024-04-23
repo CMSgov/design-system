@@ -349,6 +349,7 @@ function renderPreactComponent(this: CustomElement) {
 
   const children = unwrapTemplateVNode(vnode);
 
+  // These are the props we'll pass to the Preact component
   const props = {
     ...this.__properties,
     parent: this,
@@ -356,13 +357,10 @@ function renderPreactComponent(this: CustomElement) {
     ...slots,
   };
 
-  // Remove everything but the template so we have a clean slate to render our component
-  [...this.childNodes]
-    .filter((childNode) => childNode !== template)
-    .forEach((childNode) => childNode.remove());
-
+  // Render the Preact component to the root of this custom element
   render(h(this.__component, props), this);
 
+  // The Preact render would have removed this template, so add it back in
   this.appendChild(template);
 
   // Reinstate the mutation observer to watch for user changes
