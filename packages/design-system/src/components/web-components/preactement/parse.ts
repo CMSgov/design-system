@@ -22,6 +22,10 @@ export function templateToPreactVNode(template: HTMLTemplateElement): {
   return { vnode, slots };
 }
 
+/**
+ * Recursively converts DOM nodes into Preact VNodes (virtual nodes) and also extracts
+ * slot-element information.
+ */
 function nodeToPreactVNode(
   node: Node,
   slots: Slots = {}

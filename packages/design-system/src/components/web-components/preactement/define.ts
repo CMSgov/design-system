@@ -182,6 +182,21 @@ function proxyEvents(props, eventNames, CustomElement) {
   return callbacks;
 }
 
+/**
+ * Creates a mutation observer that watches for additions and removals to the child
+ * nodes at the root of the custom element and calls the render function when it
+ * detects changes. This allows users to set the inner HTML and expect the component
+ * to update. For instance, a user can take a `<ds-button>` that is already in the
+ * DOM and update its content with code like the following:
+ *
+ *   button.innerHTML = '<ds-spinner></ds-spinner> Loading'.
+ *
+ * And the button will re-render itself so that its subtree resembles this (simplified):
+ *
+ *   <ds-button>
+ *     <button><ds-spinner></ds-spinner> Loading</button>
+ *   </ds-button>
+ */
 function setupMutationObserver(this: CustomElement) {
   this.__mutationObserver = new MutationObserver((mutations: MutationRecord[]) => {
     if (mutations.find((mutation: MutationRecord) => mutation.type === 'childList')) {
