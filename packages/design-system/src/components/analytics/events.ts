@@ -35,11 +35,11 @@ export const eventExtensionText = 'Design system integration';
 
 export interface AnalyticsEvent {
   event_name: string;
-  event_type: string;
-  event_category: string;
-  event_extension: string;
-  event_action: string;
-  event_label: string;
+  event_type?: string;
+  event_category?: string;
+  event_extension?: string;
+  event_action?: string;
+  event_label?: string;
   [additional_props: string]: unknown;
 }
 
@@ -64,11 +64,7 @@ const TIMEOUT = 300;
  * Use existing window.utag.link function to send analytics events. If the function does not
  * exist right away, try again after TIMEOUT milliseconds until we've reached MAX_RETRIES.
  */
-export function sendAnalytics(
-  eventType: UtagEventType,
-  event: Required<AnalyticsEvent>,
-  retry = 0
-) {
+export function sendAnalytics(eventType: UtagEventType, event: AnalyticsEvent, retry = 0) {
   // If we were to define this on the window object using `declare global { interface Window { utag: ... } }`
   // that type definition of window.utag can conflict with downstream declarations. This happened before, and
   // our fix is to only have a local type so we can get some type-checking without risk of conflicts. This
