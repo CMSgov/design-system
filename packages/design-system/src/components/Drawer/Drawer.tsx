@@ -83,7 +83,7 @@ export const Drawer = (props: DrawerProps) => {
       isOpen={props.isOpen}
       aria-labelledby={headingId}
     >
-      <div className="ds-c-drawer__window" autoFocus>
+      <div className="ds-c-drawer__window" tabIndex={-1}>
         <div className="ds-c-drawer__header">
           <Heading
             id={headingId}

@@ -134,8 +134,8 @@ export const Dialog = (props: DialogProps) => {
       boundingBoxRef={containerRef}
       aria-labelledby={headingId}
     >
-      <div className="ds-c-dialog__window" ref={containerRef} autoFocus>
-        <header className={headerClassNames}>
+      <div className="ds-c-dialog__window" ref={containerRef} tabIndex={-1}>
+        <div className={headerClassNames}>
           {heading && (
             <h2 className="ds-c-dialog__heading" id={headingId} ref={headingRef}>
               {heading}
@@ -147,11 +147,11 @@ export const Dialog = (props: DialogProps) => {
             id={`${rootId}__close`}
             onClick={onExit}
           />
-        </header>
-        <main className="ds-c-dialog__body">
+        </div>
+        <div className="ds-c-dialog__body">
           <div id={contentId}>{children}</div>
           {actions && <div className={actionsClassNames}>{actions}</div>}
-        </main>
+        </div>
       </div>
     </NativeDialog>
   );

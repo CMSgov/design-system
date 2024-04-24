@@ -72,6 +72,9 @@
   overflow: auto;
   overscroll-behavior: contain;
 
+  // TODO: Investigate why this is needed.
+  // Block DOM els already have a column layout?
+  // Our supported browsers support flex, so this query not needed.
   @supports (display: flex) {
     display: flex;
     flex-direction: column;

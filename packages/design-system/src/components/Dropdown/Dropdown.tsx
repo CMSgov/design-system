@@ -275,7 +275,10 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     // likely ran into the same issue, since they leave it off for `useSelect` buttons.
     // Adding the combobox role in the future can help because screen reader users are more
     // familiar with the combobox pattern.
-    role: 'combobox',
+    // Another possible issue with this role - you should be able to select an option by typing
+    // a character from that option. Without this role set, VO reads whatever option is closest
+    // to the character typed. With this role set, VO reads nothing.
+    // role: 'combobox',
   };
 
   const wrapperRef = useRef<HTMLDivElement>();
