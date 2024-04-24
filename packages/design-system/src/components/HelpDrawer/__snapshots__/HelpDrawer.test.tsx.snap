@@ -14,7 +14,25 @@ Array [
 ]
 `;
 
-exports[`HelpDrawer Analytics event tracking sends analytics event tracking on open help drawer 1`] = `
+exports[`HelpDrawer Analytics event tracking sends analytics event when closing dialog 1`] = `
+Array [
+  Object {
+    "event_action": "closed help drawer",
+    "event_category": "ui components",
+    "event_extension": "Design system integration",
+    "event_label": "HelpDrawer title",
+    "event_name": "help_drawer_closed",
+    "event_type": "ui interaction",
+    "ga_eventAction": "closed help drawer",
+    "ga_eventCategory": "ui components",
+    "ga_eventLabel": "HelpDrawer title",
+    "ga_eventValue": "",
+    "heading": "HelpDrawer title",
+  },
+]
+`;
+
+exports[`HelpDrawer Analytics event tracking sends analytics event when dialog starts open 1`] = `
 Array [
   Object {
     "event_action": "opened help drawer",
@@ -38,6 +56,24 @@ Array [
     "event_name": "help_drawer_opened",
     "event_type": "ui interaction",
     "heading": "Hello World",
+  },
+]
+`;
+
+exports[`HelpDrawer Analytics event tracking sends analytics event when opening dialog 1`] = `
+Array [
+  Object {
+    "event_action": "opened help drawer",
+    "event_category": "ui components",
+    "event_extension": "Design system integration",
+    "event_label": "HelpDrawer title",
+    "event_name": "help_drawer_opened",
+    "event_type": "ui interaction",
+    "ga_eventAction": "opened help drawer",
+    "ga_eventCategory": "ui components",
+    "ga_eventLabel": "HelpDrawer title",
+    "ga_eventValue": "",
+    "heading": "HelpDrawer title",
   },
 ]
 `;
