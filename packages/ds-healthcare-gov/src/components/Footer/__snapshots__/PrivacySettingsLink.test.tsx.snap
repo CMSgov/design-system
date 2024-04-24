@@ -15,8 +15,9 @@ exports[`PrivacySettingsLink should render with custom class and children 1`] = 
   >
     <div
       class="ds-c-dialog__window"
+      tabindex="-1"
     >
-      <header
+      <div
         class="ds-c-dialog__header"
       >
         <h2
@@ -54,8 +55,8 @@ exports[`PrivacySettingsLink should render with custom class and children 1`] = 
             />
           </svg>
         </button>
-      </header>
-      <main
+      </div>
+      <div
         class="ds-c-dialog__body"
       >
         <div
@@ -381,7 +382,7 @@ exports[`PrivacySettingsLink should render with custom class and children 1`] = 
             Update my settings
           </button>
         </div>
-      </main>
+      </div>
     </div>
   </dialog>
 </div>
@@ -400,8 +401,9 @@ exports[`PrivacySettingsLink should render with default options 1`] = `
   >
     <div
       class="ds-c-dialog__window"
+      tabindex="-1"
     >
-      <header
+      <div
         class="ds-c-dialog__header"
       >
         <h2
@@ -439,8 +441,8 @@ exports[`PrivacySettingsLink should render with default options 1`] = `
             />
           </svg>
         </button>
-      </header>
-      <main
+      </div>
+      <div
         class="ds-c-dialog__body"
       >
         <div
@@ -766,7 +768,7 @@ exports[`PrivacySettingsLink should render with default options 1`] = `
             Update my settings
           </button>
         </div>
-      </main>
+      </div>
     </div>
   </dialog>
 </div>

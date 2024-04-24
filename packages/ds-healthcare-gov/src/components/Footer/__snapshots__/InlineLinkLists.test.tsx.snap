@@ -65,8 +65,9 @@ exports[`InlineLinkLists renders lists of links 1`] = `
           >
             <div
               class="ds-c-dialog__window"
+              tabindex="-1"
             >
-              <header
+              <div
                 class="ds-c-dialog__header"
               >
                 <h2
@@ -104,8 +105,8 @@ exports[`InlineLinkLists renders lists of links 1`] = `
                     />
                   </svg>
                 </button>
-              </header>
-              <main
+              </div>
+              <div
                 class="ds-c-dialog__body"
               >
                 <div
@@ -431,7 +432,7 @@ exports[`InlineLinkLists renders lists of links 1`] = `
                     Update my settings
                   </button>
                 </div>
-              </main>
+              </div>
             </div>
           </dialog>
           <span
@@ -698,8 +699,9 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
           >
             <div
               class="ds-c-dialog__window"
+              tabindex="-1"
             >
-              <header
+              <div
                 class="ds-c-dialog__header"
               >
                 <h2
@@ -737,8 +739,8 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
                     />
                   </svg>
                 </button>
-              </header>
-              <main
+              </div>
+              <div
                 class="ds-c-dialog__body"
               >
                 <div
@@ -1064,7 +1066,7 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
                     Update my settings
                   </button>
                 </div>
-              </main>
+              </div>
             </div>
           </dialog>
           <span

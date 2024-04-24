@@ -69,8 +69,9 @@ exports[`Footer renders basic footer 1`] = `
             >
               <div
                 class="ds-c-dialog__window"
+                tabindex="-1"
               >
-                <header
+                <div
                   class="ds-c-dialog__header"
                 >
                   <h2
@@ -108,8 +109,8 @@ exports[`Footer renders basic footer 1`] = `
                       />
                     </svg>
                   </button>
-                </header>
-                <main
+                </div>
+                <div
                   class="ds-c-dialog__body"
                 >
                   <div
@@ -435,7 +436,7 @@ exports[`Footer renders basic footer 1`] = `
                       Update my settings
                     </button>
                   </div>
-                </main>
+                </div>
               </div>
             </dialog>
             <span
@@ -808,8 +809,9 @@ exports[`Footer renders basic footer with props 1`] = `
             >
               <div
                 class="ds-c-dialog__window"
+                tabindex="-1"
               >
-                <header
+                <div
                   class="ds-c-dialog__header"
                 >
                   <h2
@@ -847,8 +849,8 @@ exports[`Footer renders basic footer with props 1`] = `
                       />
                     </svg>
                   </button>
-                </header>
-                <main
+                </div>
+                <div
                   class="ds-c-dialog__body"
                 >
                   <div
@@ -1174,7 +1176,7 @@ exports[`Footer renders basic footer with props 1`] = `
                       Update my settings
                     </button>
                   </div>
-                </main>
+                </div>
               </div>
             </dialog>
             <span

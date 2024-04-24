@@ -10,8 +10,9 @@ exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external l
 >
   <div
     class="ds-c-dialog__window"
+    tabindex="-1"
   >
-    <header
+    <div
       class="ds-c-dialog__header"
     >
       <h2
@@ -49,8 +50,8 @@ exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external l
           />
         </svg>
       </button>
-    </header>
-    <main
+    </div>
+    <div
       class="ds-c-dialog__body"
     >
       <div
@@ -82,7 +83,7 @@ exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external l
           Cancel
         </button>
       </div>
-    </main>
+    </div>
   </div>
 </dialog>
 `;

@@ -9,6 +9,7 @@ exports[`Drawer renders a dialog 1`] = `
 >
   <div
     class="ds-c-drawer__window"
+    tabindex="-1"
   >
     <div
       class="ds-c-drawer__header"
