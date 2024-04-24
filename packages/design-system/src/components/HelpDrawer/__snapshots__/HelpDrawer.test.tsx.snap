@@ -23,10 +23,6 @@ Array [
     "event_label": "HelpDrawer title",
     "event_name": "help_drawer_closed",
     "event_type": "ui interaction",
-    "ga_eventAction": "closed help drawer",
-    "ga_eventCategory": "ui components",
-    "ga_eventLabel": "HelpDrawer title",
-    "ga_eventValue": "",
     "heading": "HelpDrawer title",
   },
 ]
@@ -69,10 +65,6 @@ Array [
     "event_label": "HelpDrawer title",
     "event_name": "help_drawer_opened",
     "event_type": "ui interaction",
-    "ga_eventAction": "opened help drawer",
-    "ga_eventCategory": "ui components",
-    "ga_eventLabel": "HelpDrawer title",
-    "ga_eventValue": "",
     "heading": "HelpDrawer title",
   },
 ]
