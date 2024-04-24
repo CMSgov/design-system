@@ -18,7 +18,7 @@ const meta: Meta<typeof HelpDrawer> = {
   },
   args: {
     footerTitle: 'Footer Title',
-    footerBody: <p className="ds-text-body--md ds-u-margin--0">Footer content</p>,
+    footerBody: 'Footer content',
     heading: 'HelpDrawer Heading',
   },
   parameters: {
@@ -69,7 +69,7 @@ const drawerContent = (
 );
 
 export const Default: Story = {
-  render: function Component() {
+  render: function Component(args) {
     const [isDrawerVisible, setIsDrawerVisible] = useState(false);
     const showDrawer = () => setIsDrawerVisible(true);
     const hideDrawer = (...params) => {
@@ -79,13 +79,7 @@ export const Default: Story = {
 
     return (
       <>
-        <HelpDrawer
-          onCloseClick={hideDrawer}
-          footerTitle="Footer Title"
-          footerBody={<p className="ds-text-body--md ds-u-margin--0">Footer content</p>}
-          heading="HelpDrawer Heading"
-          isOpen={isDrawerVisible}
-        >
+        <HelpDrawer {...args} onCloseClick={hideDrawer} isOpen={isDrawerVisible}>
           {drawerContent}
         </HelpDrawer>
         <Button className="ds-c-drawer__toggle" variation="ghost" onClick={showDrawer}>

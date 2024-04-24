@@ -1,10 +1,9 @@
-import { FormEvent, useState } from 'react';
+import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Dialog } from './Dialog';
 import { Button } from '@cmsgov/design-system';
 import { action } from '@storybook/addon-actions';
 import { useDialog } from './useDialog';
-import { TextField } from '../index';
 
 const meta: Meta<typeof Dialog> = {
   title: 'Components/Dialog',
