@@ -16,5 +16,7 @@ export const Default: Story = {
     href: 'https://www.google.com/',
     learnMoreUrl: 'https://design.cms.gov/components/third-party-external-link/',
     origin: 'CMS Design System',
+    analyticsParentHeading: 'a parent heading',
+    analyticsParentType: 'whaaaat is this?',
   },
 };
