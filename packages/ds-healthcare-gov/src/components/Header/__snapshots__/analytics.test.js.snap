@@ -3,12 +3,8 @@
 exports[`sendHeaderEvent sends a basic analytics event 1`] = `
 Object {
   "category": "consistent header",
-  "event_action": "click",
-  "event_category": "consistent header",
   "event_extension": "Design system integration",
-  "event_label": "Click here!",
   "event_name": "header_click",
-  "event_type": "ui interaction",
   "text": "Click here!",
 }
 `;
@@ -16,12 +12,8 @@ Object {
 exports[`sendHeaderEvent sends an analytics event with a url 1`] = `
 Object {
   "category": "consistent header",
-  "event_action": "click",
-  "event_category": "consistent header",
   "event_extension": "Design system integration",
-  "event_label": "Link to somewhere",
   "event_name": "header_click",
-  "event_type": "ui interaction",
   "link_url": "https://somewhere",
   "text": "Link to somewhere",
 }

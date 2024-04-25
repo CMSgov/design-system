@@ -69,10 +69,6 @@ describe('Dialog', function () {
     let tealiumMock;
     const defaultEvent = {
       event_name: 'modal_impression',
-      event_type: 'ui interaction',
-      event_category: 'ui components',
-      event_action: 'modal impression',
-      event_label: 'dialog heading',
       heading: 'dialog heading',
     };
 
@@ -136,7 +132,6 @@ describe('Dialog', function () {
         expect(tealiumMock).toBeCalledWith(
           expect.objectContaining({
             ...defaultEvent,
-            event_label: 'Hello World',
             heading: 'Hello World',
           })
         );
@@ -159,7 +154,6 @@ describe('Dialog', function () {
       act(() => {
         expect(tealiumMock).toBeCalledWith(
           expect.objectContaining({
-            event_label: 'other heading',
             heading: 'other heading',
           })
         );

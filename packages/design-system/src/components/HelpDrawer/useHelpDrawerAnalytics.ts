@@ -1,4 +1,4 @@
-import { EventCategory, EventType, useAnalyticsContent, eventExtensionText } from '../analytics';
+import { useAnalyticsContent, eventExtensionText } from '../analytics';
 import { HelpDrawerProps } from './HelpDrawer';
 import { config } from '../config';
 import { useNativeDialogAnalytics } from '../NativeDialog/useNativeDialogAnalytics';
@@ -11,7 +11,7 @@ export default function useHelpDrawerAnalytics({
 }: HelpDrawerProps) {
   function sendHelpDrawerEvent(
     content: string | undefined,
-    eventAttributes: { event_name: string; event_action: string }
+    eventAttributes: { event_name: string }
   ) {
     if (analytics !== true && (!config().helpDrawerSendsAnalytics || analytics === false)) {
       return;
@@ -25,9 +25,6 @@ export default function useHelpDrawerAnalytics({
     }
 
     onAnalyticsEvent({
-      event_type: EventType.UI_INTERACTION,
-      event_category: EventCategory.UI_COMPONENTS,
-      event_label: eventHeadingText,
       event_extension: eventExtensionText,
       heading: eventHeadingText,
       ...eventAttributes,
@@ -41,13 +38,11 @@ export default function useHelpDrawerAnalytics({
     onOpen: (content?: string) => {
       sendHelpDrawerEvent(content, {
         event_name: 'help_drawer_opened',
-        event_action: 'opened help drawer',
       });
     },
     onClose: (content?: string) => {
       sendHelpDrawerEvent(content, {
         event_name: 'help_drawer_closed',
-        event_action: 'closed help drawer',
       });
     },
   });
