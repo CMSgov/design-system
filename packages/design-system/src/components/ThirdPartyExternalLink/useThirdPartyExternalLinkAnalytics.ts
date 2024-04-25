@@ -1,11 +1,13 @@
 import { ThirdPartyExternalLinkProps } from './ThirdPartyExternalLink';
-import { getAnalyticsContentFromRefs } from '../analytics';
+import { eventExtensionText, getAnalyticsContentFromRefs } from '../analytics';
 import { config } from '../config';
 import { useRef } from 'react';
 
 export function useThirdPartyExternalLinkAnalytics({
   analytics,
   analyticsLabelOverride,
+  analyticsParentHeading,
+  analyticsParentType,
   onAnalyticsEvent = config().defaultAnalyticsFunction,
   href,
 }: ThirdPartyExternalLinkProps) {
@@ -25,20 +27,17 @@ export function useThirdPartyExternalLinkAnalytics({
       return;
     }
 
+    const linkParentHeading = analyticsParentHeading ?? ' ';
+    const linkParentType = analyticsParentType ?? ' ';
+
     onAnalyticsEvent({
       event_name: 'external_link_click',
+      event_extension: eventExtensionText,
       text: linkContent,
       link_type: 'link_external',
       link_url: href,
-      // TODO: Do we actually need to collect this info from app devs?
-      // "parent_component_heading": <<parent component heading, if applicable>>,
-      // "parent_component_type":
-
-      // TODO: What about these properties that were required for other events?
-      // event_name: 'external_link_click',
-      // event_category: EventCategory.UI_COMPONENTS,
-      // event_label: eventHeadingText,
-      // event_extension: eventExtensionText,
+      parent_component_heading: linkParentHeading,
+      parent_component_type: linkParentType,
     });
   }
 

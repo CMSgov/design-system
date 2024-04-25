@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type * as React from 'react';
-import { AnalyticsOverrideProps } from '../analytics';
+import { AnalyticsOverrideProps, AnalyticsParentDataProps } from '../analytics';
 import { Button } from '../Button';
 import { Dialog } from '../Dialog';
 import { ExternalLinkIcon } from '../Icons';
@@ -8,7 +8,9 @@ import { t } from '../i18n';
 import classNames from 'classnames';
 import useThirdPartyExternalLinkAnalytics from './useThirdPartyExternalLinkAnalytics';
 
-export interface ThirdPartyExternalLinkProps extends AnalyticsOverrideProps {
+export interface ThirdPartyExternalLinkProps
+  extends AnalyticsOverrideProps,
+    AnalyticsParentDataProps {
   /** External link url. The destination. */
   href: string;
   /** External link text. This text will appear in the button triggering the dialog. */
