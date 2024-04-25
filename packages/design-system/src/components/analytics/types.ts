@@ -17,6 +17,7 @@ export interface AnalyticsOverrideProps {
   /**
    * If you need the `event_type` to be overridden for your use case, you can provide
    * an alternate string here. Suggested values can be found in the EventType enum.
+   * @deprecated The event_type is no longer an analytics dimension being tracked.
    */
   analyticsEventTypeOverride?: string;
   /**
