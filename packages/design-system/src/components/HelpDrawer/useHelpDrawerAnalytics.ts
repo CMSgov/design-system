@@ -1,11 +1,13 @@
 import { useAnalyticsContent, eventExtensionText } from '../analytics';
 import { HelpDrawerProps } from './HelpDrawer';
 import { config } from '../config';
+import { useNativeDialogAnalytics } from '../NativeDialog/useNativeDialogAnalytics';
 
 export default function useHelpDrawerAnalytics({
   analytics,
   analyticsLabelOverride,
   onAnalyticsEvent = config().defaultAnalyticsFunction,
+  isOpen,
 }: HelpDrawerProps) {
   function sendHelpDrawerEvent(
     content: string | undefined,
@@ -29,13 +31,16 @@ export default function useHelpDrawerAnalytics({
     });
   }
 
-  const [headingRef] = useAnalyticsContent({
-    onMount: (content: string | undefined) => {
+  // We need to send help_drawer_opened when it's open once and only once.
+  // We need to send help_drawer_closed only when it was open and then closed.
+  const headingRef = useNativeDialogAnalytics({
+    isOpen,
+    onOpen: (content?: string) => {
       sendHelpDrawerEvent(content, {
         event_name: 'help_drawer_opened',
       });
     },
-    onUnmount: (content: string | undefined) => {
+    onClose: (content?: string) => {
       sendHelpDrawerEvent(content, {
         event_name: 'help_drawer_closed',
       });

@@ -1,11 +1,13 @@
 import { DialogProps } from './Dialog';
-import { useAnalyticsContent, eventExtensionText } from '../analytics';
+import { eventExtensionText } from '../analytics';
 import { config } from '../config';
+import { useNativeDialogAnalytics } from '../NativeDialog/useNativeDialogAnalytics';
 
 export function useDialogAnalytics({
   analytics,
   analyticsLabelOverride,
   onAnalyticsEvent = config().defaultAnalyticsFunction,
+  isOpen,
 }: DialogProps) {
   function sendDialogEvent(content: string | undefined, eventAttributes: { event_name: string }) {
     if (analytics !== true && (!config().dialogSendsAnalytics || analytics === false)) {
@@ -26,13 +28,16 @@ export function useDialogAnalytics({
     });
   }
 
-  const [headingRef] = useAnalyticsContent({
-    onMount: (content: string | undefined) => {
+  // We need to send modal_impression when it's open once and only once.
+  // We need to send modal_closed only when it was open and then closed.
+  const headingRef = useNativeDialogAnalytics({
+    isOpen,
+    onOpen: (content?: string) => {
       sendDialogEvent(content, {
         event_name: 'modal_impression',
       });
     },
-    onUnmount: (content: string | undefined) => {
+    onClose: (content?: string) => {
       sendDialogEvent(content, {
         event_name: 'modal_closed',
       });
