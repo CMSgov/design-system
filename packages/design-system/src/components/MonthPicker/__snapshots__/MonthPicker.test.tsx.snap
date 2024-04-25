@@ -6,7 +6,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
     aria-describedby="month-picker--1__error month-picker--1__hint"
     aria-invalid="true"
     class="ds-c-fieldset ds-c-month-picker"
-    role="listbox"
   >
     <legend
       class="ds-c-label"
