@@ -62,18 +62,18 @@ describe('HelpDrawer', () => {
       jest.resetAllMocks();
     });
 
-    it("does not send analytics event when dialog isn't open", () => {
+    it("does not send analytics event when help drawer isn't open", () => {
       renderHelpDrawer({ isOpen: false });
       expect(tealiumMock).not.toHaveBeenCalled();
     });
 
-    it('sends analytics event when dialog starts open', () => {
+    it('sends analytics event when help drawer starts open', () => {
       renderHelpDrawer({ isOpen: true });
       expect(tealiumMock.mock.lastCall).toMatchSnapshot();
       expect(tealiumMock).toHaveBeenCalledTimes(1);
     });
 
-    it('sends analytics event when opening dialog', () => {
+    it('sends analytics event when opening help drawer', () => {
       const { rerenderHelpDrawer } = renderHelpDrawer({ isOpen: false });
       expect(tealiumMock).not.toHaveBeenCalled();
       rerenderHelpDrawer({ isOpen: true });
@@ -81,7 +81,7 @@ describe('HelpDrawer', () => {
       expect(tealiumMock).toHaveBeenCalledTimes(1);
     });
 
-    it('sends analytics event when closing dialog', () => {
+    it('sends analytics event when closing help drawer', () => {
       const { rerenderHelpDrawer } = renderHelpDrawer();
       expect(tealiumMock).toHaveBeenCalledTimes(1);
       rerenderHelpDrawer({ isOpen: false });
