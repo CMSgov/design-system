@@ -305,7 +305,15 @@ function wrapTemplateHtml(html: string) {
  * See `wrapTemplateHtml` function.
  */
 function unwrapTemplateVNode(vnode: VNode): VNode {
-  return vnode.props.children[0].props.children;
+  const children = vnode.props.children[0].props.children;
+  if (Array.isArray(children) && children.length === 0) {
+    // This means the HTML inside it was empty, so the intention is for there to be no
+    // children content for the component. The Preact components will expect `undefined`
+    // in those cases.
+    return undefined;
+  } else {
+    return children;
+  }
 }
 
 /**
