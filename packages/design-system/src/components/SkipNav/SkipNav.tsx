@@ -25,7 +25,7 @@ export interface SkipNavProps {
 export const SkipNav = ({ children, href, onClick }: SkipNavProps) => {
   return (
     <a className="ds-c-skip-nav" href={href} onClick={onClick}>
-      {children ?? t('skipNav.default')}
+      {children[0] === undefined ? t('skipNav.default') : children}
     </a>
   );
 };

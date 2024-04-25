@@ -15,7 +15,7 @@ describe('SkipNav', function () {
     expect(el.getAttribute('href')).toBe('#main');
   });
 
-  it.skip('has default text content', () => {
+  it('has default text content', () => {
     render(<ds-skip-nav href="#main" />);
     const el = screen.getByRole('link');
     expect(el.textContent).toBe('Skip to main content');
