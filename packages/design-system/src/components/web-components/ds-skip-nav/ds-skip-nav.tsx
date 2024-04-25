@@ -1,5 +1,6 @@
 import { define } from '../preactement/define';
 import { SkipNav } from '../../SkipNav';
+import { t } from '../../i18n';
 
 const attributes = ['href'] as const;
 
@@ -18,4 +19,10 @@ declare global {
 }
 /* eslint-enable */
 
-define('ds-skip-nav', () => SkipNav, { attributes, events: ['onClick'] } as any);
+const Wrapper = ({ children, ...otherProps }) => (
+  <SkipNav href={otherProps.href}>
+    {children[0] === undefined ? t('skipNav.default') : children}
+  </SkipNav>
+);
+
+define('ds-skip-nav', () => Wrapper, { attributes, events: ['onClick'] } as any);
