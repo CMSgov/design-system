@@ -80,15 +80,7 @@ export function sendAnalytics(
   if (utag && utag[eventType]) {
     clipStrings(event);
     try {
-      utag[eventType]({
-        // Expand the event object to support the properties expected on healthcare.gov
-        ga_eventValue: '', // default value
-        ga_eventAction: event.event_action,
-        ga_eventCategory: event.event_category,
-        ga_eventLabel: event.event_label,
-        // But always recognize the incoming event as the authority on truth
-        ...event,
-      });
+      utag[eventType](event);
     } catch (error) {
       console.warn('Error sending analytics event: ', error);
     }

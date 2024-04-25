@@ -14,6 +14,8 @@ import Layout from '../layouts/Layout.astro';
         This is an example showing how to use our library of interactive web components.
       </p>
 
+      <ds-spinner aria-valuetext="aria sets spinner label!">children don't set spinner label</ds-spinner>
+
       <ds-alert
         variation="success"
         heading="You've loaded the web-components example"
@@ -29,7 +31,7 @@ import Layout from '../layouts/Layout.astro';
 
       <ds-choice type="checkbox" label="I agree to the terms and conditions" name="agree">
         <div slot="checked-children">
-          <div class="ds-c-alert ds-u-margin-top--1">Cool, we hoped you'd check this box.</div>
+          <ds-alert class="ds-u-margin-top--1">Cool, we hoped you'd check this box.</ds-alert>
         </div>
       </ds-choice>
 
@@ -61,13 +63,9 @@ import Layout from '../layouts/Layout.astro';
 
 <script>
   document.getElementById('the-button').addEventListener('click', function () {
-    const oldAlert = document.getElementById('alert');
-    const newAlert = document.createElement('ds-alert');
-    newAlert.setAttribute('variation', 'error');
-    newAlert.setAttribute('heading', 'Oh no, something went wrong!');
-    newAlert.innerHTML = "I can't believe you pressed the button.";
-    oldAlert.parentElement.insertBefore(newAlert, oldAlert);
-    oldAlert.remove();
+    const alert = document.getElementById('alert');
+    alert.setAttribute('variation', 'error');
+    alert.innerHTML = "I can't believe you pressed the button.";
   });
 
   document.getElementById('operation').addEventListener('ds-change', function (e) {
