@@ -14,7 +14,7 @@ Array [
 ]
 `;
 
-exports[`HelpDrawer Analytics event tracking sends analytics event when closing dialog 1`] = `
+exports[`HelpDrawer Analytics event tracking sends analytics event when closing help drawer 1`] = `
 Array [
   Object {
     "event_action": "closed help drawer",
@@ -22,20 +22,6 @@ Array [
     "event_extension": "Design system integration",
     "event_label": "HelpDrawer title",
     "event_name": "help_drawer_closed",
-    "event_type": "ui interaction",
-    "heading": "HelpDrawer title",
-  },
-]
-`;
-
-exports[`HelpDrawer Analytics event tracking sends analytics event when dialog starts open 1`] = `
-Array [
-  Object {
-    "event_action": "opened help drawer",
-    "event_category": "ui components",
-    "event_extension": "Design system integration",
-    "event_label": "HelpDrawer title",
-    "event_name": "help_drawer_opened",
     "event_type": "ui interaction",
     "heading": "HelpDrawer title",
   },
@@ -56,7 +42,21 @@ Array [
 ]
 `;
 
-exports[`HelpDrawer Analytics event tracking sends analytics event when opening dialog 1`] = `
+exports[`HelpDrawer Analytics event tracking sends analytics event when help drawer starts open 1`] = `
+Array [
+  Object {
+    "event_action": "opened help drawer",
+    "event_category": "ui components",
+    "event_extension": "Design system integration",
+    "event_label": "HelpDrawer title",
+    "event_name": "help_drawer_opened",
+    "event_type": "ui interaction",
+    "heading": "HelpDrawer title",
+  },
+]
+`;
+
+exports[`HelpDrawer Analytics event tracking sends analytics event when opening help drawer 1`] = `
 Array [
   Object {
     "event_action": "opened help drawer",
