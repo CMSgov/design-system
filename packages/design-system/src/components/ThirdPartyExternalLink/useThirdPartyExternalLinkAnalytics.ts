@@ -13,7 +13,7 @@ export function useThirdPartyExternalLinkAnalytics({
 }: ThirdPartyExternalLinkProps) {
   const contentRef = useRef<HTMLAnchorElement>();
 
-  function clickHandler() {
+  function buttonAnalyticsHandler() {
     if (
       analytics !== true &&
       (!config().thirdPartyExternalLinkSendsAnalytics || analytics === false)
@@ -41,7 +41,7 @@ export function useThirdPartyExternalLinkAnalytics({
     });
   }
 
-  return { contentRef, clickHandler };
+  return { contentRef, buttonAnalyticsHandler };
 }
 
 export default useThirdPartyExternalLinkAnalytics;

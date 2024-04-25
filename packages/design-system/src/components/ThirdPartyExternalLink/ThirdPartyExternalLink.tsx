@@ -28,7 +28,7 @@ export interface ThirdPartyExternalLinkProps
  * [refer to its full documentation page](https://design.cms.gov/components/third-party-external-link/).
  */
 const ThirdPartyExternalLink = (props: ThirdPartyExternalLinkProps) => {
-  const { contentRef, clickHandler } = useThirdPartyExternalLinkAnalytics(props);
+  const { contentRef, buttonAnalyticsHandler } = useThirdPartyExternalLinkAnalytics(props);
   const { href, children, className, learnMoreUrl, origin } = props;
 
   const [showDialog, setShowDialog] = useState(false);
@@ -55,7 +55,13 @@ const ThirdPartyExternalLink = (props: ThirdPartyExternalLinkProps) => {
         onExit={close}
         heading={t('thirdPartyExternalLink.dialogHeading', { origin })}
         actions={[
-          <Button variation="solid" key="external-link__confirm" href={href} onClick={clickHandler}>
+          <Button
+            variation="solid"
+            key="external-link__confirm"
+            href={href}
+            analytics
+            onAnalyticsEvent={buttonAnalyticsHandler}
+          >
             {t('thirdPartyExternalLink.confirmationButtonText')}
           </Button>,
           <Button variation="ghost" onClick={close} key="external-link__cancel">
