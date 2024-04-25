@@ -9,7 +9,7 @@ import classNames from 'classnames';
 import useThirdPartyExternalLinkAnalytics from './useThirdPartyExternalLinkAnalytics';
 
 export interface ThirdPartyExternalLinkProps
-  extends AnalyticsOverrideProps,
+  extends Omit<AnalyticsOverrideProps, 'analyticsEventTypeOverride'>,
     AnalyticsParentDataProps {
   /** External link url. The destination. */
   href: string;
