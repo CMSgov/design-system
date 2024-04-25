@@ -6,11 +6,7 @@ describe('sendLinkEvent', () => {
   });
 
   const eventProps = {
-    event_type: 'ui interaction',
     event_name: 'test event',
-    event_category: 'test category',
-    event_action: 'test action',
-    event_label: 'test label',
     event_extension: 'Design system integration',
   };
 

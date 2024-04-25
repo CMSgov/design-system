@@ -1,5 +1,8 @@
 [
   [
+    "Deprecated: The event_type is no longer an analytics dimension being tracked."
+  ],
+  [
     "actions",
     "Buttons or other HTML to be rendered in the \"actions\" bar at the bottom of the dialog.\n\nReactNode",
     "-"
@@ -21,7 +24,7 @@
   ],
   [
     "analyticsEventTypeOverride",
-    "If you need the event_type to be overridden for your use case, you can provide an alternate string here. Suggested values can be found in the EventType enum.\n\nstring",
+    "If you need the event_type to be overridden for your use case, you can provide an alternate string here. Suggested values can be found in the EventType enum.\n\nstring\nDeprecated: The event_type is no longer an analytics dimension being tracked.",
     "-"
   ],
   [
