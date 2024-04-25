@@ -18,4 +18,5 @@ import './ds-button';
 import './ds-choice';
 import './ds-dropdown';
 import './ds-skip-nav';
+import './ds-spinner';
 import './ds-usa-banner';

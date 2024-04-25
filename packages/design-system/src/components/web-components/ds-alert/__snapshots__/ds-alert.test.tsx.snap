@@ -34,6 +34,7 @@ exports[`Alert renders alert 1`] = `
         Ruhroh
       </div>
     </div>
+    <template />
   </ds-alert>
 </DocumentFragment>
 `;

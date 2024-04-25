@@ -15,6 +15,7 @@ exports[`Button renders as an anchor with custom prop 1`] = `
     >
       Foo
     </a>
+    <template />
   </ds-button>
 </DocumentFragment>
 `;
@@ -29,6 +30,7 @@ exports[`Button renders as button 1`] = `
     >
       Foo
     </button>
+    <template />
   </ds-button>
 </DocumentFragment>
 `;
@@ -47,6 +49,7 @@ exports[`Button renders disabled anchor correctly 1`] = `
     >
       Link button
     </a>
+    <template />
   </ds-button>
 </DocumentFragment>
 `;
@@ -64,6 +67,7 @@ exports[`Button renders disabled button 1`] = `
     >
       Foo
     </button>
+    <template />
   </ds-button>
 </DocumentFragment>
 `;

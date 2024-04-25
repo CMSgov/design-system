@@ -9,6 +9,7 @@ exports[`Hint should render a default hint 1`] = `
     >
       Foo
     </p>
+    <template />
   </ds-hint>
 </DocumentFragment>
 `;
