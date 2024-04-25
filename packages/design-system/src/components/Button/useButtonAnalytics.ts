@@ -1,11 +1,6 @@
 import { ButtonProps } from './Button';
 import { config } from '../config';
-import {
-  EventCategory,
-  EventType,
-  getAnalyticsContentFromRefs,
-  eventExtensionText,
-} from '../analytics';
+import { getAnalyticsContentFromRefs, eventExtensionText } from '../analytics';
 import { useRef } from 'react';
 
 export default function useButtonAnalytics({
@@ -33,10 +28,6 @@ export default function useButtonAnalytics({
 
     return onAnalyticsEvent({
       event_name: 'button_engagement',
-      event_type: EventType.UI_INTERACTION,
-      event_category: EventCategory.UI_INTERACTION,
-      event_action: `engaged ${buttonStyle} button`,
-      event_label: href ? `${buttonText}: ${href}` : buttonText,
       event_extension: eventExtensionText,
       text: buttonText,
       button_style: buttonStyle,

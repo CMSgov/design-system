@@ -16,30 +16,12 @@ export interface UtagContainer {
 
 export type UtagEventType = 'link' | 'view';
 
-export enum EventCategory {
-  // These are likely unrelated and will need to be separated
-  UI_COMPONENTS = 'ui components',
-  // TODO: Right now this is used as the category of the Button events, but it should
-  // be consistent. After talking to the analytics team, we decided that it can be
-  // changed after Open Enrollment season.
-  UI_INTERACTION = 'ui interaction',
-}
-
-export enum EventType {
-  CONVERSION = 'conversion',
-  UI_INTERACTION = 'ui interaction',
-}
-
 // This is the default event 'extension' for events arising from the DS
 export const eventExtensionText = 'Design system integration';
 
 export interface AnalyticsEvent {
   event_name: string;
-  event_type?: string;
-  event_category?: string;
-  event_extension?: string;
-  event_action?: string;
-  event_label?: string;
+  event_extension: string;
   [additional_props: string]: unknown;
 }
 

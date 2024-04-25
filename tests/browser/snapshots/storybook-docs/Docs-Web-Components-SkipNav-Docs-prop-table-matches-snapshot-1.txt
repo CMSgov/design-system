@@ -1,0 +1,7 @@
+[
+  [
+    "href",
+    "The anchor or target for the link (where the link will jump the user to).",
+    "string"
+  ]
+]
