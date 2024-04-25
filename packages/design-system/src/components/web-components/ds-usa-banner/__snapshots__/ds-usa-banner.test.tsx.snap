@@ -216,6 +216,7 @@ exports[`UsaBanner renders correctly 1`] = `
         </div>
       </div>
     </section>
+    <template />
   </ds-usa-banner>
 </DocumentFragment>
 `;

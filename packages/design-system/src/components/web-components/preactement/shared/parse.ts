@@ -27,30 +27,6 @@ function parseJson(this: CustomElement, value: string) {
 
 /* -----------------------------------
  *
- * getDocument
- *
- * -------------------------------- */
-
-function getDocument(html: string) {
-  const value = `<!DOCTYPE html>\n<html><body>${html}</body></html>`;
-
-  let nodes: Document;
-
-  try {
-    nodes = new DOMParser().parseFromString(value, 'text/html');
-  } catch {
-    // no-op
-  }
-
-  if (!nodes) {
-    return void 0;
-  }
-
-  return nodes.body;
-}
-
-/* -----------------------------------
- *
  * getAttributeObject
  *
  * -------------------------------- */
@@ -114,4 +90,4 @@ function getPropKey(value: string) {
  *
  * -------------------------------- */
 
-export { parseJson, getDocument, getPropKey, getAttributeObject, getAttributeProps };
+export { parseJson, getPropKey, getAttributeObject, getAttributeProps };
