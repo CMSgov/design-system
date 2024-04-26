@@ -39,6 +39,10 @@ export interface Config {
    */
   headerSendsAnalytics: boolean;
   /**
+   * Controls whether the footer component send analytics data. Defaults to true.
+   */
+  footerSendsAnalytics: boolean;
+  /**
    * Controls whether third-party-external-link components send analytics data by default.
    * To override this setting for an individual alert instance, use the `analytics` prop.
    */
@@ -55,6 +59,7 @@ export const DEFAULTS: Config = Object.freeze({
   dialogSendsAnalytics: false,
   helpDrawerSendsAnalytics: false,
   headerSendsAnalytics: false,
+  footerSendsAnalytics: false,
   thirdPartyExternalLinkSendsAnalytics: false,
 });
 
@@ -62,6 +67,7 @@ export const HEALTHCARE_DEFAULTS: Config = {
   ...DEFAULTS,
   errorPlacementDefault: 'bottom',
   headerSendsAnalytics: true,
+  footerSendsAnalytics: true,
   thirdPartyExternalLinkSendsAnalytics: true,
 };
 
