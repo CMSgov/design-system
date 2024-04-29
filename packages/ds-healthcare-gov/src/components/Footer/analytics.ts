@@ -7,9 +7,9 @@ export function sendFooterLinkEvent(linkText: string, linkUrl?: string, heading?
       event_name: 'navigation_clicked',
       event_extension: eventExtensionText,
       navigation_type: 'footer',
-      heading,
       link_text: linkText,
       ...(linkUrl ? { link_url: linkUrl } : {}),
+      ...(heading ? { heading } : {}),
     });
   }
 }
