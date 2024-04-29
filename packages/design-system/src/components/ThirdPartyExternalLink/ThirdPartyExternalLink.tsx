@@ -1,12 +1,16 @@
 import { useState } from 'react';
 import type * as React from 'react';
+import { AnalyticsOverrideProps, AnalyticsParentDataProps } from '../analytics';
 import { Button } from '../Button';
 import { Dialog } from '../Dialog';
 import { ExternalLinkIcon } from '../Icons';
 import { t } from '../i18n';
 import classNames from 'classnames';
+import useThirdPartyExternalLinkAnalytics from './useThirdPartyExternalLinkAnalytics';
 
-interface ThirdPartyExternalLinkProps {
+export interface ThirdPartyExternalLinkProps
+  extends Omit<AnalyticsOverrideProps, 'analyticsEventTypeOverride'>,
+    AnalyticsParentDataProps {
   /** External link url. The destination. */
   href: string;
   /** External link text. This text will appear in the button triggering the dialog. */
@@ -23,13 +27,10 @@ interface ThirdPartyExternalLinkProps {
  * For information about how and when to use this component,
  * [refer to its full documentation page](https://design.cms.gov/components/third-party-external-link/).
  */
-const ThirdPartyExternalLink = ({
-  href,
-  children,
-  className,
-  learnMoreUrl,
-  origin,
-}: ThirdPartyExternalLinkProps) => {
+const ThirdPartyExternalLink = (props: ThirdPartyExternalLinkProps) => {
+  const { contentRef, buttonAnalyticsHandler } = useThirdPartyExternalLinkAnalytics(props);
+  const { href, children, className, learnMoreUrl, origin } = props;
+
   const [showDialog, setShowDialog] = useState(false);
   function open(event: React.SyntheticEvent<any>) {
     event.preventDefault();
@@ -41,7 +42,12 @@ const ThirdPartyExternalLink = ({
 
   return (
     <>
-      <a className={classNames('ds-c-external-link', className)} onClick={open} href={href}>
+      <a
+        className={classNames('ds-c-external-link', className)}
+        onClick={open}
+        href={href}
+        ref={contentRef}
+      >
         {children}
         <ExternalLinkIcon className="ds-c-external-link__icon" />
       </a>
@@ -49,7 +55,13 @@ const ThirdPartyExternalLink = ({
         onExit={close}
         heading={t('thirdPartyExternalLink.dialogHeading', { origin })}
         actions={[
-          <Button variation="solid" key="external-link__confirm" href={href}>
+          <Button
+            variation="solid"
+            key="external-link__confirm"
+            href={href}
+            analytics
+            onAnalyticsEvent={buttonAnalyticsHandler}
+          >
             {t('thirdPartyExternalLink.confirmationButtonText')}
           </Button>,
           <Button variation="ghost" onClick={close} key="external-link__cancel">
