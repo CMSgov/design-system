@@ -18,7 +18,6 @@ describe('Footer', function () {
 
   describe('analytics', () => {
     const mock = jest.fn();
-    // (window as any as UtagContainer).utag = { link: mock };
 
     beforeAll(() => {
       (window as any as UtagContainer).utag = { link: mock };
@@ -55,31 +54,5 @@ describe('Footer', function () {
         expect(mock).not.toHaveBeenCalled();
       });
     });
-
-    // describe('with analytics enabled', () => {
-    //   config({ footerSendsAnalytics: true });
-    //   const { container } = render(<Footer />);
-
-    //   container.querySelectorAll('a').forEach(link => {
-    //     if (link.closest('dialog')) {
-    //       // Ignore the links that are in the privacy modal
-    //       return;
-    //     }
-
-    //     test(`"${link.textContent}" link sends analytics`, () => {
-    //       fireEvent.click(link);
-    //       expect(mock).toHaveBeenCalled();
-    //       expect(mock.mock.lastCall).toMatchSnapshot();
-    //     });
-    //   })
-    // });
-
-    // describe('with analytics disabled', () => {
-    //   const { container } = render(<Footer />);
-
-    //   beforeAll(() => {
-    //     config({ thirdPartyExternalLinkSendsAnalytics: false });
-    //   });
-    // });
   });
 });
