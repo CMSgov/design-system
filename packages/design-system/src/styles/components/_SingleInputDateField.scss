@@ -301,6 +301,11 @@
     position: absolute;
     width: calc(100% + 4px);
     height: 2px;
+
+    @media (forced-colors: active) {
+      background-color: GrayText;
+      cursor: not-allowed;
+    }
   }
 }
 
