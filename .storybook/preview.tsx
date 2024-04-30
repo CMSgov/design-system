@@ -111,6 +111,8 @@ const analyticsSettingsDecorator = (Story, context) => {
     dialogSendsAnalytics: on,
     helpDrawerSendsAnalytics: on,
     headerSendsAnalytics: on,
+    footerSendsAnalytics: on,
+    thirdPartyExternalLinkSendsAnalytics: on,
   });
 
   return <Story {...context} />;

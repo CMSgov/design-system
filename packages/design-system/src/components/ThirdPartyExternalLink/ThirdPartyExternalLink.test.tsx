@@ -1,6 +1,8 @@
 import ThirdPartyExternalLink from './ThirdPartyExternalLink';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { config } from '../config';
+import { UtagContainer } from '../analytics';
 
 const defaultProps = {
   children: 'External site link',
@@ -82,6 +84,62 @@ describe('ThirdPartyExternalLink', () => {
 
       expect(dialog.textContent).toContain('Custom origin');
       expect(dialogHeading.textContent).toContain('Custom origin');
+    });
+  });
+
+  describe('Analytics event tracking', () => {
+    let tealiumMock;
+
+    beforeEach(() => {
+      config({ thirdPartyExternalLinkSendsAnalytics: true });
+      tealiumMock = jest.fn();
+      (window as any as UtagContainer).utag = {
+        link: tealiumMock,
+      };
+    });
+
+    afterEach(() => {
+      config({ thirdPartyExternalLinkSendsAnalytics: false });
+      jest.resetAllMocks();
+    });
+
+    it('sends analytics event when continue button is clicked', () => {
+      renderThirdPartyExternalLink();
+
+      userEvent.click(getLink());
+      userEvent.click(screen.getByText('Continue'));
+
+      expect(tealiumMock).toHaveBeenCalled();
+      expect(tealiumMock.mock.lastCall).toMatchSnapshot();
+    });
+
+    it('setting analytics to true overrides flag value', () => {
+      config({ thirdPartyExternalLinkSendsAnalytics: false });
+
+      renderThirdPartyExternalLink({ analytics: true });
+
+      userEvent.click(getLink());
+      userEvent.click(screen.getByText('Continue'));
+
+      expect(tealiumMock).toHaveBeenCalled();
+    });
+
+    it('setting analytics to false overrides flag value', () => {
+      renderThirdPartyExternalLink({ analytics: false });
+
+      userEvent.click(getLink());
+      userEvent.click(screen.getByText('Continue'));
+
+      expect(tealiumMock).not.toHaveBeenCalled();
+    });
+
+    it('overrides analytics event tracking on open', () => {
+      renderThirdPartyExternalLink({ analyticsLabelOverride: 'other text' });
+
+      userEvent.click(getLink());
+      userEvent.click(screen.getByText('Continue'));
+
+      expect(tealiumMock.mock.lastCall).toMatchSnapshot();
     });
   });
 });

@@ -1,4 +1,4 @@
-import { EventCategory, EventType, useAnalyticsContent, eventExtensionText } from '../analytics';
+import { useAnalyticsContent, eventExtensionText } from '../analytics';
 import { AlertProps } from './Alert';
 import { config } from '../config';
 
@@ -28,11 +28,7 @@ export default function useAlertAnalytics({
 
       onAnalyticsEvent({
         event_name: 'alert_impression',
-        event_type: EventType.UI_INTERACTION,
-        event_action: 'alert impression',
         event_extension: eventExtensionText,
-        event_category: EventCategory.UI_COMPONENTS,
-        event_label: eventHeadingText,
         heading: eventHeadingText,
         type: variation,
       });
