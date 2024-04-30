@@ -101,7 +101,8 @@ export const Table = ({
   ...tableProps
 }: TableProps) => {
   const [scrollActive, setScrollActive] = useState(false);
-  const captionId = useId('table-caption--', id);
+  const fallbackCaptionId = useId('table-caption--');
+  const captionId = id ? `${id}__caption` : fallbackCaptionId;
 
   if (process.env.NODE_ENV !== 'production') {
     if (
@@ -174,7 +175,7 @@ export const Table = ({
 
   const table = (
     <TableContext.Provider value={contextValue}>
-      <table className={classes} {...tableProps}>
+      <table className={classes} id={id} {...tableProps}>
         {renderedChildren}
       </table>
     </TableContext.Provider>
