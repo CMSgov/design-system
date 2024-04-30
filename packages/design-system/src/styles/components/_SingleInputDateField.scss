@@ -67,11 +67,6 @@
   border: 2px solid transparent;
 }
 
-.rdp-button:disabled {
-  opacity: 0.25;
-  pointer-events: none;
-}
-
 .rdp-button:not(:disabled) {
   cursor: pointer;
 }
@@ -294,6 +289,21 @@
   border: var(--rdp-outline-selected);
 }
 
+.rdp-day_disabled {
+  overflow: visible;
+  color: var(--color-muted);
+  pointer-events: none;
+
+  &::after {
+    background: var(--color-muted);
+    content: '';
+    display: block;
+    position: absolute;
+    width: calc(100% + 4px);
+    height: 2px;
+  }
+}
+
 .rdp:not([dir='rtl']) .rdp-day_range_start:not(.rdp-day_range_end) {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
@@ -436,25 +446,8 @@
   }
 
   &:disabled {
-    color: var(--pagination-link__color--disabled);
     pointer-events: none;
-
-    @media (forced-colors: active) {
-      border: 0;
-      color: GrayText;
-      cursor: not-allowed;
-
-      .ds-c-icon {
-        color: GrayText;
-        fill: GrayText;
-
-        path {
-          color: GrayText;
-          fill: GrayText;
-          stroke: GrayText;
-        }
-      }
-    }
+    visibility: hidden;
   }
 }
 
