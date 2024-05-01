@@ -92,3 +92,37 @@ export const InverseDisabled: Story = {
     layout: 'fullscreen',
   },
 };
+
+// I don't technically need to define the label/months in option
+// as I can use `value` to determine this
+// But the option parser requires a label/children to work
+const options = (
+  <>
+    <option value="1">Jan</option>
+    <option value="2">Feb</option>
+    <option value="3">Mar</option>
+    <option value="4">Apr</option>
+    <option value="5">May</option>
+    <option value="6">Jun</option>
+    <option value="7">Jul</option>
+    <option value="8">Aug</option>
+    <option value="9">Sep</option>
+    <option value="10" selected>
+      Oct
+    </option>
+    <option value="11" selected disabled>
+      Nov
+    </option>
+    <option value="12" disabled>
+      Dec
+    </option>
+  </>
+);
+
+export const HtmlOptions: Story = {
+  args: {
+    name: 'HTMLOptionsMonthPicker',
+    label: 'Select each of your birthday months from Foo Month Picker.',
+    children: options,
+  },
+};

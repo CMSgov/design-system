@@ -12,6 +12,10 @@ import { useLabelProps, UseLabelPropsProps } from '../Label/useLabelProps';
 import { useHint, UseHintProps } from '../Hint/useHint';
 import { useInlineError, UseInlineErrorProps } from '../InlineError/useInlineError';
 
+// Importing from /Dropdown, using parseChildren and associated funcs
+// parseChildren needs refactored to not rely on DropdownOption interface
+import { parseChildren } from '../Dropdown/utils';
+
 const monthNumbers = (() => {
   const months = [];
   for (let m = 1; m <= NUM_MONTHS; m++) {
@@ -21,6 +25,7 @@ const monthNumbers = (() => {
 })();
 
 interface BaseMonthPickerProps {
+  children?: React.ReactNode;
   /**
    * The `input` field's `name` attribute
    */
@@ -112,6 +117,7 @@ export const MonthPicker = (props: MonthPickerProps) => {
     }
   }
 
+  // Doesn't work with option children
   function handleSelectAll() {
     if (props.onSelectAll) {
       props.onSelectAll();
@@ -122,6 +128,7 @@ export const MonthPicker = (props: MonthPickerProps) => {
     }
   }
 
+  // Doesn't work with option children
   function handleClearAll() {
     if (props.onClearAll) {
       props.onClearAll();
@@ -172,23 +179,41 @@ export const MonthPicker = (props: MonthPickerProps) => {
       </div>
       <div className="ds-c-month-picker__months">
         <ol role="list" className="ds-c-list--bare ds-c-month-picker__months-list">
-          {months.map((month, i) => (
-            <li key={month}>
-              <Choice
-                aria-label={monthsLong[i]}
-                checked={selectedMonths.includes(i + 1)}
-                className="ds-c-month-picker__month"
-                disabled={disabledMonths.includes(i + 1)}
-                inversed={props.inversed}
-                onChange={handleChange}
-                name={props.name}
-                type="checkbox"
-                value={i + 1}
-                label={month}
-                id={`${id}__choice--${i + 1}`}
-              />
-            </li>
-          ))}
+          {props.children
+            ? parseChildren(props.children).map((month) => (
+                <li key={months[month.value]}>
+                  <Choice
+                    aria-label={monthsLong[month.value - 1]}
+                    checked={month.selected}
+                    className="ds-c-month-picker__month"
+                    disabled={month.disabled}
+                    inversed={props.inversed}
+                    onChange={handleChange}
+                    name={props.name}
+                    type="checkbox"
+                    value={month.value}
+                    label={months[month.value - 1]}
+                    id={`${id}__choice--${month.value}`}
+                  />
+                </li>
+              ))
+            : months.map((month, i) => (
+                <li key={month}>
+                  <Choice
+                    aria-label={monthsLong[i]}
+                    checked={selectedMonths.includes(i + 1)}
+                    className="ds-c-month-picker__month"
+                    disabled={disabledMonths.includes(i + 1)}
+                    inversed={props.inversed}
+                    onChange={handleChange}
+                    name={props.name}
+                    type="checkbox"
+                    value={i + 1}
+                    label={month}
+                    id={`${id}__choice--${i + 1}`}
+                  />
+                </li>
+              ))}
         </ol>
       </div>
       {bottomError}

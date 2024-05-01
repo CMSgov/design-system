@@ -59,7 +59,7 @@ function findElementsOfType<T extends keyof JSX.IntrinsicElements>(
   return findElementsOfType(types, (node as ReactElement).props?.children);
 }
 
-function parseOptionElement(option: ReactElement<any, 'option'>): DropdownOption {
+function parseOptionElement(option: ReactElement<any, 'option'>): DropdownOption | any {
   const { value, children, ...extraAttributes } = option.props;
   // The web-component Preact parser sometimes wraps text content in an array, but
   // react-aria doesn't like that because it wants its labels/children to only be
@@ -84,7 +84,7 @@ function parseOptGroupElement(optgroup: ReactElement<any, 'optgroup'>): Dropdown
   };
 }
 
-export function parseChildren(node: ReactNode): Array<DropdownOptGroup | DropdownOption> {
+export function parseChildren(node: ReactNode): Array<DropdownOptGroup | DropdownOption | any> {
   const elements = findElementsOfType(['optgroup', 'option'], node);
   if (elements.length) {
     return elements.map((element) => {
