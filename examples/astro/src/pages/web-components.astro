@@ -58,6 +58,21 @@ import Layout from '../layouts/Layout.astro';
         </div>
         <ds-button variation="solid" type="submit">Calculate</ds-button>
       </form>
+
+      <ds-month-picker requirement-label="Required." hint="Select many." name="fooPicker" label="Select any months you want!" >
+        <option value="1">J</option>
+        <option value="2">F</option>
+        <option value="3">M</option>
+        <option value="4">A</option>
+        <option value="5">M</option>
+        <option value="6">J</option>
+        <option value="7">J</option>
+        <option value="8" disabled>A</option>
+        <option value="9" selected>S</option>
+        <option value="10" disabled selected>O</option>
+        <option value="11">N</option>
+        <option value="12">D</option>
+      </ds-month-picker>
     </div>
   </main>
 </Layout>
