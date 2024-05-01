@@ -292,7 +292,6 @@
 .rdp-day_disabled {
   overflow: visible;
   color: var(--color-muted);
-  pointer-events: none;
 
   &::after {
     background: var(--color-muted);
