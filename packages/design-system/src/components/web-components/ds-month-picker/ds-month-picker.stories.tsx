@@ -6,24 +6,9 @@ import { webComponentDecorator } from '../storybook';
 
 const options = (
   <>
-    <option value="1">Jan</option>
-    <option value="2">Feb</option>
-    <option value="3">Mar</option>
-    <option value="4">Apr</option>
-    <option value="5">May</option>
-    <option value="6">Jun</option>
-    <option value="7">Jul</option>
-    <option value="8">Aug</option>
-    <option value="9">Sep</option>
-    <option value="10" selected>
-      Oct
-    </option>
-    <option value="11" selected disabled>
-      Nov
-    </option>
-    <option value="12" disabled>
-      Dec
-    </option>
+    <input type="checkbox" value="10" defaultChecked />
+    <input type="checkbox" value="11" defaultChecked disabled />
+    <input type="checkbox" value="12" disabled />
   </>
 );
 

@@ -7,8 +7,8 @@ const attributes = [
   'button-variation',
   'class-name',
   'clear-all-text',
-  // 'default-selected-months',
-  // 'disabled-months',
+  'default-selected-months',
+  'disabled-months',
   'error-id',
   'error-message-class-name',
   'error-message',
@@ -23,7 +23,7 @@ const attributes = [
   'requirement-label',
   'root-id',
   'select-all-text',
-  // 'selected-months',
+  'selected-months',
 ] as const;
 
 /* eslint-disable @typescript-eslint/no-namespace */

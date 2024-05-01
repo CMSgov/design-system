@@ -11,10 +11,37 @@ import { fallbackLocale, getLanguage, t } from '../i18n';
 import { useLabelProps, UseLabelPropsProps } from '../Label/useLabelProps';
 import { useHint, UseHintProps } from '../Hint/useHint';
 import { useInlineError, UseInlineErrorProps } from '../InlineError/useInlineError';
+import { ReactNode } from 'react';
+import { findElementsOfType } from '../utilities/findElementsOfType';
 
-// Importing from /Dropdown, using parseChildren and associated funcs
-// parseChildren needs refactored to not rely on DropdownOption interface
-import { parseChildren } from '../Dropdown/utils';
+function parseChildren(node: ReactNode):
+  | {
+      selectedMonths: number[];
+      disabledMonths: number[];
+    }
+  | undefined {
+  const elements = findElementsOfType(['input'], node);
+  if (elements.length) {
+    const selectedMonths = [];
+    const disabledMonths = [];
+    for (const element of elements) {
+      const attrs = element.props;
+
+      const monthNumber = parseInt(attrs.value);
+      if (monthNumber < 1 || monthNumber > 12) {
+        throw new Error('Each month input needs a value from 1 to 12.');
+      }
+
+      if (attrs.checked !== undefined) selectedMonths.push(monthNumber);
+      if (attrs.disabled !== undefined) disabledMonths.push(monthNumber);
+    }
+
+    return {
+      selectedMonths,
+      disabledMonths,
+    };
+  }
+}
 
 const monthNumbers = (() => {
   const months = [];
@@ -71,8 +98,8 @@ interface BaseMonthPickerProps {
    * `onClearAll` event handlers for those instances.
    */
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => any;
-  onSelectAll?: () => any;
-  onClearAll?: () => any;
+  onSelectAll?: (...args: any[]) => any;
+  onClearAll?: (...args: any[]) => any;
   /**
    * The text for the "Select all" button for internationalization
    */
@@ -91,14 +118,20 @@ export type MonthPickerProps = BaseMonthPickerProps &
  * [refer to its full documentation page](https://design.cms.gov/components/month-picker/).
  */
 export const MonthPicker = (props: MonthPickerProps) => {
+  const propsFromHtml = parseChildren(props.children);
+  const defaultSelectedMonths = propsFromHtml
+    ? propsFromHtml.selectedMonths
+    : props.defaultSelectedMonths;
+  const disabledMonths =
+    (propsFromHtml ? propsFromHtml.disabledMonths : props.disabledMonths) ?? [];
+
   const id = useId('month-picker--', props.id);
   const locale = fallbackLocale(getLanguage(), 'US');
   const months = getMonthNames(locale);
   const monthsLong = getMonthNames(locale, false);
   const isControlled = props.selectedMonths !== undefined;
-  const [selectedMonthsState, setSelectedMonthsState] = useState(props.defaultSelectedMonths ?? []);
+  const [selectedMonthsState, setSelectedMonthsState] = useState(defaultSelectedMonths ?? []);
   const selectedMonths = isControlled ? props.selectedMonths : selectedMonthsState;
-  const disabledMonths = props.disabledMonths ?? [];
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     if (props.onChange) {
@@ -117,25 +150,39 @@ export const MonthPicker = (props: MonthPickerProps) => {
     }
   }
 
-  // Doesn't work with option children
-  function handleSelectAll() {
+  function handleSelectAll(event) {
     if (props.onSelectAll) {
-      props.onSelectAll();
+      props.onSelectAll(event);
     }
 
     if (!isControlled) {
-      setSelectedMonthsState(monthNumbers.filter((m) => !disabledMonths.includes(m)));
+      setSelectedMonthsState(
+        monthNumbers.filter((m) => {
+          if (disabledMonths.includes(m)) {
+            return selectedMonthsState.includes(m);
+          } else {
+            return true;
+          }
+        })
+      );
     }
   }
 
-  // Doesn't work with option children
-  function handleClearAll() {
+  function handleClearAll(event) {
     if (props.onClearAll) {
-      props.onClearAll();
+      props.onClearAll(event);
     }
 
     if (!isControlled) {
-      setSelectedMonthsState([]);
+      setSelectedMonthsState(
+        monthNumbers.filter((m) => {
+          if (disabledMonths.includes(m)) {
+            return selectedMonthsState.includes(m);
+          } else {
+            return false;
+          }
+        })
+      );
     }
   }
 
@@ -179,41 +226,23 @@ export const MonthPicker = (props: MonthPickerProps) => {
       </div>
       <div className="ds-c-month-picker__months">
         <ol role="list" className="ds-c-list--bare ds-c-month-picker__months-list">
-          {props.children
-            ? parseChildren(props.children).map((month) => (
-                <li key={months[month.value]}>
-                  <Choice
-                    aria-label={monthsLong[month.value - 1]}
-                    checked={month.selected}
-                    className="ds-c-month-picker__month"
-                    disabled={month.disabled}
-                    inversed={props.inversed}
-                    onChange={handleChange}
-                    name={props.name}
-                    type="checkbox"
-                    value={month.value}
-                    label={months[month.value - 1]}
-                    id={`${id}__choice--${month.value}`}
-                  />
-                </li>
-              ))
-            : months.map((month, i) => (
-                <li key={month}>
-                  <Choice
-                    aria-label={monthsLong[i]}
-                    checked={selectedMonths.includes(i + 1)}
-                    className="ds-c-month-picker__month"
-                    disabled={disabledMonths.includes(i + 1)}
-                    inversed={props.inversed}
-                    onChange={handleChange}
-                    name={props.name}
-                    type="checkbox"
-                    value={i + 1}
-                    label={month}
-                    id={`${id}__choice--${i + 1}`}
-                  />
-                </li>
-              ))}
+          {months.map((month, i) => (
+            <li key={month}>
+              <Choice
+                aria-label={monthsLong[i]}
+                checked={selectedMonths.includes(i + 1)}
+                className="ds-c-month-picker__month"
+                disabled={disabledMonths.includes(i + 1)}
+                inversed={props.inversed}
+                onChange={handleChange}
+                name={props.name}
+                type="checkbox"
+                value={i + 1}
+                label={month}
+                id={`${id}__choice--${i + 1}`}
+              />
+            </li>
+          ))}
         </ol>
       </div>
       {bottomError}
