@@ -41,13 +41,42 @@ declare global {
 }
 /* eslint-enable */
 
-interface WrapperProps extends Omit<MonthPickerProps, 'inversed'> {
+interface WrapperProps
+  extends Omit<
+    MonthPickerProps,
+    'inversed' | 'defaultSelectedMonths' | 'disabledMonths' | 'selectedMonths'
+  > {
   inversed?: string;
   rootId?: string;
+  defaultSelectedMonths?: string | MonthPickerProps['defaultSelectedMonths'];
+  disabledMonths?: string | MonthPickerProps['disabledMonths'];
+  selectedMonths?: string | MonthPickerProps['selectedMonths'];
 }
 
-const Wrapper = ({ children, rootId, ...otherProps }: WrapperProps) => (
-  <MonthPicker {...otherProps} id={rootId} inversed={parseBooleanAttr(otherProps.inversed)}>
+const Wrapper = ({
+  children,
+  rootId,
+  defaultSelectedMonths,
+  disabledMonths,
+  selectedMonths,
+  ...otherProps
+}: WrapperProps) => (
+  <MonthPicker
+    {...otherProps}
+    id={rootId}
+    inversed={parseBooleanAttr(otherProps.inversed)}
+    defaultSelectedMonths={
+      typeof defaultSelectedMonths === 'string'
+        ? JSON.parse(defaultSelectedMonths)
+        : defaultSelectedMonths
+    }
+    disabledMonths={
+      typeof disabledMonths === 'string' ? JSON.parse(disabledMonths) : disabledMonths
+    }
+    selectedMonths={
+      typeof selectedMonths === 'string' ? JSON.parse(selectedMonths) : selectedMonths
+    }
+  >
     {children}
   </MonthPicker>
 );

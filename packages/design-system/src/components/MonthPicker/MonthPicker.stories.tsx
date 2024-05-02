@@ -20,12 +20,6 @@ const meta: Meta<typeof MonthPicker> = {
     hint: { control: 'text' },
     requirementLabel: { control: 'text' },
   },
-};
-export default meta;
-
-type Story = StoryObj<typeof MonthPicker>;
-
-const UncontrolledTemplate: Story = {
   render: function Component(args) {
     if (args.selectedMonths?.length === 0) {
       args.selectedMonths = undefined;
@@ -39,6 +33,9 @@ const UncontrolledTemplate: Story = {
     return <MonthPicker {...args} key={JSON.stringify(args.defaultSelectedMonths)} />;
   },
 };
+export default meta;
+
+type Story = StoryObj<typeof MonthPicker>;
 
 const ControlledTemplate: Story = {
   render: function Component(args) {
@@ -77,7 +74,7 @@ const ControlledTemplate: Story = {
 };
 
 export const Default: Story = {
-  ...UncontrolledTemplate,
+  // ...UncontrolledTemplate,
   args: {
     name: 'DefaultMonthPicker',
     label: 'Select a month from Default Month Picker.',
@@ -98,10 +95,12 @@ export const Disabled: Story = {
     name: 'DisabledMonthPicker',
     label: 'Select available months from Disabled Month Picker.',
     disabledMonths: [7, 8, 9, 10, 11, 12],
+    defaultSelectedMonths: [7],
   },
 };
 
 export const WithError: Story = {
+  ...ControlledTemplate,
   args: {
     errorMessage: 'There was a problem with your selection.',
     name: 'WithErrorMonthPicker',

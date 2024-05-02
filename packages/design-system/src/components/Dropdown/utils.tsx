@@ -31,7 +31,7 @@ export function getFirstOptionValue(
   console.warn('Dropdown component could not determine a default selected option');
 }
 
-function parseOptionElement(option: ReactElement<any, 'option'>): DropdownOption | any {
+function parseOptionElement(option: ReactElement<any, 'option'>): DropdownOption {
   const { value, children, ...extraAttributes } = option.props;
   // The web-component Preact parser sometimes wraps text content in an array, but
   // react-aria doesn't like that because it wants its labels/children to only be
@@ -56,7 +56,7 @@ function parseOptGroupElement(optgroup: ReactElement<any, 'optgroup'>): Dropdown
   };
 }
 
-export function parseChildren(node: ReactNode): Array<DropdownOptGroup | DropdownOption | any> {
+export function parseChildren(node: ReactNode): Array<DropdownOptGroup | DropdownOption> {
   const elements = findElementsOfType(['optgroup', 'option'], node);
   if (elements.length) {
     return elements.map((element) => {

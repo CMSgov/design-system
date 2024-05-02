@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { action } from '@storybook/addon-actions';
-import './ds-month-picker';
 import { webComponentDecorator } from '../storybook';
+import './ds-month-picker';
 
 const options = (
   <>
@@ -28,6 +28,9 @@ export default {
     },
     'clear-all-text': {
       description: 'The text for the "Clear all" button for internationalization.',
+      control: 'text',
+    },
+    'default-selected-months': {
       control: 'text',
     },
     'error-id': {
@@ -93,7 +96,7 @@ export default {
     'requirement-label': 'Required.',
     hint: 'Culpa minim deserunt anim consequat amet sit.',
     name: 'month-picker_field',
-    children: options,
+    children: undefined,
   },
   parameters: {
     docs: {
@@ -145,3 +148,12 @@ const Template = (args) => {
 };
 
 export const Default = Template.bind({});
+
+export const MonthOverrides = {
+  render: Template,
+  args: {
+    'requirement-label': undefined,
+    hint: 'This example demonstrates how to override the default checked and/or disabled options inside your component.',
+    children: options,
+  },
+};
