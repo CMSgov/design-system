@@ -6,12 +6,6 @@ const { readdirSync } = require('fs');
 const nodeModules = path.resolve(__dirname, 'node_modules');
 const coreDist = path.resolve(__dirname, 'packages', 'design-system', 'dist');
 const coreEsm = path.join(coreDist, 'preact-components', 'esm');
-const coreWebComponentDirs = readdirSync(path.join(coreEsm, 'web-components'), {
-  withFileTypes: true,
-})
-  .filter((dirent) => dirent.isDirectory())
-  .filter((dir) => dir.name.startsWith('ds-'))
-  .map((dir) => dir.name);
 
 /**
  * Creates and returns a configuration for webpack-stream to be used in a gulp pipeline.
@@ -55,14 +49,20 @@ function generateWebpackConfig(options) {
         // These ones are used in enough of them that it warrants pulling them out
         'classnames',
       ],
-      ...coreWebComponentDirs.reduce((obj, component) => {
-        obj[component] = {
-          import: path.resolve(coreEsm, 'web-components', component, `${component}.js`),
-          dependOn: 'base',
-          runtime: false,
-        };
-        return obj;
-      }, {}),
+      ...readdirSync(path.join(coreEsm, 'web-components'), {
+        withFileTypes: true,
+      })
+        .filter((dirent) => dirent.isDirectory())
+        .filter((dir) => dir.name.startsWith('ds-'))
+        .map((dir) => dir.name)
+        .reduce((obj, component) => {
+          obj[component] = {
+            import: path.resolve(coreEsm, 'web-components', component, `${component}.js`),
+            dependOn: 'base',
+            runtime: false,
+          };
+          return obj;
+        }, {}),
     };
   } else {
     // If we're not bundling these as web components, don't include the react
