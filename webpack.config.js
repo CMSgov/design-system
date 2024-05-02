@@ -76,10 +76,12 @@ function generateWebpackConfig({ preact = false, webComponents = false }) {
         'ds-alert',
         'ds-badge',
         'ds-button',
+        'ds-choice',
         'ds-dropdown',
         'ds-hint',
         'ds-inline-error',
         'ds-label',
+        'ds-spinner',
         'ds-usa-banner',
       ].reduce((obj, component) => {
         obj[component] = {
