@@ -63,7 +63,6 @@ function generateWebpackConfig({ preact = false, webComponents = false }) {
         path.resolve(coreEsm, 'i18n'),
         path.resolve(coreEsm, 'utilities', 'useId'),
         path.resolve(coreWC, 'preactement', 'define'),
-        // path.resolve(coreWC, 'base.js'),
         'preact/jsx-runtime',
         'preact/hooks',
         'preact/compat',
