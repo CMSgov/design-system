@@ -1,5 +1,5 @@
 import CustomDayPickerCaption from './CustomDayPickerCaption';
-import format from 'date-fns/format';
+import { format } from 'date-fns';
 import { DayPicker, DayPickerSingleProps } from 'react-day-picker';
 import { ArrowsStackedIcon } from '../Icons';
 import { t } from '../i18n';
