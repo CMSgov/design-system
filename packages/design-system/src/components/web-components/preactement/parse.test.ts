@@ -41,20 +41,40 @@ describe('parse', () => {
     });
 
     describe('slots', () => {
-      const testKey = 'testSlot';
-
       it('should remove <* slot="{key}"> and apply to props', () => {
+        const testKey = 'testSlot';
         const slotValue = 'slotValue';
         const slotHtml = `<em slot="${testKey}">${slotValue}</em>`;
         const headingHtml = `<h1>${testHeading}</h1>`;
         const testHtml = `<section>${headingHtml}${slotHtml}</section>`;
 
-        const elementObject = makeTemplate(testHtml);
-        const { vnode, slots } = templateToPreactVNode(elementObject);
+        const template = makeTemplate(testHtml);
+        const { vnode, slots } = templateToPreactVNode(template);
         const { container } = render(vnode);
 
         expect(container.innerHTML).toEqual(`<section>${headingHtml}</section>`);
         expect(slots).toEqual({ [testKey]: slotValue });
+      });
+
+      it('should ignore slots of nested custom elements>', () => {
+        const testHtml = `
+          <section>
+            <div slot="parent-slot">Hello</div>
+            <ds-choice>
+              <div slot="checked-children">
+                Hello world
+              </div>
+            </ds-choice>
+          </section>
+        `;
+
+        const template = makeTemplate(testHtml);
+        const { vnode, slots } = templateToPreactVNode(template);
+        const { container } = render(vnode);
+
+        expect(container.querySelector('[slot="parent-slot"]')).not.toBeInTheDocument();
+        expect(container.querySelector('[slot="checked-children"]')).toBeInTheDocument();
+        expect(slots).toEqual({ parentSlot: 'Hello' });
       });
     });
   });

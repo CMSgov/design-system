@@ -58,10 +58,6 @@ export interface BaseDialogProps extends AnalyticsOverrideProps {
    */
   isOpen?: boolean;
   /**
-   * This function is called after the modal opens
-   */
-  onEnter?(): void;
-  /**
    * Called when the user triggers an exit event, like by clicking the close
    * button or pressing the ESC key. The parent of this component is
    * responsible for showing or not showing the dialog, so you need to use this
@@ -96,7 +92,6 @@ export const Dialog = (props: DialogProps) => {
     headerClassName,
     heading,
     id,
-    onEnter,
     onExit,
     size,
     ...modalProps
@@ -112,10 +107,6 @@ export const Dialog = (props: DialogProps) => {
   const actionsClassNames = classNames('ds-c-dialog__actions', actionsClassName);
 
   const containerRef = useRef<HTMLDivElement>();
-
-  useEffect(() => {
-    if (onEnter) onEnter();
-  }, []);
 
   // Set initial focus
   useEffect(() => {

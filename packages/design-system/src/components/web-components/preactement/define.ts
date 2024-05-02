@@ -191,6 +191,29 @@ function setupMutationObserver(this: CustomElement) {
 }
 
 /**
+ * Creates a mutation observer that watches for additions and removals to the child
+ * nodes at the root of the custom element and calls the render function when it
+ * detects changes. This allows users to set the inner HTML and expect the component
+ * to update. For instance, a user can take a `<ds-button>` that is already in the
+ * DOM and update its content with code like the following:
+ *
+ *   button.innerHTML = '<ds-spinner></ds-spinner> Loading'.
+ *
+ * And the button will re-render itself so that its subtree resembles this (simplified):
+ *
+ *   <ds-button>
+ *     <button><ds-spinner></ds-spinner> Loading</button>
+ *   </ds-button>
+ */
+function setupMutationObserver(this: CustomElement) {
+  this.__mutationObserver = new MutationObserver((mutations: MutationRecord[]) => {
+    if (mutations.find((mutation: MutationRecord) => mutation.type === 'childList')) {
+      this.renderPreactComponent();
+    }
+  });
+}
+
+/**
  * Called each time one of these custom elements is added to the document and does all
  * the magic to make the thing work. It gathers the attributes, slots, and event handler
  * functions and packages them up to send to the underlying Preact component as props
@@ -290,7 +313,15 @@ function wrapTemplateHtml(html: string) {
  * See `wrapTemplateHtml` function.
  */
 function unwrapTemplateVNode(vnode: VNode): VNode {
-  return vnode.props.children[0].props.children;
+  const children = vnode.props.children[0].props.children;
+  if (Array.isArray(children) && children.length === 0) {
+    // This means the HTML inside it was empty, so the intention is for there to be no
+    // children content for the component. The Preact components will expect `undefined`
+    // in those cases.
+    return undefined;
+  } else {
+    return children;
+  }
 }
 
 /**
@@ -334,6 +365,7 @@ function renderPreactComponent(this: CustomElement) {
 
   const children = unwrapTemplateVNode(vnode);
 
+  // These are the props we'll pass to the Preact component
   const props = {
     ...this.__properties,
     parent: this,
@@ -341,13 +373,14 @@ function renderPreactComponent(this: CustomElement) {
     ...slots,
   };
 
-  // Remove everything but the template so we have a clean slate to render our component
-  [...this.childNodes]
-    .filter((childNode) => childNode !== template)
-    .forEach((childNode) => childNode.remove());
+  // TODO: Clearing everything before the Preact component render only appears to be
+  // necessary for the unit tests. I haven't figured out why yet.
+  [...this.childNodes].forEach((childNode) => childNode.remove());
 
+  // Render the Preact component to the root of this custom element
   render(h(this.__component, props), this);
 
+  // The Preact render would have removed this template, so add it back in
   this.appendChild(template);
 
   // Reinstate the mutation observer to watch for user changes

@@ -22,9 +22,14 @@ export function templateToPreactVNode(template: HTMLTemplateElement): {
   return { vnode, slots };
 }
 
+/**
+ * Recursively converts DOM nodes into Preact VNodes (virtual nodes) and also extracts
+ * slot-element information.
+ */
 function nodeToPreactVNode(
   node: Node,
-  slots: Slots = {}
+  slots: Slots = {},
+  insideNestedComponent: boolean = false
 ): { vnode: VNode<any> | string | null; slots: Slots } {
   if (node.nodeType === 3) {
     return { vnode: node.textContent || '', slots };
@@ -49,10 +54,15 @@ function nodeToPreactVNode(
     };
   }
 
+  if (nodeName.includes('-')) {
+    // It's a custom element, we don't want to steal any of its slots.
+    insideNestedComponent = true;
+  }
+
   const childNodes = Array.from(node.childNodes);
   const children = [];
   for (const childNode of childNodes) {
-    const { vnode, slots: childSlots } = nodeToPreactVNode(childNode, slots);
+    const { vnode, slots: childSlots } = nodeToPreactVNode(childNode, slots, insideNestedComponent);
     Object.assign(slots, childSlots);
     children.push(vnode);
   }
@@ -72,13 +82,18 @@ function nodeToPreactVNode(
   }
 
   if (slot) {
-    return {
-      vnode: null,
-      slots: {
-        ...slots,
-        [getPropKey(slot)]: getSlotChildren(children),
-      },
-    };
+    if (insideNestedComponent) {
+      // Leave the element alone and put its slot back!
+      return { vnode: h(nodeName, { slot, ...props }, children), slots };
+    } else {
+      return {
+        vnode: null,
+        slots: {
+          ...slots,
+          [getPropKey(slot)]: getSlotChildren(children),
+        },
+      };
+    }
   }
 
   return { vnode: h(nodeName, props, children), slots };
