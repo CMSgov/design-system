@@ -1,19 +1,28 @@
 const CopyPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const { ProvidePlugin } = require('webpack');
+const { readdirSync } = require('fs');
 
 const nodeModules = path.resolve(__dirname, 'node_modules');
 const coreDist = path.resolve(__dirname, 'packages', 'design-system', 'dist');
 const coreEsm = path.join(coreDist, 'preact-components', 'esm');
-const coreWC = path.join(coreEsm, 'web-components');
+const coreWebComponentDirs = readdirSync(path.join(coreEsm, 'web-components'), {
+  withFileTypes: true,
+})
+  .filter((dirent) => dirent.isDirectory())
+  .filter((dir) => dir.name.startsWith('ds-'))
+  .map((dir) => dir.name);
 
 /**
+ * Creates and returns a configuration for webpack-stream to be used in a gulp pipeline.
  *
- * @param bool preact - whether to use preact instead of react
- * @param bool webComponents - whether we're targeting web components
- * @returns
+ * @param bool options.entryPath - string or array of file paths for the entry file
+ * @param bool options.preact - whether to use preact instead of react
+ * @param bool options.webComponents - whether we're targeting web components
+ *
+ * @returns a configuration object for webpack-stream
  */
-function generateWebpackConfig({ preact = false, webComponents = false }) {
+function generateWebpackConfig(options) {
   const plugins = [];
   let entry;
   let externals = {};
@@ -24,81 +33,36 @@ function generateWebpackConfig({ preact = false, webComponents = false }) {
     library: 'DesignSystem',
   };
 
-  if (webComponents) {
-    // Not sure if this should be externals or a different chunk.
-    // Maybe we need to make two passes with WebPack for web components, where the second
-    // one chunks everything by directory in src/components/web-components. Chunking is
-    // probably the best option because it can automatically code split and ensure we have
-    // every bit of code we need that is shared.
-    // https://webpack.js.org/guides/code-splitting
-    // Actually, since we don't use dynamic imports and aren't automatically downloading
-    // the other chunks via JavaScript, maybe having multiple entries is indeed the most
-    // appropriate option.
-    // externals = {
-    //   [path.resolve('packages', 'design-system', 'src', 'components')]
-    // }
-    // optimization = {
-    //   runtimeChunk: 'single',
-    // }
-    // optimization = {
-    //   splitChunks: {
-    //     chunks: 'all',
-    //     // name: function(module, chunks, cacheGroupKey) {
-    //     //   const moduleFileName = module
-    //     //     .identifier()
-    //     //     .split('/')
-    //     //     .reduceRight((item) => item);
-    //     //   console.log(moduleFileName, chunks, cacheGroupKey)
-    //     //   console.log('----')
-    //     //   const allChunksNames = chunks.map((item) => item.name).join('~');
-    //     //   return `${cacheGroupKey}-${allChunksNames}-${moduleFileName}`;
-    //     // }
-    //   }
-    // }
+  if (options.webComponents) {
+    // We have two options for web-component bundles: everything or a-la-carte. This
+    // multi-entry setup doesn't lend itself well to using the gulp pipelines, so
+    // we're just ignoring that and creating our own entry config here.
     entry = {
-      all: path.resolve(coreWC, 'index.js'),
+      all: options.entryPath,
       base: [
+        // Not going to bother supporting config and i18n side-effects (importing local
+        // config and i18n override files) in child design systems until we know we need
+        // to. I think it would probably be better to consolidate the packages with the
+        // complexity that web component compilation and distribution brings.
         path.resolve(coreEsm, 'analytics'),
         path.resolve(coreEsm, 'config'),
         path.resolve(coreEsm, 'i18n'),
         path.resolve(coreEsm, 'utilities', 'useId'),
-        path.resolve(coreWC, 'preactement', 'define'),
+        path.resolve(coreEsm, 'web-components', 'preactement', 'define'),
         'preact/jsx-runtime',
         'preact/hooks',
         'preact/compat',
         // These ones are used in enough of them that it warrants pulling them out
         'classnames',
       ],
-      ...[
-        // TODO: Read the web-components folder for `ds-` prefixed folders instead of hardcoding
-        'ds-alert',
-        'ds-badge',
-        'ds-button',
-        'ds-choice',
-        'ds-dropdown',
-        'ds-hint',
-        'ds-inline-error',
-        'ds-label',
-        'ds-spinner',
-        'ds-usa-banner',
-      ].reduce((obj, component) => {
+      ...coreWebComponentDirs.reduce((obj, component) => {
         obj[component] = {
-          import: path.resolve(coreWC, component, `${component}.js`),
+          import: path.resolve(coreEsm, 'web-components', component, `${component}.js`),
           dependOn: 'base',
           runtime: false,
         };
         return obj;
       }, {}),
-      // 'ds-alert': {
-      //   import: path.resolve(coreWC, 'ds-alert', 'ds-alert.js'),
-      //   dependOn: 'base',
-      //   runtime: false,
-      // },
-      // 'ds-usa-banner': {
-      //   import: path.resolve(coreWC, 'ds-usa-banner', 'ds-usa-banner.js'),
-      //   dependOn: 'base',
-      //   runtime: false,
-      // },
     };
   } else {
     // If we're not bundling these as web components, don't include the react
@@ -106,7 +70,7 @@ function generateWebpackConfig({ preact = false, webComponents = false }) {
     // with the framework directly in order to use our components, and we don't
     // expose it in our code for them to do so. They should instead load the
     // framework modules before loading our bundle.
-    externals = preact
+    externals = options.preact
       ? {
           preact: 'preact',
         }
@@ -117,7 +81,7 @@ function generateWebpackConfig({ preact = false, webComponents = false }) {
 
     plugins.push(
       new CopyPlugin({
-        patterns: preact
+        patterns: options.preact
           ? [
               `${nodeModules}/preact/dist/preact.min.umd.js`,
               `${nodeModules}/preact/dist/preact.umd.js`,
@@ -131,7 +95,7 @@ function generateWebpackConfig({ preact = false, webComponents = false }) {
     );
   }
 
-  if (preact) {
+  if (options.preact) {
     // If we're using preact, we need to replace resolve references to react
     // to their preact equivalents.
     resolve = {
@@ -151,9 +115,9 @@ function generateWebpackConfig({ preact = false, webComponents = false }) {
     );
   }
 
-  if (!preact) {
+  if (!options.preact) {
     output.filename = 'react-components.js';
-  } else if (!webComponents) {
+  } else if (!options.webComponents) {
     output.filename = 'preact-components.js';
   } else {
     // bundleName = 'web-components.js';
