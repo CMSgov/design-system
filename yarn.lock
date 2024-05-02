@@ -26090,13 +26090,6 @@ vinyl-fs@^3.0.0, vinyl-fs@^3.0.3:
     vinyl "^2.0.0"
     vinyl-sourcemap "^1.1.0"
 
-vinyl-named@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/vinyl-named/-/vinyl-named-1.1.0.tgz#94e4fe741e38db0ec303e5b3d868b297a2deab66"
-  integrity sha512-ElYBnsSw8Y1Hz11WPw0DFmi+TBNTEBhZ9zXaHluDSIZZnkFIGCjGRBpsW5QmbMMLwv+lRpUD3VbKdJCbNpct7Q==
-  dependencies:
-    through "^2.3.6"
-
 vinyl-sourcemap@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/vinyl-sourcemap/-/vinyl-sourcemap-1.1.0.tgz#92a800593a38703a8cdb11d8b300ad4be63b3e16"
