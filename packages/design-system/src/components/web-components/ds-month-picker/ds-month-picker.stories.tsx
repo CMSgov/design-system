@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { webComponentDecorator } from '../storybook';
 import './ds-month-picker';
 
-const options = (
+const elements = (
   <>
     <input type="checkbox" value="10" defaultChecked />
     <input type="checkbox" value="11" defaultChecked disabled />
@@ -168,6 +168,6 @@ export const MonthOverrides = {
   args: {
     'requirement-label': undefined,
     hint: 'This example demonstrates how to override the default checked and/or disabled options inside your component.',
-    children: options,
+    children: elements,
   },
 };

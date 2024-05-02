@@ -149,7 +149,7 @@ export const InverseDisabled: Story = {
   },
 };
 
-const options = (
+const elements = (
   <>
     <input type="checkbox" value="10" checked />
     <input type="checkbox" value="11" checked disabled />
@@ -157,10 +157,10 @@ const options = (
   </>
 );
 
-export const HtmlOptions: Story = {
+export const HtmlElements: Story = {
   args: {
     name: 'HTMLOptionsMonthPicker',
     label: 'Select each of your birthday months from Foo Month Picker.',
-    children: options,
+    children: elements,
   },
 };
