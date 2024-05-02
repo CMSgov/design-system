@@ -58,7 +58,6 @@ function generateWebpackConfig({ preact = false, webComponents = false }) {
     entry = {
       all: path.resolve(coreWC, 'index.js'),
       base: [
-        path.resolve(coreWC, 'base'),
         path.resolve(coreEsm, 'analytics'),
         path.resolve(coreEsm, 'config'),
         path.resolve(coreEsm, 'i18n'),
