@@ -182,14 +182,6 @@ function proxyEvents(props, eventNames, CustomElement) {
   return callbacks;
 }
 
-function setupMutationObserver(this: CustomElement) {
-  this.__mutationObserver = new MutationObserver((mutations: MutationRecord[]) => {
-    if (mutations.find((mutation: MutationRecord) => mutation.type === 'childList')) {
-      this.renderPreactComponent();
-    }
-  });
-}
-
 /**
  * Creates a mutation observer that watches for additions and removals to the child
  * nodes at the root of the custom element and calls the render function when it
