@@ -2,7 +2,7 @@
 
 exports[`Table accepts custom id 1`] = `
 <div
-  aria-labelledby="static-id"
+  aria-labelledby="static-id__caption"
   aria-live="polite"
   aria-relevant="additions"
   class="ds-c-table__wrapper"
@@ -10,10 +10,11 @@ exports[`Table accepts custom id 1`] = `
 >
   <table
     class="ds-c-table"
+    id="static-id"
   >
     <caption
       class="ds-c-table__caption"
-      id="static-id"
+      id="static-id__caption"
     >
       A great caption
     </caption>
@@ -24,6 +25,7 @@ exports[`Table accepts custom id 1`] = `
 exports[`Table applies responsive stacked table 1`] = `
 <table
   class="ds-c-table ds-c-lg-table--stacked"
+  id="static-id"
 >
   <caption
     class="ds-c-table__caption"
@@ -35,7 +37,7 @@ exports[`Table applies responsive stacked table 1`] = `
 
 exports[`Table applies scrollable prop to table 1`] = `
 <div
-  aria-labelledby="static-id"
+  aria-labelledby="static-id__caption"
   aria-live="polite"
   aria-relevant="additions"
   class="ds-c-table__wrapper"
@@ -43,10 +45,11 @@ exports[`Table applies scrollable prop to table 1`] = `
 >
   <table
     class="ds-c-table"
+    id="static-id"
   >
     <caption
       class="ds-c-table__caption"
-      id="static-id"
+      id="static-id__caption"
     >
       A great caption
     </caption>
