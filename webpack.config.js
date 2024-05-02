@@ -119,8 +119,6 @@ function generateWebpackConfig(options) {
     output.filename = 'react-components.js';
   } else if (!options.webComponents) {
     output.filename = 'preact-components.js';
-  } else {
-    // bundleName = 'web-components.js';
   }
 
   return {
