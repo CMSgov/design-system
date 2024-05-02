@@ -74,7 +74,6 @@ const ControlledTemplate: Story = {
 };
 
 export const Default: Story = {
-  // ...UncontrolledTemplate,
   args: {
     name: 'DefaultMonthPicker',
     label: 'Select a month from Default Month Picker.',
@@ -95,7 +94,6 @@ export const Disabled: Story = {
     name: 'DisabledMonthPicker',
     label: 'Select available months from Disabled Month Picker.',
     disabledMonths: [7, 8, 9, 10, 11, 12],
-    defaultSelectedMonths: [7],
   },
 };
 

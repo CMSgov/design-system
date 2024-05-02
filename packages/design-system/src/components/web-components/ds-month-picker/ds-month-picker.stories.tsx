@@ -31,6 +31,13 @@ export default {
       control: 'text',
     },
     'default-selected-months': {
+      description:
+        'Array of month numbers, where `1` is January, and any month included is selected by default. Sets the initial checked state for the 12 month checkboxes. Use this for an uncontrolled component; otherwise, use the `selectedMonths` property. Alternatively, you can apply `checked` to `<input>` element children.',
+      control: 'text',
+    },
+    'disabled-months': {
+      description:
+        'Array of month numbers, where `1` is January, and any month included is disabled for selection. Alternatively, you can apply `disabled` to `<input>` element children.',
       control: 'text',
     },
     'error-id': {
@@ -90,6 +97,11 @@ export default {
       description: 'The text for the "Select all" button for internationalization.',
       control: 'text',
     },
+    'selected-months': {
+      description:
+        'Array of month numbers, where `1` is January, and any month included is selected. This will render a read-only field. If the field should be mutable, use `defaultSelectedMonths`. Alternatively, you can apply `checked` to `<input>` element children.',
+      control: 'text',
+    },
   },
   args: {
     label: 'Month Picker example',
@@ -109,12 +121,14 @@ export default {
         'ds-change': {
           description:
             'A callback function that\'s invoked when a month\'s checked state is changed. Note: This callback is not called when a month is selected or deselected via the "Select all" or "Clear all" buttons – use the `onSelectAll` and `onClearAll` event handlers for those instances.',
-          eventObjectDescription: (
-            <>
-              <code>event.details.target.value</code> - The <code>value</code> of the selected
-              option
-            </>
-          ),
+        },
+        'ds-clear-all': {
+          description:
+            'A callback function that\'s invoked when the "Clear all" button is pressed.',
+        },
+        'ds-select-all': {
+          description:
+            'A callback function that\'s invoked when the "Select all" button is pressed.',
         },
       },
     },

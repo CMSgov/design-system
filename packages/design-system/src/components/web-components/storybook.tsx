@@ -5,8 +5,7 @@ export function webComponentDecorator(Story, context) {
   const { children, ...simpleArgs } = context.args;
   return (
     <Fragment key={JSON.stringify({ ...simpleArgs, ...context.globals })}>
-      {' '}
-      <Story />{' '}
+      <Story />
     </Fragment>
   );
 }
