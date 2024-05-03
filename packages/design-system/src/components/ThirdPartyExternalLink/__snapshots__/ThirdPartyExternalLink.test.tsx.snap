@@ -1,5 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ThirdPartyExternalLink Analytics event tracking overrides analytics event tracking on open 1`] = `
+Array [
+  Object {
+    "event_extension": "Design system integration",
+    "event_name": "external_link_click",
+    "link_type": "link_external",
+    "link_url": "foo",
+    "parent_component_heading": " ",
+    "parent_component_type": " ",
+    "text": "other text",
+  },
+]
+`;
+
+exports[`ThirdPartyExternalLink Analytics event tracking sends analytics event when continue button is clicked 1`] = `
+Array [
+  Object {
+    "event_extension": "Design system integration",
+    "event_name": "external_link_click",
+    "link_type": "link_external",
+    "link_url": "foo",
+    "parent_component_heading": " ",
+    "parent_component_type": " ",
+    "text": "External site linkThis link goes to an external site",
+  },
+]
+`;
+
 exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external link dialog 1`] = `
 <dialog
   class="ds-c-dialog"
