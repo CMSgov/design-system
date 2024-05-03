@@ -36,6 +36,29 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </ds-choice>
 
+      <ds-accordion bordered="true" class="ds-u-margin-top--2">
+        <ds-accordion-item heading="First Amendment" default-open="true">
+          <p>
+            We the People of the United States, in Order to form a more perfect Union, establish
+            Justice, insure domestic Tranquility, provide for the common defence, promote the general
+            Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and
+            establish this Constitution for the United States of America.
+          </p>
+        </ds-accordion-item>
+        <ds-accordion-item heading="Second Amendment">
+          <p>
+            A well regulated Militia, being necessary to the security of a free State, the right of the
+            people to keep and bear Arms, shall not be infringed.
+          </p>
+        </ds-accordion-item>
+      </ds-accordion>
+
+      <ds-month-picker requirement-label="Required." hint="Select many." name="fooPicker" label="Select any months you want!" >
+        <input type="checkbox" value="10" checked />
+        <input type="checkbox" value="11" checked disabled />
+        <input type="checkbox" value="12" disabled />
+      </ds-month-picker>
+
       <h2 class="ds-text-heading--2xl">Adding machine</h2>
       <form id="calculator">
         <ds-dropdown
@@ -58,12 +81,6 @@ import Layout from '../layouts/Layout.astro';
         </div>
         <ds-button variation="solid" type="submit">Calculate</ds-button>
       </form>
-
-      <ds-month-picker requirement-label="Required." hint="Select many." name="fooPicker" label="Select any months you want!" >
-        <input type="checkbox" value="10" checked />
-        <input type="checkbox" value="11" checked disabled />
-        <input type="checkbox" value="12" disabled />
-      </ds-month-picker>
     </div>
   </main>
 </Layout>
@@ -91,6 +108,7 @@ import Layout from '../layouts/Layout.astro';
 </script>
 <!-- <script src="@cmsgov/design-system/web-components"></script> -->
 <script src="@cmsgov/design-system/dist/web-components/bundle/base.js"></script>
+<script src="@cmsgov/design-system/dist/web-components/bundle/ds-accordion.js"></script>
 <script src="@cmsgov/design-system/dist/web-components/bundle/ds-alert.js"></script>
 <script src="@cmsgov/design-system/dist/web-components/bundle/ds-button.js"></script>
 <script src="@cmsgov/design-system/dist/web-components/bundle/ds-choice.js"></script>

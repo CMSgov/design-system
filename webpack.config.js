@@ -57,7 +57,7 @@ function generateWebpackConfig(options) {
         .map((dir) => dir.name)
         .reduce((obj, component) => {
           obj[component] = {
-            import: path.resolve(coreEsm, 'web-components', component, `${component}.js`),
+            import: path.resolve(coreEsm, 'web-components', component, 'index.js'),
             dependOn: 'base',
             runtime: false,
           };
