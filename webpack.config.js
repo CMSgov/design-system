@@ -33,6 +33,9 @@ function generateWebpackConfig(options) {
     // we're just ignoring that and creating our own entry config here.
     entry = {
       all: options.entryPath,
+      // TODO: To maintain backwards compatibility, duplicate the `all` bundle with its
+      // old name, but we can remove this in the next breaking change.
+      'web-components': options.entryPath,
       base: [
         // Not going to bother supporting config and i18n side-effects (importing local
         // config and i18n override files) in child design systems until we know we need
