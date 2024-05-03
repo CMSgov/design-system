@@ -1,0 +1,102 @@
+[
+  [
+    "button-variation",
+    "Variation string to be applied to buttons. See [Button component](https://design.cms.gov/storybook/?path=/docs/components-button--docs).",
+    "undefined\"solid\"\"ghost\""
+  ],
+  [
+    "children",
+    "",
+    "See description"
+  ],
+  [
+    "class-name",
+    "Additional classes to be added to the root element.",
+    "string"
+  ],
+  [
+    "clear-all-text",
+    "The text for the \"Clear all\" button for internationalization.",
+    "string"
+  ],
+  [
+    "default-selected-months",
+    "Array of month numbers, where `1` is January, and any month included is selected by default. Sets the initial checked state for the 12 month checkboxes. Use this for an uncontrolled component; otherwise, use the `selectedMonths` property. Alternatively, you can apply `checked` to `<input>` element children.",
+    "string"
+  ],
+  [
+    "disabled-months",
+    "Array of month numbers, where `1` is January, and any month included is disabled for selection. Alternatively, you can apply `disabled` to `<input>` element children.",
+    "string"
+  ],
+  [
+    "error-id",
+    "The ID of the error message applied to this field. If none is provided, the id will be derived from the `root-id` attribute.",
+    "string"
+  ],
+  [
+    "error-message",
+    "Enable the error state by providing an error message.",
+    "string"
+  ],
+  [
+    "error-message-class-name",
+    "Additional classes to be added to the error message.",
+    "string"
+  ],
+  [
+    "error-placement",
+    "Location of the error message relative to the field input",
+    "undefined\"top\"\"bottom\""
+  ],
+  [
+    "hint",
+    "Hint text or HTML",
+    "string"
+  ],
+  [
+    "hint-id",
+    "The ID of the hint element",
+    "string"
+  ],
+  [
+    "inversed",
+    "Set to \"true\" to apply the \"inverse\" scheme",
+    "\"true\"\"false\""
+  ],
+  [
+    "label",
+    "Label text or HTML.",
+    "string"
+  ],
+  [
+    "label-class-name",
+    "Additional classes to be added to the field label",
+    "string"
+  ],
+  [
+    "label-id",
+    "A unique `id` to be used on the field label. If one isn't provided, a unique ID will be generated.",
+    "string"
+  ],
+  [
+    "name",
+    "The `input` field's `name` attribute.",
+    "string"
+  ],
+  [
+    "requirement-label",
+    "",
+    "string"
+  ],
+  [
+    "root-id",
+    "A unique ID for this element. A unique ID will be generated if one isn't provided.",
+    "string"
+  ],
+  [
+    "select-all-text",
+    "The text for the \"Select all\" button for internationalization.",
+    "string"
+  ]
+]
