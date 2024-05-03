@@ -12,6 +12,7 @@ export * from '../analytics';
 export * from '../config';
 export * from '../i18n';
 
+import './ds-accordion';
 import './ds-alert';
 import './ds-badge';
 import './ds-button';
