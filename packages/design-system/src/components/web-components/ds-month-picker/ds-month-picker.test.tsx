@@ -119,18 +119,6 @@ describe('MonthPicker', () => {
     expect(checkboxes[11]).not.toBeDisabled();
   });
 
-  it('checks month choices according to `selected-months` prop', () => {
-    const selectedMonths = [5, 9];
-    renderMonthPicker({ 'selected-months': JSON.stringify(selectedMonths) });
-    const checkboxes = screen.getAllByRole('checkbox');
-
-    expect(checkboxes[0]).not.toBeChecked();
-    expect(checkboxes[1]).not.toBeChecked();
-    expect(checkboxes[4]).toBeChecked();
-    expect(checkboxes[8]).toBeChecked();
-    expect(checkboxes[11]).not.toBeChecked();
-  });
-
   it('checks month choices according to `default-selected-months` prop', () => {
     const defaultSelectedMonths = [5, 9];
     renderMonthPicker({ 'default-selected-months': JSON.stringify(defaultSelectedMonths) });

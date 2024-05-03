@@ -98,10 +98,5 @@
     "select-all-text",
     "The text for the \"Select all\" button for internationalization.",
     "string"
-  ],
-  [
-    "selected-months",
-    "Array of month numbers, where `1` is January, and any month included is selected. This will render a read-only field. If the field should be mutable, use `defaultSelectedMonths`. Alternatively, you can apply `checked` to `<input>` element children.",
-    "string"
   ]
 ]

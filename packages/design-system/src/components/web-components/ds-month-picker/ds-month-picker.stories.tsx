@@ -97,11 +97,6 @@ export default {
       description: 'The text for the "Select all" button for internationalization.',
       control: 'text',
     },
-    'selected-months': {
-      description:
-        'Array of month numbers, where `1` is January, and any month included is selected. This will render a read-only field. If the field should be mutable, use `defaultSelectedMonths`. Alternatively, you can apply `checked` to `<input>` element children.',
-      control: 'text',
-    },
   },
   args: {
     label: 'Month Picker example',

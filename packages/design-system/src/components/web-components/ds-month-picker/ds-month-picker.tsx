@@ -23,7 +23,6 @@ const attributes = [
   'requirement-label',
   'root-id',
   'select-all-text',
-  'selected-months',
 ] as const;
 
 /* eslint-disable @typescript-eslint/no-namespace */
