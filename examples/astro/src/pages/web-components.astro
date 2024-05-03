@@ -58,6 +58,12 @@ import Layout from '../layouts/Layout.astro';
         </div>
         <ds-button variation="solid" type="submit">Calculate</ds-button>
       </form>
+
+      <ds-month-picker requirement-label="Required." hint="Select many." name="fooPicker" label="Select any months you want!" >
+        <input type="checkbox" value="10" checked />
+        <input type="checkbox" value="11" checked disabled />
+        <input type="checkbox" value="12" disabled />
+      </ds-month-picker>
     </div>
   </main>
 </Layout>
@@ -83,4 +89,12 @@ import Layout from '../layouts/Layout.astro';
     result.value = operation.value === 'addition' ? intA + intB : intA - intB;
   });
 </script>
-<script src="@cmsgov/design-system/web-components"></script>
+<!-- <script src="@cmsgov/design-system/web-components"></script> -->
+<script src="@cmsgov/design-system/dist/web-components/bundle/base.js"></script>
+<script src="@cmsgov/design-system/dist/web-components/bundle/ds-alert.js"></script>
+<script src="@cmsgov/design-system/dist/web-components/bundle/ds-button.js"></script>
+<script src="@cmsgov/design-system/dist/web-components/bundle/ds-choice.js"></script>
+<script src="@cmsgov/design-system/dist/web-components/bundle/ds-dropdown.js"></script>
+<script src="@cmsgov/design-system/dist/web-components/bundle/ds-month-picker.js"></script>
+<script src="@cmsgov/design-system/dist/web-components/bundle/ds-spinner.js"></script>
+<script src="@cmsgov/design-system/dist/web-components/bundle/ds-usa-banner.js"></script>

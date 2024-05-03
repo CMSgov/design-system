@@ -18,6 +18,7 @@ import './ds-badge';
 import './ds-button';
 import './ds-choice';
 import './ds-dropdown';
+import './ds-month-picker';
 import './ds-skip-nav';
 import './ds-spinner';
 import './ds-usa-banner';

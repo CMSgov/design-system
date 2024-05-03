@@ -18,11 +18,10 @@ const getSystems = () => {
 
 const codeBlock = (lines: string[]) => {
   const escaped = lines.join('\n').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const stringToCopy = JSON.stringify(lines);
   return `
     <pre class="ds-u-fill--gray-lightest ds-u-font-size--sm ds-u-padding--1 ds-u-margin-y--1 ds-u-overflow--auto"><code>${escaped}</code></pre>
-    <ds-button size="small" onclick='navigator.clipboard.writeText(${JSON.stringify(
-      lines
-    )}.join("\\n"))'>Copy snippet</ds-button>
+    <ds-button size="small" onclick='navigator.clipboard.writeText(${stringToCopy}.join("\\n"))'>Copy snippet</ds-button>
   `;
 };
 
@@ -35,8 +34,21 @@ getSystems().forEach((sysinfo) => {
     `<link rel="stylesheet" href="https://design.cms.gov/cdn/${system}/${version}/css/${shortname}-theme.css" />`,
   ]);
 
-  const webComponentsExample = codeBlock([
-    `<script src="https://design.cms.gov/cdn/${system}/${version}/web-components/bundle/web-components.js"></script>`,
+  const webComponentsAllExample = codeBlock([
+    `<script src="https://design.cms.gov/cdn/${system}/${version}/web-components/bundle/all.js"></script>`,
+  ]);
+
+  const wcBundles = fs
+    .readdirSync(path.join(distPath, 'web-components', 'bundle'))
+    .filter((filename) => filename.startsWith('ds-') && filename.endsWith('.js'));
+  const webComponentsSomeExample = codeBlock([
+    `<script src="https://design.cms.gov/cdn/${system}/${version}/web-components/bundle/base.js"></script>`,
+    '',
+    '<!-- Remove any of the following component imports that you do not need -->',
+    ...wcBundles.map(
+      (bundle) =>
+        `<script src="https://design.cms.gov/cdn/${system}/${version}/web-components/bundle/${bundle}"></script>`
+    ),
   ]);
 
   const preactExample = codeBlock([
@@ -82,9 +94,11 @@ getSystems().forEach((sysinfo) => {
       <p>Place the following HTML in your <strong>head</strong> tag:</p>
       ${cssExample}
       <h2>How to load the JavaScript components</h2>
-      <h3>Web components (experimental)</h3>
-      <p>Place the following code at the end of your <strong>body</strong> tag:</p>
-      ${webComponentsExample}
+      <h3>Web components</h3>
+      <p>To import all web components, place the following code at the end of your <strong>body</strong> tag:</p>
+      ${webComponentsAllExample}
+      <p>To import a select set of web components, place the following code at the end of your <strong>body</strong> tag and remove the script tags for the components that you do not need:</p>
+      ${webComponentsSomeExample}
       <h3>Preact components</h3>
       <p>Place the following HTML in your <strong>head</strong> tag:</p>
       ${preactExample}
