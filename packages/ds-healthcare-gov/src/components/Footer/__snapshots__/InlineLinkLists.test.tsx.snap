@@ -18,7 +18,7 @@ exports[`InlineLinkLists renders lists of links 1`] = `
           <a
             href="/contact-us"
           >
-            footer.contactUs
+            Contact us
           </a>
           <span
             aria-hidden="true"
@@ -31,7 +31,7 @@ exports[`InlineLinkLists renders lists of links 1`] = `
           <a
             href="/archive"
           >
-            footer.archive
+            Archive
           </a>
           <span
             aria-hidden="true"
@@ -44,7 +44,7 @@ exports[`InlineLinkLists renders lists of links 1`] = `
           <a
             href="http://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/CMSNondiscriminationNotice.html"
           >
-            footer.a11y
+            Accessibility
           </a>
           <span
             aria-hidden="true"
@@ -445,7 +445,7 @@ exports[`InlineLinkLists renders lists of links 1`] = `
           <a
             href="/privacy"
           >
-            footer.privacyPolicy
+            Privacy policy
           </a>
           <span
             aria-hidden="true"
@@ -458,7 +458,7 @@ exports[`InlineLinkLists renders lists of links 1`] = `
           <a
             href="/using-this-site"
           >
-            footer.usingThisSite
+            Using this site
           </a>
         </li>
       </ul>
@@ -651,7 +651,7 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
           <a
             href="https://www.healthcare.gov/contact-us"
           >
-            footer.contactUs
+            Contact us
           </a>
           <span
             aria-hidden="true"
@@ -664,7 +664,7 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
           <a
             href="https://www.healthcare.gov/archive"
           >
-            footer.archive
+            Archive
           </a>
           <span
             aria-hidden="true"
@@ -677,7 +677,7 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
           <a
             href="http://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/CMSNondiscriminationNotice.html"
           >
-            footer.a11y
+            Accessibility
           </a>
           <span
             aria-hidden="true"
@@ -1078,7 +1078,7 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
           <a
             href="https://www.healthcare.gov/privacy"
           >
-            footer.privacyPolicy
+            Privacy policy
           </a>
           <span
             aria-hidden="true"
@@ -1091,7 +1091,7 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
           <a
             href="https://www.healthcare.gov/using-this-site"
           >
-            footer.usingThisSite
+            Using this site
           </a>
         </li>
       </ul>
