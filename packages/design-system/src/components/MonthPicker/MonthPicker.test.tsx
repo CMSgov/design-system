@@ -146,6 +146,60 @@ describe('MonthPicker', () => {
     expect(checkboxes[11]).not.toBeChecked();
   });
 
+  describe('with HTML as children', () => {
+    const inputs = (
+      <>
+        <input type="checkbox" value="1" checked />
+        <input type="checkbox" value="2" checked disabled />
+        <input type="checkbox" value="3" disabled />
+      </>
+    );
+
+    // Testing Library .toBeChecked() and .toBeDisabled() returning false
+    // positives for this test suite.
+    it('accepts HTML as children', () => {
+      renderMonthPicker({ children: inputs });
+      const checkboxes = screen.getAllByRole('checkbox');
+      expect(checkboxes.length).toBe(12);
+    });
+
+    it('selects input when `checked` attribute present', () => {
+      const { container } = renderMonthPicker({ children: inputs });
+      const checkboxes = Array.from(container.querySelectorAll('input'));
+
+      expect(checkboxes[0].checked).toBe(true);
+      expect(checkboxes[1].checked).toBe(true);
+      expect(checkboxes[2].checked).toBe(false);
+      expect(checkboxes[3].checked).toBe(false);
+    });
+
+    it('default selects an input when attributes present', () => {
+      const { container } = renderMonthPicker({ children: inputs });
+      const checkboxes = Array.from(container.querySelectorAll('input'));
+
+      // Only checkbox[1] should be checked AND disabled
+      expect(checkboxes[0].checked).toBe(true);
+      expect(checkboxes[1].checked).toBe(true);
+      expect(checkboxes[2].checked).toBe(false);
+      expect(checkboxes[3].checked).toBe(false);
+
+      expect(checkboxes[0].disabled).toBe(false);
+      expect(checkboxes[1].disabled).toBe(true);
+      expect(checkboxes[2].disabled).toBe(true);
+      expect(checkboxes[3].disabled).toBe(false);
+    });
+
+    it('disables input when attribute present', () => {
+      const { container } = renderMonthPicker({ children: inputs });
+      const checkboxes = Array.from(container.querySelectorAll('input'));
+
+      expect(checkboxes[0].disabled).toBe(false);
+      expect(checkboxes[1].disabled).toBe(true);
+      expect(checkboxes[2].disabled).toBe(true);
+      expect(checkboxes[3].disabled).toBe(false);
+    });
+  });
+
   describe('select-all button', () => {
     it('has default "select all" text', () => {
       renderMonthPicker();
@@ -162,6 +216,24 @@ describe('MonthPicker', () => {
 
       userEvent.click(button);
       expect(onSelectAll).toHaveBeenCalled();
+    });
+
+    it("doesn't select disabled months when onSelectAll is called", () => {
+      const onSelectAll = jest.fn();
+      const disabledMonths = [5, 9];
+
+      renderMonthPicker({ disabledMonths, onSelectAll });
+
+      const checkboxes = screen.getAllByRole('checkbox');
+
+      const button = screen.getByText('Select all');
+      userEvent.click(button);
+
+      expect(onSelectAll).toHaveBeenCalled();
+      expect(checkboxes[0]).toBeChecked();
+      expect(checkboxes[4]).not.toBeChecked();
+      expect(checkboxes[8]).not.toBeChecked();
+      expect(checkboxes[11]).toBeChecked();
     });
   });
 
@@ -181,6 +253,25 @@ describe('MonthPicker', () => {
 
       userEvent.click(button);
       expect(onClearAll).toHaveBeenCalled();
+    });
+
+    it("doesn't clear disable-selected months when called", () => {
+      const onClearAll = jest.fn();
+
+      // May should be both disabled and selected
+      const disabledMonths = [5];
+      const defaultSelectedMonths = [5];
+
+      renderMonthPicker({ disabledMonths, defaultSelectedMonths, onClearAll });
+
+      const checkboxes = screen.getAllByRole('checkbox');
+
+      const button = screen.getByText('Clear all');
+      userEvent.click(button);
+
+      expect(onClearAll).toHaveBeenCalled();
+      expect(checkboxes[4]).toBeChecked();
+      expect(checkboxes[4]).toBeDisabled();
     });
   });
 });

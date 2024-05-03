@@ -11,16 +11,12 @@ import { fallbackLocale, getLanguage, t } from '../i18n';
 import { useLabelProps, UseLabelPropsProps } from '../Label/useLabelProps';
 import { useHint, UseHintProps } from '../Hint/useHint';
 import { useInlineError, UseInlineErrorProps } from '../InlineError/useInlineError';
+import { parseChildren } from './utils';
 
-const monthNumbers = (() => {
-  const months = [];
-  for (let m = 1; m <= NUM_MONTHS; m++) {
-    months.push(m);
-  }
-  return months;
-})();
+const monthNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 interface BaseMonthPickerProps {
+  children?: React.ReactNode;
   /**
    * The `input` field's `name` attribute
    */
@@ -66,8 +62,8 @@ interface BaseMonthPickerProps {
    * `onClearAll` event handlers for those instances.
    */
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => any;
-  onSelectAll?: () => any;
-  onClearAll?: () => any;
+  onSelectAll?: (...args: any[]) => any;
+  onClearAll?: (...args: any[]) => any;
   /**
    * The text for the "Select all" button for internationalization
    */
@@ -86,14 +82,20 @@ export type MonthPickerProps = BaseMonthPickerProps &
  * [refer to its full documentation page](https://design.cms.gov/components/month-picker/).
  */
 export const MonthPicker = (props: MonthPickerProps) => {
+  const propsFromHtml = parseChildren(props.children);
+  const defaultSelectedMonths = propsFromHtml
+    ? propsFromHtml.selectedMonths
+    : props.defaultSelectedMonths;
+  const disabledMonths =
+    (propsFromHtml ? propsFromHtml.disabledMonths : props.disabledMonths) ?? [];
+
   const id = useId('month-picker--', props.id);
   const locale = fallbackLocale(getLanguage(), 'US');
   const months = getMonthNames(locale);
   const monthsLong = getMonthNames(locale, false);
   const isControlled = props.selectedMonths !== undefined;
-  const [selectedMonthsState, setSelectedMonthsState] = useState(props.defaultSelectedMonths ?? []);
+  const [selectedMonthsState, setSelectedMonthsState] = useState(defaultSelectedMonths ?? []);
   const selectedMonths = isControlled ? props.selectedMonths : selectedMonthsState;
-  const disabledMonths = props.disabledMonths ?? [];
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     if (props.onChange) {
@@ -112,23 +114,39 @@ export const MonthPicker = (props: MonthPickerProps) => {
     }
   }
 
-  function handleSelectAll() {
+  function handleSelectAll(event) {
     if (props.onSelectAll) {
-      props.onSelectAll();
+      props.onSelectAll(event);
     }
 
     if (!isControlled) {
-      setSelectedMonthsState(monthNumbers.filter((m) => !disabledMonths.includes(m)));
+      setSelectedMonthsState(
+        monthNumbers.filter((m) => {
+          if (disabledMonths.includes(m)) {
+            return selectedMonthsState.includes(m);
+          } else {
+            return true;
+          }
+        })
+      );
     }
   }
 
-  function handleClearAll() {
+  function handleClearAll(event) {
     if (props.onClearAll) {
-      props.onClearAll();
+      props.onClearAll(event);
     }
 
     if (!isControlled) {
-      setSelectedMonthsState([]);
+      setSelectedMonthsState(
+        monthNumbers.filter((m) => {
+          if (disabledMonths.includes(m)) {
+            return selectedMonthsState.includes(m);
+          } else {
+            return false;
+          }
+        })
+      );
     }
   }
 
