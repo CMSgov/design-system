@@ -8,10 +8,11 @@
 .ds-c-accordion__heading {
   font: inherit;
   margin-block: 0;
+}
 
-  &:not(:first-child) {
-    margin-block-start: $spacer-1;
-  }
+.ds-c-accordion__heading:not(:first-child),
+ds-accordion-item:not(:first-child) {
+  margin-block-start: $spacer-1;
 }
 
 .ds-c-accordion__button {
