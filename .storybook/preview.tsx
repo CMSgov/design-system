@@ -166,8 +166,8 @@ const preview: Preview = {
       toolbar: {
         icon: 'graphline',
         items: [
-          { value: 'log', title: 'Log to Actions' },
-          { value: 'on', title: 'Live (for QA)' },
+          { value: 'log', title: 'Log to Actions (Debug)' },
+          { value: 'on', title: 'On (Live)' },
           { value: 'off', title: 'Off' },
         ],
       },
