@@ -64,7 +64,7 @@ exports[`Dropdown renders a dropdown 1`] = `
         type="button"
       >
         <span
-          class="ds-u-truncate"
+          class="ds-c-dropdown__label-text"
           id="dropdown__button--1__button-content"
         >
           Option 1
@@ -158,7 +158,7 @@ exports[`Dropdown renders a dropdown using html options 1`] = `
         type="button"
       >
         <span
-          class="ds-u-truncate"
+          class="ds-c-dropdown__label-text"
           id="dropdown__button--5__button-content"
         >
           Option A-1
