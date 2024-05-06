@@ -6,7 +6,7 @@ import TableOfContents from './TableOfContents';
 import TableOfContentsMobile from './TableOfContentsMobile';
 import HeaderFullWidth from './HeaderFullWidth';
 import { Helmet } from 'react-helmet';
-import { SkipNav, UsaBanner, config } from '@cmsgov/design-system';
+import { SkipNav, UsaBanner } from '@cmsgov/design-system';
 import {
   LocationInterface,
   FrontmatterInterface,
@@ -18,16 +18,6 @@ import '../../styles/index.scss';
 import { getThemeData } from './SideNav/themeVersionData';
 import ThemeVersionSection from './SideNav/ThemeVersionSection';
 import FilterDialogManager from './FilterDialog/FilterDialogManager';
-
-config({
-  alertSendsAnalytics: true,
-  buttonSendsAnalytics: true,
-  dialogSendsAnalytics: true,
-  helpDrawerSendsAnalytics: true,
-  headerSendsAnalytics: true,
-  footerSendsAnalytics: true,
-  thirdPartyExternalLinkSendsAnalytics: true,
-});
 
 interface LayoutProps {
   /**
