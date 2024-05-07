@@ -13,7 +13,7 @@ type IComponent = any;
  * -------------------------------- */
 
 interface IOptions<F = any, W = any> {
-  attributes?: string[];
+  attributes?: readonly string[];
   /**
    * For simple events whose React-prop counterparts are callback functions that pass a
    * simple event object, the name of the React prop will suffice to configure the

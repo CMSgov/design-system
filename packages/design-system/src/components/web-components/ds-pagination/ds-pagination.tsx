@@ -78,4 +78,4 @@ define('ds-pagination', () => Wrapper, {
       }),
     ],
   ],
-} as any);
+});
