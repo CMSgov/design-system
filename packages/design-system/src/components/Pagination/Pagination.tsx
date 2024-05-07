@@ -6,11 +6,12 @@ import Page from './Page';
 import classNames from 'classnames';
 import { ArrowIcon } from '../Icons';
 import { t } from '../i18n';
+import useId from '../utilities/useId';
 
 export type PaginationHeadingLevel = '1' | '2' | '3' | '4' | '5' | '6';
 export interface PaginationProps {
   /**
-   * Defines `aria-label` on wrapping Pagination element. Since this exists on a `<nav>` element, the word "navigation" should be omitted from this label. Optional.
+   * Defines `aria-label` on the screen-reader heading for this element, which precedes the page count readout. Since this exists on a `<nav>` element, the word "navigation" should be omitted from this label. Optional.
    */
   ariaLabel?: string;
   /**
@@ -22,11 +23,11 @@ export interface PaginationProps {
    */
   compact?: boolean;
   /**
-   * Defines active page in Pagination.
+   * An integer representing active page number in the pagination results.
    */
   currentPage: number;
   /**
-   * Heading type to override default `<h2>`.
+   * Heading type to override default `<h2>` used in the screen-reader heading.
    */
   headingLevel?: PaginationHeadingLevel;
   /**
@@ -34,7 +35,7 @@ export interface PaginationProps {
    */
   isNavigationHidden?: boolean;
   /**
-   * A callback function used to handle state changes.
+   * A callback function this is invoked whenever a page link is clicked, including the previous and next buttons. It is called with both the event object and the page number.
    */
   onPageChange: (evt: React.MouseEvent, page: number) => void;
   /**
@@ -58,7 +59,7 @@ export interface PaginationProps {
    */
   endAriaLabel?: string;
   /**
-   * Sets total number of pages in Pagination component.
+   * An integer representing total number of pages in the pagination results.
    */
   totalPages: number;
 }
@@ -132,7 +133,7 @@ function paginationBuilder(page: number, pages: number): number[] {
  * For information about how and when to use this component,
  * [refer to its full documentation page](https://design.cms.gov/components/pagination/).
  */
-function Pagination({
+export function Pagination({
   ariaLabel,
   className,
   compact,
@@ -233,19 +234,24 @@ function Pagination({
   const startIcon = <ArrowIcon direction="left" className="ds-c-pagination__nav--image" />;
   const endIcon = <ArrowIcon direction="right" className="ds-c-pagination__nav--image" />;
 
+  const pageCountLabel = t('pagination.pageXOfY', {
+    number: `${currentPage}`,
+    total: `${totalPages}`,
+  });
+
   const Heading = `h${headingLevel}` as const;
+  const headingId = useId(
+    'pagination-heading--',
+    (rest as any).id && `${(rest as any).id}__pagination-heading`
+  );
   const headingElement = (
-    <Heading id="pagination-heading">
-      {ariaLabel ?? t('pagination.ariaLabel')} -{' '}
-      {t('pagination.pageXOfY', {
-        number: `${currentPage}`,
-        total: `${totalPages}`,
-      })}
+    <Heading id={headingId}>
+      {ariaLabel ?? t('pagination.ariaLabel')} - {pageCountLabel}
     </Heading>
   );
 
   return (
-    <nav className={classes} aria-labelledby="pagination-heading" {...rest}>
+    <nav className={classes} aria-labelledby={headingId} {...rest}>
       <span className="ds-u-visibility--screen-reader">{headingElement}</span>
 
       <Button
@@ -265,12 +271,7 @@ function Pagination({
       </Button>
       <span
         className="ds-c-pagination__page-count"
-        dangerouslySetInnerHTML={{
-          __html: t('pagination.pageXOfY', {
-            number: `<strong>${currentPage}</strong>`,
-            total: `<strong>${totalPages}</strong>`,
-          }),
-        }}
+        dangerouslySetInnerHTML={{ __html: pageCountLabel }}
       />
 
       <div className="ds-c-pagination__pages">{pages}</div>
