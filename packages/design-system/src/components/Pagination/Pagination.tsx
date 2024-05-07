@@ -234,11 +234,6 @@ export function Pagination({
   const startIcon = <ArrowIcon direction="left" className="ds-c-pagination__nav--image" />;
   const endIcon = <ArrowIcon direction="right" className="ds-c-pagination__nav--image" />;
 
-  const pageCountLabel = t('pagination.pageXOfY', {
-    number: `${currentPage}`,
-    total: `${totalPages}`,
-  });
-
   const Heading = `h${headingLevel}` as const;
   const headingId = useId(
     'pagination-heading--',
@@ -246,7 +241,11 @@ export function Pagination({
   );
   const headingElement = (
     <Heading id={headingId}>
-      {ariaLabel ?? t('pagination.ariaLabel')} - {pageCountLabel}
+      {ariaLabel ?? t('pagination.ariaLabel')} -{' '}
+      {t('pagination.pageXOfY', {
+        number: `${currentPage}`,
+        total: `${totalPages}`,
+      })}
     </Heading>
   );
 
@@ -271,7 +270,12 @@ export function Pagination({
       </Button>
       <span
         className="ds-c-pagination__page-count"
-        dangerouslySetInnerHTML={{ __html: pageCountLabel }}
+        dangerouslySetInnerHTML={{
+          __html: t('pagination.pageXOfY', {
+            number: `<strong>${currentPage}</strong>`,
+            total: `<strong>${totalPages}</strong>`,
+          }),
+        }}
       />
 
       <div className="ds-c-pagination__pages">{pages}</div>
