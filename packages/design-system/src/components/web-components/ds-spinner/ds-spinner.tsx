@@ -29,4 +29,4 @@ const Wrapper = ({ ariaValuetext, ...otherProps }) => (
   ></Spinner>
 );
 
-define('ds-spinner', () => Wrapper, { attributes } as any);
+define('ds-spinner', () => Wrapper, { attributes });

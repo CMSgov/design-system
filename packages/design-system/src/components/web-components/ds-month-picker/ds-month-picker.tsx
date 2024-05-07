@@ -83,4 +83,4 @@ const Wrapper = ({
 define('ds-month-picker', () => Wrapper, {
   attributes,
   events: ['onChange', 'onSelectAll', 'onClearAll'],
-} as any);
+});

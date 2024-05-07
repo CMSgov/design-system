@@ -18,4 +18,4 @@ declare global {
 }
 /* eslint-enable */
 
-define('ds-skip-nav', () => SkipNav, { attributes, events: ['onClick'] } as any);
+define('ds-skip-nav', () => SkipNav, { attributes, events: ['onClick'] });
