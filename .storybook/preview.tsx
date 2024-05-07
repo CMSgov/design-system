@@ -123,6 +123,7 @@ const analyticsSettingsDecorator = (Story, context) => {
     if ((window as any).tealiumEnvironment === undefined) {
       (window as any).tealiumEnvironment = 'dev';
       const newScript = document.createElement('script');
+      // This is the script that the analytics team wants us to use for testing for now
       newScript.src = '//tags.tiqcdn.com/utag/cmsgov/healthcare-learn/dev/utag.js';
       document.body.append(newScript);
     } else {
