@@ -80,9 +80,9 @@ export const Drawer = (props: DrawerProps) => {
     footerTitle,
     hasFocusTrap,
     heading,
-    headingId,
+    headingId: userHeadingId,
     headingLevel,
-    headingRef,
+    headingRef: userHeadingRef,
     isFooterSticky,
     isHeaderSticky,
     isOpen,
@@ -90,8 +90,8 @@ export const Drawer = (props: DrawerProps) => {
     ...otherProps
   } = props;
 
-  const headingElRef = useRef(null);
-  const headingElId = useId('drawer--', headingId);
+  const headingRef = useRef(null);
+  const headingId = useId('drawer--', userHeadingId);
 
   const Heading = `h${headingLevel}` as const;
 
@@ -104,15 +104,15 @@ export const Drawer = (props: DrawerProps) => {
       isOpen={isOpen}
       {...otherProps}
     >
-      <div className="ds-c-drawer__window" tabIndex={-1} aria-labelledby={headingElId}>
+      <div className="ds-c-drawer__window" tabIndex={-1} aria-labelledby={headingId}>
         <div className="ds-c-drawer__header">
           <Heading
-            id={headingElId}
+            id={headingId}
             className="ds-c-drawer__header-heading"
             ref={(el) => {
-              headingElRef.current = el;
-              if (headingRef) {
-                headingRef.current = el;
+              headingRef.current = el;
+              if (userHeadingRef) {
+                userHeadingRef.current = el;
               }
             }}
           >
