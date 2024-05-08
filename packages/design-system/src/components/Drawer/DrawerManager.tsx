@@ -58,7 +58,7 @@ export const DrawerContext = createContext(null);
  *   isDrawerOpen: boolean; // whether it's open
  *   openDrawer: () => any; // function that opens it
  *   closeDrawer: () => any; // function that closes it
- *   toggleDrawer: () => any; // funcntion that toggles it
+ *   toggleDrawer: () => any; // function that toggles it
  * }
  * ```
  *

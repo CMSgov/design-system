@@ -46,6 +46,17 @@ describe('HelpDrawer', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
+  it('passes arbitrary attributes to `<dialog>` element', () => {
+    const screen = render(
+      <HelpDrawer {...defaultProps} data-testid="foo">
+        <p>content</p>
+      </HelpDrawer>
+    );
+
+    const dialogEl = screen.queryByRole('dialog');
+    expect(dialogEl).toHaveAttribute('data-testid');
+  });
+
   describe('Analytics event tracking', () => {
     let tealiumMock;
 

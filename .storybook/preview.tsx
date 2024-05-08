@@ -8,7 +8,20 @@ import type { UtagContainer } from '@cmsgov/design-system';
 import type { Preview } from '@storybook/react';
 
 // Rewire analytics events to log to the console
-(window as UtagContainer).utag = { link: console.log };
+let originalUtag;
+function mockUtag() {
+  originalUtag = (window as UtagContainer).utag;
+  (window as UtagContainer).utag = {
+    link: (event) => {
+      // Convert to JSON first so it can persist in logs between page loads, for testing
+      // analytics fired when a navigation occurs.
+      console.log(JSON.stringify(event, null, 2));
+    },
+  };
+}
+function resetUtag() {
+  (window as UtagContainer).utag = originalUtag;
+}
 
 const breakpointViewportSizes = {
   extraSmall: {
@@ -103,7 +116,28 @@ const languageSettingDecorator = (Story, context) => {
 const analyticsSettingsDecorator = (Story, context) => {
   const { analytics } = context.globals;
 
-  const on = analytics === 'on';
+  let on = false;
+
+  if (analytics === 'on') {
+    // Make sure Tealium is loaded and hooked up
+    if ((window as any).tealiumEnvironment === undefined) {
+      (window as any).tealiumEnvironment = 'dev';
+      const newScript = document.createElement('script');
+      // This is the script that the analytics team wants us to use for testing for now
+      newScript.src = '//tags.tiqcdn.com/utag/cmsgov/healthcare-learn/dev/utag.js';
+      document.body.append(newScript);
+    } else {
+      resetUtag();
+    }
+
+    // Disable the automatic routing to Storybook Actions
+    delete context.args.onAnalyticsEvent;
+
+    on = true;
+  } else if (analytics === 'log') {
+    mockUtag();
+    on = true;
+  }
 
   config({
     alertSendsAnalytics: on,
@@ -139,7 +173,8 @@ const preview: Preview = {
       toolbar: {
         icon: 'graphline',
         items: [
-          { value: 'on', title: 'Log to Actions' },
+          { value: 'log', title: 'Log to Actions (Debug)' },
+          { value: 'on', title: 'On (Live)' },
           { value: 'off', title: 'Off' },
         ],
       },
