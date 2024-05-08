@@ -11,7 +11,13 @@ import type { Preview } from '@storybook/react';
 let originalUtag;
 function mockUtag() {
   originalUtag = (window as UtagContainer).utag;
-  (window as UtagContainer).utag = { link: console.log };
+  (window as UtagContainer).utag = {
+    link: (event) => {
+      // Convert to JSON first so it can persist in logs between page loads, for testing
+      // analytics fired when a navigation occurs.
+      console.log(JSON.stringify(event, null, 2));
+    },
+  };
 }
 function resetUtag() {
   (window as UtagContainer).utag = originalUtag;
@@ -115,9 +121,10 @@ const analyticsSettingsDecorator = (Story, context) => {
   if (analytics === 'on') {
     // Make sure Tealium is loaded and hooked up
     if ((window as any).tealiumEnvironment === undefined) {
-      (window as any).tealiumEnvironment = 'prod';
+      (window as any).tealiumEnvironment = 'dev';
       const newScript = document.createElement('script');
-      newScript.src = '//tags.tiqcdn.com/utag/cmsgov/cms-design/prod/utag.sync.js';
+      // This is the script that the analytics team wants us to use for testing for now
+      newScript.src = '//tags.tiqcdn.com/utag/cmsgov/healthcare-learn/dev/utag.js';
       document.body.append(newScript);
     } else {
       resetUtag();
