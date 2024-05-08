@@ -62,11 +62,11 @@ const Wrapper = ({
     {...otherProps}
     ariaLabel={headingAriaLabel}
     compact={parseBooleanAttr(compact)}
-    currentPage={parseIntegerAttr(currentPage)}
+    currentPage={parseIntegerAttr(currentPage) ?? 0}
     isNavigationHidden={parseBooleanAttr(isNavigationHidden)}
     renderHref={(page: number) => (hrefTemplate ?? '#page={page}').replace('{page}', '' + page)}
     id={rootId}
-    totalPages={parseIntegerAttr(totalPages)}
+    totalPages={parseIntegerAttr(totalPages) ?? 0}
   />
 );
 

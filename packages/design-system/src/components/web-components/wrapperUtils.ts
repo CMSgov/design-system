@@ -3,6 +3,6 @@ export function parseBooleanAttr(attr?: string) {
   return attr !== undefined && attr !== 'false';
 }
 
-export function parseIntegerAttr(attr?: string) {
-  return attr !== undefined && parseInt(attr);
+export function parseIntegerAttr(attr?: string): number | undefined {
+  if (attr !== undefined) return parseInt(attr);
 }
