@@ -1,44 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Pagination pagination slot behavior less than 7 pages should show all pages 1`] = `
-NodeList [
-  <span
-    aria-current="page"
-    class="ds-c-button ds-c-button--ghost ds-c-pagination__current-page"
-  >
-    1
-  </span>,
-  <a
-    aria-label="page 2"
-    class="ds-c-button ds-c-button--ghost"
-    href="#page=2"
-  >
-    2
-  </a>,
-  <a
-    aria-label="page 3"
-    class="ds-c-button ds-c-button--ghost"
-    href="#page=3"
-  >
-    3
-  </a>,
-  <a
-    aria-label="page 4"
-    class="ds-c-button ds-c-button--ghost"
-    href="#page=4"
-  >
-    4
-  </a>,
-  <a
-    aria-label="page 5"
-    class="ds-c-button ds-c-button--ghost"
-    href="#page=5"
-  >
-    5
-  </a>,
-]
-`;
-
 exports[`Pagination should render component 1`] = `
 <DocumentFragment>
   <ds-pagination
