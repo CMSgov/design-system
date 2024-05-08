@@ -9,7 +9,8 @@ import { t } from '../i18n';
 import useId from '../utilities/useId';
 
 export type PaginationHeadingLevel = '1' | '2' | '3' | '4' | '5' | '6';
-export interface PaginationProps {
+
+interface BasePaginationProps {
   /**
    * Defines `aria-label` on the screen-reader heading for this element, which precedes the page count readout. Since this exists on a `<nav>` element, the word "navigation" should be omitted from this label. Optional.
    */
@@ -63,6 +64,9 @@ export interface PaginationProps {
    */
   totalPages: number;
 }
+
+export type PaginationProps = BasePaginationProps &
+  Omit<React.ComponentPropsWithRef<'nav'>, keyof BasePaginationProps>;
 
 // Determines number of pages visible to either side of active page.
 const overflow = 1;

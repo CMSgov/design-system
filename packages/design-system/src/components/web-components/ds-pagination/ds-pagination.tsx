@@ -15,6 +15,7 @@ const attributes = [
   'start-aria-label',
   'end-label-text',
   'end-aria-label',
+  'root-id',
   'total-pages',
 ] as const;
 
@@ -43,6 +44,7 @@ interface WrapperProps
   isNavigationHidden?: string;
   headingAriaLabel?: string;
   hrefTemplate?: string;
+  rootId?: string;
   totalPages?: string;
 }
 
@@ -52,6 +54,7 @@ const Wrapper = ({
   isNavigationHidden,
   headingAriaLabel,
   hrefTemplate,
+  rootId,
   totalPages,
   ...otherProps
 }: WrapperProps) => (
@@ -62,6 +65,7 @@ const Wrapper = ({
     currentPage={parseIntegerAttr(currentPage)}
     isNavigationHidden={parseBooleanAttr(isNavigationHidden)}
     renderHref={(page: number) => (hrefTemplate ?? '#page={page}').replace('{page}', '' + page)}
+    id={rootId}
     totalPages={parseIntegerAttr(totalPages)}
   />
 );

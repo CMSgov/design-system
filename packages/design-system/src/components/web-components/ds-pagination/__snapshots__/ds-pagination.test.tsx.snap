@@ -1,0 +1,248 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination pagination slot behavior less than 7 pages should show all pages 1`] = `
+NodeList [
+  <span
+    aria-current="page"
+    class="ds-c-button ds-c-button--ghost ds-c-pagination__current-page"
+  >
+    1
+  </span>,
+  <a
+    aria-label="page 2"
+    class="ds-c-button ds-c-button--ghost"
+    href="#page=2"
+  >
+    2
+  </a>,
+  <a
+    aria-label="page 3"
+    class="ds-c-button ds-c-button--ghost"
+    href="#page=3"
+  >
+    3
+  </a>,
+  <a
+    aria-label="page 4"
+    class="ds-c-button ds-c-button--ghost"
+    href="#page=4"
+  >
+    4
+  </a>,
+  <a
+    aria-label="page 5"
+    class="ds-c-button ds-c-button--ghost"
+    href="#page=5"
+  >
+    5
+  </a>,
+]
+`;
+
+exports[`Pagination should render component 1`] = `
+<DocumentFragment>
+  <ds-pagination
+    current-page="2"
+    root-id="static-id"
+    total-pages="3"
+  >
+    <nav
+      aria-labelledby="static-id__pagination-heading"
+      class="ds-c-pagination"
+      id="static-id"
+      parent="[object HTMLElement]"
+    >
+      <span
+        class="ds-u-visibility--screen-reader"
+      >
+        <h2
+          id="static-id__pagination-heading"
+        >
+          Pagination results - Page 2 of 3
+        </h2>
+      </span>
+      <a
+        aria-hidden="false"
+        aria-label="Previous Page"
+        class="ds-c-button ds-c-button--ghost ds-c-pagination__nav"
+        href="#page=1"
+        style="visibility: visible;"
+      >
+        <span
+          class="ds-c-pagination__nav--img-container ds-c-pagination__nav--img-container-previous"
+        >
+          <svg
+            aria-hidden="true"
+            class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-left ds-c-pagination__nav--image"
+            direction="left"
+            viewBox="0 0 320 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"
+              fill="currentColor"
+            />
+          </svg>
+        </span>
+        Previous
+      </a>
+      <span
+        class="ds-c-pagination__page-count"
+      >
+        Page 
+        <strong>
+          2
+        </strong>
+         of 
+        <strong>
+          3
+        </strong>
+      </span>
+      <div
+        class="ds-c-pagination__pages"
+      >
+        <a
+          aria-label="page 1"
+          class="ds-c-button ds-c-button--ghost"
+          href="#page=1"
+        >
+          1
+        </a>
+        <span
+          aria-current="page"
+          class="ds-c-button ds-c-button--ghost ds-c-pagination__current-page"
+        >
+          2
+        </span>
+        <a
+          aria-label="page 3"
+          class="ds-c-button ds-c-button--ghost"
+          href="#page=3"
+        >
+          3
+        </a>
+      </div>
+      <a
+        aria-hidden="false"
+        aria-label="Next Page"
+        class="ds-c-button ds-c-button--ghost ds-c-pagination__nav"
+        href="#page=3"
+        style="visibility: visible;"
+      >
+        Next
+        <span
+          class="ds-c-pagination__nav--img-container ds-c-pagination__nav--img-container-next"
+        >
+          <svg
+            aria-hidden="true"
+            class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-right ds-c-pagination__nav--image"
+            direction="right"
+            viewBox="0 0 320 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"
+              fill="currentColor"
+            />
+          </svg>
+        </span>
+      </a>
+    </nav>
+    <template />
+  </ds-pagination>
+</DocumentFragment>
+`;
+
+exports[`Pagination with compact prop enabled should render compact variant 1`] = `
+<DocumentFragment>
+  <ds-pagination
+    compact="true"
+    current-page="2"
+    root-id="static-id"
+    total-pages="3"
+  >
+    <nav
+      aria-labelledby="static-id__pagination-heading"
+      class="ds-c-pagination ds-c-pagination--compact"
+      id="static-id"
+      parent="[object HTMLElement]"
+    >
+      <span
+        class="ds-u-visibility--screen-reader"
+      >
+        <h2
+          id="static-id__pagination-heading"
+        >
+          Pagination results - Page 2 of 3
+        </h2>
+      </span>
+      <a
+        aria-hidden="false"
+        aria-label="Previous Page"
+        class="ds-c-button ds-c-button--ghost ds-c-pagination__nav"
+        href="#page=1"
+        style="visibility: visible;"
+      >
+        <span
+          class="ds-c-pagination__nav--img-container ds-c-pagination__nav--img-container-previous"
+        >
+          <svg
+            aria-hidden="true"
+            class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-left ds-c-pagination__nav--image"
+            direction="left"
+            viewBox="0 0 320 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"
+              fill="currentColor"
+            />
+          </svg>
+        </span>
+        Previous
+      </a>
+      <span
+        class="ds-c-pagination__page-count"
+      >
+        Page 
+        <strong>
+          2
+        </strong>
+         of 
+        <strong>
+          3
+        </strong>
+      </span>
+      <div
+        class="ds-c-pagination__pages"
+      />
+      <a
+        aria-hidden="false"
+        aria-label="Next Page"
+        class="ds-c-button ds-c-button--ghost ds-c-pagination__nav"
+        href="#page=3"
+        style="visibility: visible;"
+      >
+        Next
+        <span
+          class="ds-c-pagination__nav--img-container ds-c-pagination__nav--img-container-next"
+        >
+          <svg
+            aria-hidden="true"
+            class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-right ds-c-pagination__nav--image"
+            direction="right"
+            viewBox="0 0 320 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"
+              fill="currentColor"
+            />
+          </svg>
+        </span>
+      </a>
+    </nav>
+    <template />
+  </ds-pagination>
+</DocumentFragment>
+`;
