@@ -1,0 +1,62 @@
+[
+  [
+    "class-name",
+    "Additional classes to be added to the root element. Optional.",
+    "string"
+  ],
+  [
+    "compact",
+    "Set to \"true\" to render a compact layout. Optional.",
+    "\"true\"\"false\""
+  ],
+  [
+    "current-page",
+    "An integer representing active page number in the pagination results.",
+    "string"
+  ],
+  [
+    "end-aria-label",
+    "Sets custom ARIA label on end navigation. Added for language support. Label structure should be the equivalent of: Next Page. Optional.",
+    "string"
+  ],
+  [
+    "end-label-text",
+    "Sets custom label on end navigation. Added for language support. Optional.",
+    "string"
+  ],
+  [
+    "heading-aria-label",
+    "Defines `aria-label` on the screen-reader heading for this element, which precedes the page count readout. Since this exists on a `<nav>` element, the word \"navigation\" should be omitted from this label. Optional.",
+    "string"
+  ],
+  [
+    "heading-level",
+    "Heading type to override default `<h2>` used in the screen-reader heading. Optional.",
+    "\"1\"\"2\"\"3\"\"4\"\"5\"\"6\""
+  ],
+  [
+    "hrefTemplate",
+    "A string used to generate URLs for each page link. The component will find any instance of `{page}` and replace it with the page number. Defaults to `'#page={page}'`.",
+    "string"
+  ],
+  [
+    "is-navigation-hidden",
+    "Set to \"true\" to hide instead of disable navigation buttons. Optional.",
+    "\"true\"\"false\""
+  ],
+  [
+    "start-aria-label",
+    "Sets custom ARIA label on start navigation. Added for language support. Label structure should be the equivalent of: Previous Page. Optional.",
+    "string"
+  ],
+  [
+    "start-label-text",
+    "Sets custom label on start navigation. Added for language support. Optional.",
+    "string"
+  ],
+  [
+    "total-pages",
+    "An integer representing total number of pages in the pagination results.",
+    "string"
+  ]
+]
