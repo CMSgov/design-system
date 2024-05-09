@@ -5,14 +5,6 @@ import { webComponentDecorator } from '../storybook';
 import { useArgs } from '@storybook/preview-api';
 import './ds-pagination';
 
-const elements = (
-  <>
-    <input type="checkbox" value="10" defaultChecked />
-    <input type="checkbox" value="11" defaultChecked disabled />
-    <input type="checkbox" value="12" disabled />
-  </>
-);
-
 export default {
   title: 'Web Components/Pagination',
   argTypes: {
