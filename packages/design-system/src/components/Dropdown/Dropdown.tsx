@@ -136,7 +136,7 @@ export type DropdownProps = BaseDropdownProps &
  * For information about how and when to use this component,
  * [refer to its full documentation page](https://design.cms.gov/components/dropdown/).
  */
-export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
+export const Dropdown = (props: DropdownProps) => {
   validateProps(props);
 
   const id = useId('dropdown__button--', props.id);
@@ -168,7 +168,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     const { label, value, ...extraAttrs } = item;
     return (
       <Item {...extraAttrs} key={value}>
-        {label}
+        {label as any /* react-aria doesn't like the ReactNode type we imported */}
       </Item>
     );
   };
@@ -177,7 +177,11 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     if (isOptGroup(item)) {
       const { label, options, ...extraAttrs } = item;
       return (
-        <Section {...extraAttrs} key={`group-${index}`} title={label}>
+        <Section
+          {...extraAttrs}
+          key={`group-${index}`}
+          title={label as any /* react-aria doesn't like the ReactNode type we imported */}
+        >
           {options.map(renderReactStatelyItem)}
         </Section>
       );
@@ -210,7 +214,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   };
 
   const state = useSelectState({
-    ...props,
+    ...(props as any) /* react-aria doesn't like the ReactNode type we imported */,
     children: reactStatelyItems,
     selectedKey,
     onSelectionChange,
@@ -238,7 +242,11 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
 
   const triggerRef = useRef<HTMLButtonElement>();
   const useSelectProps = useSelect(
-    { ...props, onBlur, isDisabled: props.disabled },
+    {
+      ...(props as any) /* react-aria doesn't like the ReactNode type we imported */,
+      onBlur,
+      isDisabled: props.disabled,
+    },
     state,
     triggerRef
   );
@@ -293,12 +301,16 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
         isDisabled={props.disabled}
         state={state}
         triggerRef={triggerRef}
-        label={props.label}
+        label={props.label as any /* react-aria doesn't like the ReactNode type we imported */}
         name={props.name}
       />
       <button {...buttonProps}>
         <span id={buttonContentId} className="ds-c-dropdown__label-text">
-          {state.selectedItem ? state.selectedItem.rendered : ''}
+          {
+            (state.selectedItem
+              ? state.selectedItem.rendered
+              : '') as any /* react-aria doesn't like the ReactNode type we imported */
+          }
         </span>
         <span className="ds-c-dropdown__caret">{caretIcon}</span>
       </button>

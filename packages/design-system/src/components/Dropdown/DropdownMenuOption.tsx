@@ -63,7 +63,9 @@ export function DropdownMenuOption<T>({
     >
       {isSelected && selectedIndicator}
       {/* Wrapping in a span fixes an issue with Google Translate */}
-      <span>{item.rendered}</span>
+      <span>
+        {item.rendered as any /* react-aria doesn't like the ReactNode type we imported */}
+      </span>
     </li>
   );
 }
