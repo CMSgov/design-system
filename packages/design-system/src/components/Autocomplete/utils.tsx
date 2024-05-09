@@ -12,7 +12,7 @@ export function renderReactStatelyItems(
     const { id, name, children, isResult, ...extraAttrs } = item;
     return (
       <Item {...extraAttrs} textValue={name ?? itemToString?.(item)} key={id}>
-        {children ?? name}
+        {(children ?? name) as any /* react-aria doesn't like the ReactNode type we imported */}
       </Item>
     );
   });
