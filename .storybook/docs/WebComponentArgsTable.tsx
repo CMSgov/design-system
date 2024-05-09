@@ -10,6 +10,7 @@ function getTypeLabel(argType: any) {
   if (controlType) {
     switch (controlType) {
       case 'text':
+      case 'number':
         return <code>string</code>;
       case 'boolean':
         return (

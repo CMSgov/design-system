@@ -10,7 +10,7 @@ import Layout from '../layouts/Layout.astro';
       Web-component examples
     </h1>
   
-    <div class="ds-u-measure--base">
+    <div class="ds-u-measure--base ds-u-padding-bottom--4">
       <p>
         This is an example showing how to use our library of interactive web components.
       </p>
@@ -82,11 +82,9 @@ import Layout from '../layouts/Layout.astro';
         <ds-button variation="solid" type="submit">Calculate</ds-button>
       </form>
 
-      <ds-month-picker requirement-label="Required." hint="Select many." name="fooPicker" label="Select any months you want!" >
-        <input type="checkbox" value="10" checked />
-        <input type="checkbox" value="11" checked disabled />
-        <input type="checkbox" value="12" disabled />
-      </ds-month-picker>
+      <hr class="ds-u-margin-y--4">
+
+      <ds-pagination id="pagination" total-pages="10" class="ds-u-margin-y--4"></ds-pagination>
     </div>
   </main>
 </Layout>
@@ -111,7 +109,16 @@ import Layout from '../layouts/Layout.astro';
     console.log(operation.value);
     result.value = operation.value === 'addition' ? intA + intB : intA - intB;
   });
+
+  function updatePaginationFromHash() {
+    const pageMatch = window.location.hash.match(/page=(\d+)/);
+    const page = pageMatch ? pageMatch[1] : '1';
+    document.getElementById('pagination')?.setAttribute('current-page', page);
+  }
+  window.addEventListener('hashchange', updatePaginationFromHash);
+  updatePaginationFromHash();
 </script>
+
 <!-- <script src="@cmsgov/design-system/web-components"></script> -->
 <script src="@cmsgov/design-system/dist/web-components/bundle/base.js"></script>
 <script src="@cmsgov/design-system/dist/web-components/bundle/ds-accordion.js"></script>
@@ -120,5 +127,6 @@ import Layout from '../layouts/Layout.astro';
 <script src="@cmsgov/design-system/dist/web-components/bundle/ds-choice.js"></script>
 <script src="@cmsgov/design-system/dist/web-components/bundle/ds-dropdown.js"></script>
 <script src="@cmsgov/design-system/dist/web-components/bundle/ds-month-picker.js"></script>
+<script src="@cmsgov/design-system/dist/web-components/bundle/ds-pagination.js"></script>
 <script src="@cmsgov/design-system/dist/web-components/bundle/ds-spinner.js"></script>
 <script src="@cmsgov/design-system/dist/web-components/bundle/ds-usa-banner.js"></script>

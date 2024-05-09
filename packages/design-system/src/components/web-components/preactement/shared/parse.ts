@@ -53,7 +53,7 @@ function getAttributeObject(attributes: NamedNodeMap): IProps {
  *
  * -------------------------------- */
 
-function getAttributeProps(attributes: NamedNodeMap, allowed?: string[]): IProps {
+function getAttributeProps(attributes: NamedNodeMap, allowed?: readonly string[]): IProps {
   const values = getAttributeObject(attributes);
 
   let result = {};

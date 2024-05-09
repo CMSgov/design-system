@@ -19,4 +19,4 @@ declare global {
 }
 /* eslint-enable */
 
-define('ds-accordion', () => Accordion, { attributes } as any);
+define('ds-accordion', () => Accordion, { attributes });

@@ -140,10 +140,15 @@ function createCustomElement<T>(
  * This was inspired by Voorhoede's register function here:
  * https://github.com/voorhoede/preact-web-components-demo/blob/main/src/lib/register.js#L158
  */
-function proxyEvents(props, eventNames, CustomElement) {
+function proxyEvents(props, events: IOptions['events'], CustomElement) {
   const callbacks = {};
 
-  (eventNames || []).forEach((name) => {
+  (events || []).forEach((nameOrArray) => {
+    const name: string = Array.isArray(nameOrArray) ? nameOrArray[0] : nameOrArray;
+    const getEventFromCallbackArgs = Array.isArray(nameOrArray)
+      ? nameOrArray[1]
+      : (event: CustomEventInit<unknown>) => event;
+
     // Convert the event name to a kebab-case format and replace 'on' with 'ds'
     // This prevents the custom events from conflicting with the native events
     const customName = kebabCaseIt(name.replace('on', 'ds'));
@@ -157,19 +162,17 @@ function proxyEvents(props, eventNames, CustomElement) {
 
     // The callback created here is passed when the custom element's connectedCallback is called
     // Dispatches a custom event when called
-    const customCb = (event) => {
-      // TODO: We might need to start customizing this function for certain callbacks because
-      // not all of our handler functions use an event as the parameter. We might need to
-      // allow the caller of the define function to pass custom callbacks for certain events
-      // that return the custom event.
+    const customCb = (...args: any[]) => {
+      const event = getEventFromCallbackArgs(...args);
       const customEvent = new CustomEvent(customName, {
         ...event,
         composed: true,
         bubbles: true,
-        detail: {
-          target: event.target,
-        },
       });
+
+      if ((event as any).preventDefault) {
+        customEvent.preventDefault = () => (event as any).preventDefault();
+      }
 
       CustomElement.dispatchEvent(customEvent);
 
