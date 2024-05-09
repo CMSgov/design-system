@@ -1,4 +1,4 @@
-import { ArgsTable, Description, Subtitle, Title } from '@storybook/blocks';
+import { ArgTypes, Description, Subtitle, Title } from '@storybook/blocks';
 import { action } from '@storybook/addon-actions';
 import Drawer from './Drawer';
 import { Button } from '../Button';
@@ -29,7 +29,7 @@ const meta: Meta<typeof Drawer> = {
           <Title />
           <Subtitle />
           <Description />
-          <ArgsTable exclude={['backdropClickExits']} />
+          <ArgTypes exclude={['backdropClickExits']} />
         </>
       ),
     },
