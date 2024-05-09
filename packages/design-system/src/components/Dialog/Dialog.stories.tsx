@@ -31,7 +31,7 @@ export default meta;
 
 type Story = StoryObj<typeof Dialog>;
 
-export const DialogExample: Story = {
+export const Default: Story = {
   render: function Component(args) {
     const [dialogOpen, updateOpen] = useState(false);
 
