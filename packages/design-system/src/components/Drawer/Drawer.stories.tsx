@@ -1,4 +1,3 @@
-import { ArgTypes, Description, Subtitle, Title } from '@storybook/blocks';
 import { action } from '@storybook/addon-actions';
 import Drawer from './Drawer';
 import { Button } from '../Button';
@@ -7,7 +6,7 @@ import { useArgs } from '@storybook/preview-api';
 
 const meta: Meta<typeof Drawer> = {
   title: 'Components/Drawer',
-  component: Drawer as any,
+  component: Drawer,
   argTypes: {
     backdropClickExits: {
       // Until this pattern has solidified, we're not going to advertize this feature.

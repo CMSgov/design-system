@@ -7,7 +7,7 @@ import { useDialog } from './useDialog';
 
 const meta: Meta<typeof Dialog> = {
   title: 'Components/Dialog',
-  component: Dialog as any,
+  component: Dialog,
   args: {
     alert: false,
     children: (
