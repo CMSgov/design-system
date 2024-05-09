@@ -39,6 +39,7 @@
     padding: 0 !important;
     position: relative !important;
     width: auto !important;
+
     // Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1241631
     word-wrap: normal !important;
     /* stylelint-enable */
@@ -52,6 +53,7 @@
 .ds-c-alert__icon.ds-c-icon {
   flex-shrink: 0;
   font-size: var(--alert__icon-size);
+
   // Make height and width directly relative to the font size so the alert icon-size
   // variable can be used accurately in Figma too.
   height: 1em;

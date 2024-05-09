@@ -10,6 +10,7 @@ function getTypeLabel(argType: any) {
   if (controlType) {
     switch (controlType) {
       case 'text':
+      case 'number':
         return <code>string</code>;
       case 'boolean':
         return (
@@ -52,7 +53,7 @@ export const WebComponentArgsTable = ({ of }) => {
       </thead>
       <tbody className="docblock-argstable-body">
         {Object.entries(argTypes)
-          .filter(([_key, argType]) => !argType.table?.disable)
+          .filter(([_key, argType]) => !argType.table?.disable && !argType.controlsOnly)
           .map(([key, argType]) => (
             <tr>
               <td>

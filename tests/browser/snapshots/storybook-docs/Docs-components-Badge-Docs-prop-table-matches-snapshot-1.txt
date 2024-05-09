@@ -21,7 +21,7 @@
   ],
   [
     "variation",
-    "A string corresponding to the badge-component variation classes\n\"info\"\n\"success\"\n\"warn\"\n\"alert\"",
+    "A string corresponding to the badge-component variation classes\n\"alert\"\n\"info\"\n\"success\"\n\"warn\"",
     "-"
   ]
 ]

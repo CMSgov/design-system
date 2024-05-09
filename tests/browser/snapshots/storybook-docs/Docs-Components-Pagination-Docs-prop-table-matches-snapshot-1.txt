@@ -1,7 +1,7 @@
 [
   [
     "ariaLabel",
-    "Defines aria-label on wrapping Pagination element. Since this exists on a <nav> element, the word \"navigation\" should be omitted from this label. Optional.\nstring",
+    "Defines aria-label on the screen-reader heading for this element, which precedes the page count readout. Since this exists on a <nav> element, the word \"navigation\" should be omitted from this label. Optional.\nstring",
     "-"
   ],
   [
@@ -16,7 +16,7 @@
   ],
   [
     "currentPage*",
-    "Defines active page in Pagination.\nnumber",
+    "An integer representing active page number in the pagination results.\nnumber",
     "-"
   ],
   [
@@ -31,7 +31,7 @@
   ],
   [
     "headingLevel",
-    "Heading type to override default <h2>.\n\"1\"\n\"4\"\n\"3\"\n\"2\"\n\"5\"\n\"6\"",
+    "Heading type to override default <h2> used in the screen-reader heading.\n\"1\"\n\"2\"\n\"3\"\n\"4\"\n\"5\"\n\"6\"",
     "\"2\""
   ],
   [
@@ -41,7 +41,12 @@
   ],
   [
     "onPageChange*",
-    "A callback function used to handle state changes.\n(evt: MouseEvent<Element, MouseEvent>, page: number) => void",
+    "A callback function this is invoked whenever a page link is clicked, including the previous and next buttons. It is called with both the event object and the page number.\n(evt: MouseEvent<Element, MouseEvent>, page: number) => void",
+    "-"
+  ],
+  [
+    "ref",
+    "Ref<HTMLElement>",
     "-"
   ],
   [
@@ -61,7 +66,7 @@
   ],
   [
     "totalPages*",
-    "Sets total number of pages in Pagination component.\nnumber",
+    "An integer representing total number of pages in the pagination results.\nnumber",
     "-"
   ]
 ]

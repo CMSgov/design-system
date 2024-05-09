@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/ds-cms-gov",
-  "version": "10.0.0-beta.2",
+  "version": "10.0.0",
   "publishConfig": {
     "access": "public",
     "tag": "latest"
@@ -47,13 +47,17 @@
   "main": "dist/react-components/cjs/index.js",
   "module": "dist/react-components/esm/index.js",
   "types": "dist/react-components/types/index.d.ts",
-  "sideEffects": false,
+  "sideEffects": [
+    "./src/components/web-components/**/*",
+    "./dist/preact-components/esm/web-components/**/*.js",
+    "./dist/web-components/**/*.js"
+  ],
   "files": [
     "dist",
     "src"
   ],
   "dependencies": {
-    "@cmsgov/design-system": "10.0.0-beta.2",
+    "@cmsgov/design-system": "10.0.0",
     "@types/react": "^18.2.6",
     "@types/react-dom": "^17.0.10"
   }

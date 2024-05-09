@@ -30,14 +30,23 @@ export interface Config {
    */
   dialogSendsAnalytics: boolean;
   /**
-   * Controls whether help drawer components send analytics data by default. To override this
-   * setting for an individual help drawer instance, use the `analytics` prop.
+   * Controls whether help drawer components send analytics data by default. To override
+   * this setting for an individual help drawer instance, use the `analytics` prop.
    */
   helpDrawerSendsAnalytics: boolean;
   /**
    * Controls whether the header component send analytics data. Defaults to true.
    */
   headerSendsAnalytics: boolean;
+  /**
+   * Controls whether the footer component send analytics data. Defaults to true.
+   */
+  footerSendsAnalytics: boolean;
+  /**
+   * Controls whether third-party-external-link components send analytics data by default.
+   * To override this setting for an individual alert instance, use the `analytics` prop.
+   */
+  thirdPartyExternalLinkSendsAnalytics: boolean;
 }
 
 export type PartialConfig = Partial<Config>;
@@ -50,12 +59,16 @@ export const DEFAULTS: Config = Object.freeze({
   dialogSendsAnalytics: false,
   helpDrawerSendsAnalytics: false,
   headerSendsAnalytics: false,
+  footerSendsAnalytics: false,
+  thirdPartyExternalLinkSendsAnalytics: false,
 });
 
 export const HEALTHCARE_DEFAULTS: Config = {
   ...DEFAULTS,
   errorPlacementDefault: 'bottom',
   headerSendsAnalytics: true,
+  footerSendsAnalytics: true,
+  thirdPartyExternalLinkSendsAnalytics: true,
 };
 
 const _config = { ...DEFAULTS };

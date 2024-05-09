@@ -5,6 +5,7 @@
   background-color: var(--dialog__background-color);
   border: none;
   border-radius: var(--text-input__border-radius);
+
   // TODO: Revisit shadow consistency across the design system
   box-shadow: 0 7px 17px 0 var(--color-gray-light);
   box-sizing: border-box;
@@ -33,6 +34,7 @@
 
 .ds-c-filter-dialog__heading {
   @include heading--xl;
+
   margin-bottom: 0;
 }
 
@@ -55,6 +57,7 @@
   background: none;
   border: none;
   color: var(--color-gray-dark);
+
   // We need to have at least a 44px hit box size for the button, but we don't
   // want to shift the X visually from the right edge, so we're adding an
   // amount of padding that would be equivalent to the number of pixels we need

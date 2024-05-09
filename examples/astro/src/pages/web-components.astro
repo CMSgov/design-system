@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 ---
 <Layout title="Web-component examples">
+  <ds-skip-nav href="#main"></ds-skip-nav>
   <ds-usa-banner></ds-usa-banner>
 
   <main id="main" class="ds-l-container">
@@ -9,10 +10,12 @@ import Layout from '../layouts/Layout.astro';
       Web-component examples
     </h1>
   
-    <div class="ds-u-measure--base">
+    <div class="ds-u-measure--base ds-u-padding-bottom--4">
       <p>
         This is an example showing how to use our library of interactive web components.
       </p>
+
+      <ds-spinner aria-valuetext="aria sets spinner label!">children don't set spinner label</ds-spinner>
 
       <ds-alert
         variation="success"
@@ -26,6 +29,35 @@ import Layout from '../layouts/Layout.astro';
         </p>
         <ds-button variation="solid" is-alternate="true" id="the-button" class="ds-u-margin-top--1">Break things</ds-button>
       </ds-alert>
+
+      <ds-choice type="checkbox" label="I agree to the terms and conditions" name="agree">
+        <div slot="checked-children">
+          <ds-alert class="ds-u-margin-top--1">Cool, we hoped you'd check this box.</ds-alert>
+        </div>
+      </ds-choice>
+
+      <ds-accordion bordered="true" class="ds-u-margin-top--2">
+        <ds-accordion-item heading="First Amendment" default-open="true">
+          <p>
+            We the People of the United States, in Order to form a more perfect Union, establish
+            Justice, insure domestic Tranquility, provide for the common defence, promote the general
+            Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and
+            establish this Constitution for the United States of America.
+          </p>
+        </ds-accordion-item>
+        <ds-accordion-item heading="Second Amendment">
+          <p>
+            A well regulated Militia, being necessary to the security of a free State, the right of the
+            people to keep and bear Arms, shall not be infringed.
+          </p>
+        </ds-accordion-item>
+      </ds-accordion>
+
+      <ds-month-picker requirement-label="Required." hint="Select many." name="fooPicker" label="Select any months you want!" >
+        <input type="checkbox" value="10" checked />
+        <input type="checkbox" value="11" checked disabled />
+        <input type="checkbox" value="12" disabled />
+      </ds-month-picker>
 
       <h2 class="ds-text-heading--2xl">Adding machine</h2>
       <form id="calculator">
@@ -49,19 +81,19 @@ import Layout from '../layouts/Layout.astro';
         </div>
         <ds-button variation="solid" type="submit">Calculate</ds-button>
       </form>
+
+      <hr class="ds-u-margin-y--4">
+
+      <ds-pagination id="pagination" total-pages="10" class="ds-u-margin-y--4"></ds-pagination>
     </div>
   </main>
 </Layout>
 
 <script>
   document.getElementById('the-button').addEventListener('click', function () {
-    const oldAlert = document.getElementById('alert');
-    const newAlert = document.createElement('ds-alert');
-    newAlert.setAttribute('variation', 'error');
-    newAlert.setAttribute('heading', 'Oh no, something went wrong!');
-    newAlert.innerHTML = "I can't believe you pressed the button.";
-    oldAlert.parentElement.insertBefore(newAlert, oldAlert);
-    oldAlert.remove();
+    const alert = document.getElementById('alert');
+    alert.setAttribute('variation', 'error');
+    alert.innerHTML = "I can't believe you pressed the button.";
   });
 
   document.getElementById('operation').addEventListener('ds-change', function (e) {
@@ -77,5 +109,24 @@ import Layout from '../layouts/Layout.astro';
     console.log(operation.value);
     result.value = operation.value === 'addition' ? intA + intB : intA - intB;
   });
+
+  function updatePaginationFromHash() {
+    const pageMatch = window.location.hash.match(/page=(\d+)/);
+    const page = pageMatch ? pageMatch[1] : '1';
+    document.getElementById('pagination')?.setAttribute('current-page', page);
+  }
+  window.addEventListener('hashchange', updatePaginationFromHash);
+  updatePaginationFromHash();
 </script>
-<script src="@cmsgov/design-system/web-components"></script>
+
+<!-- <script src="@cmsgov/design-system/web-components"></script> -->
+<script src="@cmsgov/design-system/dist/web-components/bundle/base.js"></script>
+<script src="@cmsgov/design-system/dist/web-components/bundle/ds-accordion.js"></script>
+<script src="@cmsgov/design-system/dist/web-components/bundle/ds-alert.js"></script>
+<script src="@cmsgov/design-system/dist/web-components/bundle/ds-button.js"></script>
+<script src="@cmsgov/design-system/dist/web-components/bundle/ds-choice.js"></script>
+<script src="@cmsgov/design-system/dist/web-components/bundle/ds-dropdown.js"></script>
+<script src="@cmsgov/design-system/dist/web-components/bundle/ds-month-picker.js"></script>
+<script src="@cmsgov/design-system/dist/web-components/bundle/ds-pagination.js"></script>
+<script src="@cmsgov/design-system/dist/web-components/bundle/ds-spinner.js"></script>
+<script src="@cmsgov/design-system/dist/web-components/bundle/ds-usa-banner.js"></script>

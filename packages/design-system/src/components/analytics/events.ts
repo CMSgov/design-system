@@ -16,30 +16,12 @@ export interface UtagContainer {
 
 export type UtagEventType = 'link' | 'view';
 
-export enum EventCategory {
-  // These are likely unrelated and will need to be separated
-  UI_COMPONENTS = 'ui components',
-  // TODO: Right now this is used as the category of the Button events, but it should
-  // be consistent. After talking to the analytics team, we decided that it can be
-  // changed after Open Enrollment season.
-  UI_INTERACTION = 'ui interaction',
-}
-
-export enum EventType {
-  CONVERSION = 'conversion',
-  UI_INTERACTION = 'ui interaction',
-}
-
 // This is the default event 'extension' for events arising from the DS
 export const eventExtensionText = 'Design system integration';
 
 export interface AnalyticsEvent {
   event_name: string;
-  event_type: string;
-  event_category: string;
   event_extension: string;
-  event_action: string;
-  event_label: string;
   [additional_props: string]: unknown;
 }
 
@@ -64,11 +46,7 @@ const TIMEOUT = 300;
  * Use existing window.utag.link function to send analytics events. If the function does not
  * exist right away, try again after TIMEOUT milliseconds until we've reached MAX_RETRIES.
  */
-export function sendAnalytics(
-  eventType: UtagEventType,
-  event: Required<AnalyticsEvent>,
-  retry = 0
-) {
+export function sendAnalytics(eventType: UtagEventType, event: AnalyticsEvent, retry = 0) {
   // If we were to define this on the window object using `declare global { interface Window { utag: ... } }`
   // that type definition of window.utag can conflict with downstream declarations. This happened before, and
   // our fix is to only have a local type so we can get some type-checking without risk of conflicts. This
@@ -80,15 +58,7 @@ export function sendAnalytics(
   if (utag && utag[eventType]) {
     clipStrings(event);
     try {
-      utag[eventType]({
-        // Expand the event object to support the properties expected on healthcare.gov
-        ga_eventValue: '', // default value
-        ga_eventAction: event.event_action,
-        ga_eventCategory: event.event_category,
-        ga_eventLabel: event.event_label,
-        // But always recognize the incoming event as the authority on truth
-        ...event,
-      });
+      utag[eventType](event);
     } catch (error) {
       console.warn('Error sending analytics event: ', error);
     }

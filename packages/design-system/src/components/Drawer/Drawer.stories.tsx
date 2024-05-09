@@ -1,4 +1,4 @@
-import { Title, Subtitle, Description, ArgTypes } from '@storybook/blocks';
+import { ArgsTable, Description, Subtitle, Title } from '@storybook/blocks';
 import { action } from '@storybook/addon-actions';
 import Drawer from './Drawer';
 import { Button } from '../Button';
@@ -8,6 +8,14 @@ import { useArgs } from '@storybook/preview-api';
 const meta: Meta<typeof Drawer> = {
   title: 'Components/Drawer',
   component: Drawer as any,
+  argTypes: {
+    backdropClickExits: {
+      // Until this pattern has solidified, we're not going to advertize this feature.
+      table: {
+        disable: true,
+      },
+    },
+  },
   args: {
     footerTitle: 'Footer Title',
     footerBody: <p className="ds-text-body--md ds-u-margin--0">Footer content</p>,
@@ -21,7 +29,7 @@ const meta: Meta<typeof Drawer> = {
           <Title />
           <Subtitle />
           <Description />
-          <ArgTypes of={Drawer} />
+          <ArgsTable exclude={['backdropClickExits']} />
         </>
       ),
     },

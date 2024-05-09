@@ -69,11 +69,6 @@ describe('Dialog', function () {
     let tealiumMock;
     const defaultEvent = {
       event_name: 'modal_impression',
-      event_type: 'ui interaction',
-      ga_eventValue: '',
-      ga_eventCategory: 'ui components',
-      ga_eventAction: 'modal impression',
-      ga_eventLabel: 'dialog heading',
       heading: 'dialog heading',
     };
 
@@ -90,10 +85,44 @@ describe('Dialog', function () {
       jest.resetAllMocks();
     });
 
-    it('sends analytics event tracking on open dialog', () => {
+    it("does not send analytics event when dialog isn't open", () => {
+      renderDialog({ isOpen: false });
+      act(() => {
+        expect(tealiumMock).not.toHaveBeenCalled();
+      });
+    });
+
+    it('sends analytics event when dialog starts open', () => {
       renderDialog();
       act(() => {
         expect(tealiumMock).toBeCalledWith(expect.objectContaining(defaultEvent));
+        expect(tealiumMock).toHaveBeenCalledTimes(1);
+      });
+    });
+
+    it('sends analytics event when opening dialog', () => {
+      const { rerenderDialog } = renderDialog({ isOpen: false });
+      act(() => {
+        expect(tealiumMock).not.toHaveBeenCalled();
+      });
+      rerenderDialog({ isOpen: true });
+      act(() => {
+        expect(tealiumMock).toBeCalledWith(expect.objectContaining(defaultEvent));
+        expect(tealiumMock).toHaveBeenCalledTimes(1);
+      });
+    });
+
+    it('sends analytics event when closing dialog', () => {
+      const { rerenderDialog } = renderDialog();
+      const expectedClosedEvent = expect.objectContaining({ event_name: 'modal_closed' });
+      act(() => {
+        expect(tealiumMock).toBeCalledWith(expect.objectContaining(defaultEvent));
+        expect(tealiumMock).toHaveBeenCalledTimes(1);
+      });
+      rerenderDialog({ isOpen: false });
+      act(() => {
+        expect(tealiumMock).toBeCalledWith(expectedClosedEvent);
+        expect(tealiumMock).toHaveBeenCalledTimes(2);
       });
     });
 
@@ -103,7 +132,6 @@ describe('Dialog', function () {
         expect(tealiumMock).toBeCalledWith(
           expect.objectContaining({
             ...defaultEvent,
-            ga_eventLabel: 'Hello World',
             heading: 'Hello World',
           })
         );
@@ -126,7 +154,6 @@ describe('Dialog', function () {
       act(() => {
         expect(tealiumMock).toBeCalledWith(
           expect.objectContaining({
-            ga_eventLabel: 'other heading',
             heading: 'other heading',
           })
         );

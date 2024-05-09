@@ -1,12 +1,9 @@
 import Logo from './Logo';
 import { Logo as HCgovLogo } from '../Logo';
 import { getLanguage } from '@cmsgov/design-system';
+import { t } from '../i18n';
 
-interface LogosRowProps {
-  t: (string) => string;
-}
-
-const LogosRow = function (props: LogosRowProps) {
+const LogosRow = function () {
   return (
     <div className="ds-l-container">
       <div className="hc-c-footer__logo-row">
@@ -26,7 +23,7 @@ const LogosRow = function (props: LogosRowProps) {
             </p>
           )}
           {/* eslint-disable-next-line react/no-danger -- Known-safe source */}
-          <p dangerouslySetInnerHTML={{ __html: props.t('footer.disclaimer') }} />
+          <p dangerouslySetInnerHTML={{ __html: t('footer.disclaimer') }} />
         </div>
       </div>
     </div>
