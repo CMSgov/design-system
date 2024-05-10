@@ -55,7 +55,25 @@ const Wrapper = ({ children, choices, rootId, ...otherProps }: WrapperProps) => 
     if (elements.length) {
       return Array.from(elements).map((element) => {
         const { ...attrs } = element.props;
+        // const { checkedChildren, uncheckedChildren, ...attrs } = element.props;
+
+        // let checkedChild,
+        //   uncheckedChild = undefined;
+        // if (element.props.children.length > 0) {
+        //   const { children, slot } = element.props.children[0].props;
+
+        //   if (slot === 'checked-children') {
+        //     return (checkedChild = children);
+        //   }
+
+        //   if (slot === 'unchecked-children') {
+        //     return (uncheckedChild = children);
+        //   }
+        // }
+
         return {
+          // checkedChildren: checkedChild,
+          // uncheckedChildren: uncheckedChild,
           ...attrs,
         };
       });

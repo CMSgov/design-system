@@ -160,10 +160,14 @@ export const Default = Template.bind({});
 const htmlChoices = (
   <>
     <ds-choice type="checkbox" label="Foo" value="foo" />
-    <ds-choice type="checkbox" label="Bar" value="bar" />
-    <ds-choice type="checkbox" label="Baz" value="baz">
+    <ds-choice type="checkbox" label="Bar" value="bar">
       <div slot="checked-children">
         <p className="ds-u-margin-top--1">foo</p>
+      </div>
+    </ds-choice>
+    <ds-choice type="checkbox" label="Baz" value="baz">
+      <div slot="unchecked-children">
+        <p className="ds-u-margin-top--1">bar</p>
       </div>
     </ds-choice>
   </>
