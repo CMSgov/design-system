@@ -1,7 +1,10 @@
 import type * as React from 'react';
+import { ReactNode } from 'react';
 import { define } from '../preactement/define';
 import { ChoiceList, ChoiceListProps } from '../../ChoiceList/ChoiceList';
 import { parseBooleanAttr } from '../wrapperUtils';
+import { ChoiceProps } from '../../ChoiceList/Choice';
+import { findElementsOfType } from '../../utilities/findElementsOfType';
 
 const attributes = [
   'choices',
@@ -46,11 +49,25 @@ interface WrapperProps extends Omit<ChoiceListProps, 'choices' | 'disabled' | 'i
   rootId?: string;
 }
 
-const Wrapper = ({ choices, rootId, ...otherProps }: WrapperProps) => {
+const Wrapper = ({ children, choices, rootId, ...otherProps }: WrapperProps) => {
+  function parseChildren(node: ReactNode): Array<ChoiceProps> {
+    const elements = findElementsOfType(['ds-choice'], node);
+    if (elements.length) {
+      return Array.from(elements).map((element) => {
+        const { ...attrs } = element.props;
+        return {
+          ...attrs,
+        };
+      });
+    }
+
+    return [];
+  }
+
   return (
     <ChoiceList
       {...otherProps}
-      choices={typeof choices === 'string' ? JSON.parse(choices) : choices}
+      choices={typeof choices === 'string' ? JSON.parse(choices) : parseChildren(children)}
       disabled={parseBooleanAttr(otherProps.disabled)}
       id={rootId}
       inversed={parseBooleanAttr(otherProps.inversed)}

@@ -3,7 +3,7 @@ import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebCompon
 import { action } from '@storybook/addon-actions';
 import { webComponentDecorator } from '../storybook';
 import './ds-choice-list';
-import '../ds-alert';
+import '../ds-choice';
 
 const choices = [
   {
@@ -18,7 +18,7 @@ const choices = [
 ];
 
 export default {
-  title: 'Web Components/ds-choice-list',
+  title: 'Web Components/ChoiceList',
   argTypes: {
     children: { control: false },
     choices: {
@@ -110,7 +110,7 @@ export default {
       page: WebComponentDocTemplate,
       description: {
         component:
-          'For information about how and when to use this component, [refer to its full documentation page](https://design.cms.gov/components/month-picker/).',
+          'For information about how and when to use this component, refer to the [checkbox](https://design.cms.gov/components/checkbox/) and [radio](https://design.cms.gov/components/radio/) documentation pages. Checkboxes and radios can be managed as a group using `<ChoiceList>` or individually using `<Choice>`. Note that each of the items in the `choices` array represents props that will be passed to an individual `<Choice>` component. You can therefore define any of the props listed in the `<Choice>` props table below, including all valid attributes of the [HTML input element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input).',
       },
       componentEvents: {
         'ds-change': {
@@ -157,7 +157,27 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 
-export const ChoiceChildren = {
+const htmlChoices = (
+  <>
+    <ds-choice type="checkbox" label="Foo" value="foo" />
+    <ds-choice type="checkbox" label="Bar" value="bar" />
+    <ds-choice type="checkbox" label="Baz" value="baz">
+      <div slot="checked-children">
+        <p className="ds-u-margin-top--1">foo</p>
+      </div>
+    </ds-choice>
+  </>
+);
+
+export const HTMLChoices = {
+  render: Template,
+  args: {
+    choices: undefined,
+    children: htmlChoices,
+  },
+};
+
+export const CheckedChildren = {
   render: Template,
   args: {
     name: 'radio_choices',
