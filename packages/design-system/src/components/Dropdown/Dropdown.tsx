@@ -136,7 +136,7 @@ export type DropdownProps = BaseDropdownProps &
  * For information about how and when to use this component,
  * [refer to its full documentation page](https://design.cms.gov/components/dropdown/).
  */
-export const Dropdown = (props: DropdownProps) => {
+export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   validateProps(props);
 
   const id = useId('dropdown__button--', props.id);
@@ -168,7 +168,7 @@ export const Dropdown = (props: DropdownProps) => {
     const { label, value, ...extraAttrs } = item;
     return (
       <Item {...extraAttrs} key={value}>
-        {label as any /* react-aria doesn't like the ReactNode type we imported */}
+        {label}
       </Item>
     );
   };
@@ -177,11 +177,7 @@ export const Dropdown = (props: DropdownProps) => {
     if (isOptGroup(item)) {
       const { label, options, ...extraAttrs } = item;
       return (
-        <Section
-          {...extraAttrs}
-          key={`group-${index}`}
-          title={label as any /* react-aria doesn't like the ReactNode type we imported */}
-        >
+        <Section {...extraAttrs} key={`group-${index}`} title={label}>
           {options.map(renderReactStatelyItem)}
         </Section>
       );
@@ -214,7 +210,7 @@ export const Dropdown = (props: DropdownProps) => {
   };
 
   const state = useSelectState({
-    ...(props as any) /* react-aria doesn't like the ReactNode type we imported */,
+    ...props,
     children: reactStatelyItems,
     selectedKey,
     onSelectionChange,
@@ -242,11 +238,7 @@ export const Dropdown = (props: DropdownProps) => {
 
   const triggerRef = useRef<HTMLButtonElement>();
   const useSelectProps = useSelect(
-    {
-      ...(props as any) /* react-aria doesn't like the ReactNode type we imported */,
-      onBlur,
-      isDisabled: props.disabled,
-    },
+    { ...props, onBlur, isDisabled: props.disabled },
     state,
     triggerRef
   );
@@ -301,16 +293,12 @@ export const Dropdown = (props: DropdownProps) => {
         isDisabled={props.disabled}
         state={state}
         triggerRef={triggerRef}
-        label={props.label as any /* react-aria doesn't like the ReactNode type we imported */}
+        label={props.label}
         name={props.name}
       />
       <button {...buttonProps}>
         <span id={buttonContentId} className="ds-c-dropdown__label-text">
-          {
-            (state.selectedItem
-              ? state.selectedItem.rendered
-              : '') as any /* react-aria doesn't like the ReactNode type we imported */
-          }
+          {state.selectedItem ? state.selectedItem.rendered : ''}
         </span>
         <span className="ds-c-dropdown__caret">{caretIcon}</span>
       </button>
