@@ -354,10 +354,8 @@ export const Tooltip = (props: TooltipProps) => {
     );
 
     return (
-      // @ts-ignore: CSSTransition is really old
       <CSSTransition in={active} classNames="ds-c-tooltip" timeout={transitionDuration}>
         {dialog ? (
-          // @ts-ignore: FocusTrap is really old
           <FocusTrap
             active={active}
             focusTrapOptions={{
