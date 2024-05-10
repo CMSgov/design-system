@@ -109,6 +109,14 @@ export default {
         component:
           'For information about how and when to use this component, [refer to checkbox documentation](https://design.cms.gov/components/checkbox/) or [refer to radio button documentation](https://design.cms.gov/components/radio/) pages.',
       },
+      slots: {
+        'checked-children': {
+          description: 'Content to be shown when the choice is checked.',
+        },
+        'unchecked-children': {
+          description: 'Content to be shown when the choice is not checked.',
+        },
+      },
       componentEvents: {
         'ds-change': {
           description: 'Dispatched whenever the choice `checked` value changes.',
