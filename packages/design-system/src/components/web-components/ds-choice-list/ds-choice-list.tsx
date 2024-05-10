@@ -54,7 +54,7 @@ const Wrapper = ({ children, choices, rootId, ...otherProps }: WrapperProps) => 
     const elements = findElementsOfType(['ds-choice'], node);
     if (elements.length) {
       return Array.from(elements).map((element) => {
-        const { ...attrs } = element.props;
+        const { children, ...attrs } = element.props;
 
         /**
          * Begin logic to define optional nested children of a choice.
