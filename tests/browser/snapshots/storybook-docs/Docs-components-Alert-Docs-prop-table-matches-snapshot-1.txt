@@ -29,7 +29,7 @@
   ],
   [
     "children",
-    "The alert's body content\nReactNode",
+    "The alert's body content\nReactReactNode",
     "-"
   ],
   [
@@ -39,7 +39,7 @@
   ],
   [
     "heading",
-    "Text for the alert heading\nReactNode",
+    "Text for the alert heading\nReactReactNode",
     "-"
   ],
   [
@@ -49,8 +49,8 @@
   ],
   [
     "headingLevel",
-    "Heading type to override default <h2>.\n\"1\"\n\"2\"\n\"3\"\n\"4\"\n\"5\"\n\"6\"",
-    "\"2\""
+    "Heading type to override default <h2>.\nunion",
+    "'2'"
   ],
   [
     "hideIcon",
@@ -64,27 +64,17 @@
   ],
   [
     "onAnalyticsEvent",
-    "Optional callback that will intercept analytics events for this component. If none is specified, the design system will use the default analytics function, which can be overwritten globally with the defaultAnalyticsFunction config property.\n\n(event: AnalyticsEvent) => void",
-    "-"
-  ],
-  [
-    "ref",
-    "Ref<HTMLDivElement>",
+    "Optional callback that will intercept analytics events for this component. If none is specified, the design system will use the default analytics function, which can be overwritten globally with the defaultAnalyticsFunction config property.\n\nsendLinkEvent",
     "-"
   ],
   [
     "role",
-    "ARIA role, defaults to 'region'\n\"alert\"\n\"alertdialog\"\n\"region\"\n\"status\"",
-    "\"region\""
+    "ARIA role, defaults to 'region'\nunion",
+    "'region'"
   ],
   [
     "variation",
-    "A string corresponding to the Alert variation classes (error, warn, success)\n\"success\"\n\"warn\"\n\"error\"",
-    "-"
-  ],
-  [
-    "weight",
-    "A string corresponding to the Alert weight classes (lightweight)\n\"lightweight\"",
+    "A string corresponding to the Alert variation classes (error, warn, success)\nunion",
     "-"
   ]
 ]

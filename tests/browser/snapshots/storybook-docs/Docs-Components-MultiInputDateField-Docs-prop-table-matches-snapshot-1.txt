@@ -16,7 +16,7 @@
   ],
   [
     "dayDefaultValue",
-    "Initial value for the day input field. Use this for an uncontrolled component; otherwise, use the dayValue property.\n\nDateFieldDayDefaultValue",
+    "Initial value for the day input field. Use this for an uncontrolled component; otherwise, use the dayValue property.\n\nunion",
     "-"
   ],
   [
@@ -31,7 +31,7 @@
   ],
   [
     "dayLabel",
-    "Label for the day field\nReactNode",
+    "Label for the day field\nReactReactNode",
     "-"
   ],
   [
@@ -41,37 +41,17 @@
   ],
   [
     "dayValue",
-    "Sets the day input's value. Use this in combination with onChange for a controlled component; otherwise, set dayDefaultValue.\n\nDateFieldDayValue",
-    "-"
-  ],
-  [
-    "errorId",
-    "The ID of the error message applied to this field. If none is provided, the id will be derived from the id prop for the field.\n\nstring",
+    "Sets the day input's value. Use this in combination with onChange for a controlled component; otherwise, set dayDefaultValue.\n\nunion",
     "-"
   ],
   [
     "errorMessage",
-    "Enable the error state by providing an error message.\nReactNode",
-    "-"
-  ],
-  [
-    "errorMessageClassName",
-    "Additional classes to be added to the error message\nstring",
-    "-"
-  ],
-  [
-    "errorPlacement",
-    "Location of the error message relative to the field input\n\"top\"\n\"bottom\"",
+    "-",
     "-"
   ],
   [
     "hint",
-    "Additional hint text to display\nReactNode",
-    "-"
-  ],
-  [
-    "hintId",
-    "The ID of the hint element\nstring",
+    "-",
     "-"
   ],
   [
@@ -85,23 +65,13 @@
     "-"
   ],
   [
-    "label*",
-    "Label for the field.\nReactNode",
-    "-"
-  ],
-  [
-    "labelClassName",
-    "Additional classes to be added to the label\nstring",
-    "-"
-  ],
-  [
-    "labelId",
-    "A unique id to be used on the field label. If one isn't provided, a unique ID will be generated.\n\nstring",
+    "label",
+    "string",
     "-"
   ],
   [
     "monthDefaultValue",
-    "Initial value for the month input field. Use this for an uncontrolled component; otherwise, use the monthValue property.\n\nDateFieldMonthDefaultValue",
+    "Initial value for the month input field. Use this for an uncontrolled component; otherwise, use the monthValue property.\n\nunion",
     "-"
   ],
   [
@@ -116,7 +86,7 @@
   ],
   [
     "monthLabel",
-    "Label for the month field\nReactNode",
+    "Label for the month field\nReactReactNode",
     "-"
   ],
   [
@@ -126,7 +96,7 @@
   ],
   [
     "monthValue",
-    "Sets the month input's value. Use this in combination with onChange for a controlled component; otherwise, set monthDefaultValue.\n\nDateFieldMonthValue",
+    "Sets the month input's value. Use this in combination with onChange for a controlled component; otherwise, set monthDefaultValue.\n\nunion",
     "-"
   ],
   [
@@ -146,12 +116,12 @@
   ],
   [
     "requirementLabel",
-    "Text showing the requirement (\"Required\", \"Optional\", etc.). See Required and Optional Fields.\nReactNode",
+    "-",
     "-"
   ],
   [
     "yearDefaultValue",
-    "Initial value for the year input field. Use this for an uncontrolled component; otherwise, use the yearValue property.\n\nDateFieldYearDefaultValue",
+    "Initial value for the year input field. Use this for an uncontrolled component; otherwise, use the yearValue property.\n\nunion",
     "-"
   ],
   [
@@ -166,7 +136,7 @@
   ],
   [
     "yearLabel",
-    "Label for the year input field\nReactNode",
+    "Label for the year input field\nReactReactNode",
     "-"
   ],
   [
@@ -176,7 +146,7 @@
   ],
   [
     "yearValue",
-    "Sets the year input's value. Use this in combination with onChange for a controlled component; otherwise, set yearDefaultValue.\n\nDateFieldYearValue",
+    "Sets the year input's value. Use this in combination with onChange for a controlled component; otherwise, set yearDefaultValue.\n\nunion",
     "-"
   ]
 ]

@@ -1,37 +1,12 @@
 [
   [
-    "ariaLabel",
-    "Apply an aria-label to the text field to provide additional context to assistive devices.\n\nstring",
-    "-"
-  ],
-  [
     "defaultMonth",
     "The initial month to show in the calendar picker. If not provided, defaults to the month of the currently selected date.\n\nDate",
     "-"
   ],
   [
-    "errorId",
-    "The ID of the error message applied to this field. If none is provided, the id will be derived from the id prop for the field.\n\nstring",
-    "-"
-  ],
-  [
     "errorMessage",
-    "Enable the error state by providing an error message.\nReactNode",
-    "-"
-  ],
-  [
-    "errorMessageClassName",
-    "Additional classes to be added to the error message\nstring",
-    "-"
-  ],
-  [
-    "errorPlacement",
-    "Location of the error message relative to the field input\n\"top\"\n\"bottom\"",
-    "-"
-  ],
-  [
-    "fieldClassName",
-    "Additional classes to be added to the field element\nstring",
+    "-",
     "-"
   ],
   [
@@ -55,12 +30,7 @@
   ],
   [
     "hint",
-    "Additional hint text to display\nReactNode",
-    "-"
-  ],
-  [
-    "hintId",
-    "The ID of the hint element\nstring",
+    "string",
     "-"
   ],
   [
@@ -69,33 +39,13 @@
     "-"
   ],
   [
-    "inputRef",
-    "(...args: any[]) => any",
-    "-"
-  ],
-  [
     "inversed",
     "Set to true to apply the \"inverse\" color scheme\nboolean",
     "-"
   ],
   [
-    "label*",
-    "Label for the field.\nReactNode",
-    "-"
-  ],
-  [
-    "labelClassName",
-    "Additional classes to be added to the label\nstring",
-    "-"
-  ],
-  [
-    "labelId",
-    "A unique id to be used on the field label. If one isn't provided, a unique ID will be generated.\n\nstring",
-    "-"
-  ],
-  [
-    "multiline",
-    "Whether or not the text field is a multiline text field\nboolean",
+    "label",
+    "string",
     "-"
   ],
   [
@@ -104,13 +54,8 @@
     "-"
   ],
   [
-    "numeric",
-    "Sets inputMode, type, and pattern to improve accessibility and consistency for number fields. Use this prop instead of type=\"number\", see here for more information.\nboolean",
-    "-"
-  ],
-  [
     "onBlur",
-    "Called anytime any date input is blurred\n(event: FocusEvent<HTMLInputElement, Element>) => any",
+    "Called anytime any date input is blurred\n(event: React.FocusEvent<HTMLInputElement>) => any",
     "-"
   ],
   [
@@ -120,17 +65,7 @@
   ],
   [
     "requirementLabel",
-    "Text showing the requirement (\"Required\", \"Optional\", etc.). See Required and Optional Fields.\nReactNode",
-    "-"
-  ],
-  [
-    "rows",
-    "Optionally specify the number of visible text lines for the field. Only applicable if this is a multiline field.\n\nTextInputRows",
-    "-"
-  ],
-  [
-    "size",
-    "Set the max-width of the input either to 'small' or 'medium'.\n\"small\"\n\"medium\"",
+    "-",
     "-"
   ],
   [

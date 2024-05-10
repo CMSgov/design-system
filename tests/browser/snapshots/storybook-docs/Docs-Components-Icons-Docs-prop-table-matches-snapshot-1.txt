@@ -6,7 +6,7 @@
   ],
   [
     "children*",
-    "The elements that make up the SVG\nReactNode",
+    "The elements that make up the SVG\nReactReactNode",
     "-"
   ],
   [

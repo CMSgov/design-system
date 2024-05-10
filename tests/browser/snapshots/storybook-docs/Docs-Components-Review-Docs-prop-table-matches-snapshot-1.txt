@@ -1,7 +1,7 @@
 [
   [
     "children*",
-    "Review component's body content.\nReactNode",
+    "Review component's body content.\nReactReactNode",
     "-"
   ],
   [
@@ -16,7 +16,7 @@
   ],
   [
     "editContent",
-    "An optional node in place of the edit link. If this defined, no edit link will be shown.\nReactNode",
+    "An optional node in place of the edit link. If this defined, no edit link will be shown.\nReactReactNode",
     "-"
   ],
   [
@@ -26,18 +26,18 @@
   ],
   [
     "editText",
-    "ReactNode",
+    "ReactReactNode",
     "-"
   ],
   [
     "heading",
-    "ReactNode",
+    "ReactReactNode",
     "-"
   ],
   [
     "headingLevel",
-    "Heading type to override default <h3>.\n\"1\"\n\"2\"\n\"3\"\n\"4\"\n\"5\"\n\"6\"",
-    "\"3\""
+    "Heading type to override default <h3>.\nunion",
+    "'3'"
   ],
   [
     "onEditClick",

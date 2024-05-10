@@ -4,7 +4,7 @@
   ],
   [
     "actions",
-    "Buttons or other HTML to be rendered in the \"actions\" bar at the bottom of the dialog.\n\nReactNode",
+    "Buttons or other HTML to be rendered in the \"actions\" bar at the bottom of the dialog.\n\nReactReactNode",
     "-"
   ],
   [
@@ -43,6 +43,11 @@
     "-"
   ],
   [
+    "children",
+    "ReactReactNode",
+    "-"
+  ],
+  [
     "className",
     "Additional classes to be added to the root dialog element.\nstring",
     "-"
@@ -54,7 +59,7 @@
   ],
   [
     "heading",
-    "The Dialog's heading, to be rendered in the header alongside the close button.\nReactNode",
+    "The Dialog's heading, to be rendered in the header alongside the close button.\nReactReactNode",
     "-"
   ],
   [
@@ -69,17 +74,12 @@
   ],
   [
     "onAnalyticsEvent",
-    "Optional callback that will intercept analytics events for this component. If none is specified, the design system will use the default analytics function, which can be overwritten globally with the defaultAnalyticsFunction config property.\n\n(event: AnalyticsEvent) => void",
-    "-"
-  ],
-  [
-    "onExit*",
-    "Called when the user triggers an exit event, like by clicking the close button or pressing the ESC key. The parent of this component is responsible for showing or not showing the dialog, so you need to use this callback to make that happen. The dialog does not hide or remove itself.\n\n(event: MouseEvent<Element, MouseEvent> | KeyboardEvent<Element>) => void",
+    "Optional callback that will intercept analytics events for this component. If none is specified, the design system will use the default analytics function, which can be overwritten globally with the defaultAnalyticsFunction config property.\n\nsendLinkEvent",
     "-"
   ],
   [
     "size",
-    "The Dialog's size parameter.\n\"narrow\"\n\"wide\"\n\"full\"",
+    "The Dialog's size parameter.\nunion",
     "-"
   ]
 ]

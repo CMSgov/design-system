@@ -22,11 +22,11 @@
   [
     "role",
     "Landmark role so the spinner can receive keyboard focus\nstring",
-    "\"status\""
+    "'status'"
   ],
   [
     "size",
-    "Smaller or larger variant\n\"big\"\n\"small\"",
+    "Smaller or larger variant\nunion",
     "-"
   ]
 ]

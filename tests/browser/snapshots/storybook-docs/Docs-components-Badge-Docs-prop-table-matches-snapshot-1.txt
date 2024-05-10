@@ -1,6 +1,6 @@
 [
   [
-    "children",
+    "children*",
     "Label text or HTML.\nReactNode",
     "-"
   ],
@@ -10,18 +10,13 @@
     "-"
   ],
   [
-    "ref",
-    "Ref<HTMLSpanElement>",
-    "-"
-  ],
-  [
     "size",
-    "Sets the font size of the Badge. Only supports 'big'\n\"big\"",
+    "Sets the font size of the Badge. Only supports 'big'\nliteral",
     "-"
   ],
   [
     "variation",
-    "A string corresponding to the badge-component variation classes\n\"alert\"\n\"info\"\n\"success\"\n\"warn\"",
+    "A string corresponding to the badge-component variation classes\nunion",
     "-"
   ]
 ]

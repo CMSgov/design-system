@@ -31,8 +31,8 @@
   ],
   [
     "headingLevel",
-    "Heading type to override default <h2> used in the screen-reader heading.\n\"1\"\n\"2\"\n\"3\"\n\"4\"\n\"5\"\n\"6\"",
-    "\"2\""
+    "Heading type to override default <h2> used in the screen-reader heading.\nunion",
+    "'2'"
   ],
   [
     "isNavigationHidden",
@@ -41,12 +41,7 @@
   ],
   [
     "onPageChange*",
-    "A callback function this is invoked whenever a page link is clicked, including the previous and next buttons. It is called with both the event object and the page number.\n(evt: MouseEvent<Element, MouseEvent>, page: number) => void",
-    "-"
-  ],
-  [
-    "ref",
-    "Ref<HTMLElement>",
+    "A callback function this is invoked whenever a page link is clicked, including the previous and next buttons. It is called with both the event object and the page number.\n(evt: React.MouseEvent, page: number) => void",
     "-"
   ],
   [

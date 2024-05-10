@@ -21,7 +21,7 @@
   ],
   [
     "headerBottom",
-    "Element added to display content on Header bottom section\nReactNode",
+    "Element added to display content on Header bottom section\nReactReactNode",
     "-"
   ],
   [
@@ -77,16 +77,16 @@
   [
     "skipNavHref",
     "A URL hash used for the \"Skip to main content\" link. This is typically the id of your \"main\" content area (ie. #main).\n\nstring",
-    "\"#main\""
+    "'#main'"
   ],
   [
     "submenuBottom",
-    "Same as submenuTop, except it will appear below any links provided by the defaultMenuLinks method or the links provided by the links prop.\n\nReactNode",
+    "Same as submenuTop, except it will appear below any links provided by the defaultMenuLinks method or the links provided by the links prop.\n\nReactReactNode",
     "-"
   ],
   [
     "submenuTop",
-    "Optionally pass a React component to render within the menu. Useful for when you need more control over what appears in the menu than what's provided by the links prop, e.g. a search input. Will appear above any links provided by the defaultMenuLinks method or the links provided by the links prop.\n\nReactNode",
+    "Optionally pass a React component to render within the menu. Useful for when you need more control over what appears in the menu than what's provided by the links prop, e.g. a search input. Will appear above any links provided by the defaultMenuLinks method or the links provided by the links prop.\n\nReactReactNode",
     "-"
   ],
   [

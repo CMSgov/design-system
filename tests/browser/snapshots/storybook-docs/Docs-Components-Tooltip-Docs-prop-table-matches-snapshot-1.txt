@@ -11,7 +11,7 @@
   ],
   [
     "children*",
-    "Tooltip trigger content\nReactNode",
+    "Tooltip trigger content\nReactReactNode",
     "-"
   ],
   [
@@ -26,12 +26,12 @@
   ],
   [
     "component",
-    "When provided, will render the passed in component for the tooltip trigger. Typically will be a button, a, or rarely an input element.\nany",
-    "button"
+    "When provided, will render the passed in component for the tooltip trigger. Typically will be a button, a, or rarely an input element.\nunion",
+    "'button'"
   ],
   [
     "contentHeading",
-    "Heading for the tooltip content. This will show above 'title' content and inline with 'closeButton' if closeButton is set\nReactNode",
+    "Heading for the tooltip content. This will show above 'title' content and inline with 'closeButton' if closeButton is set\nReactReactNode",
     "-"
   ],
   [
@@ -57,11 +57,11 @@
   [
     "maxWidth",
     "maxWidth styling applied to the tooltip body\nstring",
-    "\"300px\""
+    "'300px'"
   ],
   [
     "offset",
-    "Applies skidding and distance offsets to the tooltip relative to the trigger. See the popperjs docs for more info.\n[number, number]",
+    "Applies skidding and distance offsets to the tooltip relative to the trigger. See the popperjs docs for more info.\ntuple",
     "[0, 5]"
   ],
   [
@@ -76,13 +76,8 @@
   ],
   [
     "placement",
-    "Placement of the tooltip body relative to the trigger. See the popperjs docs for more info.\n\"top\"\n\"auto\"\n\"auto-start\"\n\"auto-end\"\n\"bottom\"\n\"right\"\n\"left\"\n\"top-start\"\nShow 7 more...",
-    "\"top\""
-  ],
-  [
-    "ref",
-    "Ref<HTMLButtonElement> & Ref<HTMLAnchorElement>",
-    "-"
+    "Placement of the tooltip body relative to the trigger. See the popperjs docs for more info.\nPlacement",
+    "'top'"
   ],
   [
     "showCloseButton",
@@ -91,7 +86,7 @@
   ],
   [
     "title*",
-    "Content inside the tooltip body or popover. If contains interactive elements use the dialog prop.\nReactNode",
+    "Content inside the tooltip body or popover. If contains interactive elements use the dialog prop.\nReactReactNode",
     "-"
   ],
   [

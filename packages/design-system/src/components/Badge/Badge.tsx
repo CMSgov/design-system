@@ -1,4 +1,4 @@
-import type * as React from 'react';
+import type { ReactNode, ComponentPropsWithRef } from 'react';
 import classNames from 'classnames';
 import { t } from '../i18n';
 
@@ -14,7 +14,7 @@ interface BaseBadgeProps {
   /**
    * Label text or HTML.
    */
-  children: string | React.ReactNode;
+  children: ReactNode;
   /**
    * Sets the font size of the Badge. Only supports 'big'
    */
@@ -25,7 +25,7 @@ interface BaseBadgeProps {
   variation?: BadgeVariation;
 }
 
-export type BadgeProps = BaseBadgeProps & React.ComponentPropsWithRef<'span'>;
+export type BadgeProps = BaseBadgeProps & ComponentPropsWithRef<'span'>;
 
 /**
  * For information about how and when to use this component,
