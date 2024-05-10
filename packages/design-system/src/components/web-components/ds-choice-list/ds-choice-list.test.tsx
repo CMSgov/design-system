@@ -1,6 +1,7 @@
 import { render, waitFor, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import './ds-choice-list';
+import '../ds-choice';
 
 function generateChoices(length: number, customProps = {}) {
   const choices = [];
@@ -32,178 +33,191 @@ function renderChoiceList(customProps = {}, choicesCount = 2) {
 }
 
 describe('ChoiceList', () => {
-  describe('Radio buttons and Checkboxes', () => {
-    afterEach(() => {
-      jest.clearAllTimers();
-      jest.useRealTimers();
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+  });
+
+  it('is a radio button group', () => {
+    const { asFragment } = renderChoiceList();
+    const choiceEl = screen.getByLabelText('Choice 1') as HTMLInputElement;
+
+    expect(choiceEl.type).toBe('radio');
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('is a checkbox group', () => {
+    renderChoiceList({ type: 'checkbox' });
+    const choiceEl = screen.getByLabelText('Choice 1') as HTMLInputElement;
+
+    expect(choiceEl.type).toBe('checkbox');
+  });
+
+  it('is a checkbox', () => {
+    renderChoiceList({
+      choices: JSON.stringify(generateChoices(1)),
+      type: 'checkbox',
     });
+    const choiceEl = screen.getByLabelText('Choice 1') as HTMLInputElement;
 
-    it('is a radio button group', () => {
-      const { asFragment } = renderChoiceList();
-      const choiceEl = screen.getByLabelText('Choice 1') as HTMLInputElement;
+    expect(choiceEl.type).toBe('checkbox');
+  });
 
-      expect(choiceEl.type).toBe('radio');
-      expect(asFragment()).toMatchSnapshot();
-    });
+  it('renders all choices', () => {
+    const numChoices = 3;
+    renderChoiceList({}, numChoices);
+    const choiceEls = screen.getAllByRole('radio');
+    const choice = choiceEls[0] as HTMLInputElement;
 
-    it('is a checkbox group', () => {
-      renderChoiceList({ type: 'checkbox' });
-      const choiceEl = screen.getByLabelText('Choice 1') as HTMLInputElement;
+    expect(choiceEls.length).toBe(numChoices);
+    expect(choice.name).toBe('spec-field');
+    expect(choice.value).toBe('1');
+  });
 
-      expect(choiceEl.type).toBe('checkbox');
-    });
+  it('accepts HTML as children', () => {
+    const { asFragment } = render(
+      <ds-choice-list type="checkbox">
+        <ds-choice label="Foo" value="foo"></ds-choice>
+        <ds-choice label="Bar" value="bar"></ds-choice>
+      </ds-choice-list>
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
 
-    it('is a checkbox', () => {
-      renderChoiceList({
-        choices: JSON.stringify(generateChoices(1)),
-        type: 'checkbox',
-      });
-      const choiceEl = screen.getByLabelText('Choice 1') as HTMLInputElement;
+  it('is enclosed by a fieldset', () => {
+    renderChoiceList();
+    // a fieldset's default aria role is 'group' per MDN
+    // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset#technical_summary
+    const fieldsetEl = screen.getByRole('group');
 
-      expect(choiceEl.type).toBe('checkbox');
-    });
+    expect(fieldsetEl).toBeDefined();
+  });
 
-    it('renders all choices', () => {
-      const numChoices = 3;
-      renderChoiceList({}, numChoices);
-      const choiceEls = screen.getAllByRole('radio');
-      const choice = choiceEls[0] as HTMLInputElement;
+  it('generates ids when no id is provided', () => {
+    const { container } = renderChoiceList({ id: undefined });
+    expect(container.querySelector('legend').id).toMatch(/choice-list--\d+/);
 
-      expect(choiceEls.length).toBe(numChoices);
-      expect(choice.name).toBe('spec-field');
-      expect(choice.value).toBe('1');
-    });
+    const choices = screen.getAllByRole('radio');
+    const choiceIdRegex = /choice--\d+/;
+    expect(choices[0].id).toMatch(choiceIdRegex);
+    expect(choices[1].id).toMatch(choiceIdRegex);
+  });
 
-    it('is enclosed by a fieldset', () => {
-      renderChoiceList();
-      // a fieldset's default aria role is 'group' per MDN
-      // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset#technical_summary
-      const fieldsetEl = screen.getByRole('group');
+  it('renders the label prop as a legend element', () => {
+    renderChoiceList();
+    const legendEl = screen.getByText('Foo');
 
-      expect(fieldsetEl).toBeDefined();
-    });
+    expect(legendEl.tagName).toBe('LEGEND');
+  });
 
-    it('generates ids when no id is provided', () => {
-      const { container } = renderChoiceList({ id: undefined });
-      expect(container.querySelector('legend').id).toMatch(/choice-list--\d+/);
+  it('passes checked prop', () => {
+    const choices = generateChoices(4);
+    choices[0].checked = true;
+    renderChoiceList({ choices: JSON.stringify(choices), onChange: jest.fn() });
+    const choiceEl = screen.getByLabelText('Choice 1') as HTMLInputElement;
 
-      const choices = screen.getAllByRole('radio');
-      const choiceIdRegex = /choice--\d+/;
-      expect(choices[0].id).toMatch(choiceIdRegex);
-      expect(choices[1].id).toMatch(choiceIdRegex);
-    });
+    expect(choiceEl.checked).toBe(true);
+  });
 
-    it('renders the label prop as a legend element', () => {
-      renderChoiceList();
-      const legendEl = screen.getByText('Foo');
+  it('passes defaultChecked prop', () => {
+    const choices = generateChoices(4);
+    choices[0].defaultChecked = true;
+    renderChoiceList({ choices: JSON.stringify(choices) });
+    const choiceEls = screen.getAllByRole('radio') as HTMLInputElement[];
 
-      expect(legendEl.tagName).toBe('LEGEND');
-    });
+    expect(choiceEls[0].checked).toBe(true);
+    expect(choiceEls[1].checked).toBe(false);
+    expect(choiceEls[2].checked).toBe(false);
+    expect(choiceEls[3].checked).toBe(false);
+  });
 
-    it('passes checked prop', () => {
-      const choices = generateChoices(4);
-      choices[0].checked = true;
-      renderChoiceList({ choices: JSON.stringify(choices), onChange: jest.fn() });
-      const choiceEl = screen.getByLabelText('Choice 1') as HTMLInputElement;
+  it('passes disabled prop', () => {
+    const choices = generateChoices(4);
+    choices[0].disabled = true;
+    renderChoiceList({ choices: JSON.stringify(choices) });
+    const choiceEl = screen.getByLabelText('Choice 1') as HTMLInputElement;
 
-      expect(choiceEl.checked).toBe(true);
-    });
+    expect(choiceEl.disabled).toBe(true);
+  });
 
-    it('passes defaultChecked prop', () => {
-      const choices = generateChoices(4);
-      choices[0].defaultChecked = true;
-      renderChoiceList({ choices: JSON.stringify(choices) });
-      const choiceEls = screen.getAllByRole('radio') as HTMLInputElement[];
+  it('disables all choices', () => {
+    renderChoiceList({ disabled: true });
+    const choiceEls = screen.getAllByRole('radio') as HTMLInputElement[];
 
-      expect(choiceEls[0].checked).toBe(true);
-      expect(choiceEls[1].checked).toBe(false);
-      expect(choiceEls[2].checked).toBe(false);
-      expect(choiceEls[3].checked).toBe(false);
-    });
+    expect(choiceEls[0].disabled).toBe(true);
+    expect(choiceEls[1].disabled).toBe(true);
+  });
 
-    it('passes disabled prop', () => {
-      const choices = generateChoices(4);
-      choices[0].disabled = true;
-      renderChoiceList({ choices: JSON.stringify(choices) });
-      const choiceEl = screen.getByLabelText('Choice 1') as HTMLInputElement;
+  it('is inversed Choice', () => {
+    renderChoiceList({ inversed: true });
+    const choiceEl = screen.getByLabelText('Choice 1') as HTMLInputElement;
 
-      expect(choiceEl.disabled).toBe(true);
-    });
+    expect(choiceEl.classList).toContain('ds-c-choice--inverse');
+  });
 
-    it('disables all choices', () => {
-      renderChoiceList({ disabled: true });
-      const choiceEls = screen.getAllByRole('radio') as HTMLInputElement[];
+  it('calls onChange', async () => {
+    renderChoiceList();
+    const choiceListRoot = document.querySelector('ds-choice-list');
+    const onChange = jest.fn();
+    choiceListRoot.addEventListener('ds-change', onChange);
 
-      expect(choiceEls[0].disabled).toBe(true);
-      expect(choiceEls[1].disabled).toBe(true);
-    });
+    const choiceEl = screen.getByLabelText('Choice 1');
+    userEvent.click(choiceEl);
+    await waitFor(() => expect(onChange).toHaveBeenCalled());
+  });
 
-    it('is inversed Choice', () => {
-      renderChoiceList({ inversed: true });
-      const choiceEl = screen.getByLabelText('Choice 1') as HTMLInputElement;
+  it('calls onBlur', () => {
+    renderChoiceList();
+    const choiceListRoot = document.querySelector('ds-choice-list');
+    const onBlur = jest.fn();
+    choiceListRoot.addEventListener('ds-blur', onBlur);
 
-      expect(choiceEl.classList).toContain('ds-c-choice--inverse');
-    });
+    const choiceEl = screen.getByLabelText('Choice 1');
 
-    it.only('calls onChange', async () => {
-      renderChoiceList();
-      const onChange = jest.fn();
-      const choiceEl = screen.getByLabelText('Choice 1');
-      choiceEl.addEventListener('ds-change', onChange);
-      userEvent.click(choiceEl);
-      await waitFor(() => expect(onChange).toHaveBeenCalled());
-    });
+    choiceEl.focus();
+    userEvent.tab();
 
-    it.only('calls onBlur', () => {
-      const onBlur = jest.fn();
-      renderChoiceList({ onBlur });
-      const choiceEl = screen.getByLabelText('Choice 1');
+    expect(onBlur).toHaveBeenCalled();
+  });
 
-      choiceEl.focus();
-      userEvent.tab();
+  it('calls onComponentBlur', () => {
+    renderChoiceList();
+    const choiceListRoot = document.querySelector('ds-choice-list');
 
-      expect(onBlur).toHaveBeenCalled();
-    });
+    jest.useFakeTimers();
+    const onBlur = jest.fn();
+    const onComponentBlur = jest.fn();
 
-    it.only('calls onComponentBlur', () => {
-      jest.useFakeTimers();
-      const onBlur = jest.fn();
-      const onComponentBlur = jest.fn();
-      renderChoiceList({ onBlur, onComponentBlur });
-      const choiceEl = screen.getByLabelText('Choice 2');
+    choiceListRoot.addEventListener('ds-blur', onBlur);
+    choiceListRoot.addEventListener('ds-component-blur', onComponentBlur);
+    const choiceEl = screen.getByLabelText('Choice 2');
 
-      choiceEl.focus();
-      userEvent.tab();
-      jest.runAllTimers();
+    choiceEl.focus();
+    userEvent.tab();
+    jest.runAllTimers();
 
-      expect(onBlur).toHaveBeenCalled();
-      expect(onComponentBlur).toHaveBeenCalled();
-    });
+    expect(onBlur).toHaveBeenCalled();
+    expect(onComponentBlur).toHaveBeenCalled();
+  });
 
-    it.only("doesn't call onComponentBlur", () => {
-      jest.useFakeTimers();
-      const onBlur = jest.fn();
-      const onComponentBlur = jest.fn();
-      renderChoiceList({ onBlur, onComponentBlur, type: 'checkbox' });
-      const choiceEls = screen.getAllByRole('checkbox');
+  it("doesn't call onComponentBlur", () => {
+    renderChoiceList({ type: 'checkbox' });
+    const choiceListRoot = document.querySelector('ds-choice-list');
 
-      choiceEls[0].focus();
-      userEvent.tab();
-      jest.runAllTimers();
+    jest.useFakeTimers();
+    const onBlur = jest.fn();
+    const onComponentBlur = jest.fn();
 
-      expect(onBlur).toHaveBeenCalled();
-      expect(onComponentBlur).not.toHaveBeenCalled();
-    });
+    choiceListRoot.addEventListener('ds-blur', onBlur);
+    choiceListRoot.addEventListener('ds-component-blur', onComponentBlur);
 
-    it.only('passes through a ref', () => {
-      const inputRefCallback = jest.fn();
-      renderChoiceList({
-        choices: [
-          { label: 'Choice 1', value: '1', 'input-ref': inputRefCallback },
-          { label: 'Choice 2', value: '2' },
-        ],
-      });
-      expect(inputRefCallback).toHaveBeenCalled();
-    });
+    const choiceEls = screen.getAllByRole('checkbox');
+
+    choiceEls[0].focus();
+    userEvent.tab();
+    jest.runAllTimers();
+
+    expect(onBlur).toHaveBeenCalled();
+    expect(onComponentBlur).not.toHaveBeenCalled();
   });
 });

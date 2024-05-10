@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { action } from '@storybook/addon-actions';
 import { webComponentDecorator } from '../storybook';
+import '../ds-alert';
 import './ds-choice-list';
 import '../ds-choice';
 
@@ -10,9 +11,6 @@ const choices = [
     label: 'Choice 1',
     value: 'A',
     defaultChecked: true,
-    inputRef: () => {
-      console.log('I am a ref callback being called!');
-    },
   },
   { label: 'Choice 2', requirementLabel: 'Choice hint text', value: 'B' },
 ];
@@ -23,7 +21,7 @@ export default {
     children: { control: false },
     choices: {
       description:
-        'List of choices to be rendered as an array of objects representing the props for each Choice in the ChoiceList',
+        "The list of choices to be rendered as an array of objects. If it is defined as an attribute in HTML, it needs to be stringified. If you don't specify this attribute, represent your choices as <ds-choice> elements within the <ds-choice-list> component (see examples for details).",
       control: 'object',
     },
     'class-name': {
@@ -162,12 +160,20 @@ const htmlChoices = (
     <ds-choice type="checkbox" label="Foo" value="foo" />
     <ds-choice type="checkbox" label="Bar" value="bar">
       <div slot="checked-children">
-        <p className="ds-u-margin-top--1">foo</p>
+        <ds-alert heading="You'll save more with this option">
+          Based on the household information you provided, this option will give you the maximum
+          savings. We are adding some filler text just to show what it looks like when you have a
+          long alert as the checkedChildren of a Choice component.
+        </ds-alert>
       </div>
     </ds-choice>
     <ds-choice type="checkbox" label="Baz" value="baz">
       <div slot="unchecked-children">
-        <p className="ds-u-margin-top--1">bar</p>
+        <ds-alert variation="warn" heading="Are you sure?">
+          Based on the household information you provided, you can actually save more with the other
+          option. You are free to change this at any point during the application process until you
+          have signed and submitted your final application.
+        </ds-alert>
       </div>
     </ds-choice>
   </>
@@ -178,45 +184,5 @@ export const HTMLChoices = {
   args: {
     choices: undefined,
     children: htmlChoices,
-  },
-};
-
-export const CheckedChildren = {
-  render: Template,
-  args: {
-    name: 'radio_choices',
-    type: 'radio',
-    label: 'Choose an option.',
-    hint: 'This example shows choices with checked children.',
-    choices: JSON.stringify([
-      {
-        label: 'Choice 1',
-        value: 'A',
-        defaultChecked: true,
-        checkedChildren: (
-          <div className="ds-c-choice__checkedChild">
-            <ds-alert heading="You'll save more with this option">
-              Based on the household information you provided, this option will give you the maximum
-              savings. We are adding some filler text just to show what it looks like when you have
-              a long alert as the checkedChildren of a Choice component.
-            </ds-alert>
-          </div>
-        ),
-      },
-      {
-        label: 'Choice 2',
-        requirementLabel: 'Choice hint text',
-        value: 'B',
-        checkedChildren: (
-          <div className="ds-c-choice__checkedChild">
-            <ds-alert variation="warn" heading="Are you sure?">
-              Based on the household information you provided, you can actually save more with the
-              other option. You are free to change this at any point during the application process
-              until you have signed and submitted your final application.
-            </ds-alert>
-          </div>
-        ),
-      },
-    ]),
   },
 };

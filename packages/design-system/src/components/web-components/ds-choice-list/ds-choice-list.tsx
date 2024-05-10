@@ -55,25 +55,30 @@ const Wrapper = ({ children, choices, rootId, ...otherProps }: WrapperProps) => 
     if (elements.length) {
       return Array.from(elements).map((element) => {
         const { ...attrs } = element.props;
-        // const { checkedChildren, uncheckedChildren, ...attrs } = element.props;
 
-        // let checkedChild,
-        //   uncheckedChild = undefined;
-        // if (element.props.children.length > 0) {
-        //   const { children, slot } = element.props.children[0].props;
+        /**
+         * Begin logic to define optional nested children of a choice.
+         */
+        let checkedChild,
+          uncheckedChild = undefined;
 
-        //   if (slot === 'checked-children') {
-        //     return (checkedChild = children);
-        //   }
+        if (element.props.children.length > 0) {
+          element.props.children.map((child) => {
+            const { children, slot } = child.props;
 
-        //   if (slot === 'unchecked-children') {
-        //     return (uncheckedChild = children);
-        //   }
-        // }
+            if (slot === 'checked-children') {
+              checkedChild = children;
+            }
+
+            if (slot === 'unchecked-children') {
+              uncheckedChild = children;
+            }
+          });
+        }
 
         return {
-          // checkedChildren: checkedChild,
-          // uncheckedChildren: uncheckedChild,
+          checkedChildren: checkedChild,
+          uncheckedChildren: uncheckedChild,
           ...attrs,
         };
       });

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { action } from '@storybook/addon-actions';
-import './ds-choice';
+import '../ds-choice';
 import '../ds-alert';
 import { webComponentDecorator } from '../storybook';
 
