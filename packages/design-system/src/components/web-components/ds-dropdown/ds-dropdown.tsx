@@ -67,4 +67,4 @@ const Wrapper = ({ children, options, rootId, ...otherProps }: WrapperProps) => 
   </Dropdown>
 );
 
-define('ds-dropdown', () => Wrapper, { attributes, events: ['onChange', 'onBlur'] } as any);
+define('ds-dropdown', () => Wrapper, { attributes, events: ['onChange', 'onBlur'] });

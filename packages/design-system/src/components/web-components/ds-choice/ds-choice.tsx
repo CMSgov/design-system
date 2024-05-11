@@ -62,4 +62,4 @@ const Wrapper = ({ checked, defaultChecked, rootId, ...otherProps }: WrapperProp
   ></Choice>
 );
 
-define('ds-choice', () => Wrapper, { attributes, events: ['onChange', 'onBlur'] } as any);
+define('ds-choice', () => Wrapper, { attributes, events: ['onChange', 'onBlur'] });
