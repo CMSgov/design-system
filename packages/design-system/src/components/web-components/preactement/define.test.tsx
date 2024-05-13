@@ -1,6 +1,7 @@
 import { h, Fragment, ComponentFactory } from 'preact';
 import { render } from '@testing-library/preact';
 import { define } from './define';
+import userEvent from '@testing-library/user-event';
 
 /* -----------------------------------
  *
@@ -51,7 +52,7 @@ describe('define()', () => {
   const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
 
   describe('when run in the browser', () => {
-    let root;
+    let root: HTMLDivElement;
 
     beforeEach(() => {
       root = document.createElement('div');
@@ -280,6 +281,53 @@ describe('define()', () => {
       wrapper.appendChild(element);
 
       expect(root.innerHTML).toContain(`<h2>${customTitle}</h2><em></em><p>${customText}</p>`);
+    });
+
+    it('creates custom events', () => {
+      const fieldId = 'custom-events-field';
+      const CustomEventsComponent = (props) => (
+        <div>
+          <input type="text" onChange={props.onChange} onBlur={props.onBlur} id={fieldId} />
+        </div>
+      );
+      define('message-custom-events', () => CustomEventsComponent, {
+        events: [
+          'onBlur',
+          [
+            'onChange',
+            (event: React.MouseEvent) => ({
+              ...event,
+              detail: { target: event.target, anExtraProperty: true },
+            }),
+          ],
+        ],
+      });
+
+      const element = document.createElement('message-custom-events');
+      const onBlur = jest.fn();
+      const onChange = jest.fn();
+      element.addEventListener('ds-blur', onBlur);
+      element.addEventListener('ds-change', onChange);
+
+      root.appendChild(element);
+
+      const field = root.querySelector(`#${fieldId}`);
+
+      expect(onBlur).not.toHaveBeenCalled();
+      expect(onChange).not.toHaveBeenCalled();
+
+      userEvent.click(field);
+      userEvent.keyboard('hello');
+      userEvent.tab();
+      expect(onChange).toHaveBeenCalled();
+      expect(onChange.mock.lastCall[0].target).toEqual(element);
+      expect(onChange.mock.lastCall[0].detail.target).toEqual(field);
+      expect(onChange.mock.lastCall[0].detail.target.value).toEqual('hello');
+      expect(onChange.mock.lastCall[0].detail.anExtraProperty).toEqual(true);
+      expect(onBlur).toHaveBeenCalled();
+      expect(onBlur.mock.lastCall[0].target).toEqual(element);
+      expect(onBlur.mock.lastCall[0].detail.target).toEqual(field);
+      expect(onBlur.mock.lastCall[0].detail.anExtraProperty).not.toBeDefined();
     });
   });
 
