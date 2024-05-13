@@ -16,7 +16,6 @@ export * from './InlineError';
 export * from './Label';
 export * from './MonthPicker';
 export * from './Pagination';
-export * from './PrivacySettingsDialog';
 export * from './Review';
 export * from './SkipNav';
 export * from './Spinner';
