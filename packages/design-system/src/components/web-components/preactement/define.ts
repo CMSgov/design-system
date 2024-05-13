@@ -147,7 +147,10 @@ function proxyEvents(props, events: IOptions['events'], CustomElement) {
     const name: string = Array.isArray(nameOrArray) ? nameOrArray[0] : nameOrArray;
     const getEventFromCallbackArgs = Array.isArray(nameOrArray)
       ? nameOrArray[1]
-      : (event: CustomEventInit<unknown>) => event;
+      : (event: CustomEventInit<unknown>) => ({
+          ...event,
+          detail: { target: (event as UIEvent).target },
+        });
 
     // Convert the event name to a kebab-case format and replace 'on' with 'ds'
     // This prevents the custom events from conflicting with the native events
