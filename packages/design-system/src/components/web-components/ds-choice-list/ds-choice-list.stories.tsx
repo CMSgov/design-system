@@ -157,23 +157,41 @@ export const Default = Template.bind({});
 
 const htmlChoices = (
   <>
-    <ds-choice type="checkbox" label="Foo" value="foo" />
-    <ds-choice type="checkbox" label="Bar" value="bar">
+    <ds-choice type="checkbox" label="Choice without associated children" value="no children" />
+    <ds-choice
+      type="checkbox"
+      label="Checked children"
+      hint="Selecting this checkbox will reveal its associated children."
+      value="checked children"
+    >
       <div slot="checked-children">
-        <ds-alert heading="You'll save more with this option">
-          Based on the household information you provided, this option will give you the maximum
-          savings. We are adding some filler text just to show what it looks like when you have a
-          long alert as the checkedChildren of a Choice component.
-        </ds-alert>
+        <div className="ds-c-choice__checkedChild">
+          <ds-alert heading="🫣 Tag! You're it!">
+            You can reveal content by applying <code>checked-children</code> to the{' '}
+            <code>slot</code> attribute of an HTML element. Do not forget to include a{' '}
+            <code>div</code> element with the class <code>ds-c-choice__checkedChild</code> to
+            whatever content you want to show/hide so it gets side border showing an association
+            with its choice parent.
+          </ds-alert>
+        </div>
       </div>
     </ds-choice>
-    <ds-choice type="checkbox" label="Baz" value="baz">
+    <ds-choice
+      type="checkbox"
+      label="Unchecked children"
+      hint="Selecting this checkbox will hide its associated children."
+      value="unchecked children"
+    >
       <div slot="unchecked-children">
-        <ds-alert variation="warn" heading="Are you sure?">
-          Based on the household information you provided, you can actually save more with the other
-          option. You are free to change this at any point during the application process until you
-          have signed and submitted your final application.
-        </ds-alert>
+        <div className="ds-c-choice__checkedChild">
+          <ds-alert variation="warn" heading="I banish thee!">
+            You can hide content by applying <code>unchecked-children</code> to the{' '}
+            <code>slot</code> attribute of an HTML element. Do not forget to include a{' '}
+            <code>div</code> element with the class <code>ds-c-choice__checkedChild</code> to
+            whatever content you want to show/hide so it gets side border showing an association
+            with its choice parent.
+          </ds-alert>
+        </div>
       </div>
     </ds-choice>
   </>
