@@ -1,7 +1,7 @@
 import type * as React from 'react';
 import { ReactNode } from 'react';
 import { define } from '../preactement/define';
-import { ChoiceList, ChoiceListProps } from '../../ChoiceList/ChoiceList';
+import { ChoiceList, ChoiceListProps, ChoiceListType } from '../../ChoiceList/ChoiceList';
 import { parseBooleanAttr } from '../wrapperUtils';
 import { ChoiceProps } from '../../ChoiceList/Choice';
 import { findElementsOfType } from '../../utilities/findElementsOfType';
@@ -42,10 +42,11 @@ declare global {
 }
 /* eslint-enable */
 
-interface WrapperProps extends Omit<ChoiceListProps, 'choices' | 'disabled' | 'inversed'> {
+interface WrapperProps extends Omit<ChoiceListProps, 'choices' | 'disabled' | 'inversed' | 'type'> {
   choices?: string | ChoiceListProps['choices'];
   disabled?: string;
   inversed?: string;
+  type: ChoiceListType;
   rootId?: string;
 }
 
@@ -81,6 +82,7 @@ const Wrapper = ({ children, choices, rootId, ...otherProps }: WrapperProps) => 
         return {
           checkedChildren: checkedChild,
           uncheckedChildren: uncheckedChild,
+          type: otherProps.type,
           ...attrs,
         };
       });
@@ -96,6 +98,7 @@ const Wrapper = ({ children, choices, rootId, ...otherProps }: WrapperProps) => 
       disabled={parseBooleanAttr(otherProps.disabled)}
       id={rootId}
       inversed={parseBooleanAttr(otherProps.inversed)}
+      type={otherProps.type}
     ></ChoiceList>
   );
 };

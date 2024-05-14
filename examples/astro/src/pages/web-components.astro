@@ -59,13 +59,12 @@ import Layout from '../layouts/Layout.astro';
         <input type="checkbox" value="12" disabled />
       </ds-month-picker>
 
-      <ds-choice-list>
+      <ds-choice-list type="checkbox" hint="testing attrs" inversed>
           "I am a string child."
 
-        <ds-choice type="checkbox" label="Choice without associated children" value="no children" />
+        <ds-choice label="Choice without associated children" value="no children" />
     
         <ds-choice
-          type="checkbox"
           label="Checked children"
           hint="Selecting this checkbox will reveal its associated children."
           value="checked children"
@@ -83,7 +82,6 @@ import Layout from '../layouts/Layout.astro';
           </div>
         </ds-choice>
         <ds-choice
-          type="checkbox"
           label="Unchecked children"
           hint="Selecting this checkbox will hide its associated children."
           value="unchecked children"

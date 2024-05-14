@@ -157,9 +157,8 @@ export const Default = Template.bind({});
 
 const htmlChoices = (
   <>
-    <ds-choice type="checkbox" label="Choice without associated children" value="no children" />
+    <ds-choice label="Choice without associated children" value="no children" />
     <ds-choice
-      type="checkbox"
       label="Checked children"
       hint="Selecting this checkbox will reveal its associated children."
       value="checked children"
@@ -177,7 +176,6 @@ const htmlChoices = (
       </div>
     </ds-choice>
     <ds-choice
-      type="checkbox"
       label="Unchecked children"
       hint="Selecting this checkbox will hide its associated children."
       value="unchecked children"
