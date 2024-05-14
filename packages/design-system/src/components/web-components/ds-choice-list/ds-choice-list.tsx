@@ -63,15 +63,17 @@ const Wrapper = ({ children, choices, rootId, ...otherProps }: WrapperProps) => 
           uncheckedChild = undefined;
 
         if (element.props.children.length > 0) {
-          element.props.children.map((child: React.ReactElement) => {
-            const { children, slot } = child.props;
+          element.props.children.map((child: string | React.ReactElement) => {
+            if (typeof child !== 'string') {
+              const { children, slot } = child.props;
 
-            if (slot === 'checked-children') {
-              checkedChild = children;
-            }
+              if (slot === 'checked-children') {
+                checkedChild = children;
+              }
 
-            if (slot === 'unchecked-children') {
-              uncheckedChild = children;
+              if (slot === 'unchecked-children') {
+                uncheckedChild = children;
+              }
             }
           });
         }
