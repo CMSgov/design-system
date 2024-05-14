@@ -16,7 +16,7 @@ const choices = [
 ];
 
 export default {
-  title: 'Web Components/ChoiceList',
+  title: 'Web Components/ds-choice-list',
   argTypes: {
     children: { control: false },
     choices: {

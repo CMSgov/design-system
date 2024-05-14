@@ -3,7 +3,7 @@ import { webComponentDecorator } from '../storybook';
 import './ds-usa-banner';
 
 export default {
-  title: 'Web Components/UsaBanner',
+  title: 'Web Components/ds-usa-banner',
   argTypes: {
     'root-id': {
       description:
