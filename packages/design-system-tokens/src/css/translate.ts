@@ -196,7 +196,7 @@ export function tokenFilesToCssFiles(tokensByFile: FlattenedTokensByFile): Outpu
       const cssFileName = `${themeName}-theme.css`;
       obj[cssFileName] = cssFileContents;
       return obj;
-    }, {});
+    }, {} as Record<string, string>);
 }
 
 /**
@@ -217,7 +217,7 @@ export function tokenFilesToScssFiles(tokensByFile: FlattenedTokensByFile): Outp
       const scssFileName = `${themeName}-theme.scss`;
       obj[scssFileName] = scssVars;
       return obj;
-    }, {});
+    }, {} as Record<string, string>);
 }
 
 /**
