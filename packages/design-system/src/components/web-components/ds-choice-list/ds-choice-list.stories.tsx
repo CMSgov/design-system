@@ -113,14 +113,14 @@ export default {
       componentEvents: {
         'ds-change': {
           description:
-            'A callback function that\'s invoked when a month\'s checked state is changed. Note: This callback is not called when a month is selected or deselected via the "Select all" or "Clear all" buttons – use the `onSelectAll` and `onClearAll` event handlers for those instances.',
+            "A callback function that's invoked when a choice's checked state is changed.",
         },
         'ds-blur': {
           description: 'Called anytime any choice is blurred.',
         },
         'ds-component-blur': {
           description:
-            'Called when any choice is blurred and the focus does not land on one of the other choices inside this component (i.e., when the whole component loses focus).',
+            'Called when any choice is blurred and the focus does not land on one of the other choices inside this component (e.g., when the whole component loses focus).',
         },
       },
     },
