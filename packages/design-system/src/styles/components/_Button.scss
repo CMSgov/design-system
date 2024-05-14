@@ -324,11 +324,13 @@
 
 .ds-c-button--big {
   --space: #{$spacer-2 $spacer-3};
+
   font-size: var(--font-size-xl);
 }
 
 .ds-c-button--small {
   --fontWeight: var(--font-weight-normal);
   --space: #{$spacer-half $spacer-1};
+
   font-size: var(--font-size-sm);
 }

@@ -1,4 +1,3 @@
-import React from 'react';
 import Prism from 'prismjs';
 
 import { MDXRenderer } from 'gatsby-plugin-mdx';
@@ -58,7 +57,7 @@ const PreformattedWithLanguageClass = (props: any) => {
 };
 
 const TextWithMaxWidth = (props: any, Component) => {
-  const className = `ds-u-measure--wide ${props.className || ''}`;
+  const className = props.className ? `${props.className}` : null;
   return <Component {...props} className={className} />;
 };
 

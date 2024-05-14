@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/design-system",
-  "version": "9.0.1",
+  "version": "10.0.0",
   "publishConfig": {
     "access": "public",
     "tag": "latest"
@@ -44,8 +44,9 @@
   "module": "dist/react-components/esm/index.js",
   "types": "dist/react-components/types/index.d.ts",
   "sideEffects": [
-    "./src/components/web-components/*",
-    "./dist/preact-components/esm/web-components/*.js"
+    "./src/components/web-components/**/*",
+    "./dist/preact-components/esm/web-components/**/*.js",
+    "./dist/web-components/**/*.js"
   ],
   "files": [
     "dist",
@@ -58,24 +59,22 @@
     "@types/react": "^18.2.6",
     "@types/react-dom": "^17.0.10",
     "@types/react-transition-group": "^4.4.5",
+    "case-it": "^1.0.1",
+    "chalk": "^5.0.1",
     "classnames": "^2.2.5",
-    "date-fns": "^2.28.0",
+    "date-fns": "^3.0.6",
     "ev-emitter": "^1.1.1",
     "focus-trap-react": "^10.0.0",
+    "globby": "^13.1.2",
+    "inquirer": "^9.0.2",
     "lodash": "^4.17.21",
+    "ora": "^6.1.2",
     "preactement": "1.8.5",
     "prop-types": "^15.8.1",
     "react-aria": "^3.27.0",
-    "react-day-picker": "8.0.5",
+    "react-day-picker": "8.10.1",
     "react-stately": "^3.25.0",
-    "react-transition-group": "^4.4.5"
-  },
-  "devDependencies": {
-    "case-it": "^1.0.1",
-    "chalk": "^5.0.1",
-    "globby": "^13.1.2",
-    "inquirer": "^9.0.2",
-    "ora": "^6.1.2",
+    "react-transition-group": "^4.4.5",
     "yargs": "^17.7.2"
   },
   "peerDependencies": {

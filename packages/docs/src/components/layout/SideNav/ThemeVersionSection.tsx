@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import useTheme from '../../../helpers/useTheme';
 import ThemeDialog from './ThemeDialog';
 import VersionDialog from './VersionDialog';

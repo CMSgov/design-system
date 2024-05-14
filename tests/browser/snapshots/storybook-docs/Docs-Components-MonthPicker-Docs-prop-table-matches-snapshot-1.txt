@@ -91,12 +91,12 @@
   ],
   [
     "onClearAll",
-    "() => any",
+    "(...args: any[]) => any",
     "-"
   ],
   [
     "onSelectAll",
-    "() => any",
+    "(...args: any[]) => any",
     "-"
   ],
   [

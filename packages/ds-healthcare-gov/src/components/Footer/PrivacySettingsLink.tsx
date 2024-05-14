@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import type * as React from 'react';
 import { PrivacySettingsDialog } from '@cmsgov/design-system';
-import { tWithLanguage } from '../i18n';
+import { t } from '../i18n';
 
 interface PrivacySettingsLinkProps {
   children?: React.ReactNode;
@@ -9,7 +10,6 @@ interface PrivacySettingsLinkProps {
 
 export const PrivacySettingsLink = (props: PrivacySettingsLinkProps) => {
   const [showDialog, setShowDialog] = useState(false);
-  const t = tWithLanguage();
   const openDialog = () => setShowDialog(true);
   const closeDialog = () => setShowDialog(false);
 

@@ -20,6 +20,10 @@ core:
 
 <SeeStorybookForGuidance storyId={'components-inlineerror--docs'} />
 
+### Web Component
+
+<SeeStorybookForGuidance tech="wc" storyId={'web-components-inlineerror--docs'} />
+
 ### Style customization
 
 The following CSS variables can be overridden to customize Form components:
@@ -40,6 +44,18 @@ The following CSS variables can be overridden to customize Form components:
 - Use the fewest words possible (i.e., don't use "please").
 - Use sentence case.
 - End with a period.
+
+### Accessibility testing
+
+#### General observations
+
+- Inline error text should be outside of the label element.
+- Inline error messages should be linked to their corresponding input fields via an `aria-describedby` attribute on the input.
+- Inline error text should meet [size and contrast requirements](/foundation/typography/body/#accessibility).
+
+#### Screen reader testing
+
+- When the input field gets focus, its label should be read first and then its hint (if it has one) and its error message.
 
 ## Learn More
 

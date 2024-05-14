@@ -1,8 +1,3 @@
-import React from 'react';
-
-/**
- * SVG for CMS Logo
- */
 const CmsLogo = () => {
   // "#323a45" was what Brent originally sent
   const fill = 'var(--color-base)';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { VerticalNav } from '@cmsgov/design-system';
 
 function VerticalNavigationExample() {

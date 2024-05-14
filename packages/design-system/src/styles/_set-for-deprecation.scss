@@ -1,9 +1,5 @@
 // Classes included in this file are set for deprecation and will be removed in the next major release.
 
-// Imported to access $breakpoints to generate utility classes.
-// Remove with semantic font-size classes
-$breakpoints: sm, md, lg, xl; // 💀
-
 // This adds a border to all soon-to-be deprecated classes.
 // When the class is deprecated, remove it from the list below.
 
@@ -25,42 +21,8 @@ $breakpoints: sm, md, lg, xl; // 💀
     z-index: 1;
   }
 }
-@container style(--debugger: true) {
-  .ds-display,
-  .ds-title,
-  .ds-h1,
-  .ds-h2,
-  .ds-h3,
-  .ds-h4,
-  .ds-h5,
-  .ds-h6,
-  .ds-text,
-  .ds-text--lead,
-  .ds-u-font-size--small,
-  .ds-u-font-size--h6,
-  .ds-u-font-size--h5,
-  .ds-u-font-size--h4,
-  .ds-u-font-size--h3,
-  .ds-u-font-size--h2,
-  .ds-u-font-size--h1,
-  .ds-u-font-size--lead,
-  .ds-u-font-size--title,
-  .ds-u-font-size--display {
-    @include deprecate;
-  }
 
-  @each $breakpoint in $breakpoints {
-    .ds-u-#{$breakpoint}-font-size--small,
-    .ds-u-#{$breakpoint}-font-size--lead,
-    .ds-u-#{$breakpoint}-font-size--display,
-    .ds-u-#{$breakpoint}-font-size--title,
-    .ds-u-#{$breakpoint}-font-size--h1,
-    .ds-u-#{$breakpoint}-font-size--h2,
-    .ds-u-#{$breakpoint}-font-size--h3,
-    .ds-u-#{$breakpoint}-font-size--h4,
-    .ds-u-#{$breakpoint}-font-size--h5,
-    .ds-u-#{$breakpoint}-font-size--h6 {
-      @include deprecate;
-    }
-  }
+/* stylelint-disable block-no-empty -- Ignore until new deprecation rules are added */
+@container style(--debugger: true) {
 }
+/* stylelint-enable */

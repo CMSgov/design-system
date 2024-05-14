@@ -1,4 +1,4 @@
-import React from 'react';
+import type * as React from 'react';
 import classNames from 'classnames';
 import mergeRefs from '../utilities/mergeRefs';
 import useButtonAnalytics from './useButtonAnalytics';

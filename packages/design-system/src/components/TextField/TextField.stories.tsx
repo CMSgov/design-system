@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import TextField from './TextField';
 import { unmaskValue } from './maskHelpers';
 import { PHONE_MASK, SSN_MASK, ZIP_MASK, CURRENCY_MASK } from './useLabelMask';

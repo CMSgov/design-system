@@ -1,6 +1,6 @@
-import React from 'react';
 import ColorExampleRow from './ColorExampleRow';
 import { getThemeColorValue, ThemeName } from '../../helpers/themeTokens';
+import { clientOnly } from '../../helpers/clientOnly';
 
 interface ColorExampleListProps {
   /**
@@ -22,17 +22,18 @@ interface ColorExampleListProps {
  * items. Note that this does not show a special transparency background to
  * support semi-transparent colors like the `ColorRamps` component does.
  */
-const ColorExampleList = ({ colorNames, preface, theme }: ColorExampleListProps) => (
-  <div className="ds-u-measure--wide ds-u-margin-top--2">
-    {colorNames.map((name) => (
-      <ColorExampleRow
-        name={name}
-        displayName={`${preface}${name}`}
-        value={getThemeColorValue(theme as ThemeName, name)}
-        key={name}
-      />
-    ))}
-  </div>
-);
+const ColorExampleList = ({ colorNames, preface, theme }: ColorExampleListProps) =>
+  clientOnly(
+    <div className="ds-u-margin-top--2">
+      {colorNames.map((name) => (
+        <ColorExampleRow
+          name={name}
+          displayName={`${preface}${name}`}
+          value={getThemeColorValue(theme as ThemeName, name)}
+          key={name}
+        />
+      ))}
+    </div>
+  );
 
 export default ColorExampleList;

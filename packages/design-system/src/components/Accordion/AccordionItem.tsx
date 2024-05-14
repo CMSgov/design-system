@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import type * as React from 'react';
 import { AddIcon, RemoveIcon } from '../Icons';
 import classNames from 'classnames';
 import useId from '../utilities/useId';
@@ -38,7 +39,7 @@ export interface AccordionItemProps {
   /**
    * A callback function that's invoked when a controlled accordion panel is selected or deselected.
    */
-  onChange?: () => void;
+  onChange?: (...args: any[]) => any;
   /**
    * Icon to overwrite default close icon
    */
@@ -70,16 +71,15 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
   const contentClasses = classNames('ds-c-accordion__content', contentClassName);
   const buttonClasses = classNames('ds-c-accordion__button', buttonClassName);
   const HeadingTag = `h${headingLevel}` as const;
-  const isControlled = !!onChange;
   const contentId = useId('accordion-item--', id);
   const buttonId = `${contentId}__button`;
+  const isControlled = isControlledOpen !== undefined;
   const [isOpen, setIsOpen] = useState(isControlled ? isControlledOpen : defaultOpen);
 
-  // Set the state for opening and closing an accordion item
-  const handleClick = () => {
-    if (isControlled) {
-      onChange();
-    } else {
+  const handleClick = (event) => {
+    onChange?.(event);
+
+    if (!isControlled) {
       setIsOpen(!isOpen);
     }
   };
@@ -113,7 +113,6 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
         </HeadingTag>
         <div
           className={contentClasses}
-          aria-labelledby={buttonId}
           id={contentId}
           hidden={isControlled ? !isControlledOpen : !isOpen}
         >

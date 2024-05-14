@@ -51,6 +51,7 @@
 
       &:focus {
         @include mixins.focus-styles-link;
+
         color: var(--color-primary-darker);
         text-decoration: none;
       }

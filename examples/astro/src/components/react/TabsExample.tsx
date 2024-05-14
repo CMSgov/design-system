@@ -1,5 +1,4 @@
 import { TabPanel, Tabs } from '@cmsgov/design-system';
-import React from 'react';
 
 function TabsExample() {
   return (
@@ -16,7 +15,7 @@ function TabsExample() {
           establish this Constitution for the United States of America.
         </TabPanel>
         <TabPanel id="amendments" tab="Amendments">
-          <h2 className="ds-h4">Bill of Rights</h2>
+          <h2 className="ds-text-heading--lg">Bill of Rights</h2>
 
           <ol className="ds-c-list">
             <li>Freedoms, Petitions, Assembly</li>
@@ -31,7 +30,7 @@ function TabsExample() {
             <li>States’ rights</li>
           </ol>
 
-          <h2 className="ds-h4">Later Amendments</h2>
+          <h2 className="ds-text-heading--lg">Later Amendments</h2>
 
           <ol className="ds-c-list" start={11}>
             <li>Lawsuits against states</li>

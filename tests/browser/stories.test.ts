@@ -25,12 +25,7 @@ const storySkipList = [
   'patterns-one-column-page-layout--one-column-page-layout',
   'healthcare-privacysettingslink--default',
   'healthcare-privacysettingslink--custom-content',
-  // Skip all web components for now
-  'web-components-alert--default',
-  'web-components-badge--default',
-  'web-components-button--default',
-  'web-components-dropdown--default',
-  'web-components-usabanner--default',
+  'web-components-accordionitem--default', // Redundant
 ];
 
 const isSmokeTest = Boolean(process.env.SMOKE && JSON.parse(process.env.SMOKE));
@@ -47,7 +42,9 @@ stories.forEach((story) => {
 
     themeKeys.forEach((theme) => {
       const storyNotInTheme = !story.importPath.includes(themes[theme].packageName);
-      const storyNotInCore = !story.importPath.includes(themes['core'].packageName);
+      const storyNotInCore =
+        !story.importPath.includes(themes['core'].packageName) &&
+        !story.importPath.includes('packages/docs');
 
       // Don't capture theme-specific components outside their themes, all themes get core components
       if (storyNotInTheme && storyNotInCore) return;

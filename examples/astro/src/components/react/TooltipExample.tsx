@@ -1,5 +1,4 @@
 import { Tooltip, TooltipIcon } from '@cmsgov/design-system';
-import React from 'react';
 
 function TooltipExample() {
   return (

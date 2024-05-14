@@ -1,4 +1,3 @@
-import React from 'react';
 import Layout from '../components/layout/Layout';
 import useTheme from '../helpers/useTheme';
 import { BlogQuery } from '../helpers/graphQLTypes';
@@ -25,7 +24,6 @@ const BlogIndexPage = ({ data, location }: BlogQuery) => {
             className={classNames(
               'ds-u-margin-bottom--3',
               'ds-u-padding-bottom--3',
-              'ds-u-measure--wide',
               index < nodes.length - 1 && 'ds-u-border-bottom--1'
             )}
             key={node.slug}

@@ -25,7 +25,7 @@ export const themeColors: ColorTokens = {
   'border-dark':                color['lapis-800'],
   'border-inverse':             color['white-solid'],
   //
-  'error-lightest':             color['rose-50'],
+  'error-lightest':             color['rose-40'],
   'error-lighter':              color['rose-100'],
   'error-light':                color['rose-200'],
   'error':                      color['rose-500'],
@@ -79,7 +79,7 @@ export const themeColors: ColorTokens = {
   'info-darker':                color['deepsea-700'],
   'info-darkest':               color['deepsea-800'],
   //
-  'success-lightest':           color['spring-50'],
+  'success-lightest':           color['spring-40'],
   'success-lighter':            color['spring-100'],
   'success-light':              color['spring-300'],
   'success':                    color['spring-500'],

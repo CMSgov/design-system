@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState } from 'react';
 import { HHSLogo, PrivacySettingsDialog } from '@cmsgov/design-system';
 

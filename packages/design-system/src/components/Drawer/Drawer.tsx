@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
+import type * as React from 'react';
 import Button, { ButtonVariation } from '../Button/Button';
 import NativeDialog from '../NativeDialog/NativeDialog';
 import classNames from 'classnames';
@@ -12,6 +13,10 @@ export interface DrawerProps {
    * Gives more context to screen readers on the Drawer close button.
    */
   ariaLabel?: string;
+  /**
+   * Pass `true` to have the dialog close when its backdrop pseudo-element is clicked
+   */
+  backdropClickExits?: boolean;
   closeButtonText?: React.ReactNode;
   closeButtonVariation?: ButtonVariation;
   children: React.ReactNode;
@@ -64,17 +69,40 @@ export interface DrawerProps {
  * [refer to its full documentation page](https://design.cms.gov/components/drawer/).
  */
 export const Drawer = (props: DrawerProps) => {
-  const headingRef = useRef(null);
-  const headingId = useId('drawer--', props.headingId);
+  const {
+    ariaLabel,
+    backdropClickExits,
+    children,
+    className,
+    closeButtonText,
+    closeButtonVariation,
+    footerBody,
+    footerTitle,
+    hasFocusTrap,
+    heading,
+    headingId: userHeadingId,
+    headingLevel,
+    headingRef: userHeadingRef,
+    isFooterSticky,
+    isHeaderSticky,
+    isOpen,
+    onCloseClick,
+    ...otherProps
+  } = props;
 
-  const Heading = `h${props.headingLevel}` as const;
+  const headingRef = useRef(null);
+  const headingId = useId('drawer--', userHeadingId);
+
+  const Heading = `h${headingLevel}` as const;
 
   return (
     <NativeDialog
-      className={classNames(props.className, 'ds-c-drawer')}
-      exit={props.onCloseClick}
-      showModal={props.hasFocusTrap}
-      isOpen={props.isOpen}
+      className={classNames(className, 'ds-c-drawer')}
+      exit={onCloseClick}
+      showModal={true}
+      backdropClickExits={backdropClickExits}
+      isOpen={isOpen}
+      {...otherProps}
     >
       <div className="ds-c-drawer__window" tabIndex={-1} aria-labelledby={headingId}>
         <div className="ds-c-drawer__header">
@@ -83,35 +111,35 @@ export const Drawer = (props: DrawerProps) => {
             className="ds-c-drawer__header-heading"
             ref={(el) => {
               headingRef.current = el;
-              if (props.headingRef) {
-                props.headingRef.current = el;
+              if (userHeadingRef) {
+                userHeadingRef.current = el;
               }
             }}
           >
-            {props.heading}
+            {heading}
           </Heading>
           <Button
-            aria-label={props.ariaLabel ?? t('drawer.ariaLabel')}
+            aria-label={ariaLabel ?? t('drawer.ariaLabel')}
             className="ds-c-drawer__close-button"
             size="small"
-            onClick={props.onCloseClick}
-            variation={props.closeButtonVariation}
+            onClick={onCloseClick}
+            variation={closeButtonVariation}
           >
-            {props.closeButtonText ?? t('drawer.closeButtonText')}
+            {closeButtonText ?? t('drawer.closeButtonText')}
           </Button>
         </div>
         <div
           className={classNames('ds-c-drawer__body', {
-            'ds-c-drawer--is-sticky': props.isHeaderSticky || props.isFooterSticky,
+            'ds-c-drawer--is-sticky': isHeaderSticky || isFooterSticky,
           })}
           tabIndex={0}
         >
-          {props.children}
+          {children}
         </div>
-        {(props.footerTitle || props.footerBody) && (
+        {(footerTitle || footerBody) && (
           <div className="ds-c-drawer__footer">
-            <h4 className="ds-c-drawer__footer-title">{props.footerTitle}</h4>
-            <div className="ds-c-drawer__footer-body">{props.footerBody}</div>
+            <h4 className="ds-c-drawer__footer-title">{footerTitle}</h4>
+            <div className="ds-c-drawer__footer-body">{footerBody}</div>
           </div>
         )}
       </div>
@@ -120,8 +148,8 @@ export const Drawer = (props: DrawerProps) => {
 };
 
 Drawer.defaultProps = {
-  headingLevel: '3',
   hasFocusTrap: false,
+  headingLevel: '3',
 };
 
 export default Drawer;

@@ -1,10 +1,10 @@
-import React from 'react';
+import type * as React from 'react';
 import classNames from 'classnames';
 import { AlertCircleIcon } from '../Icons/AlertCircleIcon';
 import { t } from '../i18n';
 import useId from '../utilities/useId';
 
-interface InlineErrorProps {
+export interface InlineErrorProps {
   /**
    * Error text or HTML
    */

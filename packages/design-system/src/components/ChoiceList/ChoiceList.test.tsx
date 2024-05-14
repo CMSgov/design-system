@@ -1,4 +1,3 @@
-import React from 'react';
 import ChoiceList, { ChoiceListType } from './ChoiceList';
 import { render, waitFor, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';

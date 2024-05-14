@@ -1,5 +1,5 @@
 import { HelpDrawer, HelpDrawerToggle } from '@cmsgov/design-system';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 function HelpDrawerExample() {
   const [showHelpDrawer, setShowHelpDrawer] = useState(false);
@@ -25,7 +25,7 @@ function HelpDrawerExample() {
         {showHelpDrawer && (
           <HelpDrawer
             footerTitle="Footer Title"
-            footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
+            footerBody={<p className="ds-text-body--md ds-u-margin--0">Footer content</p>}
             heading="Help Drawer Heading"
             onCloseClick={() => setShowHelpDrawer(false)}
           >

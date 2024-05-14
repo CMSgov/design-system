@@ -20,6 +20,15 @@ const config = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist/scripts'),
   },
+  resolve: {
+    alias: {
+      // These aliases are necessary because we use React-based libraries in some of the
+      // design-system components
+      react: 'preact/compat',
+      'react-dom': 'preact/compat',
+      'react/jsx-runtime': 'preact/jsx-runtime',
+    },
+  },
   module: {
     rules: [
       {
