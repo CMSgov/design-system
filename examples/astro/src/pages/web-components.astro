@@ -60,6 +60,8 @@ import Layout from '../layouts/Layout.astro';
       </ds-month-picker>
 
       <ds-choice-list>
+          "I am a string child."
+
         <ds-choice type="checkbox" label="Choice without associated children" value="no children" />
     
         <ds-choice
@@ -68,7 +70,6 @@ import Layout from '../layouts/Layout.astro';
           hint="Selecting this checkbox will reveal its associated children."
           value="checked children"
         >
-          <!-- "I am a string child." -->
           <div slot="checked-children">
             <div class="ds-c-choice__checkedChild">
               <ds-alert heading="🫣 Tag! You're it!">
