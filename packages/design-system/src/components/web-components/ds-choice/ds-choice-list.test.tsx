@@ -1,7 +1,7 @@
 import { render, waitFor, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import './ds-choice-list';
-import '../ds-choice';
+import '.';
 
 function generateChoices(length: number, customProps = {}) {
   const choices = [];
