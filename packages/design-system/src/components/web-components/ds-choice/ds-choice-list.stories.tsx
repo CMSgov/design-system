@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { webComponentDecorator } from '../storybook';
 import '../ds-alert';
 import './ds-choice-list';
-import '.';
+import './ds-choice';
 
 const choices = [
   {
