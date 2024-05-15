@@ -119,7 +119,7 @@ export default {
           description: 'Dispatched whenever the dropdown loses focus.',
         },
       },
-      underlyingHtmlElements: ['button'],
+      underlyingAttrLists: ['accessibility', 'form'],
     },
   },
   decorators: [webComponentDecorator],
