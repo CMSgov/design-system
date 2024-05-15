@@ -3,7 +3,7 @@ import { webComponentDecorator } from '../storybook';
 import './ds-inline-error';
 
 export default {
-  title: 'Web Components/InlineError',
+  title: 'Web Components/ds-inline-error',
   argTypes: {
     'text content': {
       control: 'text',

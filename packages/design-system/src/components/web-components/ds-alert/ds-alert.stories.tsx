@@ -3,7 +3,7 @@ import { webComponentDecorator } from '../storybook';
 import './ds-alert';
 
 export default {
-  title: 'Web Components/Alert',
+  title: 'Web Components/ds-alert',
   argTypes: {
     children: {
       table: {

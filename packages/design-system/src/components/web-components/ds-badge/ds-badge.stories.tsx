@@ -3,7 +3,7 @@ import { webComponentDecorator } from '../storybook';
 import './ds-badge';
 
 export default {
-  title: 'Web Components/Badge',
+  title: 'Web Components/ds-badge',
   argTypes: {
     children: {
       table: {
