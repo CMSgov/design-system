@@ -43,7 +43,7 @@ function writeCdnIndex() {
   const theme = 'core';
 
   const packageSections = Object.keys(themes).map((theme) => {
-    const { displayName, packageName } = themes[theme as keyof typeof themes];
+    const { packageName } = themes[theme as keyof typeof themes];
     const versions = packageVersions[packageName as keyof typeof packageVersions];
 
     const renderItem = (version: string) => `
