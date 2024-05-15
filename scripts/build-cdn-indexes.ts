@@ -45,8 +45,6 @@ function writeCdnIndex() {
   const packageSections = Object.keys(themes).map((theme) => {
     const { displayName, packageName } = themes[theme as keyof typeof themes];
     const versions = packageVersions[packageName as keyof typeof packageVersions];
-    const officialVersions = versions.filter((version) => !version.includes('beta'));
-    const betaVersions = versions.filter((version) => version.includes('beta'));
 
     const renderItem = (version: string) => `
       <li>
@@ -55,22 +53,11 @@ function writeCdnIndex() {
     `;
 
     return `
-      <section class="ds-u-margin-top--2">
-        <h2>${displayName} (@cmsgov/${packageName})</h2>
-        <div class="ds-l-row">
-          <div class="ds-l-sm-col--6">
-            <h3>Official releases</h3>
-            <ul>
-              ${officialVersions.map(renderItem).join('\n')}
-            </ul>
-          </div>
-          <div class="ds-l-sm-col--6">
-            <h3>Pre-releases</h3>
-            <ul>
-              ${betaVersions.map(renderItem).join('\n')}
-            </ul>
-          </div>
-        </div>
+      <section class="ds-u-margin-top--3 ds-u-measure--wide">
+        <h2>${packageName}</h2>
+        <ul style="column-count: 4; display: block">
+          ${versions.map(renderItem).join('\n')}
+        </ul>
       </section>
     `;
   });
