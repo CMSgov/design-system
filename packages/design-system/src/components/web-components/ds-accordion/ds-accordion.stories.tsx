@@ -4,7 +4,7 @@ import './ds-accordion';
 import './ds-accordion-item';
 
 export default {
-  title: 'Web Components/Accordion',
+  title: 'Web Components/ds-accordion',
   argTypes: {
     children: {
       table: {

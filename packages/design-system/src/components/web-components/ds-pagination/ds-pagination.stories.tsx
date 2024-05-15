@@ -6,7 +6,7 @@ import { useArgs } from '@storybook/preview-api';
 import './ds-pagination';
 
 export default {
-  title: 'Web Components/Pagination',
+  title: 'Web Components/ds-pagination',
   argTypes: {
     'class-name': {
       description: 'Additional classes to be added to the root element. Optional.',

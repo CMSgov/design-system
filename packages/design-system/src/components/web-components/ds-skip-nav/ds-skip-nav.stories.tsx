@@ -3,7 +3,7 @@ import { webComponentDecorator } from '../storybook';
 import './ds-skip-nav';
 
 export default {
-  title: 'Web Components/SkipNav',
+  title: 'Web Components/ds-skip-nav',
   argTypes: {
     'text content': {
       control: 'text',
