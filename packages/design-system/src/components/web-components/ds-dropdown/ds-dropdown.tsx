@@ -2,6 +2,7 @@ import type * as React from 'react';
 import { define } from '../preactement/define';
 import { Dropdown, DropdownProps } from '../../Dropdown';
 import { parseBooleanAttr } from '../wrapperUtils';
+import { ariaAttrs } from '../shared-attributes/accessibility';
 import { formAttrs } from '../shared-attributes/form';
 
 const attributes = [
@@ -19,6 +20,7 @@ const attributes = [
   'root-id',
   'size',
   'value',
+  ...ariaAttrs,
   ...formAttrs,
 ] as const;
 

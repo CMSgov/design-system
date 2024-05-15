@@ -2,6 +2,7 @@ import type * as React from 'react';
 import { define } from '../preactement/define';
 import { Choice, ChoiceProps } from '../../ChoiceList/Choice';
 import { parseBooleanAttr } from '../wrapperUtils';
+import { ariaAttrs } from '../shared-attributes/accessibility';
 import { formAttrs } from '../shared-attributes/form';
 
 const attributes = [
@@ -18,6 +19,7 @@ const attributes = [
   'type',
   'unchecked-children',
   'value',
+  ...ariaAttrs,
   ...formAttrs,
 ] as const;
 
