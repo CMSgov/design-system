@@ -10,7 +10,7 @@ import { Language } from '../i18n';
 
 export interface UtagObject {
   link: (params: AnalyticsEvent) => void;
-  gdpr: {
+  gdpr?: {
     showConsentPreferences: (lang: Language) => any;
   };
 }

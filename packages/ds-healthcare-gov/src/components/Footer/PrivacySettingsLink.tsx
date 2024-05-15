@@ -10,7 +10,7 @@ interface PrivacySettingsLinkProps {
 export const PrivacySettingsLink = (props: PrivacySettingsLinkProps) => (
   <button
     className={props.className}
-    onClick={() => (window as UtagContainer).utag?.gdpr.showConsentPreferences(getLanguage())}
+    onClick={() => (window as UtagContainer).utag?.gdpr?.showConsentPreferences(getLanguage())}
   >
     {props.children || t('footer.privacySettings')}
   </button>
