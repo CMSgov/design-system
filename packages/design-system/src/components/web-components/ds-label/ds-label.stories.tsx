@@ -3,7 +3,7 @@ import { webComponentDecorator } from '../storybook';
 import './ds-label';
 
 export default {
-  title: 'Web Components/Label',
+  title: 'Web Components/ds-label',
   argTypes: {
     'text content': {
       control: 'text',

@@ -5,7 +5,7 @@ import './ds-button';
 import { webComponentDecorator } from '../storybook';
 
 export default {
-  title: 'Web Components/Button',
+  title: 'Web Components/ds-button',
   argTypes: {
     'class-name': {
       description: 'Additional classes to be added to the root button element.',
