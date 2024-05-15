@@ -1,4 +1,4 @@
-import { ArgsTable, Description, Primary, Subtitle, Title } from '@storybook/blocks';
+import { ArgTypes, Description, Primary, Subtitle, Title } from '@storybook/blocks';
 import { useState } from 'react';
 import { HelpDrawer } from './HelpDrawer';
 import { Button } from '../Button';
@@ -30,7 +30,7 @@ const meta: Meta<typeof HelpDrawer> = {
           <Subtitle />
           <Description />
           <Primary />
-          <ArgsTable exclude={['backdropClickExits']} />
+          <ArgTypes exclude={['backdropClickExits']} />
         </>
       ),
     },

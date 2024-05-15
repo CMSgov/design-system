@@ -1,5 +1,5 @@
 import { test, expect, BrowserContext, Page } from '@playwright/test';
-import { stories as storiesObject } from '../../storybook-static/stories.json';
+import { entries as storiesObject } from '../../storybook-static/index.json';
 import themes from '../../themes.json';
 import expectNoAxeViolations from './expectNoAxeViolations';
 

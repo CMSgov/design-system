@@ -1,6 +1,6 @@
 import IdleTimeout from './IdleTimeout';
 import IdleTimeoutDialog from './IdleTimeoutDialog';
-import { Title, Subtitle, Description, ArgsTable } from '@storybook/blocks';
+import { Title, Subtitle, Description, ArgTypes } from '@storybook/blocks';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
@@ -10,7 +10,7 @@ const DocsPage = () => (
     <Title />
     <Subtitle />
     <Description />
-    <ArgsTable />
+    <ArgTypes of={IdleTimeout} />
   </>
 );
 
