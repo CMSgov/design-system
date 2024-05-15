@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions';
 import './ds-accordion-item';
 
 export default {
-  title: 'Web Components/AccordionItem',
+  title: 'Web Components/ds-accordion-item',
   argTypes: {
     children: {
       table: {

@@ -3,7 +3,7 @@ import { webComponentDecorator } from '../storybook';
 import './ds-hint';
 
 export default {
-  title: 'Web Components/Hint',
+  title: 'Web Components/ds-hint',
   argTypes: {
     'text content': {
       control: 'text',

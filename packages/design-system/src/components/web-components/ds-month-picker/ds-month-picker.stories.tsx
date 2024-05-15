@@ -13,7 +13,7 @@ const elements = (
 );
 
 export default {
-  title: 'Web Components/Month Picker',
+  title: 'Web Components/ds-month-picker',
   argTypes: {
     children: { control: false },
     'button-variation': {

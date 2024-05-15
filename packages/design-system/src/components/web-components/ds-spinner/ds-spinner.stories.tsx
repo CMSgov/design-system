@@ -3,7 +3,7 @@ import { webComponentDecorator } from '../storybook';
 import './ds-spinner';
 
 export default {
-  title: 'Web Components/Spinner',
+  title: 'Web Components/ds-spinner',
   argTypes: {
     'aria-valuetext': {
       control: 'text',
