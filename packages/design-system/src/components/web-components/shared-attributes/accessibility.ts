@@ -47,4 +47,4 @@ export const ariaAttrs = [
   'aria-valuemin',
   'aria-valuenow',
   'aria-valuetext',
-];
+] as const;

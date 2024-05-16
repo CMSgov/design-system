@@ -4,4 +4,4 @@ export const analyticsAttrs = [
   'analytics-event-type-override',
   'analytics-parent-heading',
   'analytics-parent-type',
-];
+] as const;
