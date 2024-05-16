@@ -6,8 +6,13 @@
  * - coverage-tools-frontend/src/helpers/objectUtilities.ts
  */
 
+import { Language } from '../i18n';
+
 export interface UtagObject {
   link: (params: AnalyticsEvent) => void;
+  gdpr?: {
+    showConsentPreferences: (lang: Language) => any;
+  };
 }
 
 export interface UtagContainer {
