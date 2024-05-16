@@ -136,7 +136,7 @@ export default {
           description: 'Dispatched whenever the choice loses focus.',
         },
       },
-      underlyingHtmlElements: ['input'],
+      sharedAttrLists: ['form'],
     },
   },
   decorators: [webComponentDecorator],

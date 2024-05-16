@@ -126,6 +126,7 @@ export default {
             'A callback function that\'s invoked when the "Select all" button is pressed.',
         },
       },
+      sharedAttrLists: ['form'],
     },
   },
   decorators: [webComponentDecorator],

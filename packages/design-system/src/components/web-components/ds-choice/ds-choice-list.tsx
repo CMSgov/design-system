@@ -5,26 +5,18 @@ import { ChoiceList, ChoiceListProps, ChoiceListType } from '../../ChoiceList/Ch
 import { parseBooleanAttr } from '../wrapperUtils';
 import { ChoiceProps } from '../../ChoiceList/Choice';
 import { findElementsOfType } from '../../utilities/findElementsOfType';
+import { formAttrs } from '../shared-attributes/form';
 
 const attributes = [
   'choices',
   'class-name',
   'disabled',
-  'error-id',
-  'error-message-class-name',
-  'error-message',
-  'error-placement',
-  'hint-id',
-  'hint',
   'inversed',
-  'label-class-name',
-  'label-id',
-  'label',
   'name',
-  'requirement-label',
   'root-id',
   'size',
   'type',
+  ...formAttrs,
 ] as const;
 
 /* eslint-disable @typescript-eslint/no-namespace */
