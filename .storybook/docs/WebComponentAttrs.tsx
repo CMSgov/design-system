@@ -19,7 +19,7 @@ export const WebComponentAttrs = ({ of }) => {
     return null;
   }
 
-  const elements = resolvedOf.story.parameters?.docs?.underlyingAttrLists;
+  const elements = resolvedOf.story.parameters?.docs?.sharedAttrLists;
   if (!elements) {
     return null;
   }
