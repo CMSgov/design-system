@@ -32,7 +32,6 @@ export default {
       description: {
         component: `For information about how and when to use this component, [refer to its full documentation page](https://design.cms.gov/components/label/).`,
       },
-      underlyingHtmlElements: ['label'],
     },
   },
   decorators: [webComponentDecorator],

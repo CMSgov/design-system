@@ -123,6 +123,7 @@ export default {
             'Called when any choice is blurred and the focus does not land on one of the other choices inside this component (e.g., when the whole component loses focus).',
         },
       },
+      sharedAttrLists: ['form'],
     },
   },
   decorators: [webComponentDecorator],
