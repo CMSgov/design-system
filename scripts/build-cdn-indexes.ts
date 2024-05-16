@@ -17,14 +17,14 @@ function renderPageHtml(theme: keyof typeof themes, title: string, mainContent: 
   const version = packageVersions[system as keyof typeof packageVersions][0];
   return `<!DOCTYPE html>
   <html lang="en">
-    <meta charset="utf-8" />
     <head>
-      <meta name=“viewport” content=“width=device-width, initial-scale=1, shrink-to-fit=no”>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <title>${title} - CMSDS</title>
       <link rel="stylesheet" href="https://design.cms.gov/cdn/${system}/${version}/css/index.css" />
       <link rel="stylesheet" href="https://design.cms.gov/cdn/${system}/${version}/css/${theme}-theme.css" />
     </head>
-    <body class="ds-content" style="margin: 0">
+    <body>
       <ds-usa-banner></ds-usa-banner>
       <header class="ds-base--inverse ds-u-padding-y--3">
         <div class="ds-l-container">
@@ -52,10 +52,12 @@ function writeCdnIndex() {
       </li>
     `;
 
+    const headingId = `heading-${packageName}`;
+
     return `
       <section class="ds-u-margin-top--3 ds-u-measure--wide">
-        <h2>${packageName}</h2>
-        <ul style="column-count: 4; display: block">
+        <h2 id="${headingId}">${packageName}</h2>
+        <ul aria-labelledby="${headingId}" style="column-count: 4; display: block">
           ${versions.map(renderItem).join('\n')}
         </ul>
       </section>
