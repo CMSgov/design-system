@@ -1,7 +1,7 @@
 [
   [
     "children",
-    "Hint text or HTML\nReactReactNode",
+    "Hint text or HTML\nReactNode",
     "-"
   ],
   [
@@ -21,7 +21,7 @@
   ],
   [
     "requirementLabel",
-    "Text showing the requirement (ie. \"Optional\", or \"Required\"). In most cases, this should be used to indicate which fields are optional. See the form guidelines for more info.\n\nReactReactNode",
+    "Text showing the requirement (ie. \"Optional\", or \"Required\"). In most cases, this should be used to indicate which fields are optional. See the form guidelines for more info.\n\nReactNode",
     "-"
   ]
 ]

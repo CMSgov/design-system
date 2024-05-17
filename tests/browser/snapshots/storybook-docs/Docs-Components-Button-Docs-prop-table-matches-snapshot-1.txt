@@ -29,7 +29,7 @@
   ],
   [
     "children*",
-    "Label text or HTML\nunion",
+    "Label text or HTML\nReactNode",
     "-"
   ],
   [
@@ -49,7 +49,7 @@
   ],
   [
     "inputRef",
-    "Access a reference to the button or a element\nunion",
+    "Access a reference to the button or a element\nButtonRef",
     "-"
   ],
   [
@@ -59,7 +59,7 @@
   ],
   [
     "onAnalyticsEvent",
-    "Optional callback that will intercept analytics events for this component. If none is specified, the design system will use the default analytics function, which can be overwritten globally with the defaultAnalyticsFunction config property.\n\nsendLinkEvent",
+    "Optional callback that will intercept analytics events for this component. If none is specified, the design system will use the default analytics function, which can be overwritten globally with the defaultAnalyticsFunction config property.\n\n(event: AnalyticsEvent) => void",
     "-"
   ],
   [
@@ -73,18 +73,23 @@
     "false"
   ],
   [
+    "ref",
+    "Ref<HTMLButtonElement> & Ref<HTMLAnchorElement>",
+    "-"
+  ],
+  [
     "size",
-    "union",
+    "\"big\"\n\"small\"",
     "-"
   ],
   [
     "type",
-    "Button type attribute\nReactComponentProps['type']",
-    "'button'"
+    "Button type attribute\n\"button\"\n\"submit\"\n\"reset\"",
+    "\"'button' as const\""
   ],
   [
     "variation",
-    "A string corresponding to Button variation classes.\nunion",
+    "A string corresponding to Button variation classes.\n\"solid\"\n\"ghost\"",
     "-"
   ]
 ]

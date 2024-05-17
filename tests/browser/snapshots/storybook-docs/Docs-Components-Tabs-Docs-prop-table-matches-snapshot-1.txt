@@ -1,7 +1,7 @@
 [
   [
     "children*",
-    "Must only contain TabPanel components\nReactReactNode",
+    "Must only contain TabPanel components\nReactNode",
     "-"
   ],
   [

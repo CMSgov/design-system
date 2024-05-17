@@ -16,7 +16,7 @@
   ],
   [
     "component",
-    "When provided, this will render the passed in component for all VerticalNavItems. This is useful when integrating with React Router's <Link> or using your own custom component. If more specific control is needed, each VerticalNavItem object also accepts a component prop.\n\nunion",
+    "When provided, this will render the passed in component for all VerticalNavItems. This is useful when integrating with React Router's <Link> or using your own custom component. If more specific control is needed, each VerticalNavItem object also accepts a component prop.\n\nany",
     "-"
   ],
   [
@@ -36,7 +36,7 @@
   ],
   [
     "onLinkClick",
-    "Called when one of the nav links is clicked, with the following arguments: SyntheticEvent, id, url\n\n(evt: React.MouseEvent | React.KeyboardEvent, id: string, url: string) => any",
+    "Called when one of the nav links is clicked, with the following arguments: SyntheticEvent, id, url\n\n(evt: MouseEvent<Element, MouseEvent> | KeyboardEvent<Element>, id: string, url: string) => any",
     "-"
   ],
   [

@@ -26,7 +26,7 @@
   ],
   [
     "size",
-    "Sets the size of the chip to larger version.\nliteral",
+    "Sets the size of the chip to larger version.\n\"big\"",
     "-"
   ],
   [

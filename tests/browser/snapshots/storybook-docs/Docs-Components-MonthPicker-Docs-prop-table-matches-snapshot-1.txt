@@ -1,12 +1,7 @@
 [
   [
     "buttonVariation",
-    "Variation string to be applied to buttons. See Button component\nunion",
-    "-"
-  ],
-  [
-    "children",
-    "ReactReactNode",
+    "Variation string to be applied to buttons. See Button component\n\"solid\"\n\"ghost\"",
     "-"
   ],
   [
@@ -30,13 +25,33 @@
     "-"
   ],
   [
+    "errorId",
+    "The ID of the error message applied to this field. If none is provided, the id will be derived from the id prop for the field.\n\nstring",
+    "-"
+  ],
+  [
     "errorMessage",
-    "-",
+    "Enable the error state by providing an error message.\nReactNode",
+    "-"
+  ],
+  [
+    "errorMessageClassName",
+    "Additional classes to be added to the error message\nstring",
+    "-"
+  ],
+  [
+    "errorPlacement",
+    "Location of the error message relative to the field input\n\"top\"\n\"bottom\"",
     "-"
   ],
   [
     "hint",
-    "string",
+    "Additional hint text to display\nReactNode",
+    "-"
+  ],
+  [
+    "hintId",
+    "The ID of the hint element\nstring",
     "-"
   ],
   [
@@ -50,13 +65,28 @@
     "-"
   ],
   [
+    "label*",
+    "Label for the field.\nReactNode",
+    "-"
+  ],
+  [
+    "labelClassName",
+    "Additional classes to be added to the label\nstring",
+    "-"
+  ],
+  [
+    "labelId",
+    "A unique id to be used on the field label. If one isn't provided, a unique ID will be generated.\n\nstring",
+    "-"
+  ],
+  [
     "name*",
     "The input field's name attribute\nstring",
     "-"
   ],
   [
     "onChange",
-    "A callback function that's invoked when a month's checked state is changed. Note: This callback is not called when a month is selected or deselected via the \"Select all\" or \"Clear all\" buttons – use the onSelectAll and onClearAll event handlers for those instances.\n\n(event: React.ChangeEvent<HTMLInputElement>) => any",
+    "A callback function that's invoked when a month's checked state is changed. Note: This callback is not called when a month is selected or deselected via the \"Select all\" or \"Clear all\" buttons – use the onSelectAll and onClearAll event handlers for those instances.\n\n(event: ChangeEvent<HTMLInputElement>) => any",
     "-"
   ],
   [
@@ -71,7 +101,7 @@
   ],
   [
     "requirementLabel",
-    "-",
+    "Text showing the requirement (\"Required\", \"Optional\", etc.). See Required and Optional Fields.\nReactNode",
     "-"
   ],
   [

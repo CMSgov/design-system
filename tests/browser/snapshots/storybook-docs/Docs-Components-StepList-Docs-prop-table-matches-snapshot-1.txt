@@ -12,7 +12,7 @@
   [
     "completedText",
     "string",
-    "'Completed'"
+    "\"Completed\""
   ],
   [
     "component",
@@ -21,7 +21,7 @@
   ],
   [
     "component",
-    "When provided, this will render the passed in component for all link elements. This is useful when integrating with React Router's <Link> or using your own custom component. If more specific control is needed, each step object also accepts a component prop.\n\nStepLinkProps['component']",
+    "When provided, this will render the passed in component for all link elements. This is useful when integrating with React Router's <Link> or using your own custom component. If more specific control is needed, each step object also accepts a component prop.\n\nComponentType<StepLinkComponentProps> | keyof IntrinsicElements",
     "-"
   ],
   [
@@ -32,7 +32,7 @@
   [
     "editText",
     "string",
-    "'Edit'"
+    "\"Edit\""
   ],
   [
     "heading (required)",
@@ -71,13 +71,13 @@
   ],
   [
     "onStepLinkClick",
-    "Function called when a step's Edit, Start, or Resume button/link is clicked. The step's href property will be passed as a parameter.\n\nStepLinkProps['onClick']",
+    "Function called when a step's Edit, Start, or Resume button/link is clicked. The step's href property will be passed as a parameter.\n\n(href?: string, stepId?: string) => any",
     "-"
   ],
   [
     "resumeText",
     "string",
-    "'Resume'"
+    "\"Resume\""
   ],
   [
     "showSubSubSteps",
@@ -87,7 +87,7 @@
   [
     "startText",
     "string",
-    "'Start'"
+    "\"Start\""
   ],
   [
     "started",

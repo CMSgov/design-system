@@ -1,12 +1,1 @@
-[
-  [
-    "className",
-    "string",
-    "-"
-  ],
-  [
-    "variation",
-    "union",
-    "-"
-  ]
-]
+no args table

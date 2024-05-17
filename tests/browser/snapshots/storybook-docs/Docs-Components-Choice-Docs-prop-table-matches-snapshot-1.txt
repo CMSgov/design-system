@@ -6,7 +6,7 @@
   ],
   [
     "checkedChildren",
-    "Content to be shown when the choice is checked. See Checked children and the expose within pattern on the Guidance tab for detailed instructions.\n\nReactReactNode",
+    "Content to be shown when the choice is checked. See Checked children and the expose within pattern on the Guidance tab for detailed instructions.\n\nReactNode",
     "-"
   ],
   [
@@ -25,13 +25,28 @@
     "-"
   ],
   [
+    "errorId",
+    "The ID of the error message applied to this field. If none is provided, the id will be derived from the id prop for the field.\n\nstring",
+    "-"
+  ],
+  [
     "errorMessage",
-    "string",
+    "Enable the error state by providing an error message.\nReactNode",
+    "-"
+  ],
+  [
+    "errorMessageClassName",
+    "Additional classes to be added to the error message\nstring",
     "-"
   ],
   [
     "hint",
-    "string",
+    "Additional hint text to display\nReactNode",
+    "-"
+  ],
+  [
+    "hintId",
+    "The ID of the hint element\nstring",
     "-"
   ],
   [
@@ -55,8 +70,18 @@
     "-"
   ],
   [
-    "label",
-    "string",
+    "label*",
+    "Label for the field.\nReactNode",
+    "-"
+  ],
+  [
+    "labelClassName",
+    "Additional classes to be added to the label\nstring",
+    "-"
+  ],
+  [
+    "labelId",
+    "A unique id to be used on the field label. If one isn't provided, a unique ID will be generated.\n\nstring",
     "-"
   ],
   [
@@ -71,32 +96,37 @@
   ],
   [
     "onChange",
-    "(event: React.ChangeEvent<HTMLInputElement>) => any",
+    "(event: ChangeEvent<HTMLInputElement>) => any",
+    "-"
+  ],
+  [
+    "ref",
+    "Ref<HTMLInputElement>",
     "-"
   ],
   [
     "requirementLabel",
-    "-",
+    "Text showing the requirement (\"Required\", \"Optional\", etc.). See Required and Optional Fields.\nReactNode",
     "-"
   ],
   [
     "size",
-    "literal",
+    "\"small\"",
     "-"
   ],
   [
     "type*",
-    "Sets the type to render checkbox fields or radio buttons\nunion",
+    "Sets the type to render checkbox fields or radio buttons\n\"checkbox\"\n\"radio\"",
     "-"
   ],
   [
     "uncheckedChildren",
-    "Content to be shown when the choice is not checked\nReactReactNode",
+    "Content to be shown when the choice is not checked\nReactNode",
     "-"
   ],
   [
     "value*",
-    "The input value attribute\nunion",
+    "The input value attribute\nChoiceValue",
     "-"
   ]
 ]

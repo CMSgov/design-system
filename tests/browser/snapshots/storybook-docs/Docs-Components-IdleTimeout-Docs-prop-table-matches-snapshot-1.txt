@@ -1,27 +1,27 @@
 [
   [
     "continueSessionText",
-    "The text for the 'continue session' button in warning dialog.\nReactReactNode",
+    "The text for the 'continue session' button in warning dialog.\nReactNode",
     "t('idleTimeoutDialog.continueSessionButtonText')"
   ],
   [
     "endSessionButtonText",
-    "The text for the button that ends the session in warning dialog.\nReactReactNode",
+    "The text for the button that ends the session in warning dialog.\nReactNode",
     "t('idleTimeoutDialog.endSessionButtonText')"
   ],
   [
     "endSessionUrl",
     "The URL to direct to when the user intentionally ends the session.\nstring",
-    "'/logout'"
+    "\"/logout\""
   ],
   [
     "formatMessage",
-    "A formatting function that returns the string to be used in the warning modal. The formatting function is provided the timeTilTimeout (in minutes).\n\n(timeTilTimeout: number) => React.ReactNode",
+    "A formatting function that returns the string to be used in the warning modal. The formatting function is provided the timeTilTimeout (in minutes).\n\n(timeTilTimeout: number) => ReactNode",
     "(timeTilTimeout: number): React.ReactNode => { const unitOfTime = timeTilTimeout === 1 ? t('idleTimeoutDialog.min') : t('idleTimeoutDialog.mins'); return ( <p> {t('idleTimeoutDialog.messageLine1')} <br /> {t('idleTimeoutDialog.messageLine2')} <strong> {timeTilTimeout} {unitOfTime} </strong> . <br /> <br /> {t('idleTimeoutDialog.continueSessionMessage')} </p> ); }"
   ],
   [
     "heading",
-    "The heading text for the warning dialog.\nReactReactNode",
+    "The heading text for the warning dialog.\nReactNode",
     "t('idleTimeoutDialog.heading')"
   ],
   [

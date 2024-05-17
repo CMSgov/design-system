@@ -1,18 +1,30 @@
 [
   [
-    "children*",
-    "Label text or HTML.\nReactReactNode",
-    "-"
+    "Deprecated: Hints are now their own component called `Hint`."
   ],
   [
-    "className",
-    "Additional classes to be added to the root element.\nstring",
-    "-"
+    "Deprecated: Hints are now their own component called `Hint`."
+  ],
+  [
+    "Deprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`"
+  ],
+  [
+    "Deprecated: The Label is no longer responsible for rendering the error element from a string. A InlineError should be passed to it which already has an errorId applied."
   ],
   [
     "component",
-    "The root HTML element used to render the label\nunion",
-    "'label'"
+    "The root HTML element used to render the label\n\"label\"\n\"legend\"",
+    "\"label\""
+  ],
+  [
+    "errorId",
+    "string\nDeprecated: The Label is no longer responsible for rendering the error element from a string. A InlineError should be passed to it which already has an errorId applied.",
+    "-"
+  ],
+  [
+    "errorMessage",
+    "ReactNode\nDeprecated: Hints are now their own component called `Hint`.",
+    "-"
   ],
   [
     "fieldId",
@@ -20,13 +32,28 @@
     "-"
   ],
   [
-    "id",
-    "A unique id for the label element. Useful for referencing the label from other components with aria-describedby.\n\nstring",
+    "hint",
+    "ReactNode\nDeprecated: Hints are now their own component called `Hint`.",
+    "-"
+  ],
+  [
+    "hintId",
+    "string\nDeprecated: Please render your error message directly with the 'InlineError' component instead of passing to `Label`",
     "-"
   ],
   [
     "inversed",
     "Set to true to apply the \"inverse\" theme\nboolean",
+    "-"
+  ],
+  [
+    "ref",
+    "Ref<HTMLLabelElement> & Ref<HTMLLegendElement>",
+    "-"
+  ],
+  [
+    "requirementLabel",
+    "Text showing the requirement (\"Required\", \"Optional\", etc.). See Required and Optional Fields.\nReactNode",
     "-"
   ]
 ]

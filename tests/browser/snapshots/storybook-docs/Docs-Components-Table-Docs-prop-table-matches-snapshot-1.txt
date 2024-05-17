@@ -6,7 +6,7 @@
   ],
   [
     "children*",
-    "The table contents, usually TableCaption, TableHead and TableBody.\nReactReactNode",
+    "The table contents, usually TableCaption, TableHead and TableBody.\nReactNode",
     "-"
   ],
   [
@@ -20,18 +20,13 @@
     "-"
   ],
   [
-    "id",
-    "A unique ID prefix for all the table caption elements.\nstring",
-    "-"
-  ],
-  [
     "scrollable",
     "Applies a horizontal scrollbar and scrollable notice on TableCaption when the Table's contents exceed the container width.\nboolean",
     "-"
   ],
   [
     "scrollableNotice",
-    "Additional text or content to display when the horizontal scrollbar is visible to give the user notice of the scroll behavior. This prop will only be used when the Table scrollable prop is set and the table width is wider than the viewport.\n\nReactReactNode",
+    "Additional text or content to display when the horizontal scrollbar is visible to give the user notice of the scroll behavior. This prop will only be used when the Table scrollable prop is set and the table width is wider than the viewport.\n\nReactNode",
     "<Alert />"
   ],
   [
@@ -41,8 +36,8 @@
   ],
   [
     "stackableBreakpoint",
-    "Applies responsive styles to vertically stacked rows at different viewport sizes.\nunion",
-    "'sm'"
+    "Applies responsive styles to vertically stacked rows at different viewport sizes.\n\"sm\"\n\"md\"\n\"lg\"",
+    "\"sm\""
   ],
   [
     "striped",

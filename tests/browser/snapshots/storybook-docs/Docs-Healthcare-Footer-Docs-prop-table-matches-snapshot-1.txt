@@ -6,7 +6,7 @@
   ],
   [
     "footerTop",
-    "Element to be added to display content for top footer section changes\nReactReactNode",
+    "Element to be added to display content for top footer section changes\nReactNode",
     "-"
   ],
   [

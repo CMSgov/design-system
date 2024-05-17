@@ -1,7 +1,7 @@
 [
   [
     "children",
-    "Skip nav label\nReactReactNode",
+    "Skip nav label\nReactNode",
     "-"
   ],
   [

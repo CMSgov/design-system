@@ -1,7 +1,7 @@
 [
   [
     "children",
-    "Content to be displayed inside the card\nReactReactNode",
+    "Content to be displayed inside the card\nReactNode",
     "-"
   ],
   [

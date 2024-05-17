@@ -16,7 +16,7 @@
   [
     "autoCompleteLabel",
     "Control the TextField autocomplete attribute. Defaults to \"off\" to support accessibility. Read more.\nstring",
-    "'off'"
+    "\"off\""
   ],
   [
     "autoFocus",
@@ -25,7 +25,7 @@
   ],
   [
     "children*",
-    "Must contain a TextField component\nReactReactNode",
+    "Must contain a TextField component\nReactNode",
     "-"
   ],
   [
@@ -35,7 +35,7 @@
   ],
   [
     "clearInputText",
-    "Text rendered on the page if clearInput prop is passed. Default is \"Clear search\".\nReactReactNode",
+    "Text rendered on the page if clearInput prop is passed. Default is \"Clear search\".\nReactNode",
     "-"
   ],
   [
@@ -75,7 +75,7 @@
   ],
   [
     "label",
-    "Adds a heading to the top of the autocomplete list. This can be used to convey to the user that they're required to select an option from the autocomplete list.\nReactReactNode",
+    "Adds a heading to the top of the autocomplete list. This can be used to convey to the user that they're required to select an option from the autocomplete list.\nReactNode",
     "-"
   ],
   [
@@ -90,12 +90,12 @@
   ],
   [
     "loadingMessage",
-    "Message users will see when the loading prop is passed to Autocomplete.\nReactReactNode",
+    "Message users will see when the loading prop is passed to Autocomplete.\nReactNode",
     "-"
   ],
   [
     "noResultsMessage",
-    "Message users will see when the items array returns empty and the loading prop is passed to <Autocomplete />.\nReactReactNode",
+    "Message users will see when the items array returns empty and the loading prop is passed to <Autocomplete />.\nReactNode",
     "-"
   ],
   [

@@ -23,33 +23,28 @@
     "-"
   ],
   [
-    "children*",
-    "ReactReactNode",
-    "-"
-  ],
-  [
     "className",
     "string",
     "-"
   ],
   [
     "closeButtonText",
-    "ReactReactNode",
+    "ReactNode",
     "-"
   ],
   [
     "closeButtonVariation",
-    "union",
+    "\"solid\"\n\"ghost\"",
     "-"
   ],
   [
     "footerBody",
-    "ReactReactNode",
+    "ReactNode",
     "-"
   ],
   [
     "footerTitle",
-    "ReactReactNode",
+    "ReactNode",
     "-"
   ],
   [
@@ -59,7 +54,7 @@
   ],
   [
     "heading*",
-    "Text for the Drawer heading. Required because the heading will be focused on mount.\nReactReactNode",
+    "Text for the Drawer heading. Required because the heading will be focused on mount.\nReactNode",
     "-"
   ],
   [
@@ -69,12 +64,12 @@
   ],
   [
     "headingLevel",
-    "Heading type to override default <h3>\nunion",
+    "Heading type to override default <h3>\n\"1\"\n\"2\"\n\"3\"\n\"4\"\n\"5\"",
     "-"
   ],
   [
     "headingRef",
-    "Ref to heading element\nReactMutableRefObject",
+    "Ref to heading element\nMutableRefObject<any>",
     "-"
   ],
   [
@@ -94,12 +89,12 @@
   ],
   [
     "onAnalyticsEvent",
-    "Optional callback that will intercept analytics events for this component. If none is specified, the design system will use the default analytics function, which can be overwritten globally with the defaultAnalyticsFunction config property.\n\nsendLinkEvent",
+    "Optional callback that will intercept analytics events for this component. If none is specified, the design system will use the default analytics function, which can be overwritten globally with the defaultAnalyticsFunction config property.\n\n(event: AnalyticsEvent) => void",
     "-"
   ],
   [
     "onCloseClick*",
-    "Called when the user activates the close button or presses the ESC key if focus trapping is enabled. The parent of this component is responsible for showing or not showing the drawer, so you need to use this callback to make that happen. The dialog does not hide itself.\n\n(event: React.MouseEvent | React.KeyboardEvent) => void",
+    "Called when the user activates the close button or presses the ESC key if focus trapping is enabled. The parent of this component is responsible for showing or not showing the drawer, so you need to use this callback to make that happen. The dialog does not hide itself.\n\n(event: MouseEvent<Element, MouseEvent> | KeyboardEvent<Element>) => void",
     "-"
   ]
 ]
