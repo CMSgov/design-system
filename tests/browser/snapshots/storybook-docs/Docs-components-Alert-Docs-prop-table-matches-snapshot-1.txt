@@ -81,10 +81,5 @@
     "variation",
     "A string corresponding to the Alert variation classes (error, warn, success)\n\"success\"\n\"warn\"\n\"error\"",
     "-"
-  ],
-  [
-    "weight",
-    "A string corresponding to the Alert weight classes (lightweight)\n\"lightweight\"",
-    "-"
   ]
 ]

@@ -43,6 +43,11 @@
     "-"
   ],
   [
+    "children",
+    "object",
+    "-"
+  ],
+  [
     "className",
     "Additional classes to be added to the root dialog element.\nstring",
     "-"
