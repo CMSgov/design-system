@@ -1,5 +1,5 @@
 import PrivacySettingsDialog from './PrivacySettingsDialog';
-import { Title, Subtitle, Description, ArgTypes } from '@storybook/blocks';
+import NoStoryDocTemplate from '../../../../../.storybook/docs/NoStoryDocTemplate.mdx';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof PrivacySettingsDialog> = {
@@ -12,14 +12,7 @@ const meta: Meta<typeof PrivacySettingsDialog> = {
   parameters: {
     docs: {
       // The dialog was overlapping the docs page, so customizing the docs page to remove the examples
-      page: () => (
-        <>
-          <Title />
-          <Subtitle />
-          <Description />
-          <ArgTypes of={PrivacySettingsDialog} />
-        </>
-      ),
+      page: NoStoryDocTemplate,
     },
   },
 };

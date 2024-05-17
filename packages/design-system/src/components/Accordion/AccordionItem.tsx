@@ -54,7 +54,7 @@ export interface AccordionItemState {
   isOpen?: boolean;
 }
 
-export const AccordionItem: React.FC<AccordionItemProps> = ({
+export const AccordionItem = ({
   buttonClassName,
   children,
   contentClassName,
@@ -67,7 +67,7 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
   onChange,
   closeIconComponent,
   openIconComponent,
-}) => {
+}: AccordionItemProps) => {
   const contentClasses = classNames('ds-c-accordion__content', contentClassName);
   const buttonClasses = classNames('ds-c-accordion__button', buttonClassName);
   const HeadingTag = `h${headingLevel}` as const;

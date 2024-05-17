@@ -1,4 +1,3 @@
-import { ArgTypes, Description, Subtitle, Title } from '@storybook/blocks';
 import { action } from '@storybook/addon-actions';
 import Drawer from './Drawer';
 import { Button } from '../Button';
@@ -7,7 +6,7 @@ import { useArgs } from '@storybook/preview-api';
 
 const meta: Meta<typeof Drawer> = {
   title: 'Components/Drawer',
-  component: Drawer as any,
+  component: Drawer,
   argTypes: {
     backdropClickExits: {
       // Until this pattern has solidified, we're not going to advertize this feature.
@@ -20,19 +19,6 @@ const meta: Meta<typeof Drawer> = {
     footerTitle: 'Footer Title',
     footerBody: <p className="ds-text-body--md ds-u-margin--0">Footer content</p>,
     heading: 'Drawer Heading',
-  },
-  // The Drawer was overlapping the docs page, so customizing the docs page to remove the examples
-  parameters: {
-    docs: {
-      page: () => (
-        <>
-          <Title />
-          <Subtitle />
-          <Description />
-          <ArgTypes exclude={['backdropClickExits']} />
-        </>
-      ),
-    },
   },
 };
 export default meta;
@@ -67,20 +53,7 @@ const drawerContent = (
   </>
 );
 
-export const DrawerDefault: Story = {
-  render: function Component(args) {
-    return <Drawer {...args}>{drawerContent}</Drawer>;
-  },
-};
-export const DrawerWithStickyPositioning: Story = {
-  ...DrawerDefault,
-  args: {
-    isFooterSticky: true,
-    isHeaderSticky: true,
-  },
-};
-
-export const DrawerToggleWithDrawer: Story = {
+export const Default: Story = {
   render: function Component() {
     const [{ isDrawerVisible, ...args }, updateArgs] = useArgs();
     const showDrawer = () => updateArgs({ isDrawerVisible: true });
@@ -102,7 +75,7 @@ export const DrawerToggleWithDrawer: Story = {
           {drawerContent}
         </Drawer>
         <Button className="ds-c-drawer__toggle" variation="ghost" onClick={showDrawer}>
-          Drawer Toggle
+          Click to toggle drawer
         </Button>
       </>
     );

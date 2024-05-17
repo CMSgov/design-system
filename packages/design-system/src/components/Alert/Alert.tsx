@@ -68,7 +68,7 @@ export type AlertProps = BaseAlertProps &
  * For information about how and when to use this component,
  * [refer to its full documentation page](https://design.cms.gov/components/alert/).
  */
-export const Alert: React.FC<AlertProps> = (props: AlertProps) => {
+export const Alert = (props: AlertProps) => {
   const { headingRef, bodyRef } = useAlertAnalytics(props);
   const focusRef = useAutofocus(props.autoFocus);
   const rootId = useId('alert--', props.id);

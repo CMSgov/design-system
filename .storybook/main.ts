@@ -21,6 +21,9 @@ const config: StorybookConfig = {
     `../packages/docs/content/**/${extensionGlob}`,
   ],
   staticDirs: ['../packages/design-system-tokens/dist/css-vars'],
+  typescript: {
+    reactDocgen: 'react-docgen-typescript',
+  },
   framework: {
     name: getAbsolutePath('@storybook/react-webpack5'),
     options: {},

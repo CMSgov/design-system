@@ -1,5 +1,4 @@
 import type * as React from 'react';
-import { FunctionComponent } from 'react';
 import classNames from 'classnames';
 
 export type TextInputDefaultValue = string | number;
@@ -79,7 +78,7 @@ export type SingleLineTextInputProps = TextInputProps;
  * `<TextInput>` is also exported for advanced design system use cases, where the internal component can be leveraged to build custom form components
  * As an internal component, it's subject to more breaking changes. Exercise caution using `<TextInput>` outside of those special cases
  */
-const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => {
+const TextInput = (props: TextInputProps) => {
   const {
     ariaLabel,
     fieldClassName,

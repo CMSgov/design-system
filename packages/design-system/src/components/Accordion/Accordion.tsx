@@ -1,5 +1,4 @@
 import type * as React from 'react';
-import { FunctionComponent } from 'react';
 import classNames from 'classnames';
 
 export interface AccordionProps {
@@ -21,11 +20,7 @@ export interface AccordionProps {
  * For information about how and when to use this component,
  * [refer to its full documentation page](https://design.cms.gov/components/accordion/).
  */
-export const Accordion: FunctionComponent<AccordionProps> = ({
-  bordered,
-  children,
-  className,
-}: AccordionProps) => {
+export const Accordion = ({ bordered, children, className }: AccordionProps) => {
   const classes = classNames('ds-c-accordion', bordered && 'ds-c-accordion--bordered', className);
   return <div className={classes}>{children}</div>;
 };

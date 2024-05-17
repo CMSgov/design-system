@@ -76,7 +76,7 @@
   ],
   [
     "placement",
-    "Placement of the tooltip body relative to the trigger. See the popperjs docs for more info.\n\"top\"\n\"auto\"\n\"auto-start\"\n\"auto-end\"\n\"bottom\"\n\"right\"\n\"left\"\n\"top-start\"\nShow 7 more...",
+    "Placement of the tooltip body relative to the trigger. See the popperjs docs for more info.\n\"top\"\n\"bottom\"\n\"auto\"\n\"auto-start\"\n\"auto-end\"\n\"right\"\n\"left\"\n\"top-start\"\nShow 7 more...",
     "\"top\""
   ],
   [
