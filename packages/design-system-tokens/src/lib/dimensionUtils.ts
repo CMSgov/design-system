@@ -6,7 +6,7 @@ export function pixelNumberToRem(pixels: number): string {
 }
 
 export function pixelNumberToEx(pixels: number): string {
-  return `${pixels / PIXELS_PER_EX}ex`;
+  return `${Math.round(pixels / PIXELS_PER_EX)}ex`;
 }
 
 export function dimensionToPixelNumber(tokenValue: string): number {
