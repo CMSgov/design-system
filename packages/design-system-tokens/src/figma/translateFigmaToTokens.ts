@@ -66,7 +66,13 @@ function tokenFromVariable(
   // translate from Figma.
   if ($type === 'number') {
     const remVars = ['lead-max-width', 'site-margins', 'site-margins-mobile', 'text-max-width'];
-    const pxVars = ['grid/gutter-width', 'grid/form-gutter-width', 'nav-width', 'site-max-width'];
+    const pxVars = [
+      'grid/gutter-width',
+      'grid/form-gutter-width',
+      'nav-width',
+      'site-max-width',
+      'article-max-width',
+    ];
     const name = valueInfo.aliasedVariable?.name ?? variable.name;
     let valueWithUnit;
 
@@ -91,11 +97,15 @@ function tokenFromVariable(
       // The number is a pixel value in Figma but `ex` in CSS
       $type = 'dimension';
       valueWithUnit = pixelNumberToEx($value as number);
+    } else if (name.startsWith('animation/speed')) {
+      // The number is a duration in milliseconds
+      $type = 'duration';
+      valueWithUnit = `${$value}ms`;
     }
 
     // We don't want to include the unit if this is an alias, otherwise we'd get values
     // like `"{radius.small}px", which is invalid.
-    if (!valueInfo.aliasedVariable) {
+    if (!valueInfo.aliasedVariable && valueWithUnit !== undefined) {
       $value = valueWithUnit;
     }
   }

@@ -3210,8 +3210,8 @@
     }
   },
   "article-max-width": {
-    "$type": "number",
-    "$value": 600,
+    "$type": "dimension",
+    "$value": "600px",
     "$description": "",
     "$extensions": {
       "com.figma": {
@@ -3382,7 +3382,7 @@
   "measure": {
     "narrow": {
       "$type": "dimension",
-      "$value": "44.96350364963504ex",
+      "$value": "45ex",
       "$description": "",
       "$extensions": {
         "com.figma": {
@@ -3396,7 +3396,7 @@
     },
     "base": {
       "$type": "dimension",
-      "$value": "65.05109489051095ex",
+      "$value": "65ex",
       "$description": "",
       "$extensions": {
         "com.figma": {
@@ -3586,7 +3586,7 @@
       }
     },
     "gutter-width": {
-      "$type": "number",
+      "$type": "dimension",
       "$value": "{spacer.4}",
       "$description": "",
       "$extensions": {
@@ -3601,7 +3601,7 @@
       }
     },
     "form-gutter-width": {
-      "$type": "number",
+      "$type": "dimension",
       "$value": "{spacer.2}",
       "$description": "",
       "$extensions": {
@@ -3619,8 +3619,8 @@
   "animation": {
     "speed": {
       "1": {
-        "$type": "number",
-        "$value": 250,
+        "$type": "duration",
+        "$value": "250ms",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -3631,8 +3631,8 @@
         }
       },
       "2": {
-        "$type": "number",
-        "$value": 300,
+        "$type": "duration",
+        "$value": "300ms",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -3643,8 +3643,8 @@
         }
       },
       "3": {
-        "$type": "number",
-        "$value": 500,
+        "$type": "duration",
+        "$value": "500ms",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -3655,8 +3655,8 @@
         }
       },
       "4": {
-        "$type": "number",
-        "$value": 800,
+        "$type": "duration",
+        "$value": "800ms",
         "$description": "",
         "$extensions": {
           "com.figma": {
