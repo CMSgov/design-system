@@ -3586,8 +3586,8 @@
       }
     },
     "gutter-width": {
-      "$type": "dimension",
-      "$value": "{spacer.4}px",
+      "$type": "number",
+      "$value": "{spacer.4}",
       "$description": "",
       "$extensions": {
         "com.figma": {
@@ -3601,8 +3601,8 @@
       }
     },
     "form-gutter-width": {
-      "$type": "dimension",
-      "$value": "{spacer.2}px",
+      "$type": "number",
+      "$value": "{spacer.2}",
       "$description": "",
       "$extensions": {
         "com.figma": {

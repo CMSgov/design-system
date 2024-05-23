@@ -20,19 +20,19 @@ function tokenValueFromVariable(
   variable: Variable,
   modeId: string,
   localVariables: { [id: string]: Variable }
-) {
+): { value: any; isAlias: boolean } {
   const value = variable.valuesByMode[modeId];
   if (typeof value === 'object') {
     if ('type' in value && value.type === 'VARIABLE_ALIAS') {
       const aliasedVariable = localVariables[value.id];
-      return `{${aliasedVariable.name.replace(/\//g, '.')}}`;
+      return { value: `{${aliasedVariable.name.replace(/\//g, '.')}}`, isAlias: true };
     } else if ('r' in value) {
-      return rgbToHex(value);
+      return { value: rgbToHex(value), isAlias: false };
     }
 
     throw new Error(`Format of variable value is invalid: ${value}`);
   } else {
-    return value;
+    return { value, isAlias: false };
   }
 }
 
@@ -41,8 +41,9 @@ function tokenFromVariable(
   modeId: string,
   localVariables: { [id: string]: Variable }
 ) {
+  const valueInfo = tokenValueFromVariable(variable, modeId, localVariables);
+  let $value = valueInfo.value;
   let $type = tokenTypeFromVariable(variable);
-  let $value = tokenValueFromVariable(variable, modeId, localVariables);
 
   // Number types are too ambiguous for our tokens, so we need to break this case down
   // further and use some context clues to determine what this value really represents.
@@ -63,7 +64,7 @@ function tokenFromVariable(
   // and `$value` properties before converting from our Figma `NUMBER` variable. That is,
   // if `$type` is `dimension` then look at the unit of `$value` to determine how to
   // translate from Figma.
-  if ($type === 'number') {
+  if (!valueInfo.isAlias && $type === 'number') {
     const remVars = ['lead-max-width', 'site-margins', 'site-margins-mobile', 'text-max-width'];
     const pxVars = ['grid/gutter-width', 'grid/form-gutter-width', 'nav-width', 'site-max-width'];
     if (variable.name === 'radius/circle') {
