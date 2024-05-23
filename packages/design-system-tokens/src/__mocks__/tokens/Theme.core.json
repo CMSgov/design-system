@@ -53,6 +53,20 @@
           }
         }
       }
+    },
+    "button": {
+      "border-radius": {
+        "$type": "dimension",
+        "$value": "{radius.small}",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["CORNER_RADIUS"],
+            "codeSyntax": {}
+          }
+        }
+      }
     }
   }
 }

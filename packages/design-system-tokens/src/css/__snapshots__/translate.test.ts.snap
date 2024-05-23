@@ -7,6 +7,7 @@ Object {
 --color-primary: #b3d4eb;
 --alert__background-color: var(--color-primary-light);
 --alert__border-color: var(--color-primary);
+--button__border-radius: var(--radius-small);
 --radius-circle: 100%;
 --radius-default: 3px;
 --radius-large: 8px;
@@ -20,6 +21,7 @@ Object {
 --color-primary: #0071bc;
 --alert__background-color: var(--color-primary-light);
 --alert__border-color: var(--color-primary);
+--button__border-radius: var(--radius-small);
 --radius-circle: 100%;
 --radius-default: 3px;
 --radius-large: 8px;
@@ -37,6 +39,7 @@ Object {
 $color-primary: #b3d4eb;
 $alert__background-color: $color-primary-light;
 $alert__border-color: $color-primary;
+$button__border-radius: $radius-small;
 $radius-circle: 100%;
 $radius-default: 3px;
 $radius-large: 8px;
@@ -48,6 +51,7 @@ $spacer-1: 8px;",
 $color-primary: #0071bc !default;
 $alert__background-color: $color-primary-light !default;
 $alert__border-color: $color-primary !default;
+$button__border-radius: $radius-small !default;
 $radius-circle: 100% !default;
 $radius-default: 3px !default;
 $radius-large: 8px !default;

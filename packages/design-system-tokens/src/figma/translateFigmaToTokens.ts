@@ -20,19 +20,19 @@ function tokenValueFromVariable(
   variable: Variable,
   modeId: string,
   localVariables: { [id: string]: Variable }
-): { value: any; isAlias: boolean } {
+): { value: any; aliasedVariable?: Variable } {
   const value = variable.valuesByMode[modeId];
   if (typeof value === 'object') {
     if ('type' in value && value.type === 'VARIABLE_ALIAS') {
       const aliasedVariable = localVariables[value.id];
-      return { value: `{${aliasedVariable.name.replace(/\//g, '.')}}`, isAlias: true };
+      return { value: `{${aliasedVariable.name.replace(/\//g, '.')}}`, aliasedVariable };
     } else if ('r' in value) {
-      return { value: rgbToHex(value), isAlias: false };
+      return { value: rgbToHex(value) };
     }
 
     throw new Error(`Format of variable value is invalid: ${value}`);
   } else {
-    return { value, isAlias: false };
+    return { value };
   }
 }
 
@@ -64,30 +64,39 @@ function tokenFromVariable(
   // and `$value` properties before converting from our Figma `NUMBER` variable. That is,
   // if `$type` is `dimension` then look at the unit of `$value` to determine how to
   // translate from Figma.
-  if (!valueInfo.isAlias && $type === 'number') {
+  if ($type === 'number') {
     const remVars = ['lead-max-width', 'site-margins', 'site-margins-mobile', 'text-max-width'];
     const pxVars = ['grid/gutter-width', 'grid/form-gutter-width', 'nav-width', 'site-max-width'];
-    if (variable.name === 'radius/circle') {
+    const name = valueInfo.aliasedVariable?.name ?? variable.name;
+    let valueWithUnit;
+
+    if (name === 'radius/circle') {
       // The number is a percentage
       $type = 'dimension';
-      $value = `${$value}%`;
+      valueWithUnit = `${$value}%`;
     } else if (
-      variable.name.startsWith('media') ||
-      variable.name.startsWith('radius') ||
-      variable.name.startsWith('spacer') ||
-      pxVars.includes(variable.name)
+      name.startsWith('media') ||
+      name.startsWith('radius') ||
+      name.startsWith('spacer') ||
+      pxVars.includes(name)
     ) {
       // The number is a pixel value
       $type = 'dimension';
-      $value = `${$value}px`;
-    } else if (variable.name.startsWith('font') || remVars.includes(variable.name)) {
+      valueWithUnit = `${$value}px`;
+    } else if (name.startsWith('font') || remVars.includes(name)) {
       // The number is a pixel value in Figma but `rem` in CSS
       $type = 'dimension';
-      $value = pixelNumberToRem($value as number);
-    } else if (variable.name.startsWith('measure')) {
+      valueWithUnit = pixelNumberToRem($value as number);
+    } else if (name.startsWith('measure')) {
       // The number is a pixel value in Figma but `ex` in CSS
       $type = 'dimension';
-      $value = pixelNumberToEx($value as number);
+      valueWithUnit = pixelNumberToEx($value as number);
+    }
+
+    // We don't want to include the unit if this is an alias, otherwise we'd get values
+    // like `"{radius.small}px", which is invalid.
+    if (!valueInfo.aliasedVariable) {
+      $value = valueWithUnit;
     }
   }
 

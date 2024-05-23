@@ -149,6 +149,14 @@ Object {
       "variableId": "component/alert/border-color",
     },
     Object {
+      "modeId": "cmsgov",
+      "value": Object {
+        "id": "radius/small",
+        "type": "VARIABLE_ALIAS",
+      },
+      "variableId": "component/button/border-radius",
+    },
+    Object {
       "modeId": "core",
       "value": Object {
         "id": "color/ocean/300",
@@ -179,6 +187,14 @@ Object {
         "type": "VARIABLE_ALIAS",
       },
       "variableId": "component/alert/border-color",
+    },
+    Object {
+      "modeId": "core",
+      "value": Object {
+        "id": "radius/small",
+        "type": "VARIABLE_ALIAS",
+      },
+      "variableId": "component/button/border-radius",
     },
   ],
   "variableModes": Array [
@@ -433,6 +449,19 @@ Object {
       "resolvedType": "COLOR",
       "scopes": Array [
         "ALL_SCOPES",
+      ],
+      "variableCollectionId": "Theme",
+    },
+    Object {
+      "action": "CREATE",
+      "codeSyntax": Object {},
+      "description": "",
+      "hiddenFromPublishing": false,
+      "id": "component/button/border-radius",
+      "name": "component/button/border-radius",
+      "resolvedType": "FLOAT",
+      "scopes": Array [
+        "CORNER_RADIUS",
       ],
       "variableCollectionId": "Theme",
     },

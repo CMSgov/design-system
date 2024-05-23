@@ -239,6 +239,22 @@ const response: ApiGetLocalVariablesResponse = {
         hiddenFromPublishing: false,
         codeSyntax: {},
       },
+      but100: {
+        id: 'but100',
+        name: 'component/button/border-radius',
+        key: 'component/button/border-radius',
+        remote: false,
+        description: '',
+        variableCollectionId: 'VariableCollectionId:222',
+        resolvedType: 'FLOAT',
+        valuesByMode: {
+          'ModeId:21': { type: 'VARIABLE_ALIAS', id: 'rad809' },
+          'ModeId:22': { type: 'VARIABLE_ALIAS', id: 'rad809' },
+        },
+        scopes: ['CORNER_RADIUS'],
+        hiddenFromPublishing: false,
+        codeSyntax: {},
+      },
       pri300: {
         id: 'pri300',
         name: 'theme/color/primary-light',
