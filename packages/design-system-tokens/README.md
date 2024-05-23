@@ -25,7 +25,7 @@ _Before you can use any of these package scripts, dependencies must be installed
   - Cleans out the build (`dist`) folder
 - `yarn sync:to-figma` and `yarn sync:from-figma`
   - Connects to Figma's API to export our local tokens into Figma variables or updates our local tokens from Figma variables
-  - Requires `PERSONAL_ACCESS_TOKEN` and `FILE_KEY` environment variables to be defined, which can go in a `.env` file at the root of this package directory. The `FILE_KEY` refers to the Figma file we're syncing to (the library file)
+  - Requires `PERSONAL_ACCESS_TOKEN` and `FILE_KEY` environment variables to be defined, which can go in a `.env` file at the root of this package directory. The `FILE_KEY` refers to the Figma file we're syncing to (the library file). For a quick start, copy the `.env.example` to `.env` and replace `YOUR_FIGMA_PERSONAL_ACCESS_TOKEN`.
 
 ## Token structure
 
