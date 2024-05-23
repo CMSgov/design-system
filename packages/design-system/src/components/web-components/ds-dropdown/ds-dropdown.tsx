@@ -2,6 +2,7 @@ import type * as React from 'react';
 import { define } from '../preactement/define';
 import { Dropdown, DropdownProps } from '../../Dropdown';
 import { parseBooleanAttr } from '../wrapperUtils';
+import { formAttrs } from '../shared-attributes/form';
 
 const attributes = [
   // Using the lowercase HTML attribute name rather than `auto-focus` so it's
@@ -9,23 +10,16 @@ const attributes = [
   'autofocus',
   'aria-disabled',
   'class-name',
+  'default-value',
   'disabled',
-  'error-message',
-  'error-placement',
   'field-class-name',
-  'options',
-  'label',
-  'label-class-name',
-  'label-id',
-  'hint',
-  'hint-id',
   'inversed',
   'name',
-  'requirement-label',
+  'options',
   'root-id',
   'size',
   'value',
-  'default-value',
+  ...formAttrs,
 ] as const;
 
 /* eslint-disable @typescript-eslint/no-namespace */

@@ -3,7 +3,7 @@ import { webComponentDecorator } from '../storybook';
 import './ds-spinner';
 
 export default {
-  title: 'Web Components/Spinner',
+  title: 'Web Components/ds-spinner',
   argTypes: {
     'aria-valuetext': {
       control: 'text',
@@ -38,7 +38,6 @@ export default {
       description: {
         component: `For information about how and when to use this component, [refer to its full documentation page](https://design.cms.gov/components/spinner/).`,
       },
-      underlyingHtmlElements: ['span'],
     },
   },
   decorators: [webComponentDecorator],

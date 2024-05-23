@@ -3,7 +3,7 @@ import { webComponentDecorator } from '../storybook';
 import './ds-badge';
 
 export default {
-  title: 'Web Components/Badge',
+  title: 'Web Components/ds-badge',
   argTypes: {
     children: {
       table: {
@@ -32,7 +32,6 @@ export default {
       description: {
         component: `For information about how and when to use this component, [refer to its full documentation page](https://design.cms.gov/components/badge/).`,
       },
-      underlyingHtmlElements: ['span'],
     },
   },
   decorators: [webComponentDecorator],

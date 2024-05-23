@@ -6,7 +6,7 @@ import '../ds-alert';
 import { webComponentDecorator } from '../storybook';
 
 export default {
-  title: 'Web Components/Choice',
+  title: 'Web Components/ds-choice',
   argTypes: {
     'default-checked': {
       description:
@@ -136,7 +136,7 @@ export default {
           description: 'Dispatched whenever the choice loses focus.',
         },
       },
-      underlyingHtmlElements: ['input'],
+      sharedAttrLists: ['form'],
     },
   },
   decorators: [webComponentDecorator],

@@ -5,7 +5,7 @@ import './ds-button';
 import { webComponentDecorator } from '../storybook';
 
 export default {
-  title: 'Web Components/Button',
+  title: 'Web Components/ds-button',
   argTypes: {
     'class-name': {
       description: 'Additional classes to be added to the root button element.',
@@ -34,7 +34,7 @@ export default {
       description: {
         component: `For information about how and when to use this component, [refer to its full documentation page](https://design.cms.gov/components/button/).`,
       },
-      underlyingHtmlElements: ['a', 'button'],
+      sharedAttrLists: ['analytics'],
     },
   },
   decorators: [webComponentDecorator],

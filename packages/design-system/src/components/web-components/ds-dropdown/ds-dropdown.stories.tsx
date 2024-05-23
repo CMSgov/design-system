@@ -11,7 +11,7 @@ const options = [
 ];
 
 export default {
-  title: 'Web Components/Dropdown',
+  title: 'Web Components/ds-dropdown',
   argTypes: {
     autofocus: {
       description: 'Sets the focus on the dropdown when it is first added to the document.',
@@ -119,7 +119,7 @@ export default {
           description: 'Dispatched whenever the dropdown loses focus.',
         },
       },
-      underlyingHtmlElements: ['button'],
+      sharedAttrLists: ['form'],
     },
   },
   decorators: [webComponentDecorator],
