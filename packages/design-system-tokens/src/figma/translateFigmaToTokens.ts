@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import { rgbToHex } from '../lib/colorUtils';
-import { pixelNumberToEx, pixelNumberToRem } from '../lib/dimensionUtils';
+import { pixelNumberToEx, pixelNumberToRem } from '../lib/unitConversion';
 import { ApiGetLocalVariablesResponse, Variable } from './FigmaApi';
 
 function tokenTypeFromVariable(variable: Variable) {

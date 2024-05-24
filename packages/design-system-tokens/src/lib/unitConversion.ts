@@ -27,3 +27,7 @@ export function dimensionToPixelNumber(tokenValue: string): number {
 
   throw new Error(`Could not parse 'dimension' token value ${tokenValue}`);
 }
+
+export function durationToNumber(tokenValue: string): number {
+  return parseInt(tokenValue);
+}

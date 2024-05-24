@@ -9,7 +9,7 @@ import {
 } from './FigmaApi.js';
 import { RgbaObject, hexToRgba, isHex, rgbToHex } from '../lib/colorUtils';
 import { FlattenedTokensByFile, Token, collectionAndModeFromFileName } from '../lib/tokens';
-import { dimensionToPixelNumber } from '../lib/dimensionUtils';
+import { dimensionToPixelNumber, durationToNumber } from '../lib/unitConversion';
 
 function areSetsEqual<T>(a: Set<T>, b: Set<T>) {
   return a.size === b.size && [...a].every((item) => b.has(item));
@@ -76,6 +76,8 @@ function variableValueFromToken(
     return parseColor(token.$value);
   } else if (token.$type === 'dimension') {
     return dimensionToPixelNumber(token.$value + '');
+  } else if (token.$type === 'duration') {
+    return durationToNumber(token.$value + '');
   } else {
     return token.$value;
   }
