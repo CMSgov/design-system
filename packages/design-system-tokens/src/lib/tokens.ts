@@ -2,6 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 import { VariableCodeSyntax, VariableScope } from '../figma/FigmaApi.js';
+import { NumberType } from './unitConversion.js';
 
 /**
  * This file defines what design tokens and design token files look like in the codebase.
@@ -16,9 +17,10 @@ export interface Token {
    * The [type](https://tr.designtokens.org/format/#type-0) of the token.
    *
    * We allow `string` and `boolean` types in addition to the draft W3C spec's `color` and `number` types
-   * to align with the resolved types for Figma variables.
+   * to align with the resolved types for Figma variables. Note that it doesn't need a $type if it's an
+   * alias, because the type will come from the aliased variable.
    */
-  $type: 'color' | 'number' | 'string' | 'boolean' | 'dimension' | 'duration';
+  $type?: 'color' | 'number' | 'string' | 'boolean' | 'dimension' | 'duration';
   $value: string | number | boolean;
   $description?: string;
   $extensions?: {
@@ -29,6 +31,9 @@ export interface Token {
       hiddenFromPublishing?: boolean;
       scopes?: VariableScope[];
       codeSyntax?: VariableCodeSyntax;
+    };
+    'gov.cms.design'?: {
+      numberType?: NumberType;
     };
   };
 }
