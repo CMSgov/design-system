@@ -32,9 +32,6 @@ export interface Token {
       scopes?: VariableScope[];
       codeSyntax?: VariableCodeSyntax;
     };
-    'gov.cms.design'?: {
-      numberType?: NumberType;
-    };
   };
 }
 

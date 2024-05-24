@@ -966,9 +966,6 @@
               "hiddenFromPublishing": false,
               "scopes": [],
               "codeSyntax": {}
-            },
-            "gov.cms.design": {
-              "numberType": "dimension_rem"
             }
           }
         },
@@ -990,9 +987,6 @@
               "hiddenFromPublishing": false,
               "scopes": [],
               "codeSyntax": {}
-            },
-            "gov.cms.design": {
-              "numberType": "dimension_rem"
             }
           }
         },
@@ -1004,9 +998,6 @@
               "hiddenFromPublishing": false,
               "scopes": [],
               "codeSyntax": {}
-            },
-            "gov.cms.design": {
-              "numberType": "dimension_rem"
             }
           }
         },
@@ -1028,9 +1019,6 @@
               "hiddenFromPublishing": false,
               "scopes": [],
               "codeSyntax": {}
-            },
-            "gov.cms.design": {
-              "numberType": "dimension_rem"
             }
           }
         },
@@ -1052,9 +1040,6 @@
               "hiddenFromPublishing": false,
               "scopes": [],
               "codeSyntax": {}
-            },
-            "gov.cms.design": {
-              "numberType": "dimension_rem"
             }
           }
         },
@@ -1076,9 +1061,6 @@
               "hiddenFromPublishing": false,
               "scopes": [],
               "codeSyntax": {}
-            },
-            "gov.cms.design": {
-              "numberType": "dimension_rem"
             }
           }
         },
@@ -1090,9 +1072,6 @@
               "hiddenFromPublishing": false,
               "scopes": [],
               "codeSyntax": {}
-            },
-            "gov.cms.design": {
-              "numberType": "dimension_rem"
             }
           }
         }
@@ -1108,9 +1087,6 @@
                 "ALL_SCOPES"
               ],
               "codeSyntax": {}
-            },
-            "gov.cms.design": {
-              "numberType": "number"
             }
           }
         },
@@ -1124,9 +1100,6 @@
                 "ALL_SCOPES"
               ],
               "codeSyntax": {}
-            },
-            "gov.cms.design": {
-              "numberType": "number"
             }
           }
         },
@@ -1140,9 +1113,6 @@
                 "ALL_SCOPES"
               ],
               "codeSyntax": {}
-            },
-            "gov.cms.design": {
-              "numberType": "number"
             }
           }
         },
@@ -1156,9 +1126,6 @@
                 "ALL_SCOPES"
               ],
               "codeSyntax": {}
-            },
-            "gov.cms.design": {
-              "numberType": "number"
             }
           }
         }
@@ -1479,9 +1446,6 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
-          },
-          "gov.cms.design": {
-            "numberType": "dimension_px"
           }
         }
       },
@@ -1495,9 +1459,6 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
-          },
-          "gov.cms.design": {
-            "numberType": "dimension_px"
           }
         }
       },
@@ -1511,9 +1472,6 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
-          },
-          "gov.cms.design": {
-            "numberType": "dimension_px"
           }
         }
       },
@@ -1527,9 +1485,6 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
-          },
-          "gov.cms.design": {
-            "numberType": "dimension_px"
           }
         }
       },
@@ -2104,9 +2059,6 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
-          },
-          "gov.cms.design": {
-            "numberType": "dimension_px"
           }
         }
       },
@@ -3899,9 +3851,6 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
-          },
-          "gov.cms.design": {
-            "numberType": "dimension_px"
           }
         }
       },
@@ -3915,9 +3864,6 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
-          },
-          "gov.cms.design": {
-            "numberType": "dimension_px"
           }
         }
       },
@@ -3955,9 +3901,6 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
-          },
-          "gov.cms.design": {
-            "numberType": "dimension_px"
           }
         }
       },
@@ -3971,9 +3914,6 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
-          },
-          "gov.cms.design": {
-            "numberType": "dimension_px"
           }
         }
       },
@@ -3987,9 +3927,6 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
-          },
-          "gov.cms.design": {
-            "numberType": "dimension_px"
           }
         }
       },
@@ -4077,9 +4014,6 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
-          },
-          "gov.cms.design": {
-            "numberType": "dimension_px"
           }
         }
       },
@@ -4431,9 +4365,6 @@
                 "ALL_SCOPES"
               ],
               "codeSyntax": {}
-            },
-            "gov.cms.design": {
-              "numberType": "dimension_px"
             }
           }
         }
@@ -4550,9 +4481,6 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
-          },
-          "gov.cms.design": {
-            "numberType": "dimension_px"
           }
         }
       },
@@ -4566,9 +4494,6 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
-          },
-          "gov.cms.design": {
-            "numberType": "dimension_px"
           }
         }
       },
@@ -4582,9 +4507,6 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
-          },
-          "gov.cms.design": {
-            "numberType": "dimension_px"
           }
         }
       },
@@ -5170,9 +5092,6 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
-          },
-          "gov.cms.design": {
-            "numberType": "dimension_px"
           }
         }
       },
@@ -5186,9 +5105,6 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
-          },
-          "gov.cms.design": {
-            "numberType": "dimension_px"
           }
         }
       },
@@ -5310,9 +5226,6 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
-          },
-          "gov.cms.design": {
-            "numberType": "number"
           }
         }
       }
@@ -5378,9 +5291,6 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
-          },
-          "gov.cms.design": {
-            "numberType": "dimension_px"
           }
         }
       },

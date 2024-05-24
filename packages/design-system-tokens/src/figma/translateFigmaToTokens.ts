@@ -11,6 +11,37 @@ export type ResolveNumberTypeFunction = (
   variableValue: string
 ) => Promise<NumberType>;
 
+/**
+ * Uses an existing token's `$type` and `$value` to determine the specific `NumberType`,
+ * which represents a specific unit of measurement. Unitless `dimension` types default to
+ * pixels. Falls back to `number` if it can't figure it out.
+ */
+function disambiguateTokenNumberType(token: Token): NumberType {
+  const $value = token.$value.toString();
+  if (token.$type === 'dimension') {
+    if ($value.includes('px')) {
+      return 'dimension_px';
+    } else if ($value.includes('ex')) {
+      return 'dimension_ex';
+    } else if ($value.includes('rem')) {
+      return 'dimension_rem';
+    } else if ($value.includes('%')) {
+      return 'dimension_%';
+    } else {
+      return 'dimension_px';
+    }
+  } else if (token.$type === 'duration') {
+    return 'duration_ms';
+  } else {
+    return 'number';
+  }
+}
+
+/**
+ * Number types from Figma are too ambiguous for our tokens, so we need to determine the
+ * specific units. This function makes guesses about the true NumberType based on the
+ * variable name.
+ */
 export function guessNumberType(variableName: string): NumberType | undefined {
   const remVars = ['lead-max-width', 'site-margins', 'site-margins-mobile', 'text-max-width'];
   const pxVars = [
@@ -131,7 +162,7 @@ async function tokenFromVariable(
 
   const $description = variable.description;
   const $extensions = {
-    ...(existingToken?.$extensions ?? {}),
+    // ...(existingToken?.$extensions ?? {}),
     'com.figma': {
       hiddenFromPublishing: variable.hiddenFromPublishing,
       scopes: variable.scopes,
@@ -166,15 +197,12 @@ async function tokenFromVariable(
   // if `$type` is `dimension` then look at the unit of `$value` to determine how to
   // translate from Figma.
   else if ($type === 'number') {
-    let numberType = existingToken?.$extensions?.['gov.cms.design']?.numberType;
-    if (numberType) {
+    let numberType: NumberType;
+    if (existingToken?.$type) {
       $type = existingToken.$type;
+      numberType = disambiguateTokenNumberType(existingToken);
     } else {
       numberType = await resolveNumberType(variable.name, $value);
-
-      $extensions['gov.cms.design'] = {
-        numberType,
-      };
     }
 
     switch (numberType) {
