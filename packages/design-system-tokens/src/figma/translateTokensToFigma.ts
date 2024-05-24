@@ -8,7 +8,13 @@ import {
   VariableCodeSyntax,
 } from './FigmaApi.js';
 import { RgbaObject, hexToRgba, isHex, rgbToHex } from '../lib/colorUtils';
-import { FlattenedTokensByFile, Token, collectionAndModeFromFileName } from '../lib/tokens';
+import {
+  FlattenedTokensByFile,
+  Token,
+  collectionAndModeFromFileName,
+  isAlias,
+  resolveTokenAlias,
+} from '../lib/tokens';
 import { dimensionToPixelNumber, durationToNumber } from '../lib/unitConversion';
 
 function areSetsEqual<T>(a: Set<T>, b: Set<T>) {
@@ -29,10 +35,6 @@ function variableResolvedTypeFromToken(token: Token) {
     default:
       throw new Error(`Invalid token $type: ${token.$type}`);
   }
-}
-
-function isAlias(value: string) {
-  return value.toString().trim().charAt(0) === '{';
 }
 
 function parseColor(color: string): RgbaObject {
@@ -287,7 +289,11 @@ export function generatePostVariablesPayload(
           id: variableId,
           name: variableName,
           variableCollectionId,
-          resolvedType: variableResolvedTypeFromToken(token),
+          resolvedType: variableResolvedTypeFromToken(
+            isAlias(token.$value.toString())
+              ? resolveTokenAlias(token, tokensByFile, fileName)
+              : token
+          ),
           ...differences,
         });
       } else if (variable && Object.keys(differences).length > 0) {

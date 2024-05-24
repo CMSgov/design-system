@@ -2,9 +2,7 @@
   "theme": {
     "color": {
       "primary-light": {
-        "$type": "color",
         "$value": "{color.ocean.50}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -14,9 +12,7 @@
         }
       },
       "primary": {
-        "$type": "color",
         "$value": "{color.ocean.100}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -30,9 +26,7 @@
   "component": {
     "alert": {
       "background-color": {
-        "$type": "color",
         "$value": "{theme.color.primary-light}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -42,9 +36,7 @@
         }
       },
       "border-color": {
-        "$type": "color",
         "$value": "{theme.color.primary}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -56,9 +48,7 @@
     },
     "button": {
       "border-radius": {
-        "$type": "dimension",
         "$value": "{radius.small}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,

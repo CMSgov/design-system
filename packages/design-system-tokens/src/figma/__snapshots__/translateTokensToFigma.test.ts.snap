@@ -221,7 +221,6 @@ Object {
     Object {
       "action": "CREATE",
       "codeSyntax": Object {},
-      "description": "",
       "hiddenFromPublishing": false,
       "id": "color/transparent",
       "name": "color/transparent",
@@ -234,7 +233,6 @@ Object {
     Object {
       "action": "CREATE",
       "codeSyntax": Object {},
-      "description": "",
       "hiddenFromPublishing": false,
       "id": "color/ocean/50",
       "name": "color/ocean/50",
@@ -247,7 +245,6 @@ Object {
     Object {
       "action": "CREATE",
       "codeSyntax": Object {},
-      "description": "",
       "hiddenFromPublishing": false,
       "id": "color/ocean/100",
       "name": "color/ocean/100",
@@ -260,7 +257,6 @@ Object {
     Object {
       "action": "CREATE",
       "codeSyntax": Object {},
-      "description": "",
       "hiddenFromPublishing": false,
       "id": "color/ocean/200",
       "name": "color/ocean/200",
@@ -273,7 +269,6 @@ Object {
     Object {
       "action": "CREATE",
       "codeSyntax": Object {},
-      "description": "",
       "hiddenFromPublishing": false,
       "id": "color/ocean/300",
       "name": "color/ocean/300",
@@ -286,7 +281,6 @@ Object {
     Object {
       "action": "CREATE",
       "codeSyntax": Object {},
-      "description": "",
       "hiddenFromPublishing": false,
       "id": "color/ocean/400",
       "name": "color/ocean/400",
@@ -299,7 +293,6 @@ Object {
     Object {
       "action": "CREATE",
       "codeSyntax": Object {},
-      "description": "",
       "hiddenFromPublishing": false,
       "id": "color/ocean/500",
       "name": "color/ocean/500",
@@ -312,7 +305,6 @@ Object {
     Object {
       "action": "CREATE",
       "codeSyntax": Object {},
-      "description": "",
       "hiddenFromPublishing": false,
       "id": "radius/circle",
       "name": "radius/circle",
@@ -325,7 +317,6 @@ Object {
     Object {
       "action": "CREATE",
       "codeSyntax": Object {},
-      "description": "",
       "hiddenFromPublishing": false,
       "id": "radius/default",
       "name": "radius/default",
@@ -338,7 +329,6 @@ Object {
     Object {
       "action": "CREATE",
       "codeSyntax": Object {},
-      "description": "",
       "hiddenFromPublishing": false,
       "id": "radius/large",
       "name": "radius/large",
@@ -351,7 +341,6 @@ Object {
     Object {
       "action": "CREATE",
       "codeSyntax": Object {},
-      "description": "",
       "hiddenFromPublishing": false,
       "id": "radius/medium",
       "name": "radius/medium",
@@ -364,7 +353,6 @@ Object {
     Object {
       "action": "CREATE",
       "codeSyntax": Object {},
-      "description": "",
       "hiddenFromPublishing": false,
       "id": "radius/small",
       "name": "radius/small",
@@ -377,7 +365,6 @@ Object {
     Object {
       "action": "CREATE",
       "codeSyntax": Object {},
-      "description": "",
       "hiddenFromPublishing": false,
       "id": "radius/pill",
       "name": "radius/pill",
@@ -390,7 +377,6 @@ Object {
     Object {
       "action": "CREATE",
       "codeSyntax": Object {},
-      "description": "",
       "hiddenFromPublishing": false,
       "id": "spacer/1",
       "name": "spacer/1",
@@ -403,7 +389,6 @@ Object {
     Object {
       "action": "CREATE",
       "codeSyntax": Object {},
-      "description": "",
       "hiddenFromPublishing": false,
       "id": "theme/color/primary-light",
       "name": "theme/color/primary-light",
@@ -416,7 +401,6 @@ Object {
     Object {
       "action": "CREATE",
       "codeSyntax": Object {},
-      "description": "",
       "hiddenFromPublishing": false,
       "id": "theme/color/primary",
       "name": "theme/color/primary",
@@ -429,7 +413,6 @@ Object {
     Object {
       "action": "CREATE",
       "codeSyntax": Object {},
-      "description": "",
       "hiddenFromPublishing": false,
       "id": "component/alert/background-color",
       "name": "component/alert/background-color",
@@ -442,7 +425,6 @@ Object {
     Object {
       "action": "CREATE",
       "codeSyntax": Object {},
-      "description": "",
       "hiddenFromPublishing": false,
       "id": "component/alert/border-color",
       "name": "component/alert/border-color",
@@ -455,7 +437,6 @@ Object {
     Object {
       "action": "CREATE",
       "codeSyntax": Object {},
-      "description": "",
       "hiddenFromPublishing": false,
       "id": "component/button/border-radius",
       "name": "component/button/border-radius",

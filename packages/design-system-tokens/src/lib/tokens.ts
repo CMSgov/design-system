@@ -166,3 +166,50 @@ export function readTokenFiles(tokensDir: string): FlattenedTokensByFile {
 
   return tokensJsonByFile;
 }
+
+const ALIAS_REGEX = /{(.*)}/;
+
+export function isAlias(value: string): boolean {
+  return !!value.match(ALIAS_REGEX);
+}
+
+function getAliasKey(aliasString: string) {
+  const matches = aliasString.match(ALIAS_REGEX);
+  if (!matches) {
+    throw new Error(`"${aliasString}" is not a valid token alias.`);
+  }
+  return matches[1];
+}
+
+export function resolveTokenAlias(
+  aliasToken: Token,
+  tokensByFile: FlattenedTokensByFile,
+  currentFilename: string
+): Token {
+  const MAX_DEPTH = 10;
+  let depth = 0;
+
+  let token = aliasToken;
+  do {
+    const $value = token.$value.toString();
+    if (!isAlias($value)) {
+      break;
+    }
+    const tokenKey = getAliasKey($value);
+    token =
+      tokensByFile[currentFilename][tokenKey] ?? tokensByFile['System.Value.json']?.[tokenKey];
+    depth++;
+  } while (token && depth <= MAX_DEPTH);
+
+  if (depth > MAX_DEPTH) {
+    throw new Error(
+      `Could not resolve token alias "${aliasToken.$value}" after following a max depth of ${MAX_DEPTH} aliases.`
+    );
+  }
+
+  if (!token) {
+    throw new Error(`Token alias "${aliasToken.$value}" could not be resolved.`);
+  }
+
+  return token;
+}

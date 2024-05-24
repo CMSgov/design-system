@@ -160,43 +160,21 @@ async function tokenFromVariable(
 ): Promise<Token> {
   const existingToken: Token | undefined = existingTokens[variable.name.replace(/\//g, '.')];
 
-  const $description = variable.description;
-  const $extensions = {
-    // ...(existingToken?.$extensions ?? {}),
-    'com.figma': {
-      hiddenFromPublishing: variable.hiddenFromPublishing,
-      scopes: variable.scopes,
-      codeSyntax: variable.codeSyntax,
-    },
-  };
-
   const valueInfo = tokenValueFromVariable(variable, modeId, localVariables);
   let $value = valueInfo.value;
   let $type = tokenTypeFromVariable(variable);
 
   if (valueInfo.aliasedVariable) {
+    // Tokens aliases don't need `$type` properties, because the type info exists in the
+    // tokens that they're aliasing.
     $type = undefined;
-  }
-  // Number types are too ambiguous for our tokens, so we need to break this case down
-  // further and use some context clues to determine what this value really represents.
-  // Someday Figma might have types that more closely align with the W3C draft standard,
-  // but the draft standard could just as easily flop and go nowhere.
-  //
-  // Once we do our first down-sync from Figma, we could possibly start storing this
-  // translation information as meta-data inside the JSON tokens. It wouldn't get
-  // uploaded to Figma, but it could be manually maintained in our repository. Being able
-  // to store information that doesn't go to Figma, however, would require that we merge
-  // incoming data with our local JSON files instead of the current overwriting method.
-  //
-  // Actually, if we're not storing that info in Figma, it's already in our tokens...why
-  // would I have to tell a dimension token that it's a dimension? If we don't need to be
-  // able to save the JSON based on only the information stored in Figma, then this isn't
-  // a problem at all. Maybe after the first down-sync we just need to update the down-
-  // sync operation to be a merge, and we look at the local (repository) token's `$type`
-  // and `$value` properties before converting from our Figma `NUMBER` variable. That is,
-  // if `$type` is `dimension` then look at the unit of `$value` to determine how to
-  // translate from Figma.
-  else if ($type === 'number') {
+  } else if ($type === 'number') {
+    // Number types are too ambiguous for our tokens, so we need to break this case down
+    // further and determine what this value really represents. Someday Figma might have
+    // types that more closely align with the W3C draft standard, but the draft standard
+    // could just as easily flop and go nowhere. We need this information, though, to
+    // understand how to convert into units that we can use in CSS.
+
     let numberType: NumberType;
     if (existingToken?.$type) {
       $type = existingToken.$type;
@@ -231,11 +209,20 @@ async function tokenFromVariable(
     }
   }
 
+  const $description = variable.description;
+
   return {
     $value,
     ...($type ? { $type } : {}),
     ...($description ? { $description } : {}),
-    $extensions,
+    $extensions: {
+      ...(existingToken?.$extensions ?? {}),
+      'com.figma': {
+        hiddenFromPublishing: variable.hiddenFromPublishing,
+        scopes: variable.scopes,
+        codeSyntax: variable.codeSyntax,
+      },
+    },
   };
 }
 
@@ -275,7 +262,7 @@ export async function tokenFilesFromLocalVariables(
         variable,
         mode.modeId,
         localVariables,
-        existingTokens[fileName],
+        existingTokens[fileName] ?? {},
         resolveNumberType
       );
 
