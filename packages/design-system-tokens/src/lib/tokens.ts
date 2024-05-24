@@ -2,7 +2,6 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 import { VariableCodeSyntax, VariableScope } from '../figma/FigmaApi.js';
-import { NumberType } from './unitConversion.js';
 
 /**
  * This file defines what design tokens and design token files look like in the codebase.
