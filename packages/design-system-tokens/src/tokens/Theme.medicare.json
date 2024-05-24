@@ -2,9 +2,7 @@
   "theme": {
     "color": {
       "white": {
-        "$type": "color",
         "$value": "{color.white.solid}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -16,9 +14,7 @@
         }
       },
       "black": {
-        "$type": "color",
         "$value": "{color.black.solid}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -30,9 +26,7 @@
         }
       },
       "transparent": {
-        "$type": "color",
         "$value": "{color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -44,9 +38,7 @@
         }
       },
       "transparent-black-alpha50": {
-        "$type": "color",
         "$value": "{color.black.alpha50}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -58,9 +50,7 @@
         }
       },
       "transparent-black-alpha25": {
-        "$type": "color",
         "$value": "{color.black.alpha25}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -72,9 +62,7 @@
         }
       },
       "transparent-white-alpha50": {
-        "$type": "color",
         "$value": "{color.white.alpha50}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -86,9 +74,7 @@
         }
       },
       "transparent-white-alpha25": {
-        "$type": "color",
         "$value": "{color.white.alpha25}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -100,9 +86,7 @@
         }
       },
       "background": {
-        "$type": "color",
         "$value": "{color.white.solid}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -114,9 +98,7 @@
         }
       },
       "background-dialog": {
-        "$type": "color",
         "$value": "{color.white.solid}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -128,9 +110,7 @@
         }
       },
       "background-dialog-mask": {
-        "$type": "color",
         "$value": "{color.black.alpha50}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -142,9 +122,7 @@
         }
       },
       "background-inverse": {
-        "$type": "color",
         "$value": "{color.teal.500}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -156,9 +134,7 @@
         }
       },
       "base": {
-        "$type": "color",
         "$value": "{color.granite.800}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -170,9 +146,7 @@
         }
       },
       "base-inverse": {
-        "$type": "color",
         "$value": "{color.white.solid}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -184,9 +158,7 @@
         }
       },
       "border": {
-        "$type": "color",
         "$value": "{color.granite.100}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -198,9 +170,7 @@
         }
       },
       "border-dark": {
-        "$type": "color",
         "$value": "{color.lapis.800}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -212,9 +182,7 @@
         }
       },
       "border-inverse": {
-        "$type": "color",
         "$value": "{color.white.solid}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -226,9 +194,7 @@
         }
       },
       "error-lightest": {
-        "$type": "color",
         "$value": "{color.crimson.50}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -240,9 +206,7 @@
         }
       },
       "error-lighter": {
-        "$type": "color",
         "$value": "{color.crimson.100}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -254,9 +218,7 @@
         }
       },
       "error-light": {
-        "$type": "color",
         "$value": "{color.crimson.300}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -268,9 +230,7 @@
         }
       },
       "error": {
-        "$type": "color",
         "$value": "{color.crimson.500}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -282,9 +242,7 @@
         }
       },
       "error-dark": {
-        "$type": "color",
         "$value": "{color.crimson.600}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -296,9 +254,7 @@
         }
       },
       "error-darker": {
-        "$type": "color",
         "$value": "{color.crimson.700}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -310,9 +266,7 @@
         }
       },
       "error-darkest": {
-        "$type": "color",
         "$value": "{color.crimson.800}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -324,9 +278,7 @@
         }
       },
       "focus-light": {
-        "$type": "color",
         "$value": "{color.white.solid}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -338,9 +290,7 @@
         }
       },
       "focus-dark": {
-        "$type": "color",
         "$value": "{color.copper.500}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -352,9 +302,7 @@
         }
       },
       "gray-lightest": {
-        "$type": "color",
         "$value": "{color.granite.50}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -366,9 +314,7 @@
         }
       },
       "gray-lighter": {
-        "$type": "color",
         "$value": "{color.granite.100}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -380,9 +326,7 @@
         }
       },
       "gray-light": {
-        "$type": "color",
         "$value": "{color.granite.300}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -394,9 +338,7 @@
         }
       },
       "gray": {
-        "$type": "color",
         "$value": "{color.granite.500}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -408,9 +350,7 @@
         }
       },
       "gray-dark": {
-        "$type": "color",
         "$value": "{color.granite.700}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -422,9 +362,7 @@
         }
       },
       "gray-darker": {
-        "$type": "color",
         "$value": "{color.granite.800}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -436,9 +374,7 @@
         }
       },
       "gray-darkest": {
-        "$type": "color",
         "$value": "{color.granite.900}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -450,9 +386,7 @@
         }
       },
       "muted": {
-        "$type": "color",
         "$value": "{color.granite.700}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -464,9 +398,7 @@
         }
       },
       "muted-inverse": {
-        "$type": "color",
         "$value": "{color.lapis.50}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -478,9 +410,7 @@
         }
       },
       "primary-lightest": {
-        "$type": "color",
         "$value": "{color.teal.50}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -492,9 +422,7 @@
         }
       },
       "primary-lighter": {
-        "$type": "color",
         "$value": "{color.teal.100}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -506,9 +434,7 @@
         }
       },
       "primary-light": {
-        "$type": "color",
         "$value": "{color.teal.300}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -520,9 +446,7 @@
         }
       },
       "primary": {
-        "$type": "color",
         "$value": "{color.teal.500}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -534,9 +458,7 @@
         }
       },
       "primary-dark": {
-        "$type": "color",
         "$value": "{color.teal.600}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -548,9 +470,7 @@
         }
       },
       "primary-darker": {
-        "$type": "color",
         "$value": "{color.teal.700}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -562,9 +482,7 @@
         }
       },
       "primary-darkest": {
-        "$type": "color",
         "$value": "{color.teal.800}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -576,9 +494,7 @@
         }
       },
       "secondary-lightest": {
-        "$type": "color",
         "$value": "{color.lapis.50}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -590,9 +506,7 @@
         }
       },
       "secondary-lighter": {
-        "$type": "color",
         "$value": "{color.lapis.100}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -604,9 +518,7 @@
         }
       },
       "secondary-light": {
-        "$type": "color",
         "$value": "{color.lapis.300}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -618,9 +530,7 @@
         }
       },
       "secondary": {
-        "$type": "color",
         "$value": "{color.lapis.500}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -632,9 +542,7 @@
         }
       },
       "secondary-dark": {
-        "$type": "color",
         "$value": "{color.lapis.600}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -646,9 +554,7 @@
         }
       },
       "secondary-darker": {
-        "$type": "color",
         "$value": "{color.lapis.700}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -660,9 +566,7 @@
         }
       },
       "secondary-darkest": {
-        "$type": "color",
         "$value": "{color.lapis.800}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -674,9 +578,7 @@
         }
       },
       "accent-primary-lightest": {
-        "$type": "color",
         "$value": "{color.crimson.50}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -688,9 +590,7 @@
         }
       },
       "accent-primary-lighter": {
-        "$type": "color",
         "$value": "{color.crimson.100}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -702,9 +602,7 @@
         }
       },
       "accent-primary-light": {
-        "$type": "color",
         "$value": "{color.crimson.300}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -716,9 +614,7 @@
         }
       },
       "accent-primary": {
-        "$type": "color",
         "$value": "{color.crimson.500}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -730,9 +626,7 @@
         }
       },
       "accent-primary-dark": {
-        "$type": "color",
         "$value": "{color.crimson.600}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -744,9 +638,7 @@
         }
       },
       "accent-primary-darker": {
-        "$type": "color",
         "$value": "{color.crimson.700}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -758,9 +650,7 @@
         }
       },
       "accent-primary-darkest": {
-        "$type": "color",
         "$value": "{color.crimson.800}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -772,9 +662,7 @@
         }
       },
       "info-lightest": {
-        "$type": "color",
         "$value": "{color.lapis.50}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -786,9 +674,7 @@
         }
       },
       "info-lighter": {
-        "$type": "color",
         "$value": "{color.lapis.100}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -800,9 +686,7 @@
         }
       },
       "info-light": {
-        "$type": "color",
         "$value": "{color.lapis.300}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -814,9 +698,7 @@
         }
       },
       "info": {
-        "$type": "color",
         "$value": "{color.lapis.500}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -828,9 +710,7 @@
         }
       },
       "info-dark": {
-        "$type": "color",
         "$value": "{color.lapis.600}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -842,9 +722,7 @@
         }
       },
       "info-darker": {
-        "$type": "color",
         "$value": "{color.lapis.700}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -856,9 +734,7 @@
         }
       },
       "info-darkest": {
-        "$type": "color",
         "$value": "{color.lapis.800}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -870,9 +746,7 @@
         }
       },
       "success-lightest": {
-        "$type": "color",
         "$value": "{color.spring.40}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -884,9 +758,7 @@
         }
       },
       "success-lighter": {
-        "$type": "color",
         "$value": "{color.spring.100}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -898,9 +770,7 @@
         }
       },
       "success-light": {
-        "$type": "color",
         "$value": "{color.spring.300}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -912,9 +782,7 @@
         }
       },
       "success": {
-        "$type": "color",
         "$value": "{color.spring.500}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -926,9 +794,7 @@
         }
       },
       "success-dark": {
-        "$type": "color",
         "$value": "{color.spring.600}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -940,9 +806,7 @@
         }
       },
       "success-darker": {
-        "$type": "color",
         "$value": "{color.spring.700}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -954,9 +818,7 @@
         }
       },
       "success-darkest": {
-        "$type": "color",
         "$value": "{color.spring.800}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -968,9 +830,7 @@
         }
       },
       "warn-lightest": {
-        "$type": "color",
         "$value": "{color.goldenrod.50}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -982,9 +842,7 @@
         }
       },
       "warn-lighter": {
-        "$type": "color",
         "$value": "{color.goldenrod.100}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -996,9 +854,7 @@
         }
       },
       "warn-light": {
-        "$type": "color",
         "$value": "{color.goldenrod.300}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1010,9 +866,7 @@
         }
       },
       "warn": {
-        "$type": "color",
         "$value": "{color.goldenrod.500}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1024,9 +878,7 @@
         }
       },
       "warn-dark": {
-        "$type": "color",
         "$value": "{color.goldenrod.600}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1038,9 +890,7 @@
         }
       },
       "warn-darker": {
-        "$type": "color",
         "$value": "{color.goldenrod.700}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1052,9 +902,7 @@
         }
       },
       "warn-darkest": {
-        "$type": "color",
         "$value": "{color.goldenrod.800}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1066,9 +914,7 @@
         }
       },
       "visited": {
-        "$type": "color",
         "$value": "{color.crimson.800}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1083,9 +929,7 @@
     "font": {
       "size": {
         "base": {
-          "$type": "dimension",
           "$value": "{font.size.20}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -1095,9 +939,7 @@
           }
         },
         "sm": {
-          "$type": "dimension",
           "$value": "{font.size.10}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -1107,9 +949,7 @@
           }
         },
         "md": {
-          "$type": "dimension",
           "$value": "{font.size.20}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -1119,21 +959,21 @@
           }
         },
         "lg": {
-          "$type": "number",
-          "$value": 20,
-          "$description": "",
+          "$value": "1.25rem",
+          "$type": "dimension",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
               "scopes": [],
               "codeSyntax": {}
+            },
+            "gov.cms.design": {
+              "numberType": "dimension_rem"
             }
           }
         },
         "xl": {
-          "$type": "dimension",
           "$value": "{font.size.50}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -1143,33 +983,35 @@
           }
         },
         "2xl--mobile": {
-          "$type": "number",
-          "$value": 28,
-          "$description": "",
+          "$value": "1.75rem",
+          "$type": "dimension",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
               "scopes": [],
               "codeSyntax": {}
+            },
+            "gov.cms.design": {
+              "numberType": "dimension_rem"
             }
           }
         },
         "2xl": {
-          "$type": "number",
-          "$value": 32,
-          "$description": "",
+          "$value": "2rem",
+          "$type": "dimension",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
               "scopes": [],
               "codeSyntax": {}
+            },
+            "gov.cms.design": {
+              "numberType": "dimension_rem"
             }
           }
         },
         "3xl--mobile": {
-          "$type": "dimension",
           "$value": "{font.size.60}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -1179,21 +1021,21 @@
           }
         },
         "3xl": {
-          "$type": "number",
-          "$value": 40,
-          "$description": "",
+          "$value": "2.5rem",
+          "$type": "dimension",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
               "scopes": [],
               "codeSyntax": {}
+            },
+            "gov.cms.design": {
+              "numberType": "dimension_rem"
             }
           }
         },
         "4xl--mobile": {
-          "$type": "dimension",
           "$value": "{font.size.60}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -1203,21 +1045,21 @@
           }
         },
         "4xl": {
-          "$type": "number",
-          "$value": 40,
-          "$description": "",
+          "$value": "2.5rem",
+          "$type": "dimension",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
               "scopes": [],
               "codeSyntax": {}
+            },
+            "gov.cms.design": {
+              "numberType": "dimension_rem"
             }
           }
         },
         "5xl--mobile": {
-          "$type": "dimension",
           "$value": "{font.size.60}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -1227,35 +1069,38 @@
           }
         },
         "5xl--tablet": {
-          "$type": "number",
-          "$value": 40,
-          "$description": "",
+          "$value": "2.5rem",
+          "$type": "dimension",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
               "scopes": [],
               "codeSyntax": {}
+            },
+            "gov.cms.design": {
+              "numberType": "dimension_rem"
             }
           }
         },
         "5xl": {
-          "$type": "number",
-          "$value": 40,
-          "$description": "",
+          "$value": "2.5rem",
+          "$type": "dimension",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
               "scopes": [],
               "codeSyntax": {}
+            },
+            "gov.cms.design": {
+              "numberType": "dimension_rem"
             }
           }
         }
       },
       "line-height": {
         "reset": {
-          "$type": "number",
           "$value": 1,
-          "$description": "",
+          "$type": "number",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -1263,13 +1108,15 @@
                 "ALL_SCOPES"
               ],
               "codeSyntax": {}
+            },
+            "gov.cms.design": {
+              "numberType": "number"
             }
           }
         },
         "heading": {
-          "$type": "number",
           "$value": 1.2999999523162842,
-          "$description": "",
+          "$type": "number",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -1277,13 +1124,15 @@
                 "ALL_SCOPES"
               ],
               "codeSyntax": {}
+            },
+            "gov.cms.design": {
+              "numberType": "number"
             }
           }
         },
         "base": {
-          "$type": "number",
           "$value": 1.5,
-          "$description": "",
+          "$type": "number",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -1291,13 +1140,15 @@
                 "ALL_SCOPES"
               ],
               "codeSyntax": {}
+            },
+            "gov.cms.design": {
+              "numberType": "number"
             }
           }
         },
         "lead": {
-          "$type": "number",
           "$value": 1.7000000476837158,
-          "$description": "",
+          "$type": "number",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -1305,15 +1156,16 @@
                 "ALL_SCOPES"
               ],
               "codeSyntax": {}
+            },
+            "gov.cms.design": {
+              "numberType": "number"
             }
           }
         }
       },
       "family": {
         "Headings": {
-          "$type": "string",
           "$value": "{font.family.Montserrat}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -1325,9 +1177,7 @@
           }
         },
         "Body": {
-          "$type": "string",
           "$value": "{font.family.Rubik}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -1339,9 +1189,7 @@
           }
         },
         "Button": {
-          "$type": "string",
           "$value": "{font.family.Rubik}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -1353,9 +1201,7 @@
           }
         },
         "Link": {
-          "$type": "string",
           "$value": "{font.family.Rubik}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -1370,9 +1216,7 @@
       "weight": {
         "heading": {
           "5xl": {
-            "$type": "string",
             "$value": "{font.weight.SemiBold}",
-            "$description": "",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1384,9 +1228,7 @@
             }
           },
           "4xl": {
-            "$type": "string",
             "$value": "{font.weight.SemiBold}",
-            "$description": "",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1398,9 +1240,7 @@
             }
           },
           "3xl": {
-            "$type": "string",
             "$value": "{font.weight.SemiBold}",
-            "$description": "",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1412,9 +1252,7 @@
             }
           },
           "2xl": {
-            "$type": "string",
             "$value": "{font.weight.SemiBold}",
-            "$description": "",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1426,9 +1264,7 @@
             }
           },
           "xl": {
-            "$type": "string",
             "$value": "{font.weight.SemiBold}",
-            "$description": "",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1440,9 +1276,7 @@
             }
           },
           "lg": {
-            "$type": "string",
             "$value": "{font.weight.SemiBold}",
-            "$description": "",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1454,9 +1288,7 @@
             }
           },
           "md": {
-            "$type": "string",
             "$value": "{font.weight.SemiBold}",
-            "$description": "",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1468,9 +1300,7 @@
             }
           },
           "sm": {
-            "$type": "string",
             "$value": "{font.weight.SemiBold}",
-            "$description": "",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1484,9 +1314,7 @@
         },
         "body": {
           "lg": {
-            "$type": "string",
             "$value": "{font.weight.Regular}",
-            "$description": "",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1498,9 +1326,7 @@
             }
           },
           "md": {
-            "$type": "string",
             "$value": "{font.weight.Regular}",
-            "$description": "",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1512,9 +1338,7 @@
             }
           },
           "sm": {
-            "$type": "string",
             "$value": "{font.weight.Regular}",
-            "$description": "",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1528,9 +1352,7 @@
         },
         "button": {
           "lg": {
-            "$type": "string",
             "$value": "{font.weight.Regular}",
-            "$description": "",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1542,9 +1364,7 @@
             }
           },
           "md": {
-            "$type": "string",
             "$value": "{font.weight.Regular}",
-            "$description": "",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1556,9 +1376,7 @@
             }
           },
           "sm": {
-            "$type": "string",
             "$value": "{font.weight.Regular}",
-            "$description": "",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1572,9 +1390,7 @@
         },
         "link": {
           "lg": {
-            "$type": "string",
             "$value": "{font.weight.Regular}",
-            "$description": "",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1586,9 +1402,7 @@
             }
           },
           "sm": {
-            "$type": "string",
             "$value": "{font.weight.Regular}",
-            "$description": "",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1600,9 +1414,7 @@
             }
           },
           "md": {
-            "$type": "string",
             "$value": "{font.weight.Regular}",
-            "$description": "",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1620,9 +1432,7 @@
   "component": {
     "global": {
       "color": {
-        "$type": "color",
         "$value": "{theme.color.base}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1634,9 +1444,7 @@
         }
       },
       "color--inverse": {
-        "$type": "color",
         "$value": "{theme.color.base-inverse}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1650,9 +1458,7 @@
     },
     "accordion": {
       "color": {
-        "$type": "color",
         "$value": "{theme.color.base}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1664,9 +1470,8 @@
         }
       },
       "border-top-left-radius": {
-        "$type": "number",
-        "$value": 0,
-        "$description": "",
+        "$value": "0px",
+        "$type": "dimension",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1674,13 +1479,15 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
+          },
+          "gov.cms.design": {
+            "numberType": "dimension_px"
           }
         }
       },
       "border-top-right-radius": {
-        "$type": "number",
-        "$value": 0,
-        "$description": "",
+        "$value": "0px",
+        "$type": "dimension",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1688,13 +1495,15 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
+          },
+          "gov.cms.design": {
+            "numberType": "dimension_px"
           }
         }
       },
       "border-bottom-left-radius": {
-        "$type": "number",
-        "$value": 0,
-        "$description": "",
+        "$value": "0px",
+        "$type": "dimension",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1702,13 +1511,15 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
+          },
+          "gov.cms.design": {
+            "numberType": "dimension_px"
           }
         }
       },
       "border-bottom-right-radius": {
-        "$type": "number",
-        "$value": 0,
-        "$description": "",
+        "$value": "0px",
+        "$type": "dimension",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1716,13 +1527,14 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
+          },
+          "gov.cms.design": {
+            "numberType": "dimension_px"
           }
         }
       },
       "border-width": {
-        "$type": "dimension",
         "$value": "{spacer.half}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1735,9 +1547,7 @@
       },
       "button": {
         "color": {
-          "$type": "color",
           "$value": "{theme.color.base}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -1751,9 +1561,7 @@
       },
       "content": {
         "background-color": {
-          "$type": "color",
           "$value": "{theme.color.white}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -1766,9 +1574,7 @@
         }
       },
       "background-color": {
-        "$type": "color",
         "$value": "{theme.color.gray-lightest}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1780,9 +1586,7 @@
         }
       },
       "background-color--hover": {
-        "$type": "color",
         "$value": "{theme.color.gray-lighter}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1794,9 +1598,7 @@
         }
       },
       "border-color": {
-        "$type": "color",
         "$value": "{theme.color.gray-lightest}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1810,9 +1612,7 @@
     },
     "alert": {
       "background-color--lightweight": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1824,9 +1624,7 @@
         }
       },
       "border-left-color": {
-        "$type": "color",
         "$value": "{theme.color.info}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1838,9 +1636,7 @@
         }
       },
       "border-color--error": {
-        "$type": "color",
         "$value": "{theme.color.error}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1852,9 +1648,7 @@
         }
       },
       "border-color--success": {
-        "$type": "color",
         "$value": "{theme.color.success}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1866,9 +1660,7 @@
         }
       },
       "border-color--warn": {
-        "$type": "color",
         "$value": "{theme.color.warn}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1880,9 +1672,7 @@
         }
       },
       "font-color": {
-        "$type": "color",
         "$value": "{theme.color.base}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1894,9 +1684,7 @@
         }
       },
       "background-color": {
-        "$type": "color",
         "$value": "{theme.color.info-lightest}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1908,9 +1696,7 @@
         }
       },
       "background-color--error": {
-        "$type": "color",
         "$value": "{theme.color.error-lightest}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1922,9 +1708,7 @@
         }
       },
       "background-color--success": {
-        "$type": "color",
         "$value": "{theme.color.success-lightest}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1936,9 +1720,7 @@
         }
       },
       "background-color--warn": {
-        "$type": "color",
         "$value": "{theme.color.warn-lightest}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1950,9 +1732,7 @@
         }
       },
       "icon-size": {
-        "$type": "dimension",
         "$value": "{font.size.50}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1964,9 +1744,7 @@
         }
       },
       "padding": {
-        "$type": "dimension",
         "$value": "{spacer.2}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1979,9 +1757,7 @@
       },
       "bar": {
         "width": {
-          "$type": "dimension",
           "$value": "{spacer.1}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -1996,9 +1772,7 @@
     },
     "autocomplete": {
       "background-color": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2011,9 +1785,8 @@
       },
       "item": {
         "font-color": {
-          "$type": "color",
           "$value": "#ffffff",
-          "$description": "",
+          "$type": "color",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -2025,9 +1798,8 @@
           }
         },
         "background-color--active": {
-          "$type": "color",
           "$value": "#ffffff",
-          "$description": "",
+          "$type": "color",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -2039,9 +1811,7 @@
           }
         },
         "font-color--active": {
-          "$type": "color",
           "$value": "{theme.color.white}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -2055,9 +1825,8 @@
       },
       "item-message": {
         "font-color": {
-          "$type": "color",
           "$value": "#ffffff",
-          "$description": "",
+          "$type": "color",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -2070,9 +1839,7 @@
         }
       },
       "border-color": {
-        "$type": "color",
         "$value": "{theme.color.gray-lighter}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2086,9 +1853,7 @@
     },
     "badge": {
       "background-color--alert": {
-        "$type": "color",
         "$value": "{theme.color.error}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2100,9 +1865,7 @@
         }
       },
       "background-color--info": {
-        "$type": "color",
         "$value": "{theme.color.primary}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2114,9 +1877,7 @@
         }
       },
       "background-color--success": {
-        "$type": "color",
         "$value": "{theme.color.success}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2128,9 +1889,7 @@
         }
       },
       "background-color--warn": {
-        "$type": "color",
         "$value": "{theme.color.warn}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2142,9 +1901,7 @@
         }
       },
       "font-color": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2156,9 +1913,7 @@
         }
       },
       "font-color--alert": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2170,9 +1925,7 @@
         }
       },
       "font-color--info": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2184,9 +1937,7 @@
         }
       },
       "font-color--success": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2198,9 +1949,7 @@
         }
       },
       "font-color--warn": {
-        "$type": "color",
         "$value": "{theme.color.base}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2212,9 +1961,7 @@
         }
       },
       "background-color": {
-        "$type": "color",
         "$value": "{theme.color.gray-dark}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2226,9 +1973,7 @@
         }
       },
       "border-radius": {
-        "$type": "dimension",
         "$value": "{radius.pill}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2242,9 +1987,7 @@
     },
     "button": {
       "background-color": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2256,9 +1999,7 @@
         }
       },
       "background-color--active": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2270,9 +2011,7 @@
         }
       },
       "background-color--hover": {
-        "$type": "color",
         "$value": "{theme.color.secondary-dark}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2284,9 +2023,7 @@
         }
       },
       "background-color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2298,9 +2035,7 @@
         }
       },
       "border-color": {
-        "$type": "color",
         "$value": "{theme.color.secondary}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2312,9 +2047,7 @@
         }
       },
       "border-color--active": {
-        "$type": "color",
         "$value": "{theme.color.secondary-light}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2326,9 +2059,7 @@
         }
       },
       "border-color--hover": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2340,9 +2071,7 @@
         }
       },
       "border-color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.gray-lighter}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2354,9 +2083,7 @@
         }
       },
       "border-radius": {
-        "$type": "dimension",
         "$value": "{radius.default}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2368,9 +2095,8 @@
         }
       },
       "border-width": {
-        "$type": "number",
-        "$value": 1,
-        "$description": "",
+        "$value": "1px",
+        "$type": "dimension",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2378,13 +2104,14 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
+          },
+          "gov.cms.design": {
+            "numberType": "dimension_px"
           }
         }
       },
       "color": {
-        "$type": "color",
         "$value": "{theme.color.secondary}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2396,9 +2123,7 @@
         }
       },
       "color--active": {
-        "$type": "color",
         "$value": "{theme.color.secondary-light}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2410,9 +2135,7 @@
         }
       },
       "color--hover": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2425,9 +2148,8 @@
       },
       "icon": {
         "fill": {
-          "$type": "color",
           "$value": "#6d0000",
-          "$description": "",
+          "$type": "color",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -2440,9 +2162,7 @@
         }
       },
       "color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.gray-lighter}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2456,9 +2176,7 @@
     },
     "button-alt": {
       "background-color": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2470,9 +2188,7 @@
         }
       },
       "background-color--active": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2484,9 +2200,7 @@
         }
       },
       "background-color--hover": {
-        "$type": "color",
         "$value": "{theme.color.primary-dark}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2498,9 +2212,7 @@
         }
       },
       "background-color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2512,9 +2224,7 @@
         }
       },
       "border-color": {
-        "$type": "color",
         "$value": "{theme.color.primary}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2526,9 +2236,7 @@
         }
       },
       "border-color--active": {
-        "$type": "color",
         "$value": "{theme.color.primary-light}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2540,9 +2248,7 @@
         }
       },
       "border-color--hover": {
-        "$type": "color",
         "$value": "{theme.color.primary-dark}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2554,9 +2260,7 @@
         }
       },
       "border-color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.gray-lighter}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2568,9 +2272,7 @@
         }
       },
       "color": {
-        "$type": "color",
         "$value": "{theme.color.primary}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2582,9 +2284,7 @@
         }
       },
       "color--active": {
-        "$type": "color",
         "$value": "{theme.color.primary-light}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2596,9 +2296,7 @@
         }
       },
       "color--hover": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2610,9 +2308,7 @@
         }
       },
       "color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.gray-lighter}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2626,9 +2322,7 @@
     },
     "button-dark": {
       "background-color": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2640,9 +2334,7 @@
         }
       },
       "background-color--active": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2654,9 +2346,7 @@
         }
       },
       "background-color--hover": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2668,9 +2358,7 @@
         }
       },
       "background-color--disabled": {
-        "$type": "color",
         "$value": "{color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2682,9 +2370,7 @@
         }
       },
       "border-color": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2696,9 +2382,7 @@
         }
       },
       "border-color--active": {
-        "$type": "color",
         "$value": "{theme.color.gray-lighter}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2710,9 +2394,7 @@
         }
       },
       "border-color--hover": {
-        "$type": "color",
         "$value": "{theme.color.gray-lightest}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2724,9 +2406,7 @@
         }
       },
       "border-color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.gray-dark}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2738,9 +2418,7 @@
         }
       },
       "color": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2752,9 +2430,7 @@
         }
       },
       "color--active": {
-        "$type": "color",
         "$value": "{theme.color.gray-lighter}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2766,9 +2442,7 @@
         }
       },
       "color--hover": {
-        "$type": "color",
         "$value": "{theme.color.gray-lightest}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2780,9 +2454,7 @@
         }
       },
       "color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.gray-dark}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2796,9 +2468,7 @@
     },
     "button-dark-alt": {
       "background-color": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2810,9 +2480,7 @@
         }
       },
       "background-color--active": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2824,9 +2492,7 @@
         }
       },
       "background-color--hover": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2838,9 +2504,7 @@
         }
       },
       "background-color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2852,9 +2516,7 @@
         }
       },
       "border-color": {
-        "$type": "color",
         "$value": "{theme.color.secondary-lightest}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2866,9 +2528,7 @@
         }
       },
       "border-color--active": {
-        "$type": "color",
         "$value": "{theme.color.secondary-light}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2880,9 +2540,7 @@
         }
       },
       "border-color--hover": {
-        "$type": "color",
         "$value": "{theme.color.secondary-lighter}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2894,9 +2552,7 @@
         }
       },
       "border-color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.gray-dark}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2908,9 +2564,7 @@
         }
       },
       "color": {
-        "$type": "color",
         "$value": "{theme.color.secondary-lightest}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2922,9 +2576,7 @@
         }
       },
       "color--active": {
-        "$type": "color",
         "$value": "{theme.color.secondary-light}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2936,9 +2588,7 @@
         }
       },
       "color--hover": {
-        "$type": "color",
         "$value": "{theme.color.secondary-lighter}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2950,9 +2600,7 @@
         }
       },
       "color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.gray-dark}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2966,9 +2614,7 @@
     },
     "button-solid": {
       "background-color": {
-        "$type": "color",
         "$value": "{theme.color.primary}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2980,9 +2626,7 @@
         }
       },
       "background-color--active": {
-        "$type": "color",
         "$value": "{theme.color.primary-light}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2994,9 +2638,7 @@
         }
       },
       "background-color--hover": {
-        "$type": "color",
         "$value": "{theme.color.primary-dark}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3008,9 +2650,7 @@
         }
       },
       "background-color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.gray-lighter}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3022,9 +2662,7 @@
         }
       },
       "border-color": {
-        "$type": "color",
         "$value": "{theme.color.primary}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3036,9 +2674,7 @@
         }
       },
       "border-color--active": {
-        "$type": "color",
         "$value": "{theme.color.primary-light}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3050,9 +2686,7 @@
         }
       },
       "border-color--hover": {
-        "$type": "color",
         "$value": "{theme.color.primary-dark}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3064,9 +2698,7 @@
         }
       },
       "border-color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.gray-lighter}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3078,9 +2710,7 @@
         }
       },
       "color": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3092,9 +2722,7 @@
         }
       },
       "color--active": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3106,9 +2734,7 @@
         }
       },
       "color--hover": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3120,9 +2746,7 @@
         }
       },
       "color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.gray-darker}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3136,9 +2760,7 @@
     },
     "button-solid-alt": {
       "background-color": {
-        "$type": "color",
         "$value": "{theme.color.secondary}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3150,9 +2772,7 @@
         }
       },
       "background-color--active": {
-        "$type": "color",
         "$value": "{theme.color.secondary-light}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3164,9 +2784,7 @@
         }
       },
       "background-color--hover": {
-        "$type": "color",
         "$value": "{theme.color.secondary-dark}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3178,9 +2796,7 @@
         }
       },
       "background-color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.gray-lighter}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3192,9 +2808,7 @@
         }
       },
       "border-color": {
-        "$type": "color",
         "$value": "{theme.color.secondary}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3206,9 +2820,7 @@
         }
       },
       "border-color--active": {
-        "$type": "color",
         "$value": "{theme.color.secondary-light}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3220,9 +2832,7 @@
         }
       },
       "border-color--hover": {
-        "$type": "color",
         "$value": "{theme.color.secondary-dark}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3234,9 +2844,7 @@
         }
       },
       "border-color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.gray-lighter}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3248,9 +2856,7 @@
         }
       },
       "color": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3262,9 +2868,7 @@
         }
       },
       "color--active": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3276,9 +2880,7 @@
         }
       },
       "color--hover": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3290,9 +2892,7 @@
         }
       },
       "color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.gray-darker}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3306,9 +2906,7 @@
     },
     "button-solid-dark": {
       "background-color": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3320,9 +2918,7 @@
         }
       },
       "background-color--active": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3334,9 +2930,7 @@
         }
       },
       "background-color--hover": {
-        "$type": "color",
         "$value": "{theme.color.primary-dark}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3348,9 +2942,7 @@
         }
       },
       "background-color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.gray-lighter}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3362,9 +2954,7 @@
         }
       },
       "border-color": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3376,9 +2966,7 @@
         }
       },
       "border-color--active": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3390,9 +2978,7 @@
         }
       },
       "border-color--hover": {
-        "$type": "color",
         "$value": "{theme.color.primary-dark}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3404,9 +2990,7 @@
         }
       },
       "border-color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.gray-lighter}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3418,9 +3002,7 @@
         }
       },
       "color": {
-        "$type": "color",
         "$value": "{theme.color.primary}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3432,9 +3014,7 @@
         }
       },
       "color--active": {
-        "$type": "color",
         "$value": "{theme.color.primary-light}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3446,9 +3026,7 @@
         }
       },
       "color--hover": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3460,9 +3038,7 @@
         }
       },
       "color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.base}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3476,9 +3052,7 @@
     },
     "button-solid-dark-alt": {
       "background-color": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3490,9 +3064,7 @@
         }
       },
       "background-color--active": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3504,9 +3076,7 @@
         }
       },
       "background-color--hover": {
-        "$type": "color",
         "$value": "{theme.color.secondary-dark}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3518,9 +3088,7 @@
         }
       },
       "background-color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.gray-lighter}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3532,9 +3100,7 @@
         }
       },
       "border-color": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3546,9 +3112,7 @@
         }
       },
       "border-color--active": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3560,9 +3124,7 @@
         }
       },
       "border-color--hover": {
-        "$type": "color",
         "$value": "{theme.color.secondary-dark}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3574,9 +3136,7 @@
         }
       },
       "border-color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.gray-lighter}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3588,9 +3148,7 @@
         }
       },
       "color": {
-        "$type": "color",
         "$value": "{theme.color.secondary}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3602,9 +3160,7 @@
         }
       },
       "color--active": {
-        "$type": "color",
         "$value": "{theme.color.secondary-light}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3616,9 +3172,7 @@
         }
       },
       "color--hover": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3630,9 +3184,7 @@
         }
       },
       "color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.base}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3646,9 +3198,7 @@
     },
     "button-ghost": {
       "background-color": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3660,9 +3210,7 @@
         }
       },
       "background-color--active": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3674,9 +3222,7 @@
         }
       },
       "background-color--hover": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3688,9 +3234,7 @@
         }
       },
       "background-color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3702,9 +3246,7 @@
         }
       },
       "border-color": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3716,9 +3258,7 @@
         }
       },
       "border-color--active": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3730,9 +3270,7 @@
         }
       },
       "border-color--hover": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3744,9 +3282,7 @@
         }
       },
       "border-color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3758,9 +3294,7 @@
         }
       },
       "color": {
-        "$type": "color",
         "$value": "{theme.color.secondary}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3772,9 +3306,7 @@
         }
       },
       "color--active": {
-        "$type": "color",
         "$value": "{theme.color.secondary-light}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3786,9 +3318,7 @@
         }
       },
       "color--hover": {
-        "$type": "color",
         "$value": "{theme.color.secondary-dark}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3800,9 +3330,7 @@
         }
       },
       "color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.gray-lighter}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3816,9 +3344,7 @@
     },
     "button-ghost-alt": {
       "background-color": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3830,9 +3356,7 @@
         }
       },
       "background-color--active": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3844,9 +3368,7 @@
         }
       },
       "background-color--hover": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3858,9 +3380,7 @@
         }
       },
       "background-color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3872,9 +3392,7 @@
         }
       },
       "border-color": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3886,9 +3404,7 @@
         }
       },
       "border-color--active": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3900,9 +3416,7 @@
         }
       },
       "border-color--hover": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3914,9 +3428,7 @@
         }
       },
       "border-color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3928,9 +3440,7 @@
         }
       },
       "color": {
-        "$type": "color",
         "$value": "{theme.color.primary}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3942,9 +3452,7 @@
         }
       },
       "color--active": {
-        "$type": "color",
         "$value": "{theme.color.primary-light}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3956,9 +3464,7 @@
         }
       },
       "color--hover": {
-        "$type": "color",
         "$value": "{theme.color.primary-darker}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3970,9 +3476,7 @@
         }
       },
       "color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.gray-lighter}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3986,9 +3490,7 @@
     },
     "button-ghost-dark": {
       "background-color": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4000,9 +3502,7 @@
         }
       },
       "background-color--active": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4014,9 +3514,7 @@
         }
       },
       "background-color--hover": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4028,9 +3526,7 @@
         }
       },
       "background-color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4042,9 +3538,7 @@
         }
       },
       "border-color": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4056,9 +3550,7 @@
         }
       },
       "border-color--active": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4070,9 +3562,7 @@
         }
       },
       "border-color--hover": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4084,9 +3574,7 @@
         }
       },
       "border-color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4098,9 +3586,7 @@
         }
       },
       "color": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4112,9 +3598,7 @@
         }
       },
       "color--active": {
-        "$type": "color",
         "$value": "{theme.color.gray-lighter}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4126,9 +3610,7 @@
         }
       },
       "color--hover": {
-        "$type": "color",
         "$value": "{theme.color.gray-lightest}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4140,9 +3622,7 @@
         }
       },
       "color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.gray-dark}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4156,9 +3636,7 @@
     },
     "button-ghost-dark-alt": {
       "background-color": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4170,9 +3648,7 @@
         }
       },
       "background-color--active": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4184,9 +3660,7 @@
         }
       },
       "background-color--hover": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4198,9 +3672,7 @@
         }
       },
       "background-color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4212,9 +3684,7 @@
         }
       },
       "border-color": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4226,9 +3696,7 @@
         }
       },
       "border-color--active": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4240,9 +3708,7 @@
         }
       },
       "border-color--hover": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4254,9 +3720,7 @@
         }
       },
       "border-color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4268,9 +3732,7 @@
         }
       },
       "color": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4282,9 +3744,7 @@
         }
       },
       "color--active": {
-        "$type": "color",
         "$value": "{theme.color.gray-lighter}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4296,9 +3756,7 @@
         }
       },
       "color--hover": {
-        "$type": "color",
         "$value": "{theme.color.gray-lightest}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4310,9 +3768,7 @@
         }
       },
       "color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.gray-dark}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4326,9 +3782,7 @@
     },
     "choice": {
       "background-color": {
-        "$type": "color",
         "$value": "{theme.color.background}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4340,9 +3794,7 @@
         }
       },
       "background-color--checked": {
-        "$type": "color",
         "$value": "{theme.color.primary}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4354,9 +3806,7 @@
         }
       },
       "background-color--inverse": {
-        "$type": "color",
         "$value": "{color.transparent}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4368,9 +3818,7 @@
         }
       },
       "border-color": {
-        "$type": "color",
         "$value": "{theme.color.base}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4382,9 +3830,7 @@
         }
       },
       "border-color--checked": {
-        "$type": "color",
         "$value": "{theme.color.primary}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4396,9 +3842,7 @@
         }
       },
       "border-color--error": {
-        "$type": "color",
         "$value": "{theme.color.base}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4410,9 +3854,7 @@
         }
       },
       "border-color--error--inverse": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4424,9 +3866,7 @@
         }
       },
       "border-color--inverse": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4438,9 +3878,7 @@
         }
       },
       "border-color--left": {
-        "$type": "color",
         "$value": "{theme.color.primary}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4452,9 +3890,8 @@
         }
       },
       "border-radius": {
-        "$type": "number",
-        "$value": 3,
-        "$description": "",
+        "$value": "3px",
+        "$type": "dimension",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4462,13 +3899,15 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
+          },
+          "gov.cms.design": {
+            "numberType": "dimension_px"
           }
         }
       },
       "border-width": {
-        "$type": "number",
-        "$value": 4,
-        "$description": "",
+        "$value": "4px",
+        "$type": "dimension",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4476,13 +3915,14 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
+          },
+          "gov.cms.design": {
+            "numberType": "dimension_px"
           }
         }
       },
       "color--unchecked": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4494,9 +3934,7 @@
         }
       },
       "color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.muted}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4508,9 +3946,8 @@
         }
       },
       "size--small": {
-        "$type": "number",
-        "$value": 20,
-        "$description": "",
+        "$value": "20px",
+        "$type": "dimension",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4518,13 +3955,15 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
+          },
+          "gov.cms.design": {
+            "numberType": "dimension_px"
           }
         }
       },
       "size-radio": {
-        "$type": "number",
-        "$value": 16,
-        "$description": "",
+        "$value": "16px",
+        "$type": "dimension",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4532,13 +3971,15 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
+          },
+          "gov.cms.design": {
+            "numberType": "dimension_px"
           }
         }
       },
       "size-radio--small": {
-        "$type": "number",
-        "$value": 12,
-        "$description": "",
+        "$value": "12px",
+        "$type": "dimension",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4546,14 +3987,15 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
+          },
+          "gov.cms.design": {
+            "numberType": "dimension_px"
           }
         }
       },
       "label": {
         "color--disabled": {
-          "$type": "color",
           "$value": "{theme.color.muted}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -4565,9 +4007,7 @@
           }
         },
         "color--disabled--inverse": {
-          "$type": "color",
           "$value": "{theme.color.muted-inverse}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -4580,9 +4020,7 @@
         }
       },
       "background-color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.gray-lighter}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4594,9 +4032,7 @@
         }
       },
       "border-color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.gray-light}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4608,9 +4044,7 @@
         }
       },
       "border-color--focus": {
-        "$type": "color",
         "$value": "{theme.color.primary-darker}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4622,9 +4056,7 @@
         }
       },
       "border-color--disabled--inverse": {
-        "$type": "color",
         "$value": "{theme.color.gray-light}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4636,9 +4068,8 @@
         }
       },
       "size": {
-        "$type": "number",
-        "$value": 24,
-        "$description": "",
+        "$value": "24px",
+        "$type": "dimension",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4646,13 +4077,15 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
+          },
+          "gov.cms.design": {
+            "numberType": "dimension_px"
           }
         }
       },
       "background-color--disabled--inverse": {
-        "$type": "color",
         "$value": "#e9ecf126",
-        "$description": "",
+        "$type": "color",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4667,9 +4100,7 @@
     "day-picker": {
       "button": {
         "background-color--hover": {
-          "$type": "color",
           "$value": "{theme.color.primary-lightest}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -4684,9 +4115,7 @@
     },
     "dialog": {
       "background-color": {
-        "$type": "color",
         "$value": "{theme.color.background}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4699,9 +4128,7 @@
       },
       "overlay": {
         "background-color": {
-          "$type": "color",
           "$value": "{theme.color.transparent-black-alpha50}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -4714,9 +4141,7 @@
         }
       },
       "padding": {
-        "$type": "dimension",
         "$value": "{spacer.4}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4730,9 +4155,7 @@
     },
     "drawer": {
       "background-color": {
-        "$type": "color",
         "$value": "{theme.color.background}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4744,9 +4167,7 @@
         }
       },
       "border-color": {
-        "$type": "color",
         "$value": "{theme.color.border}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4759,9 +4180,7 @@
       },
       "close": {
         "color": {
-          "$type": "color",
           "$value": "{theme.color.black}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -4775,9 +4194,7 @@
       },
       "toggle": {
         "background-color--hover": {
-          "$type": "color",
           "$value": "{theme.color.info}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -4789,9 +4206,7 @@
           }
         },
         "background-color--hover--inverse": {
-          "$type": "color",
           "$value": "{theme.color.white}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -4803,9 +4218,7 @@
           }
         },
         "color--hover": {
-          "$type": "color",
           "$value": "{theme.color.white}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -4817,9 +4230,7 @@
           }
         },
         "color--hover--inverse": {
-          "$type": "color",
           "$value": "{theme.color.gray-dark}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -4833,9 +4244,7 @@
       },
       "header": {
         "background-color": {
-          "$type": "color",
           "$value": "{theme.color.transparent}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -4849,9 +4258,7 @@
       },
       "footer": {
         "background-color": {
-          "$type": "color",
           "$value": "{theme.color.info-lightest}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -4864,9 +4271,7 @@
         }
       },
       "animation-timing": {
-        "$type": "duration",
         "$value": "{animation.speed.2}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4880,9 +4285,7 @@
     },
     "dropdown": {
       "background-color": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4895,9 +4298,7 @@
       },
       "option-group": {
         "padding": {
-          "$type": "dimension",
           "$value": "{spacer.4}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -4912,9 +4313,7 @@
     },
     "filter-chip": {
       "background-color": {
-        "$type": "color",
         "$value": "{theme.color.secondary-lightest}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4926,9 +4325,7 @@
         }
       },
       "background-color--active": {
-        "$type": "color",
         "$value": "{theme.color.primary}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4940,9 +4337,7 @@
         }
       },
       "border-color": {
-        "$type": "color",
         "$value": "{theme.color.secondary}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4954,9 +4349,7 @@
         }
       },
       "border-color--active": {
-        "$type": "color",
         "$value": "{theme.color.primary}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4968,9 +4361,7 @@
         }
       },
       "border-radius": {
-        "$type": "dimension",
         "$value": "{radius.pill}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4982,9 +4373,7 @@
         }
       },
       "color": {
-        "$type": "color",
         "$value": "{theme.color.base}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4996,9 +4385,7 @@
         }
       },
       "color--active": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5011,9 +4398,7 @@
       },
       "icon": {
         "color": {
-          "$type": "color",
           "$value": "{theme.color.base}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -5025,9 +4410,7 @@
           }
         },
         "color-active": {
-          "$type": "color",
           "$value": "{theme.color.white}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -5039,9 +4422,8 @@
           }
         },
         "container-size": {
-          "$type": "number",
-          "$value": 0,
-          "$description": "",
+          "$value": "0px",
+          "$type": "dimension",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -5049,6 +4431,9 @@
                 "ALL_SCOPES"
               ],
               "codeSyntax": {}
+            },
+            "gov.cms.design": {
+              "numberType": "dimension_px"
             }
           }
         }
@@ -5056,9 +4441,7 @@
     },
     "hint": {
       "color": {
-        "$type": "color",
         "$value": "{theme.color.muted}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5070,9 +4453,7 @@
         }
       },
       "color--inverse": {
-        "$type": "color",
         "$value": "{theme.color.muted-inverse}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5086,9 +4467,7 @@
     },
     "inline-error": {
       "color": {
-        "$type": "color",
         "$value": "{theme.color.error}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5100,9 +4479,7 @@
         }
       },
       "color--inverse": {
-        "$type": "color",
         "$value": "{theme.color.error-lighter}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5116,9 +4493,7 @@
     },
     "link": {
       "color": {
-        "$type": "color",
         "$value": "{theme.color.secondary}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5130,9 +4505,7 @@
         }
       },
       "color--active": {
-        "$type": "color",
         "$value": "{theme.color.secondary-dark}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5144,9 +4517,7 @@
         }
       },
       "color--hover": {
-        "$type": "color",
         "$value": "{theme.color.secondary-dark}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5158,9 +4529,7 @@
         }
       },
       "color--visited": {
-        "$type": "color",
         "$value": "{theme.color.visited}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5172,9 +4541,8 @@
         }
       },
       "text-decoration-offset": {
-        "$type": "number",
-        "$value": 3,
-        "$description": "",
+        "$value": "3px",
+        "$type": "dimension",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5182,13 +4550,15 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
+          },
+          "gov.cms.design": {
+            "numberType": "dimension_px"
           }
         }
       },
       "text-decoration-thickness": {
-        "$type": "number",
-        "$value": 1,
-        "$description": "",
+        "$value": "1px",
+        "$type": "dimension",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5196,13 +4566,15 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
+          },
+          "gov.cms.design": {
+            "numberType": "dimension_px"
           }
         }
       },
       "text-decoration-thickness--hover": {
-        "$type": "number",
-        "$value": 2,
-        "$description": "",
+        "$value": "2px",
+        "$type": "dimension",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5210,14 +4582,15 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
+          },
+          "gov.cms.design": {
+            "numberType": "dimension_px"
           }
         }
       },
       "inverse": {
         "color--active": {
-          "$type": "color",
           "$value": "{theme.color.muted-inverse}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -5229,9 +4602,7 @@
           }
         },
         "color--hover": {
-          "$type": "color",
           "$value": "{theme.color.muted-inverse}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -5243,9 +4614,7 @@
           }
         },
         "color--visited": {
-          "$type": "color",
           "$value": "{theme.color.muted-inverse}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -5257,9 +4626,7 @@
           }
         },
         "color": {
-          "$type": "color",
           "$value": "{theme.color.base-inverse}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -5275,9 +4642,7 @@
     "pagination": {
       "link": {
         "color": {
-          "$type": "color",
           "$value": "{theme.color.primary}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -5289,9 +4654,7 @@
           }
         },
         "color--hover": {
-          "$type": "color",
           "$value": "{theme.color.primary-darker}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -5303,9 +4666,7 @@
           }
         },
         "color--active": {
-          "$type": "color",
           "$value": "{theme.color.primary-darkest}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -5317,9 +4678,7 @@
           }
         },
         "color--focus": {
-          "$type": "color",
           "$value": "{theme.color.primary-darker}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -5331,9 +4690,7 @@
           }
         },
         "color--disabled": {
-          "$type": "color",
           "$value": "{theme.color.gray-lighter}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -5347,9 +4704,7 @@
       },
       "current": {
         "color": {
-          "$type": "color",
           "$value": "{theme.color.base}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -5363,9 +4718,7 @@
       },
       "overflow": {
         "color": {
-          "$type": "color",
           "$value": "{theme.color.gray-dark}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -5379,9 +4732,7 @@
       },
       "page-count": {
         "color": {
-          "$type": "color",
           "$value": "{theme.color.gray-dark}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -5395,9 +4746,7 @@
       },
       "current-page": {
         "color": {
-          "$type": "color",
           "$value": "{theme.color.base}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -5412,9 +4761,7 @@
     },
     "steplist": {
       "background-color--current": {
-        "$type": "color",
         "$value": "{theme.color.primary}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5426,9 +4773,7 @@
         }
       },
       "color": {
-        "$type": "color",
         "$value": "{theme.color.muted}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5440,9 +4785,7 @@
         }
       },
       "color--current": {
-        "$type": "color",
         "$value": "{theme.color.primary}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5455,9 +4798,7 @@
       },
       "step": {
         "border-color": {
-          "$type": "color",
           "$value": "{theme.color.border}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -5469,9 +4810,7 @@
           }
         },
         "border-color--default": {
-          "$type": "color",
           "$value": "{theme.color.muted}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -5483,9 +4822,7 @@
           }
         },
         "background-color--completed": {
-          "$type": "color",
           "$value": "{theme.color.base}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -5497,9 +4834,7 @@
           }
         },
         "color": {
-          "$type": "color",
           "$value": "{theme.color.muted}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -5511,9 +4846,7 @@
           }
         },
         "color--current": {
-          "$type": "color",
           "$value": "{theme.color.white}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -5525,9 +4858,7 @@
           }
         },
         "color--completed": {
-          "$type": "color",
           "$value": "{theme.color.base}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -5542,9 +4873,7 @@
     },
     "review": {
       "border-color": {
-        "$type": "color",
         "$value": "{theme.color.border}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5558,9 +4887,7 @@
     },
     "spinner": {
       "background-color": {
-        "$type": "color",
         "$value": "{theme.color.background}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5572,9 +4899,7 @@
         }
       },
       "color": {
-        "$type": "color",
         "$value": "{theme.color.base}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5586,9 +4911,7 @@
         }
       },
       "color--inverse": {
-        "$type": "color",
         "$value": "{theme.color.white}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5600,9 +4923,7 @@
         }
       },
       "background-color--inverse": {
-        "$type": "color",
         "$value": "{theme.color.background-inverse}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5616,9 +4937,7 @@
     },
     "table": {
       "border-color": {
-        "$type": "color",
         "$value": "{theme.color.black}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5630,9 +4949,7 @@
         }
       },
       "background-color--striped": {
-        "$type": "color",
         "$value": "{theme.color.gray-lightest}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5644,9 +4961,7 @@
         }
       },
       "padding": {
-        "$type": "dimension",
         "$value": "{spacer.2}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5659,9 +4974,7 @@
       },
       "header": {
         "background-color": {
-          "$type": "color",
           "$value": "{theme.color.gray-lightest}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -5676,9 +4989,7 @@
     },
     "tabs": {
       "border-color": {
-        "$type": "color",
         "$value": "{theme.color.border}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5690,9 +5001,7 @@
         }
       },
       "background-color": {
-        "$type": "color",
         "$value": "{theme.color.background}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5704,9 +5013,7 @@
         }
       },
       "background-color--selected": {
-        "$type": "color",
         "$value": "{theme.color.background}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5718,9 +5025,7 @@
         }
       },
       "background-color--hover": {
-        "$type": "color",
         "$value": "{theme.color.background}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5732,9 +5037,7 @@
         }
       },
       "background-color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.gray-lighter}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5746,9 +5049,7 @@
         }
       },
       "border-color--selected": {
-        "$type": "color",
         "$value": "{theme.color.primary}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5760,9 +5061,7 @@
         }
       },
       "border-color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.gray-lighter}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5774,9 +5073,7 @@
         }
       },
       "color": {
-        "$type": "color",
         "$value": "{theme.color.base}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5788,9 +5085,7 @@
         }
       },
       "color--hover": {
-        "$type": "color",
         "$value": "{theme.color.primary}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5802,9 +5097,7 @@
         }
       },
       "color--selected": {
-        "$type": "color",
         "$value": "{theme.color.primary}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5817,9 +5110,7 @@
       },
       "panel": {
         "background-color": {
-          "$type": "color",
           "$value": "{theme.color.background}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -5832,9 +5123,7 @@
         }
       },
       "color--active": {
-        "$type": "color",
         "$value": "{theme.color.primary-darker}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5846,9 +5135,7 @@
         }
       },
       "color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.gray-darker}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5862,9 +5149,7 @@
     },
     "text-input": {
       "background-color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.gray-lighter}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5876,9 +5161,8 @@
         }
       },
       "border-width": {
-        "$type": "number",
-        "$value": 2,
-        "$description": "",
+        "$value": "2px",
+        "$type": "dimension",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5886,13 +5170,15 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
+          },
+          "gov.cms.design": {
+            "numberType": "dimension_px"
           }
         }
       },
       "border-width--error": {
-        "$type": "number",
-        "$value": 3,
-        "$description": "",
+        "$value": "3px",
+        "$type": "dimension",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5900,13 +5186,14 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
+          },
+          "gov.cms.design": {
+            "numberType": "dimension_px"
           }
         }
       },
       "border-color": {
-        "$type": "color",
         "$value": "{theme.color.gray}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5918,9 +5205,7 @@
         }
       },
       "border-color--disabled": {
-        "$type": "color",
         "$value": "{theme.color.gray-darker}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5932,9 +5217,7 @@
         }
       },
       "border-color--error": {
-        "$type": "color",
         "$value": "{theme.color.error}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5946,9 +5229,7 @@
         }
       },
       "border-color--error--inverse": {
-        "$type": "color",
         "$value": "{theme.color.error-lighter}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5960,9 +5241,7 @@
         }
       },
       "border-color--inverse": {
-        "$type": "color",
         "$value": "{theme.color.gray}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5974,9 +5253,7 @@
         }
       },
       "border-radius": {
-        "$type": "dimension",
         "$value": "{radius.default}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -5988,9 +5265,7 @@
         }
       },
       "color": {
-        "$type": "color",
         "$value": "{theme.color.gray-darker}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -6002,9 +5277,7 @@
         }
       },
       "divider-color": {
-        "$type": "color",
         "$value": "{theme.color.gray-light}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -6016,9 +5289,7 @@
         }
       },
       "padding": {
-        "$type": "dimension",
         "$value": "{spacer.2}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -6030,9 +5301,8 @@
         }
       },
       "line-height": {
-        "$type": "number",
         "$value": 1.2999999523162842,
-        "$description": "",
+        "$type": "number",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -6040,15 +5310,16 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
+          },
+          "gov.cms.design": {
+            "numberType": "number"
           }
         }
       }
     },
     "tooltip": {
       "background-color": {
-        "$type": "color",
         "$value": "{theme.color.background}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -6060,9 +5331,7 @@
         }
       },
       "border-color": {
-        "$type": "color",
         "$value": "{theme.color.gray-darker}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -6074,9 +5343,8 @@
         }
       },
       "border-color--active": {
-        "$type": "color",
         "$value": "#146a5d40",
-        "$description": "",
+        "$type": "color",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -6088,9 +5356,8 @@
         }
       },
       "border-color--inverse-active": {
-        "$type": "color",
         "$value": "#ffffff40",
-        "$description": "",
+        "$type": "color",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -6102,9 +5369,8 @@
         }
       },
       "border-width": {
-        "$type": "number",
-        "$value": 1,
-        "$description": "",
+        "$value": "1px",
+        "$type": "dimension",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -6112,13 +5378,14 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
+          },
+          "gov.cms.design": {
+            "numberType": "dimension_px"
           }
         }
       },
       "box-shadow-color": {
-        "$type": "color",
         "$value": "{theme.color.gray}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -6130,9 +5397,7 @@
         }
       },
       "color": {
-        "$type": "color",
         "$value": "{theme.color.base}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -6145,9 +5410,7 @@
       },
       "icon": {
         "color": {
-          "$type": "color",
           "$value": "{theme.color.primary}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -6159,9 +5422,7 @@
           }
         },
         "color--inverse": {
-          "$type": "color",
           "$value": "{theme.color.white}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -6175,9 +5436,7 @@
       },
       "trigger": {
         "color": {
-          "$type": "color",
           "$value": "{theme.color.base}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -6193,9 +5452,7 @@
     "vertical-nav": {
       "item": {
         "background-color--hover": {
-          "$type": "color",
           "$value": "{theme.color.gray-lightest}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -6207,9 +5464,7 @@
           }
         },
         "border-color": {
-          "$type": "color",
           "$value": "{theme.color.gray-dark}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -6221,9 +5476,7 @@
           }
         },
         "color--hover": {
-          "$type": "color",
           "$value": "{theme.color.primary}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -6237,9 +5490,7 @@
       },
       "label": {
         "border-color--current": {
-          "$type": "color",
           "$value": "{theme.color.primary}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -6251,9 +5502,7 @@
           }
         },
         "color": {
-          "$type": "color",
           "$value": "{theme.color.base}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -6265,9 +5514,7 @@
           }
         },
         "color--current": {
-          "$type": "color",
           "$value": "{theme.color.primary}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -6280,9 +5527,7 @@
         },
         "icon": {
           "color": {
-            "$type": "color",
             "$value": "{theme.color.base}",
-            "$description": "",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -6298,9 +5543,7 @@
     },
     "usa-banner": {
       "background-color": {
-        "$type": "color",
         "$value": "{theme.color.gray-lightest}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -6312,9 +5555,7 @@
         }
       },
       "color": {
-        "$type": "color",
         "$value": "{theme.color.base}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -6326,9 +5567,7 @@
         }
       },
       "gutter-width": {
-        "$type": "dimension",
         "$value": "{grid.gutter-width}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -6340,9 +5579,7 @@
         }
       },
       "max-width": {
-        "$type": "dimension",
         "$value": "{site-max-width}",
-        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -6355,9 +5592,7 @@
       },
       "link": {
         "color": {
-          "$type": "color",
           "$value": "{theme.color.primary}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -6371,9 +5606,7 @@
       },
       "domain-icon": {
         "color": {
-          "$type": "color",
           "$value": "{theme.color.primary}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -6387,9 +5620,7 @@
       },
       "close-button": {
         "color--mobile": {
-          "$type": "color",
           "$value": "{theme.color.primary}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -6401,9 +5632,7 @@
           }
         },
         "background-color--mobile": {
-          "$type": "color",
           "$value": "{theme.color.gray-lighter}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -6417,9 +5646,7 @@
       },
       "security-icon": {
         "color": {
-          "$type": "color",
           "$value": "{theme.color.success-light}",
-          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,

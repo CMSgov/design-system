@@ -6,6 +6,87 @@ import { ApiGetLocalVariablesResponse, Variable } from './FigmaApi';
 import { FlattenedTokens, FlattenedTokensByFile, Token } from '../lib/tokens';
 import { select } from '@inquirer/prompts';
 
+export type ResolveNumberTypeFunction = (
+  variableName: string,
+  variableValue: string
+) => Promise<NumberType>;
+
+export function guessNumberType(variableName: string): NumberType | undefined {
+  const remVars = ['lead-max-width', 'site-margins', 'site-margins-mobile', 'text-max-width'];
+  const pxVars = [
+    'grid/gutter-width',
+    'grid/form-gutter-width',
+    'nav-width',
+    'site-max-width',
+    'article-max-width',
+  ];
+  const numberVars = ['grid/columns'];
+
+  if (variableName === 'radius/circle') {
+    return 'dimension_%';
+  } else if (
+    variableName.startsWith('media') ||
+    variableName.startsWith('radius') ||
+    variableName.startsWith('spacer') ||
+    pxVars.includes(variableName)
+  ) {
+    return 'dimension_px';
+  } else if (variableName.startsWith('font') || remVars.includes(variableName)) {
+    return 'dimension_rem';
+  } else if (variableName.startsWith('measure')) {
+    return 'dimension_ex';
+  } else if (variableName.startsWith('animation/speed')) {
+    return 'duration_ms';
+  } else if (numberVars.includes(variableName)) {
+    return 'number';
+  }
+}
+
+export async function promptNumberType(
+  variableName: string,
+  variableValue: string
+): Promise<NumberType> {
+  const problem = `Number type for Figma variable "${c.cyan(
+    variableName
+  )}" is too ambiguous, and no existing token type could be found.`;
+  const instruction = `Its Figma value is "${c.cyan(
+    variableValue
+  )}". What should its token type be?`;
+  const message = c.reset(`${c.yellow(problem)}\n${instruction}`);
+
+  return (await select({
+    message,
+    choices: [
+      { value: 'dimension_px', name: 'px (dimension)' },
+      { value: 'dimension_ex', name: 'ex (dimension)' },
+      { value: 'dimension_rem', name: 'rem (dimension)' },
+      { value: 'dimension_%', name: '% (dimension)' },
+      { value: 'duration_ms', name: 'ms (duration)' },
+      { value: 'number', name: 'number' },
+    ],
+  })) as NumberType;
+}
+
+export async function determineNumberType(
+  variableName: string,
+  variableValue: string
+): Promise<NumberType> {
+  let numberType = guessNumberType(variableName);
+  if (numberType) {
+    // eslint-disable-next-line no-console
+    console.log(
+      c.green(
+        `Number type for Figma variable "${c.cyan(
+          variableName
+        )}" is too ambiguous, but we made an educated guess: ${c.cyan(numberType)}`
+      )
+    );
+  } else {
+    numberType = await promptNumberType(variableName, variableValue);
+  }
+  return numberType;
+}
+
 function tokenTypeFromVariable(variable: Variable): Token['$type'] {
   switch (variable.resolvedType) {
     case 'BOOLEAN':
@@ -43,7 +124,8 @@ async function tokenFromVariable(
   variable: Variable,
   modeId: string,
   localVariables: { [id: string]: Variable },
-  existingTokens: FlattenedTokens
+  existingTokens: FlattenedTokens,
+  resolveNumberType: ResolveNumberTypeFunction
 ): Promise<Token> {
   const existingToken: Token | undefined = existingTokens[variable.name.replace(/\//g, '.')];
 
@@ -88,23 +170,7 @@ async function tokenFromVariable(
     if (numberType) {
       $type = existingToken.$type;
     } else {
-      const problem = `Number type for Figma variable "${c.cyan(
-        variable.name
-      )}" is too ambiguous, and no existing token type could be found.`;
-      const instruction = `Its value is "${c.cyan($value)}". What should its type be?`;
-      const message = c.reset(`${c.yellow(problem)}\n${instruction}`);
-
-      numberType = (await select({
-        message,
-        choices: [
-          { value: 'dimension_px', name: 'px (dimension)' },
-          { value: 'dimension_ex', name: 'ex (dimension)' },
-          { value: 'dimension_rem', name: 'rem (dimension)' },
-          { value: 'dimension_%', name: '% (dimension)' },
-          { value: 'duration_ms', name: 'ms (duration)' },
-          { value: 'number', name: 'number' },
-        ],
-      })) as NumberType;
+      numberType = await resolveNumberType(variable.name, $value);
 
       $extensions['gov.cms.design'] = {
         numberType,
@@ -149,7 +215,8 @@ type TokensByFile = { [fileName: string]: any };
 
 export async function tokenFilesFromLocalVariables(
   localVariablesResponse: ApiGetLocalVariablesResponse,
-  existingTokens: FlattenedTokensByFile
+  existingTokens: FlattenedTokensByFile,
+  resolveNumberType: ResolveNumberTypeFunction
 ): Promise<TokensByFile> {
   const tokenFiles: TokensByFile = {};
   const localVariableCollections = localVariablesResponse.meta.variableCollections;
@@ -180,7 +247,8 @@ export async function tokenFilesFromLocalVariables(
         variable,
         mode.modeId,
         localVariables,
-        existingTokens[fileName]
+        existingTokens[fileName],
+        resolveNumberType
       );
 
       Object.assign(obj, token);

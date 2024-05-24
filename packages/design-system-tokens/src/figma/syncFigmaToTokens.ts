@@ -3,7 +3,11 @@ import 'dotenv/config';
 import FigmaApi from './FigmaApi';
 import c from 'chalk';
 import path from 'path';
-import { tokenFilesFromLocalVariables, writeTokenFiles } from './translateFigmaToTokens';
+import {
+  determineNumberType,
+  tokenFilesFromLocalVariables,
+  writeTokenFiles,
+} from './translateFigmaToTokens';
 import { readTokenFiles } from '../lib/tokens';
 
 const TOKENS_DIR = path.resolve(__dirname, '..', 'tokens');
@@ -18,7 +22,11 @@ async function main() {
   const localVariables = await api.getLocalVariables(fileKey);
 
   const existingTokens = readTokenFiles(TOKENS_DIR);
-  const tokensByFile = await tokenFilesFromLocalVariables(localVariables, existingTokens);
+  const tokensByFile = await tokenFilesFromLocalVariables(
+    localVariables,
+    existingTokens,
+    determineNumberType
+  );
 
   console.log('Writing token files:', Object.keys(tokensByFile));
   writeTokenFiles(TOKENS_DIR, tokensByFile);
